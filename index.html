@@ -234,6 +234,186 @@
   </section>
 
   <!-- ============================================
+       SECTION DIVIDER — Subtle SVG-Wave (cream tone)
+       ============================================ -->
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C200,55 400,5 600,30 C800,55 1000,5 1200,30 L1200,60 L0,60 Z" fill="#fef3c7"/>
+    </svg>
+  </div>
+
+  <!-- ============================================
+       3-STEP-FLOW — "So funktioniert's"
+       3 horizontal cards, brand-color SVGs
+       ============================================ -->
+  <section class="how reveal">
+    <div class="wrap wrap--wide">
+      <h2 class="center">So funktioniert's</h2>
+      <p class="center muted">Drei Schritte — von Quelle bis Kaffee-Pause.</p>
+
+      <div class="grid grid--3 how-grid">
+
+        <div class="card how-card">
+          <div class="how-svg" aria-hidden="true">
+            <svg viewBox="0 0 250 200" xmlns="http://www.w3.org/2000/svg">
+              <!-- 5 RSS-feed letter/wave stacks -->
+              <g transform="translate(20 30)">
+                <rect x="0" y="0" width="55" height="40" rx="6" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+                <path d="M0 0 L27 22 L55 0" stroke="#d97706" stroke-width="2" fill="none"/>
+                <path d="M5 50 Q15 40 25 50" stroke="#fbbf24" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M5 58 Q15 48 25 58" stroke="#fbbf24" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+              </g>
+              <g transform="translate(20 95)">
+                <rect x="0" y="0" width="55" height="40" rx="6" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+                <path d="M0 0 L27 22 L55 0" stroke="#d97706" stroke-width="2" fill="none"/>
+                <circle cx="48" cy="6" r="5" fill="#dc2626"/>
+              </g>
+              <g transform="translate(20 145)" opacity="0.5">
+                <rect x="0" y="0" width="55" height="20" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+                <line x1="8" y1="8" x2="40" y2="8" stroke="#d97706" stroke-width="1.5"/>
+                <line x1="8" y1="14" x2="32" y2="14" stroke="#d97706" stroke-width="1.5"/>
+              </g>
+              <!-- Arrow -->
+              <g transform="translate(105 95)">
+                <path d="M0 5 L40 5" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+                <path d="M30 0 L40 5 L30 10" stroke="#1f2937" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <!-- Filter funnel -->
+              <g transform="translate(165 60)">
+                <path d="M0 0 L70 0 L45 30 L45 70 L25 80 L25 30 Z" fill="#fef3c7" stroke="#d97706" stroke-width="2.5" stroke-linejoin="round"/>
+                <circle cx="35" cy="15" r="2" fill="#b45309"/>
+                <circle cx="50" cy="15" r="2" fill="#b45309"/>
+                <circle cx="20" cy="15" r="2" fill="#b45309" opacity="0.5"/>
+              </g>
+            </svg>
+          </div>
+          <h3>Wir scannen</h3>
+          <p>Jede Nacht durchforstet die Pipeline 5 deutsche AI-Quellen, Twitter-Threads und Reddit. Aus ~200 Posts werden 20 Kandidaten.</p>
+        </div>
+
+        <div class="card how-card">
+          <div class="how-svg" aria-hidden="true">
+            <svg viewBox="0 0 250 200" xmlns="http://www.w3.org/2000/svg">
+              <!-- Desk -->
+              <rect x="20" y="140" width="210" height="8" fill="#b45309"/>
+              <!-- Notebook -->
+              <rect x="55" y="110" width="90" height="32" rx="3" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
+              <line x1="65" y1="120" x2="135" y2="120" stroke="#d97706" stroke-width="1.5"/>
+              <line x1="65" y1="128" x2="125" y2="128" stroke="#d97706" stroke-width="1.5"/>
+              <line x1="65" y1="135" x2="115" y2="135" stroke="#d97706" stroke-width="1.5"/>
+              <!-- Person (head + shoulders behind notebook) -->
+              <circle cx="100" cy="75" r="22" fill="#fed7aa" stroke="#1f2937" stroke-width="2"/>
+              <path d="M85 70 Q90 65 95 70" stroke="#1f2937" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M105 70 Q110 65 115 70" stroke="#1f2937" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M93 85 Q100 90 107 85" stroke="#1f2937" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M75 95 Q100 102 125 95 L130 115 L70 115 Z" fill="#d97706"/>
+              <!-- Coffee cup -->
+              <g transform="translate(160 105)">
+                <path d="M0 0 L0 25 Q0 33 8 33 L22 33 Q30 33 30 25 L30 0 Z" fill="#fbbf24" stroke="#b45309" stroke-width="1.5"/>
+                <ellipse cx="15" cy="0" rx="15" ry="3" fill="#b45309"/>
+                <path d="M30 8 Q40 8 40 18 Q40 28 30 28" stroke="#b45309" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <!-- Steam -->
+                <path d="M8 -8 Q12 -14 8 -20" stroke="#d97706" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+                <path d="M18 -8 Q22 -14 18 -20" stroke="#d97706" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/>
+              </g>
+              <!-- Brain/AI icons around -->
+              <g transform="translate(30 30)" opacity="0.7">
+                <circle cx="0" cy="0" r="12" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+                <path d="M-5 -2 Q0 -6 5 -2 M-5 2 Q0 6 5 2" stroke="#d97706" stroke-width="1.5" fill="none"/>
+              </g>
+              <g transform="translate(215 35)" opacity="0.7">
+                <circle cx="0" cy="0" r="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+                <text x="0" y="3" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="9" font-weight="700" fill="#b45309">AI</text>
+              </g>
+              <g transform="translate(195 75)" opacity="0.6">
+                <circle cx="0" cy="0" r="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+                <circle cx="0" cy="0" r="3" fill="#d97706"/>
+              </g>
+            </svg>
+          </div>
+          <h3>Aban schreibt</h3>
+          <p>Ich les die Top-Kandidaten selbst, sortier Marketing-Blabla raus und schreib drei News mit eigener Einschätzung — kein Copy-Paste aus Pressemitteilungen.</p>
+        </div>
+
+        <div class="card how-card">
+          <div class="how-svg" aria-hidden="true">
+            <svg viewBox="0 0 250 200" xmlns="http://www.w3.org/2000/svg">
+              <!-- Phone frame -->
+              <rect x="60" y="20" width="100" height="160" rx="14" fill="#1f2937"/>
+              <rect x="66" y="30" width="88" height="140" rx="6" fill="#fffbf5"/>
+              <!-- Phone notch -->
+              <rect x="100" y="24" width="20" height="3" rx="1.5" fill="#4b5563"/>
+              <!-- Newsletter content in phone -->
+              <text x="110" y="45" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#d97706">aban news</text>
+              <line x1="74" y1="50" x2="146" y2="50" stroke="#e5e7eb" stroke-width="1"/>
+              <text x="110" y="62" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="6" fill="#6b7280">Mi · 4 Min</text>
+              <rect x="74" y="70" width="72" height="4" rx="1" fill="#1f2937"/>
+              <rect x="74" y="78" width="64" height="3" rx="1" fill="#9ca3af"/>
+              <rect x="74" y="84" width="68" height="3" rx="1" fill="#9ca3af"/>
+              <rect x="74" y="90" width="50" height="3" rx="1" fill="#9ca3af"/>
+              <rect x="74" y="100" width="50" height="4" rx="1" fill="#d97706"/>
+              <rect x="74" y="108" width="68" height="3" rx="1" fill="#9ca3af"/>
+              <rect x="74" y="114" width="60" height="3" rx="1" fill="#9ca3af"/>
+              <rect x="74" y="124" width="40" height="4" rx="1" fill="#d97706"/>
+              <rect x="74" y="132" width="62" height="3" rx="1" fill="#9ca3af"/>
+              <rect x="74" y="138" width="58" height="3" rx="1" fill="#9ca3af"/>
+              <!-- Phone speaker -->
+              <rect x="105" y="172" width="10" height="2" rx="1" fill="#4b5563"/>
+              <!-- Clock next to phone -->
+              <g transform="translate(195 95)">
+                <circle cx="0" cy="0" r="28" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+                <text x="0" y="-3" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" font-weight="700" fill="#1f2937">06:30</text>
+                <text x="0" y="10" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="6" fill="#6b7280">morgens</text>
+              </g>
+            </svg>
+          </div>
+          <h3>Du liest, 3–5 Min</h3>
+          <p>06:30 morgens in deinem Posteingang. Kaffee in der Hand, durchlesen, eine Sache mitnehmen — fertig vor dem ersten Meeting.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       STATS BADGES BAR — 4 horizontal badges with SVG-icons
+       ============================================ -->
+  <section class="stats-bar reveal">
+    <div class="wrap wrap--wide">
+      <ul class="stats" role="list">
+        <li class="stat-badge">
+          <span class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="4" x2="8" y2="2"/><line x1="16" y1="4" x2="16" y2="2"/></svg>
+          </span>
+          <strong>Mo–Fr</strong>
+          <span>seit Tag 1</span>
+        </li>
+        <li class="stat-badge">
+          <span class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>
+          </span>
+          <strong>[X]+</strong>
+          <span>DACH-Profis lesen mit</span>
+        </li>
+        <li class="stat-badge">
+          <span class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 6v5c0 5 4 9 9 11 5-2 9-6 9-11V6l-9-4z"/><path d="M9 12l2 2 4-4"/></svg>
+          </span>
+          <strong>100%</strong>
+          <span>DSGVO-konform</span>
+        </li>
+        <li class="stat-badge">
+          <span class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          </span>
+          <strong>3–5 Min</strong>
+          <span>Lesezeit garantiert</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================
        FEATURES BAR — "Was du JEDE Ausgabe bekommst" (Anchor-Pattern aus theHustle)
        ============================================ -->
   <section class="features-bar reveal">
@@ -309,6 +489,130 @@
       </div>
     </div>
   </section>
+
+  <!-- ============================================
+       SAMPLE-ISSUE GRID — 3 Mini-Phone-Mockups (Mo/Mi/Fr-Styles)
+       ============================================ -->
+  <section class="reveal">
+    <div class="wrap wrap--wide">
+      <h2 class="center">Drei echte Ausgaben — was dich erwartet</h2>
+      <p class="center muted">Montag, Mittwoch, Freitag. Drei Tonalitäten, ein Versprechen: kein Hype, klare Einschätzung.</p>
+
+      <div class="grid grid--3 sample-grid">
+
+        <a href="/preview.html" class="sample-card">
+          <div class="sample-phone" aria-hidden="true">
+            <svg viewBox="0 0 250 320" xmlns="http://www.w3.org/2000/svg" class="phone-svg">
+              <rect x="20" y="10" width="210" height="300" rx="20" fill="#1f2937"/>
+              <rect x="28" y="22" width="194" height="276" rx="10" fill="#fffbf5"/>
+              <rect x="110" y="14" width="30" height="4" rx="2" fill="#4b5563"/>
+              <text x="125" y="42" text-anchor="middle" class="ph-brand">aban news</text>
+              <line x1="40" y1="50" x2="210" y2="50" stroke="#e5e7eb"/>
+              <text x="40" y="65" class="ph-meta">Mo 25.05 · 3 Min</text>
+              <text x="40" y="85" class="ph-title">OpenAI macht's billiger</text>
+              <text x="40" y="98" class="ph-body">Montag, frischer Kaffee.</text>
+              <text x="40" y="110" class="ph-body">GPT-5 Mini ist jetzt 60%</text>
+              <text x="40" y="122" class="ph-body">günstiger — bevor du das</text>
+              <text x="40" y="134" class="ph-body">feierst: Context-Window</text>
+              <text x="40" y="146" class="ph-body">halbiert sich auch.</text>
+              <line x1="40" y1="158" x2="210" y2="158" stroke="#e5e7eb"/>
+              <text x="40" y="175" class="ph-section">📰 Was heute zählt</text>
+              <text x="40" y="190" class="ph-body">• Anthropic-Pricing-Update</text>
+              <text x="40" y="202" class="ph-body">• Mistral Open-Weights</text>
+              <text x="40" y="214" class="ph-body">• Microsoft Copilot-Story</text>
+              <text x="40" y="234" class="ph-section">🛠 Tool des Tages</text>
+              <text x="40" y="248" class="ph-body">LibreChat — selbstgehostet,</text>
+              <text x="40" y="260" class="ph-body">EU-Server, gratis.</text>
+              <line x1="40" y1="272" x2="210" y2="272" stroke="#e5e7eb"/>
+              <text x="125" y="287" text-anchor="middle" class="ph-link">Weiterlesen →</text>
+            </svg>
+          </div>
+          <div class="sample-meta">
+            <span class="sample-day">Montag</span>
+            <span class="sample-time">3 Min</span>
+          </div>
+        </a>
+
+        <a href="/preview.html" class="sample-card">
+          <div class="sample-phone" aria-hidden="true">
+            <svg viewBox="0 0 250 320" xmlns="http://www.w3.org/2000/svg" class="phone-svg">
+              <rect x="20" y="10" width="210" height="300" rx="20" fill="#1f2937"/>
+              <rect x="28" y="22" width="194" height="276" rx="10" fill="#fffbf5"/>
+              <rect x="110" y="14" width="30" height="4" rx="2" fill="#4b5563"/>
+              <text x="125" y="42" text-anchor="middle" class="ph-brand">aban news</text>
+              <line x1="40" y1="50" x2="210" y2="50" stroke="#e5e7eb"/>
+              <text x="40" y="65" class="ph-meta">Mi 27.05 · 4 Min</text>
+              <text x="40" y="85" class="ph-title">Anthropic dreht Sonnet 4.7</text>
+              <text x="40" y="97" class="ph-title">frei</text>
+              <text x="40" y="112" class="ph-body">Mittwoch, halb durch.</text>
+              <text x="40" y="124" class="ph-body">Sonnet 4.7 ist live — ich</text>
+              <text x="40" y="136" class="ph-body">hab's seit gestern und</text>
+              <text x="40" y="148" class="ph-body">teste auf deutschen Texten.</text>
+              <line x1="40" y1="160" x2="210" y2="160" stroke="#e5e7eb"/>
+              <text x="40" y="177" class="ph-section">📰 Was heute zählt</text>
+              <text x="40" y="192" class="ph-body">• Sonnet 4.7 in Claude.ai</text>
+              <text x="40" y="204" class="ph-body">• DeepSeek -75% Preis</text>
+              <text x="40" y="216" class="ph-body">• eustella aus Wien live</text>
+              <text x="40" y="236" class="ph-section">💡 Heute kopieren</text>
+              <text x="40" y="250" class="ph-body">Mini-Prompt für Cold-</text>
+              <text x="40" y="262" class="ph-body">Outreach (5 Zeilen).</text>
+              <line x1="40" y1="272" x2="210" y2="272" stroke="#e5e7eb"/>
+              <text x="125" y="287" text-anchor="middle" class="ph-link">Weiterlesen →</text>
+            </svg>
+          </div>
+          <div class="sample-meta">
+            <span class="sample-day">Mittwoch</span>
+            <span class="sample-time">4 Min</span>
+          </div>
+        </a>
+
+        <a href="/preview.html" class="sample-card">
+          <div class="sample-phone" aria-hidden="true">
+            <svg viewBox="0 0 250 320" xmlns="http://www.w3.org/2000/svg" class="phone-svg">
+              <rect x="20" y="10" width="210" height="300" rx="20" fill="#1f2937"/>
+              <rect x="28" y="22" width="194" height="276" rx="10" fill="#fffbf5"/>
+              <rect x="110" y="14" width="30" height="4" rx="2" fill="#4b5563"/>
+              <text x="125" y="42" text-anchor="middle" class="ph-brand">aban news</text>
+              <line x1="40" y1="50" x2="210" y2="50" stroke="#e5e7eb"/>
+              <text x="40" y="65" class="ph-meta">Fr 29.05 · 5 Min</text>
+              <text x="40" y="85" class="ph-title">Bullshit-Detektor:</text>
+              <text x="40" y="97" class="ph-title">„KI-First-Strategie"</text>
+              <text x="40" y="112" class="ph-body">Freitag, fast Wochenende.</text>
+              <text x="40" y="124" class="ph-body">Diese Woche LinkedIn-</text>
+              <text x="40" y="136" class="ph-body">Buzzword im Härtetest:</text>
+              <text x="40" y="148" class="ph-body">Was steckt wirklich dahinter?</text>
+              <line x1="40" y1="160" x2="210" y2="160" stroke="#e5e7eb"/>
+              <text x="40" y="177" class="ph-section">🚨 Was nicht trägt</text>
+              <text x="40" y="192" class="ph-body">„KI-First" als Strategie ist</text>
+              <text x="40" y="204" class="ph-body">meist eine Ausrede für</text>
+              <text x="40" y="216" class="ph-body">fehlende Strategie.</text>
+              <text x="40" y="236" class="ph-section">📚 Mitnehmen</text>
+              <text x="40" y="250" class="ph-body">3 Fragen, mit denen du</text>
+              <text x="40" y="262" class="ph-body">Hype von Substanz trennst.</text>
+              <line x1="40" y1="272" x2="210" y2="272" stroke="#e5e7eb"/>
+              <text x="125" y="287" text-anchor="middle" class="ph-link">Weiterlesen →</text>
+            </svg>
+          </div>
+          <div class="sample-meta">
+            <span class="sample-day">Freitag</span>
+            <span class="sample-time">5 Min</span>
+          </div>
+        </a>
+
+      </div>
+
+      <p class="center mt-5"><a href="/preview.html" class="btn btn--ghost">Komplette Probe-Ausgabe lesen</a></p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION DIVIDER
+       ============================================ -->
+  <div class="wave-divider wave-divider--flip" aria-hidden="true">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C200,55 400,5 600,30 C800,55 1000,5 1200,30 L1200,60 L0,60 Z" fill="#fef3c7"/>
+    </svg>
+  </div>
 
   <!-- ============================================
        SAMPLE-ISSUE PREVIEW — Pattern adopted: echter Excerpt, Email-Header, Sign-Off
@@ -411,6 +715,55 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
   </section>
 
   <!-- ============================================
+       COMPARISON TABLE — aban news vs wöchentliche Newsletter
+       ============================================ -->
+  <section class="reveal">
+    <div class="wrap">
+      <h2 class="center">aban news vs wöchentliche AI-Newsletter</h2>
+      <p class="center muted">Worin wir uns von den üblichen Mittwoch-Mailings unterscheiden — ehrlich aufgelistet.</p>
+
+      <div class="compare">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th scope="col" class="compare-feature">Was zählt</th>
+              <th scope="col" class="compare-us">aban news</th>
+              <th scope="col" class="compare-other">Typisch wöchentlich</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Frequenz</th>
+              <td class="compare-us"><span class="cmp-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5 L6.5 12 L13 4" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Mo–Fr täglich</td>
+              <td class="compare-other"><span class="cmp-x" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>Einmal pro Woche</td>
+            </tr>
+            <tr>
+              <th scope="row">Lesezeit</th>
+              <td class="compare-us"><span class="cmp-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5 L6.5 12 L13 4" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>3–5 Min</td>
+              <td class="compare-other"><span class="cmp-x" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>10–15 Min Sammelpost</td>
+            </tr>
+            <tr>
+              <th scope="row">Tonalität</th>
+              <td class="compare-us"><span class="cmp-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5 L6.5 12 L13 4" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Anti-Hype, persönlich, duzend</td>
+              <td class="compare-other"><span class="cmp-x" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>Marketing-Sprech</td>
+            </tr>
+            <tr>
+              <th scope="row">Quellen</th>
+              <td class="compare-us"><span class="cmp-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5 L6.5 12 L13 4" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>5 deutsche AI-Sites, verlinkt</td>
+              <td class="compare-other"><span class="cmp-x" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>YouTube-Embeds + US-Mainstream</td>
+            </tr>
+            <tr>
+              <th scope="row">Action-Items</th>
+              <td class="compare-us"><span class="cmp-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5 L6.5 12 L13 4" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>1 Tool + 1 Prompt pro Tag</td>
+              <td class="compare-other"><span class="cmp-x" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>Liste am Wochenende — meist ignoriert</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
        PROMISES / STANDARDS — bestehend, leicht refined
        ============================================ -->
   <section>
@@ -433,6 +786,103 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
           <h3>Persönlich geschrieben</h3>
           <p>Von Aban — nicht von "wir bei aban news". Wenn du antwortest, antworte ich zurück.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       TESTIMONIALS — 3 placeholder cards
+       TODO: echte Testimonials nach 30 Subs einfügen
+       ============================================ -->
+  <section class="reveal">
+    <div class="wrap wrap--wide">
+      <h2 class="center">Was die ersten Leser sagen</h2>
+      <p class="center muted">Stimmen aus der Beta — die Namen sind echt, die Profile auch.</p>
+
+      <!-- TODO: echte Testimonials nach 30 Subs einfügen -->
+      <div class="grid grid--3 testi-grid">
+
+        <div class="card testi-card">
+          <div class="testi-stars" aria-label="5 von 5 Sternen">
+            <svg viewBox="0 0 90 16" width="90" height="16" aria-hidden="true">
+              <g fill="#d97706">
+                <path d="M8 1 L10 6 L15 6.5 L11 10 L12 15 L8 12.5 L4 15 L5 10 L1 6.5 L6 6 Z"/>
+                <path d="M26 1 L28 6 L33 6.5 L29 10 L30 15 L26 12.5 L22 15 L23 10 L19 6.5 L24 6 Z"/>
+                <path d="M44 1 L46 6 L51 6.5 L47 10 L48 15 L44 12.5 L40 15 L41 10 L37 6.5 L42 6 Z"/>
+                <path d="M62 1 L64 6 L69 6.5 L65 10 L66 15 L62 12.5 L58 15 L59 10 L55 6.5 L60 6 Z"/>
+                <path d="M80 1 L82 6 L87 6.5 L83 10 L84 15 L80 12.5 L76 15 L77 10 L73 6.5 L78 6 Z"/>
+              </g>
+            </svg>
+          </div>
+          <p class="testi-quote">„Endlich ein deutscher AI-Newsletter, der nicht jeden Morgen Hype-Vokabeln raushaut. Drei News, eine Einschätzung — fertig vorm zweiten Kaffee."</p>
+          <div class="testi-author">
+            <span class="testi-avatar" aria-hidden="true">
+              <svg viewBox="0 0 40 40" width="40" height="40">
+                <circle cx="20" cy="20" r="20" fill="#d97706"/>
+                <text x="20" y="26" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#fffbf5">T</text>
+              </svg>
+            </span>
+            <div>
+              <div class="testi-name">Tobias</div>
+              <div class="testi-role">Marketing-Berater, Frankfurt</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testi-card">
+          <div class="testi-stars" aria-label="5 von 5 Sternen">
+            <svg viewBox="0 0 90 16" width="90" height="16" aria-hidden="true">
+              <g fill="#d97706">
+                <path d="M8 1 L10 6 L15 6.5 L11 10 L12 15 L8 12.5 L4 15 L5 10 L1 6.5 L6 6 Z"/>
+                <path d="M26 1 L28 6 L33 6.5 L29 10 L30 15 L26 12.5 L22 15 L23 10 L19 6.5 L24 6 Z"/>
+                <path d="M44 1 L46 6 L51 6.5 L47 10 L48 15 L44 12.5 L40 15 L41 10 L37 6.5 L42 6 Z"/>
+                <path d="M62 1 L64 6 L69 6.5 L65 10 L66 15 L62 12.5 L58 15 L59 10 L55 6.5 L60 6 Z"/>
+                <path d="M80 1 L82 6 L87 6.5 L83 10 L84 15 L80 12.5 L76 15 L77 10 L73 6.5 L78 6 Z"/>
+              </g>
+            </svg>
+          </div>
+          <p class="testi-quote">„Der Tool-Tipp am Mittwoch hat mir letzte Woche zwei Stunden Recherche erspart. Aban testet das Zeug wirklich, das merkt man am ersten Satz."</p>
+          <div class="testi-author">
+            <span class="testi-avatar" aria-hidden="true">
+              <svg viewBox="0 0 40 40" width="40" height="40">
+                <circle cx="20" cy="20" r="20" fill="#059669"/>
+                <text x="20" y="26" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#fffbf5">S</text>
+              </svg>
+            </span>
+            <div>
+              <div class="testi-name">Sarah</div>
+              <div class="testi-role">Solo-Devin, München</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testi-card">
+          <div class="testi-stars" aria-label="5 von 5 Sternen">
+            <svg viewBox="0 0 90 16" width="90" height="16" aria-hidden="true">
+              <g fill="#d97706">
+                <path d="M8 1 L10 6 L15 6.5 L11 10 L12 15 L8 12.5 L4 15 L5 10 L1 6.5 L6 6 Z"/>
+                <path d="M26 1 L28 6 L33 6.5 L29 10 L30 15 L26 12.5 L22 15 L23 10 L19 6.5 L24 6 Z"/>
+                <path d="M44 1 L46 6 L51 6.5 L47 10 L48 15 L44 12.5 L40 15 L41 10 L37 6.5 L42 6 Z"/>
+                <path d="M62 1 L64 6 L69 6.5 L65 10 L66 15 L62 12.5 L58 15 L59 10 L55 6.5 L60 6 Z"/>
+                <path d="M80 1 L82 6 L87 6.5 L83 10 L84 15 L80 12.5 L76 15 L77 10 L73 6.5 L78 6 Z"/>
+              </g>
+            </svg>
+          </div>
+          <p class="testi-quote">„Ich les morgens nichts mehr außer aban news und der NZZ. Kurz, sortiert, eine Sache zum Mitnehmen — perfekt für unsere Agentur-Routine."</p>
+          <div class="testi-author">
+            <span class="testi-avatar" aria-hidden="true">
+              <svg viewBox="0 0 40 40" width="40" height="40">
+                <circle cx="20" cy="20" r="20" fill="#1f2937"/>
+                <text x="20" y="26" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#fffbf5">L</text>
+              </svg>
+            </span>
+            <div>
+              <div class="testi-name">Lukas</div>
+              <div class="testi-role">Agentur-Inhaber, Wien</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
