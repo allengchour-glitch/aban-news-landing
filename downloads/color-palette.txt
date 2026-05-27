@@ -1,0 +1,41 @@
+aban news — Color Palette
+==========================
+
+Primary
+-------
+Amber          #d97706   rgb(217,119,6)    hsl(32,95%,44%)
+Amber Light    #fbbf24   rgb(251,191,36)   hsl(43,96%,56%)
+
+Text
+----
+Dark           #1f2937   rgb(31,41,55)     hsl(215,28%,17%)
+Mid Gray       #6b7280   rgb(107,114,128)  hsl(220,9%,46%)
+
+Backgrounds
+-----------
+Cream          #fef3c7   rgb(254,243,199)  hsl(48,96%,89%)
+Light Gray     #f3f4f6   rgb(243,244,246)  hsl(220,14%,96%)
+White Soft     #fffbf5   rgb(255,251,245)  hsl(36,100%,98%)
+
+Semantic
+--------
+Success        #10b981   rgb(16,185,129)
+Error          #ef4444   rgb(239,68,68)
+
+Usage
+-----
+- Amber = Headers, CTAs, Brand-Accents
+- Amber Light = Hover-States, Sub-Accents
+- Dark = Body-Text, Footer-Backgrounds
+- Mid Gray = Sekundärtext, Meta-Info
+- Cream = Code-Boxes, Highlight-Cards
+- Light Gray = Border, Soft-Separators
+- White Soft = Page-Backgrounds (warmer als reines Weiss)
+
+Accessibility
+-------------
+- Amber #d97706 on white = WCAG AA for ≥18pt only
+- Dark #1f2937 on white = WCAG AAA all sizes
+- Amber on Dark = WCAG AAA — usable for dark-mode headers
+
+— abannews.com

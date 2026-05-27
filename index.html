@@ -36,7 +36,30 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
 
-  <!-- Preload critical CSS asynchron — no-blocking -->
+  <!-- Performance: preconnect to beehiiv (form action target) -->
+  <link rel="preconnect" href="https://api.beehiiv.com" crossorigin>
+  <link rel="dns-prefetch" href="https://api.beehiiv.com">
+
+  <!-- Critical CSS: inline above-the-fold (Hero) for first-paint -->
+  <style id="critical-css">
+    :root{--c-bg:#fffbf5;--c-bg-alt:#fef3c7;--c-text:#1f2937;--c-muted:#6b7280;--c-accent:#d97706;--c-accent-hi:#b45309;--c-border:#e5e7eb;--c-card:#fff}
+    *,*::before,*::after{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.6;color:var(--c-text);background:var(--c-bg);-webkit-font-smoothing:antialiased}
+    img,svg{max-width:100%;height:auto;display:block}
+    .skip{position:absolute;top:-40px;left:0;background:var(--c-text);color:#fff;padding:.5rem .75rem;z-index:100;text-decoration:none}
+    .skip:focus{top:0}
+    .wrap{width:100%;max-width:760px;margin:0 auto;padding:0 1rem}
+    .wrap--wide{max-width:980px}
+    .site-header{background:var(--c-bg);border-bottom:1px solid var(--c-border);position:sticky;top:0;z-index:50}
+    .site-header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:.75rem;padding-bottom:.75rem;max-width:980px}
+    .brand{display:inline-flex;align-items:center;gap:.5rem;color:var(--c-text);text-decoration:none;font-weight:700;font-size:1.125rem}
+    .hero{padding:2rem 0 3rem;background:linear-gradient(180deg,#fffbf5 0%,#fef3c7 100%)}
+    .hero-headline{font-size:clamp(1.75rem,4.2vw,2.625rem);line-height:1.15;margin:0 0 1rem;font-weight:800;letter-spacing:-0.02em}
+    .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#d97706,#b45309);z-index:200;pointer-events:none;transition:width 80ms linear}
+  </style>
+
+  <!-- Preload main CSS — render-blocking for visual consistency (already small) -->
   <link rel="stylesheet" href="css/styles.css">
 
   <!-- Strukturierte Daten (Schema.org Newsletter) -->
@@ -61,6 +84,9 @@
   </script>
 </head>
 <body>
+
+<!-- Scroll-progress indicator (3px bar, top of page) -->
+<div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Scroll-Fortschritt" aria-hidden="true"></div>
 
 <a href="#main" class="skip">Zum Hauptinhalt springen</a>
 
@@ -94,6 +120,11 @@
           <span class="dot" aria-hidden="true"></span>
           <span><strong>Mo–Fr neu</strong> · in der Schweiz geschrieben, im DACH-Raum gelesen</span>
         </span>
+
+        <p class="live-counter" aria-live="polite">
+          <span class="dot-live" aria-hidden="true"></span>
+          <span><span id="subCounter" data-target="1">0</span> DACH-Profis lesen mit</span>
+        </p>
 
         <h1 class="hero-headline">Der erste tägliche deutsche AI-Newsletter — 3-5 Min, kein Hype.</h1>
 
@@ -398,7 +429,7 @@
           <span class="stat-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>
           </span>
-          <strong>[X]+</strong>
+          <strong><span id="subCounterStats" data-target="1">1</span>+</strong>
           <span>DACH-Profis lesen mit</span>
         </li>
         <li class="stat-badge">
@@ -1281,14 +1312,14 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 aban news · Allen Chour · Hühnerhubelstrasse 37, 3123 Belp, Schweiz · <em>— Aban</em></span>
+      <span class="last-issue" id="lastIssueSent" aria-live="polite">Letzte Ausgabe verschickt: <strong>heute morgen</strong></span>
     </div>
   </div>
 </footer>
 
-<!-- Minimal inline JS: Sticky-CTA + Scroll-Reveal (no tracking, no fetch, < 1 KB) -->
+<!-- Minimal inline JS: Sticky-CTA + Scroll-Reveal + Polish (no tracking, < 2 KB) -->
 <script>
   (function () {
-    // Respect reduced-motion preference: skip reveal entirely
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // 1) Sticky mobile CTA on/off
@@ -1319,8 +1350,111 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       revealEls.forEach(function (el) { ioReveal.observe(el); });
     } else {
-      // Reduced-motion: show everything instantly
       document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+    }
+
+    // 3) Scroll-progress bar (rAF-throttled)
+    var bar = document.getElementById('scrollProgress');
+    if (bar) {
+      var ticking = false;
+      function updateProgress() {
+        var h = document.documentElement;
+        var max = (h.scrollHeight - h.clientHeight) || 1;
+        var pct = Math.min(100, Math.max(0, (h.scrollTop / max) * 100));
+        bar.style.width = pct + '%';
+        bar.setAttribute('aria-valuenow', Math.round(pct));
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { window.requestAnimationFrame(updateProgress); ticking = true; }
+      }, { passive: true });
+      updateProgress();
+    }
+
+    // 4) Sub-counter animation — fetches /data/stats.json, counts from 0
+    function animateCount(el, target, duration) {
+      if (!el) return;
+      if (reduceMotion) { el.textContent = target; return; }
+      var start = performance.now();
+      var from = 0;
+      function step(now) {
+        var t = Math.min(1, (now - start) / duration);
+        // ease-out cubic
+        var eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(from + (target - from) * eased);
+        if (t < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(step);
+    }
+
+    function loadStats() {
+      // Try to fetch live stats; fallback to data-target
+      var subEl = document.getElementById('subCounter');
+      var subStatsEl = document.getElementById('subCounterStats');
+      var lastIssueEl = document.getElementById('lastIssueSent');
+
+      function applyStats(stats) {
+        var subs = (stats && typeof stats.subscribers === 'number') ? stats.subscribers : null;
+        if (subEl) {
+          var t1 = subs != null ? subs : parseInt(subEl.getAttribute('data-target') || '1', 10);
+          animateCount(subEl, t1, 1800);
+        }
+        if (subStatsEl) {
+          var t2 = subs != null ? subs : parseInt(subStatsEl.getAttribute('data-target') || '1', 10);
+          animateCount(subStatsEl, t2, 2000);
+        }
+        if (lastIssueEl && stats && stats.last_issue_sent_iso) {
+          var sent = new Date(stats.last_issue_sent_iso);
+          if (!isNaN(sent.getTime())) {
+            var diffMs = Date.now() - sent.getTime();
+            var diffH = Math.floor(diffMs / 3600000);
+            var diffD = Math.floor(diffH / 24);
+            var label;
+            if (diffH < 1)       label = 'vor wenigen Minuten';
+            else if (diffH < 24) label = 'vor ' + diffH + ' Std';
+            else if (diffD < 2)  label = 'gestern';
+            else if (diffD < 7)  label = 'vor ' + diffD + ' Tagen';
+            else                 label = sent.toLocaleDateString('de-DE', { day: 'numeric', month: 'short' });
+            lastIssueEl.innerHTML = 'Letzte Ausgabe verschickt: <strong>' + label + '</strong>';
+          }
+        }
+      }
+
+      if ('fetch' in window) {
+        fetch('/data/stats.json', { cache: 'no-cache' })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(applyStats)
+          .catch(function () { applyStats(null); });
+      } else {
+        applyStats(null);
+      }
+    }
+    // Defer to next frame so first paint completes
+    if ('requestIdleCallback' in window) requestIdleCallback(loadStats); else setTimeout(loadStats, 50);
+
+    // 5) Form-submit loading-state + success-check
+    var subForm = document.getElementById('signup');
+    if (subForm) {
+      subForm.addEventListener('submit', function () {
+        var btn = subForm.querySelector('button[type="submit"]');
+        if (!btn) return;
+        btn.classList.add('is-loading');
+        // Beehiiv redirect happens; if same-page (no redirect), show success after 1.6s
+        setTimeout(function () {
+          if (btn.classList.contains('is-loading')) {
+            btn.classList.remove('is-loading');
+            btn.classList.add('is-success');
+          }
+        }, 1600);
+      });
+    }
+
+    // 6) Brand logo: trigger coffee-steam on hover
+    var brandLink = document.querySelector('.site-header .brand');
+    if (brandLink) {
+      brandLink.addEventListener('mouseenter', function () { brandLink.classList.add('is-hover'); });
+      brandLink.addEventListener('mouseleave', function () { brandLink.classList.remove('is-hover'); });
     }
   })();
 </script>

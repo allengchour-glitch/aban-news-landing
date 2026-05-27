@@ -1913,3 +1913,273 @@ body {
   .related-pages { margin-top: var(--space-7); }
   .founder-portrait { width: 120px; height: 120px; }
 }
+
+/* ============================================================
+   TOP-POLISH — added 2026-05-27
+   Loading-states, micro-interactions, real-time counters,
+   scroll-progress, focus polish, dark+contrast prefs.
+   ============================================================ */
+
+/* --- Scroll Progress Indicator (top of page) --- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--c-accent) 0%, var(--c-accent-hi) 100%);
+  z-index: 200;
+  transition: width 80ms linear;
+  pointer-events: none;
+  will-change: width;
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { transition: none; }
+}
+
+/* --- Hero coffee entrance (fade-up + scale, 600ms) --- */
+.hero-visual {
+  animation: heroVisualIn 600ms cubic-bezier(0.16, 1, 0.3, 1) 80ms backwards;
+}
+@keyframes heroVisualIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* --- Mockup shimmer-loading (300ms placeholder before content) --- */
+.mockup {
+  position: relative;
+  overflow: hidden;
+  animation: mockupIn 480ms ease-out 380ms backwards;
+}
+.mockup::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0) 100%);
+  transform: translateX(-100%);
+  animation: shimmer 1.1s ease-out 1 forwards;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes mockupIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  to { transform: translateX(100%); }
+}
+
+/* --- Subscribe button hover lift + stronger shadow --- */
+.subscribe button,
+.btn,
+button[type="submit"] {
+  transition: transform var(--t), box-shadow var(--t), background var(--t-fast);
+}
+.subscribe button:hover,
+.btn:hover,
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px var(--c-shadow-lg);
+}
+.subscribe button:active,
+.btn:active,
+button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* --- Submit-loading spinner (CSS-only, .is-loading class) --- */
+.subscribe button.is-loading {
+  color: transparent !important;
+  pointer-events: none;
+}
+.subscribe button.is-loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  animation: btnSpin 700ms linear infinite;
+}
+@keyframes btnSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Success micro-check */
+.subscribe button.is-success {
+  background: var(--c-success) !important;
+  color: #fff !important;
+}
+.subscribe button.is-success::before {
+  content: "✓";
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-right: 6px;
+  display: inline-block;
+  animation: checkPop 360ms ease-out;
+}
+@keyframes checkPop {
+  from { transform: scale(0); opacity: 0; }
+  60%  { transform: scale(1.25); opacity: 1; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* --- Mockup 3D-tilt on hover --- */
+.mockup {
+  transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 380ms ease-out;
+  transform-style: preserve-3d;
+}
+.mockup:hover {
+  transform: perspective(900px) rotateY(-2.5deg) rotateX(2deg) translateY(-3px);
+  box-shadow: 0 18px 36px var(--c-shadow-lg);
+}
+
+/* --- Brand logo: trigger coffee-steam on hover via class --- */
+.brand:hover .hero-steam,
+.brand.is-hover .hero-steam { animation-duration: 2s; }
+
+/* --- Email input focus glow --- */
+.subscribe input[type="email"] {
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.subscribe input[type="email"]:focus,
+.subscribe input[type="email"]:focus-visible {
+  outline: none;
+  border-color: var(--c-accent);
+  box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.18);
+}
+
+/* --- Footer link: underline-from-left animation --- */
+.site-footer a,
+.footer-mega a {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  text-decoration: none;
+  transition: background-size 220ms ease-out, color var(--t-fast);
+}
+.site-footer a:hover,
+.footer-mega a:hover {
+  background-size: 100% 1px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-footer a, .footer-mega a {
+    transition: none;
+    background-size: 100% 1px;
+  }
+}
+
+/* --- Card gradient-border on hover --- */
+.card,
+.how-card,
+.tool-card,
+.sp-card {
+  position: relative;
+  transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+}
+.card:hover,
+.how-card:hover,
+.tool-card:hover,
+.sp-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px var(--c-shadow-lg);
+  border-color: var(--c-accent-soft);
+}
+
+/* --- Animated counter (Hero stat / sub-counter) --- */
+.live-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--c-accent-hi);
+}
+.live-counter .dot-live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-success);
+  box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.5);
+  animation: dotPulse 2.2s ease-out infinite;
+}
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.5); }
+  50%      { box-shadow: 0 0 0 8px rgba(5, 150, 105, 0); }
+}
+
+/* --- Last-issue timestamp pill --- */
+.last-issue {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--c-bg-alt);
+  color: var(--c-text-2);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  margin-top: var(--space-2);
+}
+.last-issue strong { color: var(--c-accent-hi); }
+
+/* --- Focus-visible distinct (a11y polish) --- */
+:focus-visible {
+  outline: 3px solid var(--c-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+button:focus-visible,
+.btn:focus-visible,
+a.nav-cta:focus-visible {
+  outline: 3px solid var(--c-accent-hi);
+  outline-offset: 3px;
+}
+
+/* --- prefers-color-scheme: dark — subtle dark adjustments --- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-shadow: rgba(0, 0, 0, 0.25);
+    --c-shadow-lg: rgba(0, 0, 0, 0.4);
+  }
+  /* Keep brand warm — only tone shadows + slight bg dim for OLED comfort */
+}
+
+/* --- prefers-contrast: more --- */
+@media (prefers-contrast: more) {
+  :root {
+    --c-muted: #4b5563;
+    --c-border: #9ca3af;
+    --c-text-2: #111827;
+  }
+  a { text-decoration-thickness: 2px; }
+  button, .btn {
+    border: 2px solid var(--c-text);
+  }
+  :focus-visible {
+    outline: 4px solid #000;
+    outline-offset: 4px;
+  }
+}
+
+/* --- Reduced-motion overrides for new animations --- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual,
+  .mockup,
+  .mockup::before,
+  .subscribe button.is-loading::after,
+  .subscribe button.is-success::before,
+  .live-counter .dot-live {
+    animation: none !important;
+  }
+  .mockup::before { display: none; }
+  .mockup:hover { transform: none !important; box-shadow: none !important; }
+  .subscribe button:hover, .btn:hover, button[type="submit"]:hover { transform: none !important; }
+  .card:hover, .how-card:hover, .tool-card:hover, .sp-card:hover { transform: none !important; }
+}

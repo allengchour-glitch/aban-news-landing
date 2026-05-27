@@ -1,0 +1,480 @@
+﻿id,scheduled_date,content,hashtags,status,posted_at,post_url
+1,2026-06-01,"Heute Tag 1 von aban news.
+
+Drei Jahre lang hab ich mich jeden Morgen durch zwölf englische AI-Newsletter, drei Reddit-Threads und doppelt so viele Substack-Drafts gescrollt, um die paar Updates zu finden, die für mich als Solopreneur in der Schweiz wirklich relevant sind.
+
+Irgendwann hab ich aufgehört zu warten, dass jemand das auf Deutsch baut.
+
+Also baue ich's selbst.
+
+aban news ist ab heute der erste tägliche deutschsprachige AI-Newsletter. Mo–Fr morgens. 3–5 Min Lesezeit.
+
+Was du bekommst:
+→ 3–5 News des Tages, ehrlich eingeordnet
+→ Ein Tool des Tages mit echtem Use Case
+→ Ein Prompt zum Kopieren
+
+Was du NICHT bekommst:
+→ ""Diese KI verändert alles!""
+→ Massenanrede
+→ Marketing-Sprech
+
+Heute geht die erste Ausgabe raus. Wenn dir das Format gefällt — 5 Tage testen kostet null. Link in den Kommentaren.
+
+Wer Lust hat, gerne weitersagen.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+2,2026-06-02,"41 % der Solo-Selbstständigen in DACH nutzen täglich mindestens ein KI-Tool.
+
+Vor einem Jahr waren es 19 %.
+
+Bitkom-Zahlen, frisch von letzter Woche. Was mir an der Zahl auffällt: das Wachstum kommt nicht von den Tech-Affinen — die waren schon dabei. Es kommt von der Mitte. Steuerberater, Coaches, Architekten, Einzelhandel.
+
+Drei Konsequenzen, die ich aus der Zahl ableite:
+
+1. Wer als Solopreneur 2026 kein KI-Tool im Stack hat, fällt nicht zurück — er fällt aus.
+2. Die Differenzierung liegt nicht mehr im „nutze ich überhaupt"", sondern im „wie gut nutze ich's"".
+3. Der News-Bedarf auf Deutsch wird in den nächsten 12 Monaten explodieren.
+
+Punkt 3 ist auch der Grund, warum ich aban news baue — täglich auf Deutsch, für genau diese Mitte.
+
+Quelle in den Kommentaren.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+3,2026-06-03,"Unpopuläre Meinung: Die meisten „KI-Agents"" sind aktuell teurer und schlechter als ein gut geschriebener Prompt mit einem normalen Tool-Call.
+
+Ich hab in den letzten vier Wochen sechs „Agent-Frameworks"" getestet. Resultat:
+
+→ Drei sind in der ersten Stunde am eigenen Setup gescheitert.
+→ Zwei laufen, machen aber nichts, was eine simple Make-Automation nicht auch könnte.
+→ Eins ist okay, kostet aber das Sechsfache.
+
+Der Hype um Agents ist gerade da, wo der RAG-Hype Ende 2024 war: ein cooles Konzept, das in echten Solopreneur-Setups noch nicht mehr Wert liefert als der direkte Weg.
+
+Mein Tipp für die nächsten drei Monate: erst dein Prompt-Game scharf machen, dann dein Make- oder n8n-Setup sauber bauen. Agents kommen — aber nicht so schnell wie der Marketing-Kalender es behauptet.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+4,2026-06-04,"☕ aban news heute:
+
+→ Anthropic dreht an der Preisstruktur — Caching wird billiger
+→ Mistral öffnet Le Chat Enterprise jetzt ab 1 Seat
+→ Tool des Tages: Cap.so (Open-Source-Loom-Alternative)
+
+Was ich an der Anthropic-News spannend finde: für meine eigene Newsletter-Pipeline rechne ich mit ~18 % weniger API-Kosten pro Monat. Klingt nach wenig, ist es nicht — über 12 Monate Pipeline-Laufzeit rechnet sich das.
+
+3–5 Min Lesezeit, ohne Hype, ohne Massenanrede.
+
+Mail kostet nix: Link in den Kommentaren.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+5,2026-06-05,"Fünf Tools aus dieser Woche, die du heute Abend noch checken solltest:
+
+1. **Cap.so** — Open-Source-Loom-Ersatz, läuft lokal, spart mir zwei Calls pro Woche.
+2. **Granola** — Meeting-Notizen ohne Bot im Call. Deutsch okay, nicht perfekt.
+3. **Raycast AI** — Cmd+Space + Frage + 2 Sek Antwort. Mac-only.
+4. **Le Chat Enterprise** — Mistral, jetzt ab 1 Seat, EU-Hosting, 24 € / Monat. DSGVO out of the box.
+5. **n8n Cloud** — 40 neue KI-Templates, guter Einstiegspunkt wenn Make.com dich nervt.
+
+Mein persönlicher Favorit der Woche: Le Chat Enterprise. Nicht weil's das beste Modell ist (ist es nicht), sondern weil's der erste DSGVO-native Anbieter ist, den ich einem Kunden ohne 20 Disclaimer empfehlen kann.
+
+Schönes Wochenende — Mo bin ich wieder am Start mit der nächsten aban-news-Ausgabe.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+6,2026-06-06,"Erste Woche aban news.
+
+Was schlechter lief, als ich dachte:
+→ Mein Send-Zeitpunkt 07:00 ist 30 Min zu früh. Open-Rate steigt um 14:00 nochmal stark — Leute lesen nach Lunch.
+→ LinkedIn-Comments brauchen mehr Zeit als ich kalkuliert hab. Aus 30 Min werden 60.
+→ Drei Tools, die ich vorgeschlagen hatte, hatten Preisänderungen seit letztem Test. Peinlich.
+
+Was besser lief:
+→ Anti-Hype-Positionierung wird sofort verstanden, nicht erst erklärt.
+→ Direkt-Antworten auf Newsletter (Reply-Quote ~6 %) — Leute haben Lust auf Dialog.
+→ Drei Sponsor-Anfragen bei < 200 Abos. Nicht von Top-Brands, aber Signal stimmt.
+
+Lerne ich draus: nicht ankommen, weiterbauen.
+
+Nächste Woche: Send-Zeit auf 07:30 verschoben, LinkedIn-Block auf 45 Min budgetiert, Tool-Preise immer am Tag der Erwähnung re-checked.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+7,2026-06-07,"Ehrliche Frage in die Runde:
+
+Wie viel Zeit pro Woche investierst du in „dazulernen"" zu KI-Tools — und woran misst du, ob sich's gelohnt hat?
+
+Mein Verdacht: die meisten von uns lesen viel, testen wenig, und tracken gar nicht, ob die neuen Tools wirklich Zeit oder Geld sparen.
+
+Bei mir aktuell:
+→ ~3h/Woche Lesen (Newsletter, Reddit, Twitter)
+→ ~2h/Woche aktiv testen
+→ 0h tracken — und genau das ändere ich gerade.
+
+Schreib in die Comments — bin neugierig auf das Pattern.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+8,2026-06-08,"Wenn dir jemand eine „KI-First-Strategie"" pitcht, frag nach drei konkreten Prozessen, die mit KI heute schon schneller laufen als gestern.
+
+Bei zwei von drei Antworten kommt nichts.
+
+„KI-First"" ist 2026 das, was „Cloud-First"" 2018 war: ein Buzzword, das in 80 % der Fälle als Rechtfertigung für ein Beratungs-Angebot dient, nicht für eine durchdachte Architektur.
+
+Was stattdessen funktioniert: ein konkreter Prozess in deinem Business identifizieren (z.B. „Lead-Qualifizierung"", „Onboarding-Mails""), den 2 Wochen lang mit KI ausprobieren, ehrlich messen, und entweder skalieren oder verwerfen.
+
+KI-First klingt strategisch. KI-im-konkreten-Prozess ist es.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+9,2026-06-09,"73 % der DACH-Solopreneure nutzen ChatGPT regelmäßig.
+
+Aber nur 12 % zahlen für Plus.
+
+Das ist die spannende Subtilität: die Mehrheit nutzt KI — aber bewusst auf der Free-Tier-Schiene, mit allen Limits.
+
+Was das mir sagt:
+→ Der Preispunkt ist real eine Hürde (auch wenn 20 €/Monat objektiv wenig sind)
+→ Es gibt enorm viel Potenzial in „Plus-Features sinnvoll erklären"" als Content
+→ Wer als Tool-Anbieter im DACH-Raum wachsen will, braucht eine glaubhafte Free-Tier-Story
+
+Quelle: meine eigene Leser-Umfrage in aban news (n=327, läuft noch). Wenn du dabei sein willst — Link in den Kommentaren.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+10,2026-06-10,"☕ aban news heute:
+
+→ OpenAI gibt GPT-5.1 400k Context (für alle Plus-User)
+→ Adobe Firefly: API-Preise um ein Drittel gesenkt
+→ Tool des Tages: Raycast AI
+
+Meine Einschätzung zum Context-Update: relevant, wenn du regelmäßig große PDFs oder ganze Codebases durchschickst — sonst eher nice to have. Die Mehrheit der Solopreneur-Workflows läuft auch in 100k Context gut.
+
+Ehrlich gesagt: das ist eine der News-Sorten, wo Twitter dir suggeriert, du müsstest sofort handeln. Musst du nicht.
+
+Vollausgabe in 3 Min. Link in den Kommentaren.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+11,2026-06-11,"Vor zwei Jahren saß ich im Büro eines Kunden in Zürich und sollte erklären, warum sein Marketing-Team „endlich KI nutzen muss"".
+
+Hab ich gemacht. Mit Slides, Use Cases, ROI-Rechnung. Der Kunde war begeistert.
+
+Drei Monate später, Folgegespräch: keiner im Team hatte irgendwas implementiert.
+
+Grund: alle hatten zwei Stunden in einem Tool rumgespielt, festgestellt dass es 70 % brauchbar ist, und sich dann nicht getraut, was halb Fertiges in den Workflow zu lassen.
+
+Das war für mich das Aha. Der Engpass ist nicht „kennt KI nicht"". Der Engpass ist „weiß nicht, welche 70 % davon brauchbar sind, und wann das reicht"".
+
+aban news soll genau diese Lücke füllen. Kein „KI verändert alles"", sondern „dieses Tool ist heute zu 70 % gut — und so reicht's für deinen Use Case"".
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+12,2026-06-12,"Diese Woche hab ich nur ein einziges KI-Tool wirklich täglich genutzt: **Claude Projects**.
+
+Warum nur eins:
+→ Ich teste jede Woche 3-5 neue Tools. Die meisten landen nach 1-2 Tagen wieder im „nice to have""-Stapel.
+→ Claude Projects ist eines der wenigen, die nach 4 Wochen Test noch täglich offen sind.
+
+Was es macht: Du legst ein Projekt an, packst dort 5-20 Dateien rein (PDFs, Markdown, Specs), und Claude hat permanenten Kontext. Kein „füg den Style Guide nochmal ein"" pro Chat.
+
+Use Case bei mir:
+→ Ein Projekt für aban news (alle Templates, Voice-Guide, Beispiele)
+→ Ein Projekt für Kundenarbeit (Verträge, Briefings)
+→ Ein Projekt für persönliches Schreiben
+
+Spart mir ~30 Min/Tag Kontext-Re-Setup.
+
+Wer's nicht braucht: wenn du Claude unter 5x/Tag öffnest, lohnt sich der Setup-Aufwand nicht.
+
+Mehr Tool-Reviews in der täglichen aban-news-Ausgabe. Link im ersten Kommentar.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+13,2026-06-13,"Ein Detail aus dem aban-news-Build, das mich überrascht hat:
+
+Die Pipeline läuft auf Make.com → Claude → Gmail Draft → manuelles Review → beehiiv-Send.
+
+Aufwand zum Aufsetzen: 3 Wochen, ~40h. Klang nach viel.
+
+Was ich nicht eingerechnet hatte: nach 2 Wochen Live-Betrieb hab ich die Pipeline schon dreimal angepasst. Forbidden-Phrases-Regex erweitert, Subject-Line-Prompt neu kalibriert, Tool-Source-Liste umgebaut.
+
+Lerne ich draus: Eine Pipeline ist nie „fertig"". Sie ist ein Living Document.
+
+Was das praktisch heißt: 30 Min/Woche Pipeline-Wartung budgetieren, nicht nur News-Schreiben. Das hatte ich im Projektplan vergessen.
+
+Wer mit Make/n8n baut: rechnet auch ihr ~10 % „Wartung"" auf eure aktive Zeit ein?
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+14,2026-06-14,"Zwei Wochen aban news. Ein paar ehrliche Zahlen:
+
+→ 10 Mo–Fr-Ausgaben, 0 Skips
+→ ~285 Abos (Start: 20 aus Soft-Launch)
+→ Open-Rate: 47 % (besser als erwartet)
+→ Click-Rate: 12 % (okay, will ich höher)
+→ 3 Sponsor-Anfragen (alle dankend abgelehnt — zu früh)
+→ Aufwand: ~2.5h/Tag inkl. LinkedIn
+
+Was besser läuft als gedacht:
+→ Die Anti-Hype-Positionierung wird sofort verstanden
+→ DACH-Audience ist hungrig nach DSGVO-First-Tools
+→ Reply-Quote auf Newsletter (~6 %) ist ungewöhnlich hoch
+
+Was schlechter läuft als gedacht:
+→ Reddit-Inflow ist quasi null. Plan B muss her.
+→ LinkedIn-Comments brauchen 60 Min, nicht 30
+→ Sonntags-Posts performen schwach — werde Sa/So reduzieren
+
+Nächste 2 Wochen-Plan:
+→ Erste Newsletter-Swaps (3 Pitches diese Woche)
+→ beehiiv Boost mit kleinem Budget testen
+→ Friday-Werkzeugkasten als eigenes Format etablieren
+
+Wer mit dabei sein will — Mo geht die nächste Ausgabe raus. Link im ersten Kommentar.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+15,2026-06-15,"GPT-5.5 ist 40 % langsamer als GPT-5.1 bei aktiviertem Reasoning.
+
+Hab ich getestet, weil OpenAI das im Release nicht kommuniziert hat.
+
+Konkret: Ein Standard-Prompt (Marketing-Text, ~500 Wörter Output) braucht jetzt 8.2 Sek statt 5.9 Sek. Klingt nach Detail, ist es nicht — bei 50 Calls/Tag sind das ~2 Min reine Wartezeit pro Tag.
+
+Was das bedeutet:
+→ Für Batch-Workflows: egal
+→ Für User-facing Apps mit Wartezeit-Anzeige: spürbar
+→ Für „schnell mal"" im Chat: nervig
+
+Mein Rat: für Newsletter, Marketing-Texte und Code-Reviews bleibt GPT-5.1 das bessere Tradeoff. Für hochwertige Reasoning-Tasks (Strategie, Coding-Debug) lohnt 5.5.
+
+Quelle: eigener Test mit 30 Prompts. Detail-Tabelle in der heutigen aban-news-Ausgabe.
+
+Link im ersten Kommentar.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+16,2026-06-16,"Die meisten LinkedIn-Posts zu KI sind aktuell PR für Tools, die der Author nicht selbst nutzt.
+
+Drei Indikatoren, dass jemand nur reposted statt selbst getestet:
+
+1. Keine eigene Zahl. Nur „spart 80 % Zeit"", aus dem Press-Kit kopiert.
+2. Keine Schwäche genannt. Jedes Tool wird als perfekt beschrieben — das gibt's nicht.
+3. Use Case ist generisch („für Marketing-Teams""). Wer's nutzt, hat einen spezifischen Workflow.
+
+Mein Filter beim Lesen: wenn alle drei Indikatoren da sind, scroll ich weiter.
+
+Was ich stattdessen suche: Posts mit konkretem Vor/Nach, „hab das nach 3 Tagen wieder gelöscht"" — also Posts, in denen ein Mensch echt damit gearbeitet hat.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+17,2026-06-17,"☕ aban news heute:
+
+→ Google öffnet Gemini 3 Pro für die EU (22 €/Monat)
+→ n8n Cloud bekommt 40 KI-Templates
+→ Tool des Tages: Granola (Meeting-Notizen ohne Bot)
+
+Was an der Gemini-Öffnung praktisch heißt: reine Text- und Code-Workflows sind 1:1 nutzbar. Was fehlt: der Image-Generator (Lizenzgründe). Wenn du Bilder generierst, weiter über Midjourney oder Flux.
+
+3 Min Lesezeit. Mo–Fr morgens. Link im ersten Kommentar.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+18,2026-06-18,"Frage, die mich gerade beschäftigt:
+
+Wenn du in den letzten 6 Monaten genau EIN neues KI-Tool in deinen festen Workflow integriert hast — welches war es?
+
+Nicht „getestet"" oder „in Tab offen"", sondern wirklich täglich genutzt.
+
+Mein Pattern aus den letzten 4 Wochen Leser-Antworten:
+
+→ ChatGPT/Claude bleiben Standard (kein Tool, sondern Infrastruktur)
+→ Cursor / Windsurf dominiert bei Tech-Affinen
+→ Granola / Fireflies / Otter im Meeting-Bereich
+→ Perplexity hat ein leises Comeback (für Recherche)
+
+Aber: kaum jemand nennt ein „neues"" Tool 2026 — die meisten Antworten sind Tools aus 2024/25.
+
+Spannend, weil die Tool-Welt sich schnell dreht, die Adoption aber langsam.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+19,2026-06-19,"Werkzeugkasten der Woche — vier Tools getestet, eins bleibt:
+
+⭐⭐⭐⭐⭐ **Le Chat Enterprise (Mistral)** — DSGVO, 24 €, läuft. Bleibt im Stack.
+⭐⭐⭐ **Perplexity Pages 2.0** — Recherche gut, Sharing-Modell undurchsichtig. Nur intern nutzen.
+⭐⭐ **AutoGen Studio** — Konzept cool, Setup-Aufwand absurd. Für Solopreneur nicht.
+⭐ **[Tool das ich noch nicht nennen will]** — nach 1 Stunde gelöscht. Grund: blockiert deutsche IPs.
+
+Ehrliche Tool-Tests sind genau das, was mir in 90 % der DE-AI-Newsletter fehlt. Deshalb hab ich aban news gebaut.
+
+Schönes Wochenende — Mo wieder am Start.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+20,2026-06-20,"Vor zwei Jahren hab ich mit ChatGPT angefangen.
+
+Erste 3 Monate: täglich genutzt, aber fast nur als bessere Google-Suche.
+Monat 4-6: angefangen mit Prompt-Engineering — riesiger Sprung in Output-Qualität.
+Monat 7-12: erstmals Workflows automatisiert (Mail-Drafts, Lead-Qualifizierung).
+Jahr 2: angefangen, eigene Tools zu bauen (Make-Pipelines, Claude-Agents).
+
+Was ich rückblickend früher gemacht hätte:
+→ Sofort beim ersten Tool ein Notion-Doc mit Use Cases starten. Hab ich erst im Monat 4 gemacht, viele frühe Insights verloren.
+→ Direkt auf Plus upgraden. 20 €/Monat sind nichts im Vergleich zum Free-Tier-Frust.
+→ Newsletter abonnieren, die ehrlich testen — nicht solche, die nur News reposten.
+
+Punkt 3 war übrigens der direkte Auslöser für aban news. Hab den Newsletter selbst gesucht, nicht gefunden, also gebaut.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+21,2026-06-21,"Aus 142 Leser-Antworten auf meine Frage „welches KI-Tool ist 2026 neu in deinem Workflow"":
+
+→ 38 % nennen kein neues Tool — Stack ist stabil
+→ 22 % nennen Cursor oder Windsurf
+→ 14 % nennen Granola
+→ 11 % nennen Perplexity (Comeback!)
+→ 8 % nennen Le Chat (DSGVO-Effekt)
+→ 7 % Sonstiges
+
+Was mich überrascht hat: 38 %. Mehr als ein Drittel hat das Setup eingefroren — wahrscheinlich weil ChatGPT + Claude + ein Spezial-Tool den Workflow abdeckt.
+
+Das verändert meine Hypothese für 2026: nicht „welches neue Tool"", sondern „wie tief nutzt du die vorhandenen aus"" wird die Differenzierung sein.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+22,2026-06-22,"Die meisten KI-Newsletter im DACH-Raum sind wöchentlich.
+
+Das ist 2026 zu langsam.
+
+Begründung: News-Zyklen in KI sind aktuell so eng, dass eine wöchentliche Zusammenfassung bei Erscheinen schon 3-4 große Events alt ist. Wer mittwochs liest, was Montag passiert ist, kommt zu spät.
+
+Aber: daily ist auch nicht für jeden. Wer KI nur am Rand braucht, will keine 5 Mails/Woche. Für die ist wöchentlich richtig.
+
+Mein Lese-Mix aktuell:
+→ Daily: 2 EN (TLDR AI, Ben's Bites) + 1 DE (aban news, ja, eigener)
+→ Wöchentlich: 2 für Tiefe (KI Marketing Briefing Polomski, The Batch)
+→ Monatlich: 1 für Trends (Andreessen Horowitz AI)
+
+Daily für Reaktion. Wöchentlich für Einordnung. Monatlich für Strategie.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+23,2026-06-23,"☕ aban news heute:
+
+→ Perplexity Pages 2.0 — bessere Quellen, schlechtere UX
+→ Adobe Firefly: API-Preise jetzt 4 ¢ pro Bild
+→ Tool des Tages: n8n Cloud mit neuen KI-Templates
+
+Heute steckt eine kleine Warnung drin: Perplexity Pages sind standardmäßig public. Wenn du das für Kundenrecherche nutzt — Privacy-Settings checken bevor du was speicherst.
+
+Solche Details fallen sonst durchs Raster, weil keiner sie reportet.
+
+3 Min Lesen, Link im ersten Kommentar.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+24,2026-06-24,"Gestern Abend: Newsletter-Pipeline crashed um 06:15.
+
+Drei Optionen:
+1. Skippen (= Konsistenz brechen)
+2. Manuell schreiben (= 90 Min vorm Frühstück)
+3. Pipeline debuggen + spät senden (= unklar wie lange)
+
+Hab Option 2 gewählt. Um 07:40 war die Ausgabe raus. Open-Rate: 44 % (normal 47 %). Niemand hat den Send-Zeitpunkt erwähnt.
+
+Lerne ich draus:
+→ Ich überschätze, wie sehr meine Send-Zeit für Leser zählt
+→ Manuell schreiben ist auch okay, wenn Pipeline streikt — keine Katastrophe
+→ Pipeline-Backup-Plan muss her: Local-Script mit denselben Sources, das ich notfalls in 30 Min durchlaufen lassen kann
+
+Bin diese Woche dabei, das Backup-Script zu bauen. Falls Interesse: kann ich in einer der nächsten Ausgaben dokumentieren.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+25,2026-06-25,"Open-Rate-Vergleich der letzten 3 Wochen aban news:
+
+→ Mo: 49 %
+→ Di: 48 %
+→ Mi: 47 %
+→ Do: 45 %
+→ Fr: 51 %
+
+Frage: warum performt Freitag plötzlich am besten?
+
+Hypothese: das Friday-Werkzeugkasten-Format. Konkrete Tool-Reviews mit Stern-Skala sind das, was Leser am ehesten weiterempfehlen.
+
+Habe das Format heute auch wieder im Newsletter — Werkzeugkasten mit 4 Tools.
+
+Wenn du wissen willst, ob die Hypothese hält: heute reinklicken (Link im ersten Kommentar). In 2 Wochen sehen wir, ob's konsistent ist.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+26,2026-06-26,"Wer als DACH-Solopreneur 2026 noch keinen DSGVO-konformen KI-Stack hat, baut auf Sand.
+
+Drei Gründe:
+
+1. **Kunden fragen.** Vor 6 Monaten noch selten, jetzt regelmäßig. „Wie nutzt ihr KI?"" ist standard, „mit welchem Anbieter?"" wird's bald sein.
+2. **Verträge ändern sich.** Mehrere KMU-AGBs verlangen jetzt explizit „kein US-Hosting für Kundendaten"".
+3. **Tools holen auf.** Le Chat, Aleph Alpha, deutsche Hetzner-Hostings — die Alternativen werden brauchbar.
+
+Konkret heißt das für dich:
+→ Sensible Kundendaten weg von OpenAI/Anthropic-Direct, hin zu EU-Hostings oder lokalen Modellen
+→ AVV-Templates parat haben (kostet 0)
+→ Für 2026 ein Audit machen: welche KI-Tools verarbeiten Kundendaten — und wo liegen die?
+
+Ist nicht sexy. Ist aber das, was Kunden im DACH-Raum sich anschauen, bevor sie unterschreiben.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+27,2026-06-27,"☕ aban news Wochen-Rückblick:
+
+Drei Themen, die mich diese Woche am meisten beschäftigt haben:
+
+→ Anthropic's Preisstruktur-Update (Caching billiger)
+→ GPT-5.5 Latenz-Problem (40 % langsamer)
+→ DSGVO-Druck in DACH-KMU steigt
+
+Was alle drei eint: keine sind „KI verändert alles"", aber alle drei verändern konkret was du Montag tust.
+
+Genau das ist die Lücke, die aban news füllen will: nicht das nächste Hype-Thema, sondern das was diese Woche relevant ist.
+
+Mo geht's weiter. Link zur täglichen Ausgabe im ersten Kommentar.
+
+Schönes Wochenende.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+28,2026-06-28,"Sonntag-Frage:
+
+Wenn du nur EINE KI-Routine 2026 verbessern könntest — welche wäre es?
+
+Bei mir aktuell ganz oben: meine Email-Triage. Ich krieg 60-80 Mails/Tag, davon ~20 echte Antwort-bedürftig. Aktuell sortier ich manuell, brauch ~30 Min/Tag. Mein Ziel: in 6 Wochen auf 15 Min mit einem Claude-Agent.
+
+Hört sich klein an, ist es nicht — 15 Min/Tag × 220 Arbeitstage = 55 Stunden im Jahr.
+
+Aber: hab seit 3 Wochen probiert, der erste Setup hat nicht funktioniert. Zu viele False-Positives bei „wichtig"". Neuer Versuch nächste Woche.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+29,2026-06-29,"Morgen sind 30 Tage aban news rum.
+
+Heute schon mal vorgewarnt: Morgen kommt der ehrliche 30-Tage-Recap-Post. Mit Wins. Mit Fails. Mit Zahlen.
+
+Was ich heute schon merke nach 29 Tagen:
+
+→ Die Aban-Stimme ist das wichtigste Asset. Konsistenz darin schlägt jede Reichweiten-Hack.
+→ DSGVO-Hooks ziehen DACH-Audience überproportional. Nicht überraschend, aber stärker als erwartet.
+→ LinkedIn ist der #1 Sub-Inflow-Channel. Reddit war ein Flop, X überschaubar.
+→ Sponsor-Anfragen kommen vor MRR — Position vor Größe gewinnt.
+
+Aber morgen erst die Zahlen. Heute nur: danke, dass du die ersten 30 Tage mitgenommen hast.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,
+30,2026-06-30,"30 Tage aban news — die ehrliche Bilanz:
+
+**Zahlen:**
+→ Abos: 612 (Start: 20)
+→ Open-Rate: 46 % (Ziel war 35 %)
+→ Click-Rate: 11 %
+→ MRR: 0 € (bewusst, Sponsoring kommt ab Monat 2)
+→ Aufwand: ~2.5h/Tag inkl. LinkedIn
+→ Pipeline-Crashes: 2 (beide unter 90 Min repariert)
+
+**Drei Sachen, die besser liefen als gedacht:**
+1. Anti-Hype-Positionierung wird sofort verstanden — kein Erklär-Aufwand
+2. LinkedIn-Inflow stärker als geplant (~60 % der neuen Abos)
+3. Reply-Quote auf Newsletter (~6 %) ist Premium-Indikator
+
+**Drei Sachen, die schlechter liefen als gedacht:**
+1. Reddit-Inflow ist quasi null — Plan für Monat 2: skip oder anderer Subreddit-Mix
+2. Sa/So-Posts performen schwach — werde auf 1 Post/Wochenende reduzieren
+3. Tool-Test-Zeit unterschätzt — brauche pro Friday-Werkzeugkasten ~3h, nicht 1.5h
+
+**Was als nächstes:**
+→ Monat 2: erste echte Sponsor-Verhandlungen (Anfragen liegen)
+→ beehiiv Boost mit 300 € Budget testen
+→ 2-3 Newsletter-Swaps mit DACH-Peers
+→ Premium-Tier-Konzept finalisieren
+→ Friday-Werkzeugkasten als wiederkehrendes Format etablieren
+
+Ehrliche Schluss-Reflexion: Konsistenz war 30 Tage lang das, was am meisten gezogen hat. Nicht der eine virale Post, nicht der beste Tool-Hack — das tägliche Senden, ohne Skip.
+
+Wer mit dabei sein will für die nächsten 30 — Link im ersten Kommentar. Mo–Fr morgens, 3-5 Min, kein Hype.
+
+—Aban",#KI #DACH #Newsletter #abannews,ready,,

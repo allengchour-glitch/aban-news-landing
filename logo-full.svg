@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" role="img" aria-label="aban news">
+  <defs>
+    <linearGradient id="cupFull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <!-- Icon -->
+  <g transform="translate(0,0)">
+    <path d="M26 18 C 22 12, 30 10, 26 4" stroke="#d97706" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M38 18 C 42 12, 34 10, 38 4" stroke="#d97706" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M14 24 L14 44 Q14 54 24 54 L40 54 Q50 54 50 44 L50 24 Z" fill="url(#cupFull)"/>
+    <ellipse cx="32" cy="24" rx="18" ry="3" fill="#b45309"/>
+    <path d="M50 30 Q58 30 58 38 Q58 46 50 46" stroke="#d97706" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="80" y="42" font-family="Inter, -apple-system, sans-serif" font-size="32" font-weight="700" fill="#1f2937">aban</text>
+  <text x="160" y="42" font-family="Inter, -apple-system, sans-serif" font-size="32" font-weight="400" fill="#d97706">news</text>
+</svg>
