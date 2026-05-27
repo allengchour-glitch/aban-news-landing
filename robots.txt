@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /willkommen.html
 Disallow: /launch.html
+Disallow: /launch-manual.html
 Disallow: /launch-status.json
 
 # Block dass diese Pages indexed werden (intern: Sub-Confirmation + Launch-Checklist)
