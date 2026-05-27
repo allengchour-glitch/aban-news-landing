@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>aban news — Growth Dashboard (Build in Public)</title>
+<meta name="description" content="Live-Dashboard zum Wachstum von aban news. 0 zu 1.000 Subscribern in 90 Tagen — öffentlich.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.de/growth-dashboard.html">
+
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:#f8f9fa;
+  color:#1a1a1a;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.container{max-width:1140px;margin:0 auto;padding:24px 20px 60px}
+
+header{
+  border-bottom:1px solid #e2e5ea;
+  padding-bottom:20px;
+  margin-bottom:32px;
+}
+header h1{
+  font-size:28px;
+  font-weight:700;
+  margin:0 0 6px;
+  letter-spacing:-0.02em;
+}
+header p{
+  margin:0;
+  color:#5a6068;
+  font-size:14px;
+}
+header .last-updated{
+  display:inline-block;
+  margin-top:8px;
+  font-size:12px;
+  color:#7e8590;
+  padding:3px 10px;
+  background:#fff;
+  border:1px solid #e2e5ea;
+  border-radius:12px;
+}
+
+.disclaimer{
+  background:#fff8e1;
+  border:1px solid #ffd980;
+  border-left:4px solid #f9a825;
+  padding:12px 16px;
+  border-radius:6px;
+  margin-bottom:28px;
+  font-size:13px;
+  color:#5a4a00;
+}
+
+/* KPI Grid */
+.kpi-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+  gap:16px;
+  margin-bottom:36px;
+}
+.kpi-card{
+  background:#fff;
+  padding:20px 22px;
+  border-radius:8px;
+  border:1px solid #e2e5ea;
+  position:relative;
+  overflow:hidden;
+}
+.kpi-card .kpi-label{
+  font-size:12px;
+  color:#7e8590;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  margin-bottom:6px;
+}
+.kpi-card .kpi-value{
+  font-size:32px;
+  font-weight:700;
+  color:#1a1a1a;
+  letter-spacing:-0.02em;
+}
+.kpi-card .kpi-delta{
+  font-size:12px;
+  margin-top:6px;
+  font-weight:500;
+}
+.kpi-card .kpi-delta.positive{color:#16a34a}
+.kpi-card .kpi-delta.negative{color:#dc2626}
+.kpi-card .kpi-delta.neutral{color:#7e8590}
+
+/* Progress to 1000 */
+.progress-section{
+  background:#fff;
+  padding:28px 26px;
+  border-radius:8px;
+  border:1px solid #e2e5ea;
+  margin-bottom:32px;
+}
+.progress-section h2{
+  font-size:18px;
+  margin:0 0 16px;
+  font-weight:600;
+}
+.progress-bar-wrapper{
+  background:#e2e5ea;
+  border-radius:6px;
+  height:28px;
+  overflow:hidden;
+  position:relative;
+  margin-bottom:10px;
+}
+.progress-bar{
+  background:linear-gradient(90deg, #2563eb 0%, #4f46e5 100%);
+  height:100%;
+  border-radius:6px;
+  transition:width 0.6s ease-out;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding-right:10px;
+  color:#fff;
+  font-size:12px;
+  font-weight:600;
+}
+.progress-meta{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:#7e8590;
+}
+
+/* Funnel */
+.funnel-section,.chart-section{
+  background:#fff;
+  padding:24px 26px;
+  border-radius:8px;
+  border:1px solid #e2e5ea;
+  margin-bottom:32px;
+}
+.funnel-section h2,.chart-section h2{
+  font-size:18px;
+  margin:0 0 18px;
+  font-weight:600;
+}
+.funnel{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.funnel-row{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:10px 0;
+}
+.funnel-bar{
+  height:36px;
+  background:linear-gradient(90deg, #4f46e5, #818cf8);
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  padding-left:12px;
+  color:#fff;
+  font-size:13px;
+  font-weight:500;
+  min-width:60px;
+  transition:width 0.4s ease;
+}
+.funnel-row:nth-child(2) .funnel-bar{background:linear-gradient(90deg, #2563eb, #60a5fa)}
+.funnel-row:nth-child(3) .funnel-bar{background:linear-gradient(90deg, #16a34a, #4ade80)}
+.funnel-row:nth-child(4) .funnel-bar{background:linear-gradient(90deg, #059669, #34d399)}
+.funnel-label{
+  min-width:140px;
+  font-size:14px;
+  font-weight:500;
+  color:#1a1a1a;
+}
+.funnel-detail{
+  font-size:12px;
+  color:#7e8590;
+  min-width:110px;
+}
+
+/* Chart */
+.chart-container{
+  position:relative;
+  height:280px;
+  margin-top:14px;
+}
+canvas{max-width:100%}
+
+/* Pie chart legend */
+.pie-row{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:24px;
+  align-items:center;
+}
+.pie-row canvas{max-width:240px}
+.legend{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.legend-item{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  color:#1a1a1a;
+}
+.legend-swatch{
+  width:14px;
+  height:14px;
+  border-radius:3px;
+}
+.legend-pct{
+  margin-left:auto;
+  font-weight:600;
+  color:#7e8590;
+}
+
+/* Footer notes */
+.notes{
+  background:#fff;
+  padding:20px 24px;
+  border-radius:8px;
+  border:1px solid #e2e5ea;
+  font-size:13px;
+  color:#5a6068;
+  line-height:1.6;
+}
+.notes p{margin:0 0 10px}
+.notes p:last-child{margin-bottom:0}
+.notes a{color:#2563eb;text-decoration:underline}
+
+/* Mobile */
+@media (max-width:680px){
+  .container{padding:18px 14px 40px}
+  header h1{font-size:22px}
+  .kpi-card .kpi-value{font-size:24px}
+  .pie-row{grid-template-columns:1fr;text-align:center}
+  .pie-row canvas{margin:0 auto}
+  .legend{text-align:left}
+  .funnel-label{min-width:90px;font-size:12px}
+  .funnel-detail{min-width:auto;font-size:11px}
+  .funnel-bar{font-size:11px;height:30px}
+  .chart-container{height:220px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>aban news — Growth Dashboard</h1>
+    <p>0 zu 1.000 Subscribern in 90 Tagen. Öffentlich, transparent, build in public.</p>
+    <span class="last-updated" id="lastUpdated">Letztes Update: lädt …</span>
+  </header>
+
+  <div class="disclaimer">
+    <strong>Hinweis:</strong> Dieses Dashboard zeigt aggregierte Daten. Keine personenbezogenen Daten (PII), kein Tracking-Cookie. Daten kommen aus Plausible Analytics (cookieless) + manuell gepflegtem Stand. Updates 1–2× pro Woche.
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Aktuelle Subscriber</div>
+      <div class="kpi-value" id="currentSubs">—</div>
+      <div class="kpi-delta positive" id="subsDelta">+0 diese Woche</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Ziel</div>
+      <div class="kpi-value">1.000</div>
+      <div class="kpi-delta neutral" id="goalDaysLeft">— Tage</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Daily Growth (7d Schnitt)</div>
+      <div class="kpi-value" id="dailyGrowth">—</div>
+      <div class="kpi-delta neutral">Subs / Tag</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Conversion-Rate</div>
+      <div class="kpi-value" id="conversionRate">—%</div>
+      <div class="kpi-delta neutral" id="benchmark">Plausible-Daten</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Open-Rate (letzte 7d)</div>
+      <div class="kpi-value" id="openRate">—%</div>
+      <div class="kpi-delta positive" id="openBenchmark">vs. Median 21%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Top Source</div>
+      <div class="kpi-value" id="topSource" style="font-size:22px;">—</div>
+      <div class="kpi-delta neutral" id="topSourcePct">— %</div>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-section">
+    <h2>Fortschritt zum 1.000-Sub-Ziel</h2>
+    <div class="progress-bar-wrapper">
+      <div class="progress-bar" id="progressBar" style="width:0%">
+        <span id="progressLabel">0%</span>
+      </div>
+    </div>
+    <div class="progress-meta">
+      <span id="progressStart">Tag 1</span>
+      <span id="progressNow">Heute: —</span>
+      <span id="progressEnd">Tag 90 / Ziel 1.000</span>
+    </div>
+  </div>
+
+  <!-- Funnel -->
+  <div class="funnel-section">
+    <h2>Conversion-Funnel (Aktueller Monat)</h2>
+    <div class="funnel" id="funnel">
+      <!-- generiert via JS -->
+    </div>
+  </div>
+
+  <!-- 7-Day Chart -->
+  <div class="chart-section">
+    <h2>7-Tage-Wachstum</h2>
+    <div class="chart-container">
+      <canvas id="growthChart" width="900" height="280"></canvas>
+    </div>
+  </div>
+
+  <!-- Channel Mix -->
+  <div class="chart-section">
+    <h2>Channel-Mix der Subscriber</h2>
+    <div class="pie-row">
+      <canvas id="pieChart" width="240" height="240"></canvas>
+      <div class="legend" id="pieLegend"></div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <p><strong>Wie das Dashboard funktioniert:</strong> Aggregierte Daten aus Plausible Analytics + manuell gepflegtem Sub-Stand. Aktualisierung wöchentlich montags. Quellen nachvollziehbar — falls dir Zahlen komisch vorkommen: <a href="mailto:allen@abannews.de">allen@abannews.de</a>.</p>
+    <p><strong>Was hier NICHT steht:</strong> Persönliche Mail-Adressen, individuelle User-Daten, Open-Rates einzelner Empfänger. Alles nur in Aggregaten.</p>
+    <p><strong>Build in Public:</strong> Wöchentliche Lessons + Channel-Insights gibts im <a href="/">Newsletter</a> jeden Sonntag.</p>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  // -------------------------------------------------------------------
+  // DATA — Hier manuell pflegen (oder via JSON-Fetch von Endpoint)
+  // -------------------------------------------------------------------
+  var data = {
+    lastUpdated: '2026-05-27',
+    startDate: '2026-05-01',
+    targetDate: '2026-07-29',
+    targetSubs: 1000,
+    currentSubs: 67,
+    subsLastWeek: 38,
+    subsDelta7d: 29,
+    dailyGrowth: 4.1,
+    conversionRate: 3.2,
+    openRate: 48,
+    topSource: 'LinkedIn',
+    topSourcePct: 34,
+
+    funnel: [
+      { label: 'Visitors',         value: 2080, pct: 100, hint: 'Page-Views (Plausible)' },
+      { label: 'Signups',          value: 92,   pct: 4.4, hint: 'Form-Submits' },
+      { label: 'Confirmed',        value: 67,   pct: 3.2, hint: 'DOI bestätigt' },
+      { label: 'Active (7d open)', value: 51,   pct: 2.5, hint: 'Mail in 7d geöffnet' }
+    ],
+
+    growthLast7Days: [
+      { day: 'Di',  subs: 41 },
+      { day: 'Mi',  subs: 46 },
+      { day: 'Do',  subs: 51 },
+      { day: 'Fr',  subs: 55 },
+      { day: 'Sa',  subs: 58 },
+      { day: 'So',  subs: 62 },
+      { day: 'Mo',  subs: 67 }
+    ],
+
+    channelMix: [
+      { name: 'LinkedIn',         pct: 34, color: '#2563eb' },
+      { name: 'Direct',           pct: 22, color: '#4f46e5' },
+      { name: 'Newsletter-Swap',  pct: 16, color: '#16a34a' },
+      { name: 'Reddit',           pct: 12, color: '#f97316' },
+      { name: 'Twitter/X',        pct:  8, color: '#0ea5e9' },
+      { name: 'Google Organic',   pct:  5, color: '#7c3aed' },
+      { name: 'Sonstiges',        pct:  3, color: '#64748b' }
+    ]
+  };
+
+  // -------------------------------------------------------------------
+  // RENDER
+  // -------------------------------------------------------------------
+
+  function fmt(n){
+    return n.toLocaleString('de-DE');
+  }
+
+  function daysBetween(from, to){
+    return Math.round((new Date(to) - new Date(from)) / 86400000);
+  }
+
+  function renderKPIs(){
+    document.getElementById('currentSubs').textContent = fmt(data.currentSubs);
+    document.getElementById('subsDelta').textContent = (data.subsDelta7d >= 0 ? '+' : '') + data.subsDelta7d + ' diese Woche';
+    document.getElementById('dailyGrowth').textContent = data.dailyGrowth.toFixed(1);
+
+    var daysLeft = daysBetween(new Date(), data.targetDate);
+    document.getElementById('goalDaysLeft').textContent = daysLeft + ' Tage übrig';
+
+    document.getElementById('conversionRate').textContent = data.conversionRate.toFixed(1) + '%';
+    document.getElementById('openRate').textContent = data.openRate + '%';
+
+    var openDelta = data.openRate - 21;
+    var openEl = document.getElementById('openBenchmark');
+    openEl.textContent = (openDelta >= 0 ? '+' : '') + openDelta + ' vs. Median 21%';
+    openEl.className = 'kpi-delta ' + (openDelta >= 0 ? 'positive' : 'negative');
+
+    document.getElementById('topSource').textContent = data.topSource;
+    document.getElementById('topSourcePct').textContent = data.topSourcePct + '% aller Subs';
+
+    document.getElementById('lastUpdated').textContent = 'Letztes Update: ' + data.lastUpdated;
+  }
+
+  function renderProgress(){
+    var pct = Math.min(100, (data.currentSubs / data.targetSubs) * 100);
+    var bar = document.getElementById('progressBar');
+    setTimeout(function(){ bar.style.width = pct.toFixed(1) + '%'; }, 100);
+    document.getElementById('progressLabel').textContent = pct.toFixed(1) + '%';
+
+    document.getElementById('progressStart').textContent = 'Start: ' + data.startDate;
+    document.getElementById('progressNow').textContent = 'Heute: ' + fmt(data.currentSubs) + ' Subs';
+    document.getElementById('progressEnd').textContent = 'Ziel: ' + fmt(data.targetSubs) + ' bis ' + data.targetDate;
+  }
+
+  function renderFunnel(){
+    var container = document.getElementById('funnel');
+    var max = data.funnel[0].value;
+    var html = '';
+    data.funnel.forEach(function(row){
+      var w = (row.value / max) * 100;
+      html += '<div class="funnel-row">';
+      html += '<div class="funnel-label">' + row.label + '</div>';
+      html += '<div class="funnel-bar" style="width:' + w + '%">';
+      html += fmt(row.value);
+      html += '</div>';
+      html += '<div class="funnel-detail">' + row.pct.toFixed(1) + '% · ' + row.hint + '</div>';
+      html += '</div>';
+    });
+    container.innerHTML = html;
+  }
+
+  function renderGrowthChart(){
+    var canvas = document.getElementById('growthChart');
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var pad = { top: 20, right: 30, bottom: 36, left: 50 };
+
+    ctx.clearRect(0,0,W,H);
+
+    var max = Math.max.apply(null, data.growthLast7Days.map(function(d){ return d.subs; }));
+    max = Math.ceil(max / 10) * 10;
+    var min = Math.floor(Math.min.apply(null, data.growthLast7Days.map(function(d){ return d.subs; })) / 10) * 10;
+    var range = max - min || 10;
+
+    var chartW = W - pad.left - pad.right;
+    var chartH = H - pad.top - pad.bottom;
+    var stepX = chartW / (data.growthLast7Days.length - 1);
+
+    // Y axis grid
+    ctx.strokeStyle = '#e2e5ea';
+    ctx.lineWidth = 1;
+    ctx.font = '11px Inter, sans-serif';
+    ctx.fillStyle = '#7e8590';
+    for (var i=0; i<=4; i++){
+      var y = pad.top + (chartH / 4) * i;
+      ctx.beginPath();
+      ctx.moveTo(pad.left, y);
+      ctx.lineTo(W - pad.right, y);
+      ctx.stroke();
+      var val = Math.round(max - (range/4)*i);
+      ctx.fillText(val, 10, y + 4);
+    }
+
+    // X labels
+    data.growthLast7Days.forEach(function(d, i){
+      var x = pad.left + i * stepX;
+      ctx.fillStyle = '#7e8590';
+      ctx.font = '11px Inter, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(d.day, x, H - 12);
+    });
+
+    // Line
+    ctx.strokeStyle = '#2563eb';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    data.growthLast7Days.forEach(function(d, i){
+      var x = pad.left + i * stepX;
+      var y = pad.top + chartH - ((d.subs - min) / range) * chartH;
+      if (i === 0) ctx.moveTo(x,y);
+      else ctx.lineTo(x,y);
+    });
+    ctx.stroke();
+
+    // Fill area
+    ctx.fillStyle = 'rgba(37, 99, 235, 0.08)';
+    ctx.beginPath();
+    data.growthLast7Days.forEach(function(d, i){
+      var x = pad.left + i * stepX;
+      var y = pad.top + chartH - ((d.subs - min) / range) * chartH;
+      if (i === 0) ctx.moveTo(x, pad.top + chartH);
+      ctx.lineTo(x, y);
+    });
+    ctx.lineTo(pad.left + (data.growthLast7Days.length-1) * stepX, pad.top + chartH);
+    ctx.closePath();
+    ctx.fill();
+
+    // Dots + values
+    ctx.fillStyle = '#2563eb';
+    data.growthLast7Days.forEach(function(d, i){
+      var x = pad.left + i * stepX;
+      var y = pad.top + chartH - ((d.subs - min) / range) * chartH;
+      ctx.beginPath();
+      ctx.arc(x, y, 4, 0, Math.PI*2);
+      ctx.fill();
+      ctx.fillStyle = '#1a1a1a';
+      ctx.font = 'bold 11px Inter';
+      ctx.textAlign = 'center';
+      ctx.fillText(d.subs, x, y - 10);
+      ctx.fillStyle = '#2563eb';
+    });
+  }
+
+  function renderPieChart(){
+    var canvas = document.getElementById('pieChart');
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var cx = W/2, cy = H/2, r = Math.min(W,H)/2 - 8;
+
+    ctx.clearRect(0,0,W,H);
+
+    var startAngle = -Math.PI/2;
+    data.channelMix.forEach(function(seg){
+      var angle = (seg.pct / 100) * Math.PI * 2;
+      ctx.fillStyle = seg.color;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, r, startAngle, startAngle + angle);
+      ctx.closePath();
+      ctx.fill();
+      startAngle += angle;
+    });
+
+    // Donut hole
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.arc(cx, cy, r * 0.55, 0, Math.PI*2);
+    ctx.fill();
+
+    // Total in center
+    ctx.fillStyle = '#1a1a1a';
+    ctx.textAlign = 'center';
+    ctx.font = 'bold 22px Inter';
+    ctx.fillText(fmt(data.currentSubs), cx, cy);
+    ctx.font = '11px Inter';
+    ctx.fillStyle = '#7e8590';
+    ctx.fillText('Total Subs', cx, cy + 16);
+
+    // Legend
+    var legend = document.getElementById('pieLegend');
+    var html = '';
+    data.channelMix.forEach(function(seg){
+      html += '<div class="legend-item">';
+      html += '<span class="legend-swatch" style="background:' + seg.color + '"></span>';
+      html += '<span>' + seg.name + '</span>';
+      html += '<span class="legend-pct">' + seg.pct + '%</span>';
+      html += '</div>';
+    });
+    legend.innerHTML = html;
+  }
+
+  function init(){
+    renderKPIs();
+    renderProgress();
+    renderFunnel();
+    renderGrowthChart();
+    renderPieChart();
+  }
+
+  // Optional: Fetch live JSON if endpoint exists
+  // Otherwise: data above is manually maintained
+  // Uncomment when endpoint live:
+  // fetch('/api/growth-stats.json')
+  //   .then(r => r.ok ? r.json() : null)
+  //   .then(d => { if (d) { Object.assign(data, d); init(); } })
+  //   .catch(() => init());
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Re-render on resize (for canvases)
+  var resizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function(){
+      renderGrowthChart();
+      renderPieChart();
+    }, 200);
+  });
+})();
+</script>
+</body>
+</html>
