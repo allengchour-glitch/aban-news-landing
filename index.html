@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aban news — Täglicher AI-Newsletter für DACH (Mo–Fr, 3-5 Min, kein Hype)</title>
+  <meta name="description" content="Der erste tägliche deutschsprachige AI-Newsletter. Mo–Fr morgens 3-5 Min: KI-News, Tool des Tages, sofort umsetzbarer Prompt. Persönlich kuratiert, kein Marketing-Sprech. DSGVO-konform.">
+  <meta name="theme-color" content="#d97706">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://abannews.de/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="aban news — Täglicher AI-Newsletter für DACH">
+  <meta property="og:description" content="Mo–Fr morgens 3-5 Min: KI-News, Tool des Tages, sofort umsetzbarer Prompt. Kein Hype, persönlich kuratiert.">
+  <meta property="og:image" content="https://abannews.de/og-image.png">
+  <meta property="og:url" content="https://abannews.de/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="aban news">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="aban news — Täglicher AI-Newsletter für DACH">
+  <meta name="twitter:description" content="Mo–Fr morgens 3-5 Min: KI-News, Tool des Tages, ein Prompt. Kein Hype.">
+  <meta name="twitter:image" content="https://abannews.de/og-image.png">
+
+  <!-- Favicon (☕ als SVG-data-uri — keine externe Anfrage, kein extra Request) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
+
+  <!-- Preload critical CSS asynchron — no-blocking -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Strukturierte Daten (Schema.org Newsletter) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "aban news",
+    "url": "https://abannews.de/",
+    "description": "Der erste tägliche deutschsprachige AI-Newsletter für DACH-Solopreneure und Marketer.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Aban (Allen Chour)",
+      "url": "https://abannews.de/"
+    },
+    "potentialAction": {
+      "@type": "SubscribeAction",
+      "target": "https://abannews.de/#signup"
+    },
+    "inLanguage": "de-DE"
+  }
+  </script>
+</head>
+<body>
+
+<a href="#main" class="skip">Zum Hauptinhalt springen</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="/" class="brand" aria-label="aban news Startseite">
+      <span aria-hidden="true">☕</span>
+      <span>aban news</span>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="/sponsoring.html">Werbung</a>
+      <a href="/founding.html">Premium</a>
+      <a href="#signup" class="nav-cta">Abonnieren</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================================
+       HERO — Pattern adopted: Identity-Count + Benefit+Time-Headline + Form-Above-Fold + Trust-Strip
+       ============================================ -->
+  <section class="hero">
+    <div class="wrap">
+
+      <!-- TODO: Sub-count einsetzen sobald >100 Subs. Bis dahin: weglassen ODER "Privat-Beta" zeigen. -->
+      <span class="identity-count" aria-label="Status">
+        <span class="dot" aria-hidden="true"></span>
+        <span><strong>Mo–Fr neu</strong> · in der Schweiz geschrieben, im DACH-Raum gelesen</span>
+      </span>
+
+      <h1>Der erste tägliche deutsche AI-Newsletter — 3-5 Min, kein Hype.</h1>
+
+      <p class="lead">
+        Mo–Fr morgens. Drei bis fünf KI-News, ein Tool das ich selbst getestet hab, ein Prompt zum sofortigen Ausprobieren. Persönlich kuratiert für Selbstständige, Marketer und alle, die KI im Arbeitsalltag tatsächlich nutzen.
+      </p>
+
+      <ul class="promise" role="list">
+        <li>3-5 News mit eigener Einschätzung</li>
+        <li>Ein Tool des Tages</li>
+        <li>Ein kopierbarer Prompt</li>
+        <li>3-5 Min Lesezeit</li>
+      </ul>
+
+      <!-- Subscribe Form: single Email-Field, Hero above fold -->
+      <form
+        class="subscribe"
+        id="signup"
+        action="[BEEHIIV_FORM_ACTION]"
+        method="post"
+        novalidate
+      >
+        <label for="hero-email" class="visually-hidden" style="position:absolute;left:-9999px;">E-Mail-Adresse</label>
+        <div class="subscribe-row">
+          <input
+            type="email"
+            id="hero-email"
+            name="email"
+            placeholder="deine@mail.de"
+            required
+            autocomplete="email"
+            inputmode="email"
+            aria-label="E-Mail-Adresse"
+          >
+          <button type="submit">
+            <span>Kostenlos abonnieren</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <div class="consent-row">
+          <input type="checkbox" id="hero-consent" name="consent" value="1" required>
+          <label for="hero-consent">
+            Ich willige ein, Mo–Fr eine E-Mail von aban news zu erhalten. Abmeldung jederzeit per Klick. Details in der <a href="/datenschutz.html">Datenschutzerklärung</a>.
+          </label>
+        </div>
+        <ul class="trust" aria-label="Vertrauen">
+          <li>DSGVO-konform</li>
+          <li>1-Klick-Abmeldung</li>
+          <li>kein Spam, nie</li>
+          <li>kein Tracking-Pixel</li>
+        </ul>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       SAMPLE-ISSUE PREVIEW — Pattern adopted: echter Excerpt, Email-Header, Sign-Off
+       Steal-Pattern: "Show, don't tell" (Not Boring, The Bagel)
+       ============================================ -->
+  <section class="alt">
+    <div class="wrap">
+      <h2>So sieht ein Mittwoch aus</h2>
+      <p class="muted">Echter Auszug aus der Probe-Ausgabe vom 2026-05-27 — gekürzt für die Web-Vorschau.</p>
+
+      <article class="preview" aria-label="Beispiel-Newsletter-Ausgabe">
+        <div class="preview-meta">
+          <strong>Von:</strong> Aban &lt;hallo@abannews.de&gt;<br>
+          <strong>An:</strong> dich@beispiel.de<br>
+          <strong>Betreff:</strong> ☕ China zieht den Vorhang zu, DeepSeek dreht am Preis
+        </div>
+
+        <p><strong>Mittwoch, halb durch.</strong> Heute drei News, die mich tatsächlich was angehen — der Rest aus den Feeds ist Branchen-Geplauder, das ich für dich aussortiert hab. Schwerpunkt: Preise, Privacy, und ein DACH-Tool, das ich diese Woche selbst antesten werd.</p>
+
+        <h4>📰 Was heute zählt</h4>
+
+        <p><strong>DeepSeek viertelt die Preise für V4-Pro (2 Min)</strong></p>
+        <p>Das chinesische Startup hat sein Top-Modell V4-Pro dauerhaft auf 25 % des bisherigen Preises gesenkt. Möglich macht das laut Trending Topics der Wechsel von Nvidia-GPUs auf Huawei Ascend 950 in der Inference-Infrastruktur — kein Sale, sondern strukturell.</p>
+        <p><strong>Für dich heißt das:</strong> Wenn du für Bulk-Tasks (Klassifizierung, Summary-Pipelines) einen Anbieter neben OpenAI/Anthropic hast, lohnt sich ein A/B-Test diese Woche. Bei meiner eigenen Newsletter-Pipeline rechne ich nach Caching mit Anthropic immer noch günstiger, aber für Pre-Processing könnte DeepSeek interessant werden.</p>
+
+        <h4>🛠 Tool des Tages</h4>
+
+        <p><strong>eustella</strong> — Open Beta gratis, Pro-Tier 14 €/Monat</p>
+        <p>Ein AI-Companion aus Wien — EU-Hosting, DSGVO-nativ, kein US-Datentransfer. Kann jetzt auch Bilder (via FLUX.2) und läuft auf Browser, Android, iPhone synchron. Ich nutz das diese Woche parallel zu Claude und vergleich Output-Qualität auf deutschsprachige Tasks.</p>
+        <p><em>Wer's nicht braucht:</em> wenn du eh schon Claude oder ChatGPT zahlst und das Daten-Thema dich nicht juckt — kein Killer-Feature, das dich migrieren muss.</p>
+
+        <h4>💡 Heute ausprobieren</h4>
+
+        <p>Wenn du Cold-Outreach machst, häng diesen Mini-Prompt an deinen Standard-Email-Workflow:</p>
+        <pre><code>Hier ist ein Cold-Outreach-Mail-Entwurf von mir an [Empfänger].
+Mach NICHT die typische KI-Politur. Stattdessen:
+
+1. Lies den Text und finde die EINE Stelle, die generisch klingt.
+2. Schreib NUR diese eine Stelle um — so wie ich es im echten
+   Gespräch sagen würde.
+3. Lass den Rest in Ruhe.
+
+Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
+        <p>Anders als "verbessere meine Mail" — weil's nach EINER chirurgischen Stelle fragt statt nach Komplett-Rewrite, der die Mail wieder generisch macht.</p>
+
+        <p class="signoff">— Aban</p>
+      </article>
+
+      <div class="center mt-5">
+        <a href="#signup" class="btn btn--lg">Erste echte Ausgabe per Mail holen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOUNDER STORY — Pattern adopted: Photo + Origin-Story (Polomski/Welsh)
+       Anti-faceless für DACH-Markt
+       ============================================ -->
+  <section>
+    <div class="wrap">
+      <h2>Warum es aban news gibt</h2>
+
+      <div class="founder">
+        <!-- TODO: Headshot einsetzen — <img src="/assets/aban.jpg" alt="Foto von Aban" width="96" height="96"> -->
+        <div class="founder-photo" role="img" aria-label="Platzhalter für Aban's Foto">☕</div>
+        <div class="founder-text">
+          <p>
+            <span class="name">Ich bin Aban</span> — Solopreneur in der Schweiz. Seit drei Jahren nutze ich KI-Tools täglich für Texte, Recherche und Automation. Was mich genervt hat: jeden Morgen durch zwölf Newsletter, LinkedIn-Posts und Reddit-Threads scrollen, um die wenigen wirklich relevanten Updates zu finden.
+          </p>
+          <p>
+            Die meisten deutschen AI-Newsletter sind <strong>wöchentlich</strong> (zu langsam) oder voll mit <strong>Marketing-Sprech</strong> (zu Hype). Englische Daily-Newsletter wie TLDR AI gibt's — aber Übersetzungs-Friction plus US-Tool-Fokus.
+          </p>
+          <p>
+            Also baue ich aban news. Daily, deutschsprachig, persönlich kuratiert. Wie ein schlauer Kumpel beim Kaffee — der dir sagt was läuft, aber auch sagt wenn ein Tool nichts taugt.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       ANTI-HYPE MANIFEST — Pattern bewusst NEU (kein Konkurrent macht das)
+       USP-Differentiator: zeigt was wir NICHT machen
+       ============================================ -->
+  <section class="alt">
+    <div class="wrap">
+      <h2>Was du hier nicht findest</h2>
+      <p class="muted">In jedem deutschen AI-Newsletter sind die folgenden Wörter Standard. Bei uns stehen sie auf der Verbots-Liste. Wenn ich sie schreibe, regenerier ich die Ausgabe.</p>
+
+      <ul class="anti" role="list">
+        <li><span><strong>"Revolutionär"</strong>, <strong>"bahnbrechend"</strong>, <strong>"Game Changer"</strong> — Hype-Wörter, die nichts erklären.</span></li>
+        <li><span><strong>"Quantensprung"</strong>, <strong>"disruptiv"</strong>, <strong>"Meilenstein"</strong> — PR-Floskeln aus dem Marketing-Wörterbuch.</span></li>
+        <li><span><strong>"Hallo zusammen"</strong>, <strong>"Liebe Community"</strong> — Massenanrede, die so tut als wären wir keine Newsletter-Mail.</span></li>
+        <li><span><strong>Siezen</strong> — wir duzen. Du bist hier, weil dich KI im Alltag interessiert, nicht weil du gegoogelt hast was ChatGPT ist.</span></li>
+        <li><span><strong>"Tauche ein in die Welt der KI"</strong> — niemand taucht in eine Welt ein, vor allem nicht morgens vor dem Kaffee.</span></li>
+        <li><span><strong>Tools, die ich nicht selbst getestet habe</strong> — keine PR-Pressemitteilungen abgeschrieben.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PROMISES / STANDARDS — bestehend, leicht refined
+       ============================================ -->
+  <section>
+    <div class="wrap">
+      <h2>Was du dafür bekommst</h2>
+      <div class="grid grid--2">
+        <div class="card card--feature">
+          <h3>Maximal 1 Werbung pro Ausgabe</h3>
+          <p>Damit der Lesefluss bleibt und du keine Banner-Müllhalde abonniert hast.</p>
+        </div>
+        <div class="card card--feature">
+          <h3>Alle Quellen verlinkt</h3>
+          <p>Jede Behauptung kommt mit Link auf die Originalquelle. Vertrauen statt blindem Glauben.</p>
+        </div>
+        <div class="card card--feature">
+          <h3>DSGVO-konform</h3>
+          <p>Schweizer Einzelunternehmen, EU-konforme Pipeline. AVV verfügbar — für Team-Bezüge in DACH-Firmen.</p>
+        </div>
+        <div class="card card--feature">
+          <h3>Persönlich geschrieben</h3>
+          <p>Von Aban — nicht von "wir bei aban news". Wenn du antwortest, antworte ich zurück.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECONDARY SUBSCRIBE — Mid-page form (Pattern: 77% der Top-Sites haben mid-page repeat)
+       ============================================ -->
+  <section class="alt">
+    <div class="wrap wrap--narrow">
+      <h2 class="center">Kostenlos abonnieren</h2>
+      <p class="center muted">Mo–Fr morgens. Abmeldung jederzeit per Klick. Nie Spam.</p>
+
+      <form
+        class="subscribe"
+        action="[BEEHIIV_FORM_ACTION]"
+        method="post"
+        novalidate
+        aria-label="Newsletter-Anmeldung Mitte"
+      >
+        <div class="subscribe-row">
+          <input
+            type="email"
+            id="mid-email"
+            name="email"
+            placeholder="deine@mail.de"
+            required
+            autocomplete="email"
+            inputmode="email"
+            aria-label="E-Mail-Adresse"
+          >
+          <button type="submit">
+            <span>Abonnieren</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <div class="consent-row">
+          <input type="checkbox" id="mid-consent" name="consent" value="1" required>
+          <label for="mid-consent">
+            Einwilligung in den Newsletter-Versand. Mehr in der <a href="/datenschutz.html">Datenschutzerklärung</a>.
+          </label>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CROSS-SELL — Founding + Sponsoring (subtil)
+       ============================================ -->
+  <section>
+    <div class="wrap">
+      <div class="grid grid--2">
+        <div class="card">
+          <h3>Willst du mehr?</h3>
+          <p>Werde <a href="/founding.html"><strong>Founding Member</strong></a> — €149 einmalig, lebenslang Premium. Cap: 100 Plätze.</p>
+          <p><a href="/founding.html">→ Mehr erfahren</a></p>
+        </div>
+        <div class="card">
+          <h3>Tool oder Marke vorstellen?</h3>
+          <p>Wir nehmen <a href="/sponsoring.html"><strong>maximal 1 Anzeige pro Ausgabe</strong></a>. Hier sind Format, Preise, Booking.</p>
+          <p><a href="/sponsoring.html">→ Rate-Card ansehen</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================
+     STICKY MOBILE CTA — Pattern adopted (50% der 2026-Top-Sites)
+     ============================================ -->
+<div class="mobile-cta" aria-hidden="true">
+  <a href="#signup" class="btn">☕ Kostenlos abonnieren</a>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>aban news</h5>
+        <a href="/">Startseite</a>
+        <a href="/founding.html">Founding Member</a>
+        <a href="/sponsoring.html">Werbung schalten</a>
+        <a href="/werbung.html">Werbe-Policy</a>
+      </div>
+      <div>
+        <h5>Rechtliches</h5>
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+      </div>
+      <div>
+        <h5>Kontakt</h5>
+        <a href="mailto:hallo@abannews.de">hallo@abannews.de</a>
+        <a href="mailto:sponsoring@abannews.de">sponsoring@abannews.de</a>
+        <a href="mailto:datenschutz@abannews.de">datenschutz@abannews.de</a>
+      </div>
+    </div>
+    <p class="foot-bottom">
+      &copy; 2026 aban news · Geschrieben in der Schweiz, gelesen im DACH-Raum · <em>— Aban</em>
+    </p>
+  </div>
+</footer>
+
+<!-- Minimal inline JS: Sticky-CTA on/off body class (no tracking, no fetch) -->
+<script>
+  (function () {
+    var stickyEl = document.querySelector('.mobile-cta');
+    var heroForm = document.getElementById('signup');
+    if (!stickyEl || !heroForm) return;
+    document.body.classList.add('mobile-cta-on');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          stickyEl.style.display = entry.isIntersecting ? 'none' : '';
+        });
+      }, { threshold: 0.1 });
+      io.observe(heroForm);
+    }
+  })();
+</script>
+
+</body>
+</html>
