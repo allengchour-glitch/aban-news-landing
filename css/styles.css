@@ -1662,3 +1662,254 @@ body {
   .compare-table td { padding: var(--space-2); }
 }
 
+
+/* ============================================================
+   MAXIMALIST SPRINT — Footer-Mega, Related-Pages, Breadcrumb,
+   Tool-Mockups, Stylized Founder, Illustrations
+   ============================================================ */
+
+/* === Breadcrumb (top of inner pages) === */
+.breadcrumb {
+  font-size: 0.8125rem;
+  color: var(--c-muted);
+  padding: var(--space-3) 0 0;
+  max-width: var(--w-wide);
+  margin: 0 auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+.breadcrumb a {
+  color: var(--c-muted);
+  text-decoration: none;
+}
+.breadcrumb a:hover { color: var(--c-accent); text-decoration: underline; }
+.breadcrumb span[aria-current="page"] {
+  color: var(--c-text);
+  font-weight: 600;
+}
+.breadcrumb > span[aria-hidden="true"] {
+  margin: 0 var(--space-2);
+  color: var(--c-border);
+}
+
+/* === Footer Mega Menu === */
+.footer-mega {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+  margin-bottom: var(--space-5);
+}
+@media (min-width: 640px) {
+  .footer-mega { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 880px) {
+  .footer-mega { grid-template-columns: repeat(4, 1fr); }
+}
+.footer-mega > div {
+  display: flex;
+  flex-direction: column;
+}
+.footer-mega strong {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--c-text);
+  margin: 0 0 var(--space-3);
+}
+.footer-mega a {
+  display: block;
+  padding: var(--space-1) 0;
+  color: var(--c-muted);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+.footer-mega a:hover { color: var(--c-accent); }
+.footer-bottom {
+  border-top: 1px solid var(--c-border);
+  padding-top: var(--space-4);
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--c-muted);
+}
+
+/* === Related Pages block (vor Footer) === */
+.related-pages {
+  max-width: var(--w-wide);
+  margin: var(--space-9) auto var(--space-6);
+  padding: 0 var(--space-4);
+}
+.related-pages h3 {
+  text-align: center;
+  font-size: 1.25rem;
+  margin: 0 0 var(--space-5);
+  color: var(--c-text);
+}
+.related-cards {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .related-cards { grid-template-columns: repeat(3, 1fr); }
+}
+.related-cards a {
+  display: block;
+  padding: var(--space-4);
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  text-decoration: none;
+  color: var(--c-text);
+  transition: transform var(--t), border-color var(--t), box-shadow var(--t);
+}
+.related-cards a:hover {
+  transform: translateY(-2px);
+  border-color: var(--c-accent);
+  box-shadow: 0 4px 12px var(--c-shadow-lg);
+}
+.related-cards strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--c-text);
+  margin-bottom: var(--space-2);
+}
+.related-cards strong::after {
+  content: " →";
+  color: var(--c-accent);
+}
+.related-cards span {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--c-muted);
+  line-height: 1.4;
+}
+
+/* === Tool Mockups (6er Grid) === */
+.tools-section {
+  padding: var(--space-7) 0;
+}
+.tools-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+  margin-top: var(--space-6);
+}
+@media (min-width: 640px) {
+  .tools-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 880px) {
+  .tools-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.tool-card {
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: transform var(--t), border-color var(--t), box-shadow var(--t);
+}
+.tool-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--c-accent-soft);
+  box-shadow: 0 4px 12px var(--c-shadow-lg);
+}
+.tool-mockup {
+  background: var(--c-bg-alt);
+  border-radius: var(--r);
+  padding: var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+}
+.tool-mockup svg { width: 100%; height: auto; max-height: 160px; }
+.tool-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.tool-name {
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: var(--c-text);
+}
+.tool-pricing {
+  font-size: 0.75rem;
+  color: var(--c-muted);
+  background: var(--c-bg-alt);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.tool-use {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--c-text-2);
+  margin: 0;
+}
+.tool-link {
+  font-size: 0.8125rem;
+  color: var(--c-accent);
+  text-decoration: none;
+  margin-top: auto;
+  font-weight: 600;
+}
+.tool-link:hover { text-decoration: underline; }
+
+/* === Stylized Founder Portrait === */
+.founder-portrait {
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--c-bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--c-card);
+  box-shadow: 0 4px 12px var(--c-shadow-lg);
+  overflow: hidden;
+  padding: 0;
+}
+.founder-portrait svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+@media (min-width: 640px) {
+  .founder-portrait { width: 160px; height: 160px; }
+}
+
+/* === Inline illustration helper === */
+.illu {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0;
+}
+.illu svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.illu--center { display: flex; justify-content: center; margin: var(--space-4) auto; }
+.illu--lg { max-width: 200px; }
+.illu--md { max-width: 140px; }
+.illu--sm { max-width: 80px; }
+.illu--inline {
+  width: 32px;
+  height: 32px;
+  margin-right: var(--space-2);
+}
+
+/* Mobile polish */
+@media (max-width: 380px) {
+  .footer-mega { gap: var(--space-4); }
+  .tool-mockup { min-height: 110px; }
+  .related-pages { margin-top: var(--space-7); }
+  .founder-portrait { width: 120px; height: 120px; }
+}

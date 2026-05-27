@@ -36,6 +36,11 @@
   </div>
 </header>
 
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">aban news</a> <span aria-hidden="true">›</span>
+  <span aria-current="page">Sponsoring</span>
+</nav>
+
 <main id="main">
 
   <!-- HERO -->
@@ -51,6 +56,24 @@
       <p class="lead">
         Erreich deutschsprachige Selbstständige, Marketer und AI-affine Profis — täglich, kuratiert, mit einer Stimme, die nicht nach PR klingt. Sponsor-Spots, die nicht weggescrollt werden.
       </p>
+
+      <!-- Illustration: Megaphone -->
+      <div class="illu illu--center illu--md" aria-hidden="true">
+        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+          <!-- Megaphone cone -->
+          <path d="M30 50 L30 90 L70 100 L130 130 Q140 130 140 120 L140 20 Q140 10 130 10 L70 40 Z" fill="#d97706" stroke="#1f2937" stroke-width="2.5"/>
+          <!-- Handle -->
+          <rect x="20" y="60" width="14" height="20" rx="3" fill="#1f2937"/>
+          <!-- Inner gradient layer -->
+          <path d="M70 40 L70 100 L130 130 Q140 130 140 120 L140 20 Q140 10 130 10 Z" fill="#fbbf24" opacity="0.5"/>
+          <!-- Sound waves -->
+          <g stroke="#d97706" stroke-width="3" fill="none" stroke-linecap="round">
+            <path d="M150 50 Q160 55 160 70 Q160 85 150 90"/>
+            <path d="M165 38 Q180 50 180 70 Q180 90 165 102" opacity="0.7"/>
+            <path d="M180 25 Q198 45 198 70 Q198 95 180 115" opacity="0.4"/>
+          </g>
+        </svg>
+      </div>
 
       <ul class="promise" role="list">
         <li>Max 1 Anzeige pro Ausgabe</li>
@@ -168,6 +191,23 @@
   <!-- WAS WIR NICHT MACHEN -->
   <section class="alt">
     <div class="wrap">
+      <!-- Illustration: DSGVO-Shield (EU stars in shield) -->
+      <div class="illu illu--center illu--sm" aria-hidden="true">
+        <svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 5 L88 18 L88 60 Q88 92 50 105 Q12 92 12 60 L12 18 Z" fill="#003399" stroke="#1f2937" stroke-width="2"/>
+          <g fill="#fbbf24">
+            <circle cx="50" cy="30" r="3"/>
+            <circle cx="65" cy="38" r="3"/>
+            <circle cx="70" cy="55" r="3"/>
+            <circle cx="65" cy="72" r="3"/>
+            <circle cx="50" cy="78" r="3"/>
+            <circle cx="35" cy="72" r="3"/>
+            <circle cx="30" cy="55" r="3"/>
+            <circle cx="35" cy="38" r="3"/>
+          </g>
+          <path d="M40 55 L48 63 L62 48" stroke="#fbbf24" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
       <h2>Was wir nicht machen</h2>
       <ul class="anti" role="list">
         <li><span>Mehr als 1 Werbung pro Ausgabe — schützt Open-Rate und Lesefluss.</span></li>
@@ -225,28 +265,48 @@
 
 </main>
 
+<!-- Related Pages (kontextuell für Sponsoring-Page) -->
+<aside class="related-pages" aria-label="Was dich auch interessieren könnte">
+  <h3>Was dich auch interessieren könnte</h3>
+  <div class="related-cards">
+    <a href="/werbung.html"><strong>Werbe-Policy</strong><span>Transparenz statt versteckte Promotion</span></a>
+    <a href="/founding.html"><strong>Founding Member werden</strong><span>€149 lifetime statt Sponsoring</span></a>
+    <a href="/about.html"><strong>Wer schreibt das eigentlich?</strong><span>Aban's Story in 3 Min</span></a>
+  </div>
+</aside>
+
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="foot-grid">
+  <div class="wrap wrap--wide">
+    <div class="footer-mega">
       <div>
-        <h5>aban news</h5>
+        <strong>aban news</strong>
         <a href="/">Startseite</a>
-        <a href="/founding.html">Founding Member</a>
-        <a href="/sponsoring.html">Werbung schalten</a>
+        <a href="/about.html">Wer schreibt das</a>
+        <a href="/preview.html">Beispiel-Ausgabe</a>
+        <a href="/archive.html">Alle Ausgaben</a>
+      </div>
+      <div>
+        <strong>Lesen</strong>
+        <a href="/resources.html">Free Resources</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/roadmap.html">Roadmap</a>
+      </div>
+      <div>
+        <strong>Premium</strong>
+        <a href="/founding.html">Founding Member €149</a>
+        <a href="/sponsoring.html">Sponsoring</a>
         <a href="/werbung.html">Werbe-Policy</a>
       </div>
       <div>
-        <h5>Rechtliches</h5>
+        <strong>Rechtliches</strong>
         <a href="/impressum.html">Impressum</a>
         <a href="/datenschutz.html">Datenschutz</a>
-      </div>
-      <div>
-        <h5>Kontakt</h5>
-        <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>
-        <a href="mailto:sponsoring@abannews.com">sponsoring@abannews.com</a>
+        <a href="/press.html">Press &amp; Media</a>
       </div>
     </div>
-    <p class="foot-bottom">&copy; 2026 aban news · — Aban</p>
+    <div class="footer-bottom">
+      <span>&copy; 2026 aban news · Allen Chour · Hühnerhubelstrasse 37, 3123 Belp, Schweiz · <em>— Aban</em></span>
+    </div>
   </div>
 </footer>
 

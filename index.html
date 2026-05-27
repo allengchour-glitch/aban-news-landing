@@ -677,8 +677,56 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
       <h2>Warum es aban news gibt</h2>
 
       <div class="founder">
-        <!-- TODO: Headshot einsetzen — <img src="/assets/aban.jpg" alt="Foto von Aban" width="96" height="96"> -->
-        <div class="founder-photo" role="img" aria-label="Platzhalter für Aban's Foto">☕</div>
+        <!-- Stylized founder portrait — inline SVG, ~3 KB, brand colors -->
+        <div class="founder-portrait" role="img" aria-label="Stilisiertes Porträt von Aban mit Kaffeetasse">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="fp-bg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#fef3c7"/>
+                <stop offset="1" stop-color="#fde68a"/>
+              </linearGradient>
+            </defs>
+            <!-- Background circle -->
+            <circle cx="100" cy="100" r="100" fill="url(#fp-bg)"/>
+            <!-- Subtle amber glow behind head -->
+            <circle cx="100" cy="78" r="50" fill="#fde68a" opacity="0.6"/>
+            <!-- Shoulders / shirt silhouette -->
+            <path d="M30 200 Q30 140 70 130 L130 130 Q170 140 170 200 Z" fill="#1f2937"/>
+            <!-- Shirt collar accent -->
+            <path d="M90 130 L100 145 L110 130 Z" fill="#d97706"/>
+            <!-- Neck -->
+            <rect x="88" y="110" width="24" height="22" rx="6" fill="#fed7aa"/>
+            <!-- Head -->
+            <ellipse cx="100" cy="80" rx="36" ry="40" fill="#fed7aa"/>
+            <!-- Hair top -->
+            <path d="M64 75 Q66 45 100 42 Q134 45 136 75 Q132 60 100 58 Q72 58 64 75 Z" fill="#1f2937"/>
+            <!-- Beard hint -->
+            <path d="M76 92 Q80 110 100 116 Q120 110 124 92 Q120 100 100 102 Q80 100 76 92 Z" fill="#1f2937" opacity="0.85"/>
+            <!-- Glasses -->
+            <g fill="none" stroke="#1f2937" stroke-width="2.5">
+              <circle cx="86" cy="80" r="9"/>
+              <circle cx="114" cy="80" r="9"/>
+              <line x1="95" y1="80" x2="105" y2="80"/>
+            </g>
+            <!-- Eyes through glasses -->
+            <circle cx="86" cy="81" r="1.8" fill="#1f2937"/>
+            <circle cx="114" cy="81" r="1.8" fill="#1f2937"/>
+            <!-- Mouth (small smile through beard) -->
+            <path d="M93 97 Q100 100 107 97" stroke="#b45309" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <!-- Coffee mug (held up, right side) -->
+            <g transform="translate(132 122)">
+              <path d="M0 0 L0 22 Q0 28 6 28 L20 28 Q26 28 26 22 L26 0 Z" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+              <ellipse cx="13" cy="0" rx="13" ry="3" fill="#1f2937" opacity="0.4"/>
+              <path d="M26 6 Q34 6 34 14 Q34 22 26 22" stroke="#b45309" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <!-- Steam -->
+              <path d="M6 -6 Q9 -12 6 -18" stroke="#d97706" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+              <path d="M16 -6 Q19 -12 16 -18" stroke="#d97706" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/>
+            </g>
+            <!-- Arm holding mug -->
+            <path d="M138 148 Q150 138 144 122 L130 122 Q124 138 130 152 Z" fill="#1f2937"/>
+          </svg>
+        </div>
+        <!-- @about.html: re-use this stylized portrait as hero illustration if the page exists -->
         <div class="founder-text">
           <p>
             <span class="name">Ich bin Aban</span> — Solopreneur in der Schweiz. Seit drei Jahren nutze ich KI-Tools täglich für Texte, Recherche und Automation. Was mich genervt hat: jeden Morgen durch zwölf Newsletter, LinkedIn-Posts und Reddit-Threads scrollen, um die wenigen wirklich relevanten Updates zu finden.
@@ -759,6 +807,235 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       TOOL-MOCKUPS — 6 Tools, die ich täglich nutze
+       Wireframe-SVGs, brand-colored, Aban-Voice
+       ============================================ -->
+  <section class="tools-section reveal">
+    <div class="wrap wrap--wide">
+      <h2 class="center">🛠 Tools die ich täglich nutze</h2>
+      <p class="center muted">Sechs Werkzeuge, die in meinem Workflow nicht mehr fehlen. Alle selbst bezahlt oder im Free-Tier — keine Affiliate-Deals.</p>
+
+      <div class="tools-grid">
+
+        <article class="tool-card">
+          <div class="tool-mockup" aria-hidden="true">
+            <svg viewBox="0 0 250 180" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="230" height="160" rx="10" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+              <rect x="10" y="10" width="230" height="22" rx="10" fill="#d97706"/>
+              <circle cx="22" cy="21" r="3" fill="#fffbf5"/>
+              <text x="34" y="25" font-family="-apple-system, sans-serif" font-size="10" font-weight="700" fill="#fffbf5">Claude</text>
+              <!-- User bubble right -->
+              <rect x="120" y="46" width="110" height="22" rx="11" fill="#fef3c7"/>
+              <line x1="132" y1="55" x2="218" y2="55" stroke="#b45309" stroke-width="1.5"/>
+              <line x1="132" y1="62" x2="200" y2="62" stroke="#b45309" stroke-width="1.5"/>
+              <!-- Claude bubble left -->
+              <rect x="20" y="78" width="160" height="40" rx="11" fill="#d97706"/>
+              <line x1="32" y1="90" x2="168" y2="90" stroke="#fffbf5" stroke-width="1.5"/>
+              <line x1="32" y1="98" x2="158" y2="98" stroke="#fffbf5" stroke-width="1.5"/>
+              <line x1="32" y1="106" x2="140" y2="106" stroke="#fffbf5" stroke-width="1.5"/>
+              <!-- Input -->
+              <rect x="20" y="135" width="210" height="22" rx="11" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+              <text x="32" y="150" font-family="-apple-system, sans-serif" font-size="9" fill="#b45309">Frage stellen…</text>
+              <circle cx="218" cy="146" r="7" fill="#d97706"/>
+              <path d="M215 146 L221 146 M219 144 L221 146 L219 148" stroke="#fffbf5" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <div class="tool-head">
+            <span class="tool-name">Claude</span>
+            <span class="tool-pricing">free / $20-Pro</span>
+          </div>
+          <p class="tool-use">Mein Haupt-AI für Texte und Recherche — schreibt Deutsch besser als alle anderen, die ich getestet hab.</p>
+          <a href="/preview.html" class="tool-link">Mehr in der Probe-Ausgabe →</a>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-mockup" aria-hidden="true">
+            <svg viewBox="0 0 250 180" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="230" height="160" rx="10" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+              <!-- App header -->
+              <rect x="10" y="10" width="230" height="22" rx="10" fill="#1f2937"/>
+              <circle cx="24" cy="21" r="6" fill="#d97706"/>
+              <text x="40" y="25" font-family="-apple-system, sans-serif" font-size="10" font-weight="700" fill="#fffbf5">Granola</text>
+              <!-- Meeting card -->
+              <rect x="20" y="42" width="210" height="28" rx="6" fill="#fef3c7"/>
+              <circle cx="34" cy="56" r="6" fill="#d97706"/>
+              <line x1="46" y1="52" x2="160" y2="52" stroke="#1f2937" stroke-width="1.5"/>
+              <line x1="46" y1="60" x2="130" y2="60" stroke="#6b7280" stroke-width="1.5"/>
+              <text x="200" y="60" font-family="-apple-system, sans-serif" font-size="9" fill="#6b7280">10:30</text>
+              <!-- Notes -->
+              <text x="22" y="88" font-family="-apple-system, sans-serif" font-size="9" font-weight="700" fill="#1f2937">Notes</text>
+              <line x1="22" y1="100" x2="200" y2="100" stroke="#9ca3af" stroke-width="1.5"/>
+              <line x1="22" y1="110" x2="180" y2="110" stroke="#9ca3af" stroke-width="1.5"/>
+              <line x1="22" y1="120" x2="190" y2="120" stroke="#9ca3af" stroke-width="1.5"/>
+              <!-- Action items -->
+              <rect x="22" y="132" width="9" height="9" rx="2" fill="#d97706"/>
+              <path d="M24 136 L26 138 L29 134" stroke="#fffbf5" stroke-width="1.5" fill="none"/>
+              <line x1="36" y1="138" x2="160" y2="138" stroke="#1f2937" stroke-width="1.5"/>
+              <rect x="22" y="148" width="9" height="9" rx="2" fill="none" stroke="#d97706" stroke-width="1.5"/>
+              <line x1="36" y1="154" x2="170" y2="154" stroke="#1f2937" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="tool-head">
+            <span class="tool-name">Granola</span>
+            <span class="tool-pricing">$18/Monat</span>
+          </div>
+          <p class="tool-use">Schreibt mit beim Call mit, ohne Bot im Meeting. Spart mir 2 Calls Notizen-Tippen pro Woche.</p>
+          <a href="/archive.html" class="tool-link">Im Archiv mehr Tool-Tipps →</a>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-mockup" aria-hidden="true">
+            <svg viewBox="0 0 250 180" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="230" height="160" rx="10" fill="#1f2937"/>
+              <!-- Screen preview -->
+              <rect x="22" y="22" width="180" height="110" rx="6" fill="#fef3c7"/>
+              <rect x="32" y="32" width="100" height="6" rx="2" fill="#d97706"/>
+              <rect x="32" y="44" width="140" height="4" rx="2" fill="#b45309" opacity="0.6"/>
+              <rect x="32" y="52" width="120" height="4" rx="2" fill="#b45309" opacity="0.5"/>
+              <rect x="32" y="68" width="50" height="32" rx="4" fill="#d97706"/>
+              <rect x="92" y="68" width="50" height="32" rx="4" fill="#fbbf24"/>
+              <rect x="152" y="68" width="30" height="32" rx="4" fill="#fed7aa"/>
+              <!-- Webcam bubble -->
+              <circle cx="190" cy="118" r="14" fill="#d97706" stroke="#fffbf5" stroke-width="2"/>
+              <circle cx="190" cy="113" r="5" fill="#fffbf5"/>
+              <path d="M183 122 Q190 130 197 122" stroke="#fffbf5" stroke-width="1.5" fill="none"/>
+              <!-- Record button -->
+              <circle cx="125" cy="155" r="14" fill="#dc2626"/>
+              <circle cx="125" cy="155" r="6" fill="#fffbf5"/>
+              <text x="222" y="160" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#d97706">REC</text>
+              <text x="22" y="160" font-family="-apple-system, sans-serif" font-size="9" font-weight="700" fill="#fef3c7">cap.so</text>
+            </svg>
+          </div>
+          <div class="tool-head">
+            <span class="tool-name">Cap.so</span>
+            <span class="tool-pricing">free / $9-Pro</span>
+          </div>
+          <p class="tool-use">Schneller Screen-Record für Tutorials und Bug-Reports. Loom-Alternative aus EU.</p>
+          <a href="/preview.html" class="tool-link">Use-Case in Ausgabe Nr. 4 →</a>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-mockup" aria-hidden="true">
+            <svg viewBox="0 0 250 180" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="230" height="160" rx="10" fill="#fffbf5" stroke="#d97706" stroke-width="2"/>
+              <!-- Workflow nodes -->
+              <circle cx="50" cy="55" r="20" fill="#d97706"/>
+              <text x="50" y="59" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" fill="#fffbf5">▶</text>
+              <circle cx="125" cy="55" r="22" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+              <path d="M118 50 Q125 44 132 50 M118 60 Q125 66 132 60" stroke="#b45309" stroke-width="2" fill="none"/>
+              <circle cx="200" cy="55" r="20" fill="#fbbf24"/>
+              <text x="200" y="60" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#1f2937">@</text>
+              <!-- Connector lines -->
+              <line x1="70" y1="55" x2="103" y2="55" stroke="#d97706" stroke-width="2.5"/>
+              <path d="M101 51 L105 55 L101 59" stroke="#d97706" stroke-width="2.5" fill="none"/>
+              <line x1="147" y1="55" x2="180" y2="55" stroke="#d97706" stroke-width="2.5"/>
+              <path d="M178 51 L182 55 L178 59" stroke="#d97706" stroke-width="2.5" fill="none"/>
+              <!-- Second row -->
+              <circle cx="50" cy="130" r="18" fill="#fed7aa" stroke="#d97706" stroke-width="2"/>
+              <text x="50" y="134" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#1f2937">✓</text>
+              <circle cx="125" cy="130" r="18" fill="#fed7aa" stroke="#d97706" stroke-width="2"/>
+              <text x="125" y="134" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#1f2937">⚙</text>
+              <circle cx="200" cy="130" r="18" fill="#fed7aa" stroke="#d97706" stroke-width="2"/>
+              <text x="200" y="134" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#1f2937">↗</text>
+              <!-- Branch lines down -->
+              <path d="M125 77 Q125 100 50 112" stroke="#d97706" stroke-width="1.5" fill="none" opacity="0.5"/>
+              <path d="M125 77 L125 112" stroke="#d97706" stroke-width="1.5" opacity="0.5"/>
+              <path d="M125 77 Q125 100 200 112" stroke="#d97706" stroke-width="1.5" fill="none" opacity="0.5"/>
+              <text x="125" y="170" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#6b7280">make.com</text>
+            </svg>
+          </div>
+          <div class="tool-head">
+            <span class="tool-name">Make.com</span>
+            <span class="tool-pricing">free / $9-Core</span>
+          </div>
+          <p class="tool-use">Verbindet RSS, Claude und Gmail — meine Newsletter-Pipeline läuft komplett darin.</p>
+          <a href="/archive.html" class="tool-link">Pipeline-Setup im Archiv →</a>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-mockup" aria-hidden="true">
+            <svg viewBox="0 0 250 180" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="230" height="160" rx="10" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
+              <!-- Sidebar -->
+              <rect x="10" y="10" width="50" height="160" rx="10" fill="#fef3c7"/>
+              <circle cx="22" cy="26" r="4" fill="#1f2937"/>
+              <line x1="32" y1="26" x2="54" y2="26" stroke="#1f2937" stroke-width="1.5"/>
+              <circle cx="22" cy="40" r="4" fill="#9ca3af"/>
+              <line x1="32" y1="40" x2="48" y2="40" stroke="#6b7280" stroke-width="1.5"/>
+              <circle cx="22" cy="54" r="4" fill="#9ca3af"/>
+              <line x1="32" y1="54" x2="52" y2="54" stroke="#6b7280" stroke-width="1.5"/>
+              <!-- Page title -->
+              <text x="72" y="32" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#1f2937">Newsletter-Plan</text>
+              <!-- Blocks -->
+              <rect x="70" y="48" width="6" height="6" rx="1" fill="#d97706"/>
+              <line x1="82" y1="51" x2="220" y2="51" stroke="#1f2937" stroke-width="1.5"/>
+              <rect x="70" y="64" width="6" height="6" rx="1" fill="#d97706"/>
+              <line x1="82" y1="67" x2="200" y2="67" stroke="#1f2937" stroke-width="1.5"/>
+              <!-- Toggle block -->
+              <text x="70" y="88" font-family="-apple-system, sans-serif" font-size="11" fill="#6b7280">▸</text>
+              <line x1="82" y1="84" x2="180" y2="84" stroke="#1f2937" stroke-width="1.5"/>
+              <!-- Code block -->
+              <rect x="70" y="98" width="160" height="22" rx="4" fill="#fef3c7"/>
+              <text x="78" y="113" font-family="ui-monospace, monospace" font-size="9" fill="#b45309">prompt = "Schreib…"</text>
+              <!-- Todo -->
+              <rect x="70" y="130" width="8" height="8" rx="1.5" fill="none" stroke="#1f2937" stroke-width="1.5"/>
+              <line x1="84" y1="135" x2="180" y2="135" stroke="#1f2937" stroke-width="1.5"/>
+              <rect x="70" y="146" width="8" height="8" rx="1.5" fill="#d97706"/>
+              <path d="M72 150 L74 152 L77 149" stroke="#fffbf5" stroke-width="1.5" fill="none"/>
+              <line x1="84" y1="151" x2="170" y2="151" stroke="#9ca3af" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="tool-head">
+            <span class="tool-name">Notion</span>
+            <span class="tool-pricing">free / $10-Plus</span>
+          </div>
+          <p class="tool-use">Editorial-Kalender, Tool-Datenbank und Founder-Logs liegen alle dort. Bleibt nach 5 Jahren noch durchsuchbar.</p>
+          <a href="/founding.html" class="tool-link">Founding-Slack-Templates →</a>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-mockup" aria-hidden="true">
+            <svg viewBox="0 0 250 180" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="230" height="160" rx="10" fill="#fffbf5" stroke="#d97706" stroke-width="2"/>
+              <!-- EU flag accent -->
+              <rect x="20" y="20" width="36" height="24" rx="4" fill="#003399"/>
+              <g fill="#fbbf24">
+                <circle cx="28" cy="28" r="1.5"/>
+                <circle cx="38" cy="26" r="1.5"/>
+                <circle cx="48" cy="28" r="1.5"/>
+                <circle cx="28" cy="36" r="1.5"/>
+                <circle cx="38" cy="38" r="1.5"/>
+                <circle cx="48" cy="36" r="1.5"/>
+              </g>
+              <text x="66" y="36" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#1f2937">eustella</text>
+              <text x="66" y="48" font-family="-apple-system, sans-serif" font-size="8" fill="#6b7280">Wiener AI-Companion</text>
+              <!-- Chat -->
+              <rect x="20" y="62" width="150" height="22" rx="11" fill="#fef3c7"/>
+              <line x1="32" y1="71" x2="160" y2="71" stroke="#1f2937" stroke-width="1.5"/>
+              <line x1="32" y1="78" x2="140" y2="78" stroke="#1f2937" stroke-width="1.5"/>
+              <rect x="80" y="92" width="150" height="32" rx="11" fill="#d97706"/>
+              <line x1="92" y1="103" x2="218" y2="103" stroke="#fffbf5" stroke-width="1.5"/>
+              <line x1="92" y1="110" x2="210" y2="110" stroke="#fffbf5" stroke-width="1.5"/>
+              <line x1="92" y1="117" x2="190" y2="117" stroke="#fffbf5" stroke-width="1.5"/>
+              <!-- Privacy badge -->
+              <rect x="20" y="138" width="100" height="22" rx="11" fill="none" stroke="#059669" stroke-width="1.5"/>
+              <path d="M30 149 L30 144 Q30 141 33 141 L33 144 Z M33 141 L36 141 Q39 141 39 144 L39 149" stroke="#059669" stroke-width="1.5" fill="none"/>
+              <text x="46" y="153" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#059669">EU-Hosting · DSGVO</text>
+            </svg>
+          </div>
+          <div class="tool-head">
+            <span class="tool-name">eustella</span>
+            <span class="tool-pricing">Open Beta · €14-Pro</span>
+          </div>
+          <p class="tool-use">DACH-AI-Companion aus Wien, EU-Hosting nativ. Diese Woche parallel zu Claude im Test.</p>
+          <a href="/preview.html" class="tool-link">Volltest in der Probe-Ausgabe →</a>
+        </article>
+
       </div>
     </div>
   </section>
@@ -957,32 +1234,48 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
   <a href="#signup" class="btn">☕ Kostenlos abonnieren</a>
 </div>
 
+<!-- Related Pages (kontextuell für Startseite) -->
+<aside class="related-pages" aria-label="Was dich auch interessieren könnte">
+  <h3>Was dich auch interessieren könnte</h3>
+  <div class="related-cards">
+    <a href="/preview.html"><strong>Beispiel-Ausgabe lesen</strong><span>Echte aban news vom 27. Mai — 4 Min</span></a>
+    <a href="/founding.html"><strong>Founding Member werden</strong><span>€149 lifetime, nur 100 Plätze</span></a>
+    <a href="/faq.html"><strong>Häufige Fragen</strong><span>Alles, was Leser bisher gefragt haben</span></a>
+  </div>
+</aside>
+
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="foot-grid">
+  <div class="wrap wrap--wide">
+    <div class="footer-mega">
       <div>
-        <h5>aban news</h5>
+        <strong>aban news</strong>
         <a href="/">Startseite</a>
-        <a href="/preview.html">Probe-Ausgabe ansehen</a>
-        <a href="/founding.html">Founding Member</a>
-        <a href="/sponsoring.html">Werbung schalten</a>
+        <a href="/about.html">Wer schreibt das</a>
+        <a href="/preview.html">Beispiel-Ausgabe</a>
+        <a href="/archive.html">Alle Ausgaben</a>
+      </div>
+      <div>
+        <strong>Lesen</strong>
+        <a href="/resources.html">Free Resources</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/roadmap.html">Roadmap</a>
+      </div>
+      <div>
+        <strong>Premium</strong>
+        <a href="/founding.html">Founding Member €149</a>
+        <a href="/sponsoring.html">Sponsoring</a>
         <a href="/werbung.html">Werbe-Policy</a>
       </div>
       <div>
-        <h5>Rechtliches</h5>
+        <strong>Rechtliches</strong>
         <a href="/impressum.html">Impressum</a>
         <a href="/datenschutz.html">Datenschutz</a>
-      </div>
-      <div>
-        <h5>Kontakt</h5>
-        <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>
-        <a href="mailto:sponsoring@abannews.com">sponsoring@abannews.com</a>
-        <a href="mailto:datenschutz@abannews.com">datenschutz@abannews.com</a>
+        <a href="/press.html">Press &amp; Media</a>
       </div>
     </div>
-    <p class="foot-bottom">
-      &copy; 2026 aban news · Geschrieben in der Schweiz, gelesen im DACH-Raum · <em>— Aban</em>
-    </p>
+    <div class="footer-bottom">
+      <span>&copy; 2026 aban news · Allen Chour · Hühnerhubelstrasse 37, 3123 Belp, Schweiz · <em>— Aban</em></span>
+    </div>
   </div>
 </footer>
 

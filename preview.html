@@ -37,6 +37,11 @@
   </div>
 </header>
 
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">aban news</a> <span aria-hidden="true">›</span>
+  <span aria-current="page">Probe-Ausgabe</span>
+</nav>
+
 <main id="main">
 
   <section>
@@ -46,6 +51,35 @@
 
       <h1>Probe-Ausgabe — Mi, 27. Mai 2026</h1>
       <p class="lead">So sieht ein typischer Mittwoch bei aban news aus. Vier News, ein Tool, ein Prompt. Lesezeit: ca. 4 Minuten.</p>
+
+      <!-- Illustration: Pen + Notebook (Aban schreibt) -->
+      <div class="illu illu--center illu--md" aria-hidden="true">
+        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+          <!-- Notebook -->
+          <rect x="20" y="30" width="120" height="90" rx="6" fill="#ffffff" stroke="#1f2937" stroke-width="2.5"/>
+          <!-- Spiral binding -->
+          <g fill="#d97706">
+            <circle cx="30" cy="40" r="3"/>
+            <circle cx="30" cy="56" r="3"/>
+            <circle cx="30" cy="72" r="3"/>
+            <circle cx="30" cy="88" r="3"/>
+            <circle cx="30" cy="104" r="3"/>
+          </g>
+          <!-- Lines -->
+          <line x1="45" y1="50" x2="125" y2="50" stroke="#d97706" stroke-width="1.5"/>
+          <line x1="45" y1="65" x2="125" y2="65" stroke="#d97706" stroke-width="1.5"/>
+          <line x1="45" y1="80" x2="115" y2="80" stroke="#d97706" stroke-width="1.5"/>
+          <line x1="45" y1="95" x2="125" y2="95" stroke="#d97706" stroke-width="1.5"/>
+          <line x1="45" y1="110" x2="100" y2="110" stroke="#d97706" stroke-width="1.5"/>
+          <!-- Pen -->
+          <g transform="translate(140 20) rotate(35)">
+            <rect x="0" y="0" width="60" height="10" rx="2" fill="#1f2937"/>
+            <polygon points="60,0 75,5 60,10" fill="#d97706"/>
+            <polygon points="70,3 75,5 70,7" fill="#1f2937"/>
+            <rect x="0" y="0" width="12" height="10" rx="2" fill="#fbbf24"/>
+          </g>
+        </svg>
+      </div>
 
       <article class="preview preview--full" aria-label="Probe-Ausgabe vom 27. Mai 2026">
 
@@ -88,6 +122,16 @@
         <p><strong>Use Case für dich:</strong> Wenn du ChatGPT für persönliche Arbeit nutzt (Brainstorming, Texte, Bildideen) und ein Bauchgefühl bei US-Servern hast — diese Woche ist Open Beta, also gratis-Test ohne Karte. Ich nutz das parallel zu Claude diese Woche und vergleich Output-Qualität auf deutschsprachige Tasks.</p>
         <p><em>Wer's nicht braucht:</em> wenn du eh schon Claude oder ChatGPT zahlst und das Daten-Thema dich nicht juckt — kein Killer-Feature, das dich migrieren muss.</p>
 
+        <!-- Illustration: Lightning + Pen (Quick Tip) -->
+        <div class="illu illu--center illu--sm" aria-hidden="true">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 8 L28 56 L46 56 L40 92 L72 38 L52 38 Z" fill="#fbbf24" stroke="#1f2937" stroke-width="2.5" stroke-linejoin="round"/>
+            <g transform="translate(60 50) rotate(35)">
+              <rect x="0" y="0" width="30" height="6" rx="1.5" fill="#1f2937"/>
+              <polygon points="30,0 38,3 30,6" fill="#d97706"/>
+            </g>
+          </svg>
+        </div>
         <h3>💡 Heute ausprobieren</h3>
         <p>Anschluss an die Paul-Graham-News oben — wenn du Cold-Outreach machst (oder Sponsoring-Mails für deine eigene Sache), häng diesen Mini-Prompt an deinen Standard-Email-Workflow:</p>
         <pre><code>Hier ist ein Cold-Outreach-Mail-Entwurf von mir an [Empfänger, Kontext].
@@ -119,30 +163,48 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
 
 </main>
 
+<!-- Related Pages (kontextuell für Preview-Page) -->
+<aside class="related-pages" aria-label="Was dich auch interessieren könnte">
+  <h3>Was dich auch interessieren könnte</h3>
+  <div class="related-cards">
+    <a href="/about.html"><strong>Wer schreibt das eigentlich?</strong><span>Aban's Story in 3 Min</span></a>
+    <a href="/archive.html"><strong>Alle bisherigen Ausgaben</strong><span>Volltext-Archiv zum Stöbern</span></a>
+    <a href="/sponsoring.html"><strong>Werbung schalten</strong><span>Rate-Card &amp; Booking-Ablauf</span></a>
+  </div>
+</aside>
+
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="foot-grid">
+  <div class="wrap wrap--wide">
+    <div class="footer-mega">
       <div>
-        <h5>aban news</h5>
+        <strong>aban news</strong>
         <a href="/">Startseite</a>
-        <a href="/preview.html">Probe-Ausgabe</a>
-        <a href="/founding.html">Founding Member</a>
-        <a href="/sponsoring.html">Werbung schalten</a>
+        <a href="/about.html">Wer schreibt das</a>
+        <a href="/preview.html">Beispiel-Ausgabe</a>
+        <a href="/archive.html">Alle Ausgaben</a>
       </div>
       <div>
-        <h5>Rechtliches</h5>
+        <strong>Lesen</strong>
+        <a href="/resources.html">Free Resources</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/roadmap.html">Roadmap</a>
+      </div>
+      <div>
+        <strong>Premium</strong>
+        <a href="/founding.html">Founding Member €149</a>
+        <a href="/sponsoring.html">Sponsoring</a>
+        <a href="/werbung.html">Werbe-Policy</a>
+      </div>
+      <div>
+        <strong>Rechtliches</strong>
         <a href="/impressum.html">Impressum</a>
         <a href="/datenschutz.html">Datenschutz</a>
-      </div>
-      <div>
-        <h5>Kontakt</h5>
-        <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>
-        <a href="mailto:sponsoring@abannews.com">sponsoring@abannews.com</a>
+        <a href="/press.html">Press &amp; Media</a>
       </div>
     </div>
-    <p class="foot-bottom">
-      &copy; 2026 aban news · Geschrieben in der Schweiz, gelesen im DACH-Raum · <em>— Aban</em>
-    </p>
+    <div class="footer-bottom">
+      <span>&copy; 2026 aban news · Allen Chour · Hühnerhubelstrasse 37, 3123 Belp, Schweiz · <em>— Aban</em></span>
+    </div>
   </div>
 </footer>
 

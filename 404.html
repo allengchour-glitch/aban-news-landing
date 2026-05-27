@@ -23,6 +23,11 @@
   </div>
 </header>
 
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">aban news</a> <span aria-hidden="true">›</span>
+  <span aria-current="page">404</span>
+</nav>
+
 <main id="main">
 
   <section class="hero">
@@ -32,6 +37,24 @@
         <span class="dot" aria-hidden="true" style="background:#dc2626;"></span>
         <span><strong>404</strong> · diese Seite ist auch nicht hier</span>
       </span>
+
+      <!-- Illustration: Compass (Roadmap-Vibe) -->
+      <div class="illu illu--center illu--md" aria-hidden="true">
+        <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="70" cy="70" r="60" fill="#fef3c7" stroke="#1f2937" stroke-width="3"/>
+          <circle cx="70" cy="70" r="48" fill="none" stroke="#d97706" stroke-width="1.5" stroke-dasharray="2 4"/>
+          <!-- Cardinal letters -->
+          <text x="70" y="22" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#1f2937">N</text>
+          <text x="70" y="126" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#1f2937">S</text>
+          <text x="18" y="74" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#1f2937">W</text>
+          <text x="122" y="74" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#1f2937">E</text>
+          <!-- Needle -->
+          <polygon points="70,30 78,70 70,75 62,70" fill="#dc2626" stroke="#1f2937" stroke-width="1.5"/>
+          <polygon points="70,110 78,70 70,65 62,70" fill="#fffbf5" stroke="#1f2937" stroke-width="1.5"/>
+          <circle cx="70" cy="70" r="6" fill="#1f2937"/>
+          <circle cx="70" cy="70" r="2.5" fill="#fbbf24"/>
+        </svg>
+      </div>
 
       <h1>Hier ist nichts. Aber ich hab Ideen, wo du sonst hin könntest.</h1>
 
@@ -64,11 +87,48 @@
 
 </main>
 
+<!-- Related Pages (kontextuell für 404) -->
+<aside class="related-pages" aria-label="Was dich auch interessieren könnte">
+  <h3>Diese Pfade führen irgendwohin</h3>
+  <div class="related-cards">
+    <a href="/"><strong>Zurück zur Startseite</strong><span>Newsletter abonnieren</span></a>
+    <a href="/faq.html"><strong>Häufige Fragen</strong><span>Alles, was Leser bisher gefragt haben</span></a>
+    <a href="/archive.html"><strong>Alle bisherigen Ausgaben</strong><span>Volltext-Archiv zum Stöbern</span></a>
+  </div>
+</aside>
+
 <footer class="site-footer">
-  <div class="wrap">
-    <p class="foot-bottom">
-      <a href="/">Startseite</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
-    </p>
+  <div class="wrap wrap--wide">
+    <div class="footer-mega">
+      <div>
+        <strong>aban news</strong>
+        <a href="/">Startseite</a>
+        <a href="/about.html">Wer schreibt das</a>
+        <a href="/preview.html">Beispiel-Ausgabe</a>
+        <a href="/archive.html">Alle Ausgaben</a>
+      </div>
+      <div>
+        <strong>Lesen</strong>
+        <a href="/resources.html">Free Resources</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/roadmap.html">Roadmap</a>
+      </div>
+      <div>
+        <strong>Premium</strong>
+        <a href="/founding.html">Founding Member €149</a>
+        <a href="/sponsoring.html">Sponsoring</a>
+        <a href="/werbung.html">Werbe-Policy</a>
+      </div>
+      <div>
+        <strong>Rechtliches</strong>
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <a href="/press.html">Press &amp; Media</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 aban news · Allen Chour · Hühnerhubelstrasse 37, 3123 Belp, Schweiz · <em>— Aban</em></span>
+    </div>
   </div>
 </footer>
 

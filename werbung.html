@@ -29,11 +29,35 @@
   </div>
 </header>
 
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">aban news</a> <span aria-hidden="true">›</span>
+  <span aria-current="page">Werbe-Policy</span>
+</nav>
+
 <main id="main">
 
   <article class="legal">
     <div class="wrap">
       <h1>Wie wir mit Werbung umgehen</h1>
+
+      <!-- Illustration: Heart + Letter (Reader-Reply-Promise) -->
+      <div class="illu illu--center illu--md" aria-hidden="true">
+        <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- Letter envelope -->
+          <rect x="40" y="30" width="120" height="80" rx="6" fill="#fef3c7" stroke="#1f2937" stroke-width="2.5"/>
+          <path d="M40 30 L100 75 L160 30" stroke="#1f2937" stroke-width="2.5" fill="none"/>
+          <path d="M40 110 L80 70 M160 110 L120 70" stroke="#1f2937" stroke-width="1.5" fill="none" opacity="0.5"/>
+          <!-- Heart on top -->
+          <path d="M100 18 C 92 8, 78 8, 78 20 C 78 30, 100 45, 100 45 C 100 45, 122 30, 122 20 C 122 8, 108 8, 100 18 Z" fill="#dc2626" stroke="#1f2937" stroke-width="2"/>
+          <!-- Sparkles -->
+          <g fill="#d97706" opacity="0.7">
+            <circle cx="35" cy="20" r="2.5"/>
+            <circle cx="165" cy="22" r="2"/>
+            <circle cx="20" cy="60" r="2"/>
+            <circle cx="180" cy="65" r="2.5"/>
+          </g>
+        </svg>
+      </div>
 
       <p>
         aban news wird teilweise durch Sponsoring und Affiliate-Programme finanziert. Damit das fair für dich bleibt, halten wir uns an folgende Regeln — schriftlich, damit du sie nachlesen kannst.
@@ -78,27 +102,48 @@
 
 </main>
 
+<!-- Related Pages (kontextuell für Werbung-Page) -->
+<aside class="related-pages" aria-label="Was dich auch interessieren könnte">
+  <h3>Was dich auch interessieren könnte</h3>
+  <div class="related-cards">
+    <a href="/sponsoring.html"><strong>Werbung schalten</strong><span>Rate-Card &amp; Booking-Ablauf</span></a>
+    <a href="/datenschutz.html"><strong>Datenschutz</strong><span>Wie wir mit deinen Daten umgehen</span></a>
+    <a href="/faq.html"><strong>Häufige Fragen</strong><span>Alles, was Leser bisher gefragt haben</span></a>
+  </div>
+</aside>
+
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="foot-grid">
+  <div class="wrap wrap--wide">
+    <div class="footer-mega">
       <div>
-        <h5>aban news</h5>
+        <strong>aban news</strong>
         <a href="/">Startseite</a>
-        <a href="/founding.html">Founding Member</a>
-        <a href="/sponsoring.html">Werbung schalten</a>
+        <a href="/about.html">Wer schreibt das</a>
+        <a href="/preview.html">Beispiel-Ausgabe</a>
+        <a href="/archive.html">Alle Ausgaben</a>
       </div>
       <div>
-        <h5>Rechtliches</h5>
-        <a href="/impressum.html">Impressum</a>
-        <a href="/datenschutz.html">Datenschutz</a>
+        <strong>Lesen</strong>
+        <a href="/resources.html">Free Resources</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/roadmap.html">Roadmap</a>
+      </div>
+      <div>
+        <strong>Premium</strong>
+        <a href="/founding.html">Founding Member €149</a>
+        <a href="/sponsoring.html">Sponsoring</a>
         <a href="/werbung.html">Werbe-Policy</a>
       </div>
       <div>
-        <h5>Kontakt</h5>
-        <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>
+        <strong>Rechtliches</strong>
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <a href="/press.html">Press &amp; Media</a>
       </div>
     </div>
-    <p class="foot-bottom">&copy; 2026 aban news · — Aban</p>
+    <div class="footer-bottom">
+      <span>&copy; 2026 aban news · Allen Chour · Hühnerhubelstrasse 37, 3123 Belp, Schweiz · <em>— Aban</em></span>
+    </div>
   </div>
 </footer>
 

@@ -23,6 +23,11 @@
   </div>
 </header>
 
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">aban news</a> <span aria-hidden="true">›</span>
+  <span aria-current="page">Willkommen</span>
+</nav>
+
 <main id="main">
 
   <section class="hero">
@@ -32,6 +37,29 @@
         <span class="dot" aria-hidden="true"></span>
         <span><strong>Fast da</strong> — ein letzter Klick fehlt</span>
       </span>
+
+      <!-- Illustration: Phone with Notification (Daily delivery) -->
+      <div class="illu illu--center illu--md" aria-hidden="true">
+        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+          <!-- Phone -->
+          <rect x="60" y="10" width="80" height="120" rx="12" fill="#1f2937"/>
+          <rect x="66" y="20" width="68" height="100" rx="4" fill="#fffbf5"/>
+          <!-- Mail icon on screen -->
+          <rect x="80" y="40" width="40" height="28" rx="3" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+          <path d="M80 40 L100 56 L120 40" stroke="#d97706" stroke-width="2" fill="none"/>
+          <!-- Text lines -->
+          <line x1="78" y1="80" x2="122" y2="80" stroke="#1f2937" stroke-width="2"/>
+          <line x1="78" y1="90" x2="118" y2="90" stroke="#9ca3af" stroke-width="1.5"/>
+          <line x1="78" y1="98" x2="115" y2="98" stroke="#9ca3af" stroke-width="1.5"/>
+          <line x1="78" y1="106" x2="110" y2="106" stroke="#9ca3af" stroke-width="1.5"/>
+          <!-- Notification badge -->
+          <circle cx="130" cy="18" r="14" fill="#dc2626" stroke="#fffbf5" stroke-width="3"/>
+          <text x="130" y="22" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#fffbf5">1</text>
+          <!-- Pulse rings -->
+          <circle cx="130" cy="18" r="22" fill="none" stroke="#dc2626" stroke-width="1.5" opacity="0.4"/>
+          <circle cx="130" cy="18" r="28" fill="none" stroke="#dc2626" stroke-width="1.5" opacity="0.2"/>
+        </svg>
+      </div>
 
       <h1>Check deine Mail.</h1>
 
@@ -63,11 +91,48 @@
 
 </main>
 
+<!-- Related Pages (kontextuell für Willkommen-Page) -->
+<aside class="related-pages" aria-label="Was dich auch interessieren könnte">
+  <h3>In der Zwischenzeit</h3>
+  <div class="related-cards">
+    <a href="/preview.html"><strong>Probe-Ausgabe lesen</strong><span>So sieht ein Mittwoch aus — 4 Min</span></a>
+    <a href="/archive.html"><strong>Alle bisherigen Ausgaben</strong><span>Volltext-Archiv zum Stöbern</span></a>
+    <a href="/faq.html"><strong>Häufige Fragen</strong><span>Alles, was Leser bisher gefragt haben</span></a>
+  </div>
+</aside>
+
 <footer class="site-footer">
-  <div class="wrap">
-    <p class="foot-bottom">
-      <a href="/">Startseite</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
-    </p>
+  <div class="wrap wrap--wide">
+    <div class="footer-mega">
+      <div>
+        <strong>aban news</strong>
+        <a href="/">Startseite</a>
+        <a href="/about.html">Wer schreibt das</a>
+        <a href="/preview.html">Beispiel-Ausgabe</a>
+        <a href="/archive.html">Alle Ausgaben</a>
+      </div>
+      <div>
+        <strong>Lesen</strong>
+        <a href="/resources.html">Free Resources</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/roadmap.html">Roadmap</a>
+      </div>
+      <div>
+        <strong>Premium</strong>
+        <a href="/founding.html">Founding Member €149</a>
+        <a href="/sponsoring.html">Sponsoring</a>
+        <a href="/werbung.html">Werbe-Policy</a>
+      </div>
+      <div>
+        <strong>Rechtliches</strong>
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <a href="/press.html">Press &amp; Media</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 aban news · Allen Chour · Hühnerhubelstrasse 37, 3123 Belp, Schweiz · <em>— Aban</em></span>
+    </div>
   </div>
 </footer>
 
