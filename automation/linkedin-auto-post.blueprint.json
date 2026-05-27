@@ -1,0 +1,222 @@
+{
+    "name": "aban news LinkedIn auto-post Mo-Fr",
+    "flow": [
+        {
+            "id": 1,
+            "module": "google-sheets:searchRows",
+            "version": 4,
+            "parameters": {
+                "__IMTCONN__": "__GOOGLE_SHEETS_CONNECTION__"
+            },
+            "mapper": {
+                "from": "drive",
+                "mode": "fromAll",
+                "sheetId": "linkedin_posts",
+                "spreadsheetId": "__SHEET_ID__",
+                "includesHeaders": true,
+                "valueRenderOption": "FORMATTED_VALUE",
+                "dateTimeRenderOption": "FORMATTED_STRING",
+                "filter": [
+                    [
+                        {
+                            "a": "status",
+                            "b": "ready",
+                            "o": "text:equal"
+                        },
+                        {
+                            "a": "scheduled_date",
+                            "b": "{{formatDate(now; \"YYYY-MM-DD\")}}",
+                            "o": "text:equal"
+                        }
+                    ]
+                ],
+                "order": {
+                    "type": "ASC",
+                    "cellRef": "id"
+                },
+                "maxRows": 1
+            },
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "Google Sheets (aban news)"
+                        }
+                    }
+                },
+                "notes": "Read first row where status=ready AND scheduled_date=today. One post per day Mo-Fr."
+            }
+        },
+        {
+            "id": 2,
+            "module": "http:ActionSendData",
+            "version": 3,
+            "parameters": {
+                "handleErrors": true
+            },
+            "mapper": {
+                "url": "https://api.linkedin.com/v2/ugcPosts",
+                "method": "post",
+                "headers": [
+                    {
+                        "name": "Authorization",
+                        "value": "Bearer __LINKEDIN_ACCESS_TOKEN__"
+                    },
+                    {
+                        "name": "X-Restli-Protocol-Version",
+                        "value": "2.0.0"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "qs": [],
+                "bodyType": "raw",
+                "parseResponse": true,
+                "timeout": 30,
+                "shareCookies": false,
+                "rejectUnauthorized": true,
+                "followRedirect": true,
+                "useQuerystring": false,
+                "gzip": true,
+                "contentType": "application/json",
+                "data": "{\"author\":\"urn:li:person:__LINKEDIN_PERSON_URN__\",\"lifecycleState\":\"PUBLISHED\",\"specificContent\":{\"com.linkedin.ugc.ShareContent\":{\"shareCommentary\":{\"text\":{{toJSON(1.content)}} },\"shareMediaCategory\":\"NONE\"}},\"visibility\":{\"com.linkedin.ugc.MemberNetworkVisibility\":\"PUBLIC\"}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "notes": "POST to LinkedIn UGC API. Author URN must be your personal URN (urn:li:person:XXXX). Hashtags can be appended to text via expression: {{1.content}} + \"\\n\\n\" + {{1.hashtags}}.\nALTERNATIVE: replace this HTTP module with linkedin:CreateAShare module if you have a paid Make.com LinkedIn integration."
+            }
+        },
+        {
+            "id": 3,
+            "module": "google-sheets:updateRow",
+            "version": 4,
+            "parameters": {
+                "__IMTCONN__": "__GOOGLE_SHEETS_CONNECTION__"
+            },
+            "mapper": {
+                "from": "drive",
+                "mode": "fromAll",
+                "sheetId": "linkedin_posts",
+                "spreadsheetId": "__SHEET_ID__",
+                "rowNumber": "{{1.`__ROW_NUMBER__`}}",
+                "includesHeaders": true,
+                "values": {
+                    "0": "{{1.id}}",
+                    "1": "{{1.scheduled_date}}",
+                    "2": "{{1.content}}",
+                    "3": "{{1.hashtags}}",
+                    "4": "posted",
+                    "5": "{{formatDate(now; \"YYYY-MM-DD HH:mm:ss\"; \"Europe/Zurich\")}}",
+                    "6": "{{2.id}}"
+                }
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0
+                },
+                "notes": "Mark row as posted. Column F = posted_at, Column G = post_url (LinkedIn response id)."
+            }
+        },
+        {
+            "id": 4,
+            "module": "http:ActionSendData",
+            "version": 3,
+            "parameters": {
+                "handleErrors": false
+            },
+            "mapper": {
+                "url": "__SLACK_WEBHOOK_URL__",
+                "method": "post",
+                "headers": [
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "qs": [],
+                "bodyType": "raw",
+                "parseResponse": false,
+                "timeout": 10,
+                "shareCookies": false,
+                "rejectUnauthorized": true,
+                "followRedirect": true,
+                "useQuerystring": false,
+                "gzip": true,
+                "contentType": "application/json",
+                "data": "{\"text\":\":white_check_mark: LinkedIn-Post {{1.id}} veröffentlicht ({{formatDate(now; \\\"DD.MM.YYYY HH:mm\\\"; \\\"Europe/Zurich\\\")}}) — {{substring(1.content; 0; 80)}}…\"}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 0
+                },
+                "notes": "Slack confirmation webhook. Optional — remove if not needed."
+            }
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu1.make.com",
+        "scheduling": {
+            "type": "cron",
+            "cron": "0 8 * * 1-5",
+            "timezone": "Europe/Zurich"
+        },
+        "notes": [
+            {
+                "moduleIds": [
+                    1
+                ],
+                "content": "Schedule: Mo-Fr 08:00 Europe/Zurich. Reads first row where status=ready AND scheduled_date=today (max 1).",
+                "color": "#2E8AE6"
+            },
+            {
+                "moduleIds": [
+                    2
+                ],
+                "content": "Replace __LINKEDIN_ACCESS_TOKEN__ and __LINKEDIN_PERSON_URN__ via Scenario-Variables. For an easier setup use Buffer / Publer connection — see SETUP.md ALTERNATIVE.",
+                "color": "#FFB200"
+            },
+            {
+                "moduleIds": [
+                    3
+                ],
+                "content": "Update row -> status=posted, posted_at=now, post_url=LinkedIn response id. Requires Google Sheets connection.",
+                "color": "#34A853"
+            },
+            {
+                "moduleIds": [
+                    4
+                ],
+                "content": "Slack webhook for confirmation. Remove module if you don't use Slack.",
+                "color": "#E63946"
+            }
+        ]
+    }
+}
