@@ -7,34 +7,94 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://abannews.com/founding.html</loc>
+    <loc>https://abannews.com/about.html</loc>
     <lastmod>2026-05-27</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/faq.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://abannews.com/sponsoring.html</loc>
+    <loc>https://abannews.com/archive.html</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://abannews.com/preview.html</loc>
     <lastmod>2026-05-27</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/founding.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/sponsoring.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://abannews.com/werbung.html</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/resources.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/roadmap.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://abannews.com/impressum.html</loc>
+    <loc>https://abannews.com/press.html</loc>
     <lastmod>2026-05-27</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/brand.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/launch.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/stats.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/willkommen.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://abannews.com/datenschutz.html</loc>
@@ -43,125 +103,171 @@
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://abannews.com/faq.html</loc>
+    <loc>https://abannews.com/impressum.html</loc>
     <lastmod>2026-05-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/001-2026-06-01-china-zerlegt-die-preisliste.html</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://abannews.com/resources.html</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://abannews.com/archive.html</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://abannews.com/roadmap.html</loc>
-    <lastmod>2026-05-27</lastmod>
+    <loc>https://abannews.com/archive/002-2026-06-02-claude-cowork-drei-tage-selbsttest.html</loc>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <!-- English version -->
-  <url>
-    <loc>https://abannews.com/en/</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link xmlns:xhtml="http://www.w3.org/1999/xhtml" rel="alternate" hreflang="de" href="https://abannews.com/" />
-    <xhtml:link xmlns:xhtml="http://www.w3.org/1999/xhtml" rel="alternate" hreflang="en" href="https://abannews.com/en/" />
-  </url>
-  <url>
-    <loc>https://abannews.com/en/about.html</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://abannews.com/en/founding.html</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link xmlns:xhtml="http://www.w3.org/1999/xhtml" rel="alternate" hreflang="de" href="https://abannews.com/founding.html" />
-    <xhtml:link xmlns:xhtml="http://www.w3.org/1999/xhtml" rel="alternate" hreflang="en" href="https://abannews.com/en/founding.html" />
-  </url>
-  <url>
-    <loc>https://abannews.com/en/sponsoring.html</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link xmlns:xhtml="http://www.w3.org/1999/xhtml" rel="alternate" hreflang="de" href="https://abannews.com/sponsoring.html" />
-    <xhtml:link xmlns:xhtml="http://www.w3.org/1999/xhtml" rel="alternate" hreflang="en" href="https://abannews.com/en/sponsoring.html" />
-  </url>
-  <url>
-    <loc>https://abannews.com/en/faq.html</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link xmlns:xhtml="http://www.w3.org/1999/xhtml" rel="alternate" hreflang="de" href="https://abannews.com/faq.html" />
-    <xhtml:link xmlns:xhtml="http://www.w3.org/1999/xhtml" rel="alternate" hreflang="en" href="https://abannews.com/en/faq.html" />
-  </url>
-  <url>
-    <loc>https://abannews.com/press.html</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://abannews.com/brand.html</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://abannews.com/stats.html</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://abannews.com/downloads/30-prompts-fuer-solopreneure.pdf</loc>
-    <lastmod>2026-05-27</lastmod>
+    <loc>https://abannews.com/archive/003-2026-06-03-pl-tzlich-war-s-nur.html</loc>
+    <lastmod>2026-06-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://abannews.com/downloads/anti-hype-glossar.pdf</loc>
-    <lastmod>2026-05-27</lastmod>
+    <loc>https://abannews.com/archive/004-2026-06-04-mistral-macht-ernst-eu-ai.html</loc>
+    <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://abannews.com/downloads/dsgvo-ki-checkliste.pdf</loc>
-    <lastmod>2026-05-27</lastmod>
+    <loc>https://abannews.com/archive/005-2026-06-05-werkzeugkasten-drei-getestet-eins-behalten.html</loc>
+    <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://abannews.com/downloads/ai-tool-stack-2026.pdf</loc>
-    <lastmod>2026-05-27</lastmod>
+    <loc>https://abannews.com/archive/006-2026-06-08-sonnet-4-6-hat-augen.html</loc>
+    <lastmod>2026-06-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://abannews.com/downloads/cold-email-templates.pdf</loc>
+    <loc>https://abannews.com/archive/007-2026-06-09-cap-so-vs-loom-ein.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/008-2026-06-10-agentic-ai-der-reality-check.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/009-2026-06-11-aleph-alpha-vs-us-stack.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/010-2026-06-12-werkzeugkasten-woche-2-drei-neu.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/011-2026-06-15-prompts-f-r-deutsche-texte.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/012-2026-06-16-sieben-sachen-die-agenten-2026.html</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/013-2026-06-17-drei-notes-apps-drei-wochen.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/014-2026-06-18-vier-stories-eine-linie.html</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/015-2026-06-19-drei-wochen-aban-news-was.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/016-2026-06-22-vier-news-eine-verschiebung.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/017-2026-06-23-deepl-write-14-tage-sp.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/018-2026-06-24-vibe-coding-was-wirklich-produktiv.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/019-2026-06-25-leadgen-workflow-in-30-minuten.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/020-2026-06-26-werkzeugkasten-woche-4-synergistisch-entlarvt.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/021-2026-06-29-schweizer-selbstst-ndige-was-du.html</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/022-2026-06-30-mail-stack-f-r-solopreneure.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/023-2026-07-01-ki-ersetzt-deine-mitarbeiter-die.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/024-2026-07-02-halbjahres-drift-mistral-w-chst.html</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/025-2026-07-03-werkzeugkasten-h1-bilanz-quantensprung-entlarvt.html</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/archive/probe-2026-05-27.html</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
-
-  <!-- Internal launch checklist — marked noindex via meta robots, listed
-       here only for completeness of site-inventory tooling. Crawlers will
-       respect the noindex tag and drop it. Priority 0.0 = lowest. -->
   <url>
-    <loc>https://abannews.com/launch.html</loc>
+    <loc>https://abannews.com/archive/ultimate-probe-2026-05-27.html</loc>
     <lastmod>2026-05-27</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

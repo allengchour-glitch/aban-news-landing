@@ -1,0 +1,285 @@
+/* archive-specific overrides — extends /css/styles.css */
+.crumbs {
+  font-size: 0.9rem;
+  color: var(--c-muted);
+  margin-bottom: 1rem;
+}
+.crumbs a { color: var(--c-muted); text-decoration: underline; }
+.crumbs a:hover { color: var(--c-accent); }
+
+/* Filters bar */
+.arc-filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  gap: 0.75rem;
+  align-items: end;
+  margin-bottom: 0.75rem;
+}
+@media (max-width: 720px) {
+  .arc-filters { grid-template-columns: 1fr 1fr; }
+  .arc-filter--clear { grid-column: 1 / -1; }
+}
+.arc-filter label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--c-muted);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.arc-filter input,
+.arc-filter select {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--r);
+  border: 1px solid var(--c-border);
+  background: var(--c-card);
+  font: inherit;
+  color: var(--c-text);
+}
+.arc-filter input:focus,
+.arc-filter select:focus {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 1px;
+}
+.arc-count {
+  color: var(--c-muted);
+  font-size: 0.9rem;
+  margin: 0.25rem 0 0;
+}
+
+/* Card grid */
+.arc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.arc-card {
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: 1.25rem;
+  transition: transform var(--t), box-shadow var(--t);
+  display: flex;
+  flex-direction: column;
+}
+.arc-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--c-shadow-lg);
+}
+.arc-card-meta {
+  font-size: 0.82rem;
+  color: var(--c-muted);
+  margin: 0 0 0.5rem;
+}
+.arc-card-title {
+  font-size: 1.15rem;
+  line-height: 1.35;
+  margin: 0 0 0.5rem;
+}
+.arc-card-title a {
+  color: var(--c-text);
+  text-decoration: none;
+}
+.arc-card-title a:hover { color: var(--c-accent); }
+.arc-card-preview {
+  color: var(--c-text-2);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 0.75rem;
+  flex: 1;
+}
+.arc-card-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0 0 0.75rem;
+}
+.topic-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.18rem 0.55rem;
+  border-radius: 99px;
+  background: var(--c-bg-alt);
+  color: var(--c-accent-hi);
+  border: 1px solid var(--c-accent-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.arc-card-cta a {
+  font-weight: 600;
+  color: var(--c-accent);
+  text-decoration: none;
+}
+.arc-card-cta a:hover { text-decoration: underline; }
+.arc-empty {
+  text-align: center;
+  color: var(--c-muted);
+  padding: 3rem 1rem;
+  font-style: italic;
+}
+
+/* Issue page */
+.issue-wrap {
+  max-width: var(--w);
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+}
+.issue-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--c-border);
+}
+.issue-meta {
+  color: var(--c-muted);
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem;
+}
+.issue-kicker {
+  color: var(--c-accent-hi);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0.25rem 0;
+}
+.issue-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  line-height: 1.2;
+  margin: 0.25rem 0 0.5rem;
+}
+.issue-body {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.issue-body h2 {
+  margin-top: 2.5rem;
+  padding-top: 0.5rem;
+  font-size: 1.4rem;
+  border-top: 1px solid var(--c-border);
+}
+.issue-body h3 {
+  margin-top: 2rem;
+  font-size: 1.15rem;
+  color: var(--c-text);
+}
+.issue-body blockquote {
+  border-left: 3px solid var(--c-accent-soft);
+  background: var(--c-bg-alt);
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0 var(--r) var(--r) 0;
+  color: var(--c-text-2);
+}
+.issue-body pre {
+  background: #1f2937;
+  color: #f3f4f6;
+  padding: 1rem;
+  border-radius: var(--r);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.issue-body code {
+  background: var(--c-bg-alt);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+.issue-body pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+.issue-body a {
+  color: var(--c-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.issue-body a:hover { color: var(--c-accent-hi); }
+.issue-body hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid var(--c-border);
+}
+.topics { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.75rem 0; }
+
+.issue-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--c-border);
+}
+.issue-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.btn--small { padding: 0.45rem 0.85rem; font-size: 0.85rem; }
+
+.pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.pager-link {
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r);
+  padding: 0.85rem 1rem;
+  color: var(--c-text);
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  transition: border-color var(--t), background var(--t);
+}
+.pager-link:hover {
+  border-color: var(--c-accent);
+  background: var(--c-bg-alt);
+}
+.pager-link--next { text-align: right; }
+.pager-empty { display: block; }
+
+.week-sidebar {
+  background: var(--c-bg-alt);
+  border-radius: var(--r-lg);
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+.week-sidebar h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.75rem;
+  color: var(--c-accent-hi);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.sib-list {
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.sib-list li { margin: 0.4rem 0; }
+.sib-list a {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  color: var(--c-text);
+  align-items: baseline;
+}
+.sib-list a:hover { background: var(--c-card); }
+.sib-list a[aria-current="page"] {
+  background: var(--c-card);
+  border-left: 3px solid var(--c-accent);
+  font-weight: 600;
+}
+.sib-date {
+  color: var(--c-muted);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  min-width: 8em;
+  flex-shrink: 0;
+}
+.sib-hook { color: var(--c-text-2); }
