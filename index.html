@@ -12,7 +12,10 @@
   <!-- Open Graph -->
   <meta property="og:title" content="aban news — Täglicher AI-Newsletter für DACH">
   <meta property="og:description" content="Mo–Fr morgens 3-5 Min: KI-News, Tool des Tages, sofort umsetzbarer Prompt. Kein Hype, persönlich kuratiert.">
-  <meta property="og:image" content="https://abannews.com/og-image.png">
+  <meta property="og:image" content="https://abannews.com/og-image.svg">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://abannews.com/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_DE">
@@ -22,10 +25,11 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="aban news — Täglicher AI-Newsletter für DACH">
   <meta name="twitter:description" content="Mo–Fr morgens 3-5 Min: KI-News, Tool des Tages, ein Prompt. Kein Hype.">
-  <meta name="twitter:image" content="https://abannews.com/og-image.png">
+  <meta name="twitter:image" content="https://abannews.com/og-image.svg">
 
-  <!-- Favicon (☕ als SVG-data-uri — keine externe Anfrage, kein extra Request) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
+  <!-- Favicon: SVG mit Light/Dark-Variante via prefers-color-scheme im File -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
 
   <!-- Preload critical CSS asynchron — no-blocking -->
   <link rel="stylesheet" href="css/styles.css">
@@ -72,69 +76,237 @@
 <main id="main">
 
   <!-- ============================================
-       HERO — Pattern adopted: Identity-Count + Benefit+Time-Headline + Form-Above-Fold + Trust-Strip
+       HERO — 2-spaltig: Content links, SVG-Illustration rechts (Desktop)
+       Mobile: SVG oben (kleiner), Content drunter
        ============================================ -->
   <section class="hero">
-    <div class="wrap">
+    <div class="wrap wrap--wide hero-grid">
 
-      <!-- TODO: Sub-count einsetzen sobald >100 Subs. Bis dahin: weglassen ODER "Privat-Beta" zeigen. -->
-      <span class="identity-count" aria-label="Status">
-        <span class="dot" aria-hidden="true"></span>
-        <span><strong>Mo–Fr neu</strong> · in der Schweiz geschrieben, im DACH-Raum gelesen</span>
-      </span>
+      <div class="hero-content reveal">
 
-      <h1>Der erste tägliche deutsche AI-Newsletter — 3-5 Min, kein Hype.</h1>
+        <span class="identity-count" aria-label="Status">
+          <span class="dot" aria-hidden="true"></span>
+          <span><strong>Mo–Fr neu</strong> · in der Schweiz geschrieben, im DACH-Raum gelesen</span>
+        </span>
 
-      <p class="lead">
-        Mo–Fr morgens. Drei bis fünf KI-News, ein Tool das ich selbst getestet hab, ein Prompt zum sofortigen Ausprobieren. Persönlich kuratiert für Selbstständige, Marketer und alle, die KI im Arbeitsalltag tatsächlich nutzen.
-      </p>
+        <h1 class="hero-headline">Der erste tägliche deutsche AI-Newsletter — 3-5 Min, kein Hype.</h1>
 
-      <ul class="promise" role="list">
-        <li>3-5 News mit eigener Einschätzung</li>
-        <li>Ein Tool des Tages</li>
-        <li>Ein kopierbarer Prompt</li>
-        <li>3-5 Min Lesezeit</li>
-      </ul>
+        <p class="lead">
+          Mo–Fr morgens. Drei bis fünf KI-News, ein Tool das ich selbst getestet hab, ein Prompt zum sofortigen Ausprobieren. Persönlich kuratiert für Selbstständige, Marketer und alle, die KI im Arbeitsalltag tatsächlich nutzen.
+        </p>
 
-      <!-- Subscribe Form: single Email-Field, Hero above fold -->
-      <form
-        class="subscribe"
-        id="signup"
-        action="[BEEHIIV_FORM_ACTION]"
-        method="post"
-        novalidate
-      >
-        <label for="hero-email" class="visually-hidden" style="position:absolute;left:-9999px;">E-Mail-Adresse</label>
-        <div class="subscribe-row">
-          <input
-            type="email"
-            id="hero-email"
-            name="email"
-            placeholder="deine@mail.de"
-            required
-            autocomplete="email"
-            inputmode="email"
-            aria-label="E-Mail-Adresse"
-          >
-          <button type="submit">
-            <span>Kostenlos abonnieren</span>
-            <span aria-hidden="true">→</span>
-          </button>
-        </div>
-        <div class="consent-row">
-          <input type="checkbox" id="hero-consent" name="consent" value="1" required>
-          <label for="hero-consent">
-            Ich willige ein, Mo–Fr eine E-Mail von aban news zu erhalten. Abmeldung jederzeit per Klick. Details in der <a href="/datenschutz.html">Datenschutzerklärung</a>.
-          </label>
-        </div>
-        <ul class="trust" aria-label="Vertrauen">
-          <li>DSGVO-konform</li>
-          <li>1-Klick-Abmeldung</li>
-          <li>kein Spam, nie</li>
-          <li>kein Tracking-Pixel</li>
+        <ul class="promise" role="list">
+          <li>3-5 News mit eigener Einschätzung</li>
+          <li>Ein Tool des Tages</li>
+          <li>Ein kopierbarer Prompt</li>
+          <li>3-5 Min Lesezeit</li>
         </ul>
-      </form>
 
+        <form
+          class="subscribe"
+          id="signup"
+          action="[BEEHIIV_FORM_ACTION]"
+          method="post"
+          novalidate
+        >
+          <label for="hero-email" class="visually-hidden" style="position:absolute;left:-9999px;">E-Mail-Adresse</label>
+          <div class="subscribe-row">
+            <input
+              type="email"
+              id="hero-email"
+              name="email"
+              placeholder="deine@mail.de"
+              required
+              autocomplete="email"
+              inputmode="email"
+              aria-label="E-Mail-Adresse"
+            >
+            <button type="submit" class="btn-pulse">
+              <span>Kostenlos abonnieren</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+          <div class="consent-row">
+            <input type="checkbox" id="hero-consent" name="consent" value="1" required>
+            <label for="hero-consent">
+              Ich willige ein, Mo–Fr eine E-Mail von aban news zu erhalten. Abmeldung jederzeit per Klick. Details in der <a href="/datenschutz.html">Datenschutzerklärung</a>.
+            </label>
+          </div>
+          <ul class="trust" aria-label="Vertrauen">
+            <li>DSGVO-konform</li>
+            <li>1-Klick-Abmeldung</li>
+            <li>kein Spam, nie</li>
+            <li>kein Tracking-Pixel</li>
+          </ul>
+        </form>
+
+      </div>
+
+      <!-- Hero Visual: Coffee + Steam-in-Form-eines-N + Mail-Icon, inline SVG <5KB -->
+      <div class="hero-visual reveal" aria-hidden="true">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kaffeetasse mit Newsletter-Dampf">
+          <defs>
+            <linearGradient id="hero-cup" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fbbf24"/>
+              <stop offset="1" stop-color="#d97706"/>
+            </linearGradient>
+            <linearGradient id="hero-mail" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset="1" stop-color="#fef3c7"/>
+            </linearGradient>
+            <radialGradient id="hero-glow" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0" stop-color="#fde68a" stop-opacity="0.6"/>
+              <stop offset="1" stop-color="#fde68a" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Soft amber glow -->
+          <circle cx="200" cy="220" r="180" fill="url(#hero-glow)"/>
+
+          <!-- Steam in "N" shape (Newsletter) -->
+          <g class="hero-steam" stroke="#d97706" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+            <path d="M110 130 L110 50"/>
+            <path d="M110 50 L170 130"/>
+            <path d="M170 130 L170 50"/>
+          </g>
+          <!-- Secondary wispy steam -->
+          <g stroke="#d97706" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.35">
+            <path d="M210 100 C 220 80, 200 70, 215 50"/>
+            <path d="M85 110 C 75 90, 95 80, 80 60"/>
+          </g>
+
+          <!-- Saucer shadow -->
+          <ellipse cx="150" cy="335" rx="115" ry="10" fill="#1f2937" opacity="0.12"/>
+
+          <!-- Cup body -->
+          <path d="M65 170 L65 290 Q65 330 110 330 L190 330 Q235 330 235 290 L235 170 Z" fill="url(#hero-cup)"/>
+          <!-- Cup rim -->
+          <ellipse cx="150" cy="170" rx="85" ry="12" fill="#b45309"/>
+          <ellipse cx="150" cy="170" rx="74" ry="7" fill="#1f2937" opacity="0.4"/>
+          <!-- Handle -->
+          <path d="M235 200 Q285 200 285 245 Q285 290 235 290" stroke="#d97706" stroke-width="18" fill="none" stroke-linecap="round"/>
+
+          <!-- Mail envelope (top-right) -->
+          <g transform="translate(265 90) rotate(8)">
+            <rect x="0" y="0" width="110" height="75" rx="8" fill="url(#hero-mail)" stroke="#d97706" stroke-width="3"/>
+            <path d="M0 0 L55 42 L110 0" stroke="#d97706" stroke-width="3" fill="none" stroke-linejoin="round"/>
+            <!-- Notification dot -->
+            <circle cx="105" cy="6" r="11" fill="#dc2626"/>
+            <text x="105" y="11" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff">1</text>
+          </g>
+
+          <!-- Tiny coffee bean accents -->
+          <g fill="#b45309" opacity="0.6">
+            <ellipse cx="30" cy="350" rx="9" ry="5" transform="rotate(-30 30 350)"/>
+            <ellipse cx="370" cy="340" rx="9" ry="5" transform="rotate(25 370 340)"/>
+            <path d="M30 350 Q30 348 30 352" stroke="#fffbf5" stroke-width="1" fill="none"/>
+          </g>
+        </svg>
+
+        <!-- Newsletter Preview Mockup (Inbox-Card unter dem Visual) -->
+        <div class="mockup" role="img" aria-label="Vorschau: aban news Newsletter-Mail">
+          <div class="mockup-header">
+            <span class="mockup-dot mockup-dot--r"></span>
+            <span class="mockup-dot mockup-dot--y"></span>
+            <span class="mockup-dot mockup-dot--g"></span>
+            <span class="mockup-title">📧 aban news · Mi 27. Mai · 4 Min Lesezeit</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-from">Von <strong>Aban</strong> &lt;hallo@abannews.com&gt;</div>
+            <div class="mockup-subj">☕ China zieht den Vorhang zu, DeepSeek dreht am Preis</div>
+            <div class="mockup-text">
+              <strong>Mittwoch, halb durch.</strong> Heute drei News, die mich tatsächlich was angehen — der Rest aus den Feeds ist Branchen-Geplauder, das ich für dich aussortiert hab…
+            </div>
+            <div class="mockup-section">📰 DeepSeek viertelt die Preise für V4-Pro</div>
+            <div class="mockup-text mockup-text--small">
+              Das chinesische Startup hat sein Top-Modell dauerhaft auf 25 % gesenkt. <span class="mockup-link">Quelle →</span>
+            </div>
+            <div class="mockup-section">🛠 Tool des Tages: eustella (Wien)</div>
+            <div class="mockup-text mockup-text--small">
+              AI-Companion aus Wien — EU-Hosting, DSGVO-nativ. Open Beta, gratis.
+            </div>
+            <div class="mockup-signoff">— Aban</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       FEATURES BAR — "Was du JEDE Ausgabe bekommst" (Anchor-Pattern aus theHustle)
+       ============================================ -->
+  <section class="features-bar reveal">
+    <div class="wrap wrap--wide">
+      <ul class="features" role="list">
+        <li>
+          <span class="feat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4z"/><path d="M4 4l8 6 8-6"/><path d="M8 14h8"/><path d="M8 18h5"/></svg>
+          </span>
+          <strong>3–5 News</strong>
+          <span>mit eigener Einschätzung</span>
+        </li>
+        <li>
+          <span class="feat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.7 2.7-2-.3-.3-2 2.7-2.7z"/></svg>
+          </span>
+          <strong>1 Tool</strong>
+          <span>ehrlich getestet</span>
+        </li>
+        <li>
+          <span class="feat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg>
+          </span>
+          <strong>1 Prompt</strong>
+          <span>sofort kopierbar</span>
+        </li>
+        <li>
+          <span class="feat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h14v9a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V8z"/><path d="M17 11h2a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-2"/><path d="M7 1v3M10 1v3M13 1v3"/></svg>
+          </span>
+          <strong>3–5 Min</strong>
+          <span>Lesezeit</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SOCIAL PROOF — 3 Trust-Cards mit SVG-Icons
+       ============================================ -->
+  <section class="alt reveal">
+    <div class="wrap wrap--wide">
+      <h2 class="center">Warum Leute aban news lesen</h2>
+      <p class="center muted">Drei Versprechen, die wir Tag für Tag halten — nachprüfbar.</p>
+
+      <div class="grid grid--3 social-proof">
+        <div class="card sp-card">
+          <span class="sp-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>
+          </span>
+          <h3>100 Founding-Slots</h3>
+          <p>Lebenslang Premium für 149 €. Cap auf 100 — danach läuft Founding aus. Jetzt sichern, bevor die Plätze weg sind.</p>
+          <p class="sp-meta"><a href="/founding.html">→ Founding ansehen</a></p>
+        </div>
+
+        <div class="card sp-card">
+          <span class="sp-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4z"/><path d="M4 4l8 6 8-6"/></svg>
+          </span>
+          <h3>Mo–Fr seit Tag 1</h3>
+          <p>Tägliche Werktags-Mail, ohne Ausnahme. Kein „Sommer-Hiatus", kein „diese Woche keine Zeit". Wenn die Mail nicht kommt — hat aban news ein Problem.</p>
+          <p class="sp-meta">Konsistenz statt Hype</p>
+        </div>
+
+        <div class="card sp-card">
+          <span class="sp-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 6v5c0 5 4 9 9 11 5-2 9-6 9-11V6l-9-4z"/><path d="M9 12l2 2 4-4"/></svg>
+          </span>
+          <h3>DSGVO-konform · CH</h3>
+          <p>Schweizer Einzelunternehmen, EU-konforme Pipeline. 1-Klick-Abmeldung. Kein Tracking-Pixel. AVV auf Anfrage für DACH-Firmen.</p>
+          <p class="sp-meta">Privacy by default</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -186,7 +358,8 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
       </article>
 
       <div class="center mt-5">
-        <a href="#signup" class="btn btn--lg">Erste echte Ausgabe per Mail holen</a>
+        <a href="/preview.html" class="btn btn--ghost">Komplette Probe-Ausgabe lesen</a>
+        <a href="#signup" class="btn btn--lg" style="margin-left:.5rem;">Erste echte Ausgabe per Mail holen</a>
       </div>
     </div>
   </section>
@@ -340,6 +513,7 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
       <div>
         <h5>aban news</h5>
         <a href="/">Startseite</a>
+        <a href="/preview.html">Probe-Ausgabe ansehen</a>
         <a href="/founding.html">Founding Member</a>
         <a href="/sponsoring.html">Werbung schalten</a>
         <a href="/werbung.html">Werbe-Policy</a>
@@ -362,20 +536,42 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
   </div>
 </footer>
 
-<!-- Minimal inline JS: Sticky-CTA on/off body class (no tracking, no fetch) -->
+<!-- Minimal inline JS: Sticky-CTA + Scroll-Reveal (no tracking, no fetch, < 1 KB) -->
 <script>
   (function () {
+    // Respect reduced-motion preference: skip reveal entirely
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 1) Sticky mobile CTA on/off
     var stickyEl = document.querySelector('.mobile-cta');
     var heroForm = document.getElementById('signup');
-    if (!stickyEl || !heroForm) return;
-    document.body.classList.add('mobile-cta-on');
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
+    if (stickyEl && heroForm) {
+      document.body.classList.add('mobile-cta-on');
+      if ('IntersectionObserver' in window) {
+        var ioCta = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            stickyEl.style.display = entry.isIntersecting ? 'none' : '';
+          });
+        }, { threshold: 0.1 });
+        ioCta.observe(heroForm);
+      }
+    }
+
+    // 2) Scroll reveal — fade-in-up sections
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      var revealEls = document.querySelectorAll('.reveal');
+      var ioReveal = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          stickyEl.style.display = entry.isIntersecting ? 'none' : '';
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            ioReveal.unobserve(entry.target);
+          }
         });
-      }, { threshold: 0.1 });
-      io.observe(heroForm);
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach(function (el) { ioReveal.observe(el); });
+    } else {
+      // Reduced-motion: show everything instantly
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
     }
   })();
 </script>

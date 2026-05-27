@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="aban news">
+  <defs>
+    <linearGradient id="cup" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#d97706"/>
+    </linearGradient>
+    <style>
+      .bg { fill: #fffbf5; }
+      @media (prefers-color-scheme: dark) {
+        .bg { fill: #1f2937; }
+        .steam { stroke: #fbbf24; }
+      }
+    </style>
+  </defs>
+  <rect class="bg" width="64" height="64" rx="12"/>
+  <!-- Steam -->
+  <path class="steam" d="M26 14 C 22 8, 30 6, 26 0" stroke="#d97706" stroke-width="2.5" fill="none" stroke-linecap="round" transform="translate(0 4)"/>
+  <path class="steam" d="M38 14 C 42 8, 34 6, 38 0" stroke="#d97706" stroke-width="2.5" fill="none" stroke-linecap="round" transform="translate(0 4)"/>
+  <!-- Cup -->
+  <path d="M14 24 L14 44 Q14 54 24 54 L40 54 Q50 54 50 44 L50 24 Z" fill="url(#cup)"/>
+  <ellipse cx="32" cy="24" rx="18" ry="3" fill="#b45309"/>
+  <!-- Handle -->
+  <path d="M50 30 Q58 30 58 38 Q58 46 50 46" stroke="#d97706" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>
