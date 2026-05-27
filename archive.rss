@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aban news</title>
+    <link>https://abannews.com</link>
+    <description>Täglicher AI-Newsletter für DACH, Mo–Fr morgens, 3-5 Min, kein Hype.</description>
+    <language>de-DE</language>
+    <copyright>Alleng Chour, 2026</copyright>
+    <managingEditor>hallo@abannews.com (Aban)</managingEditor>
+    <webMaster>hallo@abannews.com (Aban)</webMaster>
+    <pubDate>Wed, 27 May 2026 07:00:00 +0200</pubDate>
+    <lastBuildDate>Wed, 27 May 2026 07:00:00 +0200</lastBuildDate>
+    <category>Künstliche Intelligenz</category>
+    <category>Newsletter</category>
+    <generator>aban news Make-Pipeline v1.1</generator>
+    <atom:link href="https://abannews.com/archive.rss" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>China zieht den Vorhang zu, DeepSeek dreht am Preis</title>
+      <link>https://abannews.com/preview.html</link>
+      <guid isPermaLink="true">https://abannews.com/preview.html</guid>
+      <pubDate>Wed, 27 May 2026 07:00:00 +0200</pubDate>
+      <description><![CDATA[Mittwoch, halb durch. Heute 4 News die mich tatsächlich was angehen — DeepSeek viertelt Preise, Paul Graham warnt vor KI-Mails, eustella geht in Open Beta...]]></description>
+      <author>hallo@abannews.com (Aban)</author>
+      <category>AI</category>
+      <category>DACH</category>
+    </item>
+  </channel>
+</rss>
