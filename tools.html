@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Tool-Database 2026 — 140+ Tools mit Aban-Ratings | aban news</title>
+  <meta name="description" content="Searchable Datenbank mit 140+ AI-Tools, ehrlich bewertet auf DACH-Relevanz und Worth-it-Score. Filterbar nach Kategorie, Preis und Use-Case. Ohne Email-Gate.">
+  <meta name="theme-color" content="#d97706">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://abannews.com/tools.html">
+
+  <meta property="og:title" content="AI-Tool-Database 2026 — 140+ Tools mit Aban-Ratings">
+  <meta property="og:description" content="Welche AI-Tools lohnen sich 2026 für DACH-Solos und KMU? Searchable Datenbank, ehrlich bewertet, ohne Affiliate-Bias.">
+  <meta property="og:image" content="https://abannews.com/og-image.svg">
+  <meta property="og:url" content="https://abannews.com/tools.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="aban news">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI-Tool-Database 2026">
+  <meta name="twitter:description" content="140+ AI-Tools mit ehrlichen DACH-Ratings. Searchable. Ohne Affiliate-Bias.">
+  <meta name="twitter:image" content="https://abannews.com/og-image.svg">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    .filters{display:grid;grid-template-columns:1fr;gap:.75rem;background:var(--c-bg-alt);padding:1rem;border-radius:var(--r-lg);margin:1rem 0}
+    @media(min-width:720px){.filters{grid-template-columns:repeat(4,1fr)}}
+    .filters label{font-size:.85rem;color:var(--c-muted);font-weight:600;display:block;margin-bottom:.25rem}
+    .filters input[type=text],.filters select{width:100%;padding:.5rem .65rem;border:1px solid var(--c-border);border-radius:var(--r);background:#fff;font-size:.95rem;font-family:inherit;color:var(--c-text)}
+    .filters input[type=range]{width:100%}
+    .filters .range-row{display:flex;justify-content:space-between;font-size:.8rem;color:var(--c-muted);margin-top:-.25rem}
+    .tool-stats{font-size:.85rem;color:var(--c-muted);margin:.5rem 0 1rem}
+    .grid-tools{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1rem}
+    @media(min-width:560px){.grid-tools{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:920px){.grid-tools{grid-template-columns:repeat(3,1fr)}}
+    .tool-card{background:#fff;border:1px solid var(--c-border);border-radius:var(--r-lg);padding:1rem;box-shadow:0 1px 2px var(--c-shadow);display:flex;flex-direction:column;gap:.5rem}
+    .tool-card h3{margin:0 0 .15rem;font-size:1.1rem;display:flex;align-items:center;gap:.4rem}
+    .tool-card .vendor{color:var(--c-muted);font-size:.85rem}
+    .tool-cats{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:.25rem}
+    .tool-cats span{font-size:.7rem;background:var(--c-bg-alt);color:var(--c-accent-hi);padding:.15rem .45rem;border-radius:99px;font-weight:600}
+    .badge{display:inline-block;padding:.1rem .5rem;border-radius:99px;font-size:.75rem;font-weight:600}
+    .badge-free{background:#d1fae5;color:#065f46}
+    .badge-paid{background:#fef3c7;color:#92400e}
+    .scores{display:flex;justify-content:space-between;gap:.5rem;font-size:.8rem;margin-top:.3rem}
+    .score-block{background:var(--c-bg);border:1px solid var(--c-border);border-radius:var(--r);padding:.35rem .5rem;flex:1}
+    .score-block strong{display:block;font-size:1rem;color:var(--c-accent-hi)}
+    .score-block span{color:var(--c-muted);font-size:.7rem}
+    .stars{color:var(--c-accent);letter-spacing:1px}
+    .stars .off{color:#d1d5db}
+    .tool-note{font-size:.88rem;line-height:1.5;color:var(--c-text-2);margin:.4rem 0 0}
+    .tool-actions{display:flex;justify-content:space-between;align-items:center;margin-top:.5rem;gap:.5rem;flex-wrap:wrap}
+    .tool-actions a{font-size:.85rem;color:var(--c-accent-hi);text-decoration:none;font-weight:600}
+    .tool-actions a:hover{text-decoration:underline}
+    .tool-more{display:none;padding-top:.5rem;border-top:1px dashed var(--c-border);font-size:.85rem;color:var(--c-text-2)}
+    .tool-more.open{display:block}
+    .tool-more h4{margin:.35rem 0 .15rem;font-size:.85rem;color:var(--c-muted);text-transform:uppercase;letter-spacing:.05em}
+    .toggle-btn{background:none;border:none;color:var(--c-accent-hi);font-weight:600;cursor:pointer;font-size:.85rem;padding:0;font-family:inherit}
+    .toggle-btn:hover{text-decoration:underline}
+    .empty{text-align:center;padding:3rem 1rem;color:var(--c-muted)}
+    .reset-btn{background:none;border:1px solid var(--c-border);color:var(--c-muted);padding:.4rem .8rem;border-radius:var(--r);cursor:pointer;font-family:inherit;font-size:.85rem}
+    .reset-btn:hover{background:#fff}
+    .filter-row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem}
+    .ausgaben-mentions a{color:var(--c-accent-hi);text-decoration:none;margin-right:.5rem;font-size:.8rem}
+  </style>
+
+  <script type="application/ld+json" id="tools-jsonld">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "AI-Tool-Database 2026 — aban news",
+    "description": "140+ AI-Tools für DACH-Solos, kuratiert und bewertet von aban news.",
+    "url": "https://abannews.com/tools.html",
+    "numberOfItems": 0,
+    "itemListElement": []
+  }
+  </script>
+</head>
+<body>
+
+<a href="#main" class="skip">Zum Hauptinhalt springen</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="/" class="brand" aria-label="aban news Startseite">
+      <span aria-hidden="true">☕</span>
+      <span>aban news</span>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="/resources.html">Resourcen</a>
+      <a href="/glossary.html">Glossar</a>
+      <a href="/sponsoring.html">Werbung</a>
+      <a href="/#signup" class="nav-cta">Abonnieren</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <h1 class="hero-headline">AI-Tool-Database 2026</h1>
+      <p class="lead">
+        <span id="tool-count">140+</span> AI-Tools, ehrlich bewertet für DACH-Solos und KMU. DACH-Relevanz, Worth-it-Score, Aban-Notes. Keine Affiliate-Links, kein Sponsoring, kein Email-Gate. Filtern, suchen, mehr finden in der nächsten Werkzeugkasten-Ausgabe.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+
+      <div class="filters" role="region" aria-label="Filter">
+        <div>
+          <label for="f-search">Suche</label>
+          <input type="text" id="f-search" placeholder="Tool, Vendor, Use-Case..." autocomplete="off">
+        </div>
+        <div>
+          <label for="f-category">Kategorie</label>
+          <select id="f-category">
+            <option value="">Alle</option>
+          </select>
+        </div>
+        <div>
+          <label for="f-pricing">Preis</label>
+          <select id="f-pricing">
+            <option value="">Alle</option>
+            <option value="free">Free-Tier vorhanden</option>
+            <option value="paid">Nur Paid</option>
+          </select>
+        </div>
+        <div>
+          <label for="f-sort">Sortieren</label>
+          <select id="f-sort">
+            <option value="score">Worth-it-Score</option>
+            <option value="dach">DACH-Relevanz</option>
+            <option value="name">A-Z</option>
+            <option value="recent">Newsletter-Erwähnungen</option>
+          </select>
+        </div>
+        <div>
+          <label for="f-dach">DACH-Relevanz min: <span id="f-dach-val">1</span>/10</label>
+          <input type="range" id="f-dach" min="1" max="10" step="1" value="1">
+        </div>
+        <div>
+          <label for="f-score">Worth-it-Score min: <span id="f-score-val">1</span>/10</label>
+          <input type="range" id="f-score" min="1" max="10" step="0.5" value="1">
+        </div>
+        <div style="display:flex;align-items:flex-end">
+          <button type="button" class="reset-btn" id="f-reset">Filter zurücksetzen</button>
+        </div>
+      </div>
+
+      <div class="filter-row">
+        <div class="tool-stats"><span id="visible-count">0</span> von <span id="total-count">0</span> Tools sichtbar</div>
+        <div class="tool-stats" id="last-updated"></div>
+      </div>
+
+      <div class="grid-tools" id="tools-grid" aria-live="polite"></div>
+
+      <noscript>
+        <p class="center muted" style="padding:2rem 0">
+          Für die interaktive Datenbank: JavaScript aktivieren. Daten als JSON unter <a href="/data/tools.json">/data/tools.json</a> direkt abrufbar.
+        </p>
+      </noscript>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <h2>Wie ich bewerte</h2>
+      <div class="grid grid--2">
+        <div class="card">
+          <h3>DACH-Relevanz (1-10)</h3>
+          <p>Wie nützlich für deutsche Texte, EU-Datenschutz, DACH-Geschäftsmodelle. Ein US-Tool kann technisch top sein und in der DACH-Relevanz mau abschneiden — und umgekehrt.</p>
+        </div>
+        <div class="card">
+          <h3>Worth-it-Score (1-10)</h3>
+          <p>Lohnt sich's wirklich für einen Solo oder kleines Team? Berücksichtigt Preis, Lernkurve, echten Mehrwert. 9-10: hätt ich's nicht, würd's mir fehlen. 5: hat seine Use-Cases. Unter 5: skip.</p>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:1rem"><strong>Hinweis:</strong> Ratings sind subjektiv und basieren auf eigener Nutzung + Marktbeobachtung. Update-Zyklus: monatlich. Quellen sind die <a href="/archive/">aban news Ausgaben</a>.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="center">Tool fehlt? Bewertung anders?</h2>
+      <p class="center muted">Schreib mir an <a href="mailto:hallo@abannews.com">hallo@abannews.com</a> mit dem Tool-Namen + warum es rein sollte. Beste Begründungen landen in der nächsten Werkzeugkasten-Ausgabe.</p>
+      <p class="center mt-5"><a href="/#signup" class="btn btn--lg">aban news abonnieren</a></p>
+    </div>
+  </section>
+
+</main>
+
+<div class="mobile-cta" aria-hidden="true">
+  <a href="/#signup" class="btn">☕ Kostenlos abonnieren</a>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>aban news</h5>
+        <a href="/">Startseite</a>
+        <a href="/preview.html">Probe-Ausgabe</a>
+        <a href="/founding.html">Founding Member</a>
+        <a href="/sponsoring.html">Werbung schalten</a>
+      </div>
+      <div>
+        <h5>Resourcen</h5>
+        <a href="/resources.html">Prompts + Templates</a>
+        <a href="/tools.html">Tool-Database</a>
+        <a href="/glossary.html">KI-Glossar</a>
+        <a href="/archive.html">Archiv</a>
+      </div>
+      <div>
+        <h5>Mehr lesen</h5>
+        <a href="/about.html">Über Aban</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/roadmap.html">Roadmap</a>
+        <a href="/press.html">Press-Kit</a>
+      </div>
+      <div>
+        <h5>Rechtliches</h5>
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>
+      </div>
+    </div>
+    <p class="foot-bottom">
+      &copy; 2026 aban news · Geschrieben in der Schweiz, gelesen im DACH-Raum · <em>— Aban</em>
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var STATE = { tools: [], filtered: [], categories: [], expandedIds: new Set() };
+  var els = {
+    grid: document.getElementById('tools-grid'),
+    search: document.getElementById('f-search'),
+    cat: document.getElementById('f-category'),
+    pricing: document.getElementById('f-pricing'),
+    sort: document.getElementById('f-sort'),
+    dach: document.getElementById('f-dach'),
+    dachVal: document.getElementById('f-dach-val'),
+    score: document.getElementById('f-score'),
+    scoreVal: document.getElementById('f-score-val'),
+    reset: document.getElementById('f-reset'),
+    visible: document.getElementById('visible-count'),
+    total: document.getElementById('total-count'),
+    lastUp: document.getElementById('last-updated'),
+    toolCount: document.getElementById('tool-count'),
+    jsonld: document.getElementById('tools-jsonld')
+  };
+
+  function stars(score, max){
+    max = max || 10;
+    var full = Math.round(score);
+    var s = '';
+    for(var i=1;i<=max;i++){ s += i <= full ? '★' : '☆'; }
+    return '<span class="stars" aria-label="' + score + ' von ' + max + '">' + s.slice(0,5) + '</span>';
+  }
+
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function renderTool(t){
+    var id = esc(t.id);
+    var price = t.pricing && t.pricing.free_tier ? '<span class="badge badge-free">Free-Tier</span>' : '<span class="badge badge-paid">Paid</span>';
+    if (t.pricing && t.pricing.paid_from_eur && t.pricing.paid_from_eur > 0) {
+      price += ' <span class="muted" style="font-size:.8rem">ab ' + t.pricing.paid_from_eur + ' €</span>';
+    }
+    var cats = (t.category || []).map(function(c){ return '<span>' + esc(c) + '</span>'; }).join('');
+    var dach = t.dach_relevance || 0;
+    var score = t.worth_it_score || 0;
+    var mentions = (t.ausgaben_mentions || []).map(function(m){
+      return '<a href="/archive/" title="Ausgabe ' + esc(m) + '">#' + esc(m) + '</a>';
+    }).join('');
+    var alts = (t.alternatives || []).map(function(a){
+      return '<a href="#' + esc(a) + '">' + esc(a) + '</a>';
+    }).join(', ');
+    var uses = (t.use_cases || []).map(function(u){ return esc(u); }).join(', ');
+    var isOpen = STATE.expandedIds.has(t.id);
+
+    return '<article class="tool-card" id="' + id + '">' +
+      '<h3>' + esc(t.name) + '</h3>' +
+      '<div class="vendor">von ' + esc(t.vendor) + '</div>' +
+      '<div>' + price + '</div>' +
+      '<div class="tool-cats">' + cats + '</div>' +
+      '<div class="scores">' +
+        '<div class="score-block"><span>DACH</span><strong>' + dach + '/10</strong></div>' +
+        '<div class="score-block"><span>Worth-it</span><strong>' + score + '/10</strong></div>' +
+      '</div>' +
+      '<div>' + stars(dach/2) + '</div>' +
+      '<p class="tool-note">' + esc(t.aban_note) + '</p>' +
+      '<div class="tool-actions">' +
+        '<a href="' + esc(t.url) + '" target="_blank" rel="noopener nofollow">' + esc(t.name) + ' →</a>' +
+        '<button class="toggle-btn" data-id="' + id + '">' + (isOpen ? 'Weniger ↑' : 'Mehr ↓') + '</button>' +
+      '</div>' +
+      '<div class="tool-more' + (isOpen ? ' open' : '') + '" id="more-' + id + '">' +
+        (uses ? '<h4>Use-Cases</h4><p>' + uses + '</p>' : '') +
+        (mentions ? '<h4>Newsletter-Erwähnungen</h4><p class="ausgaben-mentions">' + mentions + '</p>' : '') +
+        (alts ? '<h4>Alternativen</h4><p>' + alts + '</p>' : '') +
+        (t.dsgvo_note ? '<h4>DSGVO-Notiz</h4><p>' + esc(t.dsgvo_note) + '</p>' : '') +
+      '</div>' +
+    '</article>';
+  }
+
+  function render(){
+    if (!STATE.filtered.length) {
+      els.grid.innerHTML = '<div class="empty">Keine Tools matchen deine Filter. <button class="toggle-btn" onclick="document.getElementById(\'f-reset\').click()">Zurücksetzen</button></div>';
+    } else {
+      els.grid.innerHTML = STATE.filtered.map(renderTool).join('');
+    }
+    els.visible.textContent = STATE.filtered.length;
+    els.total.textContent = STATE.tools.length;
+    // Attach toggle handlers
+    var btns = els.grid.querySelectorAll('.toggle-btn');
+    for (var i=0;i<btns.length;i++){
+      btns[i].addEventListener('click', function(){
+        var id = this.getAttribute('data-id');
+        if (STATE.expandedIds.has(id)) STATE.expandedIds.delete(id);
+        else STATE.expandedIds.add(id);
+        var more = document.getElementById('more-' + id);
+        var open = more.classList.toggle('open');
+        this.textContent = open ? 'Weniger ↑' : 'Mehr ↓';
+      });
+    }
+  }
+
+  function applyFilters(){
+    var q = (els.search.value || '').toLowerCase().trim();
+    var cat = els.cat.value;
+    var pr = els.pricing.value;
+    var minDach = parseInt(els.dach.value, 10);
+    var minScore = parseFloat(els.score.value);
+    var sort = els.sort.value;
+
+    var out = STATE.tools.filter(function(t){
+      if (q) {
+        var hay = (t.name + ' ' + t.vendor + ' ' + (t.category||[]).join(' ') + ' ' + (t.use_cases||[]).join(' ') + ' ' + (t.aban_note||'')).toLowerCase();
+        if (hay.indexOf(q) === -1) return false;
+      }
+      if (cat && (t.category||[]).indexOf(cat) === -1) return false;
+      if (pr === 'free' && !(t.pricing && t.pricing.free_tier)) return false;
+      if (pr === 'paid' && t.pricing && t.pricing.free_tier) return false;
+      if ((t.dach_relevance || 0) < minDach) return false;
+      if ((t.worth_it_score || 0) < minScore) return false;
+      return true;
+    });
+
+    out.sort(function(a,b){
+      if (sort === 'name') return a.name.localeCompare(b.name);
+      if (sort === 'dach') return (b.dach_relevance||0) - (a.dach_relevance||0);
+      if (sort === 'recent') return (b.ausgaben_mentions||[]).length - (a.ausgaben_mentions||[]).length;
+      return (b.worth_it_score||0) - (a.worth_it_score||0);
+    });
+
+    STATE.filtered = out;
+    render();
+  }
+
+  function populateCategories(){
+    var seen = {};
+    STATE.tools.forEach(function(t){
+      (t.category || []).forEach(function(c){ seen[c] = (seen[c]||0)+1; });
+    });
+    var sorted = Object.keys(seen).sort();
+    sorted.forEach(function(c){
+      var o = document.createElement('option');
+      o.value = c;
+      o.textContent = c + ' (' + seen[c] + ')';
+      els.cat.appendChild(o);
+    });
+  }
+
+  function updateJsonLd(){
+    try {
+      var data = JSON.parse(els.jsonld.textContent);
+      data.numberOfItems = STATE.tools.length;
+      data.itemListElement = STATE.tools.slice(0, 50).map(function(t, i){
+        return {
+          "@type": "ListItem",
+          "position": i+1,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": t.name,
+            "applicationCategory": (t.category||[]).join(', '),
+            "url": t.url,
+            "operatingSystem": "Web",
+            "offers": {
+              "@type": "Offer",
+              "price": t.pricing && t.pricing.paid_from_eur ? String(t.pricing.paid_from_eur) : "0",
+              "priceCurrency": t.pricing && t.pricing.currency ? t.pricing.currency : "EUR"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": String(t.worth_it_score || 5),
+              "bestRating": "10",
+              "ratingCount": "1"
+            }
+          }
+        };
+      });
+      els.jsonld.textContent = JSON.stringify(data);
+    } catch(e){}
+  }
+
+  function init(){
+    fetch('/data/tools.json').then(function(r){ return r.json(); }).then(function(data){
+      STATE.tools = data.tools || [];
+      els.toolCount.textContent = STATE.tools.length;
+      els.lastUp.textContent = 'Stand: ' + (data.last_updated || '');
+      populateCategories();
+      applyFilters();
+      updateJsonLd();
+      // If URL has hash, scroll to that tool
+      if (location.hash) {
+        var id = location.hash.slice(1);
+        var el = document.getElementById(id);
+        if (el) {
+          STATE.expandedIds.add(id);
+          applyFilters();
+          setTimeout(function(){ el.scrollIntoView({behavior:'smooth', block:'start'}); }, 100);
+        }
+      }
+    }).catch(function(){
+      els.grid.innerHTML = '<div class="empty">Datenbank konnte nicht geladen werden. Probier <a href="/data/tools.json">/data/tools.json</a> direkt.</div>';
+    });
+
+    var t;
+    function debounced(){ clearTimeout(t); t = setTimeout(applyFilters, 150); }
+    els.search.addEventListener('input', debounced);
+    els.cat.addEventListener('change', applyFilters);
+    els.pricing.addEventListener('change', applyFilters);
+    els.sort.addEventListener('change', applyFilters);
+    els.dach.addEventListener('input', function(){ els.dachVal.textContent = els.dach.value; debounced(); });
+    els.score.addEventListener('input', function(){ els.scoreVal.textContent = els.score.value; debounced(); });
+    els.reset.addEventListener('click', function(){
+      els.search.value = '';
+      els.cat.value = '';
+      els.pricing.value = '';
+      els.sort.value = 'score';
+      els.dach.value = '1'; els.dachVal.textContent = '1';
+      els.score.value = '1'; els.scoreVal.textContent = '1';
+      applyFilters();
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live MRR — aban news</title>
+<meta name="description" content="Build in Public. aban news macht alle Revenue-Zahlen öffentlich — MRR, Subs, Sponsoren, Kosten, Netto-Marge. Update täglich um 23:00 CET.">
+<meta name="robots" content="index, follow">
+
+<!-- DSGVO: keine Tracker, keine Cookies. Daten kommen aus Google Sheet via Make.com aggregiert. -->
+
+<style>
+:root {
+  --bg: #fafaf9;
+  --card: #ffffff;
+  --text: #18181b;
+  --text-muted: #71717a;
+  --border: #e4e4e7;
+  --accent: #d97706;
+  --accent-light: #fef3c7;
+  --green: #16a34a;
+  --red: #dc2626;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+.last-updated {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* Big Number Hero */
+.hero {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px 32px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.hero .label {
+  color: var(--text-muted);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.hero .big-number {
+  font-size: 72px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.hero .currency {
+  font-size: 40px;
+  vertical-align: top;
+  margin-right: 8px;
+}
+
+.hero .trend {
+  margin-top: 16px;
+  font-size: 16px;
+  color: var(--green);
+  font-weight: 600;
+}
+
+.hero .trend.negative { color: var(--red); }
+
+/* Grid Stats */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.stat-card .label {
+  color: var(--text-muted);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.stat-card .value {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.stat-card .sub {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Sources Table */
+.section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+th {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+td.number { font-weight: 600; text-align: right; }
+
+/* Progress Bar */
+.progress-bar {
+  background: var(--border);
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.progress-bar .fill {
+  background: var(--accent);
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.founding-counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+/* Sponsor Highlight */
+.sponsor-highlight {
+  background: var(--accent-light);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sponsor-highlight img {
+  height: 60px;
+  width: auto;
+  border-radius: 8px;
+}
+
+.sponsor-highlight .info {
+  flex: 1;
+}
+
+/* Cost vs Revenue */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.bar-row .bar {
+  background: var(--border);
+  border-radius: 4px;
+  height: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bar-row .bar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.bar-fill.revenue { background: var(--green); }
+.bar-fill.cost { background: var(--red); }
+
+/* Footer Section */
+.why-section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 24px;
+  border-left: 4px solid var(--accent);
+}
+
+.why-section h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.why-section p {
+  margin-bottom: 12px;
+  color: #3f3f46;
+}
+
+footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .hero .big-number { font-size: 52px; }
+  .hero .currency { font-size: 28px; }
+  body { padding: 16px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Live MRR — aban news</h1>
+  <p class="subtitle">Alle Revenue-Zahlen öffentlich. Build in Public, kein Theater.</p>
+  <p class="last-updated">Letztes Update: <span id="last-updated">2026-05-27, 23:00 CET</span></p>
+</header>
+
+<!-- HERO: Big MRR Number -->
+<div class="hero">
+  <div class="label">Monthly Recurring Revenue</div>
+  <div class="big-number">
+    <span class="currency">€</span><span id="mrr-value">0</span>
+  </div>
+  <div class="trend" id="mrr-trend">+€0 (30 Tage)</div>
+</div>
+
+<!-- Quick Stats Grid -->
+<div class="grid">
+  <div class="stat-card">
+    <div class="label">Annual Run-Rate</div>
+    <div class="value">€<span id="arr-value">0</span></div>
+    <div class="sub">MRR × 12</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="label">Active Subscribers</div>
+    <div class="value"><span id="total-subs">0</span></div>
+    <div class="sub"><span id="free-subs">0</span> free · <span id="premium-subs">0</span> premium · <span id="founding-subs">0</span> founding</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="label">Net Margin</div>
+    <div class="value"><span id="net-margin">0</span>%</div>
+    <div class="sub">Revenue minus Costs</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="label">Founding-Member-Slots</div>
+    <div class="value"><span id="founding-count">0</span> / 100</div>
+    <div class="progress-bar">
+      <div class="fill" id="founding-progress" style="width: 0%;"></div>
+    </div>
+    <div class="founding-counter">
+      <span>Plätze besetzt</span>
+      <span><span id="founding-remaining">100</span> frei</span>
+    </div>
+  </div>
+</div>
+
+<!-- Revenue Sources Breakdown -->
+<div class="section">
+  <h2>Revenue Sources (laufender Monat)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Quelle</th>
+        <th>Typ</th>
+        <th>Anzahl</th>
+        <th style="text-align: right;">MTD Brutto</th>
+        <th style="text-align: right;">Netto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Founding-Member (Stripe)</td>
+        <td>One-time</td>
+        <td><span id="src-founding-count">0</span></td>
+        <td class="number">€<span id="src-founding-gross">0</span></td>
+        <td class="number">€<span id="src-founding-net">0</span></td>
+      </tr>
+      <tr>
+        <td>Premium-Subs (Stripe/beehiiv)</td>
+        <td>Recurring</td>
+        <td><span id="src-premium-count">0</span></td>
+        <td class="number">€<span id="src-premium-gross">0</span></td>
+        <td class="number">€<span id="src-premium-net">0</span></td>
+      </tr>
+      <tr>
+        <td>Team-Abos</td>
+        <td>Recurring</td>
+        <td><span id="src-team-count">0</span></td>
+        <td class="number">€<span id="src-team-gross">0</span></td>
+        <td class="number">€<span id="src-team-net">0</span></td>
+      </tr>
+      <tr>
+        <td>Sponsoring (Direkt-Invoice)</td>
+        <td>One-time</td>
+        <td><span id="src-sponsor-count">0</span></td>
+        <td class="number">€<span id="src-sponsor-gross">0</span></td>
+        <td class="number">€<span id="src-sponsor-net">0</span></td>
+      </tr>
+      <tr>
+        <td>Affiliate (Notion/Make/beehiiv)</td>
+        <td>Variabel</td>
+        <td>–</td>
+        <td class="number">€<span id="src-affiliate-gross">0</span></td>
+        <td class="number">€<span id="src-affiliate-net">0</span></td>
+      </tr>
+      <tr style="font-weight: 700;">
+        <td>TOTAL</td>
+        <td>–</td>
+        <td>–</td>
+        <td class="number">€<span id="src-total-gross">0</span></td>
+        <td class="number">€<span id="src-total-net">0</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Cost Side (Transparent) -->
+<div class="section">
+  <h2>Costs (laufender Monat)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Tool/Provider</th>
+        <th style="text-align: right;">€/Monat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Domain</td>
+        <td>Porkbun (.com)</td>
+        <td class="number">€<span id="cost-domain">0.85</span></td>
+      </tr>
+      <tr>
+        <td>Newsletter-Versand</td>
+        <td>beehiiv</td>
+        <td class="number">€<span id="cost-beehiiv">0</span></td>
+      </tr>
+      <tr>
+        <td>Anthropic API</td>
+        <td>Claude (Haiku + Sonnet)</td>
+        <td class="number">€<span id="cost-anthropic">2</span></td>
+      </tr>
+      <tr>
+        <td>OpenAI API (Backup)</td>
+        <td>GPT-4 (sparsam)</td>
+        <td class="number">€<span id="cost-openai">0</span></td>
+      </tr>
+      <tr>
+        <td>Automation</td>
+        <td>Make.com</td>
+        <td class="number">€<span id="cost-make">0</span></td>
+      </tr>
+      <tr>
+        <td>Analytics</td>
+        <td>Umami Cloud Hobby</td>
+        <td class="number">€<span id="cost-analytics">0</span></td>
+      </tr>
+      <tr>
+        <td>Hosting</td>
+        <td>Cloudflare Pages</td>
+        <td class="number">€<span id="cost-hosting">0</span></td>
+      </tr>
+      <tr style="font-weight: 700;">
+        <td>TOTAL COST</td>
+        <td>–</td>
+        <td class="number">€<span id="cost-total">2.85</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Revenue vs Cost Bar Chart -->
+<div class="section">
+  <h2>Revenue vs Cost</h2>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <span>Revenue</span>
+      <div class="bar"><div class="bar-fill revenue" id="bar-revenue" style="width: 0%;"></div></div>
+      <span style="text-align: right;">€<span id="bar-revenue-label">0</span></span>
+    </div>
+    <div class="bar-row">
+      <span>Cost</span>
+      <div class="bar"><div class="bar-fill cost" id="bar-cost" style="width: 0%;"></div></div>
+      <span style="text-align: right;">€<span id="bar-cost-label">0</span></span>
+    </div>
+    <div class="bar-row" style="font-weight: 700; margin-top: 8px;">
+      <span>NET</span>
+      <div></div>
+      <span style="text-align: right;">€<span id="bar-net-label">0</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- Top Sponsor This Month -->
+<div class="section">
+  <h2>Top-Sponsor diesen Monat</h2>
+  <div class="sponsor-highlight" id="sponsor-block">
+    <div class="info">
+      <strong id="sponsor-name">Aktuell offen — sei du der erste!</strong>
+      <p style="margin-top: 4px; font-size: 14px; color: var(--text-muted);">
+        <a href="https://abannews.com/sponsoring" style="color: var(--accent);">Mehr Infos zum Sponsoring →</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Why Open Data -->
+<div class="why-section">
+  <h2>Warum offen?</h2>
+  <p>
+    Build in Public. Wenn ich's nicht öffentlich teile, bin ich Teil des
+    Problems, das ich kritisiere — Newsletter, die mit "passive income" werben,
+    aber nie ihre echten Zahlen zeigen.
+  </p>
+  <p>
+    Auf dieser Seite siehst du täglich:
+  </p>
+  <ul style="margin: 12px 0 12px 24px; color: #3f3f46;">
+    <li>Wie viele Subs aban news hat (free, premium, founding)</li>
+    <li>Was ich verdiene (MRR, ARR, Sponsoring, Affiliate)</li>
+    <li>Was ich ausgebe (Domains, APIs, Tools)</li>
+    <li>Was übrigbleibt (Net-Margin)</li>
+  </ul>
+  <p>
+    Was du <strong>nicht</strong> siehst: Personendaten, Sub-Emails, Sponsor-Detail-Verträge.
+    Aggregat-Daten, keine Identifizierung — DSGVO ist nicht nur Pflicht, sondern Default.
+  </p>
+  <p style="margin-top: 16px; font-size: 14px; color: var(--text-muted);">
+    Update-Cadence: 1× pro Tag, 23:00 CET. Datenquelle: Google Sheet, gesynct via Make.com aus Stripe + beehiiv-API + manuellen Sponsor-Einträgen.
+  </p>
+</div>
+
+<footer>
+  <p>aban news · Schweizer Einzelunternehmen · MwSt-frei nach Art. 10 Abs. 2 MWSTG</p>
+  <p style="margin-top: 8px;">
+    <a href="https://abannews.com">Home</a> ·
+    <a href="https://abannews.com/sponsoring">Sponsoring</a> ·
+    <a href="https://abannews.com/datenschutz">Datenschutz</a> ·
+    <a href="https://abannews.com/impressum">Impressum</a>
+  </p>
+</footer>
+
+<script>
+// ──────────────────────────────────────────────────────────────────────
+// DATA-FETCH from Google Sheets (live_mrr Tab, public CSV-Export)
+// Make.com schreibt täglich Werte rein; diese Seite zieht sie hier.
+// ──────────────────────────────────────────────────────────────────────
+
+const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/__SHEET_ID__/export?format=csv&gid=__GID__';
+
+async function loadMRRData() {
+  try {
+    const res = await fetch(SHEET_CSV_URL);
+    const csv = await res.text();
+    const data = parseCSV(csv);
+    renderDashboard(data);
+  } catch (e) {
+    // Fallback: zeige Placeholder-Daten
+    renderDashboard(getPlaceholderData());
+    console.warn('Could not load live MRR data, showing placeholder.', e);
+  }
+}
+
+function parseCSV(csv) {
+  const lines = csv.trim().split('\n');
+  const headers = lines[0].split(',');
+  const values = lines[1].split(',');
+  const data = {};
+  headers.forEach((h, i) => { data[h.trim()] = values[i]?.trim() || ''; });
+  return data;
+}
+
+function getPlaceholderData() {
+  // Bei Launch: 0-Werte. Wird durch Make.com überschrieben.
+  return {
+    mrr: '0', mrr_trend_30d: '0',
+    total_subs: '0', free_subs: '0', premium_subs: '0', founding_subs: '0',
+    founding_count: '0', net_margin_pct: '0',
+    src_founding_count: '0', src_founding_gross: '0', src_founding_net: '0',
+    src_premium_count: '0', src_premium_gross: '0', src_premium_net: '0',
+    src_team_count: '0', src_team_gross: '0', src_team_net: '0',
+    src_sponsor_count: '0', src_sponsor_gross: '0', src_sponsor_net: '0',
+    src_affiliate_gross: '0', src_affiliate_net: '0',
+    cost_domain: '0.85', cost_beehiiv: '0', cost_anthropic: '2',
+    cost_openai: '0', cost_make: '0', cost_analytics: '0', cost_hosting: '0',
+    cost_total: '2.85',
+    sponsor_name: '', sponsor_logo: '', sponsor_url: '',
+    last_updated: new Date().toISOString().slice(0,16).replace('T', ', ') + ' CET'
+  };
+}
+
+function renderDashboard(d) {
+  // Hero
+  setText('mrr-value', formatNum(d.mrr));
+  setText('mrr-trend', `+€${formatNum(d.mrr_trend_30d)} (30 Tage)`);
+  if (parseFloat(d.mrr_trend_30d) < 0) {
+    document.getElementById('mrr-trend').classList.add('negative');
+  }
+
+  // Grid
+  setText('arr-value', formatNum(parseFloat(d.mrr) * 12));
+  setText('total-subs', d.total_subs);
+  setText('free-subs', d.free_subs);
+  setText('premium-subs', d.premium_subs);
+  setText('founding-subs', d.founding_subs);
+  setText('net-margin', d.net_margin_pct);
+
+  // Founding-Counter
+  const fc = parseInt(d.founding_count);
+  setText('founding-count', fc);
+  setText('founding-remaining', 100 - fc);
+  document.getElementById('founding-progress').style.width = `${fc}%`;
+
+  // Sources Table
+  setText('src-founding-count', d.src_founding_count);
+  setText('src-founding-gross', formatNum(d.src_founding_gross));
+  setText('src-founding-net', formatNum(d.src_founding_net));
+  setText('src-premium-count', d.src_premium_count);
+  setText('src-premium-gross', formatNum(d.src_premium_gross));
+  setText('src-premium-net', formatNum(d.src_premium_net));
+  setText('src-team-count', d.src_team_count);
+  setText('src-team-gross', formatNum(d.src_team_gross));
+  setText('src-team-net', formatNum(d.src_team_net));
+  setText('src-sponsor-count', d.src_sponsor_count);
+  setText('src-sponsor-gross', formatNum(d.src_sponsor_gross));
+  setText('src-sponsor-net', formatNum(d.src_sponsor_net));
+  setText('src-affiliate-gross', formatNum(d.src_affiliate_gross));
+  setText('src-affiliate-net', formatNum(d.src_affiliate_net));
+
+  const totalGross = [d.src_founding_gross, d.src_premium_gross, d.src_team_gross, d.src_sponsor_gross, d.src_affiliate_gross]
+    .reduce((a, b) => a + parseFloat(b || 0), 0);
+  const totalNet = [d.src_founding_net, d.src_premium_net, d.src_team_net, d.src_sponsor_net, d.src_affiliate_net]
+    .reduce((a, b) => a + parseFloat(b || 0), 0);
+  setText('src-total-gross', formatNum(totalGross));
+  setText('src-total-net', formatNum(totalNet));
+
+  // Costs
+  setText('cost-domain', d.cost_domain);
+  setText('cost-beehiiv', d.cost_beehiiv);
+  setText('cost-anthropic', d.cost_anthropic);
+  setText('cost-openai', d.cost_openai);
+  setText('cost-make', d.cost_make);
+  setText('cost-analytics', d.cost_analytics);
+  setText('cost-hosting', d.cost_hosting);
+  setText('cost-total', d.cost_total);
+
+  // Bar Chart
+  const cost = parseFloat(d.cost_total);
+  const max = Math.max(totalNet, cost, 1);
+  document.getElementById('bar-revenue').style.width = `${(totalNet / max) * 100}%`;
+  document.getElementById('bar-cost').style.width = `${(cost / max) * 100}%`;
+  setText('bar-revenue-label', formatNum(totalNet));
+  setText('bar-cost-label', formatNum(cost));
+  setText('bar-net-label', formatNum(totalNet - cost));
+
+  // Sponsor
+  if (d.sponsor_name) {
+    document.getElementById('sponsor-block').innerHTML = `
+      ${d.sponsor_logo ? `<img src="${escapeHTML(d.sponsor_logo)}" alt="${escapeHTML(d.sponsor_name)}">` : ''}
+      <div class="info">
+        <strong>${escapeHTML(d.sponsor_name)}</strong>
+        ${d.sponsor_url ? `<p style="margin-top: 4px; font-size: 14px;"><a href="${escapeHTML(d.sponsor_url)}" style="color: var(--accent);">${escapeHTML(d.sponsor_url)}</a></p>` : ''}
+      </div>
+    `;
+  }
+
+  // Last updated
+  setText('last-updated', d.last_updated);
+}
+
+function setText(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+
+function formatNum(n) {
+  const num = parseFloat(n);
+  if (isNaN(num)) return '0';
+  return new Intl.NumberFormat('de-DE', { maximumFractionDigits: 2 }).format(num);
+}
+
+function escapeHTML(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  })[c]);
+}
+
+// Load on page-init
+loadMRRData();
+</script>
+
+</body>
+</html>

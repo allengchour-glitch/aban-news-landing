@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI-Glossar 2026 — 130+ Begriffe mit Anti-Hype-Definition | aban news</title>
+  <meta name="description" content="KI-Glossar mit 130+ Begriffen. Pro Term zwei Definitionen: Was Marketing sagt — und was es wirklich ist. DE + EN. Ohne Hype, ohne Email-Gate.">
+  <meta name="theme-color" content="#d97706">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://abannews.com/glossary.html">
+
+  <meta property="og:title" content="KI-Glossar 2026 — Anti-Hype-Definitionen">
+  <meta property="og:description" content="130+ KI-Begriffe ehrlich erklärt. Marketing-Bullshit entlarvt, Klartext daneben. DE + EN.">
+  <meta property="og:image" content="https://abannews.com/og-image.svg">
+  <meta property="og:url" content="https://abannews.com/glossary.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="aban news">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KI-Glossar 2026 (Anti-Hype-Edition)">
+  <meta name="twitter:description" content="130+ Begriffe. Zwei Definitionen pro Term: Marketing vs. Klartext.">
+  <meta name="twitter:image" content="https://abannews.com/og-image.svg">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    .gl-filters{display:grid;grid-template-columns:1fr;gap:.75rem;background:var(--c-bg-alt);padding:1rem;border-radius:var(--r-lg);margin:1rem 0}
+    @media(min-width:720px){.gl-filters{grid-template-columns:repeat(4,1fr)}}
+    .gl-filters label{font-size:.85rem;color:var(--c-muted);font-weight:600;display:block;margin-bottom:.25rem}
+    .gl-filters input[type=text],.gl-filters select{width:100%;padding:.5rem .65rem;border:1px solid var(--c-border);border-radius:var(--r);background:#fff;font-size:.95rem;font-family:inherit;color:var(--c-text)}
+    .az-nav{display:flex;flex-wrap:wrap;gap:.25rem;margin:.75rem 0 1rem}
+    .az-nav a{padding:.3rem .55rem;background:var(--c-bg);border:1px solid var(--c-border);border-radius:var(--r);font-size:.85rem;font-weight:600;color:var(--c-text-2);text-decoration:none}
+    .az-nav a:hover,.az-nav a.active{background:var(--c-accent);color:#fff;border-color:var(--c-accent)}
+    .az-nav a.empty{opacity:.35;pointer-events:none}
+    .gl-stats{font-size:.85rem;color:var(--c-muted);margin:.5rem 0 1rem}
+    .gl-group{margin:2rem 0 1rem}
+    .gl-group h2{margin:0 0 .75rem;font-size:1.5rem;border-bottom:2px solid var(--c-accent-soft);padding-bottom:.4rem}
+    .entry{background:#fff;border:1px solid var(--c-border);border-radius:var(--r-lg);padding:1rem 1.25rem;margin-bottom:.75rem;box-shadow:0 1px 2px var(--c-shadow);scroll-margin-top:5rem}
+    .entry h3{margin:0 0 .15rem;font-size:1.15rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+    .entry .term-en{color:var(--c-muted);font-weight:400;font-size:.9rem}
+    .entry .cat-pill{font-size:.7rem;background:var(--c-bg-alt);color:var(--c-accent-hi);padding:.15rem .5rem;border-radius:99px;font-weight:600}
+    .def{margin:.5rem 0 .25rem}
+    .def-marketing{background:#fef2f2;border-left:3px solid #ef4444;padding:.5rem .75rem;border-radius:var(--r);color:#7f1d1d;font-size:.9rem;font-style:italic}
+    .def-marketing strong{font-style:normal;color:#991b1b}
+    .def-aban{background:#f0fdf4;border-left:3px solid var(--c-success);padding:.5rem .75rem;border-radius:var(--r);color:#14532d;font-size:.95rem}
+    .def-aban strong{color:#065f46}
+    .meta-row{font-size:.8rem;color:var(--c-muted);margin-top:.5rem;display:flex;flex-wrap:wrap;gap:1rem}
+    .meta-row strong{color:var(--c-text-2)}
+    .see-also a{color:var(--c-accent-hi);text-decoration:none;margin-right:.4rem}
+    .see-also a:hover{text-decoration:underline}
+    .controversy{display:inline-flex;align-items:center;gap:.3rem}
+    .controversy-bar{display:inline-block;width:40px;height:6px;background:#e5e7eb;border-radius:99px;overflow:hidden;vertical-align:middle}
+    .controversy-bar span{display:block;height:100%;background:linear-gradient(90deg,#10b981 0%,#f59e0b 50%,#ef4444 100%)}
+    .examples{font-size:.85rem;color:var(--c-text-2);margin-top:.4rem}
+    .lang-toggle{display:inline-flex;gap:.25rem;background:var(--c-bg);border:1px solid var(--c-border);border-radius:var(--r);padding:.15rem}
+    .lang-toggle button{background:none;border:none;padding:.25rem .6rem;cursor:pointer;font-family:inherit;font-size:.8rem;border-radius:var(--r-sm);color:var(--c-muted);font-weight:600}
+    .lang-toggle button.active{background:var(--c-accent);color:#fff}
+    .empty{text-align:center;padding:3rem 1rem;color:var(--c-muted)}
+    @media print{
+      .filters,.gl-filters,.az-nav,.site-header,.site-footer,.mobile-cta,.hero{display:none}
+      .entry{break-inside:avoid;page-break-inside:avoid}
+    }
+  </style>
+
+  <script type="application/ld+json" id="glossary-jsonld">
+  {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "name": "aban news KI-Glossar 2026",
+    "description": "130+ KI-Begriffe ehrlich definiert, ohne Marketing-Hype, für DACH-Solos und KMU.",
+    "url": "https://abannews.com/glossary.html",
+    "inLanguage": "de",
+    "hasDefinedTerm": []
+  }
+  </script>
+</head>
+<body>
+
+<a href="#main" class="skip">Zum Hauptinhalt springen</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="/" class="brand" aria-label="aban news Startseite">
+      <span aria-hidden="true">☕</span>
+      <span>aban news</span>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="/resources.html">Resourcen</a>
+      <a href="/tools.html">Tools</a>
+      <a href="/sponsoring.html">Werbung</a>
+      <a href="/#signup" class="nav-cta">Abonnieren</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <h1 class="hero-headline">KI-Glossar 2026 — Anti-Hype-Edition</h1>
+      <p class="lead">
+        <span id="entry-count">130+</span> Begriffe rund um KI, in zwei Definitionen erklärt: <strong>Was Marketing sagt</strong> — und <strong>was es wirklich ist</strong>. DE + EN, mit Beispielen und Querverweisen. Für alle, die LinkedIn-Buzzwords entlarven wollen und denen ein einfaches „Reasoning" zu wenig ist.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+
+      <div class="gl-filters">
+        <div>
+          <label for="g-search">Suche</label>
+          <input type="text" id="g-search" placeholder="Begriff, Definition, Beispiel..." autocomplete="off">
+        </div>
+        <div>
+          <label for="g-cat">Kategorie</label>
+          <select id="g-cat">
+            <option value="">Alle Kategorien</option>
+          </select>
+        </div>
+        <div>
+          <label for="g-sort">Sortieren</label>
+          <select id="g-sort">
+            <option value="az">A-Z</option>
+            <option value="cat">Nach Kategorie</option>
+            <option value="contro">Controversy-Level</option>
+          </select>
+        </div>
+        <div>
+          <label>Sprache</label>
+          <div class="lang-toggle" role="tablist" aria-label="Sprache">
+            <button type="button" data-lang="de" class="active" aria-selected="true">DE</button>
+            <button type="button" data-lang="en" aria-selected="false">EN</button>
+          </div>
+        </div>
+      </div>
+
+      <nav class="az-nav" id="az-nav" aria-label="A-Z Navigation"></nav>
+
+      <div class="gl-stats"><span id="g-visible">0</span> von <span id="g-total">0</span> Einträgen sichtbar · Stand: <span id="g-updated"></span></div>
+
+      <div id="gl-grid" aria-live="polite"></div>
+
+      <noscript>
+        <p class="center muted">Für das interaktive Glossar JavaScript aktivieren. Daten als JSON: <a href="/data/glossary.json">/data/glossary.json</a></p>
+      </noscript>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <h2>Wie ich definiere</h2>
+      <div class="grid grid--2">
+        <div class="card">
+          <h3>„Was Marketing sagt"</h3>
+          <p>Die Hype-Version. So klingt's auf Landing-Pages, in Pitches und auf LinkedIn. Bewusst überspitzt — manchmal direktes Zitat aus Vendor-Material, manchmal verdichtete Hype-Phrase. Erkennt man den Term im Wild, weißt du was zurückzuhalten ist.</p>
+        </div>
+        <div class="card">
+          <h3>„Was es wirklich ist"</h3>
+          <p>Die Klartext-Version. So nutze ich den Begriff, so erklär ich ihn Kunden. Mit Beispielen aus der Praxis, ohne Verkaufs-Schlagseite. Controversy-Level zeigt, wie umstritten der Begriff in der Community ist (1=Konsens, 10=stark umstritten).</p>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:1rem"><strong>Hinweis:</strong> Definitionen sind interpretativ und kontextabhängig. Falls du eine Definition besser/genauer formulieren kannst — schreib mir an <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="center">Mehr Klartext?</h2>
+      <p class="center muted">Im Newsletter gibt's regelmäßig den „Bullshit-Detektor": Phrase der Woche entlarvt. Plus konkrete Tools, Prompts, Routinen — gratis, ohne Email-Gate für andere Resourcen.</p>
+      <p class="center mt-5"><a href="/#signup" class="btn btn--lg">aban news abonnieren</a></p>
+    </div>
+  </section>
+
+</main>
+
+<div class="mobile-cta" aria-hidden="true">
+  <a href="/#signup" class="btn">☕ Kostenlos abonnieren</a>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>aban news</h5>
+        <a href="/">Startseite</a>
+        <a href="/preview.html">Probe-Ausgabe</a>
+        <a href="/founding.html">Founding Member</a>
+        <a href="/sponsoring.html">Werbung schalten</a>
+      </div>
+      <div>
+        <h5>Resourcen</h5>
+        <a href="/resources.html">Prompts + Templates</a>
+        <a href="/tools.html">Tool-Database</a>
+        <a href="/glossary.html">KI-Glossar</a>
+        <a href="/archive.html">Archiv</a>
+      </div>
+      <div>
+        <h5>Mehr lesen</h5>
+        <a href="/about.html">Über Aban</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/roadmap.html">Roadmap</a>
+        <a href="/press.html">Press-Kit</a>
+      </div>
+      <div>
+        <h5>Rechtliches</h5>
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>
+      </div>
+    </div>
+    <p class="foot-bottom">
+      &copy; 2026 aban news · Geschrieben in der Schweiz, gelesen im DACH-Raum · <em>— Aban</em>
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var STATE = { entries: [], filtered: [], lang: 'de' };
+  var els = {
+    grid: document.getElementById('gl-grid'),
+    search: document.getElementById('g-search'),
+    cat: document.getElementById('g-cat'),
+    sort: document.getElementById('g-sort'),
+    az: document.getElementById('az-nav'),
+    visible: document.getElementById('g-visible'),
+    total: document.getElementById('g-total'),
+    updated: document.getElementById('g-updated'),
+    countHeader: document.getElementById('entry-count'),
+    jsonld: document.getElementById('glossary-jsonld')
+  };
+
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function term(e){ return STATE.lang === 'en' && e.term_en ? e.term_en : e.term_de; }
+  function otherTerm(e){ return STATE.lang === 'en' ? e.term_de : e.term_en; }
+  function firstLetter(e){
+    var t = term(e) || '';
+    var c = t.charAt(0).toUpperCase();
+    if (!/[A-Z]/.test(c)) c = '#';
+    return c;
+  }
+
+  function renderEntry(e){
+    var id = esc(e.id);
+    var seeAlso = (e.see_also || []).map(function(s){ return '<a href="#' + esc(s) + '">' + esc(s) + '</a>'; }).join(' ');
+    var examples = (e.examples || []).filter(Boolean).map(function(x){ return esc(x); }).join(' · ');
+    var contro = e.controversy_level || 0;
+    var firstUsed = e.first_used_in ? '<span><strong>Erstmals erwähnt:</strong> <a href="/archive/" style="color:var(--c-accent-hi);text-decoration:none">' + esc(e.first_used_in) + '</a></span>' : '';
+    var marketing = (e.definition_marketing || '').trim();
+    var marketingBlock = marketing && marketing !== '—' ?
+      '<div class="def def-marketing"><strong>Was Marketing sagt:</strong> ' + esc(marketing) + '</div>' : '';
+
+    return '<article class="entry" id="' + id + '">' +
+      '<h3>' +
+        esc(term(e)) +
+        (otherTerm(e) && otherTerm(e) !== term(e) ? ' <span class="term-en">/ ' + esc(otherTerm(e)) + '</span>' : '') +
+        (e.category ? ' <span class="cat-pill">' + esc(e.category) + '</span>' : '') +
+      '</h3>' +
+      marketingBlock +
+      '<div class="def def-aban"><strong>Was es wirklich ist:</strong> ' + esc(e.definition_aban) + '</div>' +
+      (examples ? '<div class="examples"><strong>Beispiele:</strong> ' + examples + '</div>' : '') +
+      '<div class="meta-row">' +
+        (seeAlso ? '<span class="see-also"><strong>Siehe auch:</strong> ' + seeAlso + '</span>' : '') +
+        firstUsed +
+        (contro ? '<span class="controversy"><strong>Controversy:</strong> ' + contro + '/10 <span class="controversy-bar"><span style="width:' + (contro*10) + '%"></span></span></span>' : '') +
+      '</div>' +
+    '</article>';
+  }
+
+  function render(){
+    if (!STATE.filtered.length) {
+      els.grid.innerHTML = '<div class="empty">Keine Einträge matchen. <button class="toggle-btn" onclick="document.getElementById(\'g-search\').value=\'\';document.getElementById(\'g-cat\').value=\'\';document.getElementById(\'g-search\').dispatchEvent(new Event(\'input\'));">Filter zurücksetzen</button></div>';
+    } else if (els.sort.value === 'cat') {
+      var groups = {};
+      STATE.filtered.forEach(function(e){
+        var k = e.category || 'Sonstige';
+        if (!groups[k]) groups[k] = [];
+        groups[k].push(e);
+      });
+      var html = '';
+      Object.keys(groups).sort().forEach(function(k){
+        html += '<div class="gl-group"><h2>' + esc(k) + ' (' + groups[k].length + ')</h2>';
+        html += groups[k].sort(function(a,b){ return term(a).localeCompare(term(b)); }).map(renderEntry).join('');
+        html += '</div>';
+      });
+      els.grid.innerHTML = html;
+    } else {
+      els.grid.innerHTML = STATE.filtered.map(renderEntry).join('');
+    }
+    els.visible.textContent = STATE.filtered.length;
+    updateAZNav();
+  }
+
+  function updateAZNav(){
+    var letters = {};
+    STATE.filtered.forEach(function(e){ letters[firstLetter(e)] = true; });
+    var html = '';
+    var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ#'.split('');
+    alphabet.forEach(function(l){
+      var has = letters[l];
+      var firstId = has ? STATE.filtered.find(function(e){ return firstLetter(e) === l; }).id : '';
+      html += '<a class="' + (has ? '' : 'empty') + '" href="#' + esc(firstId) + '">' + l + '</a>';
+    });
+    els.az.innerHTML = html;
+  }
+
+  function applyFilters(){
+    var q = (els.search.value || '').toLowerCase().trim();
+    var cat = els.cat.value;
+    var sort = els.sort.value;
+
+    var out = STATE.entries.filter(function(e){
+      if (q) {
+        var hay = ((e.term_de||'') + ' ' + (e.term_en||'') + ' ' + (e.definition_aban||'') + ' ' + (e.definition_marketing||'') + ' ' + (e.examples||[]).join(' ') + ' ' + (e.category||'')).toLowerCase();
+        if (hay.indexOf(q) === -1) return false;
+      }
+      if (cat && e.category !== cat) return false;
+      return true;
+    });
+
+    if (sort === 'az') {
+      out.sort(function(a,b){ return term(a).localeCompare(term(b)); });
+    } else if (sort === 'contro') {
+      out.sort(function(a,b){ return (b.controversy_level||0) - (a.controversy_level||0); });
+    }
+
+    STATE.filtered = out;
+    render();
+  }
+
+  function populateCategories(){
+    var seen = {};
+    STATE.entries.forEach(function(e){
+      if (e.category) seen[e.category] = (seen[e.category]||0)+1;
+    });
+    Object.keys(seen).sort().forEach(function(c){
+      var o = document.createElement('option');
+      o.value = c;
+      o.textContent = c + ' (' + seen[c] + ')';
+      els.cat.appendChild(o);
+    });
+  }
+
+  function updateJsonLd(){
+    try {
+      var data = JSON.parse(els.jsonld.textContent);
+      data.hasDefinedTerm = STATE.entries.slice(0, 50).map(function(e){
+        return {
+          "@type": "DefinedTerm",
+          "@id": "https://abannews.com/glossary.html#" + e.id,
+          "name": e.term_de,
+          "alternateName": e.term_en,
+          "description": e.definition_aban,
+          "inDefinedTermSet": "https://abannews.com/glossary.html",
+          "termCode": e.id
+        };
+      });
+      els.jsonld.textContent = JSON.stringify(data);
+    } catch(err){}
+  }
+
+  function init(){
+    fetch('/data/glossary.json').then(function(r){ return r.json(); }).then(function(data){
+      STATE.entries = data.entries || [];
+      els.countHeader.textContent = STATE.entries.length;
+      els.total.textContent = STATE.entries.length;
+      els.updated.textContent = data.last_updated || '';
+      populateCategories();
+      applyFilters();
+      updateJsonLd();
+      if (location.hash) {
+        var id = location.hash.slice(1);
+        var el = document.getElementById(id);
+        if (el) setTimeout(function(){ el.scrollIntoView({behavior:'smooth', block:'start'}); }, 100);
+      }
+    }).catch(function(){
+      els.grid.innerHTML = '<div class="empty">Glossar konnte nicht geladen werden. Probier <a href="/data/glossary.json">/data/glossary.json</a> direkt.</div>';
+    });
+
+    var t;
+    function debounced(){ clearTimeout(t); t = setTimeout(applyFilters, 150); }
+    els.search.addEventListener('input', debounced);
+    els.cat.addEventListener('change', applyFilters);
+    els.sort.addEventListener('change', applyFilters);
+
+    document.querySelectorAll('.lang-toggle button').forEach(function(b){
+      b.addEventListener('click', function(){
+        document.querySelectorAll('.lang-toggle button').forEach(function(x){ x.classList.remove('active'); x.setAttribute('aria-selected','false'); });
+        b.classList.add('active');
+        b.setAttribute('aria-selected','true');
+        STATE.lang = b.getAttribute('data-lang');
+        applyFilters();
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+</body>
+</html>
