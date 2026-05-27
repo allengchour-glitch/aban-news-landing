@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Live Stats — aban news</title>
+<meta name="description" content="Live-Stats von aban news: Abos, Open-Rate, Reply-Rate, Quellen. Direkt aus unserer DB, max 5 Min Verzoegerung. Kein Tracking, keine Cookies.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://abannews.com/stats.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/stats.css">
+<meta property="og:title" content="aban news — Live Stats">
+<meta property="og:description" content="Was du auf anderen Newsletter-Seiten nie siehst: Live-Metrics direkt aus unserer DB.">
+<meta property="og:image" content="/og-image.svg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/stats.html">
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="wrap container">
+    <a href="/" class="brand" aria-label="aban news Startseite">
+      <span aria-hidden="true">&#9749;</span>
+      <span>aban news</span>
+    </a>
+    <nav aria-label="Hauptnavigation" class="site-nav">
+      <a href="/">Start</a>
+      <a href="/archive.html">Archiv</a>
+      <a href="/stats.html" aria-current="page">Stats</a>
+      <a href="/about.html">Ueber</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap stats-page">
+
+  <section class="hero-stats">
+    <h1>Live Stats</h1>
+    <p class="lead">
+      Was du auf anderen Newsletter-Seiten nie siehst.
+      Direkt aus unserer Live-DB, max 5 Min Verzoegerung.
+      Kein Personen-Tracking, keine Cookies.
+    </p>
+    <p class="updated" id="updatedLine" aria-live="polite">
+      <span class="dot" aria-hidden="true"></span>
+      <span id="updatedText">Lade Daten...</span>
+    </p>
+  </section>
+
+  <section aria-labelledby="kpi-h">
+    <h2 id="kpi-h" class="visually-hidden">Hauptmetriken</h2>
+    <div class="kpi-grid">
+      <article class="kpi" id="kpi-subs">
+        <div class="kpi-label">Aktive Abos</div>
+        <div class="kpi-value" data-metric="subscribers">--</div>
+        <div class="kpi-sub" data-metric="subscribers_delta">letzte 7 Tage</div>
+      </article>
+      <article class="kpi" id="kpi-issues">
+        <div class="kpi-label">Issues seit Launch</div>
+        <div class="kpi-value" data-metric="issues_sent">--</div>
+        <div class="kpi-sub" data-metric="issues_cadence">taeglich Mo-Fr</div>
+      </article>
+      <article class="kpi" id="kpi-open">
+        <div class="kpi-label">Open-Rate (7d)</div>
+        <div class="kpi-value" data-metric="open_rate">--</div>
+        <div class="kpi-sub">rollierend, anonym</div>
+      </article>
+      <article class="kpi accent" id="kpi-reply">
+        <div class="kpi-label">Reply-Rate (7d)</div>
+        <div class="kpi-value" data-metric="reply_rate">--</div>
+        <div class="kpi-sub">unsere USP — echte Gespraeche</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="charts" aria-labelledby="charts-h">
+    <h2 id="charts-h">Trends</h2>
+
+    <article class="chart-card">
+      <header>
+        <h3>Sub-Growth (letzte 90 Tage)</h3>
+        <p>Wie viele Leute sich pro Tag eingetragen haben.</p>
+      </header>
+      <div class="chart-svg" id="chart-growth" role="img" aria-labelledby="growth-fallback-h">
+        <noscript>JavaScript noetig fuer Live-Chart. Datentabelle unten.</noscript>
+      </div>
+      <details class="chart-fallback">
+        <summary id="growth-fallback-h">Datentabelle (A11y)</summary>
+        <table id="table-growth"><thead><tr><th>Datum</th><th>Neue Abos</th></tr></thead><tbody></tbody></table>
+      </details>
+    </article>
+
+    <article class="chart-card">
+      <header>
+        <h3>Open-Rate-Trend</h3>
+        <p>Wie viele die Mail tatsaechlich oeffnen — rollend.</p>
+      </header>
+      <div class="chart-svg" id="chart-open" role="img" aria-labelledby="open-fallback-h"></div>
+      <details class="chart-fallback">
+        <summary id="open-fallback-h">Datentabelle (A11y)</summary>
+        <table id="table-open"><thead><tr><th>Datum</th><th>Open-Rate</th></tr></thead><tbody></tbody></table>
+      </details>
+    </article>
+
+    <article class="chart-card">
+      <header>
+        <h3>Channel-Mix</h3>
+        <p>Wo unsere Abos herkommen.</p>
+      </header>
+      <div class="chart-svg donut" id="chart-channel" role="img" aria-labelledby="channel-fallback-h"></div>
+      <details class="chart-fallback">
+        <summary id="channel-fallback-h">Datentabelle (A11y)</summary>
+        <table id="table-channel"><thead><tr><th>Quelle</th><th>Anteil</th></tr></thead><tbody></tbody></table>
+      </details>
+    </article>
+  </section>
+
+  <section class="tables" aria-labelledby="tables-h">
+    <h2 id="tables-h">Letzte 10 Issues</h2>
+    <div class="table-wrap">
+      <table id="table-issues">
+        <thead><tr><th>Datum</th><th>Betreff</th><th>Open</th><th>Click</th></tr></thead>
+        <tbody><tr><td colspan="4" class="muted">Lade...</td></tr></tbody>
+      </table>
+    </div>
+
+    <h2>Top-Quellen diese Woche</h2>
+    <div class="table-wrap">
+      <table id="table-sources">
+        <thead><tr><th>Quelle</th><th>Verlinkt</th></tr></thead>
+        <tbody><tr><td colspan="2" class="muted">Lade...</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="reflection" aria-labelledby="refl-h">
+    <h2 id="refl-h">Live-Reflection</h2>
+    <div class="refl-grid">
+      <article class="refl-card good">
+        <h3>Was lief gut</h3>
+        <ul id="refl-good"><li class="muted">Lade...</li></ul>
+      </article>
+      <article class="refl-card bad">
+        <h3>Was nicht funktionierte</h3>
+        <ul id="refl-bad"><li class="muted">Lade...</li></ul>
+      </article>
+      <article class="refl-card next">
+        <h3>Was Aban naechste Woche probiert</h3>
+        <ul id="refl-next"><li class="muted">Lade...</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="trust">
+    <h2>Wie diese Seite Daten holt</h2>
+    <p>
+      Diese Seite liest direkt aus unseren publizierten Google-Sheets (read-only CSV).
+      Refresh alle 5 Minuten. Caching client-seitig in localStorage.
+      <strong>Kein Tracking, kein Analytics-JS, keine Cookies.</strong>
+      Open-Rate-Zahlen sind aggregierte Email-Provider-Stats — keine Personen-Daten.
+    </p>
+    <p>
+      Source: <a href="https://github.com/allengchour-glitch/aban-news-landing/blob/main/stats.html">stats.html auf GitHub</a> |
+      <a href="/datenschutz.html">Datenschutz</a>
+    </p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 aban news. Daten max 5 Min alt. Kein Tracking.</p>
+    <p>
+      <a href="/impressum.html">Impressum</a> &middot;
+      <a href="/datenschutz.html">Datenschutz</a> &middot;
+      <a href="/about.html">Ueber</a>
+    </p>
+  </div>
+</footer>
+
+<script src="/js/stats.js" defer></script>
+</body>
+</html>

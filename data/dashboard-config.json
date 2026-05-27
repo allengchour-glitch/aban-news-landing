@@ -1,0 +1,14 @@
+{
+  "config_sheet_id": "__SHEETS_CONFIG_ID__",
+  "realtime_sheet_id": "__SHEETS_REALTIME_ID__",
+  "learning_sheet_id": "__SHEETS_LEARNING_ID__",
+  "refresh_interval_seconds": 300,
+  "sheets": {
+    "metrics": "metrics",
+    "issues": "issues",
+    "sources": "sources",
+    "growth": "growth",
+    "learnings": "learnings"
+  },
+  "note": "Fill *_sheet_id values after publishing each Google Sheet via File > Share > Publish to web (CSV). The page falls back to placeholder data if these are still set to __SHEETS_..._ID__."
+}

@@ -1,0 +1,18 @@
+# aban news — Brand-Voice-Validator
+# Build:  docker build -t aban-voice-validator -f brand-voice-validator-Dockerfile .
+# Run:    docker run --rm -p 8080:8080 aban-voice-validator
+# Health: curl http://localhost:8080/health
+
+FROM python:3.12-slim
+
+WORKDIR /app
+
+RUN pip install --no-cache-dir flask==3.0.3 gunicorn==21.2.0
+
+COPY brand-voice-validator-api.py /app/app.py
+
+EXPOSE 8080
+ENV PORT=8080
+
+# Single-worker is enough — validator is CPU-trivial, <5ms per request.
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "--workers", "2", "--timeout", "10", "app:app"]

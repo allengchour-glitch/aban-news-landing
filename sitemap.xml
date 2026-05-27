@@ -119,6 +119,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://abannews.com/stats.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://abannews.com/downloads/30-prompts-fuer-solopreneure.pdf</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
