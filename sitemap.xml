@@ -154,4 +154,14 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+
+  <!-- Internal launch checklist — marked noindex via meta robots, listed
+       here only for completeness of site-inventory tooling. Crawlers will
+       respect the noindex tag and drop it. Priority 0.0 = lowest. -->
+  <url>
+    <loc>https://abannews.com/launch.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.0</priority>
+  </url>
 </urlset>

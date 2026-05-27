@@ -1,0 +1,137 @@
+name: Deploy Check
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate:
+    name: Pre-deploy validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install html-validate
+        run: npm install --no-save html-validate@8
+
+      - name: Validate HTML files
+        run: |
+          set +e
+          FAIL=0
+          for f in $(find . -maxdepth 3 -name '*.html' -not -path './node_modules/*' -not -path './.git/*'); do
+            echo "::group::html-validate $f"
+            npx html-validate --formatter stylish "$f" || FAIL=1
+            echo "::endgroup::"
+          done
+          if [ "$FAIL" = "1" ]; then
+            echo "::warning::HTML validation reported issues (non-blocking for now)"
+          fi
+
+      - name: Verify no broken internal links
+        run: |
+          python3 << 'PY'
+          import os, re, sys
+          root = '.'
+          html_files = []
+          for d, _, fs in os.walk(root):
+              if any(x in d for x in ['/.git', '/node_modules', '/.github']):
+                  continue
+              for f in fs:
+                  if f.endswith('.html'):
+                      html_files.append(os.path.join(d, f))
+          existing = {os.path.normpath(p).replace('\\','/') for p in html_files}
+          for d, _, fs in os.walk(root):
+              for f in fs:
+                  existing.add(os.path.normpath(os.path.join(d, f)).replace('\\','/'))
+          broken = []
+          link_re = re.compile(r'href="(/[^"#?]+)"')
+          for hf in html_files:
+              with open(hf, 'r', encoding='utf-8', errors='ignore') as fh:
+                  content = fh.read()
+              for m in link_re.finditer(content):
+                  target = m.group(1).lstrip('/')
+                  if not target:
+                      continue
+                  # Skip external & known dynamic
+                  if target.startswith(('http', 'mailto:', 'tel:')):
+                      continue
+                  candidates = [target, target + '.html', target + '/index.html', target.rstrip('/') + '/index.html']
+                  if not any(os.path.exists(c) for c in candidates):
+                      broken.append((hf, m.group(1)))
+          if broken:
+              print('::warning::Potentially broken internal links:')
+              for src, link in broken[:30]:
+                  print(f'  {src}: {link}')
+          else:
+              print('No broken internal links detected')
+          PY
+
+      - name: Verify sitemap.xml is valid XML
+        run: |
+          if [ -f sitemap.xml ]; then
+            python3 -c "import xml.etree.ElementTree as ET; ET.parse('sitemap.xml'); print('sitemap.xml: valid XML')"
+          else
+            echo "::warning::sitemap.xml not found"
+          fi
+
+      - name: Verify JSON-LD blocks
+        run: |
+          python3 << 'PY'
+          import json, re, os, sys
+          fail = 0
+          jsonld_re = re.compile(r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', re.DOTALL | re.IGNORECASE)
+          for d, _, fs in os.walk('.'):
+              if any(x in d for x in ['/.git', '/node_modules', '/.github']):
+                  continue
+              for f in fs:
+                  if not f.endswith('.html'):
+                      continue
+                  p = os.path.join(d, f)
+                  with open(p, 'r', encoding='utf-8', errors='ignore') as fh:
+                      content = fh.read()
+                  for i, m in enumerate(jsonld_re.finditer(content)):
+                      raw = m.group(1).strip()
+                      try:
+                          json.loads(raw)
+                      except json.JSONDecodeError as e:
+                          print(f'::error file={p}::JSON-LD block {i+1} invalid: {e}')
+                          fail = 1
+          if fail:
+              sys.exit(1)
+          print('All JSON-LD blocks are valid JSON')
+          PY
+
+      - name: Verify launch.html present + noindex
+        run: |
+          if [ ! -f launch.html ]; then
+            echo "::error::launch.html missing"
+            exit 1
+          fi
+          if ! grep -q 'name="robots"' launch.html || ! grep -q 'noindex' launch.html; then
+            echo "::error::launch.html missing noindex robots tag"
+            exit 1
+          fi
+          echo "launch.html OK (noindex present)"
+
+      - name: Check launch.html size budget
+        run: |
+          SIZE=$(wc -c < launch.html)
+          BUDGET=26624
+          echo "launch.html size: $SIZE bytes (budget: $BUDGET)"
+          if [ "$SIZE" -gt "$BUDGET" ]; then
+            echo "::warning::launch.html exceeds 26 KB budget"
+          fi

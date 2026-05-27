@@ -1,8 +1,10 @@
 User-agent: *
 Allow: /
 Disallow: /willkommen.html
+Disallow: /launch.html
+Disallow: /launch-status.json
 
-# Block dass diese Page indexed wird (intern für Sub-Confirmation)
+# Block dass diese Pages indexed werden (intern: Sub-Confirmation + Launch-Checklist)
 User-agent: GPTBot
 Allow: /
 

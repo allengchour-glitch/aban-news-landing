@@ -1,0 +1,10 @@
+# aban news — Python tooling deps
+#
+# brand-voice-linter.py uses Python stdlib only (re, json, sys, argparse, pathlib).
+# No external runtime deps required for the linter itself.
+#
+# This file exists so CI workflows can `pip install -r tools/requirements.txt`
+# without failing, and to give us one place to add deps if we later extend
+# the toolchain (e.g. PyYAML for front-matter parsing, requests for link-checking).
+#
+# Add deps below as `package==pinned-version` when needed.

@@ -1,0 +1,72 @@
+name: Voice Linter
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+  push:
+    paths:
+      - '**/*.md'
+
+jobs:
+  lint:
+    name: Brand-Voice check on changed .md files
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install deps
+        run: |
+          if [ -f tools/requirements.txt ]; then
+            pip install -r tools/requirements.txt
+          fi
+
+      - name: Determine changed files
+        id: changes
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+            HEAD="${{ github.event.pull_request.head.sha }}"
+            FILES=$(git diff --name-only --diff-filter=ACMR "$BASE" "$HEAD" -- '*.md' || true)
+          else
+            FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD -- '*.md' 2>/dev/null || git ls-files '*.md')
+          fi
+          echo "Changed .md files:"
+          echo "$FILES"
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$FILES" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Run brand-voice-linter (strict)
+        run: |
+          set -e
+          FAIL=0
+          if [ ! -f tools/brand-voice-linter.py ]; then
+            echo "::warning::tools/brand-voice-linter.py not found — skipping"
+            exit 0
+          fi
+          while IFS= read -r f; do
+            [ -z "$f" ] && continue
+            [ ! -f "$f" ] && continue
+            echo "::group::Linting $f"
+            if ! python tools/brand-voice-linter.py "$f" --strict; then
+              FAIL=1
+              echo "::error file=$f::Brand-voice violations found"
+            fi
+            echo "::endgroup::"
+          done <<< "${{ steps.changes.outputs.files }}"
+          if [ "$FAIL" = "1" ]; then
+            echo "::error::Voice-Linter failed — fix forbidden phrases before merge"
+            exit 1
+          fi
+          echo "All changed .md files passed voice-linter"

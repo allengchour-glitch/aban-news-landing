@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Pre-Launch Checklist — abannews.com</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0f;--card:#15151f;--border:#27273a;--text:#e8e8f0;--muted:#8b8ba0;--accent:#7c3aed;--accent2:#06b6d4;--done:#10b981;--warn:#f59e0b}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;padding:20px;max-width:920px;margin:0 auto;min-height:100vh}
+header{padding:32px 0 24px;border-bottom:1px solid var(--border);margin-bottom:24px}
+h1{font-size:2rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px}
+.sub{color:var(--muted);font-size:1rem}
+.warn{display:inline-block;padding:4px 10px;background:rgba(245,158,11,0.15);color:var(--warn);border-radius:6px;font-size:0.8rem;margin-top:12px;font-weight:600}
+.progress-wrap{margin:24px 0 8px}
+.progress-bar{height:14px;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;position:relative}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 0.6s cubic-bezier(.4,0,.2,1);width:0%;border-radius:10px}
+.progress-text{display:flex;justify-content:space-between;margin-top:8px;font-size:0.9rem}
+.progress-text strong{color:var(--accent2)}
+.section{margin-top:32px}
+.section-title{font-size:1.15rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:10px;color:var(--text)}
+.section-title .badge{background:var(--card);border:1px solid var(--border);padding:2px 8px;border-radius:6px;font-size:0.75rem;color:var(--muted);font-weight:600}
+.item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:10px;transition:all 0.25s}
+.item.done{opacity:0.55;border-color:var(--done)}
+.item.done .title{text-decoration:line-through;color:var(--muted)}
+.item-row{display:flex;align-items:flex-start;gap:12px}
+.check{width:24px;height:24px;border:2px solid var(--border);border-radius:6px;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;background:transparent;transition:all 0.2s;margin-top:2px}
+.check:hover{border-color:var(--accent)}
+.check.checked{background:var(--done);border-color:var(--done)}
+.check.checked::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.item-body{flex:1;min-width:0}
+.title{font-weight:600;font-size:1rem;margin-bottom:4px}
+.desc{color:var(--muted);font-size:0.9rem}
+.toggle{background:none;border:none;color:var(--accent2);cursor:pointer;font-size:0.85rem;margin-top:8px;padding:4px 0;font-weight:600}
+.toggle:hover{text-decoration:underline}
+.details{display:none;margin-top:12px;padding:12px;background:rgba(124,58,237,0.06);border-left:3px solid var(--accent);border-radius:4px;font-size:0.88rem}
+.details.open{display:block}
+.details p{margin-bottom:8px}
+.details strong{color:var(--text)}
+.details code{background:rgba(0,0,0,0.4);padding:2px 6px;border-radius:4px;font-size:0.85em;color:var(--accent2)}
+.details a{color:var(--accent2)}
+.details ul{padding-left:22px;margin:6px 0}
+.details .meta{display:flex;gap:12px;margin-top:8px;font-size:0.8rem;color:var(--muted);flex-wrap:wrap}
+.details .meta span{background:rgba(0,0,0,0.3);padding:3px 8px;border-radius:4px}
+footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:0.85rem;text-align:center}
+.controls{display:flex;gap:10px;margin:16px 0;flex-wrap:wrap}
+.btn{background:var(--card);border:1px solid var(--border);color:var(--text);padding:8px 14px;border-radius:6px;cursor:pointer;font-size:0.85rem;font-weight:600;transition:all 0.2s}
+.btn:hover{border-color:var(--accent);color:var(--accent2)}
+.celebrate{position:fixed;inset:0;pointer-events:none;display:none;z-index:9999}
+.celebrate.show{display:block}
+.confetti{position:absolute;width:10px;height:10px;animation:fall 3s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+.banner{display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;padding:14px 24px;border-radius:10px;font-weight:700;box-shadow:0 10px 40px rgba(124,58,237,0.4);z-index:10000;animation:pop 0.5s}
+.banner.show{display:block}
+@keyframes pop{from{transform:translateX(-50%) scale(0.5);opacity:0}to{transform:translateX(-50%) scale(1);opacity:1}}
+@media print{body{background:#fff;color:#000;max-width:none}.controls,.toggle,footer .nav{display:none}.item{break-inside:avoid;border:1px solid #ccc;background:#fff}.check{border:2px solid #000}.check.checked{background:#000}.details{display:block;background:#f5f5f5;border-left-color:#000}.progress-fill{background:#000}h1,.title,.section-title{color:#000}.desc,.sub,.muted{color:#444}}
+@media (max-width:560px){body{padding:14px}h1{font-size:1.5rem}.item{padding:12px}}
+</style>
+</head>
+<body>
+<div class="banner" id="banner">🎉 Alle Items erledigt — bereit zum Launch!</div>
+<div class="celebrate" id="celebrate"></div>
+
+<header>
+<h1>Pre-Launch Checklist</h1>
+<p class="sub">abannews.com · 15 Items · Track-deinen-Launch · localStorage-saved</p>
+<span class="warn">NOINDEX — interne Seite, nicht teilen</span>
+<div class="progress-wrap">
+<div class="progress-bar"><div class="progress-fill" id="bar"></div></div>
+<div class="progress-text"><span id="status">0 / 12 erledigt</span><strong id="pct">0%</strong></div>
+</div>
+<div class="controls">
+<button class="btn" onclick="resetAll()">Reset</button>
+<button class="btn" onclick="window.print()">Drucken</button>
+<button class="btn" onclick="exportJSON()">Export JSON</button>
+</div>
+</header>
+
+<div class="section">
+<div class="section-title">1. Account-Setup <span class="badge">6 Items</span></div>
+
+<div class="item" data-id="1">
+<div class="item-row">
+<button class="check" onclick="toggle(1)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">beehiiv-Account anlegen + API-Key</div>
+<div class="desc">Newsletter-Plattform aufsetzen, API-Key in <code>.beehiiv.env</code> hinterlegen.</div>
+<button class="toggle" onclick="td(1)">Details anzeigen</button>
+<div class="details" id="d1">
+<p><strong>URL:</strong> <a href="https://app.beehiiv.com/signup" target="_blank" rel="noopener">app.beehiiv.com/signup</a></p>
+<p><strong>Klicks:</strong></p>
+<ul>
+<li>Sign up mit allengchour@gmail.com</li>
+<li>Publication-Name: "aban news"</li>
+<li>Settings → Integrations → API-Key generieren</li>
+<li>Key kopieren in <code>~/aban-deploy/.beehiiv.env</code> (BEEHIIV_API_KEY=...)</li>
+</ul>
+<p><strong>Expected:</strong> Publication erstellt, Key in env-File</p>
+<div class="meta"><span>⏱ 10 min</span><span>💰 Free-Tier</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="item" data-id="2">
+<div class="item-row">
+<button class="check" onclick="toggle(2)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">OpenAI-Account + API-Key</div>
+<div class="desc">Fallback-Modell neben Claude für Make-Pipeline.</div>
+<button class="toggle" onclick="td(2)">Details anzeigen</button>
+<div class="details" id="d2">
+<p><strong>URL:</strong> <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">platform.openai.com/api-keys</a></p>
+<p><strong>Klicks:</strong></p>
+<ul>
+<li>Account erstellen / einloggen</li>
+<li>Billing → $10 Credit aufladen</li>
+<li>API-Key erstellen, Scope: "All"</li>
+<li>Key sicher speichern (wird nur 1× angezeigt)</li>
+</ul>
+<p><strong>Expected:</strong> sk-... Key in Make-Connection</p>
+<div class="meta"><span>⏱ 8 min</span><span>💰 $10</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="item" data-id="3">
+<div class="item-row">
+<button class="check" onclick="toggle(3)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">Make.com Connections wiring</div>
+<div class="desc">Anthropic, OpenAI, Gmail, Google Sheets, Slack verbinden.</div>
+<button class="toggle" onclick="td(3)">Details anzeigen</button>
+<div class="details" id="d3">
+<p><strong>URL:</strong> <a href="https://www.make.com/en/integrations" target="_blank" rel="noopener">make.com/en/integrations</a></p>
+<p><strong>Klicks:</strong></p>
+<ul>
+<li>Make-Account → Connections</li>
+<li>Add Connection: Anthropic (API-Key aus console.anthropic.com)</li>
+<li>Add Connection: OpenAI (Key aus Item 2)</li>
+<li>Add Connection: Gmail (OAuth via allengchour@gmail.com)</li>
+<li>Add Connection: Google Sheets (gleiches OAuth)</li>
+<li>Add Connection: Slack (Workspace OAuth)</li>
+</ul>
+<p><strong>Expected:</strong> 5 grüne Connections</p>
+<div class="meta"><span>⏱ 15 min</span><span>💰 Free</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="item" data-id="4">
+<div class="item-row">
+<button class="check" onclick="toggle(4)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">Apps-Script-Run für Sheets-Setup</div>
+<div class="desc">Master-Sheet für Issue-Tracking, KPIs, Subscriber-Log initialisieren.</div>
+<button class="toggle" onclick="td(4)">Details anzeigen</button>
+<div class="details" id="d4">
+<p><strong>URL:</strong> <a href="https://script.google.com/" target="_blank" rel="noopener">script.google.com</a></p>
+<p><strong>Klicks:</strong></p>
+<ul>
+<li>Neues Sheet "aban-news-master" erstellen</li>
+<li>Extensions → Apps Script</li>
+<li>Code aus <code>automation/setup-sheet.gs</code> einfügen</li>
+<li>Run → setupAllTabs()</li>
+<li>5 Tabs prüfen: Issues / KPIs / Subscribers / Sponsors / AuditLog</li>
+</ul>
+<p><strong>Expected:</strong> Master-Sheet mit 5 Tabs + Headers</p>
+<div class="meta"><span>⏱ 12 min</span><span>💰 Free</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="item" data-id="5">
+<div class="item-row">
+<button class="check" onclick="toggle(5)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">Stripe-KYC (optional)</div>
+<div class="desc">Für Sponsorings + Founding-Memberships. Kann nach Launch erfolgen.</div>
+<button class="toggle" onclick="td(5)">Details anzeigen</button>
+<div class="details" id="d5">
+<p><strong>URL:</strong> <a href="https://dashboard.stripe.com/register" target="_blank" rel="noopener">dashboard.stripe.com/register</a></p>
+<p><strong>Klicks:</strong></p>
+<ul>
+<li>Account erstellen (Land: Schweiz)</li>
+<li>KYC: Personalausweis-Foto, Bankkonto IBAN (CH)</li>
+<li>Business-Type: Einzelfirma / Sole Proprietor</li>
+<li>2-3 Werktage Verifizierung abwarten</li>
+</ul>
+<p><strong>Expected:</strong> Stripe-Account aktiv, Payouts möglich</p>
+<div class="meta"><span>⏱ 25 min + 2-3d wait</span><span>💰 Free</span><span>🇨🇭 CH-spezifisch</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="item" data-id="6">
+<div class="item-row">
+<button class="check" onclick="toggle(6)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">Cloudflare-Pages-Account (optional)</div>
+<div class="desc">Alternative zu GitHub-Pages für schnelleres Edge-Caching.</div>
+<button class="toggle" onclick="td(6)">Details anzeigen</button>
+<div class="details" id="d6">
+<p><strong>URL:</strong> <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">dash.cloudflare.com/sign-up</a></p>
+<p><strong>Klicks:</strong></p>
+<ul>
+<li>Account erstellen</li>
+<li>Pages → Create a project → Connect to GitHub</li>
+<li>Repo: aban-deploy auswählen</li>
+<li>Build-Command: leer (statisch)</li>
+<li>Custom Domain: abannews.com</li>
+</ul>
+<p><strong>Expected:</strong> *.pages.dev URL aktiv</p>
+<div class="meta"><span>⏱ 15 min</span><span>💰 Free</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">2. DNS + Domain <span class="badge">3 Items</span></div>
+
+<div class="item" data-id="7">
+<div class="item-row">
+<button class="check" onclick="toggle(7)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">beehiiv Custom-Domain mail.abannews.com</div>
+<div class="desc">CNAME via Porkbun-API setzen, beehiiv-Domain verifizieren.</div>
+<button class="toggle" onclick="td(7)">Details anzeigen</button>
+<div class="details" id="d7">
+<p><strong>URL:</strong> <a href="https://porkbun.com/account/domainsSpeedy" target="_blank" rel="noopener">porkbun.com → Domains</a></p>
+<p><strong>Klicks:</strong></p>
+<ul>
+<li>beehiiv → Settings → Custom Domain → "mail.abannews.com" eingeben</li>
+<li>CNAME-Target kopieren (z.B. <code>mail.beehiiv.com</code>)</li>
+<li>Porkbun → abannews.com → DNS Records → Add CNAME: host=mail, target=...</li>
+<li>15 min warten → beehiiv "Verify" klicken</li>
+</ul>
+<p><strong>Expected:</strong> Status "Verified" + grün in beehiiv</p>
+<div class="meta"><span>⏱ 20 min</span><span>💰 Free</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="item" data-id="8">
+<div class="item-row">
+<button class="check" onclick="toggle(8)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">SPF / DKIM / DMARC (mail-tester ≥ 9/10)</div>
+<div class="desc">Email-Authentifizierung für Inbox-Placement.</div>
+<button class="toggle" onclick="td(8)">Details anzeigen</button>
+<div class="details" id="d8">
+<p><strong>URL:</strong> <a href="https://www.mail-tester.com/" target="_blank" rel="noopener">mail-tester.com</a></p>
+<p><strong>Klicks:</strong></p>
+<ul>
+<li>beehiiv → DNS-Setup → SPF + DKIM Records kopieren</li>
+<li>Porkbun → DNS: TXT-Record für SPF (<code>v=spf1 include:beehiiv.com ~all</code>)</li>
+<li>TXT-Record für DKIM (key.k1._domainkey...)</li>
+<li>TXT-Record für DMARC (<code>_dmarc</code>: <code>v=DMARC1; p=none; rua=mailto:datenschutz@abannews.com</code>)</li>
+<li>Test-Mail an mail-tester-Adresse → Score prüfen</li>
+</ul>
+<p><strong>Expected:</strong> Score ≥ 9/10 bei mail-tester</p>
+<div class="meta"><span>⏱ 30 min</span><span>💰 Free</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="item" data-id="9">
+<div class="item-row">
+<button class="check" onclick="toggle(9)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">Cloudflare Email-Routing datenschutz@</div>
+<div class="desc">datenschutz@abannews.com → allengchour@gmail.com Forwarding.</div>
+<button class="toggle" onclick="td(9)">Details anzeigen</button>
+<div class="details" id="d9">
+<p><strong>URL:</strong> <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">dash.cloudflare.com → Email → Routing</a></p>
+<p><strong>Klicks:</strong></p>
+<ul>
+<li>Domain abannews.com bei Cloudflare hinzufügen (Nameserver-Switch)</li>
+<li>Email → Email Routing → Enable</li>
+<li>Routes → Custom address: <code>datenschutz</code> → forward to <code>allengchour@gmail.com</code></li>
+<li>Auch: <code>kontakt</code>, <code>presse</code>, <code>founding</code></li>
+<li>Test: Email an datenschutz@abannews.com schicken</li>
+</ul>
+<p><strong>Expected:</strong> Email landet in Gmail innerhalb 1 min</p>
+<div class="meta"><span>⏱ 20 min</span><span>💰 Free</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">3. Make-Pipeline <span class="badge">3 Items</span></div>
+
+<div class="item" data-id="10">
+<div class="item-row">
+<button class="check" onclick="toggle(10)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">Blueprint importieren</div>
+<div class="desc">aban-news-v2-multimodel.blueprint.json in Make.com laden.</div>
+<button class="toggle" onclick="td(10)">Details anzeigen</button>
+<div class="details" id="d10">
+<p><strong>URL:</strong> <a href="https://eu1.make.com/scenarios" target="_blank" rel="noopener">make.com/scenarios</a></p>
+<p><strong>Klicks:</strong></p>
+<ul>
+<li>Scenarios → Create new scenario</li>
+<li>3 Dots Menu → Import Blueprint</li>
+<li>File: <code>automation/aban-news-v2-multimodel.blueprint.json</code></li>
+<li>Save → Scenario öffnet sich mit Modules</li>
+</ul>
+<p><strong>Expected:</strong> Scenario mit ~12 Modulen sichtbar</p>
+<div class="meta"><span>⏱ 5 min</span><span>💰 Free</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="item" data-id="11">
+<div class="item-row">
+<button class="check" onclick="toggle(11)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">Module-Connections setzen</div>
+<div class="desc">Jedes Modul mit Connection aus Item 3 verknüpfen.</div>
+<button class="toggle" onclick="td(11)">Details anzeigen</button>
+<div class="details" id="d11">
+<p><strong>Klicks pro Modul:</strong></p>
+<ul>
+<li>Anthropic-Module → Connection-Dropdown → "Anthropic-aban"</li>
+<li>OpenAI-Module → "OpenAI-aban"</li>
+<li>Gmail-Module → "Gmail-allengchour"</li>
+<li>Sheets-Module → "Sheets-aban" + Master-Sheet-ID</li>
+<li>Slack-Module → "Slack-aban" + Channel-ID</li>
+</ul>
+<p><strong>Expected:</strong> Alle Module zeigen grünen Verbinder</p>
+<div class="meta"><span>⏱ 12 min</span><span>💰 Free</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="item" data-id="12">
+<div class="item-row">
+<button class="check" onclick="toggle(12)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">Test-Run mit 1 Newsletter</div>
+<div class="desc">End-to-end: RSS → Claude → Edit → Gmail-Draft.</div>
+<button class="toggle" onclick="td(12)">Details anzeigen</button>
+<div class="details" id="d12">
+<p><strong>Klicks:</strong></p>
+<ul>
+<li>Scenario → "Run once" klicken</li>
+<li>Execution-Log beobachten: jedes Modul grün?</li>
+<li>Gmail prüfen: Draft mit Newsletter-Content vorhanden?</li>
+<li>Voice-Linter manuell auf Draft-Text laufen lassen</li>
+<li>Sheets-Log prüfen: 1 Eintrag in AuditLog?</li>
+</ul>
+<p><strong>Expected:</strong> Draft im Gmail-Postfach, Score ≥ 80</p>
+<div class="meta"><span>⏱ 8 min</span><span>💰 ~$0.05 API</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">4. Launch-Day <span class="badge">3 Items</span></div>
+
+<div class="item" data-id="13">
+<div class="item-row">
+<button class="check" onclick="toggle(13)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">30 Friends-&-Family-DMs</div>
+<div class="desc">Erste 30 Personen aus deinem Netz aktivieren.</div>
+<button class="toggle" onclick="td(13)">Details anzeigen</button>
+<div class="details" id="d13">
+<p><strong>Template-Source:</strong> <code>marketing/ff-dm-templates.md</code></p>
+<p><strong>Klicks:</strong></p>
+<ul>
+<li>Kontakte-Liste durchgehen: Familie, Ex-Kollegen, Studienfreunde</li>
+<li>30 auswählen, die "AI-Skeptiker" oder "AI-Curious" sind</li>
+<li>WhatsApp / Signal / LinkedIn-DM mit Template-A (kurz, persönlich)</li>
+<li>Tracking in Sheet "DMs": Name / Channel / Sent / Replied / Subscribed</li>
+</ul>
+<p><strong>Expected:</strong> ≥ 10 Subscribers aus diesen 30 DMs (~33% CTR)</p>
+<div class="meta"><span>⏱ 90 min</span><span>💰 Free</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="item" data-id="14">
+<div class="item-row">
+<button class="check" onclick="toggle(14)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">LinkedIn-Profil + Pinned-Post</div>
+<div class="desc">Profil-Update + Launch-Announcement-Post pinned.</div>
+<button class="toggle" onclick="td(14)">Details anzeigen</button>
+<div class="details" id="d14">
+<p><strong>Template-Source:</strong> <code>marketing/social-profile-templates.md</code></p>
+<p><strong>URL:</strong> <a href="https://linkedin.com/in/me" target="_blank" rel="noopener">linkedin.com/in/me</a></p>
+<p><strong>Klicks:</strong></p>
+<ul>
+<li>Headline updaten: "Founder @ aban news · Anti-Hype-Newsletter für DACH"</li>
+<li>About-Section: aus Template-1 einfügen</li>
+<li>Featured-Section: Link zu abannews.com</li>
+<li>Neuer Post: Launch-Announcement (Template-A aus File)</li>
+<li>Post anpinnen (3-dots Menu → Pin to profile)</li>
+</ul>
+<p><strong>Expected:</strong> Profil aktualisiert, Post mit ≥ 50 Impressions in 24h</p>
+<div class="meta"><span>⏱ 25 min</span><span>💰 Free</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="item" data-id="15">
+<div class="item-row">
+<button class="check" onclick="toggle(15)" aria-label="Done"></button>
+<div class="item-body">
+<div class="title">Reddit-Posts (Value-Comments)</div>
+<div class="desc">20 echte Value-Comments in r/artificial, r/MachineLearning, r/de etc.</div>
+<button class="toggle" onclick="td(15)">Details anzeigen</button>
+<div class="details" id="d15">
+<p><strong>Template-Source:</strong> <code>marketing/reddit-value-comments-20.md</code></p>
+<p><strong>Klicks:</strong></p>
+<ul>
+<li>Reddit-Account: ≥ 30 Tage alt, ≥ 100 Karma (sonst shadowban-Risk)</li>
+<li>20 Subreddits scannen: r/artificial, r/de, r/Selbststaendig, r/Finanzen</li>
+<li>Pro Thread: substantielles Comment (≥ 3 Sätze, KEINE Link-Spam)</li>
+<li>Footer-Link zu abannews.com nur wenn explizit nach Source gefragt</li>
+<li>Tracking in Sheet "Reddit": Subreddit / Thread / Upvotes / CTR</li>
+</ul>
+<p><strong>Expected:</strong> 20 Comments, ≥ 100 Total-Upvotes, ≥ 5 Subscribers</p>
+<div class="meta"><span>⏱ 4-6h über 2 Wochen</span><span>💰 Free</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<footer>
+<p>State wird in deinem Browser gespeichert (localStorage). Kein Tracking, kein Cookie, kein Backend.</p>
+<p style="margin-top:8px">aban news · interne Checklist · noindex</p>
+</footer>
+
+<script>
+const KEY='aban_launch_v1';
+const IDS=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+const TOTAL=IDS.length;
+
+function load(){
+  try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}
+}
+function save(s){localStorage.setItem(KEY,JSON.stringify(s))}
+function toggle(id){
+  const s=load();
+  s[id]=!s[id];
+  save(s);
+  render();
+  if(Object.values(s).filter(Boolean).length===TOTAL)celebrate();
+}
+function td(id){
+  document.getElementById('d'+id).classList.toggle('open');
+}
+function render(){
+  const s=load();
+  let done=0;
+  IDS.forEach(id=>{
+    const it=document.querySelector('[data-id="'+id+'"]');
+    if(!it)return;
+    const c=it.querySelector('.check');
+    if(s[id]){it.classList.add('done');c.classList.add('checked');done++}
+    else{it.classList.remove('done');c.classList.remove('checked')}
+  });
+  const pct=Math.round(done/TOTAL*100);
+  document.getElementById('bar').style.width=pct+'%';
+  document.getElementById('status').textContent=done+' / '+TOTAL+' erledigt';
+  document.getElementById('pct').textContent=pct+'%';
+}
+function resetAll(){
+  if(!confirm('Wirklich alle Items zurücksetzen?'))return;
+  localStorage.removeItem(KEY);
+  render();
+}
+function exportJSON(){
+  const s=load();
+  const done=Object.values(s).filter(Boolean).length;
+  const data={checklist_progress:done,total_items:TOTAL,last_updated:new Date().toISOString(),completed_ids:Object.keys(s).filter(k=>s[k]).map(Number),estimated_time_to_launch:Math.max(0,(TOTAL-done)*0.5)+' hours'};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='launch-status.json';
+  a.click();
+}
+function celebrate(){
+  const b=document.getElementById('banner');
+  b.classList.add('show');
+  setTimeout(()=>b.classList.remove('show'),6000);
+  const c=document.getElementById('celebrate');
+  c.innerHTML='';
+  c.classList.add('show');
+  const colors=['#7c3aed','#06b6d4','#10b981','#f59e0b','#ec4899'];
+  for(let i=0;i<60;i++){
+    const p=document.createElement('div');
+    p.className='confetti';
+    p.style.left=Math.random()*100+'%';
+    p.style.top='-20px';
+    p.style.background=colors[i%colors.length];
+    p.style.animationDelay=Math.random()*0.5+'s';
+    p.style.borderRadius=Math.random()>0.5?'50%':'0';
+    c.appendChild(p);
+  }
+  setTimeout(()=>c.classList.remove('show'),3500);
+}
+render();
+</script>
+</body>
+</html>
