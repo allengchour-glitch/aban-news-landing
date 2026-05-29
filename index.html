@@ -663,7 +663,14 @@
       <h2>So sieht ein Mittwoch aus</h2>
       <p class="muted">Echter Auszug aus der Probe-Ausgabe vom 2026-05-27 — gekürzt für die Web-Vorschau.</p>
 
-      <article class="preview" aria-label="Beispiel-Newsletter-Ausgabe">
+      <div class="mail-frame" style="max-width:660px;margin:1.5rem auto 0;border:1px solid var(--c-border);border-radius:14px;overflow:hidden;box-shadow:0 12px 32px rgba(31,41,55,.12);background:#fff;">
+        <div style="display:flex;align-items:center;gap:.5rem;padding:.65rem .95rem;background:#f3f4f6;border-bottom:1px solid var(--c-border);">
+          <span style="width:11px;height:11px;border-radius:50%;background:#ef4444;display:inline-block;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#f59e0b;display:inline-block;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+          <span style="margin-left:.5rem;font-size:.8rem;color:#6b7280;">📥 Posteingang · aban news · Mi 27. Mai · 4 Min</span>
+        </div>
+      <article class="preview" aria-label="Beispiel-Newsletter-Ausgabe" style="margin:0;border:0;border-radius:0;box-shadow:none;padding:1.25rem 1.4rem .4rem;">
         <div class="preview-meta">
           <strong>Von:</strong> Aban &lt;hallo@abannews.com&gt;<br>
           <strong>An:</strong> dich@beispiel.de<br>
@@ -700,6 +707,7 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
 
         <p class="signoff">— Aban</p>
       </article>
+      </div>
 
       <div class="center mt-5">
         <a href="/preview.html" class="btn btn--ghost">Komplette Probe-Ausgabe lesen</a>
@@ -1105,98 +1113,37 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
   </section>
 
   <!-- ============================================
-       TESTIMONIALS — 3 placeholder cards
-       TODO: echte Testimonials nach 30 Subs einfügen
+       PRE-LAUNCH TRANSPARENZ — ehrlich statt erfundene Testimonials
        ============================================ -->
   <section class="reveal">
     <div class="wrap wrap--wide">
-      <h2 class="center">Was die ersten Leser sagen</h2>
-      <p class="center muted">Stimmen aus der Beta — die Namen sind echt, die Profile auch.</p>
+      <h2 class="center">Noch keine Testimonials — und das ist ehrlich so</h2>
+      <p class="center muted">aban news startet gerade. Statt erfundener Stimmen bekommst du die echte Lage — und mein Versprechen.</p>
 
-      <!-- TODO: echte Testimonials nach 30 Subs einfügen -->
-      <div class="grid grid--3 testi-grid">
-
-        <div class="card testi-card">
-          <div class="testi-stars" aria-label="5 von 5 Sternen">
-            <svg viewBox="0 0 90 16" width="90" height="16" aria-hidden="true">
-              <g fill="#d97706">
-                <path d="M8 1 L10 6 L15 6.5 L11 10 L12 15 L8 12.5 L4 15 L5 10 L1 6.5 L6 6 Z"/>
-                <path d="M26 1 L28 6 L33 6.5 L29 10 L30 15 L26 12.5 L22 15 L23 10 L19 6.5 L24 6 Z"/>
-                <path d="M44 1 L46 6 L51 6.5 L47 10 L48 15 L44 12.5 L40 15 L41 10 L37 6.5 L42 6 Z"/>
-                <path d="M62 1 L64 6 L69 6.5 L65 10 L66 15 L62 12.5 L58 15 L59 10 L55 6.5 L60 6 Z"/>
-                <path d="M80 1 L82 6 L87 6.5 L83 10 L84 15 L80 12.5 L76 15 L77 10 L73 6.5 L78 6 Z"/>
-              </g>
-            </svg>
-          </div>
-          <p class="testi-quote">„Endlich ein deutscher AI-Newsletter, der nicht jeden Morgen Hype-Vokabeln raushaut. Drei News, eine Einschätzung — fertig vorm zweiten Kaffee."</p>
-          <div class="testi-author">
-            <span class="testi-avatar" aria-hidden="true">
-              <svg viewBox="0 0 40 40" width="40" height="40">
-                <circle cx="20" cy="20" r="20" fill="#d97706"/>
-                <text x="20" y="26" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#fffbf5">T</text>
-              </svg>
-            </span>
-            <div>
-              <div class="testi-name">Tobias</div>
-              <div class="testi-role">Marketing-Berater, Frankfurt</div>
-            </div>
-          </div>
+      <div class="grid grid--3 social-proof">
+        <div class="card sp-card">
+          <span class="sp-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          </span>
+          <h3>Du bist früh dran</h3>
+          <p>Die ersten Leser prägen den Newsletter mit. Antworte auf jede Ausgabe — dein Feedback landet direkt bei mir und formt, was kommt.</p>
         </div>
 
-        <div class="card testi-card">
-          <div class="testi-stars" aria-label="5 von 5 Sternen">
-            <svg viewBox="0 0 90 16" width="90" height="16" aria-hidden="true">
-              <g fill="#d97706">
-                <path d="M8 1 L10 6 L15 6.5 L11 10 L12 15 L8 12.5 L4 15 L5 10 L1 6.5 L6 6 Z"/>
-                <path d="M26 1 L28 6 L33 6.5 L29 10 L30 15 L26 12.5 L22 15 L23 10 L19 6.5 L24 6 Z"/>
-                <path d="M44 1 L46 6 L51 6.5 L47 10 L48 15 L44 12.5 L40 15 L41 10 L37 6.5 L42 6 Z"/>
-                <path d="M62 1 L64 6 L69 6.5 L65 10 L66 15 L62 12.5 L58 15 L59 10 L55 6.5 L60 6 Z"/>
-                <path d="M80 1 L82 6 L87 6.5 L83 10 L84 15 L80 12.5 L76 15 L77 10 L73 6.5 L78 6 Z"/>
-              </g>
-            </svg>
-          </div>
-          <p class="testi-quote">„Der Tool-Tipp am Mittwoch hat mir letzte Woche zwei Stunden Recherche erspart. Aban testet das Zeug wirklich, das merkt man am ersten Satz."</p>
-          <div class="testi-author">
-            <span class="testi-avatar" aria-hidden="true">
-              <svg viewBox="0 0 40 40" width="40" height="40">
-                <circle cx="20" cy="20" r="20" fill="#059669"/>
-                <text x="20" y="26" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#fffbf5">S</text>
-              </svg>
-            </span>
-            <div>
-              <div class="testi-name">Sarah</div>
-              <div class="testi-role">Solo-Devin, München</div>
-            </div>
-          </div>
+        <div class="card sp-card">
+          <span class="sp-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 6v5c0 5 4 9 9 11 5-2 9-6 9-11V6l-9-4z"/><path d="M9 12l2 2 4-4"/></svg>
+          </span>
+          <h3>Echte Stimmen, sobald sie da sind</h3>
+          <p>Hier stehen später echte Leser-Zitate — mit echtem Namen und Profil. Keine erfundenen Reviews. Das wäre gegen alles, wofür aban news steht.</p>
         </div>
 
-        <div class="card testi-card">
-          <div class="testi-stars" aria-label="5 von 5 Sternen">
-            <svg viewBox="0 0 90 16" width="90" height="16" aria-hidden="true">
-              <g fill="#d97706">
-                <path d="M8 1 L10 6 L15 6.5 L11 10 L12 15 L8 12.5 L4 15 L5 10 L1 6.5 L6 6 Z"/>
-                <path d="M26 1 L28 6 L33 6.5 L29 10 L30 15 L26 12.5 L22 15 L23 10 L19 6.5 L24 6 Z"/>
-                <path d="M44 1 L46 6 L51 6.5 L47 10 L48 15 L44 12.5 L40 15 L41 10 L37 6.5 L42 6 Z"/>
-                <path d="M62 1 L64 6 L69 6.5 L65 10 L66 15 L62 12.5 L58 15 L59 10 L55 6.5 L60 6 Z"/>
-                <path d="M80 1 L82 6 L87 6.5 L83 10 L84 15 L80 12.5 L76 15 L77 10 L73 6.5 L78 6 Z"/>
-              </g>
-            </svg>
-          </div>
-          <p class="testi-quote">„Ich les morgens nichts mehr außer aban news und der NZZ. Kurz, sortiert, eine Sache zum Mitnehmen — perfekt für unsere Agentur-Routine."</p>
-          <div class="testi-author">
-            <span class="testi-avatar" aria-hidden="true">
-              <svg viewBox="0 0 40 40" width="40" height="40">
-                <circle cx="20" cy="20" r="20" fill="#1f2937"/>
-                <text x="20" y="26" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#fffbf5">L</text>
-              </svg>
-            </span>
-            <div>
-              <div class="testi-name">Lukas</div>
-              <div class="testi-role">Agentur-Inhaber, Wien</div>
-            </div>
-          </div>
+        <div class="card sp-card">
+          <span class="sp-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4z"/><path d="M4 4l8 6 8-6"/></svg>
+          </span>
+          <h3>Mein Versprechen</h3>
+          <p>Mo–Fr eine Ausgabe, kein Hype, jede Quelle verlinkt. Wenn die Mail mal nicht kommt oder nichts taugt, sag's mir — und ich fix es.</p>
         </div>
-
       </div>
     </div>
   </section>
