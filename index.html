@@ -109,7 +109,7 @@
       display:grid;grid-template-columns:repeat(3,1fr);gap:0}
     .step{padding:1.1rem 1.25rem;border-right:1px solid var(--line)}
     .step:last-child{border-right:0}
-    .step h3{margin:.1rem 0 .25rem;font-size:1rem}
+    .step h2{margin:.1rem 0 .25rem;font-size:1rem}
     .step p{margin:0;font-size:.88rem;color:var(--muted)}
     .step .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--amber-lt);color:var(--amber-dk);font-weight:800;font-size:.85rem}
 
@@ -127,9 +127,10 @@
       .mail{max-height:54vh;overflow:auto;-webkit-overflow-scrolling:touch}
       .strip{grid-template-columns:1fr}
       .step{border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}
-      .hnav .lk{display:none}
+      .hnav .lk{display:none}.row{flex-direction:column}.row .btn{width:100%}
     }
-  </style>
+  @media (hover:none) and (pointer:coarse){.tab{min-height:44px;padding:.55rem 1rem}.lang a{min-height:38px;display:inline-flex;align-items:center}.btn--sm{min-height:40px}}
+</style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","@id":"https://abannews.com/#organization","name":"aban news","url":"https://abannews.com/","logo":"https://abannews.com/og-image.png","founder":{"@type":"Person","name":"Allen Chour"},"foundingLocation":"Belp, CH"}
 </script>
@@ -197,9 +198,9 @@
     <!-- compact below-fold strip -->
     <div class="wrap">
       <div class="strip">
-        <div class="step"><span class="n">1</span><h3>Wir scannen</h3><p>Jede Nacht 5 deutsche AI-Quellen + Reddit. Aus ~200 Posts werden die paar relevanten.</p></div>
-        <div class="step"><span class="n">2</span><h3>Aban schreibt</h3><p>Ich les selbst, sortier Marketing-Blabla raus, schreib mit eigener Einschätzung.</p></div>
-        <div class="step"><span class="n">3</span><h3>Du liest, 5 Min</h3><p>07:30 im Posteingang. Kaffee, durchlesen, eine Sache mitnehmen — fertig vor dem ersten Meeting.</p></div>
+        <div class="step"><span class="n">1</span><h2>Wir scannen</h2><p>Jede Nacht 5 deutsche AI-Quellen + Reddit. Aus ~200 Posts werden die paar relevanten.</p></div>
+        <div class="step"><span class="n">2</span><h2>Aban schreibt</h2><p>Ich les selbst, sortier Marketing-Blabla raus, schreib mit eigener Einschätzung.</p></div>
+        <div class="step"><span class="n">3</span><h2>Du liest, 5 Min</h2><p>07:30 im Posteingang. Kaffee, durchlesen, eine Sache mitnehmen — fertig vor dem ersten Meeting.</p></div>
       </div>
       <p class="honest"><b>Noch keine Testimonials — und das ist ehrlich so.</b> aban news startet gerade. Keine erfundenen Stimmen, keine Fake-Zahlen. Du bist früh dran und prägst mit.</p>
     </div>

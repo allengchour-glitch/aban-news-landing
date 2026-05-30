@@ -110,7 +110,7 @@
       display:grid;grid-template-columns:repeat(3,1fr);gap:0}
     .step{padding:1.1rem 1.25rem;border-right:1px solid var(--line)}
     .step:last-child{border-right:0}
-    .step h3{margin:.1rem 0 .25rem;font-size:1rem}
+    .step h2{margin:.1rem 0 .25rem;font-size:1rem}
     .step p{margin:0;font-size:.88rem;color:var(--muted)}
     .step .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--amber-lt);color:var(--amber-dk);font-weight:800;font-size:.85rem}
 
@@ -128,9 +128,10 @@
       .mail{max-height:54vh;overflow:auto;-webkit-overflow-scrolling:touch}
       .strip{grid-template-columns:1fr}
       .step{border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}
-      .hnav .lk{display:none}
+      .hnav .lk{display:none}.row{flex-direction:column}.row .btn{width:100%}
     }
-  </style>
+  @media (hover:none) and (pointer:coarse){.tab{min-height:44px;padding:.55rem 1rem}.lang a{min-height:38px;display:inline-flex;align-items:center}.btn--sm{min-height:40px}}
+</style>
 </head>
 <body>
 <header>
@@ -195,9 +196,9 @@
     <!-- compact below-fold strip -->
     <div class="wrap">
       <div class="strip">
-        <div class="step"><span class="n">1</span><h3>We scan</h3><p>Every night, 5 German AI sources + Reddit. Out of ~200 posts, only the few that matter.</p></div>
-        <div class="step"><span class="n">2</span><h3>Aban writes</h3><p>I read it myself, filter out the marketing fluff, and write with an actual opinion.</p></div>
-        <div class="step"><span class="n">3</span><h3>You read, 5 min</h3><p>07:30 in your inbox. Coffee, skim, take one thing away — done before your first meeting.</p></div>
+        <div class="step"><span class="n">1</span><h2>We scan</h2><p>Every night, 5 German AI sources + Reddit. Out of ~200 posts, only the few that matter.</p></div>
+        <div class="step"><span class="n">2</span><h2>Aban writes</h2><p>I read it myself, filter out the marketing fluff, and write with an actual opinion.</p></div>
+        <div class="step"><span class="n">3</span><h2>You read, 5 min</h2><p>07:30 in your inbox. Coffee, skim, take one thing away — done before your first meeting.</p></div>
       </div>
       <p class="honest"><b>No testimonials yet — and that's honest.</b> aban news is just starting. No invented quotes, no fake numbers. You're early, and you shape it.</p>
     </div>

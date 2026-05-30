@@ -867,7 +867,7 @@ li:last-child { margin-bottom: 0; }
   .foot-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-.foot-grid h5 {
+.foot-grid .foot-h {
   font-size: 0.8125rem;
   font-weight: 700;
   text-transform: uppercase;

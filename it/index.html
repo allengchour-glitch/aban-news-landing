@@ -99,7 +99,7 @@
       display:grid;grid-template-columns:repeat(3,1fr);gap:0}
     .step{padding:1.1rem 1.25rem;border-right:1px solid var(--line)}
     .step:last-child{border-right:0}
-    .step h3{margin:.1rem 0 .25rem;font-size:1rem}
+    .step h2{margin:.1rem 0 .25rem;font-size:1rem}
     .step p{margin:0;font-size:.88rem;color:var(--muted)}
     .step .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--amber-lt);color:var(--amber-dk);font-weight:800;font-size:.85rem}
     .honest{margin-top:1rem;text-align:center;font-size:.9rem;color:var(--muted)}
@@ -114,9 +114,10 @@
       .mail{max-height:54vh;overflow:auto;-webkit-overflow-scrolling:touch}
       .strip{grid-template-columns:1fr}
       .step{border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}
-      .hnav .lk{display:none}
+      .hnav .lk{display:none}.row{flex-direction:column}.row .btn{width:100%}
     }
-  </style>
+  @media (hover:none) and (pointer:coarse){.tab{min-height:44px;padding:.55rem 1rem}.lang a{min-height:38px;display:inline-flex;align-items:center}.btn--sm{min-height:40px}}
+</style>
 </head>
 <body>
 <header>
@@ -177,9 +178,9 @@
 
     <div class="wrap">
       <div class="strip">
-        <div class="step"><span class="n">1</span><h3>Scansioniamo</h3><p>Ogni notte, 5 fonti IA tedesche + Reddit. Su ~200 post, solo i pochi che contano.</p></div>
-        <div class="step"><span class="n">2</span><h3>Aban scrive</h3><p>Leggo io stesso, taglio il blabla di marketing, scrivo con un'opinione vera.</p></div>
-        <div class="step"><span class="n">3</span><h3>Leggi, 5 min</h3><p>07:30 nella tua casella. Caffè, scorri, porta via una cosa — finito prima della prima riunione.</p></div>
+        <div class="step"><span class="n">1</span><h2>Scansioniamo</h2><p>Ogni notte, 5 fonti IA tedesche + Reddit. Su ~200 post, solo i pochi che contano.</p></div>
+        <div class="step"><span class="n">2</span><h2>Aban scrive</h2><p>Leggo io stesso, taglio il blabla di marketing, scrivo con un'opinione vera.</p></div>
+        <div class="step"><span class="n">3</span><h2>Leggi, 5 min</h2><p>07:30 nella tua casella. Caffè, scorri, porta via una cosa — finito prima della prima riunione.</p></div>
       </div>
       <p class="honest"><b>Ancora nessuna testimonianza — ed è onesto così.</b> aban news è appena partito. Niente citazioni inventate, niente numeri finti. Sei in anticipo e dai forma al progetto.</p>
     </div>

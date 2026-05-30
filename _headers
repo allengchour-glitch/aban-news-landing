@@ -17,6 +17,10 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Data JSON: einen Tag cachen
+/data/*
+  Cache-Control: public, max-age=86400
+
 # HTML: kürzer cachen (Inhalt kann sich ändern)
 /*.html
   Cache-Control: public, max-age=3600, must-revalidate
