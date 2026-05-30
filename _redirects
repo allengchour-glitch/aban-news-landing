@@ -5,6 +5,8 @@
 # Pretty URLs (no .html in URLs that users might type)
 /founding         /founding.html        301
 /ebook            /ebook.html           301
+/buch             /buch.html            301
+/book             /buch.html            301
 /ki-tools         /ki-tools-fuer-selbststaendige.html   301
 /chatgpt          /chatgpt-fuer-solopreneure.html       301
 /sponsoring       /sponsoring.html      301

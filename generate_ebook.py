@@ -148,6 +148,128 @@ def build_lang(lang, data):
 
 
 # ============================================================
+# ePub builder (reine stdlib: ePub = ZIP aus XHTML)
+# ============================================================
+import zipfile
+import html as _html
+
+
+def _esc(s):
+    """Nur & escapen; <b>…</b> aus den Content-Packs bleibt valides XHTML."""
+    return s.replace("&", "&amp;")
+
+
+def blocks_to_xhtml(blocks):
+    out = []
+    in_list = False
+    for kind, payload in blocks:
+        if kind == "ul":
+            out.append("<ul>")
+            for it in payload:
+                out.append("<li>%s</li>" % _esc(it))
+            out.append("</ul>")
+        else:
+            tag = {"lead": "p class=\"lead\"", "h3": "h3", "p": "p",
+                   "callout": "p class=\"callout\""}.get(kind, "p")
+            close = tag.split(" ")[0]
+            out.append("<%s>%s</%s>" % (tag, _esc(payload), close))
+    return "\n".join(out)
+
+
+EPUB_CSS = """body{font-family:Georgia,'Times New Roman',serif;line-height:1.6;margin:5%;color:#1f2937}
+h1{color:#b45309;font-size:1.8em;line-height:1.2}
+h2{color:#b45309;font-size:1.4em;margin-top:1.6em}
+h3{font-size:1.1em;margin-top:1.2em}
+p.lead{font-style:italic;color:#555}
+p.callout{background:#fef3c7;border-left:4px solid #d97706;padding:.7em 1em;font-weight:bold}
+ul{margin:0 0 1em 1.2em}.cover{text-align:center;margin-top:30%}
+.cover .t{font-size:2.6em;font-weight:bold;color:#d97706}
+.cover .s{font-size:1.2em;color:#1f2937;margin-top:.4em}
+.cover .m{color:#6b7280;margin-top:2em;font-size:.9em}"""
+
+
+def build_epub(lang, data):
+    suffix = "" if lang == "de" else "-" + lang
+    filename = "anti-hype-ebook%s.epub" % suffix
+    path = os.path.join(OUT_DIR, filename)
+    bookid = "urn:abannews:anti-hype:%s" % lang
+
+    # XHTML-Dateien
+    files = {}
+    files["cover.xhtml"] = (
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="%s">'
+        '<head><meta charset="utf-8"/><title>%s</title>'
+        '<link rel="stylesheet" type="text/css" href="style.css"/></head>'
+        '<body><div class="cover"><div class="t">%s</div>'
+        '<div class="s">%s</div><div class="m">%s<br/>Aban (Allen Chour) · abannews.com</div>'
+        '</div></body></html>' % (lang, _esc(data["title"]), _esc(data["title"]),
+                                   _esc(data["subtitle"]), _esc(data["edition"]))
+    )
+    spine_ids = ["cover"]
+    nav_items = []
+    for i, ch in enumerate(data["chapters"], 1):
+        cid = "ch%d" % i
+        spine_ids.append(cid)
+        nav_items.append('<li><a href="%s.xhtml">%s</a></li>' % (cid, _esc(ch["title"])))
+        files["%s.xhtml" % cid] = (
+            '<?xml version="1.0" encoding="utf-8"?>\n'
+            '<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="%s">'
+            '<head><meta charset="utf-8"/><title>%s</title>'
+            '<link rel="stylesheet" type="text/css" href="style.css"/></head>'
+            '<body><h2>%s</h2>\n%s</body></html>'
+            % (lang, _esc(ch["title"]), _esc(ch["title"]), blocks_to_xhtml(ch["blocks"]))
+        )
+
+    nav = (
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" '
+        'xmlns:epub="http://www.idpf.org/2007/ops" lang="%s">'
+        '<head><meta charset="utf-8"/><title>%s</title></head><body>'
+        '<nav epub:type="toc" id="toc"><h1>%s</h1><ol>%s</ol></nav></body></html>'
+        % (lang, _esc(data["toc_title"]), _esc(data["toc_title"]), "".join(nav_items))
+    )
+
+    manifest = ['<item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>',
+                '<item id="css" href="style.css" media-type="text/css"/>']
+    spine = []
+    for sid in spine_ids:
+        manifest.append('<item id="%s" href="%s.xhtml" media-type="application/xhtml+xml"/>' % (sid, sid))
+        spine.append('<itemref idref="%s"/>' % sid)
+    opf = (
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="BookID">'
+        '<metadata xmlns:dc="http://purl.org/dc/elements/1.1/">'
+        '<dc:identifier id="BookID">%s</dc:identifier>'
+        '<dc:title>%s — %s</dc:title>'
+        '<dc:language>%s</dc:language>'
+        '<dc:creator>Aban (Allen Chour)</dc:creator>'
+        '<dc:publisher>aban news</dc:publisher>'
+        '<dc:description>%s</dc:description>'
+        '<meta property="dcterms:modified">2026-01-01T00:00:00Z</meta>'
+        '</metadata><manifest>%s</manifest><spine>%s</spine></package>'
+        % (bookid, _esc(data["title"]), _esc(data["subtitle"]), lang,
+           _esc(data["subject"]), "".join(manifest), "".join(spine))
+    )
+
+    container = ('<?xml version="1.0" encoding="utf-8"?>\n'
+                 '<container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">'
+                 '<rootfiles><rootfile full-path="OEBPS/content.opf" '
+                 'media-type="application/oebps-package+xml"/></rootfiles></container>')
+
+    with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
+        # mimetype zuerst, unkomprimiert (ePub-Spec)
+        z.writestr("mimetype", "application/epub+zip", compress_type=zipfile.ZIP_STORED)
+        z.writestr("META-INF/container.xml", container)
+        z.writestr("OEBPS/content.opf", opf)
+        z.writestr("OEBPS/nav.xhtml", nav)
+        z.writestr("OEBPS/style.css", EPUB_CSS)
+        for name, content in files.items():
+            z.writestr("OEBPS/%s" % name, content)
+    print("✓ downloads/%s erstellt" % filename)
+
+
+# ============================================================
 # Content packs
 # ============================================================
 CONTENT = {
@@ -432,6 +554,7 @@ def build(langs=None):
         if lang not in CONTENT:
             print("! unbekannte Sprache: %s" % lang); continue
         build_lang(lang, CONTENT[lang])
+        build_epub(lang, CONTENT[lang])
 
 
 if __name__ == "__main__":
