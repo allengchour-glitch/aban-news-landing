@@ -373,6 +373,15 @@ def jsonld(tool):
     return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
 
 
+def breadcrumb(items, lang):
+    """BreadcrumbList JSON-LD. items = [(name, path), ...] relative to BASE_URL."""
+    elems = [{"@type": "ListItem", "position": i + 1, "name": name,
+              "item": BASE_URL + path} for i, (name, path) in enumerate(items)]
+    data = {"@context": "https://schema.org", "@type": "BreadcrumbList",
+            "itemListElement": elems}
+    return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
+
+
 def pro_contra(loc_tool, ui):
     pros = loc_tool.get("pro") or []
     contras = loc_tool.get("contra") or []
@@ -398,7 +407,9 @@ def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None):
     p = tool.get("pricing", {})
     price_extra = (f" · {ui['price_from']} {p['paid_from_eur']} {p.get('currency','EUR')}"
                    if p.get("paid_from_eur") else "")
-    body = f"""{jsonld(tool)}
+    crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
+                        (tool["name"], page_path(lang, "tool", slugify(tool["id"])))], lang)
+    body = f"""{jsonld(tool)}{crumb}
 <p><a href="{e(page_path(lang,'home'))}">{e(ui['all_tools'])}</a></p>
 <h1 style="margin:0">{e(tool['name'])} <span class="score">{e(tool.get('worth_it_score','—'))}/10</span></h1>
 <div class="grid-meta" style="margin:10px 0">
@@ -460,7 +471,9 @@ def comparison_page(a, b, aff, ui, loc_tools, lang, available):
     else:
         verdict = ui["winner"].format(name=(a if sa > sb else b)["name"])
     slug = vs_slug(a["id"], b["id"])
-    body = f"""{jsonld(a)}{jsonld(b)}
+    crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
+                        (f"{a['name']} vs {b['name']}", page_path(lang, "vs", slug))], lang)
+    body = f"""{jsonld(a)}{jsonld(b)}{crumb}
 <p><a href="{e(page_path(lang,'home'))}">{e(ui['all_tools'])}</a></p>
 <h1 style="margin:0 0 4px">{e(a['name'])} vs {e(b['name'])}</h1>
 <p class="note"><strong>{e(ui['verdict'])}:</strong> {e(verdict)}</p>
