@@ -1,0 +1,14 @@
+{
+  "name": "aban news",
+  "short_name": "aban news",
+  "description": "Der ehrliche KI-Newsletter für DACH — Mo–Fr, 3–5 Min, kein Hype.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffdf9",
+  "theme_color": "#d97706",
+  "lang": "de",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

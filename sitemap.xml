@@ -43,6 +43,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://abannews.com/themen/</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://abannews.com/themen/ki-tools.html</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
