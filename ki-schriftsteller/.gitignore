@@ -1,2 +1,8 @@
 # Generierte Kapitel nicht einchecken (Output, kein Quellcode)
 kapitel/*.md
+# Kompilierte Buch-Ausgaben (Output)
+ausgabe/
+# Backups und Lektorate (Output)
+kapitel/*.bak.md
+kapitel/*.lektorat.md
+roman*.json.bak
