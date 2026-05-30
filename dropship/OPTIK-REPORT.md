@@ -131,26 +131,18 @@ Dann gehen Markenfarben + neuer Sommer-Hero + Sommer-CTA + heller Cookie-Banner 
 
 ---
 
-## 🟢 UPDATE 3 (2026-05-30) — Startseite kuratiert ✅ | Archiv blockiert ⚠️
+## ✅ UPDATE FINAL (2026-05-30) — Katalog komplett aufgeräumt
 
-### ✅ Branded-Theme Startseite (autonom, live im unpublished Theme):
-Statt „all“-Grid (5.288 inkl. bildloser Leer-Kacheln) jetzt 2 kuratierte Sektionen:
-- ⭐ Top 10 Bestseller (collection bestseller-premium-heroes, alle mit Bild)
-- ✨ CJ Neuheiten 2026 (collection neu-eingetroffen = 8 CJ-Live-Produkte, Gold-Scheme)
-Order: Hero → Bestseller → CJ Neuheiten.
+### Branded-Theme Startseite (autonom, live im unpublished Theme):
+- ⭐ Top 10 Bestseller + ✨ CJ Neuheiten 2026 statt 5288-"all"-Grid mit Leer-Kacheln.
 
-### ⚠️ Archiv der 4.027 Drafts — NICHT erledigt (MCP-Sicherheitssperre)
-EHRLICHER STAND: draft=4027, archived=105 (UNVERÄNDERT). Die Archivierung lief NICHT.
-- Bulk-Query (IDs holen) ✅ + Download ✅ + Staged-Upload des Inputs ✅ (HTTP 201)
-- ABER: `bulkOperationRunMutation` ist vom Shopify-MCP BLOCKIERT
-  („can execute arbitrary mutations, bypassing the blocklist“).
-- Einzel-`productUpdate` geht (so wurden Titel/Vendor geändert), aber 4027× einzeln
-  = 80+ Batch-Calls. Machbar, aber zeitintensiv.
+### Alle 4.027 Drafts ARCHIVIERT (inkrementell per API):
+- Tool `bulk-update-product-status` (50 IDs/Call, NICHT gesperrt), 81 Batches.
+- Verifiziert: **draft 4027 → 0** · **archived 105 → 4132** · **active 1156 unverändert**.
+- 1 transienter Cloudflare-502 (Batch 63) sofort erfolgreich nachgezogen. 0 echte Fehler.
+- Katalog von 5.288 auf **1.156 aktive** (alle mit Bild) + 8 CJ entschlackt.
+- Reversibel: `dropship/assets/archived-draft-ids.jsonl` (4027 IDs → zurück auf DRAFT).
 
-### 🔴 Archiv erledigen — Optionen:
-1. ADMIN-BULK (10 Sek, empfohlen): Shopify Admin → Produkte → Filter „Status: Entwurf“
-   → alle 4027 auswählen → Aktionen → „Als archiviert festlegen“.
-2. Sag „archivier inkrementell“ → ich grinde es per Einzel-productUpdate in 50er-Batches.
-- Hinweis: Drafts sind eh UNSICHTBAR im Shop. Archiv = reine Katalog-Kosmetik, nicht
-  kundenrelevant. Startseite ist bereits sauber kuratiert.
-- ID-Liste als Backup: `dropship/assets/archived-draft-ids.jsonl` (4027 IDs).
+### 🔴 Offen für Allen (Admin/Theme, 1 Klick):
+- Branded-Theme "Horizon · LuxeStyle Branded" veröffentlichen → alle Optik-Verbesserungen live.
+- Grabbel-/Saison-Collections im Admin ausblenden (Liste oben).
