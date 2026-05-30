@@ -223,6 +223,14 @@ NEW_UI = {
                      "nl": "Beste AI-tools onder €{p}", "pl": "Najlepsze narzędzia AI poniżej {p} €",
                      "tr": "{p} € altı en iyi YZ araçları", "ja": "{p}ユーロ以下の最高AIツール",
                      "zh": "{p} 欧元以下最佳AI工具"},
+    "tool_of_month": {"de": "Tool des Monats", "en": "Tool of the month", "fr": "Outil du mois",
+                      "es": "Herramienta del mes", "it": "Strumento del mese", "pt": "Ferramenta do mês",
+                      "nl": "Tool van de maand", "pl": "Narzędzie miesiąca", "tr": "Ayın aracı",
+                      "ja": "今月のツール", "zh": "本月之选"},
+    "related": {"de": "Verwandte Tools", "en": "Related tools", "fr": "Outils similaires",
+                "es": "Herramientas relacionadas", "it": "Strumenti correlati", "pt": "Ferramentas relacionadas",
+                "nl": "Gerelateerde tools", "pl": "Powiązane narzędzia", "tr": "İlgili araçlar",
+                "ja": "関連ツール", "zh": "相关工具"},
 }
 # Newsletter box links to the existing owned audience (compounding revenue lever).
 NEWSLETTER_URL = "https://abannews.de"
@@ -393,6 +401,9 @@ padding:10px 18px;border-radius:8px;font-weight:600;margin-top:8px;}}
 .subnav{{font-size:.9rem;margin:6px 0 0;}}
 .search{{width:100%;padding:11px 14px;font-size:1rem;border:1px solid var(--border);border-radius:10px;margin:0 0 14px;}}
 .search:focus{{outline:2px solid var(--accent);border-color:var(--accent);}}
+.feat{{border:2px solid var(--accent);border-radius:14px;padding:8px 14px 2px;margin:14px 0;background:#fff;}}
+.feat-label{{display:inline-block;background:var(--accent);color:#fff;font-weight:600;font-size:.82rem;border-radius:999px;padding:2px 12px;margin:4px 0 2px;}}
+.feat .card{{border:none;margin:0;padding:10px 6px;}}
 .vs-col{{display:flex;flex-wrap:wrap;gap:14px;}} .vs-col>div{{flex:1;min-width:240px;}}
 .faq{{margin:22px 0;}} .faq h2{{font-size:1.1rem;margin:0 0 8px;}}
 .faq details{{background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 14px;margin:0 0 8px;}}
@@ -537,7 +548,7 @@ def faq_section(tool, loc, ui, tools_by_id, lang):
     return (f'<section class="faq"><h2>{e(ui["faq_heading"])}</h2>{details}</section>{script}')
 
 
-def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None):
+def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None, related=None):
     url, is_aff = affiliate_link(tool, aff)
     star = " *" if is_aff else ""
     loc = loc_tools.get(tool["id"], {})
@@ -565,6 +576,7 @@ def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None):
 {'<div class="note"><strong>'+e(ui['dsgvo'])+':</strong> '+e(dsgvo)+'</div>' if dsgvo else ''}
 <p><strong>{e(ui['alternatives'])}:</strong> {alts}</p>
 {comparison_links(tool, tools_by_id or {}, ui, lang)}
+{related_links(related, ui, lang)}
 <a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank">{e(ui['cta'].format(name=tool['name']))}{e(star)} →</a>
 {faq_section(tool, loc, ui, tools_by_id or {}, lang)}"""
     desc = (note or ui["meta_tool"].format(name=tool["name"]))[:155]
@@ -578,6 +590,16 @@ def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None):
 def vs_slug(a_id, b_id):
     x, y = sorted([slugify(a_id), slugify(b_id)])
     return f"{x}-vs-{y}"
+
+
+def related_links(related, ui, lang):
+    """Links to other tools sharing a category (internal linking / SEO)."""
+    if not related:
+        return ""
+    links = " · ".join(
+        f'<a href="{e(page_path(lang,"tool",slugify(r["id"])))}">{e(r["name"])}</a>'
+        for r in related)
+    return f'<p class="subnav"><strong>{e(ui["related"])}:</strong> {links}</p>'
 
 
 def comparison_links(tool, tools_by_id, ui, lang):
@@ -630,8 +652,11 @@ def comparison_page(a, b, aff, ui, loc_tools, lang, available):
 
 
 def usecase_page(uc_display, uc_slug, members, aff, ui, lang, available):
-    body = (f'<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
-            f'<h1>{e(ui["best_in"].format(cat=uc_display))}</h1>\n'
+    title = ui["best_in"].format(cat=uc_display)
+    crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
+                        (title, page_path(lang, "uc", uc_slug))], lang)
+    body = (f'{crumb}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+            f'<h1>{e(title)}</h1>\n'
             + "\n".join(tool_card(t, aff, ui, lang) for t in members))
     return page(lang=lang, ui=ui,
                 title=ui["best_in"].format(cat=uc_display) + f" — {SITE_NAME}",
@@ -652,7 +677,9 @@ def latest_issue(tool):
 
 
 def trending_page(members, aff, ui, lang, available):
-    body = (f'<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+    crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
+                        (ui["trending_nav"], page_path(lang, "trending"))], lang)
+    body = (f'{crumb}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
             f'<h1>🆕 {e(ui["trending_title"])}</h1>\n<p class="meta">{e(ui["trending_intro"])}</p>\n'
             + "\n".join(tool_card(t, aff, ui, lang) for t in members))
     return page(lang=lang, ui=ui, title=ui["trending_nav"] + f" — {SITE_NAME}",
@@ -682,7 +709,9 @@ def rss_feed(members, ui, loc_tools, lang):
 
 
 def budget_page(title, slug, members, aff, ui, lang, available):
-    body = (f'<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+    crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
+                        (title, page_path(lang, "budget", slug))], lang)
+    body = (f'{crumb}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
             f'<h1>💶 {e(title)}</h1>\n'
             + "\n".join(tool_card(t, aff, ui, lang) for t in members))
     return page(lang=lang, ui=ui, title=title + f" — {SITE_NAME}",
@@ -692,7 +721,9 @@ def budget_page(title, slug, members, aff, ui, lang, available):
 
 
 def dsgvo_page(members, aff, ui, lang, available):
-    body = (f'<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+    crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
+                        (ui["dsgvo_title"], page_path(lang, "dsgvo"))], lang)
+    body = (f'{crumb}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
             f'<h1>🏆 {e(ui["dsgvo_title"])}</h1>\n<p class="meta">{e(ui["dsgvo_intro"])}</p>\n'
             + "\n".join(tool_card(t, aff, ui, lang) for t in members))
     return page(lang=lang, ui=ui, title=ui["dsgvo_title"] + f" — {SITE_NAME}",
@@ -743,6 +774,22 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                 key = tuple(sorted([top[i]["id"], top[j]["id"]]))
                 pairs.setdefault(key, (tools_by_id[key[0]], tools_by_id[key[1]]))
     pairs = list(pairs.values())
+
+    # Related tools: up to 4 others sharing a category (by score, excl. self).
+    related_map = {}
+    for t in tools:
+        seen, rel = {t["id"]}, []
+        for c in t.get("category", []):
+            for cand in by_cat.get(c, []):
+                if cand["id"] not in seen:
+                    seen.add(cand["id"])
+                    rel.append(cand)
+        related_map[t["id"]] = rel[:4]
+
+    # Tool of the month: deterministic monthly rotation through the top 20.
+    _md = date.today()
+    top20 = tools_sorted[:20]
+    featured = top20[(_md.year * 12 + _md.month) % len(top20)] if top20 else None
 
     # Trending = most-recently covered in the newsletter (fallback: top-rated).
     trending = sorted([t for t in tools if latest_issue(t) > 0],
@@ -799,7 +846,11 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
         cards = "\n".join(tool_card(t, aff, ui, lang) for t in tools_sorted)
         search = (f'<input id="q" class="search" type="search" '
                   f'placeholder="{e(ui["search_ph"])}" aria-label="{e(ui["search_ph"])}">')
-        home_body = (f'<p class="meta">{e(ui["categories"])}: {cat_links}</p>\n{subnav}\n'
+        feat_html = ""
+        if featured:
+            feat_html = (f'<div class="feat"><span class="feat-label">🏅 {e(ui["tool_of_month"])}</span>\n'
+                         f'{tool_card(featured, aff, ui, lang)}</div>\n')
+        home_body = (f'<p class="meta">{e(ui["categories"])}: {cat_links}</p>\n{subnav}\n{feat_html}'
                      f'<h2 style="margin:18px 0 12px">{e(ui["home_heading"].format(n=len(tools)))}</h2>\n'
                      f'{search}\n<p id="nores" hidden>{e(ui["no_results"])}</p>\n{cards}\n'
                      f'<script src="/search.js" defer></script>')
@@ -812,19 +863,22 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                            available=available, kind="home"), encoding="utf-8")
         pages += 1
 
-        # Tool pages (with internal comparison links)
+        # Tool pages (with internal comparison + related links)
         for t in tools:
             of = out_file(out, lang, "tool", slugify(t["id"]))
             of.parent.mkdir(parents=True, exist_ok=True)
-            of.write_text(tool_page(t, aff, ui, loc_tools, lang, available, tools_by_id),
-                          encoding="utf-8")
+            of.write_text(tool_page(t, aff, ui, loc_tools, lang, available, tools_by_id,
+                                    related_map.get(t["id"])), encoding="utf-8")
             pages += 1
 
         # Category pages
         for c in categories:
             members = [t for t in tools_sorted if c in t.get("category", [])]
-            body = (f'<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
-                    f'<h1>{e(ui["best_in"].format(cat=c))}</h1>\n'
+            ctitle = ui["best_in"].format(cat=c)
+            ccrumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
+                                 (ctitle, page_path(lang, "cat", slugify(c)))], lang)
+            body = (f'{ccrumb}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+                    f'<h1>{e(ctitle)}</h1>\n'
                     + "\n".join(tool_card(t, aff, ui, lang) for t in members))
             of = out_file(out, lang, "cat", slugify(c))
             of.parent.mkdir(parents=True, exist_ok=True)
