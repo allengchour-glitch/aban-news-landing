@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI-Newsletter für DACH – tägliche AI-News in 5 Minuten | aban news</title>
+  <meta name="description" content="Die wichtigsten KI-Updates für DACH-Profis – jeden Morgen in 5 Minuten. Mo–Fr, kein Hype. News, ein getestetes Tool, ein Prompt. DSGVO-konform.">
+  <meta name="theme-color" content="#d97706">
+  <link rel="canonical" href="https://abannews.com/">
+  <meta property="og:title" content="aban news — Täglicher AI-Newsletter für DACH">
+  <meta property="og:description" content="Die wichtigsten KI-Updates für DACH-Profis – jeden Morgen in 5 Minuten. Kein Hype.">
+  <meta property="og:image" content="https://abannews.com/og-image.svg">
+  <meta property="og:url" content="https://abannews.com/">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://abannews.beehiiv.com" crossorigin>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"aban news","url":"https://abannews.com/","description":"Täglicher deutschsprachiger AI-Newsletter für DACH-Profis.","inLanguage":"de-DE"}
+  </script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    :root{
+      --bg:#fffaf2;--card:#ffffff;--ink:#1c2530;--muted:#6b7280;--line:#ece6db;
+      --amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ok:#0f9d6b;
+      --shadow:0 18px 50px rgba(28,37,48,.12);--shadow-sm:0 6px 18px rgba(28,37,48,.08);
+      --r:18px;
+    }
+    html{-webkit-text-size-adjust:100%}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      color:var(--ink);background:radial-gradient(1200px 600px at 85% -10%,var(--cream),transparent 60%),var(--bg);
+      line-height:1.5;-webkit-font-smoothing:antialiased}
+    img,svg{max-width:100%;display:block}
+    a{color:inherit}
+    .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 1.25rem}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:30;background:rgba(255,250,242,.82);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+    .brand{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.15rem;text-decoration:none}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px var(--amber-lt)}
+    .hnav{display:flex;align-items:center;gap:1.25rem;font-size:.92rem}
+    .hnav a{color:var(--muted);text-decoration:none}
+    .hnav a:hover{color:var(--ink)}
+    .btn{display:inline-flex;align-items:center;gap:.45rem;border:0;border-radius:12px;cursor:pointer;
+      font-weight:700;font-size:1rem;padding:.8rem 1.15rem;background:var(--amber);color:#fff;text-decoration:none;
+      box-shadow:0 8px 20px rgba(217,119,6,.28);transition:transform .12s ease,box-shadow .12s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(217,119,6,.34)}
+    .btn--sm{padding:.5rem .85rem;font-size:.9rem;border-radius:10px}
+    .btn--ghost{background:transparent;color:var(--amber-dk);box-shadow:none;border:1px solid var(--line)}
+
+    /* Hero */
+    .hero{padding:clamp(1.5rem,4vw,3rem) 0 1.5rem}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+    .chip-status{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--amber-dk);
+      background:var(--amber-lt);border:1px solid #f6d9ad;padding:.35rem .7rem;border-radius:999px;font-weight:600}
+    .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(15,157,107,.5);animation:p 2s infinite}
+    @keyframes p{0%{box-shadow:0 0 0 0 rgba(15,157,107,.45)}70%{box-shadow:0 0 0 7px rgba(15,157,107,0)}100%{box-shadow:0 0 0 0 rgba(15,157,107,0)}}
+    h1{font-size:clamp(2rem,4.6vw,3.25rem);line-height:1.05;letter-spacing:-.025em;margin:.9rem 0 .6rem;font-weight:800}
+    .lead{font-size:clamp(1rem,1.3vw,1.12rem);color:#3b4654;max-width:34ch;margin:0 0 1rem}
+    .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.15rem}
+    .chip{display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1px solid var(--line);
+      border-radius:999px;padding:.4rem .8rem;font-size:.86rem;font-weight:600;box-shadow:var(--shadow-sm)}
+
+    /* CTA card */
+    .cta{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem;box-shadow:var(--shadow);max-width:440px}
+    .row{display:flex;gap:.5rem}
+    .row input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:.85rem .9rem;font-size:1rem;background:#fff}
+    .row input:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:var(--amber)}
+    .anchor{font-size:.82rem;color:var(--muted);margin:.6rem 0 0;line-height:1.45}
+    .consent{display:flex;gap:.5rem;align-items:flex-start;margin:.6rem 0 0;font-size:.78rem;color:var(--muted)}
+    .consent input{margin-top:.15rem}
+    .trust{display:flex;flex-wrap:wrap;gap:.5rem 1rem;margin:.75rem 0 0;padding:.7rem 0 0;border-top:1px dashed var(--line);font-size:.78rem;color:var(--muted)}
+    .trust b{color:var(--ink)}
+
+    /* Preview switcher (auto) */
+    .preview{position:relative}
+    .mail{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+    .mail-bar{display:flex;align-items:center;gap:.45rem;padding:.6rem .9rem;background:#f5f2ec;border-bottom:1px solid var(--line)}
+    .tl{width:11px;height:11px;border-radius:50%}.tl.r{background:#ef4444}.tl.y{background:#f59e0b}.tl.g{background:#10b981}
+    .mail-meta{margin-left:.4rem;font-size:.78rem;color:var(--muted)}
+    .mail-body{padding:1rem 1.15rem 1.15rem}
+    .from{font-size:.8rem;color:var(--muted);margin-bottom:.5rem}
+    .from b{color:var(--ink)}
+    .subj{font-weight:800;font-size:1.05rem;margin:.1rem 0 .7rem;letter-spacing:-.01em}
+    .slug{font-size:.78rem;color:var(--amber-dk);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+    .news{list-style:none;margin:.5rem 0 0;padding:0}
+    .news li{display:flex;gap:.55rem;padding:.4rem 0;font-size:.92rem;border-bottom:1px solid var(--line)}
+    .news li:last-child{border-bottom:0}
+    .news .mk{color:var(--amber)}
+    .signoff{font-style:italic;color:var(--muted);font-size:.85rem;margin:.7rem 0 0}
+    .switch{display:flex;align-items:center;justify-content:center;gap:.5rem;margin:.8rem 0 0}
+    .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:.35rem .8rem;font-size:.82rem;font-weight:700;
+      color:var(--muted);cursor:pointer;transition:.15s}
+    .tab[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .fade{animation:fade .5s ease}
+    @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+    /* Below-fold compact strip */
+    .strip{margin-top:1.5rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);
+      display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+    .step{padding:1.1rem 1.25rem;border-right:1px solid var(--line)}
+    .step:last-child{border-right:0}
+    .step h3{margin:.1rem 0 .25rem;font-size:1rem}
+    .step p{margin:0;font-size:.88rem;color:var(--muted)}
+    .step .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--amber-lt);color:var(--amber-dk);font-weight:800;font-size:.85rem}
+
+    .honest{margin-top:1rem;text-align:center;font-size:.9rem;color:var(--muted)}
+    .honest b{color:var(--ink)}
+
+    footer{margin-top:2rem;border-top:1px solid var(--line);background:rgba(255,255,255,.5)}
+    footer .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:center;justify-content:center;padding:1.1rem 1.25rem;font-size:.82rem;color:var(--muted)}
+    footer a{text-decoration:none;color:var(--muted)}footer a:hover{color:var(--ink)}
+
+    @media(max-width:860px){
+      .hero-grid{grid-template-columns:1fr;gap:1.5rem}
+      .lead{max-width:none}
+      .preview{order:2}
+      .mail{max-height:54vh;overflow:auto;-webkit-overflow-scrolling:touch}
+      .strip{grid-template-columns:1fr}
+      .step{border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}
+      .hnav .lk{display:none}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a href="/" class="brand"><span class="dot"></span> aban news</a>
+    <nav class="hnav">
+      <a href="/preview.html" class="lk">Beispiel</a>
+      <a href="/founding.html" class="lk">Premium</a>
+      <a href="#signup" class="btn btn--sm">Abonnieren</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <!-- LEFT -->
+      <div>
+        <span class="chip-status"><span class="pulse"></span> Mo–Fr · kuratiert von Aban in der Schweiz</span>
+        <h1>Die wichtigsten KI-Updates für DACH-Profis — jeden Morgen in 5&nbsp;Minuten.</h1>
+        <p class="lead">Kein Hype, keine PR. Du weißt morgens in 5 Minuten, was zählt — und was du ignorieren kannst.</p>
+        <div class="chips">
+          <span class="chip">📰 3–5 News</span>
+          <span class="chip">🛠 1 getestetes Tool</span>
+          <span class="chip">💡 1 Prompt</span>
+        </div>
+        <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
+          <div class="row">
+            <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">
+            <button type="submit" class="btn">5-Min-Briefing gratis →</button>
+          </div>
+          <p class="anchor">Jeden Werktag 7:30 Uhr · 1 Tool + 3 relevante Updates · kein Spam, kein Affiliate-Müll.</p>
+          <label class="consent"><input type="checkbox" name="consent" value="1" required>
+            <span>Ich willige ein, Mo–Fr eine E-Mail zu erhalten. Abmeldung jederzeit per Klick. <a href="/datenschutz.html">Datenschutz</a>.</span></label>
+          <div class="trust"><span><b>DSGVO</b>-konform</span><span><b>1-Klick</b>-Abmeldung</span><span>kein Tracking-Pixel</span></div>
+        </form>
+      </div>
+
+      <!-- RIGHT: auto-switching preview -->
+      <div class="preview">
+        <div class="mail">
+          <div class="mail-bar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
+            <span class="mail-meta" id="mMeta">📥 Posteingang · aban news</span></div>
+          <div class="mail-body">
+            <div class="from">Von <b>Aban</b> &lt;hallo@abannews.com&gt;</div>
+            <div class="subj" id="mSubj">…</div>
+            <div class="slug" id="mSlug">Was heute zählt</div>
+            <ul class="news" id="mNews"></ul>
+            <p class="signoff">— Aban</p>
+          </div>
+        </div>
+        <div class="switch" id="tabs" role="tablist" aria-label="Beispiel-Ausgaben">
+          <button class="tab" role="tab" data-i="0">Mo</button>
+          <button class="tab" role="tab" data-i="1">Mi</button>
+          <button class="tab" role="tab" data-i="2">Fr</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- compact below-fold strip -->
+    <div class="wrap">
+      <div class="strip">
+        <div class="step"><span class="n">1</span><h3>Wir scannen</h3><p>Jede Nacht 5 deutsche AI-Quellen + Reddit. Aus ~200 Posts werden die paar relevanten.</p></div>
+        <div class="step"><span class="n">2</span><h3>Aban schreibt</h3><p>Ich les selbst, sortier Marketing-Blabla raus, schreib mit eigener Einschätzung.</p></div>
+        <div class="step"><span class="n">3</span><h3>Du liest, 5 Min</h3><p>07:30 im Posteingang. Kaffee, durchlesen, eine Sache mitnehmen — fertig vor dem ersten Meeting.</p></div>
+      </div>
+      <p class="honest"><b>Noch keine Testimonials — und das ist ehrlich so.</b> aban news startet gerade. Keine erfundenen Stimmen, keine Fake-Zahlen. Du bist früh dran und prägst mit.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <a href="/preview.html">Beispiel-Ausgabe</a>
+    <a href="/founding.html">Premium</a>
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+    <a href="/en/">🇬🇧 EN</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var issues=[
+    {tab:"Mo 25.05 · 3 Min",subj:"OpenAI macht's billiger — aber lies das Kleingedruckte",slug:"📰 Was heute zählt",
+     news:["GPT-5 Mini 60% günstiger — aber Context-Window halbiert sich auch","Mistral Open-Weights-Release","🛠 Tool: LibreChat — selbstgehostet, EU-Server, gratis"]},
+    {tab:"Mi 27.05 · 4 Min",subj:"☕ China zieht den Vorhang zu, DeepSeek dreht am Preis",slug:"📰 Was heute zählt",
+     news:["DeepSeek viertelt die Preise für V4-Pro (strukturell, kein Sale)","Marken-Sichtbarkeit in ChatGPT prüfen — neue GEO-Tools","🛠 Tool: eustella aus Wien — EU-Hosting, DSGVO-nativ, gratis"]},
+    {tab:"Fr 29.05 · 5 Min",subj:"Bullshit-Detektor: „KI-First-Strategie“ im Härtetest",slug:"🚨 Was nicht trägt",
+     news:["„KI-First“ ist meist eine Ausrede für fehlende Strategie","3 Fragen, die Hype von Substanz trennen","💡 Prompt: Cold-Outreach chirurgisch entgenerisieren"]}
+  ];
+  var i=0,timer,playing=true;
+  var elMeta=document.getElementById('mMeta'),elSubj=document.getElementById('mSubj'),
+      elSlug=document.getElementById('mSlug'),elNews=document.getElementById('mNews'),
+      tabs=[].slice.call(document.querySelectorAll('#tabs .tab'));
+  function render(n){
+    var d=issues[n];
+    elMeta.textContent="📥 Posteingang · aban news · "+d.tab;
+    elSubj.textContent=d.subj; elSlug.textContent=d.slug;
+    elNews.innerHTML=d.news.map(function(x){return '<li><span class="mk">●</span><span>'+x+'</span></li>';}).join('');
+    var body=elNews.closest('.mail-body'); body.classList.remove('fade'); void body.offsetWidth; body.classList.add('fade');
+    tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===n?'true':'false');});
+  }
+  function next(){i=(i+1)%issues.length;render(i);}
+  function start(){if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;timer=setInterval(function(){if(playing)next();},4500);}
+  tabs.forEach(function(t){t.addEventListener('click',function(){i=+t.dataset.i;render(i);});});
+  var pv=document.querySelector('.preview');
+  pv.addEventListener('mouseenter',function(){playing=false;});
+  pv.addEventListener('mouseleave',function(){playing=true;});
+  render(0);start();
+  // form loading state
+  var f=document.getElementById('signup');
+  f.addEventListener('submit',function(){var b=f.querySelector('button');if(b){b.textContent='Wird geöffnet…';}});
+})();
+</script>
+</body>
+</html>
