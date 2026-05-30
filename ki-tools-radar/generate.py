@@ -569,8 +569,8 @@ footer{{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);fon
 <p class="disclosure">{e(ui['disclosure'])}</p>
 </div></main>
 <footer><div class="wrap">
-© {date.today().year} {e(SITE_NAME)} · <a href="{e(page_path(lang,'home'))}datenschutz.html">{e(ui['privacy'])}</a> ·
-<a href="{e(page_path(lang,'home'))}impressum.html">{e(ui['imprint'])}</a> · {e(ui['data_note'])}
+© {date.today().year} {e(SITE_NAME)} · <a href="/datenschutz.html">{e(ui['privacy'])}</a> ·
+<a href="/impressum.html">{e(ui['imprint'])}</a> · {e(ui['data_note'])}
 </div></footer>
 </body>
 </html>"""
@@ -1006,6 +1006,108 @@ def dsgvo_page(members, aff, ui, lang, available):
                 available=available, kind="dsgvo")
 
 
+# --- Legal pages ---------------------------------------------------------------
+#
+# Operator data is reused from the public Aban News imprint (same operator:
+# Alleng Chour, Belp/CH). PROJECT-SPECIFIC blanks a human must confirm before
+# launch are marked with [...] placeholders (domain, contact email).
+LEGAL_DOMAIN = "[DOMAIN — z. B. ki-tools-radar.de]"
+LEGAL_EMAIL = "[KONTAKT-E-MAIL — z. B. hallo@ki-tools-radar.de]"
+OPERATOR = {
+    "name": "Alleng Chour",
+    "addr1": "Hühnerhubelstrasse 37",
+    "addr2": "3123 Belp",
+    "country": "Schweiz",
+}
+
+
+def imprint_page(ui, available):
+    o = OPERATOR
+    body = f"""<p><a href="/">← {e(ui['all_tools'])}</a></p>
+<h1>Impressum</h1>
+<h2>Angaben gemäß § 5 TMG (DE) / § 14 UGB (AT) / OR (CH)</h2>
+<p><strong>{e(SITE_NAME)}</strong><br>
+{e(o['name'])}<br>{e(o['addr1'])}<br>{e(o['addr2'])}<br>{e(o['country'])}</p>
+<h2>Kontakt</h2>
+<p>E-Mail: <a href="mailto:{e(LEGAL_EMAIL)}">{e(LEGAL_EMAIL)}</a><br>
+Website: {e(LEGAL_DOMAIN)}</p>
+<h2>Vertretungsberechtigte Person</h2>
+<p>{e(o['name'])}</p>
+<h2>Mehrwertsteuer-Status</h2>
+<p>Diese Webseite wird von einer in der Schweiz ansässigen natürlichen Person betrieben.
+Eine Eintragung im UID-Register erfolgt erst bei Überschreiten der Mehrwertsteuer-Pflicht.
+Die Mehrwertsteuer wird gemäß Art. 10 Abs. 2 lit. a MWSTG (Schweiz) nicht erhoben, da der
+Jahresumsatz unter CHF 100'000 liegt.</p>
+<h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+<p>{e(o['name'])}, {e(o['addr1'])}, {e(o['addr2'])}, {e(o['country'])}</p>
+<h2>Haftung für Links</h2>
+<p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen
+Einfluss haben. Für diese fremden Inhalte ist stets der jeweilige Anbieter verantwortlich.</p>
+<h2>Affiliate-Hinweis</h2>
+<p>Diese Website enthält Affiliate-Links (mit * gekennzeichnet). Erfolgt über einen solchen
+Link ein Kauf, erhalten wir eine Provision — ohne Mehrkosten für dich. Die Bewertungen sind
+davon unabhängig.</p>
+<h2>EU-Streitschlichtung</h2>
+<p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+<a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>.
+Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+Verbraucherschlichtungsstelle teilzunehmen.</p>"""
+    return page(lang="de", ui=ui, title=f"Impressum — {SITE_NAME}",
+                description="Impressum und Anbieterkennzeichnung.", body=body,
+                canonical=BASE_URL + "/impressum.html", available=available, kind="home")
+
+
+def privacy_page(ui, available):
+    body = f"""<p><a href="/">← {e(ui['all_tools'])}</a></p>
+<h1>Datenschutzerklärung</h1>
+<h2>1. Verantwortlicher</h2>
+<p>{e(OPERATOR['name'])}, {e(OPERATOR['addr1'])}, {e(OPERATOR['addr2'])}, {e(OPERATOR['country'])}<br>
+E-Mail: <a href="mailto:{e(LEGAL_EMAIL)}">{e(LEGAL_EMAIL)}</a></p>
+<h2>2. Allgemeine Hinweise</h2>
+<p>Diese Website ist als statische Seite ohne Nutzerkonten, ohne Tracking und ohne
+Werbe-Cookies aufgebaut. Es werden nur die Daten verarbeitet, die technisch zur Auslieferung
+der Seite nötig sind.</p>
+<h2>3. Zugriff auf die Website (Server-Logs)</h2>
+<p>Beim Aufruf erhebt unser Hosting-Anbieter automatisch Server-Logdaten (z. B. IP-Adresse,
+Datum/Uhrzeit, abgerufene Seite, Browsertyp). Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO
+(sicherer, fehlerfreier Betrieb). Die Daten werden nur kurzzeitig zur Betriebssicherheit
+gespeichert.</p>
+<h2>4. Hosting</h2>
+<p>Die Website wird bei einem Anbieter mit Servern in der EU/EWR gehostet. Mit dem Anbieter
+besteht ein Auftragsverarbeitungsvertrag (Art. 28 DSGVO). [Hosting-Anbieter eintragen, z. B.
+Cloudflare Pages — vor Live-Gang prüfen.]</p>
+<h2>5. Keine Cookies, kein Tracking</h2>
+<p>Wir setzen keine Analyse- oder Marketing-Cookies und binden keine externen Schriftarten
+oder Tracking-Dienste ein. Eine Einwilligung (Cookie-Banner) ist daher nicht erforderlich.</p>
+<h2>6. Affiliate-Links</h2>
+<p>Auf Produktseiten verlinken wir auf Anbieter (Affiliate-Links, mit * markiert). Erst wenn
+du einen solchen Link anklickst, wirst du zum Anbieter weitergeleitet, der dann nach seiner
+eigenen Datenschutzerklärung ein Cookie zur Provisionszuordnung setzen kann. Vorher findet
+keine Übermittlung deiner Daten an die Anbieter statt.</p>
+<h2>7. Newsletter</h2>
+<p>Wenn du dich für unseren Newsletter (Aban News) interessierst, wirst du auf dessen eigene
+Seite weitergeleitet; die Anmeldung und Datenverarbeitung erfolgt dort nach der dortigen
+Datenschutzerklärung.</p>
+<h2>8. Externe Links</h2>
+<p>Diese Seite enthält Links zu externen Websites Dritter, auf deren Datenverarbeitung wir
+keinen Einfluss haben.</p>
+<h2>9. Deine Rechte</h2>
+<p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
+Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO). Wende dich dazu an die oben genannte
+Kontaktadresse.</p>
+<h2>10. Beschwerderecht</h2>
+<p>Du hast das Recht, dich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung deiner
+personenbezogenen Daten zu beschweren.</p>
+<h2>11. SSL/TLS-Verschlüsselung</h2>
+<p>Diese Seite nutzt aus Sicherheitsgründen eine TLS-Verschlüsselung (https).</p>
+<h2>12. Änderungen</h2>
+<p>Wir passen diese Datenschutzerklärung an, sobald sich Rechtslage oder Dienste ändern.
+Stand: {date.today().strftime('%m/%Y')}.</p>"""
+    return page(lang="de", ui=ui, title=f"Datenschutz — {SITE_NAME}",
+                description="Datenschutzerklärung dieser Website.", body=body,
+                canonical=BASE_URL + "/datenschutz.html", available=available, kind="home")
+
+
 # --- Build ---------------------------------------------------------------------
 
 def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
@@ -1287,6 +1389,10 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
     # Branded 404 (Cloudflare/Netlify serve /404.html). German default.
     de_ui = locales["de"]["ui"]
     (out / "404.html").write_text(notfound_page(de_ui, "de", available), encoding="utf-8")
+
+    # Legal pages (German, root — operator is Swiss/CH; reused Aban News data).
+    (out / "impressum.html").write_text(imprint_page(de_ui, available), encoding="utf-8")
+    (out / "datenschutz.html").write_text(privacy_page(de_ui, available), encoding="utf-8")
 
     # Static client-side search (no deps, no tracking, DSGVO-safe).
     (out / "search.js").write_text(SEARCH_JS, encoding="utf-8")
