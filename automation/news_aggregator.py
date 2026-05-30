@@ -95,6 +95,7 @@ def parse(xml: str, source: str, max_items: int) -> list[dict]:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--max", type=int, default=6, help="max Einträge pro Feed")
+    ap.add_argument("--out", default=None, help="fester Ausgabepfad (sonst datiert)")
     args = ap.parse_args()
 
     all_items, seen = [], set()
@@ -136,10 +137,10 @@ def main() -> int:
     md.append(f"Gesammelt: {len(all_items)} Meldungen aus {len(by_src)} Quellen. "
               "Quellen immer gegenprüfen — Aggregation ersetzt keine Recherche.")
 
-    dst = HERE / f"news-roh-{today}.md"
+    dst = Path(args.out) if args.out else HERE / f"news-roh-{today}.md"
     dst.write_text("\n".join(md), encoding="utf-8")
     print(f"Gesammelt: {len(all_items)} Meldungen aus {len(by_src)} Quellen "
-          f"→ {dst.relative_to(HERE.parent)}")
+          f"→ {dst}")
     return 0
 
 
