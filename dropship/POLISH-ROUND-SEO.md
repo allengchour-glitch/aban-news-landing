@@ -50,8 +50,23 @@ ein Shopify-Such-Tokenizer-Artefakt — jeder Titel hat nur EIN „Premium"). AB
     kundenorientierte Meta-Descriptions (110–155 Zeichen) geschrieben. Interne Notizen
     (Galaxus/Brack/Quote etc.) komplett verworfen.
   - Nebenbei: ein paar Encoding-Glitches (🇨🇭, Kyrillisch „Geldклип") gefixt.
-- [~] Verifikation läuft (read-only Voll-Scan): 0× „LuxeStyle CH" in seo.title/description,
-  0 Notiz-Metas, 0 fehlende Descriptions erwartet.
+- [x] **Verifikation (read-only Voll-Scan, alle 1.156 aktiven Produkte):**
+  - seo.title mit „LuxeStyle CH": **0** ✓
+  - seo.description null/leer: **0** ✓ (jedes Produkt hat eine Meta-Description)
+  - seo.title null: 49 (gewolltes Fallback auf sauberen Produkttitel)
+  - Aufgedeckt: 7 Rest-Defekte in Descriptions, die das enge D-Keyword-Raster verpasst hatte
+    (1× „LuxeStyle CH" im Text + 6 Markt-Notizen in anderer Formulierung, z.B.
+    „Schweizer sind Outdoor-Nation #1", „Biohacking-Trend erreicht Mainstream").
+- [x] **Nachfass-Agent (breites Raster + Urteilsvermögen):** alle 7 Rest-Defekte aus echten
+  Produkt-Bodies neu geschrieben, 0 Fehler. Legitime Copy (z.B. echte „virale TikTok"-Produkte)
+  korrekt unangetastet gelassen. **Endstand: 0× „LuxeStyle CH" katalogweit, 0 Markt-Notiz-Metas.**
+
+## ✅ ENDSTAND Polish-Runde
+- **1.113 aktive Produkte** an SEO-Meta poliert (1.106 Worklist + 7 Nachfass), **0 echte Fehler**.
+- Alle 1.156 aktiven Produkte verifiziert sauber: einheitliche Marke „LuxeStyle" (ohne CH) in
+  Titel & Meta, keine null-Descriptions, keine internen Recherche-Notizen mehr als Kundentext.
+- 9 parallele Agenten-Läufe (Recon + 8 Fixer + Verifikation + Nachfass), Cloudflare-502 &
+  Encoding-Glitches transient abgefangen. Rein Metadaten — Preise/Status/Bilder/Live-Theme unberührt.
 
 ### Ergebnis-Verteilung Fixer (done-logs, 1.106 unique IDs)
 | Chunk | Produkte |
