@@ -2183,3 +2183,9 @@ a.nav-cta:focus-visible {
   .subscribe button:hover, .btn:hover, button[type="submit"]:hover { transform: none !important; }
   .card:hover, .how-card:hover, .tool-card:hover, .sp-card:hover { transform: none !important; }
 }
+
+/* Language switcher pill (DE/EN on subpages, matches v2 landing) */
+.lang{display:inline-flex;border:1px solid #ece6db;border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;vertical-align:middle}
+.lang a{padding:.3rem .6rem;color:#6b7280;text-decoration:none;line-height:1}
+.lang a:hover{color:#1c2530}
+.lang a.on{background:#1c2530;color:#fff}
