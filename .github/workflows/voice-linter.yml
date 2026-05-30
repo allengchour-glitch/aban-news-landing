@@ -34,12 +34,15 @@ jobs:
       - name: Determine changed files
         id: changes
         run: |
+          # Engineering/project docs are not newsletter content — exclude them
+          # from the brand-voice linter (research reports, READMEs, technical docs).
+          EXCLUDES=(":(exclude)ki-geld-projekt/**" ":(exclude)aban-studio/**")
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             BASE="${{ github.event.pull_request.base.sha }}"
             HEAD="${{ github.event.pull_request.head.sha }}"
-            FILES=$(git diff --name-only --diff-filter=ACMR "$BASE" "$HEAD" -- '*.md' || true)
+            FILES=$(git diff --name-only --diff-filter=ACMR "$BASE" "$HEAD" -- '*.md' "${EXCLUDES[@]}" || true)
           else
-            FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD -- '*.md' 2>/dev/null || git ls-files '*.md')
+            FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD -- '*.md' "${EXCLUDES[@]}" 2>/dev/null || git ls-files '*.md' "${EXCLUDES[@]}")
           fi
           echo "Changed .md files:"
           echo "$FILES"
