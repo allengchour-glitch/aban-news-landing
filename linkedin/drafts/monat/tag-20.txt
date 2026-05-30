@@ -1,0 +1,12 @@
+Bevor du Kundendaten in ein KI-Tool kopierst: diese drei Dinge vorher rausnehmen.
+
+Worum geht es: Sensible Kundendaten und KI: vor dem Einfuegen
+
+Dein Schritt:
+- Sensible Kundendaten und KI: vor dem Einfuegen anonymisieren - Namen, Adressen, interne Zahlen raus. Mini-Checkliste vor jedem Prompt.
+
+Takeaway: Ein getesteter Schritt schlaegt zehn gespeicherte Tipps.
+
+Taeglich in 5 Min: abannews.com
+
+#KI #Produktivitaet #Solopreneur
