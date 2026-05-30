@@ -74,8 +74,18 @@ Pro Tool gibt es übersetzte Notizen + **Pro/Contra („Rat & Kritik")**.
 - Deutsches Pro/Contra: `content/critique.de.json`
 - Neue Sprache hinzufügen: Code in `LANGUAGES` (generate.py) ergänzen + `lang/<code>.json` anlegen.
 
+## Seitentypen (alle in 11 Sprachen)
+
+- **Startseite** — alle Tools nach Bewertung, + Navigation zu DACH-Bestenliste & Use-Cases
+- **Tool-Seite** — Bewertung, Pro/Contra, Pricing, DSGVO-Hinweis, Alternativen, Vergleichs-Links, JSON-LD
+- **Kategorie-Seite** — „Beste {Kategorie}-Tools"
+- **Vergleichsseite** „A vs B" — Pro/Contra-Duell + Fazit (aus den `alternatives` der Tools)
+- **Use-Case-Seite** „Beste KI für {Zweck}" — programmatic SEO
+- **DACH-Bestenliste** — Top-Tools nach DACH-Relevanz (ehrlich, kein Compliance-Versprechen)
+- **Newsletter-Box** auf jeder Seite → baut eigene Audience auf + bewirbt abannews.de
+
 ## Status
 
-🟢 Generator + Auto-Build laufen — **1.947 Seiten** (143 Tools × 11 Sprachen + Kategorien).
-🟢 SEO: JSON-LD (Rich Snippets), sitemap.xml, robots.txt, hreflang.
+🟢 Generator + Auto-Build laufen — **3.740 Seiten** (143 Tools × 11 Sprachen, inkl. Vergleiche/Use-Cases/DACH).
+🟢 SEO: JSON-LD (Rich Snippets), sitemap.xml (3.740 URLs), robots.txt, hreflang, interne Verlinkung.
 🟡 Offen: Affiliate-Programme beantragen + Links eintragen, Domain + Deployment, Newsletter-Teaser.
