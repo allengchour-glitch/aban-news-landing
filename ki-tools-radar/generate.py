@@ -42,6 +42,67 @@ LANG_NAMES = {
     "tr": "Türkçe", "ja": "日本語", "zh": "中文",
 }
 
+# Curated profession "tool stacks" — data-driven (top tools across given categories).
+# High-intent SEO ("which AI tools do I need as a <profession>").
+STACKS = [
+    {"slug": "entwickler", "emoji": "💻", "cats": ["Coding", "Vibecoding", "No-Code"],
+     "title": {"de": "KI-Stack für Entwickler", "en": "AI stack for developers",
+               "fr": "Stack IA pour développeurs", "es": "Stack de IA para desarrolladores",
+               "it": "Stack IA per sviluppatori", "pt": "Stack de IA para programadores",
+               "nl": "AI-stack voor ontwikkelaars", "pl": "Stack AI dla programistów",
+               "tr": "Geliştiriciler için YZ paketi", "ja": "開発者向けAIスタック",
+               "zh": "开发者 AI 工具组合"}},
+    {"slug": "texter", "emoji": "✍️", "cats": ["Writing", "Translation"],
+     "title": {"de": "KI-Stack für Texter", "en": "AI stack for writers",
+               "fr": "Stack IA pour rédacteurs", "es": "Stack de IA para redactores",
+               "it": "Stack IA per copywriter", "pt": "Stack de IA para redatores",
+               "nl": "AI-stack voor tekstschrijvers", "pl": "Stack AI dla copywriterów",
+               "tr": "Metin yazarları için YZ paketi", "ja": "ライター向けAIスタック",
+               "zh": "文案写作 AI 工具组合"}},
+    {"slug": "marketing", "emoji": "📣", "cats": ["Marketing", "SEO"],
+     "title": {"de": "KI-Stack für Marketing", "en": "AI stack for marketing",
+               "fr": "Stack IA pour le marketing", "es": "Stack de IA para marketing",
+               "it": "Stack IA per il marketing", "pt": "Stack de IA para marketing",
+               "nl": "AI-stack voor marketing", "pl": "Stack AI dla marketingu",
+               "tr": "Pazarlama için YZ paketi", "ja": "マーケティング向けAIスタック",
+               "zh": "营销 AI 工具组合"}},
+    {"slug": "designer", "emoji": "🎨", "cats": ["Image", "Design"],
+     "title": {"de": "KI-Stack für Designer", "en": "AI stack for designers",
+               "fr": "Stack IA pour designers", "es": "Stack de IA para diseñadores",
+               "it": "Stack IA per designer", "pt": "Stack de IA para designers",
+               "nl": "AI-stack voor ontwerpers", "pl": "Stack AI dla projektantów",
+               "tr": "Tasarımcılar için YZ paketi", "ja": "デザイナー向けAIスタック",
+               "zh": "设计师 AI 工具组合"}},
+    {"slug": "video", "emoji": "🎬", "cats": ["Video", "Video-Editing", "Avatar"],
+     "title": {"de": "KI-Stack für Video-Creator", "en": "AI stack for video creators",
+               "fr": "Stack IA pour créateurs vidéo", "es": "Stack de IA para creadores de vídeo",
+               "it": "Stack IA per video creator", "pt": "Stack de IA para criadores de vídeo",
+               "nl": "AI-stack voor videomakers", "pl": "Stack AI dla twórców wideo",
+               "tr": "Video üreticileri için YZ paketi", "ja": "動画クリエイター向けAIスタック",
+               "zh": "视频创作者 AI 工具组合"}},
+    {"slug": "podcaster", "emoji": "🎙️", "cats": ["Audio", "Voice", "Music"],
+     "title": {"de": "KI-Stack für Podcaster", "en": "AI stack for podcasters",
+               "fr": "Stack IA pour podcasteurs", "es": "Stack de IA para podcasters",
+               "it": "Stack IA per podcaster", "pt": "Stack de IA para podcasters",
+               "nl": "AI-stack voor podcasters", "pl": "Stack AI dla podcasterów",
+               "tr": "Podcast'çiler için YZ paketi", "ja": "ポッドキャスター向けAIスタック",
+               "zh": "播客 AI 工具组合"}},
+    {"slug": "forschung", "emoji": "🔬", "cats": ["Research", "Knowledge", "RAG", "Data"],
+     "title": {"de": "KI-Stack für Forschung & Studium", "en": "AI stack for research & study",
+               "fr": "Stack IA pour la recherche", "es": "Stack de IA para investigación",
+               "it": "Stack IA per ricerca e studio", "pt": "Stack de IA para pesquisa",
+               "nl": "AI-stack voor onderzoek", "pl": "Stack AI do badań i nauki",
+               "tr": "Araştırma için YZ paketi", "ja": "研究・学習向けAIスタック",
+               "zh": "研究学习 AI 工具组合"}},
+    {"slug": "gruender", "emoji": "🚀", "cats": ["Automation", "Agents", "Productivity", "Meetings"],
+     "title": {"de": "KI-Stack für Gründer", "en": "AI stack for founders",
+               "fr": "Stack IA pour fondateurs", "es": "Stack de IA para fundadores",
+               "it": "Stack IA per founder", "pt": "Stack de IA para fundadores",
+               "nl": "AI-stack voor oprichters", "pl": "Stack AI dla założycieli",
+               "tr": "Girişimciler için YZ paketi", "ja": "起業家向けAIスタック",
+               "zh": "创业者 AI 工具组合"}},
+]
+
 # --- Base (German) UI strings. Other languages override via lang/<code>.json["ui"]
 UI_DE = {
     "tagline": "Ehrlich bewertete KI-Tools für den deutschsprachigen Raum",
@@ -250,6 +311,21 @@ NEW_UI = {
                 "tr": "Bu sayfa yok. Tüm YZ araçlarının olduğu ana sayfaya dön.",
                 "ja": "このページは存在しません。すべてのAIツールがあるホームへ。",
                 "zh": "页面不存在。返回包含所有AI工具的首页。"},
+    "stack_nav": {"de": "Stacks für Berufe", "en": "Stacks by profession", "fr": "Stacks par métier",
+                  "es": "Stacks por profesión", "it": "Stack per professione", "pt": "Stacks por profissão",
+                  "nl": "Stacks per beroep", "pl": "Zestawy wg zawodu", "tr": "Mesleğe göre paketler",
+                  "ja": "職業別スタック", "zh": "按职业的工具组合"},
+    "stack_sub": {"de": "Die besten KI-Tools, kuratiert für diesen Beruf.",
+                  "en": "The best AI tools, curated for this profession.",
+                  "fr": "Les meilleurs outils IA, sélectionnés pour ce métier.",
+                  "es": "Las mejores herramientas de IA para esta profesión.",
+                  "it": "I migliori strumenti IA per questa professione.",
+                  "pt": "As melhores ferramentas de IA para esta profissão.",
+                  "nl": "De beste AI-tools, samengesteld voor dit beroep.",
+                  "pl": "Najlepsze narzędzia AI dla tego zawodu.",
+                  "tr": "Bu meslek için seçilmiş en iyi YZ araçları.",
+                  "ja": "この職業向けに厳選した最高のAIツール。",
+                  "zh": "为该职业精选的最佳 AI 工具。"},
 }
 # Newsletter box links to the existing owned audience (compounding revenue lever).
 NEWSLETTER_URL = "https://abannews.de"
@@ -322,6 +398,8 @@ def page_path(lang: str, kind: str, slug: str = "") -> str:
         return f"{prefix}/preis/{slug}.html"
     if kind == "az":
         return f"{prefix}/tools.html"
+    if kind == "stack":
+        return f"{prefix}/stack/{slug}.html"
     return prefix + "/"
 
 
@@ -770,6 +848,20 @@ def az_page(tools, ui, lang, available):
                 available=available, kind="az")
 
 
+def stack_page(stack, members, aff, ui, lang, available):
+    title = stack["title"].get(lang, stack["title"]["de"])
+    crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
+                        (title, page_path(lang, "stack", stack["slug"]))], lang)
+    body = (f'{crumb}{itemlist(members, lang)}'
+            f'<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+            f'<h1>{stack["emoji"]} {e(title)}</h1>\n<p class="meta">{e(ui["stack_sub"])}</p>\n'
+            + "\n".join(tool_card(t, aff, ui, lang) for t in members))
+    return page(lang=lang, ui=ui, title=title + f" — {SITE_NAME}",
+                description=f"{title}: {ui['stack_sub']}", body=body,
+                canonical=BASE_URL + page_path(lang, "stack", stack["slug"]),
+                available=available, kind="stack", slug=stack["slug"])
+
+
 def notfound_page(ui, lang, available):
     body = (f'<h1>🤖 404 — {e(ui["nf_title"])}</h1>\n<p class="meta">{e(ui["nf_text"])}</p>\n'
             f'<a class="cta" href="{e(page_path(lang,"home"))}">{e(SITE_NAME)} →</a>')
@@ -849,6 +941,13 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
     top20 = tools_sorted[:20]
     featured = top20[(_md.year * 12 + _md.month) % len(top20)] if top20 else None
 
+    # Profession stacks: top tools across each stack's categories.
+    stack_members = {}
+    for st in STACKS:
+        cats = set(st["cats"])
+        members = [t for t in tools_sorted if cats & set(t.get("category", []))]
+        stack_members[st["slug"]] = members[:8]
+
     # Trending = most-recently covered in the newsletter (fallback: top-rated).
     trending = sorted([t for t in tools if latest_issue(t) > 0],
                       key=latest_issue, reverse=True)[:24]
@@ -893,6 +992,9 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
             f'<a href="{e(page_path(lang,"cat",slugify(c)))}">{e(c)}</a>' for c in categories)
         uc_links = " · ".join(
             f'<a href="{e(page_path(lang,"uc",slugify(uc)))}">{e(uc)}</a>' for uc, _ in use_cases)
+        stack_links = " · ".join(
+            f'<a href="{e(page_path(lang,"stack",st["slug"]))}">'
+            f'{st["emoji"]} {e(st["title"].get(lang, st["title"]["de"]))}</a>' for st in STACKS)
         budget_links = " · ".join(
             [f'<a href="{e(page_path(lang,"budget","kostenlos"))}">0 €</a>']
             + [f'<a href="{e(page_path(lang,"budget",f"unter-{x}-eur"))}">&lt; {x} €</a>'
@@ -901,6 +1003,7 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                   f' · 🆕 <a href="{e(page_path(lang,"trending"))}">{e(ui["trending_nav"])}</a>'
                   f' · 🔤 <a href="{e(page_path(lang,"az"))}">{e(ui["az_nav"])}</a></p>\n'
                   f'<p class="subnav"><strong>{e(ui["budget_nav"])}:</strong> {budget_links}</p>\n'
+                  f'<p class="subnav"><strong>{e(ui["stack_nav"])}:</strong> {stack_links}</p>\n'
                   f'<p class="subnav"><strong>{e(ui["by_use_case"])}:</strong> {uc_links}</p>')
         cards = "\n".join(tool_card(t, aff, ui, lang) for t in tools_sorted)
         search = (f'<input id="q" class="search" type="search" '
@@ -986,6 +1089,14 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                           encoding="utf-8")
             pages += 1
 
+        # Profession stack pages
+        for st in STACKS:
+            of = out_file(out, lang, "stack", st["slug"])
+            of.parent.mkdir(parents=True, exist_ok=True)
+            of.write_text(stack_page(st, stack_members[st["slug"]], aff, ui, lang, available),
+                          encoding="utf-8")
+            pages += 1
+
         # A–Z index
         of = out_file(out, lang, "az")
         of.parent.mkdir(parents=True, exist_ok=True)
@@ -1006,7 +1117,8 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                 + [BASE_URL + page_path(lang, "cat", slugify(c)) for c in categories]
                 + [BASE_URL + page_path(lang, "vs", vs_slug(a["id"], b["id"])) for a, b in pairs]
                 + [BASE_URL + page_path(lang, "uc", slugify(uc)) for uc, _ in use_cases]
-                + [BASE_URL + page_path(lang, "budget", s) for s, _, _ in budget_tiers])
+                + [BASE_URL + page_path(lang, "budget", s) for s, _, _ in budget_tiers]
+                + [BASE_URL + page_path(lang, "stack", st["slug"]) for st in STACKS])
         sm = ['<?xml version="1.0" encoding="UTF-8"?>',
               '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
         for url in urls:
