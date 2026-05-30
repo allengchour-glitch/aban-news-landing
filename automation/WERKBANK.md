@@ -34,3 +34,6 @@ python automation/werkbank.py social automation/entwurf-2026-05-30.md
 
 So schließt sich der Kreis: **Radar-Daten → Newsletter-Ausgabe → Social-Posts → zurück zu den Radars.**
 Ein zusammenhängendes Aban-Netzwerk statt vier getrennter Projekte.
+
+## KI-News-Aggregator (Rohmaterial)
+`python automation/news_aggregator.py` sammelt aktuelle KI-News aus 7 seriösen RSS-Feeds (OpenAI, Google AI, Hugging Face, TechCrunch, VentureBeat, MIT Tech Review, heise) und legt sie als kuratierbare Checkliste `news-roh-<Datum>.md` ab. **Erfindet nichts** — verlinkt echte Quellen. Du wählst 3–5 Meldungen, prüfst sie an der Quelle und schreibst sie in deiner Stimme.
