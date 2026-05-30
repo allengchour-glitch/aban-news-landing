@@ -36,7 +36,7 @@ jobs:
         run: |
           # Engineering/project docs are not newsletter content — exclude them
           # from the brand-voice linter (research reports, READMEs, technical docs).
-          EXCLUDES=(":(exclude)ki-geld-projekt/**" ":(exclude)aban-studio/**" ":(exclude)ki-tools-radar/**")
+          EXCLUDES=(":(exclude)ki-geld-projekt/**" ":(exclude)aban-studio/**" ":(exclude)ki-tools-radar/**" ":(exclude)PROJEKT.md" ":(exclude)CLAUDE.md")
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             BASE="${{ github.event.pull_request.base.sha }}"
             HEAD="${{ github.event.pull_request.head.sha }}"
