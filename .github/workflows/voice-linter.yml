@@ -1,12 +1,20 @@
 name: Voice Linter
 
+# The brand-voice linter is built for newsletter issue markdown (see its own
+# usage: `--batch ausgaben/`). Engineering/ops docs (README, setup guides) are
+# not newsletter content — they legitimately quote the forbidden-phrase list and
+# exceed the per-issue length cap, so they are excluded from voice-linting.
 on:
   pull_request:
     paths:
       - '**/*.md'
+      - '!README.md'
+      - '!automation/*.md'
   push:
     paths:
       - '**/*.md'
+      - '!README.md'
+      - '!automation/*.md'
 
 jobs:
   lint:
@@ -37,9 +45,9 @@ jobs:
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             BASE="${{ github.event.pull_request.base.sha }}"
             HEAD="${{ github.event.pull_request.head.sha }}"
-            FILES=$(git diff --name-only --diff-filter=ACMR "$BASE" "$HEAD" -- '*.md' || true)
+            FILES=$(git diff --name-only --diff-filter=ACMR "$BASE" "$HEAD" -- '*.md' ':(exclude)README.md' ':(exclude)automation/*.md' || true)
           else
-            FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD -- '*.md' 2>/dev/null || git ls-files '*.md')
+            FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD -- '*.md' ':(exclude)README.md' ':(exclude)automation/*.md' 2>/dev/null || git ls-files '*.md' ':(exclude)README.md' ':(exclude)automation/*.md')
           fi
           echo "Changed .md files:"
           echo "$FILES"
