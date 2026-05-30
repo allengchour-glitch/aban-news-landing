@@ -32,7 +32,18 @@ Automatisiertes DACH-Fördermittel-Verzeichnis (programmatic, statisch). Verdien
 - **Stand:** 24-26 Seiten, GovernmentService-JSON-LD, Sitemap, AI-Crawler-robots, Dark Mode, Auto-Build-Workflow
 - **Offen:** Daten erweitern (foerderdatenbank.de-Export), Berater-Partner + leadgen.json, Domain/Deployment, Newsletter-Teaser
 
-### 3. Aban Studio  →  Ordner `aban-studio/`  (GEPARKT — auf Wunsch des Users)
+### 3. KI-Jobs Radar  →  Ordner `jobs-radar/`  (NEU — Chance #3, läuft)
+Automatisierter DACH-KI-/ML-Jobboard (programmatic, statisch). Verdient über gesponserte
+„Featured Jobs" + Newsletter-Einbettung.
+- **Domain (geplant):** `jobs.abannews.com` (Subdomain)
+- **Datenquelle:** `fetch_jobs.py` holt KI-/ML-Jobs aus der **freien Arbeitnow-API** (kein Key, kein
+  make.com nötig) → `jobs.json`. Seed-Fallback wenn API down. GitHub Action ruft API direkt täglich ab.
+- **Generator:** `jobs-radar/generate.py` (stdlib). Seiten: Index+Live-Filter (Suche/Remote),
+  /job/<slug> mit **JobPosting-JSON-LD (Google for Jobs)**, Impressum, Datenschutz. Sponsoring: `sponsors.json`.
+- **Stand:** 12 echte Seed-Jobs, AI-Crawler-robots, Dark Mode, tägl. Auto-Build-Workflow
+- **Offen:** Sponsoren + sponsors.json, Domain/Deployment, Newsletter-Einbettung. Quelle erweiterbar (Bundesagentur/Adzuna).
+
+### Aban Studio  →  Ordner `aban-studio/`  (GEPARKT — auf Wunsch des Users)
 DSGVO-konformes KI-Content-Studio (SaaS-Konzept, W1-Fundament: DB-Schema, Provider-Interface,
 AI-Act-Modul). Nicht aktiv weiterentwickelt. Bei Bedarf reaktivierbar.
 
