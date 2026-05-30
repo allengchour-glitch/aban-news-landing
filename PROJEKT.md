@@ -87,6 +87,11 @@ LP-Landingpage: `gratis-ki-tools.html` (PDF gegen beehiiv-Anmeldung, Root).
 **Master-Startanleitung: `START-HIER.md`** (einziger Einstiegspunkt: was fertig, was der User tun muss).
 
 
+## Social-Auto-Posting (fertig)
+`social/posts.json` (8 fertige Posts) + `social/post.py` (1-Klick an Telegram/Discord) +
+`.github/workflows/social-autopost.yml` (Mo/Mi/Fr automatisch). Tokens NUR als GitHub-Secrets
+(DISCORD_WEBHOOK_URL / TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID) — nie im Code. Anleitung: social/README.md.
+
 ## Offene To-dos (nur der User kann das — braucht seine Accounts)
 1. Cloudflare Pages mit Repo verbinden + `radar.abannews.com` als Custom Domain (→ LAUNCH.md)
    - Build: `cd ki-tools-radar && pip install -r requirements.txt && python generate.py` · Output: `ki-tools-radar/dist`
