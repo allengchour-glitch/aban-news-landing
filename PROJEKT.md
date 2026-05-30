@@ -22,7 +22,17 @@ Verdient passiv über Affiliate-Links + leitet Traffic in den Newsletter.
 - **Monetarisierung:** `ki-tools-radar/affiliate.json` (23 Programme vorbereitet), Newsletter-Box auf jeder Seite
 - **Anleitungen:** `LAUNCH.md` (Live schalten), `GELD-VERDIENEN.md` (Affiliate-Setup)
 
-### 2. Aban Studio  →  Ordner `aban-studio/`  (GEPARKT — auf Wunsch des Users)
+### 2. Förder-Radar  →  Ordner `foerder-radar/`  (NEU — Chance #2, Fundament steht)
+Automatisiertes DACH-Fördermittel-Verzeichnis (programmatic, statisch). Verdient über
+**Lead-Gen** (Fördermittel-Berater zahlen pro qualifizierter Anfrage) + Premium-Platzierung.
+- **Domain (geplant):** `foerder.abannews.com` (Subdomain)
+- **Generator:** `foerder-radar/generate.py` (pure stdlib). Daten: `foerderungen.json` (16 echte Seed-Programme,
+  KEINE erfundenen Beträge — verlinkt offizielle Quellen, „ohne Gewähr"). Lead-Slots: `leadgen.json`.
+- **Seiten:** Index + Live-Filter (Region/Art/Suche), /programm/<id>, /region/<r>, /art/<a>, Impressum, Datenschutz
+- **Stand:** 24-26 Seiten, GovernmentService-JSON-LD, Sitemap, AI-Crawler-robots, Dark Mode, Auto-Build-Workflow
+- **Offen:** Daten erweitern (foerderdatenbank.de-Export), Berater-Partner + leadgen.json, Domain/Deployment, Newsletter-Teaser
+
+### 3. Aban Studio  →  Ordner `aban-studio/`  (GEPARKT — auf Wunsch des Users)
 DSGVO-konformes KI-Content-Studio (SaaS-Konzept, W1-Fundament: DB-Schema, Provider-Interface,
 AI-Act-Modul). Nicht aktiv weiterentwickelt. Bei Bedarf reaktivierbar.
 
