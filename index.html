@@ -70,6 +70,8 @@
     .lead{max-width:60ch}
     /* FIX 4: Hero-CTA als visuelle Unit (Container-Effekt) */
     .hero .subscribe{background:#fff;padding:1.15rem 1.2rem;border-radius:16px;border:1px solid var(--c-border);box-shadow:0 14px 34px rgba(31,41,55,.12);margin-top:1.4rem}
+    /* Gemini-Fix (6): Mobile — lange Probe-Ausgabe direkt nach Hero nicht den CTA wegdruecken lassen */
+    @media(max-width:768px){.mail-frame{max-height:62vh;overflow-y:auto;-webkit-overflow-scrolling:touch}}
   </style>
 
   <!-- Strukturierte Daten (Schema.org Newsletter) -->
@@ -900,7 +902,7 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
             <span class="tool-name">Granola</span>
             <span class="tool-pricing">$18/Monat</span>
           </div>
-          <p class="tool-use">Schreibt mit beim Call mit, ohne Bot im Meeting. Spart mir 2 Calls Notizen-Tippen pro Woche.</p>
+          <p class="tool-use">Schreibt beim Call mit, ohne Bot im Meeting. Spart mir das Notizen-Tippen bei zwei Calls pro Woche.</p>
           <a href="/archive.html" class="tool-link">Im Archiv mehr Tool-Tipps →</a>
         </article>
 
