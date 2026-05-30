@@ -4,6 +4,7 @@
 
 # Pretty URLs (no .html in URLs that users might type)
 /founding         /founding.html        301
+/ebook            /ebook.html           301
 /sponsoring       /sponsoring.html      301
 /werbung          /werbung.html         301
 /datenschutz      /datenschutz.html     301
