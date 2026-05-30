@@ -8,7 +8,7 @@ Dieses Repo enthält die Aban-News-Landingpage **und** mehrere KI-Geldverdien-Pr
 - **Aban News (Newsletter)** = das Stamm-/Mutterprojekt im Repo-Root: Landingpage für den
   deutschsprachigen täglichen KI-Newsletter (abannews.com / .de). Dateien: `index.html`, `founding.html`,
   `sponsoring.html`, `datenschutz.html`, `impressum.html`, `css/styles.css`, Logos `logo-*.svg`,
-  `data/tools.json` (143 kuratierte KI-Tools — Datenbasis für ki-tools-radar!), `automation/` (Brand-Voice-
+  `data/tools.json` (176 kuratierte KI-Tools (33 neue mit [Redaktion: prüfen]-Marker) — Datenbasis für ki-tools-radar!), `automation/` (Brand-Voice-
   Validator + Make.com-Blueprints). **Ist der Distributions-Kanal & größte Asset für alle Geld-Projekte.**
 - `ki-tools-radar/` — Geld-Projekt 1: automatisierte KI-Tool-Vergleichsseite (programmatic SEO, 11 Sprachen,
   ~8.270 Seiten). Speist sich aus `data/tools.json`. Monetarisierung: Affiliate. Domain: `radar.abannews.com`.

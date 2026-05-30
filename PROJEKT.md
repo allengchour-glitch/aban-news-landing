@@ -14,7 +14,7 @@ KI-Newsletter **abannews.com / .de** (Mo–Fr, kuratiert, „3–5 Min, kein Hyp
 - **Dateien (Root):** `index.html` (Hero+Subscribe), `founding.html` (€149 Founding-Member),
   `sponsoring.html` (Werbe-Rate-Card), `willkommen.html`, `datenschutz.html`, `impressum.html`,
   `faq.html`, `about.html`, `brand.html` (Markenstimme), `css/styles.css`, `logo-*.svg`.
-- **Daten/Automation:** `data/tools.json` = 143 kuratierte KI-Tools (Bewertung, DACH-Relevanz, DSGVO,
+- **Daten/Automation:** `data/tools.json` = 176 kuratierte KI-Tools (33 neue mit [Redaktion: prüfen]-Marker) (Bewertung, DACH-Relevanz, DSGVO,
   Pricing) — zugleich Datenbasis des KI-Tools Radar. `automation/` = Brand-Voice-Validator (Flask)
   + Make.com-Blueprints. CI: Voice-Linter (`.github/workflows/voice-linter.yml`).
 - **Markenstimme (für ALLE Projekte verbindlich):** ehrlich, praktisch, deutsch, anti-Buzzword
@@ -29,7 +29,7 @@ KI-Newsletter **abannews.com / .de** (Mo–Fr, kuratiert, „3–5 Min, kein Hyp
 Automatisierte, mehrsprachige KI-Tool-Vergleichsseite (programmatic SEO).
 Verdient passiv über Affiliate-Links + leitet Traffic in den Newsletter.
 - **Domain (geplant):** `radar.abannews.com` (Subdomain — kostenlos, SEO-Bonus)
-- **Umfang:** 143 Tools × 11 Sprachen = ~8.300 Seiten, baut sich selbst (GitHub Actions, wöchentlich + bei Datenänderung)
+- **Umfang:** 176 Tools × 11 Sprachen = ~10.255 Seiten, baut sich selbst (GitHub Actions, wöchentlich + bei Datenänderung)
 - **Generator:** `ki-tools-radar/generate.py` (pure stdlib + optional Pillow für OG-Bilder), liest `../data/tools.json` + `lang/*.json` + `content/*.json`
 - **Seitentypen:** Start (Suche, Tool des Monats), Tool (Pro/Contra, FAQ, verwandte Tools, OG-Bild), Kategorie, Vergleich (A-vs-B) + Hub, Alternativen-zu-X, Use-Case, Berufs-Stacks (8), DACH-Bestenliste, Trending+RSS, Budget, A–Z, Glossar (30 Begriffe, alle in 11 Sprachen übersetzt), Partner/Transparenz, Impressum, Datenschutz, 404
 - **SEO:** JSON-LD (SoftwareApplication/Review/Breadcrumb/FAQ/ItemList/WebSite/Org/DefinedTerm), hreflang, Sitemap-Index + 11 Sprach-Sitemaps, OG/Twitter-Cards, Vergleichstabellen, interne Verlinkung, Live-Suche, Dark Mode, PWA, security.txt/humans.txt
