@@ -110,6 +110,10 @@ Generieren / neu erzeugen (idempotent, überschreibt SVGs, lässt schon eingefü
 python3 automation/generate_issue_heroes.py
 ```
 
+Das Skript erledigt in einem Durchlauf: SVG-Header erzeugen, `<figure>` in jede Ausgabe
+einbetten **und** ein dekoratives Thumbnail in jede Karte der Archiv-Übersicht
+(`archive/index.html`) einfügen. Alles idempotent — mehrfaches Ausführen ist sicher.
+
 ### Wenn du echte / KI-Bilder willst (auch legal)
 
 Du kannst jedes `img/issues/NNN.svg` durch ein Raster-Bild ersetzen — die `<figure>`-Markup bleibt gleich,

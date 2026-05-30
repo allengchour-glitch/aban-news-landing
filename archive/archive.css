@@ -69,6 +69,18 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 20px var(--c-shadow-lg);
 }
+.arc-card-thumb {
+  display: block;
+  margin: -0.25rem 0 1rem;
+}
+.arc-card-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 420;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--c-border);
+}
 .arc-card-meta {
   font-size: 0.82rem;
   color: var(--c-muted);
@@ -141,7 +153,7 @@
   width: 100%;
   height: auto;
   aspect-ratio: 1200 / 420;
-  border-radius: 12px;
+  border-radius: var(--r-lg);
   border: 1px solid var(--c-border);
 }
 .issue-hero figcaption {

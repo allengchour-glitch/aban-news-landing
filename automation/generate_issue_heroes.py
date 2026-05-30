@@ -150,6 +150,56 @@ PROBES = {
 DATE_IN_NAME = re.compile(r"(\d{4}-\d{2}-\d{2})")
 
 
+THUMB_PAT = re.compile(
+    r'(<article class="arc-card"[^>]*>)(.*?)(<h2 class="arc-card-title"><a href="([^"]+)")',
+    re.S,
+)
+
+
+def svg_name_for_href(href: str):
+    name = href.rsplit("/", 1)[-1].replace(".html", "")
+    m = re.match(r"(\d{3})-", name)
+    if m:
+        return m.group(1)
+    if name.startswith("ultimate-probe"):
+        return "probe-ultimate"
+    if name.startswith("probe"):
+        return "probe"
+    return None
+
+
+def update_archive_index_thumbs() -> int:
+    """Insert a decorative hero thumbnail at the top of each archive card.
+
+    Decorative (aria-hidden, empty alt, tabindex=-1) because the card title is
+    already a link to the same issue — avoids a redundant link for screen readers.
+    Idempotent.
+    """
+    idx = ARCHIVE / "index.html"
+    if not idx.exists():
+        return 0
+    text = idx.read_text(encoding="utf-8")
+    n = 0
+
+    def repl(m):
+        nonlocal n
+        if "arc-card-thumb" in m.group(2):
+            return m.group(0)
+        svg = svg_name_for_href(m.group(4))
+        if not svg:
+            return m.group(0)
+        n += 1
+        thumb = (
+            f'\n        <a class="arc-card-thumb" href="{m.group(4)}" tabindex="-1" aria-hidden="true">'
+            f'<img src="/img/issues/{svg}.svg" width="1200" height="420" loading="lazy" decoding="async" alt=""></a>'
+        )
+        return m.group(1) + thumb + m.group(2) + m.group(3)
+
+    text = THUMB_PAT.sub(repl, text)
+    idx.write_text(text, encoding="utf-8")
+    return n
+
+
 def main():
     IMG_DIR.mkdir(parents=True, exist_ok=True)
     numbered = sorted(p for p in ARCHIVE.glob("*.html") if ISSUE_RE.match(p.name))
@@ -168,8 +218,11 @@ def main():
         date_iso = dm.group(1) if dm else "2026-05-27"
         changed += process(path, svg_name, badge, date_iso)
 
+    thumbs = update_archive_index_thumbs()
+
     total = len(numbered) + sum((ARCHIVE / f).exists() for f in PROBES)
-    print(f"Ausgaben verarbeitet: {total} · HTML neu angepasst: {changed}")
+    print(f"Ausgaben verarbeitet: {total} · Header neu angepasst: {changed} · "
+          f"Archiv-Thumbnails neu: {thumbs}")
 
 
 if __name__ == "__main__":
