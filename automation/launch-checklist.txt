@@ -1,0 +1,130 @@
+================================================================
+aban news — Launch-Checkliste (zum Abhaken)
+================================================================
+
+Begleiter zu automation/strategie.txt. Die Strategie sagt, WARUM und WOHIN.
+Diese Liste sagt, WAS du konkret klickst, eintraegst und prüfst — Schritt für
+Schritt bis zum Go-live und zu den ersten Einnahmen.
+
+Bedienung: [ ] offen, [x] erledigt. Arbeite die Phasen A–F der Reihe nach ab.
+Wenn dir die Zeit fehlt: nur den Block "Reihenfolge / diese Woche zuerst".
+
+Ton-Regel (gilt auch für alles, was du nach aussen schreibst):
+du-Form, klar, ohne Werbe-Floskeln. Vor jedem Commit von *.md:
+  python3 tools/brand-voice-linter.py DATEI.md --strict
+
+
+----------------------------------------------------------------
+Reihenfolge / diese Woche zuerst (die 5 Schritte mit der grössten Wirkung)
+----------------------------------------------------------------
+
+[ ] 1. Domain abannews.com live auf Cloudflare Pages, HTTPS prüfen (Phase A)
+[ ] 2. Alle Subscribe-Buttons zeigen auf beehiiv (Phase A) — ohne das kein Wachstum
+[ ] 3. Buch-Verkauf scharf schalten: Gumroad/Lemon-Squeezy-Produkt + BUY_URL
+       in buch.html (Phase B) — die erste Einnahmequelle
+[ ] 4. Welcome-Serie aus automation/email-welcome-sequence.txt in beehiiv einbauen
+       und aktivieren (Phase D) — jeder neue Kontakt zählt ab Tag 1
+[ ] 5. LinkedIn-Profil aufsetzen und 5x/Woche posten mit generate_linkedin_posts.py
+       (Phase E) — dein günstigster Kanal für die ersten Leser
+
+
+================================================================
+A) Technik / Setup
+================================================================
+
+[ ] Domain abannews.com beim Registrar auf Cloudflare-Nameserver zeigen lassen
+[ ] In Cloudflare DNS den Eintrag für abannews.com auf das Pages-Projekt setzen
+    (Custom Domain im Pages-Projekt hinzufügen, www -> apex weiterleiten)
+[ ] HTTPS prüfen: https://abannews.com öffnet ohne Zertifikatswarnung
+[ ] Cloudflare Pages Deploy prüfen: letzter Push auf main ist live
+    (kein Build-Command, Output = Repo-Root; _redirects + _headers erkannt)
+[ ] Alle Subscribe-Buttons zeigen auf https://abannews.beehiiv.com/subscribe
+    — index.html und alle Subpages durchklicken (Hero, Footer, SEO-Money-Pages,
+      ebook.html, resources.html, willkommen.html, founding.html)
+[ ] _redirects testen: https://abannews.com/buch -> buch.html lädt
+[ ] _redirects testen: https://abannews.com/ebook -> erwartete Zielseite lädt
+[ ] Sprach-Pfade prüfen: /en/, /fr/, /it/ erreichbar, hreflang korrekt
+[ ] sitemap.xml enthält alle Live-Seiten (auch buch.html + Sprach-Varianten)
+[ ] Google Search Console: Property abannews.com anlegen, Eigentum bestätigen
+[ ] In der Search Console sitemap.xml einreichen
+    (https://abannews.com/sitemap.xml)
+[ ] robots.txt erlaubt Crawling und verweist auf die Sitemap
+
+
+================================================================
+B) Buch verkaufen (eigener Shop)
+================================================================
+
+[ ] Konto anlegen bei Gumroad ODER Lemon Squeezy (eines reicht zum Start)
+[ ] Auszahlungs- und Steuerdaten im Konto hinterlegen
+[ ] Produkt "Anti-Hype" anlegen als Pay-What-You-Want (PWYW),
+    Mindestpreis frei, Vorschlag 9 EUR
+[ ] Datei hochladen: downloads/anti-hype-ebook.pdf
+[ ] Datei hochladen: downloads/anti-hype-ebook.epub
+[ ] Produktbeschreibung in Aban-Voice (du-Form, ohne Floskeln); Cover-Bild setzen
+[ ] Produkt veröffentlichen, Kauf einmal selbst testen (Test-/0-EUR-Kauf)
+[ ] BUY_URL eintragen in buch.html
+[ ] BUY_URL eintragen in en/buch.html
+[ ] BUY_URL eintragen in fr/buch.html
+[ ] BUY_URL eintragen in it/buch.html
+[ ] Alle vier Buch-Seiten durchklicken: Buy-Button öffnet die richtige Produktseite
+
+
+================================================================
+C) KDP (Amazon Kindle Direct Publishing)
+================================================================
+
+[ ] KDP-Konto anlegen, Bankverbindung hinterlegen
+[ ] Steuerdaten ausfüllen (Steuerinterview / W-8BEN für CH)
+[ ] Kindle eBook anlegen:
+    [ ] EPUB hochladen (downloads/anti-hype-ebook.epub oder KDP-Variante)
+    [ ] Cover hochladen: downloads/kdp-cover-ebook.png
+    [ ] Titel, Untertitel, Beschreibung (du-Form), Kategorien, Keywords
+    [ ] Preis setzen: 4,99–6,99 EUR
+    [ ] Vorschau im KDP-Previewer prüfen
+[ ] Taschenbuch anlegen:
+    [ ] Print-PDF hochladen: downloads/anti-hype-print-de.pdf
+    [ ] Wraparound-Cover hochladen (Vorder-/Rückseite + Buchrücken, KDP-Vorlage)
+    [ ] Format/Beschnitt und Druckkosten prüfen, Verkaufspreis festlegen
+    [ ] Druckvorschau prüfen
+[ ] Beide Formate veröffentlichen (Freischaltung kann bis ~72 h dauern)
+[ ] KDP_URL (Amazon-Produktlink) eintragen, wo das Buch beworben wird
+    (buch.html + en/fr/it/buch.html, sobald der Link live ist)
+
+
+================================================================
+D) E-Mail (beehiiv)
+================================================================
+
+[ ] Welcome-Serie aus automation/email-welcome-sequence.txt in beehiiv anlegen
+    (jede Mail als Automation-Schritt, Texte 1:1 übernehmen)
+[ ] Reihenfolge und Wartezeiten zwischen den Mails einstellen
+[ ] Test-Anmeldung machen und die komplette Serie selbst empfangen/prüfen
+[ ] Welcome-Serie aktiv schalten
+[ ] beehiiv Recommendations aktivieren (andere Newsletter empfehlen / empfohlen werden)
+[ ] Absender-Domain/Verifizierung in beehiiv prüfen (Zustellbarkeit)
+
+
+================================================================
+E) LinkedIn
+================================================================
+
+[ ] Profil-Headline schärfen (was aban news ist, für wen, in du-Tonalität)
+[ ] Featured-Link auf abannews.com (oder direkt auf das Subscribe-/Buch-Angebot)
+[ ] generate_linkedin_posts.py nutzen, um Posts vorzubereiten
+    (täglich/wöchentlich je nach Skript-Modus)
+[ ] Jeden Post vor dem Posten gegen die Voice-Regel prüfen (keine Hype-Wörter)
+[ ] 5x/Woche posten, feste Slots im Kalender blocken
+[ ] In Posts klaren nächsten Schritt nennen (Newsletter-Anmeldung oder Buch)
+
+
+================================================================
+F) Messen (wöchentlich, fester Termin)
+================================================================
+
+[ ] Abonnenten-Wachstum: neue Anmeldungen diese Woche vs. Vorwoche
+[ ] Open-Rate der letzten Ausgaben (Trend, nicht Einzelwert)
+[ ] Anmeldungen pro Quelle (LinkedIn, SEO-Money-Pages, beehiiv Recommendations,
+    Buch/PDF-Funnel) — was wirkt, dort mehr investieren
+[ ] Buch-Verkäufe (Gumroad/Lemon Squeezy + KDP) gegenüberstellen
+[ ] Eine Zahl pro Woche notieren, die du nächste Woche verbessern willst

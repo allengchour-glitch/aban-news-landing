@@ -1,0 +1,185 @@
+aban news — X (Twitter) Playbook & Vorlagen
+Zweitverwertung einer Newsletter-Ausgabe als X-Content.
+===========================================================
+
+WARUM X (UND WAS DU ERWARTEN DARFST)
+-----------------------------------------------------------
+LinkedIn ist Kanal #1. X ist der Zweitkanal: reine Zweit-
+verwertung, kein Hauptfokus. Du baust hier nichts von Null
+auf, du recycelst, was im Newsletter ohnehin schon steht.
+
+Realistische Erwartung:
+- X bringt anfangs wenig Reichweite. Das ist normal.
+- Ziel ist nicht "viral gehen", sondern Konsistenz und ein
+  zweiter Touchpoint fuer Leute, die dich noch nicht kennen.
+- Reichweite kommt langsam und ueber Monate, nicht Tage.
+- Erfolg = jeder Tweet bringt eine klare Aussage rueber und
+  fuehrt am Ende sauber zum Newsletter.
+
+Aufwand pro Ausgabe: 15-20 Min. Du nimmst das, was du fuer
+den Newsletter und LinkedIn schon geschrieben hast, und
+kuerzt es auf X-Format runter. Nicht neu erfinden.
+
+QUELLE: das Ausgaben-Format
+-----------------------------------------------------------
+Jede Ausgabe hat pro Story vier Bausteine:
+  THEMA      = worum geht es
+  WAS        = was ist konkret passiert
+  BEDEUTUNG  = warum ist das fuer dich relevant
+  TIPP       = was du jetzt tun kannst
+Diese vier Bausteine sind das Rohmaterial fuer jeden Thread.
+
+
+===========================================================
+THREAD-VORLAGE 1 — NEWS-THREAD (5-7 Tweets)
+===========================================================
+Nimm EINE Story aus der Ausgabe. Platzhalter in [eckigen
+Klammern] ersetzen. Jeder Tweet bleibt unter 280 Zeichen.
+
+1/
+[THEMA in einem Satz, der den Haken setzt].
+Was das fuer deinen Arbeitsalltag aendert — kurz erklaert.
+Thread 👇
+
+2/
+Was ist passiert:
+[WAS — der nackte Fakt, eine Aussage, kein Drumherum].
+
+3/
+Der Kontext dazu:
+[Ein Satz Einordnung. Woher kommt das, was war vorher?]
+
+4/
+Warum dich das betrifft:
+[BEDEUTUNG — konkret auf Solopreneure/kleine Teams bezogen].
+
+5/
+Was nicht stimmt am Gerede drumherum:
+[Eine ehrliche Einordnung. Wo wird zu viel versprochen?]
+
+6/
+Was du jetzt tun kannst:
+[TIPP — ein konkreter, kleiner Schritt fuer heute].
+
+7/
+Sowas sortiere ich jeden Werktag in 5 Minuten fuer dich.
+Taeglich in 5 Min: abannews.com
+
+
+===========================================================
+THREAD-VORLAGE 2 — HOW-TO-THREAD (5-7 Tweets)
+===========================================================
+Aus dem TIPP-Baustein einer Ausgabe eine kleine Anleitung
+bauen. Ein Schritt pro Tweet.
+
+1/
+[THEMA als Problem formuliert: "Du machst X noch von Hand?"].
+Hier ist der Weg in [N] Schritten. Thread 👇
+
+2/
+Schritt 1:
+[Erster konkreter Schritt. Was genau klickst/tippst du?]
+
+3/
+Schritt 2:
+[Zweiter Schritt. Bleib praezise, kein Fuelltext.]
+
+4/
+Schritt 3:
+[Dritter Schritt. Wenn moeglich mit dem konkreten Prompt.]
+
+5/
+Der haeufigste Fehler dabei:
+[BEDEUTUNG als Warnung — woran scheitern die meisten?]
+
+6/
+Womit du anfaengst, wenn du nur 10 Minuten hast:
+[Der kleinste sinnvolle erste Schritt].
+
+7/
+Solche Anleitungen gibts bei mir jeden Werktag, ohne Hype.
+Taeglich in 5 Min: abannews.com
+
+
+===========================================================
+THREAD-VORLAGE 3 — CONTRARIAN / ANTI-HYPE-THREAD (5-7)
+===========================================================
+Greife eine ueberzogene Behauptung aus der Branche auf und
+stell die nuechterne Sicht daneben. Keine erfundenen Zahlen.
+
+1/
+"[Gaengige Behauptung, die gerade ueberall steht]."
+Stimmt so nicht. Was wirklich dran ist — und was nicht 👇
+
+2/
+Was alle sagen:
+[Die Behauptung neutral wiedergegeben, fair, nicht karikiert].
+
+3/
+Was in der Praxis passiert:
+[WAS/BEDEUTUNG — deine nuechterne Beobachtung aus dem Alltag].
+
+4/
+Woher die Luecke kommt:
+[Warum klingt es groesser, als es ist? Ein Satz Erklaerung.]
+
+5/
+Was trotzdem stimmt:
+[Sei fair. Was ist der wahre Kern hinter dem Hype?]
+
+6/
+Was du daraus mitnimmst:
+[TIPP — die ruhige, brauchbare Schlussfolgerung].
+
+7/
+Ich trenne Signal von Laerm — jeden Werktag, kein Hype.
+Taeglich in 5 Min: abannews.com
+
+
+===========================================================
+EINZEL-TWEET-VORLAGEN (Standalone, je <= 280 Zeichen)
+===========================================================
+
+A) Ein-Tipp-Tweet
+[Ein konkreter KI-Tipp aus dem TIPP-Baustein, fertig zum
+Umsetzen]. Mehr davon jeden Werktag: abannews.com
+
+B) Einordnung-Tweet
+[Eine News in einem Satz]. Was es fuer dich heisst:
+[eine nuechterne Folge]. Kein Hype, nur das Brauchbare —
+abannews.com
+
+C) Frage-Tweet (Engagement)
+[Konkrete Frage zur Arbeitsweise, z.B. "Welches KI-Tool
+nutzt du taeglich — und welches hast du wieder geloescht?"].
+Antworte gern, ich lese mit.
+
+D) Mythos-Tweet (anti-hype)
+Mythos: "[ueberzogene Aussage]".
+Realitaet: [nuechterne Korrektur in einem Satz].
+Sowas sortiere ich taeglich: abannews.com
+
+E) Hinter-den-Kulissen-Tweet
+[Eine ehrliche Beobachtung aus dem eigenen Arbeiten mit KI,
+ohne Zahlen zu erfinden]. Daraus wird mein Newsletter —
+Mo bis Fr, 5 Min: abannews.com
+
+
+===========================================================
+REGELN (vor dem Posten pruefen)
+===========================================================
+- Kein Hype. Keine Buzzwords, keine Superlative, keine
+  Mehrfach-Ausrufezeichen.
+- Ein Gedanke pro Tweet. Wenn zwei Ideen drin sind, teile
+  in zwei Tweets.
+- Der Haken sitzt in Tweet 1. Sagt der erste Tweet nicht
+  klar, worum es geht, liest niemand den zweiten.
+- Keine erfundenen Zahlen, Statistiken oder Testimonials.
+  Nur belegbare Fakten oder klar als Meinung gekennzeichnet.
+- Durchgehend du-Form, direkt und pragmatisch.
+- Letzter Thread-Tweet immer mit CTA: Taeglich in 5 Min:
+  abannews.com
+- Keine Wiederholung 1:1 vom Newsletter — kuerzen und auf
+  eine Kernaussage zuspitzen.
+- Im Zweifel weglassen. Lieber ein klarer Satz als drei
+  schwammige.

@@ -1,0 +1,180 @@
+================================================================================
+aban news — Welcome-/Onboarding-Sequenz (beehiiv, DE, du-Form)
+================================================================================
+Ziel: Aus Gratis-Abonnenten Buch-Käufer und Founding-Member machen.
+Aufbau: 5 automatisierte Mails. Value zuerst, weiche Pitches.
+Einrichtung in beehiiv: Automations -> neue Sequenz -> jede Mail unten
+1:1 einsetzen (Betreff / Preheader / Body). Versand-Timing pro Mail siehe
+"Versand". Personalisierung optional: {{ first_name | default: "" }}.
+Links: /ebook.html, /downloads/anti-hype-ebook.pdf, /buch.html, /founding.html
+================================================================================
+
+
+--------------------------------------------------------------------------------
+EMAIL 1 — Welcome + eBook ausliefern
+--------------------------------------------------------------------------------
+Versand: sofort nach Bestätigung
+
+Betreff: Da ist dein eBook (und was dich erwartet)
+
+Preheader: Direktlink, plus die drei Regeln, nach denen aban news funktioniert.
+
+Body:
+Schön, dass du dabei bist.
+
+Hier zuerst, was du wolltest: das Anti-Hype-eBook. Lesen oder als PDF sichern,
+ganz wie du magst.
+
+-> Online lesen: https://abannews.com/ebook.html
+-> PDF laden: https://abannews.com/downloads/anti-hype-ebook.pdf
+
+Und damit du weisst, worauf du dich eingelassen hast — drei Regeln, an die ich
+mich halte:
+
+1. Mo bis Fr, eine Mail. Am Wochenende hast du Ruhe.
+2. Fünf Minuten Lesezeit. Wenn ich länger brauche, habe ich nicht genug
+   nachgedacht.
+3. Kein Hype. Du bekommst, was wirklich funktioniert — und was du getrost
+   ignorieren kannst.
+
+Mehr ist es nicht. Kein Tracking-Theater, keine zehn Mails pro Woche.
+
+Wenn du eine Frage hast oder etwas siehst, das ich falsch einschätze:
+Antworte einfach auf diese Mail. Ich lese mit.
+
+Bis morgen,
+Aban
+
+--------------------------------------------------------------------------------
+EMAIL 2 — Quick Win: der 3-Fragen-Filter
+--------------------------------------------------------------------------------
+Versand: Tag 2
+
+Betreff: Der 3-Fragen-Filter fuer jedes KI-Tool
+
+Preheader: Spar dir das naechste Abo, das du nach zwei Wochen vergisst.
+
+Body:
+Jede Woche taucht ein neues KI-Tool auf, das angeblich alles aendert. Die
+meisten davon brauchst du nicht. Hier ist der Filter, den ich vor jeder
+Anmeldung durchgehe:
+
+1. Welche konkrete Aufgabe kostet mich diese Woche am meisten Zeit?
+   (Nicht "irgendwann mal" — diese Woche.)
+
+2. Loest das Tool genau diese Aufgabe — oder nur etwas in der Naehe?
+   Wenn "in der Naehe": weglegen.
+
+3. Ist der Aufwand fuers Einrichten kleiner als die Zeit, die ich in einem
+   Monat spare? Wenn du das nicht in zwei Saetzen beantworten kannst, ist
+   die Antwort nein.
+
+Beispiel aus dieser Woche: Ein Abonnent wollte ein Tool fuer
+KI-Meeting-Notizen. Frage 1: Meetings kosten ihn 3 Stunden Nachbereitung.
+Frage 2: Ja, genau das. Frage 3: 20 Minuten Setup gegen Stunden im Monat.
+Klares Ja. Bei seinem zweiten Kandidaten — einem "KI-Dashboard" — kam schon
+bei Frage 1 nichts Konkretes. Weggelegt.
+
+Nimm den Filter und wende ihn auf das naechste Tool an, das dir begegnet.
+Das war's fuer heute.
+
+Aban
+
+--------------------------------------------------------------------------------
+EMAIL 3 — Das Buch (zahl, was du willst)
+--------------------------------------------------------------------------------
+Versand: Tag 4
+
+Betreff: Mein Buch — gratis, oder zahl was es wert war
+
+Preheader: Kein Verkaufstrick. Du entscheidest den Preis, auch null.
+
+Body:
+Aus dem, was im Newsletter und im eBook funktioniert hat, ist ein laengeres
+Buch geworden. Es heisst genauso wie der Anspruch hier: anti-hype. KI
+praktisch nutzen, ohne dem naechsten Trend hinterherzulaufen.
+
+Und so kannst du es haben: zahl, was du willst. Auch null Franken sind okay.
+
+-> https://abannews.com/buch.html
+
+Ich meine das ernst. Du kannst es gratis laden — als PDF oder ePub, je nach
+Geraet. Wenn es dir spaeter etwas wert war, kommst du zurueck und zahlst, was
+du fuer fair haeltst. Kein Druck, keine Erinnerungsmail.
+
+Warum so? Weil ich lieber moechte, dass es gelesen wird, als dass es hinter
+einer Bezahlschranke verstaubt. Wer zahlt, finanziert die Zeit fuers naechste.
+Wer nicht zahlt, liest trotzdem mit. Beides ist mir recht.
+
+Lad es dir, wenn du eine ruhige Stunde hast. Mehr will ich heute gar nicht.
+
+Aban
+
+--------------------------------------------------------------------------------
+EMAIL 4 — Value: 5 Routinen, die Zeit sparen (+ weicher Founding-Hinweis)
+--------------------------------------------------------------------------------
+Versand: Tag 7
+
+Betreff: Eine Routine, die mir pro Woche 2 Stunden spart
+
+Preheader: Aus den fuenf, die wirklich haengengeblieben sind — die erste.
+
+Body:
+Es gibt fuenf KI-Routinen, die bei mir geblieben sind, weil sie echte Zeit
+sparen statt nur gut auszusehen. Heute eine davon — die mit dem groessten
+Effekt:
+
+Die Montags-Triage. Jeden Montag wirfst du deine offene Mailbox, deine Notizen
+und deine To-do-Liste der Woche zusammen in ein KI-Chatfenster und gibst einen
+Satz vor: "Sortier mir das nach: heute, diese Woche, kann warten, kann weg."
+
+Klingt simpel. Der Punkt ist nicht die KI — der Punkt ist, dass du einmal pro
+Woche bewusst aussortierst, statt dich von der Liste treiben zu lassen. Die KI
+macht das Sortieren schnell genug, dass du es wirklich jede Woche tust. Bei mir
+sind das gut zwei Stunden, die sonst im Hin-und-Her draufgehen.
+
+Probier es naechsten Montag. Zehn Minuten reichen fuer den ersten Durchlauf.
+
+Die anderen vier Routinen sammle ich nach und nach hier. Founding-Member
+bekommen sie als kompaktes Bundle plus Archivzugriff — dazu in ein paar Tagen
+mehr. Heute reicht die eine.
+
+Aban
+
+--------------------------------------------------------------------------------
+EMAIL 5 — Founding-Einladung
+--------------------------------------------------------------------------------
+Versand: Tag 12
+
+Betreff: Founding-Member werden — einmal 149, dann nie wieder
+
+Preheader: Fuer die ersten 100. 30 Tage Geld-zurueck, wenn es nichts taugt.
+
+Body:
+Du liest jetzt seit knapp zwei Wochen mit. Wenn dir der Ton passt, gibt es
+einen Weg, dauerhaft dabei zu sein und das Ganze zu finanzieren: die
+Founding-Mitgliedschaft.
+
+Einmal 149 Franken, lebenslang. Kein Abo, keine jaehrliche Verlaengerung. Du
+zahlst einmal und bist drin — auch wenn der Preis spaeter steigt.
+
+-> https://abannews.com/founding.html
+
+Was drin ist:
+- Voller Archivzugriff auf alle bisherigen Ausgaben.
+- Das Routinen-Bundle und kuenftige Vertiefungen ohne Aufpreis.
+- Direkter Draht zu mir fuer Fragen.
+
+Zwei ehrliche Dinge: Das Founding-Angebot gilt fuer die ersten 100 Leute —
+danach mache ich es zu, weil der direkte Draht sonst nicht haltbar ist. Und
+wenn es dir in den ersten 30 Tagen nichts bringt, schreibst du mir und
+bekommst dein Geld zurueck. Ohne Diskussion.
+
+Wenn du noch unsicher bist: Bleib einfach Gratis-Leser. Der Newsletter laeuft
+fuer dich genauso weiter.
+
+Aban
+
+================================================================================
+Ende der Sequenz. Danach laeuft der normale taegliche Newsletter (Mo–Fr).
+================================================================================

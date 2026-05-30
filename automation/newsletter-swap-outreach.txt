@@ -1,0 +1,174 @@
+================================================================
+ NEWSLETTER-SWAP-OUTREACH — Vorlagen fuer Cross-Promotions
+ aban news (abannews.com) | taeglicher KI-Newsletter fuer DACH
+================================================================
+
+Diese Datei sammelt Textvorlagen, um mit anderen Newsletter-Betreibern
+gegenseitige Empfehlungen (Swaps) zu vereinbaren. Alles in Klartext zum
+Kopieren. Platzhalter in eckigen Klammern vor dem Senden ausfuellen.
+Keine erfundenen Zahlen eintragen — nur echte Werte oder ehrliche Spannen.
+
+
+----------------------------------------------------------------
+ WIE DAS FUNKTIONIERT
+----------------------------------------------------------------
+
+- beehiiv hat eine Funktion "Recommendations": Du empfiehlst andere
+  Newsletter, sie empfehlen dich. Neue Abonnenten sehen die Empfehlung
+  direkt nach der Anmeldung oder im Footer.
+- Prinzip: faire Gegenseitigkeit. Du gibst eine Empfehlung, du bekommst
+  eine zurueck. Niemand zahlt, niemand schuldet etwas.
+- Kein Verkauf von Adressen, kein automatisches Eintragen, kein Spam.
+  Jeder Abonnent meldet sich selbst an.
+- Ziel ist eine Empfehlung, die fuer beide Leserschaften wirklich passt.
+  Lieber wenige gute Swaps als viele beliebige.
+
+Praktisch in beehiiv:
+1. Beide richten "Recommendations" im Dashboard ein.
+2. Ihr fuegt euch gegenseitig hinzu.
+3. Nach ein paar Wochen vergleicht ihr die Zahlen und entscheidet,
+   ob ihr weitermacht.
+
+
+================================================================
+ VORLAGE 1 — ERSTKONTAKT (kalt)
+================================================================
+
+Betreff: Gegenseitige Empfehlung zwischen [Name ihres Newsletters] und aban news?
+
+Hallo [Vorname],
+
+ich lese [Name ihres Newsletters] seit [Zeitraum / einigen Wochen] und
+schaetze besonders [konkrete Sache, z. B. die Tool-Tipps am Freitag].
+
+Ich schreibe aban news — einen taeglichen, deutschsprachigen
+KI-Newsletter fuer Selbststaendige im DACH-Raum. Mo bis Fr, kurz,
+ohne Hype. Aktuell [X Abonnenten].
+
+Mir scheint, wir erreichen eine aehnliche Zielgruppe, ohne uns direkt
+Konkurrenz zu machen. Haettest du Lust auf eine gegenseitige Empfehlung
+ueber beehiiv Recommendations? Du empfiehlst aban news, ich empfehle
+[Name ihres Newsletters]. Kein Geld, keine Verpflichtung — wir testen
+es einfach.
+
+Falls du reinschauen willst: [Link zur aktuellen Ausgabe oder Landingpage]
+
+Sag gern Bescheid, ob das fuer dich passt.
+
+Viele Gruesse
+Allen (Aban)
+abannews.com
+
+
+================================================================
+ VORLAGE 2 — FOLLOW-UP (keine Antwort)
+================================================================
+
+Betreff: Re: Gegenseitige Empfehlung — kurzes Nachfassen
+
+Hallo [Vorname],
+
+ich melde mich kurz noch einmal zu meiner Nachricht von letzter Woche.
+Kein Stress, falls gerade viel los ist.
+
+Die Idee in einem Satz: gegenseitige Empfehlung ueber beehiiv, du
+empfiehlst aban news, ich empfehle [Name ihres Newsletters]. Wir koennen
+jederzeit wieder aussteigen, wenn es fuer eine Seite nicht passt.
+
+Wenn das Thema fuer dich nicht relevant ist, sag einfach kurz Bescheid —
+dann hake ich es ab und melde mich nicht weiter.
+
+Viele Gruesse
+Allen (Aban)
+abannews.com
+
+
+================================================================
+ VORLAGE 3 — KONKRETER SWAP-VORSCHLAG (X gegen X)
+================================================================
+
+Betreff: Konkreter Vorschlag: [X] Empfehlungen gegen [X]
+
+Hallo [Vorname],
+
+danke fuer dein Interesse. Hier ein konkreter Vorschlag, damit es fuer
+beide fair bleibt:
+
+- Du nimmst aban news in deine beehiiv-Recommendations auf.
+- Ich nehme [Name ihres Newsletters] in meine auf.
+- Laufzeit zum Testen: [z. B. 4 Wochen].
+- Danach vergleichen wir die vermittelten Anmeldungen und entscheiden,
+  ob wir weitermachen.
+
+Falls du lieber eine einmalige Erwaehnung im Text moechtest statt der
+Dauer-Empfehlung: [X] Erwaehnung(en) bei mir gegen [X] bei dir, im
+selben Zeitraum. Beides geht, sag einfach, was dir lieber ist.
+
+Meine aktuellen Eckdaten ehrlich: [X Abonnenten], Oeffnungsrate
+[X %, oder weglassen falls du keine teilen willst].
+
+Wenn das so passt, richte ich meine Seite heute noch ein.
+
+Viele Gruesse
+Allen (Aban)
+abannews.com
+
+
+================================================================
+ VORLAGE 4 — DANKE + WIEDERKEHRENDE KOOPERATION
+================================================================
+
+Betreff: Danke — und ein Vorschlag fuer regelmaessig
+
+Hallo [Vorname],
+
+danke fuer den Swap. Auf meiner Seite kamen bisher [X Anmeldungen] ueber
+deine Empfehlung an — solide, und ich hoffe, bei dir laeuft es ebenfalls.
+(Wenn du magst, tauschen wir kurz die Zahlen aus.)
+
+Weil es gut funktioniert, ein Vorschlag fuer etwas Regelmaessiges:
+
+- Die Dauer-Empfehlung lassen wir einfach stehen.
+- Zusaetzlich erwaehnen wir uns [z. B. einmal im Quartal] aktiv im Text,
+  wenn es thematisch passt.
+- Bei groesseren Aktionen (z. B. eine Spezialausgabe) fragen wir uns
+  vorher, ob ein zusaetzlicher Hinweis Sinn ergibt.
+
+Kein fester Plan, kein Druck — nur ein offener Draht. Sag mir, ob das
+fuer dich passt.
+
+Viele Gruesse
+Allen (Aban)
+abannews.com
+
+
+================================================================
+ KRITERIEN: MIT WEM SWAPPEN
+================================================================
+
+[ ] Gleiche Zielgruppe: DACH-Selbststaendige, Solopreneure, KI-Interesse
+[ ] Aehnliche Groesse: grobe Spanne, nicht 50x groesser oder kleiner
+[ ] Gleiche Werte: anti-hype, ehrlich, kein reisserischer Ton
+[ ] Kein Spam: sauberer Anmeldeprozess, keine gekauften Listen
+[ ] Deutschsprachig oder klar DACH-relevant
+[ ] Regelmaessiger Versand, aktiv (letzte Ausgabe nicht Monate her)
+[ ] Kein direkter Wettbewerb um exakt dasselbe Angebot
+[ ] Ich wuerde den Newsletter selbst weiterempfehlen, ohne Bauchweh
+
+Faustregel: Wenn ich die Empfehlung meinen eigenen Lesern gegenueber
+nicht ehrlich verteidigen kann, mache ich den Swap nicht.
+
+
+================================================================
+ TRACKING (Newsletter | Kontakt | Status | Datum)
+================================================================
+
+Status-Werte: angeschrieben / Follow-up / zugesagt / aktiv / abgelehnt / pausiert
+
+Newsletter            | Kontakt              | Status        | Datum
+----------------------+----------------------+---------------+-----------
+[Name]                | [Mail / Vorname]     | angeschrieben | 2026-__-__
+[Name]                | [Mail / Vorname]     |               |
+[Name]                | [Mail / Vorname]     |               |
+[Name]                | [Mail / Vorname]     |               |
+[Name]                | [Mail / Vorname]     |               |

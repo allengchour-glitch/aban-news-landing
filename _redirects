@@ -4,11 +4,21 @@
 
 # Pretty URLs (no .html in URLs that users might type)
 /founding         /founding.html        301
+/ebook            /ebook.html           301
+/buch             /buch.html            301
+/book             /buch.html            301
+/ki-tools         /ki-tools-fuer-selbststaendige.html   301
+/chatgpt          /chatgpt-fuer-solopreneure.html       301
 /sponsoring       /sponsoring.html      301
 /werbung          /werbung.html         301
 /datenschutz      /datenschutz.html     301
 /impressum        /impressum.html       301
 /willkommen       /willkommen.html      301
+/faq              /faq.html             301
+/presse           /presse.html          301
+/press            /presse.html          301
+/ueber            /ueber-aban.html      301
+/about            /ueber-aban.html      301
 
 # Legacy paths from landing/
 /abo              /#signup              301
@@ -16,7 +26,7 @@
 /abonnieren       /#signup              301
 
 # Email aliases short-links
-/mail             mailto:hallo@abannews.de        301
+/mail             mailto:hallo@abannews.com       301
 /sponsoren        /sponsoring.html      301
 
 # 404 fallback — Cloudflare Pages serves /404.html automatically for missing routes,

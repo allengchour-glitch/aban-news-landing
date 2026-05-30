@@ -1,0 +1,44 @@
+# aban news - Ausgabe als Eingabe fuer den LinkedIn-Generator
+#
+# FORMAT (sehr simpel, taeglich selbst ausfuellen):
+#   - Drei Bloecke pro Ausgabe, getrennt durch eine Zeile mit nur "---".
+#   - Jeder Block hat vier Felder, jeweils eine Zeile (Mehrzeiler erlaubt,
+#     solange die Folgezeilen kein neues Feld-Stichwort starten):
+#       THEMA:     Kurzer Titel des Items (3-6 Woerter)
+#       WAS:       Was ist passiert? 1-2 nuechterne Saetze, keine Werbung.
+#       BEDEUTUNG: Warum ist das fuer Solopreneure/Selbststaendige relevant?
+#       TIPP:      Was wuerdest du konkret tun? Ein umsetzbarer Schritt.
+#   - Zeilen, die mit "#" beginnen, sind Kommentare und werden ignoriert.
+#   - Leere Felder sind ok, der Generator springt dann auf das naechste Item.
+#
+# Hinweis: Halte WAS faktisch und ohne erfundene Zahlen. Lieber "ein grosser
+# Anbieter" als eine ausgedachte Prozentzahl.
+
+THEMA: Neues Sprachmodell mit groesserem Kontextfenster
+WAS: Ein bekannter Anbieter hat ein Modell-Update veroeffentlicht, das deutlich
+ mehr Text auf einmal verarbeiten kann. Praxisrelevant vor allem fuer lange
+ Dokumente und ganze Projektakten.
+BEDEUTUNG: Fuer Solopreneure heisst das: weniger Copy-Paste-Stueckeln, mehr
+ Analyse am Stueck. Aber laengerer Kontext ersetzt keine saubere Struktur.
+TIPP: Nimm einen langen Kundenvertrag, lass ihn zusammenfassen und pruefe
+ stichprobenartig drei Klauseln gegen das Original.
+
+---
+
+THEMA: KI-Funktion direkt im Tabellen-Tool
+WAS: Ein verbreitetes Office-Tool baut KI-Assistenz direkt in die Tabellen ein,
+ etwa fuer Formeln und das Bereinigen von Daten.
+BEDEUTUNG: Du musst nicht mehr zwischen Chat und Tabelle hin- und herspringen.
+ Spart Klicks, verleitet aber dazu, Ergebnisse ungeprueft zu uebernehmen.
+TIPP: Lass dir eine Formel erklaeren, statt sie blind einzufuegen. So lernst du
+ mit und merkst, wenn die KI danebenliegt.
+
+---
+
+THEMA: Open-Source-Modell laeuft lokal
+WAS: Ein neues offenes Modell laeuft auf normaler Hardware ohne Cloud. Die
+ Qualitaet reicht fuer viele Alltagsaufgaben.
+BEDEUTUNG: Datenschutz-sensible Selbststaendige koennen Texte verarbeiten, ohne
+ Daten an einen Dienst zu schicken. Einrichtung kostet aber Zeit.
+TIPP: Teste ein lokales Modell zuerst fuer eine harmlose Aufgabe wie
+ E-Mail-Entwuerfe, bevor du sensible Daten anfasst.
