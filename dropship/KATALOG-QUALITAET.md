@@ -32,10 +32,32 @@ CJ-Produkte betroffen.
   `dropship/assets/rescue-candidates-add-images.jsonl` — falls du sie willst: Bilder
   ergänzen, dann reaktiviere ich sie + schreibe echte Texte.
 
-## Phase 2 — Body-Texte der 373 behaltenen Produkte (läuft)
-Recon scannt die Beschreibungen auf: interne Recherche-Notizen, „Premium"-Stuffing,
-Markt-Framing („für Schweizer Berg-Touren"), zu dünne Texte → Ausreißer werden umgeschrieben.
+## Phase 2 — Body-Texte der 373 behaltenen Produkte ✅
+Recon-Scan aller 373: Katalog **erstaunlich sauber** — nur **3 Ausreißer** (Verkaufs-/
+Popularitäts-Behauptungen im Body), alle umgeschrieben:
+- Smaragd-Anhänger: „Vogue-bestätigter Top-Trend 2026" raus.
+- Top-3-Bundle: „beliebteste/meistgekaufte Bestseller"-Framing entschärft + „LuxeStyle CH" → „LuxeStyle".
+- Geburtsstein-Kette: Bullet „Geschenk-Bestseller" → echte Produkt-Eigenschaft.
+Kein „Premium"-Stuffing, keine zu dünnen Texte, kein Markt-Framing mehr.
 
-## Offen (du, manuell)
-- Shop-Name „LuxeStyle CH" → „LuxeStyle" (Einstellungen → Allgemein) — wirkt auf Logo + Browser-Titel.
-  Kein Admin-API-Mutation dafür; nur über Settings-UI.
+## Phase 3 — Bild-Alt-Texte ✅
+- Recon: **237 Produkte / 929 Bilder** ohne Alt-Text (v.a. ältere Importe; neue CJ-Produkte hatten schon gute).
+- Alle **929 Bilder** per `fileUpdate` (5 Batches à ≤200) mit `altText = Produkttitel` versehen, **0 Fehler**.
+- Verifiziert: durchgängige Alt-Abdeckung (Video-Medien korrekt ausgelassen).
+- Nutzen: Google-Bildersuche + Barrierefreiheit/Screenreader.
+
+## ✅ ENDSTAND Verbesserungs-Runde
+| Maßnahme | Ergebnis |
+|----------|----------|
+| Bildlose Müll-Produkte archiviert | 783 → aktiv **1156→373**, alle mit Bild |
+| Fake-Streichpreise (×1,3) | weg (721 mitarchiviert + 1 manuell) |
+| Body-Text-Müll | 3 Ausreißer umgeschrieben |
+| Fehlende Bild-Alt-Texte | 929 gesetzt |
+| Agenten-Läufe | Audit + 3 Archiver + Body-Recon + Alt-Recon + Alt-Fixer = 7, **0 echte Fehler** |
+
+## Offen (du / niedrige Prio)
+- **Shop-Name „LuxeStyle CH" → „LuxeStyle"** (Einstellungen → Allgemein) — wirkt auf Logo + Browser-Titel.
+  Kein Admin-API-Mutation dafür; nur Settings-UI.
+- 62 **Rescue-Kandidaten** (Hausmarke „Luxe…" ohne Bild): Bilder liefern → ich reaktiviere + betexte.
+- Kosmetik (sehr niedrig): ein paar alte, vorbestehende Alt-Texte enthalten noch „LuxeStyle CH" /
+  fehlende Umlaute; nicht kundenrelevant.
