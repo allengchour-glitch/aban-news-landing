@@ -1,0 +1,68 @@
+name: Daily Social Post
+
+# Postet einmal pro Tag EINE Ausgabe auf alle konfigurierten Kanäle.
+# Sicher by design: ohne Secrets passiert nichts (No-Op). Nur offizielle APIs,
+# nur eigene Kanäle, 1 Post/Lauf. Aktiv erst nach Merge in den Default-Branch
+# (geplante Workflows laufen nur vom Default-Branch). Manuell jederzeit testbar.
+
+on:
+  schedule:
+    - cron: "10 6 * * *"   # täglich 06:10 UTC (~08:10 MESZ)
+  workflow_dispatch:
+    inputs:
+      dryrun:
+        description: "Nur Vorschau, nichts posten"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-social
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Queue aus Ausgaben bauen
+        run: python3 automation/build_social_queue.py
+
+      - name: Posten (oder Dry-Run)
+        env:
+          MASTODON_BASE_URL: ${{ secrets.MASTODON_BASE_URL }}
+          MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          LINKEDIN_TOKEN: ${{ secrets.LINKEDIN_TOKEN }}
+          LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dryrun }}" = "true" ]; then
+            python3 automation/post_daily.py
+          else
+            python3 automation/post_daily.py --post
+          fi
+
+      - name: Post-State persistieren
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.dryrun == true) }}
+        run: |
+          git config user.name "aban-news-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add automation/.social_posted.json automation/social_queue.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(social): Post-State $(date -u +%F)"
+            git push
+          else
+            echo "Kein State-Update."
+          fi
