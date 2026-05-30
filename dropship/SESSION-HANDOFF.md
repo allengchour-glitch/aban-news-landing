@@ -7,37 +7,37 @@
 
 ## 🔴 OFFENER NÄCHSTER SCHRITT (hier weitermachen)
 
-**Autonomer CJ-Produkt-Import via CJdropshipping-API — wartet nur auf den API-Key.**
+**Autonomer CJ-Produkt-Import — Pipeline STEHT, Auth verifiziert. Blocker: CJ-Tageslimit.**
 
-Allen will, dass Produkte **autonom** importiert werden (nicht manuell in DSers klicken).
-Recherche-Ergebnis: **Geht — aber über die CJ-API, nicht DSers.**
+Allen will Produkte **autonom** importieren (nicht manuell in DSers klicken).
+Recherche-Ergebnis: **Geht — über die CJ-API, nicht DSers.**
 
 - ❌ **DSers** hat KEINE Merchant-API zum Produktimport (nur Partner-„Supplier/Channel Apps").
-- ✅ **CJdropshipping** hat eine self-service Merchant-API. **Live getestet aus dieser Umgebung:**
-  Endpoint `https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken`
-  antwortet (gab `code:1600005 "APIkey is wrong"` ohne Key → Endpoint lebt, nur Creds fehlen).
-- Deine 8 Live-Produkte sind eh schon CJ-SKUs (`CJ-…`) → CJ-API passt perfekt.
+- ✅ **CJdropshipping** Merchant-API funktioniert. **Auth am 2026-05-30 erfolgreich getestet**
+  (`code:200 Success`, openId 38304). Credentials sind bekannt:
+  `CJ_EMAIL=allengchour@gmail.com`, `CJ_API_KEY=<32-stelliger Key, NICHT im Repo>`.
+  ⚠️ Key wurde im Chat geteilt → Allen sollte ihn in CJ rotieren; neuen Key als env setzen.
+- Deine 8 Live-Produkte sind eh schon CJ-SKUs (`CJ-…`) → passt perfekt.
 
-### Was die neue Session braucht (von Allen):
+### ⛔ Aktueller Blocker (2026-05-30)
+CJ-API: `code:1600200 — daily request limit (1000/day) reached, made: 1000`.
+Account-Kontingent heute aufgebraucht (durch anderes Tooling/DSers). **Reset: morgen.**
+→ Neue Session morgen: Script einfach starten, läuft autonom durch.
+
+### Startklar gebaut: `dropship/cj_import.mjs`
+Liest Creds aus env, holt Token (gecached `/tmp/cj_token.json`), sucht die Kandidaten,
+gibt JSON-Brief aus. Aufruf:
 ```
-CJ_EMAIL    = <CJ-Login-E-Mail>
-CJ_API_KEY  = <aus CJ-Dashboard → Authentication / API>
+CJ_EMAIL=allengchour@gmail.com CJ_API_KEY=<key> node dropship/cj_import.mjs
 ```
-**Sicher:** als Environment-Variablen in der Session-Config setzen (nicht in den Chat pasten).
-Geprüft 2026-05-30: aktuell NICHT gesetzt (env leer, `~/.claude/session-env/` leer,
-settings.json env-Block leer). Allen sagte „habe gespeichert alle api" — aber nicht in
-DIESER Umgebung/diesem Repo erreichbar. Also: Key anfordern oder als env setzen lassen.
+Danach pro Treffer via Shopify-MCP `create-product`: DE-Copy (LuxeStyle-Stil), Tags `cj-real`,
+Marge ≥ 2.5× Kost, VK auf `.90`, Inventar `DENY`+untracked, Collection „Neu 2026", ACTIVE.
 
-### Sobald Key da ist — autonomer Ablauf:
-1. POST `…/authentication/getAccessToken` mit `{email, apiKey}` → `accessToken`
-   (Header danach: `CJ-Access-Token: <token>`)
-2. Produkt-Suche für die validierten Kandidaten (siehe Pipeline-Doc, Abschnitt 2)
-3. Pro Produkt: Variants, echte SKUs, Bild-URLs, Lieferanten-Kost ziehen
-4. In Shopify anlegen via MCP `create-product`: DE-Copy (LuxeStyle-Stil), Tags `cj-real`,
-   Marge ≥ 2.5× Kost, VK auf `.90`, Inventar `DENY`+untracked, Collection „Neu 2026", ACTIVE.
-
-**Produktiv vorab möglich:** CJ→Shopify-Importscript schon bauen (auth→search→detail→create),
-startklar machen, bevor der Key kommt. Allen wurde das angeboten.
+### Verifizierte CJ-API-Endpoints
+- `POST /api2.0/v1/authentication/getAccessToken` `{email, apiKey}` → `data.accessToken` (1×/5min)
+- danach Header: `CJ-Access-Token: <token>`
+- `GET /api2.0/v1/product/list?pageNum=1&pageSize=5&productNameEn=<kw>` → Suche
+- `GET /api2.0/v1/product/query?pid=<pid>` → Detail (Variants/SKUs/Bilder)
 
 ---
 
