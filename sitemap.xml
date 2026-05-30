@@ -37,6 +37,30 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://abannews.com/start.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/themen/ki-tools.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/themen/dsgvo-und-datenschutz.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/themen/anti-hype.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://abannews.com/downloads/dach-ki-toolkit.html</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
