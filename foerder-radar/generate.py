@@ -182,6 +182,12 @@ def build(data_path: Path, out: Path, here: Path):
 
     regions = sorted({p["region"] for p in progs if p.get("region")})
     arten = sorted({p["art"] for p in progs if p.get("art")})
+    # Zielgruppen- und Bereichs-Hubs (nur ab 3 Programmen → keine dünnen Seiten).
+    import collections
+    zg_count = collections.Counter(z for p in progs for z in p.get("zielgruppe", []))
+    br_count = collections.Counter(b for p in progs for b in p.get("bereich", []))
+    zielgruppen = sorted([z for z, n in zg_count.items() if n >= 3])
+    bereiche = sorted([b for b, n in br_count.items() if n >= 3])
 
     # Index with client-side filters
     reg_opts = "".join(f'<option value="{e(r)}">{e(REGION_NAME.get(r,r))}</option>' for r in regions)
@@ -193,8 +199,12 @@ def build(data_path: Path, out: Path, here: Path):
     cards = "\n".join(card(p) for p in progs)
     reg_links = " · ".join(f'<a href="/region/{slug(r)}.html">{e(REGION_NAME.get(r,r))}</a>' for r in regions)
     art_links = " · ".join(f'<a href="/art/{slug(a)}.html">{e(a)}</a>' for a in arten)
+    zg_links = " · ".join(f'<a href="/fuer/{slug(z)}.html">{e(z)}</a>' for z in zielgruppen)
+    br_links = " · ".join(f'<a href="/bereich/{slug(b)}.html">{e(b)}</a>' for b in bereiche)
     home = (f'<h1>{len(progs)} Förderprogramme für den DACH-Raum</h1>'
             f'<p class="tag" style="color:var(--muted)">Nach Region: {reg_links} · Nach Art: {art_links}</p>'
+            f'<p class="tag" style="color:var(--muted)">Für: {zg_links}</p>'
+            f'<p class="tag" style="color:var(--muted)">Themen: {br_links}</p>'
             f'{filt}<p id="nores" hidden>Keine Treffer.</p>{cards}'
             f'<script src="/filter.js" defer></script>'
             f'<p class="disc">⚠️ {e(disclaimer)}</p>')
@@ -224,6 +234,30 @@ def build(data_path: Path, out: Path, here: Path):
             page(f"{a}-Förderungen im DACH-Raum — {SITE_NAME}",
                  f"Alle {a}-Förderprogramme, klar sortiert.", body,
                  BASE_URL + f"/art/{slug(a)}.html"), encoding="utf-8")
+
+    # Zielgruppen-Hubs ("Förderungen für Gründer/KMU/…")
+    (out / "fuer").mkdir(exist_ok=True)
+    for z in zielgruppen:
+        members = [p for p in progs if z in p.get("zielgruppe", [])]
+        body = (f'<p><a href="/">← Alle Förderungen</a></p><h1>Förderungen für {e(z)}</h1>'
+                f'<p class="tag" style="color:var(--muted)">{len(members)} Programme für {e(z)} in DACH & EU.</p>'
+                + "\n".join(card(p) for p in members) + f'<p class="disc">⚠️ {e(disclaimer)}</p>')
+        (out / "fuer" / f"{slug(z)}.html").write_text(
+            page(f"Förderungen für {z} — {SITE_NAME}",
+                 f"Förderprogramme für {z} im DACH-Raum und der EU, klar sortiert.", body,
+                 BASE_URL + f"/fuer/{slug(z)}.html"), encoding="utf-8")
+
+    # Bereichs-Hubs ("KI-Förderung", "Digitalisierungs-Förderung", …)
+    (out / "bereich").mkdir(exist_ok=True)
+    for b in bereiche:
+        members = [p for p in progs if b in p.get("bereich", [])]
+        body = (f'<p><a href="/">← Alle Förderungen</a></p><h1>{e(b)}-Förderungen</h1>'
+                f'<p class="tag" style="color:var(--muted)">{len(members)} Programme im Bereich {e(b)}.</p>'
+                + "\n".join(card(p) for p in members) + f'<p class="disc">⚠️ {e(disclaimer)}</p>')
+        (out / "bereich" / f"{slug(b)}.html").write_text(
+            page(f"{b}-Förderungen im DACH-Raum — {SITE_NAME}",
+                 f"Förderprogramme im Bereich {b}, klar sortiert.", body,
+                 BASE_URL + f"/bereich/{slug(b)}.html"), encoding="utf-8")
 
     # filter.js (no deps, no tracking)
     (out / "filter.js").write_text(FILTER_JS, encoding="utf-8")
@@ -258,7 +292,9 @@ sowie Beschwerde bei einer Aufsichtsbehörde. Stand: {date.today().strftime('%m/
     # sitemap + robots
     urls = ([BASE_URL + "/"] + [BASE_URL + f"/programm/{slug(p['id'])}.html" for p in progs]
             + [BASE_URL + f"/region/{slug(r)}.html" for r in regions]
-            + [BASE_URL + f"/art/{slug(a)}.html" for a in arten])
+            + [BASE_URL + f"/art/{slug(a)}.html" for a in arten]
+            + [BASE_URL + f"/fuer/{slug(z)}.html" for z in zielgruppen]
+            + [BASE_URL + f"/bereich/{slug(b)}.html" for b in bereiche])
     today = date.today().isoformat()
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
@@ -271,9 +307,10 @@ sowie Beschwerde bei einer Aufsichtsbehörde. Stand: {date.today().strftime('%m/
         "User-agent: PerplexityBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\n"
         f"Sitemap: {BASE_URL}/sitemap.xml\n", encoding="utf-8")
 
-    total = 1 + len(progs) + len(regions) + len(arten)
+    total = (1 + len(progs) + len(regions) + len(arten)
+             + len(zielgruppen) + len(bereiche) + 2)  # +2 legal pages
     print(f"Built {total} pages ({len(progs)} programs, {len(regions)} regions, "
-          f"{len(arten)} types) → {out}/")
+          f"{len(arten)} types, {len(zielgruppen)} audiences, {len(bereiche)} topics) → {out}/")
     return total
 
 
