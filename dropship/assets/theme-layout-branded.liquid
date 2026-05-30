@@ -1,0 +1,160 @@
+<!doctype html>
+<html
+  {% if request.design_mode %}
+    class="shopify-design-mode"
+  {% endif %}
+  lang="{{ request.locale.iso_code }}"
+>
+  <head>
+    {%- if settings.favicon != blank -%}
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
+      >
+    {%- endif -%}
+
+    {% # theme-check-disable RemoteAsset %}
+    {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
+    {% if settings.transition_to_main_product or settings.page_transition_enabled %}
+      <link
+        rel="expect"
+        href="#MainContent"
+        blocking="render"
+        id="view-transition-render-blocker"
+      >
+    {% endif %}
+
+    {%- render 'meta-tags' -%}
+    {%- render 'stylesheets' -%}
+    {%- render 'fonts' -%}
+    {%- render 'scripts' -%}
+    {%- render 'theme-styles-variables' -%}
+    {%- render 'color-schemes' -%}
+
+    {% if request.design_mode %}
+      {%- render 'theme-editor' -%}
+    {% endif %}
+
+    {{ content_for_header }}
+    {% # theme-check-enable RemoteAsset %}
+  </head>
+
+  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+    {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
+    <div id="header-group">
+      {% sections 'header-group' %}
+    </div>
+
+    <script>
+      // Inline header height and menu style calculations to prevent layout shift
+      (function setHeaderHeighCustomProperties() {
+        const header = document.querySelector('header-component');
+        const headerGroup = document.querySelector('#header-group');
+        const hasHeaderSection = headerGroup?.querySelector('.header-section');
+
+        if (!header || !headerGroup) return;
+
+        const headerTopRow = header.querySelector('.header__row--top');
+        const headerHeight = header.offsetHeight;
+
+        let headerGroupHeight = 0;
+        const children = headerGroup.children;
+        for (let i = 0; i < children.length; i++) {
+          const element = children[i];
+          if (element === header || !(element instanceof HTMLElement)) continue;
+          headerGroupHeight += element.offsetHeight;
+        }
+
+        if (header.hasAttribute('transparent') && header.parentElement?.nextElementSibling) {
+          headerGroupHeight += headerHeight;
+        }
+
+        document.body.style.setProperty('--header-height', `${headerHeight}px`);
+        document.body.style.setProperty('--header-group-height', `${headerGroupHeight}px`);
+
+        if (headerTopRow) {
+          window.requestAnimationFrame(function () {
+            document.body.style.setProperty('--top-row-height', `${headerTopRow.offsetHeight}px`);
+          });
+        }
+
+        if (!hasHeaderSection || !header?.hasAttribute('transparent')) {
+          document.body.style.setProperty('--transparent-header-offset-boolean', '0');
+          return;
+        }
+
+        const hasImmediateSection = hasHeaderSection.nextElementSibling?.classList.contains('shopify-section');
+        const shouldApplyOffset = !hasImmediateSection ? '1' : '0';
+        document.body.style.setProperty('--transparent-header-offset-boolean', shouldApplyOffset);
+      })();
+
+      (function setHeaderMenuStyle() {
+        const headerComponent = document.querySelector('#header-component');
+        if (headerComponent) {
+          const isTouchDevice = 'ontouchstart' in window && navigator.maxTouchPoints > 0;
+          const overflowList = headerComponent?.querySelector('overflow-list');
+          const hasReachedMinimum = overflowList && overflowList.hasAttribute('minimum-reached');
+          headerComponent.dataset.menuStyle = isTouchDevice || hasReachedMinimum ? 'drawer' : 'menu';
+        }
+      })();
+    </script>
+
+    <main
+      id="MainContent"
+      class="content-for-layout"
+      role="main"
+      data-page-transition-enabled="{{ settings.page_transition_enabled }}"
+      data-product-transition="{{ settings.transition_to_main_product }}"
+      data-template="{{ template }}"
+    >
+      {{ content_for_layout }}
+    </main>
+
+    <footer>
+      {% sections 'footer-group' %}
+    </footer>
+
+    {% render 'search-modal' %}
+
+    {% if settings.quick_add or settings.mobile_quick_add %}
+      {% render 'quick-add-modal' %}
+    {% endif %}
+
+    <!-- ============================================ -->
+    <!-- LuxeStyle DSGVO Cookie Banner (Markenfarben) -->
+    <!-- ============================================ -->
+    <div id="lx-cookie-banner" style="display:none;position:fixed;bottom:16px;left:16px;right:16px;max-width:560px;margin:0 auto;background:#faf7f2;color:#2c2c2c;padding:16px 20px;border:1px solid #d4b89680;border-radius:10px;box-shadow:0 8px 30px rgba(44,44,44,.18);z-index:99999;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+        <p style="flex:1;min-width:220px;margin:0;font-size:13px;line-height:1.5;color:#2c2c2ccf">🍪 Wir nutzen Cookies für das beste Einkaufserlebnis. Mehr in der <a href="/pages/cookie-richtlinie" style="color:#8b7355;text-decoration:underline">Cookie-Richtlinie</a>.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button onclick="lxCookieDecline()" style="background:transparent;border:1px solid #2c2c2c;color:#2c2c2c;padding:9px 16px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500">Nur notwendige</button>
+          <button onclick="lxCookieAccept()" style="background:#2c2c2c;border:none;color:#faf7f2;padding:9px 20px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600">Alle akzeptieren</button>
+        </div>
+      </div>
+    </div>
+    <script>
+    (function(){
+      var KEY="lx_cookie_consent_v1";
+      var banner=document.getElementById("lx-cookie-banner");
+      if(!localStorage.getItem(KEY)){
+        setTimeout(function(){banner.style.display="block"},800);
+      }
+      window.lxCookieAccept=function(){
+        localStorage.setItem(KEY,JSON.stringify({choice:"all",date:new Date().toISOString()}));
+        banner.style.display="none";
+        window.dispatchEvent(new CustomEvent("lx-consent-granted"));
+      };
+      window.lxCookieDecline=function(){
+        localStorage.setItem(KEY,JSON.stringify({choice:"necessary",date:new Date().toISOString()}));
+        banner.style.display="none";
+      };
+      window.lxCookieReset=function(){
+        localStorage.removeItem(KEY);
+        location.reload();
+      };
+    })();
+    </script>
+    <script>(function(){var TIKTOK_PIXEL_ID="D85BAGJC77UF23S9UDH0";var KEY="lx_cookie_consent_v1";function loadTikTokPixel(){if(window.ttq||TIKTOK_PIXEL_ID==="HIER_DEINE_PIXEL_ID_EINTRAGEN")return;!function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){var e=ttq._i[t]||[];for(var n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=r;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript";o.async=!0;o.src=r+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};ttq.load(TIKTOK_PIXEL_ID);ttq.page();}(window,document,'ttq');}var saved=localStorage.getItem(KEY);if(saved){try{if(JSON.parse(saved).choice==="all")loadTikTokPixel();}catch(e){}}window.addEventListener("lx-consent-granted",loadTikTokPixel);})();</script>
+  </body>
+</html>

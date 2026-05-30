@@ -107,3 +107,24 @@ Damit gehen Markenfarben (Creme/Anthrazit/Gold), sauberer Hero + Button alle gle
 
 Optional danach im Theme-Editor: Hero-Bild gegen `hero-sommer-palmblatt.jpg` tauschen
 (aktuell `pexels-photo-417173.jpg`).
+
+---
+
+## 🟢 UPDATE 2 (2026-05-30) — Alle 3 Theme-Aufgaben AUTONOM erledigt
+
+Über themeFilesUpsert (unpublished Theme) alle drei Punkte am „Horizon · LuxeStyle Branded":
+
+1. ✅ **Hero-Bild umgestellt.** `hero-sommer-palmblatt.jpg` nach Shopify hochgeladen
+   (stagedUploadsCreate → fileCreate, READY auf CDN, 6240×4160) und im Hero referenziert
+   (`shopify://shop_images/hero-sommer-palmblatt.jpg`, vorher pexels-photo-417173.jpg).
+2. ✅ **Cookie-Banner entschärft.** War dunkel `#0e0e1c` + lila Gradient → jetzt Markenfarben
+   (Creme `#faf7f2`, Anthrazit `#2c2c2c`, Gold-Link `#8b7355`), kompakter (max 560px, abgerundet).
+   TikTok-Pixel-Consent-Logik 1:1 erhalten.
+3. ✅ **theme.liquid repariert.** Altes File hatte kaputtes Markup (Zeilennummern im HTML,
+   `</body>` vor Footer, `>)}>)}}})`-Schrott). Sauber neu strukturiert, balanciert validiert.
+
+Backups: `dropship/assets/theme-index-branded.json`, `theme-layout-branded.liquid`.
+
+### 🔴 EINZIGER Schritt für Allen (1 Klick):
+**„Horizon · LuxeStyle Branded" veröffentlichen** (Admin → Themes → Veröffentlichen).
+Dann gehen Markenfarben + neuer Sommer-Hero + Sommer-CTA + heller Cookie-Banner GLEICHZEITIG live.
