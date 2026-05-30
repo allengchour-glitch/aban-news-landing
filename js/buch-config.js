@@ -10,6 +10,6 @@
 // Leer lassen ("") -> Button verweist sauber auf den Newsletter (kein toter Link).
 // ============================================================
 window.ABAN_BUCH = {
-  BUY_URL: "",
+  BUY_URL: "https://abannews.lemonsqueezy.com/checkout/buy/14737f89-fd05-4844-b3fb-cea273341898",
   KDP_URL: ""
 };
