@@ -63,7 +63,19 @@ Auto-Build: [`../.github/workflows/tools-radar-build.yml`](../.github/workflows/
 - `BASE_URL` in `generate.py` auf die echte Domain setzen.
 - Deployment-Step im Workflow aktivieren (Cloudflare Pages / GitHub Pages).
 
+## Mehrsprachig (11 Sprachen)
+
+Die Seite wird in **11 Sprachen** generiert: Deutsch (Root), Englisch, Französisch,
+Spanisch, Italienisch, Portugiesisch, Niederländisch, Polnisch, Türkisch, Japanisch,
+Chinesisch — mit `hreflang`-Tags, Sprachumschalter und sprachübergreifender Sitemap.
+Pro Tool gibt es übersetzte Notizen + **Pro/Contra („Rat & Kritik")**.
+
+- UI-Strings + Tool-Übersetzungen: `lang/<code>.json` (eine Datei pro Sprache)
+- Deutsches Pro/Contra: `content/critique.de.json`
+- Neue Sprache hinzufügen: Code in `LANGUAGES` (generate.py) ergänzen + `lang/<code>.json` anlegen.
+
 ## Status
 
-🟢 Generator + Auto-Build laufen (177 Seiten aus 143 Tools + 33 Kategorien).
+🟢 Generator + Auto-Build laufen — **1.947 Seiten** (143 Tools × 11 Sprachen + Kategorien).
+🟢 SEO: JSON-LD (Rich Snippets), sitemap.xml, robots.txt, hreflang.
 🟡 Offen: Affiliate-Programme beantragen + Links eintragen, Domain + Deployment, Newsletter-Teaser.
