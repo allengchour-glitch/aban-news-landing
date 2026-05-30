@@ -4,1353 +4,238 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KI-Newsletter für DACH – tägliche AI-News in 5 Minuten | aban news</title>
-  <meta name="description" content="Der erste tägliche deutschsprachige AI-Newsletter. Mo–Fr morgens 3-5 Min: KI-News, Tool des Tages, sofort umsetzbarer Prompt. Persönlich kuratiert, kein Marketing-Sprech. DSGVO-konform.">
+  <meta name="description" content="Die wichtigsten KI-Updates für DACH-Profis – jeden Morgen in 5 Minuten. Mo–Fr, kein Hype. News, ein getestetes Tool, ein Prompt. DSGVO-konform.">
   <meta name="theme-color" content="#d97706">
-  <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://abannews.com/">
-
-  <!-- hreflang -->
-  <link rel="alternate" hreflang="de" href="https://abannews.com/" />
-  <link rel="alternate" hreflang="en" href="https://abannews.com/en/" />
-  <link rel="alternate" hreflang="x-default" href="https://abannews.com/" />
-
-  <!-- Open Graph -->
   <meta property="og:title" content="aban news — Täglicher AI-Newsletter für DACH">
-  <meta property="og:description" content="Mo–Fr morgens 3-5 Min: KI-News, Tool des Tages, sofort umsetzbarer Prompt. Kein Hype, persönlich kuratiert.">
+  <meta property="og:description" content="Die wichtigsten KI-Updates für DACH-Profis – jeden Morgen in 5 Minuten. Kein Hype.">
   <meta property="og:image" content="https://abannews.com/og-image.svg">
-  <meta property="og:image:type" content="image/svg+xml">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://abannews.com/">
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="de_DE">
-  <meta property="og:site_name" content="aban news">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="aban news — Täglicher AI-Newsletter für DACH">
-  <meta name="twitter:description" content="Mo–Fr morgens 3-5 Min: KI-News, Tool des Tages, ein Prompt. Kein Hype.">
-  <meta name="twitter:image" content="https://abannews.com/og-image.svg">
-
-  <!-- Favicon: SVG mit Light/Dark-Variante via prefers-color-scheme im File -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="alternate icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
-
-  <!-- Performance: preconnect to beehiiv (form action target) -->
-  <link rel="preconnect" href="https://api.beehiiv.com" crossorigin>
-  <link rel="dns-prefetch" href="https://api.beehiiv.com">
-
-  <!-- Critical CSS: inline above-the-fold (Hero) for first-paint -->
-  <style id="critical-css">
-    :root{--c-bg:#fffbf5;--c-bg-alt:#fef3c7;--c-text:#1f2937;--c-muted:#6b7280;--c-accent:#d97706;--c-accent-hi:#b45309;--c-border:#e5e7eb;--c-card:#fff}
-    *,*::before,*::after{box-sizing:border-box}
-    html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.6;color:var(--c-text);background:var(--c-bg);-webkit-font-smoothing:antialiased}
-    img,svg{max-width:100%;height:auto;display:block}
-    .skip{position:absolute;top:-40px;left:0;background:var(--c-text);color:#fff;padding:.5rem .75rem;z-index:100;text-decoration:none}
-    .skip:focus{top:0}
-    .wrap{width:100%;max-width:760px;margin:0 auto;padding:0 1rem}
-    .wrap--wide{max-width:980px}
-    .site-header{background:var(--c-bg);border-bottom:1px solid var(--c-border);position:sticky;top:0;z-index:50}
-    .site-header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:.75rem;padding-bottom:.75rem;max-width:980px}
-    .brand{display:inline-flex;align-items:center;gap:.5rem;color:var(--c-text);text-decoration:none;font-weight:700;font-size:1.125rem}
-    .hero{padding:2rem 0 3rem;background:linear-gradient(180deg,#fffbf5 0%,#fef3c7 100%)}
-    .hero-headline{font-size:clamp(1.75rem,4.2vw,2.625rem);line-height:1.15;margin:0 0 1rem;font-weight:800;letter-spacing:-0.02em}
-    .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#d97706,#b45309);z-index:200;pointer-events:none;transition:width 80ms linear}
-  </style>
-
-  <!-- Preload main CSS — render-blocking for visual consistency (already small) -->
-  <link rel="stylesheet" href="css/styles.css">
-
-  <!-- Layout-Tweaks (ChatGPT Layout-Review 2026-05-30): laedt nach styles.css → gewinnt -->
-  <style id="layout-tweaks">
-    /* FIX 3: H1 dominanter ggue. Lead */
-    .hero-headline{font-size:clamp(2.1rem,5.4vw,3.3rem);line-height:1.06;letter-spacing:-0.025em}
-    /* FIX 8: Lead-Zeilenbreite begrenzen (sonst wirkt Text endlos) */
-    .lead{max-width:60ch}
-    /* FIX 4: Hero-CTA als visuelle Unit (Container-Effekt) */
-    .hero .subscribe{background:#fff;padding:1.15rem 1.2rem;border-radius:16px;border:1px solid var(--c-border);box-shadow:0 14px 34px rgba(31,41,55,.12);margin-top:1.4rem}
-    /* Gemini-Fix (6): Mobile — lange Probe-Ausgabe direkt nach Hero nicht den CTA wegdruecken lassen */
-    @media(max-width:768px){.mail-frame{max-height:62vh;overflow-y:auto;-webkit-overflow-scrolling:touch}}
-  </style>
-
-  <!-- Strukturierte Daten (Schema.org Newsletter) -->
+  <link rel="preconnect" href="https://abannews.beehiiv.com" crossorigin>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "aban news",
-    "url": "https://abannews.com/",
-    "description": "Der erste tägliche deutschsprachige AI-Newsletter für DACH-Solopreneure und Marketer.",
-    "publisher": {
-      "@type": "Person",
-      "name": "Aban (Allen Chour)",
-      "url": "https://abannews.com/"
-    },
-    "potentialAction": {
-      "@type": "SubscribeAction",
-      "target": "https://abannews.com/#signup"
-    },
-    "inLanguage": "de-DE"
-  }
+  {"@context":"https://schema.org","@type":"WebSite","name":"aban news","url":"https://abannews.com/","description":"Täglicher deutschsprachiger AI-Newsletter für DACH-Profis.","inLanguage":"de-DE"}
   </script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    :root{
+      --bg:#fffaf2;--card:#ffffff;--ink:#1c2530;--muted:#6b7280;--line:#ece6db;
+      --amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ok:#0f9d6b;
+      --shadow:0 18px 50px rgba(28,37,48,.12);--shadow-sm:0 6px 18px rgba(28,37,48,.08);
+      --r:18px;
+    }
+    html{-webkit-text-size-adjust:100%}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      color:var(--ink);background:radial-gradient(1200px 600px at 85% -10%,var(--cream),transparent 60%),var(--bg);
+      line-height:1.5;-webkit-font-smoothing:antialiased}
+    img,svg{max-width:100%;display:block}
+    a{color:inherit}
+    .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 1.25rem}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:30;background:rgba(255,250,242,.82);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+    .brand{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.15rem;text-decoration:none}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px var(--amber-lt)}
+    .hnav{display:flex;align-items:center;gap:1.25rem;font-size:.92rem}
+    .hnav a{color:var(--muted);text-decoration:none}
+    .hnav a:hover{color:var(--ink)}
+    .btn{display:inline-flex;align-items:center;gap:.45rem;border:0;border-radius:12px;cursor:pointer;
+      font-weight:700;font-size:1rem;padding:.8rem 1.15rem;background:var(--amber);color:#fff;text-decoration:none;
+      box-shadow:0 8px 20px rgba(217,119,6,.28);transition:transform .12s ease,box-shadow .12s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(217,119,6,.34)}
+    .btn--sm{padding:.5rem .85rem;font-size:.9rem;border-radius:10px}
+    .btn--ghost{background:transparent;color:var(--amber-dk);box-shadow:none;border:1px solid var(--line)}
+
+    /* Hero */
+    .hero{padding:clamp(1.5rem,4vw,3rem) 0 1.5rem}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+    .chip-status{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--amber-dk);
+      background:var(--amber-lt);border:1px solid #f6d9ad;padding:.35rem .7rem;border-radius:999px;font-weight:600}
+    .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(15,157,107,.5);animation:p 2s infinite}
+    @keyframes p{0%{box-shadow:0 0 0 0 rgba(15,157,107,.45)}70%{box-shadow:0 0 0 7px rgba(15,157,107,0)}100%{box-shadow:0 0 0 0 rgba(15,157,107,0)}}
+    h1{font-size:clamp(2rem,4.6vw,3.25rem);line-height:1.05;letter-spacing:-.025em;margin:.9rem 0 .6rem;font-weight:800}
+    .lead{font-size:clamp(1rem,1.3vw,1.12rem);color:#3b4654;max-width:34ch;margin:0 0 1rem}
+    .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.15rem}
+    .chip{display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1px solid var(--line);
+      border-radius:999px;padding:.4rem .8rem;font-size:.86rem;font-weight:600;box-shadow:var(--shadow-sm)}
+
+    /* CTA card */
+    .cta{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem;box-shadow:var(--shadow);max-width:440px}
+    .row{display:flex;gap:.5rem}
+    .row input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:.85rem .9rem;font-size:1rem;background:#fff}
+    .row input:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:var(--amber)}
+    .anchor{font-size:.82rem;color:var(--muted);margin:.6rem 0 0;line-height:1.45}
+    .consent{display:flex;gap:.5rem;align-items:flex-start;margin:.6rem 0 0;font-size:.78rem;color:var(--muted)}
+    .consent input{margin-top:.15rem}
+    .trust{display:flex;flex-wrap:wrap;gap:.5rem 1rem;margin:.75rem 0 0;padding:.7rem 0 0;border-top:1px dashed var(--line);font-size:.78rem;color:var(--muted)}
+    .trust b{color:var(--ink)}
+
+    /* Preview switcher (auto) */
+    .preview{position:relative}
+    .mail{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+    .mail-bar{display:flex;align-items:center;gap:.45rem;padding:.6rem .9rem;background:#f5f2ec;border-bottom:1px solid var(--line)}
+    .tl{width:11px;height:11px;border-radius:50%}.tl.r{background:#ef4444}.tl.y{background:#f59e0b}.tl.g{background:#10b981}
+    .mail-meta{margin-left:.4rem;font-size:.78rem;color:var(--muted)}
+    .mail-body{padding:1rem 1.15rem 1.15rem}
+    .from{font-size:.8rem;color:var(--muted);margin-bottom:.5rem}
+    .from b{color:var(--ink)}
+    .subj{font-weight:800;font-size:1.05rem;margin:.1rem 0 .7rem;letter-spacing:-.01em}
+    .slug{font-size:.78rem;color:var(--amber-dk);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+    .news{list-style:none;margin:.5rem 0 0;padding:0}
+    .news li{display:flex;gap:.55rem;padding:.4rem 0;font-size:.92rem;border-bottom:1px solid var(--line)}
+    .news li:last-child{border-bottom:0}
+    .news .mk{color:var(--amber)}
+    .signoff{font-style:italic;color:var(--muted);font-size:.85rem;margin:.7rem 0 0}
+    .switch{display:flex;align-items:center;justify-content:center;gap:.5rem;margin:.8rem 0 0}
+    .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:.35rem .8rem;font-size:.82rem;font-weight:700;
+      color:var(--muted);cursor:pointer;transition:.15s}
+    .tab[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .fade{animation:fade .5s ease}
+    @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+    /* Below-fold compact strip */
+    .strip{margin-top:1.5rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);
+      display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+    .step{padding:1.1rem 1.25rem;border-right:1px solid var(--line)}
+    .step:last-child{border-right:0}
+    .step h3{margin:.1rem 0 .25rem;font-size:1rem}
+    .step p{margin:0;font-size:.88rem;color:var(--muted)}
+    .step .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--amber-lt);color:var(--amber-dk);font-weight:800;font-size:.85rem}
+
+    .honest{margin-top:1rem;text-align:center;font-size:.9rem;color:var(--muted)}
+    .honest b{color:var(--ink)}
+
+    footer{margin-top:2rem;border-top:1px solid var(--line);background:rgba(255,255,255,.5)}
+    footer .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:center;justify-content:center;padding:1.1rem 1.25rem;font-size:.82rem;color:var(--muted)}
+    footer a{text-decoration:none;color:var(--muted)}footer a:hover{color:var(--ink)}
+
+    @media(max-width:860px){
+      .hero-grid{grid-template-columns:1fr;gap:1.5rem}
+      .lead{max-width:none}
+      .preview{order:2}
+      .mail{max-height:54vh;overflow:auto;-webkit-overflow-scrolling:touch}
+      .strip{grid-template-columns:1fr}
+      .step{border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}
+      .hnav .lk{display:none}
+    }
+  </style>
 </head>
 <body>
-
-<!-- Scroll-progress indicator (3px bar, top of page) -->
-<div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Scroll-Fortschritt" aria-hidden="true"></div>
-
-<a href="#main" class="skip">Zum Hauptinhalt springen</a>
-
-<header class="site-header">
+<header>
   <div class="wrap">
-    <a href="/" class="brand" aria-label="aban news Startseite">
-      <span aria-hidden="true">☕</span>
-      <span>aban news</span>
-    </a>
-    <nav class="nav" aria-label="Hauptnavigation">
-      <a href="/sponsoring.html">Werbung</a>
-      <a href="/founding.html">Premium</a>
-      <a href="/en/" class="lang-switch" hreflang="en" aria-label="Read in English">🇬🇧 EN</a>
-      <a href="#signup" class="nav-cta">Abonnieren</a>
+    <a href="/" class="brand"><span class="dot"></span> aban news</a>
+    <nav class="hnav">
+      <a href="/preview.html" class="lk">Beispiel</a>
+      <a href="/founding.html" class="lk">Premium</a>
+      <a href="#signup" class="btn btn--sm">Abonnieren</a>
     </nav>
   </div>
 </header>
 
-<main id="main">
-
-  <!-- ============================================
-       HERO — 2-spaltig: Content links, SVG-Illustration rechts (Desktop)
-       Mobile: SVG oben (kleiner), Content drunter
-       ============================================ -->
+<main>
   <section class="hero">
-    <div class="wrap wrap--wide hero-grid">
-
-      <div class="hero-content reveal">
-
-        <span class="identity-count" aria-label="Status">
-          <span class="dot" aria-hidden="true"></span>
-          <span><strong>Mo–Fr neu</strong> · in der Schweiz geschrieben, im DACH-Raum gelesen</span>
-        </span>
-
-        <p class="live-counter" aria-live="polite">
-          <span class="dot-live" aria-hidden="true"></span>
-          <span>Kuratiert von <strong>Aban</strong> — Solopreneur in der Schweiz, seit 3 Jahren täglich mit KI</span>
-        </p>
-
-        <h1 class="hero-headline">Die wichtigsten KI-Updates für DACH-Profis — jeden Morgen in 5 Minuten.</h1>
-
-        <p class="lead">
-          Während andere durch KI-Twitter doomscrollen, bekommst du morgens nur das Relevante: In 5 Minuten weißt du, welche KI-Entwicklung heute zählt — und welche du ignorieren kannst. Für Agenturinhaber, Consultants und Marketing-Teams im DACH-Raum.
-        </p>
-
-        <ul class="promise" role="list">
-          <li>Die 3–5 News, die heute zählen — mit klarer Einschätzung</li>
-          <li>Ein Tool, das dich produktiver macht — ehrlich getestet</li>
-          <li>Ein Prompt, den du sofort im Job einsetzt</li>
-          <li>In 5 Minuten durch — vor dem ersten Meeting</li>
-        </ul>
-
-        <form
-          class="subscribe"
-          id="signup"
-          action="https://abannews.beehiiv.com/subscribe"
-          method="get"
-          novalidate
-        >
-          <label for="hero-email" class="visually-hidden" style="position:absolute;left:-9999px;">E-Mail-Adresse</label>
-          <div class="subscribe-row">
-            <input
-              type="email"
-              id="hero-email"
-              name="email"
-              placeholder="deine@mail.de"
-              required
-              autocomplete="email"
-              inputmode="email"
-              aria-label="E-Mail-Adresse"
-            >
-            <button type="submit" class="btn-pulse">
-              <span>5-Min-KI-Briefing gratis</span>
-              <span aria-hidden="true">→</span>
-            </button>
+    <div class="wrap hero-grid">
+      <!-- LEFT -->
+      <div>
+        <span class="chip-status"><span class="pulse"></span> Mo–Fr · kuratiert von Aban in der Schweiz</span>
+        <h1>Die wichtigsten KI-Updates für DACH-Profis — jeden Morgen in 5&nbsp;Minuten.</h1>
+        <p class="lead">Kein Hype, keine PR. Du weißt morgens in 5 Minuten, was zählt — und was du ignorieren kannst.</p>
+        <div class="chips">
+          <span class="chip">📰 3–5 News</span>
+          <span class="chip">🛠 1 getestetes Tool</span>
+          <span class="chip">💡 1 Prompt</span>
+        </div>
+        <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
+          <div class="row">
+            <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">
+            <button type="submit" class="btn">5-Min-Briefing gratis →</button>
           </div>
-          <p class="expect-anchor" style="margin:.6rem 0 0;font-size:.875rem;color:var(--c-muted);line-height:1.45;">
-            Jeden Werktag um 7:30 Uhr · 1 Tool + 3 relevante KI-Updates · kein Spam, kein Affiliate-Müll.
-          </p>
-          <div class="consent-row">
-            <input type="checkbox" id="hero-consent" name="consent" value="1" required>
-            <label for="hero-consent">
-              Ich willige ein, Mo–Fr eine E-Mail von aban news zu erhalten. Abmeldung jederzeit per Klick. Details in der <a href="/datenschutz.html">Datenschutzerklärung</a>.
-            </label>
-          </div>
-          <ul class="trust" aria-label="Vertrauen">
-            <li>DSGVO-konform</li>
-            <li>1-Klick-Abmeldung</li>
-            <li>kein Spam, nie</li>
-            <li>kein Tracking-Pixel</li>
-          </ul>
+          <p class="anchor">Jeden Werktag 7:30 Uhr · 1 Tool + 3 relevante Updates · kein Spam, kein Affiliate-Müll.</p>
+          <label class="consent"><input type="checkbox" name="consent" value="1" required>
+            <span>Ich willige ein, Mo–Fr eine E-Mail zu erhalten. Abmeldung jederzeit per Klick. <a href="/datenschutz.html">Datenschutz</a>.</span></label>
+          <div class="trust"><span><b>DSGVO</b>-konform</span><span><b>1-Klick</b>-Abmeldung</span><span>kein Tracking-Pixel</span></div>
         </form>
-
       </div>
 
-      <!-- Hero Visual: Coffee + Steam-in-Form-eines-N + Mail-Icon, inline SVG <5KB -->
-      <div class="hero-visual reveal" aria-hidden="true">
-        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kaffeetasse mit Newsletter-Dampf">
-          <defs>
-            <linearGradient id="hero-cup" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#fbbf24"/>
-              <stop offset="1" stop-color="#d97706"/>
-            </linearGradient>
-            <linearGradient id="hero-mail" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#ffffff"/>
-              <stop offset="1" stop-color="#fef3c7"/>
-            </linearGradient>
-            <radialGradient id="hero-glow" cx="0.5" cy="0.5" r="0.5">
-              <stop offset="0" stop-color="#fde68a" stop-opacity="0.6"/>
-              <stop offset="1" stop-color="#fde68a" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-
-          <!-- Soft amber glow -->
-          <circle cx="200" cy="220" r="180" fill="url(#hero-glow)"/>
-
-          <!-- Steam in "N" shape (Newsletter) -->
-          <g class="hero-steam" stroke="#d97706" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
-            <path d="M110 130 L110 50"/>
-            <path d="M110 50 L170 130"/>
-            <path d="M170 130 L170 50"/>
-          </g>
-          <!-- Secondary wispy steam -->
-          <g stroke="#d97706" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.35">
-            <path d="M210 100 C 220 80, 200 70, 215 50"/>
-            <path d="M85 110 C 75 90, 95 80, 80 60"/>
-          </g>
-
-          <!-- Saucer shadow -->
-          <ellipse cx="150" cy="335" rx="115" ry="10" fill="#1f2937" opacity="0.12"/>
-
-          <!-- Cup body -->
-          <path d="M65 170 L65 290 Q65 330 110 330 L190 330 Q235 330 235 290 L235 170 Z" fill="url(#hero-cup)"/>
-          <!-- Cup rim -->
-          <ellipse cx="150" cy="170" rx="85" ry="12" fill="#b45309"/>
-          <ellipse cx="150" cy="170" rx="74" ry="7" fill="#1f2937" opacity="0.4"/>
-          <!-- Handle -->
-          <path d="M235 200 Q285 200 285 245 Q285 290 235 290" stroke="#d97706" stroke-width="18" fill="none" stroke-linecap="round"/>
-
-          <!-- Mail envelope (top-right) -->
-          <g transform="translate(265 90) rotate(8)">
-            <rect x="0" y="0" width="110" height="75" rx="8" fill="url(#hero-mail)" stroke="#d97706" stroke-width="3"/>
-            <path d="M0 0 L55 42 L110 0" stroke="#d97706" stroke-width="3" fill="none" stroke-linejoin="round"/>
-            <!-- Notification dot -->
-            <circle cx="105" cy="6" r="11" fill="#dc2626"/>
-            <text x="105" y="11" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff">1</text>
-          </g>
-
-          <!-- Tiny coffee bean accents -->
-          <g fill="#b45309" opacity="0.6">
-            <ellipse cx="30" cy="350" rx="9" ry="5" transform="rotate(-30 30 350)"/>
-            <ellipse cx="370" cy="340" rx="9" ry="5" transform="rotate(25 370 340)"/>
-            <path d="M30 350 Q30 348 30 352" stroke="#fffbf5" stroke-width="1" fill="none"/>
-          </g>
-        </svg>
-
-        <!-- Newsletter Preview Mockup (Inbox-Card unter dem Visual) -->
-        <div class="mockup" role="img" aria-label="Vorschau: aban news Newsletter-Mail">
-          <div class="mockup-header">
-            <span class="mockup-dot mockup-dot--r"></span>
-            <span class="mockup-dot mockup-dot--y"></span>
-            <span class="mockup-dot mockup-dot--g"></span>
-            <span class="mockup-title">📧 aban news · Mi 27. Mai · 4 Min Lesezeit</span>
-          </div>
-          <div class="mockup-body">
-            <div class="mockup-from">Von <strong>Aban</strong> &lt;hallo@abannews.com&gt;</div>
-            <div class="mockup-subj">☕ China zieht den Vorhang zu, DeepSeek dreht am Preis</div>
-            <div class="mockup-text">
-              <strong>Mittwoch, halb durch.</strong> Heute drei News, die mich tatsächlich was angehen — der Rest aus den Feeds ist Branchen-Geplauder, das ich für dich aussortiert hab…
-            </div>
-            <div class="mockup-section">📰 DeepSeek viertelt die Preise für V4-Pro</div>
-            <div class="mockup-text mockup-text--small">
-              Das chinesische Startup hat sein Top-Modell dauerhaft auf 25 % gesenkt. <span class="mockup-link">Quelle →</span>
-            </div>
-            <div class="mockup-section">🛠 Tool des Tages: eustella (Wien)</div>
-            <div class="mockup-text mockup-text--small">
-              AI-Companion aus Wien — EU-Hosting, DSGVO-nativ. Open Beta, gratis.
-            </div>
-            <div class="mockup-signoff">— Aban</div>
+      <!-- RIGHT: auto-switching preview -->
+      <div class="preview">
+        <div class="mail">
+          <div class="mail-bar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
+            <span class="mail-meta" id="mMeta">📥 Posteingang · aban news</span></div>
+          <div class="mail-body">
+            <div class="from">Von <b>Aban</b> &lt;hallo@abannews.com&gt;</div>
+            <div class="subj" id="mSubj">…</div>
+            <div class="slug" id="mSlug">Was heute zählt</div>
+            <ul class="news" id="mNews"></ul>
+            <p class="signoff">— Aban</p>
           </div>
         </div>
+        <div class="switch" id="tabs" role="tablist" aria-label="Beispiel-Ausgaben">
+          <button class="tab" role="tab" data-i="0">Mo</button>
+          <button class="tab" role="tab" data-i="1">Mi</button>
+          <button class="tab" role="tab" data-i="2">Fr</button>
+        </div>
       </div>
-
     </div>
-  </section>
 
-  <!-- ============================================
-       SECTION DIVIDER — Subtle SVG-Wave (cream tone)
-       ============================================ -->
-  <div class="wave-divider" aria-hidden="true">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,30 C200,55 400,5 600,30 C800,55 1000,5 1200,30 L1200,60 L0,60 Z" fill="#fef3c7"/>
-    </svg>
-  </div>
-
-  <!-- ============================================
-       SAMPLE-ISSUE PREVIEW — direkt nach Hero (ChatGPT Layout-FIX 7: Produkt vor Erklaerung)
-       ============================================ -->
-  <section class="alt reveal">
+    <!-- compact below-fold strip -->
     <div class="wrap">
-      <h2 class="center">So sieht ein Mittwoch aus</h2>
-      <p class="center muted">Echter Auszug aus der Probe-Ausgabe vom 2026-05-27 — gekürzt für die Web-Vorschau.</p>
-
-      <div class="mail-frame" style="max-width:660px;margin:1.5rem auto 0;border:1px solid var(--c-border);border-radius:14px;overflow:hidden;box-shadow:0 12px 32px rgba(31,41,55,.12);background:#fff;">
-        <div style="display:flex;align-items:center;gap:.5rem;padding:.65rem .95rem;background:#f3f4f6;border-bottom:1px solid var(--c-border);">
-          <span style="width:11px;height:11px;border-radius:50%;background:#ef4444;display:inline-block;"></span>
-          <span style="width:11px;height:11px;border-radius:50%;background:#f59e0b;display:inline-block;"></span>
-          <span style="width:11px;height:11px;border-radius:50%;background:#10b981;display:inline-block;"></span>
-          <span style="margin-left:.5rem;font-size:.8rem;color:#6b7280;">📥 Posteingang · aban news · Mi 27. Mai · 4 Min</span>
-        </div>
-      <article class="preview" aria-label="Beispiel-Newsletter-Ausgabe" style="margin:0;border:0;border-radius:0;box-shadow:none;padding:1.25rem 1.4rem .4rem;">
-        <div class="preview-meta">
-          <strong>Von:</strong> Aban &lt;hallo@abannews.com&gt;<br>
-          <strong>An:</strong> dich@beispiel.de<br>
-          <strong>Betreff:</strong> ☕ China zieht den Vorhang zu, DeepSeek dreht am Preis
-        </div>
-
-        <p><strong>Mittwoch, halb durch.</strong> Heute drei News, die mich tatsächlich was angehen — der Rest aus den Feeds ist Branchen-Geplauder, das ich für dich aussortiert hab. Schwerpunkt: Preise, Privacy, und ein DACH-Tool, das ich diese Woche selbst antesten werd.</p>
-
-        <h4>📰 Was heute zählt</h4>
-
-        <p><strong>DeepSeek viertelt die Preise für V4-Pro (2 Min)</strong></p>
-        <p>Das chinesische Startup hat sein Top-Modell V4-Pro dauerhaft auf 25 % des bisherigen Preises gesenkt. Möglich macht das laut Trending Topics der Wechsel von Nvidia-GPUs auf Huawei Ascend 950 in der Inference-Infrastruktur — kein Sale, sondern strukturell.</p>
-        <p><strong>Für dich heißt das:</strong> Wenn du für Bulk-Tasks (Klassifizierung, Summary-Pipelines) einen Anbieter neben OpenAI/Anthropic hast, lohnt sich ein A/B-Test diese Woche. Bei meiner eigenen Newsletter-Pipeline rechne ich nach Caching mit Anthropic immer noch günstiger, aber für Pre-Processing könnte DeepSeek interessant werden.</p>
-
-        <h4>🛠 Tool des Tages</h4>
-
-        <p><strong>eustella</strong> — Open Beta gratis, Pro-Tier 14 €/Monat</p>
-        <p>Ein AI-Companion aus Wien — EU-Hosting, DSGVO-nativ, kein US-Datentransfer. Kann jetzt auch Bilder (via FLUX.2) und läuft auf Browser, Android, iPhone synchron. Ich nutz das diese Woche parallel zu Claude und vergleich Output-Qualität auf deutschsprachige Tasks.</p>
-        <p><em>Wer's nicht braucht:</em> wenn du eh schon Claude oder ChatGPT zahlst und das Daten-Thema dich nicht juckt — kein Killer-Feature, das dich migrieren muss.</p>
-
-        <h4>💡 Heute ausprobieren</h4>
-
-        <p>Wenn du Cold-Outreach machst, häng diesen Mini-Prompt an deinen Standard-Email-Workflow:</p>
-        <pre><code>Hier ist ein Cold-Outreach-Mail-Entwurf von mir an [Empfänger].
-Mach NICHT die typische KI-Politur. Stattdessen:
-
-1. Lies den Text und finde die EINE Stelle, die generisch klingt.
-2. Schreib NUR diese eine Stelle um — so wie ich es im echten
-   Gespräch sagen würde.
-3. Lass den Rest in Ruhe.
-
-Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
-        <p>Anders als "verbessere meine Mail" — weil's nach EINER chirurgischen Stelle fragt statt nach Komplett-Rewrite, der die Mail wieder generisch macht.</p>
-
-        <p class="signoff">— Aban</p>
-      </article>
+      <div class="strip">
+        <div class="step"><span class="n">1</span><h3>Wir scannen</h3><p>Jede Nacht 5 deutsche AI-Quellen + Reddit. Aus ~200 Posts werden die paar relevanten.</p></div>
+        <div class="step"><span class="n">2</span><h3>Aban schreibt</h3><p>Ich les selbst, sortier Marketing-Blabla raus, schreib mit eigener Einschätzung.</p></div>
+        <div class="step"><span class="n">3</span><h3>Du liest, 5 Min</h3><p>07:30 im Posteingang. Kaffee, durchlesen, eine Sache mitnehmen — fertig vor dem ersten Meeting.</p></div>
       </div>
-
-      <div class="center mt-5">
-        <a href="/preview.html" class="btn btn--ghost">Komplette Probe-Ausgabe lesen</a>
-        <a href="#signup" class="btn btn--lg" style="margin-left:.5rem;">Erste echte Ausgabe per Mail holen</a>
-      </div>
+      <p class="honest"><b>Noch keine Testimonials — und das ist ehrlich so.</b> aban news startet gerade. Keine erfundenen Stimmen, keine Fake-Zahlen. Du bist früh dran und prägst mit.</p>
     </div>
   </section>
-
-  <!-- ============================================
-       3-STEP-FLOW — "So funktioniert's"
-       3 horizontal cards, brand-color SVGs
-       ============================================ -->
-  <section class="how reveal">
-    <div class="wrap wrap--wide">
-      <h2 class="center">So funktioniert's</h2>
-      <p class="center muted">Drei Schritte — von Quelle bis Kaffee-Pause.</p>
-
-      <div class="grid grid--3 how-grid">
-
-        <div class="card how-card">
-          <div class="how-svg" aria-hidden="true">
-            <svg viewBox="0 0 250 200" xmlns="http://www.w3.org/2000/svg">
-              <!-- 5 RSS-feed letter/wave stacks -->
-              <g transform="translate(20 30)">
-                <rect x="0" y="0" width="55" height="40" rx="6" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
-                <path d="M0 0 L27 22 L55 0" stroke="#d97706" stroke-width="2" fill="none"/>
-                <path d="M5 50 Q15 40 25 50" stroke="#fbbf24" stroke-width="2" fill="none" stroke-linecap="round"/>
-                <path d="M5 58 Q15 48 25 58" stroke="#fbbf24" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
-              </g>
-              <g transform="translate(20 95)">
-                <rect x="0" y="0" width="55" height="40" rx="6" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
-                <path d="M0 0 L27 22 L55 0" stroke="#d97706" stroke-width="2" fill="none"/>
-                <circle cx="48" cy="6" r="5" fill="#dc2626"/>
-              </g>
-              <g transform="translate(20 145)" opacity="0.5">
-                <rect x="0" y="0" width="55" height="20" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
-                <line x1="8" y1="8" x2="40" y2="8" stroke="#d97706" stroke-width="1.5"/>
-                <line x1="8" y1="14" x2="32" y2="14" stroke="#d97706" stroke-width="1.5"/>
-              </g>
-              <!-- Arrow -->
-              <g transform="translate(105 95)">
-                <path d="M0 5 L40 5" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
-                <path d="M30 0 L40 5 L30 10" stroke="#1f2937" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              </g>
-              <!-- Filter funnel -->
-              <g transform="translate(165 60)">
-                <path d="M0 0 L70 0 L45 30 L45 70 L25 80 L25 30 Z" fill="#fef3c7" stroke="#d97706" stroke-width="2.5" stroke-linejoin="round"/>
-                <circle cx="35" cy="15" r="2" fill="#b45309"/>
-                <circle cx="50" cy="15" r="2" fill="#b45309"/>
-                <circle cx="20" cy="15" r="2" fill="#b45309" opacity="0.5"/>
-              </g>
-            </svg>
-          </div>
-          <h3>Wir scannen</h3>
-          <p>Jede Nacht durchforstet die Pipeline 5 deutsche AI-Quellen, Twitter-Threads und Reddit. Aus ~200 Posts werden 20 Kandidaten.</p>
-        </div>
-
-        <div class="card how-card">
-          <div class="how-svg" aria-hidden="true">
-            <svg viewBox="0 0 250 200" xmlns="http://www.w3.org/2000/svg">
-              <!-- Desk -->
-              <rect x="20" y="140" width="210" height="8" fill="#b45309"/>
-              <!-- Notebook -->
-              <rect x="55" y="110" width="90" height="32" rx="3" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
-              <line x1="65" y1="120" x2="135" y2="120" stroke="#d97706" stroke-width="1.5"/>
-              <line x1="65" y1="128" x2="125" y2="128" stroke="#d97706" stroke-width="1.5"/>
-              <line x1="65" y1="135" x2="115" y2="135" stroke="#d97706" stroke-width="1.5"/>
-              <!-- Person (head + shoulders behind notebook) -->
-              <circle cx="100" cy="75" r="22" fill="#fed7aa" stroke="#1f2937" stroke-width="2"/>
-              <path d="M85 70 Q90 65 95 70" stroke="#1f2937" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <path d="M105 70 Q110 65 115 70" stroke="#1f2937" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <path d="M93 85 Q100 90 107 85" stroke="#1f2937" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <path d="M75 95 Q100 102 125 95 L130 115 L70 115 Z" fill="#d97706"/>
-              <!-- Coffee cup -->
-              <g transform="translate(160 105)">
-                <path d="M0 0 L0 25 Q0 33 8 33 L22 33 Q30 33 30 25 L30 0 Z" fill="#fbbf24" stroke="#b45309" stroke-width="1.5"/>
-                <ellipse cx="15" cy="0" rx="15" ry="3" fill="#b45309"/>
-                <path d="M30 8 Q40 8 40 18 Q40 28 30 28" stroke="#b45309" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                <!-- Steam -->
-                <path d="M8 -8 Q12 -14 8 -20" stroke="#d97706" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-                <path d="M18 -8 Q22 -14 18 -20" stroke="#d97706" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/>
-              </g>
-              <!-- Brain/AI icons around -->
-              <g transform="translate(30 30)" opacity="0.7">
-                <circle cx="0" cy="0" r="12" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
-                <path d="M-5 -2 Q0 -6 5 -2 M-5 2 Q0 6 5 2" stroke="#d97706" stroke-width="1.5" fill="none"/>
-              </g>
-              <g transform="translate(215 35)" opacity="0.7">
-                <circle cx="0" cy="0" r="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
-                <text x="0" y="3" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="9" font-weight="700" fill="#b45309">AI</text>
-              </g>
-              <g transform="translate(195 75)" opacity="0.6">
-                <circle cx="0" cy="0" r="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
-                <circle cx="0" cy="0" r="3" fill="#d97706"/>
-              </g>
-            </svg>
-          </div>
-          <h3>Aban schreibt</h3>
-          <p>Ich les die Top-Kandidaten selbst, sortier Marketing-Blabla raus und schreib drei News mit eigener Einschätzung — kein Copy-Paste aus Pressemitteilungen.</p>
-        </div>
-
-        <div class="card how-card">
-          <div class="how-svg" aria-hidden="true">
-            <svg viewBox="0 0 250 200" xmlns="http://www.w3.org/2000/svg">
-              <!-- Phone frame -->
-              <rect x="60" y="20" width="100" height="160" rx="14" fill="#1f2937"/>
-              <rect x="66" y="30" width="88" height="140" rx="6" fill="#fffbf5"/>
-              <!-- Phone notch -->
-              <rect x="100" y="24" width="20" height="3" rx="1.5" fill="#4b5563"/>
-              <!-- Newsletter content in phone -->
-              <text x="110" y="45" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#d97706">aban news</text>
-              <line x1="74" y1="50" x2="146" y2="50" stroke="#e5e7eb" stroke-width="1"/>
-              <text x="110" y="62" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="6" fill="#6b7280">Mi · 4 Min</text>
-              <rect x="74" y="70" width="72" height="4" rx="1" fill="#1f2937"/>
-              <rect x="74" y="78" width="64" height="3" rx="1" fill="#9ca3af"/>
-              <rect x="74" y="84" width="68" height="3" rx="1" fill="#9ca3af"/>
-              <rect x="74" y="90" width="50" height="3" rx="1" fill="#9ca3af"/>
-              <rect x="74" y="100" width="50" height="4" rx="1" fill="#d97706"/>
-              <rect x="74" y="108" width="68" height="3" rx="1" fill="#9ca3af"/>
-              <rect x="74" y="114" width="60" height="3" rx="1" fill="#9ca3af"/>
-              <rect x="74" y="124" width="40" height="4" rx="1" fill="#d97706"/>
-              <rect x="74" y="132" width="62" height="3" rx="1" fill="#9ca3af"/>
-              <rect x="74" y="138" width="58" height="3" rx="1" fill="#9ca3af"/>
-              <!-- Phone speaker -->
-              <rect x="105" y="172" width="10" height="2" rx="1" fill="#4b5563"/>
-              <!-- Clock next to phone -->
-              <g transform="translate(195 95)">
-                <circle cx="0" cy="0" r="28" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
-                <text x="0" y="-3" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" font-weight="700" fill="#1f2937">06:30</text>
-                <text x="0" y="10" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="6" fill="#6b7280">morgens</text>
-              </g>
-            </svg>
-          </div>
-          <h3>Du liest, 3–5 Min</h3>
-          <p>06:30 morgens in deinem Posteingang. Kaffee in der Hand, durchlesen, eine Sache mitnehmen — fertig vor dem ersten Meeting.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       STATS BADGES BAR — 4 horizontal badges with SVG-icons
-       ============================================ -->
-  <section class="stats-bar reveal">
-    <div class="wrap wrap--wide">
-      <ul class="stats" role="list">
-        <li class="stat-badge">
-          <span class="stat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="4" x2="8" y2="2"/><line x1="16" y1="4" x2="16" y2="2"/></svg>
-          </span>
-          <strong>Mo–Fr</strong>
-          <span>seit Tag 1</span>
-        </li>
-        <li class="stat-badge">
-          <span class="stat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>
-          </span>
-          <strong>5 Quellen</strong>
-          <span>jede Nacht gescannt</span>
-        </li>
-        <li class="stat-badge">
-          <span class="stat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 6v5c0 5 4 9 9 11 5-2 9-6 9-11V6l-9-4z"/><path d="M9 12l2 2 4-4"/></svg>
-          </span>
-          <strong>100%</strong>
-          <span>DSGVO-konform</span>
-        </li>
-        <li class="stat-badge">
-          <span class="stat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-          </span>
-          <strong>3–5 Min</strong>
-          <span>Lesezeit garantiert</span>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============================================
-       SOCIAL PROOF — 3 Trust-Cards mit SVG-Icons
-       ============================================ -->
-  <section class="alt reveal">
-    <div class="wrap wrap--wide">
-      <h2 class="center">Warum Leute aban news lesen</h2>
-      <p class="center muted">Drei Versprechen, die wir Tag für Tag halten — nachprüfbar.</p>
-
-      <div class="grid grid--3 social-proof">
-        <div class="card sp-card">
-          <span class="sp-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>
-          </span>
-          <h3>100 Founding-Slots</h3>
-          <p>Lebenslang Premium für 149 €. Cap auf 100 — danach läuft Founding aus. Jetzt sichern, bevor die Plätze weg sind.</p>
-          <p class="sp-meta"><a href="/founding.html">→ Founding ansehen</a></p>
-        </div>
-
-        <div class="card sp-card">
-          <span class="sp-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4z"/><path d="M4 4l8 6 8-6"/></svg>
-          </span>
-          <h3>Mo–Fr seit Tag 1</h3>
-          <p>Tägliche Werktags-Mail, ohne Ausnahme. Kein „Sommer-Hiatus", kein „diese Woche keine Zeit". Wenn die Mail nicht kommt — hat aban news ein Problem.</p>
-          <p class="sp-meta">Konsistenz statt Hype</p>
-        </div>
-
-        <div class="card sp-card">
-          <span class="sp-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 6v5c0 5 4 9 9 11 5-2 9-6 9-11V6l-9-4z"/><path d="M9 12l2 2 4-4"/></svg>
-          </span>
-          <h3>DSGVO-konform · CH</h3>
-          <p>Schweizer Einzelunternehmen, EU-konforme Pipeline. 1-Klick-Abmeldung. Kein Tracking-Pixel. AVV auf Anfrage für DACH-Firmen.</p>
-          <p class="sp-meta">Privacy by default</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       SAMPLE-ISSUE GRID — 3 Mini-Phone-Mockups (Mo/Mi/Fr-Styles)
-       ============================================ -->
-  <section class="reveal">
-    <div class="wrap wrap--wide">
-      <h2 class="center">Drei echte Ausgaben — was dich erwartet</h2>
-      <p class="center muted">Montag, Mittwoch, Freitag. Drei Tonalitäten, ein Versprechen: kein Hype, klare Einschätzung.</p>
-
-      <div class="grid grid--3 sample-grid">
-
-        <a href="/preview.html" class="sample-card">
-          <div class="sample-phone" aria-hidden="true">
-            <svg viewBox="0 0 250 320" xmlns="http://www.w3.org/2000/svg" class="phone-svg">
-              <rect x="20" y="10" width="210" height="300" rx="20" fill="#1f2937"/>
-              <rect x="28" y="22" width="194" height="276" rx="10" fill="#fffbf5"/>
-              <rect x="110" y="14" width="30" height="4" rx="2" fill="#4b5563"/>
-              <text x="125" y="42" text-anchor="middle" class="ph-brand">aban news</text>
-              <line x1="40" y1="50" x2="210" y2="50" stroke="#e5e7eb"/>
-              <text x="40" y="65" class="ph-meta">Mo 25.05 · 3 Min</text>
-              <text x="40" y="85" class="ph-title">OpenAI macht's billiger</text>
-              <text x="40" y="98" class="ph-body">Montag, frischer Kaffee.</text>
-              <text x="40" y="110" class="ph-body">GPT-5 Mini ist jetzt 60%</text>
-              <text x="40" y="122" class="ph-body">günstiger — bevor du das</text>
-              <text x="40" y="134" class="ph-body">feierst: Context-Window</text>
-              <text x="40" y="146" class="ph-body">halbiert sich auch.</text>
-              <line x1="40" y1="158" x2="210" y2="158" stroke="#e5e7eb"/>
-              <text x="40" y="175" class="ph-section">📰 Was heute zählt</text>
-              <text x="40" y="190" class="ph-body">• Anthropic-Pricing-Update</text>
-              <text x="40" y="202" class="ph-body">• Mistral Open-Weights</text>
-              <text x="40" y="214" class="ph-body">• Microsoft Copilot-Story</text>
-              <text x="40" y="234" class="ph-section">🛠 Tool des Tages</text>
-              <text x="40" y="248" class="ph-body">LibreChat — selbstgehostet,</text>
-              <text x="40" y="260" class="ph-body">EU-Server, gratis.</text>
-              <line x1="40" y1="272" x2="210" y2="272" stroke="#e5e7eb"/>
-              <text x="125" y="287" text-anchor="middle" class="ph-link">Weiterlesen →</text>
-            </svg>
-          </div>
-          <div class="sample-meta">
-            <span class="sample-day">Montag</span>
-            <span class="sample-time">3 Min</span>
-          </div>
-        </a>
-
-        <a href="/preview.html" class="sample-card">
-          <div class="sample-phone" aria-hidden="true">
-            <svg viewBox="0 0 250 320" xmlns="http://www.w3.org/2000/svg" class="phone-svg">
-              <rect x="20" y="10" width="210" height="300" rx="20" fill="#1f2937"/>
-              <rect x="28" y="22" width="194" height="276" rx="10" fill="#fffbf5"/>
-              <rect x="110" y="14" width="30" height="4" rx="2" fill="#4b5563"/>
-              <text x="125" y="42" text-anchor="middle" class="ph-brand">aban news</text>
-              <line x1="40" y1="50" x2="210" y2="50" stroke="#e5e7eb"/>
-              <text x="40" y="65" class="ph-meta">Mi 27.05 · 4 Min</text>
-              <text x="40" y="85" class="ph-title">Anthropic dreht Sonnet 4.7</text>
-              <text x="40" y="97" class="ph-title">frei</text>
-              <text x="40" y="112" class="ph-body">Mittwoch, halb durch.</text>
-              <text x="40" y="124" class="ph-body">Sonnet 4.7 ist live — ich</text>
-              <text x="40" y="136" class="ph-body">hab's seit gestern und</text>
-              <text x="40" y="148" class="ph-body">teste auf deutschen Texten.</text>
-              <line x1="40" y1="160" x2="210" y2="160" stroke="#e5e7eb"/>
-              <text x="40" y="177" class="ph-section">📰 Was heute zählt</text>
-              <text x="40" y="192" class="ph-body">• Sonnet 4.7 in Claude.ai</text>
-              <text x="40" y="204" class="ph-body">• DeepSeek -75% Preis</text>
-              <text x="40" y="216" class="ph-body">• eustella aus Wien live</text>
-              <text x="40" y="236" class="ph-section">💡 Heute kopieren</text>
-              <text x="40" y="250" class="ph-body">Mini-Prompt für Cold-</text>
-              <text x="40" y="262" class="ph-body">Outreach (5 Zeilen).</text>
-              <line x1="40" y1="272" x2="210" y2="272" stroke="#e5e7eb"/>
-              <text x="125" y="287" text-anchor="middle" class="ph-link">Weiterlesen →</text>
-            </svg>
-          </div>
-          <div class="sample-meta">
-            <span class="sample-day">Mittwoch</span>
-            <span class="sample-time">4 Min</span>
-          </div>
-        </a>
-
-        <a href="/preview.html" class="sample-card">
-          <div class="sample-phone" aria-hidden="true">
-            <svg viewBox="0 0 250 320" xmlns="http://www.w3.org/2000/svg" class="phone-svg">
-              <rect x="20" y="10" width="210" height="300" rx="20" fill="#1f2937"/>
-              <rect x="28" y="22" width="194" height="276" rx="10" fill="#fffbf5"/>
-              <rect x="110" y="14" width="30" height="4" rx="2" fill="#4b5563"/>
-              <text x="125" y="42" text-anchor="middle" class="ph-brand">aban news</text>
-              <line x1="40" y1="50" x2="210" y2="50" stroke="#e5e7eb"/>
-              <text x="40" y="65" class="ph-meta">Fr 29.05 · 5 Min</text>
-              <text x="40" y="85" class="ph-title">Bullshit-Detektor:</text>
-              <text x="40" y="97" class="ph-title">„KI-First-Strategie"</text>
-              <text x="40" y="112" class="ph-body">Freitag, fast Wochenende.</text>
-              <text x="40" y="124" class="ph-body">Diese Woche LinkedIn-</text>
-              <text x="40" y="136" class="ph-body">Buzzword im Härtetest:</text>
-              <text x="40" y="148" class="ph-body">Was steckt wirklich dahinter?</text>
-              <line x1="40" y1="160" x2="210" y2="160" stroke="#e5e7eb"/>
-              <text x="40" y="177" class="ph-section">🚨 Was nicht trägt</text>
-              <text x="40" y="192" class="ph-body">„KI-First" als Strategie ist</text>
-              <text x="40" y="204" class="ph-body">meist eine Ausrede für</text>
-              <text x="40" y="216" class="ph-body">fehlende Strategie.</text>
-              <text x="40" y="236" class="ph-section">📚 Mitnehmen</text>
-              <text x="40" y="250" class="ph-body">3 Fragen, mit denen du</text>
-              <text x="40" y="262" class="ph-body">Hype von Substanz trennst.</text>
-              <line x1="40" y1="272" x2="210" y2="272" stroke="#e5e7eb"/>
-              <text x="125" y="287" text-anchor="middle" class="ph-link">Weiterlesen →</text>
-            </svg>
-          </div>
-          <div class="sample-meta">
-            <span class="sample-day">Freitag</span>
-            <span class="sample-time">5 Min</span>
-          </div>
-        </a>
-
-      </div>
-
-      <p class="center mt-5"><a href="/preview.html" class="btn btn--ghost">Komplette Probe-Ausgabe lesen</a></p>
-    </div>
-  </section>
-
-  <!-- ============================================
-       SECTION DIVIDER
-       ============================================ -->
-  <div class="wave-divider wave-divider--flip" aria-hidden="true">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,30 C200,55 400,5 600,30 C800,55 1000,5 1200,30 L1200,60 L0,60 Z" fill="#fef3c7"/>
-    </svg>
-  </div>
-
-  <!-- ============================================
-       FOUNDER STORY — Pattern adopted: Photo + Origin-Story (Polomski/Welsh)
-       Anti-faceless für DACH-Markt
-       ============================================ -->
-  <section>
-    <div class="wrap">
-      <h2>Warum es aban news gibt</h2>
-
-      <div class="founder">
-        <!-- Stylized founder portrait — inline SVG, ~3 KB, brand colors -->
-        <div class="founder-portrait" role="img" aria-label="Stilisiertes Porträt von Aban mit Kaffeetasse">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="fp-bg" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#fef3c7"/>
-                <stop offset="1" stop-color="#fde68a"/>
-              </linearGradient>
-            </defs>
-            <!-- Background circle -->
-            <circle cx="100" cy="100" r="100" fill="url(#fp-bg)"/>
-            <!-- Subtle amber glow behind head -->
-            <circle cx="100" cy="78" r="50" fill="#fde68a" opacity="0.6"/>
-            <!-- Shoulders / shirt silhouette -->
-            <path d="M30 200 Q30 140 70 130 L130 130 Q170 140 170 200 Z" fill="#1f2937"/>
-            <!-- Shirt collar accent -->
-            <path d="M90 130 L100 145 L110 130 Z" fill="#d97706"/>
-            <!-- Neck -->
-            <rect x="88" y="110" width="24" height="22" rx="6" fill="#fed7aa"/>
-            <!-- Head -->
-            <ellipse cx="100" cy="80" rx="36" ry="40" fill="#fed7aa"/>
-            <!-- Hair top -->
-            <path d="M64 75 Q66 45 100 42 Q134 45 136 75 Q132 60 100 58 Q72 58 64 75 Z" fill="#1f2937"/>
-            <!-- Beard hint -->
-            <path d="M76 92 Q80 110 100 116 Q120 110 124 92 Q120 100 100 102 Q80 100 76 92 Z" fill="#1f2937" opacity="0.85"/>
-            <!-- Glasses -->
-            <g fill="none" stroke="#1f2937" stroke-width="2.5">
-              <circle cx="86" cy="80" r="9"/>
-              <circle cx="114" cy="80" r="9"/>
-              <line x1="95" y1="80" x2="105" y2="80"/>
-            </g>
-            <!-- Eyes through glasses -->
-            <circle cx="86" cy="81" r="1.8" fill="#1f2937"/>
-            <circle cx="114" cy="81" r="1.8" fill="#1f2937"/>
-            <!-- Mouth (small smile through beard) -->
-            <path d="M93 97 Q100 100 107 97" stroke="#b45309" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-            <!-- Coffee mug (held up, right side) -->
-            <g transform="translate(132 122)">
-              <path d="M0 0 L0 22 Q0 28 6 28 L20 28 Q26 28 26 22 L26 0 Z" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
-              <ellipse cx="13" cy="0" rx="13" ry="3" fill="#1f2937" opacity="0.4"/>
-              <path d="M26 6 Q34 6 34 14 Q34 22 26 22" stroke="#b45309" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <!-- Steam -->
-              <path d="M6 -6 Q9 -12 6 -18" stroke="#d97706" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-              <path d="M16 -6 Q19 -12 16 -18" stroke="#d97706" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/>
-            </g>
-            <!-- Arm holding mug -->
-            <path d="M138 148 Q150 138 144 122 L130 122 Q124 138 130 152 Z" fill="#1f2937"/>
-          </svg>
-        </div>
-        <!-- @about.html: re-use this stylized portrait as hero illustration if the page exists -->
-        <div class="founder-text">
-          <p>
-            <span class="name">Ich bin Aban</span> — Solopreneur in der Schweiz, seit drei Jahren täglich mit KI-Tools für Texte, Recherche und Automation. Was mich genervt hat: jeden Morgen durch zwölf Newsletter und Reddit-Threads scrollen, um die paar relevanten Updates zu finden.
-          </p>
-          <p>
-            Deutsche AI-Newsletter sind meist <strong>wöchentlich</strong> (zu langsam) oder voll <strong>Marketing-Sprech</strong> (zu Hype). Also baue ich aban news: daily, deutschsprachig, persönlich kuratiert — wie ein schlauer Kumpel beim Kaffee, der auch sagt, wenn ein Tool nichts taugt.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       ANTI-HYPE MANIFEST — Pattern bewusst NEU (kein Konkurrent macht das)
-       USP-Differentiator: zeigt was wir NICHT machen
-       ============================================ -->
-  <section class="alt">
-    <div class="wrap">
-      <h2>Was du hier nicht findest</h2>
-      <p class="muted">In jedem deutschen AI-Newsletter Standard — hier tabu. Diese Wörter wirst du in aban news nie lesen:</p>
-
-      <ul class="anti" role="list">
-        <li><span><strong>"Revolutionär"</strong>, <strong>"bahnbrechend"</strong>, <strong>"Game Changer"</strong> — Hype-Wörter, die nichts erklären.</span></li>
-        <li><span><strong>"Quantensprung"</strong>, <strong>"disruptiv"</strong>, <strong>"Meilenstein"</strong> — PR-Floskeln aus dem Marketing-Wörterbuch.</span></li>
-        <li><span><strong>"Hallo zusammen"</strong>, <strong>"Liebe Community"</strong> — Massenanrede, die so tut als wären wir keine Newsletter-Mail.</span></li>
-        <li><span><strong>Siezen</strong> — wir duzen. Du bist hier, weil dich KI im Alltag interessiert, nicht weil du gegoogelt hast was ChatGPT ist.</span></li>
-        <li><span><strong>"Tauche ein in die Welt der KI"</strong> — niemand taucht in eine Welt ein, vor allem nicht morgens vor dem Kaffee.</span></li>
-        <li><span><strong>Tools, die ich nicht selbst getestet habe</strong> — keine PR-Pressemitteilungen abgeschrieben.</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============================================
-       COMPARISON TABLE — aban news vs wöchentliche Newsletter
-       ============================================ -->
-  <section class="reveal">
-    <div class="wrap">
-      <h2 class="center">aban news vs wöchentliche AI-Newsletter</h2>
-      <p class="center muted">Worin wir uns von den üblichen Mittwoch-Mailings unterscheiden — ehrlich aufgelistet.</p>
-
-      <div class="compare">
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th scope="col" class="compare-feature">Was zählt</th>
-              <th scope="col" class="compare-us">aban news</th>
-              <th scope="col" class="compare-other">Typisch wöchentlich</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Frequenz</th>
-              <td class="compare-us"><span class="cmp-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5 L6.5 12 L13 4" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Mo–Fr täglich</td>
-              <td class="compare-other"><span class="cmp-x" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>Einmal pro Woche</td>
-            </tr>
-            <tr>
-              <th scope="row">Lesezeit</th>
-              <td class="compare-us"><span class="cmp-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5 L6.5 12 L13 4" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>3–5 Min</td>
-              <td class="compare-other"><span class="cmp-x" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>10–15 Min Sammelpost</td>
-            </tr>
-            <tr>
-              <th scope="row">Tonalität</th>
-              <td class="compare-us"><span class="cmp-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5 L6.5 12 L13 4" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Anti-Hype, persönlich, duzend</td>
-              <td class="compare-other"><span class="cmp-x" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>Marketing-Sprech</td>
-            </tr>
-            <tr>
-              <th scope="row">Quellen</th>
-              <td class="compare-us"><span class="cmp-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5 L6.5 12 L13 4" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>5 deutsche AI-Sites, verlinkt</td>
-              <td class="compare-other"><span class="cmp-x" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>YouTube-Embeds + US-Mainstream</td>
-            </tr>
-            <tr>
-              <th scope="row">Action-Items</th>
-              <td class="compare-us"><span class="cmp-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5 L6.5 12 L13 4" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>1 Tool + 1 Prompt pro Tag</td>
-              <td class="compare-other"><span class="cmp-x" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>Liste am Wochenende — meist ignoriert</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       TOOL-MOCKUPS — 6 Tools, die ich täglich nutze
-       Wireframe-SVGs, brand-colored, Aban-Voice
-       ============================================ -->
-  <section class="tools-section alt reveal">
-    <div class="wrap wrap--wide">
-      <h2 class="center">🛠 Tools die ich täglich nutze</h2>
-      <p class="center muted">Sechs Werkzeuge, die in meinem Workflow nicht mehr fehlen. Alle selbst bezahlt oder im Free-Tier — keine Affiliate-Deals.</p>
-
-      <div class="tools-grid">
-
-        <article class="tool-card">
-          <div class="tool-mockup" aria-hidden="true">
-            <svg viewBox="0 0 250 180" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="10" width="230" height="160" rx="10" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
-              <rect x="10" y="10" width="230" height="22" rx="10" fill="#d97706"/>
-              <circle cx="22" cy="21" r="3" fill="#fffbf5"/>
-              <text x="34" y="25" font-family="-apple-system, sans-serif" font-size="10" font-weight="700" fill="#fffbf5">Claude</text>
-              <!-- User bubble right -->
-              <rect x="120" y="46" width="110" height="22" rx="11" fill="#fef3c7"/>
-              <line x1="132" y1="55" x2="218" y2="55" stroke="#b45309" stroke-width="1.5"/>
-              <line x1="132" y1="62" x2="200" y2="62" stroke="#b45309" stroke-width="1.5"/>
-              <!-- Claude bubble left -->
-              <rect x="20" y="78" width="160" height="40" rx="11" fill="#d97706"/>
-              <line x1="32" y1="90" x2="168" y2="90" stroke="#fffbf5" stroke-width="1.5"/>
-              <line x1="32" y1="98" x2="158" y2="98" stroke="#fffbf5" stroke-width="1.5"/>
-              <line x1="32" y1="106" x2="140" y2="106" stroke="#fffbf5" stroke-width="1.5"/>
-              <!-- Input -->
-              <rect x="20" y="135" width="210" height="22" rx="11" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
-              <text x="32" y="150" font-family="-apple-system, sans-serif" font-size="9" fill="#b45309">Frage stellen…</text>
-              <circle cx="218" cy="146" r="7" fill="#d97706"/>
-              <path d="M215 146 L221 146 M219 144 L221 146 L219 148" stroke="#fffbf5" stroke-width="1.5" fill="none"/>
-            </svg>
-          </div>
-          <div class="tool-head">
-            <span class="tool-name">Claude</span>
-            <span class="tool-pricing">free / $20-Pro</span>
-          </div>
-          <p class="tool-use">Mein Haupt-AI für Texte und Recherche — schreibt Deutsch besser als alle anderen, die ich getestet hab.</p>
-          <a href="/preview.html" class="tool-link">Mehr in der Probe-Ausgabe →</a>
-        </article>
-
-        <article class="tool-card">
-          <div class="tool-mockup" aria-hidden="true">
-            <svg viewBox="0 0 250 180" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="10" width="230" height="160" rx="10" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
-              <!-- App header -->
-              <rect x="10" y="10" width="230" height="22" rx="10" fill="#1f2937"/>
-              <circle cx="24" cy="21" r="6" fill="#d97706"/>
-              <text x="40" y="25" font-family="-apple-system, sans-serif" font-size="10" font-weight="700" fill="#fffbf5">Granola</text>
-              <!-- Meeting card -->
-              <rect x="20" y="42" width="210" height="28" rx="6" fill="#fef3c7"/>
-              <circle cx="34" cy="56" r="6" fill="#d97706"/>
-              <line x1="46" y1="52" x2="160" y2="52" stroke="#1f2937" stroke-width="1.5"/>
-              <line x1="46" y1="60" x2="130" y2="60" stroke="#6b7280" stroke-width="1.5"/>
-              <text x="200" y="60" font-family="-apple-system, sans-serif" font-size="9" fill="#6b7280">10:30</text>
-              <!-- Notes -->
-              <text x="22" y="88" font-family="-apple-system, sans-serif" font-size="9" font-weight="700" fill="#1f2937">Notes</text>
-              <line x1="22" y1="100" x2="200" y2="100" stroke="#9ca3af" stroke-width="1.5"/>
-              <line x1="22" y1="110" x2="180" y2="110" stroke="#9ca3af" stroke-width="1.5"/>
-              <line x1="22" y1="120" x2="190" y2="120" stroke="#9ca3af" stroke-width="1.5"/>
-              <!-- Action items -->
-              <rect x="22" y="132" width="9" height="9" rx="2" fill="#d97706"/>
-              <path d="M24 136 L26 138 L29 134" stroke="#fffbf5" stroke-width="1.5" fill="none"/>
-              <line x1="36" y1="138" x2="160" y2="138" stroke="#1f2937" stroke-width="1.5"/>
-              <rect x="22" y="148" width="9" height="9" rx="2" fill="none" stroke="#d97706" stroke-width="1.5"/>
-              <line x1="36" y1="154" x2="170" y2="154" stroke="#1f2937" stroke-width="1.5"/>
-            </svg>
-          </div>
-          <div class="tool-head">
-            <span class="tool-name">Granola</span>
-            <span class="tool-pricing">$18/Monat</span>
-          </div>
-          <p class="tool-use">Schreibt beim Call mit, ohne Bot im Meeting. Spart mir das Notizen-Tippen bei zwei Calls pro Woche.</p>
-          <a href="/archive.html" class="tool-link">Im Archiv mehr Tool-Tipps →</a>
-        </article>
-
-        <article class="tool-card">
-          <div class="tool-mockup" aria-hidden="true">
-            <svg viewBox="0 0 250 180" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="10" width="230" height="160" rx="10" fill="#1f2937"/>
-              <!-- Screen preview -->
-              <rect x="22" y="22" width="180" height="110" rx="6" fill="#fef3c7"/>
-              <rect x="32" y="32" width="100" height="6" rx="2" fill="#d97706"/>
-              <rect x="32" y="44" width="140" height="4" rx="2" fill="#b45309" opacity="0.6"/>
-              <rect x="32" y="52" width="120" height="4" rx="2" fill="#b45309" opacity="0.5"/>
-              <rect x="32" y="68" width="50" height="32" rx="4" fill="#d97706"/>
-              <rect x="92" y="68" width="50" height="32" rx="4" fill="#fbbf24"/>
-              <rect x="152" y="68" width="30" height="32" rx="4" fill="#fed7aa"/>
-              <!-- Webcam bubble -->
-              <circle cx="190" cy="118" r="14" fill="#d97706" stroke="#fffbf5" stroke-width="2"/>
-              <circle cx="190" cy="113" r="5" fill="#fffbf5"/>
-              <path d="M183 122 Q190 130 197 122" stroke="#fffbf5" stroke-width="1.5" fill="none"/>
-              <!-- Record button -->
-              <circle cx="125" cy="155" r="14" fill="#dc2626"/>
-              <circle cx="125" cy="155" r="6" fill="#fffbf5"/>
-              <text x="222" y="160" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#d97706">REC</text>
-              <text x="22" y="160" font-family="-apple-system, sans-serif" font-size="9" font-weight="700" fill="#fef3c7">cap.so</text>
-            </svg>
-          </div>
-          <div class="tool-head">
-            <span class="tool-name">Cap.so</span>
-            <span class="tool-pricing">free / $9-Pro</span>
-          </div>
-          <p class="tool-use">Schneller Screen-Record für Tutorials und Bug-Reports. Loom-Alternative aus EU.</p>
-          <a href="/preview.html" class="tool-link">Use-Case in Ausgabe Nr. 4 →</a>
-        </article>
-
-        <article class="tool-card">
-          <div class="tool-mockup" aria-hidden="true">
-            <svg viewBox="0 0 250 180" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="10" width="230" height="160" rx="10" fill="#fffbf5" stroke="#d97706" stroke-width="2"/>
-              <!-- Workflow nodes -->
-              <circle cx="50" cy="55" r="20" fill="#d97706"/>
-              <text x="50" y="59" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" fill="#fffbf5">▶</text>
-              <circle cx="125" cy="55" r="22" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
-              <path d="M118 50 Q125 44 132 50 M118 60 Q125 66 132 60" stroke="#b45309" stroke-width="2" fill="none"/>
-              <circle cx="200" cy="55" r="20" fill="#fbbf24"/>
-              <text x="200" y="60" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#1f2937">@</text>
-              <!-- Connector lines -->
-              <line x1="70" y1="55" x2="103" y2="55" stroke="#d97706" stroke-width="2.5"/>
-              <path d="M101 51 L105 55 L101 59" stroke="#d97706" stroke-width="2.5" fill="none"/>
-              <line x1="147" y1="55" x2="180" y2="55" stroke="#d97706" stroke-width="2.5"/>
-              <path d="M178 51 L182 55 L178 59" stroke="#d97706" stroke-width="2.5" fill="none"/>
-              <!-- Second row -->
-              <circle cx="50" cy="130" r="18" fill="#fed7aa" stroke="#d97706" stroke-width="2"/>
-              <text x="50" y="134" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#1f2937">✓</text>
-              <circle cx="125" cy="130" r="18" fill="#fed7aa" stroke="#d97706" stroke-width="2"/>
-              <text x="125" y="134" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#1f2937">⚙</text>
-              <circle cx="200" cy="130" r="18" fill="#fed7aa" stroke="#d97706" stroke-width="2"/>
-              <text x="200" y="134" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#1f2937">↗</text>
-              <!-- Branch lines down -->
-              <path d="M125 77 Q125 100 50 112" stroke="#d97706" stroke-width="1.5" fill="none" opacity="0.5"/>
-              <path d="M125 77 L125 112" stroke="#d97706" stroke-width="1.5" opacity="0.5"/>
-              <path d="M125 77 Q125 100 200 112" stroke="#d97706" stroke-width="1.5" fill="none" opacity="0.5"/>
-              <text x="125" y="170" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#6b7280">make.com</text>
-            </svg>
-          </div>
-          <div class="tool-head">
-            <span class="tool-name">Make.com</span>
-            <span class="tool-pricing">free / $9-Core</span>
-          </div>
-          <p class="tool-use">Verbindet RSS, Claude und Gmail — meine Newsletter-Pipeline läuft komplett darin.</p>
-          <a href="/archive.html" class="tool-link">Pipeline-Setup im Archiv →</a>
-        </article>
-
-        <article class="tool-card">
-          <div class="tool-mockup" aria-hidden="true">
-            <svg viewBox="0 0 250 180" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="10" width="230" height="160" rx="10" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
-              <!-- Sidebar -->
-              <rect x="10" y="10" width="50" height="160" rx="10" fill="#fef3c7"/>
-              <circle cx="22" cy="26" r="4" fill="#1f2937"/>
-              <line x1="32" y1="26" x2="54" y2="26" stroke="#1f2937" stroke-width="1.5"/>
-              <circle cx="22" cy="40" r="4" fill="#9ca3af"/>
-              <line x1="32" y1="40" x2="48" y2="40" stroke="#6b7280" stroke-width="1.5"/>
-              <circle cx="22" cy="54" r="4" fill="#9ca3af"/>
-              <line x1="32" y1="54" x2="52" y2="54" stroke="#6b7280" stroke-width="1.5"/>
-              <!-- Page title -->
-              <text x="72" y="32" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#1f2937">Newsletter-Plan</text>
-              <!-- Blocks -->
-              <rect x="70" y="48" width="6" height="6" rx="1" fill="#d97706"/>
-              <line x1="82" y1="51" x2="220" y2="51" stroke="#1f2937" stroke-width="1.5"/>
-              <rect x="70" y="64" width="6" height="6" rx="1" fill="#d97706"/>
-              <line x1="82" y1="67" x2="200" y2="67" stroke="#1f2937" stroke-width="1.5"/>
-              <!-- Toggle block -->
-              <text x="70" y="88" font-family="-apple-system, sans-serif" font-size="11" fill="#6b7280">▸</text>
-              <line x1="82" y1="84" x2="180" y2="84" stroke="#1f2937" stroke-width="1.5"/>
-              <!-- Code block -->
-              <rect x="70" y="98" width="160" height="22" rx="4" fill="#fef3c7"/>
-              <text x="78" y="113" font-family="ui-monospace, monospace" font-size="9" fill="#b45309">prompt = "Schreib…"</text>
-              <!-- Todo -->
-              <rect x="70" y="130" width="8" height="8" rx="1.5" fill="none" stroke="#1f2937" stroke-width="1.5"/>
-              <line x1="84" y1="135" x2="180" y2="135" stroke="#1f2937" stroke-width="1.5"/>
-              <rect x="70" y="146" width="8" height="8" rx="1.5" fill="#d97706"/>
-              <path d="M72 150 L74 152 L77 149" stroke="#fffbf5" stroke-width="1.5" fill="none"/>
-              <line x1="84" y1="151" x2="170" y2="151" stroke="#9ca3af" stroke-width="1.5"/>
-            </svg>
-          </div>
-          <div class="tool-head">
-            <span class="tool-name">Notion</span>
-            <span class="tool-pricing">free / $10-Plus</span>
-          </div>
-          <p class="tool-use">Editorial-Kalender, Tool-Datenbank und Founder-Logs liegen alle dort. Bleibt nach 5 Jahren noch durchsuchbar.</p>
-          <a href="/founding.html" class="tool-link">Founding-Slack-Templates →</a>
-        </article>
-
-        <article class="tool-card">
-          <div class="tool-mockup" aria-hidden="true">
-            <svg viewBox="0 0 250 180" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="10" width="230" height="160" rx="10" fill="#fffbf5" stroke="#d97706" stroke-width="2"/>
-              <!-- EU flag accent -->
-              <rect x="20" y="20" width="36" height="24" rx="4" fill="#003399"/>
-              <g fill="#fbbf24">
-                <circle cx="28" cy="28" r="1.5"/>
-                <circle cx="38" cy="26" r="1.5"/>
-                <circle cx="48" cy="28" r="1.5"/>
-                <circle cx="28" cy="36" r="1.5"/>
-                <circle cx="38" cy="38" r="1.5"/>
-                <circle cx="48" cy="36" r="1.5"/>
-              </g>
-              <text x="66" y="36" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#1f2937">eustella</text>
-              <text x="66" y="48" font-family="-apple-system, sans-serif" font-size="8" fill="#6b7280">Wiener AI-Companion</text>
-              <!-- Chat -->
-              <rect x="20" y="62" width="150" height="22" rx="11" fill="#fef3c7"/>
-              <line x1="32" y1="71" x2="160" y2="71" stroke="#1f2937" stroke-width="1.5"/>
-              <line x1="32" y1="78" x2="140" y2="78" stroke="#1f2937" stroke-width="1.5"/>
-              <rect x="80" y="92" width="150" height="32" rx="11" fill="#d97706"/>
-              <line x1="92" y1="103" x2="218" y2="103" stroke="#fffbf5" stroke-width="1.5"/>
-              <line x1="92" y1="110" x2="210" y2="110" stroke="#fffbf5" stroke-width="1.5"/>
-              <line x1="92" y1="117" x2="190" y2="117" stroke="#fffbf5" stroke-width="1.5"/>
-              <!-- Privacy badge -->
-              <rect x="20" y="138" width="100" height="22" rx="11" fill="none" stroke="#059669" stroke-width="1.5"/>
-              <path d="M30 149 L30 144 Q30 141 33 141 L33 144 Z M33 141 L36 141 Q39 141 39 144 L39 149" stroke="#059669" stroke-width="1.5" fill="none"/>
-              <text x="46" y="153" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#059669">EU-Hosting · DSGVO</text>
-            </svg>
-          </div>
-          <div class="tool-head">
-            <span class="tool-name">eustella</span>
-            <span class="tool-pricing">Open Beta · €14-Pro</span>
-          </div>
-          <p class="tool-use">DACH-AI-Companion aus Wien, EU-Hosting nativ. Diese Woche parallel zu Claude im Test.</p>
-          <a href="/preview.html" class="tool-link">Volltest in der Probe-Ausgabe →</a>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       PRE-LAUNCH TRANSPARENZ — ehrlich statt erfundene Testimonials
-       ============================================ -->
-  <section class="reveal">
-    <div class="wrap wrap--wide">
-      <h2 class="center">Noch keine Testimonials — und das ist ehrlich so</h2>
-      <p class="center muted">aban news startet gerade. Statt erfundener Stimmen bekommst du die echte Lage — und mein Versprechen.</p>
-
-      <div class="grid grid--3 social-proof">
-        <div class="card sp-card">
-          <span class="sp-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-          </span>
-          <h3>Du bist früh dran</h3>
-          <p>Die ersten Leser prägen den Newsletter mit. Antworte auf jede Ausgabe — dein Feedback landet direkt bei mir und formt, was kommt.</p>
-        </div>
-
-        <div class="card sp-card">
-          <span class="sp-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 6v5c0 5 4 9 9 11 5-2 9-6 9-11V6l-9-4z"/><path d="M9 12l2 2 4-4"/></svg>
-          </span>
-          <h3>Echte Stimmen, sobald sie da sind</h3>
-          <p>Hier stehen später echte Leser-Zitate — mit echtem Namen und Profil. Keine erfundenen Reviews. Das wäre gegen alles, wofür aban news steht.</p>
-        </div>
-
-        <div class="card sp-card">
-          <span class="sp-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4z"/><path d="M4 4l8 6 8-6"/></svg>
-          </span>
-          <h3>Mein Versprechen</h3>
-          <p>Mo–Fr eine Ausgabe, kein Hype, jede Quelle verlinkt. Wenn die Mail mal nicht kommt oder nichts taugt, sag's mir — und ich fix es.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       SECONDARY SUBSCRIBE — Mid-page form (Pattern: 77% der Top-Sites haben mid-page repeat)
-       ============================================ -->
-  <section class="alt">
-    <div class="wrap wrap--narrow">
-      <h2 class="center">Kostenlos abonnieren</h2>
-      <p class="center muted">Mo–Fr morgens. Abmeldung jederzeit per Klick. Nie Spam.</p>
-
-      <form
-        class="subscribe"
-        action="https://abannews.beehiiv.com/subscribe"
-        method="get"
-        novalidate
-        aria-label="Newsletter-Anmeldung Mitte"
-      >
-        <div class="subscribe-row">
-          <input
-            type="email"
-            id="mid-email"
-            name="email"
-            placeholder="deine@mail.de"
-            required
-            autocomplete="email"
-            inputmode="email"
-            aria-label="E-Mail-Adresse"
-          >
-          <button type="submit">
-            <span>Abonnieren</span>
-            <span aria-hidden="true">→</span>
-          </button>
-        </div>
-        <div class="consent-row">
-          <input type="checkbox" id="mid-consent" name="consent" value="1" required>
-          <label for="mid-consent">
-            Einwilligung in den Newsletter-Versand. Mehr in der <a href="/datenschutz.html">Datenschutzerklärung</a>.
-          </label>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <!-- ============================================
-       CROSS-SELL — Founding + Sponsoring (subtil)
-       ============================================ -->
-  <section>
-    <div class="wrap">
-      <div class="grid grid--2">
-        <div class="card">
-          <h3>Willst du mehr?</h3>
-          <p>Werde <a href="/founding.html"><strong>Founding Member</strong></a> — €149 einmalig, lebenslang Premium. Cap: 100 Plätze.</p>
-          <p><a href="/founding.html">→ Mehr erfahren</a></p>
-        </div>
-        <div class="card">
-          <h3>Tool oder Marke vorstellen?</h3>
-          <p>Wir nehmen <a href="/sponsoring.html"><strong>maximal 1 Anzeige pro Ausgabe</strong></a>. Hier sind Format, Preise, Booking.</p>
-          <p><a href="/sponsoring.html">→ Rate-Card ansehen</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
 </main>
 
-<!-- ============================================
-     STICKY MOBILE CTA — Pattern adopted (50% der 2026-Top-Sites)
-     ============================================ -->
-<div class="mobile-cta" aria-hidden="true">
-  <a href="#signup" class="btn">☕ Kostenlos abonnieren</a>
-</div>
-
-<!-- Related Pages (kontextuell für Startseite) -->
-<aside class="related-pages" aria-label="Was dich auch interessieren könnte">
-  <h3>Was dich auch interessieren könnte</h3>
-  <div class="related-cards">
-    <a href="/preview.html"><strong>Beispiel-Ausgabe lesen</strong><span>Echte aban news vom 27. Mai — 4 Min</span></a>
-    <a href="/founding.html"><strong>Founding Member werden</strong><span>€149 lifetime, nur 100 Plätze</span></a>
-    <a href="/faq.html"><strong>Häufige Fragen</strong><span>Alles, was Leser bisher gefragt haben</span></a>
-  </div>
-</aside>
-
-<footer class="site-footer">
-  <div class="wrap wrap--wide">
-    <div class="footer-mega">
-      <div>
-        <strong>aban news</strong>
-        <a href="/">Startseite</a>
-        <a href="/about.html">Wer schreibt das</a>
-        <a href="/preview.html">Beispiel-Ausgabe</a>
-        <a href="/archive.html">Alle Ausgaben</a>
-      </div>
-      <div>
-        <strong>Lesen</strong>
-        <a href="/resources.html">Free Resources</a>
-        <a href="/faq.html">FAQ</a>
-        <a href="/roadmap.html">Roadmap</a>
-      </div>
-      <div>
-        <strong>Premium</strong>
-        <a href="/founding.html">Founding Member €149</a>
-        <a href="/sponsoring.html">Sponsoring</a>
-        <a href="/werbung.html">Werbe-Policy</a>
-      </div>
-      <div>
-        <strong>Rechtliches</strong>
-        <a href="/impressum.html">Impressum</a>
-        <a href="/datenschutz.html">Datenschutz</a>
-        <a href="/press.html">Press &amp; Media</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 aban news · Allen Chour · Hühnerhubelstrasse 37, 3123 Belp, Schweiz · <em>— Aban</em></span>
-      <span class="last-issue" id="lastIssueSent" aria-live="polite">Letzte Ausgabe verschickt: <strong>heute morgen</strong></span>
-    </div>
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <a href="/preview.html">Beispiel-Ausgabe</a>
+    <a href="/founding.html">Premium</a>
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+    <a href="/en/">🇬🇧 EN</a>
   </div>
 </footer>
 
-<!-- Minimal inline JS: Sticky-CTA + Scroll-Reveal + Polish (no tracking, < 2 KB) -->
 <script>
-  (function () {
-    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // 1) Sticky mobile CTA on/off
-    var stickyEl = document.querySelector('.mobile-cta');
-    var heroForm = document.getElementById('signup');
-    if (stickyEl && heroForm) {
-      document.body.classList.add('mobile-cta-on');
-      if ('IntersectionObserver' in window) {
-        var ioCta = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            stickyEl.style.display = entry.isIntersecting ? 'none' : '';
-          });
-        }, { threshold: 0.1 });
-        ioCta.observe(heroForm);
-      }
-    }
-
-    // 2) Scroll reveal — fade-in-up sections
-    if (!reduceMotion && 'IntersectionObserver' in window) {
-      var revealEls = document.querySelectorAll('.reveal');
-      var ioReveal = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            ioReveal.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      revealEls.forEach(function (el) { ioReveal.observe(el); });
-    } else {
-      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
-    }
-
-    // 3) Scroll-progress bar (rAF-throttled)
-    var bar = document.getElementById('scrollProgress');
-    if (bar) {
-      var ticking = false;
-      function updateProgress() {
-        var h = document.documentElement;
-        var max = (h.scrollHeight - h.clientHeight) || 1;
-        var pct = Math.min(100, Math.max(0, (h.scrollTop / max) * 100));
-        bar.style.width = pct + '%';
-        bar.setAttribute('aria-valuenow', Math.round(pct));
-        ticking = false;
-      }
-      window.addEventListener('scroll', function () {
-        if (!ticking) { window.requestAnimationFrame(updateProgress); ticking = true; }
-      }, { passive: true });
-      updateProgress();
-    }
-
-    // 4) Sub-counter animation — fetches /data/stats.json, counts from 0
-    function animateCount(el, target, duration) {
-      if (!el) return;
-      if (reduceMotion) { el.textContent = target; return; }
-      var start = performance.now();
-      var from = 0;
-      function step(now) {
-        var t = Math.min(1, (now - start) / duration);
-        // ease-out cubic
-        var eased = 1 - Math.pow(1 - t, 3);
-        el.textContent = Math.round(from + (target - from) * eased);
-        if (t < 1) requestAnimationFrame(step);
-        else el.textContent = target;
-      }
-      requestAnimationFrame(step);
-    }
-
-    function loadStats() {
-      // Try to fetch live stats; fallback to data-target
-      var subEl = document.getElementById('subCounter');
-      var subStatsEl = document.getElementById('subCounterStats');
-      var lastIssueEl = document.getElementById('lastIssueSent');
-
-      function applyStats(stats) {
-        var subs = (stats && typeof stats.subscribers === 'number') ? stats.subscribers : null;
-        if (subEl) {
-          var t1 = subs != null ? subs : parseInt(subEl.getAttribute('data-target') || '1', 10);
-          animateCount(subEl, t1, 1800);
-        }
-        if (subStatsEl) {
-          var t2 = subs != null ? subs : parseInt(subStatsEl.getAttribute('data-target') || '1', 10);
-          animateCount(subStatsEl, t2, 2000);
-        }
-        if (lastIssueEl && stats && stats.last_issue_sent_iso) {
-          var sent = new Date(stats.last_issue_sent_iso);
-          if (!isNaN(sent.getTime())) {
-            var diffMs = Date.now() - sent.getTime();
-            var diffH = Math.floor(diffMs / 3600000);
-            var diffD = Math.floor(diffH / 24);
-            var label;
-            if (diffH < 1)       label = 'vor wenigen Minuten';
-            else if (diffH < 24) label = 'vor ' + diffH + ' Std';
-            else if (diffD < 2)  label = 'gestern';
-            else if (diffD < 7)  label = 'vor ' + diffD + ' Tagen';
-            else                 label = sent.toLocaleDateString('de-DE', { day: 'numeric', month: 'short' });
-            lastIssueEl.innerHTML = 'Letzte Ausgabe verschickt: <strong>' + label + '</strong>';
-          }
-        }
-      }
-
-      if ('fetch' in window) {
-        fetch('/data/stats.json', { cache: 'no-cache' })
-          .then(function (r) { return r.ok ? r.json() : null; })
-          .then(applyStats)
-          .catch(function () { applyStats(null); });
-      } else {
-        applyStats(null);
-      }
-    }
-    // Defer to next frame so first paint completes
-    if ('requestIdleCallback' in window) requestIdleCallback(loadStats); else setTimeout(loadStats, 50);
-
-    // 5) Form-submit loading-state + success-check
-    var subForm = document.getElementById('signup');
-    if (subForm) {
-      subForm.addEventListener('submit', function () {
-        var btn = subForm.querySelector('button[type="submit"]');
-        if (!btn) return;
-        btn.classList.add('is-loading');
-        // Beehiiv redirect happens; if same-page (no redirect), show success after 1.6s
-        setTimeout(function () {
-          if (btn.classList.contains('is-loading')) {
-            btn.classList.remove('is-loading');
-            btn.classList.add('is-success');
-          }
-        }, 1600);
-      });
-    }
-
-    // 6) Brand logo: trigger coffee-steam on hover
-    var brandLink = document.querySelector('.site-header .brand');
-    if (brandLink) {
-      brandLink.addEventListener('mouseenter', function () { brandLink.classList.add('is-hover'); });
-      brandLink.addEventListener('mouseleave', function () { brandLink.classList.remove('is-hover'); });
-    }
-  })();
+(function(){
+  var issues=[
+    {tab:"Mo 25.05 · 3 Min",subj:"OpenAI macht's billiger — aber lies das Kleingedruckte",slug:"📰 Was heute zählt",
+     news:["GPT-5 Mini 60% günstiger — aber Context-Window halbiert sich auch","Mistral Open-Weights-Release","🛠 Tool: LibreChat — selbstgehostet, EU-Server, gratis"]},
+    {tab:"Mi 27.05 · 4 Min",subj:"☕ China zieht den Vorhang zu, DeepSeek dreht am Preis",slug:"📰 Was heute zählt",
+     news:["DeepSeek viertelt die Preise für V4-Pro (strukturell, kein Sale)","Marken-Sichtbarkeit in ChatGPT prüfen — neue GEO-Tools","🛠 Tool: eustella aus Wien — EU-Hosting, DSGVO-nativ, gratis"]},
+    {tab:"Fr 29.05 · 5 Min",subj:"Bullshit-Detektor: „KI-First-Strategie“ im Härtetest",slug:"🚨 Was nicht trägt",
+     news:["„KI-First“ ist meist eine Ausrede für fehlende Strategie","3 Fragen, die Hype von Substanz trennen","💡 Prompt: Cold-Outreach chirurgisch entgenerisieren"]}
+  ];
+  var i=0,timer,playing=true;
+  var elMeta=document.getElementById('mMeta'),elSubj=document.getElementById('mSubj'),
+      elSlug=document.getElementById('mSlug'),elNews=document.getElementById('mNews'),
+      tabs=[].slice.call(document.querySelectorAll('#tabs .tab'));
+  function render(n){
+    var d=issues[n];
+    elMeta.textContent="📥 Posteingang · aban news · "+d.tab;
+    elSubj.textContent=d.subj; elSlug.textContent=d.slug;
+    elNews.innerHTML=d.news.map(function(x){return '<li><span class="mk">●</span><span>'+x+'</span></li>';}).join('');
+    var body=elNews.closest('.mail-body'); body.classList.remove('fade'); void body.offsetWidth; body.classList.add('fade');
+    tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===n?'true':'false');});
+  }
+  function next(){i=(i+1)%issues.length;render(i);}
+  function start(){if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;timer=setInterval(function(){if(playing)next();},4500);}
+  tabs.forEach(function(t){t.addEventListener('click',function(){i=+t.dataset.i;render(i);});});
+  var pv=document.querySelector('.preview');
+  pv.addEventListener('mouseenter',function(){playing=false;});
+  pv.addEventListener('mouseleave',function(){playing=true;});
+  render(0);start();
+  // form loading state
+  var f=document.getElementById('signup');
+  f.addEventListener('submit',function(){var b=f.querySelector('button');if(b){b.textContent='Wird geöffnet…';}});
+})();
 </script>
-
 </body>
 </html>
