@@ -76,6 +76,22 @@ def _render(name: str, score, vendor: str, path: Path):
     img.save(path, "PNG")
 
 
+def app_icons(out_dir: Path):
+    """PWA app icons (192 + 512) — radar mark on the brand accent."""
+    for size in (192, 512):
+        img = Image.new("RGB", (size, size), ACCENT)
+        d = ImageDraw.Draw(img)
+        cx = cy = size / 2
+        for r in (size * 0.30, size * 0.16):
+            d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=(255, 255, 255),
+                      width=max(2, size // 48))
+        d.line([cx, cy, cx + size * 0.24, cy - size * 0.24], fill=(255, 255, 255),
+               width=max(2, size // 48))
+        d.ellipse([cx - size * 0.04, cy - size * 0.04, cx + size * 0.04, cy + size * 0.04],
+                  fill=(255, 255, 255))
+        img.save(out_dir / f"icon-{size}.png", "PNG")
+
+
 def generate(tools, out_dir: Path, slugify) -> int:
     og = out_dir / "og"
     og.mkdir(parents=True, exist_ok=True)

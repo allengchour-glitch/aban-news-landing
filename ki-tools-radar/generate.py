@@ -349,6 +349,52 @@ NEW_UI = {
                        "tr": "YZ sözlüğü: temel terimler",
                        "ja": "AI用語集：重要語をやさしく解説",
                        "zh": "AI 术语表：核心概念解析"},
+    "skip": {"de": "Zum Inhalt springen", "en": "Skip to content", "fr": "Aller au contenu",
+             "es": "Saltar al contenido", "it": "Vai al contenuto", "pt": "Ir para o conteúdo",
+             "nl": "Naar inhoud", "pl": "Przejdź do treści", "tr": "İçeriğe geç",
+             "ja": "本文へスキップ", "zh": "跳到内容"},
+    "theme": {"de": "Design", "en": "Theme", "fr": "Thème", "es": "Tema", "it": "Tema",
+              "pt": "Tema", "nl": "Thema", "pl": "Motyw", "tr": "Tema", "ja": "テーマ", "zh": "主题"},
+    "partner_nav": {"de": "Partner & Transparenz", "en": "Partners & transparency",
+                    "fr": "Partenaires & transparence", "es": "Socios y transparencia",
+                    "it": "Partner e trasparenza", "pt": "Parceiros e transparência",
+                    "nl": "Partners & transparantie", "pl": "Partnerzy i przejrzystość",
+                    "tr": "Ortaklar & şeffaflık", "ja": "パートナーと透明性", "zh": "合作伙伴与透明度"},
+    "partner_intro": {"de": "Wie sich diese Seite finanziert — offen erklärt.",
+                      "en": "How this site is funded — openly explained.",
+                      "fr": "Comment ce site est financé — en toute transparence.",
+                      "es": "Cómo se financia este sitio — explicado abiertamente.",
+                      "it": "Come si finanzia questo sito — spiegato apertamente.",
+                      "pt": "Como este site é financiado — explicado abertamente.",
+                      "nl": "Hoe deze site wordt gefinancierd — open uitgelegd.",
+                      "pl": "Jak finansowana jest ta strona — otwarcie.",
+                      "tr": "Bu site nasıl finanse ediliyor — açıkça.",
+                      "ja": "このサイトの収益源を率直に説明します。",
+                      "zh": "本站如何盈利 — 坦诚说明。"},
+    "partner_q1": {"de": "Verdient ihr an meinen Klicks?",
+                   "en": "Do you earn from my clicks?", "fr": "Gagnez-vous sur mes clics ?",
+                   "es": "¿Ganáis con mis clics?", "it": "Guadagnate dai miei clic?",
+                   "pt": "Vocês ganham com meus cliques?", "nl": "Verdienen jullie aan mijn klikken?",
+                   "pl": "Czy zarabiacie na moich kliknięciach?", "tr": "Tıklamalarımdan kazanıyor musunuz?",
+                   "ja": "クリックで収益を得ていますか？", "zh": "你们靠我的点击赚钱吗？"},
+    "partner_a1": {"de": "Bei einigen Tools ja: Klickst du auf einen mit * markierten Link und kaufst dort etwas, erhalten wir eine Provision — ohne Mehrkosten für dich. Viele Links sind aber ganz normale Links ohne Provision.",
+                   "en": "For some tools, yes: if you click a link marked * and buy there, we earn a commission — at no extra cost to you. Many links are plain links with no commission."},
+    "partner_q2": {"de": "Beeinflusst das die Bewertungen?",
+                   "en": "Does that affect the ratings?", "fr": "Cela influence-t-il les notes ?",
+                   "es": "¿Eso afecta las valoraciones?", "it": "Questo influenza le valutazioni?",
+                   "pt": "Isso afeta as avaliações?", "nl": "Beïnvloedt dat de beoordelingen?",
+                   "pl": "Czy to wpływa na oceny?", "tr": "Bu, puanları etkiliyor mu?",
+                   "ja": "それは評価に影響しますか？", "zh": "这会影响评分吗？"},
+    "partner_a2": {"de": "Nein. Die Bewertungen und die Reihenfolge richten sich nach Nutzen und DACH-Relevanz — nicht danach, ob es ein Affiliate-Programm gibt. Tools ohne Provision können oben stehen, Tools mit Provision unten.",
+                   "en": "No. Ratings and ranking follow usefulness and DACH relevance — not whether there's an affiliate program. Tools without commission can rank on top."},
+    "partner_q3": {"de": "Warum überhaupt Affiliate-Links?",
+                   "en": "Why affiliate links at all?", "fr": "Pourquoi des liens affiliés ?",
+                   "es": "¿Por qué enlaces de afiliados?", "it": "Perché i link di affiliazione?",
+                   "pt": "Por que links de afiliados?", "nl": "Waarom affiliate-links?",
+                   "pl": "Dlaczego linki afiliacyjne?", "tr": "Neden affiliate bağlantılar?",
+                   "ja": "なぜアフィリエイトリンクを？", "zh": "为什么用联盟链接？"},
+    "partner_a3": {"de": "So bleibt die Seite kostenlos und werbefrei: kein Tracking, keine Pop-ups, keine Paywall. Die Provisionen decken Zeit und Pflege der Inhalte.",
+                   "en": "It keeps the site free and ad-free: no tracking, no pop-ups, no paywall. Commissions cover the time and upkeep."},
     "glossary_sub": {"de": "Die wichtigsten KI-Begriffe verständlich erklärt — mit passenden Tools.",
                      "en": "The most important AI terms, clearly explained — with matching tools.",
                      "fr": "Les termes IA essentiels, clairement expliqués — avec des outils adaptés.",
@@ -440,6 +486,8 @@ def page_path(lang: str, kind: str, slug: str = "") -> str:
         return f"{prefix}/glossar.html"
     if kind == "term":
         return f"{prefix}/glossar/{slug}.html"
+    if kind == "partner":
+        return f"{prefix}/partner.html"
     return prefix + "/"
 
 
@@ -505,13 +553,28 @@ def page(*, lang, ui, title, description, body, canonical,
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{e(og_img)}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="{ACCENT}">
 <style>
 :root{{--accent:{ACCENT};--accent-h:{ACCENT_HOVER};--bg:{BG};--bg-alt:{BG_ALT};
---text:{TEXT};--muted:{MUTED};--success:{SUCCESS};--border:{BORDER};}}
+--text:{TEXT};--muted:{MUTED};--success:{SUCCESS};--border:{BORDER};--card:#fff;}}
+/* Dark mode: automatic via OS, or forced with data-theme on <html>. */
+@media (prefers-color-scheme: dark){{
+  :root:not([data-theme="light"]){{--bg:#1a1714;--bg-alt:#2a2420;--text:#f3f0ec;
+  --muted:#a8a29e;--border:#3a332d;--card:#241f1b;--accent-h:#f59e0b;}}
+}}
+:root[data-theme="dark"]{{--bg:#1a1714;--bg-alt:#2a2420;--text:#f3f0ec;--muted:#a8a29e;
+--border:#3a332d;--card:#241f1b;--accent-h:#f59e0b;}}
 *{{box-sizing:border-box;}}
 body{{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
 "Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}}
 a{{color:var(--accent-h);}}
+.skip{{position:absolute;left:-999px;top:0;background:var(--accent);color:#fff;padding:8px 14px;border-radius:0 0 8px 0;z-index:99;}}
+.skip:focus{{left:0;}}
+.themebtn{{background:none;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:3px 9px;font-size:.82rem;cursor:pointer;float:right;margin-top:-2px;}}
+@media (prefers-reduced-motion:no-preference){{.card{{transition:transform .12s,box-shadow .12s;}}}}
 .wrap{{max-width:880px;margin:0 auto;padding:0 20px;}}
 header{{background:var(--bg-alt);border-bottom:1px solid var(--border);padding:20px 0;}}
 header h1{{margin:0;font-size:1.4rem;}} header a{{text-decoration:none;color:var(--text);}}
@@ -519,7 +582,8 @@ header .tag{{color:var(--muted);font-size:.95rem;margin:4px 0 0;}}
 .langbar{{font-size:.82rem;color:var(--muted);margin-top:8px;}}
 .langbar a{{color:var(--muted);}}
 main{{padding:28px 0;}}
-.card{{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin:0 0 14px;}}
+.card{{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin:0 0 14px;}}
+.card:hover{{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.08);}}
 .card h2{{margin:0 0 6px;font-size:1.15rem;}} .card h2 a{{text-decoration:none;color:var(--text);}}
 .score{{display:inline-block;background:var(--success);color:#fff;border-radius:999px;
 padding:2px 10px;font-size:.85rem;font-weight:600;}}
@@ -530,7 +594,7 @@ padding:10px 18px;border-radius:8px;font-weight:600;margin-top:8px;}}
 .cta:hover{{background:var(--accent-h);}}
 .note{{background:var(--bg-alt);border-left:3px solid var(--accent);padding:10px 14px;border-radius:6px;margin:12px 0;font-size:.92rem;}}
 .pc{{display:flex;flex-wrap:wrap;gap:14px;margin:14px 0;}}
-.pc>div{{flex:1;min-width:220px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 16px;}}
+.pc>div{{flex:1;min-width:220px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;}}
 .pc h3{{margin:0 0 6px;font-size:1rem;}} .pc .pro h3{{color:var(--success);}} .pc .contra h3{{color:#b91c1c;}}
 .pc ul{{margin:0;padding-left:18px;}}
 .grid-meta{{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.88rem;color:var(--muted);}}
@@ -540,26 +604,28 @@ padding:10px 18px;border-radius:8px;font-weight:600;margin-top:8px;}}
 .subnav{{font-size:.9rem;margin:6px 0 0;}}
 .search{{width:100%;padding:11px 14px;font-size:1rem;border:1px solid var(--border);border-radius:10px;margin:0 0 14px;}}
 .search:focus{{outline:2px solid var(--accent);border-color:var(--accent);}}
-.feat{{border:2px solid var(--accent);border-radius:14px;padding:8px 14px 2px;margin:14px 0;background:#fff;}}
+.feat{{border:2px solid var(--accent);border-radius:14px;padding:8px 14px 2px;margin:14px 0;background:var(--card);}}
 .feat-label{{display:inline-block;background:var(--accent);color:#fff;font-weight:600;font-size:.82rem;border-radius:999px;padding:2px 12px;margin:4px 0 2px;}}
 .feat .card{{border:none;margin:0;padding:10px 6px;}}
 .azlist{{columns:2;column-gap:32px;padding-left:18px;}} @media(max-width:600px){{.azlist{{columns:1;}}}}
 .azlist li{{margin:2px 0;}}
 .vs-col{{display:flex;flex-wrap:wrap;gap:14px;}} .vs-col>div{{flex:1;min-width:240px;}}
 .faq{{margin:22px 0;}} .faq h2{{font-size:1.1rem;margin:0 0 8px;}}
-.faq details{{background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 14px;margin:0 0 8px;}}
+.faq details{{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px;margin:0 0 8px;}}
 .faq summary{{cursor:pointer;font-weight:600;}} .faq details p{{margin:8px 0 0;color:var(--muted);}}
 .disclosure{{color:var(--muted);font-size:.82rem;border-top:1px solid var(--border);margin-top:24px;padding-top:14px;}}
 footer{{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);font-size:.85rem;}}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">{e(ui['skip'])}</a>
 <header><div class="wrap">
+<button class="themebtn" type="button" onclick="abanTheme()" aria-label="{e(ui['theme'])}">🌓 {e(ui['theme'])}</button>
 <a href="{e(page_path(lang,'home'))}"><h1>📡 {e(SITE_NAME)}</h1></a>
 <div class="tag">{e(ui['tagline'])}</div>
 <div class="langbar">🌐 {lang_switcher(available, lang, kind, slug)}</div>
 </div></header>
-<main><div class="wrap">
+<main id="main"><div class="wrap">
 {body}
 <aside class="nl">
 <strong>📬 {e(ui['nl_title'])}</strong>
@@ -570,8 +636,13 @@ footer{{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);fon
 </div></main>
 <footer><div class="wrap">
 © {date.today().year} {e(SITE_NAME)} · <a href="/datenschutz.html">{e(ui['privacy'])}</a> ·
-<a href="/impressum.html">{e(ui['imprint'])}</a> · {e(ui['data_note'])}
+<a href="/impressum.html">{e(ui['imprint'])}</a> · <a href="/partner.html">{e(ui['partner_nav'])}</a> · {e(ui['data_note'])}
 </div></footer>
+<script>
+function abanTheme(){{var h=document.documentElement;var t=h.getAttribute('data-theme')==='dark'?'light':'dark';
+h.setAttribute('data-theme',t);try{{localStorage.setItem('aban-theme',t);}}catch(e){{}}}}
+(function(){{try{{var t=localStorage.getItem('aban-theme');if(t)document.documentElement.setAttribute('data-theme',t);}}catch(e){{}}}})();
+</script>
 </body>
 </html>"""
 
@@ -1109,6 +1180,53 @@ Stand: {date.today().strftime('%m/%Y')}.</p>"""
                 canonical=BASE_URL + "/datenschutz.html", available=available, kind="home")
 
 
+def partner_page(ui, available, lang="de"):
+    body = f"""<p><a href="/">← {e(ui['all_tools'])}</a></p>
+<h1>🤝 {e(ui['partner_nav'])}</h1>
+<p class="meta">{e(ui['partner_intro'])}</p>
+<div class="note"><strong>{e(ui['disclosure'])}</strong></div>
+<h2>{e(ui['partner_q1'])}</h2><p>{e(ui['partner_a1'])}</p>
+<h2>{e(ui['partner_q2'])}</h2><p>{e(ui['partner_a2'])}</p>
+<h2>{e(ui['partner_q3'])}</h2><p>{e(ui['partner_a3'])}</p>"""
+    return page(lang=lang, ui=ui, title=f"{ui['partner_nav']} — {SITE_NAME}",
+                description=ui["partner_intro"], body=body,
+                canonical=BASE_URL + page_path(lang, "partner"),
+                available=available, kind="partner")
+
+
+FAVICON_SVG = (
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
+    f'<rect width="64" height="64" rx="14" fill="{ACCENT}"/>'
+    '<circle cx="32" cy="32" r="18" fill="none" stroke="#fff" stroke-width="3"/>'
+    '<circle cx="32" cy="32" r="9" fill="none" stroke="#fff" stroke-width="3"/>'
+    '<circle cx="32" cy="32" r="2.5" fill="#fff"/>'
+    '<line x1="32" y1="32" x2="46" y2="18" stroke="#fff" stroke-width="3"/></svg>'
+)
+
+
+def write_static_assets(out: Path):
+    """Favicon, PWA manifest, app icons, security.txt, humans.txt."""
+    (out / "favicon.svg").write_text(FAVICON_SVG, encoding="utf-8")
+    manifest = {
+        "name": SITE_NAME, "short_name": "KI-Radar",
+        "description": "Ehrlich bewertete KI-Tools für den DACH-Raum",
+        "start_url": "/", "display": "standalone",
+        "background_color": BG, "theme_color": ACCENT,
+        "icons": [{"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"},
+                  {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"}],
+    }
+    (out / "site.webmanifest").write_text(json.dumps(manifest, ensure_ascii=False), "utf-8")
+    sec = out / ".well-known"
+    sec.mkdir(parents=True, exist_ok=True)
+    (sec / "security.txt").write_text(
+        f"Contact: mailto:hallo@abannews.com\nPreferred-Languages: de, en\n"
+        f"Canonical: {BASE_URL}/.well-known/security.txt\n", encoding="utf-8")
+    (out / "humans.txt").write_text(
+        f"/* TEAM */\nSite: {SITE_NAME}\nContact: hallo@abannews.com\n"
+        f"/* SITE */\nStandards: HTML5, JSON-LD\nComponents: pure static, no tracking\n",
+        encoding="utf-8")
+
+
 # --- Build ---------------------------------------------------------------------
 
 def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
@@ -1339,6 +1457,12 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
         of.write_text(vshub_page(pairs, ui, lang, available), encoding="utf-8")
         pages += 1
 
+        # Partner / transparency page
+        of = out_file(out, lang, "partner")
+        of.parent.mkdir(parents=True, exist_ok=True)
+        of.write_text(partner_page(ui, available, lang), encoding="utf-8")
+        pages += 1
+
         # Glossary hub + term pages
         if glossary:
             of = out_file(out, lang, "glossary")
@@ -1368,7 +1492,7 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                 + [BASE_URL + page_path(lang, "uc", slugify(uc)) for uc, _ in use_cases]
                 + [BASE_URL + page_path(lang, "budget", s) for s, _, _ in budget_tiers]
                 + [BASE_URL + page_path(lang, "stack", st["slug"]) for st in STACKS]
-                + [BASE_URL + page_path(lang, "vshub")]
+                + [BASE_URL + page_path(lang, "vshub"), BASE_URL + page_path(lang, "partner")]
                 + ([BASE_URL + page_path(lang, "glossary")] if glossary else [])
                 + [BASE_URL + page_path(lang, "term", t["slug"]) for t in glossary])
         sm = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -1398,13 +1522,17 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
     # Static client-side search (no deps, no tracking, DSGVO-safe).
     (out / "search.js").write_text(SEARCH_JS, encoding="utf-8")
 
-    # Open Graph images (Pillow); skipped gracefully if Pillow is unavailable.
+    # Favicon, PWA manifest, security.txt, humans.txt.
+    write_static_assets(out)
+
+    # Open Graph images + PWA app icons (Pillow); skipped gracefully without it.
     og_count = 0
     try:
         import og_images
         og_count = og_images.generate(tools, out, slugify)
+        og_images.app_icons(out)
     except ImportError:
-        print("  (Pillow not installed — skipping OG image generation)")
+        print("  (Pillow not installed — skipping OG image + icon generation)")
 
     print(f"Built {pages} pages across {len(available)} languages "
           f"({', '.join(available)}) + {og_count} OG images + sitemap + RSS → {out}/")
