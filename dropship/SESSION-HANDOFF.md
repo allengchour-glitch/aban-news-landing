@@ -10,6 +10,15 @@
 (0 € Abo, größtes Sortiment). KEINE Ergänzungsplattform (Spocket/Syncee verworfen).
 → Für schnellen CH-Versand stattdessen **CJ-Frankfurt-EU-Lager** nutzen: `CJ_COUNTRY=DE` im Importscript.
 
+## ⚠️ THEME/ADMIN GEHT NICHT AUTONOM (getestet 2026-05-30)
+Browser-Zugriff hilft NICHT für Shopify-Admin/Theme-Editor: Login-Wall
+(`accounts.shopify.com/login`) + Cloudflare-Bot-Verification blocken headless-Browser.
+Kein Passwort-Abfragen, kein Display. → Hero einsetzen, Markenfarben, Cookie-Banner,
+Collections ausblenden bleiben **manuell beim User** (Theme-Editor/Admin).
+Lesende Storefront-Screenshots gehen weiterhin (öffentlich).
+Hero-Bild liegt bereit: `dropship/assets/hero-sommer-palmblatt.jpg`.
+CJ-Limit am Abend des 2026-05-30 weiterhin erschöpft (mehrfach getestet) → Reset abwarten.
+
 ## 🔴 OFFENER NÄCHSTER SCHRITT (hier weitermachen)
 
 **Autonomer CJ-Produkt-Import — Pipeline STEHT, Auth verifiziert. Blocker: CJ-Tageslimit.**
