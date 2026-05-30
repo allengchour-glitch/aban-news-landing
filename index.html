@@ -61,15 +61,16 @@
     .chip{display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1px solid var(--line);
       border-radius:999px;padding:.4rem .8rem;font-size:.86rem;font-weight:600;box-shadow:var(--shadow-sm)}
 
-    /* CTA card */
-    .cta{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem;box-shadow:var(--shadow);max-width:440px}
+    /* CTA card — dominant über Switcher */
+    .cta{background:var(--card);border:2px solid var(--amber);border-radius:var(--r);padding:1.15rem;box-shadow:var(--shadow),0 0 0 4px var(--amber-lt);max-width:440px}
     .row{display:flex;gap:.5rem}
     .row input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:.85rem .9rem;font-size:1rem;background:#fff}
     .row input:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:var(--amber)}
-    .anchor{font-size:.82rem;color:var(--muted);margin:.6rem 0 0;line-height:1.45}
-    .consent{display:flex;gap:.5rem;align-items:flex-start;margin:.6rem 0 0;font-size:.78rem;color:var(--muted)}
-    .consent input{margin-top:.15rem}
-    .trust{display:flex;flex-wrap:wrap;gap:.5rem 1rem;margin:.75rem 0 0;padding:.7rem 0 0;border-top:1px dashed var(--line);font-size:.78rem;color:var(--muted)}
+    .row .btn{font-size:1.05rem;padding:.85rem 1.25rem}
+    .anchor{font-size:.82rem;color:var(--muted);margin:.5rem 0 0;line-height:1.4}
+    .consent{display:flex;gap:.4rem;align-items:center;margin:.5rem 0 0;font-size:.72rem;color:var(--muted)}
+    .consent input{margin:0}
+    .trust{display:flex;flex-wrap:wrap;gap:.35rem .8rem;margin:.5rem 0 0;padding:.5rem 0 0;border-top:1px dashed var(--line);font-size:.72rem;color:var(--muted)}
     .trust b{color:var(--ink)}
 
     /* Preview switcher (auto) */
@@ -141,7 +142,7 @@
       <div>
         <span class="chip-status"><span class="pulse"></span> Mo–Fr · kuratiert von Aban in der Schweiz</span>
         <h1>Die wichtigsten KI-Updates für DACH-Profis — jeden Morgen in 5&nbsp;Minuten.</h1>
-        <p class="lead">Kein Hype, keine PR. Du weißt morgens in 5 Minuten, was zählt — und was du ignorieren kannst.</p>
+        <p class="lead">Jeden Morgen die 3 KI-Entwicklungen, die dein Business heute betreffen — und nichts sonst.</p>
         <div class="chips">
           <span class="chip">📰 3–5 News</span>
           <span class="chip">🛠 1 getestetes Tool</span>
