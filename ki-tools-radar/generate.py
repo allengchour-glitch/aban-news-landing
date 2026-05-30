@@ -315,6 +315,15 @@ NEW_UI = {
                   "es": "Stacks por profesión", "it": "Stack per professione", "pt": "Stacks por profissão",
                   "nl": "Stacks per beroep", "pl": "Zestawy wg zawodu", "tr": "Mesleğe göre paketler",
                   "ja": "職業別スタック", "zh": "按职业的工具组合"},
+    "vshub_nav": {"de": "Alle Vergleiche", "en": "All comparisons", "fr": "Tous les comparatifs",
+                  "es": "Todas las comparativas", "it": "Tutti i confronti", "pt": "Todas as comparações",
+                  "nl": "Alle vergelijkingen", "pl": "Wszystkie porównania", "tr": "Tüm karşılaştırmalar",
+                  "ja": "すべての比較", "zh": "全部对比"},
+    "vshub_title": {"de": "KI-Tool-Vergleiche", "en": "AI tool comparisons",
+                    "fr": "Comparatifs d'outils IA", "es": "Comparativas de herramientas de IA",
+                    "it": "Confronti tra strumenti IA", "pt": "Comparações de ferramentas de IA",
+                    "nl": "AI-tool vergelijkingen", "pl": "Porównania narzędzi AI",
+                    "tr": "YZ aracı karşılaştırmaları", "ja": "AIツール比較", "zh": "AI工具对比"},
     "stack_sub": {"de": "Die besten KI-Tools, kuratiert für diesen Beruf.",
                   "en": "The best AI tools, curated for this profession.",
                   "fr": "Les meilleurs outils IA, sélectionnés pour ce métier.",
@@ -400,6 +409,8 @@ def page_path(lang: str, kind: str, slug: str = "") -> str:
         return f"{prefix}/tools.html"
     if kind == "stack":
         return f"{prefix}/stack/{slug}.html"
+    if kind == "vshub":
+        return f"{prefix}/vergleiche.html"
     return prefix + "/"
 
 
@@ -831,6 +842,36 @@ def budget_page(title, slug, members, aff, ui, lang, available):
                 available=available, kind="budget", slug=slug)
 
 
+def site_schema(ui, lang):
+    """WebSite + Organization JSON-LD for entity recognition / E-E-A-T."""
+    data = [
+        {"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME,
+         "url": BASE_URL + page_path(lang, "home"), "inLanguage": lang,
+         "description": ui["tagline"]},
+        {"@context": "https://schema.org", "@type": "Organization", "name": SITE_NAME,
+         "url": BASE_URL + "/", "description": ui["tagline"]},
+    ]
+    return "".join(
+        f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>'
+        for x in data)
+
+
+def vshub_page(pairs, ui, lang, available):
+    """Hub linking every comparison page (crawl depth + internal linking)."""
+    crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
+                        (ui["vshub_title"], page_path(lang, "vshub"))], lang)
+    items = sorted(pairs, key=lambda ab: ab[0]["name"].lower())
+    links = "\n".join(
+        f'<li><a href="{e(page_path(lang,"vs",vs_slug(a["id"],b["id"])))}">'
+        f'{e(a["name"])} vs {e(b["name"])}</a></li>' for a, b in items)
+    body = (f'{crumb}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+            f'<h1>🆚 {e(ui["vshub_title"])}</h1>\n<ul class="azlist">{links}</ul>')
+    return page(lang=lang, ui=ui, title=ui["vshub_title"] + f" — {SITE_NAME}",
+                description=ui["vshub_title"] + ".", body=body,
+                canonical=BASE_URL + page_path(lang, "vshub"),
+                available=available, kind="vshub")
+
+
 def az_page(tools, ui, lang, available):
     """Alphabetical A–Z index of all tools (navigation + crawl depth)."""
     items = sorted(tools, key=lambda t: t["name"].lower())
@@ -1001,7 +1042,8 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                for x in BUDGETS])
         subnav = (f'<p class="subnav">🏆 <a href="{e(page_path(lang,"dsgvo"))}">{e(ui["dsgvo_nav"])}</a>'
                   f' · 🆕 <a href="{e(page_path(lang,"trending"))}">{e(ui["trending_nav"])}</a>'
-                  f' · 🔤 <a href="{e(page_path(lang,"az"))}">{e(ui["az_nav"])}</a></p>\n'
+                  f' · 🔤 <a href="{e(page_path(lang,"az"))}">{e(ui["az_nav"])}</a>'
+                  f' · 🆚 <a href="{e(page_path(lang,"vshub"))}">{e(ui["vshub_nav"])}</a></p>\n'
                   f'<p class="subnav"><strong>{e(ui["budget_nav"])}:</strong> {budget_links}</p>\n'
                   f'<p class="subnav"><strong>{e(ui["stack_nav"])}:</strong> {stack_links}</p>\n'
                   f'<p class="subnav"><strong>{e(ui["by_use_case"])}:</strong> {uc_links}</p>')
@@ -1012,7 +1054,7 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
         if featured:
             feat_html = (f'<div class="feat"><span class="feat-label">🏅 {e(ui["tool_of_month"])}</span>\n'
                          f'{tool_card(featured, aff, ui, lang)}</div>\n')
-        home_body = (f'{itemlist(tools_sorted, lang)}'
+        home_body = (f'{site_schema(ui, lang)}{itemlist(tools_sorted, lang)}'
                      f'<p class="meta">{e(ui["categories"])}: {cat_links}</p>\n{subnav}\n{feat_html}'
                      f'<h2 style="margin:18px 0 12px">{e(ui["home_heading"].format(n=len(tools)))}</h2>\n'
                      f'{search}\n<p id="nores" hidden>{e(ui["no_results"])}</p>\n{cards}\n'
@@ -1103,6 +1145,12 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
         of.write_text(az_page(tools, ui, lang, available), encoding="utf-8")
         pages += 1
 
+        # Comparison hub
+        of = out_file(out, lang, "vshub")
+        of.parent.mkdir(parents=True, exist_ok=True)
+        of.write_text(vshub_page(pairs, ui, lang, available), encoding="utf-8")
+        pages += 1
+
         # RSS feed (freshness signal + subscribers)
         feed = out / feed_path(lang).lstrip("/")
         feed.parent.mkdir(parents=True, exist_ok=True)
@@ -1118,7 +1166,8 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                 + [BASE_URL + page_path(lang, "vs", vs_slug(a["id"], b["id"])) for a, b in pairs]
                 + [BASE_URL + page_path(lang, "uc", slugify(uc)) for uc, _ in use_cases]
                 + [BASE_URL + page_path(lang, "budget", s) for s, _, _ in budget_tiers]
-                + [BASE_URL + page_path(lang, "stack", st["slug"]) for st in STACKS])
+                + [BASE_URL + page_path(lang, "stack", st["slug"]) for st in STACKS]
+                + [BASE_URL + page_path(lang, "vshub")])
         sm = ['<?xml version="1.0" encoding="UTF-8"?>',
               '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
         for url in urls:
