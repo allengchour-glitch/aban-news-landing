@@ -3,444 +3,251 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>aban news — The first daily German-speaking AI newsletter (Mon–Fri, 3–5 min, no hype)</title>
-  <meta name="description" content="aban news is the first daily German-language AI newsletter for DACH (Germany, Austria, Switzerland). Mon–Fri morning: 3–5 news, one tool, one prompt. The newsletter itself is in German — this page explains why you might want it.">
+  <title>AI newsletter for the DACH region – daily AI news in 5 minutes | aban news</title>
+  <meta name="description" content="The AI updates that matter for professionals in the German-speaking market – every morning in 5 minutes. Mon–Fri, no hype. News, one tested tool, one prompt. GDPR-compliant. Written in German.">
   <meta name="theme-color" content="#d97706">
-  <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://abannews.com/en/">
-
-  <!-- hreflang -->
-  <link rel="alternate" hreflang="de" href="https://abannews.com/" />
-  <link rel="alternate" hreflang="en" href="https://abannews.com/en/" />
-  <link rel="alternate" hreflang="x-default" href="https://abannews.com/" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="aban news — The first daily German-speaking AI newsletter">
-  <meta property="og:description" content="Mon–Fri morning: 3–5 news, one tool, one prompt. Hand-curated, no marketing speak. The newsletter is in German.">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/">
+  <meta property="og:title" content="aban news — Daily AI newsletter for the DACH region">
+  <meta property="og:description" content="The AI updates that matter for the German-speaking market – every morning in 5 minutes. No hype.">
   <meta property="og:image" content="https://abannews.com/og-image.svg">
-  <meta property="og:image:type" content="image/svg+xml">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://abannews.com/en/">
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="de_DE">
-  <meta property="og:site_name" content="aban news">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="aban news — Daily German-speaking AI newsletter">
-  <meta name="twitter:description" content="Mon–Fri morning: 3 news, one tool, one prompt. In German.">
-  <meta name="twitter:image" content="https://abannews.com/og-image.svg">
-
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="alternate icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
-
-  <link rel="stylesheet" href="/css/styles.css">
-
-  <!-- Structured data (Schema.org Newsletter) -->
+  <link rel="preconnect" href="https://abannews.beehiiv.com" crossorigin>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "aban news",
-    "url": "https://abannews.com/en/",
-    "description": "The first daily German-language AI newsletter for DACH solopreneurs and marketers.",
-    "publisher": {
-      "@type": "Person",
-      "name": "Aban (Allen Chour)",
-      "url": "https://abannews.com/en/"
-    },
-    "potentialAction": {
-      "@type": "SubscribeAction",
-      "target": "https://abannews.com/#signup"
-    },
-    "inLanguage": "en"
-  }
+  {"@context":"https://schema.org","@type":"WebSite","name":"aban news","url":"https://abannews.com/","description":"Daily AI newsletter for professionals in the German-speaking (DACH) market.","inLanguage":"en"}
   </script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    :root{
+      --bg:#fffaf2;--card:#ffffff;--ink:#1c2530;--muted:#6b7280;--line:#ece6db;
+      --amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ok:#0f9d6b;
+      --shadow:0 18px 50px rgba(28,37,48,.12);--shadow-sm:0 6px 18px rgba(28,37,48,.08);
+      --r:18px;
+    }
+    html{-webkit-text-size-adjust:100%}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      color:var(--ink);background:radial-gradient(1200px 600px at 85% -10%,var(--cream),transparent 60%),var(--bg);
+      line-height:1.5;-webkit-font-smoothing:antialiased}
+    img,svg{max-width:100%;display:block}
+    a{color:inherit}
+    .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 1.25rem}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:30;background:rgba(255,250,242,.82);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+    .brand{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.15rem;text-decoration:none}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px var(--amber-lt)}
+    .hnav{display:flex;align-items:center;gap:1.25rem;font-size:.92rem}
+    .hnav a{color:var(--muted);text-decoration:none}
+    .hnav a:hover{color:var(--ink)}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700}
+    .lang a{padding:.32rem .6rem;color:var(--muted);text-decoration:none}
+    .lang a.on{background:var(--ink);color:#fff}
+    .btn{display:inline-flex;align-items:center;gap:.45rem;border:0;border-radius:12px;cursor:pointer;
+      font-weight:700;font-size:1rem;padding:.8rem 1.15rem;background:var(--amber);color:#fff;text-decoration:none;
+      box-shadow:0 8px 20px rgba(217,119,6,.28);transition:transform .12s ease,box-shadow .12s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(217,119,6,.34)}
+    .btn--sm{padding:.5rem .85rem;font-size:.9rem;border-radius:10px}
+    .btn--ghost{background:transparent;color:var(--amber-dk);box-shadow:none;border:1px solid var(--line)}
+
+    /* Hero */
+    .hero{padding:clamp(1.5rem,4vw,3rem) 0 1.5rem}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+    .chip-status{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--amber-dk);
+      background:var(--amber-lt);border:1px solid #f6d9ad;padding:.35rem .7rem;border-radius:999px;font-weight:600}
+    .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(15,157,107,.5);animation:p 2s infinite}
+    @keyframes p{0%{box-shadow:0 0 0 0 rgba(15,157,107,.45)}70%{box-shadow:0 0 0 7px rgba(15,157,107,0)}100%{box-shadow:0 0 0 0 rgba(15,157,107,0)}}
+    h1{font-size:clamp(2rem,4.6vw,3.25rem);line-height:1.05;letter-spacing:-.025em;margin:.9rem 0 .6rem;font-weight:800}
+    .lead{font-size:clamp(1rem,1.3vw,1.12rem);color:#3b4654;max-width:36ch;margin:0 0 1rem}
+    .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.15rem}
+    .chip{display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1px solid var(--line);
+      border-radius:999px;padding:.4rem .8rem;font-size:.86rem;font-weight:600;box-shadow:var(--shadow-sm)}
+
+    /* CTA card */
+    .cta{background:var(--card);border:2px solid var(--amber);border-radius:var(--r);padding:1.15rem;box-shadow:var(--shadow),0 0 0 4px var(--amber-lt);max-width:440px}
+    .row{display:flex;gap:.5rem}
+    .row input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:.85rem .9rem;font-size:1rem;background:#fff}
+    .row input:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:var(--amber)}
+    .row .btn{font-size:1.05rem;padding:.85rem 1.25rem}
+    .anchor{font-size:.82rem;color:var(--muted);margin:.5rem 0 0;line-height:1.4}
+    .langnote{font-size:.78rem;color:var(--amber-dk);background:var(--amber-lt);border:1px solid #f6d9ad;border-radius:10px;padding:.45rem .65rem;margin:.6rem 0 0;line-height:1.45}
+    .consent{display:flex;gap:.4rem;align-items:center;margin:.5rem 0 0;font-size:.72rem;color:var(--muted)}
+    .consent input{margin:0}
+    .trust{display:flex;flex-wrap:wrap;gap:.35rem .8rem;margin:.5rem 0 0;padding:.5rem 0 0;border-top:1px dashed var(--line);font-size:.72rem;color:var(--muted)}
+    .trust b{color:var(--ink)}
+
+    /* Preview */
+    .preview{position:relative}
+    .mail{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+    .mail-bar{display:flex;align-items:center;gap:.45rem;padding:.6rem .9rem;background:#f5f2ec;border-bottom:1px solid var(--line)}
+    .tl{width:11px;height:11px;border-radius:50%}.tl.r{background:#ef4444}.tl.y{background:#f59e0b}.tl.g{background:#10b981}
+    .mail-meta{margin-left:.4rem;font-size:.78rem;color:var(--muted)}
+    .mail-body{padding:1rem 1.15rem 1.15rem}
+    .from{font-size:.8rem;color:var(--muted);margin-bottom:.5rem}
+    .from b{color:var(--ink)}
+    .subj{font-weight:800;font-size:1.05rem;margin:.1rem 0 .7rem;letter-spacing:-.01em}
+    .slug{font-size:.78rem;color:var(--amber-dk);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+    .news{list-style:none;margin:.5rem 0 0;padding:0}
+    .news li{display:flex;gap:.55rem;padding:.4rem 0;font-size:.92rem;border-bottom:1px solid var(--line)}
+    .news li:last-child{border-bottom:0}
+    .news .mk{color:var(--amber)}
+    .signoff{font-style:italic;color:var(--muted);font-size:.85rem;margin:.7rem 0 0}
+    .switch{display:flex;align-items:center;justify-content:center;gap:.5rem;margin:.8rem 0 0}
+    .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:.35rem .8rem;font-size:.82rem;font-weight:700;
+      color:var(--muted);cursor:pointer;transition:.15s}
+    .tab[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .fade{animation:fade .5s ease}
+    @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+    /* Below-fold strip */
+    .strip{margin-top:1.5rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);
+      display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+    .step{padding:1.1rem 1.25rem;border-right:1px solid var(--line)}
+    .step:last-child{border-right:0}
+    .step h3{margin:.1rem 0 .25rem;font-size:1rem}
+    .step p{margin:0;font-size:.88rem;color:var(--muted)}
+    .step .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--amber-lt);color:var(--amber-dk);font-weight:800;font-size:.85rem}
+
+    .honest{margin-top:1rem;text-align:center;font-size:.9rem;color:var(--muted)}
+    .honest b{color:var(--ink)}
+
+    footer{margin-top:2rem;border-top:1px solid var(--line);background:rgba(255,255,255,.5)}
+    footer .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:center;justify-content:center;padding:1.1rem 1.25rem;font-size:.82rem;color:var(--muted)}
+    footer a{text-decoration:none;color:var(--muted)}footer a:hover{color:var(--ink)}
+
+    @media(max-width:860px){
+      .hero-grid{grid-template-columns:1fr;gap:1.5rem}
+      .lead{max-width:none}
+      .preview{order:2}
+      .mail{max-height:54vh;overflow:auto;-webkit-overflow-scrolling:touch}
+      .strip{grid-template-columns:1fr}
+      .step{border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}
+      .hnav .lk{display:none}
+    }
+  </style>
 </head>
 <body>
-
-<a href="#main" class="skip">Skip to main content</a>
-
-<header class="site-header">
+<header>
   <div class="wrap">
-    <a href="/en/" class="brand" aria-label="aban news home">
-      <span aria-hidden="true">☕</span>
-      <span>aban news</span>
-    </a>
-    <nav class="nav" aria-label="Main navigation">
-      <a href="/en/sponsoring.html">Sponsor</a>
-      <a href="/en/founding.html">Premium</a>
-      <a href="/" class="lang-switch" hreflang="de" aria-label="Auf Deutsch lesen">🇩🇪 DE</a>
-      <a href="/#signup" class="nav-cta">Subscribe</a>
+    <a href="/en/" class="brand"><span class="dot"></span> aban news</a>
+    <nav class="hnav">
+      <a href="/en/founding.html" class="lk">Premium</a>
+      <span class="lang"><a href="/">DE</a><a href="/en/" class="on">EN</a><a href="/fr/">FR</a><a href="/it/">IT</a></span>
+      <a href="#signup" class="btn btn--sm">Subscribe</a>
     </nav>
   </div>
 </header>
 
-<main id="main">
-
-  <!-- HERO -->
+<main>
   <section class="hero">
-    <div class="wrap wrap--wide hero-grid">
-
-      <div class="hero-content reveal">
-
-        <span class="identity-count" aria-label="Status">
-          <span class="dot" aria-hidden="true"></span>
-          <span><strong>Mon–Fri</strong> · written in Switzerland, read across DACH</span>
-        </span>
-
-        <h1 class="hero-headline">The first daily German AI newsletter — 3–5 min, no hype.</h1>
-
-        <p class="lead">
-          A daily AI newsletter for German-speaking solopreneurs, marketers and operators. Mon–Fri morning. Three to five news items with my own take, one tool I actually tested, one prompt you can copy-paste. The newsletter is in German. This page explains what it is and why you might want it.
-        </p>
-
-        <p class="lead" style="font-size:1rem;color:#6b7280;">
-          <strong>Heads up:</strong> the newsletter itself ships in German only. If you read German — or you know someone in DACH who'd benefit — keep reading.
-        </p>
-
-        <ul class="promise" role="list">
-          <li>3–5 news with my own take</li>
-          <li>One tool of the day</li>
-          <li>One copy-paste prompt</li>
-          <li>3–5 min read</li>
-        </ul>
-
-        <p style="margin-top:2rem;">
-          <a href="/#signup" class="btn btn--lg">Subscribe (German newsletter) →</a>
-          <a href="/en/about.html" class="btn btn--ghost" style="margin-left:.5rem;">Who writes this →</a>
-        </p>
-
-        <ul class="trust" aria-label="Trust" style="margin-top:1.5rem;">
-          <li>GDPR-compliant</li>
-          <li>1-click unsubscribe</li>
-          <li>No spam, ever</li>
-          <li>No tracking pixel</li>
-        </ul>
-
+    <div class="wrap hero-grid">
+      <!-- LEFT -->
+      <div>
+        <span class="chip-status"><span class="pulse"></span> Mon–Fri · curated by Aban in Switzerland</span>
+        <h1>The AI updates that matter for the DACH market — every morning in 5&nbsp;minutes.</h1>
+        <p class="lead">Each morning, the 3 AI developments that actually affect your business today — and nothing else.</p>
+        <div class="chips">
+          <span class="chip">📰 3–5 news</span>
+          <span class="chip">🛠 1 tested tool</span>
+          <span class="chip">💡 1 prompt</span>
+        </div>
+        <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
+          <div class="row">
+            <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" inputmode="email" aria-label="Email address">
+            <button type="submit" class="btn">Get the 5-min briefing →</button>
+          </div>
+          <p class="anchor">Every weekday at 7:30 · 1 tool + 3 relevant updates · no spam, no affiliate junk.</p>
+          <p class="langnote">🇩🇪 Heads-up: aban news is <b>written in German</b>, built for the DACH market. A dedicated English edition is on the roadmap — subscribe and you'll be first to hear.</p>
+          <label class="consent"><input type="checkbox" name="consent" value="1" required>
+            <span>I agree to receive an email Mon–Fri. Unsubscribe anytime with one click. <a href="/datenschutz.html">Privacy</a>.</span></label>
+          <div class="trust"><span><b>GDPR</b>-compliant</span><span><b>1-click</b> unsubscribe</span><span>no tracking pixel</span></div>
+        </form>
       </div>
 
-      <div class="hero-visual reveal" aria-hidden="true">
-        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Coffee mug with newsletter steam">
-          <defs>
-            <linearGradient id="hero-cup" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#fbbf24"/>
-              <stop offset="1" stop-color="#d97706"/>
-            </linearGradient>
-            <linearGradient id="hero-mail" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#ffffff"/>
-              <stop offset="1" stop-color="#fef3c7"/>
-            </linearGradient>
-            <radialGradient id="hero-glow" cx="0.5" cy="0.5" r="0.5">
-              <stop offset="0" stop-color="#fde68a" stop-opacity="0.6"/>
-              <stop offset="1" stop-color="#fde68a" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <circle cx="200" cy="220" r="180" fill="url(#hero-glow)"/>
-          <g class="hero-steam" stroke="#d97706" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
-            <path d="M110 130 L110 50"/>
-            <path d="M110 50 L170 130"/>
-            <path d="M170 130 L170 50"/>
-          </g>
-          <ellipse cx="150" cy="335" rx="115" ry="10" fill="#1f2937" opacity="0.12"/>
-          <path d="M65 170 L65 290 Q65 330 110 330 L190 330 Q235 330 235 290 L235 170 Z" fill="url(#hero-cup)"/>
-          <ellipse cx="150" cy="170" rx="85" ry="12" fill="#b45309"/>
-          <ellipse cx="150" cy="170" rx="74" ry="7" fill="#1f2937" opacity="0.4"/>
-          <path d="M235 200 Q285 200 285 245 Q285 290 235 290" stroke="#d97706" stroke-width="18" fill="none" stroke-linecap="round"/>
-          <g transform="translate(265 90) rotate(8)">
-            <rect x="0" y="0" width="110" height="75" rx="8" fill="url(#hero-mail)" stroke="#d97706" stroke-width="3"/>
-            <path d="M0 0 L55 42 L110 0" stroke="#d97706" stroke-width="3" fill="none" stroke-linejoin="round"/>
-            <circle cx="105" cy="6" r="11" fill="#dc2626"/>
-            <text x="105" y="11" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff">1</text>
-          </g>
-        </svg>
-
-        <div class="mockup" role="img" aria-label="Preview: aban news newsletter">
-          <div class="mockup-header">
-            <span class="mockup-dot mockup-dot--r"></span>
-            <span class="mockup-dot mockup-dot--y"></span>
-            <span class="mockup-dot mockup-dot--g"></span>
-            <span class="mockup-title">📧 aban news · Wed 27 May · 4 min read</span>
-          </div>
-          <div class="mockup-body">
-            <div class="mockup-from">From <strong>Aban</strong> &lt;hallo@abannews.com&gt;</div>
-            <div class="mockup-subj">☕ China pulls the curtain, DeepSeek cuts prices</div>
-            <div class="mockup-text">
-              <em>(Newsletter is in German — translation here is illustrative.)</em> Today: three news items I actually care about — the rest of the feeds is industry chatter I filtered out for you…
-            </div>
-            <div class="mockup-section">📰 DeepSeek quarters V4-Pro pricing</div>
-            <div class="mockup-text mockup-text--small">
-              The Chinese startup permanently cut its top model to 25% of the previous price. <span class="mockup-link">Source →</span>
-            </div>
-            <div class="mockup-section">🛠 Tool of the day: eustella (Vienna)</div>
-            <div class="mockup-text mockup-text--small">
-              AI companion from Vienna — EU hosting, GDPR-native. Open beta, free.
-            </div>
-            <div class="mockup-signoff">— Aban</div>
+      <!-- RIGHT: preview -->
+      <div class="preview">
+        <p style="text-align:center;font-size:.82rem;color:var(--muted);margin:0 0 .5rem;font-weight:600;">3 real sample issues — click through:</p>
+        <div class="mail">
+          <div class="mail-bar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
+            <span class="mail-meta" id="mMeta">📥 Inbox · aban news</span></div>
+          <div class="mail-body">
+            <div class="from">From <b>Aban</b> &lt;hallo@abannews.com&gt;</div>
+            <div class="subj" id="mSubj">…</div>
+            <div class="slug" id="mSlug">What matters today</div>
+            <ul class="news" id="mNews"></ul>
+            <p class="signoff">— Aban</p>
           </div>
         </div>
+        <div class="switch" id="tabs" role="tablist" aria-label="Sample issues">
+          <button class="tab" role="tab" data-i="0">Mon</button>
+          <button class="tab" role="tab" data-i="1">Wed</button>
+          <button class="tab" role="tab" data-i="2">Fri</button>
+        </div>
       </div>
-
     </div>
-  </section>
 
-  <div class="wave-divider" aria-hidden="true">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,30 C200,55 400,5 600,30 C800,55 1000,5 1200,30 L1200,60 L0,60 Z" fill="#fef3c7"/>
-    </svg>
-  </div>
-
-  <!-- WHY READ ON A GERMAN-LANGUAGE PAGE -->
-  <section class="reveal">
+    <!-- compact below-fold strip -->
     <div class="wrap">
-      <h2 class="center">Why are you reading this in English?</h2>
-      <p class="center muted">A short, honest explanation.</p>
-
-      <div class="grid grid--3">
-        <div class="card">
-          <h3>You read German</h3>
-          <p>Maybe you grew up bilingual, learned at school, or live in DACH and just landed on the English page first. Welcome. The newsletter is in German — sign up over here.</p>
-        </div>
-        <div class="card">
-          <h3>You don't, but you know someone who does</h3>
-          <p>A friend, a colleague, a family member in Berlin, Vienna or Zurich. Forward them this page. If they appreciate the recommendation, that's worth more than any ad.</p>
-        </div>
-        <div class="card">
-          <h3>You're a creator looking at the DACH market</h3>
-          <p>Cross-promo, partnerships, ad swaps — happy to talk. The DACH AI audience is underserved and more skeptical than the US market. Different playbook.</p>
-        </div>
+      <div class="strip">
+        <div class="step"><span class="n">1</span><h3>We scan</h3><p>Every night, 5 German AI sources + Reddit. Out of ~200 posts, only the few that matter.</p></div>
+        <div class="step"><span class="n">2</span><h3>Aban writes</h3><p>I read it myself, filter out the marketing fluff, and write with an actual opinion.</p></div>
+        <div class="step"><span class="n">3</span><h3>You read, 5 min</h3><p>07:30 in your inbox. Coffee, skim, take one thing away — done before your first meeting.</p></div>
       </div>
+      <p class="honest"><b>No testimonials yet — and that's honest.</b> aban news is just starting. No invented quotes, no fake numbers. You're early, and you shape it.</p>
     </div>
   </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="how reveal">
-    <div class="wrap wrap--wide">
-      <h2 class="center">How it works</h2>
-      <p class="center muted">Three steps — from source to coffee break.</p>
-
-      <div class="grid grid--3 how-grid">
-
-        <div class="card how-card">
-          <h3>1. The pipeline scans</h3>
-          <p>Every night the pipeline crawls five German AI sites, selected Twitter threads and Reddit. About 200 posts get filtered down to 20 candidates.</p>
-        </div>
-
-        <div class="card how-card">
-          <h3>2. Aban writes</h3>
-          <p>I read the top candidates myself, sort out marketing fluff, and write three news items with my own take — no copy-paste from press releases.</p>
-        </div>
-
-        <div class="card how-card">
-          <h3>3. You read, 3–5 min</h3>
-          <p>06:30 in your inbox. Coffee in hand, scan it, take one thing with you — done before your first meeting.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS BAR -->
-  <section class="stats-bar reveal">
-    <div class="wrap wrap--wide">
-      <ul class="stats" role="list">
-        <li class="stat-badge">
-          <strong>Mon–Fri</strong>
-          <span>since day one</span>
-        </li>
-        <li class="stat-badge">
-          <strong>3–5 min</strong>
-          <span>read time</span>
-        </li>
-        <li class="stat-badge">
-          <strong>100%</strong>
-          <span>GDPR-compliant</span>
-        </li>
-        <li class="stat-badge">
-          <strong>0</strong>
-          <span>tracking pixels</span>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- WHO READS THIS -->
-  <section class="alt reveal">
-    <div class="wrap wrap--wide">
-      <h2 class="center">Who reads aban news</h2>
-      <p class="center muted">Solopreneurs, marketers, and operators in Germany, Austria and Switzerland who use AI tools daily and are tired of hype-driven weekly digests.</p>
-
-      <div class="grid grid--3 social-proof">
-        <div class="card sp-card">
-          <h3>100 founding slots</h3>
-          <p>Lifetime premium for €149. Capped at 100 — after that, founding ends. Grab one before they're gone.</p>
-          <p class="sp-meta"><a href="/en/founding.html">→ See founding</a></p>
-        </div>
-
-        <div class="card sp-card">
-          <h3>Mon–Fri since day one</h3>
-          <p>Daily weekday mail, no exceptions. No "summer hiatus", no "busy week". If the mail doesn't ship, aban news has a problem.</p>
-          <p class="sp-meta">Consistency, not hype</p>
-        </div>
-
-        <div class="card sp-card">
-          <h3>GDPR-compliant · CH</h3>
-          <p>Swiss sole proprietorship, EU-compliant pipeline. 1-click unsubscribe. No tracking pixel. DPA available for DACH companies on request.</p>
-          <p class="sp-meta">Privacy by default</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHAT YOU WON'T FIND -->
-  <section class="alt">
-    <div class="wrap">
-      <h2>What you won't find here</h2>
-      <p class="muted">In most German AI newsletters, the following words are standard. Here they're on the banned list. If I write any of them, I rewrite the issue.</p>
-
-      <ul class="anti" role="list">
-        <li><span><strong>"Revolutionary"</strong>, <strong>"groundbreaking"</strong>, <strong>"game-changer"</strong> — hype words that explain nothing.</span></li>
-        <li><span><strong>"Quantum leap"</strong>, <strong>"disruptive"</strong>, <strong>"milestone"</strong> — PR boilerplate from the marketing dictionary.</span></li>
-        <li><span><strong>"Hello everyone"</strong>, <strong>"Dear community"</strong> — mass-address phrases that pretend we're not a newsletter.</span></li>
-        <li><span><strong>"Dive into the world of AI"</strong> — nobody dives into anything, especially not before coffee.</span></li>
-        <li><span><strong>Tools I haven't tested myself</strong> — no rewritten press releases.</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- COMPARISON TABLE -->
-  <section class="reveal">
-    <div class="wrap">
-      <h2 class="center">aban news vs weekly AI newsletters</h2>
-      <p class="center muted">How we differ from the typical Wednesday digest — laid out honestly.</p>
-
-      <div class="compare">
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th scope="col" class="compare-feature">What matters</th>
-              <th scope="col" class="compare-us">aban news</th>
-              <th scope="col" class="compare-other">Typical weekly</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Frequency</th>
-              <td class="compare-us">Mon–Fri daily</td>
-              <td class="compare-other">Once per week</td>
-            </tr>
-            <tr>
-              <th scope="row">Read time</th>
-              <td class="compare-us">3–5 min</td>
-              <td class="compare-other">10–15 min digest</td>
-            </tr>
-            <tr>
-              <th scope="row">Tone</th>
-              <td class="compare-us">Anti-hype, personal, direct</td>
-              <td class="compare-other">Marketing speak</td>
-            </tr>
-            <tr>
-              <th scope="row">Sources</th>
-              <td class="compare-us">5 German AI sites, linked</td>
-              <td class="compare-other">YouTube embeds + US mainstream</td>
-            </tr>
-            <tr>
-              <th scope="row">Action items</th>
-              <td class="compare-us">1 tool + 1 prompt per day</td>
-              <td class="compare-other">A weekend list — usually ignored</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOR INTERNATIONAL READERS -->
-  <section class="alt">
-    <div class="wrap">
-      <h2>For international readers</h2>
-      <p>
-        If you write a newsletter, run a tool, or work in AI from outside DACH and want context on the German-speaking market — the language is a moat, but it's a moat that goes both ways.
-      </p>
-      <p>
-        German-speaking solopreneurs, marketers and SMB operators are roughly 100 million people. They use AI tools, but most of the discourse around them is filtered through English Twitter and US-centric newsletters. There's a real gap, and aban news exists because of it.
-      </p>
-      <p>
-        If you're interested in cross-promotion, ad swaps, or just want to talk about the market, write to <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>. Direct line.
-      </p>
-    </div>
-  </section>
-
-  <!-- CROSS-LINKS -->
-  <section>
-    <div class="wrap">
-      <div class="grid grid--2">
-        <div class="card">
-          <h3>Want more?</h3>
-          <p>Become a <a href="/en/founding.html"><strong>founding member</strong></a> — €149 once, lifetime premium. Cap: 100 seats.</p>
-          <p><a href="/en/founding.html">→ Learn more</a></p>
-        </div>
-        <div class="card">
-          <h3>Want to sponsor?</h3>
-          <p>We accept <a href="/en/sponsoring.html"><strong>one ad per issue, max</strong></a>. Here's the format, rates, and booking flow.</p>
-          <p><a href="/en/sponsoring.html">→ See rate card</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="alt">
-    <div class="wrap wrap--narrow center">
-      <h2>Ready?</h2>
-      <p class="lead" style="margin-left:auto;margin-right:auto;">
-        The newsletter is in German. The signup is on the main page.
-      </p>
-      <p>
-        <a href="/#signup" class="btn btn--lg">Go to subscribe →</a>
-      </p>
-      <p class="small muted">
-        Or read more first: <a href="/en/about.html">about Aban</a> · <a href="/en/faq.html">FAQ</a> · <a href="/en/founding.html">founding member</a>
-      </p>
-    </div>
-  </section>
-
 </main>
 
-<footer class="site-footer">
-  <div class="wrap wrap--wide">
-    <div class="footer-mega">
-      <div>
-        <strong>aban news (EN)</strong>
-        <a href="/en/">Home</a>
-        <a href="/en/about.html">About</a>
-        <a href="/en/faq.html">FAQ</a>
-        <a href="/">🇩🇪 Read in German →</a>
-      </div>
-      <div>
-        <strong>Read</strong>
-        <a href="/en/faq.html">FAQ</a>
-        <a href="/preview.html">Sample issue (DE)</a>
-        <a href="/archive.html">Archive (DE)</a>
-      </div>
-      <div>
-        <strong>Premium</strong>
-        <a href="/en/founding.html">Founding member €149</a>
-        <a href="/en/sponsoring.html">Sponsoring</a>
-      </div>
-      <div>
-        <strong>Legal</strong>
-        <a href="/impressum.html">Imprint</a>
-        <a href="/datenschutz.html">Privacy</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 aban news · Allen Chour · Hühnerhubelstrasse 37, 3123 Belp, Switzerland · <em>— Aban</em></span>
-    </div>
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <a href="/en/founding.html">Premium</a>
+    <a href="/impressum.html">Imprint</a>
+    <a href="/datenschutz.html">Privacy</a>
+    <a href="/">🇩🇪 DE</a>
+    <a href="/fr/">FR</a>
+    <a href="/it/">IT</a>
   </div>
 </footer>
 
+<script>
+(function(){
+  var issues=[
+    {tab:"Mon 25 May · 3 min",subj:"OpenAI makes it cheaper — but read the fine print",slug:"📰 What matters today",
+     news:["GPT-5 Mini 60% cheaper — but the context window halves too","Mistral open-weights release","🛠 Tool: LibreChat — self-hosted, EU servers, free"]},
+    {tab:"Wed 27 May · 4 min",subj:"☕ China pulls the curtain, DeepSeek cuts prices",slug:"📰 What matters today",
+     news:["DeepSeek quarters its prices for V4-Pro (structural, not a sale)","Check your brand's visibility inside ChatGPT — new GEO tools","🛠 Tool: eustella from Vienna — EU hosting, GDPR-native, free"]},
+    {tab:"Fri 29 May · 5 min",subj:"BS detector: the “AI-first strategy” stress test",slug:"🚨 What doesn't hold up",
+     news:["“AI-first” is usually an excuse for a missing strategy","3 questions that separate hype from substance","💡 Prompt: surgically de-generic-ify cold outreach"]}
+  ];
+  var i=0,timer,playing=false,started=false;
+  var elMeta=document.getElementById('mMeta'),elSubj=document.getElementById('mSubj'),
+      elSlug=document.getElementById('mSlug'),elNews=document.getElementById('mNews'),
+      tabs=[].slice.call(document.querySelectorAll('#tabs .tab'));
+  function render(n){
+    var d=issues[n];
+    elMeta.textContent="📥 Inbox · aban news · "+d.tab;
+    elSubj.textContent=d.subj; elSlug.textContent=d.slug;
+    elNews.innerHTML=d.news.map(function(x){return '<li><span class="mk">●</span><span>'+x+'</span></li>';}).join('');
+    var body=elNews.closest('.mail-body'); body.classList.remove('fade'); void body.offsetWidth; body.classList.add('fade');
+    tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===n?'true':'false');});
+  }
+  function next(){i=(i+1)%issues.length;render(i);}
+  function startAuto(){if(started||window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;started=true;playing=true;timer=setInterval(function(){if(playing)next();},5000);}
+  tabs.forEach(function(t){t.addEventListener('click',function(){i=+t.dataset.i;render(i);startAuto();});});
+  var pv=document.querySelector('.preview');
+  pv.addEventListener('mouseenter',function(){playing=false;});
+  pv.addEventListener('mouseleave',function(){if(started)playing=true;});
+  render(0);
+  var f=document.getElementById('signup');
+  f.addEventListener('submit',function(){var b=f.querySelector('button');if(b){b.textContent='Opening…';}});
+})();
+</script>
 </body>
 </html>
