@@ -1,7 +1,7 @@
 # CLAUDE.md — Projekt-Gedächtnis für `aban-news-landing`
 
-> Diese Datei wird von Claude Code automatisch geladen. Sie hält den Kontext fest,
-> damit jede Session sofort weiß, worum es geht — ohne das ganze Repo neu zu lesen.
+> Wird von Claude Code automatisch geladen und hält den Kontext fest, damit jede
+> Session sofort weiß, worum es geht — ohne das ganze Repo neu zu lesen.
 
 ## Was ist das?
 
@@ -17,13 +17,14 @@ kein Framework: reines HTML + Inline-CSS, deployt auf **Cloudflare Pages**.
 ## Architektur / Konventionen
 
 - **Eine Seite = eine `.html`-Datei** im Root. Sprach-Varianten in `en/`, `fr/`, `it/`.
-- **CSS ist inline** im `<head>` jeder Seite (Subpages) bzw. in `css/styles.css`
-  (Hauptlanding-Komponenten). Kein externes Framework, **kein Google Fonts**
-  (DSGVO: System-Font-Stack `-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,…`).
+- **CSS ist inline** im `<head>` jeder Subpage bzw. in `css/styles.css` (Hauptlanding).
+  Kein externes Framework, **kein Google Fonts** (DSGVO: System-Font-Stack
+  `-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,…`).
 - **Kein Tracking, keine 3rd-Party-Requests** außer Subscribe-POST (beehiiv) und
   ggf. Stripe-Redirect. JS nur inline, minimal, vanilla.
-- **Brand-Farben:** `--amber:#d97706`, `--amber-dk:#b45309`, `--amber-lt:#fde9c8`,
-  `--cream:#fef3c7`, `--ink:#1f2937`/`#1c2530`, `--bg:#fffbf5`/`#fffaf2`.
+- **Brand-Farben** (Hex, siehe `:root` in `index.html` / `css/styles.css`):
+  Amber `d97706`, Amber-dunkel `b45309`, Amber-hell `fde9c8`, Cream `fef3c7`,
+  Ink `1f2937`/`1c2530`, Background `fffbf5`/`fffaf2`.
 - **Subpage-Layout-Muster:** siehe `geld-verdienen-mit-ki.html` (max-width 760px,
   sticky Header mit `.brand` + `.btn`, Footer mit Impressum/Datenschutz-Links).
 - **a11y/SEO Pflicht:** `<link rel="canonical">`, OG-Tags, JSON-LD (`schema.org`),
@@ -31,25 +32,26 @@ kein Framework: reines HTML + Inline-CSS, deployt auf **Cloudflare Pages**.
 
 ## Aban-Voice (wichtig!)
 
-Pragmatisch, direkt, anti-hype. **Verbotene Phrasen** (Build bricht im Audit sonst):
+Pragmatisch, direkt, anti-hype. Hype-Floskeln und Buzzwords sind tabu. Die
+**kanonische Sperrliste** (als Regex) steht in
+`automation/brand-voice-validator-api.py` (Variable `FORBIDDEN`) — eine Quelle der
+Wahrheit, hier bewusst nicht dupliziert. Der CI-Workflow `voice-linter` erzwingt
+sie auf allen geänderten `*.md`-Dateien (`--strict`, generic-Channel: max 5000
+Zeichen, max 3 `#`-Tags, durchgehend die du-Form).
 
-```
-revolution | bahnbrechend | game-changer | disruptiv | quantensprung |
-meilenstein | tauche ein | hallo zusammen | liebe community
-```
-
-Vor jedem Commit prüfen:
+Vor dem Commit lokal prüfen:
 ```bash
-grep -iE "revolution|bahnbrechend|game.changer|disruptiv|quantensprung|meilenstein|tauche ein|hallo zusammen|liebe community" *.html
-# muss 0 Treffer geben
+python3 tools/brand-voice-linter.py DATEI.md --strict   # Exit 0 = sauber
 ```
+
+HTML-Seiten folgen demselben Ton: keine Hype-Wörter, keine Mehrfach-Ausrufezeichen,
+durchgehend die du-Form.
 
 ## Lead-Magnets / PDFs
 
 - `downloads/*.pdf` werden mit **reportlab** generiert (`pip install reportlab`).
 - `generate_pdfs.py` → 5 Lead-Magnet-PDFs (Prompts, Glossar, Checkliste, Tool-Stack,
-  Cold-Email). Gemeinsame Helfer: `make_styles()`, `cover_page()`, `new_doc()`,
-  `footer_canvas()`. Brand-Farben oben in der Datei.
+  Cold-Email). Helfer: `make_styles()`, `cover_page()`, `new_doc()`, `footer_canvas()`.
 - `generate_ebook.py` → `downloads/anti-hype-ebook.pdf` (das "Anti-Hype"-eBook,
   beworben auf `ebook.html` und in `roadmap.html`).
 - `generate_launch_manual_pdf.py` → `downloads/launch-manual.pdf`.
@@ -60,54 +62,38 @@ grep -iE "revolution|bahnbrechend|game.changer|disruptiv|quantensprung|meilenste
 | Datei | Zweck |
 |-------|-------|
 | `index.html` | Haupt-Landing (Hero + Sample-Switcher + Subscribe) |
-| `ebook.html` | eBook-Lead-Magnet-Landing (Email-Capture + Founding-Upsell + Lese-Memory via localStorage) |
+| `ebook.html` | eBook-Lead-Magnet (Email-Capture + Founding-Upsell + Lese-Memory) |
 | `geld-verdienen-mit-ki.html` | SEO-Money-Page (Layout-Referenz für Subpages) |
-| `ki-tools-fuer-selbststaendige.html` | SEO-Money-Page „KI-Tools für Selbstständige“ |
-| `chatgpt-fuer-solopreneure.html` | SEO-Money-Page „ChatGPT für Solopreneure“ |
+| `ki-tools-fuer-selbststaendige.html` | SEO-Money-Page „KI-Tools für Selbstständige" |
+| `chatgpt-fuer-solopreneure.html` | SEO-Money-Page „ChatGPT für Solopreneure" |
 | `founding.html` | €149 Founding-Member-Angebot |
 | `sponsoring.html` / `werbung.html` | Werbe-Rate-Card / Policy |
-| `preview.html` | Beispiel-Ausgabe |
-| `roadmap.html` | Produkt-Roadmap (erwähnt das eBook) |
+| `resources.html` | Gratis-Resourcen + PDF-Downloads |
+| `willkommen.html` | Post-Subscribe (eBook-Geschenk) |
 | `impressum.html` / `datenschutz.html` | CH-Impressum / DSGVO |
-| `404.html` | Aban-Voice 404 |
 
-## Wenn du eine neue Seite anlegst
+## Neue Seite anlegen
 
 1. Layout aus `geld-verdienen-mit-ki.html` kopieren (Header/Footer/Style-Token).
 2. `<link rel="canonical">`, OG-Tags, JSON-LD setzen, `abannews.com`.
-3. **Eintrag in `sitemap.xml`** ergänzen.
-4. Optional Pretty-URL in `_redirects` ergänzen.
-5. Falls relevant: Nav-Link in `index.html` (`.hnav`) + Footer-Link.
-6. Forbidden-Phrases-Grep laufen lassen.
+3. Eintrag in `sitemap.xml` ergänzen, optional Pretty-URL in `_redirects`.
+4. Falls relevant: Nav-Link in `index.html` (`.hnav`) + Footer-Link.
+5. Voice-Check laufen lassen (siehe oben).
 
 ## Monetarisierung aktivieren (3 Schalter, kostenlos zum Start)
 
-Der Funnel ist verdrahtet — diese drei Stellen brauchen je **eine echte URL**:
+1. **Newsletter (aktiv):** alle Subscribe-Buttons → `abannews.beehiiv.com/subscribe`.
+2. **Stripe (Founding €149):** in `founding.html`, `<script>` oben,
+   `STRIPE_FOUNDING_LINK` setzen. Leer → Mail-Fallback.
+3. **Calendly (Sponsoring):** in `sponsoring.html`, `<script>` am Ende,
+   `CALENDLY_URL` setzen. Leer → Mail-Fallback.
 
-1. **Newsletter (aktiv ✅):** Alle Subscribe-Buttons zeigen auf
-   `https://abannews.beehiiv.com/subscribe`. Läuft.
-2. **Stripe (Founding €149):** In `founding.html`, `<script>`-Block oben,
-   `STRIPE_FOUNDING_LINK = ""` → Stripe Payment Link einsetzen
-   (`https://buy.stripe.com/…`). Solange leer → Mail-Fallback (kein toter Button).
-3. **Calendly (Sponsoring):** In `sponsoring.html`, `<script>` am Ende,
-   `CALENDLY_URL` pflegen. Leer → automatischer Mail-Fallback.
-
-**Funnel-Übersicht:** SEO-Money-Pages (`geld-verdienen-mit-ki`,
-`ki-tools-fuer-selbststaendige`, `chatgpt-fuer-solopreneure`) + `resources.html`
-(PDF-Downloads) → Newsletter-Opt-in → `willkommen.html` (eBook-Geschenk) →
-`founding.html` (€149) / `sponsoring.html` (Werbung). eBook-Lead-Magnet
-(`ebook.html` + `downloads/anti-hype-ebook.pdf`) speist denselben Trichter.
-Social-Image für eBook: `og-ebook.png` (mit Pillow generiert, s.u.).
-
-Assets neu generieren:
-```bash
-python3 generate_ebook.py          # downloads/anti-hype-ebook.pdf
-# og-ebook.png: 1200x630, Pillow — Skript-Snippet in der PR-Historie
-```
+**Funnel:** SEO-Money-Pages + `resources.html` → Newsletter-Opt-in →
+`willkommen.html` (eBook-Geschenk) → `founding.html` / `sponsoring.html`.
+Social-Image fürs eBook: `og-ebook.png` (Pillow, 1200×630).
 
 ## Git / Deployment
 
-- Branch-Konvention dieser Session: `claude/...` Feature-Branches, **nie** direkt
-  nach `main` pushen.
+- Branch-Konvention: `claude/...` Feature-Branches, **nie** direkt nach `main`.
 - Cloudflare Pages: kein Build-Command, Output = Repo-Root. `_redirects` + `_headers`
   werden automatisch erkannt. Jeder Push auf `main` triggert Auto-Deploy.
