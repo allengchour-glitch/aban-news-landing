@@ -16,7 +16,7 @@ Secrets (set as env vars / GitHub Secrets) — each platform optional:
   BLUESKY_HANDLE, BLUESKY_APP_PASSWORD
   TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
   LINKEDIN_TOKEN, LINKEDIN_AUTHOR_URN        (e.g. urn:li:person:xxxx or urn:li:organization:xxxx)
-  X_BEARER_TOKEN                              (OAuth2 *user* token with tweet.write; X API is paid)
+  X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_SECRET   (OAuth 1.0a, long-lived; Free tier posts)
 
 Usage:
   python3 automation/post_daily.py             # dry-run, shows next item + targets
@@ -27,8 +27,13 @@ import re
 import sys
 import json
 import time
+import hmac
+import base64
+import hashlib
+import secrets as _secrets
 import urllib.request
 import urllib.error
+from urllib.parse import quote
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -151,14 +156,39 @@ def post_linkedin(item):
         return (False, str(e))
 
 
+def _oauth1_header(method, url, ck, cs, tok, tok_secret):
+    """OAuth 1.0a header (long-lived keys; no body params for JSON requests)."""
+    oauth = {
+        "oauth_consumer_key": ck,
+        "oauth_nonce": _secrets.token_hex(16),
+        "oauth_signature_method": "HMAC-SHA1",
+        "oauth_timestamp": str(int(time.time())),
+        "oauth_token": tok,
+        "oauth_version": "1.0",
+    }
+    enc = {quote(k, safe=""): quote(v, safe="") for k, v in oauth.items()}
+    param_str = "&".join("%s=%s" % (k, enc[k]) for k in sorted(enc))
+    base = "&".join([method.upper(), quote(url, safe=""), quote(param_str, safe="")])
+    key = "%s&%s" % (quote(cs, safe=""), quote(tok_secret, safe=""))
+    sig = base64.b64encode(hmac.new(key.encode(), base.encode(), hashlib.sha1).digest()).decode()
+    oauth["oauth_signature"] = sig
+    return "OAuth " + ", ".join('%s="%s"' % (quote(k, safe=""), quote(v, safe=""))
+                                for k, v in sorted(oauth.items()))
+
+
 def post_x(item):
-    token = os.environ.get("X_BEARER_TOKEN", "")
-    if not token:
+    ck = os.environ.get("X_API_KEY", "")
+    cs = os.environ.get("X_API_SECRET", "")
+    tok = os.environ.get("X_ACCESS_TOKEN", "")
+    sec = os.environ.get("X_ACCESS_SECRET", "")
+    if not (ck and cs and tok and sec):
         return None
+    url = "https://api.twitter.com/2/tweets"
     body = json.dumps({"text": fit(item["short"], LIMITS["x"])}).encode()
     try:
-        st, _ = _http("https://api.twitter.com/2/tweets", body,
-                      {"Authorization": "Bearer " + token, "Content-Type": "application/json"}, "POST")
+        st, _ = _http(url, body,
+                      {"Authorization": _oauth1_header("POST", url, ck, cs, tok, sec),
+                       "Content-Type": "application/json"}, "POST")
         return (200 <= st < 300, f"HTTP {st}")
     except urllib.error.HTTPError as e:
         return (False, f"HTTP {e.code}: {e.read()[:160].decode('utf-8','replace')}")
@@ -213,7 +243,8 @@ def env_present():
         "bluesky": bool(os.environ.get("BLUESKY_HANDLE") and os.environ.get("BLUESKY_APP_PASSWORD")),
         "telegram": bool(os.environ.get("TELEGRAM_BOT_TOKEN") and os.environ.get("TELEGRAM_CHAT_ID")),
         "linkedin": bool(os.environ.get("LINKEDIN_TOKEN") and os.environ.get("LINKEDIN_AUTHOR_URN")),
-        "x": bool(os.environ.get("X_BEARER_TOKEN")),
+        "x": bool(os.environ.get("X_API_KEY") and os.environ.get("X_API_SECRET")
+                  and os.environ.get("X_ACCESS_TOKEN") and os.environ.get("X_ACCESS_SECRET")),
     }
 
 
