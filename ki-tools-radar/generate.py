@@ -560,7 +560,7 @@ def page(*, lang, ui, title, description, body, canonical,
 <style>
 :root{{--accent:{ACCENT};--accent-h:{ACCENT_HOVER};--bg:{BG};--bg-alt:{BG_ALT};
 --text:{TEXT};--muted:{MUTED};--success:{SUCCESS};--border:{BORDER};--card:#fff;}}
-/* Dark mode: automatic via OS, or forced with data-theme on <html>. */
+/* Dark mode: automatic via OS, or forced via the data-theme attribute. */
 @media (prefers-color-scheme: dark){{
   :root:not([data-theme="light"]){{--bg:#1a1714;--bg-alt:#2a2420;--text:#f3f0ec;
   --muted:#a8a29e;--border:#3a332d;--card:#241f1b;--accent-h:#f59e0b;}}
