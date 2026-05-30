@@ -16,10 +16,13 @@ def pt(x,y,ang,ln): a=math.radians(ang); return (x+math.sin(a)*ln, y+math.cos(a)
 
 import random as _r
 _r.seed(21)
-FLICK=[(_r.uniform(0.04,0.96)*W,_r.uniform(0.22,0.55)*H,_r.uniform(1.5,5),_r.uniform(0,6.28)) for _ in range(16)]
+FLICK=[(_r.uniform(0.04,0.96)*W,_r.uniform(0.22,0.55)*H,_r.uniform(1.5,5),_r.uniform(0,6.28)) for _ in range(22)]
 CLOUDS=[(_r.uniform(0,1),_r.uniform(0.06,0.20),_r.uniform(34,60),_r.uniform(0.006,0.014)) for _ in range(3)]
+NEON=[(_r.uniform(0.06,0.9)*W,_r.uniform(0.24,0.5)*H,_r.uniform(26,52),_r.choice([(255,90,160),(90,220,255),(255,180,60),(150,120,255)]),_r.uniform(2,5),_r.uniform(0,6.28)) for _ in range(6)]
+# people: (x0, speed dir, phase, scale)
+PEOPLE=[(_r.uniform(0,1),_r.choice([-1,1])*_r.uniform(0.03,0.06),_r.uniform(0,6.28),_r.uniform(0.85,1.2)) for _ in range(7)]
 def draw_bg_extra(d,t):
-    HOR=int(H*0.60)
+    SW=H*0.585  # sidewalk line
     # drifting clouds
     for x0,y0,r,v in CLOUDS:
         x=((x0+t*v)%1.3-0.15)*W
@@ -27,21 +30,38 @@ def draw_bg_extra(d,t):
             d.ellipse([(x+dx-r)*SS,(y0*H-r*0.6)*SS,(x+dx+r)*SS,(y0*H+r*0.6)*SS],fill=(60,54,92,70))
     # flickering windows
     for fx,fy,rate,ph in FLICK:
-        on=math.sin(t*rate+ph)>0.25
-        c=(255,216,130) if on else (30,26,50)
+        on=math.sin(t*rate+ph)>0.25; c=(255,216,130) if on else (30,26,50)
         d.rectangle([fx*SS,fy*SS,(fx+10)*SS,(fy+14)*SS],fill=c)
         if on: d.rectangle([(fx-1)*SS,(fy-1)*SS,(fx+11)*SS,(fy+15)*SS],fill=(255,216,130,40))
-    # blinking aircraft crossing high
+    # NEON signs (pulsing colored)
+    for nx,ny,nw,col,rate,ph in NEON:
+        pulse=0.4+0.6*(0.5+0.5*math.sin(t*rate+ph))
+        c=tuple(int(v*pulse) for v in col)
+        d.rounded_rectangle([nx*SS,ny*SS,(nx+nw)*SS,(ny+12)*SS],radius=3*SS,fill=c,outline=tuple(min(255,int(v*1.2)) for v in col),width=2*SS)
+        d.ellipse([(nx-10)*SS,(ny-8)*SS,(nx+nw+10)*SS,(ny+20)*SS],fill=col+(int(50*pulse),))
+    # blinking aircraft
     ax=((t*0.03)%1.2-0.1)*W; ay=H*0.09
     d.ellipse([(ax-2)*SS,(ay-2)*SS,(ax+2)*SS,(ay+2)*SS],fill=(220,220,255))
     if int(t*2)%2==0: d.ellipse([(ax-3)*SS,(ay-1)*SS,(ax+1)*SS,(ay+3)*SS],fill=(255,80,80))
-    # passing car headlight streaks on the road
-    for lane,(sp,off,yy) in enumerate([(0.55,0.0,0.70),(0.40,0.5,0.80),(0.7,0.25,0.66)]):
+    # PEOPLE walking on the sidewalk (silhouettes)
+    for x0,sp,ph,sc in PEOPLE:
+        x=((x0+t*sp)%1.25-0.12)*W; y=SW; hh=22*sc
+        step=math.sin(t*sp*60+ph); bob=abs(math.sin(t*sp*60+ph))*2
+        col=(18,16,30)
+        d.ellipse([(x-3*sc)*SS,(y-hh-6*sc-bob)*SS,(x+3*sc)*SS,(y-hh+bob*0+0-6*sc+6*sc-bob)*SS] if False else [(x-3*sc)*SS,(y-hh-bob)*SS,(x+3*sc)*SS,(y-hh+6*sc-bob)*SS],fill=col)  # head
+        d.line([((x)*SS,(y-hh+4*sc-bob)*SS),((x)*SS,(y-6*sc)*SS)],fill=col,width=int(3*sc*SS))  # body
+        d.line([((x)*SS,(y-6*sc)*SS),((x-4*sc*step)*SS,y*SS)],fill=col,width=int(2.5*sc*SS))  # leg1
+        d.line([((x)*SS,(y-6*sc)*SS),((x+4*sc*step)*SS,y*SS)],fill=col,width=int(2.5*sc*SS))  # leg2
+    # traffic BOTH directions on the road
+    lanes=[(0.55,0.0,0.70,1),(0.40,0.5,0.80,1),(0.7,0.25,0.66,1),(0.5,0.15,0.74,-1),(0.62,0.7,0.86,-1)]
+    for sp,off,yy,dr in lanes:
         p=((t*sp+off)%1.6)-0.2
         if 0<=p<=1.05:
-            cxp=p*W; ry=yy*H; gw=70
-            d.ellipse([(cxp-gw)*SS,(ry-7)*SS,(cxp+gw)*SS,(ry+7)*SS],fill=(255,238,180,60))
-            d.ellipse([(cxp-12)*SS,(ry-4)*SS,(cxp+12)*SS,(ry+4)*SS],fill=(255,250,220,150))
+            cxp=(p if dr>0 else 1-p)*W; ry=yy*H; gw=70
+            glow=(255,238,180,60) if dr>0 else (255,90,90,55)   # headlights vs taillights
+            core=(255,250,220,160) if dr>0 else (255,120,120,150)
+            d.ellipse([(cxp-gw)*SS,(ry-7)*SS,(cxp+gw)*SS,(ry+7)*SS],fill=glow)
+            d.ellipse([(cxp-12)*SS,(ry-4)*SS,(cxp+12)*SS,(ry+4)*SS],fill=core)
 
 def draw_bunny(ld,t,P):
     """P: dict with pose params."""
@@ -101,6 +121,8 @@ def draw_bunny(ld,t,P):
     else:
         ld.rectangle([hx+ht*L(6)-L(8),my-L(2),hx+ht*L(6)-L(1),my+L(9)],fill=TEETH,outline=OUT,width=int(L(1.5)))
         ld.rectangle([hx+ht*L(6)+L(1),my-L(2),hx+ht*L(6)+L(8),my+L(9)],fill=TEETH,outline=OUT,width=int(L(1.5)))
+    if P.get("phone")==(127,208,255):
+        ld.ellipse([hx-L(48),hy+L(2),hx+L(48),hy+L(70)],fill=(127,208,255,46))
 
 def pose(t, DUR, env, eyewide, blink, phone):
     """Choreography controller -> pose params."""
@@ -137,7 +159,7 @@ def pose(t, DUR, env, eyewide, blink, phone):
         P["ear"]=math.sin(tt*6)*7+(hop*0.4); P["tail"]=math.sin(tt*7)*16
     # phone grab override (if phone active, raise right hand to face)
     if phone is not None:
-        P["armR"]=(-58,-46); P["headturn"]=0.1; P["look"]=0.8
+        P["armR"]=(-95,-54); P["headturn"]=0.05; P["look"]=0.9; P["eyewide"]=max(P["eyewide"],0.3)
     return P
 
 K=sys.argv[1]
