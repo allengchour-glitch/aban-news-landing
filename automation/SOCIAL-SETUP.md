@@ -79,6 +79,10 @@ X_ACCESS_SECRET        /
 
 ## Testen (ohne etwas zu posten)
 
+- **Tokens prüfen (empfohlen, postet nichts):**
+  ```bash
+  python3 automation/check_setup.py   # mit gesetzten Env-Vars: sagt pro Kanal ✅/❌
+  ```
 - **Lokal, Dry-Run:**
   ```bash
   python3 automation/build_social_queue.py
