@@ -1,6 +1,6 @@
 # landing-ultra/
 
-> **Status:** Production-ready V2-Landing für `abannews.de`.
+> **Status:** Production-ready V2-Landing für `abannews.com`.
 > **Basiert auf:** 100-Site-Pattern-Research (`landing/research/100-landing-pages-analysis.md`).
 > **Replaces:** `landing/` (bleibt als Backup unangetastet).
 
@@ -89,7 +89,7 @@ grep -rn "TODO\|\[BEEHIIV_FORM_ACTION\]\|\[STRIPE_FOUNDING_LINK\]\|\[X\.XXX\]\|\
 
 - **Plausible/Umami** im `<head>` von `index.html` aktivieren (1 Zeile, cookielos, kein Banner nötig).
 - **Sitemap.xml** generieren (für Google-Indexierung).
-- **robots.txt** mit `Sitemap: https://abannews.de/sitemap.xml` ergänzen.
+- **robots.txt** mit `Sitemap: https://abannews.com/sitemap.xml` ergänzen.
 
 ---
 
@@ -166,7 +166,7 @@ nicht auf einen Aggregator. Rechtlich relevant bei Zitaten/Fakten (Zitatrecht §
    - `404.html` als Fallback
 5. Build-Settings: keine (statisches Site, kein Build-Step).
 6. Production-URL: `https://abannews.pages.dev`.
-7. Custom-Domain: in Project-Settings → "Custom domains" → `abannews.de` + `www.abannews.de` hinzufügen. Cloudflare gibt dir CNAME-Werte für deine DNS.
+7. Custom-Domain: in Project-Settings → "Custom domains" → `abannews.com` + `www.abannews.com` hinzufügen. Cloudflare gibt dir CNAME-Werte für deine DNS.
 
 ### Variante B — Git-Integration (für ongoing Updates)
 
@@ -190,8 +190,8 @@ Jeder `git push` auf `main` triggert Auto-Deploy.
 
 ### DNS bei Hetzner/dyna/wo-auch-immer
 
-- A-Record `abannews.de` → Cloudflare-IP (wird in Custom-Domain-Setup angezeigt).
-- CNAME `www.abannews.de` → `abannews.pages.dev`.
+- A-Record `abannews.com` → Cloudflare-IP (wird in Custom-Domain-Setup angezeigt).
+- CNAME `www.abannews.com` → `abannews.pages.dev`.
 - Cloudflare übernimmt SSL-Cert automatisch (Universal SSL).
 
 ---

@@ -16,7 +16,7 @@
 /abonnieren       /#signup              301
 
 # Email aliases short-links
-/mail             mailto:hallo@abannews.de        301
+/mail             mailto:hallo@abannews.com       301
 /sponsoren        /sponsoring.html      301
 
 # 404 fallback — Cloudflare Pages serves /404.html automatically for missing routes,
