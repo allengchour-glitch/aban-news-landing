@@ -128,3 +128,27 @@ Backups: `dropship/assets/theme-index-branded.json`, `theme-layout-branded.liqui
 ### 🔴 EINZIGER Schritt für Allen (1 Klick):
 **„Horizon · LuxeStyle Branded" veröffentlichen** (Admin → Themes → Veröffentlichen).
 Dann gehen Markenfarben + neuer Sommer-Hero + Sommer-CTA + heller Cookie-Banner GLEICHZEITIG live.
+
+---
+
+## 🟢 UPDATE 3 (2026-05-30) — Startseite kuratiert | Archiv offen
+
+### ✅ Branded-Theme Startseite (autonom, live im unpublished Theme):
+Statt „all"-Grid (5.288 inkl. bildloser Leer-Kacheln) jetzt 2 kuratierte Sektionen:
+- **⭐ Top 10 Bestseller** (collection bestseller-premium-heroes, alle mit Bild)
+- **✨ CJ Neuheiten 2026** (collection neu-eingetroffen = 8 CJ-Live-Produkte, Gold-Scheme)
+Order: Hero → Bestseller → CJ Neuheiten.
+
+### 🟡 Archiv der 4.027 Drafts — automatisierter Weg blockiert
+- Bulk-Query lief (4.027 Draft-IDs exportiert), ABER: der **Download der Ergebnis-JSONL von
+  Google Cloud Storage scheitert in dieser Sandbox** (`SignatureDoesNotMatch`/403 — der
+  Proxy verändert die signierte Request). Auch byte-exakte URL → 403. Staged-Upload des
+  Mutation-Inputs braucht aber genau diese ID-Liste.
+- **Wichtig:** Drafts sind eh **unsichtbar** (status:draft = nicht im Shop). Das Archivieren
+  ist reine Admin-Katalog-Kosmetik, NICHT kundenrelevant. Startseite ist bereits kuratiert.
+
+### 🔴 Archiv erledigen — 2 Optionen für Allen:
+1. **Admin-Bulk (10 Sek, empfohlen):** Shopify Admin → Produkte → Filter „Status: Entwurf"
+   → alle auswählen (4.027) → Aktionen → „Als archiviert festlegen". Fertig.
+2. **Sag „archivier inkrementell"** → ich grinde es autonom in MCP-Batches (~80 Calls) über
+   die Zeit. Reversibel.
