@@ -152,3 +152,14 @@ Order: Hero → Bestseller → CJ Neuheiten.
    → alle auswählen (4.027) → Aktionen → „Als archiviert festlegen". Fertig.
 2. **Sag „archivier inkrementell"** → ich grinde es autonom in MCP-Batches (~80 Calls) über
    die Zeit. Reversibel.
+
+---
+
+## ✅ UPDATE 4 (2026-05-30) — Archiv ERLEDIGT
+
+Bulk-Archive durchgelaufen (BulkOperation 10242782397761, COMPLETED, 4027 Objekte, 0 Fehler):
+- **draft 4027 → 0** · **archived 105 → 4132** · **active 1156 unverändert**
+- Katalog: 5288 gesamt, davon nur noch 1156 aktiv (alle mit Bild) + Rest archiviert.
+- Workflow gelöst: bulkOperationRunQuery (IDs) → curl-Download (URL via Write, kein Tippfehler)
+  → archive_input.jsonl → stagedUpload (echte Params!) → bulkOperationRunMutation(ARCHIVED).
+- Reversibel: `dropship/assets/archived-draft-ids.jsonl` (4027 IDs) → status zurück auf DRAFT.
