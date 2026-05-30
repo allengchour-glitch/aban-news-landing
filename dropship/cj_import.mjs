@@ -3,8 +3,8 @@
  * CJ → Shopify autonomer Produkt-Import für LuxeStyle CH
  * -----------------------------------------------------
  * Liest Credentials AUS DER UMGEBUNG (niemals hardcoden!):
- *   CJ_EMAIL    = CJ-Login-E-Mail
- *   CJ_API_KEY  = CJ API-Key (CJ-Dashboard → Authentication / API)
+ *   CJ_EMAIL    = allengchour@gmail.com 
+ *   CJ_API_KEY  = <font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">CJ5452995@api@d00fdc3029034d77ad2543630cc7f533</font></font> (CJ-Dashboard → Authentication / API)
  *
  * Ablauf:
  *   1. getAccessToken (gecached in /tmp/cj_token.json, gültig ~14 Tage)
