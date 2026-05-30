@@ -36,8 +36,10 @@ Pragmatisch, direkt, anti-hype. Hype-Floskeln und Buzzwords sind tabu. Die
 **kanonische Sperrliste** (als Regex) steht in
 `automation/brand-voice-validator-api.py` (Variable `FORBIDDEN`) — eine Quelle der
 Wahrheit, hier bewusst nicht dupliziert. Der CI-Workflow `voice-linter` erzwingt
-sie auf allen geänderten `*.md`-Dateien (`--strict`, generic-Channel: max 5000
-Zeichen, max 3 `#`-Tags, durchgehend die du-Form).
+sie auf allen geänderten Content-`*.md`-Dateien (`--strict`, generic-Channel: max
+5000 Zeichen, max 3 `#`-Tags, durchgehend die du-Form). Infrastruktur-/Doku-
+Markdown (`CLAUDE.md`, `docs/**`, `README.md`) ist bewusst ausgenommen — dort
+gelten Newsletter-Längen-/Format-Regeln nicht.
 
 Vor dem Commit lokal prüfen:
 ```bash
