@@ -170,17 +170,13 @@
   </div>
 </footer>
 
+<!-- Links centrally in /js/buch-config.js (single source of truth). -->
+<script src="/js/buch-config.js"></script>
 <script>
-// ============================================================
-// BOOK SALES — add your links here once they exist:
-//  BUY_URL  = Gumroad/Lemon Squeezy product link ("pay what you want").
-//             Recommended: Lemon Squeezy/Gumroad handle EU VAT & delivery.
-//  KDP_URL  = Amazon product page (Kindle/paperback), once published.
-// Leave empty → the button points cleanly to the newsletter (no dead link).
-// ============================================================
 (function(){
-  var BUY_URL = "";   // e.g. "https://abannews.gumroad.com/l/anti-hype"
-  var KDP_URL = "";   // e.g. "https://www.amazon.com/dp/XXXXXXXXXX"
+  var cfg = window.ABAN_BUCH || {};
+  var BUY_URL = cfg.BUY_URL || "";
+  var KDP_URL = cfg.KDP_URL || "";
   var buy = document.getElementById("buy-btn");
   var kdp = document.getElementById("kdp-btn");
   var note = document.getElementById("pay-note");
