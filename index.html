@@ -159,8 +159,9 @@
         </form>
       </div>
 
-      <!-- RIGHT: auto-switching preview -->
+      <!-- RIGHT: manually-controlled preview with optional auto-play on hover -->
       <div class="preview">
+        <p style="text-align:center;font-size:.82rem;color:var(--muted);margin:0 0 .5rem;font-weight:600;">3 echte Beispiel-Ausgaben — klick durch:</p>
         <div class="mail">
           <div class="mail-bar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
             <span class="mail-meta" id="mMeta">📥 Posteingang · aban news</span></div>
@@ -213,7 +214,7 @@
     {tab:"Fr 29.05 · 5 Min",subj:"Bullshit-Detektor: „KI-First-Strategie“ im Härtetest",slug:"🚨 Was nicht trägt",
      news:["„KI-First“ ist meist eine Ausrede für fehlende Strategie","3 Fragen, die Hype von Substanz trennen","💡 Prompt: Cold-Outreach chirurgisch entgenerisieren"]}
   ];
-  var i=0,timer,playing=true;
+  var i=0,timer,playing=false,started=false;
   var elMeta=document.getElementById('mMeta'),elSubj=document.getElementById('mSubj'),
       elSlug=document.getElementById('mSlug'),elNews=document.getElementById('mNews'),
       tabs=[].slice.call(document.querySelectorAll('#tabs .tab'));
@@ -226,12 +227,12 @@
     tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===n?'true':'false');});
   }
   function next(){i=(i+1)%issues.length;render(i);}
-  function start(){if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;timer=setInterval(function(){if(playing)next();},4500);}
-  tabs.forEach(function(t){t.addEventListener('click',function(){i=+t.dataset.i;render(i);});});
+  function startAuto(){if(started||window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;started=true;playing=true;timer=setInterval(function(){if(playing)next();},5000);}
+  tabs.forEach(function(t){t.addEventListener('click',function(){i=+t.dataset.i;render(i);startAuto();});});
   var pv=document.querySelector('.preview');
   pv.addEventListener('mouseenter',function(){playing=false;});
-  pv.addEventListener('mouseleave',function(){playing=true;});
-  render(0);start();
+  pv.addEventListener('mouseleave',function(){if(started)playing=true;});
+  render(0);
   // form loading state
   var f=document.getElementById('signup');
   f.addEventListener('submit',function(){var b=f.querySelector('button');if(b){b.textContent='Wird geöffnet…';}});
