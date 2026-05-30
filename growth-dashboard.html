@@ -6,7 +6,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <title>aban news — Growth Dashboard (Build in Public)</title>
 <meta name="description" content="Live-Dashboard zum Wachstum von aban news. 0 zu 1.000 Subscribern in 90 Tagen — öffentlich.">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://abannews.com/growth-dashboard.html">
 
 <style>
@@ -270,7 +270,7 @@ canvas{max-width:100%}
   </header>
 
   <div class="disclaimer">
-    <strong>Hinweis:</strong> Dieses Dashboard zeigt aggregierte Daten. Keine personenbezogenen Daten (PII), kein Tracking-Cookie. Daten kommen aus Plausible Analytics (cookieless) + manuell gepflegtem Stand. Updates 1–2× pro Woche.
+    <strong>Hinweis:</strong> aban news ist noch <strong>vor dem Launch</strong> — aktueller Stand: 1 Abonnent (ich selbst), 0 Ausgaben versendet. Hier stehen bewusst keine erfundenen Zahlen. Sobald echte Abonnenten kommen, erscheinen hier die realen, aggregierten Werte (Plausible cookieless, keine PII).
   </div>
 
   <!-- KPI Cards -->
@@ -348,7 +348,7 @@ canvas{max-width:100%}
   </div>
 
   <div class="notes">
-    <p><strong>Wie das Dashboard funktioniert:</strong> Aggregierte Daten aus Plausible Analytics + manuell gepflegtem Sub-Stand. Aktualisierung wöchentlich montags. Quellen nachvollziehbar — falls dir Zahlen komisch vorkommen: <a href="mailto:allen@abannews.com">allen@abannews.com</a>.</p>
+    <p><strong>Wie das Dashboard funktioniert:</strong> Sobald aban news live ist, kommen die Zahlen aus Plausible Analytics (cookieless) + dem echten Abo-Stand, wöchentlich montags aktualisiert. Bis dahin steht hier der ehrliche Vor-Launch-Stand (≈0) — keine erfundenen Werte. Fragen: <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>.</p>
     <p><strong>Was hier NICHT steht:</strong> Persönliche Mail-Adressen, individuelle User-Daten, Open-Rates einzelner Empfänger. Alles nur in Aggregaten.</p>
     <p><strong>Build in Public:</strong> Wöchentliche Lessons + Channel-Insights gibts im <a href="/">Newsletter</a> jeden Sonntag.</p>
   </div>
@@ -362,45 +362,41 @@ canvas{max-width:100%}
   // -------------------------------------------------------------------
   // DATA — Hier manuell pflegen (oder via JSON-Fetch von Endpoint)
   // -------------------------------------------------------------------
+  // EHRLICHER VOR-LAUNCH-STAND — keine erfundenen Zahlen.
+  // Echte Werte erscheinen hier, sobald der Newsletter live ist + Abonnenten kommen.
   var data = {
-    lastUpdated: '2026-05-27',
+    lastUpdated: '2026-05-30',
     startDate: '2026-05-01',
     targetDate: '2026-07-29',
     targetSubs: 1000,
-    currentSubs: 67,
-    subsLastWeek: 38,
-    subsDelta7d: 29,
-    dailyGrowth: 4.1,
-    conversionRate: 3.2,
-    openRate: 48,
-    topSource: 'LinkedIn',
-    topSourcePct: 34,
+    currentSubs: 1,
+    subsLastWeek: 1,
+    subsDelta7d: 0,
+    dailyGrowth: 0,
+    conversionRate: 0,
+    openRate: 0,
+    topSource: '—',
+    topSourcePct: 0,
 
     funnel: [
-      { label: 'Visitors',         value: 2080, pct: 100, hint: 'Page-Views (Plausible)' },
-      { label: 'Signups',          value: 92,   pct: 4.4, hint: 'Form-Submits' },
-      { label: 'Confirmed',        value: 67,   pct: 3.2, hint: 'DOI bestätigt' },
-      { label: 'Active (7d open)', value: 51,   pct: 2.5, hint: 'Mail in 7d geöffnet' }
+      { label: 'Visitors',         value: 0, pct: 0, hint: 'noch keine Daten' },
+      { label: 'Signups',          value: 1, pct: 0, hint: 'Pre-Launch (Gründer)' },
+      { label: 'Confirmed',        value: 1, pct: 0, hint: 'bestätigt' },
+      { label: 'Active (7d open)', value: 0, pct: 0, hint: 'noch keine Ausgabe versendet' }
     ],
 
     growthLast7Days: [
-      { day: 'Di',  subs: 41 },
-      { day: 'Mi',  subs: 46 },
-      { day: 'Do',  subs: 51 },
-      { day: 'Fr',  subs: 55 },
-      { day: 'Sa',  subs: 58 },
-      { day: 'So',  subs: 62 },
-      { day: 'Mo',  subs: 67 }
+      { day: 'Di',  subs: 1 },
+      { day: 'Mi',  subs: 1 },
+      { day: 'Do',  subs: 1 },
+      { day: 'Fr',  subs: 1 },
+      { day: 'Sa',  subs: 1 },
+      { day: 'So',  subs: 1 },
+      { day: 'Mo',  subs: 1 }
     ],
 
     channelMix: [
-      { name: 'LinkedIn',         pct: 34, color: '#2563eb' },
-      { name: 'Direct',           pct: 22, color: '#4f46e5' },
-      { name: 'Newsletter-Swap',  pct: 16, color: '#16a34a' },
-      { name: 'Reddit',           pct: 12, color: '#f97316' },
-      { name: 'Twitter/X',        pct:  8, color: '#0ea5e9' },
-      { name: 'Google Organic',   pct:  5, color: '#7c3aed' },
-      { name: 'Sonstiges',        pct:  3, color: '#64748b' }
+      { name: 'Noch keine Daten', pct: 100, color: '#cbd5e1' }
     ]
   };
 
