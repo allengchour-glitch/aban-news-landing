@@ -1,7 +1,7 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
 > Dauerhafter Gedächtnis-Speicher für dieses Vorhaben. Überlebt Session-Resets.
-> Stand: 2026-05-30 · Betreiber: Alleng Chour (abannews.com, Belp/CH).
+> Stand: 2026-05-30 (Newsletter-Werkbank + Social-Autopost integriert) · Betreiber: Alleng Chour (abannews.com, Belp/CH).
 
 ## Kontext / Ziel
 Solo-Operator mit KI-API-Zugang (LLM-Text, Bild, Audio/Voice) + bestehendem
@@ -19,6 +19,7 @@ KI-Newsletter **abannews.com / .de** (Mo–Fr, kuratiert, „3–5 Min, kein Hyp
   + Make.com-Blueprints. CI: Voice-Linter (`.github/workflows/voice-linter.yml`).
 - **Markenstimme (für ALLE Projekte verbindlich):** ehrlich, praktisch, deutsch, anti-Buzzword
   (keine Wörter wie „revolutionär/disruptiv/game-changer/AI-powered"). Verboten-Phrasen-Liste im Validator.
+- **Werkbank (NEU):** `automation/werkbank.py` verbindet Newsletter ↔ Netzwerk: `issue` (Ausgaben-Entwurf aus Radar-Daten), `check` (Brand-Voice-Score), `social` (Posts ableiten). Nur Entwürfe; Versand bleibt menschlich. Doku: `automation/WERKBANK.md`.
 - **Rolle:** Distributions-Kanal + größtes Asset. Alle Geld-Projekte teasern über den Newsletter an
   und verlinken zurück (Newsletter-Box). Betreiber/Impressum-Daten: Alleng Chour, Belp/CH, hallo@abannews.com.
 
