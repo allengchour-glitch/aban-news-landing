@@ -8,12 +8,22 @@
     <copyright>Allen Chour, 2026</copyright>
     <managingEditor>hallo@abannews.com (Aban)</managingEditor>
     <webMaster>hallo@abannews.com (Aban)</webMaster>
-    <pubDate>Fri, 03 Jul 2026 07:00:00 +0200</pubDate>
-    <lastBuildDate>Fri, 03 Jul 2026 07:00:00 +0200</lastBuildDate>
+    <pubDate>Mon, 06 Jul 2026 07:00:00 +0200</pubDate>
+    <lastBuildDate>Mon, 06 Jul 2026 07:00:00 +0200</lastBuildDate>
     <category>Künstliche Intelligenz</category>
     <category>Newsletter</category>
     <generator>aban news archive RSS generator</generator>
     <atom:link href="https://abannews.com/archive.rss" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Sovereign-AI in der Praxis — was DACH wirklich nutzen kann</title>
+      <link>https://abannews.com/archive/026-2026-07-06-sovereign-ai-in-der-praxis.html</link>
+      <guid isPermaLink="true">https://abannews.com/archive/026-2026-07-06-sovereign-ai-in-der-praxis.html</guid>
+      <pubDate>Mon, 06 Jul 2026 07:00:00 +0200</pubDate>
+      <description><![CDATA[Neues Halbjahr, alte Frage: Wem gehören die Daten, die du in deine KI-Tools kippst? Drei Sovereign-AI-Entwicklungen, die für DACH-Solopreneure praktisch zählen — plus ein 5-Minuten-Datenresidenz-Check.]]></description>
+      <author>hallo@abannews.com (Aban)</author>
+      <category>AI</category>
+      <category>DACH</category>
+    </item>
     <item>
       <title>Werkzeugkasten H1-Bilanz — Quantensprung entlarvt</title>
       <link>https://abannews.com/archive/025-2026-07-03-werkzeugkasten-h1-bilanz-quantensprung-entlarvt.html</link>
