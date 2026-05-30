@@ -133,6 +133,15 @@ def card(p):
 </article>"""
 
 
+def itemlist(members, lang="de"):
+    """ItemList JSON-LD for hub pages (Google list eligibility)."""
+    elems = [{"@type": "ListItem", "position": i + 1, "name": p["name"],
+              "url": BASE_URL + f"/programm/{slug(p['id'])}.html"}
+             for i, p in enumerate(members)]
+    data = {"@context": "https://schema.org", "@type": "ItemList", "itemListElement": elems}
+    return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
+
+
 def lead_slot(p, leadgen):
     """Clearly labeled lead-gen / consultant CTA. Filled via leadgen.json."""
     entry = leadgen.get(p["id"]) or leadgen.get("_default")
@@ -219,7 +228,7 @@ def build(data_path: Path, out: Path, here: Path):
 
     for r in regions:
         members = [p for p in progs if p.get("region") == r]
-        body = (f'<p><a href="/">← Alle Förderungen</a></p><h1>Förderungen in {e(REGION_NAME.get(r,r))}</h1>'
+        body = (f'{itemlist(members)}<p><a href="/">← Alle Förderungen</a></p><h1>Förderungen in {e(REGION_NAME.get(r,r))}</h1>'
                 + "\n".join(card(p) for p in members) + f'<p class="disc">⚠️ {e(disclaimer)}</p>')
         (out / "region" / f"{slug(r)}.html").write_text(
             page(f"Förderungen {REGION_NAME.get(r,r)} — {SITE_NAME}",
@@ -228,7 +237,7 @@ def build(data_path: Path, out: Path, here: Path):
 
     for a in arten:
         members = [p for p in progs if p.get("art") == a]
-        body = (f'<p><a href="/">← Alle Förderungen</a></p><h1>{e(a)}-Förderungen</h1>'
+        body = (f'{itemlist(members)}<p><a href="/">← Alle Förderungen</a></p><h1>{e(a)}-Förderungen</h1>'
                 + "\n".join(card(p) for p in members) + f'<p class="disc">⚠️ {e(disclaimer)}</p>')
         (out / "art" / f"{slug(a)}.html").write_text(
             page(f"{a}-Förderungen im DACH-Raum — {SITE_NAME}",
@@ -239,7 +248,7 @@ def build(data_path: Path, out: Path, here: Path):
     (out / "fuer").mkdir(exist_ok=True)
     for z in zielgruppen:
         members = [p for p in progs if z in p.get("zielgruppe", [])]
-        body = (f'<p><a href="/">← Alle Förderungen</a></p><h1>Förderungen für {e(z)}</h1>'
+        body = (f'{itemlist(members)}<p><a href="/">← Alle Förderungen</a></p><h1>Förderungen für {e(z)}</h1>'
                 f'<p class="tag" style="color:var(--muted)">{len(members)} Programme für {e(z)} in DACH & EU.</p>'
                 + "\n".join(card(p) for p in members) + f'<p class="disc">⚠️ {e(disclaimer)}</p>')
         (out / "fuer" / f"{slug(z)}.html").write_text(
@@ -251,7 +260,7 @@ def build(data_path: Path, out: Path, here: Path):
     (out / "bereich").mkdir(exist_ok=True)
     for b in bereiche:
         members = [p for p in progs if b in p.get("bereich", [])]
-        body = (f'<p><a href="/">← Alle Förderungen</a></p><h1>{e(b)}-Förderungen</h1>'
+        body = (f'{itemlist(members)}<p><a href="/">← Alle Förderungen</a></p><h1>{e(b)}-Förderungen</h1>'
                 f'<p class="tag" style="color:var(--muted)">{len(members)} Programme im Bereich {e(b)}.</p>'
                 + "\n".join(card(p) for p in members) + f'<p class="disc">⚠️ {e(disclaimer)}</p>')
         (out / "bereich" / f"{slug(b)}.html").write_text(
