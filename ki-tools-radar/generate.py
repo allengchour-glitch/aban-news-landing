@@ -395,6 +395,27 @@ NEW_UI = {
                    "ja": "なぜアフィリエイトリンクを？", "zh": "为什么用联盟链接？"},
     "partner_a3": {"de": "So bleibt die Seite kostenlos und werbefrei: kein Tracking, keine Pop-ups, keine Paywall. Die Provisionen decken Zeit und Pflege der Inhalte.",
                    "en": "It keeps the site free and ad-free: no tracking, no pop-ups, no paywall. Commissions cover the time and upkeep."},
+    "alt_title": {"de": "Alternativen zu {name}", "en": "Alternatives to {name}",
+                  "fr": "Alternatives à {name}", "es": "Alternativas a {name}",
+                  "it": "Alternative a {name}", "pt": "Alternativas ao {name}",
+                  "nl": "Alternatieven voor {name}", "pl": "Alternatywy dla {name}",
+                  "tr": "{name} alternatifleri", "ja": "{name}の代替ツール", "zh": "{name} 的替代品"},
+    "alt_intro": {"de": "Die besten Alternativen zu {name} — ehrlich verglichen.",
+                  "en": "The best alternatives to {name} — honestly compared.",
+                  "fr": "Les meilleures alternatives à {name} — comparées honnêtement.",
+                  "es": "Las mejores alternativas a {name} — comparadas con honestidad.",
+                  "it": "Le migliori alternative a {name} — confrontate onestamente.",
+                  "pt": "As melhores alternativas ao {name} — comparadas com honestidade.",
+                  "nl": "De beste alternatieven voor {name} — eerlijk vergeleken.",
+                  "pl": "Najlepsze alternatywy dla {name} — uczciwie porównane.",
+                  "tr": "{name} için en iyi alternatifler — dürüstçe karşılaştırıldı.",
+                  "ja": "{name}の最良の代替ツールを公正に比較。", "zh": "{name} 的最佳替代品 — 诚实对比。"},
+    "col_tool": {"de": "Tool", "en": "Tool", "fr": "Outil", "es": "Herramienta", "it": "Strumento",
+                 "pt": "Ferramenta", "nl": "Tool", "pl": "Narzędzie", "tr": "Araç", "ja": "ツール", "zh": "工具"},
+    "col_price": {"de": "Preis", "en": "Price", "fr": "Prix", "es": "Precio", "it": "Prezzo",
+                  "pt": "Preço", "nl": "Prijs", "pl": "Cena", "tr": "Fiyat", "ja": "価格", "zh": "价格"},
+    "col_score": {"de": "Wertung", "en": "Score", "fr": "Note", "es": "Puntuación", "it": "Voto",
+                  "pt": "Nota", "nl": "Score", "pl": "Ocena", "tr": "Puan", "ja": "評価", "zh": "评分"},
     "glossary_sub": {"de": "Die wichtigsten KI-Begriffe verständlich erklärt — mit passenden Tools.",
                      "en": "The most important AI terms, clearly explained — with matching tools.",
                      "fr": "Les termes IA essentiels, clairement expliqués — avec des outils adaptés.",
@@ -488,6 +509,8 @@ def page_path(lang: str, kind: str, slug: str = "") -> str:
         return f"{prefix}/glossar/{slug}.html"
     if kind == "partner":
         return f"{prefix}/partner.html"
+    if kind == "alt":
+        return f"{prefix}/alternativen/{slug}.html"
     return prefix + "/"
 
 
@@ -613,6 +636,10 @@ padding:10px 18px;border-radius:8px;font-weight:600;margin-top:8px;}}
 .faq{{margin:22px 0;}} .faq h2{{font-size:1.1rem;margin:0 0 8px;}}
 .faq details{{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px;margin:0 0 8px;}}
 .faq summary{{cursor:pointer;font-weight:600;}} .faq details p{{margin:8px 0 0;color:var(--muted);}}
+.ctab{{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem;}}
+.ctab th,.ctab td{{text-align:left;padding:9px 10px;border-bottom:1px solid var(--border);}}
+.ctab th{{color:var(--muted);font-weight:600;}} .ctab tr:hover td{{background:var(--bg-alt);}}
+.ctab .num{{text-align:center;white-space:nowrap;}}
 .disclosure{{color:var(--muted);font-size:.82rem;border-top:1px solid var(--border);margin-top:24px;padding-top:14px;}}
 footer{{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);font-size:.85rem;}}
 </style>
@@ -786,7 +813,7 @@ def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None, relat
 {pro_contra(loc, ui)}
 {'<div class="note"><strong>'+e(ui['editor_note'])+':</strong> '+e(note)+'</div>' if note else ''}
 {'<div class="note"><strong>'+e(ui['dsgvo'])+':</strong> '+e(dsgvo)+'</div>' if dsgvo else ''}
-<p><strong>{e(ui['alternatives'])}:</strong> {alts}</p>
+<p><strong>{e(ui['alternatives'])}:</strong> {alts}{(' · <a href="'+e(page_path(lang,'alt',slugify(tool['id'])))+'">'+e(ui['alt_title'].format(name=tool['name']))+' →</a>') if (tool.get('alternatives') or related) else ''}</p>
 {comparison_links(tool, tools_by_id or {}, ui, lang)}
 {related_links(related, ui, lang)}
 <a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank">{e(ui['cta'].format(name=tool['name']))}{e(star)} →</a>
@@ -851,6 +878,23 @@ style="text-decoration:none;color:var(--text)">{e(tool['name'])}</a>
 </div>"""
 
 
+def comp_table(tools, aff, ui, lang):
+    """Scannable comparison table: tool, price, score, CTA."""
+    rows = []
+    for t in tools:
+        url, is_aff = affiliate_link(t, aff)
+        star = " *" if is_aff else ""
+        rows.append(
+            f'<tr><td><a href="{e(page_path(lang,"tool",slugify(t["id"])))}">{e(t["name"])}</a></td>'
+            f'<td>{e(price_str(t, ui))}</td>'
+            f'<td class="num"><span class="score">{e(t.get("worth_it_score","—"))}/10</span></td>'
+            f'<td><a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank" '
+            f'style="padding:5px 12px">{e(ui["cta"].format(name=t["name"]))}{e(star)} →</a></td></tr>')
+    return (f'<table class="ctab"><thead><tr><th>{e(ui["col_tool"])}</th>'
+            f'<th>{e(ui["col_price"])}</th><th class="num">{e(ui["col_score"])}</th><th></th>'
+            f'</tr></thead><tbody>{"".join(rows)}</tbody></table>')
+
+
 def comparison_page(a, b, aff, ui, loc_tools, lang, available):
     sa = a.get("worth_it_score") or 0
     sb = b.get("worth_it_score") or 0
@@ -865,12 +909,30 @@ def comparison_page(a, b, aff, ui, loc_tools, lang, available):
 <p><a href="{e(page_path(lang,'home'))}">{e(ui['all_tools'])}</a></p>
 <h1 style="margin:0 0 4px">{e(a['name'])} vs {e(b['name'])}</h1>
 <p class="note"><strong>{e(ui['verdict'])}:</strong> {e(verdict)}</p>
+{comp_table([a, b], aff, ui, lang)}
 <div class="vs-col">{vs_column(a, aff, ui, loc_tools, lang)}{vs_column(b, aff, ui, loc_tools, lang)}</div>"""
     return page(lang=lang, ui=ui,
                 title=f"{a['name']} vs {b['name']} — {SITE_NAME}",
                 description=f"{a['name']} vs {b['name']}: {ui['verdict']}, Pro & Contra, Pricing, {ui['dsgvo']}.",
                 body=body, canonical=BASE_URL + page_path(lang, "vs", slug),
                 available=available, kind="vs", slug=slug)
+
+
+def alt_page(tool, alternatives, aff, ui, lang, available):
+    """'Alternatives to X' page — high purchase-intent SEO."""
+    title = ui["alt_title"].format(name=tool["name"])
+    slug = slugify(tool["id"])
+    crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
+                        (title, page_path(lang, "alt", slug))], lang)
+    body = (f'{crumb}{itemlist(alternatives, lang)}'
+            f'<p><a href="{e(page_path(lang,"tool",slug))}">← {e(tool["name"])}</a></p>\n'
+            f'<h1>{e(title)}</h1>\n<p class="meta">{e(ui["alt_intro"].format(name=tool["name"]))}</p>\n'
+            f'{comp_table(alternatives, aff, ui, lang)}\n'
+            + "\n".join(tool_card(t, aff, ui, lang) for t in alternatives))
+    return page(lang=lang, ui=ui, title=title + f" — {SITE_NAME}",
+                description=ui["alt_intro"].format(name=tool["name"]), body=body,
+                canonical=BASE_URL + page_path(lang, "alt", slug),
+                available=available, kind="alt", slug=slug)
 
 
 def usecase_page(uc_display, uc_slug, members, aff, ui, lang, available):
@@ -1282,6 +1344,23 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                     rel.append(cand)
         related_map[t["id"]] = rel[:4]
 
+    # "Alternatives to X": curated alternatives first, padded with same-category
+    # tools (by score) to ~6. Only for tools with at least one alternative.
+    alt_map = {}
+    for t in tools:
+        seen, alts = {t["id"]}, []
+        for aid in t.get("alternatives", []):
+            if aid in tools_by_id and aid not in seen:
+                seen.add(aid)
+                alts.append(tools_by_id[aid])
+        for cand in related_map.get(t["id"], []):
+            if cand["id"] not in seen:
+                seen.add(cand["id"])
+                alts.append(cand)
+        if alts:
+            alt_map[t["id"]] = sorted(alts, key=lambda x: x.get("worth_it_score", 0),
+                                      reverse=True)[:6]
+
     # Tool of the month: deterministic monthly rotation through the top 20.
     _md = date.today()
     top20 = tools_sorted[:20]
@@ -1381,6 +1460,15 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
             of.write_text(tool_page(t, aff, ui, loc_tools, lang, available, tools_by_id,
                                     related_map.get(t["id"])), encoding="utf-8")
             pages += 1
+
+        # "Alternatives to X" pages
+        for t in tools:
+            if t["id"] in alt_map:
+                of = out_file(out, lang, "alt", slugify(t["id"]))
+                of.parent.mkdir(parents=True, exist_ok=True)
+                of.write_text(alt_page(t, alt_map[t["id"]], aff, ui, lang, available),
+                              encoding="utf-8")
+                pages += 1
 
         # Category pages
         for c in categories:
@@ -1493,6 +1581,7 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                 + [BASE_URL + page_path(lang, "budget", s) for s, _, _ in budget_tiers]
                 + [BASE_URL + page_path(lang, "stack", st["slug"]) for st in STACKS]
                 + [BASE_URL + page_path(lang, "vshub"), BASE_URL + page_path(lang, "partner")]
+                + [BASE_URL + page_path(lang, "alt", slugify(t["id"])) for t in tools if t["id"] in alt_map]
                 + ([BASE_URL + page_path(lang, "glossary")] if glossary else [])
                 + [BASE_URL + page_path(lang, "term", t["slug"]) for t in glossary])
         sm = ['<?xml version="1.0" encoding="UTF-8"?>',
