@@ -1072,6 +1072,26 @@ def load_glossary(here: Path):
     return json.loads(path.read_text(encoding="utf-8")).get("terms", [])
 
 
+def load_glossary_i18n(here: Path):
+    """{lang: {slug: {"term":..., "def":...}}} from content/glossary.<lang>.json."""
+    out = {}
+    for path in (here / "content").glob("glossary.*.json"):
+        code = path.stem.split(".", 1)[1]  # glossary.en -> en
+        try:
+            out[code] = json.loads(path.read_text(encoding="utf-8")).get("terms", {})
+        except Exception:
+            pass
+    return out
+
+
+def loc_term(term, gi18n, lang):
+    """Localized (term_text, definition) with German fallback."""
+    tr = (gi18n.get(lang) or {}).get(term["slug"])
+    if tr and tr.get("term") and tr.get("def"):
+        return tr["term"], tr["def"]
+    return term["term"], term["de"]
+
+
 def term_tools(term, tools_sorted, limit=6):
     """Tools related to a glossary term via shared category or use_case."""
     rel = set(term.get("rel", []))
@@ -1084,12 +1104,13 @@ def term_tools(term, tools_sorted, limit=6):
     return out
 
 
-def term_page(term, related, aff, ui, lang, available):
+def term_page(term, related, aff, ui, lang, available, gi18n=None):
+    tname, tdef = loc_term(term, gi18n or {}, lang)
     crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
                         (ui["glossary_nav"], page_path(lang, "glossary")),
-                        (term["term"], page_path(lang, "term", term["slug"]))], lang)
+                        (tname, page_path(lang, "term", term["slug"]))], lang)
     schema = {"@context": "https://schema.org", "@type": "DefinedTerm",
-              "name": term["term"], "description": term["de"],
+              "name": tname, "description": tdef,
               "inDefinedTermSet": BASE_URL + page_path(lang, "glossary")}
     sj = f'<script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>'
     rel_html = ""
@@ -1097,19 +1118,21 @@ def term_page(term, related, aff, ui, lang, available):
         rel_html = (f'<h2 style="font-size:1.05rem;margin:18px 0 8px">{e(ui["related"])}</h2>\n'
                     + "\n".join(tool_card(t, aff, ui, lang) for t in related))
     body = (f'{crumb}{sj}<p><a href="{e(page_path(lang,"glossary"))}">← {e(ui["glossary_nav"])}</a></p>\n'
-            f'<h1>{e(term["term"])}</h1>\n<p>{e(term["de"])}</p>\n{rel_html}')
-    return page(lang=lang, ui=ui, title=f'{term["term"]} — {SITE_NAME}',
-                description=term["de"][:155], body=body,
+            f'<h1>{e(tname)}</h1>\n<p>{e(tdef)}</p>\n{rel_html}')
+    return page(lang=lang, ui=ui, title=f'{tname} — {SITE_NAME}',
+                description=tdef[:155], body=body,
                 canonical=BASE_URL + page_path(lang, "term", term["slug"]),
                 available=available, kind="term", slug=term["slug"])
 
 
-def glossary_page(terms, ui, lang, available):
+def glossary_page(terms, ui, lang, available, gi18n=None):
     crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
                         (ui["glossary_nav"], page_path(lang, "glossary"))], lang)
+    named = sorted(((loc_term(t, gi18n or {}, lang)[0], t) for t in terms),
+                   key=lambda x: x[0].lower())
     links = "\n".join(
-        f'<li><a href="{e(page_path(lang,"term",t["slug"]))}">{e(t["term"])}</a></li>'
-        for t in sorted(terms, key=lambda x: x["term"].lower()))
+        f'<li><a href="{e(page_path(lang,"term",t["slug"]))}">{e(name)}</a></li>'
+        for name, t in named)
     body = (f'{crumb}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
             f'<h1>📖 {e(ui["glossary_title"])}</h1>\n'
             f'<p class="meta">{e(ui["glossary_sub"])}</p>\n<ul class="azlist">{links}</ul>')
@@ -1331,6 +1354,7 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
 
     locales = load_locales(here)
     glossary = load_glossary(here)
+    gi18n = load_glossary_i18n(here)
     available = [c for c in LANGUAGES if c in locales]
 
     if out.exists():
@@ -1582,17 +1606,17 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
         of.write_text(partner_page(ui, available, lang), encoding="utf-8")
         pages += 1
 
-        # Glossary hub + term pages
+        # Glossary hub + term pages (localized definitions, German fallback)
         if glossary:
             of = out_file(out, lang, "glossary")
             of.parent.mkdir(parents=True, exist_ok=True)
-            of.write_text(glossary_page(glossary, ui, lang, available), encoding="utf-8")
+            of.write_text(glossary_page(glossary, ui, lang, available, gi18n), encoding="utf-8")
             pages += 1
             for term in glossary:
                 of = out_file(out, lang, "term", term["slug"])
                 of.parent.mkdir(parents=True, exist_ok=True)
                 of.write_text(term_page(term, term_tools(term, tools_sorted),
-                                        aff, ui, lang, available), encoding="utf-8")
+                                        aff, ui, lang, available, gi18n), encoding="utf-8")
                 pages += 1
 
         # RSS feed (freshness signal + subscribers)
