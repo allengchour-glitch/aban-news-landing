@@ -144,6 +144,22 @@ nur `src` und `width/height` anpassen. Rechtssichere Quellen, rangiert:
 > [Mailjet – Email Design Trends 2026](https://www.mailjet.com/blog/email-best-practices/email-design-trends/),
 > [GlockApps – Email Header Design Essentials](https://glockapps.com/blog/email-header-design-essentials/).
 
+### Social-Preview-Bilder pro Ausgabe (`img/og/`)
+
+Jede Ausgabe hat ein eigenes **OG-Bild** (1200×630 PNG) für Link-Previews auf
+LinkedIn/X/WhatsApp — statt einer generischen `og-image.png` für alle. Auch
+selbst gerendert (volle Rechte), ~38 KB im Schnitt.
+
+```bash
+pip install Pillow          # einmalig
+python3 automation/generate_og_images.py
+```
+
+Das Skript rendert `img/og/NNN.png` (on-brand, wie der SVG-Header) und verdrahtet
+pro Ausgabe `og:image`, `twitter:image` sowie `og:image:width/height/alt`.
+SVG-Header (im Artikel) + PNG-OG-Bild (für Social) ergänzen sich: Social-Crawler
+rendern SVG nicht zuverlässig, deshalb hier PNG.
+
 ### Quellenangabe pro Meldung (bereits Standard)
 
 Jede News-Meldung endet mit Quelle **inkl. Link** auf die Originalquelle:
