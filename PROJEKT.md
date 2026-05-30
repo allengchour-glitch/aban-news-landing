@@ -57,6 +57,11 @@ Automatisierter DACH-KI-/ML-Jobboard (programmatic, statisch). Verdient über ge
 - **Stand:** 12 echte Seed-Jobs, AI-Crawler-robots, Dark Mode, tägl. Auto-Build-Workflow
 - **Offen:** Sponsoren + sponsors.json, Domain/Deployment, Newsletter-Einbettung. Quelle erweiterbar (Bundesagentur/Adzuna).
 
+### Portal: Aban-Netzwerk  →  Ordner `portal/`  (verbindet alles)
+Statische Hub-Seite, die Newsletter + alle 3 Geld-Projekte bündelt (interne Verlinkung/SEO,
+Organization-sameAs-Schema). `portal/generate.py`, Karten in `CARDS`. Deploy-Idee: `abannews.com`-Wurzel
+oder `start.abannews.com`. Neue Property = ein Eintrag in CARDS.
+
 ### Aban Studio  →  Ordner `aban-studio/`  (GEPARKT — auf Wunsch des Users)
 DSGVO-konformes KI-Content-Studio (SaaS-Konzept, W1-Fundament: DB-Schema, Provider-Interface,
 AI-Act-Modul). Nicht aktiv weiterentwickelt. Bei Bedarf reaktivierbar.
