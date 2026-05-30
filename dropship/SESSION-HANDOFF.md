@@ -5,6 +5,11 @@
 
 ---
 
+## ✅ STRATEGIE-ENTSCHEIDUNG (2026-05-30)
+**CJ-only.** Allen bleibt bei CJdropshipping als einziger Quelle — Grund: günstigste Option
+(0 € Abo, größtes Sortiment). KEINE Ergänzungsplattform (Spocket/Syncee verworfen).
+→ Für schnellen CH-Versand stattdessen **CJ-Frankfurt-EU-Lager** nutzen: `CJ_COUNTRY=DE` im Importscript.
+
 ## 🔴 OFFENER NÄCHSTER SCHRITT (hier weitermachen)
 
 **Autonomer CJ-Produkt-Import — Pipeline STEHT, Auth verifiziert. Blocker: CJ-Tageslimit.**
@@ -19,10 +24,17 @@ Recherche-Ergebnis: **Geht — über die CJ-API, nicht DSers.**
   ⚠️ Key wurde im Chat geteilt → Allen sollte ihn in CJ rotieren; neuen Key als env setzen.
 - Deine 8 Live-Produkte sind eh schon CJ-SKUs (`CJ-…`) → passt perfekt.
 
-### ⛔ Aktueller Blocker (2026-05-30)
+### ⛔ Aktueller Blocker (2026-05-30, geprüft 17:33)
 CJ-API: `code:1600200 — daily request limit (1000/day) reached, made: 1000`.
-Account-Kontingent heute aufgebraucht (durch anderes Tooling/DSers). **Reset: morgen.**
-→ Neue Session morgen: Script einfach starten, läuft autonom durch.
+Account-Kontingent heute aufgebraucht. **Reset: nach Mitternacht China-Zeit (CST).**
+Mehrfach getestet — bleibt bis Reset gesperrt. → Morgen Script starten, läuft autonom.
+
+### ▶️ MORGEN — EIN BEFEHL (Limit frei):
+```
+CJ_EMAIL=allengchour@gmail.com CJ_API_KEY=<key> CJ_COUNTRY=DE node dropship/cj_import.mjs
+```
+`CJ_COUNTRY=DE` = nur Frankfurt-EU-Lager-Artikel → 5-10 T CH-Versand statt 7-14 aus China.
+Danach lege ich die Treffer via Shopify-MCP fulfillment-fähig an (siehe unten).
 
 ### ⭐ STRATEGIE-ENTSCHEIDUNG (2026-05-30): CJ-EU-Lager nutzen
 Allen will CJ NICHT ersetzen, sondern um **EU-Lager-Sourcing** ergänzen (kein 2. Account).
