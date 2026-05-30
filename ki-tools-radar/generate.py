@@ -31,7 +31,7 @@ BG, BG_ALT = "#fffbf5", "#fef3c7"
 TEXT, MUTED, SUCCESS, BORDER = "#1f2937", "#6b7280", "#059669", "#e5e7eb"
 
 SITE_NAME = "KI-Tools Radar"
-BASE_URL = "https://ki-tools-radar.de"   # set to real domain before launch
+BASE_URL = "https://radar.abannews.com"   # subdomain of the existing abannews.com
 
 # Languages: 'de' is the base (root). Others are loaded from lang/<code>.json.
 # Add a code here + drop a lang/<code>.json to publish another language.
@@ -1011,8 +1011,8 @@ def dsgvo_page(members, aff, ui, lang, available):
 # Operator data is reused from the public Aban News imprint (same operator:
 # Alleng Chour, Belp/CH). PROJECT-SPECIFIC blanks a human must confirm before
 # launch are marked with [...] placeholders (domain, contact email).
-LEGAL_DOMAIN = "[DOMAIN — z. B. ki-tools-radar.de]"
-LEGAL_EMAIL = "[KONTAKT-E-MAIL — z. B. hallo@ki-tools-radar.de]"
+LEGAL_DOMAIN = "radar.abannews.com"
+LEGAL_EMAIL = "hallo@abannews.com"
 OPERATOR = {
     "name": "Alleng Chour",
     "addr1": "Hühnerhubelstrasse 37",
@@ -1073,9 +1073,10 @@ Datum/Uhrzeit, abgerufene Seite, Browsertyp). Rechtsgrundlage ist Art. 6 Abs. 1 
 (sicherer, fehlerfreier Betrieb). Die Daten werden nur kurzzeitig zur Betriebssicherheit
 gespeichert.</p>
 <h2>4. Hosting</h2>
-<p>Die Website wird bei einem Anbieter mit Servern in der EU/EWR gehostet. Mit dem Anbieter
-besteht ein Auftragsverarbeitungsvertrag (Art. 28 DSGVO). [Hosting-Anbieter eintragen, z. B.
-Cloudflare Pages — vor Live-Gang prüfen.]</p>
+<p>Die Website wird über Cloudflare Pages (Cloudflare Inc.) ausgeliefert. Cloudflare verarbeitet
+dabei technische Verbindungsdaten zur sicheren Bereitstellung; es besteht ein
+Auftragsverarbeitungsvertrag nach Art. 28 DSGVO, und Datenübermittlungen sind über
+Standardvertragsklauseln abgesichert.</p>
 <h2>5. Keine Cookies, kein Tracking</h2>
 <p>Wir setzen keine Analyse- oder Marketing-Cookies und binden keine externen Schriftarten
 oder Tracking-Dienste ein. Eine Einwilligung (Cookie-Banner) ist daher nicht erforderlich.</p>
