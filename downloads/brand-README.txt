@@ -8,4 +8,4 @@ Inhalt:
 Brand-Style-Guide: https://abannews.com/brand.html
 Press-Kit: https://abannews.com/press.html
 
-(c) 2026 aban news / Alleng Chour
+(c) 2026 aban news / Allen Chour
