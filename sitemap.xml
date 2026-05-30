@@ -67,6 +67,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://abannews.com/beratung.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/produkte.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/transparenz.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://abannews.com/sponsoring.html</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
