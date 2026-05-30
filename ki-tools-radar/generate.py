@@ -231,6 +231,25 @@ NEW_UI = {
                 "es": "Herramientas relacionadas", "it": "Strumenti correlati", "pt": "Ferramentas relacionadas",
                 "nl": "Gerelateerde tools", "pl": "Powiązane narzędzia", "tr": "İlgili araçlar",
                 "ja": "関連ツール", "zh": "相关工具"},
+    "az_nav": {"de": "Alle Tools A–Z", "en": "All tools A–Z", "fr": "Tous les outils A–Z",
+               "es": "Todas las herramientas A–Z", "it": "Tutti gli strumenti A–Z",
+               "pt": "Todas as ferramentas A–Z", "nl": "Alle tools A–Z", "pl": "Wszystkie narzędzia A–Z",
+               "tr": "Tüm araçlar A–Z", "ja": "全ツール A–Z", "zh": "全部工具 A–Z"},
+    "nf_title": {"de": "Seite nicht gefunden", "en": "Page not found", "fr": "Page introuvable",
+                 "es": "Página no encontrada", "it": "Pagina non trovata", "pt": "Página não encontrada",
+                 "nl": "Pagina niet gevonden", "pl": "Nie znaleziono strony", "tr": "Sayfa bulunamadı",
+                 "ja": "ページが見つかりません", "zh": "页面未找到"},
+    "nf_text": {"de": "Diese Seite gibt es nicht. Zurück zur Startseite mit allen KI-Tools.",
+                "en": "This page doesn't exist. Back to the homepage with all AI tools.",
+                "fr": "Cette page n'existe pas. Retour à l'accueil avec tous les outils IA.",
+                "es": "Esta página no existe. Vuelve al inicio con todas las herramientas de IA.",
+                "it": "Questa pagina non esiste. Torna alla home con tutti gli strumenti IA.",
+                "pt": "Esta página não existe. Volte à página inicial com todas as ferramentas de IA.",
+                "nl": "Deze pagina bestaat niet. Terug naar de homepage met alle AI-tools.",
+                "pl": "Ta strona nie istnieje. Wróć na stronę główną ze wszystkimi narzędziami AI.",
+                "tr": "Bu sayfa yok. Tüm YZ araçlarının olduğu ana sayfaya dön.",
+                "ja": "このページは存在しません。すべてのAIツールがあるホームへ。",
+                "zh": "页面不存在。返回包含所有AI工具的首页。"},
 }
 # Newsletter box links to the existing owned audience (compounding revenue lever).
 NEWSLETTER_URL = "https://abannews.de"
@@ -301,6 +320,8 @@ def page_path(lang: str, kind: str, slug: str = "") -> str:
         return f"{prefix}/neu.html"
     if kind == "budget":
         return f"{prefix}/preis/{slug}.html"
+    if kind == "az":
+        return f"{prefix}/tools.html"
     return prefix + "/"
 
 
@@ -404,6 +425,8 @@ padding:10px 18px;border-radius:8px;font-weight:600;margin-top:8px;}}
 .feat{{border:2px solid var(--accent);border-radius:14px;padding:8px 14px 2px;margin:14px 0;background:#fff;}}
 .feat-label{{display:inline-block;background:var(--accent);color:#fff;font-weight:600;font-size:.82rem;border-radius:999px;padding:2px 12px;margin:4px 0 2px;}}
 .feat .card{{border:none;margin:0;padding:10px 6px;}}
+.azlist{{columns:2;column-gap:32px;padding-left:18px;}} @media(max-width:600px){{.azlist{{columns:1;}}}}
+.azlist li{{margin:2px 0;}}
 .vs-col{{display:flex;flex-wrap:wrap;gap:14px;}} .vs-col>div{{flex:1;min-width:240px;}}
 .faq{{margin:22px 0;}} .faq h2{{font-size:1.1rem;margin:0 0 8px;}}
 .faq details{{background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 14px;margin:0 0 8px;}}
@@ -592,6 +615,16 @@ def vs_slug(a_id, b_id):
     return f"{x}-vs-{y}"
 
 
+def itemlist(members, lang):
+    """ItemList JSON-LD for listing pages (Google list/carousel eligibility)."""
+    elems = [{"@type": "ListItem", "position": i + 1,
+              "url": BASE_URL + page_path(lang, "tool", slugify(t["id"])),
+              "name": t["name"]} for i, t in enumerate(members)]
+    data = {"@context": "https://schema.org", "@type": "ItemList",
+            "itemListElement": elems}
+    return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
+
+
 def related_links(related, ui, lang):
     """Links to other tools sharing a category (internal linking / SEO)."""
     if not related:
@@ -655,7 +688,7 @@ def usecase_page(uc_display, uc_slug, members, aff, ui, lang, available):
     title = ui["best_in"].format(cat=uc_display)
     crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
                         (title, page_path(lang, "uc", uc_slug))], lang)
-    body = (f'{crumb}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+    body = (f'{crumb}{itemlist(members, lang)}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
             f'<h1>{e(title)}</h1>\n'
             + "\n".join(tool_card(t, aff, ui, lang) for t in members))
     return page(lang=lang, ui=ui,
@@ -679,7 +712,7 @@ def latest_issue(tool):
 def trending_page(members, aff, ui, lang, available):
     crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
                         (ui["trending_nav"], page_path(lang, "trending"))], lang)
-    body = (f'{crumb}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+    body = (f'{crumb}{itemlist(members, lang)}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
             f'<h1>🆕 {e(ui["trending_title"])}</h1>\n<p class="meta">{e(ui["trending_intro"])}</p>\n'
             + "\n".join(tool_card(t, aff, ui, lang) for t in members))
     return page(lang=lang, ui=ui, title=ui["trending_nav"] + f" — {SITE_NAME}",
@@ -711,7 +744,7 @@ def rss_feed(members, ui, loc_tools, lang):
 def budget_page(title, slug, members, aff, ui, lang, available):
     crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
                         (title, page_path(lang, "budget", slug))], lang)
-    body = (f'{crumb}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+    body = (f'{crumb}{itemlist(members, lang)}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
             f'<h1>💶 {e(title)}</h1>\n'
             + "\n".join(tool_card(t, aff, ui, lang) for t in members))
     return page(lang=lang, ui=ui, title=title + f" — {SITE_NAME}",
@@ -720,10 +753,35 @@ def budget_page(title, slug, members, aff, ui, lang, available):
                 available=available, kind="budget", slug=slug)
 
 
+def az_page(tools, ui, lang, available):
+    """Alphabetical A–Z index of all tools (navigation + crawl depth)."""
+    items = sorted(tools, key=lambda t: t["name"].lower())
+    crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
+                        (ui["az_nav"], page_path(lang, "az"))], lang)
+    links = "\n".join(
+        f'<li><a href="{e(page_path(lang,"tool",slugify(t["id"])))}">{e(t["name"])}</a>'
+        f' <span class="meta">{e(t.get("worth_it_score","—"))}/10</span></li>' for t in items)
+    body = (f'{crumb}{itemlist(items, lang)}'
+            f'<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+            f'<h1>{e(ui["az_nav"])}</h1>\n<ul class="azlist">{links}</ul>')
+    return page(lang=lang, ui=ui, title=ui["az_nav"] + f" — {SITE_NAME}",
+                description=ui["az_nav"] + ".", body=body,
+                canonical=BASE_URL + page_path(lang, "az"),
+                available=available, kind="az")
+
+
+def notfound_page(ui, lang, available):
+    body = (f'<h1>🤖 404 — {e(ui["nf_title"])}</h1>\n<p class="meta">{e(ui["nf_text"])}</p>\n'
+            f'<a class="cta" href="{e(page_path(lang,"home"))}">{e(SITE_NAME)} →</a>')
+    return page(lang=lang, ui=ui, title=f"404 — {SITE_NAME}", description=ui["nf_title"],
+                body=body, canonical=BASE_URL + page_path(lang, "home"),
+                available=available, kind="home")
+
+
 def dsgvo_page(members, aff, ui, lang, available):
     crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
                         (ui["dsgvo_title"], page_path(lang, "dsgvo"))], lang)
-    body = (f'{crumb}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+    body = (f'{crumb}{itemlist(members, lang)}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
             f'<h1>🏆 {e(ui["dsgvo_title"])}</h1>\n<p class="meta">{e(ui["dsgvo_intro"])}</p>\n'
             + "\n".join(tool_card(t, aff, ui, lang) for t in members))
     return page(lang=lang, ui=ui, title=ui["dsgvo_title"] + f" — {SITE_NAME}",
@@ -840,7 +898,8 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
             + [f'<a href="{e(page_path(lang,"budget",f"unter-{x}-eur"))}">&lt; {x} €</a>'
                for x in BUDGETS])
         subnav = (f'<p class="subnav">🏆 <a href="{e(page_path(lang,"dsgvo"))}">{e(ui["dsgvo_nav"])}</a>'
-                  f' · 🆕 <a href="{e(page_path(lang,"trending"))}">{e(ui["trending_nav"])}</a></p>\n'
+                  f' · 🆕 <a href="{e(page_path(lang,"trending"))}">{e(ui["trending_nav"])}</a>'
+                  f' · 🔤 <a href="{e(page_path(lang,"az"))}">{e(ui["az_nav"])}</a></p>\n'
                   f'<p class="subnav"><strong>{e(ui["budget_nav"])}:</strong> {budget_links}</p>\n'
                   f'<p class="subnav"><strong>{e(ui["by_use_case"])}:</strong> {uc_links}</p>')
         cards = "\n".join(tool_card(t, aff, ui, lang) for t in tools_sorted)
@@ -850,7 +909,8 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
         if featured:
             feat_html = (f'<div class="feat"><span class="feat-label">🏅 {e(ui["tool_of_month"])}</span>\n'
                          f'{tool_card(featured, aff, ui, lang)}</div>\n')
-        home_body = (f'<p class="meta">{e(ui["categories"])}: {cat_links}</p>\n{subnav}\n{feat_html}'
+        home_body = (f'{itemlist(tools_sorted, lang)}'
+                     f'<p class="meta">{e(ui["categories"])}: {cat_links}</p>\n{subnav}\n{feat_html}'
                      f'<h2 style="margin:18px 0 12px">{e(ui["home_heading"].format(n=len(tools)))}</h2>\n'
                      f'{search}\n<p id="nores" hidden>{e(ui["no_results"])}</p>\n{cards}\n'
                      f'<script src="/search.js" defer></script>')
@@ -877,7 +937,7 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
             ctitle = ui["best_in"].format(cat=c)
             ccrumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
                                  (ctitle, page_path(lang, "cat", slugify(c)))], lang)
-            body = (f'{ccrumb}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+            body = (f'{ccrumb}{itemlist(members, lang)}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
                     f'<h1>{e(ctitle)}</h1>\n'
                     + "\n".join(tool_card(t, aff, ui, lang) for t in members))
             of = out_file(out, lang, "cat", slugify(c))
@@ -926,29 +986,46 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                           encoding="utf-8")
             pages += 1
 
+        # A–Z index
+        of = out_file(out, lang, "az")
+        of.parent.mkdir(parents=True, exist_ok=True)
+        of.write_text(az_page(tools, ui, lang, available), encoding="utf-8")
+        pages += 1
+
         # RSS feed (freshness signal + subscribers)
         feed = out / feed_path(lang).lstrip("/")
         feed.parent.mkdir(parents=True, exist_ok=True)
         feed.write_text(rss_feed(trending, ui, loc_tools, lang), encoding="utf-8")
 
-    # sitemap.xml across all languages
+    # Sitemaps: one per language + a sitemap index (better for large sites).
     today = date.today().isoformat()
-    sm = ['<?xml version="1.0" encoding="UTF-8"?>',
-          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for lang in available:
         urls = ([BASE_URL + page_path(lang, "home"), BASE_URL + page_path(lang, "dsgvo"),
-                 BASE_URL + page_path(lang, "trending")]
+                 BASE_URL + page_path(lang, "trending"), BASE_URL + page_path(lang, "az")]
                 + [BASE_URL + page_path(lang, "tool", slugify(t["id"])) for t in tools]
                 + [BASE_URL + page_path(lang, "cat", slugify(c)) for c in categories]
                 + [BASE_URL + page_path(lang, "vs", vs_slug(a["id"], b["id"])) for a, b in pairs]
                 + [BASE_URL + page_path(lang, "uc", slugify(uc)) for uc, _ in use_cases]
                 + [BASE_URL + page_path(lang, "budget", s) for s, _, _ in budget_tiers])
+        sm = ['<?xml version="1.0" encoding="UTF-8"?>',
+              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
         for url in urls:
             sm.append(f"  <url><loc>{e(url)}</loc><lastmod>{today}</lastmod></url>")
-    sm.append("</urlset>")
-    (out / "sitemap.xml").write_text("\n".join(sm), encoding="utf-8")
+        sm.append("</urlset>")
+        (out / f"sitemap-{lang}.xml").write_text("\n".join(sm), encoding="utf-8")
+    idx = ['<?xml version="1.0" encoding="UTF-8"?>',
+           '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for lang in available:
+        idx.append(f"  <sitemap><loc>{BASE_URL}/sitemap-{lang}.xml</loc>"
+                   f"<lastmod>{today}</lastmod></sitemap>")
+    idx.append("</sitemapindex>")
+    (out / "sitemap.xml").write_text("\n".join(idx), encoding="utf-8")
     (out / "robots.txt").write_text(
         f"User-agent: *\nAllow: /\nSitemap: {BASE_URL}/sitemap.xml\n", encoding="utf-8")
+
+    # Branded 404 (Cloudflare/Netlify serve /404.html). German default.
+    de_ui = locales["de"]["ui"]
+    (out / "404.html").write_text(notfound_page(de_ui, "de", available), encoding="utf-8")
 
     # Static client-side search (no deps, no tracking, DSGVO-safe).
     (out / "search.js").write_text(SEARCH_JS, encoding="utf-8")
