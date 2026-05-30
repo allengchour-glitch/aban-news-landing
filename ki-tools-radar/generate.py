@@ -825,10 +825,17 @@ def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None, relat
                    if p.get("paid_from_eur") else "")
     crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
                         (tool["name"], page_path(lang, "tool", slugify(tool["id"])))], lang)
+    tldr = ui["tldr_tpl"].format(
+        name=tool["name"], v=tool.get("vendor", "n/a"),
+        s=tool.get("worth_it_score", "n/a"),
+        u=(use_cases[0] if use_cases else (tool.get("category") or ["KI"])[0]),
+        p=price_str(tool, ui))
     body = f"""{jsonld(tool)}{crumb}
 <p><a href="{e(page_path(lang,'home'))}">{e(ui['all_tools'])}</a></p>
 <h1 style="margin:0">{e(tool['name'])} <span class="score">{e(tool.get('worth_it_score','—'))}/10</span></h1>
+<p class="tldr"><strong>{e(ui['tldr'])}:</strong> {e(tldr)}</p>
 <div class="grid-meta" style="margin:10px 0">
+<span>🕒 {e(ui['updated'])}: {date.today().strftime('%m/%Y')}</span>
 <span>🏢 {e(tool.get('vendor','—'))}</span>
 <span>💶 {e(p.get('model','—'))}{e(price_extra)}</span>
 <span>🇩🇪 {e(ui['dach'])} {e(tool.get('dach_relevance','—'))}/10</span>
