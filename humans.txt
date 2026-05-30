@@ -1,0 +1,13 @@
+/* TEAM */
+
+  Gründer & Autor: Allen Chour ("Aban")
+  Standort: Belp, Schweiz
+  Web: https://abannews.com
+
+/* SITE */
+
+  Projekt: aban news — täglicher, deutschsprachiger KI-Newsletter für DACH-Profis
+  Sprachen: Deutsch, Englisch, Französisch, Italienisch
+  Standard: HTML5, CSS3
+  Tech: Statisches HTML, kein Framework, kein Build-Step
+  Hosting: Cloudflare Pages
