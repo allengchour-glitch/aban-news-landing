@@ -8,14 +8,24 @@
     <copyright>Allen Chour, 2026</copyright>
     <managingEditor>hallo@abannews.com (Aban)</managingEditor>
     <webMaster>hallo@abannews.com (Aban)</webMaster>
-    <pubDate>Wed, 08 Jul 2026 07:00:00 +0200</pubDate>
-    <lastBuildDate>Wed, 08 Jul 2026 07:00:00 +0200</lastBuildDate>
+    <pubDate>Thu, 09 Jul 2026 07:00:00 +0200</pubDate>
+    <lastBuildDate>Thu, 09 Jul 2026 07:00:00 +0200</lastBuildDate>
     <category>Künstliche Intelligenz</category>
     <category>Newsletter</category>
     <generator>aban news archive RSS generator</generator>
     <atom:link href="https://abannews.com/archive.rss" rel="self" type="application/rss+xml"/>
     <item>
-      <title>„Automatisierung spart 40 % deiner Woche" — die ehrliche Rechnung</title>
+      <title>Akquise ohne Kaltakquise — drei warme Wege (mit KI-Hilfe)</title>
+      <link>https://abannews.com/archive/029-2026-07-09-akquise-ohne-kaltakquise.html</link>
+      <guid isPermaLink="true">https://abannews.com/archive/029-2026-07-09-akquise-ohne-kaltakquise.html</guid>
+      <pubDate>Thu, 09 Jul 2026 07:00:00 +0200</pubDate>
+      <description><![CDATA[Kaltakquise nervt — und ist meist überflüssig. Drei warme Akquise-Wege für DACH-Solopreneure mit gemessenen Antwortquoten, plus ein Anlass-Finder-Prompt. KI hilft beim Vorbereiten, nicht beim Spammen.]]></description>
+      <author>hallo@abannews.com (Aban)</author>
+      <category>AI</category>
+      <category>DACH</category>
+    </item>
+    <item>
+      <title>„Automatisierung spart 40 % deiner Woche“ — die ehrliche Rechnung</title>
       <link>https://abannews.com/archive/028-2026-07-08-automatisierung-40-prozent-ehrliche-rechnung.html</link>
       <guid isPermaLink="true">https://abannews.com/archive/028-2026-07-08-automatisierung-40-prozent-ehrliche-rechnung.html</guid>
       <pubDate>Wed, 08 Jul 2026 07:00:00 +0200</pubDate>

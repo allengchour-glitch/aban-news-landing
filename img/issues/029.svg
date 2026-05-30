@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="aban news Ausgabe 028">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="aban news Ausgabe 029">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#3b2a1a"/>
@@ -19,11 +19,11 @@
   <!-- wordmark -->
   <text x="80" y="110" font-family="ui-sans-serif,system-ui,sans-serif" font-size="26" font-weight="700" fill="#f59e0b" letter-spacing="1">☕ aban news</text>
   <!-- issue badge -->
-  <text x="1120" y="110" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="22" font-weight="600" fill="#fdf6ec" opacity="0.7">Ausgabe 028</text>
+  <text x="1120" y="110" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="22" font-weight="600" fill="#fdf6ec" opacity="0.7">Ausgabe 029</text>
   <!-- title -->
-  <text x="80" y="172" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="54" font-weight="800" fill="#fdf6ec" letter-spacing="-1">„Automatisierung spart</text>
-  <text x="80" y="238" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="54" font-weight="800" fill="#fdf6ec" letter-spacing="-1">40 % deiner Woche“ — die</text>
-  <text x="80" y="304" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="54" font-weight="800" fill="#fdf6ec" letter-spacing="-1">ehrliche Rechnung</text>
+  <text x="80" y="172" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="54" font-weight="800" fill="#fdf6ec" letter-spacing="-1">Akquise ohne Kaltakquise</text>
+  <text x="80" y="238" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="54" font-weight="800" fill="#fdf6ec" letter-spacing="-1">— drei warme Wege (mit</text>
+  <text x="80" y="304" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="54" font-weight="800" fill="#fdf6ec" letter-spacing="-1">KI-Hilfe)</text>
   <!-- date footer -->
-  <text x="80" y="372" font-family="ui-sans-serif,system-ui,sans-serif" font-size="22" font-weight="500" fill="#fdf6ec" opacity="0.6">8. Juli 2026 · Mo–Fr · DACH</text>
+  <text x="80" y="372" font-family="ui-sans-serif,system-ui,sans-serif" font-size="22" font-weight="500" fill="#fdf6ec" opacity="0.6">9. Juli 2026 · Mo–Fr · DACH</text>
 </svg>
