@@ -335,6 +335,31 @@ NEW_UI = {
                   "tr": "Bu meslek için seçilmiş en iyi YZ araçları.",
                   "ja": "この職業向けに厳選した最高のAIツール。",
                   "zh": "为该职业精选的最佳 AI 工具。"},
+    "glossary_nav": {"de": "Glossar", "en": "Glossary", "fr": "Glossaire", "es": "Glosario",
+                     "it": "Glossario", "pt": "Glossário", "nl": "Woordenlijst", "pl": "Słownik",
+                     "tr": "Sözlük", "ja": "用語集", "zh": "术语表"},
+    "glossary_title": {"de": "KI-Glossar: Begriffe einfach erklärt",
+                       "en": "AI glossary: key terms explained",
+                       "fr": "Glossaire IA : les termes clés expliqués",
+                       "es": "Glosario de IA: términos clave explicados",
+                       "it": "Glossario IA: i termini chiave spiegati",
+                       "pt": "Glossário de IA: termos-chave explicados",
+                       "nl": "AI-woordenlijst: begrippen uitgelegd",
+                       "pl": "Słownik AI: kluczowe pojęcia",
+                       "tr": "YZ sözlüğü: temel terimler",
+                       "ja": "AI用語集：重要語をやさしく解説",
+                       "zh": "AI 术语表：核心概念解析"},
+    "glossary_sub": {"de": "Die wichtigsten KI-Begriffe verständlich erklärt — mit passenden Tools.",
+                     "en": "The most important AI terms, clearly explained — with matching tools.",
+                     "fr": "Les termes IA essentiels, clairement expliqués — avec des outils adaptés.",
+                     "es": "Los términos de IA más importantes, explicados — con herramientas afines.",
+                     "it": "I termini IA più importanti, spiegati — con strumenti correlati.",
+                     "pt": "Os termos de IA mais importantes, explicados — com ferramentas relacionadas.",
+                     "nl": "De belangrijkste AI-begrippen, helder uitgelegd — met bijpassende tools.",
+                     "pl": "Najważniejsze pojęcia AI, jasno wyjaśnione — z pasującymi narzędziami.",
+                     "tr": "En önemli YZ terimleri, açıkça anlatıldı — ilgili araçlarla.",
+                     "ja": "重要なAI用語をわかりやすく解説 — 関連ツール付き。",
+                     "zh": "最重要的 AI 术语清晰解析 — 附相关工具。"},
 }
 # Newsletter box links to the existing owned audience (compounding revenue lever).
 NEWSLETTER_URL = "https://abannews.de"
@@ -411,6 +436,10 @@ def page_path(lang: str, kind: str, slug: str = "") -> str:
         return f"{prefix}/stack/{slug}.html"
     if kind == "vshub":
         return f"{prefix}/vergleiche.html"
+    if kind == "glossary":
+        return f"{prefix}/glossar.html"
+    if kind == "term":
+        return f"{prefix}/glossar/{slug}.html"
     return prefix + "/"
 
 
@@ -872,6 +901,60 @@ def vshub_page(pairs, ui, lang, available):
                 available=available, kind="vshub")
 
 
+def load_glossary(here: Path):
+    path = here / "content" / "glossary.json"
+    if not path.exists():
+        return []
+    return json.loads(path.read_text(encoding="utf-8")).get("terms", [])
+
+
+def term_tools(term, tools_sorted, limit=6):
+    """Tools related to a glossary term via shared category or use_case."""
+    rel = set(term.get("rel", []))
+    out = []
+    for t in tools_sorted:
+        if rel & (set(t.get("category", [])) | set(t.get("use_cases", []))):
+            out.append(t)
+        if len(out) >= limit:
+            break
+    return out
+
+
+def term_page(term, related, aff, ui, lang, available):
+    crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
+                        (ui["glossary_nav"], page_path(lang, "glossary")),
+                        (term["term"], page_path(lang, "term", term["slug"]))], lang)
+    schema = {"@context": "https://schema.org", "@type": "DefinedTerm",
+              "name": term["term"], "description": term["de"],
+              "inDefinedTermSet": BASE_URL + page_path(lang, "glossary")}
+    sj = f'<script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>'
+    rel_html = ""
+    if related:
+        rel_html = (f'<h2 style="font-size:1.05rem;margin:18px 0 8px">{e(ui["related"])}</h2>\n'
+                    + "\n".join(tool_card(t, aff, ui, lang) for t in related))
+    body = (f'{crumb}{sj}<p><a href="{e(page_path(lang,"glossary"))}">← {e(ui["glossary_nav"])}</a></p>\n'
+            f'<h1>{e(term["term"])}</h1>\n<p>{e(term["de"])}</p>\n{rel_html}')
+    return page(lang=lang, ui=ui, title=f'{term["term"]} — {SITE_NAME}',
+                description=term["de"][:155], body=body,
+                canonical=BASE_URL + page_path(lang, "term", term["slug"]),
+                available=available, kind="term", slug=term["slug"])
+
+
+def glossary_page(terms, ui, lang, available):
+    crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
+                        (ui["glossary_nav"], page_path(lang, "glossary"))], lang)
+    links = "\n".join(
+        f'<li><a href="{e(page_path(lang,"term",t["slug"]))}">{e(t["term"])}</a></li>'
+        for t in sorted(terms, key=lambda x: x["term"].lower()))
+    body = (f'{crumb}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+            f'<h1>📖 {e(ui["glossary_title"])}</h1>\n'
+            f'<p class="meta">{e(ui["glossary_sub"])}</p>\n<ul class="azlist">{links}</ul>')
+    return page(lang=lang, ui=ui, title=ui["glossary_title"] + f" — {SITE_NAME}",
+                description=ui["glossary_sub"], body=body,
+                canonical=BASE_URL + page_path(lang, "glossary"),
+                available=available, kind="glossary")
+
+
 def az_page(tools, ui, lang, available):
     """Alphabetical A–Z index of all tools (navigation + crawl depth)."""
     items = sorted(tools, key=lambda t: t["name"].lower())
@@ -933,6 +1016,7 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
         aff = json.loads(aff_path.read_text(encoding="utf-8")).get("links", {})
 
     locales = load_locales(here)
+    glossary = load_glossary(here)
     available = [c for c in LANGUAGES if c in locales]
 
     if out.exists():
@@ -1043,7 +1127,8 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
         subnav = (f'<p class="subnav">🏆 <a href="{e(page_path(lang,"dsgvo"))}">{e(ui["dsgvo_nav"])}</a>'
                   f' · 🆕 <a href="{e(page_path(lang,"trending"))}">{e(ui["trending_nav"])}</a>'
                   f' · 🔤 <a href="{e(page_path(lang,"az"))}">{e(ui["az_nav"])}</a>'
-                  f' · 🆚 <a href="{e(page_path(lang,"vshub"))}">{e(ui["vshub_nav"])}</a></p>\n'
+                  f' · 🆚 <a href="{e(page_path(lang,"vshub"))}">{e(ui["vshub_nav"])}</a>'
+                  f' · 📖 <a href="{e(page_path(lang,"glossary"))}">{e(ui["glossary_nav"])}</a></p>\n'
                   f'<p class="subnav"><strong>{e(ui["budget_nav"])}:</strong> {budget_links}</p>\n'
                   f'<p class="subnav"><strong>{e(ui["stack_nav"])}:</strong> {stack_links}</p>\n'
                   f'<p class="subnav"><strong>{e(ui["by_use_case"])}:</strong> {uc_links}</p>')
@@ -1151,6 +1236,19 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
         of.write_text(vshub_page(pairs, ui, lang, available), encoding="utf-8")
         pages += 1
 
+        # Glossary hub + term pages
+        if glossary:
+            of = out_file(out, lang, "glossary")
+            of.parent.mkdir(parents=True, exist_ok=True)
+            of.write_text(glossary_page(glossary, ui, lang, available), encoding="utf-8")
+            pages += 1
+            for term in glossary:
+                of = out_file(out, lang, "term", term["slug"])
+                of.parent.mkdir(parents=True, exist_ok=True)
+                of.write_text(term_page(term, term_tools(term, tools_sorted),
+                                        aff, ui, lang, available), encoding="utf-8")
+                pages += 1
+
         # RSS feed (freshness signal + subscribers)
         feed = out / feed_path(lang).lstrip("/")
         feed.parent.mkdir(parents=True, exist_ok=True)
@@ -1167,7 +1265,9 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                 + [BASE_URL + page_path(lang, "uc", slugify(uc)) for uc, _ in use_cases]
                 + [BASE_URL + page_path(lang, "budget", s) for s, _, _ in budget_tiers]
                 + [BASE_URL + page_path(lang, "stack", st["slug"]) for st in STACKS]
-                + [BASE_URL + page_path(lang, "vshub")])
+                + [BASE_URL + page_path(lang, "vshub")]
+                + ([BASE_URL + page_path(lang, "glossary")] if glossary else [])
+                + [BASE_URL + page_path(lang, "term", t["slug"]) for t in glossary])
         sm = ['<?xml version="1.0" encoding="UTF-8"?>',
               '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
         for url in urls:
