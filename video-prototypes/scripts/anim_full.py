@@ -63,6 +63,38 @@ def draw_bg_extra(d,t):
             d.ellipse([(cxp-gw)*SS,(ry-7)*SS,(cxp+gw)*SS,(ry+7)*SS],fill=glow)
             d.ellipse([(cxp-12)*SS,(ry-4)*SS,(cxp+12)*SS,(ry+4)*SS],fill=core)
 
+def draw_prop(ld,name,hx,hy,t,lit=None):
+    if name=="phone":
+        sc=lit or (58,45,94)
+        RR(ld,hx-L(12),hy-L(18),hx+L(12),hy+L(18),L(5),(30,30,30))
+        RR(ld,hx-L(8),hy-L(13),hx+L(8),hy+L(13),L(3),sc,outline=sc,ow=1)
+    elif name=="cig":
+        ex,ey=hx-L(36),hy-L(22)
+        ld.line([(hx,hy),(ex,ey)],fill=(40,40,40),width=int(L(9)))
+        ld.line([(hx,hy),(ex,ey)],fill=WHITE,width=int(L(6)))
+        ld.line([(hx,hy),(hx-L(11),hy-L(7))],fill=(210,160,90),width=int(L(6)))  # filter
+        E(ld,ex,ey,L(7),L(7),(255,120,40,90),outline=None,ow=0)                  # glow
+        E(ld,ex,ey,L(3.5),L(3.5),(255,140,50),outline=(255,140,50),ow=1)         # ember
+        for i in range(3):                                                        # smoke
+            sx=ex+math.sin(t*3+i)*L(6); sy=ey-L(12)-i*L(13)
+            ld.ellipse([sx-L(4),sy-L(5),sx+L(4),sy+L(5)],fill=(225,225,225,70))
+    elif name=="donut":
+        E(ld,hx,hy,L(22),L(22),(228,170,120))
+        E(ld,hx,hy-L(2),L(22),L(18),(246,150,200))
+        for dx,dy,c in [(-9,-6,(255,255,255)),(6,-9,(120,220,255)),(1,2,(255,240,120)),(11,1,(150,255,150)),(-11,4,(255,150,150))]:
+            ld.line([(hx+L(dx),hy+L(dy)),(hx+L(dx+4),hy+L(dy+4))],fill=c,width=int(L(2.5)))
+        E(ld,hx,hy,L(8),L(8),(36,28,48))
+    elif name=="cal":
+        ld.rectangle([hx-L(10),hy-L(26),hx-L(7),hy-L(17)],fill=(120,120,130))
+        ld.rectangle([hx+L(7),hy-L(26),hx+L(10),hy-L(17)],fill=(120,120,130))
+        RR(ld,hx-L(17),hy-L(20),hx+L(17),hy+L(18),L(3),WHITE)
+        ld.rectangle([hx-L(17),hy-L(20),hx+L(17),hy-L(8)],fill=(220,70,70))
+        for gy2 in range(3):
+            for gx in range(4):
+                cx=hx-L(12)+gx*L(8); cy=hy-L(3)+gy2*L(7)
+                ld.ellipse([cx-L(1.5),cy-L(1.5),cx+L(1.5),cy+L(1.5)],fill=(150,150,160))
+        ld.ellipse([hx+L(1),hy+L(2),hx+L(13),hy+L(14)],outline=(220,70,70),width=int(L(2.5)))
+
 def draw_bunny(ld,t,P):
     """P: dict with pose params."""
     cx=L(CW/2)+P["X"]*SS
@@ -85,14 +117,12 @@ def draw_bunny(ld,t,P):
     E(ld,(sh[0]+hip[0])/2,(sh[1]+hip[1])/2+L(20),L(46),L(58),BELLY)
     # ---- ARMS (shoulder->elbow->hand, FK) ----
     for side,(sa,ea) in (("L",P["armL"]),("R",P["armR"])):
+        if side=="R" and P.get("prop"): continue   # rechter Arm+Objekt nach dem Kopf (vorne)
         s=-1 if side=="L" else 1
         shx=sh[0]+s*L(56); shy=sh[1]+L(6)
         el=pt(shx,shy,sa,L(54)); hand=pt(*el,sa+ea,L(48))
         limb(ld,(shx,shy),el,16,BODY,hi=BODYL); limb(ld,el,hand,13,BODYD)
         E(ld,hand[0],hand[1],L(13),L(13),BODY)
-        if side=="R" and P.get("phone"):
-            ph=P["phone"]; RR(ld,hand[0]-L(12),hand[1]-L(18),hand[0]+L(12),hand[1]+L(18),L(5),(30,30,30))
-            RR(ld,hand[0]-L(8),hand[1]-L(13),hand[0]+L(8),hand[1]+L(13),L(3),ph,outline=ph,ow=1)
     # ---- HEAD ----
     ht=P["headturn"]; look=P["look"]
     hx=sh[0]+ht*L(16); hy=sh[1]-L(70)+bobh*0.2
@@ -121,12 +151,18 @@ def draw_bunny(ld,t,P):
     else:
         ld.rectangle([hx+ht*L(6)-L(8),my-L(2),hx+ht*L(6)-L(1),my+L(9)],fill=TEETH,outline=OUT,width=int(L(1.5)))
         ld.rectangle([hx+ht*L(6)+L(1),my-L(2),hx+ht*L(6)+L(8),my+L(9)],fill=TEETH,outline=OUT,width=int(L(1.5)))
-    if P.get("phone")==(127,208,255):
+    # rechter Arm + Gegenstand VOR dem Kopf (nicht verdeckt)
+    if P.get("prop"):
+        sa,ea=P["armR"]; shx=sh[0]+L(56); shy=sh[1]+L(6)
+        el=pt(shx,shy,sa,L(54)); hand=pt(*el,sa+ea,L(48))
+        limb(ld,(shx,shy),el,16,BODY,hi=BODYL); limb(ld,el,hand,13,BODYD); E(ld,hand[0],hand[1],L(13),L(13),BODY)
+        draw_prop(ld,P["prop"],hand[0],hand[1],t,P.get("phone_lit"))
+    if P.get("phone_lit")==(127,208,255):
         ld.ellipse([hx-L(48),hy+L(2),hx+L(48),hy+L(70)],fill=(127,208,255,46))
 
-def pose(t, DUR, env, eyewide, blink, phone):
+def pose(t, DUR, env, eyewide, blink, prop):
     """Choreography controller -> pose params."""
-    P=dict(env=env,eyewide=eyewide,blink=blink,mw=1.0,phone=phone)
+    P=dict(env=env,eyewide=eyewide,blink=blink,mw=1.0)
     WALK=1.5
     if t<WALK:                                   # walk IN from left
         p=sm(t/WALK); P["X"]=-150+150*p
@@ -158,8 +194,10 @@ def pose(t, DUR, env, eyewide, blink, phone):
         P["headturn"]=0.7*math.sin(tt*1.4); P["look"]=0.3*math.sin(tt*1.4)
         P["ear"]=math.sin(tt*6)*7+(hop*0.4); P["tail"]=math.sin(tt*7)*16
     # phone grab override (if phone active, raise right hand to face)
-    if phone is not None:
-        P["armR"]=(-95,-54); P["headturn"]=0.05; P["look"]=0.9; P["eyewide"]=max(P["eyewide"],0.3)
+    if prop:
+        if prop in ("phone","cig"): P["armR"]=(-95,-54); P["look"]=0.9
+        else: P["armR"]=(-74,-30); P["look"]=0.6
+        P["headturn"]=0.05; P["eyewide"]=max(P["eyewide"],0.3)
     return P
 
 K=sys.argv[1]
@@ -172,6 +210,13 @@ def shp(t): i=max(0,min(bisect.bisect_right(starts,t)-1,len(mc)-1)); return mc[i
 ENV=[0]*N; MW=[1]*N; pe,pw=0,1
 for fi in range(N): e,w=SHAPE.get(shp(fi/FPS),(0.2,1)); pe+=(e-pe)*0.55; pw+=(w-pw)*0.55; ENV[fi]=pe; MW[fi]=pw
 wstarts=[w["start"] for w in words]
+PROP_TRIG={"s6":("phone","handy"),"s7":("cig","zigarette"),"s5":("donut","süße"),"s3":("cal","tage"),
+           "s1":("phone","handy"),"s8":("phone","scroll"),"s14":("donut","marshmallow"),"s11":("phone","zwei")}
+PNAME,PSUB=PROP_TRIG.get(K,(None,None)); TRIG=None
+if PSUB:
+    for w in words:
+        if PSUB in w["w"].lower(): TRIG=w["start"]; break
+    if TRIG is None: TRIG=DUR*0.5
 def word_at(t):
     i=bisect.bisect_right(wstarts,t)-1
     if 0<=i<len(words) and words[i]["start"]<=t<=words[i]["end"]+0.08: return words[i],t-words[i]["start"]
@@ -182,10 +227,11 @@ def frame(fi):
     img=Image.new("RGB",(W*SS,H*SS),(20,18,40)); d=ImageDraw.Draw(img,"RGBA")
     draw_bg(d,t); draw_bg_extra(d,t)
     layer=Image.new("RGBA",(CW*SS,CH*SS),(0,0,0,0)); ld=ImageDraw.Draw(layer,"RGBA")
-    phone=None
-    if K=="s6" and 6.5<=t*12/DUR<=8.9: phone=(127,208,255) if 6.65<=t*12/DUR<=8.0 else (140,140,140)
-    P=pose(t,DUR,ENV[fi],0.25*max(0,math.sin(t*1.3))+0.4*max(0,ENV[fi]-0.6),(t%2.9)>2.8,phone)
-    P["mw"]=MW[fi]
+    prop=PNAME if (TRIG is not None and TRIG-0.25<=t<=TRIG+2.7) else None
+    lit=None
+    if prop=="phone": lit=(127,208,255) if t<=TRIG+1.7 else (140,140,140)
+    P=pose(t,DUR,ENV[fi],0.25*max(0,math.sin(t*1.3))+0.4*max(0,ENV[fi]-0.6),(t%2.9)>2.8,prop)
+    P["mw"]=MW[fi]; P["prop"]=prop; P["phone_lit"]=lit
     draw_bunny(ld,t,P)
     bounce=math.sin(t*2*math.pi*1.5); sy=1+0.04*bounce; sx=1/sy; scl=0.74
     w2=max(1,int(CW*SS*sx*scl)); h2=max(1,int(CH*SS*sy*scl)); sc=layer.resize((w2,h2),Image.LANCZOS)
