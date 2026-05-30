@@ -1,0 +1,12 @@
+{
+  "_comment": "Lead-Gen / Berater-Slots. So verdient der Förder-Radar Geld: Fördermittel-Berater zahlen für qualifizierte Anfragen (Pay-per-Lead) oder Premium-Platzierung. Pro Programm-id einen Eintrag setzen, oder '_default' für alle. Jeder Slot ist als 'Anzeige' gekennzeichnet (UWG). Leer lassen = kein Slot.",
+  "_anleitung": "1) Fördermittel-Beratung(en) als Partner gewinnen (Pay-per-Lead, z. B. 20-80 € je qualifizierter Anfrage, oder Monatspauschale für Premium-Platzierung). 2) Deren Lead-Formular-/Landingpage-URL hier eintragen. 3) Rebuild. Tipp: pro Region/Art unterschiedliche Partner möglich.",
+  "_beispiel": {
+    "_default": {
+      "text": "Unverbindlich prüfen lassen, welche Förderungen zu deinem Vorhaben passen.",
+      "cta": "Kostenlose Förder-Erstberatung",
+      "url": "https://PARTNER-LANDINGPAGE.example?ref=foerder-radar"
+    }
+  },
+  "links": {}
+}
