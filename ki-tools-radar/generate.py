@@ -157,6 +157,43 @@ Zu {e(tool['name'])}{e(star)} →</a>
 </article>"""
 
 
+def jsonld(tool: dict) -> str:
+    """Schema.org SoftwareApplication + editorial Review for rich snippets.
+
+    The rating is our own editorial worth_it_score (honest, single-author Review)
+    — we do not fabricate an aggregateRating with a fake ratingCount.
+    """
+    pricing = tool.get("pricing", {})
+    data = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": tool["name"],
+        "applicationCategory": (tool.get("category") or ["AI"])[0],
+        "operatingSystem": "Web",
+        "url": tool.get("url"),
+    }
+    if tool.get("vendor"):
+        data["author"] = {"@type": "Organization", "name": tool["vendor"]}
+    if pricing.get("paid_from_eur") is not None or pricing.get("free_tier"):
+        data["offers"] = {
+            "@type": "Offer",
+            "price": str(pricing.get("paid_from_eur", 0)),
+            "priceCurrency": pricing.get("currency", "EUR"),
+        }
+    if tool.get("worth_it_score") is not None:
+        data["review"] = {
+            "@type": "Review",
+            "author": {"@type": "Organization", "name": SITE_NAME},
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": str(tool["worth_it_score"]),
+                "bestRating": "10",
+            },
+        }
+    payload = json.dumps(data, ensure_ascii=False)
+    return f'<script type="application/ld+json">{payload}</script>'
+
+
 def tool_page(tool: dict, aff: dict) -> str:
     url, is_aff = affiliate_link(tool, aff)
     star = " *" if is_aff else ""
@@ -165,7 +202,8 @@ def tool_page(tool: dict, aff: dict) -> str:
     aban = tool.get("aban_note")
     dsgvo = tool.get("dsgvo_note")
     pricing = tool.get("pricing", {})
-    body = f"""<p><a href="/">← Alle Tools</a></p>
+    body = f"""{jsonld(tool)}
+<p><a href="/">← Alle Tools</a></p>
 <h1 style="margin:0">{e(tool['name'])} <span class="score">{e(tool.get('worth_it_score','—'))}/10</span></h1>
 <div class="grid-meta" style="margin:10px 0">
 <span>🏢 {e(tool.get('vendor','—'))}</span>
@@ -248,8 +286,26 @@ def build(data_path: Path, aff_path: Path, out: Path) -> int:
             encoding="utf-8",
         )
 
+    # sitemap.xml — every URL for search engines
+    urls = [BASE_URL + "/"]
+    urls += [f"{BASE_URL}/tool/{slugify(t['id'])}.html" for t in tools]
+    urls += [f"{BASE_URL}/kategorie/{slugify(c)}.html" for c in categories]
+    today = date.today().isoformat()
+    sm = ['<?xml version="1.0" encoding="UTF-8"?>',
+          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for u in urls:
+        sm.append(f"  <url><loc>{e(u)}</loc><lastmod>{today}</lastmod></url>")
+    sm.append("</urlset>")
+    (out / "sitemap.xml").write_text("\n".join(sm), encoding="utf-8")
+
+    # robots.txt — allow all, point to sitemap
+    (out / "robots.txt").write_text(
+        f"User-agent: *\nAllow: /\nSitemap: {BASE_URL}/sitemap.xml\n",
+        encoding="utf-8",
+    )
+
     total = 1 + len(tools) + len(categories)
-    print(f"Built {total} pages → {out}/ "
+    print(f"Built {total} pages + sitemap ({len(urls)} URLs) + robots.txt → {out}/ "
           f"({len(tools)} tools, {len(categories)} categories)")
     return total
 
