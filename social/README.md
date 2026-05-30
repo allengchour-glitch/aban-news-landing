@@ -35,9 +35,19 @@ python social/post.py --all      # alle ungesendeten (Vorsicht)
 ```
 Nach Versand wird `"sent": true` gesetzt — beim nächsten Aufruf kommt automatisch der nächste Post.
 
-## Voll-automatisch (optional, später)
-Per GitHub Action mit Zeitplan + den Tokens als **Repository-Secrets** (Settings → Secrets →
-Actions). Dann postet das System z.B. 3×/Woche von selbst. Sag Bescheid, dann baue ich den Workflow.
+## Voll-automatisch (3×/Woche, Null-Klick) — eingerichtet ✅
+Der Workflow `.github/workflows/social-autopost.yml` postet automatisch **Mo/Mi/Fr** den
+nächsten ungesendeten Beitrag und schreibt den `sent`-Status zurück.
+
+**Einmalig einrichten (sicher, ~3 Min):**
+1. GitHub → dein Repo → **Settings → Secrets and variables → Actions → New repository secret**.
+2. Lege an (mindestens einen Kanal):
+   - `DISCORD_WEBHOOK_URL` = deine Discord-Webhook-URL
+   - `TELEGRAM_BOT_TOKEN` = dein BotFather-Token  ·  `TELEGRAM_CHAT_ID` = z.B. `@deinkanal`
+3. Fertig. Ab dann läuft es von selbst. **Sofort testen:** Actions-Tab → „Social Auto-Post" → **Run workflow**.
+
+> Die Secrets sind nur in GitHub gespeichert, nie im Code/Repo sichtbar — auch nicht in den Logs.
+> Zeitplan ändern: `cron` in der Workflow-Datei anpassen.
 
 ## Posts pflegen
 `posts.json` enthält 8 fertige Posts (ehrlich, kein Hype, mit echten Zahlen). Neue Posts einfach

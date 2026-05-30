@@ -1,0 +1,57 @@
+name: Social Auto-Post (Telegram + Discord)
+
+# Postet automatisch den nächsten ungesendeten Beitrag aus social/posts.json.
+# Tokens kommen NUR aus GitHub-Secrets (Settings → Secrets and variables → Actions):
+#   DISCORD_WEBHOOK_URL   (optional)
+#   TELEGRAM_BOT_TOKEN    (optional)
+#   TELEGRAM_CHAT_ID      (optional, z.B. @deinkanal)
+# Mindestens einer der beiden Kanäle muss konfiguriert sein.
+
+on:
+  schedule:
+    # Mo, Mi, Fr um 08:00 UTC (≈ 09:00/10:00 DE je nach Sommerzeit)
+    - cron: '0 8 * * 1,3,5'
+  workflow_dispatch:        # erlaubt manuelles Auslösen per Knopf
+
+permissions:
+  contents: write           # nötig, um den "sent"-Status zurückzuschreiben
+
+# Verhindert parallele Läufe, die sich beim Commit überschreiben.
+concurrency:
+  group: social-autopost
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Send next post
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ] && [ -z "$TELEGRAM_BOT_TOKEN" ]; then
+            echo "::warning::Keine Kanal-Secrets gesetzt — übersprungen. Siehe social/README.md."
+            exit 0
+          fi
+          python social/post.py
+
+      - name: Commit sent-status if changed
+        run: |
+          if ! git diff --quiet -- social/posts.json; then
+            git config user.name "aban-autopost-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add social/posts.json
+            git commit -m "chore(social): mark post as sent [skip ci]"
+            git push
+          else
+            echo "Kein neuer Post gesendet (nichts zu committen)."
+          fi
