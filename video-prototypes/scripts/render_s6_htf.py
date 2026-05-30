@@ -18,7 +18,7 @@ PUP=(40,32,46); TEETH=(255,255,255)
 CW,CH=360,520                      # local design space (pre-SS)
 def L(v): return v*SS
 
-def draw_critter(d,t,arm_r,look,env,eyewide,blink,phone):
+def draw_critter(d,t,arm_r,look,env,eyewide,blink,phone,mw=1.0):
     cx=L(CW/2)
     # secondary motion offsets
     earw=math.sin(t*2*math.pi*1.5-0.6)*5
@@ -86,8 +86,8 @@ def draw_critter(d,t,arm_r,look,env,eyewide,blink,phone):
     E(d,hx,hy+L(20),L(11),L(9),NOSE,outline=NOSE,ow=1)
     # mouth + buck teeth
     my=hy+L(40)+ld*0.4; mo=L(4)+env*L(20)
-    E(d,hx,my,L(18),mo,MOUTH)
-    if mo>L(12): E(d,hx,my+mo*0.3,L(9),mo*0.4,TONGUE)
+    E(d,hx,my,L(18)*mw,mo,MOUTH)
+    if mo>L(12): E(d,hx,my+mo*0.3,L(9)*mw,mo*0.4,TONGUE)
     # buck teeth (cute) only when mouth small
     if mo<L(12):
         d.rectangle([hx-L(9),my-L(2),hx-L(1),my+L(9)],fill=TEETH,outline=OUT,width=int(L(1.5)))
