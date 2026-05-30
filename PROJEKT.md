@@ -31,7 +31,7 @@ Verdient passiv über Affiliate-Links + leitet Traffic in den Newsletter.
 - **Domain (geplant):** `radar.abannews.com` (Subdomain — kostenlos, SEO-Bonus)
 - **Umfang:** 143 Tools × 11 Sprachen = ~8.300 Seiten, baut sich selbst (GitHub Actions, wöchentlich + bei Datenänderung)
 - **Generator:** `ki-tools-radar/generate.py` (pure stdlib + optional Pillow für OG-Bilder), liest `../data/tools.json` + `lang/*.json` + `content/*.json`
-- **Seitentypen:** Start (Suche, Tool des Monats), Tool (Pro/Contra, FAQ, verwandte Tools, OG-Bild), Kategorie, Vergleich (A-vs-B) + Hub, Alternativen-zu-X, Use-Case, Berufs-Stacks (8), DACH-Bestenliste, Trending+RSS, Budget, A–Z, Glossar (30 Begriffe; 15 in alle 11 Sprachen übersetzt, 15 neue dt. mit Fallback), Partner/Transparenz, Impressum, Datenschutz, 404
+- **Seitentypen:** Start (Suche, Tool des Monats), Tool (Pro/Contra, FAQ, verwandte Tools, OG-Bild), Kategorie, Vergleich (A-vs-B) + Hub, Alternativen-zu-X, Use-Case, Berufs-Stacks (8), DACH-Bestenliste, Trending+RSS, Budget, A–Z, Glossar (30 Begriffe, alle in 11 Sprachen übersetzt), Partner/Transparenz, Impressum, Datenschutz, 404
 - **SEO:** JSON-LD (SoftwareApplication/Review/Breadcrumb/FAQ/ItemList/WebSite/Org/DefinedTerm), hreflang, Sitemap-Index + 11 Sprach-Sitemaps, OG/Twitter-Cards, Vergleichstabellen, interne Verlinkung, Live-Suche, Dark Mode, PWA, security.txt/humans.txt
 - **Recht:** Impressum + Datenschutz mit echten Daten generiert (DSGVO/Cloudflare), Affiliate-Transparenz (UWG) automatisch
 - **Monetarisierung:** `ki-tools-radar/affiliate.json` (23 Programme vorbereitet), Newsletter-Box auf jeder Seite
