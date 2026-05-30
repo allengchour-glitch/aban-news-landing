@@ -36,8 +36,9 @@
 3. **„You may also like" leer** (Produktseite unten). → Cross-Sell-Section: Theme-App-Block
    „Ähnliche Produkte" aktivieren oder Produktempfehlungen einschalten. Verschenkter Umsatz.
 4. **Cookie-Banner zu wuchtig** (dunkel, überdeckt halben Mobile-Screen). → Kompakter/heller stylen.
-5. **Vendor-Inkonsistenz:** 5.056 Produkte Vendor „LuxeStyle" vs. 232 „LuxeStyle CH".
-   → Vereinheitlichen auf „LuxeStyle CH" (kann ich autonom per API, falls gewünscht — großer Batch).
+5. ~~**Vendor-Inkonsistenz:** 5.056 „LuxeStyle" vs. 232 „LuxeStyle CH".~~
+   ✅ **ERLEDIGT (2026-05-30):** alle 232 „LuxeStyle CH" → „LuxeStyle" umgestellt.
+   Storeweit jetzt einheitlich **„LuxeStyle"** (5.288/5.288), 0 Fehler.
 
 ---
 
