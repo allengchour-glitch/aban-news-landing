@@ -38,6 +38,11 @@ STATE = ROOT / "automation" / ".social_posted.json"
 
 LIMITS = {"mastodon": 500, "bluesky": 300, "x": 280, "linkedin": 3000, "telegram": 4000}
 
+# Posts pro Plattform pro TAG (moderate Frequenz: schnelle Kanäle mehrmals,
+# LinkedIn schonend bei 1/Tag, um die Reichweite nicht zu drücken).
+# Mit dem 3×/Tag-Cron erreicht jede Plattform ihr Tageslimit über den Tag verteilt.
+CAPS = {"x": 3, "mastodon": 2, "bluesky": 2, "telegram": 2, "linkedin": 1}
+
 
 def _http(url, data=None, headers=None, method=None):
     req = urllib.request.Request(url, data=data, headers=headers or {}, method=method)
@@ -179,8 +184,21 @@ def load_json(p, default):
         return default
 
 
-def pick_item(queue, posted):
-    """Newest never-posted item; if all posted, recycle the least-recently-posted."""
+def today_str():
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+
+def platform_state(state, name):
+    ps = state.setdefault("platforms", {}).setdefault(
+        name, {"posted_ids": {}, "daily": {"date": "", "count": 0}})
+    if ps["daily"].get("date") != today_str():
+        ps["daily"] = {"date": today_str(), "count": 0}  # reset counter each day
+    return ps
+
+
+def pick_for(ps, queue):
+    """Newest item this platform hasn't posted yet; else recycle its oldest."""
+    posted = ps["posted_ids"]
     never = [i for i in queue if i["id"] not in posted]
     if never:
         return never[0]  # queue is newest-first
@@ -189,53 +207,62 @@ def pick_item(queue, posted):
     return min(queue, key=lambda i: posted.get(i["id"], ""))
 
 
-def main():
-    live = "--post" in sys.argv
-    queue = load_json(QUEUE, [])
-    if not queue:
-        print("Queue leer — erst 'python3 automation/build_social_queue.py' laufen lassen.")
-        return 0
-    posted = load_json(STATE, {})
-    item = pick_item(queue, posted)
-    if not item:
-        print("Nichts zu posten.")
-        return 0
-
-    # Determine configured platforms by env presence (no network in dry-run).
-    env_present = {
+def env_present():
+    return {
         "mastodon": bool(os.environ.get("MASTODON_TOKEN") and os.environ.get("MASTODON_BASE_URL")),
         "bluesky": bool(os.environ.get("BLUESKY_HANDLE") and os.environ.get("BLUESKY_APP_PASSWORD")),
         "telegram": bool(os.environ.get("TELEGRAM_BOT_TOKEN") and os.environ.get("TELEGRAM_CHAT_ID")),
         "linkedin": bool(os.environ.get("LINKEDIN_TOKEN") and os.environ.get("LINKEDIN_AUTHOR_URN")),
         "x": bool(os.environ.get("X_BEARER_TOKEN")),
     }
-    targets = [n for n, on in env_present.items() if on]
 
-    print(f"Ausgewählt: {item['id']} — {item['title']}")
-    print(f"Konfigurierte Plattformen: {', '.join(targets) if targets else '— keine (Secrets fehlen)'}")
-    print("--- short ---\n" + item["short"] + "\n--- long ---\n" + item["long"])
 
-    if not live:
-        print("\n[DRY-RUN] Es wurde nichts gepostet. Mit --post live posten (Secrets nötig).")
+def main():
+    live = "--post" in sys.argv
+    queue = load_json(QUEUE, [])
+    if not queue:
+        print("Queue leer — erst 'python3 automation/build_social_queue.py' laufen lassen.")
         return 0
-    if not targets:
-        print("\nKeine Plattform konfiguriert — nichts gepostet (Exit 0).")
-        return 0
+    state = load_json(STATE, {})
+    present = env_present()
 
-    any_ok = False
-    for name in targets:
+    print(f"Tageslimits: {CAPS}")
+    print(f"Konfiguriert: {', '.join(n for n, on in present.items() if on) or '— keine (Secrets fehlen)'}")
+    print("Dieser Lauf postet je Plattform max. 1 Ausgabe (Tageslimit über mehrere Läufe).\n")
+
+    changed = False
+    for name in PLATFORMS:
+        cap = CAPS.get(name, 1)
+        ps = platform_state(state, name)
+        remaining = cap - ps["daily"]["count"]
+        cfg = "konfiguriert" if present[name] else "nicht konfiguriert"
+        if remaining <= 0:
+            print(f"[{name}] Tageslimit erreicht ({cap}/Tag) — skip ({cfg}).")
+            continue
+        item = pick_for(ps, queue)
+        if not item:
+            print(f"[{name}] nichts zu posten.")
+            continue
+        print(f"[{name}] nächste: {item['id']} — {item['title']}  "
+              f"(heute {ps['daily']['count']}/{cap}, {cfg})")
+        if not live or not present[name]:
+            continue
         res = PLATFORMS[name](item)
         if res is None:
             continue
         ok, detail = res
-        any_ok = any_ok or ok
-        print(f"[{name}] {'OK' if ok else 'FEHLER'} — {detail}")
+        print(f"   -> {'OK' if ok else 'FEHLER'}: {detail}")
+        if ok:
+            ps["posted_ids"][item["id"]] = datetime.now(timezone.utc).isoformat()
+            ps["daily"]["count"] += 1
+            changed = True
         time.sleep(1)
 
-    if any_ok:
-        posted[item["id"]] = datetime.now(timezone.utc).isoformat()
-        STATE.write_text(json.dumps(posted, ensure_ascii=False, indent=2), encoding="utf-8")
-        print(f"State aktualisiert: {item['id']} als gepostet markiert.")
+    if not live:
+        print("\n[DRY-RUN] Nichts gepostet. Mit --post live posten (Secrets nötig).")
+    if changed:
+        STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
+        print("State aktualisiert.")
     return 0
 
 

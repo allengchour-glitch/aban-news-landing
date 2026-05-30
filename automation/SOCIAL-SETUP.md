@@ -5,7 +5,20 @@ nur dort, wo es per offizieller API und Plattform-AGB erlaubt ist.
 
 ## Grundsätze (bewusst eng gehalten)
 
-- **Nur offizielle APIs**, nur **deine eigenen** Accounts/Kanäle, **1 Post pro Lauf**.
+- **Nur offizielle APIs**, nur **deine eigenen** Accounts/Kanäle.
+- **Mehrmals/Tag, aber mit pro-Plattform-Tageslimit** (moderate Frequenz, je 1 Post pro Lauf):
+
+  | Plattform | Posts/Tag |
+  |-----------|-----------|
+  | X / Twitter | 3 |
+  | Mastodon | 2 |
+  | Bluesky | 2 |
+  | Telegram | 2 |
+  | LinkedIn | 1 (mehr schadet der Reichweite) |
+
+  Der Cron läuft **3×/Tag** (06:10 / 12:10 / 18:10 UTC); jede Plattform postet pro Lauf
+  max. 1 — **eine andere** Ausgabe — bis ihr Tageslimit erreicht ist. Limits in
+  `automation/post_daily.py` (`CAPS`) anpassbar.
 - **Ohne Secrets passiert nichts** (No-Op). Es wird nie ohne deine Konfiguration gepostet.
 - **Kein Tracking, kein Scraping, keine Massen-Aktionen** (keine Auto-Follows/DMs).
 - **Evergreen-Rotation:** Es wird die neueste noch nicht gepostete Ausgabe gewählt;
@@ -20,7 +33,7 @@ nur dort, wo es per offizieller API und Plattform-AGB erlaubt ist.
 | **Bluesky** | ✅ | AT-Protocol, App-Passwort. Link wird klickbar (Facet). |
 | **Telegram** | ✅ | Bot postet in **deinen** Kanal. Bot als Admin hinzufügen. |
 | **LinkedIn** | ⚠️ | Eigenes Profil/Seite, App + OAuth + Freigabe (`w_member_social`). |
-| **X / Twitter** | ⚠️ | API v2 erlaubt, aber **kostenpflichtig** (Basic-Tier). |
+| **X / Twitter** | ✅ | **Free-Tier reicht zum Posten** (~1.500 Posts/Monat Schreib-Limit; 3/Tag ≈ 90/Monat). Du brauchst nur einen Developer-Account + App + OAuth2-*User*-Token mit `tweet.write`. Kostenpflichtig wird erst das *Lesen* / hohe Volumen. |
 | ~~Reddit~~ | ❌ | **Bewusst NICHT.** Tägliche Selbstwerbung verstößt gegen die meisten Subreddit-/Anti-Spam-Regeln. |
 | ~~Instagram/FB-Gruppen~~ | ❌ | Kein zuverlässiger, regelkonformer Auto-Post-Weg für tägliche Eigenwerbung. |
 
@@ -45,7 +58,7 @@ TELEGRAM_CHAT_ID       z.B. @meinkanal  (Bot vorher als Admin in den Kanal)
 LINKEDIN_TOKEN         OAuth-Access-Token mit Scope w_member_social
 LINKEDIN_AUTHOR_URN    urn:li:person:XXXX  oder  urn:li:organization:XXXX
 
-X_BEARER_TOKEN         OAuth2-*User*-Token mit tweet.write (X-API kostet)
+X_BEARER_TOKEN         OAuth2-*User*-Token mit tweet.write (Free-Tier reicht zum Posten)
 ```
 
 > Secrets landen **nie** im Repo — sie kommen zur Laufzeit aus GitHub Secrets.
