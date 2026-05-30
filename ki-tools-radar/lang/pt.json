@@ -348,7 +348,7 @@
       ]
     },
     "v0": {
-      "aban_name": "Next.js + shadcn de fábrica. Se está no ecossistema Vercel: primeira escolha. Caso contrário: output é específico React, limita.",
+      "aban_note": "Next.js + shadcn de fábrica. Se está no ecossistema Vercel: primeira escolha. Caso contrário: output é específico React, limita.",
       "dsgvo_note": "",
       "use_cases": [
         "Prototipagem React",
@@ -775,7 +775,7 @@
       ]
     },
     "otter": {
-      "aban_name": "Clássico para transcrições de reunião. Alemão ok, não perfeito. Para reuniões em inglês: 1A.",
+      "aban_note": "Clássico para transcrições de reunião. Alemão ok, não perfeito. Para reuniões em inglês: 1A.",
       "dsgvo_note": "",
       "use_cases": [
         "Transcrição de reunião",
@@ -2114,7 +2114,7 @@
       ]
     },
     "humata": {
-      "aban_name": "PDF Q&A tool. Entretanto ultrapassado por Claude/ChatGPT PDF-upload.",
+      "aban_note": "PDF Q&A tool. Entretanto ultrapassado por Claude/ChatGPT PDF-upload.",
       "dsgvo_note": "",
       "use_cases": [
         "PDF research"
