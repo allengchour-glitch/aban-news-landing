@@ -40,17 +40,17 @@ Verdient passiv über Affiliate-Links + leitet Traffic in den Newsletter.
 Automatisiertes DACH-Fördermittel-Verzeichnis (programmatic, statisch). Verdient über
 **Lead-Gen** (Fördermittel-Berater zahlen pro qualifizierter Anfrage) + Premium-Platzierung.
 - **Domain (geplant):** `foerder.abannews.com` (Subdomain)
-- **Generator:** `foerder-radar/generate.py` (pure stdlib). Daten: `foerderungen.json` (29 echte Seed-Programme,
+- **Generator:** `foerder-radar/generate.py` (pure stdlib). Daten: `foerderungen.json` (63 echte, verifizierte Programme,
   KEINE erfundenen Beträge — verlinkt offizielle Quellen, „ohne Gewähr"). Lead-Slots: `leadgen.json`.
 - **Seiten:** Index + Live-Filter (Region/Art/Suche), /programm/<id>, /region/<r>, /art/<a>, Impressum, Datenschutz
-- **Stand:** 39 Seiten (29 Programme), GovernmentService-JSON-LD, Sitemap, AI-Crawler-robots, Dark Mode, Auto-Build-Workflow
+- **Stand:** 74 Seiten (63 Programme, DE 40 / AT 10 / EU 8 / CH 5), GovernmentService-JSON-LD, Sitemap, AI-Crawler-robots, Dark Mode, Auto-Build-Workflow
 - **Offen:** Daten erweitern (foerderdatenbank.de-Export), Berater-Partner + leadgen.json, Domain/Deployment, Newsletter-Teaser
 
 ### 3. KI-Jobs Radar  →  Ordner `jobs-radar/`  (NEU — Chance #3, läuft)
 Automatisierter DACH-KI-/ML-Jobboard (programmatic, statisch). Verdient über gesponserte
 „Featured Jobs" + Newsletter-Einbettung.
 - **Domain (geplant):** `jobs.abannews.com` (Subdomain)
-- **Datenquelle:** `fetch_jobs.py` holt KI-/ML-Jobs aus der **freien Arbeitnow-API** (kein Key, kein
+- **Datenquelle:** `fetch_jobs.py` holt KI-/ML-Jobs aus der freien **Arbeitnow- + Remotive-API** (kein Key, kein
   make.com nötig) → `jobs.json`. Seed-Fallback wenn API down. GitHub Action ruft API direkt täglich ab.
 - **Generator:** `jobs-radar/generate.py` (stdlib). Seiten: Index+Live-Filter (Suche/Remote),
   /job/<slug> mit **JobPosting-JSON-LD (Google for Jobs)**, Impressum, Datenschutz. Sponsoring: `sponsors.json`.
