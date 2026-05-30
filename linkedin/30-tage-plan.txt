@@ -1,0 +1,277 @@
+==========================================================================
+aban news - LinkedIn 30-Tage-Plan (Content-Kalender)
+==========================================================================
+
+Damit du nie vor einem leeren Editor sitzt. 30 Kalendertage, ein fertiger
+Aufhaenger pro Werktag - du musst nur noch ausformulieren und ein echtes
+Detail aus deinem Alltag ergaenzen.
+
+
+--------------------------------------------------------------------------
+SO NUTZT DU DEN PLAN
+--------------------------------------------------------------------------
+
+  - Ein Post pro Werktag (Mo-Fr). Das sind ueber 30 Kalendertage rund
+    22 Werktage. Das Wochenende ist optional frei - die Tage hier sind
+    als Werktage durchnummeriert, nicht als Datum.
+  - Pro Tag bekommst du: Wochentag-Hinweis, Post-Typ, ein konkretes Thema
+    und eine Beispiel-Hook (erste Zeile). Die Hook ist ein Startpunkt,
+    kein fertiger Post.
+  - Ausformulieren musst du nicht von Hand: generate_linkedin_posts.py
+    baut dir aus einer Ausgabe-Datei fuenf Winkel-Entwuerfe (siehe
+    linkedin/system.txt). Nimm den Winkel, der zum Post-Typ des Tages
+    passt, und feile mit deiner Stimme nach.
+  - Voice bleibt gleich: du-Form, keine Hype-Woerter, keine doppelten
+    Ausrufezeichen, keine erfundenen Zahlen. Wenn du eine Zahl nennst,
+    dann nur eine, die du wirklich gemessen hast.
+  - Weiche CTA am Ende, nicht in jedem Post: "Taeglich in 5 Min:
+    abannews.com".
+
+
+--------------------------------------------------------------------------
+DIE 6 POST-TYPEN (Rotation)
+--------------------------------------------------------------------------
+
+  1) News-Reaktion   - Aktuelle KI-Meldung nuechtern einordnen. Was ist
+                       passiert, was heisst das fuer dich als Solo?
+  2) How-to          - Ein konkreter Schritt, den der Leser heute umsetzt.
+  3) Contrarian      - Anti-Hype. Was alle feiern vs. was wirklich zaehlt.
+  4) Mini-Case       - "Statt X mache ich jetzt Y." Aus deinem Alltag.
+  5) Frage           - Offene Frage an die Zielgruppe, lockt Kommentare.
+  6) Story/Lektion   - Eine kleine Geschichte mit einer klaren Lehre.
+
+Die Rotation laeuft 1-2-3-4-5-6 und beginnt dann von vorn. So steht nie
+zwei Tage hintereinander derselbe Typ oben.
+
+
+--------------------------------------------------------------------------
+DER 30-TAGE-KALENDER
+--------------------------------------------------------------------------
+
+--- WOCHE 1 ---
+
+Tag 1  (Mo) - News-Reaktion
+  Thema:  Neues Sprachmodell-Update macht die Runde. Statt Featureliste:
+          was aendert sich konkret im Arbeitsalltag eines Solos - und was
+          bleibt gleich?
+  Hook:   "Wieder ein Modell-Update. Bevor du es testest, eine ehrliche
+          Einordnung."
+
+Tag 2  (Di) - How-to
+  Thema:  Wiederkehrende Kundenmail in 10 Minuten zur Vorlage machen:
+          einmal sauberes Beispiel + Tonfall an die KI geben, Vorlage
+          speichern, ab dann nur noch anpassen.
+  Hook:   "Ein Schritt, den du heute machst: deine drei haeufigsten Mails
+          zu Vorlagen machen."
+
+Tag 3  (Mi) - Contrarian
+  Thema:  "Du brauchst zehn KI-Tools" - nein. Die meisten Solos kommen mit
+          zwei aus. Warum Tool-Sammeln Zeit frisst statt spart.
+  Hook:   "Unpopulaere Meinung: die meisten KI-Tools in deinem Tab
+          brauchst du nicht."
+
+Tag 4  (Do) - Mini-Case
+  Thema:  Angebotstexte: frueher leeres Blatt und eine Stunde Ringen,
+          heute Rohentwurf aus Stichpunkten und dann von Hand schaerfen.
+  Hook:   "Statt eine Stunde am Angebotstext zu haengen, mache ich es
+          jetzt anders."
+
+Tag 5  (Fr) - Frage
+  Thema:  Welche eine Aufgabe wuerden Selbststaendige am liebsten
+          abgeben - und woran scheitert es bisher?
+  Hook:   "Eine ehrliche Frage: welche Aufgabe in deiner Woche frisst Zeit,
+          ohne dass sie dich weiterbringt?"
+
+
+--- WOCHE 2 ---
+
+Tag 6  (Mo) - Story/Lektion
+  Thema:  Erster Versuch, ein Tool im Alltag einzusetzen, ging daneben -
+          zu grosse Erwartung, kein klarer Anwendungsfall. Die Lehre:
+          erst ein Problem, dann ein Tool.
+  Hook:   "Mein erster Anlauf mit KI war ein Reinfall. Aus einem guten
+          Grund."
+
+Tag 7  (Di) - News-Reaktion
+  Thema:  Eine neue Datenschutz- oder EU-AI-Act-Meldung sachlich
+          einordnen: was solltest du als Solo wissen, ohne in Panik zu
+          geraten?
+  Hook:   "Heute gelesen, nuechtern eingeordnet: was die neue Regel fuer
+          dich als Selbststaendige praktisch heisst."
+
+Tag 8  (Mi) - How-to
+  Thema:  Einen Prompt vom vagen Wunsch zum brauchbaren Auftrag machen:
+          Rolle, Ziel, Format, ein Beispiel. Vorher/Nachher zeigen.
+  Hook:   "Kein Prompt-Kurs noetig. Vier Bausteine, die fast jeden Prompt
+          besser machen."
+
+Tag 9  (Do) - Contrarian
+  Thema:  "KI ersetzt deinen Job" vs. Realitaet: sie uebernimmt Teilschritte,
+          die Verantwortung bleibt bei dir. Warum das gute Nachricht ist.
+  Hook:   "Der Hype sagt: KI ersetzt dich. Die Praxis sagt etwas Ruhigeres."
+
+Tag 10 (Fr) - Mini-Case
+  Thema:  Recherche fuer ein Kundenprojekt: statt zwei Stunden Tabs zu
+          oeffnen, erst grob mit KI strukturieren, dann gezielt selbst
+          nachpruefen.
+  Hook:   "Frueher zwei Stunden Tabs. Heute laeuft meine Recherche in zwei
+          Schritten."
+
+
+--- WOCHE 3 ---
+
+Tag 11 (Mo) - Frage
+  Thema:  Vertraust du KI-Ausgaben blind oder pruefst du nach? Wo zieht
+          die Community die Grenze?
+  Hook:   "Mal angenommen, die KI liefert eine saubere Antwort. Pruefst du
+          sie noch nach?"
+
+Tag 12 (Di) - Story/Lektion
+  Thema:  Eine erfundene KI-Quelle ist dir fast in einem Kundendokument
+          gelandet. Die Lehre: jede Behauptung gegenpruefen, gerade bei
+          Zahlen und Quellen.
+  Hook:   "Fast haette ich eine erfundene Quelle an einen Kunden
+          geschickt. Was ich daraus gelernt habe."
+
+Tag 13 (Mi) - News-Reaktion
+  Thema:  Ein bekanntes Tool aendert Preise oder Gratis-Limit. Was heisst
+          das fuer Solos mit knappem Budget - lohnt der Wechsel?
+  Hook:   "Das ist passiert: das Tool aendert sein Gratis-Limit. Ob du
+          wechseln musst, steht unten."
+
+Tag 14 (Do) - How-to
+  Thema:  Wochenrueckblick in 15 Minuten: erledigte Aufgaben in die KI,
+          drei Erkenntnisse rausziehen, eine Sache fuer naechste Woche
+          festlegen.
+  Hook:   "Ein 15-Minuten-Schritt fuer Freitag: dein ehrlicher
+          Wochenrueckblick."
+
+Tag 15 (Fr) - Contrarian
+  Thema:  "Schreib alles mit KI" - Gegenrede: Standardtexte ja, deine
+          Meinung und Haltung nein. Warum deine Stimme dein Vorsprung ist.
+  Hook:   "Spar dir den Reflex, alles von der KI schreiben zu lassen.
+          Eine Sache schreibst du besser selbst."
+
+
+--- WOCHE 4 ---
+
+Tag 16 (Mo) - Mini-Case
+  Thema:  Kundengewinnung: statt Kaltakquise im Blindflug erst die
+          Zielgruppe mit KI schaerfen, dann persoenlich und von Hand
+          ansprechen.
+  Hook:   "Statt Mails ins Blaue zu schicken, mache ich die Vorarbeit
+          jetzt anders."
+
+Tag 17 (Di) - Frage
+  Thema:  Welches KI-Versprechen hat dich enttaeuscht - und was nutzt du
+          trotzdem taeglich?
+  Hook:   "Eine ehrliche Frage: welches KI-Versprechen hat bei dir nicht
+          gehalten?"
+
+Tag 18 (Mi) - Story/Lektion
+  Thema:  Du hast einen halben Tag mit Tool-Setup verbracht, statt die
+          eigentliche Aufgabe zu erledigen. Die Lehre: Werkzeug-Pflege ist
+          nicht Arbeit.
+  Hook:   "Ich habe einen halben Tag verloren - mit dem falschen Ding
+          beschaeftigt."
+
+Tag 19 (Do) - News-Reaktion
+  Thema:  Eine neue Funktion (z. B. laengerer Kontext oder Datei-Upload)
+          wird angekuendigt. Wofuer ist sie als Solo wirklich nuetzlich,
+          wofuer Spielerei?
+  Hook:   "Neue Funktion angekuendigt. Ein Anwendungsfall lohnt sich, der
+          Rest ist Schaufenster."
+
+Tag 20 (Fr) - How-to
+  Thema:  Sensible Kundendaten und KI: vor dem Einfuegen anonymisieren -
+          Namen, Adressen, interne Zahlen raus. Mini-Checkliste vor jedem
+          Prompt.
+  Hook:   "Bevor du Kundendaten in ein KI-Tool kopierst: diese drei Dinge
+          vorher rausnehmen."
+
+
+--- WOCHE 5 (Rest) ---
+
+Tag 21 (Mo) - Contrarian
+  Thema:  "Du musst frueh dabei sein, sonst verpasst du es" - Gegenrede:
+          Geduld und ein klarer Anwendungsfall schlagen Aktionismus.
+  Hook:   "Du verpasst nichts, wenn du nicht jedem KI-Trend hinterher
+          rennst. Im Gegenteil."
+
+Tag 22 (Di) - Mini-Case
+  Thema:  Content-Routine: statt jeden Tag neu zu gruebeln, einmal pro
+          Woche Ideen sammeln und ausformulieren - so wie dieser Plan
+          hier entstanden ist.
+  Hook:   "Statt taeglich um Themen zu ringen, plane ich einmal pro Woche
+          vor."
+
+Tag 23 (Mi) - Frage
+  Thema:  Wie viel Zeit sparst du wirklich mit KI - und wofuer nutzt du
+          die gewonnene Zeit?
+  Hook:   "Eine ehrliche Frage: die Zeit, die du mit KI sparst - wohin
+          fliesst sie?"
+
+Tag 24 (Do) - Story/Lektion
+  Thema:  Ein Kunde merkte, dass eine Antwort offensichtlich von der KI
+          kam. Die Lehre: Rohtext ist nie das Endprodukt, dein
+          Schliff macht den Unterschied.
+  Hook:   "Ein Kunde hat sofort gemerkt, dass der Text nicht von mir war.
+          Das war ein guter Weckruf."
+
+Tag 25 (Fr) - How-to
+  Thema:  Eigene kleine Prompt-Bibliothek anlegen: drei bis fuenf Prompts,
+          die du staendig brauchst, an einem Ort sammeln statt jedes Mal
+          neu zu tippen.
+  Hook:   "Ein Schritt fuer ruhigere Wochen: deine fuenf meistgenutzten
+          Prompts an einen Ort legen."
+
+Tag 26 (Mo) - News-Reaktion
+  Thema:  Eine Studie oder ein Report zu KI am Arbeitsplatz macht die
+          Runde. Was ist daran belastbar, was ist Schlagzeile?
+  Hook:   "Heute gelesen, nuechtern eingeordnet: was an der neuen
+          KI-Studie wirklich dranhaengt."
+
+Tag 27 (Di) - Contrarian
+  Thema:  Mythos "KI spart immer Zeit" - manchmal kostet das Prompten und
+          Pruefen mehr, als es selbst zu machen. Wann sich der Einsatz
+          lohnt und wann nicht.
+  Hook:   "Manchmal ist KI langsamer als deine eigenen Haende. Diese Faelle
+          erkennst du vorher."
+
+Tag 28 (Mi) - Mini-Case
+  Thema:  Onboarding eines neuen Kunden: statt Fragebogen von Hand
+          auszuwerten, erst grob strukturieren, dann das Gespraech
+          persoenlich vorbereiten.
+  Hook:   "Statt jeden Onboarding-Bogen von Hand zu sortieren, mache ich
+          den ersten Durchgang anders."
+
+Tag 29 (Do) - Frage
+  Thema:  Wenn du einem Solo nur einen KI-Tipp geben duerftest - welcher
+          waere es?
+  Hook:   "Eine ehrliche Frage: dein einziger KI-Tipp an andere
+          Selbststaendige - welcher?"
+
+Tag 30 (Fr) - Story/Lektion
+  Thema:  Rueckblick auf den Monat: was hat im Arbeitsalltag wirklich Zeit
+          gespart, was war nur Beschaeftigung? Die Lehre: behalte das
+          Wenige, das wirkt.
+  Hook:   "Ein Monat KI im Alltag. Was geblieben ist - und was wieder
+          rausgeflogen ist."
+
+
+--------------------------------------------------------------------------
+MESS-CHECKLISTE (woechentlich)
+--------------------------------------------------------------------------
+
+  [ ] Follower-Wachstum notieren (nur die Zahl, kein Drama drumherum).
+  [ ] Welcher Post hatte die meisten Kommentare? Den Typ und das Thema
+      naechste Woche in einer Variante wiederholen.
+  [ ] Welcher Post lief schlecht? Hook anschauen - zog die erste Zeile?
+  [ ] Auf Kommentare in den ersten 1-2 Stunden geantwortet?
+  [ ] Voice-Check der Woche: durchgehend du-Form, keine Hype-Woerter,
+      keine doppelten Ausrufezeichen, keine erfundenen Zahlen.
+
+Faustregel: was Kommentare bringt, wiederholst du. Was leer bleibt,
+schaerfst du oder laesst es weg. Nach Tag 30 faengst du von vorn an -
+mit den Themen, die bei dir am besten liefen.
+==========================================================================
