@@ -82,3 +82,28 @@ Theme/App-Einstellung: kompakter, heller stylen (Creme statt Dunkel), nur 1 Zeil
 - ✅ **Hero-Bild beschafft** (autonom, lizenziert) → `dropship/assets/hero-sommer-palmblatt.jpg`
 - 🔴 Einsetzen + Farben + Schriften + Cookie = Theme-Editor (API gesperrt, du machst es)
 - Quelle Hero: Adobe Stock #615871270, Standardlizenz (kommerziell, kein Weiterverkauf als Bild).
+
+---
+
+## 🟢 UPDATE (2026-05-30, später) — Theme DOCH autonom bearbeitet!
+
+**Wichtig:** Über den Shopify-MCP-Zugang KANN ich Theme-Dateien schreiben — aber NUR auf
+**unveröffentlichten** Themes (Live-Theme bleibt API-gesperrt). Glücksfund:
+
+- **Live-Theme:** „Horizon" (ungebrandet) — das was Besucher aktuell sehen.
+- **„Horizon · LuxeStyle Branded"** (UNPUBLISHED) — hat bereits die EMPFOHLENEN Markenfarben
+  fertig hinterlegt: Creme `#faf7f2`, Anthrazit `#2c2c2c`, Gold `#8b7355`/`#d4b896`,
+  sauberer Hero mit Button. Wurde nur nie veröffentlicht.
+
+### Autonom gemacht:
+- Hero im Branded-Theme aktualisiert: Headline → „Sommer-Trends 2026 — Premium für dein
+  Zuhause", Button → „Sommer-Trends entdecken" / `/collections/sommer-2026`.
+- Backup des Theme-File: `dropship/assets/theme-index-branded.json`.
+
+### 🔴 EINZIGER verbleibender Schritt für Allen (1 Klick):
+**Das Branded-Theme veröffentlichen.**
+Shopify Admin → Onlineshop → Themes → „Horizon · LuxeStyle Branded" → **Veröffentlichen**.
+Damit gehen Markenfarben (Creme/Anthrazit/Gold), sauberer Hero + Button alle gleichzeitig live.
+
+Optional danach im Theme-Editor: Hero-Bild gegen `hero-sommer-palmblatt.jpg` tauschen
+(aktuell `pexels-photo-417173.jpg`).
