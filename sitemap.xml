@@ -91,19 +91,7 @@
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://abannews.com/launch.html</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://abannews.com/stats.html</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://abannews.com/willkommen.html</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
@@ -281,12 +269,6 @@
     <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://abannews.com/launch-manual.html</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.1</priority>
   </url>
   <url>
     <loc>https://abannews.com/mrr.html</loc>
