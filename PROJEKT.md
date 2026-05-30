@@ -77,6 +77,11 @@ LinkedIn-DACH, GEO, Monetarisierung nach Audience-Größe, realistische Timeline
   aban-studio/, ki-geld-projekt/, PROJEKT.md, CLAUDE.md) — gilt nur für Newsletter-Content im Root.
 - Jedes Geld-Projekt hat einen eigenen Auto-Build-Workflow in `.github/workflows/`.
 
+## Lead-Magnet (fertig)
+`downloads/generate_lead_magnet.py` → `downloads/top-30-ki-tools-dach-2026.pdf` — „Die 30 besten
+KI-Tools für DACH 2026", aus `data/tools.json` (reportlab, Aban-Branding, Newsletter-CTA). Das ist
+das LinkedIn-/Profil-Opt-in-Geschenk aus dem MARKETING-PLAYBOOK. Neu bauen: `python downloads/generate_lead_magnet.py`.
+
 ## Offene To-dos (nur der User kann das — braucht seine Accounts)
 1. Cloudflare Pages mit Repo verbinden + `radar.abannews.com` als Custom Domain (→ LAUNCH.md)
    - Build: `cd ki-tools-radar && pip install -r requirements.txt && python generate.py` · Output: `ki-tools-radar/dist`
