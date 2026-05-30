@@ -1,14 +1,39 @@
 {
-  "_comment": "Affiliate-Link-Map: tool-id -> affiliate-URL. Fehlt ein Eintrag, nutzt der Generator die normale tool-url (kein Affiliate, kein *-Marker). Recurring-Programme bevorzugen (siehe _programs).",
-  "_programs": {
-    "_hinweis": "Aus der Marktrecherche: recurring/lifetime schlägt Einmal-Provision. Hier eintragen, sobald du im jeweiligen Programm angenommen bist.",
-    "jasper": "30% recurring (12 Mon., 90-Tage-Cookie)",
-    "writesonic": "30% lifetime",
-    "frase": "~30% recurring",
-    "getresponse": "40-60% (12 Mon.)",
-    "systeme": "60% lifetime",
-    "descript": "30% (12 Mon.)",
-    "elevenlabs": "20% (12 Mon.)"
+  "_comment": "So verdienst du Geld: Melde dich bei den Programmen unten an (Spalte 'signup'). Du bekommst dann einen persönlichen Link. Trage diesen Link bei 'affiliate_url' ein. Fertig — die Seite markiert ihn automatisch mit * und blendet den Pflicht-Transparenzhinweis ein, dann baut sie sich neu. Tools ohne 'affiliate_url' bleiben normale Links (keine Provision).",
+
+  "_anleitung": "Siehe GELD-VERDIENEN.md für die Schritt-für-Schritt-Erklärung. Priorität: 'recurring'/'lifetime'-Programme zuerst (du verdienst jeden Monat, solange der Kunde zahlt).",
+
+  "_programme": {
+    "_hinweis": "Kuratierte Liste der attraktivsten Programme, gemappt auf Tools in data/tools.json. 'signup' = wo du dich bewirbst. 'rate' = typische Provision (kann sich ändern). 'typ' = recurring (monatlich) / lifetime (für immer) / einmal.",
+
+    "jasper":     {"signup": "https://www.jasper.ai/partners",                 "rate": "30% recurring (12 Mon.)", "typ": "recurring"},
+    "writesonic": {"signup": "https://writesonic.com/affiliate",               "rate": "30% lifetime",            "typ": "lifetime"},
+    "frase":      {"signup": "https://www.frase.io/affiliates/",               "rate": "~30% recurring",          "typ": "recurring"},
+    "copy-ai":    {"signup": "https://www.copy.ai/affiliates",                 "rate": "45% einmalig",            "typ": "einmal"},
+    "anyword":    {"signup": "https://anyword.com/affiliates/",                "rate": "30% recurring",           "typ": "recurring"},
+    "quillbot":   {"signup": "https://quillbot.com/affiliate-program",         "rate": "bis 40%",                 "typ": "recurring"},
+    "grammarly":  {"signup": "https://www.grammarly.com/affiliates",           "rate": "$0,20/Reg. + $20/Sale",   "typ": "einmal"},
+    "semrush":    {"signup": "https://www.semrush.com/lp/affiliate-program/",  "rate": "$200/Sale (BeRush)",      "typ": "einmal"},
+    "surfer":     {"signup": "https://surferseo.com/affiliate-program/",       "rate": "25% recurring",           "typ": "recurring"},
+    "elevenlabs": {"signup": "https://elevenlabs.io/affiliates",               "rate": "20-22% (12 Mon.)",        "typ": "recurring"},
+    "murf":       {"signup": "https://murf.ai/affiliate-program",              "rate": "bis 30%",                 "typ": "recurring"},
+    "descript":   {"signup": "https://www.descript.com/affiliate",            "rate": "15-30% (12 Mon.)",        "typ": "recurring"},
+    "synthesia":  {"signup": "https://www.synthesia.io/affiliate-program",     "rate": " bis $300/Sale",          "typ": "einmal"},
+    "heygen":     {"signup": "https://www.heygen.com/affiliate",               "rate": "20-25% recurring",        "typ": "recurring"},
+    "pictory":    {"signup": "https://pictory.ai/affiliate",                   "rate": "20% recurring",           "typ": "recurring"},
+    "runway":     {"signup": "https://runwayml.com/",                          "rate": "Programm anfragen",       "typ": "einmal"},
+    "leonardo":   {"signup": "https://leonardo.ai/",                           "rate": "Programm anfragen",       "typ": "einmal"},
+    "midjourney": {"signup": "https://www.midjourney.com/",                    "rate": "kein offenes Programm",   "typ": "—"},
+    "canva":      {"signup": "https://www.canva.com/affiliates/",              "rate": "bis 80% Erstkauf",        "typ": "einmal"},
+    "deepl":      {"signup": "https://www.deepl.com/pro/affiliate",            "rate": "Programm anfragen",       "typ": "recurring"},
+
+    "_zusatz_marketing_plattformen": "Höchste Raten haben oft Marketing-Plattformen — auch ohne dass das Tool in der DB ist, kannst du sie im Newsletter bewerben:",
+    "getresponse": {"signup": "https://www.getresponse.com/partners/affiliate-programs", "rate": "40-60% (12 Mon.) o. $100/Sale", "typ": "recurring"},
+    "systeme":     {"signup": "https://systeme.io/affiliate-program",          "rate": "60% lifetime",            "typ": "lifetime"},
+    "hostinger":   {"signup": "https://www.hostinger.com/affiliates",          "rate": "bis 60%",                 "typ": "einmal"}
   },
-  "links": {}
+
+  "links": {
+    "_beispiel": "So eintragen (dann diese Zeile loeschen): \"jasper\": { \"affiliate_url\": \"https://jasper.ai?fpr=DEIN-CODE\" }"
+  }
 }
