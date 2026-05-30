@@ -62,6 +62,16 @@
   <!-- Preload main CSS — render-blocking for visual consistency (already small) -->
   <link rel="stylesheet" href="css/styles.css">
 
+  <!-- Layout-Tweaks (ChatGPT Layout-Review 2026-05-30): laedt nach styles.css → gewinnt -->
+  <style id="layout-tweaks">
+    /* FIX 3: H1 dominanter ggue. Lead */
+    .hero-headline{font-size:clamp(2.1rem,5.4vw,3.3rem);line-height:1.06;letter-spacing:-0.025em}
+    /* FIX 8: Lead-Zeilenbreite begrenzen (sonst wirkt Text endlos) */
+    .lead{max-width:60ch}
+    /* FIX 4: Hero-CTA als visuelle Unit (Container-Effekt) */
+    .hero .subscribe{background:#fff;padding:1.15rem 1.2rem;border-radius:16px;border:1px solid var(--c-border);box-shadow:0 14px 34px rgba(31,41,55,.12);margin-top:1.4rem}
+  </style>
+
   <!-- Strukturierte Daten (Schema.org Newsletter) -->
   <script type="application/ld+json">
   {
@@ -283,6 +293,67 @@
   </div>
 
   <!-- ============================================
+       SAMPLE-ISSUE PREVIEW — direkt nach Hero (ChatGPT Layout-FIX 7: Produkt vor Erklaerung)
+       ============================================ -->
+  <section class="alt reveal">
+    <div class="wrap">
+      <h2 class="center">So sieht ein Mittwoch aus</h2>
+      <p class="center muted">Echter Auszug aus der Probe-Ausgabe vom 2026-05-27 — gekürzt für die Web-Vorschau.</p>
+
+      <div class="mail-frame" style="max-width:660px;margin:1.5rem auto 0;border:1px solid var(--c-border);border-radius:14px;overflow:hidden;box-shadow:0 12px 32px rgba(31,41,55,.12);background:#fff;">
+        <div style="display:flex;align-items:center;gap:.5rem;padding:.65rem .95rem;background:#f3f4f6;border-bottom:1px solid var(--c-border);">
+          <span style="width:11px;height:11px;border-radius:50%;background:#ef4444;display:inline-block;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#f59e0b;display:inline-block;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+          <span style="margin-left:.5rem;font-size:.8rem;color:#6b7280;">📥 Posteingang · aban news · Mi 27. Mai · 4 Min</span>
+        </div>
+      <article class="preview" aria-label="Beispiel-Newsletter-Ausgabe" style="margin:0;border:0;border-radius:0;box-shadow:none;padding:1.25rem 1.4rem .4rem;">
+        <div class="preview-meta">
+          <strong>Von:</strong> Aban &lt;hallo@abannews.com&gt;<br>
+          <strong>An:</strong> dich@beispiel.de<br>
+          <strong>Betreff:</strong> ☕ China zieht den Vorhang zu, DeepSeek dreht am Preis
+        </div>
+
+        <p><strong>Mittwoch, halb durch.</strong> Heute drei News, die mich tatsächlich was angehen — der Rest aus den Feeds ist Branchen-Geplauder, das ich für dich aussortiert hab. Schwerpunkt: Preise, Privacy, und ein DACH-Tool, das ich diese Woche selbst antesten werd.</p>
+
+        <h4>📰 Was heute zählt</h4>
+
+        <p><strong>DeepSeek viertelt die Preise für V4-Pro (2 Min)</strong></p>
+        <p>Das chinesische Startup hat sein Top-Modell V4-Pro dauerhaft auf 25 % des bisherigen Preises gesenkt. Möglich macht das laut Trending Topics der Wechsel von Nvidia-GPUs auf Huawei Ascend 950 in der Inference-Infrastruktur — kein Sale, sondern strukturell.</p>
+        <p><strong>Für dich heißt das:</strong> Wenn du für Bulk-Tasks (Klassifizierung, Summary-Pipelines) einen Anbieter neben OpenAI/Anthropic hast, lohnt sich ein A/B-Test diese Woche. Bei meiner eigenen Newsletter-Pipeline rechne ich nach Caching mit Anthropic immer noch günstiger, aber für Pre-Processing könnte DeepSeek interessant werden.</p>
+
+        <h4>🛠 Tool des Tages</h4>
+
+        <p><strong>eustella</strong> — Open Beta gratis, Pro-Tier 14 €/Monat</p>
+        <p>Ein AI-Companion aus Wien — EU-Hosting, DSGVO-nativ, kein US-Datentransfer. Kann jetzt auch Bilder (via FLUX.2) und läuft auf Browser, Android, iPhone synchron. Ich nutz das diese Woche parallel zu Claude und vergleich Output-Qualität auf deutschsprachige Tasks.</p>
+        <p><em>Wer's nicht braucht:</em> wenn du eh schon Claude oder ChatGPT zahlst und das Daten-Thema dich nicht juckt — kein Killer-Feature, das dich migrieren muss.</p>
+
+        <h4>💡 Heute ausprobieren</h4>
+
+        <p>Wenn du Cold-Outreach machst, häng diesen Mini-Prompt an deinen Standard-Email-Workflow:</p>
+        <pre><code>Hier ist ein Cold-Outreach-Mail-Entwurf von mir an [Empfänger].
+Mach NICHT die typische KI-Politur. Stattdessen:
+
+1. Lies den Text und finde die EINE Stelle, die generisch klingt.
+2. Schreib NUR diese eine Stelle um — so wie ich es im echten
+   Gespräch sagen würde.
+3. Lass den Rest in Ruhe.
+
+Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
+        <p>Anders als "verbessere meine Mail" — weil's nach EINER chirurgischen Stelle fragt statt nach Komplett-Rewrite, der die Mail wieder generisch macht.</p>
+
+        <p class="signoff">— Aban</p>
+      </article>
+      </div>
+
+      <div class="center mt-5">
+        <a href="/preview.html" class="btn btn--ghost">Komplette Probe-Ausgabe lesen</a>
+        <a href="#signup" class="btn btn--lg" style="margin-left:.5rem;">Erste echte Ausgabe per Mail holen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
        3-STEP-FLOW — "So funktioniert's"
        3 horizontal cards, brand-color SVGs
        ============================================ -->
@@ -454,44 +525,6 @@
   </section>
 
   <!-- ============================================
-       FEATURES BAR — "Was du JEDE Ausgabe bekommst" (Anchor-Pattern aus theHustle)
-       ============================================ -->
-  <section class="features-bar reveal">
-    <div class="wrap wrap--wide">
-      <ul class="features" role="list">
-        <li>
-          <span class="feat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4z"/><path d="M4 4l8 6 8-6"/><path d="M8 14h8"/><path d="M8 18h5"/></svg>
-          </span>
-          <strong>3–5 News</strong>
-          <span>mit eigener Einschätzung</span>
-        </li>
-        <li>
-          <span class="feat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.7 2.7-2-.3-.3-2 2.7-2.7z"/></svg>
-          </span>
-          <strong>1 Tool</strong>
-          <span>ehrlich getestet</span>
-        </li>
-        <li>
-          <span class="feat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg>
-          </span>
-          <strong>1 Prompt</strong>
-          <span>sofort kopierbar</span>
-        </li>
-        <li>
-          <span class="feat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h14v9a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V8z"/><path d="M17 11h2a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-2"/><path d="M7 1v3M10 1v3M13 1v3"/></svg>
-          </span>
-          <strong>3–5 Min</strong>
-          <span>Lesezeit</span>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============================================
        SOCIAL PROOF — 3 Trust-Cards mit SVG-Icons
        ============================================ -->
   <section class="alt reveal">
@@ -653,68 +686,6 @@
       <path d="M0,30 C200,55 400,5 600,30 C800,55 1000,5 1200,30 L1200,60 L0,60 Z" fill="#fef3c7"/>
     </svg>
   </div>
-
-  <!-- ============================================
-       SAMPLE-ISSUE PREVIEW — Pattern adopted: echter Excerpt, Email-Header, Sign-Off
-       Steal-Pattern: "Show, don't tell" (Not Boring, The Bagel)
-       ============================================ -->
-  <section class="alt">
-    <div class="wrap">
-      <h2>So sieht ein Mittwoch aus</h2>
-      <p class="muted">Echter Auszug aus der Probe-Ausgabe vom 2026-05-27 — gekürzt für die Web-Vorschau.</p>
-
-      <div class="mail-frame" style="max-width:660px;margin:1.5rem auto 0;border:1px solid var(--c-border);border-radius:14px;overflow:hidden;box-shadow:0 12px 32px rgba(31,41,55,.12);background:#fff;">
-        <div style="display:flex;align-items:center;gap:.5rem;padding:.65rem .95rem;background:#f3f4f6;border-bottom:1px solid var(--c-border);">
-          <span style="width:11px;height:11px;border-radius:50%;background:#ef4444;display:inline-block;"></span>
-          <span style="width:11px;height:11px;border-radius:50%;background:#f59e0b;display:inline-block;"></span>
-          <span style="width:11px;height:11px;border-radius:50%;background:#10b981;display:inline-block;"></span>
-          <span style="margin-left:.5rem;font-size:.8rem;color:#6b7280;">📥 Posteingang · aban news · Mi 27. Mai · 4 Min</span>
-        </div>
-      <article class="preview" aria-label="Beispiel-Newsletter-Ausgabe" style="margin:0;border:0;border-radius:0;box-shadow:none;padding:1.25rem 1.4rem .4rem;">
-        <div class="preview-meta">
-          <strong>Von:</strong> Aban &lt;hallo@abannews.com&gt;<br>
-          <strong>An:</strong> dich@beispiel.de<br>
-          <strong>Betreff:</strong> ☕ China zieht den Vorhang zu, DeepSeek dreht am Preis
-        </div>
-
-        <p><strong>Mittwoch, halb durch.</strong> Heute drei News, die mich tatsächlich was angehen — der Rest aus den Feeds ist Branchen-Geplauder, das ich für dich aussortiert hab. Schwerpunkt: Preise, Privacy, und ein DACH-Tool, das ich diese Woche selbst antesten werd.</p>
-
-        <h4>📰 Was heute zählt</h4>
-
-        <p><strong>DeepSeek viertelt die Preise für V4-Pro (2 Min)</strong></p>
-        <p>Das chinesische Startup hat sein Top-Modell V4-Pro dauerhaft auf 25 % des bisherigen Preises gesenkt. Möglich macht das laut Trending Topics der Wechsel von Nvidia-GPUs auf Huawei Ascend 950 in der Inference-Infrastruktur — kein Sale, sondern strukturell.</p>
-        <p><strong>Für dich heißt das:</strong> Wenn du für Bulk-Tasks (Klassifizierung, Summary-Pipelines) einen Anbieter neben OpenAI/Anthropic hast, lohnt sich ein A/B-Test diese Woche. Bei meiner eigenen Newsletter-Pipeline rechne ich nach Caching mit Anthropic immer noch günstiger, aber für Pre-Processing könnte DeepSeek interessant werden.</p>
-
-        <h4>🛠 Tool des Tages</h4>
-
-        <p><strong>eustella</strong> — Open Beta gratis, Pro-Tier 14 €/Monat</p>
-        <p>Ein AI-Companion aus Wien — EU-Hosting, DSGVO-nativ, kein US-Datentransfer. Kann jetzt auch Bilder (via FLUX.2) und läuft auf Browser, Android, iPhone synchron. Ich nutz das diese Woche parallel zu Claude und vergleich Output-Qualität auf deutschsprachige Tasks.</p>
-        <p><em>Wer's nicht braucht:</em> wenn du eh schon Claude oder ChatGPT zahlst und das Daten-Thema dich nicht juckt — kein Killer-Feature, das dich migrieren muss.</p>
-
-        <h4>💡 Heute ausprobieren</h4>
-
-        <p>Wenn du Cold-Outreach machst, häng diesen Mini-Prompt an deinen Standard-Email-Workflow:</p>
-        <pre><code>Hier ist ein Cold-Outreach-Mail-Entwurf von mir an [Empfänger].
-Mach NICHT die typische KI-Politur. Stattdessen:
-
-1. Lies den Text und finde die EINE Stelle, die generisch klingt.
-2. Schreib NUR diese eine Stelle um — so wie ich es im echten
-   Gespräch sagen würde.
-3. Lass den Rest in Ruhe.
-
-Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
-        <p>Anders als "verbessere meine Mail" — weil's nach EINER chirurgischen Stelle fragt statt nach Komplett-Rewrite, der die Mail wieder generisch macht.</p>
-
-        <p class="signoff">— Aban</p>
-      </article>
-      </div>
-
-      <div class="center mt-5">
-        <a href="/preview.html" class="btn btn--ghost">Komplette Probe-Ausgabe lesen</a>
-        <a href="#signup" class="btn btn--lg" style="margin-left:.5rem;">Erste echte Ausgabe per Mail holen</a>
-      </div>
-    </div>
-  </section>
 
   <!-- ============================================
        FOUNDER STORY — Pattern adopted: Photo + Origin-Story (Polomski/Welsh)
