@@ -20,6 +20,7 @@
   <link rel="alternate" hreflang="de" href="https://abannews.com/founding.html" />
   <link rel="alternate" hreflang="en" href="https://abannews.com/en/founding.html" />
   <link rel="alternate" hreflang="x-default" href="https://abannews.com/" />
+  <link rel="stylesheet" href="/css/conversion.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -95,6 +96,25 @@ header{display:flex;align-items:center;gap:12px}
 .lang{display:inline-flex;border:1px solid #e5e7eb;border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;vertical-align:middle;margin-left:auto}
 .lang a{padding:.3rem .6rem;color:#9ca3af;text-decoration:none;line-height:1}
 .lang a.on{background:#1f2937;color:#fff}
+/* Above-the-fold offer block: Free vs Founding */
+.offer-grid{display:grid;gap:16px;max-width:640px;margin:8px auto 0;text-align:left}
+@media(min-width:600px){.offer-grid{grid-template-columns:1fr 1fr}}
+.offer-card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:24px 22px}
+.offer-card.is-founding{border-color:#d97706;border-width:2px;box-shadow:0 4px 20px rgba(217,119,6,0.08)}
+.offer-card .tier{font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#737373}
+.offer-card.is-founding .tier{color:#9a3412}
+.offer-card .price{font-size:32px;font-weight:800;color:#0a0a0a;line-height:1.1;margin:6px 0 2px}
+.offer-card .price-note{font-size:13px;color:#737373;margin-bottom:16px}
+.offer-card ul{list-style:none;margin:0 0 0}
+.offer-card li{padding:7px 0 7px 26px;position:relative;font-size:14px;color:#404040;line-height:1.5}
+.offer-card li::before{content:"✓";position:absolute;left:0;top:7px;color:#16a34a;font-weight:700}
+.offer-card.is-free li::before{color:#a3a3a3}
+.offer-card .card-cta{margin-top:20px}
+.offer-card .card-cta .cta-primary{display:block;text-align:center;padding:14px 24px;font-size:16px}
+.stripe-note{display:block;margin-top:10px;color:#9a3412;font-size:12px;font-weight:600;text-align:center}
+.cross-link{text-align:center;font-size:14px;color:#525252;margin-top:8px}
+.cross-link a{color:#d97706;font-weight:600;text-decoration:none}
+.cross-link a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -110,8 +130,40 @@ header{display:flex;align-items:center;gap:12px}
   </div>
   <h1>Sei eine der <span class="accent">100 ersten Stimmen</span>.<br>€149 einmal, lifetime.</h1>
   <p class="sub">aban news startet als täglicher KI-Newsletter für deutschsprachige Solopreneure. Die ersten 100 Leser, die jetzt einsteigen, bekommen lebenslang Premium — für einen Bruchteil des späteren Preises. Keine Verlängerung, kein Re-Open.</p>
-  <a href="#checkout" class="cta-primary">Werde Founding-Member — €149</a>
-  <span class="cta-meta">🔒 Stripe-Checkout · 30 Tage Geld-zurück-Garantie · sofortiger Zugang</span>
+
+  <div class="offer-grid">
+    <div class="offer-card is-free">
+      <span class="tier">Free</span>
+      <div class="price">€0</div>
+      <div class="price-note">dauerhaft kostenlos</div>
+      <ul>
+        <li>Täglicher Newsletter (Mo-Fr), deutsch, ~5 Min Lesezeit</li>
+        <li>Kuratierte KI-News für Solopreneure</li>
+        <li>30 Tage Archiv-Zugang</li>
+      </ul>
+    </div>
+    <div class="offer-card is-founding">
+      <span class="tier">Founding · 100 Plätze</span>
+      <div class="price">€149</div>
+      <div class="price-note">einmalig · lifetime · kein Abo</div>
+      <ul>
+        <li>Alles aus Free</li>
+        <li>Alle Premium-Deep-Dives (Mittwoch-Edition + Audio)</li>
+        <li>Komplettes Produkt-Bundle: Toolkit Pro + Automatisierungs-Guide</li>
+        <li>Founding-Badge im Discord + VIP-Channel</li>
+        <li>Direkter Draht zu Aban (Office-Hour mit Priority)</li>
+        <li>Mitsprache bei Themen &amp; Roadmap</li>
+        <li>Später dazukommende Premium-Inhalte inklusive</li>
+      </ul>
+      <div class="card-cta">
+        <!-- TODO: STRIPE_FOUNDING_LINK -->
+        <a href="#" class="cta-primary">Founding-Member werden — €149</a>
+        <span class="stripe-note">Zahlung via Stripe — Link folgt</span>
+      </div>
+    </div>
+  </div>
+  <span class="cta-meta">Einmalzahlung · 30 Tage Geld-zurück-Garantie · kein Re-Open nach 100</span>
+  <p class="cross-link">Mehr Wege, mit aban zu arbeiten: <a href="/beratung.html">Beratung</a> · <a href="/produkte.html">Produkte</a></p>
 </section>
 
 <section>
@@ -206,6 +258,18 @@ header{display:flex;align-items:center;gap:12px}
     <h2>Häufige Fragen</h2>
     <div class="faq">
       <details>
+        <summary>Was, wenn es mir nicht gefällt?</summary>
+        <div class="answer">Dann bekommst du dein Geld zurück. 30 Tage faire Rückgabe ohne Nachfragen — eine kurze Mail an hallo@abannews.com reicht. Founding soll sich richtig anfühlen, sonst bist du hier falsch.</div>
+      </details>
+      <details>
+        <summary>Einmalig oder Abo?</summary>
+        <div class="answer">Einmalig. €149 einmal zahlen, danach lebenslang Premium. Kein monatlicher Abzug, keine automatische Verlängerung, nichts zum Kündigen.</div>
+      </details>
+      <details>
+        <summary>Was ist mit Inhalten, die später dazukommen?</summary>
+        <div class="answer">Inklusive. Neue Premium-Formate, Deep-Dives und Produkt-Updates, die nach deinem Kauf entstehen, sind für Founding-Members ohne Aufpreis dabei. Lifetime heißt Lifetime.</div>
+      </details>
+      <details>
         <summary>Was passiert wenn aban news scheitert?</summary>
         <div class="answer">Bei Einstellung des Newsletters innerhalb der ersten 12 Monate gibt's vollständigen Refund. Ich hab kein Interesse an unzufriedenen Foundern. Außerdem: 30 Tage volle Geld-zurück-Garantie ohne Nachfragen.</div>
       </details>
@@ -244,9 +308,12 @@ header{display:flex;align-items:center;gap:12px}
 <section class="cta-block" id="checkout">
   <div class="wrap">
     <h2>Bereit? €149 einmal, lifetime.</h2>
-    <p>30 Tage Geld-zurück-Garantie ohne Nachfragen. Schreib mir kurz — ich sichere deinen Founding-Platz und schicke dir den Zahlungslink.</p>
-    <a href="mailto:hallo@abannews.com?subject=Founding-Member%20EUR149&body=Ich%20m%C3%B6chte%20Founding-Member%20werden.%20Bitte%20schick%20mir%20den%20Zahlungslink." class="cta-primary">Founding-Platz sichern — €149</a>
+    <p>30 Tage Geld-zurück-Garantie ohne Nachfragen. Eine Zahlung, danach lebenslang Premium — kein Abo, keine Verlängerung.</p>
+    <!-- TODO: STRIPE_FOUNDING_LINK -->
+    <a href="#" class="cta-primary">Founding-Platz sichern — €149</a>
+    <span class="stripe-note">Zahlung via Stripe — Link folgt</span>
     <div class="guarantee">✓ 30 Tage Geld-zurück-Garantie</div>
+    <p class="cross-link" style="margin-top:20px">Lieber erst reinschnuppern? <a href="/beratung.html">Beratung</a> · <a href="/produkte.html">Produkte</a></p>
   </div>
 </section>
 
