@@ -14,6 +14,35 @@ def L(v): return v*SS
 def sm(x): x=max(0,min(1,x)); return x*x*(3-2*x)
 def pt(x,y,ang,ln): a=math.radians(ang); return (x+math.sin(a)*ln, y+math.cos(a)*ln)
 
+import random as _r
+_r.seed(21)
+FLICK=[(_r.uniform(0.04,0.96)*W,_r.uniform(0.22,0.55)*H,_r.uniform(1.5,5),_r.uniform(0,6.28)) for _ in range(16)]
+CLOUDS=[(_r.uniform(0,1),_r.uniform(0.06,0.20),_r.uniform(34,60),_r.uniform(0.006,0.014)) for _ in range(3)]
+def draw_bg_extra(d,t):
+    HOR=int(H*0.60)
+    # drifting clouds
+    for x0,y0,r,v in CLOUDS:
+        x=((x0+t*v)%1.3-0.15)*W
+        for dx in (-r*0.7,0,r*0.7):
+            d.ellipse([(x+dx-r)*SS,(y0*H-r*0.6)*SS,(x+dx+r)*SS,(y0*H+r*0.6)*SS],fill=(60,54,92,70))
+    # flickering windows
+    for fx,fy,rate,ph in FLICK:
+        on=math.sin(t*rate+ph)>0.25
+        c=(255,216,130) if on else (30,26,50)
+        d.rectangle([fx*SS,fy*SS,(fx+10)*SS,(fy+14)*SS],fill=c)
+        if on: d.rectangle([(fx-1)*SS,(fy-1)*SS,(fx+11)*SS,(fy+15)*SS],fill=(255,216,130,40))
+    # blinking aircraft crossing high
+    ax=((t*0.03)%1.2-0.1)*W; ay=H*0.09
+    d.ellipse([(ax-2)*SS,(ay-2)*SS,(ax+2)*SS,(ay+2)*SS],fill=(220,220,255))
+    if int(t*2)%2==0: d.ellipse([(ax-3)*SS,(ay-1)*SS,(ax+1)*SS,(ay+3)*SS],fill=(255,80,80))
+    # passing car headlight streaks on the road
+    for lane,(sp,off,yy) in enumerate([(0.55,0.0,0.70),(0.40,0.5,0.80),(0.7,0.25,0.66)]):
+        p=((t*sp+off)%1.6)-0.2
+        if 0<=p<=1.05:
+            cxp=p*W; ry=yy*H; gw=70
+            d.ellipse([(cxp-gw)*SS,(ry-7)*SS,(cxp+gw)*SS,(ry+7)*SS],fill=(255,238,180,60))
+            d.ellipse([(cxp-12)*SS,(ry-4)*SS,(cxp+12)*SS,(ry+4)*SS],fill=(255,250,220,150))
+
 def draw_bunny(ld,t,P):
     """P: dict with pose params."""
     cx=L(CW/2)+P["X"]*SS
@@ -87,22 +116,25 @@ def pose(t, DUR, env, eyewide, blink, phone):
     else:
         tt=t-WALK
         P["X"]=0
-        weight=math.sin(tt*1.3); P["lean"]=3*weight
-        P["legL"]=(2+weight*3, 8); P["legR"]=(-2+weight*3, 8)
-        # breathing bob + occasional hop
+        weight=math.sin(tt*1.9); P["lean"]=6*weight
+        P["legL"]=(3+weight*5, 9); P["legR"]=(-3+weight*5, 9)
+        # bouncy bob + frequent hops
         hop=0.0
-        for hb in (3.0,7.5,11.0):
-            if 0<=tt-hb<0.5: hop=-math.sin((tt-hb)/0.5*math.pi)*26
-        P["bob"]=math.sin(tt*2*math.pi*1.4)*3+hop
-        # gestures: raise right hand to emphasize, periodically
-        g=(tt%3.2)
-        if g<0.9:
-            gg=math.sin(g/0.9*math.pi); P["armR"]=(-70+10*math.sin(tt*8), -40-20*gg)
+        for hb in (1.6,3.6,5.6,7.6,9.6,11.6,13.6,15.6):
+            if 0<=tt-hb<0.42: hop=-math.sin((tt-hb)/0.42*math.pi)*34
+        P["bob"]=math.sin(tt*2*math.pi*1.8)*5+hop
+        # bigger, more frequent gestures, alternating hands
+        g=(tt%2.0)
+        if g<0.8:
+            gg=math.sin(g/0.8*math.pi)
+            if int(tt/2.0)%2==0:
+                P["armR"]=(-80+14*math.sin(tt*10), -46-24*gg); P["armL"]=(-18+8*math.sin(tt*3),16)
+            else:
+                P["armL"]=(80-14*math.sin(tt*10), 46+24*gg); P["armR"]=(18+8*math.sin(tt*3),16)
         else:
-            P["armR"]=(18+6*math.sin(tt*2.2),16)
-        P["armL"]=(-16+6*math.sin(tt*2.0+1),16)
-        P["headturn"]=0.5*math.sin(tt*0.8); P["look"]=0.2*math.sin(tt*0.8)
-        P["ear"]=math.sin(tt*4)*4+(hop*0.3); P["tail"]=math.sin(tt*5)*10
+            P["armR"]=(20+10*math.sin(tt*3.0),16); P["armL"]=(-20+10*math.sin(tt*3.0+1),16)
+        P["headturn"]=0.7*math.sin(tt*1.4); P["look"]=0.3*math.sin(tt*1.4)
+        P["ear"]=math.sin(tt*6)*7+(hop*0.4); P["tail"]=math.sin(tt*7)*16
     # phone grab override (if phone active, raise right hand to face)
     if phone is not None:
         P["armR"]=(-58,-46); P["headturn"]=0.1; P["look"]=0.8
@@ -126,7 +158,7 @@ def word_at(t):
 def frame(fi):
     t=fi/FPS
     img=Image.new("RGB",(W*SS,H*SS),(20,18,40)); d=ImageDraw.Draw(img,"RGBA")
-    draw_bg(d,t)
+    draw_bg(d,t); draw_bg_extra(d,t)
     layer=Image.new("RGBA",(CW*SS,CH*SS),(0,0,0,0)); ld=ImageDraw.Draw(layer,"RGBA")
     phone=None
     if K=="s6" and 6.5<=t*12/DUR<=8.9: phone=(127,208,255) if 6.65<=t*12/DUR<=8.0 else (140,140,140)
@@ -148,7 +180,9 @@ def frame(fi):
             d.rounded_rectangle([bx-tw/2-18*SS,by-10*SS,bx+tw/2+18*SS,by+th+18*SS],radius=14*SS,fill=(18,12,32,230),outline=(255,176,32,200),width=3*SS)
             d.text((bx-tw/2+2*SS,by+5*SS),txt,font=ft,fill=(0,0,0,170)); d.text((bx-tw/2,by+3*SS),txt,font=ft,fill=(250,235,120))
     img=Image.composite(img,BLACK,VIG); img=ImageEnhance.Color(img).enhance(1.16); img=ImageEnhance.Contrast(img).enhance(1.06)
-    z=1.0+0.05*(t/DUR); cw,ch=int(W*SS/z),int(H*SS/z); l=(W*SS-cw)//2; tp=int((H*SS-ch)*0.42)
+    z=1.04+0.05*(t/DUR); cw,ch=int(W*SS/z),int(H*SS/z)
+    panx=int(math.sin(t*0.5)*0.035*W*SS); pany=int(math.sin(t*0.37)*0.02*H*SS)
+    l=max(0,min(W*SS-cw,(W*SS-cw)//2+panx)); tp=max(0,min(H*SS-ch,int((H*SS-ch)*0.42)+pany))
     return img.crop((l,tp,l+cw,tp+ch)).resize((W,H),Image.LANCZOS)
 
 if __name__=="__main__":
