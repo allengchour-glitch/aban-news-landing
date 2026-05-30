@@ -8,12 +8,22 @@
     <copyright>Allen Chour, 2026</copyright>
     <managingEditor>hallo@abannews.com (Aban)</managingEditor>
     <webMaster>hallo@abannews.com (Aban)</webMaster>
-    <pubDate>Mon, 06 Jul 2026 07:00:00 +0200</pubDate>
-    <lastBuildDate>Mon, 06 Jul 2026 07:00:00 +0200</lastBuildDate>
+    <pubDate>Tue, 07 Jul 2026 07:00:00 +0200</pubDate>
+    <lastBuildDate>Tue, 07 Jul 2026 07:00:00 +0200</lastBuildDate>
     <category>Künstliche Intelligenz</category>
     <category>Newsletter</category>
     <generator>aban news archive RSS generator</generator>
     <atom:link href="https://abannews.com/archive.rss" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Belege automatisch erfassen — drei KI-Wege, zwei Wochen getestet</title>
+      <link>https://abannews.com/archive/027-2026-07-07-belege-automatisch-erfassen.html</link>
+      <guid isPermaLink="true">https://abannews.com/archive/027-2026-07-07-belege-automatisch-erfassen.html</guid>
+      <pubDate>Tue, 07 Jul 2026 07:00:00 +0200</pubDate>
+      <description><![CDATA[Buchhaltung wegautomatisieren? Zwei Wochen, 60 echte Belege, drei KI-Wege getestet — Claude Vision, bexio, sevDesk. Was wirklich Zeit spart, ehrlich verglichen.]]></description>
+      <author>hallo@abannews.com (Aban)</author>
+      <category>AI</category>
+      <category>DACH</category>
+    </item>
     <item>
       <title>Sovereign-AI in der Praxis — was DACH wirklich nutzen kann</title>
       <link>https://abannews.com/archive/026-2026-07-06-sovereign-ai-in-der-praxis.html</link>
