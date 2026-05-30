@@ -12,11 +12,25 @@ keine Drittanbieter-APIs (die Marke verbietet 3rd-Party-Calls).
 
 NUTZUNG
 -------
+EINZEL-MODUS (eine Ausgabe -> 5 Entwuerfe):
+
     python3 generate_linkedin_posts.py [ausgabe-datei]
 
 Ohne Argument wird ``linkedin/beispiel-ausgabe.txt`` verwendet.
 Die Entwuerfe landen als einzelne .txt-Dateien in ``linkedin/drafts/``
 und werden zusaetzlich auf der Konsole ausgegeben.
+
+WOCHEN-MODUS / BATCH (eine ganze Woche auf einmal):
+
+    python3 generate_linkedin_posts.py --woche [ordner]
+    python3 generate_linkedin_posts.py --batch [ordner]   # Alias
+
+Liest alle ``*.txt`` aus ``ordner`` (Standard: ``linkedin/woche/``),
+sortiert nach Dateiname, und baut pro Datei die 5 Entwuerfe. Die
+Entwuerfe landen in ``linkedin/drafts/woche/<dateiname>/post-N-*.txt``.
+Zusaetzlich entsteht ``linkedin/drafts/woche/wochenplan.txt`` - ein
+Copy-Sheet mit allen Tagen, allen 5 Winkeln und einem Vorschlag,
+welcher Winkel an welchem Wochentag laeuft (5 Winkel = 1 Post pro Tag).
 
 EINGABE-FORMAT
 --------------
@@ -54,6 +68,17 @@ import random
 HIER = os.path.dirname(os.path.abspath(__file__))
 STANDARD_EINGABE = os.path.join(HIER, "linkedin", "beispiel-ausgabe.txt")
 AUSGABE_DIR = os.path.join(HIER, "linkedin", "drafts")
+
+# Wochen-/Batch-Modus: Standard-Eingabeordner und Ausgabe-Unterordner.
+STANDARD_WOCHE_DIR = os.path.join(HIER, "linkedin", "woche")
+WOCHE_AUSGABE_DIR = os.path.join(AUSGABE_DIR, "woche")
+
+# Flags, die den Wochen-/Batch-Modus ausloesen.
+WOCHE_FLAGS = ("--woche", "--batch")
+
+# Wochentage fuer den Posting-Plan (1 Post pro Tag).
+WOCHENTAGE = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag",
+              "Samstag", "Sonntag"]
 
 CTA = "Taeglich in 5 Min: abannews.com"
 MAX_ZEICHEN = 1300
@@ -365,6 +390,67 @@ def waehle_item(items, index):
     return items[index % len(items)]
 
 
+def rng_fuer(roh, items):
+    """Baut den deterministischen Zufallsgenerator fuer eine Ausgabe.
+
+    Gleiche Eingabe -> gleiche Hooks (reproduzierbar), aber ueber die
+    einzelnen Ausgaben hinweg variantenreich.
+    """
+    return random.Random(len(roh) + sum(len(i["THEMA"]) for i in items))
+
+
+def baue_alle_winkel(items, rng):
+    """Erzeugt die 5 Entwuerfe fuer eine Ausgabe.
+
+    Gibt eine Liste von Tupeln zurueck:
+    ``(index, name, dateiname, post_text, warnungen)``.
+    Kapselt die Winkel-Schleife, damit Einzel- und Wochen-Modus
+    exakt dieselbe Engine nutzen.
+    """
+    ergebnisse = []
+    for index, (name, dateiname, bauer) in enumerate(WINKEL):
+        item = waehle_item(items, index)
+        post = bauer(item, rng).rstrip() + "\n"
+        warnungen = pruefe_post(post)
+        ergebnisse.append((index, name, dateiname, post, warnungen))
+    return ergebnisse
+
+
+def verarbeite_ausgabe(roh, ausgabe_dir, drucken=True):
+    """Parst eine Ausgabe, schreibt die 5 Entwuerfe nach ``ausgabe_dir``.
+
+    Gibt ``(ergebnisse, warn_gesamt)`` zurueck oder ``(None, None)``, wenn
+    keine Items gefunden wurden. ``drucken`` steuert die Konsolenausgabe.
+    """
+    items = parse_ausgabe(roh)
+    if not items:
+        return None, None
+
+    os.makedirs(ausgabe_dir, exist_ok=True)
+    rng = rng_fuer(roh, items)
+    ergebnisse = baue_alle_winkel(items, rng)
+
+    warn_gesamt = 0
+    for index, name, dateiname, post, warnungen in ergebnisse:
+        zielpfad = os.path.join(ausgabe_dir, dateiname)
+        with open(zielpfad, "w", encoding="utf-8") as out:
+            out.write(post)
+        warn_gesamt += len(warnungen)
+        if drucken:
+            trenner = "=" * 60
+            print(trenner)
+            print("WINKEL %d (%s)  ->  %s  [%d Zeichen]"
+                  % (index + 1, name, dateiname, len(post)))
+            print(trenner)
+            print(post)
+            if warnungen:
+                print("  WARNUNG:")
+                for w in warnungen:
+                    print("   - " + w)
+            print()
+    return ergebnisse, warn_gesamt
+
+
 def main(argv):
     pfad = argv[1] if len(argv) > 1 else STANDARD_EINGABE
 
@@ -375,46 +461,159 @@ def main(argv):
     with open(pfad, "r", encoding="utf-8") as f:
         roh = f.read()
 
-    items = parse_ausgabe(roh)
-    if not items:
+    print("Gelesen aus %s\n" % pfad)
+
+    ergebnisse, _ = verarbeite_ausgabe(roh, AUSGABE_DIR, drucken=True)
+    if ergebnisse is None:
         print("FEHLER: Keine Items in der Eingabe gefunden (Format pruefen).",
               file=sys.stderr)
         return 1
 
-    print("Gelesen: %d Item(s) aus %s\n" % (len(items), pfad))
+    print("Fertig: %d Entwuerfe in %s geschrieben."
+          % (len(ergebnisse), AUSGABE_DIR))
+    return 0
 
-    os.makedirs(AUSGABE_DIR, exist_ok=True)
 
-    # Deterministischer Zufall: gleiche Eingabe -> gleiche Hooks (reproduzierbar),
-    # aber ueber die Ausgaben hinweg variantenreich.
-    rng = random.Random(len(roh) + sum(len(i["THEMA"]) for i in items))
+# --- Wochen-/Batch-Modus ---------------------------------------------------
 
+def ausgabe_name(dateipfad):
+    """Macht aus einem Dateinamen einen sauberen Ordner-/Anzeigenamen."""
+    basis = os.path.splitext(os.path.basename(dateipfad))[0]
+    return basis.strip() or "ausgabe"
+
+
+def schreibe_wochenplan(plan_pfad, tage):
+    """Schreibt das kombinierte Copy-Sheet ``wochenplan.txt``.
+
+    ``tage`` ist eine Liste von Dicts mit ``name``, ``ordner`` und
+    ``ergebnisse`` (Rueckgabe von ``baue_alle_winkel``). Das Sheet listet
+    pro Tag alle 5 Winkel zum direkten Kopieren plus einen Vorschlag,
+    welcher Winkel an welchem Wochentag laeuft (5 Winkel = 1 Post/Tag).
+    """
+    breit = 74
+    linie = "=" * breit
+    duenn = "-" * breit
+    zeilen = []
+    zeilen.append(linie)
+    zeilen.append("aban news - Wochenplan LinkedIn")
+    zeilen.append(linie)
+    zeilen.append("")
+    zeilen.append("%d Ausgabe(n) verarbeitet. Pro Ausgabe 5 Winkel."
+                  % len(tage))
+    zeilen.append("Idee: 5 Winkel = waehle 1 Post pro Tag und mische die")
+    zeilen.append("Winkel ueber die Woche. Kopiere den Block direkt in")
+    zeilen.append("deinen Planer und wuerze jeden Post mit einem echten Detail.")
+    zeilen.append("")
+
+    # Posting-Vorschlag: ein Wochentag pro Ausgabe, rotierender Start-Winkel,
+    # damit ueber die Woche unterschiedliche Winkel oben stehen.
+    zeilen.append(duenn)
+    zeilen.append("POSTING-VORSCHLAG (1 Post pro Tag, Winkel gemischt)")
+    zeilen.append(duenn)
+    for i, tag in enumerate(tage):
+        wochentag = WOCHENTAGE[i % len(WOCHENTAGE)]
+        if tag["ergebnisse"]:
+            n = len(tag["ergebnisse"])
+            empf_index = i % n
+            _, winkelname, dateiname, _, _ = tag["ergebnisse"][empf_index]
+        else:
+            winkelname, dateiname = "-", "-"
+        zeilen.append("  %-11s %-22s -> Winkel: %s  (%s)"
+                      % (wochentag + ":", tag["name"], winkelname, dateiname))
+    zeilen.append("")
+    zeilen.append("Die uebrigen 4 Winkel pro Ausgabe sind Reserve fuer ")
+    zeilen.append("Folgetage, A/B-Tests oder als Vorrat.")
+    zeilen.append("")
+
+    # Voller Copy-Block pro Tag mit allen 5 Entwuerfen.
+    for i, tag in enumerate(tage):
+        wochentag = WOCHENTAGE[i % len(WOCHENTAGE)]
+        zeilen.append("")
+        zeilen.append(linie)
+        zeilen.append("TAG %d - %s  (%s)" % (i + 1, tag["name"], wochentag))
+        zeilen.append("Quelle-Entwuerfe: linkedin/drafts/woche/%s/" % tag["ordner"])
+        zeilen.append(linie)
+        if not tag["ergebnisse"]:
+            zeilen.append("")
+            zeilen.append("  (keine Items gefunden - Datei pruefen)")
+            zeilen.append("")
+            continue
+        for index, name, dateiname, post, warnungen in tag["ergebnisse"]:
+            zeilen.append("")
+            zeilen.append(duenn)
+            zeilen.append("  WINKEL %d - %s  [%s]" % (index + 1, name, dateiname))
+            if warnungen:
+                zeilen.append("  WARNUNG: " + "; ".join(warnungen))
+            zeilen.append(duenn)
+            for postzeile in post.rstrip("\n").splitlines():
+                zeilen.append("  " + postzeile if postzeile else "")
+            zeilen.append("")
+
+    inhalt = "\n".join(zeilen).rstrip() + "\n"
+    with open(plan_pfad, "w", encoding="utf-8") as out:
+        out.write(inhalt)
+
+
+def main_woche(argv):
+    """Batch-Modus: alle *.txt in einem Ordner -> Woche an Entwuerfen."""
+    # Ordner ist das erste Nicht-Flag-Argument nach dem Skriptnamen.
+    ordner = STANDARD_WOCHE_DIR
+    for arg in argv[1:]:
+        if arg not in WOCHE_FLAGS:
+            ordner = arg
+            break
+
+    if not os.path.isdir(ordner):
+        print("FEHLER: Ordner nicht gefunden: %s" % ordner, file=sys.stderr)
+        return 1
+
+    dateien = sorted(
+        os.path.join(ordner, n) for n in os.listdir(ordner)
+        if n.lower().endswith(".txt")
+    )
+    if not dateien:
+        print("FEHLER: Keine *.txt-Dateien in %s gefunden." % ordner,
+              file=sys.stderr)
+        return 1
+
+    os.makedirs(WOCHE_AUSGABE_DIR, exist_ok=True)
+    print("Wochen-Modus: %d Ausgabe-Datei(en) aus %s\n"
+          % (len(dateien), ordner))
+
+    tage = []
+    warn_gesamt = 0
     geschrieben = 0
-    for index, (name, dateiname, bauer) in enumerate(WINKEL):
-        item = waehle_item(items, index)
-        post = bauer(item, rng).rstrip() + "\n"
+    for dateipfad in dateien:
+        with open(dateipfad, "r", encoding="utf-8") as f:
+            roh = f.read()
+        name = ausgabe_name(dateipfad)
+        tag_dir = os.path.join(WOCHE_AUSGABE_DIR, name)
+        ergebnisse, warn = verarbeite_ausgabe(roh, tag_dir, drucken=False)
+        if ergebnisse is None:
+            print("  uebersprungen (keine Items): %s" % dateipfad)
+            tage.append({"name": name, "ordner": name, "ergebnisse": []})
+            continue
+        warn_gesamt += warn
+        geschrieben += len(ergebnisse)
+        tage.append({"name": name, "ordner": name, "ergebnisse": ergebnisse})
+        print("  %-22s -> %d Entwuerfe in %s%s"
+              % (name, len(ergebnisse), tag_dir,
+                 "  [%d Warnung(en)]" % warn if warn else ""))
 
-        warnungen = pruefe_post(post)
-        zielpfad = os.path.join(AUSGABE_DIR, dateiname)
-        with open(zielpfad, "w", encoding="utf-8") as out:
-            out.write(post)
-        geschrieben += 1
+    plan_pfad = os.path.join(WOCHE_AUSGABE_DIR, "wochenplan.txt")
+    schreibe_wochenplan(plan_pfad, tage)
 
-        trenner = "=" * 60
-        print(trenner)
-        print("WINKEL %d (%s)  ->  %s  [%d Zeichen]"
-              % (index + 1, name, dateiname, len(post)))
-        print(trenner)
-        print(post)
-        if warnungen:
-            print("  WARNUNG:")
-            for w in warnungen:
-                print("   - " + w)
-        print()
-
-    print("Fertig: %d Entwuerfe in %s geschrieben." % (geschrieben, AUSGABE_DIR))
+    print("")
+    print("Fertig: %d Entwuerfe fuer %d Tag(e) geschrieben."
+          % (geschrieben, len(tage)))
+    print("Wochenplan (Copy-Sheet): %s" % plan_pfad)
+    if warn_gesamt:
+        print("Hinweis: %d Warnung(en) insgesamt - bitte pruefen."
+              % warn_gesamt)
     return 0
 
 
 if __name__ == "__main__":
+    if any(a in WOCHE_FLAGS for a in sys.argv[1:]):
+        sys.exit(main_woche(sys.argv))
     sys.exit(main(sys.argv))

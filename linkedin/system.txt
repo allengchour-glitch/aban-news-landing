@@ -6,9 +6,17 @@ LinkedIn ist unser wichtigster Wachstumskanal. Dieses System macht aus
 jeder Tagesausgabe (3 KI-Items) fuenf Posts - planbar, ohne Hype, du-Form.
 
 Tooling: generate_linkedin_posts.py (reines Python, keine Abhaengigkeiten).
-  python3 generate_linkedin_posts.py [ausgabe-datei]
-Standard-Eingabe: linkedin/beispiel-ausgabe.txt
-Entwuerfe landen in: linkedin/drafts/
+
+  EINZEL-MODUS (eine Ausgabe -> 5 Posts):
+    python3 generate_linkedin_posts.py [ausgabe-datei]
+    Standard-Eingabe: linkedin/beispiel-ausgabe.txt
+    Entwuerfe landen in: linkedin/drafts/
+
+  WOCHEN-MODUS (eine ganze Woche auf einmal):
+    python3 generate_linkedin_posts.py --woche [ordner]
+    Standard-Ordner: linkedin/woche/  (alle *.txt, sortiert nach Name)
+    Entwuerfe landen in: linkedin/drafts/woche/<dateiname>/
+    Copy-Sheet: linkedin/drafts/woche/wochenplan.txt
 
 
 --------------------------------------------------------------------------
@@ -51,6 +59,43 @@ muss der erste Satz allein neugierig machen - ohne Clickbait.
 
 Regel fuer Hooks: konkret statt gross. Eine Zahl oder ein Beispiel schlaegt
 ein Adjektiv. Nie etwas versprechen, das der Post nicht einloest.
+
+
+--------------------------------------------------------------------------
+2b. WOCHEN-WORKFLOW (Batch): EINMAL FUELLEN, GANZE WOCHE ERNTEN
+--------------------------------------------------------------------------
+
+Statt jeden Tag eine Datei zu pflegen, kannst du die Woche am Stueck
+vorbereiten. Drei Schritte:
+
+  1) Pro Tag eine Datei in linkedin/woche/ anlegen, z. B. tag-1.txt,
+     tag-2.txt, ... (oder montag.txt, dienstag.txt). Format pro Datei
+     ist dasselbe wie sonst: 3 Items mit THEMA / WAS / BEDEUTUNG / TIPP,
+     getrennt durch eine Zeile mit nur "---". Reihenfolge = Dateiname
+     (alphabetisch sortiert), also tag-1 vor tag-2.
+
+  2) Einmal laufen lassen:
+        python3 generate_linkedin_posts.py --woche
+
+  3) Ergebnis abholen:
+     - Pro Tag ein Unterordner: linkedin/drafts/woche/<dateiname>/
+       mit den 5 Winkel-Entwuerfen (post-1-news.txt ... post-5-frage.txt).
+     - Ein kombiniertes Copy-Sheet: linkedin/drafts/woche/wochenplan.txt
+       Es listet jeden Tag mit allen 5 Winkeln zum direkten Kopieren und
+       schlaegt vor, welcher Winkel an welchem Wochentag oben laeuft.
+
+SO MAPPST DU "5 WINKEL PRO AUSGABE" AUF "1 POST PRO TAG":
+
+  Jede Ausgabe liefert 5 Winkel - das ist bewusst Vorrat, nicht 5 Posts
+  fuer denselben Tag. Praxis:
+    - Pro Wochentag EINE Ausgabe-Datei = EIN Post pro Tag.
+    - Pro Tag waehlst du genau einen der 5 Winkel (der wochenplan.txt
+      macht einen rotierenden Vorschlag, damit nicht jeden Tag derselbe
+      Typ oben steht).
+    - Die uebrigen 4 Winkel des Tages sind Reserve: Vorrat fuer schwache
+      Tage, A/B-Test der Hook oder Material fuer die Folgewoche.
+  Faustregel: 5 Ausgabe-Dateien (Mo-Fr) -> 5 Posts, einer pro Tag,
+  Winkel ueber die Woche gemischt.
 
 
 --------------------------------------------------------------------------
@@ -100,8 +145,10 @@ und richte dich nach deinen eigenen Zahlen, nicht nach fremden Studien.
 6. WOCHEN-CHECKLISTE
 --------------------------------------------------------------------------
 
-  [ ] Montag: Ausgabe-Datei der Woche vorbereiten (oder taeglich pflegen).
-  [ ] Generator laufen lassen, 5 Entwuerfe sichten.
+  [ ] Montag: Wochen-Dateien in linkedin/woche/ vorbereiten (tag-1.txt ...)
+      ODER taeglich eine Ausgabe-Datei pflegen.
+  [ ] Generator laufen lassen (--woche fuer die ganze Woche), Entwuerfe
+      sichten; wochenplan.txt als Copy-Sheet nutzen.
   [ ] Jeden Entwurf mit einem echten Detail aus deinem Alltag wuerzen.
   [ ] Hooks gegen die Swipe-Liste pruefen: zieht die erste Zeile?
   [ ] Voice-Check: keine Hype-Woerter, du-Form, keine "!!".
