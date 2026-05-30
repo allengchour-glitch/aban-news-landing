@@ -416,6 +416,24 @@ NEW_UI = {
                   "pt": "Preço", "nl": "Prijs", "pl": "Cena", "tr": "Fiyat", "ja": "価格", "zh": "价格"},
     "col_score": {"de": "Wertung", "en": "Score", "fr": "Note", "es": "Puntuación", "it": "Voto",
                   "pt": "Nota", "nl": "Score", "pl": "Ocena", "tr": "Puan", "ja": "評価", "zh": "评分"},
+    "updated": {"de": "Stand", "en": "Updated", "fr": "Mis à jour", "es": "Actualizado",
+                "it": "Aggiornato", "pt": "Atualizado", "nl": "Bijgewerkt", "pl": "Aktualizacja",
+                "tr": "Güncellendi", "ja": "更新", "zh": "更新"},
+    "tldr": {"de": "Kurz gesagt", "en": "In short", "fr": "En bref", "es": "En resumen",
+             "it": "In breve", "pt": "Em resumo", "nl": "Kort gezegd", "pl": "W skrócie",
+             "tr": "Kısaca", "ja": "要点", "zh": "一句话总结"},
+    # Citable one-liner LLMs can lift. {name}=tool, {v}=vendor, {s}=score, {p}=price, {u}=use cases
+    "tldr_tpl": {"de": "{name} von {v} erreicht {s}/10 für {u}. Preis: {p}.",
+                 "en": "{name} by {v} scores {s}/10 for {u}. Price: {p}.",
+                 "fr": "{name} de {v} obtient {s}/10 pour {u}. Prix : {p}.",
+                 "es": "{name} de {v} obtiene {s}/10 para {u}. Precio: {p}.",
+                 "it": "{name} di {v} ottiene {s}/10 per {u}. Prezzo: {p}.",
+                 "pt": "{name} da {v} obtém {s}/10 para {u}. Preço: {p}.",
+                 "nl": "{name} van {v} scoort {s}/10 voor {u}. Prijs: {p}.",
+                 "pl": "{name} od {v} zdobywa {s}/10 za {u}. Cena: {p}.",
+                 "tr": "{v} firmasının {name} aracı {u} için {s}/10 alıyor. Fiyat: {p}.",
+                 "ja": "{v}の{name}は{u}で{s}/10。価格: {p}。",
+                 "zh": "{v} 的 {name} 在{u}方面获得 {s}/10。价格：{p}。"},
     "glossary_sub": {"de": "Die wichtigsten KI-Begriffe verständlich erklärt — mit passenden Tools.",
                      "en": "The most important AI terms, clearly explained — with matching tools.",
                      "fr": "Les termes IA essentiels, clairement expliqués — avec des outils adaptés.",
@@ -580,6 +598,7 @@ def page(*, lang, ui, title, description, body, canonical,
 <link rel="apple-touch-icon" href="/icon-192.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="{ACCENT}">
+<meta property="og:updated_time" content="{date.today().isoformat()}">
 <style>
 :root{{--accent:{ACCENT};--accent-h:{ACCENT_HOVER};--bg:{BG};--bg-alt:{BG_ALT};
 --text:{TEXT};--muted:{MUTED};--success:{SUCCESS};--border:{BORDER};--card:#fff;}}
@@ -640,6 +659,7 @@ padding:10px 18px;border-radius:8px;font-weight:600;margin-top:8px;}}
 .ctab th,.ctab td{{text-align:left;padding:9px 10px;border-bottom:1px solid var(--border);}}
 .ctab th{{color:var(--muted);font-weight:600;}} .ctab tr:hover td{{background:var(--bg-alt);}}
 .ctab .num{{text-align:center;white-space:nowrap;}}
+.tldr{{background:var(--bg-alt);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:.95rem;}}
 .disclosure{{color:var(--muted);font-size:.82rem;border-top:1px solid var(--border);margin-top:24px;padding-top:14px;}}
 footer{{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);font-size:.85rem;}}
 </style>
@@ -1597,8 +1617,16 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                    f"<lastmod>{today}</lastmod></sitemap>")
     idx.append("</sitemapindex>")
     (out / "sitemap.xml").write_text("\n".join(idx), encoding="utf-8")
-    (out / "robots.txt").write_text(
-        f"User-agent: *\nAllow: /\nSitemap: {BASE_URL}/sitemap.xml\n", encoding="utf-8")
+    # robots.txt — explicitly welcome AI crawlers (GEO/AEO: be citable by
+    # ChatGPT/Perplexity/Claude/Google AI). Allowing them is the lever that matters.
+    ai_bots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot",
+               "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended",
+               "Bytespider", "CCBot", "Amazonbot", "meta-externalagent"]
+    lines = ["User-agent: *", "Allow: /", ""]
+    for bot in ai_bots:
+        lines += [f"User-agent: {bot}", "Allow: /", ""]
+    lines.append(f"Sitemap: {BASE_URL}/sitemap.xml")
+    (out / "robots.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     # Branded 404 (Cloudflare/Netlify serve /404.html). German default.
     de_ui = locales["de"]["ui"]
