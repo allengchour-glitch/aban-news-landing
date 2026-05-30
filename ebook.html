@@ -11,9 +11,15 @@
   <meta property="og:title" content="Anti-Hype — Das kostenlose KI-eBook (2026)">
   <meta property="og:description" content="Wie deutsche Solopreneure KI ohne Bullshit einsetzen. Kostenlos, ohne Email-Gate.">
   <meta property="og:url" content="https://abannews.com/ebook.html">
-  <meta property="og:image" content="https://abannews.com/og-image.png">
+  <meta property="og:image" content="https://abannews.com/og-ebook.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:type" content="book">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/og-ebook.png">
+  <meta name="twitter:title" content="Anti-Hype — Das kostenlose KI-eBook (2026)">
+  <meta name="twitter:description" content="Wie deutsche Solopreneure KI ohne Bullshit einsetzen. Kostenlos, ohne Email-Gate.">
+  <meta name="author" content="Aban (Allen Chour)">
   <style>
     *{box-sizing:border-box;margin:0}
     :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--ok:#0f9d6b;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
@@ -104,6 +110,14 @@
 
     @media(max-width:560px){.dl{flex-direction:column;text-align:center}.dl-actions{justify-content:center}}
     @media (prefers-reduced-motion:reduce){#progress{transition:none}}
+    /* Sticky mobile CTA */
+    .sticky-cta{display:none}
+    @media(max-width:600px){
+      .sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:80;background:#fff;border-top:1px solid var(--line);padding:.6rem .9rem;gap:.6rem;align-items:center;justify-content:space-between;box-shadow:0 -4px 16px rgba(31,41,55,.12)}
+      .sticky-cta span{font-size:.84rem;font-weight:700}
+      .sticky-cta .btn{padding:.55rem .9rem;font-size:.85rem}
+      body{padding-bottom:64px}
+    }
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Book","name":"Anti-Hype — Wie deutsche Solopreneure KI ohne Bullshit einsetzen","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"inLanguage":"de","bookFormat":"https://schema.org/EBook","datePublished":"2026","url":"https://abannews.com/ebook.html","isAccessibleForFree":true,"description":"Kostenloses eBook: KI pragmatisch und ohne Hype für DACH-Solopreneure einsetzen."}
@@ -272,6 +286,11 @@
     <span><a href="/">Startseite</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></span>
   </div>
 </footer>
+
+<div class="sticky-cta">
+  <span>5-Min-KI-Briefing — gratis</span>
+  <a href="https://abannews.beehiiv.com/subscribe" class="btn">Abonnieren →</a>
+</div>
 
 <script>
 (function(){

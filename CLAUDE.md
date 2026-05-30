@@ -80,6 +80,31 @@ grep -iE "revolution|bahnbrechend|game.changer|disruptiv|quantensprung|meilenste
 5. Falls relevant: Nav-Link in `index.html` (`.hnav`) + Footer-Link.
 6. Forbidden-Phrases-Grep laufen lassen.
 
+## Monetarisierung aktivieren (3 Schalter, kostenlos zum Start)
+
+Der Funnel ist verdrahtet — diese drei Stellen brauchen je **eine echte URL**:
+
+1. **Newsletter (aktiv ✅):** Alle Subscribe-Buttons zeigen auf
+   `https://abannews.beehiiv.com/subscribe`. Läuft.
+2. **Stripe (Founding €149):** In `founding.html`, `<script>`-Block oben,
+   `STRIPE_FOUNDING_LINK = ""` → Stripe Payment Link einsetzen
+   (`https://buy.stripe.com/…`). Solange leer → Mail-Fallback (kein toter Button).
+3. **Calendly (Sponsoring):** In `sponsoring.html`, `<script>` am Ende,
+   `CALENDLY_URL` pflegen. Leer → automatischer Mail-Fallback.
+
+**Funnel-Übersicht:** SEO-Money-Pages (`geld-verdienen-mit-ki`,
+`ki-tools-fuer-selbststaendige`, `chatgpt-fuer-solopreneure`) + `resources.html`
+(PDF-Downloads) → Newsletter-Opt-in → `willkommen.html` (eBook-Geschenk) →
+`founding.html` (€149) / `sponsoring.html` (Werbung). eBook-Lead-Magnet
+(`ebook.html` + `downloads/anti-hype-ebook.pdf`) speist denselben Trichter.
+Social-Image für eBook: `og-ebook.png` (mit Pillow generiert, s.u.).
+
+Assets neu generieren:
+```bash
+python3 generate_ebook.py          # downloads/anti-hype-ebook.pdf
+# og-ebook.png: 1200x630, Pillow — Skript-Snippet in der PR-Historie
+```
+
 ## Git / Deployment
 
 - Branch-Konvention dieser Session: `claude/...` Feature-Branches, **nie** direkt

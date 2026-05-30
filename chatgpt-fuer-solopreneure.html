@@ -52,6 +52,13 @@
     footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
     footer a{color:var(--muted)}
     @media(max-width:560px){.related-cards{grid-template-columns:1fr}}
+    .sticky-cta{display:none}
+    @media(max-width:600px){
+      .sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:80;background:#fff;border-top:1px solid var(--line);padding:.6rem .9rem;gap:.6rem;align-items:center;justify-content:space-between;box-shadow:0 -4px 16px rgba(31,41,55,.12)}
+      .sticky-cta span{font-size:.84rem;font-weight:700}
+      .sticky-cta .btn{padding:.55rem .9rem;font-size:.85rem}
+      body{padding-bottom:64px}
+    }
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Article","headline":"ChatGPT für Solopreneure — echter Nutzen statt Spielerei (2026)","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"datePublished":"2026-06-01","inLanguage":"de","description":"7 konkrete Anwendungen für ChatGPT und Claude im Solopreneur-Alltag — mit klaren Grenzen und DSGVO-Hinweisen."}
@@ -170,6 +177,11 @@ bevor ich starte. Sei direkt, kein Schönreden.</div>
     <span><a href="/">Startseite</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></span>
   </div>
 </footer>
+
+<div class="sticky-cta">
+  <span>5-Min-KI-Briefing — gratis</span>
+  <a href="https://abannews.beehiiv.com/subscribe" class="btn">Abonnieren →</a>
+</div>
 
 </body>
 </html>

@@ -254,7 +254,7 @@
         <h3 style="margin-top:0;">Discovery-Call buchen</h3>
         <p>15 Minuten, du erzählst was du willst — wir schauen ob's passt. Wenn nicht, sag ich's dir direkt (statt eine Mail-Loop zu starten).</p>
         <p style="margin-bottom:0;">
-          <a href="https://calendly.com/abannews/sponsor" class="btn">
+          <a id="sponsor-book" href="https://calendly.com/abannews/sponsor" class="btn">
             Termin buchen →
           </a>
         </p>
@@ -311,6 +311,25 @@
     </div>
   </div>
 </footer>
+
+<script>
+// ============================================================
+// SPONSOR-BOOKING — Calendly-Link hier in EINER Zeile pflegen:
+// calendly.com (Free-Tier) → Event "Sponsor Discovery Call · 15 Min" → Link kopieren.
+// Leer lassen ("") → Button schaltet automatisch auf den Mail-Fallback um.
+// ============================================================
+(function(){
+  var CALENDLY_URL = "https://calendly.com/abannews/sponsor";
+  var btn = document.getElementById('sponsor-book');
+  if(!btn) return;
+  if(/^https:\/\/calendly\.com\/.+/.test(CALENDLY_URL)){
+    btn.href = CALENDLY_URL;
+  } else {
+    btn.href = "mailto:sponsoring@abannews.com?subject=Sponsoring-Anfrage%20aban%20news";
+    btn.textContent = "Anfrage per Mail →";
+  }
+})();
+</script>
 
 </body>
 </html>

@@ -246,7 +246,7 @@ header{display:flex;align-items:center;gap:12px}
   <div class="wrap">
     <h2>Bereit? €149 einmal, lifetime.</h2>
     <p>30 Tage Geld-zurück-Garantie ohne Nachfragen. Schreib mir kurz — ich sichere deinen Founding-Platz und schicke dir den Zahlungslink.</p>
-    <a href="mailto:hallo@abannews.com?subject=Founding-Member%20EUR149&body=Ich%20m%C3%B6chte%20Founding-Member%20werden.%20Bitte%20schick%20mir%20den%20Zahlungslink." class="cta-primary">Founding-Platz sichern — €149</a>
+    <a id="founding-buy" href="mailto:hallo@abannews.com?subject=Founding-Member%20EUR149&body=Ich%20m%C3%B6chte%20Founding-Member%20werden.%20Bitte%20schick%20mir%20den%20Zahlungslink." class="cta-primary">Founding-Platz sichern — €149</a>
     <div class="guarantee">✓ 30 Tage Geld-zurück-Garantie</div>
   </div>
 </section>
@@ -272,6 +272,21 @@ header{display:flex;align-items:center;gap:12px}
 </div>
 
 <script>
+// ============================================================
+// FOUNDING-CHECKOUT — hier EINE Zeile anpassen, um live zu gehen:
+// 1. Stripe-Dashboard → Payment Links → "+ New" → Produkt "aban news Founding"
+//    Preis €149 einmalig anlegen → Link kopieren (Form: https://buy.stripe.com/...).
+// 2. Unten zwischen die Anführungszeichen einsetzen. Fertig.
+// Solange leer, läuft der Kauf automatisch per E-Mail (kein toter Button).
+// ============================================================
+(function(){
+  var STRIPE_FOUNDING_LINK = ""; // z.B. "https://buy.stripe.com/abc123"
+  if(/^https:\/\/(buy\.stripe\.com|checkout\.stripe\.com)\//.test(STRIPE_FOUNDING_LINK)){
+    var btn = document.getElementById('founding-buy');
+    if(btn){ btn.href = STRIPE_FOUNDING_LINK; btn.target = "_blank"; btn.rel = "noopener"; }
+  }
+})();
+
 // Mock counter (will be replaced by live fetch from /api/founding-count)
 // async function updateCounter(){
 //   try{
