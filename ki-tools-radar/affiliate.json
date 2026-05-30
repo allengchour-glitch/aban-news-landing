@@ -1,0 +1,14 @@
+{
+  "_comment": "Affiliate-Link-Map: tool-id -> affiliate-URL. Fehlt ein Eintrag, nutzt der Generator die normale tool-url (kein Affiliate, kein *-Marker). Recurring-Programme bevorzugen (siehe _programs).",
+  "_programs": {
+    "_hinweis": "Aus der Marktrecherche: recurring/lifetime schlägt Einmal-Provision. Hier eintragen, sobald du im jeweiligen Programm angenommen bist.",
+    "jasper": "30% recurring (12 Mon., 90-Tage-Cookie)",
+    "writesonic": "30% lifetime",
+    "frase": "~30% recurring",
+    "getresponse": "40-60% (12 Mon.)",
+    "systeme": "60% lifetime",
+    "descript": "30% (12 Mon.)",
+    "elevenlabs": "20% (12 Mon.)"
+  },
+  "links": {}
+}
