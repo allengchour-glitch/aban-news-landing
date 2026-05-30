@@ -8,7 +8,21 @@ Solo-Operator mit KI-API-Zugang (LLM-Text, Bild, Audio/Voice) + bestehendem
 deutschsprachigem KI-Newsletter (Aban News / abannews.de). Ziel: möglichst
 automatisierte, passive Einnahmequellen mit KI — Fokus DACH-Markt.
 
-## Aktive Projekte (in diesem Repo)
+## Stammprojekt: Aban News (Newsletter) — Repo-Root
+Das ursprüngliche & zentrale Projekt: Landingpage für den deutschsprachigen täglichen
+KI-Newsletter **abannews.com / .de** (Mo–Fr, kuratiert, „3–5 Min, kein Hype").
+- **Dateien (Root):** `index.html` (Hero+Subscribe), `founding.html` (€149 Founding-Member),
+  `sponsoring.html` (Werbe-Rate-Card), `willkommen.html`, `datenschutz.html`, `impressum.html`,
+  `faq.html`, `about.html`, `brand.html` (Markenstimme), `css/styles.css`, `logo-*.svg`.
+- **Daten/Automation:** `data/tools.json` = 143 kuratierte KI-Tools (Bewertung, DACH-Relevanz, DSGVO,
+  Pricing) — zugleich Datenbasis des KI-Tools Radar. `automation/` = Brand-Voice-Validator (Flask)
+  + Make.com-Blueprints. CI: Voice-Linter (`.github/workflows/voice-linter.yml`).
+- **Markenstimme (für ALLE Projekte verbindlich):** ehrlich, praktisch, deutsch, anti-Buzzword
+  (keine Wörter wie „revolutionär/disruptiv/game-changer/AI-powered"). Verboten-Phrasen-Liste im Validator.
+- **Rolle:** Distributions-Kanal + größtes Asset. Alle Geld-Projekte teasern über den Newsletter an
+  und verlinken zurück (Newsletter-Box). Betreiber/Impressum-Daten: Alleng Chour, Belp/CH, hallo@abannews.com.
+
+## Aktive Geld-Projekte (in diesem Repo)
 
 ### 1. KI-Tools Radar  →  Ordner `ki-tools-radar/`  (HAUPTPROJEKT, launch-fertig)
 Automatisierte, mehrsprachige KI-Tool-Vergleichsseite (programmatic SEO).
@@ -26,10 +40,10 @@ Verdient passiv über Affiliate-Links + leitet Traffic in den Newsletter.
 Automatisiertes DACH-Fördermittel-Verzeichnis (programmatic, statisch). Verdient über
 **Lead-Gen** (Fördermittel-Berater zahlen pro qualifizierter Anfrage) + Premium-Platzierung.
 - **Domain (geplant):** `foerder.abannews.com` (Subdomain)
-- **Generator:** `foerder-radar/generate.py` (pure stdlib). Daten: `foerderungen.json` (16 echte Seed-Programme,
+- **Generator:** `foerder-radar/generate.py` (pure stdlib). Daten: `foerderungen.json` (29 echte Seed-Programme,
   KEINE erfundenen Beträge — verlinkt offizielle Quellen, „ohne Gewähr"). Lead-Slots: `leadgen.json`.
 - **Seiten:** Index + Live-Filter (Region/Art/Suche), /programm/<id>, /region/<r>, /art/<a>, Impressum, Datenschutz
-- **Stand:** 24-26 Seiten, GovernmentService-JSON-LD, Sitemap, AI-Crawler-robots, Dark Mode, Auto-Build-Workflow
+- **Stand:** 39 Seiten (29 Programme), GovernmentService-JSON-LD, Sitemap, AI-Crawler-robots, Dark Mode, Auto-Build-Workflow
 - **Offen:** Daten erweitern (foerderdatenbank.de-Export), Berater-Partner + leadgen.json, Domain/Deployment, Newsletter-Teaser
 
 ### 3. KI-Jobs Radar  →  Ordner `jobs-radar/`  (NEU — Chance #3, läuft)
@@ -47,12 +61,14 @@ Automatisierter DACH-KI-/ML-Jobboard (programmatic, statisch). Verdient über ge
 DSGVO-konformes KI-Content-Studio (SaaS-Konzept, W1-Fundament: DB-Schema, Provider-Interface,
 AI-Act-Modul). Nicht aktiv weiterentwickelt. Bei Bedarf reaktivierbar.
 
-### 3. Marktrecherche  →  `ki-geld-projekt/MARKTRECHERCHE.md`
-Gegengeprüfte 5-Strang-Recherche zu KI-Geldmodellen 2026 (Basis aller Entscheidungen).
+### Strategie-Memory  →  `ki-geld-projekt/`
+`MARKTRECHERCHE.md` (5-Strang-Recherche KI-Geldmodelle 2026) + `MARKTLUECKEN-2026.md` (Kapital-Chancen).
 
 ## Git / Deployment
 - **Branch:** `claude/ai-money-project-f25Ub` · **PR:** #2 (Draft) auf allengchour-glitch/aban-news-landing
-- CI: Voice-Linter überspringt die Projekt-Ordner (ki-tools-radar/, aban-studio/, ki-geld-projekt/)
+- CI: Voice-Linter überspringt alle Projekt-/Memory-Ordner (ki-tools-radar/, foerder-radar/, jobs-radar/,
+  aban-studio/, ki-geld-projekt/, PROJEKT.md, CLAUDE.md) — gilt nur für Newsletter-Content im Root.
+- Jedes Geld-Projekt hat einen eigenen Auto-Build-Workflow in `.github/workflows/`.
 
 ## Offene To-dos (nur der User kann das — braucht seine Accounts)
 1. Cloudflare Pages mit Repo verbinden + `radar.abannews.com` als Custom Domain (→ LAUNCH.md)
