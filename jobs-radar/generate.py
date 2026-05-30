@@ -198,13 +198,33 @@ def build(data_path: Path, out: Path, here: Path):
     # newest first
     jobs = sorted(jobs, key=lambda j: j.get("created_at") or 0, reverse=True)
 
+    # Data-driven hubs (scale automatically as more jobs arrive):
+    #  - Remote hub  - City hubs (location before comma, >=3 jobs)
+    import collections
+    _not_city = {"remote", "anywhere", "worldwide", "europe", "european", "emea",
+                 "americas", "america", "global", "eu", "dach", "usa", "us", "uk"}
+    def city_of(j):
+        loc = (j.get("location") or "").split(",")[0].strip()
+        return loc if loc and loc.lower() not in _not_city else ""
+    city_count = collections.Counter(city_of(j) for j in jobs if city_of(j))
+    cities = sorted([c for c, n in city_count.items() if n >= 3])
+    remote_jobs = [j for j in jobs if j.get("remote")]
+
+    hub_links = []
+    if remote_jobs:
+        hub_links.append('<a href="/remote.html">Remote</a>')
+    hub_links += [f'<a href="/ort/{slug(c)}.html">{e(c)}</a>' for c in cities]
+    hubnav = (f'<p class="tag" style="color:var(--muted)">Beliebt: {" · ".join(hub_links)}</p>'
+              if hub_links else "")
+
     filt = ('<div class="filter">'
             '<input id="q" type="search" placeholder="Suchen (Titel, Firma, Ort, Tag)…" aria-label="Suche">'
             '<select id="fr"><option value="">Alle</option>'
             '<option value="1">Nur Remote</option><option value="0">Vor Ort</option></select></div>')
     cards = "\n".join(job_card(j) for j in jobs)
     home = (f'<h1>{len(jobs)} KI- & ML-Jobs im DACH-Raum</h1>'
-            f'<p class="tag" style="color:var(--muted)">Stand: {e(fetched)} · Quelle: arbeitnow.com</p>'
+            f'<p class="tag" style="color:var(--muted)">Stand: {e(fetched)} · Quelle: {e(db.get("source","arbeitnow.com"))}</p>'
+            f'{hubnav}'
             f'{featured_slot(sponsors)}{filt}<p id="nores" hidden>Keine Treffer.</p>{cards}'
             f'<script src="/filter.js" defer></script>'
             f'<p class="disc">⚠️ Stellen werden automatisch aggregiert und verlinken zur Originalquelle. '
@@ -216,6 +236,28 @@ def build(data_path: Path, out: Path, here: Path):
 
     for j in jobs:
         (out / "job" / f"{job_slug(j)}.html").write_text(job_page(j, sponsors), encoding="utf-8")
+
+    # Remote hub
+    if remote_jobs:
+        body = (f'<p><a href="/">← Alle Jobs</a></p><h1>Remote KI-Jobs im DACH-Raum</h1>'
+                f'<p class="tag" style="color:var(--muted)">{len(remote_jobs)} Remote-Stellen rund um KI & ML.</p>'
+                + "\n".join(job_card(j) for j in remote_jobs))
+        (out / "remote.html").write_text(
+            page(f"Remote KI-Jobs — {SITE_NAME}",
+                 f"{len(remote_jobs)} aktuelle Remote-Jobs rund um KI und Machine Learning im DACH-Raum.",
+                 body, BASE_URL + "/remote.html"), encoding="utf-8")
+
+    # City hubs
+    (out / "ort").mkdir(exist_ok=True)
+    for c in cities:
+        members = [j for j in jobs if city_of(j) == c]
+        body = (f'<p><a href="/">← Alle Jobs</a></p><h1>KI-Jobs in {e(c)}</h1>'
+                f'<p class="tag" style="color:var(--muted)">{len(members)} KI- & ML-Stellen in {e(c)}.</p>'
+                + "\n".join(job_card(j) for j in members))
+        (out / "ort" / f"{slug(c)}.html").write_text(
+            page(f"KI-Jobs in {c} — {SITE_NAME}",
+                 f"Aktuelle KI-, ML- und Data-Science-Jobs in {c}.", body,
+                 BASE_URL + f"/ort/{slug(c)}.html"), encoding="utf-8")
 
     (out / "filter.js").write_text(FILTER_JS, encoding="utf-8")
 
@@ -244,7 +286,9 @@ Beschwerderecht. Stand: {date.today().strftime('%m/%Y')}.</p>"""
         encoding="utf-8")
 
     # sitemap + AI-friendly robots
-    urls = [BASE_URL + "/"] + [BASE_URL + f"/job/{job_slug(j)}.html" for j in jobs]
+    urls = ([BASE_URL + "/"] + [BASE_URL + f"/job/{job_slug(j)}.html" for j in jobs]
+            + ([BASE_URL + "/remote.html"] if remote_jobs else [])
+            + [BASE_URL + f"/ort/{slug(c)}.html" for c in cities])
     today = date.today().isoformat()
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
