@@ -117,6 +117,22 @@
     .honest{margin-top:1rem;text-align:center;font-size:.9rem;color:var(--muted)}
     .honest b{color:var(--ink)}
 
+    /* 3-point value row */
+    .values{display:flex;flex-wrap:wrap;gap:.5rem .9rem;margin:1.1rem 0 0;padding:0;list-style:none}
+    .values li{display:inline-flex;align-items:center;gap:.45rem;font-size:.86rem;color:#3b4654;font-weight:600}
+    .values .vk{color:var(--ok);font-weight:800}
+
+    /* Secondary CTA callout */
+    .cta2{margin-top:1.5rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);
+      padding:1.15rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.75rem 1.1rem;text-align:center}
+    .cta2 p{margin:0;font-size:1rem;color:var(--ink);font-weight:600}
+    .cta2 .btn{flex:0 0 auto}
+
+    /* weiterempfehlen line */
+    .refer{width:100%;text-align:center;color:var(--muted);font-size:.8rem;margin:.2rem 0 0}
+    .refer a{color:var(--amber-dk);text-decoration:none}
+    .refer a:hover{text-decoration:underline}
+
     footer{margin-top:2rem;border-top:1px solid var(--line);background:rgba(255,255,255,.5)}
     footer .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:center;justify-content:center;padding:1.1rem 1.25rem;font-size:.82rem;color:var(--muted)}
     footer a{text-decoration:none;color:var(--muted)}footer a:hover{color:var(--ink)}
@@ -163,6 +179,11 @@
           <span class="chip">🛠 1 getestetes Tool</span>
           <span class="chip">💡 1 Prompt</span>
         </div>
+        <ul class="values">
+          <li><span class="vk">✓</span> Mo–Fr morgens</li>
+          <li><span class="vk">✓</span> 3–5 Min, kein Hype</li>
+          <li><span class="vk">✓</span> DSGVO-konform, kein Tracking</li>
+        </ul>
         <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
           <div class="row">
             <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">
@@ -205,6 +226,12 @@
         <div class="step"><span class="n">3</span><h2>Du liest, 5 Min</h2><p>07:30 im Posteingang. Kaffee, durchlesen, eine Sache mitnehmen — fertig vor dem ersten Meeting.</p></div>
       </div>
       <p class="honest"><b>Noch keine Testimonials — und das ist ehrlich so.</b> aban news startet gerade. Keine erfundenen Stimmen, keine Fake-Zahlen. Du bist früh dran und prägst mit.</p>
+
+      <div class="cta2">
+        <p>Überzeugt? Hol dir aban news Mo–Fr morgens — kostenlos.</p>
+        <a href="#signup" class="btn">Jetzt abonnieren →</a>
+        <p class="refer">Kennst du jemanden, dem das hilft? <a href="mailto:?subject=aban%20news&body=Schau%20dir%20aban%20news%20an%3A%20https%3A%2F%2Fabannews.com">Leite aban news weiter.</a></p>
+      </div>
     </div>
   </section>
 </main>
@@ -219,6 +246,7 @@
     <a href="/en/">EN</a>
     <a href="/fr/">FR</a>
     <a href="/it/">IT</a>
+    <span class="refer">Gefällt dir aban news? <a href="mailto:?subject=aban%20news&body=Schau%20dir%20aban%20news%20an%3A%20https%3A%2F%2Fabannews.com">Leite es an Kolleg:innen weiter.</a></span>
   </div>
 </footer>
 
