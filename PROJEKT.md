@@ -93,6 +93,12 @@ LP-Landingpage: `gratis-ki-tools.html` (PDF gegen beehiiv-Anmeldung, Root).
 `.github/workflows/social-autopost.yml` (Mo/Mi/Fr automatisch). Tokens NUR als GitHub-Secrets
 (DISCORD_WEBHOOK_URL / TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID) — nie im Code. Anleitung: social/README.md.
 
+## KI-News-Aggregator (fertig, automatisch)
+`automation/news_aggregator.py` sammelt KI-News aus 7 seriösen RSS-Feeds (OpenAI, Google AI, HF,
+TechCrunch, VentureBeat, MIT Tech Review, heise). Workflow `news-aggregator.yml` läuft Mo–Fr 05:00 UTC
+und committet `automation/news-roh-aktuell.md` (Kuratier-Checkliste, KEINE erfundenen News, Quellen verlinkt).
+Newsletter-Workflow: news_aggregator → auswählen+schreiben → werkbank check → beehiiv → werkbank social → Auto-Posting.
+
 ## Offene To-dos (nur der User kann das — braucht seine Accounts)
 1. Cloudflare Pages mit Repo verbinden + `radar.abannews.com` als Custom Domain (→ LAUNCH.md)
    - Build: `cd ki-tools-radar && pip install -r requirements.txt && python generate.py` · Output: `ki-tools-radar/dist`
