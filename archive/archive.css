@@ -133,6 +133,22 @@
   padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--c-border);
 }
+.issue-hero {
+  margin: 0 0 2rem;
+}
+.issue-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 420;
+  border-radius: 12px;
+  border: 1px solid var(--c-border);
+}
+.issue-hero figcaption {
+  margin-top: 0.5rem;
+  color: var(--c-muted);
+  font-size: 0.85rem;
+}
 .issue-meta {
   color: var(--c-muted);
   font-size: 0.9rem;

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="aban news Ausgabe 005">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b2a1a"/>
+      <stop offset="1" stop-color="#231708"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="420" fill="url(#bg)"/>
+  <!-- subtle dot grid -->
+  <g fill="#d97706" opacity="0.07">
+    <circle cx="900" cy="40" r="3"/><circle cx="956" cy="40" r="3"/><circle cx="1012" cy="40" r="3"/><circle cx="1068" cy="40" r="3"/><circle cx="1124" cy="40" r="3"/><circle cx="1180" cy="40" r="3"/><circle cx="900" cy="96" r="3"/><circle cx="956" cy="96" r="3"/><circle cx="1012" cy="96" r="3"/><circle cx="1068" cy="96" r="3"/><circle cx="1124" cy="96" r="3"/><circle cx="1180" cy="96" r="3"/><circle cx="900" cy="152" r="3"/><circle cx="956" cy="152" r="3"/><circle cx="1012" cy="152" r="3"/><circle cx="1068" cy="152" r="3"/><circle cx="1124" cy="152" r="3"/><circle cx="1180" cy="152" r="3"/><circle cx="900" cy="208" r="3"/><circle cx="956" cy="208" r="3"/><circle cx="1012" cy="208" r="3"/><circle cx="1068" cy="208" r="3"/><circle cx="1124" cy="208" r="3"/><circle cx="1180" cy="208" r="3"/><circle cx="900" cy="264" r="3"/><circle cx="956" cy="264" r="3"/><circle cx="1012" cy="264" r="3"/><circle cx="1068" cy="264" r="3"/><circle cx="1124" cy="264" r="3"/><circle cx="1180" cy="264" r="3"/><circle cx="900" cy="320" r="3"/><circle cx="956" cy="320" r="3"/><circle cx="1012" cy="320" r="3"/><circle cx="1068" cy="320" r="3"/><circle cx="1124" cy="320" r="3"/><circle cx="1180" cy="320" r="3"/><circle cx="900" cy="376" r="3"/><circle cx="956" cy="376" r="3"/><circle cx="1012" cy="376" r="3"/><circle cx="1068" cy="376" r="3"/><circle cx="1124" cy="376" r="3"/><circle cx="1180" cy="376" r="3"/>
+  </g>
+  <!-- amber accent bar -->
+  <rect x="80" y="64" width="64" height="8" rx="4" fill="url(#accent)"/>
+  <!-- wordmark -->
+  <text x="80" y="110" font-family="ui-sans-serif,system-ui,sans-serif" font-size="26" font-weight="700" fill="#f59e0b" letter-spacing="1">☕ aban news</text>
+  <!-- issue badge -->
+  <text x="1120" y="110" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="22" font-weight="600" fill="#fdf6ec" opacity="0.7">Ausgabe 005</text>
+  <!-- title -->
+  <text x="80" y="202" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="54" font-weight="800" fill="#fdf6ec" letter-spacing="-1">Werkzeugkasten: drei</text>
+  <text x="80" y="268" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="54" font-weight="800" fill="#fdf6ec" letter-spacing="-1">getestet, eins behalten</text>
+  <!-- date footer -->
+  <text x="80" y="372" font-family="ui-sans-serif,system-ui,sans-serif" font-size="22" font-weight="500" fill="#fdf6ec" opacity="0.6">5. Juni 2026 · Mo–Fr · DACH</text>
+</svg>

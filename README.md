@@ -93,6 +93,66 @@ grep -rn "TODO\|\[BEEHIIV_FORM_ACTION\]\|\[STRIPE_FOUNDING_LINK\]\|\[X\.XXX\]\|\
 
 ---
 
+## Header-Bilder pro Ausgabe (`img/issues/`)
+
+Jede Archiv-Ausgabe hat ein **Header-Bild** oben im Artikel (`<figure class="issue-hero">`).
+Standardmäßig ist das ein **selbst generiertes SVG** (`img/issues/NNN.svg`) im Coffee-/Amber-Brand.
+
+### Warum SVG als Default = die rechtssichere Lösung
+
+- **Selbst erstellt** → 100 % Nutzungsrechte, kein Stock-/Presse-Lizenzrisiko, keine Abmahngefahr.
+- **Winzig** (~2 KB), skaliert gestochen scharf, 0 externe Requests (DSGVO-safe wie der Rest der Site).
+- **On-Brand**: Amber-Verlauf, ☕-Wordmark, Ausgaben-Nummer, Datum.
+
+Generieren / neu erzeugen (idempotent, überschreibt SVGs, lässt schon eingefügtes `<figure>` in Ruhe):
+
+```bash
+python3 automation/generate_issue_heroes.py
+```
+
+### Wenn du echte / KI-Bilder willst (auch legal)
+
+Du kannst jedes `img/issues/NNN.svg` durch ein Raster-Bild ersetzen — die `<figure>`-Markup bleibt gleich,
+nur `src` und `width/height` anpassen. Rechtssichere Quellen, rangiert:
+
+1. **KI-generiert** (DALL·E, Firefly, Midjourney, Stable Diffusion) — volle Rechte, thematisch on-brand.
+   ⚠️ Keine echten Marken-Logos oder erkennbaren realen Personen reingenerieren.
+2. **CC0-Stock**: [Unsplash](https://unsplash.com), [Pexels](https://pexels.com), [Pixabay](https://pixabay.com)
+   — kommerzielle Nutzung erlaubt, meist ohne Attributionspflicht.
+3. **Wikimedia Commons** — Lizenz **pro Bild** prüfen (CC-BY = Namensnennung nötig).
+4. **Offizielle Press-/Brand-Kits** der KI-Firmen (Anthropic, OpenAI, Mistral …) für redaktionelle Nutzung.
+
+**Empfohlener KI-Prompt-Stil** (damit es zum Brand passt):
+> „Minimalist editorial header banner, warm coffee tones and amber accent (#d97706), dark roast background,
+> abstract tech/AI motif, no text, no logos, 1200×420, flat vector aesthetic."
+
+### Technische Best Practices (recherchiert, 2026)
+
+- **Format/Maße**: Banner 1200×420 (Web-Archiv). Für E-Mail-Versand: Breite 600–700 px, Höhe 100–200 px.
+- **Dateigröße**: Raster < 200 KB (sonst langsam + von Mail-Clients abgeschnitten). WebP bevorzugen.
+- **Alt-Text**: Pflicht (a11y + wenn Bild nicht lädt). Konkret, ≤ 125 Zeichen, **kein** „Bild von …".
+  Schema im Repo: `alt="aban news Ausgabe NNN · {Titel}"`.
+- **Lazy-Loading**: `loading="lazy" decoding="async"` (schon gesetzt).
+- **Text-zu-Bild-Verhältnis**: ~60 % Text / 40 % Bild → gut gegen Spam-Filter, bleibt lesbar.
+- **Höhe moderat halten**: zu hoher Header drückt den Inhalt unter den Fold → messbar weniger Engagement.
+
+> Quellen: [Brevo – Newsletter Image Best Practices](https://www.brevo.com/blog/best-practices-for-newsletter-images/),
+> [Mailjet – Email Design Trends 2026](https://www.mailjet.com/blog/email-best-practices/email-design-trends/),
+> [GlockApps – Email Header Design Essentials](https://glockapps.com/blog/email-header-design-essentials/).
+
+### Quellenangabe pro Meldung (bereits Standard)
+
+Jede News-Meldung endet mit Quelle **inkl. Link** auf die Originalquelle:
+
+```html
+<p><strong>Quelle:</strong> <a href="https://www.anthropic.com/news/sonnet-4-7">Anthropic Changelog: Sonnet 4.7 (Anthropic)</a></p>
+```
+
+Linktext-Format: `Titel (Outlet)`. Immer auf die **Primärquelle** verlinken (Hersteller-Blog, Behörde, Studie),
+nicht auf einen Aggregator. Rechtlich relevant bei Zitaten/Fakten (Zitatrecht § 51 UrhG).
+
+---
+
 ## Deployment auf Cloudflare Pages
 
 ### Variante A — Direct-Upload (schnellster Start)
