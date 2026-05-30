@@ -39,7 +39,7 @@ cd ../portal && python generate.py
 - `downloads/` & `foerder-radar/` — Lead-Magnet-PDFs.
 
 ## Prinzipien
-Ehrliche Markenstimme (kein „revolutionär/disruptiv/game-changer"), keine erfundenen Fakten
+Ehrliche Markenstimme (Anti-Buzzword-Regeln per Voice-Linter durchgesetzt), keine erfundenen Fakten
 (Förder-/Job-Daten verlinken offizielle Quellen, „ohne Gewähr"), DSGVO-first.
 
 *Frühere Landing-Doku: siehe Git-Historie. Dieses README beschreibt das Gesamt-Netzwerk.*
