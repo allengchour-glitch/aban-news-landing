@@ -33,7 +33,7 @@ nur dort, wo es per offizieller API und Plattform-AGB erlaubt ist.
 | **Bluesky** | ✅ | AT-Protocol, App-Passwort. Link wird klickbar (Facet). |
 | **Telegram** | ✅ | Bot postet in **deinen** Kanal. Bot als Admin hinzufügen. |
 | **LinkedIn** | ⚠️ | Eigenes Profil/Seite, App + OAuth + Freigabe (`w_member_social`). |
-| **X / Twitter** | ✅ | **Free-Tier reicht zum Posten** (~1.500 Posts/Monat Schreib-Limit; 3/Tag ≈ 90/Monat). Du brauchst nur einen Developer-Account + App + OAuth2-*User*-Token mit `tweet.write`. Kostenpflichtig wird erst das *Lesen* / hohe Volumen. |
+| **X / Twitter** | 💳 | Auth via OAuth 1.0a funktioniert, ABER X verlangt fürs Posten inzwischen **kostenpflichtige Credits** (Pay-Per-Use). Ohne Guthaben → HTTP 402 „CreditsDepleted". Erst Credits/Billing im Developer-Portal hinterlegen, dann postet es. |
 | ~~Reddit~~ | ❌ | **Bewusst NICHT.** Tägliche Selbstwerbung verstößt gegen die meisten Subreddit-/Anti-Spam-Regeln. |
 | ~~Instagram/FB-Gruppen~~ | ❌ | Kein zuverlässiger, regelkonformer Auto-Post-Weg für tägliche Eigenwerbung. |
 
@@ -59,7 +59,7 @@ LINKEDIN_TOKEN         OAuth-Access-Token mit Scope w_member_social
 LINKEDIN_AUTHOR_URN    urn:li:person:XXXX  oder  urn:li:organization:XXXX
 
 X_API_KEY              \
-X_API_SECRET            }  OAuth 1.0a (Keys and tokens), dauerhaft gültig, Free-Tier postet
+X_API_SECRET            }  OAuth 1.0a (Keys and tokens), dauerhaft gültig — Posten braucht aber X-Credits (Pay-Per-Use)
 X_ACCESS_TOKEN          }  — App-Permission muss "Read and write" sein
 X_ACCESS_SECRET        /
 ```
@@ -134,7 +134,7 @@ X_ACCESS_SECRET        /
    - `LINKEDIN_AUTHOR_URN` = der URN
    > ⚠️ LinkedIn-Tokens laufen nach ~60 Tagen ab → gelegentlich erneuern. Deshalb LinkedIn nur 1×/Tag.
 
-### ⚫ X / Twitter (optional, gratis zum Posten, ~15 Min)
+### ⚫ X / Twitter (optional — Posten kostet X-Credits, ~15 Min)
 1. <https://developer.x.com> → kostenlosen **Free-Account** anlegen → **Project + App** erstellen.
 2. App-Settings → **User authentication settings**: Permission auf **„Read and write"** stellen (wichtig!), App-Type „Web App / Automated".
 3. Tab **Keys and tokens**:
@@ -142,7 +142,7 @@ X_ACCESS_SECRET        /
    - **Access Token / Access Token Secret** generieren (mit Read-and-write).
 4. GitHub-Secrets (OAuth 1.0a, laufen **nicht** ab):
    - `X_API_KEY`, `X_API_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_SECRET`
-   > Free-Tier reicht (~1.500 Posts/Monat). Bedingungen ändern sich gelegentlich — kurz im Portal prüfen.
+   > ⚠️ X verlangt fürs Posten inzwischen kostenpflichtige Credits (Pay-Per-Use). Ohne Guthaben kommt HTTP 402. Auth funktioniert trotzdem — Credits im Portal hinterlegen, dann postet es.
 
 ### Endspurt (für alle)
 1. Secrets unter **Settings → Secrets and variables → Actions** anlegen.
