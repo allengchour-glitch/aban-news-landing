@@ -1,8 +1,23 @@
 {
- "source": "arbeitnow.com",
+ "source": "arbeitnow.com + remotive.com",
  "fetched": "2026-05-30",
- "count": 10,
+ "count": 13,
  "jobs": [
+  {
+   "title": "(Senior) Baufinanzierungsberater (m/w/d)",
+   "company": "Justhome GmbH",
+   "location": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/justhome-gmbh/senior-baufinanzierungsberater-berlin-336062",
+   "tags": [
+    "Private Banking"
+   ],
+   "types": [
+    "berufserfahren"
+   ],
+   "slug": "senior-baufinanzierungsberater-berlin-336062",
+   "created_at": 1780164026
+  },
   {
    "title": "Senior GenAI Engineer LLMs/ RAG/ Python (w/m/d) remote in DE",
    "company": "Talents2Germany GmbH",
@@ -119,34 +134,84 @@
    "created_at": 1780068644
   },
   {
-   "title": "Full-Stack Entwickler (m/w/d) - .NET 100% Remote",
-   "company": "FNTIO",
-   "location": "Frankfurt am Main",
+   "title": "Mid/Senior AI Cinematic Video Editor",
+   "company": "EverAI",
+   "location": "Worldwide",
    "remote": true,
-   "url": "https://www.arbeitnow.com/jobs/companies/fntio/full-stack-entwickler-net-100-remote-frankfurt-am-main-497052",
+   "url": "https://remotive.com/remote-jobs/artificial-intelligence/mid-senior-ai-cinematic-video-editor-2090887",
    "tags": [
-    "Remote",
-    "Consulting",
-    "Engineering"
-   ],
-   "types": [],
-   "slug": "full-stack-entwickler-net-100-remote-frankfurt-am-main-497052",
-   "created_at": 1780068643
-  },
-  {
-   "title": "Head of R&D - AI Factory Infrastructure",
-   "company": "Nordran Technologies",
-   "location": "Berlin",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/nordran-technologies/head-of-rd-ai-factory-infrastructure-berlin-16699",
-   "tags": [
-    "Engineering"
+    "excel",
+    "video",
+    "AI/ML",
+    "customer acquisition",
+    "graphic design",
+    "video production"
    ],
    "types": [
-    "executive"
+    "full_time"
    ],
-   "slug": "head-of-rd-ai-factory-infrastructure-berlin-16699",
-   "created_at": 1780068642
+   "slug": "remotive-2090887",
+   "created_at": 1779222873
+  },
+  {
+   "title": "Senior Independent AI Engineer / Architect",
+   "company": "A.Team",
+   "location": "Americas, Europe, Israel",
+   "remote": true,
+   "url": "https://remotive.com/remote-jobs/software-development/senior-independent-ai-engineer-architect-1919266",
+   "tags": [
+    "go",
+    "UI/UX",
+    "wordpress",
+    "chat",
+    "apple",
+    "testing"
+   ],
+   "types": [
+    "contract"
+   ],
+   "slug": "remotive-1919266",
+   "created_at": 1778926599
+  },
+  {
+   "title": "Senior Full-stack React Developer",
+   "company": "Lemon.io",
+   "location": "Americas, Europe, Asia, Oceania",
+   "remote": true,
+   "url": "https://remotive.com/remote-jobs/software-development/senior-full-stack-react-developer-2088711",
+   "tags": [
+    ".Net",
+    "android",
+    "AWS",
+    "azure",
+    "backend",
+    "C"
+   ],
+   "types": [
+    "contract"
+   ],
+   "slug": "remotive-2088711",
+   "created_at": 1778853651
+  },
+  {
+   "title": "Senior DevOps Engineer",
+   "company": "Lemon.io",
+   "location": "Americas, Europe, Asia, Oceania",
+   "remote": true,
+   "url": "https://remotive.com/remote-jobs/devops/senior-devops-engineer-2090002",
+   "tags": [
+    ".Net",
+    "android",
+    "AWS",
+    "azure",
+    "C",
+    "C#"
+   ],
+   "types": [
+    "full_time"
+   ],
+   "slug": "remotive-2090002",
+   "created_at": 1777558313
   }
  ]
 }

@@ -59,16 +59,68 @@ def clean(job: dict) -> dict:
     }
 
 
-def fetch() -> list[dict]:
+def fetch_arbeitnow() -> list[dict]:
     req = urllib.request.Request(API, headers={"User-Agent": "ki-jobs-radar/1.0"})
     with urllib.request.urlopen(req, timeout=30) as r:
         data = json.load(r)
-    jobs = [clean(j) for j in data.get("data", []) if is_ai_job(j)]
-    # Dedup by slug, keep ones with a title + url.
-    seen, out = set(), []
+    return [clean(j) for j in data.get("data", []) if is_ai_job(j)]
+
+
+# Second free source (no key): Remotive. Global, so we keep only DACH/EU/worldwide
+# remote roles to stay relevant for a DACH audience.
+REMOTIVE = "https://remotive.com/api/remote-jobs?search=AI"
+_DACH_EU = ("germany", "deutschland", "austria", "österreich", "switzerland", "schweiz",
+            "europe", "european", "emea", "worldwide", "anywhere", "dach", "eu")
+
+
+def _remotive_relevant(loc: str) -> bool:
+    loc = (loc or "").lower()
+    return (not loc) or any(k in loc for k in _DACH_EU)
+
+
+def fetch_remotive() -> list[dict]:
+    req = urllib.request.Request(REMOTIVE, headers={"User-Agent": "ki-jobs-radar/1.0"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        data = json.load(r)
+    out = []
+    for j in data.get("jobs", []):
+        if not _remotive_relevant(j.get("candidate_required_location", "")):
+            continue
+        norm = {
+            "title": j.get("title", ""), "company_name": j.get("company_name", ""),
+            "location": j.get("candidate_required_location", "") or "Remote",
+            "remote": True, "url": j.get("url", ""),
+            "tags": j.get("tags", []), "job_types": [j.get("job_type", "")],
+            "slug": "remotive-" + str(j.get("id", "")),
+            "description": j.get("description", ""),
+        }
+        try:
+            from datetime import datetime
+            norm_created = int(datetime.fromisoformat(
+                j.get("publication_date", "").replace("Z", "")).timestamp())
+        except Exception:
+            norm_created = None
+        c = clean(norm)
+        c["created_at"] = norm_created
+        if is_ai_job(norm):
+            out.append(c)
+    return out
+
+
+def fetch() -> list[dict]:
+    jobs = []
+    for src in (fetch_arbeitnow, fetch_remotive):
+        try:
+            jobs += src()
+        except Exception as ex:  # one source down shouldn't kill the other
+            sys.stderr.write(f"fetch_jobs: {src.__name__} failed ({ex})\n")
+    # Dedup by slug, then by (title, company) to catch cross-source duplicates.
+    seen_slug, seen_tc, out = set(), set(), []
     for j in jobs:
-        if j["title"] and j["url"] and j["slug"] not in seen:
-            seen.add(j["slug"])
+        tc = (j["title"].lower().strip(), j["company"].lower().strip())
+        if j["title"] and j["url"] and j["slug"] not in seen_slug and tc not in seen_tc:
+            seen_slug.add(j["slug"])
+            seen_tc.add(tc)
             out.append(j)
     return out
 
@@ -77,12 +129,12 @@ def main() -> int:
     try:
         jobs = fetch()
     except Exception as ex:  # network / API hiccup → keep existing file
-        sys.stderr.write(f"fetch_jobs: API unavailable ({ex}); keeping existing jobs.json\n")
+        sys.stderr.write(f"fetch_jobs: fetch failed ({ex}); keeping existing jobs.json\n")
         return 0
     if not jobs:
         sys.stderr.write("fetch_jobs: 0 AI jobs returned; keeping existing jobs.json\n")
         return 0
-    payload = {"source": "arbeitnow.com", "fetched": date.today().isoformat(),
+    payload = {"source": "arbeitnow.com + remotive.com", "fetched": date.today().isoformat(),
                "count": len(jobs), "jobs": jobs}
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"fetch_jobs: wrote {len(jobs)} AI jobs to {OUT.name}")
