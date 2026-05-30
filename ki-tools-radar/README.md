@@ -87,6 +87,9 @@ Pro Tool gibt es übersetzte Notizen + **Pro/Contra („Rat & Kritik")**.
 - **„Neu & Trending"** — zuletzt im Newsletter besprochene Tools (aus `ausgaben_mentions`)
 - **RSS-Feed** pro Sprache (`feed.xml`) — Frische-Signal + Abonnenten
 - **FAQ pro Tool** — sichtbarer Akkordeon + FAQPage-Schema (Preis, Einsatz, Alternativen, DACH)
+- **Budget-Seiten** „Kostenlos" + „unter 10/20/50 €" — fängt Preis-Suchen ab
+- **Live-Suche** auf der Startseite (`search.js`, ohne Tracking, DSGVO-safe)
+- **OG-Vorschaubilder** (1200×630 PNG pro Tool) für schöne Link-Previews beim Teilen
 - **Newsletter-Box** auf jeder Seite → baut eigene Audience auf + bewirbt abannews.de
 
 ## SEO-Strukturdaten (JSON-LD)
@@ -96,6 +99,9 @@ maximale „Rich Snippet"-Fläche in Google.
 
 ## Status
 
-🟢 Generator + Auto-Build laufen — **6.358 Seiten** (143 Tools × 11 Sprachen + Vergleiche/Use-Cases/Trending).
-🟢 SEO: JSON-LD (SoftwareApplication/Review/Breadcrumb/FAQ), sitemap.xml (6.358 URLs), robots.txt, hreflang, RSS, interne Verlinkung.
+🟢 Generator + Auto-Build laufen — **6.402 Seiten + 144 OG-Bilder** (143 Tools × 11 Sprachen + Vergleiche/Use-Cases/Trending/Budget).
+🟢 SEO: JSON-LD (SoftwareApplication/Review/Breadcrumb/FAQ), sitemap.xml (6.402 URLs), robots.txt, hreflang, RSS, OG/Twitter-Cards, interne Verlinkung, Live-Suche.
 🟡 Offen: Affiliate-Programme beantragen + Links eintragen, Domain + Deployment, Impressum/Datenschutz (deine Daten), Newsletter-Teaser.
+
+> Hinweis: OG-Bilder brauchen Pillow (`requirements.txt`). Der HTML/RSS/Sitemap-Build
+> läuft auch ohne — der OG-Schritt wird dann sauber übersprungen.

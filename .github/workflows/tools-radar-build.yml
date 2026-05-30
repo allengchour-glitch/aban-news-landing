@@ -24,11 +24,14 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install build deps (Pillow for OG images)
+        run: pip install -r ki-tools-radar/requirements.txt
+
       - name: Generate site
         run: |
           cd ki-tools-radar
           python generate.py
-          echo "Built site:"
+          echo "Built files:"
           find dist -type f | wc -l
 
       - name: Upload site artifact

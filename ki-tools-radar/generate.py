@@ -201,6 +201,28 @@ NEW_UI = {
                  "tr": "{name} DACH bölgesi için uygun mu?",
                  "ja": "{name}はDACH地域に適している？",
                  "zh": "{name} 适合 DACH 地区吗？"},
+    # --- Search + budget ---
+    "search_ph": {"de": "Tool suchen…", "en": "Search tools…", "fr": "Rechercher un outil…",
+                  "es": "Buscar herramienta…", "it": "Cerca strumento…", "pt": "Buscar ferramenta…",
+                  "nl": "Tool zoeken…", "pl": "Szukaj narzędzia…", "tr": "Araç ara…",
+                  "ja": "ツールを検索…", "zh": "搜索工具…"},
+    "no_results": {"de": "Keine Treffer.", "en": "No results.", "fr": "Aucun résultat.",
+                   "es": "Sin resultados.", "it": "Nessun risultato.", "pt": "Sem resultados.",
+                   "nl": "Geen resultaten.", "pl": "Brak wyników.", "tr": "Sonuç yok.",
+                   "ja": "結果なし。", "zh": "无结果。"},
+    "budget_nav": {"de": "Nach Budget", "en": "By budget", "fr": "Par budget", "es": "Por presupuesto",
+                   "it": "Per budget", "pt": "Por orçamento", "nl": "Per budget", "pl": "Według budżetu",
+                   "tr": "Bütçeye göre", "ja": "予算別", "zh": "按预算"},
+    "budget_free": {"de": "Kostenlose KI-Tools", "en": "Free AI tools", "fr": "Outils IA gratuits",
+                    "es": "Herramientas de IA gratis", "it": "Strumenti IA gratuiti",
+                    "pt": "Ferramentas de IA grátis", "nl": "Gratis AI-tools", "pl": "Darmowe narzędzia AI",
+                    "tr": "Ücretsiz YZ araçları", "ja": "無料のAIツール", "zh": "免费AI工具"},
+    "budget_under": {"de": "Beste KI-Tools unter {p} €", "en": "Best AI tools under €{p}",
+                     "fr": "Meilleurs outils IA à moins de {p} €", "es": "Mejores herramientas de IA por menos de {p} €",
+                     "it": "Migliori strumenti IA sotto i {p} €", "pt": "Melhores ferramentas de IA abaixo de {p} €",
+                     "nl": "Beste AI-tools onder €{p}", "pl": "Najlepsze narzędzia AI poniżej {p} €",
+                     "tr": "{p} € altı en iyi YZ araçları", "ja": "{p}ユーロ以下の最高AIツール",
+                     "zh": "{p} 欧元以下最佳AI工具"},
 }
 # Newsletter box links to the existing owned audience (compounding revenue lever).
 NEWSLETTER_URL = "https://abannews.de"
@@ -269,6 +291,8 @@ def page_path(lang: str, kind: str, slug: str = "") -> str:
         return f"{prefix}/dsgvo.html"
     if kind == "trending":
         return f"{prefix}/neu.html"
+    if kind == "budget":
+        return f"{prefix}/preis/{slug}.html"
     return prefix + "/"
 
 
@@ -312,7 +336,8 @@ def lang_switcher(available: list[str], current: str, kind: str, slug: str = "")
 
 
 def page(*, lang, ui, title, description, body, canonical,
-         available, kind, slug=""):
+         available, kind, slug="", og_image=None):
+    og_img = og_image or (BASE_URL + "/og/default.png")
     return f"""<!DOCTYPE html>
 <html lang="{e(lang)}">
 <head>
@@ -326,6 +351,13 @@ def page(*, lang, ui, title, description, body, canonical,
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(description)}">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="{e(SITE_NAME)}">
+<meta property="og:locale" content="{e(lang)}">
+<meta property="og:image" content="{e(og_img)}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{e(og_img)}">
 <style>
 :root{{--accent:{ACCENT};--accent-h:{ACCENT_HOVER};--bg:{BG};--bg-alt:{BG_ALT};
 --text:{TEXT};--muted:{MUTED};--success:{SUCCESS};--border:{BORDER};}}
@@ -359,6 +391,8 @@ padding:10px 18px;border-radius:8px;font-weight:600;margin-top:8px;}}
 .nl strong{{font-size:1.05rem;}} .nl span{{color:var(--muted);flex:1;min-width:200px;}}
 .nl .cta{{margin-top:0;}}
 .subnav{{font-size:.9rem;margin:6px 0 0;}}
+.search{{width:100%;padding:11px 14px;font-size:1rem;border:1px solid var(--border);border-radius:10px;margin:0 0 14px;}}
+.search:focus{{outline:2px solid var(--accent);border-color:var(--accent);}}
 .vs-col{{display:flex;flex-wrap:wrap;gap:14px;}} .vs-col>div{{flex:1;min-width:240px;}}
 .faq{{margin:22px 0;}} .faq h2{{font-size:1.1rem;margin:0 0 8px;}}
 .faq details{{background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 14px;margin:0 0 8px;}}
@@ -410,7 +444,9 @@ def tool_card(tool, aff, ui, lang):
     url, is_aff = affiliate_link(tool, aff)
     star = " *" if is_aff else ""
     cats = "".join(f'<span class="chip">{e(c)}</span>' for c in tool.get("category", []))
-    return f"""<article class="card">
+    search = " ".join([tool["name"], tool.get("vendor", "")]
+                      + tool.get("category", []) + tool.get("use_cases", [])).lower()
+    return f"""<article class="card" data-s="{e(search)}">
 <h2><a href="{e(page_path(lang,'tool',slugify(tool['id'])))}">{e(tool['name'])}</a>
 <span class="score">{e(tool.get('worth_it_score','—'))}/10</span></h2>
 <div class="grid-meta">
@@ -535,7 +571,8 @@ def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None):
     return page(lang=lang, ui=ui,
                 title=f"{tool['name']} — {SITE_NAME}", description=desc, body=body,
                 canonical=BASE_URL + page_path(lang, "tool", slugify(tool["id"])),
-                available=available, kind="tool", slug=slugify(tool["id"]))
+                available=available, kind="tool", slug=slugify(tool["id"]),
+                og_image=BASE_URL + f"/og/{slugify(tool['id'])}.png")
 
 
 def vs_slug(a_id, b_id):
@@ -644,6 +681,16 @@ def rss_feed(members, ui, loc_tools, lang):
             "</channel></rss>")
 
 
+def budget_page(title, slug, members, aff, ui, lang, available):
+    body = (f'<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+            f'<h1>💶 {e(title)}</h1>\n'
+            + "\n".join(tool_card(t, aff, ui, lang) for t in members))
+    return page(lang=lang, ui=ui, title=title + f" — {SITE_NAME}",
+                description=title + ".", body=body,
+                canonical=BASE_URL + page_path(lang, "budget", slug),
+                available=available, kind="budget", slug=slug)
+
+
 def dsgvo_page(members, aff, ui, lang, available):
     body = (f'<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
             f'<h1>🏆 {e(ui["dsgvo_title"])}</h1>\n<p class="meta">{e(ui["dsgvo_intro"])}</p>\n'
@@ -716,6 +763,21 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
         [t for t in tools if (t.get("dach_relevance") or 0) >= 7],
         key=lambda t: (t.get("dach_relevance", 0), t.get("worth_it_score", 0)), reverse=True)
 
+    # Budget tiers: free + "under X €" (free tools count toward every budget).
+    def _under(t, x):
+        p = t.get("pricing", {})
+        return bool(p.get("free_tier")) or (
+            p.get("paid_from_eur") is not None and p["paid_from_eur"] <= x)
+
+    def _by_score(ts):
+        return sorted(ts, key=lambda t: t.get("worth_it_score", 0), reverse=True)
+
+    BUDGETS = [10, 20, 50]
+    budget_tiers = [("kostenlos", None,
+                     _by_score([t for t in tools if t.get("pricing", {}).get("free_tier")]))]
+    budget_tiers += [(f"unter-{x}-eur", x, _by_score([t for t in tools if _under(t, x)]))
+                     for x in BUDGETS]
+
     pages = 0
     for lang in available:
         ui = locales[lang]["ui"]
@@ -726,12 +788,21 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
             f'<a href="{e(page_path(lang,"cat",slugify(c)))}">{e(c)}</a>' for c in categories)
         uc_links = " · ".join(
             f'<a href="{e(page_path(lang,"uc",slugify(uc)))}">{e(uc)}</a>' for uc, _ in use_cases)
+        budget_links = " · ".join(
+            [f'<a href="{e(page_path(lang,"budget","kostenlos"))}">0 €</a>']
+            + [f'<a href="{e(page_path(lang,"budget",f"unter-{x}-eur"))}">&lt; {x} €</a>'
+               for x in BUDGETS])
         subnav = (f'<p class="subnav">🏆 <a href="{e(page_path(lang,"dsgvo"))}">{e(ui["dsgvo_nav"])}</a>'
                   f' · 🆕 <a href="{e(page_path(lang,"trending"))}">{e(ui["trending_nav"])}</a></p>\n'
+                  f'<p class="subnav"><strong>{e(ui["budget_nav"])}:</strong> {budget_links}</p>\n'
                   f'<p class="subnav"><strong>{e(ui["by_use_case"])}:</strong> {uc_links}</p>')
         cards = "\n".join(tool_card(t, aff, ui, lang) for t in tools_sorted)
+        search = (f'<input id="q" class="search" type="search" '
+                  f'placeholder="{e(ui["search_ph"])}" aria-label="{e(ui["search_ph"])}">')
         home_body = (f'<p class="meta">{e(ui["categories"])}: {cat_links}</p>\n{subnav}\n'
-                     f'<h2 style="margin:18px 0 12px">{e(ui["home_heading"].format(n=len(tools)))}</h2>\n{cards}')
+                     f'<h2 style="margin:18px 0 12px">{e(ui["home_heading"].format(n=len(tools)))}</h2>\n'
+                     f'{search}\n<p id="nores" hidden>{e(ui["no_results"])}</p>\n{cards}\n'
+                     f'<script src="/search.js" defer></script>')
         of = out_file(out, lang, "home")
         of.parent.mkdir(parents=True, exist_ok=True)
         of.write_text(page(lang=lang, ui=ui,
@@ -792,6 +863,15 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
         of.write_text(trending_page(trending, aff, ui, lang, available), encoding="utf-8")
         pages += 1
 
+        # Budget pages
+        for slug, x, members in budget_tiers:
+            title = ui["budget_free"] if x is None else ui["budget_under"].format(p=x)
+            of = out_file(out, lang, "budget", slug)
+            of.parent.mkdir(parents=True, exist_ok=True)
+            of.write_text(budget_page(title, slug, members, aff, ui, lang, available),
+                          encoding="utf-8")
+            pages += 1
+
         # RSS feed (freshness signal + subscribers)
         feed = out / feed_path(lang).lstrip("/")
         feed.parent.mkdir(parents=True, exist_ok=True)
@@ -807,7 +887,8 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                 + [BASE_URL + page_path(lang, "tool", slugify(t["id"])) for t in tools]
                 + [BASE_URL + page_path(lang, "cat", slugify(c)) for c in categories]
                 + [BASE_URL + page_path(lang, "vs", vs_slug(a["id"], b["id"])) for a, b in pairs]
-                + [BASE_URL + page_path(lang, "uc", slugify(uc)) for uc, _ in use_cases])
+                + [BASE_URL + page_path(lang, "uc", slugify(uc)) for uc, _ in use_cases]
+                + [BASE_URL + page_path(lang, "budget", s) for s, _, _ in budget_tiers])
         for url in urls:
             sm.append(f"  <url><loc>{e(url)}</loc><lastmod>{today}</lastmod></url>")
     sm.append("</urlset>")
@@ -815,9 +896,39 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
     (out / "robots.txt").write_text(
         f"User-agent: *\nAllow: /\nSitemap: {BASE_URL}/sitemap.xml\n", encoding="utf-8")
 
+    # Static client-side search (no deps, no tracking, DSGVO-safe).
+    (out / "search.js").write_text(SEARCH_JS, encoding="utf-8")
+
+    # Open Graph images (Pillow); skipped gracefully if Pillow is unavailable.
+    og_count = 0
+    try:
+        import og_images
+        og_count = og_images.generate(tools, out, slugify)
+    except ImportError:
+        print("  (Pillow not installed — skipping OG image generation)")
+
     print(f"Built {pages} pages across {len(available)} languages "
-          f"({', '.join(available)}) + sitemap + robots → {out}/")
+          f"({', '.join(available)}) + {og_count} OG images + sitemap + RSS → {out}/")
     return pages
+
+
+SEARCH_JS = """// KI-Tools Radar — client-side filter (no deps, no tracking)
+(function () {
+  var q = document.getElementById('q');
+  if (!q) return;
+  var cards = Array.prototype.slice.call(document.querySelectorAll('article.card'));
+  var nores = document.getElementById('nores');
+  q.addEventListener('input', function () {
+    var v = q.value.trim().toLowerCase(), n = 0;
+    cards.forEach(function (c) {
+      var show = !v || (c.dataset.s || '').indexOf(v) !== -1;
+      c.style.display = show ? '' : 'none';
+      if (show) n++;
+    });
+    if (nores) nores.hidden = n > 0;
+  });
+})();
+"""
 
 
 def main():
