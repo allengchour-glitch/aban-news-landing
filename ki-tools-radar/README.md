@@ -83,24 +83,28 @@ Pro Tool gibt es übersetzte Notizen + **Pro/Contra („Rat & Kritik")**.
 - **Use-Case-Seite** „Beste KI für {Zweck}" — programmatic SEO
 - **DACH-Bestenliste** — Top-Tools nach DACH-Relevanz (ehrlich, kein Compliance-Versprechen)
 - **Vergleichsseiten** — aus `alternatives` + kategorieübergreifende Top-Paare (389 Paare)
+- **Vergleichs-Hub** (`vergleiche.html`) — verlinkt alle Vergleiche (Crawling/interne Links)
 - **Use-Case-Seiten** „Beste KI für {Zweck}"
+- **Berufs-Stacks** — „KI-Stack für Entwickler/Texter/Marketing/Designer/Video/Podcast/Forschung/Gründer"
 - **„Neu & Trending"** — zuletzt im Newsletter besprochene Tools (aus `ausgaben_mentions`)
+- **Budget-Seiten** „Kostenlos" + „unter 10/20/50 €" — fängt Preis-Suchen ab
+- **A–Z-Index** (`tools.html`) aller Tools · **404-Seite**
 - **RSS-Feed** pro Sprache (`feed.xml`) — Frische-Signal + Abonnenten
 - **FAQ pro Tool** — sichtbarer Akkordeon + FAQPage-Schema (Preis, Einsatz, Alternativen, DACH)
-- **Budget-Seiten** „Kostenlos" + „unter 10/20/50 €" — fängt Preis-Suchen ab
+- **Tool des Monats** (Auto-Rotation) + **verwandte Tools** je Tool-Seite
 - **Live-Suche** auf der Startseite (`search.js`, ohne Tracking, DSGVO-safe)
 - **OG-Vorschaubilder** (1200×630 PNG pro Tool) für schöne Link-Previews beim Teilen
 - **Newsletter-Box** auf jeder Seite → baut eigene Audience auf + bewirbt abannews.de
 
 ## SEO-Strukturdaten (JSON-LD)
 
-Pro Seite: SoftwareApplication + Review (Tool-Bewertung), BreadcrumbList, FAQPage —
-maximale „Rich Snippet"-Fläche in Google.
+Pro Seite je nach Typ: SoftwareApplication + Review, BreadcrumbList, FAQPage, ItemList,
+WebSite + Organization — maximale „Rich Snippet"-Fläche in Google.
 
 ## Status
 
-🟢 Generator + Auto-Build laufen — **6.402 Seiten + 144 OG-Bilder** (143 Tools × 11 Sprachen + Vergleiche/Use-Cases/Trending/Budget).
-🟢 SEO: JSON-LD (SoftwareApplication/Review/Breadcrumb/FAQ), sitemap.xml (6.402 URLs), robots.txt, hreflang, RSS, OG/Twitter-Cards, interne Verlinkung, Live-Suche.
+🟢 Generator + Auto-Build laufen — **6.512 Seiten + 144 OG-Bilder** (143 Tools × 11 Sprachen + Vergleiche/Stacks/Use-Cases/Trending/Budget/A–Z).
+🟢 SEO: JSON-LD (SoftwareApplication/Review/Breadcrumb/FAQ/ItemList/WebSite/Org), Sitemap-Index + 11 Sprach-Sitemaps, robots.txt, hreflang, RSS, OG/Twitter-Cards, interne Verlinkung, Live-Suche.
 🟡 Offen: Affiliate-Programme beantragen + Links eintragen, Domain + Deployment, Impressum/Datenschutz (deine Daten), Newsletter-Teaser.
 
 > Hinweis: OG-Bilder brauchen Pillow (`requirements.txt`). Der HTML/RSS/Sitemap-Build
