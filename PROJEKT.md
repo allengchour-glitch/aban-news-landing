@@ -81,6 +81,8 @@ LinkedIn-DACH, GEO, Monetarisierung nach Audience-Größe, realistische Timeline
 `downloads/generate_lead_magnet.py` → `downloads/top-30-ki-tools-dach-2026.pdf` — „Die 30 besten
 KI-Tools für DACH 2026", aus `data/tools.json` (reportlab, Aban-Branding, Newsletter-CTA). Das ist
 das LinkedIn-/Profil-Opt-in-Geschenk aus dem MARKETING-PLAYBOOK. Neu bauen: `python downloads/generate_lead_magnet.py`.
+Förder-Variante: `foerder-radar/generate_lead_magnet.py` → `foerder-leitfaden-dach-2026.pdf`.
+LinkedIn-Content-Plan (2 Wochen, fertige Vorlagen): `ki-geld-projekt/LINKEDIN-CONTENT-PLAN.md`.
 
 ## Offene To-dos (nur der User kann das — braucht seine Accounts)
 1. Cloudflare Pages mit Repo verbinden + `radar.abannews.com` als Custom Domain (→ LAUNCH.md)
