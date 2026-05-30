@@ -65,7 +65,8 @@ def fmt_date(iso: str) -> str:
     return f"{int(d)}. {MONTHS[m]} {y}"
 
 
-def build_svg(num: str, date_iso: str, title: str) -> str:
+def build_svg(badge: str, date_iso: str, title: str) -> str:
+    # `badge` is the full top-right label, e.g. "Ausgabe 016" or "Probe".
     lines = wrap_title(title)
     title_block = []
     # Title baseline starts lower when fewer lines, so it stays vertically centered.
@@ -79,7 +80,7 @@ def build_svg(num: str, date_iso: str, title: str) -> str:
     title_svg = "\n  ".join(title_block)
     date_label = html.escape(fmt_date(date_iso))
 
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="aban news Ausgabe {num}">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="aban news {html.escape(badge)}">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="{COFFEE_DARK}"/>
@@ -100,7 +101,7 @@ def build_svg(num: str, date_iso: str, title: str) -> str:
   <!-- wordmark -->
   <text x="80" y="110" font-family="ui-sans-serif,system-ui,sans-serif" font-size="26" font-weight="700" fill="{AMBER_LIGHT}" letter-spacing="1">☕ aban news</text>
   <!-- issue badge -->
-  <text x="1120" y="110" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="22" font-weight="600" fill="{CREAM}" opacity="0.7">Ausgabe {num}</text>
+  <text x="1120" y="110" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="22" font-weight="600" fill="{CREAM}" opacity="0.7">{html.escape(badge)}</text>
   <!-- title -->
   {title_svg}
   <!-- date footer -->
@@ -109,49 +110,66 @@ def build_svg(num: str, date_iso: str, title: str) -> str:
 '''
 
 
-def figure_block(num: str, title: str, slug_file: str) -> str:
-    alt = html.escape(f"aban news Ausgabe {num} · {title}")
+def figure_block(svg_name: str, badge: str, title: str) -> str:
+    alt = html.escape(f"aban news {badge} · {title}")
     return (
         '      <figure class="issue-hero">\n'
-        f'        <img src="/img/issues/{num}.svg" width="1200" height="420" '
+        f'        <img src="/img/issues/{svg_name}.svg" width="1200" height="420" '
         f'loading="lazy" decoding="async" alt="{alt}">\n'
         '      </figure>\n'
     )
 
 
+def process(path: Path, svg_name: str, badge: str, date_iso: str) -> bool:
+    """Write the SVG for `path` and embed the <figure>. Returns True if HTML changed."""
+    text = path.read_text(encoding="utf-8")
+    h1 = H1_RE.search(text)
+    if not h1:
+        print(f"!! kein h1 in {path.name}, übersprungen")
+        return False
+    title = clean_title(h1.group(1))
+
+    (IMG_DIR / f"{svg_name}.svg").write_text(build_svg(badge, date_iso, title), encoding="utf-8")
+
+    if 'class="issue-hero"' in text:
+        return False  # idempotent
+    anchor = '      <div class="issue-body">'
+    if anchor not in text:
+        print(f"!! kein issue-body-Anker in {path.name}, übersprungen")
+        return False
+    fig = figure_block(svg_name, badge, title)
+    path.write_text(text.replace(anchor, fig + "\n" + anchor, 1), encoding="utf-8")
+    return True
+
+
+# Probe-/Sample-Ausgaben ohne laufende Nummer: filename -> (svg_name, badge)
+PROBES = {
+    "probe-2026-05-27.html": ("probe", "Probe"),
+    "ultimate-probe-2026-05-27.html": ("probe-ultimate", "Ultimate-Probe"),
+}
+DATE_IN_NAME = re.compile(r"(\d{4}-\d{2}-\d{2})")
+
+
 def main():
     IMG_DIR.mkdir(parents=True, exist_ok=True)
-    files = sorted(p for p in ARCHIVE.glob("*.html") if ISSUE_RE.match(p.name))
-    changed, generated = 0, 0
-    for path in files:
+    numbered = sorted(p for p in ARCHIVE.glob("*.html") if ISSUE_RE.match(p.name))
+    changed = 0
+
+    for path in numbered:
         m = ISSUE_RE.match(path.name)
         num, date_iso = m.group(1), m.group(2)
-        text = path.read_text(encoding="utf-8")
+        changed += process(path, num, f"Ausgabe {num}", date_iso)
 
-        h1 = H1_RE.search(text)
-        if not h1:
-            print(f"!! kein h1 in {path.name}, übersprungen")
+    for fname, (svg_name, badge) in PROBES.items():
+        path = ARCHIVE / fname
+        if not path.exists():
             continue
-        title = clean_title(h1.group(1))
+        dm = DATE_IN_NAME.search(fname)
+        date_iso = dm.group(1) if dm else "2026-05-27"
+        changed += process(path, svg_name, badge, date_iso)
 
-        # 1) write SVG
-        svg = build_svg(num, date_iso, title)
-        (IMG_DIR / f"{num}.svg").write_text(svg, encoding="utf-8")
-        generated += 1
-
-        # 2) embed figure (idempotent: skip if already present)
-        if 'class="issue-hero"' in text:
-            continue
-        anchor = '      <div class="issue-body">'
-        if anchor not in text:
-            print(f"!! kein issue-body-Anker in {path.name}, übersprungen")
-            continue
-        fig = figure_block(num, title, path.name)
-        text = text.replace(anchor, fig + "\n" + anchor, 1)
-        path.write_text(text, encoding="utf-8")
-        changed += 1
-
-    print(f"SVGs erzeugt: {generated} · HTML angepasst: {changed} · Ausgaben gesamt: {len(files)}")
+    total = len(numbered) + sum((ARCHIVE / f).exists() for f in PROBES)
+    print(f"Ausgaben verarbeitet: {total} · HTML neu angepasst: {changed}")
 
 
 if __name__ == "__main__":
