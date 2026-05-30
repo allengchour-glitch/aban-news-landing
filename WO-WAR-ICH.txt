@@ -1,0 +1,77 @@
+================================================================
+WO WAR ICH? — Projektstand aban news
+Zuletzt aktualisiert: 2026-05-30
+================================================================
+
+KURZ: Produkt + Website + Buch + Marketing-Material sind FERTIG und
+gepusht (Branch claude/projekt-ebook-load-memory-vOEaj, PR offen).
+Es fehlt nur EIN Schritt, den nur DU machen kannst (siehe unten).
+
+----------------------------------------------------------------
+>>> DEINE EINE OFFENE AUFGABE (nur du kannst das) <<<
+----------------------------------------------------------------
+Buch bei Lemon Squeezy veroeffentlichen und den Verkaufslink schicken.
+
+1. Store fertig anlegen: app.lemonsqueezy.com  (Land: Switzerland)
+2. New Product -> Digital Product
+   - Name:  Anti-Hype — Wie Solopreneure KI ohne Bullshit einsetzen
+   - Preis: "Pay what you want", Minimum 0, Vorschlag 9, EUR
+   - Dateien hochladen: downloads/anti-hype-ebook.pdf + .epub
+   - Produktbild: downloads/kdp-cover-ebook.png
+   - Beschreibung: siehe automation/lemonsqueezy-produkt-setup.txt
+3. Bank-/Steuerangaben hinterlegen (Schweiz) -> noetig zum Publishen
+4. PUBLISH druecken
+5. Den Buy-Link kopieren (Form: https://abannews.lemonsqueezy.com/buy/...)
+   und Claude schicken.
+
+Claude traegt ihn dann an EINER Stelle ein (js/buch-config.js) ->
+Kauf-Button auf allen 4 Buchseiten (de/en/fr/it) wird live.
+Spaeter genauso: Amazon-KDP-Link -> KDP_URL in derselben Datei.
+
+----------------------------------------------------------------
+WAS SCHON FERTIG IST (committet + gepusht)
+----------------------------------------------------------------
+PRODUKT / BUCH
+- Buch "Anti-Hype" in 4 Sprachen: PDF + ePub (downloads/anti-hype-ebook*.*)
+  9 Kapitel inkl. Vorlagen, durchgespielter Tag, Werkzeug-nach-Aufgabe
+- Verkaufsseiten: buch.html + en/ fr/ it/ buch.html (pay-what-you-want)
+- KDP: kdp-cover-ebook.png (eBook-Cover), kdp-cover-paperback.png
+  (Wraparound), anti-hype-print-de.pdf (5x8" Druck-Innenteil)
+
+WEBSITE
+- index.html, ebook.html (+ en/fr/it), 5 SEO-Money-Pages x 4 Sprachen
+- Neue Seiten: faq.html, presse.html, ueber-aban.html
+- OG-Bilder: og-ebook.png, og-buch.png, og-ki-tools.png, og-chatgpt.png
+
+MARKETING-MATERIAL (Ordner automation/)
+- strategie.txt ............ Go-to-Market-Strategie (Reichweite zuerst)
+- launch-checklist.txt ..... Schritt-fuer-Schritt zum Livegang
+- email-welcome-sequence.txt 5-teilige beehiiv-Willkommensserie
+- beehiiv-broadcasts.txt ... 6 wiederverwendbare Newsletter-Vorlagen
+- newsletter-swap-outreach.txt  Kooperations-/Swap-Nachrichten
+- x-threads.txt ............ Twitter/X-Threads aus einer Ausgabe
+- instagram-captions.txt ... Instagram/Threads-Captions
+- community-guide.txt ...... Wachstum ueber Communities (ohne Spam)
+- lemonsqueezy-produkt-setup.txt  Copy-Paste-Felder fuers Buch-Produkt
+
+TOOLS (Python-Generatoren, siehe docs/TOOLS.md)
+- generate_ebook.py ........ PDF + ePub (4 Sprachen)
+- generate_pdfs.py ......... 5 Lead-Magnet-PDFs
+- generate_og_images.py .... OG-Bilder
+- generate_buch_og.py ...... OG-Bild fuer buch.html
+- generate_kdp_cover.py .... KDP eBook-Cover
+- generate_kdp_wrap_cover.py KDP Taschenbuch-Wraparound-Cover
+- generate_kdp_print.py .... KDP Druck-Innenteil (5x8")
+- generate_linkedin_posts.py  5 LinkedIn-Posts je Ausgabe (+ --woche)
+- GitHub Action build-assets.yml regeneriert Assets automatisch
+
+----------------------------------------------------------------
+NAECHSTE HEBEL (wenn du Zeit hast, Reihenfolge nach Wirkung)
+----------------------------------------------------------------
+1. LinkedIn: 5x/Woche posten (Generator nutzen) -> Reichweite #1
+2. beehiiv: Welcome-Serie + Recommendations aktivieren
+3. Amazon KDP: Buch als Kindle + Taschenbuch hochladen -> KDP_URL
+4. Newsletter-Swaps starten (automation/newsletter-swap-outreach.txt)
+
+Details: automation/strategie.txt und automation/launch-checklist.txt
+================================================================
