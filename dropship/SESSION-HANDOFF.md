@@ -24,11 +24,17 @@ CJ-API: `code:1600200 — daily request limit (1000/day) reached, made: 1000`.
 Account-Kontingent heute aufgebraucht (durch anderes Tooling/DSers). **Reset: morgen.**
 → Neue Session morgen: Script einfach starten, läuft autonom durch.
 
+### ⭐ STRATEGIE-ENTSCHEIDUNG (2026-05-30): CJ-EU-Lager nutzen
+Allen will CJ NICHT ersetzen, sondern um **EU-Lager-Sourcing** ergänzen (kein 2. Account).
+→ CJ-Frankfurt-Lager (`countryCode=DE`) = 5–10 T CH-Versand statt 7–14 aus China.
+→ API-verifiziert: `/product/list?countryCode=DE` filtert EU-Bestand. Script unterstützt `CJ_COUNTRY`.
+→ Details: `dropship/EU-LAGER-STRATEGIE.md` (2-Tier-Logik Express vs. Standard, Versand-Badges).
+
 ### Startklar gebaut: `dropship/cj_import.mjs`
 Liest Creds aus env, holt Token (gecached `/tmp/cj_token.json`), sucht die Kandidaten,
-gibt JSON-Brief aus. Aufruf:
+gibt JSON-Brief aus. **Aufruf mit EU-Lager-Filter:**
 ```
-CJ_EMAIL=allengchour@gmail.com CJ_API_KEY=<key> node dropship/cj_import.mjs
+CJ_EMAIL=allengchour@gmail.com CJ_API_KEY=<key> CJ_COUNTRY=DE node dropship/cj_import.mjs
 ```
 Danach pro Treffer via Shopify-MCP `create-product`: DE-Copy (LuxeStyle-Stil), Tags `cj-real`,
 Marge ≥ 2.5× Kost, VK auf `.90`, Inventar `DENY`+untracked, Collection „Neu 2026", ACTIVE.

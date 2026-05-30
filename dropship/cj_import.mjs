@@ -12,9 +12,15 @@
  *   3. Produktdetails (Variants, echte SKUs, Bilder, Kost)
  *   4. Ausgabe als JSON-Brief → danach via Shopify-MCP create-product anlegen
  *
- * CJ-Limits beachten: getAccessToken 1×/5min · Gesamt 1000 requests/Tag.
+ * ⭐ EU-VERSAND-STRATEGIE (CJ-Frankfurt-Lager statt China):
+ *   Setze CJ_COUNTRY=DE (oder via 2. CLI-Wort nach Keyword) → die Suche liefert nur
+ *   Produkte mit EU/DE-Lagerbestand → 5-10 Tage CH-Versand statt 7-14 aus China.
+ *   API-Param: /product/list?countryCode=DE  ·  Detail-Variants haben .inventories[]
+ *   mit {countryCode, totalInventory} → beim Anlegen nur EU-bevorratete Varianten nehmen.
  *
- * Start:  CJ_EMAIL=... CJ_API_KEY=... node dropship/cj_import.mjs "water gun" "beach mat"
+ * CJ-Limits beachten: getAccessToken 1×/5min · Gesamt 1000 requests/Tag (Gratis-Tier).
+ *
+ * Start:  CJ_EMAIL=... CJ_API_KEY=... CJ_COUNTRY=DE node dropship/cj_import.mjs "water gun"
  */
 import { chromium } from '/opt/node22/lib/node_modules/playwright/index.mjs';
 import fs from 'fs';
@@ -68,15 +74,21 @@ async function apiGet(path, params = {}) {
   return await r.json();
 }
 
+const COUNTRY = process.env.CJ_COUNTRY || ''; // z.B. "DE" → nur EU/Frankfurt-Lager-Bestand
+
 async function searchProducts(keyword, pageSize = 5) {
-  const r = await apiGet('/product/list', { pageNum: 1, pageSize, productNameEn: keyword });
+  const params = { pageNum: 1, pageSize, productNameEn: keyword };
+  if (COUNTRY) params.countryCode = COUNTRY; // EU-Lager-Filter (schneller CH-Versand)
+  const r = await apiGet('/product/list', params);
   if (r.code === 1600200) throw new Error('RATE LIMIT: ' + r.message.slice(0, 80));
   if (!r.result) { console.error('  Suche fehlgeschlagen:', r.message?.slice(0, 100)); return []; }
   return (r.data?.list || []);
 }
 
 async function productDetail(pid) {
-  const r = await apiGet('/product/query', { pid });
+  const params = { pid };
+  if (COUNTRY) params.countryCode = COUNTRY; // nur Varianten mit EU-Bestand zurück
+  const r = await apiGet('/product/query', params);
   return r.result ? r.data : null;
 }
 
