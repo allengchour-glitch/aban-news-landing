@@ -141,6 +141,66 @@ NEW_UI = {
                "es": "Suscríbete gratis", "it": "Iscriviti gratis", "pt": "Assine grátis",
                "nl": "Gratis abonneren", "pl": "Subskrybuj za darmo", "tr": "Ücretsiz abone ol",
                "ja": "無料で購読", "zh": "免费订阅"},
+    # --- Trending page ---
+    "trending_nav": {"de": "Neu & Trending", "en": "New & trending", "fr": "Nouveautés & tendances",
+                     "es": "Novedades y tendencias", "it": "Novità & tendenze", "pt": "Novidades & tendências",
+                     "nl": "Nieuw & trending", "pl": "Nowe i popularne", "tr": "Yeni & popüler",
+                     "ja": "新着＆トレンド", "zh": "最新与热门"},
+    "trending_title": {"de": "Neu & Trending: zuletzt besprochene KI-Tools",
+                       "en": "New & trending: recently covered AI tools",
+                       "fr": "Nouveautés & tendances : outils IA récemment couverts",
+                       "es": "Novedades: herramientas de IA cubiertas recientemente",
+                       "it": "Novità: strumenti IA trattati di recente",
+                       "pt": "Novidades: ferramentas de IA abordadas recentemente",
+                       "nl": "Nieuw & trending: recent besproken AI-tools",
+                       "pl": "Nowe i popularne: ostatnio omawiane narzędzia AI",
+                       "tr": "Yeni & popüler: son ele alınan YZ araçları",
+                       "ja": "新着＆トレンド：最近取り上げたAIツール",
+                       "zh": "最新与热门：近期评测的AI工具"},
+    "trending_intro": {"de": "Tools, die zuletzt im Aban-News-Newsletter besprochen wurden.",
+                       "en": "Tools most recently covered in the Aban News newsletter.",
+                       "fr": "Outils récemment présentés dans la newsletter Aban News.",
+                       "es": "Herramientas tratadas recientemente en la newsletter Aban News.",
+                       "it": "Strumenti trattati di recente nella newsletter Aban News.",
+                       "pt": "Ferramentas abordadas recentemente na newsletter Aban News.",
+                       "nl": "Tools die recent in de Aban News-nieuwsbrief zijn besproken.",
+                       "pl": "Narzędzia ostatnio omawiane w newsletterze Aban News.",
+                       "tr": "Aban News bülteninde son ele alınan araçlar.",
+                       "ja": "Aban Newsで最近取り上げたツール。",
+                       "zh": "Aban News 通讯近期评测的工具。"},
+    # --- FAQ (per tool) ---
+    "faq_heading": {"de": "Häufige Fragen", "en": "FAQ", "fr": "Questions fréquentes",
+                    "es": "Preguntas frecuentes", "it": "Domande frequenti", "pt": "Perguntas frequentes",
+                    "nl": "Veelgestelde vragen", "pl": "Najczęstsze pytania", "tr": "Sık sorulan sorular",
+                    "ja": "よくある質問", "zh": "常见问题"},
+    "faq_price": {"de": "Was kostet {name}?", "en": "How much does {name} cost?",
+                  "fr": "Combien coûte {name} ?", "es": "¿Cuánto cuesta {name}?",
+                  "it": "Quanto costa {name}?", "pt": "Quanto custa o {name}?",
+                  "nl": "Wat kost {name}?", "pl": "Ile kosztuje {name}?",
+                  "tr": "{name} ne kadar?", "ja": "{name}の料金は？", "zh": "{name} 多少钱？"},
+    "faq_use": {"de": "Wofür eignet sich {name}?", "en": "What is {name} good for?",
+                "fr": "À quoi sert {name} ?", "es": "¿Para qué sirve {name}?",
+                "it": "A cosa serve {name}?", "pt": "Para que serve o {name}?",
+                "nl": "Waarvoor is {name} geschikt?", "pl": "Do czego służy {name}?",
+                "tr": "{name} ne için uygundur?", "ja": "{name}は何に向いている？",
+                "zh": "{name} 适合做什么？"},
+    "faq_alt": {"de": "Was sind Alternativen zu {name}?", "en": "What are alternatives to {name}?",
+                "fr": "Quelles sont les alternatives à {name} ?", "es": "¿Qué alternativas hay a {name}?",
+                "it": "Quali sono le alternative a {name}?", "pt": "Quais são as alternativas ao {name}?",
+                "nl": "Wat zijn alternatieven voor {name}?", "pl": "Jakie są alternatywy dla {name}?",
+                "tr": "{name} alternatifleri nelerdir?", "ja": "{name}の代替は？",
+                "zh": "{name} 有哪些替代品？"},
+    "faq_dach": {"de": "Ist {name} für den DACH-Raum geeignet?",
+                 "en": "Is {name} suitable for the DACH region?",
+                 "fr": "{name} convient-il à la région DACH ?",
+                 "es": "¿Es {name} adecuado para la región DACH?",
+                 "it": "{name} è adatto all'area DACH?",
+                 "pt": "O {name} é adequado para a região DACH?",
+                 "nl": "Is {name} geschikt voor de DACH-regio?",
+                 "pl": "Czy {name} nadaje się dla regionu DACH?",
+                 "tr": "{name} DACH bölgesi için uygun mu?",
+                 "ja": "{name}はDACH地域に適している？",
+                 "zh": "{name} 适合 DACH 地区吗？"},
 }
 # Newsletter box links to the existing owned audience (compounding revenue lever).
 NEWSLETTER_URL = "https://abannews.de"
@@ -207,7 +267,14 @@ def page_path(lang: str, kind: str, slug: str = "") -> str:
         return f"{prefix}/fuer/{slug}.html"
     if kind == "dsgvo":
         return f"{prefix}/dsgvo.html"
+    if kind == "trending":
+        return f"{prefix}/neu.html"
     return prefix + "/"
+
+
+def feed_path(lang: str) -> str:
+    prefix = "" if lang == "de" else f"/{lang}"
+    return f"{prefix}/feed.xml"
 
 
 def out_file(out: Path, lang: str, kind: str, slug: str = "") -> Path:
@@ -255,6 +322,7 @@ def page(*, lang, ui, title, description, body, canonical,
 <meta name="description" content="{e(description)}">
 <link rel="canonical" href="{e(canonical)}">
 {hreflang_block(available, kind, slug)}
+<link rel="alternate" type="application/rss+xml" title="{e(SITE_NAME)}" href="{e(BASE_URL + feed_path(lang))}">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(description)}">
 <meta property="og:type" content="website">
@@ -292,6 +360,9 @@ padding:10px 18px;border-radius:8px;font-weight:600;margin-top:8px;}}
 .nl .cta{{margin-top:0;}}
 .subnav{{font-size:.9rem;margin:6px 0 0;}}
 .vs-col{{display:flex;flex-wrap:wrap;gap:14px;}} .vs-col>div{{flex:1;min-width:240px;}}
+.faq{{margin:22px 0;}} .faq h2{{font-size:1.1rem;margin:0 0 8px;}}
+.faq details{{background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 14px;margin:0 0 8px;}}
+.faq summary{{cursor:pointer;font-weight:600;}} .faq details p{{margin:8px 0 0;color:var(--muted);}}
 .disclosure{{color:var(--muted);font-size:.82rem;border-top:1px solid var(--border);margin-top:24px;padding-top:14px;}}
 footer{{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);font-size:.85rem;}}
 </style>
@@ -395,6 +466,41 @@ def pro_contra(loc_tool, ui):
 </div>"""
 
 
+def faq_section(tool, loc, ui, tools_by_id, lang):
+    """Visible FAQ (accordion) + FAQPage JSON-LD, composed from tool data."""
+    name = tool["name"]
+    p = tool.get("pricing", {})
+    qa = []
+    # Price
+    price = price_str(tool, ui)
+    if p.get("model"):
+        price = f"{price} ({p['model']})"
+    qa.append((ui["faq_price"].format(name=name), price))
+    # Use cases
+    use_cases = loc.get("use_cases") or tool.get("use_cases", [])
+    if use_cases:
+        qa.append((ui["faq_use"].format(name=name), ", ".join(use_cases)))
+    # Alternatives
+    alt_names = [tools_by_id[a]["name"] for a in tool.get("alternatives", []) if a in tools_by_id]
+    if alt_names:
+        qa.append((ui["faq_alt"].format(name=name), ", ".join(alt_names)))
+    # DACH suitability
+    dach_a = f"{ui['dach']}: {tool.get('dach_relevance','—')}/10."
+    dsgvo = loc.get("dsgvo_note") or tool.get("dsgvo_note")
+    if dsgvo:
+        dach_a += " " + dsgvo
+    qa.append((ui["faq_dach"].format(name=name), dach_a))
+
+    details = "".join(
+        f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in qa)
+    schema = {"@context": "https://schema.org", "@type": "FAQPage",
+              "mainEntity": [{"@type": "Question", "name": q,
+                              "acceptedAnswer": {"@type": "Answer", "text": a}}
+                             for q, a in qa]}
+    script = f'<script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>'
+    return (f'<section class="faq"><h2>{e(ui["faq_heading"])}</h2>{details}</section>{script}')
+
+
 def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None):
     url, is_aff = affiliate_link(tool, aff)
     star = " *" if is_aff else ""
@@ -423,7 +529,8 @@ def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None):
 {'<div class="note"><strong>'+e(ui['dsgvo'])+':</strong> '+e(dsgvo)+'</div>' if dsgvo else ''}
 <p><strong>{e(ui['alternatives'])}:</strong> {alts}</p>
 {comparison_links(tool, tools_by_id or {}, ui, lang)}
-<a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank">{e(ui['cta'].format(name=tool['name']))}{e(star)} →</a>"""
+<a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank">{e(ui['cta'].format(name=tool['name']))}{e(star)} →</a>
+{faq_section(tool, loc, ui, tools_by_id or {}, lang)}"""
     desc = (note or ui["meta_tool"].format(name=tool["name"]))[:155]
     return page(lang=lang, ui=ui,
                 title=f"{tool['name']} — {SITE_NAME}", description=desc, body=body,
@@ -496,6 +603,47 @@ def usecase_page(uc_display, uc_slug, members, aff, ui, lang, available):
                 available=available, kind="uc", slug=uc_slug)
 
 
+def latest_issue(tool):
+    """Highest newsletter issue number that mentioned the tool (recency proxy)."""
+    nums = []
+    for m in tool.get("ausgaben_mentions", []):
+        try:
+            nums.append(int(str(m)))
+        except (TypeError, ValueError):
+            pass
+    return max(nums) if nums else 0
+
+
+def trending_page(members, aff, ui, lang, available):
+    body = (f'<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+            f'<h1>🆕 {e(ui["trending_title"])}</h1>\n<p class="meta">{e(ui["trending_intro"])}</p>\n'
+            + "\n".join(tool_card(t, aff, ui, lang) for t in members))
+    return page(lang=lang, ui=ui, title=ui["trending_nav"] + f" — {SITE_NAME}",
+                description=ui["trending_intro"], body=body,
+                canonical=BASE_URL + page_path(lang, "trending"),
+                available=available, kind="trending")
+
+
+def rss_feed(members, ui, loc_tools, lang):
+    """RSS 2.0 feed of recently-covered tools (freshness signal + subscribers)."""
+    now = date.today().strftime("%a, %d %b %Y 00:00:00 +0000")
+    items = []
+    for t in members:
+        loc = loc_tools.get(t["id"], {})
+        desc = loc.get("aban_note") or t.get("aban_note") or ""
+        link = BASE_URL + page_path(lang, "tool", slugify(t["id"]))
+        items.append(
+            f"<item><title>{e(t['name'])}</title><link>{e(link)}</link>"
+            f"<guid>{e(link)}</guid><pubDate>{now}</pubDate>"
+            f"<description>{e(desc)}</description></item>")
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<rss version="2.0"><channel>'
+            f"<title>{e(SITE_NAME)}</title><link>{e(BASE_URL + page_path(lang,'home'))}</link>"
+            f"<description>{e(ui['tagline'])}</description><language>{e(lang)}</language>"
+            f"<lastBuildDate>{now}</lastBuildDate>" + "".join(items) +
+            "</channel></rss>")
+
+
 def dsgvo_page(members, aff, ui, lang, available):
     body = (f'<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
             f'<h1>🏆 {e(ui["dsgvo_title"])}</h1>\n<p class="meta">{e(ui["dsgvo_intro"])}</p>\n'
@@ -528,14 +676,32 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
     tools_by_id = {t["id"]: t for t in tools}
     categories = sorted({c for t in tools for c in t.get("category", [])})
 
-    # Head-to-head pairs from the curated "alternatives" (deduped, both must exist).
+    # Head-to-head pairs: (1) curated "alternatives" + (2) top tools within each
+    # category (cross-tool permutations) — both deduped, both ids must exist.
     pairs = {}
     for t in tools:
         for alt in t.get("alternatives", []):
             if alt in tools_by_id and alt != t["id"]:
                 key = tuple(sorted([t["id"], alt]))
                 pairs[key] = (tools_by_id[key[0]], tools_by_id[key[1]])
+    TOP_PER_CAT = 6
+    by_cat = {}
+    for t in tools_sorted:                      # already score-sorted
+        for c in t.get("category", []):
+            by_cat.setdefault(c, []).append(t)
+    for members in by_cat.values():
+        top = members[:TOP_PER_CAT]
+        for i in range(len(top)):
+            for j in range(i + 1, len(top)):
+                key = tuple(sorted([top[i]["id"], top[j]["id"]]))
+                pairs.setdefault(key, (tools_by_id[key[0]], tools_by_id[key[1]]))
     pairs = list(pairs.values())
+
+    # Trending = most-recently covered in the newsletter (fallback: top-rated).
+    trending = sorted([t for t in tools if latest_issue(t) > 0],
+                      key=latest_issue, reverse=True)[:24]
+    if not trending:
+        trending = tools_sorted[:24]
 
     # Use-case hubs (canonical English use_case -> members), only if >=3 tools.
     uc_map = {}
@@ -560,7 +726,8 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
             f'<a href="{e(page_path(lang,"cat",slugify(c)))}">{e(c)}</a>' for c in categories)
         uc_links = " · ".join(
             f'<a href="{e(page_path(lang,"uc",slugify(uc)))}">{e(uc)}</a>' for uc, _ in use_cases)
-        subnav = (f'<p class="subnav">🏆 <a href="{e(page_path(lang,"dsgvo"))}">{e(ui["dsgvo_nav"])}</a></p>\n'
+        subnav = (f'<p class="subnav">🏆 <a href="{e(page_path(lang,"dsgvo"))}">{e(ui["dsgvo_nav"])}</a>'
+                  f' · 🆕 <a href="{e(page_path(lang,"trending"))}">{e(ui["trending_nav"])}</a></p>\n'
                   f'<p class="subnav"><strong>{e(ui["by_use_case"])}:</strong> {uc_links}</p>')
         cards = "\n".join(tool_card(t, aff, ui, lang) for t in tools_sorted)
         home_body = (f'<p class="meta">{e(ui["categories"])}: {cat_links}</p>\n{subnav}\n'
@@ -613,18 +780,30 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                           encoding="utf-8")
             pages += 1
 
-        # DSGVO page
+        # DSGVO / DACH best-of page
         of = out_file(out, lang, "dsgvo")
         of.parent.mkdir(parents=True, exist_ok=True)
         of.write_text(dsgvo_page(dsgvo_members, aff, ui, lang, available), encoding="utf-8")
         pages += 1
+
+        # Trending page
+        of = out_file(out, lang, "trending")
+        of.parent.mkdir(parents=True, exist_ok=True)
+        of.write_text(trending_page(trending, aff, ui, lang, available), encoding="utf-8")
+        pages += 1
+
+        # RSS feed (freshness signal + subscribers)
+        feed = out / feed_path(lang).lstrip("/")
+        feed.parent.mkdir(parents=True, exist_ok=True)
+        feed.write_text(rss_feed(trending, ui, loc_tools, lang), encoding="utf-8")
 
     # sitemap.xml across all languages
     today = date.today().isoformat()
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for lang in available:
-        urls = ([BASE_URL + page_path(lang, "home"), BASE_URL + page_path(lang, "dsgvo")]
+        urls = ([BASE_URL + page_path(lang, "home"), BASE_URL + page_path(lang, "dsgvo"),
+                 BASE_URL + page_path(lang, "trending")]
                 + [BASE_URL + page_path(lang, "tool", slugify(t["id"])) for t in tools]
                 + [BASE_URL + page_path(lang, "cat", slugify(c)) for c in categories]
                 + [BASE_URL + page_path(lang, "vs", vs_slug(a["id"], b["id"])) for a, b in pairs]

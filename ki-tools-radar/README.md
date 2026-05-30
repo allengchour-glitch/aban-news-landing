@@ -82,10 +82,20 @@ Pro Tool gibt es übersetzte Notizen + **Pro/Contra („Rat & Kritik")**.
 - **Vergleichsseite** „A vs B" — Pro/Contra-Duell + Fazit (aus den `alternatives` der Tools)
 - **Use-Case-Seite** „Beste KI für {Zweck}" — programmatic SEO
 - **DACH-Bestenliste** — Top-Tools nach DACH-Relevanz (ehrlich, kein Compliance-Versprechen)
+- **Vergleichsseiten** — aus `alternatives` + kategorieübergreifende Top-Paare (389 Paare)
+- **Use-Case-Seiten** „Beste KI für {Zweck}"
+- **„Neu & Trending"** — zuletzt im Newsletter besprochene Tools (aus `ausgaben_mentions`)
+- **RSS-Feed** pro Sprache (`feed.xml`) — Frische-Signal + Abonnenten
+- **FAQ pro Tool** — sichtbarer Akkordeon + FAQPage-Schema (Preis, Einsatz, Alternativen, DACH)
 - **Newsletter-Box** auf jeder Seite → baut eigene Audience auf + bewirbt abannews.de
+
+## SEO-Strukturdaten (JSON-LD)
+
+Pro Seite: SoftwareApplication + Review (Tool-Bewertung), BreadcrumbList, FAQPage —
+maximale „Rich Snippet"-Fläche in Google.
 
 ## Status
 
-🟢 Generator + Auto-Build laufen — **3.740 Seiten** (143 Tools × 11 Sprachen, inkl. Vergleiche/Use-Cases/DACH).
-🟢 SEO: JSON-LD (Rich Snippets), sitemap.xml (3.740 URLs), robots.txt, hreflang, interne Verlinkung.
-🟡 Offen: Affiliate-Programme beantragen + Links eintragen, Domain + Deployment, Newsletter-Teaser.
+🟢 Generator + Auto-Build laufen — **6.358 Seiten** (143 Tools × 11 Sprachen + Vergleiche/Use-Cases/Trending).
+🟢 SEO: JSON-LD (SoftwareApplication/Review/Breadcrumb/FAQ), sitemap.xml (6.358 URLs), robots.txt, hreflang, RSS, interne Verlinkung.
+🟡 Offen: Affiliate-Programme beantragen + Links eintragen, Domain + Deployment, Impressum/Datenschutz (deine Daten), Newsletter-Teaser.
