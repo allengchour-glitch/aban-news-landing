@@ -14,6 +14,7 @@ BODY=(255,201,71); BODYD=(232,170,40); BODYL=(255,224,140)
 BELLY=(255,236,176); EAR=(236,176,46); NOSE=(74,48,40)
 BLUSH=(255,150,130); MOUTH=(150,66,70); TONGUE=(228,118,120)
 PUP=(40,32,46); TEETH=(255,255,255)
+EARS="round"; TAIL="round"   # overridable per character
 
 CW,CH=360,520                      # local design space (pre-SS)
 def L(v): return v*SS
@@ -25,8 +26,11 @@ def draw_critter(d,t,arm_r,look,env,eyewide,blink,phone,mw=1.0):
     tailw=math.sin(t*2*math.pi*2.0)*14
 
     # ---- tail ----
-    E(d,cx+L(70),L(360),L(26),L(30),BODYD)
-    E(d,cx+L(70+tailw*0.3),L(352),L(16),L(18),BODY)
+    if TAIL=="bushy":
+        E(d,cx+L(72),L(362),L(30),L(34),BODYD); E(d,cx+L(76+tailw*0.2),L(354),L(19),L(21),WHITE)
+    else:
+        E(d,cx+L(70),L(360),L(26),L(30),BODYD)
+        E(d,cx+L(70+tailw*0.3),L(352),L(16),L(18),BODY)
 
     # ---- legs + feet ----
     for s in (-1,1):
@@ -58,10 +62,18 @@ def draw_critter(d,t,arm_r,look,env,eyewide,blink,phone,mw=1.0):
 
     # ---- head ----
     hx=cx+L(6)*look; hy=L(150)+L(8)*look
-    # ears (rounded, with inner)
+    # ears (style)
     for s in (-1,1):
-        eyx=hx+s*L(62); eyy=L(74)+earw*(1 if s>0 else -1)
-        E(d,eyx,eyy,L(34),L(38),EAR); E(d,eyx,eyy+L(4),L(18),L(20),BLUSH)
+        eyy=L(74)+earw*(1 if s>0 else -1)
+        if EARS=="bunny":
+            exu=hx+s*L(38); tilt=s*L(6)+earw*(1 if s>0 else -1)
+            E(d,exu+tilt,L(30)+earw*(1 if s>0 else -1),L(20),L(60),EAR)
+            E(d,exu+tilt,L(36),L(11),L(44),BLUSH)
+        elif EARS=="cat":
+            eyx=hx+s*L(58); d.polygon([(eyx-L(28),L(96)),(eyx+L(28),L(96)),(eyx+s*L(6),L(34))],fill=EAR,outline=OUT)
+            d.polygon([(eyx-L(13),L(92)),(eyx+L(13),L(92)),(eyx,L(56))],fill=BLUSH)
+        else:
+            eyx=hx+s*L(62); E(d,eyx,eyy,L(34),L(38),EAR); E(d,eyx,eyy+L(4),L(18),L(20),BLUSH)
     # face
     E(d,hx,hy,L(96),L(92),BODY)
     E(d,hx-L(34),hy-L(34),L(34),L(30),BODYL)         # sheen

@@ -5,6 +5,11 @@ import math, json, bisect, subprocess, numpy as np, imageio.v2 as imageio, image
 from PIL import Image, ImageDraw, ImageEnhance
 from render_s6_max import draw_bg, draw_dust, VIG, BLACK, W, H, SS, font, key, E, RR, OUT, WHITE, AMBER
 from render_s6_htf import draw_critter, L, CW, CH
+import render_s6_htf as HTF
+# --- HASE (bunny) character ---
+HTF.BODY=(245,205,222); HTF.BODYD=(224,176,200); HTF.BODYL=(255,233,242)
+HTF.BELLY=(255,244,249); HTF.EAR=(245,205,222); HTF.NOSE=(208,110,135)
+HTF.BLUSH=(255,150,170); HTF.EARS="bunny"; HTF.TAIL="bushy"
 
 FPS=30
 cues=json.load(open("/tmp/cues.json"))
