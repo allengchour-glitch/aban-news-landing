@@ -37,9 +37,28 @@ ein Shopify-Such-Tokenizer-Artefakt — jeder Titel hat nur EIN „Premium"). AB
 
 ## Status
 - [x] Diagnose an Stichprobe (50) — Defekte A–E bestätigt
-- [~] Recon-Agent läuft (Worklist `/tmp/seo_worklist.jsonl` wird gebaut)
-- [ ] Fixer-Fan-out (~10 Agenten)
-- [ ] Verifikation: 0 verbleibende „LuxeStyle CH" in seo.title, keine null-SEO, keine Notiz-Metas
+- [x] Recon-Agent: alle 1.156 aktiven Produkte gescannt → **1.106 mit ≥1 Defekt**
+  - A_brand 943 · B_notitle 141 · C_nodesc 8 · D_internalnote 9 · E_truncated 70
+- [x] Pilot: `productUpdate(product:{id, seo:{title,description}})` verifiziert.
+  **Wichtiger Befund:** `seo` ist ein FULL-REPLACE — nur `title` senden NULLT `description`.
+  Regel für alle Fixer: IMMER beide Felder senden.
+- [x] **Fixer-Fan-out: 8 parallele Agenten, je ~134–147 Produkte → 1.106/1.106 erledigt, 0 echte Fehler.**
+  - Transiente Cloudflare-502 (je 1× in Chunk 01/02/07) sofort nachgezogen.
+  - ~40 lange B_notitle-Titel: Shopify speichert `seo.title=null`, weil = Produkttitel →
+    rendert den (sauberen) Produkttitel als Meta-Titel. Korrektes Fallback, kein Fehler.
+  - 87 C/D/E-Produkte: echte Produktbeschreibung via get-product gelesen, frische
+    kundenorientierte Meta-Descriptions (110–155 Zeichen) geschrieben. Interne Notizen
+    (Galaxus/Brack/Quote etc.) komplett verworfen.
+  - Nebenbei: ein paar Encoding-Glitches (🇨🇭, Kyrillisch „Geldклип") gefixt.
+- [~] Verifikation läuft (read-only Voll-Scan): 0× „LuxeStyle CH" in seo.title/description,
+  0 Notiz-Metas, 0 fehlende Descriptions erwartet.
+
+### Ergebnis-Verteilung Fixer (done-logs, 1.106 unique IDs)
+| Chunk | Produkte |
+|-------|----------|
+| 00 | 136 | 01 | 134 | 02 | 134 | 03 | 145 |
+| 04 | 145 | 05 | 147 | 06 | 136 | 07 | 128 |
+| Pilot+8 manuell verifiziert | 9 (in Summe enthalten) |
 
 > Reversibel: Änderungen betreffen nur Metadaten; alte Werte stehen in der Worklist
 > (`seoTitle`/`seoDesc`) bzw. lassen sich aus der Produktbeschreibung neu ableiten.
