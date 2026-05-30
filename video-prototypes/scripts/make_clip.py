@@ -49,8 +49,10 @@ def render_frame(fi):
     if wd and wd["w"]:
         txt=wd["w"].upper().strip(".,!?")
         if txt:
-            pop=1.0 if age>0.10 else 0.7+0.3*(age/0.10)
-            ft=font(58*pop); bb=d.textbbox((0,0),txt,font=ft); tw=bb[2]-bb[0]; th=bb[3]-bb[1]
+            pop=1.0 if age>0.10 else 0.7+0.3*(age/0.10); sz=58*pop; ft=font(sz)
+            bb=d.textbbox((0,0),txt,font=ft); tw=bb[2]-bb[0]
+            if tw>W*SS*0.84: sz*=W*SS*0.84/tw; ft=font(sz); bb=d.textbbox((0,0),txt,font=ft); tw=bb[2]-bb[0]
+            th=bb[3]-bb[1]
             bx=W*SS/2; by=H*SS*0.20
             d.rounded_rectangle([bx-tw/2-18*SS,by-10*SS,bx+tw/2+18*SS,by+th+18*SS],radius=14*SS,fill=(18,12,32,230),outline=(255,176,32,200),width=3*SS)
             d.text((bx-tw/2+2*SS,by+5*SS),txt,font=ft,fill=(0,0,0,170))

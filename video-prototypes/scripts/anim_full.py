@@ -1,0 +1,165 @@
+#!/usr/bin/env python3
+"""VOLLE ANIMATION: artikulierter Hase (Knie/Ellbogen-FK), Lauf-Zyklus (laeuft ins Bild),
+Gesten, Gewichtsverlagerung, Kopf-Drehen, Huepfer, Ohren/Schwanz-Nachschwingen.
+Aufruf: python3 anim_full.py <key> [--still T]"""
+import sys, json, math, bisect, subprocess, numpy as np, imageio.v2 as imageio, imageio_ffmpeg
+from PIL import Image, ImageDraw, ImageEnhance
+from render_s6_max import draw_bg, draw_dust, VIG, BLACK, W, H, SS, font, key as KEYF, E, RR, limb, OUT, WHITE, AMBER
+
+BODY=(245,205,222); BODYD=(224,176,200); BODYL=(255,233,242); BELLY=(255,244,249)
+EAR=(245,205,222); NOSE=(208,110,135); BLUSH=(255,150,170); MOUTH=(150,66,70)
+TONGUE=(228,118,120); PUP=(40,32,46); TEETH=(255,255,255)
+CW,CH=360,560
+def L(v): return v*SS
+def sm(x): x=max(0,min(1,x)); return x*x*(3-2*x)
+def pt(x,y,ang,ln): a=math.radians(ang); return (x+math.sin(a)*ln, y+math.cos(a)*ln)
+
+def draw_bunny(ld,t,P):
+    """P: dict with pose params."""
+    cx=L(CW/2)+P["X"]*SS
+    lean=P["lean"]; bobh=P["bob"]*SS
+    hip=(cx, L(420)+bobh)
+    sh =(cx+math.sin(math.radians(lean))*L(120), L(300)+bobh)  # shoulder center, leans
+    # ---- TAIL (puff, swings) ----
+    E(ld,cx+L(70),L(388),L(30),L(34),BODYD); E(ld,cx+L(74)+P["tail"]*SS,L(380),L(19),L(21),WHITE)
+    # ---- LEGS (hip->knee->foot, FK) ----
+    for side,(th,sh2) in (("L",P["legL"]),("R",P["legR"])):
+        s=-1 if side=="L" else 1
+        hx=hip[0]+s*L(24); hy=hip[1]
+        knee=pt(hx,hy,th,L(72)); foot=pt(*knee,th+sh2,L(64))
+        limb(ld,(hx,hy),knee,21,BODY,hi=BODYL); limb(ld,knee,foot,17,BODYD,hi=BODYL)
+        # foot
+        fx,fy=foot; E(ld,fx+s*L(6),fy+L(4),L(20),L(12),BODYD)
+    # ---- BODY ----
+    bx0,bx1=sh[0]-L(70),sh[0]+L(70)
+    ld.polygon([(bx0,sh[1]),(bx1,sh[1]),(hip[0]+L(60),hip[1]),(hip[0]-L(60),hip[1])],fill=BODY,outline=OUT)
+    E(ld,(sh[0]+hip[0])/2,(sh[1]+hip[1])/2+L(20),L(46),L(58),BELLY)
+    # ---- ARMS (shoulder->elbow->hand, FK) ----
+    for side,(sa,ea) in (("L",P["armL"]),("R",P["armR"])):
+        s=-1 if side=="L" else 1
+        shx=sh[0]+s*L(56); shy=sh[1]+L(6)
+        el=pt(shx,shy,sa,L(54)); hand=pt(*el,sa+ea,L(48))
+        limb(ld,(shx,shy),el,16,BODY,hi=BODYL); limb(ld,el,hand,13,BODYD)
+        E(ld,hand[0],hand[1],L(13),L(13),BODY)
+        if side=="R" and P.get("phone"):
+            ph=P["phone"]; RR(ld,hand[0]-L(12),hand[1]-L(18),hand[0]+L(12),hand[1]+L(18),L(5),(30,30,30))
+            RR(ld,hand[0]-L(8),hand[1]-L(13),hand[0]+L(8),hand[1]+L(13),L(3),ph,outline=ph,ow=1)
+    # ---- HEAD ----
+    ht=P["headturn"]; look=P["look"]
+    hx=sh[0]+ht*L(16); hy=sh[1]-L(70)+bobh*0.2
+    earw=P["ear"]
+    for s in (-1,1):
+        exu=hx+s*L(34)+ht*L(8); E(ld,exu,L(150)+bobh*0.2+earw*(1 if s>0 else -1)*SS/SS*0 - L(0),L(20),L(58),EAR)
+    # (ears drawn relative to head)
+    for s in (-1,1):
+        exu=hx+s*L(34)+ht*L(8); ey=hy-L(96)+earw*(1 if s>0 else -1)
+        E(ld,exu,ey,L(18),L(54),EAR); E(ld,exu,ey+L(6),L(10),L(40),BLUSH)
+    E(ld,hx,hy,L(92),L(88),BODY)
+    E(ld,hx-L(32),hy-L(32),L(32),L(28),BODYL)
+    for s in (-1,1): E(ld,hx+s*L(56),hy+L(24),L(19),L(13),BLUSH,outline=BLUSH,ow=1)
+    ew=L(36)*(1+0.22*P["eyewide"]); eh=L(44)*(1+0.3*P["eyewide"]); ld2=look*L(9)
+    for s in (-1,1):
+        ox=hx+s*L(36)+ht*L(10)
+        if P["blink"]: ld.line([(ox-ew*0.8,hy-L(6)),(ox+ew*0.8,hy-L(6))],fill=OUT,width=int(L(5)))
+        else:
+            E(ld,ox,hy-L(6),ew,eh,WHITE,ow=3); pr=L(16)*(1-0.25*P["eyewide"])
+            px=ox+ht*L(5); py=hy-L(2)+ld2
+            E(ld,px,py,pr,pr*1.12,PUP,outline=PUP,ow=1); E(ld,px-pr*0.35,py-pr*0.4,pr*0.42,pr*0.42,WHITE,outline=WHITE,ow=1)
+    E(ld,hx+ht*L(6),hy+L(20),L(10),L(8),NOSE,outline=NOSE,ow=1)
+    my=hy+L(38); mo=L(4)+P["env"]*L(18)
+    E(ld,hx+ht*L(6),my,L(16)*P["mw"],mo,MOUTH)
+    if mo>L(11): E(ld,hx+ht*L(6),my+mo*0.3,L(8),mo*0.4,TONGUE)
+    else:
+        ld.rectangle([hx+ht*L(6)-L(8),my-L(2),hx+ht*L(6)-L(1),my+L(9)],fill=TEETH,outline=OUT,width=int(L(1.5)))
+        ld.rectangle([hx+ht*L(6)+L(1),my-L(2),hx+ht*L(6)+L(8),my+L(9)],fill=TEETH,outline=OUT,width=int(L(1.5)))
+
+def pose(t, DUR, env, eyewide, blink, phone):
+    """Choreography controller -> pose params."""
+    P=dict(env=env,eyewide=eyewide,blink=blink,mw=1.0,phone=phone)
+    WALK=1.5
+    if t<WALK:                                   # walk IN from left
+        p=sm(t/WALK); P["X"]=-150+150*p
+        ph=t*2*math.pi*2.3
+        P["legL"]=(22*math.sin(ph), 18+34*max(0,-math.sin(ph)))
+        P["legR"]=(22*math.sin(ph+math.pi), 18+34*max(0,-math.sin(ph+math.pi)))
+        P["armL"]=(-20+24*math.sin(ph+math.pi),18); P["armR"]=(20+24*math.sin(ph),18)
+        P["lean"]=4; P["bob"]=-6+6*abs(math.sin(ph)); P["headturn"]=0.3; P["look"]=0; P["ear"]=math.sin(ph)*6; P["tail"]=0
+    else:
+        tt=t-WALK
+        P["X"]=0
+        weight=math.sin(tt*1.3); P["lean"]=3*weight
+        P["legL"]=(2+weight*3, 8); P["legR"]=(-2+weight*3, 8)
+        # breathing bob + occasional hop
+        hop=0.0
+        for hb in (3.0,7.5,11.0):
+            if 0<=tt-hb<0.5: hop=-math.sin((tt-hb)/0.5*math.pi)*26
+        P["bob"]=math.sin(tt*2*math.pi*1.4)*3+hop
+        # gestures: raise right hand to emphasize, periodically
+        g=(tt%3.2)
+        if g<0.9:
+            gg=math.sin(g/0.9*math.pi); P["armR"]=(-70+10*math.sin(tt*8), -40-20*gg)
+        else:
+            P["armR"]=(18+6*math.sin(tt*2.2),16)
+        P["armL"]=(-16+6*math.sin(tt*2.0+1),16)
+        P["headturn"]=0.5*math.sin(tt*0.8); P["look"]=0.2*math.sin(tt*0.8)
+        P["ear"]=math.sin(tt*4)*4+(hop*0.3); P["tail"]=math.sin(tt*5)*10
+    # phone grab override (if phone active, raise right hand to face)
+    if phone is not None:
+        P["armR"]=(-58,-46); P["headturn"]=0.1; P["look"]=0.8
+    return P
+
+K=sys.argv[1]
+cues=json.load(open(f"/tmp/{K}_cues.json")); DUR=cues["metadata"]["duration"]
+words=json.load(open(f"/tmp/{K}_words.json"))
+FPS=30; N=int(FPS*DUR)
+SHAPE={"X":(0,1),"A":(0,0.9),"B":(0.2,1),"C":(0.5,1.15),"D":(0.9,1.25),"E":(0.55,0.7),"F":(0.35,0.55),"G":(0.22,0.95),"H":(0.42,1)}
+mc=cues["mouthCues"]; starts=[c["start"] for c in mc]
+def shp(t): i=max(0,min(bisect.bisect_right(starts,t)-1,len(mc)-1)); return mc[i]["value"]
+ENV=[0]*N; MW=[1]*N; pe,pw=0,1
+for fi in range(N): e,w=SHAPE.get(shp(fi/FPS),(0.2,1)); pe+=(e-pe)*0.55; pw+=(w-pw)*0.55; ENV[fi]=pe; MW[fi]=pw
+wstarts=[w["start"] for w in words]
+def word_at(t):
+    i=bisect.bisect_right(wstarts,t)-1
+    if 0<=i<len(words) and words[i]["start"]<=t<=words[i]["end"]+0.08: return words[i],t-words[i]["start"]
+    return None,0
+
+def frame(fi):
+    t=fi/FPS
+    img=Image.new("RGB",(W*SS,H*SS),(20,18,40)); d=ImageDraw.Draw(img,"RGBA")
+    draw_bg(d,t)
+    layer=Image.new("RGBA",(CW*SS,CH*SS),(0,0,0,0)); ld=ImageDraw.Draw(layer,"RGBA")
+    phone=None
+    if K=="s6" and 6.5<=t*12/DUR<=8.9: phone=(127,208,255) if 6.65<=t*12/DUR<=8.0 else (140,140,140)
+    P=pose(t,DUR,ENV[fi],0.25*max(0,math.sin(t*1.3))+0.4*max(0,ENV[fi]-0.6),(t%2.9)>2.8,phone)
+    P["mw"]=MW[fi]
+    draw_bunny(ld,t,P)
+    bounce=math.sin(t*2*math.pi*1.5); sy=1+0.04*bounce; sx=1/sy; scl=0.74
+    w2=max(1,int(CW*SS*sx*scl)); h2=max(1,int(CH*SS*sy*scl)); sc=layer.resize((w2,h2),Image.LANCZOS)
+    img.paste(sc,(int(W*SS*0.42-w2*0.5),int(H*SS*0.99-h2)),sc)
+    draw_dust(d,t)
+    wd,age=word_at(t)
+    if wd and wd["w"]:
+        txt=wd["w"].upper().strip(".,!?")
+        if txt:
+            pop=1.0 if age>0.1 else 0.7+0.3*(age/0.1); sz=56*pop; ft=font(sz)
+            bb=d.textbbox((0,0),txt,font=ft); tw=bb[2]-bb[0]
+            if tw>W*SS*0.84: sz*=W*SS*0.84/tw; ft=font(sz); bb=d.textbbox((0,0),txt,font=ft); tw=bb[2]-bb[0]
+            th=bb[3]-bb[1]; bx=W*SS/2; by=H*SS*0.17
+            d.rounded_rectangle([bx-tw/2-18*SS,by-10*SS,bx+tw/2+18*SS,by+th+18*SS],radius=14*SS,fill=(18,12,32,230),outline=(255,176,32,200),width=3*SS)
+            d.text((bx-tw/2+2*SS,by+5*SS),txt,font=ft,fill=(0,0,0,170)); d.text((bx-tw/2,by+3*SS),txt,font=ft,fill=(250,235,120))
+    img=Image.composite(img,BLACK,VIG); img=ImageEnhance.Color(img).enhance(1.16); img=ImageEnhance.Contrast(img).enhance(1.06)
+    z=1.0+0.05*(t/DUR); cw,ch=int(W*SS/z),int(H*SS/z); l=(W*SS-cw)//2; tp=int((H*SS-ch)*0.42)
+    return img.crop((l,tp,l+cw,tp+ch)).resize((W,H),Image.LANCZOS)
+
+if __name__=="__main__":
+    if "--still" in sys.argv:
+        T=float(sys.argv[sys.argv.index("--still")+1]); frame(int(T*FPS)).save(f"/tmp/full_{K}_{T}.png"); print("still saved")
+    else:
+        print(f"[{K}] FULL anim {N} frames")
+        tmp=f"/tmp/{K}_full_noa.mp4"; wr=imageio.get_writer(tmp,fps=FPS,codec="libx264",quality=9,ffmpeg_params=["-pix_fmt","yuv420p"])
+        for i in range(N):
+            wr.append_data(np.asarray(frame(i).convert("RGB")))
+            if i%90==0: print(f"  {i}/{N}")
+        wr.close(); ff=imageio_ffmpeg.get_ffmpeg_exe()
+        subprocess.run([ff,"-y","-i",tmp,"-i",f"/tmp/{K}.wav","-c:v","copy","-c:a","aac","-b:a","128k","-shortest",f"/tmp/clipfull_{K}.mp4"],check=True,capture_output=True)
+        print(f"done -> /tmp/clipfull_{K}.mp4")
