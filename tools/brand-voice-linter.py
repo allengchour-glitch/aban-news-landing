@@ -48,13 +48,50 @@ def expand_batch(args):
     return out
 
 
+def _is_doc(path):
+    """True for engineering/ops docs that are not newsletter content.
+
+    The brand-voice linter targets newsletter issue markdown (see --batch
+    ausgaben/). README and automation/ setup guides legitimately quote the
+    forbidden-phrase list and exceed the per-issue length cap, so they are
+    never voice-linted — regardless of which CI workflow version invokes us.
+    """
+    p = path.replace("\\", "/").lstrip("./")
+    base = os.path.basename(p)
+    if base == "README.md":
+        return True
+    if p.startswith("automation/") or "/automation/" in p:
+        return True
+    return False
+
+
 def main():
     if not os.path.isfile(DELEGATE):
         sys.stderr.write(
             "error: cannot find delegate at {} — is automation/voice-linter-cli.py present?\n".format(DELEGATE)
         )
         sys.exit(2)
-    sys.argv = [DELEGATE] + expand_batch(sys.argv[1:])
+
+    args = expand_batch(sys.argv[1:])
+    # Drop non-newsletter docs from the file list (keep flags and stdin "-").
+    kept, skipped = [], []
+    for a in args:
+        if a == "-" or a.startswith("-") or not a.lower().endswith(".md"):
+            kept.append(a)
+        elif _is_doc(a):
+            skipped.append(a)
+        else:
+            kept.append(a)
+    for s in skipped:
+        sys.stderr.write("skip (kein Newsletter-Content, nicht voice-gelintet): {}\n".format(s))
+
+    # If every .md file was a skipped doc, there is nothing to lint -> pass.
+    md_inputs = [a for a in args if a.lower().endswith(".md") or a == "-"]
+    md_kept = [a for a in kept if a.lower().endswith(".md") or a == "-"]
+    if md_inputs and not md_kept:
+        sys.exit(0)
+
+    sys.argv = [DELEGATE] + kept
     try:
         runpy.run_path(DELEGATE, run_name="__main__")
     except SystemExit:
