@@ -67,7 +67,9 @@ DSGVO-konformes KI-Content-Studio (SaaS-Konzept, W1-Fundament: DB-Schema, Provid
 AI-Act-Modul). Nicht aktiv weiterentwickelt. Bei Bedarf reaktivierbar.
 
 ### Strategie-Memory  →  `ki-geld-projekt/`
-`MARKTRECHERCHE.md` (5-Strang-Recherche KI-Geldmodelle 2026) + `MARKTLUECKEN-2026.md` (Kapital-Chancen).
+`MARKTRECHERCHE.md` (KI-Geldmodelle 2026) + `MARKTLUECKEN-2026.md` (Kapital-Chancen) +
+**`MARKETING-PLAYBOOK.md`** (persönlicher, ehrlicher Marketing-/Geld-Leitfaden: Newsletter-Wachstum,
+LinkedIn-DACH, GEO, Monetarisierung nach Audience-Größe, realistische Timeline, das 80/20).
 
 ## Git / Deployment
 - **Branch:** `claude/ai-money-project-f25Ub` · **PR:** #2 (Draft) auf allengchour-glitch/aban-news-landing
