@@ -1,0 +1,152 @@
+{
+ "source": "arbeitnow.com",
+ "fetched": "2026-05-30",
+ "count": 10,
+ "jobs": [
+  {
+   "title": "Senior GenAI Engineer LLMs/ RAG/ Python (w/m/d) remote in DE",
+   "company": "Talents2Germany GmbH",
+   "location": "Frankfurt am Main",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/talents2germany-gmbh/senior-genai-engineer-llms-rag-python-remote-in-de-frankfurt-am-main-137280",
+   "tags": [
+    "Remote",
+    "Engineering"
+   ],
+   "types": [
+    "berufserfahren"
+   ],
+   "slug": "senior-genai-engineer-llms-rag-python-remote-in-de-frankfurt-am-main-137280",
+   "created_at": 1780142427
+  },
+  {
+   "title": "Co-Founder - Marketing & Growth",
+   "company": "Medissist",
+   "location": "Augsburg",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/medissist/co-founder-marketing-growth-augsburg-318422",
+   "tags": [
+    "Directors",
+    "Chief Executives"
+   ],
+   "types": [
+    "executive"
+   ],
+   "slug": "co-founder-marketing-growth-augsburg-318422",
+   "created_at": 1780142426
+  },
+  {
+   "title": "Business Analyst Neo-Wealth & Crypto m/w/d",
+   "company": "finwyz",
+   "location": "Frankfurt am Main",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/finwyz/business-analyst-neo-wealth-crypto-frankfurt-am-main-381319",
+   "tags": [
+    "Remote",
+    "Business Analyst"
+   ],
+   "types": [],
+   "slug": "business-analyst-neo-wealth-crypto-frankfurt-am-main-381319",
+   "created_at": 1780137024
+  },
+  {
+   "title": "Senior Product Management Lead (f/m/d)",
+   "company": "Apaleo",
+   "location": "Munich, Bavaria, Germany",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/apaleo/senior-product-management-lead-munich-58103",
+   "tags": [],
+   "types": [],
+   "slug": "senior-product-management-lead-munich-58103",
+   "created_at": 1780087523
+  },
+  {
+   "title": "Senior Analytics Engineer - Run & Grow",
+   "company": "SumUp",
+   "location": "Berlin, Berlin, Germany",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/sumup/senior-analytics-engineer-run-grow-berlin-119045",
+   "tags": [],
+   "types": [],
+   "slug": "senior-analytics-engineer-run-grow-berlin-119045",
+   "created_at": 1780087522
+  },
+  {
+   "title": "Projektmanager:in & PMO (m/w/d)",
+   "company": "Team Passerelle",
+   "location": "Berlin",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/team-passerelle/projektmanagerin-pmo-berlin-313022",
+   "tags": [
+    "Remote",
+    "Project Management"
+   ],
+   "types": [
+    "Contract",
+    "berufserfahren"
+   ],
+   "slug": "projektmanagerin-pmo-berlin-313022",
+   "created_at": 1780070432
+  },
+  {
+   "title": "Senior AI Systems Engineer (AWS) 100% Remote (m/w/d)",
+   "company": "FNTIO",
+   "location": "Frankfurt am Main",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/fntio/senior-ai-systems-engineer-aws-100-remote-frankfurt-am-main-265043",
+   "tags": [
+    "Remote",
+    "Consulting",
+    "Engineering"
+   ],
+   "types": [],
+   "slug": "senior-ai-systems-engineer-aws-100-remote-frankfurt-am-main-265043",
+   "created_at": 1780068644
+  },
+  {
+   "title": "Full-Stack Entwickler (m/w/d) - .NET 100% Remote",
+   "company": "FNTIO",
+   "location": "Frankfurt am Main",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/fntio/full-stack-entwickler-net-100-remote-frankfurt-am-main-202432",
+   "tags": [
+    "Remote",
+    "Consulting",
+    "Engineering"
+   ],
+   "types": [],
+   "slug": "full-stack-entwickler-net-100-remote-frankfurt-am-main-202432",
+   "created_at": 1780068644
+  },
+  {
+   "title": "Full-Stack Entwickler (m/w/d) - .NET 100% Remote",
+   "company": "FNTIO",
+   "location": "Frankfurt am Main",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/fntio/full-stack-entwickler-net-100-remote-frankfurt-am-main-497052",
+   "tags": [
+    "Remote",
+    "Consulting",
+    "Engineering"
+   ],
+   "types": [],
+   "slug": "full-stack-entwickler-net-100-remote-frankfurt-am-main-497052",
+   "created_at": 1780068643
+  },
+  {
+   "title": "Head of R&D - AI Factory Infrastructure",
+   "company": "Nordran Technologies",
+   "location": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/nordran-technologies/head-of-rd-ai-factory-infrastructure-berlin-16699",
+   "tags": [
+    "Engineering"
+   ],
+   "types": [
+    "executive"
+   ],
+   "slug": "head-of-rd-ai-factory-infrastructure-berlin-16699",
+   "created_at": 1780068642
+  }
+ ]
+}
