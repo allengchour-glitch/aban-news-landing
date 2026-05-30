@@ -42,6 +42,29 @@
 
 ---
 
+## 🗂️ Collections aufgeräumt (2026-05-30)
+
+Store hatte **116 Collections** (stark überwuchert). Duplikate autonom entschärft per Umbenennung
+(Ausblenden/Löschen ist API-seitig gesperrt → nur Theme-Editor/Admin):
+
+| Vorher (Duplikat) | Nachher (eindeutig) |
+|---|---|
+| „Bundles & Sets" (77, 2. Vorkommen) | **„Premium Bundles"** |
+| „🌟 Bestseller — Premium Heroes" (10) | **„⭐ Top 10 Bestseller"** |
+| „Bestseller · Premium Heroes" (6) | **„🔥 Hero-Favoriten"** |
+| „Gifts under CHF 30" (540, EN-Dup) | **„Geschenke unter CHF 30 (getaggt)"** |
+| „Neu eingetroffen" (8, Tag cj-real) | **„✨ CJ Neuheiten 2026"** (= deine 8 CJ-Live-Produkte) |
+
+→ „Bestsellers" (smart) bleibt als auto-aktualisierte Hauptliste. Kein Produkt verloren.
+
+### 🔴 Offen für dich (Admin/Theme — API blockt Unpublish):
+Diese Grabbel-/Saison-Collections im Admin **aus dem Onlineshop ausblenden** (Verkaufskanäle):
+- Grabbel (>2400 Produkte, untauglich als Filter): „Geschenke unter CHF 100" (4.486),
+  „Geschenke unter CHF 50" (2.563), „🚀 LAUNCH WEEK" (2.561), „💍 Hochzeitsgeschenke" (2.458)
+- Off-Season: Halloween 2026, Christmas 2026, Black Friday & Cyber Week, New Year & Silvester
+- Archiv: die 5 `[ARCHIV]`-Collections (inkl. leere „[ARCHIV] Alle Bundles & Sets" = 0)
+Weg im Admin: Sammlung öffnen → „Verkaufskanäle verwalten" → Onlineshop-Haken weg (~10 Sek/Stk).
+
 ## 📋 Nächste Schritte
 - **Du (Theme-Editor):** Punkte 1-4 — Hero-Bild, Mobile-Overlay, Cross-Sell, Cookie-Banner.
 - **Ich (autonom, auf dein GO):** Punkt 5 — Vendor storeweit auf „LuxeStyle CH" vereinheitlichen.
