@@ -77,6 +77,20 @@
     .callout{background:var(--amber-lt);border-left:4px solid var(--amber);border-radius:8px;padding:.9rem 1.1rem;font-weight:600;margin:1rem 0}
     .ch-lead{font-style:italic;color:var(--muted);font-size:1.05rem;margin-bottom:1rem}
 
+    /* Inline subscribe (Funnel-Capture) */
+    .subscribe{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.25rem 1.5rem;box-shadow:var(--shadow);margin:1.5rem 0}
+    .subscribe h2{font-size:1.15rem;margin-bottom:.25rem}
+    .subscribe p{font-size:.9rem;color:var(--muted);margin-bottom:.9rem}
+    .subscribe .row{display:flex;gap:.5rem}
+    .subscribe input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:.8rem .9rem;font-size:1rem;background:#fff}
+    .subscribe input:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:var(--amber)}
+    .subscribe .micro{font-size:.74rem;color:var(--muted);margin:.55rem 0 0}
+    @media(max-width:560px){.subscribe .row{flex-direction:column}.subscribe .row .btn{width:100%;justify-content:center}}
+    /* Founding upsell */
+    .upsell{background:linear-gradient(160deg,#fff7ed,#fff);border:1px solid #fed7aa;border-radius:var(--r);padding:1.5rem;margin:1.5rem 0;display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap}
+    .upsell .u-body{flex:1;min-width:220px}
+    .upsell h2{font-size:1.15rem;margin-bottom:.3rem;color:var(--amber-dk)}
+    .upsell p{font-size:.92rem;color:#7c2d12;margin-bottom:0}
     .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2.5rem 0}
     .cta-box h2{font-size:1.3rem;margin-bottom:.5rem}
     .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
@@ -144,6 +158,16 @@
         </div>
       </div>
     </div>
+
+    <section class="subscribe" aria-label="Newsletter abonnieren">
+      <h2>Das eBook ist gratis — der Newsletter auch.</h2>
+      <p>Wenn dir dieses Denkmodell hilft: Jeden Werktag um 7:30 die drei KI-Entwicklungen, die dein Business heute betreffen. 5 Minuten, kein Hype, kein Spam.</p>
+      <form class="row" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
+        <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">
+        <button type="submit" class="btn">Gratis abonnieren →</button>
+      </form>
+      <p class="micro">Mo–Fr · 1-Klick-Abmeldung · DSGVO-konform · kein Tracking-Pixel.</p>
+    </section>
 
     <nav class="toc" aria-label="Inhaltsverzeichnis">
       <h2>Inhalt</h2>
@@ -219,6 +243,14 @@
       <p>Wenn du bis hier gelesen hast, hast du schon den wichtigsten Skill: Geduld für Substanz statt Reflex für Hype.</p>
       <p>Dieses eBook ist ein Schnappschuss. KI ändert sich wöchentlich. Was bleibt, ist die Denkweise: konkret fragen, Risiko abschätzen, selbst urteilen. Genau das mache ich jeden Werktag im Newsletter.</p>
     </article>
+
+    <div class="upsell">
+      <div class="u-body">
+        <h2>Mehr als der Newsletter? Werde Founding-Member.</h2>
+        <p>Die ersten 100 Leser bekommen lebenslang Premium für €149 einmal — Mittwoch-Tiefenausgabe, Workflow-Templates, Tool-Deals, direkter Draht. Kein Re-Open, 30 Tage Geld-zurück.</p>
+      </div>
+      <a href="/founding.html" class="btn btn--ghost">Founding ansehen →</a>
+    </div>
 
     <div class="cta-box">
       <h2>Jeden Morgen KI ohne Bullshit — in 5 Minuten</h2>

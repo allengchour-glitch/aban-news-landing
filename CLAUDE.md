@@ -60,8 +60,10 @@ grep -iE "revolution|bahnbrechend|game.changer|disruptiv|quantensprung|meilenste
 | Datei | Zweck |
 |-------|-------|
 | `index.html` | Haupt-Landing (Hero + Sample-Switcher + Subscribe) |
-| `ebook.html` | eBook-Lead-Magnet-Landing (mit Lese-Fortschritt-Memory via localStorage) |
-| `geld-verdienen-mit-ki.html` | SEO-Artikel-Landing (Layout-Referenz für Subpages) |
+| `ebook.html` | eBook-Lead-Magnet-Landing (Email-Capture + Founding-Upsell + Lese-Memory via localStorage) |
+| `geld-verdienen-mit-ki.html` | SEO-Money-Page (Layout-Referenz für Subpages) |
+| `ki-tools-fuer-selbststaendige.html` | SEO-Money-Page „KI-Tools für Selbstständige“ |
+| `chatgpt-fuer-solopreneure.html` | SEO-Money-Page „ChatGPT für Solopreneure“ |
 | `founding.html` | €149 Founding-Member-Angebot |
 | `sponsoring.html` / `werbung.html` | Werbe-Rate-Card / Policy |
 | `preview.html` | Beispiel-Ausgabe |
