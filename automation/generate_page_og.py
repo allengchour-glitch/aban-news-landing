@@ -38,6 +38,26 @@ PAGES = {
     "themen/produktivitaet.html": "page-themen-produktivitaet",
     "themen/automatisierung.html": "page-themen-automatisierung",
     "themen/no-code.html": "page-themen-no-code",
+    # aban-Netzwerk + Geld-Kanäle
+    "netzwerk.html": "page-netzwerk",
+    "radar.html": "page-radar",
+    "foerder.html": "page-foerder",
+    "jobs.html": "page-jobs",
+    "kurse.html": "page-kurse",
+    "deals.html": "page-deals",
+    "experten.html": "page-experten",
+    "workshops.html": "page-workshops",
+    "vorlagen.html": "page-vorlagen",
+    # SEO-Vergleichsseiten
+    "vergleich-writing.html": "page-vergleich-writing",
+    "vergleich-image-gen.html": "page-vergleich-image-gen",
+    "vergleich-coding.html": "page-vergleich-coding",
+    "vergleich-video-gen.html": "page-vergleich-video-gen",
+    "vergleich-productivity.html": "page-vergleich-productivity",
+    "vergleich-marketing-ai.html": "page-vergleich-marketing-ai",
+    "vergleich-api.html": "page-vergleich-api",
+    "vergleich-ai-chat.html": "page-vergleich-ai-chat",
+    "vergleich-kostenlos.html": "page-vergleich-kostenlos",
 }
 
 
