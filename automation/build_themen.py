@@ -66,12 +66,15 @@ HEAD_CSS = """  <style>
     footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
     footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
     footer a{color:var(--muted);text-decoration:none}
-    /* Index-Grid */
-    .tgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:1rem 0 2rem}
-    .tcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.3rem;text-decoration:none;color:var(--ink);transition:transform .15s,box-shadow .15s,border-color .15s}
-    .tcard:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--amber)}
-    .tcard h2{font-size:1.15rem;margin-bottom:.3rem}
-    .tcard p{color:var(--muted);font-size:.92rem}
+    /* Index-Grid (Magazin-Stil) */
+    .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:1rem 0 2rem}
+    .tcard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--ink);box-shadow:0 1px 2px rgba(31,41,55,.04),0 10px 28px rgba(31,41,55,.06);transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s}
+    .tcard:hover{transform:translateY(-4px);box-shadow:0 6px 14px rgba(31,41,55,.08),0 22px 44px rgba(31,41,55,.14)}
+    .tcard-img{width:100%;height:150px;object-fit:cover;display:block;background:#374151}
+    .tcard-body{padding:14px 16px 18px;display:flex;flex-direction:column;gap:6px}
+    .tcard-h{font-weight:800;font-size:1.05rem;line-height:1.25}
+    .tcard-p{color:var(--muted);font-size:.9rem;line-height:1.45}
+    @media(max-width:820px){.tgrid{grid-template-columns:1fr 1fr}}
     @media(max-width:560px){.tgrid{grid-template-columns:1fr}}
   </style>"""
 
@@ -239,8 +242,11 @@ def render_topic(t, by_slug):
 def render_index(themen):
     cards = ""
     for t in themen:
+        _, _, emoji = cover_style(t)
         cards += (f'        <a class="tcard" href="/themen/{esc(t["slug"])}.html">'
-                  f'<h2>{esc(t["titel"])}</h2><p>{esc(t["kurz"])}</p></a>\n')
+                  f'<img class="tcard-img" src="/img/themen/{esc(t["slug"])}.svg" alt="" loading="lazy" width="1200" height="500">'
+                  f'<span class="tcard-body"><span class="tcard-h">{esc(t["titel"])}</span>'
+                  f'<span class="tcard-p">{esc(t["kurz"])}</span></span></a>\n')
     return f"""<!DOCTYPE html>
 <html lang="de">
 <head>

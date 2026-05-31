@@ -54,12 +54,15 @@
     footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
     footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
     footer a{color:var(--muted);text-decoration:none}
-    /* Index-Grid */
-    .tgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:1rem 0 2rem}
-    .tcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.3rem;text-decoration:none;color:var(--ink);transition:transform .15s,box-shadow .15s,border-color .15s}
-    .tcard:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--amber)}
-    .tcard h2{font-size:1.15rem;margin-bottom:.3rem}
-    .tcard p{color:var(--muted);font-size:.92rem}
+    /* Index-Grid (Magazin-Stil) */
+    .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:1rem 0 2rem}
+    .tcard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--ink);box-shadow:0 1px 2px rgba(31,41,55,.04),0 10px 28px rgba(31,41,55,.06);transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s}
+    .tcard:hover{transform:translateY(-4px);box-shadow:0 6px 14px rgba(31,41,55,.08),0 22px 44px rgba(31,41,55,.14)}
+    .tcard-img{width:100%;height:150px;object-fit:cover;display:block;background:#374151}
+    .tcard-body{padding:14px 16px 18px;display:flex;flex-direction:column;gap:6px}
+    .tcard-h{font-weight:800;font-size:1.05rem;line-height:1.25}
+    .tcard-p{color:var(--muted);font-size:.9rem;line-height:1.45}
+    @media(max-width:820px){.tgrid{grid-template-columns:1fr 1fr}}
     @media(max-width:560px){.tgrid{grid-template-columns:1fr}}
   </style>
 </head>
@@ -83,27 +86,27 @@
       <p class="lead">KI verständlich erklärt für Solos und KMU im DACH-Raum — ehrlich, ohne Hype. 21 Themen, laufend erweitert.</p>
     </div>
     <div class="tgrid">
-        <a class="tcard" href="/themen/ki-tools.html"><h2>KI-Tools für DACH-Solos &amp; KMU</h2><p>Welche KI-Tools sich 2026 wirklich lohnen — ehrlich bewertet, DSGVO-geprüft.</p></a>
-        <a class="tcard" href="/themen/dsgvo-und-ki.html"><h2>DSGVO &amp; KI — was Selbstständige in DACH wissen müssen</h2><p>KI nutzen, ohne Datenschutz-Ärger. Die 5-Minuten-Version für Solos und KMU.</p></a>
-        <a class="tcard" href="/themen/ki-fuer-anfaenger.html"><h2>KI für Anfänger — der ehrliche Einstieg ohne Hype</h2><p>Du willst KI im Arbeitsalltag nutzen, weißt aber nicht wo anfangen? Hier der ruhige Einstieg.</p></a>
-        <a class="tcard" href="/themen/prompt-engineering.html"><h2>Prompt Engineering für den Arbeitsalltag</h2><p>Bessere Ergebnisse aus KI — ohne Zauberformeln, mit ein paar klaren Prinzipien.</p></a>
-        <a class="tcard" href="/themen/ki-automatisierung.html"><h2>KI-Automatisierung für kleine Unternehmen</h2><p>Wiederkehrende Aufgaben an KI + No-Code abgeben — Schritt für Schritt.</p></a>
-        <a class="tcard" href="/themen/ki-newsletter-starten.html"><h2>Einen KI-Newsletter starten</h2><p>Wie du in einer Nische einen Newsletter aufbaust — mit KI-Unterstützung, ohne Hype.</p></a>
-        <a class="tcard" href="/themen/ki-bilder.html"><h2>KI-Bilder erstellen — Praxis für Solos</h2><p>Midjourney, &amp; Co. sinnvoll nutzen — für Content, ohne rechtliche Stolperfallen.</p></a>
-        <a class="tcard" href="/themen/ki-texte-deutsch.html"><h2>KI für deutsche Texte</h2><p>Warum viele KI-Tools bei Deutsch schwächeln — und wie du trotzdem gute Texte bekommst.</p></a>
-        <a class="tcard" href="/themen/chatgpt-vs-claude.html"><h2>ChatGPT vs. Claude vs. Gemini</h2><p>Welcher KI-Assistent für was? Ein ehrlicher Vergleich für den Arbeitsalltag.</p></a>
-        <a class="tcard" href="/themen/ki-datenschutz-tools.html"><h2>DSGVO-konforme KI-Tools</h2><p>Welche KI-Tools du in DACH bedenkenlos nutzen kannst — und worauf du achten musst.</p></a>
-        <a class="tcard" href="/themen/ki-meetings.html"><h2>KI für Meetings &amp; Protokolle</h2><p>Transkription, Zusammenfassung, To-dos — automatisch aus jedem Meeting.</p></a>
-        <a class="tcard" href="/themen/ki-content-erstellung.html"><h2>KI für Content &amp; Social Media</h2><p>Mehr Content in weniger Zeit — ohne dass es nach Maschine klingt.</p></a>
-        <a class="tcard" href="/themen/ki-foerderung.html"><h2>Fördermittel für KI &amp; Digitalisierung</h2><p>Welche Programme dir in DACH bei KI-Projekten helfen — und ob sich der Aufwand lohnt.</p></a>
-        <a class="tcard" href="/themen/ki-weiterbildung.html"><h2>KI lernen &amp; Weiterbildung</h2><p>Welche KI-Kurse sich lohnen — und wo du gratis genauso gut lernst.</p></a>
-        <a class="tcard" href="/themen/ki-recht.html"><h2>KI &amp; Recht — EU AI Act kurz erklärt</h2><p>Was der EU AI Act für kleine Unternehmen bedeutet — ohne Jura-Studium.</p></a>
-        <a class="tcard" href="/themen/ki-kosten-sparen.html"><h2>KI-Kosten im Griff behalten</h2><p>Wie du nicht in der Tool-Abo-Falle landest — und trotzdem gut ausgestattet bist.</p></a>
-        <a class="tcard" href="/themen/ki-freelancing.html"><h2>Mit KI als Freelancer durchstarten</h2><p>KI-Skills als Dienstleistung verkaufen — der schnellste Weg zu echtem Geld.</p></a>
-        <a class="tcard" href="/themen/ki-buecher-kdp.html"><h2>KI-Bücher auf Amazon (KDP)</h2><p>Bücher mit KI-Unterstützung schreiben und auf Amazon verkaufen — was wirklich geht.</p></a>
-        <a class="tcard" href="/themen/ki-kundenservice.html"><h2>KI im Kundenservice</h2><p>Chatbots &amp; Auto-Antworten, die wirklich helfen — statt Kunden zu vergraulen.</p></a>
-        <a class="tcard" href="/themen/ki-trends-2026.html"><h2>KI-Trends 2026 — was wirklich zählt</h2><p>Jenseits des Hypes: welche KI-Entwicklungen 2026 für DACH-Solos relevant sind.</p></a>
-        <a class="tcard" href="/themen/ki-und-krypto.html"><h2>KI &amp; Krypto — was dran ist, was Hype ist</h2><p>KI trifft Krypto: nüchtern eingeordnet für DACH — Chancen, Risiken, was für Solos zählt.</p></a>
+        <a class="tcard" href="/themen/ki-tools.html"><img class="tcard-img" src="/img/themen/ki-tools.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">KI-Tools für DACH-Solos &amp; KMU</span><span class="tcard-p">Welche KI-Tools sich 2026 wirklich lohnen — ehrlich bewertet, DSGVO-geprüft.</span></span></a>
+        <a class="tcard" href="/themen/dsgvo-und-ki.html"><img class="tcard-img" src="/img/themen/dsgvo-und-ki.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">DSGVO &amp; KI — was Selbstständige in DACH wissen müssen</span><span class="tcard-p">KI nutzen, ohne Datenschutz-Ärger. Die 5-Minuten-Version für Solos und KMU.</span></span></a>
+        <a class="tcard" href="/themen/ki-fuer-anfaenger.html"><img class="tcard-img" src="/img/themen/ki-fuer-anfaenger.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">KI für Anfänger — der ehrliche Einstieg ohne Hype</span><span class="tcard-p">Du willst KI im Arbeitsalltag nutzen, weißt aber nicht wo anfangen? Hier der ruhige Einstieg.</span></span></a>
+        <a class="tcard" href="/themen/prompt-engineering.html"><img class="tcard-img" src="/img/themen/prompt-engineering.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">Prompt Engineering für den Arbeitsalltag</span><span class="tcard-p">Bessere Ergebnisse aus KI — ohne Zauberformeln, mit ein paar klaren Prinzipien.</span></span></a>
+        <a class="tcard" href="/themen/ki-automatisierung.html"><img class="tcard-img" src="/img/themen/ki-automatisierung.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">KI-Automatisierung für kleine Unternehmen</span><span class="tcard-p">Wiederkehrende Aufgaben an KI + No-Code abgeben — Schritt für Schritt.</span></span></a>
+        <a class="tcard" href="/themen/ki-newsletter-starten.html"><img class="tcard-img" src="/img/themen/ki-newsletter-starten.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">Einen KI-Newsletter starten</span><span class="tcard-p">Wie du in einer Nische einen Newsletter aufbaust — mit KI-Unterstützung, ohne Hype.</span></span></a>
+        <a class="tcard" href="/themen/ki-bilder.html"><img class="tcard-img" src="/img/themen/ki-bilder.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">KI-Bilder erstellen — Praxis für Solos</span><span class="tcard-p">Midjourney, &amp; Co. sinnvoll nutzen — für Content, ohne rechtliche Stolperfallen.</span></span></a>
+        <a class="tcard" href="/themen/ki-texte-deutsch.html"><img class="tcard-img" src="/img/themen/ki-texte-deutsch.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">KI für deutsche Texte</span><span class="tcard-p">Warum viele KI-Tools bei Deutsch schwächeln — und wie du trotzdem gute Texte bekommst.</span></span></a>
+        <a class="tcard" href="/themen/chatgpt-vs-claude.html"><img class="tcard-img" src="/img/themen/chatgpt-vs-claude.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">ChatGPT vs. Claude vs. Gemini</span><span class="tcard-p">Welcher KI-Assistent für was? Ein ehrlicher Vergleich für den Arbeitsalltag.</span></span></a>
+        <a class="tcard" href="/themen/ki-datenschutz-tools.html"><img class="tcard-img" src="/img/themen/ki-datenschutz-tools.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">DSGVO-konforme KI-Tools</span><span class="tcard-p">Welche KI-Tools du in DACH bedenkenlos nutzen kannst — und worauf du achten musst.</span></span></a>
+        <a class="tcard" href="/themen/ki-meetings.html"><img class="tcard-img" src="/img/themen/ki-meetings.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">KI für Meetings &amp; Protokolle</span><span class="tcard-p">Transkription, Zusammenfassung, To-dos — automatisch aus jedem Meeting.</span></span></a>
+        <a class="tcard" href="/themen/ki-content-erstellung.html"><img class="tcard-img" src="/img/themen/ki-content-erstellung.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">KI für Content &amp; Social Media</span><span class="tcard-p">Mehr Content in weniger Zeit — ohne dass es nach Maschine klingt.</span></span></a>
+        <a class="tcard" href="/themen/ki-foerderung.html"><img class="tcard-img" src="/img/themen/ki-foerderung.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">Fördermittel für KI &amp; Digitalisierung</span><span class="tcard-p">Welche Programme dir in DACH bei KI-Projekten helfen — und ob sich der Aufwand lohnt.</span></span></a>
+        <a class="tcard" href="/themen/ki-weiterbildung.html"><img class="tcard-img" src="/img/themen/ki-weiterbildung.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">KI lernen &amp; Weiterbildung</span><span class="tcard-p">Welche KI-Kurse sich lohnen — und wo du gratis genauso gut lernst.</span></span></a>
+        <a class="tcard" href="/themen/ki-recht.html"><img class="tcard-img" src="/img/themen/ki-recht.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">KI &amp; Recht — EU AI Act kurz erklärt</span><span class="tcard-p">Was der EU AI Act für kleine Unternehmen bedeutet — ohne Jura-Studium.</span></span></a>
+        <a class="tcard" href="/themen/ki-kosten-sparen.html"><img class="tcard-img" src="/img/themen/ki-kosten-sparen.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">KI-Kosten im Griff behalten</span><span class="tcard-p">Wie du nicht in der Tool-Abo-Falle landest — und trotzdem gut ausgestattet bist.</span></span></a>
+        <a class="tcard" href="/themen/ki-freelancing.html"><img class="tcard-img" src="/img/themen/ki-freelancing.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">Mit KI als Freelancer durchstarten</span><span class="tcard-p">KI-Skills als Dienstleistung verkaufen — der schnellste Weg zu echtem Geld.</span></span></a>
+        <a class="tcard" href="/themen/ki-buecher-kdp.html"><img class="tcard-img" src="/img/themen/ki-buecher-kdp.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">KI-Bücher auf Amazon (KDP)</span><span class="tcard-p">Bücher mit KI-Unterstützung schreiben und auf Amazon verkaufen — was wirklich geht.</span></span></a>
+        <a class="tcard" href="/themen/ki-kundenservice.html"><img class="tcard-img" src="/img/themen/ki-kundenservice.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">KI im Kundenservice</span><span class="tcard-p">Chatbots &amp; Auto-Antworten, die wirklich helfen — statt Kunden zu vergraulen.</span></span></a>
+        <a class="tcard" href="/themen/ki-trends-2026.html"><img class="tcard-img" src="/img/themen/ki-trends-2026.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">KI-Trends 2026 — was wirklich zählt</span><span class="tcard-p">Jenseits des Hypes: welche KI-Entwicklungen 2026 für DACH-Solos relevant sind.</span></span></a>
+        <a class="tcard" href="/themen/ki-und-krypto.html"><img class="tcard-img" src="/img/themen/ki-und-krypto.svg" alt="" loading="lazy" width="1200" height="500"><span class="tcard-body"><span class="tcard-h">KI &amp; Krypto — was dran ist, was Hype ist</span><span class="tcard-p">KI trifft Krypto: nüchtern eingeordnet für DACH — Chancen, Risiken, was für Solos zählt.</span></span></a>
     </div>
     <div class="cta-box">
       <h2>Jeden Morgen die wichtigsten KI-Updates</h2>
