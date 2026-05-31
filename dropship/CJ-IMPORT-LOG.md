@@ -287,3 +287,22 @@ NICHT gegen den Shop-Bestand prüft. Verifiziert (je 2 Produkte vorhanden) und d
 Kategorie-Tag behalten. **Erkenntnis:** Der Shop enthält schon Tausende (oft CJ-)Produkte → CJ-Import
 trifft laufend Bestand. Für dünne Kategorien ist **Tag-Regel verbreitern / Bestand umtaggen** der
 richtige Weg, nicht Neu-Import. cj_search_niche.mjs sollte vor create per SKU-Query gegen den Shop prüfen.
+
+## Charge 29 (2026-05-31) — Schmuck + Mode (mit SKU-Vorabprüfung)
+DRAFT „MagSafe Auto-Ladehalterung" (kaputte Bilder, redundant) gelöscht. cj_search_niche.mjs auf
+Schmuck/Mode umgestellt; alle Kandidaten **vorab per SKU gegen den Shop geprüft** (kein Dup mehr).
+Übersprungen: A-Linien-Kleid (`CJLY291603001AZ` = Bestand), Boho-Set (72 Var.), Münzanhänger/Rosenkranz (zu speziell).
+4 saubere Neuzugänge (ACTIVE, 7 Kanäle):
+- **S925 Silber-Halskette «Éclat» 1 Karat Moissanite** (`CJST291552901AZ`, ID 15412902756737) — 44.90, Tags schmuck/damen-schmuck.
+- **Ohrstecker «Lumière»** (`CJST291633101AZ`, ID 15412902789505) — 14.90.
+- **Mondstein-Blütenring «Fleur»** (`CJLX291587201AZ`, ID 15412902855041) — 2 Varianten, 14.90.
+- **2-teilige Mesh-Bluse «Résille»** (`CJYD291471001AZ`, ID 15412902953345) — 2 Farben×5 Grössen=10 Var, 34.90, Farbbild verknüpft, Tags damen-mode.
+Die 3 Schmuckstücke zusätzlich in die manuelle Landing **premium-schmuck** aufgenommen.
+
+### Bilder-QA (2026-05-31)
+Voller Scan: **alle aktiven Produkte haben READY-Hauptbild**, shop-weit nur 4 FAILED-Bilder — alle am
+o. g. DRAFT (jetzt gelöscht). Kundensichtbar fehlt KEIN Bild.
+
+### Kategorie-Landings gefüllt (Tag-Regeln verbreitert / manuell)
+auto-halterungen 7→116 · premium-schmuck 5→41 (+3 neue) · reise-gadgets 7→13. 9 Collection-Beschreibungen
+gekürzt/Escape-Bug repariert. Header-Padding/Titel = User im Customizer (Live-Theme API-gesperrt).

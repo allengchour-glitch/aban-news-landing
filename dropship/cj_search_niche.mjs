@@ -13,13 +13,17 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
 // cat = Shopify-Regel-Tag der Zielkategorie
 const KEYWORDS=[
-  { kw:'car phone holder mount', must:['holder'],  cat:'Auto-Halterung', take:2 },
-  { kw:'car cleaning gel dust',  must:['clean'],   cat:'Auto-Reinigung', take:2 },
-  { kw:'car jump starter power bank', must:['jump'], cat:'Auto-Power',   take:1 },
-  { kw:'serving tray wooden',    must:['tray'],    cat:'Servieren',      take:2 },
-  { kw:'packing cubes travel',   must:['packing'], cat:'Reise-Gadget',   take:2 },
-  { kw:'travel organizer bag',   must:['organizer'],cat:'Reise-Gadget',  take:1 },
-  { kw:'insulated water bottle', must:['bottle'],  cat:'Trinkflasche',   take:2 },
+  // Schöner Schmuck
+  { kw:'pearl necklace freshwater', must:['pearl'],     cat:'damen-schmuck', take:1 },
+  { kw:'gold layered necklace women', must:['necklace'], cat:'damen-schmuck', take:1 },
+  { kw:'zircon tennis bracelet',    must:['bracelet'],  cat:'damen-schmuck', take:1 },
+  { kw:'stainless steel ring women', must:['ring'],     cat:'damen-schmuck', take:1 },
+  { kw:'hoop earrings gold',        must:['earring'],   cat:'damen-schmuck', take:1 },
+  // Mode
+  { kw:'women chiffon blouse',      must:['blouse'],    cat:'damen-mode',    take:1 },
+  { kw:'women wide leg pants',      must:['pants'],     cat:'damen-mode',    take:1 },
+  { kw:'women maxi dress floral',   must:['dress'],     cat:'damen-mode',    take:1 },
+  { kw:'women pleated skirt',       must:['skirt'],     cat:'damen-mode',    take:1 },
 ];
 
 const b=await chromium.launch({headless:true,args:['--ignore-certificate-errors','--no-sandbox']});
