@@ -59,12 +59,31 @@ durchgehend die du-Form.
 - `generate_launch_manual_pdf.py` → `downloads/launch-manual.pdf`.
 - Regenerieren: `python3 generate_ebook.py` (idempotent, schreibt nach `downloads/`).
 
+## Lese-Memory (Buch-Seiten)
+
+- `js/buch-memory.js` = wiederverwendbare, buch-bewusste Memory (Download-Status,
+  „zuletzt angesehen", geöffnete Abschnitte). Konfiguration über `data-*`-Attribute
+  im Markup, **eigener `data-memory-key` pro Buch** (`aban_buch_v1`,
+  `aban_trilogie_v1`), nur `localStorage`, kein Tracking. Genutzt von `buch.html`
+  (+ `en/ fr/ it/`) und `trilogie.html`. `ebook.html` hat seine eigene Inline-Memory
+  (`aban_ebook_v1`) — bewusst getrennt.
+
+## KI-Schriftsteller (`ki-schriftsteller/`)
+
+- Python-Generator, der Romane Kapitel für Kapitel mit `claude-opus-4-8` schreibt
+  (Plot-Bibel als gecachter System-Präfix). Einzelbuch **oder** Trilogie (`baende`).
+- Trilogie-Beispiel: `roman-drama-trilogie.json` → `trilogie.html`. Shared Helfer:
+  `roman_util.py`. Output (Kapitel + `ausgabe/`) ist **git-ignored**, braucht
+  `ANTHROPIC_API_KEY`. Details: `ki-schriftsteller/README.md`.
+
 ## Seiten-Inventar (Auswahl)
 
 | Datei | Zweck |
 |-------|-------|
 | `index.html` | Haupt-Landing (Hero + Sample-Switcher + Subscribe) |
-| `ebook.html` | eBook-Lead-Magnet (Email-Capture + Founding-Upsell + Lese-Memory) |
+| `ebook.html` | eBook-Lead-Magnet (Email-Capture + Founding-Upsell + Lese-Memory, inline) |
+| `buch.html` | Anti-Hype als Buch (PWYW, PDF/ePub) + Lese-Memory via `js/buch-memory.js` |
+| `trilogie.html` | Drama-Trilogie „Das Tal hält den Atem an" (KI-Schriftsteller-Experiment) + Memory |
 | `geld-verdienen-mit-ki.html` | SEO-Money-Page (Layout-Referenz für Subpages) |
 | `ki-tools-fuer-selbststaendige.html` | SEO-Money-Page „KI-Tools für Selbstständige" |
 | `chatgpt-fuer-solopreneure.html` | SEO-Money-Page „ChatGPT für Solopreneure" |

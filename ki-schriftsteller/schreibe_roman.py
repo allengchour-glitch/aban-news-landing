@@ -27,7 +27,6 @@ Verwendung:
   python3 schreibe_roman.py --neu           # vorhandene Kapitel ueberschreiben
 """
 import argparse
-import json
 import os
 import re
 import sys
@@ -37,18 +36,17 @@ try:
 except ImportError:
     sys.exit("! Paket fehlt. Installiere es mit:  pip install anthropic")
 
+# Gemeinsame Helfer (eine Quelle der Wahrheit). lade_roman wird hierueber auch
+# fuer lektor.py / ueberarbeiten.py verfuegbar, die es aus schreibe_roman importieren.
+from roman_util import lade_roman, baende_aus_roman, ist_trilogie, kapitel_pfad
+
 MODELL = "claude-opus-4-8"
 HIER = os.path.dirname(os.path.abspath(__file__))
 
 
 # ------------------------------------------------------------------
-# Plot-Bibel laden und in einen stabilen System-Prompt giessen
+# Plot-Bibel in einen stabilen System-Prompt giessen
 # ------------------------------------------------------------------
-def lade_roman(pfad):
-    with open(pfad, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
 def baue_plotbibel(roman):
     """Rendert die statische Plot-Bibel als deterministischen Text.
 
@@ -90,6 +88,21 @@ def baue_plotbibel(roman):
         z.append("  Geheimnis (nur dir bekannt, nicht ausplaudern): %s" % f["geheimnis"])
         z.append("  Stimme: %s" % f["stimme"])
     z.append("")
+    # Trilogie: der Gesamtbogen ueber alle Baende gehoert in den stabilen
+    # System-Praefix (er aendert sich pro Kapitel nicht -> Cache bleibt warm).
+    # Bei Einzelbuechern bleibt dieser Block aus -> Prompt byte-identisch zu vorher.
+    if ist_trilogie(roman):
+        baende = baende_aus_roman(roman)
+        z.append("== BAENDE (TRILOGIE, Gesamtbogen) ==")
+        z.append("Dieser Roman erscheint in %d Baenden. Du schreibst einen "
+                 "zusammenhaengenden Bogen ueber alle Baende - Figuren, Motive "
+                 "und offene Faeden tragen weiter." % len(baende))
+        for b in baende:
+            zeile = "Band %d: %s" % (b["nummer"], b["titel"])
+            if b.get("untertitel"):
+                zeile += " - " + b["untertitel"]
+            z.append(zeile)
+        z.append("")
     z.append("== AUFTRAG ==")
     z.append("Schreibe jeweils EIN vollstaendiges Kapitel als fertige Prosa. "
              "Halte dich an Perspektive, Ton und Stilregeln. Nutze die "
@@ -102,12 +115,21 @@ def baue_plotbibel(roman):
 # ------------------------------------------------------------------
 # Kapitel-spezifischer Auftrag (der variable Teil, NACH dem Cache)
 # ------------------------------------------------------------------
-def baue_kapitel_auftrag(kap, synopsen):
+def baue_kapitel_auftrag(kap, synopsen, band=None):
     z = []
     if synopsen:
         z.append("== WAS BISHER GESCHAH (zur Kontinuitaet) ==")
-        for nr, syn in synopsen:
-            z.append("Kapitel %d: %s" % (nr, syn))
+        for label, syn in synopsen:
+            z.append("%s: %s" % (label, syn))
+        z.append("")
+    # Bei Mehrband-Romanen den aktuellen Band benennen, damit Claude weiss,
+    # an welcher Stelle des Gesamtbogens es schreibt.
+    if band is not None:
+        bandzeile = "Band %d - %s" % (band["nummer"], band["titel"])
+        if band.get("untertitel"):
+            bandzeile += " (%s)" % band["untertitel"]
+        z.append("== AKTUELLER BAND ==")
+        z.append(bandzeile)
         z.append("")
     z.append("== SCHREIBE JETZT: KAPITEL %d - %s ==" % (kap["nummer"], kap["titel"]))
     z.append("Ziel dieses Kapitels: " + kap["ziel"])
@@ -133,8 +155,8 @@ def kurz_synopse(text, max_woerter=70):
 # ------------------------------------------------------------------
 # Ein Kapitel schreiben (Streaming + Prompt-Caching)
 # ------------------------------------------------------------------
-def schreibe_kapitel(client, plotbibel, kap, synopsen):
-    auftrag = baue_kapitel_auftrag(kap, synopsen)
+def schreibe_kapitel(client, plotbibel, kap, synopsen, band=None):
+    auftrag = baue_kapitel_auftrag(kap, synopsen, band)
     teile = []
     # Plot-Bibel als System-Block mit cache_control -> stabiler Praefix,
     # wird ab dem 2. Kapitel aus dem Cache gelesen.
@@ -173,8 +195,11 @@ def main():
                    help="Pfad zur Plot-Bibel (Default: roman.json)")
     p.add_argument("--out", default=os.path.join(HIER, "kapitel"),
                    help="Ausgabeordner fuer die Kapitel (Default: kapitel/)")
+    p.add_argument("--band", type=int, default=None,
+                   help="Nur diesen Band schreiben (Trilogie; Nummer)")
     p.add_argument("--kapitel", type=int, default=None,
-                   help="Nur dieses eine Kapitel schreiben (Nummer)")
+                   help="Nur dieses eine Kapitel schreiben (Nummer; bei Trilogie "
+                        "innerhalb von --band)")
     p.add_argument("--neu", action="store_true",
                    help="Vorhandene Kapiteldateien ueberschreiben")
     args = p.parse_args()
@@ -187,39 +212,69 @@ def main():
     os.makedirs(args.out, exist_ok=True)
     client = anthropic.Anthropic()
 
-    kapitel = roman["kapitel"]
-    if args.kapitel is not None:
-        kapitel = [k for k in kapitel if k["nummer"] == args.kapitel]
-        if not kapitel:
-            sys.exit("! Kapitel %d steht nicht im Plan." % args.kapitel)
+    # Normalisieren: Einzelbuch -> ein Band, Trilogie -> deklarierte Baende.
+    baende = baende_aus_roman(roman)
+    einzelbuch = not ist_trilogie(roman)
 
-    # Synopsen bereits vorhandener Kapitel einsammeln (fuer Kontinuitaet).
-    synopsen = []
-    for k in roman["kapitel"]:
-        pfad = os.path.join(args.out, "kapitel-%02d.md" % k["nummer"])
-        if os.path.exists(pfad) and (args.kapitel is None or k["nummer"] < args.kapitel):
-            with open(pfad, "r", encoding="utf-8") as f:
-                synopsen.append((k["nummer"], kurz_synopse(f.read())))
+    if args.band is not None:
+        if einzelbuch:
+            sys.exit("! --band gilt nur fuer Mehrband-Romane (baende). "
+                     "Diese Bibel ist ein Einzelbuch.")
+        if not any(b["nummer"] == args.band for b in baende):
+            sys.exit("! Band %d steht nicht in der Bibel." % args.band)
+
+    # Flache Arbeitsliste in Erzaehlreihenfolge: (band, kapitel). So bleibt die
+    # Kontinuitaet ueber Bandgrenzen hinweg konsistent (frueherer Band -> spaeter).
+    plan = [(b, k) for b in baende for k in b["kapitel"]]
+
+    def label(b, k):
+        return ("Band %d, Kapitel %d" % (b["nummer"], k["nummer"])
+                if not einzelbuch else "Kapitel %d" % k["nummer"])
+
+    def soll_schreiben(b, k):
+        if args.band is not None and b["nummer"] != args.band:
+            return False
+        if args.kapitel is not None and k["nummer"] != args.kapitel:
+            return False
+        return True
+
+    ziele = [(b, k) for (b, k) in plan if soll_schreiben(b, k)]
+    if not ziele:
+        sys.exit("! Auswahl trifft kein Kapitel (pruefe --band / --kapitel).")
 
     print("== %s ==" % roman["titel"])
-    print("Modell: %s | Kapitel zu schreiben: %s\n" %
-          (MODELL, ", ".join(str(k["nummer"]) for k in kapitel)))
+    print("Modell: %s | zu schreiben: %s\n" %
+          (MODELL, ", ".join(label(b, k) for (b, k) in ziele)))
 
-    for kap in kapitel:
-        pfad = os.path.join(args.out, "kapitel-%02d.md" % kap["nummer"])
-        if os.path.exists(pfad) and not args.neu and args.kapitel is None:
-            print("= Kapitel %d existiert schon, ueberspringe (--neu zum Ueberschreiben).\n" % kap["nummer"])
-            with open(pfad, "r", encoding="utf-8") as f:
-                synopsen.append((kap["nummer"], kurz_synopse(f.read())))
+    # Ein einziger geordneter Durchlauf: vorhandene Kapitel liefern Synopsen fuer
+    # spaetere; Ziel-Kapitel werden geschrieben und ebenfalls als Synopse angehaengt.
+    synopsen = []
+    for b, k in plan:
+        pfad = kapitel_pfad(args.out, b["nummer"], k["nummer"], einzelbuch)
+
+        if not soll_schreiben(b, k):
+            # Nicht ausgewaehlt: vorhandenen Text nur als Kontinuitaets-Synopse nutzen.
+            if os.path.exists(pfad):
+                with open(pfad, "r", encoding="utf-8") as f:
+                    synopsen.append((label(b, k), kurz_synopse(f.read())))
             continue
 
-        print("----- Kapitel %d: %s -----" % (kap["nummer"], kap["titel"]))
-        text, cache_info = schreibe_kapitel(client, plotbibel, kap, synopsen)
+        if os.path.exists(pfad) and not args.neu and args.kapitel is None:
+            print("= %s existiert schon, ueberspringe (--neu zum Ueberschreiben).\n"
+                  % label(b, k))
+            with open(pfad, "r", encoding="utf-8") as f:
+                synopsen.append((label(b, k), kurz_synopse(f.read())))
+            continue
+
+        print("----- %s: %s -----" % (label(b, k), k["titel"]))
+        band = None if einzelbuch else b
+        text, cache_info = schreibe_kapitel(client, plotbibel, k, synopsen, band)
+        os.makedirs(os.path.dirname(pfad), exist_ok=True)
         with open(pfad, "w", encoding="utf-8") as f:
             f.write(text + "\n")
         woerter = len(text.split())
         print("\n[OK] %s (%d Woerter) | %s\n" % (pfad, woerter, cache_info))
-        synopsen.append((kap["nummer"], kurz_synopse(text)))
+        synopsen.append((label(b, k), kurz_synopse(text)))
 
     print("Fertig. Kapitel liegen in: %s" % args.out)
 
