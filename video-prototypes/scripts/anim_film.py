@@ -111,7 +111,7 @@ def draw_char(ld,t,P):
         limb(ld,(shx,shy),el,16,BODY,hi=BODYL); limb(ld,el,hand,13,BODYD); E(ld,hand[0],hand[1],L(13),L(13),BODY)
         if P.get("smear") and side=="R": ld.line([(shx,shy),hand],fill=(255,176,32,90),width=int(L(3)))
     # head
-    ht=P["headturn"]; look=P["look"]; hx=sh[0]+ht*L(16); hy=sh[1]-L(70)+bob*0.2
+    ht=P["headturn"]; look=P["look"]; hx=sh[0]+ht*L(16); hy=sh[1]-L(70)+bob*0.2+P.get("headdip",0)*SS
     for s in (-1,1):
         exu=hx+s*L(38)+ht*L(10); ey=hy-L(96)+P["ear"]*(1 if s>0 else -1)
         E(ld,exu,ey,L(18),L(54),EAR); E(ld,exu,ey+L(6),L(10),L(40),BLUSH)
@@ -155,27 +155,42 @@ def perform(t,DUR,env,eyewide,blink,prop,sac):
         P["bob"]=-4-3*math.cos(ph*2*math.pi*2); P["lean"]=6
         P["armL"]=(-22+26*math.sin(ph*2*math.pi+math.pi),16); P["armR"]=(22+26*math.sin(ph*2*math.pi),16)
         P["headturn"]=0.35; P["look"]=0.1; P["ear"]=math.sin(ph*2*math.pi)*7*SS/SS; P["tail"]=math.sin(ph*8)*8
-    else:        # STAND & ACT (planted feet, weight shift, breathing)
-        tt=t-WALK; P["X"]=0
-        wsh=math.sin(tt*1.4); P["lean"]=4*wsh
-        P["footL"]=(-stance_w,gr); P["footR"]=(stance_w,gr)
-        breath=math.sin(tt*2*math.pi*0.5)*2
-        P["bob"]=breath+ (-1.5*abs(wsh))
-        # gestures (eased) alternating
-        g=tt%2.6
-        if g<0.9:
-            gg=sm(g/0.45) if g<0.45 else sm((0.9-g)/0.45)
-            if int(tt/2.6)%2==0: P["armR"]=(-30-45*gg,-10-30*gg); P["armL"]=(-16+6*nz(tt,1),16)
-            else: P["armL"]=(30+45*gg,10+30*gg); P["armR"]=(16+6*nz(tt,2),16)
-        else: P["armR"]=(18+6*nz(tt,3),16); P["armL"]=(-18+6*nz(tt,4),16)
-        P["headturn"]=0.4*math.sin(tt*0.9)+0.08*nz(tt,5); P["look"]=0.25*math.sin(tt*0.9)
-        P["ear"]=math.sin(tt*5)*5*SS/SS; P["tail"]=math.sin(tt*6)*12
+        P["headdip"]=0; P["smear"]=False
+    else:        # STAND & ACT — human idle: weight shift (contrapposto), breathing, speech-gated gestures
+        tt=t-WALK
+        # slow weight shift onto alternating leg (~every 3.4s)
+        wsh=math.sin(tt/3.4*2*math.pi)                 # -1..1 weighted side
+        P["X"]=3.5*wsh                                 # body drifts over the weighted leg
+        P["lean"]=5*wsh + 1.5*math.sin(tt*0.55)        # hip/shoulder sway + slow drift
+        # planted feet; the un-weighted heel lifts a touch (life)
+        liftL=max(0.0,-wsh)*7; liftR=max(0.0,wsh)*7
+        P["footL"]=(-stance_w+2*wsh,gr-liftL); P["footR"]=(stance_w+2*wsh,gr-liftR)
+        # breathing + speech micro-bounce (body dips a hair as the mouth opens)
+        breath=math.sin(tt*2*math.pi*0.45)*2.2
+        P["bob"]=breath -1.2*abs(wsh) -env*1.8
+        P["headdip"]=env*5 + 1.2*math.sin(tt*2*math.pi*0.45)   # head nods on emphasis + breathes
+        # gestures: quicker beats (~1.8s), eased arcs, 3-way variation, amplitude follows the voice
+        amp=0.55+0.75*min(1.0,env*1.7)
+        g=tt%1.8; gv=0.0
+        if g<0.8:
+            gg=sm(g/0.4) if g<0.4 else sm((0.8-g)/0.4); gv=gg
+            beat=int(tt/1.8)%3
+            if beat==0:                                # right hand rises / points outward
+                P["armR"]=(-26-52*gg*amp,-6-36*gg*amp); P["armL"]=(-16+8*nz(tt,1),16)
+            elif beat==1:                              # left hand
+                P["armL"]=(26+52*gg*amp,6+36*gg*amp);  P["armR"]=(16+8*nz(tt,2),16)
+            else:                                      # both hands open outward (presenting)
+                P["armR"]=(-22-36*gg*amp,-28*gg*amp);  P["armL"]=(22+36*gg*amp,28*gg*amp)
+        else:                                          # rest: gentle idle sway in the arms
+            P["armR"]=(18+7*nz(tt,3),16+3*math.sin(tt*1.3)); P["armL"]=(-18+7*nz(tt,4),16+3*math.sin(tt*1.1+1))
+        # head life: turn follows weight + slow scan, eyes lead
+        P["headturn"]=0.30*math.sin(tt*0.8)+0.12*wsh+0.06*nz(tt,5); P["look"]=0.22*math.sin(tt*0.8)+0.1*wsh
+        P["ear"]=math.sin(tt*5)*5 + gv*4; P["tail"]=math.sin(tt*6)*12 + 8*wsh
+        P["smear"]= gv>0.55                            # motion streak at the gesture peak
     if prop:
         if prop in ("phone","cig"): P["armR"]=(-95,-54); P["look"]=0.9
         else: P["armR"]=(-74,-30); P["look"]=0.6
-        P["headturn"]=0.05; P["eyewide"]=max(P["eyewide"],0.3)
-    # spring secondary: ears/tail lag already sine; smear flag on fast arm
-    P["smear"]=False
+        P["headturn"]=0.05; P["eyewide"]=max(P["eyewide"],0.3); P["headdip"]=P.get("headdip",0)*0.4
     return P
 
 # ================= load audio-driven data =================
