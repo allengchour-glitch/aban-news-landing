@@ -521,5 +521,33 @@
   f.addEventListener('submit',function(){var b=f.querySelector('button');if(b){b.textContent='Wird geöffnet…';}});
 })();
 </script>
+
+<!-- Sticky Mobile-CTA: erscheint, wenn das Hero-Formular weggescrollt ist (nur Mobile) -->
+<a href="#signup" id="stickyCta" aria-label="Newsletter abonnieren">☕ Gratis abonnieren — Mo–Fr, 5 Min</a>
+<style>
+  #stickyCta{position:fixed;left:12px;right:12px;bottom:12px;z-index:80;display:none;
+    text-align:center;background:var(--amber);color:#fff;font-weight:800;font-size:1rem;
+    padding:.95rem 1rem;border-radius:14px;text-decoration:none;
+    box-shadow:0 10px 30px rgba(217,119,6,.42);border:1px solid rgba(255,255,255,.2)}
+  #stickyCta.show{display:block;animation:ctaUp .25s ease}
+  @keyframes ctaUp{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+  @media(min-width:861px){#stickyCta{display:none!important}}
+  @media(prefers-reduced-motion:reduce){#stickyCta.show{animation:none}}
+</style>
+<script>
+(function(){
+  var cta=document.getElementById('stickyCta'), anchor=document.getElementById('signup');
+  if(!cta||!anchor||!('IntersectionObserver' in window))return;
+  // Nur auf Mobile aktiv
+  if(window.matchMedia('(min-width:861px)').matches)return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      // Formular sichtbar -> CTA aus; weggescrollt -> CTA an
+      cta.classList.toggle('show', !e.isIntersecting);
+    });
+  },{threshold:0});
+  io.observe(anchor);
+})();
+</script>
 </body>
 </html>
