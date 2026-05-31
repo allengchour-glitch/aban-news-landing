@@ -2,7 +2,8 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **54 Produkte LIVE** + Hero-Fokus auf 3 Bestseller.
+> Stand: 2026-05-31 — **55 Produkte LIVE** + 6 Hero-Produkte. CJ-Katalog für saubere Neutreffer
+> weitgehend ausgeschöpft → Fokus auf Feinschliff + Marketing statt weiterer Breite.
 
 Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in **6 Kanälen** (Onlineshop, Shop,
 TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar untracked

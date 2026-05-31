@@ -22,16 +22,16 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
 const KEYWORDS = [
-  { kw: 'tire inflator portable',    must: ['inflator'],  take: 1 },
-  { kw: 'car cleaning gel',          must: ['cleaning'],  take: 1 },
-  { kw: 'screwdriver set precision', must: ['screwdriver'], take: 1 },
-  { kw: 'tape measure laser',        must: ['measure'],   take: 1 },
-  { kw: 'headlamp led rechargeable', must: ['headlamp'],  take: 1 },
-  { kw: 'multitool pocket knife',    must: ['multitool'], take: 1 },
-  { kw: 'work gloves anti cut',      must: ['gloves'],    take: 1 },
-  { kw: 'flashlight tactical',       must: ['flashlight'], take: 1 },
-  { kw: 'car seat gap organizer',    must: ['seat'],      take: 1 },
-  { kw: 'magnetic wristband tools',  must: ['wristband'], take: 1 },
+  { kw: 'sunset lamp projector usb', must: ['sunset'],    take: 1 },
+  { kw: 'levitating moon lamp',      must: ['moon'],      take: 1 },
+  { kw: 'aroma diffuser flame',      must: ['flame'],     take: 1 },
+  { kw: 'electric wine bottle opener', must: ['opener'], take: 1 },
+  { kw: 'cocktail shaker set',       must: ['shaker'],    take: 1 },
+  { kw: 'digital photo frame',       must: ['frame'],     take: 1 },
+  { kw: 'wireless car charger mount', must: ['charger'], take: 1 },
+  { kw: 'electric foot callus',      must: ['foot'],      take: 1 },
+  { kw: 'mini printer thermal',      must: ['printer'],   take: 1 },
+  { kw: 'smart plug wifi',           must: ['plug'],      take: 1 },
 ];
 
 let _b, _ctx;
