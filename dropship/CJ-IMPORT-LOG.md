@@ -306,3 +306,17 @@ o. g. DRAFT (jetzt gelöscht). Kundensichtbar fehlt KEIN Bild.
 ### Kategorie-Landings gefüllt (Tag-Regeln verbreitert / manuell)
 auto-halterungen 7→116 · premium-schmuck 5→41 (+3 neue) · reise-gadgets 7→13. 9 Collection-Beschreibungen
 gekürzt/Escape-Bug repariert. Header-Padding/Titel = User im Customizer (Live-Theme API-gesperrt).
+
+## Charge 30 (2026-05-31) — Schmuck/Mode Runde 2 + Kuration
+Such-Runde 2 (neue Keywords, SKU-Vorabcheck). Übersprungen: A-Linien-Kleid & Lacey-Vest (Bestand),
+Éclat/Lumière (grad in Ch.29 angelegt), Twisted-Ring (nur 2 Bilder). 3 saubere Neuzugänge (ACTIVE, 7 Kanäle):
+- **Kirschblüten-Halskette «Sakura»** (`CJLX291483101AZ`, ID 15412911079809) — 16.90, Zirkonia, weissgold.
+- **7-Chakra Wickelarmband «Harmony»** (`CJSL291586001AZ`, ID 15412911178113) — 16.90, Naturstein.
+- **2-teiliges Leinen-Set «Provence»** (`CJLS291603501AZ`, ID 15412911964545) — 6 Farben×6 Grössen=36 Var, Farbbild verknüpft, 34.90.
+Beide Ketten/Armband zusätzlich in premium-schmuck.
+
+### Kuration: neue Showcase-Kollektion ✨ Highlights – Schmuck & Mode
+Manuelle Kollektion (`688005775745`, handle `✨-highlights-schmuck-mode`), 13 handverlesene Top-Stücke
+(Éclat/Sakura-Ketten, Lumière-Studs, Fleur-Ring, Harmony-Armband, Perlen/Tennis/Smaragd + Provence-Set,
+Résille-Bluse, A-Linien-Kleid, Riviera-Cardigan, Lacey-Top), publiziert (Onlineshop, Shop, TikTok, Meta).
+→ Tipp für User: im Theme-Customizer als Menüpunkt/Startseiten-Sektion einbinden für max. Sichtbarkeit.
