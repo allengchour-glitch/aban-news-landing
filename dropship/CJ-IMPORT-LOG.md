@@ -401,3 +401,13 @@ Neues Tool **`dropship/cj_full_create.mjs`**: legt CJ-Produkt direkt mit komplet
 - **«Planet» Halskette/Armband** (`CJLX291634502BY`) — 4 Varianten, 16.90
 Die 4 Ketten zusätzlich in premium-schmuck. Übersprungen: Haartrockner (diffuser=Föhn-Treffer), Pet-Artikel,
 Messerschärfer (Bestand). ⚠️ cj_full_create-Farbnamen-Cleaner war zu aggressiv (Planet: „-"/„Gold-") → inline korrigiert.
+
+## Charge 35 (2026-05-31) — Schmuck-Nachschub (Voll-Galerie)
+Ersatz-Konzepte (Messerblock/Luftbefeuchter/Bad-Masken) = CJ-Suche lieferte nur Müll (Föhn, Möbel,
+Bambus-Hemden) → nichts angelegt. Stattdessen Schmuck (zuverlässig): 6 neu, alle Voll-Galerie, 7 Kanäle,
+in premium-schmuck:
+- Pusteblumen-Ring «Dandelion» (8 Grössen, 14.90) · Herren-Ring «Vintage» (7 Grössen, 16.90)
+- Tigerauge-Armband «Savana» (4 Varianten, 16.90) · Ohrringe «Barque» (14.90)
+- Ear-Cuffs «Papillon» (2 Stile, 16.90) · 999 Silber-Armband «Trèfle» Kleeblatt (69.90)
+⚠️ cj_full_create-Cleaner verschluckt Grössen/Stile zu Müll-Namen (Ring „H294 Ancient -No 6") →
+beim Anlegen manuell zu Ringgrösse/Stil korrigiert. TODO: Cleaner erkennt „No <n>"/„Style <n>" als Grösse/Stil.
