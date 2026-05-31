@@ -60,6 +60,11 @@
     section.block h2{font-size:1.4rem;margin-bottom:.6rem}
     .toc-list{margin:.2rem 0 0 1.1rem}
     .toc-list li{margin-bottom:.3rem}
+    .peek-grid{display:grid;gap:1rem;margin:.6rem 0 0}
+    @media(min-width:640px){.peek-grid{grid-template-columns:1fr 1fr}}
+    .peek-grid figure{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+    .peek-grid img{width:100%;height:auto;display:block}
+    .peek-grid figcaption{font-size:.8rem;color:var(--muted);padding:.5rem .7rem;border-top:1px solid var(--line)}
     .faq details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:.6rem;padding:0}
     .faq summary{padding:.85rem 1rem;font-weight:600;cursor:pointer}
     .faq .a{padding:0 1rem 1rem;color:var(--muted);font-size:.92rem}
@@ -144,6 +149,25 @@
         <li><strong>Werkstatt:</strong> Kopier-Vorlagen, ein durchgerechneter Arbeitstag, Werkzeug nach Aufgabe und ein Klartext-Glossar</li>
       </ol>
       <p style="margin-top:.8rem;"><a href="/ebook.html" class="btn btn--ghost">Leseprobe: ganzes Kapitel 1 online →</a></p>
+    </section>
+
+    <section class="block">
+      <h2>Blick ins Buch</h2>
+      <p>Kein Stockfoto-Füllwerk — nur Diagramme, die wirklich etwas erklären. Drei davon:</p>
+      <div class="peek-grid">
+        <figure>
+          <img src="/downloads/fig-filter-de.png" alt="Der 3-Fragen-Bullshit-Filter als Flussdiagramm" loading="lazy" width="900" height="560">
+          <figcaption>Der 3-Fragen-Filter auf einen Blick.</figcaption>
+        </figure>
+        <figure>
+          <img src="/downloads/fig-stack-de.png" alt="Der minimale KI-Stack aus vier Bausteinen" loading="lazy" width="900" height="540">
+          <figcaption>Vier Bausteine, mehr brauchst du nicht.</figcaption>
+        </figure>
+        <figure>
+          <img src="/downloads/fig-day-de.png" alt="Ein Arbeitstag vorher und nachher als Balkendiagramm" loading="lazy" width="900" height="460">
+          <figcaption>Ehrliche Halbierung statt „10x“.</figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="block">

@@ -49,7 +49,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 # story-Liste und gibt None zurück (siehe generate_ebook.py).
 # render_blocks erwartet die Style-Namen: Lead, H2, Body, Callout, Bull.
 from generate_ebook import (
-    CONTENT, render_blocks,
+    CONTENT, render_blocks, _augment,
     AMBER, DARK, CREAM, MID_GRAY,
 )
 from generate_ebook import _esc  # nur "&" -> "&amp;", lässt <b>…</b> intakt
@@ -118,6 +118,11 @@ def make_print_styles():
         textColor=DARK, backColor=CREAM, borderColor=AMBER, borderWidth=0.5,
         borderPadding=8, leftIndent=2, rightIndent=2, spaceBefore=6,
         spaceAfter=10, alignment=TA_LEFT)
+    # Quellen-Liste + Bildunterschrift (für 'src'/'img'-Blöcke aus _augment)
+    add("Source", fontName="Helvetica", fontSize=9, leading=12.5,
+        textColor=MID_GRAY, alignment=TA_LEFT)
+    add("Caption", fontName="Helvetica-Oblique", fontSize=8, leading=11,
+        textColor=MID_GRAY, alignment=TA_CENTER, spaceBefore=3)
     return styles
 
 
@@ -201,10 +206,12 @@ def build_print_pdf(lang, content, out_path):
 
     # ── Kapitel (Inhalt aus generate_ebook via render_blocks) ─
     # render_blocks mutiert die story-Liste in place und gibt None zurück.
+    # Bildbreite für die schmale 5x8"-Seite: Inhaltsbreite minus etwas Luft.
+    img_w = PAGE_W - MARGIN_INNER - MARGIN_OUTER
     for i, ch in enumerate(content["chapters"], 1):
         story.append(Paragraph("Kapitel %d" % i, styles["ChapterNum"]))
         story.append(Paragraph(_esc(ch["title"]), styles["ChapterTitle"]))
-        render_blocks(story, styles, ch["blocks"])
+        render_blocks(story, styles, ch["blocks"], img_max_w=img_w)
         story.append(PageBreak())
 
     doc.build(story)
@@ -222,6 +229,8 @@ def main():
         if not content:
             print("  übersprungen: keine Inhalte für Sprache '%s'" % lang)
             continue
+        # Gleiche Augmentierung wie das eBook: Diagramme + Quellen-Kapitel.
+        content = _augment(lang, content)
         out_path = os.path.join(out_dir, "anti-hype-print-%s.pdf" % lang)
         build_print_pdf(lang, content, out_path)
 
