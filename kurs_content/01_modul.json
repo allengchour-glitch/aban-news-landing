@@ -1,0 +1,168 @@
+{
+ "title": "Grundlagen ohne Hype",
+ "kicker": "Modul 1",
+ "toc": true,
+ "kind": "modul",
+ "blocks": [
+  [
+   "lead",
+   "Bevor du ein Werkzeug benutzt, solltest du wissen, was es tut. Sonst vertraust du blind &mdash; und blindes Vertrauen ist bei KI teuer."
+  ],
+  [
+   "h3",
+   "Was ein Sprachmodell wirklich macht"
+  ],
+  [
+   "p",
+   "Ein KI-Chatbot wie ChatGPT ist ein Sprachmodell. Es sagt das n&auml;chste wahrscheinliche Wort voraus, wieder und wieder, bis ein Text entsteht. Es versteht nicht im menschlichen Sinn &mdash; es rechnet, welche Worte gut zusammenpassen. Das erkl&auml;rt seine zwei Gesichter: Es schreibt erstaunlich fl&uuml;ssige Texte und erfindet zugleich &uuml;berzeugend klingenden Unsinn."
+  ],
+  [
+   "p",
+   "Dieses Erfinden hat einen Namen: Halluzination. Das Modell behauptet eine Quelle, ein Gesetz oder eine Zahl, die es nie gab &mdash; im selben sicheren Ton wie bei korrekten Aussagen. Es l&uuml;gt nicht absichtlich. Es hat schlicht kein Konzept von wahr und falsch."
+  ],
+  [
+   "p",
+   "Praktisch hei&szlig;t das: Das Modell hat in der Trainingsphase Muster aus riesigen Textmengen aufgenommen. Es kennt keine Datenbank, in der es nachschl&auml;gt. Es kennt nur, wie Menschen typischerweise &uuml;ber ein Thema schreiben. Klingt eine erfundene Antwort wie eine echte, ist das Modell zufrieden &mdash; ob sie stimmt, ist ihm gleich."
+  ],
+  [
+   "callout",
+   "Merksatz: KI ist ein begnadeter Texter und ein lausiger Zeuge. Lass sie formulieren, aber pr&uuml;fe jede Tatsache selbst."
+  ],
+  [
+   "h3",
+   "Das Mentalmodell, das dir wirklich hilft"
+  ],
+  [
+   "p",
+   "Stell dir die KI nicht als Suchmaschine vor und nicht als allwissenden Experten. Stell sie dir vor als einen sehr belesenen, sehr schnellen Praktikanten, der noch nie in deiner Branche gearbeitet hat. Er liest und schreibt blitzschnell, kennt unz&auml;hlige Textsorten &mdash; aber er war nie im Termin, kennt deine Kunden nicht und hat keinen Zugang zu deinen Zahlen. Genau so behandelst du ihn: Aufgaben klar beschreiben, Ergebnis gegenlesen, Verantwortung beh&auml;ltst du."
+  ],
+  [
+   "ul",
+   [
+    "Er ist schnell, aber nicht zuverl&auml;ssig.",
+    "Er klingt sicher, auch wenn er falsch liegt.",
+    "Er kennt deinen Kontext nur, wenn du ihn lieferst.",
+    "Er wird besser, je pr&auml;ziser deine Anweisung ist."
+   ]
+  ],
+  [
+   "h3",
+   "Halluzinationen erkennen und gegenpr&uuml;fen"
+  ],
+  [
+   "p",
+   "Du musst kein Technik-Experte sein, um Erfundenes zu entlarven. Es gibt typische Warnsignale &mdash; und einen einfachen Reflex, der dich vor den meisten Fehlern sch&uuml;tzt: Bei jeder konkreten Tatsache fragst du dich, woher die KI das wissen will."
+  ],
+  [
+   "ul",
+   [
+    "<b>Konkrete Zahlen und Prozente</b> ohne genannte Quelle &mdash; oft frei erfunden.",
+    "<b>Namen von Studien, Paragrafen, B&uuml;chern oder URLs</b> &mdash; pr&uuml;fe, ob es sie &uuml;berhaupt gibt.",
+    "<b>Sehr aktuelle Ereignisse</b> &mdash; das Modell hat einen Wissensstand und kennt das Heute oft nicht.",
+    "<b>Antworten, die zu glatt passen</b> &mdash; wenn alles bequem zusammenpasst, werde misstrauisch."
+   ]
+  ],
+  [
+   "p",
+   "Der einfachste Gegencheck: Lass dir die Quelle nennen und such selbst danach. Findest du sie nicht in zwei Minuten, behandle die Aussage als unbelegt. Ein zweiter Trick ist, dieselbe Frage neu zu stellen oder ein anderes Modell zu fragen. Weichen die Antworten stark voneinander ab, ist das Thema heikel &mdash; und du pr&uuml;fst von Hand."
+  ],
+  [
+   "h3",
+   "Praxisbeispiel: ein Prompt, der das Raten reduziert"
+  ],
+  [
+   "p",
+   "Du kannst die KI anweisen, ehrlicher mit ihren Grenzen umzugehen. Sie wird dadurch nicht fehlerfrei, aber sie markiert Unsicheres deutlicher. Kopier dir diese Vorlage und f&uuml;ll die eckigen Klammern aus:"
+  ],
+  [
+   "code",
+   "Rolle: Du bist mein kritischer Rechercheassistent.\nAufgabe: [deine Frage hier]\n\nRegeln:\n- Trenne klar zwischen gesichertem Wissen und Vermutung.\n- Markiere jede Vermutung mit dem Wort UNSICHER.\n- Nenne zu jeder konkreten Zahl, woher du sie hast.\n- Wenn du etwas nicht weisst, schreib: Das weiss ich nicht.\n- Erfinde keine Quellen, Paragrafen oder Links.\n\nGib am Ende eine kurze Liste: Was sollte ich selbst pruefen?"
+  ],
+  [
+   "p",
+   "Der letzte Satz ist der wertvollste. Eine Pr&uuml;fliste am Ende zwingt das Modell, seine eigenen wackligen Stellen zu benennen &mdash; und gibt dir eine fertige To-do-Liste f&uuml;r den Faktencheck."
+  ],
+  [
+   "h3",
+   "Wof&uuml;r KI heute taugt &mdash; und wof&uuml;r nicht"
+  ],
+  [
+   "p",
+   "Spielt KI dir in die H&auml;nde, wenn die Aufgabe sprachlich ist und du das Ergebnis selbst beurteilen kannst? Dann ja. Geht es um harte Fakten, Zahlen oder Verantwortung, die bei dir liegt? Dann nur als Entwurf, nie als letztes Wort."
+  ],
+  [
+   "ul",
+   [
+    "<b>Gut:</b> Entw&uuml;rfe f&uuml;r E-Mails, Texte umformulieren, Ideen sammeln, lange Texte zusammenfassen, Sprache vereinfachen, &Uuml;bersetzungs-Rohfassung.",
+    "<b>Mit Vorsicht:</b> Recherche (immer gegenpr&uuml;fen), Rechtliches und Steuerliches (nur Orientierung), Fachtexte in deinem Spezialgebiet.",
+    "<b>Finger weg:</b> verbindliche Ausk&uuml;nfte ohne Pr&uuml;fung, medizinische oder rechtliche Diagnosen, alles wo eine erfundene Zahl Schaden anrichtet."
+   ]
+  ],
+  [
+   "h3",
+   "Erste sichere Anwendungsf&auml;lle f&uuml;r diese Woche"
+  ],
+  [
+   "p",
+   "Fang dort an, wo ein Fehler dich nichts kostet und du das Ergebnis sofort beurteilen kannst. So baust du Routine auf, ohne Risiko."
+  ],
+  [
+   "ol",
+   [
+    "Eine lange E-Mail oder ein Protokoll in drei S&auml;tzen zusammenfassen lassen &mdash; und gegenlesen.",
+    "Einen eigenen, holprigen Textentwurf gl&auml;tten lassen, ohne dass neue Fakten dazukommen.",
+    "Eine Liste an Stichpunkten in einen h&ouml;flichen Antworttext verwandeln.",
+    "Aus deinem Roh-Brainstorming f&uuml;nf bessere &Uuml;berschriften vorschlagen lassen."
+   ]
+  ],
+  [
+   "h3",
+   "H&auml;ufige Fehler am Anfang"
+  ],
+  [
+   "ul",
+   [
+    "Du nimmst die erste Antwort als Wahrheit, statt sie als Entwurf zu lesen.",
+    "Du gibst zu wenig Kontext und w&uuml;nschst dir dann Gedankenlesen.",
+    "Du fragst nach aktuellen Fakten und vergisst, dass das Modell einen Wissensstand hat.",
+    "Du kopierst Zahlen oder Zitate ungepr&uuml;ft in deine Arbeit.",
+    "Du f&uuml;tterst sensible Kundendaten in ein Tool, dessen Datenschutz du nie gepr&uuml;ft hast."
+   ]
+  ],
+  [
+   "callout",
+   "Faustregel: Nutze KI f&uuml;r Form, nicht f&uuml;r Fakten. Den Stil darf sie liefern, die Wahrheit lieferst du."
+  ],
+  [
+   "h3",
+   "Mini-Checkliste vor dem &Uuml;bernehmen"
+  ],
+  [
+   "ul",
+   [
+    "Stimmt jede konkrete Zahl, die ich gleich weiterverwende?",
+    "Existieren genannte Quellen, Namen und Links wirklich?",
+    "Passt der Ton zu mir und meiner Marke?",
+    "Habe ich nichts Vertrauliches preisgegeben, was nicht raus darf?",
+    "K&ouml;nnte ich diese Aussage selbst verantworten, wenn ein Kunde nachfragt?"
+   ]
+  ],
+  [
+   "h3",
+   "&Uuml;bung 1: Dein Vertrauens-Test"
+  ],
+  [
+   "ol",
+   [
+    "Stell deinem KI-Chatbot eine Frage aus deinem Fachgebiet, deren Antwort du sicher kennst.",
+    "Lies die Antwort kritisch: Was stimmt, was ist vage, was ist schlicht falsch?",
+    "Stell dieselbe Frage noch einmal mit der Prompt-Vorlage von oben und vergleiche.",
+    "Notiere dir einen Satz: Wo w&uuml;rdest du dieser KI trauen, wo nicht?"
+   ]
+  ],
+  [
+   "callout",
+   "Ergebnis dieser &Uuml;bung: ein realistisches Bauchgef&uuml;hl. Das ist mehr wert als jede Funktionsliste."
+  ]
+ ]
+}

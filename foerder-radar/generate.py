@@ -30,7 +30,7 @@ TEXT, MUTED, SUCCESS, BORDER = "#1f2937", "#6b7280", "#059669", "#e5e7eb"
 SITE_NAME = "Förder-Radar"
 TAGLINE = "Fördermittel für DACH — klar sortiert, ehrlich erklärt"
 BASE_URL = "https://foerder.abannews.com"   # subdomain (set up like radar)
-NEWSLETTER_URL = "https://abannews.de"
+NEWSLETTER_URL = "https://abannews.com"
 
 REGION_NAME = {"DE": "Deutschland", "AT": "Österreich", "CH": "Schweiz", "EU": "EU"}
 
@@ -44,6 +44,15 @@ def slug(v: str) -> str:
 
 def e(v) -> str:
     return html.escape(str(v if v is not None else ""))
+
+
+def clip(text: str, limit: int = 155) -> str:
+    """Trim a meta description to a word boundary (cleaner SERP snippets)."""
+    text = " ".join(str(text or "").split())
+    if len(text) <= limit:
+        return text
+    cut = text[:limit].rsplit(" ", 1)[0].rstrip(",;:–-")
+    return (cut or text[:limit]) + "…"
 
 
 def page(title, description, body, canonical):
@@ -148,7 +157,7 @@ def lead_slot(p, leadgen):
     if not entry:
         return ""
     return (f'<div class="lead"><strong>Beratung gewünscht?</strong> {e(entry.get("text",""))}'
-            f' <a class="cta" href="{e(entry.get("url","#"))}" rel="sponsored nofollow" '
+            f' <a class="cta" href="{e(entry.get("url","#"))}" rel="sponsored noopener" '
             f'target="_blank">{e(entry.get("cta","Kostenlose Erstberatung"))} →</a>'
             f'<br><small style="color:var(--muted)">Anzeige · unabhängig von der Programm-Info</small></div>')
 
@@ -158,20 +167,28 @@ def program_page(p, leadgen, disclaimer):
               f'<span class="b art">{e(p.get("art",""))}</span>'
               + "".join(f'<span class="b">{e(b)}</span>' for b in p.get("bereich", [])))
     zg = ", ".join(e(z) for z in p.get("zielgruppe", [])) or "—"
+    region = REGION_NAME.get(p.get("region"), p.get("region", "—"))
+    art = p.get("art", "Förderung")
+    # Official source = the primary action: place it right after the TLDR.
+    # External link to an official source: no link equity, reverse-tabnabbing-safe.
+    src_cta = (f'<a class="cta" href="{e(p.get("url","#"))}" target="_blank" '
+               f'rel="noopener nofollow">Offizielle Quelle ansehen →</a>')
     body = f"""{jsonld(p)}
 <p><a href="/">← Alle Förderungen</a></p>
 <h1>{e(p['name'])}</h1>
 <div class="badges">{badges}</div>
 <p>{e(p.get('kurz',''))}</p>
+{src_cta}
 <p><strong>Träger:</strong> {e(p.get('traeger','—'))}<br>
-<strong>Region:</strong> {e(REGION_NAME.get(p.get('region'), p.get('region','—')))}<br>
-<strong>Art:</strong> {e(p.get('art','—'))}<br>
+<strong>Region:</strong> {e(region)}<br>
+<strong>Art:</strong> {e(art)}<br>
 <strong>Zielgruppe:</strong> {zg}</p>
-<a class="cta" href="{e(p.get('url','#'))}" target="_blank" rel="noopener">Zur offiziellen Programm-Seite →</a>
 {lead_slot(p, leadgen)}
 <p class="disc">⚠️ {e(disclaimer)}</p>"""
-    return page(f"{p['name']} — Förderung im Überblick | {SITE_NAME}",
-                p.get("kurz", "")[:155], body,
+    # Unique, keyword-rich title per program (Art + Region + year vary).
+    title = f"{p['name']} — {art}-Förderung {region} {date.today().year} | {SITE_NAME}"
+    meta = clip(f"{p['name']}: {art}-Förderung für {zg} in {region}. {p.get('kurz','')}")
+    return page(title, meta, body,
                 BASE_URL + f"/programm/{slug(p['id'])}.html")
 
 
@@ -218,8 +235,9 @@ def build(data_path: Path, out: Path, here: Path):
             f'<script src="/filter.js" defer></script>'
             f'<p class="disc">⚠️ {e(disclaimer)}</p>')
     (out / "index.html").write_text(
-        page(f"{SITE_NAME} — {TAGLINE}",
-             f"{len(progs)} Förderprogramme (Zuschuss, Kredit, Stipendium) für Gründer und KMU in DACH & EU, klar sortiert.",
+        page(f"{SITE_NAME} {date.today().year} — {TAGLINE}",
+             clip(f"{len(progs)} Förderprogramme (Zuschuss, Kredit, Stipendium) für Gründer und "
+                  f"KMU in DACH & EU, klar sortiert mit Link zur offiziellen Quelle."),
              home, BASE_URL + "/"), encoding="utf-8")
 
     for p in progs:
@@ -231,8 +249,9 @@ def build(data_path: Path, out: Path, here: Path):
         body = (f'{itemlist(members)}<p><a href="/">← Alle Förderungen</a></p><h1>Förderungen in {e(REGION_NAME.get(r,r))}</h1>'
                 + "\n".join(card(p) for p in members) + f'<p class="disc">⚠️ {e(disclaimer)}</p>')
         (out / "region" / f"{slug(r)}.html").write_text(
-            page(f"Förderungen {REGION_NAME.get(r,r)} — {SITE_NAME}",
-                 f"Förderprogramme in {REGION_NAME.get(r,r)}, klar sortiert.", body,
+            page(f"Förderungen {REGION_NAME.get(r,r)} {date.today().year} — {SITE_NAME}",
+                 clip(f"{len(members)} Förderprogramme (Zuschuss, Kredit, Stipendium) in "
+                      f"{REGION_NAME.get(r,r)} für Gründer und KMU, klar sortiert."), body,
                  BASE_URL + f"/region/{slug(r)}.html"), encoding="utf-8")
 
     for a in arten:
@@ -240,8 +259,9 @@ def build(data_path: Path, out: Path, here: Path):
         body = (f'{itemlist(members)}<p><a href="/">← Alle Förderungen</a></p><h1>{e(a)}-Förderungen</h1>'
                 + "\n".join(card(p) for p in members) + f'<p class="disc">⚠️ {e(disclaimer)}</p>')
         (out / "art" / f"{slug(a)}.html").write_text(
-            page(f"{a}-Förderungen im DACH-Raum — {SITE_NAME}",
-                 f"Alle {a}-Förderprogramme, klar sortiert.", body,
+            page(f"{a}-Förderungen im DACH-Raum {date.today().year} — {SITE_NAME}",
+                 clip(f"{len(members)} {a}-Förderprogramme für Gründer und KMU in DACH & EU, "
+                      f"klar sortiert mit Link zur offiziellen Quelle."), body,
                  BASE_URL + f"/art/{slug(a)}.html"), encoding="utf-8")
 
     # Zielgruppen-Hubs ("Förderungen für Gründer/KMU/…")
@@ -252,8 +272,9 @@ def build(data_path: Path, out: Path, here: Path):
                 f'<p class="tag" style="color:var(--muted)">{len(members)} Programme für {e(z)} in DACH & EU.</p>'
                 + "\n".join(card(p) for p in members) + f'<p class="disc">⚠️ {e(disclaimer)}</p>')
         (out / "fuer" / f"{slug(z)}.html").write_text(
-            page(f"Förderungen für {z} — {SITE_NAME}",
-                 f"Förderprogramme für {z} im DACH-Raum und der EU, klar sortiert.", body,
+            page(f"Förderungen für {z} im DACH-Raum {date.today().year} — {SITE_NAME}",
+                 clip(f"{len(members)} Förderprogramme für {z} in DACH & EU — Zuschuss, Kredit "
+                      f"und mehr, klar sortiert."), body,
                  BASE_URL + f"/fuer/{slug(z)}.html"), encoding="utf-8")
 
     # Bereichs-Hubs ("KI-Förderung", "Digitalisierungs-Förderung", …)
@@ -264,8 +285,9 @@ def build(data_path: Path, out: Path, here: Path):
                 f'<p class="tag" style="color:var(--muted)">{len(members)} Programme im Bereich {e(b)}.</p>'
                 + "\n".join(card(p) for p in members) + f'<p class="disc">⚠️ {e(disclaimer)}</p>')
         (out / "bereich" / f"{slug(b)}.html").write_text(
-            page(f"{b}-Förderungen im DACH-Raum — {SITE_NAME}",
-                 f"Förderprogramme im Bereich {b}, klar sortiert.", body,
+            page(f"{b}-Förderungen im DACH-Raum {date.today().year} — {SITE_NAME}",
+                 clip(f"{len(members)} Förderprogramme im Bereich {b} für Gründer und KMU in "
+                      f"DACH & EU, klar sortiert."), body,
                  BASE_URL + f"/bereich/{slug(b)}.html"), encoding="utf-8")
 
     # filter.js (no deps, no tracking)

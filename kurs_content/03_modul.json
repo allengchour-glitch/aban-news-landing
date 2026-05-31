@@ -1,0 +1,87 @@
+{
+ "title": "Prompten wie ein Profi",
+ "kicker": "Modul 3",
+ "toc": true,
+ "kind": "modul",
+ "blocks": [
+  ["lead", "Der Unterschied zwischen einer mageren und einer brauchbaren Antwort liegt fast nie am Werkzeug. Er liegt an deiner Anweisung. Dieses Modul macht aus dir jemanden, der zuverlässig gute Ergebnisse herausholt — nicht per Zufall, sondern per Methode."],
+  ["p", "Die meisten Menschen tippen einen Halbsatz ein, bekommen etwas Mittelmäßiges zurück und schließen daraus, KI sei überschätzt. Der wahre Grund ist banal: Die KI weiß nicht, was du wirklich willst, weil du es ihr nicht gesagt hast. Sie ist kein Gedankenleser, sondern ein sehr schneller Ausführer. Je klarer die Anweisung, desto besser das Ergebnis."],
+
+  ["h3", "Die RKAF-Struktur"],
+  ["p", "Vergiss Zauberformeln und geheime Prompt-Tricks aus dem Internet. Ein guter Prompt hat vier Teile. Merke sie dir als RKAF:"],
+  ["ul", [
+    "<b>Rolle:</b> Wer soll die KI sein? &bdquo;Du bist eine erfahrene Texterin&ldquo; führt zu anderen Ergebnissen als &bdquo;Du bist ein sachlicher Steuerfachmann&ldquo;.",
+    "<b>Kontext:</b> Was ist die Lage? Für wen schreibst du, in welchem Ton, mit welchem Ziel, was ist die Vorgeschichte?",
+    "<b>Aufgabe:</b> Was genau soll herauskommen? Ein einziger, klarer Satz. Keine drei Wünsche auf einmal.",
+    "<b>Format:</b> Wie soll die Antwort aussehen? Länge, Struktur, Stil, Sprache, Aufzählung oder Fließtext."
+  ]],
+  ["callout", "Merksatz: Eine KI ohne Kontext rät. Eine KI mit Kontext arbeitet. Der Kontext ist der Teil, den die meisten weglassen — und genau der macht den Unterschied."],
+
+  ["h3", "Schwach gegen stark — Beispiel 1: die Zahlungserinnerung"],
+  ["p", "Schwacher Prompt: &bdquo;Schreib eine E-Mail an einen Kunden wegen einer Rechnung.&ldquo; Das Ergebnis ist generisch, oft zu förmlich oder zu schroff — unbrauchbar ohne starke Nacharbeit."],
+  ["p", "Starker Prompt mit allen vier RKAF-Teilen:"],
+  ["code", "Du bist eine freundliche, klare Bueroleitung. (Rolle)\nEin Stammkunde hat eine Rechnung ueber 480 Euro seit\ndrei Wochen nicht bezahlt. Die Beziehung ist gut, es ist\nwohl nur untergegangen. (Kontext)\nSchreib eine hoefliche Zahlungserinnerung. (Aufgabe)\nMaximal 120 Woerter, du-Form, freundlicher Ton, ein\nklarer naechster Schritt am Ende. (Format)"],
+  ["p", "Derselbe Chatbot, dieselbe Sekunde — aber jetzt bekommst du etwas, das du fast ohne Änderung verschicken kannst. Der einzige Unterschied: Du hast der KI gesagt, wer sie ist, was die Lage ist und wie das Ergebnis aussehen soll."],
+
+  ["h3", "Schwach gegen stark — Beispiel 2: der Social-Media-Beitrag"],
+  ["p", "Schwacher Prompt: &bdquo;Schreib einen LinkedIn-Post über mein neues Angebot.&ldquo; Heraus kommt austauschbares Werbe-Geschwätz mit zu vielen Adjektiven."],
+  ["code", "Du bist ein nuechterner, ehrlicher Texter. (Rolle)\nIch bin selbststaendige Buchhalterin und biete neu eine\nmonatliche Finanz-Sprechstunde fuer Handwerksbetriebe\nan. Zielgruppe: Inhaber, die Zahlen hassen. (Kontext)\nSchreib einen LinkedIn-Beitrag, der ein konkretes\nProblem aufgreift und die Sprechstunde als Loesung zeigt.\n(Aufgabe)\nMaximal 130 Woerter, du-Form, kein Marketing-Sprech,\nkeine Hashtags, ein Satz als Abschlussfrage. (Format)"],
+  ["p", "Beachte den Format-Teil: &bdquo;kein Marketing-Sprech&ldquo; und &bdquo;keine Hashtags&ldquo; sind Verbote. Der KI zu sagen, was sie <i>nicht</i> tun soll, ist oft so wirkungsvoll wie zu sagen, was sie tun soll."],
+
+  ["h3", "Kontext mitgeben: dein eigenes Material nutzen"],
+  ["p", "Die KI wird sofort besser, wenn du ihr echtes Material gibst, an dem sie sich orientieren kann. Statt sie raten zu lassen, wie du klingst, füttere sie mit einem Beispiel."],
+  ["ul", [
+    "<b>Stilvorlage:</b> &bdquo;Hier sind zwei E-Mails, die ich selbst geschrieben habe. Schreib die neue im gleichen Ton.&ldquo;",
+    "<b>Quelle:</b> &bdquo;Hier ist der Text von meiner Website. Beantworte die Kundenfrage nur auf dieser Basis.&ldquo;",
+    "<b>Negativbeispiel:</b> &bdquo;So klingt es zu werblich: [Beispiel]. Mach es nüchterner.&ldquo;"
+  ]],
+  ["callout", "Je mehr von deinem echten Material in den Prompt fließt, desto mehr klingt das Ergebnis nach dir und desto weniger nach Standard-KI. Das ist der einfachste Weg, aus generischem Text deinen Text zu machen."],
+
+  ["h3", "Nachschärfen statt neu anfangen"],
+  ["p", "Die erste Antwort ist ein Entwurf, kein Endprodukt. Wirf sie nicht weg, wenn sie nicht passt — korrigiere sie in Runden. Die KI behält das Gespräch im Kopf, du musst nur die Richtung vorgeben."],
+  ["ul", [
+    "&bdquo;Kürzer, auf die Hälfte.&ldquo;",
+    "&bdquo;Weniger förmlich, schreib wie unter Kollegen.&ldquo;",
+    "&bdquo;Nimm den dritten Absatz raus, der ist überflüssig.&ldquo;",
+    "&bdquo;Mach den Einstieg konkreter, mit einem Beispiel.&ldquo;"
+  ]],
+  ["p", "Jede Runde bringt dich näher, ohne dass du von vorn beginnst. Drei kurze Korrekturen sind fast immer schneller als ein perfekter erster Prompt — und führen zu besserem Ergebnis."],
+
+  ["h3", "Die Antwort steuern: ein paar wirksame Hebel"],
+  ["ul", [
+    "<b>Länge vorgeben:</b> &bdquo;maximal 80 Wörter&ldquo; oder &bdquo;in drei Sätzen&ldquo;. Ohne Vorgabe schreibt die KI fast immer zu viel.",
+    "<b>Schritt für Schritt:</b> Bei kniffligen Aufgaben hilft &bdquo;Geh in Schritten vor und denk laut mit&ldquo;. Das senkt Flüchtigkeitsfehler.",
+    "<b>Mehrere Varianten:</b> &bdquo;Gib mir drei Versionen, unterschiedlich im Ton&ldquo;. Dann wählst du aus, statt nachzubessern.",
+    "<b>Nachfragen erlauben:</b> &bdquo;Wenn dir etwas fehlt, frag zuerst, bevor du schreibst&ldquo;. So vermeidest du Antworten auf der Basis von Annahmen."
+  ]],
+
+  ["h3", "Häufige Fehler beim Prompten"],
+  ["ul", [
+    "<b>Zu vage:</b> &bdquo;Mach das besser&ldquo; — die KI weiß nicht, was &bdquo;besser&ldquo; für dich heißt. Sag, was konkret stören soll.",
+    "<b>Alles auf einmal:</b> fünf Aufgaben in einem Prompt führen zu fünf halben Antworten. Eine Sache pro Durchgang.",
+    "<b>Kein Kontext:</b> Du weißt, worum es geht — die KI nicht. Was für dich selbstverständlich ist, musst du ihr sagen.",
+    "<b>Blind übernehmen:</b> gut klingender Text kann falsche Fakten enthalten. Lies, bevor du verschickst (siehe Modul 1).",
+    "<b>Aufgeben nach Runde 1:</b> die erste Antwort ist selten die beste. Wer nicht nachschärft, verschenkt das meiste Potenzial."
+  ]],
+
+  ["h3", "Deine Prompt-Checkliste"],
+  ["p", "Bevor du auf Senden drückst, prüf deinen Prompt gegen diese vier Punkte:"],
+  ["ul", [
+    "Habe ich der KI eine <b>Rolle</b> gegeben?",
+    "Habe ich genug <b>Kontext</b> mitgeliefert, dass sie nicht raten muss?",
+    "Ist die <b>Aufgabe</b> ein einziger, klarer Satz?",
+    "Habe ich <b>Format</b>, Länge und Ton vorgegeben?"
+  ]],
+  ["callout", "Fertige Vorlagen für E-Mails, Angebote, Social Media und Recherche findest du im Bonus &bdquo;Die 50-Prompt-Werkstatt&ldquo; weiter hinten in diesem Kurs — und laufend aktualisiert auf prompts.abannews.com."],
+
+  ["h3", "Übung 3"],
+  ["ol", [
+    "Nimm eine echte Aufgabe von heute — eine E-Mail, einen Text, eine Zusammenfassung.",
+    "Schreib den Prompt zuerst so, wie du es früher getan hättest (der schnelle Halbsatz).",
+    "Schreib ihn dann neu nach RKAF — Rolle, Kontext, Aufgabe, Format.",
+    "Gib der KI ein Stück eigenes Material als Stilvorlage mit.",
+    "Schärfe das Ergebnis in zwei Runden nach.",
+    "Vergleiche das Endergebnis mit deinem ersten schnellen Versuch. Den Unterschied willst du dir merken."
+  ]]
+ ]
+}

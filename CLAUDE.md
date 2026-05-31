@@ -25,6 +25,8 @@ kein Framework: reines HTML + Inline-CSS, deployt auf **Cloudflare Pages**.
 - **Brand-Farben** (Hex, siehe `:root` in `index.html` / `css/styles.css`):
   Amber `d97706`, Amber-dunkel `b45309`, Amber-hell `fde9c8`, Cream `fef3c7`,
   Ink `1f2937`/`1c2530`, Background `fffbf5`/`fffaf2`.
+  **Gefüllte Buttons nutzen `b45309`** (weiß darauf = 5.02:1, WCAG AA); `d97706`
+  ist reine Akzentfarbe (Links/Rahmen/Headings), weil weiß darauf nur 3.19:1 ergibt.
 - **Subpage-Layout-Muster:** siehe `geld-verdienen-mit-ki.html` (max-width 760px,
   sticky Header mit `.brand` + `.btn`, Footer mit Impressum/Datenschutz-Links).
 - **a11y/SEO Pflicht:** `<link rel="canonical">`, OG-Tags, JSON-LD (`schema.org`),
@@ -57,6 +59,8 @@ durchgehend die du-Form.
 - `generate_ebook.py` → `downloads/anti-hype-ebook.pdf` (das "Anti-Hype"-eBook,
   beworben auf `ebook.html` und in `roadmap.html`).
 - `generate_launch_manual_pdf.py` → `downloads/launch-manual.pdf`.
+- `generate_kurs.py` → `downloads/ki-werkstatt-kurs.pdf` (das Kurs-Produkt von `kurs.html`,
+  6 Module ausgeschrieben). Ausgeliefert über `kurs-zugang.html` (noindex Lieferseite).
 - Regenerieren: `python3 generate_ebook.py` (idempotent, schreibt nach `downloads/`).
 
 ## Lese-Memory (Buch-Seiten)
@@ -91,7 +95,31 @@ durchgehend die du-Form.
 | `sponsoring.html` / `werbung.html` | Werbe-Rate-Card / Policy |
 | `resources.html` | Gratis-Resourcen + PDF-Downloads |
 | `willkommen.html` | Post-Subscribe (eBook-Geschenk) |
+| `hype-filter.html` | Interaktives Tool: Marketing-Text auf Hype prüfen (siehe unten) |
+| `anti-hype-texten.html` | SEO-Cornerstone-Ratgeber zum Tool (Vorher/Nachher, FAQ) |
+| `hype-widget-demo.html` | `noindex` — Doku/Demo fürs einbettbare Widget |
 | `impressum.html` / `datenschutz.html` | CH-Impressum / DSGVO |
+
+## Hype-Filter (interaktives Tool)
+
+Das einzige Feature mit serverseitiger Logik. Bricht bewusst mit „nur statisches HTML":
+- **Engine** `functions/_engine.mjs` — reine, deterministische JS-Analyse deutschen
+  Texts (Buzzwords/Sperrliste, übertriebene Versprechen, Füllwörter, Passiv, Vage-
+  Phrasen, Nominalstil, Wiener Sachtextformel). Keine Abhängigkeiten, ReDoS-fest.
+- **API** `functions/api/hype-check.js` — Cloudflare Pages Function (Edge). Single +
+  Bulk. Optionale KI-Umschreibung nur bei gesetztem `ANTHROPIC_API_KEY` (sonst
+  übersprungen, kein Hard-Fail). Rate-Limit + Input-Caps, escaped Output.
+- **Frontend** `hype-filter.html` — Vanilla-JS-UI mit Dark-Mode, Copy/Share,
+  localStorage, ARIA. **Buttons site-weit auf `#b45309`** (WCAG AA, weiß = 5.02:1;
+  `--amber #d97706` bleibt reine Akzentfarbe).
+- **Widget** `js/hype-filter-widget.js` — Shadow-DOM-Einbettung (ein `<script>`-Tag),
+  style-isoliert, XSS-sicher. Demo/Doku: `hype-widget-demo.html`.
+- **Tests** `functions/_engine.test.mjs` (84) + `functions/_api.test.mjs` (40), Node,
+  ohne Framework: `node functions/_engine.test.mjs`. CI-Workflow grünt sie.
+- **Detail-Doku:** `functions/README.md` (Entwickler) und `PROJEKT.md`.
+
+> Pages Functions brauchen **keinen** Build-Step — Cloudflare erkennt `functions/`
+> automatisch. Die Node-Tests laufen nur lokal/CI, nicht im Deploy.
 
 ## Neue Seite anlegen
 

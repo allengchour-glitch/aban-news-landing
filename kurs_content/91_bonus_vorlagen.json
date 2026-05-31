@@ -1,0 +1,68 @@
+{
+  "title": "Die Vorlagen-Sammlung",
+  "kicker": "Bonus 2",
+  "toc": true,
+  "kind": "bonus",
+  "blocks": [
+    ["lead", "Hier liegen fertige Vorlagen, die du direkt nutzen kannst. Tausche die Stellen [in eckigen Klammern] gegen deine Angaben aus und schick es ab. Keine Theorie, nur Text, den du anpasst."],
+
+    ["h3", "So nutzt du diese Sammlung"],
+    ["p", "Jede Vorlage hat zwei Teile: eine kurze Erklärung, wann du sie einsetzt, und den fertigen Text im grauen Kasten. Kopiere den Kasten, ersetze die Platzhalter und lies einmal laut. Wenn es sich nach dir anhört, ist es fertig."],
+    ["callout", "Speichere die Vorlagen, die du oft brauchst, als Textbaustein in deinem Mail-Programm. Dann tippst du ein Kürzel und der ganze Text steht da."],
+
+    ["h3", "E-Mail: Erstkontakt"],
+    ["p", "Für die erste Mail an einen möglichen Kunden. Kurz, konkret, mit einer klaren Frage am Ende. Niemand liest lange Vorstellungstexte."],
+    ["code", "Betreff: Kurze Frage zu [Thema bei Empfänger]\n\nHallo [Name],\n\nich bin [dein Name] und helfe [Zielgruppe] bei [konkretes Ergebnis]. Bei [Firma des Empfängers] ist mir [konkrete Beobachtung] aufgefallen.\n\nIch glaube, ich kann dir bei [Problem] helfen. Hast du nächste Woche 15 Minuten für ein kurzes Gespräch?\n\nViele Grüße\n[dein Name]\n[Telefon / Website]"],
+
+    ["h3", "E-Mail: Nachfassen"],
+    ["p", "Wenn auf die erste Mail keine Antwort kam. Eine freundliche Erinnerung nach etwa einer Woche. Kein Vorwurf, nur ein neuer Anlass."],
+    ["code", "Betreff: Re: Kurze Frage zu [Thema]\n\nHallo [Name],\n\nich wollte kurz nachhaken, ob meine letzte Mail bei dir angekommen ist. Falls das Thema [Problem] gerade nicht passt, ist das völlig in Ordnung, dann melde dich einfach später.\n\nFalls doch: Soll ich dir zwei Termine für ein kurzes Telefonat vorschlagen?\n\nViele Grüße\n[dein Name]"],
+
+    ["h3", "E-Mail: Zahlungserinnerung"],
+    ["p", "Für eine überfällige Rechnung. Sachlich bleiben, nicht drohen. Beim ersten Mal reicht ein neutraler Hinweis, oft war es nur vergessen."],
+    ["code", "Betreff: Erinnerung an Rechnung [Nummer]\n\nHallo [Name],\n\nmeine Rechnung [Nummer] vom [Datum] über [Betrag] ist noch offen. Das Zahlungsziel war der [Datum].\n\nVielleicht ist sie untergegangen, das passiert. Magst du sie in den nächsten Tagen anweisen? Die Bankdaten stehen unten auf der Rechnung.\n\nFalls etwas unklar ist, melde dich gern.\n\nViele Grüße\n[dein Name]"],
+
+    ["h3", "E-Mail: Absage, freundlich"],
+    ["p", "Wenn du eine Anfrage ablehnst, etwa weil du keine Zeit hast oder das Projekt nicht passt. Klar absagen, aber eine Tür offen lassen."],
+    ["code", "Betreff: Re: Deine Anfrage zu [Projekt]\n\nHallo [Name],\n\ndanke, dass du an mich gedacht hast. Ich kann das Projekt [Projekt] leider nicht übernehmen, weil [Grund: z. B. meine Kapazität bis [Monat] ausgebucht ist].\n\nFalls es dir hilft: [Name eines Kollegen / Alternative] macht so etwas und ist verlässlich.\n\nMelde dich gern wieder, wenn es zeitlich besser passt.\n\nViele Grüße\n[dein Name]"],
+
+    ["h3", "E-Mail: Termin vorschlagen"],
+    ["p", "Um Hin-und-Her zu vermeiden, schlägst du gleich konkrete Zeiten vor. Zwei bis drei Optionen reichen, sonst wird es unübersichtlich."],
+    ["code", "Betreff: Terminvorschlag für unser Gespräch\n\nHallo [Name],\n\nlass uns telefonieren. Passt dir einer dieser Termine?\n\n- [Wochentag], [Datum], [Uhrzeit]\n- [Wochentag], [Datum], [Uhrzeit]\n- [Wochentag], [Datum], [Uhrzeit]\n\nSag mir einfach, was passt, dann schicke ich dir die Einwahl. Falls keiner geht, nenn mir gern zwei Zeiten, die dir passen.\n\nViele Grüße\n[dein Name]"],
+
+    ["h3", "Angebot: Leistungsbeschreibung"],
+    ["p", "Der Teil im Angebot, der sagt, was der Kunde bekommt. Beschreibe das Ergebnis, nicht nur die Tätigkeit. Der Kunde kauft das, was am Ende dasteht."],
+    ["code", "Was du bekommst:\n\n- [Konkretes Ergebnis 1, z. B. eine fertige Startseite]\n- [Konkretes Ergebnis 2, z. B. zwei Überarbeitungsrunden]\n- [Konkretes Ergebnis 3, z. B. Übergabe als [Format]]\n\nAblauf: [Schritt 1] bis [Schritt 2], geplante Dauer [Zeitraum].\nNicht enthalten: [klare Abgrenzung, z. B. laufende Pflege]."],
+
+    ["h3", "Angebot: Preis begründen"],
+    ["p", "Wenn du den Preis nennst, ordne ihn ein. Nicht rechtfertigen, sondern den Wert sichtbar machen. Ein klarer Satz wirkt sicherer als eine lange Erklärung."],
+    ["code", "Der Preis für [Leistung] liegt bei [Betrag] [netto / inkl. MwSt.].\n\nDarin enthalten sind [Punkt 1] und [Punkt 2]. Du sparst dir damit [konkreter Aufwand / Risiko], den du sonst selbst tragen würdest.\n\nDas Angebot gilt bis [Datum]."],
+
+    ["h3", "Angebot: Einwand entkräften"],
+    ["p", "Für den häufigsten Einwand, den du hörst, etwa der Preis oder die Dauer. Lege dir eine ruhige Antwort zurecht, dann gerätst du im Gespräch nicht ins Schwimmen."],
+    ["code", "Einwand: [z. B. „Das ist mir zu teuer.“]\n\nDeine Antwort:\nVerstehe ich. Lass uns kurz anschauen, was du dafür bekommst: [Ergebnis]. Wenn das Budget knapp ist, können wir [kleinere Variante] machen und [Teil] später ergänzen.\n\nWas davon passt besser zu dir?"],
+
+    ["h3", "Content: Wochenplan"],
+    ["p", "Ein einfacher Plan, was du wann veröffentlichst. Du musst nicht jeden Tag posten. Lege fest, was realistisch ist, und halte dich daran."],
+    ["code", "Tag    | Kanal       | Thema                  | Format\n-------|-------------|------------------------|--------\nMo     | [Kanal]     | [Thema]                | [Format]\nDi     | -           | -                      | -\nMi     | [Kanal]     | [Thema]                | [Format]\nDo     | -           | -                      | -\nFr     | [Kanal]     | [Thema der Woche]      | [Format]"],
+
+    ["h3", "Content: ein Beitrag, drei Formate"],
+    ["p", "Aus einer Idee machst du drei Veröffentlichungen. Du schreibst einmal und passt den Ton an den Kanal an. So füllst du den Wochenplan ohne ständig neue Ideen."],
+    ["code", "Kerngedanke: [ein Satz, worum es geht]\n\nFormat 1 (kurzer Post): [Kerngedanke] + eine konkrete Frage an die Leser.\n\nFormat 2 (längerer Beitrag): [Kerngedanke] + ein Beispiel aus deinem Alltag + ein Tipp.\n\nFormat 3 (Newsletter-Absatz): [Kerngedanke] + warum es für [Zielgruppe] wichtig ist + nächster Schritt."],
+
+    ["h3", "Ablauf: wiederkehrende Aufgabe als Vorlage"],
+    ["p", "Für eine Aufgabe, die du jede Woche machst, schreibst du die Schritte einmal auf. Dann läuft sie immer gleich ab, du vergisst nichts und kannst sie später abgeben."],
+    ["p", "Beispiel: deinen wöchentlichen Beitrag erstellen und veröffentlichen."],
+    ["ol", [
+      "Thema aus deiner Ideenliste wählen und in einem Satz festhalten.",
+      "Rohtext schreiben oder mit einem KI-Tool einen Entwurf erzeugen.",
+      "Entwurf selbst überarbeiten: Floskeln raus, Beispiel rein, einmal laut lesen.",
+      "In die drei Formate übertragen (siehe Vorlage oben).",
+      "Bild oder Grafik ergänzen, falls der Kanal das braucht.",
+      "Im Wochenplan eintragen und zum geplanten Termin veröffentlichen.",
+      "Nach einer Woche kurz prüfen, was Resonanz hatte, und in die Ideenliste zurückschreiben."
+    ]],
+
+    ["callout", "Diese Vorlagen sind ein Startpunkt, kein Gesetz. Nimm sie, schreib sie auf deine Art um und wirf raus, was du nicht brauchst. Eine Vorlage, die du wirklich nutzt, ist mehr wert als zehn perfekte, die du nie anfasst."]
+  ]
+}

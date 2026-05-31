@@ -1,0 +1,180 @@
+{
+ "title": "Dein Werkzeugkasten",
+ "kicker": "Modul 2",
+ "toc": true,
+ "kind": "modul",
+ "blocks": [
+  [
+   "lead",
+   "Du brauchst nicht zw&ouml;lf Tools. Du brauchst die zwei oder drei richtigen &mdash; und den Mut, den Rest zu ignorieren."
+  ],
+  [
+   "h3",
+   "Die vier Kategorien, die f&uuml;r dich z&auml;hlen"
+  ],
+  [
+   "ul",
+   [
+    "<b>Text &amp; Assistenz:</b> ein guter Chatbot. Das ist dein Arbeitspferd f&uuml;r 80 Prozent.",
+    "<b>Bild:</b> f&uuml;r Social-Grafiken, Blog-Bilder, Skizzen. Nur wenn du es wirklich brauchst.",
+    "<b>Sprache &amp; Audio:</b> Diktat, Transkription, Vorlesen. Spart Tipparbeit.",
+    "<b>Spezial:</b> ein Werkzeug f&uuml;r deine eine wiederkehrende Aufgabe (z. B. Untertitel, Tabellen)."
+   ]
+  ],
+  [
+   "p",
+   "Mehr als ein Tool pro Kategorie ist am Anfang Ballast. Erst wenn ein Werkzeug dich regelm&auml;&szlig;ig ausbremst, suchst du Ersatz &mdash; gezielt, nicht aus Neugier."
+  ],
+  [
+   "h3",
+   "Warum ein Chatbot der beste Startpunkt ist"
+  ],
+  [
+   "p",
+   "Bevor du Geld in spezialisierte Tools steckst, hol das Meiste aus einem einzigen guten Chatbot heraus. Tools wie ChatGPT, Claude oder Gemini decken erstaunlich viel ab: Texte, Zusammenfassungen, Ideen, einfache Tabellen, erste &Uuml;bersetzungen. Viele teure Spezial-Abos l&ouml;sen nur eine Aufgabe, die dein Chatbot mit dem richtigen Prompt schon kann. Erst wenn du eine Aufgabe immer wieder hast und der Chatbot sie merklich schlechter erledigt, lohnt ein eigenes Werkzeug."
+  ],
+  [
+   "h3",
+   "Auswahlkriterien, die wirklich z&auml;hlen"
+  ],
+  [
+   "p",
+   "Lass dich nicht von Funktionslisten blenden. Die meisten Funktionen wirst du nie benutzen. Achte stattdessen auf die wenigen Dinge, die deinen Arbeitsalltag entscheiden:"
+  ],
+  [
+   "ul",
+   [
+    "<b>L&ouml;st es genau deine Aufgabe?</b> Nicht hundert, sondern deine eine.",
+    "<b>Wie steil ist die Einarbeitung?</b> Ein Tool, das du nicht verstehst, sparst du dir.",
+    "<b>Wo liegen die Daten?</b> Server-Standort und DSGVO-Haltung des Anbieters.",
+    "<b>Gibt es einen Export?</b> Kommst du an deine Inhalte wieder heraus, wenn du wechselst?",
+    "<b>Wie stabil ist der Anbieter?</b> Sehr junge Tools verschwinden manchmal so schnell, wie sie kamen."
+   ]
+  ],
+  [
+   "p",
+   "Diese Kriterien klingen n&uuml;chtern, und genau das ist der Punkt. Ein langweiliges, zuverl&auml;ssiges Werkzeug schl&auml;gt jedes auff&auml;llige, das dich nach drei Wochen im Stich l&auml;sst."
+  ],
+  [
+   "h3",
+   "Kostenlos gegen bezahlt &mdash; wann sich der Wechsel lohnt"
+  ],
+  [
+   "p",
+   "Die meisten guten Tools haben eine kostenlose Stufe. Sie reicht oft l&auml;nger, als die Anbieter dir glauben machen wollen. Starte immer gratis und steig erst dann auf, wenn dich die Grenze sp&uuml;rbar st&ouml;rt &mdash; nicht aus dem Gef&uuml;hl heraus, die bezahlte Version sei automatisch besser."
+  ],
+  [
+   "ul",
+   [
+    "<b>Gratis reicht, wenn:</b> du das Tool gelegentlich nutzt und die Limits nicht erreichst.",
+    "<b>Bezahlt lohnt, wenn:</b> du t&auml;glich daran arbeitest, die kostenlose Stufe dich ausbremst, oder du Datenschutz-Funktionen brauchst, die nur das Abo bietet.",
+    "<b>Vorsicht bei:</b> Jahres-Abos, die du nach einem Monat Begeisterung abschlie&szlig;t. Teste erst monatlich."
+   ]
+  ],
+  [
+   "h3",
+   "Abo-Fallen erkennen und vermeiden"
+  ],
+  [
+   "p",
+   "KI-Tools verdienen an wiederkehrenden Geb&uuml;hren. Das ist legitim &mdash; aber es f&uuml;hrt zu Mustern, die du kennen solltest, damit du nicht jeden Monat f&uuml;r etwas zahlst, das du l&auml;ngst nicht mehr nutzt."
+  ],
+  [
+   "ul",
+   [
+    "Kostenlose Testphasen, die sich stillschweigend in ein Jahres-Abo verwandeln.",
+    "Gestaffelte Tarife, bei denen die n&uuml;tzliche Funktion immer eine Stufe h&ouml;her liegt.",
+    "Mehrere Tools, die heimlich dieselbe Aufgabe erledigen &mdash; du zahlst doppelt.",
+    "Abos, die du nach dem ersten Test nie gek&uuml;ndigt hast.",
+    "Jahres-Rabatte, die dich an ein Tool binden, bevor du wei&szlig;t, ob es zu dir passt."
+   ]
+  ],
+  [
+   "callout",
+   "Faustregel: Trag jede K&uuml;ndigungsfrist sofort in den Kalender ein, sobald du ein Abo abschlie&szlig;t. Dann entscheidest du bewusst &mdash; nicht der Anbieter f&uuml;r dich."
+  ],
+  [
+   "h3",
+   "Wechselkosten: warum Festlegen Geld spart"
+  ],
+  [
+   "p",
+   "Jeder Werkzeugwechsel kostet mehr als nur den Preis. Du musst dich neu einarbeiten, Vorlagen neu bauen, Daten umziehen und dich an andere Eigenheiten gew&ouml;hnen. Diese Wechselkosten sind unsichtbar, aber real. Deshalb ist st&auml;ndiges Tool-Hopping teuer, auch wenn jedes einzelne Tool gratis ist. Bleib lieber bei einem soliden Werkzeug, lern es richtig &mdash; und wechsle nur, wenn der Gewinn die Umstellung klar &uuml;berwiegt."
+  ],
+  [
+   "callout",
+   "Im KI-Tools-Radar auf radar.abannews.com findest du &uuml;ber 170 Werkzeuge ehrlich bewertet &mdash; inklusive Preis und Datenschutz-Blick. Nutz ihn als Nachschlagewerk, nicht als Einkaufsliste."
+  ],
+  [
+   "h3",
+   "Praxisbeispiel: dein Tool-Steckbrief"
+  ],
+  [
+   "p",
+   "Bevor du ein neues Tool kaufst, f&uuml;ll diesen kurzen Steckbrief aus. Wenn du eine Zeile nicht beantworten kannst, ist das die Antwort: noch nicht kaufen."
+  ],
+  [
+   "code",
+   "Tool:               ______________________\nWelche Aufgabe?     ______________________\nWie oft pro Woche?  ______________________\nKostenlose Stufe?   ja / nein\nPreis/Monat:        ______________________\nDaten / DSGVO ok?   ja / nein / unklar\nExport moeglich?    ja / nein\nKuendigungsfrist:   ______________________\nErsetzt es ein anderes Tool? ______________"
+  ],
+  [
+   "h3",
+   "Dein Stack-Bogen"
+  ],
+  [
+   "p",
+   "Schreib dir deinen Werkzeugkasten auf eine Seite. Diese &Uuml;bersicht h&auml;lt dich davon ab, dieselbe Aufgabe mit drei Tools zu erledigen."
+  ],
+  [
+   "code",
+   "Aufgabe            ->  Werkzeug        ->  Kosten/Monat\nTexte &amp; E-Mails    ->  ______________  ->  ________\nBilder             ->  ______________  ->  ________\nAudio/Transkript   ->  ______________  ->  ________\nSpezial: ________  ->  ______________  ->  ________"
+  ],
+  [
+   "h3",
+   "H&auml;ufige Fehler beim Tool-Kauf"
+  ],
+  [
+   "ul",
+   [
+    "Du kaufst aus Neugier, nicht aus Bedarf.",
+    "Du sammelst Tools, statt eines davon richtig zu lernen.",
+    "Du schlie&szlig;t ein Jahres-Abo ab, bevor du das Tool eine Woche getestet hast.",
+    "Du vergisst K&uuml;ndigungsfristen und zahlst f&uuml;r Karteileichen.",
+    "Du w&auml;hlst nach Funktionsliste statt nach deiner einen echten Aufgabe.",
+    "Du ignorierst, wo deine Kundendaten landen."
+   ]
+  ],
+  [
+   "h3",
+   "Mini-Checkliste vor dem n&auml;chsten Abo"
+  ],
+  [
+   "ul",
+   [
+    "Ich kann die eine konkrete Aufgabe benennen, die das Tool l&ouml;st.",
+    "Ich habe die kostenlose Stufe zuerst ausgereizt.",
+    "Ich kenne Preis und K&uuml;ndigungsfrist und habe sie notiert.",
+    "Ich wei&szlig;, wo meine Daten liegen.",
+    "Es ersetzt ein anderes Tool, statt eines draufzulegen."
+   ]
+  ],
+  [
+   "h3",
+   "&Uuml;bung 2: Werkzeugkasten ausmisten"
+  ],
+  [
+   "ol",
+   [
+    "Liste alle KI-Tools auf, f&uuml;r die du gerade zahlst.",
+    "Streiche jedes, das keine konkrete w&ouml;chentliche Aufgabe l&ouml;st.",
+    "Pr&uuml;fe bei jedem verbleibenden Tool die K&uuml;ndigungsfrist und trag sie in den Kalender ein.",
+    "F&uuml;lle den Stack-Bogen oben mit dem aus, was &uuml;brig bleibt.",
+    "Such die eine L&uuml;cke, die wirklich weh tut, und erst dann ein passendes Tool &mdash; im Radar."
+   ]
+  ],
+  [
+   "callout",
+   "Ergebnis: ein schlanker Werkzeugkasten, den du verstehst und bezahlst, weil er arbeitet &mdash; nicht, weil du das K&uuml;ndigen vergessen hast."
+  ]
+ ]
+}

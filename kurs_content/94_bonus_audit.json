@@ -1,0 +1,56 @@
+{
+ "title": "Das KI-Audit deines Geschäfts",
+ "kicker": "Bonus 5",
+ "toc": true,
+ "kind": "bonus",
+ "blocks": [
+  ["lead", "Bevor du KI irgendwo einsetzt, lohnt sich eine halbe Stunde Ehrlichkeit: Wo verlierst du gerade Zeit, und welche dieser Stellen kann KI wirklich entlasten? Dieses Audit führt dich Schritt für Schritt hindurch."],
+  ["p", "Nimm dir 30 ungestörte Minuten, einen Stift und ein Blatt Papier — oder ein leeres Dokument. Am Ende hast du keine vage Idee, sondern eine konkrete Liste: drei Aufgaben, bei denen KI dir ab morgen hilft, und eine ehrliche Einschätzung, was du dir sparen kannst."],
+
+  ["h3", "Schritt 1: Deine Woche auf einem Blatt (10 Minuten)"],
+  ["p", "Schreib auf, womit deine letzte typische Arbeitswoche vergangen ist. Nicht die Ausnahmen, sondern das Wiederkehrende. Geh die Tage durch und notiere jede Aufgabe, die mehr als zehn Minuten gekostet hat."],
+  ["p", "Sortiere jede Aufgabe grob in eine dieser vier Spalten:"],
+  ["ul", [
+    "<b>Schreiben &amp; Formulieren:</b> E-Mails, Angebote, Texte, Beiträge, Antworten.",
+    "<b>Sortieren &amp; Zusammenfassen:</b> Notizen ordnen, lange Dokumente lesen, recherchieren.",
+    "<b>Entscheiden &amp; Beraten:</b> alles, wo dein Urteil, deine Erfahrung oder Verantwortung zählt.",
+    "<b>Handwerk &amp; Präsenz:</b> die eigentliche Arbeit vor Ort, am Menschen, am Objekt."
+  ]],
+  ["callout", "Faustregel: Die ersten beiden Spalten sind KI-Land. Die letzten beiden bleiben deine — KI kann dort höchstens zuarbeiten, nie ersetzen."],
+
+  ["h3", "Schritt 2: Die Zeit-Spalten bewerten (5 Minuten)"],
+  ["p", "Schau dir die Aufgaben in den ersten beiden Spalten an. Markiere jede mit einer Zahl von 1 bis 3:"],
+  ["ul", [
+    "<b>3 = großer Hebel:</b> kostet viel Zeit <i>und</i> kommt oft vor (z. B. Angebote schreiben).",
+    "<b>2 = mittlerer Hebel:</b> entweder zeitaufwändig oder häufig, nicht beides.",
+    "<b>1 = kleiner Hebel:</b> selten oder schnell erledigt."
+  ]],
+  ["p", "Die Dreier sind dein Startpunkt. Dort holst du mit KI am meisten Zeit heraus — nicht bei der spannendsten Aufgabe, sondern bei der lästigsten wiederkehrenden."],
+
+  ["h3", "Schritt 3: Der Drei-Fragen-Test (5 Minuten)"],
+  ["p", "Nimm deine zwei, drei Dreier-Aufgaben und prüfe jede mit diesen Fragen. Nur was alle drei mit Ja beantwortet, ist ein guter erster KI-Einsatz:"],
+  ["ol", [
+    "Ist die Aufgabe im Kern sprachlich — geht es ums Schreiben, Umformulieren oder Zusammenfassen?",
+    "Kann ich das Ergebnis selbst beurteilen, also erkennen, ob es gut oder falsch ist?",
+    "Kann ich die Aufgabe beschreiben, ohne vertrauliche Personendaten preiszugeben?"
+  ]],
+  ["callout", "Dreimal Ja heißt: sofort ausprobieren. Ein Nein bei Frage 3 heißt: erst anonymisieren (siehe Modul 5), dann ausprobieren. Ein Nein bei Frage 1 oder 2 heißt: Finger weg, das ist keine KI-Aufgabe."],
+
+  ["h3", "Schritt 4: Dein Audit-Ergebnis festhalten (10 Minuten)"],
+  ["p", "Trag deine Erkenntnisse in diese einfache Tabelle ein. Sie ist dein persönlicher Startplan:"],
+  ["code", "Aufgabe            Hebel   Erster Schritt mit KI\n_______________    ___     ____________________\n_______________    ___     ____________________\n_______________    ___     ____________________\n\nWas ich NICHT der  KI gebe (bewusst):\n_______________________________________"],
+  ["p", "Für jede der drei Aufgaben schreibst du einen konkreten ersten Schritt. Nicht &bdquo;KI nutzen&ldquo;, sondern &bdquo;Montag den nächsten Angebots-Entwurf von der KI schreiben lassen, nach RKAF&ldquo;. Je konkreter, desto wahrscheinlicher tust du es wirklich."],
+
+  ["h3", "Häufige Fehler beim Audit"],
+  ["ul", [
+    "<b>Mit der spannendsten Aufgabe starten</b> statt mit der lästigsten häufigen. Der Hebel sitzt bei der Wiederholung.",
+    "<b>Zu viel auf einmal</b> wollen. Drei Aufgaben reichen. Wenn die laufen, kommt der Rest von allein.",
+    "<b>Die Grenze vergessen.</b> Schreib bewusst auf, was du der KI <i>nicht</i> gibst — das schützt dich vor teuren Fehlern.",
+    "<b>Das Ergebnis nicht festhalten.</b> Ein Audit im Kopf ist morgen vergessen. Schreib es auf Papier."
+  ]],
+
+  ["h3", "Übung: Mach das Audit jetzt"],
+  ["p", "Leg dieses PDF kurz zur Seite und nimm dir die 30 Minuten. Kein anderer Teil dieses Kurses bringt dir so schnell so viel Klarheit wie diese eine Übung. Danach weißt du nicht nur, <i>dass</i> KI dir helfen kann, sondern genau <i>wo</i> — und das ist der Unterschied zwischen Lesen und Verändern."],
+  ["callout", "Wiederhol das Audit alle drei Monate. Deine Arbeit verändert sich, die Werkzeuge auch. Was heute kein guter KI-Einsatz ist, kann in einem Quartal einer sein."]
+ ]
+}

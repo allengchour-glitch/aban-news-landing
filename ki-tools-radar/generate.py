@@ -449,6 +449,11 @@ NEW_UI = {
                  "tr": "{v} firmasının {name} aracı {u} için {s}/10 alıyor. Fiyat: {p}.",
                  "ja": "{v}の{name}は{u}で{s}/10。価格: {p}。",
                  "zh": "{v} 的 {name} 在{u}方面获得 {s}/10。价格：{p}。"},
+    # Title suffix for tool pages: keyword-rich + unique (vendor + year vary per tool).
+    "tool_title": {"de": "Test & Bewertung", "en": "review & rating", "fr": "test & avis",
+                   "es": "análisis y opinión", "it": "recensione e voto", "pt": "análise e nota",
+                   "nl": "review & beoordeling", "pl": "test i ocena", "tr": "inceleme & puan",
+                   "ja": "レビューと評価", "zh": "测评与评分"},
     "glossary_sub": {"de": "Die wichtigsten KI-Begriffe verständlich erklärt — mit passenden Tools.",
                      "en": "The most important AI terms, clearly explained — with matching tools.",
                      "fr": "Les termes IA essentiels, clairement expliqués — avec des outils adaptés.",
@@ -475,6 +480,15 @@ def slugify(value: str) -> str:
 
 def e(value) -> str:
     return html.escape(str(value if value is not None else ""))
+
+
+def clip(text: str, limit: int = 155) -> str:
+    """Trim a meta description to a word boundary (cleaner SERP snippets)."""
+    text = " ".join(str(text or "").split())
+    if len(text) <= limit:
+        return text
+    cut = text[:limit].rsplit(" ", 1)[0].rstrip(",;:–-")
+    return (cut or text[:limit]) + "…"
 
 
 # --- Localization loading ------------------------------------------------------
@@ -587,7 +601,7 @@ def lang_switcher(available: list[str], current: str, kind: str, slug: str = "")
 
 
 def page(*, lang, ui, title, description, body, canonical,
-         available, kind, slug="", og_image=None):
+         available, kind, slug="", og_image=None, og_type="website"):
     og_img = og_image or (BASE_URL + "/og/default.png")
     return f"""<!DOCTYPE html>
 <html lang="{e(lang)}">
@@ -601,7 +615,7 @@ def page(*, lang, ui, title, description, body, canonical,
 <link rel="alternate" type="application/rss+xml" title="{e(SITE_NAME)}" href="{e(BASE_URL + feed_path(lang))}">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(description)}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{e(og_type)}">
 <meta property="og:site_name" content="{e(SITE_NAME)}">
 <meta property="og:locale" content="{e(lang)}">
 <meta property="og:image" content="{e(og_img)}">
@@ -725,9 +739,21 @@ def affiliate_link(tool, aff):
     return tool.get("url", "#"), False
 
 
-def tool_card(tool, aff, ui, lang):
+def cta_link(tool, aff, ui, *, style=""):
+    """Single source of truth for outbound tool/affiliate buttons.
+
+    Affiliate links: rel="sponsored noopener" (paid relationship) + visible *.
+    Plain links: rel="noopener nofollow" (no equity passed to the vendor).
+    Both open in a new tab with noopener (prevents reverse-tabnabbing)."""
     url, is_aff = affiliate_link(tool, aff)
     star = " *" if is_aff else ""
+    rel = "sponsored noopener" if is_aff else "noopener nofollow"
+    st = f' style="{style}"' if style else ""
+    return (f'<a class="cta" href="{e(url)}" rel="{rel}" target="_blank"{st}>'
+            f'{e(ui["cta"].format(name=tool["name"]))}{e(star)} →</a>')
+
+
+def tool_card(tool, aff, ui, lang):
     cats = "".join(f'<span class="chip">{e(c)}</span>' for c in tool.get("category", []))
     search = " ".join([tool["name"], tool.get("vendor", "")]
                       + tool.get("category", []) + tool.get("use_cases", [])).lower()
@@ -740,7 +766,7 @@ def tool_card(tool, aff, ui, lang):
 <span>🇩🇪 {e(ui['dach'])} {e(tool.get('dach_relevance','—'))}/10</span>
 </div>
 <p class="meta">{cats}</p>
-<a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank">{e(ui['cta'].format(name=tool['name']))}{e(star)} →</a>
+{cta_link(tool, aff, ui)}
 </article>"""
 
 
@@ -823,8 +849,6 @@ def faq_section(tool, loc, ui, tools_by_id, lang):
 
 
 def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None, related=None):
-    url, is_aff = affiliate_link(tool, aff)
-    star = " *" if is_aff else ""
     loc = loc_tools.get(tool["id"], {})
     note = loc.get("aban_note") or tool.get("aban_note")
     # Internen Redaktions-Marker nicht öffentlich zeigen (Daten-Flag, kein Besucher-Text).
@@ -848,6 +872,7 @@ def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None, relat
 <p><a href="{e(page_path(lang,'home'))}">{e(ui['all_tools'])}</a></p>
 <h1 style="margin:0">{e(tool['name'])} <span class="score">{e(tool.get('worth_it_score','—'))}/10</span></h1>
 <p class="tldr"><strong>{e(ui['tldr'])}:</strong> {e(tldr)}</p>
+{cta_link(tool, aff, ui)}
 <div class="grid-meta" style="margin:10px 0">
 <span>🕒 {e(ui['updated'])}: {date.today().strftime('%m/%Y')}</span>
 <span>🏢 {e(tool.get('vendor','—'))}</span>
@@ -862,14 +887,15 @@ def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None, relat
 <p><strong>{e(ui['alternatives'])}:</strong> {alts}{(' · <a href="'+e(page_path(lang,'alt',slugify(tool['id'])))+'">'+e(ui['alt_title'].format(name=tool['name']))+' →</a>') if (tool.get('alternatives') or related) else ''}</p>
 {comparison_links(tool, tools_by_id or {}, ui, lang)}
 {related_links(related, ui, lang)}
-<a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank">{e(ui['cta'].format(name=tool['name']))}{e(star)} →</a>
+{cta_link(tool, aff, ui)}
 {faq_section(tool, loc, ui, tools_by_id or {}, lang)}"""
-    desc = (note or ui["meta_tool"].format(name=tool["name"]))[:155]
+    desc = clip(note or ui["meta_tool"].format(name=tool["name"]))
+    title = f"{tool['name']} {ui['tool_title']} {date.today().year} — {SITE_NAME}"
     return page(lang=lang, ui=ui,
-                title=f"{tool['name']} — {SITE_NAME}", description=desc, body=body,
+                title=title, description=desc, body=body,
                 canonical=BASE_URL + page_path(lang, "tool", slugify(tool["id"])),
                 available=available, kind="tool", slug=slugify(tool["id"]),
-                og_image=BASE_URL + f"/og/{slugify(tool['id'])}.png")
+                og_image=BASE_URL + f"/og/{slugify(tool['id'])}.png", og_type="product")
 
 
 def vs_slug(a_id, b_id):
@@ -909,8 +935,6 @@ def comparison_links(tool, tools_by_id, ui, lang):
 
 
 def vs_column(tool, aff, ui, loc_tools, lang):
-    url, is_aff = affiliate_link(tool, aff)
-    star = " *" if is_aff else ""
     loc = loc_tools.get(tool["id"], {})
     return f"""<div>
 <h2 style="margin:0 0 6px"><a href="{e(page_path(lang,'tool',slugify(tool['id'])))}"
@@ -920,7 +944,7 @@ style="text-decoration:none;color:var(--text)">{e(tool['name'])}</a>
 <span>💶 {e(price_str(tool, ui))}</span>
 <span>🇩🇪 {e(ui['dach'])} {e(tool.get('dach_relevance','—'))}/10</span></div>
 {pro_contra(loc, ui)}
-<a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank">{e(ui['cta'].format(name=tool['name']))}{e(star)} →</a>
+{cta_link(tool, aff, ui)}
 </div>"""
 
 
@@ -928,14 +952,11 @@ def comp_table(tools, aff, ui, lang):
     """Scannable comparison table: tool, price, score, CTA."""
     rows = []
     for t in tools:
-        url, is_aff = affiliate_link(t, aff)
-        star = " *" if is_aff else ""
         rows.append(
             f'<tr><td><a href="{e(page_path(lang,"tool",slugify(t["id"])))}">{e(t["name"])}</a></td>'
             f'<td>{e(price_str(t, ui))}</td>'
             f'<td class="num"><span class="score">{e(t.get("worth_it_score","—"))}/10</span></td>'
-            f'<td><a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank" '
-            f'style="padding:5px 12px">{e(ui["cta"].format(name=t["name"]))}{e(star)} →</a></td></tr>')
+            f'<td>{cta_link(t, aff, ui, style="padding:5px 12px")}</td></tr>')
     return (f'<table class="ctab"><thead><tr><th>{e(ui["col_tool"])}</th>'
             f'<th>{e(ui["col_price"])}</th><th class="num">{e(ui["col_score"])}</th><th></th>'
             f'</tr></thead><tbody>{"".join(rows)}</tbody></table>')
@@ -1145,7 +1166,7 @@ def term_page(term, related, aff, ui, lang, available, gi18n=None):
     body = (f'{crumb}{sj}<p><a href="{e(page_path(lang,"glossary"))}">← {e(ui["glossary_nav"])}</a></p>\n'
             f'<h1>{e(tname)}</h1>\n<p>{e(tdef)}</p>\n{rel_html}')
     return page(lang=lang, ui=ui, title=f'{tname} — {SITE_NAME}',
-                description=tdef[:155], body=body,
+                description=clip(tdef), body=body,
                 canonical=BASE_URL + page_path(lang, "term", term["slug"]),
                 available=available, kind="term", slug=term["slug"])
 
