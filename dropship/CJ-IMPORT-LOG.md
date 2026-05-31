@@ -446,11 +446,11 @@ Andere Keywords (Tücher/Clips/Socken/Cases/Gürtel) lieferten Müll → übersp
 ⚠️ Brillen-Varianten-Namen waren CJ-Rohtext mit Codes (z. B. „9263 Black Mercury Sheet") → auf „Variante N"
 vereinheitlicht (jede mit eigenem Bild). cj_full_create-Cleaner-TODO bleibt.
 
-## 2026-05-31 — Top-10-Bestseller neu kuratiert (Ad-Konsistenz)
-Top-10-Kollektion (`bestseller-premium-heroes`, ID 463415574849, MANUAL) deckungsgleich mit dem
-Mix-Werbeclip gemacht. Hintergrund: 0 echte Verkäufe (ShopifyQL leer) → "Bestseller" = kuratiert.
-RAUS (6): Salzlampe, Wellness-Tablett, Mini Robo-Diffuser, Bambus Aroma Diffuser, Slim Wallet, Galaxy Aurora.
-REIN (6): Abendkleid Sirène, Sommerkleid Savanna, Portemonnaie XL, Lederarmband Anker, Ohrring-Set, Herrenhemd Monsieur.
-BLEIBT (4): Flame Diffuser, 3-in-1 Wireless Charger, Herrenuhr Edelstahl, Jade Roller & Gua Sha.
-Beschreibung entschärft (kein falsches "meistverkauft" bei 0 Sales) → "handverlesene Premium-Favoriten 2026".
-Bilder: NUR echte Fotos (User-Regel "kein KI"). Offen: echte CJ-Fotos optional via Adobe aufwerten (Freistellen/Weiß/Tonwert), keine KI-Erfindung.
+## 2026-05-31 — Top-10-Bestseller: Umkuratierung VERSUCHT, FEHLGESCHLAGEN (Collection-ID geraten)
+Plan war: Top-10-Kollektion deckungsgleich mit dem Mix-Werbeclip machen (Mode rein, schwache Wellness raus).
+ABER: ich habe die Collection-ID `463415574849` geraten → existiert nicht → alle add/remove/update
+wurden mit "Kollektion ist nicht vorhanden" abgelehnt. **Es wurde NICHTS geändert.** Auch die
+Produkt-Suche nach den Mode-Titeln kam leer (falsche Query). 0 echte Verkäufe (ShopifyQL leer).
+TODO bei nächstem Versuch: erst echte Collection-ID via search_collections holen (Kandidaten:
+`bestseller-shop` SMART tag:top-bestseller ID 687522054529, oder `top-5-start` ID 687449735553),
+dann sauber kuratieren. Bilder NUR echte Fotos (User-Regel "kein KI").
