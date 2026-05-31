@@ -84,6 +84,15 @@ def e(value) -> str:
     return html.escape(str(value if value is not None else ""))
 
 
+def clip(text: str, limit: int = 155) -> str:
+    """Meta-Description an Wortgrenze kuerzen (sauberere SERP-Snippets)."""
+    text = " ".join(str(text or "").split())
+    if len(text) <= limit:
+        return text
+    cut = text[:limit].rsplit(" ", 1)[0].rstrip(",;:–-")
+    return (cut or text[:limit]) + "…"
+
+
 def strip_redaktion(text: str) -> str:
     """Internen Redaktions-Marker nicht im Fliesstext anzeigen."""
     return re.sub(r"\[Redaktion:[^\]]*\]\s*", "", text or "").strip()
@@ -399,9 +408,10 @@ def home_page(entries):
     body = (f'{site_schema()}{crumb}{itemlist_ld(entries)}'
             f'{hero}\n{nav}\n{model_note}\n{listing}\n'
             f'{submit_cta_block(prominent=False) if entries else ""}')
-    desc = (f"Verzeichnis für KI-Agenturen und -Freelancer in DE, AT und CH. "
-            f"Eintrag einreichen oder Featured-Listing buchen.")
-    return page(title=f"{SITE_NAME}", description=desc, body=body,
+    desc = clip(f"Verzeichnis für KI-Agenturen und -Freelancer in DE, AT und CH — "
+                f"nach Leistung und Land sortiert. Eintrag einreichen oder Featured-Listing buchen.")
+    return page(title=f"{SITE_NAME} {date.today().year} — KI-Agenturen & -Freelancer finden",
+                description=desc, body=body,
                 canonical=BASE_URL + page_path("home"), kind="home")
 
 
@@ -450,7 +460,7 @@ def agentur_page(a):
 <div class="note">Eintrag gehört dir und ist nicht korrekt — oder du willst ihn aufwerten?
 <a href="{e(mailto('Eintrag aktualisieren: ' + a['name']))}">Schreib uns</a> ·
 <a href="{e(page_path('preise'))}">Featured-Listing</a></div>"""
-    desc = (tagline or beschr or f"{a['name']} im KI-Dienstleister-Verzeichnis DACH.")[:155]
+    desc = clip(tagline or beschr or f"{a['name']} im KI-Dienstleister-Verzeichnis DACH.")
     return page(title=f"{a['name']} — {SITE_SHORT}", description=desc, body=body,
                 canonical=BASE_URL + page_path("agentur", a["id"]),
                 kind="agentur", slug=a["id"], noindex=is_ph)
@@ -474,8 +484,8 @@ def leistung_page(leistung, members):
             f'<h1>{LEISTUNG_EMOJI[leistung]} {title}</h1>\n'
             f'<p class="meta">{e(intro)}</p>\n{listing}\n'
             f'{submit_cta_block(prominent=False)}')
-    return page(title=f"{title_plain} — {SITE_SHORT}",
-                description=f"Agenturen und Freelancer für KI-{leistung} in DE, AT und CH. {intro}"[:155],
+    return page(title=f"{title_plain} {date.today().year} — {SITE_SHORT}",
+                description=clip(f"Agenturen und Freelancer für KI-{leistung} in DE, AT und CH. {intro}"),
                 body=body, canonical=BASE_URL + page_path("leistung", slug),
                 kind="leistung", slug=slug)
 
@@ -497,8 +507,9 @@ def land_page(code, members):
             f'<p><a href="{e(page_path("home"))}">← Verzeichnis</a></p>\n'
             f'<h1>{LAND_FLAG[code]} {title}</h1>\n{listing}\n'
             f'{submit_cta_block(prominent=False)}')
-    return page(title=f"{title_plain} — {SITE_SHORT}",
-                description=f"KI-Dienstleister aus {name} (DACH-Verzeichnis). Eintrag einreichen.",
+    return page(title=f"{title_plain} {date.today().year} — {SITE_SHORT}",
+                description=clip(f"KI-Agenturen und -Freelancer aus {name} im DACH-Verzeichnis — "
+                                 f"nach Leistung sortiert. Eintrag einreichen."),
                 body=body, canonical=BASE_URL + page_path("land", slug),
                 kind="land", slug=slug)
 
