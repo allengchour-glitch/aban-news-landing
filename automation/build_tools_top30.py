@@ -123,8 +123,22 @@ def jsonld_item(t, pos):
     }
 
 
+def sync_counts(html, total):
+    """Hält die statischen Tool-Zähler auf tools.html synchron (verankerte Muster)."""
+    repls = [
+        (r'(id="tool-count">)\d+\+?(</span>)', r"\g<1>%d\g<2>" % total),
+        (r'(2026 — )\d+\+?( Tools mit Aban-Ratings)', r"\g<1>%d\g<2>" % total),
+        (r'(Datenbank mit )\d+\+?( AI-Tools, ehrlich)', r"\g<1>%d\g<2>" % total),
+        (r'(content=")\d+\+?( AI-Tools mit ehrlichen DACH-Ratings)', r"\g<1>%d\g<2>" % total),
+    ]
+    for pat, rep in repls:
+        html = re.sub(pat, rep, html)
+    return html
+
+
 def build(html, tools):
     total = len(tools)
+    html = sync_counts(html, total)
     # Stabile Sortierung nach worth_it_score absteigend (= JS-Default "score")
     top = sorted(tools, key=lambda t: -(t.get("worth_it_score") or 0))[:TOP_N]
 
