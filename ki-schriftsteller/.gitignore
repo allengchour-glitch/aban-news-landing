@@ -30,3 +30,14 @@ kapitel/band-*/*.lektorat.md
 !kapitel-en/band-02/kapitel-*.md
 !kapitel-en/band-03/
 !kapitel-en/band-03/kapitel-*.md
+
+# --- Ausnahme: handgeschriebener Roman "Schicht" (Ruhrgebiet-Saga) ---
+!kapitel-schicht/
+!kapitel-schicht/band-01/
+!kapitel-schicht/band-01/kapitel-*.md
+!kapitel-schicht/band-02/
+!kapitel-schicht/band-02/kapitel-*.md
+!kapitel-schicht/band-03/
+!kapitel-schicht/band-03/kapitel-*.md
+kapitel-schicht/band-*/*.bak.md
+kapitel-schicht/band-*/*.lektorat.md
