@@ -171,6 +171,53 @@ Vermeiden: E-Rechnung (gelöst), High-Risk-AI-Act-Plattformen (Enterprise), KI-M
 - DACH/Deutsch als Moat: native Fachsprache, DSGVO, EUR — englische Konkurrenz kann das schwer kopieren.
 - Vermeiden: Display-Ads bei wenig Traffic, noch mehr dünne Programmatik-Seiten, generische Newsletter-Box.
 
+## Hype-Filter — interaktives Tool (Repo-Root + Edge-API)
+Erstes echtes Backend-Tool im Netzwerk (raus aus rein statischem HTML).
+- **`hype-filter.html`** (Pretty-URLs `/hype`, `/hype-filter`): Web-App, die deutschen
+  Marketing-/Website-Text auf Hype prüft — Klartext-Score 0–100, markierte Buzzwords/
+  Versprechen/Füllwörter/Passiv, Schachtelsatz- & Lesbarkeits-Analyse (Wiener Sachtextformel),
+  konkrete Umschreib-Vorschläge + regelbasierte Aufräum-Fassung. Brand-Style, SEO/OG/JSON-LD
+  (`WebApplication`), Newsletter-CTA als Monetarisierung. Kein Login, kein Tracking.
+- **Edge-API:** `functions/api/hype-check.js` (Cloudflare Pages Function, POST `/api/hype-check`)
+  + Analyse-Engine `functions/_engine.mjs` (reines JS, keine Deps). Optionale KI-Umschreibung
+  via Claude, wenn Secret `ANTHROPIC_API_KEY` im Pages-Projekt gesetzt ist (Model über
+  `HYPE_MODEL`, Default `claude-sonnet-4-6`) — sonst regelbasierter Fallback. Kein Build-Step
+  nötig: Cloudflare erkennt `functions/` automatisch.
+- **Tests:** `node functions/_engine.test.mjs` (84 Checks) + `functions/_api.test.mjs`
+  (40 Checks), alle grün. Engine wird zugleich vom CI-Voice-Validator-Gedanken
+  gespeist (Lexikon erweitert die `FORBIDDEN`-Idee).
+- **Verlinkt:** Footer `index.html` + `resources.html` (Live-Tools-Karte), `sitemap.xml`.
+- **Idee/Moat:** dasselbe Werkzeug, mit dem jede Newsletter-Ausgabe geprüft wird, als
+  öffentliches Produkt — on-brand (Anti-Hype), nützlich für DACH-Solo-Profis, später als
+  Premium-API/Bulk-Check monetisierbar.
+
+### Hype-Filter — Ausbau (parallele Agenten-Runde)
+- Engine deutlich vertieft: Lexikon 49→65 Einträge, neue Kategorien `vage` +
+  `nominalstil`, `metrics.readingLabel`, ReDoS-gehärtet, 84 Engine-Tests.
+- API gehärtet: 405/413/415-Guards, Security-/Cache-Header, Claude-Timeout +
+  Key-Leak-Schutz; 40 API-Tests (`functions/_api.test.mjs`).
+- CI: `.github/workflows/hype-filter-test.yml` fährt die JS-Tests + HTML-Sanity.
+- Frontend: Dark-Mode, Kopier-Buttons, localStorage-Restore, Teilen-per-Hash,
+  Tastatur (Strg/Cmd+Enter), ARIA/Fokus/Print, defensives Rendering.
+- `anti-hype-texten.html` — SEO-Cornerstone-Ratgeber (funnelt zum Tool).
+- `js/hype-filter-widget.js` + `hype-widget-demo.html` — einbettbares Widget
+  (Shadow-DOM, XSS-sicher) für Fremd-Sites → Backlinks. Pretty-URLs `/anti-hype`,
+  `/widget`. Verlinkt in sitemap/_redirects/Footer/resources.
+
+## Stand 2026-05-31 (Abend) — Conversion-/A11y-/SEO-Runde
+- **Hype-Filter Review-Welle:** 4 Audits (Security, A11y, Engine-Linguistik, Voice),
+  Fixes umgesetzt (Engine-False-Positives raus, Dark-Mode-Kontrast, escaped Output,
+  eigene Tool-Seiten bestehen ihren eigenen Filter). Tests jetzt 84 + 40, alle grün.
+- **AA-Buttons site-weit:** gefüllte Primär-/CTA-Buttons von Weiß-auf-`#d97706`
+  (3.19:1) auf `#b45309` (5.02:1, WCAG AA), Hover `#92400e`. Akzent-Token `--amber`
+  bewusst unverändert. Dark-Mode-Seiten token-aware. 26 Regeln/23 Dateien + styles.css.
+- **ki-tools-radar Umsatz-Pass** (`generate.py`): Affiliate-`rel` korrigiert
+  (`sponsored noopener` statt widersprüchlichem `sponsored nofollow`, `noopener`-Lücke
+  bei `target="_blank"` geschlossen — 0 Verstöße im dist), **CTA above-the-fold nach
+  TLDR** (3 CTAs/Seite), einzigartige keyword-reiche Titles („{Tool} Test & Bewertung
+  {Jahr}") in 11 Sprachen, `og:type=product`, Meta-Descriptions an Wortgrenze gekürzt.
+  Build deterministisch (10.351 Seiten). **Dieselben Hebel sind auf die übrigen
+  Programmatic-Projekte (foerder/jobs/kurse/prompts/agenturen) übertragbar.**
 ## 💶 Monetarisierung Newsletter/Buch — LIVE-Stand (2026-05-31, Session „ebook verkaufen")
 
 **Founding-Member — LIVE & verkauft aktiv:**

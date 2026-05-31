@@ -1,0 +1,73 @@
+name: Hype-Filter Tests
+
+# Prüft bei Push/PR auf functions/** und hype-filter.html:
+# Engine-Unit-Tests, optionaler API-Test und HTML-Sanity-Check.
+# Kein npm install — Node direkt nutzen, damit CF Pages keinen Build erkennt.
+on:
+  push:
+    paths:
+      - 'functions/**'
+      - 'hype-filter.html'
+  pull_request:
+    paths:
+      - 'functions/**'
+      - 'hype-filter.html'
+  workflow_dispatch:
+
+jobs:
+  hype-filter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Engine-Unit-Tests (läuft immer)
+      - name: Engine-Tests (_engine.test.mjs)
+        run: node functions/_engine.test.mjs
+
+      # API-Tests nur ausführen, wenn die Datei bereits existiert
+      - name: API-Tests (_api.test.mjs, optional)
+        run: |
+          if [ -f functions/_api.test.mjs ]; then
+            node functions/_api.test.mjs
+          else
+            echo "kein API-Test (functions/_api.test.mjs nicht vorhanden)"
+          fi
+
+      # Schneller HTML-Sanity-Check: Tag-Balance + JSON-LD-Gültigkeit
+      - name: hype-filter.html Sanity-Check
+        run: |
+          python3 - <<'PY'
+          import sys, re, json
+
+          html = open("hype-filter.html", encoding="utf-8").read()
+          errors = []
+
+          # Tag-Balance: <div> vs </div>, <script> vs </script>
+          for tag in ("div", "script"):
+              opens  = len(re.findall(rf"<{tag}[\s>]", html, re.IGNORECASE))
+              closes = len(re.findall(rf"</{tag}>", html, re.IGNORECASE))
+              if opens != closes:
+                  errors.append(f"Tag-Imbalance <{tag}>: {opens} auf, {closes} zu")
+
+          # JSON-LD-Blöcke (falls vorhanden) auf Gültigkeit prüfen
+          for i, block in enumerate(re.findall(
+              r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
+              html, re.DOTALL | re.IGNORECASE
+          )):
+              try:
+                  json.loads(block)
+              except json.JSONDecodeError as e:
+                  errors.append(f"JSON-LD Block {i+1} ungültig: {e}")
+
+          if errors:
+              for e in errors:
+                  print(f"::error::{e}")
+              sys.exit(1)
+          else:
+              print("hype-filter.html Sanity-Check OK")
+          PY
