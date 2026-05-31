@@ -210,39 +210,64 @@
   </section>
 
   <section style="background:#fef3c7;border-top:1px solid #e5e7eb;padding:40px 0;">
-    <div class="wrap" style="text-align:center;">
-      <h2 style="margin:0 0 6px;">Das Aban-Netzwerk</h2>
-      <p style="color:#6b7280;margin:0 0 22px;">Kostenlose KI-Werkzeuge für den deutschsprachigen Raum — ehrlich, ohne Anmeldung.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;">
-        <a href="https://radar.abannews.com" style="display:block;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px;text-decoration:none;color:#1f2937;">
-          <div style="font-size:1.8rem;">📡</div>
-          <strong style="display:block;margin:6px 0 4px;">KI-Tools Radar</strong>
-          <span style="color:#6b7280;font-size:.9rem;">177 KI-Tools, ehrlich bewertet</span>
+    <div class="wrap">
+      <h2 style="margin:0 0 6px;text-align:center;">Das Aban-Netzwerk</h2>
+      <p style="color:#6b7280;margin:0 0 22px;text-align:center;">Sechs kostenlose KI-Werkzeuge für den DACH-Raum — kuratiert, ehrlich, ohne Anmeldung.</p>
+      <style>
+        .nx-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+        .nx-card{display:flex;align-items:flex-start;gap:14px;text-align:left;padding:18px;background:#fff;
+          border:1px solid #e5e7eb;border-radius:14px;text-decoration:none;color:#1f2937;
+          transition:transform .15s,box-shadow .15s,border-color .15s}
+        .nx-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(31,41,55,.10);border-color:#d97706}
+        .nx-ico{flex:0 0 auto;width:46px;height:46px;border-radius:12px;background:#fef3c7;
+          display:flex;align-items:center;justify-content:center;font-size:24px}
+        .nx-name{font-weight:800;font-size:1.05rem;display:block;margin-bottom:3px}
+        .nx-tag{font-size:.7rem;font-weight:700;color:#b45309;background:#fef3c7;padding:1px 8px;border-radius:999px;margin-left:6px;white-space:nowrap}
+        .nx-desc{display:block;font-size:.9rem;color:#6b7280;line-height:1.45}
+        @media(max-width:600px){.nx-grid{grid-template-columns:1fr;gap:10px}.nx-card{padding:14px}}
+      </style>
+      <div class="nx-grid">
+        <a href="https://radar.abannews.com" class="nx-card">
+          <span class="nx-ico">📡</span>
+          <span>
+            <span class="nx-name">KI-Tools Radar <span class="nx-tag">177 Tools</span></span>
+            <span class="nx-desc">Der ehrliche Tool-Vergleich: DACH-Relevanz, Worth-it-Score und DSGVO-Check für jedes Tool — kein Marketing-Geschwurbel.</span>
+          </span>
         </a>
-        <a href="https://foerder.abannews.com" style="display:block;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px;text-decoration:none;color:#1f2937;">
-          <div style="font-size:1.8rem;">🧭</div>
-          <strong style="display:block;margin:6px 0 4px;">Förder-Radar</strong>
-          <span style="color:#6b7280;font-size:.9rem;">86 Förderprogramme für DACH</span>
+        <a href="https://foerder.abannews.com" class="nx-card">
+          <span class="nx-ico">🧭</span>
+          <span>
+            <span class="nx-name">Förder-Radar <span class="nx-tag">86 Programme</span></span>
+            <span class="nx-desc">Fördermittel für KI &amp; Digitalisierung in DE, AT &amp; CH — mit Fristen und wer antragsberechtigt ist, verständlich erklärt.</span>
+          </span>
         </a>
-        <a href="https://jobs.abannews.com" style="display:block;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px;text-decoration:none;color:#1f2937;">
-          <div style="font-size:1.8rem;">🤖</div>
-          <strong style="display:block;margin:6px 0 4px;">KI-Jobs Radar</strong>
-          <span style="color:#6b7280;font-size:.9rem;">KI-Jobs im DACH-Raum, täglich neu</span>
+        <a href="https://jobs.abannews.com" class="nx-card">
+          <span class="nx-ico">🤖</span>
+          <span>
+            <span class="nx-name">KI-Jobs Radar <span class="nx-tag">täglich neu</span></span>
+            <span class="nx-desc">Aktuelle KI- und AI-Stellen im DACH-Raum — Remote und vor Ort, vom Einstieg bis Senior, täglich aktualisiert.</span>
+          </span>
         </a>
-        <a href="https://kurse.abannews.com" style="display:block;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px;text-decoration:none;color:#1f2937;">
-          <div style="font-size:1.8rem;">🎓</div>
-          <strong style="display:block;margin:6px 0 4px;">KI-Kurs-Radar</strong>
-          <span style="color:#6b7280;font-size:.9rem;">KI-Kurse &amp; Zertifikate im Vergleich</span>
+        <a href="https://kurse.abannews.com" class="nx-card">
+          <span class="nx-ico">🎓</span>
+          <span>
+            <span class="nx-name">KI-Kurs-Radar</span>
+            <span class="nx-desc">KI-Kurse &amp; Zertifikate im ehrlichen Vergleich: Aufwand, Preis und was du wirklich lernst — auch geförderte Optionen.</span>
+          </span>
         </a>
-        <a href="https://prompts.abannews.com" style="display:block;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px;text-decoration:none;color:#1f2937;">
-          <div style="font-size:1.8rem;">✍️</div>
-          <strong style="display:block;margin:6px 0 4px;">Prompt-Bibliothek</strong>
-          <span style="color:#6b7280;font-size:.9rem;">50 deutsche Prompts zum Kopieren</span>
+        <a href="https://prompts.abannews.com" class="nx-card">
+          <span class="nx-ico">✍️</span>
+          <span>
+            <span class="nx-name">Prompt-Bibliothek <span class="nx-tag">50 Prompts</span></span>
+            <span class="nx-desc">Sofort einsetzbare deutsche Prompts zum Kopieren — für Angebote, Mails, Content und Recherche. Getestet, kein Dump.</span>
+          </span>
         </a>
-        <a href="https://agenturen.abannews.com" style="display:block;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px;text-decoration:none;color:#1f2937;">
-          <div style="font-size:1.8rem;">🏢</div>
-          <strong style="display:block;margin:6px 0 4px;">KI-Dienstleister</strong>
-          <span style="color:#6b7280;font-size:.9rem;">KI-Agenturen &amp; Freelancer in DACH</span>
+        <a href="https://agenturen.abannews.com" class="nx-card">
+          <span class="nx-ico">🏢</span>
+          <span>
+            <span class="nx-name">Agentur-Radar</span>
+            <span class="nx-desc">Geprüfte KI-Dienstleister &amp; Agenturen für DACH — finde Hilfe bei Automatisierung, Content und Beratung.</span>
+          </span>
         </a>
       </div>
     </div>
