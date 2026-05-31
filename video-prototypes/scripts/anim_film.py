@@ -122,24 +122,37 @@ def draw_char(ld,t,P):
         if P.get("smear") and side=="R": ld.line([(shx,shy),hand],fill=(255,176,32,90),width=int(L(3)))
     # head
     ht=P["headturn"]; look=P["look"]; hx=sh[0]+ht*L(16); hy=sh[1]-L(70)+bob*0.2+P.get("headdip",0)*SS
+    # ears
     for s in (-1,1):
         exu=hx+s*L(38)+ht*L(10); ey=hy-L(96)+P["ear"]*(1 if s>0 else -1)
         E(ld,exu,ey,L(18),L(54),EAR); E(ld,exu,ey+L(6),L(10),L(40),BLUSH)
-    E(ld,hx,hy,L(92),L(88),BODY); E(ld,hx-L(32),hy-L(32),L(32),L(28),BODYL)
-    for s in (-1,1): E(ld,hx+s*L(56),hy+L(24),L(19),L(13),BLUSH,outline=BLUSH,ow=1)
-    ew=L(36)*(1+0.22*P["eyewide"]); eh=L(44)*(1+0.3*P["eyewide"]); ld2=look*L(9); sac=P.get("sac",0)*L(6)
+    # head + soft top highlight (NO outline) + cheeks
+    E(ld,hx,hy,L(92),L(88),BODY); E(ld,hx-L(30),hy-L(34),L(33),L(27),BODYL,outline=None,ow=0)
+    for s in (-1,1): E(ld,hx+s*L(56),hy+L(23),L(19),L(12),BLUSH,outline=None,ow=0)
+    # ---- eyes (clean, glossy: iris ring + pupil + 2 catchlights) ----
+    ewd=P["eyewide"]; rW=L(34)*(1+0.18*ewd); rH=L(42)*(1+0.26*ewd); eyy=hy-L(8); sacx=P.get("sac",0)*L(5)
     for s in (-1,1):
-        ox=hx+s*L(36)+ht*L(10)
-        if P["blink"]: ld.line([(ox-ew*0.8,hy-L(6)),(ox+ew*0.8,hy-L(6))],fill=OUT,width=int(L(5)))
-        else:
-            E(ld,ox,hy-L(6),ew,eh,WHITE,ow=3); pr=L(16)*(1-0.25*P["eyewide"]); px=ox+ht*L(5)+sac; py=hy-L(2)+ld2
-            E(ld,px,py,pr,pr*1.12,PUP,outline=PUP,ow=1); E(ld,px-pr*0.35,py-pr*0.4,pr*0.42,pr*0.42,WHITE,outline=WHITE,ow=1)
-    E(ld,hx+ht*L(6),hy+L(20),L(10),L(8),NOSE,outline=NOSE,ow=1)
-    my=hy+L(38); mo=L(4)+P["env"]*L(18); E(ld,hx+ht*L(6),my,L(16)*P["mw"],mo,MOUTH)
-    if mo>L(11): E(ld,hx+ht*L(6),my+mo*0.3,L(8),mo*0.4,TONGUE)
-    else:
-        ld.rectangle([hx+ht*L(6)-L(8),my-L(2),hx+ht*L(6)-L(1),my+L(9)],fill=TEETH,outline=OUT,width=int(L(1.5)))
-        ld.rectangle([hx+ht*L(6)+L(1),my-L(2),hx+ht*L(6)+L(8),my+L(9)],fill=TEETH,outline=OUT,width=int(L(1.5)))
+        ox=hx+s*L(35)+ht*L(9)
+        if P["blink"]:
+            ld.arc([ox-rW,eyy-rH*0.45,ox+rW,eyy+rH*0.55],15,165,fill=OUT,width=int(L(6))); continue
+        E(ld,ox,eyy,rW,rH,WHITE,ow=3)
+        pr=L(17)*(1-0.20*ewd); px=ox+look*L(8)+sacx+ht*L(4); py=eyy+L(3)
+        E(ld,px,py,pr*1.18,pr*1.30,(74,60,90),outline=None,ow=0)              # iris ring
+        E(ld,px,py,pr,pr*1.12,PUP,outline=None,ow=0)                          # pupil
+        E(ld,px-pr*0.34,py-pr*0.46,pr*0.46,pr*0.46,WHITE,outline=None,ow=0)   # main catchlight
+        E(ld,px+pr*0.36,py+pr*0.30,pr*0.20,pr*0.20,WHITE,outline=None,ow=0)   # 2nd catchlight
+    # nose
+    E(ld,hx+ht*L(6),hy+L(18),L(10),L(8),NOSE,outline=None,ow=0)
+    # ---- mouth (clean visemes) ----
+    mcx=hx+ht*L(6); my=hy+L(37); env=P["env"]; mw=L(15)*P["mw"]*(1+0.22*env); mo=L(3)+env*L(20)
+    if mo<=L(8):    # near-closed: friendly curve + clean bunny front teeth
+        ld.arc([mcx-mw,my-L(3),mcx+mw,my+L(9)],8,172,fill=MOUTH,width=int(L(5)))
+        RR(ld,mcx-L(7),my+L(2),mcx+L(7),my+L(13),L(3),TEETH,outline=OUT,ow=2)
+        ld.line([(mcx,my+L(3)),(mcx,my+L(12))],fill=BODYD,width=int(L(1.5)))
+    else:           # open: lips + single upper-teeth strip + tongue
+        E(ld,mcx,my,mw,mo,MOUTH,outline=OUT,ow=3)
+        RR(ld,mcx-mw*0.66,my-mo*0.82,mcx+mw*0.66,my-mo*0.18,L(4),TEETH,outline=None,ow=0)
+        if mo>L(13): E(ld,mcx,my+mo*0.42,mw*0.5,mo*0.42,TONGUE,outline=None,ow=0)
     handR=(hx,hy)
     if P.get("prop"):
         sa,ea=P["armR"]; shx=sh[0]+L(56); shy=sh[1]+L(6); el=pt(shx,shy,sa,L(54)); hand=pt(*el,sa+ea,L(48))
