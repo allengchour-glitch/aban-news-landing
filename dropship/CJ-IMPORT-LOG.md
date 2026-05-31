@@ -175,6 +175,16 @@ per Query verifiziert ist.
 **Echter Alt-Draft:** „Premium Modern Shoe Rack" (DRAFT, Tag `autopilot`) hatte fälschlich Tag
 `bestseller` → entfernt (gehört nicht in Hero-Collection). Bleibt DRAFT (Möbel/Platzhalter-Copy).
 
+## Runde 2: 3× Hero-Copy + Collection-Cleanup + Rechts-Check (2026-05-31)
+**+3 Hero-Produkte** mit Premium-Copy (Hook · Benefits · Lieferumfang · Trust-Box · FAQ · SEO,
+Tags `hero`+`bestseller`): Übersetzer-Kopfhörer (69.90) · Bladeless Nackenventilator (29.90) ·
+4L Luftbefeuchter (54.90). → **6 Hero-Produkte gesamt.** Alle fallen in „🔥 Hero-Favoriten".
+**Collection-Cleanup:** 6 leere/stillgelegte `[ARCHIV]`-Collections gelöscht (Lederaccessoires,
+Beauty&Wellness, Geschenkideen, Sport&Fitness, Muttertag, Bundles — alle 0 Produkte,
+`_deprecated_do_not_use_`). Aktive/befüllte Collections unangetastet (evtl. in Navigation verlinkt).
+**Rechts-Check:** Policies CH-konform. **Offen (User, Scope fehlt):** AGB-Policy enthält tote
+Domain `aban-192.myshopify.com` → in Admin → Einstellungen → Richtlinien → AGB auf `luxestyle.ch`.
+
 ### Hinweis zur Methode
 Jedes Produkt: Keyword-Suche → Relevanzfilter → Bild-URLs per HTTP-200 verifiziert → angelegt →
 mit der **echten** zurückgegebenen ID publiziert (geratene IDs scheitern systematisch → immer
