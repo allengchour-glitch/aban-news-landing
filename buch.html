@@ -67,6 +67,9 @@
     .cta-box h2{font-size:1.25rem;margin-bottom:.5rem}
     .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
     .disclaimer{font-size:.8rem;color:var(--muted);padding:1.2rem 0;border-top:1px solid var(--line);margin-top:1rem}
+    .dl-state{display:block;font-size:.78rem;color:var(--ok);font-weight:600;margin-top:.5rem}
+    .welcome{background:var(--amber-lt);border:1px solid #f6d9ad;border-radius:12px;padding:.6rem 1rem;margin:1rem 0 0;font-size:.9rem}
+    .reset{background:none;border:0;color:var(--muted);cursor:pointer;text-decoration:underline;font-size:.78rem}
     footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
     footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
     footer a{color:var(--muted)}
@@ -76,7 +79,7 @@
   {"@context":"https://schema.org","@type":"Book","name":"Anti-Hype — Wie deutsche Solopreneure KI ohne Bullshit einsetzen","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"inLanguage":"de","bookFormat":"https://schema.org/EBook","datePublished":"2026","url":"https://abannews.com/buch.html","workExample":[{"@type":"Book","bookFormat":"https://schema.org/EBook","encodingFormat":"application/pdf","url":"https://abannews.com/downloads/anti-hype-ebook.pdf"},{"@type":"Book","bookFormat":"https://schema.org/EBook","encodingFormat":"application/epub+zip","url":"https://abannews.com/downloads/anti-hype-ebook.epub"}]}
   </script>
 </head>
-<body>
+<body data-memory-key="aban_buch_v1">
 
 <header>
   <div class="wrap">
@@ -100,6 +103,8 @@
       <p class="lead">Die Essenz aus 200+ Newsletter-Ausgaben in einem Stück. Lad es gratis als PDF oder ePub — und wenn es dir geholfen hat, zahl, was es dir wert war. Keine Bezahlschranke, kein Druck. So einfach.</p>
     </div>
 
+    <p class="welcome" data-resume data-resume-text="Willkommen zurück — zuletzt warst du am %d hier." hidden></p>
+
     <div class="buy">
       <div class="cover" aria-hidden="true">
         <span class="c-emoji">☕</span>
@@ -110,10 +115,12 @@
         <h2>Hol dir das Buch</h2>
         <p>Sauber gesetzt, offline lesbar, auf jedem Gerät. Kein Tracking, keine Anmeldung nötig.</p>
         <div class="formats">
-          <a href="/downloads/anti-hype-ebook.pdf" download>↓ PDF</a>
-          <a href="/downloads/anti-hype-ebook.epub" download>↓ ePub (Kindle/E-Reader)</a>
+          <a href="/downloads/anti-hype-ebook.pdf" download data-dl="pdf">↓ PDF</a>
+          <a href="/downloads/anti-hype-ebook.epub" download data-dl="epub">↓ ePub (Kindle/E-Reader)</a>
           <a href="/ebook.html">→ Online lesen</a>
         </div>
+        <span class="dl-state" data-dl-state="pdf" data-dl-label="✓ PDF geladen am" hidden></span>
+        <span class="dl-state" data-dl-state="epub" data-dl-label="✓ ePub geladen am" hidden></span>
         <div class="pay">
           <a href="#" class="btn" id="buy-btn">Bald: Buch unterstützen →</a>
           <a href="#" class="btn btn--ghost" id="kdp-btn" hidden>Auf Amazon (Kindle/Print)</a>
@@ -157,6 +164,7 @@
 
     <div class="disclaimer">
       <p><strong>Ehrlichkeits-Hinweis:</strong> Aktuell ist dies die kompakte 1. Auflage (~8 Seiten Kerninhalt). Eine erweiterte Print-/Kindle-Edition ist in Arbeit. Keine erfundenen Bewertungen, keine Bestseller-Behauptungen — die kommen, wenn sie echt sind.</p>
+      <p><strong>Dein Fortschritt bleibt bei dir.</strong> Diese Seite merkt sich nur lokal in deinem Browser (<code>localStorage</code>), ob du PDF oder ePub geladen hast — ohne Server, ohne Cookies, ohne Tracking. Nichts davon verlässt dein Gerät. <button class="reset" data-reset type="button">Zurücksetzen</button></p>
     </div>
 
   </div>
@@ -169,6 +177,8 @@
   </div>
 </footer>
 
+<!-- Lese-/Fortschritt-Memory: nur lokal (localStorage), kein Tracking. -->
+<script src="/js/buch-memory.js"></script>
 <!-- Links zentral in js/buch-config.js pflegen (eine Quelle der Wahrheit). -->
 <script src="/js/buch-config.js"></script>
 <script>

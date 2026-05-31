@@ -35,6 +35,12 @@ python3 schreibe_roman.py --neu           # vorhandene ueberschreiben
 python3 schreibe_roman.py --roman mein.json --out kapitel/
 ```
 
+Danach zu einem lieferbaren Buch (Markdown + EPUB3) kompilieren:
+
+```bash
+python3 buch_bauen.py --roman roman.json   # -> ausgabe/<slug>.md + .epub
+```
+
 ## Eigenen Roman schreiben
 
 Kopiere `roman.json` und passe an:
@@ -46,6 +52,56 @@ Kopiere `roman.json` und passe an:
 - `kapitel` - pro Kapitel `ziel` und konkrete `beats` (Handlungsschritte).
 
 Je konkreter die Beats, desto gezielter das Kapitel.
+
+## Trilogie / Mehrband-Romane
+
+Ein Roman kann statt eines flachen `kapitel`-Arrays mehrere **Bände** haben.
+Welt, Ton, Stilregeln und Figuren bleiben oben geteilt (ein Gesamtbogen, ein
+gecachter System-Präfix); nur die Kapitel liegen pro Band:
+
+```json
+{
+  "titel": "...", "genre": "Drama", "...": "...",
+  "welt": { "...": "..." }, "figuren": [ ... ],
+  "baende": [
+    { "nummer": 1, "titel": "Der Hang", "untertitel": "1961-1963",
+      "kapitel": [ {"nummer":1,"titel":"...","ziel":"...","beats":[...]} ] },
+    { "nummer": 2, "titel": "Die Mitte", "kapitel": [ ... ] },
+    { "nummer": 3, "titel": "Das Wasser", "kapitel": [ ... ] }
+  ]
+}
+```
+
+Fertiges Beispiel: **`roman-drama-trilogie.json`** ("Das Tal hält den Atem an",
+3 Bände). Bibeln ohne `baende` (z. B. `roman.json`, `roman-thriller.json`)
+verhalten sich unverändert wie ein Einzelbuch.
+
+```bash
+python3 schreibe_roman.py --roman roman-drama-trilogie.json            # ganze Trilogie
+python3 schreibe_roman.py --roman roman-drama-trilogie.json --band 1   # nur Band 1
+python3 schreibe_roman.py --roman roman-drama-trilogie.json --band 1 --kapitel 3
+python3 buch_bauen.py     --roman roman-drama-trilogie.json            # je Band + Gesamt
+python3 plane_kapitel.py  --roman roman-drama-trilogie.json --band 2 --anzahl 6 --schreiben
+python3 lektor.py         --roman roman-drama-trilogie.json --band 1 --kapitel 3
+python3 ueberarbeiten.py  --roman roman-drama-trilogie.json --band 1 --kapitel 3 --feedback "..."
+```
+
+Output-Layout der Trilogie:
+
+- Kapitel: `kapitel/band-0N/kapitel-NN.md` (Einzelbuch weiterhin `kapitel/kapitel-NN.md`).
+- Kompilat: `ausgabe/<slug>-band-0N.{md,epub}` pro Band **und**
+  `ausgabe/<slug>-gesamt.{md,epub}` als Omnibus mit Band-Trennseiten.
+
+Die Kontinuität läuft über Bandgrenzen hinweg: Kapitel früherer Bände gehen als
+kurze Synopsen in spätere Aufrufe ein.
+
+### Wie lang wird das?
+
+Ziellänge ist 1200–2000 Wörter pro Kapitel (~5–7 Seiten). Die Beispiel-Trilogie
+hat 3 × 12 = 36 Kapitel → grob ~65.000 Wörter / ~250 Seiten als Erstdurchlauf.
+Für ein dickes Buch (~1000 Seiten) gibt es zwei Hebel: mehr Kapitel pro Band
+(`plane_kapitel.py --band N --anzahl …`) oder eine höhere Ziellänge in
+`baue_kapitel_auftrag()` (`schreibe_roman.py`).
 
 ## Hinweise
 

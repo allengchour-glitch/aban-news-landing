@@ -68,6 +68,9 @@
     .cta-box h2{font-size:1.25rem;margin-bottom:.5rem}
     .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
     .disclaimer{font-size:.8rem;color:var(--muted);padding:1.2rem 0;border-top:1px solid var(--line);margin-top:1rem}
+    .dl-state{display:block;font-size:.78rem;color:var(--ok);font-weight:600;margin-top:.5rem}
+    .welcome{background:var(--amber-lt);border:1px solid #f6d9ad;border-radius:12px;padding:.6rem 1rem;margin:1rem 0 0;font-size:.9rem}
+    .reset{background:none;border:0;color:var(--muted);cursor:pointer;text-decoration:underline;font-size:.78rem}
     footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
     footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
     footer a{color:var(--muted)}
@@ -77,7 +80,7 @@
   {"@context":"https://schema.org","@type":"Book","name":"Anti-Hype — Comment les indépendants utilisent l'IA sans bullshit","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"inLanguage":"fr","bookFormat":"https://schema.org/EBook","datePublished":"2026","url":"https://abannews.com/fr/buch.html","workExample":[{"@type":"Book","bookFormat":"https://schema.org/EBook","encodingFormat":"application/pdf","url":"https://abannews.com/downloads/anti-hype-ebook-fr.pdf"},{"@type":"Book","bookFormat":"https://schema.org/EBook","encodingFormat":"application/epub+zip","url":"https://abannews.com/downloads/anti-hype-ebook-fr.epub"}]}
   </script>
 </head>
-<body>
+<body data-memory-key="aban_buch_v1">
 
 <header>
   <div class="wrap">
@@ -101,6 +104,8 @@
       <p class="lead">L'essence de plus de 200 numéros de newsletter en un seul morceau. Télécharge-le gratuitement en PDF ou ePub — et s'il t'a aidé, paie ce qu'il valait pour toi. Pas de paywall, pas de pression. Aussi simple que ça.</p>
     </div>
 
+    <p class="welcome" data-resume data-resume-text="Bon retour — ta dernière visite ici : le %d." hidden></p>
+
     <div class="buy">
       <div class="cover" aria-hidden="true">
         <span class="c-emoji">☕</span>
@@ -111,10 +116,12 @@
         <h2>Récupère le livre</h2>
         <p>Bien mis en page, lisible hors ligne, sur tous tes appareils. Sans suivi, sans inscription.</p>
         <div class="formats">
-          <a href="/downloads/anti-hype-ebook-fr.pdf" download>↓ PDF</a>
-          <a href="/downloads/anti-hype-ebook-fr.epub" download>↓ ePub (Kindle/liseuse)</a>
+          <a href="/downloads/anti-hype-ebook-fr.pdf" download data-dl="pdf">↓ PDF</a>
+          <a href="/downloads/anti-hype-ebook-fr.epub" download data-dl="epub">↓ ePub (Kindle/liseuse)</a>
           <a href="/fr/ebook.html">→ Lire en ligne</a>
         </div>
+        <span class="dl-state" data-dl-state="pdf" data-dl-label="✓ PDF téléchargé le" hidden></span>
+        <span class="dl-state" data-dl-state="epub" data-dl-label="✓ ePub téléchargé le" hidden></span>
         <div class="pay">
           <a href="#" class="btn" id="buy-btn">Bientôt : soutenir le livre →</a>
           <a href="#" class="btn btn--ghost" id="kdp-btn" hidden>Sur Amazon (Kindle/imprimé)</a>
@@ -158,6 +165,7 @@
 
     <div class="disclaimer">
       <p><strong>Note d'honnêteté :</strong> pour l'instant, c'est la 1re édition compacte (~8 pages de contenu de fond). Une édition imprimée/Kindle approfondie est en cours. Pas d'avis inventés, pas de prétentions au best-seller — ça viendra quand ce sera réel.</p>
+      <p><strong>Ta progression reste chez toi.</strong> Cette page mémorise uniquement en local dans ton navigateur (<code>localStorage</code>) si tu as téléchargé le PDF ou l'ePub — sans serveur, sans cookies, sans suivi. Rien ne quitte ton appareil. <button class="reset" data-reset type="button">Réinitialiser</button></p>
     </div>
 
   </div>
@@ -170,6 +178,8 @@
   </div>
 </footer>
 
+<!-- Mémoire de lecture/progression : local uniquement (localStorage), sans suivi. -->
+<script src="/js/buch-memory.js"></script>
 <!-- Liens centralisés dans /js/buch-config.js (source unique). -->
 <script src="/js/buch-config.js"></script>
 <script>

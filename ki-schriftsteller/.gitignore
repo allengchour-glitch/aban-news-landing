@@ -1,5 +1,8 @@
 # Generierte Kapitel nicht einchecken (Output, kein Quellcode)
 kapitel/*.md
+# Trilogie: Kapitel liegen pro Band in Unterordnern (kapitel/band-0N/...)
+kapitel/band-*/
+kapitel/**/*.md
 # Kompilierte Buch-Ausgaben (Output)
 ausgabe/
 # Backups und Lektorate (Output)

@@ -43,6 +43,7 @@ except ImportError:
 # Schreiber-Bausteine wiederverwenden: Plot-Bibel und JSON-Laden teilen sich
 # beide Werkzeuge, damit der Lektor exakt dieselbe Welt-/Voice-Sicht hat.
 from schreibe_roman import lade_roman, baue_plotbibel, MODELL
+from roman_util import ist_trilogie, kapitel_pfad
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 
@@ -161,6 +162,8 @@ def main():
     p.add_argument("--out", "--kapitel-dir", dest="kapitel_dir",
                    default=os.path.join(HIER, "kapitel"),
                    help="Ordner mit den Kapitel-Dateien (Default: kapitel/)")
+    p.add_argument("--band", type=int, default=None,
+                   help="Bei Trilogie: Band des zu pruefenden Kapitels (Nummer)")
     p.add_argument("--kapitel", type=int, required=True,
                    help="Nummer des zu pruefenden Kapitels (Pflicht)")
     args = p.parse_args()
@@ -171,7 +174,13 @@ def main():
     if not os.path.exists(args.roman):
         sys.exit("! Plot-Bibel nicht gefunden: %s" % args.roman)
 
-    kap_pfad = os.path.join(args.kapitel_dir, "kapitel-%02d.md" % args.kapitel)
+    roman = lade_roman(args.roman)
+    einzelbuch = not ist_trilogie(roman)
+    if not einzelbuch and args.band is None:
+        sys.exit("! Diese Bibel ist eine Trilogie. Gib mit --band N den Band an.")
+    band_nr = 1 if einzelbuch else args.band
+
+    kap_pfad = kapitel_pfad(args.kapitel_dir, band_nr, args.kapitel, einzelbuch)
     if not os.path.exists(kap_pfad):
         sys.exit("! Kapitel %d nicht gefunden: %s\n"
                  "  (Erst schreiben mit:  python3 schreibe_roman.py --kapitel %d)"
@@ -182,7 +191,6 @@ def main():
     if not kapiteltext:
         sys.exit("! Kapitel %d ist leer: %s" % (args.kapitel, kap_pfad))
 
-    roman = lade_roman(args.roman)
     plotbibel = baue_plotbibel(roman)
     auftrag = baue_lektorat_auftrag(roman, args.kapitel, kapiteltext)
     client = anthropic.Anthropic()
@@ -193,7 +201,8 @@ def main():
     lektorat, cache_info = erstelle_lektorat(client, plotbibel, auftrag)
 
     # Lektorat neben dem Kapitel ablegen: kapitel-NN.lektorat.md
-    ziel = os.path.join(args.kapitel_dir, "kapitel-%02d.lektorat.md" % args.kapitel)
+    ziel = kapitel_pfad(args.kapitel_dir, band_nr, args.kapitel, einzelbuch,
+                        suffix="lektorat.md")
     with open(ziel, "w", encoding="utf-8") as f:
         f.write(lektorat + "\n")
     print("\n[OK] Lektorat gespeichert: %s | %s" % (ziel, cache_info))
