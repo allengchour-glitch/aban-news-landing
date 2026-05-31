@@ -18,6 +18,9 @@
 # Email aliases short-links
 /sponsoren        /sponsoring.html      301
 
+# Privates Manuskript (bezahltes Produkt) NIE öffentlich ausliefern
+/_manuscripts/*   /404.html             404
+
 # 404 fallback — Cloudflare Pages serves /404.html automatically for missing routes,
 # aber für SPA-like fallback explicit:
 /*                /404.html             404
