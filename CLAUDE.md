@@ -29,7 +29,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
-2026-05-31: **~54 CJ-Produkte live** in 6 Kanälen + 6 Hero-Produkte (Premium-Copy). CJ-Katalog für
-saubere Neutreffer weitgehend ausgeschöpft → Fokus auf Conversion/Marketing. Auto-Loop
-(`dropship/cj_autopilot.mjs` + GitHub Action, Token-Bug gefixt) wartet auf Repo-Secrets. Marketing
-fertig: `ads/hero-ads-2026.md`, `KAMPAGNEN-PLAYBOOK.md`, `ADS.md`. Siehe Runbook §8–§10 + Log.
+2026-05-31 (Nacht): **478 aktive Produkte** in 6 Kanälen. Diese Session +17 neue Produkte:
+3 Mode, 5 Schuhe (neue Schuh-Kollektion + Menü-Tab + Collections schuhe/damen-schuhe/herren-schuhe),
+2 Sommer-Gadgets, 4 Küche/Tech, 3 Taschen/Flaschen. Neue Subkats im Menü: 👟 Schuhe, 🍴 Küchengeräte,
+🔌 Coole Gadgets. Werbe-Video `dropship/ads/render_neu.sh` (10 Produkte, Musik, Klick-CTA) geliefert.
+Dashboard `dropship/luxestyle-dashboard.html`. Mobile-Menü „drawer_accordion" aktiv.
+**CJ-Katalog SEHR ausgeschöpft:** jede Such-Charge ~50% Fehltreffer, real 1–4 saubere Treffer.
+**Kein echter 8h-Cron möglich** (CLAUDE.md §Scheduler) → Autonomie = Charge-für-Charge je Session.
+**Workflow neue Produkte:** Token-Cache `/tmp/cj_token.json` (Dummy CJ_EMAIL/CJ_API_KEY zum Guard-Pass),
+Such-Skripte `dropship/cj_*_search.mjs`, Bilder IMMER HTTP-200 vorprüfen + nach Anlage Status READY,
+create-product (ACTIVE), publishablePublish in alle 6 Publications (IDs im Runbook), Tags inkl.
+gender/kategorie passend zu Smart-Collection-Regeln. Offene User-Klicks: TikTok-Kampagne (Bid=Highest
+volume), Discord-Sales-App, Archiv-Rest löschen (~4.700, Admin-Bulk). Siehe Runbook §8–§10 + Log.

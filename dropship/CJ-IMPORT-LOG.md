@@ -597,3 +597,18 @@ lieferten ~50% Fehltreffer (Jeans, Schmuck, Becherhalter, Snuff-Bottles). Pro Su
 nur 1–4 saubere Neutreffer. „20er-Loop endlos" daher nicht realistisch — Qualität vor Menge.
 
 Stand: **475 aktive Produkte**.
+
+## 2026-05-31 (Nacht, Runde 2) — Taschen + Flaschen
+3 weitere (ACTIVE, 6 Kanäle, Bilder READY):
+| Produkt | ID | V | VK | Kat |
+|---|---|---|---|---|
+| Laptop-Rucksack XL Leder-Optik | 15413085897089 | 2 | 39.90 | taschen (→ taschen-sub ✓) |
+| Denim-Schultertasche Karo | 15413086093697 | 4 | 19.90 | taschen |
+| Thermo-Isolierbecher Edelstahl | 15413086323073 | 3 | 16.90 | trinkflaschen |
+FALLE gelernt: `trinkflaschen`-Collection nutzt Tag **`Trinkflasche`** (groß/Singular), nicht
+`trinkflaschen` → Tag nachträglich ergänzt. Smart-Collection-Tags immer vorab prüfen!
+`servieren` nutzt Tag `Servieren` (groß). `taschen-sub`: tag `taschen` ODER `damen-taschen`.
+
+**Session-Summe: 478 aktive Produkte** (+17 diese Session). Nächste Session: weiter Charge-für-Charge,
+dünne Kats (Servieren 4, Vasen 31, Wandkunst), CJ liefert kaum noch Sauberes → ggf. AliExpress/andere
+Quelle erwägen oder Fokus Conversion/Marketing/TikTok-Launch.
