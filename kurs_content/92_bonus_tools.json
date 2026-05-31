@@ -50,13 +50,40 @@
 
     ["p", "Rechne die Monatssumme einmal mal zwölf. Diese Jahreszahl ist die ehrliche Größe, an der du jedes Abo misst."],
 
+    ["h3", "Ein schlanker Beispiel-Stack"],
+    ["p", "Du brauchst weniger, als die Tool-Listen im Netz dir einreden. Für die allermeisten Solo-Profis trägt dieser schlanke Aufbau den kompletten Alltag — bewusst klein gehalten, damit du jedes Werkzeug wirklich beherrschst:"],
+    ["ul", [
+      "<b>Ein guter Chatbot</b> als Hauptwerkzeug für Text, Recherche und Zusammenfassen. Das ist dein Arbeitspferd — hier lohnt sich am ehesten die bezahlte Stufe.",
+      "<b>Das, was du ohnehin schon hast.</b> Dein E-Mail-Programm, deine Textverarbeitung, dein Office-Paket haben oft schon KI-Funktionen eingebaut. Nutze die zuerst.",
+      "<b>Höchstens ein Spezial-Tool</b> für die eine Aufgabe, die dein Beruf wirklich braucht — Transkription, Bildbearbeitung, was auch immer. Erst dazunehmen, wenn der Bedarf real ist."
+    ]],
+    ["callout", "Faustregel: Starte mit einem einzigen bezahlten Tool. Wenn du nach einem Monat ehrlich sagst &bdquo;das hat sich gelohnt&ldquo;, denk über das zweite nach. Nicht früher."],
+
+    ["h3", "Daten-Check vor dem Abo"],
+    ["p", "Bevor ein Tool in deinen Alltag wandert, lohnt ein kurzer Blick darauf, was mit deinen Daten passiert. Das gehört zur Tool-Auswahl genauso wie der Preis — und schützt dich vor späterem Ärger (mehr dazu in Modul 5)."],
+    ["ul", [
+      "Wo sitzt der Anbieter, und wo werden meine Daten verarbeitet — in der EU oder anderswo?",
+      "Werden meine Eingaben zum Training genutzt? Kann ich das abschalten?",
+      "Gibt es einen Geschäftskunden-Tarif mit Auftragsverarbeitungsvertrag, falls ich Kundendaten eingebe?",
+      "Komme ich im Zweifel sauber wieder raus — lassen sich meine Inhalte löschen und exportieren?"
+    ]],
+
+    ["h3", "Die Trial-Disziplin"],
+    ["p", "Kostenlose Testphasen sind nützlich — aber nur, wenn du sie bewusst führst. Sonst sammeln sich Abos an, die du längst vergessen hast. Drei einfache Regeln halten dich sauber:"],
+    ["ol", [
+      "Trag den letzten Tag der Testphase sofort in deinen Kalender ein, mit Erinnerung zwei Tage vorher.",
+      "Entscheide am Erinnerungstag aktiv: Habe ich das Tool genutzt und will ich dafür zahlen? Wenn du zögerst, ist die Antwort nein.",
+      "Teste immer nur ein neues Tool zur Zeit. Zwei parallel, und du weißt am Ende nicht, welches den Unterschied gemacht hat."
+    ]],
+
     ["h3", "Häufige Fehler"],
     ["ul", [
       "Mehrere Tools für dieselbe Aufgabe parallel bezahlen.",
       "Ein Jahresabo buchen, bevor du das Tool im Alltag getestet hast.",
       "Abos vergessen, die nach der Gratis-Phase still weiterlaufen.",
       "Ein neues Tool kaufen, statt das vorhandene besser zu lernen.",
-      "Auf eine Funktion setzen, die du in der Praxis nie benutzt."
+      "Auf eine Funktion setzen, die du in der Praxis nie benutzt.",
+      "Dem neuesten Tool hinterherlaufen, statt das eingespielte ruhig weiter zu nutzen."
     ]],
 
     ["callout", "Du musst nicht alle Tools selbst durchprobieren. Auf radar.abannews.com vergleichst du KI-Tools nach Kategorie und Preis und nutzt es als Nachschlagewerk, bevor du dich für ein Abo entscheidest."]
