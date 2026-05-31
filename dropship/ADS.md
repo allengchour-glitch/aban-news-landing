@@ -36,9 +36,9 @@ mit dem, was die Startseite zeigt → Montage, Hook und Website-Tour sind konsis
 5. Wellness-Tablett Bambus — CHF 44.90
 6. Mini Robo-Diffuser Auto — CHF 19.90
 7. Bambus Aroma Diffuser — CHF 39.90
-8. Galaxy Aurora Projektor — CHF 19.90
+8. Seiden-Kissenbezug — CHF 39.90   *(ersetzt Galaxy Aurora Projektor auf Kundenwunsch)*
 9. Slim Wallet Echtleder — CHF 49.90
-10. Klassische Herrenuhr — CHF 129.90
+10. Anti-Aging Serum — CHF 29.90   *(ersetzt Klassische Herrenuhr auf Kundenwunsch)*
 
 ## Musik (lizenziert)
 Adobe Stock, Free-Collection, royalty-free nach Lizenzierung über das verbundene Konto:
