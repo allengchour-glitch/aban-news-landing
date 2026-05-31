@@ -244,9 +244,11 @@ aber den „Kampagne AN + Budget"-Knopf drückt der User.
 - Rabattcode `WELCOME10` (aktiv) in Copy einbauen.
 
 **3 Dinge, die NUR der User kann (je ~1 Klick, mobil):**
-1. AGB-Domain-Fix `aban-192.myshopify.com` → `luxestyle.ch` (mir fehlt Scope `write_legal_policies`).
+1. AGB-Domain-Fix `aban-192.myshopify.com` → `luxestyle.ch` (mir fehlt Scope `write_legal_policies`
+   — am 2026-05-31 erneut per API versucht, hart abgelehnt. Definitiv nur manuell machbar).
 2. TikTok-/Meta-Pixel installieren (App im Shopify-Admin) — Pflicht, sonst optimiert Werbung nicht.
-3. Erste Kampagne live schalten + Budget (Werbekonto). Anleitung: `KAMPAGNEN-PLAYBOOK.md`.
+3. Erste Kampagne live schalten + Budget (Werbekonto). User wählte **TikTok zuerst, kleines Budget** →
+   fertiges Setup in `dropship/TIKTOK-START-WASSERPISTOLE.md` (CHF 20/Tag, Wasserpistole CHF 59.90).
 
 **Routine für künftige autonome Sessions (Conversion-First):**
 1. Stand prüfen (`tag:cj-real status:active`), Autopilot-Drafts veredeln (`tag:autopilot-needs-copy`
