@@ -373,3 +373,10 @@ Bambus-Aufbewahrung, Damen-Armband) blieben aktiv. **Gesamt 37 Nicht-Foto-Produk
 - **«Carré» Minimalist Square** (`CJNS291490601AZ`, 15412945224065) — 8 Farben, 39.90
 ⚠️ Ersatz für Wellness/Home: CJ-Keyword-Suche lieferte nur Müll (Körperöl/Shampoo/Seife statt Diffuser/Öl-Set)
 → separate, engere Runde nötig.
+
+## Bild-Galerie-Retrofit 2026-05-31 (User: „volle Produktbilder")
+Alle **28 in dieser Session angelegten Produkte** haben jetzt die **volle CJ-Galerie** (Detail-/Winkel-/
+Anwendungsbilder) zusätzlich zu den Farb-Bildern. Workflow: `productImageSet` je PID via CJ-API geholt,
+nur Bilder ohne bestehendes Farbbild-Match, HTTP-200 vorgeprüft (Playwright HEAD), dann per
+`productCreateMedia` angehängt (4 Batches, 0 Fehler). +3 bis +10 Bilder pro Produkt.
+Neuzugänge zuvor: Reed-Diffuser «Aroma» (`CJYD290446601AZ`), Spülbecken-Organizer (`CJCF290036901AZ`).

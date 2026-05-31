@@ -11,16 +11,16 @@ const BASE='https://developers.cjdropshipping.com/api2.0/v1';
 const tok=JSON.parse(fs.readFileSync('/tmp/cj_token.json')).accessToken;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
-// cat = Zielkategorie — Herrenuhren + Wellness/Home-Ersatz
+// cat = Zielkategorie — Wellness/Aroma + Wohnen/Bad (refiniert)
 const KEYWORDS=[
-  { kw:'mens stainless steel watch',    must:['watch'],    cat:'herrenuhr', take:2 },
-  { kw:'mens chronograph leather watch',must:['watch'],    cat:'herrenuhr', take:1 },
-  { kw:'mens automatic skeleton watch', must:['watch'],    cat:'herrenuhr', take:1 },
-  { kw:'mens minimalist mesh watch',    must:['watch'],    cat:'herrenuhr', take:1 },
-  { kw:'essential oil set aromatherapy',must:['oil'],      cat:'wellness',  take:1 },
-  { kw:'wood grain aroma diffuser',     must:['diffuser'], cat:'wellness',  take:1 },
-  { kw:'bamboo soap dispenser set',     must:['soap'],     cat:'wohnen',    take:1 },
-  { kw:'bamboo bath caddy tray',        must:['bath','tray'], cat:'wohnen', take:1 },
+  { kw:'wood grain ultrasonic aroma diffuser', must:['diffuser'],  cat:'wellness', take:2 },
+  { kw:'flame effect aroma diffuser',          must:['diffuser'],  cat:'wellness', take:1 },
+  { kw:'reed diffuser fragrance sticks',       must:['diffuser'],  cat:'wellness', take:1 },
+  { kw:'essential oil gift set',               must:['essential'], cat:'wellness', take:1 },
+  { kw:'scented soy candle gift set',          must:['candle'],    cat:'wohnen',   take:1 },
+  { kw:'bamboo bathtub caddy tray',            must:['bamboo'],    cat:'wohnen',   take:1 },
+  { kw:'bamboo soap dispenser pump',           must:['soap'],      cat:'wohnen',   take:1 },
+  { kw:'cool mist humidifier home',            must:['humidifier'],cat:'wellness', take:1 },
 ];
 
 const b=await chromium.launch({headless:true,args:['--ignore-certificate-errors','--no-sandbox']});
