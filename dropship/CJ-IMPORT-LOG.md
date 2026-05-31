@@ -32,6 +32,18 @@ Preise FX-bereinigt (USD→CHF ≈ 0,88).
 - **`cj-real` aktiv & live gesamt: 18.** (+1 DRAFT „Shoe Rack" mit Tag `autopilot`, bewusst nicht live.)
 - Shop-Gesamt: 5299 Produkte (Grossteil Theme-/Demo-Bestand), 383 ACTIVE.
 
+## Charge 4 (2026-05-31) — +3 live → 21 gesamt
+- Panda Handyhalter (`CJJT291503001AZ`, 14.90) · Kulturbeutel XL (`CJSB291389501AZ`, 34.90) · Vintage Baseball-Cap (`CJBQ291456801AZ`, 19.90). Alle 6 Kanäle, Bilder READY.
+- Aussortiert: Sommer-Mules (Schuhe, 30 Grössen), Fishing-Rod-Rack ($85/20 kg).
+
+## Ziel 25 — 4 ausstehend (Charge 5)
+Validierte Kandidaten (Bild-Verifikation + Anlage in frischer Session via Loop, da Kontext gesättigt):
+- Edelstahl-Trinkflasche mit Strohhalm — `CJWT291418801AZ` ($5.84)
+- Aufblasbares U-Reisekissen ($3.20)
+- Hunde-Kauspielzeug Naturkautschuk ($1.95)
+- Isolierte Kühltasche XL Picknick/Strand ($6.20)
+Übersprungen (Redundanz): 2. Elektro-Wasserpistole, USB-Tischventilator (haben wir bereits ähnlich).
+
 ### Bei eingehender Bestellung
 Produkt in CJ über die **Fulfillment-SKU** (oben) bestellen → an Kundenadresse senden lassen.
 
