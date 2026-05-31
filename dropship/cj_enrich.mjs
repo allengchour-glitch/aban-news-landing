@@ -22,9 +22,13 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
 const KEYWORDS = [
-  { kw: 'solar garden light',      must: ['solar'],              take: 2 },
-  { kw: 'swimming goggles',        must: ['goggles'],            take: 1 },
-  { kw: 'sun umbrella beach',      must: ['umbrella'],           take: 1 },
+  { kw: 'dog cooling mat',          must: ['cooling', 'mat'],   take: 1 },
+  { kw: 'water bottle sport',       must: ['water', 'bottle'],  take: 1 },
+  { kw: 'beach toy bucket kids',    must: ['beach'],            take: 1 },
+  { kw: 'outdoor hammock',          must: ['hammock'],          take: 1 },
+  { kw: 'pool float inflatable',    must: ['float'],            take: 1 },
+  { kw: 'bbq grill tool set',       must: ['bbq'],              take: 1 },
+  { kw: 'sunglasses polarized',     must: ['sunglasses'],       take: 1 },
 ];
 
 let _b, _ctx;

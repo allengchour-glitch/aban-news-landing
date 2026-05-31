@@ -2,63 +2,59 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
+> Stand: 2026-05-31 — **10 Produkte live**.
 
-## Lauf 2026-05-31 — 4 Sommer-Winner LIVE
-
-Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in 6 Kanälen (Onlineshop, Shop,
+Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in **6 Kanälen** (Onlineshop, Shop,
 TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar untracked
 (immer bestellbar). Versand aus CJ-China-Lager (~7–14 Tage; kein EU-Bestand für diese Artikel).
+Preise FX-bereinigt (USD→CHF ≈ 0,88).
 
-| Produkt | VK CHF | CJ-Kost | Marge | CJ-PID | Fulfillment-SKU |
+## Live-Produkte (10)
+
+| # | Produkt | VK CHF | CJ-Kost $ | Marge | Fulfillment-SKU |
 |---|---|---|---|---|---|
-| Elektrische Wasserpistole XL | 59.90 | $24.53 | ~2.8× | 2060570715068354561 | `CJYZ291559001AZ` |
-| Bladeless Nackenventilator | 29.90 | $6.62 | ~5× | (neck fan) | `CJJT291608401AZ` |
-| XXL Picknickdecke faltbar | 24.90 | $2.74–5.82 | ~4.9× | (picnic mat) | `CJYD291539501AZ` |
-| Ice-Compress Mini-Ventilator | 27.90 | $5.99 | ~5.3× | (ice fan) | `CJGR291509001AZ` |
-| LED Solar-Lichterkette XL | 19.90 | $2.00–5.59 | ~3.5–10× | 2605290904401606600 | `CJYD291508502BY` |
-| Solar Camping-Laterne Vintage | 34.90 | $10.61 | ~3.3× | 2605290115061614000 | `CJJT291381201AZ` |
-| Aufblasbarer Palmen-Sprinkler XXL | 64.90 | $28.00 | ~2.6× | 2060553527225798657 | `CJHD291547501AZ` |
-
-**Storefront-Links:**
-- https://luxestyle.ch/products/elektrische-wasserpistole-xl-akkubetrieben-vollautomatik-sommer-2026
-- https://luxestyle.ch/products/bladeless-nackenventilator-usb-akku-5-stufen-flusterleise
-- https://luxestyle.ch/products/xxl-picknickdecke-faltbar-wasserdicht-sandresistent-150-100-cm
-- https://luxestyle.ch/products/ice-compress-mini-ventilator-mit-kuhlakku-tragbar-usb
+| 1 | Elektrische Wasserpistole XL | 59.90 | 24.53 | ~2.8× | `CJYZ291559001AZ` |
+| 2 | Bladeless Nackenventilator | 29.90 | 6.62 | ~5× | `CJJT291608401AZ` |
+| 3 | XXL Picknickdecke faltbar | 24.90 | 2.74–5.82 | ~4.9× | `CJYD291539501AZ` |
+| 4 | Ice-Compress Mini-Ventilator | 27.90 | 5.99 | ~5.3× | `CJGR291509001AZ` |
+| 5 | LED Solar-Lichterkette XL | 19.90 | 2.00–5.59 | ~3.5–10× | `CJYD291508502BY` |
+| 6 | Solar Camping-Laterne Vintage | 34.90 | 10.61 | ~3.3× | `CJJT291381201AZ` |
+| 7 | Aufblasbarer Palmen-Sprinkler XXL | 64.90 | 28.00 | ~2.6× | `CJHD291547501AZ` |
+| 8 | Kühlmatte Hund/Katze Ice-Silk | 24.90 | 0.60–5.25 | ~5–10× | `CJYD291391601AZ` |
+| 9 | Edelstahl-Trinkflasche XL isoliert | 29.90 | 12.45 | ~2.7× | `CJJT291256301AZ` |
+| 10 | Vintage Sonnenbrille Oval | 16.90 | 1.46 | ~10× | `CJCF289297901AZ` |
 
 ### Bei eingehender Bestellung
 Produkt in CJ über die **Fulfillment-SKU** (oben) bestellen → an Kundenadresse senden lassen.
-Marge ist FX-bereinigt (USD→CHF ≈ 0,88) und nach CJ-Versand noch komfortabel.
 
-### Aussortiert (Relevanzfilter / Qualität)
-- *High Pressure Disinfection Spray Gun* — kein Spielzeug, off-theme.
+## Aussortiert (Relevanz / Qualität / Risiko)
+- *High Pressure Disinfection Spray Gun* — off-theme.
 - *Sterling Silver Fan-shaped Necklace* — Falschtreffer („fan"/„neck").
-- *7-color LED Photon Face Mask* — nur 1 Produktbild, zu schwach für Hero. (Kandidat für später, wenn bessere Bilder.)
+- *7-color LED Photon Face Mask* — nur 1 Bild, zu schwach für Hero.
+- *Cross-border Microfiber Beach Towel* — Aufdruck „Frozen/Spider-Man" = **Marken-/Fälschungsrisiko**.
+- *Motocross Goggles* — keine Schwimmbrille, off-theme.
+- *Puffy Umbrella Skirt* — Damenrock, Falschtreffer auf „umbrella".
+- *Strand-Cover-up Cardigan* — Damenkleidung, kein Strandspielzeug.
+- *Baby-Schwimmring mit Sitz* — **Haftungsrisiko Kindersicherheit**, bewusst nicht gelistet.
+- *Outdoor Grill Cart* — $152 EK / 29 kg → zu teuer & schwer fürs Dropshipping.
+
+## Korrektur — gelöscht
+- *Tragbarer Mini-Mixer* (SKU `CJ20240701115059212AZ`) wurde **wieder gelöscht**: basierte auf
+  fehlerhaften Daten, alle Bilder hatten Status `FAILED` (URL-Pfad `cf…/quick/product/…` lieferte 404).
 
 ## ✅ Sicherheit (erledigt)
 Der ursprüngliche CJ-API-Key stand in einem früheren Commit im Klartext. Er wurde am
-**2026-05-31 rotiert** → alter Key ist ungültig (Leak in der Git-Historie damit entschärft).
-Neuer Key nur noch als Env-Variable (`CJ_API_KEY`) übergeben — beide Scripte lesen
-ausschliesslich aus der Umgebung. Empfehlung: Key zusätzlich als dauerhaftes Environment-Secret
-hinterlegen, damit er in jeder Web-Session verfügbar ist.
+**2026-05-31 rotiert** → alter Key ungültig (Leak in der Git-Historie damit entschärft).
+Neuer Key nur noch als Env-Variable (`CJ_API_KEY`). **Empfehlung:** Key + `CJ_EMAIL` zusätzlich
+als dauerhaftes Environment-Secret hinterlegen, damit er in jeder Web-Session verfügbar ist.
 
-## Korrektur — gelöscht
-- *Tragbarer Mini-Mixer* (SKU `CJ20240701115059212AZ`, VK 34.90) wurde **wieder gelöscht**:
-  basierte auf fehlerhaften Daten (Bild-URLs 404, kein bestätigter CJ-Treffer). Bei Bedarf
-  mit echtem CJ-Produkt neu anlegen. **Lehre:** vor `create-product` Bild-URLs verifizieren
-  (`cf.cjdropshipping.com/<uuid>` & `oss-cf.cjdropshipping.com/...` funktionieren;
-  `cf.cjdropshipping.com/quick/product/...` teils 404) und Media-Status nach Anlage prüfen.
-
-## Lauf 2026-05-31 (Charge 2) — Aussortiert
-- *Cross-border Microfiber Beach Towel* — Aufdruck „Frozen / Spider-Man" = **Marken-/Fälschungsrisiko**, nicht gelistet.
-- *Motorcycle/Motocross Goggles* — keine Schwimmbrille, off-theme.
-- *Puffy Umbrella Skirt* — Damenrock, Falschtreffer auf „umbrella".
-
-## Erkenntnisse Keyword-Qualität
-- Gut & sauber: `solar garden light`, `electric water gun`, `portable blender`, `inflatable ... sprinkler`.
-- Vorsicht: Markenaufdrucke (Disney/Marvel etc.) in Towels/Kids-Artikeln → vor Listung prüfen.
-- `swimming goggles`/`sun umbrella` liefern off-theme (Motocross-Brillen, Röcke) → präzisere Phrasen nötig.
-
-## Nächste Keywords (Pipeline für mehr Importe)
-`cj_enrich.mjs` → `KEYWORDS`-Liste erweitern. Gut funktioniert: präzise Substantiv-Phrasen
-(„electric water gun", „neck fan"). Schlecht: generische Begriffe ohne klares Substantiv.
-EU-Lager (`countryCode=DE`) liefert für virale Sommerware kaum Treffer → China-Lager nutzen.
+## Erkenntnisse (für nächste Chargen)
+- **Bild-URLs vor `create-product` verifizieren** (HTTP 200). Funktionieren: `cf.cjdropshipping.com/<uuid>`
+  und `oss-cf.cjdropshipping.com/...`. Teilweise 404: `cf.cjdropshipping.com/quick/product/...`.
+  Nach Anlage Media-Status prüfen (READY vs. FAILED).
+- **Nach `create-product` die echte zurückgegebene ID** zum Publizieren nutzen (nicht raten).
+- **Keyword-Qualität:** präzise Substantiv-Phrasen matchen gut (`solar garden light`,
+  `electric water gun`, `dog cooling mat`, `sunglasses`). Generische/mehrdeutige Begriffe
+  (`swimming goggles`, `sun umbrella`) liefern off-theme → enger fassen.
+- **Markenaufdrucke** (Disney/Marvel etc.) und **Kindersicherheits-Artikel** vor Listung prüfen.
+- EU-Lager (`countryCode=DE`) bringt für virale Sommerware kaum Treffer → China-Lager nutzen.
