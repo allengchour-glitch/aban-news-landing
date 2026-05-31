@@ -4,7 +4,7 @@ FF="ffmpeg -y -hide_banner -loglevel error"
 SERIF=/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf
 SANS=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
 [ -f "$SANS" ] || SANS=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
-IMG=/tmp/ads/img
+IMG=/tmp/ads/img2
 W=/tmp/ads/work
 OUT=/tmp/ads/out
 MUSIC=/tmp/ads/music/uplifting.wav
@@ -14,11 +14,11 @@ GOLD=0xb8915a
 mkdir -p "$W" "$OUT"
 
 # ---- product display names + prices ----
-names=( "Diver Pro Automatic 200M" "Klassische Herrenuhr" "Smartwatch Pro AMOLED" \
-"Bluetooth Kopfhörer ANC" "3-in-1 Wireless Charger" "Slim Wallet Echtleder" \
-"Damen Portemonnaie XL" "Herren Lederarmband" "Seiden-Kissenbezug" "Anti-Aging Serum" )
-prices=( "CHF 149.90" "CHF 129.90" "CHF 79.90" "CHF 69.90" "CHF 39.90" \
-"CHF 49.90" "CHF 54.90" "CHF 29.90" "CHF 39.90" "CHF 29.90" )
+names=( "Himalaya Salzkristall-Lampe" "Flame Diffuser Premium" "Jade Roller & Gua Sha Set" \
+"3-in-1 Wireless Charger" "Wellness-Tablett Bambus" "Mini Robo-Diffuser Auto" \
+"Bambus Aroma Diffuser" "Galaxy Aurora Projektor" "Slim Wallet Echtleder" "Klassische Herrenuhr" )
+prices=( "CHF 24.90" "CHF 49.90" "CHF 14.90" "CHF 39.90" "CHF 44.90" \
+"CHF 19.90" "CHF 39.90" "CHF 19.90" "CHF 49.90" "CHF 129.90" )
 files=( 01 02 03 04 05 06 07 08 09 10 )
 
 # write text files (avoids shell escaping of umlauts/specials)

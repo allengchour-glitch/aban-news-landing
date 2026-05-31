@@ -10,10 +10,12 @@ CTA durchgängig: **10 % Rabatt mit Code `WELCOME10`** (Code ist im Shop aktiv).
 
 | Datei | Format | Länge | Inhalt |
 |-------|--------|-------|--------|
-| `luxestyle_bestseller_9x16.mp4` | 1080×1920 (9:16) | ~20,5 s | Bestseller-Montage, 10 Hero-Produkte |
+| `luxestyle_bestseller_9x16.mp4` | 1080×1920 (9:16) | ~20,5 s | Bestseller-Montage, 10 Live-Top-10-Produkte |
 | `luxestyle_bestseller_1x1.mp4`  | 1080×1080 (1:1)  | ~20,5 s | dito, für Feed |
 | `luxestyle_tour_9x16.mp4`       | 1080×1920 (9:16) | ~15,4 s | Live-Website-Tour (Auto-Scroll) |
 | `luxestyle_tour_1x1.mp4`        | 1080×1080 (1:1)  | ~15,4 s | dito, für Feed |
+| `luxestyle_hook_9x16.mp4`       | 1080×1920 (9:16) | ~8,5 s  | Schnelle TikTok-Hook-Version (10 Flashes) |
+| `luxestyle_hook_1x1.mp4`        | 1080×1080 (1:1)  | ~8,5 s  | dito, für Feed |
 
 Alle: H.264 / yuv420p + AAC-Stereo, `+faststart` (web-optimiert).
 Die fertigen MP4s wurden direkt im Chat geliefert (nicht im Repo, um es schlank zu halten).
@@ -24,22 +26,19 @@ Für Meta (Instagram/Facebook Reels & Feed), TikTok und Stories. **Nicht** auf d
 Live-Seite eingebettet — das Live-Theme ist schreibgesperrt. Für TikTok/Reels ggf.
 zusätzlich den nativen Sound-Layer nutzen; die Clips haben aber bereits eine eigene Tonspur.
 
-## Bestseller-Montage — verwendete Produkte (Quelle: Collection „Home page")
-1. Diver Pro Automatic 200M — CHF 149.90
-2. Klassische Herrenuhr — CHF 129.90
-3. Smartwatch Pro AMOLED — CHF 79.90  *(Produktbild aus Listing freigestellt/zugeschnitten)*
-4. Bluetooth Kopfhörer ANC — CHF 69.90
-5. 3-in-1 Wireless Charger — CHF 39.90
-6. Slim Wallet Echtleder — CHF 49.90
-7. Damen Portemonnaie XL — CHF 54.90
-8. Herren Lederarmband — CHF 29.90
-9. Seiden-Kissenbezug — CHF 39.90
-10. Anti-Aging Serum — CHF 29.90
-
-> **Hinweis Konsistenz:** Die Live-Startseite zeigt im Abschnitt „⭐ Top 10 Bestseller"
-> eine andere Auswahl (Himalaya-Salzlampe, Flame Diffuser …). Die Montage nutzt bewusst
-> die höherpreisigen Premium-Heroes der „Home page"-Collection. Beide Sets sind echte
-> LuxeStyle-Produkte. Bei Bedarf kann die Montage auf das Live-„Top 10"-Set umgestellt werden.
+## Bestseller-Montage & Hook — verwendete Produkte
+Quelle: Live-Collection **„⭐ Top 10 Bestseller"** (`bestseller-premium-heroes`) — identisch
+mit dem, was die Startseite zeigt → Montage, Hook und Website-Tour sind konsistent.
+1. Himalaya Salzkristall-Lampe — CHF 24.90
+2. Flame Diffuser Premium — CHF 49.90
+3. Jade Roller & Gua Sha Set — CHF 14.90
+4. 3-in-1 Wireless Charger — CHF 39.90
+5. Wellness-Tablett Bambus — CHF 44.90
+6. Mini Robo-Diffuser Auto — CHF 19.90
+7. Bambus Aroma Diffuser — CHF 39.90
+8. Galaxy Aurora Projektor — CHF 19.90
+9. Slim Wallet Echtleder — CHF 49.90
+10. Klassische Herrenuhr — CHF 129.90
 
 ## Musik (lizenziert)
 Adobe Stock, Free-Collection, royalty-free nach Lizenzierung über das verbundene Konto:
@@ -60,6 +59,9 @@ NODE_PATH=/opt/node22/lib/node_modules PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers
 
 # 3) Tour zusammenbauen (Intro/Outro-Cards + Musik /tmp/ads/music/elegant.wav)
 bash dropship/ads/tour_assemble.sh
+
+# 4) TikTok-Hook (8,5 s) — nutzt die Segment-Clips aus Schritt 1
+bash dropship/ads/hook.sh
 ```
 
 Technik-Notizen:
