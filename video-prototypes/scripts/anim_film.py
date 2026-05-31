@@ -84,21 +84,29 @@ def draw_prop(ld,name,hx,hy,t,lit=None):
         ld.ellipse([hx+L(1),hy+L(2),hx+L(13),hy+L(14)],outline=(220,70,70),width=int(L(2.5)))
 
 # ================= character (IK legs, spring secondary) =================
-LT,LSh=L(74),L(64)   # thigh, shin
+LT,LSh=L(42),L(40)   # thigh, shin (matched to hip->ground span for a natural standing leg)
 def draw_char(ld,t,P):
     """returns (head_local, hand_local) in layer px. P: pose dict."""
     cx=L(CW/2)+P["X"]*SS; bob=P["bob"]*SS; lean=P["lean"]
-    hipY=L(420)+bob; hip=(cx,hipY)
+    hipY=L(400)+bob; hip=(cx,hipY)
     sh=(cx+math.sin(math.radians(lean))*L(120), L(300)+bob)
     grY=L(470)
     # tail (spring)
     E(ld,cx+L(70),L(388)+bob,L(30),L(34),BODYD); E(ld,cx+L(74)+P["tail"]*SS,L(380)+bob,L(19),L(21),WHITE)
-    # legs via IK to foot targets
+    # pelvis mass — bridges body bottom into the legs so they read as connected
+    E(ld,cx,hipY-L(2),L(58),L(30),BODY,outline=OUT,ow=3)
+    # legs via IK to foot targets (symmetric knees: each knee splays to its own side)
     for side in ("L","R"):
-        s=-1 if side=="L" else 1; hx=hip[0]+s*L(22); ft=P["foot"+side]
-        knee,foot=ik((hx,hipY),(ft[0]*SS+cx,ft[1]*SS),LT,LSh,bend=1)
-        limb(ld,(hx,hipY),knee,21,BODY,hi=BODYL); limb(ld,knee,foot,17,BODYD,hi=BODYL)
-        fx,fy=foot; E(ld,fx+s*L(6),fy+L(2),L(20),L(12),BODYD)
+        s=-1 if side=="L" else 1; hx=hip[0]+s*L(18); ft=P["foot"+side]
+        knee,foot=ik((hx,hipY),(ft[0]*SS+cx,ft[1]*SS),LT,LSh,bend=s)
+        # unified leg: thigh + shin near-equal width, no harsh knee step
+        limb(ld,(hx,hipY),knee,25,BODY,hi=BODYL); limb(ld,knee,foot,22,BODY,hi=BODYL)
+        E(ld,knee[0],knee[1],L(11),L(11),BODY,outline=None,ow=0)   # smooth knee
+        fx,fy=foot
+        # shoe: rounded foot pointing outward, lighter top + darker sole
+        E(ld,fx+s*L(10),fy+L(2),L(26),L(13),BODYD,outline=OUT,ow=3)
+        ld.ellipse([fx+s*L(10)-L(26),fy+L(7),fx+s*L(10)+L(26),fy+L(15)],fill=OUT)  # sole shadow
+        E(ld,fx+s*L(11),fy-L(2),L(15),L(7),BODYL,outline=None,ow=0)
     # body
     bx0,bx1=sh[0]-L(70),sh[0]+L(70)
     ld.polygon([(bx0,sh[1]),(bx1,sh[1]),(hip[0]+L(60),hip[1]),(hip[0]-L(60),hip[1])],fill=BODY,outline=OUT)
@@ -108,7 +116,9 @@ def draw_char(ld,t,P):
         if side=="R" and P.get("prop"): continue
         s=-1 if side=="L" else 1; shx=sh[0]+s*L(56); shy=sh[1]+L(6)
         el=pt(shx,shy,sa,L(54)); hand=pt(*el,sa+ea,L(48))
-        limb(ld,(shx,shy),el,16,BODY,hi=BODYL); limb(ld,el,hand,13,BODYD); E(ld,hand[0],hand[1],L(13),L(13),BODY)
+        limb(ld,(shx,shy),el,18,BODY,hi=BODYL); limb(ld,el,hand,15,BODY,hi=BODYL)
+        E(ld,el[0],el[1],L(8),L(8),BODY,outline=None,ow=0)              # smooth elbow
+        E(ld,hand[0],hand[1],L(15),L(15),BODY)                          # paw
         if P.get("smear") and side=="R": ld.line([(shx,shy),hand],fill=(255,176,32,90),width=int(L(3)))
     # head
     ht=P["headturn"]; look=P["look"]; hx=sh[0]+ht*L(16); hy=sh[1]-L(70)+bob*0.2+P.get("headdip",0)*SS
@@ -133,7 +143,8 @@ def draw_char(ld,t,P):
     handR=(hx,hy)
     if P.get("prop"):
         sa,ea=P["armR"]; shx=sh[0]+L(56); shy=sh[1]+L(6); el=pt(shx,shy,sa,L(54)); hand=pt(*el,sa+ea,L(48))
-        limb(ld,(shx,shy),el,16,BODY,hi=BODYL); limb(ld,el,hand,13,BODYD); E(ld,hand[0],hand[1],L(13),L(13),BODY)
+        limb(ld,(shx,shy),el,18,BODY,hi=BODYL); limb(ld,el,hand,15,BODY,hi=BODYL)
+        E(ld,el[0],el[1],L(8),L(8),BODY,outline=None,ow=0); E(ld,hand[0],hand[1],L(15),L(15),BODY)
         draw_prop(ld,P["prop"],hand[0],hand[1],t,P.get("phone_lit")); handR=hand
         if P.get("phone_lit")==(127,208,255): ld.ellipse([hx-L(48),hy+L(2),hx+L(48),hy+L(70)],fill=(127,208,255,46))
     return (hx,hy),handR
