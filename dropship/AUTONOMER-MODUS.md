@@ -196,7 +196,63 @@ Mehr Produkte ≠ mehr Umsatz. Ab ~50 Produkten lohnt sich Hero-Ausbau mehr als 
 - Container ist ephemer → nur committete/gepushte Arbeit überlebt.
 
 ## 8. Aktueller Stand (bei jedem Lauf hier fortschreiben)
-- **2026-05-31:** 40 cj-real Produkte ACTIVE & live in 6 Kanälen. Ziel 40 erreicht.
-  Nächstes Ziel offen — autonom Richtung 50 weiterfüllen, dann melden. Saubere Ausbeute wird
-  dünner (~1–2 Keeper/Charge), das ist normal; lieber strenger filtern als Müll listen.
+- **2026-05-31:** ~54 cj-real Produkte ACTIVE & live in 6 Kanälen + 6 Hero-Produkte mit
+  Premium-Copy. CJ-Katalog für SAUBERE Neutreffer weitgehend ausgeschöpft (20 Keyword-Suchen
+  → ~1 Treffer). MagSafe-Halter auf DRAFT (Bilder 404). **Fokus ab jetzt: nicht mehr Breite,
+  sondern Kunden/Conversion** (siehe §10).
+- Marketing fertig vorbereitet: `dropship/ads/hero-ads-2026.md` (Texte), `dropship/ADS.md`
+  (Videos), `dropship/KAMPAGNEN-PLAYBOOK.md` (Launch-Anleitung).
 - Details & vollständige Produktliste: `dropship/CJ-IMPORT-LOG.md`.
+
+## 9. 🧠 MASTER-LESSONS (alles teuer Gelernte — IMMER beachten)
+1. **Publish-Falle (häufigster Fehler):** Produkt-ID zum Publizieren NUR aus der `create-product`-
+   Antwort nehmen. IDs raten/vorab eintippen → „Ressource existiert nicht". Erst anlegen, ID lesen,
+   DANN `publishablePublish`.
+2. **Bild-Falle:** Bild-URLs VOR dem Anlegen per HTTP-200 prüfen. `cf.cjdropshipping.com/<uuid>` &
+   `oss-cf.cjdropshipping.com/...` gehen; `cf…/quick/product/…` teils 404. Nach Anlage Media-Status
+   prüfen — FAILED per `productDeleteMedia` + `productCreateMedia` ersetzen. Lieber DRAFT als
+   bildloses Live-Produkt.
+3. **`000`-Timeout ≠ 404:** curl liefert manchmal `000` (Timeout) statt `200` → mit längerem
+   Timeout ERNEUT prüfen, valide Bilder nicht vorschnell verwerfen.
+4. **Abgeschnittene URLs:** Beim Bündeln von URLs aus dem Terminal können sie abgeschnitten werden
+   → immer volle URL aus `/tmp/cj_enriched.json`, danach Media-Status prüfen.
+5. **Lösch-Falle:** Vor `productDelete` IMMER per `products(query:"sku:<SKU>")` prüfen, ob wirklich
+   ein ZWEITES Exemplar existiert. „Sieht aus wie Dup" reicht nicht (einmal einziges Exemplar
+   gelöscht, musste neu anlegen).
+6. **Fake-SKU-Falle:** Nur Produkte mit echter CJ-SKU (`CJ…`) live schalten — sonst nicht erfüllbar.
+7. **Nur Verifiziertes dokumentieren:** Keine Produkte/IDs/Zahlen ins Log schreiben, die nicht per
+   Query bestätigt sind (sonst Halluzinations-Einträge — ist passiert).
+8. **QPS-Limit CJ:** max 1 Req/Sek → `sleep` zwischen Calls, Backoff bei Code 1600200.
+9. **Markenrecht/Sicherheit aussortieren:** Disney/Marvel/Frozen-Aufdrucke, Baby-Schwimmhilfen
+   (Haftung), Tabak/Shisha, Möbel >$60/>5kg, Kleidung mit vielen Grössen.
+10. **Scheduler (`CronCreate`/`ScheduleWakeup`) hier NICHT aktiv** → kein Session-Loop möglich.
+    Echte Hintergrund-Automation läuft NUR über die GitHub Action (§6b).
+11. **Mehr Produkte ≠ mehr Umsatz.** Ab ~50 Produkten lohnt Hero-Ausbau + Marketing mehr als Breite.
+
+## 10. 🎯 KUNDEN GEWINNEN (das eigentliche Ziel — was geht & was nicht)
+**Ehrliche Grenze:** „Kunden kaufen" kann eine Claude-Session NICHT vollautomatisch auslösen.
+Es braucht Reichweite. Bezahlte Werbung (TikTok/Meta) erfordert Werbekonto-Login + Budget +
+Zahlungsmittel — das liegt beim User, nicht in den Tools. Ich kann ALLES bis dahin vorbereiten,
+aber den „Kampagne AN + Budget"-Knopf drückt der User.
+
+**Was eine Session AUTONOM für Conversion tun kann (ohne Geld/Login):**
+- Hero-Produkte mit Premium-Copy ausbauen (Hook · Benefits · Lieferumfang · Trust-Box · FAQ · SEO).
+- Collections sinnvoll pflegen (`bestseller`-Tag → „🔥 Hero-Favoriten").
+- QA: alle Live-Produkte auf FAILED-Bilder prüfen, Defekte auf DRAFT.
+- Ad-Texte/Hooks/Launch-Pläne schreiben (`dropship/ads/`).
+- SEO-Title/Description je Produkt setzen.
+- Rabattcode `WELCOME10` (aktiv) in Copy einbauen.
+
+**3 Dinge, die NUR der User kann (je ~1 Klick, mobil):**
+1. AGB-Domain-Fix `aban-192.myshopify.com` → `luxestyle.ch` (mir fehlt Scope `write_legal_policies`).
+2. TikTok-/Meta-Pixel installieren (App im Shopify-Admin) — Pflicht, sonst optimiert Werbung nicht.
+3. Erste Kampagne live schalten + Budget (Werbekonto). Anleitung: `KAMPAGNEN-PLAYBOOK.md`.
+
+**Routine für künftige autonome Sessions (Conversion-First):**
+1. Stand prüfen (`tag:cj-real status:active`), Autopilot-Drafts veredeln (`tag:autopilot-needs-copy`
+   → Copy + ACTIVE + publish).
+2. QA-Scan auf FAILED-Bilder.
+3. 1–2 weitere Top-Produkte zu Heroes ausbauen (falls noch nicht).
+4. Reviews-Hebel: prüfen ob eine Gratis-Review-App (z.B. Judge.me) installiert ist; falls nicht,
+   dem User empfehlen (grösster fehlender Conversion-Hebel).
+5. Committen, pushen, Stand melden. Nur bei echtem Bedarf nachfragen.
