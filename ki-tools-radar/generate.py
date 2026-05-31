@@ -551,6 +551,13 @@ def clip(text: str, limit: int = 155) -> str:
     return (cut or text[:limit]) + "…"
 
 
+def strip_marker(text):
+    """Drop the internal "[Redaktion: …]" editorial flag from any visitor-facing
+    text. Single source of truth so no public surface (page, feed, snippet) can
+    leak the marker if a flagged tool later gets covered."""
+    return re.sub(r"\[Redaktion:[^\]]*\]\s*", "", str(text or "")).strip()
+
+
 # --- Localization loading ------------------------------------------------------
 
 def load_locales(here: Path) -> dict:
@@ -932,13 +939,13 @@ def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None, relat
     note = loc.get("aban_note") or tool.get("aban_note")
     # Internen Redaktions-Marker nicht öffentlich zeigen (Daten-Flag, kein Besucher-Text).
     if note:
-        note = re.sub(r"\[Redaktion:[^\]]*\]\s*", "", note).strip()
+        note = strip_marker(note)
     dsgvo = loc.get("dsgvo_note") or tool.get("dsgvo_note")
     # Optional first-hand "hands-on note" + sources — render ONLY if present in
     # data (localized override wins). Empty = nothing shown, nothing invented.
     praxis = loc.get("praxis_note") or tool.get("praxis_note")
     if praxis:
-        praxis = re.sub(r"\[Redaktion:[^\]]*\]\s*", "", praxis).strip()
+        praxis = strip_marker(praxis)
     sources = loc.get("sources") or tool.get("sources") or []
     use_cases = loc.get("use_cases") or tool.get("use_cases", [])
     uc = "".join(f'<span class="chip">{e(u)}</span>' for u in use_cases)
@@ -1164,7 +1171,7 @@ def rss_feed(members, ui, loc_tools, lang):
     items = []
     for t in members:
         loc = loc_tools.get(t["id"], {})
-        desc = loc.get("aban_note") or t.get("aban_note") or ""
+        desc = strip_marker(loc.get("aban_note") or t.get("aban_note"))
         link = BASE_URL + page_path(lang, "tool", slugify(t["id"]))
         items.append(
             f"<item><title>{e(t['name'])}</title><link>{e(link)}</link>"
