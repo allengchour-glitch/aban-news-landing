@@ -108,6 +108,14 @@
     .step .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--amber-lt);color:var(--amber-dk);font-weight:800;font-size:.85rem}
     .honest{margin-top:1rem;text-align:center;font-size:.9rem;color:var(--muted)}
     .honest b{color:var(--ink)}
+    /* "Per chi è?" — targeting affinato */
+    .forwhom{margin-top:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .forwhom>div{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);padding:1.15rem 1.25rem}
+    .forwhom h2{margin:.1rem 0 .6rem;font-size:1.05rem}
+    .forwhom ul{margin:0;padding-left:1.1rem;display:grid;gap:.5rem}
+    .forwhom li{font-size:.9rem;color:#3b4654;line-height:1.45}
+    .forwhom .muted{color:var(--muted)}
+    .forwhom a{color:var(--amber-dk);text-decoration:none}.forwhom a:hover{text-decoration:underline}
     footer{margin-top:2rem;border-top:1px solid var(--line);background:rgba(255,255,255,.5)}
     footer .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:center;justify-content:center;padding:1.1rem 1.25rem;font-size:.82rem;color:var(--muted)}
     footer a{text-decoration:none;color:var(--muted)}footer a:hover{color:var(--ink)}
@@ -117,6 +125,7 @@
       .preview{order:2}
       .mail{max-height:54vh;overflow:auto;-webkit-overflow-scrolling:touch}
       .strip{grid-template-columns:1fr}
+      .forwhom{grid-template-columns:1fr}
       .step{border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}
       .hnav .lk{display:none}.row{flex-direction:column}.row .btn{width:100%}
     }
@@ -141,7 +150,7 @@
       <div>
         <span class="chip-status"><span class="pulse"></span> Lun–ven · a cura di Aban in Svizzera</span>
         <h1>Le notizie IA che contano per il mercato DACH — ogni mattina in 5&nbsp;minuti.</h1>
-        <p class="lead">Ogni mattina, i 3 sviluppi IA che riguardano davvero il tuo business oggi — e nient'altro.</p>
+        <p class="lead">Per consulenti solo, freelance e piccoli team nell'area DACH: ogni mattina, i 3 sviluppi IA che riguardano davvero il tuo business oggi — e nient'altro.</p>
         <div class="chips">
           <span class="chip">📰 3–5 news</span>
           <span class="chip">🛠 1 strumento testato</span>
@@ -188,6 +197,25 @@
         <div class="step"><span class="n">3</span><h2>Leggi, 5 min</h2><p>07:30 nella tua casella. Caffè, scorri, porta via una cosa — finito prima della prima riunione.</p></div>
       </div>
       <p class="honest"><b>Ancora nessuna testimonianza — ed è onesto così.</b> aban news è appena partito. Niente citazioni inventate, niente numeri finti. Sei in anticipo e dai forma al progetto.</p>
+
+      <div class="forwhom">
+        <div>
+          <h2>👍 Per te, se …</h2>
+          <ul>
+            <li>lavori come <b>consulente solo, freelance, titolare di agenzia o PMI</b> nell'area DACH</li>
+            <li>vuoi <b>usare</b> l'IA ogni giorno — senza leggere thread per ore</li>
+            <li>per te <b>GDPR e la realtà del mercato tedesco</b> contano più dei titoli USA</li>
+          </ul>
+        </div>
+        <div>
+          <h2>👎 Probabilmente no, se …</h2>
+          <ul>
+            <li>cerchi il prossimo <b>thread sensazionalistico</b> invece di un parere onesto</li>
+            <li>vuoi solo <b>titoli</b>, senza che qualcuno li contestualizzi</li>
+            <li>preferisci leggere <b>in tedesco</b> <span class="muted">— allora prendi <a href="/">DE</a> (o <a href="/en/">EN</a> / <a href="/fr/">FR</a>)</span></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 </main>
