@@ -163,6 +163,10 @@
         {
           "q": "Brauche ich fertige Prompt-Sammlungen?",
           "a": "Selten. Die Prinzipien hier schlagen die meisten gekauften Prompt-Packs. Eine kuratierte Auswahl gibt es trotzdem in der Prompt-Bibliothek."
+        },
+        {
+          "q": "Werden meine Prompts mit der Zeit besser?",
+          "a": "Ja, aber nicht durch Tricks. Du lernst, das Ziel präziser zu beschreiben und Beispiele mitzugeben. Speichere deine drei, vier besten Prompts als Vorlage — das bringt mehr als jede neue Technik."
         }
       ],
       "related": [
@@ -197,6 +201,10 @@
         {
           "q": "Brauche ich Programmierkenntnisse?",
           "a": "Nein. Make.com ist visuell. n8n kannst du self-hosten für volle Datenkontrolle."
+        },
+        {
+          "q": "Was sollte ich zuerst automatisieren?",
+          "a": "Die Aufgabe, die du mehrmals pro Woche gleich machst und die klar definiert ist — etwa Eingangs-Mails sortieren oder Rechnungen ablegen. Kreative oder heikle Entscheidungen bleiben beim Menschen."
         }
       ],
       "related": [
@@ -296,6 +304,10 @@
         {
           "q": "Welches Tool ist am besten für Deutsch?",
           "a": "Für Texte: Claude und DeepL Write. Für Übersetzung: DeepL. Immer mit menschlichem Feinschliff."
+        },
+        {
+          "q": "Klingt KI-Deutsch nicht steif?",
+          "a": "Aus dem Rohzustand oft ja — zu glatt, zu viele Füllwörter. Gib dem Tool ein, zwei Sätze von dir als Stilvorlage und streiche danach jeden Satz, den du selbst nie sagen würdest. Dann klingt es nach dir."
         }
       ],
       "related": [
@@ -329,6 +341,10 @@
         {
           "q": "Brauche ich mehrere?",
           "a": "Nein, für den Start reicht einer. Wer viel mit KI arbeitet, hat oft zwei für verschiedene Stärken."
+        },
+        {
+          "q": "Lohnt sich die Bezahlversion?",
+          "a": "Wenn du KI mehrmals pro Woche beruflich nutzt: ja, die rund 20 Euro im Monat sparen schnell mehr Zeit ein. Für gelegentliches Ausprobieren reicht die Gratis-Stufe."
         }
       ],
       "related": [
@@ -428,6 +444,10 @@
         {
           "q": "Erkennt man KI-Content?",
           "a": "Schlechten ja. Guten — wenn du redigierst und eigene Substanz einbringst — nicht."
+        },
+        {
+          "q": "Wie viel Content schaffe ich realistisch?",
+          "a": "Mehr als ohne Tool, aber kein Fließband. Rechne mit halber Zeit pro Stück, nicht mit dem Zehnfachen an Menge. Wer Masse ohne Redaktion rausschiebt, verliert Vertrauen schneller, als er es aufbaut."
         }
       ],
       "related": [
