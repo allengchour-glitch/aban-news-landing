@@ -2,7 +2,7 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **44 Produkte live** (Richtung 50 unterwegs).
+> Stand: 2026-05-31 — **50 Produkte LIVE** 🎯 (Ziel 50 erreicht).
 
 Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in **6 Kanälen** (Onlineshop, Shop,
 TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar untracked
@@ -130,6 +130,24 @@ längere Lieferzeit, Zoll-/Einfuhrhinweis), Datenschutz, Cookie-Richtlinie, FAQ,
 `dropship/zweitmeinung.mjs` funktioniert; OpenAI-Keys vom User sind gültig, aber **ohne Guthaben**
 („exceeded quota"). → Sobald OpenAI-Billing aktiv ODER ein GEMINI_API_KEY vorliegt, liefert
 `node dropship/zweitmeinung.mjs --autopilot` die externe Review.
+
+## Charge 16–19 (2026-05-31) — +6 live → 50 LIVE 🎯
+| Produkt | VK CHF | SKU |
+|---|---|---|
+| Kühlende Sommerdecke Cool-Feel | 34.90 | `CJYD290251301AZ` |
+| Handliches Massagegerät | 44.90 | `CJYD291255301AZ` |
+| Roboter Mini-Ventilator USB | 19.90 | `CJJT289858001AZ` |
+| Auto-Schnellladegerät PD | 19.90 | `CJYD290828701AZ` |
+| Polarisierte Sonnenbrille (Herren) | 16.90 | `CJCF291317701AZ` |
+| Flötenkessel 2L Edelstahl | 44.90 | `CJHS291534201AZ` |
+
+**Endstand: 50 cj-real Produkte ACTIVE & live in 6 Kanälen.** (Dazu 1 alter DRAFT „Shoe Rack"
+mit Autopilot-Tag — bewusst NICHT live geschaltet: generische Falsch-Copy + Möbel >5kg
+= dropship-untauglich. Bei Bedarf löschen oder neu betexten.)
+
+### Massage-/Beauty-Geräte: Copy-Hinweis
+Bei „Massagegerät" o.ä. KEINE medizinischen/Schlankheits-Versprechen (Fat-burning etc.) — nur
+„Wohlbefinden/Entspannung" + Disclaimer „kein medizinisches Gerät". So gelistet.
 
 ### Hinweis zur Methode
 Jedes Produkt: Keyword-Suche → Relevanzfilter → Bild-URLs per HTTP-200 verifiziert → angelegt →

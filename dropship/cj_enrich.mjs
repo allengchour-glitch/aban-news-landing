@@ -22,16 +22,12 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
 const KEYWORDS = [
-  { kw: 'sunset projector lamp',    must: ['projector'], take: 1 },
-  { kw: 'electric scrubber brush',  must: ['scrubber'],  take: 1 },
-  { kw: 'magnetic screen door',     must: ['screen'],    take: 1 },
-  { kw: 'silicone stretch lids',    must: ['lids'],      take: 1 },
-  { kw: 'tablet stand holder',      must: ['stand'],     take: 1 },
-  { kw: 'electric mosquito killer', must: ['mosquito'],  take: 1 },
-  { kw: 'foldable drying rack',     must: ['drying'],    take: 1 },
-  { kw: 'self stirring mug',        must: ['mug'],       take: 1 },
-  { kw: 'shoe cleaning kit',        must: ['shoe'],      take: 1 },
-  { kw: 'led mirror compact',       must: ['compact'],   take: 1 },
+  { kw: 'power bank 20000mah',      must: ['power'],     take: 1 },
+  { kw: 'bluetooth speaker mini',   must: ['speaker'],   take: 1 },
+  { kw: 'phone gimbal stabilizer',  must: ['gimbal'],    take: 1 },
+  { kw: 'electric kettle portable', must: ['kettle'],    take: 1 },
+  { kw: 'led ring light selfie',    must: ['ring'],      take: 1 },
+  { kw: 'handheld vacuum cordless', must: ['vacuum'],    take: 1 },
 ];
 
 let _b, _ctx;
