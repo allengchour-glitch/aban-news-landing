@@ -15,7 +15,6 @@ TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar unt
 | Bladeless Nackenventilator | 29.90 | $6.62 | ~5× | (neck fan) | `CJJT291608401AZ` |
 | XXL Picknickdecke faltbar | 24.90 | $2.74–5.82 | ~4.9× | (picnic mat) | `CJYD291539501AZ` |
 | Ice-Compress Mini-Ventilator | 27.90 | $5.99 | ~5.3× | (ice fan) | `CJGR291509001AZ` |
-| Tragbarer Mini-Mixer 380 ml | 34.90 | $7.78 | ~4.5× | – | `CJ20240701115059212AZ` |
 | LED Solar-Lichterkette XL | 19.90 | $2.00–5.59 | ~3.5–10× | 2605290904401606600 | `CJYD291508502BY` |
 | Solar Camping-Laterne Vintage | 34.90 | $10.61 | ~3.3× | 2605290115061614000 | `CJJT291381201AZ` |
 | Aufblasbarer Palmen-Sprinkler XXL | 64.90 | $28.00 | ~2.6× | 2060553527225798657 | `CJHD291547501AZ` |
@@ -41,6 +40,13 @@ Der ursprüngliche CJ-API-Key stand in einem früheren Commit im Klartext. Er wu
 Neuer Key nur noch als Env-Variable (`CJ_API_KEY`) übergeben — beide Scripte lesen
 ausschliesslich aus der Umgebung. Empfehlung: Key zusätzlich als dauerhaftes Environment-Secret
 hinterlegen, damit er in jeder Web-Session verfügbar ist.
+
+## Korrektur — gelöscht
+- *Tragbarer Mini-Mixer* (SKU `CJ20240701115059212AZ`, VK 34.90) wurde **wieder gelöscht**:
+  basierte auf fehlerhaften Daten (Bild-URLs 404, kein bestätigter CJ-Treffer). Bei Bedarf
+  mit echtem CJ-Produkt neu anlegen. **Lehre:** vor `create-product` Bild-URLs verifizieren
+  (`cf.cjdropshipping.com/<uuid>` & `oss-cf.cjdropshipping.com/...` funktionieren;
+  `cf.cjdropshipping.com/quick/product/...` teils 404) und Media-Status nach Anlage prüfen.
 
 ## Lauf 2026-05-31 (Charge 2) — Aussortiert
 - *Cross-border Microfiber Beach Towel* — Aufdruck „Frozen / Spider-Man" = **Marken-/Fälschungsrisiko**, nicht gelistet.
