@@ -1,0 +1,138 @@
+{
+  "stand": "2026-05",
+  "hinweis": "Kuratierte Auswahl bekannter Programme. High-level — Beträge, Fristen und Voraussetzungen ändern sich. Vor Antrag immer beim offiziellen Förderträger prüfen (verlinkt). Keine Förderberatung, keine Garantie.",
+  "programme": [
+    {
+      "id": "digital-jetzt",
+      "name": "Digital Jetzt",
+      "land": "DE",
+      "traeger": "BMWK",
+      "art": "Zuschuss",
+      "zielgruppe": "KMU 3–499 Mitarbeitende",
+      "was": "Investitionen in digitale Technologien & Software sowie Mitarbeiter-Qualifizierung.",
+      "url": "https://www.bmwk.de/Redaktion/DE/Dossier/digital-jetzt.html",
+      "aban_note": "Einer der bekanntesten Digitalisierungs-Zuschüsse für den Mittelstand. Antrag läuft in Fenstern — Status vorab prüfen."
+    },
+    {
+      "id": "go-digital",
+      "name": "go-digital",
+      "land": "DE",
+      "traeger": "BMWK",
+      "art": "Geförderte Beratung",
+      "zielgruppe": "KMU & Handwerk < 100 MA",
+      "was": "Autorisierte Beratung zu Digitalisierung, IT-Sicherheit und Online-Marketing (Förderquote anteilig).",
+      "url": "https://www.bmwk.de/Redaktion/DE/Artikel/Digitale-Welt/foerderprogramm-go-digital.html",
+      "aban_note": "Gut, wenn du externe Hilfe beim Digitalisieren willst — die Beratung wird bezuschusst, nicht das Tool selbst."
+    },
+    {
+      "id": "bafa-beratung",
+      "name": "Förderung unternehmerischen Know-hows (BAFA)",
+      "land": "DE",
+      "traeger": "BAFA",
+      "art": "Zuschuss zu Beratung",
+      "zielgruppe": "KMU & Freiberufler",
+      "was": "Zuschuss zu Kosten für Unternehmensberatung (auch Digitalisierung/Strategie).",
+      "url": "https://www.bafa.de/DE/Wirtschaft/Beratung_Finanzierung/Unternehmensberatung/unternehmensberatung_node.html",
+      "aban_note": "Breit einsetzbar für Beratungskosten. Bedingungen je nach Unternehmensalter unterschiedlich."
+    },
+    {
+      "id": "kfw-digitalisierungskredit",
+      "name": "ERP-Digitalisierungs- und Innovationskredit",
+      "land": "DE",
+      "traeger": "KfW",
+      "art": "Förderkredit",
+      "zielgruppe": "Unternehmen & Freiberufler",
+      "was": "Zinsgünstiger Kredit für Digitalisierungs- und Innovationsvorhaben.",
+      "url": "https://www.kfw.de/inlandsfoerderung/Unternehmen/",
+      "aban_note": "Kein Zuschuss, sondern günstiger Kredit — sinnvoll bei größeren Investitionen."
+    },
+    {
+      "id": "mittelstand-digital",
+      "name": "Mittelstand-Digital Zentren",
+      "land": "DE",
+      "traeger": "BMWK",
+      "art": "Kostenlose Unterstützung",
+      "zielgruppe": "KMU & Handwerk",
+      "was": "Kostenlose Praxis-Unterstützung, Demonstratoren und Workshops zur Digitalisierung & KI.",
+      "url": "https://www.mittelstand-digital.de/",
+      "aban_note": "Kein Geld, aber kostenloses Know-how vor Ort — guter erster Anlaufpunkt."
+    },
+    {
+      "id": "foerderdatenbank-de",
+      "name": "Förderdatenbank des Bundes",
+      "land": "DE",
+      "traeger": "Bund / Länder / EU",
+      "art": "Datenbank",
+      "zielgruppe": "Alle",
+      "was": "Offizielle Suche über alle Förderprogramme von Bund, Ländern und EU.",
+      "url": "https://www.foerderdatenbank.de/",
+      "aban_note": "Die offizielle Gesamtübersicht — hier prüfst du, was aktuell läuft und für dich passt."
+    },
+    {
+      "id": "kmu-digital-at",
+      "name": "KMU.DIGITAL",
+      "land": "AT",
+      "traeger": "BMAW / WKO / aws",
+      "art": "Beratung + Umsetzung",
+      "zielgruppe": "Österreichische KMU",
+      "was": "Geförderte Digitalisierungs-Beratung und Zuschuss zu Umsetzungsprojekten.",
+      "url": "https://www.kmudigital.at/",
+      "aban_note": "Das zentrale Digitalisierungs-Programm für AT-KMU — Beratung und Umsetzung kombinierbar."
+    },
+    {
+      "id": "aws-at",
+      "name": "aws Förderungen (Digitalisierung & Innovation)",
+      "land": "AT",
+      "traeger": "Austria Wirtschaftsservice",
+      "art": "Zuschuss / Garantie / Kredit",
+      "zielgruppe": "Österreichische Unternehmen",
+      "was": "Diverse Programme für Innovation, Digitalisierung und Investitionen.",
+      "url": "https://www.aws.at/",
+      "aban_note": "Breites Portfolio — aktuelle Calls und Programme direkt bei aws prüfen."
+    },
+    {
+      "id": "ffg-at",
+      "name": "FFG Basisprogramme",
+      "land": "AT",
+      "traeger": "Forschungsförderungsgesellschaft",
+      "art": "Forschungsförderung",
+      "zielgruppe": "Forschende Unternehmen",
+      "was": "Förderung von Forschung & Entwicklung, inkl. KI- und Daten-Projekten.",
+      "url": "https://www.ffg.at/",
+      "aban_note": "Eher für F&E-lastige Vorhaben — wenn du KI wirklich entwickelst, nicht nur einsetzt."
+    },
+    {
+      "id": "innosuisse-ch",
+      "name": "Innosuisse Innovationsprojekte",
+      "land": "CH",
+      "traeger": "Innosuisse",
+      "art": "Projektförderung",
+      "zielgruppe": "Schweizer KMU & Start-ups (mit Forschungspartner)",
+      "was": "Förderung von Innovationsprojekten gemeinsam mit einem Forschungspartner.",
+      "url": "https://www.innosuisse.admin.ch/",
+      "aban_note": "Kern der CH-Innovationsförderung. Meist mit Hochschul-/Forschungspartner."
+    },
+    {
+      "id": "innosuisse-scheck-ch",
+      "name": "Innosuisse Innovationsscheck",
+      "land": "CH",
+      "traeger": "Innosuisse",
+      "art": "Gutschein",
+      "zielgruppe": "Schweizer KMU",
+      "was": "Gutschein für eine erste Zusammenarbeit mit einer Forschungseinrichtung.",
+      "url": "https://www.innosuisse.admin.ch/",
+      "aban_note": "Niedrigschwelliger Einstieg, um ein Innovationsvorhaben anzutesten."
+    },
+    {
+      "id": "kmu-admin-ch",
+      "name": "KMU-Portal des Bundes",
+      "land": "CH",
+      "traeger": "SECO / Bund",
+      "art": "Information / Übersicht",
+      "zielgruppe": "Schweizer KMU",
+      "was": "Offizielle Infos zu Finanzierung, Förderung und Digitalisierung für KMU.",
+      "url": "https://www.kmu.admin.ch/",
+      "aban_note": "Guter offizieller Startpunkt für CH — auch kantonale Programme von hier aus finden."
+    }
+  ]
+}
