@@ -278,3 +278,12 @@ weitgehend leer → von 11 Treffern nur 2 sauber:
 - **Edelstahl-Trinkflasche «Hydro» 570 ml** (`CJJT291256301AZ`, ID 15412899676545) — 3 Farben, 24.90, Tag `Trinkflasche`.
 Rest (Auto-Power/Reinigung, Servieren, Schmuck-Landing) → kein sauberer CJ-Treffer; empfohlen:
 Tag-Regeln verbreitern statt Müll importieren.
+
+### ⚠️ Charge-28-Korrektur (Dedup) — Master-Lesson #5
+Beide „neuen" SKUs existierten BEREITS im Shop (`CJSB291389501AZ` = Kulturbeutel Charge 4;
+`CJJT291256301AZ` = Trinkflasche Charge 1) → ich hatte Duplikate angelegt, weil cj_search_niche.mjs
+NICHT gegen den Shop-Bestand prüft. Verifiziert (je 2 Produkte vorhanden) und die alten
+1-Varianten-Versionen gelöscht (IDs 15412301955457 / 15412299694465); meine neuen mit Farbvarianten +
+Kategorie-Tag behalten. **Erkenntnis:** Der Shop enthält schon Tausende (oft CJ-)Produkte → CJ-Import
+trifft laufend Bestand. Für dünne Kategorien ist **Tag-Regel verbreitern / Bestand umtaggen** der
+richtige Weg, nicht Neu-Import. cj_search_niche.mjs sollte vor create per SKU-Query gegen den Shop prüfen.
