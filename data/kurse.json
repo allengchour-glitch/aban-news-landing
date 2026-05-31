@@ -102,6 +102,39 @@
       "aban_note": "Klassische Weiterbildung auf Deutsch — ggf. über das QCG (siehe Förder-Radar) bezuschussbar."
     },
     {
+      "id": "dekra-ki-beauftragter",
+      "name": "KI-Beauftragte/r (AI Officer)",
+      "anbieter": "DEKRA Akademie",
+      "level": "Praxis",
+      "sprache": "DE",
+      "preis": "Bezahlt",
+      "was": "Mehrtägige Schulung mit DEKRA-Zertifikat zur/zum KI-Beauftragten — mit Fokus auf EU AI Act (KI-VO), KI-Governance und Compliance im Unternehmen. Adressiert u.a. die KI-Kompetenz nach Art. 4 KI-VO.",
+      "url": "https://www.dekra-akademie.de/weiterbildung/ki-beauftragter",
+      "aban_note": "Relevant, wenn dein Unternehmen den AI Act umsetzen muss und eine benennbare Ansprechperson braucht. Vierstellige Kosten — vor allem für Compliance-/IT-Rollen sinnvoll, weniger für reine Einsteiger."
+    },
+    {
+      "id": "ihk-ki-manager",
+      "name": "KI-Manager/-in (IHK)",
+      "anbieter": "IHK / DIHK Bildungs-GmbH",
+      "level": "Praxis",
+      "sprache": "DE",
+      "preis": "Bezahlt",
+      "was": "Zertifikatslehrgang in mehreren Modulen (meist Live-Online) zum strategischen Einsatz von KI im Unternehmen. Ohne Vorkenntnisse machbar, mit anerkanntem IHK-Zertifikat. Anbieter: regionale IHKs bundesweit.",
+      "url": "https://www.dihk-bildungs-gmbh.de/weiterbildung/ihk-zertifikate/zertifikatslehrgaenge/ki-manager-ihk",
+      "aban_note": "Solider, bekannter Abschluss für Fach- und Führungskräfte, die KI-Projekte anstoßen wollen. Preise (oft rund 2.500 €) und Termine variieren je IHK — regionalen Anbieter vergleichen."
+    },
+    {
+      "id": "wbs-ki-kompakt",
+      "name": "KI Kompakt",
+      "anbieter": "WBS Coding School",
+      "level": "Praxis",
+      "sprache": "DE",
+      "preis": "Bezahlt (Bildungsgutschein-förderbar)",
+      "was": "Deutschsprachiger, praxisorientierter KI-Kurs (online). Träger und Maßnahme sind AZAV-zertifiziert, daher über einen Bildungsgutschein der Agentur für Arbeit / des Jobcenters bis zu 100 % förderbar.",
+      "url": "https://www.wbscodingschool.com/ki-kompakt-part-time/",
+      "aban_note": "Interessant, wenn du Anspruch auf einen Bildungsgutschein hast — dann ggf. ohne Eigenkosten. Förderung ist nie garantiert: Voraussetzungen vorab mit der Arbeitsagentur klären, siehe auch unser Förder-Radar (QCG)."
+    },
+    {
       "id": "fraunhofer-iao-ki",
       "name": "Fraunhofer IAO — KI-Weiterbildung",
       "anbieter": "Fraunhofer IAO",

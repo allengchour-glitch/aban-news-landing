@@ -1,0 +1,126 @@
+{
+  "stand": "2026-05",
+  "hinweis": "Kuratierte Auswahl praktisch nutzbarer KI-Tools für DACH-Solos und kleine Teams. Stand Mai 2026 — Modelle, Preise und Funktionen ändern sich laufend; prüfe Details und aktuelle Konditionen immer auf der offiziellen Seite (verlinkt). Keine bezahlte Empfehlung, keine Affiliate-Links in dieser Liste. DSGVO-Hinweise sind allgemeine Einordnung, keine Rechtsberatung — für personenbezogene oder vertrauliche Daten gilt: Auftragsverarbeitungsvertrag (AVV) und Datenstandort selbst prüfen.",
+  "tools": [
+    {
+      "id": "claude",
+      "name": "Claude (Anthropic)",
+      "anbieter": "Anthropic",
+      "kategorie": "KI-Assistent / LLM",
+      "preis": "Freemium",
+      "was": "Chat-Assistent für Texte, Analyse, Recherche und Coding. Aktuelle Modellfamilie: Opus 4.8 (stärkstes Modell, Mai 2026), Sonnet 4.6 (ausgewogen) und Haiku 4.5 (schnell, günstig). Stark bei langen Dokumenten und sauberem, nachvollziehbarem Arbeiten.",
+      "url": "https://claude.ai/",
+      "aban_note": "Solider Allrounder für Schreib- und Denkarbeit. Für sensible Daten: Business-Tarif mit AVV nutzen, nicht den kostenlosen Consumer-Zugang. Server liegen primär in den USA."
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT (OpenAI)",
+      "anbieter": "OpenAI",
+      "kategorie": "KI-Assistent / LLM",
+      "preis": "Freemium",
+      "was": "Der bekannteste KI-Assistent. Standardmodell ist seit Mai 2026 GPT-5.5 Instant; GPT-5.5 deckt Schreiben, Coding, Recherche, Datenanalyse und Office-Aufgaben ab. Plus-Tarif rund 20 $/Monat, Team- und Enterprise-Tarife für Firmen.",
+      "url": "https://chatgpt.com/",
+      "aban_note": "Breitester Funktionsumfang und größtes Ökosystem. Für DSGVO: Team/Enterprise mit AVV wählen und in den Einstellungen das Training mit eigenen Daten abschalten."
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini (Google)",
+      "anbieter": "Google",
+      "kategorie": "KI-Assistent / LLM",
+      "preis": "Freemium",
+      "was": "Googles KI-Assistent, eng mit Workspace (Gmail, Docs, Drive) verzahnt. Aktuell u.a. Gemini 3.5 Flash (schnell) und 3.5 Pro. Stark bei Multimodalität (Text, Bild, Audio, Video) und sehr großen Kontextfenstern.",
+      "url": "https://gemini.google.com/",
+      "aban_note": "Naheliegend, wenn du ohnehin Google Workspace nutzt. Für Firmen läuft Gemini im Workspace-Datenschutzrahmen — Consumer-Konto und Business-Konto sauseinanderhalten."
+    },
+    {
+      "id": "mistral-le-chat",
+      "name": "Le Chat (Mistral AI)",
+      "anbieter": "Mistral AI (Frankreich)",
+      "kategorie": "KI-Assistent / LLM",
+      "preis": "Freemium",
+      "was": "Europäischer KI-Assistent auf Basis der Mistral-Modelle (u.a. Medium 3.5). Bietet Agenten-Modus, persistentes Gedächtnis und einen Work-Modus für mehrstufige Aufgaben. Le Chat Enterprise mit Datenresidenz und On-Premise-Option.",
+      "url": "https://chat.mistral.ai/",
+      "aban_note": "Die naheliegende europäische Alternative — relevant, wenn Datenstandort EU und DSGVO im Vordergrund stehen. Enterprise-Tarif bietet Datenresidenz-Garantien."
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity",
+      "anbieter": "Perplexity AI",
+      "kategorie": "KI-Recherche / Antwortmaschine",
+      "preis": "Freemium",
+      "was": "Antwortmaschine, die Web-Suche mit KI kombiniert und Quellen direkt verlinkt. Zugriff auf mehrere Modelle (u.a. GPT, Claude, Gemini). Pro-Tarif rund 20 $/Monat mit tieferer Recherche und Datei-Upload.",
+      "url": "https://www.perplexity.ai/",
+      "aban_note": "Praktisch für schnelle, belegte Recherche statt Halluzinationen ohne Quelle. Vertrauliche Inhalte gehören trotzdem nicht ungeprüft in den Sucheingabe-Schlitz."
+    },
+    {
+      "id": "notebooklm",
+      "name": "NotebookLM",
+      "anbieter": "Google",
+      "kategorie": "KI-Recherche / Wissensmanagement",
+      "preis": "Freemium",
+      "was": "Research-Assistent, der Antworten an deine eigenen Quellen bindet (PDFs, Webseiten, Videos) und mit Belegstellen arbeitet. Erstellt Audio- und Video-Overviews (Podcast-Stil) — inzwischen auch auf Deutsch.",
+      "url": "https://notebooklm.google/",
+      "aban_note": "Gut, um eigene Dokumente schnell durchsuchbar und erklärbar zu machen. Antworten bleiben an deine Quellen gebunden — weniger frei erfundenes Zeug."
+    },
+    {
+      "id": "deepl",
+      "name": "DeepL",
+      "anbieter": "DeepL (Deutschland)",
+      "kategorie": "Übersetzung & Schreiben",
+      "preis": "Freemium",
+      "was": "Hochwertige Übersetzung und mit DeepL Write ein Schreibassistent für Grammatik, Stil und Ton. Deutsches Unternehmen mit Sitz in Köln. Pro-Tarife ab ca. 8–9 €/Monat.",
+      "url": "https://www.deepl.com/",
+      "aban_note": "DACH-Heimspiel: deutsches Unternehmen, EU-Datenstandort, im Pro-Tarif werden Texte nach der Übersetzung nicht gespeichert. Solide Wahl für Geschäftskommunikation."
+    },
+    {
+      "id": "n8n",
+      "name": "n8n",
+      "anbieter": "n8n (Deutschland)",
+      "kategorie": "Automatisierung / Workflows",
+      "preis": "Freemium",
+      "was": "Workflow-Automatisierung, die Apps und KI-Modelle verbindet. Source-available (fair-code) und selbst hostbar. Verbindet z.B. LLM-APIs mit deinen Tools, um wiederkehrende Aufgaben ohne viel Code zu automatisieren.",
+      "url": "https://n8n.io/",
+      "aban_note": "Self-Hosting ist der DSGVO-Hebel: Daten bleiben auf deiner eigenen Infrastruktur. Deutscher Anbieter. Cloud-Variante für alle, die kein Hosting wollen."
+    },
+    {
+      "id": "make",
+      "name": "Make",
+      "anbieter": "Make (Celonis)",
+      "kategorie": "Automatisierung / No-Code",
+      "preis": "Freemium",
+      "was": "Visuelle No-Code-Automatisierung (früher Integromat) mit Drag-and-drop-Editor zum Verbinden von Apps und KI-Diensten. Kostenloser Tarif mit 1.000 Operationen/Monat, bezahlte Tarife ab ca. 9 €/Monat.",
+      "url": "https://www.make.com/",
+      "aban_note": "Niedrigschwelliger Einstieg in Automatisierung ohne Hosting-Aufwand. EU-Rechenzentrum für DSGVO wählbar — bei Setup aktiv auswählen."
+    },
+    {
+      "id": "midjourney",
+      "name": "Midjourney",
+      "anbieter": "Midjourney",
+      "kategorie": "Bildgenerierung",
+      "preis": "Bezahlt",
+      "was": "KI-Bildgenerator mit hoher Bildqualität und Stilkontrolle (aktuell Version 8, 2026). Zugriff über Web-App und Discord. Tarife ab ca. 10 $/Monat (Basic), kein dauerhaft kostenloser Zugang.",
+      "url": "https://www.midjourney.com/",
+      "aban_note": "Top-Bildqualität für Marketing- und Social-Visuals. Rechte- und Markenfragen vorab klären; nicht für Bilder mit echten Personen oder fremden Marken ohne Prüfung nutzen."
+    },
+    {
+      "id": "runway",
+      "name": "Runway",
+      "anbieter": "Runway",
+      "kategorie": "Videogenerierung",
+      "preis": "Freemium",
+      "was": "KI-Videogenerierung (Modell Gen-4) mit konsistenten Figuren und Szenen über mehrere Shots. Erstellt kurze Clips aus Text oder Bildern — für B-Roll, Social-Content und Prototypen. Begrenzte Gratis-Credits, Tarife ab ca. 12–15 $/Monat.",
+      "url": "https://runwayml.com/",
+      "aban_note": "Brauchbar für kurze Marketing-Clips ohne Filmteam. Noch nichts für lange, durchgängige Videos — als Bausteinlieferant denken, nicht als Filmstudio."
+    },
+    {
+      "id": "elevenlabs",
+      "name": "ElevenLabs",
+      "anbieter": "ElevenLabs",
+      "kategorie": "Sprachsynthese / Audio",
+      "preis": "Freemium",
+      "was": "Text-to-Speech mit natürlich klingenden Stimmen in 30+ Sprachen, inkl. gutem Deutsch. Für Voiceover, Hörbücher, Dubbing und Sprach-KI. Kostenloser Tarif mit Zeichenlimit, bezahlte Tarife ab ca. 5 $/Monat.",
+      "url": "https://elevenlabs.io/",
+      "aban_note": "Praktisch für Voiceover und Audio-Content ohne Studio. Beim Klonen von Stimmen unbedingt Einwilligung einholen — sonst rechtlich heikel."
+    }
+  ]
+}
