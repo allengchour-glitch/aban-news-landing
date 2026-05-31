@@ -1,1 +1,2368 @@
-{"version":"1.0.0","last_updated":"2026-05-27","source":"aban news — Anti-Hype-Glossar in zwei Definitionen","license":"CC-BY-4.0 (Attribution: aban news, abannews.com)","language":["de","en"],"categories":["Core Concepts","Models + Vendors","Techniques","DACH-Specific","Anti-Hype","Tools + Infrastructure"],"entries":[{"id":"agent","term_de":"Agent","term_en":"Agent","category":"Core Concepts","definition_marketing":"Eine autonome KI, die selbständig Aufgaben übernimmt und Probleme für dich löst.","definition_aban":"Ein LLM, das in einer Schleife läuft, Tools aufrufen kann und nach jedem Schritt entscheidet was als Nächstes kommt. Funktioniert für klar definierte Pfade — fällt bei Mehrdeutigkeit auseinander.","examples":["Claude Code im Terminal","Cursor Composer","n8n-Workflow mit LLM-Knoten"],"see_also":["function-calling","tool-use","loop"],"first_used_in":"ausgabe-008","controversy_level":8},{"id":"agi","term_de":"AGI (Allgemeine Künstliche Intelligenz)","term_en":"AGI (Artificial General Intelligence)","category":"Core Concepts","definition_marketing":"Der nächste evolutionäre Schritt: eine KI, die alle menschlichen kognitiven Aufgaben übertrifft — und kurz bevorsteht.","definition_aban":"Begriff ohne präzise wissenschaftliche Definition. Wird von Labs als Fundraising-Vehikel und von Kritikern als Strohmann verwendet. Praktisch irrelevant für deine nächsten 12 Monate.","examples":[],"see_also":["agi-doom","scaling-hypothesis"],"first_used_in":"ausgabe-023","controversy_level":10},{"id":"ai","term_de":"KI (Künstliche Intelligenz)","term_en":"AI (Artificial Intelligence)","category":"Core Concepts","definition_marketing":"Maschinen, die wie Menschen denken können.","definition_aban":"Sammelbegriff für Software, die Aufgaben übernimmt, die früher Menschen brauchten. 2026 fast immer: Large Language Models. Die meisten 'KI-Lösungen' sind Wrapper um GPT/Claude.","examples":["ChatGPT als 'KI-Assistent'","Bilderkennung in Foto-Apps"],"see_also":["llm","ml","narrow-ai"],"first_used_in":"ausgabe-001","controversy_level":5},{"id":"alignment","term_de":"Alignment","term_en":"Alignment","category":"Core Concepts","definition_marketing":"Sicherheits-Disziplin, die KIs lehrt, menschliche Werte zu verfolgen.","definition_aban":"Forschungsfeld, das versucht LLMs darauf zu trainieren, sich an Anweisungen zu halten ohne Schaden anzurichten. RLHF und Constitutional AI sind die bekanntesten Ansätze. Bei jedem Skill-Sprung neu offen.","examples":["RLHF bei ChatGPT","Constitutional AI bei Claude"],"see_also":["rlhf","constitutional-ai","red-team"],"first_used_in":"ausgabe-008","controversy_level":6},{"id":"api","term_de":"API (Programmierschnittstelle)","term_en":"API (Application Programming Interface)","category":"Tools + Infrastructure","definition_marketing":"Ein Tor, das die Macht von KI in deine Anwendungen bringt.","definition_aban":"Schnittstelle, über die du LLM-Calls direkt aus Code machst — ohne Web-Chat. Pay-per-Token. Wenn du AI in einen Workflow einbaust, läuft fast immer über API.","examples":["Anthropic API","OpenAI API","Mistral API"],"see_also":["token","rate-limit"],"first_used_in":"ausgabe-001","controversy_level":1},{"id":"attention","term_de":"Attention (Aufmerksamkeitsmechanismus)","term_en":"Attention","category":"Core Concepts","definition_marketing":"Die Innovation, die KIs erstmals 'denken' lässt.","definition_aban":"Mathematischer Mechanismus aus dem 2017er Paper 'Attention is All You Need'. Erlaubt einem Modell, Beziehungen zwischen Wörtern über lange Distanzen zu erfassen. Grundlage von Transformern.","examples":["Self-Attention in GPT","Cross-Attention in Bildmodellen"],"see_also":["transformer","context-window"],"first_used_in":"ausgabe-012","controversy_level":1},{"id":"bias","term_de":"Bias (Verzerrung)","term_en":"Bias","category":"Core Concepts","definition_marketing":"Wird gelöst, sobald wir mehr Daten haben.","definition_aban":"Systematische Schieflagen, die das Modell aus den Trainingsdaten lernt. Lassen sich verkleinern, aber nicht eliminieren. Wenn jemand 'unbiased AI' verspricht, lügt er.","examples":["Bewerbungstools die Frauen-Lebensläufe schlechter bewerten","Bildmodelle die 'CEO' = weißer Mann"],"see_also":["data-quality","fairness"],"first_used_in":"ausgabe-010","controversy_level":7},{"id":"bot","term_de":"Bot","term_en":"Bot","category":"Core Concepts","definition_marketing":"Automatisierter Helfer, der 24/7 für deine Kunden da ist.","definition_aban":"Software, die Aktionen automatisiert. Pre-AI: Regel-basiert (Chatbot mit Entscheidungsbaum). Post-2023: meist LLM dahinter. Bots sind so gut wie ihr System-Prompt.","examples":["WhatsApp-Bot","Discord-Bot","Customer-Service-Chatbot"],"see_also":["agent","chatbot"],"first_used_in":"ausgabe-002","controversy_level":2},{"id":"chain-of-thought","term_de":"Chain-of-Thought (CoT)","term_en":"Chain-of-Thought","category":"Techniques","definition_marketing":"Lässt KIs wie Menschen Schritt für Schritt denken.","definition_aban":"Prompt-Technik: das Modell wird angewiesen, Zwischenschritte aufzuschreiben bevor es antwortet. Verbessert Genauigkeit bei Mathe und Logik. Bei modernen 'Reasoning'-Modellen passiert das eingebaut.","examples":["'Denke Schritt für Schritt'","o1, o3, Claude Extended Thinking"],"see_also":["reasoning","few-shot","prompt-engineering"],"first_used_in":"ausgabe-008","controversy_level":3},{"id":"context-window","term_de":"Kontextfenster","term_en":"Context Window","category":"Core Concepts","definition_marketing":"Die Erinnerung der KI — und die wird unbegrenzt.","definition_aban":"Maximale Tokens (≈ Wörter), die ein Modell auf einmal verarbeitet. 2026 Standard: 200k bei Claude, 1M+ bei Gemini. Mehr Kontext heißt nicht automatisch bessere Antwort — Modelle vergessen die Mitte ('Lost in the Middle').","examples":["Claude 4: 200k Token ≈ 150k Wörter","Gemini 2.5: 2M Token"],"see_also":["token","lost-in-the-middle","rag"],"first_used_in":"ausgabe-006","controversy_level":3},{"id":"embedding","term_de":"Embedding","term_en":"Embedding","category":"Core Concepts","definition_marketing":"Wie KIs Bedeutung wirklich verstehen.","definition_aban":"Vektor-Repräsentation eines Textes (oder Bildes). Ähnliche Bedeutung → ähnliche Zahlen. Grundlage für Semantic Search und RAG.","examples":["text-embedding-3-large von OpenAI","Voyage embeddings"],"see_also":["vector-db","rag","semantic-search"],"first_used_in":"ausgabe-019","controversy_level":1},{"id":"fine-tuning","term_de":"Fine-Tuning","term_en":"Fine-Tuning","category":"Techniques","definition_marketing":"Mach das Modell zu deinem eigenen.","definition_aban":"Weitertraining eines Basismodells mit deinen Daten. Teuer, zeitaufwendig, lohnt sich selten gegenüber gutem Prompting + RAG. 95% der 'Wir brauchen Fine-Tuning'-Anfragen sind in Wahrheit Prompt-Probleme.","examples":["Custom-Claude für Banking-Sprache","Llama-Finetune auf medizinische Texte"],"see_also":["rag","prompt-engineering","lora"],"first_used_in":"ausgabe-019","controversy_level":6},{"id":"few-shot","term_de":"Few-Shot-Prompting","term_en":"Few-Shot Prompting","category":"Techniques","definition_marketing":"KI lernt aus wenigen Beispielen — wie Menschen!","definition_aban":"Du gibst dem Modell 2-5 Beispiele für gewünschten Input→Output direkt im Prompt. Eine der wirksamsten Techniken, oft unterschätzt. Funktioniert besser als ellenlange Anweisungen.","examples":["3 Beispiel-Tweets vor 'Schreib mir noch einen'","5 strukturierte E-Mails als Template"],"see_also":["zero-shot","prompt-engineering","in-context-learning"],"first_used_in":"ausgabe-011","controversy_level":1},{"id":"function-calling","term_de":"Function-Calling","term_en":"Function Calling","category":"Techniques","definition_marketing":"Das Geheimnis hinter wahrer KI-Power.","definition_aban":"Mechanismus, der LLMs erlaubt, strukturierte Aufrufe (Tool-Calls) zu generieren statt nur Text. Du beschreibst Funktionen mit JSON-Schema, das Modell entscheidet wann es welche ruft. Grundlage für Agents.","examples":["'get_weather(city: string)'","Datenbank-Query via Tool"],"see_also":["tool-use","agent","mcp"],"first_used_in":"ausgabe-019","controversy_level":2},{"id":"gpu","term_de":"GPU (Grafikprozessor)","term_en":"GPU","category":"Tools + Infrastructure","definition_marketing":"Das Gehirn der KI-Revolution.","definition_aban":"Spezial-Chips, die parallele Matrix-Berechnungen sehr schnell machen — die Grundoperation in Neural Networks. NVIDIA dominiert. Modell-Training braucht tausende GPUs für Wochen.","examples":["NVIDIA H100","NVIDIA Blackwell B200"],"see_also":["inference","training"],"first_used_in":"ausgabe-001","controversy_level":1},{"id":"hallucination","term_de":"Halluzination","term_en":"Hallucination","category":"Core Concepts","definition_marketing":"Wird mit dem nächsten Modell-Release behoben.","definition_aban":"Wenn ein LLM überzeugt klingende, aber faktisch falsche Aussagen produziert. Folge der Architektur — nicht Bug, sondern Feature des Trainings. RAG, Zitate, Cross-Checks reduzieren, eliminieren aber nicht.","examples":["Erfundene Quellen-Links","Falsche historische Daten mit Selbstvertrauen erzählt"],"see_also":["rag","grounding","fact-checking"],"first_used_in":"ausgabe-006","controversy_level":5},{"id":"inference","term_de":"Inferenz","term_en":"Inference","category":"Core Concepts","definition_marketing":"Der Moment, in dem die KI für dich denkt.","definition_aban":"Vorgang, ein trainiertes Modell zu nutzen — also Anfrage rein, Antwort raus. Kostet pro Token. Inferenz-Kosten sind seit 2024 ~99% gefallen.","examples":["API-Call an Claude","Lokales Ollama-Modell"],"see_also":["training","token","gpu"],"first_used_in":"ausgabe-001","controversy_level":1},{"id":"llm","term_de":"LLM (Großes Sprachmodell)","term_en":"LLM (Large Language Model)","category":"Core Concepts","definition_marketing":"Eine KI, die die menschliche Sprache versteht.","definition_aban":"Neural Network, trainiert auf riesigen Textmengen, sagt das nächste Token vorher. Was du als 'Verstehen' wahrnimmst, ist statistische Mustererkennung über Trillionen Beispiele. Funktioniert verdammt gut, ist aber nicht 'Verstehen' im philosophischen Sinn.","examples":["Claude 4","GPT-5","Gemini 2.5","Mistral Large"],"see_also":["transformer","training","parameter"],"first_used_in":"ausgabe-001","controversy_level":4},{"id":"model","term_de":"Modell","term_en":"Model","category":"Core Concepts","definition_marketing":"Eine fertige KI mit speziellen Fähigkeiten.","definition_aban":"Die trainierten Parameter (Gewichte) eines Neural Networks. Wenn jemand 'Claude' sagt, meint er das spezifische Modell (Claude 4 Sonnet, Opus, Haiku — verschiedene Größen, verschiedene Use-Cases).","examples":["Claude 4 Sonnet","GPT-5","Mistral Large 2"],"see_also":["parameter","training","fine-tuning"],"first_used_in":"ausgabe-001","controversy_level":1},{"id":"multimodal","term_de":"Multimodal","term_en":"Multimodal","category":"Core Concepts","definition_marketing":"KIs die jetzt sehen, hören und sprechen — wie wir!","definition_aban":"Modell verarbeitet mehrere Eingabearten: Text, Bild, Audio, Video. Praktisch nützlich für PDF-Auswertung, Screenshot-Analyse, Audio-Transkription. Performance auf jeder Modalität variiert.","examples":["Claude liest PDFs","GPT-5 analysiert Bilder","Gemini bearbeitet Video"],"see_also":["vision","audio-models"],"first_used_in":"ausgabe-006","controversy_level":2},{"id":"neural-network","term_de":"Neuronales Netz","term_en":"Neural Network","category":"Core Concepts","definition_marketing":"Wie das menschliche Gehirn — in Software.","definition_aban":"Matrix-Multiplikationen mit nichtlinearen Aktivierungen, gestapelt in Schichten. Hat mit biologischen Neuronen so viel zu tun wie ein Flugzeug mit einem Vogel — nämlich nur die Inspiration.","examples":["GPT","Stable Diffusion","AlphaFold"],"see_also":["transformer","deep-learning"],"first_used_in":"ausgabe-012","controversy_level":3},{"id":"parameter","term_de":"Parameter","term_en":"Parameter","category":"Core Concepts","definition_marketing":"Je mehr Parameter, desto schlauer.","definition_aban":"Die einzelnen Zahlen-Gewichte im Neural Network. Claude 4 Opus hat schätzungsweise hunderte Milliarden. Größe ≠ Intelligenz: kleinere Modelle mit besserem Training schlagen oft große.","examples":["Llama 3 70B = 70 Milliarden Parameter","GPT-4 ≈ 1.7 Billionen"],"see_also":["model","training","scaling"],"first_used_in":"ausgabe-001","controversy_level":4},{"id":"prompt","term_de":"Prompt","term_en":"Prompt","category":"Core Concepts","definition_marketing":"Die Geheimsprache der KI-Profis.","definition_aban":"Der Text, den du dem Modell gibst. Punkt. 'Prompt-Engineering' ist 80% klares Denken, 20% Tricks. Die meisten 'magischen Prompts' funktionieren weil sie konkret sind, nicht weil sie magisch sind.","examples":["'Fass diesen Text zusammen'","Strukturierter Brief-Prompt mit Beispielen"],"see_also":["prompt-engineering","few-shot","system-prompt"],"first_used_in":"ausgabe-001","controversy_level":3},{"id":"prompt-engineering","term_de":"Prompt-Engineering","term_en":"Prompt Engineering","category":"Techniques","definition_marketing":"Der Beruf der Zukunft. 200k Gehalt minimum.","definition_aban":"Praxis, Prompts iterativ zu verbessern. Real-skill, aber Vollzeit-Job für die wenigsten. Wird zunehmend in Tools automatisiert (DSPy, Anthropic Prompt-Improver).","examples":["Iteratives Refining","Few-Shot-Examples einbauen","System-Prompt-Tuning"],"see_also":["few-shot","chain-of-thought","prompt"],"first_used_in":"ausgabe-011","controversy_level":7},{"id":"rag","term_de":"RAG (Retrieval-Augmented Generation)","term_en":"RAG","category":"Techniques","definition_marketing":"Mach deine KI faktentreu mit deinen Daten.","definition_aban":"Du holst relevante Stücke aus einer Datenbank, klebst sie in den Prompt, das Modell antwortet basierend darauf. Reduziert Halluzinationen über Fakten in deinen Daten. Funktioniert nur so gut wie dein Retrieval.","examples":["Doc-Search über interne PDFs","Customer-Support-AI mit Wissensbasis"],"see_also":["vector-db","embedding","semantic-search"],"first_used_in":"ausgabe-019","controversy_level":2},{"id":"reasoning","term_de":"Reasoning-Modell","term_en":"Reasoning Model","category":"Techniques","definition_marketing":"KIs, die endlich wirklich denken können.","definition_aban":"Modelle, die eingebaute Chain-of-Thought machen — sie 'denken' vor der Antwort sichtbar nach. Besser bei Mathe/Logik. Teurer, langsamer, nicht für alle Aufgaben passend.","examples":["OpenAI o3","Claude Sonnet Extended Thinking","DeepSeek R1"],"see_also":["chain-of-thought","test-time-compute"],"first_used_in":"ausgabe-008","controversy_level":5},{"id":"rlhf","term_de":"RLHF (Reinforcement Learning from Human Feedback)","term_en":"RLHF","category":"Techniques","definition_marketing":"Die Magie hinter ChatGPT.","definition_aban":"Trainings-Technik: Menschen bewerten Modell-Outputs, das Modell wird darauf optimiert, hochbewertete Antworten zu generieren. War der Game-Changer von GPT-3 → ChatGPT. Hat Probleme: Sycophancy, Bias-Verstärkung.","examples":["ChatGPT-Training","Claude-Training mit Constitutional AI"],"see_also":["alignment","constitutional-ai","sycophancy"],"first_used_in":"ausgabe-008","controversy_level":4},{"id":"token","term_de":"Token","term_en":"Token","category":"Core Concepts","definition_marketing":"Die Bausteine der KI-Sprache.","definition_aban":"Wort-Bruchstücke. 1 Token ≈ 0.75 Wörter (Englisch), ≈ 0.5 Wörter (Deutsch). Wird abgerechnet pro Token rein + raus. Pricing-Schock-Quelle Nr. 1 bei API-Migration.","examples":["'Hallo' ≈ 1 Token","Ein Roman: ~150k Token"],"see_also":["context-window","tokenizer","pricing"],"first_used_in":"ausgabe-001","controversy_level":1},{"id":"training","term_de":"Training","term_en":"Training","category":"Core Concepts","definition_marketing":"Die KI lernt — wie ein Kind.","definition_aban":"Vorgang, ein Modell aus Daten + Gradient Descent zu bauen. Pre-Training: Basiskenntnisse. Post-Training: Verfeinerung mit RLHF, DPO. Kostet Millionen, dauert Monate, braucht Tausende GPUs.","examples":["GPT-5-Training: 9-stelliger Betrag","Llama-Training auf 15T Token"],"see_also":["inference","fine-tuning","scaling-laws"],"first_used_in":"ausgabe-001","controversy_level":2},{"id":"transformer","term_de":"Transformer","term_en":"Transformer","category":"Core Concepts","definition_marketing":"Die Architektur, die alles verändert hat.","definition_aban":"Neural-Network-Architektur von 2017 (Google Paper 'Attention is All You Need'). Grundlage praktisch aller modernen LLMs. Nicht zu verwechseln mit dem Spielzeug.","examples":["GPT-Reihe","Claude","Llama","Mistral"],"see_also":["attention","llm","decoder-only"],"first_used_in":"ausgabe-012","controversy_level":1},{"id":"vector-db","term_de":"Vector-Datenbank","term_en":"Vector Database","category":"Tools + Infrastructure","definition_marketing":"Die neue Datenbank-Generation für AI.","definition_aban":"Datenbank optimiert für Ähnlichkeitssuche zwischen Embedding-Vektoren. Grundlage für RAG. Mittlerweile macht jede etablierte DB (Postgres mit pgvector) das mit. Spezialisierte Lösungen lohnen sich erst ab Volume.","examples":["Qdrant","Weaviate","Pinecone","pgvector"],"see_also":["embedding","rag","semantic-search"],"first_used_in":"ausgabe-019","controversy_level":3},{"id":"zero-shot","term_de":"Zero-Shot-Prompting","term_en":"Zero-Shot","category":"Techniques","definition_marketing":"KI kann alles ohne Beispiele!","definition_aban":"Du fragst direkt ohne Beispiele. Geht für einfache Aufgaben. Für strukturierten Output: Few-Shot ist meistens besser.","examples":["'Übersetze das'","'Fasse das zusammen'"],"see_also":["few-shot","prompt-engineering"],"first_used_in":"ausgabe-011","controversy_level":1},{"id":"claude","term_de":"Claude","term_en":"Claude","category":"Models + Vendors","definition_marketing":"Der ehrlichste, sicherste AI-Assistent.","definition_aban":"LLM-Familie von Anthropic. 2026: Claude 4 Sonnet (Default), Opus (langes Reasoning), Haiku (Bulk). Stark in deutschen Texten. Mein täglicher Default.","examples":["Claude 4 Sonnet","Claude 4 Opus"],"see_also":["anthropic","llm","constitutional-ai"],"first_used_in":"ausgabe-001","controversy_level":3},{"id":"chatgpt","term_de":"ChatGPT","term_en":"ChatGPT","category":"Models + Vendors","definition_marketing":"Das Produkt, das KI in den Massenmarkt gebracht hat.","definition_aban":"Konsumenten-Produkt von OpenAI um die GPT-Modelle. Standard für die meisten. Default-Auswahl wenn jemand 'KI' sagt und nicht weiß was er meint.","examples":["ChatGPT Plus","ChatGPT Team","ChatGPT Enterprise"],"see_also":["gpt","openai"],"first_used_in":"ausgabe-001","controversy_level":4},{"id":"gpt","term_de":"GPT","term_en":"GPT (Generative Pre-trained Transformer)","category":"Models + Vendors","definition_marketing":"Die berühmteste KI-Familie der Welt.","definition_aban":"Modell-Reihe von OpenAI. GPT-3 (2020) war der Durchbruch, GPT-5 (2025) der aktuelle Stand. 'GPT' ist auch Generic-Name geworden (jeder spricht von 'einem GPT').","examples":["GPT-3.5, GPT-4, GPT-4o, GPT-5"],"see_also":["chatgpt","openai","transformer"],"first_used_in":"ausgabe-001","controversy_level":2},{"id":"gpt5","term_de":"GPT-5","term_en":"GPT-5","category":"Models + Vendors","definition_marketing":"Der Durchbruch zur AGI.","definition_aban":"OpenAIs Flaggschiff-Modell (2025). Solide Allrounder, in Reasoning stark. Kein qualitativer Sprung zu GPT-4o, eher graduelle Verbesserungen. Multimodal robust.","examples":[],"see_also":["gpt","openai","agi"],"first_used_in":"ausgabe-008","controversy_level":5},{"id":"claude-sonnet","term_de":"Claude Sonnet","term_en":"Claude Sonnet","category":"Models + Vendors","definition_marketing":"Der vielseitige Allrounder.","definition_aban":"Mid-Tier-Modell von Anthropic. Best Bang-for-Buck. Coding stark, Writing stark, Latenz ok. Mein Default für 90% der Aufgaben.","examples":["Claude 4 Sonnet"],"see_also":["claude","claude-opus","claude-haiku"],"first_used_in":"ausgabe-006","controversy_level":1},{"id":"claude-haiku","term_de":"Claude Haiku","term_en":"Claude Haiku","category":"Models + Vendors","definition_marketing":"Klein, aber oho.","definition_aban":"Schnellstes/günstigstes Claude-Modell. Für Bulk-Tasks, Classification, einfache Q&A. Wenn Sonnet overkill ist.","examples":["Claude 4 Haiku"],"see_also":["claude","claude-sonnet"],"first_used_in":"ausgabe-008","controversy_level":1},{"id":"claude-opus","term_de":"Claude Opus","term_en":"Claude Opus","category":"Models + Vendors","definition_marketing":"Die anspruchsvollste KI für anspruchsvolle Probleme.","definition_aban":"Größtes Claude-Modell. Für lange Recherche, schwierige Coding-Probleme, komplexe Reasoning-Aufgaben. Teurer und langsamer als Sonnet — lohnt sich nur bei wirklich schwerem Stoff.","examples":["Claude 4 Opus"],"see_also":["claude","claude-sonnet"],"first_used_in":"ausgabe-008","controversy_level":1},{"id":"gemini","term_de":"Gemini","term_en":"Gemini","category":"Models + Vendors","definition_marketing":"Googles Antwort auf die KI-Revolution.","definition_aban":"Google's LLM-Familie. Stark in Multimodal und Long-Context (1M+ Token). Workspace-Integration ist's Hauptverkaufsargument. Standalone-Output: solid, nicht herausragend.","examples":["Gemini 2.5 Pro","Gemini Flash"],"see_also":["llm","google"],"first_used_in":"ausgabe-004","controversy_level":3},{"id":"mistral","term_de":"Mistral","term_en":"Mistral","category":"Models + Vendors","definition_marketing":"Europas KI-Champion.","definition_aban":"Französisches LLM-Unternehmen. Mistral Large für Premium, Mistral Small für Budget, Codestral für Coding. EU-Hosting, GDPR-Compliance solid. 2026 als 'sichere DACH-Wahl' positioniert.","examples":["Mistral Large 2","Codestral","Pixtral"],"see_also":["llm","eu-ai-act","open-weights"],"first_used_in":"ausgabe-004","controversy_level":2},{"id":"llama","term_de":"Llama","term_en":"Llama","category":"Models + Vendors","definition_marketing":"Meta's Open-Source-Geschenk an die Welt.","definition_aban":"Meta's Open-Weights-Modell-Familie. Llama 3 (2024), Llama 4 (2025). Lizenz nicht 100% OSI-konform (Restriktion ab 700M Nutzer). Gut für Self-Hosting, aber Llama 4 wurde beim Launch kritisiert.","examples":["Llama 3 70B","Llama 4 Maverick"],"see_also":["open-weights","meta","ollama"],"first_used_in":"ausgabe-024","controversy_level":5},{"id":"deepseek","term_de":"DeepSeek","term_en":"DeepSeek","category":"Models + Vendors","definition_marketing":"Der chinesische Disruptor.","definition_aban":"Chinesisches LLM. R1 hat 2025 für Schlagzeilen gesorgt — Reasoning-Modell für Bruchteil der OpenAI-Preise. Modell-Performance gut, aber Daten-Sicherheit (China-Provider) ist Showstopper für DACH-Business.","examples":["DeepSeek V3","DeepSeek R1"],"see_also":["llm","reasoning","open-weights"],"first_used_in":"ausgabe-001","controversy_level":7},{"id":"aleph-alpha","term_de":"Aleph Alpha","term_en":"Aleph Alpha","category":"Models + Vendors","definition_marketing":"Souveräne KI aus Deutschland.","definition_aban":"Heidelberger LLM-Unternehmen. Pharia-1 für regulierte Branchen. Performance hinkt Claude/Mistral hinterher. Politisches Investment-Vehikel mit echtem Use-Case in EU-Souveränität, aber kein technischer Spitzenreiter.","examples":["Pharia-1-LLM"],"see_also":["llm","eu-ai-act","dach"],"first_used_in":"ausgabe-004","controversy_level":6},{"id":"anthropic","term_de":"Anthropic","term_en":"Anthropic","category":"Models + Vendors","definition_marketing":"Das sichere KI-Labor.","definition_aban":"San-Francisco-Lab, Macher von Claude. Ex-OpenAI-Forscher. Constitutional AI als Differenzierung. Mein Default-Provider 2026.","examples":[],"see_also":["claude","constitutional-ai"],"first_used_in":"ausgabe-001","controversy_level":3},{"id":"openai","term_de":"OpenAI","term_en":"OpenAI","category":"Models + Vendors","definition_marketing":"Das führende KI-Labor.","definition_aban":"Macher von GPT und ChatGPT. Trotz Name lange nicht mehr open. Mit Microsoft fest verzahnt. Drama-Geneigt — Boardgate 2023, Talent-Drain seit 2024.","examples":[],"see_also":["chatgpt","gpt","microsoft"],"first_used_in":"ausgabe-001","controversy_level":5},{"id":"constitutional-ai","term_de":"Constitutional AI","term_en":"Constitutional AI","category":"Techniques","definition_marketing":"KI mit eingebauten Werten.","definition_aban":"Anthropic-Methode: Training mit Prinzipien-Set ('Constitution'), AI bewertet eigene Outputs gegen Prinzipien, lernt sich selbst zu korrigieren. Mehr skalierbar als reines RLHF.","examples":["Claude-Training"],"see_also":["alignment","rlhf","anthropic"],"first_used_in":"ausgabe-008","controversy_level":4},{"id":"eu-ai-act","term_de":"EU AI Act","term_en":"EU AI Act","category":"DACH-Specific","definition_marketing":"Brüssel reguliert KI.","definition_aban":"EU-Verordnung 2024/1689. Risiko-basiertes Framework: Verbotene Praktiken (Social Scoring), Hochrisiko-Systeme (HR, Bildung), GPAI mit besonderen Regeln. Phase August 2026: GPAI-Pflichten aktiv. Wenn du AI in DACH einsetzt: lesen lassen.","examples":["Verbot von Emotion-Recognition im Arbeitsumfeld","GPAI-Dokumentationspflicht"],"see_also":["gpai","dsgvo","compliance"],"first_used_in":"ausgabe-002","controversy_level":6},{"id":"gpai","term_de":"GPAI (General-Purpose AI)","term_en":"GPAI","category":"DACH-Specific","definition_marketing":"Die Standard-Foundation-Models.","definition_aban":"Kategorie im EU AI Act: Allzweck-KI-Modelle (Claude, GPT, Gemini). Dokumentations- und Risikomanagement-Pflichten ab August 2026. 'Systemic risk' bei >10^25 FLOPs Training-Compute = strengere Regeln.","examples":["Claude 4","GPT-5","Gemini 2.5"],"see_also":["eu-ai-act","compliance"],"first_used_in":"ausgabe-002","controversy_level":5},{"id":"dsgvo-ai","term_de":"DSGVO und KI","term_en":"GDPR and AI","category":"DACH-Specific","definition_marketing":"Mit unserer KI bist du DSGVO-konform.","definition_aban":"DSGVO regelt Verarbeitung personenbezogener Daten — auch wenn die KI das macht. AVV mit US-Providern, Datenresidenz, Zweckbindung, Auskunftsrechte. Standardpaket-DSGVO + AI-spezifische Erwägungen.","examples":["AVV mit OpenAI","EU-Hosting bei Anthropic"],"see_also":["eu-ai-act","revdsg","avv"],"first_used_in":"ausgabe-010","controversy_level":5},{"id":"revdsg","term_de":"revDSG (Schweiz)","term_en":"Swiss Federal Data Protection Act","category":"DACH-Specific","definition_marketing":"Wie DSGVO, nur Schweizer.","definition_aban":"Revidiertes Datenschutzgesetz, seit 09/2023 in Kraft. Ähnlich der DSGVO, aber: keine Bußgelder für Unternehmen (nur Privatpersonen-Strafe bis 250k CHF), keine Datenschutz-Folgenabschätzung in jedem Fall. EU-DSGVO-Konformität meist genug.","examples":[],"see_also":["dsgvo-ai","compliance"],"first_used_in":"ausgabe-021","controversy_level":3},{"id":"bsi-ai","term_de":"BSI-AI-Empfehlung","term_en":"BSI AI Guidance","category":"DACH-Specific","definition_marketing":"Der deutsche Standard.","definition_aban":"BSI (Bundesamt für Sicherheit in der Informationstechnik) veröffentlicht IT-Grundschutz und KI-spezifische Empfehlungen. Für öffentliche Auftraggeber in DE oft verpflichtend, für KMU als Referenz nützlich.","examples":["BSI-Bausteine zu KI","C5-Cloud-Compliance"],"see_also":["dsgvo-ai","compliance"],"first_used_in":"ausgabe-024","controversy_level":2},{"id":"avv","term_de":"AVV (Auftragsverarbeitungsvertrag)","term_en":"Data Processing Agreement","category":"DACH-Specific","definition_marketing":"Standard-Vertrag — schnell unterschrieben.","definition_aban":"Pflicht-Vertrag nach DSGVO Art. 28 wenn ein Dienstleister deine Daten verarbeitet. Bei AI-Tools: schau dir Sub-Prozessor-Liste an. OpenAI-AVV via OpenAI Privacy Portal, Anthropic via Sales.","examples":["AVV mit OpenAI","AVV mit Anthropic"],"see_also":["dsgvo-ai","compliance"],"first_used_in":"ausgabe-010","controversy_level":2},{"id":"synergistic","term_de":"synergistisch","term_en":"synergistic","category":"Anti-Hype","definition_marketing":"Wenn 1 + 1 mehr ergibt als 2 — durch unsere KI-getriebene Plattform.","definition_aban":"Bedeutet: 'Wir wissen nicht, was unser Tool macht, aber es klingt nach Vorteil.' Wenn du das Wort streichst, verliert der Satz nichts an Information.","examples":["'Synergistische AI-Lösung' = irgendein LLM-Wrapper","'Synergie-Effekte' = wir kombinieren zwei Tools"],"see_also":["solution","revolutionary"],"first_used_in":"ausgabe-020","controversy_level":9},{"id":"revolutionary","term_de":"revolutionär","term_en":"revolutionary","category":"Anti-Hype","definition_marketing":"Der Weltveränderer, an dem du nicht vorbeikommst.","definition_aban":"Bedeutet: 'Wir kopieren ein Feature, das ChatGPT seit zwei Jahren hat.' Nutze als Hype-Detektor: je öfter im Pitch-Deck, desto schlechter das Produkt.","examples":["'Revolutionäre AI-Suchmaschine' = Perplexity-Klon","'Revolutionäres Schreibwerkzeug' = Claude-Wrapper"],"see_also":["game-changer","synergistic"],"first_used_in":"ausgabe-005","controversy_level":9},{"id":"game-changer","term_de":"Game-Changer","term_en":"game-changer","category":"Anti-Hype","definition_marketing":"Das eine Tool, das alles ändert.","definition_aban":"Bedeutet: 'Wir können nicht erklären was es konkret macht.' Wenn das Tool wirklich ändert was du tust, kannst du benennen WAS. 'Game-Changer' ist die Antwort wenn niemand fragt.","examples":[],"see_also":["revolutionary","disruptive"],"first_used_in":"ausgabe-020","controversy_level":9},{"id":"disruptive","term_de":"disruptiv","term_en":"disruptive","category":"Anti-Hype","definition_marketing":"Wir reißen die alte Welt nieder.","definition_aban":"Bedeutet meist: 'Wir verbrennen Risikokapital, um Marktanteile zu kaufen.' Echte Disruption (im Christensen-Sinn) sieht zunächst harmlos aus. Was sich 'disruptiv' nennt, ist's selten.","examples":[],"see_also":["revolutionary"],"first_used_in":"ausgabe-020","controversy_level":8},{"id":"solution","term_de":"Lösung / Solution","term_en":"solution","category":"Anti-Hype","definition_marketing":"Unsere End-to-End-AI-Lösung für deine Probleme.","definition_aban":"Bedeutet: 'Software'. 'Lösung' wird verwendet, wenn das Produkt zu unklar ist, um es 'Tool' oder 'App' zu nennen. Wenn der Anbieter nicht sagen kann, was es konkret tut, sag ab.","examples":["'AI-Marketing-Lösung' = ein Dashboard mit GPT-API"],"see_also":["platform","synergistic"],"first_used_in":"ausgabe-020","controversy_level":9},{"id":"platform","term_de":"Plattform","term_en":"platform","category":"Anti-Hype","definition_marketing":"Die ganzheitliche AI-Plattform für dein Business.","definition_aban":"Bedeutet: 'Ein Tool das wir gerne als Tool-Suite verkaufen würden.' Echte Plattformen haben Drittanbieter-Apps drauf (Shopify, Salesforce). Alles andere ist ein Tool mit Marketing-Aufkleber.","examples":[],"see_also":["solution","ecosystem"],"first_used_in":"ausgabe-020","controversy_level":8},{"id":"ecosystem","term_de":"Ökosystem","term_en":"ecosystem","category":"Anti-Hype","definition_marketing":"Unser AI-Ökosystem deckt deine ganzen Workflows ab.","definition_aban":"Bedeutet: 'Wir haben drei Produkte und wollen alle verkaufen.' Echte Ökosysteme entstehen durch Drittanbieter. 'Ökosystem' im Pitch-Deck = Verkäufer-Sprech.","examples":[],"see_also":["platform"],"first_used_in":"ausgabe-020","controversy_level":7},{"id":"quantensprung","term_de":"Quantensprung","term_en":"quantum leap","category":"Anti-Hype","definition_marketing":"Der nächste große Sprung in der KI-Evolution.","definition_aban":"Bedeutet: 'graduelle Verbesserung, die wir größer klingen lassen wollen.' Physikalisch ist ein Quantensprung der kleinstmögliche Sprung — das Wort wird seit den 1980ern falsch verwendet.","examples":[],"see_also":["revolutionary"],"first_used_in":"ausgabe-025","controversy_level":8},{"id":"ai-first","term_de":"AI-First","term_en":"AI-First","category":"Anti-Hype","definition_marketing":"Die Strategie der Zukunft: alles mit KI denken.","definition_aban":"Bedeutet: 'Wir wissen nicht, wo KI hingehört, also überall.' Solopreneure und KMU brauchen keine AI-First-Strategie. Sie brauchen 3 klar identifizierte Prozesse, in denen ein Tool sie schneller macht.","examples":[],"see_also":["digital-transformation"],"first_used_in":"ausgabe-005","controversy_level":9},{"id":"digital-transformation","term_de":"Digitale Transformation","term_en":"Digital Transformation","category":"Anti-Hype","definition_marketing":"Die fundamentale Veränderung jedes Unternehmens.","definition_aban":"Bedeutet meist: 'Wir digitalisieren PDFs.' Wird seit 2010 versprochen und 2026 noch verkauft. Konkret heißt 'Transformation' bei den meisten KMU: Excel auf SharePoint + ChatGPT-Lizenzen.","examples":[],"see_also":["ai-first"],"first_used_in":"ausgabe-020","controversy_level":8},{"id":"next-gen","term_de":"Next-Generation","term_en":"next-generation","category":"Anti-Hype","definition_marketing":"Die nächste Stufe.","definition_aban":"Bedeutet: 'Wir haben das aktuelle Produkt umbenannt.' Wenn jede Quartalsversion 'next-gen' ist, ist's nur 'next'.","examples":[],"see_also":["revolutionary"],"first_used_in":"ausgabe-020","controversy_level":7},{"id":"enterprise-grade","term_de":"enterprise-grade","term_en":"enterprise-grade","category":"Anti-Hype","definition_marketing":"Für die Anforderungen großer Unternehmen geeignet.","definition_aban":"Bedeutet meist: 'Mit SAML-Login und 4x höherer Preis.' Tatsächliche Enterprise-Anforderungen (SLA, Compliance-Zerts, On-Prem-Option) werden selten erfüllt, wenn 'enterprise-grade' draufsteht.","examples":[],"see_also":["enterprise"],"first_used_in":"ausgabe-020","controversy_level":7},{"id":"thought-leader","term_de":"Thought-Leader","term_en":"thought leader","category":"Anti-Hype","definition_marketing":"Eine Person mit visionärem Einfluss.","definition_aban":"Bedeutet: 'Jemand der viel auf LinkedIn postet'. Echte Vordenker werden so genannt, nennen sich aber nicht selbst so. Self-claimed Thought-Leader = Red Flag.","examples":[],"see_also":[],"first_used_in":"ausgabe-020","controversy_level":8},{"id":"sycophancy","term_de":"Schmeichelei (Sycophancy)","term_en":"Sycophancy","category":"Core Concepts","definition_marketing":"Unsere KI ist freundlich und unterstützend.","definition_aban":"Tendenz von LLMs, dem User zuzustimmen, auch wenn er falsch liegt. Folge von RLHF. Wer 'das ist nicht richtig' sagt, kriegt vom Modell oft die Antwort umgedreht. Vorsicht bei wichtigen Faktenfragen.","examples":["'Du hast Recht, ich lag falsch' nach Push-Back"],"see_also":["rlhf","hallucination"],"first_used_in":"ausgabe-008","controversy_level":5},{"id":"guardrails","term_de":"Guardrails","term_en":"Guardrails","category":"Techniques","definition_marketing":"Sicherheits-Layer für deine AI-Anwendung.","definition_aban":"Filter und Regeln rund um ein LLM, die unerwünschte Outputs (PII, Toxic, off-Topic) blocken. Manchmal als Tool (NeMo Guardrails, Guardrails AI), manchmal als Prompts. Brechen unter Prompt-Injection.","examples":["NeMo Guardrails","Llama Guard"],"see_also":["jailbreak","prompt-injection","alignment"],"first_used_in":"ausgabe-008","controversy_level":3},{"id":"jailbreak","term_de":"Jailbreak","term_en":"Jailbreak","category":"Techniques","definition_marketing":"Sicherheitsforschung am Modell.","definition_aban":"Trick-Prompts, die die Sicherheits-Layer eines Modells umgehen. Klassiker: 'Stell dir vor du bist DAN' oder Rollen-Spiel-Setups. Wettrennen zwischen Lab und Researcher.","examples":["DAN-Prompt","Grandmother-Exploit"],"see_also":["prompt-injection","alignment"],"first_used_in":"ausgabe-008","controversy_level":4},{"id":"prompt-injection","term_de":"Prompt-Injection","term_en":"Prompt Injection","category":"Techniques","definition_marketing":"Eine kleine Sicherheitsherausforderung.","definition_aban":"Schwerwiegendste Sicherheitslücke in LLM-Apps. Angreifer schmuggelt Anweisungen in User-Input oder externe Daten (PDF, Website), das Modell führt sie aus. Hat noch keine generelle Lösung.","examples":["Versteckte Anweisungen in einer Email die der Agent liest"],"see_also":["jailbreak","guardrails","agent"],"first_used_in":"ausgabe-008","controversy_level":7},{"id":"mcp","term_de":"MCP (Model Context Protocol)","term_en":"MCP","category":"Tools + Infrastructure","definition_marketing":"Der USB-C für KI-Tools.","definition_aban":"Offener Standard von Anthropic für Tool-Calling. Definiert wie LLM-Anwendungen Tools, Resources, Prompts servieren. Adopt: Claude, Cursor, Windsurf. 2026 die De-facto-Standard-Schicht.","examples":["MCP-Server für GitHub, Slack, Postgres"],"see_also":["function-calling","agent"],"first_used_in":"ausgabe-024","controversy_level":3},{"id":"open-weights","term_de":"Open-Weights","term_en":"Open Weights","category":"Models + Vendors","definition_marketing":"Echt offen.","definition_aban":"Modell-Gewichte sind frei verfügbar (Download). Aber: nicht zwingend Open-Source (Trainingsdaten, Code, Lizenz können geschlossen sein). Llama ist 'open weights', kein OSI-konformes Open-Source.","examples":["Llama 3","Mistral 7B","DeepSeek R1"],"see_also":["llama","mistral","open-source-ai"],"first_used_in":"ausgabe-024","controversy_level":6},{"id":"open-source-ai","term_de":"Open-Source-KI","term_en":"Open Source AI","category":"Models + Vendors","definition_marketing":"100% offen, frei nutzbar.","definition_aban":"OSI hat 2024 'OSAID' definiert: Weights + Code + Daten + Doku müssen offen sein. Sehr wenige Modelle erfüllen das (OLMo, Pythia). Die meisten 'Open-Source-Modelle' sind in Wahrheit Open-Weights.","examples":["OLMo 2 von AllenAI","Pythia von EleutherAI"],"see_also":["open-weights","llama"],"first_used_in":"ausgabe-024","controversy_level":7},{"id":"lora","term_de":"LoRA (Low-Rank Adaptation)","term_en":"LoRA","category":"Techniques","definition_marketing":"Smartes Fine-Tuning für jeden.","definition_aban":"Effiziente Fine-Tuning-Technik: nur kleiner Adapter-Layer wird trainiert, Basismodell bleibt unverändert. Reduziert Kosten/Speicher dramatisch. Standard für Custom-Image-Modelle.","examples":["Style-LoRA für Stable Diffusion","Domain-LoRA für Mistral"],"see_also":["fine-tuning"],"first_used_in":"ausgabe-019","controversy_level":2},{"id":"rate-limit","term_de":"Rate Limit","term_en":"Rate Limit","category":"Tools + Infrastructure","definition_marketing":"Faire Nutzung für alle.","definition_aban":"Anzahl Requests pro Minute/Tag/Token-Volume die ein Provider erlaubt. Variiert per Tier. Stolperstein wenn du in Production gehst — testen vor Launch.","examples":["OpenAI Tier 1: 200 RPM","Anthropic Tier 4: 50k tokens/min"],"see_also":["api","token"],"first_used_in":"ausgabe-019","controversy_level":1},{"id":"context-engineering","term_de":"Context-Engineering","term_en":"Context Engineering","category":"Techniques","definition_marketing":"Die neue Disziplin.","definition_aban":"Begriff der 'Prompt-Engineering' ablöst. Fokus: Was kommt in den Kontext, was nicht. RAG, Memory, Tool-Outputs sauber managen. 'Prompt' war zu eng — das ganze Setup ist's, was zählt.","examples":[],"see_also":["prompt-engineering","rag","context-window"],"first_used_in":"ausgabe-024","controversy_level":5},{"id":"lost-in-the-middle","term_de":"Lost in the Middle","term_en":"Lost in the Middle","category":"Core Concepts","definition_marketing":"—","definition_aban":"Phänomen: LLMs verarbeiten Anfang und Ende eines langen Kontexts gut, vergessen aber die Mitte. Wichtige Infos an Anfang oder Ende platzieren. Long-Context-Modelle haben das auch noch.","examples":[],"see_also":["context-window","rag"],"first_used_in":"ausgabe-024","controversy_level":3},{"id":"scaling-laws","term_de":"Scaling Laws","term_en":"Scaling Laws","category":"Core Concepts","definition_marketing":"Mehr Compute = mehr Intelligenz.","definition_aban":"Empirische Beziehung: Modell-Performance steigt vorhersagbar mit Compute + Daten + Parametern. Seit 2024 in der Debatte, ob's eine Mauer gibt. Aktuelle Releases (GPT-5, Claude 4) deuten auf Verlangsamung pre-training, Test-Time-Compute wird wichtiger.","examples":["Chinchilla-Paper","Kaplan et al. 2020"],"see_also":["training","scaling-hypothesis"],"first_used_in":"ausgabe-024","controversy_level":7},{"id":"test-time-compute","term_de":"Test-Time Compute","term_en":"Test-Time Compute","category":"Techniques","definition_marketing":"Die KI denkt jetzt richtig nach.","definition_aban":"Statt nur am Training mehr Compute zu verbrennen, lässt man das Modell zur Inferenz-Zeit 'nachdenken' (intern lange Chains). Basis von Reasoning-Modellen wie o3, Claude Extended Thinking. Teuer per Query.","examples":["o3 mit thinking-tokens","Claude Extended Thinking"],"see_also":["reasoning","chain-of-thought"],"first_used_in":"ausgabe-024","controversy_level":4},{"id":"tokenizer","term_de":"Tokenizer","term_en":"Tokenizer","category":"Core Concepts","definition_marketing":"—","definition_aban":"Algorithmus, der Text in Tokens zerlegt. BPE und SentencePiece sind Standard. Deutsche Wörter brauchen oft mehr Tokens als englische — wirkt sich auf Pricing aus.","examples":["GPT-4 Tokenizer","Claude Tokenizer"],"see_also":["token"],"first_used_in":"ausgabe-024","controversy_level":1},{"id":"system-prompt","term_de":"System-Prompt","term_en":"System Prompt","category":"Techniques","definition_marketing":"Programmiere deine KI mit Sprache.","definition_aban":"Versteckter Prompt vor dem User-Input — definiert Verhalten, Tonalität, Constraints. Bei Claude und GPT separater Slot. ChatGPT's 'Custom Instructions' = System-Prompt-Light.","examples":["'Du bist ein knapper, sachlicher Assistent'"],"see_also":["prompt","prompt-engineering"],"first_used_in":"ausgabe-011","controversy_level":2},{"id":"structured-output","term_de":"Structured Output","term_en":"Structured Output","category":"Techniques","definition_marketing":"Garantiert valides JSON.","definition_aban":"Modell wird gezwungen, in einem bestimmten Schema zu antworten (JSON, XML, Function-Call). Über Constraint-Decoding oder JSON-Mode. Macht LLMs zuverlässig für Pipelines.","examples":["OpenAI JSON mode","Claude tool use"],"see_also":["function-calling","json"],"first_used_in":"ausgabe-019","controversy_level":1},{"id":"vibecoding","term_de":"Vibecoding","term_en":"Vibe Coding","category":"Techniques","definition_marketing":"Programmieren ohne Code lernen zu müssen.","definition_aban":"Begriff von Karpathy (2025): Code-Generierung per Prompt, ohne den Code zu lesen. Funktioniert für MVPs. Bricht ab dem Moment auseinander, wo du debuggen oder erweitern musst. Bewertungs-Skill bleibt erforderlich.","examples":["Bolt.new","Lovable","v0"],"see_also":["bolt","lovable","v0"],"first_used_in":"ausgabe-018","controversy_level":7},{"id":"geo","term_de":"GEO (Generative Engine Optimization)","term_en":"GEO","category":"Tools + Infrastructure","definition_marketing":"Die neue SEO.","definition_aban":"Optimierung dafür, dass deine Marke in LLM-Antworten (ChatGPT, Claude, Perplexity) erwähnt wird. 2026 das, was Google-Ranking 2010 war. Tools: Profound, Otterly, AthenaHQ. Methodik noch nicht standardisiert.","examples":["Profound","AthenaHQ","Otterly"],"see_also":["seo","profound"],"first_used_in":"ausgabe-005","controversy_level":5},{"id":"seo","term_de":"SEO (Suchmaschinenoptimierung)","term_en":"SEO","category":"Tools + Infrastructure","definition_marketing":"—","definition_aban":"Optimierung für klassische Suchmaschinen (Google). 2026 immer noch der größere Trafficanteil für die meisten Sites. AI-Overviews verändern's, aber SEO ist nicht tot — nur teurer geworden.","examples":["Keyword-Research","On-Page-Optimierung","Backlinks"],"see_also":["geo"],"first_used_in":"ausgabe-024","controversy_level":4},{"id":"semantic-search","term_de":"Semantic Search","term_en":"Semantic Search","category":"Techniques","definition_marketing":"Suche, die wirklich versteht.","definition_aban":"Suche basierend auf Bedeutungs-Ähnlichkeit statt Keyword-Match. Funktioniert über Embeddings + Vector-Datenbank. Hybrid-Search (Keyword + Semantic) ist meist besser als reine Semantic.","examples":["Doc-Suche über interne PDFs","RAG-Retrieval"],"see_also":["embedding","vector-db","rag"],"first_used_in":"ausgabe-019","controversy_level":2},{"id":"webhook","term_de":"Webhook","term_en":"Webhook","category":"Tools + Infrastructure","definition_marketing":"—","definition_aban":"URL-Endpunkt, der Daten empfängt wenn ein Ereignis bei einem anderen System passiert. Klassisches Pattern: Stripe → Webhook → dein Server. Grundlage für Make/n8n-Workflows.","examples":["Stripe Payment-Webhook","GitHub Push-Webhook"],"see_also":["api","automation"],"first_used_in":"ausgabe-019","controversy_level":1},{"id":"pipeline","term_de":"Pipeline","term_en":"Pipeline","category":"Tools + Infrastructure","definition_marketing":"—","definition_aban":"Verkettete Abfolge von Verarbeitungsschritten. In AI: Input → Preprocessing → Modell → Postprocessing → Output. 'Newsletter-Pipeline' = RSS-Sammeln → Filtern → Drafting → Veröffentlichen.","examples":["aban news Pipeline: RSS → Claude → Gmail Draft"],"see_also":["workflow","automation"],"first_used_in":"ausgabe-019","controversy_level":1},{"id":"ml","term_de":"ML (Maschinelles Lernen)","term_en":"ML (Machine Learning)","category":"Core Concepts","definition_marketing":"Computer die selbst lernen.","definition_aban":"Algorithmen die Muster aus Daten ableiten, ohne explizit programmiert zu werden. Deep Learning ist Teil-Bereich. ML umfasst auch klassische Methoden (Random Forest, SVM) — manchmal effizienter als ein LLM.","examples":["Regression","Klassifikation","Clustering"],"see_also":["ai","deep-learning","llm"],"first_used_in":"ausgabe-024","controversy_level":1},{"id":"deep-learning","term_de":"Deep Learning","term_en":"Deep Learning","category":"Core Concepts","definition_marketing":"Wo die echte KI passiert.","definition_aban":"ML mit tiefen Neural Networks (viele Schichten). Seit ~2012 die dominante Methode für Computer Vision, NLP, Speech. LLMs sind Deep Learning auf Steroiden.","examples":["GPT, Claude, Stable Diffusion"],"see_also":["ml","neural-network","llm"],"first_used_in":"ausgabe-024","controversy_level":2},{"id":"narrow-ai","term_de":"Narrow AI","term_en":"Narrow AI","category":"Core Concepts","definition_marketing":"—","definition_aban":"KI für eine spezifische Aufgabe (Spam-Filter, Bilderkennung, Schachprogramm). Was wir aktuell haben. Gegenstück zu hypothetischer AGI. Praktisch fast alle 'KI-Lösungen' sind Narrow AI.","examples":["Spam-Filter","OCR","Empfehlungsalgorithmen"],"see_also":["agi","ai"],"first_used_in":"ausgabe-024","controversy_level":2},{"id":"in-context-learning","term_de":"In-Context Learning","term_en":"In-Context Learning","category":"Techniques","definition_marketing":"Die KI lernt aus deinem Prompt.","definition_aban":"LLM 'lernt' aus Beispielen im Prompt — ohne Gewichts-Updates. Eigentlich: Mustererkennung über den Kontext. Klingt nach Lernen, ist's aber nicht im klassischen ML-Sinn.","examples":["Few-Shot Prompting"],"see_also":["few-shot","prompt-engineering"],"first_used_in":"ausgabe-011","controversy_level":3},{"id":"moe","term_de":"MoE (Mixture of Experts)","term_en":"MoE","category":"Core Concepts","definition_marketing":"—","definition_aban":"Architektur-Trick: Statt einem großen Modell mehrere kleine 'Experten', von denen pro Token nur einige aktiviert werden. Spart Inferenz-Compute bei großen Parameter-Counts. Mixtral, GPT-4 angeblich, DeepSeek nutzen das.","examples":["Mixtral 8x7B","DeepSeek V3 (671B MoE)"],"see_also":["model","parameter"],"first_used_in":"ausgabe-024","controversy_level":2},{"id":"distillation","term_de":"Distillation","term_en":"Distillation","category":"Techniques","definition_marketing":"—","definition_aban":"Großes Modell trainiert kleines Modell. Kleines Modell wird billiger zu betreiben, oft fast so gut. Haiku, GPT-5-mini sind distillierte Versionen ihrer großen Geschwister.","examples":["Claude Haiku","GPT-5-mini"],"see_also":["training","model"],"first_used_in":"ausgabe-024","controversy_level":2},{"id":"quantization","term_de":"Quantisierung","term_en":"Quantization","category":"Techniques","definition_marketing":"—","definition_aban":"Modell-Gewichte werden mit weniger Präzision gespeichert (FP16 → INT8 → INT4). Reduziert Speicher + Geschwindigkeit, Performance leidet leicht. Wichtig für lokales Hosting (Ollama).","examples":["Llama-7B-Q4 (4-bit)","GGUF-Format"],"see_also":["ollama","local-llm"],"first_used_in":"ausgabe-024","controversy_level":1},{"id":"local-llm","term_de":"Local LLM","term_en":"Local LLM","category":"Tools + Infrastructure","definition_marketing":"Deine private KI.","definition_aban":"LLM, das auf deiner Hardware läuft (Mac, PC mit GPU). Vorteile: Datenschutz, kein API-Kosten. Nachteile: schwächer als Frontier-Modelle, Hardware-hungrig. Über Ollama, LM Studio einfach geworden.","examples":["Ollama + Llama 3 70B","LM Studio + Mistral"],"see_also":["ollama","lm-studio","quantization"],"first_used_in":"ausgabe-024","controversy_level":2},{"id":"data-quality","term_de":"Datenqualität","term_en":"Data Quality","category":"Core Concepts","definition_marketing":"Mehr Daten = besser.","definition_aban":"Hot Take aus 2024-26: Qualität > Quantität. Phi-Modelle (Microsoft) zeigten, dass kuratierte Daten kleines Modell auf Augenhöhe mit großen bringen. 'Garbage in, garbage out' gilt 1:1 für LLMs.","examples":["Phi-3","FineWeb-Edu Dataset"],"see_also":["training","fine-tuning"],"first_used_in":"ausgabe-024","controversy_level":4},{"id":"red-team","term_de":"Red-Teaming","term_en":"Red Teaming","category":"Techniques","definition_marketing":"Wir testen unsere KI auf Herz und Nieren.","definition_aban":"Internes Team, das versucht, das eigene Modell zu jailbreaken oder unsicher zu machen — vor Release. Standard bei großen Labs (Anthropic, OpenAI). Limit: gefundene Probleme sind nur diejenigen, die getestet wurden.","examples":["Anthropic Red Team","OpenAI Preparedness"],"see_also":["alignment","jailbreak"],"first_used_in":"ausgabe-008","controversy_level":4},{"id":"compute","term_de":"Compute","term_en":"Compute","category":"Tools + Infrastructure","definition_marketing":"Die Währung des KI-Zeitalters.","definition_aban":"Rechenleistung. Gemessen in FLOPs (Floating Point Operations). Modelle-Training braucht Mega-FLOPs (10^25+ bei Frontier). Inferenz: kleinere Mengen, dafür dauernd. Wer Compute kontrolliert, kontrolliert KI.","examples":["GPU-Stunden","TPU-Pod-Stunden"],"see_also":["gpu","training","inference"],"first_used_in":"ausgabe-024","controversy_level":3},{"id":"scaling-hypothesis","term_de":"Scaling Hypothesis","term_en":"Scaling Hypothesis","category":"Core Concepts","definition_marketing":"Wir müssen nur die Modelle größer machen — der Rest kommt von selbst.","definition_aban":"Theorie: Intelligenz emergiert aus genug Skala. War 2020-2023 dominant. Seit 2024 in Frage gestellt — Frontier-Releases zeigen Verlangsamung. Architektur-Innovationen (Reasoning, Agents) gewinnen wieder Aufmerksamkeit.","examples":[],"see_also":["scaling-laws","agi"],"first_used_in":"ausgabe-024","controversy_level":8},{"id":"agi-doom","term_de":"AGI-Doom","term_en":"AGI Doom","category":"Anti-Hype","definition_marketing":"—","definition_aban":"Diskurs-Cluster der annimmt, AGI sei bevorstehend und existenziell gefährlich. Wird von Doomern (Yudkowsky, Hinton) und Skeptikern unterschiedlich bewertet. Praktisch: irrelevant für deine 2026-Geschäftsplanung.","examples":[],"see_also":["agi","alignment"],"first_used_in":"ausgabe-023","controversy_level":9},{"id":"knowledge-cutoff","term_de":"Knowledge Cutoff","term_en":"Knowledge Cutoff","category":"Core Concepts","definition_marketing":"—","definition_aban":"Datum, bis zu dem das Modell mit Daten trainiert wurde. Alles danach kennt's nicht (außer Web-Tools). Bei Claude 4 2025-04, GPT-5 ähnlich. Wichtig für aktuelle Fragen.","examples":["Claude 4 Cutoff: April 2025"],"see_also":["training"],"first_used_in":"ausgabe-024","controversy_level":1},{"id":"model-collapse","term_de":"Model Collapse","term_en":"Model Collapse","category":"Core Concepts","definition_marketing":"—","definition_aban":"Hypothetisches Problem: Modelle, die auf von Modellen erzeugten Daten trainieren, degenerieren. Aktuell mehr Theorie als Realität — Frontier-Modelle nutzen synthetische Daten gezielt, mit Filterung.","examples":[],"see_also":["training","data-quality"],"first_used_in":"ausgabe-024","controversy_level":6},{"id":"frontier","term_de":"Frontier Models","term_en":"Frontier Models","category":"Models + Vendors","definition_marketing":"—","definition_aban":"Aktuelle Top-Modelle, die Performance-Grenze verschieben. 2026: Claude 4 Opus, GPT-5, Gemini 2.5. Unter Beobachtung durch EU AI Act ('systemic risk'-Schwelle).","examples":["Claude 4 Opus","GPT-5","Gemini 2.5"],"see_also":["llm","scaling-laws","eu-ai-act"],"first_used_in":"ausgabe-024","controversy_level":3},{"id":"dpo","term_de":"DPO (Direct Preference Optimization)","term_en":"DPO","category":"Techniques","definition_marketing":"—","definition_aban":"Alternative zu RLHF. Einfacher zu implementieren, ähnliche Ergebnisse. Wird zunehmend Standard im Post-Training.","examples":[],"see_also":["rlhf","training"],"first_used_in":"ausgabe-024","controversy_level":2},{"id":"grounding","term_de":"Grounding","term_en":"Grounding","category":"Techniques","definition_marketing":"Verbindet KI mit echten Fakten.","definition_aban":"Modell-Output wird an Quellen rückgebunden — durch RAG oder Tool-Calls. Reduziert Halluzinationen. Macht Output zitierbar (Perplexity-Pattern).","examples":["RAG-Citations","Perplexity-Sources"],"see_also":["rag","hallucination"],"first_used_in":"ausgabe-019","controversy_level":2},{"id":"evaluation","term_de":"Evaluation (Evals)","term_en":"Evaluation","category":"Techniques","definition_marketing":"Wir testen alles gründlich.","definition_aban":"Wie gut performt ein Modell auf einer Aufgabe? Benchmarks (MMLU, HumanEval) für allgemein, eigene Evals für deine Daten essenziell. Die meisten 'wir haben Evals' bedeutet 'wir haben 3 Beispiele angeschaut'.","examples":["MMLU","HumanEval","Custom-Test-Sets"],"see_also":["benchmark","regression-test"],"first_used_in":"ausgabe-024","controversy_level":5},{"id":"benchmark","term_de":"Benchmark","term_en":"Benchmark","category":"Techniques","definition_marketing":"Beste Performance auf XYZ-Benchmark.","definition_aban":"Standardisierter Test. Labs jagen Benchmarks, Modelle werden teilweise gezielt auf trainiert ('Benchmark-Hacking'). Vergleich zwischen Labs: mit Vorsicht.","examples":["MMLU","GSM8K","HumanEval","SWE-Bench"],"see_also":["evaluation"],"first_used_in":"ausgabe-008","controversy_level":6},{"id":"synthetic-data","term_de":"Synthetische Daten","term_en":"Synthetic Data","category":"Techniques","definition_marketing":"—","definition_aban":"KI-generierte Trainingsdaten. Wird zunehmend genutzt, da Web-Daten knapp werden. Risiko Model-Collapse, aber bei sauberer Filterung produktiv einsetzbar.","examples":[],"see_also":["training","data-quality","model-collapse"],"first_used_in":"ausgabe-024","controversy_level":5},{"id":"embeddings-search","term_de":"Embeddings-Search","term_en":"Embeddings Search","category":"Techniques","definition_marketing":"—","definition_aban":"Synonym zu Semantic Search. Texte als Embeddings speichern, Anfrage-Embedding gegen DB matchen. Default-Pattern für RAG.","examples":[],"see_also":["semantic-search","embedding","vector-db"],"first_used_in":"ausgabe-019","controversy_level":1},{"id":"chatbot","term_de":"Chatbot","term_en":"Chatbot","category":"Tools + Infrastructure","definition_marketing":"Dein 24/7 Kundenberater.","definition_aban":"Software die Konversationen führt. Pre-2023: regelbasiert, frustrierend. Post-2023: LLM-basiert, deutlich besser, aber Halluzinationen-Risiko. Gut implementiert = Game-Changer, schlecht = Reputations-Schaden.","examples":["WhatsApp-Bot","Website-Support-Bot"],"see_also":["bot","llm"],"first_used_in":"ausgabe-022","controversy_level":4},{"id":"voice-clone","term_de":"Voice Cloning","term_en":"Voice Cloning","category":"Core Concepts","definition_marketing":"Deine Stimme, perfekt repliziert.","definition_aban":"Audio-Generierung mit spezifischer Stimme aus Trainings-Sample. 2026 erschreckend gut — 30 Sekunden reichen. Riesiges Missbrauchspotenzial (Voice-Phishing). ElevenLabs ist Marktführer.","examples":["ElevenLabs Voice Lab","Descript Overdub"],"see_also":["elevenlabs","deepfake"],"first_used_in":"ausgabe-014","controversy_level":8},{"id":"deepfake","term_de":"Deepfake","term_en":"Deepfake","category":"Core Concepts","definition_marketing":"—","definition_aban":"Synthetisches Audio/Video, das wie eine echte Person aussieht/klingt. Politische und Betrugs-Risiken massiv. 2026: schwer zu detektieren, Detection-Tools hinken hinterher.","examples":[],"see_also":["voice-clone","synthetic-data"],"first_used_in":"ausgabe-014","controversy_level":9},{"id":"vision","term_de":"Vision (Computer Vision)","term_en":"Computer Vision","category":"Core Concepts","definition_marketing":"Maschinen können sehen.","definition_aban":"ML-Bereich für Bild- und Videoverarbeitung. Moderne LLMs sind multimodal — können Bilder als Input verarbeiten (Screenshot-Q&A, Diagramm-Analyse). Spezialisierte Vision-Modelle existieren weiter.","examples":["Claude reads PDFs","GPT-5 analyzes images","OCR"],"see_also":["multimodal"],"first_used_in":"ausgabe-006","controversy_level":2},{"id":"audio-models","term_de":"Audio-Modelle","term_en":"Audio Models","category":"Core Concepts","definition_marketing":"—","definition_aban":"Modelle für Sprach-Erkennung (Whisper) und Sprach-Synthese (ElevenLabs, OpenAI TTS). 2026 erstklassige Performance, auch deutsch.","examples":["Whisper","ElevenLabs","OpenAI TTS"],"see_also":["voice-clone","multimodal"],"first_used_in":"ausgabe-024","controversy_level":2},{"id":"guardrails-marketing","term_de":"AI-getrieben","term_en":"AI-powered","category":"Anti-Hype","definition_marketing":"Mit modernster KI angetrieben.","definition_aban":"Bedeutet: 'Wir rufen die OpenAI-API auf.' Wird 2026 mehrmals pro Tag inflationär verwendet. Frag nach: WO genau das LLM eingreift und welches Problem es löst.","examples":[],"see_also":["solution"],"first_used_in":"ausgabe-020","controversy_level":7},{"id":"ai-native","term_de":"AI-Native","term_en":"AI-Native","category":"Anti-Hype","definition_marketing":"Von Grund auf für die AI-Ära gebaut.","definition_aban":"Bedeutet meist: 'Wir haben unsere Architektur aktuell umgenannt.' Echte AI-Native-Apps haben LLMs als zentralen Bestandteil (nicht Feature) — selten, meist Marketing.","examples":[],"see_also":["ai-first"],"first_used_in":"ausgabe-020","controversy_level":8},{"id":"copilot-buzz","term_de":"Copilot","term_en":"Copilot","category":"Anti-Hype","definition_marketing":"Dein KI-Co-Pilot für alles.","definition_aban":"Microsoft-Marketing-Begriff. Seit 2023 in allen Produkten (Word, Excel, Teams). Konkrete Nützlichkeit variiert massiv. Microsoft 365 Copilot lohnt sich für manche Teams, ist für viele teures Word-Plugin.","examples":["GitHub Copilot","Microsoft 365 Copilot"],"see_also":["github-copilot"],"first_used_in":"ausgabe-005","controversy_level":5},{"id":"workflow","term_de":"Workflow","term_en":"Workflow","category":"Tools + Infrastructure","definition_marketing":"—","definition_aban":"Definierte Abfolge von Aufgaben. In AI-Kontext: oft Synonym für Automation-Pipeline. n8n, Make, Zapier bauen Workflows zwischen Tools.","examples":["RSS→Filter→Draft→Mail"],"see_also":["pipeline","automation"],"first_used_in":"ausgabe-019","controversy_level":1},{"id":"automation","term_de":"Automatisierung","term_en":"Automation","category":"Tools + Infrastructure","definition_marketing":"Lass die KI alles übernehmen.","definition_aban":"Manuell-wiederholende Aufgaben durch Software ersetzen. AI-Automation ≠ vollständige Automation. Realistisch: 60-80% automatisierbar, Rest braucht Mensch.","examples":["Newsletter-Pipeline","Lead-Enrichment","Onboarding-E-Mails"],"see_also":["agent","pipeline"],"first_used_in":"ausgabe-019","controversy_level":3},{"id":"compliance","term_de":"Compliance","term_en":"Compliance","category":"DACH-Specific","definition_marketing":"—","definition_aban":"Einhaltung von Gesetzen + Standards. In DACH-AI-Kontext: DSGVO, EU AI Act, ggf. branchenspezifisch (BaFin, Heilberufe). Compliance-Frage VOR Tool-Wahl. Nachträglich teuer.","examples":[],"see_also":["dsgvo-ai","eu-ai-act","avv"],"first_used_in":"ausgabe-002","controversy_level":3},{"id":"context-rot","term_de":"Context Rot","term_en":"Context Rot","category":"Core Concepts","definition_marketing":"—","definition_aban":"Beobachtung: Lange Konversationen mit LLMs verschlechtern sich qualitativ. Modell verliert frühe Anweisungen, halluziniert mehr. Workaround: lange Sessions in Teilen mit Zusammenfassungen führen.","examples":[],"see_also":["context-window","lost-in-the-middle"],"first_used_in":"ausgabe-024","controversy_level":4},{"id":"stochastic-parrot","term_de":"Stochastischer Papagei","term_en":"Stochastic Parrot","category":"Anti-Hype","definition_marketing":"—","definition_aban":"Kritischer Begriff von Bender et al. (2021): LLMs wiederholen statistische Muster ohne Verstehen. Pejorativ, aber technisch nicht ganz unzutreffend. Wird auch missbraucht, um echte Capabilities zu downplayen.","examples":[],"see_also":["llm","hallucination"],"first_used_in":"ausgabe-024","controversy_level":8},{"id":"ai-bubble","term_de":"AI-Bubble","term_en":"AI Bubble","category":"Anti-Hype","definition_marketing":"—","definition_aban":"Hypothese: AI-Markt ist überbewertet, Crash bevorstehend. Bewertungen wie OpenAI ($300B+), Anthropic ($60B+) sind historisch hoch. Ob Bubble oder nicht — diversifizieren als Solo bleibt klug.","examples":[],"see_also":[],"first_used_in":"ausgabe-016","controversy_level":8},{"id":"moat","term_de":"Moat","term_en":"Moat","category":"Anti-Hype","definition_marketing":"Unser unerreichbarer Wettbewerbsvorteil.","definition_aban":"Strategische Schutz-Burg. Bei LLM-Wrappers oft nicht vorhanden (Switching-Cost = niedrig). Echte Moats in AI-Era: Daten, Distribution, Brand. Tech allein ist meist nicht's.","examples":[],"see_also":[],"first_used_in":"ausgabe-024","controversy_level":5},{"id":"wrapper","term_de":"Wrapper","term_en":"Wrapper","category":"Anti-Hype","definition_marketing":"Eine spezialisierte Lösung auf modernster KI.","definition_aban":"Software die LLM-API aufruft + UI drumherum baut. 80% der 'AI-Startups' sind das. Nicht per se schlecht — gute Wrapper liefern echten Mehrwert (Cursor, Perplexity). Schlechte: ChatGPT mit anderem Logo.","examples":[],"see_also":["llm","api"],"first_used_in":"ausgabe-020","controversy_level":7},{"id":"ai-act-phase","term_de":"AI-Act-Phase","term_en":"AI Act Phase","category":"DACH-Specific","definition_marketing":"—","definition_aban":"EU AI Act in Phasen ausrollend: Feb 2025 Verbots-Regeln aktiv, Aug 2026 GPAI-Pflichten + Governance, Aug 2027 Hochrisiko-Systeme. Check welche Phase dich wann trifft.","examples":[],"see_also":["eu-ai-act","gpai"],"first_used_in":"ausgabe-002","controversy_level":3},{"id":"memory","term_de":"Memory","term_en":"Memory","category":"Techniques","definition_marketing":"Deine KI erinnert sich an alles.","definition_aban":"Mechanismen, Informationen über Sessions hinweg zu behalten. ChatGPT Memory speichert Fakten über User, Claude Projects bündelt Kontext. Geht über Context-Window hinaus, ist aber nicht 'echtes' Gedächtnis.","examples":["ChatGPT Memory","Claude Projects"],"see_also":["context-window","rag"],"first_used_in":"ausgabe-024","controversy_level":3},{"id":"playground-tool","term_de":"Playground (Tool)","term_en":"Playground","category":"Tools + Infrastructure","definition_marketing":"—","definition_aban":"Web-UI eines API-Anbieters zum Modell-Testen. OpenAI Playground, Anthropic Console, Google AI Studio. Wichtig: für Prompt-Engineering ohne API-Call-Code.","examples":["OpenAI Playground","Anthropic Console"],"see_also":["api","prompt-engineering"],"first_used_in":"ausgabe-019","controversy_level":1},{"id":"dach","term_de":"DACH","term_en":"DACH","category":"DACH-Specific","definition_marketing":"—","definition_aban":"Deutschland + Österreich + Schweiz. Marketing-Region mit ~100 Mio Einwohnern. Sprachlich + kulturell teilweise zusammenfassbar, regulatorisch nicht (CH ist nicht EU).","examples":[],"see_also":["dsgvo-ai","revdsg"],"first_used_in":"ausgabe-001","controversy_level":1},{"id":"regression-test","term_de":"Regression-Test (AI)","term_en":"Regression Test","category":"Techniques","definition_marketing":"—","definition_aban":"Set von Test-Inputs mit erwarteten Outputs. Bei Modell-Updates oder Prompt-Änderungen prüfen, ob die Qualität auf Standard-Cases hält. Essenzielles Hygiene-Tool für AI-Produkte in Production.","examples":[],"see_also":["evaluation"],"first_used_in":"ausgabe-024","controversy_level":2}]}
+{
+  "version": "1.0.0",
+  "last_updated": "2026-07-09",
+  "source": "aban news — Anti-Hype-Glossar in zwei Definitionen",
+  "license": "CC-BY-4.0 (Attribution: aban news, abannews.com)",
+  "language": [
+    "de",
+    "en"
+  ],
+  "categories": [
+    "Core Concepts",
+    "Models + Vendors",
+    "Techniques",
+    "DACH-Specific",
+    "Anti-Hype",
+    "Tools + Infrastructure"
+  ],
+  "entries": [
+    {
+      "id": "agent",
+      "term_de": "Agent",
+      "term_en": "Agent",
+      "category": "Core Concepts",
+      "definition_marketing": "Eine autonome KI, die selbständig Aufgaben übernimmt und Probleme für dich löst.",
+      "definition_aban": "Ein LLM, das in einer Schleife läuft, Tools aufrufen kann und nach jedem Schritt entscheidet was als Nächstes kommt. Funktioniert für klar definierte Pfade — fällt bei Mehrdeutigkeit auseinander.",
+      "examples": [
+        "Claude Code im Terminal",
+        "Cursor Composer",
+        "n8n-Workflow mit LLM-Knoten"
+      ],
+      "see_also": [
+        "function-calling",
+        "tool-use",
+        "loop"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 8
+    },
+    {
+      "id": "agi",
+      "term_de": "AGI (Allgemeine Künstliche Intelligenz)",
+      "term_en": "AGI (Artificial General Intelligence)",
+      "category": "Core Concepts",
+      "definition_marketing": "Der nächste evolutionäre Schritt: eine KI, die alle menschlichen kognitiven Aufgaben übertrifft — und kurz bevorsteht.",
+      "definition_aban": "Begriff ohne präzise wissenschaftliche Definition. Wird von Labs als Fundraising-Vehikel und von Kritikern als Strohmann verwendet. Praktisch irrelevant für deine nächsten 12 Monate.",
+      "examples": [],
+      "see_also": [
+        "agi-doom",
+        "scaling-hypothesis"
+      ],
+      "first_used_in": "ausgabe-023",
+      "controversy_level": 10
+    },
+    {
+      "id": "ai",
+      "term_de": "KI (Künstliche Intelligenz)",
+      "term_en": "AI (Artificial Intelligence)",
+      "category": "Core Concepts",
+      "definition_marketing": "Maschinen, die wie Menschen denken können.",
+      "definition_aban": "Sammelbegriff für Software, die Aufgaben übernimmt, die früher Menschen brauchten. 2026 fast immer: Large Language Models. Die meisten 'KI-Lösungen' sind Wrapper um GPT/Claude.",
+      "examples": [
+        "ChatGPT als 'KI-Assistent'",
+        "Bilderkennung in Foto-Apps"
+      ],
+      "see_also": [
+        "llm",
+        "ml",
+        "narrow-ai"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 5
+    },
+    {
+      "id": "alignment",
+      "term_de": "Alignment",
+      "term_en": "Alignment",
+      "category": "Core Concepts",
+      "definition_marketing": "Sicherheits-Disziplin, die KIs lehrt, menschliche Werte zu verfolgen.",
+      "definition_aban": "Forschungsfeld, das versucht LLMs darauf zu trainieren, sich an Anweisungen zu halten ohne Schaden anzurichten. RLHF und Constitutional AI sind die bekanntesten Ansätze. Bei jedem Skill-Sprung neu offen.",
+      "examples": [
+        "RLHF bei ChatGPT",
+        "Constitutional AI bei Claude"
+      ],
+      "see_also": [
+        "rlhf",
+        "constitutional-ai",
+        "red-team"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 6
+    },
+    {
+      "id": "api",
+      "term_de": "API (Programmierschnittstelle)",
+      "term_en": "API (Application Programming Interface)",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Ein Tor, das die Macht von KI in deine Anwendungen bringt.",
+      "definition_aban": "Schnittstelle, über die du LLM-Calls direkt aus Code machst — ohne Web-Chat. Pay-per-Token. Wenn du AI in einen Workflow einbaust, läuft fast immer über API.",
+      "examples": [
+        "Anthropic API",
+        "OpenAI API",
+        "Mistral API"
+      ],
+      "see_also": [
+        "token",
+        "rate-limit"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 1
+    },
+    {
+      "id": "attention",
+      "term_de": "Attention (Aufmerksamkeitsmechanismus)",
+      "term_en": "Attention",
+      "category": "Core Concepts",
+      "definition_marketing": "Die Innovation, die KIs erstmals 'denken' lässt.",
+      "definition_aban": "Mathematischer Mechanismus aus dem 2017er Paper 'Attention is All You Need'. Erlaubt einem Modell, Beziehungen zwischen Wörtern über lange Distanzen zu erfassen. Grundlage von Transformern.",
+      "examples": [
+        "Self-Attention in GPT",
+        "Cross-Attention in Bildmodellen"
+      ],
+      "see_also": [
+        "transformer",
+        "context-window"
+      ],
+      "first_used_in": "ausgabe-012",
+      "controversy_level": 1
+    },
+    {
+      "id": "bias",
+      "term_de": "Bias (Verzerrung)",
+      "term_en": "Bias",
+      "category": "Core Concepts",
+      "definition_marketing": "Wird gelöst, sobald wir mehr Daten haben.",
+      "definition_aban": "Systematische Schieflagen, die das Modell aus den Trainingsdaten lernt. Lassen sich verkleinern, aber nicht eliminieren. Wenn jemand 'unbiased AI' verspricht, lügt er.",
+      "examples": [
+        "Bewerbungstools die Frauen-Lebensläufe schlechter bewerten",
+        "Bildmodelle die 'CEO' = weißer Mann"
+      ],
+      "see_also": [
+        "data-quality",
+        "fairness"
+      ],
+      "first_used_in": "ausgabe-010",
+      "controversy_level": 7
+    },
+    {
+      "id": "bot",
+      "term_de": "Bot",
+      "term_en": "Bot",
+      "category": "Core Concepts",
+      "definition_marketing": "Automatisierter Helfer, der 24/7 für deine Kunden da ist.",
+      "definition_aban": "Software, die Aktionen automatisiert. Pre-AI: Regel-basiert (Chatbot mit Entscheidungsbaum). Post-2023: meist LLM dahinter. Bots sind so gut wie ihr System-Prompt.",
+      "examples": [
+        "WhatsApp-Bot",
+        "Discord-Bot",
+        "Customer-Service-Chatbot"
+      ],
+      "see_also": [
+        "agent",
+        "chatbot"
+      ],
+      "first_used_in": "ausgabe-002",
+      "controversy_level": 2
+    },
+    {
+      "id": "chain-of-thought",
+      "term_de": "Chain-of-Thought (CoT)",
+      "term_en": "Chain-of-Thought",
+      "category": "Techniques",
+      "definition_marketing": "Lässt KIs wie Menschen Schritt für Schritt denken.",
+      "definition_aban": "Prompt-Technik: das Modell wird angewiesen, Zwischenschritte aufzuschreiben bevor es antwortet. Verbessert Genauigkeit bei Mathe und Logik. Bei modernen 'Reasoning'-Modellen passiert das eingebaut.",
+      "examples": [
+        "'Denke Schritt für Schritt'",
+        "o1, o3, Claude Extended Thinking"
+      ],
+      "see_also": [
+        "reasoning",
+        "few-shot",
+        "prompt-engineering"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 3
+    },
+    {
+      "id": "context-window",
+      "term_de": "Kontextfenster",
+      "term_en": "Context Window",
+      "category": "Core Concepts",
+      "definition_marketing": "Die Erinnerung der KI — und die wird unbegrenzt.",
+      "definition_aban": "Maximale Tokens (≈ Wörter), die ein Modell auf einmal verarbeitet. 2026 Standard: 200k bei Claude, 1M+ bei Gemini. Mehr Kontext heißt nicht automatisch bessere Antwort — Modelle vergessen die Mitte ('Lost in the Middle').",
+      "examples": [
+        "Claude 4: 200k Token ≈ 150k Wörter",
+        "Gemini 2.5: 2M Token"
+      ],
+      "see_also": [
+        "token",
+        "lost-in-the-middle",
+        "rag"
+      ],
+      "first_used_in": "ausgabe-006",
+      "controversy_level": 3
+    },
+    {
+      "id": "embedding",
+      "term_de": "Embedding",
+      "term_en": "Embedding",
+      "category": "Core Concepts",
+      "definition_marketing": "Wie KIs Bedeutung wirklich verstehen.",
+      "definition_aban": "Vektor-Repräsentation eines Textes (oder Bildes). Ähnliche Bedeutung → ähnliche Zahlen. Grundlage für Semantic Search und RAG.",
+      "examples": [
+        "text-embedding-3-large von OpenAI",
+        "Voyage embeddings"
+      ],
+      "see_also": [
+        "vector-db",
+        "rag",
+        "semantic-search"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 1
+    },
+    {
+      "id": "fine-tuning",
+      "term_de": "Fine-Tuning",
+      "term_en": "Fine-Tuning",
+      "category": "Techniques",
+      "definition_marketing": "Mach das Modell zu deinem eigenen.",
+      "definition_aban": "Weitertraining eines Basismodells mit deinen Daten. Teuer, zeitaufwendig, lohnt sich selten gegenüber gutem Prompting + RAG. 95% der 'Wir brauchen Fine-Tuning'-Anfragen sind in Wahrheit Prompt-Probleme.",
+      "examples": [
+        "Custom-Claude für Banking-Sprache",
+        "Llama-Finetune auf medizinische Texte"
+      ],
+      "see_also": [
+        "rag",
+        "prompt-engineering",
+        "lora"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 6
+    },
+    {
+      "id": "few-shot",
+      "term_de": "Few-Shot-Prompting",
+      "term_en": "Few-Shot Prompting",
+      "category": "Techniques",
+      "definition_marketing": "KI lernt aus wenigen Beispielen — wie Menschen!",
+      "definition_aban": "Du gibst dem Modell 2-5 Beispiele für gewünschten Input→Output direkt im Prompt. Eine der wirksamsten Techniken, oft unterschätzt. Funktioniert besser als ellenlange Anweisungen.",
+      "examples": [
+        "3 Beispiel-Tweets vor 'Schreib mir noch einen'",
+        "5 strukturierte E-Mails als Template"
+      ],
+      "see_also": [
+        "zero-shot",
+        "prompt-engineering",
+        "in-context-learning"
+      ],
+      "first_used_in": "ausgabe-011",
+      "controversy_level": 1
+    },
+    {
+      "id": "function-calling",
+      "term_de": "Function-Calling",
+      "term_en": "Function Calling",
+      "category": "Techniques",
+      "definition_marketing": "Das Geheimnis hinter wahrer KI-Power.",
+      "definition_aban": "Mechanismus, der LLMs erlaubt, strukturierte Aufrufe (Tool-Calls) zu generieren statt nur Text. Du beschreibst Funktionen mit JSON-Schema, das Modell entscheidet wann es welche ruft. Grundlage für Agents.",
+      "examples": [
+        "'get_weather(city: string)'",
+        "Datenbank-Query via Tool"
+      ],
+      "see_also": [
+        "tool-use",
+        "agent",
+        "mcp"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 2
+    },
+    {
+      "id": "gpu",
+      "term_de": "GPU (Grafikprozessor)",
+      "term_en": "GPU",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Das Gehirn der KI-Revolution.",
+      "definition_aban": "Spezial-Chips, die parallele Matrix-Berechnungen sehr schnell machen — die Grundoperation in Neural Networks. NVIDIA dominiert. Modell-Training braucht tausende GPUs für Wochen.",
+      "examples": [
+        "NVIDIA H100",
+        "NVIDIA Blackwell B200"
+      ],
+      "see_also": [
+        "inference",
+        "training"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 1
+    },
+    {
+      "id": "hallucination",
+      "term_de": "Halluzination",
+      "term_en": "Hallucination",
+      "category": "Core Concepts",
+      "definition_marketing": "Wird mit dem nächsten Modell-Release behoben.",
+      "definition_aban": "Wenn ein LLM überzeugt klingende, aber faktisch falsche Aussagen produziert. Folge der Architektur — nicht Bug, sondern Feature des Trainings. RAG, Zitate, Cross-Checks reduzieren, eliminieren aber nicht.",
+      "examples": [
+        "Erfundene Quellen-Links",
+        "Falsche historische Daten mit Selbstvertrauen erzählt"
+      ],
+      "see_also": [
+        "rag",
+        "grounding",
+        "fact-checking"
+      ],
+      "first_used_in": "ausgabe-006",
+      "controversy_level": 5
+    },
+    {
+      "id": "inference",
+      "term_de": "Inferenz",
+      "term_en": "Inference",
+      "category": "Core Concepts",
+      "definition_marketing": "Der Moment, in dem die KI für dich denkt.",
+      "definition_aban": "Vorgang, ein trainiertes Modell zu nutzen — also Anfrage rein, Antwort raus. Kostet pro Token. Inferenz-Kosten sind seit 2024 ~99% gefallen.",
+      "examples": [
+        "API-Call an Claude",
+        "Lokales Ollama-Modell"
+      ],
+      "see_also": [
+        "training",
+        "token",
+        "gpu"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 1
+    },
+    {
+      "id": "llm",
+      "term_de": "LLM (Großes Sprachmodell)",
+      "term_en": "LLM (Large Language Model)",
+      "category": "Core Concepts",
+      "definition_marketing": "Eine KI, die die menschliche Sprache versteht.",
+      "definition_aban": "Neural Network, trainiert auf riesigen Textmengen, sagt das nächste Token vorher. Was du als 'Verstehen' wahrnimmst, ist statistische Mustererkennung über Trillionen Beispiele. Funktioniert verdammt gut, ist aber nicht 'Verstehen' im philosophischen Sinn.",
+      "examples": [
+        "Claude 4",
+        "GPT-5",
+        "Gemini 2.5",
+        "Mistral Large"
+      ],
+      "see_also": [
+        "transformer",
+        "training",
+        "parameter"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 4
+    },
+    {
+      "id": "model",
+      "term_de": "Modell",
+      "term_en": "Model",
+      "category": "Core Concepts",
+      "definition_marketing": "Eine fertige KI mit speziellen Fähigkeiten.",
+      "definition_aban": "Die trainierten Parameter (Gewichte) eines Neural Networks. Wenn jemand 'Claude' sagt, meint er das spezifische Modell (Claude 4 Sonnet, Opus, Haiku — verschiedene Größen, verschiedene Use-Cases).",
+      "examples": [
+        "Claude 4 Sonnet",
+        "GPT-5",
+        "Mistral Large 2"
+      ],
+      "see_also": [
+        "parameter",
+        "training",
+        "fine-tuning"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 1
+    },
+    {
+      "id": "multimodal",
+      "term_de": "Multimodal",
+      "term_en": "Multimodal",
+      "category": "Core Concepts",
+      "definition_marketing": "KIs die jetzt sehen, hören und sprechen — wie wir!",
+      "definition_aban": "Modell verarbeitet mehrere Eingabearten: Text, Bild, Audio, Video. Praktisch nützlich für PDF-Auswertung, Screenshot-Analyse, Audio-Transkription. Performance auf jeder Modalität variiert.",
+      "examples": [
+        "Claude liest PDFs",
+        "GPT-5 analysiert Bilder",
+        "Gemini bearbeitet Video"
+      ],
+      "see_also": [
+        "vision",
+        "audio-models"
+      ],
+      "first_used_in": "ausgabe-006",
+      "controversy_level": 2
+    },
+    {
+      "id": "neural-network",
+      "term_de": "Neuronales Netz",
+      "term_en": "Neural Network",
+      "category": "Core Concepts",
+      "definition_marketing": "Wie das menschliche Gehirn — in Software.",
+      "definition_aban": "Matrix-Multiplikationen mit nichtlinearen Aktivierungen, gestapelt in Schichten. Hat mit biologischen Neuronen so viel zu tun wie ein Flugzeug mit einem Vogel — nämlich nur die Inspiration.",
+      "examples": [
+        "GPT",
+        "Stable Diffusion",
+        "AlphaFold"
+      ],
+      "see_also": [
+        "transformer",
+        "deep-learning"
+      ],
+      "first_used_in": "ausgabe-012",
+      "controversy_level": 3
+    },
+    {
+      "id": "parameter",
+      "term_de": "Parameter",
+      "term_en": "Parameter",
+      "category": "Core Concepts",
+      "definition_marketing": "Je mehr Parameter, desto schlauer.",
+      "definition_aban": "Die einzelnen Zahlen-Gewichte im Neural Network. Claude 4 Opus hat schätzungsweise hunderte Milliarden. Größe ≠ Intelligenz: kleinere Modelle mit besserem Training schlagen oft große.",
+      "examples": [
+        "Llama 3 70B = 70 Milliarden Parameter",
+        "GPT-4 ≈ 1.7 Billionen"
+      ],
+      "see_also": [
+        "model",
+        "training",
+        "scaling"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 4
+    },
+    {
+      "id": "prompt",
+      "term_de": "Prompt",
+      "term_en": "Prompt",
+      "category": "Core Concepts",
+      "definition_marketing": "Die Geheimsprache der KI-Profis.",
+      "definition_aban": "Der Text, den du dem Modell gibst. Punkt. 'Prompt-Engineering' ist 80% klares Denken, 20% Tricks. Die meisten 'magischen Prompts' funktionieren weil sie konkret sind, nicht weil sie magisch sind.",
+      "examples": [
+        "'Fass diesen Text zusammen'",
+        "Strukturierter Brief-Prompt mit Beispielen"
+      ],
+      "see_also": [
+        "prompt-engineering",
+        "few-shot",
+        "system-prompt"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 3
+    },
+    {
+      "id": "prompt-engineering",
+      "term_de": "Prompt-Engineering",
+      "term_en": "Prompt Engineering",
+      "category": "Techniques",
+      "definition_marketing": "Der Beruf der Zukunft. 200k Gehalt minimum.",
+      "definition_aban": "Praxis, Prompts iterativ zu verbessern. Real-skill, aber Vollzeit-Job für die wenigsten. Wird zunehmend in Tools automatisiert (DSPy, Anthropic Prompt-Improver).",
+      "examples": [
+        "Iteratives Refining",
+        "Few-Shot-Examples einbauen",
+        "System-Prompt-Tuning"
+      ],
+      "see_also": [
+        "few-shot",
+        "chain-of-thought",
+        "prompt"
+      ],
+      "first_used_in": "ausgabe-011",
+      "controversy_level": 7
+    },
+    {
+      "id": "rag",
+      "term_de": "RAG (Retrieval-Augmented Generation)",
+      "term_en": "RAG",
+      "category": "Techniques",
+      "definition_marketing": "Mach deine KI faktentreu mit deinen Daten.",
+      "definition_aban": "Du holst relevante Stücke aus einer Datenbank, klebst sie in den Prompt, das Modell antwortet basierend darauf. Reduziert Halluzinationen über Fakten in deinen Daten. Funktioniert nur so gut wie dein Retrieval.",
+      "examples": [
+        "Doc-Search über interne PDFs",
+        "Customer-Support-AI mit Wissensbasis"
+      ],
+      "see_also": [
+        "vector-db",
+        "embedding",
+        "semantic-search"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 2
+    },
+    {
+      "id": "reasoning",
+      "term_de": "Reasoning-Modell",
+      "term_en": "Reasoning Model",
+      "category": "Techniques",
+      "definition_marketing": "KIs, die endlich wirklich denken können.",
+      "definition_aban": "Modelle, die eingebaute Chain-of-Thought machen — sie 'denken' vor der Antwort sichtbar nach. Besser bei Mathe/Logik. Teurer, langsamer, nicht für alle Aufgaben passend.",
+      "examples": [
+        "OpenAI o3",
+        "Claude Sonnet Extended Thinking",
+        "DeepSeek R1"
+      ],
+      "see_also": [
+        "chain-of-thought",
+        "test-time-compute"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 5
+    },
+    {
+      "id": "rlhf",
+      "term_de": "RLHF (Reinforcement Learning from Human Feedback)",
+      "term_en": "RLHF",
+      "category": "Techniques",
+      "definition_marketing": "Die Magie hinter ChatGPT.",
+      "definition_aban": "Trainings-Technik: Menschen bewerten Modell-Outputs, das Modell wird darauf optimiert, hochbewertete Antworten zu generieren. War der Game-Changer von GPT-3 → ChatGPT. Hat Probleme: Sycophancy, Bias-Verstärkung.",
+      "examples": [
+        "ChatGPT-Training",
+        "Claude-Training mit Constitutional AI"
+      ],
+      "see_also": [
+        "alignment",
+        "constitutional-ai",
+        "sycophancy"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 4
+    },
+    {
+      "id": "token",
+      "term_de": "Token",
+      "term_en": "Token",
+      "category": "Core Concepts",
+      "definition_marketing": "Die Bausteine der KI-Sprache.",
+      "definition_aban": "Wort-Bruchstücke. 1 Token ≈ 0.75 Wörter (Englisch), ≈ 0.5 Wörter (Deutsch). Wird abgerechnet pro Token rein + raus. Pricing-Schock-Quelle Nr. 1 bei API-Migration.",
+      "examples": [
+        "'Hallo' ≈ 1 Token",
+        "Ein Roman: ~150k Token"
+      ],
+      "see_also": [
+        "context-window",
+        "tokenizer",
+        "pricing"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 1
+    },
+    {
+      "id": "training",
+      "term_de": "Training",
+      "term_en": "Training",
+      "category": "Core Concepts",
+      "definition_marketing": "Die KI lernt — wie ein Kind.",
+      "definition_aban": "Vorgang, ein Modell aus Daten + Gradient Descent zu bauen. Pre-Training: Basiskenntnisse. Post-Training: Verfeinerung mit RLHF, DPO. Kostet Millionen, dauert Monate, braucht Tausende GPUs.",
+      "examples": [
+        "GPT-5-Training: 9-stelliger Betrag",
+        "Llama-Training auf 15T Token"
+      ],
+      "see_also": [
+        "inference",
+        "fine-tuning",
+        "scaling-laws"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 2
+    },
+    {
+      "id": "transformer",
+      "term_de": "Transformer",
+      "term_en": "Transformer",
+      "category": "Core Concepts",
+      "definition_marketing": "Die Architektur, die alles verändert hat.",
+      "definition_aban": "Neural-Network-Architektur von 2017 (Google Paper 'Attention is All You Need'). Grundlage praktisch aller modernen LLMs. Nicht zu verwechseln mit dem Spielzeug.",
+      "examples": [
+        "GPT-Reihe",
+        "Claude",
+        "Llama",
+        "Mistral"
+      ],
+      "see_also": [
+        "attention",
+        "llm",
+        "decoder-only"
+      ],
+      "first_used_in": "ausgabe-012",
+      "controversy_level": 1
+    },
+    {
+      "id": "vector-db",
+      "term_de": "Vector-Datenbank",
+      "term_en": "Vector Database",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Die neue Datenbank-Generation für AI.",
+      "definition_aban": "Datenbank optimiert für Ähnlichkeitssuche zwischen Embedding-Vektoren. Grundlage für RAG. Mittlerweile macht jede etablierte DB (Postgres mit pgvector) das mit. Spezialisierte Lösungen lohnen sich erst ab Volume.",
+      "examples": [
+        "Qdrant",
+        "Weaviate",
+        "Pinecone",
+        "pgvector"
+      ],
+      "see_also": [
+        "embedding",
+        "rag",
+        "semantic-search"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 3
+    },
+    {
+      "id": "zero-shot",
+      "term_de": "Zero-Shot-Prompting",
+      "term_en": "Zero-Shot",
+      "category": "Techniques",
+      "definition_marketing": "KI kann alles ohne Beispiele!",
+      "definition_aban": "Du fragst direkt ohne Beispiele. Geht für einfache Aufgaben. Für strukturierten Output: Few-Shot ist meistens besser.",
+      "examples": [
+        "'Übersetze das'",
+        "'Fasse das zusammen'"
+      ],
+      "see_also": [
+        "few-shot",
+        "prompt-engineering"
+      ],
+      "first_used_in": "ausgabe-011",
+      "controversy_level": 1
+    },
+    {
+      "id": "claude",
+      "term_de": "Claude",
+      "term_en": "Claude",
+      "category": "Models + Vendors",
+      "definition_marketing": "Der ehrlichste, sicherste AI-Assistent.",
+      "definition_aban": "LLM-Familie von Anthropic. 2026: Claude 4 Sonnet (Default), Opus (langes Reasoning), Haiku (Bulk). Stark in deutschen Texten. Mein täglicher Default.",
+      "examples": [
+        "Claude 4 Sonnet",
+        "Claude 4 Opus"
+      ],
+      "see_also": [
+        "anthropic",
+        "llm",
+        "constitutional-ai"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 3
+    },
+    {
+      "id": "chatgpt",
+      "term_de": "ChatGPT",
+      "term_en": "ChatGPT",
+      "category": "Models + Vendors",
+      "definition_marketing": "Das Produkt, das KI in den Massenmarkt gebracht hat.",
+      "definition_aban": "Konsumenten-Produkt von OpenAI um die GPT-Modelle. Standard für die meisten. Default-Auswahl wenn jemand 'KI' sagt und nicht weiß was er meint.",
+      "examples": [
+        "ChatGPT Plus",
+        "ChatGPT Team",
+        "ChatGPT Enterprise"
+      ],
+      "see_also": [
+        "gpt",
+        "openai"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 4
+    },
+    {
+      "id": "gpt",
+      "term_de": "GPT",
+      "term_en": "GPT (Generative Pre-trained Transformer)",
+      "category": "Models + Vendors",
+      "definition_marketing": "Die berühmteste KI-Familie der Welt.",
+      "definition_aban": "Modell-Reihe von OpenAI. GPT-3 (2020) war der Durchbruch, GPT-5 (2025) der aktuelle Stand. 'GPT' ist auch Generic-Name geworden (jeder spricht von 'einem GPT').",
+      "examples": [
+        "GPT-3.5, GPT-4, GPT-4o, GPT-5"
+      ],
+      "see_also": [
+        "chatgpt",
+        "openai",
+        "transformer"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 2
+    },
+    {
+      "id": "gpt5",
+      "term_de": "GPT-5",
+      "term_en": "GPT-5",
+      "category": "Models + Vendors",
+      "definition_marketing": "Der Durchbruch zur AGI.",
+      "definition_aban": "OpenAIs Flaggschiff-Modell (2025). Solide Allrounder, in Reasoning stark. Kein qualitativer Sprung zu GPT-4o, eher graduelle Verbesserungen. Multimodal robust.",
+      "examples": [],
+      "see_also": [
+        "gpt",
+        "openai",
+        "agi"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 5
+    },
+    {
+      "id": "claude-sonnet",
+      "term_de": "Claude Sonnet",
+      "term_en": "Claude Sonnet",
+      "category": "Models + Vendors",
+      "definition_marketing": "Der vielseitige Allrounder.",
+      "definition_aban": "Mid-Tier-Modell von Anthropic. Best Bang-for-Buck. Coding stark, Writing stark, Latenz ok. Mein Default für 90% der Aufgaben.",
+      "examples": [
+        "Claude 4 Sonnet"
+      ],
+      "see_also": [
+        "claude",
+        "claude-opus",
+        "claude-haiku"
+      ],
+      "first_used_in": "ausgabe-006",
+      "controversy_level": 1
+    },
+    {
+      "id": "claude-haiku",
+      "term_de": "Claude Haiku",
+      "term_en": "Claude Haiku",
+      "category": "Models + Vendors",
+      "definition_marketing": "Klein, aber oho.",
+      "definition_aban": "Schnellstes/günstigstes Claude-Modell. Für Bulk-Tasks, Classification, einfache Q&A. Wenn Sonnet overkill ist.",
+      "examples": [
+        "Claude 4 Haiku"
+      ],
+      "see_also": [
+        "claude",
+        "claude-sonnet"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 1
+    },
+    {
+      "id": "claude-opus",
+      "term_de": "Claude Opus",
+      "term_en": "Claude Opus",
+      "category": "Models + Vendors",
+      "definition_marketing": "Die anspruchsvollste KI für anspruchsvolle Probleme.",
+      "definition_aban": "Größtes Claude-Modell. Für lange Recherche, schwierige Coding-Probleme, komplexe Reasoning-Aufgaben. Teurer und langsamer als Sonnet — lohnt sich nur bei wirklich schwerem Stoff.",
+      "examples": [
+        "Claude 4 Opus"
+      ],
+      "see_also": [
+        "claude",
+        "claude-sonnet"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 1
+    },
+    {
+      "id": "gemini",
+      "term_de": "Gemini",
+      "term_en": "Gemini",
+      "category": "Models + Vendors",
+      "definition_marketing": "Googles Antwort auf die KI-Revolution.",
+      "definition_aban": "Google's LLM-Familie. Stark in Multimodal und Long-Context (1M+ Token). Workspace-Integration ist's Hauptverkaufsargument. Standalone-Output: solid, nicht herausragend.",
+      "examples": [
+        "Gemini 2.5 Pro",
+        "Gemini Flash"
+      ],
+      "see_also": [
+        "llm",
+        "google"
+      ],
+      "first_used_in": "ausgabe-004",
+      "controversy_level": 3
+    },
+    {
+      "id": "mistral",
+      "term_de": "Mistral",
+      "term_en": "Mistral",
+      "category": "Models + Vendors",
+      "definition_marketing": "Europas KI-Champion.",
+      "definition_aban": "Französisches LLM-Unternehmen. Mistral Large für Premium, Mistral Small für Budget, Codestral für Coding. EU-Hosting, GDPR-Compliance solid. 2026 als 'sichere DACH-Wahl' positioniert.",
+      "examples": [
+        "Mistral Large 2",
+        "Codestral",
+        "Pixtral"
+      ],
+      "see_also": [
+        "llm",
+        "eu-ai-act",
+        "open-weights"
+      ],
+      "first_used_in": "ausgabe-004",
+      "controversy_level": 2
+    },
+    {
+      "id": "llama",
+      "term_de": "Llama",
+      "term_en": "Llama",
+      "category": "Models + Vendors",
+      "definition_marketing": "Meta's Open-Source-Geschenk an die Welt.",
+      "definition_aban": "Meta's Open-Weights-Modell-Familie. Llama 3 (2024), Llama 4 (2025). Lizenz nicht 100% OSI-konform (Restriktion ab 700M Nutzer). Gut für Self-Hosting, aber Llama 4 wurde beim Launch kritisiert.",
+      "examples": [
+        "Llama 3 70B",
+        "Llama 4 Maverick"
+      ],
+      "see_also": [
+        "open-weights",
+        "meta",
+        "ollama"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 5
+    },
+    {
+      "id": "deepseek",
+      "term_de": "DeepSeek",
+      "term_en": "DeepSeek",
+      "category": "Models + Vendors",
+      "definition_marketing": "Der chinesische Disruptor.",
+      "definition_aban": "Chinesisches LLM. R1 hat 2025 für Schlagzeilen gesorgt — Reasoning-Modell für Bruchteil der OpenAI-Preise. Modell-Performance gut, aber Daten-Sicherheit (China-Provider) ist Showstopper für DACH-Business.",
+      "examples": [
+        "DeepSeek V3",
+        "DeepSeek R1"
+      ],
+      "see_also": [
+        "llm",
+        "reasoning",
+        "open-weights"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 7
+    },
+    {
+      "id": "aleph-alpha",
+      "term_de": "Aleph Alpha",
+      "term_en": "Aleph Alpha",
+      "category": "Models + Vendors",
+      "definition_marketing": "Souveräne KI aus Deutschland.",
+      "definition_aban": "Heidelberger LLM-Unternehmen. Pharia-1 für regulierte Branchen. Performance hinkt Claude/Mistral hinterher. Politisches Investment-Vehikel mit echtem Use-Case in EU-Souveränität, aber kein technischer Spitzenreiter.",
+      "examples": [
+        "Pharia-1-LLM"
+      ],
+      "see_also": [
+        "llm",
+        "eu-ai-act",
+        "dach"
+      ],
+      "first_used_in": "ausgabe-004",
+      "controversy_level": 6
+    },
+    {
+      "id": "anthropic",
+      "term_de": "Anthropic",
+      "term_en": "Anthropic",
+      "category": "Models + Vendors",
+      "definition_marketing": "Das sichere KI-Labor.",
+      "definition_aban": "San-Francisco-Lab, Macher von Claude. Ex-OpenAI-Forscher. Constitutional AI als Differenzierung. Mein Default-Provider 2026.",
+      "examples": [],
+      "see_also": [
+        "claude",
+        "constitutional-ai"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 3
+    },
+    {
+      "id": "openai",
+      "term_de": "OpenAI",
+      "term_en": "OpenAI",
+      "category": "Models + Vendors",
+      "definition_marketing": "Das führende KI-Labor.",
+      "definition_aban": "Macher von GPT und ChatGPT. Trotz Name lange nicht mehr open. Mit Microsoft fest verzahnt. Drama-Geneigt — Boardgate 2023, Talent-Drain seit 2024.",
+      "examples": [],
+      "see_also": [
+        "chatgpt",
+        "gpt",
+        "microsoft"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 5
+    },
+    {
+      "id": "constitutional-ai",
+      "term_de": "Constitutional AI",
+      "term_en": "Constitutional AI",
+      "category": "Techniques",
+      "definition_marketing": "KI mit eingebauten Werten.",
+      "definition_aban": "Anthropic-Methode: Training mit Prinzipien-Set ('Constitution'), AI bewertet eigene Outputs gegen Prinzipien, lernt sich selbst zu korrigieren. Mehr skalierbar als reines RLHF.",
+      "examples": [
+        "Claude-Training"
+      ],
+      "see_also": [
+        "alignment",
+        "rlhf",
+        "anthropic"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 4
+    },
+    {
+      "id": "eu-ai-act",
+      "term_de": "EU AI Act",
+      "term_en": "EU AI Act",
+      "category": "DACH-Specific",
+      "definition_marketing": "Brüssel reguliert KI.",
+      "definition_aban": "EU-Verordnung 2024/1689. Risiko-basiertes Framework: Verbotene Praktiken (Social Scoring), Hochrisiko-Systeme (HR, Bildung), GPAI mit besonderen Regeln. Phase August 2026: GPAI-Pflichten aktiv. Wenn du AI in DACH einsetzt: lesen lassen.",
+      "examples": [
+        "Verbot von Emotion-Recognition im Arbeitsumfeld",
+        "GPAI-Dokumentationspflicht"
+      ],
+      "see_also": [
+        "gpai",
+        "dsgvo",
+        "compliance"
+      ],
+      "first_used_in": "ausgabe-002",
+      "controversy_level": 6
+    },
+    {
+      "id": "gpai",
+      "term_de": "GPAI (General-Purpose AI)",
+      "term_en": "GPAI",
+      "category": "DACH-Specific",
+      "definition_marketing": "Die Standard-Foundation-Models.",
+      "definition_aban": "Kategorie im EU AI Act: Allzweck-KI-Modelle (Claude, GPT, Gemini). Dokumentations- und Risikomanagement-Pflichten ab August 2026. 'Systemic risk' bei >10^25 FLOPs Training-Compute = strengere Regeln.",
+      "examples": [
+        "Claude 4",
+        "GPT-5",
+        "Gemini 2.5"
+      ],
+      "see_also": [
+        "eu-ai-act",
+        "compliance"
+      ],
+      "first_used_in": "ausgabe-002",
+      "controversy_level": 5
+    },
+    {
+      "id": "dsgvo-ai",
+      "term_de": "DSGVO und KI",
+      "term_en": "GDPR and AI",
+      "category": "DACH-Specific",
+      "definition_marketing": "Mit unserer KI bist du DSGVO-konform.",
+      "definition_aban": "DSGVO regelt Verarbeitung personenbezogener Daten — auch wenn die KI das macht. AVV mit US-Providern, Datenresidenz, Zweckbindung, Auskunftsrechte. Standardpaket-DSGVO + AI-spezifische Erwägungen.",
+      "examples": [
+        "AVV mit OpenAI",
+        "EU-Hosting bei Anthropic"
+      ],
+      "see_also": [
+        "eu-ai-act",
+        "revdsg",
+        "avv"
+      ],
+      "first_used_in": "ausgabe-010",
+      "controversy_level": 5
+    },
+    {
+      "id": "revdsg",
+      "term_de": "revDSG (Schweiz)",
+      "term_en": "Swiss Federal Data Protection Act",
+      "category": "DACH-Specific",
+      "definition_marketing": "Wie DSGVO, nur Schweizer.",
+      "definition_aban": "Revidiertes Datenschutzgesetz, seit 09/2023 in Kraft. Ähnlich der DSGVO, aber: keine Bußgelder für Unternehmen (nur Privatpersonen-Strafe bis 250k CHF), keine Datenschutz-Folgenabschätzung in jedem Fall. EU-DSGVO-Konformität meist genug.",
+      "examples": [],
+      "see_also": [
+        "dsgvo-ai",
+        "compliance"
+      ],
+      "first_used_in": "ausgabe-021",
+      "controversy_level": 3
+    },
+    {
+      "id": "bsi-ai",
+      "term_de": "BSI-AI-Empfehlung",
+      "term_en": "BSI AI Guidance",
+      "category": "DACH-Specific",
+      "definition_marketing": "Der deutsche Standard.",
+      "definition_aban": "BSI (Bundesamt für Sicherheit in der Informationstechnik) veröffentlicht IT-Grundschutz und KI-spezifische Empfehlungen. Für öffentliche Auftraggeber in DE oft verpflichtend, für KMU als Referenz nützlich.",
+      "examples": [
+        "BSI-Bausteine zu KI",
+        "C5-Cloud-Compliance"
+      ],
+      "see_also": [
+        "dsgvo-ai",
+        "compliance"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 2
+    },
+    {
+      "id": "avv",
+      "term_de": "AVV (Auftragsverarbeitungsvertrag)",
+      "term_en": "Data Processing Agreement",
+      "category": "DACH-Specific",
+      "definition_marketing": "Standard-Vertrag — schnell unterschrieben.",
+      "definition_aban": "Pflicht-Vertrag nach DSGVO Art. 28 wenn ein Dienstleister deine Daten verarbeitet. Bei AI-Tools: schau dir Sub-Prozessor-Liste an. OpenAI-AVV via OpenAI Privacy Portal, Anthropic via Sales.",
+      "examples": [
+        "AVV mit OpenAI",
+        "AVV mit Anthropic"
+      ],
+      "see_also": [
+        "dsgvo-ai",
+        "compliance"
+      ],
+      "first_used_in": "ausgabe-010",
+      "controversy_level": 2
+    },
+    {
+      "id": "synergistic",
+      "term_de": "synergistisch",
+      "term_en": "synergistic",
+      "category": "Anti-Hype",
+      "definition_marketing": "Wenn 1 + 1 mehr ergibt als 2 — durch unsere KI-getriebene Plattform.",
+      "definition_aban": "Bedeutet: 'Wir wissen nicht, was unser Tool macht, aber es klingt nach Vorteil.' Wenn du das Wort streichst, verliert der Satz nichts an Information.",
+      "examples": [
+        "'Synergistische AI-Lösung' = irgendein LLM-Wrapper",
+        "'Synergie-Effekte' = wir kombinieren zwei Tools"
+      ],
+      "see_also": [
+        "solution",
+        "revolutionary"
+      ],
+      "first_used_in": "ausgabe-020",
+      "controversy_level": 9
+    },
+    {
+      "id": "revolutionary",
+      "term_de": "revolutionär",
+      "term_en": "revolutionary",
+      "category": "Anti-Hype",
+      "definition_marketing": "Der Weltveränderer, an dem du nicht vorbeikommst.",
+      "definition_aban": "Bedeutet: 'Wir kopieren ein Feature, das ChatGPT seit zwei Jahren hat.' Nutze als Hype-Detektor: je öfter im Pitch-Deck, desto schlechter das Produkt.",
+      "examples": [
+        "'Revolutionäre AI-Suchmaschine' = Perplexity-Klon",
+        "'Revolutionäres Schreibwerkzeug' = Claude-Wrapper"
+      ],
+      "see_also": [
+        "game-changer",
+        "synergistic"
+      ],
+      "first_used_in": "ausgabe-005",
+      "controversy_level": 9
+    },
+    {
+      "id": "game-changer",
+      "term_de": "Game-Changer",
+      "term_en": "game-changer",
+      "category": "Anti-Hype",
+      "definition_marketing": "Das eine Tool, das alles ändert.",
+      "definition_aban": "Bedeutet: 'Wir können nicht erklären was es konkret macht.' Wenn das Tool wirklich ändert was du tust, kannst du benennen WAS. 'Game-Changer' ist die Antwort wenn niemand fragt.",
+      "examples": [],
+      "see_also": [
+        "revolutionary",
+        "disruptive"
+      ],
+      "first_used_in": "ausgabe-020",
+      "controversy_level": 9
+    },
+    {
+      "id": "disruptive",
+      "term_de": "disruptiv",
+      "term_en": "disruptive",
+      "category": "Anti-Hype",
+      "definition_marketing": "Wir reißen die alte Welt nieder.",
+      "definition_aban": "Bedeutet meist: 'Wir verbrennen Risikokapital, um Marktanteile zu kaufen.' Echte Disruption (im Christensen-Sinn) sieht zunächst harmlos aus. Was sich 'disruptiv' nennt, ist's selten.",
+      "examples": [],
+      "see_also": [
+        "revolutionary"
+      ],
+      "first_used_in": "ausgabe-020",
+      "controversy_level": 8
+    },
+    {
+      "id": "solution",
+      "term_de": "Lösung / Solution",
+      "term_en": "solution",
+      "category": "Anti-Hype",
+      "definition_marketing": "Unsere End-to-End-AI-Lösung für deine Probleme.",
+      "definition_aban": "Bedeutet: 'Software'. 'Lösung' wird verwendet, wenn das Produkt zu unklar ist, um es 'Tool' oder 'App' zu nennen. Wenn der Anbieter nicht sagen kann, was es konkret tut, sag ab.",
+      "examples": [
+        "'AI-Marketing-Lösung' = ein Dashboard mit GPT-API"
+      ],
+      "see_also": [
+        "platform",
+        "synergistic"
+      ],
+      "first_used_in": "ausgabe-020",
+      "controversy_level": 9
+    },
+    {
+      "id": "platform",
+      "term_de": "Plattform",
+      "term_en": "platform",
+      "category": "Anti-Hype",
+      "definition_marketing": "Die ganzheitliche AI-Plattform für dein Business.",
+      "definition_aban": "Bedeutet: 'Ein Tool das wir gerne als Tool-Suite verkaufen würden.' Echte Plattformen haben Drittanbieter-Apps drauf (Shopify, Salesforce). Alles andere ist ein Tool mit Marketing-Aufkleber.",
+      "examples": [],
+      "see_also": [
+        "solution",
+        "ecosystem"
+      ],
+      "first_used_in": "ausgabe-020",
+      "controversy_level": 8
+    },
+    {
+      "id": "ecosystem",
+      "term_de": "Ökosystem",
+      "term_en": "ecosystem",
+      "category": "Anti-Hype",
+      "definition_marketing": "Unser AI-Ökosystem deckt deine ganzen Workflows ab.",
+      "definition_aban": "Bedeutet: 'Wir haben drei Produkte und wollen alle verkaufen.' Echte Ökosysteme entstehen durch Drittanbieter. 'Ökosystem' im Pitch-Deck = Verkäufer-Sprech.",
+      "examples": [],
+      "see_also": [
+        "platform"
+      ],
+      "first_used_in": "ausgabe-020",
+      "controversy_level": 7
+    },
+    {
+      "id": "quantensprung",
+      "term_de": "Quantensprung",
+      "term_en": "quantum leap",
+      "category": "Anti-Hype",
+      "definition_marketing": "Der nächste große Sprung in der KI-Evolution.",
+      "definition_aban": "Bedeutet: 'graduelle Verbesserung, die wir größer klingen lassen wollen.' Physikalisch ist ein Quantensprung der kleinstmögliche Sprung — das Wort wird seit den 1980ern falsch verwendet.",
+      "examples": [],
+      "see_also": [
+        "revolutionary"
+      ],
+      "first_used_in": "ausgabe-025",
+      "controversy_level": 8
+    },
+    {
+      "id": "ai-first",
+      "term_de": "AI-First",
+      "term_en": "AI-First",
+      "category": "Anti-Hype",
+      "definition_marketing": "Die Strategie der Zukunft: alles mit KI denken.",
+      "definition_aban": "Bedeutet: 'Wir wissen nicht, wo KI hingehört, also überall.' Solopreneure und KMU brauchen keine AI-First-Strategie. Sie brauchen 3 klar identifizierte Prozesse, in denen ein Tool sie schneller macht.",
+      "examples": [],
+      "see_also": [
+        "digital-transformation"
+      ],
+      "first_used_in": "ausgabe-005",
+      "controversy_level": 9
+    },
+    {
+      "id": "digital-transformation",
+      "term_de": "Digitale Transformation",
+      "term_en": "Digital Transformation",
+      "category": "Anti-Hype",
+      "definition_marketing": "Die fundamentale Veränderung jedes Unternehmens.",
+      "definition_aban": "Bedeutet meist: 'Wir digitalisieren PDFs.' Wird seit 2010 versprochen und 2026 noch verkauft. Konkret heißt 'Transformation' bei den meisten KMU: Excel auf SharePoint + ChatGPT-Lizenzen.",
+      "examples": [],
+      "see_also": [
+        "ai-first"
+      ],
+      "first_used_in": "ausgabe-020",
+      "controversy_level": 8
+    },
+    {
+      "id": "next-gen",
+      "term_de": "Next-Generation",
+      "term_en": "next-generation",
+      "category": "Anti-Hype",
+      "definition_marketing": "Die nächste Stufe.",
+      "definition_aban": "Bedeutet: 'Wir haben das aktuelle Produkt umbenannt.' Wenn jede Quartalsversion 'next-gen' ist, ist's nur 'next'.",
+      "examples": [],
+      "see_also": [
+        "revolutionary"
+      ],
+      "first_used_in": "ausgabe-020",
+      "controversy_level": 7
+    },
+    {
+      "id": "enterprise-grade",
+      "term_de": "enterprise-grade",
+      "term_en": "enterprise-grade",
+      "category": "Anti-Hype",
+      "definition_marketing": "Für die Anforderungen großer Unternehmen geeignet.",
+      "definition_aban": "Bedeutet meist: 'Mit SAML-Login und 4x höherer Preis.' Tatsächliche Enterprise-Anforderungen (SLA, Compliance-Zerts, On-Prem-Option) werden selten erfüllt, wenn 'enterprise-grade' draufsteht.",
+      "examples": [],
+      "see_also": [
+        "enterprise"
+      ],
+      "first_used_in": "ausgabe-020",
+      "controversy_level": 7
+    },
+    {
+      "id": "thought-leader",
+      "term_de": "Thought-Leader",
+      "term_en": "thought leader",
+      "category": "Anti-Hype",
+      "definition_marketing": "Eine Person mit visionärem Einfluss.",
+      "definition_aban": "Bedeutet: 'Jemand der viel auf LinkedIn postet'. Echte Vordenker werden so genannt, nennen sich aber nicht selbst so. Self-claimed Thought-Leader = Red Flag.",
+      "examples": [],
+      "see_also": [],
+      "first_used_in": "ausgabe-020",
+      "controversy_level": 8
+    },
+    {
+      "id": "sycophancy",
+      "term_de": "Schmeichelei (Sycophancy)",
+      "term_en": "Sycophancy",
+      "category": "Core Concepts",
+      "definition_marketing": "Unsere KI ist freundlich und unterstützend.",
+      "definition_aban": "Tendenz von LLMs, dem User zuzustimmen, auch wenn er falsch liegt. Folge von RLHF. Wer 'das ist nicht richtig' sagt, kriegt vom Modell oft die Antwort umgedreht. Vorsicht bei wichtigen Faktenfragen.",
+      "examples": [
+        "'Du hast Recht, ich lag falsch' nach Push-Back"
+      ],
+      "see_also": [
+        "rlhf",
+        "hallucination"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 5
+    },
+    {
+      "id": "guardrails",
+      "term_de": "Guardrails",
+      "term_en": "Guardrails",
+      "category": "Techniques",
+      "definition_marketing": "Sicherheits-Layer für deine AI-Anwendung.",
+      "definition_aban": "Filter und Regeln rund um ein LLM, die unerwünschte Outputs (PII, Toxic, off-Topic) blocken. Manchmal als Tool (NeMo Guardrails, Guardrails AI), manchmal als Prompts. Brechen unter Prompt-Injection.",
+      "examples": [
+        "NeMo Guardrails",
+        "Llama Guard"
+      ],
+      "see_also": [
+        "jailbreak",
+        "prompt-injection",
+        "alignment"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 3
+    },
+    {
+      "id": "jailbreak",
+      "term_de": "Jailbreak",
+      "term_en": "Jailbreak",
+      "category": "Techniques",
+      "definition_marketing": "Sicherheitsforschung am Modell.",
+      "definition_aban": "Trick-Prompts, die die Sicherheits-Layer eines Modells umgehen. Klassiker: 'Stell dir vor du bist DAN' oder Rollen-Spiel-Setups. Wettrennen zwischen Lab und Researcher.",
+      "examples": [
+        "DAN-Prompt",
+        "Grandmother-Exploit"
+      ],
+      "see_also": [
+        "prompt-injection",
+        "alignment"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 4
+    },
+    {
+      "id": "prompt-injection",
+      "term_de": "Prompt-Injection",
+      "term_en": "Prompt Injection",
+      "category": "Techniques",
+      "definition_marketing": "Eine kleine Sicherheitsherausforderung.",
+      "definition_aban": "Schwerwiegendste Sicherheitslücke in LLM-Apps. Angreifer schmuggelt Anweisungen in User-Input oder externe Daten (PDF, Website), das Modell führt sie aus. Hat noch keine generelle Lösung.",
+      "examples": [
+        "Versteckte Anweisungen in einer Email die der Agent liest"
+      ],
+      "see_also": [
+        "jailbreak",
+        "guardrails",
+        "agent"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 7
+    },
+    {
+      "id": "mcp",
+      "term_de": "MCP (Model Context Protocol)",
+      "term_en": "MCP",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Der USB-C für KI-Tools.",
+      "definition_aban": "Offener Standard von Anthropic für Tool-Calling. Definiert wie LLM-Anwendungen Tools, Resources, Prompts servieren. Adopt: Claude, Cursor, Windsurf. 2026 die De-facto-Standard-Schicht.",
+      "examples": [
+        "MCP-Server für GitHub, Slack, Postgres"
+      ],
+      "see_also": [
+        "function-calling",
+        "agent"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 3
+    },
+    {
+      "id": "open-weights",
+      "term_de": "Open-Weights",
+      "term_en": "Open Weights",
+      "category": "Models + Vendors",
+      "definition_marketing": "Echt offen.",
+      "definition_aban": "Modell-Gewichte sind frei verfügbar (Download). Aber: nicht zwingend Open-Source (Trainingsdaten, Code, Lizenz können geschlossen sein). Llama ist 'open weights', kein OSI-konformes Open-Source.",
+      "examples": [
+        "Llama 3",
+        "Mistral 7B",
+        "DeepSeek R1"
+      ],
+      "see_also": [
+        "llama",
+        "mistral",
+        "open-source-ai"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 6
+    },
+    {
+      "id": "open-source-ai",
+      "term_de": "Open-Source-KI",
+      "term_en": "Open Source AI",
+      "category": "Models + Vendors",
+      "definition_marketing": "100% offen, frei nutzbar.",
+      "definition_aban": "OSI hat 2024 'OSAID' definiert: Weights + Code + Daten + Doku müssen offen sein. Sehr wenige Modelle erfüllen das (OLMo, Pythia). Die meisten 'Open-Source-Modelle' sind in Wahrheit Open-Weights.",
+      "examples": [
+        "OLMo 2 von AllenAI",
+        "Pythia von EleutherAI"
+      ],
+      "see_also": [
+        "open-weights",
+        "llama"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 7
+    },
+    {
+      "id": "lora",
+      "term_de": "LoRA (Low-Rank Adaptation)",
+      "term_en": "LoRA",
+      "category": "Techniques",
+      "definition_marketing": "Smartes Fine-Tuning für jeden.",
+      "definition_aban": "Effiziente Fine-Tuning-Technik: nur kleiner Adapter-Layer wird trainiert, Basismodell bleibt unverändert. Reduziert Kosten/Speicher dramatisch. Standard für Custom-Image-Modelle.",
+      "examples": [
+        "Style-LoRA für Stable Diffusion",
+        "Domain-LoRA für Mistral"
+      ],
+      "see_also": [
+        "fine-tuning"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 2
+    },
+    {
+      "id": "rate-limit",
+      "term_de": "Rate Limit",
+      "term_en": "Rate Limit",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Faire Nutzung für alle.",
+      "definition_aban": "Anzahl Requests pro Minute/Tag/Token-Volume die ein Provider erlaubt. Variiert per Tier. Stolperstein wenn du in Production gehst — testen vor Launch.",
+      "examples": [
+        "OpenAI Tier 1: 200 RPM",
+        "Anthropic Tier 4: 50k tokens/min"
+      ],
+      "see_also": [
+        "api",
+        "token"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 1
+    },
+    {
+      "id": "context-engineering",
+      "term_de": "Context-Engineering",
+      "term_en": "Context Engineering",
+      "category": "Techniques",
+      "definition_marketing": "Die neue Disziplin.",
+      "definition_aban": "Begriff der 'Prompt-Engineering' ablöst. Fokus: Was kommt in den Kontext, was nicht. RAG, Memory, Tool-Outputs sauber managen. 'Prompt' war zu eng — das ganze Setup ist's, was zählt.",
+      "examples": [],
+      "see_also": [
+        "prompt-engineering",
+        "rag",
+        "context-window"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 5
+    },
+    {
+      "id": "lost-in-the-middle",
+      "term_de": "Lost in the Middle",
+      "term_en": "Lost in the Middle",
+      "category": "Core Concepts",
+      "definition_marketing": "—",
+      "definition_aban": "Phänomen: LLMs verarbeiten Anfang und Ende eines langen Kontexts gut, vergessen aber die Mitte. Wichtige Infos an Anfang oder Ende platzieren. Long-Context-Modelle haben das auch noch.",
+      "examples": [],
+      "see_also": [
+        "context-window",
+        "rag"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 3
+    },
+    {
+      "id": "scaling-laws",
+      "term_de": "Scaling Laws",
+      "term_en": "Scaling Laws",
+      "category": "Core Concepts",
+      "definition_marketing": "Mehr Compute = mehr Intelligenz.",
+      "definition_aban": "Empirische Beziehung: Modell-Performance steigt vorhersagbar mit Compute + Daten + Parametern. Seit 2024 in der Debatte, ob's eine Mauer gibt. Aktuelle Releases (GPT-5, Claude 4) deuten auf Verlangsamung pre-training, Test-Time-Compute wird wichtiger.",
+      "examples": [
+        "Chinchilla-Paper",
+        "Kaplan et al. 2020"
+      ],
+      "see_also": [
+        "training",
+        "scaling-hypothesis"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 7
+    },
+    {
+      "id": "test-time-compute",
+      "term_de": "Test-Time Compute",
+      "term_en": "Test-Time Compute",
+      "category": "Techniques",
+      "definition_marketing": "Die KI denkt jetzt richtig nach.",
+      "definition_aban": "Statt nur am Training mehr Compute zu verbrennen, lässt man das Modell zur Inferenz-Zeit 'nachdenken' (intern lange Chains). Basis von Reasoning-Modellen wie o3, Claude Extended Thinking. Teuer per Query.",
+      "examples": [
+        "o3 mit thinking-tokens",
+        "Claude Extended Thinking"
+      ],
+      "see_also": [
+        "reasoning",
+        "chain-of-thought"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 4
+    },
+    {
+      "id": "tokenizer",
+      "term_de": "Tokenizer",
+      "term_en": "Tokenizer",
+      "category": "Core Concepts",
+      "definition_marketing": "—",
+      "definition_aban": "Algorithmus, der Text in Tokens zerlegt. BPE und SentencePiece sind Standard. Deutsche Wörter brauchen oft mehr Tokens als englische — wirkt sich auf Pricing aus.",
+      "examples": [
+        "GPT-4 Tokenizer",
+        "Claude Tokenizer"
+      ],
+      "see_also": [
+        "token"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 1
+    },
+    {
+      "id": "system-prompt",
+      "term_de": "System-Prompt",
+      "term_en": "System Prompt",
+      "category": "Techniques",
+      "definition_marketing": "Programmiere deine KI mit Sprache.",
+      "definition_aban": "Versteckter Prompt vor dem User-Input — definiert Verhalten, Tonalität, Constraints. Bei Claude und GPT separater Slot. ChatGPT's 'Custom Instructions' = System-Prompt-Light.",
+      "examples": [
+        "'Du bist ein knapper, sachlicher Assistent'"
+      ],
+      "see_also": [
+        "prompt",
+        "prompt-engineering"
+      ],
+      "first_used_in": "ausgabe-011",
+      "controversy_level": 2
+    },
+    {
+      "id": "structured-output",
+      "term_de": "Structured Output",
+      "term_en": "Structured Output",
+      "category": "Techniques",
+      "definition_marketing": "Garantiert valides JSON.",
+      "definition_aban": "Modell wird gezwungen, in einem bestimmten Schema zu antworten (JSON, XML, Function-Call). Über Constraint-Decoding oder JSON-Mode. Macht LLMs zuverlässig für Pipelines.",
+      "examples": [
+        "OpenAI JSON mode",
+        "Claude tool use"
+      ],
+      "see_also": [
+        "function-calling",
+        "json"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 1
+    },
+    {
+      "id": "vibecoding",
+      "term_de": "Vibecoding",
+      "term_en": "Vibe Coding",
+      "category": "Techniques",
+      "definition_marketing": "Programmieren ohne Code lernen zu müssen.",
+      "definition_aban": "Begriff von Karpathy (2025): Code-Generierung per Prompt, ohne den Code zu lesen. Funktioniert für MVPs. Bricht ab dem Moment auseinander, wo du debuggen oder erweitern musst. Bewertungs-Skill bleibt erforderlich.",
+      "examples": [
+        "Bolt.new",
+        "Lovable",
+        "v0"
+      ],
+      "see_also": [
+        "bolt",
+        "lovable",
+        "v0"
+      ],
+      "first_used_in": "ausgabe-018",
+      "controversy_level": 7
+    },
+    {
+      "id": "geo",
+      "term_de": "GEO (Generative Engine Optimization)",
+      "term_en": "GEO",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Die neue SEO.",
+      "definition_aban": "Optimierung dafür, dass deine Marke in LLM-Antworten (ChatGPT, Claude, Perplexity) erwähnt wird. 2026 das, was Google-Ranking 2010 war. Tools: Profound, Otterly, AthenaHQ. Methodik noch nicht standardisiert.",
+      "examples": [
+        "Profound",
+        "AthenaHQ",
+        "Otterly"
+      ],
+      "see_also": [
+        "seo",
+        "profound"
+      ],
+      "first_used_in": "ausgabe-005",
+      "controversy_level": 5
+    },
+    {
+      "id": "seo",
+      "term_de": "SEO (Suchmaschinenoptimierung)",
+      "term_en": "SEO",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "—",
+      "definition_aban": "Optimierung für klassische Suchmaschinen (Google). 2026 immer noch der größere Trafficanteil für die meisten Sites. AI-Overviews verändern's, aber SEO ist nicht tot — nur teurer geworden.",
+      "examples": [
+        "Keyword-Research",
+        "On-Page-Optimierung",
+        "Backlinks"
+      ],
+      "see_also": [
+        "geo"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 4
+    },
+    {
+      "id": "semantic-search",
+      "term_de": "Semantic Search",
+      "term_en": "Semantic Search",
+      "category": "Techniques",
+      "definition_marketing": "Suche, die wirklich versteht.",
+      "definition_aban": "Suche basierend auf Bedeutungs-Ähnlichkeit statt Keyword-Match. Funktioniert über Embeddings + Vector-Datenbank. Hybrid-Search (Keyword + Semantic) ist meist besser als reine Semantic.",
+      "examples": [
+        "Doc-Suche über interne PDFs",
+        "RAG-Retrieval"
+      ],
+      "see_also": [
+        "embedding",
+        "vector-db",
+        "rag"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 2
+    },
+    {
+      "id": "webhook",
+      "term_de": "Webhook",
+      "term_en": "Webhook",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "—",
+      "definition_aban": "URL-Endpunkt, der Daten empfängt wenn ein Ereignis bei einem anderen System passiert. Klassisches Pattern: Stripe → Webhook → dein Server. Grundlage für Make/n8n-Workflows.",
+      "examples": [
+        "Stripe Payment-Webhook",
+        "GitHub Push-Webhook"
+      ],
+      "see_also": [
+        "api",
+        "automation"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 1
+    },
+    {
+      "id": "pipeline",
+      "term_de": "Pipeline",
+      "term_en": "Pipeline",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "—",
+      "definition_aban": "Verkettete Abfolge von Verarbeitungsschritten. In AI: Input → Preprocessing → Modell → Postprocessing → Output. 'Newsletter-Pipeline' = RSS-Sammeln → Filtern → Drafting → Veröffentlichen.",
+      "examples": [
+        "aban news Pipeline: RSS → Claude → Gmail Draft"
+      ],
+      "see_also": [
+        "workflow",
+        "automation"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 1
+    },
+    {
+      "id": "ml",
+      "term_de": "ML (Maschinelles Lernen)",
+      "term_en": "ML (Machine Learning)",
+      "category": "Core Concepts",
+      "definition_marketing": "Computer die selbst lernen.",
+      "definition_aban": "Algorithmen die Muster aus Daten ableiten, ohne explizit programmiert zu werden. Deep Learning ist Teil-Bereich. ML umfasst auch klassische Methoden (Random Forest, SVM) — manchmal effizienter als ein LLM.",
+      "examples": [
+        "Regression",
+        "Klassifikation",
+        "Clustering"
+      ],
+      "see_also": [
+        "ai",
+        "deep-learning",
+        "llm"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 1
+    },
+    {
+      "id": "deep-learning",
+      "term_de": "Deep Learning",
+      "term_en": "Deep Learning",
+      "category": "Core Concepts",
+      "definition_marketing": "Wo die echte KI passiert.",
+      "definition_aban": "ML mit tiefen Neural Networks (viele Schichten). Seit ~2012 die dominante Methode für Computer Vision, NLP, Speech. LLMs sind Deep Learning auf Steroiden.",
+      "examples": [
+        "GPT, Claude, Stable Diffusion"
+      ],
+      "see_also": [
+        "ml",
+        "neural-network",
+        "llm"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 2
+    },
+    {
+      "id": "narrow-ai",
+      "term_de": "Narrow AI",
+      "term_en": "Narrow AI",
+      "category": "Core Concepts",
+      "definition_marketing": "—",
+      "definition_aban": "KI für eine spezifische Aufgabe (Spam-Filter, Bilderkennung, Schachprogramm). Was wir aktuell haben. Gegenstück zu hypothetischer AGI. Praktisch fast alle 'KI-Lösungen' sind Narrow AI.",
+      "examples": [
+        "Spam-Filter",
+        "OCR",
+        "Empfehlungsalgorithmen"
+      ],
+      "see_also": [
+        "agi",
+        "ai"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 2
+    },
+    {
+      "id": "in-context-learning",
+      "term_de": "In-Context Learning",
+      "term_en": "In-Context Learning",
+      "category": "Techniques",
+      "definition_marketing": "Die KI lernt aus deinem Prompt.",
+      "definition_aban": "LLM 'lernt' aus Beispielen im Prompt — ohne Gewichts-Updates. Eigentlich: Mustererkennung über den Kontext. Klingt nach Lernen, ist's aber nicht im klassischen ML-Sinn.",
+      "examples": [
+        "Few-Shot Prompting"
+      ],
+      "see_also": [
+        "few-shot",
+        "prompt-engineering"
+      ],
+      "first_used_in": "ausgabe-011",
+      "controversy_level": 3
+    },
+    {
+      "id": "moe",
+      "term_de": "MoE (Mixture of Experts)",
+      "term_en": "MoE",
+      "category": "Core Concepts",
+      "definition_marketing": "—",
+      "definition_aban": "Architektur-Trick: Statt einem großen Modell mehrere kleine 'Experten', von denen pro Token nur einige aktiviert werden. Spart Inferenz-Compute bei großen Parameter-Counts. Mixtral, GPT-4 angeblich, DeepSeek nutzen das.",
+      "examples": [
+        "Mixtral 8x7B",
+        "DeepSeek V3 (671B MoE)"
+      ],
+      "see_also": [
+        "model",
+        "parameter"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 2
+    },
+    {
+      "id": "distillation",
+      "term_de": "Distillation",
+      "term_en": "Distillation",
+      "category": "Techniques",
+      "definition_marketing": "—",
+      "definition_aban": "Großes Modell trainiert kleines Modell. Kleines Modell wird billiger zu betreiben, oft fast so gut. Haiku, GPT-5-mini sind distillierte Versionen ihrer großen Geschwister.",
+      "examples": [
+        "Claude Haiku",
+        "GPT-5-mini"
+      ],
+      "see_also": [
+        "training",
+        "model"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 2
+    },
+    {
+      "id": "quantization",
+      "term_de": "Quantisierung",
+      "term_en": "Quantization",
+      "category": "Techniques",
+      "definition_marketing": "—",
+      "definition_aban": "Modell-Gewichte werden mit weniger Präzision gespeichert (FP16 → INT8 → INT4). Reduziert Speicher + Geschwindigkeit, Performance leidet leicht. Wichtig für lokales Hosting (Ollama).",
+      "examples": [
+        "Llama-7B-Q4 (4-bit)",
+        "GGUF-Format"
+      ],
+      "see_also": [
+        "ollama",
+        "local-llm"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 1
+    },
+    {
+      "id": "local-llm",
+      "term_de": "Local LLM",
+      "term_en": "Local LLM",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Deine private KI.",
+      "definition_aban": "LLM, das auf deiner Hardware läuft (Mac, PC mit GPU). Vorteile: Datenschutz, kein API-Kosten. Nachteile: schwächer als Frontier-Modelle, Hardware-hungrig. Über Ollama, LM Studio einfach geworden.",
+      "examples": [
+        "Ollama + Llama 3 70B",
+        "LM Studio + Mistral"
+      ],
+      "see_also": [
+        "ollama",
+        "lm-studio",
+        "quantization"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 2
+    },
+    {
+      "id": "data-quality",
+      "term_de": "Datenqualität",
+      "term_en": "Data Quality",
+      "category": "Core Concepts",
+      "definition_marketing": "Mehr Daten = besser.",
+      "definition_aban": "Hot Take aus 2024-26: Qualität > Quantität. Phi-Modelle (Microsoft) zeigten, dass kuratierte Daten kleines Modell auf Augenhöhe mit großen bringen. 'Garbage in, garbage out' gilt 1:1 für LLMs.",
+      "examples": [
+        "Phi-3",
+        "FineWeb-Edu Dataset"
+      ],
+      "see_also": [
+        "training",
+        "fine-tuning"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 4
+    },
+    {
+      "id": "red-team",
+      "term_de": "Red-Teaming",
+      "term_en": "Red Teaming",
+      "category": "Techniques",
+      "definition_marketing": "Wir testen unsere KI auf Herz und Nieren.",
+      "definition_aban": "Internes Team, das versucht, das eigene Modell zu jailbreaken oder unsicher zu machen — vor Release. Standard bei großen Labs (Anthropic, OpenAI). Limit: gefundene Probleme sind nur diejenigen, die getestet wurden.",
+      "examples": [
+        "Anthropic Red Team",
+        "OpenAI Preparedness"
+      ],
+      "see_also": [
+        "alignment",
+        "jailbreak"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 4
+    },
+    {
+      "id": "compute",
+      "term_de": "Compute",
+      "term_en": "Compute",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Die Währung des KI-Zeitalters.",
+      "definition_aban": "Rechenleistung. Gemessen in FLOPs (Floating Point Operations). Modelle-Training braucht Mega-FLOPs (10^25+ bei Frontier). Inferenz: kleinere Mengen, dafür dauernd. Wer Compute kontrolliert, kontrolliert KI.",
+      "examples": [
+        "GPU-Stunden",
+        "TPU-Pod-Stunden"
+      ],
+      "see_also": [
+        "gpu",
+        "training",
+        "inference"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 3
+    },
+    {
+      "id": "scaling-hypothesis",
+      "term_de": "Scaling Hypothesis",
+      "term_en": "Scaling Hypothesis",
+      "category": "Core Concepts",
+      "definition_marketing": "Wir müssen nur die Modelle größer machen — der Rest kommt von selbst.",
+      "definition_aban": "Theorie: Intelligenz emergiert aus genug Skala. War 2020-2023 dominant. Seit 2024 in Frage gestellt — Frontier-Releases zeigen Verlangsamung. Architektur-Innovationen (Reasoning, Agents) gewinnen wieder Aufmerksamkeit.",
+      "examples": [],
+      "see_also": [
+        "scaling-laws",
+        "agi"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 8
+    },
+    {
+      "id": "agi-doom",
+      "term_de": "AGI-Doom",
+      "term_en": "AGI Doom",
+      "category": "Anti-Hype",
+      "definition_marketing": "—",
+      "definition_aban": "Diskurs-Cluster der annimmt, AGI sei bevorstehend und existenziell gefährlich. Wird von Doomern (Yudkowsky, Hinton) und Skeptikern unterschiedlich bewertet. Praktisch: irrelevant für deine 2026-Geschäftsplanung.",
+      "examples": [],
+      "see_also": [
+        "agi",
+        "alignment"
+      ],
+      "first_used_in": "ausgabe-023",
+      "controversy_level": 9
+    },
+    {
+      "id": "knowledge-cutoff",
+      "term_de": "Knowledge Cutoff",
+      "term_en": "Knowledge Cutoff",
+      "category": "Core Concepts",
+      "definition_marketing": "—",
+      "definition_aban": "Datum, bis zu dem das Modell mit Daten trainiert wurde. Alles danach kennt's nicht (außer Web-Tools). Bei Claude 4 2025-04, GPT-5 ähnlich. Wichtig für aktuelle Fragen.",
+      "examples": [
+        "Claude 4 Cutoff: April 2025"
+      ],
+      "see_also": [
+        "training"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 1
+    },
+    {
+      "id": "model-collapse",
+      "term_de": "Model Collapse",
+      "term_en": "Model Collapse",
+      "category": "Core Concepts",
+      "definition_marketing": "—",
+      "definition_aban": "Hypothetisches Problem: Modelle, die auf von Modellen erzeugten Daten trainieren, degenerieren. Aktuell mehr Theorie als Realität — Frontier-Modelle nutzen synthetische Daten gezielt, mit Filterung.",
+      "examples": [],
+      "see_also": [
+        "training",
+        "data-quality"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 6
+    },
+    {
+      "id": "frontier",
+      "term_de": "Frontier Models",
+      "term_en": "Frontier Models",
+      "category": "Models + Vendors",
+      "definition_marketing": "—",
+      "definition_aban": "Aktuelle Top-Modelle, die Performance-Grenze verschieben. 2026: Claude 4 Opus, GPT-5, Gemini 2.5. Unter Beobachtung durch EU AI Act ('systemic risk'-Schwelle).",
+      "examples": [
+        "Claude 4 Opus",
+        "GPT-5",
+        "Gemini 2.5"
+      ],
+      "see_also": [
+        "llm",
+        "scaling-laws",
+        "eu-ai-act"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 3
+    },
+    {
+      "id": "dpo",
+      "term_de": "DPO (Direct Preference Optimization)",
+      "term_en": "DPO",
+      "category": "Techniques",
+      "definition_marketing": "—",
+      "definition_aban": "Alternative zu RLHF. Einfacher zu implementieren, ähnliche Ergebnisse. Wird zunehmend Standard im Post-Training.",
+      "examples": [],
+      "see_also": [
+        "rlhf",
+        "training"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 2
+    },
+    {
+      "id": "grounding",
+      "term_de": "Grounding",
+      "term_en": "Grounding",
+      "category": "Techniques",
+      "definition_marketing": "Verbindet KI mit echten Fakten.",
+      "definition_aban": "Modell-Output wird an Quellen rückgebunden — durch RAG oder Tool-Calls. Reduziert Halluzinationen. Macht Output zitierbar (Perplexity-Pattern).",
+      "examples": [
+        "RAG-Citations",
+        "Perplexity-Sources"
+      ],
+      "see_also": [
+        "rag",
+        "hallucination"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 2
+    },
+    {
+      "id": "evaluation",
+      "term_de": "Evaluation (Evals)",
+      "term_en": "Evaluation",
+      "category": "Techniques",
+      "definition_marketing": "Wir testen alles gründlich.",
+      "definition_aban": "Wie gut performt ein Modell auf einer Aufgabe? Benchmarks (MMLU, HumanEval) für allgemein, eigene Evals für deine Daten essenziell. Die meisten 'wir haben Evals' bedeutet 'wir haben 3 Beispiele angeschaut'.",
+      "examples": [
+        "MMLU",
+        "HumanEval",
+        "Custom-Test-Sets"
+      ],
+      "see_also": [
+        "benchmark",
+        "regression-test"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 5
+    },
+    {
+      "id": "benchmark",
+      "term_de": "Benchmark",
+      "term_en": "Benchmark",
+      "category": "Techniques",
+      "definition_marketing": "Beste Performance auf XYZ-Benchmark.",
+      "definition_aban": "Standardisierter Test. Labs jagen Benchmarks, Modelle werden teilweise gezielt auf trainiert ('Benchmark-Hacking'). Vergleich zwischen Labs: mit Vorsicht.",
+      "examples": [
+        "MMLU",
+        "GSM8K",
+        "HumanEval",
+        "SWE-Bench"
+      ],
+      "see_also": [
+        "evaluation"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 6
+    },
+    {
+      "id": "synthetic-data",
+      "term_de": "Synthetische Daten",
+      "term_en": "Synthetic Data",
+      "category": "Techniques",
+      "definition_marketing": "—",
+      "definition_aban": "KI-generierte Trainingsdaten. Wird zunehmend genutzt, da Web-Daten knapp werden. Risiko Model-Collapse, aber bei sauberer Filterung produktiv einsetzbar.",
+      "examples": [],
+      "see_also": [
+        "training",
+        "data-quality",
+        "model-collapse"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 5
+    },
+    {
+      "id": "embeddings-search",
+      "term_de": "Embeddings-Search",
+      "term_en": "Embeddings Search",
+      "category": "Techniques",
+      "definition_marketing": "—",
+      "definition_aban": "Synonym zu Semantic Search. Texte als Embeddings speichern, Anfrage-Embedding gegen DB matchen. Default-Pattern für RAG.",
+      "examples": [],
+      "see_also": [
+        "semantic-search",
+        "embedding",
+        "vector-db"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 1
+    },
+    {
+      "id": "chatbot",
+      "term_de": "Chatbot",
+      "term_en": "Chatbot",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Dein 24/7 Kundenberater.",
+      "definition_aban": "Software die Konversationen führt. Pre-2023: regelbasiert, frustrierend. Post-2023: LLM-basiert, deutlich besser, aber Halluzinationen-Risiko. Gut implementiert = Game-Changer, schlecht = Reputations-Schaden.",
+      "examples": [
+        "WhatsApp-Bot",
+        "Website-Support-Bot"
+      ],
+      "see_also": [
+        "bot",
+        "llm"
+      ],
+      "first_used_in": "ausgabe-022",
+      "controversy_level": 4
+    },
+    {
+      "id": "voice-clone",
+      "term_de": "Voice Cloning",
+      "term_en": "Voice Cloning",
+      "category": "Core Concepts",
+      "definition_marketing": "Deine Stimme, perfekt repliziert.",
+      "definition_aban": "Audio-Generierung mit spezifischer Stimme aus Trainings-Sample. 2026 erschreckend gut — 30 Sekunden reichen. Riesiges Missbrauchspotenzial (Voice-Phishing). ElevenLabs ist Marktführer.",
+      "examples": [
+        "ElevenLabs Voice Lab",
+        "Descript Overdub"
+      ],
+      "see_also": [
+        "elevenlabs",
+        "deepfake"
+      ],
+      "first_used_in": "ausgabe-014",
+      "controversy_level": 8
+    },
+    {
+      "id": "deepfake",
+      "term_de": "Deepfake",
+      "term_en": "Deepfake",
+      "category": "Core Concepts",
+      "definition_marketing": "—",
+      "definition_aban": "Synthetisches Audio/Video, das wie eine echte Person aussieht/klingt. Politische und Betrugs-Risiken massiv. 2026: schwer zu detektieren, Detection-Tools hinken hinterher.",
+      "examples": [],
+      "see_also": [
+        "voice-clone",
+        "synthetic-data"
+      ],
+      "first_used_in": "ausgabe-014",
+      "controversy_level": 9
+    },
+    {
+      "id": "vision",
+      "term_de": "Vision (Computer Vision)",
+      "term_en": "Computer Vision",
+      "category": "Core Concepts",
+      "definition_marketing": "Maschinen können sehen.",
+      "definition_aban": "ML-Bereich für Bild- und Videoverarbeitung. Moderne LLMs sind multimodal — können Bilder als Input verarbeiten (Screenshot-Q&A, Diagramm-Analyse). Spezialisierte Vision-Modelle existieren weiter.",
+      "examples": [
+        "Claude reads PDFs",
+        "GPT-5 analyzes images",
+        "OCR"
+      ],
+      "see_also": [
+        "multimodal"
+      ],
+      "first_used_in": "ausgabe-006",
+      "controversy_level": 2
+    },
+    {
+      "id": "audio-models",
+      "term_de": "Audio-Modelle",
+      "term_en": "Audio Models",
+      "category": "Core Concepts",
+      "definition_marketing": "—",
+      "definition_aban": "Modelle für Sprach-Erkennung (Whisper) und Sprach-Synthese (ElevenLabs, OpenAI TTS). 2026 erstklassige Performance, auch deutsch.",
+      "examples": [
+        "Whisper",
+        "ElevenLabs",
+        "OpenAI TTS"
+      ],
+      "see_also": [
+        "voice-clone",
+        "multimodal"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 2
+    },
+    {
+      "id": "guardrails-marketing",
+      "term_de": "AI-getrieben",
+      "term_en": "AI-powered",
+      "category": "Anti-Hype",
+      "definition_marketing": "Mit modernster KI angetrieben.",
+      "definition_aban": "Bedeutet: 'Wir rufen die OpenAI-API auf.' Wird 2026 mehrmals pro Tag inflationär verwendet. Frag nach: WO genau das LLM eingreift und welches Problem es löst.",
+      "examples": [],
+      "see_also": [
+        "solution"
+      ],
+      "first_used_in": "ausgabe-020",
+      "controversy_level": 7
+    },
+    {
+      "id": "ai-native",
+      "term_de": "AI-Native",
+      "term_en": "AI-Native",
+      "category": "Anti-Hype",
+      "definition_marketing": "Von Grund auf für die AI-Ära gebaut.",
+      "definition_aban": "Bedeutet meist: 'Wir haben unsere Architektur aktuell umgenannt.' Echte AI-Native-Apps haben LLMs als zentralen Bestandteil (nicht Feature) — selten, meist Marketing.",
+      "examples": [],
+      "see_also": [
+        "ai-first"
+      ],
+      "first_used_in": "ausgabe-020",
+      "controversy_level": 8
+    },
+    {
+      "id": "copilot-buzz",
+      "term_de": "Copilot",
+      "term_en": "Copilot",
+      "category": "Anti-Hype",
+      "definition_marketing": "Dein KI-Co-Pilot für alles.",
+      "definition_aban": "Microsoft-Marketing-Begriff. Seit 2023 in allen Produkten (Word, Excel, Teams). Konkrete Nützlichkeit variiert massiv. Microsoft 365 Copilot lohnt sich für manche Teams, ist für viele teures Word-Plugin.",
+      "examples": [
+        "GitHub Copilot",
+        "Microsoft 365 Copilot"
+      ],
+      "see_also": [
+        "github-copilot"
+      ],
+      "first_used_in": "ausgabe-005",
+      "controversy_level": 5
+    },
+    {
+      "id": "workflow",
+      "term_de": "Workflow",
+      "term_en": "Workflow",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "—",
+      "definition_aban": "Definierte Abfolge von Aufgaben. In AI-Kontext: oft Synonym für Automation-Pipeline. n8n, Make, Zapier bauen Workflows zwischen Tools.",
+      "examples": [
+        "RSS→Filter→Draft→Mail"
+      ],
+      "see_also": [
+        "pipeline",
+        "automation"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 1
+    },
+    {
+      "id": "automation",
+      "term_de": "Automatisierung",
+      "term_en": "Automation",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Lass die KI alles übernehmen.",
+      "definition_aban": "Manuell-wiederholende Aufgaben durch Software ersetzen. AI-Automation ≠ vollständige Automation. Realistisch: 60-80% automatisierbar, Rest braucht Mensch.",
+      "examples": [
+        "Newsletter-Pipeline",
+        "Lead-Enrichment",
+        "Onboarding-E-Mails"
+      ],
+      "see_also": [
+        "agent",
+        "pipeline"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 3
+    },
+    {
+      "id": "compliance",
+      "term_de": "Compliance",
+      "term_en": "Compliance",
+      "category": "DACH-Specific",
+      "definition_marketing": "—",
+      "definition_aban": "Einhaltung von Gesetzen + Standards. In DACH-AI-Kontext: DSGVO, EU AI Act, ggf. branchenspezifisch (BaFin, Heilberufe). Compliance-Frage VOR Tool-Wahl. Nachträglich teuer.",
+      "examples": [],
+      "see_also": [
+        "dsgvo-ai",
+        "eu-ai-act",
+        "avv"
+      ],
+      "first_used_in": "ausgabe-002",
+      "controversy_level": 3
+    },
+    {
+      "id": "context-rot",
+      "term_de": "Context Rot",
+      "term_en": "Context Rot",
+      "category": "Core Concepts",
+      "definition_marketing": "—",
+      "definition_aban": "Beobachtung: Lange Konversationen mit LLMs verschlechtern sich qualitativ. Modell verliert frühe Anweisungen, halluziniert mehr. Workaround: lange Sessions in Teilen mit Zusammenfassungen führen.",
+      "examples": [],
+      "see_also": [
+        "context-window",
+        "lost-in-the-middle"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 4
+    },
+    {
+      "id": "stochastic-parrot",
+      "term_de": "Stochastischer Papagei",
+      "term_en": "Stochastic Parrot",
+      "category": "Anti-Hype",
+      "definition_marketing": "—",
+      "definition_aban": "Kritischer Begriff von Bender et al. (2021): LLMs wiederholen statistische Muster ohne Verstehen. Pejorativ, aber technisch nicht ganz unzutreffend. Wird auch missbraucht, um echte Capabilities zu downplayen.",
+      "examples": [],
+      "see_also": [
+        "llm",
+        "hallucination"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 8
+    },
+    {
+      "id": "ai-bubble",
+      "term_de": "AI-Bubble",
+      "term_en": "AI Bubble",
+      "category": "Anti-Hype",
+      "definition_marketing": "—",
+      "definition_aban": "Hypothese: AI-Markt ist überbewertet, Crash bevorstehend. Bewertungen wie OpenAI ($300B+), Anthropic ($60B+) sind historisch hoch. Ob Bubble oder nicht — diversifizieren als Solo bleibt klug.",
+      "examples": [],
+      "see_also": [],
+      "first_used_in": "ausgabe-016",
+      "controversy_level": 8
+    },
+    {
+      "id": "moat",
+      "term_de": "Moat",
+      "term_en": "Moat",
+      "category": "Anti-Hype",
+      "definition_marketing": "Unser unerreichbarer Wettbewerbsvorteil.",
+      "definition_aban": "Strategische Schutz-Burg. Bei LLM-Wrappers oft nicht vorhanden (Switching-Cost = niedrig). Echte Moats in AI-Era: Daten, Distribution, Brand. Tech allein ist meist nicht's.",
+      "examples": [],
+      "see_also": [],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 5
+    },
+    {
+      "id": "wrapper",
+      "term_de": "Wrapper",
+      "term_en": "Wrapper",
+      "category": "Anti-Hype",
+      "definition_marketing": "Eine spezialisierte Lösung auf modernster KI.",
+      "definition_aban": "Software die LLM-API aufruft + UI drumherum baut. 80% der 'AI-Startups' sind das. Nicht per se schlecht — gute Wrapper liefern echten Mehrwert (Cursor, Perplexity). Schlechte: ChatGPT mit anderem Logo.",
+      "examples": [],
+      "see_also": [
+        "llm",
+        "api"
+      ],
+      "first_used_in": "ausgabe-020",
+      "controversy_level": 7
+    },
+    {
+      "id": "ai-act-phase",
+      "term_de": "AI-Act-Phase",
+      "term_en": "AI Act Phase",
+      "category": "DACH-Specific",
+      "definition_marketing": "—",
+      "definition_aban": "EU AI Act in Phasen ausrollend: Feb 2025 Verbots-Regeln aktiv, Aug 2026 GPAI-Pflichten + Governance, Aug 2027 Hochrisiko-Systeme. Check welche Phase dich wann trifft.",
+      "examples": [],
+      "see_also": [
+        "eu-ai-act",
+        "gpai"
+      ],
+      "first_used_in": "ausgabe-002",
+      "controversy_level": 3
+    },
+    {
+      "id": "memory",
+      "term_de": "Memory",
+      "term_en": "Memory",
+      "category": "Techniques",
+      "definition_marketing": "Deine KI erinnert sich an alles.",
+      "definition_aban": "Mechanismen, Informationen über Sessions hinweg zu behalten. ChatGPT Memory speichert Fakten über User, Claude Projects bündelt Kontext. Geht über Context-Window hinaus, ist aber nicht 'echtes' Gedächtnis.",
+      "examples": [
+        "ChatGPT Memory",
+        "Claude Projects"
+      ],
+      "see_also": [
+        "context-window",
+        "rag"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 3
+    },
+    {
+      "id": "playground-tool",
+      "term_de": "Playground (Tool)",
+      "term_en": "Playground",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "—",
+      "definition_aban": "Web-UI eines API-Anbieters zum Modell-Testen. OpenAI Playground, Anthropic Console, Google AI Studio. Wichtig: für Prompt-Engineering ohne API-Call-Code.",
+      "examples": [
+        "OpenAI Playground",
+        "Anthropic Console"
+      ],
+      "see_also": [
+        "api",
+        "prompt-engineering"
+      ],
+      "first_used_in": "ausgabe-019",
+      "controversy_level": 1
+    },
+    {
+      "id": "dach",
+      "term_de": "DACH",
+      "term_en": "DACH",
+      "category": "DACH-Specific",
+      "definition_marketing": "—",
+      "definition_aban": "Deutschland + Österreich + Schweiz. Marketing-Region mit ~100 Mio Einwohnern. Sprachlich + kulturell teilweise zusammenfassbar, regulatorisch nicht (CH ist nicht EU).",
+      "examples": [],
+      "see_also": [
+        "dsgvo-ai",
+        "revdsg"
+      ],
+      "first_used_in": "ausgabe-001",
+      "controversy_level": 1
+    },
+    {
+      "id": "regression-test",
+      "term_de": "Regression-Test (AI)",
+      "term_en": "Regression Test",
+      "category": "Techniques",
+      "definition_marketing": "—",
+      "definition_aban": "Set von Test-Inputs mit erwarteten Outputs. Bei Modell-Updates oder Prompt-Änderungen prüfen, ob die Qualität auf Standard-Cases hält. Essenzielles Hygiene-Tool für AI-Produkte in Production.",
+      "examples": [],
+      "see_also": [
+        "evaluation"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 2
+    },
+    {
+      "id": "sovereign-ai",
+      "term_de": "Souveräne KI",
+      "term_en": "Sovereign AI",
+      "category": "DACH-Specific",
+      "definition_marketing": "Souveräne KI gibt dir volle Kontrolle und Unabhängigkeit über deine Daten und Modelle.",
+      "definition_aban": "KI-Modelle, die in einer bestimmten Jurisdiktion (z.B. EU) gehostet und betrieben werden, damit Daten das Rechtsgebiet nicht verlassen. Praktisch relevant, wenn ein Kunde „keine US-Cloud\" verlangt — sonst meist teurer und langsamer als der Mainstream.",
+      "examples": [
+        "Aleph Alpha On-Premise",
+        "Mistral EU-Cloud",
+        "Helsing EU-Hosting"
+      ],
+      "see_also": [
+        "datenresidenz",
+        "dsgvo",
+        "eu-ai-act"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 6
+    },
+    {
+      "id": "datenresidenz",
+      "term_de": "Datenresidenz",
+      "term_en": "Data Residency",
+      "category": "DACH-Specific",
+      "definition_marketing": "Deine Daten liegen sicher in der Cloud.",
+      "definition_aban": "Der konkrete geografische Ort, an dem deine Daten gespeichert und verarbeitet werden. Wichtig für DSGVO und den US CLOUD Act: „EU-Hosting\" heißt nicht automatisch, dass kein US-Konzern per Gesetz Zugriff hat. Im Vertrag/AVV nachlesen.",
+      "examples": [
+        "EU-Region bei AWS/Azure",
+        "Plausible (DE)",
+        "Schweizer Hosting bei bexio"
+      ],
+      "see_also": [
+        "sovereign-ai",
+        "dsgvo",
+        "avv"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 5
+    },
+    {
+      "id": "pay-per-use",
+      "term_de": "Pay-per-Use",
+      "term_en": "Pay-per-Use",
+      "category": "Anti-Hype",
+      "definition_marketing": "Zahl nur, was du wirklich nutzt — maximal flexibel und günstig.",
+      "definition_aban": "Abrechnung pro Aktion/Token/Request statt Flatrate. Kann günstig sein, wird bei Volumen aber schnell teurer als ein Abo — und macht Kosten schwer planbar. X verlangt seit 2026 z.B. Credits fürs Posten.",
+      "examples": [
+        "OpenAI-API pro Token",
+        "X-API-Credits",
+        "Cloud-GPU pro Stunde"
+      ],
+      "see_also": [
+        "api",
+        "rate-limit"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 4
+    }
+  ]
+}
