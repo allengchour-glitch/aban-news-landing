@@ -1,0 +1,23 @@
+Kapitel 16 - Der alte Mann
+
+Im selben Jahr, in dem das Geld starb und Heinrich starb, wurde im Berg eine Strecke aufgegeben. Sie war ausgekohlt, das Flöz erschöpft, es lohnte nicht mehr, sie offen zu halten, und so versiegelte man sie, mauerte den Zugang zu, überließ sie dem Gebirgsdruck und dem steigenden Wasser. Der alte Mann, sagten die Bergleute zu so einer Strecke, das war das Wort dafür, uralt, niemand wusste, woher es kam: der alte Mann, das ausgekohlte, verlassene Revier, das man dem Berg zurückgab.
+
+Wilhelm stand davor, an dem Tag, als sie zumauerten. Es war seine Aufgabe als Steiger, die Versiegelung zu überwachen, und er sah zu, wie die Männer Stein auf Stein setzten, wie sich die Öffnung schloss, langsam, bis nur noch ein dunkles Loch blieb und dann auch das verschwand und vor ihm eine Mauer stand, hinter der die Dunkelheit lag, eine Dunkelheit, die nun niemand mehr betreten würde, in der nichts mehr war als ausgehöhlter Fels und das Wasser, das langsam stieg.
+
+Er stand davor wie vor seinem eigenen Gewissen. Hinter dieser Mauer lag, was abgeschlossen war, was man dem Berg zurückgegeben hatte, weil man es nicht mehr brauchte und nicht mehr ändern konnte. So wollte Wilhelm seinen Verrat: zugemauert, dem Dunkel überlassen, vergessen. Aber er wusste, dass es nicht so war. Der alte Mann im Berg war wirklich tot, wirklich abgeschlossen. Sein eigener alter Mann nicht. Der lebte, hinter seiner Mauer, und drückte, wie das Gebirge drückt, und das Wasser stieg, langsam, Jahr um Jahr, und eines Tages würde es eine Mauer finden, die nicht hielt.
+
+Dann kam die Rentenmark, im November, und über Nacht hatte das Geld wieder einen Wert, ein neues Geld, aus dem Nichts geschaffen, ein neuer Anfang, der so unverdient war wie der Untergang davor. Die Menschen richteten sich wieder ein. Man konnte wieder rechnen, wieder sparen, wieder hoffen. Voßlohe atmete auf, und die Förderung lief, und das Leben ging weiter, wie es immer weiterging, über allen Katastrophen, gleichgültig und zäh.
+
+In diesem Herbst fing August an.
+
+Er war fünfzehn, alt genug, und Wilhelm hatte keine Lehrstelle über Tage gefunden, keinen anderen Weg, und der Junge wollte mit aller Kraft, und am Ende gab Wilhelm nach, weil Nachgeben leichter war als ein Kampf, den er ohnehin verlor, und weil er insgeheim wusste, dass es so kommen musste, dass der Berg immer gewann. August zog die Grubenkleidung an, die zu groß war für seinen Jungenkörper, und stand am Morgen am Schacht, mit der Lampe, das Gesicht hell vor Aufregung, und Wilhelm stand neben ihm, und sie warteten auf den Korb.
+
+Es war Wilhelms letzte Gelegenheit. Er spürte es, dort am Schachtrand, im grauen Morgenlicht: Wenn er es je sagen wollte, dem Sohn, bevor der Sohn hinunterfuhr in dieselbe Tiefe, in dieselbe Welt, in der er, Wilhelm, gewählt hatte, was er gewählt hatte, dann jetzt. Er wollte sagen: August, bevor du hinunterfährst, musst du etwas wissen über deinen Vater, über dieses Haus, über das Geld, das uns hochgebracht hat. Du musst wissen, worauf wir stehen. Damit du, wenn du eines Tages vor einer Wahl stehst, wie ich vor einer Wahl stand, weißt, was es kostet, das Falsche zu wählen.
+
+Er öffnete den Mund. August sah ihn an, erwartungsvoll, im Glauben, der Vater werde ihm einen guten Rat mitgeben, einen Bergmannsrat, etwas über den Stoß, über das Hangende, über die Kunst, lebend wieder heraufzukommen.
+
+«Glück auf», sagte Wilhelm.
+
+Mehr brachte er nicht heraus. Es war das einzige Wort, das alles enthielt und nichts verriet, der Wunsch und das Schweigen in einem, und es war feige, und es war alles, was Wilhelm vermochte. August lächelte, stolz, und sagte «Glück auf, Vater», und dann kam der Korb, und August stieg ein mit den anderen, und der Korb fiel, und mit ihm fiel August in den Berg, wie Wilhelm jeden Morgen seines Lebens in den Berg gefallen war, und das viereckige Stück Himmel verschwand über dem Jungen, erst grau, dann grauer, dann nichts mehr.
+
+Wilhelm blieb am Schachtrand stehen, lange, nachdem der Korb verschwunden war. Über ihm drehte sich das Rad, sein Rad, und nun trug es auch seinen Sohn hinab, in dieselbe Tiefe, in dasselbe Dunkel, in dieselbe Welt, in der ein Mann zwischen dem Brot seiner Kinder und der Treue zu seinesgleichen wählen musste und immer falsch wählen konnte. Der Riss, den Wilhelm gelegt hatte, fuhr jetzt mit August hinab, ungesehen, ungenannt, vererbt wie ein Hof, wie eine Krankheit, und irgendwo hinter einer zugemauerten Strecke stieg langsam das Wasser, und Wilhelm wandte sich ab und ging zur Kaue und begann seine Schicht, weil das Rad sich drehte und das Rad nicht fragte, wer es drehte und um welchen Preis.
