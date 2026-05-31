@@ -91,6 +91,11 @@ p{margin-bottom:14px;color:#404040}
 .benefit h3{font-size:15px;color:#0a0a0a;margin-bottom:4px}
 .benefit p{font-size:14px;color:#525252;margin:0}
 .guarantee{display:inline-block;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;font-weight:600;padding:8px 14px;border-radius:6px;font-size:13px;margin:16px 0}
+.altpay{margin:14px auto 0;max-width:460px}
+.altpay-sep{color:#737373;font-size:13px;margin:0 0 10px}
+.altpay-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.cta-alt{display:inline-block;background:#fff;color:#9a3412;border:1.5px solid #fcd9bd;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:8px;font-size:15px;transition:border-color .2s,background .2s}
+.cta-alt:hover{background:#fff7ed;border-color:#f59e0b}
 @media(max-width:600px){
   header{padding:32px 20px 16px}
   .hero{padding:24px 20px 40px}
@@ -373,6 +378,15 @@ header{display:flex;align-items:center;gap:12px}
     <p>30 Tage Geld-zurück-Garantie ohne Nachfragen. Eine Zahlung, danach lebenslang Premium — kein Abo, keine Verlängerung.</p>
     <a href="https://www.paypal.com/ncp/payment/7GPXCMBCETCUY" target="_blank" rel="noopener" class="cta-primary">Founding-Member werden — €69</a>
     <div class="guarantee">✓ Sichere Zahlung via PayPal · Käuferschutz · 30 Tage Geld-zurück</div>
+    <!-- Optionale Zahlwege: erscheinen nur, wenn in js/pay-config.js ein Link gesetzt ist -->
+    <div id="altpay" class="altpay" hidden>
+      <p class="altpay-sep">oder bezahl direkt:</p>
+      <div class="altpay-row">
+        <a id="pay-twint" href="#" target="_blank" rel="noopener" class="cta-alt" hidden>🇨🇭 Mit TWINT zahlen</a>
+        <a id="pay-shopify" href="#" target="_blank" rel="noopener" class="cta-alt" hidden>💳 Karte / Apple&nbsp;Pay</a>
+        <a id="pay-card" href="#" target="_blank" rel="noopener" class="cta-alt" hidden>💳 Kreditkarte</a>
+      </div>
+    </div>
     <p class="cta-meta" style="margin-top:12px">Lieber per Rechnung (mit USt-ID)? <a href="mailto:hallo@abannews.com?subject=Founding-Member%20EUR69%20Rechnung" style="color:#9a3412;font-weight:600">Schreib mir kurz.</a></p>
   </div>
 </section>
@@ -412,6 +426,20 @@ header{display:flex;align-items:center;gap:12px}
 // updateCounter();
 
 // Honor-Roll: echte Namen erscheinen nach dem Launch (kein Mock, keine Fake-Zahlen).
+</script>
+<script src="/js/pay-config.js"></script>
+<script>
+// Optionale Zahlwege freischalten — nur wenn in js/pay-config.js ein Link gesetzt ist.
+(function(){
+  var cfg = window.ABAN_PAY || {};
+  var map = {'pay-twint':cfg.TWINT_URL, 'pay-shopify':cfg.SHOPIFY_URL, 'pay-card':cfg.CARD_URL};
+  var any = false;
+  Object.keys(map).forEach(function(id){
+    var url = (map[id]||'').trim(), el = document.getElementById(id);
+    if(el && url){ el.href = url; el.hidden = false; any = true; }
+  });
+  if(any){ var wrap = document.getElementById('altpay'); if(wrap) wrap.hidden = false; }
+})();
 </script>
 </body>
 </html>
