@@ -20,8 +20,8 @@
 1. Bei demselben Titel → **Paperback** (oder neu: Create → Paperback).
 2. **Maße / Trim Size:** 5 × 8 Zoll (12,7 × 20,32 cm)
 3. **Papier:** Weiß · **Bleed:** mit Beschnitt · **Cover-Finish:** matt
-4. **Innenteil hochladen:** **innenteil-5x8.pdf**  (Umfang: 85 Seiten)
-5. **Umschlag hochladen:** **umschlag-5x8.pdf**  (fertiger Wrap: 10.441 × 8.250 Zoll, Rücken 0.191 Zoll)
+4. **Innenteil hochladen:** **innenteil-5x8.pdf**  (Umfang: 87 Seiten)
+5. **Umschlag hochladen:** **umschlag-5x8.pdf**  (fertiger Wrap: 10.446 × 8.250 Zoll, Rücken 0.196 Zoll)
 6. **KI-Inhalte:** ebenfalls **Ja** angeben.
 7. Vorschau prüfen → Preis → **Veröffentlichen**.
 

@@ -154,6 +154,7 @@ h2{color:#b45309;font-size:1.35em;margin:0 0 1.1em;line-height:1.25;text-align:c
 p{margin:0;text-align:justify;text-indent:1.3em}
 p.first{text-indent:0}
 p.first::first-letter{font-size:3.1em;line-height:.82;font-weight:bold;color:#b45309;float:left;padding:.02em .09em 0 0}
+.orn{text-align:center;color:#b45309;font-size:1.05em;letter-spacing:.55em;margin:.2em 0 .8em;padding-left:.55em}
 .coverimg{margin:0;padding:0;text-align:center}
 .coverimg img{max-width:100%;height:100%;object-fit:contain}
 .titlepage{text-align:center;margin-top:22%}
@@ -243,7 +244,8 @@ def baue_epub(gesamttitel, genre, gruppen, pfad, autor="aban news", cover_pfad=N
             kap_nav.append('<li><a href="%s.xhtml">%s</a></li>' % (cid, _esc(ueberschrift)))
             files["%s.xhtml" % cid] = _xhtml_seite(
                 lang, ueberschrift,
-                "<h2>%s</h2>\n%s" % (_esc(ueberschrift), absaetze_zu_xhtml(absaetze)))
+                '<div class="orn">···</div>\n<h2>%s</h2>\n%s'
+                % (_esc(ueberschrift), absaetze_zu_xhtml(absaetze)))
 
         if g["bandtitel"]:
             nav_eintraege.append('<li><a href="band%02d.xhtml">%s</a><ol>%s</ol></li>'

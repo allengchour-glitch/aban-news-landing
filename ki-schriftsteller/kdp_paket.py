@@ -67,9 +67,12 @@ def _styles():
                                fontSize=10.5, leading=15.2, alignment=TA_JUSTIFY,
                                firstLineIndent=4.2 * mm, textColor=INK)
     s["first"] = ParagraphStyle("F", parent=s["body"], firstLineIndent=0)
+    s["orn"] = ParagraphStyle("ORN", parent=ss["Normal"], fontName="Times-Roman",
+                              fontSize=11, leading=13, textColor=AMBER, alignment=TA_CENTER,
+                              spaceBefore=2 * mm, spaceAfter=1 * mm)
     s["h2"] = ParagraphStyle("H", parent=ss["Heading2"], fontName="Times-Bold",
                              fontSize=14, leading=18, textColor=AMBER_DK, alignment=TA_CENTER,
-                             spaceBefore=3 * mm, spaceAfter=6 * mm, keepWithNext=True)
+                             spaceBefore=2 * mm, spaceAfter=6 * mm, keepWithNext=True)
     s["bl"] = ParagraphStyle("BL", parent=ss["Normal"], fontName="Times-Roman",
                              fontSize=11, leading=15, textColor=AMBER_DK, alignment=TA_CENTER)
     s["band"] = ParagraphStyle("BD", parent=ss["Heading1"], fontName="Times-Bold",
@@ -150,7 +153,7 @@ def build_interior(roman, kapitel_dir, out_pdf, autor):
         for kap in kaps:
             ueb = _ueberschrift_fuer(kap)
             _, absaetze = teile_kapitel(kap["text"])
-            st += [Paragraph(_esc(ueb), s["h2"])]
+            st += [Paragraph("·  ·  ·", s["orn"]), Paragraph(_esc(ueb), s["h2"])]
             for i, a in enumerate(absaetze):
                 if i == 0 and a:
                     st += [Paragraph('<font size="28" color="#b45309"><b>%s</b></font>%s'

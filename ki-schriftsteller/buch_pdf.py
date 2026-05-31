@@ -54,9 +54,12 @@ def _styles():
                                fontSize=11, leading=16.5, alignment=TA_JUSTIFY,
                                firstLineIndent=5 * mm, textColor=INK)
     s["first"] = ParagraphStyle("First", parent=s["body"], firstLineIndent=0, spaceBefore=2)
+    s["orn"] = ParagraphStyle("Orn", parent=ss["Normal"], fontName="Times-Roman",
+                              fontSize=12, leading=14, textColor=AMBER, alignment=TA_CENTER,
+                              spaceBefore=2 * mm, spaceAfter=1 * mm)
     s["h2"] = ParagraphStyle("Kapitel", parent=ss["Heading2"], fontName="Times-Bold",
                              fontSize=15, leading=19, textColor=AMBER_DK, alignment=TA_CENTER,
-                             spaceBefore=4 * mm, spaceAfter=7 * mm, keepWithNext=True)
+                             spaceBefore=2 * mm, spaceAfter=7 * mm, keepWithNext=True)
     s["bandlabel"] = ParagraphStyle("BandLabel", parent=ss["Normal"], fontName="Times-Roman",
                                     fontSize=12, leading=16, textColor=AMBER_DK, alignment=TA_CENTER)
     s["band"] = ParagraphStyle("Band", parent=ss["Heading1"], fontName="Times-Bold",
@@ -144,6 +147,7 @@ def baue_pdf(gesamttitel, genre, gruppen, pfad, autor="aban news", cover_pfad=No
         for kap in g["kapitel"]:
             ueberschrift = _ueberschrift_fuer(kap)
             _, absaetze = teile_kapitel(kap["text"])
+            story.append(Paragraph("·  ·  ·", s["orn"]))
             story.append(Paragraph(_esc(ueberschrift), s["h2"]))
             for i, a in enumerate(absaetze):
                 if i == 0 and a:
