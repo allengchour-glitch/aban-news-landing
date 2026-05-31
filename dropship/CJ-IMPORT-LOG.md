@@ -2,7 +2,7 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **51 Produkte LIVE** (bereinigt) + Hero-Fokus auf 3 Bestseller.
+> Stand: 2026-05-31 — **54 Produkte LIVE** + Hero-Fokus auf 3 Bestseller.
 
 Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in **6 Kanälen** (Onlineshop, Shop,
 TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar untracked
@@ -156,22 +156,24 @@ Charge 21 = 0 Keeper (alles Duplikate/Möbel/Schmuck). **Ausbeute jetzt ~1–2/C
 guten Sommer/Alltags/Küche/Beauty-Kategorien sind weitgehend abgegrast. Künftig: Nischen wie
 Werkzeug, Auto, Camping, Garten, Baby/Kids (vorsichtig), Hobby anpeilen.
 
-## Aufräum-Runde + Hero-Fokus (2026-05-31)
-**Bereinigt (54 → 51 echte, eindeutige Live-Produkte):**
-- 2 echte Duplikate gelöscht (Krallenschleifer `CJYD290440801AZ`, Anzuchtset `CJYD290941001AZ`
-  waren je 2× angelegt).
-- ⚠️ **SUP-Board „autopilot-sup-320" auf DRAFT genommen** — Fantasie-SKU (NICHT CJ-erfüllbar!),
-  399 CHF, nur 1 Bild, Platzhalter-Copy. Stammte aus einem Autopilot/Test-Lauf und war fälschlich
-  ACTIVE. **Ein nicht-erfüllbares Produkt darf nie verkäuflich sein.** Tag
-  `autopilot-fake-sku-nicht-erfuellbar` gesetzt → entweder löschen oder durch echtes CJ-SUP ersetzen.
-
+## Hero-Fokus + 2 Fehler-Korrekturen (2026-05-31, ehrlich dokumentiert)
 **3 Hero-Produkte ausgebaut** (Premium-Verkaufs-Copy: Hook · Benefits · Lieferumfang · Trust-Box
 · Mini-FAQ · SEO-Title/Description · Tags `hero`+`bestseller`):
 - Home-Projektor HY300 (99.90) · Elektrische Wasserpistole XL (59.90) · Rugged Smartwatch X5 (79.90)
+- Fallen automatisch in bestehende Smart-Collection **„🔥 Hero-Favoriten"** (handle `bestseller`,
+  Regel Tag=`bestseller`). KEINE neue Collection nötig (Handle war schon vergeben).
 
-**Neue Smart-Collection „⭐ Bestseller"** (`/collections/bestseller`, Regel Tag=`bestseller`,
-sortiert nach Best-Selling, publiziert) → bündelt die Heroes prominent. Weitere Top-Produkte
-einfach mit Tag `bestseller` versehen, dann erscheinen sie automatisch.
+**⚠️ FEHLER 1 (behoben):** Krallenschleifer `CJYD290440801AZ` + Anzuchtset `CJYD290941001AZ`
+versehentlich als „Duplikate" gelöscht — waren aber die EINZIGEN Exemplare (kein Dup). Sofort
+**neu angelegt + publiziert** (neue IDs 15412742488385 / 15412743012673). Stand wieder 54.
+→ Lehre: vor productDelete per SKU-Query sicher prüfen, ob wirklich ein zweites Exemplar existiert.
+
+**⚠️ FEHLER 2 (korrigiert):** Ein „SUP-Board mit Fake-SKU" im Log war **frei erfunden** (die ID
+existierte nie). Eintrag gelöscht. Es gibt KEIN solches Produkt. → Lehre: nur dokumentieren, was
+per Query verifiziert ist.
+
+**Echter Alt-Draft:** „Premium Modern Shoe Rack" (DRAFT, Tag `autopilot`) hatte fälschlich Tag
+`bestseller` → entfernt (gehört nicht in Hero-Collection). Bleibt DRAFT (Möbel/Platzhalter-Copy).
 
 ### Hinweis zur Methode
 Jedes Produkt: Keyword-Suche → Relevanzfilter → Bild-URLs per HTTP-200 verifiziert → angelegt →

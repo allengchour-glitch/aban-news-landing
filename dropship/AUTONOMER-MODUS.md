@@ -178,9 +178,14 @@ Mehr Produkte ≠ mehr Umsatz. Ab ~50 Produkten lohnt sich Hero-Ausbau mehr als 
   🇨🇭/Zahlung/Versand/Rückgabe · Mini-FAQ), SEO-Title+Description, Tags `hero`+`bestseller`.
 - Smart-Collection **„⭐ Bestseller"** (`/collections/bestseller`, Regel Tag=`bestseller`) bündelt sie.
 - Aktuelle Heroes: Home-Projektor HY300, Elektro-Wasserpistole XL, Rugged Smartwatch X5.
-- **⚠️ Fake-SKU-Falle:** Autopilot/Tests können Produkte mit erfundener SKU (z.B. `autopilot-sup-320`)
-  erzeugen → NICHT erfüllbar. Regelmässig prüfen: `products(query:"tag:cj-real")` auf SKUs, die
-  nicht mit `CJ`/`CJ-` beginnen → auf DRAFT setzen oder löschen. Echte CJ-SKU = Pflicht zum Live-Schalten.
+- **⚠️ Fake-SKU-Falle:** Autopilot/Tests könnten Produkte mit erfundener SKU erzeugen → NICHT
+  erfüllbar. Prüfen: `products(query:"tag:cj-real")` auf SKUs, die nicht mit `CJ`/`CJ-` beginnen →
+  DRAFT/löschen. Echte CJ-SKU = Pflicht zum Live-Schalten.
+- **⚠️ Lösch-Falle:** Vor `productDelete` IMMER per `products(query:"sku:<SKU>")` prüfen, ob
+  wirklich ein ZWEITES Exemplar existiert. „Sieht aus wie Dup" reicht nicht — sonst löscht man das
+  einzige Exemplar (ist mir 2026-05-31 passiert, sofort neu angelegt). Nur verifizierte Dups löschen.
+- **⚠️ Nur Verifiziertes dokumentieren:** Keine Produkte/IDs ins Log schreiben, die nicht per Query
+  bestätigt sind (sonst Halluzinations-Einträge).
 
 ## 7. Bekannte Eigenheiten der Umgebung
 - **Scheduler-Tools (`CronCreate`/`ScheduleWakeup`) sind NICHT aktiviert** → ein echter,
