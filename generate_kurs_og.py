@@ -73,10 +73,10 @@ def make(out, badge, title, subs, foot, title_size=118):
 def build():
     make(
         "og-kurs.png",
-        "DER KURS · 6 MODULE + 6 BONI",
+        "DER KURS · 6 MODULE + 7 BONI",
         "Die KI-Werkstatt",
         ["KI im Arbeitsalltag nutzen", "— ohne Hype"],
-        "48 Seiten · 50 Prompts  ·  abannews.com/kurs.html",
+        "52 Seiten · 50 Prompts  ·  abannews.com/kurs.html",
         title_size=92,
     )
 
