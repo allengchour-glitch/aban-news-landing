@@ -1,28 +1,30 @@
 {
   "stand": "2026-05",
-  "hinweis": "Kuratierte Auswahl bekannter Programme. High-level — Beträge, Fristen und Voraussetzungen ändern sich. Vor Antrag immer beim offiziellen Förderträger prüfen (verlinkt). Keine Förderberatung, keine Garantie.",
+  "hinweis": "Kuratierte Auswahl. High-level — Beträge, Fristen und Budgets ändern sich laufend. Vor Antrag immer beim offiziellen Förderträger prüfen (verlinkt). Keine Förderberatung, keine Garantie. Hinweis: Die früheren Bundesprogramme 'Digital Jetzt' (bis 2023) und 'go-digital' (bis 2024) sind ausgelaufen — aktiv sind v.a. Länderprogramme, QCG-Weiterbildung und BAFA-Beratung.",
   "programme": [
     {
-      "id": "digital-jetzt",
-      "name": "Digital Jetzt",
+      "id": "qcg",
+      "name": "Qualifizierungschancengesetz (QCG)",
       "land": "DE",
-      "traeger": "BMWK",
-      "art": "Zuschuss",
-      "zielgruppe": "KMU 3–499 Mitarbeitende",
-      "was": "Investitionen in digitale Technologien & Software sowie Mitarbeiter-Qualifizierung.",
-      "url": "https://www.bmwk.de/Redaktion/DE/Dossier/digital-jetzt.html",
-      "aban_note": "Einer der bekanntesten Digitalisierungs-Zuschüsse für den Mittelstand. Antrag läuft in Fenstern — Status vorab prüfen."
+      "traeger": "Bundesagentur für Arbeit",
+      "art": "Weiterbildungs-Zuschuss",
+      "status": "aktiv (Reform ab 01.01.2026)",
+      "zielgruppe": "Beschäftigte; KMU < 50 MA besonders",
+      "was": "Bis zu 100 % der Kurskosten für anerkannte Weiterbildung (KMU < 50 MA), plus Lohnzuschuss — z. B. für KI-/Digital-Qualifizierung. Kurs ≥ 120 Std., AZAV-zertifiziert.",
+      "url": "https://www.arbeitsagentur.de/unternehmen/finanziell/qualifizierungschancengesetz",
+      "aban_note": "Seit der 2026-Reform der stärkste Hebel, um dein Team günstig KI-fit zu machen."
     },
     {
-      "id": "go-digital",
-      "name": "go-digital",
+      "id": "digitalbonus-bayern",
+      "name": "Digitalbonus Bayern",
       "land": "DE",
-      "traeger": "BMWK",
-      "art": "Geförderte Beratung",
-      "zielgruppe": "KMU & Handwerk < 100 MA",
-      "was": "Autorisierte Beratung zu Digitalisierung, IT-Sicherheit und Online-Marketing (Förderquote anteilig).",
-      "url": "https://www.bmwk.de/Redaktion/DE/Artikel/Digitale-Welt/foerderprogramm-go-digital.html",
-      "aban_note": "Gut, wenn du externe Hilfe beim Digitalisieren willst — die Beratung wird bezuschusst, nicht das Tool selbst."
+      "traeger": "Bayerisches Wirtschaftsministerium",
+      "art": "Zuschuss",
+      "status": "aktiv bis 31.12.2027 (neue Anträge ab 01.06.2026)",
+      "zielgruppe": "Kleine Unternehmen mit Betriebsstätte in Bayern",
+      "was": "Zuschuss für Digitalisierung von Produkten/Prozessen und IT-Sicherheit. Standard bis 7.500 €, Plus bis 30.000 € (50 %). Fokus zunehmend KI & Robotik.",
+      "url": "https://www.digitalbonus.bayern/",
+      "aban_note": "Beispiel für ein starkes Länderprogramm — andere Bundesländer haben eigene (siehe Förderdatenbank)."
     },
     {
       "id": "bafa-beratung",
@@ -30,10 +32,23 @@
       "land": "DE",
       "traeger": "BAFA",
       "art": "Zuschuss zu Beratung",
+      "status": "aktiv bis 31.12.2026",
       "zielgruppe": "KMU & Freiberufler",
-      "was": "Zuschuss zu Kosten für Unternehmensberatung (auch Digitalisierung/Strategie).",
+      "was": "Zuschuss zu Kosten für Unternehmensberatung — auch Digitalisierung & Strategie.",
       "url": "https://www.bafa.de/DE/Wirtschaft/Beratung_Finanzierung/Unternehmensberatung/unternehmensberatung_node.html",
-      "aban_note": "Breit einsetzbar für Beratungskosten. Bedingungen je nach Unternehmensalter unterschiedlich."
+      "aban_note": "Breit einsetzbar für Beratungskosten. Konditionen je nach Unternehmensalter unterschiedlich."
+    },
+    {
+      "id": "mittelstand-digital",
+      "name": "Mittelstand-Digital Zentren",
+      "land": "DE",
+      "traeger": "BMWE",
+      "art": "Kostenlose Unterstützung",
+      "status": "laufend",
+      "zielgruppe": "KMU & Handwerk",
+      "was": "Kostenlose Praxis-Unterstützung, Demonstratoren und Workshops zu Digitalisierung & KI.",
+      "url": "https://www.mittelstand-digital.de/",
+      "aban_note": "Kein Geld, aber kostenloses Know-how vor Ort — guter erster Anlaufpunkt."
     },
     {
       "id": "kfw-digitalisierungskredit",
@@ -41,43 +56,35 @@
       "land": "DE",
       "traeger": "KfW",
       "art": "Förderkredit",
+      "status": "laufend",
       "zielgruppe": "Unternehmen & Freiberufler",
       "was": "Zinsgünstiger Kredit für Digitalisierungs- und Innovationsvorhaben.",
       "url": "https://www.kfw.de/inlandsfoerderung/Unternehmen/",
       "aban_note": "Kein Zuschuss, sondern günstiger Kredit — sinnvoll bei größeren Investitionen."
     },
     {
-      "id": "mittelstand-digital",
-      "name": "Mittelstand-Digital Zentren",
-      "land": "DE",
-      "traeger": "BMWK",
-      "art": "Kostenlose Unterstützung",
-      "zielgruppe": "KMU & Handwerk",
-      "was": "Kostenlose Praxis-Unterstützung, Demonstratoren und Workshops zur Digitalisierung & KI.",
-      "url": "https://www.mittelstand-digital.de/",
-      "aban_note": "Kein Geld, aber kostenloses Know-how vor Ort — guter erster Anlaufpunkt."
-    },
-    {
       "id": "foerderdatenbank-de",
       "name": "Förderdatenbank des Bundes",
       "land": "DE",
       "traeger": "Bund / Länder / EU",
-      "art": "Datenbank",
+      "art": "Offizielle Datenbank",
+      "status": "laufend",
       "zielgruppe": "Alle",
-      "was": "Offizielle Suche über alle Förderprogramme von Bund, Ländern und EU.",
+      "was": "Offizielle Suche über alle Programme von Bund, Ländern und EU — inkl. aller Landes-Digitalboni.",
       "url": "https://www.foerderdatenbank.de/",
-      "aban_note": "Die offizielle Gesamtübersicht — hier prüfst du, was aktuell läuft und für dich passt."
+      "aban_note": "Die offizielle Gesamtübersicht — hier prüfst du, was in deinem Bundesland aktuell läuft."
     },
     {
       "id": "kmu-digital-at",
       "name": "KMU.DIGITAL",
       "land": "AT",
-      "traeger": "BMAW / WKO / aws",
+      "traeger": "BMWET / WKO / aws",
       "art": "Beratung + Umsetzung",
+      "status": "Budget aktuell ausgeschöpft — neue Calls prüfen",
       "zielgruppe": "Österreichische KMU",
-      "was": "Geförderte Digitalisierungs-Beratung und Zuschuss zu Umsetzungsprojekten.",
-      "url": "https://www.kmudigital.at/",
-      "aban_note": "Das zentrale Digitalisierungs-Programm für AT-KMU — Beratung und Umsetzung kombinierbar."
+      "was": "Geförderte Digitalisierungs-Beratung + Umsetzungs-Zuschuss (bis ~30 %). Stand 2026: Mittel der laufenden Periode weitgehend ausgeschöpft.",
+      "url": "https://kmudigital.at/",
+      "aban_note": "Das zentrale AT-Digitalisierungsprogramm — aber Budget-Status vorab unbedingt prüfen."
     },
     {
       "id": "aws-at",
@@ -85,10 +92,11 @@
       "land": "AT",
       "traeger": "Austria Wirtschaftsservice",
       "art": "Zuschuss / Garantie / Kredit",
+      "status": "laufend (wechselnde Calls)",
       "zielgruppe": "Österreichische Unternehmen",
       "was": "Diverse Programme für Innovation, Digitalisierung und Investitionen.",
       "url": "https://www.aws.at/",
-      "aban_note": "Breites Portfolio — aktuelle Calls und Programme direkt bei aws prüfen."
+      "aban_note": "Breites Portfolio — aktuelle Calls direkt bei aws prüfen."
     },
     {
       "id": "ffg-at",
@@ -96,20 +104,22 @@
       "land": "AT",
       "traeger": "Forschungsförderungsgesellschaft",
       "art": "Forschungsförderung",
+      "status": "laufend",
       "zielgruppe": "Forschende Unternehmen",
-      "was": "Förderung von Forschung & Entwicklung, inkl. KI- und Daten-Projekten.",
+      "was": "Förderung von F&E, inkl. KI- und Daten-Projekten.",
       "url": "https://www.ffg.at/",
       "aban_note": "Eher für F&E-lastige Vorhaben — wenn du KI wirklich entwickelst, nicht nur einsetzt."
     },
     {
-      "id": "innosuisse-ch",
+      "id": "innosuisse-projekte-ch",
       "name": "Innosuisse Innovationsprojekte",
       "land": "CH",
       "traeger": "Innosuisse",
       "art": "Projektförderung",
+      "status": "laufend",
       "zielgruppe": "Schweizer KMU & Start-ups (mit Forschungspartner)",
       "was": "Förderung von Innovationsprojekten gemeinsam mit einem Forschungspartner.",
-      "url": "https://www.innosuisse.admin.ch/",
+      "url": "https://www.innosuisse.ch/inno/de/home/forderung-fur-schweizer-projekte/",
       "aban_note": "Kern der CH-Innovationsförderung. Meist mit Hochschul-/Forschungspartner."
     },
     {
@@ -117,10 +127,11 @@
       "name": "Innosuisse Innovationsscheck",
       "land": "CH",
       "traeger": "Innosuisse",
-      "art": "Gutschein",
-      "zielgruppe": "Schweizer KMU",
-      "was": "Gutschein für eine erste Zusammenarbeit mit einer Forschungseinrichtung.",
-      "url": "https://www.innosuisse.admin.ch/",
+      "art": "Gutschein (bis CHF 15'000)",
+      "status": "laufend",
+      "zielgruppe": "Schweizer KMU < 250 VZÄ",
+      "was": "Bis zu 15'000 CHF für eine erste Vorstudie mit einer Forschungseinrichtung (100 % der Forschungspartner-Kosten). Bearbeitung 4–8 Wochen.",
+      "url": "https://www.innosuisse.admin.ch/de/innovationsscheck",
       "aban_note": "Niedrigschwelliger Einstieg, um ein Innovationsvorhaben anzutesten."
     },
     {
@@ -129,10 +140,11 @@
       "land": "CH",
       "traeger": "SECO / Bund",
       "art": "Information / Übersicht",
+      "status": "laufend",
       "zielgruppe": "Schweizer KMU",
-      "was": "Offizielle Infos zu Finanzierung, Förderung und Digitalisierung für KMU.",
+      "was": "Offizielle Infos zu Finanzierung, Förderung und Innovation — auch kantonale Programme.",
       "url": "https://www.kmu.admin.ch/",
-      "aban_note": "Guter offizieller Startpunkt für CH — auch kantonale Programme von hier aus finden."
+      "aban_note": "Guter offizieller Startpunkt für CH — von hier aus auch kantonale Programme finden."
     }
   ]
 }
