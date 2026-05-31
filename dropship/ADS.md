@@ -84,7 +84,14 @@ Technik-Notizen:
 - Tour-Aufnahme bei CSS-Viewport-Größe (540×960 / 600×600), danach 2× Lanczos-Upscale,
   damit kein graues Padding entsteht. Cookie-Banner wird automatisch akzeptiert.
 
+## Ablage in Shopify
+Die beiden 9:16-Hero-Clips liegen jetzt in **Shopify Admin → Content → Files**
+(via `stagedUploadsCreate` → GCS-POST 204 → `fileCreate`, contentType VIDEO):
+- Top-10-Bestseller-Montage: `gid://shopify/Video/69552316612993`
+- Website-Tour: `gid://shopify/Video/69552316645761`
+(Der frühere Container-Fehler bei der Signatur-Übertragung tritt nicht mehr auf.)
+Die 1:1- und Hook-Versionen wurden direkt im Chat geliefert.
+
 ## Optional / To-do
-- Upload nach **Shopify Admin → Content → Files**: per Drag-and-Drop (Staged-GCS-Upload
-  via API schlug im Container an der Signatur-Übertragung fehl — kein Blocker).
+- Bei Bedarf auch 1:1- + Hook-Clips nach Shopify Files spiegeln (gleicher Weg).
 - Varianten mit anderem Musik-Track oder Live-„Top 10"-Produkten auf Wunsch.
