@@ -62,16 +62,27 @@ Bitte gib mir die 5 wichtigsten, priorisierten Verbesserungen für (a) Produktau
 
   if (!prompt) { console.log('Nutzung: node dropship/zweitmeinung.mjs "Frage" | --review <datei…> | --autopilot'); process.exit(0); }
 
-  const provider = OPENAI_API_KEY ? 'OpenAI (gpt-4o)' : GEMINI_API_KEY ? 'Gemini (2.0-flash)' : null;
-  if (!provider) {
+  // Probiert alle verfügbaren Provider durch, bis einer antwortet (robust gegen leere Kontingente).
+  const tries = [];
+  if (OPENAI_API_KEY) tries.push(['OpenAI (gpt-4o)', askOpenAI]);
+  if (GEMINI_API_KEY) tries.push(['Gemini (2.0-flash)', askGemini]);
+  if (!tries.length) {
     console.log('Kein API-Key gesetzt. Setze OPENAI_API_KEY oder GEMINI_API_KEY, dann erneut ausführen.');
     console.log(`\n[Geplante ${mode}-Anfrage, sobald ein Key da ist:]\n` + prompt.slice(0, 500) + '…');
     process.exit(0);
   }
-  console.error(`→ Frage ${provider} …`);
-  try {
-    const ans = OPENAI_API_KEY ? await askOpenAI(prompt) : await askGemini(prompt);
-    console.log(`\n===== Zweitmeinung von ${provider} =====\n`);
-    console.log(ans);
-  } catch (e) { console.error('Fehler:', e.message); process.exit(0); }
+  const fails = [];
+  for (const [name, fn] of tries) {
+    console.error(`→ Frage ${name} …`);
+    try {
+      const ans = await fn(prompt);
+      console.log(`\n===== Zweitmeinung von ${name} =====\n`);
+      console.log(ans);
+      process.exit(0);
+    } catch (e) { fails.push(`${name}: ${e.message}`); console.error(`  ✗ ${e.message}`); }
+  }
+  console.error('\nKein Provider lieferte eine Antwort. Diagnose:');
+  fails.forEach(f => console.error('  - ' + f));
+  console.error('\n→ Tipp: API-Aktivierung/Guthaben im jeweiligen Konto prüfen (OpenAI Billing bzw. Google AI Studio).');
+  process.exit(0);
 })();
