@@ -1,0 +1,13 @@
+Kapitel 5 - Was Niklaus längst wusste
+
+Sie stellte ihn am Abend, in seinem kleinen Büro, bei geschlossener Tür. Sie verlangte zu wissen, was die Dose enthielt und woher er gewusst hatte, dass sie da war, und Niklaus, der gesehen hatte, dass er sich nicht mehr herausreden konnte, gab nach. Er holte aus dem Schrank einen Ordner, dick, abgegriffen, das Werk vieler Jahre, und legte ihn vor sie hin.
+
+«Mein Großonkel hieß Anton Roos», sagte er. «Er ist im November zweiundsechzig am Damm gestorben. Offiziell ein Unfall. In meiner Familie hat man das nie geglaubt, und keiner konnte sagen, warum nicht, es war nur ein Wissen, das weitergegeben wurde wie eine Krankheit.» Er schlug den Ordner auf. Fotokopien, Abrechnungen, ein Protokoll mit einer fehlenden Seite, Briefe, Notizen. «Ich grabe seit zwanzig Jahren. Ich habe die Abrechnungen des Dammbaus rekonstruiert, so weit es ging. Es wurde betrogen, damals, Material verrechnet, das nie geliefert wurde, und das Geld floss in ein paar Höfe und in eine Entschädigung, die zu groß war für den Schaden. Mein Großonkel hat den Betrug entdeckt. Wenige Tage später war er tot.»
+
+Eva sah die Dokumente durch, mit dem geübten Blick für Zahlen, den ihr Vater ihr vererbt hatte, ohne dass sie es wusste, und sie sah, dass es stimmte. «Und die Dose?»
+
+«Die habe ich vor zwei Wochen gefunden, als der Pegel die Kapelle freigab. Ich habe sie geöffnet.» Er legte sie auf den Tisch, das Tuch daneben. «Da ist ein Brief drin. Alt. Mit dem Namen meines Großonkels darauf, in einer Frauenhandschrift. Ich habe ihn nicht gelesen.» Er sah sie an. «Sechzig Jahre lang hat in meiner Familie keiner gewusst, was wirklich war. Ich habe gewartet. Ich wollte ihn nicht allein öffnen. Ich wollte, dass eine Aregger dabei ist, wenn die Wahrheit aus dem Wasser kommt. Und jetzt sitzt eine vor mir.»
+
+Eva war hin- und hergerissen zwischen Empörung — er hatte sie benutzt, von der ersten Stunde an, ihre Mauer, ihren Befund, ihren Namen — und einer Ahnung, dass er recht hatte, dass dieser Brief sie etwas anging, dass das alte Frösteln zwischen ihrer und seiner Familie hier seinen Grund hatte. Sie sah die ungeöffnete Dose, den Namen Anton Roos in einer Schrift, die ihr fremd war und es vielleicht nicht sein durfte. «Wenn wir ihn öffnen», sagte sie schließlich, «dann zusammen. Jetzt. Oder gar nicht. Ich will nicht, dass Sie mir hinterher erzählen, was drinstand.»
+
+Niklaus nickte. «Zusammen», sagte er. Aber Eva hob die Hand. Nicht heute. Sie musste vorher zu jemandem. Es gab einen Menschen, der mehr wusste als alle Ordner, und sie hatte zwanzig Jahre nicht mit ihm geredet.
