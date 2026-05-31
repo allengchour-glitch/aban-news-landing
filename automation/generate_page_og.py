@@ -58,6 +58,12 @@ PAGES = {
     "vergleich-api.html": "page-vergleich-api",
     "vergleich-ai-chat.html": "page-vergleich-ai-chat",
     "vergleich-kostenlos.html": "page-vergleich-kostenlos",
+    # weitere indexierbare Seiten
+    "geld-verdienen-mit-ki.html": "page-geld-verdienen",
+    "archive.html": "page-archive",
+    "mrr.html": "page-mrr",
+    "werbung.html": "page-werbung",
+    "growth-dashboard.html": "page-growth-dashboard",
 }
 
 
@@ -123,13 +129,34 @@ def wire(path, og_name, title):
     t = path.read_text(encoding="utf-8")
     url = f"{SITE}/img/og/{og_name}.png"
     alt = html.escape(f"aban news · {title}")
-    t2 = re.sub(r'(<meta property="og:image" content=")[^"]*(">)', rf'\g<1>{url}\g<2>', t, count=1)
-    t2 = re.sub(r'(<meta name="twitter:image" content=")[^"]*(">)', rf'\g<1>{url}\g<2>', t2, count=1)
-    if 'property="og:image:width"' not in t2 and '<meta property="og:image"' in t2:
-        extra = (f'\n  <meta property="og:image:width" content="1200">'
+
+    if '<meta property="og:image"' in t:
+        # Vorhandene Tags ersetzen
+        t2 = re.sub(r'(<meta property="og:image" content=")[^"]*(">)', rf'\g<1>{url}\g<2>', t, count=1)
+        t2 = re.sub(r'(<meta name="twitter:image" content=")[^"]*(">)', rf'\g<1>{url}\g<2>', t2, count=1)
+        if 'property="og:image:width"' not in t2:
+            extra = (f'\n  <meta property="og:image:width" content="1200">'
+                     f'\n  <meta property="og:image:height" content="630">'
+                     f'\n  <meta property="og:image:alt" content="{alt}">')
+            t2 = re.sub(r'(<meta property="og:image" content="[^"]*">)', rf'\g<1>{extra}', t2, count=1)
+    else:
+        # Tags fehlen ganz -> nach <title> (oder description) einfügen
+        block = (f'\n  <meta property="og:image" content="{url}">'
+                 f'\n  <meta property="og:image:width" content="1200">'
                  f'\n  <meta property="og:image:height" content="630">'
-                 f'\n  <meta property="og:image:alt" content="{alt}">')
-        t2 = re.sub(r'(<meta property="og:image" content="[^"]*">)', rf'\g<1>{extra}', t2, count=1)
+                 f'\n  <meta property="og:image:alt" content="{alt}">'
+                 f'\n  <meta name="twitter:image" content="{url}">')
+        anchor = re.search(r'<meta name="description"[^>]*>', t)
+        if not anchor:
+            anchor = re.search(r'</title>', t)
+        if not anchor:
+            return False
+        t2 = t[:anchor.end()] + block + t[anchor.end():]
+        # twitter:card sicherstellen (für große Vorschau)
+        if 'twitter:card' not in t2:
+            t2 = t2.replace('<meta name="twitter:image"',
+                            '<meta name="twitter:card" content="summary_large_image">\n  <meta name="twitter:image"', 1)
+
     if t2 != t:
         path.write_text(t2, encoding="utf-8")
         return True
