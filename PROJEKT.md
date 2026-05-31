@@ -26,7 +26,7 @@ KI-Newsletter **abannews.com / .de** (Mo–Fr, kuratiert, „3–5 Min, kein Hyp
 ## 🟢 LIVE-STATUS (laufender Go-Live, Stand 2026-05-30)
 - **KI-Tools Radar: LIVE** auf Cloudflare Pages ✅
   - Pages-Projekt: `radar` → Test-URL `radar-1eo.pages.dev` (Deploy successful)
-  - Production branch dort: `claude/ai-money-project-f25Ub`
+  - Production branch: `main` (Feature gemergt; foerder/jobs ebenfalls auf `main` deployen)
   - Build: `cd ki-tools-radar && pip install -r requirements.txt && python generate.py` · Output: `ki-tools-radar/dist`
   - Custom Domain `radar.abannews.com` eingerichtet; CNAME radar -> radar-1eo.pages.dev (DNS-Aktivierung lief, ggf. manuell anlegen).
 - **Förder-Radar / Jobs-Radar: noch nicht deployed** (gleicher Weg, Werte in 3-KLICKS.md).
@@ -87,7 +87,7 @@ AI-Act-Modul). Nicht aktiv weiterentwickelt. Bei Bedarf reaktivierbar.
 LinkedIn-DACH, GEO, Monetarisierung nach Audience-Größe, realistische Timeline, das 80/20).
 
 ## Git / Deployment
-- **Branch:** `claude/ai-money-project-f25Ub` · **PR:** #2 (Draft) auf allengchour-glitch/aban-news-landing
+- **Branch:** alles nach `main` gemergt (PR #2 erledigt). Cloudflare-Projekte auf `main` stellen. auf allengchour-glitch/aban-news-landing
 - CI: Voice-Linter überspringt alle Projekt-/Memory-Ordner (ki-tools-radar/, foerder-radar/, jobs-radar/,
   aban-studio/, ki-geld-projekt/, PROJEKT.md, CLAUDE.md) — gilt nur für Newsletter-Content im Root.
 - Jedes Geld-Projekt hat einen eigenen Auto-Build-Workflow in `.github/workflows/`.
