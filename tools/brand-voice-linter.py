@@ -58,7 +58,7 @@ def _is_doc(path):
     """
     p = path.replace("\\", "/").lstrip("./")
     base = os.path.basename(p)
-    if base == "README.md":
+    if base in ("README.md", "CHANGELOG.md"):
         return True
     if p.startswith("automation/") or "/automation/" in p:
         return True

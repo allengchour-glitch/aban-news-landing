@@ -9,11 +9,13 @@ on:
     paths:
       - '**/*.md'
       - '!README.md'
+      - '!CHANGELOG.md'
       - '!automation/*.md'
   push:
     paths:
       - '**/*.md'
       - '!README.md'
+      - '!CHANGELOG.md'
       - '!automation/*.md'
 
 jobs:
@@ -45,9 +47,9 @@ jobs:
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             BASE="${{ github.event.pull_request.base.sha }}"
             HEAD="${{ github.event.pull_request.head.sha }}"
-            FILES=$(git diff --name-only --diff-filter=ACMR "$BASE" "$HEAD" -- '*.md' ':(exclude)README.md' ':(exclude)automation/*.md' || true)
+            FILES=$(git diff --name-only --diff-filter=ACMR "$BASE" "$HEAD" -- '*.md' ':(exclude)README.md' ':(exclude)CHANGELOG.md' ':(exclude)automation/*.md' || true)
           else
-            FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD -- '*.md' ':(exclude)README.md' ':(exclude)automation/*.md' 2>/dev/null || git ls-files '*.md' ':(exclude)README.md' ':(exclude)automation/*.md')
+            FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD -- '*.md' ':(exclude)README.md' ':(exclude)CHANGELOG.md' ':(exclude)automation/*.md' 2>/dev/null || git ls-files '*.md' ':(exclude)README.md' ':(exclude)CHANGELOG.md' ':(exclude)automation/*.md')
           fi
           echo "Changed .md files:"
           echo "$FILES"
