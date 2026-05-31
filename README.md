@@ -272,3 +272,20 @@ Wenn später ein Subscribe-Click-Tracking gewünscht: setze ein `data-ph-event="
 **Aban-Voice-Konsistenz:** Diese README ist absichtlich pragmatisch, nicht Marketing-y. Wie der Newsletter selbst.
 
 — Aban (über Claude geschrieben, von Aban verantwortet)
+
+---
+
+## Build & Validierung (`automation/`)
+
+Selbst programmierte, idempotente Werkzeuge zum Pflegen/Erweitern der Site —
+vanilla Python, keine externen Deps (Pillow nur für Bild-Generierung).
+
+| Befehl | Zweck |
+|--------|-------|
+| `python3 automation/build.py` | **Alles in einem Befehl**: alle Generatoren/Injektoren in richtiger Reihenfolge (Hero-SVGs → OG-Bilder → RSS → Subscribe-Box → SEO/Breadcrumbs → PWA → Modern-Layer → Exit-Prompt → Social-Queue) + Validierung am Ende. Idempotent → kein Diff, wenn alles aktuell ist. |
+| `python3 automation/validate_site.py` | **Gesundheitscheck**: jede JSON-LD parst, keine kaputten internen Links, sitemap/RSS valides XML, Daten-JSON valide, `<img>`-Hygiene (alt+loading), hreflang-Cluster. Exit ≠ 0 bei harten Fehlern → CI-tauglich. |
+| `python3 automation/data_integrity.py` | **Datenbank-Integrität** von `tools.json` + `glossary.json`: Pflichtfelder, Score-Bereiche, Referenzen (`alternatives`/`see_also`/`ausgaben_mentions`), Duplikate. |
+
+**Neue Ausgabe / Seite hinzufügen → einfach `python3 automation/build.py`** danach,
+dann `git diff` prüfen, committen. Der Build zieht Hero, OG, RSS, Karte-Thumbnail,
+Subscribe-Box, SEO und Social-Queue automatisch nach.
