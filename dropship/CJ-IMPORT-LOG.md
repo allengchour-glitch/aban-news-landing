@@ -24,6 +24,14 @@ Preise FX-bereinigt (USD→CHF ≈ 0,88).
 | 9 | Edelstahl-Trinkflasche XL isoliert | 29.90 | 12.45 | ~2.7× | `CJJT291256301AZ` |
 | 10 | Vintage Sonnenbrille Oval | 16.90 | 1.46 | ~10× | `CJCF289297901AZ` |
 
+## Bestandsaufnahme 2026-05-31 (Anzahl Produkte)
+- **Diese Session importiert & live:** 10 (Charge 1: 4 · Charge 2: 3 · Charge 3: 3).
+- **Frühere `cj-real`-Produkte gefunden & nachpubliziert:** 8 (2× Aroma-Diffuser, 2× Smartwatch,
+  2× Bluetooth-Speaker, LED-Schreibtischlampe, Gemüseschneider) — waren ACTIVE, aber in **0 Kanälen**
+  (also unsichtbar). Jetzt alle in 6 Kanälen live.
+- **`cj-real` aktiv & live gesamt: 18.** (+1 DRAFT „Shoe Rack" mit Tag `autopilot`, bewusst nicht live.)
+- Shop-Gesamt: 5299 Produkte (Grossteil Theme-/Demo-Bestand), 383 ACTIVE.
+
 ### Bei eingehender Bestellung
 Produkt in CJ über die **Fulfillment-SKU** (oben) bestellen → an Kundenadresse senden lassen.
 
