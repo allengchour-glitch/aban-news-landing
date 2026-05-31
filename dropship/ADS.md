@@ -84,6 +84,14 @@ Technik-Notizen:
 - Tour-Aufnahme bei CSS-Viewport-Größe (540×960 / 600×600), danach 2× Lanczos-Upscale,
   damit kein graues Padding entsteht. Cookie-Banner wird automatisch akzeptiert.
 
+## Mode-/Kleider-Montage (Zusatz, 2026-05-31)
+Auf Kundenwunsch eine eigene **Sommer-Mode-Montage** mit echten Model-Fotos:
+- `luxestyle_mode_9x16.mp4` (1080×1920) + `luxestyle_mode_1x1.mp4` (1080×1080), ~21 s, mit Musik.
+- Intro „LUXESTYLE · SOMMER-MODE · 2026", 9 Kleider + 1 Herrenhemd, Outro WELCOME10.
+- Skript: `dropship/ads/render_mode.sh` (Bilder in `/tmp/ads/imgmode/01..10.jpg`, Musik `uplifting.wav`).
+- Produkte: Savanna · Sirène (Abend) · Lumea · Brise · Fleurette · Daisy · Bali · Bluette · Noir · Herrenhemd Monsieur.
+- In Shopify Files: 9:16 = `gid://shopify/Video/69552327754113`. 1:1 im Chat geliefert.
+
 ## Ablage in Shopify
 Die beiden 9:16-Hero-Clips liegen jetzt in **Shopify Admin → Content → Files**
 (via `stagedUploadsCreate` → GCS-POST 204 → `fileCreate`, contentType VIDEO):
