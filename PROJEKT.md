@@ -23,19 +23,19 @@ KI-Newsletter **abannews.com / .de** (Mo–Fr, kuratiert, „3–5 Min, kein Hyp
 - **Rolle:** Distributions-Kanal + größtes Asset. Alle Geld-Projekte teasern über den Newsletter an
   und verlinken zurück (Newsletter-Box). Betreiber/Impressum-Daten: Alleng Chour, Belp/CH, hallo@abannews.com.
 
-## 🟢 LIVE-STATUS (laufender Go-Live, Stand 2026-05-30)
-- **KI-Tools Radar: LIVE** auf Cloudflare Pages ✅
-  - Pages-Projekt: `radar` → Test-URL `radar-1eo.pages.dev` (Deploy successful)
-  - Production branch: `main` (Feature gemergt; foerder/jobs ebenfalls auf `main` deployen)
-  - Build: `cd ki-tools-radar && pip install -r requirements.txt && python generate.py` · Output: `ki-tools-radar/dist`
-  - Custom Domain `radar.abannews.com` eingerichtet; CNAME radar -> radar-1eo.pages.dev (DNS-Aktivierung lief, ggf. manuell anlegen).
-- **Förder-Radar / Jobs-Radar: noch nicht deployed** (gleicher Weg, Werte in 3-KLICKS.md).
-- **Affiliate-Codes:** offen — User meldet sich bei recurring-Programmen an (Jasper/GetResponse/Systeme.io),
-  schickt dann den fertigen Link → in `ki-tools-radar/affiliate.json` unter `links` eintragen (`_`-Präfix entfernen), rebuild.
-  WICHTIG: nur den Link annehmen, nie Passwort/Bankdaten.
-- **Social-Secrets:** offen — DISCORD_WEBHOOK_URL / TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID als GitHub-Secrets.
-- User-Kontext: Cloudflare-Konto + abannews.com bei Cloudflare; GitHub eingeloggt. Arbeitet am Windows-PC
-  (Befehle gehören NICHT in PowerShell, sondern ins Cloudflare-Formular — war anfangs ein Missverständnis).
+## 🟢 LIVE-STATUS (Stand 2026-05-31)
+- **Alle 3 Radars LIVE auf Cloudflare Pages** ✅
+  - KI-Tools Radar → `radar.abannews.com` (Projekt `radar`)
+  - Förder-Radar → `foerder.abannews.com` (Projekt `foerder`, foerder.pages.dev)
+  - KI-Jobs Radar → `jobs.abannews.com` (Projekt `jobs`, jobs-9np.pages.dev, Branch main)
+  - Custom Domains aktiviert, CNAMEs automatisch, ggf. kurz "Initializing".
+- **Aktive Affiliate-Links** (in ki-tools-radar/affiliate.json): Systeme.io (60% recurring), ElevenLabs (20%).
+- **Affiliate-Bewerbungen laufen** (manuelle Prüfung, Link kommt per Mail): GetResponse, Murf AI, ggf. Surfer SEO.
+  -> Sobald Link da: in affiliate.json eintragen, '_'-Präfix entfernen, rebuild. Tools existieren bereits in tools.json.
+- **Social-Secrets:** noch offen (DISCORD_WEBHOOK_URL / TELEGRAM_BOT_TOKEN+CHAT_ID als GitHub-Secrets).
+- **Traffic:** nächster großer Hebel — Newsletter-Teaser + LinkedIn (LINKEDIN-CONTENT-PLAN.md).
+- WICHTIG bei Anmeldungen: nur den https-Affiliate-LINK annehmen, NIE API-Key/Passwort/Bankdaten.
+
 
 ## Aktive Geld-Projekte (in diesem Repo)
 
