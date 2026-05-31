@@ -92,6 +92,13 @@ Auf Kundenwunsch eine eigene **Sommer-Mode-Montage** mit echten Model-Fotos:
 - Produkte: Savanna · Sirène (Abend) · Lumea · Brise · Fleurette · Daisy · Bali · Bluette · Noir · Herrenhemd Monsieur.
 - In Shopify Files: 9:16 = `gid://shopify/Video/69552327754113`. 1:1 im Chat geliefert.
 
+## Mix-Hook „HIGHLIGHTS 2026" (8,5 s, Zusatz, 2026-05-31)
+Schnelle TikTok-Hook-Version aus dem Best-of-Mix (10 Produkte je 0,8 s, slideleft):
+- `luxestyle_mixhook_9x16.mp4` (1080×1920) + `luxestyle_mixhook_1x1.mp4` (1080×1080), ~8,5 s, mit Musik.
+- Intro „HIGHLIGHTS · 2026" (Intro-Font verkleinert, damit das Wort vollständig passt), Outro WELCOME10.
+- Skript: `dropship/ads/hook_mix.sh` (nutzt die `X*_seg_*`-Segmente aus `render_mix.sh`).
+- Im Chat geliefert. Shopify-Files-Spiegelung diesmal übersprungen (Staged-Upload-Antwort kam fehlerhaft zurück) — bei Bedarf später nachholen.
+
 ## Best-of-Mix-Montage „HIGHLIGHTS 2026" (Zusatz, 2026-05-31)
 Querschnitt durch alle Kategorien — die universellste Werbung:
 - `luxestyle_mix_9x16.mp4` (1080×1920) + `luxestyle_mix_1x1.mp4` (1080×1080), ~21 s, mit Musik.
