@@ -11,16 +11,17 @@ const BASE='https://developers.cjdropshipping.com/api2.0/v1';
 const tok=JSON.parse(fs.readFileSync('/tmp/cj_token.json')).accessToken;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
-// cat = Shopify-Regel-Tag der Zielkategorie — KLEIDER-FOKUS 2026
+// cat = Zielkategorie — Kleider + Herren-Mode
 const KEYWORDS=[
-  { kw:'women floral midi dress',      must:['dress'], cat:'damen-mode', take:1 },
-  { kw:'women boho maxi dress',        must:['dress'], cat:'damen-mode', take:1 },
-  { kw:'women wrap dress elegant',     must:['dress'], cat:'damen-mode', take:1 },
-  { kw:'women bodycon party dress',    must:['dress'], cat:'damen-mode', take:1 },
-  { kw:'women knit sweater dress',     must:['dress'], cat:'damen-mode', take:1 },
-  { kw:'women off-shoulder dress',     must:['dress'], cat:'damen-mode', take:1 },
-  { kw:'women pleated chiffon dress',  must:['dress'], cat:'damen-mode', take:1 },
-  { kw:'women cottage linen dress',    must:['dress'], cat:'damen-mode', take:1 },
+  { kw:'women knit bodycon dress',     must:['dress'],   cat:'damen-mode', take:1 },
+  { kw:'women cocktail sequin dress',  must:['dress'],   cat:'damen-mode', take:1 },
+  { kw:'women cottagecore floral dress',must:['dress'],  cat:'damen-mode', take:1 },
+  { kw:'women elegant evening dress',  must:['dress'],   cat:'damen-mode', take:1 },
+  { kw:'mens linen shirt short sleeve',must:['shirt'],   cat:'herren-mode', take:1 },
+  { kw:'mens casual polo shirt',       must:['polo'],    cat:'herren-mode', take:1 },
+  { kw:'mens summer beach shorts',     must:['shorts'],  cat:'herren-mode', take:1 },
+  { kw:'mens henley shirt cotton',     must:['shirt'],   cat:'herren-mode', take:1 },
+  { kw:'mens linen trousers casual',   must:['trousers'],cat:'herren-mode', take:1 },
 ];
 
 const b=await chromium.launch({headless:true,args:['--ignore-certificate-errors','--no-sandbox']});

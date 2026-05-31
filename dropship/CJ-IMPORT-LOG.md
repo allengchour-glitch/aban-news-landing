@@ -333,3 +333,16 @@ denselben Top-Treffer). 8 Keywords → 14 eindeutige Kandidaten. 5 saubere, sch�
 Savanna/Fleurette/Daisy/Sirène zusätzlich in ✨ Highlights aufgenommen.
 ⚠️ Lektion: Bei manuellem productSet-Paste grosser Varianten-Listen → URL-Tippfehler (Leerzeichen)
 möglich; Mutation schlägt dann sauber fehl (nichts angelegt), einfach erneut sauber einreichen.
+
+## Charge 32 (2026-05-31) — Mode-Bestseller + Herren-Mode
+Suche Frauen-Kleider + Herren-Mode (Dedupe + SKU-Check). CJ stark frauenlastig → echte Herren-Treffer rar.
+5 Neuzugänge, alle mit Tag **`top-bestseller`** → erscheinen automatisch in der Smart-Collection „Bestsellers":
+- **Herren-Sommerhemd «Monsieur»** (`CJMS291578001AZ`, 15412919304577) — 3×5=15 Var, 44.90, Tags herren/herren-mode → auch in „Für Ihn".
+- **Etuikleid «Lumea»** Cut-Out (`CJLY291617801AZ`, 15412919402881) — 6×4=24 Var, 34.90.
+- **Midikleid «Bluette»** Fake-2-Teiler (`CJLY291588501AZ`, 15412919533953) — 2×6=12 Var, 34.90.
+- **Schnürkleid «Noir»** (`CJLY291575301AZ`, 15412919566721) — 5 Var, 34.90.
+- **Off-Shoulder «Brise»** (`CJLY291591401AZ`, 15412919763329) — 5 Var, 34.90.
+Monsieur/Lumea/Bluette zusätzlich in ✨ Highlights. Skip: A-Linien-Kleid/Provence/Savanna (Bestand),
+Zip-Knit-Top (`CJLS291593201AZ` existiert schon).
+⚠️ productSet-Falle: pro-Variante `file` braucht IMMER ein Produkt-level `files`-Array mit derselben URL,
+sonst „Quelle der Datei fehlt". (Bei Single-Color-Artikeln leicht vergessen.)
