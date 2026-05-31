@@ -7,6 +7,16 @@
 > ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
 > bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
 
+## QA-Scan (2026-05-31) — alle Live-Produkte bildgeprüft
+Alle 54 `cj-real status:active` durchgeprüft: **kein einziges FAILED-Bild**, alle Media READY.
+Kleine Befunde (nicht kritisch): LED-Schreibtischlampe (1 Bild, aus früherer Session),
+All-in-One-Kochtopf (3 Bilder). MagSafe-Halter bleibt DRAFT (Bilder 404).
+
+## Kampagnen-Playbook (2026-05-31)
+- **`dropship/KAMPAGNEN-PLAYBOOK.md`** — Schritt-für-Schritt TikTok/Meta-Launch: Pflicht-Vorbereitung
+  (AGB-Fix, Test-Bestellung, Pixel), Produkt-Priorität, Budget/ROAS-Logik, 7-Tage-Fahrplan,
+  Conversion-Hebel (WELCOME10, Reviews-App). Was Claude nicht kann (Live-Schaltung/Budget) klar markiert.
+
 ## Marketing-Material (2026-05-31)
 - **`dropship/ads/hero-ads-2026.md`** — fertige Werbetexte für alle 6 Hero-Produkte:
   TikTok-Hooks, Meta-Primary-Text, Google-Headlines+Descriptions + priorisierter Launch-Plan.
