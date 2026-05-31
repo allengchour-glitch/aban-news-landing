@@ -80,7 +80,8 @@ verhalten sich unverändert wie ein Einzelbuch.
 python3 schreibe_roman.py --roman roman-drama-trilogie.json            # ganze Trilogie
 python3 schreibe_roman.py --roman roman-drama-trilogie.json --band 1   # nur Band 1
 python3 schreibe_roman.py --roman roman-drama-trilogie.json --band 1 --kapitel 3
-python3 buch_bauen.py     --roman roman-drama-trilogie.json            # je Band + Gesamt
+python3 buch_bauen.py     --roman roman-drama-trilogie.json            # je Band + Gesamt (md+epub)
+python3 buch_pdf.py       --roman roman-drama-trilogie.json            # je Band + Gesamt (PDF, braucht reportlab)
 python3 plane_kapitel.py  --roman roman-drama-trilogie.json --band 2 --anzahl 6 --schreiben
 python3 lektor.py         --roman roman-drama-trilogie.json --band 1 --kapitel 3
 python3 ueberarbeiten.py  --roman roman-drama-trilogie.json --band 1 --kapitel 3 --feedback "..."
