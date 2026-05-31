@@ -141,3 +141,6 @@ jobs:
 
       - name: Data integrity (tools + glossary)
         run: python3 automation/data_integrity.py
+
+      - name: Tools Top-30 in sync with tools.json
+        run: python3 automation/build_tools_top30.py --check
