@@ -43,6 +43,19 @@ export const LEXICON = [
   ["innovativ(?:e|er|es|en)?", "innovativ", "buzzword", 1.5, ["neu", "konkret: was neu ist"]],
   ["mehrwert", "Mehrwert", "buzzword", 1.5, ["Nutzen", "konkret: was du davon hast"]],
   ["lösung(?:s)?(?:anbieter)?", "Lösung", "buzzword", 0.8, ["konkret: was es löst", "Werkzeug", "Weg"]],
+  ["deep[- ]?dive", "Deep Dive", "buzzword", 1.5, ["genauer Blick", "ausführlich: was genau"]],
+  ["touch[- ]?point(?:s)?", "Touchpoint", "buzzword", 1.5, ["Kontaktpunkt", "Berührungspunkt"]],
+  ["pain[- ]?point(?:s)?", "Pain Point", "buzzword", 1.5, ["Problem", "konkret: was nervt"]],
+  ["low[- ]?hanging[- ]?fruit(?:s)?", "low hanging fruit", "buzzword", 2, ["schnelle Erfolge", "das Naheliegende"]],
+  ["onboarding(?:[- ]?journey)?", "Onboarding", "buzzword", 1, ["Einarbeitung", "erste Schritte"]],
+  ["best[- ]?practice(?:s)?", "Best Practice", "buzzword", 1.5, ["bewährtes Vorgehen", "konkretes Beispiel"]],
+  ["benchmark(?:s|ing)?", "Benchmark", "buzzword", 1, ["Vergleichswert", "Maßstab"]],
+  ["agil(?:e|er|es|en)?", "agil", "buzzword", 1, ["flexibel", "in kleinen Schritten"]],
+  ["boost(?:s|en|et)?", "Boost", "buzzword", 1.5, ["steigern", "verbessern"]],
+  ["hebel(?:n|t|wirkung)?", "Hebel", "buzzword", 1, ["nutzen", "konkret: wodurch"]],
+  ["skalierung(?:s)?", "Skalierung", "buzzword", 1, ["Wachstum", "konkret: bis wohin"]],
+  ["zukunftssicher(?:e|er|es|en)?", "zukunftssicher", "buzzword", 1.5, ["hält länger", "konkret begründen"]],
+  ["road[- ]?map(?:s)?", "Roadmap", "buzzword", 0.8, ["Plan", "nächste Schritte"]],
 
   // Versprechen & Übertreibung
   ["10[- ]?x|10[- ]?fach", "10x", "versprechen", 2.5, ["spürbar mehr", "konkrete Zahl"]],
@@ -54,6 +67,12 @@ export const LEXICON = [
   ["passive[s]?[- ]?einkommen", "passives Einkommen", "versprechen", 1.5, ["Einnahmen nebenbei", "ehrlich: Aufwand nennen"]],
   ["finanzielle[- ]?freiheit", "finanzielle Freiheit", "versprechen", 1.5, ["mehr Spielraum", "konkret"]],
   ["100[- ]?%|hundertprozentig", "100%", "versprechen", 1, ["meist", "fast immer"]],
+  ["über[- ]?nacht", "über Nacht", "versprechen", 2, ["mit der Zeit", "realistischer Zeitraum"]],
+  ["ohne[- ]?vorkenntnisse", "ohne Vorkenntnisse", "versprechen", 1.5, ["auch für Einsteiger", "ehrlich: was du brauchst"]],
+  ["garantierter[- ]?erfolg|erfolgsgarantie", "garantierter Erfolg", "versprechen", 2.5, ["realistisch: was möglich ist"]],
+  ["geheimnis(?:se)?|geheim[- ]?tipp(?:s)?|geheim[- ]?rezept(?:e)?", "Geheimnis", "versprechen", 2, ["Methode", "konkret: was genau"]],
+  ["hack(?:s)?|life[- ]?hack(?:s)?", "Hack", "versprechen", 1.5, ["Trick", "Vorgehen", "Weg"]],
+  ["short[- ]?cut(?:s)?|abkürzung[- ]?zum[- ]?erfolg", "Shortcut", "versprechen", 1.5, ["schnellerer Weg", "konkret"]],
 
   // Intensivierer (Weichmacher nach oben)
   ["mega|krass|hammer", "mega/krass", "intensivierer", 1, ["weglassen"]],
@@ -84,7 +103,18 @@ const CATEGORY_LABELS = {
   passiv: "Passiv-Konstruktionen",
   satzbau: "Schachtelsätze",
   interpunktion: "Ausrufezeichen & Schreien",
+  nominalstil: "Nominalstil & Substantivierungen",
+  vage: "Vage Mengenangaben",
 };
+
+// Vage Mengenangaben ohne konkrete Zahl (Wortgrenzen, unicode, global)
+const VAGUE_RE =
+  /(?<![\p{L}])(?:viele(?:r|n|m|s)?|zahlreiche(?:r|n|m|s)?|diverse(?:r|n|m|s)?|etliche(?:r|n|m|s)?|jede[- ]menge|eine[- ]vielzahl(?:[- ]von)?|unzählige(?:r|n|m|s)?|massenhaft|haufenweise|einige(?:r|n|m|s)?|mehrere(?:r|n|m|s)?)(?![\p{L}])/giu;
+
+// Substantivierungen: Wörter auf typische Nominal-Endungen.
+// Stamm-Länge auf {2,30} begrenzt → kein quadratisches Lazy-Scanning, ReDoS-sicher.
+const NOMINAL_RE =
+  /(?<![\p{L}])\p{L}{2,30}(?:ierung|ungen|ung|heiten|heit|keiten|keit|ionen|ion|ismus|barkeit)(?![\p{L}])/giu;
 
 // ---------------------------------------------------------------------------
 // Hilfsfunktionen
@@ -98,6 +128,16 @@ function words(text) {
 function countSyllables(word) {
   const groups = word.toLowerCase().match(/[aeiouäöüy]+/g);
   return Math.max(1, groups ? groups.length : 1);
+}
+
+// Menschenlesbares Lesbarkeits-Label aus dem Schul-Niveau (Wiener Sachtextformel).
+// null (zu kurz für eine seriöse Messung) → null.
+function readingLabelFor(grade) {
+  if (grade === null || grade === undefined) return null;
+  if (grade <= 7) return "leicht";
+  if (grade <= 10) return "mittel";
+  if (grade <= 13) return "schwer";
+  return "sehr schwer";
 }
 
 // Wiener Sachtextformel (1. Variante) → ungefähres Schul-Niveau (4–15)
@@ -166,6 +206,43 @@ export function analyze(text) {
     });
   }
 
+  // 5) Vage Mengenangaben ohne Zahl
+  for (const m of text.matchAll(VAGUE_RE)) {
+    findings.push({
+      start: m.index, end: m.index + m[0].length, match: m[0],
+      label: "vage Menge", category: "vage", weight: 0.8,
+      replacements: ["konkrete Zahl nennen", "wie viele genau?"],
+    });
+  }
+
+  // 6) Nominalstil: Häufung von Substantivierungen (-ung/-heit/-keit/-ion/-ierung/-ismus)
+  // im selben Satz. Ab 3 Treffern pro Satz markieren wir die Wörter einzeln.
+  {
+    const sentRe = /[^.!?…\n]+(?:[.!?…]+|\n|$)/g;
+    let sm;
+    while ((sm = sentRe.exec(text)) !== null) {
+      const seg = sm[0];
+      if (!seg.trim()) continue;
+      const base = sm.index;
+      const hits = [];
+      let nm;
+      NOMINAL_RE.lastIndex = 0;
+      while ((nm = NOMINAL_RE.exec(seg)) !== null) {
+        hits.push({ start: base + nm.index, end: base + nm.index + nm[0].length, match: nm[0] });
+        if (nm.index === NOMINAL_RE.lastIndex) NOMINAL_RE.lastIndex++;
+      }
+      if (hits.length >= 3) {
+        for (const h of hits) {
+          findings.push({
+            start: h.start, end: h.end, match: h.match,
+            label: "Nominalstil", category: "nominalstil", weight: 0.6,
+            replacements: ["als Verb formulieren", "mit Tätigkeitswort umschreiben"],
+          });
+        }
+      }
+    }
+  }
+
   // Überlappungen auflösen: nach Startposition sortieren, überlappende verwerfen
   findings.sort((a, b) => a.start - b.start || b.weight - a.weight);
   const clean = [];
@@ -191,6 +268,7 @@ export function analyze(text) {
     readingGrade = Math.max(4, Math.min(15, Math.round(readingGrade * 10) / 10));
   }
   const avgSentenceLen = Math.round((wordCount / sentenceCount) * 10) / 10;
+  const readingLabel = readingLabelFor(readingGrade);
 
   // ---- Score (0–100): Klartext statt Hype. Penalty pro 100 Wörter normiert. ----
   const penaltySum = clean.reduce((s, f) => s + f.weight, 0)
@@ -227,6 +305,7 @@ export function analyze(text) {
       avgSentenceLen,
       hypeDensity,            // Hype-Wörter je 100 Wörter
       readingGrade,           // Schul-Niveau nach Wiener Sachtextformel
+      readingLabel,           // menschenlesbares Label, abgeleitet vom Grade
       longSentenceCount: longSentences.length,
     },
     findings: clean,          // mit Positionen fürs Highlighting
@@ -259,6 +338,10 @@ function buildSuggestions(findings, longSentences, avgLen) {
     out.push("Füllwörter wie „eigentlich“ oder „quasi“ schwächen den Satz. Weg damit.");
   if (cats.has("passiv"))
     out.push("Aktiv schreiben: Sag, wer was tut, statt „es wird gemacht“.");
+  if (cats.has("nominalstil"))
+    out.push("Zu viele Substantivierungen (-ung/-heit/-keit). Verb statt Hauptwort: nicht „zur Durchführung der Prüfung“, sondern „prüfen“.");
+  if (cats.has("vage"))
+    out.push("Vage Mengen wie „viele“ oder „zahlreiche“ sagen nichts. Nenne eine konkrete Zahl.");
   if (longSentences.length > 0)
     out.push(`${longSentences.length} Satz/Sätze über 25 Wörter. Teile lange Sätze auf — ein Gedanke pro Satz.`);
   if (avgLen > 18)
@@ -280,10 +363,11 @@ function ruleRewrite(text, findings) {
       let end = f.end;
       if (out[end] === " ") end++;
       out = out.slice(0, f.start) + out.slice(end);
-    } else if (["superlativ", "buzzword", "versprechen"].includes(f.category)) {
+    } else if (["superlativ", "buzzword", "versprechen", "vage"].includes(f.category)) {
       const alt = f.replacements && f.replacements[0] ? f.replacements[0] : f.match;
       out = out.slice(0, f.start) + "[" + alt + "]" + out.slice(f.end);
     }
+    // nominalstil/passiv/interpunktion: nur Highlighting, kein Auto-Rewrite
   }
   // doppelte Leerzeichen aufräumen
   return out.replace(/[ \t]{2,}/g, " ").replace(/\s+([.,;:!?])/g, "$1").trim();
