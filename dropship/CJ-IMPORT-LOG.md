@@ -358,3 +358,18 @@ Alle 430 aktiven Produkte gescannt (Dateiname-Heuristik + Playwright-Kontaktboge
   richtige Produkt, aber kein Foto) + ~6 fremde Retailer-Fotos (Costway, Wein-Dekanter). User-Entscheid nötig.
 - Erkenntnis: Stock-Bilder haben neutrale/kryptische Dateinamen → reine Keyword-Regex verfehlt sie;
   Kontaktbogen-Sichtprüfung nötig.
+
+## Charge 33 (2026-05-31) — Bild-Cleanup-Folge + Herrenuhren
+Nach User-Wunsch „alles Nicht-Foto verstecken": **27 weitere Produkte auf DRAFT** (AI-Renders `…-ai-1.png`
+inkl. Geschenkboxen/Adventskalender/Bundles + Händlerfotos Costway/Wein-Dekanter + 3 staged/AI Einzelprodukte
+Eichenholz-Diffuser/10er-Öle/Bambus-Seifenspender). Echte Produktfotos (Sonnenbrille, Gua-Sha, Cellulite-Roller,
+Bambus-Aufbewahrung, Damen-Armband) blieben aktiv. **Gesamt 37 Nicht-Foto-Produkte versteckt.**
+
+**Herrenuhren (User-Wunsch) — 4 neue, alle SKU-geprüft, ACTIVE, 7 Kanäle, Tags herrenuhr/schmuck/herren**
+(→ Herrenuhren & Schmuck + Für Ihn):
+- **«Executive» Business-Quarz** (`CJSY291459601AZ`, 15412945191297) — 6 Farben, 39.90
+- **«Rettangolo» Rechteckig** (`CJNS291439601AZ`, 15412945289601) — 6 Farben, 39.90
+- **«Magnate» Uhr+Armband-Set** (`CJNS291394101AZ`, 15412945355137) — 4 Farben, 44.90
+- **«Carré» Minimalist Square** (`CJNS291490601AZ`, 15412945224065) — 8 Farben, 39.90
+⚠️ Ersatz für Wellness/Home: CJ-Keyword-Suche lieferte nur Müll (Körperöl/Shampoo/Seife statt Diffuser/Öl-Set)
+→ separate, engere Runde nötig.

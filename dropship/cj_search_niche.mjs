@@ -11,17 +11,16 @@ const BASE='https://developers.cjdropshipping.com/api2.0/v1';
 const tok=JSON.parse(fs.readFileSync('/tmp/cj_token.json')).accessToken;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
-// cat = Zielkategorie — Kleider + Herren-Mode
+// cat = Zielkategorie — Herrenuhren + Wellness/Home-Ersatz
 const KEYWORDS=[
-  { kw:'women knit bodycon dress',     must:['dress'],   cat:'damen-mode', take:1 },
-  { kw:'women cocktail sequin dress',  must:['dress'],   cat:'damen-mode', take:1 },
-  { kw:'women cottagecore floral dress',must:['dress'],  cat:'damen-mode', take:1 },
-  { kw:'women elegant evening dress',  must:['dress'],   cat:'damen-mode', take:1 },
-  { kw:'mens linen shirt short sleeve',must:['shirt'],   cat:'herren-mode', take:1 },
-  { kw:'mens casual polo shirt',       must:['polo'],    cat:'herren-mode', take:1 },
-  { kw:'mens summer beach shorts',     must:['shorts'],  cat:'herren-mode', take:1 },
-  { kw:'mens henley shirt cotton',     must:['shirt'],   cat:'herren-mode', take:1 },
-  { kw:'mens linen trousers casual',   must:['trousers'],cat:'herren-mode', take:1 },
+  { kw:'mens stainless steel watch',    must:['watch'],    cat:'herrenuhr', take:2 },
+  { kw:'mens chronograph leather watch',must:['watch'],    cat:'herrenuhr', take:1 },
+  { kw:'mens automatic skeleton watch', must:['watch'],    cat:'herrenuhr', take:1 },
+  { kw:'mens minimalist mesh watch',    must:['watch'],    cat:'herrenuhr', take:1 },
+  { kw:'essential oil set aromatherapy',must:['oil'],      cat:'wellness',  take:1 },
+  { kw:'wood grain aroma diffuser',     must:['diffuser'], cat:'wellness',  take:1 },
+  { kw:'bamboo soap dispenser set',     must:['soap'],     cat:'wohnen',    take:1 },
+  { kw:'bamboo bath caddy tray',        must:['bath','tray'], cat:'wohnen', take:1 },
 ];
 
 const b=await chromium.launch({headless:true,args:['--ignore-certificate-errors','--no-sandbox']});
