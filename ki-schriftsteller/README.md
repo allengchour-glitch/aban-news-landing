@@ -102,6 +102,29 @@ kurze Synopsen in spätere Aufrufe ein.
 Autor (Feld `autor` in der Bibel, Default „aban news"), Titel- und Kolophonseite,
 Initialen am Kapitelanfang; das PDF zusätzlich laufende Kopfzeile + Seitenzahlen.
 
+### Englische Ausgabe (Übersetzung statt Neugenerierung)
+
+Die Trilogie liegt zusätzlich auf Englisch vor: **„The Valley Holds Its Breath"**.
+Es ist eine werktreue, von Hand erstellte Übersetzung des deutschen Originals
+(keine API-Neugenerierung — die Prosa ist bereits redigiert und konsistent). Die
+englischen Kapitel liegen in `kapitel-en/band-0N/` und werden — wie die deutsche
+Prosa — bewusst versioniert. Die Struktur-Bibel dafür ist `roman-drama-trilogy-en.json`
+(nur `nummer` + `titel` pro Kapitel; die Beats stehen in der deutschen Bibel).
+
+Gebaut wird mit denselben Compilern, nur mit anderem `--kapitel-dir`:
+
+```bash
+python3 buch_bauen.py --roman roman-drama-trilogy-en.json --kapitel-dir kapitel-en --out ../ausgabe-en
+python3 buch_pdf.py   --roman roman-drama-trilogy-en.json --kapitel-dir kapitel-en --out ../ausgabe-en
+python3 kdp_paket.py  --roman roman-drama-trilogy-en.json --kapitel-dir kapitel-en --out ../ausgabe-en/kdp-en
+python3 ../generate_trilogie_covers.py --en   # englische Cover (the-valley-holds-its-breath-*.jpg)
+```
+
+Die Compiler sind sprach-bewusst: `buch_bauen.py` setzt englische Band-Labels
+(„Volume One/Two/Three"), `kdp_paket.py` erzeugt eine englische `metadaten.md`
+(Feld `sprache: "English"` in der Bibel steuert das). Verkaufsseiten:
+`trilogie.html` (DE, mit EN-Abschnitt) und `en/trilogie.html` (EN, hreflang-verknüpft).
+
 ### Wie lang wird das?
 
 Ziellänge ist 1200–2000 Wörter pro Kapitel (~5–7 Seiten). Die Beispiel-Trilogie
