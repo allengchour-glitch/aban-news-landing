@@ -2,7 +2,7 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **25 Produkte live** (Ziel erreicht).
+> Stand: 2026-05-31 — **29 Produkte live**.
 
 Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in **6 Kanälen** (Onlineshop, Shop,
 TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar untracked
@@ -56,9 +56,21 @@ wurden per `productDelete` entfernt, die Originale publiziert.
 
 ### ⚠️ Loop/Cron nicht verfügbar
 `CronCreate`/`ScheduleWakeup` sind in dieser Umgebung **nicht aktiviert** → ein automatischer
-30-Min-Loop liess sich nicht einrichten. Die 25 wurden stattdessen in dieser Session manuell
-fertiggestellt. Für künftiges autonomes Nachfüllen: `/loop` in einer Umgebung mit aktivierten
-Scheduler-Tools nutzen, oder Session erneut starten und Charge fortsetzen.
+30-Min-Loop liess sich nicht einrichten. Stattdessen manuell in dieser Session weitergefüllt.
+Für echtes autonomes Nachfüllen: `/loop` in einer Umgebung mit aktivierten Scheduler-Tools,
+oder Session erneut starten und Charge fortsetzen. (Desktop/Browser-Zugriff hilft hier NICHT —
+der CJ-Workflow ist headless via API; das Limit ist allein der fehlende Scheduler.)
+
+## Charge 6 (2026-05-31) — +4 live → 29 gesamt
+| Produkt | VK CHF | CJ-Kost $ | SKU |
+|---|---|---|---|
+| Übersetzer-Kopfhörer 144 Sprachen | 69.90 | 24.00 | `CJFU29004820001` |
+| Profi Messerschärfer Präzision | 21.90 | 7.46 | `CJYD291530101AZ` |
+| Elegante Umhängetasche Lack-Optik | 16.90 | 4.21 | `CJNS291461101AZ` |
+| Komfort-Fahrradsattel XXL gefedert | 16.90 | 4.19 | `CJYD291313201AZ` |
+
+Aussortiert Charge 6: Cat-Paw-Anhänger & Moonlight-Ring & Silber-Feder-Ohrringe (Schmuck, off-theme),
+Etagenbett ($525 EK / 28 kg), Duschkopf ($38 EK, off-theme), Toilettentasche (Duplikat bereits live).
 
 ### Bei eingehender Bestellung
 Produkt in CJ über die **Fulfillment-SKU** (oben) bestellen → an Kundenadresse senden lassen.

@@ -22,16 +22,16 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
 const KEYWORDS = [
-  { kw: 'water bottle insulated', must: ['bottle'],     take: 1 },
-  { kw: 'backpack waterproof',    must: ['backpack'],   take: 1 },
-  { kw: 'sunscreen umbrella',     must: ['umbrella'],   take: 1 },
-  { kw: 'travel pillow neck',     must: ['pillow'],     take: 1 },
-  { kw: 'dog toy chew',           must: ['dog'],        take: 1 },
-  { kw: 'kids beach sand toy',    must: ['sand'],       take: 1 },
-  { kw: 'fan usb desk',           must: ['fan'],        take: 1 },
-  { kw: 'phone case clear',       must: ['case'],       take: 1 },
-  { kw: 'water gun toy',          must: ['water', 'gun'], take: 1 },
-  { kw: 'cooler bag insulated',   must: ['cooler'],     take: 1 },
+  { kw: 'wireless earbuds bluetooth', must: ['earbuds'],    take: 1 },
+  { kw: 'cat toy interactive',        must: ['cat'],        take: 1 },
+  { kw: 'kitchen knife sharpener',    must: ['sharpener'],  take: 1 },
+  { kw: 'garden hose nozzle',         must: ['hose'],       take: 1 },
+  { kw: 'storage box foldable',       must: ['storage'],    take: 1 },
+  { kw: 'phone ring holder',          must: ['ring'],       take: 1 },
+  { kw: 'reusable shopping bag',      must: ['bag'],        take: 1 },
+  { kw: 'desk organizer pen',         must: ['organizer'],  take: 1 },
+  { kw: 'bicycle phone mount',        must: ['bike'],       take: 1 },
+  { kw: 'wall hook adhesive',         must: ['hook'],       take: 1 },
 ];
 
 let _b, _ctx;
