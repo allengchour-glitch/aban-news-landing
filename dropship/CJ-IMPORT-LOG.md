@@ -3,8 +3,10 @@
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
 > Stand: 2026-05-31 — **61 Produkte LIVE** + 6 Hero-Produkte mit Premium-Copy.
-> Charge 25: +3 Sommer-Kleider (Kleid, Strand-Rock, Herren-Polo) mit Grössen-Hinweis. Kleidung
-> füllt sich deutlich besser als Gadgets (8 Keeper/10 Keywords). Boho-Set (72 Var.) übersprungen.
+> Charge 25–26: +7 Sommer-Mode (Kleid, Strand-Rock, Herren-Polo, Bikini, Leinenhose, Badeset,
+> Neckholder-Kleid) mit Grössen-Hinweis; Bademode zusätzlich Hygiene-Rückgabe-Hinweis. Kleidung
+> füllt sich deutlich besser als Gadgets (8 Keeper/10 Keywords). Varianten-Chaos-Treffer (Boho 72,
+> Jumpsuit 45 Var.) übersprungen.
 > ⚠️ Kleidung = höheres Retouren-Risiko → Grössen-Hinweis („asiatisch 1–2 Nr. kleiner" + Guide-Link) Pflicht.
 > ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
 > bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
