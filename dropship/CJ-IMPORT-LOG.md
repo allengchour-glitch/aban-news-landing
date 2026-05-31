@@ -15,7 +15,10 @@ TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar unt
 | Bladeless Nackenventilator | 29.90 | $6.62 | ~5× | (neck fan) | `CJJT291608401AZ` |
 | XXL Picknickdecke faltbar | 24.90 | $2.74–5.82 | ~4.9× | (picnic mat) | `CJYD291539501AZ` |
 | Ice-Compress Mini-Ventilator | 27.90 | $5.99 | ~5.3× | (ice fan) | `CJGR291509001AZ` |
-| Tragbarer Mini-Mixer 380 ml | 34.90 | $7.78 | ~4.5× | 2009908094545068032 | `CJ20240701115059212AZ` |
+| Tragbarer Mini-Mixer 380 ml | 34.90 | $7.78 | ~4.5× | – | `CJ20240701115059212AZ` |
+| LED Solar-Lichterkette XL | 19.90 | $2.00–5.59 | ~3.5–10× | 2605290904401606600 | `CJYD291508502BY` |
+| Solar Camping-Laterne Vintage | 34.90 | $10.61 | ~3.3× | 2605290115061614000 | `CJJT291381201AZ` |
+| Aufblasbarer Palmen-Sprinkler XXL | 64.90 | $28.00 | ~2.6× | 2060553527225798657 | `CJHD291547501AZ` |
 
 **Storefront-Links:**
 - https://luxestyle.ch/products/elektrische-wasserpistole-xl-akkubetrieben-vollautomatik-sommer-2026
@@ -39,10 +42,15 @@ Neuer Key nur noch als Env-Variable (`CJ_API_KEY`) übergeben — beide Scripte 
 ausschliesslich aus der Umgebung. Empfehlung: Key zusätzlich als dauerhaftes Environment-Secret
 hinterlegen, damit er in jeder Web-Session verfügbar ist.
 
-## ⏳ Offen (nächste Charge)
-solar light, swimming goggles, sun umbrella – Treffer existieren in CJ, der Import scheiterte
-aber an Umgebungs-Glitches im Datei-Layer (unzuverlässige Bild-URLs). In frischer Session erneut
-`cj_enrich.mjs` laufen lassen und anlegen.
+## Lauf 2026-05-31 (Charge 2) — Aussortiert
+- *Cross-border Microfiber Beach Towel* — Aufdruck „Frozen / Spider-Man" = **Marken-/Fälschungsrisiko**, nicht gelistet.
+- *Motorcycle/Motocross Goggles* — keine Schwimmbrille, off-theme.
+- *Puffy Umbrella Skirt* — Damenrock, Falschtreffer auf „umbrella".
+
+## Erkenntnisse Keyword-Qualität
+- Gut & sauber: `solar garden light`, `electric water gun`, `portable blender`, `inflatable ... sprinkler`.
+- Vorsicht: Markenaufdrucke (Disney/Marvel etc.) in Towels/Kids-Artikeln → vor Listung prüfen.
+- `swimming goggles`/`sun umbrella` liefern off-theme (Motocross-Brillen, Röcke) → präzisere Phrasen nötig.
 
 ## Nächste Keywords (Pipeline für mehr Importe)
 `cj_enrich.mjs` → `KEYWORDS`-Liste erweitern. Gut funktioniert: präzise Substantiv-Phrasen
