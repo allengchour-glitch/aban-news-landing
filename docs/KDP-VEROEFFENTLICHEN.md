@@ -106,3 +106,36 @@ KDP-Mindestgrenze von 24. Pro Sprache ein eigenes KDP-Buch anlegen (eigene
 Metadaten, Keywords, Kategorien, ggf. eigene ISBN). Das Wraparound-Cover pro
 Sprache mit der jeweiligen Seitenzahl neu bauen, falls KDP nach dem Upload eine
 andere Zahl meldet.
+
+## Metadaten pro Sprache (Copy-Paste für KDP)
+
+Autor überall: **Aban (Allen Chour)**. Kategorien sind Vorschläge — wähle im
+KDP-Baum die nächstliegenden.
+
+### Deutsch
+- **Titel:** Anti-Hype
+- **Untertitel:** Wie deutsche Solopreneure KI ohne Bullshit einsetzen
+- **Keywords (7):** KI für Selbstständige · KI ohne Hype · ChatGPT Solopreneur · KI DACH · Produktivität KI · KI Tools deutsch · Newsletter KI
+- **Kategorien:** Computer & Internet → Künstliche Intelligenz · Wirtschaft → Selbstständigkeit
+- **Beschreibung:** Die meisten KI-Ratgeber verkaufen dir ein Gefühl. Dieses Buch nicht. Aus über 200 Ausgaben eines täglichen KI-Newsletters für DACH-Profis: ein Denkmodell, das Substanz von Show trennt, plus konkrete Abläufe, die wirklich Zeit sparen. Der 3-Fragen-Bullshit-Filter, dein minimaler KI-Stack, fünf Abläufe für den Alltag, sieben Hype-Fallen, eine 5-Minuten-Datenschutz-Prüfung — und eine Werkstatt mit Kopier-Vorlagen, einem durchgerechneten Arbeitstag und einem Klartext-Glossar. Für Selbstständige, die mit KI Geld verdienen wollen, nicht darüber reden. Kein Affiliate-Müll, keine erfundenen Erfolgsgeschichten.
+
+### English
+- **Title:** Anti-Hype
+- **Subtitle:** How solopreneurs put AI to work without the bullshit
+- **Keywords (7):** AI for solopreneurs · AI without hype · ChatGPT for business · practical AI · small business AI · AI productivity · AI tools guide
+- **Categories:** Computers & Technology → Artificial Intelligence · Business & Money → Entrepreneurship
+- **Description:** Most AI guides sell you a feeling. This book doesn't. Distilled from 200+ issues of a daily AI newsletter: a way of thinking that separates substance from show, plus concrete routines that genuinely save time. The 3-question bullshit filter, your minimal AI stack, five everyday routines, seven hype traps, a five-minute data-protection check — and a workshop with copy-paste templates, a worked workday and a plain-talk glossary. For solopreneurs who want to make money with AI, not talk about it. No affiliate junk, no invented success stories.
+
+### Français
+- **Titre :** Anti-Hype
+- **Sous-titre :** Comment les indépendants utilisent l'IA sans bullshit
+- **Mots-clés (7) :** IA pour indépendants · IA sans hype · ChatGPT entreprise · IA pratique · productivité IA · outils IA · freelance IA
+- **Catégories :** Informatique et Internet → Intelligence artificielle · Entreprise et Bourse → Entrepreneuriat
+- **Description :** La plupart des guides IA te vendent une sensation. Pas celui-ci. Distillé de plus de 200 numéros d'une newsletter IA quotidienne : une façon de penser qui sépare le fond du spectacle, plus des routines concrètes qui font vraiment gagner du temps. Le filtre anti-bullshit en 3 questions, ton stack IA minimal, cinq routines du quotidien, sept pièges du hype, une vérification RGPD en cinq minutes — et un atelier avec des modèles à copier, une journée déroulée et un glossaire clair. Pour les indépendants qui veulent gagner de l'argent avec l'IA, pas en parler. Pas de remplissage d'affiliation, pas d'histoires de réussite inventées.
+
+### Italiano
+- **Titolo:** Anti-Hype
+- **Sottotitolo:** Come i liberi professionisti usano l'IA senza bullshit
+- **Parole chiave (7):** IA per liberi professionisti · IA senza hype · ChatGPT lavoro · IA pratica · produttività IA · strumenti IA · freelance IA
+- **Categorie:** Informatica e Internet → Intelligenza artificiale · Economia e finanza → Imprenditoria
+- **Descrizione:** La maggior parte delle guide sull'IA ti vende una sensazione. Questo libro no. Distillato da oltre 200 numeri di una newsletter quotidiana sull'IA: un modo di pensare che separa la sostanza dalla scena, più routine concrete che fanno davvero risparmiare tempo. Il filtro anti-bullshit in 3 domande, il tuo stack IA minimo, cinque routine quotidiane, sette trappole dell'hype, un controllo GDPR in cinque minuti — e un laboratorio con modelli da copiare, una giornata svolta e un glossario in chiaro. Per chi lavora in proprio e vuole guadagnare con l'IA, non parlarne. Niente riempitivi di affiliazione, nessuna storia di successo inventata.
