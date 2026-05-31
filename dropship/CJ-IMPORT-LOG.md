@@ -2,7 +2,7 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **40 Produkte live** 🎯 (Ziel 40 erreicht).
+> Stand: 2026-05-31 — **41 Produkte live** (Richtung 50 unterwegs).
 
 Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in **6 Kanälen** (Onlineshop, Shop,
 TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar untracked
@@ -103,6 +103,21 @@ Einzelbild-Artikel (Cleansing-Brush), Sägeblatt/Industrie-Tool, Haarentfernungs
 
 **🎯 Endstand: 40 cj-real Produkte ACTIVE & live in 6 Kanälen.** Alle Bilder verifiziert (READY),
 echte CJ-SKUs fürs Fulfillment, deutsche LuxeStyle-Copy, Marge ~2,7–10×.
+
+## Charge 14 (2026-05-31) — +1 live → 41
+- 3D-Druck Nachttischlampe (`CJSN290228901AZ`, 16.90). Gua-Sha-Massager verworfen (nur 1 Bild).
+- **Lehre:** CJ-Bild-Check kann `000` (Timeout) statt `200` liefern → mit längerem Timeout
+  **erneut prüfen**, bevor man valide Bilder fälschlich verwirft.
+
+## Rechts-Check (2026-05-31) — Shop ist solide aufgestellt
+Shop-Policies + Pages bereits umfassend & CH-konform: Impressum (MWST-/HR-Status), AGB
+(CH-Recht, Gerichtsstand Bern, Eigentumsvorbehalt, Gewährleistung OR), Widerruf (CH 30 Tage +
+EU 14 Tage + Muster-Formular + Hygiene-Ausschlüsse), Versand (inkl. „direkt vom Hersteller",
+längere Lieferzeit, Zoll-/Einfuhrhinweis), Datenschutz, Cookie-Richtlinie, FAQ, Garantie.
+- ⚠️ **OFFEN für den User (manueller Fix):** In der Shop-Policy *AGB/Nutzungsbedingungen* steht
+  noch die tote Domain `aban-192.myshopify.com` → auf `luxestyle.ch` ändern. Konnte nicht per API
+  gefixt werden (Scope `write_legal_policies` fehlt dem MCP-Token). Admin → Einstellungen →
+  Richtlinien → AGB.
 
 ### Hinweis zur Methode
 Jedes Produkt: Keyword-Suche → Relevanzfilter → Bild-URLs per HTTP-200 verifiziert → angelegt →
