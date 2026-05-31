@@ -22,6 +22,8 @@
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/css/styles.css">
+  <!-- PayPal Hosted Buttons SDK (founding page only) -->
+  <script src="https://www.paypal.com/sdk/js?client-id=BAAlTk-D5SyWnL803AOIYWD-RjeEQo5oamkwiBs1jKqmL_CFhyItNaOukllLIekiZORIjo0thuZVSeY77M&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
 </head>
 <body>
 
@@ -108,11 +110,13 @@
           <li><span><strong>Founder badge</strong> in every issue footer — as a thank-you</span></li>
         </ul>
 
-        <p style="margin: var(--space-5) 0 var(--space-2);">
-          <a href="mailto:hallo@abannews.com?subject=Founding%20Member%20EUR149&body=I%27d%20like%20to%20become%20a%20founding%20member.%20Please%20send%20me%20the%20payment%20link." class="btn btn--lg" style="width:100%;">
-            Become a founding member — €149
-          </a>
-        </p>
+        <div id="paypal-container-UB35NLZNLRDEY" style="max-width:420px;margin:var(--space-5) auto var(--space-2);"></div>
+        <script>
+          paypal.HostedButtons({
+            hostedButtonId: "UB35NLZNLRDEY"
+          }).render("#paypal-container-UB35NLZNLRDEY");
+        </script>
+        <p class="small muted center">🔒 Secure payment via PayPal · buyer protection · 30-day money-back</p>
 
         <p class="small muted" style="margin:0;">
           🔒 Secure payment via Stripe · 30-day money-back guarantee · instant access
@@ -202,7 +206,7 @@
 
         <details>
           <summary>How does access work after payment?</summary>
-          <p>After clicking "Become a founding member" you go through Stripe checkout. Within 5 min you get a welcome mail with Slack invite + premium login. First Sunday after that: your first weekend deep-dive.</p>
+          <p>After paying via PayPal you get a welcome mail within a few minutes with your Slack invite + premium login. First Sunday after that: your first weekend deep-dive.</p>
         </details>
 
         <details>
@@ -225,13 +229,8 @@
       <p class="lead" style="margin-left:auto;margin-right:auto;">
         You share the risk, you get lifetime access. That's the deal.
       </p>
-      <p>
-        <a href="mailto:hallo@abannews.com?subject=Founding%20Member%20EUR149&body=I%27d%20like%20to%20become%20a%20founding%20member.%20Please%20send%20me%20the%20payment%20link." class="btn btn--lg">
-          Become a founding member — €149
-        </a>
-      </p>
       <p class="small muted">
-        If the Stripe link doesn't work, just reply to a newsletter mail with "Founding" — or write directly to <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>.
+        Pay securely via PayPal in the offer above. Prefer an invoice (with VAT ID)? Write to <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>.
       </p>
     </div>
   </section>

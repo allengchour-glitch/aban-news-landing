@@ -36,6 +36,7 @@ header{padding:48px 20px 24px;text-align:center}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .cta-primary{display:inline-block;background:#d97706;color:#fff;text-decoration:none;font-weight:600;padding:16px 32px;border-radius:8px;font-size:17px;transition:background 0.2s;border:none;cursor:pointer}
 .cta-primary:hover{background:#b45309}
+.paypal-btn-wrap{max-width:420px;margin:0 auto 6px}
 .cta-meta{display:block;margin-top:12px;color:#737373;font-size:13px}
 section{padding:48px 20px;border-top:1px solid #e5e5e5;background:#fff}
 section.alt{background:#fafafa}
@@ -96,6 +97,8 @@ header{display:flex;align-items:center;gap:12px}
 .lang a{padding:.3rem .6rem;color:#9ca3af;text-decoration:none;line-height:1}
 .lang a.on{background:#1f2937;color:#fff}
 </style>
+<!-- PayPal Hosted Buttons SDK (nur auf der Founding-Seite) -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAAlTk-D5SyWnL803AOIYWD-RjeEQo5oamkwiBs1jKqmL_CFhyItNaOukllLIekiZORIjo0thuZVSeY77M&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
 </head>
 <body>
 <header>
@@ -111,7 +114,7 @@ header{display:flex;align-items:center;gap:12px}
   <h1>Sei eine der <span class="accent">100 ersten Stimmen</span>.<br>€149 einmal, lifetime.</h1>
   <p class="sub">aban news startet als täglicher KI-Newsletter für deutschsprachige Solopreneure. Die ersten 100 Leser, die jetzt einsteigen, bekommen lebenslang Premium — für einen Bruchteil des späteren Preises. Keine Verlängerung, kein Re-Open.</p>
   <a href="#checkout" class="cta-primary">Werde Founding-Member — €149</a>
-  <span class="cta-meta">🔒 Zahlung per Stripe-Link · 30 Tage Geld-zurück-Garantie · sofortiger Zugang</span>
+  <span class="cta-meta">🔒 Sichere Zahlung via PayPal · Käuferschutz · 30 Tage Geld-zurück-Garantie</span>
   <span class="cta-meta" style="margin-top:16px">Noch nicht sicher? <a href="https://abannews.beehiiv.com/subscribe" style="color:#9a3412;font-weight:600">Lies erst gratis mit</a> oder <a href="/ebook.html" style="color:#9a3412;font-weight:600">schnapp dir das kostenlose eBook</a>.</span>
 </section>
 
@@ -245,9 +248,15 @@ header{display:flex;align-items:center;gap:12px}
 <section class="cta-block" id="checkout">
   <div class="wrap">
     <h2>Bereit? €149 einmal, lifetime.</h2>
-    <p>30 Tage Geld-zurück-Garantie ohne Nachfragen. Schreib mir kurz — ich sichere deinen Founding-Platz und schicke dir den Zahlungslink.</p>
-    <a id="founding-buy" href="mailto:hallo@abannews.com?subject=Founding-Member%20EUR149&body=Ich%20m%C3%B6chte%20Founding-Member%20werden.%20Bitte%20schick%20mir%20den%20Zahlungslink." class="cta-primary">Founding-Platz sichern — €149</a>
-    <div class="guarantee">✓ 30 Tage Geld-zurück-Garantie</div>
+    <p>30 Tage Geld-zurück-Garantie ohne Nachfragen. Eine Zahlung, danach lebenslang Premium — kein Abo, keine Verlängerung.</p>
+    <div id="paypal-container-UB35NLZNLRDEY" class="paypal-btn-wrap"></div>
+    <script>
+      paypal.HostedButtons({
+        hostedButtonId: "UB35NLZNLRDEY"
+      }).render("#paypal-container-UB35NLZNLRDEY");
+    </script>
+    <div class="guarantee">✓ Sichere Zahlung via PayPal · Käuferschutz · 30 Tage Geld-zurück</div>
+    <p class="cta-meta" style="margin-top:12px">Lieber per Rechnung (mit USt-ID)? <a href="mailto:hallo@abannews.com?subject=Founding-Member%20EUR149%20Rechnung" style="color:#9a3412;font-weight:600">Schreib mir kurz.</a></p>
   </div>
 </section>
 
@@ -262,7 +271,7 @@ header{display:flex;align-items:center;gap:12px}
 </section>
 
 <div class="legal">
-  <p>Founding-Membership ist eine einmalige Zahlung über einen sicheren Zahlungsdienst (Stripe oder PayPal).<br>30 Tage Geld-zurück-Garantie. Bei Einstellung des Newsletters innerhalb 12 Monaten: vollständiger Refund.</p>
+  <p>Founding-Membership ist eine einmalige Zahlung über PayPal (Käuferschutz inklusive).<br>30 Tage Geld-zurück-Garantie. Bei Einstellung des Newsletters innerhalb 12 Monaten: vollständiger Refund.</p>
   <p style="margin-top:16px">
     <a href="/impressum.html">Impressum</a> ·
     <a href="/datenschutz.html">Datenschutz (DSGVO)</a> ·
@@ -272,25 +281,8 @@ header{display:flex;align-items:center;gap:12px}
 </div>
 
 <script>
-// ============================================================
-// FOUNDING-CHECKOUT — einen Zahlungslink eintragen, dann ist der Button live.
-// Du kannst Stripe ODER PayPal nehmen (beides geht — Stripe hat dann Vorrang):
-//   - Stripe: Dashboard -> Payment Links -> "+ New" -> Produkt "aban news Founding",
-//     EUR 149 einmalig -> Link kopieren (https://buy.stripe.com/...).
-//   - PayPal: paypal.me/DEINNAME/149  ODER ein PayPal-Button-Link
-//     (https://www.paypal.com/...). Schnellster Weg, kein Setup noetig.
-// Beide leer -> der Kauf laeuft automatisch per E-Mail (kein toter Button).
-// ============================================================
-(function(){
-  var STRIPE_FOUNDING_LINK = ""; // z.B. "https://buy.stripe.com/abc123"
-  var PAYPAL_FOUNDING_LINK = ""; // z.B. "https://paypal.me/abannews/149"
-  var btn = document.getElementById('founding-buy');
-  if(!btn) return;
-  var stripeOk = /^https:\/\/(buy\.stripe\.com|checkout\.stripe\.com)\//.test(STRIPE_FOUNDING_LINK);
-  var paypalOk = /^https:\/\/(www\.)?paypal\.(me|com)\//.test(PAYPAL_FOUNDING_LINK);
-  var link = stripeOk ? STRIPE_FOUNDING_LINK : (paypalOk ? PAYPAL_FOUNDING_LINK : "");
-  if(link){ btn.href = link; btn.target = "_blank"; btn.rel = "noopener"; }
-})();
+// Founding-Zahlung läuft über den PayPal Hosted Button im Checkout-Abschnitt oben
+// (PayPal SDK im <head>, hostedButtonId UB35NLZNLRDEY). Rechnung per E-Mail-Fallback.
 
 // Mock counter (will be replaced by live fetch from /api/founding-count)
 // async function updateCounter(){
