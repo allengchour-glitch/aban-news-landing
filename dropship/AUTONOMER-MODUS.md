@@ -151,6 +151,27 @@ phone sanitizer · keyboard cleaner · monitor stand · laptop sleeve · passpor
 packing cubes · shoe deodorizer · lint roller · jewelry cleaner · nail drill · gua sha · jade
 roller · scalp massager · electric blanket · heating pad · aromatherapy candle · incense holder.
 
+## 6b. 🔁 Echter Auto-Loop (GitHub Action — läuft ohne Session)
+`dropship/cj_autopilot.mjs` + `.github/workflows/cj-autopilot.yml` sourcen **täglich 06:00 UTC**
+autonom CJ-Produkte und legen sie als **DRAFT** an (Tag `autopilot-needs-copy`): echte SKU,
+Preis, HTTP-200-verifizierte Bilder, Hartfilter, Dedupe. Nutzt die **Shopify Admin GraphQL API
+direkt** (kein MCP/keine Session nötig). Reines Node, keine npm-Deps.
+
+**Damit es scharf ist, müssen einmalig GitHub-Repo-Secrets gesetzt werden**
+(Settings → Secrets and variables → Actions):
+- `CJ_EMAIL`, `CJ_API_KEY` — CJ Developer API
+- `SHOPIFY_SHOP` — z.B. `luxestyle.myshopify.com`
+- `SHOPIFY_ADMIN_TOKEN` — Custom-App Admin-Token (`shpat_…`), Scope `write_products`
+Ohne Secrets = sauberer No-Op (nichts passiert). Manuell testen: Actions → „CJ Autopilot" →
+Run workflow.
+
+**Arbeitsteilung (bewusst):** Der Cron macht die fehleranfällige Fleißarbeit (sourcen, Bilder
+prüfen, Draft anlegen). Eine **Claude-Session veredelt die Drafts**: deutsche Verkaufs-Copy,
+Preis-Feinschliff, `status:ACTIVE`, dann `publishablePublish` in alle 6 Kanäle. So geht nie ein
+schlecht getextetes/kaputtes Produkt live. → **Claude-Routine pro Session:**
+`products(query:"tag:autopilot-needs-copy")` holen, je Draft Copy schreiben, ACTIVE+publish,
+Tag `autopilot-needs-copy` entfernen, Log updaten, commit/push.
+
 ## 7. Bekannte Eigenheiten der Umgebung
 - **Scheduler-Tools (`CronCreate`/`ScheduleWakeup`) sind NICHT aktiviert** → ein echter,
   selbstlaufender Cron-Loop über Stunden ist hier nicht möglich. Autonomie heißt: in der
