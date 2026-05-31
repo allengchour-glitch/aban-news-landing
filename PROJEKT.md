@@ -32,7 +32,7 @@ KI-Newsletter **abannews.com / .de** (Mo–Fr, kuratiert, „3–5 Min, kein Hyp
 - **Aktive Affiliate-Links** (in ki-tools-radar/affiliate.json): Systeme.io (60% recurring), ElevenLabs (20%).
 - **Affiliate-Bewerbungen laufen** (manuelle Prüfung, Link kommt per Mail): GetResponse, Murf AI, ggf. Surfer SEO.
   -> Sobald Link da: in affiliate.json eintragen, '_'-Präfix entfernen, rebuild. Tools existieren bereits in tools.json.
-- **Social-Secrets:** noch offen (DISCORD_WEBHOOK_URL / TELEGRAM_BOT_TOKEN+CHAT_ID als GitHub-Secrets).
+- **Social-Secrets:** noch offen — User legt sie selbst bei GitHub an (Settings→Secrets→Actions): DISCORD_WEBHOOK_URL und/oder TELEGRAM_BOT_TOKEN+TELEGRAM_CHAT_ID. Werte holt der User aus Discord (Kanal→Integrationen→Webhooks) bzw. Telegram (@BotFather /mybots). Code-Seite fertig (social/post.py + social-autopost.yml, Mo/Mi/Fr). NIE Werte im Chat annehmen.
 - **Traffic:** nächster großer Hebel — Newsletter-Teaser + LinkedIn (LINKEDIN-CONTENT-PLAN.md).
 - WICHTIG bei Anmeldungen: nur den https-Affiliate-LINK annehmen, NIE API-Key/Passwort/Bankdaten.
 
