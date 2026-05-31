@@ -238,6 +238,10 @@
         {
           "q": "Wie lange bis zum ersten Euro?",
           "a": "Realistisch 3–6 Monate konsequenter Arbeit. Wer das nicht durchhält, sollte es lassen."
+        },
+        {
+          "q": "Welche Plattform für den Start?",
+          "a": "Für den Anfang reicht beehiiv oder Substack — kostenlos, schnell aufgesetzt, du brauchst keine eigene Technik. Wechseln kannst du später immer noch. Wichtiger als die Plattform ist, dass du regelmäßig sendest."
         }
       ],
       "related": [
@@ -271,6 +275,10 @@
         {
           "q": "Darf ich KI-Bilder kommerziell nutzen?",
           "a": "Je nach Tool und Tarif. Prüfe die Nutzungsrechte — viele erlauben es ab dem bezahlten Plan."
+        },
+        {
+          "q": "Welches Tool für deutsche Prompts?",
+          "a": "Die großen Generatoren verstehen Deutsch, liefern aber mit englischen Prompts oft präzisere Ergebnisse. Schreib den Prompt ruhig auf Deutsch und lass ihn von Claude oder DeepL übersetzen — das kostet zehn Sekunden und spart Fehlversuche."
         }
       ],
       "related": [
@@ -378,6 +386,10 @@
         {
           "q": "Ist die kostenlose Version DSGVO-konform?",
           "a": "Oft nicht für sensible Daten — Gratis-Tarife nutzen Eingaben häufig zum Training. Für Kundendaten Business-Tarif + AVV."
+        },
+        {
+          "q": "Woran erkenne ich ein DSGVO-taugliches Tool?",
+          "a": "Drei Dinge im Kleingedruckten: EU- oder Schweiz-Hosting, ein angebotener AV-Vertrag und die Möglichkeit, das Training mit deinen Daten abzuschalten. Fehlt eines davon, gib keine personenbezogenen Daten ein."
         }
       ],
       "related": [
@@ -411,6 +423,10 @@
         {
           "q": "Versteht die KI Deutsch in Meetings?",
           "a": "Ja, die guten Tools transkribieren Deutsch zuverlässig — Dialekt bleibt aber eine Herausforderung."
+        },
+        {
+          "q": "Ist das mit dem Datenschutz heikel?",
+          "a": "Ja, sobald echte Personen sprechen. Hol dir vorab das Einverständnis aller Teilnehmer, nutze ein Tool mit EU-Hosting und lösche Aufnahmen, sobald das Protokoll steht. Bei sensiblen Themen lieber selbst mitschreiben."
         }
       ],
       "related": [
@@ -481,6 +497,10 @@
         {
           "q": "Lohnt sich der Antrag?",
           "a": "Bei kleinen Beträgen selten, bei größeren Projekten oft. Den Aufwand ehrlich gegen die Summe rechnen."
+        },
+        {
+          "q": "Wo finde ich passende Programme?",
+          "a": "Bund, Länder und Kantone haben eigene Töpfe — die Übersicht im Förder-Radar bündelt 86 echte DACH-Programme. Filter nach Region und Vorhaben, dann zur offiziellen Stelle. Fristen und Bedingungen ändern sich, prüf immer das Original."
         }
       ],
       "related": [
@@ -514,6 +534,10 @@
         {
           "q": "Brauche ich ein Zertifikat?",
           "a": "Für manche Jobs ja, für die meisten Solo-Tätigkeiten zählt Können mehr als Papier."
+        },
+        {
+          "q": "Kurs kaufen oder selbst lernen?",
+          "a": "Für die Grundlagen reicht konsequentes Selbstlernen mit guten Gratis-Quellen. Ein bezahlter Kurs lohnt, wenn du Struktur, Feedback oder ein anerkanntes Zertifikat brauchst. Erst das kostenlose Material ausschöpfen, dann gezielt zukaufen."
         }
       ],
       "related": [
@@ -548,6 +572,10 @@
         {
           "q": "Bin ich als Solo betroffen?",
           "a": "Meist nur durch Transparenz- und Kompetenzpflichten. Hochrisiko-Regeln treffen die wenigsten. Keine Rechtsberatung — im Zweifel Fachperson."
+        },
+        {
+          "q": "Muss ich KI-Inhalte kennzeichnen?",
+          "a": "In vielen Fällen ja — der AI Act verlangt Transparenz bei künstlich erzeugten Texten, Bildern und Stimmen. Ein knapper Hinweis genügt meist. Im Zweifel kennzeichnen: Es kostet nichts und schützt dein Vertrauen beim Leser."
         }
       ],
       "related": [
@@ -581,6 +609,10 @@
         {
           "q": "Wie viel sollte ich ausgeben?",
           "a": "Als Solo oft 20–60 €/Monat. Mehr nur, wenn ein Tool nachweislich Zeit/Geld spart."
+        },
+        {
+          "q": "Lohnt sich ein Jahresabo?",
+          "a": "Erst nach ein, zwei Monaten Nutzung. Starte monatlich, miss deinen echten Verbrauch, und wechsle erst aufs Jahresabo, wenn klar ist, dass du das Tool dauerhaft brauchst. Viele Jahresabos verfallen ungenutzt."
         }
       ],
       "related": [
@@ -614,6 +646,10 @@
         {
           "q": "Was kann ich verlangen?",
           "a": "Realistisch 50–150 €/h, je nach Leistung. Rechne deinen echten Stundensatz aus, bevor du Preise nennst."
+        },
+        {
+          "q": "Muss ich Kunden sagen, dass ich KI nutze?",
+          "a": "Transparenz zahlt sich aus. Die meisten Kunden stört nicht das Werkzeug, sondern verstecktes Abrechnen von Zeit, die du nicht gebraucht hast. Verkauf das Ergebnis, nenne KI offen als Teil deines Vorgehens — das wirkt souverän, nicht billig."
         }
       ],
       "related": [
@@ -647,6 +683,10 @@
         {
           "q": "Darf ich KI-generierte Bücher verkaufen?",
           "a": "Ja, aber Amazon verlangt Kennzeichnung und straft Müll ab. Qualität und Nische sind Pflicht."
+        },
+        {
+          "q": "Wie viel verdient man realistisch?",
+          "a": "Für die meisten wenige Euro im Monat pro Titel — kein passives Vermögen. Wer Geld verdient, baut über Monate eine Reihe guter Bücher in einer Nische auf. Ein einzelnes KI-Buch ohne Lektorat und Thema fällt durch."
         }
       ],
       "related": [
@@ -680,6 +720,10 @@
         {
           "q": "Ersetzt das meinen Support?",
           "a": "Nein — es entlastet ihn. Komplexe oder emotionale Fälle gehören zum Menschen."
+        },
+        {
+          "q": "Merken Kunden, dass ein Bot antwortet?",
+          "a": "Einen guten Bot bei einfachen Fragen kaum — einen schlechten sofort. Die Faustregel: KI für Standardfragen und Sortierung, Mensch für Beschwerden und alles Emotionale. Biete immer einen sichtbaren Weg zum Menschen an."
         }
       ],
       "related": [
@@ -713,6 +757,10 @@
         {
           "q": "Muss ich jedem Trend folgen?",
           "a": "Nein. Ein, zwei solide Tools beherrschen schlägt jedem Trend hinterherzulaufen."
+        },
+        {
+          "q": "Worauf sollte ich 2026 wirklich achten?",
+          "a": "Auf Werkzeuge, die eine konkrete Aufgabe in deinem Alltag schneller machen — nicht auf das, was gerade am lautesten beworben wird. Ein Trend ist erst dann deiner, wenn er dir messbar Zeit oder Geld spart."
         }
       ],
       "related": [
