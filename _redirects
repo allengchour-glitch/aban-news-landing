@@ -13,6 +13,11 @@
 /ebook            /ebook.html           301
 /buch             /buch.html            301
 /book             /buch.html            301
+/trilogie         /trilogie.html        301
+/trilogy          /trilogie.html        301
+/das-tal          /trilogie.html        301
+/the-valley       /en/trilogie.html     301
+/en/trilogy       /en/trilogie.html     301
 /ki-tools         /ki-tools-fuer-selbststaendige.html   301
 /chatgpt          /chatgpt-fuer-solopreneure.html       301
 /sponsoring       /sponsoring.html      301

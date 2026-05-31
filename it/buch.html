@@ -68,6 +68,9 @@
     .cta-box h2{font-size:1.25rem;margin-bottom:.5rem}
     .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
     .disclaimer{font-size:.8rem;color:var(--muted);padding:1.2rem 0;border-top:1px solid var(--line);margin-top:1rem}
+    .dl-state{display:block;font-size:.78rem;color:var(--ok);font-weight:600;margin-top:.5rem}
+    .welcome{background:var(--amber-lt);border:1px solid #f6d9ad;border-radius:12px;padding:.6rem 1rem;margin:1rem 0 0;font-size:.9rem}
+    .reset{background:none;border:0;color:var(--muted);cursor:pointer;text-decoration:underline;font-size:.78rem}
     footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
     footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
     footer a{color:var(--muted)}
@@ -77,7 +80,7 @@
   {"@context":"https://schema.org","@type":"Book","name":"Anti-Hype — Come i liberi professionisti usano l'IA senza bullshit","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"inLanguage":"it","bookFormat":"https://schema.org/EBook","datePublished":"2026","url":"https://abannews.com/it/buch.html","workExample":[{"@type":"Book","bookFormat":"https://schema.org/EBook","encodingFormat":"application/pdf","url":"https://abannews.com/downloads/anti-hype-ebook-it.pdf"},{"@type":"Book","bookFormat":"https://schema.org/EBook","encodingFormat":"application/epub+zip","url":"https://abannews.com/downloads/anti-hype-ebook-it.epub"}]}
   </script>
 </head>
-<body>
+<body data-memory-key="aban_buch_v1">
 
 <header>
   <div class="wrap">
@@ -101,6 +104,8 @@
       <p class="lead">L'essenza di oltre 200 numeri della newsletter in un solo testo. Scaricalo gratis in PDF o ePub — e se ti è stato utile, paga quanto valeva per te. Niente paywall, niente pressione. Semplice così.</p>
     </div>
 
+    <p class="welcome" data-resume data-resume-text="Bentornato — la tua ultima visita qui: il %d." hidden></p>
+
     <div class="buy">
       <div class="cover" aria-hidden="true">
         <span class="c-emoji">☕</span>
@@ -111,10 +116,12 @@
         <h2>Prendi il libro</h2>
         <p>Impaginazione pulita, leggibile offline, su ogni dispositivo. Senza tracciamento, senza registrazione.</p>
         <div class="formats">
-          <a href="/downloads/anti-hype-ebook-it.pdf" download>↓ PDF</a>
-          <a href="/downloads/anti-hype-ebook-it.epub" download>↓ ePub (Kindle/E-Reader)</a>
+          <a href="/downloads/anti-hype-ebook-it.pdf" download data-dl="pdf">↓ PDF</a>
+          <a href="/downloads/anti-hype-ebook-it.epub" download data-dl="epub">↓ ePub (Kindle/E-Reader)</a>
           <a href="/it/ebook.html">→ Leggi online</a>
         </div>
+        <span class="dl-state" data-dl-state="pdf" data-dl-label="✓ PDF scaricato il" hidden></span>
+        <span class="dl-state" data-dl-state="epub" data-dl-label="✓ ePub scaricato il" hidden></span>
         <div class="pay">
           <a href="#" class="btn" id="buy-btn">Presto: sostieni il libro →</a>
           <a href="#" class="btn btn--ghost" id="kdp-btn" hidden>Su Amazon (Kindle/cartaceo)</a>
@@ -128,10 +135,14 @@
       <ol class="toc-list">
         <li>Perché esiste questo libro — e cosa <em>non</em> ci troverai</li>
         <li>Il filtro anti-bullshit in 3 domande</li>
+        <li>Cosa sa fare l'IA — e dove fallisce in modo affidabile</li>
         <li>Il tuo stack IA minimo (quattro mattoni, non di più)</li>
+        <li>Come parlare all'IA perché ne esca qualcosa di utile</li>
         <li>Cinque routine che fanno davvero risparmiare tempo</li>
         <li>Sette trappole dell'hype</li>
+        <li>La protezione dei dati in cinque minuti</li>
         <li>Come si prosegue</li>
+        <li><strong>Laboratorio:</strong> modelli da copiare, una giornata svolta, lo strumento per ogni compito e un glossario in chiaro</li>
       </ol>
       <p style="margin-top:.8rem;"><a href="/it/ebook.html" class="btn btn--ghost">Anteprima: tutto il capitolo 1 online →</a></p>
     </section>
@@ -153,11 +164,12 @@
       <h2>Il libro è gratis — anche la newsletter</h2>
       <p>aban news: Lun–Ven, in 5 minuti i tre sviluppi IA che toccano la tua attività oggi. Niente hype, niente spam.</p>
       <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">Briefing IA di 5 min gratis →</a>
-      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Vuoi di più? Il <a href="/founding.html">founding member (149 € a vita)</a> riceve tutto per primo.</p>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Vuoi di più? Il <a href="/founding.html">founding member (69 € a vita)</a> riceve tutto per primo.</p>
     </div>
 
     <div class="disclaimer">
-      <p><strong>Nota di trasparenza:</strong> al momento questa è la 1ª edizione compatta (~8 pagine di contenuto centrale). Un'edizione cartacea/Kindle ampliata è in lavorazione. Nessuna recensione inventata, nessuna pretesa da bestseller — arriveranno quando saranno vere.</p>
+      <p><strong>Nota di trasparenza:</strong> questa è l'edizione ampliata — 13 capitoli incluso il laboratorio (modelli da copiare, una giornata svolta, una panoramica degli strumenti, un glossario). L'edizione Kindle/cartacea tramite Amazon è in preparazione. Nessuna recensione inventata, nessuna pretesa da bestseller — arriveranno quando saranno vere.</p>
+      <p><strong>I tuoi progressi restano con te.</strong> Questa pagina ricorda solo in locale nel tuo browser (<code>localStorage</code>) se hai scaricato il PDF o l'ePub — senza server, senza cookie, senza tracciamento. Niente lascia il tuo dispositivo. <button class="reset" data-reset type="button">Reimposta</button></p>
     </div>
 
   </div>
@@ -170,6 +182,8 @@
   </div>
 </footer>
 
+<!-- Memoria di lettura/progresso: solo in locale (localStorage), senza tracciamento. -->
+<script src="/js/buch-memory.js"></script>
 <!-- Link centralizzati in /js/buch-config.js (unica fonte). -->
 <script src="/js/buch-config.js"></script>
 <script>

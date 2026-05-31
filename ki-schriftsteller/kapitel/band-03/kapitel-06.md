@@ -1,0 +1,13 @@
+Kapitel 6 - Theos Version
+
+Theo lebte in einer kleinen Wohnung am Rand einer Kleinstadt im Unterland, zweiundsechzig Jahre alt, früh gealtert, allein. Eva hatte ihn seit über zwanzig Jahren nicht gesehen, seit jenem Streit, der sie aus dem Tal getrieben hatte und über den beide nie wieder geredet hatten. Sie hatte ihm vorgeworfen, ein Feigling zu sein, ohne sagen zu können, wovor er sich drückte; sie hatte nur gespürt, dass ihr Vater eine offene Wunde mit sich trug und sie lieber bluten ließ, als sie anzusehen, und dass er sie, das Kind, gestraft hatte, wann immer sie an die Stelle rührte. Sie war gegangen, jung und zornig, und hatte den wahren Grund nie genannt, weil sie ihn selbst nicht gekannt hatte.
+
+Jetzt saß sie ihm gegenüber, und sie legte die Kopien aus Niklaus' Ordner auf den Tisch, und sie sagte: «Ich weiß von Anton Roos. Ich weiß von den Abrechnungen. Erzähl mir, was du weißt.»
+
+Theo sah die Papiere an, lange, und etwas in seinem Gesicht gab nach, ein Damm, der seit dreißig Jahren hielt. Stückweise kam es heraus. Wie er einundneunzig die Kiste auf dem Estrich gefunden hatte. Wie er die Zahlen gelesen und begriffen hatte, dass der Wohlstand der Familie aus jener Sache stammte. Wie er nicht zur Wahrheit gegangen war, sondern zum jungen Imhof, und das Wissen gegen ein Darlehen für den Sternen eingetauscht hatte. «Ich habe es benutzt», sagte er, und seine Stimme war heiser. «Ich hatte es in der Hand, und ich habe es verkauft, statt es zu öffnen. Das ist es, was ich getan habe.»
+
+Und dann erzählte er von Marlene. Von ihrem letzten Winter, von dem Satz «Frag das Wasser, nicht mich». Von dem leeren Umschlag in ihrer Truhe, beschriftet «Für Theo», den sie nie hatte füllen können, und von dem Zettel im Gebetbuch, auf dem nur das Wort Kapelle stand. «Sie hat mir den Weg gelegt», sagte Theo. «So gut sie konnte. Und ich bin ihn nicht gegangen. Ich habe den Umschlag eingesteckt und bin weggezogen und habe geglaubt, ich lasse es zurück.»
+
+Eva saß still. Und in dieser Stille verstand sie zum ersten Mal, was sie als junge Frau aus dem Tal getrieben hatte: nicht eine Bosheit ihres Vaters, sondern seine Feigheit, die Last, die er trug und nicht ablegte und an der er alle um sich her verbittern ließ, sie als Kind eingeschlossen. Der Streit von damals hatte einen Grund gehabt, den keiner von ihnen hatte benennen können, und der Grund saß jetzt vor ihr, ein alter, gebrochener Mann, der endlich redete.
+
+«Geh du hin», sagte Theo. «Hol den Brief. Lies, was wahr ist. Tu, wozu ich zu feige war.» Er sah sie an, und in seinen Augen war etwas, das fast Bitte und fast Stolz war. «Du warst immer die mit dem geraden Rücken. Schon als Kind, am Ufer. Geh.»

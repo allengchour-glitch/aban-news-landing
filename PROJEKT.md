@@ -218,3 +218,52 @@ Erstes echtes Backend-Tool im Netzwerk (raus aus rein statischem HTML).
   {Jahr}") in 11 Sprachen, `og:type=product`, Meta-Descriptions an Wortgrenze gekürzt.
   Build deterministisch (10.351 Seiten). **Dieselben Hebel sind auf die übrigen
   Programmatic-Projekte (foerder/jobs/kurse/prompts/agenturen) übertragbar.**
+## 💶 Monetarisierung Newsletter/Buch — LIVE-Stand (2026-05-31, Session „ebook verkaufen")
+
+**Founding-Member — LIVE & verkauft aktiv:**
+- Preis von €149 auf **€69** gesenkt (Early-Bird), site-weit konsistent (außer `archive/`, bewusst).
+- Zahlung über **PayPal Payment Link** `https://www.paypal.com/ncp/payment/7GPXCMBCETCUY`
+  (in `founding.html` + `en/founding.html`, target=_blank, kein SDK/Embed nötig).
+  Alter Hosted-Button `UB35NLZNLRDEY` (€149) + Test-Link `P6P4EECUBNVEJ` sind ersetzt —
+  User wollte beide später in PayPal deaktivieren/archivieren (offen, reine Aufräumarbeit).
+- Beide Founding-Seiten auf „Maximum" ausgebaut (de+en, identische Struktur): Hero, Benefits,
+  „Für wen / für wen nicht", Mittwoch-Einblick, Founder-Story, Geld-Transparenz, Vergleichstabelle,
+  FAQ (12 de / 9 en), „So läuft's nach der Zahlung", Honor-Roll, Product- + FAQPage-JSON-LD.
+- Rechnungs-Fallback per Mail (hallo@abannews.com) bleibt.
+- **PayPal in datenschutz.html** dokumentiert (PayPal Europe, Luxemburg, Art. 6 Abs. 1 lit. b DSGVO)
+  + Auftragsverarbeiter-Tabellenzeile. CSP in `_headers` um `*.paypal.com`/`*.paypalobjects.com`
+  erweitert (script/frame/connect/form-action).
+
+**Buch/eBook „Anti-Hype" — KDP-tauglich gemacht (alle 4 Sprachen):**
+- Inhalt in `generate_ebook.py` (einzige Quelle der Wahrheit) von 6 auf **13 Kapitel** erweitert:
+  + „Was KI gut kann / wo sie scheitert", „Wie du mit KI redest" (Prompting),
+  „Datenschutz in 5 Minuten", „Klartext-Glossar" — in de/en/fr/it gespiegelt.
+- Print-Innenteil jetzt ≥24 Seiten (KDP-Minimum): de 27 / en 26 / fr 27 / it 25.
+- Regeneriert: `downloads/anti-hype-ebook*.pdf|.epub`, `anti-hype-print-*.pdf`, Wraparound-Cover.
+  Bauen: `python3 generate_ebook.py` + `python3 generate_kdp_print.py de en fr it`
+  + `python3 generate_kdp_wrap_cover.py --pages <N>`.
+- Pay-what-you-want-CTA am Leseende aller `ebook.html` → `buch.html`.
+  Buch-Verkauf läuft über **Lemon Squeezy** (`js/buch-config.js` BUY_URL gesetzt, akzeptiert Karte+PayPal,
+  Merchant-of-Record → MwSt automatisch). KDP-`KDP_URL` noch leer (nach Amazon-Launch eintragen).
+- Neue Doku: `docs/KDP-VEROEFFENTLICHEN.md` (Schritt-für-Schritt Kindle+Taschenbuch + fertige
+  Metadaten/Klappentext pro Sprache) und `docs/NEWSLETTER-GELD.md` (ehrliche Reihenfolge der
+  Geldkanäle: eigene Produkte → Affiliate → Sponsoring).
+
+**Sponsoring/Rate-Card:** ehrlicher Hinweis ergänzt (Abrechnung nach verifizierter Listengröße,
+fairer Start-Tarif in Aufbauphase). Calendly `abannews/sponsor` aktiv.
+
+**Gemergte PRs dieser Session:** #15 (eBook/KDP+PayPal-Founding), #16 (€69+Payment-Link),
+#18 (Founding-Seite Maximum de), #19 (en-Parität), #20 (Fix toter #checkout-Anker en).
+
+**Offene To-dos (nur User, braucht PayPal/Amazon-Accounts):**
+1. Live-Test `abannews.com/founding.html` → PayPal zeigt €69?
+2. Alten PayPal-Button `UB35NLZNLRDEY` + Test-Link `P6P4EECUBNVEJ` in PayPal deaktivieren.
+3. Buch auf Amazon KDP veröffentlichen (Dateien+Metadaten liegen fertig in `docs/KDP-VEROEFFENTLICHEN.md`),
+   dann `KDP_URL` in `js/buch-config.js` setzen.
+4. Inhaltliche Wahrheits-Prüfung der Founding-Benefits (de nennt Discord/Mittwoch-Edition/Office-Hour,
+   en nennt Slack/Sunday-deep-dive/Quarterly-calls — vor breiter Bewerbung angleichen auf das, was real existiert).
+
+⚠️ **Session-Warnung:** Gegen Ende lieferte die Umgebung verfälschte File-Reads von `index.html`
+(Phantom-„Google Analytics", 1248 statt 308 Zeilen). `index.html` ist in Wahrheit unverändert/sauber
+(308 Zeilen, kein gtag, WebSite+Organization-JSON-LD vorhanden). Es wurde NICHTS Fehlerhaftes
+committet. Bei künftigem Feinschliff an index.html zur Sicherheit Inhalte per `git show` gegenprüfen.

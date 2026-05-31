@@ -44,19 +44,27 @@ except ImportError:
 # Plot-Bibel und Roman-Loader aus dem Writer wiederverwenden - eine Quelle der
 # Wahrheit, damit Ueberarbeitung und Erstschrift denselben Kontext teilen.
 from schreibe_roman import lade_roman, baue_plotbibel
+from roman_util import baende_aus_roman, ist_trilogie, kapitel_pfad
 
 MODELL = "claude-opus-4-8"
 HIER = os.path.dirname(os.path.abspath(__file__))
 
 
 # ------------------------------------------------------------------
-# Kapitel-Plan im Roman finden
+# Kapitel-Plan in der Bibel finden (Einzelbuch oder ein Trilogie-Band)
 # ------------------------------------------------------------------
-def finde_kapitel(roman, nummer):
-    """Liefert den Plan-Eintrag (ziel + beats) fuer die Kapitelnummer oder None."""
-    for k in roman["kapitel"]:
-        if k["nummer"] == nummer:
-            return k
+def finde_kapitel(roman, nummer, band_nr):
+    """Liefert den Plan-Eintrag (ziel + beats) fuer die Kapitelnummer oder None.
+
+    Bei Trilogien wird nur im angegebenen Band gesucht, damit gleiche
+    Kapitelnummern in verschiedenen Baenden nicht kollidieren.
+    """
+    for b in baende_aus_roman(roman):
+        if b["nummer"] != band_nr:
+            continue
+        for k in b["kapitel"]:
+            if k["nummer"] == nummer:
+                return k
     return None
 
 
@@ -140,6 +148,8 @@ def main():
                    help="Pfad zur Plot-Bibel (Default: roman.json)")
     p.add_argument("--out", default=os.path.join(HIER, "kapitel"),
                    help="Ordner mit den Kapiteldateien (Default: kapitel/)")
+    p.add_argument("--band", type=int, default=None,
+                   help="Bei Trilogie: Band des Kapitels (Nummer)")
     p.add_argument("--kapitel", type=int, required=True,
                    help="Welches Kapitel ueberarbeitet werden soll (Nummer)")
     p.add_argument("--feedback", default=None,
@@ -164,11 +174,16 @@ def main():
     roman = lade_roman(args.roman)
     plotbibel = baue_plotbibel(roman)
 
-    kap = finde_kapitel(roman, args.kapitel)
+    einzelbuch = not ist_trilogie(roman)
+    if not einzelbuch and args.band is None:
+        sys.exit("! Diese Bibel ist eine Trilogie. Gib mit --band N den Band an.")
+    band_nr = 1 if einzelbuch else args.band
+
+    kap = finde_kapitel(roman, args.kapitel, band_nr)
     if kap is None:
         sys.exit("! Kapitel %d steht nicht im Plan (%s)." % (args.kapitel, args.roman))
 
-    pfad = os.path.join(args.out, "kapitel-%02d.md" % args.kapitel)
+    pfad = kapitel_pfad(args.out, band_nr, args.kapitel, einzelbuch)
     if not os.path.exists(pfad):
         sys.exit("! Kapiteldatei fehlt: %s\n  Schreibe es zuerst mit:  "
                  "python3 schreibe_roman.py --kapitel %d" % (pfad, args.kapitel))
@@ -188,7 +203,7 @@ def main():
         client, plotbibel, kap, alter_text, feedback, args.ziel_woerter)
 
     # Erst Backup, dann ueberschreiben - so geht die alte Fassung nie verloren.
-    backup = os.path.join(args.out, "kapitel-%02d.bak.md" % args.kapitel)
+    backup = kapitel_pfad(args.out, band_nr, args.kapitel, einzelbuch, suffix="bak.md")
     with open(backup, "w", encoding="utf-8") as f:
         f.write(alter_text + "\n")
     with open(pfad, "w", encoding="utf-8") as f:
