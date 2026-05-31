@@ -229,6 +229,17 @@ NEW_UI = {
                        "tr": "Aban News bülteninde son ele alınan araçlar.",
                        "ja": "Aban Newsで最近取り上げたツール。",
                        "zh": "Aban News 通讯近期评测的工具。"},
+    "covered_in": {"de": "Im aban-news-Newsletter besprochen ({n}×). Im Archiv nachlesen →",
+                   "en": "Covered in the aban news newsletter ({n}×). Read it in the archive →",
+                   "fr": "Présenté dans la newsletter aban news ({n}×). À lire dans les archives →",
+                   "es": "Tratado en la newsletter de aban news ({n}×). Léelo en el archivo →",
+                   "it": "Trattato nella newsletter aban news ({n}×). Leggi nell'archivio →",
+                   "pt": "Abordado na newsletter aban news ({n}×). Leia no arquivo →",
+                   "nl": "Besproken in de aban news-nieuwsbrief ({n}×). Lees het in het archief →",
+                   "pl": "Omawiane w newsletterze aban news ({n}×). Przeczytaj w archiwum →",
+                   "tr": "aban news bülteninde ele alındı ({n}×). Arşivde okuyun →",
+                   "ja": "aban newsニュースレターで取り上げ済み（{n}回）。アーカイブで読む →",
+                   "zh": "已在 aban news 通讯中评测（{n}次）。在存档中阅读 →"},
     # --- FAQ (per tool) ---
     "faq_heading": {"de": "Häufige Fragen", "en": "FAQ", "fr": "Questions fréquentes",
                     "es": "Preguntas frecuentes", "it": "Domande frequenti", "pt": "Perguntas frequentes",
@@ -847,6 +858,7 @@ def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None, relat
 {pro_contra(loc, ui)}
 {'<div class="note"><strong>'+e(ui['editor_note'])+':</strong> '+e(note)+'</div>' if note else ''}
 {'<div class="note"><strong>'+e(ui['dsgvo'])+':</strong> '+e(dsgvo)+'</div>' if dsgvo else ''}
+{newsletter_mention(tool, ui, lang)}
 <p><strong>{e(ui['alternatives'])}:</strong> {alts}{(' · <a href="'+e(page_path(lang,'alt',slugify(tool['id'])))+'">'+e(ui['alt_title'].format(name=tool['name']))+' →</a>') if (tool.get('alternatives') or related) else ''}</p>
 {comparison_links(tool, tools_by_id or {}, ui, lang)}
 {related_links(related, ui, lang)}
@@ -992,6 +1004,16 @@ def latest_issue(tool):
         except (TypeError, ValueError):
             pass
     return max(nums) if nums else 0
+
+
+def newsletter_mention(tool, ui, lang):
+    """Trust/cross-link block: if the tool was covered in the newsletter, link
+    back to the archive on the main site (internal linking + social proof)."""
+    n = len(tool.get("ausgaben_mentions", []))
+    if not n:
+        return ""
+    return (f'<p class="note">📬 <a href="https://abannews.com/archive.html" '
+            f'rel="noopener">{e(ui["covered_in"].format(n=n))}</a></p>')
 
 
 def trending_page(members, aff, ui, lang, available):

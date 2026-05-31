@@ -103,9 +103,13 @@ Social-Image fürs eBook: `og-ebook.png` (Pillow, 1200×630).
 ## Geld-Projekte (Aban-Netzwerk) — zusätzlich zum Newsletter
 Dieses Repo enthält neben der Newsletter-Site mehrere automatisierte KI-Geld-Projekte.
 **Voller Stand in `PROJEKT.md`** (immer zuerst lesen). Kurz:
-- `ki-tools-radar/` — KI-Tool-Vergleich (176 Tools, 11 Sprachen, ~10.255 Seiten). LIVE auf radar.abannews.com. Affiliate.
+- `ki-tools-radar/` — KI-Tool-Vergleich (177 Tools, 11 Sprachen, ~10.351 Seiten). LIVE auf radar.abannews.com. Affiliate. 56 Tool-Seiten verlinken zurück aufs Newsletter-Archiv.
 - `foerder-radar/` — DACH-Fördermittel (86 echte Programme). Lead-Gen. Domain foerder.abannews.com.
 - `jobs-radar/` — DACH-KI-Jobboard (fetch_jobs.py: Arbeitnow+Remotive). Domain jobs.abannews.com.
+- `kurse-radar/` — KI-Kurs-/Zertifikat-Vergleich (22 echte Anbieter, Preise/Score `null` bis geprüft). Affiliate (deaktiviert). Domain kurse.abannews.com. **Cloudflare-Projekt noch anzulegen.**
+- `prompts-bibliothek/` — 50 selbst geschriebene deutsche Prompts (9 Berufe, 11 Aufgaben), Live-Suche + Copy-Button. Newsletter-Opt-in. Domain prompts.abannews.com. **CF-Projekt noch anzulegen.**
+- `agenturen-radar/` — KI-Dienstleister-Verzeichnis DACH (startet ehrlich leer, nur markierte Platzhalter). Bezahlte Listings. Domain agenturen.abannews.com. **CF-Projekt noch anzulegen.**
+- 8× `ki-fuer-*.html` im Root — Branchen-SEO-Hubs (Handwerker, Steuerberater, Ärzte, Anwälte, Makler, Coaches, Onlineshops, Gastro). Laufen direkt auf abannews.com. Newsletter + Tool-Affiliate.
 - `portal/` — Hub; `social/` — Auto-Posting Telegram/Discord; `automation/werkbank.py` + `news_aggregator.py` — Newsletter-Tools.
 - Jedes Geld-Projekt: `generate.py` (stdlib), eigener Auto-Build-Workflow, baut nach `dist/`.
-- Daten `data/tools.json` (176 Tools, 33 neue mit „[Redaktion: prüfen]") speist den ki-tools-radar.
+- Daten `data/tools.json` (177 Tools, 33 neue mit „[Redaktion: prüfen]") speist den ki-tools-radar.

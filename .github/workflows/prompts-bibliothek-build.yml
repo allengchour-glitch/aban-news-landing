@@ -1,0 +1,29 @@
+name: Prompt-Bibliothek — Auto-Build
+
+on:
+  push:
+    paths:
+      - 'prompts-bibliothek/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Generate prompt library
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generate site
+        run: |
+          cd prompts-bibliothek
+          python generate.py
+          find dist -type f | wc -l
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: prompts-bibliothek-dist
+          path: prompts-bibliothek/dist
+          retention-days: 14

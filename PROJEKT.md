@@ -79,6 +79,26 @@ Automatisierter DACH-KI-/ML-Jobboard (programmatic, statisch). Verdient über ge
 - **Stand:** 12 echte Seed-Jobs, AI-Crawler-robots, Dark Mode, tägl. Auto-Build-Workflow
 - **Offen:** Sponsoren + sponsors.json, Domain/Deployment, Newsletter-Einbettung. Quelle erweiterbar (Bundesagentur/Adzuna).
 
+### 4. KI-Kurs-Radar  →  Ordner `kurse-radar/`  (NEU 31.05., launch-fertig)
+- **Domain:** kurse.abannews.com — **Cloudflare-Projekt noch anzulegen** (Build `cd kurse-radar && python generate.py`, Output `kurse-radar/dist`).
+- **Generator:** `kurse-radar/generate.py` (pure stdlib). Daten: `data/kurse.json` (22 echte Anbieter: DeepLearning.AI, Coursera, DataCamp, openHPI, Google/Microsoft-Zertifikate … — Preise/Score `null` bis redaktionell geprüft, KEINE erfundenen Werte).
+- **Seiten:** Startseite/Vergleich, 22 Kurs-Detailseiten, Themen- + Niveau-Seiten, sitemap/robots/RSS. Course-JSON-LD.
+- **Monetarisierung:** `kurse-radar/affiliate.json` (alle Slots deaktiviert, `_`-Präfix) — Kursplattform-Affiliate, sobald Links freigegeben.
+
+### 5. Prompt-Bibliothek  →  Ordner `prompts-bibliothek/`  (NEU 31.05.)
+- **Domain:** prompts.abannews.com — **CF-Projekt noch anzulegen** (Build `cd prompts-bibliothek && python generate.py`, Output `prompts-bibliothek/dist`).
+- **Generator:** `prompts-bibliothek/generate.py` (stdlib). Daten: `data/prompts.json` (50 SELBST geschriebene Prompts, 9 Berufe × 11 Aufgaben). Live-Suche + Copy-Button (Vanilla-JS). HowTo-JSON-LD.
+- **Monetarisierung:** Newsletter-Opt-in (kein Affiliate). Später Premium-Pack-PDF denkbar.
+
+### 6. KI-Dienstleister-Verzeichnis  →  Ordner `agenturen-radar/`  (NEU 31.05.)
+- **Domain:** agenturen.abannews.com — **CF-Projekt noch anzulegen** (Build `cd agenturen-radar && python generate.py`, Output `agenturen-radar/dist`).
+- **Generator:** `agenturen-radar/generate.py` (stdlib, baut auch mit leerer Liste). Daten: `data/agenturen.json` — startet ehrlich LEER (nur 2 als `platzhalter:true` markierte Struktur-Beispiele, KEINE echten Firmen).
+- **Monetarisierung:** bezahlte Listings (Basis 0 € vs. Featured, Preis `[Redaktion: festlegen]`). Funnel `eintrag-einreichen.html` + `preise.html`, Kontakt `hallo@abannews.com`.
+
+### 7. Branchen-Hubs  →  8× `ki-fuer-*.html` im Root  (NEU 31.05., sofort live auf abannews.com)
+- Handwerker, Steuerberater, Ärzte, Anwälte, Immobilienmakler, Coaches, Onlineshops, Gastronomie.
+- Layout aus `geld-verdienen-mit-ki.html`. WebPage + FAQPage-JSON-LD, in `sitemap.xml`. Origineller Inhalt (~800 W.), Newsletter-CTA + Link → radar.abannews.com. Monetarisierung: Newsletter + Tool-Affiliate.
+
 ### Portal: Aban-Netzwerk  →  Ordner `portal/`  (verbindet alles)
 Statische Hub-Seite, die Newsletter + alle 3 Geld-Projekte bündelt (interne Verlinkung/SEO,
 Organization-sameAs-Schema). `portal/generate.py`, Karten in `CARDS`. Deploy-Idee: `abannews.com`-Wurzel
@@ -96,7 +116,8 @@ LinkedIn-DACH, GEO, Monetarisierung nach Audience-Größe, realistische Timeline
 ## Git / Deployment
 - **Branch:** alles nach `main` gemergt (PR #2 erledigt). Cloudflare-Projekte auf `main` stellen. auf allengchour-glitch/aban-news-landing
 - CI: Voice-Linter überspringt alle Projekt-/Memory-Ordner (ki-tools-radar/, foerder-radar/, jobs-radar/,
-  aban-studio/, ki-geld-projekt/, PROJEKT.md, CLAUDE.md) — gilt nur für Newsletter-Content im Root.
+  kurse-radar/, prompts-bibliothek/, agenturen-radar/, aban-studio/, ki-geld-projekt/, PROJEKT.md, CLAUDE.md)
+  — gilt nur für Newsletter-Content im Root.
 - Jedes Geld-Projekt hat einen eigenen Auto-Build-Workflow in `.github/workflows/`.
 
 ## Newsletter-Archiv (NEU, fertig)
