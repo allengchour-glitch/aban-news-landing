@@ -2,7 +2,7 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **29 Produkte live**.
+> Stand: 2026-05-31 — **30 Produkte live**.
 
 Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in **6 Kanälen** (Onlineshop, Shop,
 TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar untracked
@@ -71,6 +71,16 @@ der CJ-Workflow ist headless via API; das Limit ist allein der fehlende Schedule
 
 Aussortiert Charge 6: Cat-Paw-Anhänger & Moonlight-Ring & Silber-Feder-Ohrringe (Schmuck, off-theme),
 Etagenbett ($525 EK / 28 kg), Duschkopf ($38 EK, off-theme), Toilettentasche (Duplikat bereits live).
+
+## Charge 7 (2026-05-31) — +1 live → 30 gesamt ✅
+| Produkt | VK CHF | CJ-Kost $ | SKU |
+|---|---|---|---|
+| Full-HD Dashcam 1080P 90° | 64.90 | 23.89 | `CJNS285014001AZ` |
+
+Aussortiert Charge 7: Ice-Silk-T-Shirt (42 Grössen, Kleidung), Schuhschrank ($127/19 kg),
+Industrie-Messwerkzeug (off-theme), Ohrclip (Schmuck), Spray-Fan (Duplikat bereits live).
+
+**Endstand dieser Session: 30 cj-real Produkte ACTIVE & live in 6 Kanälen.** (+1 DRAFT „Shoe Rack".)
 
 ### Bei eingehender Bestellung
 Produkt in CJ über die **Fulfillment-SKU** (oben) bestellen → an Kundenadresse senden lassen.

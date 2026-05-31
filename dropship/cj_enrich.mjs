@@ -22,16 +22,14 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
 const KEYWORDS = [
-  { kw: 'wireless earbuds bluetooth', must: ['earbuds'],    take: 1 },
-  { kw: 'cat toy interactive',        must: ['cat'],        take: 1 },
-  { kw: 'kitchen knife sharpener',    must: ['sharpener'],  take: 1 },
-  { kw: 'garden hose nozzle',         must: ['hose'],       take: 1 },
-  { kw: 'storage box foldable',       must: ['storage'],    take: 1 },
-  { kw: 'phone ring holder',          must: ['ring'],       take: 1 },
-  { kw: 'reusable shopping bag',      must: ['bag'],        take: 1 },
-  { kw: 'desk organizer pen',         must: ['organizer'],  take: 1 },
-  { kw: 'bicycle phone mount',        must: ['bike'],       take: 1 },
-  { kw: 'wall hook adhesive',         must: ['hook'],       take: 1 },
+  { kw: 'power bank portable',        must: ['power', 'bank'], take: 1 },
+  { kw: 'led keychain light',         must: ['keychain'],   take: 1 },
+  { kw: 'silicone ice cube tray',     must: ['ice'],        take: 1 },
+  { kw: 'travel shoe bag',            must: ['shoe'],        take: 1 },
+  { kw: 'car trash can bin',          must: ['car'],        take: 1 },
+  { kw: 'measuring spoon set',        must: ['measuring'],  take: 1 },
+  { kw: 'hair claw clip',             must: ['clip'],       take: 1 },
+  { kw: 'spray bottle plant',         must: ['spray'],      take: 1 },
 ];
 
 let _b, _ctx;
