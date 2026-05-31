@@ -264,3 +264,17 @@ Bilder vorab alle HTTP-200 verifiziert (20/20). Übersprungen: *Cotton Linen Tro
 Duplikat zur bestehenden Leinenhose) und *Bohemian Resort-Set* (72 Var. → Varianten-Chaos).
 Neues Tool: `dropship/cj_variants_new.mjs` — legt aus CJ-Matrix direkt ein neues Produkt via productSet an
 (Optionen Farbe×Grösse + Produkt-Files + per-Variante Farbbild + dt. Copy). Ergänzt `cj_variants.mjs`/`_retro.mjs`.
+
+## Charge 28 (2026-05-31) — Nischen-Kategorien + Shop-Audit
+**Storefront-Audit:** Shop ist viel grösser als das CJ-Log (Tausende Produkte, ~70 Sammlungen).
+Menü nutzt Tag-basierte Smart-Collections. Mehrere **Top-Level-Landings fast leer wegen zu enger
+Tag-Regel** (premium-schmuck 5, reise-gadgets 6, auto-halterungen 7) — Sortiment drumherum aber voll.
+**Mobile-Header gestrafft:** 9 Collection-Beschreibungen gekürzt/repariert (Für Ihn/Sie, Neu, Mystery
++ 5 mit doppel-escaptem `<p>`-Bug). Theme-Header-Padding (48→12) + Titel H2→H4 = User im Customizer
+(Live-Theme API-gesperrt).
+**Nischen-Import (token-basiert, `dropship/cj_search_niche.mjs`):** CJ-Katalog in diesen Nischen
+weitgehend leer → von 11 Treffern nur 2 sauber:
+- **Reise-Kulturbeutel «Voyage»** (`CJSB291389501AZ`, ID 15412899643777) — 4 Farben, 39.90, Tag `Reise-Gadget`+`reisen`.
+- **Edelstahl-Trinkflasche «Hydro» 570 ml** (`CJJT291256301AZ`, ID 15412899676545) — 3 Farben, 24.90, Tag `Trinkflasche`.
+Rest (Auto-Power/Reinigung, Servieren, Schmuck-Landing) → kein sauberer CJ-Treffer; empfohlen:
+Tag-Regeln verbreitern statt Müll importieren.
