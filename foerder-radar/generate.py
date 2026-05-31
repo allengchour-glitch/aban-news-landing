@@ -348,6 +348,11 @@ keine Förderzusage. Maßgeblich sind allein die offiziellen Angaben der Förder
 </section>"""
     if embed_data:
         data = json.dumps(matcher_index(progs), ensure_ascii=False, separators=(",", ":"))
+        # Harden the JSON island against a "</script>" breakout if program data ever
+        # contains "<", ">" or "&" (json.dumps does not escape them). Escaping them as
+        # \uXXXX keeps the text valid JSON (JSON.parse decodes it back transparently).
+        data = (data.replace("&", "\\u0026").replace("<", "\\u003c")
+                .replace(">", "\\u003e"))
         block += (f'\n<script id="m-data" type="application/json">{data}</script>'
                   f'\n<script src="/matcher.js" defer></script>')
     return block
