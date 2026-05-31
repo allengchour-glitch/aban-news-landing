@@ -34,6 +34,82 @@ NEWSLETTER_URL = "https://abannews.com"
 
 REGION_NAME = {"DE": "Deutschland", "AT": "Österreich", "CH": "Schweiz", "EU": "EU"}
 
+# Lead-Magnet / Beratungs-Anfrage: ehrlicher Mail-Fallback (kein erfundener Berater).
+LEAD_MAIL = "hallo@abannews.com"
+
+# Matcher-Klassifikation. Wir erfinden NICHTS: wir gruppieren nur die in
+# foerderungen.json bereits vorhandenen `bereich`- und `zielgruppe`-Werte in
+# wenige, im Funnel auswählbare Buckets. Ein Programm, das nicht passt, taucht
+# einfach nicht auf — es werden keine Programme/Beträge dazuerfunden.
+#
+# Vorhaben/Zweck → Liste passender `bereich`-Stichworte (Teil-Match, case-insensitive).
+ZWECK_GROUPS = [
+    ("digitalisierung", "Digitalisierung & KI",
+     ["digitalisierung", "ki", "software", "it-sicherheit", "cybersecurity",
+      "cybersicherheit", "tech", "technologie", "online-marketing", "deep-tech"]),
+    ("gruendung", "Gründung & Startup",
+     ["gründung", "startup-finanzierung", "skalierung", "wachstum"]),
+    ("investition", "Investition & Finanzierung",
+     ["investition", "finanzierung", "beteiligung", "betriebsmittel"]),
+    ("forschung", "Forschung & Innovation",
+     ["forschung", "innovation", "entwicklung", "grundlagenforschung",
+      "kommerzialisierung", "technologietransfer", "wissenschaft", "nachwuchs"]),
+    ("energie", "Energie & Nachhaltigkeit",
+     ["energie", "nachhaltigkeit", "klimaschutz", "effizienz", "industrie"]),
+    ("international", "Internationalisierung & Export",
+     ["internationalisierung", "export", "international", "messen"]),
+    ("weiterbildung", "Weiterbildung & Qualifizierung",
+     ["weiterbildung", "qualifizierung", "coaching", "beratung"]),
+    ("sonstiges", "Etwas anderes / unsicher", []),  # zeigt alle (Fallback)
+]
+
+# Unternehmensgröße → Liste passender `zielgruppe`-Stichworte.
+GROESSE_GROUPS = [
+    ("solo", "Solo / Freiberuflich",
+     ["soloselbstständige", "selbstständige", "freiberufler", "kleinstunternehmen",
+      "einzel", "gründer", "gründerin"]),
+    ("gruendung", "In Gründung",
+     ["gründer", "gründerin", "startup", "scaleup", "tech-gründer",
+      "junge unternehmen", "studierende", "hochschulabsolventen"]),
+    ("kmu", "Kleines/mittleres Unternehmen (KMU)",
+     ["kmu", "kleinunternehmen", "mittelstand", "handwerk", "unternehmen"]),
+    ("gross", "Großunternehmen",
+     ["großunternehmen", "konsortien"]),
+    ("forschung", "Forschung / Hochschule",
+     ["wissenschaftler", "forschung", "hochschulen", "universitäten",
+      "postdocs", "nachwuchswissenschaftler", "forschungsvereinigungen"]),
+    ("egal", "Egal / passt nicht genau", []),  # zeigt alle (Fallback)
+]
+
+
+def matches_group(values, keywords):
+    """True, wenn irgendein Programmwert ein Gruppen-Stichwort (Teil-Match) enthält.
+    Leere keywords-Liste = Fallback-Bucket, matcht immer."""
+    if not keywords:
+        return True
+    low = [str(v).lower() for v in (values or [])]
+    return any(kw in v for v in low for kw in keywords)
+
+
+def matcher_index(progs):
+    """Kompakter Datensatz für den clientseitigen Matcher (kein Tracking)."""
+    out = []
+    for p in progs:
+        zweck = [gid for gid, _, kw in ZWECK_GROUPS if kw and matches_group(p.get("bereich", []), kw)]
+        groesse = [gid for gid, _, kw in GROESSE_GROUPS if kw and matches_group(p.get("zielgruppe", []), kw)]
+        out.append({
+            "id": slug(p["id"]),
+            "name": p["name"],
+            "traeger": p.get("traeger", ""),
+            "region": p.get("region", ""),
+            "art": p.get("art", ""),
+            "kurz": p.get("kurz", ""),
+            "url": p.get("url", "#"),
+            "z": zweck,      # Zweck-Gruppen-IDs
+            "g": groesse,    # Größen-Gruppen-IDs
+        })
+    return out
+
 
 def slug(v: str) -> str:
     v = v.lower()
@@ -98,6 +174,25 @@ border-radius:8px;font-weight:600;margin-top:8px;}} .cta:hover{{background:var(-
 .nl span{{color:var(--muted);flex:1;min-width:200px;}} .nl .cta{{margin-top:0;}}
 footer{{border-top:1px solid var(--border);padding:20px 0;color:var(--muted);font-size:.85rem;}}
 h1{{font-size:1.6rem;}}
+.matcher-teaser{{background:var(--bg-alt);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin:0 0 18px;}}
+.matcher-teaser h2{{margin:0 0 6px;font-size:1.15rem;}}
+.matcher{{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;margin:0 0 18px;}}
+.matcher h2{{margin:0 0 6px;}}
+.m-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0;}}
+.m-grid label{{font-weight:600;font-size:.92rem;}}
+.m-grid select{{display:block;width:100%;margin-top:4px;padding:9px 11px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-size:.95rem;font-weight:400;}}
+.m-reset{{background:none;border:1px solid var(--border);color:var(--text);border-radius:8px;padding:9px 14px;cursor:pointer;margin-left:8px;}}
+.m-count{{color:var(--muted);font-size:.9rem;margin:8px 0;}}
+.m-results .card{{margin:0 0 10px;}}
+.m-leadform{{background:var(--bg-alt);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;}}
+.m-leadform h3{{margin:0 0 4px;}}
+.m-leadform label{{display:block;margin:10px 0 4px;font-weight:600;font-size:.92rem;}}
+.m-leadform textarea{{width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--text);font-size:.95rem;font-family:inherit;}}
+.m-consent{{font-weight:400;display:flex;gap:8px;align-items:flex-start;font-size:.88rem;color:var(--muted);}}
+.m-consent input{{margin-top:3px;}}
+.m-hint{{font-size:.9rem;margin-top:8px;}}
+.m-lead-ad{{background:var(--bg);border:1px dashed var(--accent);border-radius:10px;padding:12px 16px;font-size:.92rem;}}
+button.cta{{border:none;cursor:pointer;font-size:.95rem;font-family:inherit;}}
 </style>
 </head>
 <body>
@@ -192,6 +287,86 @@ def program_page(p, leadgen, disclaimer):
                 BASE_URL + f"/programm/{slug(p['id'])}.html")
 
 
+def matcher_block(progs, leadgen, embed_data=True):
+    """Der 3-Fragen-Funnel als wiederverwendbarer HTML-Block.
+
+    embed_data=True hängt das JSON + Skript an (für die eigene /matcher.html-Seite
+    und die Startseite). Filtert clientseitig die echten Programme aus
+    foerderungen.json — keine erfundenen Treffer, keine Tracking-Requests."""
+    reg_opts = "".join(f'<option value="{e(r)}">{e(REGION_NAME.get(r,r))}</option>'
+                       for r in ["DE", "AT", "CH", "EU"])
+    zweck_opts = "".join(f'<option value="{e(gid)}">{e(label)}</option>'
+                         for gid, label, _ in ZWECK_GROUPS)
+    groesse_opts = "".join(f'<option value="{e(gid)}">{e(label)}</option>'
+                           for gid, label, _ in GROESSE_GROUPS)
+    # Lead-Slot: vorhandener leadgen-Mechanismus (Anzeige) ODER ehrlicher Mail-Fallback.
+    entry = leadgen.get("_default")
+    if entry:
+        lead_cta = (f'<p class="m-lead-ad">{e(entry.get("text",""))} '
+                    f'<a class="cta" href="{e(entry.get("url","#"))}" rel="sponsored noopener" '
+                    f'target="_blank">{e(entry.get("cta","Kostenlose Erstberatung"))} →</a>'
+                    f'<br><small style="color:var(--muted)">Anzeige · unabhängig von der Programm-Info</small></p>')
+    else:
+        lead_cta = ""
+    # Mail-Fallback-Formular (kein Backend, kein Tracking): baut einen mailto-Link.
+    lead_form = f"""<form id="m-lead" class="m-leadform" novalidate>
+  <h3>Passende Förderung in Ruhe finden lassen</h3>
+  <p style="color:var(--muted);font-size:.92rem">Optional: Schreib kurz, worum es geht. Wir
+  melden uns per E-Mail und helfen dir, die offiziellen Programme einzuordnen — unverbindlich,
+  ohne Kosten. Wir sind kein Förderträger und keine Anwaltskanzlei.</p>
+  <label>Worum geht es? (Vorhaben, Branche, Bundesland)<br>
+  <textarea id="m-msg" rows="3" placeholder="z. B. Digitalisierung im Handwerk, Bayern, 8 Mitarbeitende"></textarea></label>
+  <label class="m-consent"><input type="checkbox" id="m-ok"> Ich bin einverstanden, dass meine
+  Angaben zur Beantwortung meiner Anfrage per E-Mail verarbeitet werden
+  (<a href="/datenschutz.html">Datenschutz</a>). Es erfolgt kein Tracking.</label>
+  <p><button type="submit" class="cta" id="m-send">Anfrage per E-Mail vorbereiten →</button></p>
+  <p id="m-hint" class="m-hint" hidden></p>
+</form>"""
+    block = f"""<section class="matcher" id="matcher" aria-label="Förder-Matcher">
+<h2>Förder-Matcher: 3 Fragen, passende Programme</h2>
+<p style="color:var(--muted)">Beantworte drei kurze Fragen — wir zeigen dir aus {len(progs)}
+echten Programmen die, die zu deinem Vorhaben passen. Mit Link zur offiziellen Quelle.
+Alles im Browser, ohne Tracking.</p>
+<div class="m-grid">
+  <label>1. Region / Sitz<br>
+  <select id="m-region"><option value="">Bitte wählen</option>{reg_opts}</select></label>
+  <label>2. Vorhaben / Zweck<br>
+  <select id="m-zweck"><option value="">Bitte wählen</option>{zweck_opts}</select></label>
+  <label>3. Unternehmensgröße<br>
+  <select id="m-groesse"><option value="">Bitte wählen</option>{groesse_opts}</select></label>
+</div>
+<p><button type="button" class="cta" id="m-go">Passende Förderungen anzeigen →</button>
+<button type="button" class="m-reset" id="m-reset" hidden>Zurücksetzen</button></p>
+<div id="m-count" class="m-count" hidden></div>
+<div id="m-results" class="m-results" aria-live="polite"></div>
+<div id="m-after" hidden>
+{lead_cta}
+{lead_form}
+</div>
+<p class="disc" style="margin-top:14px">⚠️ Angaben ohne Gewähr. Der Matcher ist eine Orientierung,
+keine Förderzusage. Maßgeblich sind allein die offiziellen Angaben der Förderträger.</p>
+</section>"""
+    if embed_data:
+        data = json.dumps(matcher_index(progs), ensure_ascii=False, separators=(",", ":"))
+        block += (f'\n<script id="m-data" type="application/json">{data}</script>'
+                  f'\n<script src="/matcher.js" defer></script>')
+    return block
+
+
+def matcher_page(progs, leadgen, disclaimer):
+    body = (f'<p><a href="/">← Alle Förderungen</a></p>'
+            f'<h1>Förder-Matcher — finde passende Förderprogramme</h1>'
+            f'<p>Du weißt nicht, welche der vielen Förderprogramme zu dir passen? '
+            f'Drei Fragen genügen: Region, Vorhaben und Unternehmensgröße. '
+            f'Der Matcher filtert aus {len(progs)} echten DACH- und EU-Programmen die '
+            f'passenden heraus und verlinkt jeweils die offizielle Quelle.</p>'
+            + matcher_block(progs, leadgen, embed_data=True))
+    title = f"Förder-Matcher {date.today().year} — passende Förderung in 3 Fragen | {SITE_NAME}"
+    meta = clip("Finde in 3 Fragen passende Förderprogramme für dein Vorhaben in DACH & EU — "
+                "nach Region, Zweck und Unternehmensgröße, mit Link zur offiziellen Quelle.")
+    return page(title, meta, body, BASE_URL + "/matcher.html")
+
+
 def build(data_path: Path, out: Path, here: Path):
     db = json.loads(data_path.read_text(encoding="utf-8"))
     progs = db.get("programme", [])
@@ -227,7 +402,15 @@ def build(data_path: Path, out: Path, here: Path):
     art_links = " · ".join(f'<a href="/art/{slug(a)}.html">{e(a)}</a>' for a in arten)
     zg_links = " · ".join(f'<a href="/fuer/{slug(z)}.html">{e(z)}</a>' for z in zielgruppen)
     br_links = " · ".join(f'<a href="/bereich/{slug(b)}.html">{e(b)}</a>' for b in bereiche)
+    matcher_teaser = (
+        '<section class="matcher-teaser">'
+        '<h2>Nicht sicher, was zu dir passt?</h2>'
+        '<p>Drei Fragen — Region, Vorhaben, Unternehmensgröße — und der Förder-Matcher '
+        'zeigt dir die passenden Programme aus dem Verzeichnis. Ohne Tracking, im Browser.</p>'
+        '<p><a class="cta" href="/matcher.html">Zum Förder-Matcher →</a></p>'
+        '</section>')
     home = (f'<h1>{len(progs)} Förderprogramme für den DACH-Raum</h1>'
+            f'{matcher_teaser}'
             f'<p class="tag" style="color:var(--muted)">Nach Region: {reg_links} · Nach Art: {art_links}</p>'
             f'<p class="tag" style="color:var(--muted)">Für: {zg_links}</p>'
             f'<p class="tag" style="color:var(--muted)">Themen: {br_links}</p>'
@@ -293,6 +476,12 @@ def build(data_path: Path, out: Path, here: Path):
     # filter.js (no deps, no tracking)
     (out / "filter.js").write_text(FILTER_JS, encoding="utf-8")
 
+    # Matcher-Seite + Matcher-JS (clientseitig, kein Tracking)
+    (out / "matcher.html").write_text(
+        matcher_page(progs, leadgen, disclaimer), encoding="utf-8")
+    (out / "matcher.js").write_text(
+        MATCHER_JS.replace("__LEAD_MAIL__", LEAD_MAIL), encoding="utf-8")
+
     # Legal pages (operator: Alleng Chour, abannews.com / Belp CH).
     imp = """<p><a href="/">← Startseite</a></p><h1>Impressum</h1>
 <h2>Angaben gemäß § 5 TMG (DE) / § 14 UGB (AT) / OR (CH)</h2>
@@ -321,7 +510,8 @@ sowie Beschwerde bei einer Aufsichtsbehörde. Stand: {date.today().strftime('%m/
         encoding="utf-8")
 
     # sitemap + robots
-    urls = ([BASE_URL + "/"] + [BASE_URL + f"/programm/{slug(p['id'])}.html" for p in progs]
+    urls = ([BASE_URL + "/", BASE_URL + "/matcher.html"]
+            + [BASE_URL + f"/programm/{slug(p['id'])}.html" for p in progs]
             + [BASE_URL + f"/region/{slug(r)}.html" for r in regions]
             + [BASE_URL + f"/art/{slug(a)}.html" for a in arten]
             + [BASE_URL + f"/fuer/{slug(z)}.html" for z in zielgruppen]
@@ -338,7 +528,7 @@ sowie Beschwerde bei einer Aufsichtsbehörde. Stand: {date.today().strftime('%m/
         "User-agent: PerplexityBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\n"
         f"Sitemap: {BASE_URL}/sitemap.xml\n", encoding="utf-8")
 
-    total = (1 + len(progs) + len(regions) + len(arten)
+    total = (1 + 1 + len(progs) + len(regions) + len(arten)  # +1 index, +1 matcher
              + len(zielgruppen) + len(bereiche) + 2)  # +2 legal pages
     print(f"Built {total} pages ({len(progs)} programs, {len(regions)} regions, "
           f"{len(arten)} types, {len(zielgruppen)} audiences, {len(bereiche)} topics) → {out}/")
@@ -359,6 +549,85 @@ FILTER_JS = """// Förder-Radar — client-side filter (no deps, no tracking)
     if(no)no.hidden=n>0;
   }
   [q,fr,fa].forEach(function(el){el.addEventListener('input',run);});
+})();
+"""
+
+
+MATCHER_JS = """// Förder-Radar — Matcher (3 Fragen, clientseitig, kein Tracking, kein Backend)
+(function(){
+  var node=document.getElementById('m-data'); if(!node)return;
+  var DATA=[]; try{DATA=JSON.parse(node.textContent||'[]');}catch(e){return;}
+  var REGION={DE:'Deutschland',AT:'Österreich',CH:'Schweiz',EU:'EU'};
+  var $=function(id){return document.getElementById(id);};
+  var fReg=$('m-region'),fZw=$('m-zweck'),fGr=$('m-groesse');
+  var go=$('m-go'),reset=$('m-reset'),count=$('m-count'),res=$('m-results'),after=$('m-after');
+  function esc(s){var d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML;}
+  function match(p){
+    var reg=fReg.value,zw=fZw.value,gr=fGr.value;
+    if(reg && p.region!==reg) return false;
+    // 'sonstiges'/'egal' = Fallback-Buckets: keine Filterung auf dieser Dimension.
+    if(zw && zw!=='sonstiges' && (p.z||[]).indexOf(zw)===-1) return false;
+    if(gr && gr!=='egal' && (p.g||[]).indexOf(gr)===-1) return false;
+    return true;
+  }
+  function badge(cls,txt){return '<span class="b '+cls+'">'+esc(txt)+'</span>';}
+  function render(){
+    var hits=DATA.filter(match);
+    if(!fReg.value && !fZw.value && !fGr.value){
+      count.hidden=true; res.innerHTML=''; after.hidden=true; reset.hidden=true; return;
+    }
+    reset.hidden=false;
+    count.hidden=false;
+    count.textContent=hits.length===0
+      ? 'Keine Treffer für diese Kombination. Versuch eine breitere Auswahl (z. B. „Etwas anderes").'
+      : hits.length+' passende Förderung'+(hits.length===1?'':'en')+' gefunden:';
+    res.innerHTML=hits.map(function(p){
+      return '<article class="card">'
+        +'<h2 style="font-size:1.08rem;margin:0 0 4px"><a href="/programm/'+esc(p.id)+'.html">'+esc(p.name)+'</a></h2>'
+        +'<div class="badges">'+badge('reg',REGION[p.region]||p.region)+badge('art',p.art)+'</div>'
+        +'<p>'+esc(p.kurz)+'</p>'
+        +'<p style="color:var(--muted);font-size:.85rem">Träger: '+esc(p.traeger||'—')+'</p>'
+        +'<a class="cta" href="'+esc(p.url||'#')+'" target="_blank" rel="noopener nofollow">Offizielle Quelle ansehen →</a>'
+        +' <a class="cta" style="background:transparent;color:var(--accent-h);border:1px solid var(--border)" href="/programm/'+esc(p.id)+'.html">Mehr Infos</a>'
+        +'</article>';
+    }).join('');
+    // Lead-Anfrage erst zeigen, wenn der Funnel durchlaufen wurde.
+    after.hidden=false;
+  }
+  go.addEventListener('click',render);
+  [fReg,fZw,fGr].forEach(function(s){s.addEventListener('change',function(){
+    if(!count.hidden) render();
+  });});
+  reset.addEventListener('click',function(){
+    fReg.value='';fZw.value='';fGr.value='';
+    count.hidden=true;res.innerHTML='';after.hidden=true;reset.hidden=true;
+  });
+
+  // Lead-Formular: baut einen mailto-Link (kein Backend, kein Tracking).
+  var form=$('m-lead');
+  if(form){
+    form.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var hint=$('m-hint');
+      if(!$('m-ok').checked){
+        hint.hidden=false; hint.style.color='var(--accent-h)';
+        hint.textContent='Bitte bestätige kurz die Einwilligung, dann bereiten wir die E-Mail vor.';
+        return;
+      }
+      var msg=($('m-msg').value||'').trim();
+      var ctx='Region: '+(REGION[fReg.value]||fReg.value||'—')
+        +' | Vorhaben: '+(fZw.options[fZw.selectedIndex]?fZw.options[fZw.selectedIndex].text:'—')
+        +' | Größe: '+(fGr.options[fGr.selectedIndex]?fGr.options[fGr.selectedIndex].text:'—');
+      var body='Hallo Aban-Team,\\n\\nich suche passende Förderungen.\\n'+ctx
+        +'\\n\\nMein Vorhaben:\\n'+(msg||'(bitte ergänzen)')+'\\n\\nDanke!';
+      var href='mailto:__LEAD_MAIL__?subject='+encodeURIComponent('Förder-Anfrage über den Matcher')
+        +'&body='+encodeURIComponent(body);
+      hint.hidden=false; hint.style.color='var(--success)';
+      hint.innerHTML='Dein E-Mail-Programm öffnet sich. Falls nicht: schreib direkt an '
+        +'<a href="mailto:__LEAD_MAIL__">__LEAD_MAIL__</a>.';
+      window.location.href=href;
+    });
+  }
 })();
 """
 
