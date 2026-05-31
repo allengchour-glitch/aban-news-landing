@@ -128,9 +128,6 @@
     "_getresponse": {
       "affiliate_url": "https://www.getresponse.com/?a=DEIN-CODE"
     },
-    "_systeme": {
-      "affiliate_url": "https://systeme.io/?sa=DEIN-CODE"
-    },
     "_writesonic": {
       "affiliate_url": "https://writesonic.com/?fpr=DEIN-CODE"
     },
@@ -139,6 +136,9 @@
     },
     "_elevenlabs": {
       "affiliate_url": "https://elevenlabs.io/?from=DEIN-CODE"
+    },
+    "systeme": {
+      "affiliate_url": "https://systeme.io/de?sa=sa0273044408391822a56418777495b374390e3d43"
     }
   }
 }

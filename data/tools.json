@@ -5058,6 +5058,38 @@
         "claude-code"
       ],
       "ausgaben_mentions": []
+    },
+    {
+      "id": "systeme",
+      "name": "Systeme.io",
+      "vendor": "Systeme.io",
+      "category": [
+        "Marketing-AI",
+        "Automation",
+        "No-Code"
+      ],
+      "use_cases": [
+        "Marketing-Stack",
+        "Automation",
+        "Landing-Pages"
+      ],
+      "url": "https://systeme.io/de",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Freemium",
+        "paid_from_eur": 27
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] All-in-One-Plattform fuer Online-Business: Sales-Funnels, E-Mail-Marketing, Kurse und Automatisierung in einem Tool, mit grosszuegigem Gratis-Tarif.",
+      "alternatives": [
+        "getresponse",
+        "make",
+        "zapier"
+      ],
+      "ausgaben_mentions": []
     }
   ]
 }
