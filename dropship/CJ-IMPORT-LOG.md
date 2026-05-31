@@ -426,3 +426,12 @@ ins Hauptmenü (`main-menu`, Menu/310224093569) **ganz vorne** eingefügt: **✨
 + **🔥 Bestseller** (/collections/bestseller-shop). Alle 15 Bestands-Menüpunkte inkl. Untermenüs erhalten.
 Highlights-Collection-Handle von Emoji `✨-…` auf sauberes `highlights` umbenannt.
 **Merke:** menuUpdate ersetzt die GANZE items-Liste → vorher komplette Struktur fetchen und mitsenden.
+
+## Charge 37 (2026-05-31) — Accessoires (füllt dünne Menü-Subs)
+4 neu, alle Voll-Galerie, 7 Kanäle:
+- **Schultertasche «Milano»** PU-Leder (`CJYD291594701AZ`, 15412976681345) — 4 Farben, 34.90 → damen-taschen
+- **Sonnenhut «Riviera»** UV-Schutz (`CJBQ291430201AZ`, 15412976714113) — 2 Farben, 19.90 → caps-huete (Tag Hut)
+- **Baseball-Cap «Navy»** (`CJBQ291505701AZ`, 15412976746881) — 6 Farben, 19.90 → caps-huete
+- **Baseball-Cap «Washed»** Vintage (`CJBQ291601401AZ`, 15412976845185) — 8 Farben, 19.90 → caps-huete
+→ Caps & Hüte (war 11) + Damen-Taschen aufgefüllt. Schneeflocken-Cap (Bestand) + Föhn-„Gürtel"-Treffer übersprungen.
+Varianten-Namen bereinigt (z. B. „Black-Free Size Adjustable" → „Black", Tasche „Brown out" → „Braun").

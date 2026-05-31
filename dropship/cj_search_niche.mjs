@@ -11,15 +11,15 @@ const BASE='https://developers.cjdropshipping.com/api2.0/v1';
 const tok=JSON.parse(fs.readFileSync('/tmp/cj_token.json')).accessToken;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
-// cat = Zielkategorie — Uhren + Kleider
+// cat = Zielkategorie — Accessoires (füllt dünne Menü-Subs)
 const KEYWORDS=[
-  { kw:'mens quartz watch waterproof steel', must:['watch'], cat:'herrenuhr',  take:2 },
-  { kw:'mens digital sport watch',           must:['watch'], cat:'herrenuhr',  take:1 },
-  { kw:'womens watch elegant bracelet',      must:['watch'], cat:'herrenuhr',  take:1 },
-  { kw:'women summer dress short sleeve',     must:['dress'], cat:'damen-mode', take:1 },
-  { kw:'women halter neck maxi dress',        must:['dress'], cat:'damen-mode', take:1 },
-  { kw:'women puff sleeve mini dress',        must:['dress'], cat:'damen-mode', take:1 },
-  { kw:'women linen dress with pockets',      must:['dress'], cat:'damen-mode', take:1 },
+  { kw:'womens crossbody shoulder bag', must:['bag'],  cat:'damen-taschen', take:2 },
+  { kw:'bucket hat unisex cotton',      must:['hat'],  cat:'Hut',          take:1 },
+  { kw:'baseball cap embroidered',      must:['cap'],  cat:'Hut',          take:1 },
+  { kw:'mens leather belt automatic buckle', must:['belt'], cat:'Gürtel',  take:1 },
+  { kw:'slim wallet rfid card holder',  must:['wallet'], cat:'Wallet',     take:1 },
+  { kw:'polarized sunglasses women uv400', must:['sunglasses'], cat:'sonnenbrille', take:1 },
+  { kw:'hair scrunchies silk set',      must:['scrunchie'], cat:'damen-mode', take:1 },
 ];
 
 const b=await chromium.launch({headless:true,args:['--ignore-certificate-errors','--no-sandbox']});
