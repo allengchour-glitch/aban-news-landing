@@ -22,16 +22,14 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
 const KEYWORDS = [
-  { kw: 'bikini set swimwear women', must: ['bikini'],   take: 1 },
-  { kw: 'mens t-shirt cotton summer', must: ['shirt'],   take: 1 },
-  { kw: 'pleated midi skirt women',  must: ['skirt'],     take: 1 },
-  { kw: 'linen trousers women',      must: ['trousers'],  take: 1 },
-  { kw: 'one piece swimsuit',        must: ['swimsuit'],  take: 1 },
-  { kw: 'mens hawaiian shirt',       must: ['shirt'],     take: 1 },
-  { kw: 'sundress strap women',      must: ['dress'],     take: 1 },
-  { kw: 'crop top women summer',     must: ['top'],       take: 1 },
-  { kw: 'kimono cardigan beach',     must: ['kimono'],    take: 1 },
-  { kw: 'denim shorts women',        must: ['shorts'],    take: 1 },
+  { kw: 'chiffon maxi dress women',  must: ['dress'],     take: 1 },
+  { kw: 'mens linen shirt button',  must: ['shirt'],     take: 1 },
+  { kw: 'high waist shorts women',  must: ['shorts'],    take: 1 },
+  { kw: 'off shoulder top women',   must: ['top'],       take: 1 },
+  { kw: 'pleated skirt midi',       must: ['skirt'],     take: 1 },
+  { kw: 'mens beach shorts swim',   must: ['shorts'],    take: 1 },
+  { kw: 'wrap dress women summer',  must: ['dress'],     take: 1 },
+  { kw: 'tank top women ribbed',    must: ['top'],       take: 1 },
 ];
 
 let _b, _ctx;

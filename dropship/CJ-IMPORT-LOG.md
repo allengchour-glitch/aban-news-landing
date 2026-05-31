@@ -2,7 +2,9 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **61 Produkte LIVE** + 6 Hero-Produkte mit Premium-Copy.
+> Stand: 2026-05-31 — **62 Produkte LIVE** + 6 Hero-Produkte mit Premium-Copy.
+> Alle 7 Mode-Artikel + neues 2-teiliges Sommer-Set haben echte Grössen×Farben-Varianten mit
+> CJ-SKUs; das Sommer-Set zusätzlich mit **Farbbild-Zuordnung** (Farbwechsel = passendes Bild).
 > Charge 25–26: +7 Sommer-Mode (Kleid, Strand-Rock, Herren-Polo, Bikini, Leinenhose, Badeset,
 > Neckholder-Kleid) mit Grössen-Hinweis; Bademode zusätzlich Hygiene-Rückgabe-Hinweis. Kleidung
 > füllt sich deutlich besser als Gadgets (8 Keeper/10 Keywords). Varianten-Chaos-Treffer (Boho 72,

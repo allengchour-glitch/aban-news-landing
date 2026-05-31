@@ -201,6 +201,12 @@ Kleidung braucht auswählbare Optionen (sonst Conversion-/Retouren-Problem). Wor
    Präfix (z.B. `CJLY2916030`) matchen.
 - **2026-05-31 erledigt:** alle 7 Mode-Artikel auf echte Farbe×Grösse umgestellt (Bikini 18,
   Leinenhose 40, Strand-Rock 20, Kleid 15, Polo 10, Badeset 6, Neckholder 4 Varianten).
+- **🖼️ FARBBILDER zuordnen (productSet `file`):** CJ liefert pro Variante `variantImage`. Bei
+  `productSet` jede Farbe→erstes Bild mappen, ALLE Farbbilder in `files:[{originalSource,contentType:IMAGE}]`
+  legen UND je Variante `file:{originalSource:<farbbild>,contentType:IMAGE}` setzen. Dann zeigt der
+  Shop beim Farbwechsel automatisch das passende Bild. Funktioniert beim Anlegen via productSet in
+  EINEM Call (Bsp. „2-teiliges Sommer-Set", 5 Farben × 6 Grössen = 30 Var., jede mit Farbbild).
+  → Neue Mode IMMER so anlegen (nicht create-product), dann sind Grössen+Farben+Farbbilder sofort drin.
 
 ## 7. Bekannte Eigenheiten der Umgebung
 - **Scheduler-Tools (`CronCreate`/`ScheduleWakeup`) sind NICHT aktiviert** → ein echter,
