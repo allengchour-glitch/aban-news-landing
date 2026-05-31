@@ -22,16 +22,16 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
 const KEYWORDS = [
-  { kw: 'sunset lamp projector usb', must: ['sunset'],    take: 1 },
-  { kw: 'levitating moon lamp',      must: ['moon'],      take: 1 },
-  { kw: 'aroma diffuser flame',      must: ['flame'],     take: 1 },
-  { kw: 'electric wine bottle opener', must: ['opener'], take: 1 },
-  { kw: 'cocktail shaker set',       must: ['shaker'],    take: 1 },
-  { kw: 'digital photo frame',       must: ['frame'],     take: 1 },
-  { kw: 'wireless car charger mount', must: ['charger'], take: 1 },
-  { kw: 'electric foot callus',      must: ['foot'],      take: 1 },
-  { kw: 'mini printer thermal',      must: ['printer'],   take: 1 },
-  { kw: 'smart plug wifi',           must: ['plug'],      take: 1 },
+  { kw: 'summer dress women floral', must: ['dress'],     take: 1 },
+  { kw: 'beach cover up dress',      must: ['beach'],     take: 1 },
+  { kw: 'linen shirt men summer',    must: ['shirt'],     take: 1 },
+  { kw: 'maxi dress boho',           must: ['dress'],     take: 1 },
+  { kw: 'womens jumpsuit summer',    must: ['jumpsuit'],  take: 1 },
+  { kw: 'mens polo shirt casual',    must: ['polo'],      take: 1 },
+  { kw: 'wide leg pants women',      must: ['pants'],     take: 1 },
+  { kw: 'knit cardigan women',       must: ['cardigan'],  take: 1 },
+  { kw: 'mens shorts summer beach',  must: ['shorts'],    take: 1 },
+  { kw: 'blouse women elegant',      must: ['blouse'],    take: 1 },
 ];
 
 let _b, _ctx;
