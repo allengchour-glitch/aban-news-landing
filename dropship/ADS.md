@@ -92,6 +92,16 @@ Auf Kundenwunsch eine eigene **Sommer-Mode-Montage** mit echten Model-Fotos:
 - Produkte: Savanna · Sirène (Abend) · Lumea · Brise · Fleurette · Daisy · Bali · Bluette · Noir · Herrenhemd Monsieur.
 - In Shopify Files: 9:16 = `gid://shopify/Video/69552327754113`. 1:1 im Chat geliefert.
 
+## Best-of-Mix-Montage „HIGHLIGHTS 2026" (Zusatz, 2026-05-31)
+Querschnitt durch alle Kategorien — die universellste Werbung:
+- `luxestyle_mix_9x16.mp4` (1080×1920) + `luxestyle_mix_1x1.mp4` (1080×1080), ~21 s, mit Musik.
+- Intro „LUXESTYLE · HIGHLIGHTS · 2026" ( knüpft an den Highlights-Menüpunkt an).
+- Skript: `dropship/ads/render_mix.sh` (Bilder in `/tmp/ads/imgmix/01..10.jpg`, Musik `uplifting.wav`).
+- 10 Produkte: Abendkleid Sirène · Herrenuhr Edelstahl (CHF 129.90) · Sommerkleid Savanna ·
+  Flame Diffuser · Portemonnaie XL · Lederarmband Anker · Ohrring-Set · Wireless Charger 3in1 ·
+  Herrenhemd Monsieur · Jade Roller & Gua Sha.
+- In Shopify Files: 9:16 = `gid://shopify/Video/69552427499905`. 1:1 im Chat geliefert.
+
 ## Ablage in Shopify
 Die beiden 9:16-Hero-Clips liegen jetzt in **Shopify Admin → Content → Files**
 (via `stagedUploadsCreate` → GCS-POST 204 → `fileCreate`, contentType VIDEO):
