@@ -134,11 +134,11 @@
     "_surfer": {
       "affiliate_url": "https://surferseo.com/?fpr=DEIN-CODE"
     },
-    "_elevenlabs": {
-      "affiliate_url": "https://elevenlabs.io/?from=DEIN-CODE"
-    },
     "systeme": {
       "affiliate_url": "https://systeme.io/de?sa=sa0273044408391822a56418777495b374390e3d43"
+    },
+    "elevenlabs": {
+      "affiliate_url": "https://try.elevenlabs.io/6hlkc0rv2u1j"
     }
   }
 }
