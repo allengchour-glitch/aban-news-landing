@@ -249,19 +249,11 @@
         .nw-body{padding:15px 17px 19px;display:flex;flex-direction:column;gap:7px}
         .nw-h{font-weight:800;font-size:1.06rem;line-height:1.25}
         .nw-t{color:#6b7280;font-size:.9rem;line-height:1.45}
-        /* Aufmacher: erste Karte über volle Breite, Bild + Text nebeneinander — nur Desktop */
-        @media(min-width:821px){
-          .nw-card.lead{grid-column:1 / -1;flex-direction:row;align-items:stretch}
-          .nw-card.lead .nw-img{width:48%;height:auto;min-height:230px;align-self:stretch}
-          .nw-card.lead .nw-body{justify-content:center;padding:2rem 2.2rem;gap:10px}
-          .nw-card.lead .nw-h{font-size:1.6rem;line-height:1.18}
-          .nw-card.lead .nw-t{font-size:1rem}
-        }
         @media(max-width:820px){.nw-grid{grid-template-columns:1fr 1fr}}
         @media(max-width:560px){.nw-grid{grid-template-columns:1fr;gap:14px}.nw-img{height:160px}}
       </style>
       <div class="nw-grid">
-        <a class="nw-card lead" href="/archive/025-2026-07-03-werkzeugkasten-h1-bilanz-quantensprung-entlarvt.html">
+        <a class="nw-card" href="/archive/025-2026-07-03-werkzeugkasten-h1-bilanz-quantensprung-entlarvt.html">
           <img class="nw-img" src="/img/issues/025.svg" alt="" loading="lazy" width="1200" height="630">
           <span class="nw-body"><span class="nw-meta"><span class="nw-cat">Tool-Test</span> · 3. Juli</span><span class="nw-h">Werkzeugkasten H1-Bilanz — Quantensprung entlarvt</span><span class="nw-t">Halbjahres-Wechsel. 25 Ausgaben aban news durch. Heute der Friday-Werkzeugkasten mit H1-Bilanz: zwei neue Tools, …</span></span>
         </a>
