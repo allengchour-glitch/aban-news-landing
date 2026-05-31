@@ -91,7 +91,9 @@ def footer_canvas(canvas_obj, doc):
 #         | ("src", [str,...])  -> Quellen-Liste (wie ul, etwas kleiner)
 # Bild-Pfade werden relativ zu OUT_DIR aufgelöst.
 # ============================================================
-def render_blocks(story, styles, blocks):
+def render_blocks(story, styles, blocks, img_max_w=None):
+    # img_max_w: maximale Bildbreite in pt (Print: schmale 5x8"-Seite).
+    # Default = A4-Inhaltsbreite, gedeckelt auf 15.5 cm.
     for kind, payload in blocks:
         if kind == "lead":
             story.append(Paragraph(payload, styles["Lead"]))
@@ -117,8 +119,8 @@ def render_blocks(story, styles, blocks):
             path = os.path.join(OUT_DIR, payload["src"])
             if os.path.exists(path):
                 iw, ih = ImageReader(path).getSize()
-                max_w = A4[0] - 4 * cm           # Seitenbreite minus Ränder
-                disp_w = min(max_w, 15.5 * cm)
+                max_w = img_max_w if img_max_w else min(A4[0] - 4 * cm, 15.5 * cm)
+                disp_w = max_w
                 disp_h = disp_w * ih / iw
                 story.append(Spacer(1, 0.2 * cm))
                 story.append(RLImage(path, width=disp_w, height=disp_h))

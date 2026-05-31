@@ -23,14 +23,14 @@ pip install reportlab pillow
 python3 generate_ebook.py            # eBook-PDF + ePub (alle Sprachen)
 python3 generate_kdp_print.py        # Taschenbuch-Innenteil (Deutsch)
 python3 generate_kdp_cover.py        # Kindle-Frontcover
-python3 generate_kdp_wrap_cover.py --pages 27   # Taschenbuch-Wraparound-Cover
+python3 generate_kdp_wrap_cover.py --pages 28   # Taschenbuch-Wraparound-Cover
 ```
 
 | Produkt | Datei | Hinweis |
 |---------|-------|---------|
 | Kindle-Innenteil | `downloads/anti-hype-ebook.epub` | KDP akzeptiert ePub direkt |
 | Kindle-Cover | `downloads/kdp-cover-ebook.png` | 1600×2560 px |
-| Taschenbuch-Innenteil | `downloads/anti-hype-print-de.pdf` | Trim 12,7 × 20,32 cm (5"×8"), aktuell **27 Seiten** |
+| Taschenbuch-Innenteil | `downloads/anti-hype-print-de.pdf` | Trim 12,7 × 20,32 cm (5"×8"), aktuell **28 Seiten**, inkl. 3 Diagrammen |
 | Taschenbuch-Cover | `downloads/kdp-cover-paperback.png` | Wraparound inkl. Rücken + Anschnitt |
 
 **Einzige Quelle der Wahrheit:** Der Buchtext steht in `generate_ebook.py`
@@ -101,7 +101,7 @@ Alle vier Sprachen (de/en/fr/it) sind auf vollen Buchumfang ausgebaut — je
 python3 generate_kdp_print.py de en fr it
 ```
 
-Aktuelle Seitenzahlen (5×8"): de 27, en 26, fr 27, it 25 — alle über der
+Aktuelle Seitenzahlen (5×8", inkl. Diagramme): de 28, en 27, fr 28, it 26 — alle über der
 KDP-Mindestgrenze von 24. Pro Sprache ein eigenes KDP-Buch anlegen (eigene
 Metadaten, Keywords, Kategorien, ggf. eigene ISBN). Das Wraparound-Cover pro
 Sprache mit der jeweiligen Seitenzahl neu bauen, falls KDP nach dem Upload eine
