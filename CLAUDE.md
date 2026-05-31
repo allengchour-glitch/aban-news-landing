@@ -96,6 +96,8 @@ durchgehend die du-Form.
 | `geld-verdienen-mit-ki.html` | SEO-Money-Page (Layout-Referenz für Subpages) |
 | `ki-tools-fuer-selbststaendige.html` | SEO-Money-Page „KI-Tools für Selbstständige" |
 | `chatgpt-fuer-solopreneure.html` | SEO-Money-Page „ChatGPT für Solopreneure" |
+| `ki-dsgvo-konform.html` | SEO-Cornerstone „KI DSGVO-konform nutzen" (5-Fragen-Check, echte Quellen). **4-sprachig** (de + `en/ fr/ it/`), reziprokes hreflang |
+| `chatgpt-vs-claude.html` | SEO-Cornerstone ehrlicher Tool-Vergleich (Tabelle, „welches Tool für welche Aufgabe", kein Affiliate). DE-only |
 | `founding.html` | €149 Founding-Member-Angebot |
 | `sponsoring.html` / `werbung.html` | Werbe-Rate-Card / Policy |
 | `resources.html` | Gratis-Resourcen + PDF-Downloads |
