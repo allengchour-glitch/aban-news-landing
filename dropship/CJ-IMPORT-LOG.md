@@ -388,3 +388,16 @@ Strand-Rock, A-Linien-Kleid, Herren-Polo, Badeset, Neckholder-Kleid, 2-tlg Somme
 (z. B. `CJLY291603001AZ` → `productSku=CJLY2916030`); `/product/query?productSku=` löst dann pid +
 productImageSet auf. (Voll-Varianten-SKU als productSku → „Product not found".)
 Insgesamt 36 von mir angelegte Produkte haben jetzt vollständige Bildergalerien, 0 FAILED.
+
+## Charge 34 (2026-05-31) — Wellness/Home + Schmuck-Ersatz, direkt mit VOLLER Galerie
+Neues Tool **`dropship/cj_full_create.mjs`**: legt CJ-Produkt direkt mit kompletter Galerie an
+(files = productImageSet ∪ Farbbilder, HTTP-200-geprüft, Varianten→Farbbild). 7 Neuzugänge (ACTIVE, 7 Kanäle):
+- **Aroma-Diffuser «Mist»** (`CJJT283824701AZ`) — 6 Editionen, 16.90
+- **Quallen-Diffuser «Medusa»** mit Musik (`CJLF285038401AZ`) — 49.90
+- **Satin-Seidenkissen 2er-Set** (`CJYD289277101AZ`) — 13 Farben/Grössen, 24.90 (Ersatz fürs versteckte Seidenkissen)
+- **S925 «Eternal» Herz-Kette** (`CJYD291638301AZ`) — 44.90
+- **S925 «Camélia» Blüten-Kette** (`CJLX291634001AZ`) — 39.90
+- **999 «Fortuna» Glücks-Anhänger** (`CJLX291620401AZ`) — 49.90
+- **«Planet» Halskette/Armband** (`CJLX291634502BY`) — 4 Varianten, 16.90
+Die 4 Ketten zusätzlich in premium-schmuck. Übersprungen: Haartrockner (diffuser=Föhn-Treffer), Pet-Artikel,
+Messerschärfer (Bestand). ⚠️ cj_full_create-Farbnamen-Cleaner war zu aggressiv (Planet: „-"/„Gold-") → inline korrigiert.

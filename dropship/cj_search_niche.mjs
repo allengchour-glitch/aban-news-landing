@@ -11,16 +11,16 @@ const BASE='https://developers.cjdropshipping.com/api2.0/v1';
 const tok=JSON.parse(fs.readFileSync('/tmp/cj_token.json')).accessToken;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
-// cat = Zielkategorie — Wellness/Aroma + Wohnen/Bad (refiniert)
+// cat = Zielkategorie — Wellness/Home + Ersatz + Schmuck/Uhren
 const KEYWORDS=[
-  { kw:'wood grain ultrasonic aroma diffuser', must:['diffuser'],  cat:'wellness', take:2 },
-  { kw:'flame effect aroma diffuser',          must:['diffuser'],  cat:'wellness', take:1 },
-  { kw:'reed diffuser fragrance sticks',       must:['diffuser'],  cat:'wellness', take:1 },
-  { kw:'essential oil gift set',               must:['essential'], cat:'wellness', take:1 },
-  { kw:'scented soy candle gift set',          must:['candle'],    cat:'wohnen',   take:1 },
-  { kw:'bamboo bathtub caddy tray',            must:['bamboo'],    cat:'wohnen',   take:1 },
-  { kw:'bamboo soap dispenser pump',           must:['soap'],      cat:'wohnen',   take:1 },
-  { kw:'cool mist humidifier home',            must:['humidifier'],cat:'wellness', take:1 },
+  { kw:'ultrasonic essential oil diffuser wood', must:['diffuser'],  cat:'wellness', take:2 },
+  { kw:'scented candle gift set glass',          must:['candle'],    cat:'wohnen',   take:1 },
+  { kw:'magnetic knife holder block',            must:['knife'],     cat:'kueche',   take:1 },
+  { kw:'silk pillowcase mulberry',               must:['pillowcase'],cat:'wohnen',   take:1 },
+  { kw:'cool mist humidifier large capacity',    must:['humidifier'],cat:'wellness', take:1 },
+  { kw:'womens layered necklace gold plated',    must:['necklace'],  cat:'damen-schmuck', take:1 },
+  { kw:'mens watch leather strap business',      must:['watch'],     cat:'herrenuhr',take:2 },
+  { kw:'aroma diffuser humidifier 500ml',        must:['diffuser'],  cat:'wellness', take:1 },
 ];
 
 const b=await chromium.launch({headless:true,args:['--ignore-certificate-errors','--no-sandbox']});
