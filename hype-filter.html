@@ -50,7 +50,7 @@
   --mark-pas-bg:#ede7f6;--mark-pas-fg:#5b3a86;
   --mark-itp-bg:#fcd9d9;--mark-itp-fg:#a01616;
   --err-bg:#fcd9d9;--err-fg:#a01616;
-  --focus:#b45309;
+  --focus:#b45309;--btn-fg:#fff;
 }
 @media (prefers-color-scheme: dark){
   :root{
@@ -66,7 +66,7 @@
     --mark-pas-bg:#3a2c52;--mark-pas-fg:#cdb6ec;
     --mark-itp-bg:#5a1c1c;--mark-itp-fg:#ffbcbc;
     --err-bg:#4a1818;--err-fg:#ffbcbc;
-    --focus:#fbbf24;
+    --focus:#fbbf24;--btn-fg:#1a1712;
   }
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -74,13 +74,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Ar
 .wrap{max-width:880px;margin:0 auto;padding:0 20px}
 a{color:var(--amber-dark)}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
-.skip{position:absolute;left:-9999px;top:0;background:var(--amber);color:#fff;padding:10px 16px;border-radius:0 0 8px 0;z-index:50;font-weight:600}
+.skip{position:absolute;left:-9999px;top:0;background:var(--amber);color:var(--btn-fg);padding:10px 16px;border-radius:0 0 8px 0;z-index:50;font-weight:600}
 .skip:focus{left:0}
 header.site{position:sticky;top:0;z-index:20;background:var(--header-bg);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
 .brand{font-weight:800;font-size:18px;color:var(--amber);text-decoration:none;letter-spacing:-.02em}
 .brand span{opacity:.8}
-.btn{display:inline-block;background:var(--amber);color:#fff;text-decoration:none;font-weight:600;padding:10px 18px;border-radius:8px;font-size:15px;border:none;cursor:pointer;transition:background .15s}
+.btn{display:inline-block;background:var(--amber);color:var(--btn-fg);text-decoration:none;font-weight:600;padding:10px 18px;border-radius:8px;font-size:15px;border:none;cursor:pointer;transition:background .15s}
 .btn:hover{background:var(--amber-dark)}
 .btn.ghost{background:transparent;color:var(--amber-dark);border:1px solid var(--amber-light)}
 .btn.ghost:hover{background:var(--cream)}
@@ -101,14 +101,14 @@ textarea:focus{outline:2px solid var(--amber-light);border-color:var(--amber)}
 .kbd{display:inline-block;font:inherit;font-size:11px;line-height:1;padding:3px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:var(--bg);color:var(--ink-soft)}
 .restored{display:none;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
 .restored.show{display:flex}
-.linkbtn{font:inherit;font-size:13px;background:none;border:none;color:var(--amber-dark);cursor:pointer;text-decoration:underline;padding:0}
+.linkbtn{font:inherit;font-size:13px;background:none;border:none;color:var(--amber-dark);cursor:pointer;text-decoration:underline;padding:4px 6px;min-height:24px}
 .linkbtn:hover{text-decoration:none}
-.copybtn{font:inherit;font-size:13px;background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);border-radius:8px;padding:6px 12px;cursor:pointer;transition:all .15s}
+.copybtn{font:inherit;font-size:13px;background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);border-radius:8px;padding:8px 14px;min-height:32px;cursor:pointer;transition:all .15s}
 .copybtn:hover{background:var(--cream);border-color:var(--amber-light);color:var(--amber-dark)}
 .copybtn.ok{background:var(--cream);color:var(--amber-dark);border-color:var(--amber-light)}
 .examples{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
 .exlabel{font-size:13px;color:var(--muted)}
-.chip{font:inherit;font-size:13px;background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);border-radius:999px;padding:5px 12px;cursor:pointer;transition:all .15s}
+.chip{font:inherit;font-size:13px;background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);border-radius:999px;padding:7px 14px;min-height:32px;cursor:pointer;transition:all .15s}
 .chip:hover{background:var(--cream);border-color:var(--amber-light);color:var(--amber-dark)}
 .muted{color:var(--muted)}
 .results{margin-top:20px;display:none}
@@ -227,7 +227,7 @@ footer a{color:var(--muted)}
       <div class="panel">
         <h2 id="resHeading" class="visually-hidden" tabindex="-1">Ergebnis der Hype-Prüfung</h2>
         <div class="scorecard">
-          <div class="gauge" id="gauge" role="img"><div class="inner"><div class="num" id="scoreNum">–</div><div class="lbl">/ 100</div></div></div>
+          <div class="gauge" id="gauge" role="img" aria-label="Klartext-Score wird berechnet"><div class="inner"><div class="num" id="scoreNum">–</div><div class="lbl">/ 100</div></div></div>
           <div class="verdict">
             <h2 id="gradeLbl">—</h2>
             <p id="verdict">—</p>
@@ -426,7 +426,7 @@ function highlight(text, findings){
     if (f.start < i) continue;
     out += escapeHtml(text.slice(i, f.start));
     const title = (f.replacements && f.replacements.length) ? ("Vorschlag: " + f.replacements.join(" / ")) : f.label;
-    out += '<mark class="'+f.category+'" title="'+escapeHtml(title)+'">'+escapeHtml(text.slice(f.start, f.end))+'</mark>';
+    out += '<mark class="'+escapeHtml(f.category)+'" title="'+escapeHtml(title)+'">'+escapeHtml(text.slice(f.start, f.end))+'</mark>';
     i = f.end;
   }
   out += escapeHtml(text.slice(i));

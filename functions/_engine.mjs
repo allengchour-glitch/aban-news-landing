@@ -56,6 +56,9 @@ export const LEXICON = [
   ["skalierung(?:s)?", "Skalierung", "buzzword", 1, ["Wachstum", "konkret: bis wohin"]],
   ["zukunftssicher(?:e|er|es|en)?", "zukunftssicher", "buzzword", 1.5, ["hält länger", "konkret begründen"]],
   ["road[- ]?map(?:s)?", "Roadmap", "buzzword", 0.8, ["Plan", "nächste Schritte"]],
+  ["transformatio(?:n|nen)", "Transformation", "buzzword", 1.5, ["welche Veränderung genau?", "konkret benennen"]],
+  ["ökosystem(?:e|en)?", "Ökosystem", "buzzword", 1.2, ["Umfeld", "Beschreibung statt Jargon"]],
+  ["wertversprechen", "Wertversprechen", "buzzword", 1.5, ["konkreten Nutzen nennen", "was du davon hast"]],
 
   // Versprechen & Übertreibung
   ["10[- ]?x|10[- ]?fach", "10x", "versprechen", 2.5, ["spürbar mehr", "konkrete Zahl"]],
@@ -109,7 +112,9 @@ const CATEGORY_LABELS = {
 
 // Vage Mengenangaben ohne konkrete Zahl (Wortgrenzen, unicode, global)
 const VAGUE_RE =
-  /(?<![\p{L}])(?:viele(?:r|n|m|s)?|zahlreiche(?:r|n|m|s)?|diverse(?:r|n|m|s)?|etliche(?:r|n|m|s)?|jede[- ]menge|eine[- ]vielzahl(?:[- ]von)?|unzählige(?:r|n|m|s)?|massenhaft|haufenweise|einige(?:r|n|m|s)?|mehrere(?:r|n|m|s)?)(?![\p{L}])/giu;
+  // "einige"/"mehrere" bewusst NICHT enthalten — im Alltag zu oft legitim
+  // ("einige Kunden", "mehrere Optionen"), würde saubere Fachtexte fälschlich flaggen.
+  /(?<![\p{L}])(?:viele(?:r|n|m|s)?|zahlreiche(?:r|n|m|s)?|diverse(?:r|n|m|s)?|etliche(?:r|n|m|s)?|jede[- ]menge|eine[- ]vielzahl(?:[- ]von)?|unzählige(?:r|n|m|s)?|massenhaft|haufenweise)(?![\p{L}])/giu;
 
 // Substantivierungen: Wörter auf typische Nominal-Endungen.
 // Stamm-Länge auf {2,30} begrenzt → kein quadratisches Lazy-Scanning, ReDoS-sicher.
@@ -216,7 +221,8 @@ export function analyze(text) {
   }
 
   // 6) Nominalstil: Häufung von Substantivierungen (-ung/-heit/-keit/-ion/-ierung/-ismus)
-  // im selben Satz. Ab 3 Treffern pro Satz markieren wir die Wörter einzeln.
+  // im selben Satz. Erst ab 4 Treffern pro Satz markieren — drei Substantivierungen
+  // sind in seriösen Fachtexten normal, sollen also keinen False Positive auslösen.
   {
     const sentRe = /[^.!?…\n]+(?:[.!?…]+|\n|$)/g;
     let sm;
@@ -231,7 +237,7 @@ export function analyze(text) {
         hits.push({ start: base + nm.index, end: base + nm.index + nm[0].length, match: nm[0] });
         if (nm.index === NOMINAL_RE.lastIndex) NOMINAL_RE.lastIndex++;
       }
-      if (hits.length >= 3) {
+      if (hits.length >= 4) {
         for (const h of hits) {
           findings.push({
             start: h.start, end: h.end, match: h.match,
@@ -274,8 +280,11 @@ export function analyze(text) {
   const penaltySum = clean.reduce((s, f) => s + f.weight, 0)
     + longSentences.length * 0.8;
   const per100 = penaltySum / Math.max(wordCount, 20) * 100;
-  let score = Math.round(Math.max(0, 100 - per100 * 6));
-  if (wordCount < 5) score = Math.min(score, 50);
+  const score = Math.round(Math.max(0, 100 - per100 * 6));
+  // Sehr kurze Texte lassen sich nicht seriös messen. Statt den Score künstlich
+  // zu deckeln (das verfälschte saubere Kurztexte zu „Etwas Hype"), markieren
+  // wir das ehrlich als Flag + Hinweis im Verdict.
+  const tooShort = wordCount < 6;
 
   // Hype-Dichte pro 100 Wörter (nur echte Hype-Kategorien)
   const hypeFindings = clean.filter((f) =>
@@ -292,12 +301,15 @@ export function analyze(text) {
   }
 
   const grade = scoreGrade(score);
+  const verdict = tooShort
+    ? grade.verdict + " (Kurzer Text — für eine belastbare Messung gib ein paar Sätze mehr ein.)"
+    : grade.verdict;
 
   return {
     score,
     grade: grade.label,
     gradeColor: grade.color,
-    verdict: grade.verdict,
+    verdict,
     metrics: {
       wordCount,
       charCount,
@@ -307,6 +319,7 @@ export function analyze(text) {
       readingGrade,           // Schul-Niveau nach Wiener Sachtextformel
       readingLabel,           // menschenlesbares Label, abgeleitet vom Grade
       longSentenceCount: longSentences.length,
+      tooShort,               // true bei < 6 Wörtern (Messung nicht belastbar)
     },
     findings: clean,          // mit Positionen fürs Highlighting
     categories: Object.values(byCategory).sort((a, b) => b.count - a.count),
@@ -364,7 +377,12 @@ function ruleRewrite(text, findings) {
       if (out[end] === " ") end++;
       out = out.slice(0, f.start) + out.slice(end);
     } else if (["superlativ", "buzzword", "versprechen", "vage"].includes(f.category)) {
-      const alt = f.replacements && f.replacements[0] ? f.replacements[0] : f.match;
+      let alt = f.replacements && f.replacements[0] ? f.replacements[0] : f.match;
+      // Steht der Ersatz am Satzanfang, gross schreiben (sonst „[passend]…“ klein).
+      const before = out.slice(0, f.start);
+      if (alt && /(^|[.!?…]\s*|\n\s*)$/.test(before)) {
+        alt = alt.charAt(0).toUpperCase() + alt.slice(1);
+      }
       out = out.slice(0, f.start) + "[" + alt + "]" + out.slice(f.end);
     }
     // nominalstil/passiv/interpunktion: nur Highlighting, kein Auto-Rewrite

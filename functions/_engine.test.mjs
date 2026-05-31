@@ -54,7 +54,10 @@ check("Positionen korrekt & überschneidungsfrei", ok);
 console.log("\nTest 5 — Randfälle:");
 check("leerer Text wirft nicht", (() => { analyze(""); return true; })());
 check("null wirft nicht", (() => { analyze(null); return true; })());
-check("sehr kurzer Text gedeckelt", analyze("Hi").score <= 50);
+check("sehr kurzer Text -> tooShort-Flag", analyze("Hi").metrics.tooShort === true);
+check("sauberer Kurztext nicht mehr faelschlich gedeckelt", analyze("Sehr guter Text.").score >= 85);
+check("Kurztext-Verdict weist auf Kuerze hin", /Kurzer Text/.test(analyze("Sehr guter Text.").verdict));
+check("normaler Text -> tooShort=false", analyze(clean).metrics.tooShort === false);
 
 // 6) Backward-Compat: Response-Schema vollständig & unverändert
 console.log("\nTest 6 — Schema-Rückwärtskompatibilität:");
@@ -161,6 +164,28 @@ const t1 = Date.now();
 analyze("a".repeat(20000)); // pathologisch: nur Buchstaben, kein Suffix
 const dtPath = Date.now() - t1;
 check("pathologische 20k-Eingabe < 1000ms", dtPath < 1000, "ms=" + dtPath);
+
+// 14) Review-Fixes: neue Buzzwords, FP-Schutz vage/nominalstil, ruleRewrite-Großschreibung
+console.log("\nTest 14 — Review-Fixes:");
+const nb = analyze("Eine digitale Transformation mit Ökosystem-Ansatz und klarem Wertversprechen.");
+const nbm = nb.findings.map((f) => f.match.toLowerCase());
+check("findet 'Transformation'", nbm.some((m) => /transformation/.test(m)));
+check("findet 'Ökosystem'", nbm.some((m) => /ökosystem/.test(m)));
+check("findet 'Wertversprechen'", nbm.some((m) => /wertversprechen/.test(m)));
+// vage: 'einige'/'mehrere' lösen KEINEN Treffer mehr aus
+const vfp = analyze("Einige Kunden hatten Fragen, mehrere Optionen standen zur Auswahl.");
+check("'einige' nicht mehr als vage geflaggt", !vfp.findings.some((f) => f.category === "vage"));
+check("sachlicher Text mit 'einige/mehrere' bleibt Top-Score", vfp.score >= 90, "score=" + vfp.score);
+// nominalstil: genau 3 Substantivierungen im Satz lösen NICHT mehr aus (Schwelle 4)
+const nom3 = analyze("Die Implementierung erfordert Planung und Optimierung.");
+check("3 Substantivierungen -> kein Nominalstil-Flag",
+  !nom3.findings.some((f) => f.category === "nominalstil"));
+const nom4 = analyze("Die Implementierung, Planung, Optimierung und Automatisierung dauert.");
+check("4 Substantivierungen -> Nominalstil-Flag",
+  nom4.findings.some((f) => f.category === "nominalstil"));
+// ruleRewrite: Ersatz am Satzanfang wird großgeschrieben
+const rwCap = analyze("Revolutionär und neu. Das zweite.");
+check("ruleRewrite Satzanfang groß", /^\[[A-ZÄÖÜ]/.test(rwCap.ruleRewrite), "rw=" + rwCap.ruleRewrite);
 
 console.log("\n" + (fail === 0 ? "✅ ALLE TESTS BESTANDEN" : "❌ " + fail + " FEHLER") +
   "  (" + pass + " ok, " + fail + " fehlerhaft)");
