@@ -29,11 +29,7 @@ KI-Newsletter **abannews.com / .de** (Mo–Fr, kuratiert, „3–5 Min, kein Hyp
   - Förder-Radar → `foerder.abannews.com` (Projekt `foerder`, foerder.pages.dev)
   - KI-Jobs Radar → `jobs.abannews.com` (Projekt `jobs`, jobs-9np.pages.dev, Branch main)
   - Custom Domains aktiviert, CNAMEs automatisch, ggf. kurz "Initializing".
-- ⚠️ **WICHTIG (offen, 1 Klick):** Das Cloudflare-Projekt `radar` baut noch vom alten Feature-Branch,
-  NICHT von `main`. Dadurch fehlen auf radar.abannews.com noch die neuesten Inhalte (Systeme.io- +
-  ElevenLabs-Affiliate-Links, die 33 neuen Tools/177). FIX: Cloudflare → Projekt `radar` → Settings →
-  Builds & deployments → Production branch = `main` → dann "Retry deployment". Danach sind Affiliate-Links live.
-  (foerder + jobs bauen bereits von main.)
+- ✅ **radar baut von `main`** (umgestellt 2026-05-31). Affiliate-Links Systeme.io + ElevenLabs sind LIVE auf radar.abannews.com bestätigt.
 - **Aktive Affiliate-Links** (in ki-tools-radar/affiliate.json): Systeme.io (60% recurring), ElevenLabs (20%).
 - **Affiliate-Bewerbungen laufen** (manuelle Prüfung, Link kommt per Mail): GetResponse, Murf AI, ggf. Surfer SEO.
   -> Sobald Link da: in affiliate.json eintragen, '_'-Präfix entfernen, rebuild. Tools existieren bereits in tools.json.
