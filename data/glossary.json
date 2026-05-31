@@ -139,7 +139,7 @@
       ],
       "see_also": [
         "data-quality",
-        "fairness"
+        "alignment"
       ],
       "first_used_in": "ausgabe-010",
       "controversy_level": 7
@@ -309,7 +309,7 @@
       "see_also": [
         "rag",
         "grounding",
-        "fact-checking"
+        "hallucination-rate"
       ],
       "first_used_in": "ausgabe-006",
       "controversy_level": 5
@@ -426,7 +426,7 @@
       "see_also": [
         "model",
         "training",
-        "scaling"
+        "scaling-laws"
       ],
       "first_used_in": "ausgabe-001",
       "controversy_level": 4
@@ -541,7 +541,7 @@
       "see_also": [
         "context-window",
         "tokenizer",
-        "pricing"
+        "pay-per-use"
       ],
       "first_used_in": "ausgabe-001",
       "controversy_level": 1
@@ -581,7 +581,7 @@
       "see_also": [
         "attention",
         "llm",
-        "decoder-only"
+        "neural-network"
       ],
       "first_used_in": "ausgabe-012",
       "controversy_level": 1
@@ -688,7 +688,10 @@
       "category": "Models + Vendors",
       "definition_marketing": "Der Durchbruch zur AGI.",
       "definition_aban": "OpenAIs Flaggschiff-Modell (2025). Solide Allrounder, in Reasoning stark. Kein qualitativer Sprung zu GPT-4o, eher graduelle Verbesserungen. Multimodal robust.",
-      "examples": [],
+      "examples": [
+        "GPT-5 in ChatGPT",
+        "GPT-5 über die OpenAI API"
+      ],
       "see_also": [
         "gpt",
         "openai",
@@ -762,7 +765,7 @@
       ],
       "see_also": [
         "llm",
-        "google"
+        "frontier"
       ],
       "first_used_in": "ausgabe-004",
       "controversy_level": 3
@@ -800,7 +803,7 @@
       ],
       "see_also": [
         "open-weights",
-        "meta",
+        "open-source-ai",
         "ollama"
       ],
       "first_used_in": "ausgabe-024",
@@ -869,7 +872,7 @@
       "see_also": [
         "chatgpt",
         "gpt",
-        "microsoft"
+        "copilot-buzz"
       ],
       "first_used_in": "ausgabe-001",
       "controversy_level": 5
@@ -1176,7 +1179,8 @@
       "definition_aban": "Bedeutet meist: 'Mit SAML-Login und 4x höherer Preis.' Tatsächliche Enterprise-Anforderungen (SLA, Compliance-Zerts, On-Prem-Option) werden selten erfüllt, wenn 'enterprise-grade' draufsteht.",
       "examples": [],
       "see_also": [
-        "enterprise"
+        "next-gen",
+        "solution"
       ],
       "first_used_in": "ausgabe-020",
       "controversy_level": 7
@@ -1469,7 +1473,7 @@
       ],
       "see_also": [
         "function-calling",
-        "json"
+        "tool-use"
       ],
       "first_used_in": "ausgabe-019",
       "controversy_level": 1
@@ -1487,9 +1491,9 @@
         "v0"
       ],
       "see_also": [
-        "bolt",
-        "lovable",
-        "v0"
+        "github-copilot",
+        "wrapper",
+        "prompt-engineering"
       ],
       "first_used_in": "ausgabe-018",
       "controversy_level": 7
@@ -1508,7 +1512,7 @@
       ],
       "see_also": [
         "seo",
-        "profound"
+        "wrapper"
       ],
       "first_used_in": "ausgabe-005",
       "controversy_level": 5
@@ -1874,8 +1878,10 @@
       "term_en": "DPO",
       "category": "Techniques",
       "definition_marketing": "—",
-      "definition_aban": "Alternative zu RLHF. Einfacher zu implementieren, ähnliche Ergebnisse. Wird zunehmend Standard im Post-Training.",
-      "examples": [],
+      "definition_aban": "Alternative zu RLHF: optimiert das Modell direkt auf bevorzugte gegen unerwünschte Antworten, ohne separates Reward-Modell. Einfacher zu implementieren, ähnliche Ergebnisse. Wird zunehmend Standard im Post-Training.",
+      "examples": [
+        "DPO statt RLHF beim Open-Weights-Finetune"
+      ],
       "see_also": [
         "rlhf",
         "training"
@@ -1946,7 +1952,10 @@
       "category": "Techniques",
       "definition_marketing": "—",
       "definition_aban": "KI-generierte Trainingsdaten. Wird zunehmend genutzt, da Web-Daten knapp werden. Risiko Model-Collapse, aber bei sauberer Filterung produktiv einsetzbar.",
-      "examples": [],
+      "examples": [
+        "Mit einem großen Modell Trainingsbeispiele für ein kleines erzeugen",
+        "Phi-Modelle (Microsoft)"
+      ],
       "see_also": [
         "training",
         "data-quality",
@@ -2194,9 +2203,31 @@
       "definition_marketing": "—",
       "definition_aban": "Hypothese: AI-Markt ist überbewertet, Crash bevorstehend. Bewertungen wie OpenAI ($300B+), Anthropic ($60B+) sind historisch hoch. Ob Bubble oder nicht — diversifizieren als Solo bleibt klug.",
       "examples": [],
-      "see_also": [],
+      "see_also": [
+        "moat",
+        "wrapper"
+      ],
       "first_used_in": "ausgabe-016",
       "controversy_level": 8
+    },
+    {
+      "id": "dead-internet",
+      "term_de": "Dead-Internet-Theorie",
+      "term_en": "Dead Internet Theory",
+      "category": "Anti-Hype",
+      "definition_marketing": "—",
+      "definition_aban": "Ursprünglich Verschwörungsthese, das Netz sei großteils bot-generiert. 2026 nicht mehr ganz so abwegig: KI-Slop, Bot-Accounts und auto-übersetzte Spam-Seiten machen messbare Teile des Webs aus. Kein Weltuntergang — aber ein Grund, Quellen härter zu prüfen und auf menschliche Originale zu setzen.",
+      "examples": [
+        "Bot-Kommentare unter Social-Posts",
+        "Auto-generierte Content-Farmen"
+      ],
+      "see_also": [
+        "ai-slop",
+        "deepfake",
+        "wrapper"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 7
     },
     {
       "id": "moat",
@@ -2363,6 +2394,469 @@
       ],
       "first_used_in": "ausgabe-024",
       "controversy_level": 4
+    },
+    {
+      "id": "reasoning-budget",
+      "term_de": "Reasoning-Budget",
+      "term_en": "Reasoning Budget",
+      "category": "Techniques",
+      "definition_marketing": "Stell ein, wie tief deine KI nachdenkt.",
+      "definition_aban": "Einstellung, wie viele Denk-Tokens ein Reasoning-Modell vor der Antwort verbrauchen darf. Mehr Budget heißt oft bessere, aber teurere und langsamere Antworten. Du zahlst die unsichtbaren Thinking-Tokens mit — kalkulier sie ein, bevor du das Budget hochdrehst.",
+      "examples": [
+        "Claude Extended Thinking mit Token-Limit",
+        "o3 reasoning_effort: low/medium/high"
+      ],
+      "see_also": [
+        "reasoning",
+        "test-time-compute",
+        "token"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 4
+    },
+    {
+      "id": "prompt-caching",
+      "term_de": "Prompt-Caching",
+      "term_en": "Prompt Caching",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Bis zu 90% günstiger — wie von Zauberhand.",
+      "definition_aban": "Der Provider speichert einen wiederkehrenden Prompt-Anfang (System-Prompt, Doku) zwischen, damit er nicht jedes Mal neu verarbeitet wird. Spart bei gleichbleibendem Kontext echtes Geld und Latenz. Bringt nur etwas, wenn der Cache-Teil stabil am Anfang steht — wechselt er, ist der Rabatt weg.",
+      "examples": [
+        "Anthropic Prompt Caching (cache_control)",
+        "OpenAI automatic prompt caching"
+      ],
+      "see_also": [
+        "context-caching",
+        "token",
+        "api"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 2
+    },
+    {
+      "id": "context-caching",
+      "term_de": "Context-Caching",
+      "term_en": "Context Caching",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Lade dein ganzes Wissen einmal — für immer.",
+      "definition_aban": "Variante des Prompt-Cachings, bei der ein großer, fester Kontext (z.B. ein komplettes Handbuch) serverseitig vorgehalten wird und in jeden Folge-Call billiger einfließt. Praktisch bei Gemini & Co. Achtung: Caches haben eine kurze Lebensdauer (Minuten) und kosten teils Speichergebühr.",
+      "examples": [
+        "Gemini Context Caching",
+        "Wiederholte Fragen an dasselbe lange PDF"
+      ],
+      "see_also": [
+        "prompt-caching",
+        "context-window",
+        "rag"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 2
+    },
+    {
+      "id": "on-device-ai",
+      "term_de": "On-Device-KI",
+      "term_en": "On-Device AI",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "KI direkt auf deinem Gerät — privat und blitzschnell.",
+      "definition_aban": "Modelle, die lokal auf Handy oder Laptop laufen (Apple Intelligence, Gemini Nano), statt in der Cloud. Vorteil: Datenschutz, Offline-Betrieb, keine API-Kosten. Nachteil: deutlich kleiner und schwächer als Frontier-Modelle — fürs Schwere wandert die Anfrage trotzdem in die Cloud.",
+      "examples": [
+        "Apple Intelligence",
+        "Gemini Nano auf Pixel",
+        "Phi-3 auf dem Laptop"
+      ],
+      "see_also": [
+        "local-llm",
+        "quantization",
+        "distillation"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 3
+    },
+    {
+      "id": "hallucination-rate",
+      "term_de": "Halluzinations-Rate",
+      "term_en": "Hallucination Rate",
+      "category": "Anti-Hype",
+      "definition_marketing": "Unser Modell halluziniert nur noch 0,8% — quasi fehlerfrei.",
+      "definition_aban": "Anteil faktisch falscher Aussagen in einem Test-Set. Klingt nach harter Zahl, ist aber stark vom Benchmark abhängig — auf deinen echten Daten sieht's anders aus. Eine niedrige Rate heißt nicht 'verlässlich', sondern 'auf genau diesem Test selten daneben'. Selbst testen.",
+      "examples": [
+        "Wert auf einem QA-Benchmark wie SimpleQA",
+        "Modell-Datenblatt-Angabe ohne Kontext"
+      ],
+      "see_also": [
+        "hallucination",
+        "evaluation",
+        "benchmark"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 6
+    },
+    {
+      "id": "tool-use",
+      "term_de": "Tool-Use",
+      "term_en": "Tool Use",
+      "category": "Techniques",
+      "definition_marketing": "Deine KI kann jetzt alles bedienen.",
+      "definition_aban": "Oberbegriff dafür, dass ein LLM externe Werkzeuge aufruft (Suche, Code, Datenbank) statt nur Text zu erzeugen. Technisch über Function-Calling umgesetzt, Grundlage jedes Agents. Funktioniert nur so zuverlässig wie die Tool-Beschreibung und das Fehler-Handling drumherum.",
+      "examples": [
+        "Web-Suche im Chat",
+        "Code-Ausführung",
+        "Agent ruft Kalender-API"
+      ],
+      "see_also": [
+        "function-calling",
+        "agent",
+        "mcp"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 2
+    },
+    {
+      "id": "loop",
+      "term_de": "Agenten-Loop",
+      "term_en": "Agent Loop",
+      "category": "Techniques",
+      "definition_marketing": "Die KI arbeitet eigenständig, bis das Ziel erreicht ist.",
+      "definition_aban": "Die Schleife im Kern eines Agents: Modell denkt, ruft ein Tool, liest das Ergebnis, entscheidet neu — bis fertig oder Limit erreicht. Mächtig, aber teuer und fehleranfällig: ohne Abbruch-Bedingung dreht der Agent Runden und verbrennt Tokens.",
+      "examples": [
+        "ReAct-Schleife",
+        "Claude Code im Terminal",
+        "Auto-Retry bei Tool-Fehlern"
+      ],
+      "see_also": [
+        "agent",
+        "tool-use",
+        "function-calling"
+      ],
+      "first_used_in": "ausgabe-008",
+      "controversy_level": 4
+    },
+    {
+      "id": "ollama",
+      "term_de": "Ollama",
+      "term_en": "Ollama",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Lokale KI mit einem Befehl.",
+      "definition_aban": "Open-Source-Tool, mit dem du Open-Weights-Modelle (Llama, Mistral, DeepSeek) lokal per Kommandozeile lädst und startest. Macht Self-Hosting alltagstauglich. Du bekommst Datenschutz und Null-API-Kosten — aber nur so viel Modell-Power, wie deine Hardware hergibt.",
+      "examples": [
+        "ollama run llama3",
+        "Mistral lokal auf dem Mac"
+      ],
+      "see_also": [
+        "local-llm",
+        "lm-studio",
+        "quantization"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 1
+    },
+    {
+      "id": "lm-studio",
+      "term_de": "LM Studio",
+      "term_en": "LM Studio",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Deine eigene KI-Werkbank.",
+      "definition_aban": "Desktop-App (GUI) zum Herunterladen und Ausführen lokaler Modelle — die klick-freundliche Alternative zu Ollama. Praktisch zum Ausprobieren, inklusive lokalem API-Server. Für Produktion eher Spielwiese als Infrastruktur.",
+      "examples": [
+        "LM Studio mit Mistral",
+        "Lokaler OpenAI-kompatibler Endpoint"
+      ],
+      "see_also": [
+        "local-llm",
+        "ollama",
+        "quantization"
+      ],
+      "first_used_in": "ausgabe-024",
+      "controversy_level": 1
+    },
+    {
+      "id": "github-copilot",
+      "term_de": "GitHub Copilot",
+      "term_en": "GitHub Copilot",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "Dein KI-Pair-Programmer.",
+      "definition_aban": "Code-Vervollständigung und Chat im Editor von GitHub/Microsoft. Spart bei Boilerplate echte Zeit, schlägt aber auch selbstbewusst Unsinn vor — du bleibst der Reviewer. 2026 nur noch einer von vielen (Cursor, Windsurf, Claude Code).",
+      "examples": [
+        "Autovervollständigung in VS Code",
+        "Copilot Chat"
+      ],
+      "see_also": [
+        "copilot-buzz",
+        "vibecoding",
+        "tool-use"
+      ],
+      "first_used_in": "ausgabe-005",
+      "controversy_level": 3
+    },
+    {
+      "id": "elevenlabs",
+      "term_de": "ElevenLabs",
+      "term_en": "ElevenLabs",
+      "category": "Models + Vendors",
+      "definition_marketing": "Studioqualität-Stimmen für jeden.",
+      "definition_aban": "Marktführer für Sprach-Synthese und Voice-Cloning. Qualität 2026 erstklassig, auch auf Deutsch. Genau das macht es zum Missbrauchs-Werkzeug Nummer eins (Voice-Phishing, Fake-Audio). Einsatz mit Einwilligung und Kennzeichnung.",
+      "examples": [
+        "ElevenLabs Voice Lab",
+        "Hörbuch-Vertonung",
+        "Synthetische Podcast-Stimme"
+      ],
+      "see_also": [
+        "voice-clone",
+        "audio-models",
+        "deepfake"
+      ],
+      "first_used_in": "ausgabe-014",
+      "controversy_level": 7
+    },
+    {
+      "id": "dsgvo",
+      "term_de": "DSGVO",
+      "term_en": "GDPR",
+      "category": "DACH-Specific",
+      "definition_marketing": "—",
+      "definition_aban": "EU-Datenschutz-Grundverordnung, seit 2018 in Kraft. Regelt jede Verarbeitung personenbezogener Daten — Rechtsgrundlage, Zweckbindung, Auskunfts- und Löschrechte. Für KI-Tools der erste Filter: Wo liegen die Daten, wer ist Auftragsverarbeiter, gibt es einen AVV?",
+      "examples": [
+        "Auskunftsrecht nach Art. 15",
+        "AVV mit Cloud-Anbieter"
+      ],
+      "see_also": [
+        "dsgvo-ai",
+        "avv",
+        "datenresidenz"
+      ],
+      "first_used_in": "ausgabe-002",
+      "controversy_level": 3
+    },
+    {
+      "id": "agentic-rag",
+      "term_de": "Agentic RAG",
+      "term_en": "Agentic RAG",
+      "category": "Techniques",
+      "definition_marketing": "RAG, das endlich selbst denkt und sich seine Antworten erarbeitet.",
+      "definition_aban": "RAG, bei dem ein Agent in mehreren Schritten selbst entscheidet, was er sucht, nachfragt und kombiniert — statt einmal stur abzurufen. Liefert bei komplexen Fragen bessere Treffer, kostet dafür mehr Calls, mehr Latenz und mehr Fehlerquellen. Für einfache Lookups ist klassisches RAG günstiger.",
+      "examples": [
+        "Agent zerlegt eine Frage in Teil-Suchen",
+        "Mehrstufige Recherche über interne Docs"
+      ],
+      "see_also": [
+        "rag",
+        "agent",
+        "reranking"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 4
+    },
+    {
+      "id": "reranking",
+      "term_de": "Reranking",
+      "term_en": "Reranking",
+      "category": "Techniques",
+      "definition_marketing": "Der KI-Filter, der immer die perfekte Quelle findet.",
+      "definition_aban": "Zweiter Schritt im Retrieval: Ein spezialisiertes Modell sortiert die rohen Suchtreffer neu, sodass die wirklich relevanten oben landen. Oft der billigste Hebel, um schlechtes RAG spürbar besser zu machen — weil die erste Vektorsuche allein selten gut genug rankt.",
+      "examples": [
+        "Cohere Rerank",
+        "Cross-Encoder vor dem LLM-Prompt"
+      ],
+      "see_also": [
+        "rag",
+        "semantic-search",
+        "vector-db"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 2
+    },
+    {
+      "id": "computer-use",
+      "term_de": "Computer-Use",
+      "term_en": "Computer Use",
+      "category": "Techniques",
+      "definition_marketing": "Die KI bedient deinen Rechner für dich — komplett autonom.",
+      "definition_aban": "Modus, in dem ein Modell Screenshots liest und Maus/Tastatur steuert, um Software zu bedienen, die keine API hat. Beeindruckend in Demos, in der Praxis 2026 langsam, fehleranfällig und ein Sicherheitsrisiko (es klickt auch, was es nicht soll). Für Produktion: enge Aufgaben, Mensch daneben.",
+      "examples": [
+        "Anthropic Computer Use",
+        "OpenAI Operator",
+        "Browser-Agent füllt ein Webformular"
+      ],
+      "see_also": [
+        "agent",
+        "tool-use",
+        "prompt-injection"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 6
+    },
+    {
+      "id": "multi-agent",
+      "term_de": "Multi-Agenten-System",
+      "term_en": "Multi-Agent System",
+      "category": "Techniques",
+      "definition_marketing": "Ein ganzes KI-Team, das sich selbst organisiert und jedes Problem löst.",
+      "definition_aban": "Mehrere LLM-Agenten, die sich Aufgaben aufteilen (z.B. Planer, Rechercheur, Prüfer). Klingt nach Firma, ist oft nur teurer und instabiler als ein gut gebauter Single-Agent — jeder Übergabepunkt ist eine neue Fehlerquelle. Lohnt sich erst, wenn die Teilaufgaben wirklich getrennt sind.",
+      "examples": [
+        "Planner-Worker-Setups",
+        "Orchestrator delegiert an Sub-Agenten"
+      ],
+      "see_also": [
+        "agent",
+        "loop",
+        "orchestration-washing"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 6
+    },
+    {
+      "id": "ai-slop",
+      "term_de": "AI-Slop",
+      "term_en": "AI Slop",
+      "category": "Anti-Hype",
+      "definition_marketing": "Skalierbarer Content auf Knopfdruck.",
+      "definition_aban": "Massenhaft generierter, lieblos hingeworfener KI-Output, der das Netz flutet: generische Blogartikel, Fake-Bilder, Bot-Kommentare. Billig zu erzeugen, teuer fürs Vertrauen. Wer Slop produziert, spart sich Arbeit und verliert Reputation — der Leser merkt es schneller, als du denkst.",
+      "examples": [
+        "SEO-Artikel ohne eigene Substanz",
+        "KI-Bilderfluten auf Social Media",
+        "Auto-generierte Amazon-Rezensionen"
+      ],
+      "see_also": [
+        "wrapper",
+        "dead-internet",
+        "hallucination"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 7
+    },
+    {
+      "id": "agent-washing",
+      "term_de": "Agent-Washing",
+      "term_en": "Agent Washing",
+      "category": "Anti-Hype",
+      "definition_marketing": "Unser autonomer KI-Agent erledigt alles selbstständig für dich.",
+      "definition_aban": "Bedeutet: 'Wir kleben das Wort Agent auf einen simplen Chatbot oder ein Skript.' 2026 das neue 'AI-powered'. Frag konkret: Welche Tools ruft es, welche Entscheidungen trifft es allein, und was passiert beim Fehler? Meist bleibt ein scriptgesteuerter Workflow übrig.",
+      "examples": [
+        "'Agent', der nur eine feste If-Else-Kette ist",
+        "Chatbot mit einem einzigen API-Call als 'autonomer Agent'"
+      ],
+      "see_also": [
+        "agent",
+        "guardrails-marketing",
+        "orchestration-washing"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 8
+    },
+    {
+      "id": "orchestration-washing",
+      "term_de": "Orchestrierung",
+      "term_en": "Orchestration",
+      "category": "Anti-Hype",
+      "definition_marketing": "Unsere Plattform orchestriert nahtlos all deine KI-Agenten.",
+      "definition_aban": "Bedeutet meist: 'Wir rufen mehrere API-Endpunkte nacheinander auf.' Echte Orchestrierung (Fehler-Handling, Retries, State, Beobachtbarkeit) ist harte Arbeit — das Wort im Pitch-Deck heißt selten, dass sie geleistet wurde. Frag nach, was beim dritten fehlgeschlagenen Schritt passiert.",
+      "examples": [
+        "'Orchestrierung' für drei verkettete Zapier-Schritte"
+      ],
+      "see_also": [
+        "multi-agent",
+        "agent-washing",
+        "pipeline"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 7
+    },
+    {
+      "id": "diffusion",
+      "term_de": "Diffusionsmodell",
+      "term_en": "Diffusion Model",
+      "category": "Core Concepts",
+      "definition_marketing": "Die Technik, die KI zum Künstler macht.",
+      "definition_aban": "Modellklasse hinter den meisten Bild- und Videogeneratoren: Das Modell lernt, schrittweise aus Rauschen ein Bild zu rekonstruieren. Anders als LLMs, die Tokens vorhersagen. Erzeugt beeindruckende Bilder, hat aber kein Konzept von Wahrheit — Finger, Text und Physik gehen gern daneben.",
+      "examples": [
+        "Stable Diffusion",
+        "Midjourney",
+        "Sora (Video)"
+      ],
+      "see_also": [
+        "neural-network",
+        "multimodal",
+        "deepfake"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 3
+    },
+    {
+      "id": "temperature",
+      "term_de": "Temperatur",
+      "term_en": "Temperature",
+      "category": "Techniques",
+      "definition_marketing": "Der Kreativitäts-Regler deiner KI.",
+      "definition_aban": "Parameter, der steuert, wie zufällig das Modell beim nächsten Token würfelt. Niedrig (0–0.3): konsistent, vorhersagbar, gut für Fakten und Code. Hoch (0.8+): variabler, 'kreativer', aber auch mehr Quatsch. 'Kreativität' ist hier nur kontrollierter Zufall, keine Inspiration.",
+      "examples": [
+        "temperature=0 für JSON-Extraktion",
+        "temperature=0.9 für Brainstorming"
+      ],
+      "see_also": [
+        "token",
+        "structured-output",
+        "prompt-engineering"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 2
+    },
+    {
+      "id": "kv-cache",
+      "term_de": "KV-Cache",
+      "term_en": "KV Cache",
+      "category": "Tools + Infrastructure",
+      "definition_marketing": "—",
+      "definition_aban": "Zwischenspeicher im Modell für bereits verarbeitete Tokens, damit der nächste Token nicht alles neu berechnen muss. Der technische Grund, warum Prompt-Caching überhaupt funktioniert und warum lange Kontexte Speicher fressen. Musst du nicht selbst bauen, aber er erklärt deine Latenz- und Kostenkurven.",
+      "examples": [
+        "Wiederverwendung beim Streaming langer Antworten",
+        "Grundlage für Anthropic Prompt Caching"
+      ],
+      "see_also": [
+        "prompt-caching",
+        "context-window",
+        "inference"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 1
+    },
+    {
+      "id": "model-card",
+      "term_de": "Model Card / System Card",
+      "term_en": "Model Card",
+      "category": "DACH-Specific",
+      "definition_marketing": "Volle Transparenz über jedes Modell.",
+      "definition_aban": "Datenblatt eines Modells: Fähigkeiten, Grenzen, Trainingsdaten-Grobinfos, Sicherheits-Tests. Unter dem EU AI Act für GPAI in Teilen Pflicht. Nützlich als erster Filter — aber von den Anbietern selbst geschrieben, also Marketing-gefärbt. Eigene Evals ersetzt sie nicht.",
+      "examples": [
+        "Anthropic System Card zu Claude",
+        "Llama Model Card"
+      ],
+      "see_also": [
+        "gpai",
+        "eu-ai-act",
+        "evaluation"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 3
+    },
+    {
+      "id": "slm",
+      "term_de": "SLM (Small Language Model)",
+      "term_en": "SLM (Small Language Model)",
+      "category": "Models + Vendors",
+      "definition_marketing": "Klein, blitzschnell und genauso schlau wie die Großen.",
+      "definition_aban": "Kleines Sprachmodell (grob unter ~15 Mrd. Parametern), das auf einem Laptop oder Server ohne Rechenzentrum läuft. Für enge, klar definierte Aufgaben (Klassifikation, Extraktion) oft völlig ausreichend und viel billiger. 'Genauso schlau' stimmt aber nur im Wohlfühl-Benchmark, nicht bei offenen Reasoning-Aufgaben.",
+      "examples": [
+        "Phi-3",
+        "Gemma",
+        "Mistral 7B"
+      ],
+      "see_also": [
+        "local-llm",
+        "distillation",
+        "on-device-ai"
+      ],
+      "first_used_in": "ausgabe-026",
+      "controversy_level": 3
     }
   ]
 }

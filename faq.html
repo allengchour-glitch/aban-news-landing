@@ -48,17 +48,21 @@
     "url": "https://abannews.com/faq.html",
     "mainEntity": [
       {"@type":"Question","name":"Wie oft kommt die Mail?","acceptedAnswer":{"@type":"Answer","text":"Mo bis Fr. Eine Mail pro Werktag, morgens. Am Wochenende Pause — dann liest du eh keine Newsletter, und ich brauch auch mal ein Wochenende."}},
-      {"@type":"Question","name":"Wann morgens kommt die Mail?","acceptedAnswer":{"@type":"Answer","text":"Ziel ist 06:30 Uhr MEZ im Posteingang. Die Pipeline läuft nachts um 04:00, danach proofreading, danach Versand. In der Praxis bist du irgendwo zwischen 06:15 und 06:45 dran."}},
+      {"@type":"Question","name":"Wann morgens kommt die Mail?","acceptedAnswer":{"@type":"Answer","text":"Ziel ist 06:30 Uhr Schweizer Zeit im Posteingang. Die Pipeline läuft nachts um 04:00, danach Proofreading, danach Versand. In der Praxis bist du irgendwo zwischen 06:15 und 06:45 dran."}},
       {"@type":"Question","name":"Was wenn ich keine Mail erhalte?","acceptedAnswer":{"@type":"Answer","text":"Schau zuerst im Spam-Ordner. Wenn nichts da ist, schreib an hallo@abannews.com mit deiner Anmelde-Adresse — meist liegt es an einem fehlenden Double-Opt-In-Klick (siehe Bestätigungs-Mail nach Anmeldung)."}},
-      {"@type":"Question","name":"Welche Quellen nutzt aban news?","acceptedAnswer":{"@type":"Answer","text":"Fünf deutsche AI-Sites (Trending Topics, t3n, Heise, BasicThinking, AlgorithmWatch), englische Primärquellen (Anthropic Blog, OpenAI Releases, Hugging Face), Reddit r/LocalLLaMA und ausgewählte Twitter-Threads. Jede Behauptung im Newsletter ist verlinkt."}},
+      {"@type":"Question","name":"Welche Quellen nutzt aban news?","acceptedAnswer":{"@type":"Answer","text":"Fünf deutsche AI-Sites (Trending Topics, t3n, Heise, BasicThinking, AlgorithmWatch), englische Primärquellen (Anthropic Blog, OpenAI Releases, Hugging Face), Reddit r/LocalLLaMA und ausgewählte X-Threads. Jede Behauptung im Newsletter ist verlinkt."}},
       {"@type":"Question","name":"Wie hoch ist der Hype-Anteil im Newsletter?","acceptedAnswer":{"@type":"Answer","text":"Null. Wir haben eine Liste verbotener Wörter: revolutionär, bahnbrechend, Game Changer, Quantensprung, disruptiv und weitere. Wenn ein Entwurf ein Wort davon enthält, regenerier ich die Ausgabe."}},
       {"@type":"Question","name":"Ist aban news DSGVO-konform?","acceptedAnswer":{"@type":"Answer","text":"Ja. Schweizer Einzelunternehmen, EU-konforme Pipeline, Double-Opt-In, 1-Klick-Abmeldung, kein Tracking-Pixel. AVV auf Anfrage für Team-Bezüge in DACH-Firmen."}},
       {"@type":"Question","name":"Verkauft ihr meine Daten?","acceptedAnswer":{"@type":"Answer","text":"Nie. Auch nicht „anonymisiert“, nicht „aggregiert“, nicht „mit Partnern geteilt“. Verkaufen, vermieten, tauschen — null davon."}},
       {"@type":"Question","name":"Was kostet aban news?","acceptedAnswer":{"@type":"Answer","text":"Der tägliche Newsletter ist und bleibt kostenlos. Premium-Tier (Founding Member) ist 149 Euro einmalig, lebenslang."}},
+      {"@type":"Question","name":"Wie bezahle ich Founding Member?","acceptedAnswer":{"@type":"Answer","text":"Einmalzahlung per Karte über den Zahlungs-Anbieter von beehiiv (Stripe). Keine Abo-Verlängerung, keine versteckte Folge-Buchung — es bleibt bei den 149 Euro einmal."}},
+      {"@type":"Question","name":"Bleibt der tägliche Newsletter kostenlos, wenn ich kein Premium kaufe?","acceptedAnswer":{"@type":"Answer","text":"Ja. Die Mo–Fr-Mail ist und bleibt kostenlos — Founding Member ist ein freiwilliges Extra, kein Paywall-Schalter. Wer nie zahlt, verpasst nichts an der täglichen Ausgabe."}},
       {"@type":"Question","name":"Wie melde ich mich ab?","acceptedAnswer":{"@type":"Answer","text":"1 Klick auf den Abmelde-Link am Ende jeder Mail. Kein Formular, kein Zwischen-Screen, keine Rückfrage. Echt 1 Klick."}},
       {"@type":"Question","name":"Wie viel Werbung pro Ausgabe?","acceptedAnswer":{"@type":"Answer","text":"Maximal eine Anzeige pro Ausgabe. Klar als „Sponsor“ markiert, vom Inhalt visuell getrennt. Wenn kein Sponsor da ist, ist auch keine Werbung drin."}},
       {"@type":"Question","name":"Wer schreibt aban news?","acceptedAnswer":{"@type":"Answer","text":"Aban (Allen Chour), Schweizer Solopreneur. Solo geschrieben, keine Ghostwriter, keine Agentur. Antworte auf eine Mail — die Antwort kommt von mir."}},
-      {"@type":"Question","name":"Wie wird der Newsletter erstellt?","acceptedAnswer":{"@type":"Answer","text":"Pipeline läuft nachts: Make.com sammelt RSS-Feeds aus deutschen AI-Sites, Anthropic Claude (Sonnet 4.7) generiert Entwurf, regex-basierter Forbidden-Phrases-Check, ich gehe drüber, fertige Mail geht raus. Halbautomatisch, redaktionell hand-kuratiert."}}
+      {"@type":"Question","name":"Wie wird der Newsletter erstellt?","acceptedAnswer":{"@type":"Answer","text":"Pipeline läuft nachts: Make.com sammelt RSS-Feeds aus deutschen AI-Sites, Anthropic Claude (Sonnet 4.7) generiert Entwurf, regex-basierter Forbidden-Phrases-Check, ich gehe drüber, fertige Mail geht raus. Halbautomatisch, redaktionell hand-kuratiert."}},
+      {"@type":"Question","name":"In welchen Sprachen gibt es aban news?","acceptedAnswer":{"@type":"Answer","text":"Aktuell Deutsch. Eine englische Version (abannews.com/en/) ist in Arbeit — siehe Roadmap. Französisch und Italienisch sind eine Idee für später, versprochen ist davon noch nichts. Das hängt davon ab, ob genug Leser danach fragen."}},
+      {"@type":"Question","name":"Ist der Newsletter KI-geschrieben?","acceptedAnswer":{"@type":"Answer","text":"Teils. Ein LLM hilft beim ersten Entwurf aus den gesammelten Quellen, dann redigiere ich von Hand: Auswahl, Einordnung, Tonalität und der Forbidden-Phrases-Check kommen von mir. Heißt: KI als Werkzeug, redaktionelle Verantwortung bei einem Menschen."}}
     ]
   }
   </script>
@@ -138,7 +142,7 @@
 
       <div class="card">
         <h3>Wann morgens kommt die Mail?</h3>
-        <p>Ziel ist 06:30 Uhr MEZ im Posteingang. Die Pipeline läuft nachts um 04:00, danach proofreading, danach Versand. In der Praxis bist du irgendwo zwischen 06:15 und 06:45 dran.</p>
+        <p>Ziel ist 06:30 Uhr Schweizer Zeit im Posteingang. Die Pipeline läuft nachts um 04:00, danach Proofreading, danach Versand. In der Praxis bist du irgendwo zwischen 06:15 und 06:45 dran.</p>
       </div>
 
       <div class="card">
@@ -179,7 +183,7 @@
 
       <div class="card">
         <h3>Welche Quellen nutzt aban news?</h3>
-        <p>Fünf deutsche AI-Sites (Trending Topics, t3n, Heise, BasicThinking, AlgorithmWatch), englische Primärquellen (Anthropic Blog, OpenAI Releases, Hugging Face), Reddit r/LocalLLaMA und ausgewählte Twitter-Threads. Jede Behauptung im Newsletter ist verlinkt.</p>
+        <p>Fünf deutsche AI-Sites (Trending Topics, t3n, Heise, BasicThinking, AlgorithmWatch), englische Primärquellen (Anthropic Blog, OpenAI Releases, Hugging Face), Reddit r/LocalLLaMA und ausgewählte X-Threads. Jede Behauptung im Newsletter ist verlinkt.</p>
       </div>
 
       <div class="card">
@@ -213,6 +217,11 @@
       </div>
 
       <div class="card">
+        <h3>In welchen Sprachen gibt es aban news?</h3>
+        <p>Aktuell Deutsch. Eine englische Version (abannews.com/en/) ist in Arbeit — siehe Roadmap. Französisch und Italienisch sind eine Idee für später, versprochen ist davon noch nichts. Das hängt davon ab, ob genug Leser danach fragen.</p>
+      </div>
+
+      <div class="card">
         <h3>Wie hoch ist der Hype-Anteil im Newsletter?</h3>
         <p>Null. Wir haben eine Liste verbotener Wörter: revolutionär, bahnbrechend, Game Changer, Quantensprung, disruptiv und weitere. Wenn ein Entwurf ein Wort davon enthält, regenerier ich die Ausgabe.</p>
       </div>
@@ -235,7 +244,7 @@
 
       <div class="card">
         <h3>Werden US-Subprocessoren genutzt?</h3>
-        <p>Wir migrieren aktuell von Gmail-Versand auf beehiiv (US-basiert mit EU-Datacenter-Option) oder eine EU-Alternative. Sobald entschieden, steht es transparent in der Datenschutzerklärung mit AVV-Link.</p>
+        <p>Ja — beehiiv für Versand und Anmeldung ist US-basiert. Die Übermittlung läuft auf Basis der EU-Standardvertragsklauseln. Alle Subprocessoren stehen mit AVV-Link transparent in der Datenschutzerklärung.</p>
       </div>
 
       <div class="card">
@@ -306,7 +315,7 @@
 
       <div class="card">
         <h3>Kann ich nur an bestimmten Tagen Mails bekommen?</h3>
-        <p>Aktuell nicht. Mit beehiiv-Migration kommt eventuell Tag-Filter („nur Mi und Fr"). Wenn dich das interessiert: antworte auf eine Mail und sag Bescheid.</p>
+        <p>Aktuell nicht. Ein Tag-Filter über beehiiv-Segmente („nur Mi und Fr") ist denkbar, sobald genug Leute danach fragen. Wenn dich das interessiert: antworte auf eine Mail und sag Bescheid.</p>
       </div>
     </div>
   </section>
@@ -380,6 +389,16 @@
         <h3>Kann ich Founding Member auf jemand anderen übertragen?</h3>
         <p>Innerhalb von 30 Tagen ja — wenn du merkst, es passt nicht. Danach nicht mehr (würde die Zählung der 100 Plätze verzerren).</p>
       </div>
+
+      <div class="card">
+        <h3>Wie bezahle ich Founding Member?</h3>
+        <p>Einmalzahlung per Karte über den Zahlungs-Anbieter von beehiiv (Stripe). Keine Abo-Verlängerung, keine versteckte Folge-Buchung — es bleibt bei den 149 Euro einmal.</p>
+      </div>
+
+      <div class="card">
+        <h3>Bleibt der tägliche Newsletter kostenlos, wenn ich kein Premium kaufe?</h3>
+        <p>Ja. Die Mo–Fr-Mail ist und bleibt kostenlos — Founding Member ist ein freiwilliges Extra, kein Paywall-Schalter. Wer nie zahlt, verpasst nichts an der täglichen Ausgabe.</p>
+      </div>
     </div>
   </section>
 
@@ -435,7 +454,7 @@
 
       <div class="card">
         <h3>Welcher Mail-Provider versendet?</h3>
-        <p>Aktuell Gmail-Drafts (Pilot-Phase, &lt;200 Subs). Migration auf beehiiv geplant, sobald Reach es nötig macht — dann mit EU-Datacenter-Option und AVV.</p>
+        <p>beehiiv. Die Anmeldung und der Versand laufen über beehiiv mit Double-Opt-In und 1-Klick-Abmeldung. Subprocessoren und AVV stehen transparent in der Datenschutzerklärung.</p>
       </div>
 
       <div class="card">
@@ -456,6 +475,11 @@
       <div class="card">
         <h3>Wird die Mail vor dem Versand vom Menschen geprüft?</h3>
         <p>Ja. Jede Ausgabe geht durch meinen Proofread, bevor sie an die Subscriber geht. Wenn der Entwurf nicht passt, schreib ich um. Daher die 06:30-Versand-Zeit (statt 04:00 vollautomatisch).</p>
+      </div>
+
+      <div class="card">
+        <h3>Ist der Newsletter KI-geschrieben?</h3>
+        <p>Teils. Ein LLM hilft beim ersten Entwurf aus den gesammelten Quellen, dann redigiere ich von Hand: Auswahl, Einordnung, Tonalität und der Forbidden-Phrases-Check kommen von mir. Heißt: KI als Werkzeug, redaktionelle Verantwortung bei einem Menschen.</p>
       </div>
 
       <div class="card">
