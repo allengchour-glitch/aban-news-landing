@@ -380,3 +380,11 @@ Anwendungsbilder) zusätzlich zu den Farb-Bildern. Workflow: `productImageSet` j
 nur Bilder ohne bestehendes Farbbild-Match, HTTP-200 vorgeprüft (Playwright HEAD), dann per
 `productCreateMedia` angehängt (4 Batches, 0 Fehler). +3 bis +10 Bilder pro Produkt.
 Neuzugänge zuvor: Reed-Diffuser «Aroma» (`CJYD290446601AZ`), Spülbecken-Organizer (`CJCF290036901AZ`).
+
+## Galerie-Retrofit Teil 2 (alte Mode-Artikel) 2026-05-31
+Auch die 8 Mode-Artikel der früheren Session mit voller CJ-Galerie nachgerüstet (Bikini, Leinenhose,
+Strand-Rock, A-Linien-Kleid, Herren-Polo, Badeset, Neckholder-Kleid, 2-tlg Sommer-Set). +3 bis +5 Bilder je.
+**Wichtige Erkenntnis:** CJ-Produkt-SKU = Varianten-SKU **minus die letzten 4 Zeichen**
+(z. B. `CJLY291603001AZ` → `productSku=CJLY2916030`); `/product/query?productSku=` löst dann pid +
+productImageSet auf. (Voll-Varianten-SKU als productSku → „Product not found".)
+Insgesamt 36 von mir angelegte Produkte haben jetzt vollständige Bildergalerien, 0 FAILED.
