@@ -94,7 +94,15 @@ neuen Zahl neu bauen.
 
 ## Weitere Sprachen
 
-`generate_kdp_print.py de en` baut zusätzlich die englische Print-Datei. Aktuell
-ist nur die **deutsche** Ausgabe auf vollen Buchumfang ausgebaut; en/fr/it sind
-noch die kompakten Fassungen. Vor einer fremdsprachigen KDP-Veröffentlichung dort
-erst den Inhalt in `CONTENT` erweitern.
+Alle vier Sprachen (de/en/fr/it) sind auf vollen Buchumfang ausgebaut — je
+13 Kapitel inkl. Werkstatt. Print-Innenteile bauen:
+
+```bash
+python3 generate_kdp_print.py de en fr it
+```
+
+Aktuelle Seitenzahlen (5×8"): de 27, en 26, fr 27, it 25 — alle über der
+KDP-Mindestgrenze von 24. Pro Sprache ein eigenes KDP-Buch anlegen (eigene
+Metadaten, Keywords, Kategorien, ggf. eigene ISBN). Das Wraparound-Cover pro
+Sprache mit der jeweiligen Seitenzahl neu bauen, falls KDP nach dem Upload eine
+andere Zahl meldet.
