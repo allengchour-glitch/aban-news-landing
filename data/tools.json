@@ -118,7 +118,8 @@
         "Research",
         "Coding",
         "Image-Gen"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter (OpenAI) – AVV über ChatGPT Team/Enterprise oder API; Standard-Consumer-Plan nicht für Mandantendaten."
     },
     {
       "id": "gemini",
@@ -152,7 +153,8 @@
         "Research",
         "Multimodal",
         "Google-Docs-Integration"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter (Google) – AVV über Workspace/Vertex AI; EU-Datenresidenz auf Vertex konfigurierbar."
     },
     {
       "id": "mistral",
@@ -188,7 +190,8 @@
         "Coding",
         "EU-Compliance",
         "Reasoning"
-      ]
+      ],
+      "dsgvo_note": "EU-Anbieter (Frankreich) – Hosting in der EU, AVV verfügbar. Gute DSGVO-Wahl für DACH."
     },
     {
       "id": "deepseek",
@@ -206,7 +209,7 @@
       },
       "dach_relevance": 5,
       "worth_it_score": 7,
-      "aban_note": "Disruptive Preise (-75 bis -99% vs OpenAI). Für Bulk-Workloads ohne Compliance-Sorgen unschlagbar. Für DACH-Business-Daten würd ich's nicht durchrouten — China-Provider.",
+      "aban_note": "Sehr niedrige Preise (-75 bis -99% vs OpenAI). Für Bulk-Workloads ohne Compliance-Sorgen stark. Für DACH-Business-Daten würd ich's nicht durchrouten — China-Provider.",
       "ausgaben_mentions": [
         "001",
         "005",
@@ -221,7 +224,8 @@
         "Bulk-API",
         "Cost-Optimization",
         "Reasoning"
-      ]
+      ],
+      "dsgvo_note": "China-Anbieter – Datenverarbeitung in China, kein EU-AVV. Für Mandanten-/Personendaten ungeeignet; nur lokal/über EU-Proxy nutzen."
     },
     {
       "id": "perplexity",
@@ -256,7 +260,8 @@
         "Research",
         "News-Sweep",
         "Quellen-Recherche"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV nötig; Zero-/No-Retention-Option prüfen, sonst keine Mandantendaten."
     },
     {
       "id": "aleph-alpha",
@@ -290,7 +295,8 @@
         "Banking",
         "Pharma",
         "Verwaltung"
-      ]
+      ],
+      "dsgvo_note": "DE-Anbieter (Heidelberg) – Hosting in Deutschland, BSI-/DSGVO-orientiert. Stark für regulierte DACH-Branchen."
     },
     {
       "id": "cowork",
@@ -323,7 +329,8 @@
         "PDF-Analyse",
         "Slide-Generation",
         "Excel-Pivots"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter (Anthropic) – AVV via Claude Team/Enterprise; EU-Datenresidenz und Zero-Retention auf Anfrage."
     },
     {
       "id": "openrouter",
@@ -356,7 +363,8 @@
         "Multi-Provider-API",
         "Cost-Routing",
         "Modell-Tests"
-      ]
+      ],
+      "dsgvo_note": "US-Vermittler – leitet an viele Modell-Anbieter weiter; je Modell unterschiedliche Verarbeitung, AVV/Routing genau prüfen."
     },
     {
       "id": "n8n",
@@ -391,7 +399,8 @@
         "Workflow-Automation",
         "Newsletter-Pipeline",
         "API-Integration"
-      ]
+      ],
+      "dsgvo_note": "DE-Anbieter (Berlin) – self-hostbar, dann DSGVO-konform; Cloud mit EU-Hosting und AVV."
     },
     {
       "id": "make",
@@ -422,7 +431,8 @@
       "use_cases": [
         "Workflow-Automation",
         "No-Code-Integration"
-      ]
+      ],
+      "dsgvo_note": "EU-Anbieter (Tschechien) – EU-Hosting wählbar, AVV verfügbar."
     },
     {
       "id": "zapier",
@@ -452,7 +462,8 @@
       "use_cases": [
         "SaaS-Integration",
         "Quick-Workflows"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "cursor",
@@ -470,7 +481,7 @@
       },
       "dach_relevance": 8,
       "worth_it_score": 9,
-      "aban_note": "Mein Default-Editor. VSCode-Fork mit Claude/GPT integriert. Composer-Modus ist der Game-Changer für Vibecoding. Wenn du Code schreibst und kein Cursor hast — verlierst du Zeit.",
+      "aban_note": "Mein Default-Editor. VSCode-Fork mit Claude/GPT integriert. Composer-Modus spart beim Vibecoding spürbar Zeit. Wenn du viel Code schreibst, lohnt sich der Umstieg.",
       "ausgaben_mentions": [
         "014",
         "018",
@@ -479,14 +490,15 @@
       "url": "https://cursor.com",
       "alternatives": [
         "windsurf",
-        "copilot",
+        "github-copilot",
         "claude-code"
       ],
       "use_cases": [
         "Vibecoding",
         "Code-Refactoring",
         "Pair-Programming"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV nötig; Zero-/No-Retention-Option prüfen, sonst keine Mandantendaten."
     },
     {
       "id": "windsurf",
@@ -510,12 +522,13 @@
       "url": "https://windsurf.com",
       "alternatives": [
         "cursor",
-        "copilot"
+        "github-copilot"
       ],
       "use_cases": [
         "Vibecoding",
         "Coding"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV nötig; Zero-/No-Retention-Option prüfen, sonst keine Mandantendaten."
     },
     {
       "id": "github-copilot",
@@ -547,7 +560,8 @@
       "use_cases": [
         "Code-Completion",
         "GitHub-Integration"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter (Microsoft/GitHub) – AVV über Business/Enterprise; EU-Datenverarbeitung über Microsoft-Verträge."
     },
     {
       "id": "claude-code",
@@ -579,7 +593,8 @@
         "Bulk-Refactoring",
         "Codebase-Analyse",
         "Terminal-Coding"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter (Anthropic) – AVV via Team/Enterprise; Zero-Retention für API möglich."
     },
     {
       "id": "bolt",
@@ -610,7 +625,8 @@
       "use_cases": [
         "MVP-Prototyping",
         "Landing-Pages"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "lovable",
@@ -640,7 +656,8 @@
       "use_cases": [
         "MVP-Prototyping",
         "Vibecoding"
-      ]
+      ],
+      "dsgvo_note": "EU-Anbieter (Schweden) – EU-Hosting; Backend oft via Supabase, dort Datenstandort prüfen."
     },
     {
       "id": "v0",
@@ -671,7 +688,8 @@
       "use_cases": [
         "React-Prototyping",
         "UI-Generation"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "replit",
@@ -701,7 +719,8 @@
       "use_cases": [
         "Full-Stack-MVP",
         "Hosting-inkludiert"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "midjourney",
@@ -734,7 +753,8 @@
         "Marketing-Assets",
         "Editorial-Bilder",
         "Konzept-Art"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – kein klassischer AVV; keine personenbezogenen/Mandantendaten in Prompts."
     },
     {
       "id": "flux",
@@ -765,7 +785,8 @@
         "Image-Gen",
         "Self-Hosted",
         "DACH-Compliance"
-      ]
+      ],
+      "dsgvo_note": "DE-Anbieter (Black Forest Labs, Freiburg) – Modell auch self-hostbar; API-Nutzung Datenstandort prüfen."
     },
     {
       "id": "stable-diffusion",
@@ -795,7 +816,8 @@
       "use_cases": [
         "Self-Hosted-Image-Gen",
         "Bulk-Image"
-      ]
+      ],
+      "dsgvo_note": "Modell self-hostbar (Stability AI) – lokal betrieben DSGVO-konform."
     },
     {
       "id": "ideogram",
@@ -825,7 +847,8 @@
         "Typografie",
         "Poster",
         "Logo-Konzepte"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "krea",
@@ -855,7 +878,8 @@
       "use_cases": [
         "Realtime-Design",
         "Image-Gen"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "recraft",
@@ -883,7 +907,8 @@
       "use_cases": [
         "SVG-Gen",
         "Brand-Konsistenz"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "leonardo",
@@ -910,7 +935,8 @@
       "use_cases": [
         "Game-Assets",
         "Konzept-Art"
-      ]
+      ],
+      "dsgvo_note": "Anbieter aus Australien – AVV/Datenverarbeitung prüfen; keine Personendaten in Prompts."
     },
     {
       "id": "playground",
@@ -937,7 +963,8 @@
       ],
       "use_cases": [
         "Hobby-Image-Gen"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "dalle",
@@ -967,7 +994,8 @@
       "use_cases": [
         "ChatGPT-integriert",
         "Quick-Image"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter (OpenAI) – AVV über API/Enterprise."
     },
     {
       "id": "adobe-firefly",
@@ -995,7 +1023,8 @@
       "use_cases": [
         "Commercial-Safe",
         "Adobe-Workflow"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter (Adobe) – AVV über Adobe-Verträge; auf lizenzsichere Trainingsdaten ausgelegt."
     },
     {
       "id": "sora",
@@ -1028,7 +1057,8 @@
       "use_cases": [
         "Video-Demos",
         "Konzept-Video"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter (OpenAI) – keine Personen-/Mandantendaten in Prompts; AVV über Enterprise."
     },
     {
       "id": "runway",
@@ -1059,7 +1089,8 @@
         "Video-Editing",
         "VFX",
         "Motion-Graphics"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "pika",
@@ -1086,7 +1117,8 @@
       "use_cases": [
         "Short-Form-Video",
         "Social-Media"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "elevenlabs",
@@ -1118,7 +1150,8 @@
         "Voiceover",
         "Podcast",
         "Audiobook"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV verfügbar; bei Voice-Cloning Einwilligung der Stimm-Inhaber dokumentieren."
     },
     {
       "id": "suno",
@@ -1144,7 +1177,8 @@
       "use_cases": [
         "Jingles",
         "Hintergrundmusik"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – keine personenbezogenen Daten; Urheberrechts-/Lizenzlage bei Output beachten."
     },
     {
       "id": "udio",
@@ -1169,7 +1203,8 @@
       ],
       "use_cases": [
         "Musik-Gen"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – keine personenbezogenen Daten; Lizenzlage des Outputs beachten."
     },
     {
       "id": "murf",
@@ -1196,7 +1231,8 @@
       "use_cases": [
         "Voiceover",
         "TTS"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "heygen",
@@ -1224,7 +1260,8 @@
       "use_cases": [
         "AI-Avatar-Videos",
         "Multi-Language-Content"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV verfügbar; bei Avatar/Voice-Clone Einwilligung der abgebildeten Person dokumentieren."
     },
     {
       "id": "synthesia",
@@ -1252,7 +1289,8 @@
       "use_cases": [
         "Corporate-Training",
         "AI-Avatar"
-      ]
+      ],
+      "dsgvo_note": "UK-Anbieter – AVV verfügbar; bei Avataren Einwilligung dokumentieren. EU-Datenverarbeitung prüfen."
     },
     {
       "id": "d-id",
@@ -1277,7 +1315,8 @@
       ],
       "use_cases": [
         "Avatar-Videos"
-      ]
+      ],
+      "dsgvo_note": "Anbieter aus Israel (Angemessenheitsbeschluss) – AVV nötig; bei Gesichtern/Stimmen Einwilligung dokumentieren."
     },
     {
       "id": "descript",
@@ -1295,7 +1334,7 @@
       },
       "dach_relevance": 5,
       "worth_it_score": 7.5,
-      "aban_note": "Audio/Video-Editing über Transkript. Game-Changer für Podcaster — du löschst Wörter im Text, das Audio folgt. Voice-Clone (Overdub) ist sauber.",
+      "aban_note": "Audio/Video-Editing über Transkript. Für Podcaster ein echter Zeitsparer — du löschst Wörter im Text, das Audio folgt. Voice-Clone (Overdub) ist sauber.",
       "ausgaben_mentions": [],
       "url": "https://descript.com",
       "alternatives": [
@@ -1305,7 +1344,8 @@
       "use_cases": [
         "Podcast-Editing",
         "Transkript-basiertes-Editing"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "veed",
@@ -1332,7 +1372,8 @@
       "use_cases": [
         "Browser-Video",
         "Untertitel"
-      ]
+      ],
+      "dsgvo_note": "UK-Anbieter – AVV verfügbar; EU-Datenverarbeitung prüfen."
     },
     {
       "id": "capcut",
@@ -1361,7 +1402,8 @@
       "use_cases": [
         "Mobile-Editing",
         "Social-Video"
-      ]
+      ],
+      "dsgvo_note": "ByteDance (China) – Datenabfluss nach China möglich; keine Mandanten-/Personendaten, geschäftlich heikel."
     },
     {
       "id": "otter",
@@ -1392,7 +1434,8 @@
       "use_cases": [
         "Meeting-Transkript",
         "Notizen"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV nötig; Zero-/No-Retention-Option prüfen, sonst keine Mandantendaten."
     },
     {
       "id": "fireflies",
@@ -1422,7 +1465,8 @@
       "use_cases": [
         "Meeting-AI",
         "CRM-Integration"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – Meeting-Bot zeichnet Gespräche auf: Einwilligung aller Teilnehmer nötig; AVV abschließen."
     },
     {
       "id": "granola",
@@ -1454,7 +1498,8 @@
       "use_cases": [
         "Meeting-AI",
         "Deutsch-First"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – nimmt lokal mit, keine Bot-Teilnahme; trotzdem AVV und Einwilligung der Gesprächspartner beachten."
     },
     {
       "id": "tldv",
@@ -1484,7 +1529,8 @@
       "use_cases": [
         "Meeting-AI",
         "DACH-Compliance"
-      ]
+      ],
+      "dsgvo_note": "DE-Anbieter (München) – EU-Hosting/AVV; bei Aufzeichnung Einwilligung aller Teilnehmer nötig."
     },
     {
       "id": "krisp",
@@ -1511,7 +1557,8 @@
       "use_cases": [
         "Noise-Cancellation",
         "Call-Quality"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "fathom",
@@ -1538,7 +1585,8 @@
       "use_cases": [
         "Meeting-AI",
         "Free-Power-User"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – Meeting-Recorder: Einwilligung aller Teilnehmer nötig; AVV abschließen."
     },
     {
       "id": "deepl",
@@ -1571,7 +1619,8 @@
         "Übersetzung DE↔EN",
         "Write-Refinement",
         "API"
-      ]
+      ],
+      "dsgvo_note": "DE-Anbieter (Köln) – EU-Hosting; DeepL Pro übermittelt Texte nicht ins Training. Gute DSGVO-Wahl."
     },
     {
       "id": "deepl-write",
@@ -1600,7 +1649,8 @@
       "use_cases": [
         "Deutsch-Refinement",
         "Stil-Variation"
-      ]
+      ],
+      "dsgvo_note": "DE-Anbieter (Köln) – EU-Hosting; Pro-Version mit AVV und ohne Training auf deinen Texten."
     },
     {
       "id": "grammarly",
@@ -1628,7 +1678,8 @@
       ],
       "use_cases": [
         "Englisch-Grammar"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV über Business/Enterprise; nur englische Texte, bei Mandantendaten zurückhaltend."
     },
     {
       "id": "languagetool",
@@ -1656,7 +1707,8 @@
       "use_cases": [
         "Deutsche-Grammatik",
         "Self-Hosted-Korrektur"
-      ]
+      ],
+      "dsgvo_note": "DE-Anbieter (Potsdam) – EU-Hosting; self-hostbar (Open-Source-Kern). Sehr DSGVO-freundlich."
     },
     {
       "id": "tavily",
@@ -1686,7 +1738,8 @@
       "use_cases": [
         "Agent-Search",
         "RAG"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "exa",
@@ -1716,7 +1769,8 @@
         "Semantic-Search",
         "RAG",
         "Research"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "you",
@@ -1743,7 +1797,8 @@
       "use_cases": [
         "AI-Search",
         "Multi-Mode-Search"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "phind",
@@ -1773,7 +1828,8 @@
       "use_cases": [
         "Dev-Search",
         "Code-Recherche"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "kagi",
@@ -1800,7 +1856,8 @@
       "use_cases": [
         "Werbefreie-Suche",
         "Power-Search"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – datenschutz-fokussiertes Geschäftsmodell, kein Tracking; AVV für geschäftliche Nutzung prüfen."
     },
     {
       "id": "brave",
@@ -1827,7 +1884,8 @@
       "use_cases": [
         "Privacy-Suche",
         "Tracking-frei"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – datenschutz-fokussiert, kein Profiling; für anonyme Suche unkritisch."
     },
     {
       "id": "groq",
@@ -1855,7 +1913,8 @@
       "use_cases": [
         "Low-Latency-Inferenz",
         "Real-Time-AI"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "together-ai",
@@ -1883,7 +1942,8 @@
       "use_cases": [
         "Open-Source-API",
         "Multi-Modell-Hosting"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "cerebras",
@@ -1909,7 +1969,8 @@
       ],
       "use_cases": [
         "High-Speed-Inferenz"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "replicate",
@@ -1937,7 +1998,8 @@
       "use_cases": [
         "Modell-Prototyping",
         "Multi-Modal-API"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "hugging-face",
@@ -1968,7 +2030,8 @@
         "Modell-Hosting",
         "Datasets",
         "Open-Source-AI"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter mit EU-Präsenz – Modelle self-hostbar; Inference-API Datenstandort prüfen, AVV verfügbar."
     },
     {
       "id": "langchain",
@@ -1997,7 +2060,8 @@
       "use_cases": [
         "Agent-Framework",
         "LLM-Pipelines"
-      ]
+      ],
+      "dsgvo_note": "Open-Source-Framework (läuft in deiner Infra) – DSGVO hängt von den eingebundenen Modellen/Diensten ab."
     },
     {
       "id": "llamaindex",
@@ -2026,7 +2090,8 @@
       "use_cases": [
         "RAG",
         "Doc-Search"
-      ]
+      ],
+      "dsgvo_note": "Open-Source-Framework (läuft in deiner Infra) – DSGVO hängt von eingebundenen Modellen/Diensten ab."
     },
     {
       "id": "weaviate",
@@ -2054,7 +2119,8 @@
         "Vector-Search",
         "RAG",
         "EU-Compliance"
-      ]
+      ],
+      "dsgvo_note": "NL-Anbieter – self-hostbar in der EU; Cloud mit EU-Region und AVV."
     },
     {
       "id": "qdrant",
@@ -2083,7 +2149,8 @@
         "Vector-Search",
         "DACH-Compliance",
         "Self-Hosted-RAG"
-      ]
+      ],
+      "dsgvo_note": "DE-Anbieter (Berlin) – self-hostbar; Cloud mit EU-Region. Gute DSGVO-Wahl für Vektordaten."
     },
     {
       "id": "pinecone",
@@ -2109,7 +2176,8 @@
       ],
       "use_cases": [
         "Managed-Vector-DB"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "chroma",
@@ -2135,7 +2203,8 @@
       "use_cases": [
         "Local-Dev",
         "Prototyping"
-      ]
+      ],
+      "dsgvo_note": "Self-Hosting/Open-Source – DSGVO-konform betreibbar, da Daten lokal bleiben."
     },
     {
       "id": "notion-ai",
@@ -2166,7 +2235,8 @@
       ],
       "use_cases": [
         "Notion-Workspace-AI"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter (Notion) – AVV verfügbar; Workspace-Daten in USA, für sensible Mandantendaten prüfen."
     },
     {
       "id": "mem",
@@ -2196,7 +2266,8 @@
       "use_cases": [
         "Smart-Notes",
         "Auto-Tagging"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "reflect",
@@ -2226,7 +2297,8 @@
         "Daily-Notes",
         "Backlinks",
         "AI-augmentiert"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "obsidian",
@@ -2254,7 +2326,8 @@
         "Local-Notes",
         "Markdown",
         "Zettelkasten"
-      ]
+      ],
+      "dsgvo_note": "Lokale App – Notizen bleiben standardmäßig auf deinem Gerät; DSGVO-unkritisch. Sync ist optional/zuschaltbar."
     },
     {
       "id": "loom",
@@ -2283,7 +2356,8 @@
       "use_cases": [
         "Screen-Record",
         "Async-Communication"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter (Atlassian) – AVV verfügbar; bei Aufnahmen mit Personen Einwilligung beachten."
     },
     {
       "id": "capso",
@@ -2311,7 +2385,8 @@
       "use_cases": [
         "Open-Source-Screen-Record",
         "DACH-Compliance"
-      ]
+      ],
+      "dsgvo_note": "Open-Source (self-hostbar) – Aufnahmen lokal speicherbar, DSGVO-konform betreibbar."
     },
     {
       "id": "jasper",
@@ -2338,7 +2413,8 @@
       ],
       "use_cases": [
         "Marketing-Copywriting"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "copy-ai",
@@ -2366,7 +2442,8 @@
       "use_cases": [
         "Marketing-Workflows",
         "Sales-Copy"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "writesonic",
@@ -2392,7 +2469,8 @@
       ],
       "use_cases": [
         "Bulk-Content"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "sudowrite",
@@ -2418,7 +2496,8 @@
       "use_cases": [
         "Fiction-Writing",
         "Story-Beats"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "lex",
@@ -2443,7 +2522,8 @@
       ],
       "use_cases": [
         "AI-augmented-Writing"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "wordtune",
@@ -2469,7 +2549,8 @@
       ],
       "use_cases": [
         "Englisch-Paraphrasieren"
-      ]
+      ],
+      "dsgvo_note": "Anbieter aus Israel (AI21, Angemessenheitsbeschluss) – AVV prüfen."
     },
     {
       "id": "quillbot",
@@ -2495,7 +2576,8 @@
       ],
       "use_cases": [
         "Paraphrasieren"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "anyword",
@@ -2523,7 +2605,8 @@
       "use_cases": [
         "Ad-Copy",
         "Performance-Marketing"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "profound",
@@ -2556,7 +2639,8 @@
       "use_cases": [
         "GEO-Tracking",
         "Brand-in-LLM"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "athenahq",
@@ -2587,7 +2671,8 @@
       "use_cases": [
         "GEO",
         "Brand-Monitoring"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "otterly",
@@ -2618,7 +2703,8 @@
       "use_cases": [
         "GEO-DACH",
         "KMU-Brand-Monitoring"
-      ]
+      ],
+      "dsgvo_note": "AT-Anbieter (Österreich) – EU-Hosting/DSGVO-konform. Gute DACH-Wahl fürs GEO-Monitoring."
     },
     {
       "id": "ahrefs",
@@ -2644,7 +2730,8 @@
       "use_cases": [
         "SEO",
         "Backlink-Analysis"
-      ]
+      ],
+      "dsgvo_note": "Anbieter aus Singapur – AVV/Datenverarbeitung prüfen; arbeitet überwiegend mit öffentlichen Web-Daten."
     },
     {
       "id": "semrush",
@@ -2672,7 +2759,8 @@
         "SEO",
         "Competitor-Ads",
         "Marketing-Stack"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "surfer",
@@ -2700,7 +2788,8 @@
       "use_cases": [
         "On-Page-SEO",
         "Content-Optimization"
-      ]
+      ],
+      "dsgvo_note": "EU-Anbieter (Polen) – EU-Hosting, AVV verfügbar."
     },
     {
       "id": "frase",
@@ -2727,7 +2816,8 @@
       "use_cases": [
         "Content-Briefs",
         "SERP-Analysis"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "marketmuse",
@@ -2754,7 +2844,8 @@
       ],
       "use_cases": [
         "Enterprise-SEO"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "canva",
@@ -2783,7 +2874,8 @@
         "Design",
         "Social-Templates",
         "Präsentationen"
-      ]
+      ],
+      "dsgvo_note": "Anbieter aus Australien mit EU-Präsenz – AVV verfügbar; für Marketing-Assets unkritisch."
     },
     {
       "id": "figma",
@@ -2809,7 +2901,8 @@
       "use_cases": [
         "UI-Design",
         "Prototyping"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV verfügbar; EU-Datenresidenz im Enterprise-Plan."
     },
     {
       "id": "gamma",
@@ -2837,7 +2930,8 @@
       "use_cases": [
         "AI-Slides",
         "Pitch-Decks"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "tome",
@@ -2863,7 +2957,8 @@
       "use_cases": [
         "Sales-Decks",
         "AI-Slides"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "beautiful-ai",
@@ -2888,7 +2983,8 @@
       ],
       "use_cases": [
         "Auto-Layout-Slides"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "ollama",
@@ -2915,7 +3011,8 @@
         "Local-LLM",
         "DSGVO-Safe",
         "Offline-AI"
-      ]
+      ],
+      "dsgvo_note": "Self-Hosting/Open-Source – DSGVO-konform betreibbar, da Daten lokal bleiben."
     },
     {
       "id": "lm-studio",
@@ -2941,7 +3038,8 @@
       "use_cases": [
         "Local-LLM-GUI",
         "Offline-Test"
-      ]
+      ],
+      "dsgvo_note": "Lokale App – Modelle laufen vollständig offline auf deinem Gerät. DSGVO-unkritisch."
     },
     {
       "id": "open-webui",
@@ -2967,7 +3065,8 @@
       "use_cases": [
         "Self-Hosted-Chat",
         "Team-Local-AI"
-      ]
+      ],
+      "dsgvo_note": "Self-Hosting/Open-Source – DSGVO-konform betreibbar, da Daten lokal bleiben."
     },
     {
       "id": "lovable-translate-deepl",
@@ -2993,7 +3092,8 @@
       "use_cases": [
         "Software-Localization",
         "i18n"
-      ]
+      ],
+      "dsgvo_note": "EU-Anbieter (Lingo.dev) – nutzt EU-Übersetzungsmodelle; AVV verfügbar."
     },
     {
       "id": "browserbase",
@@ -3018,7 +3118,8 @@
       ],
       "use_cases": [
         "Agent-Browser-Steuerung"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "browse-ai",
@@ -3045,7 +3146,8 @@
       "use_cases": [
         "Scraping",
         "Monitoring"
-      ]
+      ],
+      "dsgvo_note": "Anbieter aus Kanada (Angemessenheitsbeschluss) – AVV prüfen; beim Scraping fremder Seiten Rechtslage beachten."
     },
     {
       "id": "apify",
@@ -3071,7 +3173,8 @@
       "use_cases": [
         "Web-Scraping",
         "Data-Pipelines"
-      ]
+      ],
+      "dsgvo_note": "EU-Anbieter (Tschechien) – EU-Hosting/AVV; beim Scraping Urheber-/Datenschutzrecht der Quellen beachten."
     },
     {
       "id": "bardeen",
@@ -3098,7 +3201,8 @@
       "use_cases": [
         "Browser-Workflows",
         "Knowledge-Work-Automation"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "clay",
@@ -3128,7 +3232,8 @@
       "use_cases": [
         "Lead-Enrichment",
         "Sales-Intelligence"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – verarbeitet Kontakt-/Personendaten: AVV zwingend, Rechtsgrundlage fürs Anreichern prüfen."
     },
     {
       "id": "apollo",
@@ -3155,7 +3260,8 @@
       "use_cases": [
         "B2B-Datenbank",
         "Outreach"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – B2B-Kontaktdaten: AVV nötig, Rechtsgrundlage (berechtigtes Interesse) und Werbe-Einwilligung beachten."
     },
     {
       "id": "lusha",
@@ -3181,7 +3287,8 @@
       ],
       "use_cases": [
         "Contact-Data"
-      ]
+      ],
+      "dsgvo_note": "Anbieter aus Israel – Kontaktdaten-Anreicherung: AVV nötig, DSGVO-Rechtsgrundlage kritisch prüfen."
     },
     {
       "id": "intercom-fin",
@@ -3206,7 +3313,8 @@
       ],
       "use_cases": [
         "Support-Automation"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV verfügbar; EU-Datenhosting konfigurierbar, für Support-Chats mit Personendaten prüfen."
     },
     {
       "id": "zendesk-ai",
@@ -3231,7 +3339,8 @@
       ],
       "use_cases": [
         "Helpdesk-AI"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV verfügbar; EU-Datenresidenz buchbar."
     },
     {
       "id": "aider",
@@ -3258,7 +3367,8 @@
       "use_cases": [
         "Terminal-Coding",
         "Open-Source-Agent"
-      ]
+      ],
+      "dsgvo_note": "Open-Source-CLI (läuft lokal) – DSGVO hängt vom angebundenen Modell/Provider ab."
     },
     {
       "id": "cline",
@@ -3285,7 +3395,8 @@
       "use_cases": [
         "VSCode-Agent",
         "Coding"
-      ]
+      ],
+      "dsgvo_note": "Open-Source-Extension (läuft lokal) – DSGVO hängt vom angebundenen Modell/Provider ab."
     },
     {
       "id": "tabnine",
@@ -3306,13 +3417,14 @@
       "ausgaben_mentions": [],
       "url": "https://tabnine.com",
       "alternatives": [
-        "copilot",
+        "github-copilot",
         "cursor"
       ],
       "use_cases": [
         "Privacy-First-Coding",
         "Enterprise-Self-Host"
-      ]
+      ],
+      "dsgvo_note": "Anbieter mit On-Prem-/Self-Hosting-Option – kann komplett lokal laufen, dann DSGVO-konform."
     },
     {
       "id": "cody",
@@ -3334,12 +3446,13 @@
       "url": "https://sourcegraph.com/cody",
       "alternatives": [
         "cursor",
-        "copilot"
+        "github-copilot"
       ],
       "use_cases": [
         "Enterprise-Codebase",
         "Code-Search"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "warp",
@@ -3365,7 +3478,8 @@
       ],
       "use_cases": [
         "AI-Terminal"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "codex",
@@ -3395,7 +3509,8 @@
       ],
       "use_cases": [
         "Cloud-Coding-Agent"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter (OpenAI) – AVV über Enterprise; kein sensibler Code/Daten ohne Zero-Retention."
     },
     {
       "id": "pipedream",
@@ -3421,7 +3536,8 @@
       ],
       "use_cases": [
         "Code-Hybrid-Workflows"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "windmill",
@@ -3448,7 +3564,8 @@
       "use_cases": [
         "Self-Hosted-Automation",
         "EU-Compliance"
-      ]
+      ],
+      "dsgvo_note": "EU-Anbieter (Frankreich) – self-hostbar; Open-Source, DSGVO-konform betreibbar."
     },
     {
       "id": "supabase",
@@ -3476,7 +3593,8 @@
         "Backend",
         "Vector-Search",
         "EU-Hosting"
-      ]
+      ],
+      "dsgvo_note": "Anbieter mit EU-Region (Frankfurt wählbar) – AVV verfügbar; self-hostbar (Open-Source)."
     },
     {
       "id": "vercel-ai",
@@ -3502,7 +3620,8 @@
       "use_cases": [
         "TypeScript-AI",
         "Next.js-Integration"
-      ]
+      ],
+      "dsgvo_note": "Open-Source-SDK (läuft in deiner Infra) – DSGVO hängt vom angebundenen Modell-Provider ab."
     },
     {
       "id": "modal",
@@ -3528,7 +3647,8 @@
       "use_cases": [
         "Serverless-GPU",
         "Custom-Model-Hosting"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "linear",
@@ -3554,7 +3674,8 @@
       "use_cases": [
         "Issue-Tracking",
         "Project-Management"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV verfügbar; Projektdaten in USA, für Personendaten prüfen."
     },
     {
       "id": "humata",
@@ -3580,7 +3701,8 @@
       ],
       "use_cases": [
         "PDF-Research"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "consensus",
@@ -3605,7 +3727,8 @@
       ],
       "use_cases": [
         "Wissenschafts-Recherche"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "elicit",
@@ -3631,7 +3754,8 @@
       "use_cases": [
         "Literatur-Recherche",
         "Meta-Analyse"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "scite",
@@ -3657,7 +3781,8 @@
       "use_cases": [
         "Citation-Check",
         "Wissenschafts-Validierung"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "tactiq",
@@ -3683,7 +3808,8 @@
       ],
       "use_cases": [
         "Meeting-AI-Budget"
-      ]
+      ],
+      "dsgvo_note": "Anbieter aus Australien – AVV verfügbar; bei Meeting-Transkripten Einwilligung der Teilnehmer nötig."
     },
     {
       "id": "supahub",
@@ -3708,7 +3834,8 @@
       ],
       "use_cases": [
         "Podcast-Repurposing"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "pictory",
@@ -3733,7 +3860,8 @@
       ],
       "use_cases": [
         "Blog-to-Video"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "lumen5",
@@ -3758,7 +3886,8 @@
       ],
       "use_cases": [
         "Social-Video"
-      ]
+      ],
+      "dsgvo_note": "Anbieter aus Kanada (Angemessenheitsbeschluss) – AVV prüfen."
     },
     {
       "id": "wisper-flow",
@@ -3784,7 +3913,8 @@
       ],
       "use_cases": [
         "Voice-Diktat"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – lokales Diktat, aber Audio zur Transkription an die Cloud; AVV prüfen, keine sensiblen Inhalte."
     },
     {
       "id": "raycast-ai",
@@ -3810,7 +3940,8 @@
       "use_cases": [
         "OS-Wide-AI",
         "Quick-Prompts"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV verfügbar; KI-Anfragen laufen über Cloud-Modelle, Datenfluss prüfen."
     },
     {
       "id": "arc",
@@ -3835,7 +3966,8 @@
       ],
       "use_cases": [
         "AI-Browser-Mobile"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter (The Browser Company) – Standard-Browser-Datenschutz; AVV für KI-Funktionen prüfen."
     },
     {
       "id": "dia",
@@ -3861,7 +3993,8 @@
       ],
       "use_cases": [
         "AI-Browser"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter (The Browser Company) – KI-Browser sendet Seiteninhalte an Cloud-Modelle; sensible Inhalte vermeiden."
     },
     {
       "id": "snowball",
@@ -3887,7 +4020,8 @@
       ],
       "use_cases": [
         "Enterprise-Competitive-Intel"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "crayon",
@@ -3908,11 +4042,12 @@
       "ausgaben_mentions": [],
       "url": "https://crayon.co",
       "alternatives": [
-        "klue"
+        "snowball"
       ],
       "use_cases": [
         "Competitive-Tracking"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "glean",
@@ -3933,11 +4068,15 @@
       "aban_note": "Enterprise-Search über alle SaaS-Tools. Für Teams > 50 Personen Killer. Solo-Setup: overkill.",
       "ausgaben_mentions": [],
       "url": "https://glean.com",
-      "alternatives": [],
+      "alternatives": [
+        "notion-ai",
+        "perplexity"
+      ],
       "use_cases": [
         "Enterprise-Search",
         "Work-AI"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – Enterprise-Search indexiert interne Daten: AVV zwingend, EU-Datenresidenz im Enterprise-Plan prüfen."
     },
     {
       "id": "anthropic-mcp",
@@ -3959,11 +4098,15 @@
         "024"
       ],
       "url": "https://modelcontextprotocol.io",
-      "alternatives": [],
+      "alternatives": [
+        "langchain",
+        "vercel-ai"
+      ],
       "use_cases": [
         "Agent-Tools",
         "Integrations"
-      ]
+      ],
+      "dsgvo_note": "Offener Standard (kein Dienst) – DSGVO hängt von den per MCP angebundenen Servern/Diensten ab."
     },
     {
       "id": "ollama-cloud",
@@ -3990,7 +4133,8 @@
       "use_cases": [
         "Sandbox-Code",
         "Agent-Execution"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter – AVV abschließen, EU-Region/Datenverarbeitung prüfen."
     },
     {
       "id": "e2b",
@@ -4017,7 +4161,8 @@
       "use_cases": [
         "Agent-Sandbox",
         "EU-Compliance"
-      ]
+      ],
+      "dsgvo_note": "EU-Anbieter (Tschechien) – Open-Source-Sandbox, self-hostbar; Cloud mit AVV."
     },
     {
       "id": "langfuse",
@@ -4046,7 +4191,8 @@
         "LLM-Observability",
         "Prompt-Mgmt",
         "DACH-Compliance"
-      ]
+      ],
+      "dsgvo_note": "DE-Anbieter (Berlin) – self-hostbar; EU-Cloud-Region. Gute DSGVO-Wahl fürs LLM-Tracing."
     },
     {
       "id": "langsmith",
@@ -4072,7 +4218,8 @@
       ],
       "use_cases": [
         "LangChain-Tracing"
-      ]
+      ],
+      "dsgvo_note": "US-Anbieter (LangChain) – AVV verfügbar; EU-Datenresidenz buchbar. Self-Hosting als Alternative."
     },
     {
       "id": "browser-use",
@@ -4099,7 +4246,8 @@
       "use_cases": [
         "Browser-Agent",
         "Open-Source-Automation"
-      ]
+      ],
+      "dsgvo_note": "Open-Source (läuft lokal) – DSGVO hängt vom angebundenen Modell/Provider ab."
     },
     {
       "id": "bexio",
@@ -4327,6 +4475,258 @@
         "DSGVO-Tracking"
       ],
       "dsgvo_note": "EU-Hosting (DE), cookielos, DSGVO-konform."
+    },
+    {
+      "id": "notebooklm",
+      "name": "NotebookLM",
+      "vendor": "Google",
+      "category": [
+        "Research",
+        "Notes"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Kostenlos / in Google One AI"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 8,
+      "aban_note": "Du lädst deine Quellen rein (PDFs, Webseiten), und es antwortet nur daraus – mit Zitaten. Stark fürs Einarbeiten in Themen ohne Halluzinationen. Die Audio-Übersichten sind nett, aber Spielerei.",
+      "ausgaben_mentions": [],
+      "url": "https://notebooklm.google.com",
+      "alternatives": [
+        "humata",
+        "perplexity",
+        "claude"
+      ],
+      "use_cases": [
+        "Quellen-Recherche",
+        "PDF-Analyse",
+        "Wissens-Synthese",
+        "Einarbeitung"
+      ],
+      "dsgvo_note": "US-Anbieter (Google) – AVV über Workspace; Free-Version nicht für Mandanten-/Personendaten."
+    },
+    {
+      "id": "firecrawl",
+      "name": "Firecrawl",
+      "vendor": "Firecrawl (Mendable)",
+      "category": [
+        "Scraping",
+        "API"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 16,
+        "currency": "EUR",
+        "model": "Subscription + Credits"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 8,
+      "aban_note": "Macht aus Webseiten sauberes Markdown für LLMs – inklusive JS-gerenderter Seiten. Spart dir den eigenen Scraper. Für RAG und Agent-Pipelines mein Default.",
+      "ausgaben_mentions": [],
+      "url": "https://firecrawl.dev",
+      "alternatives": [
+        "apify",
+        "tavily",
+        "exa"
+      ],
+      "use_cases": [
+        "Web-zu-Markdown",
+        "RAG-Datenquelle",
+        "Crawling",
+        "Agent-Input"
+      ],
+      "dsgvo_note": "US-Anbieter – self-hostbar (Open-Source-Kern); beim Scraping Urheber-/Datenschutzrecht der Quellen beachten."
+    },
+    {
+      "id": "opus-clip",
+      "name": "Opus Clip",
+      "vendor": "OpusClip",
+      "category": [
+        "Video-Gen",
+        "Marketing-AI"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 15,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "aban_note": "Schneidet lange Videos automatisch in Shorts mit Untertiteln. Deutsche Untertitel sind okay, brauchen aber Nachkontrolle. Spart Zeit, ersetzt keinen Editor.",
+      "ausgaben_mentions": [],
+      "url": "https://opus.pro",
+      "alternatives": [
+        "descript",
+        "veed",
+        "capcut"
+      ],
+      "use_cases": [
+        "Shorts-Erstellung",
+        "Video-Repurposing",
+        "Auto-Untertitel",
+        "Clip-Auswahl"
+      ],
+      "dsgvo_note": "US-Anbieter – AVV verfügbar; bei Videos mit erkennbaren Personen Einwilligung beachten."
+    },
+    {
+      "id": "napkin",
+      "name": "Napkin AI",
+      "vendor": "Napkin",
+      "category": [
+        "Design",
+        "Slides"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7,
+      "aban_note": "Macht aus Text automatisch Diagramme und Visuals. Gut für schnelle Erklär-Grafiken in Posts und Decks. Nicht jedes Ergebnis sitzt, aber als Startpunkt brauchbar.",
+      "ausgaben_mentions": [],
+      "url": "https://napkin.ai",
+      "alternatives": [
+        "canva",
+        "gamma",
+        "figma"
+      ],
+      "use_cases": [
+        "Text-zu-Diagramm",
+        "Visuals für Posts",
+        "Erklär-Grafiken",
+        "Slide-Visuals"
+      ],
+      "dsgvo_note": "US-Anbieter – AVV prüfen; für unkritische Marketing-Visuals unbedenklich."
+    },
+    {
+      "id": "beehiiv",
+      "name": "beehiiv",
+      "vendor": "beehiiv",
+      "category": [
+        "Marketing-AI",
+        "Writing"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 39,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "aban_note": "Newsletter-Plattform mit Wachstums-Tools und KI-Schreibhilfe. Solide für den Aufbau, aber US-lastig bei Recht und Zahlungen. Für DACH-DSGVO genau hinschauen.",
+      "ausgaben_mentions": [],
+      "url": "https://beehiiv.com",
+      "alternatives": [
+        "loops",
+        "resend"
+      ],
+      "use_cases": [
+        "Newsletter-Versand",
+        "Audience-Aufbau",
+        "Monetarisierung",
+        "KI-Schreibhilfe"
+      ],
+      "dsgvo_note": "US-Anbieter – AVV verfügbar; Empfängerdaten in USA, für DACH-Newsletter Datenstandort/Double-Opt-in prüfen."
+    },
+    {
+      "id": "vimcal",
+      "name": "Vimcal",
+      "vendor": "Vimcal",
+      "category": [
+        "Productivity",
+        "Scheduling"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 12,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Schneller Kalender mit KI-Terminplanung und Buchungslinks. Tastatur-Bedienung ist top. Lohnt sich nur, wenn du viele Termine jonglierst.",
+      "ausgaben_mentions": [],
+      "url": "https://vimcal.com",
+      "alternatives": [
+        "cal-com"
+      ],
+      "use_cases": [
+        "Kalender-Management",
+        "Terminbuchung",
+        "Zeitzonen-Planung"
+      ],
+      "dsgvo_note": "US-Anbieter – greift auf Kalenderdaten zu; AVV prüfen, Cal.com (EU/self-host) als DSGVO-Alternative."
+    },
+    {
+      "id": "readwise-reader",
+      "name": "Readwise Reader",
+      "vendor": "Readwise",
+      "category": [
+        "Research",
+        "Notes",
+        "Productivity"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 8,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.5,
+      "aban_note": "Read-it-later mit KI-Zusammenfassungen und Highlight-Export. Bringt deine Artikel, PDFs und Newsletter an einen Ort. Für Vielleser ein gutes Werkzeug, sonst Overkill.",
+      "ausgaben_mentions": [],
+      "url": "https://readwise.io/read",
+      "alternatives": [
+        "obsidian",
+        "mem"
+      ],
+      "use_cases": [
+        "Read-it-later",
+        "Highlight-Verwaltung",
+        "Artikel-Zusammenfassung",
+        "Wissens-Export"
+      ],
+      "dsgvo_note": "US-Anbieter – AVV prüfen; gespeicherte Inhalte/Highlights in USA."
+    },
+    {
+      "id": "kontist",
+      "name": "Kontist",
+      "vendor": "Kontist (DE)",
+      "category": [
+        "Finance",
+        "Buchhaltung",
+        "DACH"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 9,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 8,
+      "worth_it_score": 7,
+      "aban_note": "Geschäftskonto plus Buchhaltung und Steuer-Schätzung für Solo-Selbstständige in Deutschland. Praktisch, weil alles zusammenläuft. Steuerservice kostet extra und bindet dich.",
+      "ausgaben_mentions": [],
+      "url": "https://kontist.com",
+      "alternatives": [
+        "sevdesk",
+        "bexio"
+      ],
+      "use_cases": [
+        "Geschäftskonto",
+        "Steuer-Rücklage",
+        "Buchhaltung",
+        "Rechnungen"
+      ],
+      "dsgvo_note": "DE-Anbieter – Hosting in Deutschland, DSGVO-konform; reguliertes Finanzprodukt (deutscher Markt)."
     }
   ]
 }
