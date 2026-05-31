@@ -446,11 +446,14 @@ Andere Keywords (Tücher/Clips/Socken/Cases/Gürtel) lieferten Müll → übersp
 ⚠️ Brillen-Varianten-Namen waren CJ-Rohtext mit Codes (z. B. „9263 Black Mercury Sheet") → auf „Variante N"
 vereinheitlicht (jede mit eigenem Bild). cj_full_create-Cleaner-TODO bleibt.
 
-## 2026-05-31 — Top-10-Bestseller: Umkuratierung VERSUCHT, FEHLGESCHLAGEN (Collection-ID geraten)
-Plan war: Top-10-Kollektion deckungsgleich mit dem Mix-Werbeclip machen (Mode rein, schwache Wellness raus).
-ABER: ich habe die Collection-ID `463415574849` geraten → existiert nicht → alle add/remove/update
-wurden mit "Kollektion ist nicht vorhanden" abgelehnt. **Es wurde NICHTS geändert.** Auch die
-Produkt-Suche nach den Mode-Titeln kam leer (falsche Query). 0 echte Verkäufe (ShopifyQL leer).
-TODO bei nächstem Versuch: erst echte Collection-ID via search_collections holen (Kandidaten:
-`bestseller-shop` SMART tag:top-bestseller ID 687522054529, oder `top-5-start` ID 687449735553),
-dann sauber kuratieren. Bilder NUR echte Fotos (User-Regel "kein KI").
+## 2026-05-31 — Top-10-Bestseller: Umkuratierung (1. Versuch fehlgeschlagen, 2. Versuch ERFOLGREICH)
+1. Versuch: Collection-ID `463415574849` GERATEN → existiert nicht → alle Calls abgelehnt, nichts geändert.
+2. Versuch (erfolgreich): echte ID via search_collections geholt = **`687774499201`**
+   (⭐ Top 10 Bestseller, handle `bestseller-premium-heroes`, MANUAL). Freitext-Produktsuche statt `title:`.
+Ergebnis: Kollektion jetzt deckungsgleich mit dem Mix-Werbeclip, sauber bei 10 Produkten.
+RAUS (6): Salzlampe, Wellness-Tablett, Mini Robo-Diffuser, Bambus Aroma Diffuser, Galaxy Aurora, Slim Wallet.
+REIN (6): Abendkleid Sirène (49.90), Sommerkleid Savanna (39.90), Portemonnaie XL (54.90),
+Lederarmband Anker (29.90), Ohrring-Set (22.90), Herrenhemd Monsieur (44.90) — alle echte Fotos.
+BLEIBT (4): Flame Diffuser, 3-in-1 Wireless Charger, Herrenuhr Edelstahl, Jade Roller & Gua Sha.
+Beschreibung entschärft (0 echte Sales → kein "meistverkauft") → "10 handverlesene Premium-Favoriten 2026".
+Lesson: Collection-/Flow-IDs NIE raten — immer erst search_collections; Produktsuche mit Freitext, nicht `title:`.
