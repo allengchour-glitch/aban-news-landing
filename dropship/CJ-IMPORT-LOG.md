@@ -2,9 +2,9 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **62 Produkte LIVE** + 6 Hero-Produkte mit Premium-Copy.
-> Alle 7 Mode-Artikel + neues 2-teiliges Sommer-Set haben echte Grössen×Farben-Varianten mit
-> CJ-SKUs; das Sommer-Set zusätzlich mit **Farbbild-Zuordnung** (Farbwechsel = passendes Bild).
+> Stand: 2026-05-31 — **65 Produkte LIVE** + 6 Hero-Produkte mit Premium-Copy.
+> Alle Mode-Artikel haben echte Grössen×Farben-Varianten mit CJ-SKUs **und Farbbild-Zuordnung**
+> (Farbwechsel = passendes Produktbild); alle 5 mehrfarbigen Bestandsartikel wurden nachgerüstet.
 > Charge 25–26: +7 Sommer-Mode (Kleid, Strand-Rock, Herren-Polo, Bikini, Leinenhose, Badeset,
 > Neckholder-Kleid) mit Grössen-Hinweis; Bademode zusätzlich Hygiene-Rückgabe-Hinweis. Kleidung
 > füllt sich deutlich besser als Gadgets (8 Keeper/10 Keywords). Varianten-Chaos-Treffer (Boho 72,
@@ -249,3 +249,18 @@ als dauerhaftes Environment-Secret hinterlegen, damit er in jeder Web-Session ve
   (`swimming goggles`, `sun umbrella`) liefern off-theme → enger fassen.
 - **Markenaufdrucke** (Disney/Marvel etc.) und **Kindersicherheits-Artikel** vor Listung prüfen.
 - EU-Lager (`countryCode=DE`) bringt für virale Sommerware kaum Treffer → China-Lager nutzen.
+
+## Charge 27 (2026-05-31) — +3 Mode mit Farbbildern → 65 LIVE 🎯
+Alle drei **mit echten Grössen×Farben-Varianten UND Farbbild-Zuordnung** (productSet, ein Call):
+- **Strand-Cardigan «Riviera»** (`CJNT291604301AZ`, ID 15412830634369) — 8 Farben × 3 (S–L) = 24 Var,
+  8 Farbbilder, 24.90 CHF. Tags inkl. `sommer-2026`.
+- **Relaxed-Fit Hoodie «Cosy»** (`CJWY291518101AZ`, ID 15412830896513) — 6 Farben × 8 (S–5XL) = 48 Var,
+  6 Farbbilder, 39.90 CHF. (Ganzjahres-Piece, ohne `sommer`-Tag.)
+- **Spitzen-Trägertop «Lacey»** (`CJCS291604801AZ`, ID 15412831256961) — 6 Farben × 5 (S–2XL) = 30 Var,
+  6 Farbbilder, 16.90 CHF. Tags inkl. `sommer-2026`.
+
+Alle 3 zu 7 Kanälen publiziert (Onlineshop, POS, Shop, TikTok, Facebook&Instagram, Google&YouTube, Pinterest).
+Bilder vorab alle HTTP-200 verifiziert (20/20). Übersprungen: *Cotton Linen Trousers* (`CJXX291602801AZ`,
+Duplikat zur bestehenden Leinenhose) und *Bohemian Resort-Set* (72 Var. → Varianten-Chaos).
+Neues Tool: `dropship/cj_variants_new.mjs` — legt aus CJ-Matrix direkt ein neues Produkt via productSet an
+(Optionen Farbe×Grösse + Produkt-Files + per-Variante Farbbild + dt. Copy). Ergänzt `cj_variants.mjs`/`_retro.mjs`.
