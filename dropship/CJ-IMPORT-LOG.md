@@ -2,7 +2,7 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **54 Produkte LIVE** (Richtung 60; Ausbeute wird dünn).
+> Stand: 2026-05-31 — **51 Produkte LIVE** (bereinigt) + Hero-Fokus auf 3 Bestseller.
 
 Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in **6 Kanälen** (Onlineshop, Shop,
 TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar untracked
@@ -155,6 +155,23 @@ Krallenschleifer (`CJYD290440801AZ`) · Smart-Anzuchtset (`CJYD290941001AZ`) ·
 Charge 21 = 0 Keeper (alles Duplikate/Möbel/Schmuck). **Ausbeute jetzt ~1–2/Charge** — die
 guten Sommer/Alltags/Küche/Beauty-Kategorien sind weitgehend abgegrast. Künftig: Nischen wie
 Werkzeug, Auto, Camping, Garten, Baby/Kids (vorsichtig), Hobby anpeilen.
+
+## Aufräum-Runde + Hero-Fokus (2026-05-31)
+**Bereinigt (54 → 51 echte, eindeutige Live-Produkte):**
+- 2 echte Duplikate gelöscht (Krallenschleifer `CJYD290440801AZ`, Anzuchtset `CJYD290941001AZ`
+  waren je 2× angelegt).
+- ⚠️ **SUP-Board „autopilot-sup-320" auf DRAFT genommen** — Fantasie-SKU (NICHT CJ-erfüllbar!),
+  399 CHF, nur 1 Bild, Platzhalter-Copy. Stammte aus einem Autopilot/Test-Lauf und war fälschlich
+  ACTIVE. **Ein nicht-erfüllbares Produkt darf nie verkäuflich sein.** Tag
+  `autopilot-fake-sku-nicht-erfuellbar` gesetzt → entweder löschen oder durch echtes CJ-SUP ersetzen.
+
+**3 Hero-Produkte ausgebaut** (Premium-Verkaufs-Copy: Hook · Benefits · Lieferumfang · Trust-Box
+· Mini-FAQ · SEO-Title/Description · Tags `hero`+`bestseller`):
+- Home-Projektor HY300 (99.90) · Elektrische Wasserpistole XL (59.90) · Rugged Smartwatch X5 (79.90)
+
+**Neue Smart-Collection „⭐ Bestseller"** (`/collections/bestseller`, Regel Tag=`bestseller`,
+sortiert nach Best-Selling, publiziert) → bündelt die Heroes prominent. Weitere Top-Produkte
+einfach mit Tag `bestseller` versehen, dann erscheinen sie automatisch.
 
 ### Hinweis zur Methode
 Jedes Produkt: Keyword-Suche → Relevanzfilter → Bild-URLs per HTTP-200 verifiziert → angelegt →

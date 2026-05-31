@@ -172,6 +172,16 @@ schlecht getextetes/kaputtes Produkt live. → **Claude-Routine pro Session:**
 `products(query:"tag:autopilot-needs-copy")` holen, je Draft Copy schreiben, ACTIVE+publish,
 Tag `autopilot-needs-copy` entfernen, Log updaten, commit/push.
 
+## 6c. Hero-Strategie (Qualität vor Menge)
+Mehr Produkte ≠ mehr Umsatz. Ab ~50 Produkten lohnt sich Hero-Ausbau mehr als Breite:
+- **3–5 Hero-Produkte** mit voller Verkaufs-Copy (Hook · Benefits · Lieferumfang · Trust-Box
+  🇨🇭/Zahlung/Versand/Rückgabe · Mini-FAQ), SEO-Title+Description, Tags `hero`+`bestseller`.
+- Smart-Collection **„⭐ Bestseller"** (`/collections/bestseller`, Regel Tag=`bestseller`) bündelt sie.
+- Aktuelle Heroes: Home-Projektor HY300, Elektro-Wasserpistole XL, Rugged Smartwatch X5.
+- **⚠️ Fake-SKU-Falle:** Autopilot/Tests können Produkte mit erfundener SKU (z.B. `autopilot-sup-320`)
+  erzeugen → NICHT erfüllbar. Regelmässig prüfen: `products(query:"tag:cj-real")` auf SKUs, die
+  nicht mit `CJ`/`CJ-` beginnen → auf DRAFT setzen oder löschen. Echte CJ-SKU = Pflicht zum Live-Schalten.
+
 ## 7. Bekannte Eigenheiten der Umgebung
 - **Scheduler-Tools (`CronCreate`/`ScheduleWakeup`) sind NICHT aktiviert** → ein echter,
   selbstlaufender Cron-Loop über Stunden ist hier nicht möglich. Autonomie heißt: in der
