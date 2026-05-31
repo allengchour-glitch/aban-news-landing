@@ -206,7 +206,7 @@ def _wrap(d, t, f, maxw):
     return out
 
 
-def build_cover(front_art, pages, out_pdf, titel, autor):
+def build_cover(front_art, pages, out_pdf, titel, autor, klappentext=None, klappen_headline=None):
     DPI = 300
     bleed = 0.125
     tw, th = 5.0, 8.0
@@ -247,12 +247,13 @@ def build_cover(front_art, pages, out_pdf, titel, autor):
     # Logline oben
     lf = _font(46, "italic")
     y = int(0.9 * DPI)
-    for ln in _wrap(d, "Über drei Generationen. Eine verschwiegene Schuld. Ein Tal, das nicht redet.", lf, bw):
+    headline = klappen_headline or "Über drei Generationen. Eine verschwiegene Schuld. Ein Tal, das nicht redet."
+    for ln in _wrap(d, headline, lf, bw):
         d.text((bx0, y), ln, font=lf, fill=(217, 119, 6))
         y += 58
     y += 30
     bf = _font(40, "regular")
-    for para in KLAPPENTEXT.split("\n\n"):
+    for para in (klappentext or KLAPPENTEXT).split("\n\n"):
         for ln in _wrap(d, para, bf, bw):
             d.text((bx0, y), ln, font=bf, fill=CREAM)
             y += 52
@@ -416,7 +417,9 @@ def main():
 
     front = os.path.join(args.cover_dir, "%s-gesamt.jpg" % slug)
     umschlag = os.path.join(args.out, "umschlag-5x8.pdf")
-    fw, fh, spine = build_cover(front, pages, umschlag, roman["titel"], autor)
+    fw, fh, spine = build_cover(front, pages, umschlag, roman["titel"], autor,
+                                klappentext=roman.get("klappentext"),
+                                klappen_headline=roman.get("klappen_headline"))
     print("OK Umschlag: %s (%.3f x %.3f Zoll, Ruecken %.3f Zoll)" % (umschlag, fw, fh, spine))
 
     meta = os.path.join(args.out, "metadaten.md")
