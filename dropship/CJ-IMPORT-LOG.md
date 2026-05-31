@@ -2,7 +2,7 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **10 Produkte live**.
+> Stand: 2026-05-31 — **25 Produkte live** (Ziel erreicht).
 
 Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in **6 Kanälen** (Onlineshop, Shop,
 TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar untracked
@@ -36,13 +36,29 @@ Preise FX-bereinigt (USD→CHF ≈ 0,88).
 - Panda Handyhalter (`CJJT291503001AZ`, 14.90) · Kulturbeutel XL (`CJSB291389501AZ`, 34.90) · Vintage Baseball-Cap (`CJBQ291456801AZ`, 19.90). Alle 6 Kanäle, Bilder READY.
 - Aussortiert: Sommer-Mules (Schuhe, 30 Grössen), Fishing-Rod-Rack ($85/20 kg).
 
-## Ziel 25 — 4 ausstehend (Charge 5)
-Validierte Kandidaten (Bild-Verifikation + Anlage in frischer Session via Loop, da Kontext gesättigt):
-- Edelstahl-Trinkflasche mit Strohhalm — `CJWT291418801AZ` ($5.84)
-- Aufblasbares U-Reisekissen ($3.20)
-- Hunde-Kauspielzeug Naturkautschuk ($1.95)
-- Isolierte Kühltasche XL Picknick/Strand ($6.20)
-Übersprungen (Redundanz): 2. Elektro-Wasserpistole, USB-Tischventilator (haben wir bereits ähnlich).
+## Charge 5 (2026-05-31) — +4 live → ZIEL 25 ERREICHT ✅
+| Produkt | VK CHF | CJ-Kost $ | SKU |
+|---|---|---|---|
+| Reise-Rucksack mit Kettengriff | 29.90 | 4.70 | `CJYD290481801AZ` |
+| Hunde-Snackball Intelligenzspielzeug | 39.90 | 13.60 | `CJCT291495601AZ` |
+| Mini-Sprühventilator Wasserkühlung | 24.90 | 5.31 | `CJJT291288301AZ` |
+| Regenschirm mit Handy-Halterung | 16.90 | 0.90 | `CJYD289701201AZ` |
+
+**Stand: 25 cj-real Produkte ACTIVE & live (6 Kanäle).** (+1 DRAFT „Shoe Rack".)
+
+Aussortiert in Charge 5: Glas-Hookah/Snuff-Bottle (Shisha/Tabak), Herren-Quarzuhr (off-theme),
+Disinfektions-Sprühpistole (off-theme), Vintage-Jeans (Kleidung, Grössen), 30-Zoll-Tower-Fan
+($54 EK / 2,5 kg, „prohibited on Amazon").
+
+### Korrektur (Loop-Doppelanlage)
+Der erste Charge-4-Lauf legte die 3 Produkte versehentlich **doppelt** an; die 3 Duplikate
+wurden per `productDelete` entfernt, die Originale publiziert.
+
+### ⚠️ Loop/Cron nicht verfügbar
+`CronCreate`/`ScheduleWakeup` sind in dieser Umgebung **nicht aktiviert** → ein automatischer
+30-Min-Loop liess sich nicht einrichten. Die 25 wurden stattdessen in dieser Session manuell
+fertiggestellt. Für künftiges autonomes Nachfüllen: `/loop` in einer Umgebung mit aktivierten
+Scheduler-Tools nutzen, oder Session erneut starten und Charge fortsetzen.
 
 ### Bei eingehender Bestellung
 Produkt in CJ über die **Fulfillment-SKU** (oben) bestellen → an Kundenadresse senden lassen.
