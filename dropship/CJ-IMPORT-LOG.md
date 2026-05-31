@@ -320,3 +320,16 @@ Manuelle Kollektion (`688005775745`, handle `✨-highlights-schmuck-mode`), 13 h
 (Éclat/Sakura-Ketten, Lumière-Studs, Fleur-Ring, Harmony-Armband, Perlen/Tennis/Smaragd + Provence-Set,
 Résille-Bluse, A-Linien-Kleid, Riviera-Cardigan, Lacey-Top), publiziert (Onlineshop, Shop, TikTok, Meta).
 → Tipp für User: im Theme-Customizer als Menüpunkt/Startseiten-Sektion einbinden für max. Sichtbarkeit.
+
+## Charge 31 (2026-05-31) — Kleider-Offensive (Mode = 2026-Thema)
+cj_search_niche.mjs verbessert: **global nach pid entduplizieren** (vorher pickte jede Dress-Suche
+denselben Top-Treffer). 8 Keywords → 14 eindeutige Kandidaten. 5 saubere, schöne Kleider angelegt
+(alle SKU-vorgeprüft, Farbbild-Zuordnung, ACTIVE, 7 Kanäle, Tags damen-mode/damen/kleid/sommer-2026):
+- **Sommerkleid «Savanna»** Western-Midi (`CJLY291596301AZ`, 15412916060545) — 6×5=30 Var, 39.90
+- **Blumen-Maxikleid «Fleurette»** Neckholder/Fishtail (`CJLY291609201AZ`, 15412918190465) — 9×5=45 Var, 34.90
+- **Polka-Dot «Daisy»** Deep-V (`CJLY291605901AZ`, 15412915470721) — 4×4=16 Var, 34.90
+- **Abendkleid «Sirène»** Mermaid/High-Slit (`CJLY291617301AZ`, 15412915110273) — 2×4=8 Var, 49.90
+- **Strand-Maxikleid «Bali»** Stufenkleid (`CJLY291608801AZ`, 15412915339649) — 3×4=12 Var, 34.90
+Savanna/Fleurette/Daisy/Sirène zusätzlich in ✨ Highlights aufgenommen.
+⚠️ Lektion: Bei manuellem productSet-Paste grosser Varianten-Listen → URL-Tippfehler (Leerzeichen)
+möglich; Mutation schlägt dann sauber fehl (nichts angelegt), einfach erneut sauber einreichen.

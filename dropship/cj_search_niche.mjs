@@ -11,18 +11,16 @@ const BASE='https://developers.cjdropshipping.com/api2.0/v1';
 const tok=JSON.parse(fs.readFileSync('/tmp/cj_token.json')).accessToken;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
-// cat = Shopify-Regel-Tag der Zielkategorie
+// cat = Shopify-Regel-Tag der Zielkategorie — KLEIDER-FOKUS 2026
 const KEYWORDS=[
-  // Schöner Schmuck (neue Keywords)
-  { kw:'opal pendant necklace silver', must:['pendant'], cat:'damen-schmuck', take:1 },
-  { kw:'butterfly necklace women',   must:['necklace'], cat:'damen-schmuck', take:1 },
-  { kw:'moissanite stud earrings',   must:['earring'],  cat:'damen-schmuck', take:1 },
-  { kw:'charm bracelet women',       must:['bracelet'], cat:'damen-schmuck', take:1 },
-  { kw:'vintage signet ring',        must:['ring'],     cat:'damen-schmuck', take:1 },
-  // Mode (neue Keywords)
-  { kw:'women satin slip dress',     must:['dress'],    cat:'damen-mode',    take:1 },
-  { kw:'women linen shirt oversized',must:['shirt'],    cat:'damen-mode',    take:1 },
-  { kw:'women knit vest sweater',    must:['vest'],     cat:'damen-mode',    take:1 },
+  { kw:'women floral midi dress',      must:['dress'], cat:'damen-mode', take:1 },
+  { kw:'women boho maxi dress',        must:['dress'], cat:'damen-mode', take:1 },
+  { kw:'women wrap dress elegant',     must:['dress'], cat:'damen-mode', take:1 },
+  { kw:'women bodycon party dress',    must:['dress'], cat:'damen-mode', take:1 },
+  { kw:'women knit sweater dress',     must:['dress'], cat:'damen-mode', take:1 },
+  { kw:'women off-shoulder dress',     must:['dress'], cat:'damen-mode', take:1 },
+  { kw:'women pleated chiffon dress',  must:['dress'], cat:'damen-mode', take:1 },
+  { kw:'women cottage linen dress',    must:['dress'], cat:'damen-mode', take:1 },
 ];
 
 const b=await chromium.launch({headless:true,args:['--ignore-certificate-errors','--no-sandbox']});
@@ -37,14 +35,21 @@ async function get(path,params={}){
   }
   throw new Error('rate limit '+path);
 }
-const out=[];
-for(const {kw,must,cat,take} of KEYWORDS){
+// 1) Listen sammeln + global nach pid entduplizieren (sonst pickt jede Suche denselben Top-Treffer)
+const cand=new Map();
+for(const {kw,must,cat} of KEYWORDS){
   process.stderr.write(`🔎 ${kw} → ${cat}\n`);
   const r=await get('/product/list',{pageNum:1,pageSize:40,productNameEn:kw});
   let list=(r.data?.list||[]).filter(p=>{const n=(p.productNameEn||'').toLowerCase();return must.every(w=>n.includes(w));});
-  list.sort((a,b)=>(Number(b.listedNum)||0)-(Number(a.listedNum)||0));
+  for(const p of list){ if(!cand.has(p.pid)) cand.set(p.pid,{...p,cat}); }
   await sleep(2400);
-  for(const p of list.slice(0,take)){
+}
+const uniq=[...cand.values()].sort((a,b)=>(Number(b.listedNum)||0)-(Number(a.listedNum)||0)).slice(0,14);
+process.stderr.write(`→ ${uniq.length} eindeutige Kandidaten\n`);
+const out=[];
+{
+  for(const p of uniq){
+    const cat=p.cat;
     const d=(await get('/product/query',{pid:p.pid})).data; await sleep(2400);
     if(!d) continue;
     const vs=d.variants||[]; const costs=vs.map(v=>Number(v.variantSellPrice)).filter(Boolean);
