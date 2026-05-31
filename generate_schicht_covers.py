@@ -269,7 +269,7 @@ def build_de():
 
 
 def build_en():
-    base = "schicht-en"
+    base = "the-seam"
     en_titles = {1: "Going Down", 2: "At the Face", 3: "Turning Away"}
     en_epoch = {1: "Voßlohe, 1905–1923", 2: "Voßlohe, 1929–1948", 3: "Voßlohe, 1962–1989"}
     for n in (1, 2, 3):
