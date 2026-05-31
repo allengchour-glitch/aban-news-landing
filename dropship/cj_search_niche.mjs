@@ -11,15 +11,15 @@ const BASE='https://developers.cjdropshipping.com/api2.0/v1';
 const tok=JSON.parse(fs.readFileSync('/tmp/cj_token.json')).accessToken;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
-// cat = Zielkategorie — Schmuck-Nachschub
+// cat = Zielkategorie — Uhren + Kleider
 const KEYWORDS=[
-  { kw:'womens bracelet stainless steel', must:['bracelet'], cat:'damen-schmuck', take:2 },
-  { kw:'hoop earrings gold stainless',    must:['earring'],  cat:'damen-schmuck', take:1 },
-  { kw:'adjustable ring women silver',    must:['ring'],     cat:'damen-schmuck', take:1 },
-  { kw:'pearl bracelet freshwater women', must:['bracelet'], cat:'damen-schmuck', take:1 },
-  { kw:'anklet women stainless steel',    must:['anklet'],   cat:'damen-schmuck', take:1 },
-  { kw:'mens bracelet leather steel',     must:['bracelet'], cat:'damen-schmuck', take:1 },
-  { kw:'mens watch chronograph steel',    must:['watch'],    cat:'herrenuhr',     take:1 },
+  { kw:'mens quartz watch waterproof steel', must:['watch'], cat:'herrenuhr',  take:2 },
+  { kw:'mens digital sport watch',           must:['watch'], cat:'herrenuhr',  take:1 },
+  { kw:'womens watch elegant bracelet',      must:['watch'], cat:'herrenuhr',  take:1 },
+  { kw:'women summer dress short sleeve',     must:['dress'], cat:'damen-mode', take:1 },
+  { kw:'women halter neck maxi dress',        must:['dress'], cat:'damen-mode', take:1 },
+  { kw:'women puff sleeve mini dress',        must:['dress'], cat:'damen-mode', take:1 },
+  { kw:'women linen dress with pockets',      must:['dress'], cat:'damen-mode', take:1 },
 ];
 
 const b=await chromium.launch({headless:true,args:['--ignore-certificate-errors','--no-sandbox']});

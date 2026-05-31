@@ -411,3 +411,11 @@ in premium-schmuck:
 - Ear-Cuffs «Papillon» (2 Stile, 16.90) · 999 Silber-Armband «Trèfle» Kleeblatt (69.90)
 ⚠️ cj_full_create-Cleaner verschluckt Grössen/Stile zu Müll-Namen (Ring „H294 Ancient -No 6") →
 beim Anlegen manuell zu Ringgrösse/Stil korrigiert. TODO: Cleaner erkennt „No <n>"/„Style <n>" als Grösse/Stil.
+
+## Charge 36 (2026-05-31) — Kleider (Katalog fast leer) + Conversion-Guidance
+Uhren/Kleider-Suche: fast alles schon im Bestand (Dedup) → nur 2 neu, beide Voll-Galerie, 7 Kanäle:
+- **T-Shirt-Kleid «Casa»** (`CJLY291642501AZ`, 15412969406849) — 5 Farben × 6 Grössen = 30 Var, 34.90
+- **Sommerkleid «Dos Nu»** Rücken-Cut-out (`CJLY291637001AZ`, 15412969144705) — 3×5=15 Var, 34.90
+**Fazit Katalog:** Schmuck/Uhren/Kleider in CJ jetzt weitgehend ausgeschöpft (Suchen liefern überwiegend Bestand).
+**Conversion (nur User-Klick möglich, Live-Theme API-gesperrt):** ✨ Highlights & 🔥 Bestsellers als
+Startseiten-Sektion im Customizer einbinden — Schritte dem User gegeben.
