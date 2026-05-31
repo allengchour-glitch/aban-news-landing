@@ -203,8 +203,8 @@ def word_at(tt):
 # ================= shot / camera system =================
 def shots():
     # fractions of DUR; type, base zoom; focus: body/head/hand
-    base=[(0.00,0.18,"wide",1.18,"body"),(0.18,0.34,"med",1.7,"chest"),(0.34,0.50,"cu",2.7,"head"),
-          (0.50,0.66,"med",1.8,"chest"),(0.66,0.82,"cu",2.7,"head"),(0.82,1.01,"wide",1.2,"body")]
+    base=[(0.00,0.18,"wide",1.18,"body"),(0.18,0.34,"med",1.6,"chest"),(0.34,0.50,"cu",2.3,"head"),
+          (0.50,0.66,"med",1.65,"chest"),(0.66,0.82,"cu",2.3,"head"),(0.82,1.01,"wide",1.2,"body")]
     return base
 SHOTS=shots()
 def cam_at(t, head, hand, prop):
@@ -214,17 +214,17 @@ def cam_at(t, head, hand, prop):
         if s[0]<=fr<s[1]: sh=s; break
     a,b,typ,zoom,foc=sh
     # prop insert override: cut to medium-close on the hand while prop active
-    if prop and TRIG is not None and TRIG<=t<=TRIG+2.6:
-        typ="insert"; zoom=2.1; foc="hand"
+    if prop and TRIG is not None and TRIG<=t<=TRIG+3.4:
+        typ="insert"; zoom=1.9; foc="hand"
     p=(fr-a)/max(1e-3,(b-a))
-    zoom=zoom*(1+0.05*sm(p))            # gentle push-in within shot
+    zoom=zoom*(1+0.04*sm(p))            # gentle push-in within shot
     if foc=="head": fx,fy=head
     elif foc=="hand": fx,fy=hand
     elif foc=="chest": fx,fy=head[0],head[1]+H*SS*0.10
     else: fx,fy=W*SS*0.42,H*SS*0.62
-    # handheld micro-shake
-    fx+=nz(t,7)*W*SS*0.006; fy+=nz(t,8)*H*SS*0.006
-    dof = {"cu":16,"insert":11,"med":5,"wide":0}.get(typ,0)
+    # handheld micro-shake (gentle)
+    fx+=nz(t,7)*W*SS*0.004; fy+=nz(t,8)*H*SS*0.004
+    dof = {"cu":9,"insert":6,"med":2,"wide":0}.get(typ,0)
     grade={"cu":(1.10,1.07,(255,238,210,18)),"insert":(1.12,1.05,(255,238,210,16)),
            "med":(1.14,1.06,(255,235,225,10)),"wide":(1.18,1.05,(180,200,255,14))}.get(typ,(1.15,1.05,None))
     return fx,fy,zoom,dof,grade,typ
@@ -234,9 +234,9 @@ def render_scene(t,fi):
     """full-res scene image (RGB) + char head/hand scene coords + prop info."""
     bg=Image.new("RGB",(W*SS,H*SS),(20,18,40)); d=ImageDraw.Draw(bg,"RGBA")
     draw_bg(d,t); draw_bg_extra(d,t)
-    prop=PNAME if (TRIG is not None and TRIG-0.25<=t<=TRIG+2.7) else None
+    prop=PNAME if (TRIG is not None and TRIG-0.3<=t<=TRIG+3.6) else None
     lit=None
-    if prop=="phone": lit=(127,208,255) if t<=TRIG+1.7 else (140,140,140)
+    if prop=="phone": lit=(127,208,255) if t<=TRIG+2.4 else (140,140,140)
     sac=1.0 if (math.sin(t*3.3)>0.93) else 0.0
     P=perform(t,DUR,ENV[fi],0.2*max(0,math.sin(t*1.1)),(t%3.1)>3.0,prop,sac)
     P["prop"]=prop; P["phone_lit"]=lit; P["mw"]=MW[fi]
@@ -259,9 +259,9 @@ def render_scene(t,fi):
     return bg,head,hand,prop
 
 def bloom(img):
-    arr=np.asarray(img).astype(np.float32); br=np.clip(arr-150,0,255)
-    bl=Image.fromarray(br.astype(np.uint8)).filter(ImageFilter.GaussianBlur(10*SS//3))
-    out=np.clip(arr+np.asarray(bl).astype(np.float32)*0.5,0,255).astype(np.uint8)
+    arr=np.asarray(img).astype(np.float32); br=np.clip(arr-175,0,255)
+    bl=Image.fromarray(br.astype(np.uint8)).filter(ImageFilter.GaussianBlur(8*SS//3))
+    out=np.clip(arr+np.asarray(bl).astype(np.float32)*0.3,0,255).astype(np.uint8)
     return Image.fromarray(out)
 
 def frame(fi):
@@ -273,8 +273,8 @@ def frame(fi):
         blurred=scene.filter(ImageFilter.GaussianBlur(dof*SS//3))
         # keep a sharp oval around the subject (focus)
         m=Image.new("L",scene.size,0); md=ImageDraw.Draw(m)
-        rr=W*SS*0.30 if typ=="cu" else W*SS*0.4
-        md.ellipse([head[0]-rr,head[1]-rr*1.2,head[0]+rr,head[1]+rr*1.2],fill=255); m=m.filter(ImageFilter.GaussianBlur(40*SS//3))
+        rr=W*SS*0.42 if typ=="cu" else W*SS*0.55
+        md.ellipse([head[0]-rr,head[1]-rr*1.25,head[0]+rr,head[1]+rr*1.3],fill=255); m=m.filter(ImageFilter.GaussianBlur(30*SS//3))
         scene=Image.composite(scene,blurred,m)
     # camera crop
     cw,ch=W*SS/zoom,H*SS/zoom
