@@ -22,16 +22,16 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
 const KEYWORDS = [
-  { kw: 'garlic press kitchen',     must: ['garlic'],    take: 1 },
-  { kw: 'spice jar set rack',       must: ['spice'],     take: 1 },
-  { kw: 'shoe storage organizer',   must: ['shoe'],      take: 1 },
-  { kw: 'makeup mirror led',        must: ['mirror'],    take: 1 },
-  { kw: 'pet nail grinder',         must: ['nail'],      take: 1 },
-  { kw: 'electric handheld fan',    must: ['fan'],       take: 1 },
-  { kw: 'jewelry storage box',      must: ['jewelry'],   take: 1 },
-  { kw: 'silicone oven mitt',       must: ['oven'],      take: 1 },
-  { kw: 'gua sha facial tool',      must: ['gua'],       take: 1 },
-  { kw: 'desk lamp clip',           must: ['lamp'],      take: 1 },
+  { kw: 'sunset projector lamp',    must: ['projector'], take: 1 },
+  { kw: 'electric scrubber brush',  must: ['scrubber'],  take: 1 },
+  { kw: 'magnetic screen door',     must: ['screen'],    take: 1 },
+  { kw: 'silicone stretch lids',    must: ['lids'],      take: 1 },
+  { kw: 'tablet stand holder',      must: ['stand'],     take: 1 },
+  { kw: 'electric mosquito killer', must: ['mosquito'],  take: 1 },
+  { kw: 'foldable drying rack',     must: ['drying'],    take: 1 },
+  { kw: 'self stirring mug',        must: ['mug'],       take: 1 },
+  { kw: 'shoe cleaning kit',        must: ['shoe'],      take: 1 },
+  { kw: 'led mirror compact',       must: ['compact'],   take: 1 },
 ];
 
 let _b, _ctx;

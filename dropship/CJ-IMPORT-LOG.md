@@ -2,7 +2,7 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **41 Produkte live** (Richtung 50 unterwegs).
+> Stand: 2026-05-31 — **44 Produkte live** (Richtung 50 unterwegs).
 
 Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in **6 Kanälen** (Onlineshop, Shop,
 TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar untracked
@@ -118,6 +118,18 @@ längere Lieferzeit, Zoll-/Einfuhrhinweis), Datenschutz, Cookie-Richtlinie, FAQ,
   noch die tote Domain `aban-192.myshopify.com` → auf `luxestyle.ch` ändern. Konnte nicht per API
   gefixt werden (Scope `write_legal_policies` fehlt dem MCP-Token). Admin → Einstellungen →
   Richtlinien → AGB.
+
+## Charge 15 (2026-05-31) — +3 live → 44
+- All-in-One Elektro-Kochtopf (`CJCJ291535201AZ`, 69.90) · Home-Projektor HY300 (`CJYD289971202BY`,
+  99.90, Hero-Kandidat) · Monitor-Lichtleiste m. Sensor (`CJYD291621501AZ`, 29.90).
+- **Lehre:** Beim Bündeln von Bild-URLs aus dem Terminal können sie **abgeschnitten** werden
+  (PROJ/SCR hatten je 2 FAILED-Medien) → immer volle URL aus /tmp/cj_enriched.json kopieren,
+  nach Anlage Media-Status prüfen, FAILED per productDeleteMedia + productCreateMedia ersetzen. ✔ behoben.
+
+## Zweitmeinung-Tool (Stand)
+`dropship/zweitmeinung.mjs` funktioniert; OpenAI-Keys vom User sind gültig, aber **ohne Guthaben**
+(„exceeded quota"). → Sobald OpenAI-Billing aktiv ODER ein GEMINI_API_KEY vorliegt, liefert
+`node dropship/zweitmeinung.mjs --autopilot` die externe Review.
 
 ### Hinweis zur Methode
 Jedes Produkt: Keyword-Suche → Relevanzfilter → Bild-URLs per HTTP-200 verifiziert → angelegt →
