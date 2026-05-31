@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing emails with AI — the practical guide | aban news</title>
+  <meta name="description" content="Write emails faster with AI without sounding like a robot: what it's worth, a copy template, before/after and where to be careful. No hype.">
+  <link rel="canonical" href="https://abannews.com/en/ki-email-schreiben.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/ki-email-schreiben.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-email-schreiben.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ki-email-schreiben.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/ki-email-schreiben.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-email-schreiben.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Writing emails with AI — the practical guide">
+  <meta property="og:description" content="Write faster, keep your voice, avoid the traps. With copy template and before/after.">
+  <meta property="og:url" content="https://abannews.com/en/ki-email-schreiben.html">
+  <meta property="og:type" content="article">
+  <style>
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;margin-left:1.2rem}
+    .lang a{padding:.3rem .55rem;color:var(--muted);text-decoration:none;margin:0}
+    .lang a.on{background:var(--ink);color:#fff}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:3rem 0 2rem;text-align:center}
+    h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:58ch;margin:0 auto 1.5rem}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    section{padding:1.2rem 0}
+    section h2{font-size:1.4rem;line-height:1.2;margin:1.4rem 0 .6rem}
+    section h3{font-size:1.1rem;margin:1.1rem 0 .35rem}
+    section p{margin-bottom:.8rem}
+    section ul{margin:0 0 .9rem 1.2rem}
+    section li{margin-bottom:.35rem}
+    .method{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.5rem;margin-bottom:1rem;box-shadow:var(--shadow)}
+    .method h3{margin-top:0;display:flex;align-items:center;gap:.5rem}
+    .method .num{background:var(--amber);color:#fff;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;flex-shrink:0}
+    .callout{background:var(--amber-lt);border-left:4px solid var(--amber);border-radius:8px;padding:.9rem 1.1rem;margin:1rem 0;font-weight:600}
+    .ba{display:grid;gap:.8rem;margin:1rem 0}
+    @media(min-width:560px){.ba{grid-template-columns:1fr 1fr}}
+    .ba div{border:1px solid var(--line);border-radius:12px;padding:1rem;background:#fff;font-size:.92rem}
+    .ba .w{border-color:#fca5a5;background:#fef2f2}
+    .ba .s{border-color:#86efac;background:#f0fdf4}
+    .ba .tag{display:block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem}
+    .ba .w .tag{color:#b91c1c}.ba .s .tag{color:#15803d}
+    .tmpl{background:#1f2937;color:#f9fafb;border-radius:12px;padding:1.1rem 1.2rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;line-height:1.6;white-space:pre-wrap;margin:1rem 0}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2rem 0}
+    .cta-box h2{font-size:1.3rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .btn--ghost{border:1px solid var(--amber);color:var(--amber-dk);background:#fff}
+    details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem;padding:0}
+    details[open]{border-color:#fed7aa}
+    summary{padding:1rem 1.1rem;font-weight:600;cursor:pointer;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";float:right;color:#a3a3a3;font-weight:300;font-size:1.3rem;line-height:1}
+    details[open] summary::after{content:"−"}
+    details .a{padding:0 1.1rem 1.1rem;color:var(--muted);font-size:.95rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:2rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Writing emails with AI — the practical guide","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"datePublished":"2026-05-31","dateModified":"2026-05-31","description":"Write emails faster with AI without sounding like a robot — with a copy template, before/after and the limits.","inLanguage":"en"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[
+    {"@type":"Question","name":"What is AI worth for writing emails?","acceptedAnswer":{"@type":"Answer","text":"For first drafts, shortening long messages, adjusting tone and replying to long threads. Not for delicate, relationship-critical or legally sensitive emails — those you write or check yourself."}},
+    {"@type":"Question","name":"How do I keep an AI email from sounding like a robot?","acceptedAnswer":{"@type":"Answer","text":"Give the AI a sample of your real emails as a style guide and say 'in this tone'. Cut clichés like 'I hope this email finds you well'. Short, concrete, one clear request — that sounds more human than any inflated politeness."}},
+    {"@type":"Question","name":"Should I let whole emails send automatically?","acceptedAnswer":{"@type":"Answer","text":"No. Let the AI prepare, but read and send yourself. An automatically sent email with a wrong detail or off tone costs more trust than the saved minute is worth."}},
+    {"@type":"Question","name":"Is it GDPR-compliant to put client emails into the AI?","acceptedAnswer":{"@type":"Answer","text":"Only with care. Don't put real names, addresses or contract details in unnecessarily; anonymise where you can and use a business plan with a data processing agreement. When in doubt, run the five data-protection questions."}}
+  ]}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/en/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/en/ebook.html">eBook</a>
+      <a href="/en/ki-email-schreiben.html"><strong>Email with AI</strong></a>
+      <a href="#subscribe" class="btn">Subscribe</a>
+      <span class="lang"><a href="/ki-email-schreiben.html">DE</a><a href="/en/ki-email-schreiben.html" class="on" aria-current="true">EN</a><a href="/fr/ki-email-schreiben.html">FR</a><a href="/it/ki-email-schreiben.html">IT</a></span>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Updated: May 2026 · no hype</span>
+      <h1>Writing emails with AI</h1>
+      <p class="lead">For most self-employed people, email is the biggest silent time sink. AI can save you real minutes here — if you use it as an accelerator and keep your voice, instead of sounding like a robot.</p>
+    </div>
+
+    <section>
+      <h2>What AI is actually worth for email</h2>
+      <p>Not every email belongs in the AI. The rule of thumb: routine and volume yes, relationship and risk no.</p>
+      <ul>
+        <li><strong>First drafts:</strong> fill the blank page so you edit instead of inventing.</li>
+        <li><strong>Shortening:</strong> turn three rambling paragraphs into two clear sentences.</li>
+        <li><strong>Adjusting tone:</strong> phrase the same content more factual, friendlier or firmer.</li>
+        <li><strong>Long threads:</strong> summarise an email chain and draft a reply suggestion.</li>
+      </ul>
+      <p>Hands off, though, for delicate, relationship-critical or legally sensitive emails — rejections, complaints, negotiations. Those you write or check yourself.</p>
+    </section>
+
+    <section>
+      <h2>Three steps to a usable email</h2>
+      <div class="method">
+        <h3><span class="num">1</span> State context and goal</h3>
+        <p>Say who's writing, to whom, and what the email should achieve. "Reply to a client who wants to move a delivery date — friendly, but with a clear new deadline" is concrete enough for a good result.</p>
+      </div>
+      <div class="method">
+        <h3><span class="num">2</span> Give your style as an example</h3>
+        <p>Attach a real earlier email and say "in this tone". That way the reply sounds like you and not like a standard bot. Without an example you get the polite average email everyone recognises.</p>
+      </div>
+      <div class="method">
+        <h3><span class="num">3</span> Shorten and sharpen</h3>
+        <p>The first version is usually too long and too polite. Say "half as long, one clear request, no cliché opener". Two corrections almost always do it.</p>
+      </div>
+      <div class="callout">Email rule: short, concrete, one clear request. That sounds more human than any inflated politeness — and saves everyone time.</div>
+    </section>
+
+    <section>
+      <h2>Before / after</h2>
+      <div class="ba">
+        <div class="w"><span class="tag">AI without a style guide</span>"Dear Sir or Madam, I hope this message finds you in the best of health. I wanted to enquire whether it might possibly be feasible to …"</div>
+        <div class="s"><span class="tag">With context + example</span>"Hi Ms Berger, quick question on the date: does Thursday 2pm work instead of Wednesday? If so, I'll send the invite right away. Best, …"</div>
+      </div>
+      <p>The AI wrote both. The difference is the briefing alone: context, a style example and the request to keep it short.</p>
+    </section>
+
+    <section>
+      <h2>Copy template for emails</h2>
+      <p>Paste it before your actual task, fill in the brackets:</p>
+      <div class="tmpl">Write an email from me [role] to [recipient].
+Goal of the email: [what it should achieve].
+Context: [what it's about, 1-2 sentences].
+Tone: friendly, factual — no cliché opener.
+Length: at most [e.g. 80] words, one clear request at the end.
+My style (this is how I sound): [short excerpt of a real email].</div>
+    </section>
+
+    <section>
+      <h2>Where to be careful</h2>
+      <p>Two things to check especially with email:</p>
+      <ul>
+        <li><strong>Data protection:</strong> don't put real names, addresses or contract details into the AI unnecessarily. Anonymise where you can. <a href="/en/ki-dsgvo-konform.html" style="color:var(--amber-dk);font-weight:600;">→ The 5 data-protection questions</a></li>
+        <li><strong>Made-up facts:</strong> if the AI states numbers, dates or commitments you haven't checked — out with them. <a href="/en/ki-halluzinationen-erkennen.html" style="color:var(--amber-dk);font-weight:600;">→ Spotting hallucinations</a></li>
+      </ul>
+      <div class="callout">Let the AI prepare — but read and send yourself. The last look is yours.</div>
+    </section>
+
+    <section>
+      <h2>Frequently asked</h2>
+      <details><summary>What is AI worth for writing emails?</summary><div class="a">For first drafts, shortening, adjusting tone and replying to long threads. Not for delicate, relationship-critical or legally sensitive emails.</div></details>
+      <details><summary>How do I keep it from sounding like a robot?</summary><div class="a">Give a sample of your real emails as a style guide and say "in this tone". Cut clichés, be short and concrete.</div></details>
+      <details><summary>Send whole emails automatically?</summary><div class="a">No. Let the AI prepare, but read and send yourself. A wrong detail costs more trust than the saved minute.</div></details>
+      <details><summary>Is it GDPR-compliant?</summary><div class="a">Only with care. No real personal data unnecessarily, anonymise, business plan with a DPA. When in doubt, run the five data-protection questions.</div></details>
+    </section>
+
+    <div class="cta-box" style="background:var(--card);border:1px solid var(--line);">
+      <h2>Free eBook: “Anti-Hype”</h2>
+      <p>Email is just a start. My free eBook shows you the 3-question filter, your minimal AI stack and five routines that really save time. No sign-up.</p>
+      <a href="/en/ebook.html" class="btn btn--ghost">Read the eBook →</a>
+    </div>
+
+    <div class="cta-box" id="subscribe">
+      <h2>Every workday: AI without the bullshit, in 5 minutes</h2>
+      <p>aban news brings you the AI developments that matter for your work, Mon–Fri — including templates you can use right away.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">Get the 5-min AI briefing →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">No spam. Unsubscribe in one click. GDPR-compliant.</p>
+    </div>
+
+    <section>
+      <h2 style="font-size:1.05rem;">Read on</h2>
+      <div style="display:grid;gap:.7rem;grid-template-columns:1fr 1fr;">
+        <a href="/en/ki-prompts-schreiben.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">How to write AI prompts</strong><span style="color:var(--muted);font-size:.82rem;">Better prompts in 4 steps</span></a>
+        <a href="/en/ki-automatisierung-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">AI automation</strong><span style="color:var(--muted);font-size:.82rem;">When it pays off — and when it doesn't</span></a>
+        <a href="/en/ki-tools-fuer-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">AI tools for the self-employed</strong><span style="color:var(--muted);font-size:.82rem;">The honest stack 2026</span></a>
+        <a href="/en/ebook.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Free eBook “Anti-Hype”</strong><span style="color:var(--muted);font-size:.82rem;">Use AI without the bullshit</span></a>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <p><strong>Honesty note:</strong> this guide contains no affiliate links. AI doesn't replace your judgement about what belongs in an email and what doesn't — the last look and the sending stay with you.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/en/">Home</a> · <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
