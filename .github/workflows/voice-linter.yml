@@ -44,11 +44,13 @@ jobs:
           else
             FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD -- '*.md' "${EXCLUDES[@]}" 2>/dev/null || git ls-files '*.md' "${EXCLUDES[@]}")
           fi
-          # Infrastruktur-/Doku-Markdown ausnehmen: der Voice-Linter erzwingt
-          # Newsletter-Regeln (max 5000 Zeichen, du-Form, #-Tags), die fuer
-          # Projekt-Memory (CLAUDE.md) und Entwickler-Doku (docs/, README)
-          # nicht gelten. Marketing-/Content-.md bleiben voll streng.
-          FILES=$(echo "$FILES" | grep -Ev '^(CLAUDE\.md|docs/|.*/README\.md|README\.md)' || true)
+          # Infrastruktur-/Doku-/Fiktions-Markdown ausnehmen: der Voice-Linter
+          # erzwingt Newsletter-Regeln (max 5000 Zeichen, du-Form, #-Tags), die
+          # fuer Projekt-Memory (CLAUDE.md), Entwickler-Doku (docs/, README) und
+          # die KI-Schriftsteller-Romane (ki-schriftsteller/: literarische Prosa
+          # in dritter Person mit formellem 'Sie' im Dialog) nicht gelten.
+          # Marketing-/Content-.md bleiben voll streng.
+          FILES=$(echo "$FILES" | grep -Ev '^(CLAUDE\.md|docs/|ki-schriftsteller/|.*/README\.md|README\.md)' || true)
           echo "Zu pruefende .md-Dateien (ohne Infra-Doku):"
           echo "$FILES"
           echo "files<<EOF" >> "$GITHUB_OUTPUT"

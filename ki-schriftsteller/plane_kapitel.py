@@ -39,17 +39,21 @@ try:
 except ImportError:
     sys.exit("! Paket fehlt. Installiere es mit:  pip install anthropic")
 
+from roman_util import lade_roman, ist_trilogie
+
 MODELL = "claude-opus-4-8"
 HIER = os.path.dirname(os.path.abspath(__file__))
 
 
 # ------------------------------------------------------------------
-# Plot-Bibel laden (gleiche Logik wie in schreibe_roman.py)
+# Ziel-Kapitelliste bestimmen (Einzelbuch: top-level; Trilogie: ein Band)
 # ------------------------------------------------------------------
-def lade_roman(pfad):
-    """Liest die Plot-Bibel (roman.json) und gibt sie als dict zurueck."""
-    with open(pfad, "r", encoding="utf-8") as f:
-        return json.load(f)
+def finde_band(roman, band_nr):
+    """Liefert den baende-Eintrag mit dieser Nummer oder None."""
+    for b in roman.get("baende", []):
+        if b.get("nummer") == band_nr:
+            return b
+    return None
 
 
 # ------------------------------------------------------------------
@@ -151,10 +155,9 @@ def baue_system_prompt(roman):
 # ------------------------------------------------------------------
 # Bereits vorhandene Kapitel als Kontext fuer die Fortsetzung
 # ------------------------------------------------------------------
-def baue_user_prompt(roman, anzahl, ab_nummer):
+def baue_user_prompt(vorhandene, anzahl, ab_nummer):
     """Beschreibt den vorhandenen Kapitelplan und den konkreten Planungsauftrag."""
     z = []
-    vorhandene = roman.get("kapitel", [])
     if vorhandene:
         z.append("== BISHERIGER KAPITELPLAN ==")
         for k in vorhandene:
@@ -215,12 +218,17 @@ def zeige_kapitel(kapitel):
         print()
 
 
-def schreibe_zurueck(pfad, roman, neue_kapitel):
-    """Sichert roman.json (.bak) und haengt die neuen Kapitel an das kapitel-Array."""
+def schreibe_zurueck(pfad, roman, zielliste, neue_kapitel):
+    """Sichert die Bibel (.bak) und haengt die neuen Kapitel an die Zielliste.
+
+    zielliste ist das konkrete kapitel-Array (Einzelbuch: roman["kapitel"],
+    Trilogie: das kapitel-Array des gewaehlten Bandes) - eine Referenz, die im
+    roman-dict haengt, sodass das Dump die Ergaenzung enthaelt.
+    """
     backup = pfad + ".bak"
     shutil.copyfile(pfad, backup)
     print("Backup angelegt: %s" % backup)
-    roman.setdefault("kapitel", []).extend(neue_kapitel)
+    zielliste.extend(neue_kapitel)
     with open(pfad, "w", encoding="utf-8") as f:
         json.dump(roman, f, ensure_ascii=False, indent=2)
         f.write("\n")
@@ -235,6 +243,8 @@ def main():
         description="KI-Schriftsteller: neue Kapitel-Outlines aus der Idee planen.")
     p.add_argument("--roman", default=os.path.join(HIER, "roman.json"),
                    help="Pfad zur Plot-Bibel (Default: roman.json)")
+    p.add_argument("--band", type=int, default=None,
+                   help="Bei Trilogie: in welchen Band die neuen Kapitel geplant werden (Nummer)")
     p.add_argument("--anzahl", type=int, default=5,
                    help="Wie viele NEUE Kapitel generiert werden sollen (Default: 5)")
     p.add_argument("--ab", type=int, default=None,
@@ -253,20 +263,34 @@ def main():
 
     roman = lade_roman(args.roman)
 
+    # Zielliste bestimmen: Einzelbuch -> roman["kapitel"]; Trilogie -> ein Band.
+    if ist_trilogie(roman):
+        if args.band is None:
+            sys.exit("! Diese Bibel ist eine Trilogie. Waehle mit --band N, in "
+                     "welchen Band geplant werden soll.")
+        band = finde_band(roman, args.band)
+        if band is None:
+            sys.exit("! Band %d steht nicht in der Bibel." % args.band)
+        zielliste = band.setdefault("kapitel", [])
+        kontext = "Band %d - %s" % (band.get("nummer"), band.get("titel", ""))
+    else:
+        if args.band is not None:
+            sys.exit("! --band gilt nur fuer Trilogien. Diese Bibel ist ein Einzelbuch.")
+        zielliste = roman.setdefault("kapitel", [])
+        kontext = roman.get("titel", "Roman")
+
     # Startnummer bestimmen: an vorhandene Kapitel anschliessen, falls nicht gesetzt.
     if args.ab is not None:
         ab_nummer = args.ab
+    elif zielliste:
+        ab_nummer = max(k.get("nummer", 0) for k in zielliste) + 1
     else:
-        vorhandene = roman.get("kapitel", [])
-        if vorhandene:
-            ab_nummer = max(k.get("nummer", 0) for k in vorhandene) + 1
-        else:
-            ab_nummer = 1
+        ab_nummer = 1
 
     system_prompt = baue_system_prompt(roman)
-    user_prompt = baue_user_prompt(roman, args.anzahl, ab_nummer)
+    user_prompt = baue_user_prompt(zielliste, args.anzahl, ab_nummer)
 
-    print("== %s ==" % roman.get("titel", "Roman"))
+    print("== %s | %s ==" % (roman.get("titel", "Roman"), kontext))
     print("Modell: %s | Plane %d neue Kapitel (ab Nr. %d)\n"
           % (MODELL, args.anzahl, ab_nummer))
 
@@ -276,9 +300,9 @@ def main():
     zeige_kapitel(neue_kapitel)
 
     if args.schreiben:
-        schreibe_zurueck(args.roman, roman, neue_kapitel)
+        schreibe_zurueck(args.roman, roman, zielliste, neue_kapitel)
     else:
-        print("(Nur Vorschau - mit --schreiben in roman.json uebernehmen.)")
+        print("(Nur Vorschau - mit --schreiben in die Bibel uebernehmen.)")
 
 
 if __name__ == "__main__":
