@@ -96,6 +96,11 @@ Output-Layout der Trilogie:
 Die Kontinuität läuft über Bandgrenzen hinweg: Kapitel früherer Bände gehen als
 kurze Synopsen in spätere Aufrufe ein.
 
+**Premium-Ausstattung:** `buch_bauen.py`/`buch_pdf.py` betten ein Cover ein
+(`../img/covers/<slug>.jpg`, erzeugt von `generate_trilogie_covers.py`), setzen
+Autor (Feld `autor` in der Bibel, Default „aban news"), Titel- und Kolophonseite,
+Initialen am Kapitelanfang; das PDF zusätzlich laufende Kopfzeile + Seitenzahlen.
+
 ### Wie lang wird das?
 
 Ziellänge ist 1200–2000 Wörter pro Kapitel (~5–7 Seiten). Die Beispiel-Trilogie

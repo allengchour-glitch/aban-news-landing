@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Buch-PDF - rendert die geschriebenen Kapitel als lesbare PDF-Buecher (reportlab).
+Buch-PDF - rendert die geschriebenen Kapitel als hochwertige PDF-Buecher (reportlab).
 
-Ergaenzt buch_bauen.py (das Markdown + EPUB3 stdlib-only erzeugt) um eine
-PDF-Ausgabe im Brand-Look (Serifenschrift, amberfarbene Ueberschriften,
-Blocksatz). Liest Kapitel ueber dieselben Helfer wie buch_bauen (eine Quelle
-der Wahrheit fuer Chapter-Reading und Band-Normalisierung).
+Premium-Satz: Vollbild-Cover (falls vorhanden), Titelseite mit Autor,
+Band-Trennseiten mit Label/Epoche, Versal-Initiale am Kapitelanfang, laufende
+Kopfzeile + Seitenzahlen, Kolophon. Liest Kapitel ueber dieselben Helfer wie
+buch_bauen (eine Quelle der Wahrheit).
 
 Einzelbuch:  ausgabe/<slug>.pdf
 Trilogie:    ausgabe/<slug>-band-0N.pdf je Band + ausgabe/<slug>-gesamt.pdf
@@ -27,7 +27,8 @@ try:
     from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
     from reportlab.lib.colors import HexColor
     from reportlab.platypus import (BaseDocTemplate, PageTemplate, Frame,
-                                    Paragraph, Spacer, PageBreak)
+                                    Paragraph, Spacer, PageBreak, Image,
+                                    NextPageTemplate)
 except ImportError:
     sys.exit("! Paket fehlt. Installiere es mit:  pip install reportlab")
 
@@ -48,75 +49,131 @@ def _esc(s):
 
 def _styles():
     ss = getSampleStyleSheet()
-    body = ParagraphStyle("Body", parent=ss["Normal"], fontName="Times-Roman",
-                          fontSize=11, leading=16.5, alignment=TA_JUSTIFY,
-                          firstLineIndent=5 * mm, textColor=INK, spaceAfter=0)
-    h2 = ParagraphStyle("Kapitel", parent=ss["Heading2"], fontName="Times-Bold",
-                        fontSize=15, leading=19, textColor=AMBER_DK,
-                        spaceBefore=2 * mm, spaceAfter=6 * mm, keepWithNext=True)
-    band = ParagraphStyle("Band", parent=ss["Heading1"], fontName="Times-Bold",
-                          fontSize=22, leading=27, textColor=AMBER,
-                          alignment=TA_CENTER)
-    title = ParagraphStyle("Titel", parent=ss["Title"], fontName="Times-Bold",
-                           fontSize=28, leading=33, textColor=AMBER, alignment=TA_CENTER)
-    sub = ParagraphStyle("Sub", parent=ss["Normal"], fontName="Times-Italic",
-                         fontSize=13, leading=18, textColor=INK, alignment=TA_CENTER)
-    author = ParagraphStyle("Autor", parent=ss["Normal"], fontName="Times-Roman",
-                            fontSize=11, leading=15, textColor=MUTED, alignment=TA_CENTER)
-    return body, h2, band, title, sub, author
+    s = {}
+    s["body"] = ParagraphStyle("Body", parent=ss["Normal"], fontName="Times-Roman",
+                               fontSize=11, leading=16.5, alignment=TA_JUSTIFY,
+                               firstLineIndent=5 * mm, textColor=INK)
+    s["first"] = ParagraphStyle("First", parent=s["body"], firstLineIndent=0, spaceBefore=2)
+    s["h2"] = ParagraphStyle("Kapitel", parent=ss["Heading2"], fontName="Times-Bold",
+                             fontSize=15, leading=19, textColor=AMBER_DK, alignment=TA_CENTER,
+                             spaceBefore=4 * mm, spaceAfter=7 * mm, keepWithNext=True)
+    s["bandlabel"] = ParagraphStyle("BandLabel", parent=ss["Normal"], fontName="Times-Roman",
+                                    fontSize=12, leading=16, textColor=AMBER_DK, alignment=TA_CENTER)
+    s["band"] = ParagraphStyle("Band", parent=ss["Heading1"], fontName="Times-Bold",
+                               fontSize=24, leading=30, textColor=AMBER, alignment=TA_CENTER)
+    s["epoch"] = ParagraphStyle("Epoch", parent=ss["Normal"], fontName="Times-Italic",
+                                fontSize=12, leading=16, textColor=MUTED, alignment=TA_CENTER)
+    s["title"] = ParagraphStyle("Titel", parent=ss["Title"], fontName="Times-Bold",
+                                fontSize=30, leading=35, textColor=AMBER, alignment=TA_CENTER)
+    s["sub"] = ParagraphStyle("Sub", parent=ss["Normal"], fontName="Times-Italic",
+                              fontSize=14, leading=19, textColor=INK, alignment=TA_CENTER)
+    s["author"] = ParagraphStyle("Autor", parent=ss["Normal"], fontName="Times-Roman",
+                                 fontSize=12, leading=16, textColor=INK, alignment=TA_CENTER)
+    s["fine"] = ParagraphStyle("Fine", parent=ss["Normal"], fontName="Times-Roman",
+                               fontSize=9.5, leading=14, textColor=MUTED, alignment=TA_CENTER)
+    return s
 
 
-def _fuss(c, d):
-    """Fusszeile: Seitenzahl, zentriert, dezent."""
-    c.saveState()
-    c.setFont("Times-Roman", 8)
-    c.setFillColor(MUTED)
-    c.drawCentredString(A5[0] / 2.0, 10 * mm, str(c.getPageNumber()))
-    c.restoreState()
+def baue_pdf(gesamttitel, genre, gruppen, pfad, autor="aban news", cover_pfad=None):
+    s = _styles()
+    has_cover = bool(cover_pfad and os.path.exists(cover_pfad))
 
+    def deco(c, d):
+        """Laufende Kopfzeile (ab Seite 3) + Seitenzahl unten."""
+        c.saveState()
+        c.setFont("Times-Roman", 8)
+        c.setFillColor(MUTED)
+        c.drawCentredString(A5[0] / 2.0, 10 * mm, str(c.getPageNumber()))
+        if c.getPageNumber() >= 3:
+            c.setFont("Times-Italic", 8)
+            c.drawCentredString(A5[0] / 2.0, A5[1] - 12 * mm, gesamttitel)
+            c.setStrokeColor(HexColor("#e5e7eb"))
+            c.line(22 * mm, A5[1] - 14 * mm, A5[0] - 22 * mm, A5[1] - 14 * mm)
+        c.restoreState()
 
-def baue_pdf(gesamttitel, genre, gruppen, pfad):
-    """Baut ein PDF-Buch aus Gruppen ({bandtitel: str|None, kapitel: [...]})."""
-    body, h2, band, title, sub, author = _styles()
+    def draw_cover(c, d):
+        try:
+            c.drawImage(cover_pfad, 0, 0, width=A5[0], height=A5[1])
+        except Exception:
+            pass
+
     doc = BaseDocTemplate(pfad, pagesize=A5,
                           leftMargin=18 * mm, rightMargin=18 * mm,
-                          topMargin=18 * mm, bottomMargin=18 * mm,
-                          title=gesamttitel, author="aban news")
-    frame = Frame(doc.leftMargin, doc.bottomMargin, doc.width, doc.height, id="f")
-    doc.addPageTemplates([PageTemplate(id="main", frames=[frame], onPage=_fuss)])
+                          topMargin=18 * mm, bottomMargin=16 * mm,
+                          title=gesamttitel, author=autor)
+    plain_frame = Frame(0, 0, A5[0], A5[1], id="plain",
+                        leftPadding=20 * mm, rightPadding=20 * mm,
+                        topPadding=24 * mm, bottomPadding=24 * mm)
+    main_frame = Frame(doc.leftMargin, doc.bottomMargin, doc.width, doc.height, id="main")
+    cover_frame = Frame(0, 0, A5[0], A5[1], id="cover",
+                        leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0)
+    templates = []
+    if has_cover:
+        templates.append(PageTemplate(id="cover", frames=[cover_frame], onPage=draw_cover))
+    templates.append(PageTemplate(id="plain", frames=[plain_frame]))   # Titelseite (kein Deko)
+    templates.append(PageTemplate(id="main", frames=[main_frame], onPage=deco))
+    doc.addPageTemplates(templates)
 
     story = []
+    # --- Cover (Vollbild, per Canvas gezeichnet) ---
+    if has_cover:
+        story.append(NextPageTemplate("plain"))
+        story.append(PageBreak())   # Seite 1 = Cover (von draw_cover gezeichnet)
+
     # --- Titelseite ---
-    story.append(Spacer(1, 55 * mm))
-    story.append(Paragraph(_esc(gesamttitel), title))
-    story.append(Spacer(1, 6 * mm))
+    story.append(Spacer(1, 52 * mm))
+    story.append(Paragraph(_esc(gesamttitel), s["title"]))
+    story.append(Spacer(1, 5 * mm))
     if genre:
-        story.append(Paragraph(_esc(genre), sub))
-    story.append(Spacer(1, 24 * mm))
-    story.append(Paragraph("von [Autor]", author))
+        story.append(Paragraph(_esc(genre), s["sub"]))
+    story.append(Spacer(1, 26 * mm))
+    story.append(Paragraph(_esc(autor), s["author"]))
+    story.append(Paragraph("geschrieben mit Claude Opus · aban news", s["fine"]))
+    story.append(NextPageTemplate("main"))
     story.append(PageBreak())
 
-    mehrband = any(g["bandtitel"] for g in gruppen)
     for g in gruppen:
         if g["bandtitel"]:
-            story.append(Spacer(1, 60 * mm))
-            story.append(Paragraph(_esc(g["bandtitel"]), band))
+            story.append(Spacer(1, 52 * mm))
+            if g.get("label"):
+                story.append(Paragraph(_esc(g["label"]).upper(), s["bandlabel"]))
+            story.append(Paragraph(_esc(g["bandtitel"]), s["band"]))
+            if g.get("epoch"):
+                story.append(Paragraph(_esc(g["epoch"]), s["epoch"]))
             story.append(PageBreak())
-        for i, kap in enumerate(g["kapitel"]):
+        for kap in g["kapitel"]:
             ueberschrift = _ueberschrift_fuer(kap)
             _, absaetze = teile_kapitel(kap["text"])
-            story.append(Paragraph(_esc(ueberschrift), h2))
-            for a in absaetze:
-                story.append(Paragraph(_esc(a), body))
+            story.append(Paragraph(_esc(ueberschrift), s["h2"]))
+            for i, a in enumerate(absaetze):
+                if i == 0 and a:
+                    # Versal-Initiale: erster Buchstabe gross + amber.
+                    markup = ('<font size="30" color="#b45309"><b>%s</b></font>%s'
+                              % (_esc(a[0]), _esc(a[1:])))
+                    story.append(Paragraph(markup, s["first"]))
+                else:
+                    story.append(Paragraph(_esc(a), s["body"]))
             story.append(PageBreak())
+
+    # --- Kolophon ---
+    story.append(Spacer(1, 70 * mm))
+    story.append(Paragraph("Über dieses Buch", s["bandlabel"]))
+    story.append(Spacer(1, 4 * mm))
+    story.append(Paragraph("<i>%s</i>" % _esc(gesamttitel), s["fine"]))
+    story.append(Paragraph("Ein Schreib-Experiment von aban news, Kapitel für Kapitel "
+                           "mit Claude Opus verfasst und redigiert.", s["fine"]))
+    story.append(Paragraph("Riedmatt, der Stausee und alle Figuren sind erfunden; "
+                           "Ähnlichkeiten mit realen Orten oder Personen sind Zufall.", s["fine"]))
+    story.append(Paragraph("© 2026 aban news · Allen Chour, Belp (CH) · abannews.com", s["fine"]))
 
     doc.build(story)
 
 
-def schreibe_pdf(out_dir, slug, gesamttitel, genre, gruppen):
+def schreibe_pdf(out_dir, slug, gesamttitel, genre, gruppen, autor="aban news", cover_pfad=None):
     pfad = os.path.join(out_dir, "%s.pdf" % slug)
-    baue_pdf(gesamttitel, genre, gruppen, pfad)
-    print("OK PDF geschrieben: %s" % pfad)
+    baue_pdf(gesamttitel, genre, gruppen, pfad, autor, cover_pfad)
+    cov = " (+Cover)" if cover_pfad and os.path.exists(cover_pfad) else ""
+    print("OK PDF geschrieben: %s%s" % (pfad, cov))
 
 
 def main():
@@ -124,6 +181,7 @@ def main():
     p.add_argument("--roman", default=os.path.join(HIER, "roman.json"))
     p.add_argument("--kapitel-dir", default=os.path.join(HIER, "kapitel"))
     p.add_argument("--out", default=os.path.join(HIER, "ausgabe"))
+    p.add_argument("--cover-dir", default=os.path.join(HIER, "..", "img", "covers"))
     args = p.parse_args()
 
     roman = lade_roman(args.roman)
@@ -131,6 +189,12 @@ def main():
     einzelbuch = not ist_trilogie(roman)
     slug = slugify(roman["titel"])
     genre = roman.get("genre", "")
+    autor = roman.get("autor", "aban news")
+    LABELS = {1: "Erster Band", 2: "Zweiter Band", 3: "Dritter Band"}
+
+    def cover_fuer(artslug):
+        c = os.path.join(args.cover_dir, "%s.jpg" % artslug)
+        return c if os.path.exists(c) else None
 
     band_kapitel = {b["nummer"]: lies_kapitel(args.kapitel_dir, b, einzelbuch)
                     for b in baende}
@@ -141,20 +205,25 @@ def main():
 
     if einzelbuch:
         gruppen = [{"bandtitel": None, "kapitel": band_kapitel[baende[0]["nummer"]]}]
-        schreibe_pdf(args.out, slug, roman["titel"], genre, gruppen)
+        schreibe_pdf(args.out, slug, roman["titel"], genre, gruppen, autor, cover_fuer(slug))
         return 0
 
     for b in baende:
         kaps = band_kapitel[b["nummer"]]
         if not kaps:
             continue
+        bandslug = "%s-band-%02d" % (slug, b["nummer"])
         gruppen = [{"bandtitel": None, "kapitel": kaps}]
-        schreibe_pdf(args.out, "%s-band-%02d" % (slug, b["nummer"]),
-                     "%s - %s" % (roman["titel"], b["titel"]), genre, gruppen)
+        schreibe_pdf(args.out, bandslug, "%s - %s" % (roman["titel"], b["titel"]),
+                     genre, gruppen, autor, cover_fuer(bandslug))
 
-    omnibus = [{"bandtitel": b["titel"], "kapitel": band_kapitel[b["nummer"]]}
+    omnibus = [{"bandtitel": b["titel"],
+                "label": LABELS.get(b["nummer"], "Band %d" % b["nummer"]),
+                "epoch": b.get("untertitel", ""),
+                "kapitel": band_kapitel[b["nummer"]]}
                for b in baende if band_kapitel[b["nummer"]]]
-    schreibe_pdf(args.out, "%s-gesamt" % slug, roman["titel"], genre, omnibus)
+    schreibe_pdf(args.out, "%s-gesamt" % slug, roman["titel"], genre, omnibus,
+                 autor, cover_fuer("%s-gesamt" % slug))
     print("== %s: PDF(s) erzeugt ==" % roman["titel"])
     return 0
 
