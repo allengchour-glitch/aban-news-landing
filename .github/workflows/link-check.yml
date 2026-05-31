@@ -1,0 +1,43 @@
+name: Link Check
+
+# Prüft externe Links in den kuratierten Datendateien (Tools/Kurse/Förder/Radar)
+# planmäßig auf Erreichbarkeit und öffnet ein Issue, wenn etwas tot ist.
+
+on:
+  schedule:
+    - cron: '0 7 15 * *'   # 15. des Monats, 07:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  linkcheck:
+    name: Check external data links
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run link check
+        id: check
+        run: python3 automation/check_links.py --timeout 8 || echo "dead_found=1" >> "$GITHUB_OUTPUT"
+
+      - name: Open issue if dead links found
+        if: steps.check.outputs.dead_found == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITLE="Linkcheck: tote Links in kuratierten Daten ($(date +%Y-%m))"
+          if gh issue list --state open --search "$TITLE in:title" | grep -q .; then
+            echo "Issue existiert bereits — übersprungen."
+          else
+            gh issue create --title "$TITLE" --body-file .links-report.md
+          fi

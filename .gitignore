@@ -2,3 +2,4 @@
 .audit/
 __pycache__/
 .freshness-report.md
+.links-report.md

@@ -122,6 +122,15 @@
     .honest b{color:var(--ink)}
 
     /* "Für wen ist das?" — Zielgruppen-Schärfung */
+    /* aban-Netzwerk-Block */
+    .netz{margin-top:1.5rem}
+    .netz h2{font-size:1.15rem;margin:0 0 .2rem}
+    .netz .sub{color:var(--muted);font-size:.9rem;margin:0 0 .9rem}
+    .netz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+    .netz-grid a{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);padding:.8rem .9rem;text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
+    .netz-grid a:hover{border-color:var(--amber);transform:translateY(-2px)}
+    .netz-grid .nt{font-weight:700;font-size:.92rem;display:block}
+    .netz-grid .nd{color:var(--muted);font-size:.78rem;display:block;margin-top:.15rem}
     .forwhom{margin-top:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
     .forwhom>div{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);padding:1.15rem 1.25rem}
     .forwhom h2{margin:.1rem 0 .6rem;font-size:1.05rem}
@@ -158,6 +167,7 @@
       .strip{grid-template-columns:1fr}
       .step{border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}
       .forwhom{grid-template-columns:1fr}
+      .netz-grid{grid-template-columns:1fr 1fr}
       .hnav .lk{display:none}.row{flex-direction:column}.row .btn{width:100%}
     }
   @media (hover:none) and (pointer:coarse){.tab{min-height:44px;padding:.55rem 1rem}.lang a{min-height:38px;display:inline-flex;align-items:center}.btn--sm{min-height:40px}}
@@ -266,6 +276,21 @@
         <p>Überzeugt? Hol dir aban news Mo–Fr morgens — kostenlos.</p>
         <a href="#signup" class="btn">Jetzt abonnieren →</a>
         <p class="refer">Kennst du jemanden, dem das hilft? <a href="mailto:?subject=aban%20news&body=Schau%20dir%20aban%20news%20an%3A%20https%3A%2F%2Fabannews.com">Leite aban news weiter.</a></p>
+      </div>
+
+      <div class="netz" data-reveal>
+        <h2>Das aban-Netzwerk</h2>
+        <p class="sub">Mehr als der Newsletter — kuratierte KI-Werkzeuge, Förderungen, Jobs und Kurse für DACH. Alles gratis nutzbar.</p>
+        <div class="netz-grid">
+          <a href="/tools.html"><span class="nt">🧰 Tools</span><span class="nd">158 KI-Tools, ehrlich bewertet</span></a>
+          <a href="/radar.html"><span class="nt">📡 KI-Radar</span><span class="nd">Neue Tools &amp; Modelle</span></a>
+          <a href="/foerder.html"><span class="nt">🏛 Förder-Radar</span><span class="nd">KI-Förderungen DE/AT/CH</span></a>
+          <a href="/kurse.html"><span class="nt">🎓 KI-Kurse</span><span class="nd">Weiterbildung, ehrlich verglichen</span></a>
+          <a href="/jobs.html"><span class="nt">💼 KI-Jobs</span><span class="nd">AI-Stellen im DACH-Raum</span></a>
+          <a href="/deals.html"><span class="nt">💸 KI-Deals</span><span class="nd">Rabatte auf KI-Tools</span></a>
+          <a href="/resources.html"><span class="nt">📚 Resourcen</span><span class="nd">Prompts &amp; Templates, gratis</span></a>
+          <a href="/netzwerk.html"><span class="nt">→ Alle Angebote</span><span class="nd">Das ganze Netzwerk</span></a>
+        </div>
       </div>
     </div>
   </section>
