@@ -34,8 +34,12 @@ except ImportError:
 
 from roman_util import lade_roman, slugify, baende_aus_roman, ist_trilogie
 from buch_bauen import lies_kapitel, teile_kapitel, _ueberschrift_fuer
+from pdf_fonts import register_serif, canvas_maker
 
 HIER = os.path.dirname(os.path.abspath(__file__))
+
+# Einbettbarer Serif (KDP/Print verlangt eingebettete Fonts). Fallback: Times-*.
+F = register_serif()
 
 AMBER = HexColor("#d97706")
 AMBER_DK = HexColor("#b45309")
@@ -50,29 +54,29 @@ def _esc(s):
 def _styles():
     ss = getSampleStyleSheet()
     s = {}
-    s["body"] = ParagraphStyle("Body", parent=ss["Normal"], fontName="Times-Roman",
+    s["body"] = ParagraphStyle("Body", parent=ss["Normal"], fontName=F["roman"],
                                fontSize=11, leading=16.5, alignment=TA_JUSTIFY,
                                firstLineIndent=5 * mm, textColor=INK)
     s["first"] = ParagraphStyle("First", parent=s["body"], firstLineIndent=0, spaceBefore=2)
-    s["orn"] = ParagraphStyle("Orn", parent=ss["Normal"], fontName="Times-Roman",
+    s["orn"] = ParagraphStyle("Orn", parent=ss["Normal"], fontName=F["roman"],
                               fontSize=12, leading=14, textColor=AMBER, alignment=TA_CENTER,
                               spaceBefore=2 * mm, spaceAfter=1 * mm)
-    s["h2"] = ParagraphStyle("Kapitel", parent=ss["Heading2"], fontName="Times-Bold",
+    s["h2"] = ParagraphStyle("Kapitel", parent=ss["Heading2"], fontName=F["bold"],
                              fontSize=15, leading=19, textColor=AMBER_DK, alignment=TA_CENTER,
                              spaceBefore=2 * mm, spaceAfter=7 * mm, keepWithNext=True)
-    s["bandlabel"] = ParagraphStyle("BandLabel", parent=ss["Normal"], fontName="Times-Roman",
+    s["bandlabel"] = ParagraphStyle("BandLabel", parent=ss["Normal"], fontName=F["roman"],
                                     fontSize=12, leading=16, textColor=AMBER_DK, alignment=TA_CENTER)
-    s["band"] = ParagraphStyle("Band", parent=ss["Heading1"], fontName="Times-Bold",
+    s["band"] = ParagraphStyle("Band", parent=ss["Heading1"], fontName=F["bold"],
                                fontSize=24, leading=30, textColor=AMBER, alignment=TA_CENTER)
-    s["epoch"] = ParagraphStyle("Epoch", parent=ss["Normal"], fontName="Times-Italic",
+    s["epoch"] = ParagraphStyle("Epoch", parent=ss["Normal"], fontName=F["italic"],
                                 fontSize=12, leading=16, textColor=MUTED, alignment=TA_CENTER)
-    s["title"] = ParagraphStyle("Titel", parent=ss["Title"], fontName="Times-Bold",
+    s["title"] = ParagraphStyle("Titel", parent=ss["Title"], fontName=F["bold"],
                                 fontSize=30, leading=35, textColor=AMBER, alignment=TA_CENTER)
-    s["sub"] = ParagraphStyle("Sub", parent=ss["Normal"], fontName="Times-Italic",
+    s["sub"] = ParagraphStyle("Sub", parent=ss["Normal"], fontName=F["italic"],
                               fontSize=14, leading=19, textColor=INK, alignment=TA_CENTER)
-    s["author"] = ParagraphStyle("Autor", parent=ss["Normal"], fontName="Times-Roman",
+    s["author"] = ParagraphStyle("Autor", parent=ss["Normal"], fontName=F["roman"],
                                  fontSize=12, leading=16, textColor=INK, alignment=TA_CENTER)
-    s["fine"] = ParagraphStyle("Fine", parent=ss["Normal"], fontName="Times-Roman",
+    s["fine"] = ParagraphStyle("Fine", parent=ss["Normal"], fontName=F["roman"],
                                fontSize=9.5, leading=14, textColor=MUTED, alignment=TA_CENTER)
     return s
 
@@ -84,11 +88,11 @@ def baue_pdf(gesamttitel, genre, gruppen, pfad, autor="aban news", cover_pfad=No
     def deco(c, d):
         """Laufende Kopfzeile (ab Seite 3) + Seitenzahl unten."""
         c.saveState()
-        c.setFont("Times-Roman", 8)
+        c.setFont(F["roman"], 8)
         c.setFillColor(MUTED)
         c.drawCentredString(A5[0] / 2.0, 10 * mm, str(c.getPageNumber()))
         if c.getPageNumber() >= 3:
-            c.setFont("Times-Italic", 8)
+            c.setFont(F["italic"], 8)
             c.drawCentredString(A5[0] / 2.0, A5[1] - 12 * mm, gesamttitel)
             c.setStrokeColor(HexColor("#e5e7eb"))
             c.line(22 * mm, A5[1] - 14 * mm, A5[0] - 22 * mm, A5[1] - 14 * mm)
@@ -170,7 +174,11 @@ def baue_pdf(gesamttitel, genre, gruppen, pfad, autor="aban news", cover_pfad=No
                            "Ähnlichkeiten mit realen Orten oder Personen sind Zufall.", s["fine"]))
     story.append(Paragraph("© 2026 aban news · Allen Chour, Belp (CH) · abannews.com", s["fine"]))
 
-    doc.build(story)
+    _cm = canvas_maker()
+    if _cm:
+        doc.build(story, canvasmaker=_cm)
+    else:
+        doc.build(story)
 
 
 def schreibe_pdf(out_dir, slug, gesamttitel, genre, gruppen, autor="aban news", cover_pfad=None):

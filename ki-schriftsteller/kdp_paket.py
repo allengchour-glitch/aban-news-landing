@@ -36,8 +36,13 @@ except ImportError:
 
 from roman_util import lade_roman, slugify, baende_aus_roman, ist_trilogie
 from buch_bauen import lies_kapitel, teile_kapitel, _ueberschrift_fuer
+from pdf_fonts import register_serif, canvas_maker
 
 HIER = os.path.dirname(os.path.abspath(__file__))
+
+# Einbettbarer Serif (KDP verlangt eingebettete Fonts). Fallback: Times-* (nicht
+# eingebettet) - dann warnt build_interior.
+F = register_serif()
 
 AMBER = HexColor("#d97706")
 AMBER_DK = HexColor("#b45309")
@@ -63,29 +68,29 @@ KLAPPENTEXT = (
 def _styles():
     ss = getSampleStyleSheet()
     s = {}
-    s["body"] = ParagraphStyle("B", parent=ss["Normal"], fontName="Times-Roman",
+    s["body"] = ParagraphStyle("B", parent=ss["Normal"], fontName=F["roman"],
                                fontSize=10.5, leading=15.2, alignment=TA_JUSTIFY,
                                firstLineIndent=4.2 * mm, textColor=INK)
     s["first"] = ParagraphStyle("F", parent=s["body"], firstLineIndent=0)
-    s["orn"] = ParagraphStyle("ORN", parent=ss["Normal"], fontName="Times-Roman",
+    s["orn"] = ParagraphStyle("ORN", parent=ss["Normal"], fontName=F["roman"],
                               fontSize=11, leading=13, textColor=AMBER, alignment=TA_CENTER,
                               spaceBefore=2 * mm, spaceAfter=1 * mm)
-    s["h2"] = ParagraphStyle("H", parent=ss["Heading2"], fontName="Times-Bold",
+    s["h2"] = ParagraphStyle("H", parent=ss["Heading2"], fontName=F["bold"],
                              fontSize=14, leading=18, textColor=AMBER_DK, alignment=TA_CENTER,
                              spaceBefore=2 * mm, spaceAfter=6 * mm, keepWithNext=True)
-    s["bl"] = ParagraphStyle("BL", parent=ss["Normal"], fontName="Times-Roman",
+    s["bl"] = ParagraphStyle("BL", parent=ss["Normal"], fontName=F["roman"],
                              fontSize=11, leading=15, textColor=AMBER_DK, alignment=TA_CENTER)
-    s["band"] = ParagraphStyle("BD", parent=ss["Heading1"], fontName="Times-Bold",
+    s["band"] = ParagraphStyle("BD", parent=ss["Heading1"], fontName=F["bold"],
                                fontSize=22, leading=27, textColor=AMBER, alignment=TA_CENTER)
-    s["epoch"] = ParagraphStyle("EP", parent=ss["Normal"], fontName="Times-Italic",
+    s["epoch"] = ParagraphStyle("EP", parent=ss["Normal"], fontName=F["italic"],
                                 fontSize=11, leading=15, textColor=MUTED, alignment=TA_CENTER)
-    s["htitle"] = ParagraphStyle("HT", parent=ss["Title"], fontName="Times-Bold",
+    s["htitle"] = ParagraphStyle("HT", parent=ss["Title"], fontName=F["bold"],
                                  fontSize=26, leading=31, textColor=AMBER, alignment=TA_CENTER)
-    s["sub"] = ParagraphStyle("S", parent=ss["Normal"], fontName="Times-Italic",
+    s["sub"] = ParagraphStyle("S", parent=ss["Normal"], fontName=F["italic"],
                               fontSize=13, leading=17, textColor=INK, alignment=TA_CENTER)
-    s["aut"] = ParagraphStyle("A", parent=ss["Normal"], fontName="Times-Roman",
+    s["aut"] = ParagraphStyle("A", parent=ss["Normal"], fontName=F["roman"],
                               fontSize=12, leading=16, textColor=INK, alignment=TA_CENTER)
-    s["fine"] = ParagraphStyle("FN", parent=ss["Normal"], fontName="Times-Roman",
+    s["fine"] = ParagraphStyle("FN", parent=ss["Normal"], fontName=F["roman"],
                                fontSize=9, leading=13, textColor=MUTED, alignment=TA_CENTER)
     return s
 
@@ -105,10 +110,10 @@ def build_interior(roman, kapitel_dir, out_pdf, autor):
 
     def deco(c, d):
         c.saveState()
-        c.setFont("Times-Roman", 9)
+        c.setFont(F["roman"], 9)
         c.setFillColor(MUTED)
         c.drawCentredString(TRIM[0] / 2.0, 11 * mm, str(c.getPageNumber()))
-        c.setFont("Times-Italic", 8.5)
+        c.setFont(F["italic"], 8.5)
         c.drawCentredString(TRIM[0] / 2.0, TRIM[1] - 12 * mm, titel)
         c.restoreState()
 
@@ -162,7 +167,11 @@ def build_interior(roman, kapitel_dir, out_pdf, autor):
                     st += [Paragraph(_esc(a), s["body"])]
             st += [PageBreak()]
 
-    doc.build(st)
+    _cm = canvas_maker()
+    if _cm:
+        doc.build(st, canvasmaker=_cm)
+    else:
+        doc.build(st)
     return doc.page  # Gesamtseitenzahl
 
 
@@ -393,6 +402,13 @@ def main():
     autor = roman.get("autor", "aban news")
     slug = slugify(roman["titel"])
     os.makedirs(args.out, exist_ok=True)
+
+    if F.get("embedded"):
+        print("   Font eingebettet: %s (KDP-konform)" % F.get("family", F["roman"]))
+    else:
+        print("   ! WARNUNG: kein TrueType-Serif gefunden - PDF nutzt nicht "
+              "eingebettete Standardfonts. KDP verlangt eingebettete Fonts. "
+              "Installiere z. B. 'fonts-liberation' und baue neu.")
 
     innen = os.path.join(args.out, "innenteil-5x8.pdf")
     pages = build_interior(roman, args.kapitel_dir, innen, autor)
