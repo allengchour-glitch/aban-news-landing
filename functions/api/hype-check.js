@@ -10,6 +10,7 @@ const CORS = {
   "Access-Control-Allow-Headers": "Content-Type",
 };
 const MAX_CHARS = 20000;
+const MAX_BULK = 25; // Premium-Bulk-Check: max. Texte pro Anfrage
 
 function json(obj, status = 200) {
   return new Response(JSON.stringify(obj), {
@@ -29,6 +30,27 @@ export async function onRequestPost(context) {
     body = await request.json();
   } catch {
     return json({ error: "Ungültiger JSON-Body." }, 400);
+  }
+
+  // Bulk-Modus (Premium-Basis): { texts: ["...", "..."] } → { results: [...] }
+  if (body && Array.isArray(body.texts)) {
+    const texts = body.texts.slice(0, MAX_BULK);
+    if (texts.length === 0) return json({ error: "Leere Liste." }, 400);
+    const results = texts.map((t, i) => {
+      const txt = String(t || "").slice(0, MAX_CHARS);
+      if (!txt.trim()) return { index: i, error: "leer" };
+      const r = analyze(txt);
+      // schlanke Bulk-Antwort: Kennzahlen statt voller Findings/Highlights
+      return {
+        index: i,
+        score: r.score,
+        grade: r.grade,
+        hypeDensity: r.metrics.hypeDensity,
+        wordCount: r.metrics.wordCount,
+        topCategories: r.categories.slice(0, 3).map((c) => ({ label: c.label, count: c.count })),
+      };
+    });
+    return json({ count: results.length, truncated: body.texts.length > MAX_BULK, results });
   }
 
   const text = (body && body.text ? String(body.text) : "").slice(0, MAX_CHARS);

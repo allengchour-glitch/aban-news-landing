@@ -11,13 +11,13 @@
 <meta property="og:description" content="Füg deinen Text ein, sieh den Hype sofort. Buzzwords, Füllwörter, Lesbarkeit — mit Vorschlägen. Gratis, ohne Login.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://abannews.com/hype-filter.html">
-<meta property="og:image" content="https://abannews.com/og-image.png">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="aban news">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Der Hype-Filter — Klartext statt Buzzwords">
 <meta name="twitter:description" content="Prüf deinen Marketing-Text auf Hype. Gratis, ohne Login, ohne Tracking.">
-<meta name="twitter:image" content="https://abannews.com/og-image.png">
+<meta name="twitter:image" content="https://abannews.com/og-hype.png">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script type="application/ld+json">
@@ -65,6 +65,10 @@ textarea{width:100%;min-height:200px;resize:vertical;font:inherit;font-size:15px
 textarea:focus{outline:2px solid var(--amber-light);border-color:var(--amber)}
 .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
 .row .count{margin-left:auto;font-size:13px;color:var(--muted)}
+.examples{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.exlabel{font-size:13px;color:var(--muted)}
+.chip{font:inherit;font-size:13px;background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);border-radius:999px;padding:5px 12px;cursor:pointer;transition:all .15s}
+.chip:hover{background:var(--cream);border-color:var(--amber-light);color:var(--amber-dark)}
 .muted{color:var(--muted)}
 .results{margin-top:20px;display:none}
 .results.show{display:block}
@@ -146,9 +150,9 @@ footer a{color:var(--muted)}
       <textarea id="inp" placeholder="Beispiel: Unsere revolutionäre, KI-gestützte Lösung ist ein absoluter Game-Changer und steigert deinen Umsatz garantiert um 10x — mühelos und im Handumdrehen!"></textarea>
       <div class="row">
         <button id="go" class="btn">Auf Hype prüfen</button>
-        <button id="demo" class="btn ghost">Beispiel einfügen</button>
         <span class="count" id="count">0 Zeichen</span>
       </div>
+      <div class="examples" id="examples"><span class="exlabel">Oder ein Beispiel laden:</span></div>
       <div class="err" id="err"></div>
     </div>
 
@@ -213,7 +217,15 @@ footer a{color:var(--muted)}
 <script>
 const $ = (id) => document.getElementById(id);
 const inp = $("inp"), res = $("res"), errBox = $("err");
-const DEMO = "Unsere revolutionäre, KI-gestützte Lösung ist ein absoluter Game-Changer und steigert deinen Umsatz garantiert um 10x — mühelos und im Handumdrehen! Mit unserer einzigartigen, ganzheitlichen Plattform wird dein Business quasi auf das nächste Level gehoben.";
+
+// Kuratierte deutsche Beispiele — zeigen die Bandbreite des Tools.
+const EXAMPLES = [
+  { name: "Landingpage (Hype)", text: "Unsere revolutionäre, KI-gestützte Lösung ist ein absoluter Game-Changer und steigert deinen Umsatz garantiert um 10x — mühelos und im Handumdrehen! Mit unserer einzigartigen, ganzheitlichen Plattform wird dein Business quasi auf das nächste Level gehoben." },
+  { name: "Stellenanzeige", text: "Für unser dynamisches, hochinnovatives Team suchen wir einen echten Rockstar, der mit cutting-edge Technologien arbeiten und nahtlos in unsere agile Kultur passen möchte. Du bist ein absoluter Teamplayer und brennst für disruptive Ideen? Dann bewirb dich jetzt!" },
+  { name: "LinkedIn-Post", text: "Letzte Woche hat sich mein komplettes Mindset verändert. Diese eine Sache hat alles auf das nächste Level gehoben und mir wahnsinnig viel Mehrwert gebracht. Der Game-Changer schlechthin. Wer mehr wissen will, schreibt mir einfach eine DM." },
+  { name: "Schachtelsatz", text: "Wenn du dir vorstellst, dass du an einem ganz normalen Montagmorgen, noch bevor der erste Kaffee überhaupt durchgelaufen ist, schon die erste lange Mail beantworten musst, die irgendein Kunde am Wochenende geschrieben hat, dann weißt du ungefähr, wovon ich hier eigentlich rede." },
+  { name: "Sauberer Text", text: "Ich schreibe diesen Newsletter jeden Morgen. Er braucht fünf Minuten. Du bekommst drei Meldungen, die für deine Arbeit zählen, und einen Tipp zum Mitnehmen. Kein Verkauf, kein Tracking. Wenn dir eine Ausgabe nicht passt, schreib mir kurz." },
+];
 
 const CAT_COLORS = {
   superlativ:"#fde0d6", versprechen:"#fde0d6", buzzword:"#fdeccd",
@@ -224,7 +236,14 @@ function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">
 
 function updateCount(){ $("count").textContent = inp.value.length.toLocaleString("de-DE") + " Zeichen"; }
 inp.addEventListener("input", updateCount);
-$("demo").addEventListener("click", () => { inp.value = DEMO; updateCount(); inp.focus(); });
+
+// Beispiel-Chips aufbauen
+EXAMPLES.forEach((ex) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.textContent = ex.name;
+  b.addEventListener("click", () => { inp.value = ex.text; updateCount(); $("go").click(); });
+  $("examples").appendChild(b);
+});
 
 function highlight(text, findings){
   let out = "", i = 0;
