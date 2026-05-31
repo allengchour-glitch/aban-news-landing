@@ -99,6 +99,12 @@ LinkedIn-DACH, GEO, Monetarisierung nach Audience-Größe, realistische Timeline
   aban-studio/, ki-geld-projekt/, PROJEKT.md, CLAUDE.md) — gilt nur für Newsletter-Content im Root.
 - Jedes Geld-Projekt hat einen eigenen Auto-Build-Workflow in `.github/workflows/`.
 
+## Newsletter-Archiv (NEU, fertig)
+`generate_archive.py` baut aus den 28 echten Ausgaben in archive/*.html eine durchsuchbare
+`archive.html` + `archive.rss` (Titel/Datum/Teaser aus den Dateien, KEINE erfundenen Daten).
+Jede Ausgabe = indexierbare SEO-Seite + Vertrauen für neue Leser. Footer von index.html verlinkt es.
+Neu bauen nach neuer Ausgabe: `python generate_archive.py`.
+
 ## Lead-Magnet (fertig)
 `downloads/generate_lead_magnet.py` → `downloads/top-30-ki-tools-dach-2026.pdf` — „Die 30 besten
 KI-Tools für DACH 2026", aus `data/tools.json` (reportlab, Aban-Branding, Newsletter-CTA). Das ist
