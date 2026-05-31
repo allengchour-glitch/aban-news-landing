@@ -34,6 +34,12 @@ KI-Newsletter **abannews.com / .de** (Mo–Fr, kuratiert, „3–5 Min, kein Hyp
 - **Affiliate-Bewerbungen laufen** (manuelle Prüfung, Link kommt per Mail): GetResponse, Murf AI, ggf. Surfer SEO.
   -> Sobald Link da: in affiliate.json eintragen, '_'-Präfix entfernen, rebuild. Tools existieren bereits in tools.json.
 - **Social-Secrets:** noch offen — User legt sie selbst bei GitHub an (Settings→Secrets→Actions): DISCORD_WEBHOOK_URL und/oder TELEGRAM_BOT_TOKEN+TELEGRAM_CHAT_ID. Werte holt der User aus Discord (Kanal→Integrationen→Webhooks) bzw. Telegram (@BotFather /mybots). Code-Seite fertig (social/post.py + social-autopost.yml, Mo/Mi/Fr). NIE Werte im Chat annehmen.
+- **Besucher-Hebel (NEU, Stand 31.05.):** abannews.com verlinkt jetzt die 3 Radars (Aban-Netzwerk-Block in index.html).
+  Fertige Launch-Posts zum Kopieren: `ki-geld-projekt/ERSTE-BESUCHER.md` (LinkedIn/Reddit/WhatsApp).
+  EHRLICH: 0 Besucher = 0 Einnahmen; kein Auto-Trick ersetzt Teilen+Zeit. Reihenfolge: posten (ERSTE-BESUCHER.md)
+  + Newsletter-Teaser (automation/newsletter-teaser.md) + Geduld mit Google (Wochen).
+- **Discord-Webhook:** Nutzer hat ihn 2x im Chat gepostet → muss gelöscht & neu erstellt werden,
+  neue URL NUR als GitHub-Secret DISCORD_WEBHOOK_URL. Auto-Posting-Test danach via Actions → Run workflow.
 - **Traffic:** nächster großer Hebel — Newsletter-Teaser + LinkedIn (LINKEDIN-CONTENT-PLAN.md).
 - WICHTIG bei Anmeldungen: nur den https-Affiliate-LINK annehmen, NIE API-Key/Passwort/Bankdaten.
 
