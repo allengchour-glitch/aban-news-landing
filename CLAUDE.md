@@ -57,6 +57,8 @@ durchgehend die du-Form.
 - `generate_ebook.py` → `downloads/anti-hype-ebook.pdf` (das "Anti-Hype"-eBook,
   beworben auf `ebook.html` und in `roadmap.html`).
 - `generate_launch_manual_pdf.py` → `downloads/launch-manual.pdf`.
+- `generate_kurs.py` → `downloads/ki-werkstatt-kurs.pdf` (das Kurs-Produkt von `kurs.html`,
+  6 Module ausgeschrieben). Ausgeliefert über `kurs-zugang.html` (noindex Lieferseite).
 - Regenerieren: `python3 generate_ebook.py` (idempotent, schreibt nach `downloads/`).
 
 ## Seiten-Inventar (Auswahl)
