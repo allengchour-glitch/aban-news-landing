@@ -519,7 +519,7 @@ Sei der schlauste Antagonist, der mir helfen will.
 
       <div class="card">
         <h3>Context-Window</h3>
-        <p>Wie viel Text das KI-Modell auf einmal verarbeiten kann. Aktuelle Werte: 200K (Anthropic Sonnet) bis 1M (Google Gemini) Tokens. Größer ist nicht immer besser — Performance fällt oft am Rand des Fensters ab.</p>
+        <p>Wie viel Text das KI-Modell auf einmal verarbeiten kann. Aktuelle Werte reichen von ~200K bis 1M Tokens (Gemini, inzwischen auch Claude in der großen Variante). Größer ist nicht immer besser — Performance fällt oft am Rand des Fensters ab, und du zahlst für jeden Token im Kontext.</p>
       </div>
 
       <div class="card">
@@ -564,7 +564,7 @@ Sei der schlauste Antagonist, der mir helfen will.
 
       <div class="card">
         <h3>LLM</h3>
-        <p>„Large Language Model". Sammel-Begriff für die großen Text-KI-Modelle (GPT-4, Claude, Gemini, Mistral). Funktioniert per Wort-für-Wort-Vorhersage, kein Verständnis im menschlichen Sinn.</p>
+        <p>„Large Language Model". Sammel-Begriff für die großen Text-KI-Modelle (GPT, Claude, Gemini, Mistral). Funktioniert per Wort-für-Wort-Vorhersage, kein Verständnis im menschlichen Sinn.</p>
       </div>
 
       <div class="card">
@@ -579,7 +579,7 @@ Sei der schlauste Antagonist, der mir helfen will.
 
       <div class="card">
         <h3>Parameter</h3>
-        <p>Die internen „Drehknöpfe" eines KI-Modells. Mehr Parameter = größere Kapazität, aber nicht automatisch „besser". GPT-4 hat ungefähr 1.8 Billionen Parameter, kleine Modelle wie Mistral 7B haben 7 Milliarden.</p>
+        <p>Die internen „Drehknöpfe" eines KI-Modells. Mehr Parameter = größere Kapazität, aber nicht automatisch „besser". Große Frontier-Modelle liegen im Bereich von Hunderten Milliarden bis über eine Billion Parameter, kleine Modelle wie Mistral 7B bei 7 Milliarden. Exakte Zahlen halten die großen Anbieter meist unter Verschluss.</p>
       </div>
 
       <div class="card">
@@ -609,7 +609,7 @@ Sei der schlauste Antagonist, der mir helfen will.
 
       <div class="card">
         <h3>Schema (JSON-Schema)</h3>
-        <p>Vorgabe, in welchem Format die KI-Antwort kommen soll. Statt Free-Text bekommst du strukturierte Daten, die du direkt in Datenbanken oder Code einlesen kannst. Game-Changer für Automation.</p>
+        <p>Vorgabe, in welchem Format die KI-Antwort kommen soll. Statt Free-Text bekommst du strukturierte Daten, die du direkt in Datenbanken oder Code einlesen kannst. Macht Automation deutlich robuster, weil du kein Parsing von Fließtext mehr brauchst.</p>
       </div>
 
       <div class="card">
@@ -661,26 +661,47 @@ Sei der schlauste Antagonist, der mir helfen will.
 
   <section id="dsgvo">
     <div class="wrap">
-      <h2>DSGVO-AI-Checkliste — 15 Punkte</h2>
-      <p class="muted">Bevor du KI in deiner Firma einsetzt, geh diese Liste durch. Keine Anwalts-Beratung, aber ein vernünftiger Sanity-Check.</p>
+      <h2>DSGVO- und AI-Act-Checkliste — Stand 2026</h2>
+      <p class="muted">Bevor du KI in deiner Firma einsetzt, geh diese Liste durch. Keine Anwalts-Beratung, aber ein vernünftiger Sanity-Check — jetzt mit den Punkten aus dem EU AI Act, der seit Februar 2025 stufenweise greift.</p>
 
       <div class="card">
+        <h3>DSGVO — die Basics</h3>
         <ol style="line-height: 1.8;">
-          <li><strong>Welche Daten gehen rein?</strong> Personenbezogene Daten (Namen, E-Mails, IPs)? Geschäftsgeheimnisse? Wenn ja: Hosting-Standort prüfen.</li>
-          <li><strong>Wo ist der KI-Anbieter gehostet?</strong> US-Cloud (OpenAI, Anthropic Standard) braucht AVV plus EU-Datenschutz-Klauseln. EU-Hosting (Mistral, einige Anthropic-Optionen) ist einfacher.</li>
-          <li><strong>AVV unterzeichnet?</strong> Auftragsverarbeitungs-Vertrag mit dem Anbieter. OpenAI, Anthropic, Google haben Standard-AVVs zum Download — vor Nutzung sichern.</li>
-          <li><strong>Daten-Lösch-Frist?</strong> Standardmäßig speichern Anbieter API-Inputs 30 Tage (für Missbrauchs-Erkennung). „Zero-Retention"-Option oft verfügbar — anfordern.</li>
-          <li><strong>Wer im Team hat Zugriff?</strong> Need-to-know-Prinzip. Nicht jeder Mitarbeiter braucht den API-Key in der Hand.</li>
-          <li><strong>Logging und Audit-Trail?</strong> Wer hat wann was an die KI geschickt? Bei sensiblen Daten dokumentieren (Compliance-Pflicht für regulierte Branchen).</li>
-          <li><strong>Output-Verifikation?</strong> Halluzinationen sind DSGVO-Risiko, wenn die KI falsche Personen-Daten generiert. Output-Check vor Weiterverarbeitung einbauen.</li>
-          <li><strong>Datenschutzerklärung aktualisiert?</strong> Wenn KI personenbezogene Daten verarbeitet, muss das in der DSE stehen — welcher Anbieter, welcher Zweck, welche Rechtsgrundlage.</li>
-          <li><strong>Einwilligung wo nötig?</strong> Z.B. wenn Kunden-Mails durch KI gehen: Einwilligung oder berechtigtes Interesse dokumentieren.</li>
-          <li><strong>Trainings-Daten-Opt-Out?</strong> Anthropic, OpenAI Standard: API-Inputs werden NICHT zum Training genutzt. ChatGPT-Web-UI ohne Opt-Out: ja, werden genutzt — Setting umstellen.</li>
-          <li><strong>Mitarbeiter geschult?</strong> Welche Daten dürfen NIE in ChatGPT? Klare Liste verteilen (Kunden-Namen, Gehälter, Geschäftsgeheimnisse).</li>
-          <li><strong>Backup-Strategie wenn Anbieter ausfällt?</strong> OpenAI-Outage = dein Workflow steht. Multi-Provider-Setup oder lokaler Fallback?</li>
-          <li><strong>DSFA (Datenschutz-Folgenabschätzung)?</strong> Bei umfangreicher oder sensibler KI-Verarbeitung pflicht — vor Einsatz, nicht danach.</li>
-          <li><strong>Drittland-Übermittlung dokumentiert?</strong> US-Anbieter = Drittland. Standardvertragsklauseln plus TIA (Transfer-Impact-Assessment) parat haben.</li>
-          <li><strong>Lösch-Pfad für Betroffene?</strong> Wenn ein Kunde Daten-Löschung verlangt, kannst du sicherstellen, dass auch Cache-Logs beim KI-Anbieter mit gelöscht werden? Prozess dokumentiert?</li>
+          <li><strong>Welche Daten gehen rein?</strong> Personenbezogene Daten (Namen, E-Mails, IPs)? Geschäftsgeheimnisse? Besondere Kategorien (Gesundheit, Religion)? Wenn ja: Hosting-Standort und Rechtsgrundlage vorher klären.</li>
+          <li><strong>Zweckbindung definiert?</strong> Wofür genau nutzt du die KI — und nur dafür? Daten, die du fürs Mahnwesen erhoben hast, dürfen nicht ohne Weiteres ins Marketing-Modell wandern. Zweck schriftlich festhalten.</li>
+          <li><strong>AVV unterzeichnet?</strong> Auftragsverarbeitungs-Vertrag (Art. 28 DSGVO) mit jedem Anbieter, der in deinem Auftrag Daten verarbeitet. OpenAI, Anthropic, Google, Mistral und Microsoft stellen Standard-AVVs (DPA) zum Abschluss bereit — vor Produktiv-Nutzung abschließen, als PDF sichern und im Verzeichnis der Verarbeitungstätigkeiten ablegen. Achtung Sub-Prozessoren: prüfe, wen der Anbieter selbst einbindet (z.B. Hosting auf Hyperscalern).</li>
+          <li><strong>Daten-Residenz und US CLOUD Act?</strong> US-Anbieter unterliegen dem CLOUD Act, auch wenn sie in EU-Rechenzentren hosten — US-Behörden können theoretisch Zugriff verlangen. Echte EU-Datenresidenz (z.B. Mistral, Aleph Alpha, EU-Region bei Azure OpenAI mit Data-Residency-Zusage) reduziert das Risiko, hebt es aber nicht komplett auf.</li>
+          <li><strong>Drittland-Übermittlung dokumentiert?</strong> US-Anbieter = Drittland. Stütz dich aufs EU-US Data Privacy Framework (prüfen, ob der Anbieter zertifiziert ist) oder auf Standardvertragsklauseln plus TIA (Transfer-Impact-Assessment). Beides parat haben.</li>
+          <li><strong>Daten-Lösch-Frist und Zero-Retention?</strong> Anbieter speichern API-Inputs oft 30 Tage zur Missbrauchs-Erkennung. Zero-Data-Retention ist bei OpenAI und Anthropic auf Anfrage / über Enterprise verfügbar — anfordern, wenn du sensible Daten schickst.</li>
+          <li><strong>Trainings-Daten-Opt-Out?</strong> API-Inputs von OpenAI und Anthropic werden standardmäßig NICHT zum Training genutzt. Bei Chat-Web-UIs ist das oft anders (ChatGPT Free/Plus: Training an, sofern nicht abgeschaltet) — Setting prüfen und Team-Konten zentral einstellen.</li>
+          <li><strong>Datenschutzerklärung aktualisiert?</strong> Wenn KI personenbezogene Daten verarbeitet, muss das in die DSE: welcher Anbieter, welcher Zweck, welche Rechtsgrundlage, Drittland-Hinweis.</li>
+          <li><strong>Einwilligung oder berechtigtes Interesse?</strong> Rechtsgrundlage je Use-Case dokumentieren. Gehen Kunden-Mails durch ein Modell, brauchst du Einwilligung oder ein sauber abgewogenes berechtigtes Interesse (Art. 6 DSGVO).</li>
+          <li><strong>DSFA (Datenschutz-Folgenabschätzung)?</strong> Bei umfangreicher oder sensibler KI-Verarbeitung Pflicht (Art. 35) — vor Einsatz, nicht danach.</li>
+          <li><strong>Lösch-Pfad für Betroffene?</strong> Bei einem Löschverlangen: kannst du sicherstellen, dass auch Logs und Caches beim Anbieter mit erfasst werden? Prozess dokumentieren.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h3>EU AI Act — was 2026 dazukommt</h3>
+        <p class="muted">Der AI Act gilt seit August 2024 und greift gestaffelt. Die für kleine Firmen wichtigsten Stufen:</p>
+        <ol style="line-height: 1.8;">
+          <li><strong>Verbotene Praktiken (seit Feb 2025):</strong> Social Scoring, manipulatives Nudging, ungezielte Gesichts-Scraping-Datenbanken und Emotions-Erkennung am Arbeitsplatz sind untersagt. Prüf, dass keiner deiner Use-Cases hier reinrutscht.</li>
+          <li><strong>KI-Kompetenz (Art. 4, seit Feb 2025):</strong> Wer KI einsetzt, muss für ausreichendes Grundverständnis im Team sorgen. Eine kurze interne Schulung plus Nutzungsrichtlinie reicht für die meisten Solo- und KMU-Setups.</li>
+          <li><strong>GPAI-Pflichten und Code of Practice:</strong> Pflichten für Anbieter von General-Purpose-KI (die großen Modelle) gelten seit August 2025. Der freiwillige GPAI Code of Practice ist das Mittel, mit dem Anbieter Konformität zeigen; für Modelle, die vor August 2025 auf dem Markt waren, greift die Durchsetzung ab dem 1. September 2026. Für dich als reinen Nutzer ist das mittelbar — achte bei der Anbieterwahl darauf, ob dein Provider den Code unterzeichnet hat und eine Modell-Dokumentation bereitstellt.</li>
+          <li><strong>Kennzeichnungspflicht für KI-Outputs (Art. 50, ab 2. August 2026):</strong> KI-generierte oder -bearbeitete Texte, Bilder, Audio und Video müssen als solche erkennbar sein; Deepfakes und KI-Texte zu Themen von öffentlichem Interesse sind offenzulegen. Anbieter generativer Systeme müssen ihre Outputs zudem maschinenlesbar markieren. Praktisch für dich: leg dir eine Kennzeichnungs-Konvention zurecht — eine sichtbare Hinweis-Zeile am Output plus, wo möglich, C2PA-/Content-Credentials-Metadaten bei Bildern. Reine menschliche Redaktion mit KI-Hilfe im Hintergrund ist nicht automatisch kennzeichnungspflichtig — im Zweifel offenlegen.</li>
+          <li><strong>Transparenz bei Chatbots:</strong> Nutzer müssen erkennen, dass sie mit einer KI sprechen, nicht mit einem Menschen. Wenn du einen Kunden-Bot baust: klarer Hinweis am Anfang.</li>
+          <li><strong>Hochrisiko-Check:</strong> Die schweren Pflichten für Hochrisiko-Systeme (Anhang III, u.a. Bewerber-Auswahl, Bonitäts-Scoring) greifen ab August 2026/2027. Prüf ehrlich, ob dein Use-Case darunter fällt — die meisten Marketing- und Text-Workflows tun es nicht, HR- und Kredit-Themen schon.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h3>Betrieb und Governance</h3>
+        <ol style="line-height: 1.8;">
+          <li><strong>Wer im Team hat Zugriff?</strong> Need-to-know-Prinzip. Nicht jeder braucht den API-Key in der Hand; Schlüssel rotieren und je Dienst trennen.</li>
+          <li><strong>Logging und Audit-Trail?</strong> Wer hat wann was an die KI geschickt? Bei sensiblen Daten und regulierten Branchen dokumentieren.</li>
+          <li><strong>Output-Verifikation?</strong> Halluzinationen sind ein DSGVO-Risiko, wenn die KI falsche Personen-Daten erzeugt. Output-Check vor Weiterverarbeitung einbauen.</li>
+          <li><strong>Mitarbeiter geschult und Richtlinie verteilt?</strong> Klare Liste, welche Daten NIE in ein offenes Chat-Tool dürfen (Kunden-Namen, Gehälter, Geschäftsgeheimnisse). Deckt zugleich die KI-Kompetenz-Pflicht aus Art. 4 ab.</li>
+          <li><strong>Backup-Strategie wenn Anbieter ausfällt?</strong> Ein Provider-Outage legt deinen Workflow lahm. Multi-Provider-Setup oder lokaler Fallback einplanen.</li>
         </ol>
       </div>
     </div>
@@ -751,96 +772,110 @@ Sei der schlauste Antagonist, der mir helfen will.
 
   <section id="stack">
     <div class="wrap">
-      <h2>AI-Tool-Stack 2026 — die 12 Tools die ich nutze</h2>
-      <p class="muted">Ehrlich, kein Affiliate, kein Sponsoring. Was ich täglich benutze.</p>
+      <h2>AI-Tool-Stack 2026 — die Tools die ich nutze</h2>
+      <p class="muted">Ehrlich, kein Affiliate, kein Sponsoring. Was ich täglich benutze. Preise sind Listenpreise, Stand Anfang 2026 — wechselkurs- und planabhängig, also vor Kauf selbst prüfen. (Wäre ein Affiliate-Link aktiv, würde er mit * markiert — ist aktuell keiner.)</p>
 
       <div class="grid grid--2">
         <div class="card">
-          <h3>1. Claude (Sonnet 4.7)</h3>
-          <p><strong>Use-Case:</strong> Texten, Schreiben, Recherche.<br>
-          <strong>Preis:</strong> 20 USD/Monat (Pro), API ab 3 USD/Mio Input-Tokens.<br>
-          <strong>Warum:</strong> Bestes Modell für deutsche Texte und Anti-Hype-Stil. Code-Skills auch sehr gut.</p>
+          <h3>1. <a href="https://claude.ai">Claude</a></h3>
+          <p><strong>Use-Case:</strong> Texten, Schreiben, Recherche, Code.<br>
+          <strong>Preis:</strong> ab 20 USD/Monat (Pro); API nach Tokens, gestaffelt nach Modell.<br>
+          <strong>Warum:</strong> Für mich das stärkste Modell bei deutschen Texten und beim Anti-Hype-Ton. Die API trainiert standardmäßig nicht auf deinen Inputs, AVV verfügbar.</p>
         </div>
 
         <div class="card">
-          <h3>2. ChatGPT Plus</h3>
-          <p><strong>Use-Case:</strong> Bildgenerierung (DALL-E), gelegentlich Voice-Mode.<br>
-          <strong>Preis:</strong> 20 USD/Monat.<br>
-          <strong>Warum:</strong> Eigentlich überflüssig wenn man Claude hat — aber Voice + Image als Add-on.</p>
+          <h3>2. <a href="https://mistral.ai">Mistral (Le Chat)</a></h3>
+          <p><strong>Use-Case:</strong> Zweit-Modell, vor allem wenn EU-Datenresidenz zählt.<br>
+          <strong>Preis:</strong> Gratis-Tier; Pro ab ca. 15 EUR/Monat; API nach Tokens.<br>
+          <strong>Warum:</strong> EU-Anbieter (Frankreich), gutes Deutsch, sinnvolle Wahl wenn der US CLOUD Act für dich ein Thema ist. Nicht ganz auf Claude-Niveau bei langen Texten, aber nah dran.</p>
         </div>
 
         <div class="card">
-          <h3>3. Make.com</h3>
-          <p><strong>Use-Case:</strong> Newsletter-Pipeline, alle Automations.<br>
-          <strong>Preis:</strong> 29 USD/Monat (Core).<br>
-          <strong>Warum:</strong> Mehr Logik-Möglichkeiten als Zapier, EU-Hosting, günstiger pro Operation.</p>
+          <h3>3. <a href="https://www.deepl.com/write">DeepL Write</a></h3>
+          <p><strong>Use-Case:</strong> Deutsche Texte glätten, Übersetzen, Ton justieren.<br>
+          <strong>Preis:</strong> Gratis-Tier; Pro ab ca. 9 EUR/Monat.<br>
+          <strong>Warum:</strong> Deutscher Anbieter, sehr gut beim Feinschliff ohne den typischen KI-Sound. Ergänzt das LLM, ersetzt es nicht.</p>
         </div>
 
         <div class="card">
-          <h3>4. Notion</h3>
-          <p><strong>Use-Case:</strong> Knowledge-Base, Newsletter-Themen-Pipeline, Notes.<br>
-          <strong>Preis:</strong> 10 USD/Monat (Plus).<br>
-          <strong>Warum:</strong> Mit Notion AI als Premium-Feature gut für interne Recherche-Notes.</p>
+          <h3>4. <a href="https://www.make.com">Make.com</a></h3>
+          <p><strong>Use-Case:</strong> Newsletter-Pipeline, die meisten Automations.<br>
+          <strong>Preis:</strong> ab 29 USD/Monat (Core).<br>
+          <strong>Warum:</strong> Mehr Logik als Zapier, EU-Rechenzentrum wählbar, günstig pro Operation. Für viele Flows reicht der Core-Plan.</p>
         </div>
 
         <div class="card">
-          <h3>5. Raycast</h3>
-          <p><strong>Use-Case:</strong> Launcher + integrierte Claude-Calls direkt aus dem Spotlight.<br>
-          <strong>Preis:</strong> Gratis (Mac-only).<br>
-          <strong>Warum:</strong> Spart pro Tag 15 Min „Tab-Wechsel" zu ChatGPT.</p>
+          <h3>5. <a href="https://n8n.io">n8n</a></h3>
+          <p><strong>Use-Case:</strong> Automations, die du selbst hosten oder feiner kontrollieren willst.<br>
+          <strong>Preis:</strong> Self-Hosted gratis (Server-Kosten kommen dazu); Cloud ab ca. 20 EUR/Monat.<br>
+          <strong>Warum:</strong> Open-Source-Alternative zu Make, deutscher Ursprung. Self-Hosted auf einem EU-Server (Hetzner) hältst du alle Daten im Haus. Mehr Bastelarbeit als Make.</p>
         </div>
 
         <div class="card">
-          <h3>6. beehiiv</h3>
-          <p><strong>Use-Case:</strong> Newsletter-Versand (geplant ab 200 Subs).<br>
-          <strong>Preis:</strong> Gratis bis 2500 Subs.<br>
-          <strong>Warum:</strong> Beste Analytics, integriertes Sponsor-Marketplace, EU-Datacenter-Option.</p>
+          <h3>6. <a href="https://www.beehiiv.com">beehiiv</a></h3>
+          <p><strong>Use-Case:</strong> Newsletter-Versand und Analytics.<br>
+          <strong>Preis:</strong> Gratis-Tier für den Start; bezahlte Pläne ab ca. 39 USD/Monat.<br>
+          <strong>Warum:</strong> Solide Analytics und ein Sponsor-Marktplatz. US-Anbieter — für DSGVO AVV abschließen und Datenfelder schlank halten.</p>
         </div>
 
         <div class="card">
-          <h3>7. Cursor</h3>
-          <p><strong>Use-Case:</strong> Code-Editor mit Claude-Integration.<br>
-          <strong>Preis:</strong> 20 USD/Monat (Pro).<br>
-          <strong>Warum:</strong> Schneller als VS Code + Copilot für mein Use-Case (Solo-Dev, kleine Codebase).</p>
+          <h3>7. <a href="https://notion.so">Notion</a></h3>
+          <p><strong>Use-Case:</strong> Knowledge-Base, Themen-Pipeline, Notizen.<br>
+          <strong>Preis:</strong> Gratis-Tier; Plus ab ca. 10 USD/Monat.<br>
+          <strong>Warum:</strong> Flexibel für interne Recherche-Notes. Bei sensiblen Daten dran denken: US-Anbieter, also nichts Personenbezogenes ungeprüft rein.</p>
         </div>
 
         <div class="card">
-          <h3>8. Perplexity</h3>
+          <h3>8. <a href="https://cursor.com">Cursor</a></h3>
+          <p><strong>Use-Case:</strong> Code-Editor mit LLM-Integration.<br>
+          <strong>Preis:</strong> Gratis-Tier; Pro ab 20 USD/Monat.<br>
+          <strong>Warum:</strong> Für Solo-Dev mit kleiner Codebase schneller als VS Code plus Plugin. Privacy-Mode aktivieren, dann landet dein Code nicht im Training.</p>
+        </div>
+
+        <div class="card">
+          <h3>9. <a href="https://perplexity.ai">Perplexity</a></h3>
           <p><strong>Use-Case:</strong> Recherche mit Live-Web-Suche und Quellen-Links.<br>
-          <strong>Preis:</strong> Gratis (Pro 20 USD/Monat).<br>
-          <strong>Warum:</strong> Quellen-Transparenz besser als ChatGPT-Search.</p>
+          <strong>Preis:</strong> Gratis-Tier; Pro 20 USD/Monat.<br>
+          <strong>Warum:</strong> Quellen stehen transparent dabei, gut zum Gegenchecken. Links trotzdem selbst öffnen — auch Perplexity verkürzt mal.</p>
         </div>
 
         <div class="card">
-          <h3>9. Pinecone (Lite)</h3>
-          <p><strong>Use-Case:</strong> Vector-DB für mein internes RAG (alte Newsletter-Ausgaben).<br>
-          <strong>Preis:</strong> Gratis bis 100k Vectors.<br>
-          <strong>Warum:</strong> Reicht für Solo-Setup, später vielleicht Wechsel zu Qdrant Self-Hosted.</p>
-        </div>
-
-        <div class="card">
-          <h3>10. Plausible</h3>
+          <h3>10. <a href="https://plausible.io">Plausible</a></h3>
           <p><strong>Use-Case:</strong> Website-Analytics ohne Tracking-Cookies.<br>
-          <strong>Preis:</strong> 9 USD/Monat.<br>
-          <strong>Warum:</strong> DSGVO-konform, EU-Hosting, keine Cookie-Banner nötig.</p>
+          <strong>Preis:</strong> ab 9 USD/Monat.<br>
+          <strong>Warum:</strong> EU-Hosting, kein Cookie-Banner nötig, Open-Source. Für die Basis-Zahlen reicht es vollständig.</p>
         </div>
 
         <div class="card">
-          <h3>11. Tana</h3>
-          <p><strong>Use-Case:</strong> Recherche-Graph für Newsletter-Themen, Verbindungen zwischen News.<br>
-          <strong>Preis:</strong> Gratis (Plus 8 USD/Monat).<br>
-          <strong>Warum:</strong> Roam-Style Knowledge-Graph mit AI-Tagging, hilft bei Trend-Erkennung.</p>
+          <h3>11. <a href="https://cal.com">Cal.com</a></h3>
+          <p><strong>Use-Case:</strong> Termin-Buchung für Calls und Sponsor-Gespräche.<br>
+          <strong>Preis:</strong> Gratis für Einzelnutzer; Teams ab ca. 12 USD/Monat. Self-Hosting möglich.<br>
+          <strong>Warum:</strong> Open-Source-Alternative zu Calendly, EU-Self-Hosting machbar, AVV verfügbar.</p>
         </div>
 
         <div class="card">
-          <h3>12. ProtonMail (Custom Domain)</h3>
-          <p><strong>Use-Case:</strong> hallo@, sponsoring@, datenschutz@ Forwarding.<br>
-          <strong>Preis:</strong> 4 USD/Monat.<br>
-          <strong>Warum:</strong> EU-Hosting (Schweiz), DSGVO-konform, eine eigene Domain für mehrere Aliases.</p>
+          <h3>12. <a href="https://www.bexio.com">bexio</a></h3>
+          <p><strong>Use-Case:</strong> Buchhaltung, Rechnungen, Belege (DACH, vor allem Schweiz).<br>
+          <strong>Preis:</strong> ab ca. 29 CHF/Monat.<br>
+          <strong>Warum:</strong> Schweizer Anbieter, auf KMU im DACH-Raum zugeschnitten. Für deutsche Firmen sind lexoffice oder sevDesk die naheliegenderen Pendants.</p>
+        </div>
+
+        <div class="card">
+          <h3>13. <a href="https://proton.me">Proton Mail (Custom Domain)</a></h3>
+          <p><strong>Use-Case:</strong> hallo@, sponsoring@, datenschutz@ samt Aliases.<br>
+          <strong>Preis:</strong> ab ca. 4 USD/Monat.<br>
+          <strong>Warum:</strong> Hosting in der Schweiz, Ende-zu-Ende-Verschlüsselung, eine Domain für mehrere Aliases.</p>
+        </div>
+
+        <div class="card">
+          <h3>14. <a href="https://qdrant.tech">Qdrant</a></h3>
+          <p><strong>Use-Case:</strong> Vector-DB fürs interne RAG (alte Ausgaben durchsuchbar).<br>
+          <strong>Preis:</strong> Self-Hosted gratis; Cloud mit Gratis-Tier.<br>
+          <strong>Warum:</strong> Open-Source, self-hostbar in der EU, damit bleibt der RAG-Index im Haus. Für Mini-Setups reicht aber weiter ein simples File — nicht überbauen.</p>
         </div>
       </div>
 
-      <p class="muted mt-5">Gesamtkosten: ~150 USD/Monat. Nicht jedes Tool brauchst du — Claude + Make + beehiiv reichen für 80% des Setups.</p>
+      <p class="muted mt-5">Nicht jedes Tool brauchst du. Für den Start reichen Claude (oder Mistral, wenn EU-Residenz Pflicht ist), Make (oder n8n) und ein Versand-Tool. Den Rest holst du dazu, wenn ein konkretes Problem danach fragt — nicht vorher.</p>
     </div>
   </section>
 
@@ -901,7 +936,7 @@ Hi [Name],
 Folge XX mit [Gast] hab ich diese Woche gehört — der
 Punkt über [konkrete Stelle] hat bei mir was angestoßen.
 
-Ich schreib aban news — den ersten täglichen DE-AI-Newsletter.
+Ich schreib aban news — einen täglichen DE-AI-Newsletter.
 Schwerpunkt: ehrliche Tool-Reviews, DSGVO-AI-Workflows für
 KMU, Anti-Hype-Curation.
 
