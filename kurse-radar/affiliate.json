@@ -1,0 +1,53 @@
+{
+  "_comment": "So verdienst du Geld: Melde dich beim Partnerprogramm des jeweiligen Anbieters an (Spalte 'signup'). Du bekommst einen persönlichen Link. Trage diesen Link bei 'affiliate_url' ein und entferne das führende '_' im Key. Die Seite markiert ihn dann automatisch mit * und blendet den Transparenzhinweis ein, dann baut sie sich neu. Kurse ohne aktiven Eintrag verlinken auf die offizielle Anbieter-URL aus data/kurse.json (keine Provision).",
+  "_status": "ALLE SLOTS DEAKTIVIERT (Key mit '_'-Präfix). Noch keine Affiliate-Links freigegeben. Fallback = offizielle URL / Mail.",
+  "_kontakt_fallback": "mailto:hallo@abannews.com",
+  "_programme": {
+    "_hinweis": "Kuratierte Liste typischer Kurs-Partnerprogramme, gemappt auf Anbieter in data/kurse.json. 'signup' = wo du dich bewirbst. 'rate' = typische Provision (kann sich ändern, vor Nutzung prüfen). Quelle der Wahrheit für die echte URL bleibt data/kurse.json.",
+    "coursera": {
+      "signup": "https://about.coursera.org/affiliates",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "einmal"
+    },
+    "udemy": {
+      "signup": "https://www.udemy.com/affiliate/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "einmal"
+    },
+    "datacamp": {
+      "signup": "https://www.datacamp.com/affiliates",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "einmal"
+    },
+    "edx": {
+      "signup": "https://www.edx.org/affiliate-program",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "einmal"
+    },
+    "udacity": {
+      "signup": "https://www.udacity.com/affiliates",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "einmal"
+    },
+    "linkedin-learning": {
+      "signup": "https://learning.linkedin.com/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "einmal"
+    }
+  },
+  "links": {
+    "_anleitung": "Trage deinen persönlichen Affiliate-Link bei 'affiliate_url' ein und entferne das führende '_' im Kurs-Key (z.B. '_udemy-ml-az' -> 'udemy-ml-az'). Erst dann wird der Link auf der Seite aktiv (mit * + Transparenzhinweis). Solange das '_' steht, bleibt der Slot deaktiviert und es wird die offizielle URL verlinkt.",
+    "_udemy-ml-az": {
+      "affiliate_url": "https://www.udemy.com/course/machinelearning/?DEIN-CODE"
+    },
+    "_coursera-machine-learning-andrew-ng": {
+      "affiliate_url": "https://www.coursera.org/specializations/machine-learning-introduction?DEIN-CODE"
+    },
+    "_datacamp-data-scientist-python": {
+      "affiliate_url": "https://www.datacamp.com/tracks/data-scientist-with-python?DEIN-CODE"
+    },
+    "_edx-harvard-cs50-ai": {
+      "affiliate_url": "https://www.edx.org/learn/artificial-intelligence/harvard-university-cs50-s-introduction-to-artificial-intelligence-with-python?DEIN-CODE"
+    }
+  }
+}
