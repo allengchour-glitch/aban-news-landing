@@ -189,3 +189,16 @@ Erstes echtes Backend-Tool im Netzwerk (raus aus rein statischem HTML).
 - **Idee/Moat:** dasselbe Werkzeug, mit dem jede Newsletter-Ausgabe geprüft wird, als
   öffentliches Produkt — on-brand (Anti-Hype), nützlich für DACH-Solo-Profis, später als
   Premium-API/Bulk-Check monetisierbar.
+
+### Hype-Filter — Ausbau (parallele Agenten-Runde)
+- Engine deutlich vertieft: Lexikon 49→65 Einträge, neue Kategorien `vage` +
+  `nominalstil`, `metrics.readingLabel`, ReDoS-gehärtet, 73 Engine-Tests.
+- API gehärtet: 405/413/415-Guards, Security-/Cache-Header, Claude-Timeout +
+  Key-Leak-Schutz; 40 API-Tests (`functions/_api.test.mjs`).
+- CI: `.github/workflows/hype-filter-test.yml` fährt die JS-Tests + HTML-Sanity.
+- Frontend: Dark-Mode, Kopier-Buttons, localStorage-Restore, Teilen-per-Hash,
+  Tastatur (Strg/Cmd+Enter), ARIA/Fokus/Print, defensives Rendering.
+- `anti-hype-texten.html` — SEO-Cornerstone-Ratgeber (funnelt zum Tool).
+- `js/hype-filter-widget.js` + `hype-widget-demo.html` — einbettbares Widget
+  (Shadow-DOM, XSS-sicher) für Fremd-Sites → Backlinks. Pretty-URLs `/anti-hype`,
+  `/widget`. Verlinkt in sitemap/_redirects/Footer/resources.

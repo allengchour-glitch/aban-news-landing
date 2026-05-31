@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hype-Filter Widget einbetten — aban news</title>
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#d97706">
+<meta name="description" content="Bette den aban-news Hype-Filter mit einem einzigen Script-Tag auf deiner Website ein. Vanilla-JS, kein Tracking, Style-isoliert.">
+<link rel="canonical" href="https://abannews.com/hype-widget-demo.html">
+<style>
+  :root{
+    --amber:#d97706;--amber-dark:#b45309;--amber-light:#fde9c8;--cream:#fef3c7;
+    --ink:#1f2937;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6;color:var(--ink);background:var(--bg);
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);background:rgba(255,251,245,.9);position:sticky;top:0;backdrop-filter:saturate(140%) blur(6px)}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
+  .brand{font-weight:800;color:var(--ink);text-decoration:none;font-size:18px}
+  .brand span{color:var(--amber)}
+  .btn{display:inline-block;background:var(--amber);color:#fff;text-decoration:none;font-weight:600;padding:8px 14px;border-radius:10px;font-size:14px}
+  .btn:hover{background:var(--amber-dark)}
+  h1{font-size:30px;line-height:1.2;margin:28px 0 8px}
+  h2{font-size:20px;margin:34px 0 8px}
+  .lead{font-size:17px;color:var(--muted);margin:0 0 8px}
+  p{margin:10px 0}
+  a{color:var(--amber-dark)}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+  pre{
+    background:#1c2530;color:#e8eaed;border-radius:12px;padding:16px;overflow:auto;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.5;margin:0;
+  }
+  .code-head{display:flex;align-items:center;justify-content:space-between;margin:0 0 6px}
+  .code-head h3{margin:0;font-size:14px;color:var(--muted);font-weight:600}
+  .copy{font:inherit;font-size:13px;cursor:pointer;background:var(--cream);color:var(--amber-dark);border:1px solid var(--amber-light);border-radius:8px;padding:5px 12px}
+  .copy:hover{background:var(--amber-light)}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600}
+  code.inl{background:var(--cream);color:var(--amber-dark);padding:1px 6px;border-radius:6px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}
+  .note{font-size:14px;color:var(--muted);background:#fffaf2;border:1px dashed var(--amber-light);border-radius:12px;padding:12px 14px;margin:16px 0}
+  footer{border-top:1px solid var(--line);margin-top:40px;color:var(--muted);font-size:13px}
+  footer .wrap{padding-top:20px;padding-bottom:30px}
+  footer a{color:var(--amber-dark);text-decoration:none;margin-right:14px}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="https://abannews.com/">aban <span>news</span></a>
+    <a class="btn" href="https://abannews.beehiiv.com/subscribe">Newsletter</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Hype-Filter als Widget einbetten</h1>
+  <p class="lead">Ein Script-Tag, und deine Leser können ihren Text auf Marketing-Hype prüfen — direkt auf deiner Seite. Vanilla-JS, kein Build, kein Tracking.</p>
+
+  <h2>So sieht es aus</h2>
+  <p>Das Widget unten ist die echte Live-Einbettung dieser Seite. Probier es aus: Text einfügen, auf <strong>Hype prüfen</strong> klicken.</p>
+
+  <div class="panel">
+    <!-- Live-Demo: Mount-Ziel + Skript relativ von dieser Seite -->
+    <div data-hype-filter></div>
+    <script src="/js/hype-filter-widget.js" async></script>
+  </div>
+
+  <h2>Einbetten — kopieren und einfügen</h2>
+  <p>Füge diesen Code an die Stelle deiner Seite, an der das Widget erscheinen soll. Das <code class="inl">&lt;div&gt;</code> ist optional — fehlt es, hängt sich das Widget direkt an der Script-Stelle ein.</p>
+
+  <div class="panel">
+    <div class="code-head">
+      <h3>Standard-Einbettung</h3>
+      <button type="button" class="copy" data-copy="snippet-basic">Kopieren</button>
+    </div>
+<pre id="snippet-basic">&lt;div data-hype-filter&gt;&lt;/div&gt;
+&lt;script src="https://abannews.com/js/hype-filter-widget.js" async&gt;&lt;/script&gt;</pre>
+  </div>
+
+  <div class="panel">
+    <div class="code-head">
+      <h3>Ohne Attribution-Link</h3>
+      <button type="button" class="copy" data-copy="snippet-noattr">Kopieren</button>
+    </div>
+<pre id="snippet-noattr">&lt;div data-hype-filter&gt;&lt;/div&gt;
+&lt;script src="https://abannews.com/js/hype-filter-widget.js"
+        data-attribution="off" async&gt;&lt;/script&gt;</pre>
+  </div>
+
+  <h2>Optionen (data-Attribute)</h2>
+  <p>Die Attribute kannst du entweder am <code class="inl">&lt;script&gt;</code> oder am Mount-<code class="inl">&lt;div data-hype-filter&gt;</code> setzen.</p>
+  <table>
+    <thead><tr><th>Attribut</th><th>Default</th><th>Beschreibung</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code class="inl">data-endpoint</code></td>
+        <td><code class="inl">https://abannews.com/api/hype-check</code></td>
+        <td>Ziel-API für die Analyse. Normalerweise unverändert lassen.</td>
+      </tr>
+      <tr>
+        <td><code class="inl">data-attribution</code></td>
+        <td><code class="inl">on</code></td>
+        <td>Auf <code class="inl">off</code> setzen, um den dezenten „Powered by aban news"-Link auszublenden.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Mehrere Widgets pro Seite sind möglich: einfach mehrere <code class="inl">&lt;div data-hype-filter&gt;</code> platzieren.</p>
+
+  <h2>Datenschutz</h2>
+  <div class="note">
+    <p style="margin-top:0">Der eingegebene Text wird beim Klick auf <strong>Hype prüfen</strong> an die aban-API (<code class="inl">abannews.com/api/hype-check</code>) gesendet und dort analysiert. Das Ergebnis kommt direkt zurück.</p>
+    <p style="margin-bottom:0">Kein Tracking, keine Cookies, keine Drittanbieter-Requests. Das Widget lädt keine externen Fonts und setzt nichts im <code class="inl">window</code>-Objekt außer einem optionalen <code class="inl">AbanHypeFilter</code>-Helfer.</p>
+  </div>
+
+  <h2>Technisches</h2>
+  <p>Das Widget rendert sich in einem <strong>Shadow DOM</strong> — das CSS deiner Seite beeinflusst es nicht und umgekehrt. Alle dynamischen Inhalte werden escaped (XSS-sicher). Ohne Shadow-DOM-Support greift ein Fallback mit stark namespaced Klassen.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="https://abannews.com/hype-filter.html">Hype-Filter</a>
+    <a href="https://abannews.com/impressum.html">Impressum</a>
+    <a href="https://abannews.com/datenschutz.html">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  // Copy-Button: kopiert den unescapten Snippet-Text in die Zwischenablage.
+  (function(){
+    var btns = document.querySelectorAll(".copy");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function(){
+        var pre = document.getElementById(this.getAttribute("data-copy"));
+        if (!pre) return;
+        var text = pre.textContent;
+        var self = this;
+        function ok(){ var t = self.textContent; self.textContent = "Kopiert"; setTimeout(function(){ self.textContent = t; }, 1500); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(ok, function(){});
+        } else {
+          var ta = document.createElement("textarea");
+          ta.value = text; document.body.appendChild(ta); ta.select();
+          try { document.execCommand("copy"); ok(); } catch(e){}
+          document.body.removeChild(ta);
+        }
+      });
+    }
+  })();
+</script>
+</body>
+</html>

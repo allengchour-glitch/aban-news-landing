@@ -40,12 +40,43 @@
   --amber:#d97706;--amber-dark:#b45309;--amber-light:#fde9c8;--cream:#fef3c7;
   --ink:#1f2937;--ink-soft:#374151;--muted:#6b7280;--line:#ece3d4;
   --bg:#fffbf5;--card:#ffffff;
+  --header-bg:rgba(255,251,245,.9);
+  --field-bg:#fffdf9;--shadow:0 1px 3px rgba(0,0,0,.03);
+  --gauge-track:#f1e9da;
+  /* Highlight-Hintergründe + Textfarben, als Token (Dark-Mode-fähig) */
+  --mark-sup-bg:#fde0d6;--mark-sup-fg:#9a2d12;
+  --mark-buzz-bg:#fdeccd;--mark-buzz-fg:#92560a;
+  --mark-int-bg:#e7eff7;--mark-int-fg:#2c5078;
+  --mark-pas-bg:#ede7f6;--mark-pas-fg:#5b3a86;
+  --mark-itp-bg:#fcd9d9;--mark-itp-fg:#a01616;
+  --err-bg:#fcd9d9;--err-fg:#a01616;
+  --focus:#b45309;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --amber:#f0a93a;--amber-dark:#fbbf24;--amber-light:#5a4422;--cream:#3a2f1c;
+    --ink:#f3ede2;--ink-soft:#d6cdbd;--muted:#9c9384;--line:#3a352d;
+    --bg:#1a1712;--card:#231f19;
+    --header-bg:rgba(26,23,18,.9);
+    --field-bg:#1f1b15;--shadow:0 1px 3px rgba(0,0,0,.4);
+    --gauge-track:#3a352d;
+    --mark-sup-bg:#5a2418;--mark-sup-fg:#ffc9b8;
+    --mark-buzz-bg:#5a3f12;--mark-buzz-fg:#ffd98a;
+    --mark-int-bg:#26384a;--mark-int-fg:#aaccea;
+    --mark-pas-bg:#3a2c52;--mark-pas-fg:#cdb6ec;
+    --mark-itp-bg:#5a1c1c;--mark-itp-fg:#ffbcbc;
+    --err-bg:#4a1818;--err-fg:#ffbcbc;
+    --focus:#fbbf24;
+  }
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
 .wrap{max-width:880px;margin:0 auto;padding:0 20px}
 a{color:var(--amber-dark)}
-header.site{position:sticky;top:0;z-index:20;background:rgba(255,251,245,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--amber);color:#fff;padding:10px 16px;border-radius:0 0 8px 0;z-index:50;font-weight:600}
+.skip:focus{left:0}
+header.site{position:sticky;top:0;z-index:20;background:var(--header-bg);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
 .brand{font-weight:800;font-size:18px;color:var(--amber);text-decoration:none;letter-spacing:-.02em}
 .brand span{opacity:.8}
@@ -59,12 +90,22 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .hero h1 .accent{color:var(--amber)}
 .hero p{font-size:clamp(16px,2.2vw,19px);color:var(--ink-soft);max-width:620px;margin:0 auto}
 .tool{padding:8px 20px 16px}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
 label.fld{display:block;font-weight:600;font-size:14px;margin-bottom:8px;color:var(--ink-soft)}
-textarea{width:100%;min-height:200px;resize:vertical;font:inherit;font-size:15px;line-height:1.6;padding:14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9;color:var(--ink)}
+textarea{width:100%;min-height:200px;resize:vertical;font:inherit;font-size:15px;line-height:1.6;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--field-bg);color:var(--ink)}
 textarea:focus{outline:2px solid var(--amber-light);border-color:var(--amber)}
 .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
 .row .count{margin-left:auto;font-size:13px;color:var(--muted)}
+.count.warn{color:var(--err-fg);font-weight:600}
+.kbdhint{font-size:12px;color:var(--muted);margin-top:8px}
+.kbd{display:inline-block;font:inherit;font-size:11px;line-height:1;padding:3px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:var(--bg);color:var(--ink-soft)}
+.restored{display:none;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.restored.show{display:flex}
+.linkbtn{font:inherit;font-size:13px;background:none;border:none;color:var(--amber-dark);cursor:pointer;text-decoration:underline;padding:0}
+.linkbtn:hover{text-decoration:none}
+.copybtn{font:inherit;font-size:13px;background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);border-radius:8px;padding:6px 12px;cursor:pointer;transition:all .15s}
+.copybtn:hover{background:var(--cream);border-color:var(--amber-light);color:var(--amber-dark)}
+.copybtn.ok{background:var(--cream);color:var(--amber-dark);border-color:var(--amber-light)}
 .examples{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
 .exlabel{font-size:13px;color:var(--muted)}
 .chip{font:inherit;font-size:13px;background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);border-radius:999px;padding:5px 12px;cursor:pointer;transition:all .15s}
@@ -74,7 +115,7 @@ textarea:focus{outline:2px solid var(--amber-light);border-color:var(--amber)}
 .results.show{display:block}
 .scorecard{display:flex;gap:18px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:16px}
 .gauge{--v:0;width:96px;height:96px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
-  background:conic-gradient(var(--gc,#d97706) calc(var(--v)*1%),#f1e9da 0)}
+  background:conic-gradient(var(--gc,#d97706) calc(var(--v)*1%),var(--gauge-track) 0)}
 .gauge .inner{width:74px;height:74px;border-radius:50%;background:var(--card);display:grid;place-items:center;text-align:center}
 .gauge .num{font-size:26px;font-weight:800;line-height:1}
 .gauge .lbl{font-size:10px;color:var(--muted)}
@@ -85,13 +126,13 @@ textarea:focus{outline:2px solid var(--amber-light);border-color:var(--amber)}
 .metric .v{font-size:22px;font-weight:800;line-height:1}
 .metric .k{font-size:12px;color:var(--muted);margin-top:3px}
 h3.sec{font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:22px 0 10px}
-.highlight{line-height:1.9;font-size:15px;background:#fffdf9;border:1px solid var(--line);border-radius:10px;padding:16px;white-space:pre-wrap;word-break:break-word}
+.highlight{line-height:1.9;font-size:15px;background:var(--field-bg);border:1px solid var(--line);border-radius:10px;padding:16px;white-space:pre-wrap;word-break:break-word}
 mark{border-radius:4px;padding:0 3px;font-weight:600;cursor:help}
-mark.superlativ,mark.versprechen{background:#fde0d6;color:#9a2d12}
-mark.buzzword{background:#fdeccd;color:#92560a}
-mark.intensivierer,mark.füllwort{background:#e7eff7;color:#2c5078}
-mark.passiv{background:#ede7f6;color:#5b3a86}
-mark.interpunktion{background:#fcd9d9;color:#a01616}
+mark.superlativ,mark.versprechen{background:var(--mark-sup-bg);color:var(--mark-sup-fg)}
+mark.buzzword{background:var(--mark-buzz-bg);color:var(--mark-buzz-fg)}
+mark.intensivierer,mark.füllwort{background:var(--mark-int-bg);color:var(--mark-int-fg)}
+mark.passiv{background:var(--mark-pas-bg);color:var(--mark-pas-fg)}
+mark.interpunktion{background:var(--mark-itp-bg);color:var(--mark-itp-fg)}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:8px}
 .legend span{display:inline-flex;align-items:center;gap:5px}
 .swatch{width:12px;height:12px;border-radius:3px;display:inline-block}
@@ -105,12 +146,15 @@ mark.interpunktion{background:#fcd9d9;color:#a01616}
 .cat li b{color:var(--ink)}
 ul.tips{margin:6px 0 0;padding-left:18px}
 ul.tips li{margin:6px 0;font-size:15px}
-.rewrite{background:#fffdf9;border:1px solid var(--line);border-radius:10px;padding:16px;white-space:pre-wrap;font-size:15px;line-height:1.7}
+.rewrite{background:var(--field-bg);border:1px solid var(--line);border-radius:10px;padding:16px;white-space:pre-wrap;font-size:15px;line-height:1.7}
 .rwhint{font-size:13px;color:var(--muted);margin:8px 0 4px}
+.rwhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:22px 0 10px}
+.rwhead h3.sec{margin:0}
+.rwhead .copybtn{margin-left:auto}
 .cta{margin:36px 0 8px;background:linear-gradient(135deg,var(--cream),#fff);border:1px solid var(--amber-light);border-radius:14px;padding:24px;text-align:center}
 .cta h2{font-size:22px;margin-bottom:6px}
 .cta p{color:var(--ink-soft);max-width:520px;margin:0 auto 16px}
-.err{display:none;background:#fcd9d9;color:#a01616;border-radius:10px;padding:12px 14px;margin-top:12px;font-size:14px}
+.err{display:none;background:var(--err-bg);color:var(--err-fg);border-radius:10px;padding:12px 14px;margin-top:12px;font-size:14px}
 .err.show{display:block}
 details.how{margin:24px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:0}
 details.how summary{cursor:pointer;font-weight:600;padding:14px 16px;list-style:none}
@@ -124,10 +168,27 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem
 footer a{color:var(--muted)}
 .spin{display:inline-block;width:15px;height:15px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:6px}
 @keyframes sp{to{transform:rotate(360deg)}}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:600px){.scorecard{gap:12px}}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .spin{animation:none;border:2px solid #fff;border-top-color:rgba(255,255,255,.3)}
+  *{transition-duration:.001ms !important}
+}
+@media print{
+  header.site,.hero,.examples,.kbdhint,.restored,.row .count,#go,#ai,.copybtn,.linkbtn,.cta,details.how,footer,.err{display:none !important}
+  body{background:#fff;color:#000}
+  .panel{border:none;box-shadow:none;padding:0}
+  .results{display:block !important}
+  mark{border:1px solid #999;font-weight:600;background:#fff !important;color:#000 !important}
+  .highlight,.rewrite,.metric,.cat{border-color:#bbb}
+  a{color:#000;text-decoration:underline}
+}
 </style>
 </head>
 <body>
+
+<a class="skip" href="#inp">Direkt zum Texteingabefeld</a>
 
 <header class="site">
   <div class="wrap">
@@ -147,30 +208,37 @@ footer a{color:var(--muted)}
   <div class="wrap">
     <div class="panel">
       <label class="fld" for="inp">Dein Text (Deutsch)</label>
-      <textarea id="inp" placeholder="Beispiel: Unsere revolutionäre, KI-gestützte Lösung ist ein absoluter Game-Changer und steigert deinen Umsatz garantiert um 10x — mühelos und im Handumdrehen!"></textarea>
+      <textarea id="inp" aria-describedby="count kbdhint" maxlength="20000" placeholder="Beispiel: Unsere revolutionäre, KI-gestützte Lösung ist ein absoluter Game-Changer und steigert deinen Umsatz garantiert um 10x — mühelos und im Handumdrehen!"></textarea>
+      <p class="kbdhint" id="kbdhint">Tipp: <span class="kbd" id="kbdLabel">Strg + Enter</span> prüft den Text direkt.</p>
       <div class="row">
-        <button id="go" class="btn">Auf Hype prüfen</button>
-        <span class="count" id="count">0 Zeichen</span>
+        <button id="go" class="btn" type="button">Auf Hype prüfen</button>
+        <button id="share" class="copybtn" type="button" aria-label="Teilbaren Link zu diesem Text kopieren">Link kopieren</button>
+        <span class="count" id="count" aria-live="polite">0 Zeichen</span>
       </div>
-      <div class="examples" id="examples"><span class="exlabel">Oder ein Beispiel laden:</span></div>
-      <div class="err" id="err"></div>
+      <div class="examples" id="examples" role="group" aria-label="Beispieltexte laden"><span class="exlabel">Oder ein Beispiel laden:</span></div>
+      <div class="restored" id="restored" role="status">
+        <span id="restoredText"></span>
+        <button class="linkbtn" id="clearStored" type="button">Eingabe leeren</button>
+      </div>
+      <div class="err" id="err" role="alert" aria-live="assertive"></div>
     </div>
 
-    <div class="results" id="res">
+    <div class="results" id="res" role="region" aria-labelledby="resHeading" aria-live="polite">
       <div class="panel">
+        <h2 id="resHeading" class="visually-hidden" tabindex="-1">Ergebnis der Hype-Prüfung</h2>
         <div class="scorecard">
-          <div class="gauge" id="gauge"><div class="inner"><div class="num" id="scoreNum">–</div><div class="lbl">/ 100</div></div></div>
+          <div class="gauge" id="gauge" role="img"><div class="inner"><div class="num" id="scoreNum">–</div><div class="lbl">/ 100</div></div></div>
           <div class="verdict">
             <h2 id="gradeLbl">—</h2>
             <p id="verdict">—</p>
           </div>
         </div>
 
-        <div class="metrics" id="metrics"></div>
+        <div class="metrics" id="metrics" role="list" aria-label="Kennzahlen"></div>
 
         <h3 class="sec">Im Text markiert</h3>
         <div class="highlight" id="hl"></div>
-        <div class="legend" id="legend"></div>
+        <div class="legend" id="legend" aria-label="Legende der Markierungen"></div>
 
         <div id="catsWrap">
           <h3 class="sec">Was gefunden wurde</h3>
@@ -180,11 +248,15 @@ footer a{color:var(--muted)}
         <h3 class="sec">Konkret besser machen</h3>
         <ul class="tips" id="tips"></ul>
 
-        <h3 class="sec">Aufgeräumte Fassung</h3>
+        <div class="rwhead">
+          <h3 class="sec">Aufgeräumte Fassung</h3>
+          <button id="copyRewrite" class="copybtn" type="button" aria-label="Aufgeräumte Fassung kopieren">Kopieren</button>
+        </div>
         <p class="rwhint" id="rwhint">Füllwörter und Intensivierer gestrichen, Hype-Wörter <b>[in Klammern]</b> zum Ersetzen markiert.</p>
         <div class="rewrite" id="rewrite"></div>
         <div class="row">
-          <button id="ai" class="btn ghost">KI-Umschreibung versuchen</button>
+          <button id="ai" class="btn ghost" type="button">KI-Umschreibung versuchen</button>
+          <button id="copyAi" class="copybtn" type="button" style="display:none" aria-label="KI-Umschreibung kopieren">Kopieren</button>
           <span class="muted" id="aiNote" style="font-size:13px"></span>
         </div>
       </div>
@@ -217,6 +289,20 @@ footer a{color:var(--muted)}
 <script>
 const $ = (id) => document.getElementById(id);
 const inp = $("inp"), res = $("res"), errBox = $("err");
+const MAXLEN = 20000, WARNLEN = 18000, STORE_KEY = "hype-filter-text";
+const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent || "");
+const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// UTF-8-sichere Base64-Kodierung (URL-safe) für den Teilen-Link.
+function b64encode(str){
+  const b = btoa(unescape(encodeURIComponent(str)));
+  return b.replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+}
+function b64decode(str){
+  let s = str.replace(/-/g,"+").replace(/_/g,"/");
+  while (s.length % 4) s += "=";
+  return decodeURIComponent(escape(atob(s)));
+}
 
 // Kuratierte deutsche Beispiele — zeigen die Bandbreite des Tools.
 const EXAMPLES = [
@@ -227,22 +313,111 @@ const EXAMPLES = [
   { name: "Sauberer Text", text: "Ich schreibe diesen Newsletter jeden Morgen. Er braucht fünf Minuten. Du bekommst drei Meldungen, die für deine Arbeit zählen, und einen Tipp zum Mitnehmen. Kein Verkauf, kein Tracking. Wenn dir eine Ausgabe nicht passt, schreib mir kurz." },
 ];
 
+// Legenden-Swatches lesen dieselben CSS-Token wie die Marks → korrekt im Dark Mode.
 const CAT_COLORS = {
-  superlativ:"#fde0d6", versprechen:"#fde0d6", buzzword:"#fdeccd",
-  intensivierer:"#e7eff7", "füllwort":"#e7eff7", passiv:"#ede7f6", interpunktion:"#fcd9d9"
+  superlativ:"var(--mark-sup-bg)", versprechen:"var(--mark-sup-bg)", buzzword:"var(--mark-buzz-bg)",
+  intensivierer:"var(--mark-int-bg)", "füllwort":"var(--mark-int-bg)", passiv:"var(--mark-pas-bg)", interpunktion:"var(--mark-itp-bg)"
 };
 
 function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 
-function updateCount(){ $("count").textContent = inp.value.length.toLocaleString("de-DE") + " Zeichen"; }
-inp.addEventListener("input", updateCount);
+function updateCount(){
+  const n = inp.value.length;
+  const c = $("count");
+  if (n > WARNLEN){
+    c.textContent = n.toLocaleString("de-DE") + " / " + MAXLEN.toLocaleString("de-DE") + " Zeichen";
+    c.classList.add("warn");
+  } else {
+    c.textContent = n.toLocaleString("de-DE") + " Zeichen";
+    c.classList.remove("warn");
+  }
+}
+inp.addEventListener("input", () => { updateCount(); persist(); });
 
 // Beispiel-Chips aufbauen
 EXAMPLES.forEach((ex) => {
   const b = document.createElement("button");
   b.className = "chip"; b.type = "button"; b.textContent = ex.name;
-  b.addEventListener("click", () => { inp.value = ex.text; updateCount(); $("go").click(); });
+  b.setAttribute("aria-label", "Beispiel laden: " + ex.name);
+  b.addEventListener("click", () => { inp.value = ex.text; updateCount(); persist(); $("go").click(); });
   $("examples").appendChild(b);
+});
+
+// --- Persistenz (nur lokal, kein Tracking) ---
+function persist(){
+  try {
+    if (inp.value.trim()) localStorage.setItem(STORE_KEY, inp.value);
+    else localStorage.removeItem(STORE_KEY);
+  } catch(e){}
+}
+$("clearStored").addEventListener("click", () => {
+  inp.value = "";
+  try { localStorage.removeItem(STORE_KEY); } catch(e){}
+  if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  $("restored").classList.remove("show");
+  updateCount();
+  res.classList.remove("show");
+  inp.focus();
+});
+
+// --- Tastatur: Cmd/Ctrl+Enter prüft ---
+$("kbdLabel").textContent = isMac ? "⌘ + Enter" : "Strg + Enter";
+inp.addEventListener("keydown", (e) => {
+  if ((e.metaKey || e.ctrlKey) && (e.key === "Enter" || e.keyCode === 13)){
+    e.preventDefault();
+    $("go").click();
+  }
+});
+
+// --- Kopier-Helfer mit Fallback ---
+async function copyText(text){
+  if (navigator.clipboard && window.isSecureContext){
+    try { await navigator.clipboard.writeText(text); return true; } catch(e){}
+  }
+  try {
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly","");
+    ta.style.position = "fixed"; ta.style.left = "-9999px";
+    document.body.appendChild(ta); ta.select();
+    const ok = document.execCommand("copy");
+    document.body.removeChild(ta);
+    return ok;
+  } catch(e){ return false; }
+}
+function flashCopied(btn, okLabel){
+  const old = btn.textContent;
+  btn.textContent = okLabel || "Kopiert!";
+  btn.classList.add("ok");
+  setTimeout(() => { btn.textContent = old; btn.classList.remove("ok"); }, 1600);
+}
+async function handleCopy(btn, getText){
+  const t = (getText() || "").trim();
+  if (!t || t === "—"){ return; }
+  const ok = await copyText(t);
+  if (ok) flashCopied(btn);
+  else { btn.textContent = "Strg+C drücken"; setTimeout(()=>{btn.textContent="Kopieren";},2000); }
+}
+$("copyRewrite").addEventListener("click", () => handleCopy($("copyRewrite"), () => $("rewrite").textContent));
+$("copyAi").addEventListener("click", () => handleCopy($("copyAi"), () => $("rewrite").textContent));
+
+// --- Teilen: Text im URL-Hash kodieren ---
+function buildShareUrl(){
+  const text = inp.value.trim();
+  if (!text) return null;
+  if (text.length > 4000) return "TOO_LONG"; // sehr lange Texte nicht in den Hash
+  return location.origin + location.pathname + "#t=" + b64encode(text);
+}
+$("share").addEventListener("click", async () => {
+  const url = buildShareUrl();
+  const btn = $("share");
+  if (!url){ flashCopied(btn, "Text fehlt"); return; }
+  if (url === "TOO_LONG"){
+    btn.textContent = "Text zu lang"; setTimeout(()=>{btn.textContent="Link kopieren";},2000); return;
+  }
+  history.replaceState(null, "", "#t=" + url.split("#t=")[1]);
+  const ok = await copyText(url);
+  if (ok) flashCopied(btn);
+  else { btn.textContent = "Konnte nicht kopieren"; setTimeout(()=>{btn.textContent="Link kopieren";},2000); }
 });
 
 function highlight(text, findings){
@@ -261,60 +436,81 @@ function highlight(text, findings){
 function render(d){
   // Score-Gauge
   const g = $("gauge");
-  g.style.setProperty("--v", d.score);
-  g.style.setProperty("--gc", d.gradeColor);
-  $("scoreNum").textContent = d.score;
-  $("gradeLbl").textContent = d.grade;
-  $("gradeLbl").style.color = d.gradeColor;
-  $("verdict").textContent = d.verdict;
+  const score = (d.score != null ? d.score : 0);
+  g.style.setProperty("--v", score);
+  if (d.gradeColor) g.style.setProperty("--gc", d.gradeColor);
+  g.setAttribute("aria-label", "Klartext-Score " + score + " von 100" + (d.grade ? ", Note: " + d.grade : ""));
+  $("scoreNum").textContent = (d.score != null ? d.score : "–");
+  $("gradeLbl").textContent = d.grade || "—";
+  if (d.gradeColor) $("gradeLbl").style.color = d.gradeColor;
+  $("verdict").textContent = d.verdict || "";
 
-  // Metriken
-  const m = d.metrics;
+  // Metriken (defensiv — fehlende Felder dürfen nicht crashen)
+  const m = d.metrics || {};
+  const has = (x) => x !== undefined && x !== null;
+  const reading = has(m.readingLabel) ? m.readingLabel
+                : (has(m.readingGrade) ? ("Klasse " + m.readingGrade) : "—");
   const cards = [
-    ["Wörter", m.wordCount],
-    ["Hype je 100 W.", m.hypeDensity],
-    ["Ø Satzlänge", m.avgSentenceLen],
-    ["Lange Sätze", m.longSentenceCount],
-    ["Lese-Niveau", m.readingGrade !== null ? ("Klasse " + m.readingGrade) : "—"],
+    ["Wörter", has(m.wordCount) ? m.wordCount : "—"],
+    ["Hype je 100 W.", has(m.hypeDensity) ? m.hypeDensity : "—"],
+    ["Ø Satzlänge", has(m.avgSentenceLen) ? m.avgSentenceLen : "—"],
+    ["Lange Sätze", has(m.longSentenceCount) ? m.longSentenceCount : "—"],
+    ["Lese-Niveau", reading],
   ];
   $("metrics").innerHTML = cards.map(([k,v]) =>
-    '<div class="metric"><div class="v">'+v+'</div><div class="k">'+k+'</div></div>').join("");
+    '<div class="metric" role="listitem"><div class="v">'+escapeHtml(String(v))+'</div><div class="k">'+escapeHtml(k)+'</div></div>').join("");
 
   // Highlight
-  $("hl").innerHTML = highlight(inp.value, d.findings);
+  const findings = Array.isArray(d.findings) ? d.findings : [];
+  $("hl").innerHTML = highlight(inp.value, findings);
 
   // Legende (nur vorkommende Kategorien)
-  const present = [...new Set(d.findings.map(f=>f.category))];
+  const present = [...new Set(findings.map(f=>f.category))];
   const NAMES = {superlativ:"Superlativ",buzzword:"Buzzword",versprechen:"Versprechen",intensivierer:"Intensivierer","füllwort":"Füllwort",passiv:"Passiv",interpunktion:"Ausrufezeichen"};
   $("legend").innerHTML = present.map(c =>
     '<span><i class="swatch" style="background:'+(CAT_COLORS[c]||"#eee")+'"></i>'+(NAMES[c]||c)+'</span>').join("");
 
   // Kategorien
-  if (d.categories.length){
+  const categories = Array.isArray(d.categories) ? d.categories : [];
+  if (categories.length){
     $("catsWrap").style.display = "";
-    $("cats").innerHTML = d.categories.map(c =>
-      '<div class="cat"><div class="ch"><span class="ct">'+escapeHtml(c.label||c.category)+'</span><span class="badge">'+c.count+'×</span></div>'+
-      '<ul>'+c.items.map(it =>
-        '<li><b>'+escapeHtml(it.match)+'</b>'+(it.replacements&&it.replacements.length?' → '+escapeHtml(it.replacements.join(" / ")):'')+'</li>'
+    $("cats").innerHTML = categories.map(c =>
+      '<div class="cat"><div class="ch"><span class="ct">'+escapeHtml(c.label||c.category||"")+'</span><span class="badge">'+escapeHtml(String(c.count||0))+'×</span></div>'+
+      '<ul>'+(Array.isArray(c.items)?c.items:[]).map(it =>
+        '<li><b>'+escapeHtml(it.match||"")+'</b>'+(it.replacements&&it.replacements.length?' → '+escapeHtml(it.replacements.join(" / ")):'')+'</li>'
       ).join("")+'</ul></div>').join("");
   } else {
     $("catsWrap").style.display = "none";
   }
 
   // Tipps
-  $("tips").innerHTML = d.suggestions.map(s => "<li>"+escapeHtml(s)+"</li>").join("");
+  const suggestions = Array.isArray(d.suggestions) ? d.suggestions : [];
+  $("tips").innerHTML = suggestions.length
+    ? suggestions.map(s => "<li>"+escapeHtml(s)+"</li>").join("")
+    : '<li class="muted">Keine Verbesserungsvorschläge — sieht ordentlich aus.</li>';
 
   // Regel-Umschreibung
   $("rewrite").textContent = d.ruleRewrite || "—";
   $("aiNote").textContent = "";
+  $("rwhint").innerHTML = 'Füllwörter und Intensivierer gestrichen, Hype-Wörter <b>[in Klammern]</b> zum Ersetzen markiert.';
+  $("copyRewrite").style.display = "";       // Kopier-Button für Regel-Fassung wieder zeigen
+  $("copyAi").style.display = "none";        // KI-Kopie erst nach KI-Umschreibung
 
   res.classList.add("show");
-  res.scrollIntoView({behavior:"smooth", block:"start"});
+
+  // Fokus auf die Ergebnis-Überschrift (a11y), dann sanft scrollen.
+  const heading = $("resHeading");
+  heading.focus({preventScroll:true});
+  res.scrollIntoView({behavior: prefersReducedMotion ? "auto" : "smooth", block:"start"});
 }
 
 async function callApi(action){
   const text = inp.value.trim();
-  if (!text){ showErr("Bitte füg zuerst einen Text ein."); return null; }
+  if (!text){ showErr("Bitte füg zuerst einen Text ein, dann prüfe ich ihn."); inp.focus(); return null; }
+  if (text.length > MAXLEN){
+    showErr("Der Text ist mit " + text.length.toLocaleString("de-DE") + " Zeichen zu lang. Bitte kürze auf höchstens " + MAXLEN.toLocaleString("de-DE") + " Zeichen.");
+    return null;
+  }
   const r = await fetch("/api/hype-check", {
     method:"POST", headers:{"Content-Type":"application/json"},
     body: JSON.stringify({ text, action })
@@ -326,7 +522,7 @@ async function callApi(action){
   return r.json();
 }
 function showErr(msg){ errBox.textContent = msg; errBox.classList.add("show"); }
-function clearErr(){ errBox.classList.remove("show"); }
+function clearErr(){ errBox.textContent = ""; errBox.classList.remove("show"); }
 
 $("go").addEventListener("click", async () => {
   clearErr();
@@ -349,22 +545,51 @@ $("ai").addEventListener("click", async () => {
   try {
     const d = await callApi("rewrite");
     if (d){
-      $("rewrite").textContent = d.aiRewrite || d.ruleRewrite || "—";
+      const txt = d.aiRewrite || d.ruleRewrite || "—";
+      $("rewrite").textContent = txt;
       if (d.aiRewriteSource === "claude"){
         $("rwhint").innerHTML = "KI-Umschreibung im aban-Ton:";
         $("aiNote").textContent = "Von einem Sprachmodell umgeschrieben — gegenlesen, nicht blind übernehmen.";
+        $("copyAi").style.display = (txt && txt !== "—") ? "" : "none";
+        $("copyRewrite").style.display = "none";
       } else {
         $("aiNote").textContent = "Keine KI hinterlegt — du siehst die regelbasierte Fassung.";
+        $("copyAi").style.display = "none";
       }
     }
   } catch (e) {
-    showErr("KI-Umschreibung nicht möglich: " + e.message);
+    showErr("Die KI-Umschreibung hat gerade nicht geklappt: " + e.message + " Versuch es später noch einmal — die aufgeräumte Fassung oben bleibt nutzbar.");
   } finally {
     btn.disabled = false; btn.innerHTML = old;
   }
 });
 
-updateCount();
+// --- Beim Laden: Text aus URL-Hash oder localStorage wiederherstellen ---
+(function init(){
+  updateCount();
+  let restoredFrom = null;
+  try {
+    const m = /(?:^|[#&])t=([^&]+)/.exec(location.hash || "");
+    if (m && m[1]){
+      const decoded = b64decode(m[1]);
+      if (decoded){ inp.value = decoded.slice(0, MAXLEN); restoredFrom = "link"; }
+    }
+  } catch(e){}
+  if (!restoredFrom){
+    try {
+      const saved = localStorage.getItem(STORE_KEY);
+      if (saved && saved.trim()){ inp.value = saved.slice(0, MAXLEN); restoredFrom = "local"; }
+    } catch(e){}
+  }
+  if (restoredFrom){
+    updateCount();
+    persist();
+    $("restoredText").textContent = restoredFrom === "link"
+      ? "Text aus geteiltem Link geladen."
+      : "Dein letzter Text wurde wiederhergestellt (nur lokal gespeichert).";
+    $("restored").classList.add("show");
+  }
+})();
 </script>
 </body>
 </html>
