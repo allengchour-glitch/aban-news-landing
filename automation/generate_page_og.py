@@ -64,6 +64,7 @@ PAGES = {
     "mrr.html": "page-mrr",
     "werbung.html": "page-werbung",
     "growth-dashboard.html": "page-growth-dashboard",
+    "ebook.html": "page-ebook",
 }
 
 
