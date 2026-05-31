@@ -644,7 +644,7 @@ function renderDashboard(d) {
   // Sponsor
   if (d.sponsor_name) {
     document.getElementById('sponsor-block').innerHTML = `
-      ${d.sponsor_logo ? `<img src="${escapeHTML(d.sponsor_logo)}" alt="${escapeHTML(d.sponsor_name)}">` : ''}
+      ${d.sponsor_logo ? `<img loading="lazy" decoding="async" src="${escapeHTML(d.sponsor_logo)}" alt="${escapeHTML(d.sponsor_name)}">` : ''}
       <div class="info">
         <strong>${escapeHTML(d.sponsor_name)}</strong>
         ${d.sponsor_url ? `<p style="margin-top: 4px; font-size: 14px;"><a href="${escapeHTML(d.sponsor_url)}" style="color: var(--accent);">${escapeHTML(d.sponsor_url)}</a></p>` : ''}
