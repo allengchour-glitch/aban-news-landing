@@ -488,3 +488,14 @@ Taschen im CJ-Katalog quasi ausgeschöpft (nur 1 echte Neutasche), aber Caps/Hü
 - Denim-Tasche «Jeans» Color-Block (CJYD2915257) — CHF 24.90 — 4 Var, 6 Bilder
 Subs: Caps&Hüte 14→17, Taschen 3→4. Aussortiert: Duplikate (3 Caps schon live), Bag-Müll
 (Ohrringe/Foam-Machine/Silver-Pendant), EMS-Massager (off-theme).
+
+## 2026-05-31 — Charge: +3 Kinder-Spielzeug (leere Kategorie gefüllt)
+Multi-Kategorie-Suche (cj_kategorien_search.mjs) über leere Subs (Kinder-Spielzeug, Bar-Tools,
+Vasen, Hautpflege, Auto-Power). Ergiebig nur Kinder-Spielzeug = Bausteine-Sets:
+- Bausteine-Set «Retro Racer» 196 Teile (CJJM2908712) — CHF 36.90 — 8 Bilder
+- Bausteine-Set «Police Racer» 318 Teile (CJJM2909041) — CHF 39.90 — 7 Bilder
+- Bausteine-Set «Widebody Racer» 321 Teile (CJJM2909674) — CHF 42.90 — 7 Bilder
+Alle ACTIVE, 7 Kanäle, Single-Variante (Option „Ausführung"=Teilezahl statt sinnloser Farb-Option).
+kinder-spielzeug (Menü-Sub) 0 → 3. Smart-Coll `kinder-spielzeug` (tag:Spielzeug) greift.
+Übersprungen: Auto-Becherhalter (11 unklare „Varianten", Nische); Bar-Tools/Vasen/Hautpflege =
+CJ lieferte nur Müll (Handtuchhalter, Make-up-Pinsel statt Cocktail/Vase/Gesichtsbürste).
