@@ -143,6 +143,11 @@ Das einzige Feature mit serverseitiger Logik. Bricht bewusst mit „nur statisch
    `STRIPE_FOUNDING_LINK` setzen. Leer → Mail-Fallback.
 3. **Calendly (Sponsoring):** in `sponsoring.html`, `<script>` am Ende,
    `CALENDLY_URL` setzen. Leer → Mail-Fallback.
+4. **TWINT / Shopify / Karte (Founding, optional):** in `js/pay-config.js`
+   `TWINT_URL`, `SHOPIFY_URL` und/oder `CARD_URL` setzen (nur öffentliche
+   Bezahl-Links, **nie** Secrets/Kartennummern). Pro gesetztem Link erscheint
+   ein zusätzlicher Button im Founding-Checkout (de + `en/`); leer → Button
+   bleibt verborgen (kein toter Link). PayPal bleibt der Haupt-Button.
 
 **Funnel:** SEO-Money-Pages + `resources.html` → Newsletter-Opt-in →
 `willkommen.html` (eBook-Geschenk) → `founding.html` / `sponsoring.html`.
