@@ -15,6 +15,7 @@ TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar unt
 | Bladeless Nackenventilator | 29.90 | $6.62 | ~5× | (neck fan) | `CJJT291608401AZ` |
 | XXL Picknickdecke faltbar | 24.90 | $2.74–5.82 | ~4.9× | (picnic mat) | `CJYD291539501AZ` |
 | Ice-Compress Mini-Ventilator | 27.90 | $5.99 | ~5.3× | (ice fan) | `CJGR291509001AZ` |
+| Tragbarer Mini-Mixer 380 ml | 34.90 | $7.78 | ~4.5× | 2009908094545068032 | `CJ20240701115059212AZ` |
 
 **Storefront-Links:**
 - https://luxestyle.ch/products/elektrische-wasserpistole-xl-akkubetrieben-vollautomatik-sommer-2026
@@ -31,10 +32,17 @@ Marge ist FX-bereinigt (USD→CHF ≈ 0,88) und nach CJ-Versand noch komfortabel
 - *Sterling Silver Fan-shaped Necklace* — Falschtreffer („fan"/„neck").
 - *7-color LED Photon Face Mask* — nur 1 Produktbild, zu schwach für Hero. (Kandidat für später, wenn bessere Bilder.)
 
-## ⚠️ Sicherheit
-Der CJ-API-Key stand in einem früheren Commit von `cj_import.mjs` im Klartext (jetzt entfernt,
-aber in der Git-Historie). **Key in CJ rotieren** und künftig nur als Env-Variable (`CJ_API_KEY`)
-übergeben — beide Scripte lesen ausschliesslich aus der Umgebung.
+## ✅ Sicherheit (erledigt)
+Der ursprüngliche CJ-API-Key stand in einem früheren Commit im Klartext. Er wurde am
+**2026-05-31 rotiert** → alter Key ist ungültig (Leak in der Git-Historie damit entschärft).
+Neuer Key nur noch als Env-Variable (`CJ_API_KEY`) übergeben — beide Scripte lesen
+ausschliesslich aus der Umgebung. Empfehlung: Key zusätzlich als dauerhaftes Environment-Secret
+hinterlegen, damit er in jeder Web-Session verfügbar ist.
+
+## ⏳ Offen (nächste Charge)
+solar light, swimming goggles, sun umbrella – Treffer existieren in CJ, der Import scheiterte
+aber an Umgebungs-Glitches im Datei-Layer (unzuverlässige Bild-URLs). In frischer Session erneut
+`cj_enrich.mjs` laufen lassen und anlegen.
 
 ## Nächste Keywords (Pipeline für mehr Importe)
 `cj_enrich.mjs` → `KEYWORDS`-Liste erweitern. Gut funktioniert: präzise Substantiv-Phrasen

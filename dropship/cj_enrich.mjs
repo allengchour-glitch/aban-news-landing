@@ -22,12 +22,9 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
 const KEYWORDS = [
-  { kw: 'electric water gun', must: ['water', 'gun'], take: 2 },
-  { kw: 'neck fan portable',  must: ['neck', 'fan'],  take: 2 },
-  { kw: 'led face mask',      must: ['led', 'face'],  take: 2 },
-  { kw: 'cooling towel',      must: ['cooling', 'towel'], take: 1 },
-  { kw: 'picnic mat waterproof', must: ['picnic', 'mat'], take: 1 },
-  { kw: 'mini handheld fan',  must: ['fan'],          take: 1 },
+  { kw: 'solar garden light',      must: ['solar'],              take: 2 },
+  { kw: 'swimming goggles',        must: ['goggles'],            take: 1 },
+  { kw: 'sun umbrella beach',      must: ['umbrella'],           take: 1 },
 ];
 
 let _b, _ctx;
@@ -51,7 +48,7 @@ async function apiGet(path, params = {}) {
   for (let a = 0; a < 4; a++) {
     const r = await c.request.get(`${BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok }, timeout: 30000 });
     const j = await r.json();
-    if (j.code === 1600200 || /Too Many|QPS/i.test(j.message || '')) { await sleep((a + 1) * 1600); continue; }
+    if (j.code === 1600200 || /Too Many|QPS/i.test(j.message || '')) { await sleep((a + 1) * 2500); continue; }
     return j;
   }
   throw new Error('RATE LIMIT erschöpft für ' + path);
@@ -77,10 +74,10 @@ function stockByCountry(variants) {
       });
       list.sort((a, b) => (Number(b.listedNum) || 0) - (Number(a.listedNum) || 0)); // Popularität
       console.error(`   ${list.length} relevante Treffer`);
-      await sleep(1600);
+      await sleep(2400);
       for (const p of list.slice(0, take)) {
         const d = (await apiGet('/product/query', { pid: p.pid })).data;
-        await sleep(1600);
+        await sleep(2400);
         if (!d) continue;
         const variants = d.variants || [];
         const costs = variants.map(v => Number(v.variantSellPrice)).filter(Boolean);
