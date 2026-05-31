@@ -9,3 +9,15 @@ ausgabe/
 kapitel/*.bak.md
 kapitel/*.lektorat.md
 roman*.json.bak
+
+# --- Ausnahme: handgeschriebene Trilogie "Das Tal haelt den Atem an" ---
+# Diese Kapitel sind echte, redigierte Prosa (nicht API-regenerierbar) und
+# werden bewusst versioniert. Backups/Lektorate bleiben Output (siehe unten).
+!kapitel/band-01/
+!kapitel/band-01/kapitel-*.md
+!kapitel/band-02/
+!kapitel/band-02/kapitel-*.md
+!kapitel/band-03/
+!kapitel/band-03/kapitel-*.md
+kapitel/band-*/*.bak.md
+kapitel/band-*/*.lektorat.md
