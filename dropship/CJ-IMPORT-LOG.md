@@ -457,3 +457,15 @@ Lederarmband Anker (29.90), Ohrring-Set (22.90), Herrenhemd Monsieur (44.90) —
 BLEIBT (4): Flame Diffuser, 3-in-1 Wireless Charger, Herrenuhr Edelstahl, Jade Roller & Gua Sha.
 Beschreibung entschärft (0 echte Sales → kein "meistverkauft") → "10 handverlesene Premium-Favoriten 2026".
 Lesson: Collection-/Flow-IDs NIE raten — immer erst search_collections; Produktsuche mit Freitext, nicht `title:`.
+
+## 2026-05-31 — Charge: +3 Herren-Mode (dünne Kategorie gefüllt)
+Nach Menü-Revision war Herren-Mode mit nur 1 aktiven Produkt zu dünn. CJ-Nischensuche
+(cj_search_niche.mjs, KEYWORDS auf herren-mode/taschen umgestellt) + cj_full_create.mjs:
+- Herren-Sommershirt «Breeze» (pid 2605310648231627400) — CHF 24.90 — 18 var, 6 Bilder
+- Herren-Strickshirt «Riviera» Cord (pid 2605310658081608600) — CHF 24.90 — 56 var, 13 Bilder
+- Herren-Leinenhose «Lino» (pid 2605300316371602500) — CHF 29.90 — 48 var, 13 Bilder
+Alle ACTIVE, volle Galerie, in 7 Kanälen publiziert. herren-mode aktiv: 1 → 4.
+Taschen-Suche: CJ-Katalog ausgeschöpft — einzige saubere Tasche (PU «Vintage») war SKU-IDENTISCH
+mit bereits live «Milano» (CJYD2915947…) → Duplikat-Falle, NICHT angelegt.
+Bild-Falle: alle img0 vorab per HTTP-200 geprüft (ok). Tasche-Farben mangled
+("No Brown"→Hellbraun etc.) vor Anlegen bereinigt (wurde dann aber nicht gebraucht).

@@ -12,14 +12,16 @@ const tok=JSON.parse(fs.readFileSync('/tmp/cj_token.json')).accessToken;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
 // cat = Zielkategorie — frische Accessoires
+// Fokus: dünne Menü-Kategorien füllen — Herren-Mode & Taschen
 const KEYWORDS=[
-  { kw:'polarized sunglasses unisex uv400', must:['sunglasses'], cat:'sonnenbrille', take:2 },
-  { kw:'hair claw clip set large',      must:['clip'],   cat:'damen-mode',  take:1 },
-  { kw:'silk scarf women fashion',      must:['scarf'],  cat:'damen-mode',  take:1 },
-  { kw:'magsafe phone case clear',      must:['case'],   cat:'tech',        take:1 },
-  { kw:'crew socks set cotton women',   must:['sock'],   cat:'damen-mode',  take:1 },
-  { kw:'beach sarong cover up women',   must:['cover'],  cat:'damen-mode',  take:1 },
-  { kw:'mens leather belt ratchet',     must:['belt'],   cat:'Gürtel',      take:1 },
+  { kw:'mens summer shirt short sleeve casual', must:['shirt'], cat:'herren-mode', take:3 },
+  { kw:'mens polo shirt cotton',         must:['polo'],   cat:'herren-mode', take:2 },
+  { kw:'mens linen pants trousers',      must:['pant'],   cat:'herren-mode', take:1 },
+  { kw:'mens t-shirt cotton solid',      must:['shirt'],  cat:'herren-mode', take:1 },
+  { kw:'women shoulder bag pu leather',  must:['bag'],    cat:'taschen',     take:2 },
+  { kw:'women crossbody bag small',      must:['bag'],    cat:'taschen',     take:2 },
+  { kw:'women tote bag large capacity',  must:['bag'],    cat:'taschen',     take:1 },
+  { kw:'backpack women fashion',         must:['backpack'], cat:'taschen',   take:1 },
 ];
 
 const b=await chromium.launch({headless:true,args:['--ignore-certificate-errors','--no-sandbox']});
