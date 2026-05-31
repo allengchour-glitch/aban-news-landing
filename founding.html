@@ -262,7 +262,7 @@ header{display:flex;align-items:center;gap:12px}
 </section>
 
 <div class="legal">
-  <p>Founding-Membership ist eine einmalige Zahlung über Stripe.<br>30 Tage Geld-zurück-Garantie. Bei Einstellung des Newsletters innerhalb 12 Monaten: vollständiger Refund.</p>
+  <p>Founding-Membership ist eine einmalige Zahlung über einen sicheren Zahlungsdienst (Stripe oder PayPal).<br>30 Tage Geld-zurück-Garantie. Bei Einstellung des Newsletters innerhalb 12 Monaten: vollständiger Refund.</p>
   <p style="margin-top:16px">
     <a href="/impressum.html">Impressum</a> ·
     <a href="/datenschutz.html">Datenschutz (DSGVO)</a> ·
@@ -273,18 +273,23 @@ header{display:flex;align-items:center;gap:12px}
 
 <script>
 // ============================================================
-// FOUNDING-CHECKOUT — hier EINE Zeile anpassen, um live zu gehen:
-// 1. Stripe-Dashboard → Payment Links → "+ New" → Produkt "aban news Founding"
-//    Preis €149 einmalig anlegen → Link kopieren (Form: https://buy.stripe.com/...).
-// 2. Unten zwischen die Anführungszeichen einsetzen. Fertig.
-// Solange leer, läuft der Kauf automatisch per E-Mail (kein toter Button).
+// FOUNDING-CHECKOUT — einen Zahlungslink eintragen, dann ist der Button live.
+// Du kannst Stripe ODER PayPal nehmen (beides geht — Stripe hat dann Vorrang):
+//   - Stripe: Dashboard -> Payment Links -> "+ New" -> Produkt "aban news Founding",
+//     EUR 149 einmalig -> Link kopieren (https://buy.stripe.com/...).
+//   - PayPal: paypal.me/DEINNAME/149  ODER ein PayPal-Button-Link
+//     (https://www.paypal.com/...). Schnellster Weg, kein Setup noetig.
+// Beide leer -> der Kauf laeuft automatisch per E-Mail (kein toter Button).
 // ============================================================
 (function(){
   var STRIPE_FOUNDING_LINK = ""; // z.B. "https://buy.stripe.com/abc123"
-  if(/^https:\/\/(buy\.stripe\.com|checkout\.stripe\.com)\//.test(STRIPE_FOUNDING_LINK)){
-    var btn = document.getElementById('founding-buy');
-    if(btn){ btn.href = STRIPE_FOUNDING_LINK; btn.target = "_blank"; btn.rel = "noopener"; }
-  }
+  var PAYPAL_FOUNDING_LINK = ""; // z.B. "https://paypal.me/abannews/149"
+  var btn = document.getElementById('founding-buy');
+  if(!btn) return;
+  var stripeOk = /^https:\/\/(buy\.stripe\.com|checkout\.stripe\.com)\//.test(STRIPE_FOUNDING_LINK);
+  var paypalOk = /^https:\/\/(www\.)?paypal\.(me|com)\//.test(PAYPAL_FOUNDING_LINK);
+  var link = stripeOk ? STRIPE_FOUNDING_LINK : (paypalOk ? PAYPAL_FOUNDING_LINK : "");
+  if(link){ btn.href = link; btn.target = "_blank"; btn.rel = "noopener"; }
 })();
 
 // Mock counter (will be replaced by live fetch from /api/founding-count)
