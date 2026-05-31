@@ -445,3 +445,12 @@ Varianten-Namen bereinigt (z. B. „Black-Free Size Adjustable" → „Black", T
 Andere Keywords (Tücher/Clips/Socken/Cases/Gürtel) lieferten Müll → übersprungen.
 ⚠️ Brillen-Varianten-Namen waren CJ-Rohtext mit Codes (z. B. „9263 Black Mercury Sheet") → auf „Variante N"
 vereinheitlicht (jede mit eigenem Bild). cj_full_create-Cleaner-TODO bleibt.
+
+## 2026-05-31 — Top-10-Bestseller neu kuratiert (Ad-Konsistenz)
+Top-10-Kollektion (`bestseller-premium-heroes`, ID 463415574849, MANUAL) deckungsgleich mit dem
+Mix-Werbeclip gemacht. Hintergrund: 0 echte Verkäufe (ShopifyQL leer) → "Bestseller" = kuratiert.
+RAUS (6): Salzlampe, Wellness-Tablett, Mini Robo-Diffuser, Bambus Aroma Diffuser, Slim Wallet, Galaxy Aurora.
+REIN (6): Abendkleid Sirène, Sommerkleid Savanna, Portemonnaie XL, Lederarmband Anker, Ohrring-Set, Herrenhemd Monsieur.
+BLEIBT (4): Flame Diffuser, 3-in-1 Wireless Charger, Herrenuhr Edelstahl, Jade Roller & Gua Sha.
+Beschreibung entschärft (kein falsches "meistverkauft" bei 0 Sales) → "handverlesene Premium-Favoriten 2026".
+Bilder: NUR echte Fotos (User-Regel "kein KI"). Offen: echte CJ-Fotos optional via Adobe aufwerten (Freistellen/Weiß/Tonwert), keine KI-Erfindung.
