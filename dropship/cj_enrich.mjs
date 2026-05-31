@@ -22,16 +22,16 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
 const KEYWORDS = [
-  { kw: 'electric grater cheese',    must: ['grater'],    take: 1 },
-  { kw: 'salad spinner kitchen',     must: ['salad'],     take: 1 },
-  { kw: 'silicone stretch wrap bowl', must: ['wrap'],     take: 1 },
-  { kw: 'rolling pin baking',        must: ['rolling'],   take: 1 },
-  { kw: 'kitchen timer magnetic',    must: ['timer'],     take: 1 },
-  { kw: 'tea infuser stainless',     must: ['infuser'],   take: 1 },
-  { kw: 'oil sprayer bottle',        must: ['sprayer'],   take: 1 },
-  { kw: 'fruit slicer corer',        must: ['slicer'],    take: 1 },
-  { kw: 'water flosser teeth',       must: ['flosser'],   take: 1 },
-  { kw: 'electric back massager',    must: ['massager'],  take: 1 },
+  { kw: 'tire inflator portable',    must: ['inflator'],  take: 1 },
+  { kw: 'car cleaning gel',          must: ['cleaning'],  take: 1 },
+  { kw: 'screwdriver set precision', must: ['screwdriver'], take: 1 },
+  { kw: 'tape measure laser',        must: ['measure'],   take: 1 },
+  { kw: 'headlamp led rechargeable', must: ['headlamp'],  take: 1 },
+  { kw: 'multitool pocket knife',    must: ['multitool'], take: 1 },
+  { kw: 'work gloves anti cut',      must: ['gloves'],    take: 1 },
+  { kw: 'flashlight tactical',       must: ['flashlight'], take: 1 },
+  { kw: 'car seat gap organizer',    must: ['seat'],      take: 1 },
+  { kw: 'magnetic wristband tools',  must: ['wristband'], take: 1 },
 ];
 
 let _b, _ctx;

@@ -2,7 +2,7 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **52 Produkte LIVE** (Richtung 60 unterwegs).
+> Stand: 2026-05-31 — **54 Produkte LIVE** (Richtung 60; Ausbeute wird dünn).
 
 Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in **6 Kanälen** (Onlineshop, Shop,
 TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar untracked
@@ -148,6 +148,13 @@ mit Autopilot-Tag — bewusst NICHT live geschaltet: generische Falsch-Copy + M�
 ### Massage-/Beauty-Geräte: Copy-Hinweis
 Bei „Massagegerät" o.ä. KEINE medizinischen/Schlankheits-Versprechen (Fat-burning etc.) — nur
 „Wohlbefinden/Entspannung" + Disclaimer „kein medizinisches Gerät". So gelistet.
+
+## Charge 20–22 (2026-05-31) — +4 live → 54
+Krallenschleifer (`CJYD290440801AZ`) · Smart-Anzuchtset (`CJYD290941001AZ`) ·
+12-in-1 Multitool (`CJGJ29030580001`) · Mini USB-Taschenlampe (`CJYD289168801AZ`).
+Charge 21 = 0 Keeper (alles Duplikate/Möbel/Schmuck). **Ausbeute jetzt ~1–2/Charge** — die
+guten Sommer/Alltags/Küche/Beauty-Kategorien sind weitgehend abgegrast. Künftig: Nischen wie
+Werkzeug, Auto, Camping, Garten, Baby/Kids (vorsichtig), Hobby anpeilen.
 
 ### Hinweis zur Methode
 Jedes Produkt: Keyword-Suche → Relevanzfilter → Bild-URLs per HTTP-200 verifiziert → angelegt →
