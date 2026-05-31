@@ -57,7 +57,12 @@ durchgehend die du-Form.
 - `generate_pdfs.py` → 5 Lead-Magnet-PDFs (Prompts, Glossar, Checkliste, Tool-Stack,
   Cold-Email). Helfer: `make_styles()`, `cover_page()`, `new_doc()`, `footer_canvas()`.
 - `generate_ebook.py` → `downloads/anti-hype-ebook.pdf` (das "Anti-Hype"-eBook,
-  beworben auf `ebook.html` und in `roadmap.html`).
+  beworben auf `ebook.html` und in `roadmap.html`). Enthält **3 Marken-Diagramme**
+  (`ebook_diagrams.py`, Pillow — selbst gezeichnet, kein Stock) + ein **Quellen-Kapitel**
+  (echte Primärquellen: EUR-Lex DSGVO/AI Act, Datenschutzbehörden). Beides wird zur
+  Build-Zeit via `_augment()` eingespielt — CONTENT-Dict bleibt unberührt. `render_blocks`
+  kennt Block-Typen `img`/`src`. `generate_kdp_print.py` nutzt dasselbe `_augment` (Diagramme
+  auch im Taschenbuch, auf 5×8" skaliert). Diagramm-Vorschau auf `buch.html` („Blick ins Buch").
 - `generate_launch_manual_pdf.py` → `downloads/launch-manual.pdf`.
 - `generate_kurs.py` → `downloads/ki-werkstatt-kurs.pdf` (das Kurs-Produkt von `kurs.html`,
   6 Module ausgeschrieben). Ausgeliefert über `kurs-zugang.html` (noindex Lieferseite).
