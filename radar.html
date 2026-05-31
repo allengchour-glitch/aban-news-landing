@@ -30,6 +30,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://abannews.beehiiv.com" crossorigin>
 
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/conversion.css">
@@ -151,7 +152,13 @@
     <div class="wrap">
       <h2 class="center">Nichts verpassen</h2>
       <p class="center muted">Bis der Radar live ist, bekommst du die wichtigsten KI-Entwicklungen jeden Morgen im Newsletter — 5 Minuten, kein Hype.</p>
-      <p class="center mt-5"><a href="/#signup" class="btn btn--lg">aban news abonnieren — gratis</a></p>
+            <form class="cta" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate style="max-width:440px;margin:1rem auto 0">
+        <div class="row" style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center">
+          <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse" style="flex:1;min-width:200px">
+          <button type="submit" class="btn btn--lg">Gratis abonnieren →</button>
+        </div>
+        <label class="consent" style="display:block;font-size:.8rem;color:var(--muted);margin-top:.5rem;text-align:center"><input type="checkbox" name="consent" value="1" required> Ich willige ein, Mo–Fr eine E-Mail zu erhalten. Abmeldung jederzeit. <a href="/datenschutz.html">Datenschutz</a>.</label>
+      </form>
       <p class="center muted mt-5">Mehr aus dem aban-Netzwerk: <a href="/tools.html">Tools</a> · <a href="/foerder.html">Förder-Radar</a> · <a href="/jobs.html">KI-Jobs</a> · <a href="/kurse.html">KI-Kurse</a></p>
     </div>
   </section>
