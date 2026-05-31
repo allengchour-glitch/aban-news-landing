@@ -23,7 +23,9 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_LEFT, TA_CENTER
 from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, PageBreak, ListFlowable, ListItem,
+    Image as RLImage,
 )
+from reportlab.lib.utils import ImageReader
 
 AMBER = HexColor("#d97706")
 DARK = HexColor("#1f2937")
@@ -62,6 +64,10 @@ def make_styles():
         leftIndent=2, rightIndent=2, spaceBefore=6, spaceAfter=10))
     styles.add(ParagraphStyle(name="TocItem", fontName="Helvetica",
         fontSize=11, leading=18, textColor=DARK))
+    styles.add(ParagraphStyle(name="Source", fontName="Helvetica",
+        fontSize=9.5, leading=13.5, textColor=MID_GRAY))
+    styles.add(ParagraphStyle(name="Caption", fontName="Helvetica-Oblique",
+        fontSize=9, leading=12, textColor=MID_GRAY, alignment=TA_CENTER, spaceBefore=3))
     return styles
 
 
@@ -81,6 +87,9 @@ def footer_canvas(canvas_obj, doc):
 # ============================================================
 # Generic block renderer
 # blocks: ("lead", str) | ("h3", str) | ("p", str) | ("ul", [str,...]) | ("callout", str)
+#         | ("img", {"src": dateiname_in_downloads, "alt"/"cap": str})
+#         | ("src", [str,...])  -> Quellen-Liste (wie ul, etwas kleiner)
+# Bild-Pfade werden relativ zu OUT_DIR aufgelöst.
 # ============================================================
 def render_blocks(story, styles, blocks):
     for kind, payload in blocks:
@@ -98,6 +107,24 @@ def render_blocks(story, styles, blocks):
                  for t in payload],
                 bulletType="bullet", bulletColor=AMBER, leftIndent=14, spaceAfter=10,
             ))
+        elif kind == "src":
+            story.append(ListFlowable(
+                [ListItem(Paragraph(t, styles["Source"]), value="•", leftIndent=10)
+                 for t in payload],
+                bulletType="bullet", bulletColor=MID_GRAY, leftIndent=14, spaceAfter=10,
+            ))
+        elif kind == "img":
+            path = os.path.join(OUT_DIR, payload["src"])
+            if os.path.exists(path):
+                iw, ih = ImageReader(path).getSize()
+                max_w = A4[0] - 4 * cm           # Seitenbreite minus Ränder
+                disp_w = min(max_w, 15.5 * cm)
+                disp_h = disp_w * ih / iw
+                story.append(Spacer(1, 0.2 * cm))
+                story.append(RLImage(path, width=disp_w, height=disp_h))
+                if payload.get("cap"):
+                    story.append(Paragraph(payload["cap"], styles["Caption"]))
+                story.append(Spacer(1, 0.3 * cm))
 
 
 def build_lang(lang, data):
@@ -161,13 +188,18 @@ def _esc(s):
 
 def blocks_to_xhtml(blocks):
     out = []
-    in_list = False
     for kind, payload in blocks:
-        if kind == "ul":
-            out.append("<ul>")
+        if kind in ("ul", "src"):
+            cls = ' class="src"' if kind == "src" else ""
+            out.append("<ul%s>" % cls)
             for it in payload:
                 out.append("<li>%s</li>" % _esc(it))
             out.append("</ul>")
+        elif kind == "img":
+            cap = payload.get("cap")
+            out.append('<figure><img src="%s" alt="%s"/>%s</figure>' % (
+                _esc(payload["src"]), _esc(payload.get("alt", "")),
+                ("<figcaption>%s</figcaption>" % _esc(cap)) if cap else ""))
         else:
             tag = {"lead": "p class=\"lead\"", "h3": "h3", "p": "p",
                    "callout": "p class=\"callout\""}.get(kind, "p")
@@ -185,7 +217,11 @@ p.callout{background:#fef3c7;border-left:4px solid #d97706;padding:.7em 1em;font
 ul{margin:0 0 1em 1.2em}.cover{text-align:center;margin-top:30%}
 .cover .t{font-size:2.6em;font-weight:bold;color:#d97706}
 .cover .s{font-size:1.2em;color:#1f2937;margin-top:.4em}
-.cover .m{color:#6b7280;margin-top:2em;font-size:.9em}"""
+.cover .m{color:#6b7280;margin-top:2em;font-size:.9em}
+figure{margin:1.4em 0;text-align:center}
+figure img{max-width:100%;height:auto}
+figcaption{font-size:.82em;font-style:italic;color:#6b7280;margin-top:.4em}
+ul.src{font-size:.9em;color:#555}"""
 
 
 def build_epub(lang, data):
@@ -208,6 +244,11 @@ def build_epub(lang, data):
     )
     spine_ids = ["cover"]
     nav_items = []
+    images = set()  # referenzierte Bild-Dateinamen (liegen in OUT_DIR)
+    for ch in data["chapters"]:
+        for kind, payload in ch["blocks"]:
+            if kind == "img":
+                images.add(payload["src"])
     for i, ch in enumerate(data["chapters"], 1):
         cid = "ch%d" % i
         spine_ids.append(cid)
@@ -232,6 +273,8 @@ def build_epub(lang, data):
 
     manifest = ['<item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>',
                 '<item id="css" href="style.css" media-type="text/css"/>']
+    for idx, imgname in enumerate(sorted(images), 1):
+        manifest.append('<item id="img%d" href="%s" media-type="image/png"/>' % (idx, imgname))
     spine = []
     for sid in spine_ids:
         manifest.append('<item id="%s" href="%s.xhtml" media-type="application/xhtml+xml"/>' % (sid, sid))
@@ -266,6 +309,11 @@ def build_epub(lang, data):
         z.writestr("OEBPS/style.css", EPUB_CSS)
         for name, content in files.items():
             z.writestr("OEBPS/%s" % name, content)
+        for imgname in sorted(images):
+            src_path = os.path.join(OUT_DIR, imgname)
+            if os.path.exists(src_path):
+                with open(src_path, "rb") as fh:
+                    z.writestr("OEBPS/%s" % imgname, fh.read())
     print("✓ downloads/%s erstellt" % filename)
 
 
@@ -1116,13 +1164,127 @@ CONTENT = {
 }
 
 
+# ============================================================
+# Augmentierung zur Build-Zeit: Diagramme + Quellen-Kapitel.
+# Hält das große CONTENT-Dict unangetastet; alles DRY über alle Sprachen.
+# Diagramme werden per Kapitel-INDEX zugeordnet (Reihenfolge ist in allen
+# Sprachen identisch): 1=Filter, 3=Stack, 10=Arbeitstag.
+# Quellen sind ECHT/verifizierbar (Aban-Voice: keine erfundenen Quellen).
+# ============================================================
+import ebook_diagrams
+
+# Kapitel-Index (0-basiert) -> (diagramm-key, caption-key)
+_FIG_AT = {1: "stack", 4: "filter", 10: "day"}  # nach Augment: siehe _augment
+
+_CAPTIONS = {
+    "de": {"filter": "Abb. 1 — Der 3-Fragen-Filter auf einen Blick.",
+           "stack": "Abb. 2 — Vier Bausteine, mehr brauchst du nicht.",
+           "day": "Abb. 3 — Ehrliche Halbierung statt „10x“."},
+    "en": {"filter": "Fig. 1 — The 3-question filter at a glance.",
+           "stack": "Fig. 2 — Four building blocks, no more.",
+           "day": "Fig. 3 — An honest halving, not “10x”."},
+    "fr": {"filter": "Fig. 1 — Le filtre en 3 questions d'un coup d'œil.",
+           "stack": "Fig. 2 — Quatre briques, pas plus.",
+           "day": "Fig. 3 — Une vraie réduction de moitié, pas du « 10x »."},
+    "it": {"filter": "Fig. 1 — Il filtro in 3 domande a colpo d'occhio.",
+           "stack": "Fig. 2 — Quattro mattoni, non di più.",
+           "day": "Fig. 3 — Un dimezzamento onesto, non il “10x”."},
+}
+
+# Quellen-Kapitel (echte, stabile Primärquellen — keine fragilen Deep-Links).
+_SOURCES = {
+    "de": {"title": "Quellen & weiterlesen", "blocks": [
+        ("lead", "Dieses eBook ist Erfahrung, kein Forschungsbericht. Wo es um Recht und Fakten geht, prüf bei der Quelle selbst — hier die wichtigsten, alle offiziell und kostenlos."),
+        ("h3", "Recht & Datenschutz (für das Datenschutz-Kapitel)"),
+        ("src", ["<b>DSGVO-Volltext</b> — EUR-Lex, Verordnung (EU) 2016/679. Such bei eur-lex.europa.eu nach „2016/679“. Maßgeblich für Art. 6 (Rechtsgrundlagen) und Art. 28 (Auftragsverarbeitung).",
+                 "<b>EU-KI-Verordnung (AI Act)</b> — Verordnung (EU) 2024/1689, ebenfalls über EUR-Lex. Regelt Risikoklassen und Transparenzpflichten für KI-Systeme.",
+                 "<b>Deine Datenschutzbehörde</b> — in DE der/die Landesdatenschutzbeauftragte, in AT die DSB (dsb.gv.at), in CH der EDÖB (edoeb.admin.ch). Erste Anlaufstelle bei konkreten Fragen."]),
+        ("h3", "Wie die Tools wirklich mit Daten umgehen"),
+        ("src", ["<b>Anbieter-Doku selbst lesen</b> — „Trust Center“, „Data Processing Addendum (DPA)“ oder „Privacy“ auf der Anbieter-Seite. Nur das zählt, nicht ein Blogpost darüber.",
+                 "<b>Trainings-Einstellung prüfen</b> — bei ChatGPT/Claude in den Konto-Einstellungen, ob deine Eingaben zum Training genutzt werden. Einmal bewusst setzen."]),
+        ("p", "Faustregel bleibt: Was stimmen muss, verifizierst du an der Primärquelle — nicht bei der KI und nicht in diesem Buch."),
+    ]},
+    "en": {"title": "Sources & further reading", "blocks": [
+        ("lead", "This eBook is experience, not a research paper. Where law and facts are involved, check the source yourself — here are the key ones, all official and free."),
+        ("h3", "Law & data protection (for the data-protection chapter)"),
+        ("src", ["<b>GDPR full text</b> — EUR-Lex, Regulation (EU) 2016/679. Search eur-lex.europa.eu for “2016/679”. Relevant for Art. 6 (legal bases) and Art. 28 (processors).",
+                 "<b>EU AI Act</b> — Regulation (EU) 2024/1689, also on EUR-Lex. Governs risk classes and transparency duties for AI systems.",
+                 "<b>Your data-protection authority</b> — the national/state DPA where you operate. First port of call for concrete questions."]),
+        ("h3", "How the tools really handle data"),
+        ("src", ["<b>Read the provider's own docs</b> — “Trust Center”, “Data Processing Addendum (DPA)” or “Privacy” on the provider's site. That's what counts, not a blog post about it.",
+                 "<b>Check the training setting</b> — in ChatGPT/Claude account settings, whether your inputs are used for training. Set it once, deliberately."]),
+        ("p", "The rule of thumb stays: whatever has to be correct, you verify at the primary source — not with the AI and not in this book."),
+    ]},
+    "fr": {"title": "Sources & pour aller plus loin", "blocks": [
+        ("lead", "Ce eBook est de l'expérience, pas un rapport de recherche. Quand il s'agit de droit et de faits, vérifie à la source — voici les principales, toutes officielles et gratuites."),
+        ("h3", "Droit & protection des données (pour le chapitre RGPD)"),
+        ("src", ["<b>Texte intégral du RGPD</b> — EUR-Lex, règlement (UE) 2016/679. Cherche « 2016/679 » sur eur-lex.europa.eu. Pertinent pour l'art. 6 (bases légales) et l'art. 28 (sous-traitants).",
+                 "<b>Règlement IA de l'UE (AI Act)</b> — règlement (UE) 2024/1689, également sur EUR-Lex. Encadre les classes de risque et les obligations de transparence.",
+                 "<b>Ton autorité de protection des données</b> — la CNIL en France, l'APD en Belgique, etc. Premier point de contact pour les questions concrètes."]),
+        ("h3", "Comment les outils traitent vraiment les données"),
+        ("src", ["<b>Lis la doc du fournisseur</b> — « Trust Center », « Data Processing Addendum (DPA) » ou « Privacy » sur son site. C'est ça qui compte, pas un article de blog.",
+                 "<b>Vérifie le réglage d'entraînement</b> — dans les paramètres de ton compte ChatGPT/Claude, si tes saisies servent à l'entraînement. Règle-le une fois, sciemment."]),
+        ("p", "La règle reste : ce qui doit être exact, tu le vérifies à la source primaire — pas auprès de l'IA, pas dans ce livre."),
+    ]},
+    "it": {"title": "Fonti & per approfondire", "blocks": [
+        ("lead", "Questo eBook è esperienza, non un rapporto di ricerca. Dove si parla di diritto e fatti, verifica alla fonte — ecco le principali, tutte ufficiali e gratuite."),
+        ("h3", "Diritto & protezione dei dati (per il capitolo GDPR)"),
+        ("src", ["<b>Testo integrale del GDPR</b> — EUR-Lex, regolamento (UE) 2016/679. Cerca « 2016/679 » su eur-lex.europa.eu. Rilevante per l'art. 6 (basi giuridiche) e l'art. 28 (responsabili).",
+                 "<b>Regolamento UE sull'IA (AI Act)</b> — regolamento (UE) 2024/1689, anch'esso su EUR-Lex. Disciplina classi di rischio e obblighi di trasparenza.",
+                 "<b>La tua autorità per la protezione dei dati</b> — in Italia il Garante Privacy (garanteprivacy.it). Primo riferimento per domande concrete."]),
+        ("h3", "Come gli strumenti trattano davvero i dati"),
+        ("src", ["<b>Leggi la doc del fornitore</b> — « Trust Center », « Data Processing Addendum (DPA) » o « Privacy » sul suo sito. Conta quello, non un articolo di blog.",
+                 "<b>Controlla l'impostazione di addestramento</b> — nelle impostazioni dell'account ChatGPT/Claude, se i tuoi input servono all'addestramento. Impostalo una volta, di proposito."]),
+        ("p", "La regola resta: ciò che deve essere corretto, lo verifichi alla fonte primaria — non con l'IA e non in questo libro."),
+    ]},
+}
+
+
+def _augment(lang, data):
+    """Gibt eine angereicherte Kopie von data zurück: Diagramme in passende
+    Kapitel eingefügt + Quellen-Kapitel angehängt. Mutiert das Original NICHT."""
+    figs = ebook_diagrams.ensure_diagrams(OUT_DIR, lang)
+    caps = _CAPTIONS.get(lang, _CAPTIONS["en"])
+    # Diagramm nach Kapitel-Titel-Schlüsselwort zuordnen (robuster als Index).
+    want = [
+        ("filter", figs["filter"], caps["filter"]),
+        ("stack", figs["stack"], caps["stack"]),
+        ("day", figs["day"], caps["day"]),
+    ]
+    # Schlüsselwörter pro Diagramm und Sprache zum Finden des Ziel-Kapitels:
+    keys = {
+        "filter": ("3-fragen", "3-question", "3 questions", "3 domande"),
+        "stack": ("stack",),
+        "day": ("durchgespielt", "walked through", "déroulée", "svolta"),
+    }
+    new = dict(data)
+    chapters = [dict(ch) for ch in data["chapters"]]
+    for figkey, fname, cap in want:
+        kws = keys[figkey]
+        for ch in chapters:
+            t = ch["title"].lower()
+            if any(k in t for k in kws):
+                # Bild direkt nach dem ersten Block (meist lead/p) einsetzen.
+                blocks = list(ch["blocks"])
+                insert_at = 1 if blocks else 0
+                blocks.insert(insert_at, ("img", {"src": fname, "alt": cap, "cap": cap}))
+                ch["blocks"] = blocks
+                break
+    # Quellen-Kapitel anhängen (vor dem letzten Werkstatt-Block? -> ans Ende).
+    src_ch = _SOURCES.get(lang, _SOURCES["en"])
+    chapters.append(src_ch)
+    new["chapters"] = chapters
+    return new
+
+
 def build(langs=None):
     langs = langs or list(CONTENT.keys())
     for lang in langs:
         if lang not in CONTENT:
             print("! unbekannte Sprache: %s" % lang); continue
-        build_lang(lang, CONTENT[lang])
-        build_epub(lang, CONTENT[lang])
+        data = _augment(lang, CONTENT[lang])
+        build_lang(lang, data)
+        build_epub(lang, data)
 
 
 if __name__ == "__main__":
