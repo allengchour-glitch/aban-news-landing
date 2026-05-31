@@ -244,19 +244,21 @@
         .nw-card{display:flex;flex-direction:column;background:#fff;border:1px solid #ece6db;border-radius:16px;
           overflow:hidden;text-decoration:none;color:#1c2530;transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s}
         .nw-card:hover{transform:translateY(-4px)}
-        .nw-img{width:100%;aspect-ratio:1200/630;object-fit:cover;display:block;background:#ece6db}
+        .nw-img{width:100%;aspect-ratio:1200/630;object-fit:cover;display:block;background:#0f766e}
         .nw-meta{font-size:.74rem;color:#b45309;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
         .nw-body{padding:15px 17px 19px;display:flex;flex-direction:column;gap:7px}
         .nw-h{font-weight:800;font-size:1.06rem;line-height:1.25}
         .nw-t{color:#6b7280;font-size:.9rem;line-height:1.45}
-        /* Aufmacher: erste Karte über volle Breite, Bild + Text nebeneinander */
-        .nw-card.lead{grid-column:1 / -1;flex-direction:row;align-items:stretch}
-        .nw-card.lead .nw-img{width:55%;aspect-ratio:auto;min-height:260px}
-        .nw-card.lead .nw-body{justify-content:center;padding:2rem 2.2rem;gap:10px}
-        .nw-card.lead .nw-h{font-size:1.7rem;line-height:1.15}
-        .nw-card.lead .nw-t{font-size:1rem}
-        @media(max-width:820px){.nw-grid{grid-template-columns:1fr 1fr}.nw-card.lead{grid-column:1 / -1;flex-direction:column}.nw-card.lead .nw-img{width:100%;aspect-ratio:1200/630;min-height:0}.nw-card.lead .nw-h{font-size:1.3rem}.nw-card.lead .nw-body{padding:15px 17px 19px}}
-        @media(max-width:560px){.nw-grid{grid-template-columns:1fr}}
+        /* Aufmacher: erste Karte über volle Breite, Bild + Text nebeneinander — nur Desktop */
+        @media(min-width:821px){
+          .nw-card.lead{grid-column:1 / -1;flex-direction:row;align-items:stretch}
+          .nw-card.lead .nw-img{width:50%;aspect-ratio:auto;min-height:240px;height:auto}
+          .nw-card.lead .nw-body{justify-content:center;padding:2rem 2.2rem;gap:10px}
+          .nw-card.lead .nw-h{font-size:1.6rem;line-height:1.18}
+          .nw-card.lead .nw-t{font-size:1rem}
+        }
+        @media(max-width:820px){.nw-grid{grid-template-columns:1fr 1fr}}
+        @media(max-width:560px){.nw-grid{grid-template-columns:1fr;gap:14px}}
       </style>
       <div class="nw-grid">
         <a class="nw-card lead" href="/archive/025-2026-07-03-werkzeugkasten-h1-bilanz-quantensprung-entlarvt.html">
