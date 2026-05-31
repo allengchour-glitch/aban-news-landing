@@ -21,3 +21,12 @@ roman*.json.bak
 !kapitel/band-03/kapitel-*.md
 kapitel/band-*/*.bak.md
 kapitel/band-*/*.lektorat.md
+
+# --- Ausnahme: englische Uebersetzung "The Valley Holds Its Breath" ---
+!kapitel-en/
+!kapitel-en/band-01/
+!kapitel-en/band-01/kapitel-*.md
+!kapitel-en/band-02/
+!kapitel-en/band-02/kapitel-*.md
+!kapitel-en/band-03/
+!kapitel-en/band-03/kapitel-*.md

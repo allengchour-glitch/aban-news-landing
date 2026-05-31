@@ -259,8 +259,68 @@ def build_cover(front_art, pages, out_pdf, titel, autor):
 
 
 # ==================================================================
-def write_metadata(out_md, titel, autor, pages, full_w, full_h, spine):
-    txt = """# KDP-Metadaten & Anleitung — „{titel}"
+def write_metadata(out_md, titel, autor, pages, full_w, full_h, spine, sprache="Deutsch"):
+    slug = slugify(titel)
+    if sprache.lower().startswith("en"):
+        txt = """# KDP Metadata & Guide — "{titel}"
+
+**The simplest way to upload. Two products, both free to create.**
+
+---
+
+## A) Kindle eBook (fastest — no KDP print package needed)
+1. kdp.amazon.com → **Create** → **Kindle eBook**.
+2. **Language:** English · **Title:** {titel} · **Subtitle:** A Generational Drama in Three Volumes
+3. **Author:** {autor}
+4. **Description:** (see below, section "Description")
+5. **Keywords:** (see "7 Keywords")
+6. **Categories:** (see "Categories")
+7. **Manuscript:** upload the file **{slug}.epub**.
+8. **Cover:** upload **img/covers/{slug}-gesamt.jpg** (1600×2560).
+9. **AI content:** When asked about "AI-generated content" → answer **Yes** (text **and** images) — KDP requires this.
+10. Set price (e.g. $0.99 or free via price matching) → **Publish**.
+
+## B) Paperback (Print)
+1. Under the same title → **Paperback** (or new: Create → Paperback).
+2. **Trim size:** 5 × 8 inches (12.7 × 20.32 cm)
+3. **Paper:** White · **Bleed:** with bleed · **Cover finish:** matte
+4. **Interior file:** **innenteil-5x8.pdf**  (length: {pages} pages)
+5. **Cover file:** **umschlag-5x8.pdf**  (full wrap: {fw:.3f} × {fh:.3f} inches, spine {spine:.3f} inches)
+6. **AI content:** also answer **Yes**.
+7. Check preview → set price → **Publish**.
+
+> Tip: Upload eBook (A) first, then Paperback (B) — KDP links them automatically to the same book page.
+
+---
+
+## Fields to Copy-Paste
+
+**Title:** {titel}
+**Subtitle:** A Generational Drama in Three Volumes
+**Author:** {autor}
+**Language:** English
+**Series:** The Valley Holds Its Breath (3 volumes, here as complete edition)
+
+### Description
+A remote Swiss mountain valley, a reservoir — and a death recorded sixty years ago as an accident. Across three generations, a family carries a concealed guilt forward: the grandmother who stays silent; the son who finds the truth and uses it instead of opening it; the granddaughter who returns in a drought summer as a hydrologist — and the sinking lake releases what it has hidden for sixty years.
+
+A quiet, precise generational drama about silence, money, and what remains when the water falls. Written and edited chapter by chapter with Claude Opus.
+
+### 7 Keywords
+generational saga; family secret; Swiss Alps drama; guilt and silence; reservoir drama; literary family fiction; contemporary literary fiction
+
+### Categories (2)
+1. Fiction › Literary Fiction
+2. Fiction › Family Life / Multigenerational
+
+### Pricing suggestion
+eBook $0.99–$2.99 · Paperback $7.99–$9.99 (KDP will show minimum prices after print costs).
+
+### Transparency note (important)
+KDP asks about **AI-generated content** at upload. Answer **Yes** — for both text and cover. This is required and fits the brand (anti-hype, transparent).
+""".format(titel=titel, autor=autor, pages=pages, fw=full_w, fh=full_h, spine=spine, slug=slug)
+    else:
+        txt = """# KDP-Metadaten & Anleitung — „{titel}"
 
 **So lädst du am einfachsten hoch. Zwei Produkte, beide kostenlos anlegbar.**
 
@@ -273,8 +333,8 @@ def write_metadata(out_md, titel, autor, pages, full_w, full_h, spine):
 4. **Beschreibung:** (siehe unten, Abschnitt „Beschreibung")
 5. **Schlüsselwörter:** (siehe „7 Keywords")
 6. **Kategorien:** (siehe „Kategorien")
-7. **Manuskript:** die Datei **das-tal-haelt-den-atem-an.epub** hochladen.
-8. **Cover:** **img/covers/das-tal-haelt-den-atem-an-gesamt.jpg** hochladen (1600×2560).
+7. **Manuskript:** die Datei **{slug}.epub** hochladen.
+8. **Cover:** **img/covers/{slug}-gesamt.jpg** hochladen (1600×2560).
 9. **KI-Inhalte:** Auf die Frage „AI-generated content" → **Ja** angeben (Text **und** Bilder), so verlangt es KDP.
 10. Preis setzen (z. B. 0,99 € oder kostenlos via Preisangleichung) → **Veröffentlichen**.
 
@@ -316,7 +376,7 @@ eBook 0,99–2,99 € · Taschenbuch 7,99–9,99 € (KDP zeigt dir die Mindestp
 
 ### Ehrlichkeits-Hinweis (wichtig)
 KDP fragt beim Hochladen nach **KI-generierten Inhalten**. Gib **Ja** an — für Text und für das Cover. Das ist Pflicht und passt zur Marke (anti-hype, transparent).
-""".format(titel=titel, autor=autor, pages=pages, fw=full_w, fh=full_h, spine=spine)
+""".format(titel=titel, autor=autor, pages=pages, fw=full_w, fh=full_h, spine=spine, slug=slug)
     with open(out_md, "w", encoding="utf-8") as f:
         f.write(txt)
 
@@ -344,7 +404,8 @@ def main():
     print("OK Umschlag: %s (%.3f x %.3f Zoll, Ruecken %.3f Zoll)" % (umschlag, fw, fh, spine))
 
     meta = os.path.join(args.out, "metadaten.md")
-    write_metadata(meta, roman["titel"], autor, pages, fw, fh, spine)
+    sprache = roman.get("sprache", "Deutsch")
+    write_metadata(meta, roman["titel"], autor, pages, fw, fh, spine, sprache=sprache)
     print("OK Metadaten/Anleitung: %s" % meta)
     print("== KDP-Paket fertig in %s ==" % args.out)
     return 0

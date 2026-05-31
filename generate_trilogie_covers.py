@@ -134,7 +134,10 @@ def _ridge(draw, y_base, amp, color, seed, step=80):
     draw.polygon(pts, fill=color)
 
 
-def cover(slug, sky_top, sky_bot, accent, band_label, band_title, epoch, seed):
+def cover(slug, sky_top, sky_bot, accent, band_label, band_title, epoch, seed,
+          main_title="Das Tal hält den Atem an",
+          series_subtitle="Ein Generationendrama",
+          colophon="Roman · geschrieben mit Claude Opus"):
     r = random.Random(seed)
     waterline = int(H * 0.66)
 
@@ -222,18 +225,18 @@ def cover(slug, sky_top, sky_bot, accent, band_label, band_title, epoch, seed):
         _center(d, y + 160, epoch, font(33, "italic"), MUTED)
 
     tf = font(118, "bold")
-    lines = _wrap(d, "Das Tal hält den Atem an", tf, W - 250)
+    lines = _wrap(d, main_title, tf, W - 250)
     ty = 690 - (len(lines) - 1) * 64
     for ln in lines:
         # leichter Schatten fuer Tiefe
         _center(d, ty + 3, ln, tf, (0, 0, 0, 150))
         _center(d, ty, ln, tf, _lerp(accent, CREAM, 0.35))
         ty += 138
-    _center(d, ty + 14, "Ein Generationendrama", font(46, "italic"), CREAM)
+    _center(d, ty + 14, series_subtitle, font(46, "italic"), CREAM)
 
     _center(d, H - 250, "aban news", font(46, "bold"), CREAM)
     d.line([(W / 2 - 90, H - 188), (W / 2 + 90, H - 188)], fill=accent, width=1)
-    _center(d, H - 168, "Roman · geschrieben mit Claude Opus", font(29, "regular"), MUTED)
+    _center(d, H - 168, colophon, font(29, "regular"), MUTED)
 
     os.makedirs(OUT, exist_ok=True)
     path = os.path.join(OUT, "%s.jpg" % slug)
@@ -245,11 +248,10 @@ def build():
     bibel = json.load(open(BIBEL, encoding="utf-8"))
     base = "das-tal-haelt-den-atem-an"
     labels = {1: "Erster Band", 2: "Zweiter Band", 3: "Dritter Band"}
-    # Pro Band eigene Himmel-/Akzent-Stimmung.
     stimmung = {
-        1: ((26, 32, 50), (10, 12, 20), (214, 150, 70)),    # 1962: kuehle Daemmerung, warmer Akzent
-        2: ((38, 30, 40), (14, 10, 14), (224, 122, 60)),    # 1991: Abendrot
-        3: ((20, 30, 44), (8, 11, 18), (150, 186, 214)),    # heute: klar, kalt
+        1: ((26, 32, 50), (10, 12, 20), (214, 150, 70)),
+        2: ((38, 30, 40), (14, 10, 14), (224, 122, 60)),
+        3: ((20, 30, 44), (8, 11, 18), (150, 186, 214)),
     }
     for b in bibel["baende"]:
         n = b["nummer"]
@@ -260,5 +262,35 @@ def build():
           "Die Trilogie", "Drei Bände", "Riedmatt · 1961 bis heute", seed=2000)
 
 
+def build_en():
+    bibel = json.load(open(
+        os.path.join(ROOT, "ki-schriftsteller", "roman-drama-trilogy-en.json"), encoding="utf-8"))
+    base = "the-valley-holds-its-breath"
+    labels = {1: "Volume One", 2: "Volume Two", 3: "Volume Three"}
+    stimmung = {
+        1: ((26, 32, 50), (10, 12, 20), (214, 150, 70)),
+        2: ((38, 30, 40), (14, 10, 14), (224, 122, 60)),
+        3: ((20, 30, 44), (8, 11, 18), (150, 186, 214)),
+    }
+    for b in bibel["baende"]:
+        n = b["nummer"]
+        st, sb, ac = stimmung.get(n, ((24, 30, 46), (10, 12, 20), (214, 150, 70)))
+        cover("%s-band-%02d" % (base, n), st, sb, ac, labels.get(n, "Volume %d" % n),
+              b["titel"], b.get("untertitel", ""), seed=1000 + n,
+              main_title="The Valley Holds Its Breath",
+              series_subtitle="A Generational Drama",
+              colophon="Novel · written with Claude Opus")
+    cover("%s-gesamt" % base, (24, 30, 48), (9, 11, 19), (214, 150, 70),
+          "The Trilogy", "Three Volumes", "Riedmatt · 1961 to the present", seed=2000,
+          main_title="The Valley Holds Its Breath",
+          series_subtitle="A Generational Drama",
+          colophon="Novel · written with Claude Opus")
+
+
 if __name__ == "__main__":
-    build()
+    import sys
+    if "--en" in sys.argv:
+        build_en()
+    else:
+        build()
+        build_en()

@@ -358,7 +358,15 @@ def main():
     slug = slugify(roman["titel"])
     genre = roman.get("genre", "")
     autor = roman.get("autor", "aban news")
-    LABELS = {1: "Erster Band", 2: "Zweiter Band", 3: "Dritter Band"}
+    sprache = roman.get("sprache", "Deutsch").lower()
+    if sprache.startswith("en"):
+        LABELS = {1: "Volume One", 2: "Volume Two", 3: "Volume Three"}
+    elif sprache.startswith("fr"):
+        LABELS = {1: "Tome Premier", 2: "Tome Deux", 3: "Tome Trois"}
+    elif sprache.startswith("it"):
+        LABELS = {1: "Primo Volume", 2: "Secondo Volume", 3: "Terzo Volume"}
+    else:
+        LABELS = {1: "Erster Band", 2: "Zweiter Band", 3: "Dritter Band"}
 
     def cover_fuer(artslug):
         p = os.path.join(args.cover_dir, "%s.jpg" % artslug)
