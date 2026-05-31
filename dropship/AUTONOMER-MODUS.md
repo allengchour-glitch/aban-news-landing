@@ -187,6 +187,21 @@ Mehr Produkte ≠ mehr Umsatz. Ab ~50 Produkten lohnt sich Hero-Ausbau mehr als 
 - **⚠️ Nur Verifiziertes dokumentieren:** Keine Produkte/IDs ins Log schreiben, die nicht per Query
   bestätigt sind (sonst Halluzinations-Einträge).
 
+## 6d. 👗 Mode: echte Grössen × Farben (Varianten)
+Kleidung braucht auswählbare Optionen (sonst Conversion-/Retouren-Problem). Workflow:
+1. **`node dropship/cj_variants.mjs <PID>`** → liest CJ-Variantenmatrix, parst `variantKey`
+   („Farbe-Grösse"), gibt JSON mit `colors`, `sizes`, `variants[{color,size,sku,price,img}]`.
+   CJ-Struktur: jede Farbe×Grösse hat eigene SKU (`…01AZ, …02BY, …`).
+2. Daraus Shopify-`productSet`-Input bauen: `productOptions:[{name:"Farbe",values},{name:"Grösse",values}]`
+   + `variants` mit `optionValues` + `inventoryItem.sku` (echte CJ-SKU je Kombi, `tracked:false`).
+   Farbnamen säubern (Produktwörter raus). Grössen-Limit Shopify: 100 Varianten/Produkt.
+3. **`productSet(synchronous:true, input:…)`** ersetzt Optionen+Varianten komplett (vorher
+   `validate_graphql_codeblocks`). Funktioniert auch auf bestehenden Live-Produkten.
+4. PID eines schon angelegten Produkts wiederfinden: CJ `/product/list` nach Name, `productSku`-
+   Präfix (z.B. `CJLY2916030`) matchen.
+- **2026-05-31 erledigt:** alle 7 Mode-Artikel auf echte Farbe×Grösse umgestellt (Bikini 18,
+  Leinenhose 40, Strand-Rock 20, Kleid 15, Polo 10, Badeset 6, Neckholder 4 Varianten).
+
 ## 7. Bekannte Eigenheiten der Umgebung
 - **Scheduler-Tools (`CronCreate`/`ScheduleWakeup`) sind NICHT aktiviert** → ein echter,
   selbstlaufender Cron-Loop über Stunden ist hier nicht möglich. Autonomie heißt: in der
