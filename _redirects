@@ -296,3 +296,6 @@
 /auftragsbestaetigung /auftragsbestaetigung-schreiben.html 301
 /auftrag-bestaetigen  /auftragsbestaetigung-schreiben.html 301
 /en/order-confirmation /en/auftragsbestaetigung-schreiben.html 301
+
+# Privates Manuskript (bezahltes Produkt) NIE öffentlich ausliefern
+/_manuscripts/*   /404.html             404
