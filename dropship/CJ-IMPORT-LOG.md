@@ -543,3 +543,25 @@ Status ACTIVE, in alle 6 Kanäle publiziert, Tag `damen` ergänzt → Damen-Mode
 | Spitzen-Trägertop Basic | 15413083111809 | 2605300855591637800 | 30 (6 Farben×S–2XL) | 22.90 | 3.52 |
 
 Stand danach: **464 aktive Produkte** (davon 136 cj-real). Marge ~3,5–5× auf Kost, marktrealistische CHF.
+
+## 2026-05-31 — Schuh-Kollektion aufgebaut (Damen + Herren) + Menü-Tab
+CJ-Schuhsuche war mau (Herren-Keywords lieferten oft Damen-Treffer/Dubletten/Jeans-Fehltreffer);
+nach 2 Runden 5 saubere Treffer. Alle Bilder HTTP-200 vorgeprüft, nach Anlage Status READY.
+Status ACTIVE, in alle 6 Kanäle publiziert. Echte Farbe×EU-Größe-Varianten.
+
+| Schuh | Shopify-ID | Var | VK CHF | Gender |
+|---|---|---|---|---|
+| Plateau-Sandalen Retro | 15413083832705 | 32 | 29.90 | damen |
+| Herren Leder-Slipper | 15413083898241 | 14 | 54.90 | herren |
+| Herren Laufschuhe Flyknit | 15413083931009 | 12 | 34.90 | herren |
+| Slingback-Pumps | 15413084062081 | 24 | 49.90 | damen |
+| Loafer Rundkappe | 15413084160385 | 64 | 27.90 | damen |
+
+**Collections (Smart, tag-basiert):** 👟 Schuhe (handle `schuhe`, 86 Produkte — inkl. 81 ältere
+schuhe-getaggte), 👠 Damen-Schuhe (`damen-schuhe`, 3), 👞 Herren-Schuhe (`herren-schuhe`, 2).
+Collections in Onlineshop+Shop publiziert.
+**Menü:** Neuer Tab „👟 Schuhe" an Position 5 (nach Mode) mit Untermenü Alle/Damen/Herren —
+via menuUpdate, alle 17 bestehenden Tabs erhalten. Menu-ID 310224093569.
+
+Hinweis: Die 81 älteren schuhe-Produkte haben keine damen/herren-Tags → nur in Haupt-Collection,
+nicht gender-gesplittet. Bei Bedarf später nachträglich taggen.
