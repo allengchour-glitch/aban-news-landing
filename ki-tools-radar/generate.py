@@ -451,7 +451,7 @@ NEW_UI = {
                      "zh": "最重要的 AI 术语清晰解析 — 附相关工具。"},
 }
 # Newsletter box links to the existing owned audience (compounding revenue lever).
-NEWSLETTER_URL = "https://abannews.de"
+NEWSLETTER_URL = "https://abannews.com/gratis-ki-tools.html"
 
 
 def slugify(value: str) -> str:
@@ -816,6 +816,9 @@ def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None, relat
     star = " *" if is_aff else ""
     loc = loc_tools.get(tool["id"], {})
     note = loc.get("aban_note") or tool.get("aban_note")
+    # Internen Redaktions-Marker nicht öffentlich zeigen (Daten-Flag, kein Besucher-Text).
+    if note:
+        note = re.sub(r"\[Redaktion:[^\]]*\]\s*", "", note).strip()
     dsgvo = loc.get("dsgvo_note") or tool.get("dsgvo_note")
     use_cases = loc.get("use_cases") or tool.get("use_cases", [])
     uc = "".join(f'<span class="chip">{e(u)}</span>' for u in use_cases)
