@@ -499,3 +499,14 @@ Alle ACTIVE, 7 Kanäle, Single-Variante (Option „Ausführung"=Teilezahl statt 
 kinder-spielzeug (Menü-Sub) 0 → 3. Smart-Coll `kinder-spielzeug` (tag:Spielzeug) greift.
 Übersprungen: Auto-Becherhalter (11 unklare „Varianten", Nische); Bar-Tools/Vasen/Hautpflege =
 CJ lieferte nur Müll (Handtuchhalter, Make-up-Pinsel statt Cocktail/Vase/Gesichtsbürste).
+
+## 2026-05-31 — Charge: +5 Damen-Mode & Schmuck
+Breite Mode+Schmuck-Suche (cj_mode_schmuck_search.mjs, 12 Keywords). Viele SKU-Duplikate
+(Strand-Rock, 5+ Silber-Ketten/Ringe/Ohrringe schon live) → Vorabcheck filterte sie raus.
+5 echte Neutreffer (volle Galerie, 7 Kanäle):
+- Sommer-Top «Sole» V-Neck Knopfleiste (CJYD2916063) — CHF 29.90 — 16 var, 9 Bilder
+- Langarm-Top «Dentelle» Spitzen-Panel (CJMY2916449) — CHF 27.90 — 28 var, 8 Bilder (Farben bereinigt: Skin→Nude etc.)
+- Wide-Leg-Hose «Largo» (CJTZ2916466) — CHF 29.90 — 5 var (mangled→Variante N)
+- Blütenring «Fleur Rose» rosa Zirkonia (CJLX2916413) — CHF 16.90 — 2 var
+- Halskette «Coquille» Muschel-Tassel (CJYD2916318) — CHF 19.90 — 1 var, 5 Bilder
+Schmuck weitgehend abgedeckt: von 12 Schmuck-Treffern waren ~9 Duplikate.
