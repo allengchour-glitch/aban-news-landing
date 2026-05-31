@@ -53,6 +53,10 @@
     .band .b-body{padding:0 1.2rem 1.1rem;color:var(--ink)}
     .band .b-body p{margin-bottom:.6rem}
     .how{background:var(--amber-lt);border-left:4px solid var(--amber);border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;font-size:.95rem}
+    .getit{display:flex;flex-wrap:wrap;gap:.5rem;margin:.6rem 0}
+    .b-dl{display:inline-flex;margin-top:.4rem;font-size:.85rem;font-weight:600;color:var(--amber-dk);text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:.35rem .7rem;background:#fff}
+    .b-dl:hover{border-color:var(--amber)}
+    .dl-state{display:block;font-size:.78rem;color:var(--ok);font-weight:600;margin-top:.4rem}
     .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2rem 0}
     .cta-box h2{font-size:1.25rem;margin-bottom:.5rem}
     .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
@@ -63,7 +67,7 @@
     footer a{color:var(--muted)}
   </style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Book","name":"Das Tal hält den Atem an","genre":"Drama","inLanguage":"de","bookFormat":"https://schema.org/EBook","publisher":{"@type":"Organization","name":"aban news"},"url":"https://abannews.com/trilogie.html","abstract":"Ein Generationendrama in drei Bänden über eine verschwiegene Schuld in einem Schweizer Bergtal.","hasPart":[{"@type":"Book","name":"Der Hang","position":1,"about":"Riedmatt, 1961–1963"},{"@type":"Book","name":"Die Mitte","position":2,"about":"Riedmatt, 1991–1992"},{"@type":"Book","name":"Das Wasser","position":3,"about":"Riedmatt, Gegenwart"}]}
+  {"@context":"https://schema.org","@type":"Book","name":"Das Tal hält den Atem an","genre":"Drama","inLanguage":"de","bookFormat":"https://schema.org/EBook","publisher":{"@type":"Organization","name":"aban news"},"url":"https://abannews.com/trilogie.html","isAccessibleForFree":true,"workExample":[{"@type":"Book","bookFormat":"https://schema.org/EBook","encodingFormat":"application/epub+zip","url":"https://abannews.com/downloads/das-tal-haelt-den-atem-an.epub"}],"abstract":"Ein Generationendrama in drei Bänden über eine verschwiegene Schuld in einem Schweizer Bergtal.","hasPart":[{"@type":"Book","name":"Der Hang","position":1,"about":"Riedmatt, 1961–1963"},{"@type":"Book","name":"Die Mitte","position":2,"about":"Riedmatt, 1991–1992"},{"@type":"Book","name":"Das Wasser","position":3,"about":"Riedmatt, Gegenwart"}]}
   </script>
 </head>
 <body data-memory-key="aban_trilogie_v1">
@@ -83,15 +87,20 @@
   <div class="wrap">
 
     <div class="hero">
-      <span class="badge">Drama · Trilogie · in Arbeit</span>
+      <span class="badge">Drama · Trilogie · komplett</span>
       <h1>Das Tal hält den Atem an</h1>
       <p class="sub">Ein Generationendrama in drei Bänden</p>
-      <p class="lead">Über drei Generationen hält eine Familie in einem abgelegenen Schweizer Bergtal eine Schuld unter Verschluss: ein Tod, der als Unfall in die Akten kam, ein Brief, der nie abgeschickt wurde, und das stille Übereinkommen eines ganzen Dorfes, nicht zu fragen. Geschrieben Kapitel für Kapitel mit Claude Opus — ein offenes Experiment, kein fertiges Buch.</p>
+      <p class="lead">Über drei Generationen hält eine Familie in einem abgelegenen Schweizer Bergtal eine Schuld unter Verschluss: ein Tod, der als Unfall in die Akten kam, ein Brief, der nie abgeschickt wurde, und das stille Übereinkommen eines ganzen Dorfes, nicht zu fragen. Geschrieben Kapitel für Kapitel mit Claude Opus — jetzt vollständig: drei Bände, 36 Kapitel, gratis als ePub.</p>
+      <div class="getit">
+        <a class="btn" href="/downloads/das-tal-haelt-den-atem-an.epub" download data-dl="gesamt">↓ Gesamtausgabe (ePub)</a>
+        <a class="btn btn--ghost" href="#baende">Die Bände ansehen</a>
+      </div>
+      <span class="dl-state" data-dl-state="gesamt" data-dl-label="✓ Gesamtausgabe geladen am" hidden></span>
     </div>
 
     <p class="welcome" data-resume data-resume-text="Willkommen zurück — zuletzt warst du am %d hier." hidden></p>
 
-    <section class="block">
+    <section class="block" id="baende">
       <h2>Die drei Bände</h2>
 
       <details class="band" data-remember="band1">
@@ -99,6 +108,7 @@
         <div class="b-body">
           <p>Marlene heiratet von außerhalb auf einen Hof am Hang und lernt schnell, dass man hier mit Schweigen heizt. Beim Bau der Staumauer verschiebt sich für alle etwas — und ein einziger Morgen entscheidet, was über Jahrzehnte nicht gesagt wird.</p>
           <p>Die Generation, die die Schuld begründet, und die Frau, die sie als Erste trägt.</p>
+          <a class="b-dl" href="/downloads/das-tal-haelt-den-atem-an-band-01.epub" download data-dl="band1">↓ Band 1 als ePub</a>
         </div>
       </details>
 
@@ -107,6 +117,7 @@
         <div class="b-body">
           <p>Dreißig Jahre später übernimmt Theo den verschuldeten Gasthof, während das Tal vom Skitourismus träumt. In einer Kiste auf dem Estrich findet er Papiere, die nicht zusammenpassen — und steht vor der Frage, ob er die Wahrheit öffnet oder benutzt.</p>
           <p>Die Generation, die ahnt, worauf der Wohlstand ruht, und daran scheitert, das Wort zu finden.</p>
+          <a class="b-dl" href="/downloads/das-tal-haelt-den-atem-an-band-02.epub" download data-dl="band2">↓ Band 2 als ePub</a>
         </div>
       </details>
 
@@ -115,6 +126,7 @@
         <div class="b-body">
           <p>Im Dürresommer kehrt Eva als Hydrologin zurück, um den alternden Damm zu begutachten. Der sinkende Pegel legt frei, was seit 1962 unter Wasser lag — und zwingt die dritte Generation zu der Entscheidung, vor der die erste stand: sagen oder weitertragen.</p>
           <p>Die Generation, die hinsehen muss, weil das Wasser zurückgibt, was man ihm gab.</p>
+          <a class="b-dl" href="/downloads/das-tal-haelt-den-atem-an-band-03.epub" download data-dl="band3">↓ Band 3 als ePub</a>
         </div>
       </details>
     </section>
@@ -122,19 +134,19 @@
     <section class="block">
       <h2>Wie es entsteht</h2>
       <p>Diese Trilogie ist ein Schreib-Experiment: Eine Plot-Bibel legt Welt, Figuren, Ton und den Bogen über alle drei Bände fest; daraus schreibt Claude Opus die Kapitel einzeln, kontinuitätstreu, Band für Band. Der Code dazu liegt offen im Projekt (<code>ki-schriftsteller/</code>).</p>
-      <p class="how">Stand heute ist die Plot-Bibel fertig, die Prosa wird Kapitel für Kapitel erzeugt und redigiert. Sobald genug fertig ist, kannst du hier eine Leseprobe lesen und das Buch als PDF und ePub laden — gratis, ohne Anmeldung. Keine erfundenen Bewertungen, kein Erscheinungs-Hype: Es ist da, wenn es da ist.</p>
+      <p class="how">Jetzt ist es fertig: drei Bände, 36 Kapitel, durchgehend redigiert. Lad es oben als ePub — für E-Reader, Kindle (per „An Kindle senden") und jede Lese-App. Gratis, ohne Anmeldung, ohne Tracking. Keine erfundenen Bewertungen, kein Erscheinungs-Hype: Es ist da, lies es oder lass es.</p>
     </section>
 
     <div class="cta-box">
-      <h2>Wann es so weit ist, erfährst du es zuerst</h2>
-      <p>Im Newsletter halte ich dich auf dem Laufenden — und Mo–Fr bekommst du in 5 Minuten die drei KI-Entwicklungen, die dein Business heute betreffen. Kein Spam, Abmeldung per Klick.</p>
-      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">Benachrichtigt werden →</a>
+      <h2>Das Buch ist gratis — der Newsletter auch</h2>
+      <p>Wenn dir das Tal gefallen hat: aban news liefert Mo–Fr in 5 Minuten die drei KI-Entwicklungen, die dein Business heute betreffen. Kein Hype, kein Spam, Abmeldung per Klick.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">5-Min-KI-Briefing gratis →</a>
       <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Lieber das Sachbuch? <a href="/buch.html">Anti-Hype als Buch</a> gibt es schon.</p>
     </div>
 
     <div class="disclaimer">
-      <p><strong>Ehrlichkeits-Hinweis:</strong> Dies ist ein laufendes Experiment, kein veröffentlichtes Werk. „Das Tal hält den Atem an“ ist Fiktion; Orte und Figuren sind erfunden. Es gibt noch keinen Download und keine Auflage — beides erscheint hier, sobald es echt ist.</p>
-      <p><strong>Dein Fortschritt bleibt bei dir.</strong> Diese Seite merkt sich nur lokal in deinem Browser (<code>localStorage</code>), welche Bände du aufgeklappt und wann du zuletzt vorbeigeschaut hast — ohne Server, ohne Cookies, ohne Tracking. Nichts davon verlässt dein Gerät. <button class="reset" data-reset type="button">Zurücksetzen</button></p>
+      <p><strong>Ehrlichkeits-Hinweis:</strong> „Das Tal hält den Atem an“ ist Fiktion, Kapitel für Kapitel mit Claude Opus geschrieben und redigiert. Riedmatt, der Stausee und alle Figuren sind erfunden; Ähnlichkeiten mit realen Orten oder Personen sind Zufall. Es ist eine erste, vollständige Fassung — keine erfundenen Bewertungen, keine Bestseller-Behauptungen.</p>
+      <p><strong>Dein Fortschritt bleibt bei dir.</strong> Diese Seite merkt sich nur lokal in deinem Browser (<code>localStorage</code>), ob du das ePub geladen, welche Bände du aufgeklappt und wann du zuletzt vorbeigeschaut hast — ohne Server, ohne Cookies, ohne Tracking. Nichts davon verlässt dein Gerät. <button class="reset" data-reset type="button">Zurücksetzen</button></p>
     </div>
 
   </div>
