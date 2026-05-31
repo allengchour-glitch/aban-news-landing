@@ -3,7 +3,7 @@
 Stand: 2026-05-31 · Shop: **LuxeStyle** · Domain: **luxestyle.ch**
 
 Vier fertige Werbeclips, je **mit eingebetteter Musik**, in Marken-Optik
-(Creme `#faf7f2` · Anthrazit `#2c2c2c` · Gold `#b8915a`, Serif-Headlines).
+(Creme `faf7f2` · Anthrazit `2c2c2c` · Gold `b8915a`, Serif-Headlines).
 CTA durchgängig: **10 % Rabatt mit Code `WELCOME10`** (Code ist im Shop aktiv).
 
 ## Deliverables
@@ -28,7 +28,7 @@ zusätzlich den nativen Sound-Layer nutzen; die Clips haben aber bereits eine ei
 
 ## Aktueller finaler Stil: „Modern v2" (mit Voiceover)
 Auf Kundenwunsch umgestellt von der eleganten Serif-Optik auf einen **modernen** Look:
-- Hintergrund Near-White `#f4f3f1`, **fette Sans-Serif** (DejaVu Sans Bold), linksbündig.
+- Hintergrund Near-White `f4f3f1`, **fette Sans-Serif** (DejaVu Sans Bold), linksbündig.
 - Vollflächiges Produkt, **Produkt-Counter „01/10"**, Gold-Akzentbalken.
 - Animierte Typo (slide-up + fade-in via `drawtext` t-Ausdrücke), **„slideleft"-Übergänge**.
 - Skripte: `render_modern.sh`, `hook_modern.sh`, `tour_modern.sh`. Output: `luxestyle_modern*`.
