@@ -520,3 +520,13 @@ Beim Gegencheck der neuen Produkte 2 Fehler gefunden & behoben:
 Verifiziert: Sole-Top jetzt nur Damen-Mode+Geschenke; Ring/Kette nur Damen-Schmuck.
 Lesson: generische Tags (`schmuck`, `damen`) in OR-Regeln verursachen Cross-Kategorie-Leaks →
 spezifische AND-Kombis oder eindeutige Tags nutzen.
+
+## 2026-05-31 — Nischen-Runde: +4 (3 Sonnenbrillen + 1 Naturstein-Armband)
+Nischensuche (cj_nische_search.mjs, 10 KW). Viele Duplikate (Silber-Ketten/Ringe, Denim-Tasche,
+Caps schon live) → Vorabcheck filterte. 4 echte Neutreffer (volle Galerie, 7 Kanäle):
+- Sonnenbrille «Spice» Retro klein (CJCF2915221) — CHF 16.90 — 6 var, 9 Bilder
+- Sonnenbrille «Pliage» faltbar getönt (CJCF2915220) — CHF 16.90 — 7 var, 9 Bilder
+- Sonnenbrille «Carré» Small-Square (CJCF2915216) — CHF 16.90 — 7 Farben, 7 Bilder
+- Naturstein-Armband «Obsidienne» Tigerauge/Obsidian (CJSL2915186) — CHF 22.90 — 5 var (von 30 mangled auf 5 eindeutige Bilder gekürzt)
+Tigerauge-Armband «Tigre» (CJSL2916234): CJ /product/query lieferte "no data" → übersprungen (retry später).
+Sonnenbrillen-Sub damit weiter gefüllt. CJ-Katalog jetzt SEHR ausgereizt — Großteil Duplikate.
