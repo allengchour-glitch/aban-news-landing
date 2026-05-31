@@ -478,3 +478,13 @@ CJ-Suche (cj_kleider_search.mjs, 6 Dress-Keywords): 12 Treffer, davon 7 SKU-Dupl
 - Strandkleid «Playa» Halter Schnür (CJLY2915966) — CHF 34.90 — 30 var, 11 Bilder
 - Boho-Kleid «Ibiza» Baumwoll-Leinen (CJLY2915944) — CHF 34.90 — 30 var, 6 Bilder
 Kleider-Kollektion: 13 → 16 aktiv.
+
+## 2026-05-31 — Charge: +4 Accessoires (Caps/Hut/Tasche; dünne Subs gefüllt)
+Taschen im CJ-Katalog quasi ausgeschöpft (nur 1 echte Neutasche), aber Caps/Hüte ergiebig.
+4 echte Neutreffer angelegt (volle Galerie, 7 Kanäle, SKU-Vorabcheck gegen Duplikate):
+- Vintage-Cap «Heritage» Washed bestickt (CJBQ2915403) — CHF 19.90 — 6 Farben, 7 Bilder
+- Vintage-Cap «Blessed» Washed bestickt (CJBQ2914593) — CHF 19.90 — 6 Farben, 5 Bilder
+- Bucket-Hat «Leo» Leoparden-Print (CJMZ2914767) — CHF 16.90 — 2 Farben, 4 Bilder
+- Denim-Tasche «Jeans» Color-Block (CJYD2915257) — CHF 24.90 — 4 Var, 6 Bilder
+Subs: Caps&Hüte 14→17, Taschen 3→4. Aussortiert: Duplikate (3 Caps schon live), Bag-Müll
+(Ohrringe/Foam-Machine/Silver-Pendant), EMS-Massager (off-theme).
