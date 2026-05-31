@@ -2,8 +2,16 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **55 Produkte LIVE** + 6 Hero-Produkte. CJ-Katalog für saubere Neutreffer
-> weitgehend ausgeschöpft → Fokus auf Feinschliff + Marketing statt weiterer Breite.
+> Stand: 2026-05-31 — **54 Produkte LIVE** + 6 Hero-Produkte mit Premium-Copy.
+> CJ-Katalog für saubere Neutreffer ausgeschöpft (20 Keywords → 1 Treffer) → Fokus Feinschliff/Marketing.
+> ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
+> bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
+
+## Marketing-Material (2026-05-31)
+- **`dropship/ads/hero-ads-2026.md`** — fertige Werbetexte für alle 6 Hero-Produkte:
+  TikTok-Hooks, Meta-Primary-Text, Google-Headlines+Descriptions + priorisierter Launch-Plan.
+- Bestehend (frühere Sessions): `dropship/ADS.md` + `dropship/ads/` (Video-Render-Skripte,
+  Poster, Voiceover-Pipeline für Reels/TikTok).
 
 Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in **6 Kanälen** (Onlineshop, Shop,
 TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar untracked
