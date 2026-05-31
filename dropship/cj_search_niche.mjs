@@ -11,15 +11,15 @@ const BASE='https://developers.cjdropshipping.com/api2.0/v1';
 const tok=JSON.parse(fs.readFileSync('/tmp/cj_token.json')).accessToken;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
-// cat = Zielkategorie — Accessoires (füllt dünne Menü-Subs)
+// cat = Zielkategorie — frische Accessoires
 const KEYWORDS=[
-  { kw:'womens crossbody shoulder bag', must:['bag'],  cat:'damen-taschen', take:2 },
-  { kw:'bucket hat unisex cotton',      must:['hat'],  cat:'Hut',          take:1 },
-  { kw:'baseball cap embroidered',      must:['cap'],  cat:'Hut',          take:1 },
-  { kw:'mens leather belt automatic buckle', must:['belt'], cat:'Gürtel',  take:1 },
-  { kw:'slim wallet rfid card holder',  must:['wallet'], cat:'Wallet',     take:1 },
-  { kw:'polarized sunglasses women uv400', must:['sunglasses'], cat:'sonnenbrille', take:1 },
-  { kw:'hair scrunchies silk set',      must:['scrunchie'], cat:'damen-mode', take:1 },
+  { kw:'polarized sunglasses unisex uv400', must:['sunglasses'], cat:'sonnenbrille', take:2 },
+  { kw:'hair claw clip set large',      must:['clip'],   cat:'damen-mode',  take:1 },
+  { kw:'silk scarf women fashion',      must:['scarf'],  cat:'damen-mode',  take:1 },
+  { kw:'magsafe phone case clear',      must:['case'],   cat:'tech',        take:1 },
+  { kw:'crew socks set cotton women',   must:['sock'],   cat:'damen-mode',  take:1 },
+  { kw:'beach sarong cover up women',   must:['cover'],  cat:'damen-mode',  take:1 },
+  { kw:'mens leather belt ratchet',     must:['belt'],   cat:'Gürtel',      take:1 },
 ];
 
 const b=await chromium.launch({headless:true,args:['--ignore-certificate-errors','--no-sandbox']});

@@ -435,3 +435,13 @@ Highlights-Collection-Handle von Emoji `✨-…` auf sauberes `highlights` umben
 - **Baseball-Cap «Washed»** Vintage (`CJBQ291601401AZ`, 15412976845185) — 8 Farben, 19.90 → caps-huete
 → Caps & Hüte (war 11) + Damen-Taschen aufgefüllt. Schneeflocken-Cap (Bestand) + Föhn-„Gürtel"-Treffer übersprungen.
 Varianten-Namen bereinigt (z. B. „Black-Free Size Adjustable" → „Black", Tasche „Brown out" → „Braun").
+
+## Charge 38 (2026-05-31) — Sonnenbrillen (füllt Eyewear)
+4 neu, Voll-Galerie, 7 Kanäle, Tags sonnenbrille+sunglasses (→ Sonnenbrillen & Eyewear, war 24):
+- «Chrome» Color-Changing polarisiert Herren (`CJCF290311801AZ`) — 9 Var, 24.90
+- «Photo» selbsttönend/photochrom polarisiert (`CJCF290651101AZ`) — 5 Var, 29.90
+- «Felina» Cat-Eye polarisiert Damen (`CJCF290287101AZ`) — 6 Var, 19.90
+- «Velo» Sport/Radsport (`CJCF291284601AZ`) — 16 Var, 19.90
+Andere Keywords (Tücher/Clips/Socken/Cases/Gürtel) lieferten Müll → übersprungen.
+⚠️ Brillen-Varianten-Namen waren CJ-Rohtext mit Codes (z. B. „9263 Black Mercury Sheet") → auf „Variante N"
+vereinheitlicht (jede mit eigenem Bild). cj_full_create-Cleaner-TODO bleibt.
