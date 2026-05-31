@@ -14,6 +14,7 @@ Selbst-erzeugt, kein externes Framework, Inline-CSS im aban-Coffee-Stil.
 import argparse
 import html
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -39,6 +40,7 @@ HEAD_CSS = """  <style>
     nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
     nav a:hover{color:var(--ink)}
     .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:var(--amber);color:#fff;text-decoration:none}
+    .tcover{width:100%;height:auto;aspect-ratio:1200/500;object-fit:cover;border-radius:16px;margin-top:1.5rem;box-shadow:var(--shadow);display:block}
     .hero{padding:3rem 0 1.5rem}
     .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-dk);margin-bottom:.6rem}
     .eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--amber)}
@@ -101,6 +103,62 @@ CTA = """    <div class="cta-box">
       <a href="/#signup" class="btn">aban news gratis abonnieren →</a>
     </div>"""
 
+# Cover-Stil pro Thema (Farbverlauf dunkel→hell + Emoji). Fallback per Stichwort.
+COVER_STYLE = [
+    (r"krypto|crypto|bitcoin", ("#7c2d12", "#ea580c", "₿")),
+    (r"dsgvo|recht|ai act",    ("#b45309", "#f59e0b", "⚖️")),
+    (r"tool",                  ("#0f766e", "#14b8a6", "🧰")),
+    (r"automat|workflow",      ("#6d28d9", "#8b5cf6", "⚙️")),
+    (r"prompt",                ("#0369a1", "#0ea5e9", "✍️")),
+    (r"bild",                  ("#9d174d", "#ec4899", "🎨")),
+    (r"text|deutsch",          ("#1e40af", "#3b82f6", "📝")),
+    (r"newsletter|content|social", ("#be123c", "#f43f5e", "📣")),
+    (r"meeting",               ("#155e75", "#06b6d4", "🎙️")),
+    (r"foerder|förder",        ("#166534", "#22c55e", "🏛️")),
+    (r"weiterbildung|lernen|anfaenger|anfänger", ("#7c3aed", "#a78bfa", "🎓")),
+    (r"kosten|geld|freelanc|verdien", ("#a16207", "#eab308", "💶")),
+    (r"buch|kdp",              ("#92400e", "#d97706", "📚")),
+    (r"kundenservice",         ("#0e7490", "#22d3ee", "💬")),
+    (r"trend",                 ("#1e3a8a", "#60a5fa", "📈")),
+    (r"chatgpt|claude|gemini|modell", ("#1e40af", "#3b82f6", "🤖")),
+]
+COVER_DEFAULT = ("#374151", "#6b7280", "📰")
+
+
+def cover_style(t):
+    key = (t.get("slug", "") + " " + t.get("titel", "")).lower()
+    for pat, meta in COVER_STYLE:
+        if re.search(pat, key):
+            return meta
+    return COVER_DEFAULT
+
+
+def cover_svg(t):
+    c_dk, c_lt, emoji = cover_style(t)
+    title = t["titel"]
+    # max 2 Zeilen à ~24 Zeichen
+    words, lines, cur = title.split(), [], ""
+    for w in words:
+        if len((cur + " " + w).strip()) <= 24:
+            cur = (cur + " " + w).strip()
+        else:
+            lines.append(cur); cur = w
+            if len(lines) == 2: break
+    if cur and len(lines) < 2: lines.append(cur)
+    lines = lines[:2]
+    tspans = "".join(f'<tspan x="70" dy="{0 if i==0 else 58}">{esc(ln)}</tspan>' for i, ln in enumerate(lines))
+    y = 250 - (len(lines)-1)*29
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-label="{esc(title)}">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{c_dk}"/><stop offset="1" stop-color="{c_lt}"/></linearGradient></defs>
+  <rect width="1200" height="500" fill="url(#g)"/>
+  <g fill="#ffffff" opacity="0.08"><circle cx="1050" cy="110" r="6"/><circle cx="1100" cy="160" r="6"/><circle cx="1150" cy="110" r="6"/><circle cx="1100" cy="60" r="6"/></g>
+  <text x="70" y="84" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="26" font-weight="800" fill="#ffffff" opacity="0.95">☕ aban news · Thema</text>
+  <text x="1010" y="135" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="110" opacity="0.92">{emoji}</text>
+  <text x="70" y="{y}" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">{tspans}</text>
+  <text x="70" y="445" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="23" font-weight="600" fill="#ffffff" opacity="0.92">abannews.com</text>
+</svg>
+'''
+
 
 def render_topic(t, by_slug):
     secs = ""
@@ -148,11 +206,11 @@ def render_topic(t, by_slug):
   <link rel="canonical" href="{SITE}/themen/{t['slug']}.html">
   <meta property="og:title" content="{esc(t['titel'])}">
   <meta property="og:description" content="{esc(t['kurz'])}">
-  <meta property="og:image" content="{SITE}/og-image.png">
+  <meta property="og:image" content="{SITE}/img/themen/{t['slug']}.svg">
   <meta property="og:url" content="{SITE}/themen/{t['slug']}.html">
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="{SITE}/og-image.png">
+  <meta name="twitter:image" content="{SITE}/img/themen/{t['slug']}.svg">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {ld}
 {HEAD_CSS}
@@ -161,7 +219,8 @@ def render_topic(t, by_slug):
 {page_header()}
 <main>
   <div class="wrap">
-    <div class="hero">
+    <img class="tcover" src="/img/themen/{t['slug']}.svg" alt="" width="1200" height="500">
+    <div class="hero" style="padding-top:1.5rem">
       <span class="eyebrow">{esc(t.get('eyebrow','Thema'))}</span>
       <h1>{esc(t['titel'])}</h1>
       <p class="lead">{esc(t['intro'])}</p>
@@ -222,12 +281,18 @@ def render_index(themen):
 """
 
 
+COVER_DIR = ROOT / "img" / "themen"
+
+
 def build():
     data = json.loads(DATA.read_text(encoding="utf-8"))
     themen = data["themen"]
     by_slug = {t["slug"]: t for t in themen}
     files = {OUT_DIR / f"{t['slug']}.html": render_topic(t, by_slug) for t in themen}
     files[ROOT / "themen.html"] = render_index(themen)  # Index liegt im Root als /themen.html
+    # SVG-Cover pro Thema (selbst erzeugt, gratis Lizenz)
+    for t in themen:
+        files[COVER_DIR / f"{t['slug']}.svg"] = cover_svg(t)
     return files
 
 
@@ -236,6 +301,7 @@ def main():
     ap.add_argument("--check", action="store_true")
     args = ap.parse_args()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
+    COVER_DIR.mkdir(parents=True, exist_ok=True)
     files = build()
     if args.check:
         drift = [p.name for p, c in files.items() if not p.exists() or p.read_text(encoding="utf-8") != c]
