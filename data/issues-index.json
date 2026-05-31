@@ -1,0 +1,266 @@
+{
+  "stand": "2026-06",
+  "issues": [
+    {
+      "num": "001",
+      "date": "2026-06-01",
+      "slug": "china-zerlegt-die-preisliste",
+      "title": "Ausgabe 001 — China zerlegt die Preisliste",
+      "desc": "Erster Montag. Wenn du das liest: danke, du bist dabei. Ich versprech dir: kein Feature-Geschwurbel, keine PR-Pressetexte abgeschrieben. Was dir diese Woche w",
+      "hero": "/img/issues/001.svg",
+      "file": "/archive/001-2026-06-01-china-zerlegt-die-preisliste.html"
+    },
+    {
+      "num": "002",
+      "date": "2026-06-02",
+      "slug": "claude-cowork-drei-tage-selbsttest",
+      "title": "Ausgabe 002 — Claude Cowork — drei Tage Selbsttest",
+      "desc": "Dienstag, der erste echte Arbeitstag der Woche. Ich hab das Wochenende genutzt, um Claude Cowork ernsthaft auszuprobieren — drei Tage, echte Tasks, kein Demo-",
+      "hero": "/img/issues/002.svg",
+      "file": "/archive/002-2026-06-02-claude-cowork-drei-tage-selbsttest.html"
+    },
+    {
+      "num": "003",
+      "date": "2026-06-03",
+      "slug": "pl-tzlich-war-s-nur",
+      "title": "Ausgabe 003 — Plötzlich war's nur ein Produktivitäts-Tool",
+      "desc": "Mittwoch, Mitte der Woche. Heute eine kleinere Ausgabe — nicht aus News-Mangel, sondern weil eine Story die anderen erschlägt. Sam Altman und Dario Amodei hab",
+      "hero": "/img/issues/003.svg",
+      "file": "/archive/003-2026-06-03-pl-tzlich-war-s-nur.html"
+    },
+    {
+      "num": "004",
+      "date": "2026-06-04",
+      "slug": "mistral-macht-ernst-eu-ai",
+      "title": "Ausgabe 004 — Mistral macht Ernst, EU AI Act zieht an",
+      "desc": "Donnerstag, der Tag vor dem Wochenende. Heute eine Ausgabe für alle, die ChatGPT-Müdigkeit haben und mal ehrlich auf den europäischen Stack schauen wollen. Mi",
+      "hero": "/img/issues/004.svg",
+      "file": "/archive/004-2026-06-04-mistral-macht-ernst-eu-ai.html"
+    },
+    {
+      "num": "005",
+      "date": "2026-06-05",
+      "slug": "werkzeugkasten-drei-getestet-eins-behalten",
+      "title": "Ausgabe 005 — Werkzeugkasten: drei getestet, eins behalten",
+      "desc": "Freitag, erste Woche aban news im Kasten. Danke, dass du dabei warst. Heute kein News-Recap — sondern der Werkzeugkasten: drei Tools, die diese Woche durch me",
+      "hero": "/img/issues/005.svg",
+      "file": "/archive/005-2026-06-05-werkzeugkasten-drei-getestet-eins-behalten.html"
+    },
+    {
+      "num": "006",
+      "date": "2026-06-08",
+      "slug": "sonnet-4-6-hat-augen",
+      "title": "Ausgabe 006 — Sonnet 4.6 hat Augen bekommen",
+      "desc": "Zweite Woche. Wochenende war ruhig auf den Feeds — bis Anthropic Sonntagabend ein Update für Sonnet 4.6 nachgeschoben hat, das die Karten beim Thema Multi-Mod",
+      "hero": "/img/issues/006.svg",
+      "file": "/archive/006-2026-06-08-sonnet-4-6-hat-augen.html"
+    },
+    {
+      "num": "007",
+      "date": "2026-06-09",
+      "slug": "cap-so-vs-loom-ein",
+      "title": "Ausgabe 007 — Cap.so vs. Loom — ein Wochenende lang getauscht",
+      "desc": "Dienstag. Letztes Wochenende hab ich eine Sache gemacht, die ich seit Monaten aufschiebe: meinen Screen-Recorder gewechselt. Loom kostet mich 15 $ / Monat, Ca",
+      "hero": "/img/issues/007.svg",
+      "file": "/archive/007-2026-06-09-cap-so-vs-loom-ein.html"
+    },
+    {
+      "num": "008",
+      "date": "2026-06-10",
+      "slug": "agentic-ai-der-reality-check",
+      "title": "Ausgabe 008 — Agentic AI — der Reality-Check",
+      "desc": "Mittwoch. Seit drei Wochen schreibt jeder Newsletter, jedes Tech-Blog und jeder LinkedIn-Influencer über „Agentic AI",
+      "hero": "/img/issues/008.svg",
+      "file": "/archive/008-2026-06-10-agentic-ai-der-reality-check.html"
+    },
+    {
+      "num": "009",
+      "date": "2026-06-11",
+      "slug": "aleph-alpha-vs-us-stack",
+      "title": "Ausgabe 009 — Aleph Alpha vs. US-Stack — der ehrliche Vergleich",
+      "desc": "Donnerstag. Letztes Mal war DACH-Special EU AI Act und Mistral. Heute der Test, den viele DE-Leser anfragen: Aleph Alpha. PhariaAI, Luminous, der Heidelberger",
+      "hero": "/img/issues/009.svg",
+      "file": "/archive/009-2026-06-11-aleph-alpha-vs-us-stack.html"
+    },
+    {
+      "num": "010",
+      "date": "2026-06-12",
+      "slug": "werkzeugkasten-woche-2-drei-neu",
+      "title": "Ausgabe 010 — Werkzeugkasten Woche 2 — drei neu, eins fliegt",
+      "desc": "Freitag, zwei Wochen aban news. Heute kein News-Recap, sondern was ich diese Woche unter die Finger bekommen habe: Cap.so behalten, ein neues AI-Notes-Tool ge",
+      "hero": "/img/issues/010.svg",
+      "file": "/archive/010-2026-06-12-werkzeugkasten-woche-2-drei-neu.html"
+    },
+    {
+      "num": "011",
+      "date": "2026-06-15",
+      "slug": "prompts-f-r-deutsche-texte",
+      "title": "Ausgabe 011 — Prompts für deutsche Texte — sechs Patterns, die wirken",
+      "desc": "Montag, Woche 3. Heute kein News-Recap, weil das Wochenende ruhig war — und weil eine Frage immer wieder kommt: „warum klingt der KI-Output auf Deutsch so ame",
+      "hero": "/img/issues/011.svg",
+      "file": "/archive/011-2026-06-15-prompts-f-r-deutsche-texte.html"
+    },
+    {
+      "num": "012",
+      "date": "2026-06-16",
+      "slug": "sieben-sachen-die-agenten-2026",
+      "title": "Ausgabe 012 — Sieben Sachen, die Agenten 2026 nicht können",
+      "desc": "Dienstag. Letzte Woche der nüchterne State-of-Agents-Report — heute die Konkret-Version: sieben konkrete Tasks, die in den letzten Monaten Agenten an mich ran",
+      "hero": "/img/issues/012.svg",
+      "file": "/archive/012-2026-06-16-sieben-sachen-die-agenten-2026.html"
+    },
+    {
+      "num": "013",
+      "date": "2026-06-17",
+      "slug": "drei-notes-apps-drei-wochen",
+      "title": "Ausgabe 013 — Drei Notes-Apps, drei Wochen, ein Gewinner",
+      "desc": "Mittwoch. Seit der EU-Region-Eröffnung von Granola vor zwei Wochen läuft bei mir ein direkter Vergleich: Granola gegen tldv gegen Otter. Drei AI-Notes-Apps, d",
+      "hero": "/img/issues/013.svg",
+      "file": "/archive/013-2026-06-17-drei-notes-apps-drei-wochen.html"
+    },
+    {
+      "num": "014",
+      "date": "2026-06-18",
+      "slug": "vier-stories-eine-linie",
+      "title": "Ausgabe 014 — Vier Stories, eine Linie",
+      "desc": "Donnerstag. Heute mehr News als sonst — diese Woche war dicht, vier Stories drängen sich auf. Und sie ergeben zusammen eine Linie, die ich relevant finde: was",
+      "hero": "/img/issues/014.svg",
+      "file": "/archive/014-2026-06-18-vier-stories-eine-linie.html"
+    },
+    {
+      "num": "015",
+      "date": "2026-06-19",
+      "slug": "drei-wochen-aban-news-was",
+      "title": "Ausgabe 015 — Drei Wochen aban news — was ich gelernt habe",
+      "desc": "Freitag, Ausgabe 15 im Kasten. Drei Wochen täglich schreiben. Heute kein klassischer Werkzeugkasten — sondern eine ehrliche Zwischenbilanz: was ich über mein",
+      "hero": "/img/issues/015.svg",
+      "file": "/archive/015-2026-06-19-drei-wochen-aban-news-was.html"
+    },
+    {
+      "num": "016",
+      "date": "2026-06-22",
+      "slug": "vier-news-eine-verschiebung",
+      "title": "Ausgabe 016 — Vier News, eine Verschiebung",
+      "desc": "Wochenstart. Das Wochenende war ruhiger als üblich — keine großen Modell-Drops, keine 100-Mio-Runden. Genau deshalb sind die News interessant, die kamen: alle",
+      "hero": "/img/issues/016.svg",
+      "file": "/archive/016-2026-06-22-vier-news-eine-verschiebung.html"
+    },
+    {
+      "num": "017",
+      "date": "2026-06-23",
+      "slug": "deepl-write-14-tage-sp",
+      "title": "Ausgabe 017 — DeepL Write — 14 Tage später",
+      "desc": "Gestern hab ich DeepL Write Pro als „Tool des Tages",
+      "hero": "/img/issues/017.svg",
+      "file": "/archive/017-2026-06-23-deepl-write-14-tage-sp.html"
+    },
+    {
+      "num": "018",
+      "date": "2026-06-24",
+      "slug": "vibe-coding-was-wirklich-produktiv",
+      "title": "Ausgabe 018 — „Vibe-Coding\" — was wirklich produktiv ist (nicht)",
+      "desc": "Drei Wochen lang hab ich versucht, ehrlich zu sein über „Vibe-Coding",
+      "hero": "/img/issues/018.svg",
+      "file": "/archive/018-2026-06-24-vibe-coding-was-wirklich-produktiv.html"
+    },
+    {
+      "num": "019",
+      "date": "2026-06-25",
+      "slug": "leadgen-workflow-in-30-minuten",
+      "title": "Ausgabe 019 — LeadGen-Workflow in 30 Minuten — ohne Code",
+      "desc": "Letzte Woche kam eine Leserin aus Zürich auf mich zu: „Ich brauch ein System, das Termin-Anfragen einsammelt, sortiert und mir die guten zeigt. Aber ich kann",
+      "hero": "/img/issues/019.svg",
+      "file": "/archive/019-2026-06-25-leadgen-workflow-in-30-minuten.html"
+    },
+    {
+      "num": "020",
+      "date": "2026-06-26",
+      "slug": "werkzeugkasten-woche-4-synergistisch-entlarvt",
+      "title": "Ausgabe 020 — Werkzeugkasten Woche 4 — synergistisch entlarvt",
+      "desc": "Vier Wochen aban news durch. Wenn du noch dabei bist: danke. Heute der Friday-Werkzeugkasten — drei neue Tools im 14-Tage-Test, eins fliegt sofort. Und am End",
+      "hero": "/img/issues/020.svg",
+      "file": "/archive/020-2026-06-26-werkzeugkasten-woche-4-synergistisch-entlarvt.html"
+    },
+    {
+      "num": "021",
+      "date": "2026-06-29",
+      "slug": "schweizer-selbstst-ndige-was-du",
+      "title": "Ausgabe 021 — Schweizer Selbstständige: was du wirklich absetzen kannst",
+      "desc": "Drei Mails diese Woche zur selben Frage: „Aban, ich bin Solopreneur in Zürich, zahle 220 € im Monat für KI-Tools — was geht davon in die Steuererklärung?",
+      "hero": "/img/issues/021.svg",
+      "file": "/archive/021-2026-06-29-schweizer-selbstst-ndige-was-du.html"
+    },
+    {
+      "num": "022",
+      "date": "2026-06-30",
+      "slug": "mail-stack-f-r-solopreneure",
+      "title": "Ausgabe 022 — Mail-Stack für Solopreneure: Loops.so vs. Resend",
+      "desc": "Zwischen Newsletter-Versand, Onboarding-Sequenzen und Transactional-Mails ist E-Mail das einsamste Tool im Solopreneur-Stack — und gleichzeitig das wichtigste",
+      "hero": "/img/issues/022.svg",
+      "file": "/archive/022-2026-06-30-mail-stack-f-r-solopreneure.html"
+    },
+    {
+      "num": "023",
+      "date": "2026-07-01",
+      "slug": "ki-ersetzt-deine-mitarbeiter-die",
+      "title": "Ausgabe 023 — „KI ersetzt deine Mitarbeiter\" — die ehrlichen Numbers",
+      "desc": "Halbjahres-Wechsel. Heute keine News, sondern ein Thema, das ich seit drei Wochen sortiere: Die Behauptung „KI ersetzt jetzt Mitarbeiter im großen Stil",
+      "hero": "/img/issues/023.svg",
+      "file": "/archive/023-2026-07-01-ki-ersetzt-deine-mitarbeiter-die.html"
+    },
+    {
+      "num": "024",
+      "date": "2026-07-02",
+      "slug": "halbjahres-drift-mistral-w-chst",
+      "title": "Ausgabe 024 — Halbjahres-Drift: Mistral wächst, OpenAI verschiebt, Brussels reguliert",
+      "desc": "Erster Donnerstag im neuen Halbjahr. Die Branche sortiert sich um — Q3-Roadmaps werden veröffentlicht, Investments werden lauter angekündigt, EU-Regulierung w",
+      "hero": "/img/issues/024.svg",
+      "file": "/archive/024-2026-07-02-halbjahres-drift-mistral-w-chst.html"
+    },
+    {
+      "num": "025",
+      "date": "2026-07-03",
+      "slug": "werkzeugkasten-h1-bilanz-quantensprung-entlarvt",
+      "title": "Ausgabe 025 — Werkzeugkasten H1-Bilanz — Quantensprung entlarvt",
+      "desc": "Halbjahres-Wechsel. 25 Ausgaben aban news durch. Heute der Friday-Werkzeugkasten mit H1-Bilanz: zwei neue Tools, eine harte Wahrheit über meinen eigenen Stack",
+      "hero": "/img/issues/025.svg",
+      "file": "/archive/025-2026-07-03-werkzeugkasten-h1-bilanz-quantensprung-entlarvt.html"
+    },
+    {
+      "num": "026",
+      "date": "2026-07-06",
+      "slug": "sovereign-ai-in-der-praxis",
+      "title": "Ausgabe 026 — Sovereign-AI in der Praxis — was DACH wirklich nutzen kann",
+      "desc": "Neues Halbjahr, alte Frage: Wem gehören die Daten, die du in deine KI-Tools kippst? Drei Sovereign-AI-Entwicklungen, die für DACH-Solopreneure praktisch zählen ",
+      "hero": "/img/issues/026.svg",
+      "file": "/archive/026-2026-07-06-sovereign-ai-in-der-praxis.html"
+    },
+    {
+      "num": "027",
+      "date": "2026-07-07",
+      "slug": "belege-automatisch-erfassen",
+      "title": "Ausgabe 027 — Belege automatisch erfassen — drei KI-Wege, zwei Wochen getestet",
+      "desc": "Buchhaltung wegautomatisieren? Zwei Wochen, 60 echte Belege, drei KI-Wege getestet — Claude Vision, bexio, sevDesk. Was wirklich Zeit spart, ehrlich verglichen.",
+      "hero": "/img/issues/027.svg",
+      "file": "/archive/027-2026-07-07-belege-automatisch-erfassen.html"
+    },
+    {
+      "num": "028",
+      "date": "2026-07-08",
+      "slug": "automatisierung-40-prozent-ehrliche-rechnung",
+      "title": "Ausgabe 028 — „Automatisierung spart 40 % deiner Woche“ — die ehrliche Rechnung",
+      "desc": "Eine virale Zahl im Faktencheck: „Automatisierung spart 40 % deiner Woche.",
+      "hero": "/img/issues/028.svg",
+      "file": "/archive/028-2026-07-08-automatisierung-40-prozent-ehrliche-rechnung.html"
+    },
+    {
+      "num": "029",
+      "date": "2026-07-09",
+      "slug": "akquise-ohne-kaltakquise",
+      "title": "Ausgabe 029 — Akquise ohne Kaltakquise — drei warme Wege (mit KI-Hilfe)",
+      "desc": "Kaltakquise nervt — und ist meist überflüssig. Drei warme Akquise-Wege für DACH-Solopreneure mit gemessenen Antwortquoten, plus ein Anlass-Finder-Prompt. KI hil",
+      "hero": "/img/issues/029.svg",
+      "file": "/archive/029-2026-07-09-akquise-ohne-kaltakquise.html"
+    }
+  ]
+}
