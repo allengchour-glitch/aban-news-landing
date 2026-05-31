@@ -26,19 +26,33 @@ Für Meta (Instagram/Facebook Reels & Feed), TikTok und Stories. **Nicht** auf d
 Live-Seite eingebettet — das Live-Theme ist schreibgesperrt. Für TikTok/Reels ggf.
 zusätzlich den nativen Sound-Layer nutzen; die Clips haben aber bereits eine eigene Tonspur.
 
-## Bestseller-Montage & Hook — verwendete Produkte
-Quelle: Live-Collection **„⭐ Top 10 Bestseller"** (`bestseller-premium-heroes`) — identisch
-mit dem, was die Startseite zeigt → Montage, Hook und Website-Tour sind konsistent.
-1. Himalaya Salzkristall-Lampe — CHF 24.90
+## Aktueller finaler Stil: „Modern v2" (mit Voiceover)
+Auf Kundenwunsch umgestellt von der eleganten Serif-Optik auf einen **modernen** Look:
+- Hintergrund Near-White `#f4f3f1`, **fette Sans-Serif** (DejaVu Sans Bold), linksbündig.
+- Vollflächiges Produkt, **Produkt-Counter „01/10"**, Gold-Akzentbalken.
+- Animierte Typo (slide-up + fade-in via `drawtext` t-Ausdrücke), **„slideleft"-Übergänge**.
+- Skripte: `render_modern.sh`, `hook_modern.sh`, `tour_modern.sh`. Output: `luxestyle_modern*`.
+
+**Audio:** Musik **+ deutsche Sprecherstimme** (Voiceover). Stimme via Google-TTS
+(`voiceover.sh`), gemischt mit **Sidechain-Ducking** (Musik dippt unter der Stimme).
+Loudnorm `-14 LUFS`, Audiospur als Default.
+
+## Verwendete Produkte (Modern-Set, 10)
+Basis war die Live-„⭐ Top 10 Bestseller"; auf Kundenwunsch wurden 4 ersetzt
+(Aurora→Lederarmband-Pfad: Aurora, Uhr, Salzlampe, Ladegerät raus):
+1. Herren Lederarmband — CHF 29.90   *(ersetzt Himalaya Salzkristall-Lampe)*
 2. Flame Diffuser Premium — CHF 49.90
 3. Jade Roller & Gua Sha Set — CHF 14.90
-4. 3-in-1 Wireless Charger — CHF 39.90
+4. Damen Portemonnaie XL — CHF 54.90   *(ersetzt 3-in-1 Wireless Charger)*
 5. Wellness-Tablett Bambus — CHF 44.90
 6. Mini Robo-Diffuser Auto — CHF 19.90
 7. Bambus Aroma Diffuser — CHF 39.90
-8. Seiden-Kissenbezug — CHF 39.90   *(ersetzt Galaxy Aurora Projektor auf Kundenwunsch)*
+8. Seiden-Kissenbezug — CHF 39.90   *(ersetzt Galaxy Aurora Projektor)*
 9. Slim Wallet Echtleder — CHF 49.90
-10. Anti-Aging Serum — CHF 29.90   *(ersetzt Klassische Herrenuhr auf Kundenwunsch)*
+10. Anti-Aging Serum — CHF 29.90   *(ersetzt Klassische Herrenuhr)*
+
+> Hinweis: Eine ältere Variante in eleganter Serif-Optik mit der Live-Top-10-Auswahl
+> existiert weiterhin via `render.sh` (siehe Git-Historie).
 
 ## Musik (lizenziert)
 Adobe Stock, Free-Collection, royalty-free nach Lizenzierung über das verbundene Konto:
