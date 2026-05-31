@@ -469,3 +469,12 @@ Taschen-Suche: CJ-Katalog ausgeschöpft — einzige saubere Tasche (PU «Vintage
 mit bereits live «Milano» (CJYD2915947…) → Duplikat-Falle, NICHT angelegt.
 Bild-Falle: alle img0 vorab per HTTP-200 geprüft (ok). Tasche-Farben mangled
 ("No Brown"→Hellbraun etc.) vor Anlegen bereinigt (wurde dann aber nicht gebraucht).
+
+## 2026-05-31 — Charge: +3 Kleider (Damen-Mode weiter gefüllt)
+CJ-Suche (cj_kleider_search.mjs, 6 Dress-Keywords): 12 Treffer, davon 7 SKU-Duplikate bereits live
+(Sirène/Daisy/Fleurette/Brise/Bluette/Dos Nu/Bali) → SKU-Vorabcheck verhinderte Doppelanlage.
+3 echte Neutreffer angelegt (volle Galerie, 7 Kanäle):
+- Slip-Kleid «Nuit» V-Neck Langarm (CJLY2915731) — CHF 39.90 — 4 var, 6 Bilder
+- Strandkleid «Playa» Halter Schnür (CJLY2915966) — CHF 34.90 — 30 var, 11 Bilder
+- Boho-Kleid «Ibiza» Baumwoll-Leinen (CJLY2915944) — CHF 34.90 — 30 var, 6 Bilder
+Kleider-Kollektion: 13 → 16 aktiv.
