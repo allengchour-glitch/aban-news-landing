@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Der Hype-Filter · Marketing-Text auf Klartext prüfen · aban news</title>
+<meta name="description" content="Kostenloses Tool: Füg deinen deutschen Marketing- oder Website-Text ein und sieh sofort, wie viel Hype drinsteckt. Buzzwords, Füllwörter, Lesbarkeit — mit konkreten Vorschlägen. Kein Login, kein Tracking.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/hype-filter.html">
+<meta property="og:title" content="Der Hype-Filter — Marketing-Text auf Klartext prüfen">
+<meta property="og:description" content="Füg deinen Text ein, sieh den Hype sofort. Buzzwords, Füllwörter, Lesbarkeit — mit Vorschlägen. Gratis, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/hype-filter.html">
+<meta property="og:image" content="https://abannews.com/og-image.png">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="aban news">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Der Hype-Filter — Klartext statt Buzzwords">
+<meta name="twitter:description" content="Prüf deinen Marketing-Text auf Hype. Gratis, ohne Login, ohne Tracking.">
+<meta name="twitter:image" content="https://abannews.com/og-image.png">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Der Hype-Filter",
+  "url": "https://abannews.com/hype-filter.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "de",
+  "description": "Analysiert deutschen Marketing- und Website-Text auf Hype: Buzzwords, übertriebene Versprechen, Füllwörter, Passiv und Lesbarkeit — mit konkreten Verbesserungsvorschlägen.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "publisher": {"@type": "Organization", "name": "aban news", "url": "https://abannews.com"}
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --amber:#d97706;--amber-dark:#b45309;--amber-light:#fde9c8;--cream:#fef3c7;
+  --ink:#1f2937;--ink-soft:#374151;--muted:#6b7280;--line:#ece3d4;
+  --bg:#fffbf5;--card:#ffffff;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dark)}
+header.site{position:sticky;top:0;z-index:20;background:rgba(255,251,245,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;font-size:18px;color:var(--amber);text-decoration:none;letter-spacing:-.02em}
+.brand span{opacity:.8}
+.btn{display:inline-block;background:var(--amber);color:#fff;text-decoration:none;font-weight:600;padding:10px 18px;border-radius:8px;font-size:15px;border:none;cursor:pointer;transition:background .15s}
+.btn:hover{background:var(--amber-dark)}
+.btn.ghost{background:transparent;color:var(--amber-dark);border:1px solid var(--amber-light)}
+.btn.ghost:hover{background:var(--cream)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.hero{padding:48px 20px 24px;text-align:center}
+.hero h1{font-size:clamp(28px,5vw,42px);line-height:1.12;font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.hero h1 .accent{color:var(--amber)}
+.hero p{font-size:clamp(16px,2.2vw,19px);color:var(--ink-soft);max-width:620px;margin:0 auto}
+.tool{padding:8px 20px 16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+label.fld{display:block;font-weight:600;font-size:14px;margin-bottom:8px;color:var(--ink-soft)}
+textarea{width:100%;min-height:200px;resize:vertical;font:inherit;font-size:15px;line-height:1.6;padding:14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9;color:var(--ink)}
+textarea:focus{outline:2px solid var(--amber-light);border-color:var(--amber)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.row .count{margin-left:auto;font-size:13px;color:var(--muted)}
+.muted{color:var(--muted)}
+.results{margin-top:20px;display:none}
+.results.show{display:block}
+.scorecard{display:flex;gap:18px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:16px}
+.gauge{--v:0;width:96px;height:96px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+  background:conic-gradient(var(--gc,#d97706) calc(var(--v)*1%),#f1e9da 0)}
+.gauge .inner{width:74px;height:74px;border-radius:50%;background:var(--card);display:grid;place-items:center;text-align:center}
+.gauge .num{font-size:26px;font-weight:800;line-height:1}
+.gauge .lbl{font-size:10px;color:var(--muted)}
+.verdict h2{font-size:20px;margin-bottom:4px}
+.verdict p{color:var(--ink-soft);font-size:15px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:16px 0}
+.metric{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
+.metric .v{font-size:22px;font-weight:800;line-height:1}
+.metric .k{font-size:12px;color:var(--muted);margin-top:3px}
+h3.sec{font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:22px 0 10px}
+.highlight{line-height:1.9;font-size:15px;background:#fffdf9;border:1px solid var(--line);border-radius:10px;padding:16px;white-space:pre-wrap;word-break:break-word}
+mark{border-radius:4px;padding:0 3px;font-weight:600;cursor:help}
+mark.superlativ,mark.versprechen{background:#fde0d6;color:#9a2d12}
+mark.buzzword{background:#fdeccd;color:#92560a}
+mark.intensivierer,mark.füllwort{background:#e7eff7;color:#2c5078}
+mark.passiv{background:#ede7f6;color:#5b3a86}
+mark.interpunktion{background:#fcd9d9;color:#a01616}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:8px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.swatch{width:12px;height:12px;border-radius:3px;display:inline-block}
+.cats{display:grid;gap:10px}
+.cat{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--card)}
+.cat .ch{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cat .ct{font-weight:700;font-size:14px}
+.badge{background:var(--cream);color:var(--amber-dark);font-weight:700;font-size:12px;border-radius:999px;padding:2px 10px}
+.cat ul{margin:8px 0 0;padding-left:18px;font-size:13px;color:var(--ink-soft)}
+.cat li{margin:3px 0}
+.cat li b{color:var(--ink)}
+ul.tips{margin:6px 0 0;padding-left:18px}
+ul.tips li{margin:6px 0;font-size:15px}
+.rewrite{background:#fffdf9;border:1px solid var(--line);border-radius:10px;padding:16px;white-space:pre-wrap;font-size:15px;line-height:1.7}
+.rwhint{font-size:13px;color:var(--muted);margin:8px 0 4px}
+.cta{margin:36px 0 8px;background:linear-gradient(135deg,var(--cream),#fff);border:1px solid var(--amber-light);border-radius:14px;padding:24px;text-align:center}
+.cta h2{font-size:22px;margin-bottom:6px}
+.cta p{color:var(--ink-soft);max-width:520px;margin:0 auto 16px}
+.err{display:none;background:#fcd9d9;color:#a01616;border-radius:10px;padding:12px 14px;margin-top:12px;font-size:14px}
+.err.show{display:block}
+details.how{margin:24px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:0}
+details.how summary{cursor:pointer;font-weight:600;padding:14px 16px;list-style:none}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary::after{content:"+";float:right;color:var(--muted);font-size:20px}
+details.how[open] summary::after{content:"−"}
+details.how .body{padding:0 16px 16px;font-size:14px;color:var(--ink-soft)}
+details.how .body p{margin-bottom:8px}
+footer{padding:28px 0;margin-top:32px;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+footer a{color:var(--muted)}
+.spin{display:inline-block;width:15px;height:15px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:6px}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media(max-width:600px){.scorecard{gap:12px}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="/" class="brand">aban news<span> · Hype-Filter</span></a>
+    <a href="https://abannews.beehiiv.com/subscribe" class="btn">Newsletter gratis</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Wie viel <span class="accent">Hype</span> steckt in deinem Text?</h1>
+    <p>Füg deinen Marketing- oder Website-Text ein. Der Hype-Filter zeigt dir in Sekunden Buzzwords, leere Versprechen, Füllwörter und Schachtelsätze — mit konkreten Vorschlägen. Dasselbe Werkzeug, mit dem ich jede aban-news-Ausgabe prüfe.</p>
+  </div>
+</section>
+
+<section class="tool">
+  <div class="wrap">
+    <div class="panel">
+      <label class="fld" for="inp">Dein Text (Deutsch)</label>
+      <textarea id="inp" placeholder="Beispiel: Unsere revolutionäre, KI-gestützte Lösung ist ein absoluter Game-Changer und steigert deinen Umsatz garantiert um 10x — mühelos und im Handumdrehen!"></textarea>
+      <div class="row">
+        <button id="go" class="btn">Auf Hype prüfen</button>
+        <button id="demo" class="btn ghost">Beispiel einfügen</button>
+        <span class="count" id="count">0 Zeichen</span>
+      </div>
+      <div class="err" id="err"></div>
+    </div>
+
+    <div class="results" id="res">
+      <div class="panel">
+        <div class="scorecard">
+          <div class="gauge" id="gauge"><div class="inner"><div class="num" id="scoreNum">–</div><div class="lbl">/ 100</div></div></div>
+          <div class="verdict">
+            <h2 id="gradeLbl">—</h2>
+            <p id="verdict">—</p>
+          </div>
+        </div>
+
+        <div class="metrics" id="metrics"></div>
+
+        <h3 class="sec">Im Text markiert</h3>
+        <div class="highlight" id="hl"></div>
+        <div class="legend" id="legend"></div>
+
+        <div id="catsWrap">
+          <h3 class="sec">Was gefunden wurde</h3>
+          <div class="cats" id="cats"></div>
+        </div>
+
+        <h3 class="sec">Konkret besser machen</h3>
+        <ul class="tips" id="tips"></ul>
+
+        <h3 class="sec">Aufgeräumte Fassung</h3>
+        <p class="rwhint" id="rwhint">Füllwörter und Intensivierer gestrichen, Hype-Wörter <b>[in Klammern]</b> zum Ersetzen markiert.</p>
+        <div class="rewrite" id="rewrite"></div>
+        <div class="row">
+          <button id="ai" class="btn ghost">KI-Umschreibung versuchen</button>
+          <span class="muted" id="aiNote" style="font-size:13px"></span>
+        </div>
+      </div>
+
+      <div class="cta">
+        <h2>Klartext jeden Morgen</h2>
+        <p>aban news ist der tägliche KI-Newsletter für DACH-Profis: Mo–Fr, 5 Minuten, kein Hype. Genau der Ton, den dieses Tool misst.</p>
+        <a href="https://abannews.beehiiv.com/subscribe" class="btn">Kostenlos abonnieren</a>
+      </div>
+    </div>
+
+    <details class="how">
+      <summary>Wie der Hype-Filter rechnet</summary>
+      <div class="body">
+        <p>Der Text läuft durch eine Analyse-Engine, die am Edge läuft — direkt in der Cloudflare-Funktion, nicht in deinem Browser. Sie prüft auf vier Hype-Kategorien (Superlative, Buzzwords, übertriebene Versprechen, Intensivierer), auf Füllwörter, Passiv-Konstruktionen und Schachtelsätze.</p>
+        <p>Der Klartext-Score (0–100) gewichtet die Funde und rechnet sie auf die Textlänge um — ein langer Text mit zwei Buzzwords schneidet besser ab als ein kurzer voller Hype. Die Lesbarkeit schätzt die Wiener Sachtextformel als ungefähres Schul-Niveau.</p>
+        <p>Dein Text wird nur für die Analyse verarbeitet und nirgends gespeichert. Kein Konto, kein Tracking. Die optionale KI-Umschreibung schickt den Text einmalig an ein Sprachmodell; ohne hinterlegten Schlüssel bekommst du stattdessen die regelbasierte Fassung.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/">Startseite</a> · <a href="/resources.html">Resourcen</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const inp = $("inp"), res = $("res"), errBox = $("err");
+const DEMO = "Unsere revolutionäre, KI-gestützte Lösung ist ein absoluter Game-Changer und steigert deinen Umsatz garantiert um 10x — mühelos und im Handumdrehen! Mit unserer einzigartigen, ganzheitlichen Plattform wird dein Business quasi auf das nächste Level gehoben.";
+
+const CAT_COLORS = {
+  superlativ:"#fde0d6", versprechen:"#fde0d6", buzzword:"#fdeccd",
+  intensivierer:"#e7eff7", "füllwort":"#e7eff7", passiv:"#ede7f6", interpunktion:"#fcd9d9"
+};
+
+function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+function updateCount(){ $("count").textContent = inp.value.length.toLocaleString("de-DE") + " Zeichen"; }
+inp.addEventListener("input", updateCount);
+$("demo").addEventListener("click", () => { inp.value = DEMO; updateCount(); inp.focus(); });
+
+function highlight(text, findings){
+  let out = "", i = 0;
+  for (const f of findings){
+    if (f.start < i) continue;
+    out += escapeHtml(text.slice(i, f.start));
+    const title = (f.replacements && f.replacements.length) ? ("Vorschlag: " + f.replacements.join(" / ")) : f.label;
+    out += '<mark class="'+f.category+'" title="'+escapeHtml(title)+'">'+escapeHtml(text.slice(f.start, f.end))+'</mark>';
+    i = f.end;
+  }
+  out += escapeHtml(text.slice(i));
+  return out || '<span class="muted">—</span>';
+}
+
+function render(d){
+  // Score-Gauge
+  const g = $("gauge");
+  g.style.setProperty("--v", d.score);
+  g.style.setProperty("--gc", d.gradeColor);
+  $("scoreNum").textContent = d.score;
+  $("gradeLbl").textContent = d.grade;
+  $("gradeLbl").style.color = d.gradeColor;
+  $("verdict").textContent = d.verdict;
+
+  // Metriken
+  const m = d.metrics;
+  const cards = [
+    ["Wörter", m.wordCount],
+    ["Hype je 100 W.", m.hypeDensity],
+    ["Ø Satzlänge", m.avgSentenceLen],
+    ["Lange Sätze", m.longSentenceCount],
+    ["Lese-Niveau", m.readingGrade !== null ? ("Klasse " + m.readingGrade) : "—"],
+  ];
+  $("metrics").innerHTML = cards.map(([k,v]) =>
+    '<div class="metric"><div class="v">'+v+'</div><div class="k">'+k+'</div></div>').join("");
+
+  // Highlight
+  $("hl").innerHTML = highlight(inp.value, d.findings);
+
+  // Legende (nur vorkommende Kategorien)
+  const present = [...new Set(d.findings.map(f=>f.category))];
+  const NAMES = {superlativ:"Superlativ",buzzword:"Buzzword",versprechen:"Versprechen",intensivierer:"Intensivierer","füllwort":"Füllwort",passiv:"Passiv",interpunktion:"Ausrufezeichen"};
+  $("legend").innerHTML = present.map(c =>
+    '<span><i class="swatch" style="background:'+(CAT_COLORS[c]||"#eee")+'"></i>'+(NAMES[c]||c)+'</span>').join("");
+
+  // Kategorien
+  if (d.categories.length){
+    $("catsWrap").style.display = "";
+    $("cats").innerHTML = d.categories.map(c =>
+      '<div class="cat"><div class="ch"><span class="ct">'+escapeHtml(c.label||c.category)+'</span><span class="badge">'+c.count+'×</span></div>'+
+      '<ul>'+c.items.map(it =>
+        '<li><b>'+escapeHtml(it.match)+'</b>'+(it.replacements&&it.replacements.length?' → '+escapeHtml(it.replacements.join(" / ")):'')+'</li>'
+      ).join("")+'</ul></div>').join("");
+  } else {
+    $("catsWrap").style.display = "none";
+  }
+
+  // Tipps
+  $("tips").innerHTML = d.suggestions.map(s => "<li>"+escapeHtml(s)+"</li>").join("");
+
+  // Regel-Umschreibung
+  $("rewrite").textContent = d.ruleRewrite || "—";
+  $("aiNote").textContent = "";
+
+  res.classList.add("show");
+  res.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+async function callApi(action){
+  const text = inp.value.trim();
+  if (!text){ showErr("Bitte füg zuerst einen Text ein."); return null; }
+  const r = await fetch("/api/hype-check", {
+    method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({ text, action })
+  });
+  if (!r.ok){
+    const e = await r.json().catch(()=>({}));
+    throw new Error(e.error || ("Serverfehler "+r.status));
+  }
+  return r.json();
+}
+function showErr(msg){ errBox.textContent = msg; errBox.classList.add("show"); }
+function clearErr(){ errBox.classList.remove("show"); }
+
+$("go").addEventListener("click", async () => {
+  clearErr();
+  const btn = $("go"); const old = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '<span class="spin"></span>Prüfe…';
+  try {
+    const d = await callApi("analyze");
+    if (d) render(d);
+  } catch (e) {
+    showErr("Konnte den Text nicht prüfen: " + e.message + ". Läuft die Seite über Cloudflare Pages?");
+  } finally {
+    btn.disabled = false; btn.innerHTML = old;
+  }
+});
+
+$("ai").addEventListener("click", async () => {
+  clearErr();
+  const btn = $("ai"); const old = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '<span class="spin"></span>Schreibe um…';
+  try {
+    const d = await callApi("rewrite");
+    if (d){
+      $("rewrite").textContent = d.aiRewrite || d.ruleRewrite || "—";
+      if (d.aiRewriteSource === "claude"){
+        $("rwhint").innerHTML = "KI-Umschreibung im aban-Ton:";
+        $("aiNote").textContent = "Von einem Sprachmodell umgeschrieben — gegenlesen, nicht blind übernehmen.";
+      } else {
+        $("aiNote").textContent = "Keine KI hinterlegt — du siehst die regelbasierte Fassung.";
+      }
+    }
+  } catch (e) {
+    showErr("KI-Umschreibung nicht möglich: " + e.message);
+  } finally {
+    btn.disabled = false; btn.innerHTML = old;
+  }
+});
+
+updateCount();
+</script>
+</body>
+</html>

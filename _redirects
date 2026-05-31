@@ -4,6 +4,8 @@
 
 # Pretty URLs (no .html in URLs that users might type)
 /founding         /founding.html        301
+/hype             /hype-filter.html     301
+/hype-filter      /hype-filter.html     301
 /ebook            /ebook.html           301
 /buch             /buch.html            301
 /book             /buch.html            301

@@ -170,3 +170,22 @@ Vermeiden: E-Rechnung (gelöst), High-Risk-AI-Act-Plattformen (Enterprise), KI-M
 - GEO/AEO: von ChatGPT/Perplexity zitiert werden (Antwort im 1. Satz unter H2, FAQ-Blöcke).
 - DACH/Deutsch als Moat: native Fachsprache, DSGVO, EUR — englische Konkurrenz kann das schwer kopieren.
 - Vermeiden: Display-Ads bei wenig Traffic, noch mehr dünne Programmatik-Seiten, generische Newsletter-Box.
+
+## Hype-Filter — interaktives Tool (Repo-Root + Edge-API)
+Erstes echtes Backend-Tool im Netzwerk (raus aus rein statischem HTML).
+- **`hype-filter.html`** (Pretty-URLs `/hype`, `/hype-filter`): Web-App, die deutschen
+  Marketing-/Website-Text auf Hype prüft — Klartext-Score 0–100, markierte Buzzwords/
+  Versprechen/Füllwörter/Passiv, Schachtelsatz- & Lesbarkeits-Analyse (Wiener Sachtextformel),
+  konkrete Umschreib-Vorschläge + regelbasierte Aufräum-Fassung. Brand-Style, SEO/OG/JSON-LD
+  (`WebApplication`), Newsletter-CTA als Monetarisierung. Kein Login, kein Tracking.
+- **Edge-API:** `functions/api/hype-check.js` (Cloudflare Pages Function, POST `/api/hype-check`)
+  + Analyse-Engine `functions/_engine.mjs` (reines JS, keine Deps). Optionale KI-Umschreibung
+  via Claude, wenn Secret `ANTHROPIC_API_KEY` im Pages-Projekt gesetzt ist (Model über
+  `HYPE_MODEL`, Default `claude-sonnet-4-6`) — sonst regelbasierter Fallback. Kein Build-Step
+  nötig: Cloudflare erkennt `functions/` automatisch.
+- **Tests:** `node functions/_engine.test.mjs` (17 Checks, grün). Engine wird zugleich vom
+  CI-Voice-Validator-Gedanken gespeist (Lexikon erweitert die `FORBIDDEN`-Idee).
+- **Verlinkt:** Footer `index.html` + `resources.html` (Live-Tools-Karte), `sitemap.xml`.
+- **Idee/Moat:** dasselbe Werkzeug, mit dem jede Newsletter-Ausgabe geprüft wird, als
+  öffentliches Produkt — on-brand (Anti-Hype), nützlich für DACH-Solo-Profis, später als
+  Premium-API/Bulk-Check monetisierbar.
