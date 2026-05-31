@@ -4,7 +4,7 @@
  * -----------------------------------------------------
  * Liest Credentials AUS DER UMGEBUNG (niemals hardcoden!):
  *   CJ_EMAIL    = allengchour@gmail.com 
- *   CJ_API_KEY  = <font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">CJ5452995@api@d00fdc3029034d77ad2543630cc7f533</font></font> (CJ-Dashboard → Authentication / API)
+ *   CJ_API_KEY  = <dein-key>   (CJ-Dashboard → Authentication / API; NICHT hier eintragen)
  *
  * Ablauf:
  *   1. getAccessToken (gecached in /tmp/cj_token.json, gültig ~14 Tage)
@@ -75,6 +75,7 @@ async function apiGet(path, params = {}) {
 }
 
 const COUNTRY = process.env.CJ_COUNTRY || ''; // z.B. "DE" → nur EU/Frankfurt-Lager-Bestand
+const sleep = (ms) => new Promise(r => setTimeout(r, ms)); // CJ-QPS-Limit: max 1 req/sek
 
 async function searchProducts(keyword, pageSize = 5) {
   const params = { pageNum: 1, pageSize, productNameEn: keyword };
@@ -98,8 +99,19 @@ async function productDetail(pid) {
   try {
     for (const kw of keywords) {
       console.error(`🔎 Suche: ${kw}`);
-      const list = await searchProducts(kw, 5);
+      let list = [];
+      for (let attempt = 0; attempt < 4; attempt++) {
+        try { list = await searchProducts(kw, 5); break; }
+        catch (e) {
+          if (/QPS|Too Many|1600200/.test(e.message) && attempt < 3) {
+            console.error(`   ⏳ Limit – warte ${(attempt + 1) * 1.5}s…`);
+            await sleep((attempt + 1) * 1500); continue;
+          }
+          throw e;
+        }
+      }
       console.error(`   ${list.length} Treffer`);
+      await sleep(1500); // QPS-Schutz vor nächstem Keyword
       for (const p of list.slice(0, 3)) {
         out.push({
           keyword: kw,
