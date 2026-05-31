@@ -59,6 +59,16 @@
     .pay .note{font-size:.78rem;color:var(--muted)}
     section.block{padding:1.2rem 0;border-top:1px solid var(--line)}
     section.block h2{font-size:1.4rem;margin-bottom:.6rem}
+    .peek-grid{display:grid;gap:1rem;margin:.6rem 0 0}
+    @media(min-width:640px){.peek-grid{grid-template-columns:1fr 1fr}}
+    .peek-grid figure{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+    .peek-grid img{width:100%;height:auto;display:block}
+    .peek-grid figcaption{font-size:.8rem;color:var(--muted);padding:.5rem .7rem;border-top:1px solid var(--line)}
+    .amazon{display:none;background:linear-gradient(160deg,#fff7ed,#fff);border:1px solid var(--amber);border-radius:var(--r);padding:1.5rem;margin:1.5rem 0;box-shadow:var(--shadow)}
+    .amazon.show{display:block}
+    .amazon h2{font-size:1.3rem;margin-bottom:.4rem}
+    .amazon p{font-size:.95rem;color:var(--muted);margin-bottom:1rem}
+    .amazon .azbtns{display:flex;flex-wrap:wrap;gap:.6rem}
     .toc-list{margin:.2rem 0 0 1.1rem}
     .toc-list li{margin-bottom:.3rem}
     .faq details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:.6rem;padding:0}
@@ -148,6 +158,34 @@
     </section>
 
     <section class="block">
+      <h2>Un aperçu du livre</h2>
+      <p>Pas de remplissage avec des photos de stock — seulement des schémas qui expliquent vraiment quelque chose. En voici trois :</p>
+      <div class="peek-grid">
+        <figure>
+          <img src="/downloads/fig-filter-fr.png" alt="Le filtre anti-bullshit en 3 questions sous forme de schéma" loading="lazy" width="900" height="560">
+          <figcaption>Le filtre en 3 questions d'un coup d'œil.</figcaption>
+        </figure>
+        <figure>
+          <img src="/downloads/fig-stack-fr.png" alt="Le stack IA minimal en quatre briques" loading="lazy" width="900" height="540">
+          <figcaption>Quatre briques, pas plus.</figcaption>
+        </figure>
+        <figure>
+          <img src="/downloads/fig-day-fr.png" alt="Une journée avant et après, en diagramme en barres" loading="lazy" width="900" height="460">
+          <figcaption>Une vraie réduction de moitié, pas du « 10x ».</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="amazon" id="amazon">
+      <h2>📕 Maintenant aussi sur Amazon</h2>
+      <p>Tu préfères Kindle ou un livre broché dans ta bibliothèque ? C'est sur Amazon maintenant. Le PDF et l'ePub ci-dessus restent gratuits — l'édition Amazon est pour celles et ceux qui le veulent plus pratique ou en papier (et me soutiennent ainsi).</p>
+      <div class="azbtns">
+        <a href="#" class="btn" id="az-btn" target="_blank" rel="noopener">Voir sur Amazon →</a>
+      </div>
+      <p style="font-size:.8rem;margin:.9rem 0 0;">Déjà lu ? Un <strong>avis honnête</strong> sur Amazon aide plus que n'importe quelle pub — merci.</p>
+    </section>
+
+    <section class="block">
       <h2>Pourquoi « paie ce que tu veux » ?</h2>
       <p>Parce que ça colle à la marque. Un savoir qui t'aide vraiment ne devrait pas buter sur un paywall — et qui l'apprécie peut le montrer. C'est toi qui fixes le prix. Pas de montant minimum, pas de culpabilité, pas de fausse rareté.</p>
     </section>
@@ -204,6 +242,10 @@
   }
   if(/^https?:\/\//.test(KDP_URL)){
     kdp.href = KDP_URL; kdp.target = "_blank"; kdp.rel = "noopener"; kdp.hidden = false;
+    var az = document.getElementById("amazon");
+    var azBtn = document.getElementById("az-btn");
+    if(azBtn){ azBtn.href = KDP_URL; }
+    if(az){ az.classList.add("show"); }
   }
 })();
 </script>

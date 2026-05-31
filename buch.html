@@ -65,6 +65,12 @@
     .peek-grid figure{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
     .peek-grid img{width:100%;height:auto;display:block}
     .peek-grid figcaption{font-size:.8rem;color:var(--muted);padding:.5rem .7rem;border-top:1px solid var(--line)}
+    .amazon{display:none;background:linear-gradient(160deg,#fff7ed,#fff);border:1px solid var(--amber);border-radius:var(--r);padding:1.5rem;margin:1.5rem 0;box-shadow:var(--shadow)}
+    .amazon.show{display:block}
+    .amazon h2{font-size:1.3rem;margin-bottom:.4rem}
+    .amazon p{font-size:.95rem;color:var(--muted);margin-bottom:1rem}
+    .amazon .azbtns{display:flex;flex-wrap:wrap;gap:.6rem}
+    .amazon .azbtns a{display:inline-flex;align-items:center;gap:.4rem}
     .faq details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:.6rem;padding:0}
     .faq summary{padding:.85rem 1rem;font-weight:600;cursor:pointer}
     .faq .a{padding:0 1rem 1rem;color:var(--muted);font-size:.92rem}
@@ -170,6 +176,15 @@
       </div>
     </section>
 
+    <section class="amazon" id="amazon">
+      <h2>📕 Jetzt auch auf Amazon</h2>
+      <p>Lieber Kindle oder ein gedrucktes Taschenbuch im Regal? Gibt's jetzt bei Amazon. Das PDF &amp; ePub oben bleiben trotzdem gratis — die Amazon-Edition ist für alle, die's bequemer oder in Papier wollen (und mich damit unterstützen).</p>
+      <div class="azbtns">
+        <a href="#" class="btn" id="az-btn" target="_blank" rel="noopener">Auf Amazon ansehen →</a>
+      </div>
+      <p style="font-size:.8rem;margin:.9rem 0 0;">Schon gelesen? Eine <strong>ehrliche Rezension</strong> auf Amazon hilft mehr als jede Anzeige — danke.</p>
+    </section>
+
     <section class="block">
       <h2>Warum „zahl was du willst"?</h2>
       <p>Weil es zur Marke passt. Wissen, das dir wirklich hilft, soll nicht an einer Bezahlschranke scheitern — und wer es schätzt, darf das zeigen. Du entscheidest den Preis. Kein Mindestbetrag, keine Schuldgefühle, keine Fake-Verknappung.</p>
@@ -229,6 +244,11 @@
   }
   if(/^https?:\/\//.test(KDP_URL)){
     kdp.href = KDP_URL; kdp.target = "_blank"; kdp.rel = "noopener"; kdp.hidden = false;
+    // Prominente Amazon-Sektion + Button einblenden (nur wenn KDP live ist).
+    var az = document.getElementById("amazon");
+    var azBtn = document.getElementById("az-btn");
+    if(azBtn){ azBtn.href = KDP_URL; }
+    if(az){ az.classList.add("show"); }
   }
 })();
 </script>
