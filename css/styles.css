@@ -209,14 +209,14 @@ section { padding: var(--space-7) 0; }
 .nav a:hover { color: var(--c-accent); }
 
 .nav .nav-cta {
-  background: var(--c-accent);
+  background:#b45309;
   color: #fff;
   padding: var(--space-2) var(--space-4);
   border-radius: var(--r);
   font-weight: 600;
 }
 
-.nav .nav-cta:hover { background: var(--c-accent-hi); color: #fff; }
+.nav .nav-cta:hover { background:#92400e; color: #fff; }
 
 @media (max-width: 560px) {
   .nav { gap: var(--space-2); }
@@ -359,7 +359,7 @@ li:last-child { margin-bottom: 0; }
   padding: 0.875rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
-  background: var(--c-accent);
+  background:#b45309;
   color: #fff;
   border: none;
   border-radius: var(--r);
@@ -372,7 +372,7 @@ li:last-child { margin-bottom: 0; }
 
 .btn:hover,
 .subscribe button:hover {
-  background: var(--c-accent-hi);
+  background:#92400e;
   color: #fff;
 }
 
@@ -385,7 +385,7 @@ li:last-child { margin-bottom: 0; }
   border: 1.5px solid var(--c-accent);
 }
 .btn--ghost:hover {
-  background: var(--c-accent);
+  background: #b45309;
   color: #fff;
 }
 
