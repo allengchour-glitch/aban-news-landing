@@ -1,0 +1,9 @@
+# Generated output — built by CI, not committed
+dist/
+
+# Regenerable build helper (extracted from data/tools.json)
+content/_source.json
+
+__pycache__/
+*.pyc
+.DS_Store

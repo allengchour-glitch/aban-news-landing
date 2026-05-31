@@ -1,0 +1,124 @@
+{
+  "terms": {
+    "llm": {
+      "term": "LLM (Large Language Model)",
+      "def": "Een groot taalmodel is een AI die op enorme hoeveelheden tekst is getraind en mensachtige teksten begrijpt en genereert. Voorbeelden zijn GPT, Claude en Gemini. LLM's vormen de basis van de meeste AI-chat- en schrijftools."
+    },
+    "rag": {
+      "term": "RAG (Retrieval-Augmented Generation)",
+      "def": "RAG combineert een taalmodel met zoeken in je eigen documenten. In plaats van alleen uit trainingsgegevens te antwoorden, haalt het systeem relevante tekstfragmenten op en baseert het antwoord daarop — nauwkeuriger en met minder verzonnen feiten."
+    },
+    "prompt": {
+      "term": "Prompt",
+      "def": "Een prompt is de invoer of instructie die je aan een AI geeft. Hoe duidelijker en concreter de prompt, hoe beter het resultaat. Goed prompting is de belangrijkste vaardigheid bij het werken met AI-tools."
+    },
+    "token": {
+      "term": "Token",
+      "def": "Een token is de kleinste tekstyenheid waarmee een taalmodel rekent — meestal een woorddeel. Prijzen van AI-API's worden per token berekend. Vuistregel: 1.000 tokens komen overeen met ongeveer 750 woorden."
+    },
+    "halluzination": {
+      "term": "Hallucinatie",
+      "def": "Met hallucinatie worden verzonnen, maar overtuigend klinkende uitspraken van een AI aangeduid. Belangrijke feiten moet je daarom altijd controleren. RAG en bronvermeldingen verminderen het risico."
+    },
+    "finetuning": {
+      "term": "Fine-Tuning",
+      "def": "Fine-Tuning past een voorgetraind model aan met je eigen voorbeeldgegevens aan een specifieke taak of stijl. Het is ingewikkelder dan prompting, maar geeft bij terugkerende specialistische taken consistentere resultaten."
+    },
+    "embedding": {
+      "term": "Embedding",
+      "def": "Een embedding zet tekst om in een reeks getallen die de betekenis ervan vastlegt. Vergelijkbare inhoud ligt daardoor dicht bij elkaar — de basis voor semantisch zoeken en RAG."
+    },
+    "agent": {
+      "term": "AI-Agent",
+      "def": "Een AI-agent voert meertraps-taken zelfstandig uit: hij plant, gebruikt hulpmiddelen en reageert op tussenuitslagen. In plaats van alleen te antwoorden, handelt hij — bijvoorbeeld door onderzoek te doen, gegevens op te halen en stappen uit te voeren."
+    },
+    "multimodal": {
+      "term": "Multimodaal",
+      "def": "Multimodale AI verwerkt meerdere invoertypen — tekst, afbeelding, audio — in hetzelfde model. Zo kan een tool bijvoorbeeld een foto beschrijven of een grafiek en tekst samen analyseren."
+    },
+    "open-source-llm": {
+      "term": "Open-Source-LLM",
+      "def": "Open-source taalmodellen zijn vrij beschikbaar en kunnen zelf worden gehost — relevant voor gegevensbescherming en DACH-compliance, omdat gegevens je eigen systeem niet verlaten hoeven. Voorbeelden: Mistral, Llama, DeepSeek."
+    },
+    "vibecoding": {
+      "term": "Vibecoding",
+      "def": "Vibecoding is het bouwen van software via natuurlijke taal: je beschrijft wat je wilt, en de AI schrijft de code. Tools als Lovable, Bolt en v0 genereren zo volledige apps zonder klassiek programmeren."
+    },
+    "tts": {
+      "term": "Text-to-Speech (TTS)",
+      "def": "Text-to-Speech zet geschreven tekst om in natuurlijk klinkende spraak. Moderne TTS-stemmen zijn nauwelijks te onderscheiden van echte stemmen — gebruikt voor voice-overs, podcasts en vertalingen in geluidsformaat."
+    },
+    "dsgvo-ki": {
+      "term": "AVG & KI",
+      "def": "Bij AI-inzet in de DACH-regio is gegevensbescherming het grootste obstakel. Belangrijk zijn EU-gegevensresidentie, verwerkingsovereenkomsten en — voor Amerikaanse aanbieders — standaardcontractbepalingen. Zelf gehoste modellen omzeilen het transferprobleem."
+    },
+    "ai-act": {
+      "term": "EU AI-verordening (AI Act)",
+      "def": "De EU AI-verordening (AI Act) is de AI-wet van de EU. Vanaf 2 augustus 2026 gelden transparantieverboden: AI-gegenereerde inhoud moet worden gemarkeerd en gebruikers moeten kunnen herkennen wanneer zij met een AI spreken."
+    },
+    "context-window": {
+      "term": "Contextvenster",
+      "def": "Het contextvenster is de hoeveelheid tekst die een model tegelijkertijd kan verwerken — gemeten in tokens. Grotere vensters maken het mogelijk om lange documenten of hele codebases in één keer te verwerken."
+    },
+    "api": {
+      "term": "API (Programmainterface)",
+      "def": "Een API is een interface waarmee je software rechtstreeks met een AI-model communiceert — zonder de webinterface. Het wordt meestal per token gefactureerd en vormt de basis voor het integreren van AI in je eigen producten en processen."
+    },
+    "chatbot": {
+      "term": "Chatbot",
+      "def": "Een chatbot is een programma dat in natuurlijke taal reageert. Moderne chatbots zijn gebaseerd op taalmodellen en worden gebruikt voor ondersteuning, onderzoek en tekstwerk. Volgens de EU AI-verordening moeten gebruikers vanaf 2026 kunnen herkennen dat ze met een AI spreken."
+    },
+    "open-source": {
+      "term": "Open-Source-AI",
+      "def": "Open-source AI verwijst naar modellen en tools waarvan de code vrij beschikbaar is. Je kunt ze zelf hosten en aanpassen — relevant voor gegevensbescherming, kostenbeheer en onafhankelijkheid van individuele aanbieders."
+    },
+    "text-to-image": {
+      "term": "Text-to-Image",
+      "def": "Text-to-image-modellen genereren afbeeldingen uit een tekstbeschrijving. Ze worden gebruikt voor illustraties, conceptkunst en marketingmateriaal. Kwaliteit en stijl hangen sterk af van de prompt."
+    },
+    "text-to-video": {
+      "term": "Text-to-Video",
+      "def": "Text-to-video-modellen genereren korte videoclips uit tekst. De technologie ontwikkelt zich snel, maar is vooralsnog beter geschikt voor korte sequenties dan voor lange, consistente films."
+    },
+    "voice-cloning": {
+      "term": "Voice Cloning",
+      "def": "Voice cloning genereert een kunstmatige stem die op een echte persoon lijkt. Nuttig voor spraakdubbing en synchronisatie — juridisch gevoelig: toestemming is vereist, en vanaf 2026 moeten dergelijke inhoud gemarkeerd worden."
+    },
+    "transcription": {
+      "term": "Transcriptie (Speech-to-Text)",
+      "def": "Transcriptie zet gesproken taal om in tekst. Het is de basis voor vergadernotities, ondertitels en doorzoekbare audiobibliotheken. Voor DACH belangrijk: kwaliteit met Duitse audio en gegevensbescherming."
+    },
+    "vector-db": {
+      "term": "Vectordatabase",
+      "def": "Een vectordatabase slaat insluitingen op en vindt inhoudelijk vergelijkbare teksten bliksemsnel. Het is het geheugen achter RAG-systemen en semantisch zoeken."
+    },
+    "mcp": {
+      "term": "MCP (Model Context Protocol)",
+      "def": "Het Model Context Protocol is een open standaard waarmee AI-modellen toegang hebben tot externe tools en gegevensbronnen. Het vereenvoudigt het verbinden van agenten met echte systemen (bestanden, API's, databases)."
+    },
+    "reasoning": {
+      "term": "Reasoning-modellen",
+      "def": "Reasoning-modellen nemen meer tijd om 'na te denken' voor een antwoord en werken taken stap voor stap af. Ze zijn sterker in logica, wiskunde en complexe problemen, maar langzamer en duurder dan standaardmodellen."
+    },
+    "guardrails": {
+      "term": "Guardrails",
+      "def": "Guardrails zijn regels en filters die het gedrag van een AI beperken — bijvoorbeeld om schadelijke of irrelevante uitvoer te voorkomen. Voor bedrijven belangrijk om AI gecontroleerd en merkconform in te zetten."
+    },
+    "vibecoding-term": {
+      "term": "No-Code / Low-Code-AI",
+      "def": "No-code- en low-code-tools stellen je in staat toepassingen en automatiseringen zonder (of met weinig) programmering te bouwen. In combinatie met AI kun je per taal beschrijven wat je wilt, en entstaat functionele software."
+    },
+    "workflow-automation": {
+      "term": "Workflow-automatisering",
+      "def": "Workflow-automatisering ketelt taken tussen apps automatisch — bijvoorbeeld 'nieuwe e-mail → AI vat samen → naar tabel'. Tools als n8n of Make vormen de basis van veel AI-gestuurde processen."
+    },
+    "open-weights": {
+      "term": "Open-Weights-model",
+      "def": "Bij open-weights-modellen zijn de getrainde gewichten vrij beschikbaar, zodat je het model zelf kunt draaien. Dit is niet hetzelfde als volledig open source, maar geeft veel controle over gegevens en kosten."
+    },
+    "ki-agent-workflow": {
+      "term": "Agentic Workflow",
+      "def": "Een agentic workflow is een keten waarin een AI-agent meerdere stappen plant en uitvoert, tools gebruikt en op tussenresultaten reageert — in plaats van alleen een enkele vraag te beantwoorden."
+    }
+  }
+}

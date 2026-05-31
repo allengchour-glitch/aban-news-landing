@@ -1,0 +1,50 @@
+{
+  "_hinweis": "STRENGE DATEN-INTEGRITAET: Hier stehen NUR echte, verifizierte Eintraege. Erfinde KEINE Agenturen, Namen, Kontaktdaten oder Bewertungen. Die folgenden Eintraege sind reine STRUKTUR-BEISPIELE (Platzhalter) und werden vom Generator als solche markiert ausgegeben bzw. ueber das Feld 'platzhalter': true erkannt. Vor dem Live-Gang: Platzhalter loeschen und echte, eingereichte Eintraege einpflegen.",
+  "_schema": {
+    "id": "eindeutiger slug (a-z0-9-)",
+    "name": "Anzeigename der Agentur/des Freelancers",
+    "platzhalter": "true = Struktur-Beispiel, nicht oeffentlich als echte Firma zeigen",
+    "featured": "true = bezahltes Featured-Listing (oben, hervorgehoben)",
+    "tagline": "ein Satz, du-Form, anti-hype, oder null",
+    "leistungen": "Liste aus: Beratung, Entwicklung, Automation, Content",
+    "land": "DE | AT | CH",
+    "stadt": "Stadt oder null",
+    "website": "https://... oder null",
+    "email": "kontakt@... oder null",
+    "beschreibung": "2-4 Saetze oder null",
+    "gegruendet": "Jahr (int) oder null",
+    "teamgroesse": "z.B. '1-5' oder null"
+  },
+  "agenturen": [
+    {
+      "id": "beispiel-eintrag-1",
+      "name": "[Beispiel-Eintrag — hier steht spaeter deine Agentur]",
+      "platzhalter": true,
+      "featured": false,
+      "tagline": "[Redaktion: pruefen] So koennte dein Basis-Eintrag aussehen.",
+      "leistungen": ["Beratung", "Automation"],
+      "land": "DE",
+      "stadt": null,
+      "website": null,
+      "email": null,
+      "beschreibung": "[Redaktion: pruefen] Dies ist ein Struktur-Platzhalter, keine echte Agentur. Reiche deinen Eintrag ueber den Funnel ein, dann steht hier deine Beschreibung.",
+      "gegruendet": null,
+      "teamgroesse": null
+    },
+    {
+      "id": "beispiel-eintrag-2",
+      "name": "[Beispiel-Eintrag — so sieht ein Featured-Listing aus]",
+      "platzhalter": true,
+      "featured": true,
+      "tagline": "[Redaktion: pruefen] Featured-Listings stehen oben und sind hervorgehoben.",
+      "leistungen": ["Entwicklung", "Content"],
+      "land": "CH",
+      "stadt": null,
+      "website": null,
+      "email": null,
+      "beschreibung": "[Redaktion: pruefen] Struktur-Platzhalter fuer ein bezahltes Featured-Listing — keine echte Agentur.",
+      "gegruendet": null,
+      "teamgroesse": null
+    }
+  ]
+}

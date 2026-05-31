@@ -1,21 +1,164 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Archive — aban news</title>
-  <meta name="description" content="Das aban-news-Archive ist umgezogen — alle Ausgaben jetzt unter /archive/.">
-  <meta name="theme-color" content="#d97706">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://abannews.com/archive/">
-  <meta http-equiv="refresh" content="0; url=/archive/">
-  <link rel="stylesheet" href="/css/styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archiv — alle Ausgaben | aban news</title>
+<meta name="description" content="Alle bisherigen Ausgaben von aban news — dem deutschsprachigen KI-Newsletter. Ehrlich, kein Hype, zum Nachlesen.">
+<link rel="canonical" href="https://abannews.com/archive.html">
+<link rel="alternate" type="application/rss+xml" title="aban news" href="https://abannews.com/archive.rss">
+<meta property="og:title" content="aban news — Archiv">
+<meta property="og:description" content="Alle bisherigen Ausgaben zum Nachlesen.">
+<style>
+:root{--accent:#d97706;--accent-h:#b45309;--bg:#fffbf5;--bg-alt:#fef3c7;--text:#1f2937;--muted:#6b7280;--border:#e5e7eb;}
+@media(prefers-color-scheme:dark){:root{--bg:#1a1714;--bg-alt:#2a2420;--text:#f3f0ec;--muted:#a8a29e;--border:#3a332d;}}
+*{box-sizing:border-box;}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px;}
+header{background:var(--bg-alt);border-bottom:1px solid var(--border);padding:28px 0;text-align:center;}
+header h1{margin:0;} header a{color:var(--accent-h);text-decoration:none;}
+header p{color:var(--muted);margin:6px 0 0;}
+main{padding:26px 0;}
+.search{width:100%;padding:11px 14px;font-size:1rem;border:1px solid var(--border);border-radius:10px;margin:0 0 18px;background:#fff;}
+.issue{border-bottom:1px solid var(--border);padding:14px 0;}
+.issue h2{margin:0;font-size:1.15rem;} .issue a{text-decoration:none;color:var(--text);}
+.issue .meta{color:var(--muted);font-size:.85rem;margin:2px 0;}
+.issue .desc{color:var(--muted);margin:4px 0 0;font-size:.95rem;}
+.cta{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:11px 20px;border-radius:10px;font-weight:600;}
+footer{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);font-size:.85rem;text-align:center;}
+</style>
 </head>
 <body>
-  <main class="wrap" style="padding: 4rem 1rem; text-align:center;">
-    <h1>Archive umgezogen</h1>
-    <p>Das komplette Archive findest du jetzt unter <a href="/archive/">/archive/</a>.</p>
-    <p><a href="/archive/" class="btn btn--lg">Zum Archive</a></p>
-  </main>
+<header><div class="wrap">
+<a href="/"><h1>📬 aban news — Archiv</h1></a>
+<p>Alle 28 Ausgaben zum Nachlesen · Mo–Fr, kein Hype</p>
+<p style="margin-top:14px;"><a class="cta" href="/gratis-ki-tools.html">Kostenlos abonnieren →</a></p>
+</div></header>
+<main><div class="wrap">
+<input id="q" class="search" type="search" placeholder="Ausgaben durchsuchen…" aria-label="Suche" oninput="abanFilter()">
+<div id="list">
+<article class="issue">
+<a href="/archive/025-2026-07-03-werkzeugkasten-h1-bilanz-quantensprung-entlarvt.html"><h2>Ausgabe 025 — Werkzeugkasten H1-Bilanz — Quantensprung entlarvt</h2></a>
+<p class="meta">Ausgabe 025 · 2026-07-03</p>
+<p class="desc">Halbjahres-Wechsel. 25 Ausgaben aban news durch. Heute der Friday-Werkzeugkasten mit H1-Bilanz: zwei neue Tools, eine harte Wahrheit über meinen eigenen Stack</p>
+</article><article class="issue">
+<a href="/archive/024-2026-07-02-halbjahres-drift-mistral-w-chst.html"><h2>Ausgabe 024 — Halbjahres-Drift: Mistral wächst, OpenAI verschiebt, Brussels reguliert</h2></a>
+<p class="meta">Ausgabe 024 · 2026-07-02</p>
+<p class="desc">Erster Donnerstag im neuen Halbjahr. Die Branche sortiert sich um — Q3-Roadmaps werden veröffentlicht, Investments werden lauter angekündigt, EU-Regulierung w</p>
+</article><article class="issue">
+<a href="/archive/023-2026-07-01-ki-ersetzt-deine-mitarbeiter-die.html"><h2>Ausgabe 023 — „KI ersetzt deine Mitarbeiter&quot; — die ehrlichen Numbers</h2></a>
+<p class="meta">Ausgabe 023 · 2026-07-01</p>
+<p class="desc">Halbjahres-Wechsel. Heute keine News, sondern ein Thema, das ich seit drei Wochen sortiere: Die Behauptung „KI ersetzt jetzt Mitarbeiter im großen Stil</p>
+</article><article class="issue">
+<a href="/archive/022-2026-06-30-mail-stack-f-r-solopreneure.html"><h2>Ausgabe 022 — Mail-Stack für Solopreneure: Loops.so vs. Resend</h2></a>
+<p class="meta">Ausgabe 022 · 2026-06-30</p>
+<p class="desc">Zwischen Newsletter-Versand, Onboarding-Sequenzen und Transactional-Mails ist E-Mail das einsamste Tool im Solopreneur-Stack — und gleichzeitig das wichtigste</p>
+</article><article class="issue">
+<a href="/archive/021-2026-06-29-schweizer-selbstst-ndige-was-du.html"><h2>Ausgabe 021 — Schweizer Selbstständige: was du wirklich absetzen kannst</h2></a>
+<p class="meta">Ausgabe 021 · 2026-06-29</p>
+<p class="desc">Drei Mails diese Woche zur selben Frage: „Aban, ich bin Solopreneur in Zürich, zahle 220 € im Monat für KI-Tools — was geht davon in die Steuererklärung?</p>
+</article><article class="issue">
+<a href="/archive/020-2026-06-26-werkzeugkasten-woche-4-synergistisch-entlarvt.html"><h2>Ausgabe 020 — Werkzeugkasten Woche 4 — synergistisch entlarvt</h2></a>
+<p class="meta">Ausgabe 020 · 2026-06-26</p>
+<p class="desc">Vier Wochen aban news durch. Wenn du noch dabei bist: danke. Heute der Friday-Werkzeugkasten — drei neue Tools im 14-Tage-Test, eins fliegt sofort. Und am End</p>
+</article><article class="issue">
+<a href="/archive/019-2026-06-25-leadgen-workflow-in-30-minuten.html"><h2>Ausgabe 019 — LeadGen-Workflow in 30 Minuten — ohne Code</h2></a>
+<p class="meta">Ausgabe 019 · 2026-06-25</p>
+<p class="desc">Letzte Woche kam eine Leserin aus Zürich auf mich zu: „Ich brauch ein System, das Termin-Anfragen einsammelt, sortiert und mir die guten zeigt. Aber ich kann</p>
+</article><article class="issue">
+<a href="/archive/018-2026-06-24-vibe-coding-was-wirklich-produktiv.html"><h2>Ausgabe 018 — „Vibe-Coding&quot; — was wirklich produktiv ist (nicht)</h2></a>
+<p class="meta">Ausgabe 018 · 2026-06-24</p>
+<p class="desc">Drei Wochen lang hab ich versucht, ehrlich zu sein über „Vibe-Coding</p>
+</article><article class="issue">
+<a href="/archive/017-2026-06-23-deepl-write-14-tage-sp.html"><h2>Ausgabe 017 — DeepL Write — 14 Tage später</h2></a>
+<p class="meta">Ausgabe 017 · 2026-06-23</p>
+<p class="desc">Gestern hab ich DeepL Write Pro als „Tool des Tages</p>
+</article><article class="issue">
+<a href="/archive/016-2026-06-22-vier-news-eine-verschiebung.html"><h2>Ausgabe 016 — Vier News, eine Verschiebung</h2></a>
+<p class="meta">Ausgabe 016 · 2026-06-22</p>
+<p class="desc">Wochenstart. Das Wochenende war ruhiger als üblich — keine großen Modell-Drops, keine 100-Mio-Runden. Genau deshalb sind die News interessant, die kamen: alle</p>
+</article><article class="issue">
+<a href="/archive/015-2026-06-19-drei-wochen-aban-news-was.html"><h2>Ausgabe 015 — Drei Wochen aban news — was ich gelernt habe</h2></a>
+<p class="meta">Ausgabe 015 · 2026-06-19</p>
+<p class="desc">Freitag, Ausgabe 15 im Kasten. Drei Wochen täglich schreiben. Heute kein klassischer Werkzeugkasten — sondern eine ehrliche Zwischenbilanz: was ich über mein</p>
+</article><article class="issue">
+<a href="/archive/014-2026-06-18-vier-stories-eine-linie.html"><h2>Ausgabe 014 — Vier Stories, eine Linie</h2></a>
+<p class="meta">Ausgabe 014 · 2026-06-18</p>
+<p class="desc">Donnerstag. Heute mehr News als sonst — diese Woche war dicht, vier Stories drängen sich auf. Und sie ergeben zusammen eine Linie, die ich relevant finde: was</p>
+</article><article class="issue">
+<a href="/archive/013-2026-06-17-drei-notes-apps-drei-wochen.html"><h2>Ausgabe 013 — Drei Notes-Apps, drei Wochen, ein Gewinner</h2></a>
+<p class="meta">Ausgabe 013 · 2026-06-17</p>
+<p class="desc">Mittwoch. Seit der EU-Region-Eröffnung von Granola vor zwei Wochen läuft bei mir ein direkter Vergleich: Granola gegen tldv gegen Otter. Drei AI-Notes-Apps, d</p>
+</article><article class="issue">
+<a href="/archive/012-2026-06-16-sieben-sachen-die-agenten-2026.html"><h2>Ausgabe 012 — Sieben Sachen, die Agenten 2026 nicht können</h2></a>
+<p class="meta">Ausgabe 012 · 2026-06-16</p>
+<p class="desc">Dienstag. Letzte Woche der nüchterne State-of-Agents-Report — heute die Konkret-Version: sieben konkrete Tasks, die in den letzten Monaten Agenten an mich ran</p>
+</article><article class="issue">
+<a href="/archive/011-2026-06-15-prompts-f-r-deutsche-texte.html"><h2>Ausgabe 011 — Prompts für deutsche Texte — sechs Patterns, die wirken</h2></a>
+<p class="meta">Ausgabe 011 · 2026-06-15</p>
+<p class="desc">Montag, Woche 3. Heute kein News-Recap, weil das Wochenende ruhig war — und weil eine Frage immer wieder kommt: „warum klingt der KI-Output auf Deutsch so ame</p>
+</article><article class="issue">
+<a href="/archive/010-2026-06-12-werkzeugkasten-woche-2-drei-neu.html"><h2>Ausgabe 010 — Werkzeugkasten Woche 2 — drei neu, eins fliegt</h2></a>
+<p class="meta">Ausgabe 010 · 2026-06-12</p>
+<p class="desc">Freitag, zwei Wochen aban news. Heute kein News-Recap, sondern was ich diese Woche unter die Finger bekommen habe: Cap.so behalten, ein neues AI-Notes-Tool ge</p>
+</article><article class="issue">
+<a href="/archive/009-2026-06-11-aleph-alpha-vs-us-stack.html"><h2>Ausgabe 009 — Aleph Alpha vs. US-Stack — der ehrliche Vergleich</h2></a>
+<p class="meta">Ausgabe 009 · 2026-06-11</p>
+<p class="desc">Donnerstag. Letztes Mal war DACH-Special EU AI Act und Mistral. Heute der Test, den viele DE-Leser anfragen: Aleph Alpha. PhariaAI, Luminous, der Heidelberger</p>
+</article><article class="issue">
+<a href="/archive/008-2026-06-10-agentic-ai-der-reality-check.html"><h2>Ausgabe 008 — Agentic AI — der Reality-Check</h2></a>
+<p class="meta">Ausgabe 008 · 2026-06-10</p>
+<p class="desc">Mittwoch. Seit drei Wochen schreibt jeder Newsletter, jedes Tech-Blog und jeder LinkedIn-Influencer über „Agentic AI</p>
+</article><article class="issue">
+<a href="/archive/007-2026-06-09-cap-so-vs-loom-ein.html"><h2>Ausgabe 007 — Cap.so vs. Loom — ein Wochenende lang getauscht</h2></a>
+<p class="meta">Ausgabe 007 · 2026-06-09</p>
+<p class="desc">Dienstag. Letztes Wochenende hab ich eine Sache gemacht, die ich seit Monaten aufschiebe: meinen Screen-Recorder gewechselt. Loom kostet mich 15 $ / Monat, Ca</p>
+</article><article class="issue">
+<a href="/archive/006-2026-06-08-sonnet-4-6-hat-augen.html"><h2>Ausgabe 006 — Sonnet 4.6 hat Augen bekommen</h2></a>
+<p class="meta">Ausgabe 006 · 2026-06-08</p>
+<p class="desc">Zweite Woche. Wochenende war ruhig auf den Feeds — bis Anthropic Sonntagabend ein Update für Sonnet 4.6 nachgeschoben hat, das die Karten beim Thema Multi-Mod</p>
+</article><article class="issue">
+<a href="/archive/005-2026-06-05-werkzeugkasten-drei-getestet-eins-behalten.html"><h2>Ausgabe 005 — Werkzeugkasten: drei getestet, eins behalten</h2></a>
+<p class="meta">Ausgabe 005 · 2026-06-05</p>
+<p class="desc">Freitag, erste Woche aban news im Kasten. Danke, dass du dabei warst. Heute kein News-Recap — sondern der Werkzeugkasten: drei Tools, die diese Woche durch me</p>
+</article><article class="issue">
+<a href="/archive/004-2026-06-04-mistral-macht-ernst-eu-ai.html"><h2>Ausgabe 004 — Mistral macht Ernst, EU AI Act zieht an</h2></a>
+<p class="meta">Ausgabe 004 · 2026-06-04</p>
+<p class="desc">Donnerstag, der Tag vor dem Wochenende. Heute eine Ausgabe für alle, die ChatGPT-Müdigkeit haben und mal ehrlich auf den europäischen Stack schauen wollen. Mi</p>
+</article><article class="issue">
+<a href="/archive/003-2026-06-03-pl-tzlich-war-s-nur.html"><h2>Ausgabe 003 — Plötzlich war&#x27;s nur ein Produktivitäts-Tool</h2></a>
+<p class="meta">Ausgabe 003 · 2026-06-03</p>
+<p class="desc">Mittwoch, Mitte der Woche. Heute eine kleinere Ausgabe — nicht aus News-Mangel, sondern weil eine Story die anderen erschlägt. Sam Altman und Dario Amodei hab</p>
+</article><article class="issue">
+<a href="/archive/002-2026-06-02-claude-cowork-drei-tage-selbsttest.html"><h2>Ausgabe 002 — Claude Cowork — drei Tage Selbsttest</h2></a>
+<p class="meta">Ausgabe 002 · 2026-06-02</p>
+<p class="desc">Dienstag, der erste echte Arbeitstag der Woche. Ich hab das Wochenende genutzt, um Claude Cowork ernsthaft auszuprobieren — drei Tage, echte Tasks, kein Demo-</p>
+</article><article class="issue">
+<a href="/archive/001-2026-06-01-china-zerlegt-die-preisliste.html"><h2>Ausgabe 001 — China zerlegt die Preisliste</h2></a>
+<p class="meta">Ausgabe 001 · 2026-06-01</p>
+<p class="desc">Erster Montag. Wenn du das liest: danke, du bist dabei. Ich versprech dir: kein Feature-Geschwurbel, keine PR-Pressetexte abgeschrieben. Was dir diese Woche w</p>
+</article><article class="issue">
+<a href="/archive/index.html"><h2>Archive — Alle Ausgaben</h2></a>
+<p class="meta">Ausgabe  · </p>
+<p class="desc">Das komplette Archiv von aban news mit 27 Ausgaben. Filterbar nach Datum, Topic und Volltextsuche.</p>
+</article><article class="issue">
+<a href="/archive/probe-2026-05-27.html"><h2>Probe-Ausgabe — China zieht den Vorhang zu, DeepSeek dreht am Preis</h2></a>
+<p class="meta">Ausgabe  · 2026-05-27</p>
+<p class="desc">Mittwoch, halb durch. Heute drei News, die mich tatsächlich was angehen — der Rest aus den Feeds ist Branchen-Geplauder, das ich für dich aussortiert hab. Sch</p>
+</article><article class="issue">
+<a href="/archive/ultimate-probe-2026-05-27.html"><h2>Ultimate-Probe — Anthropic kratzt am Profit — und alle übersehen das Detail</h2></a>
+<p class="meta">Ausgabe  · 2026-05-27</p>
+<p class="desc">Mittwoch, und in jedem zweiten Newsletter heute steht „Anthropic überholt OpenAI</p>
+</article>
+</div>
+</div></main>
+<footer><div class="wrap">
+© <span id="y"></span> aban news · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a> · <a href="/archive.rss">RSS</a>
+</div></footer>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+function abanFilter(){var q=document.getElementById('q').value.toLowerCase();
+document.querySelectorAll('.issue').forEach(function(a){a.style.display=a.textContent.toLowerCase().indexOf(q)>-1?'':'none';});}
+</script>
 </body>
 </html>

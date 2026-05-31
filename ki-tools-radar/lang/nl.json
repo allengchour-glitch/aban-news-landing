@@ -1,0 +1,2572 @@
+{
+  "ui": {
+    "tagline": "De ultieme vergelijking van AI-tools voor DACH-professionals",
+    "all_tools": "Alle tools",
+    "categories": "Categorieën",
+    "home_heading": "{n} AI-tools vergeleken",
+    "use_cases": "Gebruiksscenario's",
+    "editor_note": "Redacteursnota",
+    "dsgvo": "AVG",
+    "pro": "Pluspunten",
+    "contra": "Minpunten",
+    "alternatives": "Alternatieven",
+    "cta": "Naar {name}",
+    "best_in": "Beste {cat}-tools",
+    "dach": "DACH-relevantie",
+    "free": "gratis",
+    "price_from": "vanaf",
+    "language": "Taal",
+    "privacy": "Privacy",
+    "imprint": "Colofon",
+    "data_note": "Gegevensnota",
+    "disclosure": "Transparantie: Sommige links zijn affiliate-links (gemarkeerd met *). Als je erop klikt, ontvangen we een commissie - voor jou zonder extra kosten. De beoordelingen zijn hiervan onafhankelijk.",
+    "meta_home": "{n} AI-tools voor DACH-professionals",
+    "meta_tool": "{name} - AI-tool review en vergelijking",
+    "meta_cat": "Beste {cat}-tools in 2026"
+  },
+  "tools": {
+    "claude": {
+      "aban_note": "Beste conversatie-AI voor Nederlandse teksten. Gebruik ik dagelijks voor aban news. Sonnet 4.6 is mijn standaard, Opus voor lange research, Haiku voor bulk.",
+      "dsgvo_note": "EU-datahuisvesting via Anthropic-API; Zero-retentie op aanvraag.",
+      "use_cases": [
+        "Schrijven",
+        "Onderzoek",
+        "Codering",
+        "PDF-analyse"
+      ],
+      "pro": [
+        "Beste Nederlands taalbegrip",
+        "Flexibel abonnements- en API-model",
+        "Uitstekend voor lange teksten"
+      ],
+      "contra": [
+        "Beperkt geen-codegebruik",
+        "Meer context vereist"
+      ]
+    },
+    "chatgpt": {
+      "aban_note": "Standaarduitrusting. GPT-5 is een solide allrounder, maar voor Nederlandse zakstijl presteert Claude beter. Als je slechts één tool hebt: dit.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Schrijven",
+        "Onderzoek",
+        "Codering",
+        "Afbeeldingsgeneratie"
+      ],
+      "pro": [
+        "Meest gebruikte en bekend",
+        "Sterke coderingsmogelijkheden",
+        "Goede multimodale ondersteuning"
+      ],
+      "contra": [
+        "Hogere kosten bij gebruik",
+        "Privacyvragen voor EU"
+      ]
+    },
+    "gemini": {
+      "aban_note": "Sterk in multimodaal + long-context. Workspace-integratie interessant voor Google-gebruikers. Standalone: tweede keuze tegen Claude.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Onderzoek",
+        "Multimodaal",
+        "Google Docs-integratie"
+      ],
+      "pro": [
+        "Ingebouwd Google Workspace",
+        "Grote context-window",
+        "Goede beeldverwerking"
+      ],
+      "contra": [
+        "Inconsistente taalkwaliteit",
+        "Privacy-aandachtspunten bij Google"
+      ]
+    },
+    "mistral": {
+      "aban_note": "EU-gebaseerd (Parijs). Voor naleving-gevoelige DACH-klanten nu schone keuze. Grootklanten zoals BNP, Harvey AI zijn vertrouwenssignaal. Codestral voor codering is solide.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Schrijven",
+        "Codering",
+        "EU-nalevingsoplossing",
+        "Redenering"
+      ],
+      "pro": [
+        "EU-gebaseerd, GDPR-compliant",
+        "Sterke coderingsmodellen",
+        "Betaalbaar voor enterprise"
+      ],
+      "contra": [
+        "Kleinere modelbibliotheek",
+        "Minder bekend dan Claude/GPT"
+      ]
+    },
+    "deepseek": {
+      "aban_note": "Disruptieve prijzen (-75 tot -99% vs OpenAI). Voor bulk-workloads zonder compliance-zorg onverslaagbaar. Voor DACH-bedrijfsgegevens zou ik het niet doorsturen — China-provider.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Bulk-API",
+        "Kostenoptimalisatie",
+        "Redenering"
+      ],
+      "pro": [
+        "Extreem voordelige prijzen",
+        "Uitstekende redeneercapaciteiten",
+        "Open-weights modellen"
+      ],
+      "contra": [
+        "Privacyzorgen voor EU-data",
+        "Onzekerheid rond duurzaamheid"
+      ]
+    },
+    "perplexity": {
+      "aban_note": "Research-tool nr. 1. Pro met Sonar-modellen vervangt voor mij Google in 80% van de vragen. Bronnen-transparantie is het killer-feature.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Onderzoek",
+        "Nieuwsronde",
+        "Bronnenonderzoek"
+      ],
+      "pro": [
+        "Geciteerde bronnen",
+        "Real-time web-zoeking",
+        "Uitstekend onderzoeksformulier"
+      ],
+      "contra": [
+        "Beperkte offlinegebruik",
+        "Minder geschikt voor codering"
+      ]
+    },
+    "aleph-alpha": {
+      "aban_note": "Duitse LLMs, Heidelberg. Pharia-1 voor gereglementeerde sectoren (farma, bankwezen, overheid). Prestaties hinken Claude/Mistral achterna — maar als je compliance-ambtenaar 'EU-soeverein' wil, is het het antwoord. Geen self-service.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "EU-soevereiniteit",
+        "Bankwezen",
+        "Farmacie",
+        "Openbare administratie"
+      ],
+      "pro": [
+        "Volledig EU-gebaseerd",
+        "Gericht op sterk gereglementeerde industrie",
+        "Sterke naleving en veiligheid"
+      ],
+      "contra": [
+        "Beperkte modelkeuze",
+        "Dure enterprise-prijzen",
+        "Kleinere community"
+      ]
+    },
+    "cowork": {
+      "aban_note": "Drie dagen echte zelftest (zie uitgave 002). Loont zich voor PDF-evaluatie, slide-decks uit briefings, Excel-pivots uit ruwe gegevens. Ik heb dit 2x per week nodig. Geen wondermiddel, maar concrete tijdsbesparing.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "PDF-analyse",
+        "Dia-generatie",
+        "Excel-pivots"
+      ],
+      "pro": [
+        "Ingebouwde bestandsverwerking",
+        "Effectieve dia-generatie",
+        "Geen aparte kosten"
+      ],
+      "contra": [
+        "Alleen in Claude Max inbegrepen",
+        "Gelimiteerde geavanceerde functies"
+      ]
+    },
+    "openrouter": {
+      "aban_note": "Pragmatische multi-model-router. Bij API-kostenvragen onverslaagbaar. Ik had dit maanden genegeerd — fout. Nu mijn standaard voor A/B-tests tussen providers.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Multi-provider-API",
+        "Kostenrouting",
+        "Modeltests"
+      ],
+      "pro": [
+        "Eenvoudige provider-schakelaar",
+        "Goede kostenoptimalisatie",
+        "Breed modelaanbod"
+      ],
+      "contra": [
+        "Prijstoeslagen bovenop API",
+        "Afhankelijk van providers"
+      ]
+    },
+    "n8n": {
+      "aban_note": "Zelfhosten, GDPR-vriendelijk, Duitse bedrijf. Mijn backend voor nieuwsbrief-automatisering. Make.com is gepolijster, n8n is robuuster en controleerder.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Werkstroom-automatisering",
+        "Nieuwsbrief-pijplijn",
+        "API-integratie"
+      ],
+      "pro": [
+        "Zelfhost-optie beschikbaar",
+        "GDPR-vriendelijk",
+        "Uitstekende werkstroom-builder"
+      ],
+      "contra": [
+        "Steilere leercurve",
+        "Hogere infrastructuurkosten"
+      ]
+    },
+    "make": {
+      "aban_note": "Mooie visuele builder. Sneller instappen dan n8n. Maar: vendor lock-in en duurder bij volume. Voor beginners super, voor professionals n8n.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Werkstroom-automatisering",
+        "No-code-integratie"
+      ],
+      "pro": [
+        "Intuïtieve visuele builder",
+        "Grote app-bibliotheek",
+        "Snel installeren"
+      ],
+      "contra": [
+        "Vendor lock-in",
+        "Duurder bij schaal",
+        "Beperkingen in geavanceerde logica"
+      ]
+    },
+    "zapier": {
+      "aban_note": "Grootste ecosysteem (7000+ apps). Maar duur en gelimiteerd in logica. Als je alleen SaaS-A → SaaS-B nodig hebt, gaat het. Voor AI-werkstromen: Make of n8n.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "SaaS-integratie",
+        "Snelle workflows"
+      ],
+      "pro": [
+        "Grootste app-connectorenset",
+        "Zeer gebruiksvriendelijk",
+        "Betrouwbare infra"
+      ],
+      "contra": [
+        "Duurste prijsmodel",
+        "Beperkte aangepaste logica",
+        "Geen zelfhost"
+      ]
+    },
+    "cursor": {
+      "aban_note": "Mijn standaard-editor. VSCode-fork met Claude/GPT geïntegreerd. Composer-modus is de game-changer voor vibecoding. Als je code schrijft en geen Cursor hebt — verspil je tijd.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Vibecoding",
+        "Code-refactoring",
+        "Pair-programming"
+      ],
+      "pro": [
+        "Ingebouwde AI-assistenten",
+        "Krachtige Composer-modus",
+        "VSCode-compatibiliteit"
+      ],
+      "contra": [
+        "Gesloten ecosysteem",
+        "Abonnementsafhankelijkheid"
+      ]
+    },
+    "windsurf": {
+      "aban_note": "Cursor-concurrent. Cascade-mode is conceptueel schoner. Geprobeerd, maar Cursor-workflow zat te diep. Wie nieuw begint: solide keuze.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Vibecoding",
+        "Codering"
+      ],
+      "pro": [
+        "Schonere architectuur",
+        "Soepele Cascade-mode",
+        "Goede AI-integratie"
+      ],
+      "contra": [
+        "Nieuwer dan Cursor",
+        "Kleinere community",
+        "Minder plugins beschikbaar"
+      ]
+    },
+    "github-copilot": {
+      "aban_note": "Klassieke standaard, nu met Claude Sonnet als optie. Solide autocomplete. Cursor is in agent-modus superieur, Copilot in GitHub-integratieflow.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Code-aanvulling",
+        "GitHub-integratie"
+      ],
+      "pro": [
+        "Diep GitHub-geïntegreerd",
+        "Nu met Claude Sonnet",
+        "Sterke codeaanvulling"
+      ],
+      "contra": [
+        "Meer gericht op completion dan agent",
+        "Minder krachtig dan Cursor"
+      ]
+    },
+    "claude-code": {
+      "aban_note": "Terminal-gebaseerde coding-agent. Als je routines automatiseert (50 bestanden refactoren, test-dekking verhogen), is het sterk. CLI > GUI voor power-users.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Bulk-refactoring",
+        "Codebase-analyse",
+        "Terminal-codering"
+      ],
+      "pro": [
+        "Krachtige bulk-bewerkingen",
+        "Codebase-context",
+        "Naadloze terminal-integratie"
+      ],
+      "contra": [
+        "Geen GUI beschikbaar",
+        "Steile leercurve",
+        "Beperkt op web-projecten"
+      ]
+    },
+    "bolt": {
+      "aban_note": "Browser-gebaseerde vibecoding. Een landingspagina in 20 min. Lock-in & beperkingen zodra het ingewikkelder wordt. Voor MVP's: bruikbaar.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "MVP-prototyping",
+        "Landingspagina's"
+      ],
+      "pro": [
+        "Zeer snel MVP-oplevering",
+        "Geen setupnodig",
+        "Helemaal browser-gebaseerd"
+      ],
+      "contra": [
+        "Beperkte uitbreidbaarheid",
+        "Vendor lock-in",
+        "Duur voor grotere projecten"
+      ]
+    },
+    "lovable": {
+      "aban_note": "Zeer gladde vibecoding-builder. Mooie outputs. Schaalt slecht voorbij de eerste 200 prompts. Voor soloërs met slechts één side-project: ok.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "MVP-prototyping",
+        "Vibecoding"
+      ],
+      "pro": [
+        "Zeer gebruiksvriendelijke interface",
+        "Mooie initiële outputs",
+        "Snel iteration-cycli"
+      ],
+      "contra": [
+        "Beperkt bij schaal",
+        "Minder controle over code",
+        "Geen exportopties"
+      ]
+    },
+    "v0": {
+      "aban_note": "Next.js + shadcn uit de doos. Als je in het Vercel-ecosysteem bent: eerste keuze. Anders: output is React-specifiek, wat een beperking is.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "React-prototyping",
+        "UI-generatie"
+      ],
+      "pro": [
+        "Diep Vercel-geïntegreerd",
+        "React + Next.js fokus",
+        "Moderne UI-componenten"
+      ],
+      "contra": [
+        "Alleen React/Next.js",
+        "Minder flexibel dan andere opties"
+      ]
+    },
+    "replit": {
+      "aban_note": "Volledige stack in browser inclusief hosting. Geschikt voor complete mini-apps. Prijzen zijn hard bij volume.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Volledige-stack-MVP",
+        "Hosting inbegrepen"
+      ],
+      "pro": [
+        "Alles-in-één gehoste omgeving",
+        "Ingebouwde samenwerkingsfuncties",
+        "Snel publiceren"
+      ],
+      "contra": [
+        "Hoge kosten bij schaal",
+        "Begrensd aangepaste configuratie",
+        "Minder controle"
+      ]
+    },
+    "midjourney": {
+      "aban_note": "Afbeeldings kwaliteitskoning. v7 is verbazingwekkend. Voor marketing-content, redactionele afbeeldingen, covers. Discord-first is vervelend, maar web-UI werkt nu.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Marketing-content",
+        "Redactionele afbeeldingen",
+        "Concept-art"
+      ],
+      "pro": [
+        "Uitstekende afbeeldingskwaliteit",
+        "Sterke v7-model",
+        "Web-UI nu beschikbaar"
+      ],
+      "contra": [
+        "Discord-eerste aanpak",
+        "Duurder dan alternatieven",
+        "Matige tekstrendering"
+      ]
+    },
+    "flux": {
+      "aban_note": "Duitse bedrijf (Freiburg), Stable Diffusion-makers. Flux.1 Dev is topprestatie. Open-weights — ideaal voor DACH-compliance.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Afbeeldingsgeneratie",
+        "Zelfgehost",
+        "DACH-naleving"
+      ],
+      "pro": [
+        "Volledig open-source",
+        "Duitse fabrikant",
+        "Zelfhostoptie beschikbaar"
+      ],
+      "contra": [
+        "Vereist aanzienlijke rekenkracht",
+        "Minder gebruiksvriendelijk dan Midjourney"
+      ]
+    },
+    "stable-diffusion": {
+      "aban_note": "Open-source-klassieke. Zelfhosten mogelijk. Als je een RTX-grafische kaart hebt: ComfyUI + SD = onbeperkte afbeeldingen zonder leverancier-afhankelijkheid.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Zelfgehoste afbeeldingsgeneratie",
+        "Bulk-afbeelding"
+      ],
+      "pro": [
+        "Volledig open-source",
+        "Geen leverancier lock-in",
+        "Zeer aanpasbaar"
+      ],
+      "contra": [
+        "Vereist GPU-hardware",
+        "Ingewikkelde setup",
+        "Lagere output-kwaliteit dan commerciële"
+      ]
+    },
+    "ideogram": {
+      "aban_note": "Beste tekst-in-afbeelding-rendering. Voor posters, logo's, typografiecentrische ontwerpen. Zwakker in fotorealisme.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Typografie",
+        "Poster",
+        "Logo-concepten"
+      ],
+      "pro": [
+        "Beste tekst-rendering",
+        "Perfecte designer-tool",
+        "Sterke typografie"
+      ],
+      "contra": [
+        "Zwak fotorealisme",
+        "Beperkte aangepaste stijlen"
+      ]
+    },
+    "krea": {
+      "aban_note": "Realtime-afbeeldingsgeneratie + multi-model-bundel. Interessant voor ontwerpers omdat output-controle goed is. Tier 1 is beperkend.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Realtime-ontwerp",
+        "Afbeeldingsgeneratie"
+      ],
+      "pro": [
+        "Realtime-afbeelding feedback",
+        "Multi-model-bundel",
+        "Goedeoutput-controle"
+      ],
+      "contra": [
+        "Beperkte gratis tier",
+        "Hoge prijzen voor meer gebruik"
+      ]
+    },
+    "recraft": {
+      "aban_note": "SVG-generatie + merkstijl-consistentie. Als je merkafbeeldingen consistent moet houden: top.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "SVG-generatie",
+        "Merklichtheid"
+      ],
+      "pro": [
+        "SVG-uitvoer",
+        "Merkstijl-consistentie",
+        "Schaalbaar ontwerp"
+      ],
+      "contra": [
+        "Niche-gebruiksscenario",
+        "Minder populair dan Midjourney"
+      ]
+    },
+    "leonardo": {
+      "aban_note": "Afbeeldingsgeneratie met focus op game-content. Solide UI, maar output voor marketing eerder tweede divisie.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Game-content",
+        "Concept-art"
+      ],
+      "pro": [
+        "Gamegericht",
+        "Solide gebruikersinterface",
+        "Redelijke prijzen"
+      ],
+      "contra": [
+        "Matige marketing-output",
+        "Minder gekend"
+      ]
+    },
+    "playground": {
+      "aban_note": "Gratis tier is ruim. Output meestal aanvaardbaar, zelden uitstekend. Voor hobby ok.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Hobby-afbeeldingsgeneratie"
+      ],
+      "pro": [
+        "Genereuze gratis tier",
+        "Eenvoudige interface",
+        "Goede startersoptie"
+      ],
+      "contra": [
+        "Uitsluitend hobbymatig",
+        "Matige output-kwaliteit"
+      ]
+    },
+    "dalle": {
+      "aban_note": "Inmiddels ingehaald door Midjourney/Flux. Maar: naadloos geïntegreerd in ChatGPT-workflow. Voor snelle slide-afbeeldingen volstaat het.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "ChatGPT-geïntegreerd",
+        "Snelle afbeelding"
+      ],
+      "pro": [
+        "ChatGPT-integratie",
+        "Snelle generatie",
+        "Veilig voor commercieel gebruik"
+      ],
+      "contra": [
+        "Ingehaald door concurrenten",
+        "Lagere kwaliteit dan alternatieven"
+      ]
+    },
+    "adobe-firefly": {
+      "aban_note": "Commercieel veilig (getraind op gelicentieerde gegevens). Voor merken die juridisch veilig moeten genereren. Naadloos in Photoshop/Illustrator.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Commercieel veilig",
+        "Adobe-workflow"
+      ],
+      "pro": [
+        "Juridische bescherming",
+        "Adobe-integratie",
+        "Solide output-kwaliteit"
+      ],
+      "contra": [
+        "Alleen in Adobe-abonnement",
+        "Minder keuze dan concurrenten"
+      ]
+    },
+    "sora": {
+      "aban_note": "Video-generatie. Spannend, maar 2026 nog niet productierijp voor marketing. Demo-clips ja, hero-video's nee.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Video-demo's",
+        "Concept-video"
+      ],
+      "pro": [
+        "Innovatief concept",
+        "ChatGPT-geïntegreerd",
+        "Interessante mogelijkheden"
+      ],
+      "contra": [
+        "Nog in vroeg stadium",
+        "Beperkte beschikbaarheid",
+        "Matige kwaliteit"
+      ]
+    },
+    "runway": {
+      "aban_note": "Gen-4 is solide. Beste tool-suite voor video-AI (motion-brush, inpainting). Voor professionals die echt willen produceren.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Video-bewerking",
+        "VFX",
+        "Motion-graphics"
+      ],
+      "pro": [
+        "Uitgebreide AI-hulpmiddelen",
+        "Professionele kwaliteit",
+        "Video-generatie sterkte"
+      ],
+      "contra": [
+        "Duurste opties",
+        "Steile leercurve"
+      ]
+    },
+    "pika": {
+      "aban_note": "Short-form-video voor sociaal. Eenvoudiger instappen, maar output is beperkte duur.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Short-form-video",
+        "Sociale media"
+      ],
+      "pro": [
+        "Eenvoudig instappen",
+        "Snel generatie",
+        "Sociale media gericht"
+      ],
+      "contra": [
+        "Beperkte duur",
+        "Matige kwaliteit",
+        "Minder aangepast"
+      ]
+    },
+    "elevenlabs": {
+      "aban_note": "Duitse stemmen klinken 2026 verbazingwekkend natuurlijk. Voor podcasts, voiceovers, audioboeken. Voice-clone is griezelig goed — met alle ethische implicaties.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Voiceover",
+        "Podcast",
+        "Audioboek"
+      ],
+      "pro": [
+        "Natuurlijke nederlandse stemmen",
+        "Voice-kloonopties",
+        "Professionele kwaliteit"
+      ],
+      "contra": [
+        "Ethische privacyvragen",
+        "Duurder voicecloning"
+      ]
+    },
+    "suno": {
+      "aban_note": "Muziekgeneratie. Voor jingles, achtergrondmuziek, plezier. Voor ernstige productie: juridische situatie in DACH onduidelijk.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Jingles",
+        "Achtergrondmuziek"
+      ],
+      "pro": [
+        "Snelle muziekgeneratie",
+        "Creatieve mogelijkheden",
+        "Gebruiksvriendelijk"
+      ],
+      "contra": [
+        "Auteursrechtelijke onduidelijkheid",
+        "Beperkte commerciële bruikbaarheid"
+      ]
+    },
+    "udio": {
+      "aban_note": "Suno-concurrent. Outputkwaliteit vergelijkbaar. Licentiepositie even onduidelijk — voorzichtig bij commercieel gebruik.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Muziekgeneratie"
+      ],
+      "pro": [
+        "Vergelijkbare Suno-kwaliteit",
+        "Eenvoudige interface",
+        "Gratis tier"
+      ],
+      "contra": [
+        "Auteursrechtelijke onzekerheid",
+        "Minder bekend"
+      ]
+    },
+    "murf": {
+      "aban_note": "Solide TTS-klassieke. Duitse stemmen ok, maar ElevenLabs is 2026 vooruit.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Voiceover",
+        "TTS"
+      ],
+      "pro": [
+        "Solide TTS",
+        "Meerdere talen",
+        "Redelijke prijzen"
+      ],
+      "contra": [
+        "ElevenLabs beter",
+        "Minder voicekeys"
+      ]
+    },
+    "heygen": {
+      "aban_note": "AI-avatars die teksten voordragen. Vertaling in 40+ talen met lipsync. Sterk voor multi-language-marketing. Avatar-output blijft herkenbaar synthetisch.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "AI-avatar-video's",
+        "Multi-taal-content"
+      ],
+      "pro": [
+        "Natuurlijke lipsync",
+        "Veel taalondersteuning",
+        "Professionele avatar's"
+      ],
+      "contra": [
+        "Synthetische uiterlijkheid",
+        "Duurder dan alternatieven"
+      ]
+    },
+    "synthesia": {
+      "aban_note": "Enterprise-AI-avatars. Mooie templates, duurder dan HeyGen. Eerder voor L&D-afdelingen dan soloënten.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Bedrijfsonderwijs",
+        "AI-avatar"
+      ],
+      "pro": [
+        "Onderwijsfocussed",
+        "Mooie templates",
+        "Enterprise-klaar"
+      ],
+      "contra": [
+        "Duurste optie",
+        "Voor solo's overkill",
+        "Synthetische voorkomen"
+      ]
+    },
+    "d-id": {
+      "aban_note": "Foto-naar-sprekende-hoofd. Lage instapdrempel. Output is inmiddels ingehaald door HeyGen.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Avatar-video's"
+      ],
+      "pro": [
+        "Foto-invoer",
+        "Eenvoudige setup",
+        "Lage kosten"
+      ],
+      "contra": [
+        "HeyGen beter",
+        "Lagere kwaliteit",
+        "Beperkte aanpassingen"
+      ]
+    },
+    "descript": {
+      "aban_note": "Audio/video-bewerking via transcript. Game-changer voor podcastmakers — je verwijdert woorden in de tekst, het geluid volgt. Voice-clone (Overdub) is schoon.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Podcast-bewerking",
+        "Transcript-gebaseerde bewerking"
+      ],
+      "pro": [
+        "Transcript-gebaseerde bewerking",
+        "Voice-clone-functies",
+        "Podcast-gericht"
+      ],
+      "contra": [
+        "Beperkingen bij complexe edits",
+        "Hogere kosten",
+        "Transcriptie onnauwkeurig"
+      ]
+    },
+    "veed": {
+      "aban_note": "Browser-video-bewerking met AI-hulpen. Ondertitelingsgeneratie is goed. Voor power-bewerking te beperkt.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Browser-video",
+        "Ondertiteling"
+      ],
+      "pro": [
+        "Browser-gebaseerd",
+        "Goede ondertitelaar",
+        "Gebruiksvriendelijk"
+      ],
+      "contra": [
+        "Te beperkt voor pro's",
+        "Lagere output-kwaliteit"
+      ]
+    },
+    "capcut": {
+      "aban_note": "Mobiel-eerste bewerking met AI-functies. TikTok-pijplijn is zijn ingebouwde tool. Dataveiligheidszorgen: ByteDance.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Mobiele bewerking",
+        "Socialevideos"
+      ],
+      "pro": [
+        "Mobiel-eerste",
+        "TikTok-integratie",
+        "AI-functies",
+        "Gratis tier beschikbaar"
+      ],
+      "contra": [
+        "ByteDance privacyzorgen",
+        "Beperkt op desktop"
+      ]
+    },
+    "otter": {
+      "aban_note": "Klassieke vergadertranskripties. Nederlands ok, niet perfect. Voor Engelse vergaderingen: 1A.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Vergadertranskript",
+        "Aantekeningen"
+      ],
+      "pro": [
+        "Betrouwbare transcriptie",
+        "Diep Zoom-geïntegreerd",
+        "Samenvatting mogelijkheden"
+      ],
+      "contra": [
+        "Nederlands ondermaats",
+        "Duurder dan alternatieven"
+      ]
+    },
+    "fireflies": {
+      "aban_note": "Zoals Otter, met betere CRM-sync. Duitse modellen vergelijkbaar ok. Prijzen klantbrieven.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Vergader-AI",
+        "CRM-integratie"
+      ],
+      "pro": [
+        "CRM-integratie",
+        "Betere prijzen",
+        "Ondersteunde talen"
+      ],
+      "contra": [
+        "Nederlands ondermaats",
+        "Minder bekend dan Otter"
+      ]
+    },
+    "granola": {
+      "aban_note": "Mijn nieuwe standaard. Geen bot-in-vergadering — draait op achtergrond op je Mac. Aantekeningenuitvoer voor Duitse vergaderingen is eersteklas. Otter vervangen.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Vergader-AI",
+        "Nederlands-eerst"
+      ],
+      "pro": [
+        "Geen zichtbare bot",
+        "Uitstekende nederlandse output",
+        "Mac-geoptimaliseerd"
+      ],
+      "contra": [
+        "Alleen Mac",
+        "Minder integratie",
+        "Nieuwer dan Otter"
+      ]
+    },
+    "tldv": {
+      "aban_note": "Duitse bedrijf (München). Goede multi-language-prestatie. Bot-in-vergadering-workflow, wat Granola eleganter oplost.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Vergader-AI",
+        "DACH-naleving"
+      ],
+      "pro": [
+        "Duits bedrijf",
+        "Multi-taal",
+        "Goede samenvatting"
+      ],
+      "contra": [
+        "Bot in vergadering nodig",
+        "Granola eleganter"
+      ]
+    },
+    "krisp": {
+      "aban_note": "Ruisonderdrukking voor oproepen. Functioneert onopvallend betrouwbaar. Sinds 2025 ingebouwde AI-vergadernotities.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Ruisonderdrukking",
+        "Oproepkwaliteit"
+      ],
+      "pro": [
+        "Uitstekende ruis-onderdrukking",
+        "AI-vergadernotities",
+        "Betrouwbaar"
+      ],
+      "contra": [
+        "Beperkte transcriptiekwaliteit",
+        "Geen volledig vergader-AI"
+      ]
+    },
+    "fathom": {
+      "aban_note": "Royale gratis tier met onbeperkte vergaderingen. VS-gericht, Nederlandse spraakkwaliteit ok.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Vergader-AI",
+        "Gratis power-user"
+      ],
+      "pro": [
+        "Royale gratis tier",
+        "Onbeperkte vergaderingen",
+        "Eenvoudig"
+      ],
+      "contra": [
+        "Nederlands niet perfect",
+        "VS-gericht product"
+      ]
+    },
+    "deepl": {
+      "aban_note": "Duitse bedrijf (Keulen). Beste NL↔EN-vertaling, punt. Write is Grammarly-concurrent — solider voor Nederlands. Pro-account is standaarduitrusting elk DACH-soloënten.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Vertaling NL↔EN",
+        "Schrijfverfijning",
+        "API"
+      ],
+      "pro": [
+        "Beste nederlandse vertaling",
+        "DeepL Write-functie",
+        "API beschikbaar",
+        "Duits bedrijf"
+      ],
+      "contra": [
+        "Abonnementskosten",
+        "Beperkt op andere taalenparen"
+      ]
+    },
+    "deepl-write": {
+      "aban_note": "Voor Nederlands duidelijk beter dan Grammarly. Style-aanpassing 'Zakelijk', 'Academisch', 'Informeel' werkt. 14-daagse test in uitvoering 017.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Nederlandse verfijning",
+        "Stijl-variatie"
+      ],
+      "pro": [
+        "Nederlandse specialiteit",
+        "Stijlaanpassingen",
+        "Grammarly superieur"
+      ],
+      "contra": [
+        "Standaard abonnement vereist",
+        "Beperkt vocabulaire"
+      ]
+    },
+    "grammarly": {
+      "aban_note": "Engels-refiner. Voor nederlandse teksten te zwak — neem DeepL Write of LanguageTool. Voor Engelse outreach: ok.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Engelse grammatica"
+      ],
+      "pro": [
+        "Beste Engels-tool",
+        "Browser-integratie",
+        "Veel gebruikers"
+      ],
+      "contra": [
+        "Nederlands zwak",
+        "Duurder dan lokale alternatieven"
+      ]
+    },
+    "languagetool": {
+      "aban_note": "Duits bedrijf (Potsdam). Open-source-kern. Sterker dan Duden-corrector voor nederlandse stijl-kwesties. Zelfhosten.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "nederlandse-grammatica",
+        "Zelfgehoste correctie"
+      ],
+      "pro": [
+        "Open-source",
+        "Zelfhost beschikbaar",
+        "Nederlandse specialiteit",
+        "Duits bedrijf"
+      ],
+      "contra": [
+        "Minder gebruikersinterface",
+        "Smaller LanguageSet"
+      ]
+    },
+    "tavily": {
+      "aban_note": "Search-API voor AI-agents. Als je agents web-onderzoek nodig hebben, is Tavily schone standaard. Goedkoper dan SerpAPI.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Agent-zoeking",
+        "RAG"
+      ],
+      "pro": [
+        "Agent-gericht",
+        "Voordelig",
+        "Goede coverage"
+      ],
+      "contra": [
+        "Niet zelfstandig voor users",
+        "API-only"
+      ]
+    },
+    "exa": {
+      "aban_note": "Semantische-search-API. Vindt thematisch vergelijkbare inhoud beter dan trefwoord-zoeking. Ideaal voor research-agenten.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Semantische zoeking",
+        "RAG",
+        "Onderzoek"
+      ],
+      "pro": [
+        "Semantische kracht",
+        "Thematisch zoeken",
+        "Onderzoeksfocussed"
+      ],
+      "contra": [
+        "API-only",
+        "Niche-gebruiksscenario"
+      ]
+    },
+    "you": {
+      "aban_note": "AI-zoeking + modi voor code, onderzoek. Perplexity is 2026 betere keuze, You heeft toch niche.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "AI-zoeking",
+        "Multi-mode-zoeking"
+      ],
+      "pro": [
+        "Meerdere zoekmodi",
+        "Code-gericht",
+        "Gratis basis"
+      ],
+      "contra": [
+        "Perplexity beter",
+        "Minder populair"
+      ]
+    },
+    "phind": {
+      "aban_note": "Zoeking voor dev's. Code-gerichte antwoorden met bronnen. Voor Stack-Overflow-vervanging bruikbaar.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Dev-zoeking",
+        "Code-onderzoek"
+      ],
+      "pro": [
+        "Code-specialist",
+        "Bronnen opgenomen",
+        "Devs begrijpen"
+      ],
+      "contra": [
+        "Beperkt buiten codering",
+        "Minder populair"
+      ]
+    },
+    "kagi": {
+      "aban_note": "Betaalde zoeking zonder advertenties, met AI-hulp. Voor power-zoekers: verfrissend. Kost, maar loont zich als je dagelijks Googlet.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Advertentie-vrije zoeking",
+        "Power-zoeking"
+      ],
+      "pro": [
+        "Geen advertenties",
+        "AI-ondersteuning",
+        "Privacy-gericht"
+      ],
+      "contra": [
+        "Kosten per maand",
+        "Minder bekend"
+      ]
+    },
+    "brave": {
+      "aban_note": "Eigen index. Privacy-first. AI-samenvatting geïntegreerd. Solide Google-alternatief zonder tracking.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Privacy-zoeking",
+        "Tracking-vrij"
+      ],
+      "pro": [
+        "Privacy-gericht",
+        "Eigen index",
+        "AI-samenvatting"
+      ],
+      "contra": [
+        "Minder dekking dan Google",
+        "Minder relevant"
+      ]
+    },
+    "groq": {
+      "aban_note": "Inferentie-speed-kampioen. Llama, Mixtral met gekte Token/s. Als je latency-gevoelige apps bouwt: eerste keuze.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Lage latentie-inferentie",
+        "Real-time-AI"
+      ],
+      "pro": [
+        "Snelste inferentie",
+        "Goede modelkeuze",
+        "Real-time mogelijkheden"
+      ],
+      "contra": [
+        "Minder modellen dan OpenRouter",
+        "Hogere kosten"
+      ]
+    },
+    "together-ai": {
+      "aban_note": "Open-source-modellen (Llama, Mixtral, Qwen) als API. Goedkope inferentie, goede modelkeuze.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Open-Source-API",
+        "Multi-model-hosting"
+      ],
+      "pro": [
+        "Open-source modellen",
+        "Voordelige prijzen",
+        "Brede modelkeuze"
+      ],
+      "contra": [
+        "Minder snelheid dan Groq",
+        "Minder Enterprise-ondersteuning"
+      ]
+    },
+    "cerebras": {
+      "aban_note": "Aangepaste chips, zeer snelle inferentie. Llama-hosting top. Modelkeuze beperkter dan Groq.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Hoge-snelheid-inferentie"
+      ],
+      "pro": [
+        "Zeer snel",
+        "Aangepaste hardware",
+        "Goede Llama-prestatie"
+      ],
+      "contra": [
+        "Beperkte modelkeuze",
+        "Duurder dan Together"
+      ]
+    },
+    "replicate": {
+      "aban_note": "Open-source-modellen als API hosten. Inclusief afbeelding/geluid/video-modellen. Goed voor prototyping.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Model-prototyping",
+        "Multi-modaal-API"
+      ],
+      "pro": [
+        "Multi-modal ondersteuning",
+        "Open-source modellen",
+        "Prototyping-vriendelijk"
+      ],
+      "contra": [
+        "Duurder per API-call",
+        "Minder snelheid"
+      ]
+    },
+    "hugging-face": {
+      "aban_note": "GitHub voor AI-modellen. Inference-endpoints zijn solide. Datasets-bibliotheek is goud voor researchers.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Model-hosting",
+        "Datasets",
+        "Open-source-AI"
+      ],
+      "pro": [
+        "Grootste AI-community",
+        "Datasets-bibliotheek",
+        "Open-source-vriendelijk"
+      ],
+      "contra": [
+        "Slechte UI",
+        "Duurder dan alternatieven"
+      ]
+    },
+    "langchain": {
+      "aban_note": "Framework voor LLM-apps. Polariserend: velen vinden het overengineered. Voor standaard-patronen ok, voor aangepaste logica schrijf liever direct.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Agent-framework",
+        "LLM-pijplijnen"
+      ],
+      "pro": [
+        "Veel integraties",
+        "Community-standaard",
+        "Veel documentatie"
+      ],
+      "contra": [
+        "Overengineered",
+        "Steile leercurve",
+        "Langzaam"
+      ]
+    },
+    "llamaindex": {
+      "aban_note": "RAG-framework. Slanker dan LangChain voor retrieval-use-cases. Voor doc-search-toepassingen schone keuze.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "RAG",
+        "Doc-zoeking"
+      ],
+      "pro": [
+        "Slim RAG-framework",
+        "Eenvoudiger dan LangChain",
+        "Doc-gericht"
+      ],
+      "contra": [
+        "Kleiner ecosysteem",
+        "Minder integraties"
+      ]
+    },
+    "weaviate": {
+      "aban_note": "EU-gebaseerde vectordatabase. Nederland, GDPR-conform. Productierijp. Open-source-kern.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Vector-zoeking",
+        "RAG",
+        "EU-naleving"
+      ],
+      "pro": [
+        "EU-gebaseerd",
+        "GDPR-compliant",
+        "Open-source"
+      ],
+      "contra": [
+        "Duurder dan Pinecone",
+        "Minder bekend"
+      ]
+    },
+    "qdrant": {
+      "aban_note": "Duitse vectordatabase (Berlijn). Open-source. Zelfhosten. Prestaties zijn top. Eerste keuze voor DACH-RAG-setups.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Vector-zoeking",
+        "DACH-naleving",
+        "Zelfgehoste RAG"
+      ],
+      "pro": [
+        "Duits bedrijf",
+        "Open-source",
+        "Top-prestaties",
+        "Zelfhost beschikbaar"
+      ],
+      "contra": [
+        "Ingewikkelder dan Pinecone",
+        "Minder cloud-gemak"
+      ]
+    },
+    "pinecone": {
+      "aban_name": "Beheerde vectordatabase. Alleen VS-cloud. Gemak, maar lock-in. Voor DACH-naleving: Qdrant nemen.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Beheerde vectordatabase"
+      ],
+      "pro": [
+        "Zeer eenvoudig",
+        "Beheerd",
+        "Betrouwbaar"
+      ],
+      "contra": [
+        "Alleen VS-cloud",
+        "Vendor lock-in",
+        "Duurder"
+      ]
+    },
+    "chroma": {
+      "aban_note": "Slanke vectordatabase voor local-dev en kleine prototypen. Productie: schakel naar Qdrant.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Lokale dev",
+        "Prototyping"
+      ],
+      "pro": [
+        "Lokale development",
+        "Eenvoudige opzet",
+        "Licht"
+      ],
+      "contra": [
+        "Niet voor productie",
+        "Matige prestaties",
+        "Geen hoog-beschikbaarheid"
+      ]
+    },
+    "notion-ai": {
+      "aban_note": "Als je in Notion leeft, loont het. Q&A over werkruimte is ok. Voor workflows buiten Notion: niet waard.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Notion-werkruimte-AI"
+      ],
+      "pro": [
+        "Notion-geïntegreerd",
+        "Naadloze ervaring",
+        "Eenvoudig"
+      ],
+      "contra": [
+        "Alleen in Notion",
+        "Beperkte kracht"
+      ]
+    },
+    "mem": {
+      "aban_note": "Aantekeningen-app met ingebouwde AI. Auto-tagging en semantische zoeking werken goed. Mobiele app is solide.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Slimme aantekeningen",
+        "Auto-tagging"
+      ],
+      "pro": [
+        "AI-aantekeningen",
+        "Auto-tagging",
+        "Mobiele app"
+      ],
+      "contra": [
+        "Minder bekend",
+        "Beperkt ecosysteem"
+      ]
+    },
+    "reflect": {
+      "aban_note": "Aantekeningen-app met GPT-4 geïntegreerd. Zeer schoon. Dagelijkse aantekeningen + backlinks zoals Roam, met AI bovenop.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Dagelijkse aantekeningen",
+        "Backlinks",
+        "AI-versterkt"
+      ],
+      "pro": [
+        "Schone interface",
+        "Backlinks-systeem",
+        "GPT-4 integratie"
+      ],
+      "contra": [
+        "Beperkte mogelijkheden",
+        "Minder bekend"
+      ]
+    },
+    "obsidian": {
+      "aban_note": "Lokaal-eerst, plain markdown. Met plugins (Copilot, Smart Connections) AI-capable. Mijn tweede hersenen sinds 4 jaar.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Lokale aantekeningen",
+        "Markdown",
+        "Zettelkasten"
+      ],
+      "pro": [
+        "Lokaal-eerst",
+        "Open-source",
+        "Uitstekende plugins",
+        "GDPR-compliant"
+      ],
+      "contra": [
+        "Steile leercurve",
+        "Beperkte UI"
+      ]
+    },
+    "loom": {
+      "aban_note": "Schermopname met AI-transcript + samenvatting. Voor asynchrone updates aan klanten goud waard. Gratis tier volstaat voor soloënten.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Schermopname",
+        "Asynchrone communicatie"
+      ],
+      "pro": [
+        "Transcript & samenvatting",
+        "Asynchrone communicatie",
+        "Gratis tier"
+      ],
+      "contra": [
+        "Beperkt voor professionals",
+        "Transcriptie onnauwkeurig"
+      ]
+    },
+    "capso": {
+      "aban_note": "Open-source-Loom-alternatief. EU-hosting mogelijk. Voor DACH-dataveiligheid interessant.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Open-source schermopname",
+        "DACH-naleving"
+      ],
+      "pro": [
+        "Open-source",
+        "EU-hosting optie",
+        "Privacy-gericht"
+      ],
+      "contra": [
+        "Minder volwassen",
+        "Minder functies"
+      ]
+    },
+    "jasper": {
+      "aban_note": "Marketing-schrijftool. Was 2023 heet, inmiddels verouderd door Claude/ChatGPT. Templates zijn geen killer-feature meer.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Marketing-copywriting"
+      ],
+      "pro": [
+        "Marketing-gericht",
+        "Templates",
+        "Gemakkelijk"
+      ],
+      "contra": [
+        "Claude/ChatGPT beter",
+        "Duurder",
+        "Overbodig"
+      ]
+    },
+    "copy-ai": {
+      "aban_note": "Werkstroom-focus nu. Voor salesteams zonder AI-vaardigheden bruikbaar. Solo-marketeer: Claude volstaat.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Marketing-werkstromen",
+        "Sales-copy"
+      ],
+      "pro": [
+        "Werkstroom-gericht",
+        "Sales-focus",
+        "Templates"
+      ],
+      "contra": [
+        "Claude beter",
+        "Duurder",
+        "Beperkt"
+      ]
+    },
+    "writesonic": {
+      "aban_note": "Content-gen-tool. Middelmatige outputs, Claude beter. Chatsonic is aparte chat — ChatGPT beter.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Bulk-content"
+      ],
+      "pro": [
+        "Content-gen",
+        "Templates",
+        "Eenvoudig"
+      ],
+      "contra": [
+        "Claude beter",
+        "Lage kwaliteit",
+        "Duurder"
+      ]
+    },
+    "sudowrite": {
+      "aban_note": "Fictie-schrijf-AI. Voor romanauteurs gespecialiseerd. Engels-eerst, Nederlands ok.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Fictie-schrijven",
+        "Story-beats"
+      ],
+      "pro": [
+        "Fictie-specialist",
+        "Story-gericht",
+        "Gespecialiseerd"
+      ],
+      "contra": [
+        "Engels-eerste",
+        "Niche",
+        "Duurder"
+      ]
+    },
+    "lex": {
+      "aban_note": "AI-versterkte tekstverwerker. Inline-AI-oproepen op markeringen. Schone afleidingsvrije UI.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "AI-versterkte schrijven"
+      ],
+      "pro": [
+        "Schone interface",
+        "Inline AI-calls",
+        "Afleidingsvrij"
+      ],
+      "contra": [
+        "Beperkte mogelijkheden",
+        "Minder bekend",
+        "Niche"
+      ]
+    },
+    "wordtune": {
+      "aban_note": "Zin-herschrijving. Engels-eerst. Voor Nederlands te zwak.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Engels-parafraseren"
+      ],
+      "pro": [
+        "Engels-specialist",
+        "Parafrase",
+        "Eenvoudig"
+      ],
+      "contra": [
+        "Nederlands zwak",
+        "Beperkt",
+        "Duurder"
+      ]
+    },
+    "quillbot": {
+      "aban_note": "Parafraseren + grammatica. Engels-sterk. Plagiarism-check is aardige bonus.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Parafraseren"
+      ],
+      "pro": [
+        "Parafrase-specialist",
+        "Plagiarism-check",
+        "Engels-sterk"
+      ],
+      "contra": [
+        "Nederlands zwak",
+        "Beperkt",
+        "Duurder"
+      ]
+    },
+    "anyword": {
+      "aban_note": "Marketing-copy met performance-scoring. Engels-eerst. Duur voor soloënten.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Ad-copy",
+        "Performance-marketing"
+      ],
+      "pro": [
+        "Performance-scoring",
+        "Marketing-gericht",
+        "A/B-test",
+        "Engels-sterk"
+      ],
+      "contra": [
+        "Engels-eerste",
+        "Duur",
+        "Niche"
+      ]
+    },
+    "profound": {
+      "aban_note": "Generatieve-engine-optimalisering-tracking. Meet of je merk in ChatGPT, Claude, Perplexity verschijnt. 2026 is dit wat Google-ranking 2010 was.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "GEO-tracking",
+        "Merk-in-LLM"
+      ],
+      "pro": [
+        "GEO-tracking",
+        "Merkmonitoring",
+        "Nieuw concept"
+      ],
+      "contra": [
+        "Duur",
+        "Enterprise-only",
+        "Niche"
+      ]
+    },
+    "athenahq": {
+      "aban_note": "GEO-tracking-concurrent van Profound. Mid-market-prijzen. Rapporten in Nederlands ok.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "GEO",
+        "Merkmonitoring"
+      ],
+      "pro": [
+        "GEO-tracking",
+        "Mid-prijzen",
+        "Nederlands rappen"
+      ],
+      "contra": [
+        "Minder bekend",
+        "Beperkte mogelijkheden"
+      ]
+    },
+    "otterly": {
+      "aban_note": "Oostenrijkse bedrijf (Wenen). DACH-taal-eerste. Voor KMU betaalbare GEO-instap.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "GEO-DACH",
+        "KMU-merkmonitoring"
+      ],
+      "pro": [
+        "Oostenrijks bedrijf",
+        "DACH-taal",
+        "KMU-prijzen",
+        "Betaalbaar"
+      ],
+      "contra": [
+        "Minder mogelijkheden",
+        "Klein bedrijf"
+      ]
+    },
+    "ahrefs": {
+      "aban_note": "SEO-standaard. Backlinks, sleutelwoorden, site-audit. AI-functies zijn bijvangst, de index is de waarde.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "SEO",
+        "Backlink-analyse"
+      ],
+      "pro": [
+        "Beste index",
+        "Backlink-analyse",
+        "Site-audit",
+        "Standaard SEO"
+      ],
+      "contra": [
+        "Duurste optie",
+        "Ingewikkelder",
+        "Overkill voor kleine sites"
+      ]
+    },
+    "semrush": {
+      "aban_note": "Breder toolset dan Ahrefs (ook ad-intel). Duurder. Als je beide doet: SEMrush.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "SEO",
+        "Concurrent-advertenties",
+        "Marketing-stack"
+      ],
+      "pro": [
+        "Breder toolset",
+        "Ad-intelligence",
+        "Marketing-gericht"
+      ],
+      "contra": [
+        "Duurste",
+        "Ingewikkelder",
+        "Overkill voor kleine"
+      ]
+    },
+    "surfer": {
+      "aban_note": "On-page-SEO-optimizer met AI-schrijven. Content-score-optimalisatie werkt voor Engels goed, Nederlands ok.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "On-page-SEO",
+        "Content-optimalisatie"
+      ],
+      "pro": [
+        "On-page-optimizer",
+        "AI-schrijven",
+        "Content-score"
+      ],
+      "contra": [
+        "Engels-beter",
+        "Nederlands ok",
+        "Duur"
+      ]
+    },
+    "frase": {
+      "aban_note": "SEO-content-brief-generator. Goedkoper dan Surfer. Solide tool voor content-marketeers.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Content-briefs",
+        "SERP-analyse"
+      ],
+      "pro": [
+        "Content-brief-generator",
+        "Voordeligste",
+        "SERP-analyse"
+      ],
+      "contra": [
+        "Minder geavanceerd",
+        "Kleinere suite",
+        "Nederlands zwak"
+      ]
+    },
+    "marketmuse": {
+      "aban_note": "Onderwerpscluster-strategie voor enterprise-content. Voor soloënten overdimensioneerd.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Enterprise-SEO"
+      ],
+      "pro": [
+        "Onderwerpscluster",
+        "Enterprise-klaar",
+        "Strategisch"
+      ],
+      "contra": [
+        "Overdimensioneerd",
+        "Duur",
+        "Voor solo's overkill"
+      ]
+    },
+    "canva": {
+      "aban_note": "Magic Studio maakt Canva naar AI-designplatform. Voor DACH-soloënten meest pragmatisch designtool. Templates + AI = snel naar bruikbare output.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Ontwerp",
+        "Socialesjablonen",
+        "Presentaties"
+      ],
+      "pro": [
+        "Magic Studio AI",
+        "Sjablonen",
+        "Eenvoudig",
+        "Pragmatisch"
+      ],
+      "contra": [
+        "Beperkte aanpassingen",
+        "Sjabloon-afhankelijk",
+        "Duurder"
+      ]
+    },
+    "figma": {
+      "aban_note": "AI-functies in Figma (Make Designs, Make Prototype) zijn solide. Voor UI-design de standaard.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "UI-ontwerp",
+        "Prototyping"
+      ],
+      "pro": [
+        "Standaard UI-tool",
+        "AI-functies",
+        "Samenwerkings-gericht",
+        "Cloud"
+      ],
+      "contra": [
+        "Duur",
+        "Ingewikkelder",
+        "Steile leercurve"
+      ]
+    },
+    "gamma": {
+      "aban_note": "AI-slides uit tekst. Mooier dan Decktopus, sneller dan PowerPoint+AI. Voor pitch-decks bruikbaar.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "AI-slides",
+        "Pitch-decks"
+      ],
+      "pro": [
+        "Snelle slides",
+        "Mooier design",
+        "Eenvoudig",
+        "AI-gericht"
+      ],
+      "contra": [
+        "Beperkte aanpassingen",
+        "Sjabloon-afhankelijk",
+        "Minder mogelijkheden"
+      ]
+    },
+    "tome": {
+      "aban_note": "Pivot naar sales-tool. AI-slides nog beschikbaar, maar Gamma wint.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Sales-decks",
+        "AI-slides"
+      ],
+      "pro": [
+        "Sales-gericht",
+        "AI-slides",
+        "Sjablonen"
+      ],
+      "contra": [
+        "Gamma beter",
+        "Minder populair",
+        "Pivot-gericht"
+      ]
+    },
+    "beautiful-ai": {
+      "aban_note": "Slimme sjablonen met auto-layout. Solide, maar niet opvallend.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Auto-layout-slides"
+      ],
+      "pro": [
+        "Auto-layout",
+        "Mooie sjablonen",
+        "Eenvoudig"
+      ],
+      "contra": [
+        "Niet opvallend",
+        "Beperkte mogelijkheden",
+        "Minder populair"
+      ]
+    },
+    "ollama": {
+      "aban_note": "Lokale LLM's op Mac/PC. Llama, Mistral, Qwen lokaal. Als GDPR hard is: je vriend. Hardware-hongerig.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Lokale LLM",
+        "GDPR-veilig",
+        "Offline-AI"
+      ],
+      "pro": [
+        "Volledig lokaal",
+        "Geen internet nodig",
+        "Grote modelkeuze",
+        "Open-source"
+      ],
+      "contra": [
+        "GPU-vereist",
+        "Lagere prestaties",
+        "CLI-interface"
+      ]
+    },
+    "lm-studio": {
+      "aban_note": "GUI voor lokale LLM's. Schoner instappen dan Ollama-CLI. Server-modus voor API-oproepen uit eigen apps.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Lokale LLM-GUI",
+        "Offline-test"
+      ],
+      "pro": [
+        "Schone GUI",
+        "Server-modus",
+        "Eenvoudig",
+        "Gratis"
+      ],
+      "contra": [
+        "GPU-vereist",
+        "Lagere prestaties",
+        "Beperkt"
+      ]
+    },
+    "open-webui": {
+      "aban_note": "ChatGPT-kloon voor Ollama. Zelfgehost. Als je team lokale AI nodig heeft: dit is het.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Zelfgehoste chat",
+        "Team-lokale AI"
+      ],
+      "pro": [
+        "ChatGPT-achtig",
+        "Zelfgehost",
+        "Team-gericht",
+        "Open-source"
+      ],
+      "contra": [
+        "GPU-vereist",
+        "Setup-complex",
+        "Lagere prestaties"
+      ]
+    },
+    "lovable-translate-deepl": {
+      "aban_note": "Lokalisatie voor softwareteksten. AI-vertaalt JSON/i18n-bestanden. Voor multi-taal-apps nuttig.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Software-lokalisatie",
+        "i18n"
+      ],
+      "pro": [
+        "Automation i18n",
+        "AI-vertaling",
+        "Softwaregericht"
+      ],
+      "contra": [
+        "Specifieke use-case",
+        "Minder populair"
+      ]
+    },
+    "browserbase": {
+      "aban_note": "Headless-browser-cloud voor AI-agents. Als je agent websites moet bedienen: solide infra.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Agent-browser-controle"
+      ],
+      "pro": [
+        "Headless browser",
+        "Agent-infra",
+        "Betrouwbaar"
+      ],
+      "contra": [
+        "Niche-tool",
+        "Duur",
+        "API-only"
+      ]
+    },
+    "browse-ai": {
+      "aban_note": "Visuele scraper. Klik op velden, AI extraheert. Voor lijstbouw & monitoring.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Scraping",
+        "Monitoring"
+      ],
+      "pro": [
+        "Visuele scraper",
+        "Eenvoudig",
+        "Monitoring"
+      ],
+      "contra": [
+        "Beperkt",
+        "Minder betrouwbaar",
+        "Duurder"
+      ]
+    },
+    "apify": {
+      "aban_note": "EU-gebaseerd (Tsjechië). Grootste scraper-bibliotheek. Power-user-tool voor data-pijplijnen.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Web-scraping",
+        "Data-pijplijnen"
+      ],
+      "pro": [
+        "Grootste scraper-bibliotheek",
+        "EU-gebaseerd",
+        "Power-user-gericht"
+      ],
+      "contra": [
+        "Steile leercurve",
+        "Duurder",
+        "Overbodig voor kleine"
+      ]
+    },
+    "bardeen": {
+      "aban_note": "Browser-automatisering voor kenniswerkers. Quasi Zapier voor je browser. AI-playbooks zijn aardig.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Browser-werkstromen",
+        "Kenniswerk-automatisering"
+      ],
+      "pro": [
+        "Browser-gericht",
+        "Eenvoudig",
+        "AI-playbooks"
+      ],
+      "contra": [
+        "Beperkt",
+        "Niet zo sterk als n8n",
+        "Duurder"
+      ]
+    },
+    "clay": {
+      "aban_note": "Sales-intelligence + verrijking. Power-tool voor lead-gen-teams. Duur, maar als het werkt — geld terug in een week.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Lead-verrijking",
+        "Sales-intelligence"
+      ],
+      "pro": [
+        "Sales-intelligence",
+        "Lead-verrijking",
+        "Power-tool"
+      ],
+      "contra": [
+        "Duur",
+        "GDPR-vragen",
+        "Enterprise-gericht"
+      ]
+    },
+    "apollo": {
+      "aban_note": "Sales-database + outreach-suite. Goed voor DACH met voorzichtigheid — gegevenskwaliteit in NL schommelt.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "B2B-database",
+        "Outreach"
+      ],
+      "pro": [
+        "Sales-database",
+        "Outreach-suite",
+        "Goed bereik"
+      ],
+      "contra": [
+        "GDPR-vragen",
+        "Gegevenskwaliteit wisselt",
+        "Duur"
+      ]
+    },
+    "lusha": {
+      "aban_note": "Contact-data-verrijking. GDPR-problemen gedocumenteerd — voorzichtig zijn. Voor US-data ok.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Contact-data"
+      ],
+      "pro": [
+        "Contact-verrijking",
+        "Veel bronnen",
+        "Snelle API"
+      ],
+      "contra": [
+        "GDPR-problemen",
+        "Gegevenskwaliteit",
+        "Duur"
+      ]
+    },
+    "intercom-fin": {
+      "aban_note": "Support-AI-agent. 50% auto-resolutie mogelijk. Duur per resolutie, maar wiskunde gaat uit voor volume-support.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Support-automatisering"
+      ],
+      "pro": [
+        "Auto-resolutie",
+        "Intercom-geïntegreerd",
+        "Support-gericht"
+      ],
+      "contra": [
+        "Duur per resolutie",
+        "Matige AI-kwaliteit",
+        "Beperkt"
+      ]
+    },
+    "zendesk-ai": {
+      "aban_note": "AI-add-on op Zendesk. Als je al Zendesk hebt: activeren. Standalone-waarde: meh.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Helpdesk-AI"
+      ],
+      "pro": [
+        "Zendesk-geïntegreerd",
+        "Add-on",
+        "Eenvoudig"
+      ],
+      "contra": [
+        "Mhe waarde solo",
+        "Duur",
+        "Matige AI"
+      ]
+    },
+    "aider": {
+      "aban_note": "Terminal-coding-agent. Git-aware, multi-file. Open-source. Voor power-users schone alternatief voor Cursor.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Terminal-codering",
+        "Open-source-agent"
+      ],
+      "pro": [
+        "Git-aware",
+        "Open-source",
+        "Terminal-gericht",
+        "Power-user"
+      ],
+      "contra": [
+        "CLI-interface",
+        "Steile leercurve",
+        "Minder polish"
+      ]
+    },
+    "cline": {
+      "aban_note": "VSCode-extension-agent. Plan + act-modi. Zeer doordacht. Open-source.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "VSCode-agent",
+        "Codering"
+      ],
+      "pro": [
+        "VSCode-geïntegreerd",
+        "Plan + Act-modi",
+        "Open-source",
+        "Goed ontwerp"
+      ],
+      "contra": [
+        "Nieuwer",
+        "Kleinere community",
+        "Minder known"
+      ]
+    },
+    "tabnine": {
+      "aban_note": "Privacy-first-code-aanvulling. Zelfhost mogelijk voor enterprise. Voor compliance-zware bedrijven interessant.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Privacy-first-codering",
+        "Enterprise-zelfhost"
+      ],
+      "pro": [
+        "Privacy-first",
+        "Zelfhost",
+        "Compliance-gericht",
+        "Solide"
+      ],
+      "contra": [
+        "Minder geavanceerd",
+        "Duurder",
+        "Minder features"
+      ]
+    },
+    "cody": {
+      "aban_note": "Codebase-aware AI voor grote repo's. Als je monorepo hebt: sterk. Solo: Cursor volstaat.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Enterprise-codebase",
+        "Code-zoeking"
+      ],
+      "pro": [
+        "Codebase-aware",
+        "Code-zoeking",
+        "Enterprise-klaar"
+      ],
+      "contra": [
+        "Overkill voor solo",
+        "Duurder",
+        "Minder populariteit"
+      ]
+    },
+    "warp": {
+      "aban_note": "AI-terminal. Agent-modus kan multi-step-shell-taken. Mooie UI. Cloud-sync — privacybedenking.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "AI-terminal"
+      ],
+      "pro": [
+        "AI-terminal",
+        "Agent-modus",
+        "Mooie UI",
+        "Snelle"
+      ],
+      "contra": [
+        "Cloud-sync privacy",
+        "Beperkt",
+        "Niche"
+      ]
+    },
+    "codex": {
+      "aban_note": "OpenAI's coding-agent. Cloud-gebaseerd. Werkt, maar Claude Code in terminal is rounder.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Cloud-coding-agent"
+      ],
+      "pro": [
+        "Cloud-gebaseerd",
+        "OpenAI-kwaliteit",
+        "Via ChatGPT Pro"
+      ],
+      "contra": [
+        "Claude Code beter",
+        "Cloud-only",
+        "Beperkt"
+      ]
+    },
+    "pipedream": {
+      "aban_note": "Code + no-code-hybride. Voor devs die werkstromen in JavaScript willen schrijven.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Code-hybrid-werkstromen"
+      ],
+      "pro": [
+        "Code + no-code",
+        "JavaScript",
+        "Flexibel"
+      ],
+      "contra": [
+        "Beperkt",
+        "Niche",
+        "Duurder"
+      ]
+    },
+    "windmill": {
+      "aban_name": "Zelfgehoste-automatiseringsmotor. EU-gebaseerd (Parijs). Als n8n te beperkt is en je code wilt.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Zelfgehoste-automatisering",
+        "EU-naleving"
+      ],
+      "pro": [
+        "Zelfhost",
+        "EU-gebaseerd",
+        "Code-flexibel"
+      ],
+      "contra": [
+        "Steile leercurve",
+        "Ingewikkelder",
+        "Kleiner ecosystem"
+      ]
+    },
+    "supabase": {
+      "aban_note": "Open-source-Firebase. EU-hosting. pgvector inbegrepen. Backend-bouwstenen voor solo-devs.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Backend",
+        "Vector-zoeking",
+        "EU-hosting"
+      ],
+      "pro": [
+        "Open-source",
+        "EU-hosting",
+        "pgvector",
+        "Backend-bouwstenen"
+      ],
+      "contra": [
+        "Steile leercurve",
+        "Ingewikkelder",
+        "Duurder"
+      ]
+    },
+    "vercel-ai": {
+      "aban_note": "AI-SDK voor TypeScript. Slanker dan LangChain voor standaard-use-cases. Als je Next.js doet: eerste keuze.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "TypeScript-AI",
+        "Next.js-integratie"
+      ],
+      "pro": [
+        "TypeScript-native",
+        "Next.js-integratie",
+        "Slanker dan LangChain",
+        "Open-source"
+      ],
+      "contra": [
+        "Next.js-gericht",
+        "Beperkt buiten",
+        "Minder matuur"
+      ]
+    },
+    "modal": {
+      "aban_note": "Serverless GPU-compute. Voor custom-model-implementatie zonder infrastructuur-stress.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Serverless-GPU",
+        "Custom-model-hosting"
+      ],
+      "pro": [
+        "Serverless GPU",
+        "Custom-models",
+        "Geen infra-stress"
+      ],
+      "contra": [
+        "Duurder",
+        "Niche",
+        "Steile API"
+      ]
+    },
+    "linear": {
+      "aban_note": "Issue-tracker met AI-functies (auto-triage, samenvatting). Mijn tool voor side-projects. UI is klasse voor zich.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Issue-tracking",
+        "Projectbeheer"
+      ],
+      "pro": [
+        "Mooie UI",
+        "AI-functies",
+        "Auto-triage",
+        "Moderne tool"
+      ],
+      "contra": [
+        "Duurder",
+        "Minder populair",
+        "Cloud-only"
+      ]
+    },
+    "humata": {
+      "aban_note": "PDF-Q&A-tool. Inmiddels overtroffen door Claude/ChatGPT-PDF-upload.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "PDF-onderzoek"
+      ],
+      "pro": [
+        "PDF-Q&A",
+        "Eenvoudig",
+        "Snel"
+      ],
+      "contra": [
+        "Claude/ChatGPT beter",
+        "Overbodig",
+        "Beperkt"
+      ]
+    },
+    "consensus": {
+      "aban_note": "AI-zoeking over wetenschappelijke papers. Voor feitenonderzoek voorbij LinkedIn-wetenschap: goud.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Wetenschaps-onderzoek"
+      ],
+      "pro": [
+        "Wetenschappelijke papers",
+        "AI-zoeking",
+        "Feiten-gericht"
+      ],
+      "contra": [
+        "Niche",
+        "Beperkt bereik",
+        "Duurder"
+      ]
+    },
+    "elicit": {
+      "aban_note": "Research-workflow voor wetenschappelijke literatuur. Auto-extractie van bevindingen. Voor researchers duidelijk beter dan ChatGPT.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Literatuur-onderzoek",
+        "Meta-analyse"
+      ],
+      "pro": [
+        "Literatuur-gericht",
+        "Auto-extractie",
+        "Onderzoeker-vriendelijk",
+        "Beter dan ChatGPT"
+      ],
+      "contra": [
+        "Niche",
+        "Duurder",
+        "Beperkt bereik"
+      ]
+    },
+    "scite": {
+      "aban_note": "Citaat-validatie. Toont of papers worden ondersteund of tegengesproken. Voor serieus onderzoek.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Citaat-check",
+        "Wetenschaps-validering"
+      ],
+      "pro": [
+        "Citaat-validering",
+        "Betrouwbaarheid",
+        "Onderzoek-gericht"
+      ],
+      "contra": [
+        "Niche",
+        "Beperkt bereik",
+        "Duurder"
+      ]
+    },
+    "tactiq": {
+      "aban_note": "Browser-gebaseerde vergader-AI. Goedkoop, ok-output. Granola wint duidelijk.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Vergader-AI-budget"
+      ],
+      "pro": [
+        "Goedkoop",
+        "Browser-gebaseerd",
+        "Eenvoudig"
+      ],
+      "contra": [
+        "Granola beter",
+        "Matige output",
+        "Beperkt"
+      ]
+    },
+    "supahub": {
+      "aban_note": "Podcast-naar-content. Genereert show-notes, citaten, tweets uit geluid. Voor podcasters.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Podcast-hergebruik"
+      ],
+      "pro": [
+        "Podcast-gericht",
+        "Show-notes",
+        "Hergebruik-gericht"
+      ],
+      "contra": [
+        "Niche",
+        "Beperkt bereik",
+        "Matige AI"
+      ]
+    },
+    "pictory": {
+      "aban_note": "Blog-naar-video. Output is herkenbaar AI-gegenereerd. Voor bulk-sociaalnieuwe-fragmenten ok.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Blog-naar-video"
+      ],
+      "pro": [
+        "Blog-gericht",
+        "Snelle generatie",
+        "Bulk-sociale"
+      ],
+      "contra": [
+        "Synthetische output",
+        "Lagere kwaliteit",
+        "Duurder"
+      ]
+    },
+    "lumen5": {
+      "aban_name": "Blog-naar-sociaal-video. Sjabloon-gestuurd. Output volstaat voor LinkedIn-posts, niet meer.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Sociale video"
+      ],
+      "pro": [
+        "Sjabloon-gericht",
+        "Snelle generatie",
+        "Eenvoudig"
+      ],
+      "contra": [
+        "Sjabloon-beperkt",
+        "Lagere kwaliteit",
+        "Beperkt bereik"
+      ]
+    },
+    "wisper-flow": {
+      "aban_note": "Voice-naar-tekst-dictaat voor Mac. Sneller dan typen. Duitse herkenning eersteklas.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Voice-dictaat"
+      ],
+      "pro": [
+        "Voice-input",
+        "Nederlandse herkenning",
+        "Sneller typen",
+        "Mac-native"
+      ],
+      "contra": [
+        "Alleen Mac",
+        "Beperkt bereik",
+        "Niche"
+      ]
+    },
+    "raycast-ai": {
+      "aban_note": "Spotlight-vervanging met AI-oproepen overal in OS. Snelle-prompt-workflow zonder browser-wissel. Alleen Mac.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "OS-brede-AI",
+        "Snelle-prompts"
+      ],
+      "pro": [
+        "OS-integratie",
+        "Snelle prompts",
+        "Mac-native",
+        "Krachtig"
+      ],
+      "contra": [
+        "Alleen Mac",
+        "Beperkte mogelijkheden",
+        "Niche"
+      ]
+    },
+    "arc": {
+      "aban_note": "Mobiele browser met AI-samenvatting. 'Browse voor mij' is aardig. Pivot naar Dia komt.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "AI-browser-mobiel"
+      ],
+      "pro": [
+        "Mobile-browser",
+        "AI-samenvatting",
+        "Innovatief"
+      ],
+      "contra": [
+        "Pivot naar Dia",
+        "Beperkt bereik",
+        "Matige AI"
+      ]
+    },
+    "dia": {
+      "aban_note": "AI-first-browser. Tab-overgrijpende chat. Interessant concept, beta-status.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "AI-browser"
+      ],
+      "pro": [
+        "AI-first",
+        "Tab-chat",
+        "Innovatief",
+        "Interessant"
+      ],
+      "contra": [
+        "Beta-status",
+        "Matige browser",
+        "Beperkt bereik"
+      ]
+    },
+    "snowball": {
+      "aban_note": "Competitief-inlichtingen-platform. Enterprise-prijzen. Voor soloënten: te groot.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Enterprise-competitief-inlicht"
+      ],
+      "pro": [
+        "Competitief-inlicht",
+        "Enterprise-klaar",
+        "Uitgebreid"
+      ],
+      "contra": [
+        "Enterprise-duur",
+        "Overkill solo",
+        "Ingewikkelder"
+      ]
+    },
+    "crayon": {
+      "aban_note": "Competitief-tracking. Zoals Klue. Enterprise.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Competitief-tracking"
+      ],
+      "pro": [
+        "Competitief-tracking",
+        "Enterprise-klaar",
+        "Uitgebreid"
+      ],
+      "contra": [
+        "Enterprise-duur",
+        "Overkill solo",
+        "Klue vergelijkbaar"
+      ]
+    },
+    "glean": {
+      "aban_note": "Enterprise-zoeking over alle SaaS-hulpmiddelen. Voor teams > 50 personen killer. Solo-setup: overkill.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Enterprise-zoeking",
+        "Werk-AI"
+      ],
+      "pro": [
+        "SaaS-integratie",
+        "Enterprise-klaar",
+        "Krachtig"
+      ],
+      "contra": [
+        "Overkill solo",
+        "Duur",
+        "Ingewikkelder"
+      ]
+    },
+    "anthropic-mcp": {
+      "aban_note": "Open standaard voor tool-calling. Claude, Cursor, Windsurf, allemaal adopteren. Als je tools voor agents bouwt: dit is het.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Agent-hulpmiddelen",
+        "Integraties"
+      ],
+      "pro": [
+        "Open standaard",
+        "Agent-gericht",
+        "Goede adoptie",
+        "Toekomst-proof"
+      ],
+      "contra": [
+        "Nog in desenvolvimento",
+        "Begrensd bereik",
+        "Niche"
+      ]
+    },
+    "ollama-cloud": {
+      "aban_note": "Code-executie-sandbox als API. Voor agents die code moeten uitvoeren.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Sandbox-code",
+        "Agent-execution"
+      ],
+      "pro": [
+        "Code-execution",
+        "Sandbox-veilig",
+        "Agent-gericht"
+      ],
+      "contra": [
+        "API-only",
+        "Niche",
+        "Beperkt bereik"
+      ]
+    },
+    "e2b": {
+      "aban_note": "Sandbox-infrastructuur voor AI-agenten. EU-gebaseerd (Praag). Open-source-kern. Schone keuze voor agent-bouwers.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Agent-sandbox",
+        "EU-naleving"
+      ],
+      "pro": [
+        "Sandbox-infra",
+        "EU-gebaseerd",
+        "Open-source",
+        "Agent-gericht"
+      ],
+      "contra": [
+        "Niche",
+        "Beperkt bereik",
+        "Minder bekend"
+      ]
+    },
+    "langfuse": {
+      "aban_note": "Duitse LLM-observability-platform (Berlijn). Tracering, evaluatie, kostentracking. Zelfhosten. Als je LLM-stack serieus wordt: eerste keuze.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "LLM-observabiliteit",
+        "Prompt-beheer",
+        "DACH-naleving"
+      ],
+      "pro": [
+        "Duits bedrijf",
+        "Zelfhost",
+        "LLM-gericht",
+        "Observabiliteit"
+      ],
+      "contra": [
+        "Niche",
+        "Steile leercurve",
+        "Ingewikkelder"
+      ]
+    },
+    "langsmith": {
+      "aban_note": "LLM-observabiliteit voor LangChain-apps. Vendor-lock-light. Cloud-only EU-regio eerste 2026.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "LangChain-tracering"
+      ],
+      "pro": [
+        "LangChain-native",
+        "Observabiliteit",
+        "Gespecialiseerd"
+      ],
+      "contra": [
+        "Vendor lock-in",
+        "Alleen cloud",
+        "EU-region later"
+      ]
+    },
+    "browser-use": {
+      "aban_note": "Python-bibliotheek voor AI-browser-controle. Open-source. Slanker stack voor agent-bouwers.",
+      "dsgvo_note": "",
+      "use_cases": [
+        "Browser-agent",
+        "Open-source-automatisering"
+      ],
+      "pro": [
+        "Open-source",
+        "Python-native",
+        "Slanke stack",
+        "Agent-gericht"
+      ],
+      "contra": [
+        "Niche",
+        "Minder mature",
+        "Beperkt bereik"
+      ]
+    }
+  }
+}

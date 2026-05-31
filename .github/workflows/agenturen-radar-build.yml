@@ -1,0 +1,29 @@
+name: KI-Dienstleister-Verzeichnis — Auto-Build
+
+on:
+  push:
+    paths:
+      - 'agenturen-radar/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Generate agency directory
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generate site
+        run: |
+          cd agenturen-radar
+          python generate.py
+          find dist -type f | wc -l
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: agenturen-radar-dist
+          path: agenturen-radar/dist
+          retention-days: 14

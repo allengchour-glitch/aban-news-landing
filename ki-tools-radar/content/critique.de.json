@@ -1,0 +1,1720 @@
+{
+  "tools": {
+    "claude": {
+      "pro": [
+        "Deutsche Texte am besten",
+        "Multi-Modal + langer Kontext",
+        "API + Web + IDE integriert"
+      ],
+      "contra": [
+        "Teurer als DeepSeek",
+        "Nicht EU-souverän gehostet",
+        "Vendor-Lock-in üblich"
+      ]
+    },
+    "chatgpt": {
+      "pro": [
+        "Most-used Allrounder",
+        "Größtes Ökosystem",
+        "Web-Suche integriert"
+      ],
+      "contra": [
+        "Deutsche Texte schwächer als Claude",
+        "Datenverarbeitung US-basiert",
+        "Teuer für Bulk-API-Nutzung"
+      ]
+    },
+    "gemini": {
+      "pro": [
+        "Multimodal Top-Tier",
+        "Google-Workspace-Integration",
+        "Langer Kontext (2M Token)"
+      ],
+      "contra": [
+        "Deutsch-Qualität schwankt",
+        "DACH-Relevanz limitiert",
+        "Datensicherheit nicht transparent"
+      ]
+    },
+    "mistral": {
+      "pro": [
+        "EU-basiert (Paris)",
+        "GDPR-konform",
+        "Solides Sprachmodell"
+      ],
+      "contra": [
+        "Kleiner Marktanteil",
+        "Weniger Integrations-Ökosystem",
+        "Performance unter Claude/OpenAI"
+      ]
+    },
+    "deepseek": {
+      "pro": [
+        "Unschlagbare Preise (-75%)",
+        "Reasoning-Fähigkeiten gut",
+        "Bulk-Kosten stark reduziert"
+      ],
+      "contra": [
+        "China-Provider (DSGVO-Risiko)",
+        "Vertrauens-Hürde bei B2B",
+        "Englisch besser als Deutsch"
+      ]
+    },
+    "perplexity": {
+      "pro": [
+        "Quellen transparent zitiert",
+        "Echtzeit-Recherche eingebaut",
+        "Google-Ersatz bei 80% Fragen"
+      ],
+      "contra": [
+        "Deutsch nicht Fokus",
+        "API begrenzt verfügbar",
+        "Qualität abhängig vom Query"
+      ]
+    },
+    "aleph-alpha": {
+      "pro": [
+        "Deutsche LLM (Heidelberg)",
+        "Banking-/Pharma-zertifiziert",
+        "Echte EU-Souveränität"
+      ],
+      "contra": [
+        "Performance deutlich schwächer",
+        "Kein Self-Service-Pricing",
+        "Limitierte Integrations"
+      ]
+    },
+    "cowork": {
+      "pro": [
+        "PDF-Analyse kraftvoll",
+        "Slide-Generierung sauber",
+        "Zeit-Ersparnis messbar"
+      ],
+      "contra": [
+        "Nur in Claude Max enthalten",
+        "Batch-Operationen begrenzt",
+        "DSGVO-Bedingungen unklar"
+      ]
+    },
+    "openrouter": {
+      "pro": [
+        "Multi-Provider-Routing",
+        "Kostenoptimierung möglich",
+        "A/B-Tests vereinfacht"
+      ],
+      "contra": [
+        "Markup auf Provider-Preisen",
+        "Vendor-Abhängigkeit ersetzt",
+        "Komplexes Billing-System"
+      ]
+    },
+    "n8n": {
+      "pro": [
+        "Self-Host verfügbar",
+        "Deutsche Firma (DSGVO-freundlich)",
+        "Robuster als Make.com"
+      ],
+      "contra": [
+        "Steile Lernkurve",
+        "UI weniger poliert als Make",
+        "Performance bei Skalierung fraglich"
+      ]
+    },
+    "make": {
+      "pro": [
+        "Schöner visueller Builder",
+        "Schneller Einstieg",
+        "Großes App-Ökosystem"
+      ],
+      "contra": [
+        "Vendor-Lock-in stark",
+        "Teuer bei Volume-Operations",
+        "Limitierte Programmierbarkeit"
+      ]
+    },
+    "zapier": {
+      "pro": [
+        "7000+ App-Integrationen",
+        "No-Code Standard",
+        "Gutes Tech-Support"
+      ],
+      "contra": [
+        "Stark überteuert bei Volume",
+        "Logik-Komplexität limitiert",
+        "AI-Workflows schwach"
+      ]
+    },
+    "cursor": {
+      "pro": [
+        "VSCode-kompatibel",
+        "Composer-Mode stärker als Copilot",
+        "Natürlichster Coding-Flow"
+      ],
+      "contra": [
+        "Subscription-Kosten",
+        "Proprietary (nicht Open-Source)",
+        "Marktabhängigkeit bei Updates"
+      ]
+    },
+    "windsurf": {
+      "pro": [
+        "Cascade-Mode konzeptionell sauberer",
+        "Codeium-Infrastruktur stabil",
+        "Weniger Marktvolatilität"
+      ],
+      "contra": [
+        "Kleinerer Markt als Cursor",
+        "Weniger Integrations-Ökosystem",
+        "User-Base volatiler"
+      ]
+    },
+    "github-copilot": {
+      "pro": [
+        "GitHub-Integration nahtlos",
+        "IDE-Unterstützung breit",
+        "Modell-Auswahl (Claude Option)"
+      ],
+      "contra": [
+        "Autocomplete zu simpel",
+        "Agent-Mode schwach",
+        "Teurer für Pro-Teams"
+      ]
+    },
+    "claude-code": {
+      "pro": [
+        "Terminal-basiert für Power-User",
+        "Bulk-Refactoring effizient",
+        "Git-aware Operationen"
+      ],
+      "contra": [
+        "CLI hat Adopter-Barriere",
+        "Nicht für GUI-Gewöhnte",
+        "Debugging komplex"
+      ]
+    },
+    "bolt": {
+      "pro": [
+        "MVP in 20 Minuten",
+        "Browser-basiert (keine Installation)",
+        "Hosting integriert"
+      ],
+      "contra": [
+        "Lock-in bei Komplexität",
+        "Export schwierig",
+        "Skalierbarkeit limitiert"
+      ]
+    },
+    "lovable": {
+      "pro": [
+        "Glatte UX",
+        "Schnelle Ausgaben",
+        "Design-Qualität gut"
+      ],
+      "contra": [
+        "Skaliert über 200 Prompts schlecht",
+        "Nur für Single-Project-Solos",
+        "Vendor-Lock-in absolut"
+      ]
+    },
+    "v0": {
+      "pro": [
+        "Next.js + shadcn integriert",
+        "React-Ökosystem native",
+        "Vercel-Pipeline direkt"
+      ],
+      "contra": [
+        "React-Fokus zu eng",
+        "Andere Frameworks schwach",
+        "Kleine Community"
+      ]
+    },
+    "replit": {
+      "pro": [
+        "Full-Stack im Browser",
+        "Hosting integriert",
+        "Collaboration built-in"
+      ],
+      "contra": [
+        "Pricing bei Volume brutal",
+        "Performance-Limits niedrig",
+        "Community fragil"
+      ]
+    },
+    "midjourney": {
+      "pro": [
+        "Bildqualität unerreicht",
+        "v7 erstaunlich konsistent",
+        "Web-UI mittlerweile OK"
+      ],
+      "contra": [
+        "Discord-First ist nervig",
+        "Teuer pro Bild",
+        "Warteschlangen frustig"
+      ]
+    },
+    "flux": {
+      "pro": [
+        "Deutsche Firma (Freiburg)",
+        "Open-Weights (DACH-sicher)",
+        "Top-Performance bei Qualität"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Self-Hosting braucht GPU",
+        "Weniger Integrations"
+      ]
+    },
+    "stable-diffusion": {
+      "pro": [
+        "Open-Source Standard",
+        "Self-Hostbar unbegrenzt",
+        "Community-getrieben"
+      ],
+      "contra": [
+        "GPU-Hardware teuer",
+        "Setup komplex",
+        "Qualität fallend vs. Newcomer"
+      ]
+    },
+    "ideogram": {
+      "pro": [
+        "Text-in-Bild beste-Klasse",
+        "Typografie exzellent",
+        "Logo-Generierung stark"
+      ],
+      "contra": [
+        "Photorealismus schwach",
+        "Kleine Community",
+        "Pricing höher als Flux"
+      ]
+    },
+    "krea": {
+      "pro": [
+        "Realtime-Image-Gen gut",
+        "Multi-Model-Bundle",
+        "Designer-Controls fein"
+      ],
+      "contra": [
+        "Tier-1 sehr limitierend",
+        "Kleine Nutzerbasis",
+        "Markt-Volatilität hoch"
+      ]
+    },
+    "recraft": {
+      "pro": [
+        "SVG-Generierung spezialisiert",
+        "Brand-Konsistenz maintainable",
+        "Für Designer interessant"
+      ],
+      "contra": [
+        "Foto-Qualität schwach",
+        "Sehr nisches Tool",
+        "Pricing undurchsichtig"
+      ]
+    },
+    "leonardo": {
+      "pro": [
+        "Game-Assets fokussiert",
+        "UI sauber",
+        "Model-Training möglich"
+      ],
+      "contra": [
+        "Marketing-Qualität schwach",
+        "Community klein",
+        "Skalierbarkeit fraglich"
+      ]
+    },
+    "playground": {
+      "pro": [
+        "Großzügiger Free-Tier",
+        "Hobby-Nutzung ok",
+        "Einsteigerfreundlich"
+      ],
+      "contra": [
+        "Output selten herausragend",
+        "Keine Spezialität",
+        "Kommerzielle Nutzung schwach"
+      ]
+    },
+    "dalle": {
+      "pro": [
+        "ChatGPT-Integration nahtlos",
+        "Schnelle Bilder",
+        "Web-UI anständig"
+      ],
+      "contra": [
+        "Von Midjourney/Flux überholt",
+        "Qualität inkonsistent",
+        "Teuer pro Bild"
+      ]
+    },
+    "adobe-firefly": {
+      "pro": [
+        "Commercial-Safe (trainiert sauber)",
+        "Adobe-Workflow integriert",
+        "Rechtlich sauberer"
+      ],
+      "contra": [
+        "Qualität unter Alternativen",
+        "Nur Adobe-User profitieren",
+        "Teure Abos"
+      ]
+    },
+    "sora": {
+      "pro": [
+        "Video-Demo-Clips gut",
+        "Spannende Technologie",
+        "OpenAI-Backing stabil"
+      ],
+      "contra": [
+        "2026 noch nicht Produktions-ready",
+        "Teuer pro Video",
+        "Wartelisten-Frustration"
+      ]
+    },
+    "runway": {
+      "pro": [
+        "Gen-4 solide Performance",
+        "Motion-Brush spezial",
+        "VFX-Suite komplett"
+      ],
+      "contra": [
+        "Teuer mit Credits",
+        "Komplexe UI",
+        "Learning-Kurve steil"
+      ]
+    },
+    "pika": {
+      "pro": [
+        "Short-Form-Video spezialisiert",
+        "Social-Media ready",
+        "Einfacher Einstieg"
+      ],
+      "contra": [
+        "Output-Länge limitiert",
+        "Qualität mittelmäßig",
+        "Kleine Community"
+      ]
+    },
+    "elevenlabs": {
+      "pro": [
+        "Deutsche Stimmen natürlich",
+        "Voice-Clone sehr gut",
+        "Podcast-Ready"
+      ],
+      "contra": [
+        "Ethische Risiken (Voice-Clone)",
+        "Teuer für Bulk",
+        "DSGVO-Bedingungen"
+      ]
+    },
+    "suno": {
+      "pro": [
+        "Musik-Generierung spaßig",
+        "Genres diverse",
+        "Schnell Clips"
+      ],
+      "contra": [
+        "Rechtslage in DACH unklar",
+        "Kommerzielle Nutzung risky",
+        "Qualität variabel"
+      ]
+    },
+    "udio": {
+      "pro": [
+        "Musik-Output ok",
+        "Einsteigerfreundlich",
+        "Styles diverse"
+      ],
+      "contra": [
+        "Lizenz-Unsicherheit wie Suno",
+        "Qualität unterhalb Pro-Standard",
+        "Community klein"
+      ]
+    },
+    "murf": {
+      "pro": [
+        "TTS-Klassiker solide",
+        "Viele Sprachen",
+        "Integrations-Ökosystem"
+      ],
+      "contra": [
+        "Deutsche Qualität nur ok",
+        "ElevenLabs 2026 vorne",
+        "Preismodell verwirrend"
+      ]
+    },
+    "heygen": {
+      "pro": [
+        "AI-Avatars fertig",
+        "40+ Sprachen mit Sync",
+        "Marketing-Ready"
+      ],
+      "contra": [
+        "Avatar bleibt erkennbar synthetisch",
+        "Teuer für Tests",
+        "Qualität schwankt"
+      ]
+    },
+    "synthesia": {
+      "pro": [
+        "Enterprise Avatar-Quality",
+        "Templates professionell",
+        "Support gut"
+      ],
+      "contra": [
+        "Teuer als HeyGen",
+        "Für Solos overkill",
+        "Lock-in Risiko hoch"
+      ]
+    },
+    "d-id": {
+      "pro": [
+        "Foto-zu-Kopf simpel",
+        "Einstiegshürde niedrig",
+        "Schnelle Outputs"
+      ],
+      "contra": [
+        "HeyGen hat überholt",
+        "Qualität mittelmäßig",
+        "Kleine Community"
+      ]
+    },
+    "descript": {
+      "pro": [
+        "Transkript-Editing revolutionär",
+        "Overdub-Clone gut",
+        "Podcast-Workflow sauber"
+      ],
+      "contra": [
+        "Audio-Qualität schwankt",
+        "Teuer für Solos",
+        "Skalierbarkeit fraglich"
+      ]
+    },
+    "veed": {
+      "pro": [
+        "Browser-Video-Editing ok",
+        "Untertitel-Gen gut",
+        "Einsteigerfreundlich"
+      ],
+      "contra": [
+        "Power-Editing zu limitiert",
+        "Kleine Community",
+        "Pricing hoch für Features"
+      ]
+    },
+    "capcut": {
+      "pro": [
+        "Mobile-First stark",
+        "AI-Features integriert",
+        "TikTok-Pipeline native"
+      ],
+      "contra": [
+        "ByteDance Datenschutz-Risiko",
+        "Desktop Version schwach",
+        "DACH-Compliance problematisch"
+      ]
+    },
+    "otter": {
+      "pro": [
+        "Meeting-Klassiker bewährt",
+        "Englisch Top-Qualität",
+        "Integrations-Ökosystem groß"
+      ],
+      "contra": [
+        "Deutsch nur ok",
+        "Deutsch-Transkripte fehlerhaft",
+        "Teuer für Deutsch-Teams"
+      ]
+    },
+    "fireflies": {
+      "pro": [
+        "CRM-Sync besser als Otter",
+        "Deutsch ok",
+        "Pricing fairer"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Feature-Unterschied marginal",
+        "Markt-Volatilität hoch"
+      ]
+    },
+    "granola": {
+      "pro": [
+        "Deutsch-First Qualität super",
+        "Kein Bot-Im-Meeting",
+        "Mac-Integration sauber"
+      ],
+      "contra": [
+        "Mac-only Limit",
+        "Kleine Community noch",
+        "Features noch im Aufbau"
+      ]
+    },
+    "tldv": {
+      "pro": [
+        "Deutsche Firma (München)",
+        "Multi-Language gut",
+        "DSGVO-konform"
+      ],
+      "contra": [
+        "Bot-Im-Meeting weniger elegant",
+        "Kleine Nutzerbasis",
+        "Langfristige Stabilität?"
+      ]
+    },
+    "krisp": {
+      "pro": [
+        "Noise-Cancellation zuverlässig",
+        "OS-weit funktioniert",
+        "Meeting-Notes neu"
+      ],
+      "contra": [
+        "Hauptfeature ist Niche",
+        "AI-Features unterentwickelt",
+        "Pricing unklar"
+      ]
+    },
+    "fathom": {
+      "pro": [
+        "Großzügiger Free-Tier",
+        "Unlimited Meetings kostenlos",
+        "US-Market Qualität gut"
+      ],
+      "contra": [
+        "Deutsche Qualität schwach",
+        "US-Fokus zu eng",
+        "Kleine Community"
+      ]
+    },
+    "deepl": {
+      "pro": [
+        "Deutsche Firma (Köln)",
+        "DE-EN Übersetzung beste",
+        "Write-Refinement für Deutsch"
+      ],
+      "contra": [
+        "API-Kosten hoch",
+        "Andere Sprachpaare schwächer",
+        "Lock-in stark"
+      ]
+    },
+    "deepl-write": {
+      "pro": [
+        "Deutsch-Refinement spezialisiert",
+        "Stil-Variation funktioniert",
+        "Grammarly für Deutsch superior"
+      ],
+      "contra": [
+        "Nur für Deutsch relevant",
+        "Subscription-Kosten",
+        "Features noch begrenzt"
+      ]
+    },
+    "grammarly": {
+      "pro": [
+        "Englisch-Grammar Standard",
+        "Integrations-Ökosystem groß",
+        "Plagiarism-Check"
+      ],
+      "contra": [
+        "Deutsch zu schwach",
+        "Teuer ohne Deutsch-Nutzen",
+        "AI-Features werbeträchtig"
+      ]
+    },
+    "languagetool": {
+      "pro": [
+        "Deutsche Firma (Potsdam)",
+        "Open-Source Kern",
+        "Self-Hostbar"
+      ],
+      "contra": [
+        "UI weniger poliert",
+        "Community-Features fragil",
+        "Learning-Kurve höher"
+      ]
+    },
+    "tavily": {
+      "pro": [
+        "Search-API für Agents sauber",
+        "Günstiger als SerpAPI",
+        "Web-Resultat-Qualität gut"
+      ],
+      "contra": [
+        "Vendor-Lock-in API",
+        "Deutsche Relevanz limitiert",
+        "Support nicht DACH-fokussiert"
+      ]
+    },
+    "exa": {
+      "pro": [
+        "Semantic-Search spezialisiert",
+        "RAG-Qualität hoch",
+        "Research-Workflows optimiert"
+      ],
+      "contra": [
+        "Teuer pro Call",
+        "Kleine Community",
+        "Deutsche Relevanz gering"
+      ]
+    },
+    "you": {
+      "pro": [
+        "AI-Search Multi-Mode",
+        "Code-Research gut",
+        "Kein Tracking"
+      ],
+      "contra": [
+        "Perplexity 2026 besser",
+        "Deutsche Qualität schwach",
+        "Kleine Nutzerbasis"
+      ]
+    },
+    "phind": {
+      "pro": [
+        "Dev-Search fokussiert",
+        "Code-Antworten mit Quellen",
+        "Stack-Overflow-Ersatz"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Außer Coding schwach",
+        "Langfristige Stabilität?"
+      ]
+    },
+    "kagi": {
+      "pro": [
+        "Werbefreie Suche",
+        "Power-Sucher fokussiert",
+        "AI-Assist integriert"
+      ],
+      "contra": [
+        "Subscription kostet extra",
+        "Deutsche Relevanz limitiert",
+        "Kleine Marktpräsenz"
+      ]
+    },
+    "brave": {
+      "pro": [
+        "Privacy-First Suche",
+        "Eigener Index",
+        "AI-Summary integriert"
+      ],
+      "contra": [
+        "Index kleiner als Google",
+        "Deutsche Relevanz mittelmäßig",
+        "Community volatil"
+      ]
+    },
+    "groq": {
+      "pro": [
+        "Latency-Champion (10-100x)",
+        "Real-Time-Apps sauber",
+        "Llama/Mixtral native"
+      ],
+      "contra": [
+        "Modell-Auswahl limitiert",
+        "Deutsche Community klein",
+        "Markt-Risiko höher"
+      ]
+    },
+    "together-ai": {
+      "pro": [
+        "Open-Source-API günstig",
+        "Modell-Auswahl vielfältig",
+        "Inference-Speed gut"
+      ],
+      "contra": [
+        "Reliability variabel",
+        "Support schwach",
+        "Kleine Community"
+      ]
+    },
+    "cerebras": {
+      "pro": [
+        "Custom-Chips sehr schnell",
+        "Llama-Hosting top",
+        "Inferenz-Kosten niedrig"
+      ],
+      "contra": [
+        "Modell-Auswahl eng",
+        "Kleine Community",
+        "Markt-Stabilität??"
+      ]
+    },
+    "replicate": {
+      "pro": [
+        "Multi-Modal-API komplett",
+        "Modell-Prototyping einfach",
+        "Dokumentation gut"
+      ],
+      "contra": [
+        "Pricing kompliziert",
+        "Cold-Start Latency",
+        "Kleine Nutzerbasis"
+      ]
+    },
+    "hugging-face": {
+      "pro": [
+        "GitHub für AI-Modelle",
+        "Datasets-Library Gold",
+        "Inference-Endpoints solid"
+      ],
+      "contra": [
+        "UI teils unpoliert",
+        "Kostenmodell verwirrend",
+        "Free-Tier limitiert"
+      ]
+    },
+    "langchain": {
+      "pro": [
+        "LLM-Framework Standard",
+        "Agent-Pattern dokumentiert",
+        "LLM-Integrations vollständig"
+      ],
+      "contra": [
+        "Überengineered für einfach",
+        "Learning-Kurve steil",
+        "Custom-Logic besser direkt"
+      ]
+    },
+    "llamaindex": {
+      "pro": [
+        "RAG spezialisiert",
+        "Schlanker als LangChain",
+        "Dokumentation klar"
+      ],
+      "contra": [
+        "Außer RAG limitiert",
+        "Kleine Community",
+        "Learning-Kurve"
+      ]
+    },
+    "weaviate": {
+      "pro": [
+        "EU-basiert (Niederlande)",
+        "GDPR-konform transparent",
+        "Production-ready"
+      ],
+      "contra": [
+        "Pinecone-Konkurrenz stärker",
+        "Deutsche Community klein",
+        "Pricing bei Scale"
+      ]
+    },
+    "qdrant": {
+      "pro": [
+        "Deutsche Firma (Berlin)",
+        "Open-Source selbst",
+        "Self-Host Deployment sauber"
+      ],
+      "contra": [
+        "UI noch im Aufbau",
+        "Community kleiner",
+        "Learning-Kurve"
+      ]
+    },
+    "pinecone": {
+      "pro": [
+        "Managed Vector-DB einfach",
+        "Skaliert automatisch",
+        "Support gut"
+      ],
+      "contra": [
+        "US-Cloud only (Lock-in)",
+        "DACH-Compliance fragwürdig",
+        "Teuer bei Abfragen"
+      ]
+    },
+    "chroma": {
+      "pro": [
+        "Local-Dev super einfach",
+        "Zero-Setup Onboarding",
+        "Prototyping schnell"
+      ],
+      "contra": [
+        "Production-grade fragwürdig",
+        "Skalierung problematisch",
+        "Zu Qdrant wechseln später"
+      ]
+    },
+    "notion-ai": {
+      "pro": [
+        "Notion-Workspace natürlich",
+        "Q&A über Docs ok",
+        "Integriert im Workflow"
+      ],
+      "contra": [
+        "Außer Notion unwert",
+        "Features limitiert",
+        "Teuer relativ zu Wert"
+      ]
+    },
+    "mem": {
+      "pro": [
+        "Smart-Notes mit AI",
+        "Auto-Tagging funktioniert",
+        "Mobile-App solid"
+      ],
+      "contra": [
+        "Lock-in zum Tool",
+        "Kleine Community",
+        "Markt-Volatilität hoch"
+      ]
+    },
+    "reflect": {
+      "pro": [
+        "Tägliche Notes sauber",
+        "Backlinks wie Roam",
+        "GPT-4 integriert"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Lock-in zu Tool",
+        "Langfristige Stabilität?"
+      ]
+    },
+    "obsidian": {
+      "pro": [
+        "Local-First sauber",
+        "Plain Markdown Zukunftssicher",
+        "Plugin-Ökosystem stärker"
+      ],
+      "contra": [
+        "Sync kostet extra",
+        "AI-Features nicht native",
+        "Kuratierung wichtig"
+      ]
+    },
+    "loom": {
+      "pro": [
+        "Screen-Recording + AI-Summary",
+        "Async-Updates wertvoll",
+        "Free-Tier reicht Solos"
+      ],
+      "contra": [
+        "Atlassian Ownership",
+        "Pricing unklar für Teams",
+        "Feature-Stabilität"
+      ]
+    },
+    "capso": {
+      "pro": [
+        "Open-Source Loom-Alternativ",
+        "EU-Hosting möglich",
+        "DACH-Datenschutz nativ"
+      ],
+      "contra": [
+        "Community klein",
+        "Features noch im Aufbau",
+        "Langfristige Viabilität?"
+      ]
+    },
+    "jasper": {
+      "pro": [
+        "Marketing-Copywriting spezialisiert",
+        "Templates brauchbar",
+        "Team-Features vorhanden"
+      ],
+      "contra": [
+        "Claude/ChatGPT besser",
+        "Templates nicht mehr unique",
+        "Überteuert jetzt"
+      ]
+    },
+    "copy-ai": {
+      "pro": [
+        "Workflow-Focus jetzt",
+        "Sales-Teams-freundlich",
+        "Integrations-Ökosystem"
+      ],
+      "contra": [
+        "Solo-Marketer braucht nicht",
+        "Claude genügt",
+        "Differenzierung schwach"
+      ]
+    },
+    "writesonic": {
+      "pro": [
+        "Bulk-Content Generator",
+        "Einsteigerfreundlich",
+        "Verschiedene Modi"
+      ],
+      "contra": [
+        "Outputs mittelmäßig",
+        "Claude besser",
+        "Teuer für Solos"
+      ]
+    },
+    "sudowrite": {
+      "pro": [
+        "Fiction-Writing spezialisiert",
+        "Story-Beats-Hilfe nett",
+        "Autor-Community"
+      ],
+      "contra": [
+        "Englisch-First zu sehr",
+        "Deutsch ok aber schwach",
+        "Niche Community"
+      ]
+    },
+    "lex": {
+      "pro": [
+        "Distraction-Free Writing",
+        "Inline-AI-Calls sauber",
+        "Minimal-Design schön"
+      ],
+      "contra": [
+        "Deutsch nicht Fokus",
+        "Feature-Limitiert noch",
+        "Kleine Community"
+      ]
+    },
+    "wordtune": {
+      "pro": [
+        "Satz-Umschreibung ok",
+        "Englisch-Focus stark",
+        "Einsteigerfreundlich"
+      ],
+      "contra": [
+        "Deutsch zu schwach",
+        "Keine Deutsch-Tauglichkeit",
+        "Teuer für Deutsch-Nutzer"
+      ]
+    },
+    "quillbot": {
+      "pro": [
+        "Paraphrasierung ok",
+        "Plagiarism-Check nett",
+        "Englisch stark"
+      ],
+      "contra": [
+        "Deutsch schwach",
+        "Zu simpel vs. Claude",
+        "Teuer für Feature-Set"
+      ]
+    },
+    "anyword": {
+      "pro": [
+        "Ad-Copy Performance-Scoring",
+        "Marketing-Focus spezialisiert",
+        "A/B-Testing integriert"
+      ],
+      "contra": [
+        "Englisch-First extrem",
+        "Für DACH-Marketer unwert",
+        "Teuer ohne Deutsch"
+      ]
+    },
+    "profound": {
+      "pro": [
+        "GEO-Tracking pionier",
+        "2026-Äquivalent zu Google-Ranking",
+        "Enterprise-Intelligence"
+      ],
+      "contra": [
+        "Sehr hohe Einstiegskosten",
+        "Für Solos nicht relevant",
+        "Noch neue Metrik"
+      ]
+    },
+    "athenahq": {
+      "pro": [
+        "GEO-Tracking Alternative",
+        "Mid-Market-Pricing",
+        "Deutsche Reports ok"
+      ],
+      "contra": [
+        "Profound stark konkurrierend",
+        "Kleine Community",
+        "Feature-Unstabilität"
+      ]
+    },
+    "otterly": {
+      "pro": [
+        "Österreichische Firma (Wien)",
+        "DACH-Sprach-First",
+        "KMU-Preismodell erschwinglich"
+      ],
+      "contra": [
+        "Kleine Nutzerbasis",
+        "Features noch begrenzt",
+        "Langfristige Stabilität"
+      ]
+    },
+    "ahrefs": {
+      "pro": [
+        "SEO-Standard bewährt",
+        "Backlink-Index umfassend",
+        "DACH-Relevanz hoch"
+      ],
+      "contra": [
+        "Teuer für Solos",
+        "AI-Features Beifang",
+        "Learning-Kurve steil"
+      ]
+    },
+    "semrush": {
+      "pro": [
+        "Breiter Toolset als Ahrefs",
+        "Ad-Intel integriert",
+        "Marketing-Stack komplett"
+      ],
+      "contra": [
+        "Überteuert für Solo",
+        "Zu viele Features",
+        "Komplexität hoch"
+      ]
+    },
+    "surfer": {
+      "pro": [
+        "On-Page-SEO Optimierung",
+        "Content-Score-System gut",
+        "AI-Writing integriert"
+      ],
+      "contra": [
+        "Englisch besser als Deutsch",
+        "Zu SEO-fokussiert",
+        "Teuer relativ"
+      ]
+    },
+    "frase": {
+      "pro": [
+        "Content-Briefs Generator",
+        "Günstiger als Surfer",
+        "Content-Marketer-freundlich"
+      ],
+      "contra": [
+        "SERP-Analysis begrenzt",
+        "Kleine Community",
+        "Feature-Stabilität"
+      ]
+    },
+    "marketmuse": {
+      "pro": [
+        "Topic-Cluster Strategie",
+        "Enterprise-Content nativ",
+        "AI-Assistive stark"
+      ],
+      "contra": [
+        "Für Solos overkill",
+        "Zu Enterprise-fokussiert",
+        "Teuer"
+      ]
+    },
+    "canva": {
+      "pro": [
+        "Magic Studio macht's AI-native",
+        "Templates pragmatisch",
+        "DACH-Solos beste Wahl"
+      ],
+      "contra": [
+        "Design-Qualität limitiert",
+        "Profis brauchen Figma",
+        "Vendor-Lock-in stark"
+      ]
+    },
+    "figma": {
+      "pro": [
+        "UI-Design Standard",
+        "AI-Features (Make Designs) gut",
+        "Collaboration native"
+      ],
+      "contra": [
+        "Teuer für Teams",
+        "Lernkurve steil",
+        "Overkill für einfache Design"
+      ]
+    },
+    "gamma": {
+      "pro": [
+        "AI-Slides aus Text",
+        "Pitch-Decks sauber",
+        "Schöner als Decktopus"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Lock-in zu Tool",
+        "Features noch Aufbau"
+      ]
+    },
+    "tome": {
+      "pro": [
+        "Sales-Deck fokussiert",
+        "AI-Slides Generation",
+        "Integrations-Ökosystem"
+      ],
+      "contra": [
+        "Gamma hat überholt",
+        "Kleine Community",
+        "Feature-Volatilität"
+      ]
+    },
+    "beautiful-ai": {
+      "pro": [
+        "Smart-Templates mit Auto-Layout",
+        "Designs solide",
+        "Präsentations-ready"
+      ],
+      "contra": [
+        "Nicht herausragend",
+        "Kleine Differenzierung",
+        "Teuer"
+      ]
+    },
+    "ollama": {
+      "pro": [
+        "Lokale LLMs auf Mac/PC",
+        "Llama/Mistral/Qwen native",
+        "DSGVO-Safe absolut"
+      ],
+      "contra": [
+        "GPU-Speicher kritisch",
+        "Setup noch komplex",
+        "Nicht für CPU-Nutzer"
+      ]
+    },
+    "lm-studio": {
+      "pro": [
+        "GUI schöner als CLI",
+        "Offline-Testen einfach",
+        "Server-Mode praktisch"
+      ],
+      "contra": [
+        "Weniger mächtig als Ollama",
+        "GPU-Speicher kritisch",
+        "Community kleiner"
+      ]
+    },
+    "open-webui": {
+      "pro": [
+        "ChatGPT-Clone für Ollama",
+        "Self-Hosted nativ",
+        "Team-Local-AI sauber"
+      ],
+      "contra": [
+        "Setup komplex noch",
+        "Features volatil",
+        "Community Aufbau"
+      ]
+    },
+    "lingo-dev": {
+      "pro": [
+        "Localization spezialisiert",
+        "i18n-JSON natürlich",
+        "Developer-freundlich"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Englisch-fokussiert",
+        "Niche-Use-Case"
+      ]
+    },
+    "browserbase": {
+      "pro": [
+        "Headless-Browser für Agents",
+        "Cloud-Infrastruktur sauber",
+        "Scale-ready"
+      ],
+      "contra": [
+        "Teuer für viel Nutzung",
+        "Kleine Community",
+        "Lock-in API"
+      ]
+    },
+    "browse-ai": {
+      "pro": [
+        "Visual-Scraper einfach",
+        "Monitoring-Use-Cases",
+        "No-Code Scraping"
+      ],
+      "contra": [
+        "Reliability variabel",
+        "Kleine Community",
+        "Feature-Limits"
+      ]
+    },
+    "apify": {
+      "pro": [
+        "EU-basiert (Tschechien)",
+        "Größte Scraper-Library",
+        "Power-User freundlich"
+      ],
+      "contra": [
+        "Komplexe UI",
+        "Learning-Kurve steil",
+        "Teuer bei Skala"
+      ]
+    },
+    "bardeen": {
+      "pro": [
+        "Browser-Automation nativ",
+        "AI-Playbooks nett",
+        "Knowledge-Worker-fokussiert"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Feature-Limits",
+        "Markt-Stabilität"
+      ]
+    },
+    "clay": {
+      "pro": [
+        "Lead-Enrichment top",
+        "Sales-Intelligence PowerUser",
+        "ROI schnell messbar"
+      ],
+      "contra": [
+        "Teuer Einstieg",
+        "Learning-Kurve steil",
+        "Nur für Sales"
+      ]
+    },
+    "apollo": {
+      "pro": [
+        "B2B-Datenbank komplett",
+        "Outreach-Suite integriert",
+        "DACH-nutzbar"
+      ],
+      "contra": [
+        "Datenqualität DACH schwankt",
+        "Teuer für Solos",
+        "DSGVO-Vorsicht ratsam"
+      ]
+    },
+    "lusha": {
+      "pro": [
+        "Contact-Enrichment schnell",
+        "US-Daten gut",
+        "API verfügbar"
+      ],
+      "contra": [
+        "DSGVO-Dokumentiert Probleme",
+        "DACH-Daten risky",
+        "Teuer relativ"
+      ]
+    },
+    "intercom-fin": {
+      "pro": [
+        "Support-AI Agent robust",
+        "50% Auto-Resolution möglich",
+        "Integrations-Ökosystem"
+      ],
+      "contra": [
+        "Teuer per Resolution",
+        "Nur für High-Volume",
+        "Lock-in Intercom"
+      ]
+    },
+    "zendesk-ai": {
+      "pro": [
+        "Zendesk Integration nahtlos",
+        "Helpdesk-fokussiert",
+        "Reliable"
+      ],
+      "contra": [
+        "Ohne Zendesk nutzlos",
+        "Standalone Value gering",
+        "Teuer"
+      ]
+    },
+    "aider": {
+      "pro": [
+        "Terminal-Coding sauber",
+        "Git-aware Commits",
+        "Open-Source Standard"
+      ],
+      "contra": [
+        "CLI-Barriere steht",
+        "Cursor Konkurrenz stärker",
+        "Community kleiner"
+      ]
+    },
+    "cline": {
+      "pro": [
+        "VSCode-Extension native",
+        "Plan + Act Modi sauber",
+        "Open-Source Kern"
+      ],
+      "contra": [
+        "Kleinere Community",
+        "Feature-Volatilität",
+        "Markt-Risiko"
+      ]
+    },
+    "tabnine": {
+      "pro": [
+        "Privacy-First Approach",
+        "Self-Host für Enterprise",
+        "Compliance-ready"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Feature-Set klein",
+        "Teuer ohne Wert"
+      ]
+    },
+    "cody": {
+      "pro": [
+        "Codebase-aware mächtig",
+        "Monorepo-Support stark",
+        "Sourcegraph-Integration"
+      ],
+      "contra": [
+        "Solos brauchen nicht",
+        "Komplexe Infrastruktur",
+        "Teuer"
+      ]
+    },
+    "warp": {
+      "pro": [
+        "AI-Terminal UI schön",
+        "Multi-Step Execution",
+        "Produktiv nativ"
+      ],
+      "contra": [
+        "Cloud-Sync Privacy-Bedenken",
+        "Lock-in Tool",
+        "Kleine Community"
+      ]
+    },
+    "codex": {
+      "pro": [
+        "OpenAI Coding-Agent",
+        "Cloud-basiert",
+        "ChatGPT Integration"
+      ],
+      "contra": [
+        "Claude Code besser",
+        "Teuer für Coding",
+        "UI nicht optimal"
+      ]
+    },
+    "pipedream": {
+      "pro": [
+        "Code + No-Code hybrid",
+        "JavaScript native",
+        "Developer-freundlich"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Feature-Volatilität",
+        "Lock-in Plattform"
+      ]
+    },
+    "windmill": {
+      "pro": [
+        "Self-Hosted Automation",
+        "EU-basiert (Paris)",
+        "Open-Source Kern"
+      ],
+      "contra": [
+        "Setup komplexer",
+        "Kleine Community",
+        "n8n konkurriert"
+      ]
+    },
+    "supabase": {
+      "pro": [
+        "Firebase Alternative",
+        "EU-Hosting verfügbar",
+        "pgvector integriert"
+      ],
+      "contra": [
+        "PostgreSQL Lernen nötig",
+        "Kleine Community",
+        "Markt-Volatilität"
+      ]
+    },
+    "vercel-ai": {
+      "pro": [
+        "TypeScript First",
+        "Next.js Native",
+        "Sauberer als LangChain"
+      ],
+      "contra": [
+        "Nur für JavaScript",
+        "Kleine Community",
+        "Features noch Aufbau"
+      ]
+    },
+    "modal": {
+      "pro": [
+        "Serverless GPU einfach",
+        "Custom-Model Hosting",
+        "Skalierung automatisch"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Pricing unklar",
+        "Markt-Risiko hoch"
+      ]
+    },
+    "linear": {
+      "pro": [
+        "Issue-Tracker beste UI",
+        "AI-Triage integriert",
+        "DACH-Teams beliebt"
+      ],
+      "contra": [
+        "Teuer für Enterprise",
+        "Kleine Community",
+        "Learning-Kurve"
+      ]
+    },
+    "humata": {
+      "pro": [
+        "PDF-Q&A einfach",
+        "Einsteigerfreundlich",
+        "Schnelle Antworten"
+      ],
+      "contra": [
+        "Claude PDF besser",
+        "ChatGPT PDF besser",
+        "Keine unique Value"
+      ]
+    },
+    "consensus": {
+      "pro": [
+        "Wissenschafts-Recherche spezialisiert",
+        "Paper-Q&A sauber",
+        "Fakten-validiert"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Englisch-fokussiert",
+        "Niche Use-Case"
+      ]
+    },
+    "elicit": {
+      "pro": [
+        "Literatur-Recherche Workflow",
+        "Auto-Extraction gut",
+        "Scientist-freundlich"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Englisch-fokussiert",
+        "Niche akademisch"
+      ]
+    },
+    "scite": {
+      "pro": [
+        "Citation-Validierung einzigartig",
+        "Wissenschafts-Integrität",
+        "Fakten-Check nativ"
+      ],
+      "contra": [
+        "Sehr niche Tool",
+        "Kleine Community",
+        "Teuer"
+      ]
+    },
+    "tactiq": {
+      "pro": [
+        "Browser-Meeting-AI günstig",
+        "Einsteigerfreundlich",
+        "Output ok"
+      ],
+      "contra": [
+        "Granola besser deutlich",
+        "Kleine Community",
+        "Markt-Volatilität"
+      ]
+    },
+    "castmagic": {
+      "pro": [
+        "Podcast-Repurposing spezialisiert",
+        "Show-Notes automatisiert",
+        "Podcaster-freundlich"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Nur für Podcaster",
+        "Markt-Volatilität"
+      ]
+    },
+    "pictory": {
+      "pro": [
+        "Blog-to-Video sauber",
+        "Einsteigerfreundlich",
+        "Schnelle Outputs"
+      ],
+      "contra": [
+        "Output erkennbar synthetisch",
+        "Kleine Community",
+        "Qualität limitiert"
+      ]
+    },
+    "lumen5": {
+      "pro": [
+        "Social-Video simpel",
+        "Template-getrieben",
+        "Schnelle Loops"
+      ],
+      "contra": [
+        "Output mittelmäßig",
+        "Kleine Community",
+        "Qualität zu niedrig"
+      ]
+    },
+    "whisper-flow": {
+      "pro": [
+        "Voice-Diktat schnell",
+        "Deutsche Erkennung top",
+        "Mac-Integration sauber"
+      ],
+      "contra": [
+        "Mac-only Limit",
+        "Kleine Community",
+        "Markt-Volatilität"
+      ]
+    },
+    "raycast-ai": {
+      "pro": [
+        "OS-Wide AI Access",
+        "Spotlight-Replacement sauber",
+        "Produktiv täglich"
+      ],
+      "contra": [
+        "Mac-only Limit",
+        "Kleine Community",
+        "Lock-in Tool"
+      ]
+    },
+    "arc": {
+      "pro": [
+        "Mobile-AI-Browser innovativ",
+        "Browse-for-me nett",
+        "Free-Tier großzügig"
+      ],
+      "contra": [
+        "Markt-Volatilität hoch",
+        "Kleine Community",
+        "Zukunft unsicher"
+      ]
+    },
+    "dia": {
+      "pro": [
+        "AI-First Browser Konzept",
+        "Tab-übergreifender Chat",
+        "Innovative Idee"
+      ],
+      "contra": [
+        "Beta-Status Risiko",
+        "Kleine Community",
+        "Features volatil"
+      ]
+    },
+    "klue": {
+      "pro": [
+        "Enterprise Competitive-Intel",
+        "Market-Tracking komplett",
+        "Reliable"
+      ],
+      "contra": [
+        "Für Solos zu groß",
+        "Enterprise-Pricing brutal",
+        "Kleine DACH-Base"
+      ]
+    },
+    "crayon": {
+      "pro": [
+        "Competitive-Tracking sauber",
+        "Market-Intel komplett",
+        "Enterprise-ready"
+      ],
+      "contra": [
+        "Sehr Enterprise-fokussiert",
+        "Solos brauchen nicht",
+        "Teuer"
+      ]
+    },
+    "glean": {
+      "pro": [
+        "Enterprise-Search Standard",
+        "Work-AI komplett",
+        "Teams > 50 ideal"
+      ],
+      "contra": [
+        "Für Solos Overkill",
+        "Teuer bei Scale",
+        "Kleine Mid-Market"
+      ]
+    },
+    "anthropic-mcp": {
+      "pro": [
+        "Offener Standard Tool-Calling",
+        "Claude/Cursor/Windsurf native",
+        "Agent-Zukunft"
+      ],
+      "contra": [
+        "Noch in Adoption Phase",
+        "Dokumentation gering",
+        "Ökosystem wächst"
+      ]
+    },
+    "ollama-cloud": {
+      "pro": [
+        "Sandbox-Code Execution",
+        "Agent-Workloads sauber",
+        "Pay-per-Second"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Feature-Limits",
+        "Lock-in Provider"
+      ]
+    },
+    "e2b": {
+      "pro": [
+        "Agent-Sandbox EU-basiert",
+        "Open-Source Kern",
+        "DACH-Compliance möglich"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Setup noch komplex",
+        "Markt-Volatilität"
+      ]
+    },
+    "langfuse": {
+      "pro": [
+        "Deutsche LLM-Observability",
+        "Self-Host verfügbar",
+        "DACH-Compliance nativ"
+      ],
+      "contra": [
+        "Noch neue Plattform",
+        "Kleine Community",
+        "Feature-Aufbau"
+      ]
+    },
+    "langsmith": {
+      "pro": [
+        "LangChain-Observability sauber",
+        "Tracing detailliert",
+        "Cost-Tracking"
+      ],
+      "contra": [
+        "Vendor-Lock LangChain",
+        "EU-Region erst 2026",
+        "Cloud-Only"
+      ]
+    },
+    "browser-use": {
+      "pro": [
+        "Browser-Agent Open-Source",
+        "Git-aware Automation",
+        "Python native"
+      ],
+      "contra": [
+        "Kleine Community",
+        "Feature-Volatilität",
+        "Markt-Risiko"
+      ]
+    }
+  }
+}

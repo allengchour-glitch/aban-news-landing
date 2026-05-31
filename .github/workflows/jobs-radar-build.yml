@@ -1,0 +1,44 @@
+name: KI-Jobs Radar — Auto-Build
+
+# Holt täglich frische KI-/ML-Jobs (Arbeitnow-API, kein Key) und baut die Seite neu.
+on:
+  schedule:
+    - cron: '0 5 * * *'        # täglich 05:00 UTC
+  push:
+    paths:
+      - 'jobs-radar/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Fetch jobs + generate board
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch latest AI jobs
+        run: |
+          cd jobs-radar
+          python fetch_jobs.py || echo "fetch failed — using existing jobs.json"
+      - name: Generate board
+        run: |
+          cd jobs-radar
+          python generate.py
+          find dist -type f | wc -l
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jobs-radar-dist
+          path: jobs-radar/dist
+          retention-days: 14
+      # Optional: commit the refreshed jobs.json back so the data is versioned.
+      # - name: Commit refreshed jobs.json
+      #   run: |
+      #     cd jobs-radar
+      #     git config user.name "jobs-radar-bot"
+      #     git config user.email "bot@users.noreply.github.com"
+      #     git add jobs.json && git commit -m "chore: refresh jobs.json" || true
+      #     git push || true

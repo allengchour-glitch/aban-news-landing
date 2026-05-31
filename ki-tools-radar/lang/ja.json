@@ -1,0 +1,1030 @@
+{
+  "ui": {
+    "tagline": "ドイツ語圏向けの正直なAIツール評価",
+    "all_tools": "← すべてのツール",
+    "categories": "カテゴリ",
+    "home_heading": "{n}個のAIツール、正直に評価",
+    "use_cases": "用途",
+    "editor_note": "編集メモ",
+    "dsgvo": "GDPR",
+    "pro": "長所",
+    "contra": "短所",
+    "alternatives": "代替案",
+    "cta": "{name}へ",
+    "best_in": "最高の{cat}ツール",
+    "dach": "DACH関連度",
+    "free": "無料",
+    "price_from": "から",
+    "language": "言語",
+    "privacy": "プライバシー",
+    "imprint": "運営者情報",
+    "data_note": "データ：キュレーションとAIリサーチによる",
+    "disclosure": "透明性：一部のリンクはアフィリエイトリンク（*で表示）です。経由して購入すると、当サイトが手数料を得ます。ただし、ご購入者には追加費用はかかりません。評価はこの事実から独立しています。",
+    "meta_home": "DACH地域向け{n}個のAIツール：正直な評価、価格、GDPR情報、長所と短所、代替案。",
+    "meta_tool": "{name}テスト評価：評価、長所と短所、価格、GDPR、代替案。",
+    "meta_cat": "最高の{cat}AIツール、正直に評価・比較。"
+  },
+  "tools": {
+    "claude": {
+      "aban_note": "ドイツ語テキストで最高のコンversational AI。毎日aban newsに利用。Sonnet 4.6がデフォルト、長い調査はOpusで、大量処理ならHaikuで対応。",
+      "dsgvo_note": "Anthropic APIでEU域内にデータを保管。リクエストで保持なし設定可能。",
+      "use_cases": ["テキスト作成", "リサーチ", "プログラミング", "PDF分析"],
+      "pro": ["ドイツ語出力が最高", "マルチモーダル対応", "コンテキスト長が長い"],
+      "contra": ["DeepSeekより高い", "EU主権ホスティングなし", "ベンダーロックイン傾向"]
+    },
+    "chatgpt": {
+      "aban_note": "標準装備。GPT-5は優れた万能型だが、ドイツの経済テキストではClaudeが一貫して優れている。ツール1つだけ持つなら、これがいい。",
+      "dsgvo_note": "",
+      "use_cases": ["テキスト作成", "リサーチ", "プログラミング", "画像生成"],
+      "pro": ["最も使用されている", "最大のエコシステム", "Web検索統合"],
+      "contra": ["ドイツ語がClaudeより劣る", "米国ベース処理", "大量API使用で高額"]
+    },
+    "gemini": {
+      "aban_note": "マルチモーダルと長コンテキストに強い。Google Workspace統合が有用。単独では、Claudeに対して二番手。",
+      "dsgvo_note": "",
+      "use_cases": ["リサーチ", "マルチモーダル", "Google Docsとの連携"],
+      "pro": ["マルチモーダル最高級", "Google統合", "コンテキスト長2M"],
+      "contra": ["ドイツ語品質が変動", "DACH関連度低い", "セキュリティ不透明"]
+    },
+    "mistral": {
+      "aban_note": "EU本拠（パリ）。コンプライアンス重視のDACH顧客には、今は安全な選択肢。BNP、Harvey AIなどの大型顧客がいることが信頼の証。",
+      "dsgvo_note": "",
+      "use_cases": ["テキスト作成", "プログラミング", "EU対応", "推論"],
+      "pro": ["EU本拠", "GDPR対応", "堅牢な言語モデル"],
+      "contra": ["市場シェア小さい", "統合エコシステム少ない", "パフォーマンスがClaudeに劣る"]
+    },
+    "deepseek": {
+      "aban_note": "価格破壊（OpenAI比-75～-99%）。大量API処理ではまるで敵わない。ただし、DACH営業データは経由させたくない—中国プロバイダー。",
+      "dsgvo_note": "",
+      "use_cases": ["大量API", "コスト最適化", "推論"],
+      "pro": ["破壊的な価格", "超高速トークン処理", "優秀な推論モデル"],
+      "contra": ["中国プロバイダー", "コンプライアンスリスク", "DACH向けに不適切"]
+    },
+    "perplexity": {
+      "aban_note": "リサーチツール#1。Sonar搭載のProで、Googleの80%を私は置き換えている。情報源の透明性が最大の強み。",
+      "dsgvo_note": "",
+      "use_cases": ["リサーチ", "ニュース追跡", "参考文献検索"],
+      "pro": ["最高のリサーチツール", "情報源の透明性", "Web検索統合"],
+      "contra": ["Webアクセス遅延時あり", "オフライン使用不可", "高い価格帯"]
+    },
+    "aleph-alpha": {
+      "aban_note": "ドイツのLLM、ハイデルベルク本拠。Pharia-1は規制業種（金融、医療、行政）向け。性能ではClaudeに劣るが、コンプライアンス責任者が「EU主権」を求めるなら、これが答え。セルフサービスなし。",
+      "dsgvo_note": "",
+      "use_cases": ["EU主権", "銀行", "医療", "行政"],
+      "pro": ["ドイツLLM", "EU主権", "高規制対応"],
+      "contra": ["性能が劣る", "エンタープライズ限定", "セルフサービスなし"]
+    },
+    "cowork": {
+      "aban_note": "3日間の実テスト（出版物002参照）。PDFレビュー、スライドデックの生成、生データからのExcelピボットに価値がある。週2回使用。魔法のツールではないが、実質的な時短。",
+      "dsgvo_note": "",
+      "use_cases": ["PDF分析", "スライド生成", "Excel処理"],
+      "pro": ["PDF処理に優秀", "スライド自動生成", "時短効果実証済み"],
+      "contra": ["高価な購読", "複雑なUIの場所あり", "一定タスク限定"]
+    },
+    "openrouter": {
+      "aban_note": "プラグマティックなマルチモデルルーター。API費用について他にはない。何ヶ月も無視していた—失敗だった。今はプロバイダー間のA/Bテストのデフォルト。",
+      "dsgvo_note": "",
+      "use_cases": ["マルチプロバイダーAPI", "コスト経路", "モデル試験"],
+      "pro": ["複数モデル対応", "柔軟な料金", "実験的利用に最適"],
+      "contra": ["マークアップ有り", "UIが単純", "デバッグが難しい場合あり"]
+    },
+    "n8n": {
+      "aban_note": "セルフホスト可能、GDPR対応、ドイツ企業。ニュースレター自動化のバックエンド。Make.comはもっと洗練されているが、n8nはもっと堅牢で制御可能。",
+      "dsgvo_note": "",
+      "use_cases": ["ワークフロー自動化", "ニュースレターパイプライン", "API統合"],
+      "pro": ["セルフホスト対応", "GDPR対応", "ドイツ企業"],
+      "contra": ["UIが複雑", "学習曲線あり", "セットアップが手間"]
+    },
+    "make": {
+      "aban_note": "見栄えの良いビジュアルビルダー。n8nより素早く始められる。しかし、ベンダーロックインと大量処理時の高コスト。ビギナー向けは素晴らしい、専門家向けにはn8n。",
+      "dsgvo_note": "",
+      "use_cases": ["ワークフロー自動化", "ノーコード統合"],
+      "pro": ["ビジュアルビルダー優秀", "低学習曲線", "多くのアプリ対応"],
+      "contra": ["ベンダーロックイン", "スケーリング時高額", "カスタマイズ限定"]
+    },
+    "zapier": {
+      "aban_note": "最大のエコシステム（7000以上のアプリ）。しかし、高額で論理が限定的。SaaS A→SaaS Bだけなら十分。AI ワークフロー用：MakeまたはN8N。",
+      "dsgvo_note": "",
+      "use_cases": ["SaaS統合", "クイックワークフロー"],
+      "pro": ["最大アプリ対応", "最も簡単", "安定性高い"],
+      "contra": ["高額", "カスタマイズ限定", "AI統合不十分"]
+    },
+    "cursor": {
+      "aban_note": "私のデフォルトエディタ。VSCodeフォークでClaudeとGPT統合。Composerモードが、Vibecoding向けゲームチェンジャー。プログラミングしてCursorなしは時間の無駄。",
+      "dsgvo_note": "",
+      "use_cases": ["Vibecoding", "コード改善", "ペアプログラミング"],
+      "pro": ["最高のAI統合", "Composerモード", "使いやすい"],
+      "contra": ["購読費が安くない", "VS Codeの乗り換え必須", "たまにバグあり"]
+    },
+    "windsurf": {
+      "aban_note": "Cursor競合。Cascade Modeはコンセプト的に洗練。試したが、Cursorの使い方が深く根付いている。新規参入者：堅牢な選択。",
+      "dsgvo_note": "",
+      "use_cases": ["Vibecoding", "プログラミング"],
+      "pro": ["Cascade Modeが優秀", "インターフェースが整理", "パフォーマンス優秀"],
+      "contra": ["Cursor人気に劣る", "ユーザーベース小さい", "拡張少ない"]
+    },
+    "github-copilot": {
+      "aban_note": "クラシック。今はClaudeオプション付き。堅牢な自動補完。Cursorはエージェントモードで優れているが、GitHub統合フローではCopilotが勝る。",
+      "dsgvo_note": "",
+      "use_cases": ["コード補完", "GitHub統合"],
+      "pro": ["GitHub統合", "信頼性高い", "企業利用多い"],
+      "contra": ["AIは基本的", "IDE限定", "カスタマイズ少ない"]
+    },
+    "claude-code": {
+      "aban_note": "ターミナルベースコーディングエージェント。50ファイルリファクタリング、テストカバレッジ向上などの日常ルーチン自動化に強い。CLI > GUI（パワーユーザー向け）。",
+      "dsgvo_note": "",
+      "use_cases": ["大量リファクタリング", "コードベース分析", "ターミナルプログラミング"],
+      "pro": ["バッチ処理に優秀", "ターミナル統合", "大規模リファクタリング対応"],
+      "contra": ["学習曲線有り", "GUI操作限定", "デバッグ難しい場合あり"]
+    },
+    "bolt": {
+      "aban_note": "ブラウザベースVibecoding。20分でランディングページ。ロックインと複雑化するとすぐ限界。MVPなら有用。",
+      "dsgvo_note": "",
+      "use_cases": ["MVP試作", "ランディングページ"],
+      "pro": ["高速プロトタイピング", "デプロイ簡単", "ブラウザのみで完結"],
+      "contra": ["スケーリング限定", "ロックイン有り", "カスタマイズ不可"]
+    },
+    "lovable": {
+      "aban_note": "Vibecodingビルダーとして非常に滑らか。出力美しい。初200プロンプト超過後スケーリング悪い。1つのサイドプロジェクトのみのソロ向け：OK。",
+      "dsgvo_note": "",
+      "use_cases": ["MVP試作", "Vibecoding"],
+      "pro": ["UI美しい", "プロンプト効率高い", "初心者向け"],
+      "contra": ["スケーリング限定", "複雑な機能不可", "長期プロジェクト不向き"]
+    },
+    "v0": {
+      "aban_note": "Next.js＋shadcnが最初からある。Vercelエコシステムにいるなら第一選択。違うなら：出力がReact固定で、選択肢限られる。",
+      "dsgvo_note": "",
+      "use_cases": ["React試作", "UI生成"],
+      "pro": ["Next.js統合", "Tailwind完備", "開発者向け"],
+      "contra": ["React限定", "Vercel依存", "カスタマイズ制限"]
+    },
+    "replit": {
+      "aban_note": "フルスタックMVPがブラウザ内、ホスティング含む。小さい完全アプリ向け。大量使用時の料金が厳しい。",
+      "dsgvo_note": "",
+      "use_cases": ["フルスタックMVP", "ホスティング統合"],
+      "pro": ["ホスティング統合", "フルスタック対応", "素早いデプロイ"],
+      "contra": ["料金が変動", "大規模プロジェクト不向き", "ベンダーロックイン"]
+    },
+    "midjourney": {
+      "aban_note": "画質の王様。v7は見事。マーケティング資材、編集用画像、コンセプトアート。Discord第一がうっとうしいが、Web UI最近機能する。",
+      "dsgvo_note": "",
+      "use_cases": ["マーケティング資材", "編集画像", "コンセプトアート"],
+      "pro": ["最高の画質", "多様なスタイル", "一貫性高い"],
+      "contra": ["Discord依存", "高価", "商用利用のグレー"]
+    },
+    "flux": {
+      "aban_note": "ドイツ企業（フライブルク）。Stable Diffusion開発者。Flux.1 Devは最高性能。オープンウェイト—DACH対応に理想的。",
+      "dsgvo_note": "",
+      "use_cases": ["画像生成", "セルフホスト", "DACH対応"],
+      "pro": ["ドイツ企業", "オープンウェイト", "高性能"],
+      "contra": ["Midjourneyより知名度低", "セットアップ複雑", "GPUリソース必須"]
+    },
+    "stable-diffusion": {
+      "aban_note": "オープンソース定番。セルフホスト可能。RTX搭載グラフィックカード持っているなら：ComfyUI + SD = ベンダー依存なし、画像無制限。",
+      "dsgvo_note": "",
+      "use_cases": ["セルフホスト画像生成", "大量画像生成"],
+      "pro": ["完全無料", "オープンソース", "ローカルプライバシー"],
+      "contra": ["セットアップ複雑", "GPUリソース必須", "品質がMidjourneyに劣る"]
+    },
+    "ideogram": {
+      "aban_note": "テキスト画像化で最高。ポスター、ロゴ、タイポグラフィ重視デザイン。フォトリアリズムでは弱い。",
+      "dsgvo_note": "",
+      "use_cases": ["タイポグラフィ", "ポスター", "ロゴ"],
+      "pro": ["テキスト描画最高", "タイポ特化", "ロゴ生成優秀"],
+      "contra": ["風景画は弱い", "値段が高い", "知名度低い"]
+    },
+    "krea": {
+      "aban_note": "リアルタイム画像生成＋マルチモデルバンドル。デザイナー向けで、出力制御が良い。Tier 1は制限的。",
+      "dsgvo_note": "",
+      "use_cases": ["リアルタイム設計", "画像生成"],
+      "pro": ["リアルタイム生成", "複数モデル対応", "細かい制御"],
+      "contra": ["無料版は限定", "UI複雑", "学習曲線有り"]
+    },
+    "recraft": {
+      "aban_note": "SVG生成＋ブランドスタイル一貫性。ブランド画像を一貫させるなら：最高。",
+      "dsgvo_note": "",
+      "use_cases": ["SVG生成", "ブランド一貫性"],
+      "pro": ["SVG出力", "ブランド一貫性", "スケーラビリティ"],
+      "contra": ["特殊用途", "知名度低い", "高額"]
+    },
+    "leonardo": {
+      "aban_note": "ゲームアセット。堅牢なUI。マーケティング出力としては二流。",
+      "dsgvo_note": "",
+      "use_cases": ["ゲームアセット", "コンセプトアート"],
+      "pro": ["ゲーム特化", "UI優秀", "イテレーション速い"],
+      "contra": ["実写性なし", "知名度低い", "マーケティング不向き"]
+    },
+    "playground": {
+      "aban_note": "無料枠が太っ腹。出力はまあまあで、稀に秀抜。趣味レベルOK。",
+      "dsgvo_note": "",
+      "use_cases": ["趣味画像生成"],
+      "pro": ["太っ腹な無料枠", "シンプルUI", "素早い"],
+      "contra": ["品質が不安定", "知名度低い", "商用不向き"]
+    },
+    "dalle": {
+      "aban_note": "今はMidjourney/Fluxに追い抜かれた。けど、ChatGPT統合で流れが無接続。スライド画像の素早さは十分。",
+      "dsgvo_note": "",
+      "use_cases": ["ChatGPT統合", "素早い画像"],
+      "pro": ["ChatGPT統合無し", "素早い", "説明文から画像"],
+      "contra": ["品質がMidjourney劣る", "カスタマイズ限定", "スタイル制御弱い"]
+    },
+    "adobe-firefly": {
+      "aban_note": "商用安全（ライセンス提供データ学習）。法務が必要な企業向け。Photoshop/Illustrator無縫統合。",
+      "dsgvo_note": "",
+      "use_cases": ["商用安全", "Adobe統合"],
+      "pro": ["商用安全", "Adobe統合", "企業向け"],
+      "contra": ["品質がMidjourneyに劣る", "高額", "Adobe依存"]
+    },
+    "sora": {
+      "aban_note": "ビデオ生成。興味深いが、2026でもマーケティング本番なし。デモクリップはOK。ヒーロービデオはダメ。",
+      "dsgvo_note": "",
+      "use_cases": ["ビデオデモ", "コンセプトビデオ"],
+      "pro": ["新技術", "高性能モデル", "ChatGPT統合可能"],
+      "contra": ["本番利用不可", "高額", "品質ばらつき"]
+    },
+    "runway": {
+      "aban_note": "Gen-4堅牢。ビデオAIツールスイート最高（Motion Brush、Inpainting）。本気で製作したいプロ向け。",
+      "dsgvo_note": "",
+      "use_cases": ["ビデオ編集", "VFX", "モーショングラフィックス"],
+      "pro": ["統合ツール", "プロ品質", "細かい制御"],
+      "contra": ["高額", "学習曲線有り", "GPU要求高い"]
+    },
+    "pika": {
+      "aban_note": "ショートフォームビデオ向けソーシャル。素早い導入。出力は短い時間限定。",
+      "dsgvo_note": "",
+      "use_cases": ["ショートフォームビデオ", "ソーシャルメディア"],
+      "pro": ["素早い", "ソーシャル最適化", "シンプル"],
+      "contra": ["出力時間短い", "品質限定", "商用不向き"]
+    },
+    "elevenlabs": {
+      "aban_note": "ドイツ音声が2026年に驚くほど自然。ポッドキャスト、ボイスオーバー、オーディオブック。ボイスクローンは不気味に優秀—倫理的懸念含む。",
+      "dsgvo_note": "",
+      "use_cases": ["ボイスオーバー", "ポッドキャスト", "オーディオブック"],
+      "pro": ["ドイツ語音声優秀", "自然な発音", "ボイスクローン"],
+      "contra": ["倫理的懸念", "高額", "ボイスクローン規制未整備"]
+    },
+    "suno": {
+      "aban_note": "音楽生成。ジングル、背景音楽、楽しみに。本格製作：DACHでの法的状況不明。",
+      "dsgvo_note": "",
+      "use_cases": ["ジングル", "背景音楽"],
+      "pro": ["楽しく操作", "多様なジャンル", "素早い"],
+      "contra": ["著作権グレー", "商用不適切", "品質ばらつき"]
+    },
+    "udio": {
+      "aban_note": "Suno競合。出力品質同等。ライセンス問題も同じくハッキリしない—商用利用は慎重に。",
+      "dsgvo_note": "",
+      "use_cases": ["音楽生成"],
+      "pro": ["多様なスタイル", "Suno代替", "素早い"],
+      "contra": ["著作権グレー", "商用リスク", "規制不明確"]
+    },
+    "murf": {
+      "aban_note": "堅牢なTTS定番。ドイツ音声OK。2026時点ではElevenLabsが前。",
+      "dsgvo_note": "",
+      "use_cases": ["ボイスオーバー", "TTS"],
+      "pro": ["信頼性", "TTS標準", "統合容易"],
+      "contra": ["音声品質がElevenより劣る", "カスタマイズ限定", "高額"]
+    },
+    "heygen": {
+      "aban_note": "AI アバターが文章を話す。40言語以上で口パク同期。マルチ言語マーケティング向けに強い。アバター出力は人工物と判別可能。",
+      "dsgvo_note": "",
+      "use_cases": ["AIアバタービデオ", "マルチ言語コンテンツ"],
+      "pro": ["多言語対応", "口パク同期", "シンプル"],
+      "contra": ["アバターが人工的", "高額", "カスタマイズ限定"]
+    },
+    "synthesia": {
+      "aban_note": "エンタープライズAIアバタ。テンプレート美しい。HeyGenより高額。L&D部門向けで、ソロ向けではない。",
+      "dsgvo_note": "",
+      "use_cases": ["企業研修", "AIアバタ"],
+      "pro": ["エンタープライズ品質", "テンプレート充実", "研修最適化"],
+      "contra": ["高額", "複雑", "ソロに不適切"]
+    },
+    "d-id": {
+      "aban_note": "写真から話す頭へ。低い導入障壁。HeyGenが今は出力品質で上回る。",
+      "dsgvo_note": "",
+      "use_cases": ["アバタビデオ"],
+      "pro": ["シンプル", "低い導入障壁", "素早い"],
+      "contra": ["品質がHeyGenより劣る", "カスタマイズ限定", "知名度低い"]
+    },
+    "descript": {
+      "aban_note": "トランスクリプト経由オーディオ/ビデオ編集。ポッドキャスター向けゲーム変更—テキスト内で単語削除すると、オーディオが従う。ボイスクローン（Overdub）は洗練。",
+      "dsgvo_note": "",
+      "use_cases": ["ポッドキャスト編集", "トランスクリプトベース編集"],
+      "pro": ["トランスクリプト編集", "ボイスクローン", "効率的"],
+      "contra": ["音声品質が変動", "高額", "複雑なビデオは限定"]
+    },
+    "veed": {
+      "aban_note": "ブラウザビデオ編集、AI補助付き。字幕生成は優秀。パワー編集には限定的。",
+      "dsgvo_note": "",
+      "use_cases": ["ブラウザビデオ編集", "字幕"],
+      "pro": ["ブラウザベース", "字幕優秀", "シンプル"],
+      "contra": ["パワー編集向けでない", "エクスポート限定", "高額"]
+    },
+    "capcut": {
+      "aban_note": "モバイル優先編集、AI機能付き。TikTok パイプライン内蔵ツール。データ保護懸念：ByteDance。",
+      "dsgvo_note": "",
+      "use_cases": ["モバイル編集", "ソーシャルビデオ"],
+      "pro": ["モバイル最適", "TikTok統合", "シンプル"],
+      "contra": ["ByteDance懸念", "デスクトップ限定", "エクスポート限定"]
+    },
+    "otter": {
+      "aban_note": "ミーティングトランスクリプト定番。ドイツ語OK、完璧ではない。英語ミーティング向けは1A。",
+      "dsgvo_note": "",
+      "use_cases": ["ミーティングトランスクリプト", "メモ"],
+      "pro": ["ミーティング統合", "信頼性", "多言語対応"],
+      "contra": ["ドイツ語品質限定", "高額", "編集機能限定"]
+    },
+    "fireflies": {
+      "aban_note": "Otterのような、CRM統合が良好。ドイツ言語モデル同等にOK。料金が顧客フレンドリー。",
+      "dsgvo_note": "",
+      "use_cases": ["ミーティングAI", "CRM統合"],
+      "pro": ["CRM統合優秀", "料金配慮", "多言語対応"],
+      "contra": ["Otterほど知名度ない", "品質変動", "セットアップ複雑"]
+    },
+    "granola": {
+      "aban_note": "新しいデフォルト。ミーティングボット不要—Macバックグラウンドで実行。ドイツミーティングのメモアウトプットは一流。Otterを置き換え。",
+      "dsgvo_note": "",
+      "use_cases": ["ミーティングAI", "ドイツ語特化"],
+      "pro": ["バックグラウンド実行", "ドイツ語最高", "ボットなし"],
+      "contra": ["Mac限定", "高額", "統合限定"]
+    },
+    "tldv": {
+      "aban_note": "ドイツ企業（ミュンヘン）。マルチ言語パフォーマンス良好。ボットイン ミーティングワークフロー。Granulaはもっとエレガント解決。",
+      "dsgvo_note": "",
+      "use_cases": ["ミーティングAI", "DACH対応"],
+      "pro": ["ドイツ企業", "多言語対応", "統合豊富"],
+      "contra": ["ボット方式", "高額", "Granola劣る"]
+    },
+    "krisp": {
+      "aban_note": "通話ノイズキャンセル。信頼性高く淡々と機能。2025年からAIミーティングメモ組み込み。",
+      "dsgvo_note": "",
+      "use_cases": ["ノイズキャンセル", "通話品質"],
+      "pro": ["ノイズキャンセル優秀", "信頼性", "統合容易"],
+      "contra": ["単機能", "ミーティング記録限定", "高額"]
+    },
+    "fathom": {
+      "aban_note": "太っ腹な無料枠（無制限ミーティング）。米国向け。ドイツ音声品質OK。",
+      "dsgvo_note": "",
+      "use_cases": ["ミーティングAI", "無料パワーユーザー"],
+      "pro": ["太っ腹無料枠", "シンプル", "信頼性"],
+      "contra": ["米国向け", "有料機能は限定", "知名度低い"]
+    },
+    "deepl": {
+      "aban_note": "ドイツ企業（ケルン）。DE↔EN翻訳の最高。Writeはgrammarlyライバル—ドイツ語で堅牢。Pro契約は全DACHソロの標準装備。",
+      "dsgvo_note": "",
+      "use_cases": ["DE↔EN翻訳", "テキスト改善", "API"],
+      "pro": ["翻訳最高", "ドイツ語改善優秀", "ドイツ企業"],
+      "contra": ["高額", "言語限定", "API制限"]
+    },
+    "deepl-write": {
+      "aban_note": "ドイツ向け明確にgrammarlyを超える。スタイル調整（ビジネス、学術、カジュアル）機能。14日テスト（出版物017）。",
+      "dsgvo_note": "",
+      "use_cases": ["ドイツテキスト改善", "スタイル変更"],
+      "pro": ["ドイツ語最高", "スタイル調整優秀", "自然な改善"],
+      "contra": ["高額", "英語は弱い", "単一言語"]
+    },
+    "grammarly": {
+      "aban_note": "英語リファイナー。ドイツテキスト用に弱い—DeepL WriteまたはLanguageToolを使用。英語対外発信OK。",
+      "dsgvo_note": "",
+      "use_cases": ["英語文法"],
+      "pro": ["英語強い", "統合充実", "信頼性"],
+      "contra": ["ドイツ語弱い", "高額", "プライバシー懸念"]
+    },
+    "languagetool": {
+      "aban_note": "ドイツ企業（ポツダム）。オープンソース中核。ドイツ言語スタイル問題でDudenリファイナーより強い。セルフホスト可能。",
+      "dsgvo_note": "",
+      "use_cases": ["ドイツ文法", "セルフホスト改善"],
+      "pro": ["ドイツ企業", "オープンソース", "セルフホスト可能"],
+      "contra": ["UIが古い", "高額", "サポート限定"]
+    },
+    "tavily": {
+      "aban_note": "エージェント向けサーチAPI。AIエージェントがWebリサーチを必要なら、TavilyはデフォルトDACH。SerpAPIより安い。",
+      "dsgvo_note": "",
+      "use_cases": ["エージェント検索", "RAG"],
+      "pro": ["エージェント最適化", "安価", "信頼性"],
+      "contra": ["Web検索のみ", "カスタマイズ限定", "知名度低い"]
+    },
+    "exa": {
+      "aban_note": "セマンティック検索API。キーワード検索より概念に似たコンテンツ検出。Research Agents向け理想的。",
+      "dsgvo_note": "",
+      "use_cases": ["セマンティック検索", "RAG", "リサーチ"],
+      "pro": ["セマンティック強い", "品質高い", "エージェント最適化"],
+      "contra": ["高額", "知名度低い", "セットアップ複雑"]
+    },
+    "you": {
+      "aban_note": "AI検索＋複数モード（コード、リサーチ）。Perplexity 2026がより優秀。Youはニッチ保持。",
+      "dsgvo_note": "",
+      "use_cases": ["AI検索", "複数モード検索"],
+      "pro": ["マルチモード", "カスタマイズ可", "統合優秀"],
+      "contra": ["Perplexity優位", "知名度低い", "品質変動"]
+    },
+    "phind": {
+      "aban_note": "開発者向け検索。コード焦点回答+参考元。Stack Overflow置き換えに有用。",
+      "dsgvo_note": "",
+      "use_cases": ["開発者検索", "コード検索"],
+      "pro": ["コード焦点", "参考元付き", "開発者向け"],
+      "contra": ["一般向けでない", "知名度低い", "品質限定"]
+    },
+    "kagi": {
+      "aban_note": "有料検索（広告なし）、AI補助付き。毎日Googleを使う人向け：新鮮。お金かかるが価値ある。",
+      "dsgvo_note": "",
+      "use_cases": ["広告フリー検索", "パワー検索"],
+      "pro": ["広告フリー", "プライバシー", "カスタマイズ優秀"],
+      "contra": ["有料", "知名度低い", "高額"]
+    },
+    "brave": {
+      "aban_note": "独自インデックス。プライバシーファースト。AI サマリ統合。Google代替としてトラッキングなし。",
+      "dsgvo_note": "",
+      "use_cases": ["プライバシー検索", "トラッキングフリー"],
+      "pro": ["プライバシー優秀", "独自インデックス", "シンプル"],
+      "contra": ["検索品質がGoogle劣る", "知名度低い", "カスタマイズ限定"]
+    },
+    "groq": {
+      "aban_note": "推論スピードチャンピオン。Llama、Mixtral超高トークン/秒。レイテンシ感度ありアプリ構築：第一選択。",
+      "dsgvo_note": "",
+      "use_cases": ["低レイテンシ推論", "リアルタイムAI"],
+      "pro": ["速度最高", "トークン処理超高速", "信頼性"],
+      "contra": ["モデル選択限定", "新しい", "サポート限定"]
+    },
+    "together-ai": {
+      "aban_note": "オープンソースモデル（Llama、Mixtral、Qwen）API。安価推論、モデル選択良好。",
+      "dsgvo_note": "",
+      "use_cases": ["オープンソースAPI", "マルチモデルホスティング"],
+      "pro": ["安価", "モデル選択豊富", "オープンソース"],
+      "contra": ["サポート限定", "品質変動", "知名度低い"]
+    },
+    "cerebras": {
+      "aban_note": "カスタムチップ、超高速推論。Llama ホスティング一流。モデル選択がGroqより限定。",
+      "dsgvo_note": "",
+      "use_cases": ["高速推論"],
+      "pro": ["速度優秀", "カスタムハード", "Llama最高"],
+      "contra": ["モデル限定", "知名度低い", "高額"]
+    },
+    "replicate": {
+      "aban_note": "オープンソースモデルAPIホスト。画像/音声/ビデオモデル含む。プロトタイプ型に優秀。",
+      "dsgvo_note": "",
+      "use_cases": ["モデルプロトタイピング", "マルチモーダルAPI"],
+      "pro": ["マルチモーダル", "プロトタイピング優秀", "デプロイ容易"],
+      "contra": ["高額", "品質限定", "大規模本番不向き"]
+    },
+    "hugging-face": {
+      "aban_note": "AI版GitHub。推論エンドポイント堅牢。Dataset Libraryは研究家向け金鉱。",
+      "dsgvo_note": "",
+      "use_cases": ["モデルホスティング", "データセット", "オープンソースAI"],
+      "pro": ["コミュニティ大", "リソース豊富", "研究家向け"],
+      "contra": ["セットアップ複雑", "UI古い", "サポート限定"]
+    },
+    "langchain": {
+      "aban_note": "LLMアプリフレームワーク。議論多し：過度なエンジニアリングと見なす人も。標準パターンはOK、カスタムロジックなら直書き。",
+      "dsgvo_note": "",
+      "use_cases": ["エージェントフレームワーク", "LLMパイプライン"],
+      "pro": ["エコシステム大", "統合豊富", "学習リソース充実"],
+      "contra": ["複雑すぎる", "過度なエンジニアリング", "パフォーマンス問題"]
+    },
+    "llamaindex": {
+      "aban_note": "RAGフレームワーク。LangChainより細い。取得ユースケース：洗練な選択。",
+      "dsgvo_note": "",
+      "use_cases": ["RAG", "ドキュメント検索"],
+      "pro": ["RAG特化", "シンプル", "パフォーマンス優秀"],
+      "contra": ["用途限定", "コミュニティ小", "ドキュメント限定"]
+    },
+    "weaviate": {
+      "aban_note": "EU拠点ベクトルDB。オランダ、GDPR対応。本番対応。オープンソース中核。",
+      "dsgvo_note": "",
+      "use_cases": ["ベクトル検索", "RAG", "EU対応"],
+      "pro": ["EU企業", "GDPR対応", "本番対応"],
+      "contra": ["セットアップ複雑", "高額", "知名度低い"]
+    },
+    "qdrant": {
+      "aban_note": "ドイツベクトルDB（ベルリン）。オープンソース。セルフホスト可能。パフォーマンス一流。DACH RAGセットアップ：第一選択。",
+      "dsgvo_note": "",
+      "use_cases": ["ベクトル検索", "DACH対応", "セルフホストRAG"],
+      "pro": ["ドイツ企業", "オープンソース", "パフォーマンス最高"],
+      "contra": ["セットアップ複雑", "UI初心者向けでない", "サポート限定"]
+    },
+    "pinecone": {
+      "aban_note": "マネージドベクトルDB。米国クラウド限定。便利だが、ロックイン。DACH対応：Qdrant採用。",
+      "dsgvo_note": "",
+      "use_cases": ["マネージドベクトルDB"],
+      "pro": ["セットアップ簡単", "マネージド", "スケーラブル"],
+      "contra": ["ロックイン有り", "米国限定", "高額"]
+    },
+    "chroma": {
+      "aban_note": "細いベクトルDB（ローカル開発と小さいプロトタイプ向け）。本番向け：Qdrantに移行。",
+      "dsgvo_note": "",
+      "use_cases": ["ローカル開発", "プロトタイピング"],
+      "pro": ["シンプル", "セットアップ容易", "オープンソース"],
+      "contra": ["本番向けでない", "スケーリング限定", "機能限定"]
+    },
+    "notion-ai": {
+      "aban_note": "NotionワークスペースAI。Q&A機能。Notion内専用。外のワークフロー：価値不高。",
+      "dsgvo_note": "",
+      "use_cases": ["Notion統合AI"],
+      "pro": ["Notion統合", "シンプル", "便利"],
+      "contra": ["Notion限定", "高額", "機能限定"]
+    },
+    "mem": {
+      "aban_note": "スマートメモ、自動タグ付け。セマンティック検索好調。モバイルアプリ堅牢。",
+      "dsgvo_note": "",
+      "use_cases": ["スマートメモ", "自動タグ付け"],
+      "pro": ["タグ自動化", "検索優秀", "UI優秀"],
+      "contra": ["知名度低い", "小規模", "エクスポート限定"]
+    },
+    "reflect": {
+      "aban_note": "メモアプリ、GPT-4統合。非常にクリーン。日次メモ＋バックリンク（Roam型）、AI上乗せ。",
+      "dsgvo_note": "",
+      "use_cases": ["日次メモ", "バックリンク", "AI補強"],
+      "pro": ["UI優秀", "AI統合", "バックリンク"],
+      "contra": ["小規模", "エクスポート限定", "知名度低い"]
+    },
+    "obsidian": {
+      "aban_note": "ローカルファースト、プレーンMarkdown。プラグイン（Copilot、Smart Connections）でAI対応。4年間の第二の脳。",
+      "dsgvo_note": "",
+      "use_cases": ["ローカルメモ", "Markdown", "Zettelkasten"],
+      "pro": ["完全ローカル", "プライバシー優秀", "エコシステム豊富"],
+      "contra": ["セットアップ複雑", "UI古い", "モバイル限定"]
+    },
+    "loom": {
+      "aban_note": "スクリーン記録、AI字幕+要約付き。非同期顧客更新向け金の価値。無料枠はソロ十分。",
+      "dsgvo_note": "",
+      "use_cases": ["スクリーン記録", "非同期コミュニケーション"],
+      "pro": ["字幕優秀", "要約機能", "共有簡単"],
+      "contra": ["高額", "オフライン不可", "プライバシー懸念"]
+    },
+    "capso": {
+      "aban_note": "オープンソース Loom代替。EU ホスティング可能。DACH データ保護向け有用。",
+      "dsgvo_note": "",
+      "use_cases": ["オープンソース記録", "DACH対応"],
+      "pro": ["オープンソース", "EU対応", "セルフホスト可能"],
+      "contra": ["知名度低い", "UI限定", "サポート不十分"]
+    },
+    "jasper": {
+      "aban_note": "マーケティング用テキストツール。2023年は熱かった。Claude/ChatGPTに今は追い抜かれ。テンプレートはもう秀抜でない。",
+      "dsgvo_note": "",
+      "use_cases": ["マーケティング執筆"],
+      "pro": ["テンプレート充実", "マーケ特化", "使いやすい"],
+      "contra": ["AI がClaude劣る", "高額", "知名度低下"]
+    },
+    "copy-ai": {
+      "aban_note": "マーケティング用ワークフロー。営業チーム向けAI未習熟OK。ソロマーケター：Claude十分。",
+      "dsgvo_note": "",
+      "use_cases": ["マーケティングワークフロー", "セールス執筆"],
+      "pro": ["ワークフロー多い", "チーム向け", "テンプレート"],
+      "contra": ["AI基本", "高額", "ソロ向けでない"]
+    },
+    "writesonic": {
+      "aban_note": "テキスト生成ツール。Claudeより質が低。Chatsonicは独立チャット—ChatGPT優秀。",
+      "dsgvo_note": "",
+      "use_cases": ["大量コンテンツ"],
+      "pro": ["テンプレート充実", "速い", "シンプル"],
+      "contra": ["品質がClaudeに劣る", "チャット限定", "高額"]
+    },
+    "sudowrite": {
+      "aban_note": "フィクション執筆AI。小説著者向け特化。英語優先。ドイツ語OK。",
+      "dsgvo_note": "",
+      "use_cases": ["フィクション執筆", "ストーリービート"],
+      "pro": ["フィクション特化", "AI補強優秀", "著者向け"],
+      "contra": ["特殊用途", "英語優先", "知名度低い"]
+    },
+    "lex": {
+      "aban_note": "AI補強テキストエディタ。インラインAI呼び出し（マーク部分）。完全無雑念UI。",
+      "dsgvo_note": "",
+      "use_cases": ["AI補強執筆"],
+      "pro": ["UI優秀", "AI統合スムーズ", "プライバシー優秀"],
+      "contra": ["知名度低い", "機能限定", "高額"]
+    },
+    "wordtune": {
+      "aban_note": "文言改写。英語優先。ドイツ語に弱い。",
+      "dsgvo_note": "",
+      "use_cases": ["英語改写"],
+      "pro": ["英語改写優秀", "統合容易", "素早い"],
+      "contra": ["ドイツ語弱い", "機能限定", "高額"]
+    },
+    "quillbot": {
+      "aban_note": "改写＋文法。英語強い。盗作チェック便利なボーナス。",
+      "dsgvo_note": "",
+      "use_cases": ["改写"],
+      "pro": ["改写優秀", "盗作チェック", "シンプル"],
+      "contra": ["ドイツ語弱い", "機能限定", "高額"]
+    },
+    "anyword": {
+      "aban_note": "マーケティングテキスト、パフォーマンス スコア付き。英語優先。ソロ向け高額。",
+      "dsgvo_note": "",
+      "use_cases": ["広告テキスト", "パフォーマンス マーケティング"],
+      "pro": ["スコアリング", "マーケ特化", "データ駆動"],
+      "contra": ["英語優先", "高額", "ドイツ語対応なし"]
+    },
+    "profound": {
+      "aban_note": "生成エンジン最適化追跡。ブランドがChatGPT、Claude、Perplexity登場するか測定。2026でそれはGoogle順位2010年。",
+      "dsgvo_note": "",
+      "use_cases": ["GEO追跡", "ブランドLLM監視"],
+      "pro": ["新しい技術", "LLM内品質", "追跡精度"],
+      "contra": ["新しい", "高額", "データ限定"]
+    },
+    "athenahq": {
+      "aban_note": "GEO追跡競合（Profound）。ミッド市場価格。ドイツ語レポートOK。",
+      "dsgvo_note": "",
+      "use_cases": ["GEO", "ブランド監視"],
+      "pro": ["GEO対応", "報告優秀", "価格配慮"],
+      "contra": ["新しい", "知名度低い", "データ限定"]
+    },
+    "otterly": {
+      "aban_note": "オーストリア企業（ウィーン）。DACH言語優先。中小企業のGEO導入。",
+      "dsgvo_note": "",
+      "use_cases": ["GEO DACH", "KMU ブランド監視"],
+      "pro": ["DACH企業", "言語優先", "価格配慮"],
+      "contra": ["知名度低い", "データ限定", "新しい"]
+    },
+    "ahrefs": {
+      "aban_note": "SEO標準。バックリンク、キーワード、サイト監査。AI機能は脇。インデックスが価値。",
+      "dsgvo_note": "",
+      "use_cases": ["SEO", "バックリンク分析"],
+      "pro": ["インデックス最高", "機能充実", "信頼性"],
+      "contra": ["高額", "UI複雑", "学習曲線有り"]
+    },
+    "semrush": {
+      "aban_note": "Ahrefs より広い（広告インテル含む）。高額。両方やるなら：SEMrush。",
+      "dsgvo_note": "",
+      "use_cases": ["SEO", "競合広告", "マーケティング全般"],
+      "pro": ["広い機能", "広告インテル", "統合優秀"],
+      "contra": ["最高額", "UI複雑", "契約ロック"]
+    },
+    "surfer": {
+      "aban_note": "オンページSEO最適化、AI執筆付き。コンテンツスコア最適化：英語好調、ドイツ語OK。",
+      "dsgvo_note": "",
+      "use_cases": ["オンページSEO", "コンテンツ最適化"],
+      "pro": ["最適化優秀", "AI執筆付き", "直感的"],
+      "contra": ["高額", "ドイツ語限定", "知名度低い"]
+    },
+    "frase": {
+      "aban_note": "SEO コンテンツ概要生成。Surfer より安い。コンテンツマーケター向け堅牢。",
+      "dsgvo_note": "",
+      "use_cases": ["コンテンツ概要", "SERP分析"],
+      "pro": ["概要優秀", "価格配慮", "シンプル"],
+      "contra": ["機能限定", "知名度低い", "ドイツ語サポート弱い"]
+    },
+    "marketmuse": {
+      "aban_note": "トピック クラスター戦略（エンタープライズ コンテンツ）。ソロ向けは過大。",
+      "dsgvo_note": "",
+      "use_cases": ["エンタープライズSEO"],
+      "pro": ["トピック戦略", "エンタープライズ向け", "データ駆動"],
+      "contra": ["高額", "複雑", "ソロ向けでない"]
+    },
+    "canva": {
+      "aban_note": "Magic Studio が Canva を AI デザイン プラットフォーム化。DACH ソロ向け最実用的デザイン。テンプレート+AI=素早い使える出力。",
+      "dsgvo_note": "",
+      "use_cases": ["デザイン", "ソーシャルテンプレート", "プレゼンテーション"],
+      "pro": ["テンプレート充実", "AI生成優秀", "使いやすい"],
+      "contra": ["テンプレート依存", "高額", "カスタマイズ限定"]
+    },
+    "figma": {
+      "aban_note": "AI 機能（Make Designs、Make Prototype）は堅牢。UI デザインの標準。",
+      "dsgvo_note": "",
+      "use_cases": ["UIデザイン", "プロトタイピング"],
+      "pro": ["UI デザイン標準", "AI 機能良好", "コラボ優秀"],
+      "contra": ["高額", "学習曲線有り", "オフライン限定"]
+    },
+    "gamma": {
+      "aban_note": "AI スライド（テキスト化）。Decktopus より見栄えがいい。PowerPoint+AI より速い。ピッチデック向け有用。",
+      "dsgvo_note": "",
+      "use_cases": ["AI スライド", "ピッチデック"],
+      "pro": ["デザイン優秀", "AI生成速い", "使いやすい"],
+      "contra": ["テンプレート限定", "カスタマイズ限定", "高額"]
+    },
+    "tome": {
+      "aban_note": "営業ツールへの転換。AI スライドまだあるが、Gamma 超越。",
+      "dsgvo_note": "",
+      "use_cases": ["営業デック", "AI スライド"],
+      "pro": ["営業機能", "テンプレート", "統合"],
+      "contra": ["AI劣る", "高額", "知名度低下"]
+    },
+    "beautiful-ai": {
+      "aban_note": "スマートテンプレート、自動レイアウト。堅牢だが驚くほどではない。",
+      "dsgvo_note": "",
+      "use_cases": ["自動レイアウトスライド"],
+      "pro": ["レイアウト自動化", "テンプレート", "シンプル"],
+      "contra": ["デザイン限定", "知名度低い", "高額"]
+    },
+    "ollama": {
+      "aban_note": "ローカル LLM (Mac/PC)。Llama、Mistral、Qwen ローカル実行。GDPR 厳しい場合：味方。ハード hungry。",
+      "dsgvo_note": "",
+      "use_cases": ["ローカルLLM", "GDPR対応", "オフラインAI"],
+      "pro": ["完全ローカル", "プライバシー優秀", "オープンソース"],
+      "contra": ["GPU 要求高い", "セットアップ複雑", "パフォーマンス限定"]
+    },
+    "lm-studio": {
+      "aban_note": "ローカル LLM GUI。Ollama CLI より入りやすい。API モード自身のアプリから。",
+      "dsgvo_note": "",
+      "use_cases": ["ローカル LLM GUI", "オフライン試験"],
+      "pro": ["UI 優秀", "セットアップ簡単", "API モード"],
+      "contra": ["知名度低い", "パフォーマンス限定", "複雑性"]
+    },
+    "open-webui": {
+      "aban_note": "Ollama 向け ChatGPT クローン。セルフホスト。チーム が ローカル AI 必要なら：これ。",
+      "dsgvo_note": "",
+      "use_cases": ["セルフホストチャット", "チームローカルAI"],
+      "pro": ["ChatGPT互換", "セルフホスト", "チーム対応"],
+      "contra": ["Ollama依存", "セットアップ複雑", "UI初心者向けでない"]
+    },
+    "lovable-translate-deepl": {
+      "aban_note": "ソフトウェア ローカライゼーション。AI が JSON/i18n ファイル翻訳。マルチランゲージ アプリ向け有用。",
+      "dsgvo_note": "",
+      "use_cases": ["ソフトウェアローカライゼーション", "i18n"],
+      "pro": ["自動翻訳", "ファイル対応", "多言語対応"],
+      "contra": ["知名度低い", "品質限定", "手動修正必須"]
+    },
+    "browserbase": {
+      "aban_note": "ヘッドレスブラウザ クラウド（AI エージェント向け）。AI エージェント が Web サイト操作するなら：堅牢。",
+      "dsgvo_note": "",
+      "use_cases": ["エージェントブラウザ操作"],
+      "pro": ["エージェント最適化", "インフラ堅牢", "スケーラブル"],
+      "contra": ["高額", "複雑", "知名度低い"]
+    },
+    "browse-ai": {
+      "aban_note": "ビジュアル スクレーパー。フィールドをクリック。AI 抽出。リストビルディング & 監視向け。",
+      "dsgvo_note": "",
+      "use_cases": ["スクレイピング", "監視"],
+      "pro": ["ビジュアルスクレイピング", "簡単", "監視機能"],
+      "contra": ["法的懸念", "知名度低い", "スケーリング限定"]
+    },
+    "apify": {
+      "aban_note": "EU 本拠（チェコ）。スクレーパー ライブラリ最大。データ パイプライン向け パワー ユーザー ツール。",
+      "dsgvo_note": "",
+      "use_cases": ["Webスクレイピング", "データパイプライン"],
+      "pro": ["ライブラリ最大", "EU企業", "パワーユーザー向け"],
+      "contra": ["複雑", "高額", "法的懸念"]
+    },
+    "bardeen": {
+      "aban_note": "ブラウザ 自動化（Knowledge Worker 向け）。Zapier for your browser（ほぼ）。AI Playbook は素敵。",
+      "dsgvo_note": "",
+      "use_cases": ["ブラウザワークフロー", "知識労働自動化"],
+      "pro": ["AI Playbook", "ブラウザ統合", "簡単"],
+      "contra": ["知名度低い", "機能限定", "スケーリング限定"]
+    },
+    "clay": {
+      "aban_note": "営業インテリジェンス + リード エンリッチ。Lead-Gen チーム向け パワー ツール。高額。機能するなら 1 週間で ROI 回収。",
+      "dsgvo_note": "",
+      "use_cases": ["リード エンリッチ", "営業インテリジェンス"],
+      "pro": ["エンリッチ優秀", "営業データ充実", "ROI 高い"],
+      "contra": ["最高額", "複雑", "チーム向け"]
+    },
+    "apollo": {
+      "aban_note": "営業 DB + アウトリーチ スイート。DACH で要注意（データ品質が DE で変動）。米国データはプレミアム。",
+      "dsgvo_note": "",
+      "use_cases": ["B2B データベース", "アウトリーチ"],
+      "pro": ["データベース充実", "統合優秀", "信頼性"],
+      "contra": ["データ品質限定", "高額", "GDPR懸念"]
+    },
+    "lusha": {
+      "aban_note": "Contact エンリッチ。GDPR 問題記録あり—慎重に。米国データ OK。",
+      "dsgvo_note": "",
+      "use_cases": ["Contact Data"],
+      "pro": ["データ充実", "速い", "統合容易"],
+      "contra": ["GDPR懸念", "データ品質限定", "高額"]
+    },
+    "intercom-fin": {
+      "aban_note": "サポート AI エージェント。50% 自動解決可能。Resolution ごと高額。大量サポート：数字が機能。",
+      "dsgvo_note": "",
+      "use_cases": ["サポート自動化"],
+      "pro": ["自動解決率高い", "統合優秀", "ROI可視化"],
+      "contra": ["高額", "複雑", "チーム向け"]
+    },
+    "zendesk-ai": {
+      "aban_note": "Zendesk AI add-on。Zendesk 既存なら：有効化。Standalone 価値：低い。",
+      "dsgvo_note": "",
+      "use_cases": ["ヘルプデスクAI"],
+      "pro": ["Zendesk統合", "シンプル", "費用対効果"],
+      "contra": ["Zendesk依存", "機能限定", "単独価値低い"]
+    },
+    "aider": {
+      "aban_note": "ターミナル コーディング エージェント。Git 認識、マルチファイル。オープンソース。Cursor 使う Power User 向け洗練代替。",
+      "dsgvo_note": "",
+      "use_cases": ["ターミナルコーディング", "オープンソースエージェント"],
+      "pro": ["オープンソース", "Git統合", "パワーユーザー向け"],
+      "contra": ["学習曲線有り", "UI限定", "初心者向けでない"]
+    },
+    "cline": {
+      "aban_note": "VSCode Extension エージェント。Plan+Act モード。考え抜かれた。オープンソース。",
+      "dsgvo_note": "",
+      "use_cases": ["VSCode エージェント", "プログラミング"],
+      "pro": ["VSCode統合", "Plan/Act モード優秀", "オープンソース"],
+      "contra": ["知名度低い", "VSCode限定", "サポート限定"]
+    },
+    "tabnine": {
+      "aban_note": "プライバシー優先 Code Completion。エンタープライズ セルフホスト対応。Compliance-Heavy 企業向け。",
+      "dsgvo_note": "",
+      "use_cases": ["プライバシーファースト コーディング", "エンタープライズセルフホスト"],
+      "pro": ["プライバシー優秀", "セルフホスト対応", "Compliance対応"],
+      "contra": ["パフォーマンス限定", "高額", "知名度低い"]
+    },
+    "cody": {
+      "aban_note": "Sourcegraph Codebase 認識 AI。大型 Repo 向け。Monorepo なら強い。Solo：Cursor OK。",
+      "dsgvo_note": "",
+      "use_cases": ["エンタープライズ コードベース", "コード検索"],
+      "pro": ["コードベース認識", "大規模対応", "検索優秀"],
+      "contra": ["高額", "エンタープライズ限定", "Solo不向き"]
+    },
+    "warp": {
+      "aban_note": "AI ターミナル。Agent モード（マルチステップ）。見栄えの良い UI。クラウド同期—プライバシー懸念。",
+      "dsgvo_note": "",
+      "use_cases": ["AI ターミナル"],
+      "pro": ["UI優秀", "エージェント機能", "統合優秀"],
+      "contra": ["クラウド同期懸念", "高額", "知名度低い"]
+    },
+    "codex": {
+      "aban_note": "OpenAI Coding エージェント。クラウド基盤。機能するが、Claude Code ターミナルがまあ。",
+      "dsgvo_note": "",
+      "use_cases": ["クラウドコーディング エージェント"],
+      "pro": ["OpenAI統合", "クラウド基盤", "安定性"],
+      "contra": ["高額", "ターミナル限定", "Claude Code優位"]
+    },
+    "pipedream": {
+      "aban_note": "Code + No-Code ハイブリッド。JavaScript でワークフロー書きたい Dev 向け。",
+      "dsgvo_note": "",
+      "use_cases": ["コード ハイブリッド ワークフロー"],
+      "pro": ["コード/UI ハイブリッド", "JavaScript対応", "統合多い"],
+      "contra": ["学習曲線有り", "高額", "知名度低い"]
+    },
+    "windmill": {
+      "aban_note": "セルフホスト ワークフロー エンジン。EU 本拠（パリ）。n8n が限定的。コード望むなら。",
+      "dsgvo_note": "",
+      "use_cases": ["セルフホスト自動化", "EU対応"],
+      "pro": ["セルフホスト対応", "EU企業", "コード対応"],
+      "contra": ["知名度低い", "セットアップ複雑", "サポート限定"]
+    },
+    "supabase": {
+      "aban_note": "オープンソース Firebase。EU ホスティング。pgvector 含む。Solo Dev 向け バックエンド 構築セット。",
+      "dsgvo_note": "",
+      "use_cases": ["バックエンド", "ベクトル検索", "EU ホスティング"],
+      "pro": ["EU ホスティング", "オープンソース", "pgvector対応"],
+      "contra": ["セットアップ複雑", "学習曲線有り", "サポート限定"]
+    },
+    "vercel-ai": {
+      "aban_note": "TypeScript AI SDK。LangChain より標準 Use-Case クリーン。Next.js なら第一。",
+      "dsgvo_note": "",
+      "use_cases": ["TypeScript AI", "Next.js 統合"],
+      "pro": ["シンプル", "Next.js統合", "パフォーマンス優秀"],
+      "contra": ["Vercel依存", "機能限定", "複雑プロジェクト不向き"]
+    },
+    "modal": {
+      "aban_note": "Serverless GPU コンピュート。カスタム モデル デプロイ（インフラ ストレスなし）。",
+      "dsgvo_note": "",
+      "use_cases": ["Serverless GPU", "カスタム モデル ホスティング"],
+      "pro": ["GPU 対応", "スケーラブル", "価格配慮"],
+      "contra": ["複雑", "知名度低い", "学習曲線有り"]
+    },
+    "linear": {
+      "aban_note": "Issue Tracker＆AI 機能（Auto-Triage、Summary）。Side Project 用ツール。UI は一級。",
+      "dsgvo_note": "",
+      "use_cases": ["Issue追跡", "プロジェクト管理"],
+      "pro": ["UI最高", "AI統合優秀", "パフォーマンス優秀"],
+      "contra": ["高額", "知名度低い", "エンタープライズ限定"]
+    },
+    "humata": {
+      "aban_note": "PDF Q&A ツール。今は Claude/ChatGPT PDF アップロード に追い抜かれ。",
+      "dsgvo_note": "",
+      "use_cases": ["PDF リサーチ"],
+      "pro": ["PDF対応", "シンプル", "統合容易"],
+      "contra": ["Claude劣る", "知名度低い", "機能限定"]
+    },
+    "consensus": {
+      "aban_note": "科学論文 AI 検索。LinkedIn 知識を超える Fact-検索向け金鉱。",
+      "dsgvo_note": "",
+      "use_cases": ["科学リサーチ"],
+      "pro": ["学術特化", "信頼性高い", "Fact-チェック優秀"],
+      "contra": ["有料", "知名度低い", "学術向け"]
+    },
+    "elicit": {
+      "aban_note": "科学文献 Research ワークフロー。Finding 自動抽出。Researcher はClaudeより明確に優秀。",
+      "dsgvo_note": "",
+      "use_cases": ["文献リサーチ", "メタ分析"],
+      "pro": ["リサーチ最適化", "自動抽出", "学者向け"],
+      "contra": ["有料", "知名度低い", "専門向け"]
+    },
+    "scite": {
+      "aban_note": "Citation 検証。論文が支持か反駁か表示。信頼性重要な Fact-検索向け。",
+      "dsgvo_note": "",
+      "use_cases": ["引用確認", "科学検証"],
+      "pro": ["引用検証優秀", "信頼性", "学術向け"],
+      "contra": ["専門向け", "知名度低い", "有料"]
+    },
+    "tactiq": {
+      "aban_note": "ブラウザ Meeting AI。安価、OK アウトプット。Granola が明確に優秀。",
+      "dsgvo_note": "",
+      "use_cases": ["ミーティング AI 予算版"],
+      "pro": ["安価", "ブラウザ対応", "シンプル"],
+      "contra": ["品質がGranola劣る", "知名度低い", "セットアップ複雑"]
+    },
+    "supahub": {
+      "aban_note": "Podcast-to-コンテンツ。Show-Notes、Quotes、Tweets 生成（Audio より）。Podcaster 向け。",
+      "dsgvo_note": "",
+      "use_cases": ["ポッドキャスト リユース"],
+      "pro": ["ポッドキャスト特化", "自動生成", "効率化"],
+      "contra": ["知名度低い", "品質限定", "特殊用途"]
+    },
+    "pictory": {
+      "aban_note": "Blog-to-Video。出力は AI-生成と判別可。Bulk ソーシャル スニペット OK。",
+      "dsgvo_note": "",
+      "use_cases": ["ブログから動画"],
+      "pro": ["自動化", "ブログ最適化", "素早い"],
+      "contra": ["品質がAI判別可", "知名度低い", "カスタマイズ限定"]
+    },
+    "lumen5": {
+      "aban_note": "Blog-to-ソーシャル Video。Template 駆動。LinkedIn Post 程度。それ以上はダメ。",
+      "dsgvo_note": "",
+      "use_cases": ["ソーシャルビデオ"],
+      "pro": ["テンプレート多い", "素早い", "シンプル"],
+      "contra": ["品質限定", "知名度低い", "カスタマイズ不可"]
+    },
+    "wisper-flow": {
+      "aban_note": "Voice-to-Text Dictation（Mac）。Type より速い。ドイツ語認識は一流。",
+      "dsgvo_note": "",
+      "use_cases": ["音声ディクテーション"],
+      "pro": ["音声認識優秀", "ドイツ語対応", "効率化"],
+      "contra": ["Mac限定", "知名度低い", "オフライン限定"]
+    },
+    "raycast-ai": {
+      "aban_note": "Spotlight 置換＆AI は OS 全体で呼び出し。Quick-Prompt ワークフロー（Browser 切り替え不要）。Mac only。",
+      "dsgvo_note": "",
+      "use_cases": ["OS 全体AI", "クイックプロンプト"],
+      "pro": ["OS統合優秀", "Quick実行", "効率化"],
+      "contra": ["Mac限定", "高額", "知名度低い"]
+    },
+    "arc": {
+      "aban_note": "モバイル ブラウザ＆AI Summary。'Browse for me' 素敵。Dia へピボット 来。",
+      "dsgvo_note": "",
+      "use_cases": ["AI ブラウザ モバイル"],
+      "pro": ["モバイル最適", "AI Summary", "UI優秀"],
+      "contra": ["知名度低い", "モバイル限定", "デスクトップ版は限定"]
+    },
+    "dia": {
+      "aban_note": "AI ファースト ブラウザ。Tab 横断 Chat。興味深い Concept、Beta Status。",
+      "dsgvo_note": "",
+      "use_cases": ["AI ブラウザ"],
+      "pro": ["AI統合優秀", "Tab統合", "新技術"],
+      "contra": ["Beta Status", "知名度低い", "機能限定"]
+    },
+    "snowball": {
+      "aban_note": "Competitive-Intelligence Platform。エンタープライズ価格。Solo には大きすぎる。",
+      "dsgvo_note": "",
+      "use_cases": ["エンタープライズ競合インテリジェンス"],
+      "pro": ["競合情報充実", "エンタープライズ品質", "統合優秀"],
+      "contra": ["最高額", "Solo不向き", "複雑"]
+    },
+    "crayon": {
+      "aban_note": "Competitive-Tracking。Klue 同様。エンタープライズ。",
+      "dsgvo_note": "",
+      "use_cases": ["競合追跡"],
+      "pro": ["追跡優秀", "統合多い", "エンタープライズ向け"],
+      "contra": ["最高額", "Solo不向き", "複雑"]
+    },
+    "glean": {
+      "aban_note": "エンタープライズ Search（全 SaaS ツール上）。Team > 50 向け Killer。Solo Setup：Overkill。",
+      "dsgvo_note": "",
+      "use_cases": ["エンタープライズ検索", "Work AI"],
+      "pro": ["検索最高", "統合充実", "エンタープライズ最適"],
+      "contra": ["最高額", "複雑", "Solo不向き"]
+    },
+    "anthropic-mcp": {
+      "aban_note": "Open Standard Tool-Calling。Claude、Cursor、Windsurf 全て採用。Tool Builder なら：これ。",
+      "dsgvo_note": "",
+      "use_cases": ["エージェントツール", "統合"],
+      "pro": ["オープン標準", "広く採用", "将来性高い"],
+      "contra": ["新しい", "ドキュメント限定", "サポート初期段階"]
+    },
+    "ollama-cloud": {
+      "aban_note": "Together Code Interpreter。Sandbox Code Execution（API）。Agent が Code 実行必要なら。",
+      "dsgvo_note": "",
+      "use_cases": ["Sandbox コード", "エージェント実行"],
+      "pro": ["Sandbox安全", "エージェント対応", "スケーラブル"],
+      "contra": ["高額", "複雑", "知名度低い"]
+    },
+    "e2b": {
+      "aban_note": "Sandbox Infrastructure（AI Agent 向け）。EU 本拠（プラハ）。オープンソース中核。Agent Builder 向け洗練。",
+      "dsgvo_note": "",
+      "use_cases": ["エージェント Sandbox", "EU対応"],
+      "pro": ["EU企業", "オープンソース", "エージェント最適化"],
+      "contra": ["複雑", "知名度低い", "学習曲線有り"]
+    },
+    "langfuse": {
+      "aban_note": "ドイツ LLM-Observability Platform（ベルリン）。Tracing、Eval、Cost-追跡。Self-Hostable。LLM Stack 本気向け第一。",
+      "dsgvo_note": "",
+      "use_cases": ["LLM Observability", "プロンプト管理", "DACH対応"],
+      "pro": ["ドイツ企業", "セルフホスト対応", "機能充実"],
+      "contra": ["複雑", "高額", "新しい"]
+    },
+    "langsmith": {
+      "aban_note": "LLM Observability（LangChain）。Vendor-Lock Light。EU Region Cloud 2026 初。",
+      "dsgvo_note": "",
+      "use_cases": ["LangChain トレーシング"],
+      "pro": ["LangChain統合", "トレーシング優秀", "信頼性"],
+      "contra": ["LangChain依存", "高額", "EU限定初期"]
+    },
+    "browser-use": {
+      "aban_note": "Python Library AI Browser-操作。オープンソース。Agent Builder 向けシンプルスタック。",
+      "dsgvo_note": "",
+      "use_cases": ["ブラウザエージェント", "オープンソース自動化"],
+      "pro": ["オープンソース", "Python対応", "シンプル"],
+      "contra": ["知名度低い", "サポート限定", "複雑な場合"]
+    }
+  }
+}

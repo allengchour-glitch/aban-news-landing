@@ -1,0 +1,29 @@
+name: KI-Kurs-Radar — Auto-Build
+
+on:
+  push:
+    paths:
+      - 'kurse-radar/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Generate course directory
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generate site
+        run: |
+          cd kurse-radar
+          python generate.py
+          find dist -type f | wc -l
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: kurse-radar-dist
+          path: kurse-radar/dist
+          retention-days: 14

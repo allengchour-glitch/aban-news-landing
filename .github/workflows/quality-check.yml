@@ -1,0 +1,56 @@
+name: Quality Check
+
+# Prüft bei jedem Push/PR: Python-Syntax + JSON-Validität aller Generatoren & Daten.
+# Verhindert, dass ein kaputtes Skript oder eine kaputte JSON ins Repo gelangt.
+on:
+  push:
+    paths:
+      - '**/*.py'
+      - '**/*.json'
+  pull_request:
+    paths:
+      - '**/*.py'
+      - '**/*.json'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Python-Syntax aller .py-Dateien
+        run: |
+          fail=0
+          while IFS= read -r f; do
+            python -m py_compile "$f" || { echo "::error file=$f::Syntaxfehler"; fail=1; }
+          done < <(git ls-files '*.py')
+          [ "$fail" = "0" ] && echo "Alle Python-Dateien OK"
+          exit $fail
+
+      - name: JSON-Validität aller .json-Dateien
+        run: |
+          python - <<'PY'
+          import json, subprocess, sys
+          files = subprocess.check_output(["git","ls-files","*.json"]).decode().split()
+          bad = 0
+          for f in files:
+              try:
+                  json.load(open(f, encoding="utf-8"))
+              except Exception as ex:
+                  print(f"::error file={f}::Ungültiges JSON: {ex}")
+                  bad += 1
+          print(f"{len(files)} JSON-Dateien geprüft, {bad} fehlerhaft")
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: Generatoren bauen ohne Fehler (Smoke-Test)
+        run: |
+          cd ki-tools-radar && python generate.py >/dev/null && echo "KI-Tools Radar OK"
+          cd ../foerder-radar && python generate.py >/dev/null && echo "Förder-Radar OK"
+          cd ../jobs-radar && python generate.py >/dev/null && echo "Jobs-Radar OK"
+          cd ../portal && python generate.py >/dev/null && echo "Portal OK"

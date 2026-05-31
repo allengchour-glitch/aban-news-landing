@@ -1,0 +1,75 @@
+{
+  "_comment": "Fertige Posts zum 1-Klick-Versand an Telegram/Discord (via post.py). Reihenfolge = Reihenfolge des Versands. 'sent: false' = noch nicht gesendet. Texte ehrlich, kein Hype (Aban-Markenstimme). Zahlen aus echten Daten (177 Tools, 142 mit Gratis-Tier, 86 Förderprogramme). Vor dem Versand Links/Domains prüfen, sobald live.",
+  "posts": [
+    {
+      "id": "p1-start",
+      "sent": false,
+      "text": "📡 Neu: KI-Tools Radar\n\nIch habe 177 KI-Tools für den deutschsprachigen Raum ehrlich bewertet — mit Preisen, DSGVO-Blick und Pro/Contra. Kein Hype, nur was sich im Alltag bewährt.\n\nViele davon haben ein kostenloses Angebot.\n\n👉 https://radar.abannews.com"
+    },
+    {
+      "id": "p2-top5",
+      "sent": false,
+      "text": "🏆 Die 5 bestbewerteten KI-Tools im DACH-Check:\n\n1. Claude — 9.5/10\n2. DeepL — 9/10\n3. n8n — 9/10 (Open-Source-Automatisierung)\n4. Cursor — 9/10\n5. Granola — 9/10\n\nAlle 177 mit Bewertung & Preis 👉 https://radar.abannews.com"
+    },
+    {
+      "id": "p3-gratis",
+      "sent": false,
+      "text": "💸 Du musst für KI nicht viel zahlen.\n\nVon den 177 Tools in meinem Radar haben 142 ein kostenloses Angebot — viele reichen für den Alltag völlig.\n\nKostenlose KI-Tools, sortiert 👉 https://radar.abannews.com/preis/kostenlos.html"
+    },
+    {
+      "id": "p4-foerder",
+      "sent": false,
+      "text": "🧭 Die meisten DACH-Gründer kennen 2–3 Förderprogramme. Es gibt deutlich mehr.\n\nIch habe 63 echte Programme aus DE, AT, CH und EU gesammelt — sortier- und filterbar nach Region, Art und Zielgruppe.\n\nAlle Angaben ohne Gewähr, mit Link zur offiziellen Quelle.\n\n👉 https://foerder.abannews.com"
+    },
+    {
+      "id": "p5-jobs",
+      "sent": false,
+      "text": "🤖 KI-Jobs im DACH-Raum, täglich aktualisiert.\n\nKein manuelles Pflegen — die Stellen werden automatisch aus offenen Quellen aggregiert und verlinken zur Originalanzeige.\n\nRemote & vor Ort, filterbar 👉 https://jobs.abannews.com"
+    },
+    {
+      "id": "p6-newsletter",
+      "sent": false,
+      "text": "📬 Hinter all dem steckt Aban News — der deutschsprachige KI-Newsletter.\n\nMo–Fr, 3–5 Minuten, kuratiert, kein Hype. 1 Tool + relevante Updates pro Ausgabe.\n\nGratis abonnieren + das „Top-30-KI-Tools“-PDF holen 👉 https://abannews.com/gratis-ki-tools.html"
+    },
+    {
+      "id": "p7-buildinpublic",
+      "sent": false,
+      "text": "🛠️ Wie ich als Einzelperson 3 automatisierte Webseiten betreibe:\n\nEin Skript baut tausende Seiten aus einer Datenbank. Ich pflege nur die Daten — den Rest macht die Automatik (täglicher Auto-Build).\n\nKein Team, keine Investoren. Ehrlich gesagt: Der schwierigste Teil ist nicht die Technik, sondern dranzubleiben.\n\nMehr dazu im Newsletter 👉 https://abannews.com"
+    },
+    {
+      "id": "p8-dsgvo",
+      "sent": false,
+      "text": "🇪🇺 DSGVO ist beim KI-Einsatz im DACH-Raum oft wichtiger als das beste Feature.\n\nDeshalb steht in meinem Tool-Radar bei jedem Tool ein Datenschutz-Hinweis — und es gibt eine eigene Bestenliste für den DACH-Raum.\n\n👉 https://radar.abannews.com/dsgvo.html"
+    },
+    {
+      "id": "p9-vergleich",
+      "sent": false,
+      "text": "🆚 ChatGPT oder Claude? DeepL oder Google Übersetzer?\n\nIch habe die gängigsten KI-Tools direkt gegenübergestellt — mit Pro, Contra und Fazit. Kein Sieger-Hype, sondern: Wofür ist welches besser.\n\n👉 https://radar.abannews.com/vergleiche.html"
+    },
+    {
+      "id": "p10-glossar",
+      "sent": false,
+      "text": "📖 Was ist eigentlich RAG? Ein Embedding? Ein KI-Agent?\n\nIch erkläre die 30 wichtigsten KI-Begriffe in einfachem Deutsch — ohne Fachchinesisch, mit passenden Tools dazu.\n\n👉 https://radar.abannews.com/glossar.html"
+    },
+    {
+      "id": "p11-stack-entwickler",
+      "sent": false,
+      "text": "💻 Der KI-Werkzeugkasten für Entwickler:\n\nVom Code-Editor über Terminal-Tools bis zum Review — die Tools, die im Alltag wirklich Zeit sparen. Ehrlich eingeordnet, mit Preisen.\n\n👉 https://radar.abannews.com/stack/entwickler.html"
+    },
+    {
+      "id": "p12-budget",
+      "sent": false,
+      "text": "💶 Gute KI muss nichts kosten.\n\nIch habe die besten KI-Tools nach Budget sortiert: kostenlos, unter 10 €, unter 20 €, unter 50 €. So findest du, was zu deinem Geldbeutel passt.\n\n👉 https://radar.abannews.com/preis/kostenlos.html"
+    },
+    {
+      "id": "p13-foerder-gruender",
+      "sent": false,
+      "text": "🧭 Du gründest in DACH? Diese Förderungen solltest du kennen.\n\nIch habe die wichtigsten Programme für Gründer aus DE, AT, CH und EU gesammelt — sortierbar, mit Link zur offiziellen Quelle. Angaben ohne Gewähr.\n\n👉 https://foerder.abannews.com/fuer/gruender.html"
+    },
+    {
+      "id": "p14-remote-jobs",
+      "sent": false,
+      "text": "🤖 Remote-Jobs rund um KI & Machine Learning im DACH-Raum.\n\nTäglich aktualisiert, an einem Ort gesammelt. Kein Scrollen durch zehn Portale.\n\n👉 https://jobs.abannews.com/remote.html"
+    }
+  ]
+}

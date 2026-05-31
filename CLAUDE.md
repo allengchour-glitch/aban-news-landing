@@ -118,3 +118,27 @@ Social-Image fürs eBook: `og-ebook.png` (Pillow, 1200×630).
 - Branch-Konvention: `claude/...` Feature-Branches, **nie** direkt nach `main`.
 - Cloudflare Pages: kein Build-Command, Output = Repo-Root. `_redirects` + `_headers`
   werden automatisch erkannt. Jeder Push auf `main` triggert Auto-Deploy.
+
+## Geld-Projekte (Aban-Netzwerk) — zusätzlich zum Newsletter
+Dieses Repo enthält neben der Newsletter-Site mehrere automatisierte KI-Geld-Projekte.
+**Voller Stand in `PROJEKT.md`** (immer zuerst lesen). Kurz:
+- `ki-tools-radar/` — KI-Tool-Vergleich (177 Tools, 11 Sprachen, ~10.351 Seiten). LIVE auf radar.abannews.com. Affiliate. 56 Tool-Seiten verlinken zurück aufs Newsletter-Archiv.
+- `foerder-radar/` — DACH-Fördermittel (86 echte Programme). Lead-Gen. Domain foerder.abannews.com.
+- `jobs-radar/` — DACH-KI-Jobboard (fetch_jobs.py: Arbeitnow+Remotive). Domain jobs.abannews.com.
+- `kurse-radar/` — KI-Kurs-/Zertifikat-Vergleich (22 echte Anbieter, Preise/Score `null` bis geprüft). Affiliate (deaktiviert). Domain kurse.abannews.com. **Cloudflare-Projekt noch anzulegen.**
+- `prompts-bibliothek/` — 50 selbst geschriebene deutsche Prompts (9 Berufe, 11 Aufgaben), Live-Suche + Copy-Button. Newsletter-Opt-in. Domain prompts.abannews.com. **CF-Projekt noch anzulegen.**
+- `agenturen-radar/` — KI-Dienstleister-Verzeichnis DACH (startet ehrlich leer, nur markierte Platzhalter). Bezahlte Listings. Domain agenturen.abannews.com. **CF-Projekt noch anzulegen.**
+- 8× `ki-fuer-*.html` im Root — Branchen-SEO-Hubs (Handwerker, Steuerberater, Ärzte, Anwälte, Makler, Coaches, Onlineshops, Gastro). Laufen direkt auf abannews.com. Newsletter + Tool-Affiliate.
+- `portal/` — Hub; `social/` — Auto-Posting Telegram/Discord; `automation/werkbank.py` + `news_aggregator.py` — Newsletter-Tools.
+- Jedes Geld-Projekt: `generate.py` (stdlib), eigener Auto-Build-Workflow, baut nach `dist/`.
+- Daten `data/tools.json` (177 Tools, 33 neue mit „[Redaktion: prüfen]") speist den ki-tools-radar.
+
+## Verkauf/Zahlung — Stand 2026-05-31 (Details in PROJEKT.md)
+- **Founding €69** (von €149 gesenkt), Zahlung per **PayPal Payment Link** `ncp/payment/7GPXCMBCETCUY`
+  in `founding.html` + `en/founding.html` (kein SDK, nur Link-Button). Rechnung per Mail-Fallback.
+- **Buch „Anti-Hype"** = 13 Kapitel (de/en/fr/it), KDP-tauglich (Print ≥24 S.). Inhalt nur in
+  `generate_ebook.py` ändern (Single Source); danach `generate_ebook.py` + `generate_kdp_print.py de en fr it` neu bauen.
+- Buch-Verkauf via **Lemon Squeezy** (`js/buch-config.js`). KDP-Anleitung: `docs/KDP-VEROEFFENTLICHEN.md`,
+  Geldkanäle: `docs/NEWSLETTER-GELD.md`.
+- PayPal in `datenschutz.html` + CSP in `_headers` (`*.paypal.com`) hinterlegt.
+- ⚠️ Diese Site nutzt **kein** Google Analytics / kein 3rd-Party-Tracking (DSGVO/Markenversprechen) — nie hinzufügen.

@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Werde eine der ersten 100 Founding-Members von aban news. €149 einmalig, lifetime Premium-Zugang. Kein Re-Open, keine Verlängerung.">
+<meta name="description" content="Werde eine der ersten 100 Founding-Members von aban news. €69 einmalig, lifetime Premium-Zugang. Kein Re-Open, keine Verlängerung.">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="aban news Founding-Member — 100 Plätze, €149 lifetime">
-<meta property="og:description" content="Sei eine der 100 ersten Stimmen. €149 einmal, lifetime Premium.">
+<meta property="og:title" content="aban news Founding-Member — 100 Plätze, €69 lifetime">
+<meta property="og:description" content="Sei eine der 100 ersten Stimmen. €69 einmal, lifetime Premium.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://abannews.com/founding.html">
 <meta property="og:image" content="https://abannews.com/og-image.png">
@@ -15,11 +15,17 @@
 <meta name="twitter:image" content="https://abannews.com/og-image.png">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<title>Founding-Member · aban news · €149 lifetime, 100 Plätze</title>
+<title>Founding-Member · aban news · €69 lifetime, 100 Plätze</title>
   <link rel="canonical" href="https://abannews.com/founding.html">
   <link rel="alternate" hreflang="de" href="https://abannews.com/founding.html" />
   <link rel="alternate" hreflang="en" href="https://abannews.com/en/founding.html" />
   <link rel="alternate" hreflang="x-default" href="https://abannews.com/" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Product","name":"aban news Founding-Member","description":"Lebenslanger Premium-Zugang zum deutschsprachigen KI-Newsletter aban news. Einmalzahlung, limitiert auf 100 Plätze.","brand":{"@type":"Brand","name":"aban news"},"url":"https://abannews.com/founding.html","offers":{"@type":"Offer","price":"69","priceCurrency":"EUR","availability":"https://schema.org/LimitedAvailability","url":"https://abannews.com/founding.html"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Was passiert, wenn aban news scheitert?","acceptedAnswer":{"@type":"Answer","text":"Bei Einstellung des Newsletters innerhalb der ersten 12 Monate gibt es vollständigen Refund. Zusätzlich gilt eine 30-Tage-Geld-zurück-Garantie ohne Nachfragen."}},{"@type":"Question","name":"Warum nur 100 Plätze?","acceptedAnswer":{"@type":"Answer","text":"100 gibt genug Runway und bleibt klein genug für persönlichen Kontakt: eigene Willkommens-Mail, Name auf der Honor-Roll, direkter Zugang im VIP-Channel."}},{"@type":"Question","name":"Wird das Angebot wiederholt oder erweitert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Bei 100 ist Schluss. Premium läuft danach regulär 9 Euro pro Monat oder 89 Euro pro Jahr."}},{"@type":"Question","name":"Wie ist das mit der Mehrwertsteuer?","acceptedAnswer":{"@type":"Answer","text":"aban news ist ein Schweizer Einzelunternehmen und MwSt-frei. Du zahlst 69 Euro brutto gleich 69 Euro netto, keine versteckten Gebühren."}},{"@type":"Question","name":"Kann ich mit Kreditkarte statt PayPal zahlen?","acceptedAnswer":{"@type":"Answer","text":"Ja. Im PayPal-Checkout kannst du auch ohne PayPal-Konto mit Karte zahlen, inklusive Käuferschutz."}},{"@type":"Question","name":"Wie schalte ich Premium nach der Zahlung frei?","acceptedAnswer":{"@type":"Answer","text":"Automatisch per Willkommens-Mail innerhalb weniger Minuten, mit Premium-Zugang und Discord-Einladung."}}]}
+  </script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -36,6 +42,7 @@ header{padding:48px 20px 24px;text-align:center}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .cta-primary{display:inline-block;background:#d97706;color:#fff;text-decoration:none;font-weight:600;padding:16px 32px;border-radius:8px;font-size:17px;transition:background 0.2s;border:none;cursor:pointer}
 .cta-primary:hover{background:#b45309}
+.paypal-btn-wrap{max-width:420px;margin:0 auto 6px}
 .cta-meta{display:block;margin-top:12px;color:#737373;font-size:13px}
 section{padding:48px 20px;border-top:1px solid #e5e5e5;background:#fff}
 section.alt{background:#fafafa}
@@ -95,6 +102,27 @@ header{display:flex;align-items:center;gap:12px}
 .lang{display:inline-flex;border:1px solid #e5e7eb;border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;vertical-align:middle;margin-left:auto}
 .lang a{padding:.3rem .6rem;color:#9ca3af;text-decoration:none;line-height:1}
 .lang a.on{background:#1f2937;color:#fff}
+.forwhom{display:grid;gap:16px;margin-top:8px}
+@media(min-width:600px){.forwhom{grid-template-columns:1fr 1fr}}
+.forwhom .col{background:#fafafa;border:1px solid #e5e5e5;border-radius:8px;padding:20px}
+.forwhom .col.nope{background:#fff}
+.forwhom h3{font-size:15px;margin-bottom:12px}
+.forwhom ul{list-style:none;margin:0}
+.forwhom li{padding:6px 0 6px 26px;position:relative;font-size:14px;color:#404040}
+.forwhom li::before{position:absolute;left:0;top:6px;font-weight:700}
+.forwhom .yes li::before{content:"✓";color:#16a34a}
+.forwhom .nope li::before{content:"✗";color:#dc2626}
+.founder{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.founder .avatar{flex-shrink:0;width:64px;height:64px;border-radius:50%;background:#d97706;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px}
+.founder .body{flex:1;min-width:240px}
+.founder .sign{font-style:italic;color:#737373;margin-top:8px}
+.peek{background:#fff;border:1px solid #e5e5e5;border-radius:8px;padding:8px 22px;margin-top:8px}
+.peek li{margin:0 0 0 18px;padding:6px 0;color:#404040;font-size:14px}
+.steps{counter-reset:s;list-style:none;display:grid;gap:14px;margin-top:8px}
+.steps li{position:relative;padding:14px 16px 14px 58px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;font-size:14px;color:#404040}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:14px;top:12px;width:30px;height:30px;background:#d97706;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
+.midcta{text-align:center;margin-top:24px}
+.transp{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:18px 20px;font-size:14px;color:#7c2d12;line-height:1.7}
 </style>
 </head>
 <body>
@@ -108,10 +136,10 @@ header{display:flex;align-items:center;gap:12px}
     <span class="dot"></span>
     <span id="counter">100 Founding-Plätze offen — sei eine der ersten Stimmen</span>
   </div>
-  <h1>Sei eine der <span class="accent">100 ersten Stimmen</span>.<br>€149 einmal, lifetime.</h1>
+  <h1>Sei eine der <span class="accent">100 ersten Stimmen</span>.<br>€69 einmal, lifetime.</h1>
   <p class="sub">aban news startet als täglicher KI-Newsletter für deutschsprachige Solopreneure. Die ersten 100 Leser, die jetzt einsteigen, bekommen lebenslang Premium — für einen Bruchteil des späteren Preises. Keine Verlängerung, kein Re-Open.</p>
-  <a href="#checkout" class="cta-primary">Werde Founding-Member — €149</a>
-  <span class="cta-meta">🔒 Zahlung per Stripe-Link · 30 Tage Geld-zurück-Garantie · sofortiger Zugang</span>
+  <a href="#checkout" class="cta-primary">Werde Founding-Member — €69</a>
+  <span class="cta-meta">🔒 Sichere Zahlung via PayPal · Käuferschutz · 30 Tage Geld-zurück-Garantie</span>
   <span class="cta-meta" style="margin-top:16px">Noch nicht sicher? <a href="https://abannews.beehiiv.com/subscribe" style="color:#9a3412;font-weight:600">Lies erst gratis mit</a> oder <a href="/ebook.html" style="color:#9a3412;font-weight:600">schnapp dir das kostenlose eBook</a>.</span>
 </section>
 
@@ -163,6 +191,33 @@ header{display:flex;align-items:center;gap:12px}
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <h2>Für wen das ist — und für wen nicht</h2>
+    <div class="forwhom">
+      <div class="col yes">
+        <h3>Founding passt, wenn …</h3>
+        <ul>
+          <li>du aban news schon liest (oder gratis getestet hast) und weißt, dass dir der Ton liegt.</li>
+          <li>du lieber einmal €69 zahlst als ein laufendes Abo — und von Anfang an mitprägen willst.</li>
+          <li>du KI praktisch im eigenen Business einsetzt, statt nur darüber zu reden.</li>
+          <li>dir Substanz wichtiger ist als Hype und ein direkter Draht etwas wert ist.</li>
+        </ul>
+      </div>
+      <div class="col nope">
+        <h3>Lass es lieber, wenn …</h3>
+        <ul>
+          <li>du den Newsletter noch nie gelesen hast — dann abonnier erst gratis und schau, ob er dir taugt.</li>
+          <li>dir die €69 gerade wirklich weh tun. Dein Budget ist wichtiger als ein Badge.</li>
+          <li>du eine „in 30 Tagen reich mit KI"-Anleitung suchst. Die gibt es hier bewusst nicht.</li>
+          <li>du kein Deutsch liest — der Newsletter ist durchgehend deutschsprachig.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="midcta"><a href="#checkout" class="cta-primary">Founding sichern — €69</a></p>
+  </div>
+</section>
+
 <section class="alt">
   <div class="wrap">
     <h2>Free vs Premium vs Founding</h2>
@@ -195,10 +250,52 @@ header{display:flex;align-items:center;gap:12px}
           <td>Preis</td>
           <td>€0</td>
           <td>€9/mo · €89/Jahr</td>
-          <td>€149 once</td>
+          <td>€69 once</td>
         </tr>
       </tbody>
     </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Was in einer Mittwoch-Ausgabe steckt</h2>
+    <p>Während die tägliche Ausgabe kurz hält, geht der Mittwoch in die Tiefe: ein Thema, sauber zerlegt, mit etwas zum Mitnehmen. Grober Aufbau:</p>
+    <div class="peek">
+      <ul>
+        <li><strong>Die Lage in einem Absatz</strong> — worum es geht und warum es dich betrifft, ohne Vorgeplänkel.</li>
+        <li><strong>Der praktische Teil</strong> — ein konkreter Ablauf, den du am selben Tag ausprobieren kannst.</li>
+        <li><strong>Ein Workflow-Template</strong> zum Kopieren (Notion/JSON), damit du nicht bei null anfängst.</li>
+        <li><strong>Der ehrliche Haken</strong> — wo es in der Praxis bricht, was es kostet, wann es sich nicht lohnt.</li>
+        <li><strong>Audio-Version</strong> — dieselbe Ausgabe zum Hören, rund 25 Minuten, privater Feed.</li>
+      </ul>
+    </div>
+    <p class="midcta"><a href="/preview.html" class="cta-primary" style="background:#fff;color:#9a3412;border:1px solid #d97706">Beispiel-Ausgabe ansehen</a></p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Wer schreibt das</h2>
+    <div class="founder">
+      <div class="avatar" aria-hidden="true">A</div>
+      <div class="body">
+        <p>Ich bin Aban (Allen Chour), Einzelunternehmer aus Belp in der Schweiz. Seit 2024 schreibe ich aban news jeden Werktag — keine Redaktion, kein Ghostwriter. Eine Person, die KI selbst im Alltag benutzt und ehrlich aufschreibt, was funktioniert und was nicht.</p>
+        <p>Founding ist mein Angebot an die ersten 100, die früh dabei sind: Ihr finanziert den Aufbau, ich gebe euch dafür lebenslangen Zugang zu einem Bruchteil des späteren Preises — plus einen direkten Draht zu mir. Kein Investoren-Geld, keine Wachstum-um-jeden-Preis-Logik. Nur Leser, die das hier mittragen.</p>
+        <p class="sign">— Aban</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Wofür dein Geld geht</h2>
+    <p>Ehrlich gerechnet: 100 Founding-Member zu €69 sind rund €6.900 brutto. Das ist kein Reichtum, sondern Runway — die Zeit, aban news weiter jeden Tag zu schreiben, ohne es nebenbei verhungern zu lassen. Konkret fließt es in:</p>
+    <div class="transp">
+      Werkzeuge und KI-Abos für Recherche und Audio · die Zeit fürs tägliche Schreiben und die Mittwoch-Tiefenausgabe · den Aufbau von Tool-Datenbank, Templates und Community. Keine Anzeigen-Budgets, keine gekauften Follower, kein Hype.
+    </div>
+    <p style="margin-top:14px">Und wenn es dir am Ende nichts bringt, holst du dir dein Geld in den ersten 30 Tagen ohne Diskussion zurück. Das Risiko liegt bei mir, nicht bei dir.</p>
   </div>
 </section>
 
@@ -220,7 +317,7 @@ header{display:flex;align-items:center;gap:12px}
       </details>
       <details>
         <summary>Was ist mit Mehrwertsteuer?</summary>
-        <div class="answer">Ich bin Schweizer Einzelunternehmen, MwSt-frei nach Art. 10 Abs. 2 lit. a MWSTG (unter CHF 100k Umsatz). Du zahlst €149 brutto = €149 netto, keine versteckten Gebühren.</div>
+        <div class="answer">Ich bin Schweizer Einzelunternehmen, MwSt-frei nach Art. 10 Abs. 2 lit. a MWSTG (unter CHF 100k Umsatz). Du zahlst €69 brutto = €69 netto, keine versteckten Gebühren.</div>
       </details>
       <details>
         <summary>Kann ich Premium-Monatlich erst probieren und später Founding kaufen?</summary>
@@ -238,16 +335,45 @@ header{display:flex;align-items:center;gap:12px}
         <summary>Was passiert mit meinem Founding-Status wenn aban news verkauft wird?</summary>
         <div class="answer">Lifetime ist vertraglich gebunden, auch bei Übergabe. Falls die Plattform wechselt (z.B. von beehiiv weg), wird deine Founding-Membership migriert. Sollte ich aban news komplett einstellen — Refund-Klausel siehe oben.</div>
       </details>
+      <details>
+        <summary>Kann ich mit Kreditkarte statt PayPal zahlen?</summary>
+        <div class="answer">Ja. Im PayPal-Checkout kannst du auch ohne PayPal-Konto mit Karte zahlen — PayPal wickelt beides ab, Käuferschutz inklusive.</div>
+      </details>
+      <details>
+        <summary>Bekomme ich einen Beleg oder eine Rechnung?</summary>
+        <div class="answer">PayPal schickt dir automatisch eine Zahlungsbestätigung per Mail. Brauchst du eine ordentliche Rechnung mit USt-ID, schreib mir kurz an hallo@abannews.com — kommt innerhalb von 24 Stunden.</div>
+      </details>
+      <details>
+        <summary>Wie schalte ich Premium nach der Zahlung frei?</summary>
+        <div class="answer">Automatisch per Willkommens-Mail innerhalb weniger Minuten: Premium-Zugang plus Discord-Einladung. Kommt nichts an, prüf den Spam-Ordner oder schreib mir — ich schalte dich von Hand frei.</div>
+      </details>
+      <details>
+        <summary>Ich lese den Newsletter erst seit Kurzem — lohnt sich Founding schon?</summary>
+        <div class="answer">Nur wenn dir der Ton liegt. Es gibt keine Eile aus Prinzip: Lies ruhig erst ein paar Ausgaben gratis. Founding lohnt sich, wenn du sicher bist, dass dir aban news regelmäßig etwas bringt — nicht aus FOMO.</div>
+      </details>
     </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>So läuft's nach der Zahlung</h2>
+    <ol class="steps">
+      <li>Du zahlst €69 sicher über PayPal — mit Karte oder PayPal-Guthaben, Käuferschutz inklusive.</li>
+      <li>Du bekommst innerhalb weniger Minuten eine Willkommens-Mail mit deinem Premium-Zugang und der Discord-Einladung.</li>
+      <li>Dein Name landet — nur wenn du willst — auf der Honor-Roll. Ab dann: lifetime Premium, kein Abo, nichts zu kündigen.</li>
+    </ol>
+    <p class="cta-meta" style="text-align:center">Etwas hakt? Schreib mir direkt: <a href="mailto:hallo@abannews.com" style="color:#9a3412;font-weight:600">hallo@abannews.com</a></p>
   </div>
 </section>
 
 <section class="cta-block" id="checkout">
   <div class="wrap">
-    <h2>Bereit? €149 einmal, lifetime.</h2>
-    <p>30 Tage Geld-zurück-Garantie ohne Nachfragen. Schreib mir kurz — ich sichere deinen Founding-Platz und schicke dir den Zahlungslink.</p>
-    <a id="founding-buy" href="mailto:hallo@abannews.com?subject=Founding-Member%20EUR149&body=Ich%20m%C3%B6chte%20Founding-Member%20werden.%20Bitte%20schick%20mir%20den%20Zahlungslink." class="cta-primary">Founding-Platz sichern — €149</a>
-    <div class="guarantee">✓ 30 Tage Geld-zurück-Garantie</div>
+    <h2>Bereit? €69 einmal, lifetime.</h2>
+    <p>30 Tage Geld-zurück-Garantie ohne Nachfragen. Eine Zahlung, danach lebenslang Premium — kein Abo, keine Verlängerung.</p>
+    <a href="https://www.paypal.com/ncp/payment/7GPXCMBCETCUY" target="_blank" rel="noopener" class="cta-primary">Founding-Member werden — €69</a>
+    <div class="guarantee">✓ Sichere Zahlung via PayPal · Käuferschutz · 30 Tage Geld-zurück</div>
+    <p class="cta-meta" style="margin-top:12px">Lieber per Rechnung (mit USt-ID)? <a href="mailto:hallo@abannews.com?subject=Founding-Member%20EUR69%20Rechnung" style="color:#9a3412;font-weight:600">Schreib mir kurz.</a></p>
   </div>
 </section>
 
@@ -262,7 +388,7 @@ header{display:flex;align-items:center;gap:12px}
 </section>
 
 <div class="legal">
-  <p>Founding-Membership ist eine einmalige Zahlung über Stripe.<br>30 Tage Geld-zurück-Garantie. Bei Einstellung des Newsletters innerhalb 12 Monaten: vollständiger Refund.</p>
+  <p>Founding-Membership ist eine einmalige Zahlung über PayPal (Käuferschutz inklusive).<br>30 Tage Geld-zurück-Garantie. Bei Einstellung des Newsletters innerhalb 12 Monaten: vollständiger Refund.</p>
   <p style="margin-top:16px">
     <a href="/impressum.html">Impressum</a> ·
     <a href="/datenschutz.html">Datenschutz (DSGVO)</a> ·
@@ -272,20 +398,8 @@ header{display:flex;align-items:center;gap:12px}
 </div>
 
 <script>
-// ============================================================
-// FOUNDING-CHECKOUT — hier EINE Zeile anpassen, um live zu gehen:
-// 1. Stripe-Dashboard → Payment Links → "+ New" → Produkt "aban news Founding"
-//    Preis €149 einmalig anlegen → Link kopieren (Form: https://buy.stripe.com/...).
-// 2. Unten zwischen die Anführungszeichen einsetzen. Fertig.
-// Solange leer, läuft der Kauf automatisch per E-Mail (kein toter Button).
-// ============================================================
-(function(){
-  var STRIPE_FOUNDING_LINK = ""; // z.B. "https://buy.stripe.com/abc123"
-  if(/^https:\/\/(buy\.stripe\.com|checkout\.stripe\.com)\//.test(STRIPE_FOUNDING_LINK)){
-    var btn = document.getElementById('founding-buy');
-    if(btn){ btn.href = STRIPE_FOUNDING_LINK; btn.target = "_blank"; btn.rel = "noopener"; }
-  }
-})();
+// Founding-Zahlung läuft über den PayPal Payment Link (ncp/payment/7GPXCMBCETCUY),
+// verlinkt im Checkout-Button oben. Rechnung per E-Mail-Fallback (USt-ID).
 
 // Mock counter (will be replaced by live fetch from /api/founding-count)
 // async function updateCounter(){

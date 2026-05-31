@@ -1,0 +1,217 @@
+{
+ "source": "arbeitnow.com + remotive.com",
+ "fetched": "2026-05-30",
+ "count": 13,
+ "jobs": [
+  {
+   "title": "(Senior) Baufinanzierungsberater (m/w/d)",
+   "company": "Justhome GmbH",
+   "location": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/justhome-gmbh/senior-baufinanzierungsberater-berlin-336062",
+   "tags": [
+    "Private Banking"
+   ],
+   "types": [
+    "berufserfahren"
+   ],
+   "slug": "senior-baufinanzierungsberater-berlin-336062",
+   "created_at": 1780164026
+  },
+  {
+   "title": "Senior GenAI Engineer LLMs/ RAG/ Python (w/m/d) remote in DE",
+   "company": "Talents2Germany GmbH",
+   "location": "Frankfurt am Main",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/talents2germany-gmbh/senior-genai-engineer-llms-rag-python-remote-in-de-frankfurt-am-main-137280",
+   "tags": [
+    "Remote",
+    "Engineering"
+   ],
+   "types": [
+    "berufserfahren"
+   ],
+   "slug": "senior-genai-engineer-llms-rag-python-remote-in-de-frankfurt-am-main-137280",
+   "created_at": 1780142427
+  },
+  {
+   "title": "Co-Founder - Marketing & Growth",
+   "company": "Medissist",
+   "location": "Augsburg",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/medissist/co-founder-marketing-growth-augsburg-318422",
+   "tags": [
+    "Directors",
+    "Chief Executives"
+   ],
+   "types": [
+    "executive"
+   ],
+   "slug": "co-founder-marketing-growth-augsburg-318422",
+   "created_at": 1780142426
+  },
+  {
+   "title": "Business Analyst Neo-Wealth & Crypto m/w/d",
+   "company": "finwyz",
+   "location": "Frankfurt am Main",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/finwyz/business-analyst-neo-wealth-crypto-frankfurt-am-main-381319",
+   "tags": [
+    "Remote",
+    "Business Analyst"
+   ],
+   "types": [],
+   "slug": "business-analyst-neo-wealth-crypto-frankfurt-am-main-381319",
+   "created_at": 1780137024
+  },
+  {
+   "title": "Senior Product Management Lead (f/m/d)",
+   "company": "Apaleo",
+   "location": "Munich, Bavaria, Germany",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/apaleo/senior-product-management-lead-munich-58103",
+   "tags": [],
+   "types": [],
+   "slug": "senior-product-management-lead-munich-58103",
+   "created_at": 1780087523
+  },
+  {
+   "title": "Senior Analytics Engineer - Run & Grow",
+   "company": "SumUp",
+   "location": "Berlin, Berlin, Germany",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/sumup/senior-analytics-engineer-run-grow-berlin-119045",
+   "tags": [],
+   "types": [],
+   "slug": "senior-analytics-engineer-run-grow-berlin-119045",
+   "created_at": 1780087522
+  },
+  {
+   "title": "Projektmanager:in & PMO (m/w/d)",
+   "company": "Team Passerelle",
+   "location": "Berlin",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/team-passerelle/projektmanagerin-pmo-berlin-313022",
+   "tags": [
+    "Remote",
+    "Project Management"
+   ],
+   "types": [
+    "Contract",
+    "berufserfahren"
+   ],
+   "slug": "projektmanagerin-pmo-berlin-313022",
+   "created_at": 1780070432
+  },
+  {
+   "title": "Senior AI Systems Engineer (AWS) 100% Remote (m/w/d)",
+   "company": "FNTIO",
+   "location": "Frankfurt am Main",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/fntio/senior-ai-systems-engineer-aws-100-remote-frankfurt-am-main-265043",
+   "tags": [
+    "Remote",
+    "Consulting",
+    "Engineering"
+   ],
+   "types": [],
+   "slug": "senior-ai-systems-engineer-aws-100-remote-frankfurt-am-main-265043",
+   "created_at": 1780068644
+  },
+  {
+   "title": "Full-Stack Entwickler (m/w/d) - .NET 100% Remote",
+   "company": "FNTIO",
+   "location": "Frankfurt am Main",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/fntio/full-stack-entwickler-net-100-remote-frankfurt-am-main-202432",
+   "tags": [
+    "Remote",
+    "Consulting",
+    "Engineering"
+   ],
+   "types": [],
+   "slug": "full-stack-entwickler-net-100-remote-frankfurt-am-main-202432",
+   "created_at": 1780068644
+  },
+  {
+   "title": "Mid/Senior AI Cinematic Video Editor",
+   "company": "EverAI",
+   "location": "Worldwide",
+   "remote": true,
+   "url": "https://remotive.com/remote-jobs/artificial-intelligence/mid-senior-ai-cinematic-video-editor-2090887",
+   "tags": [
+    "excel",
+    "video",
+    "AI/ML",
+    "customer acquisition",
+    "graphic design",
+    "video production"
+   ],
+   "types": [
+    "full_time"
+   ],
+   "slug": "remotive-2090887",
+   "created_at": 1779222873
+  },
+  {
+   "title": "Senior Independent AI Engineer / Architect",
+   "company": "A.Team",
+   "location": "Americas, Europe, Israel",
+   "remote": true,
+   "url": "https://remotive.com/remote-jobs/software-development/senior-independent-ai-engineer-architect-1919266",
+   "tags": [
+    "go",
+    "UI/UX",
+    "wordpress",
+    "chat",
+    "apple",
+    "testing"
+   ],
+   "types": [
+    "contract"
+   ],
+   "slug": "remotive-1919266",
+   "created_at": 1778926599
+  },
+  {
+   "title": "Senior Full-stack React Developer",
+   "company": "Lemon.io",
+   "location": "Americas, Europe, Asia, Oceania",
+   "remote": true,
+   "url": "https://remotive.com/remote-jobs/software-development/senior-full-stack-react-developer-2088711",
+   "tags": [
+    ".Net",
+    "android",
+    "AWS",
+    "azure",
+    "backend",
+    "C"
+   ],
+   "types": [
+    "contract"
+   ],
+   "slug": "remotive-2088711",
+   "created_at": 1778853651
+  },
+  {
+   "title": "Senior DevOps Engineer",
+   "company": "Lemon.io",
+   "location": "Americas, Europe, Asia, Oceania",
+   "remote": true,
+   "url": "https://remotive.com/remote-jobs/devops/senior-devops-engineer-2090002",
+   "tags": [
+    ".Net",
+    "android",
+    "AWS",
+    "azure",
+    "C",
+    "C#"
+   ],
+   "types": [
+    "full_time"
+   ],
+   "slug": "remotive-2090002",
+   "created_at": 1777558313
+  }
+ ]
+}
