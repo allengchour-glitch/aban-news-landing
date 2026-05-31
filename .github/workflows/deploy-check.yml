@@ -135,3 +135,9 @@ jobs:
           if [ "$SIZE" -gt "$BUDGET" ]; then
             echo "::warning::launch.html exceeds 26 KB budget"
           fi
+
+      - name: Site health check (validate_site.py)
+        run: python3 automation/validate_site.py
+
+      - name: Data integrity (tools + glossary)
+        run: python3 automation/data_integrity.py
