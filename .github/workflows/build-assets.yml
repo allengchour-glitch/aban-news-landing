@@ -10,6 +10,8 @@ on:
       - "generate_ebook.py"
       - "generate_pdfs.py"
       - "generate_og_images.py"
+      - "generate_buch_og.py"
+      - "generate_trilogie_og.py"
       - ".github/workflows/build-assets.yml"
   workflow_dispatch: {}
 
@@ -47,6 +49,11 @@ jobs:
 
       - name: Generate OG images
         run: python generate_og_images.py
+
+      - name: Generate book + trilogy OG images
+        run: |
+          python generate_buch_og.py
+          python generate_trilogie_og.py
 
       - name: Commit regenerated assets (if changed)
         run: |

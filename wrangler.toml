@@ -1,0 +1,14 @@
+# Cloudflare Pages — versionierte Konfiguration für die No-Build-Static-Site.
+#
+# Diese Datei macht die bisher nur im Cloudflare-Dashboard gepflegten Build-
+# Einstellungen im Repo nachvollziehbar:
+#   - kein Build-Command (reines HTML/CSS/JS),
+#   - Output-Verzeichnis = Repo-Root.
+# Das entspricht 1:1 der bestehenden Einrichtung (Push auf main -> Auto-Deploy);
+# `_redirects` und `_headers` werden von Pages weiterhin automatisch erkannt.
+#
+# Wird auch von .github/workflows/cloudflare-pages.yml genutzt
+# (`wrangler pages deploy` liest pages_build_output_dir hieraus).
+name = "aban-news-landing"
+compatibility_date = "2026-05-31"
+pages_build_output_dir = "."
