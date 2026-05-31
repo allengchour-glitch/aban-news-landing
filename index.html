@@ -155,6 +155,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","@id":"https://abannews.com/#organization","name":"aban news","url":"https://abannews.com/","logo":"https://abannews.com/og-image.png","founder":{"@type":"Person","name":"Allen Chour"},"foundingLocation":"Belp, CH"}
 </script>
+  <link rel="stylesheet" href="/css/modern.css">
 </head>
 <body>
 <header>
@@ -172,7 +173,7 @@
 </header>
 
 <main>
-  <section class="hero">
+  <section class="hero hero--warm">
     <div class="wrap hero-grid">
       <!-- LEFT -->
       <div>
@@ -226,9 +227,9 @@
     <!-- compact below-fold strip -->
     <div class="wrap">
       <div class="strip">
-        <div class="step"><span class="n">1</span><h2>Wir scannen</h2><p>Jede Nacht 5 deutsche AI-Quellen + Reddit. Aus ~200 Posts werden die paar relevanten.</p></div>
-        <div class="step"><span class="n">2</span><h2>Aban schreibt</h2><p>Ich les selbst, sortier Marketing-Blabla raus, schreib mit eigener Einschätzung.</p></div>
-        <div class="step"><span class="n">3</span><h2>Du liest, 5 Min</h2><p>07:30 im Posteingang. Kaffee, durchlesen, eine Sache mitnehmen — fertig vor dem ersten Meeting.</p></div>
+        <div class="step" data-reveal data-reveal-delay="1"><span class="n">1</span><h2>Wir scannen</h2><p>Jede Nacht 5 deutsche AI-Quellen + Reddit. Aus ~200 Posts werden die paar relevanten.</p></div>
+        <div class="step" data-reveal data-reveal-delay="2"><span class="n">2</span><h2>Aban schreibt</h2><p>Ich les selbst, sortier Marketing-Blabla raus, schreib mit eigener Einschätzung.</p></div>
+        <div class="step" data-reveal data-reveal-delay="3"><span class="n">3</span><h2>Du liest, 5 Min</h2><p>07:30 im Posteingang. Kaffee, durchlesen, eine Sache mitnehmen — fertig vor dem ersten Meeting.</p></div>
       </div>
       <p class="honest"><b>Noch keine Testimonials — und das ist ehrlich so.</b> aban news startet gerade. Keine erfundenen Stimmen, keine Fake-Zahlen. Du bist früh dran und prägst mit.</p>
 
@@ -293,5 +294,6 @@
   f.addEventListener('submit',function(){var b=f.querySelector('button');if(b){b.textContent='Wird geöffnet…';}});
 })();
 </script>
+  <script src="/js/reveal.js" defer></script>
 </body>
 </html>
