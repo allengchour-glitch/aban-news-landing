@@ -121,6 +121,15 @@
     .honest{margin-top:1rem;text-align:center;font-size:.9rem;color:var(--muted)}
     .honest b{color:var(--ink)}
 
+    /* "Für wen ist das?" — Zielgruppen-Schärfung */
+    .forwhom{margin-top:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .forwhom>div{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);padding:1.15rem 1.25rem}
+    .forwhom h2{margin:.1rem 0 .6rem;font-size:1.05rem}
+    .forwhom ul{margin:0;padding-left:1.1rem;display:grid;gap:.5rem}
+    .forwhom li{font-size:.9rem;color:#3b4654;line-height:1.45}
+    .forwhom .muted{color:var(--muted)}
+    .forwhom a{color:var(--amber-dk);text-decoration:none}.forwhom a:hover{text-decoration:underline}
+
     /* 3-point value row */
     .values{display:flex;flex-wrap:wrap;gap:.5rem .9rem;margin:1.1rem 0 0;padding:0;list-style:none}
     .values li{display:inline-flex;align-items:center;gap:.45rem;font-size:.86rem;color:#3b4654;font-weight:600}
@@ -148,6 +157,7 @@
       .mail{max-height:54vh;overflow:auto;-webkit-overflow-scrolling:touch}
       .strip{grid-template-columns:1fr}
       .step{border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}
+      .forwhom{grid-template-columns:1fr}
       .hnav .lk{display:none}.row{flex-direction:column}.row .btn{width:100%}
     }
   @media (hover:none) and (pointer:coarse){.tab{min-height:44px;padding:.55rem 1rem}.lang a{min-height:38px;display:inline-flex;align-items:center}.btn--sm{min-height:40px}}
@@ -179,7 +189,7 @@
       <div>
         <span class="chip-status"><span class="pulse"></span> Mo–Fr · kuratiert von Aban in der Schweiz</span>
         <h1>Die wichtigsten KI-Updates für DACH-Profis — jeden Morgen in 5&nbsp;Minuten.</h1>
-        <p class="lead">Jeden Morgen die 3 KI-Entwicklungen, die dein Business heute betreffen — und nichts sonst.</p>
+        <p class="lead">Für Solo-Berater, Freelancer und kleine Teams in DACH: jeden Morgen die 3 KI-Entwicklungen, die dein Business heute betreffen — und nichts sonst.</p>
         <div class="chips">
           <span class="chip">📰 3–5 News</span>
           <span class="chip">🛠 1 getestetes Tool</span>
@@ -232,6 +242,25 @@
         <div class="step" data-reveal data-reveal-delay="3"><span class="n">3</span><h2>Du liest, 5 Min</h2><p>07:30 im Posteingang. Kaffee, durchlesen, eine Sache mitnehmen — fertig vor dem ersten Meeting.</p></div>
       </div>
       <p class="honest"><b>Noch keine Testimonials — und das ist ehrlich so.</b> aban news startet gerade. Keine erfundenen Stimmen, keine Fake-Zahlen. Du bist früh dran und prägst mit.</p>
+
+      <div class="forwhom" data-reveal>
+        <div>
+          <h2>👍 Für dich, wenn …</h2>
+          <ul>
+            <li>du als <b>Solo-Berater, Freelancer, Agentur- oder KMU-Inhaber</b> in DACH arbeitest</li>
+            <li>du KI im Arbeitsalltag <b>nutzen</b> willst — ohne täglich Threads zu lesen</li>
+            <li>dir <b>DSGVO und deutsche Praxis</b> wichtiger sind als US-Schlagzeilen</li>
+          </ul>
+        </div>
+        <div>
+          <h2>👎 Eher nicht, wenn …</h2>
+          <ul>
+            <li>du den nächsten <b>Hype-Thread</b> suchst statt einer ehrlichen Einschätzung</li>
+            <li>du nur <b>Schlagzeilen</b> willst, ohne dass jemand sie für dich einordnet</li>
+            <li>du lieber <b>auf Englisch</b> liest <span class="muted">— dann nimm <a href="/en/">EN</a>, <a href="/fr/">FR</a> oder <a href="/it/">IT</a></span></li>
+          </ul>
+        </div>
+      </div>
 
       <div class="cta2">
         <p>Überzeugt? Hol dir aban news Mo–Fr morgens — kostenlos.</p>
