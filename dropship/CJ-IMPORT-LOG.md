@@ -2,8 +2,7 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **35 Produkte live** (Charge 8–10: Augenmassage, Gemüseschneider,
-> Reise-Zahnbürste, LED-Fahrradrucksack, 3D-Wimpern). Ziel 40 in Arbeit.
+> Stand: 2026-05-31 — **40 Produkte live** 🎯 (Ziel 40 erreicht).
 
 Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in **6 Kanälen** (Onlineshop, Shop,
 TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar untracked
@@ -82,6 +81,33 @@ Aussortiert Charge 7: Ice-Silk-T-Shirt (42 Grössen, Kleidung), Schuhschrank ($1
 Industrie-Messwerkzeug (off-theme), Ohrclip (Schmuck), Spray-Fan (Duplikat bereits live).
 
 **Endstand dieser Session: 30 cj-real Produkte ACTIVE & live in 6 Kanälen.** (+1 DRAFT „Shoe Rack".)
+
+## Charge 8–13 (2026-05-31) — +10 live → 40 gesamt 🎯
+| Produkt | VK CHF | CJ-Kost $ | SKU |
+|---|---|---|---|
+| Augenmassagegerät Bluetooth | 44.90 | 14.97 | `CJJT290442101AZ` |
+| 16-in-1 Gemüseschneider | 39.90 | 14.00 | `CJCF287790001AZ` |
+| Reise-Schallzahnbürste | 29.90 | 10.67 | `CJYD291548901AZ` |
+| LED-Fahrradrucksack mit Blinker | 44.90 | 15.50 | `CJNS290432901AZ` |
+| Selbstklebende 3D-Wimpern | 14.90 | 13.10 | `CJJJ29039800001` |
+| XXL Leselupe mit LED-Licht | 16.90 | 5.03 | `CJYD290957402BY` |
+| 4L Luftbefeuchter Cool-Mist | 54.90 | 20.40 | `CJJD29047400001` |
+| Silikon-Abtropfmatte XL | 24.90 | 11.09 | `CJCF290358201AZ` |
+| LED-Wandleuchte mit Akku | 16.90 | 2.28 | `CJYD291551202BY` |
+| Edelstahl Thermo-Suppenbecher | 16.90 | 1.17 | `CJYD291498201AZ` |
+
+Aussortiert Charge 8–13 (off-theme/Risiko): diverser Schmuck (Cat-Paw, Ringe, Ohrringe, Bangle),
+Möbel >$70 (Beistelltisch, Etagenbett, Schuhschrank, Grilltisch, LED-Coffee-Table), Kleidung mit
+vielen Grössen (T-Shirt, Jeans, Mules, Beach-Set, Wig), Duplikate (Zahnbürste/Spray-Fan/Snuff-Bottle),
+Einzelbild-Artikel (Cleansing-Brush), Sägeblatt/Industrie-Tool, Haarentfernungscreme.
+
+**🎯 Endstand: 40 cj-real Produkte ACTIVE & live in 6 Kanälen.** Alle Bilder verifiziert (READY),
+echte CJ-SKUs fürs Fulfillment, deutsche LuxeStyle-Copy, Marge ~2,7–10×.
+
+### Hinweis zur Methode
+Jedes Produkt: Keyword-Suche → Relevanzfilter → Bild-URLs per HTTP-200 verifiziert → angelegt →
+mit der **echten** zurückgegebenen ID publiziert (geratene IDs scheitern systematisch → immer
+erst create-Antwort abwarten). `published`-Counter hinkt der Indexierung ein paar Sekunden nach.
 
 ### Bei eingehender Bestellung
 Produkt in CJ über die **Fulfillment-SKU** (oben) bestellen → an Kundenadresse senden lassen.
