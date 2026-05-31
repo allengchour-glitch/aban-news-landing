@@ -185,6 +185,46 @@
       <p class="honest"><b>Pas encore de témoignages — et c'est honnête.</b> aban news débute. Pas de fausses citations, pas de chiffres bidon. Tu es tôt, et tu façonnes le projet.</p>
     </div>
   </section>
+
+  <section style="border-top:1px solid #ece6db;background:#fff;">
+    <div class="wrap">
+      <style>
+        .facts{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
+        .facts div{padding:1.4rem .6rem;border-right:1px solid var(--line)}
+        .facts div:last-child{border-right:0}
+        .facts .num{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;color:var(--amber-dk);line-height:1}
+        .facts .lbl{display:block;margin-top:.35rem;font-size:.82rem;color:var(--muted);font-weight:600}
+        @media(max-width:560px){.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(2){border-right:0}}
+        .nx-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:1.4rem}
+        .nx-card{display:flex;align-items:flex-start;gap:14px;padding:18px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;text-decoration:none;color:#1f2937;transition:transform .15s,box-shadow .15s,border-color .15s}
+        .nx-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(31,41,55,.10);border-color:#d97706}
+        .nx-ico{flex:0 0 auto;width:46px;height:46px;border-radius:12px;background:#fef3c7;display:flex;align-items:center;justify-content:center;font-size:24px}
+        .nx-name{font-weight:800;font-size:1.05rem;display:block;margin-bottom:3px}
+        .nx-tag{font-size:.7rem;font-weight:700;color:#b45309;background:#fef3c7;padding:1px 8px;border-radius:999px;margin-left:6px}
+        .nx-desc{display:block;font-size:.9rem;color:#6b7280;line-height:1.45}
+        @media(max-width:600px){.nx-grid{grid-template-columns:1fr}}
+      </style>
+      <div class="facts"><div><span class="num">25+</span><span class="lbl">Éditions (lun–ven)</span></div><div><span class="num">177</span><span class="lbl">outils IA évalués</span></div><div><span class="num">86</span><span class="lbl">programmes d'aide</span></div><div><span class="num">4</span><span class="lbl">langues (DE·EN·FR·IT)</span></div></div>
+    </div>
+  </section>
+
+  <section class="sec netz-band" style="background:linear-gradient(180deg,#fffdf8,#fef3c7);border-top:1px solid #f1e4c4;padding:clamp(2.6rem,6vw,4rem) 0;">
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:1.6rem">
+        <span class="eyebrow" style="display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-dk)">Plus que la newsletter</span>
+        <h2 style="margin:.35rem 0 .4rem;font-size:clamp(1.45rem,3vw,2rem);letter-spacing:-.02em;">Le réseau aban</h2>
+        <p style="color:#6b7280;margin:0 auto;max-width:54ch;">Des outils IA gratuits pour la région DACH — sélectionnés, honnêtes, sans inscription. Note : les radars sont surtout en allemand.</p>
+      </div>
+      <div class="nx-grid">
+        <a href="https://radar.abannews.com" class="nx-card"><span class="nx-ico">📡</span><span><span class="nx-name">Radar Outils IA <span class="nx-tag">177 outils</span></span><span class="nx-desc">Le comparatif honnête : pertinence DACH, score d'utilité et contrôle RGPD pour chaque outil.</span></span></a>
+        <a href="https://foerder.abannews.com" class="nx-card"><span class="nx-ico">🧭</span><span><span class="nx-name">Radar Aides <span class="nx-tag">86 programmes</span></span><span class="nx-desc">Aides pour l'IA &amp; la numérisation en DE, AT &amp; CH — avec délais et conditions.</span></span></a>
+        <a href="https://jobs.abannews.com" class="nx-card"><span class="nx-ico">🤖</span><span><span class="nx-name">Radar Emplois IA <span class="nx-tag">quotidien</span></span><span class="nx-desc">Offres d'emploi IA dans la région DACH — à distance et sur site, du débutant au senior.</span></span></a>
+        <a href="https://kurse.abannews.com" class="nx-card"><span class="nx-ico">🎓</span><span><span class="nx-name">Radar Cours IA</span><span class="nx-desc">Cours &amp; certificats IA comparés honnêtement : effort, prix, ce qu'on apprend vraiment.</span></span></a>
+        <a href="https://prompts.abannews.com" class="nx-card"><span class="nx-ico">✍️</span><span><span class="nx-name">Bibliothèque de prompts <span class="nx-tag">50 prompts</span></span><span class="nx-desc">Prompts allemands prêts à copier — pour offres, mails, contenu et recherche.</span></span></a>
+        <a href="https://agenturen.abannews.com" class="nx-card"><span class="nx-ico">🏢</span><span><span class="nx-name">Radar Agences</span><span class="nx-desc">Prestataires &amp; agences IA vérifiés pour DACH — automatisation, contenu, conseil.</span></span></a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
