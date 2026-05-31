@@ -62,6 +62,19 @@ PAGES = {
         "Produkttexte, Support, SEO — ohne Floskeln"),
     "ki-fuer-steuerberater": ("FÜR KANZLEIEN", ["KI für", "Steuerberater"],
         "Sinnvoller Einsatz in der Kanzlei — mit Datenschutz"),
+    # Marketing-/Marken-Seiten
+    "founding": ("FOUNDING-MEMBER", ["100 Plätze", "€69 lifetime"],
+        "Sei eine der ersten 100 Stimmen — einmal zahlen, lebenslang Premium"),
+    "sponsoring": ("WERBUNG & SPONSORING", ["Sponsor", "werden"],
+        "Erreich DACH-KI-Profis — feste Rate-Card, klar gekennzeichnet"),
+    "resources": ("GRATIS-RESSOURCEN", ["Tools, Prompts", "& Vorlagen"],
+        "Kostenlose Downloads für DACH-KI-Profis — ohne Anmeldung"),
+    "ueber-aban": ("ÜBER ABAN", ["Wer hinter", "aban news steckt"],
+        "Ein Schweizer Solopreneur, ein täglicher Anti-Hype-Newsletter"),
+    "faq": ("HÄUFIGE FRAGEN", ["Alles zu", "aban news"],
+        "Preis, Versand, Datenschutz, Premium — klar beantwortet"),
+    "presse": ("PRESSE", ["aban news", "für Medien"],
+        "Fakten, Zitate und Bildmaterial — kurz und ehrlich"),
 }
 
 
@@ -103,9 +116,25 @@ def render(badge, title_lines, sub):
     for ln in title_lines:
         d.text((70, y), ln, font=tf, fill=INK)
         y += tsize + 12
-    # Unterzeile
+    # Unterzeile — automatischer Umbruch, damit nichts am Rand abgeschnitten wird
     y += 14
-    d.text((70, y), sub, font=font(38, bold=False), fill=AMBER_DK)
+    sf = font(38, bold=False)
+    max_w = W - 70 - 40  # linker Rand + Sicherheitsabstand rechts
+    words = sub.split(" ")
+    lines, cur = [], ""
+    for w in words:
+        test = (cur + " " + w).strip()
+        if d.textbbox((0, 0), test, font=sf)[2] <= max_w:
+            cur = test
+        else:
+            if cur:
+                lines.append(cur)
+            cur = w
+    if cur:
+        lines.append(cur)
+    for ln in lines[:2]:  # max 2 Zeilen Unterzeile
+        d.text((70, y), ln, font=sf, fill=AMBER_DK)
+        y += 50
     # Fuß
     d.text((70, H - 74), "abannews.com  ·  Mo–Fr, 5 Minuten, kein Hype",
            font=font(26, bold=False), fill=MUTED)
