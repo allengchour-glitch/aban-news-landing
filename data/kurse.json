@@ -1,0 +1,138 @@
+{
+  "stand": "2026-05",
+  "hinweis": "Kuratierte Auswahl. Preise/Inhalte ändern sich — Details auf der Kursseite prüfen. Direktlinks; etwaige Partnerlinks werden mit * gekennzeichnet (Transparenz).",
+  "kurse": [
+    {
+      "id": "elements-of-ai",
+      "name": "Elements of AI",
+      "anbieter": "University of Helsinki",
+      "level": "Einstieg",
+      "sprache": "DE + EN",
+      "preis": "Kostenlos",
+      "was": "Der bekannteste KI-Grundlagenkurs weltweit. Ohne Programmierung, verständlich, mit Zertifikat. Auf Deutsch verfügbar.",
+      "url": "https://www.elementsofai.com/de/",
+      "aban_note": "Bester Startpunkt, wenn du verstehen willst, was KI überhaupt ist — ohne Hype, ohne Technik-Hürde."
+    },
+    {
+      "id": "ki-campus",
+      "name": "KI-Campus",
+      "anbieter": "Stifterverband u.a.",
+      "level": "Einstieg",
+      "sprache": "DE",
+      "preis": "Kostenlos",
+      "was": "Deutsche Lernplattform mit vielen kostenlosen KI-Kursen, Videos und Micro-Degrees zu unterschiedlichen Themen.",
+      "url": "https://ki-campus.org/",
+      "aban_note": "Gute deutschsprachige Auswahl — von Grundlagen bis Spezialthemen, alles gratis."
+    },
+    {
+      "id": "openhpi-ki",
+      "name": "openHPI — KI-Kurse",
+      "anbieter": "Hasso-Plattner-Institut",
+      "level": "Einstieg",
+      "sprache": "DE",
+      "preis": "Kostenlos",
+      "was": "Kostenlose, fundierte Online-Kurse (MOOCs) zu KI und Daten vom HPI, oft mit Zertifikat.",
+      "url": "https://open.hpi.de/courses?q=KI",
+      "aban_note": "Etwas akademischer, aber solide und seriös — gut, wenn du es genauer wissen willst."
+    },
+    {
+      "id": "google-ai-essentials",
+      "name": "Google AI Essentials",
+      "anbieter": "Google (via Coursera)",
+      "level": "Einstieg",
+      "sprache": "EN (DE-Untertitel)",
+      "preis": "Freemium",
+      "was": "Praxisnaher Einstieg, wie du KI im Arbeitsalltag nutzt. Mit Zertifikat (kostenpflichtig), Inhalte teils gratis.",
+      "url": "https://www.coursera.org/learn/google-ai-essentials",
+      "aban_note": "Sehr praktisch ausgerichtet — weniger Theorie, mehr „so setzt du's morgen ein\"."
+    },
+    {
+      "id": "grow-google-de",
+      "name": "Google Zukunftswerkstatt — KI",
+      "anbieter": "Google",
+      "level": "Einstieg",
+      "sprache": "DE",
+      "preis": "Kostenlos",
+      "was": "Kostenlose deutschsprachige Kurse zu KI und digitalen Skills für Beruf und Selbstständigkeit.",
+      "url": "https://grow.google/intl/de/",
+      "aban_note": "Niedrigschwellig und auf Deutsch — gut für den ersten Praxisbezug."
+    },
+    {
+      "id": "genai-for-everyone",
+      "name": "Generative AI for Everyone",
+      "anbieter": "DeepLearning.AI (Andrew Ng)",
+      "level": "Einstieg",
+      "sprache": "EN (Untertitel)",
+      "preis": "Freemium",
+      "was": "Andrew Ng erklärt, wie generative KI funktioniert und wie du sie sinnvoll im Alltag/Business einsetzt.",
+      "url": "https://www.deeplearning.ai/courses/generative-ai-for-everyone/",
+      "aban_note": "Von einem der renommiertesten KI-Lehrer — klar, ehrlich, ohne Verkaufsshow."
+    },
+    {
+      "id": "ms-ai-beginners",
+      "name": "AI for Beginners",
+      "anbieter": "Microsoft",
+      "level": "Praxis",
+      "sprache": "EN",
+      "preis": "Kostenlos",
+      "was": "Offener 12-Wochen-Lehrplan zu KI-Grundlagen und ML, frei auf GitHub. Auch Microsoft AI Skills Navigator für Lernpfade.",
+      "url": "https://microsoft.github.io/AI-For-Beginners/",
+      "aban_note": "Kostenlos und strukturiert — gut, wenn du tiefer einsteigen und auch etwas Technik willst."
+    },
+    {
+      "id": "deeplearning-ai",
+      "name": "DeepLearning.AI Kurse & Spezialisierungen",
+      "anbieter": "DeepLearning.AI (via Coursera)",
+      "level": "Fortgeschritten",
+      "sprache": "EN",
+      "preis": "Bezahlt (teils gratis auditierbar)",
+      "was": "Vertiefte Kurse zu ML, Deep Learning, LLMs und Prompt Engineering — Branchenstandard für KI-Profis.",
+      "url": "https://www.deeplearning.ai/courses/",
+      "aban_note": "Wenn du wirklich mit KI bauen willst, führt an DeepLearning.AI kaum ein Weg vorbei."
+    },
+    {
+      "id": "haufe-akademie-ki",
+      "name": "Haufe Akademie — KI",
+      "anbieter": "Haufe Akademie",
+      "level": "Praxis",
+      "sprache": "DE",
+      "preis": "Bezahlt",
+      "was": "Deutschsprachige KI-Seminare und Lehrgänge für Berufstätige und Unternehmen, mit Zertifikat.",
+      "url": "https://www.haufe-akademie.de/ki",
+      "aban_note": "Klassische Weiterbildung auf Deutsch — ggf. über das QCG (siehe Förder-Radar) bezuschussbar."
+    },
+    {
+      "id": "fraunhofer-iao-ki",
+      "name": "Fraunhofer IAO — KI-Weiterbildung",
+      "anbieter": "Fraunhofer IAO",
+      "level": "Fortgeschritten",
+      "sprache": "DE",
+      "preis": "Bezahlt",
+      "was": "Praxisnahe KI-Weiterbildung speziell für Unternehmen und Fachkräfte, anwendungsorientiert.",
+      "url": "https://www.iao.fraunhofer.de/de/weiterbildung/ki-weiterbildung.html",
+      "aban_note": "Seriös und anwendungsnah — gut für Teams, die KI konkret einführen wollen."
+    },
+    {
+      "id": "coursera-ai",
+      "name": "Coursera — KI-Kurse & Zertifikate",
+      "anbieter": "Coursera (diverse Unis)",
+      "level": "Alle Level",
+      "sprache": "EN + DE",
+      "preis": "Freemium",
+      "was": "Riesige Auswahl an KI-Kursen und Professional Certificates von Top-Unis und Unternehmen.",
+      "url": "https://www.coursera.org/de-DE/courses?query=k%C3%BCnstliche%20intelligenz",
+      "aban_note": "Breiteste Auswahl — viele Kurse gratis auditierbar, Zertifikat kostet."
+    },
+    {
+      "id": "udemy-ai",
+      "name": "Udemy — KI-Kurse",
+      "anbieter": "Udemy",
+      "level": "Alle Level",
+      "sprache": "EN + DE",
+      "preis": "Bezahlt (oft im Angebot)",
+      "was": "Große Auswahl praxisorientierter KI-Kurse, häufig stark rabattiert. Qualität schwankt — Bewertungen prüfen.",
+      "url": "https://www.udemy.com/topic/artificial-intelligence/",
+      "aban_note": "Günstig im Sale, aber Qualität sehr unterschiedlich — auf aktuelle Reviews und Update-Datum achten."
+    }
+  ]
+}

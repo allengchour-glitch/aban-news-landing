@@ -1,0 +1,51 @@
+name: Data Freshness
+
+# Erinnert planmäßig daran, kuratierte Daten (Förder-Radar, Kurse …) zu aktualisieren.
+# Ändert nichts automatisch — öffnet nur ein Issue, wenn eine Datei zu alt ist.
+
+on:
+  schedule:
+    - cron: '0 6 1 * *'   # 1. des Monats, 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      months:
+        description: 'Schwelle in Monaten'
+        required: false
+        default: '3'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  freshness:
+    name: Check curated data freshness
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run freshness check
+        run: python3 automation/check_data_freshness.py --months "${{ github.event.inputs.months || '3' }}"
+
+      - name: Open issue if data is stale
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if grep -q "## Bitte aktualisieren" .freshness-report.md; then
+            TITLE="Daten-Frische: kuratierte Daten aktualisieren ($(date +%Y-%m))"
+            # Bestehendes offenes Issue desselben Monats nicht doppelt anlegen
+            if gh issue list --state open --search "$TITLE in:title" | grep -q .; then
+              echo "Issue existiert bereits — übersprungen."
+            else
+              gh issue create --title "$TITLE" --body-file .freshness-report.md
+            fi
+          else
+            echo "Alle Daten aktuell — kein Issue nötig."
+          fi
