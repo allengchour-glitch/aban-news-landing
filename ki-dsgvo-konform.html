@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI DSGVO-konform nutzen — praktischer Leitfaden | aban news</title>
+  <meta name="description" content="KI datenschutzkonform einsetzen: 5-Fragen-Prüfung, AVV, Training-Opt-out, Datenminimierung — praktisch für Selbstständige im DACH-Raum. Keine Rechtsberatung.">
+  <link rel="canonical" href="https://abannews.com/ki-dsgvo-konform.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="KI DSGVO-konform nutzen — der praktische Leitfaden">
+  <meta property="og:description" content="Die 5-Fragen-Datenschutz-Prüfung für KI-Tools. Praktisch, ehrlich, DACH-Fokus.">
+  <meta property="og:url" content="https://abannews.com/ki-dsgvo-konform.html">
+  <meta property="og:type" content="article">
+  <style>
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:3rem 0 2rem;text-align:center}
+    h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:58ch;margin:0 auto 1.5rem}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    section{padding:1.2rem 0}
+    section h2{font-size:1.4rem;line-height:1.2;margin:1.4rem 0 .6rem}
+    section h3{font-size:1.1rem;margin:1.1rem 0 .35rem}
+    section p{margin-bottom:.8rem}
+    section ul{margin:0 0 .9rem 1.2rem}
+    section li{margin-bottom:.35rem}
+    .method{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.5rem;margin-bottom:1rem;box-shadow:var(--shadow)}
+    .method h3{margin-top:0;display:flex;align-items:center;gap:.5rem}
+    .method .num{background:var(--amber);color:#fff;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;flex-shrink:0}
+    .callout{background:var(--amber-lt);border-left:4px solid var(--amber);border-radius:8px;padding:.9rem 1.1rem;margin:1rem 0;font-weight:600}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2rem 0}
+    .cta-box h2{font-size:1.3rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .btn--ghost{border:1px solid var(--amber);color:var(--amber-dk);background:#fff}
+    details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem;padding:0}
+    details[open]{border-color:#fed7aa}
+    summary{padding:1rem 1.1rem;font-weight:600;cursor:pointer;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";float:right;color:#a3a3a3;font-weight:300;font-size:1.3rem;line-height:1}
+    details[open] summary::after{content:"−"}
+    details .a{padding:0 1.1rem 1.1rem;color:var(--muted);font-size:.95rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:2rem}
+    .src-list{font-size:.85rem;color:var(--muted)}
+    .src-list li{margin-bottom:.4rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"KI DSGVO-konform nutzen — der praktische Leitfaden für Selbstständige","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"datePublished":"2026-05-31","dateModified":"2026-05-31","description":"Die 5-Fragen-Datenschutz-Prüfung für KI-Tools: Serverstandort, AVV, Training-Opt-out, Datenminimierung. Praktisch erklärt, DACH-Fokus."}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Darf ich ChatGPT oder Claude geschäftlich nutzen?","acceptedAnswer":{"@type":"Answer","text":"Ja — wenn du eine Rechtsgrundlage hast und die Anbieterbedingungen einhältst. Für personenbezogene Daten brauchst du in der Regel einen Auftragsverarbeitungsvertrag (AVV) und solltest EU-Datenresidenz sowie einen Business-Plan wählen, der Eingaben nicht fürs Training nutzt."}},
+    {"@type":"Question","name":"Brauche ich für KI-Tools einen AVV?","acceptedAnswer":{"@type":"Answer","text":"Sobald du personenbezogene Daten durch das Tool verarbeiten lässt, ja. Der AVV (nach Art. 28 DSGVO) regelt, dass der Anbieter die Daten nur in deinem Auftrag verarbeitet. Seriöse Anbieter stellen ihn als Standarddokument bereit."}},
+    {"@type":"Question","name":"Werden meine Eingaben zum Training des Modells genutzt?","acceptedAnswer":{"@type":"Answer","text":"Auf vielen kostenlosen Plänen ja, auf Business-Plänen oft nicht — aber nur, wenn du es aktiv einstellst oder den richtigen Plan wählst. Prüfe die Trainings-Einstellung einmal bewusst in den Kontoeinstellungen, statt darauf zu hoffen."}},
+    {"@type":"Question","name":"Ist die kostenlose Version eines KI-Tools DSGVO-konform?","acceptedAnswer":{"@type":"Answer","text":"Nicht automatisch. Kostenlose Tiers bieten häufig keinen AVV und nutzen Eingaben fürs Training. Für personenbezogene Kundendaten ist das in der Regel ungeeignet — entweder Business-Plan mit Garantien wählen oder die Daten vorher anonymisieren."}},
+    {"@type":"Question","name":"Muss ich Kunden informieren, dass ich KI einsetze?","acceptedAnswer":{"@type":"Answer","text":"Wenn du personenbezogene Daten deiner Kunden mit KI verarbeitest, gehören die eingesetzten Auftragsverarbeiter in deine Datenschutzinformationen. Ein guter Eigen-Test: Könntest du deinem Kunden offen erklären, wie du seine Daten mit KI verarbeitest? Wenn nicht, stimmt etwas nicht."}}
+  ]}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/preview.html">Beispiel</a>
+      <a href="/ebook.html">eBook</a>
+      <a href="/ki-dsgvo-konform.html"><strong>KI &amp; DSGVO</strong></a>
+      <a href="#subscribe" class="btn">Abonnieren</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Stand: Mai 2026 · keine Rechtsberatung</span>
+      <h1>KI DSGVO-konform nutzen — der praktische Leitfaden</h1>
+      <p class="lead">Datenschutz ist kein Grund, KI zu meiden — sondern ein Grund, vor dem ersten Klick kurz nachzudenken. Hier ist die Prüfung, die fünf Minuten dauert und teure Fehler erspart. Praktisch, für Selbstständige, ohne Jura-Nebel.</p>
+    </div>
+
+    <section>
+      <p>Die meisten Selbstständigen im DACH-Raum zögern bei KI nicht wegen der Technik, sondern wegen drei Buchstaben: DSGVO. Die Sorge ist gesund — sie blockiert nur oft mehr als nötig. Der Punkt ist nicht „lass die Finger davon", sondern „wisse, was du tust, bevor Kundendaten ins Tool wandern".</p>
+      <p>Der häufigste Fehler ist nicht böser Wille, sondern Bequemlichkeit: schnell ein Kundengespräch in ein kostenloses Transkriptions-Tool werfen, einen ganzen Mail-Verlauf mit echten Namen einfügen, weil es gerade praktisch ist. Genau hier entstehen die Probleme, die später Geld kosten. Dieser Leitfaden gibt dir eine Prüfung an die Hand, die du einmal pro Tool durchgehst — danach weißt du, woran du bist.</p>
+      <div class="callout">Grundregel: Was stimmen muss, prüfst du an der Quelle — nicht bei der KI und nicht in einem Blogpost. Diese Seite ordnet ein, ersetzt aber keine Rechtsberatung.</div>
+    </section>
+
+    <section>
+      <h2>Die 5-Fragen-Datenschutz-Prüfung</h2>
+      <p>Geh diese fünf Fragen einmal pro Tool durch. Wer sie ehrlich beantwortet, vermeidet die teuren Anfängerfehler.</p>
+
+      <div class="method">
+        <h3><span class="num">1</span> Wo stehen die Server?</h3>
+        <p>Datenverarbeitung in der EU ist der einfache Weg. Bei US-Anbietern brauchst du eine tragfähige Rechtsgrundlage; viele große Tools bieten inzwischen EU-Datenresidenz oder Business-Pläne mit besseren Garantien. Wenn die Anbieterseite dazu nichts sagt, ist auch das eine Antwort.</p>
+      </div>
+
+      <div class="method">
+        <h3><span class="num">2</span> Gibt es einen Auftragsverarbeitungsvertrag (AVV)?</h3>
+        <p>Sobald du personenbezogene Daten verarbeitest, brauchst du mit dem Anbieter einen AVV (Art. 28 DSGVO). Er hält fest, dass der Anbieter die Daten nur in deinem Auftrag verarbeitet. Seriöse Anbieter stellen ihn als Standarddokument bereit. Findest du keinen, gehören dort keine Kundendaten hinein.</p>
+      </div>
+
+      <div class="method">
+        <h3><span class="num">3</span> Werden meine Eingaben fürs Training genutzt?</h3>
+        <p>Auf vielen kostenlosen Plänen ja, auf Business-Plänen oft nicht — aber nur, wenn du es aktiv einstellst oder den richtigen Plan wählst. Prüfe diese Einstellung einmal bewusst in den Kontoeinstellungen, statt darauf zu hoffen.</p>
+      </div>
+
+      <div class="method">
+        <h3><span class="num">4</span> Was muss überhaupt rein? (Datenminimierung)</h3>
+        <p>Die beste Schutzmaßnahme ist Weglassen. „Kunde A, Branche Bau, Auftrag X" reicht für einen Angebots-Entwurf vollkommen. Namen, Adressen und Vertragsnummern brauchst du dafür nicht — also lass sie draußen. Anonymisieren ist fast immer schneller als die spätere Diskussion mit der Aufsichtsbehörde.</p>
+      </div>
+
+      <div class="method">
+        <h3><span class="num">5</span> Würde ich es meinem Kunden so erklären?</h3>
+        <p>Ein einfacher Test: Wenn du deinem Kunden offen sagen könntest, wie du seinen Vorgang mit KI bearbeitest, ist es meist in Ordnung. Müsstest du es verstecken, stimmt etwas nicht. Dein Bauchgefühl ist hier ein erstaunlich guter erster Filter.</p>
+      </div>
+
+      <div class="callout">Anonymisieren, wo du kannst. Ein AVV, wo nötig. Und im Zweifel das selbst machen, was wirklich stimmen muss.</div>
+    </section>
+
+    <section>
+      <h2>Regeln nach Tool-Typ</h2>
+      <h3>Text-Modelle (ChatGPT, Claude &amp; Co.)</h3>
+      <p>Für Texte, Zusammenfassungen, Umformulierungen. Wähle einen bezahlten Business-Plan, prüfe EU-Datenresidenz und AVV, schalte die Trainings-Nutzung ab. Echte Kundennamen nur, wenn es unumgänglich ist — sonst anonymisiert arbeiten.</p>
+      <h3>Transkription (Calls, Sprachnotizen)</h3>
+      <p>Hol bei Kundengesprächen die Einwilligung der Beteiligten ein. Lokale Verarbeitung (z.&nbsp;B. Whisper auf dem eigenen Rechner) ist datenschutzfreundlicher als ein Web-Dienst, weil die Audiodatei dein Gerät nicht verlässt.</p>
+      <h3>Bilder &amp; Grafik</h3>
+      <p>Hier geht es seltener um personenbezogene Daten, dafür um Rechte und Marken: Prüfe Nutzungsrechte und nutze generierte Bilder nicht blind als eigenes Markenzeichen.</p>
+      <h3>Automatisierung (Make, n8n &amp; Co.)</h3>
+      <p>Sobald Workflows Kundendaten zwischen Diensten schieben, brauchst du für jeden beteiligten Dienst Klarheit über AVV und Serverstandort. Self-Hosting (etwa n8n) gibt dir die meiste Kontrolle.</p>
+    </section>
+
+    <section>
+      <h2>Die drei häufigsten Fehler</h2>
+      <ul>
+        <li><strong>Echte Daten aus Bequemlichkeit:</strong> ganze Mail-Verläufe mit Namen und Adressen einfügen, weil es gerade schneller geht. Genau das ist der teure Reflex.</li>
+        <li><strong>Kostenlos für Sensibles:</strong> den Gratis-Tier für Kundendaten nutzen, obwohl es dort keinen AVV gibt und Eingaben fürs Training landen.</li>
+        <li><strong>„Ist ja nur ein Test":</strong> Datenschutz gilt auch im Test. Ein Probelauf mit echten Personendaten ist kein harmloser Probelauf.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Kurz erklärt: AVV und EU&nbsp;AI&nbsp;Act</h2>
+      <h3>Auftragsverarbeitungsvertrag (AVV)</h3>
+      <p>Wenn ein Anbieter personenbezogene Daten in deinem Auftrag verarbeitet, bist du verantwortlich, er ist Auftragsverarbeiter. Der AVV nach Art.&nbsp;28&nbsp;DSGVO regelt diese Beziehung schriftlich. Ohne ihn fehlt eine zentrale Grundlage — deshalb ist „gibt es einen AVV?" oben Frage&nbsp;2.</p>
+      <h3>EU&nbsp;AI&nbsp;Act</h3>
+      <p>Die KI-Verordnung der EU (Verordnung (EU)&nbsp;2024/1689) ergänzt die DSGVO um Risikoklassen und Transparenzpflichten für KI-Systeme. Für die meisten Selbstständigen heißt das vor allem: Wo KI-Inhalte im Spiel sind, gilt zunehmend eine Kennzeichnungs- und Transparenzpflicht. Die DSGVO bleibt parallel in Kraft.</p>
+    </section>
+
+    <section>
+      <h2>Häufige Fragen</h2>
+      <details><summary>Darf ich ChatGPT oder Claude geschäftlich nutzen?</summary><div class="a">Ja — wenn du eine Rechtsgrundlage hast und die Anbieterbedingungen einhältst. Für personenbezogene Daten brauchst du in der Regel einen AVV und solltest EU-Datenresidenz sowie einen Business-Plan ohne Trainings-Nutzung wählen.</div></details>
+      <details><summary>Brauche ich für KI-Tools wirklich einen AVV?</summary><div class="a">Sobald personenbezogene Daten durch das Tool laufen, ja. Der AVV nach Art.&nbsp;28&nbsp;DSGVO ist die schriftliche Grundlage dafür. Seriöse Anbieter stellen ihn als Standarddokument bereit.</div></details>
+      <details><summary>Werden meine Eingaben zum Training genutzt?</summary><div class="a">Auf vielen kostenlosen Plänen ja, auf Business-Plänen oft nicht — aber nur, wenn du es aktiv einstellst oder den passenden Plan wählst. Prüfe die Einstellung einmal bewusst.</div></details>
+      <details><summary>Ist die kostenlose Version DSGVO-konform?</summary><div class="a">Nicht automatisch. Gratis-Tiers bieten häufig keinen AVV und nutzen Eingaben fürs Training. Für echte Kundendaten ungeeignet — Business-Plan wählen oder vorher anonymisieren.</div></details>
+      <details><summary>Muss ich Kunden informieren, dass ich KI nutze?</summary><div class="a">Wenn du personenbezogene Kundendaten mit KI verarbeitest, gehören die eingesetzten Auftragsverarbeiter in deine Datenschutzinformationen. Eigen-Test: Könntest du es deinem Kunden offen erklären?</div></details>
+    </section>
+
+    <div class="cta-box" style="background:var(--card);border:1px solid var(--line);">
+      <h2>Gratis-eBook: „Anti-Hype“</h2>
+      <p>Das Datenschutz-Kapitel als Teil des Ganzen: Mein kostenloses eBook zeigt dir den 3-Fragen-Filter, deinen minimalen KI-Stack und die Datenschutz-Prüfung in fünf Minuten. Ohne Anmeldung.</p>
+      <a href="/ebook.html" class="btn btn--ghost">eBook lesen →</a>
+    </div>
+
+    <div class="cta-box" id="subscribe">
+      <h2>Jeden Werktag: KI ohne Bullshit, in 5 Minuten</h2>
+      <p>aban news liefert dir Mo–Fr die relevanten KI-Entwicklungen für deine Arbeit — inklusive der DSGVO- und Tool-Themen, die dich als Selbstständige betreffen.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">5-Min-KI-Briefing gratis →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Kein Spam. Abmeldung per Klick. DSGVO-konform.</p>
+    </div>
+
+    <section>
+      <h2 style="font-size:1.05rem;">Weiterlesen</h2>
+      <div style="display:grid;gap:.7rem;grid-template-columns:1fr 1fr;">
+        <a href="/ki-tools-fuer-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">KI-Tools für Selbstständige</strong><span style="color:var(--muted);font-size:.82rem;">Der ehrliche Stack 2026</span></a>
+        <a href="/chatgpt-fuer-solopreneure.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">ChatGPT für Solopreneure</strong><span style="color:var(--muted);font-size:.82rem;">Echter Nutzen statt Spielerei</span></a>
+        <a href="/geld-verdienen-mit-ki.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Geld verdienen mit KI</strong><span style="color:var(--muted);font-size:.82rem;">7 Wege, ehrlich bewertet</span></a>
+        <a href="/ebook.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Gratis-eBook „Anti-Hype“</strong><span style="color:var(--muted);font-size:.82rem;">KI ohne Bullshit einsetzen</span></a>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-size:1.05rem;">Quellen (offiziell, kostenlos)</h2>
+      <ul class="src-list">
+        <li><strong>DSGVO-Volltext</strong> — EUR-Lex, Verordnung (EU)&nbsp;2016/679. Maßgeblich u.&nbsp;a. Art.&nbsp;6 (Rechtsgrundlagen) und Art.&nbsp;28 (Auftragsverarbeitung).</li>
+        <li><strong>EU-KI-Verordnung (AI Act)</strong> — Verordnung (EU)&nbsp;2024/1689, ebenfalls über EUR-Lex.</li>
+        <li><strong>Deine Datenschutzbehörde</strong> — in DE der/die Landesdatenschutzbeauftragte, in AT die DSB, in CH der EDÖB. Erste Anlaufstelle bei konkreten Fragen.</li>
+      </ul>
+    </section>
+
+    <div class="disclaimer">
+      <p><strong>Wichtiger Hinweis:</strong> Dieser Leitfaden ist praktische Orientierung aus Erfahrung, keine Rechtsberatung. Er ersetzt im Einzelfall nicht die Prüfung durch eine Fachperson oder die Auskunft deiner Datenschutzbehörde. KI-Tools und ihre Bedingungen ändern sich schnell — prüfe den aktuellen Stand beim Anbieter selbst. Keine Affiliate-Links.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/">Startseite</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
