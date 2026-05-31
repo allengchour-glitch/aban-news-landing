@@ -565,3 +565,35 @@ via menuUpdate, alle 17 bestehenden Tabs erhalten. Menu-ID 310224093569.
 
 Hinweis: Die 81 älteren schuhe-Produkte haben keine damen/herren-Tags → nur in Haupt-Collection,
 nicht gender-gesplittet. Bei Bedarf später nachträglich taggen.
+
+## 2026-05-31 (Nacht) — Autonom-Auftrag: Küche + Tech-Gadgets + Subkategorien
+User schläft, Auftrag: leere Kategorien füllen, Subkats einstellen, Beschreibung/Bilder QA,
+20er-Loop. WICHTIG (CLAUDE.md): kein echter 8h-Cron möglich → Charge-für-Charge in Session.
+
+**Audit:** Die meisten Kats gut gefüllt (Beleuchtung 154, Smart-Home 128, Audio 86, Fitness 109,
+Bar-Tools 104, Foto 100). Genuin dünn: 🍴 Küche 9, Servieren 4, Trinkflaschen 17, Taschen 11.
+`kuche-kochen` ist MANUELL (keine Smart-Regel) → Produkte müssen manuell rein.
+
+**Neu (6 Produkte, alle ACTIVE, 6 Kanäle, Bilder READY):**
+| Produkt | ID | V | VK |
+|---|---|---|---|
+| Mini-Ventilator Eis-Kühlung | 15413085274497 | 3 | 24.90 |
+| Mücken-Nachtlicht-Falle | 15413085340033 | 1 | 19.90 |
+| Gemüse-Chopper 16-in-1 | 15413085700481 | 1 | 39.90 |
+| Keramik-Reibe Ingwer/Knoblauch | 15413085733249 | 7 | 14.90 |
+| Bluetooth-Speaker + 6in1-Charger | 15413085766017 | 2 | 34.90 |
+| LED-Ambientelampe dimmbar | 15413085798785 | 6 | 19.90 |
+
+**Subkategorien neu (Smart, tag-basiert, publiziert + im Menü):**
+- 🍴 Küchengeräte (`kuechengeraete`, tag kuechengeraete) → Menü unter Küche+Bar
+- 🔌 Coole Gadgets (`gadgets`, tag gadget) → Menü unter Tech+Elektronik
+- Chopper+Reibe zusätzlich manuell in `kuche-kochen` (ID 687342092673).
+
+**Werbe-Video:** `dropship/ads/render_neu.sh` → /tmp/ads/out/luxestyle_neu_2026.mp4 (10 neue Produkte,
+9:16, Musik uplifting.wav, Klick-CTA "JETZT LINK ANTIPPEN" + WELCOME10). An User geliefert.
+
+**CJ-Realität:** Katalog für saubere Treffer SEHR ausgeschöpft. Schuh-/Gadget-/Küchen-Suchen
+lieferten ~50% Fehltreffer (Jeans, Schmuck, Becherhalter, Snuff-Bottles). Pro Such-Charge real
+nur 1–4 saubere Neutreffer. „20er-Loop endlos" daher nicht realistisch — Qualität vor Menge.
+
+Stand: **475 aktive Produkte**.
