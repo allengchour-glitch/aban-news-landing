@@ -2,7 +2,8 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **30 Produkte live**.
+> Stand: 2026-05-31 — **35 Produkte live** (Charge 8–10: Augenmassage, Gemüseschneider,
+> Reise-Zahnbürste, LED-Fahrradrucksack, 3D-Wimpern). Ziel 40 in Arbeit.
 
 Alle: Vendor `LuxeStyle`, Status ACTIVE, publiziert in **6 Kanälen** (Onlineshop, Shop,
 TikTok, Meta, Google, Pinterest), Tags `cj-real, neu, sommer-2026`, Inventar untracked
