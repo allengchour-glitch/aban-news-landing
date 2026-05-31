@@ -123,7 +123,10 @@ header{display:flex;align-items:center;gap:12px}
 .cross-link{text-align:center;font-size:14px;color:#525252;margin-top:8px}
 .cross-link a{color:#d97706;font-weight:600;text-decoration:none}
 .cross-link a:hover{text-decoration:underline}
+.paypal-btn-wrap{max-width:420px;margin:0 auto 6px}
 </style>
+<!-- PayPal Hosted Buttons SDK (nur auf der Founding-Seite) -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAAlTk-D5SyWnL803AOIYWD-RjeEQo5oamkwiBs1jKqmL_CFhyItNaOukllLIekiZORIjo0thuZVSeY77M&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
 </head>
 <body>
 <header>
@@ -164,9 +167,8 @@ header{display:flex;align-items:center;gap:12px}
         <li>Später dazukommende Premium-Inhalte inklusive</li>
       </ul>
       <div class="card-cta">
-        <!-- TODO: STRIPE_FOUNDING_LINK -->
-        <a href="#" class="cta-primary">Founding-Member werden — €149</a>
-        <span class="stripe-note">Zahlung via Stripe — Link folgt</span>
+        <a href="#checkout" class="cta-primary">Founding-Member werden — €149</a>
+        <span class="stripe-note">Sichere Zahlung via PayPal · Käuferschutz inklusive</span>
       </div>
     </div>
   </div>
@@ -342,9 +344,13 @@ header{display:flex;align-items:center;gap:12px}
   <div class="wrap">
     <h2>Bereit? €149 einmal, lifetime.</h2>
     <p>30 Tage Geld-zurück-Garantie ohne Nachfragen. Eine Zahlung, danach lebenslang Premium — kein Abo, keine Verlängerung.</p>
-    <!-- TODO: STRIPE_FOUNDING_LINK -->
-    <a href="#" class="cta-primary">Founding-Platz sichern — €149</a>
-    <span class="stripe-note">Zahlung via Stripe — Link folgt</span>
+    <div id="paypal-container-UB35NLZNLRDEY" class="paypal-btn-wrap"></div>
+    <script>
+      paypal.HostedButtons({
+        hostedButtonId: "UB35NLZNLRDEY"
+      }).render("#paypal-container-UB35NLZNLRDEY");
+    </script>
+    <span class="stripe-note">Sichere Zahlung via PayPal · Käuferschutz · 30 Tage Geld-zurück</span>
     <div class="guarantee">✓ 30 Tage Geld-zurück-Garantie</div>
     <p class="cross-link" style="margin-top:20px">Lieber erst reinschnuppern? <a href="/beratung.html">Beratung</a> · <a href="/produkte.html">Produkte</a></p>
   </div>
@@ -361,7 +367,7 @@ header{display:flex;align-items:center;gap:12px}
 </section>
 
 <div class="legal">
-  <p>Founding-Membership ist eine einmalige Zahlung über Stripe.<br>30 Tage Geld-zurück-Garantie. Bei Einstellung des Newsletters innerhalb 12 Monaten: vollständiger Refund.</p>
+  <p>Founding-Membership ist eine einmalige Zahlung über PayPal.<br>30 Tage Geld-zurück-Garantie. Bei Einstellung des Newsletters innerhalb 12 Monaten: vollständiger Refund.</p>
   <p style="margin-top:16px">
     <a href="/impressum.html">Impressum</a> ·
     <a href="/datenschutz.html">Datenschutz (DSGVO)</a> ·
