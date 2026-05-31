@@ -37,6 +37,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://abannews.com/schicht.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://abannews.com/en/the-seam.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://abannews.com/ueber-aban.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>

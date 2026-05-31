@@ -1,0 +1,79 @@
+{
+  "titel": "The Seam",
+  "autor": "aban news",
+  "genre": "Drama / Family and Social Novel",
+  "sprache": "English",
+  "praemisse": "Across a century, a miners' family in Germany's Ruhr valley is bound to a colliery that feeds and owns them. When the grandfather breaks the solidarity of the great 1905 strike to save his children and ruins a comrade for it, he lays a fault that is hauled up with the coal: through war, dictatorship, forced labour, reconstruction and the dying of the pits, until the last shift closes the shaft in 1989 - and the third generation must decide whether an inherited betrayal is buried or named. The title carries a triple meaning: the work shift, the geological seam, the social class.",
+  "hinweis": "Englische Ausgabe von 'Schicht'. Struktur fuer den Compiler; die Prosa liegt in kapitel-schicht-en/band-0N/. Beats stehen in der deutschen Bibel roman-schicht.json.",
+  "baende": [
+    {
+      "nummer": 1,
+      "titel": "Going Down",
+      "untertitel": "Voßlohe, 1905–1923",
+      "kapitel": [
+        {"nummer": 1, "titel": "Glück auf"},
+        {"nummer": 2, "titel": "The Butty"},
+        {"nummer": 3, "titel": "Docked Tubs"},
+        {"nummer": 4, "titel": "The Great Strike"},
+        {"nummer": 5, "titel": "Hunger in the Strike"},
+        {"nummer": 6, "titel": "The Names"},
+        {"nummer": 7, "titel": "The Blacklist"},
+        {"nummer": 8, "titel": "The Overman"},
+        {"nummer": 9, "titel": "Essential to the War"},
+        {"nummer": 10, "titel": "The Turnip Winter"},
+        {"nummer": 11, "titel": "The Councils"},
+        {"nummer": 12, "titel": "The Red Ruhr Army"},
+        {"nummer": 13, "titel": "The Boy Wants to Go Down"},
+        {"nummer": 14, "titel": "The Occupation"},
+        {"nummer": 15, "titel": "Inflation"},
+        {"nummer": 16, "titel": "The Old Man"}
+      ]
+    },
+    {
+      "nummer": 2,
+      "titel": "At the Face",
+      "untertitel": "Voßlohe, 1929–1948",
+      "kapitel": [
+        {"nummer": 1, "titel": "At the Face"},
+        {"nummer": 2, "titel": "Idle Shifts"},
+        {"nummer": 3, "titel": "Lena"},
+        {"nummer": 4, "titel": "The Flag on the Headframe"},
+        {"nummer": 5, "titel": "Coal for the Guns"},
+        {"nummer": 6, "titel": "War Underground"},
+        {"nummer": 7, "titel": "The Foreign Workers"},
+        {"nummer": 8, "titel": "Tadeusz"},
+        {"nummer": 9, "titel": "Firedamp"},
+        {"nummer": 10, "titel": "The Bombs"},
+        {"nummer": 11, "titel": "Collapse"},
+        {"nummer": 12, "titel": "Zero Hour"},
+        {"nummer": 13, "titel": "Before the Tribunal"},
+        {"nummer": 14, "titel": "Coal is Bread"},
+        {"nummer": 15, "titel": "Marga Among the Men"},
+        {"nummer": 16, "titel": "The Currency Reform"}
+      ]
+    },
+    {
+      "nummer": 3,
+      "titel": "Turning Away",
+      "untertitel": "Voßlohe, 1962–1989",
+      "kapitel": [
+        {"nummer": 1, "titel": "Turning Away"},
+        {"nummer": 2, "titel": "The Recruited"},
+        {"nummer": 3, "titel": "The Dying of the Pits"},
+        {"nummer": 4, "titel": "The List"},
+        {"nummer": 5, "titel": "Ruth Brass"},
+        {"nummer": 6, "titel": "Jakob Underground"},
+        {"nummer": 7, "titel": "August's Last Word"},
+        {"nummer": 8, "titel": "What to Do with It"},
+        {"nummer": 9, "titel": "Rheinhausen"},
+        {"nummer": 10, "titel": "Hasan"},
+        {"nummer": 11, "titel": "Reconciliation"},
+        {"nummer": 12, "titel": "The Last Shift"},
+        {"nummer": 13, "titel": "The Old Man, Opened"},
+        {"nummer": 14, "titel": "The Fall of the Wall"},
+        {"nummer": 15, "titel": "What Remains When the Winding Stops"},
+        {"nummer": 16, "titel": "Glück auf"}
+      ]
+    }
+  ]
+}

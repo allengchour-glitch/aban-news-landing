@@ -1,0 +1,19 @@
+Kapitel 4 - Die Liste
+
+Es geschah bei einer Arbeit, die niemand gern tat: dem Sichten der alten Bestände. Die RAG ließ die Archive der zusammengelegten Zechen ordnen, Platz schaffen, Altes aussondern, und weil Marga im Lohnbüro saß und genau war und sich auskannte in den alten Papieren, gab man ihr die Aufgabe, die Bestände der Zeche Morgenstern durchzusehen, das Gedächtnis aus Papier, das bis ins vorige Jahrhundert zurückreichte.
+
+Es war staubige, einsame Arbeit, in einem Kellerraum unter der Lohnhalle, zwischen Regalen voller Akten, Lohnbücher, Förderlisten, Protokolle. Marga las sich fest. Sie war neugierig, sie war immer neugierig gewesen, und hier war das ganze Leben der Zeche aufgeschrieben, Generation um Generation, und sie blätterte und las und fand die Namen ihrer Familie, Wilhelm Kortmann, August Kortmann, Lohnzeile um Lohnzeile, ein Leben in Zahlen.
+
+Und dann fand sie die Listen von neunzehnhundertfünf.
+
+Es waren die Akten des großen Streiks, die man aus irgendeinem Grund aufbewahrt hatte, vielleicht weil niemand sie je wieder angesehen hatte. Streikprotokolle, Korrespondenz der Direktion, und darunter eine Mappe mit der Aufschrift «Maßregelungen». Marga öffnete sie. Es war eine Liste von Namen, Männer, die nach dem Streik entlassen worden waren, gemaßregelt, revierweit gesperrt, und neben jedem Namen ein Vermerk: Rädelsführer, Wortführer, Aufwiegler.
+
+Und ganz oben auf der Liste stand: Heinrich Brass.
+
+Marga las den Namen, und etwas zog sich in ihr zusammen. Brass. Die Feindschaft, das Sich-nicht-Grüßen, die alte Geschichte, von der niemand sprach. Hier war ein Brass, gemaßregelt, neunzehnhundertfünf, und sie las weiter, und auf einem beiliegenden Blatt, einem internen Vermerk der Direktion, in der gestochenen Handschrift eines Kontoristen, stand der Satz, der Margas Leben veränderte: dass die Namen der Rädelsführer «von verlässlicher Seite aus der Belegschaft» zugetragen worden seien, und dass dem Informanten, «einem fähigen Hauer», zur Belohnung «die Anwartschaft auf eine Steigerstelle» zugesagt worden sei.
+
+Marga saß ganz still in dem staubigen Keller. Ein fähiger Hauer. Eine Steigerstelle, zur Belohnung. Neunzehnhundertfünf. Und ihr Großvater Wilhelm Kortmann war Steiger geworden, genau in jenen Jahren, der dünne Junge ohne Vater, von dem die Familie immer erzählt hatte, er habe es durch Fleiß geschafft. Sie suchte weiter, mit zitternden Händen, und fand es: ein zweites Blatt, eine Notiz, ein Kürzel, eine Hand, und das Kürzel war «W. K.», und das Datum passte, und das Beförderungsdatum Wilhelm Kortmanns, das sie aus den Lohnbüchern kannte, lag drei Monate nach der Maßregelung des Heinrich Brass.
+
+Es gab keinen Beweis im strengen Sinn, keine Unterschrift, kein Geständnis. Aber es gab genug. Es gab mehr als genug für einen Menschen, der nichts vergaß, der nachts den Vater von einem Strich hatte reden hören, der das Sich-nicht-Grüßen der Brass ein Leben lang gespürt hatte. Die Stücke fügten sich, mit einem Mal, das Bild, an dem Marga seit ihrer Kindheit gesammelt hatte, wurde vollständig: Ihr Großvater hatte im Streik die Solidarität gebrochen, hatte Heinrich Brass verraten, hatte dafür den Aufstieg bekommen, und auf diesem Verrat stand alles, das Haus, der bescheidene Wohlstand, Margas eigene gesicherte Kindheit, ihr Platz im Lohnbüro, alles.
+
+Sie hielt die Liste in den Händen, lange, in dem staubigen Keller unter der sterbenden Zeche. Sie nahm sie nicht mit; das wäre Diebstahl gewesen, und Marga stahl nicht. Aber sie legte sie auch nicht einfach zurück in die Mappe, zum Aussondern, zum Vergessen. Sie wusste, in diesem Moment, dass sie etwas mit dieser Liste anfangen musste, dass sie nicht würde schweigen können wie ihr Vater und ihr Großvater, dass das Schweigen, das die Kortmann von Geschlecht zu Geschlecht weitergegeben hatten, bei ihr enden würde, weil sie nicht anders konnte, weil sie nichts vergaß und nun, endlich, alles wusste.
