@@ -9,6 +9,10 @@
 #
 # Wird auch von .github/workflows/cloudflare-pages.yml genutzt
 # (`wrangler pages deploy` liest pages_build_output_dir hieraus).
-name = "aban-news-landing"
+#
+# WICHTIG: `name` MUSS dem Cloudflare-Pages-Projektnamen entsprechen, sonst
+# bricht die Git-Integration den Build ab. Das Projekt heisst "radar"
+# (siehe Dashboard-URL .../pages/view/radar/...).
+name = "radar"
 compatibility_date = "2026-05-31"
 pages_build_output_dir = "."

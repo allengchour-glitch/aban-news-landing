@@ -12,7 +12,8 @@ name: Cloudflare Pages
 #   CLOUDFLARE_API_TOKEN   – API-Token mit der Berechtigung "Cloudflare Pages: Edit"
 #   CLOUDFLARE_ACCOUNT_ID  – die Cloudflare Account-ID
 # Optionale Repository-Variable:
-#   CF_PAGES_PROJECT       – Pages-Projektname (Default: aban-news-landing)
+#   CF_PAGES_PROJECT       – Pages-Projektname (Default: radar; muss zum
+#                            Cloudflare-Pages-Projekt passen)
 
 on:
   push:
@@ -53,7 +54,7 @@ jobs:
           # branch=main -> Production, sonst Preview-Deploy für den jeweiligen Branch.
           command: >-
             pages deploy
-            --project-name=${{ vars.CF_PAGES_PROJECT || 'aban-news-landing' }}
+            --project-name=${{ vars.CF_PAGES_PROJECT || 'radar' }}
             --branch=${{ github.head_ref || github.ref_name }}
 
       - name: Hinweis, wenn Secrets fehlen
