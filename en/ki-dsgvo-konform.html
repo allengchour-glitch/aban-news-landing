@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Using AI in a GDPR-compliant way — practical guide | aban news</title>
+  <meta name="description" content="Use AI in line with the GDPR: the 5-question check, DPA, training opt-out, data minimisation — practical, for solopreneurs. Not legal advice.">
+  <link rel="canonical" href="https://abannews.com/en/ki-dsgvo-konform.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/ki-dsgvo-konform.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-dsgvo-konform.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ki-dsgvo-konform.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/ki-dsgvo-konform.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-dsgvo-konform.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Using AI in a GDPR-compliant way — the practical guide">
+  <meta property="og:description" content="The 5-question data-protection check for AI tools. Practical, honest.">
+  <meta property="og:url" content="https://abannews.com/en/ki-dsgvo-konform.html">
+  <meta property="og:type" content="article">
+  <style>
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;margin-left:1.2rem}
+    .lang a{padding:.3rem .55rem;color:var(--muted);text-decoration:none;margin:0}
+    .lang a.on{background:var(--ink);color:#fff}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:3rem 0 2rem;text-align:center}
+    h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:58ch;margin:0 auto 1.5rem}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    section{padding:1.2rem 0}
+    section h2{font-size:1.4rem;line-height:1.2;margin:1.4rem 0 .6rem}
+    section h3{font-size:1.1rem;margin:1.1rem 0 .35rem}
+    section p{margin-bottom:.8rem}
+    section ul{margin:0 0 .9rem 1.2rem}
+    section li{margin-bottom:.35rem}
+    .method{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.5rem;margin-bottom:1rem;box-shadow:var(--shadow)}
+    .method h3{margin-top:0;display:flex;align-items:center;gap:.5rem}
+    .method .num{background:var(--amber);color:#fff;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;flex-shrink:0}
+    .callout{background:var(--amber-lt);border-left:4px solid var(--amber);border-radius:8px;padding:.9rem 1.1rem;margin:1rem 0;font-weight:600}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2rem 0}
+    .cta-box h2{font-size:1.3rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .btn--ghost{border:1px solid var(--amber);color:var(--amber-dk);background:#fff}
+    details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem;padding:0}
+    details[open]{border-color:#fed7aa}
+    summary{padding:1rem 1.1rem;font-weight:600;cursor:pointer;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";float:right;color:#a3a3a3;font-weight:300;font-size:1.3rem;line-height:1}
+    details[open] summary::after{content:"−"}
+    details .a{padding:0 1.1rem 1.1rem;color:var(--muted);font-size:.95rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:2rem}
+    .src-list{font-size:.85rem;color:var(--muted)}
+    .src-list li{margin-bottom:.4rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Using AI in a GDPR-compliant way — the practical guide for solopreneurs","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"datePublished":"2026-05-31","dateModified":"2026-05-31","description":"The 5-question data-protection check for AI tools: server location, DPA, training opt-out, data minimisation. Practical, EU focus.","inLanguage":"en"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[
+    {"@type":"Question","name":"Can I use ChatGPT or Claude for business?","acceptedAnswer":{"@type":"Answer","text":"Yes — if you have a legal basis and follow the provider's terms. For personal data you usually need a data processing agreement (DPA) and should choose EU data residency plus a business plan that does not use your inputs for training."}},
+    {"@type":"Question","name":"Do I need a DPA for AI tools?","acceptedAnswer":{"@type":"Answer","text":"As soon as the tool processes personal data on your behalf, yes. The DPA (under Art. 28 GDPR) sets out that the provider only processes the data on your instructions. Reputable providers offer it as a standard document."}},
+    {"@type":"Question","name":"Are my inputs used to train the model?","acceptedAnswer":{"@type":"Answer","text":"On many free plans yes, on business plans often not — but only if you set it actively or choose the right plan. Check the training setting once, deliberately, in your account settings instead of hoping."}},
+    {"@type":"Question","name":"Is the free version of an AI tool GDPR-compliant?","acceptedAnswer":{"@type":"Answer","text":"Not automatically. Free tiers often offer no DPA and use inputs for training. For personal client data that is usually unsuitable — either pick a business plan with guarantees or anonymise the data first."}},
+    {"@type":"Question","name":"Do I have to tell clients that I use AI?","acceptedAnswer":{"@type":"Answer","text":"If you process your clients' personal data with AI, the processors you use belong in your privacy notice. A good self-test: could you openly explain to your client how you process their data with AI? If not, something is off."}}
+  ]}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/en/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/en/ebook.html">eBook</a>
+      <a href="/en/ki-dsgvo-konform.html"><strong>AI &amp; GDPR</strong></a>
+      <a href="#subscribe" class="btn">Subscribe</a>
+      <span class="lang"><a href="/ki-dsgvo-konform.html">DE</a><a href="/en/ki-dsgvo-konform.html" class="on" aria-current="true">EN</a><a href="/fr/ki-dsgvo-konform.html">FR</a><a href="/it/ki-dsgvo-konform.html">IT</a></span>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Updated: May 2026 · not legal advice</span>
+      <h1>Using AI in a GDPR-compliant way — the practical guide</h1>
+      <p class="lead">Data protection isn't a reason to avoid AI — it's a reason to think for a moment before the first click. Here's the check that takes five minutes and saves expensive mistakes. Practical, for solopreneurs, without the legal fog.</p>
+    </div>
+
+    <section>
+      <p>Most solopreneurs hesitate about AI not because of the technology, but because of four letters: GDPR. The worry is healthy — it just often blocks more than necessary. The point isn't "stay away", but "know what you're doing before client data goes into the tool".</p>
+      <p>The most common mistake isn't bad intent, it's convenience: quickly dropping a client call into a free transcription tool, pasting a whole email thread with real names because it's handy right now. That's exactly where the problems start that later cost money. This guide hands you a check you run once per tool — after that you know where you stand.</p>
+      <div class="callout">Ground rule: whatever has to be correct, you verify at the source — not with the AI and not in a blog post. This page gives orientation, but does not replace legal advice.</div>
+    </section>
+
+    <section>
+      <h2>The 5-question data-protection check</h2>
+      <p>Run these five questions once per tool. Answer them honestly and you avoid the expensive beginner mistakes.</p>
+
+      <div class="method">
+        <h3><span class="num">1</span> Where are the servers?</h3>
+        <p>Processing data in the EU is the simple path. With US providers you need a solid legal basis; many large tools now offer EU data residency or business plans with better guarantees. If the provider's page says nothing about it, that too is an answer.</p>
+      </div>
+
+      <div class="method">
+        <h3><span class="num">2</span> Is there a data processing agreement (DPA)?</h3>
+        <p>As soon as you process personal data, you need a DPA with the provider (Art. 28 GDPR). It records that the provider only processes the data on your instructions. Reputable providers offer it as a standard document. If you can't find one, no client data belongs there.</p>
+      </div>
+
+      <div class="method">
+        <h3><span class="num">3</span> Are my inputs used for training?</h3>
+        <p>On many free plans yes, on business plans often not — but only if you set it actively or choose the right plan. Check this setting once, deliberately, in your account settings instead of hoping.</p>
+      </div>
+
+      <div class="method">
+        <h3><span class="num">4</span> What actually needs to go in? (data minimisation)</h3>
+        <p>The best protective measure is leaving things out. "Client A, construction sector, job X" is plenty for a draft quote. You don't need names, addresses and contract numbers for that — so leave them out. Anonymising is almost always faster than the later conversation with the supervisory authority.</p>
+      </div>
+
+      <div class="method">
+        <h3><span class="num">5</span> Would I explain it to my client this way?</h3>
+        <p>A simple test: if you could openly tell your client how you handle their case with AI, it's usually fine. If you'd have to hide it, something is off. Your gut is a surprisingly good first filter here.</p>
+      </div>
+
+      <div class="callout">Anonymise where you can. A DPA where needed. And when in doubt, do the part that really has to be right yourself.</div>
+    </section>
+
+    <section>
+      <h2>Rules by tool type</h2>
+      <h3>Text models (ChatGPT, Claude &amp; co.)</h3>
+      <p>For text, summaries, rewrites. Choose a paid business plan, check EU data residency and a DPA, switch off training use. Real client names only when unavoidable — otherwise work anonymised.</p>
+      <h3>Transcription (calls, voice notes)</h3>
+      <p>Get the consent of everyone involved for client calls. Local processing (e.g. Whisper on your own machine) is more privacy-friendly than a web service, because the audio file never leaves your device.</p>
+      <h3>Images &amp; graphics</h3>
+      <p>Here it's rarely about personal data, more about rights and trademarks: check usage rights and don't blindly use generated images as your own brand mark.</p>
+      <h3>Automation (Make, n8n &amp; co.)</h3>
+      <p>As soon as workflows push client data between services, you need clarity on the DPA and server location for every service involved. Self-hosting (e.g. n8n) gives you the most control.</p>
+    </section>
+
+    <section>
+      <h2>The three most common mistakes</h2>
+      <ul>
+        <li><strong>Real data out of convenience:</strong> pasting whole email threads with names and addresses because it's faster right now. That's exactly the expensive reflex.</li>
+        <li><strong>Free for sensitive:</strong> using the free tier for client data, even though there's no DPA and inputs go into training.</li>
+        <li><strong>"It's just a test":</strong> data protection applies in tests too. A trial run with real personal data is not a harmless trial run.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>In brief: DPA and the EU AI Act</h2>
+      <h3>Data processing agreement (DPA)</h3>
+      <p>When a provider processes personal data on your behalf, you are the controller and they are the processor. The DPA under Art.&nbsp;28&nbsp;GDPR puts this relationship in writing. Without it, a key basis is missing — which is why "is there a DPA?" is question&nbsp;2 above.</p>
+      <h3>EU AI Act</h3>
+      <p>The EU's AI Regulation (Regulation (EU)&nbsp;2024/1689) adds risk classes and transparency duties for AI systems on top of the GDPR. For most solopreneurs that mainly means: where AI content is involved, labelling and transparency duties increasingly apply. The GDPR stays in force alongside it.</p>
+    </section>
+
+    <section>
+      <h2>Frequently asked</h2>
+      <details><summary>Can I use ChatGPT or Claude for business?</summary><div class="a">Yes — if you have a legal basis and follow the provider's terms. For personal data you usually need a DPA and should choose EU data residency plus a business plan without training use.</div></details>
+      <details><summary>Do I really need a DPA for AI tools?</summary><div class="a">As soon as personal data runs through the tool, yes. The DPA under Art.&nbsp;28&nbsp;GDPR is the written basis for it. Reputable providers offer it as a standard document.</div></details>
+      <details><summary>Are my inputs used for training?</summary><div class="a">On many free plans yes, on business plans often not — but only if you set it actively or choose the right plan. Check the setting once, deliberately.</div></details>
+      <details><summary>Is the free version GDPR-compliant?</summary><div class="a">Not automatically. Free tiers often offer no DPA and use inputs for training. Unsuitable for real client data — pick a business plan or anonymise first.</div></details>
+      <details><summary>Do I have to tell clients that I use AI?</summary><div class="a">If you process clients' personal data with AI, the processors you use belong in your privacy notice. Self-test: could you openly explain it to your client?</div></details>
+    </section>
+
+    <div class="cta-box" style="background:var(--card);border:1px solid var(--line);">
+      <h2>Free eBook: “Anti-Hype”</h2>
+      <p>The data-protection chapter as part of the whole: my free eBook shows you the 3-question filter, your minimal AI stack and the data-protection check in five minutes. No sign-up.</p>
+      <a href="/en/ebook.html" class="btn btn--ghost">Read the eBook →</a>
+    </div>
+
+    <div class="cta-box" id="subscribe">
+      <h2>Every workday: AI without the bullshit, in 5 minutes</h2>
+      <p>aban news brings you the AI developments that matter for your work, Mon–Fri — including the data-protection and tool topics that affect you as a solopreneur.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">Get the 5-min AI briefing →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">No spam. Unsubscribe in one click. GDPR-compliant.</p>
+    </div>
+
+    <section>
+      <h2 style="font-size:1.05rem;">Read on</h2>
+      <div style="display:grid;gap:.7rem;grid-template-columns:1fr 1fr;">
+        <a href="/en/ki-tools-fuer-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">AI tools for the self-employed</strong><span style="color:var(--muted);font-size:.82rem;">The honest stack 2026</span></a>
+        <a href="/en/chatgpt-fuer-solopreneure.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">ChatGPT for solopreneurs</strong><span style="color:var(--muted);font-size:.82rem;">Real value, not gimmicks</span></a>
+        <a href="/en/ebook.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Free eBook “Anti-Hype”</strong><span style="color:var(--muted);font-size:.82rem;">Use AI without the bullshit</span></a>
+        <a href="/en/" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">The newsletter</strong><span style="color:var(--muted);font-size:.82rem;">Daily AI for solopreneurs</span></a>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-size:1.05rem;">Sources (official, free)</h2>
+      <ul class="src-list">
+        <li><strong>GDPR full text</strong> — EUR-Lex, Regulation (EU)&nbsp;2016/679. Relevant e.g. Art.&nbsp;6 (legal bases) and Art.&nbsp;28 (processors).</li>
+        <li><strong>EU AI Act</strong> — Regulation (EU)&nbsp;2024/1689, also via EUR-Lex.</li>
+        <li><strong>Your data protection authority</strong> — the national/state authority where you operate. First port of call for concrete questions.</li>
+      </ul>
+    </section>
+
+    <div class="disclaimer">
+      <p><strong>Important note:</strong> this guide is practical orientation from experience, not legal advice. In an individual case it does not replace a review by a professional or guidance from your data protection authority. AI tools and their terms change fast — check the current status with the provider yourself. No affiliate links.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/en/">Home</a> · <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
