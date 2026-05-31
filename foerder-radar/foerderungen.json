@@ -1,0 +1,1599 @@
+{
+ "_comment": "Kuratierter Startdatensatz echter, etablierter Förderprogramme im DACH-Raum + EU. Angaben bewusst konservativ; KEINE erfundenen Fristen/Beträge. Jede Quelle verlinkt offiziell. Für den Vollbetrieb: Export aus foerderdatenbank.de / aws.at / FFG / Innosuisse importieren. Felder: id, name, traeger, region (DE/AT/CH/EU), zielgruppe[], bereich[], art (Zuschuss/Kredit/Stipendium/Beteiligung/Steuer), url, kurz (was es ist), pruefen (true = Details vor Antrag offiziell prüfen).",
+ "version": "0.4-seed",
+ "stand": "2026-05",
+ "disclaimer": "Alle Angaben ohne Gewähr und ersetzen keine Beratung. Förderbedingungen, Fristen und Beträge ändern sich — bitte immer auf der offiziellen Seite des Förderträgers prüfen.",
+ "programme": [
+  {
+   "id": "kfw-gruenderkredit",
+   "name": "KfW-Gründerkredit (ERP-Förderkredit)",
+   "traeger": "KfW",
+   "region": "DE",
+   "zielgruppe": [
+    "Gründer",
+    "KMU"
+   ],
+   "bereich": [
+    "Gründung",
+    "Investition"
+   ],
+   "art": "Kredit",
+   "url": "https://www.kfw.de/inlandsfoerderung/Unternehmen/Gr%C3%BCnden-Erweitern/",
+   "kurz": "Zinsgünstige Förderkredite der staatlichen KfW für Gründung, Wachstum und Investitionen junger Unternehmen.",
+   "pruefen": true
+  },
+  {
+   "id": "digital-jetzt",
+   "name": "Digital Jetzt",
+   "traeger": "BMWK",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Mittelstand"
+   ],
+   "bereich": [
+    "Digitalisierung",
+    "KI",
+    "Investition"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.bmwk.de/Redaktion/DE/Dossier/digital-jetzt.html",
+   "kurz": "Investitionszuschuss für Digitalisierung von Mittelständlern — z. B. Software, KI-Tools und Mitarbeiter-Qualifizierung. (Förderfenster prüfen.)",
+   "pruefen": true
+  },
+  {
+   "id": "go-digital",
+   "name": "go-digital",
+   "traeger": "BMWK",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Handwerk"
+   ],
+   "bereich": [
+    "Digitalisierung",
+    "IT-Sicherheit",
+    "Online-Marketing"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.bmwk.de/Redaktion/DE/Artikel/Digitale-Welt/foerderprogramm-go-digital.html",
+   "kurz": "Geförderte Beratung durch autorisierte Beratungsunternehmen zu Digitalisierung, IT-Sicherheit und Online-Marketing.",
+   "pruefen": true
+  },
+  {
+   "id": "exist-gruenderstipendium",
+   "name": "EXIST-Gründerstipendium",
+   "traeger": "BMWK",
+   "region": "DE",
+   "zielgruppe": [
+    "Gründer",
+    "Wissenschaftler",
+    "Studierende"
+   ],
+   "bereich": [
+    "Gründung",
+    "Forschung",
+    "Tech"
+   ],
+   "art": "Stipendium",
+   "url": "https://www.exist.de/EXIST/Navigation/DE/Gruendungsfoerderung/EXIST-Gruenderstipendium/exist-gruenderstipendium.html",
+   "kurz": "Stipendium für innovative, technologieorientierte oder wissensbasierte Gründungen aus Hochschulen und Forschung.",
+   "pruefen": true
+  },
+  {
+   "id": "forschungszulage",
+   "name": "Forschungszulage",
+   "traeger": "BMF / BZSt",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Großunternehmen",
+    "Startups"
+   ],
+   "bereich": [
+    "Forschung",
+    "Entwicklung"
+   ],
+   "art": "Steuer",
+   "url": "https://www.bzst.de/DE/Unternehmen/Forschungszulage/forschungszulage_node.html",
+   "kurz": "Steuerliche Förderung von Forschung und Entwicklung — unabhängig von Branche und Gewinnsituation, rückwirkend beantragbar.",
+   "pruefen": true
+  },
+  {
+   "id": "zim",
+   "name": "ZIM – Zentrales Innovationsprogramm Mittelstand",
+   "traeger": "BMWK",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Mittelstand"
+   ],
+   "bereich": [
+    "Innovation",
+    "Forschung",
+    "Entwicklung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.zim.de/ZIM/Navigation/DE/Home/home.html",
+   "kurz": "Förderung von Forschungs- und Entwicklungsprojekten mittelständischer Unternehmen, auch in Kooperation.",
+   "pruefen": true
+  },
+  {
+   "id": "invest-wagniskapital",
+   "name": "INVEST – Zuschuss für Wagniskapital",
+   "traeger": "BMWK / BAFA",
+   "region": "DE",
+   "zielgruppe": [
+    "Business Angels",
+    "Startups"
+   ],
+   "bereich": [
+    "Beteiligung",
+    "Startup-Finanzierung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.bafa.de/DE/Wirtschafts_Mittelstandsfoerderung/Beratung_Finanzierung/Invest/invest_node.html",
+   "kurz": "Zuschuss für private Investoren (Business Angels), die sich an jungen innovativen Unternehmen beteiligen.",
+   "pruefen": true
+  },
+  {
+   "id": "gruendungszuschuss",
+   "name": "Gründungszuschuss",
+   "traeger": "Bundesagentur für Arbeit",
+   "region": "DE",
+   "zielgruppe": [
+    "Gründer",
+    "Arbeitslose"
+   ],
+   "bereich": [
+    "Gründung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.arbeitsagentur.de/k/gruendungszuschuss",
+   "kurz": "Unterstützung für Gründungen aus der Arbeitslosigkeit zur Sicherung des Lebensunterhalts in der Startphase.",
+   "pruefen": true
+  },
+  {
+   "id": "bafa-energieberatung",
+   "name": "Energieberatung für den Mittelstand",
+   "traeger": "BAFA",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Mittelstand"
+   ],
+   "bereich": [
+    "Energie",
+    "Nachhaltigkeit"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.bafa.de/DE/Energie/Energieberatung/Energieberatung_Mittelstand/energieberatung_mittelstand_node.html",
+   "kurz": "Geförderte qualifizierte Energieberatung zur Senkung des Energieverbrauchs in Unternehmen.",
+   "pruefen": true
+  },
+  {
+   "id": "mikromezzaninfonds",
+   "name": "Mikromezzaninfonds Deutschland",
+   "traeger": "Bund / Mittelständische Beteiligungsgesellschaften",
+   "region": "DE",
+   "zielgruppe": [
+    "Gründer",
+    "Kleinunternehmen"
+   ],
+   "bereich": [
+    "Finanzierung",
+    "Beteiligung"
+   ],
+   "art": "Beteiligung",
+   "url": "https://www.mikromezzaninfonds-deutschland.de/",
+   "kurz": "Stille Beteiligungen für kleine und junge Unternehmen, auch ohne Sicherheiten — stärkt das Eigenkapital.",
+   "pruefen": true
+  },
+  {
+   "id": "horizon-europe",
+   "name": "Horizon Europe",
+   "traeger": "Europäische Kommission",
+   "region": "EU",
+   "zielgruppe": [
+    "Forschung",
+    "KMU",
+    "Konsortien"
+   ],
+   "bereich": [
+    "Forschung",
+    "Innovation"
+   ],
+   "art": "Zuschuss",
+   "url": "https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe_en",
+   "kurz": "Das große EU-Rahmenprogramm für Forschung und Innovation mit Milliardenbudget und offenen Ausschreibungen.",
+   "pruefen": true
+  },
+  {
+   "id": "eic-accelerator",
+   "name": "EIC Accelerator",
+   "traeger": "European Innovation Council",
+   "region": "EU",
+   "zielgruppe": [
+    "Startups",
+    "Deep-Tech",
+    "KMU"
+   ],
+   "bereich": [
+    "Innovation",
+    "Deep-Tech",
+    "Skalierung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator_en",
+   "kurz": "EU-Förderung für Deep-Tech-Startups mit hohem Potenzial — Zuschuss plus optionale Eigenkapital-Komponente.",
+   "pruefen": true
+  },
+  {
+   "id": "digital-europe",
+   "name": "Digital Europe Programme (DIGITAL)",
+   "traeger": "Europäische Kommission",
+   "region": "EU",
+   "zielgruppe": [
+    "Unternehmen",
+    "öffentliche Hand"
+   ],
+   "bereich": [
+    "KI",
+    "Digitalisierung",
+    "Cybersecurity"
+   ],
+   "art": "Zuschuss",
+   "url": "https://digital-strategy.ec.europa.eu/en/activities/digital-programme",
+   "kurz": "EU-Programm für den Aufbau digitaler Kapazitäten — KI, Cybersicherheit, digitale Kompetenzen.",
+   "pruefen": true
+  },
+  {
+   "id": "aws-preseed-seed",
+   "name": "aws Preseed / Seedfinancing",
+   "traeger": "Austria Wirtschaftsservice (aws)",
+   "region": "AT",
+   "zielgruppe": [
+    "Startups",
+    "Gründer"
+   ],
+   "bereich": [
+    "Gründung",
+    "Innovation",
+    "Startup-Finanzierung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.aws.at/",
+   "kurz": "Österreichische Förderung für innovative Startups in der frühen Phase (Preseed/Seed).",
+   "pruefen": true
+  },
+  {
+   "id": "ffg-basisprogramm",
+   "name": "FFG Basisprogramm",
+   "traeger": "Österreichische Forschungsförderungsgesellschaft (FFG)",
+   "region": "AT",
+   "zielgruppe": [
+    "Unternehmen",
+    "Forschung"
+   ],
+   "bereich": [
+    "Forschung",
+    "Entwicklung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.ffg.at/",
+   "kurz": "Themenoffene Förderung von Forschungs- und Entwicklungsprojekten österreichischer Unternehmen.",
+   "pruefen": true
+  },
+  {
+   "id": "innosuisse",
+   "name": "Innosuisse Innovationsprojekte",
+   "traeger": "Innosuisse",
+   "region": "CH",
+   "zielgruppe": [
+    "KMU",
+    "Forschung",
+    "Startups"
+   ],
+   "bereich": [
+    "Innovation",
+    "Forschung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.innosuisse.admin.ch/",
+   "kurz": "Schweizer Förderagentur für wissenschaftsbasierte Innovation — Projekte, Coaching und Startup-Unterstützung.",
+   "pruefen": true
+  },
+  {
+   "id": "kfw-erp-digitalisierung",
+   "name": "ERP-Digitalisierungs- und Innovationskredit",
+   "traeger": "KfW",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Mittelstand"
+   ],
+   "bereich": [
+    "Digitalisierung",
+    "Innovation",
+    "Investition"
+   ],
+   "art": "Kredit",
+   "url": "https://www.kfw.de/inlandsfoerderung/Unternehmen/Innovation/F%C3%B6rderprodukte/ERP-Digitalisierungs-und-Innovationskredit-(380-381)/",
+   "kurz": "Zinsgünstiger KfW-Kredit für Digitalisierungs- und Innovationsvorhaben mittelständischer Unternehmen.",
+   "pruefen": true
+  },
+  {
+   "id": "ueberbrueckungshilfe-beratung",
+   "name": "Förderung unternehmerischen Know-hows",
+   "traeger": "BAFA",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Gründer",
+    "Freiberufler"
+   ],
+   "bereich": [
+    "Beratung",
+    "Unternehmensführung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.bafa.de/DE/Wirtschafts_Mittelstandsfoerderung/Beratung_Finanzierung/Unternehmensberatung/unternehmensberatung_node.html",
+   "kurz": "Zuschuss zu den Kosten einer professionellen Unternehmensberatung für KMU und Gründer.",
+   "pruefen": true
+  },
+  {
+   "id": "bmbf-kmu-innovativ",
+   "name": "KMU-innovativ",
+   "traeger": "BMBF",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Mittelstand"
+   ],
+   "bereich": [
+    "Forschung",
+    "KI",
+    "Sicherheit",
+    "Innovation"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.bmbf.de/bmbf/de/forschung/innovativer-mittelstand/kmu-innovativ/kmu-innovativ.html",
+   "kurz": "Förderung von Spitzenforschung im Mittelstand in Technologiefeldern wie KI, IT-Sicherheit und Produktion.",
+   "pruefen": true
+  },
+  {
+   "id": "high-tech-gruenderfonds",
+   "name": "High-Tech Gründerfonds (HTGF)",
+   "traeger": "HTGF",
+   "region": "DE",
+   "zielgruppe": [
+    "Startups",
+    "Tech-Gründer"
+   ],
+   "bereich": [
+    "Beteiligung",
+    "Startup-Finanzierung",
+    "Tech"
+   ],
+   "art": "Beteiligung",
+   "url": "https://www.htgf.de/de/",
+   "kurz": "Frühphasen-Investor (Seed) für technologieorientierte Startups — Kapital plus Netzwerk und Coaching.",
+   "pruefen": true
+  },
+  {
+   "id": "digitalbonus-bayern",
+   "name": "Digitalbonus Bayern",
+   "traeger": "Freistaat Bayern",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU"
+   ],
+   "bereich": [
+    "Digitalisierung",
+    "IT-Sicherheit"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.digitalbonus.bayern/",
+   "kurz": "Zuschuss für bayerische KMU zur Digitalisierung von Produkten, Prozessen und IT-Sicherheit. (Verfügbarkeit prüfen.)",
+   "pruefen": true
+  },
+  {
+   "id": "digitalpraemie-berlin",
+   "name": "Digitalprämie Berlin",
+   "traeger": "Land Berlin / IBB",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Kleinunternehmen"
+   ],
+   "bereich": [
+    "Digitalisierung",
+    "Software"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.ibb-business-team.de/digitalpraemie-berlin/",
+   "kurz": "Zuschuss für Berliner kleine Unternehmen für Hard-/Software und Digitalisierungs-Qualifizierung. (Aufrufe prüfen.)",
+   "pruefen": true
+  },
+  {
+   "id": "gruendungsstipendium-nrw",
+   "name": "Gründungsstipendium NRW",
+   "traeger": "Land Nordrhein-Westfalen",
+   "region": "DE",
+   "zielgruppe": [
+    "Gründer",
+    "Startups"
+   ],
+   "bereich": [
+    "Gründung"
+   ],
+   "art": "Stipendium",
+   "url": "https://www.gruendungsstipendium.nrw/",
+   "kurz": "Monatliches Stipendium für innovative Gründungen in Nordrhein-Westfalen in der frühen Phase.",
+   "pruefen": true
+  },
+  {
+   "id": "ignition-bw",
+   "name": "Start-up BW Pre-Seed",
+   "traeger": "Land Baden-Württemberg",
+   "region": "DE",
+   "zielgruppe": [
+    "Startups",
+    "Gründer"
+   ],
+   "bereich": [
+    "Startup-Finanzierung",
+    "Gründung"
+   ],
+   "art": "Beteiligung",
+   "url": "https://www.startupbw.de/",
+   "kurz": "Vorgründungs- und Pre-Seed-Finanzierung für innovative Startups in Baden-Württemberg.",
+   "pruefen": true
+  },
+  {
+   "id": "eurostars",
+   "name": "Eurostars (Eureka)",
+   "traeger": "Eureka / BMBF",
+   "region": "EU",
+   "zielgruppe": [
+    "KMU",
+    "Forschung"
+   ],
+   "bereich": [
+    "Forschung",
+    "Innovation",
+    "International"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.eurostars-eureka.eu/",
+   "kurz": "Förderung internationaler Forschungs- und Entwicklungsprojekte forschender KMU mit Partnern im Ausland.",
+   "pruefen": true
+  },
+  {
+   "id": "eic-pathfinder",
+   "name": "EIC Pathfinder",
+   "traeger": "European Innovation Council",
+   "region": "EU",
+   "zielgruppe": [
+    "Forschung",
+    "Deep-Tech"
+   ],
+   "bereich": [
+    "Forschung",
+    "Deep-Tech",
+    "Innovation"
+   ],
+   "art": "Zuschuss",
+   "url": "https://eic.ec.europa.eu/eic-funding-opportunities/eic-pathfinder_en",
+   "kurz": "EU-Förderung für frühe, visionäre Deep-Tech-Forschung mit hohem Risiko und hohem Potenzial.",
+   "pruefen": true
+  },
+  {
+   "id": "aws-digitalisierung",
+   "name": "aws Digitalisierung",
+   "traeger": "Austria Wirtschaftsservice (aws)",
+   "region": "AT",
+   "zielgruppe": [
+    "KMU",
+    "Mittelstand"
+   ],
+   "bereich": [
+    "Digitalisierung",
+    "KI",
+    "Investition"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.aws.at/",
+   "kurz": "Österreichische Zuschüsse für Digitalisierungs- und KI-Investitionen in Unternehmen. (Aktuelle Calls prüfen.)",
+   "pruefen": true
+  },
+  {
+   "id": "ffg-impact-innovation",
+   "name": "FFG Impact Innovation",
+   "traeger": "FFG",
+   "region": "AT",
+   "zielgruppe": [
+    "Unternehmen",
+    "Gründer"
+   ],
+   "bereich": [
+    "Innovation"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.ffg.at/impactinnovation",
+   "kurz": "Niederschwellige österreichische Förderung für nicht-technische, nutzerzentrierte Innovationsprojekte.",
+   "pruefen": true
+  },
+  {
+   "id": "innosuisse-startup-coaching",
+   "name": "Innosuisse Startup Coaching",
+   "traeger": "Innosuisse",
+   "region": "CH",
+   "zielgruppe": [
+    "Startups",
+    "Gründer"
+   ],
+   "bereich": [
+    "Gründung",
+    "Coaching"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.innosuisse.admin.ch/de/startup-coaching",
+   "kurz": "Schweizer Coaching-Programm für wissenschaftsbasierte Startups von der Idee bis zur Skalierung.",
+   "pruefen": true
+  },
+  {
+   "id": "exist-forschungstransfer",
+   "name": "EXIST-Forschungstransfer",
+   "traeger": "BMWK",
+   "region": "DE",
+   "zielgruppe": [
+    "Gründer",
+    "Wissenschaftler",
+    "Startups"
+   ],
+   "bereich": [
+    "Gründung",
+    "Forschung",
+    "Tech"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.exist.de/EXIST/Redaktion/DE/Dossier/Gruendungsfoerderung/Forschungstransfer/EXIST-Forschungstransfer.html",
+   "kurz": "Zweiphasige Förderung für technologieintensive Ausgründungen aus Hochschulen — von der Entwicklungsarbeit bis zur Unternehmensgründung.",
+   "pruefen": true
+  },
+  {
+   "id": "erp-gruenderkredit-startgeld",
+   "name": "ERP-Gründerkredit – StartGeld",
+   "traeger": "KfW",
+   "region": "DE",
+   "zielgruppe": [
+    "Gründer",
+    "Freiberufler",
+    "Kleinunternehmen"
+   ],
+   "bereich": [
+    "Gründung",
+    "Investition",
+    "Betriebsmittel"
+   ],
+   "art": "Kredit",
+   "url": "https://www.kfw.de/inlandsfoerderung/Unternehmen/Gr%C3%BCnden-Nachfolgen/F%C3%B6rderprodukte/ERP-Gr%C3%BCnderkredit-Startgeld-(067)/",
+   "kurz": "Zinsgünstiger KfW-Kredit für Gründungen und junge Unternehmen, auch im Nebenerwerb; ohne Eigenkapital, mit Risikoübernahme durch die KfW.",
+   "pruefen": true
+  },
+  {
+   "id": "wipano",
+   "name": "WIPANO – Patente und Normen",
+   "traeger": "BMWK / PtJ",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Hochschulen",
+    "Forschung"
+   ],
+   "bereich": [
+    "Innovation",
+    "Forschung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.ptj.de/projektfoerderung/wipano",
+   "kurz": "Förderung der wirtschaftlichen Verwertung von Forschungsergebnissen durch Patentanmeldungen und Normungsaktivitäten.",
+   "pruefen": true
+  },
+  {
+   "id": "igf",
+   "name": "Industrielle Gemeinschaftsforschung (IGF)",
+   "traeger": "BMWK / AiF",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Forschungsvereinigungen"
+   ],
+   "bereich": [
+    "Forschung",
+    "Innovation"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.aif.de/foerderangebote/igf-industrielle-gemeinschaftsforschung/",
+   "kurz": "Förderung vorwettbewerblicher Gemeinschaftsforschung, die mittelständischen Unternehmen zugutekommt — themen- und technologieoffen.",
+   "pruefen": true
+  },
+  {
+   "id": "markterschliessungsprogramm-kmu",
+   "name": "Markterschließungsprogramm für KMU",
+   "traeger": "BMWK / BAFA",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Selbstständige"
+   ],
+   "bereich": [
+    "Internationalisierung",
+    "Export"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.bafa.de/DE/Wirtschaft/Auslandsmarkterschliessung/Markterschliessungsprogramm_KMU/markterschliessungsprogramm_kmu_node.html",
+   "kurz": "Geförderte Informations- und Geschäftsanbahnungsreisen für KMU zur Erschließung von Auslandsmärkten.",
+   "pruefen": true
+  },
+  {
+   "id": "mikrokreditfonds-deutschland",
+   "name": "Mikrokreditfonds Deutschland",
+   "traeger": "BMAS",
+   "region": "DE",
+   "zielgruppe": [
+    "Gründer",
+    "Kleinunternehmen",
+    "Soloselbstständige"
+   ],
+   "bereich": [
+    "Gründung",
+    "Finanzierung"
+   ],
+   "art": "Kredit",
+   "url": "https://www.foerderdatenbank.de/FDB/Content/DE/Foerderprogramm/Bund/BMAS/mikrokreditfonds-bund-2.html",
+   "kurz": "Kleindarlehen für Kleinstgründungen und kleine Unternehmen ohne bankübliche Sicherheiten, vergeben über Mikrofinanzinstitute.",
+   "pruefen": true
+  },
+  {
+   "id": "igp",
+   "name": "Innovationsprogramm für Geschäftsmodelle und Pionierlösungen (IGP)",
+   "traeger": "BMWK",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Startups",
+    "Freiberufler"
+   ],
+   "bereich": [
+    "Innovation",
+    "Digitalisierung",
+    "KI"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.bmwk.de/igp",
+   "kurz": "Förderung nicht-technischer Innovationen — neue Geschäftsmodelle sowie digitale und soziale Pionierlösungen — in themenspezifischen Aufrufen.",
+   "pruefen": true
+  },
+  {
+   "id": "entwicklung-digitaler-technologien",
+   "name": "Entwicklung digitaler Technologien",
+   "traeger": "BMWK / DLR",
+   "region": "DE",
+   "zielgruppe": [
+    "Unternehmen",
+    "KMU",
+    "Forschung"
+   ],
+   "bereich": [
+    "Digitalisierung",
+    "KI",
+    "Cybersicherheit"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.digitale-technologien.de",
+   "kurz": "Zuschüsse für vorwettbewerbliche FuE-Projekte in KI, Cybersicherheit, Quantentechnologien und digitalen Ökosystemen.",
+   "pruefen": true
+  },
+  {
+   "id": "bafa-young-innovators",
+   "name": "Messeprogramm Junge Innovative Unternehmen",
+   "traeger": "BMWK / BAFA",
+   "region": "DE",
+   "zielgruppe": [
+    "Startups",
+    "Junge Unternehmen"
+   ],
+   "bereich": [
+    "Internationalisierung",
+    "Messen"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.bafa.de/DE/Wirtschaft/Auslandsmarkterschliessung/Messeprogramm_junge_innovative_Unternehmen/messeprogramm_junge_innovative_unternehmen_node.html",
+   "kurz": "Kostenzuschuss für junge innovative Kleinunternehmen für die Beteiligung an internationalen Leitmessen in Deutschland.",
+   "pruefen": true
+  },
+  {
+   "id": "gruendungswettbewerb-digitale-innovationen",
+   "name": "Gründungswettbewerb – Digitale Innovationen",
+   "traeger": "BMWK",
+   "region": "DE",
+   "zielgruppe": [
+    "Gründer",
+    "Startups"
+   ],
+   "bereich": [
+    "Gründung",
+    "Digitalisierung",
+    "KI"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.gw.digital",
+   "kurz": "Halbjährlicher Bundeswettbewerb für innovative IKT-Gründungsideen mit Geldpreisen, Coaching und Netzwerkzugang.",
+   "pruefen": true
+  },
+  {
+   "id": "mid-digitalisierung-nrw",
+   "name": "Mittelstand Innovativ & Digital (MID) – Digitalisierung",
+   "traeger": "NRW.BANK / Land NRW",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Kleinstunternehmen"
+   ],
+   "bereich": [
+    "Digitalisierung",
+    "Innovation",
+    "KI"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.nrwbank.de/de/foerderung/foerderprodukte/60348/mittelstand-innovativ--digital-mid---digitalisierung.html",
+   "kurz": "Zuschuss für NRW-KMU, die digitale Produkte auf Basis von KI, Machine Learning oder AR/VR entwickeln.",
+   "pruefen": true
+  },
+  {
+   "id": "innovationsgutschein-bw",
+   "name": "Innovationsgutschein BW",
+   "traeger": "L-Bank / Land Baden-Württemberg",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Gründer"
+   ],
+   "bereich": [
+    "Innovation",
+    "Forschung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.l-bank.de/produkte/finanzhilfen/innovationsgutschein.html",
+   "kurz": "Zuschuss für KMU und Gründer in Baden-Württemberg, die externe Forschungs- und Entwicklungsdienstleistungen beauftragen.",
+   "pruefen": true
+  },
+  {
+   "id": "digitalisierungsfinanzierung-bw",
+   "name": "Digitalisierungsfinanzierung BW",
+   "traeger": "L-Bank / Land Baden-Württemberg",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Unternehmen"
+   ],
+   "bereich": [
+    "Digitalisierung"
+   ],
+   "art": "Kredit",
+   "url": "https://www.l-bank.de/produkte/wirtschaftsfoerderung/digitalisierungsfinanzierung.html",
+   "kurz": "Gefördertes Darlehen mit Tilgungszuschuss für Digitalisierungsinvestitionen von Unternehmen in Baden-Württemberg.",
+   "pruefen": true
+  },
+  {
+   "id": "technologiegruendungsstipendium-sachsen",
+   "name": "Technologiegründungsstipendium Sachsen (ESF Plus)",
+   "traeger": "Sächsische Aufbaubank (SAB)",
+   "region": "DE",
+   "zielgruppe": [
+    "Gründer",
+    "Hochschulabsolventen"
+   ],
+   "bereich": [
+    "Gründung",
+    "Innovation",
+    "Technologie"
+   ],
+   "art": "Stipendium",
+   "url": "https://www.sab.sachsen.de/esf-plus-foerderung-von-technologiegruendungsstipendien",
+   "kurz": "Monatliches Stipendium für Gründer technologiebasierter Unternehmen in Sachsen in der frühen Phase.",
+   "pruefen": true
+  },
+  {
+   "id": "innofounder-hamburg",
+   "name": "InnoFounder",
+   "traeger": "IFB Innovationsstarter / Hamburg",
+   "region": "DE",
+   "zielgruppe": [
+    "Gründer"
+   ],
+   "bereich": [
+    "Gründung",
+    "Digitalisierung",
+    "Innovation"
+   ],
+   "art": "Zuschuss",
+   "url": "https://innovationsstarter.com/innofounder/",
+   "kurz": "Zuschuss für Gründungsteams mit Sitz in Hamburg in der Vor- und Frühgründungsphase.",
+   "pruefen": true
+  },
+  {
+   "id": "innostarterfonds-hamburg",
+   "name": "InnoStarterFonds Hamburg",
+   "traeger": "IFB Innovationsstarter / Hamburg",
+   "region": "DE",
+   "zielgruppe": [
+    "Startups"
+   ],
+   "bereich": [
+    "Innovation",
+    "Digitalisierung"
+   ],
+   "art": "Beteiligung",
+   "url": "https://innovationsstarter.com/innostarterfonds/",
+   "kurz": "Beteiligungskapital für junge innovative Unternehmen mit Sitz in Hamburg, als offene Beteiligung oder Wandeldarlehen.",
+   "pruefen": true
+  },
+  {
+   "id": "lfa-digitalisierungskredit-bayern",
+   "name": "Digitalisierungskredit Bayern",
+   "traeger": "LfA Förderbank Bayern",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Unternehmen",
+    "Freiberufler"
+   ],
+   "bereich": [
+    "Digitalisierung"
+   ],
+   "art": "Kredit",
+   "url": "https://www.lfa.de/website/de/foerderangebote/transformation/innovation/Digitalisierungskredit/index.php",
+   "kurz": "Gefördertes Darlehen mit Tilgungszuschuss für Digitalisierungsinvestitionen bayerischer Unternehmen.",
+   "pruefen": true
+  },
+  {
+   "id": "big-digital-brandenburg",
+   "name": "Brandenburgischer Innovationsgutschein (BIG – Digital)",
+   "traeger": "ILB Brandenburg",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Handwerk"
+   ],
+   "bereich": [
+    "Digitalisierung",
+    "Innovation"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.ilb.de/de/wirtschaft/zuschuesse/brandenburgischer-innovationsgutschein-big-digital/",
+   "kurz": "Zuschuss für Digitalisierungsvorhaben von KMU und Handwerksbetrieben mit Sitz in Brandenburg.",
+   "pruefen": true
+  },
+  {
+   "id": "innoinvest-thueringen",
+   "name": "InnoInvest Thüringen",
+   "traeger": "Thüringer Aufbaubank (TAB)",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU"
+   ],
+   "bereich": [
+    "Innovation",
+    "Digitalisierung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.aufbaubank.de/Foerderprogramme/InnoInvest",
+   "kurz": "Zuschuss für Investitionen in neue Produkte, Verfahren, Digitalisierung oder Geschäftsmodelle von KMU in Thüringen.",
+   "pruefen": true
+  },
+  {
+   "id": "nifp-niedersachsen",
+   "name": "Niedrigschwelliges Innovationsförderprogramm (nIFP)",
+   "traeger": "NBank / Land Niedersachsen",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Handwerk"
+   ],
+   "bereich": [
+    "Innovation"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.nbank.de/",
+   "kurz": "Zuschuss für kleine experimentelle Entwicklungsprojekte von KMU und Handwerksunternehmen in Niedersachsen.",
+   "pruefen": true
+  },
+  {
+   "id": "hessenfonds-innovationskredit",
+   "name": "HessenFonds Innovationskredit",
+   "traeger": "WIBank / Land Hessen",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Gründer",
+    "Freiberufler"
+   ],
+   "bereich": [
+    "Innovation",
+    "Digitalisierung"
+   ],
+   "art": "Kredit",
+   "url": "https://www.wibank.de/wibank/hessenfonds-innovationskredit",
+   "kurz": "Zinsgünstiges Darlehen mit Haftungsfreistellung für innovative Vorhaben von Unternehmen und Gründern in Hessen.",
+   "pruefen": true
+  },
+  {
+   "id": "innotop-innovationsgutschein-rlp",
+   "name": "Innovationsgutschein InnoTop (RLP)",
+   "traeger": "ISB Rheinland-Pfalz",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU"
+   ],
+   "bereich": [
+    "Innovation",
+    "Forschung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://isb.rlp.de/foerderung/255.html",
+   "kurz": "Zuschuss für KMU in Rheinland-Pfalz, die Forschungs- und Entwicklungsaufträge an externe Einrichtungen vergeben.",
+   "pruefen": true
+  },
+  {
+   "id": "aws-garantie",
+   "name": "aws Garantie",
+   "traeger": "Austria Wirtschaftsservice (aws)",
+   "region": "AT",
+   "zielgruppe": [
+    "Startups",
+    "KMU",
+    "Großunternehmen"
+   ],
+   "bereich": [
+    "Investition",
+    "Wachstum"
+   ],
+   "art": "Bürgschaft",
+   "url": "https://www.aws.at/en/aws-guarantee/",
+   "kurz": "aws übernimmt Bankgarantien für Investitions- und Betriebsmittelkredite österreichischer Unternehmen.",
+   "pruefen": true
+  },
+  {
+   "id": "aws-erp-kredit",
+   "name": "aws erp-Kredit",
+   "traeger": "Austria Wirtschaftsservice (aws)",
+   "region": "AT",
+   "zielgruppe": [
+    "Startups",
+    "KMU",
+    "Gründer"
+   ],
+   "bereich": [
+    "Innovation",
+    "Digitalisierung",
+    "Gründung"
+   ],
+   "art": "Kredit",
+   "url": "https://www.aws.at/en/aws-erp-loan/",
+   "kurz": "Zinsgünstiger Kredit mit fixen Zinssätzen für Gründung, Modernisierung und Innovationsprojekte österreichischer Unternehmen.",
+   "pruefen": true
+  },
+  {
+   "id": "aws-innovationsschutz",
+   "name": "aws Innovationsschutz advanced",
+   "traeger": "Austria Wirtschaftsservice (aws)",
+   "region": "AT",
+   "zielgruppe": [
+    "Startups",
+    "KMU"
+   ],
+   "bereich": [
+    "Innovation",
+    "Forschung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.aws.at/en/aws-innovation-protection/",
+   "kurz": "Zuschuss für Patentierung und IP-Schutzstrategien in Schlüsseltechnologien wie KI, Quantentechnologie und Life Sciences.",
+   "pruefen": true
+  },
+  {
+   "id": "ffg-frontrunner",
+   "name": "FFG Frontrunner",
+   "traeger": "FFG",
+   "region": "AT",
+   "zielgruppe": [
+    "KMU",
+    "Scaleups",
+    "Großunternehmen"
+   ],
+   "bereich": [
+    "Innovation",
+    "Forschung",
+    "Digitalisierung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.ffg.at/programm/frontrunner",
+   "kurz": "Zuschuss für FuE-Projekte etablierter Unternehmen, die zur nachhaltigen und digitalen Transformation beitragen.",
+   "pruefen": true
+  },
+  {
+   "id": "ffg-markteinstieg",
+   "name": "FFG Markt.Einstieg",
+   "traeger": "FFG",
+   "region": "AT",
+   "zielgruppe": [
+    "KMU"
+   ],
+   "bereich": [
+    "Innovation",
+    "Kommerzialisierung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.ffg.at/initiative/markteinstieg",
+   "kurz": "Zuschuss für KMU zur Deckung der Vermarktungskosten bei der Erstmarkteinführung eines FFG-geförderten Prototyps.",
+   "pruefen": true
+  },
+  {
+   "id": "fwf-einzelprojekte",
+   "name": "FWF Einzelprojekte",
+   "traeger": "Wissenschaftsfonds FWF",
+   "region": "AT",
+   "zielgruppe": [
+    "Forschung",
+    "Universitäten"
+   ],
+   "bereich": [
+    "Forschung",
+    "Grundlagenforschung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.fwf.ac.at/en/funding/portfolio/projects/principal-investigator-projects",
+   "kurz": "Thematisch offene Projektförderung des österreichischen Wissenschaftsfonds für Grundlagenforschung aller Disziplinen.",
+   "pruefen": true
+  },
+  {
+   "id": "innosuisse-innovationsscheck",
+   "name": "Innosuisse Innovationsscheck",
+   "traeger": "Innosuisse",
+   "region": "CH",
+   "zielgruppe": [
+    "Startups",
+    "KMU"
+   ],
+   "bereich": [
+    "Innovation",
+    "Forschung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.innosuisse.admin.ch/de/innovationsscheck",
+   "kurz": "Übernahme der Kosten für eine Vorstudie durch einen Schweizer Forschungspartner zur Prüfung einer Innovationsidee.",
+   "pruefen": true
+  },
+  {
+   "id": "innosuisse-bridge",
+   "name": "BRIDGE (Proof of Concept & Discovery)",
+   "traeger": "Innosuisse / SNF",
+   "region": "CH",
+   "zielgruppe": [
+    "Forschung",
+    "Startups"
+   ],
+   "bereich": [
+    "Forschung",
+    "Innovation",
+    "Kommerzialisierung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.innosuisse.admin.ch/en/bridge-projects",
+   "kurz": "Gemeinsames Programm von Innosuisse und SNF an der Schnittstelle von Grundlagenforschung und Anwendung.",
+   "pruefen": true
+  },
+  {
+   "id": "venture-kick",
+   "name": "Venture Kick",
+   "traeger": "Kick Foundation (privat, gemeinnützig)",
+   "region": "CH",
+   "zielgruppe": [
+    "Startups"
+   ],
+   "bereich": [
+    "Innovation",
+    "Gründung",
+    "Deep-Tech"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.venturekick.ch/",
+   "kurz": "Dreistufiges Förderprogramm für Startups aus Schweizer Hochschulen mit Direktfinanzierung, Coaching und Netzwerk.",
+   "pruefen": true
+  },
+  {
+   "id": "eic-transition",
+   "name": "EIC Transition",
+   "traeger": "European Innovation Council",
+   "region": "EU",
+   "zielgruppe": [
+    "Startups",
+    "KMU",
+    "Forschung"
+   ],
+   "bereich": [
+    "Innovation",
+    "Forschung",
+    "Technologietransfer"
+   ],
+   "art": "Zuschuss",
+   "url": "https://eic.ec.europa.eu/eic-funding-opportunities/eic-transition_en",
+   "kurz": "Zuschuss zur Weiterentwicklung von Technologien aus ERC- bzw. Pathfinder-Projekten in Richtung Marktreife.",
+   "pruefen": true
+  },
+  {
+   "id": "life-programme",
+   "name": "LIFE – Umwelt und Klimaschutz",
+   "traeger": "Europäische Kommission / CINEA",
+   "region": "EU",
+   "zielgruppe": [
+    "KMU",
+    "Forschung",
+    "Gemeinden",
+    "NGOs"
+   ],
+   "bereich": [
+    "Nachhaltigkeit",
+    "Klimaschutz",
+    "Energie"
+   ],
+   "art": "Zuschuss",
+   "url": "https://cinea.ec.europa.eu/programmes/life_en",
+   "kurz": "EU-Förderprogramm für Projekte in Naturschutz, Kreislaufwirtschaft, Klimaschutz und sauberer Energiewende.",
+   "pruefen": true
+  },
+  {
+   "id": "eu-innovation-fund",
+   "name": "EU Innovation Fund",
+   "traeger": "Europäische Kommission / CINEA",
+   "region": "EU",
+   "zielgruppe": [
+    "KMU",
+    "Großunternehmen",
+    "Forschung"
+   ],
+   "bereich": [
+    "Innovation",
+    "Nachhaltigkeit",
+    "Energie",
+    "Industrie"
+   ],
+   "art": "Zuschuss",
+   "url": "https://cinea.ec.europa.eu/programmes/innovation-fund_en",
+   "kurz": "Großes EU-Förderprogramm für emissionsarme Technologien, finanziert aus EU-ETS-Einnahmen — für Demonstrationsprojekte in Industrie, Wasserstoff, Energie und Mobilität.",
+   "pruefen": true
+  },
+  {
+   "id": "sachsen-anhalt-digital-innovation",
+   "name": "Sachsen-Anhalt DIGITAL INNOVATION",
+   "traeger": "Investitionsbank Sachsen-Anhalt (IB)",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU"
+   ],
+   "bereich": [
+    "Digitalisierung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.ib-sachsen-anhalt.de/de/unternehmen/digitalisieren/digital-innovation",
+   "kurz": "Förderung für KMU in Sachsen-Anhalt, die Digitalisierungsprojekte umsetzen wollen — interne Prozesse, digitale Dienstleistungen oder IT-Sicherheit.",
+   "pruefen": true
+  },
+  {
+   "id": "sachsen-anhalt-digital-creativity",
+   "name": "Sachsen-Anhalt DIGITAL CREATIVITY",
+   "traeger": "Investitionsbank Sachsen-Anhalt (IB)",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Gründer"
+   ],
+   "bereich": [
+    "Digitalisierung",
+    "Innovation"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.ib-sachsen-anhalt.de/de/unternehmen/digitalisieren/digital-creativity",
+   "kurz": "Unterstützt KMU und Gründer in Sachsen-Anhalt bei der Entwicklung digitaler Produkte wie Apps, Games und Software.",
+   "pruefen": true
+  },
+  {
+   "id": "digitalinvest-kmu-saarland",
+   "name": "DigitalInvest KMU (Saarland)",
+   "traeger": "Land Saarland / SIKB",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU"
+   ],
+   "bereich": [
+    "Digitalisierung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.saarland.de/mwide/DE/portale/digitalisierung/digitalisierung-wirtschaft/digitalinvest/digitalinvest",
+   "kurz": "Förderung saarländischer KMU bei der Anpassung von Geschäfts- und Produktionsmodellen an die Digitalisierung, inkl. Hard-/Software und Qualifizierung.",
+   "pruefen": true
+  },
+  {
+   "id": "digi-zuschuss-hessen",
+   "name": "DIGI-Zuschuss Hessen",
+   "traeger": "WIBank Hessen",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Freiberufler"
+   ],
+   "bereich": [
+    "Digitalisierung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.wibank.de/wibank/digital-zuschuss/digi-zuschuss-460940",
+   "kurz": "Zuschuss für hessische KMU und Freiberufler zur digitalen Transformation von Prozessen und zur Verbesserung der IT-Sicherheit.",
+   "pruefen": true
+  },
+  {
+   "id": "innostartbonus-sachsen",
+   "name": "InnoStartBonus Sachsen",
+   "traeger": "Sächsische Aufbaubank (SAB)",
+   "region": "DE",
+   "zielgruppe": [
+    "Gründer"
+   ],
+   "bereich": [
+    "Innovation",
+    "Gründung"
+   ],
+   "art": "Stipendium",
+   "url": "https://www.sab.sachsen.de/en/innostartbonus",
+   "kurz": "Stipendium für innovative Gründungsvorhaben in Sachsen, das Einzelpersonen oder Zweier-Teams in der Vorgründungsphase unterstützt.",
+   "pruefen": true
+  },
+  {
+   "id": "nseed-niedersachsen",
+   "name": "NSeed (Niedersachsen)",
+   "traeger": "NBank Niedersachsen",
+   "region": "DE",
+   "zielgruppe": [
+    "Gründer",
+    "Startups"
+   ],
+   "bereich": [
+    "Innovation",
+    "Gründung",
+    "Beteiligung"
+   ],
+   "art": "Beteiligung",
+   "url": "https://www.nbank.de/",
+   "kurz": "Beteiligungskapital für junge, innovative Unternehmen in Niedersachsen in der Seed-Phase zur Stärkung der Eigenkapitalbasis.",
+   "pruefen": true
+  },
+  {
+   "id": "hamburg-kredit-digital",
+   "name": "Hamburg-Kredit Digital",
+   "traeger": "IFB Hamburg",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Gründer",
+    "Freiberufler"
+   ],
+   "bereich": [
+    "Digitalisierung"
+   ],
+   "art": "Kredit",
+   "url": "https://www.ifbhh.de/foerderprogramm/hamburg-kredit-digital",
+   "kurz": "Zinsgünstiges Darlehen mit Tilgungszuschuss für Hamburger Unternehmen, die in Digitalisierungsvorhaben investieren.",
+   "pruefen": true
+  },
+  {
+   "id": "hamburg-kredit-innovation",
+   "name": "Hamburg-Kredit Innovation",
+   "traeger": "IFB Hamburg",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Freiberufler"
+   ],
+   "bereich": [
+    "Innovation"
+   ],
+   "art": "Kredit",
+   "url": "https://www.ifbhh.de/foerderprogramm/hamburg-kredit-innovation",
+   "kurz": "Zinsgünstiges Darlehen mit Haftungsfreistellung für innovative Projekte Hamburger KMU und Freiberufler.",
+   "pruefen": true
+  },
+  {
+   "id": "bab-digitalisierung-bremen",
+   "name": "Digitalisierung und Arbeit 4.0 (Bremen)",
+   "traeger": "BAB Bremer Aufbau-Bank",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU"
+   ],
+   "bereich": [
+    "Digitalisierung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.bab-bremen.de/de/page/programm/beratungsfoerderung-digitalisierung",
+   "kurz": "Beratungsförderung für Bremer KMU zu Digitalisierungsstrategien und moderner Arbeitswelt (Cloud, IT-Sicherheit, Industrie 4.0).",
+   "pruefen": true
+  },
+  {
+   "id": "dku-schleswig-holstein",
+   "name": "Innovative Digitalisierung in kleinen Unternehmen (DKU)",
+   "traeger": "WTSH / Land Schleswig-Holstein",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU"
+   ],
+   "bereich": [
+    "Digitalisierung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.wtsh.de/de/foerderprogramme/foerderung-digitalisierung",
+   "kurz": "Zuschuss für kleine Unternehmen in Schleswig-Holstein zur Einführung innovativer digitaler Technologien und Prozesse.",
+   "pruefen": true
+  },
+  {
+   "id": "ibi-efre-rlp",
+   "name": "Implementierung betrieblicher Innovationen (IBI-EFRE, RLP)",
+   "traeger": "ISB Rheinland-Pfalz",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU"
+   ],
+   "bereich": [
+    "Innovation",
+    "Digitalisierung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://isb.rlp.de/foerderung/361.html",
+   "kurz": "EFRE-gefördertes Landesprogramm für rheinland-pfälzische KMU für Investitionen in technologische Transformation oder Digitalisierung.",
+   "pruefen": true
+  },
+  {
+   "id": "beg-einzelmassnahmen-bafa",
+   "name": "Bundesförderung effiziente Gebäude – Einzelmaßnahmen (BEG EM)",
+   "traeger": "BAFA",
+   "region": "DE",
+   "zielgruppe": [
+    "Unternehmen",
+    "Eigentümer",
+    "Selbstständige"
+   ],
+   "bereich": [
+    "Energie",
+    "Nachhaltigkeit"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.bafa.de/DE/Energie/Effiziente_Gebaeude/effiziente_gebaeude_node.html",
+   "kurz": "Zuschuss für energetische Einzelmaßnahmen an Gebäuden wie Dämmung, Anlagentechnik und Heizungsoptimierung.",
+   "pruefen": true
+  },
+  {
+   "id": "kfw-klimaschutzoffensive-293",
+   "name": "Klimaschutzoffensive für den Mittelstand (KfW 293)",
+   "traeger": "KfW",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Unternehmen",
+    "Selbstständige"
+   ],
+   "bereich": [
+    "Klimaschutz",
+    "Nachhaltigkeit",
+    "Energie"
+   ],
+   "art": "Kredit",
+   "url": "https://www.kfw.de/inlandsfoerderung/Unternehmen/Energie-Umwelt/",
+   "kurz": "Zinsgünstiger KfW-Kredit für Investitionen in klimafreundliche Technologien, Produkte und Produktionsprozesse.",
+   "pruefen": true
+  },
+  {
+   "id": "beg-effizienz-wirtschaft-295",
+   "name": "Energieeffizienz in der Wirtschaft (KfW 295)",
+   "traeger": "KfW / BAFA",
+   "region": "DE",
+   "zielgruppe": [
+    "KMU",
+    "Unternehmen",
+    "Freiberufler"
+   ],
+   "bereich": [
+    "Energie",
+    "Nachhaltigkeit",
+    "Effizienz"
+   ],
+   "art": "Kredit",
+   "url": "https://www.kfw.de/inlandsfoerderung/Unternehmen/Energie-Umwelt/",
+   "kurz": "Förderkredit plus Tilgungszuschuss für Energieeffizienz und erneuerbare Prozesswärme in Unternehmen.",
+   "pruefen": true
+  },
+  {
+   "id": "kultur-kreativpiloten",
+   "name": "Kultur- und Kreativpiloten Deutschland",
+   "traeger": "BMWK / BKM",
+   "region": "DE",
+   "zielgruppe": [
+    "Kreativwirtschaft",
+    "Selbstständige",
+    "Unternehmen"
+   ],
+   "bereich": [
+    "Kreativwirtschaft",
+    "Kultur",
+    "Innovation"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.kultur-kreativ-wirtschaft.de/",
+   "kurz": "Jährlicher Wettbewerb für innovative Unternehmen der Kultur- und Kreativwirtschaft mit einjährigem Mentoring und Sichtbarkeit.",
+   "pruefen": true
+  },
+  {
+   "id": "initiative-musik",
+   "name": "Initiative Musik – Künstlerförderung",
+   "traeger": "Initiative Musik gGmbH / BKM",
+   "region": "DE",
+   "zielgruppe": [
+    "Künstler",
+    "Musikunternehmen"
+   ],
+   "bereich": [
+    "Kultur",
+    "Kreativwirtschaft",
+    "Musik"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.initiative-musik.de/",
+   "kurz": "Förderungen für professionelle Künstler, Musikclubs, Festivals und Musikunternehmen in Pop, Rock und Jazz.",
+   "pruefen": true
+  },
+  {
+   "id": "exist-women",
+   "name": "EXIST Women",
+   "traeger": "BMWK",
+   "region": "DE",
+   "zielgruppe": [
+    "Gründerinnen",
+    "Studentinnen",
+    "Wissenschaftlerinnen"
+   ],
+   "bereich": [
+    "Gründung",
+    "Diversität",
+    "Hochschule"
+   ],
+   "art": "Stipendium",
+   "url": "https://www.exist.de/en/programm/exist-women/",
+   "kurz": "Förderprogramm für Frauen an Hochschulen mit Stipendium, Coaching, Mentoring und Netzwerk zur Entwicklung von Gründungsideen.",
+   "pruefen": true
+  },
+  {
+   "id": "aufstiegs-bafoeg",
+   "name": "Aufstiegs-BAföG (AFBG)",
+   "traeger": "BMBFSFJ / Länder",
+   "region": "DE",
+   "zielgruppe": [
+    "Berufstätige",
+    "Fachkräfte"
+   ],
+   "bereich": [
+    "Weiterbildung",
+    "Qualifizierung"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.aufstiegs-bafoeg.de/",
+   "kurz": "Staatliche Förderung beruflicher Aufstiegsfortbildungen (Meister, Techniker, Fachwirt) — Beitrag zu Lehrgangskosten.",
+   "pruefen": true
+  },
+  {
+   "id": "qualifizierungschancengesetz",
+   "name": "Qualifizierungschancengesetz (QCG)",
+   "traeger": "Bundesagentur für Arbeit",
+   "region": "DE",
+   "zielgruppe": [
+    "Beschäftigte",
+    "KMU",
+    "Unternehmen"
+   ],
+   "bereich": [
+    "Weiterbildung",
+    "Qualifizierung",
+    "KI"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.arbeitsagentur.de/",
+   "kurz": "Übernahme von Weiterbildungskosten und Lohnkostenzuschuss für Unternehmen, die Beschäftigte beim strukturellen Wandel qualifizieren.",
+   "pruefen": true
+  },
+  {
+   "id": "nachhaltig-wirken-gemeinwohl",
+   "name": "Nachhaltig wirken – gemeinwohlorientierte Unternehmen",
+   "traeger": "BMWK / ESF Plus",
+   "region": "DE",
+   "zielgruppe": [
+    "Sozialunternehmen",
+    "NGOs"
+   ],
+   "bereich": [
+    "Soziales",
+    "Gemeinwohl",
+    "Nachhaltigkeit"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.bmwk.de/",
+   "kurz": "Bundesprogramm für gemeinwohlorientierte Unternehmen — fördert Professionalisierung, Wachstum und Vernetzung von Impact-Organisationen.",
+   "pruefen": true
+  },
+  {
+   "id": "dfg-sachbeihilfe",
+   "name": "DFG Sachbeihilfe",
+   "traeger": "Deutsche Forschungsgemeinschaft (DFG)",
+   "region": "DE",
+   "zielgruppe": [
+    "Wissenschaftler",
+    "Hochschulen",
+    "Forschung"
+   ],
+   "bereich": [
+    "Forschung",
+    "Wissenschaft"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.dfg.de/de/foerderung/foerdermoeglichkeiten/programme/einzelfoerderung/sachbeihilfe",
+   "kurz": "Thematisch offene Projektförderung der DFG für einzelne Forschungsvorhaben aller Disziplinen an deutschen Einrichtungen.",
+   "pruefen": true
+  },
+  {
+   "id": "dfg-emmy-noether",
+   "name": "Emmy Noether-Programm",
+   "traeger": "Deutsche Forschungsgemeinschaft (DFG)",
+   "region": "DE",
+   "zielgruppe": [
+    "Nachwuchswissenschaftler",
+    "Postdocs"
+   ],
+   "bereich": [
+    "Forschung",
+    "Wissenschaft",
+    "Nachwuchs"
+   ],
+   "art": "Zuschuss",
+   "url": "https://www.dfg.de/de/foerderung/foerdermoeglichkeiten/programme/einzelfoerderung/emmy-noether",
+   "kurz": "Förderung für herausragende Nachwuchswissenschaftler zur eigenständigen Leitung einer Forschungsgruppe als Weg zur Professur.",
+   "pruefen": true
+  },
+  {
+   "id": "iq-integration-qualifizierung",
+   "name": "Förderprogramm IQ – Integration durch Qualifizierung",
+   "traeger": "BMAS / BAMF / ESF Plus",
+   "region": "DE",
+   "zielgruppe": [
+    "Unternehmen",
+    "Beratungsstellen"
+   ],
+   "bereich": [
+    "Qualifizierung",
+    "Integration",
+    "Arbeitsmarkt"
+   ],
+   "art": "Zuschuss",
+   "url": "https://netzwerk-iq.de/",
+   "kurz": "Netzwerk aus Beratung und Qualifizierung für Menschen mit ausländischen Berufsabschlüssen zur Arbeitsmarktintegration.",
+   "pruefen": true
+  }
+ ]
+}

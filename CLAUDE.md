@@ -99,3 +99,13 @@ Social-Image fürs eBook: `og-ebook.png` (Pillow, 1200×630).
 - Branch-Konvention: `claude/...` Feature-Branches, **nie** direkt nach `main`.
 - Cloudflare Pages: kein Build-Command, Output = Repo-Root. `_redirects` + `_headers`
   werden automatisch erkannt. Jeder Push auf `main` triggert Auto-Deploy.
+
+## Geld-Projekte (Aban-Netzwerk) — zusätzlich zum Newsletter
+Dieses Repo enthält neben der Newsletter-Site mehrere automatisierte KI-Geld-Projekte.
+**Voller Stand in `PROJEKT.md`** (immer zuerst lesen). Kurz:
+- `ki-tools-radar/` — KI-Tool-Vergleich (176 Tools, 11 Sprachen, ~10.255 Seiten). LIVE auf radar.abannews.com. Affiliate.
+- `foerder-radar/` — DACH-Fördermittel (86 echte Programme). Lead-Gen. Domain foerder.abannews.com.
+- `jobs-radar/` — DACH-KI-Jobboard (fetch_jobs.py: Arbeitnow+Remotive). Domain jobs.abannews.com.
+- `portal/` — Hub; `social/` — Auto-Posting Telegram/Discord; `automation/werkbank.py` + `news_aggregator.py` — Newsletter-Tools.
+- Jedes Geld-Projekt: `generate.py` (stdlib), eigener Auto-Build-Workflow, baut nach `dist/`.
+- Daten `data/tools.json` (176 Tools, 33 neue mit „[Redaktion: prüfen]") speist den ki-tools-radar.

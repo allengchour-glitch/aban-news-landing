@@ -1,0 +1,43 @@
+name: KI-News-Aggregator (täglich)
+
+# Sammelt jeden Morgen frisches KI-News-Rohmaterial aus seriösen RSS-Feeds
+# und committet es als automation/news-roh-aktuell.md (Kuratier-Vorlage).
+# Erfindet nichts — verlinkt echte Quellen. Du wählst & schreibst die Ausgabe.
+on:
+  schedule:
+    - cron: '0 5 * * 1-5'      # Mo–Fr 05:00 UTC (vor deinem Newsletter-Slot)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: news-aggregator
+  cancel-in-progress: false
+
+jobs:
+  aggregate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: KI-News sammeln
+        run: |
+          python automation/news_aggregator.py --max 6 --out automation/news-roh-aktuell.md \
+            || echo "Aggregator-Lauf mit Warnung beendet"
+
+      - name: Rohmaterial committen (falls geändert)
+        run: |
+          git add -f automation/news-roh-aktuell.md
+          if ! git diff --cached --quiet; then
+            git config user.name "aban-news-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git commit -m "chore(news): frisches KI-News-Rohmaterial [skip ci]"
+            git push
+          else
+            echo "Kein neues Rohmaterial."
+          fi
