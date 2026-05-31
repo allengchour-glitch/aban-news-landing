@@ -183,8 +183,9 @@ Erstes echtes Backend-Tool im Netzwerk (raus aus rein statischem HTML).
   via Claude, wenn Secret `ANTHROPIC_API_KEY` im Pages-Projekt gesetzt ist (Model über
   `HYPE_MODEL`, Default `claude-sonnet-4-6`) — sonst regelbasierter Fallback. Kein Build-Step
   nötig: Cloudflare erkennt `functions/` automatisch.
-- **Tests:** `node functions/_engine.test.mjs` (17 Checks, grün). Engine wird zugleich vom
-  CI-Voice-Validator-Gedanken gespeist (Lexikon erweitert die `FORBIDDEN`-Idee).
+- **Tests:** `node functions/_engine.test.mjs` (84 Checks) + `functions/_api.test.mjs`
+  (40 Checks), alle grün. Engine wird zugleich vom CI-Voice-Validator-Gedanken
+  gespeist (Lexikon erweitert die `FORBIDDEN`-Idee).
 - **Verlinkt:** Footer `index.html` + `resources.html` (Live-Tools-Karte), `sitemap.xml`.
 - **Idee/Moat:** dasselbe Werkzeug, mit dem jede Newsletter-Ausgabe geprüft wird, als
   öffentliches Produkt — on-brand (Anti-Hype), nützlich für DACH-Solo-Profis, später als
@@ -192,7 +193,7 @@ Erstes echtes Backend-Tool im Netzwerk (raus aus rein statischem HTML).
 
 ### Hype-Filter — Ausbau (parallele Agenten-Runde)
 - Engine deutlich vertieft: Lexikon 49→65 Einträge, neue Kategorien `vage` +
-  `nominalstil`, `metrics.readingLabel`, ReDoS-gehärtet, 73 Engine-Tests.
+  `nominalstil`, `metrics.readingLabel`, ReDoS-gehärtet, 84 Engine-Tests.
 - API gehärtet: 405/413/415-Guards, Security-/Cache-Header, Claude-Timeout +
   Key-Leak-Schutz; 40 API-Tests (`functions/_api.test.mjs`).
 - CI: `.github/workflows/hype-filter-test.yml` fährt die JS-Tests + HTML-Sanity.
@@ -202,3 +203,18 @@ Erstes echtes Backend-Tool im Netzwerk (raus aus rein statischem HTML).
 - `js/hype-filter-widget.js` + `hype-widget-demo.html` — einbettbares Widget
   (Shadow-DOM, XSS-sicher) für Fremd-Sites → Backlinks. Pretty-URLs `/anti-hype`,
   `/widget`. Verlinkt in sitemap/_redirects/Footer/resources.
+
+## Stand 2026-05-31 (Abend) — Conversion-/A11y-/SEO-Runde
+- **Hype-Filter Review-Welle:** 4 Audits (Security, A11y, Engine-Linguistik, Voice),
+  Fixes umgesetzt (Engine-False-Positives raus, Dark-Mode-Kontrast, escaped Output,
+  eigene Tool-Seiten bestehen ihren eigenen Filter). Tests jetzt 84 + 40, alle grün.
+- **AA-Buttons site-weit:** gefüllte Primär-/CTA-Buttons von Weiß-auf-`#d97706`
+  (3.19:1) auf `#b45309` (5.02:1, WCAG AA), Hover `#92400e`. Akzent-Token `--amber`
+  bewusst unverändert. Dark-Mode-Seiten token-aware. 26 Regeln/23 Dateien + styles.css.
+- **ki-tools-radar Umsatz-Pass** (`generate.py`): Affiliate-`rel` korrigiert
+  (`sponsored noopener` statt widersprüchlichem `sponsored nofollow`, `noopener`-Lücke
+  bei `target="_blank"` geschlossen — 0 Verstöße im dist), **CTA above-the-fold nach
+  TLDR** (3 CTAs/Seite), einzigartige keyword-reiche Titles („{Tool} Test & Bewertung
+  {Jahr}") in 11 Sprachen, `og:type=product`, Meta-Descriptions an Wortgrenze gekürzt.
+  Build deterministisch (10.351 Seiten). **Dieselben Hebel sind auf die übrigen
+  Programmatic-Projekte (foerder/jobs/kurse/prompts/agenturen) übertragbar.**
