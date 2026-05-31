@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotting AI hallucinations — the practical guide | aban news</title>
+  <meta name="description" content="Why AI hallucinates, 5 warning signs of made-up facts and how to check in 30 seconds. Practical, for the self-employed — no panic, no hype.">
+  <link rel="canonical" href="https://abannews.com/en/ki-halluzinationen-erkennen.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/ki-halluzinationen-erkennen.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-halluzinationen-erkennen.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ki-halluzinationen-erkennen.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/ki-halluzinationen-erkennen.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-halluzinationen-erkennen.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Spotting AI hallucinations — the practical guide">
+  <meta property="og:description" content="Why AI makes up facts, 5 warning signs and the 30-second check. No panic, no hype.">
+  <meta property="og:url" content="https://abannews.com/en/ki-halluzinationen-erkennen.html">
+  <meta property="og:type" content="article">
+  <style>
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;margin-left:1.2rem}
+    .lang a{padding:.3rem .55rem;color:var(--muted);text-decoration:none;margin:0}
+    .lang a.on{background:var(--ink);color:#fff}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:3rem 0 2rem;text-align:center}
+    h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:58ch;margin:0 auto 1.5rem}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    section{padding:1.2rem 0}
+    section h2{font-size:1.4rem;line-height:1.2;margin:1.4rem 0 .6rem}
+    section h3{font-size:1.1rem;margin:1.1rem 0 .35rem}
+    section p{margin-bottom:.8rem}
+    section ul{margin:0 0 .9rem 1.2rem}
+    section li{margin-bottom:.35rem}
+    .method{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.5rem;margin-bottom:1rem;box-shadow:var(--shadow)}
+    .method h3{margin-top:0;display:flex;align-items:center;gap:.5rem}
+    .method .num{background:var(--amber);color:#fff;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;flex-shrink:0}
+    .callout{background:var(--amber-lt);border-left:4px solid var(--amber);border-radius:8px;padding:.9rem 1.1rem;margin:1rem 0;font-weight:600}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2rem 0}
+    .cta-box h2{font-size:1.3rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .btn--ghost{border:1px solid var(--amber);color:var(--amber-dk);background:#fff}
+    details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem;padding:0}
+    details[open]{border-color:#fed7aa}
+    summary{padding:1rem 1.1rem;font-weight:600;cursor:pointer;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";float:right;color:#a3a3a3;font-weight:300;font-size:1.3rem;line-height:1}
+    details[open] summary::after{content:"−"}
+    details .a{padding:0 1.1rem 1.1rem;color:var(--muted);font-size:.95rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:2rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Spotting AI hallucinations — the practical guide","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"datePublished":"2026-05-31","dateModified":"2026-05-31","description":"Why AI hallucinates, five warning signs of made-up facts and the 30-second check — practical and without panic.","inLanguage":"en"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[
+    {"@type":"Question","name":"What is an AI hallucination?","acceptedAnswer":{"@type":"Answer","text":"A made-up but confidently delivered answer. Not a defect, but the flip side of how the model works: it computes the most probable next word, not the truth. Invented sources, wrong numbers or names therefore look just as convincing as correct ones."}},
+    {"@type":"Question","name":"Why does the AI invent sources and quotes?","acceptedAnswer":{"@type":"Answer","text":"Because a plausible-sounding quote is statistically likely — even if it never existed. The model doesn't know whether a source is real; it generates something that looks like a source. So: open and check every cited source yourself."}},
+    {"@type":"Question","name":"How do I spot a hallucination?","acceptedAnswer":{"@type":"Answer","text":"Watch for overly specific details with no evidence, exact numbers and dates, named studies or statutes, and internal contradictions. The more precise and confident a claim without a source, the sooner you verify it."}},
+    {"@type":"Question","name":"How do I prevent hallucinations?","acceptedAnswer":{"@type":"Answer","text":"You can't prevent them entirely. But you lower the risk: give the model the source documents, ask for citations, let it say 'I don't know' when unsure, and verify anything expensive at the primary source."}},
+    {"@type":"Question","name":"Are newer models free of hallucinations?","acceptedAnswer":{"@type":"Answer","text":"No. Newer models hallucinate less often, but not never — and that makes the rest look more convincing. The checking routine stays the same, however good the model."}}
+  ]}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/en/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/en/ebook.html">eBook</a>
+      <a href="/en/ki-halluzinationen-erkennen.html"><strong>Hallucinations</strong></a>
+      <a href="#subscribe" class="btn">Subscribe</a>
+      <span class="lang"><a href="/ki-halluzinationen-erkennen.html">DE</a><a href="/en/ki-halluzinationen-erkennen.html" class="on" aria-current="true">EN</a><a href="/fr/ki-halluzinationen-erkennen.html">FR</a><a href="/it/ki-halluzinationen-erkennen.html">IT</a></span>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Updated: May 2026 · no panic</span>
+      <h1>Spotting AI hallucinations</h1>
+      <p class="lead">AI makes up facts — confidently and convincingly. That's not a defect, it's the flip side of how it works. Here are the warning signs and the 30-second check that protects you.</p>
+    </div>
+
+    <section>
+      <h2>Why AI hallucinates at all</h2>
+      <p>A language model is at its core a machine that predicts the next word. It doesn't compute the truth, but the probability. That explains almost everything: why it phrases things brilliantly and invents facts in the same breath, why it never notices its own error, and why the same question gives slightly different answers twice.</p>
+      <p>A hallucination, then, isn't a glitch but the logical consequence of that. An invented quote is statistically likely — even if it never existed. Once you grasp this, you treat every AI answer as a draft, not as evidence.</p>
+      <div class="callout">The AI is an intern with perfect memory and zero judgement. It always sounds certain — whether or not it's right.</div>
+    </section>
+
+    <section>
+      <h2>Five warning signs of made-up facts</h2>
+      <div class="method">
+        <h3><span class="num">1</span> Overly specific details with no evidence</h3>
+        <p>The more precise a claim sounds without a source attached, the sooner you check it. "Studies show that 73% …" with no study is a warning sign, not a fact.</p>
+      </div>
+      <div class="method">
+        <h3><span class="num">2</span> Named sources, studies or statutes</h3>
+        <p>Named sources look credible — and are especially often invented. Models generate something that looks like a source. Open every cited study, ruling and statute yourself.</p>
+      </div>
+      <div class="method">
+        <h3><span class="num">3</span> Exact numbers and dates</h3>
+        <p>Round, confident numbers and precise years sound reliable but are easily invented. Treat every number that matters as unverified until you've seen it.</p>
+      </div>
+      <div class="method">
+        <h3><span class="num">4</span> Internal contradictions</h3>
+        <p>If the answer says X in one place and the opposite in another, at least one place is guessed. Have the same point explained twice and compare.</p>
+      </div>
+      <div class="method">
+        <h3><span class="num">5</span> Answers about things that don't exist</h3>
+        <p>Ask about a book or a law that doesn't exist — many models will happily describe it anyway. If the AI never says "I don't know that one", suspicion is warranted.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>The 30-second check</h2>
+      <ul>
+        <li><strong>Verify at the source:</strong> whatever has to be correct, you check at the original — not with the AI and not in a blog post.</li>
+        <li><strong>Demand sources:</strong> "Name the source and quote the passage verbatim." Invented claims often collapse here.</li>
+        <li><strong>Allow uncertainty:</strong> say in the prompt: "If you're not sure, say so." That noticeably reduces inventing.</li>
+        <li><strong>Cross-check:</strong> ask the same question rephrased. If the answers differ a lot, at least one is guessed.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Where hallucinations are especially expensive</h2>
+      <p>Not every mistake costs the same. A clumsy headline you fix in seconds — a wrong number in a quote or an invented statute in a client letter you don't. Treat these areas as check-mandatory by default:</p>
+      <ul>
+        <li><strong>Law:</strong> statutes, deadlines, rulings — always cross-check against the legal text.</li>
+        <li><strong>Health &amp; finance:</strong> dosages, amounts, tax rules — never adopt unchecked.</li>
+        <li><strong>Quotes &amp; sources:</strong> anything you pass on as evidence, open it first yourself.</li>
+        <li><strong>Numbers going outward:</strong> anything that goes to clients or into publications.</li>
+      </ul>
+      <div class="callout">Rule of thumb: the more expensive a mistake, the more your own eyes belong on it. The AI prepares — you approve.</div>
+    </section>
+
+    <section>
+      <h2>Frequently asked</h2>
+      <details><summary>What is an AI hallucination?</summary><div class="a">A made-up but confidently delivered answer. Not a defect, but the flip side of how the model works — it computes probability, not truth.</div></details>
+      <details><summary>Why does the AI invent sources?</summary><div class="a">Because a plausible quote is statistically likely, even if it never existed. The model generates something that looks like a source. Open every cited source yourself.</div></details>
+      <details><summary>How do I spot a hallucination?</summary><div class="a">Watch for overly specific details with no evidence, exact numbers, named studies and internal contradictions. The more confident without a source, the sooner you verify.</div></details>
+      <details><summary>Are newer models free of it?</summary><div class="a">No. They hallucinate less often, but not never — which makes them more convincing. The checking routine stays the same.</div></details>
+    </section>
+
+    <div class="cta-box" style="background:var(--card);border:1px solid var(--line);">
+      <h2>Free eBook: “Anti-Hype”</h2>
+      <p>This way of thinking runs through the whole eBook: the 3-question filter, your minimal AI stack and how to separate substance from show. No sign-up.</p>
+      <a href="/en/ebook.html" class="btn btn--ghost">Read the eBook →</a>
+    </div>
+
+    <div class="cta-box" id="subscribe">
+      <h2>Every workday: AI without the bullshit, in 5 minutes</h2>
+      <p>aban news brings you the AI developments that matter for your work, Mon–Fri — honestly assessed, without panic and without hype.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">Get the 5-min AI briefing →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">No spam. Unsubscribe in one click. GDPR-compliant.</p>
+    </div>
+
+    <section>
+      <h2 style="font-size:1.05rem;">Read on</h2>
+      <div style="display:grid;gap:.7rem;grid-template-columns:1fr 1fr;">
+        <a href="/en/ki-prompts-schreiben.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">How to write AI prompts</strong><span style="color:var(--muted);font-size:.82rem;">Better prompts in 4 steps</span></a>
+        <a href="/en/chatgpt-vs-claude.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">ChatGPT vs. Claude</strong><span style="color:var(--muted);font-size:.82rem;">The honest comparison</span></a>
+        <a href="/en/ki-tools-fuer-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">AI tools for the self-employed</strong><span style="color:var(--muted);font-size:.82rem;">The honest stack 2026</span></a>
+        <a href="/en/ebook.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Free eBook “Anti-Hype”</strong><span style="color:var(--muted);font-size:.82rem;">Use AI without the bullshit</span></a>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <p><strong>Honesty note:</strong> this guide contains no affiliate links. Hallucinations can't be switched off, only contained — the checking routine described here doesn't replace professional verification in an individual case. For legally or medically sensitive topics: verify at the primary source or ask a professional.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/en/">Home</a> · <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
