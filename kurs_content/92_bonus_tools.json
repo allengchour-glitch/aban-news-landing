@@ -1,0 +1,64 @@
+{
+  "title": "Tool-Auswahl &amp; Kostenkontrolle",
+  "kicker": "Bonus 3",
+  "toc": true,
+  "kind": "bonus",
+  "blocks": [
+    ["lead", "Es gibt mehr KI-Tools, als du je brauchst. Dieser Bonus hilft dir zu entscheiden, welche sich für dich lohnen, und wie du verhinderst, dass die Abos still und leise dein Konto leerräumen."],
+
+    ["h3", "Die richtigen Fragen vor jedem Abo"],
+    ["p", "Bevor du irgendwo auf „Jetzt abonnieren“ klickst, geh diese Fragen durch. Wenn du nicht alle klar beantworten kannst, warte noch."],
+    ["ol", [
+      "Welche konkrete Aufgabe soll das Tool mir abnehmen?",
+      "Wie oft mache ich diese Aufgabe wirklich, pro Woche oder pro Monat?",
+      "Was kostet mich diese Aufgabe heute an Zeit, und was ist diese Zeit wert?",
+      "Kann ein Tool, das ich schon bezahle, das auch?",
+      "Was kostet das Abo im Jahr, nicht nur im Monat?",
+      "Wie komme ich wieder raus, wenn es nichts taugt?"
+    ]],
+
+    ["h3", "Kategorien im Überblick"],
+    ["p", "Die meisten Tools fallen in wenige Gruppen. Du brauchst selten mehr als eines pro Gruppe. Such dir je Kategorie ein Werkzeug aus und lern es richtig, statt fünf halb zu kennen."],
+    ["ul", [
+      "Text und Recherche: Entwürfe, Zusammenfassungen, Umformulieren.",
+      "Bild und Grafik: Illustrationen, einfache Visuals, Bildbearbeitung.",
+      "Audio und Video: Transkripte, Untertitel, Schnitt-Hilfe.",
+      "Organisation: Notizen, Aufgaben, Terminplanung.",
+      "Spezialaufgaben deiner Branche: alles, was nur dein Beruf braucht."
+    ]],
+
+    ["h3", "Kostenlos oder bezahlt?"],
+    ["p", "Viele gute Tools haben eine Gratis-Stufe. Die reicht oft länger, als du denkst. Eine einfache Regel: Bleib so lange kostenlos, bis dich die Grenze der Gratis-Version spürbar bei der Arbeit bremst. Erst dann lohnt sich Geld."],
+    ["ul", [
+      "Gratis genügt meist, wenn du das Tool selten oder nur zum Ausprobieren nutzt.",
+      "Bezahlt lohnt sich, wenn die Gratis-Grenze dich täglich ausbremst oder dir ein Feature fehlt, das du wirklich brauchst.",
+      "Teste neue Tools immer erst gratis oder im kürzesten Bezahlzeitraum, bevor du ein Jahr buchst."
+    ]],
+
+    ["h3", "Wechselkosten nicht unterschätzen"],
+    ["p", "Ein Tool zu wechseln kostet mehr als nur den neuen Preis. Du musst dich einarbeiten, Daten umziehen und Gewohnheiten ändern. Rechne das mit ein, bevor du wegen ein paar Euro umsteigst."],
+    ["ul", [
+      "Einarbeitungszeit: Wie lange brauchst du, bis du wieder schnell bist?",
+      "Daten umziehen: Kommst du an deine Inhalte heran und in das neue Tool hinein?",
+      "Abhängigkeit: Je tiefer ein Tool in deinem Alltag steckt, desto teurer wird der Abschied."
+    ]],
+
+    ["h3", "Der monatliche Kosten-Check"],
+    ["p", "Nimm dir einmal im Monat zehn Minuten und schau dir alle laufenden Abos an. Frag bei jedem: Habe ich das im letzten Monat genutzt? Wenn nein, kündige es. Du kannst es wieder buchen, falls du es doch brauchst."],
+    ["p", "Trag deine Abos in eine einfache Übersicht ein, damit du den Überblick behältst:"],
+    ["code", "Tool        | Kategorie   | Preis/Monat | Letzte Nutzung | Behalten?\n------------|-------------|-------------|----------------|----------\n[Tool 1]    | [Kategorie] | [Betrag]    | [Datum]        | ja / nein\n[Tool 2]    | [Kategorie] | [Betrag]    | [Datum]        | ja / nein\n[Tool 3]    | [Kategorie] | [Betrag]    | [Datum]        | ja / nein\n------------|-------------|-------------|----------------|----------\nSumme       |             | [Gesamt]    |                |"],
+
+    ["p", "Rechne die Monatssumme einmal mal zwölf. Diese Jahreszahl ist die ehrliche Größe, an der du jedes Abo misst."],
+
+    ["h3", "Häufige Fehler"],
+    ["ul", [
+      "Mehrere Tools für dieselbe Aufgabe parallel bezahlen.",
+      "Ein Jahresabo buchen, bevor du das Tool im Alltag getestet hast.",
+      "Abos vergessen, die nach der Gratis-Phase still weiterlaufen.",
+      "Ein neues Tool kaufen, statt das vorhandene besser zu lernen.",
+      "Auf eine Funktion setzen, die du in der Praxis nie benutzt."
+    ]],
+
+    ["callout", "Du musst nicht alle Tools selbst durchprobieren. Auf radar.abannews.com vergleichst du KI-Tools nach Kategorie und Preis und nutzt es als Nachschlagewerk, bevor du dich für ein Abo entscheidest."]
+  ]
+}
