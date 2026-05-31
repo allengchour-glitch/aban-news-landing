@@ -510,3 +510,13 @@ Breite Mode+Schmuck-Suche (cj_mode_schmuck_search.mjs, 12 Keywords). Viele SKU-D
 - Blütenring «Fleur Rose» rosa Zirkonia (CJLX2916413) — CHF 16.90 — 2 var
 - Halskette «Coquille» Muschel-Tassel (CJYD2916318) — CHF 19.90 — 1 var, 5 Bilder
 Schmuck weitgehend abgedeckt: von 12 Schmuck-Treffern waren ~9 Duplikate.
+
+## 2026-05-31 — Smart-Collection-Gegencheck + Fix (Tagging-Kollisionen)
+Beim Gegencheck der neuen Produkte 2 Fehler gefunden & behoben:
+1. "Herrenuhren & Schmuck" (687520186753) filterte auf `tag:schmuck` (OR) → zog ALLE Damen-Schmuckstücke
+   rein (158 Produkte!). Regel präzisiert auf herrenuhr/herrenschmuck/herren-schmuck/uhr → 16 echte Herren.
+2. "Damen-Schmuck" (687966486913) filterte nur `tag:Damen` → zog Damen-Tops (Sommer-Top «Sole») rein.
+   Regel präzisiert auf `schmuck AND damen` → nur echte Schmuckstücke; Ring/Kette korrekt drin, Top raus.
+Verifiziert: Sole-Top jetzt nur Damen-Mode+Geschenke; Ring/Kette nur Damen-Schmuck.
+Lesson: generische Tags (`schmuck`, `damen`) in OR-Regeln verursachen Cross-Kategorie-Leaks →
+spezifische AND-Kombis oder eindeutige Tags nutzen.
