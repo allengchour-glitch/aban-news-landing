@@ -419,3 +419,10 @@ Uhren/Kleider-Suche: fast alles schon im Bestand (Dedup) → nur 2 neu, beide Vo
 **Fazit Katalog:** Schmuck/Uhren/Kleider in CJ jetzt weitgehend ausgeschöpft (Suchen liefern überwiegend Bestand).
 **Conversion (nur User-Klick möglich, Live-Theme API-gesperrt):** ✨ Highlights & 🔥 Bestsellers als
 Startseiten-Sektion im Customizer einbinden — Schritte dem User gegeben.
+
+## Conversion 2026-05-31 — Menü-Eintrag (statt Live-Theme-Edit)
+Live-Theme bleibt API-gesperrt (Connector-Sicherheit, kein Shopify-Schalter). Stattdessen per `menuUpdate`
+ins Hauptmenü (`main-menu`, Menu/310224093569) **ganz vorne** eingefügt: **✨ Highlights** (/collections/highlights)
++ **🔥 Bestseller** (/collections/bestseller-shop). Alle 15 Bestands-Menüpunkte inkl. Untermenüs erhalten.
+Highlights-Collection-Handle von Emoji `✨-…` auf sauberes `highlights` umbenannt.
+**Merke:** menuUpdate ersetzt die GANZE items-Liste → vorher komplette Struktur fetchen und mitsenden.
