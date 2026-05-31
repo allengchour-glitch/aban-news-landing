@@ -22,16 +22,16 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
 const KEYWORDS = [
-  { kw: 'summer dress women floral', must: ['dress'],     take: 1 },
-  { kw: 'beach cover up dress',      must: ['beach'],     take: 1 },
-  { kw: 'linen shirt men summer',    must: ['shirt'],     take: 1 },
-  { kw: 'maxi dress boho',           must: ['dress'],     take: 1 },
-  { kw: 'womens jumpsuit summer',    must: ['jumpsuit'],  take: 1 },
-  { kw: 'mens polo shirt casual',    must: ['polo'],      take: 1 },
-  { kw: 'wide leg pants women',      must: ['pants'],     take: 1 },
-  { kw: 'knit cardigan women',       must: ['cardigan'],  take: 1 },
-  { kw: 'mens shorts summer beach',  must: ['shorts'],    take: 1 },
-  { kw: 'blouse women elegant',      must: ['blouse'],    take: 1 },
+  { kw: 'bikini set swimwear women', must: ['bikini'],   take: 1 },
+  { kw: 'mens t-shirt cotton summer', must: ['shirt'],   take: 1 },
+  { kw: 'pleated midi skirt women',  must: ['skirt'],     take: 1 },
+  { kw: 'linen trousers women',      must: ['trousers'],  take: 1 },
+  { kw: 'one piece swimsuit',        must: ['swimsuit'],  take: 1 },
+  { kw: 'mens hawaiian shirt',       must: ['shirt'],     take: 1 },
+  { kw: 'sundress strap women',      must: ['dress'],     take: 1 },
+  { kw: 'crop top women summer',     must: ['top'],       take: 1 },
+  { kw: 'kimono cardigan beach',     must: ['kimono'],    take: 1 },
+  { kw: 'denim shorts women',        must: ['shorts'],    take: 1 },
 ];
 
 let _b, _ctx;

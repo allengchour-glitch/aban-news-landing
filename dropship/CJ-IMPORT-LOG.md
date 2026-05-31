@@ -2,7 +2,7 @@
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
-> Stand: 2026-05-31 — **57 Produkte LIVE** + 6 Hero-Produkte mit Premium-Copy.
+> Stand: 2026-05-31 — **61 Produkte LIVE** + 6 Hero-Produkte mit Premium-Copy.
 > Charge 25: +3 Sommer-Kleider (Kleid, Strand-Rock, Herren-Polo) mit Grössen-Hinweis. Kleidung
 > füllt sich deutlich besser als Gadgets (8 Keeper/10 Keywords). Boho-Set (72 Var.) übersprungen.
 > ⚠️ Kleidung = höheres Retouren-Risiko → Grössen-Hinweis („asiatisch 1–2 Nr. kleiner" + Guide-Link) Pflicht.
