@@ -346,3 +346,15 @@ Monsieur/Lumea/Bluette zusätzlich in ✨ Highlights. Skip: A-Linien-Kleid/Prove
 Zip-Knit-Top (`CJLS291593201AZ` existiert schon).
 ⚠️ productSet-Falle: pro-Variante `file` braucht IMMER ein Produkt-level `files`-Array mit derselben URL,
 sonst „Quelle der Datei fehlt". (Bei Single-Color-Artikeln leicht vergessen.)
+
+## Bild-QA 2026-05-31 (User-Hinweis „nicht original Bilder")
+Alle 430 aktiven Produkte gescannt (Dateiname-Heuristik + Playwright-Kontaktbogen, da kein ImageMagick).
+- **Meine CJ-Produkte (UUID/S…webp/HTB): echte Produktfotos – sauber.** Seite 2 (180) komplett ok.
+- **10 klar irreführende Stock-/Lifestyle-Fotos auf DRAFT gesetzt** (Tag `stock-bild-pruefen`):
+  Wandbilder-3er (Zimmer+Wasserzeichen), Galaxy-Projector (Meditation), Sound-Machine/LED-Stimmungslicht/
+  Wearable-Nackenmassage/Sleep-Set (Unsplash `photo-…`), Yoga-Matte/Widerstandsbänder/Silvester-Bundle
+  (kryptische Stock `l17ji7/5gmi6o/r887vp`), Wachsmalkreide (Stock).
+- **Offen (nicht angetastet):** ~20 AI-Renders (`…-ai-1.png`, v. a. Bundles/Geschenkboxen – zeigen das
+  richtige Produkt, aber kein Foto) + ~6 fremde Retailer-Fotos (Costway, Wein-Dekanter). User-Entscheid nötig.
+- Erkenntnis: Stock-Bilder haben neutrale/kryptische Dateinamen → reine Keyword-Regex verfehlt sie;
+  Kontaktbogen-Sichtprüfung nötig.
