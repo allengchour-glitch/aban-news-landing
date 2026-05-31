@@ -15,13 +15,15 @@
   }
 
   // --- Scroll-Reveal ---
+  // Fail-safe: Ohne .reveal-ready versteckt das CSS nichts. Wir setzen die Klasse
+  // erst, wenn wir die Elemente auch aktiv wieder einblenden können. Lädt dieses
+  // Skript nicht, bleiben alle Inhalte sichtbar (SEO/No-JS-freundlich).
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var els = document.querySelectorAll("[data-reveal]");
   if (reduce || !("IntersectionObserver" in window) || !els.length) {
-    // sofort sichtbar
-    for (var i = 0; i < els.length; i++) els[i].classList.add("is-visible");
-    return;
+    return; // nichts verstecken -> sichtbar lassen
   }
+  document.documentElement.classList.add("reveal-ready");
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (e.isIntersecting) {
