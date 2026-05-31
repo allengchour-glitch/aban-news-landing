@@ -50,10 +50,13 @@ jobs:
         with:
           apiToken: ${{ env.CF_API_TOKEN }}
           accountId: ${{ env.CF_ACCOUNT_ID }}
-          # Output-Verzeichnis kommt aus wrangler.toml (pages_build_output_dir = ".").
-          # branch=main -> Production, sonst Preview-Deploy für den jeweiligen Branch.
+          # Output-Verzeichnis = Repo-Root (".") als Positional. Bewusst KEINE
+          # wrangler.toml im Repo, damit die Pages-Git-Integration im Dashboard
+          # unveraendert weiterlaeuft; dieser Action-Deploy ist ein opt-in
+          # Direct-Upload (laeuft nur mit gesetzten Secrets).
+          # branch=main -> Production, sonst Preview-Deploy fuer den Branch.
           command: >-
-            pages deploy
+            pages deploy .
             --project-name=${{ vars.CF_PAGES_PROJECT || 'radar' }}
             --branch=${{ github.head_ref || github.ref_name }}
 
