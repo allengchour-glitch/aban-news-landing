@@ -677,3 +677,14 @@ Falle: 1× Bild-URL hatte Tippfehler (Leerzeichen) → korrigiert. ae-Farbnamen 
 | «Floating Planet» Armband/Kette | 15413725593985 | 4 | 14.90 |
 | Jumpsuit Blazer-Kragen | 15413726282113 | 8 | 44.90 |
 Stand: **506 aktive Produkte.**
+
+## 2026-06-01 — CJ gemischte Charge #3 (+5, Damen/Schmuck)
+10 KW → 5 sauber (Nasenclip & Auto-Visier-Clip = Fehltreffer raus). ACTIVE, 6 Kanäle.
+| Produkt | ID | V | VK |
+|---|---|---|---|
+| Smaragd-Zirkon Schmuck-Set | 15413736931713 | 10 | 18.90 |
+| Bandeau-Top uni | 15413738996097 | 30 | 19.90 |
+| Sommerkleid ärmellos schwarz | 15413739684225 | 4 | 32.90 |
+| High-Waist Shorts A-Linie | 15413740798337 | 15 | 24.90 |
+| Zirkonia-Blumenring | 15413741748609 | 2 | 12.90 |
+**Stand: ~511 aktive Produkte.** Session-Total CJ heute: 3 Chargen = 17 Damen/Sommer/Schmuck-Produkte.
