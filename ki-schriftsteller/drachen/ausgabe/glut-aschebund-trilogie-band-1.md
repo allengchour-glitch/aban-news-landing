@@ -2,7 +2,7 @@
 
 *Dark Fantasy / Romantasy*
 
-von [Autor]
+von aban news
 
 ---
 
@@ -483,57 +483,57 @@ Geschrieben, begriff Sayra, während ihr das geteilte Herz in der Kehle schlug, 
 
 Dorne wartete drei Tage, bevor er sie zum ersten Mal vor allen demütigte.
 
-Er war alles, was Sayra nicht war: breit, gesund aussehend trotz der Krankheit, die ihn hergebracht hatte, gebunden an einen jungen, kampfstarken Drachen mit Schuppen wie poliertes Erz. Er gehörte zu denen, die die Akademie als Aufstieg begriffen, nicht als Aufschub. Und er konnte es nicht ertragen, dass das blasse Mädchen mit der grauen Strähne an einen echten alten Drachen gebunden war - selbst wenn dieser Drache ein Wrack war.
+Er war alles, was Sayra nicht war: breit, gesund aussehend trotz der Krankheit, die ihn hergebracht hatte, gebunden an einen jungen, kampfstarken Drachen mit Schuppen wie poliertes Erz. Er gehörte zu jener Sorte, die die Akademie als Aufstieg begriff, nicht als Aufschub - als Tor zu Rang und Ehre, nicht als Wartesaal des Todes. Und er konnte es nicht ertragen, dass das blasse Mädchen mit dem aschigen Streifen im Haar an einen echten, uralten Drachen gebunden war, während er sich mit einem Jungtier begnügen musste, so kampfstark es auch sein mochte. Dass Kaelith ein Wrack war, machte es für Dorne nur schlimmer, nicht besser: Selbst ein Wrack von vierhundert Jahren wog schwerer als alles, was er besaß.
 
-"Sie haben dir den Friedhofswächter gegeben", sagte er im Übungshof, laut genug für alle. "Einen Drachen, der zu müde ist zum Sterben. Passt ja. Eine Sterbende und ihr sterbender Gaul."
+"Sie haben dir den Friedhofswächter gegeben", sagte er im Übungshof, laut genug, dass jeder es hörte. "Einen Drachen, der zu müde ist, um zu sterben. Passt ja zusammen. Eine Sterbende und ihr sterbender Gaul."
 
-Gelächter, dünn und nervös, von denen, die froh waren, dass es nicht sie traf.
+Gelächter, dünn und nervös, von denen, die vor allem froh waren, dass der Spott diesmal nicht sie traf.
 
-Lass ihn reden, sagte Kaelith. Worte verbrennen keine Tage.
+Lass ihn reden, sagte Kaelith, gleichmütig. Worte verbrennen keine Tage. Nur Stolz tut das, und Stolz ist ein teurer Brennstoff.
 
-Aber Dorne ließ es nicht bei Worten. "Duell", sagte er und lächelte. "Übungsflammen, keine echten. Mal sehen, was dein Greis noch kann." Er sah sich um, sammelte die Blicke ein wie Münzen. "Oder hat die Sterbende Angst?"
+Aber Dorne ließ es nicht bei Worten. "Ein Duell", sagte er, und lächelte, weil er das Ende schon zu kennen glaubte. "Übungsflammen, nichts Echtes. Mal sehen, was dein Greis noch hergibt." Er drehte sich im Kreis, sammelte die Blicke der anderen ein wie ein Spieler seine Münzen. "Oder hat die Sterbende Angst?"
 
-Sie sollte ablehnen. Sie wusste es in dem Moment, als ihr Mund sich öffnete. Drei Atemzüge - ist es das wert? Nein. Bin ich sicher? Nein. Gibt es einen anderen Weg? Ja, einfach weggehen.
+Sie sollte ablehnen. Sie wusste es in dem Augenblick, als sich ihr Mund schon öffnete. Drei Atemzüge, die Regel, die Renkar ihr noch gar nicht beigebracht hatte und die sie sich längst selbst zusammengereimt hatte: Ist es das wert? Nein. Bin ich sicher? Nein. Gibt es einen anderen Weg? Ja - einfach weggehen, den Kopf gesenkt, die Tage gespart.
 
 Sie ging nicht weg.
 
-Sie hasste, dass sie es nicht konnte; sie hasste Dornes Lächeln mehr. "Gut", sagte sie.
+Sie hasste, dass sie es nicht über sich brachte; sie hasste Dornes selbstgefälliges Lächeln noch mehr. "Gut", sagte sie.
 
-Es wurde kein Übungsduell. Solche Dinge werden es nie. Dorne entzündete Flamme um Flamme, sicher, verschwenderisch, denn er hatte Jahre zu verschwenden und wollte, dass sie es sah. Und Sayra, die keine hatte, musste klüger sein als er - schneller, sparsamer, gemeiner. Sie las seine Bewegungen mit ihrem gnadenlosen Gedächtnis, merkte sich jeden Ansatz, wich aus, ließ ihn ins Leere greifen. Doch Klugheit allein gewinnt nicht gegen Überfluss. Am Ende musste sie zahlen.
+Es wurde kein Übungsduell. Solche Dinge werden es nie, sobald Stolz im Spiel ist. Dorne entzündete Flamme um Flamme, sicher und verschwenderisch, weil er Jahre zu verschwenden hatte und wollte, dass sie es sah, dass alle es sahen - jede Flamme eine Münze, die er achtlos ins Feuer warf, nur um zu zeigen, wie voll seine Taschen waren. Und Sayra, deren Taschen fast leer waren, musste klüger sein als er: schneller, sparsamer, gemeiner. Sie las seine Bewegungen mit ihrem gnadenlosen Gedächtnis, prägte sich jeden Ansatz ein, wich aus, ließ ihn ins Leere greifen, ließ ihn seine kostbaren Jahre an nichts verbrennen. Doch Klugheit allein gewinnt nicht gegen Überfluss, nicht auf Dauer. Irgendwann musste sie zahlen.
 
-Sie gab alles in einen einzigen Funken - präzise, gerichtet, genau dorthin, wo Dorne sich für unbesiegbar hielt - und er taumelte zurück, versengt, fassungslos.
+Sie gab alles, was sie hatte, in einen einzigen Funken - präzise, gerichtet, genau dorthin, wo Dorne sich für unverwundbar hielt -, und er taumelte zurück, versengt, mit weit aufgerissenen Augen, fassungslos, dass die Sterbende ihn getroffen hatte.
 
 Sayra gewann.
 
 Dann fiel sie um.
 
-Es war, als zöge jemand den Boden unter ihr weg. Die Kälte kam, das Loch in der Mitte, und diesmal waren es nicht ein Tag, sondern mehrere - sie spürte sie gehen, eine kleine Münzenkaskade ins Dunkel. Die Welt kippte. Sie hörte Tamsin schreien, von weit weg.
+Es war, als zöge jemand mit einem Ruck den Boden unter ihr fort. Die Kälte kam, das vertraute Loch in der Mitte, und diesmal war es nicht ein einzelner Tag, sondern mehrere auf einmal - sie spürte sie gehen, eine kleine, bittere Kaskade von Münzen, die ins Dunkel fielen und nicht wiederkamen. Die Welt kippte zur Seite. Aus großer Ferne hörte sie Tamsin schreien.
 
-"GENUG." Renkars Stimme, ein Peitschenhieb, riss durch den Hof. "Das Duell ist beendet. Beide - Strafdienst." Er war neben Sayra, ohne dass sie ihn hatte kommen sehen, und seine Hände waren an ihren Schultern, hielten sie aufrecht, und für einen Moment, in dem sie kaum bei Bewusstsein war, ruhte sein Blick auf ihrer Schläfe - auf der grauen Strähne, die über Nacht breiter geworden war - und etwas in seinem Gesicht zog sich zusammen, als hätte er selbst den Schmerz.
+"GENUG." Renkars Stimme zerschnitt den Hof wie ein Peitschenhieb. "Das Duell ist beendet. Ihr beide - Strafdienst, ab morgen." Er war neben Sayra, ohne dass sie ihn hatte kommen sehen, und seine Hände lagen an ihren Schultern, hielten sie aufrecht, und für einen Moment, in dem sie kaum bei Bewusstsein war, ruhte sein Blick auf ihrer Schläfe - auf dem aschigen Streifen, der über Nacht breiter geworden war, der jetzt noch breiter wurde. Und etwas in seinem harten Gesicht zog sich zusammen, kurz, als hätte er den Preis am eigenen Leib gespürt, als ginge ein Teil ihrer verbrannten Tage durch ihn hindurch.
 
-Dann war es weg, und er war Eisen. "Bringt sie in den Schatten. Dorne - aus meinen Augen."
+Dann war es fort, und er war wieder Eisen. "Bringt sie in den Schatten. Dorne - aus meinen Augen, ehe ich dir zeige, was ein echtes Duell ist."
 
 In dieser Nacht kamen drei zusammen, die nichts gemein hatten außer dem Mangel an Zeit.
 
-Tamsin brachte Wasser. Brae - der breitschultrige Junge aus der ersten Reihe, der einmal "feige" gerufen hatte und seither still geworden war, seit er Lyss hatte altern sehen - brachte Brot, das er irgendwo organisiert hatte, und setzte sich wortlos dazu. Es war keine Freundschaft, am Anfang. Es war ein Zweckbündnis: Drei, die begriffen hatten, dass man allein in Korvath nicht überlebte.
+Tamsin brachte Wasser und hielt Sayra den Becher an die Lippen, weil deren Hände zu sehr zitterten. Brae - der breitschultrige Junge aus der ersten Reihe, der am ersten Tag "feige" gerufen hatte und seither still geworden war, still seit er Lyss vor aller Augen hatte altern sehen - brachte Brot, das er irgendwo aufgetrieben hatte, und setzte sich wortlos dazu, als gehöre er schon immer hierher. Es war keine Freundschaft, am Anfang. Es war ein Zweckbündnis, nüchtern und klar: drei junge Menschen, die begriffen hatten, dass man in Korvath allein nicht überlebte.
 
-Aber Zweckbündnisse, die nachts Brot teilen, werden zu etwas anderem. Das wussten alle drei, und keiner sagte es.
+Aber Zweckbündnisse, die nachts ihr Brot teilen, verwandeln sich in etwas anderes, ob man will oder nicht. Das wussten alle drei. Und keiner sprach es aus, weil das Aussprechen es zerbrechlich gemacht hätte.
 
-"Dorne wird das nicht auf sich sitzen lassen", sagte Brae. "Er kommt aus einer der Neun Festungsstädte. Reiche Familie. So einer verliert nicht gern gegen - " Er brach ab.
+"Dorne wird das nicht auf sich sitzen lassen", sagte Brae, kauend. "Er kommt aus einer der Neun Festungsstädte. Reiche Familie, alter Name. So einer verliert nicht gern - schon gar nicht gegen -" Er brach ab, verlegen.
 
-"Gegen eine Sterbende", vollendete Sayra trocken. "Sag es ruhig. Ich erschrecke nicht vor dem Wort."
+"Gegen eine Sterbende", vollendete Sayra trocken. "Sag es ruhig, Brae. Ich erschrecke nicht mehr vor dem Wort. Ich wohne darin."
 
-Brae hatte den Anstand, verlegen zu sein.
+Brae hatte den Anstand, rot zu werden.
 
-Später, als die anderen schliefen, regte sich Kaelith. Der Junge, Dorne, sagte er nachdenklich. Schau nicht auf ihn. Schau, wer ihn füttert.
+Später, als die anderen schon schliefen, regte sich Kaelith in ihrem Kopf. Der Junge. Dorne, sagte er nachdenklich, und in seiner Stimme lag etwas Wachsames. Schau nicht auf ihn. Schau, wer ihn füttert.
 
-"Was meinst du?"
+"Was meinst du damit?"
 
-Er hat heute angedeutet, er wisse Dinge über deine Herkunft. Woher? Ein verzogener Sohn aus den Festungsstädten weiß nichts über eine Archivars-Tochter aus dem Nichts. Jemand hat es ihm gesagt. Jemand benutzt ihn als Stein, den man wirft, um zu sehen, was sich bewegt. Eine Pause, alt und kalt. Der Feind, Sayra, steht selten in der ersten Reihe und lacht. Der Feind füttert den, der lacht.
+Er hat heute angedeutet, er wisse Dinge über deine Herkunft. Über deinen Vater, deinen Namen. Frag dich: woher? Ein verzogener Sohn aus den Festungsstädten weiß nichts von einer Archivarstochter aus dem Nichts, die man im Aschewagen herbrachte. Jemand hat es ihm erzählt. Jemand benutzt ihn als Stein, den man ins Wasser wirft, um zu sehen, was sich darunter bewegt. Eine Pause, alt und kalt wie der Stein der Festung. Der wahre Feind, Sayra, steht selten in der ersten Reihe und lacht. Der wahre Feind füttert den, der lacht, und bleibt im Schatten und beobachtet.
 
-Sayra lag wach und merkte sich diesen Satz, wie sie sich alles merkte, und begann zum ersten Mal zu begreifen, dass die Akademie kein Ort war, an dem man nur ums Überleben kämpfte.
+Sayra lag wach und prägte sich diesen Satz ein, wie sie sich alles einprägte, und zum ersten Mal begann sie zu begreifen, dass die Akademie kein Ort war, an dem man bloß ums nackte Überleben kämpfte, gegen Krankheit und Sturm und die eigene schwindende Zeit.
 
-Es war ein Ort, an dem jemand sie ganz gezielt sterben sehen wollte.
+Es war ein Ort, an dem jemand - mit ruhiger Hand, aus dem Schatten, ganz gezielt - sie sterben sehen wollte.
 
 ---
 
@@ -541,101 +541,101 @@ Es war ein Ort, an dem jemand sie ganz gezielt sterben sehen wollte.
 
 Renkar führte das Totenbuch, weil er der Einzige war, der sich weigerte, dabei zu lügen.
 
-Es war ein dicker, schwarzer Band, und er trug jeden gefallenen Schüler eigenhändig ein - Name, Alter, Tag des Todes, Ursache. Andere hätten "im Dienst gefallen" geschrieben und sich besser gefühlt. Renkar schrieb die Wahrheit: verbrannt aus Angst. Gestürzt im Sturm. Zu viel gegeben für zu wenig. Er schrieb sie, weil ein Mensch, der stirbt, wenigstens das verdient hatte - dass ein anderer den Mut aufbrachte, hinzusehen.
+Es war ein dicker, schwarzer Band, das Leder vom vielen Anfassen speckig geworden, und er trug jeden gefallenen Schüler eigenhändig ein - Name, Alter, Tag des Todes, Ursache. Andere hätten "im Dienst gefallen" geschrieben, vier saubere Worte, und sich danach besser gefühlt, hätten ruhiger geschlafen. Renkar schrieb die Wahrheit, weil die Wahrheit das Einzige war, das er den Toten noch geben konnte: verbrannt aus Angst. Gestürzt im Sturm. Zu viel gegeben für zu wenig. Er schrieb sie, weil ein Mensch, der starb, wenigstens das verdient hatte - dass ein einziger anderer den Mut aufbrachte, hinzusehen und es beim Namen zu nennen.
 
-Heute trug er den Jungen ein. Den Zwölfjährigen vom ersten Tag, der nach seinem Mantelsaum gegriffen hatte. Renkar hatte den Stoff aus den Fingern des Kindes gleiten lassen, vor allen, kalt, weil Sanftheit ansteckend ist und er es sich nicht leisten konnte, dass die anderen hofften. Er kannte den Namen trotzdem. Er kannte sie alle.
+Heute trug er den Jungen ein. Den Zwölfjährigen vom ersten Tag, der im Fallen nach seinem Mantelsaum gegriffen hatte, mit dieser kleinen, verzweifelten Geste - halt mich, bitte, irgendjemand. Renkar hatte den Stoff aus den Fingern des Kindes gleiten lassen, vor allen, mit kaltem Gesicht, weil Sanftheit ansteckend ist und er es sich nicht leisten konnte, dass die anderen zu hoffen begannen. Hoffnung tötete hier schneller als jede Krankheit. Er kannte den Namen des Jungen trotzdem. Er kannte sie alle. Das war seine Strafe und sein Stolz zugleich: dass er nie einen vergaß.
 
-Er schrieb ihn auf und saß dann lange still, die Feder in der Hand, und tat das Einzige, was ihm an Trauer erlaubt war: nichts.
+Er schrieb den Namen, sorgfältig, und saß dann lange still, die Feder reglos in der Hand, und tat das Einzige, was ihm an Trauer erlaubt war: nichts. Kein Wort, keine Träne, nur dieses reglose Sitzen im Lampenlicht, das niemand sah und das niemand zählte.
 
-"Stahl." Olvenne stand in der Tür. Sie klopfte nie. "Rapport. Das Mädchen. Vael."
+"Stahl." Olvenne stand in der Tür. Sie klopfte nie; Klopfen war eine Höflichkeit unter Gleichen, und sie kannte keine Gleichen. "Rapport. Das Mädchen. Vael."
 
-Renkar legte die Feder weg. "Was möchtet Ihr wissen, Hochmarschall?"
+Renkar legte die Feder weg, langsam. "Was möchtet Ihr wissen, Hochmarschall?"
 
-"Alles." Sie trat ein, ließ den Blick über das Totenbuch gleiten, ohne es zu lesen. "Eine unmögliche Bindung. Der alte Drache, der seit acht Jahren keinen mehr nahm, entzündet ausgerechnet ein sterbendes Mädchen aus dem Nichts. Das beunruhigt mich, Stahl. Unmögliche Dinge haben Gründe. Ich will den Grund."
+"Alles." Sie trat ein, ließ den Blick über das aufgeschlagene Totenbuch gleiten, ohne einen einzigen der Namen zu lesen - für sie waren es Posten, abgeschlossene Rechnungen. "Eine unmögliche Bindung. Ein Drache, der seit acht Jahren keinen Reiter mehr genommen hat, der sterben wollte, entzündet ausgerechnet ein sterbendes Mädchen aus dem Nichts, ohne Namen, ohne Rang. Das beunruhigt mich, Stahl. Unmögliche Dinge geschehen nicht ohne Grund. Ich will den Grund kennen, ehe er mich überrascht."
 
-Renkar berichtete. Er berichtete sorgfältig, vollständig, langweilig - und ließ aus.
+Renkar berichtete. Er berichtete sorgfältig, vollständig, mit dem gleichmäßigen Tonfall eines Offiziers, der Zahlen vorträgt - und er ließ aus.
 
-Er ließ aus, wie schnell sie lernte. Wie sie nach drei Tagen die Regel der drei Atemzüge schon verinnerlicht hatte, als hätte sie sie auf eigene Kosten erfahren. Wie sie im Duell gegen Dorne nicht mit Kraft gewonnen hatte, sondern mit Gedächtnis - sie hatte den Jungen gelesen wie ein offenes Buch und ihn an seiner eigenen Eitelkeit aufgespießt. Das war nicht das Können einer Anwärterin. Das war das Können von jemandem, der gefährlich werden würde.
+Er ließ aus, wie schnell sie lernte. Wie sie nach nur drei Tagen die Regel der drei Atemzüge bereits verinnerlicht hatte, als hätte sie den Preis am eigenen Leib erfahren, was unmöglich war, weil er ihn ihr noch gar nicht beigebracht hatte. Wie sie im Duell gegen Dorne nicht mit roher Kraft gewonnen hatte, sondern mit Gedächtnis und Berechnung - sie hatte den eitlen Jungen gelesen wie ein aufgeschlagenes Buch und ihn an seiner eigenen Selbstgefälligkeit aufgespießt, mit einem einzigen, präzisen Funken. Das war nicht das Können einer Anwärterin, die ums Überleben rang. Das war das Können von jemandem, der gefährlich werden würde - gefährlich für genau die Ordnung, die zu schützen Olvenne ihn bezahlte.
 
-Genau deshalb verschwieg er es. Und er fragte sich, während er es verschwieg, warum.
+Genau deshalb verschwieg er es. Und während er es verschwieg, fragte er sich, mit einer Unruhe, die er nicht benennen wollte, warum.
 
-"Sie ist unauffällig", log er. "Schwach. Der Drache hält sie am Leben, mehr nicht. Ich gebe ihr keine drei Monate."
+"Sie ist unauffällig", log er, ruhig, glatt. "Schwach. Der alte Drache hält sie am Leben, mehr nicht; er hängt an ihr wie ein Ertrinkender an einem Brett. Ich gebe ihr keine drei Monate."
 
-Olvenne sah ihn an. Sie hatte Augen, die Lügen rochen, und er hielt sie ruhig, weil er gelernt hatte, mit ruhigem Gesicht zu lügen, lange bevor er gelernt hatte, einen Drachen zu reiten.
+Olvenne sah ihn an. Sie hatte Augen, die Lügen rochen wie ein Hund die Furcht, und er hielt ihrem Blick stand, ruhig, weil er gelernt hatte, mit ruhigem Gesicht zu lügen, lange bevor er gelernt hatte, einen Drachen zu reiten. Es war die erste Kunst, die Korvath einem beibrachte, noch vor dem Fliegen: das Gesicht, das nichts verrät.
 
-Ein anderer Name stieg in ihm auf, ungebeten. Ein anderer Schüler, Jahre her. Einer, den er nicht hatte retten können - den er hatte zaubern lassen, weil er, der junge Renkar, noch geglaubt hatte, Mut sei besser als Furcht. Er sah das Gesicht noch, immer, wenn er die Augen schloss. Daher die Härte. Die Härte war kein Charakter. Die Härte war eine Narbe.
+Ein anderer Name stieg in ihm auf, ungebeten, wie immer ungebeten. Ein anderer Schüler, Jahre her. Einer, den er nicht hatte retten können - den er hatte zaubern lassen, ihn sogar dazu ermutigt hatte, weil er, der junge Renkar, damals noch geglaubt hatte, Mut sei besser als Furcht, Großzügigkeit besser als Geiz mit den eigenen Tagen. Er sah das Gesicht des Jungen noch immer, jedes Mal, wenn er die Augen schloss, sah ihn altern und fallen. Daher die Härte. Die Härte, für die ihn alle fürchteten, war kein Charakterzug. Sie war eine Narbe, die über einer Wunde gewachsen war, die nie verheilte.
 
-"Im Auge behalten", sagte Olvenne schließlich. "Das Mädchen. Eng. Ich will über jeden ihrer Schritte wissen, jede Frage, die sie stellt, jeden, mit dem sie spricht." Sie wandte sich zur Tür. "Und Stahl - wenn sie zu graben beginnt, wo sie nicht graben soll, dann ist das eine Belastung, die das Konkordat sich nicht leisten kann. Du verstehst, was ich meine."
+"Im Auge behalten", sagte Olvenne schließlich, und ging zur Tür. "Das Mädchen. Eng. Ich will über jeden ihrer Schritte unterrichtet sein, über jede Frage, die sie stellt, jeden Menschen, mit dem sie länger als nötig spricht." An der Schwelle blieb sie stehen, ohne sich umzudrehen. "Und Stahl - wenn sie zu graben beginnt, wo nicht gegraben werden soll, dann ist sie eine Belastung, die das Konkordat sich nicht leisten kann. Du verstehst, was ich meine."
 
-Renkar verstand. Er verstand es sehr genau.
+Renkar verstand. Er verstand es bis ins Mark.
 
-"Im Auge behalten" war, in Olvennes Mund, selten ein Befehl zum Beobachten. Es war ein Befehl, bereit zu sein. Bereit für den sauberen Schnitt, der nach einem Sturm aussah. Er hatte solche Befehle schon ausgeführt, früher, als er noch glaubte, Gehorsam sei dasselbe wie Pflicht.
+"Im Auge behalten" war, in Olvennes Mund, selten ein Befehl zum bloßen Beobachten. Es war ein Befehl, bereit zu sein. Bereit für den sauberen Schnitt, hoch über dem Aschemeer, der hinterher wie ein Sturmunglück aussah. Er hatte solche Befehle früher ausgeführt, in den Jahren, als er noch geglaubt hatte, Gehorsam und Pflicht seien dasselbe - bevor er gelernt hatte, dass man dem einen folgen und die andere dabei verraten konnte.
 
-Er kehrte zum Totenbuch zurück, als sie fort war. Schlug das Risikoregister auf - die Liste derer, die "im Auge zu behalten" waren. Setzte die Feder an, um Vael, Sayra einzutragen.
+Er kehrte zum Totenbuch zurück, als sie fort war, und schlug den hinteren Teil auf, das Risikoregister - die Liste derer, die "im Auge zu behalten" waren, was in der Sprache dieser Festung eine Vorstufe des Sterbens bedeutete. Er setzte die Feder an, um einzutragen: Vael, Sayra.
 
 Und hielt inne.
 
-Die Feder schwebte über dem Papier, einen Atemzug, zwei, drei. Er dachte an die graue Strähne an ihrer Schläfe, die breiter geworden war, weil sie einen dummen, trotzigen Sieg über einen dummen, eitlen Jungen mit ihren eigenen Tagen bezahlt hatte. Er dachte daran, wie sie an der Klippe gestanden und ihn gefragt hatte, wie viel ihm noch bliebe - die erste Person seit Jahren, die das nicht aus Mitleid gefragt hatte, sondern weil es sie tatsächlich kümmerte.
+Die Feder schwebte über dem Papier, einen Atemzug lang, zwei, drei. Er dachte an den aschigen Streifen an ihrer Schläfe, der breiter geworden war, weil sie einen dummen, trotzigen Sieg über einen dummen, eitlen Jungen mit ihren eigenen Tagen bezahlt hatte. Er dachte daran, wie sie an der Klippe gestanden und ihn gefragt hatte, wie viel ihm selbst noch bliebe - die erste Person seit Jahren, die das nicht aus Mitleid gefragt hatte, nicht aus Berechnung, sondern weil es sie auf eine schlichte, unbequeme Weise tatsächlich kümmerte.
 
-Er hob die Feder, ohne den Namen zu schreiben.
+Er hob die Feder wieder, ohne den Namen geschrieben zu haben.
 
-Dann schloss er das Register, ungeschrieben, und saß im Lampenlicht mit dem Gefühl eines Mannes, der gerade, fast versehentlich, eine Grenze überschritten hatte, von der er wusste, dass es keinen Weg zurück gab.
+Dann schloss er das Register, ungeschrieben, und blieb im Lampenlicht sitzen mit dem Gefühl eines Mannes, der gerade, fast versehentlich, eine Grenze überschritten hatte - eine von der Sorte, von der man weiß, dass es keinen Weg zurück über sie gibt.
 
 Er hatte einen Befehl missachtet. Den ersten seit acht Jahren.
 
-Und das Schlimmste war: Es fühlte sich nicht wie ein Fehler an.
+Und das Schlimmste, das Beunruhigendste daran war: Es fühlte sich nicht wie ein Fehler an. Es fühlte sich an wie das Erste seit langer Zeit, das er richtig gemacht hatte.
 
 ---
 
 ## Kapitel 9 - Die Sprache der toten Drachen
 
-"Du liest falsch", sagte Kaelith. "Du stürzt dich in die Erinnerung wie in kaltes Wasser. Man liest nicht, indem man ertrinkt."
+"Du liest falsch", sagte Kaelith. "Du stürzt dich in die Erinnerung wie in kaltes Wasser, mit dem Kopf voran. Man liest nicht, indem man ertrinkt."
 
-Es war das erste Mal, dass er ihr etwas beibringen wollte, statt sie nur abzuweisen, und Sayra wusste genug, um nicht zu fragen, warum er es sich anders überlegt hatte. Vielleicht, weil die leeren Brutgründe etwas in ihm aufgebrochen hatten. Vielleicht, weil er gesehen hatte, dass sie ohnehin nicht aufhören würde, und es vorzog, dass sie es überlebte.
+Es war das erste Mal, dass er ihr etwas beibringen wollte, statt sie nur abzuweisen, und Sayra war klug genug, nicht zu fragen, warum er es sich anders überlegt hatte. Vielleicht hatten die leeren Brutgründe etwas in ihm aufgebrochen, eine Trauer, die er vierhundert Jahre lang verschlossen gehalten hatte. Vielleicht hatte er auch nur begriffen, dass sie ohnehin nicht aufhören würde, in seinen Erinnerungen zu graben, und es vorzog, ihr beizubringen, wie sie es überlebte.
 
 "Wie dann?"
 
-Ein Archiv hat Ordnung. Du gehst nicht in alle Bücher gleichzeitig. Du suchst das eine Regal, ziehst den einen Band. Meine Erinnerungen sind so. Vierhundert Jahre. Acht Reiter. Tausend Tode, die nicht meine waren und doch durch mich gingen. Wenn du hineingreifst, ohne zu wissen, wonach, verbrennst du dich an allem auf einmal. Such das Regal, Mädchen. Denk an ein Gesicht, und nur an dieses Gesicht.
+Ein Archiv hat Ordnung. Du gehst nicht in alle Bücher zugleich; du würdest unter dem Gewicht zusammenbrechen. Du suchst das eine Regal, ziehst den einen Band. Meine Erinnerungen sind so. Vierhundert Jahre. Acht Reiter, die ich getragen und begraben habe. Tausend Tode, die nicht meine waren und doch durch mich hindurchgingen, jeder einzelne. Greifst du blind hinein, ohne zu wissen, wonach du suchst, verbrennst du dich an allem auf einmal. Such das Regal, Mädchen. Denk an ein einziges Gesicht, und an nichts sonst.
 
 Sayra dachte an ihren Vater.
 
-Und diesmal kam die Erinnerung nicht als Flut, sondern als ein einzelnes, klares Bild, das sich vor ihr aufschlug wie eine Seite: Joran Vael, jünger, ohne das Grau, das sie an ihm gekannt hatte. Er stand in einem Raum voller Karten, und er sprach mit einem Mann - nicht mit Olvenne diesmal, sondern mit einem hochgewachsenen Reiter mit einem Gesicht voller Lachfalten und einem ruhigen, traurigen Blick.
+Und diesmal kam die Erinnerung nicht als Flut, die sie überrollte, sondern als ein einzelnes, klares Bild, das sich vor ihr aufschlug wie eine sorgsam aufgeschlagene Seite: Joran Vael, jünger, ohne das Grau, das sie an ihm gekannt hatte, ohne die müden Linien um die Augen. Er stand in einem Raum voller Karten, eine Lampe warf warmes Licht, und er sprach mit einem Mann - nicht mit Olvenne diesmal, sondern mit einem hochgewachsenen Reiter, dessen Gesicht voller Lachfalten war und dessen Blick trotzdem ruhig und traurig blieb, als trüge er ein Wissen, das jedes Lachen überdauerte.
 
-Das ist er, sagte Kaelith, und seine Stimme war auf einmal anders, brüchig. Das ist Veyan. Mein Reiter. Der siebte. Der beste von allen.
+Das ist er, sagte Kaelith, und seine Stimme war auf einmal anders, brüchig, fast jung vor Schmerz. Das ist Veyan. Mein Reiter. Der siebte. Der beste von allen, die ich je getragen habe.
 
-Sayra hielt den Atem an, um die Erinnerung nicht zu verscheuchen. Ihr Vater und Kaeliths früherer Reiter - sie kannten einander. Sie waren Vertraute. Joran Vael, der Archivar, der offiziell nie in Korvath gewesen war, hatte hier einen Freund gehabt, der einen Drachen ritt.
+Sayra hielt den Atem an, um die Erinnerung nicht zu verscheuchen, wie man eine Flamme vor dem Wind schützt. Ihr Vater und Kaeliths früherer Reiter - sie kannten einander. Sie waren keine Fremden, die sich zufällig in einem Gang begegneten; sie standen vertraut beieinander, in einem privaten Raum, bei Lampenlicht. Joran Vael, der Archivar, der offiziell nie einen Fuß nach Korvath gesetzt hatte, hatte hier einen Freund besessen, der einen Drachen ritt.
 
-Sie wollte näher, tiefer, hören, was sie sagten. Sie griff nach der Erinnerung -
+Sie wollte näher heran, tiefer, hören, was die beiden sprachen. Sie griff nach der Erinnerung -
 
 und der Preis kam.
 
-Es war kein Tag diesmal, kein einzelner Nagel. Das tiefe Lesen kostete anders, schlimmer: Es weckte die Aschelunge. Sie hustete, und der graue Staub kam zurück, der Staub, den die Bindung verbannt hatte, und mit ihm die alte, vertraute Enge in der Brust. Kaelith riss sie aus der Erinnerung, hart.
+Es war kein einzelner Tag diesmal, kein grau anlaufender Nagel. Das tiefe Lesen kostete anders, schlimmer: Es weckte die Aschelunge. Sayra hustete, und der graue Staub kam zurück in ihre Handfläche, der Staub, den die Bindung verbannt hatte, und mit ihm die alte, vertraute Enge in der Brust, das Gefühl, durch ein zu enges Rohr zu atmen. Kaelith riss sie aus der Erinnerung, hart, ohne Vorwarnung.
 
-GENUG. Du holst dir den Tod zurück, gegen den ich dich getauscht habe.
+GENUG. Du holst dir den Tod zurück, gegen den ich dich getauscht habe. Soll ich zusehen, wie du dich an einem Bild zugrunde richtest?
 
-"Was haben sie gesagt." Sayra wischte sich Asche von den Lippen. "Mein Vater und Veyan. Du weißt es. Du warst dabei."
+"Was haben sie gesagt." Sayra wischte sich Asche von den Lippen, die Hand noch zitternd. "Mein Vater und Veyan, in diesem Raum. Du weißt es. Du warst dabei, durch Veyan, du hast jedes Wort gehört."
 
-Schweigen. Dann, widerwillig: Nicht heute. Du blutest schon. Morgen, wenn du dich erholt hast. Versprochen - und das ist mehr, als ich je einem Reiter versprochen habe.
+Schweigen. Dann, widerwillig, wie Wasser durch einen Spalt, den es nicht öffnen will: Nicht heute. Du blutest schon, ich höre es in deinem Atem. Morgen, wenn du dich erholt hast, zeige ich dir mehr. Versprochen. Eine Pause. Und das ist mehr, als ich je einem Reiter versprochen habe, also missbrauch es nicht.
 
-Sie ließ es gut sein. Sie lernte, mit ihm zu verhandeln, wie man mit einem alten, misstrauischen Tier verhandelt: nie alles auf einmal, immer einen Schritt.
+Sie ließ es gut sein. Sie lernte, mit ihm zu verhandeln, wie man mit einem alten, misstrauischen Tier verhandelt, das zu oft verraten worden war: nie alles auf einmal verlangen, immer nur einen Schritt, immer Geduld vortäuschen, die man nicht hatte.
 
-Tamsin half ihr, das Gesehene aufzuschreiben. Sie taten es nachts, in einem ausgehöhlten Buchrücken, den Brae aus dem Verwaltungstrakt hatte mitgehen lassen - ein verstecktes Gegenarchiv, Seite um Seite, Name um Name. Sayras Gedächtnis lieferte, Tamsins Hand schrieb, denn Sayras Hände zitterten zu oft jetzt.
+Tamsin half ihr, das Gesehene aufzuschreiben. Sie taten es nachts, bei einer abgeschirmten Kerze, in einem ausgehöhlten Buchrücken, den Brae aus dem Verwaltungstrakt hatte mitgehen lassen - ein verstecktes Gegenarchiv, Seite um Seite, Name um Name, Erinnerung um Erinnerung. Sayras Gedächtnis lieferte, unermüdlich, vollständig; Tamsins Hand schrieb, denn Sayras eigene Hände zitterten zu oft jetzt, um eine saubere Zeile zu führen.
 
-"Warum tust du dir das an?", fragte Tamsin leise, während sie schrieb. "Jedes Mal kostet es dich. Dein Vater ist tot, Sayra. Ihn zu finden bringt ihn nicht zurück."
+"Warum tust du dir das an?", fragte Tamsin leise, während ihre Feder kratzte. "Jedes einzelne Mal kostet es dich Tage. Dein Vater ist tot, Sayra. Ihn zu finden bringt ihn nicht zurück."
 
-"Es geht nicht darum, ihn zurückzubringen." Sayra sah auf das wachsende Gegenarchiv. "Es geht darum, dass jemand ihn ausgelöscht hat. Aus den Büchern. Aus der Geschichte. Als hätte er nie geatmet. Und solange ich lebe - und das ist nicht mehr lange - werde ich nicht zulassen, dass das gelingt." Sie sah Tamsin an. "Wenn sie mich auch auslöschen, dann sollen sie sich wenigstens anstrengen müssen."
+"Es geht nicht darum, ihn zurückzubringen." Sayra sah auf das wachsende Gegenarchiv, auf die Namen, die sonst niemand mehr kannte. "Es geht darum, dass jemand ihn ausgelöscht hat. Aus den Büchern. Aus den Listen. Aus der Geschichte, als hätte er nie geatmet, nie ein Wort geschrieben, nie eine Tochter gehabt. Und solange ich lebe - und das ist nicht mehr lange, das weiß ich besser als irgendwer - werde ich nicht zulassen, dass ihnen das gelingt." Sie sah Tamsin an, und in ihrem Blick lag etwas Hartes, Endgültiges. "Wenn sie mich auch auslöschen wollen, dann sollen sie sich wenigstens anstrengen müssen. Dann soll es ihnen schwerfallen."
 
-Tamsin schrieb weiter, und ihre Augen glänzten, und sie sagte nichts mehr.
+Tamsin schrieb weiter, und ihre Augen glänzten feucht im Kerzenlicht, und sie sagte nichts mehr, weil es nichts zu sagen gab.
 
-In der letzten Erinnerung dieser Nacht - einer kurzen, die Kaelith ihr gestattete, weil sie kaum etwas kostete - sah Sayra ihren Vater ein letztes Mal. Er hielt ein Dokument in den Händen, versiegelt mit rotem Wachs, und sein Gesicht war grau vor etwas, das nicht Krankheit war, sondern Angst. Er sagte etwas zu Veyan, und obwohl die Erinnerung keinen Ton hatte, konnte Sayra die Worte von seinen Lippen lesen, denn sie hatte ihn ihr Leben lang sprechen sehen:
+In der letzten Erinnerung dieser Nacht - einer kurzen, die Kaelith ihr gestattete, weil sie kaum etwas kostete, ein Almosen - sah Sayra ihren Vater ein letztes Mal. Er hielt ein Dokument in den Händen, versiegelt mit rotem Wachs, und sein Gesicht war grau, nicht von Krankheit, sondern von Angst, der nackten Angst eines Mannes, der weiß, dass er zu viel gefunden hat. Er sagte etwas zu Veyan, und obwohl die Erinnerung keinen Ton trug, konnte Sayra die Worte von seinen Lippen lesen - sie hatte diesen Mund ihr ganzes Leben lang sprechen sehen, kannte jede Bewegung:
 
 Sie zählen die Toten falsch.
 
-"Was bedeutet das, Kaelith?", flüsterte sie. "Welche Toten? Falsch wie?"
+"Was bedeutet das, Kaelith?" Sie flüsterte es in die Dunkelheit. "Welche Toten? Falsch - wie falsch?"
 
-Aber Kaelith antwortete nicht, und in seinem Schweigen lag etwas, das Sayra inzwischen zu erkennen gelernt hatte: nicht Sturheit, sondern Furcht. Der uralte Drache, der hatte sterben wollen, fürchtete sich vor dieser einen Wahrheit mehr als vor dem Tod.
+Aber Kaelith antwortete nicht, und in seinem Schweigen lag etwas, das Sayra inzwischen zu deuten gelernt hatte: nicht Sturheit, nicht Müdigkeit, sondern Furcht. Der uralte Drache, der hatte sterben wollen, der dem Tod ins Auge gesehen und ihn herbeigesehnt hatte, fürchtete sich vor dieser einen Wahrheit mehr als vor dem Sterben selbst.
 
-Und das Dokument, sah Sayra in der verblassenden Erinnerung, das Dokument mit dem roten Siegel - ihr Vater versteckte es. Er kniete und hob einen Stein und legte es darunter, in einem Raum, den sie kannte, den jeder in Korvath kannte und mied.
+Und das Dokument, sah Sayra in der verblassenden Erinnerung, das Dokument mit dem roten Siegel - ihr Vater versteckte es. Er kniete in dem Raum nieder, hob einen losen Stein aus dem Boden und legte es darunter, sorgfältig, endgültig, an einem Ort, den jeder in Korvath kannte und den alle mieden.
 
 Es lag unter den Gemächern der Hochmarschall. Unter Olvennes eigenem Boden.
 
@@ -645,51 +645,51 @@ Es lag unter den Gemächern der Hochmarschall. Unter Olvennes eigenem Boden.
 
 Nichts hatte Sayra auf den Flug vorbereitet.
 
-Sie hatten es geübt am Boden, das Aufsitzen, das Halten, die Befehle, die kein Mensch laut aussprach, weil sie durch das Band gingen. Aber Übung am Boden ist zum Fliegen, was das Lesen über das Meer zum Ertrinken darin ist. Als Kaelith die zerschundenen Flügel öffnete - die eine zerfetzte Spitze, die er nie ganz strecken konnte - und sich von der Klippe in die Leere fallen ließ, schrie Sayra. Nicht vor Angst.
+Sie hatten es am Boden geübt, tagelang: das Aufsitzen, das Halten, die Verlagerung des Gewichts, die Befehle, die kein Mensch laut aussprach, weil sie durch das Glutband gingen, von Gedanke zu Gedanke. Aber Übung am Boden verhält sich zum Fliegen wie das Lesen über das Meer zum Ertrinken darin - eine blasse Ahnung von etwas, das einen verschlingt, sobald es real wird. Als Kaelith die zerschundenen Flügel öffnete, die zerfetzte Spitze, die er nie ganz strecken konnte, und sich ohne Vorwarnung von der Klippe in die Leere fallen ließ, schrie Sayra.
 
-Vor etwas, für das sie kein Wort hatte.
+Nicht vor Angst. Vor etwas, für das sie kein Wort besaß.
 
-Das Aschemeer breitete sich unter ihnen aus, grau und endlos, und der Wind riss an ihr, und ihr geteiltes Herz - ihres und Kaeliths - schlug zum ersten Mal im selben, wilden Takt, ohne Mühe, ohne Schmerz. Für einen Moment war sie nicht mehr eine Sterbende mit gezählten Tagen. Sie war alt und mächtig und frei, sie war vierhundert Jahre und neunzehn zugleich, sie war ein Drache, der sich erinnerte, wie sich Fliegen angefühlt hatte, als der Himmel noch voller seinesgleichen gewesen war.
+Das Aschemeer breitete sich unter ihnen aus, grau und endlos, eine erstarrte Wüste, über die kein Vogel zog. Der Wind riss an ihrem Haar, an ihrem Mantel, an ihren Tränen, die sofort verwehten. Und ihr Puls und Kaeliths Puls - sonst ein mühsam geteilter Takt, der bei jedem Zauber schmerzte - fanden hier oben zum ersten Mal mühelos zueinander, schlugen in einem einzigen, wilden Rhythmus, ohne Anstrengung, ohne Preis. Für die Länge dieses Fluges war Sayra keine Sterbende mit gezählten Tagen mehr. Sie war alt und mächtig und frei, sie war vierhundert Jahre und neunzehn zugleich, sie war ein Drache, der sich erinnerte, wie der Himmel sich angefühlt hatte, als er noch voller seinesgleichen gewesen war, ein Donner aus Flügeln von Horizont zu Horizont.
 
-Du fühlst es, sagte Kaelith, und seine Stimme war rau. Das ist es, was sie uns genommen haben. Nicht nur das Leben. Das hier.
+Du fühlst es, sagte Kaelith, und seine uralte Stimme war rau, fast jung. Das ist es, was sie uns genommen haben. Nicht nur das Leben, Mädchen. Das hier. Den Himmel.
 
 Es dauerte nicht.
 
-Der Aschesturm kam ohne Vorwarnung vom Horizont, eine graue Wand, und schlug über die Formation der Schüler wie eine Hand über Spielsteine. Sicht auf null. Brüllen. Der Wind drehte sich zu Klauen. Sayra hörte Schreie durch den Sturm, sah Drachen taumeln, sah - dicht neben sich - eine Anwärterin von ihrem jungen Drachen gerissen werden, fallend, ein dünner Körper im grauen Chaos.
+Der Aschesturm kam ohne Vorwarnung vom Horizont, eine graue Wand, höher als die Klippen, schneller als ein fliehender Gedanke, und schlug über die Formation der Schüler wie eine Hand über aufgestellte Spielsteine. Die Sicht fiel auf nichts. Brüllen, von überall. Der Wind, eben noch ein Spiel, drehte sich zu Klauen, die zerrten und schlugen. Sayra hörte Schreie durch das Tosen, sah Drachen taumeln wie welkes Laub - und sah, dicht neben sich, eine Anwärterin von ihrem jungen Drachen gerissen werden, ein dünner Körper, der ins graue Chaos kippte, mit Armen, die nach nichts griffen.
 
-Drei Atemzüge, hämmerte es in ihr. Ist es das wert? - Ein Leben. Bin ich sicher? - Nein. Gibt es einen anderen Weg? -
+Drei Atemzüge, hämmerte die gelernte Regel in ihr. Ist es das wert? Ein Leben. Bin ich sicher? Nein. Gibt es einen anderen Weg?
 
-Keine Zeit.
+Keine Zeit für den dritten Atemzug.
 
-Sie gab Lebenszeit, um den Wind zu fassen, um Kaelith hinabzuwerfen, um die fallende Gestalt zu erreichen. Sie spürte die Tage gehen, mehrere, eine ganze Handvoll, während sie die Anwärterin am Handgelenk packte und festhielt, festhielt, mit einer Kraft, die sie nicht hatte und trotzdem nahm. Aber der Sturm war stärker als ihre gestohlenen Tage. Sie selbst geriet ins Trudeln, Kaeliths zerfetzte Flügelspitze fand keinen Halt, sie kippten, sie fielen -
+Sayra gab Lebenszeit - riss sie sich aus der eigenen Brust, ohne zu rechnen -, um den Wind zu fassen, um Kaelith hinabzuwerfen in den Mahlstrom, um die fallende Gestalt zu erreichen. Sie spürte die Tage gehen, mehrere auf einmal, eine ganze bittere Handvoll, während sie das Handgelenk der Anwärterin packte und festhielt, festhielt, mit einer Kraft, die sie nicht besaß und sich trotzdem aus der Zukunft borgte. Aber der Sturm war stärker als ihre gestohlenen Tage. Sie selbst geriet ins Trudeln; Kaeliths zerfetzte Flügelspitze fand keinen Halt in den drehenden Böen; sie kippten, verloren den Himmel, fielen -
 
 und etwas fing sie.
 
-Ein anderer Drache, größer, gesund, schoss aus dem Grau und legte sich unter sie, und auf seinem Rücken war Renkar, das Gesicht eine Maske aus Konzentration, und für einen einzigen, unmöglichen Atemzug - als ihre beiden Drachen sich berührten, Flanke an Flanke im Sturm - floss etwas zwischen ihnen über. Ein Herzschlag. Nicht ihrer, nicht seiner. Ein geteilter, hindurch durch beide Bindungen, ein Moment, in dem Sayra für die Dauer eines Lidschlags fühlte, was Renkar fühlte - und es war so viel, so dicht unter dem Eis, dass sie erschrak.
+Ein anderer Drache, größer, gesund, mit ganzen Flügeln, schoss aus dem Grau und legte sich unter sie wie eine ausgebreitete Hand. Auf seinem Rücken saß Renkar, das Gesicht eine Maske aus reiner Konzentration, der Wind in seinem Haar. Und für einen einzigen, unmöglichen Atemzug - als ihre beiden Drachen sich berührten, Flanke an Flanke, Schuppe an Schuppe im tobenden Grau - floss etwas zwischen ihnen über. Ein Herzschlag, der weder ihr noch sein war: ein gemeinsamer, der durch beide Bindungen zugleich ging, ein Moment, in dem Sayra für die Dauer eines Lidschlags fühlte, was Renkar fühlte. Und es war so viel - so viel Sehnsucht, so viel Angst um sie, so viel mühsam unter Eis gehaltene Wärme -, dass sie erschrak bis ins Mark.
 
-Er erschrak auch. Sie sah es. Seine Augen weiteten sich, und er riss seinen Drachen weg, brach die Berührung, als hätte er sich verbrannt.
+Er erschrak auch. Sie sah es, mit dem Gedächtnis, das nichts ausließ: wie seine Augen sich weiteten, wie er begriff, dass sie es gefühlt hatte. Dann riss er seinen Drachen weg, brach die Berührung, als hätte er die Hand in eine Flamme gelegt.
 
-Sie brachten alle, die sie konnten, zurück an die Klippe. Nicht alle.
+Sie brachten zurück an die Klippe, wen sie konnten. Nicht alle.
 
-Am Boden, kaum dass sie abgesessen war, war Renkar bei ihr, und sie dachte für einen wahnsinnigen Moment, er würde - sie wusste nicht, was. Stattdessen fuhr er sie an, eiskalt, vor allen: "Was hast du dir dabei gedacht? Du hattest keine Tage übrig, die du verschenken konntest, und du hast sie verschenkt für eine Rettung, die fast euch beide gekostet hätte! Das ist keine Tapferkeit, das ist Dummheit, hörst du - "
+Am Boden, kaum dass Sayra abgesessen war, die Knie weich vom verbrannten Leben, war Renkar bei ihr, und für einen wahnsinnigen Augenblick dachte sie, er würde - sie wusste selbst nicht, was. Stattdessen fuhr er sie an, eiskalt, laut, vor allen Versammelten: "Was hast du dir dabei gedacht? Du hattest keine Tage übrig, keinen einzigen, den du verschenken konntest - und du hast eine Handvoll davon weggeworfen für eine Rettung, die fast euch beide mit hinabgezogen hätte. Das ist keine Tapferkeit. Das ist Dummheit. Hörst du mich?"
 
-Aber seine Hände zitterten. Sayra sah es, mit ihrem Gedächtnis, das nichts übersah. Während sein Mund sie zerriss, zitterten seine Hände, und es war nicht der Sturm, der sie zittern ließ.
+Aber seine Hände zitterten. Sayra sah es, weil sie alles sah. Während sein Mund sie vor allen zerriss, zitterten seine Hände an seinen Seiten, und es war nicht der Sturm, der in ihnen nachbebte. Es war das, was sie für einen Lidschlag durch zwei Bindungen gefühlt hatte.
 
-"Du hast mich gefangen", sagte sie leise. "Du bist mir nachgeflogen, in das."
+"Du hast mich gefangen", sagte sie leise, nur für ihn. "Du bist mir nachgeflogen. In das da."
 
-"Ich fange alle." Er wandte sich ab. "Das ist meine Arbeit."
+"Ich fange alle." Er wandte sich ab, zu schnell. "Das ist meine Arbeit."
 
 "Renkar."
 
-Er blieb nicht stehen.
+Er blieb nicht stehen. Aber er ging auch nicht ganz so fest, wie er wollte.
 
-Erst Stunden später, als man die Vermissten zählte, fand sich im Sand unterhalb der Klippe eine einzelne Drachenmarke - das lederne Abzeichen, das jeder Reiter trug, das Zeichen seiner Bindung. Sie gehörte einem Schüler, der nicht zurückgekehrt war. Man würde sagen, der Sturm habe ihn geholt.
+Erst Stunden später, als man die Vermissten zählte und die Namen in das schwarze Totenbuch eintrug, fand sich im Sand unterhalb der Klippe eine einzelne Drachenmarke - das lederne Abzeichen, das jeder Reiter am Gurt trug, das Zeichen seiner Bindung. Sie gehörte einem Schüler, der nicht zurückgekehrt war. Man würde sagen, der Sturm habe ihn geholt, wie der Sturm so vieles holte.
 
-Aber Sayra hob die Marke auf und sah sie an, und ihr Gedächtnis, das alles verglich, sah es sofort.
+Aber Sayra hob die Marke aus dem grauen Sand und sah sie an, und ihr Gedächtnis, das jede Faser mit jeder anderen verglich, erkannte es im selben Atemzug.
 
-Der Riemen war nicht zerrissen. Kein Sturm hatte ihn zerfetzt.
+Der Riemen war nicht zerrissen. Kein Sturm hatte ihn zerfasert, kein Sturz ihn gedehnt.
 
-Er war durchgeschnitten. Sauber. Mit einem einzigen, geübten Schnitt.
+Er war durchtrennt. Sauber. Mit einem einzigen, geübten Schnitt.
 
 ---
 
@@ -697,57 +697,57 @@ Er war durchgeschnitten. Sauber. Mit einem einzigen, geübten Schnitt.
 
 Sie sagten, der Sturm habe ihn geholt. Sein Name war Edran, und der Sturm hatte ihn nicht geholt.
 
-Sayra wusste es, weil sie die Marke hatte, und die Marke log nicht. Sie zeigte sie niemandem außer Brae und Kaelith. Brae drehte das Lederstück in den Fingern, und sein breites, ehrliches Gesicht wurde grau.
+Sayra wusste es, weil sie die Marke besaß, und die Marke log nicht - Leder lügt nicht, ein Schnitt ist ein Schnitt. Sie zeigte sie niemandem außer Brae und Kaelith. Brae drehte das lederne Abzeichen zwischen seinen breiten Fingern, immer wieder, als könne er den durchtrennten Riemen durch bloßes Anstarren rückgängig machen, und sein ehrliches Gesicht wurde grau.
 
-"Das ist ein Schnitt", sagte er leise. "Mit einer Klinge. Kein Riss." Er sah auf. "Sayra, wenn das stimmt - dann hat jemand ihn da oben getötet. Im Sturm. Wo niemand etwas sieht."
+"Das ist ein Schnitt", sagte er leise, fast tonlos. "Mit einer Klinge gemacht, nicht von der Hand eines Sturms. Sieh die Kante - glatt, gerade." Er sah auf, und in seinen Augen stand etwas Neues, etwas, das vorher nicht da gewesen war: Furcht. "Sayra. Wenn das stimmt, dann hat jemand ihn da oben getötet. Mitten im Sturm. Genau dort, wo niemand etwas sieht und alle hinterher 'Unglück' sagen."
 
-"Wer war Edran?", fragte Sayra. "Was hat ihn gefährlich gemacht?"
+"Wer war Edran?", fragte Sayra. "Was hat ihn gefährlich gemacht, dass es sich lohnte, ihn so zu töten?"
 
-Brae musste nicht lange nachdenken. "Er hat Fragen gestellt. Über die Brutgründe. Warum nur ein Ei. Warum so viele leere Nester. Er hat es laut gefragt, im Speisesaal, vor allen. Ein Aufseher hat ihm gesagt, er solle das Maul halten." Brae schluckte. "Drei Tage später war er tot."
+Brae musste nicht lange nachdenken. "Er hat Fragen gestellt. Über die Brutgründe. Warum nur ein einziges Ei in einer ganzen Generation. Warum so viele leere Nester, wo früher Hunderte waren. Und er hat es nicht geflüstert - er hat es laut gefragt, im Speisesaal, vor allen, beim Essen. Ein Aufseher hat ihm gesagt, er solle das Maul halten, wenn ihm sein Leben lieb sei." Brae schluckte schwer. "Drei Tage später war er ein Sturmunglück."
 
-Kaelith bestätigte, was sie fürchteten. Sayra brachte ihm die Marke in den Brutgründen, hielt sie hoch, und der alte Drache betrachtete sie mit einem Auge, das vierhundert Jahre Klingen gesehen hatte.
+Kaelith bestätigte, was sie fürchteten. Sayra brachte ihm die Marke hinunter in die Brutgründe, hielt sie hoch in das fahle Glutlicht, und der alte Drache betrachtete sie mit einem goldenen Auge, das in vierhundert Jahren mehr Klingen gesehen hatte, als ein Mensch sich vorstellen konnte.
 
-Ein Reiter hat das getan, sagte er. Kein Sturm trennt so. Das ist die Hand von jemandem, der gelernt hat, eine Bindung im Flug zu kappen - sauber, schnell, sodass der Reiter fällt und der Drache, von seinem Menschen gerissen, vor Schmerz wahnsinnig wird und abstürzt. Eine Pause. Es ist eine alte Technik. Man lehrt sie nicht mehr offen. Aber es gibt noch Leute, die sie können.
+Ein Reiter hat das getan, sagte er, und seine Stimme war hart. Kein Sturm trennt einen Riemen so. Das ist die Hand eines Menschen, der gelernt hat, eine Bindung im Flug zu kappen - schnell, sauber, mit einem einzigen Schnitt, sodass der Reiter fällt und der Drache, jäh von seinem Menschen gerissen, vor Schmerz den Verstand verliert und mit abstürzt. Zwei Tote, ein Schnitt, und der Sturm bekommt die Schuld. Eine Pause, kalt und alt. Es ist eine verbotene Technik. Man lehrt sie nicht mehr offen, seit Generationen. Aber es gibt noch wenige, die sie beherrschen. Sehr wenige.
 
 "Wer?"
 
-Frag nicht mich. Frag, wer in jener Nacht über euch flog und gut genug ist, um es zu tun.
+Frag nicht mich, ich war nicht oben in diesem Sturm. Frag, wer in jener Nacht über euch flog - und gut genug ist, es zu tun.
 
-Sayra dachte an den Sturm. An den einzigen, der gut genug geflogen war, um sie selbst aus dem Trudeln zu fangen.
+Sayra dachte an den Sturm. An das tobende Grau, in dem alle die Orientierung verloren hatten. An den einen, der gut genug geflogen war, um sie selbst aus dem Trudeln zu fangen, mitten im Chaos, mit einer Präzision, die niemand sonst besaß.
 
 Sie dachte an Renkar, und ihr wurde übel.
 
-Sie und Brae untersuchten die Flugrouten heimlich - die Karten im Verwaltungstrakt, wer wann wo geflogen war. Sie taten es vorsichtig, nachts, und Sayra merkte sich alles, und das Bild, das entstand, war kein klares. Mehrere Reiter waren nah genug an Edran gewesen. Renkar war einer davon. Aber auch andere. Auch ein Name, den sie nicht zuordnen konnte, mit dem Vermerk: auf Befehl der Hochmarschall.
+Sie und Brae durchsuchten heimlich die Flugaufzeichnungen - die Karten im Verwaltungstrakt, wer in jener Nacht wann welche Höhe und welchen Sektor geflogen hatte. Sie taten es vorsichtig, in der toten Stunde, und Sayra prägte sich jede Linie ein. Das Bild, das entstand, war kein klares. Mehrere Reiter waren nah genug an Edran gewesen, um den Schnitt zu führen. Renkar war einer von ihnen. Aber nicht der Einzige. Auch andere Namen standen dort - und einer, den Sayra nicht zuordnen konnte, mit einem Vermerk in anderer Tinte: auf unmittelbaren Befehl der Hochmarschall.
 
 "Du gräbst."
 
-Sayra fuhr herum. Renkar stand im Eingang des Kartenraums, und sie hatte ihn nicht kommen hören, und ihr Herz - ihr geteiltes Herz - schlug ihr bis in den Hals. Sie wartete darauf, dass er sie meldete. Auf den Ruf nach den Wächtern. Auf das Ende.
+Sayra fuhr herum. Renkar stand im Eingang des Kartenraums, und sie hatte ihn nicht kommen hören, keinen einzigen Schritt, und ihr Puls - der fremde, geteilte, der ihr und Kaelith gehörte - schlug ihr bis in die Kehle. Sie wartete darauf, dass er die Wächter rief. Auf das Ende, hier, zwischen den Karten.
 
-Stattdessen schloss er die Tür hinter sich. Leise.
+Stattdessen schloss er die Tür hinter sich. Leise. Von innen.
 
-"Hör auf zu graben, Sayra." Seine Stimme war anders als im Hof - leiser, dringlicher. "Was du suchst, will nicht gefunden werden, und die Dinge, die nicht gefunden werden wollen, beißen zurück. Edran hat gegraben. Edran ist tot."
+"Hör auf zu graben, Sayra." Seine Stimme war eine andere als die im Übungshof - leiser, dringlicher, ohne das Eis. "Was du suchst, will nicht gefunden werden. Und die Dinge, die nicht gefunden werden wollen, beißen zurück, wenn man ihnen zu nahe kommt. Edran hat gegraben. Edran liegt jetzt irgendwo unter dem Aschemeer."
 
-"Hast du es getan?" Sie zwang sich, ihn anzusehen, ihm ins Gesicht. "Du warst gut genug. Du warst nah genug. Sag mir ins Gesicht, dass du es nicht warst."
+"Hast du es getan?" Sayra zwang sich, ihn anzusehen, ihm geradewegs ins Gesicht. "Du warst gut genug. Du warst nah genug. Sag es mir ins Gesicht, Renkar - sag mir, dass du es nicht warst."
 
-Etwas durchzuckte ihn - Schmerz, scharf und echt. "Nein", sagte er. "Ich habe es nicht getan." Und dann, leiser, fast zu leise: "Aber ich kenne die Hand, die es getan hat. Und ich kann dich nicht beschützen, wenn du ihr einen Grund gibst, auch deine Bindung zu kappen. Hör auf. Bitte."
+Etwas durchzuckte ihn, scharf und echt, ein Schmerz, der nicht gespielt war. "Nein." Das Wort kam fest. "Ich habe es nicht getan." Und dann, leiser, fast zu leise, um es zu hören: "Aber ich kenne die Hand, die es getan hat. Und ich kann dich nicht beschützen, wenn du ihr einen Grund gibst, auch deinen Riemen zu kappen, hoch über dem Meer, wo niemand etwas sieht. Hör auf. Bitte."
 
-Es war das Bitte, das sie aus dem Konzept brachte. Renkar Stahl bat um nichts.
+Es war das Bitte, das sie aus dem Konzept brachte. Renkar Stahl befahl, drohte, schwieg - aber er bat um nichts. Sie hatte ihn nie um etwas bitten hören.
 
-"Ich kann nicht", sagte sie. "Sie haben meinen Vater ausgelöscht. Sie töten Schüler, die Fragen stellen. Sie machen die Drachen weniger und lügen darüber. Ich kann nicht aufhören, nur weil es gefährlich ist. Gefährlich ist alles, wenn man ohnehin stirbt."
+"Ich kann nicht", sagte sie, und meinte es. "Sie haben meinen Vater aus der Welt gestrichen. Sie töten Schüler, die zu laut fragen. Sie verbrennen die Drachen und nennen es Krieg. Ich kann nicht aufhören, nur weil es gefährlich ist - begreif das, Renkar. Gefährlich ist für mich ohnehin alles. Ich sterbe so oder so. Die einzige Frage ist, ob ich es mit gesenktem Kopf tue."
 
-Er sah sie lange an. Dann nickte er, knapp, als hätte sie eine Prüfung bestanden, die er ihr nicht hatte stellen wollen, und ging.
+Er sah sie lange an, sehr lange, und etwas in seinem Gesicht veränderte sich - als hätte sie eine Prüfung bestanden, die er ihr nie hatte stellen wollen, weil er die Antwort fürchtete. Dann nickte er, knapp, und ging.
 
-In dieser Nacht durchsuchte Sayra Edrans hinterlassene Sachen - ein Wächter hatte sie achtlos in eine Kiste geworfen, niemand holte je etwas ab für die Toten. Zwischen einem Hemd und einem Löffel und einem Brief, den er nie abgeschickt hatte, fand sie einen Fetzen Papier.
+In dieser Nacht durchsuchte Sayra Edrans hinterlassene Sachen. Ein Wächter hatte sie achtlos in eine Kiste geworfen, in eine Ecke geschoben; niemand holte je etwas ab für die Toten, denn die Toten hatten keine Familien, die fragten. Zwischen einem zerschlissenen Hemd, einem hölzernen Löffel und einem Brief, den er nie abgeschickt hatte - an eine Schwester, in einer der Neun Städte -, fand sie einen Fetzen Papier.
 
-Darauf stand ein einziges Wort, hastig hingekritzelt, von einer Hand, die wusste, dass ihr die Zeit davonlief.
+Darauf stand ein einziges Wort, hastig hingekritzelt, von einer Hand, die gewusst haben musste, dass ihr die Zeit davonlief:
 
 Vael.
 
-Edran, der über die Brutgründe gegraben hatte, der ermordete Edran - er hatte ihren Namen gekannt. Er hatte ihn aufgeschrieben, kurz bevor er starb.
+Edran, der über die Brutgründe gegraben hatte, der ermordete Edran - er hatte ihren Namen gekannt. Er hatte ihn aufgeschrieben, kurz bevor er starb, als wäre er das Letzte, das er noch festhalten wollte.
 
-Sayra stand im Dunkeln, das Papier in der zitternden Hand, und begriff, dass die Spur ihres Vaters und die Spur der sterbenden Drachen und die Spur des sauberen Schnitts nicht drei Spuren waren.
+Sayra stand im Dunkeln, den Papierfetzen in der zitternden Hand, und begriff mit der gnadenlosen Klarheit ihres Gedächtnisses, dass die Spur ihres Vaters und die Spur der sterbenden Drachen und die Spur des sauberen Schnitts im Sturm nicht drei verschiedene Spuren waren.
 
-Es war eine einzige. Und sie selbst stand mittendrin.
+Es war eine einzige, durchgehende Linie. Und sie selbst stand genau in ihrer Mitte.
 
 ---
 
@@ -755,45 +755,45 @@ Es war eine einzige. Und sie selbst stand mittendrin.
 
 "Einzelunterricht", sagte Renkar. "Jeden Abend. Als Strafe für das Schnüffeln im Kartenraum."
 
-Es war keine Strafe. Das begriff Sayra in der ersten Stunde. Es war ein Versteck - die einzige Art, wie ein Ausbildungsoffizier eine Schülerin in seiner Nähe halten konnte, ohne dass Olvenne Verdacht schöpfte. Er gab vor, sie zu zähmen. In Wahrheit hielt er sie unter seinen Fittichen, wo der saubere Schnitt sie nicht so leicht erreichte.
+Es war keine Strafe. Das begriff Sayra schon in der ersten Stunde. Es war ein Versteck - die einzige Form, in der ein Ausbildungsoffizier eine Schülerin in seiner Nähe halten konnte, Abend für Abend, ohne dass Olvenne Verdacht schöpfte. Er gab vor, das aufsässige Mädchen zu zähmen, das im Verwaltungstrakt herumgeschnüffelt hatte. In Wahrheit hielt er sie unter seinen Fittichen, dort, wo der saubere Schnitt im Sturm sie nicht so leicht erreichte.
 
 Und er brachte ihr bei zu überleben.
 
-"Dein Problem ist nicht, dass du zu viel gibst", sagte er, während sie in der leeren Übungshalle standen, nur sie beide und das Glutlicht. "Dein Problem ist, dass du alles auf einmal gibst. Wie Lyss. Wie alle, die jung sterben. Schau." Er hielt die Hand auf, und über seiner Handfläche erschien ein Funke - winzig, kontrolliert, kaum größer als eine Kerzenflamme. "Dosieren. Du nimmst nicht aus dem ganzen Vorrat. Du nimmst aus einer Stunde. Einer Stunde deines Lebens, nicht einem Tag. Es ist eine Frage der Disziplin, nicht der Kraft."
+"Dein Problem ist nicht, dass du zu viel gibst", sagte er, während sie in der leeren Übungshalle standen, nur sie beide und das rötliche Glutlicht aus den Wandsteinen. "Dein Problem ist, dass du alles auf einmal gibst, wenn du gibst. Wie Lyss. Wie alle, die jung sterben, weil die Angst nicht rechnet." Er hielt die Hand auf, und über seiner Handfläche erschien ein Funke - winzig, vollkommen beherrscht, kaum größer als eine Kerzenflamme. "Dosieren. Du greifst nicht in den ganzen Vorrat. Du nimmst aus einer Stunde. Aus einer einzigen Stunde deines Lebens, nicht aus einem Tag, nicht aus einer Woche. Es ist eine Frage der Disziplin, nicht der Kraft. Disziplin ist das Einzige, was uns hier alt werden lässt - so alt, wie wir eben werden."
 
 Er nahm ihre Hand, um ihr die Bewegung zu zeigen.
 
-Es war eine technische Geste, nichts weiter, sein Daumen an ihrem Handgelenk, um den Puls zu fühlen, an dem sich die Dosierung messen ließ. Aber seine Hand war warm, und ihre war kalt, und für einen Moment vergaßen beide, was sie taten. Sayra spürte ihr geteiltes Herz stolpern. Sie spürte seinen Puls unter ihren Fingern, schnell - schneller, als ein Mann ihn haben sollte, der nur eine Übung erklärte.
+Es war eine technische Geste, nichts weiter: sein Daumen an der Innenseite ihres Handgelenks, dort, wo der Puls schlug, an dem sich die Dosierung abmessen ließ. Aber seine Hand war warm, schwielig von Zügeln und Klingen, und ihre war kalt vom vielen Geben, und für einen Moment vergaßen beide, was sie eigentlich taten. Der fremde, geteilte Takt in Sayras Brust stolperte, fing sich, stolperte wieder. Und unter ihren eigenen Fingerspitzen spürte sie seinen Puls - schnell, viel schneller, als der eines Mannes schlagen sollte, der nichts tat, als eine Übung zu erklären.
 
-Kaelith, der sonst alles kommentierte, schwieg taktvoll. Was beinahe das Lauteste war, das er hätte tun können.
+Kaelith, der sonst zu allem eine trockene Bemerkung hatte, schwieg taktvoll. Was beinahe das Lauteste war, das er hätte tun können.
 
-Renkar ließ los, einen Atemzug zu spät. "Versuch es", sagte er rau.
+Renkar ließ los, einen Atemzug zu spät. "Versuch es", sagte er, und seine Stimme war rau.
 
-Sie versuchte es. Sie nahm aus einer Stunde, nicht einem Tag, und ein winziger, perfekter Funke erschien über ihrer Hand, und kostete sie fast nichts, und Sayra sah ihn an wie ein Wunder. "Warum bringst du mir das bei?", fragte sie leise. "Wirklich. Du behältst mich im Auge für Olvenne. Du solltest wollen, dass ich schwach bleibe."
+Sie versuchte es. Sie nahm aus einer Stunde, nicht aus einem Tag, tastend, vorsichtig - und ein winziger, perfekter Funke erblühte über ihrer Handfläche und kostete sie fast nichts, kaum mehr als einen Lidschlag Zeit. Sayra sah ihn an wie ein kleines Wunder, das erste, das die Akademie ihr geschenkt statt genommen hatte. "Warum bringst du mir das bei?", fragte sie leise, ohne den Funken aus den Augen zu lassen. "Wirklich, Renkar. Du behältst mich im Auge, für Olvenne. Du solltest wollen, dass ich schwach bleibe. Schwache Mädchen graben nicht."
 
 "Ja", sagte er. "Das sollte ich wollen."
 
-Er sagte nicht, warum er es nicht wollte. Aber er sah sie an, als er es nicht sagte, und das war Antwort genug, und beide wussten es, und beide taten, als wüssten sie es nicht.
+Er sagte nicht, warum er es nicht wollte. Aber er sah sie dabei an, wie er es nicht sagte, und das war Antwort genug - mehr Antwort, als Worte gewesen wären. Beide wussten es. Und beide taten weiter, als wüssten sie es nicht, weil das Wissen zu gefährlich war, um es laut werden zu lassen.
 
-Sayra holte den Papierfetzen hervor. Sie hatte lange überlegt, ob sie es wagen sollte. Jetzt wagte sie es. "Das fand ich in Edrans Sachen", sagte sie und hielt es ihm hin. "Mein Name. In der Hand eines Toten. Sag mir, was er bedeutet, Renkar."
+Sayra holte den Papierfetzen aus ihrem Ärmel. Sie hatte tagelang überlegt, ob sie es wagen sollte - ob sie ihm so weit trauen durfte. Jetzt wagte sie es. "Das fand ich in Edrans Sachen", sagte sie und hielt es ihm hin, das eine hingekritzelte Wort nach oben. "Mein Name. In der Hand eines Ermordeten. Sag mir, was er bedeutet, Renkar."
 
 Renkar erstarrte.
 
-Sie sah, wie das Wort ihn traf - Vael - wie eine alte Wunde, die aufriss. Sein Gesicht, das gelernt hatte, ruhig zu lügen, gehorchte ihm diesmal nicht ganz schnell genug.
+Sie sah, wie das Wort ihn traf - Vael -, sah, wie es in ihm aufriss wie eine alte, schlecht verheilte Wunde. Sein Gesicht, das gelernt hatte, mit ruhigen Zügen zu lügen, gehorchte ihm diesmal einen Herzschlag zu langsam.
 
 "Du kennst den Namen", flüsterte sie. "Nicht meinen. Einen anderen Vael. Meinen Vater."
 
-"Es gab einen Archivar." Die Worte kamen widerwillig, gepresst, als zöge er sie sich selbst aus der Brust. "Vor Jahren. Bevor ich Offizier war, noch Schüler. Ein Mann, der im Verwaltungstrakt arbeitete und Dinge zählte, die man nicht zählen sollte. Er wusste zu viel. Über die Brutgründe. Über die Zahlen." Renkar brach ab, und sein Kiefer arbeitete. "Mehr kann ich nicht. Mehr darf ich nicht. Wenn ich dir mehr sage, Sayra, dann gebe ich dir genau die Tür, durch die Edran gegangen ist, und ich - "
+"Es gab einen Archivar." Die Worte kamen widerwillig, gepresst, als zöge er sie sich einzeln aus der Brust. "Vor Jahren. Bevor ich Offizier war - ich war noch Schüler, jünger als du jetzt. Ein stiller Mann, der im Verwaltungstrakt arbeitete und Dinge zählte, die man besser nicht zählt. Er wusste zu viel. Über die Brutgründe. Über die Zahlen, die nicht zusammenpassten." Renkar brach ab; sein Kiefer arbeitete, als kaue er auf etwas Bitterem. "Mehr kann ich nicht sagen. Mehr darf ich nicht. Wenn ich dir mehr gebe, Sayra, dann reiche ich dir genau die Tür, durch die Edran gegangen ist - und durch die er nicht zurückkam. Und ich -"
 
 Er hielt inne.
 
 "Und du was?", fragte sie.
 
-"Und ich will nicht deinen Namen in mein Totenbuch schreiben." Er sagte es leise, fast tonlos, und es war das Ehrlichste, das er ihr je gesagt hatte. "Ich habe schon zu viele geschrieben."
+"Und ich will deinen Namen nicht in mein Totenbuch schreiben." Er sagte es leise, fast tonlos, und es war das Ehrlichste, das er ihr je gesagt hatte, ehrlicher als jedes Geständnis. "Ich habe schon zu viele Namen hineingeschrieben. Deinen ertrage ich nicht."
 
-Kaelith regte sich endlich. Trau ihm, soweit es dich am Leben hält, sagte er. Aber trau ihm nicht mit dem, was tötet. Er gehorcht ihr seit Jahren, Sayra. Ein Mann ändert sich nicht in einer Woche, nur weil ein Mädchen ihn ansieht.
+Kaelith regte sich endlich, vorsichtig. Trau ihm, soweit es dich am Leben hält, sagte er, und unter dem Spott lag echte Sorge. Aber trau ihm nicht mit dem, was tötet. Vergiss nicht, Mädchen: Er gehorcht ihr seit acht Jahren. Ein Mann ändert sich nicht in einer Woche, nur weil ein Mädchen ihn ansieht, als wäre er noch zu retten.
 
-Renkar ging zur Tür. Dort blieb er stehen, mit dem Rücken zu ihr, wie er es schon einmal an der Klippe getan hatte. Dann drehte er sich um, kam zurück, und drückte ihr etwas in die Hand - kalt, metallisch, klein.
+Renkar ging zur Tür. Dort blieb er stehen, mit dem Rücken zu ihr, so wie er es schon einmal an der Klippe getan hatte, wenn er etwas sagte, das er sich selbst nicht erlaubte. Dann drehte er sich noch einmal um, kam die wenigen Schritte zurück und drückte ihr etwas in die Hand - kalt, metallisch, klein.
 
 Ein Schlüssel.
 
@@ -801,7 +801,7 @@ Ein Schlüssel.
 
 "Welches Schloss?"
 
-Aber er war schon fort, schnell, immer schnell, bevor sie die wichtige Frage stellen konnte. Und Sayra stand allein in der Glutlicht-Halle, einen Schlüssel in der einen Hand, den Namen eines Toten in der anderen, und ein Herz in der Brust, das nicht mehr nur ihres war und das, sie konnte es nicht länger leugnen, nicht mehr nur für die Wahrheit schlug.
+Aber er war schon fort, schnell, wie immer schnell, ehe sie die wichtige Frage zu Ende stellen konnte. Und Sayra blieb allein in der Glutlicht-Halle zurück, einen Schlüssel in der einen Hand, den Namen eines Toten in der anderen - und einem Herzen in der Brust, das längst nicht mehr nur ihres war und das, sie konnte es sich nicht länger verheimlichen, längst nicht mehr nur für die Wahrheit schlug.
 
 ---
 
@@ -809,41 +809,41 @@ Aber er war schon fort, schnell, immer schnell, bevor sie die wichtige Frage ste
 
 Es begann mit einem Geräusch, das Sayra nie wieder vergessen würde - und sie vergaß ohnehin nichts.
 
-Ein dünnes, hohes Wimmern aus den Drachenställen, mitten in der Nacht, und dann Tamsins Stimme, nicht hell und schnell wie sonst, sondern roh vor Angst. Sayra war auf den Beinen, bevor sie wach war. Sie fand Tamsin im Stroh, die Arme um den Hals ihres jungen Drachen geschlungen, und das Tier krampfte - die schmalen Flügel zuckten, die Augen verdreht, ein Beben lief durch den ganzen unfertigen Körper.
+Ein dünnes, hohes Wimmern aus den Drachenställen, mitten in der Nacht, und dann Tamsins Stimme, nicht hell und schnell wie sonst, sondern roh, ausgefranst vor Angst. Sayra war auf den Beinen, bevor sie wach war, und rannte barfuß über den kalten Basalt, das Wimmern wie einen Faden in der Hand, dem sie folgte. Sie fand Tamsin im Stroh, die Arme um den Hals ihres jungen Drachen geschlungen, und das Tier krampfte - die schmalen Flügel zuckten in einem Rhythmus, der nichts mit Leben zu tun hatte, die Augen verdreht, bis nur noch das Weiße blieb, ein Beben, das durch den ganzen unfertigen Körper lief wie ein Riss durch Eis.
 
-"Er reißt", flüsterte Tamsin. "Sayra, das Band reißt, ich spüre es, es zieht mich mit - "
+"Er reißt." Tamsin sah nicht auf; sie presste das Gesicht in die zuckenden Schuppen. "Sayra, das Band reißt, ich spüre es, es zieht mich mit hinunter - "
 
-Sayra wusste, was das bedeutete. Reißt die Bindung, stirbt nicht nur der Drache. Reiter und Drache teilen ein Herz; wird das eine zerrissen, bleibt auch das andere stehen.
+Sayra wusste, was das bedeutete. Sie hatte es in Kaeliths Erinnerungen gesehen, hatte es in den Knochen verstanden, lange bevor sie es in Worte fassen konnte: Reißt die Bindung, stirbt nicht nur das Tier. Reiter und Drache tragen einen Puls zwischen sich; wird der Faden zerschnitten, bleibt auch das menschliche Herz stehen, irgendwo mitten im Schlag.
 
-Kaelith, befahl sie, ohne zu fragen, ob es höflich war. Was kann ich tun?
+Kaelith. Sie rief ihn, ohne zu fragen, ob es höflich war. Was kann ich tun.
 
-Der alte Drache war sofort da, hellwach, und unter seiner ewigen Müdigkeit lag jetzt etwas Scharfes. Der Kleine ist zu jung. Das ist es, was niemand laut sagt, Sayra. Ein Drache, der selbst kaum geschlüpft ist, kann das Glutband nicht tragen - es ist, als spannte man ein Kind vor einen Pflug, der für einen Ochsen gemacht ist. Sie binden eure Sterbenden an Jungtiere, weil es keine alten mehr gibt. Und dann wundern sie sich, dass die Bindungen reißen. Eine Pause. Es ist kein Unglück. Es ist Rechnung. Sie wissen es.
+Der alte Drache war sofort da, hellwach, und unter seiner ewigen Müdigkeit lag jetzt etwas Scharfes, fast Zorniges. Der Kleine ist zu jung. Das ist es, was niemand laut sagt, Mädchen. Ein Drache, der selbst kaum aus dem Ei gekrochen ist, kann das Glutband nicht tragen - man spannt ein Kind vor einen Pflug, der für einen Ochsen geschmiedet wurde, und nennt das Schicksal, wenn das Kind zusammenbricht. Sie binden eure Sterbenden an Jungtiere, weil es keine alten mehr gibt, die es tragen könnten. Und dann zählen sie verwundert die zerrissenen Bindungen. Eine Pause, kalt wie Stein. Es ist kein Unglück, Sayra. Es ist Rechnung. Sie wissen es vorher.
 
-"Wie halte ich ihn", presste Sayra hervor. "Sag mir, wie."
+"Wie halte ich ihn." Sayra presste die Worte heraus. "Sag mir, wie."
 
-Du kannst ihm Kraft geben. Deine. Durch Tamsin hindurch, in das Band. Aber - und seine Stimme wurde sehr ernst - es kostet dich, Mädchen. Nicht Stunden. Tage. Vielleicht mehr. Du gibst einem fremden Band dein eigenes Leben.
+Du kannst ihm Kraft geben. Deine. Durch Tamsin hindurch, in das reißende Band. Aber - und seine Stimme wurde sehr ernst, ernster, als sie ihn je gehört hatte - es kostet dich, Mädchen. Nicht Stunden. Tage. Vielleicht mehr, als du noch hast. Du gießt dein eigenes Leben in ein Band, das nicht deines ist.
 
-Sayra zögerte keinen Atemzug. Sie legte eine Hand auf Tamsins Schulter, die andere auf den krampfenden Hals des Drachen, und sie tat das Verbotene, das, wovor Renkar sie tausendmal gewarnt hatte: Sie gab alles, was nötig war, ohne zu rechnen.
+Sayra zögerte keinen Atemzug. Sie legte eine Hand auf Tamsins Schulter, die andere auf den krampfenden Hals des Drachen, dort, wo die Schuppen heiß und feucht waren vor Todesangst, und sie tat das Verbotene, das, wovor Renkar sie ein Dutzend Mal gewarnt hatte: Sie gab alles, was nötig war, ohne zu rechnen, ohne die drei Fragen, ohne den schützenden Atem dazwischen.
 
-Die Kälte kam wie eine Flut. Drei Tage, vier - sie zählte nicht, weil Zählen das Geben verlangsamt hätte. Sie spürte ihre eigene Kraft durch Tamsin strömen, in den unfertigen Drachen, dem zitternden Band einen Halt geben, den es selbst nicht hatte. Langsam, qualvoll langsam, ließ das Krampfen nach. Das Tier atmete. Tamsin atmete. Beide lebten.
+Die Kälte kam wie eine Flut, die über eine Kaimauer schlägt. Drei Tage, vier, fünf - sie zählte nicht, denn Zählen hätte das Geben verlangsamt, und Verlangsamen hätte Tamsin getötet. Sie fühlte die eigene Kraft durch die Freundin strömen, in den unfertigen Drachen hinein, fühlte, wie sie dem zitternden Band einen Halt lieh, den es aus sich selbst nicht fand. Langsam, qualvoll langsam, wie Eis, das unter der Sonne nachgibt, ließ das Krampfen nach. Die Flügel legten sich an. Das Tier atmete, ein langer, rasselnder Zug. Tamsin atmete. Beide lebten.
 
-Sayra sackte ins Stroh, und als sie die Hand hob, war eine weitere Strähne ergraut - nicht nur eine, ein ganzer Streifen jetzt, sodass ihr dunkles Haar aussah, als hätte jemand mit aschiger Hand hineingegriffen.
+Sayra sackte ins Stroh zurück, und als sie die Hand vors Gesicht hob, sah sie es: Über Nacht war ein breiter Streifen ihres dunklen Haares farblos geworden, nicht von Alter weiß, sondern von der Wurzel her ausgebrannt, als hätte jemand mit einer aschigen Hand hineingegriffen und gezogen. Sie war jünger als Tamsin und sah es nicht mehr.
 
-"Du hättest das nicht tun dürfen", flüsterte Tamsin, und sie weinte, weil sie verstand, was es gekostet hatte. "Sayra, deine Zeit - "
+"Du hättest das nicht tun dürfen." Tamsin weinte, ohne es zu merken, weil sie genau verstand, was es gekostet hatte - sie hatte es durch die eigene Bindung gespürt, das Hindurchströmen, den Preis. "Sayra, deine Zeit. Du hast so wenig, und du - "
 
-"Ist meine, um sie zu verschenken." Sayra brachte ein müdes Lächeln zustande. "Und ich verschenke sie an dich. Sag jetzt nicht, es sei nicht der Beste gewesen, an den ich sie je gegeben habe."
+"Sie ist meine, um sie zu verschenken." Sayra brachte ein müdes Lächeln zustande, schief, ehrlich. "Und ich verschenke sie an dich. Also sag jetzt nicht, du seist es nicht wert gewesen - das wäre eine Beleidigung für meine Buchführung, und die ist tadellos."
 
-Tamsin lachte unter Tränen, und sie hielten sich im Stroh fest, zwei Mädchen mit zu wenig Zeit, und für einen Moment war die Akademie weit weg.
+Tamsin lachte, ein nasses, brüchiges Lachen unter den Tränen, und dann hielten sie sich im Stroh fest, zwei Mädchen mit viel zu wenig Zeit zwischen sich, und für die Länge einer Nacht war die Akademie weit weg, war der Tod ein Gerücht, war da nur Wärme und das beruhigte Atmen eines Drachen, der hätte sterben sollen und es nicht tat.
 
-Am Morgen hing eine Liste am schwarzen Brett. Überschrift: Schwache Bindungen - zur Sonderbesinnung. Es waren sieben Namen darauf.
+Am Morgen hing eine Liste am schwarzen Brett. Die Überschrift war in der sauberen, sachlichen Hand der Verwaltung geschrieben: Schwache Bindungen - zur Sonderbesinnung. Darunter sieben Namen.
 
 Tamsin Oar stand an dritter Stelle.
 
-"Sonderbesinnung", sagte Brae grimmig, als sie es lasen. "Schönes Wort. Was meinen die damit?"
+"Sonderbesinnung." Brae sprach das Wort aus, als schmecke es faul. "Schönes Wort. Klingt nach einem Gebet. Was meinen die wirklich damit?"
 
-Sayra sah die Liste an, und ihr Gedächtnis legte sie neben alles andere, das sie wusste - die leeren Nester, den sauberen Schnitt, das ausgelöschte Dasein ihres Vaters - und die Wahrheit setzte sich zusammen wie ein Schloss, das einrastet.
+Sayra sah die Liste an, und ihr Gedächtnis - das nichts fallen ließ, das jeden Stein behielt - legte sie neben alles andere, das sie wusste. Die leeren Nester in den Brutgründen. Den sauberen Schnitt am Riemen des toten Edran. Das ausgelöschte Dasein ihres Vaters. Und die Wahrheit setzte sich zusammen, Stück um Stück, mit dem leisen, endgültigen Klicken eines Schlosses, das einrastet.
 
-"Sie heilen die schwachen Bindungen nicht", sagte sie leise, und ihr wurde kalt, kälter als von allem Geben. "Eine Akademie, die heilen wollte, hätte einen Heiler geschickt. Sie schickt eine Liste." Sie sah Tamsin an, und zum ersten Mal hatte sie Angst nicht um sich selbst. "Sie sortieren aus, Tamsin. Was nicht funktioniert, wird nicht repariert. Es wird gestrichen."
+"Sie heilen die schwachen Bindungen nicht." Sayra sprach leise, und ihr wurde kalt, kälter, als jedes Geben sie gemacht hatte. "Eine Akademie, die heilen wollte, hätte einen Heiler geschickt. Salben, Kräuter, einen alten Drachenwärter, der weiß, wie man ein Jungtier stützt. Sie aber schicken kein Mittel. Sie schicken eine Liste." Sie sah Tamsin an, und zum ersten Mal, seit sie in den Aschewagen gestiegen war, hatte sie Angst, die nicht ihr eigenes Leben meinte. "Sie sortieren aus, Tamsin. Was den Dienst nicht leistet, wird nicht repariert. Es wird durchgestrichen. Und du stehst an dritter Stelle."
 
 ---
 
@@ -851,89 +851,93 @@ Sayra sah die Liste an, und ihr Gedächtnis legte sie neben alles andere, das si
 
 Hochmarschall Olvenne hielt Hof, als wäre der Tod eine Frage der Ordnung.
 
-Die sieben standen in einer Reihe im großen Saal, unter den schwarzen Bannern des Konkordats, und Olvenne schritt sie ab mit einem Schreiber an ihrer Seite, der notierte. Sie war kleiner, als Sayra erwartet hatte, und ganz grau - nicht alt-grau, sondern verbrannt-grau, von der Wurzel bis in die Spitzen, das Haar einer Frau, die in ihrem Leben sehr viel Magie gewirkt und sehr viel Zeit dafür bezahlt hatte. Ihr Gesicht war ruhig und freundlich und vollkommen leer, wie die Oberfläche eines tiefen Wassers.
+Die sieben standen in einer Reihe im großen Saal, unter den schwarzen Bannern des Konkordats, die schwer und reglos von der Decke hingen, als hätte selbst die Luft hier aufgehört, sich zu bewegen. Olvenne schritt sie ab, langsam, einen Schreiber an ihrer Seite, dessen Feder über dem Papier wartete wie ein Vogel über dem Wasser. Sie war kleiner, als Sayra erwartet hatte - eine Frau, die man auf der Straße übersehen hätte. Und sie war ganz grau. Nicht alt-grau, sondern verbrannt-grau, von der Wurzel bis in die Spitzen, das Haar einer Frau, die in ihrem Leben sehr viel Magie gewirkt und für jede Faser davon mit Zeit bezahlt hatte. Ihr Gesicht war ruhig und freundlich und vollkommen leer, wie die Oberfläche eines tiefen, kalten Wassers, unter dem man den Grund nicht sah.
 
-"Eine Bindung", sagte sie zu den Versammelten, "ist eine Investition des Reiches. Wir geben einem Sterbenden einen Drachen und damit Leben. Im Gegenzug erwarten wir Dienst. Wenn eine Bindung den Dienst nicht leisten kann - wenn sie nur verbraucht und nichts gibt - dann ist sie kein Segen, sondern eine Last." Sie lächelte, und das Lächeln war das Schrecklichste an ihr. "Ich spreche offen, weil ich euch achte. Buchhaltung ist keine Grausamkeit. Sie ist Verantwortung."
+Sayra stand als Fünfte in der Reihe und zählte die anderen, weil Zählen besser war als das Beben in den eigenen Knien. Neben ihr Tamsin, die Hände in den Falten ihres Kittels verborgen, damit niemand sah, wie sie zitterten. Eine Anwärterin, die laut atmete. Ein Junge, dessen Lippen sich tonlos bewegten, als bete er zu einem Gott, der in Korvath keine Zuständigkeit hatte.
 
-Sie sprach von Menschen wie von Posten in einem Hauptbuch. Soll und Haben. Wert und Last. Und das Furchtbare war, dass sie es glaubte - dass in ihren leeren, freundlichen Augen kein Funke von Bosheit lag, nur die ruhige Gewissheit einer Frau, die längst beschlossen hatte, dass die Lüge das Reich rettete und einzelne Leben der Preis dafür waren.
+"Eine Bindung", sagte Olvenne, und ihre Stimme füllte den Saal ohne Mühe, "ist eine Investition des Reiches. Wir nehmen einen Sterbenden, dem nichts mehr bleibt, und geben ihm einen Drachen und damit Leben. Das ist kein kleines Geschenk. Es ist das größte, das wir zu vergeben haben. Im Gegenzug erwarten wir Dienst." Sie blieb stehen, ließ den Blick über die Reihe gleiten. "Wenn aber eine Bindung den Dienst nicht leisten kann - wenn sie nur verbraucht und nichts zurückgibt, wenn sie das Geschenk nimmt und uns die Rechnung lässt -, dann ist sie kein Segen mehr. Dann ist sie eine Last." Sie lächelte, und das Lächeln war das Schrecklichste an ihr, weil es echt war. "Ich spreche offen mit euch, weil ich euch achte. Buchhaltung ist keine Grausamkeit. Sie ist Verantwortung. Eine Mutter, die ihre Kinder zählt, ehe der Sturm kommt, ist nicht grausam. Sie ist sorgsam."
 
-Dann blieb sie vor Sayra stehen.
+Sie sprach von Menschen wie von Posten in einem Hauptbuch. Soll und Haben. Wert und Last. Und das Furchtbarste war, dass keine Bosheit darin lag - Sayra suchte danach, mit ihrem Gedächtnis, das jede Regung las, und fand sie nicht. Olvenne hasste niemanden. In ihren leeren, freundlichen Augen lag nur die ruhige, vollständige Gewissheit einer Frau, die vor langer Zeit beschlossen hatte, dass die Lüge das Reich rettete - und dass einzelne Leben der Preis dafür waren, ein Preis, den man mit ruhiger Hand notierte und beglich.
 
-"Vael", sagte sie, und las den Namen von der Liste, als schmecke sie ihn ab. "Die unmögliche Bindung. Der alte Kaelith." Sie hob eine Hand und berührte, ohne zu fragen, die ergraute Strähne an Sayras Schläfe - den breiten, aschigen Streifen. "So viel schon verbrannt. So jung. Wofür gibst du dein Leben aus, Kind?"
+Die Feder des Schreibers senkte sich. Ein Name. Ein Strich. Die erste der sieben wurde abgeführt, ohne dass ein Wort gefallen wäre, das Sayra hätte deuten können - nur ein Nicken, eine Geste, und zwei Wächter, die eine junge Frau hinausgeleiteten, deren Bindung "den Dienst nicht leisten konnte". Niemand sagte, wohin. Niemand fragte. Das war die eigentliche Lektion dieses Saals: dass man nicht fragte.
 
-Verbirg dich, sagte Kaelith leise in ihr. Sie liest Gesichter, wie du Erinnerungen liest. Zeig ihr nichts.
+Dann blieb Olvenne vor Sayra stehen.
 
-"Fürs Überleben, Hochmarschall", sagte Sayra, und machte ihr Gesicht leer, müde, harmlos. "Die Ausbildung ist hart. Ich gebe mehr, als ich sollte. Ich lerne noch."
+"Vael", sagte sie und las den Namen von der Liste, als schmecke sie ihn ab, prüfe ihn auf der Zunge wie einen Wein, von dem sie nicht sicher war, ob er gekippt war. "Die unmögliche Bindung. Der alte Kaelith, der seit acht Jahren keinen mehr nahm." Sie hob eine Hand und berührte, ohne zu fragen, ohne Eile, die ergraute Strähne an Sayras Schläfe - den breiten, aschigen Streifen, der gestern noch schmaler gewesen war. Ihre Finger waren kühl und trocken. "So viel schon verbrannt. So jung. Wofür gibst du dein Leben aus, Kind?"
 
-"Das tun wir alle." Olvenne sah sie an, lange, und für einen einzigen Moment veränderte sich etwas in dem ruhigen Wasser ihres Blicks - ein Erkennen, ein Frösteln, als sähe sie durch Sayras Gesicht hindurch auf ein anderes, das sie vor Jahren gekannt hatte. Sie verbarg es schnell. Aber Sayra hatte es gesehen, denn sie sah alles, und durch Kaelith spürte sie noch mehr: dass Olvenne selbst ausgezehrt war, dass unter der eisernen Ruhe ein Körper steckte, der von zu viel Magie zerfressen war, dass auch die Hochmarschall ihre Tage zählte.
+Verbirg dich, sagte Kaelith leise, ein kühler, fester Druck hinter Sayras Gedanken. Sie liest Gesichter, wie du Erinnerungen liest. Zeig ihr nichts. Sei müde. Sei dumm. Sei nichts.
 
-Sie ist nicht unsterblich, sagte Kaelith, fast verwundert. Sie hat sich selbst beinahe verbraucht. Merk dir das, Mädchen. Auch sie hat ein Ende.
+"Fürs Überleben, Hochmarschall." Sayra machte ihr Gesicht leer, hängte Müdigkeit hinein, ein wenig Furcht, die Harmlosigkeit eines Mädchens, das zu schwach war, um eine Frage wert zu sein. "Die Ausbildung ist hart. Ich gebe mehr, als ich sollte. Ich lerne noch, hauszuhalten."
 
-"Tamsin Oar", las Olvenne weiter und kam zu Tamsin, deren Hände zitterten. Der Schreiber hob die Feder, bereit, ein Schicksal zu notieren.
+"Das tun wir alle." Olvenne sah sie an, lange, zu lange. Und für einen einzigen Lidschlag veränderte sich etwas in dem ruhigen Wasser ihres Blicks - ein Erkennen, ein Frösteln, als sähe sie durch Sayras gespieltes Gesicht hindurch auf ein anderes, das sie vor Jahren gekannt und für erledigt gehalten hatte. Es war fort, ehe es ganz da gewesen war. Aber Sayra hatte es gesehen, denn sie sah alles. Und durch Kaelith spürte sie in diesem Moment noch mehr, etwas, das tiefer ging als der Blick: dass unter Olvennes eiserner Ruhe ein Körper steckte, der von zu viel Magie zerfressen war, ausgehöhlt, dünn geworden wie Pergament über einer Flamme.
+
+Sie ist nicht unsterblich, sagte Kaelith, und in seiner uralten Stimme lag etwas wie Verwunderung. Sie hat sich selbst beinahe verbraucht - für ihre Lüge, über all die Jahre. Merk dir das, Mädchen. Merk es dir gut. Auch sie zählt ihre Tage. Auch sie hat ein Ende.
+
+"Tamsin Oar." Olvenne war weitergegangen, und der Name fiel wie ein Stein in stilles Wasser. Tamsins Hände zitterten so heftig, dass der Stoff ihres Kittels bebte. Der Schreiber hob die Feder. Sayra spürte das eigene Herz - das geteilte - gegen die Rippen schlagen, und sie wusste, dass ein einziger Strich dieser Feder Tamsin hinaus zu den Wächtern schicken würde, dorthin, wohin die erste gegangen war, an einen Ort ohne Namen.
 
 "Zurückgestellt", sagte eine Stimme von der Seite.
 
-Renkar trat vor, das Gesicht eine Maske. "Ihre Bindung hat sich über Nacht stabilisiert, Hochmarschall. Ich habe es selbst geprüft. Es wäre eine Verschwendung, eine sich erholende Bindung auszusortieren - das wäre schlechte Buchhaltung."
+Renkar trat vor, das Gesicht eine Maske aus Eisen und Pflicht. "Ihre Bindung hat sich über Nacht stabilisiert, Hochmarschall. Ich habe es persönlich geprüft, im Morgengrauen, im Stall. Der junge Drache trägt wieder." Er sprach knapp, sachlich, ohne ein Gramm Wärme. "Es wäre Verschwendung, eine Bindung auszusortieren, die sich gerade erholt. Schlechte Buchhaltung."
 
-Olvenne sah ihn an. Etwas Unausgesprochenes ging zwischen ihnen hin und her. "Schlechte Buchhaltung", wiederholte sie. "Nein, das wollen wir nicht. Zurückgestellt also. Vorläufig." Sie wandte sich ab. "Die Sitzung ist beendet."
+Olvenne sah ihn an. Etwas Unausgesprochenes ging zwischen ihnen hin und her, zu schnell und zu alt, als dass Sayra es hätte fassen können - die wortlose Verständigung zweier Menschen, die einander seit Jahren maßen. "Schlechte Buchhaltung", wiederholte Olvenne langsam, und für einen Atemzug hing die Sache auf der Kippe. "Nein. Das wollen wir nicht." Die Feder senkte sich, schrieb ein einziges Wort. "Zurückgestellt also. Vorläufig." Sie wandte sich ab. "Die Sitzung ist beendet."
 
-Sayra atmete aus. Tamsin lebte. Renkar hatte gelogen, um sie zu retten - er hatte die Stabilisierung "selbst geprüft", die in Wahrheit Sayras verbrannte Tage gewesen waren, und beide wussten es, und keiner sah den anderen an.
+Sayra atmete aus, lautlos. Tamsin lebte. Renkar hatte gelogen, geradeheraus, vor der Hochmarschall - denn die "Stabilisierung", die er persönlich geprüft haben wollte, waren in Wahrheit Sayras verbrannte Tage gewesen, die Tage, die sie in der Nacht des Krampfes in das reißende Band gegossen hatte. Beide wussten es. Keiner sah den anderen an. Es war ein Geheimnis mehr, das sie nun teilten, und jedes geteilte Geheimnis war ein Faden, der sie enger zusammenzog, ob sie es wollten oder nicht.
 
-Doch bevor Sayra den Saal verlassen konnte, hob Olvenne noch einmal die Stimme.
+Doch bevor Sayra den Saal verlassen konnte, hob Olvenne noch einmal die Stimme, beiläufig, fast freundlich, über die Schultern der Hinausgehenden hinweg.
 
-"Vael. Du kommst zu mir. Ein privates Gespräch." Das leere Lächeln. "In drei Tagen. Ich freue mich darauf, dich besser kennenzulernen."
+"Vael. Du kommst zu mir. Ein privates Gespräch." Das leere Lächeln, das den Grund nicht zeigte. "In drei Tagen. Ich freue mich darauf, dich besser kennenzulernen."
 
 Es klang wie eine Einladung.
 
-Es war, das wusste Sayra, eine Frist.
+Es war, das wusste Sayra mit jeder kalten Faser ihres unfehlbaren Gedächtnisses, eine Frist.
 
 ---
 
 ## Kapitel 15 - Unter Olvennes Boden
 
-Der Schlüssel passte. Das war das Erste, was Sayra erschreckte - dass Renkar ihr einen Schlüssel zu einem Schloss gegeben hatte, von dem sie erst jetzt begriff, welche Tür es sperrte.
+Der Schlüssel passte. Das war das Erste, was Sayra erschreckte - dass Renkar ihr einen Schlüssel zu einem Schloss gegeben hatte, von dem sie erst in diesem Augenblick begriff, welche Tür es sperrte. Er hatte es gewusst, schon damals in der Glutlicht-Halle, als er ihn ihr in die Hand drückte. Für den Fall, dass ich es mir anders überlege. Er hatte es sich anders überlegt, lange bevor sie es ihn hatte fragen müssen.
 
-Die Archivkammer lag tief unter den Gemächern der Hochmarschall, dort, wo Sayras Vater in der Erinnerung einen Stein gehoben und ein Dokument versteckt hatte. Sie ging in der zweiten Nacht vor dem gefürchteten Gespräch - lieber jetzt, mit etwas in der Hand, als mit leeren Händen vor Olvenne zu treten. Sie schlich durch Gänge, die ihr Gedächtnis nach einem einzigen Blick auf alte Pläne behalten hatte, und ihr geteiltes Herz schlug so laut, dass sie fürchtete, die Steine könnten es hören.
+Die Archivkammer lag tief unter den Gemächern der Hochmarschall, dort, wo Sayras Vater in der Erinnerung einen losen Stein gehoben und ein Dokument darunter verborgen hatte. Sie ging in der zweiten Nacht vor dem gefürchteten Gespräch - lieber jetzt, mit etwas in der Hand, als mit leeren Händen und einem leeren Gesicht vor Olvenne zu treten. Sie schlich durch Gänge, die ihr Gedächtnis nach einem einzigen Blick auf alte Baupläne behalten hatte, jede Abzweigung, jede Nische, und der Puls in ihrer Brust - der fremde, geteilte, der ihr und Kaelith gehörte - schlug so laut, dass sie fürchtete, der schwarze Basalt selbst könnte ihn hören und sie verraten.
 
-Sie hörte den Schritt hinter sich erst, als es zu spät war.
+Sie hörte den Schritt hinter sich erst, als es zu spät war, um zu fliehen.
 
-Sie fuhr herum, eine Lüge schon auf den Lippen - und es war Renkar. Er trug kein Schwert, keine Wächtermiene. Er sah sie nur an, und in seinem Blick lag keine Überraschung.
+Sie fuhr herum, eine Lüge schon auf den Lippen, das Herz in der Kehle - und es war Renkar. Er trug kein Schwert, keine Wächtermiene, nichts von dem Eisen, das er im Übungshof anlegte wie eine Rüstung. Er sah sie nur an, und in seinem Blick lag keine Spur von Überraschung.
 
 "Du wusstest, dass ich heute komme", flüsterte sie.
 
-"Ich habe dir den Schlüssel gegeben." Er trat in den Schatten neben der Tür. "Geh hinein. Ich stehe Wache. Wenn jemand kommt, gibt es ein Geräusch - du hast Zeit, dich zu verbergen." Eine Pause, und dann, leiser: "Ich kann nicht mit dir hineingehen. Wenn man uns zusammen findet, sind wir beide tot. Aber ich kann verhindern, dass man dich allein findet."
+"Ich habe dir den Schlüssel gegeben." Er trat in den Schatten neben der Tür, machte sich schmal, unsichtbar. "Geh hinein. Ich stehe Wache. Kommt jemand, höre ich es früh genug - dann gebe ich ein Zeichen, und du hast Zeit, dich zu verbergen." Eine Pause, und dann, leiser, mit dem Rest einer Stimme: "Ich kann nicht mit dir hineingehen. Findet man uns zusammen dort drin, sind wir beide tot, noch vor Morgengrauen. Aber ich kann verhindern, dass man dich allein findet."
 
-Es war kein großes Geständnis. Es war größer als jedes große Geständnis. Renkar Stahl, der gehorsame Offizier, stellte sich Wache, während eine Schülerin das Reich bestahl. Sayra sah ihn an und wusste, dass es kein Zurück mehr gab für ihn, nicht nach dieser Nacht, und dass er es trotzdem tat.
+Es war kein großes Geständnis. Keine Liebeserklärung, kein geschworener Eid. Und doch war es größer als jedes große Wort: Renkar Stahl, der Offizier, der acht Jahre lang jeden Befehl ausgeführt hatte, stellte sich freiwillig Wache, während eine sterbende Schülerin das Reich bestahl, dem er gedient hatte. Sayra sah ihn an und wusste mit der Klarheit ihres Gedächtnisses, dass es für ihn kein Zurück mehr gab, nicht nach dieser Nacht - und dass er das ebenso genau wusste wie sie und trotzdem im Schatten stehen blieb.
 
 Sie ging hinein.
 
-Die Kammer war eng, vollgestopft mit Regalen, dem Geruch nach altem Papier und kaltem Stein. Sie fand den Boden, den Sayras Vater in der Erinnerung berührt hatte - dieselbe Ecke, derselbe lose Stein. Ihre Hände zitterten, als sie ihn hob. Darunter, in Wachstuch gewickelt, lag es: ein Dokument, versiegelt mit rotem Wachs, das brüchig geworden war von den Jahren.
+Die Kammer war eng, vollgestopft mit Regalen bis unter die niedrige Decke, und sie roch nach altem Papier, kaltem Stein und der trockenen Stille von Dingen, die seit Jahren niemand berührt hatte. Sayra fand den Boden, den ihr Vater in der Erinnerung berührt hatte - dieselbe Ecke, derselbe lose Stein, eine Handbreit von der Wand. Ihre Finger zitterten, als sie ihn hob; er kam mit einem leisen, mahlenden Laut frei. Darunter, in vergilbtes Wachstuch gewickelt, lag es: ein Dokument, versiegelt mit rotem Wachs, das in den Jahren brüchig geworden war und unter ihrer Berührung absplitterte.
 
-Sie schlug es auf. Es war eine Zählung. Spalten und Spalten von Zahlen, in der sorgfältigen Hand ihres Vaters - die Zahl der Drachen im Konkordat, Jahr um Jahr, über Jahrzehnte zurück. Und die Zahlen fielen. Nicht langsam, wie etwas natürlich ausstirbt. Sie stürzten, in genau den Jahren, in denen das Konkordat seine größten Schlachten gegen die Sturmfürsten geschlagen hatte.
+Sie schlug es auf. Eine Zählung. Spalten um Spalten von Zahlen, in der sorgfältigen, schmalen Hand ihres Vaters, die sie aus tausend Büchern kannte - die Zahl der Drachen im Konkordat, Jahr um Jahr, Jahrzehnte zurück. Und die Zahlen fielen. Nicht langsam, nicht so, wie etwas in Würde ausstirbt. Sie stürzten, sprunghaft, in genau den Jahren, in denen das Konkordat seine größten, ruhmreichsten Schlachten gegen die Sturmfürsten geschlagen haben wollte.
 
-Ein Geräusch von draußen. Renkars Warnung.
+Ein Geräusch von draußen. Kurz, scharf - Renkars Warnung.
 
-Sayra presste sich in die hinterste Ecke, hinter ein Regal, und im selben Moment war Renkar bei ihr, drückte sie in den schmalen Spalt, seinen Körper als Schild zwischen sie und die Tür. Eine Wache leuchtete herein, ein Lichtkegel strich über die Regale. Sayra hielt den Atem an. Renkar hielt den Atem an. Sie standen so eng, dass sie seinen Herzschlag spürte - nicht durch das Band, sondern durch den Stoff, durch die Haut, schnell und hart - und seinen Atem an ihrer Schläfe, und für einen Moment, der zu lang war, vergaßen beide die Wache, das Dokument, das Reich.
+Sayra presste sich in die hinterste Ecke, hinter ein Regal, das Dokument an die Brust gedrückt, und im selben Atemzug war Renkar bei ihr. Er drückte sie in den schmalen Spalt zwischen Regal und Wand, seinen eigenen Körper als Schild zwischen sie und die Tür geschoben. Ein Lichtkegel kroch herein, strich über die Regalkanten, suchte. Eine Wache, gelangweilt, gründlich. Sayra hielt den Atem an. Renkar hielt den Atem an. Sie standen so eng, dass kein Blatt zwischen sie gepasst hätte, und sie spürte seinen Herzschlag - nicht durch das Glutband, nicht durch Magie, sondern schlicht durch den Stoff seines Hemds, durch die Wärme seiner Haut, schnell und hart gegen ihre Schulter. Sie spürte seinen Atem an ihrer Schläfe, flach und beherrscht. Und für einen Moment, der viel zu lang dauerte, vergaßen sie beide die Wache, das Dokument, das Reich, den Tod, der eine Handbreit entfernt durch die Regale leuchtete - vergaßen alles außer der Tatsache, dass der andere da war, atmend, lebendig, nah.
 
-Der Lichtkegel zog weiter. Schritte entfernten sich.
+Der Lichtkegel zog weiter. Schritte entfernten sich, gemächlich, ahnungslos. Eine Tür fiel irgendwo ins Schloss.
 
 Keiner von beiden bewegte sich sofort.
 
-"Wir müssen", flüsterte Renkar schließlich, rau, und trat zurück, und die Kälte zwischen ihnen fühlte sich falsch an.
+"Wir müssen", flüsterte Renkar schließlich, rau, und trat zurück, und die Kälte, die zwischen sie fiel, wo eben noch seine Wärme gewesen war, fühlte sich an wie ein Verlust.
 
-Sie mussten fliehen, und das Dokument war zu groß, um es zu verbergen. Sayra tat das Einzige, was ging: Sie verbarg es magisch, zog einen Schleier aus Glut darüber, der es klein und unsichtbar machte - und es kostete sie, natürlich kostete es sie, und in der Hast verbrannte ein Teil des Papiers, kräuselte sich zu Asche, gerade die Hälfte mit den ältesten Zahlen. Sayra spürte die Tage gehen und biss die Zähne zusammen und rettete, was zu retten war.
+Sie mussten fliehen, und das Dokument war zu groß und zu auffällig, um es einfach unter den Mantel zu schieben. Sayra tat das Einzige, was blieb: Sie verbarg es magisch, zog einen Schleier aus Glut darüber, der es klein und unscheinbar machte, dem Auge entzog. Und es kostete sie, natürlich kostete es sie - sie spürte die Tage gehen, eine kleine, bittere Kaskade ins Dunkel - und in der Hast, mit zitternden Händen, geriet der Schleier zu heiß. Ein Teil des Papiers kräuselte sich, schwärzte, zerfiel zu Asche: gerade die Hälfte mit den ältesten Zahlen. Sayra biss die Zähne zusammen, hielt den Zauber, rettete, was zu retten war, und hasste sich für jedes verlorene Blatt.
 
-Sie kamen hinaus. Sie kamen davon.
+Sie kamen hinaus. Sie kamen davon, durch Gänge, die ihr Gedächtnis kannte, zurück ins anonyme Dunkel der Festung.
 
-Erst in der Sicherheit eines leeren Ganges, atemlos, sah Sayra auf das halbe, versengte Dokument in ihren Händen. Die ältesten Zahlen waren verloren. Aber die jüngeren genügten. Sie genügten vollkommen.
+Erst in der Sicherheit eines leeren Seitengangs, atemlos an die kalte Wand gelehnt, sah Sayra hinab auf das halbe, versengte Dokument in ihren Händen. Die ältesten Zahlen waren für immer verloren. Aber die jüngeren genügten. Sie genügten vollkommen.
 
-Denn neben den fallenden Drachenzahlen hatte ihr Vater eine zweite Spalte geführt, und die zweite Spalte trug eine Überschrift, die Sayra das Blut gefrieren ließ:
+Denn neben der Spalte der fallenden Drachenzahlen hatte ihr Vater eine zweite geführt, in noch kleinerer, noch sorgfältigerer Schrift, als hätte er gewusst, dass jedes Wort ihn das Leben kosten konnte. Und diese zweite Spalte trug eine Überschrift, bei deren Anblick Sayra das Blut in den Adern gefror:
 
 Verbrauch - nicht Verlust.
 
-Die Drachen starben nicht im Krieg. Sie wurden nicht vom Feind getötet.
+Die Drachen starben nicht im Krieg. Sie fielen nicht durch die Hand eines Feindes.
 
-Der Krieg verbrauchte sie. Mit Absicht. Und jemand führte sorgfältig Buch darüber.
+Der Krieg verbrauchte sie. Mit kühler, gezählter Absicht. Und jemand - ihr Vater, der dafür gestorben war - hatte sorgfältig Buch darüber geführt.
 
 ---
 
@@ -941,41 +945,47 @@ Der Krieg verbrauchte sie. Mit Absicht. Und jemand führte sorgfältig Buch dar�
 
 Sie entschlüsselten es zu dritt im Gegenarchiv, in der toten Stunde vor Morgengrauen - Sayra, Tamsin, Brae, drei Köpfe über ein halbverbranntes Dokument gebeugt, als hinge ihr Leben daran. Was es tat.
 
-"Hier." Brae fuhr mit dem Finger eine Zahlenkolonne entlang. "Die Schlacht von Korr-Senn. Vor sechs Jahren. Offiziell: dreihundert Drachen gefallen gegen die Sturmfürsten." Er sah auf, und sein breites Gesicht war fahl. "Aber dein Vater hat danebengeschrieben: kein Feindkontakt. Sayra - es gab keine Schlacht. Keinen Feind. Dreihundert Drachen wurden verbraucht, und man hat eine Schlacht erfunden, um die Asche zu erklären."
+Das Papier war an den Rändern zu Asche zerfallen, wo Sayra es beim Stehlen hatte verbergen müssen, und die ältesten Zahlen waren für immer verloren. Aber die Mitte hatte überlebt, und die Mitte genügte. Spalten und Spalten in der sorgfältigen Hand ihres Vaters, Jahr um Jahr, und daneben, kleiner, hastiger, seine Anmerkungen - die Worte eines Mannes, der etwas verstanden hatte, das ihn umbringen würde.
 
-Sayra hatte es kommen sehen, und es traf sie trotzdem wie ein Schlag. "Sie führen Krieg, wo kein Krieg ist", sagte sie langsam. "Sie schicken Drachen aus, lassen sie ihre Magie verbrennen, bis nichts bleibt - und nennen es Heldentod gegen die Sturmfürsten. Der Krieg ist kein Krieg. Er ist ein Ofen."
+"Hier." Brae fuhr mit dem Finger eine Zahlenkolonne entlang; seine Hand zitterte kaum merklich. "Die Schlacht von Korr-Senn. Vor sechs Jahren. Offiziell: dreihundert Drachen gefallen im Kampf gegen die Sturmfürsten. Ein großer Sieg, teuer erkauft, man hat Lieder darüber gesungen." Er sah auf, und sein breites, ehrliches Gesicht war fahl geworden. "Aber dein Vater hat danebengeschrieben, nur zwei Worte: kein Feindkontakt. Sayra - es gab keine Schlacht. Keinen Feind. Dreihundert Drachen wurden verbraucht, an einem Ort, an dem niemand auf sie wartete, und dann hat man eine Schlacht dazuerfunden, um die Asche zu erklären."
 
-Wahr, sagte Kaelith, und zum ersten Mal, seit sie ihn kannte, brach er sein Schweigen ganz. Seine Stimme in ihrem Kopf war alt und voller Trauer. Der Krieg ist die Geschichte, die sie erzählen, damit niemand fragt, wohin wir verschwinden. Es gibt Sturmfürsten, ja. Aber kein Heer davon. Der wahre Feind des Konkordats ist nicht jenseits des Aschemeers. Er ist das Erlöschen seiner eigenen Magie - und statt es zuzugeben, verbrennt es uns schneller, um die Zeit zu kaufen, in der die Wahrheit verborgen bleibt. Eine Pause. Mein Reiter Veyan hat das herausgefunden. Und dein Vater. Gemeinsam. Deshalb sind beide tot.
+Sayra hatte es kommen sehen - sie hatte die Spalte Verbrauch, nicht Verlust schon in der Archivkammer gelesen - und es traf sie trotzdem wie ein Schlag in die Magengrube. Sie sprach langsam, weil die Worte schwer waren. "Sie führen Krieg, wo kein Krieg ist. Sie schicken Drachen über das Aschemeer, lassen sie ihre Magie verbrennen, bis nichts mehr bleibt als Asche - und nennen es Heldentod gegen die Sturmfürsten. Sie geben den Sterbenden Reiter, damit es genug Hände gibt, die Drachen in den Tod zu führen." Sie sah auf. "Der Krieg ist kein Krieg. Er ist ein Ofen. Und wir sind die, die das Feuer schüren, ohne es zu wissen."
 
-Sayra saß still. Das geteilte Herz schlug langsam, schwer.
+Wahr, sagte Kaelith.
 
-"Wusste Renkar das?", fragte Tamsin leise. "Er ist Offizier. Er fliegt diese 'Schlachten'. Wenn das stimmt - dann hat er sein Leben lang an einem Ofen gedient und es gewusst."
+Es war das erste Mal, seit sie ihn kannte, dass er sein Schweigen ganz brach - nicht ein Bröckchen, hinter dem mehr lag, sondern alles, mit der erschöpften Endgültigkeit eines Mannes, der zu lange eine Tür zugehalten hat und die Kraft verliert. Seine Stimme in ihrem Kopf war uralt und randvoll mit Trauer.
 
-Und da war der Riss. Sayra hatte ihn nicht kommen sehen, weil sie nicht hatte hinsehen wollen. Renkar hatte Wache gestanden, während sie das Dokument stahl. Aber Renkar hatte auch jahrelang gehorcht. Hatte er die ganze Zeit gewusst, was er ihr nicht sagte?
+Der Krieg ist die Geschichte, die sie erzählen, damit niemand fragt, wohin wir verschwinden. Es gibt Sturmfürsten, ja - ein versprengtes Volk jenseits des Meers, das man gelegentlich überfällt, damit die Lüge ein Gesicht hat. Aber kein Heer. Keine Bedrohung, die diesen Aderlass erklärt. Der wahre Feind des Konkordats steht nicht jenseits des Aschemeers, Sayra. Er steckt in ihm selbst: Seine Magie erlischt. Die Drachen werden weniger, die Bindungen schwächer, und das Reich, das auf Drachenfeuer gebaut ist, spürt den Boden unter sich wanken. Statt es zuzugeben - statt die Lüge fallen zu lassen, auf der alles ruht - verbrennt es uns schneller, um die Zeit zu kaufen, in der niemand die Wahrheit ausspricht. Eine Pause, lang und schwer. Mein Reiter Veyan hat das herausgefunden. Und dein Vater hat ihm geholfen, es zu beweisen. Sie waren Freunde, die beiden. Sie zählten gemeinsam die Toten und merkten, dass die Zahlen nicht stimmten. Deshalb sind beide tot.
 
-Sie fand ihn am Morgen, allein, und sie war zu müde und zu wund für Höflichkeit. "Du wusstest es", sagte sie. "Der Krieg. Der Verbrauch. Du fliegst diese Schlachten, Renkar. Du musst es gewusst haben."
+Sayra saß still. Der fremde, geteilte Takt in ihrer Brust schlug langsam, schwer, im Gleichklang mit Kaeliths Trauer, bis sie kaum noch sagen konnte, wessen Kummer welcher war.
 
-Sein Gesicht schloss sich. "Ich habe geahnt."
+"Wusste Renkar das?" Tamsins Stimme war leise, vorsichtig, als trete sie auf dünnes Eis. "Er ist Offizier. Er fliegt diese Schlachten. Wenn das alles stimmt - dann hat er sein Leben lang an einem Ofen gedient. Und er hat es gewusst."
 
-"Geahnt." Das Wort kam bitter. "Wie viele Schlachten bist du geflogen, in denen kein Feind war? Wie viele Drachen hast du in den Ofen geführt und es Heldentod genannt?"
+Und da war der Riss. Sayra hatte ihn nicht kommen sehen, weil sie nicht hatte hinsehen wollen. Renkar hatte Wache gestanden, während sie das Dokument stahl; Renkar hatte gelogen, um Tamsin zu retten; Renkar hatte sich gealtert, um sich an Brae zu erinnern. Aber Renkar war auch acht Jahre lang geflogen, wohin man ihn schickte, und hatte Drachen in einen Ofen geführt, der keinen Feind hatte. Wie viel hatte er gewusst, all die Zeit, die er ihr nicht gesagt hatte?
 
-"Genug, um nicht mehr in den Spiegel zu sehen." Es brach aus ihm heraus, schärfer, als sie ihn je gehört hatte. "Glaubst du, ich schlafe? Glaubst du, ich führe das Totenbuch aus Pflichtgefühl? Ich schreibe jeden Namen, weil ich der Einzige bin, der sich weigert zu vergessen, dass es sie gab. Das ist mein ganzer Widerstand, Sayra - ein Buch voller Namen, das niemand liest. Verachte mich dafür. Ich verachte mich selbst genug für uns beide."
+Sie fand ihn am Morgen, allein im leeren Übungshof, und sie war zu müde und zu wund für Höflichkeit. "Du wusstest es", sagte sie ohne Gruß. "Der Krieg. Der Verbrauch. Du fliegst diese Schlachten, Renkar. Du musst es gewusst haben."
 
-Sie sahen sich an, beide verletzt, beide im Recht, und es gab nichts, das den Riss schloss.
+Sein Gesicht schloss sich, Zug um Zug, wie eine Tür, die ins Schloss fällt. "Ich habe geahnt."
 
-Hinter ihnen, ungehört, traf Brae eine Entscheidung.
+"Geahnt." Das Wort kam bitterer heraus, als sie es gemeint hatte. "Wie viele Schlachten bist du geflogen, in denen kein Feind stand? Wie viele Drachen hast du in den Ofen geführt und es nachher Heldentod genannt, in deinem sauberen Totenbuch?"
 
-Sie merkten es erst, als er sie ihnen sagte - am Abend, mit kalten Füßen und der Panik eines Menschen, der zu tief in etwas geraten ist. "Ich kann das nicht", sagte er. "Edran ist tot, weil er gefragt hat. Ich will nicht sterben für ein halbes verbranntes Papier. Wenn ich von selbst zu Olvenne gehe, bevor sie mich findet - vielleicht ist sie gnädig. Vielleicht - "
+"Genug, um mir das Rasieren im Spiegel abzugewöhnen." Es brach aus ihm heraus, schärfer und roher, als sie ihn je gehört hatte, und für einen Augenblick stand das ganze Eis in Trümmern. "Glaubst du, ich schlafe nachts? Glaubst du, ich führe das Totenbuch aus Pflichtgefühl, aus Ordnungsliebe? Ich schreibe jeden einzelnen Namen hinein, weil ich der Einzige bin, der sich weigert zu vergessen, dass es diese Menschen gegeben hat - dass jede Asche einmal ein Gesicht war. Das ist mein ganzer Widerstand, Sayra. Ein Buch voller Namen, das niemand außer mir je lesen wird. Es ist erbärmlich. Ich weiß." Seine Stimme sank. "Verachte mich dafür. Du kommst gar nicht so tief, wie ich mich selbst schon verachtet habe."
 
-"Brae, nein." Sayra griff nach ihm. "Gnade ist nicht in ihrem Hauptbuch. Wenn du redest, sind wir alle - "
+Sie sahen einander an, beide verletzt, beide im Recht, und es gab kein Wort, das den Riss geschlossen hätte. Manche Risse schließen sich nicht durch Worte. Nur durch das, was man danach tut.
 
-"Es tut mir leid." Er machte sich los. "Ich will nur leben."
+Hinter ihnen, ungehört, in seiner eigenen stillen Panik, traf Brae unterdessen eine Entscheidung.
 
-Sie ließ ihn gehen, weil man Angst nicht festhalten kann.
+Sie merkten es erst, als er es ihnen am Abend sagte, mit kalten Füßen und der flackernden Angst eines Menschen, der gemerkt hat, wie tief er geraten ist. "Ich kann das nicht." Er brachte es kaum heraus. "Edran ist tot, weil er Fragen gestellt hat - eine Frage im Speisesaal, drei Tage, dann war er ein 'Sturmunglück'. Ich will nicht für ein halbes verbranntes Papier sterben, Sayra. Wenn ich von selbst zu Olvenne gehe, ehe sie mich findet, und ihr alles sage - vielleicht ist sie gnädig. Vielleicht rechnet sie mir das an."
 
-Am Morgen war Braes Bett abgezogen. Sein Platz im Speisesaal leer. Und als Sayra einen Aufseher nach ihm fragte, sah der Mann sie an, ehrlich verwirrt, ohne eine Spur von Lüge im Gesicht, und sagte:
+"Brae, nein." Sayra griff nach seinem Arm. "Gnade steht nicht in ihrem Hauptbuch. Sie kennt nur Soll und Haben. Wenn du redest, sind wir alle - "
 
-"Brae? Hier war nie ein Brae. Du musst dich irren, Anwärterin."
+"Es tut mir leid." Er machte sich los, sanft, fast entschuldigend. "Ihr seid mutiger als ich. Ich will einfach nur leben."
+
+Sie ließ ihn gehen. Man kann Angst nicht festhalten; sie rinnt einem durch die Finger wie Asche.
+
+Am Morgen war Braes Bett abgezogen, die Matratze gewendet. Sein Platz im Speisesaal leer, die Bank ein Stück nachgerückt, als hätte dort nie jemand gesessen. Und als Sayra einen Aufseher nach ihm fragte - nach dem breitschultrigen Jungen aus dem Süden, der sein Brot in drei Teile brach -, sah der Mann sie an, ehrlich verwirrt, ohne eine einzige Spur von Lüge im Gesicht, und sagte:
+
+"Brae? Hier war nie ein Brae, Anwärterin. Du musst dich irren."
 
 ---
 
@@ -983,81 +993,89 @@ Am Morgen war Braes Bett abgezogen. Sein Platz im Speisesaal leer. Und als Sayra
 
 Hier war nie ein Brae.
 
-Sayra hörte den Satz den ganzen Tag, in verschiedenen Mündern, mit derselben ehrlichen Verwirrung. Sie ging von Mitschüler zu Mitschüler, fragte, drängte - und sah, wie sich in jedem Gesicht dasselbe Nichts auftat. Nicht Lüge. Schlimmer. Sie erinnerten sich wirklich nicht. Der breitschultrige Junge, der "feige" gerufen und Brot geteilt und ein Gegenarchiv mit ihnen aufgebaut hatte, war aus den Köpfen seiner Bekannten gewischt, sauber, vollständig, wie ein Name von einer Tafel.
+Sayra hörte den Satz den ganzen Tag, in verschiedenen Mündern, mit derselben ehrlichen Verwirrung. Sie ging von Mitschüler zu Mitschüler, fragte, drängte, beschrieb ihn - der Breitschultrige, der am ersten Tag "feige" gerufen und es seither bereut hatte, der nachts Brot teilte, der mit ihnen ein Gegenarchiv in einem ausgehöhlten Buchrücken aufgebaut hatte. Und in jedem Gesicht tat sich dasselbe Nichts auf.
 
-Sein Bett: abgezogen. Sein Platz in den Listen: nie vergeben. Seine Drachenmarke: kein Eintrag. Es gab kein einziges Zeugnis dafür, dass Brae je geatmet hatte.
+Nicht Lüge. Sayra kannte Lügen; sie erkannte das Flackern, das Ausweichen, den Atem, der eine Spur zu lang anhielt. Das hier war schlimmer. Sie erinnerten sich wirklich nicht. Eine Anwärterin, die zwei Wochen lang neben Brae geschlafen hatte, runzelte nur höflich die Stirn, wie man es bei einem Fremden tut, der einen mit jemand anderem verwechselt. Es war, als hätte jemand einen Namen von einer Tafel gewischt und mit ihm die Kreidespuren in allen Köpfen, die ihn je gelesen hatten.
 
-Außer in Sayras Gedächtnis, das nichts vergaß.
+Sein Bett: abgezogen, die Matratze gewendet, bereit für die nächste Sterbende. Sein Platz in den Listen: nie vergeben, die Zeile übersprungen, als hätte die Nummerierung ihn nie gekannt. Seine Drachenmarke: kein Eintrag im Register, kein Riemen an keinem Haken. Es gab kein einziges Zeugnis mehr dafür, dass Brae je geatmet hatte - keine Kerbe, kein Vergessenes, kein liegen gelassenes Hemd.
 
-Das ist es, sagte Kaelith, und seine Stimme war sehr leise und sehr alt. Das ist die Waffe, vor der ich dich beschützen wollte. Es gibt Reiter - wenige, im Geheimen ausgebildet - die fremde Erinnerungen verbrennen können. Nicht eigene. Fremde. Sie reißen einen Menschen aus den Köpfen aller, die ihn kannten, und löschen ihn aus, als hätte er nie gelebt. Es ist das tiefste Tabu unter den Reitern. Und das Konkordat benutzt es, um seine Wahrheiten zu hüten. So hat man deinen Vater ausgelöscht. So hat man Brae ausgelöscht. Und so, Mädchen, wird man dich auslöschen, wenn du nicht aufhörst.
+Außer in Sayras Gedächtnis, das nichts vergaß. Sie trug ihn jetzt allein. Sein Lachen, das immer eine Spur zu spät gekommen war. Die Art, wie er Brot in genau drei Teile gebrochen hatte, nie in zwei. Sie war sein einziges Grab geworden, und es war ein Grab aus Erinnerung, das niemand besuchen konnte als sie.
 
-"Aber ich erinnere mich", flüsterte Sayra. "Warum funktioniert es bei mir nicht?"
+Das ist es, sagte Kaelith, und seine Stimme war sehr leise und sehr alt, als spräche er aus dem Grund eines tiefen Brunnens. Das ist die Waffe, vor der ich dich beschützen wollte. Es gibt Reiter - wenige, im Geheimen ausgebildet - die fremde Erinnerungen verbrennen können. Nicht ihre eigenen, wie wir es alle tun, wenn wir zaubern. Fremde. Sie greifen in die Köpfe aller, die einen Menschen kannten, und reißen ihn heraus, sauber, Wurzel und Faden, bis niemand mehr weiß, dass es ihn gab. Es ist das tiefste Tabu unter den Reitern, denn es tötet einen Menschen zweimal: einmal den Körper, einmal die Spur, die er hinterließ. Eine Pause, schwer wie Stein. So hat man deinen Vater ausgelöscht. So hat man Brae ausgelöscht. Und so, Mädchen, wird man dich auslöschen, wenn du nicht aufhörst.
 
-Weil du dich an nichts erinnerst, sagte Kaelith. Du erinnerst dich an alles. Ein Gedächtnis wie deins ist eine Festung. Man kann nicht einzelne Steine herausbrechen, ohne dass du es merkst. Das macht dich gefährlich für sie. Und das macht dich zur Zielscheibe.
+"Aber ich erinnere mich." Sayra presste die Worte heraus, und sie klangen brüchig. "An Brae. An meinen Vater. Warum greift es bei mir nicht?"
 
-Sayra brach beinahe zusammen unter dem Gewicht. Brae war fort. Brae hatte leben wollen, und sein Wunsch zu leben hatte ihn umgebracht, und niemand außer ihr würde sich je daran erinnern, dass es ihn gegeben hatte.
+Weil du dich nicht an einzelne Dinge erinnerst. Du erinnerst dich an alles. Kaeliths Stimme wurde fast sanft, was sie schlimmer machte. Ein gewöhnliches Gedächtnis ist wie ein Regal - man kann einen Band herausziehen, und die Lücke fällt erst auf, wenn jemand danach sucht. Deins ist eine Festung aus einem einzigen Stein. Man kann nichts herausbrechen, ohne dass das Ganze splittert, und du würdest das Splittern spüren. Das ist deine Gabe. Und es ist dein Todesurteil. Eine Frau, die man nicht vergessen machen kann, ist für ein Reich, das auf dem Vergessen gebaut ist, die gefährlichste Waffe überhaupt.
 
-So fand Renkar sie - am Rand, die Hände an die Schläfen gepresst, als könnte sie das Gedächtnis selbst nicht mehr ertragen.
+Sayra brach beinahe zusammen unter dem Gewicht. Sie lehnte sich an die kalte Basaltwand, weil ihre Knie es nicht mehr taten. Brae war fort. Brae hatte leben wollen - nur das, nichts Großes, kein Heldentum, bloß weiterleben - und ausgerechnet dieser Wunsch hatte ihn umgebracht, weil er ihn vor Olvenne getragen hatte in der Hoffnung auf Gnade. Und nun würde niemand außer ihr je wieder wissen, dass es einen Jungen gegeben hatte, der Brot in drei Teile brach.
 
-Er hätte schweigen können. Es wäre sicherer gewesen. Stattdessen kniete er vor ihr nieder, nahm ihre Handgelenke, und sagte das Gefährlichste, das ein Offizier des Konkordats sagen konnte:
+So fand Renkar sie. Am Rand des Gangs, in den Schatten gekauert, die Hände an die Schläfen gepresst, als könnte sie das eigene Gedächtnis nicht mehr in sich halten.
 
-"Er hieß Brae. Er war breit gebaut und hatte ein ehrliches Gesicht und rief einmal 'feige', bevor er klüger wurde. Er war real, Sayra. Ich erinnere mich auch."
+Er hätte schweigen können. Es wäre das Sichere gewesen, das Kluge, das, was acht Jahre Gehorsam ihm beigebracht hatten. Stattdessen kniete er vor ihr nieder, langsam, und nahm ihre Handgelenke, und zog ihre Hände von den Schläfen, sanft, als fürchte er, sie könnte zerbrechen. Dann sagte er das Gefährlichste, das ein Offizier des Konkordats sagen konnte - leise, deutlich, jedes Wort ein bewusster Verrat:
 
-Es kostete ihn. Sayra sah es geschehen - sah, wie das laute Aussprechen einer verbotenen Erinnerung, das Festhalten gegen den Zauber, ihn auszehrte. In dieser Nacht alterte Renkar ein Stück. Eine neue graue Strähne, eine Falte, die vorher nicht da gewesen war, ein leises Knacken in seinen Gelenken, als er aufstand. Er verbrannte eigene Tage, um sich an einen Toten zu erinnern, den zu vergessen ihn nichts gekostet hätte.
+"Er hieß Brae. Er war breit gebaut, breiter als er Kraft hatte, und hatte ein ehrliches Gesicht, das nicht lügen konnte. Er rief am ersten Tag 'feige', bevor er klüger wurde, und dann wurde er klüger als die meisten. Er teilte sein Brot. Er war real, Sayra. Ich erinnere mich auch."
 
-"Warum", flüsterte Sayra. "Warum tust du dir das an?"
+Es kostete ihn. Sayra sah es geschehen, mit dem Gedächtnis, das nichts übersah, in Echtzeit: wie das laute Aussprechen einer Erinnerung, die ausgelöscht werden sollte, das Festhalten gegen den ziehenden Sog des Zaubers, ihn aushöhlte. Eine neue Strähne an seiner Schläfe verlor die Farbe, von der Wurzel her, während sie hinsah. Eine Falte grub sich ein, die vorher nicht dagewesen war. Als er sich bewegte, knackte etwas in seinem Knie, das Geräusch eines älteren Mannes. Er verbrannte eigene Tage - nicht für einen Zauber, nicht für eine Rettung, sondern allein dafür, sich an einen Toten zu erinnern, den zu vergessen ihn nichts gekostet hätte.
 
-Er sah sie an, lange, und in dem ausgezehrten Gesicht lag etwas, das sie noch nie darin gesehen hatte - kein Eis, keine Pflicht, sondern ein alter, tiefer Schmerz, den er sein Leben lang weggesperrt hatte.
+"Warum." Es war kaum eine Frage. "Warum tust du dir das an?"
 
-"Weil ich es einmal nicht getan habe", sagte er. "Vor langer Zeit. Sie haben jemanden ausgelöscht, der mir gehörte, und ich habe es geschehen lassen, weil ich Angst hatte. Ich habe zugesehen, wie er aus meinem eigenen Kopf verschwand, und ich habe nicht gekämpft." Seine Stimme brach beinahe. "Mein Bruder, Sayra. Ich hatte einen Bruder. Heute weiß ich nur noch, dass ich einen hatte - sein Gesicht ist fort, sein Name ist fort, alles, was sie mir gelassen haben, ist das Loch, wo er war. Weil ich nicht gekämpft habe."
+Er sah sie an, lange, und in dem ausgezehrten Gesicht öffnete sich etwas, das sie nie zuvor darin gesehen hatte. Kein Eis. Keine Pflicht. Ein alter, tiefer Schmerz, sorgfältig weggesperrt hinter all den Jahren, jetzt einen Spalt weit offen.
 
-Er stand auf, gealtert, entschlossen.
+"Weil ich es einmal nicht getan habe." Seine Stimme war rau. "Vor langer Zeit, als ich noch Schüler war. Sie haben jemanden ausgelöscht, der mir gehörte, und ich habe danebengestanden und es geschehen lassen, weil ich Angst hatte, der Nächste zu sein. Ich habe zugesehen, wie er aus meinem eigenen Kopf verschwand - Stück für Stück, über Tage, und ich habe mich nicht gewehrt." Er holte Atem, und der Atem zitterte. "Mein Bruder. Ich hatte einen Bruder, Sayra. Das ist alles, was geblieben ist - der Satz 'ich hatte einen Bruder'. Sein Gesicht ist fort. Sein Name ist fort. Seine Stimme. Was er gern aß, wie er lachte, ob er älter war als ich oder jünger - alles fort. Sie haben mir nicht ihn genommen. Sie haben mir die Erinnerung an ihn genommen und das Loch dagelassen, damit ich jeden Tag hineinsehe und weiß, dass dort etwas war." Seine Hände schlossen sich fester um ihre. "Weil ich nicht gekämpft habe."
 
-"Ich kämpfe jetzt", sagte er. "Spät. Aber ich kämpfe."
+Sayra sagte nichts. Es gab nichts zu sagen, das nicht kleiner gewesen wäre als das, was er ihr gerade gegeben hatte.
+
+Er stand auf, gealtert um etwas, das sich nicht in Jahren messen ließ, und straffte die Schultern, als nähme er ein Gewicht auf, das er lange umgangen hatte.
+
+"Ich kämpfe jetzt", sagte er. "Spät. Viel zu spät für ihn. Aber ich kämpfe."
+
+Und Sayra, die alles behielt, wusste in diesem Augenblick zweierlei mit der gnadenlosen Klarheit ihres Gedächtnisses: dass sie diesem Mann von nun an vertrauen würde, gegen jeden Rat, auch gegen Kaeliths - und dass dieses Vertrauen einen von ihnen das Leben kosten könnte.
 
 ---
 
 ## Kapitel 18 - Das Gespräch in drei Tagen
 
-Olvennes Gemächer rochen nach Tinte und kaltem Rauch - der Geruch eines Arbeitszimmers, nicht eines Thronsaals. Das machte es schlimmer. Es erinnerte Sayra an das Zimmer ihres Vaters in Kaeliths Erinnerung, und sie fragte sich, ob das Absicht war.
+Olvennes Gemächer rochen nach Tinte und kaltem Rauch - der Geruch eines Arbeitszimmers, nicht eines Thronsaals. Das machte es schlimmer. Es war derselbe Geruch wie in dem Zimmer ihres Vaters, das Sayra durch Kaeliths Erinnerung gesehen hatte: Tinte, Pergament, der Rauch einer heruntergebrannten Lampe. Sie fragte sich, ob das Absicht war - ob Olvenne wusste, wie sehr dieser Raum dem ähnelte, den sie einem anderen Archivar genommen hatte. Bei einer Frau, die alles berechnete, war nichts Zufall.
 
-"Setz dich, Kind." Olvenne goss zwei Becher eines dampfenden Getränks ein, als empfinge sie eine Nichte. "Du musst müde sein. Du gibst so viel von dir." Ihr Blick streifte die ergraute Schläfe. "Zu viel."
+"Setz dich, Kind." Olvenne goss zwei Becher eines dampfenden Getränks ein, mit ruhigen, gepflegten Händen, als empfinge sie eine Nichte zum Besuch. "Du musst müde sein. Du gibst so viel von dir." Ihr Blick streifte die ausgebrannte Schläfe, den breiten farblosen Streifen im dunklen Haar. "Zu viel, für ein Mädchen deines Alters."
 
-Sayra setzte sich und machte ihr Gesicht leer. Verbirg dich, hatte Kaelith gesagt, und er war jetzt bei ihr, ein kühler, stützender Druck hinter ihren Gedanken, der half, das wahre Ich unter einer Schicht aus Müdigkeit und Harmlosigkeit zu begraben.
+Sayra setzte sich und machte ihr Gesicht leer. Verbirg dich, hatte Kaelith gesagt, und er war jetzt bei ihr, ein kühler, stützender Druck hinter ihren Gedanken, der half, das wahre Ich unter eine Schicht aus Müdigkeit und Harmlosigkeit zu schieben. Trink nicht zuerst, fügte er hinzu. Nicht aus Furcht vor Gift - sie braucht kein Gift. Sondern weil das Trinken dich beschäftigt und sie dein Gesicht liest, während deine Hände tun haben.
 
-"Ich erzähle dir eine Geschichte", sagte Olvenne und setzte sich ihr gegenüber. "Eine lehrreiche. Es gab einmal einen Archivar in dieser Festung. Ein kluger Mann, gewissenhaft, mit einem Hang, Dinge zu zählen, die ihn nichts angingen. Er fand Zahlen, die er nicht verstand, und statt zu fragen, ob es einen Grund für sie gab - einen guten, schweren Grund -, beschloss er, dass er die Wahrheit der Welt schulde." Sie nippte an ihrem Becher. "Er hätte das Reich zerstört, dieser Mann. Mit seiner kostbaren Wahrheit hätte er Panik gesät, den Glauben gebrochen, das Konkordat in einer Nacht stürzen lassen, das Generationen gehalten hat. Was nützt die Wahrheit, wenn sie alles tötet, was sie hört?"
+Sayra ließ den Becher stehen.
 
-"Was geschah mit ihm?", fragte Sayra leise, obwohl sie es wusste.
+"Ich erzähle dir eine Geschichte." Olvenne setzte sich ihr gegenüber, gemächlich, eine Frau mit aller Zeit der Welt. "Eine lehrreiche. Es lebte einmal ein Archivar in dieser Festung. Ein kluger Mann, gewissenhaft bis zur Pedanterie, mit einem unglücklichen Hang, Dinge zu zählen, die ihn nichts angingen. Er fand Zahlen, die er nicht verstand - und statt zu fragen, ob es einen Grund für sie gab, einen guten, schweren, alten Grund, beschloss er, dass er der Welt die Wahrheit schulde." Sie hob den Becher an die Lippen, trank, ohne den Blick von Sayra zu lösen. "Er hätte das Reich zerstört, dieser Mann. Mit seiner kostbaren Wahrheit hätte er Panik in die Neun Städte getragen, den Glauben gebrochen, der die Menschen am Morgen aufstehen lässt. Er hätte in einer einzigen Nacht zertrümmert, was Generationen mühsam aufrechterhalten haben. Sag mir, Kind - was nützt die Wahrheit, wenn sie alles tötet, das sie hört?"
 
-"Er wurde Teil der Ordnung", sagte Olvenne. "Wie wir alle eines Tages." Das leere Lächeln. "Verstehst du die Lehre, Kind?"
+"Was geschah mit ihm?", fragte Sayra leise, obwohl sie es wusste. Sie wusste es bis in die Knochen.
 
-Sie redet von meinem Vater, dachte Sayra, und das geteilte Herz hämmerte, und Kaelith drückte fester, half ihr, das Gesicht still zu halten. Sie sitzt mir gegenüber und erzählt mir, dass sie meinen Vater getötet hat, und nennt es eine Lehrgeschichte.
+"Er wurde Teil der Ordnung." Olvenne stellte den Becher ab, sanft, ohne ein Klirren. "So wie wir alle eines Tages Teil der Ordnung werden." Das leere Lächeln, das den Grund nicht zeigte. "Verstehst du die Lehre, Kind?"
 
-"Ich glaube schon", sagte Sayra. "Manche Wahrheiten sind zu teuer."
+Sie redet von meinem Vater. Der fremde Takt in Sayras Brust hämmerte gegen die Rippen, und Kaelith drückte fester, half ihr, das Gesicht still und schläfrig zu halten, während alles in ihr schrie. Sie sitzt mir gegenüber, gießt mir Tee ein und erzählt mir, wie sie meinen Vater hat töten lassen - und nennt es eine Lehrgeschichte für ein folgsames Mädchen.
 
-"Klug." Olvenne lehnte sich zurück, zufrieden. "Du bist klüger als er. Darum mache ich dir ein Angebot. Du hörst auf zu graben - was immer du zu finden glaubst, lässt du liegen. Du überlässt den alten Kaelith der Forschung; ein Drache seines Alters trägt Erinnerungen, die das Reich studieren sollte, nicht ein Mädchen vergeuden. Und dafür" - sie breitete die Hände aus - "bekommst du Sicherheit. Eine Zukunft. So viel Zeit, wie deine Bindung dir lässt, in Ruhe und Ehre. Kein sauberer Schnitt im Sturm. Kein leeres Bett am Morgen."
+"Ich glaube schon", sagte Sayra, und ließ ein wenig Furcht in die Stimme, ein wenig Erschöpfung. "Manche Wahrheiten sind zu teuer. Man kann sie sich nicht leisten."
 
-Da war sie, die Drohung, in Watte gewickelt. Und gleich darauf die zweite, schärfere:
+"Klug." Olvenne lehnte sich zurück, sichtlich zufrieden, eine Lehrerin mit einer begabten Schülerin. "Du bist klüger als er es war. Darum mache ich dir ein Angebot, das ich ihm nie gemacht habe. Du hörst auf zu graben - was immer du zu finden glaubst, lässt du liegen, wo es liegt. Und du überlässt den alten Kaelith der Forschung. Ein Drache seines Alters trägt Erinnerungen aus vier Jahrhunderten; das ist ein Schatz des Reiches, den man studieren sollte, nicht an ein sterbendes Mädchen verschwenden." Sie breitete die schmalen Hände aus, als biete sie ein Geschenk. "Und dafür bekommst du Sicherheit. Eine Zukunft. So viel Zeit, wie deine Bindung dir noch lässt, in Ruhe und in Ehren. Kein sauberer Schnitt am Riemen, hoch über dem Aschemeer, wo niemand etwas sieht. Kein abgezogenes Bett am Morgen."
 
-"Und deine kleine Freundin - Oar, nicht wahr? Mit der schwachen Bindung? Solche Schicksale entscheiden sich oft mit einem einzigen Federstrich. Ich würde diese Feder ungern zu deinen Ungunsten führen."
+Da war sie, die Drohung, in weiche Worte gewickelt: Edrans Tod und Braes Verschwinden, beide benannt, ohne benannt zu werden. Und gleich darauf, ehe Sayra Atem holen konnte, die zweite, schärfere:
 
-Sayra senkte den Blick, spielte die Unterwürfige, ließ Kaelith ihre Wut tief unter der Oberfläche verbergen. "Ich verstehe, Hochmarschall", sagte sie. "Ich will nur leben. Und ich will, dass Tamsin lebt. Wenn das der Preis ist - das Graben zu lassen -, dann zahle ich ihn."
+"Und deine kleine Freundin. Oar, nicht wahr? Mit der schwachen Bindung an das Jungtier?" Olvenne sagte es beiläufig, als spreche sie über das Wetter. "Solche Schicksale entscheiden sich oft mit einem einzigen Federstrich, in einer einzigen Sitzung. Ich würde diese Feder nur ungern zu deinen Ungunsten führen."
 
-Gut gelogen, murmelte Kaelith. Sie glaubt dir fast.
+Sayra senkte den Blick auf ihre Hände im Schoß, spielte die Unterwürfige, und ließ Kaelith ihre Wut so tief unter die Oberfläche drücken, dass keine Welle davon ihr Gesicht erreichte. "Ich verstehe, Hochmarschall." Ihre Stimme war klein, müde, gehorsam. "Ich will nur leben. Und ich will, dass Tamsin lebt. Wenn das Aufhören der Preis dafür ist, dann zahle ich ihn gern."
 
-"Brav." Olvenne erhob sich, das Gespräch beendet. "Ich wusste, du bist klug."
+Gut gelogen, murmelte Kaelith, und unter dem trockenen Spott lag etwas wie Anerkennung. Sie glaubt dir fast. Halte den Blick gesenkt. Lass sie gewinnen, hier, in diesem Raum.
 
-Sayra ging zur Tür, das Herz voller kalter Entschlossenheit, die nichts mit Unterwürfigkeit zu tun hatte. Im Vorzimmer, auf einem Regal zwischen anderen Andenken eines langen, mächtigen Lebens, fiel ihr Blick auf einen kleinen Gegenstand - und sie blieb beinahe stehen, fing sich gerade noch.
+"Brav." Olvenne erhob sich, und damit war das Gespräch beendet, so beiläufig, wie es begonnen hatte. "Ich wusste, dass du klug bist. Geh und ruh dich aus, Kind. Du hast es verdient."
 
-Es war ein Siegelstempel. Aus Messing, abgegriffen. Und das Zeichen auf seiner Fläche kannte Sayra besser als ihren eigenen Namen: ein Kreis, durchquert von einem waagerechten Strich, drei Punkte darunter.
+Sayra ging zur Tür, den Schritt langsam und müde, das Herz voller einer kalten Entschlossenheit, die nichts mit Unterwürfigkeit zu tun hatte. Im Vorzimmer, beim Hinausgehen, fiel ihr Blick auf ein Regal an der Wand - Andenken eines langen, mächtigen Lebens, ordentlich aufgereiht. Und zwischen ihnen, klein und unscheinbar, ein Gegenstand, bei dessen Anblick sie beinahe stehen blieb und sich erst im letzten Moment fing.
+
+Ein Siegelstempel. Aus Messing, vom Gebrauch abgegriffen, das Holzheft dunkel von vielen Händen. Und das Zeichen auf seiner Fläche kannte Sayra besser als ihren eigenen Namen, hatte es ihr ganzes Leben lang auf Büchern und Briefen gesehen: ein Kreis, durchquert von einem waagerechten Strich, drei Punkte darunter.
 
 Die Archivar-Marke ihres Vaters.
 
-Olvenne hatte sie aufbewahrt. Nicht versteckt, nicht vernichtet - ausgestellt, zwischen Trophäen, wie ein Jäger das Geweih eines Tieres an die Wand hängt, das er erlegt hat.
+Olvenne hatte sie aufbewahrt. Nicht versteckt, nicht zerbrochen, nicht ins Feuer geworfen - ausgestellt, zwischen Reisemitbringseln und Ehrenzeichen, wie ein Jäger das Geweih eines Tieres an die Wand schraubt, das ihm besondere Mühe gemacht hat.
 
-Sayra ging hinaus mit ruhigem Schritt und leerem Gesicht, und erst als die Tür hinter ihr ins Schloss fiel, ließ sie zu, dass die Wahrheit sie traf: Sie hatte nicht nur mit der Mörderin ihres Vaters Tee getrunken.
+Sayra ging hinaus, mit ruhigem Schritt und leerem Gesicht, und erst als die schwere Tür hinter ihr ins Schloss fiel und der Gang sie verschluckte, ließ sie zu, dass die ganze Wahrheit sie traf. Sie hatte nicht nur mit der Frau Tee getrunken, die ihren Vater hatte töten lassen.
 
-Sie hatte zugesehen, wie diese ihr Vaters Grabstein als Zierde benutzte.
+Sie hatte zugesehen, wie diese Frau den Grabstein ihres Vaters als Zierde benutzte - und sie dazu gelächelt hatte.
 
 ---
 
