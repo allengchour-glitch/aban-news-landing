@@ -61,6 +61,16 @@ BRANCHEN = {
     "kosmetikstudios":     ("Kosmetikstudios",     ["Termine & Social,", "nicht die Behandlung"]),
     "cateringservice":     ("Catering-Services",   ["Angebote & Anfragen,", "nicht das Kochen"]),
     "spedition":           ("Speditionen",         ["Angebote & Kommunikation,", "nicht der Transport"]),
+    "maler":               ("Maler & Lackierer",   ["Angebote & Kommunikation,", "nicht das Streichen"]),
+    "dachdecker":          ("Dachdecker",          ["Angebote & Schriftkram,", "nicht das Dach"]),
+    "schreiner":           ("Schreiner & Tischler",["Angebote & Kundenkram,", "nicht die Werkstatt"]),
+    "optiker":             ("Augenoptiker",        ["Termine & Social,", "nicht die Sehprüfung"]),
+    "hebammen":            ("Hebammen",            ["Orga & Elterninfos,", "nicht die Geburtshilfe"]),
+    "ernaehrungsberatung": ("Ernährungsberatung",  ["Kundeninfos & Social,", "nicht die Fachberatung"]),
+    "tonstudios":          ("Tonstudios",          ["Anfragen & Texte,", "nicht der Mix"]),
+    "floristen":           ("Floristik",           ["Social & Bestellungen,", "nicht der Strauß"]),
+    "brauereien":          ("Brauereien",          ["Shop-Texte & Events,", "nicht das Bier"]),
+    "goldschmiede":        ("Goldschmiede",        ["Texte & Anfragen,", "nicht die Werkstatt"]),
 }
 
 
