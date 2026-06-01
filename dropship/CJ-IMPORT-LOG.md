@@ -791,3 +791,11 @@ Kategorie auf (Galaxus-Drilldown), Trennlinien sichtbar, alle eingeklappt. → H
 ⏳ Neue Conversion-Kampagne 1866807185899746 (20 CHF/Tag, Complete Payment) eingereicht/in Prüfung.
 NÄCHSTE SESSION: 2–3 Tage laufen lassen (TikTok-Lernphase), DANN Auswertung (Add-to-Cart/Käufe).
 Offen (Conversion-Booster, optional): WELCOME10-Popup (Shopify Forms) + Reviews (Judge.me).
+
+## 2026-06-01 — Conversion-Booster KOMPLETT ✅
+- ✅ Judge.me Reviews: Widget aktiv + AliExpress-Reviews für Bestseller importiert (User Teil A).
+- ✅ WELCOME10-Popup (Shopify Forms) LIVE: schwebend unten links, Auslöser 5 Sek + Exit-Intent,
+  Texte DE, Code WELCOME10 in Erfolgsmeldung, mobil unblockierend. Status AKTIV.
+**GESAMTSTAND Shop verkaufsbereit:** Pixel ✅ · CH-Targeting/Budget ✅ · Handy-Menü ✅ · Reviews ✅ · Popup ✅.
+TikTok-Conversion-Kampagne 1866807185899746 läuft/in Prüfung (20 CHF/Tag, Complete Payment).
+**NÄCHSTE SESSION:** 2–3 Tage Daten sammeln lassen, dann „Auswertung" (Add-to-Cart/Käufe vs. vorher 0).
