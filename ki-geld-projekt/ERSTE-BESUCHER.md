@@ -186,6 +186,57 @@ Anlageberatung): https://abannews.com/krypto
 
 ---
 
+---
+
+# 🎙️ Teil 4: Posts zur KI-Stimmen-Seite (abannews.com/tts)
+
+> Führen auf das ehrliche Text-to-Speech-Review. Enthält einen Affiliate-Link —
+> deshalb beim Teilen NICHT verschweigen, sondern die Ehrlichkeit zum Verkaufsargument
+> machen. Das passt zu Aban und schützt vor „nur Werbung"-Vorwürfen.
+
+## 10) LinkedIn / Mastodon — die ehrliche Grenze
+
+```
+KI-Stimmen sind 2026 erstaunlich gut — für Erklärvideos, Voiceover und Menüansagen
+merkt kaum jemand den Unterschied.
+
+Wo man die KI weiter hört: lange, emotionale Passagen. Für die Hörbuch-Hauptrolle
+ist die menschliche Stimme noch vorn.
+
+Hab aufgeschrieben, wofür sich Text-to-Speech wirklich lohnt — und wofür nicht.
+Mit Datenschutz-Blick (die meisten Anbieter hosten in den USA).
+```
+**Link in Kommentar 1:** `https://abannews.com/tts`
+*(Hinweis: Die Seite enthält einen Affiliate-Link — das steht dort offen dabei. Wer
+fragt, bekommt von dir dieselbe ehrliche Antwort.)*
+
+## 11) Reddit — Value-Post (r/de_EDV, r/Podcasting, r/youtube_de)
+
+> Erst mitdiskutieren. Dann das hier — gibt zuerst die Entscheidungshilfe, Link als Fußnote.
+
+**Titel:**
+```
+Wann lohnt sich eine KI-Stimme statt eines echten Sprechers? (ehrliche Einordnung)
+```
+**Text:**
+```
+Faustregel nach einigem Ausprobieren:
+
+KI-Stimme reicht: Erklärvideos, Social-Voiceover, Menü-/Telefonansagen,
+mehrsprachige Versionen, schnelle Entwürfe.
+Echter Sprecher: Werbespots, die vom Stimm-Charakter leben, Hörbücher,
+alles wo eine Persönlichkeit verkauft.
+
+Datenschutz nicht vergessen: die meisten Tools hosten in den USA — für
+Marketing-Skripte ohne Personenbezug okay, sonst Serverstandort prüfen.
+
+Ausführlicher (mit Auswahl-Kriterien) hier, falls es jemandem hilft:
+https://abannews.com/tts — enthält einen Affiliate-Link, ist auf der Seite
+gekennzeichnet, meine Einschätzung ändert das nicht.
+```
+
+---
+
 ## Danach: dran bleiben
 - 1× pro Woche ein Build-in-Public-Update auf LinkedIn (was lief, was nicht).
 - Jede Newsletter-Ausgabe → 1 Post ableiten (`automation/werkbank.py social ...`).
