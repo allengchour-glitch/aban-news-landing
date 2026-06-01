@@ -29,19 +29,25 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
-2026-06-01: **511 aktive Produkte** in 6 Kanälen. **WICHTIGSTE ERKENNTNIS (Auswertung):** 1.596
-Sessions/14T (wachsend), aber **0 Käufe, Conversion 0,0 %**, Add-to-Cart nur 0,13 %. **ROOT CAUSE:
-kein aktives TikTok-Pixel** → TikTok optimiert blind, schickt breiten US-Traffic (356 Sessions US vs
-823 CH) der nie kauft. Mobil 72 %. **Trichter oben kaputt, nicht das Produktangebot** → mehr Produkte
-bringt aktuell NICHTS, erst Conversion fixen.
-**Offene Prioritäten (Details im Log 2026-06-01):** (1) TikTok-Pixel via TikTok-Shopify-App verbinden
-(Konto „LuxeStyle CH Ads"); (2) Kampagnen-Entwurf **1866807185899746** „LuxeStyle Mode CH – Sommer"
-fertigstellen (blockiert bis Pixel aktiv); (3) altes Ad-Set auf CH begrenzen (US-Leck); (4) mobiles
-Menü drawer_accordion einschalten (User-Klick, MENU-KOMPAKT-GALAXUS.md); (5) Reviews-App + WELCOME10-Popup.
-**Geliefert:** EN-Creatives+Reels (manifest_en.tsv, render_story_creatives.sh ist sprachfähig via
+2026-06-01 (Abend): **511 aktive Produkte**, Shop jetzt **VOLL VERKAUFSBEREIT** — alle Conversion-Blocker
+des Tages gelöst. Auswertung morgens: 1.596 Sessions/14T, aber 0 Käufe / Conversion 0,0 % / Add-to-Cart
+0,13 % → Root Cause war **kein TikTok-Pixel** + kaputte Funnel-Elemente. **HEUTE GEFIXT:**
+- ✅ **TikTok-Pixel** `D8EKVR3C77U6KT5BTBD0` (via Shopify-App) grün; Konto „LuxeStyle CH Ads", 333 CHF.
+- ✅ **Conversion-Kampagne** 1866807185899746 „LuxeStyle Mode CH – Sommer" (20 CHF/Tag, Complete Payment,
+  CH/Frauen/18–34/DE+FR) — User reicht via Browser-Claude ein; altes 49-CHF-Set wird pausiert.
+- ✅ **Kritisch:** Kampagnen-Landingpage `/collections/sommer` fehlte (404!) → Smart Collection erstellt,
+  auf **44 Damenmode** fokussiert (tag sommer-2026 + damen), 6 Kanäle, SEO+Bild.
+- ✅ **Mobiles Menü** drawer_accordion an · **WELCOME10-Popup** (Shopify Forms) live · Mindestwert raus
+  (greift ab CHF 0.01) · **Judge.me Reviews** · **Homepage** fashion-first re-kuratiert.
+- ✅ **SEO** auf ~20 Kollektionen + 16 Fashion-Produkte. **Bild-QA ganzer Katalog**: 0 FAILED.
+- ✅ **Gratis-Wachstum** (GRATIS-WACHSTUM.md): Klaviyo-Welcome-Mail (Template T7bFP4), 2 Hook-Reels
+  (render_hook_reel.sh), 15 Reel-Ideen, Pinterest-Pins. Posten = User (kein API-Upload).
+**NÄCHSTE SESSION:** Kampagne 2–3 Tage laufen lassen → dann „Auswertung" (kommen jetzt Add-to-Cart/Käufe?).
+User-offene Klicks: Kampagne einreichen, altes Set pausieren, Welcome-Flow aktivieren, organisch posten.
+**Geliefert (Assets/Docs):** EN-Creatives+Reels (manifest_en.tsv, render_story_creatives.sh sprachfähig via
 CTA_TEXT/PROMO_TEXT), Markets-US/UK-Anleitung (MARKETS-US-UK-SETUP.md — US/UK existieren, deaktiviert,
-erst nach EN-Übersetzung einschalten), Affiliate-Start-Kit (AFFILIATE-START-KIT.md, UpPromote 15 %).
-Story-Reel-Skript `dropship/ads/render_story_reel.sh` (Ken-Burns + Musik).
+erst nach EN-Übersetzung einschalten), Affiliate-Start-Kit (AFFILIATE-START-KIT.md, UpPromote 15 %),
+Conversion-Booster (CONVERSION-BOOSTER.md). Story-Reel-Skript `dropship/ads/render_story_reel.sh` (Ken-Burns + Musik).
 **Kein echter 8/12h-Cron möglich** (§Scheduler) → Autonomie = Charge-für-Charge je Session + dieses Memory.
 **Workflow neue Produkte:** Token-Cache `/tmp/cj_token.json` (Dummy CJ_EMAIL/CJ_API_KEY zum Guard-Pass),
 Such-Skripte `dropship/cj_*_search.mjs`, Bilder IMMER HTTP-200 vorprüfen + nach Anlage Status READY,
