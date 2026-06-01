@@ -751,3 +751,10 @@ Affiliate-Start-Kit (AFFILIATE-START-KIT.md, UpPromote), CH-Story-Creatives + 2 
 Conversion-Kampagne (Entwurf 1866807185899746) stehen. Erst dann Budget ausgeben.
 **Pixel:** ID `D8EQE4JC77UAEKHUJCM0` erstellt; User verbindet via TikTok-Shopify-App (Variante A,
 Datenfreigabe Maximal → CompletePayment). Custom-Pixel-Code-Alternative steht in CONVERSION-BOOSTER-Kontext/Chat.
+
+## 2026-06-01 — PIXEL KORREKTUR (wichtig!)
+3 Pixel im Business Center gefunden. **RICHTIGES Pixel = „LuxeStyle CH" `D85BAGJC77UF23S9UDH0`**
+— bereits mit Shopify (au3j0y-hq.myshopify.com) verknüpft. Die anderen zwei ignorieren:
+`D8EQE4JC77UAEKHUJCM0` (pix) und `D8EKVR3C77U6KT5BTBD0` (LuxeStyle CH Pixel) — ungenutzt, NICHT verwenden.
+Letzter User-Schritt: ads.tiktok.com → Events Manager → Pixel „LuxeStyle CH" → „Web-Events verbinden"
+→ Partner Shopify → bestätigen. Danach Kampagne 1866807185899746 mit DIESEM Pixel + CompletePayment.
