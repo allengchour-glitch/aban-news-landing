@@ -650,3 +650,16 @@ Baby-Lernschüssel (15413241217409) auf User-Wunsch gelöscht.
 **3D bei CJ = mau** (nur Ohrringe/teure Drucker-Möbel; "moon lamp" 13 Treffer, lohnt präziseren Blick).
 3D-Illusionslampen/Stifte besser über DSers/AliExpress.
 Stand: **494 aktive Produkte**.
+
+## 2026-06-01 — CJ gemischte Charge (+6, Fokus Damen/Sommer)
+Token-Cache genutzt. 10 KW-Suche → 6 saubere (Hair-Mask & Drahtbürste = Fehltreffer raus).
+Alle ACTIVE, 6 Kanäle, Bilder HTTP-200 + READY:
+| Produkt | ID | V | VK | Tags |
+|---|---|---|---|---|
+| Spitzen-Bluse mit Schleife | 15413649998209 | 4 | 29.90 | damen, damen-mode |
+| Strand-Maxirock A-Linie | 15413651046785 | 20 | 34.90 | damen, strand |
+| Silber-Halskette Éternel 925 | 15413651669377 | 1 | 44.90 | damen-schmuck |
+| Sonnenbrille rahmenlos UV400 | 15413652128129 | 4 | 19.90 | sonnenbrillen |
+| Sonnenhut breite Krempe | 15413653275009 | 13 | 29.90 | sommer, strand |
+| Muschel-Fußkettchen | 15413654258049 | 1 | 12.90 | damen-schmuck, strand |
+Stand: **500 aktive Produkte.** CJ weiterhin ~50% Fehltreffer pro Suche.
