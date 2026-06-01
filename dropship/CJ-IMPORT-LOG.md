@@ -828,3 +828,15 @@ Discount-Node: gid://shopify/DiscountCodeNode/2338583150977.
 - **SEO ergänzt** (waren null): damen-mode, kleider, highlights — CH-Keywords + WELCOME10.
   bestseller+sonnenbrillen hatten schon SEO. Zusätzlich SEO: schuhe, premium-schmuck,
   taschen-sub, damen-schmuck-sub. → 7 Kollektionen total SEO-optimiert (CH-Keywords + WELCOME10).
+
+## 2026-06-01 — Autonome Runde „all 4" (volle Automation)
+1. **Produkt-SEO Bestseller:** Bestseller-Kollektion geprüft — die meisten hatten schon SEO;
+   5 Lücken bei neuen Fashion-Kleidern gefüllt (Off-Shoulder/Schnürkleid/Midikleid/Etuikleid/Herrenhemd).
+2. **Kollektions-SEO (#2):** +11 Kollektionen (premium-beauty, wohnen-dekoration, premium-tech, gadgets,
+   kuche-kochen, premium-wellness, premium-geschenke, reise-gadgets, reisen-sommer, strand, pool).
+   → ~18 Hauptkollektionen jetzt SEO-optimiert (CH-Keywords + WELCOME10).
+3. **Bild-QA ganzer Katalog (#3):** ~330 aktive Produkte gescannt (älteste/Mitte/neueste/Sommer) —
+   0 FAILED, 0 fehlende Titelbilder. Video-Titelmedien sind ok. Katalog bildtechnisch GESUND.
+   (Einziges früheres FAILED = Strandcardigan, bereits behoben.)
+4. **Outdoor/Strand-Check (#4):** alle Menü-Outdoor-Kollektionen existieren & gefüllt
+   (strand 59, pool 47, reisen-sommer 199, reise-gadgets 12) + jetzt SEO.
