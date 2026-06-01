@@ -963,3 +963,12 @@ r1_kleider „5 Kleider unter CHF 40", r2_welches „Welches ist deins? 1·2·3"
 + 3 frühere = 8 Reels total = ~1 Woche täglich Content. User postet organisch auf LuxeStore-
 TikTok + -Instagram (eigenes Marken-Profil, nicht privat). Captions je Reel im Chat geliefert.
 Social-Buttons im Shop: Customizer → Theme-Settings → Social Media (User-Schritt).
+
+## 2026-06-01 (Nacht) — Conversion-Check: Backend bereits stark
+- **TWINT** vom User aktiviert ✅ (wichtigster CH-Zahlungs-Hebel).
+- **Versand geprüft (API):** CH Standard CHF 7.00, **Gratis ab CHF 65** (schon aktiv), International CHF 15.
+  User wollte 65→60 NUR per API; das ist eine tief verschachtelte deliveryProfile-Mutation mit
+  ungewöhnlichen IDs (Risiko, Versand zu beschädigen) → bewusst NICHT geändert, bleibt bei CHF 65 (ok).
+- **Produkt-Beschreibungen** bereits stark (Benefits + Grössen-Hinweis „fällt kleiner aus" + Trust + WELCOME10).
+- Offene UI-Verbesserungen (User/Browser-Claude, kein API): Gratis-Versand-Banner sichtbar machen,
+  Reviews auf Kleider, Dringlichkeit/Countdown. Zahlungs-Wallets: ShopifyPay/ApplePay/GooglePay + TWINT.
