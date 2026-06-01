@@ -811,3 +811,9 @@ Die TikTok-Ads verlinken auf `luxestyle.ch/collections/sommer` — **diese Kolle
   (separat, 195) ist gesund → NICHT angefasst. Hinweis: es gibt jetzt 2 Sommer-Kollektionen
   (`sommer` 79 für Ads/Fashion-fokus, `sommer-2026` 195 fürs Menü) — bewusst, kein Konflikt.
 **Lehre fürs Memory:** Vor Kampagnenstart IMMER die Ziel-URL/Collection auf Existenz prüfen!
+
+## 2026-06-01 — WELCOME10 Mindestwert entfernt
+Popup-Code WELCOME10 hatte Mindestbestellwert CHF 30 → viele Ad-Produkte liegen darunter
+(Friktion im Checkout). Auf CHF 0.01 gesetzt (API erlaubt kein 0) = praktisch keine Grenze,
+Code gilt bei jeder Bestellung. Popup-Versprechen „10% auf erste Bestellung" stimmt jetzt.
+Discount-Node: gid://shopify/DiscountCodeNode/2338583150977.
