@@ -41,6 +41,16 @@ BRANCHEN = {
     "eventplaner":         ("Eventplanung",        ["Organisation,", "nicht die Show"]),
     "werbeagenturen":      ("Werbeagenturen",      ["Rohfassungen —", "nicht die Idee"]),
     "vereine":             ("Vereine",             ["Verwaltung & Förderer-", "Kommunikation"]),
+    "architekten":         ("Architekturbüros",    ["Schriftkram & Behörden,", "nicht der Entwurf"]),
+    "hausverwaltungen":    ("Hausverwaltungen",    ["Mieter-Kommunikation", "und Schriftkram"]),
+    "reinigungsfirmen":    ("Gebäudereinigung",    ["Angebote & Kommunikation,", "nicht das Putzen"]),
+    "pflegedienste":       ("Pflegedienste",       ["Orga & Kommunikation,", "nicht die Pflege"]),
+    "tierarztpraxen":      ("Tierarztpraxen",      ["Termine & Besitzer-", "Kommunikation"]),
+    "apotheken":           ("Apotheken",           ["Kundeninfos & Orga,", "nicht die Beratung"]),
+    "fitnessstudios":      ("Fitnessstudios",      ["Mitglieder-Mails,", "nicht das Training"]),
+    "garten-landschaftsbau": ("Garten- & Landschaftsbau", ["Angebote & Kundenkram,", "nicht die Arbeit"]),
+    "uebersetzer":         ("Übersetzer:innen",    ["Das Drumherum,", "nicht die Fachübersetzung"]),
+    "autohaendler":        ("Autohäuser",          ["Inserate & Anfragen,", "nicht der Verkauf"]),
 }
 
 
