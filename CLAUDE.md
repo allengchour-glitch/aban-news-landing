@@ -29,15 +29,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
-2026-05-31 (Nacht): **478 aktive Produkte** in 6 Kanälen. Diese Session +17 neue Produkte:
-3 Mode, 5 Schuhe (neue Schuh-Kollektion + Menü-Tab + Collections schuhe/damen-schuhe/herren-schuhe),
-2 Sommer-Gadgets, 4 Küche/Tech, 3 Taschen/Flaschen. Neue Subkats im Menü: 👟 Schuhe, 🍴 Küchengeräte,
-🔌 Coole Gadgets. Werbe-Video `dropship/ads/render_neu.sh` (10 Produkte, Musik, Klick-CTA) geliefert.
-Dashboard `dropship/luxestyle-dashboard.html`. Mobile-Menü „drawer_accordion" aktiv.
-**CJ-Katalog SEHR ausgeschöpft:** jede Such-Charge ~50% Fehltreffer, real 1–4 saubere Treffer.
-**Kein echter 8h-Cron möglich** (CLAUDE.md §Scheduler) → Autonomie = Charge-für-Charge je Session.
+2026-06-01: **511 aktive Produkte** in 6 Kanälen. **WICHTIGSTE ERKENNTNIS (Auswertung):** 1.596
+Sessions/14T (wachsend), aber **0 Käufe, Conversion 0,0 %**, Add-to-Cart nur 0,13 %. **ROOT CAUSE:
+kein aktives TikTok-Pixel** → TikTok optimiert blind, schickt breiten US-Traffic (356 Sessions US vs
+823 CH) der nie kauft. Mobil 72 %. **Trichter oben kaputt, nicht das Produktangebot** → mehr Produkte
+bringt aktuell NICHTS, erst Conversion fixen.
+**Offene Prioritäten (Details im Log 2026-06-01):** (1) TikTok-Pixel via TikTok-Shopify-App verbinden
+(Konto „LuxeStyle CH Ads"); (2) Kampagnen-Entwurf **1866807185899746** „LuxeStyle Mode CH – Sommer"
+fertigstellen (blockiert bis Pixel aktiv); (3) altes Ad-Set auf CH begrenzen (US-Leck); (4) mobiles
+Menü drawer_accordion einschalten (User-Klick, MENU-KOMPAKT-GALAXUS.md); (5) Reviews-App + WELCOME10-Popup.
+**Geliefert:** EN-Creatives+Reels (manifest_en.tsv, render_story_creatives.sh ist sprachfähig via
+CTA_TEXT/PROMO_TEXT), Markets-US/UK-Anleitung (MARKETS-US-UK-SETUP.md — US/UK existieren, deaktiviert,
+erst nach EN-Übersetzung einschalten), Affiliate-Start-Kit (AFFILIATE-START-KIT.md, UpPromote 15 %).
+Story-Reel-Skript `dropship/ads/render_story_reel.sh` (Ken-Burns + Musik).
+**Kein echter 8/12h-Cron möglich** (§Scheduler) → Autonomie = Charge-für-Charge je Session + dieses Memory.
 **Workflow neue Produkte:** Token-Cache `/tmp/cj_token.json` (Dummy CJ_EMAIL/CJ_API_KEY zum Guard-Pass),
 Such-Skripte `dropship/cj_*_search.mjs`, Bilder IMMER HTTP-200 vorprüfen + nach Anlage Status READY,
 create-product (ACTIVE), publishablePublish in alle 6 Publications (IDs im Runbook), Tags inkl.
-gender/kategorie passend zu Smart-Collection-Regeln. Offene User-Klicks: TikTok-Kampagne (Bid=Highest
-volume), Discord-Sales-App, Archiv-Rest löschen (~4.700, Admin-Bulk). Siehe Runbook §8–§10 + Log.
+gender/kategorie passend zu Smart-Collection-Regeln. **IMMER erst CJ-IMPORT-LOG lesen vor dem Anlegen
+(Doppel-Import-Falle!).** Archiv-Rest löschen (~4.700, Admin-Bulk) weiter offen. Siehe Runbook §8–§10 + Log.

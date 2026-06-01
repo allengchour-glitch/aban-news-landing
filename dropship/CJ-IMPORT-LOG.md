@@ -708,3 +708,32 @@ Stand: **506 aktive Produkte.**
   Anleitung in `dropship/MARKETS-US-UK-SETUP.md` (Englisch hinzufügen → Translate & Adapt →
   Märkte aktivieren → Versand). Aktivierung später per `marketUpdate enabled:true`.
 - Strategie dokumentiert: UK vor US, getrennte Ad-Sets pro Land, CH bleibt Hauptfokus.
+
+## 2026-06-01 — AUSWERTUNG + Pixel-Blocker (WICHTIG für nächste Session)
+**Shopify-Zahlen (14 T):** 1.596 Sessions (heute 434, stark wachsend), aber nur **2 Warenkorb-Adds,
+0 Käufe, CHF 0 Umsatz, Conversion 0,0 %.** Mobil 72 % (1.143). Traffic: direct 1.142, social 407
+(tiktok 316, facebook 91), search 44. **Länder-Leck: USA 356 Sessions** vs. CH 823 (+MY/SG/IE/NL…).
+**Diagnose:** Werbung bringt Traffic, aber Trichter oben kaputt (Add-to-Cart 0,13 %, normal 5–10 %).
+**3 Ursachen:** (1) Ads liefern zu breit → US-Budget-Leck; (2) mobiles Menü „drawer_accordion" noch
+NICHT umgelegt (72 % mobil); (3) kein Vertrauen/Reviews/Popup.
+
+**ROOT CAUSE gefunden:** **Kein aktives TikTok-Pixel** auf Konto „LuxeStyle CH Ads" → TikTok kann
+keine Käufer erkennen, optimiert blind auf Klicks (erklärt US-Traffic + 0 Verkäufe).
+
+**Neue Kampagne als ENTWURF angelegt** (Browser-Claude): „LuxeStyle Mode CH – Sommer",
+Kampagnen-ID **1866807185899746**, Konto LuxeStyle CH Ads, Ziel Verkäufe/Website,
+CHF 20/Tag, Höchstes Volumen, Placement nur TikTok (Pangle/Global AUS), Targeting CH/Frauen/18–34/
+Deutsch/Interessen Mode+Shopping+Beauty. **BLOCKIERT: Pixel fehlt** → Optimierungsevent „Complete
+Payment" + Creatives-Upload nicht möglich. Entwurf liegt bereit.
+
+**NÄCHSTE SCHRITTE (Priorität):**
+1. **TikTok-Pixel** via TikTok-Shopify-App verbinden (Business Center „LuxeStyle CH" + Konto
+   „LuxeStyle CH Ads", Datenfreigabe Maximal → CompletePayment). Verkaufskanal TikTok existiert schon.
+2. Entwurf 1866807185899746 fertigstellen (Complete Payment + 4 Creatives + Caption ohne Emoji + UTM).
+3. **Altes Ad-Set auf CH begrenzen/pausieren** (stoppt US-Leck).
+4. **Mobiles Menü** drawer_accordion einschalten (User-Klick, siehe MENU-KOMPAKT-GALAXUS.md).
+5. Conversion-Booster: Bewertungen-App (Judge.me) + WELCOME10-Popup.
+
+**Geliefert diese Session:** 7 EN-Creatives + 2 EN-Reels (manifest_en.tsv), Markets-US/UK-Anleitung
+(MARKETS-US-UK-SETUP.md, Märkte existieren aber deaktiviert — erst nach EN-Übersetzung einschalten),
+Affiliate-Start-Kit (AFFILIATE-START-KIT.md, UpPromote), CH-Story-Creatives + 2 Reels.
