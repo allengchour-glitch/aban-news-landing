@@ -766,3 +766,15 @@ Shopify-TikTok-App verbunden, Datenfreigabe MAXIMUM. App hat **`D8EKVR3C77U6KT5B
 Event eintrifft (Traffic nötig, bis 30 Min Verzug). **ACHTUNG Doppel-Pixel:** ggf. sind D85B...
 UND D8EKV... mit Shopify verknüpft → Käufe-Doppelzählung möglich; nur EINS (D8EKV) verbunden lassen.
 Mobiles Menü drawer_accordion: Browser-Claude macht es im Customizer (ich kann nicht, Theme API-gesperrt).
+
+## 2026-06-01 — PIXEL GRÜN + Kampagne wird scharf geschaltet
+✅ Pixel `D8EKVR3C77U6KT5BTBD0` (Shopify-verbunden) liefert Events → **grün/bereit**.
+Browser-Claude reicht Kampagne **1866807185899746** „LuxeStyle Mode CH – Sommer" ein:
+20 CHF/Tag, Optimierung **Complete Payment**, Pixel D8EKVR3C77U6KT5BTBD0, Targeting CH/Frauen/18–34/
+Deutsch+Französisch, Placement nur TikTok. Creatives: luxestyle_story_reel.mp4 + story_1/2/4.png,
+Caption ohne Emoji, CTA Jetzt einkaufen, UTM utm_campaign=mode_sommer&utm_content=set1, Identität luxestyle.
+Altes Ad-Set 1866790905208353 (49 CHF/Tag) wird PAUSIERT (nur noch neue pixel-optimierte Kampagne läuft).
+Mobiles Menü drawer_accordion: Browser-Claude schaltet im Customizer ein.
+**NÄCHSTE SESSION:** Kampagne 2–3 Tage laufen lassen (TikTok-Lernphase, ~50 Events), nicht ständig
+ändern → dann „Auswertung": Sessions/Add-to-Cart/Käufe prüfen, ob Pixel+Creatives+Menü-Fix wirken.
+Offen als Conversion-Booster: WELCOME10-Popup (Shopify Forms) + Reviews (Judge.me) — CONVERSION-BOOSTER.md.
