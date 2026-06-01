@@ -688,3 +688,11 @@ Stand: **506 aktive Produkte.**
 | High-Waist Shorts A-Linie | 15413740798337 | 15 | 24.90 |
 | Zirkonia-Blumenring | 15413741748609 | 2 | 12.90 |
 **Stand: ~511 aktive Produkte.** Session-Total CJ heute: 3 Chargen = 17 Damen/Sommer/Schmuck-Produkte.
+
+## 2026-06-01 — Session-Fortsetzung: Doppel-Import bereinigt + QA
+- **Doppel-Import erkannt:** Charge-#3-Produkte (Bandeau-Top, Sommerkleid, High-Waist-Shorts,
+  Zirkonia-Ring) waren bereits live (IDs 1541373…). Versehentlich neu angelegte Duplikate
+  (IDs 1541386…) sofort wieder gelöscht → Netto 0. Lehre: IMMER erst Log lesen, dann anlegen.
+- **Bild-QA über 50 neueste aktive Produkte:** alle READY bis auf 1 FAILED-Bild bei
+  „UV-Schutz Strandcardigan" (ID 15413083046273) → kaputtes Media gelöscht, 8 saubere Bilder bleiben.
+- Stand unverändert: **511 aktive Produkte.**
