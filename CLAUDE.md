@@ -79,11 +79,40 @@ durchgehend die du-Form.
 
 ## KI-Schriftsteller (`ki-schriftsteller/`)
 
-- Python-Generator, der Romane Kapitel für Kapitel mit `claude-opus-4-8` schreibt
-  (Plot-Bibel als gecachter System-Präfix). Einzelbuch **oder** Trilogie (`baende`).
-- Trilogie-Beispiel: `roman-drama-trilogie.json` → `trilogie.html`. Shared Helfer:
-  `roman_util.py`. Output (Kapitel + `ausgabe/`) ist **git-ignored**, braucht
-  `ANTHROPIC_API_KEY`. Details: `ki-schriftsteller/README.md`.
+Eigenständiges Roman-Werkzeug, getrennt vom Newsletter. Schreibt aus einer
+Plot-Bibel (`roman*.json`: Konzept, Welt, Figuren, Kapitelplan) Prosa Kapitel
+für Kapitel mit `claude-opus-4-8` (Plot-Bibel als gecachter System-Präfix,
+adaptives Denken, Streaming). API-Key nur via `ANTHROPIC_API_KEY`. Output
+(`kapitel*/`, `ausgabe/`, `.bak`, `.lektorat`) ist **git-ignored**.
+
+**Werkzeugkette:**
+- `schreibe_roman.py` — Kapitel schreiben (Einzelbuch/Trilogie)
+- `plane_kapitel.py` — Idee → Kapitel-Outlines (Structured Outputs)
+- `lektor.py` — KI-Lektorat je Kapitel (Kritik, schreibt nicht um)
+- `zweitmeinung.py` — Multi-Modell-Review (Claude Pflicht; OpenAI/Gemini
+  optional, lazy import, eigene Keys)
+- `ueberarbeiten.py` — Kapitel auf Feedback neu schreiben
+- `autopilot.py` — autonom: Marktanalyse → Konzepte → bestes wählen → roman.json
+  → schreiben. **Originalitäts-Grenze fest eingebaut** (lernt Genre-Muster,
+  kopiert nie konkrete Werke).
+- `buch_bauen.py` — Kapitel → Markdown + valides ePub3 (pure stdlib)
+- `buch_pdf.py` / `kdp_paket.py` / `pdf_fonts.py` — Print/KDP-Ausgabe
+- `stil_check.py` — **Selbstprüfung**: misst Motiv-Übernutzung, Tabu-Wörter,
+  Kapitellängen über einen Kapitel-Ordner (Exit 1 bei Verstoß, CI-tauglich)
+- `roman_util.py` — geteilte Helfer
+
+**Drachen-Trilogie „Aschebund" (`ki-schriftsteller/drachen/`):**
+Eigenständige Dark-Fantasy/Romantasy über Drachen, die sich nur an Sterbende
+binden (Magie kostet Lebenszeit). Marken-konform original, kein Kopieren.
+- `roman-drachen-band1.json` … `band3.json` — Plot-Bibeln (48/48/50 Kapitel)
+- **Band 1 „Glut" ist geschrieben + geglättet** (48 Kap., ~54k Wörter); Kapitel
+  in `kapitel-band1/` (git-ignored), ePub/Manuskript in `ausgabe/`.
+- `STIL-LEITFADEN.md` — destillierte Stimme (Referenz für jede Glättung)
+- `TRILOGIE.md` — Architektur/Bogen · `VERMARKTUNG.md` — 0-€-BookTok-Plan
+- `cover_glut_edel.py` — edles Pillow-Cover (Gold-Emblem) → `ausgabe/cover-glut.png`
+- Workflow Band 2/3: planen → schreiben → `lektor.py`/`zweitmeinung.py` →
+  `ueberarbeiten.py` → `stil_check.py` grün → `buch_bauen.py`. Leitfaden+Check
+  zuerst lesen, damit der Ton EINER bleibt.
 
 ## Seiten-Inventar (Auswahl)
 
