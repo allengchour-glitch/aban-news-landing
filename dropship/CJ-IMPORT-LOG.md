@@ -851,3 +851,8 @@ Discount-Node: gid://shopify/DiscountCodeNode/2338583150977.
 - **Hinweis (nicht kritisch):** dünne Menü-Kollektionen damen-schuhe(3), herren-schuhe(2),
   kuechengeraete(2) — könnten bei Bedarf mit Produkten gefüllt werden. „US / Summer 2026" (6) existiert
   schon für US-Markt. Shop hat viele redundante Kollektionen (Geschenke-unter-X etc.) — nicht im Menü, nicht angefasst.
+
+## 2026-06-01 — Bild-QA KOMPLETT (ganzer Katalog)
+Lückenloser Scan ALLER aktiven Produkte (~511, älteste→neueste durchpaginiert + Initial-Scan der
+neuesten 50 + Sommer-Kollektion): **0 FAILED, 0 fehlende Titelbilder.** Video-Titelmedien sind ok.
+→ Katalog bildtechnisch 100% gesund. Einziges je gefundene FAILED (Strandcardigan) längst behoben.
