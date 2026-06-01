@@ -623,3 +623,13 @@ Such-Charge (8 KW: Servieren, Vasen, Aufbewahrung, Strand, Garten, Wandkunst) �
 Stand: **480 aktive Produkte**. Bestätigt: CJ-Katalog praktisch leergesucht in allen getesteten
 Nischen (Mode, Schuhe, Gadgets, Küche, Taschen, Servieren, Vasen, Outdoor). Empfehlung: 2. Quelle
 (AliExpress-Import) oder Fokus auf Conversion/TikTok-Launch statt weiterer Massen-Import.
+
+## 2026-06-01 — AliExpress-Import vorbereitet (2. Quelle, da CJ leergesucht)
+Skript `dropship/ae_import.mjs` (AliExpress Open Platform, signierte API, HMAC-SHA256, Gateway
+api-sg.aliexpress.com/sync, Methode aliexpress.affiliate.product.query). Output-Format spiegelt
+cj_enrich → /tmp/ae_enriched.json, danach gleicher create-product-Workflow. Syntax+Signatur getestet.
+Setup-Doc: `dropship/AE-IMPORT-SETUP.md` (Weg A = DSers-App ohne Code; Weg B = API mit
+AE_APP_KEY/AE_APP_SECRET/AE_TRACKING_ID).
+**BLOCKER (nur User):** API-Credentials von openservice.aliexpress.com + Portals-Tracking-ID
+(Freischaltung dauert) ODER DSers-App installieren. Kein Scraping (ToS). Bei erstem echten Lauf
+ggf. pickList()-Pfad + timestamp-Format an reale API-Antwort anpassen.
