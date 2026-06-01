@@ -911,3 +911,12 @@ lassen → „Auswertung"; (3) Klaviyo-Absender von gmail auf info@luxestyle.ch 
   (LX-BAG) Entwurf — Bild-Upload scheiterte (>25 MP Shopify-Limit) → verkleinern <25 MP. ALLE 6 in
   DSers UNMAPPED → vor Verkauf mappen (AliExpress-URLs nötig oder DSers Supplier-Optimizer). US-Markt
   aktiv (USD), ABER Shop noch deutsch → englische Übersetzung (MARKETS-US-UK-SETUP.md) fehlt für echte US-Conversion.
+
+## 2026-06-01 (spät) — Klaviyo: 8 Flows LIVE (DE + EN/US)
+DE-Flows (live): Abandoned Checkout, Welcome-Serie, Post-Purchase Order+Review, At-Risk Win-Back 15%.
+EN/US-Flows (live): Abandoned Cart, Welcome Series, Post-Purchase Review, Win-Back (Template V8b6tB, -10%).
+→ Kompletter Recovery-Motor steht. Welcome-DE nutzt Template T7bFP4.
+**ABER Zustellbarkeit:** Absender = allengchour@gmail.com → Spam-Risiko bei 8 Flows. FIX nötig:
+Absender auf info@luxestyle.ch + Domain-Auth in Klaviyo (Settings→Domains→luxestyle.ch→CNAME-Records
+beim Domain-Anbieter eintragen→Verify). Ohne das landet ein Teil im Spam.
+**Hinweis:** Flows feuern erst bei Traffic/Käufen → hängt an Live-Gang der TikTok-Kampagne (steckt bei CTA).
