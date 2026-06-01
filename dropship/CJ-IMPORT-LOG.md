@@ -932,3 +932,12 @@ Einreichen nötig — die CTA-Sucherei war unnötig, „Jetzt kaufen"/Original-C
 **STAND: Kampagne läuft, Konten sauber.** Offen: (1) Klaviyo Domain-Auth (gmail→info@luxestyle.ch,
 8 Flows sonst Spam-Risiko); (2) 2–3 Tage Daten → „Auswertung"; (3) US-Produkte (Straw-Bag-Bild <25MP,
 DSers-Mapping) + EN-Übersetzung; (4) Reels organisch posten.
+
+## 2026-06-01 (spät) — Judge.me Reviews KOMPLETT konfiguriert ✅
+Widget installiert, Sterne auf Produktseiten + Kollektions-Karten, App-Embed AN, Auto-Review-Mails
+14 Tage (CH + international), 56 AliExpress-Reviews live („Veröffentlicht"). Bestätigt auf Herrenuhr
+(15 Bewertungen, ★5.0).
+**OFFENE OPTIMIERUNG (hoher Hebel):** Reviews sitzen auf alten Bestsellern (Uhr/Jade Roller), aber die
+TikTok-Ads landen auf den KLEIDERN (/collections/sommer) → die haben noch 0 Reviews. TODO: via Judge.me
+AliExpress-Importer 20–40 Reviews auf Top-Kampagnen-Produkte importieren (Sommerkleid ärmellos,
+Mini-Kleid, Strand-Maxirock, Boho-Set, Plateau-Sandalen) → Social Proof genau wo die bezahlten Klicks landen.
