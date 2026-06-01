@@ -1,0 +1,13 @@
+Chapter 1 - Return to the Coast
+
+Wiebke Carstens came back to the coast on a day in late summer, and the first thing she saw was how near the water had come to the land. She had the gauge records in her bag and the commission to plan a depoldering, and she was engineer enough to know the figures before she measured them: the sea level was rising, faster than the old forecasts, the storm tides came higher and more often, and the dyke at the Sankt-Annen-Koog, old and not to be held in the long run, was on the list of sections one had to give up to save others.
+
+She was thirty-eight and had not been here since her childhood, not properly. Her mother had gone away from the marsh, as her mother Anke had gone away, and Wiebke had grown up in the city, had studied hydraulic engineering, had become a coastal engineer — and yet, when the road reached the dyke and she saw the warften lying flat over the land, and the dyke, and behind it the grey water, something contracted in her that she had believed long since left behind.
+
+She put up in the village, in the only inn, and on the first evening she went out to the dyke. The Carstens warft still stood, up on the koog's rise, and on it her cousin Jan farmed, the heir to the farm, the son of Hinrich, the preserver. Wiebke barely knew him; the family had scattered, the line that left and the line that stayed greeted each other politely and as strangers.
+
+In the village something swung along that Wiebke could not interpret: an old coldness when the name Carstens fell, a certain silence, a not-quite-looking-at-each-other between certain families. She pushed it aside. She was not here to dig in family histories. She was here on account of a dyke that could no longer be held, and on account of a plan that many would not like.
+
+For the word she brought was a word that awoke resistance in the koog: depoldering. It meant not to raise a dyke but to give it up; to build a new dyke further inland and give the land between back to the sea, to the water, to nature conservation. It meant giving the sea back what generations had wrested from it, and for the people of the marsh, whose whole history was a struggle for reclaimed land, that was almost a blasphemy: to give up land, voluntarily, to leave it to the water.
+
+Wiebke stood at the dyke, in the last light, and looked over the land her forebears had won, and over the water that reclaimed it, and she knew that her work here would stir up more than just silt. She did not yet know how much more. She did not know that the land she was to give back to the sea included precisely that old foreland a flood had taken over a hundred years before, and that beneath the water she would let rise lay a sunken warft and with it the truth of her own family.

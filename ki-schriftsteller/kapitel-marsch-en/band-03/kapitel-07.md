@@ -1,0 +1,13 @@
+Chapter 7 - Bo's Last Word
+
+Wiebke had known her grandfather Bo only as an old, silent man, at the edge of her childhood, for he had died when she was still young. But she had a memory, a single one, that now, since she knew the records, took on its sense, and she brought it forth like a piece of evidence one has long laid aside.
+
+It had been at his deathbed. The family had come together, to the coast, for the farewell, and Wiebke, then a girl of perhaps twelve, had gone with her mother into the room where the grandfather lay, at the window from which one saw the dyke. Bo had talked confused stuff, the grown-ups had said, fever, the end. But Wiebke, the child, had listened, the way children listen, and remembered what the grown-ups wiped away.
+
+Bo had talked of Henryk. "I shouldn't have set him at the spot," he had said, again and again, "not at the spot at the weir. He pulled me from the ice, and I set him at the weir." And then of a "faulty spot", and of "Momme", and of a "book in the chest", and once, quite clearly all of a sudden, in the midst of the confusion: "It all lies in the land. Don't dig it up. Or dig it up. Someone has to speak it, once."
+
+Back then no one had understood it. Now Wiebke understood. Henryk — that had been the forced labourer of whom the farm's records said nothing, of whom only this dying sentence testified: that Bo had set him at a dangerous spot, a man who had saved his life. And the faulty spot, Momme, the book — that was the other guilt, the older one, the great-grandfather Hauke's. Bo had known both, at the end, the father's and his own, and he had not been able to speak them and yet had not quite wanted to conceal them, and so he had left them to a child, in confused words the child remembered.
+
+"Don't dig it up. Or dig it up. Someone has to speak it, once." That had been Bo's last word, the whole contradiction of a man who knew the truth and could not bear it, who wanted to be rid of it and keep it at once. It was no commission, not directly; it was the burden itself, passed on, with the plea to do something with it that he had not managed.
+
+Wiebke sat in her room at the inn, with the records and the memory, and she grasped that she was now the last who knew everything — the old guilt from the records, the younger from Bo's dying word — and the first who could freely decide, because no one lived any more whom the truth would bring down, and no one any more who kept silent. Hauke had kept silent and passed it on. Bo had known it and not got it out and passed it on. And now it lay with her, and she felt the weight of a hundred years, and she knew what Bo had meant: that someone had to speak it, once, and that she was that one, whether she wanted to or not.
