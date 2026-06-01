@@ -778,3 +778,16 @@ Mobiles Menü drawer_accordion: Browser-Claude schaltet im Customizer ein.
 **NÄCHSTE SESSION:** Kampagne 2–3 Tage laufen lassen (TikTok-Lernphase, ~50 Events), nicht ständig
 ändern → dann „Auswertung": Sessions/Add-to-Cart/Käufe prüfen, ob Pixel+Creatives+Menü-Fix wirken.
 Offen als Conversion-Booster: WELCOME10-Popup (Shopify Forms) + Reviews (Judge.me) — CONVERSION-BOOSTER.md.
+
+## 2026-06-01 — Mobiles Menü ERLEDIGT ✅
+Customizer → Header → Menü-Block → „Mobiles Layout": Drawer accordion AN (war bereits aktiv),
+Drawer dividers AN, Drawer accordion expand first AUS. Mobiler Drawer klappt jetzt Kategorie-für-
+Kategorie auf (Galaxus-Drilldown), Trennlinien sichtbar, alle eingeklappt. → Handy-Menü-Blocker gelöst.
+
+## STAND ENDE 2026-06-01 — alle 3 Haupt-Blocker gelöst
+1. ✅ Pixel D8EKVR3C77U6KT5BTBD0 grün (Käufer-Tracking)
+2. ✅ Targeting CH/DE+FR, Suchplatzierung aus, altes 49-CHF-Set pausiert (Budget-Schutz)
+3. ✅ Mobiles Menü drawer_accordion (72 % mobil)
+⏳ Neue Conversion-Kampagne 1866807185899746 (20 CHF/Tag, Complete Payment) eingereicht/in Prüfung.
+NÄCHSTE SESSION: 2–3 Tage laufen lassen (TikTok-Lernphase), DANN Auswertung (Add-to-Cart/Käufe).
+Offen (Conversion-Booster, optional): WELCOME10-Popup (Shopify Forms) + Reviews (Judge.me).
