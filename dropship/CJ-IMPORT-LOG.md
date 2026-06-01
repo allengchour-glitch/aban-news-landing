@@ -900,3 +900,14 @@ Reviews ✅ · Handy-Menü ✅ · Homepage fashion-first ✅ · Klaviyo Welcome-
 **OFFEN:** (1) TikTok-Prüfung abwarten (Ads „Ausstehend" → „Genehmigt", 1–24h); (2) 2–3 Tage laufen
 lassen → „Auswertung"; (3) Klaviyo-Absender von gmail auf info@luxestyle.ch + Domain-Auth (Zustellbarkeit);
 (4) Reels organisch posten (User); (5) optional: alte Entwürfe im Konto 7641101648701554704 löschen.
+
+## 2026-06-01 (spät) — KORREKTUR Kampagnen-Status + US-Produkte
+- **TikTok:** Spätere Browser-Session zeigte: Kampagne 1866807185899746 war doch noch ENTWURF
+  (+ 3 Duplikat-Entwürfe entstanden: Verkäufe…183055, …183253, Reichweite…172426 = falsches Ziel).
+  Hängengeblieben, weil CTA „Jetzt einkaufen" in TikTok NICHT existiert → Lösung: **„Jetzt kaufen"**
+  verwenden (= ok für Shop). Pixel/Event(Kauf=CompletePayment)/Caption/Identität/URL waren korrekt.
+  TODO: CTA „Jetzt kaufen" setzen → einreichen → 3 Duplikate löschen. Status danach prüfen.
+- **Shopify „US / Summer 2026" (6 Produkte, separates US-Initiative):** 5 aktiv mit Bild, Straw Bag
+  (LX-BAG) Entwurf — Bild-Upload scheiterte (>25 MP Shopify-Limit) → verkleinern <25 MP. ALLE 6 in
+  DSers UNMAPPED → vor Verkauf mappen (AliExpress-URLs nötig oder DSers Supplier-Optimizer). US-Markt
+  aktiv (USD), ABER Shop noch deutsch → englische Übersetzung (MARKETS-US-UK-SETUP.md) fehlt für echte US-Conversion.
