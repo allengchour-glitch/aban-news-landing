@@ -1,0 +1,19 @@
+Chapter 11 - Denazification
+
+The committee sat in the county town, and Bo sat before it, on a chair, like an accused, and it was, he thought, a strange reversal: all his life he had sat behind the table, with the list, the quota, and decided over others. Now others sat behind the table, and on their list stood he.
+
+They read out what they knew about him: local farm leader, member, responsible for the delivery quota, master of forced labourers. It sounded bad and was the usual; many in the marsh had done the same, and one could not punish all, so one asked after the degree, after witnesses, whether one had been a slave-driver or only a follower who carried out what all carried out.
+
+Then they called Thies Feddersen.
+
+Bo saw him enter, the old labourer, who had worked forty years on the farms of the Carstenses, first at Hauke's, then at his, the son of the man who drowned at the faulty spot. Thies knew more about the Carstenses than anyone. He had seen the quota-collecting, the looking-away, the years of joining-in. And perhaps he knew more about Henryk than Bo thought; perhaps he had seen something, heard, sensed. A man like Thies, who bore forty years of bitterness against the Carstenses, now had the chance to take revenge, with a few sentences, before a committee that listened to witnesses.
+
+Thies spoke. He spoke briefly, factually, without hatred, which was worse than hatred. He said what was: that Bo had been local farm leader, that he had collected the quota, hard sometimes. He said it soberly, without exaggerating. And when the chairman asked whether Bo Carstens had been a particularly zealous, a particularly hard one, one who had done more than ordered — there Thies paused, long, and Bo held his breath.
+
+There a woman stepped forward, a refugee woman whom Grete had taken in, and she testified about the house of Carstens: that the farmwife, Grete, had given her and her children the roof, shared the bread, without asking, when they had nothing. And another voice, from somewhere, testified that food had come from the house of Carstens to the forced labourers, secretly, at risk — Grete's bread, over the stable door, to Henryk and the others.
+
+Thies heard that, and it changed something in his face. He could have stayed with the incriminating. Instead he said, and it visibly cost him something: "If bread came from the house for the foreigners, then the woman risked more than most here. And if bread comes from a house, not everything in it is rotten." He looked at Bo. "I have nothing in hand against Bo Carstens that would make him a slave-driver. He was a follower like a hundred others. No better. But no worse either."
+
+It was no defence. It was a bitter justice, a truth, no more and no less, and it sufficed for survival, not for acquittal. The committee classified Bo as a follower, with a fine, a ban on public offices that lapsed after years. Bo was allowed to stay, allowed to keep the farm, allowed to go on living in the marsh. His civic life was saved, by his wife's bread and the truthfulness of a man who had every reason to destroy him.
+
+After the session, in the corridor, Thies stepped to him once more. They stood alone, the son of the drowned man and the follower, and Thies looked at him, long, and said quietly, only for Bo: "I told the truth, Carstens, no more. It helped you, this time. But don't confuse it with forgiveness. Your guilt I do not take from you. It lies in the land. Ask the land. Ask the book in your chest. It knows more than I." And he went, the old man, and Bo stayed in the corridor, survived, saved, and more heavily laden than before, for now he knew that Thies knew something about the book, about the old flood, and that the guilt was older than his own failure and reached deeper, to the father, to the faulty spot at which Thies's father drowned.

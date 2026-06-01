@@ -1,0 +1,13 @@
+Chapter 10 - The Treks
+
+In the winter of 1945 the treks came. From the east, over the ice, over the destroyed roads, they came, the refugees, hundreds of thousands, and a part of the stream reached the coast too, the marsh, the flat land at the end of the Reich. They came with horse-wagons, with handcarts, with what they could carry, women, children, old people, for the men were in the field or dead, and they sought a roof, a piece of bread, a place.
+
+The koog had to take them in. It was ordered, and it was also unavoidable without an order, for the people were there, stood before the farms, exhausted, half-frozen, and one could not leave them standing in the snow. Onto every farm came billetings, and onto the Carstens farm too, which was large and had room.
+
+Bo hesitated. Not from hard-heartedness alone, but from the reckoning that had become his nature: the foreigners ate along, needed room, and times were tight. But Grete did not hesitate. She took in a family, a mother with three children from East Prussia, whose husband was missing, and she gave them the chamber and shared the food, without asking, without reckoning. "They have nothing, Bo," she said. "We have a roof. That's all that counts." And Bo, who reckoned, was silent before Grete's clarity, which did not reckon.
+
+It was the same difference as with Henryk: Grete saved, where Bo reckoned. She did the human thing, simply, without ado, and Bo saw it and could not do it, and in the seeing lay a confession he did not confess to himself: that his wife was of a wood he did not have, that she did the right thing where he did the sensible thing, and that the sensible thing was often the wrong one.
+
+With the treks came the end too. The war collapsed, the front came nearer, then the British were there, took over the control, and the old order of the marsh, the order of the flags and slogans and the hereditary farm law, that fell apart overnight. The hereditary farm law was abolished; the farm was no longer untouchable, no longer sacred, only a farm, a large farm on the coast whose owner had been local farm leader.
+
+And that was what Bo now feared. He was compromised, he knew that: local farm leader, member, one who had collected the quota and joined in. The British and the new administration would ask who had been what, and Bo would have to answer. And there was one who knew what Bo had been, who could incriminate him: Thies Feddersen, the landless labourer, who had been on the farm all those years and had seen everything, the quota-collecting, the looking-away, perhaps more. Thies Feddersen, the son of the man who had drowned at the faulty spot of the Carstenses, forty years ago. He of all people would now, perhaps, decide over Bo's fate.
