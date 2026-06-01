@@ -42,8 +42,15 @@ des Tages gelöst. Auswertung morgens: 1.596 Sessions/14T, aber 0 Käufe / Conve
 - ✅ **SEO** auf ~20 Kollektionen + 16 Fashion-Produkte. **Bild-QA ganzer Katalog**: 0 FAILED.
 - ✅ **Gratis-Wachstum** (GRATIS-WACHSTUM.md): Klaviyo-Welcome-Mail (Template T7bFP4), 2 Hook-Reels
   (render_hook_reel.sh), 15 Reel-Ideen, Pinterest-Pins. Posten = User (kein API-Upload).
-**NÄCHSTE SESSION:** Kampagne 2–3 Tage laufen lassen → dann „Auswertung" (kommen jetzt Add-to-Cart/Käufe?).
-User-offene Klicks: Kampagne einreichen, altes Set pausieren, Welcome-Flow aktivieren, organisch posten.
+**STAND ABEND-SPÄT (bestätigt via Browser-Claude):** ✅ Mode-Kampagne 1866807185899746 AKTIV, 4 Ads in
+Prüfung. ✅ Altes 49-CHF-Set pausiert, Junk-Ads + Duplikat-Entwürfe gelöscht, beide Konten sauber.
+✅ **8 Klaviyo-Flows LIVE** (DE+EN/US: Abandoned, Welcome, Post-Purchase, Win-Back). ✅ Judge.me komplett
+(Sterne, 56 Reviews, Auto-Mails 14T). ✅ US-Markt aktiv (USD); 6 US-Produkte (5 aktiv, Straw-Bag Entwurf).
+**NÄCHSTE SESSION / OFFEN:** (1) ⚠️ es sind 3 Kampagnen aktiv → 2 Extra („Conversion 20260601195112",
+„Sommer-Highlights 2026") prüfen+pausieren, nur Mode-Kampagne laufen lassen; (2) Klaviyo Domain-Auth
+(gmail→info@luxestyle.ch, sonst Flows im Spam); (3) Judge.me-Reviews auf die KLEIDER importieren (Ads landen
+dort, noch 0 Reviews); (4) US: Straw-Bag-Bild <25MP + DSers-Mapping (alle 6 unmapped!) + EN-Übersetzung;
+(5) Reels organisch posten. **Dann: 2–3 Tage laufen lassen → „Auswertung".**
 **Geliefert (Assets/Docs):** EN-Creatives+Reels (manifest_en.tsv, render_story_creatives.sh sprachfähig via
 CTA_TEXT/PROMO_TEXT), Markets-US/UK-Anleitung (MARKETS-US-UK-SETUP.md — US/UK existieren, deaktiviert,
 erst nach EN-Übersetzung einschalten), Affiliate-Start-Kit (AFFILIATE-START-KIT.md, UpPromote 15 %),
