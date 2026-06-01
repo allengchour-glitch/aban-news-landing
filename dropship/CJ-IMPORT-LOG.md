@@ -758,3 +758,11 @@ Datenfreigabe Maximal → CompletePayment). Custom-Pixel-Code-Alternative steht 
 `D8EQE4JC77UAEKHUJCM0` (pix) und `D8EKVR3C77U6KT5BTBD0` (LuxeStyle CH Pixel) — ungenutzt, NICHT verwenden.
 Letzter User-Schritt: ads.tiktok.com → Events Manager → Pixel „LuxeStyle CH" → „Web-Events verbinden"
 → Partner Shopify → bestätigen. Danach Kampagne 1866807185899746 mit DIESEM Pixel + CompletePayment.
+
+## 2026-06-01 — PIXEL-UPDATE (Korrektur der Korrektur)
+Shopify-TikTok-App verbunden, Datenfreigabe MAXIMUM. App hat **`D8EKVR3C77U6KT5BTBD0`**
+(„LuxeStyle CH Pixel") als Shopify-Hauptquelle gesetzt — also DIESES Pixel in Kampagne
+1866807185899746 verwenden (nicht D85B... / nicht D8EQE4...). Status „Nicht bereit" bis erstes
+Event eintrifft (Traffic nötig, bis 30 Min Verzug). **ACHTUNG Doppel-Pixel:** ggf. sind D85B...
+UND D8EKV... mit Shopify verknüpft → Käufe-Doppelzählung möglich; nur EINS (D8EKV) verbunden lassen.
+Mobiles Menü drawer_accordion: Browser-Claude macht es im Customizer (ich kann nicht, Theme API-gesperrt).
