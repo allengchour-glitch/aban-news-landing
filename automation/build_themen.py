@@ -64,6 +64,9 @@ HEAD_CSS = """  <style>
     .related h2{font-size:1rem;color:var(--muted);margin-bottom:.6rem}
     .related a{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.4rem .9rem;margin:0 .4rem .4rem 0;font-size:.9rem;text-decoration:none;font-weight:600}
     .related a:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .vertiefung{margin:1.2rem 0 0;font-weight:700}
+    .vertiefung a{display:inline-block;background:var(--amber-lt);border:1px solid var(--amber);border-radius:10px;padding:.7rem 1.1rem;text-decoration:none;color:var(--amber-dk)}
+    .vertiefung a:hover{background:var(--cream)}
     footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
     footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
     footer a{color:var(--muted);text-decoration:none}
@@ -189,6 +192,13 @@ def render_topic(t, by_slug):
         if links:
             rel = '    <div class="related">\n      <h2>Verwandte Themen</h2>\n      ' + "".join(links) + "\n    </div>\n"
 
+    # Optionaler Vertiefungs-Link (interne Seite ausserhalb der Themen) — nur wenn gesetzt.
+    vertiefung = ""
+    v = t.get("vertiefung")
+    if v and v.get("href") and v.get("text"):
+        vertiefung = (f'    <p class="vertiefung"><a href="{esc(v["href"])}">'
+                      f'→ {esc(v["text"])}</a></p>\n')
+
     ld_blocks = [{"@context": "https://schema.org", "@type": "Article",
                   "headline": t["titel"], "description": t["kurz"],
                   "author": {"@type": "Person", "name": "Aban (Allen Chour)"},
@@ -231,7 +241,7 @@ def render_topic(t, by_slug):
       <p class="lead">{esc(t['intro'])}</p>
     </div>
     <article>
-{secs}    </article>
+{secs}{vertiefung}    </article>
 {faq_html}{CTA}
 {rel}  </div>
 </main>
