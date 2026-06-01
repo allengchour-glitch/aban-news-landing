@@ -50,3 +50,23 @@ kapitel-schicht/band-*/*.lektorat.md
 !kapitel-schicht-en/band-02/kapitel-*.md
 !kapitel-schicht-en/band-03/
 !kapitel-schicht-en/band-03/kapitel-*.md
+
+# --- Ausnahme: handgeschriebener Roman "Marsch" (Nordsee-Saga) ---
+!kapitel-marsch/
+!kapitel-marsch/band-01/
+!kapitel-marsch/band-01/kapitel-*.md
+!kapitel-marsch/band-02/
+!kapitel-marsch/band-02/kapitel-*.md
+!kapitel-marsch/band-03/
+!kapitel-marsch/band-03/kapitel-*.md
+kapitel-marsch/band-*/*.bak.md
+kapitel-marsch/band-*/*.lektorat.md
+
+# --- Ausnahme: englische Uebersetzung "The Reclaimed Land" ---
+!kapitel-marsch-en/
+!kapitel-marsch-en/band-01/
+!kapitel-marsch-en/band-01/kapitel-*.md
+!kapitel-marsch-en/band-02/
+!kapitel-marsch-en/band-02/kapitel-*.md
+!kapitel-marsch-en/band-03/
+!kapitel-marsch-en/band-03/kapitel-*.md

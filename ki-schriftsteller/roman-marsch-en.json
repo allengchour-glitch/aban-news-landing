@@ -1,0 +1,80 @@
+{
+  "titel": "The Reclaimed Land",
+  "autor": "aban news",
+  "genre": "Drama / Family and Social Novel",
+  "sprache": "English",
+  "klappen_headline": "Three generations. A concealed breach. A land the sea reclaims.",
+  "klappentext": "Sankt Annen, 1906: on the night of the great storm tide the dyke breaks at a weak spot that Hauke Carstens, as dyke-reeve, was responsible for. A neighbour drowns – and Hauke conceals that he knew the spot was faulty and, to save money, had left it unrepaired. The breach becomes an accident, the silence an inheritance.\n\nAcross three generations the family carries the guilt, embanked like the land itself – through two wars, land reform and the economic miracle – until the granddaughter Wiebke returns as a coastal engineer and the rising sea lays bare the old foreland that was once drowned.\n\nA sober, epic coastal drama about guilt and silence, land and water – and what remains when the sea reclaims what was wrested from it.",
+  "hinweis": "Englische Ausgabe von 'Marsch'. Struktur fuer den Compiler; die Prosa liegt in kapitel-marsch-en/band-0N/. Beats stehen in der deutschen Bibel roman-marsch.json.",
+  "baende": [
+    {
+      "nummer": 1,
+      "titel": "Reclaiming the Land",
+      "untertitel": "Sankt Annen, 1901–1918",
+      "kapitel": [
+        {"nummer": 1, "titel": "The New Dyke-Reeve"},
+        {"nummer": 2, "titel": "The Neighbour"},
+        {"nummer": 3, "titel": "Dyke Duty"},
+        {"nummer": 4, "titel": "The Faulty Spot"},
+        {"nummer": 5, "titel": "The Spring Tide"},
+        {"nummer": 6, "titel": "The Breach"},
+        {"nummer": 7, "titel": "An Act of God"},
+        {"nummer": 8, "titel": "Who Dykes, Gains"},
+        {"nummer": 9, "titel": "The Boy at His Hand"},
+        {"nummer": 10, "titel": "War and Dyke"},
+        {"nummer": 11, "titel": "Antje's Question"},
+        {"nummer": 12, "titel": "The Dyke Book"},
+        {"nummer": 13, "titel": "Inflation and Land"},
+        {"nummer": 14, "titel": "The Old Dyke-Reeve"},
+        {"nummer": 15, "titel": "The Hereditary Farm"},
+        {"nummer": 16, "titel": "Blood and Soil"}
+      ]
+    },
+    {
+      "nummer": 2,
+      "titel": "Storm Tide",
+      "untertitel": "Sankt Annen, 1934–1953",
+      "kapitel": [
+        {"nummer": 1, "titel": "The Heir"},
+        {"nummer": 2, "titel": "Local Farm Leader"},
+        {"nummer": 3, "titel": "Grete"},
+        {"nummer": 4, "titel": "The Quota"},
+        {"nummer": 5, "titel": "War on the Coast"},
+        {"nummer": 6, "titel": "Henryk"},
+        {"nummer": 7, "titel": "On the Ice"},
+        {"nummer": 8, "titel": "The February Flood"},
+        {"nummer": 9, "titel": "No One Asks"},
+        {"nummer": 10, "titel": "The Treks"},
+        {"nummer": 11, "titel": "Denazification"},
+        {"nummer": 12, "titel": "Rebuilding"},
+        {"nummer": 13, "titel": "The Son Who Stays"},
+        {"nummer": 14, "titel": "Land Under, Land Over"},
+        {"nummer": 15, "titel": "The Dyke Book, Found Again"},
+        {"nummer": 16, "titel": "What the Land Holds"}
+      ]
+    },
+    {
+      "nummer": 3,
+      "titel": "Depoldering",
+      "untertitel": "Sankt Annen, present day",
+      "kapitel": [
+        {"nummer": 1, "titel": "Return to the Coast"},
+        {"nummer": 2, "titel": "The Cousin and the Land"},
+        {"nummer": 3, "titel": "The Records"},
+        {"nummer": 4, "titel": "The Uncovered Foreland"},
+        {"nummer": 5, "titel": "Lena Feddersen"},
+        {"nummer": 6, "titel": "Jan at the Dyke"},
+        {"nummer": 7, "titel": "Bo's Last Word"},
+        {"nummer": 8, "titel": "What to Do with It"},
+        {"nummer": 9, "titel": "The Koog Speaks"},
+        {"nummer": 10, "titel": "The Opening of the Dyke"},
+        {"nummer": 11, "titel": "Reconciliation"},
+        {"nummer": 12, "titel": "The Last Tide at the Old Dyke"},
+        {"nummer": 13, "titel": "The Dyke Book, Read"},
+        {"nummer": 14, "titel": "What the Sea Reclaims"},
+        {"nummer": 15, "titel": "What Remains When the Land Sinks"},
+        {"nummer": 16, "titel": "High and Low Waters"}
+      ]
+    }
+  ]
+}
