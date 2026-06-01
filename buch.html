@@ -209,6 +209,45 @@
       <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Willst du mehr? <a href="/founding.html">Founding-Member (€69 lifetime)</a> bekommt alles zuerst.</p>
     </div>
 
+    <!-- Weiterempfehlen — trackingfrei, keine 3rd-Party-Skripte -->
+    <div class="refer-box">
+      <h3 class="refer-h">🤝 Kennst du jemanden, dem das hilft?</h3>
+      <p class="refer-p">aban news wächst durchs Weitersagen, nicht durch Werbe-Budget. Wenn dir das Buch etwas bringt, leite es an eine Person weiter, die täglich 5 Minuten ehrliche KI-News gebrauchen kann.</p>
+      <div class="refer-row">
+        <a class="refer-btn" target="_blank" rel="noopener" href="https://wa.me/?text=T%C3%A4glich%205%20Min%20ehrliche%20KI-News%20f%C3%BCr%20DACH-Profis%20%E2%80%94%20kein%20Hype%2C%20kein%20Spam.%20Schau%20dir%20aban%20news%20an%3A%20https%3A//abannews.com/">💬 WhatsApp</a>
+        <a class="refer-btn" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//abannews.com/">in LinkedIn</a>
+        <a class="refer-btn" href="mailto:?subject=Schau%20dir%20aban%20news%20an&amp;body=T%C3%A4glich%205%20Min%20ehrliche%20KI-News%20f%C3%BCr%20DACH-Profis%20%E2%80%94%20kein%20Hype%2C%20kein%20Spam.%20Schau%20dir%20aban%20news%20an%3A%0A%0Ahttps%3A//abannews.com/">✉️ E-Mail</a>
+        <button class="refer-btn" type="button" id="shCopy">🔗 Link kopieren</button>
+      </div>
+      <p class="refer-ok" id="shMsg" role="status" aria-live="polite"></p>
+    </div>
+    <style>
+      .refer-box{background:#fff;border:1px solid #ece6db;border-radius:16px;padding:1.25rem 1.4rem;margin:1.5rem 0;box-shadow:0 6px 18px rgba(28,37,48,.08)}
+      .refer-h{margin:0 0 .4rem;font-size:1.15rem}
+      .refer-p{margin:0;color:#3b4654;line-height:1.5}
+      .refer-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
+      .refer-btn{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #ece6db;background:#fff;
+        color:#b45309;font-weight:700;font-size:.92rem;line-height:1;padding:.65rem .95rem;border-radius:10px;
+        text-decoration:none;cursor:pointer;font-family:inherit;transition:transform .12s ease,border-color .12s ease}
+      .refer-btn:hover{transform:translateY(-1px);border-color:#d97706}
+      .refer-btn:focus-visible{outline:3px solid #d97706;outline-offset:2px}
+      .refer-ok{color:#0f9d6b;font-weight:700;font-size:.88rem;margin:.6rem 0 0;min-height:1.1em}
+      @media(prefers-reduced-motion:reduce){.refer-btn{transition:none}.refer-btn:hover{transform:none}}
+    </style>
+    <script>
+    (function(){
+      var cp=document.getElementById('shCopy'),msg=document.getElementById('shMsg');
+      if(!cp)return;
+      cp.addEventListener('click',function(){
+        var url="https://abannews.com/";
+        var ok=function(){msg.textContent="Link kopiert — danke fürs Weitersagen! ☕";};
+        if(navigator.clipboard&&navigator.clipboard.writeText){
+          navigator.clipboard.writeText(url).then(ok,function(){msg.textContent=url;});
+        }else{msg.textContent=url;}
+      });
+    })();
+    </script>
+
     <p style="text-align:center;font-size:.88rem;color:var(--muted);margin:0 0 .4rem;">Lust auf Fiktion? <a href="/trilogie.html">„Das Tal hält den Atem an"</a> — eine KI-Drama-Trilogie in drei Bänden, gratis als ePub &amp; PDF.</p>
 
     <div class="disclaimer">
