@@ -948,3 +948,11 @@ korrekt, Identität/Caption/URL ok. 3 Duplikat-Entwürfe gelöscht.
 ⚠️ ABER Endzustand zeigt 3 AKTIVE Kampagnen: „Mode CH – Sommer" + „Conversion 20260601195112" +
 „LuxeStyle CH – Sommer-Highlights 2026". → Budget-Split-/Daten-Risiko. TODO: die 2 Extra-Kampagnen
 prüfen (Budget/Spend/Ziel) und PAUSIEREN, sodass nur die Mode-Kampagne läuft (sauberer Test, 1 Kampagne).
+
+## 2026-06-01 (Nacht) — Auf 1 saubere Kampagne reduziert ✅
+2 Extra-Kampagnen pausiert. Datenpunkt: „Sommer-Highlights 2026" (49 CHF/Tag) hatte 17,80 CHF / 19.093
+Impressionen verbraucht (CPM ~0,90 = billige Breit-Reichweite) — aber 0 Käufe → genau das Budget-Loch.
+„Conversion …195112" (30 CHF) quasi ungenutzt (0,01 CHF/53 Imp). Beide pausiert (nicht gelöscht).
+**JETZT: nur „LuxeStyle Mode CH – Sommer" (1866807185899746) aktiv** — pixel-optimiert auf Complete
+Payment, Ads in Prüfung. Sauberer Zustand für die Lernphase. Restliche offene Punkte: Klaviyo Domain-Auth,
+Judge.me-Reviews auf Kleider, US-Produkte, Reels organisch (User postet selbst — kein API-Upload).
