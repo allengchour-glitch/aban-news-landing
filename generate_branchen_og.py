@@ -51,6 +51,16 @@ BRANCHEN = {
     "garten-landschaftsbau": ("Garten- & Landschaftsbau", ["Angebote & Kundenkram,", "nicht die Arbeit"]),
     "uebersetzer":         ("Übersetzer:innen",    ["Das Drumherum,", "nicht die Fachübersetzung"]),
     "autohaendler":        ("Autohäuser",          ["Inserate & Anfragen,", "nicht der Verkauf"]),
+    "baeckereien":         ("Bäckereien",          ["Theke & Social,", "nicht das Backen"]),
+    "reisebueros":         ("Reisebüros",          ["Angebote & Kommunikation,", "nicht die Beratung"]),
+    "it-dienstleister":    ("IT-Dienstleister",    ["Angebote, Doku & Tickets,", "nicht die Technik"]),
+    "logopaeden":          ("Logopädie-Praxen",    ["Orga & Elterninfos,", "nicht die Therapie"]),
+    "ergotherapeuten":     ("Ergotherapie-Praxen", ["Organisation,", "nicht die Behandlung"]),
+    "bestatter":           ("Bestattungsinstitute",["Formalitäten & Texte,", "nicht der Beistand"]),
+    "winzer":              ("Winzer & Weingüter",  ["Shop-Texte & Kommunikation,", "nicht der Wein"]),
+    "kosmetikstudios":     ("Kosmetikstudios",     ["Termine & Social,", "nicht die Behandlung"]),
+    "cateringservice":     ("Catering-Services",   ["Angebote & Anfragen,", "nicht das Kochen"]),
+    "spedition":           ("Speditionen",         ["Angebote & Kommunikation,", "nicht der Transport"]),
 }
 
 
