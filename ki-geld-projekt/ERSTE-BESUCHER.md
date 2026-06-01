@@ -142,6 +142,50 @@ Kein Link. Wer mehr wissen will, klickt auf dein Profil — da steht abannews.co
 
 ---
 
+---
+
+# 📊 Teil 3: Daten-Posts (funktionieren ohne Eigenwerbung-Gefühl)
+
+> Zahlen werden lieber geteilt als Meinungen. Diese Posts führen auf die neue
+> Seite „KI & Krypto in Zahlen" (abannews.com/krypto) — nüchtern, mit Quellen.
+
+## 8) LinkedIn / Mastodon — eine überraschende Zahl
+
+```
+Ethereum hat seinen Stromverbrauch 2022 um über 99 % gesenkt — mit dem Wechsel
+von Proof-of-Work auf Proof-of-Stake. Bitcoin liegt weiter bei rund 150 TWh im Jahr,
+also etwa wie ein mittleres Industrieland.
+
+„Krypto frisst Strom" stimmt also nur noch für einen Teil des Marktes.
+
+Ich hab die Zahlen zu KI & Krypto mal nüchtern in Tabellen gepackt — Sektor,
+Energie, Trading-Realität, DACH-Steuer. Mit Quellen, ohne Anlage-Geschwurbel.
+```
+**Link in Kommentar 1:** `https://abannews.com/krypto`
+
+## 9) Reddit — Value-Post (r/Finanzen, r/de_EDV, r/Kryptowaehrungen)
+
+> Erst echt mitdiskutieren, dann das hier. Gibt zuerst die Zahl, dann den Link.
+
+**Titel:**
+```
+KI im Krypto-Trading: was sie wirklich kann (und was nur verkauft wird)
+```
+**Text:**
+```
+Kurz und nüchtern, weil mich „KI-Bot verdoppelt dein Konto" nervt:
+
+- Kurs zuverlässig vorhersagen: nein (kurzfristig minimal über Zufall, nach Gebühren weg)
+- Muster/Betrug erkennen: ja, funktioniert real
+- Diszipliniert Regeln ausführen: ja (Bots halten Stop-Loss, Menschen nicht)
+- Garantierte Gewinne: nein — wer das verspricht, will dein Geld
+
+Hab das mit Quellen + DACH-Steuer-Eckwerten zusammengeschrieben (keine
+Anlageberatung): https://abannews.com/krypto
+```
+
+---
+
 ## Danach: dran bleiben
 - 1× pro Woche ein Build-in-Public-Update auf LinkedIn (was lief, was nicht).
 - Jede Newsletter-Ausgabe → 1 Post ableiten (`automation/werkbank.py social ...`).
