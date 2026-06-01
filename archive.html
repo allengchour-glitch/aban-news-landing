@@ -34,14 +34,16 @@ main{padding:26px 0;}
 .cta{display:inline-block;background:var(--accent-h);color:#fff;text-decoration:none;padding:11px 20px;border-radius:10px;font-weight:600;}
 footer{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);font-size:.85rem;text-align:center;}
 </style>
+<style>.skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}</style>
 </head>
 <body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
 <header><div class="wrap">
 <a href="/"><h1>📬 aban news — Archiv</h1></a>
 <p>Alle 28 Ausgaben zum Nachlesen · Mo–Fr, kein Hype</p>
 <p style="margin-top:14px;"><a class="cta" href="/gratis-ki-tools.html">Kostenlos abonnieren →</a></p>
 </div></header>
-<main><div class="wrap">
+<main id="main"><div class="wrap">
 <input id="q" class="search" type="search" placeholder="Ausgaben durchsuchen…" aria-label="Suche" oninput="abanFilter()">
 <div id="list">
 <article class="issue">
