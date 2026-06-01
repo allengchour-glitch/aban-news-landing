@@ -972,3 +972,12 @@ Social-Buttons im Shop: Customizer → Theme-Settings → Social Media (User-Sch
 - **Produkt-Beschreibungen** bereits stark (Benefits + Grössen-Hinweis „fällt kleiner aus" + Trust + WELCOME10).
 - Offene UI-Verbesserungen (User/Browser-Claude, kein API): Gratis-Versand-Banner sichtbar machen,
   Reviews auf Kleider, Dringlichkeit/Countdown. Zahlungs-Wallets: ShopifyPay/ApplePay/GooglePay + TWINT.
+
+## 2026-06-02 — AUSWERTUNG #1 (zu früh, aber Geo-Fix bestätigt)
+01.06: **679 Sessions** (vs 300 am 31.05), aber weiter **0 Add-to-Cart / 0 Käufe / 0,0 %**.
+**Traffic jetzt CH-fokussiert** (Geo/Sprach-Fix wirkt): TikTok→CH 394, direct→CH 245, facebook→CH 26,
+US nur noch 61 (Bots), UK 4. US-Leck (morgens 356) WEG.
+**Einordnung:** 679 kamen noch von der ALTEN Breit-Kampagne „Sommer-Highlights" (heute Nacht pausiert)
+= billiger Reichweiten-Traffic, keine Käufer → erklärt 0 Conversion. Neue Käufer-Kampagne noch in Prüfung
+→ echter Test in 2–3 Tagen. **Wichtigster Fix JETZT (browser): Reviews auf die Kleider** (0 Reviews =
+kein Vertrauen für kalten Traffic). Test-Idee: Ads auf Einzel-Hero-Kleid statt 44er-Raster.
