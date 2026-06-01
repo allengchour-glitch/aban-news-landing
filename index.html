@@ -61,6 +61,9 @@
     .btn--ghost{background:transparent;color:var(--amber-dk);box-shadow:none;border:1px solid var(--line)}
 
     /* Hero */
+    .hero-in{opacity:0;transform:translateY(12px);animation:heroIn .6s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
+    @keyframes heroIn{to{opacity:1;transform:none}}
+    @media(prefers-reduced-motion:reduce){.hero-in{opacity:1;transform:none;animation:none}}
     .hero{padding:clamp(1.5rem,4vw,3rem) 0 1.5rem}
     .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
     .chip-status{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--amber-dk);
@@ -181,15 +184,15 @@
     <div class="wrap hero-grid">
       <!-- LEFT -->
       <div>
-        <span class="chip-status"><span class="pulse"></span> Mo–Fr · kuratiert von Aban in der Schweiz</span>
-        <h1>Die wichtigsten KI-Updates für DACH-Profis — jeden Morgen in 5&nbsp;Minuten.</h1>
-        <p class="lead">Jeden Morgen die 3 KI-Entwicklungen, die dein Business heute betreffen — und nichts sonst.</p>
-        <div class="chips">
+        <span class="chip-status hero-in" style="--d:.05s"><span class="pulse"></span> Mo–Fr · kuratiert von Aban in der Schweiz</span>
+        <h1 class="hero-in" style="--d:.12s">Die wichtigsten KI-Updates für DACH-Profis — jeden Morgen in 5&nbsp;Minuten.</h1>
+        <p class="lead hero-in" style="--d:.2s">Jeden Morgen die 3 KI-Entwicklungen, die dein Business heute betreffen — und nichts sonst.</p>
+        <div class="chips hero-in" style="--d:.28s">
           <span class="chip">📰 3–5 News</span>
           <span class="chip">🛠 1 getestetes Tool</span>
           <span class="chip">💡 1 Prompt</span>
         </div>
-        <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
+        <form class="cta hero-in" style="--d:.36s" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
           <div class="row">
             <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">
             <button type="submit" class="btn">5-Min-Briefing gratis →</button>
@@ -569,7 +572,7 @@
   [data-reveal].in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1!important;transform:none!important;transition:none}}
 </style>
-<noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+<noscript><style>[data-reveal],.hero-in{opacity:1!important;transform:none!important;animation:none!important}</style></noscript>
 <script>
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
