@@ -737,3 +737,17 @@ Payment" + Creatives-Upload nicht möglich. Entwurf liegt bereit.
 **Geliefert diese Session:** 7 EN-Creatives + 2 EN-Reels (manifest_en.tsv), Markets-US/UK-Anleitung
 (MARKETS-US-UK-SETUP.md, Märkte existieren aber deaktiviert — erst nach EN-Übersetzung einschalten),
 Affiliate-Start-Kit (AFFILIATE-START-KIT.md, UpPromote), CH-Story-Creatives + 2 Reels.
+
+## 2026-06-01 — TikTok-Targeting-Fix + Budget-Erkenntnis
+**Altes Ad-Set 1866790905208353** (Kampagne „LuxeStyle CH – Sommer", 1.–8. Juni, **49 CHF/Tag**):
+- Standort war **bereits Schweiz** → die 356 US-Sessions sind KEIN Targeting-Leck, sondern
+  Bots/Crawler/TikTok-Ad-Prüfer (US-basiert). Normales Rauschen bei neuen Shops.
+- Fixes durch Browser-Claude: Sprache „kein Limit" → **Deutsch + Französisch**; Suchergebnis-Anzeigen
+  **AUS**; Pangle/Global waren schon aus.
+- **Konto:** Spend-Limit „Unbegrenzt", **Guthaben 333,48 CHF** (gesamt 360,49). Einziges Limit =
+  49 CHF/Tag Ad-Set.
+**WARNUNG:** 49 CHF/Tag ohne Pixel + bei 0,13 % Add-to-Cart = 333 CHF in ~7 Tagen weg, 0 Verkäufe.
+**EMPFEHLUNG:** altes Ad-Set PAUSIEREN oder auf ~10 CHF/Tag senken, bis Pixel + Menü-Fix + neue
+Conversion-Kampagne (Entwurf 1866807185899746) stehen. Erst dann Budget ausgeben.
+**Pixel:** ID `D8EQE4JC77UAEKHUJCM0` erstellt; User verbindet via TikTok-Shopify-App (Variante A,
+Datenfreigabe Maximal → CompletePayment). Custom-Pixel-Code-Alternative steht in CONVERSION-BOOSTER-Kontext/Chat.
