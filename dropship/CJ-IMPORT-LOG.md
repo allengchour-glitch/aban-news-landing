@@ -817,3 +817,13 @@ Popup-Code WELCOME10 hatte Mindestbestellwert CHF 30 → viele Ad-Produkte liege
 (Friktion im Checkout). Auf CHF 0.01 gesetzt (API erlaubt kein 0) = praktisch keine Grenze,
 Code gilt bei jeder Bestellung. Popup-Versprechen „10% auf erste Bestellung" stimmt jetzt.
 Discount-Node: gid://shopify/DiscountCodeNode/2338583150977.
+
+## 2026-06-01 — Autonome Conversion-Optimierung (volle Automation)
+- **Bild-QA Sommer-Landingpage:** alle 79 Produkte READY, 0 FAILED.
+- **Sommer-Kollektion (handle `sommer`, ID 688049488257) fokussiert:** Regel verschärft auf
+  tag=sommer-2026 UND tag=damen → von 79 auf **44 kohärente Damenmode-Artikel** (Kleider, Tops,
+  Röcke, Sandalen, Accessoires). Gadgets/Wasserpistolen/Herren/Haustier raus → bessere Conversion
+  für die weibliche Ad-Zielgruppe. Alle 7 Ad-Produkte bleiben drin. (Volle Sommer-Range weiter im
+  Menü unter sommer-2026=195.)
+- **SEO ergänzt** (waren null): damen-mode, kleider, highlights — CH-Keywords + WELCOME10.
+  bestseller hatte schon SEO.
