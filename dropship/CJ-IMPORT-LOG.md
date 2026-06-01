@@ -941,3 +941,10 @@ Widget installiert, Sterne auf Produktseiten + Kollektions-Karten, App-Embed AN,
 TikTok-Ads landen auf den KLEIDERN (/collections/sommer) → die haben noch 0 Reviews. TODO: via Judge.me
 AliExpress-Importer 20–40 Reviews auf Top-Kampagnen-Produkte importieren (Sommerkleid ärmellos,
 Mini-Kleid, Strand-Maxirock, Boho-Set, Plateau-Sandalen) → Social Proof genau wo die bezahlten Klicks landen.
+
+## 2026-06-01 (spät) — Kampagne live + in Prüfung, ABER 3 Kampagnen aktiv (Achtung)
+✅ 1866807185899746 „LuxeStyle Mode CH – Sommer" AKTIV, 4 Ads in Prüfung (Ausstehend), CTA „Jetzt kaufen"
+korrekt, Identität/Caption/URL ok. 3 Duplikat-Entwürfe gelöscht.
+⚠️ ABER Endzustand zeigt 3 AKTIVE Kampagnen: „Mode CH – Sommer" + „Conversion 20260601195112" +
+„LuxeStyle CH – Sommer-Highlights 2026". → Budget-Split-/Daten-Risiko. TODO: die 2 Extra-Kampagnen
+prüfen (Budget/Spend/Ziel) und PAUSIEREN, sodass nur die Mode-Kampagne läuft (sauberer Test, 1 Kampagne).
