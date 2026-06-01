@@ -920,3 +920,15 @@ EN/US-Flows (live): Abandoned Cart, Welcome Series, Post-Purchase Review, Win-Ba
 Absender auf info@luxestyle.ch + Domain-Auth in Klaviyo (Settings→Domains→luxestyle.ch→CNAME-Records
 beim Domain-Anbieter eintragen→Verify). Ohne das landet ein Teil im Spam.
 **Hinweis:** Flows feuern erst bei Traffic/Käufen → hängt an Live-Gang der TikTok-Kampagne (steckt bei CTA).
+
+## 2026-06-01 (spät) — TikTok-Konten AUFGERÄUMT + Kampagne bestätigt AKTIV ✅
+Klärung: Kampagne 1866807185899746 „LuxeStyle Mode CH – Sommer" war DOCH bereits AKTIV (kein
+Einreichen nötig — die CTA-Sucherei war unnötig, „Jetzt kaufen"/Original-CTA blieb erhalten).
+- Konto „LuxeStyle CH Ads" (7646349875793182738): nur Mode-Kampagne aktiv, altes 49-CHF-Set
+  (1866790905208353) pausiert. GELÖSCHT: Gadgets-Video-Ad + 2 abgelehnte Jan-Ads („gefälschte Produkte"
+  = Wasserpistolen/Gadget-Mix). Ads 11→8.
+- Zweitkonto „Shopify0518" (7641101648701554704): 4 alte Entwürfe gelöscht (CH-Watch, Vatertag,
+  Ad group …112846, „Switzerland-20260525 shopify" = generischer Product-Shopping-Entwurf).
+**STAND: Kampagne läuft, Konten sauber.** Offen: (1) Klaviyo Domain-Auth (gmail→info@luxestyle.ch,
+8 Flows sonst Spam-Risiko); (2) 2–3 Tage Daten → „Auswertung"; (3) US-Produkte (Straw-Bag-Bild <25MP,
+DSers-Mapping) + EN-Übersetzung; (4) Reels organisch posten.
