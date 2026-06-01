@@ -75,6 +75,9 @@ PAGES = {
         "Preis, Versand, Datenschutz, Premium — klar beantwortet"),
     "presse": ("PRESSE", ["aban news", "für Medien"],
         "Fakten, Zitate und Bildmaterial — kurz und ehrlich"),
+    # Tools
+    "ki-kosten-rechner": ("GRATIS-TOOL", ["Was deine KI-Abos", "wirklich kosten"],
+        "Jahreskosten + Kosten pro Nutzung, mit ehrlichem Urteil"),
 }
 
 
