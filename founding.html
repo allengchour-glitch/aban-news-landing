@@ -132,14 +132,18 @@ header{display:flex;align-items:center;gap:12px}
 .steps li::before{counter-increment:s;content:counter(s);position:absolute;left:14px;top:12px;width:30px;height:30px;background:#d97706;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
 .midcta{text-align:center;margin-top:24px}
 .transp{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:18px 20px;font-size:14px;color:#7c2d12;line-height:1.7}
+  .skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+  .skip:focus{left:0}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
 <header>
   <a href="/" class="brand">aban news</a>
   <span class="lang"><a href="/founding.html" class="on" aria-current="true">DE</a><a href="/en/founding.html" hreflang="en" aria-label="Read in English">EN</a></span>
 </header>
 
+<main id="main">
 <section class="hero">
   <div class="counter">
     <span class="dot"></span>
@@ -404,6 +408,7 @@ header{display:flex;align-items:center;gap:12px}
     </div>
   </div>
 </section>
+</main>
 
 <div class="legal">
   <p>Founding-Membership ist eine einmalige Zahlung über PayPal (Käuferschutz inklusive).<br>30 Tage Geld-zurück-Garantie. Bei Einstellung des Newsletters innerhalb 12 Monaten: vollständiger Refund.</p>
