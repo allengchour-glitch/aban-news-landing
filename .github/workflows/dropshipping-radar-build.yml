@@ -11,6 +11,10 @@ jobs:
     name: Generate dropshipping directory
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    # Secret-gated Deploy (wie cloudflare-pages.yml): ohne Token passiert nichts.
+    env:
+      CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -27,3 +31,29 @@ jobs:
           name: dropshipping-radar-dist
           path: dropshipping-radar/dist
           retention-days: 14
+
+      # --- Deploy nach Cloudflare Pages (nur auf main, nur mit Secret) ---
+      # Ohne CLOUDFLARE_API_TOKEN werden beide Schritte übersprungen → Check bleibt grün.
+      # Mit Secret: legt das Pages-Projekt "dropshipping" bei Bedarf an und deployt dropshipping-radar/dist.
+      # Danach im CF-Dashboard nur noch die Custom Domain dropshipping.abannews.com zuordnen.
+      - name: Ensure Cloudflare Pages project exists
+        if: ${{ github.ref == 'refs/heads/main' && env.CF_API_TOKEN != '' }}
+        continue-on-error: true
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ env.CF_API_TOKEN }}
+          accountId: ${{ env.CF_ACCOUNT_ID }}
+          command: pages project create dropshipping --production-branch=main
+      - name: Deploy to Cloudflare Pages
+        if: ${{ github.ref == 'refs/heads/main' && env.CF_API_TOKEN != '' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ env.CF_API_TOKEN }}
+          accountId: ${{ env.CF_ACCOUNT_ID }}
+          command: pages deploy dropshipping-radar/dist --project-name=dropshipping --branch=main
+      - name: Hinweis, wenn Secrets fehlen
+        if: ${{ github.ref == 'refs/heads/main' && env.CF_API_TOKEN == '' }}
+        run: |
+          echo "CLOUDFLARE_API_TOKEN nicht gesetzt — Deploy übersprungen (Build ok)."
+          echo "Secrets unter Settings → Secrets and variables → Actions setzen,"
+          echo "dann läuft dieser Workflow das Projekt 'dropshipping' selbst an."
