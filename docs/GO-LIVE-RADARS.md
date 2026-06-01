@@ -15,7 +15,7 @@
 
 | Projekt | Subdomain | Inhalt heute | Geldweg | Build prüft | Live? |
 |---------|-----------|--------------|---------|:-----------:|:-----:|
-| `prompts-bibliothek/` | `prompts.abannews.com` | **50** echte deutsche Prompts | Newsletter-Opt-in | ✅ 74 Dateien | ❌ CF fehlt |
+| `prompts-bibliothek/` | `prompts.abannews.com` | **73** echte deutsche Prompts | Newsletter-Opt-in | ✅ 97 Dateien | ❌ CF fehlt |
 | `kurse-radar/` | `kurse.abannews.com` | **22** KI-Kurs-Anbieter | Affiliate (deaktiviert) | ✅ 45 Dateien | ❌ CF fehlt |
 | `dropshipping-radar/` | `dropshipping.abannews.com` | **22** PoD/Dropship-Anbieter | Affiliate (deaktiviert) | ✅ 42 Dateien | ❌ CF fehlt |
 | `agenturen-radar/` | `agenturen.abannews.com` | **2** (ehrlich leer, Platzhalter) | Bezahlte Listings | ✅ 20 Dateien | ❌ CF fehlt |
@@ -51,11 +51,11 @@ Pro Projekt **einmal** im Cloudflare-Dashboard:
 
 ### 1. `prompts-bibliothek/` → `prompts.abannews.com` — **als Erstes live schalten**
 
-**Was es ist:** Durchsuchbare Bibliothek mit **50 selbst geschriebenen** deutschen
+**Was es ist:** Durchsuchbare Bibliothek mit **73 selbst geschriebenen** deutschen
 Prompts (9 Berufe × 11 Aufgaben), Live-Filter + Copy-Button, SEO-orientiert.
 
-**Aufbau:** `data/prompts.json` (50 Prompts) → `generate.py` (stdlib) → `dist/`
-(74 Dateien: Index, Kategorie-Seiten, Einzelseiten, Such-JSON).
+**Aufbau:** `data/prompts.json` (73 Prompts) → `generate.py` (stdlib) → `dist/`
+(97 Dateien: Index, Kategorie-Seiten, Einzelseiten, Such-JSON).
 
 **Geldweg:** Newsletter-Opt-in. Jede Prompt-Seite ist ein SEO-Eingang; das
 Newsletter-CTA fängt die Leser ein. **Kein Affiliate** — bewusst sauber.
