@@ -840,3 +840,14 @@ Discount-Node: gid://shopify/DiscountCodeNode/2338583150977.
    (Einziges früheres FAILED = Strandcardigan, bereits behoben.)
 4. **Outdoor/Strand-Check (#4):** alle Menü-Outdoor-Kollektionen existieren & gefüllt
    (strand 59, pool 47, reisen-sommer 199, reise-gadgets 12) + jetzt SEO.
+
+## 2026-06-01 — Kollektions-Audit (volle Automation, weiter)
+- **Bild-QA fortgesetzt:** ~330 Produkte gescannt (älteste→Mitte), weiterhin 0 FAILED. Katalog gesund.
+- **Kollektions-Audit (alle ~120):** KEINE leeren/0-Produkt-Kollektionen → keine kaputten Seiten.
+- **[ARCHIV]-Fix:** 2 Kollektionen hatten „[ARCHIV]"-Titel, waren aber im Menü verlinkt (sichtbar!):
+  → `aromatherapie` umbenannt zu „Aromatherapie · Diffuser & Öle", `beauty-selfcare` zu
+  „Beauty & Self-Care" (URLs unverändert) + SEO. Übrige 3 [ARCHIV] (tech-gadgets/fitness-sport/
+  pet-tierbedarf) sind NICHT menü-verlinkt → bewusst archiviert gelassen.
+- **Hinweis (nicht kritisch):** dünne Menü-Kollektionen damen-schuhe(3), herren-schuhe(2),
+  kuechengeraete(2) — könnten bei Bedarf mit Produkten gefüllt werden. „US / Summer 2026" (6) existiert
+  schon für US-Markt. Shop hat viele redundante Kollektionen (Geschenke-unter-X etc.) — nicht im Menü, nicht angefasst.
