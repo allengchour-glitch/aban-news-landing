@@ -29,33 +29,42 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
-2026-06-01 (Abend): **511 aktive Produkte**, Shop jetzt **VOLL VERKAUFSBEREIT** — alle Conversion-Blocker
-des Tages gelöst. Auswertung morgens: 1.596 Sessions/14T, aber 0 Käufe / Conversion 0,0 % / Add-to-Cart
-0,13 % → Root Cause war **kein TikTok-Pixel** + kaputte Funnel-Elemente. **HEUTE GEFIXT:**
-- ✅ **TikTok-Pixel** `D8EKVR3C77U6KT5BTBD0` (via Shopify-App) grün; Konto „LuxeStyle CH Ads", 333 CHF.
-- ✅ **Conversion-Kampagne** 1866807185899746 „LuxeStyle Mode CH – Sommer" (20 CHF/Tag, Complete Payment,
-  CH/Frauen/18–34/DE+FR) — User reicht via Browser-Claude ein; altes 49-CHF-Set wird pausiert.
-- ✅ **Kritisch:** Kampagnen-Landingpage `/collections/sommer` fehlte (404!) → Smart Collection erstellt,
-  auf **44 Damenmode** fokussiert (tag sommer-2026 + damen), 6 Kanäle, SEO+Bild.
-- ✅ **Mobiles Menü** drawer_accordion an · **WELCOME10-Popup** (Shopify Forms) live · Mindestwert raus
-  (greift ab CHF 0.01) · **Judge.me Reviews** · **Homepage** fashion-first re-kuratiert.
-- ✅ **SEO** auf ~20 Kollektionen + 16 Fashion-Produkte. **Bild-QA ganzer Katalog**: 0 FAILED.
-- ✅ **Gratis-Wachstum** (GRATIS-WACHSTUM.md): Klaviyo-Welcome-Mail (Template T7bFP4), 2 Hook-Reels
-  (render_hook_reel.sh), 15 Reel-Ideen, Pinterest-Pins. Posten = User (kein API-Upload).
-**STAND ABEND-SPÄT (bestätigt via Browser-Claude):** ✅ Mode-Kampagne 1866807185899746 AKTIV, 4 Ads in
-Prüfung. ✅ Altes 49-CHF-Set pausiert, Junk-Ads + Duplikat-Entwürfe gelöscht, beide Konten sauber.
-✅ **8 Klaviyo-Flows LIVE** (DE+EN/US: Abandoned, Welcome, Post-Purchase, Win-Back). ✅ Judge.me komplett
-(Sterne, 56 Reviews, Auto-Mails 14T). ✅ US-Markt aktiv (USD); 6 US-Produkte (5 aktiv, Straw-Bag Entwurf).
-**NÄCHSTE SESSION / OFFEN:** (1) ⚠️ es sind 3 Kampagnen aktiv → 2 Extra („Conversion 20260601195112",
-„Sommer-Highlights 2026") prüfen+pausieren, nur Mode-Kampagne laufen lassen; (2) Klaviyo Domain-Auth
-(gmail→info@luxestyle.ch, sonst Flows im Spam); (3) Judge.me-Reviews auf die KLEIDER importieren (Ads landen
-dort, noch 0 Reviews); (4) US: Straw-Bag-Bild <25MP + DSers-Mapping (alle 6 unmapped!) + EN-Übersetzung;
-(5) Reels organisch posten. **Dann: 2–3 Tage laufen lassen → „Auswertung".**
-**Geliefert (Assets/Docs):** EN-Creatives+Reels (manifest_en.tsv, render_story_creatives.sh sprachfähig via
-CTA_TEXT/PROMO_TEXT), Markets-US/UK-Anleitung (MARKETS-US-UK-SETUP.md — US/UK existieren, deaktiviert,
-erst nach EN-Übersetzung einschalten), Affiliate-Start-Kit (AFFILIATE-START-KIT.md, UpPromote 15 %),
-Conversion-Booster (CONVERSION-BOOSTER.md). Story-Reel-Skript `dropship/ads/render_story_reel.sh` (Ken-Burns + Musik).
-**Kein echter 8/12h-Cron möglich** (§Scheduler) → Autonomie = Charge-für-Charge je Session + dieses Memory.
+**2026-06-01 (Tagesabschluss): Kompletter Turnaround — Shop VOLL VERKAUFSBEREIT + beworben.**
+Morgens: 1.596 Sessions/14T, aber **0 Käufe / Conversion 0,0 % / Add-to-Cart 0,13 %.** Root Cause:
+**kein TikTok-Pixel** + kaputte Funnel-Elemente. Abends: alle Blocker gelöst, Kampagne live.
+
+**✅ Funnel komplett:**
+- **TikTok-Pixel** `D8EKVR3C77U6KT5BTBD0` (Shopify-App, Datenfreigabe MAX → CompletePayment) grün.
+- **Kampagnen-Landingpage** `/collections/sommer` (fehlte = 404!) → Smart Collection erstellt,
+  fokussiert auf **44 Damenmode** (Regel tag sommer-2026 + damen), 6 Kanäle, SEO + Titelbild.
+- **Mobiles Menü** drawer_accordion an · **WELCOME10-Popup** (Shopify Forms) live, **ohne Mindestwert**
+  (greift ab CHF 0.01) · **Judge.me Reviews** (Sterne, 56 Reviews, Auto-Mail 14T) · **Homepage** fashion-first.
+- **SEO** auf ~20 Kollektionen + 18 Fashion-Produkte. **Bild-QA ganzer Katalog: 0 FAILED.**
+
+**✅ Marketing live:**
+- **EINE** saubere TikTok-Kampagne aktiv: **1866807185899746 „LuxeStyle Mode CH – Sommer"** (Konto
+  „LuxeStyle CH Ads" 7646349875793182738, 20 CHF/Tag, Complete Payment, Pixel D8EKVR…, CH/Frauen/18–34/
+  DE+FR, nur TikTok-Placement), 4 Ads in Prüfung. Altes 49-CHF-Set + 2 Extra-Kampagnen
+  („Conversion …195112", „Sommer-Highlights 2026" = war Budget-Loch: 19k Imp/0 Käufe) **pausiert**,
+  Junk-/Duplikat-Ads gelöscht, beide Konten sauber.
+- **8 Klaviyo-Flows LIVE** (DE+EN/US: Abandoned, Welcome, Post-Purchase, Win-Back). Absender auf
+  **info@luxestyle.ch** geändert. Welcome-Template T7bFP4.
+- **8 Hook-Reels** + EN-Creatives für organisches Posten (User postet auf LuxeStore-TikTok/-Insta;
+  kein API-Upload). Skripte `render_hook_reel.sh` / `render_story_reel.sh` / `render_story_creatives.sh`.
+- US-Markt aktiv (USD); 6 US-Produkte (5 aktiv, Straw-Bag Entwurf).
+
+**OFFEN (nächste Session / User-Klicks):**
+1. **Klaviyo Domain-Auth** — DNS-Records eintragen (NS `send`→ns1–4.klaviyo.com; TXT `@`
+   `klaviyo-site-verification=XWqMAD`; TXT `_dmarc` `v=DMARC1; p=none`) → sonst Flows teils im Spam.
+2. **Judge.me-Reviews auf die KLEIDER** importieren (Ads landen dort, noch 0 Reviews).
+3. **US:** Straw-Bag-Bild <25 MP + **DSers-Mapping (alle 6 unmapped!)** + EN-Übersetzung (Translate & Adapt).
+4. **Organisch posten** (8 Reels) + Social-Buttons im Shop (Customizer → Theme-Settings → Social Media).
+5. **Nach 2–3 Tagen Daten → „Auswertung"** (kommen jetzt Add-to-Cart/Käufe vs. heute 0?).
+
+**Docs/Assets:** GRATIS-WACHSTUM.md (Reels/Pinterest/Email), CONVERSION-BOOSTER.md, MARKETS-US-UK-SETUP.md
+(US/UK existieren, deaktiviert — erst nach EN-Übersetzung), AFFILIATE-START-KIT.md (UpPromote 15 %),
+MENU-KOMPAKT-GALAXUS.md, manifest_en.tsv. **Volle Tageshistorie + IDs: `dropship/CJ-IMPORT-LOG.md`.**
+**Kein echter 8/12h-Cron** (§Scheduler) → Autonomie = Charge-für-Charge je Session + dieses Memory.
 **Workflow neue Produkte:** Token-Cache `/tmp/cj_token.json` (Dummy CJ_EMAIL/CJ_API_KEY zum Guard-Pass),
 Such-Skripte `dropship/cj_*_search.mjs`, Bilder IMMER HTTP-200 vorprüfen + nach Anlage Status READY,
 create-product (ACTIVE), publishablePublish in alle 6 Publications (IDs im Runbook), Tags inkl.
