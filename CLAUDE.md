@@ -166,7 +166,7 @@ Dieses Repo enthält neben der Newsletter-Site mehrere automatisierte KI-Geld-Pr
 - `foerder-radar/` — DACH-Fördermittel (86 echte Programme). Lead-Gen. Domain foerder.abannews.com.
 - `jobs-radar/` — DACH-KI-Jobboard (fetch_jobs.py: Arbeitnow+Remotive). Domain jobs.abannews.com.
 - `kurse-radar/` — KI-Kurs-/Zertifikat-Vergleich (22 echte Anbieter, Preise/Score `null` bis geprüft). Affiliate (deaktiviert). Domain kurse.abannews.com. **Cloudflare-Projekt noch anzulegen.**
-- `prompts-bibliothek/` — 50 selbst geschriebene deutsche Prompts (9 Berufe, 11 Aufgaben), Live-Suche + Copy-Button. Newsletter-Opt-in. Domain prompts.abannews.com. **CF-Projekt noch anzulegen.**
+- `prompts-bibliothek/` — 73 selbst geschriebene deutsche Prompts (9 Berufe, 11 Aufgaben), Live-Suche + Copy-Button. Newsletter-Opt-in. Domain prompts.abannews.com. **CF-Projekt noch anzulegen.**
 - `agenturen-radar/` — KI-Dienstleister-Verzeichnis DACH (startet ehrlich leer, nur markierte Platzhalter). Bezahlte Listings. Domain agenturen.abannews.com. **CF-Projekt noch anzulegen.**
 - `dropshipping-radar/` — Dropshipping-/Print-on-Demand-Anbieter-Vergleich DACH (22 echte Anbieter, `data/anbieter.json`). DACH-Filter `eu_lager`/`deutsche_oberflaeche`, Affiliate (deaktiviert, `_`-Präfix). Domain dropshipping.abannews.com. **CF-Projekt noch anzulegen.** Build `cd dropshipping-radar && python generate.py`, Output `dropshipping-radar/dist`.
 - 8× `ki-fuer-*.html` im Root — Branchen-SEO-Hubs (Handwerker, Steuerberater, Ärzte, Anwälte, Makler, Coaches, Onlineshops, Gastro). Laufen direkt auf abannews.com. Newsletter + Tool-Affiliate.
