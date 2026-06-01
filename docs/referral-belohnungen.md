@@ -71,6 +71,11 @@
 
 ## Einrichtung in beehiiv (Kurzanleitung)
 
+> **Direkt loslegen:** [`app.beehiiv.com`](https://app.beehiiv.com) → einloggen →
+> Publication „aban news" wählen → linkes Menü **Grow → Referral Program**.
+> (beehiiv vergibt jedem Abonnenten automatisch seinen eigenen Empfehlungs-Link;
+> du legst hier nur die Belohnungs-Stufen fest und schaltest das Programm scharf.)
+
 1. **Grow → Referral Program** öffnen, Programm aktivieren.
 2. Die vier Stufen oben anlegen (Schwellen: 3 / 5 / 10 / 25).
 3. Bei Stufe 1 die Datei `ki-werkstatt-kurs.pdf` als Belohnung hochladen.
