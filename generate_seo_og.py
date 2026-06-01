@@ -80,6 +80,8 @@ PAGES = {
         "Jahreskosten + Kosten pro Nutzung, mit ehrlichem Urteil"),
     "ki-und-krypto-daten": ("DATEN · NÜCHTERN", ["KI & Krypto", "in Zahlen"],
         "Sektor, Energie, Trading, DACH-Steuer — mit Quellen, keine Anlageberatung"),
+    "ki-stimmen": ("EHRLICH GETESTET", ["KI-Stimmen &", "Text-to-Speech"],
+        "Was 2026 wirklich gut klingt — und wo die Grenzen liegen"),
 }
 
 
