@@ -888,3 +888,15 @@ meist ja) — User sollte kurz die Startseite checken.
   Pinterest-Pin-Texte (7 Produkte), E-Mail-Flow-Setup. Alle 3 Kanäle gratis, parallel zur Kampagne.
 - Hinweis: organisches Posten auf TikTok/IG/Pinterest = User/Browser-Claude (kein API-Upload möglich);
   ich liefere die Assets, Posten macht der User.
+
+## 2026-06-01 — KAMPAGNE LIVE ✅ (Meilenstein)
+Richtiges Konto bestätigt: **„LuxeStyle CH Ads" (ID 7646349875793182738)**, Business Center „LuxeStyle CH".
+- ✅ Conversion-Kampagne **1866807185899746** „LuxeStyle Mode CH – Sommer" AKTIV, **4 Creatives eingereicht**
+  (in TikTok-Prüfung/Ausstehend). Neues Ad-Set **1866821175347505**, Pixel D8EKVR3C77U6KT5BTBD0 →
+  Complete Payment, URL /collections/sommer, Identität luxestyle, Caption ohne Emoji.
+- ✅ Altes 49-CHF-Set **1866790905208353** PAUSIERT (Budget-Leck gestoppt).
+**Funnel komplett:** Pixel ✅ · Landingpage (44 Damenmode) ✅ · Popup+WELCOME10 (ohne Mindestwert) ✅ ·
+Reviews ✅ · Handy-Menü ✅ · Homepage fashion-first ✅ · Klaviyo Welcome-Flow LIVE ✅.
+**OFFEN:** (1) TikTok-Prüfung abwarten (Ads „Ausstehend" → „Genehmigt", 1–24h); (2) 2–3 Tage laufen
+lassen → „Auswertung"; (3) Klaviyo-Absender von gmail auf info@luxestyle.ch + Domain-Auth (Zustellbarkeit);
+(4) Reels organisch posten (User); (5) optional: alte Entwürfe im Konto 7641101648701554704 löschen.
