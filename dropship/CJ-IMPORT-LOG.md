@@ -633,3 +633,20 @@ AE_APP_KEY/AE_APP_SECRET/AE_TRACKING_ID).
 **BLOCKER (nur User):** API-Credentials von openservice.aliexpress.com + Portals-Tracking-ID
 (Freischaltung dauert) ODER DSers-App installieren. Kein Scraping (ToS). Bei erstem echten Lauf
 ggf. pickList()-Pfad + timestamp-Format an reale API-Antwort anpassen.
+
+## 2026-06-01 — DSers/AliExpress läuft! 15 Importe veredelt
+DSers-App ist verbunden, User pusht Produkte als Draft → ich veredle in Shopify (kein API-Key nötig).
+**15 DSers-Rohlinge veredelt & live** (deutscher Titel, Premium-Copy, Marge-Preise auf .90, Tags,
+ACTIVE, 6 Kanäle): 11 Herrenmode (Hose/Tracksuit/Shirt/Jacke/Hemd/Cordhose/Shorts-Set/Jogginghose)
++ 4 Gadgets/Beauty (USB-Lüfter-Uhr, Gua-Sha-Set, E-Wasserpistole, Auto-Lufterfrischer).
+Preis-Falle DSers: pusht zu ~Einkaufspreis (keine Marge!) → IMMER markup. **User soll DSers Pricing
+Rule ×3 setzen**, dann kommen Importe vorbepreist. Farb-Optionen teils "1/2/3" (DSers liefert keine
+Farbnamen) — Variantenbild zeigt Farbe; echte Namen nur manuell.
+Workflow neue DSers-Produkte: products(query:"status:draft" sortKey:CREATED_AT) finden → productUpdate
+(title/desc/tags/status:ACTIVE) + productVariantsBulkUpdate (Preise, braucht Varianten-IDs) +
+publishablePublish (6 Pubs). Herren-Mode-Collection (handle herren-mode-sub, Smart tag=herren-mode,
+55 Produkte) existiert + im Menü.
+Baby-Lernschüssel (15413241217409) auf User-Wunsch gelöscht.
+**3D bei CJ = mau** (nur Ohrringe/teure Drucker-Möbel; "moon lamp" 13 Treffer, lohnt präziseren Blick).
+3D-Illusionslampen/Stifte besser über DSers/AliExpress.
+Stand: **494 aktive Produkte**.
