@@ -23,6 +23,31 @@ KI-Newsletter **abannews.com / .de** (Mo–Fr, kuratiert, „3–5 Min, kein Hyp
 - **Rolle:** Distributions-Kanal + größtes Asset. Alle Geld-Projekte teasern über den Newsletter an
   und verlinken zurück (Newsletter-Box). Betreiber/Impressum-Daten: Alleng Chour, Belp/CH, hallo@abannews.com.
 
+## 📚 KDP-BÜCHER (Amazon) — Stand 2026-06-01
+
+**Romane in diesem Repo** (alle fertig, DE+EN, ePub/PDF/KDP, gitignore-versionierte Prosa in `ki-schriftsteller/kapitel*`):
+- **„Schicht" / „The Seam"** — Ruhrgebiet-Saga 1905–1989, 3 Bände × 16 Kap. = 48+48 Kap. Branch `claude/roman-schicht-trilogie` (PR #31 gemerged). Plot-Bibel `roman-schicht.json` / `roman-schicht-en.json`. Landing: `schicht.html` + `en/the-seam.html`. Cover `img/covers/schicht-*.jpg` / `the-seam-*.jpg`.
+- **„Das Tal hält den Atem an" / „The Valley Holds Its Breath"** — Schweizer Drama. Branch `claude/ebook-memory-laden-new-book-RrsKz` (gemerged). Landing `trilogie.html` + `en/trilogie.html`.
+- Druckfertige KDP-PDFs liegen **im Repo** unter `downloads/kdp/<slug>/{innenteil-5x8.pdf,umschlag-5x8.pdf}` (alle 5×8"). Direkt-Links per GitHub-Raw, Präfix:
+  `https://github.com/allengchour-glitch/aban-news-landing/raw/claude/roman-schicht-trilogie/`
+- Bauen: `cd ki-schriftsteller && python3 kdp_paket.py --roman roman-schicht.json --kapitel-dir kapitel-schicht --out ../ausgabe-schicht/kdp` (analog -en / -drama). Klappentext kommt aus Feld `klappentext`+`klappen_headline` im JSON (buch-spezifisch, FIX 2026-06-01).
+
+**KDP-Konto-Stand (User „aban news"):**
+- **Schicht** (DE), eBook-ID **AVUK6PPB7N3ZU**: eBook + Taschenbuch eingereicht (31.05.), Status „Wird geprüft".
+- **The Seam** (EN), eBook-ID **A2NMVCUNPGFYAM**: eBook LIVE; Taschenbuch eingereicht (01.06.).
+- ⚠️ **OFFEN — eBook-Cover beider Titel sind ÜBER KREUZ vertauscht.** Sobald „Live" (editierbar):
+  - Schicht-eBook → Cover `img/covers/schicht-gesamt.jpg` (Vorschau muss „Schicht" zeigen)
+  - The-Seam-eBook → Cover `img/covers/the-seam-gesamt.jpg` (Vorschau muss „The Seam" zeigen)
+  - Dabei prüfen, ob auch das Manuskript-epub vertauscht ist (schicht.epub ↔ the-seam.epub).
+- eBook-Preise stehen hoch (8,99/9,99) — optional auf 2,99–4,99 senken.
+- **KDP-Upload-Regeln:** Taschenbuch braucht **PDF** (nicht epub!); Reihenfolge **erst Innenteil, dann Umschlag**; Trim **5×8 Zoll** (sonst Cover-Größen-Fehler, z. B. KDP erwartet 12.595×9.250 = 6×9); Barcode-Häkchen leer; KI-Inhalte = Text Ja / Cover Nein.
+
+**NICHT in diesem Repo (separate KDP-Projekte des Users, kein Material vorhanden, KANN NICHT geholfen werden):**
+- „Mileage Log Book for Small Business" (Autor Marcus Reilly) — Entwurf, Cover-Layoutfehler, muss User im Ursprungstool fixen.
+- „ADHD Daily Planner for Adults" (Marcus Reilly) — Entwurf, kein Cover.
+- „Vision Board Workbook for Women" (Sage Whitfield).
+- Systemweite Suche 2026-06-01 bestätigt: dafür gibt es im Container NULL Dateien.
+
 ## 🟢 LIVE-STATUS (Stand 2026-05-31)
 - **Alle 3 Radars LIVE auf Cloudflare Pages** ✅
   - KI-Tools Radar → `radar.abannews.com` (Projekt `radar`)
