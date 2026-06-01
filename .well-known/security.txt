@@ -1,0 +1,4 @@
+Contact: mailto:hallo@abannews.com
+Preferred-Languages: de, en
+Canonical: https://abannews.com/.well-known/security.txt
+Expires: 2027-12-31T23:59:59Z
