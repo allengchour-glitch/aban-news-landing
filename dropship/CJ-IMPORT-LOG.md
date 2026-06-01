@@ -663,3 +663,17 @@ Alle ACTIVE, 6 Kanäle, Bilder HTTP-200 + READY:
 | Sonnenhut breite Krempe | 15413653275009 | 13 | 29.90 | sommer, strand |
 | Muschel-Fußkettchen | 15413654258049 | 1 | 12.90 | damen-schmuck, strand |
 Stand: **500 aktive Produkte.** CJ weiterhin ~50% Fehltreffer pro Suche.
+
+## 2026-06-01 — CJ gemischte Charge #2 (+6, Damen-Fokus)
+10 KW → 6 sauber (Silber-Kette/EMS-Gerät/Regal = Fehltreffer raus). ACTIVE, 6 Kanäle, Bilder READY.
+Falle: 1× Bild-URL hatte Tippfehler (Leerzeichen) → korrigiert. ae-Farbnamen „Light Yellow/Light Blue"
+→ DE ergänzt.
+| Produkt | ID | V | VK |
+|---|---|---|---|
+| Mini-Kleid Rüschen | 15413724676481 | 16 | 29.90 |
+| Wide-Leg-Hose | 15413724873089 | 9 | 39.90 |
+| Cropped Blazer Chanel-Stil | 15413725102465 | 4 | 44.90 |
+| Ohrringe «Barque» vergoldet | 15413725430145 | 1 | 16.90 |
+| «Floating Planet» Armband/Kette | 15413725593985 | 4 | 14.90 |
+| Jumpsuit Blazer-Kragen | 15413726282113 | 8 | 44.90 |
+Stand: **506 aktive Produkte.**
