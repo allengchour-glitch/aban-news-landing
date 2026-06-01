@@ -612,3 +612,14 @@ FALLE gelernt: `trinkflaschen`-Collection nutzt Tag **`Trinkflasche`** (groß/Si
 **Session-Summe: 478 aktive Produkte** (+17 diese Session). Nächste Session: weiter Charge-für-Charge,
 dünne Kats (Servieren 4, Vasen 31, Wandkunst), CJ liefert kaum noch Sauberes → ggf. AliExpress/andere
 Quelle erwägen oder Fokus Conversion/Marketing/TikTok-Launch.
+
+## 2026-06-01 — Nächste Session (Charge 3): Outdoor + Baby
+Such-Charge (8 KW: Servieren, Vasen, Aufbewahrung, Strand, Garten, Wandkunst) → fast nur Müll
+(Hundekäfig, Hochbett 525$, Handtuchstange, Kinder-Wassermal-Matte). Nur 2 sauber:
+| Produkt | ID | V | VK | Kat |
+|---|---|---|---|---|
+| Picknick-Matte XXL faltbar | 15413241184641 | 7 | 24.90 | garten/outdoor/sommer |
+| Baby-Lernschüssel Saugnapf | 15413241217409 | 3 | 12.90 | baby-kids |
+Stand: **480 aktive Produkte**. Bestätigt: CJ-Katalog praktisch leergesucht in allen getesteten
+Nischen (Mode, Schuhe, Gadgets, Küche, Taschen, Servieren, Vasen, Outdoor). Empfehlung: 2. Quelle
+(AliExpress-Import) oder Fokus auf Conversion/TikTok-Launch statt weiterer Massen-Import.
