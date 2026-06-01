@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI-Kosten-Rechner · Was deine KI-Abos wirklich kosten · aban news</title>
+<meta name="description" content="Kostenloses Tool: Trag deine KI-Abos ein und sieh, was sie im Jahr kosten — und was pro Nutzung. Mit ehrlichem Urteil, welches Abo sich lohnt. Ohne Login, ohne Tracking.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/ki-kosten-rechner.html">
+<meta property="og:title" content="KI-Kosten-Rechner — was deine KI-Abos wirklich kosten">
+<meta property="og:description" content="Trag deine KI-Abos ein und sieh die Jahreskosten plus Kosten pro Nutzung. Mit ehrlichem Urteil. Gratis, ohne Login, ohne Tracking.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/ki-kosten-rechner.html">
+<meta property="og:image" content="https://abannews.com/img/og/ki-kosten-rechner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="aban news">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KI-Kosten-Rechner — was deine KI-Abos wirklich kosten">
+<meta name="twitter:image" content="https://abannews.com/img/og/ki-kosten-rechner.png">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "KI-Kosten-Rechner",
+  "url": "https://abannews.com/ki-kosten-rechner.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "de",
+  "description": "Berechnet aus deinen KI-Abos (Name, Monatspreis, Nutzungen pro Monat) die Jahreskosten und die Kosten pro Nutzung — mit ehrlicher Einschätzung, welches Abo sich lohnt.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "publisher": {"@type": "Organization", "name": "aban news", "url": "https://abannews.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "de",
+  "mainEntity": [
+    {"@type":"Question","name":"Werden meine Eingaben gespeichert oder gesendet?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Rechnung läuft komplett in deinem Browser. Deine Tools und Preise werden nur lokal (localStorage) gespeichert, damit sie beim nächsten Besuch noch da sind — nichts wird an einen Server gesendet, kein Konto, kein Tracking."}},
+    {"@type":"Question","name":"Woher kommen die Preise?","acceptedAnswer":{"@type":"Answer","text":"Die trägst du selbst ein. So bleibt der Rechner immer aktuell und stimmt für deine Währung und deinen Tarif — statt mit veralteten Listenpreisen zu rechnen."}},
+    {"@type":"Question","name":"Was sagt mir die Kosten-pro-Nutzung?","acceptedAnswer":{"@type":"Answer","text":"Sie zeigt, was dich jede einzelne Nutzung effektiv kostet. Ein 20-Euro-Abo, das du zweimal im Monat öffnest, kostet dich 10 Euro pro Nutzung — oft ein Zeichen, dass ein Pay-as-you-go-Tarif oder das Kündigen günstiger wäre."}}
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --amber:#d97706;--amber-dark:#b45309;--amber-light:#fde9c8;--cream:#fef3c7;
+  --ink:#1f2937;--ink-soft:#374151;--muted:#6b7280;--line:#ece3d4;
+  --bg:#fffbf5;--card:#ffffff;
+  --header-bg:rgba(255,251,245,.9);
+  --field-bg:#fffdf9;--shadow:0 1px 3px rgba(0,0,0,.03);
+  --good-bg:#dcfce7;--good-fg:#15803d;
+  --teils-bg:#fdeccd;--teils-fg:#92560a;
+  --weak-bg:#fcd9d9;--weak-fg:#a01616;
+  --focus:#b45309;--btn-fg:#fff;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --amber:#f0a93a;--amber-dark:#fbbf24;--amber-light:#5a4422;--cream:#3a2f1c;
+    --ink:#f3ede2;--ink-soft:#d6cdbd;--muted:#9c9384;--line:#3a352d;
+    --bg:#1a1712;--card:#231f19;
+    --header-bg:rgba(26,23,18,.9);
+    --field-bg:#1f1b15;--shadow:0 1px 3px rgba(0,0,0,.4);
+    --good-bg:#1c3a26;--good-fg:#86e8ab;
+    --teils-bg:#5a3f12;--teils-fg:#ffd98a;
+    --weak-bg:#5a1c1c;--weak-fg:#ffbcbc;
+    --focus:#fbbf24;--btn-fg:#1a1712;
+  }
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dark)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--amber-dark);color:var(--btn-fg);padding:10px 16px;border-radius:0 0 8px 0;z-index:50;font-weight:600}
+.skip:focus{left:0}
+header.site{position:sticky;top:0;z-index:20;background:var(--header-bg);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;font-size:18px;color:var(--amber);text-decoration:none;letter-spacing:-.02em}
+.brand span{opacity:.8;color:var(--ink)}
+.btn{display:inline-block;background:var(--amber-dark);color:var(--btn-fg);text-decoration:none;font-weight:600;padding:10px 18px;border-radius:8px;font-size:15px;border:none;cursor:pointer;transition:filter .15s}
+.btn:hover{filter:brightness(1.05)}
+.btn.ghost{background:transparent;color:var(--amber-dark);border:1px solid var(--amber-light)}
+.btn.ghost:hover{background:var(--cream)}
+.hero{padding:48px 20px 16px;text-align:center}
+.hero h1{font-size:clamp(28px,5vw,42px);line-height:1.12;font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.hero h1 .accent{color:var(--amber)}
+.hero p{font-size:clamp(16px,2.2vw,19px);color:var(--ink-soft);max-width:620px;margin:0 auto}
+.tool{padding:8px 20px 16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+table.rows{width:100%;border-collapse:collapse}
+table.rows th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700;padding:0 8px 8px}
+table.rows td{padding:5px 8px}
+.rows input{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;font:inherit;font-size:15px;background:var(--field-bg);color:var(--ink)}
+.rows input:focus{outline:2px solid var(--amber-light);border-color:var(--amber)}
+.rows input[type=number]{text-align:right}
+.col-name{width:42%}.col-num{width:20%}.col-x{width:38px}
+.del{background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;line-height:1;padding:4px 6px;border-radius:6px}
+.del:hover{color:var(--weak-fg);background:var(--weak-bg)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.hint{font-size:13px;color:var(--muted);margin-top:10px}
+.results{margin-top:20px;display:none}
+.results.show{display:block}
+.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.tot{background:var(--cream);border:1px solid var(--amber-light);border-radius:12px;padding:16px;text-align:center}
+.tot .v{font-size:clamp(22px,4vw,30px);font-weight:800;color:var(--amber-dark);line-height:1.1;letter-spacing:-.02em}
+.tot .l{display:block;margin-top:6px;font-size:13px;color:var(--ink-soft);font-weight:600}
+.verdict{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.vrow{display:flex;align-items:center;gap:12px;padding:13px 16px;border-top:1px solid var(--line);flex-wrap:wrap}
+.vrow:first-child{border-top:none}
+.vrow .vn{font-weight:700;flex:1;min-width:120px}
+.vrow .vc{font-size:13px;color:var(--muted)}
+.tag{font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.tag.good{background:var(--good-bg);color:var(--good-fg)}
+.tag.ok{background:var(--teils-bg);color:var(--teils-fg)}
+.tag.weak{background:var(--weak-bg);color:var(--weak-fg)}
+.cta{margin:36px 0 8px;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-light);border-radius:14px;padding:24px;text-align:center}
+.cta h2{font-size:22px;margin-bottom:6px}
+.cta p{color:var(--ink-soft);margin-bottom:14px}
+.how{margin:22px 0 8px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.how summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none}
+.how summary::-webkit-details-marker{display:none}
+.how summary::after{content:"+";float:right;color:var(--amber);font-weight:800}
+.how[open] summary::after{content:"–"}
+.how .body{padding:0 18px 18px;color:var(--ink-soft)}
+.how .body p{margin-bottom:10px}
+footer{padding:28px 0;margin-top:32px;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+footer a{color:var(--muted)}
+@media(max-width:560px){.totals{grid-template-columns:1fr}.col-name{width:38%}}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#rows">Direkt zur Eingabe</a>
+
+<header class="site">
+  <div class="wrap">
+    <a href="/" class="brand">aban news<span> · KI-Kosten-Rechner</span></a>
+    <a href="https://abannews.beehiiv.com/subscribe" class="btn">Newsletter gratis</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Was deine KI-Abos <span class="accent">wirklich</span> kosten</h1>
+      <p>Trag deine Tools, Monatspreise und wie oft du sie nutzt ein. Du siehst die Jahreskosten — und was dich jede einzelne Nutzung kostet. Mit ehrlichem Urteil, ohne Login.</p>
+    </div>
+  </section>
+
+  <section class="tool">
+    <div class="wrap">
+      <div class="panel">
+        <table class="rows" id="rowsTable">
+          <thead>
+            <tr>
+              <th class="col-name">Tool</th>
+              <th class="col-num">€ / Monat</th>
+              <th class="col-num">Nutzungen / Monat</th>
+              <th class="col-x" aria-hidden="true"></th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <div class="actions">
+          <button type="button" class="btn ghost" id="addBtn">+ Tool hinzufügen</button>
+          <button type="button" class="btn" id="calcBtn">Kosten berechnen</button>
+          <button type="button" class="btn ghost" id="resetBtn">Zurücksetzen</button>
+        </div>
+        <p class="hint">Tipp: „Nutzungen / Monat" ist grob — wie oft öffnest du das Tool wirklich? Bei 0 lassen, wenn du's nur „für alle Fälle" zahlst. Eingaben bleiben lokal in deinem Browser.</p>
+
+        <div class="results" id="results" aria-live="polite">
+          <div class="totals">
+            <div class="tot"><span class="v" id="totMonth">–</span><span class="l">pro Monat</span></div>
+            <div class="tot"><span class="v" id="totYear">–</span><span class="l">pro Jahr</span></div>
+            <div class="tot"><span class="v" id="totTools">–</span><span class="l">Abos</span></div>
+          </div>
+          <div class="verdict" id="verdict"></div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <h2>Weniger zahlen, mehr behalten</h2>
+        <p>aban news testet jede Woche ein KI-Tool und sagt ehrlich, ob sich das Abo lohnt — Mo–Fr, 5 Minuten, kein Hype.</p>
+        <a href="https://abannews.beehiiv.com/subscribe" class="btn">Kostenlos abonnieren</a>
+      </div>
+
+      <details class="how">
+        <summary>Wie der Rechner urteilt — und was er nicht kann</summary>
+        <div class="body">
+          <p>Das Urteil pro Tool richtet sich nach den <strong>Kosten pro Nutzung</strong> (Monatspreis geteilt durch Nutzungen im Monat):</p>
+          <p>🟢 <strong>Lohnt sich</strong> — unter 2 € pro Nutzung: Du holst regelmäßig Wert raus.<br>
+             🟡 <strong>Prüfen</strong> — 2 bis 8 € pro Nutzung: Geht in Ordnung, aber schau, ob ein günstigerer Tarif reicht.<br>
+             🔴 <strong>Teuer pro Nutzung</strong> — über 8 €, oder du hast 0 Nutzungen eingetragen: Oft ein Zeichen, dass ein Pay-as-you-go-Tarif oder das Kündigen günstiger wäre.</p>
+          <p>Der Rechner kennt deinen Nutzen nicht — ein selten genutztes Tool kann trotzdem unbezahlbar wichtig sein (z. B. einmal im Quartal, aber geschäftskritisch). Die Zahl ist ein <em>Anstoß zum Nachdenken</em>, kein Urteil über den Wert deiner Arbeit.</p>
+          <p>Es läuft alles in deinem Browser. Deine Eingaben werden nur lokal gespeichert (<code>localStorage</code>), nichts an einen Server gesendet. Kein Konto, kein Tracking.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/">Startseite</a> · <a href="/tools.html">Tool-Datenbank</a> · <a href="/hype-filter.html">Hype-Filter</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var KEY="aban_kostenrechner_v1", MAXROWS=20;
+  var rowsEl=document.getElementById("rows"),
+      results=document.getElementById("results"),
+      verdict=document.getElementById("verdict");
+  var fmt=new Intl.NumberFormat("de-DE",{style:"currency",currency:"EUR"});
+
+  function clamp(n,min,max){n=parseFloat(n);if(isNaN(n)||n<min)return min;if(n>max)return max;return n;}
+
+  function rowHTML(name,price,uses){
+    return '<tr>'+
+      '<td class="col-name"><input class="r-name" type="text" maxlength="40" placeholder="z. B. ChatGPT Plus" value="'+esc(name)+'"></td>'+
+      '<td class="col-num"><input class="r-price" type="number" min="0" max="100000" step="0.01" inputmode="decimal" placeholder="20" value="'+esc(price)+'"></td>'+
+      '<td class="col-num"><input class="r-uses" type="number" min="0" max="100000" step="1" inputmode="numeric" placeholder="8" value="'+esc(uses)+'"></td>'+
+      '<td class="col-x"><button type="button" class="del" aria-label="Zeile entfernen" title="Entfernen">×</button></td>'+
+    '</tr>';
+  }
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c];});}
+
+  function addRow(name,price,uses){
+    if(rowsEl.children.length>=MAXROWS)return;
+    var tr=document.createElement("tbody");
+    tr.innerHTML=rowHTML(name||"",price||"",uses||"");
+    rowsEl.appendChild(tr.firstChild);
+  }
+
+  function collect(){
+    var out=[];
+    rowsEl.querySelectorAll("tr").forEach(function(tr){
+      var name=tr.querySelector(".r-name").value.trim(),
+          price=clamp(tr.querySelector(".r-price").value,0,100000),
+          uses=clamp(tr.querySelector(".r-uses").value,0,100000);
+      if(name||price)out.push({name:name,price:price,uses:Math.round(uses)});
+    });
+    return out;
+  }
+
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(collect()));}catch(e){}}
+
+  function rate(price,uses){
+    if(price<=0)return null;
+    if(uses<=0)return {tag:"weak",label:"🔴 0 Nutzungen",note:"Zahlst du für etwas, das du nicht nutzt?"};
+    var cpu=price/uses;
+    if(cpu<2)return {tag:"good",label:"🟢 Lohnt sich",note:fmt.format(cpu)+" pro Nutzung"};
+    if(cpu<=8)return {tag:"ok",label:"🟡 Prüfen",note:fmt.format(cpu)+" pro Nutzung"};
+    return {tag:"weak",label:"🔴 Teuer pro Nutzung",note:fmt.format(cpu)+" pro Nutzung"};
+  }
+
+  function calc(){
+    var items=collect(), month=0;
+    verdict.innerHTML="";
+    items.forEach(function(it){
+      month+=it.price;
+      var r=rate(it.price,it.uses);
+      var row=document.createElement("div");
+      row.className="vrow";
+      var safe=esc(it.name||"(ohne Namen)");
+      if(r){
+        row.innerHTML='<span class="vn">'+safe+'</span><span class="vc">'+r.note+'</span><span class="tag '+r.tag+'">'+r.label+'</span>';
+      }else{
+        row.innerHTML='<span class="vn">'+safe+'</span><span class="vc">kein Preis eingetragen</span>';
+      }
+      verdict.appendChild(row);
+    });
+    document.getElementById("totMonth").textContent=items.length?fmt.format(month):"–";
+    document.getElementById("totYear").textContent=items.length?fmt.format(month*12):"–";
+    document.getElementById("totTools").textContent=items.length||"–";
+    results.classList.toggle("show",items.length>0);
+    save();
+  }
+
+  document.getElementById("addBtn").addEventListener("click",function(){addRow();});
+  document.getElementById("calcBtn").addEventListener("click",calc);
+  document.getElementById("resetBtn").addEventListener("click",function(){
+    rowsEl.innerHTML="";results.classList.remove("show");
+    try{localStorage.removeItem(KEY);}catch(e){}
+    seed();
+  });
+  rowsEl.addEventListener("click",function(e){
+    if(e.target.classList.contains("del")){
+      var tr=e.target.closest("tr");if(tr)tr.remove();
+      if(rowsEl.children.length===0)seed();
+      save();
+    }
+  });
+  rowsEl.addEventListener("input",save);
+
+  function seed(){
+    var saved=null;
+    try{saved=JSON.parse(localStorage.getItem(KEY)||"null");}catch(e){}
+    if(saved&&saved.length){saved.slice(0,MAXROWS).forEach(function(it){addRow(it.name,it.price,it.uses);});calc();}
+    else{addRow("ChatGPT Plus","20","");addRow("","","");}
+  }
+  seed();
+})();
+</script>
+
+</body>
+</html>
