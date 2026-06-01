@@ -1,0 +1,21 @@
+Chapter 2 - The Neighbour
+
+Momme Feddersen had stood for the office of dyke-reeve, and he had not got it, and that lay between the two men, whether they named it or not. They did not name it. They worked side by side on the dyke, as they had worked side by side for years, for the Feddersen warft lay nearest to the Carstens warft, and in the marshland the nearest neighbour was the thing a life hung on when the water came.
+
+Momme was four years older than Hauke and broader, a man with hands like spades and a feel for the water that Hauke secretly admired and did not let show. Momme could read the dyke like no other, almost better than Okke, for Okke read it with the experience of years and Momme with something innate, an instinct for the spot where the mountain would give way. If the election had gone by who knew the dyke best, Momme would have had the office. But the election did not go by that. It went by the farm, the name, the land, and the Carstenses had more land and an older name, and so Hauke became dyke-reeve and Momme stayed what he was: a good man on the dyke who served under a younger one.
+
+One day in the first summer they worked together on the groynes, out in the foreland, where one wrested the silt from the water. One stuck rows of brushwood fences into the watt floor, scrub between posts, and the water left its silt in them at each flood, and over the years new land grew from the sea, centimetre by centimetre, until one could dyke it in. It was patient work, work for generations, and Hauke liked it, because it was the only thing that won from the water instead of the other way round.
+
+They stood knee-deep in the silt, and the flood came, faster than Hauke had thought, for the water in the watt always came faster than one thought; it did not come from in front, it came from everywhere, filled the channels, the runnels, cut off one's way back before one noticed. Hauke felt the ground beneath him soften, felt the suck as he tried to lift a foot and could not, and for a moment there was the cold clarity of danger, the knowledge that the watt swallowed people, every year, who misjudged the channel.
+
+Momme was at him in three strides. He had firm ground beneath him, somehow, with the feel he had, and he gripped Hauke by the arm and pulled him out, out of the soft ground, onto the groyne, onto firm footing. It went quickly and without words, and then they both stood on the brushwood, and the water rose around them, and Momme looked at him and grinned, the broad grin that fit so badly with his usual reticence.
+
+"Dyke-reeve," said Momme. "Mind you don't drown before you've warmed your office chair."
+
+"Thank you," said Hauke.
+
+"Nothing to thank." Momme let go of his arm. "Out here it doesn't count who holds the office. Out here it counts only who holds your arm when the channel takes you. One forgets that easily, up on the dyke, with the book and the inspection. But the water reminds you." He looked out, where the flood overran the groynes. "We hang together, Hauke. All of us. That's the only thing that holds us against that out there. Not the dyke. The dyke is only earth. What holds us is that no one lets the other drown."
+
+It was a long speech for Momme Feddersen, who otherwise said little, and Hauke remembered it, the way he remembered everything. Solidarity, a man from the city would have called it. Momme did not call it that. He did not call it anything; he only did it, pulled a man's arm from the silt and said there was nothing to thank. And Hauke, standing wet and shivering on the groyne while the flood rose around them, thought that he now owed this man his life, and that such a debt did not grow smaller with time but larger, and he did not know that one day he would think back on this day, in the storm, in the night, when the same water that Momme defeated today would take him.
+
+On the way home, over the dyke, they looked across to the Carstens warft and to the Feddersen warft, which was smaller, poorer, nearer the water. Antje and Momme's wife stood together at the sluice-drain doing the washing, and their voices carried across the flat land, and Hauke thought that the women had it easier with the neighbourliness than the men, because between them stood no office and no land, only the work that all shared. He was wrong, but he did not know that on this day.
