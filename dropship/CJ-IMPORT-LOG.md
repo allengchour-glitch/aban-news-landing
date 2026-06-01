@@ -696,3 +696,15 @@ Stand: **506 aktive Produkte.**
 - **Bild-QA über 50 neueste aktive Produkte:** alle READY bis auf 1 FAILED-Bild bei
   „UV-Schutz Strandcardigan" (ID 15413083046273) → kaputtes Media gelöscht, 8 saubere Bilder bleiben.
 - Stand unverändert: **511 aktive Produkte.**
+
+## 2026-06-01 — Internationale Expansion vorbereitet (A + B)
+- **A) Englische Creatives:** 7 preisfreie Story-Stills (`luxestyle_story_en1..en7.png`,
+  „SHOP NOW · 10% OFF CODE WELCOME10", goldene Kicker-Zeile statt Preis) + 2 EN-Reels mit Musik
+  (`luxestyle_story_reel_EN.mp4` uplifting, `_EN_elegant.mp4`). Skript `render_story_creatives.sh`
+  jetzt sprachfähig (Env `CTA_TEXT`/`PROMO_TEXT`); EN-Manifest `dropship/ads/manifest_en.tsv`.
+  Preisfrei = funktioniert für US (USD) + UK (GBP) gleichzeitig.
+- **B) Markets US/UK:** Befund — US- (USD, 99514352001) & UK-Markt (GBP, 99514384769) existieren
+  bereits, nur DEAKTIVIERT; kein englisches Locale. NICHT eingeschaltet (User-Wunsch: erst Übersetzung).
+  Anleitung in `dropship/MARKETS-US-UK-SETUP.md` (Englisch hinzufügen → Translate & Adapt →
+  Märkte aktivieren → Versand). Aktivierung später per `marketUpdate enabled:true`.
+- Strategie dokumentiert: UK vor US, getrennte Ad-Sets pro Land, CH bleibt Hauptfokus.

@@ -19,8 +19,8 @@ OUT="${3:-/tmp/storybuild/out}"
 W="$(mktemp -d)"
 mkdir -p "$OUT"
 
-printf '%s' "JETZT SHOPPEN  →" > "$W/cta.txt"
-printf '%s' "-10% mit Code  WELCOME10" > "$W/promo.txt"
+printf '%s' "${CTA_TEXT:-JETZT SHOPPEN  →}" > "$W/cta.txt"
+printf '%s' "${PROMO_TEXT:--10% mit Code  WELCOME10}" > "$W/promo.txt"
 printf '%s' "LUXESTYLE" > "$W/brand.txt"
 
 IH=1180   # Foto-Höhe oben; Panel = Rest bis 1920
