@@ -813,7 +813,11 @@
         "ki-trends-2026",
         "ki-tools",
         "dsgvo-und-ki"
-      ]
+      ],
+      "vertiefung": {
+        "href": "/ki-und-krypto-daten.html",
+        "text": "KI & Krypto in Zahlen — Statistik-Tabellen zu Sektor, Energie, Trading und DACH-Steuer"
+      }
     }
   ]
 }
