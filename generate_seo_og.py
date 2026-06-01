@@ -78,6 +78,8 @@ PAGES = {
     # Tools
     "ki-kosten-rechner": ("GRATIS-TOOL", ["Was deine KI-Abos", "wirklich kosten"],
         "Jahreskosten + Kosten pro Nutzung, mit ehrlichem Urteil"),
+    "ki-und-krypto-daten": ("DATEN · NÜCHTERN", ["KI & Krypto", "in Zahlen"],
+        "Sektor, Energie, Trading, DACH-Steuer — mit Quellen, keine Anlageberatung"),
 }
 
 
