@@ -40,7 +40,7 @@ HEAD_CSS = """  <style>
     .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
     nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
     nav a:hover{color:var(--ink)}
-    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:var(--amber);color:#fff;text-decoration:none}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:var(--amber-dk);color:#fff;text-decoration:none}
     .tcover{width:100%;height:auto;aspect-ratio:1200/500;object-fit:cover;border-radius:16px;margin-top:1.5rem;box-shadow:var(--shadow);display:block}
     .hero{padding:3rem 0 1.5rem}
     .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-dk);margin-bottom:.6rem}
