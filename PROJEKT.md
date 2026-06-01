@@ -99,6 +99,17 @@ Automatisierter DACH-KI-/ML-Jobboard (programmatic, statisch). Verdient über ge
 - Handwerker, Steuerberater, Ärzte, Anwälte, Immobilienmakler, Coaches, Onlineshops, Gastronomie.
 - Layout aus `geld-verdienen-mit-ki.html`. WebPage + FAQPage-JSON-LD, in `sitemap.xml`. Origineller Inhalt (~800 W.), Newsletter-CTA + Link → radar.abannews.com. Monetarisierung: Newsletter + Tool-Affiliate.
 
+### 8. Dropshipping-/Print-on-Demand-Radar  →  Ordner `dropshipping-radar/`  (NEU 31.05.)
+- **Domain:** dropshipping.abannews.com — **CF-Projekt noch anzulegen** (Build `cd dropshipping-radar && python generate.py`, Output `dropshipping-radar/dist`).
+- **Generator:** `dropshipping-radar/generate.py` (pure stdlib, Muster wie `kurse-radar`). Daten: `data/anbieter.json` (22 echte Anbieter: Shopify, WooCommerce, DSers, Spocket, AutoDS, Zendrop, CJdropshipping, Syncee, BigBuy, vidaXL, Printful, Printify, Gelato, Modalyst, Sellvia, EPROLO, Brandsdistribution, Trendsi, Doba, SaleHoo, Inventory Source, Avasam — Preise/Score `null` bis geprüft, KEINE erfundenen Werte).
+- **DACH-Kern:** boolesche Felder `eu_lager` + `deutsche_oberflaeche` = das Unterscheidungsmerkmal (kürzere Lieferzeit, EU-Rechnung). EU-Lager-Anbieter werden nach vorn sortiert + als farbige Badges gezeigt.
+- **Seiten:** Start (Vergleichstabelle + Live-Suche), 22 Anbieter-Detailseiten (SoftwareApplication-JSON-LD + FAQ), 7 Kategorie- + 4 Fokus-Seiten, sitemap/robots/RSS. 36 HTML-Seiten gesamt.
+- **Monetarisierung:** `dropshipping-radar/affiliate.json` (alle Slots deaktiviert, `_`-Präfix) — Anbieter-Affiliate (Shopify, Spocket, Printful, AutoDS …), sobald Links freigegeben.
+
+### 9. Geld-Hub „Mit 3D-Druck Geld verdienen"  →  `geld-verdienen-mit-3d-druck.html` im Root  (NEU 31.05., sofort live)
+- Print-on-Demand-Modell ehrlich erklärt: KI-STL erstellen → fremdes Druck-Service-Bureau produziert & liefert → Verkauf über eigene Seite. Beantwortet die User-Frage „ist das Dropshipping?" → ja, POD-Variante mit eigenem Design (besser als Katalog-Weiterverkauf).
+- Layout wie `ki-fuer-*.html`. WebPage + **HowTo** (3 Schritte) + FAQPage-JSON-LD. Margen-Rechnung, GPSR/Recht-Hinweise (DACH), IP-Warnung. In `sitemap.xml`, Pretty-URLs `/3d-druck`, `/3d` in `_redirects`. Verlinkt `dropshipping.abannews.com` (Anbieter) + radar.abannews.com (KI-Tools). Monetarisierung: Newsletter + Affiliate über die Radars.
+
 ### Portal: Aban-Netzwerk  →  Ordner `portal/`  (verbindet alles)
 Statische Hub-Seite, die Newsletter + alle 3 Geld-Projekte bündelt (interne Verlinkung/SEO,
 Organization-sameAs-Schema). `portal/generate.py`, Karten in `CARDS`. Deploy-Idee: `abannews.com`-Wurzel
@@ -116,7 +127,7 @@ LinkedIn-DACH, GEO, Monetarisierung nach Audience-Größe, realistische Timeline
 ## Git / Deployment
 - **Branch:** alles nach `main` gemergt (PR #2 erledigt). Cloudflare-Projekte auf `main` stellen. auf allengchour-glitch/aban-news-landing
 - CI: Voice-Linter überspringt alle Projekt-/Memory-Ordner (ki-tools-radar/, foerder-radar/, jobs-radar/,
-  kurse-radar/, prompts-bibliothek/, agenturen-radar/, aban-studio/, ki-geld-projekt/, PROJEKT.md, CLAUDE.md)
+  kurse-radar/, prompts-bibliothek/, agenturen-radar/, dropshipping-radar/, aban-studio/, ki-geld-projekt/, PROJEKT.md, CLAUDE.md)
   — gilt nur für Newsletter-Content im Root.
 - Jedes Geld-Projekt hat einen eigenen Auto-Build-Workflow in `.github/workflows/`.
 
