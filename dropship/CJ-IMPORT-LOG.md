@@ -868,3 +868,11 @@ neuesten 50 + Sommer-Kollektion): **0 FAILED, 0 fehlende Titelbilder.** Video-Ti
   Die TikTok-Ads bringen aber Frauen 18–34 für Kleider → Marken-Mismatch beim Weiterklicken.
   → Re-Kuratierung Richtung Damenmode empfohlen, ABER Brand-Entscheidung des Users (outward-facing,
   Homepage) → NICHT autonom geändert, User gefragt.
+
+## 2026-06-01 — Homepage re-kuratiert (Mix Mode + Bestseller, User-Wahl)
+Homepage-Kollektion (frontpage, 687295136129, MANUAL) umsortiert: 8 Damenmode-Bestseller nach VORNE
+(Sommerkleid schwarz, Mini-Kleid Rüschen, Maxikleid Bali, Boho Ibiza, Maxikleid Fleurette,
+Plateau-Sandalen, Boho Resort-Set, Off-Shoulder Brise) → Position 0–7; bisherige Tech-/Herren-Bestseller
+(Smartwatch, Uhren, ANC, Travel-Set) dahinter. Jetzt 22 Produkte. Aligned mit Fashion-Ad-Zielgruppe.
+CAVEAT: wirkt nur, wenn das Theme die „frontpage"-Kollektion auf der Startseite rendert (Horizon-Standard
+meist ja) — User sollte kurz die Startseite checken.
