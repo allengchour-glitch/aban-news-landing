@@ -799,3 +799,15 @@ Offen (Conversion-Booster, optional): WELCOME10-Popup (Shopify Forms) + Reviews 
 **GESAMTSTAND Shop verkaufsbereit:** Pixel ✅ · CH-Targeting/Budget ✅ · Handy-Menü ✅ · Reviews ✅ · Popup ✅.
 TikTok-Conversion-Kampagne 1866807185899746 läuft/in Prüfung (20 CHF/Tag, Complete Payment).
 **NÄCHSTE SESSION:** 2–3 Tage Daten sammeln lassen, dann „Auswertung" (Add-to-Cart/Käufe vs. vorher 0).
+
+## 2026-06-01 — KRITISCHER FIX: Kampagnen-Landingpage /collections/sommer fehlte!
+Die TikTok-Ads verlinken auf `luxestyle.ch/collections/sommer` — **diese Kollektion existierte NICHT**
+(404 = alle Ad-Klicks ins Leere). Behoben:
+- Smart Collection **„Sommer-Kollektion 2026"** angelegt (ID 688049488257, handle `sommer`),
+  Regel tag=sommer-2026 → **79 Produkte** (alle Bilder READY), SEO-Titel+Beschreibung, Titelbild gesetzt.
+- In alle 6 Kanäle publiziert.
+- Menü-Check: alle Haupt-Links existieren (sommer-2026=195, strand=59, kleider=20, bestseller=24,
+  damen-mode=283, highlights=20, taschen=13). Menü „☀️ Sommer + Outdoor" → /collections/sommer-2026
+  (separat, 195) ist gesund → NICHT angefasst. Hinweis: es gibt jetzt 2 Sommer-Kollektionen
+  (`sommer` 79 für Ads/Fashion-fokus, `sommer-2026` 195 fürs Menü) — bewusst, kein Konflikt.
+**Lehre fürs Memory:** Vor Kampagnenstart IMMER die Ziel-URL/Collection auf Existenz prüfen!
