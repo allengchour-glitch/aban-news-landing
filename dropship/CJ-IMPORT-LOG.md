@@ -990,3 +990,14 @@ Mini-Kleid 4.7★(26), Plateau-Sandalen 4.7★(21), Boho-Set 4.6★(22), Strand-
 Listung neu importieren → Ziel alle Kampagnen-Produkte 4.5★+.
 ✅ Landing-Verbesserung (API): Sommer-Kollektion-Beschreibung jetzt mit Trust+Offer oben
 (🇨🇭 Gratis Versand ab CHF 65 · 14 Tage Rückgabe · TWINT · -10% WELCOME10).
+
+## 2026-06-02 (Nacht, autonom) — SEO komplett + Trust auf Browse-Seiten
+- **SEO-Lücken geschlossen:** 25 restliche Sommer-Produkte mit bespoke SEO versehen →
+  **komplette Sommer-Kollektion (44) jetzt 100% SEO-optimiert** (Titel + Meta-Description, CH-Keywords).
+- **Trust+Offer-Block** in Kollektions-Beschreibungen ergänzt (sichtbar oben auf den Landing/Browse-Seiten):
+  Sommer-Kollektion, Damen-Mode, Kleider → „🇨🇭 Gratis Versand ab CHF 65 · 14 Tage Rückgabe · TWINT ·
+  -10% WELCOME10". Direkter Kaufgrund für kalten Traffic.
+- Nur sichere, additive API-Änderungen (keine bestehenden Inhalte überschrieben).
+**OFFEN (browser/User, Morgen):** (1) ⚠️ Sommerkleid 3.3★ → auf 4.5★+ fixen (Haupt-Ad-Produkt!);
+(2) Gratis-Versand-Banner sichtbar machen (Customizer); (3) Klaviyo Domain-DNS; (4) Reels posten.
+**Dann:** neue Käufer-Kampagne 2–3 Tage laufen → „Auswertung".
