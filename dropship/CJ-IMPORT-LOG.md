@@ -956,3 +956,10 @@ Impressionen verbraucht (CPM ~0,90 = billige Breit-Reichweite) — aber 0 Käufe
 **JETZT: nur „LuxeStyle Mode CH – Sommer" (1866807185899746) aktiv** — pixel-optimiert auf Complete
 Payment, Ads in Prüfung. Sauberer Zustand für die Lernphase. Restliche offene Punkte: Klaviyo Domain-Auth,
 Judge.me-Reviews auf Kleider, US-Produkte, Reels organisch (User postet selbst — kein API-Upload).
+
+## 2026-06-01 (Nacht) — 5 weitere Hook-Reels gebaut (Content-Vorrat)
+r1_kleider „5 Kleider unter CHF 40", r2_welches „Welches ist deins? 1·2·3", r3_access
+„Sommer-Accessoires ab CHF 18", r4_strand „Strand-Looks 2026", r5_neu „Neu eingetroffen".
++ 3 frühere = 8 Reels total = ~1 Woche täglich Content. User postet organisch auf LuxeStore-
+TikTok + -Instagram (eigenes Marken-Profil, nicht privat). Captions je Reel im Chat geliefert.
+Social-Buttons im Shop: Customizer → Theme-Settings → Social Media (User-Schritt).
