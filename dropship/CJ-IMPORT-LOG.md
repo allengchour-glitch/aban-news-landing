@@ -856,3 +856,15 @@ Discount-Node: gid://shopify/DiscountCodeNode/2338583150977.
 Lückenloser Scan ALLER aktiven Produkte (~511, älteste→neueste durchpaginiert + Initial-Scan der
 neuesten 50 + Sommer-Kollektion): **0 FAILED, 0 fehlende Titelbilder.** Video-Titelmedien sind ok.
 → Katalog bildtechnisch 100% gesund. Einziges je gefundene FAILED (Strandcardigan) längst behoben.
+
+## 2026-06-01 — Produkt-SEO-Batch + Hero-Befund
+- **Produkt-SEO:** 16 Fashion-Produkte mit bespoke SEO versehen (14 Kampagnen-/Sommer-Produkte:
+  Sommerkleid, Mini-Kleid, Bandeau, Shorts, Maxirock, Boho-Set, Sandalen, Ibiza, Playa, Bali, Daisy,
+  Fleurette, Dos-Nu, Nuit + Abendkleid Sirène, Sommerkleid Savanna). Restliche ~25 Sommer-Produkte
+  noch ohne SEO (long-tail, abnehmender Nutzen).
+- **HERO-/HOMEPAGE-BEFUND (wichtig, Conversion):** Homepage-Kollektion (frontpage) + Hero-Sets
+  („Top 10", „Hero-Favoriten", „TikTok Hero-Products") zeigen HERREN-/TECH-/WELLNESS-Produkte
+  (Taucheruhr, Smartwatch, Slim Wallet, Diffuser, Salzlampe, Galaxy-Projektor) — NICHT Damenmode.
+  Die TikTok-Ads bringen aber Frauen 18–34 für Kleider → Marken-Mismatch beim Weiterklicken.
+  → Re-Kuratierung Richtung Damenmode empfohlen, ABER Brand-Entscheidung des Users (outward-facing,
+  Homepage) → NICHT autonom geändert, User gefragt.
