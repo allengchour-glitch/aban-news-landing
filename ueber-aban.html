@@ -211,8 +211,10 @@
   .foot nav a:first-child{margin-left:0;}
   .foot nav a:hover{color:var(--ink);text-decoration:underline;}
 </style>
+<style>.skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}</style>
 </head>
 <body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
 
 <header class="site">
   <div class="bar">
@@ -221,7 +223,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
   <p class="lang"><a href="/ueber-aban.html" hreflang="de">DE</a></p>
 
   <h1>Über Aban</h1>
