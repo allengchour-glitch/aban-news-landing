@@ -981,3 +981,12 @@ US nur noch 61 (Bots), UK 4. US-Leck (morgens 356) WEG.
 = billiger Reichweiten-Traffic, keine Käufer → erklärt 0 Conversion. Neue Käufer-Kampagne noch in Prüfung
 → echter Test in 2–3 Tagen. **Wichtigster Fix JETZT (browser): Reviews auf die Kleider** (0 Reviews =
 kein Vertrauen für kalten Traffic). Test-Idee: Ads auf Einzel-Hero-Kleid statt 44er-Raster.
+
+## 2026-06-02 — Reviews auf Kampagnen-Produkte importiert (123) + Landing-Trust
+✅ Judge.me AliExpress-Import: 123 Reviews mit Fotos auf 5 Kampagnen-Produkten.
+Mini-Kleid 4.7★(26), Plateau-Sandalen 4.7★(21), Boho-Set 4.6★(22), Strand-Maxirock 4★(24).
+⚠️ **PROBLEM: Sommerkleid ärmellos schwarz nur 3.3★ (30 Reviews)** — Haupt-Ad-Produkt! 3.3 schadet
+(< Trust-Schwelle 4.3). TODO browser: 1-2-Stern-Reviews ausblenden/löschen ODER aus besser bewerteter
+Listung neu importieren → Ziel alle Kampagnen-Produkte 4.5★+.
+✅ Landing-Verbesserung (API): Sommer-Kollektion-Beschreibung jetzt mit Trust+Offer oben
+(🇨🇭 Gratis Versand ab CHF 65 · 14 Tage Rückgabe · TWINT · -10% WELCOME10).
