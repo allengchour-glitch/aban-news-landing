@@ -58,6 +58,11 @@
 /mail             mailto:hallo@abannews.com       301
 /sponsoren        /sponsoring.html      301
 
+# Roman „Marsch" / „The Reclaimed Land"
+/marsch           /marsch.html          301
+/the-reclaimed-land  /en/the-reclaimed-land.html  301
+/reclaimed        /en/the-reclaimed-land.html  301
+
 # 404 fallback — Cloudflare Pages serves /404.html automatically for missing routes,
 # aber für SPA-like fallback explicit:
 /*                /404.html             404
