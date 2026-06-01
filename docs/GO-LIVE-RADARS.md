@@ -1,0 +1,145 @@
+# 🛰️ GO-LIVE — die vier fertigen Radar-Subdomains
+
+> Vier eigenständige Verzeichnis-Sites sind **code-fertig und bauen sauber**, aber noch
+> nicht öffentlich erreichbar. Jede ist ein eigenes Cloudflare-Pages-Projekt auf einer
+> eigenen Subdomain. Was fehlt, ist **kein Code**, sondern der manuelle Cloudflare-
+> Dashboard-Schritt + DNS — das kann nur jemand mit deinem CF-Login auslösen.
+>
+> Diese Datei = Tieftauchen (was jedes Projekt ist, wie es Geld bringt, was fehlt)
+> **plus** die genaue Live-Schalt-Anleitung. Reihenfolge der Projekte = Empfehlung,
+> womit zu starten ist.
+
+---
+
+## Auf einen Blick
+
+| Projekt | Subdomain | Inhalt heute | Geldweg | Build prüft | Live? |
+|---------|-----------|--------------|---------|:-----------:|:-----:|
+| `prompts-bibliothek/` | `prompts.abannews.com` | **50** echte deutsche Prompts | Newsletter-Opt-in | ✅ 74 Dateien | ❌ CF fehlt |
+| `kurse-radar/` | `kurse.abannews.com` | **22** KI-Kurs-Anbieter | Affiliate (deaktiviert) | ✅ 45 Dateien | ❌ CF fehlt |
+| `dropshipping-radar/` | `dropshipping.abannews.com` | **22** PoD/Dropship-Anbieter | Affiliate (deaktiviert) | ✅ 42 Dateien | ❌ CF fehlt |
+| `agenturen-radar/` | `agenturen.abannews.com` | **2** (ehrlich leer, Platzhalter) | Bezahlte Listings | ✅ 20 Dateien | ❌ CF fehlt |
+
+> Alle vier: **kein Build-Step im klassischen Sinn nötig** — `python generate.py` rendert
+> reines statisches HTML nach `dist/`. Keine Abhängigkeiten außer Python-stdlib.
+
+---
+
+## Der Live-Schalt-Vorgang (identisch für alle vier)
+
+Pro Projekt **einmal** im Cloudflare-Dashboard:
+
+1. **Cloudflare Pages → „Create a project" → „Connect to Git"** → dieses Repo wählen.
+2. **Build-Einstellungen:**
+   - *Production branch:* `main`
+   - *Build command:* `cd PROJEKT && python generate.py`
+   - *Build output directory:* `PROJEKT/dist`
+   - *Root directory:* leer (Repo-Root)
+   - Python-Version: 3.11 (Env-Var `PYTHON_VERSION=3.11`, falls CF nicht automatisch erkennt)
+3. **Deploy auslösen** → CF baut und vergibt eine `*.pages.dev`-URL. Diese öffnen, prüfen.
+4. **Custom Domain → „Set up a custom domain"** → die jeweilige Subdomain eintragen.
+   CF legt den CNAME automatisch an (Domain liegt bereits bei Cloudflare).
+5. **Fertig.** Ab dann deployt jeder Push auf `main` die Subdomain automatisch mit.
+
+> Konkrete Werte je Projekt stehen unten im Tieftauchen. Die GitHub-Build-Workflows
+> (`*-build.yml`) existieren bereits und prüfen den Build bei jedem PR — der eigentliche
+> Deploy läuft aber über Cloudflare Pages, nicht über die Workflows.
+
+---
+
+## Tieftauchen je Projekt
+
+### 1. `prompts-bibliothek/` → `prompts.abannews.com` — **als Erstes live schalten**
+
+**Was es ist:** Durchsuchbare Bibliothek mit **50 selbst geschriebenen** deutschen
+Prompts (9 Berufe × 11 Aufgaben), Live-Filter + Copy-Button, SEO-orientiert.
+
+**Aufbau:** `data/prompts.json` (50 Prompts) → `generate.py` (stdlib) → `dist/`
+(74 Dateien: Index, Kategorie-Seiten, Einzelseiten, Such-JSON).
+
+**Geldweg:** Newsletter-Opt-in. Jede Prompt-Seite ist ein SEO-Eingang; das
+Newsletter-CTA fängt die Leser ein. **Kein Affiliate** — bewusst sauber.
+
+**Warum zuerst:** Kleinster Risiko-Footprint, reiner Content (keine Affiliate-/
+Listing-Logik zu klären), und laut Marktrecherche ist „Premium-Nischen-Prompt-Pack
+für eine definierte Zielgruppe" der einzige digitale-Produkt-Typ mit Evidenz — die
+Gratis-Bibliothek ist der Funnel-Einstieg dafür.
+
+**Was noch fehlt:** Nur der CF-Schritt oben. Optional danach: mehr Prompts ergänzen
+(`data/prompts.json` erweitern → Push → Auto-Deploy).
+
+---
+
+### 2. `kurse-radar/` → `kurse.abannews.com`
+
+**Was es ist:** Vergleich von **22** KI-Weiterbildungs-/Zertifikats-Anbietern,
+10 Kategorien, 4 Level. Preise/Scores stehen auf `null`, bis manuell geprüft —
+ehrliche Politik („kein erfundener Score").
+
+**Aufbau:** `data/kurse.json` → `generate.py --out dist` → 45 Dateien.
+
+**Geldweg:** Affiliate über `affiliate.json` — **aktuell deaktiviert**. So aktivierst du:
+beim Partnerprogramm des Anbieters anmelden → persönlichen Link in `affiliate.json`
+unter `affiliate_url` eintragen → der Generator verlinkt automatisch (mit `rel="sponsored"`).
+
+**Was noch fehlt:** CF-Schritt + (optional) Preise/Scores verifizieren und
+Affiliate-Links eintragen, sobald Programme bestätigt sind.
+
+---
+
+### 3. `dropshipping-radar/` → `dropshipping.abannews.com`
+
+**Was es ist:** Vergleich von **22** Dropshipping-/Print-on-Demand-Anbietern mit
+DACH-Fokus (Filter `eu_lager` / `deutsche_oberflaeche`), 7 Kategorien.
+
+**Aufbau:** `data/anbieter.json` → `generate.py` → 42 Dateien.
+
+**Geldweg:** Affiliate, **deaktiviert** (`_`-Präfix in den Programm-Keys). Aktivierung
+wie bei kurse-radar.
+
+**Querverweis:** Die Root-Seite `geld-verdienen-mit-3d-druck.html` (Pretty-URLs
+`/3d-druck`, `/3d`) verlinkt bereits hierher — der Traffic-Pfad steht also schon.
+
+**Was noch fehlt:** CF-Schritt. Danach: `_redirects`-Eintrag `/dropshipping` zeigt
+aktuell noch auf `geld-verdienen-mit-3d-druck.html` — prüfen, ob das nach Live-Gang
+der Subdomain so gewollt bleibt.
+
+---
+
+### 4. `agenturen-radar/` → `agenturen.abannews.com` — **bewusst zuletzt**
+
+**Was es ist:** Verzeichnis von KI-Dienstleistern in DACH. Startet **ehrlich leer**
+(2 markierte Platzhalter) — keine erfundenen Einträge.
+
+**Aufbau:** `data/agenturen.json` (2 Einträge) → `generate.py` → 20 Dateien.
+
+**Geldweg:** **Bezahlte Listings** — der einzige der vier mit B2B-Verkaufslogik statt
+Affiliate. Laut Marktrecherche (TIER-1 #2) ist genau das die AIO-resistente Richtung:
+Premium-Placement + Pay-per-Lead schlägt Affiliate-Cents.
+
+**Warum zuletzt:** Ein leeres Verzeichnis live zu schalten bringt wenig, bevor erste
+echte Listings da sind. Sinnvoller Weg: erst 10–20 echte Agenturen aufnehmen (oder
+zahlende Erst-Listings akquirieren), dann live. Code ist fertig — es wartet auf Inhalt.
+
+---
+
+## Reihenfolge-Empfehlung
+
+1. **prompts** (sofort, reiner Content, Newsletter-Funnel).
+2. **kurse** + **dropshipping** (Content da, Affiliate später nachrüstbar).
+3. **agenturen** (erst Listings sammeln, dann live).
+
+---
+
+## Was bewusst NICHT zu tun ist
+- Keine erfundenen Preise/Scores/Einträge (Anti-Hype-Markenversprechen).
+- Affiliate-Links immer mit `rel="sponsored"` — der Generator macht das automatisch,
+  also Logik nicht umgehen.
+- Kein Tracking auf den Subdomains (gleiche DSGVO-Regel wie die Hauptseite).
+- Affiliate-/Listing-Secrets nie ins Repo — nur öffentliche Partner-Links.
+
+---
+
+> Kurz: Vier Sites sind gebaut und getestet. Diese Liste ist alles, was zwischen
+> „baut grün" und „erreichbar unter der eigenen Subdomain" steht — und der CF-Schritt
+> liegt bei dir.
