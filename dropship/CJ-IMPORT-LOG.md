@@ -876,3 +876,15 @@ Plateau-Sandalen, Boho Resort-Set, Off-Shoulder Brise) → Position 0–7; bishe
 (Smartwatch, Uhren, ANC, Travel-Set) dahinter. Jetzt 22 Produkte. Aligned mit Fashion-Ad-Zielgruppe.
 CAVEAT: wirkt nur, wenn das Theme die „frontpage"-Kollektion auf der Startseite rendert (Horizon-Standard
 meist ja) — User sollte kurz die Startseite checken.
+
+## 2026-06-01 — GRATIS-WACHSTUM aufgesetzt (alle 3 Kanäle)
+- **E-Mail:** Klaviyo verbunden (Konto „LuxeStyle CH", Belp). Willkommens-Mail-Vorlage erstellt
+  „LuxeStyle – Willkommen (WELCOME10)" (Template-ID T7bFP4, Branding + Code + Sommer-CTA + Abmeldelink).
+  Liste „Newsletter Subscribers" T2VHfu (Popup-Signups). User-Schritt: Flow „Welcome Series" anlegen +
+  Template zuweisen (Anleitung in GRATIS-WACHSTUM.md).
+- **Organisch:** `dropship/ads/render_hook_reel.sh` (Hook-Karte + Montage + Musik). 2 Hook-Reels
+  gerendert & geliefert: „CHF 32 statt CHF 200?" (uplifting) + „3 Sommer-Looks unter CHF 40" (elegant).
+- **Playbook:** `dropship/GRATIS-WACHSTUM.md` — 15 Reel-Post-Ideen (Hook+Caption+Hashtags),
+  Pinterest-Pin-Texte (7 Produkte), E-Mail-Flow-Setup. Alle 3 Kanäle gratis, parallel zur Kampagne.
+- Hinweis: organisches Posten auf TikTok/IG/Pinterest = User/Browser-Claude (kein API-Upload möglich);
+  ich liefere die Assets, Posten macht der User.
