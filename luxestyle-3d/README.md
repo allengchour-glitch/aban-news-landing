@@ -14,6 +14,7 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `nametag_base.scad` | Grundplatte (ohne Text) für mehrfarbige Anhänger (X1C + AMS) |
 | `animal.scad` | 8 Tier-Silhouetten (cat, bear, rabbit, fish, paw, dog, heart, star) |
 | `flexi_chain.scad` | Print-in-Place Gliederkette (beweglich, in einem Stück) |
+| `kawaii_cat.scad` | **Flache Kawaii-Katze** (Hosentaschen-Anhänger): graviertes Gesicht (X-Augen, Schnurrhaare, Mund), erhabene Zunge, Loop-Loch, parametrisch 50–90 mm |
 | `make.py` | erzeugt aus jedem Text eine druckfertige `.stl` |
 | `polish.py` | **Veredelung (Blender):** Mesh säubern, glätten, Schuppen-/Detail-Struktur, auf mm skalieren, STL + Render |
 | `build_all.sh` | **1 Befehl** → kompletter Katalog als STL (alle Tiere, Flexi, Beispiel-Namen) |
@@ -122,6 +123,15 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 - **Standard-Größen** festlegen: Anhänger ~40 mm, Figur ~55–60 mm (statt ad hoc). [merken]
 - **Mehrfarbig**: kein Auto-Multicolor; nur einfarbig (Filament) + manuell in Bambu Studio.
 - **Flexi an Figuren**: nicht möglich; nur eigenständige Flexi (Kette) oder Lizenz.
+
+### Stil-Vorgaben (Kunde — merken)
+- **Standard = flache, liegende Kawaii-Katze/-Tiere**, taschentauglich (~10 mm dünn, 5–9 cm).
+- **Gesicht GEZEICHNET/graviert**, keine 3D-Schnurrhaare (die mochte der Kunde nicht).
+- Beliebt: „Derp/tote Katze" — **X-Augen, Zunge raus**, kawaii.
+- **Flache, gravierte Designs → OpenSCAD** (`kawaii_cat.scad`), nicht Meshy (scharf, sauber,
+  kein Artefakt). Meshy nur für **runde 3D-Figuren**.
+- Farbe: einfarbig (Filament) ODER **AMS 2-farbig** (Körper + Gesicht/ Zunge in 2. Farbe).
+- Flexi-Gelenke an Figuren: weiterhin nicht möglich.
 
 ### Prompt-Bibliothek (erprobt)
 - Funktioniert: `"a cute <tier> figurine, smooth stylized, solid, simple, no separate base"`
