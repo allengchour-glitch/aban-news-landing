@@ -1062,3 +1062,9 @@ Versuch, die 4.381 archivierten via bulkOperationRunMutation (productDelete) zu 
 **FAZIT/EMPFEHLUNG:** Archiv-Purge der 4.381 → **Shopify Admin: Produkte → Filter Archiviert →
 Alle auswählen → Löschen** (2 Min, server-seitig). Einzel-productDelete-Batches via API = ~50–88 Runden
 (unpraktisch, Produkte eh nicht kund:innen-sichtbar). NICHT prioritär (kosmetisch).
+
+## 2026-06-02 — +4 Kategorie-Reels (Katalog-Breite abgedeckt)
+Statt 526 Einzelvideos: 4 Kategorie-Reels gerendert (render_hook_reel.sh, Hook+Musik):
+schmuck.mp4 (6 Schmuckstücke), schuhe.mp4 (Sandalen/Pumps/Loafer), taschen.mp4 (Schultertasche/Denim/
+Clutch), brillen.mp4 (6 Sonnenbrillen). Bilder aus Kollektionen, HTTP-200, kein Wasserzeichen geprüft.
+Content-Vorrat gesamt: ~12 Reels (8 Mode-Hooks + 4 Kategorie) = 1–2 Wochen täglich Posten. Captions geliefert.
