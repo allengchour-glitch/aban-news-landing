@@ -1,5 +1,11 @@
 # Direkt auf YouTube veröffentlichen — 1 Video alle 2 Tage
 
+> **Schnellstart (ein Kommando):** Sobald `client_secret.json` da ist (Schritte 1–3
+> der „Einmaligen Einrichtung"), erledigt
+> `cd video-prototypes && bash scripts/setup_youtube.sh`
+> den Login, holt das Refresh-Token und setzt die 3 GitHub-Secrets automatisch (per `gh`).
+> Danach läuft alles von allein — der Rest dieser Datei ist nur Hintergrundwissen.
+
 Die Clips werden als **Shorts** hochgeladen und **von YouTube selbst terminiert**
 veröffentlicht: jeder Upload bekommt ein `publishAt`-Datum aus `schedule.csv`
 (Start 2026-06-04, dann alle 2 Tage, 18:00 Europe/Berlin). YouTube schaltet jeden
