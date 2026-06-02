@@ -26,6 +26,8 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `animal.scad` | 8 Tier-Silhouetten (cat, bear, rabbit, fish, paw, dog, heart, star) |
 | `flexi_chain.scad` | Print-in-Place Gliederkette (beweglich, in einem Stück) |
 | `make.py` | erzeugt aus jedem Text eine druckfertige `.stl` |
+| `meshy_text.py` | **Text → 3D** (Meshy v2): Prompt → GLB, optional `REFINE=1`. Key aus `MESHY_API_KEY` |
+| `meshy_image.py` | **Bild → 3D** (Meshy v1): ein Referenzbild → texturiertes GLB (treffsicherer bei Vorlage) |
 | `polish.py` | **Veredelung (Blender):** Mesh säubern, glätten, Schuppen-/Detail-Struktur, auf mm skalieren, STL + Render |
 | `texture_to_parts.py` | **Meshy-Textur → Bambu/AMS-Farbteile** (liest Textur, sortiert in Filament-Palette, zerlegt in STL pro Farbe) |
 | `colorize.py` | **Universelles Farb-Tool**: MODE=texture (Meshy-Textur) ODER rules (Plain-Modell nach Regionen) → Farb-STLs + farbiges OBJ + Vorschau; Palette frei |
@@ -56,6 +58,36 @@ python3 polish.py meshy_cat.glb --detail scales --cell 4 --strength 0.5 --size 5
 **Ehrlich:** Detail = echte Geometrie (Drucker druckt Form). Auf **FDM** nur grobe
 Struktur möglich (kräftige Schuppen ja, fotorealistische Mikro-Haut nein → Resin).
 Funktioniert am besten auf **organischen/runden** Meshes, nicht auf flachen Platten.
+
+### Rezept: Idee → druckfertige Farb-3MF (End-to-End, Meshy-Pipeline)
+```bash
+# 0) Key bereitlegen (NIE committen). Einmal pro Session:
+export MESHY_API_KEY=msy_...          # oder: echo msy_... > /tmp/meshy.key
+
+# 1) Form erzeugen  (Text ODER Bild — Bild ist treffsicherer bei Vorlage)
+PROMPT="a cute sitting cat figurine, round eyes, pink ears, full body, solid" \
+  REFINE=1 OUT=/tmp/cat.glb python3 meshy_text.py
+# IMG=/tmp/cat_ref.jpg OUT=/tmp/cat.glb python3 meshy_image.py
+
+# 2) Druckfertig machen (säubern, manifold, auf mm)
+python3 polish.py /tmp/cat.glb --size 50 --remesh 0.45 --decimate 0.5 --render
+
+# 3) Optional: Schlüsselring-Loch (erst Geometrie abtasten, dann bohren!)
+IN=/tmp/cat.glb OUT=/tmp/cat_hole.glb PNG=renders/check.png \
+  SIZE=50 AXIS=x HY=-7 HZ=21 HD=5 blender --background --python hole.py
+
+# 4) Farbe → Bambu/AMS-Teile (Meshy-Textur in Palette einsortieren)
+IN=/tmp/cat_hole.glb OUTDIR=samples/cat_parts MODE=texture \
+  blender --background --python colorize.py
+
+# 5) Zu EINER fertigen 3MF zusammenfügen (Farbe pro Dreieck)
+IN=samples/cat_parts/colored.obj OUT=samples/cat.3mf PNG=renders/cat.png \
+  blender --background --python assemble.py
+# -> samples/cat.3mf in Bambu Studio öffnen, Farbe→Filament bestätigen, drucken.
+```
+**Augen-Stil = Prompt-Sache** (Meshy backt ihn in die Geometrie): „round eyes" vs
+„X eyes" vor dem Generieren festlegen — NIE blind im Mesh nachsetzen.
+**Vor der 20er-Serie** erst 1 Proof bei 30 % Skalierung drucken (fängt Farb-Fehler günstig ab).
 
 ---
 
