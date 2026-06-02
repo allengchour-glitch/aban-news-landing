@@ -1,0 +1,18 @@
+{
+  "_comment": "Konfiguration für den Print-on-Demand-Shop. NUR öffentliche Links/IDs — NIEMALS Secrets, API-Keys oder Tokens hier eintragen (die gehören in die Umgebungsvariablen von Shopify/CF, nicht ins Repo). Solange ein Wert mit '_' beginnt oder leer ist, gilt der Slot als deaktiviert und der Shop nutzt den Mail-Fallback statt eines toten Checkout-Links.",
+  "_status": "ALLE SLOTS DEAKTIVIERT. Kein Shop verbunden. Checkout-Fallback = Mail.",
+  "kontakt_fallback": "mailto:hallo@abannews.com?subject=Bestellung%20personalisiertes%20Produkt",
+
+  "shopify": {
+    "_anleitung": "1) Shopify-Store anlegen. 2) Produkte via shopify-import.csv importieren ODER per Shopify-MCP anlegen. 3) Öffentlichen Shop-/Produkt-Link hier eintragen und führendes '_' entfernen. 4) generate.py neu laufen lassen.",
+    "_shop_url": "https://DEIN-SHOP.myshopify.com",
+    "_produkt_basis_url": "https://DEIN-SHOP.myshopify.com/products/"
+  },
+
+  "pod_anbieter": {
+    "_hinweis": "Wer druckt + versendet. EU-Lager bevorzugt (kürzere Wege, DSGVO, weniger Zoll). Anmeldung beim Anbieter, App mit Shopify verbinden, Produkte mappen. Quelle der Wahrheit für Material/Preis bleibt data/produkte.json.",
+    "_gelato": {"typ": "Print (Karten/Tassen/Poster)", "eu": true, "signup": "https://www.gelato.com/"},
+    "_3d_pod": {"typ": "3D-Druck (Namensschild)", "eu": true, "signup": "https://craftcloud3d.com/"},
+    "_acryl_pod": {"typ": "Acryl/Laser (Schlüsselanhänger)", "eu": true, "signup": "[Redaktion: EU-Anbieter prüfen]"}
+  }
+}
