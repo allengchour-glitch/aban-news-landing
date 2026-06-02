@@ -198,6 +198,28 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 - Vermeiden: „fluffy / long-haired" → wird ein Blob. Für Druck: „chunky, thick limbs".
 - Pipeline: Meshy (Form, ~50–70%) → `polish.py` (säubern, decimate, Boden, Loop, Größe, Render).
 
+### Generatoren & Hilfe (Recherche Juni 2026)
+Stand der besten Text/Bild→3D-Tools — Reihenfolge nach Nutzen für uns (Bambu, Figuren):
+- **Meshy** — unser Haupttool. Einziges mit **1-Klick-Bambu-Studio-Plugin + 3MF-Export**,
+  ~97 % Slicer-Pass. Auch in Bambus **MakerWorld** integriert (Bild→3D→Mehrfarbdruck).
+- **Hitem3D / Hi3D** — höchste Mesh-Auflösung (1536³), gemacht für **Tabletop-Figuren** +
+  Bambu, „print-ready STL in 2 Min". Antesten, wenn Meshy zu grob wird.
+- **Tripo** — am schnellsten (~8 s), saubere wasserdichte Meshes, Gratis-Stufe. Gut für Figuren.
+- **Rodin Gen-2** — höchste Foto-Realität/Detail (10-Mrd-Modell), aber teurer/langsamer.
+- **Hunyuan3D 2** (Tencent, **Open Source, Apache 2.0, gratis**) — selbst hosten, läuft ab
+  ~6 GB VRAM. Kein Abo → passt zu „lieber selbst statt Abo", braucht aber eine GPU.
+- **Trellis** (Microsoft, Open Source) — gratis, lokal via ComfyUI.
+- **3D AI Studio** — mehrere Modelle unter einem Dach (Abo ~19–29 $/Mt).
+
+Druck-/Aufräum-Tipps (decken sich mit unserer Pipeline):
+- KI liefert 70–90 %, **immer Aufräum-Pass** (machen wir mit `polish.py`); dünne Teile
+  auf ~8 000 Faces remeshen.
+- **3–5 kräftige Farben mit klaren Zonen** drucken am saubersten im AMS (unsere Katzen passen).
+- **Vor der 20er-Charge erst 1 Proof bei 30 % Skalierung** drucken → fängt Farb-Fehlzuordnung
+  in 20 Min statt 5 h ab. (Wichtigster Tipp für Serien.)
+- Bambu: **Variable Layer Height** für glatte Figuren; 0,12–0,16 mm Detail, Tree-Supports
+  für organische Überhänge, 15–20 % Infill, PLA.
+
 ---
 
 ## Projekt-Gedächtnis
