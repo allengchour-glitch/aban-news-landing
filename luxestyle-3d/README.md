@@ -136,13 +136,12 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 - Flexi-Gelenke an Figuren: weiterhin nicht möglich.
 
 ### Finaler 3D-Stil (Kunde bestätigt)
-- **Runde 3D-Figur** (Meshy Image/Text→3D) → `polish.py` → Augen = **erhabene, bold
-  schwarze X** auf die **Augen-Beulen** (2 gekreuzte Bars, um Y-Achse ±45° gedreht =
-  X in Gesichtsebene; ~scale 9×7×3; Position `(±7, -23.5, 11)` bei der Katze, so dass
-  sie aus dem Gesicht **hervorstehen**). Pro Tier per Nahaufnahme neu finden.
-- Körper **hellgrau**, **Zunge orange** (Zungen-Faces per Region einfärben), X **schwarz**.
-- NICHT: Carving (Zickzack), Vertex-Inflate (stachelig), flache/senkrechte X (mochte er nicht).
-  → erhabene, in die Gesichtsebene gedrehte X-Bars = der Weg.
+- **Runde 3D-Figur** (Meshy Image/Text→3D) → `polish.py` → Augen = **weiße Kreis-Scheibe
+  (Bulge) + schwarzes X drauf** ("totes" Derp-Auge), auf die Augen-Beulen gesetzt.
+  Scheibe = Zylinder (r~4.6, Achse entlang Y, Kreisfläche nach vorn); X = 2 Bars um
+  Y-Achse ±45°. Position ~`(±7, -22, 11)` bei der Katze (pro Tier per Nahaufnahme finden).
+- Körper **mittelgrau**, **Augen-Kreis weiß**, **X schwarz**, **Zunge orange** (Region einfärben).
+- NICHT: Carving (Zickzack), Vertex-Inflate (stachelig). Alles als erhabene Geometrie/Spheres.
 - **Farbpalette (PLA):** gelb, rot, braun, grau, grün, weiß, schwarz, beige.
 - Pipeline-Skripte (Blender headless): in der Session unter `/tmp` (lenseye-Muster).
 
