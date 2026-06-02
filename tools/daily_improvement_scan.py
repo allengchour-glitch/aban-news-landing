@@ -57,15 +57,19 @@ def scan_page(p: Path, findings: list):
     def add(sev, cat, detail):
         findings.append((sev, cat, rel, detail))
 
+    # noindex-Seiten (Lieferseiten, Dashboards, 404) brauchen kein canonical/OG/Description —
+    # für SEO-Discovery-Checks überspringen (sonst Falsch-Alarme).
+    noindex = bool(re.search(r'<meta[^>]+name=["\']robots["\'][^>]*noindex', s, re.I))
+
     if "<title" not in low:
         add("high", "SEO: <title> fehlt", "kein Seitentitel")
-    if 'name="description"' not in low:
+    if not noindex and 'name="description"' not in low:
         add("medium", "SEO: Meta-Description fehlt", "kein <meta name=description>")
-    if 'rel="canonical"' not in low:
+    if not noindex and 'rel="canonical"' not in low:
         add("high", "SEO: canonical fehlt", "kein <link rel=canonical>")
-    if 'property="og:title"' not in low:
+    if not noindex and 'property="og:title"' not in low:
         add("medium", "SEO: OG-Title fehlt", "kein og:title")
-    if 'property="og:description"' not in low:
+    if not noindex and 'property="og:description"' not in low:
         add("medium", "SEO: OG-Description fehlt", "kein og:description")
     if not re.search(r"<html[^>]*\blang=", s, re.I):
         add("medium", "a11y: lang-Attribut fehlt", "kein lang am <html>")
@@ -85,12 +89,16 @@ def scan_page(p: Path, findings: list):
     if EXCL_RX.search(re.sub(r"<[^>]+>", " ", s)):
         add("low", "Voice: Mehrfach-Ausrufezeichen", "!! im Text")
 
-    # Hype-Wörter (nur sichtbarer Text, Tags entfernt)
-    text = re.sub(r"<(script|style)\b.*?</\1>", " ", s, flags=re.S | re.I)
-    text = re.sub(r"<[^>]+>", " ", text)
-    hits = sorted(set(m.group(0) for m in HYPE_RX.finditer(text)))
-    if hits:
-        add("low", "Voice: Hype-Wörter", ", ".join(hits[:6]))
+    # Hype-Wörter (nur sichtbarer Text, Tags entfernt).
+    # Ausnahme: Seiten, die Hype-Floskeln absichtlich ZITIEREN, um sie zu entlarven
+    # (Newsletter-Archiv + Anti-Hype-/Brand-Seiten) — sonst Falsch-Alarme.
+    HYPE_EXEMPT = ("archive/", "anti-hype-texten.html", "brand.html")
+    if not any(x in rel for x in HYPE_EXEMPT):
+        text = re.sub(r"<(script|style)\b.*?</\1>", " ", s, flags=re.S | re.I)
+        text = re.sub(r"<[^>]+>", " ", text)
+        hits = sorted(set(m.group(0) for m in HYPE_RX.finditer(text)))
+        if hits:
+            add("low", "Voice: Hype-Wörter", ", ".join(hits[:6]))
 
     # JSON-LD-Validität
     for block in JSONLD_RX.findall(s):
@@ -114,6 +122,35 @@ def scan_sitemap(findings: list):
         if not f.exists():
             findings.append(("high", "Sitemap: Ziel fehlt", "sitemap.xml",
                              f"{path} → Datei nicht vorhanden"))
+
+
+def scan_internal_links(findings: list):
+    """Prüft interne .html-Links auf existierende Zieldateien (deterministisch, ohne Netz).
+
+    Fängt umbenannte/gelöschte Seiten. Externe Links (http), Anker, mailto/tel und
+    erweiterungslose Pretty-URLs (über _redirects) werden bewusst übersprungen.
+    """
+    href_rx = re.compile(r'href=["\']([^"\'#?]+\.html)(?:[#?][^"\']*)?["\']', re.I)
+    skip = ("http://", "https://", "//", "mailto:", "tel:", "data:")
+    for p in html_files():
+        rel = str(p.relative_to(ROOT))
+        s = p.read_text(encoding="utf-8", errors="replace")
+        seen = set()
+        for href in href_rx.findall(s):
+            if href in seen or href.lower().startswith(skip):
+                continue
+            seen.add(href)
+            if href.startswith("/"):
+                target = (ROOT / href.lstrip("/"))
+            else:
+                target = (p.parent / href)
+            try:
+                target = target.resolve()
+                inside = ROOT.resolve() in target.parents or target == ROOT.resolve()
+            except Exception:
+                inside = False
+            if inside and not target.exists():
+                findings.append(("high", "Interner Link tot", rel, f"→ {href}"))
 
 
 def _fix_noopener_in_tag(tag: str) -> str:
@@ -165,6 +202,7 @@ def main():
         except Exception as ex:
             findings.append(("high", "Scan-Fehler", str(p.relative_to(ROOT)), str(ex)[:80]))
     scan_sitemap(findings)
+    scan_internal_links(findings)
 
     sev_rank = {"high": 0, "medium": 1, "low": 2}
     by_cat: dict = {}
