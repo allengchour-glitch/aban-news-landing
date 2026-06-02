@@ -516,6 +516,29 @@ def build(data_path: Path, out: Path) -> int:
     (out / "sitemap.xml").write_text(sitemap(urls), encoding="utf-8")
     (out / "robots.txt").write_text(robots(), encoding="utf-8")
 
+    # 404 (Cloudflare Pages serviert es automatisch bei unbekannten Pfaden)
+    (out / "404.html").write_text(page(
+        title=f"404 — Seite nicht gefunden | {SITE_NAME}",
+        description="Diese Seite gibt es nicht (mehr).",
+        body='<h1>404 — Seite nicht gefunden</h1>\n'
+             '<p>Diese Seite gibt es nicht (mehr). Zur '
+             '<a href="/">Prompt-Bibliothek</a>.</p>',
+        canonical=BASE_URL + "/404.html", kind="home"), encoding="utf-8")
+
+    # _headers (Cloudflare Pages) — Security-Header. script-src erlaubt 'unsafe-inline',
+    # weil die Seiten Inline-Scripts + onclick/oninput (Live-Suche/Copy) nutzen; alle
+    # Ausgaben sind escaped. Übrige Direktiven bleiben streng.
+    (out / "_headers").write_text(
+        "/*\n"
+        "  X-Frame-Options: DENY\n"
+        "  X-Content-Type-Options: nosniff\n"
+        "  Referrer-Policy: strict-origin-when-cross-origin\n"
+        "  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()\n"
+        "  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; "
+        "style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; "
+        "connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'\n",
+        encoding="utf-8")
+
     pages = len(urls)
     print(f"OK: {len(prompts)} Prompts, {len(berufe)} Berufe, {len(aufgaben)} Aufgaben")
     print(f"    {pages} HTML-Seiten + feed.xml + sitemap.xml + robots.txt -> {out}")
