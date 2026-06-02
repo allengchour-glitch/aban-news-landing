@@ -1355,3 +1355,20 @@ WebFetch luxestyle.ch:
 - ⚠️ Produktkachel-Sterne nicht sichtbar im Fetch (Judge.me lädt per JS → nicht zwingend fehlend; am Handy prüfen).
 - n/v aus Ferne: Sticky-ATC (mobil/PDP), Admin-Link-Fix im Ankündigungs-Link-Feld.
 **To-verify durch User:** Button-Label am Live-Shop checken; Judge.me-Sterne mobil auf Collection-Seite checken.
+
+## 2026-06-02 — AUSWERTUNG „0 Käufe" (datenbasiert, ShopifyQL)
+14T: **1.971 Sessions, ~0 Add-to-Cart (nur 2× am 28.5.), 2 Checkout erreicht, 0 Käufe.** (Jun 1: 679 Sess, Jun 2: 166.)
+- **Herkunft 7T:** direct 772 · tiktok 557 · facebook 49 · google 16.
+- **Geo 7T:** Schweiz 832 · USA 196 → richtige Märkte (kein Geo-Junk wie früher).
+- **Landing 7T:** / (198), /collections/sommer (189), /collections/damen-mode (178), highlights (82), gadgets (69),
+  zirkonia-ring (64) → landen RICHTIG.
+- **Bestand:** Kleider `inventoryItem.tracked:false` → `availableForSale:true` → KEIN „Ausverkauft"-Block.
+- **0 Bestellungen total** (list-orders).
+**DIAGNOSE:** Nicht der Shop (optimiert, Bestand ok, Landing ok). **~0% ATC über 2.000 Sessions = Traffic sind
+keine Kaufinteressent:innen:** 772 „direct" = Bot/Junk; 557 TikTok = breiter Low-Intent-Traffic (organisch/Reichweite),
+keine auf KÄUFE optimierte Kampagne.
+**AKTIONEN:** (1) 2-Min-Beweistest ATC→Checkout am Handy (Funnel technisch ok?). (2) NUR User: TikTok-Kampagne
+Ziel „Conversions/Complete Payment", Pixel D8EKVR, CH/Frauen/18–34/DE+FR, Premium-Reels; alle Auto-/Reichweite-
+Kampagnen AUS (= Quelle des Junk). (3) Pixel-Henne-Ei: erst auf „Add to Cart" optimieren bis Events da, dann „Kauf".
+**Lehre:** Bei 0 Käufen IMMER zuerst ATC-Rate + Traffic-Quelle prüfen — Shop-Optimierung bringt nichts, wenn der
+Traffic Bots/Low-Intent ist.
