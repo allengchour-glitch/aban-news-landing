@@ -25,6 +25,7 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `nametag_base.scad` | Grundplatte (ohne Text) für mehrfarbige Anhänger (X1C + AMS) |
 | `animal.scad` | 8 Tier-Silhouetten (cat, bear, rabbit, fish, paw, dog, heart, star) |
 | `flexi_chain.scad` | Print-in-Place Gliederkette (beweglich, in einem Stück) |
+| `flexi.scad` | **Print-in-Place Flexi-Tier** (Kugel-Pfannen-Gelenke): `kind=cat\|snake\|caterpillar`, `n` Segmente. Katze mit Ohren/Augen/Öse. Bewegliche Segmente, captive Gelenke (im Querschnitt geprüft) |
 | `make.py` | erzeugt aus jedem Text eine druckfertige `.stl` |
 | `meshy_text.py` | **Text → 3D** (Meshy v2): Prompt → GLB, optional `REFINE=1`. Key aus `MESHY_API_KEY` |
 | `meshy_image.py` | **Bild → 3D** (Meshy v1): ein Referenzbild → texturiertes GLB (treffsicherer bei Vorlage) |
@@ -43,6 +44,8 @@ python3 make.py caketopper "Happy Birthday"
 
 openscad -o tier_cat.stl -D 'kind="cat"' animal.scad
 openscad -o flexi_chain.stl flexi_chain.scad
+openscad -o flexi_cat.stl   -D 'kind="cat"'            flexi.scad
+openscad -o flexi_snake.stl -D 'kind="snake"' -D 'n=12' flexi.scad
 ```
 Voraussetzung: OpenSCAD (https://openscad.org/downloads.html). Für Render/Mesh-Cleanup
 zusätzlich Blender headless (siehe Lern-Memory).
@@ -104,7 +107,13 @@ den Spülturm + etwas mehr Zeit.
 
 ## Flexi (print-in-place)
 
-- **Eigene Flexi = sicher verkaufbar.** `flexi_chain.scad` ist der zuverlässige Start.
+- **Eigene Flexi = sicher verkaufbar.** `flexi_chain.scad` (Kette) und `flexi.scad`
+  (Flexi-Tier: Katze/Schlange/Raupe) sind beide selbst gebaut → frei verkaufbar.
+- **`flexi.scad`** nutzt Kugel-Pfannen-Gelenke: Pfanne umschliesst >Halbkugel (Kugel
+  gefangen), Spalt `clear=0.35`. Im Querschnitt geprüft, dass die Kugel sitzt; per
+  Loose-Parts geprüft, dass alle Segmente getrennt sind (CGAL `Volumes = Segmente+1`).
+  Default `$fn=48` (Bau ~2 Min); Segmente bewusst gleich gross (Pfanne braucht Material,
+  dünner Schwanz unmöglich). `n=3` für Test-Druck, dann hochdrehen.
 - **Fremde Flexi** (MakerWorld/Thingiverse) sind fast immer NonCommercial → **nicht
   verkaufbar**. Bearbeiten in Blender macht sie NICHT legal.
 - **Echte Tier-Flexi** (Drache, Axolotl) → kommerzielle Lizenz (Cinderwing3D ~10 $/Mt)

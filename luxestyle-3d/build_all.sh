@@ -14,6 +14,7 @@ done
 
 echo "== Flexi =="
 openscad -o samples/flexi_chain.stl flexi_chain.scad >/dev/null 2>&1 && echo "  ok flexi_chain"
+openscad -o samples/flexi_cat.stl -D 'kind="cat"' flexi.scad >/dev/null 2>&1 && echo "  ok flexi_cat"
 
 echo "== Beispiel-Personalisierung =="
 python3 make.py keychain  "Mia"            --out samples/keychain_Mia.stl        >/dev/null && echo "  ok keychain_Mia"
