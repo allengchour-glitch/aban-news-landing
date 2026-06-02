@@ -14,7 +14,8 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `nametag_base.scad` | Grundplatte (ohne Text) für mehrfarbige Anhänger (X1C + AMS) |
 | `animal.scad` | 8 Tier-Silhouetten (cat, bear, rabbit, fish, paw, dog, heart, star) |
 | `flexi_chain.scad` | Print-in-Place Gliederkette (beweglich, in einem Stück) |
-| `kawaii_cat.scad` | **Flache Kawaii-Katze** (Hosentaschen-Anhänger): graviertes Gesicht (X-Augen, Schnurrhaare, Mund), erhabene Zunge, Loop-Loch, parametrisch 50–90 mm |
+| `kawaii_cat.scad` | **Flache Kawaii-Katze** (Loaf): graviertes Gesicht (X-Augen, Schnurrhaare, Mund), erhabene Zunge, Loop-Loch, parametrisch 50–90 mm |
+| `pancake_cat.scad` | **Flache Kawaii-Pfannkuchen-Katze** (gespreizte Pose, Beine raus) + graviertes Derp-Gesicht + Schwanz + Loch |
 | `make.py` | erzeugt aus jedem Text eine druckfertige `.stl` |
 | `polish.py` | **Veredelung (Blender):** Mesh säubern, glätten, Schuppen-/Detail-Struktur, auf mm skalieren, STL + Render |
 | `build_all.sh` | **1 Befehl** → kompletter Katalog als STL (alle Tiere, Flexi, Beispiel-Namen) |
