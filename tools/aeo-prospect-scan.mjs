@@ -86,3 +86,39 @@ rows.forEach((r, i) => {
 });
 console.log(`\n${rows.length} bewertet. Tipp: die obersten 3–5 sind deine besten Erstkontakte.`);
 console.log("Ansprache bevorzugt WARM (Firmen, die du kennst) — UWG beachten.\n");
+
+// --- Sende-fertige Mails pro Lead (Top-N, Default 5; --emails N) -----------
+function buildEmail(r) {
+  const subj = `${r.name}: in der KI-Suche kaum auffindbar (Score ${r.score}/100)`;
+  const body =
+`Guten Tag,
+
+ich habe die Website von ${r.name} kurz darauf geprüft, wie gut sie von
+KI-Antwortmaschinen (ChatGPT, Perplexity, Google AI) gefunden und zitiert wird.
+Ergebnis: ${r.score}/100 — Note „${r.grade}".
+
+Die größte Stellschraube bei euch: ${r.hook}
+
+Immer mehr Kunden recherchieren so. Wer dort schlecht abschneidet, wird seltener
+gefunden. Das lässt sich beheben — meist mit wenigen gezielten Änderungen.
+
+Wenn es euch interessiert, schicke ich kostenlos die 3 größten Lücken als kurze
+Übersicht — ohne Verkaufsgespräch. Ein kurzes „ja" genügt.
+
+Freundliche Grüsse
+Allen Chour — abannews.com`;
+  return { subj, body };
+}
+
+const nEmails = parseInt(arg("--emails", "5"), 10);
+if (nEmails > 0 && rows.length) {
+  console.log("\n=== SENDE-FERTIGE MAILS (oberste Leads) — kopieren, prüfen, abschicken ===");
+  console.log("(Nur an Kontakte mit Bezug schicken — UWG. Score/Lücke sind echt aus dem Check.)\n");
+  rows.slice(0, nEmails).forEach((r, i) => {
+    const m = buildEmail(r);
+    console.log(`\n──────── Mail ${i + 1}: ${r.name}  (${r.url}) ────────`);
+    console.log(`Betreff: ${m.subj}\n`);
+    console.log(m.body);
+  });
+  console.log("\n");
+}
