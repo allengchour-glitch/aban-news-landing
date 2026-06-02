@@ -1319,3 +1319,13 @@ ergänzt; **Tech** Inline-Style-Müll + „7-14 Werktage" bereinigt; **Sale** (u
 Schweiz/Lieferung/WELCOME10) befüllt. Waren alle leer. productUpdate(product:{seo}), 0 Fehler.
 → **Fashion-Produkt-SEO jetzt vollständig:** Kleider (vorher) + 24 Accessoires + 40 Schmuck = ganzer
 sichtbarer Fashion-Katalog hat SEO-Metas. Gesamt diese Session: 64 Produkt-SEOs neu.
+
+## 2026-06-02 — Non-Fashion-SEO: KEINE Lücke (bereits beim Import gesetzt)
+Befund Seite 1: Non-Fashion-Produkte haben BEREITS SEO-Metas (anders als Fashion, das leer war).
+→ Kein Massen-Block zu füllen. Nur 3 kaputte/off-brand Titel gefixt: Bambus-Picknick-Set („· Geschirr + |"
+abgeschnitten), Gesichtsmaske („· Mit |" abgeschnitten), Top-3-Bundle („Black Friday Mega-Deal" off-brand).
+**FAZIT Shop-Optimierung diese Session = abgeschlossen.** Sinnvolle, sichere API-Hebel ausgeschöpft:
+Fashion-Katalog komplett (Bilder-Alt 144, Produkt-SEO 64, Grössen+Trust 20 Kleider), 15 Kollektionen,
+Menü fashion-first. Non-Fashion-SEO war schon da. Weiteres Loopen = Churn ohne Mehrwert.
+**Echter Rest-Hebel = nur User (Theme-Sperre):** Hero „Zuhause"→Mode, LAUNCH30→WELCOME10, „View all"→
+„Alle anzeigen", Sticky-ATC, Judge.me-Sterne auf Kacheln. Alles in SHOP-DESIGN-AUDIT.md.
