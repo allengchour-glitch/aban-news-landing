@@ -1,7 +1,8 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
 > Dauerhafter Gedächtnis-Speicher für dieses Vorhaben. Überlebt Session-Resets.
-> Stand: 2026-05-30 (Newsletter-Werkbank + Social-Autopost integriert) · Betreiber: Alleng Chour (abannews.com, Belp/CH).
+> Stand: **2026-06-02** (Netzwerk stark erweitert — siehe Abschnitt „🆕 Netzwerk-Ausbau" am Ende) · Betreiber: Allen Chour (abannews.com, Belp/CH).
+> Hinweis: Die laufend gepflegte Detail-Wahrheit steht in `CLAUDE.md`; dieses Dokument ist der Strategie-/Status-Überblick.
 
 ## Kontext / Ziel
 Solo-Operator mit KI-API-Zugang (LLM-Text, Bild, Audio/Voice) + bestehendem
@@ -278,3 +279,61 @@ fairer Start-Tarif in Aufbauphase). Calendly `abannews/sponsor` aktiv.
 (Phantom-„Google Analytics", 1248 statt 308 Zeilen). `index.html` ist in Wahrheit unverändert/sauber
 (308 Zeilen, kein gtag, WebSite+Organization-JSON-LD vorhanden). Es wurde NICHTS Fehlerhaftes
 committet. Bei künftigem Feinschliff an index.html zur Sicherheit Inhalte per `git show` gegenprüfen.
+
+
+## 🆕 Netzwerk-Ausbau (Stand 2026-06-02)
+
+Großer Bau-Schub seit dem 31.05. — alles gemergt auf `main`, ehrlich/anti-hype, DSGVO-fest,
+selbst-bauend. Detail-Doku je Projekt in `CLAUDE.md`.
+
+### Neue Tool-Radars (Muster wie voice-radar: `generate.py` stdlib → `dist/`, EU-Flag, Affiliate `_`-deaktiviert, Preise/Scores `null` bis menschlich geprüft)
+- `automatisierung-radar/` (36 Tools, selbst-wachsend: Vergleichs-/Use-Case-Seiten, KI-Helfer, Frage-Assistent) — Domain automatisierung.
+- `dropshipping-`, `newsletter-`, `buchhaltung-`, `chatbot-`, `voice-`, `video-`, `musik-radar/` — je 18–24 echte Anbieter.
+- `handwerk-radar/` (OSM/ODbL, 55 Betriebe) — ⚠️ menschlicher Verifikations-Pass vor Bewerbung nötig.
+- **Status:** Code + Auto-Build-Workflows fertig; **CF-Projekte je Subdomain noch anzulegen** (nur Klicks).
+
+### Dach-Verzeichnis `ki-verzeichnis/`  (das SEO-Rückgrat)
+Aggregiert alle 8 Tool-Radars + `data/tools.json` zu EINER durchsuchbaren Authority-Site:
+**326 unique Tools, 9 Bereiche, ~338 Seiten**, Dedup nach Name, **verlinkt zu jedem Fach-Radar zurück**
+(Cross-Linking). EU-Hosting sortiert vorn. Domain `tools.abannews.com` (CF-Projekt anzulegen). Selbst-wachsend.
+
+### AI-Sichtbarkeit (Service-Funnel, schnellster Cash-Weg)
+- `ai-sichtbarkeit.html` — prüft **AEO-Reife** einer Seite (Edge `functions/api/aeo-check.js`).
+- `ki-erwaehnungs-check.html` — **Marken-Präsenz** in KI-Antworten („Werde ich genannt?"), Engine
+  `functions/_visibility-engine.mjs` + `functions/api/ki-erwaehnung.js` (optional Claude, sonst Fallback), 21 Tests.
+- Beide cross-verlinkt; speisen das Service-Angebot (`docs/AI-SICHTBARKEIT-*.md`).
+
+### Eigene Produkte
+- `pod-shop/` — Print-on-Demand-Storefront (personalisierte Namens-Produkte; Design via `namen-generator.html`).
+  Preise `null` bis real kalkuliert (kein Offer-JSON-LD), `pod-config.json` alle Slots `_`-deaktiviert (Mail-Fallback),
+  `shopify-import.csv`. **Live = Shopify + POD-Anbieter verbinden, Preise eintragen, `_` raus** (3 Schritte im README).
+- `produkt-imperium/` — Ratgeber-Fabrik: Thema → KDP-Ratgeber (`generate_guide.py`, Modell claude-opus-4-8,
+  ohne Key Trockenlauf). Nur Entwürfe mit `[Redaktion: prüfen]`, keine erfundenen Fakten. Braucht `ANTHROPIC_API_KEY`.
+
+### Content & Funnel
+- **Hype-Watch** (`hype-watch.html` + `generate_hype_watch.py`): 5 belegte Faktenchecks, ClaimReview-JSON-LD, selbst-wachsend.
+- **Premium-Briefing** (`premium-briefing.html` + `-beispiel.html`): Bezahl-Tier mit echtem Beispiel.
+- **Funnel-Fix (großer echter Hebel):** alle **92 Branchen-Seiten** (`ki-fuer-*.html`) verlinken jetzt
+  Newsletter + KI-Tools-Verzeichnis + Sichtbarkeits-Check (vorher: keine!). Idempotent via `tools/add_branchen_funnel.py`.
+- **Daily-Scan** (`tools/daily_improvement_scan.py`, Workflow): prüft 377 Seiten täglich, Report nach `reports/`.
+
+### Video
+- `video-pipeline/` — `generate_clips.py`: macht aus Hype-Watch-Fällen 9:16-Clip-Pakete
+  (Slides+Skript+SRT+Caption); `generate_promo.py`: produktionsfertiger Werbespot (Variante A 40 s / B 15 s,
+  Storyboard+VO-Text+SRT+Regie). Optional ElevenLabs (`--voice`). Verteilung über `social/post.py`.
+  **Ehrlich:** Geld indirekt über den Funnel, kein YouTube-Reichtums-Versprechen.
+
+### ⚠️ Offene To-dos (nur der User — braucht eigene Accounts/Keys)
+1. **Cloudflare-Projekte** je Subdomain anlegen + Custom Domain zuordnen: `tools.` `shop.` `musik.` `video.`
+   `voice.` `chatbot.` `buchhaltung.` `newsletter.` `dropshipping.` `automatisierung.` `kurse.` `prompts.` `agenturen.` `handwerk.` (`docs/GO-LIVE-RADARS.md`).
+2. **POD-Shop live schalten:** Shopify-Store + POD-Anbieter (Gelato/EU-3D-Druck) verbinden, echte Preise, `_` entfernen.
+3. **Keys setzen** (nie ins Repo, nur Env/CF-Secret): `ANTHROPIC_API_KEY` (Ratgeber-Fabrik, Edge-Tools),
+   `ELEVENLABS_API_KEY` (Video-Vertonung). Quelle: console.anthropic.com bzw. elevenlabs.io.
+4. **Werbespot final rendern:** `video-pipeline/generate_promo.py` → `voiceover.txt` in ElevenLabs,
+   Frames+SRT in HeyGen, 9:16 exportieren (`docs/WERBEVIDEO-*.md`).
+5. **handwerk-radar:** menschlicher Verifikations-Pass der OSM-Daten vor dem Bewerben.
+
+### Sicherheit / Markenversprechen (gilt für ALLES)
+- **Keine erfundenen Zahlen/Preise/Quellen** — `null` bzw. `[Redaktion: prüfen]` bis menschlich verifiziert.
+- **Keine Secrets im Repo** — Keys nur als Env/CF-Secret; im Chat geklebte Keys gelten als verbrannt (revoke + neu).
+- Kein Tracking, kein Google Analytics, System-Fonts, anti-hype, du-Form — site-weit.
