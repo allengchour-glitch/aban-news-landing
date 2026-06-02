@@ -37,6 +37,32 @@
 
 ---
 
+## Weg 3: MASTODON (offen, kostenlos, kein Kontakt nötig)
+
+1. Auf deiner Mastodon-Instanz (z.B. mastodon.social): **Einstellungen → Entwicklung → Neue Anwendung**
+2. Berechtigung **`write:statuses`** genügt → **Anwendung anlegen** → **Access-Token** kopieren
+3. Bei GitHub (gleiche Secrets-Seite) eintragen:
+   - Name: `MASTODON_INSTANCE`  · Secret: `https://mastodon.social` (deine Instanz)
+   - Name: `MASTODON_TOKEN`  · Secret: *(der Access-Token)*
+
+---
+
+## Weg 4: ÜBERALL (LinkedIn, X, Instagram …) — über deine Automatisierung
+
+LinkedIn/X/Instagram lassen sich nicht sauber direkt aus einem Skript bedienen. Lösung:
+ein **generischer Webhook** → den hängst du an **Make / n8n / Zapier** (deine eigenen
+Automatisierungs-Tools), das fächert dann an die Plattformen.
+
+**Fertiges Szenario liegt schon bei** — gratis & EU mit **n8n** (kein Zapier/Make-Abo nötig):
+1. `social/n8n-publish-workflow.json` in n8n importieren (Webhook → LinkedIn / X / Mastodon).
+2. Plattform-Credentials in n8n verbinden, Workflow aktivieren, Production-URL kopieren.
+3. Bei GitHub eintragen: Name `PUBLISH_WEBHOOK_URL` · Secret: *(die n8n-URL)*
+
+Schritt-für-Schritt-Anleitung: **`social/N8N-WEBHOOK.md`**.
+Das System schickt dann pro Post ein JSON `{ id, text, url, tags }` an deinen Webhook.
+
+---
+
 ## Schritt C — testen (1 Klick)
 1. Öffne: https://github.com/allengchour-glitch/aban-news-landing/actions/workflows/social-autopost.yml
 2. Rechts **„Run workflow"** klicken
