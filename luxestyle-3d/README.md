@@ -138,7 +138,7 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 ### Finaler 3D-Stil (Kunde bestätigt)
 - **Runde 3D-Figur** (Meshy Image/Text→3D) → `polish.py` → Augen = **kleine erhabene
   schwarze X** (KEINE weiße Scheibe), in Originalgröße der Augen-Beule.
-  X = 2 gekreuzte Bars um Y-Achse ±45° (in Gesichtsebene), ~scale 5.5×6×2, erhaben
+  X = 2 gekreuzte Bars um Y-Achse ±45° (in Gesichtsebene), ~scale 5.5×6×1.2 (schmale Striche), erhaben
   (stehen hervor). Position ~`(±7, -22.5, 11)` bei der Katze (pro Tier per Nahaufnahme finden).
 - Körper **mittelgrau**, **X schwarz**, **Zunge orange** (Zungen-Faces per Region einfärben).
 - NICHT: Carving (Zickzack), Vertex-Inflate (stachelig), weiße Kreis-Scheiben. Nur erhabene X.
