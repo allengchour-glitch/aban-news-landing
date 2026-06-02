@@ -1223,3 +1223,18 @@ User: „ja" → Reel 2 final (Brise · Daisy · Dos Nu · Bali) FREIGEGEBEN.
 - **Beide Reels jetzt posting-bereit in Telegram** (Reel 1 msg 54 `post_eleganz`, Reel 2 msg 61 `post_sommer`).
   User-Tap «✅ Posten» → Make 6001019 postet. Freigegebene Reels gesamt: luxestyle_premium.mp4 (#52),
   luxestyle_eleganz.mp4, luxestyle_sommer.mp4 (alle nur echte Foto-Kleider, preisfrei).
+
+## 2026-06-02 — Shop-Design-/Conversion-Audit (User: „verbessere meine seite" → luxestyle.ch)
+Vollaudit Storefront + Theme-Template + Menü. Ergebnis in `dropship/SHOP-DESIGN-AUDIT.md`.
+- **WICHTIG bestätigt:** MAIN-Theme per API schreibgesperrt (themeFilesUpsert nur unpublished; Publishing
+  gesperrt) → Theme-Fixes nur via Customizer (User-Klicks). Navi/Inhalte/SEO gehen per API.
+- **PRIO-1-Funde:** (1) Hero sagt „Premium für dein **Zuhause**" auf Mode-Shop → Erwartungsbruch ggü.
+  TikTok-Mode-Ads. (2) Ankündigungsleiste **LAUNCH30 (30%)** widerspricht WELCOME10 (10%, Popup+Klaviyo)
+  + frisst Marge. (3) 2× engl. „View all" statt „Alle anzeigen".
+- **PRIO 2 (mobil/TikTok ~99% mobil):** Sticky-ATC, Size-Chart+Modellmasse (Retouren −15-25%),
+  Judge.me-Sterne auf Kacheln, Ladezeit <2s.
+- **PRIO 3:** Hero-CTA zeigt auf breite `sommer-2026` (195, gemischt) statt fokussierte `sommer` (46 Damenmode,
+  = Ad-Ziel); Mega-Menü (18 Kat.) für Fashion schärfen.
+- **POSITIV:** Alle **66 Menü-Collection-Links** lösen auf (keine toten Navi-Links).
+- **Angeboten per API (auf User-OK):** Menü fashion-first umsortieren, Collection-/Produkt-SEO schärfen,
+  Size-Charts in Kleider-Texte. Quellen: Shopify CRO Fashion 2026, easyappsecom, growthsuite TikTok-Guide.
