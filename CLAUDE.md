@@ -113,6 +113,13 @@ binden (Magie kostet Lebenszeit). Marken-konform original, kein Kopieren.
 - Workflow Band 2/3: planen → schreiben → `lektor.py`/`zweitmeinung.py` →
   `ueberarbeiten.py` → `stil_check.py` grün → `buch_bauen.py`. Leitfaden+Check
   zuerst lesen, damit der Ton EINER bleibt.
+- **Verkauf/Veröffentlichung:** eigene Verkaufsseite `glut.html` (Root, Pretty-URLs
+  `/glut` `/aschebund` `/drachen`), bewusst getrennt vom Anti-Hype-Buch — anderes
+  Publikum (Romantasy/BookTok). Buy-Buttons config-getrieben über `js/glut-config.js`
+  (`KDP_URL`/`TOLINO_URL`/`DIREKT_URL`, leer → Newsletter-Fallback). Cover-Kopie
+  in `img/glut-cover.png` (auch og:image). Schritt-für-Schritt-Anleitung (Tolino
+  Media + Direktverkauf Gumroad/Lemon/Payhip, Klappentext, Marge-Vergleich):
+  `ki-schriftsteller/drachen/VEROEFFENTLICHEN.md`.
 
 ## Seiten-Inventar (Auswahl)
 
