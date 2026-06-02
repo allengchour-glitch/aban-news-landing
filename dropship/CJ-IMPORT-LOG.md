@@ -1151,3 +1151,18 @@ kein echtes Video. User will AUTHENTISCH wirkende LIFESTYLE-/MODEL-Shots (Produk
 NICHT weisse Katalog-Freisteller (z.B. Schmuck-auf-Weiss im Mix-Reel wirkte „stock"). #52-Stil = Standard.
 Für ECHTES Video später: eigene Clips/UGC-Creator/KI-Video (CJ hat keine Mode-Videos). Beide Premium-Reels
 freigegeben-Status: #52 elegant JA; Mix #50 war auch „ja posten" aber enthält Weiss-Freisteller → künftig vermeiden.
+
+## 2026-06-02 — 2 neue Premium-Reels (#52-Stil, nur echte Model-Shots) + Make.com fertig
+Auftrag „a" umgesetzt: 8 Kleider-Bilder geladen (/tmp/dresschk), per Bild-QA verifiziert →
+**nur authentische Lifestyle/Model-Shots verwendet, weisse Freisteller & Mirror-Selfie verworfen.**
+- VERWORFEN: `nuit` (Spiegel-Selfie, Handy vor Gesicht), `ibiza` (Model auf Weiss), `playa` (Farb-Varianten-Grid).
+- **Reel 1 «Eleganz»** (17s, elegant.wav): Noir (schwarze Robe/Street) · Sirène (Burgunder-Satin) ·
+  Lumea (weiss raffiniert) · Provence (Leinen-Set/Editorial) · Casa (rosa Leinen). → `/tmp/relA/out/luxestyle_eleganz.mp4`
+- **Reel 2 «Sommer/Boho»** (15s, elegant.wav): Brise (grünes Chiffon, Greek-Street) · Daisy (Polka/Street) ·
+  Dos Nu (Zebra-Maxi) · Bluette (blau, Garten). → `/tmp/relB/out/luxestyle_sommer.mp4`
+- Beide 1080×1920 h264+aac, Marken-Intro/Outro, -10% WELCOME10. **Einzeln an Telegram** geschickt
+  (msg 54 «Eleganz», 55 «Sommer») mit ja/nein/Kommentar-Aufforderung. Antwort steht noch aus.
+- **User: Make.com-Szenario „fertig"** (eu1.make.com/.../scenarios/6001019) = Approval→Post-Pipeline steht.
+  Claude kann Make.com-UI nicht öffnen (kein API) — Reels liegen bereit, Pipeline übernimmt nach „ja".
+- Quell-Pool authentischer Shots für nächste Reels: dresschk (casa,dosnu,noir,lumea,bluette,provence,sirene)
+  + reels2/img (daisy,brise,bali,fleurette,largo,savanna,maxirock,boho_set,sandalen).
