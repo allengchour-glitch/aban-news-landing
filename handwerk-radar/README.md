@@ -53,7 +53,8 @@ cd handwerk-radar && python3 fetch_anbieter.py   # schreibt data/anbieter.json
 
 - [x] Generator (adaptiert), baut sauber
 - [x] **Echte Datenquelle erschlossen: OpenStreetMap (ODbL)** — `fetch_anbieter.py`,
-  **~30 qualitätsgefilterte** DACH-Betriebe (22 Städte), ODbL-Attribution + Opt-out gesetzt
+  **~55 qualitätsgefilterte** DACH-Betriebe (37 Städte abgefragt, 23 mit Treffern),
+  ODbL-Attribution + Opt-out gesetzt
 - [x] **Qualitätsfilter** gegen breite OSM-Tags: Negativ-Liste (Trocknung/Entfeuchtung/…)
   raus; `hvac` nur mit Heizungs-/SHK-Signal; `heating_engineer` immer. Retry/Backoff
   gegen Overpass-429. Bewusst weniger, aber sauberer (keine Fehl-Tags mehr).

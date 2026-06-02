@@ -55,6 +55,44 @@
       "osm_url": "https://www.openstreetmap.org/node/11055265165"
     },
     {
+      "id": "waermetec-winterthur",
+      "name": "Wärmetec",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Winterthur (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "CH",
+      "stadt": "Winterthur",
+      "website": "https://www.waermetec.ch/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Winterthur. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/12546601309"
+    },
+    {
+      "id": "zeindler-haustechnik-bad-warm-winterthur",
+      "name": "Zeindler Haustechnik bad + warm",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Winterthur (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "CH",
+      "stadt": "Winterthur",
+      "website": "https://www.zht.ch/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Winterthur. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/12736394383"
+    },
+    {
       "id": "buehlmann-heizungen-zuerich",
       "name": "Bühlmann-Heizungen",
       "platzhalter": false,
@@ -91,6 +129,25 @@
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
       "osm_url": "https://www.openstreetmap.org/node/1363051420"
+    },
+    {
+      "id": "hartig-heizung-lueftung-klima-augsburg",
+      "name": "Hartig - Heizung-Lüftung-Klima",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Augsburg (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Augsburg",
+      "website": "https://www.hartig-klima.de/index.html",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Augsburg. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/13116788719"
     },
     {
       "id": "dieterich-installation-und-heizungsbau-berlin",
@@ -205,6 +262,44 @@
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
       "osm_url": "https://www.openstreetmap.org/node/10737240750"
+    },
+    {
+      "id": "ke-gebaeudetechnik-bielefeld",
+      "name": "KE Gebäudetechnik",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Bielefeld (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Bielefeld",
+      "website": "https://www.ke-gebaeudetechnik.de",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Bielefeld. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/3581736393"
+    },
+    {
+      "id": "walbrueck-heizung-sanitaer-bonn",
+      "name": "Walbrück Heizung Sanitär",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Bonn (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Bonn",
+      "website": "https://www.walbrueck.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Bonn. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/way/198901928"
     },
     {
       "id": "hurtzig-haustechnik-bremen",
@@ -378,6 +473,82 @@
       "osm_url": "https://www.openstreetmap.org/node/1129840646"
     },
     {
+      "id": "alexander-ochs-waermetechnik-karlsruhe",
+      "name": "Alexander Ochs Wärmetechnik",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Karlsruhe (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Karlsruhe",
+      "website": "http://ochs-gruppe.com",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Karlsruhe. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/3412413112"
+    },
+    {
+      "id": "haustechnik-jaeger-karlsruhe",
+      "name": "Haustechnik Jäger",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Karlsruhe (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Karlsruhe",
+      "website": "https://www.jaeger-haustechnik.de",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Karlsruhe. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/9445842502"
+    },
+    {
+      "id": "mhg-heiztechnik-karlsruhe",
+      "name": "MHG Heiztechnik",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Karlsruhe (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Karlsruhe",
+      "website": "https://mhg.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Karlsruhe. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/3412507734"
+    },
+    {
+      "id": "reif-sanitaerservice-gmbh-karlsruhe",
+      "name": "Reif Sanitärservice GmbH",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Karlsruhe (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Karlsruhe",
+      "website": "https://www.reif-sanitaer-karlsruhe.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Karlsruhe. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/9581666708"
+    },
+    {
       "id": "ebi-s-haustechnik-koeln",
       "name": "Ebi's Haustechnik",
       "platzhalter": false,
@@ -452,6 +623,292 @@
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
       "osm_url": "https://www.openstreetmap.org/way/191133327"
+    },
+    {
+      "id": "vwt-waermetechnik-mainz",
+      "name": "VWT Wärmetechnik",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Mainz (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Mainz",
+      "website": "https://www.vwt-mainz.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Mainz. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/13753544902"
+    },
+    {
+      "id": "carlos-schmitt-solar-sanitaer-heizung-mannheim",
+      "name": "Carlos Schmitt Solar - Sanitär - Heizung",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizung & Solar in Mannheim (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe",
+        "Photovoltaik"
+      ],
+      "land": "DE",
+      "stadt": "Mannheim",
+      "website": "https://www.bad-emotionen.de/",
+      "email": null,
+      "beschreibung": "Heizung & Solar-Betrieb in Mannheim. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/way/172840022"
+    },
+    {
+      "id": "exotherm-waermetechnik-gmbh-mannheim",
+      "name": "Exotherm Wärmetechnik GmbH",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Mannheim (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Mannheim",
+      "website": "http://www.exotherm-mannheim.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Mannheim. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/5309774802"
+    },
+    {
+      "id": "htr-heizungsbau-gmbh-mannheim",
+      "name": "HTR-Heizungsbau GmbH",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Mannheim (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Mannheim",
+      "website": "https://www.htr-heizungsbau.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Mannheim. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/2012046200"
+    },
+    {
+      "id": "heinrich-decker-sanitaer-heizung-mannheim",
+      "name": "Heinrich Decker Sanitär-Heizung",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Mannheim (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Mannheim",
+      "website": "http://www.heinrich-decker.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Mannheim. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/2271856734"
+    },
+    {
+      "id": "krause-sanitaer-heizung-mannheim",
+      "name": "Krause Sanitär-Heizung",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Mannheim (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Mannheim",
+      "website": "https://krause-sanitaer.de",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Mannheim. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/2201390745"
+    },
+    {
+      "id": "marc-haeberle-heizung-klima-sanitaer-mannheim",
+      "name": "Marc Häberle Heizung - Klima - Sanitär",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Mannheim (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Mannheim",
+      "website": "https://www.haustechnik-haeberle.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Mannheim. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/way/113054934"
+    },
+    {
+      "id": "mein-solardach-mannheim",
+      "name": "Mein Solardach",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Solar/Photovoltaik in Mannheim (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Photovoltaik"
+      ],
+      "land": "DE",
+      "stadt": "Mannheim",
+      "website": "https://meinsolardach.de",
+      "email": null,
+      "beschreibung": "Solar/Photovoltaik-Betrieb in Mannheim. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/11594994406"
+    },
+    {
+      "id": "peter-remp-energie-und-waermetechnik-gmbh-mannheim",
+      "name": "Peter Remp Energie- und Wärmetechnik GmbH.",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Mannheim (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Mannheim",
+      "website": "https://energieremp.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Mannheim. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/2371534063"
+    },
+    {
+      "id": "sanitaer-kleissner-gmbh-mannheim",
+      "name": "Sanitär Kleissner GmbH",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Mannheim (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Mannheim",
+      "website": "https://sanitaer-kleissner.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Mannheim. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/1868510140"
+    },
+    {
+      "id": "sanitaer-rothermel-mannheim",
+      "name": "Sanitär Rothermel",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Mannheim (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Mannheim",
+      "website": "https://www.sanitaer-rothermel.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Mannheim. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/2825965420"
+    },
+    {
+      "id": "sanitaer-senkel-mannheim",
+      "name": "Sanitär Senkel",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Mannheim (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Mannheim",
+      "website": "https://www.sanitaer-senkel.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Mannheim. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/2052498836"
+    },
+    {
+      "id": "sanitaer-strupp-gmbh-mannheim",
+      "name": "Sanitär Strupp GmbH",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Mannheim (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Mannheim",
+      "website": "https://www.sanitaer-strupp.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Mannheim. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/3229383580"
+    },
+    {
+      "id": "transier-sanitaer-mannheim",
+      "name": "TRANSIER SANITAER",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Mannheim (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Mannheim",
+      "website": "http://www.transier-sanitaer.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Mannheim. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/1924864489"
+    },
+    {
+      "id": "wagner-haustechnik-mannheim",
+      "name": "Wagner-Haustechnik",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Mannheim (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Mannheim",
+      "website": "http://www.wagner-haustechnik.com",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Mannheim. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/2894963266"
     },
     {
       "id": "achatz-waermetechnik-gmbh-muenchen",
@@ -566,6 +1023,44 @@
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
       "osm_url": "https://www.openstreetmap.org/node/3042153342"
+    },
+    {
+      "id": "oekotherm-energiesysteme-wiesbaden",
+      "name": "Ökotherm Energiesysteme",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Wiesbaden (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Wiesbaden",
+      "website": "https://www.oekotherm-solartechnik.de",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Wiesbaden. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/9597852739"
+    },
+    {
+      "id": "auerbach-bad-heizung-wuppertal",
+      "name": "Auerbach Bad & Heizung",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Wuppertal (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Wuppertal",
+      "website": "https://www.badstudio-auerbach.de",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Wuppertal. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/11472660075"
     }
   ]
 }
