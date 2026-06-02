@@ -1,0 +1,10 @@
+[
+  {
+    "id": "beispiel-kanzlei",
+    "firma": "Klartext Kanzlei",
+    "branche": "Steuerberatung",
+    "ort": "Bern",
+    "leistungen": ["Steuererklärung", "Buchhaltung"],
+    "email": "kundin@example.com"
+  }
+]
