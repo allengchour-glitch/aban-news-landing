@@ -205,6 +205,13 @@ Vermeiden: E-Rechnung (gelöst), High-Risk-AI-Act-Plattformen (Enterprise), KI-M
 **Sponsoring/Rate-Card:** ehrlicher Hinweis ergänzt (Abrechnung nach verifizierter Listengröße,
 fairer Start-Tarif in Aufbauphase). Calendly `abannews/sponsor` aktiv.
 
+**🛠 KDP-Automation (im Repo):** `tools/kdp-cover/` — **Pipeline** `build_book.py`
+(ein Aufruf → Vektor-Cover + Innenteil + `metadata.md` + `upload-playbook.md` pro Buch;
+Cover-Rücken wird aus der echten Innenteil-Seitenzahl berechnet, Cover/Innenteil passen
+automatisch). Bausteine: `kdp_cover.py` (Cover), `planner_interior.py` (Planer-Innenteil).
+README hält alle KDP-Lehren fest (Vektor statt Raster, exakte Größe, Rücken-/Papier-Formel,
+kein eigener Barcode, Fonts einbetten). Beispiel-Configs ADHD + Mileage. `out/` git-ignored.
+
 **Gemergte PRs dieser Session:** #15 (eBook/KDP+PayPal-Founding), #16 (€69+Payment-Link),
 #18 (Founding-Seite Maximum de), #19 (en-Parität), #20 (Fix toter #checkout-Anker en).
 
