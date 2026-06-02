@@ -1,19 +1,29 @@
 # Referral-Belohnungen für beehiiv (Copy-Paste-fertig)
 
 > Vorschlag für das beehiiv-Referral-Programm („Grow → Referral Program").
-> Vier Stufen, alle digital → kosten dich nichts außer dem Listenpreis, den du
-> ohnehin nur selten realisierst. Texte im Anti-Hype-Ton, du-Form.
+> Vier Stufen → kosten dich nichts außer dem Listenpreis, den du ohnehin nur
+> selten realisierst. Texte im Anti-Hype-Ton, du-Form.
 >
 > **Grundregel:** Nur belohnen, was es nicht ohnehin gratis gibt. Deshalb sind
 > die freien PDFs (Checkliste, Glossar, 30 Prompts, Tool-Stack, Cold-Email)
 > bewusst **nicht** dabei — die liegen schon offen auf `resources.html`.
+>
+> **⚠️ Plan-Stand (im beehiiv-Dashboard verifiziert, Free-Trial):** Die Reward-Typen
+> sind **Physical / Promo Code / Digital**. Einen eigenen „Premium-Abo"-Typ
+> („Free subscription") gibt es **erst auf dem Scale-Plan**. Heißt konkret:
+> **Stufe 1 (Digital) und Stufe 4 (Physical) gehen sofort; Stufe 2 + 3 (Premium)
+> erst nach Scale-Upgrade.**
 
 ---
 
 ## Stufe 1 — 3 Empfehlungen
 
 **Belohnung:** KI-Werkstatt-Kurs (sonst €59)
+**Reward-Typ in beehiiv:** Digital
 **Datei:** `downloads/ki-werkstatt-kurs.pdf` (existiert bereits)
+**Achtung:** beehiiv verlangt in Schritt 2 den **direkten PDF-Upload** — der
+„Continue"-Button bleibt deaktiviert, bis die Datei hochgeladen ist. Manueller
+Schritt im Dashboard.
 
 **Titel:**
 > Der komplette KI-Werkstatt-Kurs — gratis
@@ -28,7 +38,9 @@
 ## Stufe 2 — 5 Empfehlungen
 
 **Belohnung:** 1 Monat Premium (Mittwoch-Edition + Audio)
-**Voraussetzung:** Premium-Tier in beehiiv eingerichtet.
+**Voraussetzung:** beehiiv **Scale-Plan** (nicht Free-Trial). Der Reward-Typ
+„Free subscription" erscheint erst dann im Dropdown — auf dem Scale-Free-Trial
+steht „Not available". **Bis zum Upgrade zurückstellen.**
 
 **Titel:**
 > 1 Monat Premium — auf mich
@@ -43,6 +55,7 @@
 ## Stufe 3 — 10 Empfehlungen
 
 **Belohnung:** 3 Monate Premium
+**Voraussetzung:** wie Stufe 2 — beehiiv **Scale-Plan** nötig. Bis dahin zurückstellen.
 
 **Titel:**
 > Drei Monate Premium
@@ -57,6 +70,8 @@
 ## Stufe 4 — 25 Empfehlungen
 
 **Belohnung:** Founding-Membership (€69, lebenslang Premium)
+**Reward-Typ in beehiiv:** Physical (mit Fulfillment-Notiz) — **plan-unabhängig**,
+geht also schon im Free-Trial.
 **Lieferung:** manuell per Mail bestätigen (Founding-Zugang vergeben).
 
 **Titel:**
@@ -77,14 +92,17 @@
 > du legst hier nur die Belohnungs-Stufen fest und schaltest das Programm scharf.)
 
 1. **Grow → Referral Program** öffnen, Programm aktivieren.
-2. Die vier Stufen oben anlegen (Schwellen: 3 / 5 / 10 / 25).
-3. Bei Stufe 1 die Datei `ki-werkstatt-kurs.pdf` als Belohnung hochladen.
-4. Für Stufe 2 + 3 in beehiiv eine **Premium-Tier** einrichten (sonst lassen
-   sich keine Premium-Zeiträume verschenken).
-5. Stufe 4 (Founding) auf „manuell" stellen — du bestätigst per Mail.
+2. **Jetzt machbar (Free-Trial):** Stufe 1 (Digital) + Stufe 4 (Physical) anlegen.
+3. Bei Stufe 1 die Datei `ki-werkstatt-kurs.pdf` in Schritt 2 **hochladen**
+   (Continue bleibt sonst gesperrt).
+4. Stufe 2 + 3 (Premium) brauchen den **Scale-Plan** — auf dem Free-Trial gesperrt
+   („Not available"). Erst nach Upgrade anlegen; dann erscheint der Reward-Typ
+   „Free subscription" im Dropdown.
+5. Stufe 4 (Founding) als **Physical**-Typ mit Fulfillment-Notiz; du bestätigst
+   den Zugang per Mail.
 6. Den **Referral-Block** ins E-Mail-Template einfügen (fertiger beehiiv-Baustein),
    damit jede Ausgabe den Fortschritt zeigt.
 
-**Hinweis:** Voller Funktionsumfang des Referral-Programms hängt vom
-beehiiv-Tarif ab — vor dem Anlegen kurz im Dashboard prüfen, was dein Plan
-abdeckt.
+**Hinweis:** Das Referral-Programm ist im Free-Trial aktiv, **wird nach dem Trial
+aber pausiert** — fürs Dauer-Laufen (und die Premium-Stufen) ist der Scale-Plan
+nötig.
