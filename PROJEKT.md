@@ -324,8 +324,17 @@ Blocker (nur User): KDP-Login/2FA, Author-Central-Verifizierung, Budget, ~70 h �
 **KDP-Bookshelf-Status (vom User gezeigt, 2026-06-02):**
 - **„Vision Board Workbook for Women"** (Sage Whitfield) — Taschenbuch **LIVE** ✅, $11.99,
   ASIN **B0H3JZZPM5**. Kindle-eBook-Version noch nicht angelegt.
-- **„ADHD Daily Planner for Adults"** (Marcus Reilly) — Taschenbuch **ENTWURF**, **kein Cover
-  hochgeladen**. Zum Cover-Bauen fehlen noch: Trim-Format, Seitenzahl, Papier; Innenteil-Status unklar.
+- **„ADHD Daily Planner for Adults"** (Marcus Reilly) — Taschenbuch **ENTWURF**. KDP-Setup:
+  Trim **6×9"**, **BW weißes Papier**, kein Beschnitt (Innenteil), Cover-Laminierung **matt**.
+  Innenteil war **nicht hochgeladen** → in dieser aban-Session **komplett neu gebaut** (2026-06-02):
+  reportlab-Innenteil **102 Seiten** (Titel/Copyright/„belongs"/How-to/Tipps/90-Tage-Intention +
+  **90 Tagesseiten** [Top 3, Time-Blocks 7–20 Uhr, Body-Doubling, Dopamine-Wins, Brain-Dump,
+  Footer-Checks] + 6 Notizseiten), alle Fonts eingebettet (DejaVu-Subset; reportlab-Helvetica-
+  Default via pikepdf auf DejaVu remappt). **Cover** (Pillow→PDF) Teal, schlicht, full-wrap
+  **12,4797 × 9,25"**, Rücken **0,2297"** (102 S. × 0,002252), Rückentext (≥100 S.), Barcode-Feld frei.
+  Dateien dem User geliefert (SendUserFile): `ADHD-Planner_Innenteil_6x9_102Seiten.pdf`,
+  `ADHD-Planner_Cover_6x9_matt.pdf`. Generatoren: `/tmp/adhd/build_interior.py` + `build_cover.py`
+  (nicht im Repo — externes Buch). **To-do User:** Innenteil ZUERST hochladen → dann Cover → Vorschau → Publish.
 - **„Mileage Log Book for Small Business"** (Marcus Reilly) — Taschenbuch, Druckvorschau-**FEHLER**:
   Text/Objekt außerhalb der Ränder (Ursache: eigener Barcode unten links) → Barcode entfernen,
   KDP setzt ihn selbst; Vorschau zeigte **119 Seiten**.
