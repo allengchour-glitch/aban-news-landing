@@ -1275,3 +1275,13 @@ productUpdateMedia → deprecated, `fileUpdate(files:[{id,alt}])` ist der modern
 **Befund Schuhe-Collection:** 5 echte Schuhe aktiv; ~35 bildlose „Pflege"-Produkte sind ARCHIVED
 (nicht kund:innen-sichtbar) + 3–4-fach dupliziert → bleibt Archiv-Backlog (Admin-Bulk-Delete).
 **Sonnenbrillen:** Pliage/Spice/Clubmaster/Statement = DRAFT (klarglasig, bewusst nicht live) → ausgelassen.
+
+## 2026-06-02 — Alt-Text-Qualität Nicht-Fashion (User: „weiter", Seite 1/~10)
+Befund: aktive Nicht-Fashion-Produkte HABEN meist Alt-Texte, aber viele sind Müll: Slugs
+(„led-schreibtischlampe-…"), „- Original Lieferantenfoto"/„- echtes Produktfoto"-Reste, „· im Bundle"-
+Verwechslungen, und ENGLISCHE Falsch-Alts (z.B. Seiden-Kissenbezug = „Wellness Queen Gift Box for her";
+Himalaya-Lampe = „Bedside Spa Gift Box"). → **32 klare Müll-Alts auf Seite 1 durch saubere Titel-Alts ersetzt**
+(„… – LuxeStyle"). fileUpdate, 0 Fehler. Decent/Titel-Alts unangetastet (kein Churn).
+**OFFEN:** ~9 weitere Produktseiten (je 50) mit demselben Muster — auf „weiter" Seite für Seite abarbeiten.
+Cursor-Start nach Seite 1: createdAt 2026-05-22. Regel: alt ersetzen, wenn Slug / „Original …"/„echtes Produktfoto"
+/ „im Bundle"-Mismatch / Englisch; sonst lassen.
