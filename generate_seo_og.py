@@ -82,6 +82,8 @@ PAGES = {
         "Sektor, Energie, Trading, DACH-Steuer — mit Quellen, keine Anlageberatung"),
     "ki-stimmen": ("EHRLICH GETESTET", ["KI-Stimmen &", "Text-to-Speech"],
         "Was 2026 wirklich gut klingt — und wo die Grenzen liegen"),
+    "ki-videos-erstellen": ("EHRLICH ERKLÄRT", ["KI-Videos", "erstellen"],
+        "Was KI-Video 2026 wirklich kann — und wo die Grenzen liegen"),
 }
 
 
