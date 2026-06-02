@@ -154,8 +154,15 @@ def resolve_account_id(cl: Client) -> str:
     )
 
 
-def ensure_project(cl: Client, account: str, c: dict) -> bool:
-    """True, wenn das Projekt danach (existiert oder) angelegt ist."""
+def ensure_project(cl: Client, account: str, c: dict, mode: str = "git") -> bool:
+    """True, wenn das Projekt danach (existiert oder) angelegt ist.
+
+    mode="git":    Git-verbunden (braucht die einmalige CF↔GitHub-OAuth-Verbindung;
+                   CF baut + deployt bei jedem main-Push selbst).
+    mode="direct": Direct-Upload-Projekt **ohne** Git-Source — keine OAuth-Verbindung
+                   nötig. Deployt wird per Wrangler aus einem GitHub-Action
+                   (siehe .github/workflows/cf-pages-deploy.yml).
+    """
     proj = c["project"]
     try:
         existing = cl.get(f"/accounts/{account}/pages/projects/{proj}")
@@ -165,39 +172,43 @@ def ensure_project(cl: Client, account: str, c: dict) -> bool:
     except CFError:
         pass  # nicht gefunden -> anlegen
 
-    body = {
-        "name": proj,
-        "production_branch": PRODUCTION_BRANCH,
-        "source": {
-            "type": "github",
-            "config": {
-                "owner": REPO_OWNER,
-                "repo_name": REPO_NAME,
-                "production_branch": PRODUCTION_BRANCH,
-                "pr_comments_enabled": False,
-                "deployments_enabled": True,
-                "production_deployments_enabled": True,
-                "preview_deployment_setting": "none",
-            },
-        },
-        "build_config": {
-            "build_command": c["build_command"],
-            "destination_dir": c["destination_dir"],
-            "root_dir": "",
-            "build_caching": True,
-        },
-        "deployment_configs": {
-            "production": {
-                "environment_variables": {
-                    "PYTHON_VERSION": {"value": PYTHON_VERSION},
+    if mode == "direct":
+        body = {"name": proj, "production_branch": PRODUCTION_BRANCH}
+        what = f"Direct-Upload-Projekt '{proj}' anlegen (Deploy per Wrangler)"
+    else:
+        body = {
+            "name": proj,
+            "production_branch": PRODUCTION_BRANCH,
+            "source": {
+                "type": "github",
+                "config": {
+                    "owner": REPO_OWNER,
+                    "repo_name": REPO_NAME,
+                    "production_branch": PRODUCTION_BRANCH,
+                    "pr_comments_enabled": False,
+                    "deployments_enabled": True,
+                    "production_deployments_enabled": True,
+                    "preview_deployment_setting": "none",
                 },
             },
-        },
-    }
-    cl.write("POST", f"/accounts/{account}/pages/projects", body,
-             f"Pages-Projekt '{proj}' anlegen (Build: {c['build_command']})")
+            "build_config": {
+                "build_command": c["build_command"],
+                "destination_dir": c["destination_dir"],
+                "root_dir": "",
+                "build_caching": True,
+            },
+            "deployment_configs": {
+                "production": {
+                    "environment_variables": {
+                        "PYTHON_VERSION": {"value": PYTHON_VERSION},
+                    },
+                },
+            },
+        }
+        what = f"Pages-Projekt '{proj}' anlegen (Build: {c['build_command']})"
+    cl.write("POST", f"/accounts/{account}/pages/projects", body, what)
     if not cl.dry_run:
-        print(f"  ✓ Projekt '{proj}' angelegt")
+        print(f"  ✓ Projekt '{proj}' angelegt ({mode})")
     return True
 
 
@@ -250,17 +261,23 @@ def trigger_deploy(cl: Client, account: str, c: dict):
               f"(Fortschritt im CF-Dashboard / Pages → {proj})")
 
 
-def setup_one(cl: Client, account: str, key: str, *, deploy: bool, force: bool):
+def setup_one(cl: Client, account: str, key: str, *, deploy: bool, force: bool,
+              mode: str = "git", no_project: bool = False):
     c = cfg(key)
-    print(f"\n▶ {key}  →  https://{c['domain']}  (Projekt: {c['project']})")
+    print(f"\n▶ {key}  →  https://{c['domain']}  (Projekt: {c['project']}, mode={mode})")
     if c["live"] and not force:
         print("  ↷ als bereits live markiert — übersprungen (--force zum Erzwingen).")
         return
-    ensure_project(cl, account, c)
+    if no_project:
+        print("  ↷ Projekt-Anlage übersprungen (--no-project; z. B. von Wrangler erstellt).")
+    else:
+        ensure_project(cl, account, c, mode=mode)
     ensure_domain(cl, account, c)
     ensure_dns(cl, c)
-    if deploy:
+    if deploy and mode == "git":
         trigger_deploy(cl, account, c)
+    elif mode == "direct":
+        print("  ↷ Deploy per Wrangler (Direct Upload) — nicht über diese API.")
     else:
         print("  ↷ Deploy übersprungen (--no-deploy). CF deployt beim nächsten "
               "Push auf main automatisch.")
@@ -280,6 +297,12 @@ def main(argv=None) -> int:
                    help="nur zeigen, was passieren würde — nichts ändern")
     p.add_argument("--no-deploy", action="store_true",
                    help="kein erster Deploy (CF deployt sonst beim nächsten main-Push)")
+    p.add_argument("--mode", choices=("git", "direct"), default="git",
+                   help="git = Git-verbunden (braucht CF↔GitHub-OAuth); "
+                        "direct = Direct-Upload-Projekt ohne OAuth (Deploy per Wrangler)")
+    p.add_argument("--no-project", action="store_true",
+                   help="Projekt nicht anlegen (nur Domain+DNS verknüpfen, z. B. nachdem "
+                        "Wrangler das Projekt erstellt hat)")
     p.add_argument("--force", action="store_true",
                    help="auch als live markierte Projekte anfassen")
     p.add_argument("--list", action="store_true", help="bekannte Radars auflisten und beenden")
@@ -316,7 +339,8 @@ def main(argv=None) -> int:
     try:
         account = resolve_account_id(cl)
         for k in keys:
-            setup_one(cl, account, k, deploy=not args.no_deploy, force=args.force)
+            setup_one(cl, account, k, deploy=not args.no_deploy, force=args.force,
+                      mode=args.mode, no_project=args.no_project)
     except CFError as e:
         print(f"\nFEHLER: {e}", file=sys.stderr)
         return 1
