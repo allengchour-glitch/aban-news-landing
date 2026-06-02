@@ -334,7 +334,12 @@ Blocker (nur User): KDP-Login/2FA, Author-Central-Verifizierung, Budget, ~70 h �
   **12,4797 × 9,25"**, Rücken **0,2297"** (102 S. × 0,002252), Rückentext (≥100 S.), Barcode-Feld frei.
   Dateien dem User geliefert (SendUserFile): `ADHD-Planner_Innenteil_6x9_102Seiten.pdf`,
   `ADHD-Planner_Cover_6x9_matt.pdf`. Generatoren: `/tmp/adhd/build_interior.py` + `build_cover.py`
-  (nicht im Repo — externes Buch). **To-do User:** Innenteil ZUERST hochladen → dann Cover → Vorschau → Publish.
+  (nicht im Repo — externes Buch).
+  - **Upload-Stand 2026-06-02:** Innenteil hochgeladen & von KDP akzeptiert (102 S. bestätigt).
+    Cover v1 ergab KDP-Fehler „Objekt außerhalb der Ränder" = mein manuelles weißes Barcode-Kästchen
+    (Unterkante 0,35" < nötige 0,375"). **Fix:** Kästchen entfernt (KDP setzt Barcode selbst mit
+    eigenem weißen Hintergrund) → **Cover v2** geliefert (`..._Cover_6x9_matt_v2.pdf`).
+    **To-do User:** nur das Cover v2 neu hochladen → Druckvorschau (sollte fehlerfrei sein) → als Entwurf speichern → Publish.
 - **„Mileage Log Book for Small Business"** (Marcus Reilly) — Taschenbuch, Druckvorschau-**FEHLER**:
   Text/Objekt außerhalb der Ränder (Ursache: eigener Barcode unten links) → Barcode entfernen,
   KDP setzt ihn selbst; Vorschau zeigte **119 Seiten**.
