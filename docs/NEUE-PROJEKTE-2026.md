@@ -1,5 +1,14 @@
 # Neue Projekte 2026 — Bauplan (alle drei greenlit: 1+2+3)
 
+> **✅ STATUS-UPDATE (nach Umsetzung):** Beim Bauen kam raus, dass **#1 (Fördermittel-
+> Matcher) und #2 (Jobs-Board) bereits gebaut waren** — #1 mit 126 Seiten inkl.
+> 3-Fragen-Matcher + Lead-Formular, #2 mit Premium-Feldern, Newsletter-Embed und
+> Build-Workflow. **Nur #3 (Wärmepumpe/Solar → `handwerk-radar/`) war wirklich neu
+> und wurde gebaut.** Bei #1/#2 fehlt kein Code, sondern echte Partner/Sponsoren
+> (deins) + der Cloudflare-Deploy (`docs/GO-LIVE-RADARS.md`). foerder/jobs sind
+> code-seitig deploy-fertig (sitemap, robots, 404, `_headers`). Der Plan unten bleibt
+> als Referenz erhalten.
+
 > Grounded in `ki-geld-projekt/MARKTLUECKEN-2026.md` + dem bewährten Geld-Projekt-
 > Muster (`generate.py` stdlib + `*.json` Daten + `dist/`, Cloudflare Pages).
 > **Strategischer Kern:** weg von AIO-anfälligen Info-/Affiliate-Seiten → hin zu
