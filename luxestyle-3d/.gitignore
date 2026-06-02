@@ -1,5 +1,8 @@
-# Gerenderte STLs/Bilder sind aus den .scad-Vorlagen reproduzierbar -> nicht versionieren
+# Arbeits-/Scratch-Ordner (reproduzierbar) -> nicht versionieren
 samples/
 renders/
-*.stl
-*.png
+# lose Test-Dateien im Wurzelordner ignorieren ...
+/*.stl
+/*.png
+# ... ABER models/ wird versioniert (Meshy-Modelle sind nicht reproduzierbar)
+!models/
