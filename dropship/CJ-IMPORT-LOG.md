@@ -1166,3 +1166,13 @@ Auftrag „a" umgesetzt: 8 Kleider-Bilder geladen (/tmp/dresschk), per Bild-QA v
   Claude kann Make.com-UI nicht öffnen (kein API) — Reels liegen bereit, Pipeline übernimmt nach „ja".
 - Quell-Pool authentischer Shots für nächste Reels: dresschk (casa,dosnu,noir,lumea,bluette,provence,sirene)
   + reels2/img (daisy,brise,bali,fleurette,largo,savanna,maxirock,boho_set,sandalen).
+
+## 2026-06-02 — Reel-Feedback: «Eleganz» FREIGEGEBEN, «Sommer» v2 (Bluette raus)
+User-Antwort (Telegram): „reel 1 ja reel 2 letzte bild raus".
+- ✅ **FREIGEGEBEN: `luxestyle_eleganz.mp4`** (Noir/Sirène/Lumea/Provence/Casa, 17s) — Reel 1.
+- 🔁 **Reel 2 neu gebaut OHNE Bluette** (letztes Bild raus): jetzt Brise · Daisy · Dos Nu (12,7s),
+  `/tmp/relB/out/luxestyle_sommer.mp4`, an Telegram msg 57 zur finalen Bestätigung.
+**FREIGEGEBENE Reels gesamt:** luxestyle_premium.mp4 (#52), luxestyle_premium_mix.mp4 (#50, enthält
+Weiss-Freisteller → künftig meiden), **luxestyle_eleganz.mp4 (neu).** → reif zum Posten via Make.com-Pipeline.
+**LEHRE:** „letztes Bild raus" = User mag einzelne Shots gezielt streichen → Reel neu rendern + erneut zeigen,
+nicht ungefragt ersetzen. Bluette (blau/Garten) war dem User zu schwach.
