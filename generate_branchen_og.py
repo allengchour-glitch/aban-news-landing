@@ -71,6 +71,16 @@ BRANCHEN = {
     "floristen":           ("Floristik",           ["Social & Bestellungen,", "nicht der Strauß"]),
     "brauereien":          ("Brauereien",          ["Shop-Texte & Events,", "nicht das Bier"]),
     "goldschmiede":        ("Goldschmiede",        ["Texte & Anfragen,", "nicht die Werkstatt"]),
+    "elektriker":          ("Elektriker",          ["Angebote & Schriftkram,", "nicht die Installation"]),
+    "sanitaer-heizung":    ("Sanitär & Heizung",   ["Angebote & Kundenkram,", "nicht die Montage"]),
+    "fliesenleger":        ("Fliesenleger",        ["Aufmaß-Texte & Angebote,", "nicht das Verlegen"]),
+    "trockenbau":          ("Trockenbau",          ["Angebote & Kommunikation,", "nicht die Wand"]),
+    "glaser":              ("Glasereien",          ["Angebote & Anfragen,", "nicht der Zuschnitt"]),
+    "metallbauer":         ("Metallbau & Schlosser", ["Angebote & Doku,", "nicht die Werkstatt"]),
+    "zimmerer":            ("Zimmerer & Holzbau",  ["Angebote & Schriftkram,", "nicht der Dachstuhl"]),
+    "geruestbau":          ("Gerüstbau",           ["Angebote & Kommunikation,", "nicht das Gerüst"]),
+    "raumausstatter":      ("Raumausstatter",      ["Angebote & Beratungstexte,", "nicht die Polsterung"]),
+    "schornsteinfeger":    ("Schornsteinfeger",    ["Termine & Berichte,", "nicht die Kehrung"]),
 }
 
 
