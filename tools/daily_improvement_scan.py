@@ -124,6 +124,35 @@ def scan_sitemap(findings: list):
                              f"{path} → Datei nicht vorhanden"))
 
 
+def scan_internal_links(findings: list):
+    """Prüft interne .html-Links auf existierende Zieldateien (deterministisch, ohne Netz).
+
+    Fängt umbenannte/gelöschte Seiten. Externe Links (http), Anker, mailto/tel und
+    erweiterungslose Pretty-URLs (über _redirects) werden bewusst übersprungen.
+    """
+    href_rx = re.compile(r'href=["\']([^"\'#?]+\.html)(?:[#?][^"\']*)?["\']', re.I)
+    skip = ("http://", "https://", "//", "mailto:", "tel:", "data:")
+    for p in html_files():
+        rel = str(p.relative_to(ROOT))
+        s = p.read_text(encoding="utf-8", errors="replace")
+        seen = set()
+        for href in href_rx.findall(s):
+            if href in seen or href.lower().startswith(skip):
+                continue
+            seen.add(href)
+            if href.startswith("/"):
+                target = (ROOT / href.lstrip("/"))
+            else:
+                target = (p.parent / href)
+            try:
+                target = target.resolve()
+                inside = ROOT.resolve() in target.parents or target == ROOT.resolve()
+            except Exception:
+                inside = False
+            if inside and not target.exists():
+                findings.append(("high", "Interner Link tot", rel, f"→ {href}"))
+
+
 def _fix_noopener_in_tag(tag: str) -> str:
     """Ergänzt rel=noopener in einem <a target=_blank>-Tag (idempotent, sicher)."""
     if not re.search(r'target=["\']_blank["\']', tag, re.I):
@@ -173,6 +202,7 @@ def main():
         except Exception as ex:
             findings.append(("high", "Scan-Fehler", str(p.relative_to(ROOT)), str(ex)[:80]))
     scan_sitemap(findings)
+    scan_internal_links(findings)
 
     sev_rank = {"high": 0, "medium": 1, "low": 2}
     by_cat: dict = {}
