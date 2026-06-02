@@ -135,6 +135,15 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 - Farbe: einfarbig (Filament) ODER **AMS 2-farbig** (Körper + Gesicht/ Zunge in 2. Farbe).
 - Flexi-Gelenke an Figuren: weiterhin nicht möglich.
 
+### Finaler 3D-Stil (Kunde bestätigt)
+- **Runde 3D-Figur** (Meshy Image/Text→3D) → `polish.py` → **flache eckige schwarze
+  X-Augen auf die Augen-Beulen** setzen (Bars in Gesichtsebene, um Y-Achse gedreht,
+  NICHT senkrecht; Position ~`(±6, -22, 11)` bei der Katze — pro Tier neu finden).
+- Körper **hellgrau**, **Zunge orange**, X-Augen **komplett schwarz**.
+- Eye-Carving (Differenz) vermeiden → gibt Zickzack. Stattdessen erhabene Bars (Union).
+- **Farbpalette (PLA):** gelb, rot, braun, grau, grün, weiß, schwarz, beige.
+- Pro Tier: Augen-Beulen per Nahaufnahme-Render finden, dann X platzieren (1–2 Nudges).
+
 ### Prompt-Bibliothek (erprobt)
 - Funktioniert: `"a cute <tier> figurine, smooth stylized, solid, simple, no separate base"`
   (+ `"long tail curled to the side"` für Schwanz, + `"lying down"` für liegend).
