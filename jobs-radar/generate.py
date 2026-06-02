@@ -329,6 +329,20 @@ Beschwerderecht. Stand: {date.today().strftime('%m/%Y')}.</p>"""
         '<a href="/">aktuellen Jobübersicht</a>.</p>',
         BASE_URL + "/404.html"), encoding="utf-8")
 
+    # _headers (Cloudflare Pages) — Security-Header für die Subdomain.
+    # Strikte CSP ist sicher: nur externe same-origin Scripts (filter.js),
+    # keine Inline-Scripts/Handler; nur Inline-Styles -> style-src 'unsafe-inline'.
+    (out / "_headers").write_text(
+        "/*\n"
+        "  X-Frame-Options: DENY\n"
+        "  X-Content-Type-Options: nosniff\n"
+        "  Referrer-Policy: strict-origin-when-cross-origin\n"
+        "  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()\n"
+        "  Content-Security-Policy: default-src 'self'; script-src 'self'; "
+        "style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; "
+        "connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'\n",
+        encoding="utf-8")
+
     print(f"Built {1 + len(jobs)} pages ({len(jobs)} jobs) → {out}/")
     return 1 + len(jobs)
 
