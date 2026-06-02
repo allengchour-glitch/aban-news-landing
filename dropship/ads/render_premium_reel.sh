@@ -8,7 +8,7 @@ SANS=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
 SANSR=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
 [ -f "$SANS" ] || SANS=$SANSR
 OUT="${1:?out}"; MUSIC="${2:?musik}"; IMG="${3:?imgdir}"
-W=$(mktemp -d); FPS=30; SEG=2.9; T=0.6   # langsam, edle Fades
+W=$(mktemp -d); FPS=30; SEG=${SEG:-2.9}; T=${T:-0.6}   # langsam default; via Env überschreibbar (schnellerer Schnitt)
 BG=0xf4f3f1; INK=0x2c2c2c; GOLD=0xb8915a
 mapfile -t NAMES < "$IMG/names.txt"
 for i in "${!NAMES[@]}"; do printf '%s' "${NAMES[$i]}" > "$W/n_$i.txt"; done

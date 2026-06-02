@@ -1113,3 +1113,14 @@ Kampagnen DEAKTIVIEREN + 3 Entwürfe + „Vatertag-Test-1" löschen, sonst wiede
 ⏳ Schritt 2 (Sommerkleid 3.3★ fixen) — wird noch gemacht.
 ⏳ Schritt 3 (Premium-Kampagne) — neues Video gewünscht; Kampagnen-Erstellung in ANDERER Session.
    → `luxestyle_premium.mp4` liegt bereit (render_premium_reel.sh). Bei Bedarf 2. Premium-Variante bauen.
+
+## 2026-06-02 — Premium-Mix-Reel + Make.com-Auto-Posting-Pipeline
+- **2. Premium-Reel:** luxestyle_premium_mix.mp4 (Mode+Schmuck+Accessoires, 10 Shots, schneller Schnitt
+  via SEG/T-Env in render_premium_reel.sh, uplifting-Track). Gadgets bewusst weggelassen (Luxus-Kohärenz).
+  → 2 Premium-Reels für A/B: luxestyle_premium.mp4 (langsam/elegant) + _mix.mp4 (schnell/uplifting).
+- **MAKE.COM AUTOMATION (vom User in anderer Session gebaut):**
+  - Szenario A „LuxeStyle A – Reel generieren": Schedule alle 8h, Webhook-URL im Body:
+    https://hook.eu1.make.com/pkgmkm46y3aw6r3fy4ttedr5os7yn0ly
+  - Szenario B „LuxeStyle B – Posten": Webhook → HTTP Download → Buffer (TikTok Queue) → YouTube Upload
+    (Private #Shorts) → Discord-Notify (POST /api/webhooks/…) → Google Sheets Update Row (status=posted, Spalte O).
+  → Auto-Posting-Pipeline für Reels alle 8h. (Reel-Quelle/Generierung in Szenario A klären, falls relevant.)
