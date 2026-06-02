@@ -30,6 +30,12 @@ jobs:
       - name: Verbesserungs-Scan
         run: python3 tools/daily_improvement_scan.py
 
+      - name: Telegram-Report (mit Buttons)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 tools/telegram_report.py
+
       - name: Report als Artefakt
         uses: actions/upload-artifact@v4
         with:
