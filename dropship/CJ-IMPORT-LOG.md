@@ -1143,3 +1143,11 @@ Szenario C „Telegram Watch Updates" filtert callback post_* → ruft B-Webhook
 **Video-Präferenzen User:** Premium-Look, Mix Mode+Schmuck+Accessoires, KEINE Gadgets (Luxus-Kohärenz),
 schnellerer Schnitt ok, Marken-Intro/Outro. 2 Premium-Reels existieren (elegant + mix). Skripte:
 render_premium_reel.sh (SEG/T via Env), render_hook_reel.sh, render_story_reel.sh, render_story_creatives.sh.
+
+## 2026-06-02 — Video-Feedback: #52 freigegeben + Bild-Präferenz
+✅ FREIGEGEBEN: luxestyle_premium.mp4 (#52, elegant/langsam, nur Kleider-auf-Model) = User „52 ist top".
+**PRÄFERENZ (User: „nicht echte bilder und videos"):** Reels sind animierte Lieferanten-FOTOS (Slideshow),
+kein echtes Video. User will AUTHENTISCH wirkende LIFESTYLE-/MODEL-Shots (Produkt getragen/in Szene),
+NICHT weisse Katalog-Freisteller (z.B. Schmuck-auf-Weiss im Mix-Reel wirkte „stock"). #52-Stil = Standard.
+Für ECHTES Video später: eigene Clips/UGC-Creator/KI-Video (CJ hat keine Mode-Videos). Beide Premium-Reels
+freigegeben-Status: #52 elegant JA; Mix #50 war auch „ja posten" aber enthält Weiss-Freisteller → künftig vermeiden.
