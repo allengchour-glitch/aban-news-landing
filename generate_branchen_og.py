@@ -91,6 +91,16 @@ BRANCHEN = {
     "wirtschaftspruefer":  ("Wirtschaftsprüfer",   ["Mandantenkram & Entwürfe,", "nicht das Testat"]),
     "sachverstaendige":    ("Sachverständige",     ["Orga & Rohtexte,", "nicht das Gutachten"]),
     "hausmeisterservice":  ("Hausmeisterservice",  ["Angebote & Kommunikation,", "nicht die Arbeit"]),
+    "sicherheitsdienste":  ("Sicherheitsdienste",  ["Angebote & Dienstpläne,", "nicht die Streife"]),
+    "umzugsunternehmen":   ("Umzüge",              ["Angebote & Kunden-Mails,", "nicht das Tragen"]),
+    "schluesseldienste":   ("Schlüsseldienste",    ["Anfragen & Preise,", "nicht die Türöffnung"]),
+    "entruempelung":       ("Entrümpelung",        ["Angebote & Kommunikation,", "nicht das Räumen"]),
+    "schaedlingsbekaempfer": ("Schädlingsbekämpfung", ["Angebote & Doku,", "nicht der Einsatz"]),
+    "metzgereien":         ("Metzgereien",         ["Theke & Social,", "nicht die Wurst"]),
+    "eisdielen":           ("Eisdielen",           ["Social & Aushänge,", "nicht das Eis"]),
+    "cafes":               ("Cafés",               ["Social & Karte,", "nicht der Kaffee"]),
+    "buchhandlungen":      ("Buchhandlungen",      ["Newsletter & Social,", "nicht die Empfehlung"]),
+    "fahrradlaeden":       ("Fahrradläden",        ["Service-Mails & Texte,", "nicht die Werkstatt"]),
 }
 
 
