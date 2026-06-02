@@ -1,6 +1,6 @@
-# 🛰️ GO-LIVE — die vier fertigen Radar-Subdomains
+# 🛰️ GO-LIVE — die fertigen Radar-Subdomains
 
-> Vier eigenständige Verzeichnis-Sites sind **code-fertig und bauen sauber**, aber noch
+> Sieben eigenständige Verzeichnis-Sites sind **code-fertig und bauen sauber**, aber noch
 > nicht öffentlich erreichbar. Jede ist ein eigenes Cloudflare-Pages-Projekt auf einer
 > eigenen Subdomain. Was fehlt, ist **kein Code**, sondern der manuelle Cloudflare-
 > Dashboard-Schritt + DNS — das kann nur jemand mit deinem CF-Login auslösen.
@@ -19,13 +19,16 @@
 | `kurse-radar/` | `kurse.abannews.com` | **22** KI-Kurs-Anbieter | Affiliate (deaktiviert) | ✅ 45 Dateien | ❌ CF fehlt |
 | `dropshipping-radar/` | `dropshipping.abannews.com` | **22** PoD/Dropship-Anbieter | Affiliate (deaktiviert) | ✅ 42 Dateien | ❌ CF fehlt |
 | `agenturen-radar/` | `agenturen.abannews.com` | **2** (ehrlich leer, Platzhalter) | Bezahlte Listings | ✅ 20 Dateien | ❌ CF fehlt |
+| `foerder-radar/` | `foerder.abannews.com` | **86** Programme + 3-Fragen-Matcher | Pay-per-Lead (Berater) | ✅ 126 Dateien | ❌ CF fehlt |
+| `jobs-radar/` | `jobs.abannews.com` | KI-Jobs DACH (auto-backfill) | Premium-Listings + Sponsoring | ✅ baut | ❌ CF fehlt |
+| `handwerk-radar/` | `handwerk.abannews.com` | **2** (ehrlich leer, Platzhalter) | Pay-per-Lead + Featured | ✅ 15 Dateien | ❌ Daten + CF |
 
-> Alle vier: **kein Build-Step im klassischen Sinn nötig** — `python generate.py` rendert
+> Alle: **kein Build-Step im klassischen Sinn nötig** — `python generate.py` rendert
 > reines statisches HTML nach `dist/`. Keine Abhängigkeiten außer Python-stdlib.
 
 ---
 
-## Der Live-Schalt-Vorgang (identisch für alle vier)
+## Der Live-Schalt-Vorgang (identisch für alle)
 
 Pro Projekt **einmal** im Cloudflare-Dashboard:
 
@@ -123,11 +126,59 @@ zahlende Erst-Listings akquirieren), dann live. Code ist fertig — es wartet au
 
 ---
 
+### 5. `foerder-radar/` → `foerder.abannews.com` — **gebaut & inhaltsreich, früh live**
+
+**Was es ist:** 86 echte DACH/EU-Förderprogramme + **3-Fragen-Förder-Matcher**
+(Region · Zweck · Unternehmensgröße), clientseitiges Filtern echter Programme,
+Lead-Formular mit Consent (kein Tracking).
+
+**Aufbau:** `foerderungen.json` (86) + `leadgen.json` → `generate.py` → **126 Dateien**
+(Matcher, Programm-Seiten, Themen-/Regionen-/Zielgruppen-Hubs).
+
+**Geldweg:** **Pay-per-Lead** — `leadgen.json` ist **aktuell leer (0 Slots)**. Aktivieren:
+Förder-Berater als Partner gewinnen → Slot in `leadgen.json` (als „Anzeige" markiert, UWG).
+Bis dahin fängt das Mail-Fallback-Formular Leads zu `hallo@abannews.com`.
+
+**Was fehlt:** CF-Schritt + echte Berater-Partner. Code & Inhalt sind fertig.
+
+---
+
+### 6. `jobs-radar/` → `jobs.abannews.com`
+
+**Was es ist:** DACH-KI-Jobboard, gespeist via `fetch_jobs.py` (Arbeitnow + Remotive).
+Premium-Listing-Feld + Newsletter-Embed-Block vorhanden.
+
+**Aufbau:** `fetch_jobs.py` → `jobs.json` → `generate.py` → `dist`. Build-Workflow
+`jobs-radar-build.yml` existiert.
+
+**Geldweg:** Premium-Job-Listings + Newsletter-Sponsoring (`sponsors.json`).
+
+**Was fehlt:** CF-Schritt + (optional) Auto-Backfill-Cron häufiger stellen + echte Sponsoren.
+
+---
+
+### 7. `handwerk-radar/` → `handwerk.abannews.com` — **erst Daten, dann live**
+
+**Was es ist:** Wärmepumpe/Solar-Fachbetrieb-Verzeichnis. Startet **ehrlich leer**
+(2 markierte Platzhalter).
+
+**Aufbau:** `data/anbieter.json` → `generate.py` → 15 Dateien + sitemap + RSS.
+
+**Geldweg:** Pay-per-Lead + Featured-Listings.
+
+**Was fehlt:** **Echte Datenquelle** (Handwerkskammer/Fachverband/Selbst-Einreichung) —
+der eigentliche Hebel. Erst füllen, dann CF. Wie agenturen: leeres Verzeichnis live
+zu schalten bringt wenig.
+
+---
+
 ## Reihenfolge-Empfehlung
 
 1. **prompts** (sofort, reiner Content, Newsletter-Funnel).
-2. **kurse** + **dropshipping** (Content da, Affiliate später nachrüstbar).
-3. **agenturen** (erst Listings sammeln, dann live).
+2. **foerder** + **jobs** (gebaut & inhaltsreich — höchster Sofort-Wert; Geldweg
+   braucht nur Partner/Sponsoren, nicht mehr Code).
+3. **kurse** + **dropshipping** (Content da, Affiliate später nachrüstbar).
+4. **agenturen** + **handwerk** (erst echte Listings/Daten sammeln, dann live).
 
 ---
 
@@ -140,6 +191,6 @@ zahlende Erst-Listings akquirieren), dann live. Code ist fertig — es wartet au
 
 ---
 
-> Kurz: Vier Sites sind gebaut und getestet. Diese Liste ist alles, was zwischen
+> Kurz: Sieben Sites sind gebaut und getestet. Diese Liste ist alles, was zwischen
 > „baut grün" und „erreichbar unter der eigenen Subdomain" steht — und der CF-Schritt
 > liegt bei dir.
