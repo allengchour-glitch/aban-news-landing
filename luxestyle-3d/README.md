@@ -16,6 +16,7 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `flexi_chain.scad` | Print-in-Place Gliederkette (beweglich, in einem Stück) |
 | `kawaii_cat.scad` | **Flache Kawaii-Katze** (Loaf): graviertes Gesicht (X-Augen, Schnurrhaare, Mund), erhabene Zunge, Loop-Loch, parametrisch 50–90 mm |
 | `pancake_cat.scad` | **Flache Kawaii-Pfannkuchen-Katze** (gespreizte Pose, Beine raus) + graviertes Derp-Gesicht + Schwanz + Loch |
+| `cat_charm.scad` | **Mehrfarbiger** flacher Kawaii-Katzen-Charm (AMS): weiß + orange Flecken, **schwarze X-Augen**, **orange Zunge** — Farbteile als eigene Geometrie |
 | `make.py` | erzeugt aus jedem Text eine druckfertige `.stl` |
 | `polish.py` | **Veredelung (Blender):** Mesh säubern, glätten, Schuppen-/Detail-Struktur, auf mm skalieren, STL + Render |
 | `build_all.sh` | **1 Befehl** → kompletter Katalog als STL (alle Tiere, Flexi, Beispiel-Namen) |
