@@ -125,6 +125,46 @@
       "id": "p25-email",
       "sent": false,
       "text": "📧 E-Mails mit KI schreiben, ohne wie ein Roboter zu klingen:\n\nKontext + ein Beispiel deines Stils + Bitte um Kürze. Lass die KI vorbereiten — aber lies und sende selbst.\n\nMit Copy-Vorlage 👉 https://abannews.com/ki-email-schreiben.html"
+    },
+    {
+      "id": "fin-stundensatz",
+      "sent": false,
+      "text": "Der teuerste Fehler von Selbstständigen: Wunschgehalt ÷ 160 Stunden = Stundensatz.\n\nFalsch. Nur 4–6 Stunden pro Tag sind verrechenbar — Akquise, Angebote und Buchhaltung zahlt niemand direkt. Und Steuern fehlen auch noch.\n\nRechne rückwärts: Ziel-Netto + Steuern + Kosten, geteilt durch deine echten fakturierbaren Stunden. Oft kommt da ein Drittel mehr raus als gedacht.\n\nNachrechnen (im Browser, kein Tracking): abannews.com/finanz-rechner\n\n#Selbstständigkeit #Freelancing",
+      "url": "https://abannews.com/finanz-rechner.html",
+      "tags": [
+        "Selbstständigkeit",
+        "Freelancing"
+      ]
+    },
+    {
+      "id": "fin-ruecklage",
+      "sent": false,
+      "text": "Ein einfacher Trick gegen die böseste Überraschung als Selbstständiger:\n\nLeg von jeder Einnahme am Tag des Eingangs einen festen Anteil auf ein getrenntes Konto. Grober Richtwert: 30–40 %.\n\nDann ist die Steuernachzahlung ein Nicht-Ereignis statt ein Schock.\n\n#Steuern #Selbstständigkeit",
+      "url": "https://abannews.com/finanz-skills-fuer-selbststaendige.html",
+      "tags": [
+        "Steuern",
+        "Selbstständigkeit"
+      ]
+    },
+    {
+      "id": "fin-puffer",
+      "sent": false,
+      "text": "Als Selbstständiger in der Schweiz zahlst du keine Arbeitslosenversicherung.\n\nHeißt: Wenn drei Monate kein Auftrag kommt, fängt dich niemand auf — außer deinem Puffer.\n\n3–6 Monate Fixkosten auf einem getrennten Konto sind kein Luxus. Sie sind der Unterschied zwischen „ich kann Nein sagen\" und „ich nehme jeden Auftrag zu jedem Preis\".\n\n#Selbstständigkeit #Finanzen",
+      "url": "https://abannews.com/finanz-rechner.html",
+      "tags": [
+        "Selbstständigkeit",
+        "Finanzen"
+      ]
+    },
+    {
+      "id": "fin-automatisierung",
+      "sent": false,
+      "text": "„Automatisier doch einfach!\" Klingt leicht, ist es selten.\n\nEin Automatisierungs-Tool spart erst Zeit, wenn der Prozess dahinter sauber durchdacht ist — sonst automatisierst du nur das Chaos schneller. Und bei personenbezogenen Daten zählt, wo das Tool hostet.\n\nIch habe 36 Tools ehrlich verglichen, mit EU-Hosting-Filter für den DACH-Raum: automatisierung.abannews.com\n\n#Automatisierung #KMU",
+      "url": "https://automatisierung.abannews.com",
+      "tags": [
+        "Automatisierung",
+        "KMU"
+      ]
     }
   ]
 }

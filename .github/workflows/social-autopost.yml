@@ -37,8 +37,11 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MASTODON_INSTANCE: ${{ secrets.MASTODON_INSTANCE }}
+          MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
+          PUBLISH_WEBHOOK_URL: ${{ secrets.PUBLISH_WEBHOOK_URL }}
         run: |
-          if [ -z "$DISCORD_WEBHOOK_URL" ] && [ -z "$TELEGRAM_BOT_TOKEN" ]; then
+          if [ -z "$DISCORD_WEBHOOK_URL" ] && [ -z "$TELEGRAM_BOT_TOKEN" ] && [ -z "$MASTODON_TOKEN" ] && [ -z "$PUBLISH_WEBHOOK_URL" ]; then
             echo "::warning::Keine Kanal-Secrets gesetzt — übersprungen. Siehe social/README.md."
             exit 0
           fi
