@@ -122,33 +122,83 @@ def _metadata_md(book, pages):
 
 
 def _playbook_md(book, pages, cover_name, interior_name):
+    """Detailed runbook for a browser agent driving the KDP web UI step by step.
+    Human supervises (login/2FA/captcha are NOT automatable, KDP ToS). Each step
+    has a verify-checkpoint; on mismatch the agent stops and reports verbatim."""
+    import datetime
     ext = book["interior"]["type"] == "external"
     paper_de = {"white": "weißes", "cream": "cremefarbenes", "color": "farbiges"}.get(
         book.get("paper", "white"), book.get("paper", "white"))
+    L = book["listing"]
+    release = (datetime.date.today() + datetime.timedelta(days=2)).isoformat()
     interior_step = (
-        f'   - Manuskript: "{interior_name}" hochladen, auf {pages} Seiten warten.'
+        f'Manuskript-PDF "{interior_name}" hochladen. WARTEN bis verarbeitet.\n'
+        f'        ✓ CHECK: KDP meldet **{pages} Seiten**. Andere Zahl → STOP & melden\n'
+        f'          (Cover-Rücken ist auf genau {pages} S. gerechnet).'
         if not ext else
-        f'   - Manuskript: DEIN vorhandener Innenteil ({pages} Seiten). '
-        f'{book["interior"].get("note","")}'
+        f'DEIN vorhandener Innenteil ist schon im Entwurf ({pages} Seiten). '
+        f'{book["interior"].get("note","")}\n'
+        f'        ✓ CHECK: Seitenzahl im Entwurf = **{pages}**. Sonst STOP & melden.'
     )
     return "\n".join([
-        f"# Browser-Claude Upload-Playbook — {book['title']}", "",
-        "WICHTIG: Innenteil ZUERST (setzt Seitenzahl → Cover-Maß), dann Cover.", "",
-        "```",
-        f"AUFGABE — KDP Taschenbuch fertigstellen: {book['title']} ({book['author']}).",
-        "1. Bookshelf → dieses Buch → Taschenbuch → 'Einrichtung fortsetzen'.",
-        "2. Taschenbuch-Details: Titel/Untertitel/Autor/Beschreibung/Keywords/",
-        "   Kategorien/Sprache aus metadata.md eintragen.",
-        "3. Taschenbuch-Inhalte:",
-        f"   - Trim {book['trim'][0]} x {book['trim'][1]} Zoll, {paper_de} Papier, s/w, matt.",
-        interior_step,
-        f"   - Cover (PDF): {cover_name}  (NICHT Cover Creator; KEIN eigener Barcode).",
-        "4. Druckvorschau starten → durchklicken. Erwartung: keine Margen-/Barcode-Fehler.",
-        "   (Font-Hinweis 'wir haben eingebettet' = nur Hinweis, kein Blocker.)",
-        "5. Preise aus metadata.md setzen.",
-        "6. NICHT veröffentlichen, bis Allen bestätigt. Bei Fehler: Wortlaut+Screenshot melden.",
+        f"# Browser-Agent Upload-Runbook — {book['title']}", "",
+        f"**Buch:** {book['title']} · **Pen-Name:** {book['author']} · "
+        f"**Format:** Taschenbuch {book['trim'][0]}×{book['trim'][1]}\", {paper_de} Papier, s/w, matt",
+        f"**Dateien:** `{interior_name or '(eigener Innenteil im Entwurf)'}`, "
+        f"`{cover_name}`, Felder aus `metadata.md`", "",
+        "## Regeln für den Agenten (wichtig)",
+        "- **Login / 2FA / Captcha macht der Mensch** — dort anhalten und übergeben.",
+        "- **Niemals endgültig „Veröffentlichen\" klicken** ohne Allens OK. Stattdessen "
+        f"unten Terminveröffentlichung auf **{release}** (heute +2 Tage) setzen.",
+        "- Nach **jedem** Schritt den CHECK prüfen. Stimmt er nicht → **STOP**, exakten "
+        "Fehlertext + Screenshot melden, **nicht raten/weiterklicken**.",
+        "- Reihenfolge ist Pflicht: **Innenteil zuerst** (setzt Seitenzahl → Cover-Maß), dann Cover.",
+        "", "## Schritte", "```",
+        "0. Voraussetzung: in KDP eingeloggt, auf der Bookshelf.",
+        "   ✓ CHECK: 'Bookshelf' sichtbar. Sonst → Login an Mensch übergeben.",
+        "",
+        "1. Buch öffnen → 'Taschenbuch' → 'Einrichtung fortsetzen/bearbeiten'.",
+        "   ✓ CHECK: Tab 'Taschenbuch-Details' ist aktiv.",
+        "",
+        "2. TASCHENBUCH-DETAILS aus metadata.md eintragen:",
+        "   Sprache, Titel, Untertitel, Autor (Pen-Name), Beschreibung (HTML-Block),",
+        "   Verlag leer/optional, Keywords (7), Kategorien (3), KEIN 'für Erwachsene'.",
+        "   → 'Speichern und fortfahren'.",
+        "   ✓ CHECK: keine roten Pflichtfeld-Fehler; Tab wechselt zu 'Inhalte'.",
+        "",
+        "3. TASCHENBUCH-INHALTE:",
+        "   a) ISBN: 'Kostenlose KDP-ISBN zuweisen' (falls noch keine).",
+        f"   b) Druckoptionen: Tinte/Papier = Schwarzweiß, "
+        f"{paper_de} Papier; Trim {book['trim'][0]}×{book['trim'][1]} Zoll; Bleed nur falls randabfallend.",
+        f"   c) Manuskript: {interior_step}",
+        f"   d) Buchcover: 'Eigenes hochladen (PDF)' → `{cover_name}`.",
+        "      NICHT den Cover Creator nutzen. KEIN eigener Barcode (KDP setzt ihn selbst).",
+        "      ✓ CHECK: Cover-Thumbnail erscheint, keine Maß-Fehlermeldung.",
+        "",
+        "4. DRUCKVORSCHAU (Previewer) starten → komplett durchklicken.",
+        "   ✓ CHECK ERWARTET: KEINE 'Objekt außerhalb der Ränder'- und KEINE Barcode-Fehler.",
+        "   - Hinweis 'Schriftarten wurden eingebettet' = nur Info, KEIN Blocker → ok.",
+        "   - Echter Fehler (rot, blockiert) → STOP, Wortlaut + Screenshot melden.",
+        "   → 'Genehmigen' / 'Speichern und fortfahren'.",
+        "",
+        "5. PREISE & RECHTE:",
+        "   - Rechte/Veröffentlichung: 'Ich besitze die Rechte' / gemeinfrei NICHT.",
+        f"   - KDP-Druckkosten anzeigen lassen; Listenpreis USD ${L.get('price_usd','?')}, "
+        f"EUR €{L.get('price_eur','?')} (aus metadata.md), übrige Marktplätze automatisch umrechnen.",
+        "   ✓ CHECK: Tantieme/Royalty wird positiv angezeigt (Preis > Druckkosten).",
+        "",
+        "6. TERMINVERÖFFENTLICHUNG statt sofort:",
+        f"   - Falls KDP ein Veröffentlichungsdatum anbietet: auf **{release}** setzen.",
+        "   - Sonst Entwurf gespeichert lassen und an Allen übergeben (er klickt am Tag X).",
+        "   ✓ CHECK: Datum gesetzt ODER sauberer Entwurf. NICHT endgültig publizieren.",
+        "",
+        "7. ABSCHLUSS: Status + alle CHECK-Ergebnisse zusammenfassen melden.",
         "```", "",
-        f"Dateien: `{interior_name or '(eigener Innenteil)'}`, `{cover_name}`, `metadata.md`.",
+        "## Wenn etwas klemmt",
+        "- **Login/2FA/Captcha** → an Mensch übergeben, nicht umgehen.",
+        f"- **Seitenzahl ≠ {pages}** → Cover passt nicht; STOP, Allen baut Cover mit echter Zahl neu.",
+        "- **'Objekt außerhalb der Ränder'** → Cover-PDF prüfen lassen (Vektor-Tool), nicht im UI fummeln.",
+        "- **Unklare Stelle / mehrdeutige Option** → fragen statt raten.",
     ])
 
 
