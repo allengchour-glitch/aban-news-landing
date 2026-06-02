@@ -32,6 +32,11 @@ FEEDS = {
     "VentureBeat AI": "https://venturebeat.com/category/ai/feed/",
     "MIT Tech Review": "https://www.technologyreview.com/feed/",
     "heise": "https://www.heise.de/rss/heise-atom.xml",
+    # Weitere etablierte DACH-Quellen (echte RSS/Atom-Feeds, breit -> KI-Filter greift):
+    "Golem": "https://rss.golem.de/rss.php?feed=RSS2.0",
+    "t3n": "https://t3n.de/rss.xml",
+    "netzpolitik.org": "https://netzpolitik.org/feed/",
+    "BSI": "https://www.bsi.bund.de/SiteGlobals/Functions/RSSFeed/RSSNewsfeed/RSSNewsfeed.xml",
 }
 
 # KI-Relevanz: nur Einträge behalten, die thematisch passen (heise/MIT sind breit).
