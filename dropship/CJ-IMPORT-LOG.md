@@ -1238,3 +1238,18 @@ Vollaudit Storefront + Theme-Template + Menü. Ergebnis in `dropship/SHOP-DESIGN
 - **POSITIV:** Alle **66 Menü-Collection-Links** lösen auf (keine toten Navi-Links).
 - **Angeboten per API (auf User-OK):** Menü fashion-first umsortieren, Collection-/Produkt-SEO schärfen,
   Size-Charts in Kleider-Texte. Quellen: Shopify CRO Fashion 2026, easyappsecom, growthsuite TikTok-Guide.
+
+## 2026-06-02 — Shop-Verbesserungen LIVE umgesetzt (per API, User wählte alle 3)
+1. **Grössentabellen (cm) in 9 Kampagnen-Kleider** (Brise, Sirène, Bali, Daisy, Savanna, Lumea, Noir,
+   Dos Nu, Casa): einheitliche Damen-Tabelle XS–3XL (Büste/Taille/Hüfte) + Asien-Fit-Hinweis +
+   **vereinheitlichte Trust-Zeile** (Gratis-Versand ab 65 · 14T Rückgabe · TWINT · –10% WELCOME10).
+   Senkt Retouren (−15-25% laut CRO) + Kaufsicherheit. (productUpdate, 0 Fehler.)
+2. **3 Top-Kollektionen** (Sommer, Damen-Mode, Kleider): On-Page-Text um Anlässe/Stile/Grössen (XS–3XL,
+   cm-Tabelle-Hinweis) angereichert. SEO-Meta bewusst unangetastet (war bereits stark). (collectionUpdate.)
+3. **Hauptmenü fashion-first** umsortiert: Mode→Schuhe→Schmuck→Highlights→Bestseller→Sommer→Sale→Geschenke,
+   danach Nicht-Mode (Beauty/Wellness/Wohnen/Tech/Küche/Sport/Reise/Auto/Baby), Magazin zuletzt.
+   **Alle 70 Links + Untermenüs erhalten** (menuUpdate, 0 Fehler).
+**NOCH OFFEN = Customizer-Klicks (Theme MAIN per API gesperrt, Details in SHOP-DESIGN-AUDIT.md):**
+(A) Hero „Premium für dein **Zuhause**" → „Sommer-Mode 2026 — Premium-Looks für jeden Auftritt" (+ Model-Hero-Bild);
+(B) Ankündigungsleiste LAUNCH30(30%) → einheitlich „Gratis-Versand ab 65 · –10% WELCOME10 · 30T Rückgabe";
+(C) 2× „View all" → „Alle anzeigen"; (D) Sticky-ATC mobil; (E) Judge.me-Sterne auf Produktkacheln.
