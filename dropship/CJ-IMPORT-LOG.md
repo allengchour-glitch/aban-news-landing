@@ -1184,3 +1184,15 @@ Leinen-Set, Editorial). 19,6s, elegant.wav. → Telegram msg 59 zur Freigabe.
 - Bei der Bild-QA verworfen (nicht lifestyle): `fleurette` (Kleid auf grauem Cutout, kein Model),
   `largo` (Rock am Bügel), `maxirock` (auf Weiss, Kopf abgeschnitten).
 - Quell-Pool noch frei für künftige Reels: sandalen (+ ggf. neue CJ-Shots).
+
+## 2026-06-02 — Reel-Feedback #2 (msg 669227672): „2 letzte bild weg, preis? rote kleid echt? nur echte kleider"
+- **„2 letzte bild weg"** = Bali (#5) + Boho (#6) aus Reel 2 v3 raus. **„Boho" war ein Hosen-Set, kein Kleid**
+  → bei „nur echte Kleider" korrekt entfernt.
+- **„rote kleid echt?" → JA, verifiziert:** «Savanna» Western-Style Midi = echtes aktives Produkt
+  (gid 15412916060545, CHF 39.90, 30 Varianten, Tag cj-real). ABER Lieferantenfoto wirkt KI-gerendert.
+- **„preis?"** = offen → User gefragt (Preis im Reel ja/nein).
+- **„nur echte kleider"** = Leitlinie: nur echte, real-FOTOGRAFIERTE Kleider; KI-wirkende Renders meiden.
+- **Echte Reel-Kleider + Preise (alle cj-real, CHF):** Brise 34.90 · Daisy 34.90 · Dos Nu 34.90 ·
+  Savanna 39.90 (KI-Look) · Bali 34.90 · Casa 34.90 · Lumea 34.90 · Noir 34.90 · Sirène 49.90 · Nuit 39.90.
+- **LEHRE:** Reel-Bilder vorab gegen Shop prüfen — manche CJ-Lieferantenfotos sind KI-Renders;
+  bei „nur echte Kleider" nur authentisch fotografierte Shots nehmen (Street/Lifestyle), keine Studio-Renders.
