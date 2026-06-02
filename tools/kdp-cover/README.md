@@ -13,7 +13,7 @@ Planer, Logbooks, Journals). Entstanden 2026-06-02 beim Fertigstellen des
 
 | Datei | Zweck |
 |-------|-------|
-| `build_book.py` | **Pipeline:** ein Aufruf → Cover + Innenteil + `metadata.md` + `upload-playbook.md` |
+| `build_book.py` | **Pipeline:** ein Aufruf → Cover + Innenteil + `metadata.md` + `upload-playbook.md` (DE) + `upload-playbook.en.md` (EN) |
 | `kdp_cover.py` | Full-Wrap-**Cover** als echtes Vektor-PDF (Front/Rücken/Back, optional Frontbild) |
 | `cover_art.py` | **Cover-Bild** verarbeiten / zeichnen / (optional) per KI — mit Selbst-Diagnose |
 | `planner_interior.py` | **Innenteil** eines Tages-Planers (6×9, s/w), N Tagesseiten |
@@ -29,6 +29,12 @@ python3 build_book.py --pending  # nur Bücher mit uploaded:False (Codewort „B
 **Codewort „BUCHDRUCK":** baut nur die noch nicht hochgeladenen Bücher
 (`uploaded: False` in `BOOKS`). Nach dem KDP-Upload das jeweilige `"uploaded"`
 auf `True` setzen — dann überspringt `--pending` es.
+
+**Upload-Runbooks:** Pro Buch entsteht ein schrittweises Browser-Agent-Runbook
+in DE (`upload-playbook.md`) und EN (`upload-playbook.en.md`, KDP-UI ist oft
+Englisch). Mit Verify-CHECK nach jedem Schritt; Login/2FA/Captcha bleibt beim
+Menschen; **kein** endgültiges Publish, stattdessen Terminveröffentlichung auf
+heute + `release_offset_days` (Default 2, pro Buch in `BOOKS` überschreibbar).
 
 Pro Buch entsteht in `out/<slug>/`:
 `*-cover.pdf`, `*-interior.pdf` (bei `interior.type=="planner"`),
