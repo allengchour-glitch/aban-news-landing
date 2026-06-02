@@ -180,8 +180,17 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 ### Schlüsselring-Loch (gelöst)
 - **Wichtig:** Meshy-GLBs kommen in **normierten Einheiten** (~2 Einheiten lang), NICHT mm.
   Boolean-Loch erst nach Skalieren auf mm setzen, sonst sitzt der Zylinder daneben/zerstört alles.
-- `hole.py` skaliert (SIZE), bohrt vertikal durch solides Material, exportiert GLB mit Textur.
-  Reihenfolge: `hole.py` → `colorize.py`. Pancake-Loch: `HYF=0.62` (Rücken), `HD=4.5` mm, gut.
+- `hole.py` (allgemein): `AXIS=z|x|y`, Position `HX/HY/HZ` (mm) oder `HXF/HYF/HZF` (Anteil),
+  Ein-/Ausgabe glb **oder** obj (Farben bleiben). Pancake (flach): `AXIS=z HYF=0.62 HD=4.5`.
+  Full-Body (sitzend): `AXIS=x HY=-7 HZ=21 HD=5` (Nacken/Scruff, waagrecht).
+- **Blind-Bohren ist tabu** — genau wie bei den Augen. Erst die Geometrie **abtasten**
+  (`scene.ray_cast`), dann bohren. 1. Versuch Full-Body ging durch **Luft** (Punkt war
+  ausserhalb des Körpers). Ray-Cast = Bodentruth: 4 Treffer entlang der Achse = sauberer
+  Tunnel; Wand über dem Loch ≥3 mm lassen (sonst reisst PLA).
+- **Render-Macke:** Kamera exakt entlang X/Y (waagrecht, ohne Z-Versatz) rendert oft leer.
+  Lösung: Kamera leicht erhöht/diagonal **oder** Modell 90° um Z drehen + Front-Kamera.
+- Reihenfolge farbig+Loch: GLB → `hole.py` → `colorize.py` → `assemble.py`  ODER
+  `colorize.py` → `hole.py` (obj→obj) → `assemble.py`.
 
 ### Prompt-Bibliothek (erprobt)
 - Funktioniert: `"a cute <tier> figurine, smooth stylized, solid, simple, no separate base"`
