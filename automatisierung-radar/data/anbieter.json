@@ -817,6 +817,485 @@
       "preismodell": "nach Laufzeit",
       "worth_it_score": null,
       "aban_note": "[Redaktion: prüfen] — Mischung aus No-Code und echtem Code plus KI-Knoten; Abrechnung nach Laufzeit kann bei vielen Schritten günstiger sein. Jünger und englischsprachig — für Bastler mit etwas Technik-Affinität."
+    },
+    {
+      "id": "zoho-flow",
+      "name": "Zoho Flow",
+      "anbieter": "Zoho Corporation",
+      "url": "https://www.zoho.com/flow/",
+      "sprache": [
+        "en",
+        "de"
+      ],
+      "fokus": "International",
+      "kategorie": [
+        "iPaaS / App-Integration",
+        "Workflow-Automatisierung (No-Code)"
+      ],
+      "themen": [
+        "Zoho-Ökosystem",
+        "Flow-Builder",
+        "Logik & Verzweigungen",
+        "App-Integration"
+      ],
+      "format": "iPaaS / Workflow-Tool (Cloud)",
+      "integration": [
+        "Zoho Apps",
+        "Google Workspace",
+        "Slack",
+        "Webhooks",
+        "HTTP/REST"
+      ],
+      "deutsche_oberflaeche": null,
+      "eu_lager": null,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Abos nach Tasks. Zoho bietet eine EU-Datenregion, vor Nutzung im Konto prüfen.",
+      "preismodell": "pro Task",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — günstiges iPaaS, besonders naheliegend, wenn du ohnehin Zoho-Apps nutzt. EU-Datenregion ist verfügbar, hängt aber vom gewählten Konto-Standort ab — vor dem Start prüfen."
+    },
+    {
+      "id": "pabbly-connect",
+      "name": "Pabbly Connect",
+      "anbieter": "Magnet Brains (Pabbly)",
+      "url": "https://www.pabbly.com/connect/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "International",
+      "kategorie": [
+        "Workflow-Automatisierung (No-Code)"
+      ],
+      "themen": [
+        "günstige Tarife",
+        "Workflows ohne Schrittlimit",
+        "Webhooks",
+        "Vorlagen"
+      ],
+      "format": "No-Code-Workflow-Plattform (Cloud)",
+      "integration": [
+        "Gmail",
+        "Google Sheets",
+        "WooCommerce",
+        "Webhooks",
+        "Stripe"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — bekannt für günstige Tarife (teils mit Einmalkauf-Angeboten). Datenverarbeitung außerhalb der EU.",
+      "preismodell": "Abo (Tasks inkl.)",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — preisgünstige Zapier-Alternative, beliebt bei Solo-Selbstständigen, die mit kleinem Budget viele Workflows brauchen. Englisch und Hosting außerhalb der EU — bei personenbezogenen Daten AVV und Drittlandtransfer prüfen."
+    },
+    {
+      "id": "integrately",
+      "name": "Integrately",
+      "anbieter": "CompanyHub (Integrately)",
+      "url": "https://integrately.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "International",
+      "kategorie": [
+        "Workflow-Automatisierung (No-Code)"
+      ],
+      "themen": [
+        "1-Klick-Automationen",
+        "großer Vorlagen-Katalog",
+        "einfacher Einstieg"
+      ],
+      "format": "No-Code-Workflow-Plattform (Cloud)",
+      "integration": [
+        "Gmail",
+        "HubSpot",
+        "Slack",
+        "Google Sheets",
+        "Webhooks"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Abos nach Tasks, günstiger Einstieg. Datenverarbeitung außerhalb der EU.",
+      "preismodell": "Abo",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — setzt auf fertige 1-Klick-Automationen, dadurch besonders einsteigerfreundlich. Englisch und US-/Drittland-Hosting; für DSGVO-sensible Daten vorher Konditionen prüfen."
+    },
+    {
+      "id": "microsoft-azure-logic-apps",
+      "name": "Microsoft Azure Logic Apps",
+      "anbieter": "Microsoft",
+      "url": "https://azure.microsoft.com/de-de/products/logic-apps",
+      "sprache": [
+        "de",
+        "en"
+      ],
+      "fokus": "Enterprise / RPA",
+      "kategorie": [
+        "iPaaS / App-Integration",
+        "Prozess-Orchestrierung / BPM"
+      ],
+      "themen": [
+        "Azure-Integration",
+        "Enterprise-Konnektoren",
+        "verbrauchsbasiert",
+        "B2B/EDI"
+      ],
+      "format": "Cloud-iPaaS (Azure)",
+      "integration": [
+        "Microsoft 365",
+        "SAP",
+        "Azure-Dienste",
+        "SQL Server",
+        "REST-APIs"
+      ],
+      "deutsche_oberflaeche": null,
+      "eu_lager": null,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — verbrauchsbasiert (pro Aktion) oder im Standard-Plan. EU-Region über Azure wählbar, abhängig vom Setup.",
+      "preismodell": "nach Verbrauch",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — das iPaaS innerhalb von Azure (getrennt von Power Automate), gedacht für Entwickler- und Enterprise-Integrationen. EU-Datenregion ist möglich, hängt aber vom Azure-Setup ab — nicht automatisch gegeben."
+    },
+    {
+      "id": "boomi",
+      "name": "Boomi",
+      "anbieter": "Boomi, LP",
+      "url": "https://boomi.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Enterprise / RPA",
+      "kategorie": [
+        "iPaaS / App-Integration"
+      ],
+      "themen": [
+        "Enterprise-iPaaS",
+        "ERP-/CRM-Integration",
+        "API-Management",
+        "Master Data"
+      ],
+      "format": "Enterprise-iPaaS (Cloud)",
+      "integration": [
+        "SAP",
+        "Salesforce",
+        "NetSuite",
+        "Workday",
+        "REST/SOAP-APIs"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": null,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Enterprise-Tarife auf Anfrage. EU-Runtime/Cloud verfügbar, vor Vertrag prüfen.",
+      "preismodell": "auf Anfrage",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — etabliertes Enterprise-iPaaS für größere Unternehmen mit vielen Systemen (ERP, CRM). Leistungsfähig und entsprechend teuer; für kleine Teams meist überdimensioniert."
+    },
+    {
+      "id": "celigo",
+      "name": "Celigo",
+      "anbieter": "Celigo, Inc.",
+      "url": "https://www.celigo.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Enterprise / RPA",
+      "kategorie": [
+        "iPaaS / App-Integration"
+      ],
+      "themen": [
+        "E-Commerce-/ERP-Integration",
+        "vorgefertigte Integrationen",
+        "NetSuite-Fokus"
+      ],
+      "format": "iPaaS (Cloud)",
+      "integration": [
+        "NetSuite",
+        "Shopify",
+        "Salesforce",
+        "Amazon",
+        "REST-APIs"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": null,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Tarife auf Anfrage, kostenloser Einstieg für einfache Flows. Datenregion vor Vertrag prüfen.",
+      "preismodell": "auf Anfrage",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — iPaaS mit Stärke bei E-Commerce- und ERP-Anbindungen (vor allem NetSuite). Englisch-zentriert; sinnvoll, wenn genau diese Systeme dein Kern sind."
+    },
+    {
+      "id": "cyclr",
+      "name": "Cyclr",
+      "anbieter": "Cyclr Systems Ltd.",
+      "url": "https://cyclr.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "International",
+      "kategorie": [
+        "iPaaS / App-Integration"
+      ],
+      "themen": [
+        "Embedded iPaaS",
+        "White-Label",
+        "Konnektor-Bibliothek",
+        "für SaaS-Anbieter"
+      ],
+      "format": "Embedded iPaaS (Cloud)",
+      "integration": [
+        "HubSpot",
+        "Salesforce",
+        "Slack",
+        "REST-APIs",
+        "Webhooks"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": null,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Tarife auf Anfrage. Anbieter aus UK/EU, Datenregion vor Vertrag prüfen.",
+      "preismodell": "auf Anfrage",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — Embedded iPaaS, um Integrationen ins eigene SaaS-Produkt einzubauen — weniger ein Tool für Endanwender. UK/EU-Anbieter, was die Datenhaltung näher an Europa rückt; im Vertrag prüfen."
+    },
+    {
+      "id": "windmill",
+      "name": "Windmill",
+      "anbieter": "Windmill Labs",
+      "url": "https://www.windmill.dev/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Self-Hosting / Open Source",
+      "kategorie": [
+        "Workflow-Automatisierung (No-Code)",
+        "Prozess-Orchestrierung / BPM"
+      ],
+      "themen": [
+        "Open Source (AGPL)",
+        "Skripte + Flows",
+        "Self-Hosting",
+        "Entwickler-Fokus"
+      ],
+      "format": "Open-Source-Plattform (Cloud & self-hosted)",
+      "integration": [
+        "HTTP/REST",
+        "Webhooks",
+        "Postgres",
+        "Python/TypeScript",
+        "S3"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": null,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Open Source und self-hostbar (auch in der EU), gehostete Tarife zusätzlich.",
+      "preismodell": "Open Source / Abo",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — quelloffene Plattform, die Skripte und visuelle Flows verbindet. Self-Hosting macht EU-Datenhaltung möglich, ist aber dein eigener Betrieb. Entwickler-Terrain, kein reines Klick-Tool."
+    },
+    {
+      "id": "trigger-dev",
+      "name": "Trigger.dev",
+      "anbieter": "Trigger.dev Ltd.",
+      "url": "https://trigger.dev/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Self-Hosting / Open Source",
+      "kategorie": [
+        "Workflow-Automatisierung (No-Code)",
+        "KI-Agenten & KI-Automatisierung"
+      ],
+      "themen": [
+        "Open Source",
+        "Code-basierte Jobs",
+        "lange Hintergrund-Tasks",
+        "Self-Hosting"
+      ],
+      "format": "Open-Source-Workflow-Tool (Cloud & self-hosted)",
+      "integration": [
+        "HTTP/REST",
+        "Webhooks",
+        "OpenAI",
+        "Resend",
+        "Supabase"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": null,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Open Source und self-hostbar, gehostete Tarife nach Nutzung.",
+      "preismodell": "Open Source / Abo",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — für Entwickler, die langlaufende Hintergrund-Jobs und KI-Tasks im eigenen Code orchestrieren wollen. Self-Hosting möglich; kein No-Code-Tool für Fachabteilungen."
+    },
+    {
+      "id": "inngest",
+      "name": "Inngest",
+      "anbieter": "Inngest, Inc.",
+      "url": "https://www.inngest.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "International",
+      "kategorie": [
+        "Prozess-Orchestrierung / BPM"
+      ],
+      "themen": [
+        "Event-getrieben",
+        "Durable Workflows",
+        "Entwickler-Fokus",
+        "Retries/Steps"
+      ],
+      "format": "Workflow-Engine für Entwickler (Cloud & self-hosted)",
+      "integration": [
+        "HTTP/REST",
+        "Webhooks",
+        "TypeScript/Python",
+        "Vercel",
+        "AWS"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — nach ausgeführten Schritten/Events, kostenloser Einstieg. Datenverarbeitung überwiegend USA.",
+      "preismodell": "nach Verbrauch",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — event-getriebene, ausfallsichere Workflows für Entwickler (Retries, Schritte, Wartezeiten). Stark im Code-Kontext, nichts für Klick-ohne-Code; englisch und überwiegend US-Hosting."
+    },
+    {
+      "id": "temporal",
+      "name": "Temporal",
+      "anbieter": "Temporal Technologies, Inc.",
+      "url": "https://temporal.io/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Enterprise / RPA",
+      "kategorie": [
+        "Prozess-Orchestrierung / BPM"
+      ],
+      "themen": [
+        "Durable Execution",
+        "Microservice-Orchestrierung",
+        "Open Source",
+        "Entwickler-Fokus"
+      ],
+      "format": "Orchestrierungs-Engine (Cloud & self-hosted)",
+      "integration": [
+        "Go/Java/TypeScript/Python SDKs",
+        "gRPC",
+        "Kafka",
+        "REST-APIs"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": null,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Open-Source-Kern kostenlos, Temporal Cloud nach Verbrauch. Cloud-Regionen inkl. EU, vor Nutzung prüfen.",
+      "preismodell": "Open Source / nach Verbrauch",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — Engine für ausfallsichere, langlaufende Prozesse über viele Microservices — reines Entwickler-Werkzeug. Mächtig bei komplexer Orchestrierung, mit eigener Lernkurve; kein No-Code."
+    },
+    {
+      "id": "konfuzio",
+      "name": "Konfuzio",
+      "anbieter": "Helm & Nagel GmbH",
+      "url": "https://konfuzio.com/de/",
+      "sprache": [
+        "de",
+        "en"
+      ],
+      "fokus": "EU-Hosting / DSGVO",
+      "kategorie": [
+        "KI-Agenten & KI-Automatisierung",
+        "RPA (Robotic Process Automation)"
+      ],
+      "themen": [
+        "Dokumenten-KI (IDP)",
+        "Datenextraktion",
+        "EU-Hosting",
+        "deutscher Support"
+      ],
+      "format": "Dokumenten-Automatisierung (Cloud & On-Premise)",
+      "integration": [
+        "REST-API",
+        "DATEV",
+        "SAP",
+        "RPA-Tools",
+        "E-Mail"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Tarife auf Anfrage, Open-Source-Komponenten verfügbar. Hosting in Deutschland/EU, On-Premise möglich.",
+      "preismodell": "auf Anfrage",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — deutscher Anbieter für Dokumenten-KI (Belege, Verträge auslesen) mit EU-Hosting, deutscher Oberfläche und On-Premise-Option. Starker DACH-Kandidat, wenn du Papier-/PDF-Prozesse automatisieren willst."
+    },
+    {
+      "id": "axiom-ai",
+      "name": "Axiom.ai",
+      "anbieter": "Axiom.ai",
+      "url": "https://axiom.ai/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "International",
+      "kategorie": [
+        "Browser-Automatisierung"
+      ],
+      "themen": [
+        "No-Code-Browser-Bots",
+        "Web-Scraping",
+        "Klick-Automation",
+        "Zeitpläne"
+      ],
+      "format": "Browser-Erweiterung (Chrome)",
+      "integration": [
+        "Chrome",
+        "Google Sheets",
+        "Zapier",
+        "Webhooks"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — kostenloser Einstieg, Abos nach Laufzeit/Runs. Datenverarbeitung außerhalb der EU.",
+      "preismodell": "Abo (Freemium)",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — No-Code-Bots, die im Browser klicken, tippen und Daten auslesen — ähnlich Bardeen. Praktisch für Seiten ohne API; achte beim Scraping auf die Nutzungsbedingungen der Zielseiten."
+    },
+    {
+      "id": "magical",
+      "name": "Magical",
+      "anbieter": "Magical (Nines, Inc.)",
+      "url": "https://www.getmagical.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "International",
+      "kategorie": [
+        "Browser-Automatisierung"
+      ],
+      "themen": [
+        "Textbausteine",
+        "Autofill",
+        "repetitive Eingaben",
+        "KI-Antworten"
+      ],
+      "format": "Browser-Erweiterung (Chrome)",
+      "integration": [
+        "Chrome",
+        "Gmail",
+        "LinkedIn",
+        "CRM-Webseiten"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — kostenloser Tarif, Pro-Abo für mehr. Datenverarbeitung außerhalb der EU.",
+      "preismodell": "Abo (Freemium)",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — spart Tipparbeit über Textbausteine und Autofill direkt im Browser; eher Produktivitäts-Helfer als vollwertige Workflow-Engine. Englisch und Hosting außerhalb der EU."
     }
   ]
 }
