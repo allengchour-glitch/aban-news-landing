@@ -1,0 +1,35 @@
+{
+  "_comment": "LuxeStyle 3D-Produkte — fertige Posts zum 1-Klick-Versand via ../social/post.py (Telegram/Discord). 'sent: false' = noch nicht gesendet. Aban-Ton: ehrlich, kein Hype. WICHTIG: eigene LuxeStyle-Kanäle nutzen (NICHT die aban-News-Kanäle — andere Zielgruppe). Erst senden, wenn die Produkte live sind. Links/Domain vor Versand prüfen.",
+  "posts": [
+    {
+      "id": "p1-start",
+      "sent": false,
+      "text": "🎁 Neu bei LuxeStyle: personalisierte 3D-Anhänger\n\nName, Lieblingstier oder Wunschtext — einzeln für dich gefertigt, in deiner Wunschfarbe. Kein Massenprodukt.\n\n👉 https://luxestyle.ch"
+    },
+    {
+      "id": "p2-tiere",
+      "sent": false,
+      "text": "🐱 Tier-Schlüsselanhänger zum Selberzusammenstellen\n\nKatze, Bär, Hase, Fisch, Pfote, Hund, Herz oder Stern — in 6 Farben. Du wählst, wir fertigen.\n\n👉 https://luxestyle.ch"
+    },
+    {
+      "id": "p3-namensschild",
+      "sent": false,
+      "text": "🚪 Dein Name an Tür oder Schreibtisch\n\nPersonalisiertes Namensschild, 3D-gedruckt in deiner Wunschfarbe. Schlicht und stabil.\n\n👉 https://luxestyle.ch"
+    },
+    {
+      "id": "p4-caketopper",
+      "sent": false,
+      "text": "🎂 Cake-Topper mit Wunschtext\n\nName, Alter oder ein kurzer Spruch auf der Torte — für Geburtstage und Feiern. In deiner Farbe gefertigt.\n\n👉 https://luxestyle.ch"
+    },
+    {
+      "id": "p5-auf-bestellung",
+      "sent": false,
+      "text": "ℹ️ Warum dauert es ein paar Tage?\n\nWeil wir nichts auf Lager legen: Jedes Stück wird nach deiner Bestellung einzeln gefertigt. Dafür bekommst du genau deine Farbe und deinen Text — kein Wegwerf-Massenartikel.\n\n👉 https://luxestyle.ch"
+    },
+    {
+      "id": "p6-geschenk",
+      "sent": false,
+      "text": "💡 Geschenk-Idee, die nicht jeder hat\n\nEin Anhänger mit dem Namen der beschenkten Person bleibt hängen — am Schlüssel, an der Tasche, am Rucksack. Personalisiert ab CHF 19.90.\n\n👉 https://luxestyle.ch"
+    }
+  ]
+}
