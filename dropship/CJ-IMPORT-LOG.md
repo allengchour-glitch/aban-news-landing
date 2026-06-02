@@ -1023,3 +1023,14 @@ cj_cool2_search.mjs (Filter korrigiert). Importiert (ACTIVE, 6 Kanäle, Bilder R
 | Halskette mit Ring-Halter-Anhänger (3 Farben) | 15414271902081 | 3 | 18.90 | premium-schmuck |
 | Polarisierte Sonnenbrille «HD» (4 Tönungen) | 15414271967617 | 4 | 24.90 | sonnenbrillen + sommer-2026+damen (Landingpage!) |
 Übersprungen: Blumenring (Dublette), diverse Kleidung (Filter-Rauschen).
+
+## 2026-06-02 (Nacht) — CJ-Charge 3: +1 Tasche · GESAMT NACHT +9 Produkte
+| Produkt | ID | V | VK |
+|---|---|---|---|
+| Schultertasche «Vintage» PU (3 Farben) | 15414272065921 | 3 | 34.90 |
+Crossbody-Sling übersprungen (Marken-Hangtag/Counterfeit-Risiko + sportlich-unisex, off-brand).
+**GESAMT diese Nacht autonom: +9 coole Produkte** (5 Schmuck + 3 Accessoires + 1 Tasche), alle ACTIVE,
+6 Kanäle, Bilder READY, HTTP-200 vorgeprüft, deutsche Copy + Trust-Zeile + CHF-Preise, Tags für
+Smart-Collections. Sonnenbrille zusätzlich sommer-2026+damen → auf Kampagnen-Landingpage.
+**Shop: 526 aktive Produkte.** CJ-Katalog stark ausgeschöpft (viel Kleidungs-Rauschen bei Accessoire-
+Keywords) → Qualität vor Menge, nur saubere Stücke genommen. Skripte: cj_cool_search/_enrich/_cool2.
