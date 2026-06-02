@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:;">
+<title>Spiel-Wächter</title>
+<style>
+  :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--ok:#15803d;--warn:#b45309;--stop:#b91c1c;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;font-size:16px;-webkit-user-select:none;user-select:none}
+  .wrap{max-width:760px;margin:0 auto;padding:1.4rem 1.25rem 2.5rem}
+  h1{font-size:1.5rem;letter-spacing:-.02em;display:flex;align-items:center;gap:.5rem}
+  h1 small{font-size:.8rem;font-weight:600;color:var(--muted)}
+  h2{font-size:1.1rem;margin:1.4rem 0 .6rem}
+  p{margin-bottom:.7rem}
+  .sub{color:var(--muted);font-size:.92rem}
+  label{display:block;font-weight:600;font-size:.9rem;margin:.8rem 0 .3rem}
+  label .hint{font-weight:400;color:var(--muted);font-size:.82rem}
+  input{width:100%;padding:.6rem .75rem;border:1px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;color:var(--ink);-webkit-user-select:text;user-select:text}
+  input:focus-visible{outline:3px solid var(--amber);outline-offset:1px}
+  .grid2{display:grid;gap:.6rem 1rem;grid-template-columns:1fr 1fr}
+  @media(max-width:520px){.grid2{grid-template-columns:1fr}}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:1rem;padding:.75rem 1.2rem;background:var(--amber-dk);color:#fff;width:100%;margin-top:1rem}
+  .btn.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn.danger{background:var(--stop)}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;margin:1rem 0;box-shadow:var(--shadow)}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+  @media(max-width:520px){.stats{grid-template-columns:1fr}}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem}
+  .stat .k{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  .stat .v{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+  .stat .v small{font-size:.85rem;font-weight:600;color:var(--muted)}
+  .bar{height:10px;border-radius:6px;background:var(--line);overflow:hidden;margin-top:.5rem}
+  .bar > span{display:block;height:100%;background:var(--ok);transition:width .3s,background .3s}
+  .v.loss{color:var(--stop)}
+  .v.ok{color:var(--ok)}
+  .help{background:#1c2530;color:#fff;border-radius:var(--r);padding:1rem 1.2rem;margin-top:1.3rem;font-size:.88rem}
+  .help a{color:#fde9c8;-webkit-user-select:text;user-select:text}
+  .row-form{display:grid;grid-template-columns:1fr 1fr auto;gap:.6rem;align-items:end}
+  @media(max-width:520px){.row-form{grid-template-columns:1fr 1fr}.row-form .btn{grid-column:1/-1}}
+  .row-form .btn{margin-top:0;width:auto;padding:.6rem 1rem}
+  .log{font-size:.85rem;color:var(--muted);max-height:130px;overflow:auto;margin-top:.6rem;-webkit-user-select:text;user-select:text}
+  .log div{padding:.25rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem}
+  .overlay{position:fixed;inset:0;background:rgba(28,37,48,.93);color:#fff;display:none;align-items:center;justify-content:center;padding:1.5rem;z-index:100}
+  .overlay.show{display:flex}
+  .overlay .box{max-width:440px;text-align:center}
+  .overlay h2{font-size:1.6rem;color:#fff;margin-bottom:.6rem}
+  .overlay p{font-size:1rem;opacity:.92}
+  .overlay .btn{margin-top:.7rem}
+  .overlay a{color:#fde9c8}
+  .hidden{display:none}
+  .tag{display:inline-block;background:var(--amber-lt);color:var(--amber-dk);font-size:.78rem;font-weight:600;padding:.25rem .6rem;border-radius:999px;margin-bottom:.6rem}
+  footer{margin-top:1.5rem;font-size:.78rem;color:var(--muted);border-top:1px solid var(--line);padding-top:1rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🛡️ Spiel-Wächter <small>von aban news</small></h1>
+
+  <!-- ===== SETUP ===== -->
+  <section id="setup">
+    <span class="tag">Limit-Wächter · keine Gewinn-Tipps · lokal, kein Tracking</span>
+    <p class="sub">Setz dir <strong>vorher</strong> ein Limit. Der Wächter zählt mit und sagt dir klar, wann Schluss ist. Er verrät dir nicht, „wie du gewinnst“ — das kann niemand, der Hausvorteil ist fest. Er hilft dir, deine eigene Grenze einzuhalten.</p>
+    <div class="card">
+      <div class="grid2">
+        <div>
+          <label for="budget">Verlust-Limit <span class="hint">(€ — so viel darfst du höchstens verlieren)</span></label>
+          <input id="budget" type="number" min="1" step="1" value="50" inputmode="decimal">
+        </div>
+        <div>
+          <label for="time">Zeit-Limit <span class="hint">(Minuten)</span></label>
+          <input id="time" type="number" min="1" step="1" value="30" inputmode="numeric">
+        </div>
+        <div>
+          <label for="rtp">RTP des Spiels <span class="hint">(% — für den erwarteten Verlust)</span></label>
+          <input id="rtp" type="number" min="50" max="100" step="0.1" value="96" inputmode="decimal">
+        </div>
+        <div>
+          <label for="reality">Realitäts-Check alle <span class="hint">(Minuten)</span></label>
+          <input id="reality" type="number" min="1" step="1" value="15" inputmode="numeric">
+        </div>
+      </div>
+      <button class="btn" id="startBtn">Sitzung starten</button>
+    </div>
+    <div class="help">
+      <strong>Spielen kann süchtig machen.</strong> Kostenlose, anonyme Hilfe:<br>
+      🇩🇪 BZgA 0800 1 372 700 · <a href="https://www.check-dein-spiel.de" target="_blank" rel="noopener">check-dein-spiel.de</a><br>
+      🇦🇹 <a href="https://www.spielsuchthilfe.at" target="_blank" rel="noopener">spielsuchthilfe.at</a> · 🇨🇭 <a href="https://www.sos-spielsucht.ch" target="_blank" rel="noopener">sos-spielsucht.ch</a>
+    </div>
+  </section>
+
+  <!-- ===== SESSION ===== -->
+  <section id="session" class="hidden">
+    <div class="stats">
+      <div class="stat">
+        <div class="k">Verbleibende Zeit</div>
+        <div class="v" id="s-time">–</div>
+        <div class="bar"><span id="s-time-bar"></span></div>
+      </div>
+      <div class="stat">
+        <div class="k">Verlust-Limit</div>
+        <div class="v loss" id="s-budget">–</div>
+        <div class="bar"><span id="s-budget-bar"></span></div>
+      </div>
+      <div class="stat">
+        <div class="k">Tatsächlicher Saldo</div>
+        <div class="v" id="s-net">–</div>
+      </div>
+      <div class="stat">
+        <div class="k">Erwarteter Verlust <small>(RTP)</small></div>
+        <div class="v" id="s-exp">–</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top:0">Runde buchen</h2>
+      <p class="sub">Trag deinen Einsatz und die Auszahlung dieser Runde ein (Auszahlung 0 = verloren). So kennt der Wächter deinen echten Stand.</p>
+      <div class="row-form">
+        <div>
+          <label for="r-stake">Einsatz (€)</label>
+          <input id="r-stake" type="number" min="0" step="0.1" inputmode="decimal">
+        </div>
+        <div>
+          <label for="r-payout">Auszahlung (€)</label>
+          <input id="r-payout" type="number" min="0" step="0.1" inputmode="decimal" value="0">
+        </div>
+        <button class="btn" id="logBtn">Buchen</button>
+      </div>
+      <div class="log" id="log"></div>
+    </div>
+
+    <button class="btn secondary" id="endBtn">Sitzung beenden</button>
+
+    <div class="help">
+      🇩🇪 BZgA 0800 1 372 700 · <a href="https://www.check-dein-spiel.de" target="_blank" rel="noopener">check-dein-spiel.de</a> · 🇦🇹 <a href="https://www.spielsuchthilfe.at" target="_blank" rel="noopener">spielsuchthilfe.at</a> · 🇨🇭 <a href="https://www.sos-spielsucht.ch" target="_blank" rel="noopener">sos-spielsucht.ch</a>
+    </div>
+  </section>
+
+  <!-- ===== SUMMARY ===== -->
+  <section id="summary" class="hidden">
+    <div class="card">
+      <h2 style="margin-top:0">Sitzung beendet</h2>
+      <div id="sum-body"></div>
+      <button class="btn" id="againBtn">Neue Sitzung einrichten</button>
+    </div>
+  </section>
+
+  <footer>
+    Spiel-Wächter überwacht deine selbst gesetzten Limits — nicht dein Spiel. Keine Gewinn-Strategie, kein Anbieter, keine Datenübertragung. Alles bleibt auf diesem Gerät. Glücksspiel ab 18.
+  </footer>
+</div>
+
+<!-- ===== STOP-OVERLAY ===== -->
+<div class="overlay" id="overlay">
+  <div class="box">
+    <h2 id="ov-title">Limit erreicht</h2>
+    <p id="ov-text"></p>
+    <button class="btn danger" id="ov-end">Jetzt aufhören (Sitzung beenden)</button>
+    <button class="btn secondary" id="ov-dismiss">Hinweis schließen</button>
+    <p style="margin-top:1rem;font-size:.85rem">Brauchst du Hilfe? 🇩🇪 0800 1 372 700 · <a href="https://www.check-dein-spiel.de" target="_blank" rel="noopener">check-dein-spiel.de</a></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var euro=new Intl.NumberFormat("de-DE",{style:"currency",currency:"EUR"});
+  var KEY="aban_spiel_waechter_v1";
+  var $=function(id){return document.getElementById(id);};
+  var state=null, tick=null;
+
+  function load(){ try{return JSON.parse(localStorage.getItem(KEY));}catch(e){return null;} }
+  function save(){ try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){} }
+  function clearState(){ try{localStorage.removeItem(KEY);}catch(e){} }
+
+  function show(sec){ ["setup","session","summary"].forEach(function(s){$(s).classList.toggle("hidden",s!==sec);}); }
+  function num(v,min){var n=parseFloat(String(v).replace(",","."));if(!isFinite(n))n=0;if(min!=null&&n<min)n=min;return n;}
+
+  function start(){
+    state={
+      budget:num($("budget").value,1),
+      timeMin:num($("time").value,1),
+      rtp:Math.min(100,num($("rtp").value,0)),
+      realityMin:num($("reality").value,1),
+      startedAt:Date.now(),
+      rounds:[],
+      lastReality:0,
+      stoppedBudget:false,
+      stoppedTime:false
+    };
+    save(); show("session"); render(); startTick();
+  }
+
+  function startTick(){ if(tick)clearInterval(tick); tick=setInterval(render,1000); }
+
+  function totals(){
+    var turnover=0,returned=0;
+    state.rounds.forEach(function(r){turnover+=r.stake;returned+=r.payout;});
+    var net=returned-turnover;                 // negativ = Verlust
+    var loss=Math.max(0,-net);
+    var expected=turnover*(1-state.rtp/100);
+    return {turnover:turnover,returned:returned,net:net,loss:loss,expected:expected};
+  }
+
+  function render(){
+    if(!state)return;
+    var t=totals();
+    var elapsedMin=(Date.now()-state.startedAt)/60000;
+    var remainMin=Math.max(0,state.timeMin-elapsedMin);
+
+    // Zeit
+    var mm=Math.floor(remainMin), ss=Math.floor((remainMin-mm)*60);
+    $("s-time").textContent=mm+":"+(ss<10?"0":"")+ss+" min";
+    var timePct=Math.min(100,(elapsedMin/state.timeMin)*100);
+    var tb=$("s-time-bar"); tb.style.width=timePct+"%";
+    tb.style.background=timePct>=100?"var(--stop)":(timePct>=80?"var(--warn)":"var(--ok)");
+
+    // Budget
+    $("s-budget").textContent=euro.format(t.loss)+" / "+euro.format(state.budget);
+    var budPct=Math.min(100,(t.loss/state.budget)*100);
+    var bb=$("s-budget-bar"); bb.style.width=budPct+"%";
+    bb.style.background=budPct>=100?"var(--stop)":(budPct>=80?"var(--warn)":"var(--ok)");
+
+    // Saldo
+    var net=$("s-net");
+    net.textContent=(t.net>=0?"+ ":"− ")+euro.format(Math.abs(t.net));
+    net.className="v "+(t.net>=0?"ok":"loss");
+
+    // Erwarteter Verlust
+    $("s-exp").innerHTML="− "+euro.format(t.expected)+" <small>bei "+state.rtp.toString().replace(".",",")+" % RTP, Umsatz "+euro.format(t.turnover)+"</small>";
+
+    renderLog();
+
+    // Limit-Pruefungen
+    if(t.loss>=state.budget && !state.stoppedBudget){ state.stoppedBudget=true; save(); overlay("Verlust-Limit erreicht","Du hast deine selbst gesetzte Grenze von "+euro.format(state.budget)+" erreicht. Das ist der Moment, an dem du dir vorgenommen hast aufzuhören."); return; }
+    if(elapsedMin>=state.timeMin && !state.stoppedTime){ state.stoppedTime=true; save(); overlay("Zeit-Limit erreicht","Deine "+state.timeMin+" Minuten sind um. Zeit für eine Pause."); return; }
+
+    // Realitaets-Check
+    var blocks=Math.floor(elapsedMin/state.realityMin);
+    if(blocks>state.lastReality){ state.lastReality=blocks; save();
+      overlay("Realitäts-Check","Du spielst seit "+Math.round(elapsedMin)+" Minuten. Aktueller Saldo: "+(t.net>=0?"+":"−")+euro.format(Math.abs(t.net))+". Noch alles im Rahmen, den du dir vorgenommen hast?");
+    }
+  }
+
+  function renderLog(){
+    var el=$("log");
+    if(!state.rounds.length){el.innerHTML='<div style="border:0;color:var(--muted)">Noch keine Runde gebucht.</div>';return;}
+    var html="";
+    for(var i=state.rounds.length-1;i>=0 && i>=state.rounds.length-30;i--){
+      var r=state.rounds[i], d=r.payout-r.stake;
+      html+='<div><span>Runde '+(i+1)+': Einsatz '+euro.format(r.stake)+' → '+euro.format(r.payout)+'</span><span style="color:'+(d>=0?'var(--ok)':'var(--stop)')+'">'+(d>=0?'+':'−')+euro.format(Math.abs(d))+'</span></div>';
+    }
+    el.innerHTML=html;
+  }
+
+  function logRound(){
+    var stake=num($("r-stake").value,0);
+    var payout=num($("r-payout").value,0);
+    if(stake<=0 && payout<=0)return;
+    state.rounds.push({stake:stake,payout:payout});
+    save();
+    $("r-stake").value=""; $("r-payout").value="0"; $("r-stake").focus();
+    render();
+  }
+
+  function overlay(title,text){
+    $("ov-title").textContent=title; $("ov-text").textContent=text;
+    $("overlay").classList.add("show");
+  }
+  function closeOverlay(){ $("overlay").classList.remove("show"); }
+
+  function end(){
+    if(tick)clearInterval(tick);
+    closeOverlay();
+    var t=totals();
+    var elapsedMin=Math.round((Date.now()-state.startedAt)/60000);
+    var body='<div class="stats" style="margin-bottom:1rem">'
+      +stat("Gespielte Zeit",elapsedMin+" min")
+      +stat("Tatsächlicher Saldo",(t.net>=0?"+ ":"− ")+euro.format(Math.abs(t.net)),t.net>=0?"ok":"loss")
+      +stat("Gesamteinsatz (Umsatz)",euro.format(t.turnover))
+      +stat("Erwarteter Verlust",("− "+euro.format(t.expected)),"loss")
+      +'</div>';
+    if(t.net<0){ body+='<p class="sub">Du gehst mit '+euro.format(Math.abs(t.net))+' Minus raus. Das ist normal — der Hausvorteil arbeitet gegen dich, je länger du spielst. Gut, dass du aufgehört hast.</p>'; }
+    else { body+='<p class="sub">Heute im Plus. Wichtig zu wissen: Über viele Sitzungen gewinnt statistisch das Haus. Ein gutes Ergebnis jetzt aufzuhören ist die ehrlichste Entscheidung.</p>'; }
+    body+='<p class="sub">Hilfe bei Spielproblemen: 🇩🇪 0800 1 372 700 · <a href="https://www.check-dein-spiel.de" target="_blank" rel="noopener">check-dein-spiel.de</a></p>';
+    $("sum-body").innerHTML=body;
+    show("summary");
+    clearState(); // Sitzung nicht persistent halten
+    state=null;
+  }
+
+  function stat(k,v,cls){ return '<div class="stat"><div class="k">'+k+'</div><div class="v '+(cls||"")+'">'+v+'</div></div>'; }
+
+  // Events
+  $("startBtn").addEventListener("click",start);
+  $("logBtn").addEventListener("click",logRound);
+  $("r-payout").addEventListener("keydown",function(e){if(e.key==="Enter")logRound();});
+  $("endBtn").addEventListener("click",function(){ if(state)end(); });
+  $("ov-end").addEventListener("click",function(){ if(state)end(); });
+  $("ov-dismiss").addEventListener("click",closeOverlay);
+  $("againBtn").addEventListener("click",function(){ show("setup"); });
+
+  // Laufende Sitzung wiederherstellen
+  var saved=load();
+  if(saved && saved.startedAt){ state=saved; show("session"); render(); startTick(); }
+  else { show("setup"); }
+})();
+</script>
+</body>
+</html>

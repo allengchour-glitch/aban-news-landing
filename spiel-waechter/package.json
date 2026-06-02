@@ -1,0 +1,14 @@
+{
+  "name": "spiel-waechter",
+  "version": "1.0.0",
+  "description": "Desktop-Spiel-Waechter: Budget- und Zeit-Limit, laufender erwarteter Verlust, Realitaets-Check. Keine Gewinn-Tipps, keine Casino-Anbindung, kein Tracking.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "aban news (Allen Chour)",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^31.0.0"
+  }
+}
