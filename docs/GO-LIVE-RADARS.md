@@ -1,6 +1,6 @@
 # 🛰️ GO-LIVE — die fertigen Radar-Subdomains
 
-> Sieben eigenständige Verzeichnis-Sites sind **code-fertig und bauen sauber**, aber noch
+> Mehrere eigenständige Verzeichnis-Sites sind **code-fertig und bauen sauber**, aber noch
 > nicht öffentlich erreichbar. Jede ist ein eigenes Cloudflare-Pages-Projekt auf einer
 > eigenen Subdomain. Was fehlt, ist **kein Code**, sondern der manuelle Cloudflare-
 > Dashboard-Schritt + DNS — das kann nur jemand mit deinem CF-Login auslösen.
@@ -22,6 +22,7 @@
 | `foerder-radar/` | `foerder.abannews.com` | **86** Programme + 3-Fragen-Matcher | Pay-per-Lead (Berater) | ✅ 126 Dateien | ❌ CF fehlt |
 | `jobs-radar/` | `jobs.abannews.com` | KI-Jobs DACH (auto-backfill) | Premium-Listings + Sponsoring | ✅ baut | ❌ CF fehlt |
 | `handwerk-radar/` | `handwerk.abannews.com` | **2** (ehrlich leer, Platzhalter) | Pay-per-Lead + Featured | ✅ 15 Dateien | ❌ Daten + CF |
+| `video-radar/` | `video.abannews.com` | **22** KI-Video-Tools | Affiliate (deaktiviert) | ✅ 35 Dateien | ❌ CF fehlt |
 
 > Alle: **kein Build-Step im klassischen Sinn nötig** — `python generate.py` rendert
 > reines statisches HTML nach `dist/`. Keine Abhängigkeiten außer Python-stdlib.
@@ -172,12 +173,34 @@ zu schalten bringt wenig.
 
 ---
 
+### 8. `video-radar/` → `video.abannews.com` — **Content da, früh live möglich**
+
+**Was es ist:** Ehrlicher Vergleich von **22** echten KI-Video-Tools (Text→Video,
+KI-Avatare/Sprecher, Schnitt & Repurposing, Untertitel & Übersetzung, Bild→Video).
+Stark US-lastige Nische — die EU-Hosting-Spalte und Drittland-Warnungen
+(CapCut/ByteDance, Kling/Kuaishou) sind hier das ehrliche Alleinstellungsmerkmal.
+
+**Aufbau:** `data/anbieter.json` → `generate.py` (stdlib) → 35 Dateien (Index,
+Tool-Detailseiten, Kategorie-/Schwerpunkt-Seiten) + sitemap + RSS.
+
+**Build-Werte für CF:** Build-command `cd video-radar && python generate.py`,
+Output `video-radar/dist`.
+
+**Geldweg:** Affiliate (aktuell **deaktiviert**, `_`-Präfix in `affiliate.json`).
+Echte Partnerprogramme gemappt (Synthesia, HeyGen, Descript, Pictory, InVideo, Fliki,
+VEED). Funnel: SEO-Seite `abannews.com/ki-videos-erstellen.html` → Radar → Newsletter.
+
+**Was fehlt:** Nur der CF-Schritt oben. Optional danach: Affiliate-Slots freischalten,
+sobald die Partnerprogramme bestätigt sind.
+
+---
+
 ## Reihenfolge-Empfehlung
 
 1. **prompts** (sofort, reiner Content, Newsletter-Funnel).
 2. **foerder** + **jobs** (gebaut & inhaltsreich — höchster Sofort-Wert; Geldweg
    braucht nur Partner/Sponsoren, nicht mehr Code).
-3. **kurse** + **dropshipping** (Content da, Affiliate später nachrüstbar).
+3. **kurse** + **dropshipping** + **video** (Content da, Affiliate später nachrüstbar).
 4. **agenturen** + **handwerk** (erst echte Listings/Daten sammeln, dann live).
 
 ---
@@ -191,6 +214,6 @@ zu schalten bringt wenig.
 
 ---
 
-> Kurz: Sieben Sites sind gebaut und getestet. Diese Liste ist alles, was zwischen
+> Kurz: Diese Sites sind gebaut und getestet. Diese Liste ist alles, was zwischen
 > „baut grün" und „erreichbar unter der eigenen Subdomain" steht — und der CF-Schritt
 > liegt bei dir.
