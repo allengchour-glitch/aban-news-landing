@@ -29,6 +29,7 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `polish.py` | **Veredelung (Blender):** Mesh säubern, glätten, Schuppen-/Detail-Struktur, auf mm skalieren, STL + Render |
 | `texture_to_parts.py` | **Meshy-Textur → Bambu/AMS-Farbteile** (liest Textur, sortiert in Filament-Palette, zerlegt in STL pro Farbe) |
 | `colorize.py` | **Universelles Farb-Tool**: MODE=texture (Meshy-Textur) ODER rules (Plain-Modell nach Regionen) → Farb-STLs + farbiges OBJ + Vorschau; Palette frei |
+| `hole.py` | **Schlüsselring-Loch:** skaliert GLB auf mm, bohrt vertikales Loch durch solides Material, exportiert GLB (Textur bleibt) + Kontroll-Render. Danach `colorize.py` für die Bambu-Teile |
 | `build_all.sh` | **1 Befehl** → kompletter Katalog als STL (alle Tiere, Flexi, Beispiel-Namen) |
 
 ### Benutzen
@@ -171,6 +172,12 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 - In Bambu: alle `color_*.stl` importieren → „als ein Objekt zusammenfügen" → je Teil ein
   Filament → drucken. Einmal eingerichtet, dann 20× drucken. KEIN Malen.
 - Palette per `PALETTE`-Env anpassbar (Default: weiss/schwarz/orange/rosa).
+
+### Schlüsselring-Loch (gelöst)
+- **Wichtig:** Meshy-GLBs kommen in **normierten Einheiten** (~2 Einheiten lang), NICHT mm.
+  Boolean-Loch erst nach Skalieren auf mm setzen, sonst sitzt der Zylinder daneben/zerstört alles.
+- `hole.py` skaliert (SIZE), bohrt vertikal durch solides Material, exportiert GLB mit Textur.
+  Reihenfolge: `hole.py` → `colorize.py`. Pancake-Loch: `HYF=0.62` (Rücken), `HD=4.5` mm, gut.
 
 ### Prompt-Bibliothek (erprobt)
 - Funktioniert: `"a cute <tier> figurine, smooth stylized, solid, simple, no separate base"`
