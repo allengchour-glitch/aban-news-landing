@@ -1,0 +1,32 @@
+name: KI-Sichtbarkeits-Monitor — Monats-Report
+
+on:
+  schedule:
+    - cron: '0 6 1 * *'   # am 1. jeden Monats, 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  report:
+    name: Monats-Reports bauen
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reports erzeugen
+        run: |
+          cd monitor
+          # abos.json ist git-ignored; ohne sie nutzt das Skript die Beispiel-Vorlage.
+          python3 generate_report.py
+      - name: Reports als Artefakt
+        uses: actions/upload-artifact@v4
+        with:
+          name: sichtbarkeit-reports
+          path: monitor/ausgabe
+          retention-days: 14
+      - name: Hinweis Versand
+        run: echo "Reports gebaut. Versand an Abonnent:innen: siehe monitor/README.md (Stripe-Abo + Mail-Weg)."
