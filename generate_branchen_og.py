@@ -101,6 +101,16 @@ BRANCHEN = {
     "cafes":               ("Cafés",               ["Social & Karte,", "nicht der Kaffee"]),
     "buchhandlungen":      ("Buchhandlungen",      ["Newsletter & Social,", "nicht die Empfehlung"]),
     "fahrradlaeden":       ("Fahrradläden",        ["Service-Mails & Texte,", "nicht die Werkstatt"]),
+    "sportgeschaefte":     ("Sportgeschäfte",      ["Produkttexte & Social,", "nicht die Beratung"]),
+    "modeboutiquen":       ("Modeboutiquen",       ["Social & Shop-Texte,", "nicht die Stilberatung"]),
+    "getraenkehandel":     ("Getränkehandel",      ["Angebote & Sortiment,", "nicht die Lieferung"]),
+    "fahrschulen":         ("Fahrschulen",         ["Anmeldung & Orga,", "nicht die Fahrstunde"]),
+    "musikschulen":        ("Musikschulen",        ["Anmeldung & Orga,", "nicht der Unterricht"]),
+    "tanzschulen":         ("Tanzschulen",         ["Kurse & Social,", "nicht der Unterricht"]),
+    "sprachschulen":       ("Sprachschulen",       ["Anfragen & Material,", "nicht der Unterricht"]),
+    "nagelstudios":        ("Nagelstudios",        ["Termine & Social,", "nicht die Behandlung"]),
+    "tattoostudios":       ("Tattoostudios",       ["Anfragen & Social,", "nicht das Tattoo"]),
+    "hochzeitsfotografen": ("Hochzeitsfotografen", ["Angebote & Paar-Mails,", "nicht das Foto"]),
 }
 
 
