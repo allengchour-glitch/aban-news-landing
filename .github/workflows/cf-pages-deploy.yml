@@ -1,0 +1,95 @@
+name: Cloudflare Pages — Direct Deploy (ohne OAuth)
+
+# Baut ein Radar und lädt es per Wrangler als Direct-Upload zu Cloudflare Pages —
+# OHNE die GitHub-OAuth-Verbindung im CF-Dashboard. Es wird nur ein API-Token
+# gebraucht. Danach wird (per cf_pages_setup.py) die Custom-Domain + der DNS-CNAME
+# verknüpft. So lässt sich eine Subdomain komplett ohne Dashboard live schalten.
+#
+# Einmalig nötig (Repo-Secrets, Settings → Secrets and variables → Actions):
+#   CLOUDFLARE_API_TOKEN   (Account · Cloudflare Pages · Edit  +  Zone · DNS · Edit)
+#   CLOUDFLARE_ACCOUNT_ID  (Account-ID aus dem CF-Dashboard)
+#
+# Manuell starten: Actions → diesen Workflow → Run workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      radar:
+        description: 'Radar-Kürzel (z. B. video). Siehe RADARS in tools/cf_pages_setup.py'
+        required: true
+        default: 'video'
+      attach_domain:
+        description: 'Custom-Domain + DNS-CNAME verknüpfen'
+        type: boolean
+        default: true
+
+jobs:
+  deploy:
+    name: Build + Direct Upload
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Secrets prüfen
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::CLOUDFLARE_API_TOKEN und/oder CLOUDFLARE_ACCOUNT_ID fehlen (Repo-Secrets)."
+            exit 1
+          fi
+
+      - name: Radar-Ordner ermitteln
+        id: radar
+        run: |
+          DIR=$(python3 - "$RADAR" <<'PY'
+          import sys
+          sys.path.insert(0, "tools")
+          from cf_pages_setup import RADARS
+          key = sys.argv[1]
+          if key not in RADARS:
+              sys.exit(f"Unbekanntes Radar: {key}. Bekannt: {', '.join(RADARS)}")
+          print(RADARS[key]["dir"])
+          PY
+          )
+          echo "dir=$DIR" >> "$GITHUB_OUTPUT"
+          echo "Radar '$RADAR' → Ordner '$DIR'"
+        env:
+          RADAR: ${{ inputs.radar }}
+
+      - name: Radar bauen
+        run: |
+          cd "${{ steps.radar.outputs.dir }}"
+          python generate.py
+          test -d dist || { echo "::error::dist/ wurde nicht erzeugt"; exit 1; }
+
+      - name: Pages-Projekt sicherstellen (Direct Upload)
+        run: |
+          npx --yes wrangler@3 pages project create "${{ steps.radar.outputs.dir }}" \
+            --production-branch=main 2>/dev/null \
+            || echo "Projekt existiert bereits — ok."
+
+      - name: Deploy (Direct Upload)
+        run: |
+          npx --yes wrangler@3 pages deploy "${{ steps.radar.outputs.dir }}/dist" \
+            --project-name="${{ steps.radar.outputs.dir }}" \
+            --branch=main
+
+      - name: Custom-Domain + DNS verknüpfen
+        if: ${{ inputs.attach_domain }}
+        run: |
+          python3 tools/cf_pages_setup.py "${{ inputs.radar }}" \
+            --mode direct --no-project --no-deploy
