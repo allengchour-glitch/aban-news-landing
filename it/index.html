@@ -118,6 +118,9 @@
       .hnav .lk{display:none}.row{flex-direction:column}.row .btn{width:100%}
     }
   @media (hover:none) and (pointer:coarse){.tab{min-height:44px;padding:.55rem 1rem}.lang a{min-height:38px;display:inline-flex;align-items:center}.btn--sm{min-height:40px}}
+    .intl-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.55rem 1rem;background:var(--amber-lt);border:1px solid #f6d9ad;border-radius:12px;padding:.6rem .9rem;margin:1rem 0 0;font-size:.9rem;color:var(--amber-dk);line-height:1.45}
+    .intl-bar b{color:var(--ink)}
+    .intl-bar .btn{flex:0 0 auto;padding:.5rem .85rem;font-size:.88rem}
 </style>
 </head>
 <body>
@@ -133,6 +136,12 @@
 </header>
 
 <main>
+  <div class="wrap">
+    <div class="intl-bar">
+      <span>🌍 Leggi in italiano? La newsletter quotidiana è in tedesco — ma il <b>radar di strumenti IA è multilingue e aperto a tutti.</b></span>
+      <a href="https://radar.abannews.com" class="btn btn--sm">Apri il radar →</a>
+    </div>
+  </div>
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
@@ -150,7 +159,7 @@
             <button type="submit" class="btn">Ricevi il briefing di 5 min →</button>
           </div>
           <p class="anchor">Ogni giorno feriale alle 7:30 · 1 strumento + 3 update rilevanti · niente spam, niente affiliazioni nascoste.</p>
-          <p class="langnote">🇩🇪 Nota: la newsletter quotidiana è <b>scritta in tedesco</b>. Leggi da fuori? Inizia dal <a href="https://radar.abannews.com">radar di strumenti IA multilingue</a> qui sotto — è aperto a tutti. Iscriviti se leggi il tedesco; altre lingue potrebbero seguire.</p>
+          <p class="langnote">🇩🇪 Nota: la newsletter quotidiana è <b>scritta in tedesco</b>. Altre lingue potrebbero seguire in base alla domanda — iscriviti per essere avvisato per primo.</p>
           <label class="consent"><input type="checkbox" name="consent" value="1" required>
             <span>Acconsento a ricevere un'email dal lun al ven. Disiscrizione in qualsiasi momento con un clic. <a href="/datenschutz.html">Privacy</a>.</span></label>
           <div class="trust"><span><b>GDPR</b>-conforme</span><span>disiscrizione <b>1 clic</b></span><span>nessun pixel di tracciamento</span></div>
