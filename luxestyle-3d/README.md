@@ -105,8 +105,9 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 
 - **Standfläche/Boden:** Modelle müssen flach auf der Druckplatte sitzen (FDM ohne
   Stützen). → polish.py: Modell auto auf Z=0 setzen + `--base` (Boden flach schneiden). [erledigt]
-- **Loop-Platzierung:** Schlüsselring-Loop sitzt bisher naiv oben-mittig (wirkt wie
-  Heiligenschein). Besser: am höchsten *soliden* Punkt / als seitlicher Bügel, orientiert. [TODO]
+- **Loop-Platzierung:** jetzt **senkrechter Bügel** (echter Anhänger-Look, Loch horizontal)
+  statt flachem Heiligenschein. [verbessert] — Position noch generisch oben-mittig;
+  perfekt pro Tier platzieren (Nacken/höchster solider Punkt) bleibt [TODO].
 - **Dünne Stellen** (Ohren/Schwanz/Beine) können zu dünn zum Drucken sein. Auto-Verdicken
   ist heikel → besser im Meshy-Prompt „dicke, kräftige Gliedmaßen, keine dünnen Teile". [Prompt]
 - **Druckbarkeits-Check fehlt:** keine Prüfung auf nicht-manifold / dünne Wände → TODO

@@ -144,15 +144,18 @@ bb = _bounds(); minz = min(v.z for v in bb)
 obj.location.z -= minz
 bpy.ops.object.transform_apply(location=True)
 
-# --- optional: Aufhaenge-Loop oben anfuegen (Schluesselring) ---
+# --- optional: Aufhaenge-Buegel oben (echter Schluesselanhaenger-Look) ---
 if loop:
-    bb = [obj.matrix_world @ Vector(c) for c in obj.bound_box]
+    bb = _bounds()
     maxz = max(v.z for v in bb)
     cx = sum(v.x for v in bb) / 8.0
     cy = sum(v.y for v in bb) / 8.0
-    Rr = max(obj.dimensions) * 0.06 + 2.0
-    bpy.ops.mesh.primitive_torus_add(major_radius=Rr, minor_radius=Rr * 0.38,
-                                     location=(cx, cy, maxz - Rr * 0.5))
+    Rr = max(obj.dimensions) * 0.07 + 2.2      # Ring-Radius
+    mr = max(Rr * 0.30, 1.0)                    # Ringdicke (min 1 mm, druckbar)
+    # senkrecht stehender Buegel (XZ-Ebene): Loch zeigt nach vorn -> haengt richtig
+    bpy.ops.mesh.primitive_torus_add(major_radius=Rr, minor_radius=mr,
+        location=(cx, cy, maxz + Rr * 0.5),
+        rotation=(math.radians(90), 0, 0))
     ring = bpy.context.active_object
     ring.select_set(True); obj.select_set(True)
     bpy.context.view_layer.objects.active = obj
