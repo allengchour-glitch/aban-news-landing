@@ -1107,3 +1107,9 @@ Zweitkonto (Sales20260525113559/095847, Sales20260519133014) — noch nicht publ
 Kampagnen DEAKTIVIEREN + 3 Entwürfe + „Vatertag-Test-1" löschen, sonst wiederholt sich das Leck.
 **WICHTIG:** „LuxeStyle Mode CH – Sommer" aktiv ABER Anzeigengruppe PAUSIERT („Änderung nicht genehmigt")
 → lieferte nicht (erklärt mode_sommer nur 14 Sessions). Lösung: neue Premium-Kampagne starten (policy-konform).
+
+## 2026-06-02 — Aktionsplan-Fortschritt
+✅ Schritt 1 ERLEDIGT: TikTok-App Auto-/Smart-Kampagnen deaktiviert + 3 Smart-Entwürfe + Vatertag-Test gelöscht.
+⏳ Schritt 2 (Sommerkleid 3.3★ fixen) — wird noch gemacht.
+⏳ Schritt 3 (Premium-Kampagne) — neues Video gewünscht; Kampagnen-Erstellung in ANDERER Session.
+   → `luxestyle_premium.mp4` liegt bereit (render_premium_reel.sh). Bei Bedarf 2. Premium-Variante bauen.
