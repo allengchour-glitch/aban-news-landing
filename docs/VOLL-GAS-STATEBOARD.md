@@ -22,7 +22,7 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 8 (82→92, #136): Sportgeschäfte, Modeboutiquen, Getränkehandel, Fahrschulen, Musikschulen, Tanzschulen, Sprachschulen, Nagelstudios, Tattoostudios, Hochzeitsfotografen.
 - **DE-Backlog weitgehend erschöpft** → Fokus wechselt auf **P2-Übersetzungen** (kein Thin-Content-Risiko). Neue DE-Hubs nur bei klar distinkten neuen Branchen.
 
-## Mehrsprachige Hubs (P2, EN+FR+IT) — **36 Hubs viersprachig**
+## Mehrsprachige Hubs (P2, EN+FR+IT) — **45 von 92 Hubs viersprachig**
 
 - Charge 1 (#126): handwerker, steuerberater, coaches.
 - Charge 2 (#129): immobilienmakler, onlineshops, gastronomie.
@@ -35,12 +35,16 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Charge 9 (#158): architekten, hausverwaltungen, vereine.
 - Charge 10 (#159): physiotherapeuten, ergotherapeuten, logopaeden.
 - Charge 11 (#161): zahnaerzte, psychotherapeuten, kosmetikstudios.
-- Charge 12: tierarztpraxen, optiker, it-dienstleister.
+- Charge 12 (#163): tierarztpraxen, optiker, it-dienstleister.
+- Charge 13 (#166): garten-landschaftsbau, uebersetzer, reinigungsfirmen.
+- Charge 14: winzer, spedition, cateringservice.
+- Charge 15 (#198): bestatter, floristen, tonstudios.
 - Muster: pro Hub DE um hreflang-Block + nav-Sprach-Switch ergänzen, je `en/ fr/ it/`-Datei
   (eigene canonical, 5 reziproke hreflang-Zeilen inkl. x-default=de, og:locale, WebPage-inLanguage,
   FAQ pro Sprache wortgleich), sitemap +3/Hub (priority 0.7). FAQ-Markup variiert je Hub (dl/dt/dd ODER details/summary).
-  **Achtung:** manche DE-Originale haben pre-existing FAQ-Drift (JSON-LD↔sichtbar) — bei Neuwellen FAQ wortgleich anlegen, bei i18n DE-Inhalt unverändert lassen.
-- **Nächste i18n-Chargen:** je 3 Hubs/Charge aus den 83 noch einsprachigen Hubs (z. B. friseure, fotografen, kfz-werkstaetten, hotels, apotheken, pflegedienste, …).
+  **Achtung 1:** manche DE-Originale haben pre-existing FAQ-Drift (JSON-LD↔sichtbar) — bei i18n DE-Inhalt unverändert lassen.
+  **Achtung 2:** DE-Hubs haben inzwischen einen Tools-CTA-`<aside data-aban-tools-cta>` vor `</main>` (DE-only, Übersetzungen ohne). i18n-Branches **immer von aktuellem `main` rebasen**, sonst geht der aside verloren.
+- **Noch einsprachig (47, nächste Chargen):** brauereien, buchhandlungen, cafes, dachdecker, eisdielen, elektriker, entruempelung, ernaehrungsberatung, fahrradlaeden, fahrschulen, fliesenleger, geruestbau, getraenkehandel, glaser, goldschmiede, hausmeisterservice, hebammen, heilpraktiker, hochzeitsfotografen, hoerakustiker, kieferorthopaeden, maler, metallbauer, metzgereien, modeboutiquen, musikschulen, nagelstudios, notare, podologen, raumausstatter, sachverstaendige, sanitaer-heizung, sanitaetshaeuser, schaedlingsbekaempfer, schluesseldienste, schornsteinfeger, schreiner, sicherheitsdienste, sportgeschaefte, sprachschulen, tanzschulen, tattoostudios, trockenbau, umzugsunternehmen, wirtschaftspruefer, zahntechniker, zimmerer.
 
 ## Automations-/Radar-Projekte
 
