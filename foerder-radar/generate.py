@@ -533,6 +533,15 @@ sowie Beschwerde bei einer Aufsichtsbehörde. Stand: {date.today().strftime('%m/
         "User-agent: PerplexityBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\n"
         f"Sitemap: {BASE_URL}/sitemap.xml\n", encoding="utf-8")
 
+    # 404 (Cloudflare Pages serviert es automatisch bei unbekannten Pfaden)
+    (out / "404.html").write_text(page(
+        f"404 — Seite nicht gefunden | {SITE_NAME}",
+        "Diese Seite gibt es nicht (mehr).",
+        '<h1>404 — Seite nicht gefunden</h1>\n'
+        '<p>Diese Seite gibt es nicht (mehr). Zur <a href="/">Übersicht aller '
+        'Förderungen</a> oder direkt zum <a href="/matcher.html">Förder-Matcher</a>.</p>',
+        BASE_URL + "/404.html"), encoding="utf-8")
+
     total = (1 + 1 + len(progs) + len(regions) + len(arten)  # +1 index, +1 matcher
              + len(zielgruppen) + len(bereiche) + 2)  # +2 legal pages
     print(f"Built {total} pages ({len(progs)} programs, {len(regions)} regions, "
