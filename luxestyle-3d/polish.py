@@ -39,6 +39,7 @@ deci    = float(os.environ.get("POLISH_DECIMATE", "1"))  # 1 = keine Reduktion
 smooth  = os.environ.get("POLISH_SMOOTH", "0") == "1"
 loop    = os.environ.get("POLISH_LOOP", "0") == "1"
 base    = os.environ.get("POLISH_BASE", "0") == "1"
+hole    = os.environ.get("POLISH_HOLE", "0") == "1"
 render  = os.environ.get("POLISH_RENDER", "0") == "1"
 
 bpy.ops.wm.read_factory_settings(use_empty=True)
@@ -144,6 +145,24 @@ bb = _bounds(); minz = min(v.z for v in bb)
 obj.location.z -= minz
 bpy.ops.object.transform_apply(location=True)
 
+# --- optional: Loch fuer Schluesselring (durch festes Material, druckbar ohne Stuetzen) ---
+if hole:
+    bb = _bounds()
+    maxz = max(v.z for v in bb)
+    cx = sum(v.x for v in bb) / 8.0
+    cy = sum(v.y for v in bb) / 8.0
+    hd = min(max(max(obj.dimensions) * 0.11, 4.0), 7.0)   # Lochdurchmesser
+    L = obj.dimensions.x * 2 + 30
+    bpy.ops.mesh.primitive_cylinder_add(radius=hd / 2, depth=L,
+        location=(cx, cy, maxz * 0.82), rotation=(0, math.radians(90), 0))
+    cyl = bpy.context.active_object
+    bpy.context.view_layer.objects.active = obj
+    mh = obj.modifiers.new("hole", "BOOLEAN")
+    mh.operation = "DIFFERENCE"; mh.object = cyl
+    try: bpy.ops.object.modifier_apply(modifier=mh.name)
+    except Exception: pass
+    bpy.data.objects.remove(cyl, do_unlink=True)
+
 # --- optional: Aufhaenge-Buegel oben (echter Schluesselanhaenger-Look) ---
 if loop:
     bb = _bounds()
@@ -214,6 +233,7 @@ def main(argv=None) -> int:
     p.add_argument("--smooth", action="store_true", help="zusaetzlich glaetten")
     p.add_argument("--loop", action="store_true", help="Schluesselring-Loop oben anfuegen")
     p.add_argument("--base", action="store_true", help="Boden flach schneiden (steht/druckt ohne Stuetzen)")
+    p.add_argument("--hole", action="store_true", help="Loch fuer Schluesselring durch festes Material (druckbar)")
     p.add_argument("--render", action="store_true", help="Vorschau-PNG rendern")
     a = p.parse_args(argv)
 
@@ -233,6 +253,7 @@ def main(argv=None) -> int:
                POLISH_SMOOTH="1" if a.smooth else "0",
                POLISH_LOOP="1" if a.loop else "0",
                POLISH_BASE="1" if a.base else "0",
+               POLISH_HOLE="1" if a.hole else "0",
                POLISH_RENDER="1" if a.render else "0")
 
     with tempfile.NamedTemporaryFile("w", suffix=".py", delete=False) as f:
