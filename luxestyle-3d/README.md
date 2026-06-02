@@ -136,12 +136,12 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 - Flexi-Gelenke an Figuren: weiterhin nicht möglich.
 
 ### Finaler 3D-Stil (Kunde bestätigt)
-- **Runde 3D-Figur** (Meshy Image/Text→3D) → `polish.py` → Augen = **kleine erhabene
-  schwarze X** (KEINE weiße Scheibe), in Originalgröße der Augen-Beule.
-  X = 2 gekreuzte Bars um Y-Achse ±45° (in Gesichtsebene), ~scale 5.5×6×1.2 (schmale Striche), erhaben
-  (stehen hervor). Position ~`(±7, -22.5, 11)` bei der Katze (pro Tier per Nahaufnahme finden).
-- Körper **mittelgrau**, **X schwarz**, **Zunge orange** (Zungen-Faces per Region einfärben).
-- NICHT: Carving (Zickzack), Vertex-Inflate (stachelig), weiße Kreis-Scheiben. Nur erhabene X.
+- **Runde 3D-Figur** (Meshy Image/Text→3D) → `polish.py` → Augen = **die vorhandenen
+  Meshy-Augen-Beulen einfach SCHWARZ einfärben** (KEIN extra X/keine Scheibe).
+  Region um `(±6.5, -22, 11)`, R~4.5, Faces schwarz (kein Inflate → sonst stachelig).
+- Körper **mittelgrau**, **Zunge orange** (Zungen-Faces per Region einfärben).
+- Kunde-Entscheid „A": Beulen sind die Augen, nur Farbe. STL bleibt die Figur; Farben
+  in Bambu Studio (AMS) malen: Augen-Beulen schwarz, Zunge orange, Körper grau.
 - **Farbpalette (PLA):** gelb, rot, braun, grau, grün, weiß, schwarz, beige.
 - Pipeline-Skripte (Blender headless): in der Session unter `/tmp` (lenseye-Muster).
 
