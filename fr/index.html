@@ -118,6 +118,9 @@
       .hnav .lk{display:none}.row{flex-direction:column}.row .btn{width:100%}
     }
   @media (hover:none) and (pointer:coarse){.tab{min-height:44px;padding:.55rem 1rem}.lang a{min-height:38px;display:inline-flex;align-items:center}.btn--sm{min-height:40px}}
+    .intl-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.55rem 1rem;background:var(--amber-lt);border:1px solid #f6d9ad;border-radius:12px;padding:.6rem .9rem;margin:1rem 0 0;font-size:.9rem;color:var(--amber-dk);line-height:1.45}
+    .intl-bar b{color:var(--ink)}
+    .intl-bar .btn{flex:0 0 auto;padding:.5rem .85rem;font-size:.88rem}
 </style>
 </head>
 <body>
@@ -133,6 +136,12 @@
 </header>
 
 <main>
+  <div class="wrap">
+    <div class="intl-bar">
+      <span>🌍 Tu lis en français ? La newsletter quotidienne est en allemand — mais le <b>radar d'outils IA est multilingue et ouvert à tous.</b></span>
+      <a href="https://radar.abannews.com" class="btn btn--sm">Ouvrir le radar →</a>
+    </div>
+  </div>
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
@@ -150,7 +159,7 @@
             <button type="submit" class="btn">Recevoir le briefing 5 min →</button>
           </div>
           <p class="anchor">Chaque jour ouvré à 7h30 · 1 outil + 3 updates pertinents · pas de spam, pas d'affiliation déguisée.</p>
-          <p class="langnote">🇩🇪 À noter : la newsletter quotidienne est <b>rédigée en allemand</b>. Tu lis depuis ailleurs ? Commence par le <a href="https://radar.abannews.com">radar d'outils IA multilingue</a> ci-dessous — il est ouvert à tous. Abonne-toi si tu lis l'allemand ; d'autres langues pourraient suivre.</p>
+          <p class="langnote">🇩🇪 À noter : la newsletter quotidienne est <b>rédigée en allemand</b>. D'autres langues pourraient suivre selon la demande — abonne-toi pour être prévenu·e en premier.</p>
           <label class="consent"><input type="checkbox" name="consent" value="1" required>
             <span>J'accepte de recevoir un e-mail du lun au ven. Désinscription à tout moment en un clic. <a href="/datenschutz.html">Confidentialité</a>.</span></label>
           <div class="trust"><span><b>RGPD</b>-conforme</span><span>désinscription <b>1 clic</b></span><span>pas de pixel de tracking</span></div>
