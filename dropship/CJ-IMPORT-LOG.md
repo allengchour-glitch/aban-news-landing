@@ -1265,3 +1265,13 @@ Kleider-Katalog (Collection «Kleider», 20 Produkte) komplett vereinheitlicht:
 - Produkt-SEO-Meta war bereits gut → unangetastet.
 **Technik-Notiz:** productUpdate(input:) → deprecated, jetzt `product:`(ProductUpdateInput). Bild-Alt:
 productUpdateMedia → deprecated, `fileUpdate(files:[{id,alt}])` ist der moderne Ein-Call-Weg.
+
+## 2026-06-02 — Alt-Text-Rollout Fashion-Accessoires (User: „weiter")
++47 beschreibende Bild-Alt-Texte auf AKTIVE Produkte mit Bild (SEO + a11y), wo vorher null/Slug/
+„…Bild 1"/„Original Lieferantenfoto":
+- **5 Schuhe** (Loafer, Slingback-Pumps, Herren-Laufschuhe, Leder-Slipper, Plateau-Sandalen).
+- **13 Sonnenbrillen** + **7 Taschen** (Vintage/Denim/Laptop-Rucksack/Milano/Jeans/Crossbody/Lack-Umhänge).
+- **22 Schmuck** (null + „…1"-Platzhalter; Titel-als-Alt-Stücke bewusst gelassen, da ausreichend).
+**Befund Schuhe-Collection:** 5 echte Schuhe aktiv; ~35 bildlose „Pflege"-Produkte sind ARCHIVED
+(nicht kund:innen-sichtbar) + 3–4-fach dupliziert → bleibt Archiv-Backlog (Admin-Bulk-Delete).
+**Sonnenbrillen:** Pliage/Spice/Clubmaster/Statement = DRAFT (klarglasig, bewusst nicht live) → ausgelassen.
