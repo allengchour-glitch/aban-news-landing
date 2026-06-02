@@ -118,6 +118,12 @@
     .honest{margin-top:1rem;text-align:center;font-size:.9rem;color:var(--muted)}
     .honest b{color:var(--ink)}
 
+    .intl-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.55rem 1rem;
+      background:var(--amber-lt);border:1px solid #f6d9ad;border-radius:12px;
+      padding:.6rem .9rem;margin:1rem 0 0;font-size:.9rem;color:var(--amber-dk);line-height:1.45}
+    .intl-bar b{color:var(--ink)}
+    .intl-bar .btn{flex:0 0 auto;padding:.5rem .85rem;font-size:.88rem}
+
     footer{margin-top:2rem;border-top:1px solid var(--line);background:rgba(255,255,255,.5)}
     footer .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:center;justify-content:center;padding:1.1rem 1.25rem;font-size:.82rem;color:var(--muted)}
     footer a{text-decoration:none;color:var(--muted)}footer a:hover{color:var(--ink)}
@@ -148,6 +154,12 @@
 </header>
 
 <main>
+  <div class="wrap">
+    <div class="intl-bar">
+      <span>🌍 Reading in English? The daily newsletter is in German — but the <b>AI-tools radar is multilingual and open to everyone.</b></span>
+      <a href="https://radar.abannews.com" class="btn btn--sm">Open the radar →</a>
+    </div>
+  </div>
   <section class="hero">
     <div class="wrap hero-grid">
       <!-- LEFT -->
@@ -166,7 +178,7 @@
             <button type="submit" class="btn">Get the 5-min briefing →</button>
           </div>
           <p class="anchor">Every weekday at 7:30 · 1 tool + 3 relevant updates · no spam, no affiliate junk.</p>
-          <p class="langnote">🇩🇪 Heads-up: the daily newsletter is <b>written in German</b>. Reading from outside the German-speaking world? Start with the <a href="https://radar.abannews.com">multilingual AI-tools radar</a> below — it's open to everyone. A dedicated English edition is on the roadmap; subscribe and you'll be first to hear.</p>
+          <p class="langnote">🇩🇪 Heads-up: the daily newsletter is <b>written in German</b>. A dedicated English edition is on the roadmap — subscribe and you'll be first to hear.</p>
           <label class="consent"><input type="checkbox" name="consent" value="1" required>
             <span>I agree to receive an email Mon–Fri. Unsubscribe anytime with one click. <a href="/datenschutz.html">Privacy</a>.</span></label>
           <div class="trust"><span><b>GDPR</b>-compliant</span><span><b>1-click</b> unsubscribe</span><span>no tracking pixel</span></div>
