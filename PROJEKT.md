@@ -219,6 +219,9 @@ neu und zeigt die Cover-Vorschauen. Sobald ein Buch hochgeladen ist, sein
 `"uploaded"` in `build_book.py` auf `True` setzen (dann überspringt es BUCHDRUCK).
 Cover-Bild pro Buch: `cover["art"]` mit `mode` image|draw|auto|none + `motif`
 rings|burst|dots|arc (Modul `cover_art.py`, mit Selbst-Diagnose/Fallback).
+**Echter KDP-Katalog-Status** (alle Titel inkl. Romane/externe Workbooks, mit
+ASIN + Live-/Prüf-Status) steht in `tools/kdp-cover/KDP-STATUS.md` — von Hand
+gepflegt, da nicht alles aus `build_book.py` kommt.
 
 **Gemergte PRs dieser Session:** #15 (eBook/KDP+PayPal-Founding), #16 (€69+Payment-Link),
 #18 (Founding-Seite Maximum de), #19 (en-Parität), #20 (Fix toter #checkout-Anker en).
