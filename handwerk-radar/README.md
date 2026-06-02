@@ -53,9 +53,11 @@ cd handwerk-radar && python3 fetch_anbieter.py   # schreibt data/anbieter.json
 
 - [x] Generator (adaptiert), baut sauber
 - [x] **Echte Datenquelle erschlossen: OpenStreetMap (ODbL)** — `fetch_anbieter.py`,
-  ~70 reale DACH-Betriebe (11 Städte), ODbL-Attribution + Opt-out gesetzt
-- [ ] **Menschlicher Verifikations-Pass** vor dem Bewerben (OSM-`hvac`-Fehl-Tags raus,
-  Leistungen bestätigen) — Voraussetzung, bevor Lead-Gen aktiviert wird
+  **~30 qualitätsgefilterte** DACH-Betriebe (22 Städte), ODbL-Attribution + Opt-out gesetzt
+- [x] **Qualitätsfilter** gegen breite OSM-Tags: Negativ-Liste (Trocknung/Entfeuchtung/…)
+  raus; `hvac` nur mit Heizungs-/SHK-Signal; `heating_engineer` immer. Retry/Backoff
+  gegen Overpass-429. Bewusst weniger, aber sauberer (keine Fehl-Tags mehr).
+- [ ] **Menschlicher Endkontroll-Pass** vor dem Lead-Gen-Aktivieren (Websites stichprobenartig prüfen)
 - [ ] PV-Abdeckung erhöhen (OSM `shop=solar` ist dünn → weitere Quelle/Städte)
 - [ ] Stadt-Seiten (`/<stadt>/waermepumpe-installateur`) für lokales SEO
 - [ ] Lead-Routing/Billing, Cloudflare-Projekt anlegen, Domain verbinden

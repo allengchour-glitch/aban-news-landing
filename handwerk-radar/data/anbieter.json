@@ -21,7 +21,7 @@
       "name": "Appel",
       "platzhalter": false,
       "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Wien (Quelle: OpenStreetMap).",
+      "tagline": "Heizungsbau in Wien (Quelle: OpenStreetMap).",
       "leistungen": [
         "Wärmepumpe"
       ],
@@ -29,30 +29,11 @@
       "stadt": "Wien",
       "website": "http://appel.at",
       "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Wien. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "beschreibung": "Heizungsbau-Betrieb in Wien. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
       "gegruendet": null,
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
       "osm_url": "https://www.openstreetmap.org/node/4690595013"
-    },
-    {
-      "id": "drystar-trocknung-und-entfeuchtung-wien",
-      "name": "DRYSTAR Trocknung und Entfeuchtung",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Wien (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "AT",
-      "stadt": "Wien",
-      "website": "https://www.drystar.at/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Wien. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/6115123503"
     },
     {
       "id": "green-solution-kaelte-klima-energietechnik-gmbh-wien",
@@ -74,63 +55,6 @@
       "osm_url": "https://www.openstreetmap.org/node/11055265165"
     },
     {
-      "id": "service-union-wien",
-      "name": "Service Union",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Wien (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "AT",
-      "stadt": "Wien",
-      "website": "https://serviceunion.at",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Wien. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/12337203732"
-    },
-    {
-      "id": "rexia-wien",
-      "name": "rexia",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Wien (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "AT",
-      "stadt": "Wien",
-      "website": "https://www.rexia.at/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Wien. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/4450880790"
-    },
-    {
-      "id": "ramseyer-und-dilger-bern",
-      "name": "Ramseyer und Dilger",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Bern (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "CH",
-      "stadt": "Bern",
-      "website": "https://ramseyer-dilger.ch/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Bern. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/7524292182"
-    },
-    {
       "id": "buehlmann-heizungen-zuerich",
       "name": "Bühlmann-Heizungen",
       "platzhalter": false,
@@ -148,82 +72,6 @@
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
       "osm_url": "https://www.openstreetmap.org/node/4237490093"
-    },
-    {
-      "id": "debrunner-ag-zuerich",
-      "name": "Debrunner AG",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Zürich (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "CH",
-      "stadt": "Zürich",
-      "website": "https://debrunner-ag.ch",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Zürich. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/1528759078"
-    },
-    {
-      "id": "eberle-engineering-zuerich",
-      "name": "Eberle Engineering",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Zürich (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "CH",
-      "stadt": "Zürich",
-      "website": "https://ee-ag.ch",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Zürich. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/12388390900"
-    },
-    {
-      "id": "hey-henry-zuerich",
-      "name": "Hey Henry",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Zürich (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "CH",
-      "stadt": "Zürich",
-      "website": "https://heyhenry.ch",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Zürich. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/8021274029"
-    },
-    {
-      "id": "klima-zentrum-zuerich",
-      "name": "Klima Zentrum",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Zürich (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "CH",
-      "stadt": "Zürich",
-      "website": "https://www.klimazentrum.ch",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Zürich. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/12463236081"
     },
     {
       "id": "kaelin-sanitaer-heizung-zuerich",
@@ -245,120 +93,6 @@
       "osm_url": "https://www.openstreetmap.org/node/1363051420"
     },
     {
-      "id": "lunor-zuerich",
-      "name": "Lunor",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Zürich (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "CH",
-      "stadt": "Zürich",
-      "website": "https://www.lunor.ch/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Zürich. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/5725291299"
-    },
-    {
-      "id": "preisig-ag-zuerich",
-      "name": "Preisig AG",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Zürich (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "CH",
-      "stadt": "Zürich",
-      "website": "https://www.preisig.ch/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Zürich. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/310134170"
-    },
-    {
-      "id": "athe-therm-berlin",
-      "name": "ATHE-Therm",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://www.athe-therm.de/ueber-uns/standorte/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/5467759336"
-    },
-    {
-      "id": "benndorf-und-hildebrand-kaeltestysteme-berlin",
-      "name": "Benndorf und Hildebrand Kältestysteme",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://www.benndorf-hildebrand.eu",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/way/942907663"
-    },
-    {
-      "id": "beyer-gmbh-berlin",
-      "name": "Beyer GmbH",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://www.beyer-spandau.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/way/126441942"
-    },
-    {
-      "id": "deweller-berlin",
-      "name": "Deweller",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "http://www.deweller.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/13858643547"
-    },
-    {
       "id": "dieterich-installation-und-heizungsbau-berlin",
       "name": "Dieterich Installation und Heizungsbau",
       "platzhalter": false,
@@ -376,139 +110,6 @@
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
       "osm_url": "https://www.openstreetmap.org/node/7546074507"
-    },
-    {
-      "id": "ernst-weidlich-berlin",
-      "name": "Ernst Weidlich",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://www.weidlich-shk.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/8222836698"
-    },
-    {
-      "id": "felgenhauer-berlin",
-      "name": "Felgenhauer",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://felgenhauer.berlin/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/7308797176"
-    },
-    {
-      "id": "firma-brehmer-berlin",
-      "name": "Firma Brehmer",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "http://www.fa-brehmer.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/1683677161"
-    },
-    {
-      "id": "firma-siegmund-berlin",
-      "name": "Firma Siegmund",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "http://www.siegmund-schulze.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/1683677184"
-    },
-    {
-      "id": "fischer-weggen-berlin",
-      "name": "Fischer & Weggen",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://www.fischer-weggen.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/6386635178"
-    },
-    {
-      "id": "hsu-technik-berlin",
-      "name": "HSU-Technik",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://www.hsu-technik.berlin/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/10180980034"
-    },
-    {
-      "id": "haase-berlin",
-      "name": "Haase",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "http://www.haase-heizung.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/2007004618"
     },
     {
       "id": "haustechnik-rachuj-berlin",
@@ -530,25 +131,6 @@
       "osm_url": "https://www.openstreetmap.org/node/2998486341"
     },
     {
-      "id": "heiko-hegewisch-berlin",
-      "name": "Heiko Hegewisch",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://www.hegewisch.org/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/8335349940"
-    },
-    {
       "id": "juergen-rauchhaus-wasserzaehler-waermezaehler-berlin",
       "name": "Jürgen Rauchhaus Wasserzähler & Wärmezähler",
       "platzhalter": false,
@@ -568,63 +150,6 @@
       "osm_url": "https://www.openstreetmap.org/node/13771466869"
     },
     {
-      "id": "lufttechnik-treptow-berlin",
-      "name": "Lufttechnik Treptow",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://www.lufttechnik-treptow.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/10839971522"
-    },
-    {
-      "id": "manfred-hutt-lufttechnische-anlagen-berlin",
-      "name": "Manfred Hutt Lufttechnische Anlagen",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://www.hutt-gmbh.de",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/9855063875"
-    },
-    {
-      "id": "pflugmacher-berlin",
-      "name": "Pflugmacher",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://www.pflugmacher-sanitaer-heizung.de",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/7546074492"
-    },
-    {
       "id": "pyros-heizungs-und-sanitaeranlagen-mbh-berlin",
       "name": "Pyros Heizungs- und Sanitäranlagen mbH",
       "platzhalter": false,
@@ -642,101 +167,6 @@
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
       "osm_url": "https://www.openstreetmap.org/node/1036172752"
-    },
-    {
-      "id": "rossoll-feuerung-gmbh-berlin",
-      "name": "Rossoll-Feuerung GmbH",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://rossoll.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/7770520583"
-    },
-    {
-      "id": "sell-berlin",
-      "name": "Sell",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://www.sell.gmbh/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/12600934693"
-    },
-    {
-      "id": "steffen-ostmann-fluessiggasgeraete-berlin",
-      "name": "Steffen Ostmann Flüssiggasgeräte",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://www.ostmann.net",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/9533156417"
-    },
-    {
-      "id": "stendtke-berlin",
-      "name": "Stendtke",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "http://www.stendke.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/3518773729"
-    },
-    {
-      "id": "tks-technischer-kundendienst-lueftung-und-service-gmbh-berlin",
-      "name": "TKS Technischer Kundendienst Lüftung und Service GmbH",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Berlin (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Berlin",
-      "website": "https://www.tks-deutschland.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Berlin. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/10737240754"
     },
     {
       "id": "tefa-haustechnik-berlin",
@@ -777,61 +207,137 @@
       "osm_url": "https://www.openstreetmap.org/node/10737240750"
     },
     {
-      "id": "kaempf-co-frankfurt-am-main",
-      "name": "Kämpf & Co.",
+      "id": "hurtzig-haustechnik-bremen",
+      "name": "Hurtzig Haustechnik",
       "platzhalter": false,
       "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Frankfurt am Main (Quelle: OpenStreetMap).",
+      "tagline": "Heizungs-/Klimatechnik in Bremen (Quelle: OpenStreetMap).",
       "leistungen": [
         "Wärmepumpe"
       ],
       "land": "DE",
-      "stadt": "Frankfurt am Main",
-      "website": "https://www.kaempf.de/",
+      "stadt": "Bremen",
+      "website": "https://www.hurtzig.de",
       "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Frankfurt am Main. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Bremen. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
       "gegruendet": null,
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/13672821402"
+      "osm_url": "https://www.openstreetmap.org/node/8421569931"
     },
     {
-      "id": "moeller-feuerungstechnik-gmbh-frankfurt-am-main",
-      "name": "Möller Feuerungstechnik GmbH",
+      "id": "fischers-haustechnik-bremerhaven",
+      "name": "Fischers Haustechnik",
       "platzhalter": false,
       "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Frankfurt am Main (Quelle: OpenStreetMap).",
+      "tagline": "Heizungs-/Klimatechnik in Bremerhaven (Quelle: OpenStreetMap).",
       "leistungen": [
         "Wärmepumpe"
       ],
       "land": "DE",
-      "stadt": "Frankfurt am Main",
-      "website": "https://www.moeller-feuerungstechnik.de/",
+      "stadt": "Bremerhaven",
+      "website": "https://www.fischers-haustechnik.de/",
       "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Frankfurt am Main. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Bremerhaven. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
       "gegruendet": null,
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/1796130484"
+      "osm_url": "https://www.openstreetmap.org/way/208886401"
     },
     {
-      "id": "awg-hamburg",
-      "name": "AWG",
+      "id": "albertin-haustechnik-dortmund",
+      "name": "Albertin Haustechnik",
       "platzhalter": false,
       "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Hamburg (Quelle: OpenStreetMap).",
+      "tagline": "Heizungs-/Klimatechnik in Dortmund (Quelle: OpenStreetMap).",
       "leistungen": [
         "Wärmepumpe"
       ],
       "land": "DE",
-      "stadt": "Hamburg",
-      "website": "https://www.awgmbh.de/",
+      "stadt": "Dortmund",
+      "website": "https://albertin-haustechnik.de/",
       "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Hamburg. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Dortmund. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
       "gegruendet": null,
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/5908518643"
+      "osm_url": "https://www.openstreetmap.org/node/10574194257"
+    },
+    {
+      "id": "die-heizzentrale-dortmund",
+      "name": "Die Heizzentrale",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Dortmund (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Dortmund",
+      "website": "https://www.dieheizzentrale.de",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Dortmund. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/1266549923"
+    },
+    {
+      "id": "goeffringmann-haustechnik-dortmund",
+      "name": "Göffringmann Haustechnik",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Dortmund (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Dortmund",
+      "website": "https://goeffringmann.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Dortmund. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/8711154986"
+    },
+    {
+      "id": "luxig-heizungsservice-dresden",
+      "name": "Luxig Heizungsservice",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Dresden (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Dresden",
+      "website": "https://www.heizungsservice-luxig.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Dresden. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/2880800503"
+    },
+    {
+      "id": "nessmann-gebaeudetechnik-gmbh-co-kg-duesseldorf",
+      "name": "Nessmann Gebäudetechnik GmbH & Co.KG",
+      "platzhalter": false,
+      "featured": false,
+      "tagline": "Heizungs-/Klimatechnik in Düsseldorf (Quelle: OpenStreetMap).",
+      "leistungen": [
+        "Wärmepumpe"
+      ],
+      "land": "DE",
+      "stadt": "Düsseldorf",
+      "website": "https://nessmann.de/",
+      "email": null,
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Düsseldorf. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "gegruendet": null,
+      "teamgroesse": null,
+      "quelle": "OpenStreetMap",
+      "osm_url": "https://www.openstreetmap.org/node/1355210595"
     },
     {
       "id": "erich-kuhn-gmbh-heizung-und-sanitaer-in-hamburg-seit-1873-hamburg",
@@ -853,101 +359,6 @@
       "osm_url": "https://www.openstreetmap.org/node/7834744268"
     },
     {
-      "id": "fieberitz-hamburg",
-      "name": "Fieberitz",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Hamburg (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Hamburg",
-      "website": "https://fieberitz.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Hamburg. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/6824773058"
-    },
-    {
-      "id": "goldflamme-oel-gas-feuerung-gmbh-hamburg",
-      "name": "Goldflamme Oel-Gas-Feuerung GmbH",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Hamburg (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Hamburg",
-      "website": "http://www.goldflamme.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Hamburg. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/5902700782"
-    },
-    {
-      "id": "kaelte-bast-hamburg",
-      "name": "Kälte-Bast",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Hamburg (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Hamburg",
-      "website": "https://www.kaelte-bast.de",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Hamburg. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/10099414704"
-    },
-    {
-      "id": "moeck-sommer-hamburg",
-      "name": "Möck Sommer",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Hamburg (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Hamburg",
-      "website": "https://moeck-sommer.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Hamburg. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/10099414707"
-    },
-    {
-      "id": "peter-jensen-gmbh-hamburg",
-      "name": "Peter Jensen GmbH",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Hamburg (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Hamburg",
-      "website": "https://www.peterjensen.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Hamburg. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/way/61403445"
-    },
-    {
       "id": "rundt-sanitaer-hamburg",
       "name": "Rundt Sanitär",
       "platzhalter": false,
@@ -965,44 +376,6 @@
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
       "osm_url": "https://www.openstreetmap.org/node/1129840646"
-    },
-    {
-      "id": "spangenberg-schneider-hamburg",
-      "name": "Spangenberg + Schneider",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Hamburg (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Hamburg",
-      "website": "https://www.spangenberg-schneider.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Hamburg. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/6002675150"
-    },
-    {
-      "id": "viessmann-hamburg",
-      "name": "Viessmann",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Hamburg (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Hamburg",
-      "website": "https://www.viessmann.de/de/kontakt/niederlassungen/verkaufsniederlassung-hamburg.html",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Hamburg. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/way/490472933"
     },
     {
       "id": "ebi-s-haustechnik-koeln",
@@ -1024,44 +397,6 @@
       "osm_url": "https://www.openstreetmap.org/node/1023189919"
     },
     {
-      "id": "gesellschaft-kaelte-klima-technik-mbh-koeln",
-      "name": "Gesellschaft Kälte Klima Technik mbH",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Köln (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Köln",
-      "website": "https://g-kkt.de",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Köln. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/12770716915"
-    },
-    {
-      "id": "josef-frings-koeln",
-      "name": "Josef Frings",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Köln (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Köln",
-      "website": "https://www.josef-frings.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Köln. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/1794269862"
-    },
-    {
       "id": "kkm-haustechnik-koeln",
       "name": "KKM Haustechnik",
       "platzhalter": false,
@@ -1079,25 +414,6 @@
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
       "osm_url": "https://www.openstreetmap.org/node/614820727"
-    },
-    {
-      "id": "lbg-lufttechnische-anlagen-koeln",
-      "name": "LBG Lufttechnische Anlagen",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Köln (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Köln",
-      "website": "https://lbg-lufttechnik.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Köln. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/1650849784"
     },
     {
       "id": "walter-huesch-heizung-sanitaergesellschaft-koeln",
@@ -1157,25 +473,6 @@
       "osm_url": "https://www.openstreetmap.org/node/5562655474"
     },
     {
-      "id": "anton-ostler-muenchen",
-      "name": "Anton Ostler",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in München (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "München",
-      "website": "https://www.anton-ostler.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in München. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/12692696294"
-    },
-    {
       "id": "huehnchen-heiztechnik-gmbh-muenchen",
       "name": "Hühnchen Heiztechnik GmbH",
       "platzhalter": false,
@@ -1195,99 +492,42 @@
       "osm_url": "https://www.openstreetmap.org/node/7216516177"
     },
     {
-      "id": "karl-greiner-gmbh-muenchen",
-      "name": "KARL GREINER GMBH",
+      "id": "moshandl-gebaeudetechnik-gmbh-nuernberg",
+      "name": "Moshandl Gebäudetechnik GmbH",
       "platzhalter": false,
       "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in München (Quelle: OpenStreetMap).",
+      "tagline": "Heizungs-/Klimatechnik in Nürnberg (Quelle: OpenStreetMap).",
       "leistungen": [
         "Wärmepumpe"
       ],
       "land": "DE",
-      "stadt": "München",
-      "website": "https://karl-greiner-gmbh.de/",
+      "stadt": "Nürnberg",
+      "website": "https://www.dein-heizungsbauer.de/profil/moshandl-gmbh/",
       "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in München. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Nürnberg. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
       "gegruendet": null,
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/12049291827"
+      "osm_url": "https://www.openstreetmap.org/node/4284752865"
     },
     {
-      "id": "pavles-muenchen",
-      "name": "Pavles",
+      "id": "stapfer-heizungsbau-nuernberg",
+      "name": "Stapfer Heizungsbau",
       "platzhalter": false,
       "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in München (Quelle: OpenStreetMap).",
+      "tagline": "Heizungs-/Klimatechnik in Nürnberg (Quelle: OpenStreetMap).",
       "leistungen": [
         "Wärmepumpe"
       ],
       "land": "DE",
-      "stadt": "München",
-      "website": "https://www.pavles.de",
+      "stadt": "Nürnberg",
+      "website": "https://heizungsbau-stapfer-gmbh.de/",
       "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in München. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
+      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Nürnberg. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
       "gegruendet": null,
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/1217311546"
-    },
-    {
-      "id": "satir-versorgungstechnik-gmbh-meisterbetrieb-muenchen",
-      "name": "Satir Versorgungstechnik GmbH Meisterbetrieb",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in München (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "München",
-      "website": "https://satir-versorgungstechnik.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in München. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/12050628007"
-    },
-    {
-      "id": "tecfeld-muenchen",
-      "name": "Tecfeld",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in München (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "München",
-      "website": "https://tecfeld.de",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in München. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/13261137403"
-    },
-    {
-      "id": "allwartung-muenchen",
-      "name": "allwartung",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in München (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "München",
-      "website": "https://www.allwartung.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in München. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/8614298671"
+      "osm_url": "https://www.openstreetmap.org/node/6151657889"
     },
     {
       "id": "bauer-sanitaer-gmbh-stuttgart",
@@ -1326,25 +566,6 @@
       "teamgroesse": null,
       "quelle": "OpenStreetMap",
       "osm_url": "https://www.openstreetmap.org/node/3042153342"
-    },
-    {
-      "id": "uwe-haber-stuttgart",
-      "name": "Uwe Haber",
-      "platzhalter": false,
-      "featured": false,
-      "tagline": "Heizungs-/Klimatechnik in Stuttgart (Quelle: OpenStreetMap).",
-      "leistungen": [
-        "Wärmepumpe"
-      ],
-      "land": "DE",
-      "stadt": "Stuttgart",
-      "website": "https://haber-uwe.visitenkarte.shk.de/",
-      "email": null,
-      "beschreibung": "Heizungs-/Klimatechnik-Betrieb in Stuttgart. Eintrag aus OpenStreetMap (ODbL), nicht einzeln verifiziert. Welche Leistungen genau angeboten werden, bitte direkt beim Betrieb erfragen.",
-      "gegruendet": null,
-      "teamgroesse": null,
-      "quelle": "OpenStreetMap",
-      "osm_url": "https://www.openstreetmap.org/node/2848922497"
     }
   ]
 }
