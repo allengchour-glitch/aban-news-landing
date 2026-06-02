@@ -152,7 +152,7 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 - Körper **mittelgrau**, **Zunge orange** (Zungen-Faces per Region einfärben).
 - Kunde-Entscheid „A": Beulen sind die Augen, nur Farbe. STL bleibt die Figur; Farben
   in Bambu Studio (AMS) malen: Augen-Beulen schwarz, Zunge orange, Körper grau.
-- **Farbpalette (PLA):** gelb, rot, braun, grau, grün, weiß, schwarz, beige.
+- **Farbpalette (PLA):** gelb, rot, braun, grau, grün, weiß, schwarz, beige, pink, blau, violett.
 - Pipeline-Skripte (Blender headless): in der Session unter `/tmp` (lenseye-Muster).
 
 ### Produktion / Batch (gelernt)
