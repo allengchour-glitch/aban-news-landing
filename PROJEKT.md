@@ -339,7 +339,12 @@ Blocker (nur User): KDP-Login/2FA, Author-Central-Verifizierung, Budget, ~70 h �
     Cover v1 ergab KDP-Fehler „Objekt außerhalb der Ränder" = mein manuelles weißes Barcode-Kästchen
     (Unterkante 0,35" < nötige 0,375"). **Fix:** Kästchen entfernt (KDP setzt Barcode selbst mit
     eigenem weißen Hintergrund) → **Cover v2** geliefert (`..._Cover_6x9_matt_v2.pdf`).
-    **To-do User:** nur das Cover v2 neu hochladen → Druckvorschau (sollte fehlerfrei sein) → als Entwurf speichern → Publish.
+    Cover **v2** ergab erneut „Objekt außerhalb der Ränder" — diesmal der **Rückentext**: bei
+    102 S. ist der Rücken nur 0,23" breit, KDP-Clearance 0,0625"/Seite → Text-Clearance nur ~0,05".
+    **Fix v3:** Rückentext komplett entfernt (leerer Rücken, KDP-konform bei dünnen Büchern) →
+    **Cover v3** geliefert (`..._Cover_6x9_matt_v3.pdf`).
+    **To-do User:** nur Cover **v3** hochladen → Druckvorschau (sollte fehlerfrei) → Entwurf speichern → Publish.
+    Lehre: Bei dünnem Rücken (<~0,25") KEIN Rückentext; Barcode-Zone NIE mit eigenem Objekt füllen.
 - **„Mileage Log Book for Small Business"** (Marcus Reilly) — Taschenbuch, Druckvorschau-**FEHLER**:
   Text/Objekt außerhalb der Ränder (Ursache: eigener Barcode unten links) → Barcode entfernen,
   KDP setzt ihn selbst; Vorschau zeigte **119 Seiten**.
