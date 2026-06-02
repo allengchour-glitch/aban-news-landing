@@ -23,7 +23,12 @@ Planer, Logbooks, Journals). Entstanden 2026-06-02 beim Fertigstellen des
 ```bash
 python3 build_book.py            # baut alle BOOKS nach ./out/<slug>/
 python3 build_book.py adhd       # nur ein Buch
+python3 build_book.py --pending  # nur Bücher mit uploaded:False (Codewort „BUCHDRUCK")
 ```
+
+**Codewort „BUCHDRUCK":** baut nur die noch nicht hochgeladenen Bücher
+(`uploaded: False` in `BOOKS`). Nach dem KDP-Upload das jeweilige `"uploaded"`
+auf `True` setzen — dann überspringt `--pending` es.
 
 Pro Buch entsteht in `out/<slug>/`:
 `*-cover.pdf`, `*-interior.pdf` (bei `interior.type=="planner"`),

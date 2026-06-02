@@ -170,6 +170,7 @@ def build_book(book, outroot="out"):
 BOOKS = {
     "adhd": {
         "slug": "adhd-daily-planner",
+        "uploaded": False,          # auf True setzen, sobald bei KDP hochgeladen
         "title": "ADHD Daily Planner for Adults",
         "subtitle": "A 90-Day Planner Built for an ADHD Brain — Time-Blocks, Body Doubling, Dopamine Tracking, and the Three Most Important Tasks of the Day",
         "author": "Marcus Reilly", "trim": (6, 9), "paper": "white",
@@ -193,6 +194,7 @@ BOOKS = {
     },
     "mileage": {
         "slug": "mileage-log-book",
+        "uploaded": False,          # auf True setzen, sobald bei KDP hochgeladen
         "title": "Mileage Log Book for Small Business",
         "subtitle": "IRS Publication 463 Contemporaneous Trip Log for Self-Employed, 1099 Contractors, Rideshare Drivers, Realtors & Etsy Sellers — Built to Substantiate Schedule C Line 9 at the 2025 Rate of $0.67/Mile",
         "author": "Marcus Reilly", "trim": (6, 9), "paper": "white",
@@ -215,6 +217,12 @@ BOOKS = {
 }
 
 if __name__ == "__main__":
-    keys = sys.argv[1:] or list(BOOKS)
+    args = sys.argv[1:]
+    if "--pending" in args:
+        # code word "BUCHDRUCK": rebuild only books not yet uploaded to KDP
+        keys = [k for k, b in BOOKS.items() if not b.get("uploaded")]
+        print(f"pending (nicht hochgeladen): {keys or '— alle hochgeladen —'}")
+    else:
+        keys = [a for a in args if not a.startswith("-")] or list(BOOKS)
     for k in keys:
         build_book(BOOKS[k])
