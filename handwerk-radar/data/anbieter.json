@@ -1,0 +1,50 @@
+{
+  "_hinweis": "STRENGE DATEN-INTEGRITAET: Hier stehen NUR echte, verifizierte Fachbetriebe. Erfinde KEINE Firmen, Namen, Kontaktdaten, Staedte oder Bewertungen. Die folgenden Eintraege sind reine STRUKTUR-BEISPIELE (Platzhalter), erkennbar an 'platzhalter': true, und werden vom Generator als solche markiert. Vor dem Live-Gang: Platzhalter loeschen und echte, eingereichte Betriebe einpflegen. Datenquelle z. B. Handwerkskammer-Verzeichnisse, Fachverband-Listen oder Selbst-Einreichung ueber den Funnel.",
+  "_schema": {
+    "id": "eindeutiger slug (a-z0-9-)",
+    "name": "Anzeigename des Fachbetriebs",
+    "platzhalter": "true = Struktur-Beispiel, nicht oeffentlich als echte Firma zeigen",
+    "featured": "true = bezahltes Featured-Listing (oben, hervorgehoben)",
+    "tagline": "ein Satz, du-Form, anti-hype, oder null",
+    "leistungen": "Liste aus: Waermepumpe, Photovoltaik, Solarthermie, Stromspeicher",
+    "land": "DE | AT | CH",
+    "stadt": "Stadt/Einzugsgebiet oder null",
+    "website": "https://... oder null",
+    "email": "kontakt@... oder null",
+    "beschreibung": "2-4 Saetze oder null",
+    "gegruendet": "Jahr (int) oder null",
+    "teamgroesse": "z.B. '1-5' oder null"
+  },
+  "anbieter": [
+    {
+      "id": "beispiel-betrieb-1",
+      "name": "[Beispiel-Eintrag — hier steht spaeter dein Fachbetrieb]",
+      "platzhalter": true,
+      "featured": false,
+      "tagline": "[Redaktion: pruefen] So koennte dein kostenloser Basis-Eintrag aussehen.",
+      "leistungen": ["Waermepumpe", "Stromspeicher"],
+      "land": "DE",
+      "stadt": null,
+      "website": null,
+      "email": null,
+      "beschreibung": "[Redaktion: pruefen] Struktur-Platzhalter, kein echter Betrieb. Reiche deinen Eintrag ueber den Funnel ein, dann steht hier deine Beschreibung.",
+      "gegruendet": null,
+      "teamgroesse": null
+    },
+    {
+      "id": "beispiel-betrieb-2",
+      "name": "[Beispiel-Eintrag — so sieht ein Featured-Listing aus]",
+      "platzhalter": true,
+      "featured": true,
+      "tagline": "[Redaktion: pruefen] Featured-Listings stehen oben und sind hervorgehoben.",
+      "leistungen": ["Photovoltaik", "Solarthermie"],
+      "land": "AT",
+      "stadt": null,
+      "website": null,
+      "email": null,
+      "beschreibung": "[Redaktion: pruefen] Struktur-Platzhalter fuer ein bezahltes Featured-Listing — kein echter Betrieb.",
+      "gegruendet": null,
+      "teamgroesse": null
+    }
+  ]
+}
