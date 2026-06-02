@@ -274,3 +274,12 @@ Druck-/Aufräum-Tipps (decken sich mit unserer Pipeline):
   Namens-Anhänger, Namensschild, Cake-Topper.
 - **Social:** `posts.json` für `../social/post.py` (eigene LuxeStyle-Kanäle nutzen).
 - **Bestehender Shop:** CJdropshipping-Artikel (Mode + Gadgets) — Sortiment unfokussiert.
+
+### FESTE REGEL Flexi-Reihe (Juni 2026, vom Kunden bestätigt)
+- **Alle Modelle = niedlicher Flexi-Tier-Stil** wie die hochgeladenen Referenzen
+  (Flexi-Katze/Robbe/Schaf/Hummer/T-Rex … : runder Kopf, grosse Augen, gegliederter
+  beweglicher Körper, oft Schlüsselring).
+- **KEIN Teller / kein Boden** unter dem Tier, und **keine Druckplatte** in Render-Bildern
+  (Hero-Shot vor neutralem Hintergrund, wie `CatKeychain`/`FlexiLobster`).
+- Bauweise (eigenes IP): süsser Kopf (Meshy/Pipeline) + beweglicher Körper (`flexi_cutter`)
+  + Ring + Farb-Akzente (`colorize`/`assemble`). Profi-Sculpts (Drache/Figur) = nur Lizenz.
