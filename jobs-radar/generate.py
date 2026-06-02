@@ -320,6 +320,15 @@ Beschwerderecht. Stand: {date.today().strftime('%m/%Y')}.</p>"""
         "User-agent: PerplexityBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\n"
         f"Sitemap: {BASE_URL}/sitemap.xml\n", encoding="utf-8")
 
+    # 404 (Cloudflare Pages serviert es automatisch bei unbekannten Pfaden)
+    (out / "404.html").write_text(page(
+        f"404 — Seite nicht gefunden | {SITE_NAME}",
+        "Diese Seite gibt es nicht (mehr).",
+        '<h1>404 — Seite nicht gefunden</h1>\n'
+        '<p>Dieser Job ist vielleicht schon abgelaufen. Zur '
+        '<a href="/">aktuellen Jobübersicht</a>.</p>',
+        BASE_URL + "/404.html"), encoding="utf-8")
+
     print(f"Built {1 + len(jobs)} pages ({len(jobs)} jobs) → {out}/")
     return 1 + len(jobs)
 
