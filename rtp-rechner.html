@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d97706">
+  <title>RTP-Rechner: Was „Return to Player“ im Online-Casino wirklich bedeutet | aban news</title>
+  <meta name="description" content="RTP einfach erklärt — mit ehrlichem Rechner: Wie viel kostet dich der Hausvorteil über die Zeit? Transparente Mathematik, keine Tricks, keine Systeme. Warum kein Tool den Casino-Code knackt.">
+  <link rel="canonical" href="https://abannews.com/rtp-rechner.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="RTP-Rechner — was „Return to Player“ wirklich bedeutet">
+  <meta property="og:description" content="Ehrliche Mathematik statt Casino-Mythen: Wie viel kostet dich der Hausvorteil über die Zeit? Mit interaktivem Rechner.">
+  <meta property="og:url" content="https://abannews.com/rtp-rechner.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://abannews.com/img/og/rtp-rechner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/img/og/rtp-rechner.png">
+  <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:3rem 0 1.5rem;text-align:center}
+    h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:58ch;margin:0 auto 1.5rem}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    h2{font-size:1.4rem;line-height:1.2;letter-spacing:-.01em;margin:2rem 0 .7rem}
+    h3{font-size:1.1rem;margin:1.4rem 0 .4rem}
+    p{margin-bottom:.9rem}
+    a{color:var(--amber-dk)}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;margin:1.5rem 0;box-shadow:var(--shadow)}
+    .calc label{display:block;font-weight:600;font-size:.9rem;margin:.9rem 0 .3rem}
+    .calc .hint{font-weight:400;color:var(--muted);font-size:.82rem}
+    .calc input,.calc select{width:100%;padding:.65rem .8rem;border:1px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;color:var(--ink)}
+    .grid2{display:grid;gap:.9rem 1.1rem;grid-template-columns:1fr 1fr}
+    @media(max-width:520px){.grid2{grid-template-columns:1fr}}
+    .result{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.3rem 1.5rem;margin-top:1.4rem}
+    .result .big{font-size:2rem;font-weight:800;color:var(--amber-dk);line-height:1.1;letter-spacing:-.02em}
+    .result .row{display:flex;justify-content:space-between;gap:1rem;padding:.45rem 0;border-bottom:1px solid rgba(180,83,9,.18);font-size:.95rem}
+    .result .row:last-child{border-bottom:0}
+    .result .row span:last-child{font-weight:700;white-space:nowrap}
+    table{width:100%;border-collapse:collapse;margin:.6rem 0 .3rem;font-size:.92rem}
+    th,td{text-align:left;padding:.55rem .6rem;border-bottom:1px solid var(--line)}
+    th{font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+    td.num,th.num{text-align:right;white-space:nowrap}
+    .note{font-size:.88rem;color:var(--muted);background:#fff;border-left:3px solid var(--amber);padding:.7rem .9rem;border-radius:0 10px 10px 0;margin:1rem 0}
+    .faq h3{cursor:default}
+    details{border:1px solid var(--line);border-radius:12px;padding:.2rem 1rem;margin-bottom:.7rem;background:var(--card)}
+    summary{font-weight:700;cursor:pointer;padding:.8rem 0;font-size:1rem}
+    details p{margin:.2rem 0 .9rem}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2.5rem 0}
+    .cta-box h2{font-size:1.3rem;margin:0 0 .5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .help{background:#1c2530;color:#fff;border-radius:var(--r);padding:1.3rem 1.5rem;margin:2rem 0;font-size:.92rem}
+    .help h2{color:#fff;margin:0 0 .5rem;font-size:1.15rem}
+    .help a{color:#fde9c8}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:2rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+    .skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+    .skip:focus{left:0}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"RTP-Rechner: Was „Return to Player“ im Online-Casino wirklich bedeutet","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"datePublished":"2026-06-02","description":"RTP und Hausvorteil ehrlich erklärt, mit interaktivem Rechner für den erwarteten Verlust über die Zeit."}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Was bedeutet RTP?","acceptedAnswer":{"@type":"Answer","text":"RTP steht für „Return to Player“ und gibt an, welcher Anteil aller Einsätze langfristig wieder als Gewinn an die Gesamtheit der Spieler zurückfließt. Bei 96 % RTP behält das Casino im statistischen Mittel 4 % jedes Einsatzes — das ist der Hausvorteil."}},
+    {"@type":"Question","name":"Kann ich mit einem Tool den RTP austricksen oder den Casino-Code knacken?","acceptedAnswer":{"@type":"Answer","text":"Nein. Der Zufallsgenerator lizenzierter Casinos ist kryptografisch abgesichert und unabhängig geprüft. Kein Tool, kein System und keine Strategie ändert den festgelegten Hausvorteil. Angebote, die das versprechen, sind Betrug."}},
+    {"@type":"Question","name":"Gilt der RTP für meine Einzahlung?","acceptedAnswer":{"@type":"Answer","text":"Nein. RTP bezieht sich auf den gesamten Umsatz (jeden einzelnen Einsatz), nicht auf deine Einzahlung. Weil Gewinne meist erneut gesetzt werden, durchläuft dein Geld den Hausvorteil mehrfach — der erwartete Verlust ist deshalb oft höher als 4 % deiner Einzahlung."}}
+  ]}
+  </script>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/hype-filter.html">Hype-Filter</a>
+      <a href="/ebook.html">eBook</a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn">Abonnieren</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Ehrliche Mathematik · kein Affiliate · kein Tracking</span>
+      <h1>RTP-Rechner: Was „Return to Player“ wirklich kostet</h1>
+      <p class="lead">RTP ist die ehrlichste Zahl im Online-Casino — und die am häufigsten missverstandene. Hier rechnest du selbst nach, wie viel dich der Hausvorteil über die Zeit kostet. Transparente Formel, keine Versprechen.</p>
+    </div>
+
+    <div class="card calc">
+      <h2 style="margin-top:0">Rechner: erwarteter Verlust</h2>
+      <p style="color:var(--muted);font-size:.92rem">Gib deine Annahmen ein. Der Rechner zeigt den <strong>statistischen Erwartungswert</strong> — nicht dein konkretes Ergebnis an einem Abend. An einem einzelnen Abend kannst du mehr verlieren oder (selten) gewinnen. Je länger du spielst, desto näher kommst du dem Erwartungswert.</p>
+
+      <div class="grid2">
+        <div>
+          <label for="rtp">RTP <span class="hint">(% — typisch: Slots 92–97, Roulette ~97,3, Blackjack ~99,5)</span></label>
+          <input id="rtp" type="number" value="96" min="50" max="100" step="0.1" inputmode="decimal">
+        </div>
+        <div>
+          <label for="stake">Einsatz pro Runde <span class="hint">(€)</span></label>
+          <input id="stake" type="number" value="1" min="0" step="0.1" inputmode="decimal">
+        </div>
+        <div>
+          <label for="spins">Runden pro Stunde <span class="hint">(Slots oft 400–800)</span></label>
+          <input id="spins" type="number" value="500" min="1" step="1" inputmode="numeric">
+        </div>
+        <div>
+          <label for="hours">Spieldauer <span class="hint">(Stunden)</span></label>
+          <input id="hours" type="number" value="2" min="0" step="0.5" inputmode="decimal">
+        </div>
+      </div>
+
+      <div class="result" id="result" aria-live="polite">
+        <div style="font-size:.85rem;color:var(--amber-dk);font-weight:600;margin-bottom:.2rem">Erwarteter Verlust in diesem Zeitraum</div>
+        <div class="big" id="r-loss">–</div>
+        <div style="margin-top:.9rem">
+          <div class="row"><span>Hausvorteil</span><span id="r-edge">–</span></div>
+          <div class="row"><span>Gesamteinsatz (Umsatz)</span><span id="r-handle">–</span></div>
+          <div class="row"><span>Erwarteter Verlust pro Stunde</span><span id="r-perhour">–</span></div>
+          <div class="row"><span>Statistisch zurück (RTP)</span><span id="r-back">–</span></div>
+        </div>
+      </div>
+      <p class="note" style="margin-bottom:0">Wichtig: Der „Gesamteinsatz“ ist die Summe <em>jeder einzelnen Runde</em> — nicht deine Einzahlung. Weil du Gewinne meist erneut setzt, durchläuft dein Geld den Hausvorteil viele Male. Genau deshalb ist der reale Verlust oft viel höher als „nur 4 %“.</p>
+    </div>
+
+    <h2>Was RTP bedeutet — in einem Satz</h2>
+    <p>RTP („Return to Player“) ist der Anteil aller Einsätze, der langfristig und über alle Spieler hinweg wieder ausgezahlt wird. Bei einem RTP von 96 % behält das Casino im Mittel <strong>4 Cent pro eingesetztem Euro</strong>. Diese 4 % heißen <strong>Hausvorteil</strong> — und sie sind keine Schätzung, sondern fest in die Spielregeln einprogrammiert.</p>
+
+    <h3>RTP ist ein Langzeit-Mittel, keine Auszahlungsgarantie</h3>
+    <p>96 % RTP heißt nicht, dass du von 100 € mit 96 € nach Hause gehst. Es ist ein Durchschnitt über Millionen Runden. Kurzfristig schwankt das Ergebnis stark — diese Schwankung heißt <strong>Volatilität</strong>. Ein hochvolatiler Slot kann dich lange leer ausgehen lassen und dann selten viel auszahlen. Der Mittelwert bleibt trotzdem bei minus 4 %.</p>
+
+    <h3>Der Denkfehler bei der Einzahlung</h3>
+    <p>Viele rechnen: „100 € eingezahlt, 96 % RTP, also verliere ich 4 €.“ Falsch. Der RTP gilt pro <em>Einsatz</em>, nicht pro Einzahlung. Setzt du deine 100 € zwanzigmal um (weil du Gewinne weiter setzt), ist dein Umsatz 2.000 € — und 4 % davon sind 80 € erwarteter Verlust. Der Rechner oben macht genau das sichtbar.</p>
+
+    <h2>Warum kein Tool den „Code knackt“</h2>
+    <p>Es gibt regelmäßig Angebote für „Systeme“, „Predictor-Apps“ oder „Tools“, die den Casino-Algorithmus angeblich knacken. Das funktioniert nicht — aus mathematischen, nicht aus Glücks-Gründen:</p>
+    <ul style="margin:0 0 .9rem 1.2rem;padding:0">
+      <li style="margin-bottom:.4rem">Lizenzierte Casinos nutzen geprüfte Zufallsgeneratoren (RNG). Jede Runde ist unabhängig — frühere Ergebnisse sagen nichts über die nächste aus.</li>
+      <li style="margin-bottom:.4rem">Der Hausvorteil ist <strong>fest verbaut</strong>. Keine Einsatz-Reihenfolge und kein Muster ändert den Erwartungswert.</li>
+      <li style="margin-bottom:.4rem">Strategien wie Martingale (nach jedem Verlust verdoppeln) ändern nur die <em>Verteilung</em> deiner Ergebnisse, nie den Mittelwert — und sie laufen schnell ins Tischlimit oder in dein Kontolimit.</li>
+    </ul>
+    <p>Wer dir ein Tool verkauft, das den Code knackt, verkauft dir entweder Mathematik, die nicht existiert, oder gleich Betrug. Das Einzige, was zuverlässig „geknackt“ wird, ist dein Geldbeutel.</p>
+
+    <div class="note">Das ist übrigens dieselbe Denkweise, die wir bei aban news auf KI-Hype anwenden: ein Versprechen, das die Mathematik (oder die Physik) verletzt, ist kein Geheimtipp — es ist ein Verkaufstrick. Prüf jede „Garantie“ an der zugrunde liegenden Zahl.</div>
+
+    <h2>RTP-Beispiele zum Einordnen</h2>
+    <table>
+      <thead><tr><th>Spiel</th><th class="num">Typischer RTP</th><th class="num">Hausvorteil</th></tr></thead>
+      <tbody>
+        <tr><td>Blackjack (Basisstrategie)</td><td class="num">~99,5 %</td><td class="num">~0,5 %</td></tr>
+        <tr><td>Baccarat (Banker)</td><td class="num">~98,9 %</td><td class="num">~1,1 %</td></tr>
+        <tr><td>Roulette (europäisch, 1 Null)</td><td class="num">~97,3 %</td><td class="num">~2,7 %</td></tr>
+        <tr><td>Spielautomaten (Slots)</td><td class="num">~92–97 %</td><td class="num">~3–8 %</td></tr>
+        <tr><td>Roulette (amerikanisch, 2 Nullen)</td><td class="num">~94,7 %</td><td class="num">~5,3 %</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.85rem;color:var(--muted)">Richtwerte; der genaue RTP steht in den Spielinfos des jeweiligen Anbieters und kann je nach Variante abweichen. Unabhängig vom Spiel gilt: Der Hausvorteil ist immer größer als null. Über genug Runden gewinnt das Casino — das ist der Sinn der Zahl.</p>
+
+    <div class="help">
+      <h2>Spielen kann süchtig machen</h2>
+      <p style="margin-bottom:.6rem">Diese Seite erklärt die Mathematik, sie ist keine Aufforderung zum Spielen. Wenn Glücksspiel für dich oder jemanden in deinem Umfeld zum Problem wird, gibt es kostenlose, anonyme Hilfe:</p>
+      <p style="margin:0"><strong>Deutschland:</strong> BZgA-Beratung 0800 1 372 700 (kostenlos) · <a href="https://www.check-dein-spiel.de" rel="noopener nofollow">check-dein-spiel.de</a><br>
+      <strong>Österreich:</strong> <a href="https://www.spielsuchthilfe.at" rel="noopener nofollow">spielsuchthilfe.at</a><br>
+      <strong>Schweiz:</strong> <a href="https://www.sos-spielsucht.ch" rel="noopener nofollow">sos-spielsucht.ch</a></p>
+    </div>
+
+    <h2 class="faq" style="margin-bottom:.8rem">Häufige Fragen</h2>
+    <details>
+      <summary>Heißt höherer RTP, dass ich gewinne?</summary>
+      <p>Nein. Höherer RTP heißt nur, dass der erwartete Verlust kleiner ist. Bei 99 % RTP verlierst du im Mittel weniger als bei 92 % — aber der Erwartungswert bleibt negativ. Kein reguläres Casino-Spiel hat einen RTP über 100 %.</p>
+    </details>
+    <details>
+      <summary>Werden Spiele „heiß“ oder „kalt“?</summary>
+      <p>Nein. Jede Runde ist unabhängig. Ein Slot, der lange nicht ausgezahlt hat, ist nicht „fällig“ — der Zufallsgenerator hat kein Gedächtnis. Dieser Denkfehler heißt Spielerfehlschluss.</p>
+    </details>
+    <details>
+      <summary>Funktioniert die Martingale-Strategie?</summary>
+      <p>Das Verfahren fühlt sich sicher an, ist es aber nicht. Du verdoppelst nach jedem Verlust, um Verluste „aufzuholen“. Das klappt oft — bis eine längere Pechsträhne dein Budget oder das Tischlimit sprengt und du alles auf einmal verlierst. Der Erwartungswert bleibt unverändert negativ.</p>
+    </details>
+    <details>
+      <summary>Sind die RTP-Angaben der Casinos vertrauenswürdig?</summary>
+      <p>Bei lizenzierten Anbietern werden die RTP-Werte von unabhängigen Prüflaboren (z. B. eCOGRA, GLI) getestet. Bei nicht lizenzierten Seiten gibt es keine solche Kontrolle — ein weiterer Grund, nur regulierte Anbieter zu nutzen, falls überhaupt.</p>
+    </details>
+
+    <div class="cta-box">
+      <h2>Wir wenden diese Denkweise täglich auf KI an</h2>
+      <p>aban news ist ein deutschsprachiger Newsletter, der Hype-Versprechen an den echten Zahlen misst — Mo–Fr, 5 Minuten, kein Bullshit.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">5-Min-Briefing gratis →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;margin-bottom:0;">Kein Spam. Abmeldung per Klick. DSGVO-konform.</p>
+    </div>
+
+    <div class="disclaimer">
+      <p><strong>Hinweis:</strong> Diese Seite ist eine sachliche Erklärung der Wahrscheinlichkeits-Mathematik hinter RTP und Hausvorteil. Die Seite enthält keine Affiliate-Links, bewirbt keinen Anbieter und ist keine Aufforderung zum Glücksspiel. Die Rechen-Ergebnisse sind statistische Erwartungswerte, keine Vorhersage einzelner Spielergebnisse. Glücksspiel ab 18.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/">Startseite</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ids=["rtp","stake","spins","hours"];
+  var el={};
+  ids.forEach(function(i){el[i]=document.getElementById(i);});
+  var euro=new Intl.NumberFormat("de-DE",{style:"currency",currency:"EUR"});
+  var pct=new Intl.NumberFormat("de-DE",{minimumFractionDigits:1,maximumFractionDigits:2});
+  function num(v,min){var n=parseFloat(String(v).replace(",","."));if(!isFinite(n)||n<0)n=0;if(min!=null&&n<min)n=min;return n;}
+  function calc(){
+    var rtp=num(el.rtp.value,0); if(rtp>100)rtp=100;
+    var stake=num(el.stake.value,0);
+    var spins=num(el.spins.value,0);
+    var hours=num(el.hours.value,0);
+    var edge=(100-rtp)/100;            // Hausvorteil als Anteil
+    var handle=stake*spins*hours;      // Gesamteinsatz / Umsatz
+    var loss=handle*edge;              // erwarteter Verlust
+    var perHour=hours>0?loss/hours:0;
+    var back=handle*(rtp/100);
+    document.getElementById("r-loss").textContent="− "+euro.format(loss);
+    document.getElementById("r-edge").textContent=pct.format(100-rtp)+" %";
+    document.getElementById("r-handle").textContent=euro.format(handle);
+    document.getElementById("r-perhour").textContent="− "+euro.format(perHour);
+    document.getElementById("r-back").textContent=euro.format(back)+" ("+pct.format(rtp)+" %)";
+  }
+  ids.forEach(function(i){el[i].addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>
