@@ -30,8 +30,16 @@ CATEGORY_ID = "27"      # Education
 def get_service():
     from google.auth.transport.requests import Request
     from google.oauth2.credentials import Credentials
-    from google_auth_oauthlib.flow import InstalledAppFlow
     from googleapiclient.discovery import build
+    # 1) CI / headless: Zugangsdaten aus Umgebungsvariablen (GitHub Secrets)
+    cid, csec, rt = (os.environ.get("YT_CLIENT_ID"), os.environ.get("YT_CLIENT_SECRET"),
+                     os.environ.get("YT_REFRESH_TOKEN"))
+    if cid and csec and rt:
+        creds = Credentials(None, refresh_token=rt, client_id=cid, client_secret=csec,
+                            token_uri="https://oauth2.googleapis.com/token", scopes=SCOPES)
+        creds.refresh(Request())
+        return build("youtube", "v3", credentials=creds)
+    # 2) Lokal: token.json / OAuth-Browser-Flow
     creds = None
     if os.path.exists(TOKEN):
         creds = Credentials.from_authorized_user_file(TOKEN, SCOPES)
@@ -40,7 +48,8 @@ def get_service():
             creds.refresh(Request())
         else:
             if not os.path.exists(CLIENT_SECRET):
-                sys.exit("FEHLT: %s — siehe YOUTUBE-UPLOAD.md" % CLIENT_SECRET)
+                sys.exit("FEHLT: %s oder YT_* Umgebungsvariablen — siehe YOUTUBE-UPLOAD.md" % CLIENT_SECRET)
+            from google_auth_oauthlib.flow import InstalledAppFlow
             flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRET, SCOPES)
             creds = flow.run_local_server(port=0)   # öffnet einmalig den Browser
         open(TOKEN, "w").write(creds.to_json())
@@ -51,6 +60,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--immediate", action="store_true", help="sofort öffentlich statt terminiert")
     ap.add_argument("--scenes", nargs="*", help="nur diese Szenen (z.B. s1 s2)")
+    ap.add_argument("--next", type=int, default=0, help="nur die nächsten N noch nicht hochgeladenen")
     ap.add_argument("--csv", default="schedule.csv")
     args = ap.parse_args()
 
@@ -58,6 +68,10 @@ def main():
     if args.scenes:
         rows = [r for r in rows if r["scene"] in args.scenes]
     done = json.load(open(UPLOADED)) if os.path.exists(UPLOADED) else {}
+    if args.next:   # CI-Taktung: nur die nächsten N offenen Szenen (Reihenfolge laut Plan)
+        rows = [r for r in rows if r["scene"] not in done][:args.next]
+        if not rows:
+            print("nichts offen — alle Clips bereits hochgeladen."); return
 
     from googleapiclient.http import MediaFileUpload
     yt = get_service()

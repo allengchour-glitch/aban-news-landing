@@ -4,4 +4,5 @@ __pycache__/
 # YouTube-Uploader Secrets
 video-prototypes/client_secret.json
 video-prototypes/token.json
-video-prototypes/uploaded.json
+# uploaded.json wird absichtlich versioniert (nur Video-IDs, kein Secret) —
+# die GitHub-Action nutzt es als Fortschrittsspeicher.

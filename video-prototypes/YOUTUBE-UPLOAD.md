@@ -44,8 +44,34 @@ und werden übersprungen — der Befehl ist gefahrlos wiederholbar.
   oder im Cloud-Projekt eine Kontingent-Erhöhung beantragen.
 - **Zeitzone:** Im Winter in `scripts/yt_upload.py` `TZ_OFFSET = "+01:00"` setzen.
 
-## Vollautomatisch ohne eigenen Rechner (optional)
+## Vollautomatisch via GitHub Action (kein eigener Rechner)
 
-Statt lokal kann ein **GitHub-Action-Workflow** den Upload übernehmen: OAuth-
-Refresh-Token als Repo-Secret hinterlegen, Workflow per Knopfdruck (oder Cron)
-starten. Sag Bescheid, dann lege ich `.github/workflows/youtube.yml` an.
+Der Workflow `.github/workflows/youtube.yml` lädt **alle 2 Tage** automatisch den
+nächsten Clip hoch und veröffentlicht ihn sofort als Short. Fortschritt steht in
+`uploaded.json` (committet der Workflow zurück). Manuell auch per *Actions → Run
+workflow* startbar (Eingabe „count" = wie viele Clips jetzt).
+
+**Einrichtung:**
+
+1. Schritte 1–4 oben erledigen (Cloud-Projekt, API, `client_secret.json`, pip).
+2. **Einmal** ein Refresh-Token holen (lokal):
+   ```
+   cd video-prototypes
+   python3 scripts/yt_get_refresh_token.py
+   ```
+   Browser-Freigabe bestätigen → das Skript druckt `YT_CLIENT_ID`,
+   `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN`.
+3. Diese drei als **Repo-Secrets** hinterlegen:
+   GitHub → *Settings → Secrets and variables → Actions → New repository secret*:
+   - `YT_CLIENT_ID`
+   - `YT_CLIENT_SECRET`
+   - `YT_REFRESH_TOKEN`
+4. Fertig. Der Cron läuft an ungeraden Tagen ~18:00 (Berlin). Zum Testen:
+   *Actions → „YouTube auto-publish" → Run workflow* (count=1).
+
+**Hinweise:**
+- Die Clips müssen im Repo liegen (`video-prototypes/output/clipfilm_*.mp4`) — sind sie.
+- Reihenfolge & Texte kommen aus `schedule.csv`. Reihenfolge/Start ändern:
+  `make schedule` bzw. `python3 scripts/make_schedule.py 2026-07-01`, dann committen.
+- Ein Upload/Lauf bleibt weit unter dem API-Tageskontingent.
+- GitHub-Cron kann sich um einige Minuten verzögern — unkritisch.
