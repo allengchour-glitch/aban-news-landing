@@ -1085,3 +1085,16 @@ Hinweis: «Carré/Pliage/Spice»-Batch (15413079*) war Fashion-Retro – 1 getö
   CJ-Brillen-Katalog stark ausgeschöpft (nur 3 Treffer, 2 Dubletten).
 - **Luxus-Brillen-Reel** neu gerendert (nur getönte: Cat-Eye/Carré/Photo/Chrome/Felina) → luxbrillen.mp4.
   Skript cj_brillen_search.mjs. LEHRE: CJ-„UV400"-Titel ≠ immer getönt — Bilder prüfen!
+
+## 2026-06-02 — Tiefe Traffic-Auswertung + Premium-Reel + Konsolidierung
+**Auswertung (3 Tage, 677 Sessions, weiter 0 Käufe):** Landingpages = sommer 183, damen-mode 132,
+home 102, gadgets 68, Zirkonia-Ring 63, highlights 61. **Suchbegriffe via API nicht abrufbar.**
+**LECK-FUND:** Zirkonia-Ring-Traffic = Ad `tiktok_ads_0c65d841-...` WELTWEIT (Italien/Pakistan/Vietnam/
+Kenia/Guatemala…) = Müll-Traffic. **Fragmentierung:** 5+ Kampagnen aktiv (sommer2026 151, mode 126,
+gadgets_a2 66, mix 57 — alle CH) → die NEUE pixel-optimierte `mode_sommer` hungert (nur 14 Sessions)!
+1 abgebrochener Checkout in 14T (Funnel funktioniert grundsätzlich). Internat. untagged = Bots.
+**3 PIXEL** (nur D8EKVR3C77U6KT5BTBD0 = Shopify-verbunden/richtig; D8EQE4=„pix" + D85BAG ignorieren/löschen).
+**PREMIUM-REEL** gebaut: render_premium_reel.sh → luxestyle_premium.mp4 (19,6s, edles Intro/Outro,
+6 Mode-Shots, langsame Fades, elegant-Track). Für NEUE saubere Kampagne.
+**TODO (Browser, wichtig):** EINE Kampagne mit Premium-Reel, Pixel D8EKVR, CH/Frauen/18–34/DE+FR,
+Complete Payment, 20 CHF/Tag — und ALLE anderen pausieren (sommer2026/mode/mix/gadgets_a2/Ring-Ad).
