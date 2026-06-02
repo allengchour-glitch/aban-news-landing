@@ -1,0 +1,5 @@
+# Gerenderte STLs/Bilder sind aus den .scad-Vorlagen reproduzierbar -> nicht versionieren
+samples/
+renders/
+*.stl
+*.png
