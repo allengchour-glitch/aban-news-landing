@@ -27,6 +27,7 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `flexi_chain.scad` | Print-in-Place Gliederkette (beweglich, in einem Stück) |
 | `make.py` | erzeugt aus jedem Text eine druckfertige `.stl` |
 | `polish.py` | **Veredelung (Blender):** Mesh säubern, glätten, Schuppen-/Detail-Struktur, auf mm skalieren, STL + Render |
+| `texture_to_parts.py` | **Meshy-Textur → Bambu/AMS-Farbteile** (liest Textur, sortiert in Filament-Palette, zerlegt in STL pro Farbe) |
 | `build_all.sh` | **1 Befehl** → kompletter Katalog als STL (alle Tiere, Flexi, Beispiel-Namen) |
 
 ### Benutzen
@@ -162,6 +163,13 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
   (von Geminis X-Augen) → die lassen sich NICHT sauber blind entfernen.
 - Meshy backt den Augen-Stil aus dem Prompt in die Geometrie → Prompt = einzige zuverlässige
   Stell­schraube für die Augenform.
+
+### Farbe für Bambu/AMS (gelöst)
+- Meshy-Farbe = **Textur**; Bambu/AMS druckt Farbe pro **Region/Teil**, nicht aus Texturen.
+- Tool `texture_to_parts.py` löst das: Textur auslesen → Filament-Palette → **STL pro Farbe**.
+- In Bambu: alle `color_*.stl` importieren → „als ein Objekt zusammenfügen" → je Teil ein
+  Filament → drucken. Einmal eingerichtet, dann 20× drucken. KEIN Malen.
+- Palette per `PALETTE`-Env anpassbar (Default: weiss/schwarz/orange/rosa).
 
 ### Prompt-Bibliothek (erprobt)
 - Funktioniert: `"a cute <tier> figurine, smooth stylized, solid, simple, no separate base"`
