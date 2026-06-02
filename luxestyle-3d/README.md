@@ -136,13 +136,15 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 - Flexi-Gelenke an Figuren: weiterhin nicht möglich.
 
 ### Finaler 3D-Stil (Kunde bestätigt)
-- **Runde 3D-Figur** (Meshy Image/Text→3D) → `polish.py` → **flache eckige schwarze
-  X-Augen auf die Augen-Beulen** setzen (Bars in Gesichtsebene, um Y-Achse gedreht,
-  NICHT senkrecht; Position ~`(±6, -22, 11)` bei der Katze — pro Tier neu finden).
-- Körper **hellgrau**, **Zunge orange**, X-Augen **komplett schwarz**.
-- Eye-Carving (Differenz) vermeiden → gibt Zickzack. Stattdessen erhabene Bars (Union).
+- **Runde 3D-Figur** (Meshy Image/Text→3D) → `polish.py` → Augen = **glatte schwarze
+  Linsen** (UV-Sphere oval, ~scale 4.2×4.2×3.6) auf die **Augen-Beulen** setzen,
+  leicht in die Stirn versenkt → stehen hervor + schwarz. Position ~`(±7, -21, 11)`
+  bei der Katze (pro Tier per Nahaufnahme-Render neu finden).
+- Körper **hellgrau**, **Zunge orange** (Zungen-Faces per Region einfärben), Augen **schwarz**.
+- KEINE X-Augen (Kunde mochte sie nicht), KEIN Carving (Zickzack), KEIN Vertex-Inflate
+  (wird stachelig). → glatte Linsen-Spheres sind der saubere Weg.
 - **Farbpalette (PLA):** gelb, rot, braun, grau, grün, weiß, schwarz, beige.
-- Pro Tier: Augen-Beulen per Nahaufnahme-Render finden, dann X platzieren (1–2 Nudges).
+- Pipeline-Skripte (Blender headless): in der Session unter `/tmp` (lenseye-Muster).
 
 ### Prompt-Bibliothek (erprobt)
 - Funktioniert: `"a cute <tier> figurine, smooth stylized, solid, simple, no separate base"`
