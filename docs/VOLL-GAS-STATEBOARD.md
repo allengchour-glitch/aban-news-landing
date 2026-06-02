@@ -14,11 +14,21 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **72 live**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **82 live**
 
 - Welle 5 (52→62, #109): Elektriker, Sanitär/Heizung, Fliesenleger, Trockenbau, Glaser, Metallbauer, Zimmerer, Gerüstbau, Raumausstatter, Schornsteinfeger.
 - Welle 6 (62→72, #113): Heilpraktiker, Hörakustiker, Podologen, Zahntechniker, Sanitätshäuser, Kieferorthopäden, Notare, Wirtschaftsprüfer, Sachverständige, Hausmeisterservice.
-- **Nächste Welle (7):** aus Backlog unten 10 wählen (Slug-Kollisionscheck).
+- Welle 7 (72→82, #130): Sicherheitsdienste, Umzugsunternehmen, Schlüsseldienste, Entrümpelung, Schädlingsbekämpfer, Metzgereien, Eisdielen, Cafés, Buchhandlungen, Fahrradläden.
+- **Nächste Welle (8):** aus Backlog unten 10 wählen (Slug-Kollisionscheck).
+
+## Mehrsprachige Hubs (P2, EN+FR+IT) — **6 Hubs viersprachig**
+
+- Charge 1 (#126): handwerker, steuerberater, coaches.
+- Charge 2 (#129): immobilienmakler, onlineshops, gastronomie.
+- Muster: pro Hub DE um hreflang-Block + nav-Sprach-Switch ergänzen, je `en/ fr/ it/`-Datei
+  (eigene canonical, 5 reziproke hreflang-Zeilen inkl. x-default=de, og:locale, WebPage-inLanguage,
+  FAQ pro Sprache wortgleich), sitemap +3/Hub (priority 0.7). FAQ-Markup variiert je Hub (dl/dt/dd ODER details/summary).
+- **Nächste i18n-Charge:** weitere Top-Hubs (z. B. aerzte, anwaelte, ki-tools-fuer-selbststaendige-Hubs …).
 
 ## Automations-/Radar-Projekte
 
@@ -26,19 +36,18 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - **P1 — Surfer-Content (#111): ✅ gemerged.** critique + semrush-Vergleich; `_surfer`-Affiliate bleibt deaktiviert bis echter Code.
 - **P3 — Radars: ✅ alle vier gemerged:** newsletter-radar (#108), buchhaltung-radar (#119), chatbot-radar (#121), voice-radar (#123).
   - **Offen (Nutzer, manuell):** CF-Pages-Projekte + Subdomains anlegen für `newsletter`/`buchhaltung`/`chatbot`/`voice` (Deploy ist secret-gated). Ebenso `kurse`/`prompts`/`agenturen`/`dropshipping` laut PROJEKT.md.
-- **P2 — Mehrsprachige Hubs (EN+FR+IT komplett): ⏳ als Nächstes.**
-  Top-Hubs je in `en/ fr/ it/` mit reziprokem hreflang (Muster `ki-dsgvo-konform.html`), je 4 sitemap-Einträge.
+- **P2 — Mehrsprachige Hubs (EN+FR+IT): 🔄 laufend** — 6 Hubs fertig (s. o.), weitere Chargen offen.
 
 ## Nächste offene Aufgabe
 
-→ **P2 starten** (Top-Hubs EN+FR+IT) **oder** Welle 7 (10 neue DE-Hubs). Beide möglich;
-P2 priorisiert (größter SEO-Hebel, kein Thin-Content-Risiko).
+→ **P2 Charge 3** (weitere Top-Hubs EN+FR+IT) **und/oder** Welle 8 (10 neue DE-Hubs).
+Beide laufen abwechselnd weiter (self-paced Loop).
 
 ## Backlog DE-Hubs (echte, distinkte Verticals — Slug-Kollisionscheck je Welle)
 
-Dienstleistung: `sicherheitsdienste`, `umzugsunternehmen`, `schluesseldienste`, `entruempelung`, `schaedlingsbekaempfer`.
-Handel/Gastro: `metzgereien`, `eisdielen`, `cafes`, `buchhandlungen`, `fahrradlaeden`, `sportgeschaefte`, `modeboutiquen`, `getraenkehandel`.
+Handel/Gastro: `sportgeschaefte`, `modeboutiquen`, `getraenkehandel`.
 Kurse/Kreativ: `fahrschulen`, `musikschulen`, `tanzschulen`, `sprachschulen`, `nagelstudios`, `tattoostudios`, `djs`, `hochzeitsfotografen`.
+(Wellen 5–7 bereits umgesetzt; Backlog entsprechend gekürzt.)
 
 ## Hub-Pipeline (pro Welle, bewährt)
 
