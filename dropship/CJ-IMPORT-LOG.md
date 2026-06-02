@@ -1345,3 +1345,13 @@ Via Browser-Claude erledigt + von mir gegengeprüft:
 - Sticky „In den Warenkorb" (Produkt-Template) + Judge.me-Sterne auf Produktkacheln → JA, hoher Mobile-Hebel.
 - **⚠️ Ankündigungsleiste LINK-Feld** enthielt eine admin.shopify.com-URL (falsch für Storefront!) → sollte
   geleert oder auf `/collections/sommer` gesetzt werden. Browser-Claude soll das prüfen/fixen.
+
+## 2026-06-02 — Verifikation Customizer (nach User „erledigt")
+WebFetch luxestyle.ch:
+- ✅ Ankündigungsleiste „Gratis-Versand ab CHF 65 · –10% WELCOME10 · 30 Tage Rückgabe" LIVE.
+- ✅ Hero-Headline „Sommer-Mode 2026 — Premium-Looks für jeden Auftritt" LIVE.
+- ⚠️ Hero-Button-Label noch „Sommer-Trends entdecken" (nicht „Damenmode entdecken") — evtl. ungespeichert/Cache.
+- ⚠️ Hero-Bild noch Palmblatt (Model-Foto-Upload durch User offen, erwartet).
+- ⚠️ Produktkachel-Sterne nicht sichtbar im Fetch (Judge.me lädt per JS → nicht zwingend fehlend; am Handy prüfen).
+- n/v aus Ferne: Sticky-ATC (mobil/PDP), Admin-Link-Fix im Ankündigungs-Link-Feld.
+**To-verify durch User:** Button-Label am Live-Shop checken; Judge.me-Sterne mobil auf Collection-Seite checken.
