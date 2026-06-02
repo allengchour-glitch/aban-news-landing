@@ -30,6 +30,7 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `texture_to_parts.py` | **Meshy-Textur → Bambu/AMS-Farbteile** (liest Textur, sortiert in Filament-Palette, zerlegt in STL pro Farbe) |
 | `colorize.py` | **Universelles Farb-Tool**: MODE=texture (Meshy-Textur) ODER rules (Plain-Modell nach Regionen) → Farb-STLs + farbiges OBJ + Vorschau; Palette frei |
 | `hole.py` | **Schlüsselring-Loch:** skaliert GLB auf mm, bohrt vertikales Loch durch solides Material, exportiert GLB (Textur bleibt) + Kontroll-Render. Danach `colorize.py` für die Bambu-Teile |
+| `assemble.py` | **Farb-Teile → EINE fertige 3MF** (Bambu-nativ): aus `colored.obj` oder `color_*.stl`-Ordner. Jedes Dreieck trägt seine Farbe → Bambu öffnet 1 Objekt, matcht Farben auto auf Filamente. Kein 4-fach-Import |
 | `build_all.sh` | **1 Befehl** → kompletter Katalog als STL (alle Tiere, Flexi, Beispiel-Namen) |
 
 ### Benutzen
@@ -171,6 +172,9 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 - Tool `texture_to_parts.py` löst das: Textur auslesen → Filament-Palette → **STL pro Farbe**.
 - In Bambu: alle `color_*.stl` importieren → „als ein Objekt zusammenfügen" → je Teil ein
   Filament → drucken. Einmal eingerichtet, dann 20× drucken. KEIN Malen.
+- **Noch einfacher:** `assemble.py` packt die Teile in **eine 3MF** (Farbe pro Dreieck).
+  Bambu öffnet 1 Objekt, fragt nur Farbe→Filament (Auto-Match). 3MF = nur ein ZIP mit
+  XML (`basematerials` + Dreiecke mit `p1`), von Hand geschrieben — Blender hat kein 3MF.
 - Palette per `PALETTE`-Env anpassbar (Default: weiss/schwarz/orange/rosa).
 
 ### Schlüsselring-Loch (gelöst)
