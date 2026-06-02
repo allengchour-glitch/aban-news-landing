@@ -53,10 +53,12 @@ LinkedIn/X/Instagram lassen sich nicht sauber direkt aus einem Skript bedienen. 
 ein **generischer Webhook** → den hängst du an **Make / n8n / Zapier** (deine eigenen
 Automatisierungs-Tools), das fächert dann an die Plattformen.
 
-1. In Make/n8n/Zapier ein Szenario mit **Webhook-Trigger** anlegen → du bekommst eine URL.
-2. Dahinter die Module „LinkedIn posten", „X posten" usw. hängen (Feld `text`, optional `url`).
-3. Bei GitHub eintragen: Name `PUBLISH_WEBHOOK_URL` · Secret: *(die Webhook-URL)*
+**Fertiges Szenario liegt schon bei** — gratis & EU mit **n8n** (kein Zapier/Make-Abo nötig):
+1. `social/n8n-publish-workflow.json` in n8n importieren (Webhook → LinkedIn / X / Mastodon).
+2. Plattform-Credentials in n8n verbinden, Workflow aktivieren, Production-URL kopieren.
+3. Bei GitHub eintragen: Name `PUBLISH_WEBHOOK_URL` · Secret: *(die n8n-URL)*
 
+Schritt-für-Schritt-Anleitung: **`social/N8N-WEBHOOK.md`**.
 Das System schickt dann pro Post ein JSON `{ id, text, url, tags }` an deinen Webhook.
 
 ---
