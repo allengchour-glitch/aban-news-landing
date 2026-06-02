@@ -1014,3 +1014,12 @@ Tags damen+damen-schmuck), alle Bilder HTTP-200 vorgeprüft:
 | Ohrringe «Duo» 2-fach tragbar Zirkonia | 15414270755201 | 1 | 29.90 |
 | Geflochtenes Herz-Armband grüner Zirkonia (17–20cm) | 15414270820737 | 4 | 19.90 |
 Übersprungen (Dubletten/zu komplex): Floating Planet + Smaragd-Zirkon (schon da), 30-Varianten-Naturstein-Armband.
+
+## 2026-06-02 (Nacht) — CJ-Charge 2: +3 coole Accessoires (Total heute Nacht +8)
+cj_cool2_search.mjs (Filter korrigiert). Importiert (ACTIVE, 6 Kanäle, Bilder READY, HTTP-200 vorgeprüft):
+| Produkt | ID | V | VK | Coll |
+|---|---|---|---|---|
+| Statement-Ohrringe «Retro» oversized | 15414271836545 | 1 | 22.90 | premium-schmuck |
+| Halskette mit Ring-Halter-Anhänger (3 Farben) | 15414271902081 | 3 | 18.90 | premium-schmuck |
+| Polarisierte Sonnenbrille «HD» (4 Tönungen) | 15414271967617 | 4 | 24.90 | sonnenbrillen + sommer-2026+damen (Landingpage!) |
+Übersprungen: Blumenring (Dublette), diverse Kleidung (Filter-Rauschen).
