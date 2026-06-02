@@ -1375,6 +1375,20 @@ def build(data_path: Path, aff_path: Path, out: Path) -> int:
     (out / "favicon.svg").write_text(FAVICON_SVG, encoding="utf-8")
     (out / "search.js").write_text(SEARCH_JS, encoding="utf-8")
 
+    # Security-Header (wie die übrigen Radars). Inline-Style/-Script → 'unsafe-inline';
+    # connect-src 'self' deckt den same-origin /api/ask-Aufruf ab. Keine 3rd-Party-Quellen.
+    headers = (
+        "/*\n"
+        "  X-Content-Type-Options: nosniff\n"
+        "  X-Frame-Options: DENY\n"
+        "  Referrer-Policy: strict-origin-when-cross-origin\n"
+        "  Permissions-Policy: geolocation=(), microphone=(), camera=()\n"
+        "  Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline'; "
+        "script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; "
+        "base-uri 'self'; form-action 'self'; frame-ancestors 'none'\n"
+    )
+    (out / "_headers").write_text(headers, encoding="utf-8")
+
     n_uc = sum(1 for uc in USE_CASES if any(i in by_id for i in uc["ids"]))
     print(f"Built {pages} HTML pages from {len(tools)} providers "
           f"({len(used_cats)} Kategorien, {len(used_focuses)} Schwerpunkte, "
