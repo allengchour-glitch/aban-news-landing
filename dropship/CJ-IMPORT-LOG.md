@@ -1068,3 +1068,10 @@ Statt 526 Einzelvideos: 4 Kategorie-Reels gerendert (render_hook_reel.sh, Hook+M
 schmuck.mp4 (6 Schmuckstücke), schuhe.mp4 (Sandalen/Pumps/Loafer), taschen.mp4 (Schultertasche/Denim/
 Clutch), brillen.mp4 (6 Sonnenbrillen). Bilder aus Kollektionen, HTTP-200, kein Wasserzeichen geprüft.
 Content-Vorrat gesamt: ~12 Reels (8 Mode-Hooks + 4 Kategorie) = 1–2 Wochen täglich Posten. Captions geliefert.
+
+## 2026-06-02 — Sonnenbrillen bereinigt: nur getönte Gläser
+User-Wunsch: klar-glasige (Blaulicht/optische) Brillen raus aus Sonnenbrillen-Sortiment.
+Alle 16 aktiven geprüft (Bilder): NUR «Spice» (15413079245185) + «Pliage» (15413079277953) hatten
+klare Gläser (Blaulicht-Fassungen, falsch als „Sonnenbrille" gelabelt) → auf DRAFT gesetzt (raus aus
+Shop+Kollektionen, umkehrbar). Rest alle getönt/verspiegelt (UV400/polarisiert). Sonnenbrillen jetzt 14 aktiv.
+Hinweis: «Carré/Pliage/Spice»-Batch (15413079*) war Fashion-Retro – 1 getönt, 2 klar.
