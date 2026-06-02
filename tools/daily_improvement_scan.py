@@ -73,6 +73,14 @@ def scan_page(p: Path, findings: list):
         add("medium", "SEO: OG-Description fehlt", "kein og:description")
     if not re.search(r"<html[^>]*\blang=", s, re.I):
         add("medium", "a11y: lang-Attribut fehlt", "kein lang am <html>")
+    if 'name="viewport"' not in low:
+        add("medium", "Mobil: viewport-Meta fehlt", "kein <meta name=viewport>")
+
+    # Mixed Content: unsichere http://-Ressourcen. xmlns/namespace-URLs sind kein
+    # src/href und werden bewusst nicht erfasst (nur echte Ressourcen-Loads).
+    mixed = re.findall(r'\bsrc=["\']http://', s, re.I) + re.findall(r'<link\b[^>]*\bhref=["\']http://', s, re.I)
+    if mixed:
+        add("high", "Security: unsichere http://-Ressource", f"{len(mixed)} (Mixed Content)")
 
     # Bilder ohne alt
     noalt = [m.group(0)[:60] for m in IMG_RX.finditer(s) if not re.search(r"\balt=", m.group(0), re.I)]
