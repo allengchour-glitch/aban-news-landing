@@ -300,6 +300,11 @@ Schrift eingebettet).
 2. „Marsch"/„The Reclaimed Land" auf KDP hochladen (Innenteil-PDF ZUERST → setzt Seitenzahl/Cover-Maß,
    dann Umschlag; Trim 5×8", Barcode-Häkchen aus, KI-Inhalt: Text Ja / Cover Nein).
 3. Nach Live-Schaltung jeweils Amazon-Link auf der passenden Verkaufsseite eintragen.
+   - ✅ **The Seam (EN):** Abschnitt „Prefer a print copy or Kindle?" in `en/the-seam.html` ergänzt
+     (Buttons → amazon.com/dp/B0H3NH1JTB Taschenbuch + /dp/B0H3KNC6TM Kindle). Marktplatz .com (umstellbar).
+   - ⏳ **Schicht (DE):** sobald aus „Wird geprüft" live → gleichen Abschnitt in `schicht.html` mit
+     amazon.de/dp/<ASIN> (ASINs noch nicht vergeben).
+   - ⏳ Vision Board / ADHD-Planner: eigene Verkaufsseiten existieren (noch) nicht in diesem Repo (separates KDP-Business).
 
 ### ⚠️ KDP-Buch-Business — SEPARATES Projekt/Umgebung (NICHT dieses Repo)
 
