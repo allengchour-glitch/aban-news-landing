@@ -24,15 +24,19 @@ bei jedem Lauf neu erzeugt.
 
 ## Erzeugte Seiten
 
-- `index.html` — Startseite (Vergleichstabelle mit EU-Hosting-Spalte + Karten + Client-Side-Suche)
-- `anbieter/<id>.html` — eine Detailseite je Tool (SoftwareApplication-JSON-LD, FAQ, Breadcrumb)
+- `index.html` — Startseite mit:
+  - **Entscheidungshilfe** „Welches Tool für welche Aufgabe?“ (kuratiertes Situation→Tool-Mapping, `DECISIONS` in `generate.py`)
+  - **Vergleichstabelle** (Spalten: Tool, Typ, EU-Hosting, Deutsche Oberfläche, Preismodell)
+  - **Interaktive Filter** (Client-Side, kein Tracking): Kategorie-Buttons + EU-Hosting-Toggle, kombiniert mit der Live-Suche (`search.js`)
+- `automatisierungs-tools-auswaehlen.html` — **SEO-Ratgeber** (Cornerstone): 5-Schritte-Leitfaden + FAQ, `Article`- + `FAQPage`-JSON-LD, interne Links auf Tools/Kategorien
+- `anbieter/<id>.html` — eine Detailseite je Tool (SoftwareApplication-JSON-LD, FAQ, Breadcrumb, Preismodell)
 - `kategorie/<slug>.html` — Seiten je Tool-Typ (Workflow-Automatisierung (No-Code), iPaaS / App-Integration, KI-Agenten & KI-Automatisierung, RPA, Browser-Automatisierung, Prozess-Orchestrierung / BPM)
 - `fokus/<slug>.html` — Seiten je Schwerpunkt (EU-Hosting / DSGVO, Self-Hosting / Open Source, Enterprise / RPA, KI-Agenten, International)
 - `impressum.html`, `datenschutz.html`, `404.html`
 - `sitemap.xml`, `robots.txt` (KI-Crawler erlaubt), `feed.xml` (RSS), `favicon.svg`, `search.js`
 
-JSON-LD: `SoftwareApplication`, `BreadcrumbList`, `ItemList`, `FAQPage`, plus
-`WebSite` + `Organization` auf der Startseite. Jede Seite hat `canonical`, OG-Tags,
+JSON-LD: `SoftwareApplication`, `BreadcrumbList`, `ItemList`, `FAQPage`, `Article` (Ratgeber),
+plus `WebSite` + `Organization` auf der Startseite. Jede Seite hat `canonical`, OG-Tags,
 `lang="de"` und hreflang (de / x-default).
 
 ## Daten
@@ -61,7 +65,11 @@ nach vorn und zeigt sie als farbige Badges.
 
 Feldschema je Anbieter: `id`, `name`, `anbieter`, `url`, `sprache[]`, `fokus`,
 `kategorie[]`, `themen[]`, `format`, `integration[]`, `deutsche_oberflaeche`,
-`eu_lager`, `preis_eur`, `preis_hinweis`, `worth_it_score`, `aban_note`.
+`eu_lager`, `preis_eur`, `preis_hinweis`, `preismodell`, `worth_it_score`, `aban_note`.
+
+`preismodell` = Abrechnungsmodell (z. B. „pro Task“, „pro Operation“, „nach Laufzeit“,
+„Credits“, „auf Anfrage“, „Self-Hosting / Abo“). Das ist öffentlich bekannte Anbieter-Info,
+**kein** geschätzter Preis — `preis_eur`/`worth_it_score` bleiben unangetastet `null`.
 
 ### `affiliate.json`
 Mapping `Anbieter-id -> affiliate_url`, aufgebaut wie `voice-radar/affiliate.json`.

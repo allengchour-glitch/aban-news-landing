@@ -100,9 +100,21 @@ UI = {
     "meta_home": ("{n} KI- und Workflow-Automatisierungs-Tools im Vergleich: "
                   "EU-Hosting, deutsche Oberfläche, No-Code-Workflows, iPaaS, KI-Agenten, "
                   "RPA — ehrlich, ohne Hype."),
-    "meta_tool": "{name} ({anbieter}): Typ, Schwerpunkt, Integrationen, EU-Hosting und offizieller Link.",
+    "meta_tool": "{name} ({anbieter}): Typ, Schwerpunkt, Preismodell, Integrationen, EU-Hosting und offizieller Link.",
     "meta_cat": "Die besten KI- & Workflow-Automatisierungs-Tools im Bereich {cat} — ehrlich verglichen für DACH.",
     "meta_foc": "Automatisierungs-Tools mit Schwerpunkt {foc} — Funktionen und offizielle Links im Vergleich.",
+    "pricing_model": "Preismodell",
+    "filter_all": "Alle",
+    "filter_eu": "Nur EU-Hosting",
+    "filter_label": "Filtern",
+    "decide_heading": "Welches Tool für welche Aufgabe?",
+    "decide_intro": ("Es gibt nicht das eine beste Automatisierungs-Tool — es kommt auf deinen Fall an. "
+                     "Ein paar typische Situationen und welche Tools dafür einen Blick wert sind:"),
+    "guide": "Ratgeber",
+    "guide_nav": "Ratgeber: Tool auswählen",
+    "guide_title": "Automatisierungs-Tool auswählen: der ehrliche Leitfaden",
+    "meta_guide": ("Wie du das richtige Automatisierungs-Tool findest: No-Code vs. Code, EU-Hosting & DSGVO, "
+                   "Preismodelle (pro Task, pro Operation, nach Laufzeit), typische Fehler — ohne Hype."),
 }
 
 
@@ -136,6 +148,8 @@ def page_path(kind: str, slug: str = "") -> str:
         return f"/kategorie/{slug}.html"
     if kind == "focus":
         return f"/fokus/{slug}.html"
+    if kind == "guide":
+        return "/automatisierungs-tools-auswaehlen.html"
     if kind == "imprint":
         return "/impressum.html"
     if kind == "privacy":
@@ -226,6 +240,17 @@ padding:10px 18px;border-radius:8px;font-weight:600;margin-top:8px;}}
 .subnav{{font-size:.9rem;margin:6px 0 0;}}
 .search{{width:100%;padding:11px 14px;font-size:1rem;border:1px solid var(--border);border-radius:10px;margin:0 0 14px;}}
 .search:focus{{outline:2px solid var(--accent);border-color:var(--accent);}}
+.filters{{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}}
+.filters .lbl{{color:var(--muted);font-size:.85rem;font-weight:600;margin-right:2px;}}
+.fbtn{{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:999px;padding:5px 13px;font-size:.85rem;cursor:pointer;}}
+.fbtn:hover{{border-color:var(--accent);}}
+.fbtn.active{{background:var(--accent-h);color:#fff;border-color:var(--accent-h);}}
+.fbtn.eu[aria-pressed="true"]{{background:var(--success);border-color:var(--success);color:#fff;}}
+.decide{{margin:18px 0;}} .decide h2{{font-size:1.2rem;margin:0 0 8px;}}
+.decide ul{{list-style:none;padding:0;margin:0;}}
+.decide li{{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:10px 14px;margin:0 0 8px;}}
+.decide li b{{display:block;margin-bottom:3px;}}
+.tablewrap{{overflow-x:auto;-webkit-overflow-scrolling:touch;}}
 .ctab{{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem;}}
 .ctab th,.ctab td{{text-align:left;padding:9px 10px;border-bottom:1px solid var(--border);}}
 .ctab th{{color:var(--muted);font-weight:600;}} .ctab tr:hover td{{background:var(--bg-alt);}}
@@ -253,7 +278,8 @@ footer{{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);fon
 <p class="disclosure">{e(UI['disclosure'])}</p>
 </div></main>
 <footer><div class="wrap">
-© {date.today().year} {e(SITE_NAME)} · <a href="/datenschutz.html">{e(UI['privacy'])}</a> ·
+© {date.today().year} {e(SITE_NAME)} · <a href="/automatisierungs-tools-auswaehlen.html">{e(UI['guide'])}</a> ·
+<a href="/datenschutz.html">{e(UI['privacy'])}</a> ·
 <a href="/impressum.html">{e(UI['imprint'])}</a> · {e(UI['data_note'])}
 </div></footer>
 <script>
@@ -422,12 +448,17 @@ def tool_card(tool, aff):
     search = " ".join([tool["name"], tool.get("anbieter", ""), tool.get("fokus", "")]
                       + tool.get("kategorie", []) + tool.get("themen", [])
                       + tool.get("integration", [])).lower()
-    return f"""<article class="card" data-s="{e(search)}">
+    # Filter-Attribute (Client-Side, kein Tracking): EU-Flag, Kategorie- & Fokus-Slugs.
+    eu = "1" if tool.get("eu_lager") is True else ""
+    cat_slugs = " ".join(slugify(c) for c in tool.get("kategorie", []))
+    foc_slug = slugify(tool.get("fokus", "")) if tool.get("fokus") else ""
+    pm = tool.get("preismodell")
+    return f"""<article class="card" data-s="{e(search)}" data-eu="{e(eu)}" data-cats="{e(cat_slugs)}" data-fokus="{e(foc_slug)}">
 <h2><a href="{e(page_path('tool', slugify(tool['id'])))}">{e(tool['name'])}</a> {score_html(tool)}</h2>
 <div class="grid-meta">
 <span>🏷 {e(tool.get('kategorie', ['—'])[0] if tool.get('kategorie') else '—')}</span>
 <span>🌍 {e(tool.get('fokus','—'))}</span>
-<span>💶 {e(price_str(tool))}</span>
+<span>💳 {e(pm or UI['unknown'])}</span>
 </div>
 <p style="margin:8px 0 4px">{flag(UI['eu_stock'], tool.get('eu_lager'))} {flag(UI['de_ui'], tool.get('deutsche_oberflaeche'))}</p>
 <p class="meta">{cats}</p>
@@ -443,15 +474,15 @@ def comp_table(tools, aff):
         rows.append(
             f'<tr><td><a href="{e(page_path("tool", slugify(t["id"])))}">{e(t["name"])}</a></td>'
             f'<td>{e(t.get("kategorie", ["—"])[0] if t.get("kategorie") else "—")}</td>'
-            f'<td>{e(t.get("fokus","—"))}</td>'
             f'<td>{e(bool_str(t.get("eu_lager")))}</td>'
-            f'<td>{e(price_str(t))}</td>'
+            f'<td>{e(bool_str(t.get("deutsche_oberflaeche")))}</td>'
+            f'<td>{e(t.get("preismodell") or UI["unknown"])}</td>'
             f'<td><a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank" '
             f'style="padding:5px 12px">{e(UI["to_provider"])}{e(star)} →</a></td></tr>')
-    return (f'<table class="ctab"><thead><tr><th>{e(UI["tool"])}</th>'
-            f'<th>{e(UI["type"])}</th><th>{e(UI["focus"])}</th>'
-            f'<th>{e(UI["eu_stock"])}</th><th>{e(UI["price"])}</th><th></th></tr></thead>'
-            f'<tbody>{"".join(rows)}</tbody></table>')
+    return (f'<div class="tablewrap"><table class="ctab"><thead><tr><th>{e(UI["tool"])}</th>'
+            f'<th>{e(UI["type"])}</th><th>{e(UI["eu_stock"])}</th>'
+            f'<th>{e(UI["de_ui"])}</th><th>{e(UI["pricing_model"])}</th><th></th></tr></thead>'
+            f'<tbody>{"".join(rows)}</tbody></table></div>')
 
 
 # --- Pages ---------------------------------------------------------------------
@@ -486,6 +517,7 @@ def tool_page(tool, aff, related):
 <span>🌍 {e(UI['focus'])}: <a href="{e(page_path('focus', slugify(tool.get('fokus','x'))))}">{e(tool.get('fokus','—'))}</a></span>
 <span>🗣 {e(UI['language'])}: {e(", ".join(tool.get("sprache", [])) or "—")}</span>
 <span>🧩 {e(UI['format'])}: {e(tool.get('format','—'))}</span>
+<span>💳 {e(UI['pricing_model'])}: {e(tool.get('preismodell') or UI['unknown'])}</span>
 <span>💶 {e(UI['price'])}: {e(price_str(tool))}</span>
 </div>
 <p><strong>{e(UI['integration'])}:</strong><br>{integ or '—'}</p>
@@ -494,6 +526,7 @@ def tool_page(tool, aff, related):
 {('<div class="note"><strong>'+e(UI['editor_note'])+':</strong> '+e(note)+'</div>') if note else ''}
 {('<div class="note"><strong>'+e(UI['price'])+':</strong> '+e(price_note)+'</div>') if price_note else ''}
 {rel_html}
+<p class="subnav">📘 <a href="{e(page_path('guide'))}">{e(UI['guide_nav'])}</a></p>
 <a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank">{e(UI['to_provider'])} ({e(tool.get('anbieter',''))}){e(star)} →</a>
 {faq_section(tool)}"""
     desc = (note or UI["meta_tool"].format(
@@ -526,29 +559,168 @@ def focus_page(foc, members, aff):
                 body=body, canonical=BASE_URL + page_path("focus", slug), kind="focus", slug=slug)
 
 
+# Kuratierte Situationen → passende Tools (per id). Reines Mapping, keine erfundenen
+# Bewertungen — nur eine ehrliche Vorauswahl nach Einsatzzweck.
+DECISIONS = [
+    ("Du willst ohne Code starten und schnell zwei Apps verbinden",
+     ["make", "zapier"]),
+    ("EU-Hosting / DSGVO ist Pflicht (personenbezogene Daten im Spiel)",
+     ["locoia", "make", "n8n", "bryter", "seatable"]),
+    ("Du willst alles selbst hosten oder Open Source nutzen",
+     ["n8n", "activepieces", "seatable"]),
+    ("Du brauchst KI-Agenten, die Aufgaben eigenständig übernehmen",
+     ["lindy", "gumloop", "bardeen", "relay-app"]),
+    ("Enterprise: viele Systeme, RPA in Altsoftware ohne API",
+     ["uipath", "automation-anywhere", "power-automate", "workato"]),
+    ("Dein Betrieb läuft ohnehin auf Microsoft 365",
+     ["power-automate"]),
+    ("Du programmierst gern und willst eigenen Code zwischen den Schritten",
+     ["pipedream", "n8n", "latenode"]),
+]
+
+
+def decide_section(tools):
+    by_id = {t["id"]: t for t in tools}
+    items = []
+    for situation, ids in DECISIONS:
+        links = " · ".join(
+            f'<a href="{e(page_path("tool", slugify(i)))}">{e(by_id[i]["name"])}</a>'
+            for i in ids if i in by_id)
+        if links:
+            items.append(f"<li><b>{e(situation)}</b>{links}</li>")
+    return (f'<section class="decide"><h2>{e(UI["decide_heading"])}</h2>'
+            f'<p class="meta">{e(UI["decide_intro"])}</p>'
+            f'<ul>{"".join(items)}</ul></section>')
+
+
 def home_page(tools, categories, focuses, aff):
     cat_links = " · ".join(
         f'<a href="{e(page_path("cat", slugify(c)))}">{e(c)}</a>' for c in categories)
     foc_links = " · ".join(
         f'<a href="{e(page_path("focus", slugify(f)))}">{e(f)}</a>' for f in focuses)
-    subnav = (f'<p class="subnav"><strong>{e(UI["categories"])}:</strong> {cat_links}</p>\n'
+    subnav = (f'<p class="subnav">📘 <a href="{e(page_path("guide"))}">{e(UI["guide_nav"])}</a></p>\n'
+              f'<p class="subnav"><strong>{e(UI["categories"])}:</strong> {cat_links}</p>\n'
               f'<p class="subnav"><strong>{e(UI["focuses"])}:</strong> {foc_links}</p>')
+    # Interaktive Filter (Client-Side): Kategorie-Buttons + EU-Hosting-Toggle.
+    cat_btns = (f'<button class="fbtn active" type="button" data-cat="">{e(UI["filter_all"])}</button>'
+                + "".join(f'<button class="fbtn" type="button" data-cat="{e(slugify(c))}">{e(c)}</button>'
+                          for c in categories))
+    filters = (f'<div class="filters" id="filters" role="group" aria-label="{e(UI["filter_label"])}">'
+               f'<span class="lbl">{e(UI["filter_label"])}:</span>{cat_btns}'
+               f'<button class="fbtn eu" type="button" id="euToggle" aria-pressed="false">🇪🇺 {e(UI["filter_eu"])}</button>'
+               f'</div>')
     search = (f'<input id="q" class="search" type="search" '
               f'placeholder="{e(UI["search_ph"])}" aria-label="{e(UI["search_ph"])}">')
     cards = "\n".join(tool_card(t, aff) for t in tools)
     body = (f'{site_schema()}{itemlist(tools)}'
             f'{subnav}\n'
             f'<div class="note">{e(UI["honest"])}</div>\n'
+            f'{decide_section(tools)}\n'
             f'<h2 style="margin:18px 0 12px">{e(UI["home_heading"].format(n=len(tools)))}</h2>\n'
             f'<p class="meta">Preise und Bewertungen werden nicht geschätzt. Was noch nicht '
             f'redaktionell geprüft ist, steht als „{e(UI["to_check"])}“ — bitte beim Anbieter prüfen. '
             f'„{e(UI["eu_stock"])}“ ist der wichtigste DACH-Filter: DSGVO-näher, EU-Datenverarbeitung, weniger Drittland-Aufwand, wenn personenbezogene Daten durch deine Workflows laufen.</p>\n'
             f'{comp_table(tools, aff)}\n'
-            f'{search}\n<p id="nores" hidden>{e(UI["no_results"])}</p>\n{cards}\n'
+            f'{search}\n{filters}\n<p id="nores" hidden>{e(UI["no_results"])}</p>\n{cards}\n'
             f'<script src="/search.js" defer></script>')
     return page(title=f"{SITE_NAME} — {UI['tagline']}",
                 description=UI["meta_home"].format(n=len(tools)), body=body,
                 canonical=BASE_URL + page_path("home"), kind="home")
+
+
+def guide_page(tools, categories, focuses):
+    """SEO-Cornerstone: ehrlicher Ratgeber zur Tool-Auswahl (Article + FAQPage + Breadcrumb)."""
+    by_id = {t["id"]: t for t in tools}
+
+    def link(i):
+        return (f'<a href="{e(page_path("tool", slugify(i)))}">{e(by_id[i]["name"])}</a>'
+                if i in by_id else e(i))
+
+    def catlink(c):
+        return f'<a href="{e(page_path("cat", slugify(c)))}">{e(c)}</a>'
+
+    crumb = breadcrumb([(SITE_NAME, page_path("home")),
+                        (UI["guide_nav"], page_path("guide"))])
+    faqs = [
+        ("Brauche ich ein No-Code-Tool oder darf es Code sein?",
+         "No-Code-Tools wie Make oder Zapier sind schneller eingerichtet und brauchen kein "
+         "Programmieren. Sobald Logik komplexer wird oder du eigene APIs ansprichst, sparen "
+         "Tools mit Code-Knoten (n8n, Pipedream, Latenode) langfristig Zeit — kosten aber "
+         "etwas Einarbeitung. Faustregel: einfache Verknüpfungen No-Code, individuelle Logik mit Code."),
+        ("Worauf muss ich beim Datenschutz (DSGVO) achten?",
+         "Sobald personenbezogene Daten durch ein Tool laufen, brauchst du einen "
+         "Auftragsverarbeitungsvertrag (AVV) und Klarheit über den Hosting-Standort. EU-Hosting "
+         "(z. B. Locoia, Make EU-Region, BRYTER, SeaTable, self-gehostetes n8n) erspart dir den "
+         "Aufwand mit Drittlandtransfer. Bei US-Tools die Standardvertragsklauseln und das aktuelle "
+         "Datenschutz-Framework prüfen."),
+        ("Was bedeuten die Preismodelle (pro Task, pro Operation, nach Laufzeit)?",
+         "„pro Task“ (Zapier) zählt jede ausgeführte Aktion, „pro Operation“ (Make) jeden einzelnen "
+         "Schritt im Szenario — bei vielen Schritten kann das teurer werden. „nach Laufzeit“ "
+         "(Latenode) rechnet die Ausführungszeit ab, „Credits“ verbrauchen KI-Schritte. Rechne mit "
+         "deinem realen Volumen durch, nicht mit dem Einstiegspreis."),
+        ("Sind KI-Agenten in der Automatisierung schon zuverlässig?",
+         "KI-Agenten (Lindy, Gumloop, Bardeen) können Aufgaben wie E-Mails sortieren oder Daten "
+         "aufbereiten übernehmen — sie machen aber Fehler. Setze sie mit Kontrolle ein "
+         "(Mensch bestätigt wichtige Schritte, z. B. mit Relay.app) und nicht blind auf Autopilot."),
+        ("Was ist der häufigste Fehler beim Automatisieren?",
+         "Einen unsauberen Prozess zu automatisieren. Ein Tool macht einen schlechten Ablauf nur "
+         "schneller, nicht besser. Erst den Prozess klären und vereinfachen, dann automatisieren — "
+         "und mit einem kleinen, gut testbaren Workflow anfangen."),
+    ]
+    faq_html = "".join(
+        f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in faqs)
+    faq_schema = {"@context": "https://schema.org", "@type": "FAQPage",
+                  "mainEntity": [{"@type": "Question", "name": q,
+                                  "acceptedAnswer": {"@type": "Answer", "text": a}}
+                                 for q, a in faqs]}
+    art_schema = {"@context": "https://schema.org", "@type": "Article",
+                  "headline": UI["guide_title"], "inLanguage": LANG,
+                  "author": {"@type": "Organization", "name": SITE_NAME},
+                  "publisher": {"@type": "Organization", "name": SITE_NAME},
+                  "dateModified": date.today().isoformat(),
+                  "description": UI["meta_guide"],
+                  "mainEntityOfPage": BASE_URL + page_path("guide")}
+    schema = ("".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>'
+                      for x in (art_schema, faq_schema)))
+    body = f"""{crumb}{schema}
+<p><a href="{e(page_path('home'))}">{e(UI['all_tools'])}</a></p>
+<h1>{e(UI['guide_title'])}</h1>
+<p>Automatisierung wird gern als Wundermittel verkauft. Hier steht ohne Hype, wie du in fünf
+Schritten das passende Tool findest — und welche Fehler dich Zeit und Geld kosten.</p>
+
+<h2>1. Erst den Prozess klären, dann das Tool</h2>
+<p>Bevor du ein Tool wählst: Schreib den Ablauf auf, den du automatisieren willst. Wo kommen die
+Daten her, was soll passieren, wo landen sie? Ein automatisierter Chaos-Prozess bleibt Chaos —
+nur schneller. Fang mit einem kleinen, klar abgegrenzten Workflow an.</p>
+
+<h2>2. No-Code oder mit Code?</h2>
+<p>Für einfache Verknüpfungen reichen No-Code-Werkzeuge wie {link('make')} oder {link('zapier')}.
+Wird die Logik komplex oder brauchst du eigene APIs, lohnen Tools mit Code-Knoten wie
+{link('n8n')}, {link('pipedream')} oder {link('latenode')}. Mehr dazu unter
+{catlink('Workflow-Automatisierung (No-Code)')} und {catlink('iPaaS / App-Integration')}.</p>
+
+<h2>3. EU-Hosting &amp; DSGVO prüfen (der DACH-Faktor)</h2>
+<p>Laufen personenbezogene Daten durch das Tool, ist der Hosting-Standort entscheidend. EU-Hosting
+spart dir den Aufwand mit Drittlandtransfer. Anbieter mit EU-Fokus: {link('locoia')},
+{link('make')} (EU-Region), {link('bryter')}, {link('seatable')} und self-gehostetes {link('n8n')}.
+Vertiefung: {catlink('Prozess-Orchestrierung / BPM')} und der Schwerpunkt
+<a href="{e(page_path('focus', slugify('EU-Hosting / DSGVO')))}">EU-Hosting / DSGVO</a>.</p>
+
+<h2>4. Preismodell zum eigenen Volumen rechnen</h2>
+<p>Nicht der Einstiegspreis zählt, sondern dein reales Volumen. „pro Task“, „pro Operation“,
+„nach Laufzeit“ oder „Credits“ verhalten sich bei vielen Schritten sehr unterschiedlich. Die
+Spalte <em>{e(UI['pricing_model'])}</em> in der Übersicht zeigt dir das Modell jedes Tools.</p>
+
+<h2>5. KI-Agenten: mit Kontrolle einsetzen</h2>
+<p>KI-Agenten wie {link('lindy')}, {link('gumloop')} oder {link('bardeen')} übernehmen Aufgaben
+eigenständig — machen aber Fehler. Baue Kontroll- und Freigabeschritte ein (z. B. mit
+{link('relay-app')}), statt blind auf Autopilot zu vertrauen. Mehr unter
+<a href="{e(page_path('focus', slugify('KI-Agenten')))}">KI-Agenten</a>.</p>
+
+<section class="faq"><h2>{e(UI['faq_heading'])}</h2>{faq_html}</section>
+<p class="subnav"><a href="{e(page_path('home'))}">→ Alle {len(tools)} Tools im Vergleich ansehen</a></p>"""
+    return page(title=f"{UI['guide_title']} — {SITE_NAME}", description=UI["meta_guide"],
+                body=body, canonical=BASE_URL + page_path("guide"), kind="guide")
 
 
 # --- Legal (Operator: Alleng Chour, Belp/CH — wie ki-tools-radar) --------------
@@ -651,20 +823,41 @@ def rss_feed(tools):
             f"<lastBuildDate>{now}</lastBuildDate>" + "".join(items) + "</channel></rss>")
 
 
-SEARCH_JS = """// Automatisierungs-Radar — client-side filter (no deps, no tracking)
+SEARCH_JS = """// Automatisierungs-Radar — client-side suche + filter (no deps, no tracking)
 (function () {
   var q = document.getElementById('q');
-  if (!q) return;
   var cards = Array.prototype.slice.call(document.querySelectorAll('article.card'));
+  if (!cards.length) return;
   var nores = document.getElementById('nores');
-  q.addEventListener('input', function () {
-    var v = q.value.trim().toLowerCase(), n = 0;
+  var catBtns = Array.prototype.slice.call(document.querySelectorAll('.fbtn[data-cat]'));
+  var euBtn = document.getElementById('euToggle');
+  var activeCat = '', euOnly = false;
+
+  function apply() {
+    var v = q ? q.value.trim().toLowerCase() : '', n = 0;
     cards.forEach(function (c) {
-      var show = !v || (c.dataset.s || '').indexOf(v) !== -1;
+      var okText = !v || (c.dataset.s || '').indexOf(v) !== -1;
+      var okCat = !activeCat || (' ' + (c.dataset.cats || '') + ' ').indexOf(' ' + activeCat + ' ') !== -1;
+      var okEu = !euOnly || c.dataset.eu === '1';
+      var show = okText && okCat && okEu;
       c.style.display = show ? '' : 'none';
       if (show) n++;
     });
     if (nores) nores.hidden = n > 0;
+  }
+
+  if (q) q.addEventListener('input', apply);
+  catBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      activeCat = b.getAttribute('data-cat') || '';
+      catBtns.forEach(function (x) { x.classList.toggle('active', x === b); });
+      apply();
+    });
+  });
+  if (euBtn) euBtn.addEventListener('click', function () {
+    euOnly = !euOnly;
+    euBtn.setAttribute('aria-pressed', euOnly ? 'true' : 'false');
+    apply();
   });
 })();
 """
@@ -746,6 +939,11 @@ def build(data_path: Path, aff_path: Path, out: Path) -> int:
         of.write_text(focus_page(foc, by_focus[foc], aff), encoding="utf-8")
         pages += 1
 
+    # SEO-Ratgeber (Cornerstone)
+    out_file(out, "guide").write_text(
+        guide_page(tools_sorted, used_cats, used_focuses), encoding="utf-8")
+    pages += 1
+
     # Rechtsseiten + 404
     out_file(out, "imprint").write_text(imprint_page(), encoding="utf-8")
     out_file(out, "privacy").write_text(privacy_page(), encoding="utf-8")
@@ -757,7 +955,7 @@ def build(data_path: Path, aff_path: Path, out: Path) -> int:
 
     # Sitemap
     today = date.today().isoformat()
-    urls = ([BASE_URL + page_path("home"),
+    urls = ([BASE_URL + page_path("home"), BASE_URL + page_path("guide"),
              BASE_URL + page_path("imprint"), BASE_URL + page_path("privacy")]
             + [BASE_URL + page_path("tool", slugify(t["id"])) for t in tools]
             + [BASE_URL + page_path("cat", slugify(c)) for c in used_cats]
