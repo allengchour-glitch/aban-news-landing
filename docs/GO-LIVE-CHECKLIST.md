@@ -88,33 +88,39 @@ geht es deutlich schneller. **Beides kostenlos:**
 Alles unten ist **gebaut und gemergt** — es fehlt nur deine Konto-/Domain-Seite.
 Reihenfolge egal; jedes Projekt ist unabhängig.
 
-### 6a. Cloudflare-Projekte je Subdomain (nur Klicks, gratis)
-Jeder Radar/Shop hat einen Auto-Build-Workflow, der bei Push nach `main` baut.
-Pro Projekt **einmal** in Cloudflare Pages anlegen + Custom Domain zuordnen:
+### 6a. Cloudflare-Projekte je Subdomain
 
-| Ordner | CF-Projektname | Domain | Build-Output |
-|--------|----------------|--------|--------------|
-| `ki-verzeichnis/` | `ki-verzeichnis` | `tools.abannews.com` | `dist/` |
-| `pod-shop/` | `shop` | `shop.abannews.com` | `dist/` |
-| `musik-radar/` | `musik` | `musik.abannews.com` | `dist/` |
-| `video-radar/` | `video` | `video.abannews.com` | `dist/` |
-| `voice-radar/` | `voice` | `voice.abannews.com` | `dist/` |
-| `chatbot-radar/` | `chatbot` | `chatbot.abannews.com` | `dist/` |
-| `buchhaltung-radar/` | `buchhaltung` | `buchhaltung.abannews.com` | `dist/` |
-| `newsletter-radar/` | `newsletter` | `newsletter.abannews.com` | `dist/` |
-| `dropshipping-radar/` | `dropshipping` | `dropshipping.abannews.com` | `dist/` |
-| `automatisierung-radar/` | `automatisierung` | `automatisierung.abannews.com` | `dist/` |
-| `kurse-radar/` | `kurse` | `kurse.abannews.com` | `dist/` |
-| `prompts-bibliothek/` | `prompts` | `prompts.abannews.com` | `dist/` |
-| `agenturen-radar/` | `agenturen` | `agenturen.abannews.com` | `dist/` |
-| `handwerk-radar/` | `handwerk` | `handwerk.abannews.com` | `dist/` ⚠️ erst Daten verifizieren |
+**Schnellster Weg — automatisiert (empfohlen):** Statt jede Subdomain von Hand
+anzulegen, macht das `tools/cf_pages_setup.py` per Cloudflare-API (Projekt +
+Custom-Domain + DNS-CNAME, idempotent). Es kennt alle Projekte inkl. `tools`
+(ki-verzeichnis) und `shop` (pod-shop). Anleitung: **`docs/CF-PAGES-SETUP.md`**.
+- [ ] API-Token anlegen (`Pages · Edit` + `Zone · DNS · Edit` für abannews.com).
+- [ ] `python3 tools/cf_pages_setup.py --list` zeigt alle Projekt-Keys.
+- [ ] Weg B (ganz ohne Dashboard): Actions → „Cloudflare Pages — Direct Deploy" →
+      Run mit dem Projekt-Key (`tools`, `shop`, `musik`, `video`, …).
 
-- [ ] Pro Zeile: Cloudflare Pages → **Create project** → **Connect to Git** → dieses Repo →
-      Build command **leer**, Output directory = `dist/`, Branch `main`, Root = der Ordner.
-      Oder den vorhandenen Workflow nutzen (deployt automatisch, wenn `CLOUDFLARE_API_TOKEN`
-      + `CLOUDFLARE_ACCOUNT_ID` als GitHub-Secrets gesetzt sind).
-- [ ] Custom Domain (Subdomain) im CF-Projekt zuordnen → CNAME wird automatisch gesetzt.
-- Detail-Hintergrund: `docs/GO-LIVE-RADARS.md`.
+**Projekte (Key → Ordner → Domain):**
+
+| Key | Ordner | Domain |
+|-----|--------|--------|
+| `tools` | `ki-verzeichnis/` | `tools.abannews.com` |
+| `shop` | `pod-shop/` | `shop.abannews.com` |
+| `musik` | `musik-radar/` | `musik.abannews.com` |
+| `video` | `video-radar/` | `video.abannews.com` |
+| `voice` | `voice-radar/` | `voice.abannews.com` |
+| `chatbot` | `chatbot-radar/` | `chatbot.abannews.com` |
+| `buchhaltung` | `buchhaltung-radar/` | `buchhaltung.abannews.com` |
+| `newsletter` | `newsletter-radar/` | `newsletter.abannews.com` |
+| `dropshipping` | `dropshipping-radar/` | `dropshipping.abannews.com` |
+| `automatisierung` | `automatisierung-radar/` | `automatisierung.abannews.com` |
+| `kurse` | `kurse-radar/` | `kurse.abannews.com` |
+| `prompts` | `prompts-bibliothek/` | `prompts.abannews.com` |
+| `agenturen` | `agenturen-radar/` | `agenturen.abannews.com` |
+| `handwerk` | `handwerk-radar/` | `handwerk.abannews.com` ⚠️ erst Daten verifizieren |
+
+**Manuell (Fallback):** Cloudflare Pages → Create project → Connect to Git → dieses
+Repo, Build command `cd <ordner> && python generate.py`, Output `<ordner>/dist`,
+Branch `main` → Custom Domain zuordnen. Detail-Hintergrund: `docs/GO-LIVE-RADARS.md`.
 
 ### 6b. POD-Shop verkaufsfähig machen (`pod-shop/`)
 - [ ] Shopify-Store anlegen, `pod-shop/shopify-import.csv` importieren (Status bleibt `draft`).

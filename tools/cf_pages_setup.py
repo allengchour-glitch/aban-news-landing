@@ -71,6 +71,8 @@ RADARS = {
     "musik":           {"dir": "musik-radar",           "sub": "musik"},
     "automatisierung": {"dir": "automatisierung-radar", "sub": "automatisierung"},
     "handwerk":        {"dir": "handwerk-radar",        "sub": "handwerk"},
+    "tools":           {"dir": "ki-verzeichnis",        "sub": "tools"},
+    "shop":            {"dir": "pod-shop",              "sub": "shop"},
 }
 
 
