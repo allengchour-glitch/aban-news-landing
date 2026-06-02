@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-06-02",
+  "titel": "Hype-Watch",
+  "untertitel": "Überhypte KI-Behauptungen, ruhig auseinandergenommen — mit Belegen.",
+  "hinweis": "Faktencheck-Serie von aban news. Jeder Fall nennt die Behauptung, was wirklich belegt ist und die Quellen. Anti-Hype, du-Form. Neue Fälle kommen laufend dazu.",
+  "faelle": [
+    {
+      "id": "ki-macht-entwickler-massiv-produktiver",
+      "datum": "2026-06-02",
+      "claim": "KI-Tools machen erfahrene Entwickler massiv (oft „10x\") produktiver.",
+      "behauptung_von": "KI-Tool-Marketing und unzählige Produktivitäts-Threads",
+      "verdikt": "Irreführend",
+      "rating": 2,
+      "der_hype": "Überall liest man, KI-Coding-Tools würden die Arbeit von Entwicklern dramatisch beschleunigen — „10x\", „doppelt so schnell\", „nie wieder ohne\". Meist als Gefühl, selten gemessen.",
+      "die_realitaet": "Eine randomisierte Studie (METR, 2025) hat genau das gemessen: 16 erfahrene Open-Source-Entwickler, eigene große Codebases. Mit KI-Tools brauchten sie im Schnitt rund 19 % LÄNGER — obwohl sie hinterher schätzten, etwa 20 % schneller gewesen zu sein. Ein Großteil der Zeit ging fürs Prüfen und Korrigieren unzuverlässiger KI-Ausgaben drauf.",
+      "einordnung": "Das heißt nicht, dass KI beim Coden nutzlos ist — bei fremden Sprachen, Boilerplate oder Prototypen kann sie helfen. Aber in vertrautem, komplexem Code ist „schneller\" oft eine Illusion. Verlass dich auf gemessene Zeit, nicht aufs Bauchgefühl.",
+      "quellen": [
+        {"titel": "METR (2025): Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity (randomisierte Studie)", "url": "https://arxiv.org/abs/2507.09089"}
+      ]
+    },
+    {
+      "id": "chatgpt-als-verlaessliche-faktenquelle",
+      "datum": "2026-06-02",
+      "claim": "Du kannst KI-Chatbots als verlässliche Quelle für Fakten und Belege nutzen.",
+      "behauptung_von": "„Frag einfach ChatGPT\"-Ratschläge",
+      "verdikt": "Falsch",
+      "rating": 1,
+      "der_hype": "„Lass dir das von ChatGPT recherchieren\" — als wären Sprachmodelle eine Suchmaschine mit geprüften Fakten und echten Quellenangaben.",
+      "die_realitaet": "Im US-Fall Mata v. Avianca (2023) reichten Anwälte einen Schriftsatz mit mehreren Gerichtsurteilen ein, die ChatGPT komplett erfunden hatte — inklusive erfundener Zitate. Das Modell „bestätigte\" auf Nachfrage sogar, die Fälle existierten. Der Richter verhängte 5.000 $ Strafe. Sprachmodelle erzeugen plausibel klingende, aber teils frei erfundene Belege („Halluzinationen\").",
+      "einordnung": "KI ist stark beim Formulieren und Umschreiben — nicht als Faktenquelle ohne Prüfung. Jede Zahl, jedes Zitat, jede Quelle selbst verifizieren, bevor du sie weitergibst.",
+      "quellen": [
+        {"titel": "CNN (2023): Lawyer apologizes for fake court citations from ChatGPT", "url": "https://www.cnn.com/2023/05/27/business/chat-gpt-avianca-mata-lawyers"},
+        {"titel": "Mata v. Avianca, Inc. — Übersicht", "url": "https://en.wikipedia.org/wiki/Mata_v._Avianca,_Inc."}
+      ]
+    }
+  ]
+}
