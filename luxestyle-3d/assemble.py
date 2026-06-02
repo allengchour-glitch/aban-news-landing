@@ -54,7 +54,10 @@ else:
     else: raise SystemExit("IN: colored.obj, .glb oder Ordner mit color_*.stl")
     o=max([x for x in bpy.context.scene.objects if x.type=='MESH'], key=lambda m: sum(m.dimensions))
 
-bpy.context.view_layer.objects.active=o; o.select_set(True)
+bpy.context.view_layer.objects.active=o
+for x in bpy.context.scene.objects: x.select_set(x is o)
+o.select_set(True)
+bpy.ops.object.make_single_user(object=True, obdata=True)
 bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
 
 # --- Dreiecke erzwingen (3MF kennt nur Dreiecke) ---
