@@ -34,6 +34,7 @@ detail  = os.environ.get("POLISH_DETAIL", "none")
 strength= float(os.environ.get("POLISH_STRENGTH", "0.15"))
 cell    = float(os.environ.get("POLISH_CELL", "0.3"))
 size_mm = float(os.environ.get("POLISH_SIZE", "0"))   # 0 = nicht skalieren
+deci    = float(os.environ.get("POLISH_DECIMATE", "1"))  # 1 = keine Reduktion
 smooth  = os.environ.get("POLISH_SMOOTH", "0") == "1"
 render  = os.environ.get("POLISH_RENDER", "0") == "1"
 
@@ -77,6 +78,11 @@ bpy.ops.mesh.select_all(action="SELECT")
 bpy.ops.mesh.remove_doubles(threshold=0.0005)
 bpy.ops.mesh.normals_make_consistent(inside=False)
 bpy.ops.object.mode_set(mode="OBJECT")
+
+# --- optional Polygone reduzieren (fuer dichte KI-Meshes) ---
+if 0 < deci < 1:
+    dec = obj.modifiers.new("dec", "DECIMATE")
+    dec.ratio = deci
 
 # --- optional glaetten (Subdivision) ---
 if smooth or detail != "none":
@@ -162,6 +168,7 @@ def main(argv=None) -> int:
     p.add_argument("--strength", type=float, default=0.15, help="Staerke der Struktur in mm")
     p.add_argument("--cell", type=float, default=0.3, help="Musterdichte (kleiner = feiner)")
     p.add_argument("--size", type=float, default=0, help="laengste Kante in mm (0 = nicht skalieren)")
+    p.add_argument("--decimate", type=float, default=1.0, help="Polygone reduzieren (z. B. 0.2 = 20%% behalten)")
     p.add_argument("--smooth", action="store_true", help="zusaetzlich glaetten")
     p.add_argument("--render", action="store_true", help="Vorschau-PNG rendern")
     a = p.parse_args(argv)
@@ -178,6 +185,7 @@ def main(argv=None) -> int:
                POLISH_IN=str(inp.resolve()), POLISH_OUT=str(out.resolve()),
                POLISH_DETAIL=a.detail, POLISH_STRENGTH=str(a.strength),
                POLISH_CELL=str(a.cell), POLISH_SIZE=str(a.size),
+               POLISH_DECIMATE=str(a.decimate),
                POLISH_SMOOTH="1" if a.smooth else "0",
                POLISH_RENDER="1" if a.render else "0")
 
