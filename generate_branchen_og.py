@@ -81,6 +81,16 @@ BRANCHEN = {
     "geruestbau":          ("Gerüstbau",           ["Angebote & Kommunikation,", "nicht das Gerüst"]),
     "raumausstatter":      ("Raumausstatter",      ["Angebote & Beratungstexte,", "nicht die Polsterung"]),
     "schornsteinfeger":    ("Schornsteinfeger",    ["Termine & Berichte,", "nicht die Kehrung"]),
+    "heilpraktiker":       ("Heilpraktiker",       ["Praxis-Orga & Mails,", "nicht die Behandlung"]),
+    "hoerakustiker":       ("Hörakustiker",        ["Termine & Nachsorge,", "nicht die Anpassung"]),
+    "podologen":           ("Podologie",           ["Orga & Schriftkram,", "nicht die Behandlung"]),
+    "zahntechniker":       ("Zahntechnik",         ["Angebote & Aufträge,", "nicht der Zahnersatz"]),
+    "sanitaetshaeuser":    ("Sanitätshäuser",      ["Kunden & Rezept-Kram,", "nicht die Versorgung"]),
+    "kieferorthopaeden":   ("Kieferorthopädie",    ["Termine & Eltern-Mails,", "nicht die Behandlung"]),
+    "notare":              ("Notariate",           ["Schriftkram & Termine,", "nicht die Beurkundung"]),
+    "wirtschaftspruefer":  ("Wirtschaftsprüfer",   ["Mandantenkram & Entwürfe,", "nicht das Testat"]),
+    "sachverstaendige":    ("Sachverständige",     ["Orga & Rohtexte,", "nicht das Gutachten"]),
+    "hausmeisterservice":  ("Hausmeisterservice",  ["Angebote & Kommunikation,", "nicht die Arbeit"]),
 }
 
 
