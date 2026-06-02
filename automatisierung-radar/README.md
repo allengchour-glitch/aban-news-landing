@@ -109,6 +109,46 @@ Der Radar wächst datengetrieben — **ohne erfundene Inhalte**:
    python3 suggest_tools.py --check    # Exit 1, wenn neue Kandidaten offen sind (CI)
    ```
 
+## KI-Funktionen (Claude API)
+
+Vier KI-Funktionen, die wie ein Redaktions-Assistent mitdenken — alle über das
+Anthropic-SDK / die Claude-API, alle nach derselben Regel: **die KI erfindet nichts.**
+Sie liefert Entwürfe und Prüf-Fragen; ein Mensch verifiziert und schaltet live.
+
+**Offline-CLI** `ai/ki_helfer.py` (Modell `claude-opus-4-8`, gecachter Aban-Voice-Präfix):
+
+```bash
+pip install anthropic
+export ANTHROPIC_API_KEY="sk-ant-..."
+
+# 1) Recherche-Assistent: Faktenfelder für ein reales Tool entwerfen
+python3 ai/ki_helfer.py recherche --name "Nintex" --url https://www.nintex.com/ --add
+
+# 2) Content-Generator: Bausteine in Aban-Voice aus den echten Daten
+python3 ai/ki_helfer.py content --typ newsletter
+python3 ai/ki_helfer.py content --typ tool-des-monats --id n8n
+python3 ai/ki_helfer.py content --typ social
+
+# 3) Daten-Wächter: Prüf-Checkliste (Fragen, keine Behauptungen) -> data/_audit.json
+python3 ai/ki_helfer.py audit
+```
+
+Recherche/Content/Audit erzeugen Entwürfe mit `[Redaktion: prüfen]`; `preis_eur` und
+`worth_it_score` bleiben immer `null`. Generierten Marketing-Text vor dem Posten gegen
+die Aban-Sperrliste prüfen (`tools/brand-voice-linter.py … --strict`).
+
+**4) Frage-Assistent auf der Website** — `/fragen.html` + Edge-Function
+`functions/api/ask.js` (von `generate.py` nach `dist/` gebaut). Beantwortet
+„Welches Tool für X?" **nur aus den gelisteten echten Tools**, mit Blick auf
+EU-Hosting; nennt keine erfundenen Preise. Server-seitig über Cloudflare Pages
+Functions, Modell `claude-haiku-4-5` (schnell + günstig). **Ohne gesetzten
+`ANTHROPIC_API_KEY` antwortet die Function mit einem freundlichen Fallback** (kein
+Hard-Fail). Zum Aktivieren den Key als Umgebungs-Variable/Secret im Cloudflare-Pages-
+Projekt `automatisierung` hinterlegen.
+
+Automatisierte KI-Workflows: `.github/workflows/automatisierung-radar-audit.yml`
+(wöchentlicher Daten-Wächter, Artefakt; nur mit Secret, sonst übersprungen).
+
 ## Pflege
 
 - Neuen Anbieter ergänzen: Objekt in `data/anbieter.json` → `anbieter[]` einfügen

@@ -117,6 +117,11 @@ UI = {
     "usecase_nav": "Nach Anwendungsfall",
     "vs_word": "vs.",
     "verdict": "Wann welches?",
+    "ask_nav": "KI-Assistent (Beta)",
+    "ask_title": "KI-Assistent: Welches Automatisierungs-Tool passt zu dir?",
+    "meta_ask": ("Frag den KI-Assistenten des Automatisierungs-Radars: Er empfiehlt aus den "
+                 "echten, gelisteten Tools — mit Blick auf EU-Hosting und deinen Anwendungsfall. "
+                 "Keine erfundenen Preise."),
     "guide_title": "Automatisierungs-Tool auswählen: der ehrliche Leitfaden",
     "meta_guide": ("Wie du das richtige Automatisierungs-Tool findest: No-Code vs. Code, EU-Hosting & DSGVO, "
                    "Preismodelle (pro Task, pro Operation, nach Laufzeit), typische Fehler — ohne Hype."),
@@ -163,6 +168,8 @@ def page_path(kind: str, slug: str = "") -> str:
         return f"/vergleich/{slug}.html"
     if kind == "usecase":
         return f"/fuer/{slug}.html"
+    if kind == "ask":
+        return "/fragen.html"
     if kind == "guide":
         return "/automatisierungs-tools-auswaehlen.html"
     if kind == "imprint":
@@ -775,6 +782,62 @@ def usecase_page(uc, members, aff):
                 body=body, canonical=BASE_URL + page_path("usecase", slug), kind="usecase", slug=slug)
 
 
+def ask_page():
+    """KI-Frage-Assistent (Beta): Chat-UI, ruft die eigene /api/ask Edge-Function."""
+    crumb = breadcrumb([(SITE_NAME, page_path("home")),
+                        (UI["ask_nav"], page_path("ask"))])
+    examples = [
+        "Ich will Onlineshop-Bestellungen automatisieren und brauche EU-Hosting.",
+        "No-Code-Tool für den Einstieg, das auch Deutsch kann?",
+        "Welches Tool für RPA in alten Programmen ohne API?",
+        "KI-Agent, der meine E-Mails vorsortiert — was passt?",
+    ]
+    ex_btns = "".join(
+        f'<button class="fbtn ex" type="button">{e(x)}</button>' for x in examples)
+    body = f"""{crumb}
+<p><a href="{e(page_path('home'))}">{e(UI['all_tools'])}</a></p>
+<h1>🤖 {e(UI['ask_title'])}</h1>
+<p>Beschreib in einem Satz, wofür du automatisieren willst. Der Assistent empfiehlt aus den
+{e(UI['data_note'])} — mit Blick auf EU-Hosting und deinen Anwendungsfall. Er nennt keine
+erfundenen Preise; den aktuellen Tarif prüfst du beim Anbieter.</p>
+<div class="filters" style="margin:6px 0 12px">{ex_btns}</div>
+<textarea id="aq" class="search" rows="3" style="resize:vertical"
+ placeholder="z. B. „Ich will Rechnungen aus E-Mails automatisch in die Buchhaltung übertragen, EU-Hosting wichtig."" aria-label="Deine Frage"></textarea>
+<p><button class="cta" id="asend" type="button" style="border:0;cursor:pointer">Fragen →</button>
+<span id="astatus" class="meta" style="margin-left:10px"></span></p>
+<div id="aout" class="note" hidden></div>
+<p class="meta">Beta · Antworten können Fehler enthalten — prüfe Wichtiges beim Anbieter.
+Es werden keine Daten gespeichert oder getrackt; deine Frage geht nur zur Beantwortung an die KI.</p>
+<p class="subnav">📘 <a href="{e(page_path('guide'))}">{e(UI['guide_nav'])}</a> ·
+<a href="{e(page_path('home'))}">{e(UI['all_tools'])}</a></p>
+<script>
+(function(){{
+  var q=document.getElementById('aq'),btn=document.getElementById('asend'),
+      out=document.getElementById('aout'),st=document.getElementById('astatus');
+  document.querySelectorAll('.fbtn.ex').forEach(function(b){{
+    b.addEventListener('click',function(){{q.value=b.textContent;q.focus();}});
+  }});
+  function ask(){{
+    var text=(q.value||'').trim(); if(!text){{q.focus();return;}}
+    btn.disabled=true; st.textContent='Denke nach…'; out.hidden=true;
+    fetch('/api/ask',{{method:'POST',headers:{{'content-type':'application/json'}},
+      body:JSON.stringify({{question:text}})}})
+      .then(function(r){{return r.json();}})
+      .then(function(d){{
+        out.hidden=false; out.textContent=d.answer||'Keine Antwort.';
+        st.textContent=d.ai===false?'(Assistent inaktiv)':'';
+      }})
+      .catch(function(){{out.hidden=false;out.textContent='Gerade nicht erreichbar. Bitte später erneut.';st.textContent='';}})
+      .finally(function(){{btn.disabled=false;}});
+  }}
+  btn.addEventListener('click',ask);
+  q.addEventListener('keydown',function(ev){{if((ev.ctrlKey||ev.metaKey)&&ev.key==='Enter')ask();}});
+}})();
+</script>"""
+    return page(title=f"{UI['ask_title']} — {SITE_NAME}", description=UI["meta_ask"],
+                body=body, canonical=BASE_URL + page_path("ask"), kind="ask")
+
+
 # Kuratierte „beliebte Vergleiche" für die Startseite (nur Paare, die real existieren).
 POPULAR_VS = [("n8n", "make"), ("make", "zapier"), ("n8n", "zapier"),
               ("uipath", "automation-anywhere"), ("zapier", "power-automate"),
@@ -789,7 +852,8 @@ def home_page(tools, categories, focuses, aff):
         f'<a href="{e(page_path("focus", slugify(f)))}">{e(f)}</a>' for f in focuses)
     uc_links = " · ".join(
         f'<a href="{e(page_path("usecase", uc["slug"]))}">{e(uc["name"])}</a>' for uc in USE_CASES)
-    subnav = (f'<p class="subnav">📘 <a href="{e(page_path("guide"))}">{e(UI["guide_nav"])}</a></p>\n'
+    subnav = (f'<p class="subnav">🤖 <a href="{e(page_path("ask"))}">{e(UI["ask_nav"])}</a> · '
+              f'📘 <a href="{e(page_path("guide"))}">{e(UI["guide_nav"])}</a></p>\n'
               f'<p class="subnav"><strong>{e(UI["categories"])}:</strong> {cat_links}</p>\n'
               f'<p class="subnav"><strong>{e(UI["focuses"])}:</strong> {foc_links}</p>\n'
               f'<p class="subnav"><strong>{e(UI["usecase_nav"])}:</strong> {uc_links}</p>')
@@ -1062,6 +1126,89 @@ SEARCH_JS = """// Automatisierungs-Radar — client-side suche + filter (no deps
 """
 
 
+# --- KI-Frage-Assistent: Cloudflare Pages Function (Edge) -----------------------
+# Server-seitig, ruft die Anthropic-API mit context.env.ANTHROPIC_API_KEY auf.
+# Ohne Key → freundlicher Fallback (kein Hard-Fail). Antwortet NUR aus den
+# mitgelieferten echten Tool-Daten; System-Prompt verbietet erfundene Preise.
+# Modell: claude-haiku-4-5 (schnell + günstig für ein öffentliches Endpoint).
+ASK_FUNCTION_JS = r"""// Automatisierungs-Radar — KI-Frage-Assistent (Cloudflare Pages Function)
+// Antwortet ausschließlich aus den unten eingebetteten, echten Tool-Daten.
+const TOOLS = __TOOLS_JSON__;
+const MODEL = "claude-haiku-4-5-20251001";
+const VOICE = [
+  "Du bist der Assistent des Automatisierungs-Radars (automatisierung.abannews.com),",
+  "ein ehrlicher DACH-Vergleich von KI- & Workflow-Automatisierungs-Tools.",
+  "Antworte auf Deutsch, in der du-Form, pragmatisch und anti-hype (keine Buzzwords,",
+  "keine Superlative, keine Mehrfach-Ausrufezeichen). Halte dich kurz (max ~150 Wörter).",
+  "REGELN: Empfiehl ausschließlich Tools aus der mitgelieferten Liste TOOLS. Erfinde NIE",
+  "Preise, Bewertungen oder Fakten — wenn ein Preis gefragt ist, sag, dass er beim Anbieter",
+  "zu prüfen ist. Wenn EU-Hosting/DSGVO wichtig ist, bevorzuge Tools mit eu_lager=true und",
+  "weise auf AVV/Datenregion hin. Nenne 1-3 passende Tools mit kurzer Begründung. Wenn nichts",
+  "passt, sag das ehrlich. Verlinke nichts, was nicht in den Daten steht."
+].join(" ");
+
+function json(body, status) {
+  return new Response(JSON.stringify(body), {
+    status: status || 200,
+    headers: { "content-type": "application/json; charset=utf-8" },
+  });
+}
+
+export async function onRequestPost(context) {
+  let q = "";
+  try {
+    const body = await context.request.json();
+    q = (body && body.question ? String(body.question) : "").trim();
+  } catch (e) { return json({ error: "bad request" }, 400); }
+  if (!q) return json({ error: "leere Frage" }, 400);
+  if (q.length > 500) q = q.slice(0, 500);
+
+  const key = context.env && context.env.ANTHROPIC_API_KEY;
+  if (!key) {
+    return json({
+      ai: false,
+      answer: "Der KI-Assistent ist noch nicht aktiviert. Nutze so lange die Vergleichstabelle, "
+            + "die Filter (z. B. „Nur EU-Hosting") und den Ratgeber. Tipp: Sag mir später, wofür "
+            + "du automatisieren willst — ich schlage dann passende Tools vor.",
+    });
+  }
+
+  const system = [
+    { type: "text", text: VOICE },
+    { type: "text",
+      text: "TOOLS (nur diese verwenden):\n" + JSON.stringify(TOOLS),
+      cache_control: { type: "ephemeral" } },
+  ];
+  try {
+    const r = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "x-api-key": key,
+        "anthropic-version": "2023-06-01",
+      },
+      body: JSON.stringify({
+        model: MODEL, max_tokens: 700, system,
+        messages: [{ role: "user", content: q }],
+      }),
+    });
+    if (!r.ok) return json({ ai: false, answer: "Der KI-Assistent ist gerade nicht erreichbar. "
+                                              + "Bitte später erneut versuchen." });
+    const data = await r.json();
+    let text = "";
+    for (const b of (data.content || [])) if (b.type === "text") text += b.text;
+    return json({ ai: true, answer: text.trim() || "Dazu habe ich gerade keine gute Antwort." });
+  } catch (e) {
+    return json({ ai: false, answer: "Der KI-Assistent ist gerade nicht erreichbar." });
+  }
+}
+
+export async function onRequestGet() {
+  return json({ ok: true, hint: "POST { question } an diesen Endpoint." });
+}
+"""
+
+
 # --- Build ---------------------------------------------------------------------
 
 def build(data_path: Path, aff_path: Path, out: Path) -> int:
@@ -1173,6 +1320,20 @@ def build(data_path: Path, aff_path: Path, out: Path) -> int:
         guide_page(tools_sorted, used_cats, used_focuses), encoding="utf-8")
     pages += 1
 
+    # KI-Frage-Assistent: Chat-Seite + Edge-Function (server-seitig, optionaler API-Key)
+    out_file(out, "ask").write_text(ask_page(), encoding="utf-8")
+    pages += 1
+    ai_tools = [{"name": t.get("name"), "url": t.get("url"), "anbieter": t.get("anbieter"),
+                 "fokus": t.get("fokus"), "kategorie": t.get("kategorie", []),
+                 "eu_lager": t.get("eu_lager"), "deutsche_oberflaeche": t.get("deutsche_oberflaeche"),
+                 "preismodell": t.get("preismodell"), "themen": t.get("themen", []),
+                 "integration": t.get("integration", []), "note": clean(t.get("aban_note"))}
+                for t in tools_sorted]
+    fn = out / "functions" / "api" / "ask.js"
+    fn.parent.mkdir(parents=True, exist_ok=True)
+    fn.write_text(ASK_FUNCTION_JS.replace("__TOOLS_JSON__",
+                  json.dumps(ai_tools, ensure_ascii=False)), encoding="utf-8")
+
     # Rechtsseiten + 404
     out_file(out, "imprint").write_text(imprint_page(), encoding="utf-8")
     out_file(out, "privacy").write_text(privacy_page(), encoding="utf-8")
@@ -1185,6 +1346,7 @@ def build(data_path: Path, aff_path: Path, out: Path) -> int:
     # Sitemap
     today = date.today().isoformat()
     urls = ([BASE_URL + page_path("home"), BASE_URL + page_path("guide"),
+             BASE_URL + page_path("ask"),
              BASE_URL + page_path("imprint"), BASE_URL + page_path("privacy")]
             + [BASE_URL + page_path("tool", slugify(t["id"])) for t in tools]
             + [BASE_URL + page_path("cat", slugify(c)) for c in used_cats]
