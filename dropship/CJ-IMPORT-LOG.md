@@ -1034,3 +1034,13 @@ Crossbody-Sling übersprungen (Marken-Hangtag/Counterfeit-Risiko + sportlich-uni
 Smart-Collections. Sonnenbrille zusätzlich sommer-2026+damen → auf Kampagnen-Landingpage.
 **Shop: 526 aktive Produkte.** CJ-Katalog stark ausgeschöpft (viel Kleidungs-Rauschen bei Accessoire-
 Keywords) → Qualität vor Menge, nur saubere Stücke genommen. Skripte: cj_cool_search/_enrich/_cool2.
+
+## 2026-06-02 — Sortierung/Tag-Korrektur (wichtige Lehre für Importe!)
+Die 9 neuen Produkte waren in Premium-Schmuck/Taschen/Sommer/Damen-Mode/Geschenke, aber NICHT in den
+Menü-Unterkategorien. Grund: Smart-Collection-Regeln nutzen ANDERE Tags als gedacht:
+- „💎 Damen-Schmuck" (687966486913) = Tag **`schmuck` UND `damen`** (nicht `damen-schmuck`!).
+- „Sonnenbrillen & Eyewear" (687520219521) = Tag **`sonnenbrille` ODER `sunglasses`**.
+- „👜 Taschen" greift via `taschen`.
+FIX: Tag `schmuck` auf alle 7 Schmuckstücke + `sonnenbrille` auf die Brille ergänzt (tagsAdd).
+**MERKE für künftige Importe:** Schmuck IMMER mit Tag `schmuck`+`damen` taggen; Sonnenbrillen mit
+`sonnenbrille`; nicht nur `damen-schmuck`/`accessoires`. Smart Collections rechnen async (paar Min).
