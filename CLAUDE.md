@@ -103,6 +103,8 @@ durchgehend die du-Form.
 | `resources.html` | Gratis-Resourcen + PDF-Downloads |
 | `willkommen.html` | Post-Subscribe (eBook-Geschenk) |
 | `hype-filter.html` | Interaktives Tool: Marketing-Text auf Hype prüfen (siehe unten) |
+| `ai-sichtbarkeit.html` | Tool: Seite auf **AEO-Reife** prüfen (ist deine Seite KI-lesbar?). Engine `functions/_aeo-engine.mjs` + `functions/api/aeo-check.js` |
+| `ki-erwaehnungs-check.html` | Tool: **Marken-Präsenz** in KI-Antworten („Werde ich von ChatGPT genannt?"). Engine `functions/_visibility-engine.mjs` (deterministisch, ReDoS-fest) + `functions/api/ki-erwaehnung.js` (optional Claude-Stellvertreter-Check via `ANTHROPIC_API_KEY`, Modell `claude-haiku-4-5`, sonst Fallback). Erzeugt echte Such-Prompts + Maßnahmen, ehrlich (keine Garantie, kein Live-ChatGPT). Tests `functions/_visibility-engine.test.mjs` (21). Pretty-URLs `/ki-erwaehnung`, `/genannt`. Cross-verlinkt mit `ai-sichtbarkeit.html` (Reife ↔ Präsenz) |
 | `anti-hype-texten.html` | SEO-Cornerstone-Ratgeber zum Tool (Vorher/Nachher, FAQ) |
 | `hype-widget-demo.html` | `noindex` — Doku/Demo fürs einbettbare Widget |
 | `impressum.html` / `datenschutz.html` | CH-Impressum / DSGVO |
