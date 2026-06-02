@@ -376,8 +376,11 @@ Blocker (nur User): KDP-Login/2FA, Author-Central-Verifizierung, Budget, ~70 h �
     triggert wiederholt falsch-positive „Objekt außerhalb der Ränder"; Vektor wird präzise vermessen.
 - **„Mileage Log Book for Small Business: IRS Publication 463 Contemporaneous Trip Log …"** (Marcus Reilly)
   — Taschenbuch **ENTWURF** (Bookshelf 2026-06-02, zuletzt 1. Juni). Druckvorschau-Fehler: eigener Barcode
-  unten links → Barcode entfernen, KDP setzt ihn selbst; Vorschau zeigte **119 Seiten**. Empfehlung: Cover
-  (und ggf. Innenteil) wie beim ADHD-Planner als **Vektor-PDF** neu bauen, dann veröffentlichen.
+  unten links → Barcode entfernen, KDP setzt ihn selbst; Vorschau zeigte **119 Seiten**.
+  **✅ Vorbereitet (2026-06-02):** Vektor-Cover gebaut + geliefert `Mileage-Log_Cover_6x9_vektor.pdf`
+  (6×9", 119 S., Rücken 0,268", blau, eingebettete Fonts, Text-Clearances 0,78–1,13" geprüft).
+  Generator `/tmp/adhd/build_mileage_cover.py`. **To-do User morgen:** Cover ersetzen → Vorschau → veröffentlichen.
+  Annahme 6×9/119 S. — falls Innenteil-Trim/Seitenzahl abweicht, Cover in 1 Min neu bauen.
 
 **Typische KDP-Cover-Fehler & Fix:**
 - „Text/Objekt außerhalb der Ränder" = Element zu nah am Rand/Falz → alles ≥6 mm nach innen.
