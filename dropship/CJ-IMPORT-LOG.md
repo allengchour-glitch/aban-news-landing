@@ -1329,3 +1329,19 @@ Fashion-Katalog komplett (Bilder-Alt 144, Produkt-SEO 64, Grössen+Trust 20 Klei
 Menü fashion-first. Non-Fashion-SEO war schon da. Weiteres Loopen = Churn ohne Mehrwert.
 **Echter Rest-Hebel = nur User (Theme-Sperre):** Hero „Zuhause"→Mode, LAUNCH30→WELCOME10, „View all"→
 „Alle anzeigen", Sticky-ATC, Judge.me-Sterne auf Kacheln. Alles in SHOP-DESIGN-AUDIT.md.
+
+## 2026-06-02 — Customizer-Änderungen vom User UMGESETZT (live im Theme)
+Via Browser-Claude erledigt + von mir gegengeprüft:
+1. ✅ **Hero-Überschrift** → „Sommer-Mode 2026 — Premium-Looks für jeden Auftritt".
+   Button-Link → `/collections/sommer`. **VERIFIZIERT:** Storefront-URL lädt HTTP 200, „Sommer-Kollektion 2026",
+   46 Produkte. (Link-Picker zeigte „Keine Ergebnisse", weil er nach Titel sucht, nicht Handle — Pfad ist korrekt.)
+2. ✅ **Ankündigungsleiste** → „Gratis-Versand ab CHF 65 · –10% mit Code WELCOME10 · 30 Tage Rückgabe".
+3. ✅ **Beide „View all" → „Alle anzeigen"** (Top-10-Bestseller + CJ-Neuheiten).
+4. ✅ **LAUNCH30** ist bereits ABGELAUFEN (aktiv nur 21.–29.5., 0× genutzt) → kein Konflikt mehr. Nicht gelöscht
+   (permanentes Löschen nur durch User).
+**NOCH OFFEN (Bonus, vom User angeboten):**
+- Hero-Button-LABEL „Sommer-Trends entdecken" → Vorschlag „Damenmode entdecken" (passt zum Mode-Hero). → JA.
+- Hero-BILD Palmblatt → echtes Model-Foto: User lädt manuell hoch (Auto-Upload unzuverlässig).
+- Sticky „In den Warenkorb" (Produkt-Template) + Judge.me-Sterne auf Produktkacheln → JA, hoher Mobile-Hebel.
+- **⚠️ Ankündigungsleiste LINK-Feld** enthielt eine admin.shopify.com-URL (falsch für Storefront!) → sollte
+  geleert oder auf `/collections/sommer` gesetzt werden. Browser-Claude soll das prüfen/fixen.

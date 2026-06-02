@@ -72,3 +72,22 @@ korrekt „Alle anzeigen".
 - ✅ Hauptmenü fashion-first sortiert (alle 70 Links erhalten)
 
 Volles Audit + Hintergrund: `dropship/SHOP-DESIGN-AUDIT.md`. Memory/Historie: `dropship/CJ-IMPORT-LOG.md`.
+
+---
+
+## ✅ STATUS-UPDATE 2026-06-02 — Punkte 1–3 erledigt
+- **1) Hero** ✓ Überschrift + Link `/collections/sommer` (verifiziert: lädt live, 46 Produkte).
+- **2) Ankündigungsleiste** ✓ vereinheitlicht.
+- **3) „View all" → „Alle anzeigen"** ✓ (beide Sektionen).
+- **LAUNCH30** ✓ bereits abgelaufen (kein Konflikt) — nicht gelöscht.
+
+## 🔜 NÄCHSTE SCHRITTE für Browser-Claude (vom User angeboten)
+1. **Hero-Button-Label** „Sommer-Trends entdecken" → **`Damenmode entdecken`** (passt zum neuen Mode-Hero).
+2. **⚠️ Ankündigungsleiste – Link-Feld prüfen:** dort stand eine `admin.shopify.com/...`-URL. Das ist FALSCH
+   für die Storefront (Kund:innen können Admin nicht öffnen). → Link-Feld **leeren** oder auf
+   `/collections/sommer` setzen.
+3. **Sticky „In den Warenkorb" (mobil):** Customizer → Produkt-Template → Add-to-Cart-Block → Option
+   „Sticky/mitscrollend" aktivieren.
+4. **Judge.me-Sterne auf Produktkacheln:** Judge.me-App → „Star rating widget" für Collection-/Home-Cards
+   aktivieren (bzw. Theme-Block „Bewertungssterne" in die Produktkarte einfügen).
+5. **Hero-Bild** Palmblatt → echtes Model-Foto: **User lädt manuell hoch** (Customizer → Hero → Medien 1).
