@@ -1,9 +1,10 @@
 name: Täglicher Verbesserungs-Scan
 
-# Läuft jeden Tag von selbst (ohne Befehl): scannt alle HTML-Seiten + sitemap auf
-# konkrete, verifizierbare Schwachstellen (SEO, a11y, Security, JSON-LD, Aban-Voice)
-# und schreibt den priorisierten Report nach reports/IMPROVEMENT-REPORT.md.
-# Der Report wird nur committet, wenn er sich geändert hat (kein Spam, [skip ci]).
+# Läuft jeden Tag von selbst (ohne Befehl): wendet erst sichere, mechanische Auto-Fixes
+# an (rel=noopener bei target=_blank), scannt dann alle HTML-Seiten + sitemap auf
+# Schwachstellen (SEO, a11y, Security, JSON-LD, Aban-Voice) und schreibt den Report nach
+# reports/IMPROVEMENT-REPORT.md. Auto-Fixes + Report werden committet, wenn sich etwas
+# geändert hat (kein Spam, [skip ci]). So bessert sich die Seite selbst nach.
 
 on:
   schedule:
@@ -27,7 +28,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Verbesserungs-Scan
+      - name: Sichere Auto-Fixes anwenden (rel=noopener)
+        run: python3 tools/daily_improvement_scan.py --fix
+
+      - name: Verbesserungs-Scan (Report nach Fixes)
         run: python3 tools/daily_improvement_scan.py
 
       - name: Telegram-Report (mit Buttons)
@@ -43,14 +47,14 @@ jobs:
           path: reports/IMPROVEMENT-REPORT.md
           retention-days: 14
 
-      - name: Report committen, wenn geändert
+      - name: Auto-Fixes + Report committen, wenn geändert
         run: |
-          if ! git diff --quiet -- reports/IMPROVEMENT-REPORT.md; then
+          git add -A -- '*.html' reports/IMPROVEMENT-REPORT.md
+          if ! git diff --cached --quiet; then
             git config user.name "aban-improvement-bot"
             git config user.email "bot@users.noreply.github.com"
-            git add reports/IMPROVEMENT-REPORT.md
-            git commit -m "chore(report): täglicher Verbesserungs-Scan [skip ci]"
+            git commit -m "chore: täglicher Auto-Fix + Verbesserungs-Report [skip ci]"
             git push
           else
-            echo "Report unverändert — nichts zu committen."
+            echo "Nichts geändert — nichts zu committen."
           fi
