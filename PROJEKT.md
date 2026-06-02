@@ -345,6 +345,14 @@ Blocker (nur User): KDP-Login/2FA, Author-Central-Verifizierung, Budget, ~70 h �
     **Cover v3** geliefert (`..._Cover_6x9_matt_v3.pdf`).
     **To-do User:** nur Cover **v3** hochladen → Druckvorschau (sollte fehlerfrei) → Entwurf speichern → Publish.
     Lehre: Bei dünnem Rücken (<~0,25") KEIN Rückentext; Barcode-Zone NIE mit eigenem Objekt füllen.
+    Cover **v3** flaggte erneut „Objekt außerhalb der Ränder" + „kein gültiger Barcode". Pixel-Messung
+    bewies: aller TEXT ist ≥0,577" vom Rand (KDP-Minimum 0,25") → Text war NIE das Problem. Übrig blieb
+    der **dunklere Rücken-Streifen** (Farbblock, der oben/unten an die Kante stößt) — KDPs Bildanalyse
+    wertet ihn als Objekt im Randbereich. **Fix v4:** Rücken-Streifen entfernt → komplett einheitliches
+    Türkis, nur Front-/Rücktext. Geliefert: `..._Cover_6x9_matt_v4.pdf`.
+    Die Barcode-Meldung ist **informativ/kein Blocker** (Amazon platziert den Barcode automatisch).
+    Lehre+: Cover = möglichst EIN flaches Hintergrundfeld; keine Farbblöcke/Streifen, die die Außenkante
+    berühren (KDP-ML flaggt sie als „Objekt außerhalb der Ränder", selbst wenn als Bleed gedacht).
 - **„Mileage Log Book for Small Business"** (Marcus Reilly) — Taschenbuch, Druckvorschau-**FEHLER**:
   Text/Objekt außerhalb der Ränder (Ursache: eigener Barcode unten links) → Barcode entfernen,
   KDP setzt ihn selbst; Vorschau zeigte **119 Seiten**.
