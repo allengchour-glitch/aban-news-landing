@@ -1176,3 +1176,11 @@ User-Antwort (Telegram): „reel 1 ja reel 2 letzte bild raus".
 Weiss-Freisteller → künftig meiden), **luxestyle_eleganz.mp4 (neu).** → reif zum Posten via Make.com-Pipeline.
 **LEHRE:** „letztes Bild raus" = User mag einzelne Shots gezielt streichen → Reel neu rendern + erneut zeigen,
 nicht ungefragt ersetzen. Bluette (blau/Garten) war dem User zu schwach.
+
+## 2026-06-02 — Reel 2 v3: +3 Shots (User: „ja kann 2 3 bilder mehr")
+Reel 2 «Sommer» auf **6 echte Lifestyle-Shots** erweitert: Brise · Daisy · Dos Nu · **Savanna** (rotes
+Hemdblusen-Maxi, Editorial) · **Bali** (weisses Spitzen-Lagenkleid, Blumenladen) · **Boho** (türkises
+Leinen-Set, Editorial). 19,6s, elegant.wav. → Telegram msg 59 zur Freigabe.
+- Bei der Bild-QA verworfen (nicht lifestyle): `fleurette` (Kleid auf grauem Cutout, kein Model),
+  `largo` (Rock am Bügel), `maxirock` (auf Weiss, Kopf abgeschnitten).
+- Quell-Pool noch frei für künftige Reels: sandalen (+ ggf. neue CJ-Shots).
