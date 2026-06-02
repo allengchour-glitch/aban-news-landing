@@ -100,7 +100,7 @@ def scan_page(p: Path, findings: list):
     # Hype-Wörter (nur sichtbarer Text, Tags entfernt).
     # Ausnahme: Seiten, die Hype-Floskeln absichtlich ZITIEREN, um sie zu entlarven
     # (Newsletter-Archiv + Anti-Hype-/Brand-Seiten) — sonst Falsch-Alarme.
-    HYPE_EXEMPT = ("archive/", "anti-hype-texten.html", "brand.html")
+    HYPE_EXEMPT = ("archive/", "anti-hype-texten.html", "brand.html", "hype-watch")
     if not any(x in rel for x in HYPE_EXEMPT):
         text = re.sub(r"<(script|style)\b.*?</\1>", " ", s, flags=re.S | re.I)
         text = re.sub(r"<[^>]+>", " ", text)
