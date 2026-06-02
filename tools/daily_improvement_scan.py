@@ -116,11 +116,45 @@ def scan_sitemap(findings: list):
                              f"{path} → Datei nicht vorhanden"))
 
 
+def _fix_noopener_in_tag(tag: str) -> str:
+    """Ergänzt rel=noopener in einem <a target=_blank>-Tag (idempotent, sicher)."""
+    if not re.search(r'target=["\']_blank["\']', tag, re.I):
+        return tag
+    if "noopener" in tag.lower():
+        return tag
+    m = re.search(r'\brel=(["\'])(.*?)\1', tag, re.I)
+    if m:
+        newrel = (m.group(2) + " noopener noreferrer").strip()
+        return tag[:m.start(2)] + newrel + tag[m.end(2):]
+    return tag[:-1].rstrip() + ' rel="noopener noreferrer">'
+
+
+def fix_noopener() -> int:
+    """Wendet den sicheren noopener-Fix auf alle Seiten an. Gibt Anzahl geänderter Dateien zurück."""
+    arx = re.compile(r"<a\b[^>]*>", re.I)
+    changed = 0
+    for p in html_files():
+        s = p.read_text(encoding="utf-8", errors="replace")
+        new = arx.sub(lambda m: _fix_noopener_in_tag(m.group(0)), s)
+        if new != s:
+            p.write_text(new, encoding="utf-8")
+            changed += 1
+            print(f"  fixed: {p.relative_to(ROOT)}")
+    return changed
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--top", type=int, default=12, help="Beispiele je Kategorie im Report")
     ap.add_argument("--out", default=str(ROOT / "reports" / "IMPROVEMENT-REPORT.md"))
+    ap.add_argument("--fix", action="store_true",
+                    help="Sichere mechanische Fixes anwenden (rel=noopener bei target=_blank).")
     args = ap.parse_args()
+
+    if args.fix:
+        n = fix_noopener()
+        print(f"noopener-Fix: {n} Datei(en) geändert.")
+        return
 
     findings: list = []
     n_pages = 0
