@@ -258,6 +258,7 @@ redaktionelles Urteil. Basis-Einträge bleiben kostenlos.</p>
 <a href="{e(page_path('einreichen'))}">Eintrag einreichen</a> ·
 <a href="{e(page_path('datenschutz'))}">Datenschutz</a> ·
 <a href="{e(page_path('impressum'))}">Impressum</a>
+<br><small style="color:var(--muted)">Betriebsdaten teils aus <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> (© OpenStreetMap-Mitwirkende, Lizenz ODbL) — nicht einzeln verifiziert. Betrieb gelistet und nicht einverstanden? <a href="mailto:{e(CONTACT_EMAIL)}?subject=Opt-out%20Verzeichnis">Eintrag entfernen lassen</a>.</small>
 </div></footer>
 <script>
 function abanTheme(){{var h=document.documentElement;var t=h.getAttribute('data-theme')==='dark'?'light':'dark';
