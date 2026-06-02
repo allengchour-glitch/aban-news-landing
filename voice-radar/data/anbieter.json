@@ -26,12 +26,28 @@
       "name": "Amberscript",
       "anbieter": "Amberscript Global B.V.",
       "url": "https://www.amberscript.com/de/",
-      "sprache": ["de", "en", "nl"],
+      "sprache": [
+        "de",
+        "en",
+        "nl"
+      ],
       "fokus": "EU-Hosting / DSGVO",
-      "kategorie": ["Transkription & Untertitel", "Meeting-Transkription"],
-      "themen": ["Deutsche Transkription", "Untertitel/SRT", "Audio-Upload", "manuelle Korrektur"],
+      "kategorie": [
+        "Transkription & Untertitel",
+        "Meeting-Transkription"
+      ],
+      "themen": [
+        "Deutsche Transkription",
+        "Untertitel/SRT",
+        "Audio-Upload",
+        "manuelle Korrektur"
+      ],
       "format": "SaaS (Transkription & Untertitel)",
-      "integration": ["Web-Editor", "API", "Export DOCX/SRT/VTT"],
+      "integration": [
+        "Web-Editor",
+        "API",
+        "Export DOCX/SRT/VTT"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -44,12 +60,28 @@
       "name": "Happy Scribe",
       "anbieter": "Happy Scribe",
       "url": "https://www.happyscribe.com/de",
-      "sprache": ["de", "en", "fr", "es"],
+      "sprache": [
+        "de",
+        "en",
+        "fr",
+        "es"
+      ],
       "fokus": "EU-Hosting / DSGVO",
-      "kategorie": ["Transkription & Untertitel"],
-      "themen": ["Transkription", "Untertitel/SRT", "Übersetzung", "Audio-Upload"],
+      "kategorie": [
+        "Transkription & Untertitel"
+      ],
+      "themen": [
+        "Transkription",
+        "Untertitel/SRT",
+        "Übersetzung",
+        "Audio-Upload"
+      ],
       "format": "SaaS (Transkription & Untertitel)",
-      "integration": ["Web-Editor", "API", "Export SRT/VTT/DOCX"],
+      "integration": [
+        "Web-Editor",
+        "API",
+        "Export SRT/VTT/DOCX"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -62,12 +94,28 @@
       "name": "Noota",
       "anbieter": "Noota",
       "url": "https://www.noota.io/de",
-      "sprache": ["de", "en", "fr"],
+      "sprache": [
+        "de",
+        "en",
+        "fr"
+      ],
       "fokus": "Meeting-Notizen",
-      "kategorie": ["Meeting-Transkription"],
-      "themen": ["Meeting-Bot", "Transkription", "KI-Zusammenfassung", "Sprechererkennung"],
+      "kategorie": [
+        "Meeting-Transkription"
+      ],
+      "themen": [
+        "Meeting-Bot",
+        "Transkription",
+        "KI-Zusammenfassung",
+        "Sprechererkennung"
+      ],
       "format": "SaaS (Meeting-Assistent)",
-      "integration": ["Zoom", "Google Meet", "Microsoft Teams", "CRM"],
+      "integration": [
+        "Zoom",
+        "Google Meet",
+        "Microsoft Teams",
+        "CRM"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -80,12 +128,27 @@
       "name": "aTrain",
       "anbieter": "Uni Graz (Open Source)",
       "url": "https://github.com/JuergenFleiss/aTrain",
-      "sprache": ["de", "en"],
+      "sprache": [
+        "de",
+        "en"
+      ],
       "fokus": "EU-Hosting / DSGVO",
-      "kategorie": ["Transkription & Untertitel", "Spracherkennung / API"],
-      "themen": ["Lokale Transkription", "Whisper", "Sprechererkennung", "offline / kein Upload"],
+      "kategorie": [
+        "Transkription & Untertitel",
+        "Spracherkennung / API"
+      ],
+      "themen": [
+        "Lokale Transkription",
+        "Whisper",
+        "Sprechererkennung",
+        "offline / kein Upload"
+      ],
       "format": "Open-Source-Desktop-App (Windows)",
-      "integration": ["lokale Verarbeitung", "Export", "Whisper-Modelle"],
+      "integration": [
+        "lokale Verarbeitung",
+        "Export",
+        "Whisper-Modelle"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -98,12 +161,26 @@
       "name": "Speechmatics",
       "anbieter": "Speechmatics Ltd",
       "url": "https://www.speechmatics.com/",
-      "sprache": ["en", "de"],
+      "sprache": [
+        "en",
+        "de"
+      ],
       "fokus": "Entwickler / API",
-      "kategorie": ["Spracherkennung / API"],
-      "themen": ["Spracherkennung", "Echtzeit-Transkription", "viele Sprachen", "Diarisierung"],
+      "kategorie": [
+        "Spracherkennung / API"
+      ],
+      "themen": [
+        "Spracherkennung",
+        "Echtzeit-Transkription",
+        "viele Sprachen",
+        "Diarisierung"
+      ],
       "format": "API / Self-Hosting",
-      "integration": ["API", "On-Premise", "Echtzeit-Streaming"],
+      "integration": [
+        "API",
+        "On-Premise",
+        "Echtzeit-Streaming"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": null,
       "preis_eur": null,
@@ -116,12 +193,26 @@
       "name": "Krisp",
       "anbieter": "Krisp Technologies, Inc.",
       "url": "https://krisp.ai/",
-      "sprache": ["en"],
+      "sprache": [
+        "en"
+      ],
       "fokus": "Meeting-Notizen",
-      "kategorie": ["Meeting-Transkription"],
-      "themen": ["Geräuschunterdrückung", "Meeting-Transkription", "KI-Zusammenfassung", "lokale Aufnahme"],
+      "kategorie": [
+        "Meeting-Transkription"
+      ],
+      "themen": [
+        "Geräuschunterdrückung",
+        "Meeting-Transkription",
+        "KI-Zusammenfassung",
+        "lokale Aufnahme"
+      ],
       "format": "Desktop-App / SaaS",
-      "integration": ["Zoom", "Google Meet", "Microsoft Teams", "Slack"],
+      "integration": [
+        "Zoom",
+        "Google Meet",
+        "Microsoft Teams",
+        "Slack"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": null,
       "preis_eur": null,
@@ -134,12 +225,26 @@
       "name": "Otter.ai",
       "anbieter": "Otter.ai, Inc.",
       "url": "https://otter.ai/",
-      "sprache": ["en"],
+      "sprache": [
+        "en"
+      ],
       "fokus": "Meeting-Notizen",
-      "kategorie": ["Meeting-Transkription"],
-      "themen": ["Meeting-Bot", "Live-Transkription", "KI-Zusammenfassung", "Sprechererkennung"],
+      "kategorie": [
+        "Meeting-Transkription"
+      ],
+      "themen": [
+        "Meeting-Bot",
+        "Live-Transkription",
+        "KI-Zusammenfassung",
+        "Sprechererkennung"
+      ],
       "format": "SaaS (Meeting-Assistent)",
-      "integration": ["Zoom", "Google Meet", "Microsoft Teams", "Slack"],
+      "integration": [
+        "Zoom",
+        "Google Meet",
+        "Microsoft Teams",
+        "Slack"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": false,
       "preis_eur": null,
@@ -152,12 +257,27 @@
       "name": "Fireflies.ai",
       "anbieter": "Fireflies.ai",
       "url": "https://fireflies.ai/",
-      "sprache": ["en", "de"],
+      "sprache": [
+        "en",
+        "de"
+      ],
       "fokus": "Meeting-Notizen",
-      "kategorie": ["Meeting-Transkription"],
-      "themen": ["Meeting-Bot", "Transkription", "KI-Zusammenfassung", "CRM-Sync"],
+      "kategorie": [
+        "Meeting-Transkription"
+      ],
+      "themen": [
+        "Meeting-Bot",
+        "Transkription",
+        "KI-Zusammenfassung",
+        "CRM-Sync"
+      ],
       "format": "SaaS (Meeting-Assistent)",
-      "integration": ["Zoom", "Google Meet", "Microsoft Teams", "CRM"],
+      "integration": [
+        "Zoom",
+        "Google Meet",
+        "Microsoft Teams",
+        "CRM"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": false,
       "preis_eur": null,
@@ -170,12 +290,27 @@
       "name": "tl;dv",
       "anbieter": "tl;dv GmbH",
       "url": "https://tldv.io/de/",
-      "sprache": ["de", "en"],
+      "sprache": [
+        "de",
+        "en"
+      ],
       "fokus": "Meeting-Notizen",
-      "kategorie": ["Meeting-Transkription"],
-      "themen": ["Meeting-Aufnahme", "Transkription", "KI-Zusammenfassung", "Highlights"],
+      "kategorie": [
+        "Meeting-Transkription"
+      ],
+      "themen": [
+        "Meeting-Aufnahme",
+        "Transkription",
+        "KI-Zusammenfassung",
+        "Highlights"
+      ],
       "format": "SaaS (Meeting-Assistent)",
-      "integration": ["Zoom", "Google Meet", "Microsoft Teams", "CRM"],
+      "integration": [
+        "Zoom",
+        "Google Meet",
+        "Microsoft Teams",
+        "CRM"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": null,
       "preis_eur": null,
@@ -188,12 +323,26 @@
       "name": "Fathom",
       "anbieter": "Fathom Video, Inc.",
       "url": "https://fathom.video/",
-      "sprache": ["en"],
+      "sprache": [
+        "en"
+      ],
       "fokus": "Meeting-Notizen",
-      "kategorie": ["Meeting-Transkription"],
-      "themen": ["Meeting-Aufnahme", "Transkription", "KI-Zusammenfassung", "Highlights"],
+      "kategorie": [
+        "Meeting-Transkription"
+      ],
+      "themen": [
+        "Meeting-Aufnahme",
+        "Transkription",
+        "KI-Zusammenfassung",
+        "Highlights"
+      ],
       "format": "SaaS (Meeting-Assistent)",
-      "integration": ["Zoom", "Google Meet", "Microsoft Teams", "CRM"],
+      "integration": [
+        "Zoom",
+        "Google Meet",
+        "Microsoft Teams",
+        "CRM"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": false,
       "preis_eur": null,
@@ -206,12 +355,27 @@
       "name": "Sembly AI",
       "anbieter": "Sembly AI",
       "url": "https://www.sembly.ai/",
-      "sprache": ["en", "de"],
+      "sprache": [
+        "en",
+        "de"
+      ],
       "fokus": "Meeting-Notizen",
-      "kategorie": ["Meeting-Transkription"],
-      "themen": ["Meeting-Bot", "Transkription", "Aufgaben/Action-Items", "KI-Zusammenfassung"],
+      "kategorie": [
+        "Meeting-Transkription"
+      ],
+      "themen": [
+        "Meeting-Bot",
+        "Transkription",
+        "Aufgaben/Action-Items",
+        "KI-Zusammenfassung"
+      ],
       "format": "SaaS (Meeting-Assistent)",
-      "integration": ["Zoom", "Google Meet", "Microsoft Teams", "API"],
+      "integration": [
+        "Zoom",
+        "Google Meet",
+        "Microsoft Teams",
+        "API"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": null,
       "preis_eur": null,
@@ -224,12 +388,27 @@
       "name": "Supernormal",
       "anbieter": "Supernormal",
       "url": "https://supernormal.com/",
-      "sprache": ["en", "de"],
+      "sprache": [
+        "en",
+        "de"
+      ],
       "fokus": "Meeting-Notizen",
-      "kategorie": ["Meeting-Transkription"],
-      "themen": ["Meeting-Notizen", "Transkription", "KI-Zusammenfassung", "Vorlagen"],
+      "kategorie": [
+        "Meeting-Transkription"
+      ],
+      "themen": [
+        "Meeting-Notizen",
+        "Transkription",
+        "KI-Zusammenfassung",
+        "Vorlagen"
+      ],
       "format": "SaaS (Meeting-Assistent)",
-      "integration": ["Zoom", "Google Meet", "Microsoft Teams", "CRM"],
+      "integration": [
+        "Zoom",
+        "Google Meet",
+        "Microsoft Teams",
+        "CRM"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": null,
       "preis_eur": null,
@@ -242,12 +421,26 @@
       "name": "Descript",
       "anbieter": "Descript, Inc.",
       "url": "https://www.descript.com/",
-      "sprache": ["en"],
+      "sprache": [
+        "en"
+      ],
       "fokus": "Untertitel & Medien",
-      "kategorie": ["Audio-/Video-Editor", "Transkription & Untertitel"],
-      "themen": ["Transkriptbasierter Schnitt", "Untertitel", "Overdub/Stimmen", "Podcast/Video"],
+      "kategorie": [
+        "Audio-/Video-Editor",
+        "Transkription & Untertitel"
+      ],
+      "themen": [
+        "Transkriptbasierter Schnitt",
+        "Untertitel",
+        "Overdub/Stimmen",
+        "Podcast/Video"
+      ],
       "format": "Desktop-App / SaaS",
-      "integration": ["Export Video/Audio", "Untertitel-Export", "Zapier"],
+      "integration": [
+        "Export Video/Audio",
+        "Untertitel-Export",
+        "Zapier"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": false,
       "preis_eur": null,
@@ -260,12 +453,26 @@
       "name": "Trint",
       "anbieter": "Trint Ltd",
       "url": "https://trint.com/",
-      "sprache": ["en", "de"],
+      "sprache": [
+        "en",
+        "de"
+      ],
       "fokus": "Untertitel & Medien",
-      "kategorie": ["Transkription & Untertitel"],
-      "themen": ["Transkription", "Untertitel/SRT", "Zusammenarbeit", "Übersetzung"],
+      "kategorie": [
+        "Transkription & Untertitel"
+      ],
+      "themen": [
+        "Transkription",
+        "Untertitel/SRT",
+        "Zusammenarbeit",
+        "Übersetzung"
+      ],
       "format": "SaaS (Transkription)",
-      "integration": ["Web-Editor", "API", "Export SRT/DOCX"],
+      "integration": [
+        "Web-Editor",
+        "API",
+        "Export SRT/DOCX"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": null,
       "preis_eur": null,
@@ -278,12 +485,26 @@
       "name": "Sonix",
       "anbieter": "Sonix, Inc.",
       "url": "https://sonix.ai/",
-      "sprache": ["en", "de"],
+      "sprache": [
+        "en",
+        "de"
+      ],
       "fokus": "Untertitel & Medien",
-      "kategorie": ["Transkription & Untertitel"],
-      "themen": ["Transkription", "Untertitel/SRT", "Übersetzung", "Audio-Upload"],
+      "kategorie": [
+        "Transkription & Untertitel"
+      ],
+      "themen": [
+        "Transkription",
+        "Untertitel/SRT",
+        "Übersetzung",
+        "Audio-Upload"
+      ],
       "format": "SaaS (Transkription)",
-      "integration": ["Web-Editor", "API", "Export SRT/VTT/DOCX"],
+      "integration": [
+        "Web-Editor",
+        "API",
+        "Export SRT/VTT/DOCX"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": false,
       "preis_eur": null,
@@ -296,12 +517,25 @@
       "name": "Rev",
       "anbieter": "Rev.com, Inc.",
       "url": "https://www.rev.com/",
-      "sprache": ["en"],
+      "sprache": [
+        "en"
+      ],
       "fokus": "Untertitel & Medien",
-      "kategorie": ["Transkription & Untertitel"],
-      "themen": ["Transkription", "Untertitel", "menschliche Korrektur", "Audio-Upload"],
+      "kategorie": [
+        "Transkription & Untertitel"
+      ],
+      "themen": [
+        "Transkription",
+        "Untertitel",
+        "menschliche Korrektur",
+        "Audio-Upload"
+      ],
       "format": "SaaS (Transkription)",
-      "integration": ["Web-Editor", "API", "Export SRT/DOCX"],
+      "integration": [
+        "Web-Editor",
+        "API",
+        "Export SRT/DOCX"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": false,
       "preis_eur": null,
@@ -314,12 +548,26 @@
       "name": "Deepgram",
       "anbieter": "Deepgram, Inc.",
       "url": "https://deepgram.com/",
-      "sprache": ["en", "de"],
+      "sprache": [
+        "en",
+        "de"
+      ],
       "fokus": "Entwickler / API",
-      "kategorie": ["Spracherkennung / API"],
-      "themen": ["Spracherkennung", "Echtzeit-Streaming", "Diarisierung", "Text-to-Speech"],
+      "kategorie": [
+        "Spracherkennung / API"
+      ],
+      "themen": [
+        "Spracherkennung",
+        "Echtzeit-Streaming",
+        "Diarisierung",
+        "Text-to-Speech"
+      ],
       "format": "API",
-      "integration": ["API", "SDKs", "Webhooks"],
+      "integration": [
+        "API",
+        "SDKs",
+        "Webhooks"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": false,
       "preis_eur": null,
@@ -332,12 +580,26 @@
       "name": "AssemblyAI",
       "anbieter": "AssemblyAI, Inc.",
       "url": "https://www.assemblyai.com/",
-      "sprache": ["en", "de"],
+      "sprache": [
+        "en",
+        "de"
+      ],
       "fokus": "Entwickler / API",
-      "kategorie": ["Spracherkennung / API"],
-      "themen": ["Spracherkennung", "Diarisierung", "KI-Zusammenfassung", "Audio-Intelligence"],
+      "kategorie": [
+        "Spracherkennung / API"
+      ],
+      "themen": [
+        "Spracherkennung",
+        "Diarisierung",
+        "KI-Zusammenfassung",
+        "Audio-Intelligence"
+      ],
       "format": "API",
-      "integration": ["API", "SDKs", "Webhooks"],
+      "integration": [
+        "API",
+        "SDKs",
+        "Webhooks"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": false,
       "preis_eur": null,
@@ -350,12 +612,26 @@
       "name": "OpenAI Whisper",
       "anbieter": "OpenAI",
       "url": "https://platform.openai.com/docs/guides/speech-to-text",
-      "sprache": ["en", "de"],
+      "sprache": [
+        "en",
+        "de"
+      ],
       "fokus": "Entwickler / API",
-      "kategorie": ["Spracherkennung / API"],
-      "themen": ["Spracherkennung", "viele Sprachen", "Open-Source-Modell", "Audio-Upload"],
+      "kategorie": [
+        "Spracherkennung / API"
+      ],
+      "themen": [
+        "Spracherkennung",
+        "viele Sprachen",
+        "Open-Source-Modell",
+        "Audio-Upload"
+      ],
       "format": "Open-Source-Modell / API",
-      "integration": ["API", "lokal ausführbar", "Bibliotheken"],
+      "integration": [
+        "API",
+        "lokal ausführbar",
+        "Bibliotheken"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": null,
       "preis_eur": null,
@@ -368,12 +644,27 @@
       "name": "ElevenLabs",
       "anbieter": "ElevenLabs Inc.",
       "url": "https://elevenlabs.io/",
-      "sprache": ["en", "de"],
+      "sprache": [
+        "en",
+        "de"
+      ],
       "fokus": "Stimmen / Synthese",
-      "kategorie": ["Text-to-Speech", "Spracherkennung / API"],
-      "themen": ["Text-to-Speech", "Stimmenklonen", "Synchronisation", "deutsche Stimmen"],
+      "kategorie": [
+        "Text-to-Speech",
+        "Spracherkennung / API"
+      ],
+      "themen": [
+        "Text-to-Speech",
+        "Stimmenklonen",
+        "Synchronisation",
+        "deutsche Stimmen"
+      ],
       "format": "SaaS / API",
-      "integration": ["API", "SDKs", "Web-Studio"],
+      "integration": [
+        "API",
+        "SDKs",
+        "Web-Studio"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": false,
       "preis_eur": null,
@@ -386,36 +677,32 @@
       "name": "Murf AI",
       "anbieter": "Murf AI",
       "url": "https://murf.ai/",
-      "sprache": ["en", "de"],
+      "sprache": [
+        "en",
+        "de"
+      ],
       "fokus": "Stimmen / Synthese",
-      "kategorie": ["Text-to-Speech"],
-      "themen": ["Text-to-Speech", "Voiceover", "Studio-Editor", "deutsche Stimmen"],
+      "kategorie": [
+        "Text-to-Speech"
+      ],
+      "themen": [
+        "Text-to-Speech",
+        "Voiceover",
+        "Studio-Editor",
+        "deutsche Stimmen"
+      ],
       "format": "SaaS (Voiceover-Studio)",
-      "integration": ["Web-Studio", "API", "Export Audio"],
+      "integration": [
+        "Web-Studio",
+        "API",
+        "Export Audio"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": false,
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Gratis-Einstieg, darüber abobasiert.",
       "worth_it_score": null,
       "aban_note": "[Redaktion: prüfen] — Voiceover-Studio mit vielen Stimmen für Videos und E-Learning, inkl. deutscher Stimmen. Oberfläche englisch, US-Anbieter — vor kommerziellem Einsatz Lizenz und AVV prüfen."
-    },
-    {
-      "id": "play-ht",
-      "name": "Play.ht",
-      "anbieter": "PlayHT, Inc.",
-      "url": "https://play.ht/",
-      "sprache": ["en", "de"],
-      "fokus": "Stimmen / Synthese",
-      "kategorie": ["Text-to-Speech"],
-      "themen": ["Text-to-Speech", "Echtzeit-Stimmen", "Stimmenklonen", "API"],
-      "format": "SaaS / API",
-      "integration": ["API", "Web-Studio", "Export Audio"],
-      "deutsche_oberflaeche": false,
-      "eu_lager": false,
-      "preis_eur": null,
-      "preis_hinweis": "[Redaktion: prüfen] — Gratis-Einstieg, darüber abo-/nutzungsbasiert.",
-      "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Text-to-Speech-Plattform mit Echtzeit-API und Stimmenklonen, mehrsprachig inkl. Deutsch. Eher für Entwickler und automatisierte Audio-Pipelines; US-Anbieter, Oberfläche englisch."
     }
   ]
 }

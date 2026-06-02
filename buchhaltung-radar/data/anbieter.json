@@ -25,13 +25,32 @@
       "id": "lexoffice",
       "name": "Lexware Office (lexoffice)",
       "anbieter": "Haufe-Lexware GmbH & Co. KG",
-      "url": "https://www.lexware.de/lexware-office/",
-      "sprache": ["de"],
+      "url": "https://office.lexware.de/",
+      "sprache": [
+        "de"
+      ],
       "fokus": "Selbstständige & Freelancer",
-      "kategorie": ["Buchhaltung", "Rechnungsstellung", "Belegerfassung & OCR"],
-      "themen": ["Rechnungen", "Belegerfassung", "GoBD", "DATEV-Export", "UStVA über ELSTER", "Banking-Anbindung"],
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Belegerfassung",
+        "GoBD",
+        "DATEV-Export",
+        "UStVA über ELSTER",
+        "Banking-Anbindung"
+      ],
       "format": "SaaS (Online-Buchhaltung)",
-      "integration": ["DATEV", "ELSTER", "Banking (HBCI/FinTS)", "Shopify", "Stripe"],
+      "integration": [
+        "DATEV",
+        "ELSTER",
+        "Banking (HBCI/FinTS)",
+        "Shopify",
+        "Stripe"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -44,12 +63,31 @@
       "name": "sevDesk",
       "anbieter": "sevdesk GmbH",
       "url": "https://sevdesk.de/",
-      "sprache": ["de"],
+      "sprache": [
+        "de"
+      ],
       "fokus": "Selbstständige & Freelancer",
-      "kategorie": ["Buchhaltung", "Rechnungsstellung", "Belegerfassung & OCR"],
-      "themen": ["Rechnungen", "OCR-Belegscan", "GoBD", "DATEV-Export", "UStVA über ELSTER", "Mahnwesen"],
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "OCR-Belegscan",
+        "GoBD",
+        "DATEV-Export",
+        "UStVA über ELSTER",
+        "Mahnwesen"
+      ],
       "format": "SaaS (Online-Buchhaltung)",
-      "integration": ["DATEV", "ELSTER", "Banking (FinTS)", "Shopify", "Amazon"],
+      "integration": [
+        "DATEV",
+        "ELSTER",
+        "Banking (FinTS)",
+        "Shopify",
+        "Amazon"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -61,13 +99,29 @@
       "id": "datev-unternehmen-online",
       "name": "DATEV Unternehmen online",
       "anbieter": "DATEV eG",
-      "url": "https://www.datev.de/web/de/m/ueber-datev/unternehmen-online/",
-      "sprache": ["de"],
+      "url": "https://www.datev.de/",
+      "sprache": [
+        "de"
+      ],
       "fokus": "KMU & Mittelstand",
-      "kategorie": ["Buchhaltung", "Belegerfassung & OCR", "Steuerkanzlei-Software"],
-      "themen": ["Belegerfassung", "DATEV-Export", "GoBD", "Zusammenarbeit Steuerberater", "Bankbuchungen"],
+      "kategorie": [
+        "Buchhaltung",
+        "Belegerfassung & OCR",
+        "Steuerkanzlei-Software"
+      ],
+      "themen": [
+        "Belegerfassung",
+        "DATEV-Export",
+        "GoBD",
+        "Zusammenarbeit Steuerberater",
+        "Bankbuchungen"
+      ],
       "format": "SaaS (Beleg- & Buchungsplattform)",
-      "integration": ["DATEV", "Banking", "Steuerkanzlei-Systeme"],
+      "integration": [
+        "DATEV",
+        "Banking",
+        "Steuerkanzlei-Systeme"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -80,12 +134,31 @@
       "name": "FastBill",
       "anbieter": "FastBill GmbH",
       "url": "https://www.fastbill.com/",
-      "sprache": ["de", "en"],
+      "sprache": [
+        "de",
+        "en"
+      ],
       "fokus": "Selbstständige & Freelancer",
-      "kategorie": ["Rechnungsstellung", "Buchhaltung", "Belegerfassung & OCR"],
-      "themen": ["Rechnungen", "Belegerfassung", "DATEV-Export", "Banking-Anbindung", "wiederkehrende Rechnungen"],
+      "kategorie": [
+        "Rechnungsstellung",
+        "Buchhaltung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Belegerfassung",
+        "DATEV-Export",
+        "Banking-Anbindung",
+        "wiederkehrende Rechnungen"
+      ],
       "format": "SaaS (Rechnungen & Buchhaltung)",
-      "integration": ["DATEV", "Banking", "Stripe", "PayPal", "Zapier"],
+      "integration": [
+        "DATEV",
+        "Banking",
+        "Stripe",
+        "PayPal",
+        "Zapier"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -98,12 +171,29 @@
       "name": "Papierkram",
       "anbieter": "Papierkram GmbH",
       "url": "https://www.papierkram.de/",
-      "sprache": ["de"],
+      "sprache": [
+        "de"
+      ],
       "fokus": "Selbstständige & Freelancer",
-      "kategorie": ["Buchhaltung", "Rechnungsstellung", "Belegerfassung & OCR"],
-      "themen": ["Rechnungen", "EÜR", "Belegerfassung", "Zeiterfassung", "Projekte", "UStVA über ELSTER"],
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "EÜR",
+        "Belegerfassung",
+        "Zeiterfassung",
+        "Projekte",
+        "UStVA über ELSTER"
+      ],
       "format": "SaaS (Buchhaltung & Projekte)",
-      "integration": ["ELSTER", "Banking", "DATEV-Export"],
+      "integration": [
+        "ELSTER",
+        "Banking",
+        "DATEV-Export"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -116,12 +206,29 @@
       "name": "BuchhaltungsButler",
       "anbieter": "BuchhaltungsButler GmbH",
       "url": "https://www.buchhaltungsbutler.de/",
-      "sprache": ["de"],
+      "sprache": [
+        "de"
+      ],
       "fokus": "KMU & Mittelstand",
-      "kategorie": ["Buchhaltung", "Belegerfassung & OCR"],
-      "themen": ["automatische Belegerkennung", "OCR-Belegscan", "DATEV-Export", "Banking-Abgleich", "GoBD"],
+      "kategorie": [
+        "Buchhaltung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "automatische Belegerkennung",
+        "OCR-Belegscan",
+        "DATEV-Export",
+        "Banking-Abgleich",
+        "GoBD"
+      ],
       "format": "SaaS (Online-Buchhaltung)",
-      "integration": ["DATEV", "Banking", "Stripe", "PayPal", "Amazon"],
+      "integration": [
+        "DATEV",
+        "Banking",
+        "Stripe",
+        "PayPal",
+        "Amazon"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -134,12 +241,29 @@
       "name": "easybill",
       "anbieter": "easybill GmbH",
       "url": "https://www.easybill.de/",
-      "sprache": ["de"],
+      "sprache": [
+        "de"
+      ],
       "fokus": "KMU & Mittelstand",
-      "kategorie": ["Rechnungsstellung", "Belegerfassung & OCR"],
-      "themen": ["Rechnungen", "GoBD", "DATEV-Export", "E-Commerce-Abrechnung", "wiederkehrende Rechnungen"],
+      "kategorie": [
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "GoBD",
+        "DATEV-Export",
+        "E-Commerce-Abrechnung",
+        "wiederkehrende Rechnungen"
+      ],
       "format": "SaaS (Rechnungsstellung)",
-      "integration": ["DATEV", "Amazon", "eBay", "Shopify", "Banking"],
+      "integration": [
+        "DATEV",
+        "Amazon",
+        "eBay",
+        "Shopify",
+        "Banking"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -152,12 +276,28 @@
       "name": "Billomat",
       "anbieter": "Billomat GmbH & Co. KG",
       "url": "https://www.billomat.com/",
-      "sprache": ["de"],
+      "sprache": [
+        "de"
+      ],
       "fokus": "Selbstständige & Freelancer",
-      "kategorie": ["Rechnungsstellung", "Buchhaltung"],
-      "themen": ["Rechnungen", "Angebote", "Mahnwesen", "DATEV-Export", "Banking-Anbindung"],
+      "kategorie": [
+        "Rechnungsstellung",
+        "Buchhaltung"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Angebote",
+        "Mahnwesen",
+        "DATEV-Export",
+        "Banking-Anbindung"
+      ],
       "format": "SaaS (Rechnungen & Buchhaltung)",
-      "integration": ["DATEV", "Banking", "Zapier", "Stripe"],
+      "integration": [
+        "DATEV",
+        "Banking",
+        "Zapier",
+        "Stripe"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -170,12 +310,28 @@
       "name": "GetMyInvoices",
       "anbieter": "fino.digital GmbH",
       "url": "https://www.getmyinvoices.com/de/",
-      "sprache": ["de", "en"],
+      "sprache": [
+        "de",
+        "en"
+      ],
       "fokus": "KMU & Mittelstand",
-      "kategorie": ["Belegerfassung & OCR"],
-      "themen": ["automatischer Belegabruf", "OCR-Belegscan", "DATEV-Export", "Rechnungsverwaltung", "GoBD"],
+      "kategorie": [
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "automatischer Belegabruf",
+        "OCR-Belegscan",
+        "DATEV-Export",
+        "Rechnungsverwaltung",
+        "GoBD"
+      ],
       "format": "SaaS (Belegmanagement)",
-      "integration": ["DATEV", "lexoffice", "sevDesk", "Banking"],
+      "integration": [
+        "DATEV",
+        "lexoffice",
+        "sevDesk",
+        "Banking"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -188,12 +344,28 @@
       "name": "Candis",
       "anbieter": "CANDIS GmbH",
       "url": "https://www.candis.io/",
-      "sprache": ["de", "en"],
+      "sprache": [
+        "de",
+        "en"
+      ],
       "fokus": "KMU & Mittelstand",
-      "kategorie": ["Belegerfassung & OCR", "Buchhaltung"],
-      "themen": ["Rechnungsfreigabe-Workflows", "OCR-Belegscan", "DATEV-Export", "Zahlungen", "Kreditorenbuchhaltung"],
+      "kategorie": [
+        "Belegerfassung & OCR",
+        "Buchhaltung"
+      ],
+      "themen": [
+        "Rechnungsfreigabe-Workflows",
+        "OCR-Belegscan",
+        "DATEV-Export",
+        "Zahlungen",
+        "Kreditorenbuchhaltung"
+      ],
       "format": "SaaS (Rechnungsworkflow)",
-      "integration": ["DATEV", "Banking", "ERP-Systeme"],
+      "integration": [
+        "DATEV",
+        "Banking",
+        "ERP-Systeme"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -206,12 +378,28 @@
       "name": "Kontist",
       "anbieter": "Kontist GmbH",
       "url": "https://kontist.com/",
-      "sprache": ["de", "en"],
+      "sprache": [
+        "de",
+        "en"
+      ],
       "fokus": "Selbstständige & Freelancer",
-      "kategorie": ["Banking & Liquidität", "Buchhaltung"],
-      "themen": ["Geschäftskonto", "Steuerrücklage automatisch", "Buchhaltung", "UStVA", "Banking-Anbindung"],
+      "kategorie": [
+        "Banking & Liquidität",
+        "Buchhaltung"
+      ],
+      "themen": [
+        "Geschäftskonto",
+        "Steuerrücklage automatisch",
+        "Buchhaltung",
+        "UStVA",
+        "Banking-Anbindung"
+      ],
       "format": "SaaS (Banking & Buchhaltung)",
-      "integration": ["DATEV", "Banking", "Steuerservice"],
+      "integration": [
+        "DATEV",
+        "Banking",
+        "Steuerservice"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -224,12 +412,29 @@
       "name": "Accountable",
       "anbieter": "Accountable GmbH",
       "url": "https://www.accountable.de/",
-      "sprache": ["de", "en", "fr"],
+      "sprache": [
+        "de",
+        "en",
+        "fr"
+      ],
       "fokus": "Selbstständige & Freelancer",
-      "kategorie": ["Buchhaltung", "Rechnungsstellung", "Belegerfassung & OCR"],
-      "themen": ["EÜR", "Rechnungen", "OCR-Belegscan", "UStVA über ELSTER", "Steuererklärung"],
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "EÜR",
+        "Rechnungen",
+        "OCR-Belegscan",
+        "UStVA über ELSTER",
+        "Steuererklärung"
+      ],
       "format": "App / SaaS (Steuer & Buchhaltung)",
-      "integration": ["ELSTER", "Banking"],
+      "integration": [
+        "ELSTER",
+        "Banking"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -242,12 +447,28 @@
       "name": "Norman",
       "anbieter": "Norman Drebes GmbH",
       "url": "https://www.norman.finance/de",
-      "sprache": ["de", "en"],
+      "sprache": [
+        "de",
+        "en"
+      ],
       "fokus": "Selbstständige & Freelancer",
-      "kategorie": ["Buchhaltung", "Rechnungsstellung", "Belegerfassung & OCR"],
-      "themen": ["EÜR", "Rechnungen", "OCR-Belegscan", "UStVA über ELSTER", "Steuer"],
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "EÜR",
+        "Rechnungen",
+        "OCR-Belegscan",
+        "UStVA über ELSTER",
+        "Steuer"
+      ],
       "format": "SaaS (Steuer & Buchhaltung)",
-      "integration": ["ELSTER", "Banking"],
+      "integration": [
+        "ELSTER",
+        "Banking"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -259,13 +480,32 @@
       "id": "wiso-mein-buero",
       "name": "WISO MeinBüro (Buhl)",
       "anbieter": "Buhl Data Service GmbH",
-      "url": "https://www.buhl.de/mein-buero/",
-      "sprache": ["de"],
+      "url": "https://www.buhl.de/",
+      "sprache": [
+        "de"
+      ],
       "fokus": "KMU & Mittelstand",
-      "kategorie": ["Buchhaltung", "Rechnungsstellung", "Belegerfassung & OCR"],
-      "themen": ["Rechnungen", "Buchhaltung", "DATEV-Export", "UStVA über ELSTER", "Banking-Anbindung", "Auftragsverwaltung"],
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Buchhaltung",
+        "DATEV-Export",
+        "UStVA über ELSTER",
+        "Banking-Anbindung",
+        "Auftragsverwaltung"
+      ],
       "format": "SaaS / Desktop (Bürosoftware)",
-      "integration": ["DATEV", "ELSTER", "Banking", "Shopify", "Amazon"],
+      "integration": [
+        "DATEV",
+        "ELSTER",
+        "Banking",
+        "Shopify",
+        "Amazon"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -278,12 +518,26 @@
       "name": "Tidely",
       "anbieter": "Tidely GmbH",
       "url": "https://tidely.com/",
-      "sprache": ["de", "en"],
+      "sprache": [
+        "de",
+        "en"
+      ],
       "fokus": "KMU & Mittelstand",
-      "kategorie": ["Banking & Liquidität"],
-      "themen": ["Liquiditätsplanung", "Cashflow-Prognose", "Banking-Anbindung", "Szenarien"],
+      "kategorie": [
+        "Banking & Liquidität"
+      ],
+      "themen": [
+        "Liquiditätsplanung",
+        "Cashflow-Prognose",
+        "Banking-Anbindung",
+        "Szenarien"
+      ],
       "format": "SaaS (Liquiditätsmanagement)",
-      "integration": ["Banking", "DATEV", "lexoffice"],
+      "integration": [
+        "Banking",
+        "DATEV",
+        "lexoffice"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -296,12 +550,27 @@
       "name": "Agicap",
       "anbieter": "Agicap SAS",
       "url": "https://agicap.com/de/",
-      "sprache": ["de", "en", "fr"],
+      "sprache": [
+        "de",
+        "en",
+        "fr"
+      ],
       "fokus": "KMU & Mittelstand",
-      "kategorie": ["Banking & Liquidität"],
-      "themen": ["Liquiditätsplanung", "Cashflow-Management", "Banking-Anbindung", "Forderungen"],
+      "kategorie": [
+        "Banking & Liquidität"
+      ],
+      "themen": [
+        "Liquiditätsplanung",
+        "Cashflow-Management",
+        "Banking-Anbindung",
+        "Forderungen"
+      ],
       "format": "SaaS (Cashflow-Management)",
-      "integration": ["Banking", "DATEV", "ERP-Systeme"],
+      "integration": [
+        "Banking",
+        "DATEV",
+        "ERP-Systeme"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -314,12 +583,28 @@
       "name": "Pleo",
       "anbieter": "Pleo Technologies A/S",
       "url": "https://www.pleo.io/de",
-      "sprache": ["de", "en"],
+      "sprache": [
+        "de",
+        "en"
+      ],
       "fokus": "KMU & Mittelstand",
-      "kategorie": ["Ausgaben & Kreditkarten", "Belegerfassung & OCR"],
-      "themen": ["Firmenkreditkarten", "Ausgabenmanagement", "OCR-Belegscan", "DATEV-Export", "Freigaben"],
+      "kategorie": [
+        "Ausgaben & Kreditkarten",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Firmenkreditkarten",
+        "Ausgabenmanagement",
+        "OCR-Belegscan",
+        "DATEV-Export",
+        "Freigaben"
+      ],
       "format": "SaaS (Ausgabenmanagement)",
-      "integration": ["DATEV", "Banking", "ERP-Systeme"],
+      "integration": [
+        "DATEV",
+        "Banking",
+        "ERP-Systeme"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -332,12 +617,28 @@
       "name": "Moss",
       "anbieter": "Nufin GmbH (Moss)",
       "url": "https://www.getmoss.com/de",
-      "sprache": ["de", "en"],
+      "sprache": [
+        "de",
+        "en"
+      ],
       "fokus": "KMU & Mittelstand",
-      "kategorie": ["Ausgaben & Kreditkarten", "Belegerfassung & OCR"],
-      "themen": ["Firmenkreditkarten", "Ausgabenmanagement", "OCR-Belegscan", "DATEV-Export", "Rechnungsfreigabe"],
+      "kategorie": [
+        "Ausgaben & Kreditkarten",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Firmenkreditkarten",
+        "Ausgabenmanagement",
+        "OCR-Belegscan",
+        "DATEV-Export",
+        "Rechnungsfreigabe"
+      ],
       "format": "SaaS (Ausgabenmanagement)",
-      "integration": ["DATEV", "Banking", "ERP-Systeme"],
+      "integration": [
+        "DATEV",
+        "Banking",
+        "ERP-Systeme"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": true,
       "preis_eur": null,
@@ -349,13 +650,30 @@
       "id": "xero",
       "name": "Xero",
       "anbieter": "Xero Limited",
-      "url": "https://www.xero.com/de/",
-      "sprache": ["en", "de"],
+      "url": "https://www.xero.com/",
+      "sprache": [
+        "en",
+        "de"
+      ],
       "fokus": "International",
-      "kategorie": ["Buchhaltung", "Rechnungsstellung", "Belegerfassung & OCR"],
-      "themen": ["Rechnungen", "Belegerfassung", "Bankabgleich", "Reporting"],
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Belegerfassung",
+        "Bankabgleich",
+        "Reporting"
+      ],
       "format": "SaaS (Online-Buchhaltung)",
-      "integration": ["Banking", "Stripe", "Shopify", "Zapier"],
+      "integration": [
+        "Banking",
+        "Stripe",
+        "Shopify",
+        "Zapier"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": false,
       "preis_eur": null,
@@ -368,12 +686,28 @@
       "name": "QuickBooks Online",
       "anbieter": "Intuit Inc.",
       "url": "https://quickbooks.intuit.com/",
-      "sprache": ["en"],
+      "sprache": [
+        "en"
+      ],
       "fokus": "International",
-      "kategorie": ["Buchhaltung", "Rechnungsstellung"],
-      "themen": ["Rechnungen", "Buchhaltung", "Bankabgleich", "Reporting", "KI-Funktionen"],
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Buchhaltung",
+        "Bankabgleich",
+        "Reporting",
+        "KI-Funktionen"
+      ],
       "format": "SaaS (Online-Buchhaltung)",
-      "integration": ["Banking", "Stripe", "PayPal", "Shopify"],
+      "integration": [
+        "Banking",
+        "Stripe",
+        "PayPal",
+        "Shopify"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": false,
       "preis_eur": null,
@@ -386,12 +720,30 @@
       "name": "Zoho Books",
       "anbieter": "Zoho Corporation",
       "url": "https://www.zoho.com/de/books/",
-      "sprache": ["de", "en"],
+      "sprache": [
+        "de",
+        "en"
+      ],
       "fokus": "International",
-      "kategorie": ["Buchhaltung", "Rechnungsstellung", "Belegerfassung & OCR"],
-      "themen": ["Rechnungen", "Belegerfassung", "Bankabgleich", "Automatisierung", "Reporting"],
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Belegerfassung",
+        "Bankabgleich",
+        "Automatisierung",
+        "Reporting"
+      ],
       "format": "SaaS (Online-Buchhaltung)",
-      "integration": ["Banking", "Stripe", "PayPal", "Zoho-Suite"],
+      "integration": [
+        "Banking",
+        "Stripe",
+        "PayPal",
+        "Zoho-Suite"
+      ],
       "deutsche_oberflaeche": true,
       "eu_lager": null,
       "preis_eur": null,
@@ -404,12 +756,27 @@
       "name": "FreshBooks",
       "anbieter": "2ndSite Inc. (FreshBooks)",
       "url": "https://www.freshbooks.com/",
-      "sprache": ["en"],
+      "sprache": [
+        "en"
+      ],
       "fokus": "International",
-      "kategorie": ["Rechnungsstellung", "Buchhaltung"],
-      "themen": ["Rechnungen", "Zeiterfassung", "Ausgaben", "Reporting"],
+      "kategorie": [
+        "Rechnungsstellung",
+        "Buchhaltung"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Zeiterfassung",
+        "Ausgaben",
+        "Reporting"
+      ],
       "format": "SaaS (Rechnungen & Buchhaltung)",
-      "integration": ["Banking", "Stripe", "PayPal", "Zapier"],
+      "integration": [
+        "Banking",
+        "Stripe",
+        "PayPal",
+        "Zapier"
+      ],
       "deutsche_oberflaeche": false,
       "eu_lager": false,
       "preis_eur": null,
