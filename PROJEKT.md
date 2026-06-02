@@ -357,6 +357,12 @@ Blocker (nur User): KDP-Login/2FA, Author-Central-Verifizierung, Budget, ~70 h �
     Außenkanten UND der Spine-Falz gezogen (pixelgeprüft, 0 ink in Spine-Band). Geliefert `..._Cover_6x9_matt_v5.pdf`.
     Falls KDP danach IMMER NOCH „Objekt außerhalb der Ränder" zeigt → wahrscheinlich Cache/False-Positive der
     KDP-Vorschau: Vorschau komplett beenden, Cover neu hochladen, Vorschau neu starten; sonst KDP-Support.
+    Cover **v6** (2026-06-02): da Raster-Cover (Pillow→PDF) trotz v2–v5 weiter „Objekt außerhalb der Ränder"
+    flaggte, auf **echtes Vektor-PDF** umgestellt — `/tmp/adhd/build_cover_vector.py` (reportlab, echter
+    Text, eingebettete DejaVu, Helvetica-Remap via pikepdf), exakt 12,4797 × 9,25", Rücken 0,2297".
+    Geliefert `ADHD-Planner_Cover_6x9_v6_vektor.pdf`. Vektor = KDP misst Ränder präzise, Bildanalyse-
+    Fehlalarme entfallen (gleiche Methode wie die Roman-KDP-Druckcover via `kdp_paket.py`).
+    Wenn AUCH v6 noch flaggt: definitiv KDP-Cache/Bug → frische Vorschau / KDP-Support.
 - **„Mileage Log Book for Small Business"** (Marcus Reilly) — Taschenbuch, Druckvorschau-**FEHLER**:
   Text/Objekt außerhalb der Ränder (Ursache: eigener Barcode unten links) → Barcode entfernen,
   KDP setzt ihn selbst; Vorschau zeigte **119 Seiten**.
