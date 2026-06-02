@@ -83,6 +83,65 @@ geht es deutlich schneller. **Beides kostenlos:**
 
 ---
 
+## 6. Das neue Netzwerk live schalten (Stand 2026-06-02)
+
+Alles unten ist **gebaut und gemergt** — es fehlt nur deine Konto-/Domain-Seite.
+Reihenfolge egal; jedes Projekt ist unabhängig.
+
+### 6a. Cloudflare-Projekte je Subdomain (nur Klicks, gratis)
+Jeder Radar/Shop hat einen Auto-Build-Workflow, der bei Push nach `main` baut.
+Pro Projekt **einmal** in Cloudflare Pages anlegen + Custom Domain zuordnen:
+
+| Ordner | CF-Projektname | Domain | Build-Output |
+|--------|----------------|--------|--------------|
+| `ki-verzeichnis/` | `ki-verzeichnis` | `tools.abannews.com` | `dist/` |
+| `pod-shop/` | `shop` | `shop.abannews.com` | `dist/` |
+| `musik-radar/` | `musik` | `musik.abannews.com` | `dist/` |
+| `video-radar/` | `video` | `video.abannews.com` | `dist/` |
+| `voice-radar/` | `voice` | `voice.abannews.com` | `dist/` |
+| `chatbot-radar/` | `chatbot` | `chatbot.abannews.com` | `dist/` |
+| `buchhaltung-radar/` | `buchhaltung` | `buchhaltung.abannews.com` | `dist/` |
+| `newsletter-radar/` | `newsletter` | `newsletter.abannews.com` | `dist/` |
+| `dropshipping-radar/` | `dropshipping` | `dropshipping.abannews.com` | `dist/` |
+| `automatisierung-radar/` | `automatisierung` | `automatisierung.abannews.com` | `dist/` |
+| `kurse-radar/` | `kurse` | `kurse.abannews.com` | `dist/` |
+| `prompts-bibliothek/` | `prompts` | `prompts.abannews.com` | `dist/` |
+| `agenturen-radar/` | `agenturen` | `agenturen.abannews.com` | `dist/` |
+| `handwerk-radar/` | `handwerk` | `handwerk.abannews.com` | `dist/` ⚠️ erst Daten verifizieren |
+
+- [ ] Pro Zeile: Cloudflare Pages → **Create project** → **Connect to Git** → dieses Repo →
+      Build command **leer**, Output directory = `dist/`, Branch `main`, Root = der Ordner.
+      Oder den vorhandenen Workflow nutzen (deployt automatisch, wenn `CLOUDFLARE_API_TOKEN`
+      + `CLOUDFLARE_ACCOUNT_ID` als GitHub-Secrets gesetzt sind).
+- [ ] Custom Domain (Subdomain) im CF-Projekt zuordnen → CNAME wird automatisch gesetzt.
+- Detail-Hintergrund: `docs/GO-LIVE-RADARS.md`.
+
+### 6b. POD-Shop verkaufsfähig machen (`pod-shop/`)
+- [ ] Shopify-Store anlegen, `pod-shop/shopify-import.csv` importieren (Status bleibt `draft`).
+- [ ] POD-Anbieter mit EU-Lager verbinden (Gelato für Print, 3D-Druck-POD fürs Namensschild),
+      Produkte mappen, **Druckkosten ablesen**.
+- [ ] Echte Preise in `pod-shop/data/produkte.json` (`preis_eur`) **und** in Shopify eintragen.
+- [ ] In `pod-shop/pod-config.json` unter `shopify` das führende `_` bei `_produkt_basis_url`
+      entfernen + echte URL eintragen → dann `cd pod-shop && python3 generate.py`.
+- [ ] Produkte in Shopify auf „aktiv" schalten. (Schritt-für-Schritt: `pod-shop/README.md`.)
+
+### 6c. API-Keys setzen (NIE ins Repo — nur Env/CF-Secret)
+- [ ] `ANTHROPIC_API_KEY` (console.anthropic.com): lokal `export ...` für
+      `produkt-imperium/generate_guide.py`; als **CF-Secret** für die Edge-Tools
+      (`functions/api/ki-erwaehnung.js`, `hype-check.js`).
+- [ ] `ELEVENLABS_API_KEY` (elevenlabs.io): lokal `export ...` für
+      `video-pipeline/generate_clips.py --voice` und `generate_promo.py --voice`.
+- ⚠️ Ein Key, der je in einem Chat/einer Datei landet, gilt als verbrannt → beim Anbieter
+      neu erzeugen (revoke + regenerate).
+
+### 6d. Werbespot final rendern (optional, kostet Credits)
+- [ ] `cd video-pipeline && python3 generate_promo.py` → `ausgabe/werbespot/`.
+- [ ] `voiceover.txt` in ElevenLabs (Multilingual, ruhige deutsche Stimme) → Audio.
+- [ ] Audio + `untertitel.srt` + Storyboard in HeyGen/CapCut → 9:16 exportieren.
+- [ ] Posten (Reels/TikTok/Shorts) — Caption + Link auf abannews.com. Setup: `docs/WERBEVIDEO-*.md`.
+
+---
+
 ## Was bewusst NICHT zu tun ist
 - Kein Google Analytics / 3rd-Party-Tracking (DSGVO + Markenversprechen).
 - Nicht dieselbe Nachricht am selben Tag in 20 Gruppen (Spam → Bann).
