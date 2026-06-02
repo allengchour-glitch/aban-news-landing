@@ -36,6 +36,7 @@ strength= float(os.environ.get("POLISH_STRENGTH", "0.15"))
 cell    = float(os.environ.get("POLISH_CELL", "0.3"))
 size_mm = float(os.environ.get("POLISH_SIZE", "0"))   # 0 = nicht skalieren
 deci    = float(os.environ.get("POLISH_DECIMATE", "1"))  # 1 = keine Reduktion
+remesh  = float(os.environ.get("POLISH_REMESH", "0"))    # 0 = aus, sonst Voxelgroesse mm
 smooth  = os.environ.get("POLISH_SMOOTH", "0") == "1"
 loop    = os.environ.get("POLISH_LOOP", "0") == "1"
 base    = os.environ.get("POLISH_BASE", "0") == "1"
@@ -83,10 +84,7 @@ bpy.ops.mesh.remove_doubles(threshold=0.0005)
 bpy.ops.mesh.normals_make_consistent(inside=False)
 bpy.ops.object.mode_set(mode="OBJECT")
 
-# --- optional Polygone reduzieren (fuer dichte KI-Meshes) ---
-if 0 < deci < 1:
-    dec = obj.modifiers.new("dec", "DECIMATE")
-    dec.ratio = deci
+# (Decimate erfolgt am Ende, nach Booleans + Remesh)
 
 # --- optional glaetten (Subdivision) ---
 if smooth or detail != "none":
@@ -151,10 +149,10 @@ if hole:
     maxz = max(v.z for v in bb)
     cx = sum(v.x for v in bb) / 8.0
     cy = sum(v.y for v in bb) / 8.0
-    hd = min(max(max(obj.dimensions) * 0.11, 4.0), 7.0)   # Lochdurchmesser
+    hd = 4.0   # Lochdurchmesser in mm (klein, dezent)
     L = obj.dimensions.x * 2 + 30
     bpy.ops.mesh.primitive_cylinder_add(radius=hd / 2, depth=L,
-        location=(cx, cy, maxz * 0.82), rotation=(0, math.radians(90), 0))
+        location=(cx, cy, maxz * 0.62), rotation=(0, math.radians(90), 0))
     cyl = bpy.context.active_object
     bpy.context.view_layer.objects.active = obj
     mh = obj.modifiers.new("hole", "BOOLEAN")
@@ -179,6 +177,36 @@ if loop:
     ring.select_set(True); obj.select_set(True)
     bpy.context.view_layer.objects.active = obj
     bpy.ops.object.join()
+
+# --- Voxel-Remesh: garantiert manifold, entfernt Boolean-Naehte ---
+if remesh > 0:
+    bpy.context.view_layer.objects.active = obj
+    rm = obj.modifiers.new("rm", "REMESH")
+    rm.mode = "VOXEL"; rm.voxel_size = remesh
+    try: bpy.ops.object.modifier_apply(modifier=rm.name)
+    except Exception: pass
+
+# --- Decimate (Polygone reduzieren, kleine Datei) ---
+if 0 < deci < 1:
+    bpy.context.view_layer.objects.active = obj
+    dec = obj.modifiers.new("dec", "DECIMATE")
+    dec.ratio = deci
+    try: bpy.ops.object.modifier_apply(modifier=dec.name)
+    except Exception: pass
+
+# --- Sicherheit: etwaige Hilfs-Meshes (Boolean-Cutter) entfernen ---
+for _o in list(bpy.context.scene.objects):
+    if _o.type == "MESH" and _o is not obj:
+        bpy.data.objects.remove(_o, do_unlink=True)
+
+# --- finale Saeuberung nach Booleans (Artefakte/Normalen reparieren) ---
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode="EDIT")
+bpy.ops.mesh.select_all(action="SELECT")
+bpy.ops.mesh.remove_doubles(threshold=0.0008)
+bpy.ops.mesh.normals_make_consistent(inside=False)
+bpy.ops.object.mode_set(mode="OBJECT")
+bpy.ops.object.shade_smooth()
 
 # --- Export STL ---
 try: bpy.ops.wm.stl_export(filepath=out)
@@ -230,6 +258,7 @@ def main(argv=None) -> int:
     p.add_argument("--cell", type=float, default=0.3, help="Musterdichte (kleiner = feiner)")
     p.add_argument("--size", type=float, default=0, help="laengste Kante in mm (0 = nicht skalieren)")
     p.add_argument("--decimate", type=float, default=1.0, help="Polygone reduzieren (z. B. 0.2 = 20%% behalten)")
+    p.add_argument("--remesh", type=float, default=0.0, help="Voxel-Remesh in mm (z. B. 0.6) = manifold, saubere Topologie")
     p.add_argument("--smooth", action="store_true", help="zusaetzlich glaetten")
     p.add_argument("--loop", action="store_true", help="Schluesselring-Loop oben anfuegen")
     p.add_argument("--base", action="store_true", help="Boden flach schneiden (steht/druckt ohne Stuetzen)")
@@ -250,6 +279,7 @@ def main(argv=None) -> int:
                POLISH_DETAIL=a.detail, POLISH_STRENGTH=str(a.strength),
                POLISH_CELL=str(a.cell), POLISH_SIZE=str(a.size),
                POLISH_DECIMATE=str(a.decimate),
+               POLISH_REMESH=str(a.remesh),
                POLISH_SMOOTH="1" if a.smooth else "0",
                POLISH_LOOP="1" if a.loop else "0",
                POLISH_BASE="1" if a.base else "0",

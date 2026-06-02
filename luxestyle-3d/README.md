@@ -110,8 +110,12 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
   perfekt pro Tier platzieren (Nacken/höchster solider Punkt) bleibt [TODO].
 - **Dünne Stellen** (Ohren/Schwanz/Beine) können zu dünn zum Drucken sein. Auto-Verdicken
   ist heikel → besser im Meshy-Prompt „dicke, kräftige Gliedmaßen, keine dünnen Teile". [Prompt]
-- **Druckbarkeits-Check fehlt:** keine Prüfung auf nicht-manifold / dünne Wände → TODO
-  (3D-Print-Toolbox-Logik + kurzer Report).
+- **Manifold/Artefakte:** AI-Meshes haben oft Naht-Artefakte (schwarze Zacken am Rücken).
+  → mit `--remesh 0.45` (Voxel) beheben = garantiert manifold/druckbar (weicht feine
+  Details wie Schnurrhaare etwas auf — Kompromiss). [gelöst]
+- **`--base` (flacher Boden):** hatte Bug (Hilfs-Würfel blieb im Export). → Hilfs-Meshes
+  werden jetzt vor Export/Render entfernt. sit-on-plate reicht meist; `--base` mit Vorsicht.
+- **Bewährter Befehl:** `python3 polish.py meshy.glb --size 50 --remesh 0.45 --decimate 0.5 --render`
 - **Decimate** fix 0.2 → besser Ziel-Polycount statt festem Verhältnis. [TODO]
 - **Render-Kamera** modellabhängig (Standalone-Render hatte Framing-Bugs) → robustere
   Rahmung. [TODO]
