@@ -22,11 +22,14 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 8 (82→92, #136): Sportgeschäfte, Modeboutiquen, Getränkehandel, Fahrschulen, Musikschulen, Tanzschulen, Sprachschulen, Nagelstudios, Tattoostudios, Hochzeitsfotografen.
 - **DE-Backlog weitgehend erschöpft** → Fokus wechselt auf **P2-Übersetzungen** (kein Thin-Content-Risiko). Neue DE-Hubs nur bei klar distinkten neuen Branchen.
 
-## Mehrsprachige Hubs (P2, EN+FR+IT) — **9 Hubs viersprachig**
+## Mehrsprachige Hubs (P2, EN+FR+IT) — **18 Hubs viersprachig**
 
 - Charge 1 (#126): handwerker, steuerberater, coaches.
 - Charge 2 (#129): immobilienmakler, onlineshops, gastronomie.
 - Charge 3 (#134): aerzte, anwaelte, fitnessstudios.
+- Charge 4 (#138): friseure, fotografen, kfz-werkstaetten.
+- Charge 5 (#140): hotels, apotheken, pflegedienste.
+- Charge 6 (#154): finanzberater, versicherungsmakler, reisebueros.
 - Muster: pro Hub DE um hreflang-Block + nav-Sprach-Switch ergänzen, je `en/ fr/ it/`-Datei
   (eigene canonical, 5 reziproke hreflang-Zeilen inkl. x-default=de, og:locale, WebPage-inLanguage,
   FAQ pro Sprache wortgleich), sitemap +3/Hub (priority 0.7). FAQ-Markup variiert je Hub (dl/dt/dd ODER details/summary).
