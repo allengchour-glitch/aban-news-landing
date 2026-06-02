@@ -13,7 +13,7 @@ Ehrliche, DSGVO-konservative Regeln:
 Aufruf:  python3 fetch_anbieter.py        # schreibt data/anbieter.json
 """
 from __future__ import annotations
-import json, re, time, urllib.parse, urllib.request
+import json, re, time, urllib.error, urllib.parse, urllib.request
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -25,12 +25,27 @@ UA = "aban-handwerk-radar/1.0 (hallo@abannews.com; +https://handwerk.abannews.co
 CITIES = [
     ("München", "6", "DE"), ("Berlin", "4", "DE"), ("Hamburg", "4", "DE"),
     ("Köln", "6", "DE"), ("Frankfurt am Main", "6", "DE"), ("Stuttgart", "6", "DE"),
-    ("Leipzig", "6", "DE"), ("Wien", "4", "AT"), ("Graz", "8", "AT"),
-    ("Zürich", "8", "CH"), ("Bern", "8", "CH"),
+    ("Leipzig", "6", "DE"), ("Düsseldorf", "6", "DE"), ("Dortmund", "6", "DE"),
+    ("Essen", "6", "DE"), ("Nürnberg", "6", "DE"), ("Dresden", "6", "DE"),
+    ("Hannover", "6", "DE"), ("Bremen", "4", "DE"),
+    ("Wien", "4", "AT"), ("Graz", "8", "AT"), ("Linz", "8", "AT"),
+    ("Salzburg", "8", "AT"), ("Zürich", "8", "CH"), ("Bern", "8", "CH"),
+    ("Basel", "8", "CH"), ("Genève", "8", "CH"),
 ]
 
 # OSM-craft → Leistungs-Kategorie (Zuordnung, keine Zusage).
 HEAT = {"heating_engineer", "hvac"}
+
+# Qualitäts-Filter gegen breite/falsche OSM-Tags (z. B. hvac umfasst auch
+# Trocknung/Kälte/Lüftung). NEG = klar kein Wärmepumpen-Bezug → raus.
+NEG = ("trocknung", "entfeuchtung", "brandschutz", "rohrreinigung", "kanalreinigung",
+       "abfluss", "schädling", "schaedling", "lüftungsreinig", "lueftungsreinig",
+       "kaminkehr", "schornstein")
+# POS = Heizungs-/SHK-Signal. Nur hvac-Einträge mit so einem Signal behalten;
+# heating_engineer (echter Heizungsbau) gilt immer.
+POS = ("heiz", "wärme", "waerme", "sanitär", "sanitaer", "shk", "haustechnik",
+       "gebäudetechnik", "gebaeudetechnik", "klempner", "installat", "wärmepump",
+       "waermepump", "energietechnik", "energie")
 
 
 def slugify(v: str) -> str:
@@ -55,9 +70,17 @@ area["name"="{city}"]["admin_level"="{level}"]->.a;
 out center tags 40;
 """.strip()
     data = urllib.parse.urlencode({"data": q}).encode()
-    req = urllib.request.Request(ENDPOINT, data=data, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=90) as r:
-        return json.loads(r.read().decode()).get("elements", [])
+    for attempt in range(4):
+        req = urllib.request.Request(ENDPOINT, data=data, headers={"User-Agent": UA})
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                return json.loads(r.read().decode()).get("elements", [])
+        except urllib.error.HTTPError as ex:
+            if ex.code in (429, 504) and attempt < 3:
+                time.sleep(12 * (attempt + 1))  # Backoff bei Overpass-Drosselung
+                continue
+            raise
+    return []
 
 
 def to_entry(el: dict, city: str, land: str) -> dict | None:
@@ -69,12 +92,17 @@ def to_entry(el: dict, city: str, land: str) -> dict | None:
     if not web.startswith("http"):
         web = "https://" + web
     craft = t.get("craft") or t.get("shop") or ""
-    if craft in HEAT:
-        leistungen, kat = ["Wärmepumpe"], "Heizungs-/Klimatechnik"
-    elif t.get("shop") == "solar":
+    low = name.lower()
+    if any(bad in low for bad in NEG):
+        return None  # klar kein Wärmepumpen-Bezug
+    if t.get("shop") == "solar":
         leistungen, kat = ["Photovoltaik"], "Solar/Photovoltaik"
+    elif craft == "heating_engineer":
+        leistungen, kat = ["Wärmepumpe"], "Heizungsbau"
+    elif craft == "hvac" and any(sig in low for sig in POS):
+        leistungen, kat = ["Wärmepumpe"], "Heizungs-/Klimatechnik"
     else:
-        return None
+        return None  # hvac ohne Heizungs-Signal: zu unsicher
     osm_type = el.get("type", "node")[0]  # n/w/r
     osm_url = f"https://www.openstreetmap.org/{el.get('type')}/{el.get('id')}"
     stadt = t.get("addr:city") or city
@@ -118,7 +146,7 @@ def main() -> None:
             out.append(e)
             n += 1
         print(f"  {city}: {n} Betriebe")
-        time.sleep(2)  # fair gegenüber der öffentlichen Overpass-Instanz
+        time.sleep(6)  # fair gegenüber der öffentlichen Overpass-Instanz
 
     out.sort(key=lambda e: (e["land"], e["stadt"], e["name"]))
     doc = {
