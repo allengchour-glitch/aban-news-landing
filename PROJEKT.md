@@ -298,18 +298,45 @@ Schrift eingebettet).
    dann Umschlag; Trim 5×8", Barcode-Häkchen aus, KI-Inhalt: Text Ja / Cover Nein).
 3. Nach Live-Schaltung jeweils Amazon-Link auf der passenden Verkaufsseite eintragen.
 
-### ⚠️ Externe KDP-Bücher — NICHT in diesem Repo
+### ⚠️ KDP-Buch-Business — SEPARATES Projekt/Umgebung (NICHT dieses Repo)
 
-Der User hat weitere KDP-Bücher (z. B. **„Mileage Log Book for Small Business" von „Marcus Reilly"**,
-außerdem früher erwähnt: ADHD Planner, Vision Board). Diese sind **separate Projekte außerhalb dieses
-Repos** — exhaustive Suche (Repo-Inhalt, Dateinamen, Git-History über alle Branches, gesamtes
-Dateisystem) liefert **null Treffer**. Hier liegen weder Quelldateien noch Cover/Innenteil-PDFs.
-→ Ich kann diese Dateien **nicht editieren/„nachladen"** (kein sessionübergreifendes Gedächtnis;
-Memory = nur Dateien in diesem Repo). Möglich ist nur **allgemeine KDP-Hilfe** (Fehlererklärung,
-Margen/Barcode/Beschnitt), oder — falls der User die Cover-Datei **in dieses Repo legt** — ein
-sauberes Neu-Generieren des Covers per Pillow-Skript (wie bei den Romanen).
+Allen betreibt **außerhalb dieses Repos** ein KDP-Self-Publishing-Business (Low-/No-Content-
+Bücher: Planer, Journals, Logbooks unter mehreren Pen-Names). Bestätigt durch einen alten Chat,
+der auf eigene Memory-Dateien jener Umgebung verweist: `SESSION_HANDOFF_2026-05-30.md`,
+`_BESTSELLER_ROADMAP.md`, `MEMORY.md`, `session-handoff-2026-05-30.md` — **die existieren HIER
+NICHT** und sind von hier nicht erreichbar. Darum liefert jede Dateisuche nach Mileage/ADHD/
+Vision Board in diesem Repo **null Treffer**.
+→ Von hier nur **allgemeine KDP-Hilfe** möglich (Fehler erklären, Margen/Barcode/Beschnitt,
+Browser-Claude-Anleitungen). Ein Cover kann ich hier **neu bauen**, wenn Trim + Seitenzahl +
+Papier vorliegen.
 
-Typische KDP-Cover-Fehler & Fix (für die externen Bücher dokumentiert):
+**Fundament (laut Handoff 2026-05-30):** 48 Bücher production-ready (Ø 9,2/10), je mit
+Metadata + A+ Content + Interior + Cover. Pen-Names u. a.: **Marcus Reilly, Anna Fielding,
+Iris Bloom, Sage Whitfield**. Bisher nur wenige live.
+
+**3 Bestseller-Kandidaten (Roadmap — Entscheidung des Users noch offen):**
+1. **Mileage Log** (Marcus Reilly) — Q1-Tax-Spike, zeitkritisch. ~$170 + 20 h → Y1 $4,8–12k.
+2. **Anna-Fielding-8-Buch-Recovery-Serie** — Cross-Sell-Hebel (gleicher Pen-Name). ~$350 + 30 h → Y1 $15–35k.
+3. **Memory Journal Grandparent** (Iris Bloom) — Q4-Geschenk. ~$110 + 20 h → Q4 $3–8k.
+Gesamt ~$630 + 70 h → Y1 ~$22,8–35k. $0-Pfad (DIY-Canva-Cover, organische Reviews) ≈ 60 % des ROI.
+Blocker (nur User): KDP-Login/2FA, Author-Central-Verifizierung, Budget, ~70 h über 90 Tage.
+
+**KDP-Bookshelf-Status (vom User gezeigt, 2026-06-02):**
+- **„Vision Board Workbook for Women"** (Sage Whitfield) — Taschenbuch **LIVE** ✅, $11.99,
+  ASIN **B0H3JZZPM5**. Kindle-eBook-Version noch nicht angelegt.
+- **„ADHD Daily Planner for Adults"** (Marcus Reilly) — Taschenbuch **ENTWURF**, **kein Cover
+  hochgeladen**. Zum Cover-Bauen fehlen noch: Trim-Format, Seitenzahl, Papier; Innenteil-Status unklar.
+- **„Mileage Log Book for Small Business"** (Marcus Reilly) — Taschenbuch, Druckvorschau-**FEHLER**:
+  Text/Objekt außerhalb der Ränder (Ursache: eigener Barcode unten links) → Barcode entfernen,
+  KDP setzt ihn selbst; Vorschau zeigte **119 Seiten**.
+
+**Typische KDP-Cover-Fehler & Fix:**
 - „Text/Objekt außerhalb der Ränder" = Element zu nah am Rand/Falz → alles ≥6 mm nach innen.
 - Eigener Barcode = häufige Ursache → entfernen, unten **rechts** ~5×3 cm frei lassen, KDP setzt ihn selbst.
-- Cover-Gesamtmaß inkl. **3,2 mm Beschnitt** rundum, passend zur Seitenzahl + Trim, als PDF/X exportieren.
+- Cover-Gesamtmaß inkl. **3,2 mm Beschnitt** rundum, passend zu Seitenzahl + Trim, als PDF/X exportieren.
+
+**Bekannter Bug jener Umgebung:** kaputter `check-sql-files.py`-Hook feuert bei jedem Speichern
+(harmlos, alter Plugin-Pfad) — dort in `~/.claude/settings.json` entfernen.
+
+> Hinweis: Das aban-Repo enthält eigene KI-Romane (separat): „The Seam" (EN) live, „Schicht" (DE),
+> „Marsch"/„The Reclaimed Land" gebaut — siehe Abschnitt „Romane auf Amazon KDP" oben.
