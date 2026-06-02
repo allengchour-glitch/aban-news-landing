@@ -13,8 +13,24 @@ Planer, Logbooks, Journals). Entstanden 2026-06-02 beim Fertigstellen des
 
 | Datei | Zweck |
 |-------|-------|
+| `build_book.py` | **Pipeline:** ein Aufruf → Cover + Innenteil + `metadata.md` + `upload-playbook.md` |
 | `kdp_cover.py` | Full-Wrap-**Cover** als echtes Vektor-PDF (Front/Rücken/Back) |
 | `planner_interior.py` | **Innenteil** eines Tages-Planers (6×9, s/w), N Tagesseiten |
+
+## Pipeline (empfohlen)
+
+```bash
+python3 build_book.py            # baut alle BOOKS nach ./out/<slug>/
+python3 build_book.py adhd       # nur ein Buch
+```
+
+Pro Buch entsteht in `out/<slug>/`:
+`*-cover.pdf`, `*-interior.pdf` (bei `interior.type=="planner"`),
+`metadata.md` (KDP-Felder zum Reinkopieren) und `upload-playbook.md`
+(Browser-Claude-Auftrag). **Der Cover-Rücken wird aus der echten Innenteil-
+Seitenzahl berechnet** — Cover und Innenteil passen automatisch zusammen.
+Bücher mit fremdem Innenteil: `interior={"type":"external","pages":N}` →
+Cover + Metadaten + Playbook werden gebaut, Innenteil lädst du selbst hoch.
 
 ## Nutzung
 
