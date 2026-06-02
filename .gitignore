@@ -5,4 +5,5 @@ ausgabe/
 ausgabe-en/
 ausgabe-schicht/
 ausgabe-schicht-en/
-reports/
+reports/*
+!reports/IMPROVEMENT-REPORT.md
