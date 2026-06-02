@@ -297,3 +297,19 @@ Schrift eingebettet).
 2. „Marsch"/„The Reclaimed Land" auf KDP hochladen (Innenteil-PDF ZUERST → setzt Seitenzahl/Cover-Maß,
    dann Umschlag; Trim 5×8", Barcode-Häkchen aus, KI-Inhalt: Text Ja / Cover Nein).
 3. Nach Live-Schaltung jeweils Amazon-Link auf der passenden Verkaufsseite eintragen.
+
+### ⚠️ Externe KDP-Bücher — NICHT in diesem Repo
+
+Der User hat weitere KDP-Bücher (z. B. **„Mileage Log Book for Small Business" von „Marcus Reilly"**,
+außerdem früher erwähnt: ADHD Planner, Vision Board). Diese sind **separate Projekte außerhalb dieses
+Repos** — exhaustive Suche (Repo-Inhalt, Dateinamen, Git-History über alle Branches, gesamtes
+Dateisystem) liefert **null Treffer**. Hier liegen weder Quelldateien noch Cover/Innenteil-PDFs.
+→ Ich kann diese Dateien **nicht editieren/„nachladen"** (kein sessionübergreifendes Gedächtnis;
+Memory = nur Dateien in diesem Repo). Möglich ist nur **allgemeine KDP-Hilfe** (Fehlererklärung,
+Margen/Barcode/Beschnitt), oder — falls der User die Cover-Datei **in dieses Repo legt** — ein
+sauberes Neu-Generieren des Covers per Pillow-Skript (wie bei den Romanen).
+
+Typische KDP-Cover-Fehler & Fix (für die externen Bücher dokumentiert):
+- „Text/Objekt außerhalb der Ränder" = Element zu nah am Rand/Falz → alles ≥6 mm nach innen.
+- Eigener Barcode = häufige Ursache → entfernen, unten **rechts** ~5×3 cm frei lassen, KDP setzt ihn selbst.
+- Cover-Gesamtmaß inkl. **3,2 mm Beschnitt** rundum, passend zur Seitenzahl + Trim, als PDF/X exportieren.
