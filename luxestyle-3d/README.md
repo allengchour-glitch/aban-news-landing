@@ -17,6 +17,7 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `kawaii_cat.scad` | **Flache Kawaii-Katze** (Loaf): graviertes Gesicht (X-Augen, Schnurrhaare, Mund), erhabene Zunge, Loop-Loch, parametrisch 50–90 mm |
 | `pancake_cat.scad` | **Flache Kawaii-Pfannkuchen-Katze** (gespreizte Pose, Beine raus) + graviertes Derp-Gesicht + Schwanz + Loch |
 | `cat_charm.scad` | **Mehrfarbiger** flacher Kawaii-Katzen-Charm (AMS): weiß + orange Flecken, **schwarze X-Augen**, **orange Zunge** — Farbteile als eigene Geometrie |
+| `cat_charm_round.scad` | Flacher Kawaii-Charm mit **RUNDEN Augen** (kein X), rosa Ohren, schwarze Augen/Nase, orange Zunge, **Loch** — AMS-mehrfarbig |
 | `make.py` | erzeugt aus jedem Text eine druckfertige `.stl` |
 | `polish.py` | **Veredelung (Blender):** Mesh säubern, glätten, Schuppen-/Detail-Struktur, auf mm skalieren, STL + Render |
 | `build_all.sh` | **1 Befehl** → kompletter Katalog als STL (alle Tiere, Flexi, Beispiel-Namen) |
