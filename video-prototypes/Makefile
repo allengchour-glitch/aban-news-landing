@@ -18,6 +18,8 @@
 
 SCENES ?= s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15
 WORK   ?= /tmp
+XI     ?= $(ELEVENLABS_API_KEY)          # ElevenLabs-Key (NICHT committen) via Umgebung
+VOICE  ?= BswSp506E1rUw7uja1V5           # Mary Kai (deutsch, Social)
 PY     ?= python3
 S      := scripts
 
@@ -30,19 +32,20 @@ all: audio clips
 ## Stimmen (XTTS Daisy) + Rhubarb-Lip-Sync + Whisper-Captions für $(SCENES)
 audio:
 	cp sc_*.txt $(WORK)/
-	$(PY) $(S)/pipeline_xtts.py $(SCENES)
+	XI=$(XI) VOICE=$(VOICE) $(PY) $(S)/eleven_pipeline.py $(SCENES)
 
-## Alle Clips rendern und nach output/ kopieren (Audio muss da sein)
+## Alle Clips rendern, mit Ambiente veredeln und nach output/ kopieren (Audio muss da sein)
 clips:
 	@for k in $(SCENES); do \
 	  echo ">>> render $$k"; \
 	  $(PY) $(S)/anim_film.py $$k || { echo "FAILED $$k"; continue; }; \
-	  cp $(WORK)/clipfilm_$$k.mp4 output/; \
+	  bash $(S)/audio_dress.sh $$k; \
+	  cp $(WORK)/clipdress_$$k.mp4 output/clipfilm_$$k.mp4; \
 	done
 
 ## Einzelner Clip, z.B. make clip-s6
 clip-%:
-	$(PY) $(S)/anim_film.py $* && cp $(WORK)/clipfilm_$*.mp4 output/
+	$(PY) $(S)/anim_film.py $* && bash $(S)/audio_dress.sh $* && cp $(WORK)/clipdress_$*.mp4 output/clipfilm_$*.mp4
 
 ## Redaktionsplan (1 Video / 2 Tage) neu erzeugen
 schedule:
