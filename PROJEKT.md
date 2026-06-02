@@ -395,5 +395,11 @@ Blocker (nur User): KDP-Login/2FA, Author-Central-Verifizierung, Budget, ~70 h �
 **Bekannter Bug jener Umgebung:** kaputter `check-sql-files.py`-Hook feuert bei jedem Speichern
 (harmlos, alter Plugin-Pfad) — dort in `~/.claude/settings.json` entfernen.
 
+**🛠 Wiederverwendbares Tool (im Repo):** `tools/kdp-cover/` — Vektor-Cover-Generator
+(`kdp_cover.py`) + Planer-Innenteil-Generator (`planner_interior.py`) + README mit allen
+KDP-Lehren (Vektor statt Raster, exakte Größe, Rücken-Formel/Papier-Multiplikatoren,
+dünner Rücken=kein Rückentext, kein eigener Barcode, ein flaches BG-Feld, Fonts einbetten/
+Helvetica-Remap). Beispiel-Configs für ADHD + Mileage enthalten. `out/` ist git-ignored.
+
 > Hinweis: Das aban-Repo enthält eigene KI-Romane (separat): „The Seam" (EN) live, „Schicht" (DE),
 > „Marsch"/„The Reclaimed Land" gebaut — siehe Abschnitt „Romane auf Amazon KDP" oben.
