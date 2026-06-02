@@ -199,8 +199,8 @@ BOOKS = {
         "closing": "Keep every mile. Claim every dollar.",
         "interior": {"type": "external", "pages": 119,
                      "note": "Innenteil liegt bereits im KDP-Entwurf (119 S.)."},
-        # typographic cover (no image) — set art.src or mode "auto" to add one
-        "cover": {**kdp_cover.EXAMPLES["mileage"], "art": {"mode": "none"}},
+        # drawn rings — concentric circles read like an odometer/gauge (businesslike)
+        "cover": {**kdp_cover.EXAMPLES["mileage"], "art": {"mode": "draw", "motif": "rings"}},
         "listing": {
             "language": "English", "price_usd": 6.99, "price_eur": 6.99,
             "ai_text": False, "ai_images": False, "low_content": True,
