@@ -1304,3 +1304,12 @@ Schuhe, Taschen, Schmuck, Sonnenbrillen. Brillen-SEO-Meta zusätzlich konkretisi
 **Loop-Stand:** Hochwertige, sichere API-Optimierungen weitgehend ausgeschöpft (Katalog-Alts sauber,
 Kern-Kollektionen + ganzer Kleider-Katalog optimiert). Verbleibende Hebel sind v.a. die Customizer-Klicks
 (Theme-Sperre, siehe SHOP-DESIGN-AUDIT.md) — die kann nur der User.
+
+## 2026-06-02 — Produkt-SEO-Feinschliff + weitere Kollektions-Texte
+**Produkt-SEO:** Fashion-Accessoires hatten fast alle LEERE SEO-Metas (nur Plateau-Sandalen gesetzt).
+→ **24 Produkte** (4 Schuhe + 7 Taschen + 13 Sonnenbrillen) mit Meta-Title (≤70) + Description (≤160,
+WELCOME10/Schweiz/Lieferung) befüllt. productUpdate(product:{seo}), 0 Fehler.
+**Kollektions-Texte (+8):** Highlights, Bestseller, Beauty, Wellness, Tech, Wohnen, Geschenke = Trust-Zeile
+ergänzt; **Tech** Inline-Style-Müll + „7-14 Werktage" bereinigt; **Sale** (unter-chf-25) neuer Text + SEO-Meta
+(war komplett leer). → **15 Kollektionen** jetzt mit starkem Text + Trust.
+**OFFEN für weitere Loops:** Schmuck-Produkt-SEO (40 Stück, alle leer) + ggf. Top-Fashion-Produkt-SEO-Check.
