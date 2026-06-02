@@ -1216,3 +1216,10 @@ User: „reel 1 video push mit make" + „resultate in telegram, online auf [4 P
   die User-Pipeline selbst. Kein Fabrizieren von Plattform-Links.
 - **LEHRE:** Grosse Telegram-Uploads (>~paar MB) können im Sandbox-Proxy 413/502 werfen → bestehende
   Telegram-Nachricht per editMessageReplyMarkup mit Approval-Buttons nachrüsten statt neu hochladen.
+
+## 2026-06-02 — Reel 2 «Sommer» freigegeben + Make-Push-Buttons
+User: „ja" → Reel 2 final (Brise · Daisy · Dos Nu · Bali) FREIGEGEBEN.
+- Approval-Buttons an msg 61 gehängt (callback `post_sommer`/`skip_sommer`), Post-Pack als msg 67.
+- **Beide Reels jetzt posting-bereit in Telegram** (Reel 1 msg 54 `post_eleganz`, Reel 2 msg 61 `post_sommer`).
+  User-Tap «✅ Posten» → Make 6001019 postet. Freigegebene Reels gesamt: luxestyle_premium.mp4 (#52),
+  luxestyle_eleganz.mp4, luxestyle_sommer.mp4 (alle nur echte Foto-Kleider, preisfrei).
