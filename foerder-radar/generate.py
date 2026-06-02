@@ -542,6 +542,20 @@ sowie Beschwerde bei einer Aufsichtsbehörde. Stand: {date.today().strftime('%m/
         'Förderungen</a> oder direkt zum <a href="/matcher.html">Förder-Matcher</a>.</p>',
         BASE_URL + "/404.html"), encoding="utf-8")
 
+    # _headers (Cloudflare Pages) — Security-Header für die Subdomain.
+    # Strikte CSP ist sicher: nur externe same-origin Scripts (filter.js/matcher.js),
+    # keine Inline-Scripts/Handler; nur Inline-Styles -> style-src 'unsafe-inline'.
+    (out / "_headers").write_text(
+        "/*\n"
+        "  X-Frame-Options: DENY\n"
+        "  X-Content-Type-Options: nosniff\n"
+        "  Referrer-Policy: strict-origin-when-cross-origin\n"
+        "  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()\n"
+        "  Content-Security-Policy: default-src 'self'; script-src 'self'; "
+        "style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; "
+        "connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'\n",
+        encoding="utf-8")
+
     total = (1 + 1 + len(progs) + len(regions) + len(arten)  # +1 index, +1 matcher
              + len(zielgruppen) + len(bereiche) + 2)  # +2 legal pages
     print(f"Built {total} pages ({len(progs)} programs, {len(regions)} regions, "
