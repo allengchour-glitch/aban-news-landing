@@ -1052,3 +1052,13 @@ die die Kollektion aufblähten → Sonnenbrillen jetzt 30→16, sauber.
 Katalog-Status: 526 aktiv (alle bildgeprüft), 42 Entwurf, **4.381 archiviert** (= bekanntes Altlast-Backlog,
 NICHT kund:innen-sichtbar). Empfehlung Archiv-Purge: Admin → Filter Archiviert → Bulk-Löschen (schneller
 als API mit ~44 Batches). Neue Brille «HD» korrekt einsortiert (Sonnenbrillen + Sommer-Landingpage).
+
+## 2026-06-02 — Archiv-Purge: Bulk-API BLOCKIERT
+Versuch, die 4.381 archivierten via bulkOperationRunMutation (productDelete) zu löschen:
+- ✅ bulkOperationRunQuery (Export aller archivierten IDs) funktioniert → 4.381 IDs exportiert.
+- ✅ stagedUploadsCreate + Upload der Lösch-JSONL funktioniert.
+- ❌ **bulkOperationRunMutation ist vom MCP-Sicherheitslayer BLOCKIERT** („bulk mutation operations
+  are blocked"). → Server-seitiges Massen-Löschen via API nicht möglich.
+**FAZIT/EMPFEHLUNG:** Archiv-Purge der 4.381 → **Shopify Admin: Produkte → Filter Archiviert →
+Alle auswählen → Löschen** (2 Min, server-seitig). Einzel-productDelete-Batches via API = ~50–88 Runden
+(unpraktisch, Produkte eh nicht kund:innen-sichtbar). NICHT prioritär (kosmetisch).
