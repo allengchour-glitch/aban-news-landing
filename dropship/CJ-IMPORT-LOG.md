@@ -1196,3 +1196,9 @@ Leinen-Set, Editorial). 19,6s, elegant.wav. → Telegram msg 59 zur Freigabe.
   Savanna 39.90 (KI-Look) · Bali 34.90 · Casa 34.90 · Lumea 34.90 · Noir 34.90 · Sirène 49.90 · Nuit 39.90.
 - **LEHRE:** Reel-Bilder vorab gegen Shop prüfen — manche CJ-Lieferantenfotos sind KI-Renders;
   bei „nur echte Kleider" nur authentisch fotografierte Shots nehmen (Street/Lifestyle), keine Studio-Renders.
+
+## 2026-06-02 — Reel 2 FINAL (User-Entscheid: preisfrei + nur echte Foto-Looks)
+User-Antwort: Preis = NEIN (preisfrei, edler); Reel 2 = nur echte Foto-Looks.
+→ **Reel 2 final = Brise · Daisy · Dos Nu · Bali** (4 echte Kleider, echte Foto-Shots), 15s, elegant.wav, preisfrei.
+**Savanna (rotes Kleid) RAUS** — echtes Produkt (CHF 39.90) aber KI-gerendertes Foto → bei „nur echte Kleider" weggelassen.
+An Telegram msg 61 zur finalen Freigabe. Reel 1 «Eleganz» bereits freigegeben.
