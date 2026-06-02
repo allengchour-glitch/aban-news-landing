@@ -16,7 +16,10 @@
       "die_realitaet": "Eine randomisierte Studie (METR, 2025) hat genau das gemessen: 16 erfahrene Open-Source-Entwickler, eigene große Codebases. Mit KI-Tools brauchten sie im Schnitt rund 19 % LÄNGER — obwohl sie hinterher schätzten, etwa 20 % schneller gewesen zu sein. Ein Großteil der Zeit ging fürs Prüfen und Korrigieren unzuverlässiger KI-Ausgaben drauf.",
       "einordnung": "Das heißt nicht, dass KI beim Coden nutzlos ist — bei fremden Sprachen, Boilerplate oder Prototypen kann sie helfen. Aber in vertrautem, komplexem Code ist „schneller\" oft eine Illusion. Verlass dich auf gemessene Zeit, nicht aufs Bauchgefühl.",
       "quellen": [
-        {"titel": "METR (2025): Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity (randomisierte Studie)", "url": "https://arxiv.org/abs/2507.09089"}
+        {
+          "titel": "METR (2025): Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity (randomisierte Studie)",
+          "url": "https://arxiv.org/abs/2507.09089"
+        }
       ]
     },
     {
@@ -30,8 +33,65 @@
       "die_realitaet": "Im US-Fall Mata v. Avianca (2023) reichten Anwälte einen Schriftsatz mit mehreren Gerichtsurteilen ein, die ChatGPT komplett erfunden hatte — inklusive erfundener Zitate. Das Modell „bestätigte\" auf Nachfrage sogar, die Fälle existierten. Der Richter verhängte 5.000 $ Strafe. Sprachmodelle erzeugen plausibel klingende, aber teils frei erfundene Belege („Halluzinationen\").",
       "einordnung": "KI ist stark beim Formulieren und Umschreiben — nicht als Faktenquelle ohne Prüfung. Jede Zahl, jedes Zitat, jede Quelle selbst verifizieren, bevor du sie weitergibst.",
       "quellen": [
-        {"titel": "CNN (2023): Lawyer apologizes for fake court citations from ChatGPT", "url": "https://www.cnn.com/2023/05/27/business/chat-gpt-avianca-mata-lawyers"},
-        {"titel": "Mata v. Avianca, Inc. — Übersicht", "url": "https://en.wikipedia.org/wiki/Mata_v._Avianca,_Inc."}
+        {
+          "titel": "CNN (2023): Lawyer apologizes for fake court citations from ChatGPT",
+          "url": "https://www.cnn.com/2023/05/27/business/chat-gpt-avianca-mata-lawyers"
+        },
+        {
+          "titel": "Mata v. Avianca, Inc. — Übersicht",
+          "url": "https://en.wikipedia.org/wiki/Mata_v._Avianca,_Inc."
+        }
+      ]
+    },
+    {
+      "id": "ki-bringt-im-unternehmen-schnell-roi",
+      "datum": "2026-06-02",
+      "claim": "Generative KI bringt Unternehmen schnell messbaren Geschäftserfolg.",
+      "behauptung_von": "KI-Anbieter-Marketing, „AI-Transformation\"-Versprechen",
+      "verdikt": "Übertrieben",
+      "rating": 2,
+      "der_hype": "Pilotprojekt starten, KI ausrollen — und der Umsatz zieht an. So klingen viele Versprechen.",
+      "die_realitaet": "Eine MIT-Untersuchung (NANDA, „The GenAI Divide: State of AI in Business 2025\"; 150 Interviews, 350 Mitarbeitende, 300 ausgewertete Deployments) fand: rund 95 % der Unternehmen sehen trotz Milliarden-Ausgaben keinen messbaren Geschäftserfolg aus generativer KI. Nur etwa 5 % der Pilotprojekte liefern spürbar. Häufiger Grund: die Systeme lernen nicht dazu und passen sich nicht an den Kontext an.",
+      "einordnung": "KI kann sich lohnen — aber selten „schnell und von allein\". Wer real profitiert, löst ein konkretes Problem mit dem richtigen Tool, statt „KI\" als Selbstzweck einzuführen. Klein und messbar anfangen.",
+      "quellen": [
+        {
+          "titel": "Fortune (2025): MIT report — 95% of generative AI pilots at companies are failing",
+          "url": "https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/"
+        }
+      ]
+    },
+    {
+      "id": "ki-detektoren-erkennen-zuverlaessig-ki-texte",
+      "datum": "2026-06-02",
+      "claim": "KI-Detektoren erkennen zuverlässig, ob ein Text von KI stammt.",
+      "behauptung_von": "Anbieter von „AI-Detection\"-Tools",
+      "verdikt": "Falsch",
+      "rating": 1,
+      "der_hype": "Text durch einen KI-Detektor jagen — fertig ist der Beweis, ob er von ChatGPT kommt.",
+      "die_realitaet": "OpenAI hat seinen eigenen KI-Text-Detektor 2023 abgeschaltet, ausdrücklich wegen „niedriger Genauigkeit\": er erkannte nur rund 26 % der KI-Texte und markierte etwa 9 % menschlicher Texte fälschlich als KI. Studien zeigen zudem, dass solche Detektoren besonders Nicht-Muttersprachler zu Unrecht beschuldigen.",
+      "einordnung": "Verlass dich bei wichtigen Entscheidungen (Noten, Bewerbungen) nicht auf KI-Detektoren — sie raten oft und treffen Unschuldige. Prüfe Prozess und Belege, nicht eine Detektor-Prozentzahl.",
+      "quellen": [
+        {
+          "titel": "TechCrunch (2023): OpenAI scuttles AI-written text detector over ‚low rate of accuracy‘",
+          "url": "https://techcrunch.com/2023/07/25/openai-scuttles-ai-written-text-detector-over-low-rate-of-accuracy/"
+        }
+      ]
+    },
+    {
+      "id": "ki-suchantworten-sind-verlaesslich",
+      "datum": "2026-06-02",
+      "claim": "KI-Such-Zusammenfassungen (wie Google AI Overviews) liefern verlässliche Antworten.",
+      "behauptung_von": "die „Frag einfach die KI-Suche\"-Gewohnheit",
+      "verdikt": "Irreführend",
+      "rating": 2,
+      "der_hype": "Oben in der Suche steht die KI-Antwort — das wird schon stimmen.",
+      "die_realitaet": "2024 empfahl Googles AI Overview unter anderem, Käse mit ungiftigem Kleber auf der Pizza zu fixieren und „täglich einen Stein zu essen\" — gespeist aus einem Reddit-Witz bzw. einem Satire-Artikel. KI-Systeme erkennen nicht, was wahr ist, sondern was häufig vorkommt. Google reduzierte die Einblendungen danach deutlich.",
+      "einordnung": "KI-Suchantworten sind ein Startpunkt, kein Beweis. Bei allem, was zählt (Gesundheit, Recht, Zahlen): zur Originalquelle klicken und gegenprüfen.",
+      "quellen": [
+        {
+          "titel": "UNSW (2024): Eat a rock a day, put glue on your pizza — how Google’s AI is losing touch with reality",
+          "url": "https://www.unsw.edu.au/newsroom/news/2024/05/eat-a-rock-a-day-put-glue-on-your-pizza-how-googles-ai-is-losing-touch-with-reality"
+        }
       ]
     }
   ]
