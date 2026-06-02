@@ -27,6 +27,7 @@ from pathlib import Path
 
 BPY = r'''
 import bpy, os, math
+from mathutils import Vector
 
 inp     = os.environ["POLISH_IN"]
 out     = os.environ["POLISH_OUT"]
@@ -36,6 +37,7 @@ cell    = float(os.environ.get("POLISH_CELL", "0.3"))
 size_mm = float(os.environ.get("POLISH_SIZE", "0"))   # 0 = nicht skalieren
 deci    = float(os.environ.get("POLISH_DECIMATE", "1"))  # 1 = keine Reduktion
 smooth  = os.environ.get("POLISH_SMOOTH", "0") == "1"
+loop    = os.environ.get("POLISH_LOOP", "0") == "1"
 render  = os.environ.get("POLISH_RENDER", "0") == "1"
 
 bpy.ops.wm.read_factory_settings(use_empty=True)
@@ -119,6 +121,20 @@ if size_mm > 0:
         obj.scale = (f, f, f)
         bpy.ops.object.transform_apply(scale=True)
 
+# --- optional: Aufhaenge-Loop oben anfuegen (Schluesselring) ---
+if loop:
+    bb = [obj.matrix_world @ Vector(c) for c in obj.bound_box]
+    maxz = max(v.z for v in bb)
+    cx = sum(v.x for v in bb) / 8.0
+    cy = sum(v.y for v in bb) / 8.0
+    Rr = max(obj.dimensions) * 0.06 + 2.0
+    bpy.ops.mesh.primitive_torus_add(major_radius=Rr, minor_radius=Rr * 0.38,
+                                     location=(cx, cy, maxz - Rr * 0.5))
+    ring = bpy.context.active_object
+    ring.select_set(True); obj.select_set(True)
+    bpy.context.view_layer.objects.active = obj
+    bpy.ops.object.join()
+
 # --- Export STL ---
 try: bpy.ops.wm.stl_export(filepath=out)
 except Exception: bpy.ops.export_mesh.stl(filepath=out)
@@ -170,6 +186,7 @@ def main(argv=None) -> int:
     p.add_argument("--size", type=float, default=0, help="laengste Kante in mm (0 = nicht skalieren)")
     p.add_argument("--decimate", type=float, default=1.0, help="Polygone reduzieren (z. B. 0.2 = 20%% behalten)")
     p.add_argument("--smooth", action="store_true", help="zusaetzlich glaetten")
+    p.add_argument("--loop", action="store_true", help="Schluesselring-Loop oben anfuegen")
     p.add_argument("--render", action="store_true", help="Vorschau-PNG rendern")
     a = p.parse_args(argv)
 
@@ -187,6 +204,7 @@ def main(argv=None) -> int:
                POLISH_CELL=str(a.cell), POLISH_SIZE=str(a.size),
                POLISH_DECIMATE=str(a.decimate),
                POLISH_SMOOTH="1" if a.smooth else "0",
+               POLISH_LOOP="1" if a.loop else "0",
                POLISH_RENDER="1" if a.render else "0")
 
     with tempfile.NamedTemporaryFile("w", suffix=".py", delete=False) as f:
