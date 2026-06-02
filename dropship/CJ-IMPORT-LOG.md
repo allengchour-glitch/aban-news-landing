@@ -1253,3 +1253,15 @@ Vollaudit Storefront + Theme-Template + Menü. Ergebnis in `dropship/SHOP-DESIGN
 (A) Hero „Premium für dein **Zuhause**" → „Sommer-Mode 2026 — Premium-Looks für jeden Auftritt" (+ Model-Hero-Bild);
 (B) Ankündigungsleiste LAUNCH30(30%) → einheitlich „Gratis-Versand ab 65 · –10% WELCOME10 · 30T Rückgabe";
 (C) 2× „View all" → „Alle anzeigen"; (D) Sticky-ATC mobil; (E) Judge.me-Sterne auf Produktkacheln.
+
+## 2026-06-02 — Weitere Shop-Optimierung (User: „optimiere mal was du kannst")
+Kleider-Katalog (Collection «Kleider», 20 Produkte) komplett vereinheitlicht:
+- **+11 Grössentabellen (cm) + Trust-Zeile** auf die Kleider, die noch keine hatten (ärmellos, Mini-Rüschen,
+  Ibiza, Playa, Nuit, Bluette, Fleurette, Neckholder, A-Linie, Maxi-Boho, Wickelkleid). **2 kaputte „👉"-CTA-
+  Reste entfernt** (Maxi-Boho, Wickelkleid), uneinheitliche Versand-/Garantie-Zeilen vereinheitlicht.
+  → **Jetzt haben ALLE 20 Kleider die gleiche cm-Tabelle + Trust** (Gratis-Versand 65 · 14T · TWINT · WELCOME10).
+- **20 Bild-Alt-Texte** (featuredImage) gesetzt — vorher ~16× `null`/Platzhalter. Beschreibend
+  (Kleidtyp + Name + Detail + „Damen – LuxeStyle") → SEO + Barrierefreiheit. (fileUpdate, 0 Fehler.)
+- Produkt-SEO-Meta war bereits gut → unangetastet.
+**Technik-Notiz:** productUpdate(input:) → deprecated, jetzt `product:`(ProductUpdateInput). Bild-Alt:
+productUpdateMedia → deprecated, `fileUpdate(files:[{id,alt}])` ist der moderne Ein-Call-Weg.
