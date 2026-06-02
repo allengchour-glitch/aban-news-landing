@@ -8,15 +8,21 @@
 > die freien PDFs (Checkliste, Glossar, 30 Prompts, Tool-Stack, Cold-Email)
 > bewusst **nicht** dabei — die liegen schon offen auf `resources.html`.
 >
-> **⚠️ Plan-Stand (im beehiiv-Dashboard verifiziert, Free-Trial):** Die Reward-Typen
-> sind **Physical / Promo Code / Digital**. Einen eigenen „Premium-Abo"-Typ
-> („Free subscription") gibt es **erst auf dem Scale-Plan**. Heißt konkret:
-> **Stufe 1 (Digital) und Stufe 4 (Physical) gehen sofort; Stufe 2 + 3 (Premium)
-> erst nach Scale-Upgrade.**
+> **✅ STAND (im beehiiv-Dashboard eingerichtet):** **Stufe 1 (Digital)** und
+> **Stufe 4 (Physical)** sind **live & aktiv**. **Stufe 2 + 3 (Premium)** folgen
+> nach Scale-Upgrade — der Reward-Typ „Free subscription" erscheint dann automatisch
+> im Dropdown. Das Programm läuft im Free-Trial und pausiert nach Trial-Ende;
+> beim Scale-Upgrade läuft es ohne Unterbrechung weiter.
+>
+> _Reward-Typen in beehiiv: Physical / Promo Code / Digital (kein „Premium-Abo"-Typ
+> ohne Scale)._
 
 ---
 
 ## Stufe 1 — 3 Empfehlungen
+
+**✅ LIVE:** PDF direkt in der Milestone-Mail eingebettet, Auto-Fulfill aktiv.
+Betreff: „Dein KI-Werkstatt-Kurs wartet — hier ist der Download".
 
 **Belohnung:** KI-Werkstatt-Kurs (sonst €59)
 **Reward-Typ in beehiiv:** Digital
@@ -68,6 +74,9 @@ steht „Not available". **Bis zum Upgrade zurückstellen.**
 ---
 
 ## Stufe 4 — 25 Empfehlungen
+
+**✅ LIVE:** „Send email after review" aktiv — die Glückwunschmail geht erst nach
+deiner manuellen Bestätigung raus. Auto-Fulfill aus.
 
 **Belohnung:** Founding-Membership (€69, lebenslang Premium)
 **Reward-Typ in beehiiv:** Physical (mit Fulfillment-Notiz) — **plan-unabhängig**,
