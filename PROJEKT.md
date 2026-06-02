@@ -278,3 +278,22 @@ fairer Start-Tarif in Aufbauphase). Calendly `abannews/sponsor` aktiv.
 (Phantom-„Google Analytics", 1248 statt 308 Zeilen). `index.html` ist in Wahrheit unverändert/sauber
 (308 Zeilen, kein gtag, WebSite+Organization-JSON-LD vorhanden). Es wurde NICHTS Fehlerhaftes
 committet. Bei künftigem Feinschliff an index.html zur Sicherheit Inhalte per `git show` gegenprüfen.
+
+## 📚 Romane auf Amazon KDP — Status (2026-06-02)
+
+KI-geschriebene Romane (`ki-schriftsteller/`), je DE + EN, KDP-Taschenbuch + EPUB.
+Verkaufsseiten: `schicht.html`/`en/the-seam.html`, `marsch.html`/`en/the-reclaimed-land.html`,
+`trilogie.html`. Druckdateien liegen in `downloads/kdp/<slug>/` (Innenteil 5×8" + Umschlag,
+Schrift eingebettet).
+
+- **„The Seam" (EN, = Übersetzung von „Schicht") — Taschenbuch LIVE auf Amazon ✅** (veröffentlicht 2026-06-02).
+- **„Schicht" (DE) — Taschenbuch:** Upload abgeschlossen; Status beim User prüfen (live oder noch in Prüfung).
+- **„Marsch" / „The Reclaimed Land"** (Deich-Generationensaga, 3 Bände DE+EN) — alle Dateien
+  fertig gebaut + committet (PR #91, Branch `claude/roman-marsch`). KDP-Upload steht noch aus (User-seitig).
+
+**Offene To-dos (User-seitig, KDP-Konto):**
+1. eBook-Cover-Swap Schicht↔The Seam: die Kindle-Cover waren gekreuzt zugeordnet. Jetzt, da „The Seam"
+   live ist (KDP-Bearbeitung entsperrt), korrekte Cover je Buch zuordnen und neu veröffentlichen.
+2. „Marsch"/„The Reclaimed Land" auf KDP hochladen (Innenteil-PDF ZUERST → setzt Seitenzahl/Cover-Maß,
+   dann Umschlag; Trim 5×8", Barcode-Häkchen aus, KI-Inhalt: Text Ja / Cover Nein).
+3. Nach Live-Schaltung jeweils Amazon-Link auf der passenden Verkaufsseite eintragen.
