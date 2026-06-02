@@ -193,6 +193,8 @@ Dieses Repo enthält neben der Newsletter-Site mehrere automatisierte KI-Geld-Pr
 - Jedes Geld-Projekt: `generate.py` (stdlib), eigener Auto-Build-Workflow, baut nach `dist/`.
 - Daten `data/tools.json` (177 Tools, 33 neue mit „[Redaktion: prüfen]") speist den ki-tools-radar.
 
+- `daten-produkt/` — **verkaufbarer KI-Tools-Datensatz DACH** (CSV+JSON) aus den Netzwerk-Daten (alle Tool-Radars + `data/tools.json`, dedupliziert, 326 Tools). Spalten name/bereiche/eu_hosting/offizielle_url, **keine erfundenen Preise/Scores** (nicht Verifiziertes = leer/„unbekannt“). `generate_datensatz.py` baut `downloads/ki-tools-dach-sample.csv` (Gratis-Probe, committet) + `dist/ki-tools-dach-voll.csv|json` (git-ignored → Lemon Squeezy). Verkaufsseite `ki-tools-datensatz.html` (Buy-Link `DATENSATZ_BUY_URL` leer → Mail-Fallback), Pretty-URL `/datensatz`. Deckt die Geld-Richtungen „digitales Produkt“ + „Daten/API“ ab.
+
 ## Verkauf/Zahlung — Stand 2026-05-31 (Details in PROJEKT.md)
 - **Founding €69** (von €149 gesenkt), Zahlung per **PayPal Payment Link** `ncp/payment/7GPXCMBCETCUY`
   in `founding.html` + `en/founding.html` (kein SDK, nur Link-Button). Rechnung per Mail-Fallback.
