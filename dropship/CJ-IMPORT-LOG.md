@@ -1202,3 +1202,17 @@ User-Antwort: Preis = NEIN (preisfrei, edler); Reel 2 = nur echte Foto-Looks.
 → **Reel 2 final = Brise · Daisy · Dos Nu · Bali** (4 echte Kleider, echte Foto-Shots), 15s, elegant.wav, preisfrei.
 **Savanna (rotes Kleid) RAUS** — echtes Produkt (CHF 39.90) aber KI-gerendertes Foto → bei „nur echte Kleider" weggelassen.
 An Telegram msg 61 zur finalen Freigabe. Reel 1 «Eleganz» bereits freigegeben.
+
+## 2026-06-02 — Reel 1 «Eleganz» Make-Push vorbereitet (Approval-Button)
+User: „reel 1 video push mit make" + „resultate in telegram, online auf [4 Plattformen]".
+- **Mechanik:** Reel 1 liegt bereits als Telegram msg 54 (freigegeben). 7-MB-Re-Upload aktuell vom
+  Container-Proxy geblockt (413/502; kleiner Text + 39-KB-Testvideo gingen durch) → NICHT nötig.
+- **Gelöst per `editMessageReplyMarkup` auf msg 54:** Inline-Buttons «✅ Posten (TikTok+YT+Discord)»
+  callback `post_eleganz` / «❌ Verwerfen» `skip_eleganz` (genau das Pipeline-Design). User-Tap →
+  Make-Szenario 6001019 (Telegram-Callback-Watcher) zieht das Video aus Telegram & postet.
+- Post-Pack (Caption + Hashtags + 4 Ziele) als msg 65 in Telegram geschickt.
+- **EHRLICH/GRENZE:** Claude kann NICHT auf TikTok/YT/Discord posten ODER deren „online"-Status lesen.
+  Das Posten + die „online"-Bestätigung (Discord-Notify, Google-Sheet status=posted, Buffer-Queue) macht
+  die User-Pipeline selbst. Kein Fabrizieren von Plattform-Links.
+- **LEHRE:** Grosse Telegram-Uploads (>~paar MB) können im Sandbox-Proxy 413/502 werfen → bestehende
+  Telegram-Nachricht per editMessageReplyMarkup mit Approval-Buttons nachrüsten statt neu hochladen.
