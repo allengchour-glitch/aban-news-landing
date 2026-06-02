@@ -136,7 +136,7 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 - Flexi-Gelenke an Figuren: weiterhin nicht möglich.
 
 ### Finaler 3D-Stil (Kunde bestätigt)
-- **Runde 3D-Figur** (Meshy Image/Text→3D) → `polish.py` → Augen = **weiße Kreis-Scheibe
+- **Runde 3D-Figur** (Meshy Image/Text→3D) → `polish.py` → Augen = **kleine erhabene schwarze X** (keine weiße Scheibe), Originalgröße, auf den
   (Bulge) + schwarzes X drauf** ("totes" Derp-Auge), auf die Augen-Beulen gesetzt.
   Scheibe = Zylinder (r~4.6, Achse entlang Y, Kreisfläche nach vorn); X = 2 Bars um
   Y-Achse ±45°. Position ~`(±7, -22, 11)` bei der Katze (pro Tier per Nahaufnahme finden).
