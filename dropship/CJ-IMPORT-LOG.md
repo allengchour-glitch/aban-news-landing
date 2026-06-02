@@ -1124,3 +1124,22 @@ Kampagnen DEAKTIVIEREN + 3 Entwürfe + „Vatertag-Test-1" löschen, sonst wiede
   - Szenario B „LuxeStyle B – Posten": Webhook → HTTP Download → Buffer (TikTok Queue) → YouTube Upload
     (Private #Shorts) → Discord-Notify (POST /api/webhooks/…) → Google Sheets Update Row (status=posted, Spalte O).
   → Auto-Posting-Pipeline für Reels alle 8h. (Reel-Quelle/Generierung in Szenario A klären, falls relevant.)
+
+## 2026-06-02 — VIDEO-REVIEW-WORKFLOW + Premium-Mix freigegeben
+**Workflow (so will es der User):**
+1. Reel EINZELN in Telegram schicken (Bot @LuxestyleCHbot, Token 8904564755:AAFdym4pK62Zs2I58nebeYfBXZ83KgoqJJM,
+   chat_id 164567631) via curl `sendVideo`. Caption: „ja=posten / nein=verwerfen / Kommentar=ändern".
+2. User antwortet IN Telegram. Claude liest Antwort via `getUpdates` (curl). → Feedback-Loop:
+   User kann sagen „Bild X raus", „langsamer", „kein Schmuck" usw. → Claude baut Reel danach um.
+3. Erst nach „ja" = freigegeben zum Posten.
+**Posten selbst:** Claude kann NICHT auf TikTok posten (kein API). Posten via (a) manuell (User lädt aus
+Telegram) oder (b) Make.com-Pipeline.
+**Make.com-Pipeline (User gebaut):** Szenario A (alle 8h, Webhook hook.eu1.make.com/pkgmkm46y3aw6r3fy4ttedr5os7yn0ly)
+→ Szenario B postet (Buffer/TikTok-Queue, YouTube Shorts, Discord-Notify, Google Sheets status=posted).
+Approval-Buttons-Payload (für Szenario A Telegram-Modul): reply_markup inline_keyboard
+[{text:"✅ Posten",callback_data:"post_{{reel_id}}"},{text:"❌ Verwerfen",callback_data:"skip_{{reel_id}}"}];
+Szenario C „Telegram Watch Updates" filtert callback post_* → ruft B-Webhook.
+**FREIGEGEBEN:** luxestyle_premium_mix.mp4 (Mode+Schmuck+Accessoires, schnell, uplifting) — User sagte „ja posten".
+**Video-Präferenzen User:** Premium-Look, Mix Mode+Schmuck+Accessoires, KEINE Gadgets (Luxus-Kohärenz),
+schnellerer Schnitt ok, Marken-Intro/Outro. 2 Premium-Reels existieren (elegant + mix). Skripte:
+render_premium_reel.sh (SEG/T via Env), render_hook_reel.sh, render_story_reel.sh, render_story_creatives.sh.
