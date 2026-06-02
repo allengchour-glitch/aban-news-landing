@@ -1,55 +1,61 @@
-// flexi_cat_keychain.scad — Süßer Flexi-Katzen-Schlüsselanhänger (LuxeStyle, dein IP)
+// flexi_cat_keychain.scad — Flexi Cat-Loaf Schlüsselanhänger (LuxeStyle, dein IP)
 // ---------------------------------------------------------------------------
-// EIN druckfertiges Stück, beweglich (Print-in-Place): pummelige Laib-Katze
-// (Loaf) mit grossem Kopf, runden Augen, Näschen, Öhrchen + Öse am Schwanz.
-// KEIN Teller/Boden. Körper segmentiert -> flext. Laib-Form ist Absicht: nur so
-// fallen keine Gliedmassen ab (volle Figuren wie der sitzende Kater gehen NICHT).
+// EIN Druckstück, beweglich (Print-in-Place). KURZE, rundliche "Cat-Loaf"
+// (Katzen-Laib) — KEINE Schlange: grosser Kopf + Öhrchen, kompakter runder
+// Körper, runder Hintern mit kleinem Schwänzchen, angedeutete Pfötchen, Öse.
+// KEIN Teller/Boden. Volle Figuren (sitzend) gehen nicht flexi (Beine fallen ab)
+// -> Loaf-Form ist Absicht; nur die muss kurz/rund sein, sonst wirkt's wie Schlange.
 //
-//   part = all | body | white | black   (für Mehrfarb-Export via assemble.py)
+//   look = "mimi"  (runde Augen, rosa Ohren)  |  "pancake" (X-Augen, Zunge)
+//   part = all | body | white | black | rosa | orange
 //
-// Bauen: openscad -o flexi_cat_keychain.stl flexi_cat_keychain.scad
+// Bauen: openscad -o flexi_cat.stl -D 'look="mimi"' flexi_cat_keychain.scad
 // Druck: 0.2 mm, KEINE Stützen, auf die Seite legen.
 // ---------------------------------------------------------------------------
 
+look   = "mimi";   // mimi | pancake
 part   = "all";
-n_joint= 3;        // weniger Gelenke -> kürzer/pummeliger
-seglen = 7;
+n_joint= 2;        // nur 2 Gelenke -> kurz & kompakt
+seglen = 8;
 gap    = 0.9;
-ball_r = 3.0;
-neck_r = 1.7;
+ball_r = 3.2;
+neck_r = 1.8;
 clear  = 0.4;
-edep   = 1.85;
-BIG    = 40;
+edep   = 1.9;
+BIG    = 42;
 $fn    = 56;
 
-ycut0  = 5;                       // Schnitt beginnt hinter dem (grossen) Kopf
+ycut0  = 6;                                  // Schnitt erst deutlich hinter dem Kopf
 pitch  = seglen + gap;
-ytail  = ycut0 + seglen + n_joint*pitch;   // Schwanzende
+yrump  = ycut0 + seglen + n_joint*pitch;     // hinterer (runder) Po
 
-module C_body()  if (part=="all"||part=="body")  children();
-module C_white() if (part=="all"||part=="white") children();
-module C_black() if (part=="all"||part=="black") children();
+module C_body()   if (part=="all"||part=="body")   children();
+module C_white()  if (part=="all"||part=="white")  children();
+module C_black()  if (part=="all"||part=="black")  children();
+module C_rosa()   if (part=="all"||part=="rosa")   color([0.95,0.6,0.66]) children();
+module C_orange() if (part=="all"||part=="orange") color([0.9,0.45,0.1]) children();
 
-// ---- pummeliger Laib-Körper (liegend +Y, grosser Kopf bei -Y) ----
+// ---- kompakte Cat-Loaf (kurz, rund, runder Hintern) ----
 module cat_solid() {
-  scale([1,1,0.92]) hull() {          // dicker, kürzerer Laib
-    translate([0, 0,0]) sphere(9);
-    translate([0, 9,0]) sphere(8.4);
-    translate([0,18,0]) sphere(6.6);
-    translate([0,26,0]) sphere(4.6);
-    translate([0,ytail-2,0]) sphere(3.2);
+  scale([1.05,1,0.92]) hull() {              // chunky, kaum verjüngt
+    translate([0,-1,0]) sphere(9.5);
+    translate([0, 7,0]) sphere(9.2);
+    translate([0,14,0]) sphere(8.8);
+    translate([0,yrump,0]) sphere(7.8);       // runder Po (NICHT spitz)
   }
-  // GROSSER runder Kopf
-  translate([0,-9,2]) sphere(10);
-  // Öhrchen (klein, rund-spitz)
-  for (sx=[-1,1]) translate([sx*6,-11,9]) rotate([-16,0,sx*9]) cylinder(h=6.5,r1=3.6,r2=0.8);
-  // winzige Vorderpfötchen (angedeutet, NICHT abstehend)
-  for (sx=[-1,1]) translate([sx*6.5,-3,-5]) scale([1,1.3,0.7]) sphere(2.6);
-  // Öse am SCHWANZENDE
-  translate([0,ytail+2,1]) rotate([90,0,0]) difference(){ cylinder(h=3,r=4.2,center=true); cylinder(h=4,r=2.2,center=true); }
+  // grosser runder Kopf
+  translate([0,-11,2]) sphere(10.5);
+  // Öhrchen
+  for (sx=[-1,1]) C_body() translate([sx*6,-13,9.5]) rotate([-16,0,sx*9]) cylinder(h=6,r1=3.8,r2=0.9);
+  // Vorderpfötchen (am Kopf-Block, angedeutet)
+  for (sx=[-1,1]) translate([sx*7,-5,-6]) scale([1.1,1.5,0.7]) sphere(3);
+  // kleines Schwänzchen am Po (kurz, gekringelt zur Seite, solide mit dem Po)
+  translate([0,yrump,0]) hull(){ translate([6,2,2]) sphere(2.6); translate([10,-2,6]) sphere(2.0); }
+  // Öse am Po oben
+  translate([0,yrump+3,4]) rotate([90,0,0]) difference(){ cylinder(h=3,r=4.2,center=true); cylinder(h=4,r=2.2,center=true); }
 }
 
-// ---- Flexi-Cutter (Negativ) entlang +Y ----
+// ---- Flexi-Cutter (Negativ) ----
 module discY(yc,r,h) translate([0,yc,0]) rotate([90,0,0]) cylinder(h=h,r=r,center=true);
 module seg_solid(i) {
   yc = ycut0 + seglen/2 + i*pitch;
@@ -73,14 +79,22 @@ module cutter() {
   }
 }
 
-// ---- grosse Kulleraugen + Nase (3-farbig fähig) ----
-module head_eyes() {
-  for (sx=[-1,1]) {
-    C_white() translate([sx*4,-15,3]) sphere(3.0);
-    C_black() translate([sx*4,-16.6,3]) sphere(1.5);
+// ---- Gesicht: zwei Looks ----
+module face() {
+  if (look=="pancake") {
+    // schwarze X-Augen + orange Zunge
+    for (sx=[-1,1]) C_black() translate([sx*4,-17.5,3.5]) rotate([0,0,45]) {
+      cube([5,1.2,1.4],center=true); cube([1.2,5,1.4],center=true); }
+    C_orange() translate([0,-18.5,-2]) scale([1,1.4,0.6]) sphere(1.8);   // Zunge
+    C_black() translate([0,-19,0.5]) sphere(1.1);                        // Nase
+  } else {
+    // Mimi: grosse runde Augen (weiss+schwarz) + rosa Innenohr + orange Nase
+    for (sx=[-1,1]) { C_white() translate([sx*4.2,-17,3.5]) sphere(3.1);
+                      C_black() translate([sx*4.2,-18.7,3.5]) sphere(1.6); }
+    C_orange() translate([0,-19.3,0.3]) sphere(1.3);                     // Näschen
+    for (sx=[-1,1]) C_rosa() translate([sx*6,-13.4,9.3]) rotate([-16,0,sx*9]) cylinder(h=5,r1=2.3,r2=0.6); // Innenohr
   }
-  C_black() translate([0,-17.4,0.2]) sphere(1.3);     // Näschen
 }
 
-C_body() difference() { cat_solid(); cutter(); }       // Körper geschnitten = flexi
-head_eyes();
+C_body() difference() { cat_solid(); cutter(); }
+face();
