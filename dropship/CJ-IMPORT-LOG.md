@@ -1001,3 +1001,16 @@ Listung neu importieren → Ziel alle Kampagnen-Produkte 4.5★+.
 **OFFEN (browser/User, Morgen):** (1) ⚠️ Sommerkleid 3.3★ → auf 4.5★+ fixen (Haupt-Ad-Produkt!);
 (2) Gratis-Versand-Banner sichtbar machen (Customizer); (3) Klaviyo Domain-DNS; (4) Reels posten.
 **Dann:** neue Käufer-Kampagne 2–3 Tage laufen → „Auswertung".
+
+## 2026-06-02 (Nacht, autonom) — CJ-Charge: 5 coole Schmuckstücke (+5 live)
+Neue Such-Skripte: cj_cool_search.mjs (Schmuck/Accessoire-KW + Anti-Junk) + cj_cool_enrich.mjs.
+Pipeline funktioniert (Token gültig ~14.06). Importiert (ACTIVE, 6 Kanäle, premium-schmuck, Bilder READY,
+Tags damen+damen-schmuck), alle Bilder HTTP-200 vorgeprüft:
+| Produkt | ID | V | VK |
+|---|---|---|---|
+| Herz-Mond-Halskette (zart, Silber) | 15414270558593 | 1 | 16.90 |
+| Herz-Muschel-Anhänger Titanstahl (3 Farben) | 15414270624129 | 3 | 14.90 |
+| Offenes Armband «Metallic» (4 Farben) | 15414270689665 | 4 | 14.90 |
+| Ohrringe «Duo» 2-fach tragbar Zirkonia | 15414270755201 | 1 | 29.90 |
+| Geflochtenes Herz-Armband grüner Zirkonia (17–20cm) | 15414270820737 | 4 | 19.90 |
+Übersprungen (Dubletten/zu komplex): Floating Planet + Smaragd-Zirkon (schon da), 30-Varianten-Naturstein-Armband.
