@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d97706">
+  <title>Finanz-Rechner für Selbstständige (2026) — Stundensatz, Steuer-Rücklage, Puffer | aban news</title>
+  <meta name="description" content="Kostenloser Finanz-Rechner für Selbstständige: realistischer Stundensatz, Steuer- und Sozial-Rücklage in Prozent, Cashflow-Puffer in Monaten. Läuft im Browser, kein Tracking, keine Anmeldung.">
+  <link rel="canonical" href="https://abannews.com/finanz-rechner.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="Finanz-Rechner für Selbstständige — Stundensatz, Rücklage, Puffer">
+  <meta property="og:description" content="Drei ehrliche Rechner für deine Selbstständigen-Finanzen. Im Browser, ohne Tracking.">
+  <meta property="og:url" content="https://abannews.com/finanz-rechner.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://abannews.com/img/og/geld-verdienen-mit-ki.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/img/og/geld-verdienen-mit-ki.png">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/finanz-rechner.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/finanz-rechner.html">
+  <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--ok:#059669;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:2.5rem 0 1.5rem;text-align:center}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    h1{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:58ch;margin:0 auto}
+    .calc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;margin:1.25rem 0;box-shadow:var(--shadow)}
+    .calc h2{font-size:1.2rem;margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem}
+    .calc .hint{color:var(--muted);font-size:.9rem;margin-bottom:1rem}
+    .row{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:.9rem}
+    .field{flex:1;min-width:140px}
+    label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.3rem}
+    input[type=number]{width:100%;padding:.6rem .7rem;font-size:1rem;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+    input:focus{outline:2px solid var(--amber);border-color:var(--amber)}
+    .unit{color:var(--muted);font-size:.78rem;font-weight:400}
+    .out{background:var(--amber-lt);border:1px solid var(--amber);border-radius:12px;padding:1rem 1.1rem;margin-top:.5rem}
+    .out .big{font-size:1.8rem;font-weight:800;color:var(--amber-dk);line-height:1.1}
+    .out .sub{color:var(--ink);font-size:.9rem;margin-top:.35rem}
+    .out ul{margin:.5rem 0 0 1.1rem;font-size:.9rem;color:var(--ink)}
+    .seg{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.9rem}
+    .seg button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.35rem .8rem;font-size:.85rem;cursor:pointer}
+    .seg button[aria-pressed=true]{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2rem 0}
+    .cta-box h2{font-size:1.25rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:1rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+    .skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Finanz-Rechner für Selbstständige","url":"https://abannews.com/finanz-rechner.html","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"de","description":"Stundensatz-, Steuer-Rücklage- und Cashflow-Puffer-Rechner für Selbstständige. Läuft lokal im Browser, kein Tracking."}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Wie berechne ich meinen Stundensatz als Selbstständiger?","acceptedAnswer":{"@type":"Answer","text":"Rechne nicht vom Wunsch-Gehalt rückwärts mit allen 8 Stunden am Tag. Nur ein Teil deiner Arbeitszeit ist verrechenbar (Akquise, Buchhaltung, Pausen zählen nicht). Teile dein Jahres-Ziel inklusive Kosten, Steuern und Sozialabgaben durch deine realistisch fakturierbaren Stunden."}},
+    {"@type":"Question","name":"Wie viel Prozent als Selbstständiger zurücklegen?","acceptedAnswer":{"@type":"Answer","text":"Eine grobe Faustregel sind 30 bis 40 Prozent jeder Einnahme für Einkommensteuer und Sozialabgaben, je nach Land, Gewinn und Versicherung. Das ist nur eine Orientierung und ersetzt keine Steuerberatung — den genauen Satz klärst du mit deinem Steuerberater."}},
+    {"@type":"Question","name":"Wie groß sollte mein finanzieller Puffer sein?","acceptedAnswer":{"@type":"Answer","text":"Üblich sind drei bis sechs Monate deiner privaten und betrieblichen Fixkosten auf einem getrennten Konto. So überbrückst du Auftragsflauten und späte Zahlungen, ohne in Stress zu geraten."}}
+  ]}
+  </script>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/finanz-skills-fuer-selbststaendige.html">Finanz-Skills</a>
+      <a href="/geld-verdienen-mit-ki.html">KI &amp; Geld</a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn">Abonnieren</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Kostenlos · läuft im Browser · kein Tracking</span>
+      <h1>Finanz-Rechner für Selbstständige</h1>
+      <p class="lead">Drei nüchterne Rechner für die Zahlen, an denen viele scheitern: ein realistischer Stundensatz, die Rücklage für Steuern und Abgaben, und dein Puffer für magere Monate. Alles rechnet lokal in deinem Browser — nichts wird gesendet oder gespeichert.</p>
+    </div>
+
+    <!-- 1) Stundensatz -->
+    <section class="calc" aria-labelledby="h-rate">
+      <h2 id="h-rate">🧮 1. Realistischer Stundensatz</h2>
+      <p class="hint">Der häufigste Fehler: vom Wunsch-Gehalt durch 160 Stunden teilen. In Wirklichkeit ist nur ein Teil deiner Zeit verrechenbar — Akquise, Buchhaltung und Pausen bezahlt niemand direkt.</p>
+      <div class="row">
+        <div class="field">
+          <label for="r-netto">Dein Ziel-Jahresgehalt <span class="unit">(netto, für dich privat)</span></label>
+          <input type="number" id="r-netto" value="36000" min="0" step="1000" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="r-kosten">Betriebskosten pro Jahr <span class="unit">(Software, Büro, Versicherung …)</span></label>
+          <input type="number" id="r-kosten" value="6000" min="0" step="500" inputmode="numeric">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="r-steuer">Steuern &amp; Abgaben <span class="unit">(% vom Gewinn)</span></label>
+          <input type="number" id="r-steuer" value="35" min="0" max="90" step="1" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="r-tage">Arbeitstage pro Jahr <span class="unit">(abzgl. Urlaub/Krankheit)</span></label>
+          <input type="number" id="r-tage" value="220" min="1" max="365" step="1" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="r-billable">Verrechenbare Stunden pro Tag <span class="unit">(realistisch 4–6)</span></label>
+          <input type="number" id="r-billable" value="5" min="0.5" max="12" step="0.5" inputmode="decimal">
+        </div>
+      </div>
+      <div class="out" id="r-out" aria-live="polite"></div>
+    </section>
+
+    <!-- 2) Steuer-Rücklage -->
+    <section class="calc" aria-labelledby="h-tax">
+      <h2 id="h-tax">💶 2. Steuer- &amp; Sozial-Rücklage</h2>
+      <p class="hint">Lege von jeder Einnahme sofort einen festen Anteil auf ein getrenntes Konto. Dann erschlägt dich die Steuernachzahlung nicht. Wähle einen Richtwert oder trag deinen eigenen ein.</p>
+      <div class="seg" id="t-seg" role="group" aria-label="Rücklage-Richtwert">
+        <button type="button" data-p="25">vorsichtig 25%</button>
+        <button type="button" data-p="35" aria-pressed="true">Standard 35%</button>
+        <button type="button" data-p="42">höher 42%</button>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="t-einnahme">Einnahme <span class="unit">(brutto, pro Monat)</span></label>
+          <input type="number" id="t-einnahme" value="5000" min="0" step="100" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="t-prozent">Rücklage-Satz <span class="unit">(%)</span></label>
+          <input type="number" id="t-prozent" value="35" min="0" max="90" step="1" inputmode="numeric">
+        </div>
+      </div>
+      <div class="out" id="t-out" aria-live="polite"></div>
+    </section>
+
+    <!-- 3) Cashflow-Puffer -->
+    <section class="calc" aria-labelledby="h-buf">
+      <h2 id="h-buf">🛟 3. Cashflow-Puffer</h2>
+      <p class="hint">Wie lange hältst du durch, wenn drei Monate kein Geld reinkommt? Üblich sind 3–6 Monate Fixkosten auf einem getrennten Konto.</p>
+      <div class="row">
+        <div class="field">
+          <label for="b-fix">Fixkosten pro Monat <span class="unit">(privat + betrieblich)</span></label>
+          <input type="number" id="b-fix" value="3000" min="0" step="100" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="b-monate">Ziel-Puffer <span class="unit">(Monate)</span></label>
+          <input type="number" id="b-monate" value="4" min="0" max="24" step="1" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="b-vorhanden">Schon gespart <span class="unit">(EUR)</span></label>
+          <input type="number" id="b-vorhanden" value="2000" min="0" step="100" inputmode="numeric">
+        </div>
+      </div>
+      <div class="out" id="b-out" aria-live="polite"></div>
+    </section>
+
+    <div class="cta-box">
+      <h2>Finanz-Skills, eine Sache pro Woche</h2>
+      <p>aban news schickt dir Mo–Fr in 5 Minuten die wichtigsten KI- und Business-Updates — inklusive ehrlicher Tipps zu Preisen, Tools und Selbstständigkeit. Kein Hype.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">5-Min-Briefing gratis →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Kein Spam. Abmeldung per Klick. DSGVO-konform.</p>
+    </div>
+
+    <div style="padding:1.2rem 0;border-top:1px solid var(--line);">
+      <h2 style="font-size:1.05rem;margin-bottom:.8rem;">Weiterlesen</h2>
+      <div style="display:grid;gap:.7rem;grid-template-columns:1fr 1fr;">
+        <a href="/finanz-skills-fuer-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Finanz-Skills für Selbstständige</strong><span style="color:var(--muted);font-size:.82rem;">Die 6 Grundlagen, ehrlich erklärt</span></a>
+        <a href="/geld-verdienen-mit-ki.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Geld verdienen mit KI</strong><span style="color:var(--muted);font-size:.82rem;">7 echte Wege, ohne Hype</span></a>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <p><strong>Wichtiger Hinweis:</strong> Diese Rechner liefern grobe Orientierung, keine Steuer-, Rechts- oder Anlageberatung. Steuer- und Abgabensätze hängen von Land, Rechtsform, Gewinn und Versicherung ab — den genauen Satz klärst du mit deinem Steuerberater. Es werden keine Eingaben gespeichert oder an einen Server gesendet; alles rechnet in deinem Browser.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/">Startseite</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var euro = function(n){
+    if(!isFinite(n)) n = 0;
+    return n.toLocaleString('de-DE',{maximumFractionDigits:0}) + ' €';
+  };
+  var num = function(id){ var v = parseFloat(document.getElementById(id).value); return isFinite(v)?v:0; };
+
+  // 1) Stundensatz
+  function calcRate(){
+    var netto = num('r-netto'), kosten = num('r-kosten'),
+        steuer = Math.min(num('r-steuer'),89)/100, tage = num('r-tage'), bill = num('r-billable');
+    // Gewinn vor Steuer, damit nach Steuer das Ziel-Netto übrig bleibt:
+    var gewinnVorSteuer = steuer < 1 ? netto/(1-steuer) : netto;
+    var umsatzZiel = gewinnVorSteuer + kosten;     // Jahres-Umsatz, den du brauchst
+    var stunden = Math.max(tage*bill, 1);
+    var satz = umsatzZiel/stunden;
+    var out = document.getElementById('r-out');
+    out.innerHTML = '<div class="big">'+euro(satz)+' / Stunde</div>'+
+      '<div class="sub">So viel musst du netto pro verrechenbarer Stunde verlangen, damit am Ende dein Ziel übrig bleibt.</div>'+
+      '<ul><li>Benötigter Jahresumsatz: <strong>'+euro(umsatzZiel)+'</strong></li>'+
+      '<li>Verrechenbare Stunden/Jahr: <strong>'+stunden.toLocaleString('de-DE')+'</strong> ('+tage+' Tage × '+bill+' h)</li>'+
+      '<li>Tagessatz (8 h Auslastung): <strong>'+euro(satz*8)+'</strong></li></ul>';
+  }
+
+  // 2) Steuer-Rücklage
+  function calcTax(){
+    var ein = num('t-einnahme'), p = Math.min(num('t-prozent'),90)/100;
+    var ruck = ein*p, rest = ein-ruck;
+    document.getElementById('t-out').innerHTML =
+      '<div class="big">'+euro(ruck)+' zurücklegen</div>'+
+      '<div class="sub">Von '+euro(ein)+' bleiben dir fürs Arbeiten und Privat: <strong>'+euro(rest)+'</strong>.</div>'+
+      '<ul><li>Pro Jahr (×12) zur Seite: <strong>'+euro(ruck*12)+'</strong></li>'+
+      '<li>Tipp: am besten direkt auf ein getrenntes Konto, am Tag des Zahlungseingangs.</li></ul>';
+  }
+
+  // 3) Puffer
+  function calcBuf(){
+    var fix = num('b-fix'), monate = num('b-monate'), da = num('b-vorhanden');
+    var ziel = fix*monate, fehlt = Math.max(ziel-da,0);
+    var reichweite = fix>0 ? da/fix : 0;
+    var msg = fehlt<=0
+      ? 'Dein Ziel-Puffer ist erreicht. Solide Basis.'
+      : 'Es fehlen noch <strong>'+euro(fehlt)+'</strong> bis zum Ziel.';
+    document.getElementById('b-out').innerHTML =
+      '<div class="big">'+euro(ziel)+' Ziel-Puffer</div>'+
+      '<div class="sub">'+msg+'</div>'+
+      '<ul><li>Dein Erspartes reicht aktuell für <strong>'+reichweite.toLocaleString('de-DE',{maximumFractionDigits:1})+' Monate</strong> ohne Einnahmen.</li>'+
+      '<li>Bei 200 € Sparrate/Monat erreichst du das Ziel in ca. <strong>'+(fehlt>0?Math.ceil(fehlt/200):0)+' Monaten</strong>.</li></ul>';
+  }
+
+  // Segment-Buttons (Rücklage-Richtwert)
+  var seg = document.getElementById('t-seg');
+  seg.addEventListener('click', function(ev){
+    var b = ev.target.closest('button'); if(!b) return;
+    Array.prototype.forEach.call(seg.querySelectorAll('button'), function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); });
+    document.getElementById('t-prozent').value = b.getAttribute('data-p');
+    calcTax();
+  });
+
+  // Alle Eingaben live
+  function bind(ids, fn){ ids.forEach(function(id){ document.getElementById(id).addEventListener('input', fn); }); }
+  bind(['r-netto','r-kosten','r-steuer','r-tage','r-billable'], calcRate);
+  bind(['t-einnahme','t-prozent'], calcTax);
+  bind(['b-fix','b-monate','b-vorhanden'], calcBuf);
+  calcRate(); calcTax(); calcBuf();
+})();
+</script>
+</body>
+</html>
