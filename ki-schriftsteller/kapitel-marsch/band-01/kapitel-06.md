@@ -1,0 +1,23 @@
+Kapitel 6 - Der Bruch
+
+Es geschah in der dritten Stunde nach Mitternacht, als die Tide ihren Höchststand erreichte, und es geschah, wie Momme es vorhergesagt hatte: an der Stelle am Siel, nicht woanders.
+
+Hauke war an seinem eigenen Abschnitt, ein Stück weiter, und er hörte es eher, als er es sah. Es war ein Geräusch, das er nie vergaß, obwohl es im Sturm fast unterging: ein Sacken, ein dumpfes Nachgeben der Erde, und dann das Wasser, das nicht mehr drückte, sondern strömte, mit einem Tosen, das anders war als das Tosen des Sturms, tiefer, gieriger. Der Deich hatte nachgegeben. Das Gebirge war gebrochen.
+
+Hauke wusste sofort, wo. Er wusste es, ohne hinzusehen, mit der Sicherheit dessen, der die Stelle kannte, der gewarnt worden war, der den Eintrag im Buch gesehen hatte. Die Stelle am Siel. Mommes Stelle. Er ließ den Spaten fallen und lief, gegen den Sturm, den Deichkamm entlang, und sein Herz schlug ihm im Hals, und er betete, ohne zu wissen, dass er betete, dass es nicht so schlimm sei, dass Momme zurückgewichen sei, rechtzeitig, dass keiner —
+
+Er kam zur Stelle. Im Licht der wenigen Laternen, die noch brannten, sah er die Bresche: Der Deich war auf zwanzig Meter weggerissen, und durch die Lücke schoss das Wasser in den Koog, ein schwarzer, brüllender Strom, der alles mitriss. Und im Wasser, in der Bresche, im wirbelnden, tosenden Dunkel, sah er für einen Augenblick Momme. Er sah ihn kämpfen, sah die Arme, sah das Gesicht, das zu ihm heraufsah, und dann riss das Wasser ihn fort, in den Koog hinein, in die Dunkelheit, und Hauke sah ihn nicht mehr.
+
+«Momme!» Hauke schrie es in den Sturm, und der Sturm nahm es ihm vom Mund. Er wollte hinunter, in die Bresche, ins Wasser, aber Hände hielten ihn fest, Okkes Hände, andere Hände, denn wer in diese Bresche stieg, der war verloren, das Wasser war zu stark, riss alles mit, und ein toter Deichgraf rettete keinen.
+
+«Du kannst nicht!» schrie Okke ihm ins Ohr. «Du kannst ihm nicht nach! Das Wasser holt dich auch!»
+
+Sie hielten ihn, und Hauke stand auf dem brechenden Deich und sah zu, wie das Wasser in seinen Koog strömte, in das Land, das er hatte sichern sollen, durch die Stelle, die er nicht hatte machen lassen. Unten, im Koog, gingen die Lichter aus, ein Hof nach dem anderen, als das Wasser sie erreichte; man hörte das Vieh brüllen, hörte Schreie, fern, im Sturm. Die Warften wurden zu Inseln, eine nach der anderen, und das Wasser stieg im Land, wo kein Wasser sein durfte, und Hauke stand und sah es und konnte nichts tun, nichts mehr, denn was zu tun gewesen wäre, das hätte man im Herbst tun müssen, oder im Frühjahr, oder an dem Tag, als die Schau vor der Stelle hielt und Okke sagte, sie müsse gemacht werden, nicht geflickt.
+
+Die Nacht war lang. Sie retteten, was sie retten konnten, holten Menschen von Dächern und aus dem steigenden Wasser, trieben Vieh auf die Warften, schleppten Säcke in die Bresche, die das Wasser wieder herausriss. Die Carstens-Warft hielt; sie lag hoch und fern vom Bruch, und Antje und die Mägde brachten das Vieh in den Haubarg und schürten Feuer und kochten für die, die durchnässt und halb erfroren ankamen. Aber die niedrigeren Warften, die näher am Bruch lagen, die liefen voll, und die Feddersen-Warft, die kleinste, die ärmste, die lag mitten im neuen Wasser, und von ihr sah man am Morgen nur noch das Dach.
+
+Als der erste graue Schein über das überflutete Land kroch, stand Hauke am Rand der Bresche, durch die das Wasser nun langsamer strömte, weil der Pegel im Koog und draußen sich anglich. Sie hatten Momme nicht gefunden. Sie würden ihn später finden, im Schlick, ein Stück landeinwärts, wohin das Wasser ihn getragen hatte. Hauke stand und sah über das Land, das ein Meer geworden war, graue Wasserfläche bis zum Horizont, aus der die Warften ragten wie die Rücken ertrinkender Tiere, und er wusste, mit einer Klarheit, die ihn kälter machte als der Sturm, warum die Stelle gebrochen war, und wer sie gehütet hatte, und dass beides zusammenhing, und dass er es nie würde ungeschehen machen können, sein Leben lang nicht.
+
+Okke trat neben ihn. Der alte Mann sagte lange nichts. Dann sagte er, leise, dass nur Hauke es hörte: «Das Buch, Hauke. Da steht's drin. Dass die Stelle nicht gemacht wurde. Dass gewarnt worden ist.»
+
+Hauke antwortete nicht. Er sah über das Wasser, und in ihm formte sich, noch ehe er es dachte, die erste Linie dessen, was er tun würde, was er nicht tun würde, was er sagen und nicht sagen würde. Und Okke, der das lederne Gesicht ins Graue gewandt hatte, wartete, ob der Deichgraf etwas sagen würde, und der Deichgraf sagte nichts, und in diesem Schweigen, am Morgen nach der Flut, über dem ertrunkenen Land, begann das andere, das länger dauern würde als jede Flut.

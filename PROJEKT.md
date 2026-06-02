@@ -278,3 +278,130 @@ fairer Start-Tarif in Aufbauphase). Calendly `abannews/sponsor` aktiv.
 (Phantom-„Google Analytics", 1248 statt 308 Zeilen). `index.html` ist in Wahrheit unverändert/sauber
 (308 Zeilen, kein gtag, WebSite+Organization-JSON-LD vorhanden). Es wurde NICHTS Fehlerhaftes
 committet. Bei künftigem Feinschliff an index.html zur Sicherheit Inhalte per `git show` gegenprüfen.
+
+## 📚 Romane auf Amazon KDP — Status (2026-06-02)
+
+KI-geschriebene Romane (`ki-schriftsteller/`), je DE + EN, KDP-Taschenbuch + EPUB.
+Verkaufsseiten: `schicht.html`/`en/the-seam.html`, `marsch.html`/`en/the-reclaimed-land.html`,
+`trilogie.html`. Druckdateien liegen in `downloads/kdp/<slug>/` (Innenteil 5×8" + Umschlag,
+Schrift eingebettet).
+
+- **„The Seam: A Ruhr Valley Saga in Three Volumes" (EN, aban news)** — **beide Formate LIVE ✅** (Bookshelf 2026-06-02):
+  Kindle eBook **ASIN B0H3KNC6TM** ($9.99) + Taschenbuch **ASIN B0H3NH1JTB** ($9.99).
+  ⚠️ Korrektur: B0H3NH1JTB war zwischenzeitlich fälschlich dem ADHD-Planner zugeordnet — gehört zu **The Seam**.
+- **„Schicht: Eine Ruhrgebiet-Saga in drei Bänden" (DE, aban news)** — Kindle (€8.99) + Taschenbuch ($8.99)
+  beide **„Wird geprüft"** (in Review, KDP Select fürs eBook angemeldet).
+- **„Marsch" / „The Reclaimed Land"** (Deich-Generationensaga, 3 Bände DE+EN) — alle Dateien
+  fertig gebaut + committet (PR #91, Branch `claude/roman-marsch`). KDP-Upload steht noch aus (User-seitig).
+
+**Offene To-dos (User-seitig, KDP-Konto):**
+1. eBook-Cover-Swap Schicht↔The Seam: die Kindle-Cover waren gekreuzt zugeordnet. Jetzt, da „The Seam"
+   live ist (KDP-Bearbeitung entsperrt), korrekte Cover je Buch zuordnen und neu veröffentlichen.
+2. „Marsch"/„The Reclaimed Land" auf KDP hochladen (Innenteil-PDF ZUERST → setzt Seitenzahl/Cover-Maß,
+   dann Umschlag; Trim 5×8", Barcode-Häkchen aus, KI-Inhalt: Text Ja / Cover Nein).
+3. Nach Live-Schaltung jeweils Amazon-Link auf der passenden Verkaufsseite eintragen.
+   - ✅ **The Seam (EN):** Abschnitt „Prefer a print copy or Kindle?" in `en/the-seam.html` ergänzt
+     (Buttons → amazon.com/dp/B0H3NH1JTB Taschenbuch + /dp/B0H3KNC6TM Kindle). Marktplatz .com (umstellbar).
+   - ⏳ **Schicht (DE):** sobald aus „Wird geprüft" live → gleichen Abschnitt in `schicht.html` mit
+     amazon.de/dp/<ASIN> (ASINs noch nicht vergeben).
+   - ⏳ Vision Board / ADHD-Planner: eigene Verkaufsseiten existieren (noch) nicht in diesem Repo (separates KDP-Business).
+
+### ⚠️ KDP-Buch-Business — SEPARATES Projekt/Umgebung (NICHT dieses Repo)
+
+Allen betreibt **außerhalb dieses Repos** ein KDP-Self-Publishing-Business (Low-/No-Content-
+Bücher: Planer, Journals, Logbooks unter mehreren Pen-Names). Bestätigt durch einen alten Chat,
+der auf eigene Memory-Dateien jener Umgebung verweist: `SESSION_HANDOFF_2026-05-30.md`,
+`_BESTSELLER_ROADMAP.md`, `MEMORY.md`, `session-handoff-2026-05-30.md` — **die existieren HIER
+NICHT** und sind von hier nicht erreichbar. Darum liefert jede Dateisuche nach Mileage/ADHD/
+Vision Board in diesem Repo **null Treffer**.
+→ Von hier nur **allgemeine KDP-Hilfe** möglich (Fehler erklären, Margen/Barcode/Beschnitt,
+Browser-Claude-Anleitungen). Ein Cover kann ich hier **neu bauen**, wenn Trim + Seitenzahl +
+Papier vorliegen.
+
+**Fundament (laut Handoff 2026-05-30):** 48 Bücher production-ready (Ø 9,2/10), je mit
+Metadata + A+ Content + Interior + Cover. Pen-Names u. a.: **Marcus Reilly, Anna Fielding,
+Iris Bloom, Sage Whitfield**. Bisher nur wenige live.
+
+**3 Bestseller-Kandidaten (Roadmap — Entscheidung des Users noch offen):**
+1. **Mileage Log** (Marcus Reilly) — Q1-Tax-Spike, zeitkritisch. ~$170 + 20 h → Y1 $4,8–12k.
+2. **Anna-Fielding-8-Buch-Recovery-Serie** — Cross-Sell-Hebel (gleicher Pen-Name). ~$350 + 30 h → Y1 $15–35k.
+3. **Memory Journal Grandparent** (Iris Bloom) — Q4-Geschenk. ~$110 + 20 h → Q4 $3–8k.
+Gesamt ~$630 + 70 h → Y1 ~$22,8–35k. $0-Pfad (DIY-Canva-Cover, organische Reviews) ≈ 60 % des ROI.
+Blocker (nur User): KDP-Login/2FA, Author-Central-Verifizierung, Budget, ~70 h über 90 Tage.
+
+**KDP-Bookshelf-Status (vom User gezeigt, 2026-06-02):**
+- **„Vision Board Workbook for Women"** (Sage Whitfield) — Taschenbuch **LIVE** ✅, $11.99,
+  ASIN **B0H3JZZPM5**. Kindle-eBook-Version noch nicht angelegt; Hardcover nicht angelegt.
+- **„ADHD Daily Planner for Adults"** (Marcus Reilly) — Taschenbuch **ENTWURF** (Bookshelf-Stand 2026-06-02,
+  zuletzt geändert 2. Juni). **Druckvorschau bestanden** (Innenteil 102 S. + Cover v6 Vektor akzeptiert),
+  aber **noch NICHT veröffentlicht** — „Einrichtung fortsetzen" → Preis/Rechte → „Veröffentlichen" fehlt
+  noch (User). (Frühere Notiz „LIVE B0H3NH1JTB" war falsch — diese ASIN = The Seam.) KDP-Setup:
+  Trim **6×9"**, **BW weißes Papier**, kein Beschnitt (Innenteil), Cover-Laminierung **matt**.
+  Innenteil war **nicht hochgeladen** → in dieser aban-Session **komplett neu gebaut** (2026-06-02):
+  reportlab-Innenteil **102 Seiten** (Titel/Copyright/„belongs"/How-to/Tipps/90-Tage-Intention +
+  **90 Tagesseiten** [Top 3, Time-Blocks 7–20 Uhr, Body-Doubling, Dopamine-Wins, Brain-Dump,
+  Footer-Checks] + 6 Notizseiten), alle Fonts eingebettet (DejaVu-Subset; reportlab-Helvetica-
+  Default via pikepdf auf DejaVu remappt). **Cover** (Pillow→PDF) Teal, schlicht, full-wrap
+  **12,4797 × 9,25"**, Rücken **0,2297"** (102 S. × 0,002252), Rückentext (≥100 S.), Barcode-Feld frei.
+  Dateien dem User geliefert (SendUserFile): `ADHD-Planner_Innenteil_6x9_102Seiten.pdf`,
+  `ADHD-Planner_Cover_6x9_matt.pdf`. Generatoren: `/tmp/adhd/build_interior.py` + `build_cover.py`
+  (nicht im Repo — externes Buch).
+  - **Upload-Stand 2026-06-02:** Innenteil hochgeladen & von KDP akzeptiert (102 S. bestätigt).
+    Cover v1 ergab KDP-Fehler „Objekt außerhalb der Ränder" = mein manuelles weißes Barcode-Kästchen
+    (Unterkante 0,35" < nötige 0,375"). **Fix:** Kästchen entfernt (KDP setzt Barcode selbst mit
+    eigenem weißen Hintergrund) → **Cover v2** geliefert (`..._Cover_6x9_matt_v2.pdf`).
+    Cover **v2** ergab erneut „Objekt außerhalb der Ränder" — diesmal der **Rückentext**: bei
+    102 S. ist der Rücken nur 0,23" breit, KDP-Clearance 0,0625"/Seite → Text-Clearance nur ~0,05".
+    **Fix v3:** Rückentext komplett entfernt (leerer Rücken, KDP-konform bei dünnen Büchern) →
+    **Cover v3** geliefert (`..._Cover_6x9_matt_v3.pdf`).
+    **To-do User:** nur Cover **v3** hochladen → Druckvorschau (sollte fehlerfrei) → Entwurf speichern → Publish.
+    Lehre: Bei dünnem Rücken (<~0,25") KEIN Rückentext; Barcode-Zone NIE mit eigenem Objekt füllen.
+    Cover **v3** flaggte erneut „Objekt außerhalb der Ränder" + „kein gültiger Barcode". Pixel-Messung
+    bewies: aller TEXT ist ≥0,577" vom Rand (KDP-Minimum 0,25") → Text war NIE das Problem. Übrig blieb
+    der **dunklere Rücken-Streifen** (Farbblock, der oben/unten an die Kante stößt) — KDPs Bildanalyse
+    wertet ihn als Objekt im Randbereich. **Fix v4:** Rücken-Streifen entfernt → komplett einheitliches
+    Türkis, nur Front-/Rücktext. Geliefert: `..._Cover_6x9_matt_v4.pdf`.
+    Die Barcode-Meldung ist **informativ/kein Blocker** (Amazon platziert den Barcode automatisch).
+    Lehre+: Cover = möglichst EIN flaches Hintergrundfeld; keine Farbblöcke/Streifen, die die Außenkante
+    berühren (KDP-ML flaggt sie als „Objekt außerhalb der Ränder", selbst wenn als Bleed gedacht).
+    Cover **v5** (2026-06-02): Titel/Headline verkleinert, alle Texte auf **≥0,6"** (bis 1,5") von allen
+    Außenkanten UND der Spine-Falz gezogen (pixelgeprüft, 0 ink in Spine-Band). Geliefert `..._Cover_6x9_matt_v5.pdf`.
+    Falls KDP danach IMMER NOCH „Objekt außerhalb der Ränder" zeigt → wahrscheinlich Cache/False-Positive der
+    KDP-Vorschau: Vorschau komplett beenden, Cover neu hochladen, Vorschau neu starten; sonst KDP-Support.
+    Cover **v6** (2026-06-02): da Raster-Cover (Pillow→PDF) trotz v2–v5 weiter „Objekt außerhalb der Ränder"
+    flaggte, auf **echtes Vektor-PDF** umgestellt — `/tmp/adhd/build_cover_vector.py` (reportlab, echter
+    Text, eingebettete DejaVu, Helvetica-Remap via pikepdf), exakt 12,4797 × 9,25", Rücken 0,2297".
+    Geliefert `ADHD-Planner_Cover_6x9_v6_vektor.pdf`. Vektor = KDP misst Ränder präzise, Bildanalyse-
+    Fehlalarme entfallen (gleiche Methode wie die Roman-KDP-Druckcover via `kdp_paket.py`).
+    Wenn AUCH v6 noch flaggt: definitiv KDP-Cache/Bug → frische Vorschau / KDP-Support.
+    **✅ v6 hat die KDP-Druckvorschau bestanden** (2026-06-02): kein „Objekt außerhalb"-Fehler mehr,
+    KDP hat seinen eigenen Barcode automatisch platziert (= Cover akzeptiert). Innenteil (102 S.) + Cover v6
+    beide ✓. Nächster Schritt nur noch User: Details/Preis vervollständigen → „Veröffentlichen".
+    **Kern-Lehre:** Für KDP-Cover **Vektor-PDF (reportlab)** statt Raster (Pillow) verwenden — Raster
+    triggert wiederholt falsch-positive „Objekt außerhalb der Ränder"; Vektor wird präzise vermessen.
+- **„Mileage Log Book for Small Business: IRS Publication 463 Contemporaneous Trip Log …"** (Marcus Reilly)
+  — Taschenbuch **ENTWURF** (Bookshelf 2026-06-02, zuletzt 1. Juni). Druckvorschau-Fehler: eigener Barcode
+  unten links → Barcode entfernen, KDP setzt ihn selbst; Vorschau zeigte **119 Seiten**.
+  **✅ Vorbereitet (2026-06-02):** Vektor-Cover gebaut + geliefert `Mileage-Log_Cover_6x9_vektor.pdf`
+  (6×9", 119 S., Rücken 0,268", blau, eingebettete Fonts, Text-Clearances 0,78–1,13" geprüft).
+  Generator `/tmp/adhd/build_mileage_cover.py`. **To-do User morgen:** Cover ersetzen → Vorschau → veröffentlichen.
+  Annahme 6×9/119 S. — falls Innenteil-Trim/Seitenzahl abweicht, Cover in 1 Min neu bauen.
+
+**Typische KDP-Cover-Fehler & Fix:**
+- „Text/Objekt außerhalb der Ränder" = Element zu nah am Rand/Falz → alles ≥6 mm nach innen.
+- Eigener Barcode = häufige Ursache → entfernen, unten **rechts** ~5×3 cm frei lassen, KDP setzt ihn selbst.
+- Cover-Gesamtmaß inkl. **3,2 mm Beschnitt** rundum, passend zu Seitenzahl + Trim, als PDF/X exportieren.
+
+**Bekannter Bug jener Umgebung:** kaputter `check-sql-files.py`-Hook feuert bei jedem Speichern
+(harmlos, alter Plugin-Pfad) — dort in `~/.claude/settings.json` entfernen.
+
+**🛠 Wiederverwendbares Tool (im Repo):** `tools/kdp-cover/` — **Pipeline** `build_book.py`
+(ein Aufruf → Cover + Innenteil + `metadata.md` + `upload-playbook.md` pro Buch; Cover-Rücken
+wird aus echter Innenteil-Seitenzahl berechnet), dazu `kdp_cover.py` (Vektor-Cover) +
+`planner_interior.py` (Planer-Innenteil) + README mit allen KDP-Lehren (Vektor statt Raster,
+exakte Größe, Rücken-Formel/Papier-Multiplikatoren, dünner Rücken=kein Rückentext, kein eigener
+Barcode, ein flaches BG-Feld, Fonts einbetten/Helvetica-Remap). Beispiel-Configs ADHD + Mileage
+(inkl. Keywords/Kategorien/Preis). `out/` (fertige Produkte) ist git-ignored.
+
+> Hinweis: Das aban-Repo enthält eigene KI-Romane (separat): „The Seam" (EN) live, „Schicht" (DE),
+> „Marsch"/„The Reclaimed Land" gebaut — siehe Abschnitt „Romane auf Amazon KDP" oben.
