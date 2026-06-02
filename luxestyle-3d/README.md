@@ -4,6 +4,17 @@ Werkzeuge und Gedächtnis für den Geschäftszweig „3D-Druck-Produkte" im Shop
 **luxestyle.ch** (Shopify Basic, CHF, Schweiz). Selbst erzeugte Designs = null
 Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 
+> 🚫 **FESTE REGEL (Kunde, verbindlich):** KEINE flachen Teile mehr — nie wieder flach
+> bauen/posten. Es gibt **genau 2 Katzen, beide Vollkörper-3D**, keine neuen Tiere/Varianten,
+> nur diese zwei ändern:
+> 1. **Pancake** — gespreizt liegend, schwarze X-Augen, orange Zunge (Meshy image-to-3D aus
+>    Geminis Bild → `polish.py`; X erhaben aufgesetzt). Datei: `samples/cat3d_finalX/smallX.stl`.
+> 2. **Full-Body** — sitzende Katze, ganzer Körper, RUNDE Augen, rosa Ohren, weiß.
+>    Prompt: „cute chubby white cat sitting upright, full body, four legs, tail, big round
+>    simple eyes, pink inner ears, orange tongue, smooth stylized, solid" → `polish.py`.
+>    Datei: `samples/cat3d_fullbody.stl`.
+> Flache `.scad` (kawaii/pancake/charm) wurden **gelöscht**. Augen via Meshy-Prompt einbacken.
+
 ## Generator-Baukasten
 
 | Datei | Produkt |
@@ -14,10 +25,6 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `nametag_base.scad` | Grundplatte (ohne Text) für mehrfarbige Anhänger (X1C + AMS) |
 | `animal.scad` | 8 Tier-Silhouetten (cat, bear, rabbit, fish, paw, dog, heart, star) |
 | `flexi_chain.scad` | Print-in-Place Gliederkette (beweglich, in einem Stück) |
-| `kawaii_cat.scad` | **Flache Kawaii-Katze** (Loaf): graviertes Gesicht (X-Augen, Schnurrhaare, Mund), erhabene Zunge, Loop-Loch, parametrisch 50–90 mm |
-| `pancake_cat.scad` | **Flache Kawaii-Pfannkuchen-Katze** (gespreizte Pose, Beine raus) + graviertes Derp-Gesicht + Schwanz + Loch |
-| `cat_charm.scad` | **Mehrfarbiger** flacher Kawaii-Katzen-Charm (AMS): weiß + orange Flecken, **schwarze X-Augen**, **orange Zunge** — Farbteile als eigene Geometrie |
-| `cat_charm_round.scad` | Flacher Kawaii-Charm mit **RUNDEN Augen** (kein X), rosa Ohren, schwarze Augen/Nase, orange Zunge, **Loch** — AMS-mehrfarbig |
 | `make.py` | erzeugt aus jedem Text eine druckfertige `.stl` |
 | `polish.py` | **Veredelung (Blender):** Mesh säubern, glätten, Schuppen-/Detail-Struktur, auf mm skalieren, STL + Render |
 | `build_all.sh` | **1 Befehl** → kompletter Katalog als STL (alle Tiere, Flexi, Beispiel-Namen) |
