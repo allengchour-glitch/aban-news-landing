@@ -353,6 +353,10 @@ Blocker (nur User): KDP-Login/2FA, Author-Central-Verifizierung, Budget, ~70 h �
     Die Barcode-Meldung ist **informativ/kein Blocker** (Amazon platziert den Barcode automatisch).
     Lehre+: Cover = möglichst EIN flaches Hintergrundfeld; keine Farbblöcke/Streifen, die die Außenkante
     berühren (KDP-ML flaggt sie als „Objekt außerhalb der Ränder", selbst wenn als Bleed gedacht).
+    Cover **v5** (2026-06-02): Titel/Headline verkleinert, alle Texte auf **≥0,6"** (bis 1,5") von allen
+    Außenkanten UND der Spine-Falz gezogen (pixelgeprüft, 0 ink in Spine-Band). Geliefert `..._Cover_6x9_matt_v5.pdf`.
+    Falls KDP danach IMMER NOCH „Objekt außerhalb der Ränder" zeigt → wahrscheinlich Cache/False-Positive der
+    KDP-Vorschau: Vorschau komplett beenden, Cover neu hochladen, Vorschau neu starten; sonst KDP-Support.
 - **„Mileage Log Book for Small Business"** (Marcus Reilly) — Taschenbuch, Druckvorschau-**FEHLER**:
   Text/Objekt außerhalb der Ränder (Ursache: eigener Barcode unten links) → Barcode entfernen,
   KDP setzt ihn selbst; Vorschau zeigte **119 Seiten**.
