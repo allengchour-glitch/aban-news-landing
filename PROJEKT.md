@@ -363,6 +363,11 @@ Blocker (nur User): KDP-Login/2FA, Author-Central-Verifizierung, Budget, ~70 h �
     Geliefert `ADHD-Planner_Cover_6x9_v6_vektor.pdf`. Vektor = KDP misst Ränder präzise, Bildanalyse-
     Fehlalarme entfallen (gleiche Methode wie die Roman-KDP-Druckcover via `kdp_paket.py`).
     Wenn AUCH v6 noch flaggt: definitiv KDP-Cache/Bug → frische Vorschau / KDP-Support.
+    **✅ v6 hat die KDP-Druckvorschau bestanden** (2026-06-02): kein „Objekt außerhalb"-Fehler mehr,
+    KDP hat seinen eigenen Barcode automatisch platziert (= Cover akzeptiert). Innenteil (102 S.) + Cover v6
+    beide ✓. Nächster Schritt nur noch User: Details/Preis vervollständigen → „Veröffentlichen".
+    **Kern-Lehre:** Für KDP-Cover **Vektor-PDF (reportlab)** statt Raster (Pillow) verwenden — Raster
+    triggert wiederholt falsch-positive „Objekt außerhalb der Ränder"; Vektor wird präzise vermessen.
 - **„Mileage Log Book for Small Business"** (Marcus Reilly) — Taschenbuch, Druckvorschau-**FEHLER**:
   Text/Objekt außerhalb der Ränder (Ursache: eigener Barcode unten links) → Barcode entfernen,
   KDP setzt ihn selbst; Vorschau zeigte **119 Seiten**.
