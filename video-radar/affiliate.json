@@ -1,0 +1,22 @@
+{
+  "_comment": "So verdienst du Geld: Melde dich beim Partnerprogramm des jeweiligen Anbieters an (Liste '_programme'). Du bekommst einen persönlichen Link. Trage ihn bei 'affiliate_url' ein und entferne das führende '_' im Key. Die Seite markiert ihn dann automatisch mit * und blendet den Transparenzhinweis ein. Anbieter ohne aktiven Eintrag verlinken auf die offizielle URL aus data/anbieter.json (keine Provision).",
+  "_status": "ALLE SLOTS DEAKTIVIERT (Key mit '_'-Präfix). Noch keine Affiliate-Links freigegeben. Fallback = offizielle URL / Mail.",
+  "_kontakt_fallback": "mailto:hallo@abannews.com",
+  "_programme": {
+    "_hinweis": "Kuratierte Liste typischer Partnerprogramme, gemappt auf Anbieter in data/anbieter.json. 'signup' = wo du dich bewirbst. 'rate' = typische Provision (kann sich ändern, vor Nutzung prüfen). Quelle der Wahrheit für die echte URL bleibt data/anbieter.json. Nur Anbieter mit real existierendem Programm sind gelistet.",
+    "synthesia": {"signup": "https://www.synthesia.io/affiliates", "rate": "[Redaktion: prüfen]", "typ": "recurring"},
+    "heygen": {"signup": "https://www.heygen.com/affiliates", "rate": "[Redaktion: prüfen]", "typ": "recurring"},
+    "descript": {"signup": "https://www.descript.com/affiliates", "rate": "[Redaktion: prüfen]", "typ": "recurring"},
+    "pictory": {"signup": "https://pictory.ai/affiliate-program", "rate": "[Redaktion: prüfen]", "typ": "recurring"},
+    "invideo": {"signup": "https://invideo.io/affiliates/", "rate": "[Redaktion: prüfen]", "typ": "recurring"},
+    "fliki": {"signup": "https://fliki.ai/affiliate", "rate": "[Redaktion: prüfen]", "typ": "recurring"},
+    "veed": {"signup": "https://www.veed.io/affiliates", "rate": "[Redaktion: prüfen]", "typ": "recurring"}
+  },
+  "links": {
+    "_anleitung": "Trage deinen persönlichen Affiliate-Link bei 'affiliate_url' ein und entferne das führende '_' im Anbieter-Key (z.B. '_synthesia' -> 'synthesia'). Erst dann wird der Link auf der Seite aktiv (mit * + Transparenzhinweis). Solange das '_' steht, bleibt der Slot deaktiviert und es wird die offizielle URL verlinkt.",
+    "_synthesia": {"affiliate_url": "https://www.synthesia.io/?via=DEIN-CODE"},
+    "_heygen": {"affiliate_url": "https://www.heygen.com/?sid=DEIN-CODE"},
+    "_descript": {"affiliate_url": "https://www.descript.com/?lmref=DEIN-CODE"},
+    "_invideo": {"affiliate_url": "https://invideo.io/?ref=DEIN-CODE"}
+  }
+}
