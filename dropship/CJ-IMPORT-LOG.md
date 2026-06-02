@@ -1075,3 +1075,13 @@ Alle 16 aktiven geprüft (Bilder): NUR «Spice» (15413079245185) + «Pliage» (
 klare Gläser (Blaulicht-Fassungen, falsch als „Sonnenbrille" gelabelt) → auf DRAFT gesetzt (raus aus
 Shop+Kollektionen, umkehrbar). Rest alle getönt/verspiegelt (UV400/polarisiert). Sonnenbrillen jetzt 14 aktiv.
 Hinweis: «Carré/Pliage/Spice»-Batch (15413079*) war Fashion-Retro – 1 getönt, 2 klar.
+
+## 2026-06-02 — Brillen-Sortiment bereinigt + 1 coole neue + Luxus-Reel
+- Voller Audit aller 16 aktiven Sonnenbrillen (Bilder): klar-glasig (raus, DRAFT) = «Spice», «Pliage»,
+  **«Clubmaster»** (Blaulicht/optisch, Rezept-Text), **«Statement»** (gelb, nicht verdunkelt).
+  → Sonnenbrillen jetzt 12 aktiv, alle dunkel/verspiegelt getönt.
+- **Neue coole Sonnenbrille importiert:** „Oversized «Street» getönt, Square (3 Farben)"
+  (ID 15414490399105, CHF 19.90, ACTIVE, 6 Kanäle, getaggt sonnenbrille+damen+sommer-2026 → Landingpage).
+  CJ-Brillen-Katalog stark ausgeschöpft (nur 3 Treffer, 2 Dubletten).
+- **Luxus-Brillen-Reel** neu gerendert (nur getönte: Cat-Eye/Carré/Photo/Chrome/Felina) → luxbrillen.mp4.
+  Skript cj_brillen_search.mjs. LEHRE: CJ-„UV400"-Titel ≠ immer getönt — Bilder prüfen!
