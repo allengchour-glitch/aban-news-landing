@@ -1,3 +1,7 @@
 *.pyc
 .audit/
 __pycache__/
+# YouTube-Uploader Secrets
+video-prototypes/client_secret.json
+video-prototypes/token.json
+video-prototypes/uploaded.json

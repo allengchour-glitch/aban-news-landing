@@ -21,7 +21,7 @@ WORK   ?= /tmp
 PY     ?= python3
 S      := scripts
 
-.PHONY: all audio clips schedule setup clean help
+.PHONY: all audio clips schedule youtube setup clean help
 .DEFAULT_GOAL := help
 
 ## Audio + alle Clips
@@ -47,6 +47,10 @@ clip-%:
 ## Redaktionsplan (1 Video / 2 Tage) neu erzeugen
 schedule:
 	$(PY) scripts/make_schedule.py
+
+## Direkt auf YouTube laden, terminiert laut schedule.csv (siehe YOUTUBE-UPLOAD.md)
+youtube:
+	$(PY) scripts/yt_upload.py
 
 ## Hinweis auf die Setup-Dokumentation
 setup:
