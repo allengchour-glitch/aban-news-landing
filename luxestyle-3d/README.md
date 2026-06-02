@@ -145,6 +145,16 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 - **Farbpalette (PLA):** gelb, rot, braun, grau, grün, weiß, schwarz, beige.
 - Pipeline-Skripte (Blender headless): in der Session unter `/tmp` (lenseye-Muster).
 
+### Produktion / Batch (gelernt)
+- Bei **Serie (z. B. 20 Stk)** muss das **Master-Modell perfekt** sein — KEIN Nacharbeiten
+  pro Teil. Fehler im Master = 20× Handarbeit.
+- **Augen NICHT nachträglich** auf die 3D-Figur setzen/editieren (blind unzuverlässig,
+  landet daneben/spikt). → Stattdessen **die richtigen Augen von Anfang an per Meshy-Prompt
+  einbacken**: „big round simple eyes" für runde Augen; „X eyes" backt X-Vertiefungen ein
+  (von Geminis X-Augen) → die lassen sich NICHT sauber blind entfernen.
+- Meshy backt den Augen-Stil aus dem Prompt in die Geometrie → Prompt = einzige zuverlässige
+  Stell­schraube für die Augenform.
+
 ### Prompt-Bibliothek (erprobt)
 - Funktioniert: `"a cute <tier> figurine, smooth stylized, solid, simple, no separate base"`
   (+ `"long tail curled to the side"` für Schwanz, + `"lying down"` für liegend).
