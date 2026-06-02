@@ -42,6 +42,26 @@ python3 generate_clips.py --voice         # zusätzlich TTS (braucht ELEVENLABS_
    python3 ../social/post.py --all      # an Telegram/Discord/Mastodon/Webhook
    ```
 
+## Der aban-news-Werbespot (`generate_promo.py`)
+
+Eigenes Skript für den **Promo-Spot** (Top-of-Funnel, neue Abonnenten). Setzt
+`docs/WERBEVIDEO-SKRIPT.md` + den Regie/Psychologie-Schnitt in fertige Bausteine um:
+
+```bash
+python3 generate_promo.py            # Variante A (40 s) + B (15 s)
+python3 generate_promo.py --voice    # zusätzlich ElevenLabs-VO
+```
+
+Pro Variante in `ausgabe/werbespot/<variante>/`:
+- `storyboard_NN.png` — 9:16-Frames je Szene (On-Screen-Text groß, VO-Notiz unten — im Export ausblenden)
+- `voiceover.txt` — reiner VO-Text zum Einfügen bei ElevenLabs
+- `untertitel.srt` — getimte Untertitel
+- `regie.txt` — Szene/Zeit/Bildanweisung für den HeyGen-Aufbau
+
+Produktion: `voiceover.txt` → ElevenLabs (Multilingual, ruhige deutsche Stimme),
+Audio + `untertitel.srt` → HeyGen (Avatar + Lippensync), 9:16 exportieren. Details:
+`docs/WERBEVIDEO-SKRIPT.md` und `docs/WERBEVIDEO-REGIE-PSYCHOLOGIE.md`.
+
 ## Selbst-wachsend
 
 Jeder neue Hype-Watch-Fall (`data/hype-watch.json` + `generate_hype_watch.py`) wird beim
