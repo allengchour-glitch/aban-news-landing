@@ -15,6 +15,8 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `animal.scad` | 8 Tier-Silhouetten (cat, bear, rabbit, fish, paw, dog, heart, star) |
 | `flexi_chain.scad` | Print-in-Place Gliederkette (beweglich, in einem Stück) |
 | `make.py` | erzeugt aus jedem Text eine druckfertige `.stl` |
+| `polish.py` | **Veredelung (Blender):** Mesh säubern, glätten, Schuppen-/Detail-Struktur, auf mm skalieren, STL + Render |
+| `build_all.sh` | **1 Befehl** → kompletter Katalog als STL (alle Tiere, Flexi, Beispiel-Namen) |
 
 ### Benutzen
 ```bash
@@ -27,6 +29,18 @@ openscad -o flexi_chain.stl flexi_chain.scad
 ```
 Voraussetzung: OpenSCAD (https://openscad.org/downloads.html). Für Render/Mesh-Cleanup
 zusätzlich Blender headless (siehe Lern-Memory).
+
+### Veredeln & Bauen
+```bash
+bash build_all.sh                                  # ganzer Katalog -> samples/
+
+# Mesh (z. B. von Meshy) druckfertig machen + Struktur drauf:
+python3 polish.py meshy_cat.glb --detail scales --cell 4 --strength 0.5 --size 50 --render
+```
+`polish.py`-Detailmuster: `scales` · `reptile` · `rough` · `none`.
+**Ehrlich:** Detail = echte Geometrie (Drucker druckt Form). Auf **FDM** nur grobe
+Struktur möglich (kräftige Schuppen ja, fotorealistische Mikro-Haut nein → Resin).
+Funktioniert am besten auf **organischen/runden** Meshes, nicht auf flachen Platten.
 
 ---
 
