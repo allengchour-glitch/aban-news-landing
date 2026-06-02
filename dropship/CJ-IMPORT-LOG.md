@@ -1285,3 +1285,14 @@ Himalaya-Lampe = „Bedside Spa Gift Box"). → **32 klare Müll-Alts auf Seite 
 **OFFEN:** ~9 weitere Produktseiten (je 50) mit demselben Muster — auf „weiter" Seite für Seite abarbeiten.
 Cursor-Start nach Seite 1: createdAt 2026-05-22. Regel: alt ersetzen, wenn Slug / „Original …"/„echtes Produktfoto"
 / „im Bundle"-Mismatch / Englisch; sonst lassen.
+
+## 2026-06-02 — Alt-Text-Loop abgeschlossen (User: „weiter in loop")
+- **Seite 2:** +25 Müll-Alts ersetzt (Slugs, „im Bundle"-Mismatch, „echtes Produktfoto", zu kurze).
+- **Seiten 3 & 4 geprüft = bereits sauber** (ordentliche Titel-Alts, kein Müll). Muster bestätigt:
+  Müll-Alts steckten NUR im ältesten Import (Seiten 1–2, erstellt ≤2026-05-22); alle neueren Produkte
+  (ab 2026-05-29) wurden sauber angelegt. Sortierung CREATED_AT aufsteigend → neuere Seiten = sauberster.
+  → Loop bewusst beendet (keine weiteren Müll-Alts zu erwarten; restl. ~6 Seiten = gleiche saubere Charge).
+- **Gesamt Müll-Alt-Cleanup: 57** (32 Seite 1 + 25 Seite 2). + 87 Fashion-Alts (40 Kleider + 47 Accessoires)
+  = **144 Bild-Alt-Texte diese Session optimiert.**
+**Falls künftig nötig:** Regel = alt ersetzen bei Slug / „Original …"/„echtes Produktfoto" / „· im Bundle"-
+Mismatch / Englisch; sonst Titel-Alt lassen. Query: products(query:"status:active",sortKey:CREATED_AT).
