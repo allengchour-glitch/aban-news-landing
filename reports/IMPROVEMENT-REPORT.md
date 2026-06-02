@@ -1,8 +1,8 @@
 # Täglicher Verbesserungs-Report — abannews.com
 
-> Automatisch erzeugt: **2026-06-02 15:28 UTC** · 304 HTML-Seiten geprüft · reine Heuristik, manuell verifizieren.
+> Automatisch erzeugt: **2026-06-02 16:05 UTC** · 349 HTML-Seiten geprüft · reine Heuristik, manuell verifizieren.
 
-**Befunde:** 🔴 6 hoch · 🟡 25 mittel · 🟢 19 niedrig (Tonalität)
+**Befunde:** 🔴 6 hoch · 🟡 24 mittel · 🟢 19 niedrig (Tonalität)
 
 Ergänzend: `python3 tools/link_checker.py` prüft kaputte Links separat.
 
@@ -43,9 +43,6 @@ Ergänzend: `python3 tools/link_checker.py` prüft kaputte Links separat.
 - `werbung.html` — kein og:title
 - `kurs-zugang.html` — kein og:title
 - `hype-widget-demo.html` — kein og:title
-
-## 🟡 Security: target=_blank ohne rel=noopener — 1
-- `launch-manual.html` — 11 Link(s)
 
 ## 🟢 Voice: Hype-Wörter — 19
 - `resources.html` — Game-Changer, revolutionär, revolutionären
