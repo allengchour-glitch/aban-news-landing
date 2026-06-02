@@ -324,8 +324,8 @@ Blocker (nur User): KDP-Login/2FA, Author-Central-Verifizierung, Budget, ~70 h �
 **KDP-Bookshelf-Status (vom User gezeigt, 2026-06-02):**
 - **„Vision Board Workbook for Women"** (Sage Whitfield) — Taschenbuch **LIVE** ✅, $11.99,
   ASIN **B0H3JZZPM5**. Kindle-eBook-Version noch nicht angelegt.
-- **„ADHD Daily Planner for Adults"** (Marcus Reilly) — Taschenbuch **✅ KDP-Vorschau bestanden
-  (2026-06-02), bereit zum Veröffentlichen** (Innenteil 102 S. + Cover v6 Vektor akzeptiert). KDP-Setup:
+- **„ADHD Daily Planner for Adults"** (Marcus Reilly) — Taschenbuch **✅ LIVE auf Amazon (2026-06-02)**,
+  ASIN **B0H3NH1JTB** (https://www.amazon.de/dp/B0H3NH1JTB). Innenteil 102 S. + Cover v6 (Vektor) akzeptiert. KDP-Setup:
   Trim **6×9"**, **BW weißes Papier**, kein Beschnitt (Innenteil), Cover-Laminierung **matt**.
   Innenteil war **nicht hochgeladen** → in dieser aban-Session **komplett neu gebaut** (2026-06-02):
   reportlab-Innenteil **102 Seiten** (Titel/Copyright/„belongs"/How-to/Tipps/90-Tage-Intention +
