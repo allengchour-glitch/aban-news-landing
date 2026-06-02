@@ -1044,3 +1044,11 @@ Menü-Unterkategorien. Grund: Smart-Collection-Regeln nutzen ANDERE Tags als ged
 FIX: Tag `schmuck` auf alle 7 Schmuckstücke + `sonnenbrille` auf die Brille ergänzt (tagsAdd).
 **MERKE für künftige Importe:** Schmuck IMMER mit Tag `schmuck`+`damen` taggen; Sonnenbrillen mit
 `sonnenbrille`; nicht nur `damen-schmuck`/`accessoires`. Smart Collections rechnen async (paar Min).
+
+## 2026-06-02 — Brillen-QA + Cleanup
+Sonnenbrillen-Kollektion geprüft: 16 aktive Brillen alle korrekt (Bild READY, Preise, Varianten).
+GELÖSCHT: 14 archivierte Bild-lose Brillen-Leichen (alte „Designer/Herren Aviator"-Dubletten, 0 Bilder)
+die die Kollektion aufblähten → Sonnenbrillen jetzt 30→16, sauber.
+Katalog-Status: 526 aktiv (alle bildgeprüft), 42 Entwurf, **4.381 archiviert** (= bekanntes Altlast-Backlog,
+NICHT kund:innen-sichtbar). Empfehlung Archiv-Purge: Admin → Filter Archiviert → Bulk-Löschen (schneller
+als API mit ~44 Batches). Neue Brille «HD» korrekt einsortiert (Sonnenbrillen + Sommer-Landingpage).
