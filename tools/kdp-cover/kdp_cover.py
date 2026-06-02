@@ -89,6 +89,24 @@ def build_cover(cfg, out_pdf):
     c = canvas.Canvas(out_pdf, pagesize=(Wp, Hp))
     c.setFillColor(BG); c.rect(0, 0, Wp, Hp, fill=1, stroke=0)   # one flat field
 
+    # ---- optional FRONT image (full-bleed on the front panel only) ----
+    # Spine + back stay the flat BG field (KDP-safe); the raster lives only on
+    # the front so the wrap reads as one design. A scrim keeps title text legible.
+    fi = cfg.get("front_image")
+    if fi and os.path.exists(fi):
+        from reportlab.lib.utils import ImageReader
+        ix = X(x_spine1)
+        c.drawImage(ImageReader(fi), ix, 0, width=Wp - ix, height=Hp,
+                    preserveAspectRatio=False, mask='auto')
+        if cfg.get("front_scrim", True):
+            a = cfg.get("scrim_alpha", 0.5)
+            c.saveState(); c.setFillColor(BG)
+            top_h = cfg.get("scrim_top_in", 4.6) * PT      # darken title zone (top)
+            c.setFillAlpha(a); c.rect(ix, Hp - top_h, Wp - ix, top_h, fill=1, stroke=0)
+            bot_h = cfg.get("scrim_bot_in", 1.7) * PT      # darken author/feature (bottom)
+            c.setFillAlpha(a); c.rect(ix, 0, Wp - ix, bot_h, fill=1, stroke=0)
+            c.restoreState()
+
     def center(txt, cx, top, font, size, color):
         c.setFont(font, size * PT); c.setFillColor(color)
         c.drawCentredString(X(cx), T(top), txt)

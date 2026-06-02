@@ -19,6 +19,7 @@ Config schema (one dict per book) — see BOOKS at the bottom for full examples:
 import os, sys
 import kdp_cover
 import planner_interior
+import cover_art
 
 
 def _interior(book, outdir):
@@ -52,6 +53,13 @@ def _cover(book, pages, outdir):
     cfg = dict(book["cover"])
     cfg["trim"] = book["trim"]; cfg["paper"] = book.get("paper", "white"); cfg["pages"] = pages
     cfg.setdefault("author", book["author"].upper())
+    # resolve front-cover art (image / drawn / ai) with self-diagnosis + fallback
+    art = cover_art.resolve(cfg, book["trim"], bleed=cfg.get("bleed", 0.125),
+                            dpi=cfg.get("art_dpi", 300), workdir=outdir)
+    for ln in art["diag"]:
+        print(ln)
+    if art["path"]:
+        cfg["front_image"] = art["path"]; cfg["front_scrim"] = art["scrim"]
     path = os.path.join(outdir, f"{book['slug']}-cover.pdf")
     info = kdp_cover.build_cover(cfg, path)
     return path, info
@@ -170,7 +178,8 @@ BOOKS = {
                      "intro": ("Your brain is not broken — it just runs a different operating system. "
                                "This planner uses four simple tools, one page a day, to work with it."),
                      "how_to": planner_interior.ADHD["how_to"]},
-        "cover": kdp_cover.EXAMPLES["adhd"],
+        # auto: ai (skipped, no key) -> no supplied image -> drawn brand art
+        "cover": {**kdp_cover.EXAMPLES["adhd"], "art": {"mode": "auto"}},
         "listing": {
             "language": "English", "price_usd": 8.99, "price_eur": 8.99,
             "ai_text": False, "ai_images": False, "low_content": True,
@@ -190,7 +199,8 @@ BOOKS = {
         "closing": "Keep every mile. Claim every dollar.",
         "interior": {"type": "external", "pages": 119,
                      "note": "Innenteil liegt bereits im KDP-Entwurf (119 S.)."},
-        "cover": kdp_cover.EXAMPLES["mileage"],
+        # typographic cover (no image) — set art.src or mode "auto" to add one
+        "cover": {**kdp_cover.EXAMPLES["mileage"], "art": {"mode": "none"}},
         "listing": {
             "language": "English", "price_usd": 6.99, "price_eur": 6.99,
             "ai_text": False, "ai_images": False, "low_content": True,

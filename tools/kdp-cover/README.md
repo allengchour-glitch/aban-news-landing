@@ -14,7 +14,8 @@ Planer, Logbooks, Journals). Entstanden 2026-06-02 beim Fertigstellen des
 | Datei | Zweck |
 |-------|-------|
 | `build_book.py` | **Pipeline:** ein Aufruf → Cover + Innenteil + `metadata.md` + `upload-playbook.md` |
-| `kdp_cover.py` | Full-Wrap-**Cover** als echtes Vektor-PDF (Front/Rücken/Back) |
+| `kdp_cover.py` | Full-Wrap-**Cover** als echtes Vektor-PDF (Front/Rücken/Back, optional Frontbild) |
+| `cover_art.py` | **Cover-Bild** verarbeiten / zeichnen / (optional) per KI — mit Selbst-Diagnose |
 | `planner_interior.py` | **Innenteil** eines Tages-Planers (6×9, s/w), N Tagesseiten |
 
 ## Pipeline (empfohlen)
@@ -32,10 +33,32 @@ Seitenzahl berechnet** — Cover und Innenteil passen automatisch zusammen.
 Bücher mit fremdem Innenteil: `interior={"type":"external","pages":N}` →
 Cover + Metadaten + Playbook werden gebaut, Innenteil lädst du selbst hoch.
 
+## Cover-Bild (`cover_art.py`) — Bild rein, gezeichnet, oder KI
+
+Das Vektor-Cover ist standardmäßig rein typografisch. Über `cover["art"]` bekommt
+die Front zusätzlich ein **Bild** — die Pipeline verarbeitet es korrekt (Front-
+Größe + Bleed + 300 DPI, RGB) und bettet es nur auf der **Front** ein (Rücken/Back
+bleiben das flache, KDP-sichere Feld). Ein Scrim hält den Titeltext lesbar.
+
+```python
+"art": {"mode": "none"}                          # nur Typografie (Default)
+"art": {"mode": "draw"}                           # Marken-Art selbst zeichnen (Pillow)
+"art": {"mode": "image", "src": "pfad/bild.jpg"}  # eigenes Foto/Illustration einbetten
+"art": {"mode": "auto", "ai": True}               # KI → sonst Bild → sonst gezeichnet
+```
+
+**Fallback-Kette mit Selbst-Diagnose** (`mode:"auto"`): KI (nur wenn `ai:True` **und**
+`COVER_IMAGE_API_KEY` gesetzt — sonst sauber übersprungen) → geliefertes Bild →
+gezeichnete Marken-Art. Jeder Schritt meldet sich (z. B. *„~97 DPI auf der Front
+(<300) — Druck könnte unscharf"*, Seitenverhältnis-Crop, fehlende Quelle). Es kommt
+**immer** ein druckfähiges Frontbild heraus. KI ist bewusst **unverdrahtet** (dieses
+Repo nutzt per Default keine 3rd-Party-Bild-API, DSGVO) — Provider in
+`cover_art.ai_art()` einhängen. KI-Bilder ggf. bei KDP als AI-Content deklarieren.
+
 ## Nutzung
 
 ```bash
-pip install reportlab pikepdf        # pymupdf nur zum Prüfen/Rendern
+pip install reportlab pikepdf pillow # pymupdf nur zum Prüfen/Rendern
 cd tools/kdp-cover
 python3 kdp_cover.py                 # baut die Beispiel-Cover nach ./out/
 python3 planner_interior.py          # baut den ADHD-Beispiel-Innenteil
@@ -73,6 +96,11 @@ Diese Punkte haben beim ADHD-Planner fünf Cover-Versionen gekostet — hier fix
 7. **Upload-Reihenfolge:** Innenteil-PDF **zuerst** (setzt Seitenzahl → Cover-Maß),
    dann Cover. Trim & Papier im KDP-Setup müssen zu den Generator-Parametern passen.
 
+8. **Frontbild nur auf der Front, mit Scrim.** Ein Bild deckt ausschließlich das
+   Front-Panel (`x_spine1 … rechter Rand`), nie Rücken/Back — so bleibt das flache
+   KDP-sichere Feld erhalten. Über dem Titel/Autor liegt ein halbtransparenter
+   Scrim in der BG-Farbe, damit weißer Text auch auf hellen Bildern lesbar bleibt.
+
 ## Abhängigkeiten
-`reportlab` (PDF), `pikepdf` (Helvetica-Remap), optional `pymupdf` (Prüfen/Rendern).
-Fonts: DejaVu Sans / Sans-Bold (Standard auf den meisten Linux-Systemen).
+`reportlab` (PDF), `pikepdf` (Helvetica-Remap), `pillow` (Cover-Bild), optional
+`pymupdf` (Prüfen/Rendern). Fonts: DejaVu Sans / Sans-Bold (Standard auf Linux).
