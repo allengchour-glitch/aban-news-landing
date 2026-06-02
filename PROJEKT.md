@@ -286,8 +286,11 @@ Verkaufsseiten: `schicht.html`/`en/the-seam.html`, `marsch.html`/`en/the-reclaim
 `trilogie.html`. Druckdateien liegen in `downloads/kdp/<slug>/` (Innenteil 5×8" + Umschlag,
 Schrift eingebettet).
 
-- **„The Seam" (EN, = Übersetzung von „Schicht") — Taschenbuch LIVE auf Amazon ✅** (veröffentlicht 2026-06-02).
-- **„Schicht" (DE) — Taschenbuch:** Upload abgeschlossen; Status beim User prüfen (live oder noch in Prüfung).
+- **„The Seam: A Ruhr Valley Saga in Three Volumes" (EN, aban news)** — **beide Formate LIVE ✅** (Bookshelf 2026-06-02):
+  Kindle eBook **ASIN B0H3KNC6TM** ($9.99) + Taschenbuch **ASIN B0H3NH1JTB** ($9.99).
+  ⚠️ Korrektur: B0H3NH1JTB war zwischenzeitlich fälschlich dem ADHD-Planner zugeordnet — gehört zu **The Seam**.
+- **„Schicht: Eine Ruhrgebiet-Saga in drei Bänden" (DE, aban news)** — Kindle (€8.99) + Taschenbuch ($8.99)
+  beide **„Wird geprüft"** (in Review, KDP Select fürs eBook angemeldet).
 - **„Marsch" / „The Reclaimed Land"** (Deich-Generationensaga, 3 Bände DE+EN) — alle Dateien
   fertig gebaut + committet (PR #91, Branch `claude/roman-marsch`). KDP-Upload steht noch aus (User-seitig).
 
@@ -323,9 +326,11 @@ Blocker (nur User): KDP-Login/2FA, Author-Central-Verifizierung, Budget, ~70 h �
 
 **KDP-Bookshelf-Status (vom User gezeigt, 2026-06-02):**
 - **„Vision Board Workbook for Women"** (Sage Whitfield) — Taschenbuch **LIVE** ✅, $11.99,
-  ASIN **B0H3JZZPM5**. Kindle-eBook-Version noch nicht angelegt.
-- **„ADHD Daily Planner for Adults"** (Marcus Reilly) — Taschenbuch **✅ LIVE auf Amazon (2026-06-02)**,
-  ASIN **B0H3NH1JTB** (https://www.amazon.de/dp/B0H3NH1JTB). Innenteil 102 S. + Cover v6 (Vektor) akzeptiert. KDP-Setup:
+  ASIN **B0H3JZZPM5**. Kindle-eBook-Version noch nicht angelegt; Hardcover nicht angelegt.
+- **„ADHD Daily Planner for Adults"** (Marcus Reilly) — Taschenbuch **ENTWURF** (Bookshelf-Stand 2026-06-02,
+  zuletzt geändert 2. Juni). **Druckvorschau bestanden** (Innenteil 102 S. + Cover v6 Vektor akzeptiert),
+  aber **noch NICHT veröffentlicht** — „Einrichtung fortsetzen" → Preis/Rechte → „Veröffentlichen" fehlt
+  noch (User). (Frühere Notiz „LIVE B0H3NH1JTB" war falsch — diese ASIN = The Seam.) KDP-Setup:
   Trim **6×9"**, **BW weißes Papier**, kein Beschnitt (Innenteil), Cover-Laminierung **matt**.
   Innenteil war **nicht hochgeladen** → in dieser aban-Session **komplett neu gebaut** (2026-06-02):
   reportlab-Innenteil **102 Seiten** (Titel/Copyright/„belongs"/How-to/Tipps/90-Tage-Intention +
@@ -369,9 +374,10 @@ Blocker (nur User): KDP-Login/2FA, Author-Central-Verifizierung, Budget, ~70 h �
     beide ✓. Nächster Schritt nur noch User: Details/Preis vervollständigen → „Veröffentlichen".
     **Kern-Lehre:** Für KDP-Cover **Vektor-PDF (reportlab)** statt Raster (Pillow) verwenden — Raster
     triggert wiederholt falsch-positive „Objekt außerhalb der Ränder"; Vektor wird präzise vermessen.
-- **„Mileage Log Book for Small Business"** (Marcus Reilly) — Taschenbuch, Druckvorschau-**FEHLER**:
-  Text/Objekt außerhalb der Ränder (Ursache: eigener Barcode unten links) → Barcode entfernen,
-  KDP setzt ihn selbst; Vorschau zeigte **119 Seiten**.
+- **„Mileage Log Book for Small Business: IRS Publication 463 Contemporaneous Trip Log …"** (Marcus Reilly)
+  — Taschenbuch **ENTWURF** (Bookshelf 2026-06-02, zuletzt 1. Juni). Druckvorschau-Fehler: eigener Barcode
+  unten links → Barcode entfernen, KDP setzt ihn selbst; Vorschau zeigte **119 Seiten**. Empfehlung: Cover
+  (und ggf. Innenteil) wie beim ADHD-Planner als **Vektor-PDF** neu bauen, dann veröffentlichen.
 
 **Typische KDP-Cover-Fehler & Fix:**
 - „Text/Objekt außerhalb der Ränder" = Element zu nah am Rand/Falz → alles ≥6 mm nach innen.
