@@ -38,6 +38,7 @@ size_mm = float(os.environ.get("POLISH_SIZE", "0"))   # 0 = nicht skalieren
 deci    = float(os.environ.get("POLISH_DECIMATE", "1"))  # 1 = keine Reduktion
 smooth  = os.environ.get("POLISH_SMOOTH", "0") == "1"
 loop    = os.environ.get("POLISH_LOOP", "0") == "1"
+base    = os.environ.get("POLISH_BASE", "0") == "1"
 render  = os.environ.get("POLISH_RENDER", "0") == "1"
 
 bpy.ops.wm.read_factory_settings(use_empty=True)
@@ -121,6 +122,28 @@ if size_mm > 0:
         obj.scale = (f, f, f)
         bpy.ops.object.transform_apply(scale=True)
 
+# --- optional flacher Boden + immer auf Druckplatte setzen ---
+def _bounds():
+    return [obj.matrix_world @ Vector(c) for c in obj.bound_box]
+if base:
+    bb = _bounds()
+    minz = min(v.z for v in bb); maxz = max(v.z for v in bb)
+    cx = sum(v.x for v in bb) / 8.0; cy = sum(v.y for v in bb) / 8.0
+    cut = minz + (maxz - minz) * 0.05
+    big = max(obj.dimensions) * 3 + 10
+    bpy.ops.mesh.primitive_cube_add(size=big, location=(cx, cy, cut - big / 2))
+    cube = bpy.context.active_object
+    bpy.context.view_layer.objects.active = obj
+    mb = obj.modifiers.new("base", "BOOLEAN")
+    mb.operation = "DIFFERENCE"; mb.object = cube
+    try: bpy.ops.object.modifier_apply(modifier=mb.name)
+    except Exception: pass
+    bpy.data.objects.remove(cube, do_unlink=True)
+# immer: Modell auf die Platte setzen (min Z = 0)
+bb = _bounds(); minz = min(v.z for v in bb)
+obj.location.z -= minz
+bpy.ops.object.transform_apply(location=True)
+
 # --- optional: Aufhaenge-Loop oben anfuegen (Schluesselring) ---
 if loop:
     bb = [obj.matrix_world @ Vector(c) for c in obj.bound_box]
@@ -187,6 +210,7 @@ def main(argv=None) -> int:
     p.add_argument("--decimate", type=float, default=1.0, help="Polygone reduzieren (z. B. 0.2 = 20%% behalten)")
     p.add_argument("--smooth", action="store_true", help="zusaetzlich glaetten")
     p.add_argument("--loop", action="store_true", help="Schluesselring-Loop oben anfuegen")
+    p.add_argument("--base", action="store_true", help="Boden flach schneiden (steht/druckt ohne Stuetzen)")
     p.add_argument("--render", action="store_true", help="Vorschau-PNG rendern")
     a = p.parse_args(argv)
 
@@ -205,6 +229,7 @@ def main(argv=None) -> int:
                POLISH_DECIMATE=str(a.decimate),
                POLISH_SMOOTH="1" if a.smooth else "0",
                POLISH_LOOP="1" if a.loop else "0",
+               POLISH_BASE="1" if a.base else "0",
                POLISH_RENDER="1" if a.render else "0")
 
     with tempfile.NamedTemporaryFile("w", suffix=".py", delete=False) as f:

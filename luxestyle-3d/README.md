@@ -99,6 +99,33 @@ Was in dieser Session gelernt/entschieden wurde — damit es nicht verloren geht
 
 ---
 
+## Verbesserungs-Backlog (Selbstkritik — was noch besser werden muss)
+
+Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
+
+- **Standfläche/Boden:** Modelle müssen flach auf der Druckplatte sitzen (FDM ohne
+  Stützen). → polish.py: Modell auto auf Z=0 setzen + `--base` (Boden flach schneiden). [erledigt]
+- **Loop-Platzierung:** Schlüsselring-Loop sitzt bisher naiv oben-mittig (wirkt wie
+  Heiligenschein). Besser: am höchsten *soliden* Punkt / als seitlicher Bügel, orientiert. [TODO]
+- **Dünne Stellen** (Ohren/Schwanz/Beine) können zu dünn zum Drucken sein. Auto-Verdicken
+  ist heikel → besser im Meshy-Prompt „dicke, kräftige Gliedmaßen, keine dünnen Teile". [Prompt]
+- **Druckbarkeits-Check fehlt:** keine Prüfung auf nicht-manifold / dünne Wände → TODO
+  (3D-Print-Toolbox-Logik + kurzer Report).
+- **Decimate** fix 0.2 → besser Ziel-Polycount statt festem Verhältnis. [TODO]
+- **Render-Kamera** modellabhängig (Standalone-Render hatte Framing-Bugs) → robustere
+  Rahmung. [TODO]
+- **Standard-Größen** festlegen: Anhänger ~40 mm, Figur ~55–60 mm (statt ad hoc). [merken]
+- **Mehrfarbig**: kein Auto-Multicolor; nur einfarbig (Filament) + manuell in Bambu Studio.
+- **Flexi an Figuren**: nicht möglich; nur eigenständige Flexi (Kette) oder Lizenz.
+
+### Prompt-Bibliothek (erprobt)
+- Funktioniert: `"a cute <tier> figurine, smooth stylized, solid, simple, no separate base"`
+  (+ `"long tail curled to the side"` für Schwanz, + `"lying down"` für liegend).
+- Vermeiden: „fluffy / long-haired" → wird ein Blob. Für Druck: „chunky, thick limbs".
+- Pipeline: Meshy (Form, ~50–70%) → `polish.py` (säubern, decimate, Boden, Loop, Größe, Render).
+
+---
+
 ## Projekt-Gedächtnis
 
 - **Markt:** Schweiz zuerst. EU/DACH später (GPSR, Einfuhr-MwSt/IOSS, EU-Widerruf).
