@@ -836,6 +836,19 @@ def build(data_path: Path, out: Path) -> int:
     lines.append(f"Sitemap: {BASE_URL}/sitemap.xml")
     (out / "robots.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
+    # _headers (Cloudflare Pages) — Security-Header. script-src erlaubt 'unsafe-inline',
+    # weil die Seiten Inline-Scripts + onclick (Filter/Copy) nutzen; Ausgaben sind escaped.
+    (out / "_headers").write_text(
+        "/*\n"
+        "  X-Frame-Options: DENY\n"
+        "  X-Content-Type-Options: nosniff\n"
+        "  Referrer-Policy: strict-origin-when-cross-origin\n"
+        "  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()\n"
+        "  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; "
+        "style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; "
+        "connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'\n",
+        encoding="utf-8")
+
     # Statische Assets
     write_static_assets(out)
 
