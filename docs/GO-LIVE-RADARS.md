@@ -31,6 +31,13 @@
 
 ## Der Live-Schalt-Vorgang (identisch für alle)
 
+> **Schneller, automatisiert:** `tools/cf_pages_setup.py` legt Pages-Projekt +
+> Custom-Domain + DNS-CNAME per Cloudflare-API an (idempotent). Details:
+> [`CF-PAGES-SETUP.md`](CF-PAGES-SETUP.md). Beispiel:
+> `python3 tools/cf_pages_setup.py video --dry-run` → dann ohne `--dry-run`.
+> Voraussetzung: API-Token + einmalig die GitHub-Verbindung im CF-Dashboard.
+> Der manuelle Weg unten bleibt als Fallback gültig.
+
 Pro Projekt **einmal** im Cloudflare-Dashboard:
 
 1. **Cloudflare Pages → „Create a project" → „Connect to Git"** → dieses Repo wählen.
