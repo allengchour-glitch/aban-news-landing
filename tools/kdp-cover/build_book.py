@@ -178,8 +178,8 @@ BOOKS = {
                      "intro": ("Your brain is not broken — it just runs a different operating system. "
                                "This planner uses four simple tools, one page a day, to work with it."),
                      "how_to": planner_interior.ADHD["how_to"]},
-        # auto: ai (skipped, no key) -> no supplied image -> drawn brand art
-        "cover": {**kdp_cover.EXAMPLES["adhd"], "art": {"mode": "auto"}},
+        # auto: ai (skipped, no key) -> no supplied image -> drawn brand art (halftone)
+        "cover": {**kdp_cover.EXAMPLES["adhd"], "art": {"mode": "auto", "motif": "dots"}},
         "listing": {
             "language": "English", "price_usd": 8.99, "price_eur": 8.99,
             "ai_text": False, "ai_images": False, "low_content": True,

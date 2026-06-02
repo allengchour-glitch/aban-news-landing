@@ -41,10 +41,14 @@ Größe + Bleed + 300 DPI, RGB) und bettet es nur auf der **Front** ein (Rücken
 bleiben das flache, KDP-sichere Feld). Ein Scrim hält den Titeltext lesbar.
 
 ```python
-"art": {"mode": "none"}                          # nur Typografie (Default)
-"art": {"mode": "draw"}                           # Marken-Art selbst zeichnen (Pillow)
-"art": {"mode": "image", "src": "pfad/bild.jpg"}  # eigenes Foto/Illustration einbetten
-"art": {"mode": "auto", "ai": True}               # KI → sonst Bild → sonst gezeichnet
+"art": {"mode": "none"}                            # nur Typografie (Default)
+"art": {"mode": "draw", "motif": "dots"}           # Marken-Art zeichnen (Pillow)
+"art": {"mode": "image", "src": "pfad/bild.jpg"}   # eigenes Foto/Illustration einbetten
+"art": {"mode": "auto", "ai": True}                # KI → sonst Bild → sonst gezeichnet
+```
+Motiv-Stile (`motif`): **rings** (Default, ruhige Kreise) · **burst** (Strahlen) ·
+**dots** (Halbton-Raster, auffällig) · **arc** (Bögen von unten).
+```
 ```
 
 **Fallback-Kette mit Selbst-Diagnose** (`mode:"auto"`): KI (nur wenn `ai:True` **und**

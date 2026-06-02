@@ -60,33 +60,68 @@ def prepare_image(src, trim, bleed, dpi, out, diag):
     return out
 
 
-def draw_art(cfg, trim, bleed, dpi, out, diag):
-    """Paint a brand front illustration: vertical gradient + concentric arcs."""
-    Wt, Ht = _front_px(trim, bleed, dpi)
-    bg = _hex(cfg.get("bg", "#138086"))
-    line = _hex(cfg.get("line", "#8FD3D6"))
-    top = _shade(bg, 1.18)          # a touch lighter up top (behind title)
-    bot = _shade(bg, 0.62)          # darker toward the foot
-    img = Image.new("RGB", (Wt, Ht), bg)
+def _gradient(Wt, Ht, top, bot):
+    img = Image.new("RGB", (Wt, Ht))
     px = img.load()
-    for y in range(Ht):             # smooth vertical gradient
+    for y in range(Ht):
         f = y / max(1, Ht - 1)
         col = tuple(int(top[i] + (bot[i] - top[i]) * f) for i in range(3))
         for x in range(Wt):
             px[x, y] = col
+    return img
+
+
+def _motif(style, d, Wt, Ht, line, lw):
+    """Draw the chosen motif onto RGBA draw `d` (in `line` colour). Sits low so the
+    title block (top third) stays clean."""
+    cx, cy = int(Wt * 0.5), int(Ht * 0.70)
+    if style == "burst":                                    # radiating spokes
+        import math
+        R = int(min(Wt, Ht) * 0.62)
+        for i in range(24):
+            ang = math.pi * i / 24
+            dx, dy = math.cos(ang), math.sin(ang)
+            d.line([cx - dx * R, cy - dy * R, cx + dx * R, cy + dy * R],
+                   fill=line + (34,), width=lw)
+        d.ellipse([cx - 70, cy - 70, cx + 70, cy + 70], fill=line + (90,))
+    elif style == "dots":                                   # halftone field, fades up
+        step = int(min(Wt, Ht) * 0.052)
+        for gy in range(int(Ht * 0.42), Ht, step):
+            for gx in range(step // 2, Wt, step):
+                f = (gy - Ht * 0.42) / (Ht - Ht * 0.42)     # 0 top .. 1 bottom
+                r = max(1, int(step * 0.16 * (0.4 + f)))
+                d.ellipse([gx - r, gy - r, gx + r, gy + r], fill=line + (int(40 + 70 * f),))
+    elif style == "arc":                                    # concentric corner arcs
+        ax, ay = int(Wt * 0.5), Ht                          # anchored bottom-centre
+        step = int(min(Wt, Ht) * 0.11)
+        for k in range(1, 8):
+            r = step * k
+            d.arc([ax - r, ay - r, ax + r, ay + r], 180, 360,
+                  fill=line + (max(0, 95 - k * 9),), width=lw)
+    else:                                                   # "rings" (default), bolder
+        step = int(min(Wt, Ht) * 0.092)
+        for k in range(1, 8):
+            r = step * k
+            d.ellipse([cx - r, cy - r, cx + r, cy + r],
+                      outline=line + (max(0, 105 - k * 11),), width=lw)
+        d.ellipse([cx - step + lw, cy - step + lw, cx + step - lw, cy + step - lw],
+                  fill=line + (40,))                        # soft solid core
+
+
+def draw_art(cfg, trim, bleed, dpi, out, diag):
+    """Paint a brand front illustration: vertical gradient + a chosen accent motif.
+    Motif style via cfg['art']['motif']: rings (default) | burst | dots | arc."""
+    Wt, Ht = _front_px(trim, bleed, dpi)
+    bg = _hex(cfg.get("bg", "#138086"))
+    line = _hex(cfg.get("line", "#8FD3D6"))
+    style = cfg.get("art", {}).get("motif", "rings")
+    img = _gradient(Wt, Ht, _shade(bg, 1.20), _shade(bg, 0.58)).convert("RGBA")
     ov = Image.new("RGBA", (Wt, Ht), (0, 0, 0, 0))
-    d = ImageDraw.Draw(ov)
-    cx, cy = int(Wt * 0.5), int(Ht * 0.66)      # motif sits below the title block
-    step = int(min(Wt, Ht) * 0.085)
-    for k in range(1, 7):
-        r = step * k
-        a = max(0, 70 - k * 9)
-        d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=line + (a,),
-                  width=max(2, int(dpi / 110)))
-    ov = ov.filter(ImageFilter.GaussianBlur(radius=max(1, dpi // 300)))
-    img = Image.alpha_composite(img.convert("RGBA"), ov).convert("RGB")
+    _motif(style, ImageDraw.Draw(ov), Wt, Ht, line, max(3, int(dpi / 75)))
+    ov = ov.filter(ImageFilter.GaussianBlur(radius=max(1, dpi // 400)))
+    img = Image.alpha_composite(img, ov).convert("RGB")
     img.save(out, dpi=(dpi, dpi))
-    diag.append(f"  · drawn brand art {Wt}x{Ht}px @ {dpi} DPI (gradient + arc motif)")
+    diag.append(f"  · drawn brand art {Wt}x{Ht}px @ {dpi} DPI (gradient + '{style}' motif)")
     return out
 
 
