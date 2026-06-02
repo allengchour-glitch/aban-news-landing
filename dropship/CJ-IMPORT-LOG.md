@@ -1296,3 +1296,11 @@ Cursor-Start nach Seite 1: createdAt 2026-05-22. Regel: alt ersetzen, wenn Slug 
   = **144 Bild-Alt-Texte diese Session optimiert.**
 **Falls künftig nötig:** Regel = alt ersetzen bei Slug / „Original …"/„echtes Produktfoto" / „· im Bundle"-
 Mismatch / Englisch; sonst Titel-Alt lassen. Query: products(query:"status:active",sortKey:CREATED_AT).
+
+## 2026-06-02 — Loop-Iteration: Collection-Texte Fashion-Kategorien
++4 Kollektionen angereichert (einheitl. Trust-Zeile + reichere Intro-Texte; alte „Versand 7-14 Tage" raus):
+Schuhe, Taschen, Schmuck, Sonnenbrillen. Brillen-SEO-Meta zusätzlich konkretisiert (vorher generisch).
+→ Jetzt 7 Top-Kollektionen mit starkem Text (Sommer/Damen/Kleider + diese 4).
+**Loop-Stand:** Hochwertige, sichere API-Optimierungen weitgehend ausgeschöpft (Katalog-Alts sauber,
+Kern-Kollektionen + ganzer Kleider-Katalog optimiert). Verbleibende Hebel sind v.a. die Customizer-Klicks
+(Theme-Sperre, siehe SHOP-DESIGN-AUDIT.md) — die kann nur der User.
