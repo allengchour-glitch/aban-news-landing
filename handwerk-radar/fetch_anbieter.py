@@ -27,10 +27,15 @@ CITIES = [
     ("Köln", "6", "DE"), ("Frankfurt am Main", "6", "DE"), ("Stuttgart", "6", "DE"),
     ("Leipzig", "6", "DE"), ("Düsseldorf", "6", "DE"), ("Dortmund", "6", "DE"),
     ("Essen", "6", "DE"), ("Nürnberg", "6", "DE"), ("Dresden", "6", "DE"),
-    ("Hannover", "6", "DE"), ("Bremen", "4", "DE"),
+    ("Hannover", "6", "DE"), ("Bremen", "4", "DE"), ("Wuppertal", "6", "DE"),
+    ("Bielefeld", "6", "DE"), ("Bonn", "6", "DE"), ("Mannheim", "6", "DE"),
+    ("Karlsruhe", "6", "DE"), ("Augsburg", "6", "DE"), ("Münster", "6", "DE"),
+    ("Mainz", "6", "DE"), ("Wiesbaden", "6", "DE"), ("Mönchengladbach", "6", "DE"),
     ("Wien", "4", "AT"), ("Graz", "8", "AT"), ("Linz", "8", "AT"),
-    ("Salzburg", "8", "AT"), ("Zürich", "8", "CH"), ("Bern", "8", "CH"),
-    ("Basel", "8", "CH"), ("Genève", "8", "CH"),
+    ("Salzburg", "8", "AT"), ("Innsbruck", "8", "AT"), ("Klagenfurt am Wörthersee", "8", "AT"),
+    ("Zürich", "8", "CH"), ("Bern", "8", "CH"), ("Basel", "8", "CH"),
+    ("Genève", "8", "CH"), ("Lausanne", "8", "CH"), ("Winterthur", "8", "CH"),
+    ("Luzern", "8", "CH"),
 ]
 
 # OSM-craft → Leistungs-Kategorie (Zuordnung, keine Zusage).
@@ -103,6 +108,9 @@ def to_entry(el: dict, city: str, land: str) -> dict | None:
         leistungen, kat = ["Wärmepumpe"], "Heizungs-/Klimatechnik"
     else:
         return None  # hvac ohne Heizungs-Signal: zu unsicher
+    # Kombi-Betriebe (Heizung + Solar/PV) ergänzen, wenn der Name es klar sagt.
+    if leistungen == ["Wärmepumpe"] and ("solar" in low or "photovolt" in low):
+        leistungen, kat = ["Wärmepumpe", "Photovoltaik"], "Heizung & Solar"
     osm_type = el.get("type", "node")[0]  # n/w/r
     osm_url = f"https://www.openstreetmap.org/{el.get('type')}/{el.get('id')}"
     stadt = t.get("addr:city") or city
