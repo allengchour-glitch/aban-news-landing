@@ -3,8 +3,8 @@
   "nodes": [
     {
       "parameters": {
-        "content": "## aban Publish-Fanout\n\nEmpfängt den Webhook von `social/post.py` (Feld `PUBLISH_WEBHOOK_URL`) und postet an\nLinkedIn, X und Mastodon.\n\n**Einrichten:**\n1. Workflow importieren.\n2. In jedem Post-Node deine **Credential** verbinden (LinkedIn / X OAuth, Mastodon-Token).\n3. Workflow **aktivieren**.\n4. Im Webhook-Node die **Production-URL** kopieren → als GitHub-Secret `PUBLISH_WEBHOOK_URL` setzen.\n\nDie eingehenden Felder liegen unter `{{ $json.body }}`: `text`, `url`, `id`, `tags`.\nNicht gebrauchte Plattform-Nodes einfach löschen oder deaktivieren.",
-        "height": 320,
+        "content": "## aban Publish-Fanout\n\nEmpfängt den Webhook von `social/post.py` (Feld `PUBLISH_WEBHOOK_URL`) und postet an\nLinkedIn, X und Mastodon.\n\n**Einrichten:**\n1. Workflow importieren.\n2. In jedem Post-Node deine **Credential** verbinden (LinkedIn / X OAuth, Mastodon-Token).\n3. Workflow **aktivieren**.\n4. Im Webhook-Node die **Production-URL** kopieren → als GitHub-Secret `PUBLISH_WEBHOOK_URL` setzen.\n\nFelder unter `{{ $json.body }}`: `text`, `url`, `id`, `tags`.\n`Text bauen` liefert `text` (voll, für LinkedIn/Mastodon) und `text_x` (≤280 Zeichen, für X).\nNicht gebrauchte Plattform-Nodes einfach löschen oder deaktivieren.",
+        "height": 340,
         "width": 380
       },
       "id": "note1",
@@ -29,7 +29,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Baut den Post-Text aus dem Webhook-Body (text + optional url).\nconst b = ($input.first().json.body) || $input.first().json || {};\nconst url = b.url ? `\\n${b.url}` : '';\nreturn [{ json: { text: `${b.text || ''}${url}`.trim(), raw: b } }];"
+        "jsCode": "// Baut Post-Texte aus dem Webhook-Body.\n// text   = voll (LinkedIn/Mastodon)\n// text_x = auf 280 Zeichen gekuerzt (X/Twitter): bei Ueberlaenge erste Zeile + Link.\nconst b = ($input.first().json.body) || $input.first().json || {};\nconst body = (b.text || '').trim();\nconst link = b.url ? String(b.url) : '';\nconst full = (body + (link ? '\\n' + link : '')).trim();\n\nfunction forX(){\n  if (full.length <= 280) return full;\n  const firstLine = body.split('\\n')[0].trim();\n  let t = link ? (firstLine + ' ' + link) : firstLine;\n  if (t.length > 280) t = t.slice(0, 279) + '\\u2026';\n  return t;\n}\n\nreturn [{ json: { text: full, text_x: forX(), raw: b } }];"
       },
       "id": "format1",
       "name": "Text bauen",
@@ -48,11 +48,11 @@
       "typeVersion": 1,
       "position": [920, 40],
       "notesInFlow": true,
-      "notes": "LinkedIn-Credential (OAuth2) hier verbinden."
+      "notes": "LinkedIn-Credential (OAuth2) hier verbinden. Nutzt den vollen Text."
     },
     {
       "parameters": {
-        "text": "={{ $json.text }}",
+        "text": "={{ $json.text_x }}",
         "additionalFields": {}
       },
       "id": "twitter1",
@@ -61,7 +61,7 @@
       "typeVersion": 2,
       "position": [920, 200],
       "notesInFlow": true,
-      "notes": "X/Twitter-Credential (OAuth2) hier verbinden. Auf 280 Zeichen achten."
+      "notes": "X/Twitter-Credential (OAuth2) hier verbinden. Nutzt text_x (automatisch auf 280 Zeichen gekuerzt)."
     },
     {
       "parameters": {
