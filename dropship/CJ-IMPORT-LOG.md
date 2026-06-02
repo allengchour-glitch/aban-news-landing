@@ -1098,3 +1098,12 @@ gadgets_a2 66, mix 57 — alle CH) → die NEUE pixel-optimierte `mode_sommer` h
 6 Mode-Shots, langsame Fades, elegant-Track). Für NEUE saubere Kampagne.
 **TODO (Browser, wichtig):** EINE Kampagne mit Premium-Reel, Pixel D8EKVR, CH/Frauen/18–34/DE+FR,
 Complete Payment, 20 CHF/Tag — und ALLE anderen pausieren (sommer2026/mode/mix/gadgets_a2/Ring-Ad).
+
+## 2026-06-02 — WURZEL des weltweiten Lecks gefunden
+Weltweite Ring-Ad = Kampagne „Conversion 20260601195112" (Ad 1866817888669889, UTM tiktok_ads_0c65d841),
+Targeting 50+ Länder/1,65 Mrd → BEREITS PAUSIERT ✓.
+**ROOT CAUSE:** TikTok-Shopify-App erzeugt automatisch WELTWEITE „Smart"-Kampagnen. 3 Auto-Entwürfe im
+Zweitkonto (Sales20260525113559/095847, Sales20260519133014) — noch nicht publiziert. → TODO: App-Auto-
+Kampagnen DEAKTIVIEREN + 3 Entwürfe + „Vatertag-Test-1" löschen, sonst wiederholt sich das Leck.
+**WICHTIG:** „LuxeStyle Mode CH – Sommer" aktiv ABER Anzeigengruppe PAUSIERT („Änderung nicht genehmigt")
+→ lieferte nicht (erklärt mode_sommer nur 14 Sessions). Lösung: neue Premium-Kampagne starten (policy-konform).
