@@ -29,7 +29,9 @@ bei jedem Lauf neu erzeugt.
   - **Vergleichstabelle** (Spalten: Tool, Typ, EU-Hosting, Deutsche Oberfläche, Preismodell)
   - **Interaktive Filter** (Client-Side, kein Tracking): Kategorie-Buttons + EU-Hosting-Toggle, kombiniert mit der Live-Suche (`search.js`)
 - `automatisierungs-tools-auswaehlen.html` — **SEO-Ratgeber** (Cornerstone): 5-Schritte-Leitfaden + FAQ, `Article`- + `FAQPage`-JSON-LD, interne Links auf Tools/Kategorien
-- `anbieter/<id>.html` — eine Detailseite je Tool (SoftwareApplication-JSON-LD, FAQ, Breadcrumb, Preismodell)
+- `anbieter/<id>.html` — eine Detailseite je Tool (SoftwareApplication-JSON-LD, FAQ, Breadcrumb, Preismodell, direkte Vergleichs-Links)
+- `vergleich/<a>-vs-<b>.html` — **automatische Vergleichsseiten** „Tool A vs. Tool B“ für jedes Paar mit ≥1 gemeinsamer Kategorie (echte Daten nebeneinander + datengetriebene „Wann welches?“-Einordnung + FAQPage-JSON-LD). Wächst automatisch mit jedem neuen Tool.
+- `fuer/<slug>.html` — **Anwendungsfall-Seiten** („Beste Automatisierungs-Tools für Onlineshops / Steuerberater / Agenturen …“), kuratiertes `USE_CASES`-Mapping aus echten Tools
 - `kategorie/<slug>.html` — Seiten je Tool-Typ (Workflow-Automatisierung (No-Code), iPaaS / App-Integration, KI-Agenten & KI-Automatisierung, RPA, Browser-Automatisierung, Prozess-Orchestrierung / BPM)
 - `fokus/<slug>.html` — Seiten je Schwerpunkt (EU-Hosting / DSGVO, Self-Hosting / Open Source, Enterprise / RPA, KI-Agenten, International)
 - `impressum.html`, `datenschutz.html`, `404.html`
@@ -81,11 +83,41 @@ eintragen und das führende `_` im Key entfernen. `_programme` listet echte
 Partnerprogramm-Signup-URLs der Anbieter (Make, Zapier, SeaTable, UiPath, Bardeen).
 Fallback/Kontakt: `mailto:hallo@abannews.com`.
 
+## Wachstum „von selbst"
+
+Der Radar wächst datengetrieben — **ohne erfundene Inhalte**:
+
+1. **Programmatische Vergleichsseiten.** Aus jedem Tool-Paar mit gemeinsamer Kategorie
+   entsteht automatisch eine `vergleich/<a>-vs-<b>.html`. Aus 22 Tools werden so 154
+   Long-Tail-Seiten; jedes neue Tool erzeugt automatisch weitere.
+2. **Anwendungsfall-Seiten.** `USE_CASES` in `generate.py` mappt Branchen/Einsatzzwecke
+   auf reale Tools → je eine SEO-Seite unter `/fuer/<slug>`.
+3. **Auto-Aktualisierung (Cron).** `.github/workflows/automatisierung-radar-build.yml`
+   läuft wöchentlich (`schedule`), baut neu und deployt (mit CF-Secret) — frisches
+   `sitemap`-`lastmod` / RSS, und neue Tools/Seiten gehen automatisch live, sobald sie
+   in `data/anbieter.json` stehen.
+4. **Tool-Vorschläge (Mensch prüft).** `suggest_tools.py` hält eine Backlog **echter,
+   bekannter** Tools und schreibt für die noch fehlenden fertige Stubs nach
+   `data/_vorschlaege.json` (gitignored) — alle wertenden Felder `null` /
+   `"[Redaktion: prüfen]"`. `.github/workflows/automatisierung-radar-suggest.yml` läuft
+   wöchentlich und legt die Liste als Artefakt ab. Ablauf: prüfen → offene Felder
+   ausfüllen → Eintrag nach `anbieter.json` verschieben → `generate.py`. **Erst dann
+   wird ein Tool live** — Preise/Bewertungen werden nie geschätzt.
+
+   ```bash
+   python3 suggest_tools.py            # -> data/_vorschlaege.json
+   python3 suggest_tools.py --check    # Exit 1, wenn neue Kandidaten offen sind (CI)
+   ```
+
 ## Pflege
 
 - Neuen Anbieter ergänzen: Objekt in `data/anbieter.json` → `anbieter[]` einfügen
   (offizielle URL Pflicht; Preis/Score auf `null` lassen, bis verifiziert) und
-  `generate.py` laufen lassen.
+  `generate.py` laufen lassen. Tool-Seite, alle zugehörigen Vergleichsseiten,
+  passende Kategorie-/Schwerpunkt-/Anwendungsfall-Seiten und die Sitemap entstehen
+  automatisch.
 - Neue Kategorie/Schwerpunkt: in `kategorien` / `fokus` ergänzen — Seiten entstehen
   automatisch aus den in den Anbietern referenzierten Werten.
+- Neuen Anwendungsfall: Eintrag in `USE_CASES` (`generate.py`) ergänzen.
+- Vorschlags-Backlog pflegen: `BACKLOG` in `suggest_tools.py` um reale Tools erweitern.
 - Deployment: Cloudflare Pages, Output = `dist/`, kein Build-Command nötig.

@@ -112,6 +112,11 @@ UI = {
                      "Ein paar typische Situationen und welche Tools dafür einen Blick wert sind:"),
     "guide": "Ratgeber",
     "guide_nav": "Ratgeber: Tool auswählen",
+    "vs_heading": "Direkte Vergleiche",
+    "vs_popular": "Beliebte Vergleiche",
+    "usecase_nav": "Nach Anwendungsfall",
+    "vs_word": "vs.",
+    "verdict": "Wann welches?",
     "guide_title": "Automatisierungs-Tool auswählen: der ehrliche Leitfaden",
     "meta_guide": ("Wie du das richtige Automatisierungs-Tool findest: No-Code vs. Code, EU-Hosting & DSGVO, "
                    "Preismodelle (pro Task, pro Operation, nach Laufzeit), typische Fehler — ohne Hype."),
@@ -128,6 +133,12 @@ def slugify(value: str) -> str:
         value = value.replace(a, b)
     value = re.sub(r"[^a-z0-9]+", "-", value).strip("-")
     return value or "x"
+
+
+def vs_slug(id_a: str, id_b: str) -> str:
+    """Kanonischer, eindeutiger Slug für ein Vergleichspaar (alphabetisch sortiert)."""
+    a, b = sorted([slugify(id_a), slugify(id_b)])
+    return f"{a}-vs-{b}"
 
 
 def clean(text):
@@ -148,6 +159,10 @@ def page_path(kind: str, slug: str = "") -> str:
         return f"/kategorie/{slug}.html"
     if kind == "focus":
         return f"/fokus/{slug}.html"
+    if kind == "vs":
+        return f"/vergleich/{slug}.html"
+    if kind == "usecase":
+        return f"/fuer/{slug}.html"
     if kind == "guide":
         return "/automatisierungs-tools-auswaehlen.html"
     if kind == "imprint":
@@ -254,6 +269,7 @@ padding:10px 18px;border-radius:8px;font-weight:600;margin-top:8px;}}
 .ctab{{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem;}}
 .ctab th,.ctab td{{text-align:left;padding:9px 10px;border-bottom:1px solid var(--border);}}
 .ctab th{{color:var(--muted);font-weight:600;}} .ctab tr:hover td{{background:var(--bg-alt);}}
+.ctab.vs th:first-child{{white-space:nowrap;}} .ctab.vs td{{vertical-align:top;}}
 .faq{{margin:22px 0;}} .faq h2{{font-size:1.1rem;margin:0 0 8px;}}
 .faq details{{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px;margin:0 0 8px;}}
 .faq summary{{cursor:pointer;font-weight:600;}} .faq details p{{margin:8px 0 0;color:var(--muted);}}
@@ -487,7 +503,7 @@ def comp_table(tools, aff):
 
 # --- Pages ---------------------------------------------------------------------
 
-def tool_page(tool, aff, related):
+def tool_page(tool, aff, related, vs_partners=None):
     url, is_aff = affiliate_link(tool, aff)
     star = " *" if is_aff else ""
     slug = slugify(tool["id"])
@@ -506,6 +522,13 @@ def tool_page(tool, aff, related):
             f'<a href="{e(page_path("tool", slugify(r["id"])))}">{e(r["name"])}</a>'
             for r in related)
         rel_html = f'<p class="subnav"><strong>Ähnliche Tools:</strong> {links}</p>'
+    vs_html = ""
+    if vs_partners:
+        vlinks = " · ".join(
+            f'<a href="{e(page_path("vs", vs_slug(tool["id"], p["id"])))}">'
+            f'{e(tool["name"])} {e(UI["vs_word"])} {e(p["name"])}</a>'
+            for p in vs_partners)
+        vs_html = f'<p class="subnav"><strong>{e(UI["vs_heading"])}:</strong> {vlinks}</p>'
     body = f"""{tool_jsonld(tool)}{crumb}{itemlist([tool])}
 <p><a href="{e(page_path('home'))}">{e(UI['all_tools'])}</a></p>
 <h1 style="margin:0 0 6px">{e(tool['name'])} {score_html(tool)}</h1>
@@ -526,6 +549,7 @@ def tool_page(tool, aff, related):
 {('<div class="note"><strong>'+e(UI['editor_note'])+':</strong> '+e(note)+'</div>') if note else ''}
 {('<div class="note"><strong>'+e(UI['price'])+':</strong> '+e(price_note)+'</div>') if price_note else ''}
 {rel_html}
+{vs_html}
 <p class="subnav">📘 <a href="{e(page_path('guide'))}">{e(UI['guide_nav'])}</a></p>
 <a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank">{e(UI['to_provider'])} ({e(tool.get('anbieter',''))}){e(star)} →</a>
 {faq_section(tool)}"""
@@ -593,14 +617,188 @@ def decide_section(tools):
             f'<ul>{"".join(items)}</ul></section>')
 
 
+# Kuratierte Anwendungsfälle → passende Tools (per id). Reines Mapping aus echten Daten;
+# der Generator erzeugt daraus je eine SEO-Seite /fuer/<slug>.html.
+USE_CASES = [
+    {"slug": "onlineshops", "name": "Onlineshops & E-Commerce",
+     "intro": "Bestellungen, Lager, Newsletter und Buchhaltung verbinden — ohne dass du Daten "
+              "von Hand hin- und herkopierst.",
+     "ids": ["make", "zapier", "n8n", "parabola", "albato"]},
+    {"slug": "marketing-agenturen", "name": "Marketing & Agenturen",
+     "intro": "Leads, Kampagnen, Reporting und Tools wie HubSpot oder Slack zusammenspielen lassen "
+              "— für mehrere Kund:innen parallel.",
+     "ids": ["make", "zapier", "tray-ai", "workato", "gumloop"]},
+    {"slug": "steuerberater-buchhaltung", "name": "Steuerberater & Buchhaltung",
+     "intro": "Belege, DATEV, Rechnungen und Fristen automatisieren — mit Blick auf DSGVO und "
+              "EU-Datenhaltung.",
+     "ids": ["locoia", "make", "n8n", "power-automate", "bryter"]},
+    {"slug": "vertrieb-crm", "name": "Vertrieb & CRM",
+     "intro": "Neue Kontakte, Follow-ups und CRM-Pflege automatisieren, ohne dass Leads liegen bleiben.",
+     "ids": ["bardeen", "lindy", "make", "zapier", "relay-app"]},
+    {"slug": "dsgvo-sensible-branchen", "name": "DSGVO-sensible Branchen",
+     "intro": "Wenn personenbezogene Daten im Spiel sind (Recht, Gesundheit, HR), zählt EU-Hosting "
+              "und ein sauberer AVV mehr als der größte App-Katalog.",
+     "ids": ["locoia", "bryter", "n8n", "seatable", "camunda"]},
+    {"slug": "solo-selbststaendige", "name": "Solo-Selbstständige & kleine Teams",
+     "intro": "Günstig starten, ohne IT-Abteilung: simple Verknüpfungen, die sofort Zeit sparen.",
+     "ids": ["make", "zapier", "activepieces", "ifttt", "n8n"]},
+]
+
+
+def _yn(tool, key):
+    return bool_str(tool.get(key))
+
+
+def vs_verdict(a, b):
+    """Ehrliche, datengetriebene Einordnung — kein erfundenes Ranking, nur reale Unterschiede."""
+    pts = []
+    na, nb = a["name"], b["name"]
+    # EU-Hosting (zentraler DACH-Faktor)
+    ea, eb = a.get("eu_lager"), b.get("eu_lager")
+    if ea is True and eb is not True:
+        pts.append(f"Brauchst du EU-Hosting/DSGVO-Nähe, ist {na} näher dran — bei {nb} musst du "
+                   f"Datenregion und AVV genauer prüfen.")
+    elif eb is True and ea is not True:
+        pts.append(f"Brauchst du EU-Hosting/DSGVO-Nähe, ist {nb} näher dran — bei {na} musst du "
+                   f"Datenregion und AVV genauer prüfen.")
+    elif ea is True and eb is True:
+        pts.append(f"Beide bieten EU-Hosting/EU-Datenverarbeitung — in puncto DSGVO sind {na} und "
+                   f"{nb} gleichermaßen DACH-tauglich.")
+    # Deutsche Oberfläche
+    da, dba = a.get("deutsche_oberflaeche"), b.get("deutsche_oberflaeche")
+    if da is True and dba is False:
+        pts.append(f"{na} hat eine deutsche Oberfläche, {nb} ist englischsprachig.")
+    elif dba is True and da is False:
+        pts.append(f"{nb} hat eine deutsche Oberfläche, {na} ist englischsprachig.")
+    # Preismodell
+    pa, pb = a.get("preismodell"), b.get("preismodell")
+    if pa and pb and pa != pb:
+        pts.append(f"Abrechnung unterscheidet sich: {na} läuft über „{pa}“, {nb} über „{pb}“ — "
+                   f"rechne mit deinem realen Volumen, nicht mit dem Einstiegspreis.")
+    # Fokus
+    fa, fb = a.get("fokus"), b.get("fokus")
+    if fa and fb and fa != fb:
+        pts.append(f"Schwerpunkt: {na} eher „{fa}“, {nb} eher „{fb}“ — wähle nach deinem Hauptzweck.")
+    if not pts:
+        pts.append(f"{na} und {nb} sind sich in den harten Fakten ähnlich — entscheide nach "
+                   f"Integrationen, Bauchgefühl beim Editor und einem kurzen Praxistest.")
+    return pts
+
+
+def vs_compare_table(a, b):
+    rows = [
+        (UI["provider"], a.get("anbieter", "—"), b.get("anbieter", "—")),
+        (UI["type"], ", ".join(a.get("kategorie", [])) or "—", ", ".join(b.get("kategorie", [])) or "—"),
+        (UI["focus"], a.get("fokus", "—"), b.get("fokus", "—")),
+        (UI["eu_stock"], _yn(a, "eu_lager"), _yn(b, "eu_lager")),
+        (UI["de_ui"], _yn(a, "deutsche_oberflaeche"), _yn(b, "deutsche_oberflaeche")),
+        (UI["pricing_model"], a.get("preismodell") or UI["unknown"], b.get("preismodell") or UI["unknown"]),
+        (UI["language"], ", ".join(a.get("sprache", [])) or "—", ", ".join(b.get("sprache", [])) or "—"),
+        (UI["format"], a.get("format", "—"), b.get("format", "—")),
+        (UI["integration"], ", ".join(a.get("integration", [])) or "—", ", ".join(b.get("integration", [])) or "—"),
+    ]
+    trs = "".join(f"<tr><th>{e(label)}</th><td>{e(va)}</td><td>{e(vb)}</td></tr>"
+                  for label, va, vb in rows)
+    return (f'<div class="tablewrap"><table class="ctab vs"><thead><tr><th></th>'
+            f'<th>{e(a["name"])}</th><th>{e(b["name"])}</th></tr></thead>'
+            f'<tbody>{trs}</tbody></table></div>')
+
+
+def vs_page(a, b, aff):
+    """Vergleichsseite 'A vs. B' aus echten Daten (FAQPage + Breadcrumb-JSON-LD)."""
+    # Reihenfolge stabil nach kanonischem Slug, damit Titel/URL konsistent sind.
+    if slugify(a["id"]) > slugify(b["id"]):
+        a, b = b, a
+    slug = vs_slug(a["id"], b["id"])
+    na, nb = a["name"], b["name"]
+    title = f"{na} {UI['vs_word']} {nb}: ehrlicher Vergleich"
+    ua, aff_a = affiliate_link(a, aff)
+    ub, aff_b = affiliate_link(b, aff)
+    sa, sb = (" *" if aff_a else ""), (" *" if aff_b else "")
+    crumb = breadcrumb([(SITE_NAME, page_path("home")),
+                        (f"{na} {UI['vs_word']} {nb}", page_path("vs", slug))])
+    verdict = "".join(f"<li>{e(p)}</li>" for p in vs_verdict(a, b))
+    note_a, note_b = clean(a.get("aban_note")), clean(b.get("aban_note"))
+    faqs = [
+        (f"Was ist der Hauptunterschied zwischen {na} und {nb}?",
+         " ".join(vs_verdict(a, b))),
+        (f"Welches Tool ist DSGVO-/EU-näher: {na} oder {nb}?",
+         {("ja", "ja"): f"Beide bieten laut Anbieter EU-Hosting bzw. EU-Datenverarbeitung.",
+          }.get((_yn(a, "eu_lager"), _yn(b, "eu_lager")),
+                f"{na}: EU-Hosting {_yn(a,'eu_lager')}. {nb}: EU-Hosting {_yn(b,'eu_lager')}. "
+                f"Maßgeblich ist die jeweilige Datenregion und der AVV — beim Anbieter prüfen.")),
+    ]
+    faq_html = "".join(
+        f"<details><summary>{e(q)}</summary><p>{e(ans)}</p></details>" for q, ans in faqs)
+    faq_schema = {"@context": "https://schema.org", "@type": "FAQPage",
+                  "mainEntity": [{"@type": "Question", "name": q,
+                                  "acceptedAnswer": {"@type": "Answer", "text": ans}}
+                                 for q, ans in faqs]}
+    schema = f'<script type="application/ld+json">{json.dumps(faq_schema, ensure_ascii=False)}</script>'
+    body = f"""{crumb}{schema}
+<p><a href="{e(page_path('home'))}">{e(UI['all_tools'])}</a></p>
+<h1>{e(na)} {e(UI['vs_word'])} {e(nb)}</h1>
+<p class="meta">Zwei {e(a.get('kategorie',['Automatisierungs'])[0] if a.get('kategorie') else 'Automatisierungs')}-Tools, ehrlich nebeneinandergestellt — echte Fakten, keine erfundenen Wertungen.</p>
+{vs_compare_table(a, b)}
+<div class="note"><strong>{e(UI['verdict'])}</strong><ul style="margin:8px 0 0">{verdict}</ul></div>
+{('<h2>'+e(na)+'</h2><p>'+e(note_a)+'</p>') if note_a else ''}
+{('<h2>'+e(nb)+'</h2><p>'+e(note_b)+'</p>') if note_b else ''}
+<p>
+<a class="cta" href="{e(ua)}" rel="sponsored nofollow" target="_blank">{e(na)}{e(sa)} →</a>
+&nbsp;
+<a class="cta" href="{e(ub)}" rel="sponsored nofollow" target="_blank">{e(nb)}{e(sb)} →</a>
+</p>
+<p class="subnav">Mehr: <a href="{e(page_path('tool', slugify(a['id'])))}">{e(na)} im Detail</a> ·
+<a href="{e(page_path('tool', slugify(b['id'])))}">{e(nb)} im Detail</a> ·
+📘 <a href="{e(page_path('guide'))}">{e(UI['guide_nav'])}</a></p>
+<section class="faq"><h2>{e(UI['faq_heading'])}</h2>{faq_html}</section>"""
+    desc = f"{na} {UI['vs_word']} {nb}: EU-Hosting, deutsche Oberfläche, Preismodell und Integrationen ehrlich verglichen — für DACH."
+    return page(title=f"{title} — {SITE_NAME}", description=desc[:158], body=body,
+                canonical=BASE_URL + page_path("vs", slug), kind="vs", slug=slug)
+
+
+def usecase_page(uc, members, aff):
+    slug = uc["slug"]
+    title = f"Beste Automatisierungs-Tools für {uc['name']}"
+    crumb = breadcrumb([(SITE_NAME, page_path("home")), (title, page_path("usecase", slug))])
+    body = (f'{crumb}{itemlist(members)}'
+            f'<p><a href="{e(page_path("home"))}">{e(UI["all_tools"])}</a></p>\n'
+            f'<h1>{e(title)}</h1>\n'
+            f'<p>{e(uc["intro"])}</p>\n'
+            f'<p class="meta">Ehrliche Vorauswahl nach Einsatzzweck — Preise/Bewertungen werden nicht '
+            f'geschätzt. Prüfe Datenregion und AVV, wenn personenbezogene Daten durch die Workflows laufen.</p>\n'
+            f'{comp_table(members, aff)}\n'
+            + "\n".join(tool_card(t, aff) for t in members)
+            + f'\n<p class="subnav">📘 <a href="{e(page_path("guide"))}">{e(UI["guide_nav"])}</a></p>')
+    desc = f"Automatisierungs-Tools für {uc['name']}: {uc['intro']}"[:158]
+    return page(title=f"{title} — {SITE_NAME}", description=desc,
+                body=body, canonical=BASE_URL + page_path("usecase", slug), kind="usecase", slug=slug)
+
+
+# Kuratierte „beliebte Vergleiche" für die Startseite (nur Paare, die real existieren).
+POPULAR_VS = [("n8n", "make"), ("make", "zapier"), ("n8n", "zapier"),
+              ("uipath", "automation-anywhere"), ("zapier", "power-automate"),
+              ("lindy", "gumloop")]
+
+
 def home_page(tools, categories, focuses, aff):
+    by_id = {t["id"]: t for t in tools}
     cat_links = " · ".join(
         f'<a href="{e(page_path("cat", slugify(c)))}">{e(c)}</a>' for c in categories)
     foc_links = " · ".join(
         f'<a href="{e(page_path("focus", slugify(f)))}">{e(f)}</a>' for f in focuses)
+    uc_links = " · ".join(
+        f'<a href="{e(page_path("usecase", uc["slug"]))}">{e(uc["name"])}</a>' for uc in USE_CASES)
     subnav = (f'<p class="subnav">📘 <a href="{e(page_path("guide"))}">{e(UI["guide_nav"])}</a></p>\n'
               f'<p class="subnav"><strong>{e(UI["categories"])}:</strong> {cat_links}</p>\n'
-              f'<p class="subnav"><strong>{e(UI["focuses"])}:</strong> {foc_links}</p>')
+              f'<p class="subnav"><strong>{e(UI["focuses"])}:</strong> {foc_links}</p>\n'
+              f'<p class="subnav"><strong>{e(UI["usecase_nav"])}:</strong> {uc_links}</p>')
+    pop = [(a, b) for a, b in POPULAR_VS if a in by_id and b in by_id]
+    vs_links = " · ".join(
+        f'<a href="{e(page_path("vs", vs_slug(a, b)))}">{e(by_id[a]["name"])} {e(UI["vs_word"])} {e(by_id[b]["name"])}</a>'
+        for a, b in pop)
+    vs_block = (f'<p class="subnav"><strong>{e(UI["vs_popular"])}:</strong> {vs_links}</p>'
+                if vs_links else "")
     # Interaktive Filter (Client-Side): Kategorie-Buttons + EU-Hosting-Toggle.
     cat_btns = (f'<button class="fbtn active" type="button" data-cat="">{e(UI["filter_all"])}</button>'
                 + "".join(f'<button class="fbtn" type="button" data-cat="{e(slugify(c))}">{e(c)}</button>'
@@ -616,6 +814,7 @@ def home_page(tools, categories, focuses, aff):
             f'{subnav}\n'
             f'<div class="note">{e(UI["honest"])}</div>\n'
             f'{decide_section(tools)}\n'
+            f'{vs_block}\n'
             f'<h2 style="margin:18px 0 12px">{e(UI["home_heading"].format(n=len(tools)))}</h2>\n'
             f'<p class="meta">Preise und Bewertungen werden nicht geschätzt. Was noch nicht '
             f'redaktionell geprüft ist, steht als „{e(UI["to_check"])}“ — bitte beim Anbieter prüfen. '
@@ -912,17 +1111,47 @@ def build(data_path: Path, aff_path: Path, out: Path) -> int:
     used_cats = [c for c in categories if c in by_cat]
     used_focuses = [f for f in focuses if f in by_focus]
 
+    # Vergleichspaare: alle Tools mit ≥1 gemeinsamer Kategorie (relevant statt thin).
+    # Wächst automatisch mit jedem neuen Tool in der Datenbasis.
+    import itertools
+    by_id = {t["id"]: t for t in tools}
+    vs_pairs = []
+    vs_partners_map = {t["id"]: [] for t in tools}
+    for a, b in itertools.combinations(tools_sorted, 2):
+        if set(a.get("kategorie", [])) & set(b.get("kategorie", [])):
+            vs_pairs.append((a, b))
+            vs_partners_map[a["id"]].append(b)
+            vs_partners_map[b["id"]].append(a)
+
     pages = 0
     # Homepage
     out_file(out, "home").write_text(
         home_page(tools_sorted, used_cats, used_focuses, aff), encoding="utf-8")
     pages += 1
 
-    # Tool-Detailseiten
+    # Tool-Detailseiten (mit direkten Vergleichs-Links)
     for t in tools:
         of = out_file(out, "tool", slugify(t["id"]))
         of.parent.mkdir(parents=True, exist_ok=True)
-        of.write_text(tool_page(t, aff, related_map.get(t["id"])), encoding="utf-8")
+        of.write_text(tool_page(t, aff, related_map.get(t["id"]),
+                                vs_partners_map.get(t["id"], [])[:8]), encoding="utf-8")
+        pages += 1
+
+    # Vergleichsseiten „A vs. B" (programmatische SEO aus echten Daten)
+    for a, b in vs_pairs:
+        of = out_file(out, "vs", vs_slug(a["id"], b["id"]))
+        of.parent.mkdir(parents=True, exist_ok=True)
+        of.write_text(vs_page(a, b, aff), encoding="utf-8")
+        pages += 1
+
+    # Anwendungsfall-Seiten /fuer/<slug> (kuratiert, nur real existierende Tools)
+    for uc in USE_CASES:
+        members = [by_id[i] for i in uc["ids"] if i in by_id]
+        if not members:
+            continue
+        of = out_file(out, "usecase", uc["slug"])
+        of.parent.mkdir(parents=True, exist_ok=True)
+        of.write_text(usecase_page(uc, members, aff), encoding="utf-8")
         pages += 1
 
     # Kategorie-Seiten
@@ -959,7 +1188,10 @@ def build(data_path: Path, aff_path: Path, out: Path) -> int:
              BASE_URL + page_path("imprint"), BASE_URL + page_path("privacy")]
             + [BASE_URL + page_path("tool", slugify(t["id"])) for t in tools]
             + [BASE_URL + page_path("cat", slugify(c)) for c in used_cats]
-            + [BASE_URL + page_path("focus", slugify(f)) for f in used_focuses])
+            + [BASE_URL + page_path("focus", slugify(f)) for f in used_focuses]
+            + [BASE_URL + page_path("vs", vs_slug(a["id"], b["id"])) for a, b in vs_pairs]
+            + [BASE_URL + page_path("usecase", uc["slug"]) for uc in USE_CASES
+               if any(i in by_id for i in uc["ids"])])
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for url in urls:
@@ -981,8 +1213,10 @@ def build(data_path: Path, aff_path: Path, out: Path) -> int:
     (out / "favicon.svg").write_text(FAVICON_SVG, encoding="utf-8")
     (out / "search.js").write_text(SEARCH_JS, encoding="utf-8")
 
+    n_uc = sum(1 for uc in USE_CASES if any(i in by_id for i in uc["ids"]))
     print(f"Built {pages} HTML pages from {len(tools)} providers "
-          f"({len(used_cats)} Kategorien, {len(used_focuses)} Schwerpunkt-Seiten) + sitemap + RSS → {out}/")
+          f"({len(used_cats)} Kategorien, {len(used_focuses)} Schwerpunkte, "
+          f"{len(vs_pairs)} Vergleiche, {n_uc} Anwendungsfälle) + sitemap + RSS → {out}/")
     return pages
 
 
