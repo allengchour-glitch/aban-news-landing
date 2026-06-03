@@ -22,7 +22,7 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 8 (82→92, #136): Sportgeschäfte, Modeboutiquen, Getränkehandel, Fahrschulen, Musikschulen, Tanzschulen, Sprachschulen, Nagelstudios, Tattoostudios, Hochzeitsfotografen.
 - **DE-Backlog weitgehend erschöpft** → Fokus wechselt auf **P2-Übersetzungen** (kein Thin-Content-Risiko). Neue DE-Hubs nur bei klar distinkten neuen Branchen.
 
-## Mehrsprachige Hubs (P2, EN+FR+IT) — **75 von 92 Hubs viersprachig**
+## Mehrsprachige Hubs (P2, EN+FR+IT) — **92 von 92 Hubs viersprachig — P2 KOMPLETT ✅**
 
 - Charge 1 (#126): handwerker, steuerberater, coaches.
 - Charge 2 (#129): immobilienmakler, onlineshops, gastronomie.
@@ -49,12 +49,18 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Charge 23 (#209): notare, wirtschaftspruefer, sachverstaendige.
 - Charge 24 (#210): sicherheitsdienste, umzugsunternehmen, schluesseldienste.
 - Charge 25 (#258): entruempelung, schaedlingsbekaempfer, hausmeisterservice.
+- Charge 26 (#261): musikschulen, tanzschulen, sprachschulen.
+- Charge 27 (#263): fahrschulen, nagelstudios, tattoostudios.
+- Charge 28 (#264): cafes, eisdielen, metzgereien.
+- Charge 29 (#266): brauereien, getraenkehandel, fahrradlaeden.
+- Charge 30 (#267): buchhandlungen, modeboutiquen, sportgeschaefte.
+- Charge 31 (final): ernaehrungsberatung, hebammen. **→ alle 92 Hubs viersprachig (de/en/fr/it), 276 i18n-Hub-URLs.**
 - Muster: pro Hub DE um hreflang-Block + nav-Sprach-Switch ergänzen, je `en/ fr/ it/`-Datei
   (eigene canonical, 5 reziproke hreflang-Zeilen inkl. x-default=de, og:locale, WebPage-inLanguage,
   FAQ pro Sprache wortgleich), sitemap +3/Hub (priority 0.7). FAQ-Markup variiert je Hub (dl/dt/dd ODER details/summary).
   **Achtung 1:** manche DE-Originale haben pre-existing FAQ-Drift (JSON-LD↔sichtbar) — bei i18n DE-Inhalt unverändert lassen.
   **Achtung 2:** DE-Hubs haben inzwischen einen Tools-CTA-`<aside data-aban-tools-cta>` vor `</main>` (DE-only, Übersetzungen ohne). i18n-Branches **immer von aktuellem `main` rebasen**, sonst geht der aside verloren.
-- **Noch einsprachig (17, nächste Chargen):** brauereien, buchhandlungen, cafes, eisdielen, ernaehrungsberatung, fahrradlaeden, fahrschulen, getraenkehandel, hebammen, metzgereien, modeboutiquen, musikschulen, nagelstudios, sportgeschaefte, sprachschulen, tanzschulen, tattoostudios.
+- **Noch einsprachig: KEINE — alle 92 Hubs sind viersprachig.** Nächster sinnvoller P2-Schritt: optional die anderen Money-/Cornerstone-Pages mehrsprachig machen, oder neue distinkte DE-Hubs + Übersetzung.
 
 
 ## Automations-/Radar-Projekte
