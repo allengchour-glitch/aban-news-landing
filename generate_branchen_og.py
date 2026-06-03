@@ -120,6 +120,9 @@ BRANCHEN = {
     "estrichleger":        ("Estrichleger",        ["Angebote & Bau-Kommunikation,", "nicht der Estrich"]),
     "bodenleger":          ("Bodenleger",          ["Angebote & Pflegeinfos,", "nicht das Verlegen"]),
     "ingenieurbuero":      ("Ingenieurbüros",      ["Berichte & Orga,", "nicht die Statik"]),
+    "ladestationen":       ("Ladestationen",       ["Angebote & Förder-Kram,", "nicht die Montage"]),
+    "rollladenbauer":      ("Rollladenbauer",      ["Angebote & Service,", "nicht der Einbau"]),
+    "schneidereien":       ("Änderungsschneidereien", ["Anfragen & Preisliste,", "nicht die Naht"]),
 }
 
 
