@@ -1,0 +1,1036 @@
+{
+  "ui": {
+    "tagline": "Günlük kullanım için AI araçlarını karşılaştır ve seç.",
+    "all_tools": "Tüm Araçlar",
+    "categories": "Kategoriler",
+    "home_heading": "{n} AI aracı incelendi ve puanlandı",
+    "use_cases": "Kullanım Alanları",
+    "editor_note": "Not: Bu rehber bağımsız, sponsor yok. Tüm notlar kişisel deneyimden yazılı.",
+    "dsgvo": "KVKK/GDPR",
+    "pro": "Artılar",
+    "contra": "Eksiler",
+    "alternatives": "Alternatifler",
+    "cta": "{name} sayfasına git",
+    "best_in": "En iyi {cat} araçları",
+    "dach": "DACH önemi",
+    "free": "ücretsiz",
+    "price_from": "başlangıç",
+    "language": "Dil",
+    "privacy": "Gizlilik",
+    "imprint": "Künye",
+    "data_note": "Veri Notu",
+    "disclosure": "Şeffaflık: Bazı bağlantılar bağlı ortaklık bağlantılarıdır (* işaretli). Bunlardan satın alırsan, biz komisyon alırız — sana hiç ek ücret olmaz. Değerlendirmeler bundan bağımsızdır.",
+    "meta_home": "{n} aracı inceleme ve karşılaştırması",
+    "meta_tool": "{name} detaylı inceleme",
+    "meta_cat": "{cat} kategorisindeki en iyi araçlar"
+  },
+  "tools": {
+    "claude": {
+      "aban_note": "Almanca metinler için en iyi konuşmacı AI. Her gün kullanıyorum. Sonnet 4.6 varsayılanım, uzun araştırma için Opus, hacim işler için Haiku.",
+      "dsgvo_note": "Anthropic API aracılığıyla AB veri saklanması; talep üzerine sıfır alıkoyma.",
+      "use_cases": ["Yazma", "Araştırma", "Kodlama", "PDF Analizi"],
+      "pro": ["Almanca dilinde en iyi", "Uzun bağlam işleri"],
+      "contra": ["API ücretleri yüksek", "Training süresi uzun"]
+    },
+    "chatgpt": {
+      "aban_note": "Standart donanım. GPT-5 sağlam çok amaçlı, ama Almanca iş metinleri için Claude tutarlı olarak daha iyi. Sadece bir araç varsa: bu.",
+      "dsgvo_note": "",
+      "use_cases": ["Yazma", "Araştırma", "Kodlama", "Resim Üretimi"],
+      "pro": ["Geniş aracı entegrasyonu", "Kanıtlanmış performans"],
+      "contra": ["KVKK endişesi var", "Veri saklama sorunu"]
+    },
+    "gemini": {
+      "aban_note": "Çok modlu ve uzun bağlam güçlü. Google Workspace entegrasyonu ilginç. Standalone: Claude'e karşı ikinci seçim.",
+      "dsgvo_note": "",
+      "use_cases": ["Araştırma", "Çok modlu", "Google Docsları Entegrasyonu"],
+      "pro": ["Video analiz yeteneği", "Google entegrasyonu"],
+      "contra": ["Metin üretimde zayıf", "Almanca desteği kısıtlı"]
+    },
+    "mistral": {
+      "aban_note": "AB merkezli (Paris). Uyum duyarlı DACH müşterileri için şimdi temiz bir seçim. BNP, Harvey AI gibi büyük müşteriler güven göstergesi. Kodlama için Codestral sağlam.",
+      "dsgvo_note": "",
+      "use_cases": ["Yazma", "Kodlama", "AB Uyumluluğu", "Akıl Yürütme"],
+      "pro": ["AB merkezli", "Uyum dostu"],
+      "contra": ["Claude kadar keskin değil", "Daha yeni platform"]
+    },
+    "deepseek": {
+      "aban_note": "Yıkıcı fiyatlar (-75 ila -99% vs OpenAI). Uyum endişesi olmayan hacim iş yükleri için yenilmez. DACH iş verileri için değil — Çin sağlayıcısı.",
+      "dsgvo_note": "",
+      "use_cases": ["Hacim API", "Maliyet Optimizasyonu", "Akıl Yürütme"],
+      "pro": ["Muazzam fiyat", "İyi mantık yetenekleri"],
+      "contra": ["KVKK uyumlu değil", "Çin merkezli"]
+    },
+    "perplexity": {
+      "aban_note": "Araştırma aracı no 1. Pro Sonar modelleriyle öğrenenlerin %80'inde Google'ı değiştiri. Kaynak şeffaflığı öldürücü özellik.",
+      "dsgvo_note": "",
+      "use_cases": ["Araştırma", "Haber Taraması", "Kaynak Araştırması"],
+      "pro": ["Kaynak şeffaflığı", "Gerçek zamanlı bilgi"],
+      "contra": ["Ücretsiz tier sınırlı", "API maliyetli"]
+    },
+    "aleph-alpha": {
+      "aban_note": "Alman LLM'leri, Heidelberg. Pharia-1 düzenli sektörler (İlaç, Bankacılık, Yönetim) için. Performans Claude/Mistral'dan geri — ama uyum müdürün 'AB egemen' isterse: cevap. Self-service yok.",
+      "dsgvo_note": "",
+      "use_cases": ["AB Egemenliği", "Bankacılık", "İlaç", "İdari İşler"],
+      "pro": ["Alman yapımı", "Uyum güvenli"],
+      "contra": ["Performans zayıf", "Enterprise yalnız"]
+    },
+    "cowork": {
+      "aban_note": "Üç günlük gerçek kendi test. PDF denetimi, Slayt çıktısı, Excel Pivot'ları için değer. Haftada 2x kullanıyorum. Muazzam araç değil ama somut zaman tasarrufu.",
+      "dsgvo_note": "",
+      "use_cases": ["PDF Analizi", "Slayt Üretimi", "Excel Pivot'ları"],
+      "pro": ["PDF analiz güçlü", "Hızlı slayt üretimi"],
+      "contra": ["Claude Max gerekli", "Sınırlı bağımsız kullanım"]
+    },
+    "openrouter": {
+      "aban_note": "Pragmatik multi-model yönlendirici. API maliyet sorularında yenilmez. Aylar boyunca görmezden geldim — hata. Şimdi sağlayıcılar arasında A/B test için varsayılan.",
+      "dsgvo_note": "",
+      "use_cases": ["Multi Sağlayıcı API", "Maliyet Yönlendirmesi", "Model Testleri"],
+      "pro": ["Uygun fiyat seçenekleri", "Birden fazla model"],
+      "contra": ["Sağlayıcı marjı üzerine", "Kurulum karışık"]
+    },
+    "n8n": {
+      "aban_note": "Self-hostable, KVKK dostu, Alman şirketi. Benim haber-otomasyonumun arka ucu. Make.com daha cilalı, n8n daha sağlam ve kontrollü.",
+      "dsgvo_note": "",
+      "use_cases": ["İş Akışı Otomasyonu", "Haber Akışı", "API Entegrasyonu"],
+      "pro": ["Self-hostable", "KVKK dostu"],
+      "contra": ["Hacimlerde pahalı", "UI karmaşık"]
+    },
+    "make": {
+      "aban_note": "Güzel görsel oluşturucu. n8n'den daha hızlı başlangıç. Ancak: satıcı kilitlenmesi ve hacimde daha pahalı. Başlayanlar için harika, profesyoneller için n8n.",
+      "dsgvo_note": "",
+      "use_cases": ["İş Akışı Otomasyonu", "Kod Olmayan Entegrasyon"],
+      "pro": ["Kolay öğrenme", "Güzel arayüz"],
+      "contra": ["Pahalı hacim", "Satıcı kilitlenmesi"]
+    },
+    "zapier": {
+      "aban_note": "En büyük ekosistem (7000+ uygulama). Ama pahalı ve mantıkta sınırlı. SaaS A → B sadece istersen gider. AI iş akışları için: Make veya n8n.",
+      "dsgvo_note": "",
+      "use_cases": ["SaaS Entegrasyonu", "Hızlı İş Akışları"],
+      "pro": ["En geniş entegrasyon", "Hızlı kurulum"],
+      "contra": ["Çok pahalı", "Sınırlı logic"]
+    },
+    "cursor": {
+      "aban_note": "Benim varsayılan editörüm. VSCode çatalı Claude/GPT entegre. Composer modu vibecoding için oyun değiştirici. Kod yazarsan ve Cursor'u yoksa: zaman kaybediyorsun.",
+      "dsgvo_note": "",
+      "use_cases": ["Vibecoding", "Kod Yenileme", "Eşli Programlama"],
+      "pro": ["Composer modu güçlü", "AI tümleşik"],
+      "contra": ["Ücretli", "VSCode kilitlemesi"]
+    },
+    "windsurf": {
+      "aban_note": "Cursor rakibi. Cascade modu kavramsal olarak daha temiz. Denedi, ama Cursor iş akışı çok derin oturdu. Yeni başlayanlar: sağlam seçim.",
+      "dsgvo_note": "",
+      "use_cases": ["Vibecoding", "Kodlama"],
+      "pro": ["Cascade modu beyin", "Geliştirilecek daha az"],
+      "contra": ["Daha az olgun", "Cursor kadar hızlı değil"]
+    },
+    "github-copilot": {
+      "aban_note": "Klasik, şimdi Claude Sonnet seçeneğiyle. Sağlam oto-tamamlama. Cursor agent modda üstün, Copilot GitHub tümleştirme akışında.",
+      "dsgvo_note": "",
+      "use_cases": ["Kod Tamamlama", "GitHub Entegrasyonu"],
+      "pro": ["GitHub entegre", "Kurulu IDE'lerde"],
+      "contra": ["Sınırlı agent", "İlgi çekici değil"]
+    },
+    "claude-code": {
+      "aban_note": "Terminal tabanlı kodlama aracısı. Rutinleri otomatikleştirirsen (50 dosyayı yenile, test kapsamı yükselt), güçlü. CLI > GUI güç kullanıcıları için.",
+      "dsgvo_note": "",
+      "use_cases": ["Hacim Yenileme", "Kod Tabanı Analizi", "Terminal Kodlama"],
+      "pro": ["Toplu işler güçlü", "Terminal yetenekleri"],
+      "contra": ["GUI yok", "Öğrenme eğrisi"]
+    },
+    "bolt": {
+      "aban_note": "Tarayıcı tabanlı vibecoding. Bir iniş sayfası 20 dakikada. Kilitleme ve sınırlar karmaşık hale geldikçe. MVP'ler için: kullanılabilir.",
+      "dsgvo_note": "",
+      "use_cases": ["MVP Prototipleme", "Iniş Sayfaları"],
+      "pro": ["Hızlı MVP", "Sıfır kurulum"],
+      "contra": ["Sınırlı özelleştirme", "Satıcı kilitlenmesi"]
+    },
+    "lovable": {
+      "aban_note": "Çok pürüzsüz vibecoding oluşturucu. Güzel çıktılar. İlk 200 istemden sonra kötü ölçeklenir. Solo'lar için sadece bir side proje: ok.",
+      "dsgvo_note": "",
+      "use_cases": ["MVP Prototipleme", "Vibecoding"],
+      "pro": ["Pürüzsüz UX", "Güzel çıktılar"],
+      "contra": ["Kötü ölçeklenir", "Limitli free"]
+    },
+    "v0": {
+      "aban_note": "Next.js + shadcn kutudan çıkış. Vercel ekosistemindeysen: ilk seçim. Başka: çıktı React spesifik, kısıtlı.",
+      "dsgvo_note": "",
+      "use_cases": ["React Prototipleme", "UI Üretimi"],
+      "pro": ["React odaklı", "Vercel entegre"],
+      "contra": ["React sadece", "Kısıtlı esneklik"]
+    },
+    "replit": {
+      "aban_note": "Full-stack tarayıcıda barındırma dahil. Küçük mini uygulamalar için uygun. Hacim fiyatlandırması sert.",
+      "dsgvo_note": "",
+      "use_cases": ["Full-Stack MVP", "Barındırma Dahil"],
+      "pro": ["Tam barındırma", "Hızlı dağıtım"],
+      "contra": ["Hacim pahalı", "Performans sınırlı"]
+    },
+    "midjourney": {
+      "aban_note": "Görüntü kalitesi kraliçesi. v7 şaşırtıcı. Pazarlama varlıkları, editoryal resimler, konsept sanat için. Discord birinci nerden sıkıcı ama web arayüzü çalışıyor.",
+      "dsgvo_note": "",
+      "use_cases": ["Pazarlama Varlıkları", "Editoryal Görüntüler", "Konsept Sanat"],
+      "pro": ["En iyi kalite", "Tutarlı çıktı"],
+      "contra": ["Discord ilk", "Yavaş oluşturma"]
+    },
+    "flux": {
+      "aban_note": "Alman şirketi (Freiburg), Stable Diffusion yapımcıları. Flux.1 Dev en iyi performans. Açık ağırlıklar — DACH uyumluluğu için ideal.",
+      "dsgvo_note": "",
+      "use_cases": ["Görüntü Üretimi", "Self-Hosted", "DACH Uyumluluğu"],
+      "pro": ["Açık ağırlıklar", "Alman yapımı"],
+      "contra": ["Hazırlama süresi", "Küçük detaylarda zayıf"]
+    },
+    "stable-diffusion": {
+      "aban_note": "Açık kaynak klasiği. Self-hostable. RTX grafik kartın varsa: ComfyUI + SD = satıcı bağımlılığı olmayan sınırsız görüntüler.",
+      "dsgvo_note": "",
+      "use_cases": ["Self-Hosted Görüntü", "Hacim Görüntüsü"],
+      "pro": ["Açık kaynak", "Sınırsız kullanım"],
+      "contra": ["Kurulum zor", "Komut satırı yoğun"]
+    },
+    "ideogram": {
+      "aban_note": "En iyi metin-resim renderleme. Poster, logo, tipografi ağır tasarımlar için. Fotogerçekçilik'te zayıf.",
+      "dsgvo_note": "",
+      "use_cases": ["Tipografi", "Poster", "Logo Kavramları"],
+      "pro": ["Metin render mükemmel", "Logo tasarım iyi"],
+      "contra": ["Fotogerçekçi zayıf", "Limited stil seçenekleri"]
+    },
+    "krea": {
+      "aban_note": "Gerçek zamanlı görüntü üretimi + multi model paketi. Tasarımcılar için ilginç, çıktı kontrolü iyi. Tier 1 sınırlı.",
+      "dsgvo_note": "",
+      "use_cases": ["Gerçek Zamanlı Tasarım", "Görüntü Üretimi"],
+      "pro": ["Gerçek zamanlı geri bildirim", "Multi model"],
+      "contra": ["Pahalı", "Tier 1 sınırlı"]
+    },
+    "recraft": {
+      "aban_note": "SVG üretimi + marka stili tutarlılığı. Marka görüntülerini tutarlı tutman lazımsa: en iyi.",
+      "dsgvo_note": "",
+      "use_cases": ["SVG Üretimi", "Marka Tutarlılığı"],
+      "pro": ["SVG çıktı güçlü", "Stil tutarlılığı"],
+      "contra": ["Sınırlı stil kontrol", "Yavaş işleme"]
+    },
+    "leonardo": {
+      "aban_note": "Oyun varlıkları odaklı görüntü üretimi. Sağlam arayüz, ama pazarlama çıktısı ikinci lig.",
+      "dsgvo_note": "",
+      "use_cases": ["Oyun Varlıkları", "Konsept Sanat"],
+      "pro": ["Oyun odaklı", "Sağlam arayüz"],
+      "contra": ["Pazarlama zayıf", "Sınırlı stil"]
+    },
+    "playground": {
+      "aban_note": "Ücretsiz tier cömertoğlu. Çıktı çoğunlukla kabul edilebilir, nadiren harika. Hobi için ok.",
+      "dsgvo_note": "",
+      "use_cases": ["Hobi Görüntü Üretimi"],
+      "pro": ["Cömert ücretsiz", "Hızlı üretim"],
+      "contra": ["Kalite tutarsız", "Sınırlı kontrol"]
+    },
+    "dalle": {
+      "aban_note": "Şimdi Midjourney/Flux tarafından yenildi. Ama: ChatGPT iş akışına sorunsuz entegre. Hızlı slayt görüntüleri için yeterli.",
+      "dsgvo_note": "",
+      "use_cases": ["ChatGPT Entegre", "Hızlı Görüntü"],
+      "pro": ["ChatGPT entegre", "Hızlı oluşturma"],
+      "contra": ["Kalite ortanın altında", "Sınırlı kontrol"]
+    },
+    "adobe-firefly": {
+      "aban_note": "Ticari güvenli (lisanslı verilerde eğitildi). Yasal olarak güvenli şekilde üretmesi gereken markalar için. Photoshop/Illustrator'da sorunsuz.",
+      "dsgvo_note": "",
+      "use_cases": ["Ticari Güvenli", "Adobe Iş Akışı"],
+      "pro": ["Hukuki güvenli", "Adobe entegre"],
+      "contra": ["Kalite orta", "Sadece Adobe'de"]
+    },
+    "sora": {
+      "aban_note": "Video üretimi. İlginç, ama 2026'da pazarlama için üretime hazır değil. Demo klipleri evet, kahramanlar hayır.",
+      "dsgvo_note": "",
+      "use_cases": ["Video Demolar", "Konsept Video"],
+      "pro": ["Yenilikçi başlamak", "Hızlı kavram"],
+      "contra": ["Üretime hazır değil", "Sürü yapaylığı"]
+    },
+    "runway": {
+      "aban_note": "Gen-4 sağlam. Video-AI en iyi araç paketi (Motion Brush, Inpainting). Gerçekten üretmek isteyen profesyoneller için.",
+      "dsgvo_note": "",
+      "use_cases": ["Video Düzenleme", "VFX", "Hareket Grafikleri"],
+      "pro": ["Profesyonel araçlar", "Sağlam çıktı"],
+      "contra": ["Pahalı", "Öğrenme eğrisi"]
+    },
+    "pika": {
+      "aban_note": "Sosyal medya kısa video. Basit giriş, ama çıktı sınırlı süreli.",
+      "dsgvo_note": "",
+      "use_cases": ["Kısa Form Video", "Sosyal Medya"],
+      "pro": ["Kolay başlama", "Hızlı oluşturma"],
+      "contra": ["Sürü kısıtlı", "Çok temel"]
+    },
+    "elevenlabs": {
+      "aban_note": "Almanca sesleri 2026 şaşırtıcı doğal. Podcast, voiceover, audiobook için. Ses klonu korkutucu iyi — tüm etik çıkarımlarla.",
+      "dsgvo_note": "",
+      "use_cases": ["Voiceover", "Podcast", "Sesli Kitap"],
+      "pro": ["Doğal Almanca sesler", "Ses klonu"],
+      "contra": ["Etik endişeler", "Yüksek ücret"]
+    },
+    "suno": {
+      "aban_note": "Müzik üretimi. Jingle, background müzik, eğlence için. Ciddiye alınmış üretim: DACH hukuki durum belirsiz.",
+      "dsgvo_note": "",
+      "use_cases": ["Jingle'lar", "Arka Plan Müziği"],
+      "pro": ["Hızlı oluşturma", "İlginç çıktılar"],
+      "contra": ["Hukuki belirsiz", "Kalite tutarsız"]
+    },
+    "udio": {
+      "aban_note": "Suno rakibi. Çıktı kalitesi benzer. Lisans durumu aynı belirsiz — ticari kullanımda dikkat.",
+      "dsgvo_note": "",
+      "use_cases": ["Müzik Üretimi"],
+      "pro": ["Suno kadar hızlı", "İlginç stil"],
+      "contra": ["Hukuki belirsiz", "Kalite tutarsız"]
+    },
+    "murf": {
+      "aban_note": "Sağlam TTS klasiği. Almanca sesler ok, ama ElevenLabs 2026'da önde.",
+      "dsgvo_note": "",
+      "use_cases": ["Voiceover", "TTS"],
+      "pro": ["Tutarlı çıktı", "Ucuz"],
+      "contra": ["ElevenLabs kadar doğal değil", "Daha az özellik"]
+    },
+    "heygen": {
+      "aban_note": "Metni özetleyen AI avatarlar. 40+ dilde çevirisi dudak senkronize. Çok dilli pazarlama için güçlü. Avatar çıktısı tanınabilir sentetik.",
+      "dsgvo_note": "",
+      "use_cases": ["AI Avatar Videolar", "Çok Dilli İçerik"],
+      "pro": ["Dudak senkronize", "40+ dil"],
+      "contra": ["Yapaylık görülür", "Pahalı"]
+    },
+    "synthesia": {
+      "aban_note": "Enterprise AI avatarlar. Güzel şablonlar, HeyGen'den daha pahalı. Solodan çok L&D departmanları için.",
+      "dsgvo_note": "",
+      "use_cases": ["Kurumsal Eğitim", "AI Avatar"],
+      "pro": ["Profesyonel şablonlar", "Enterprise hazır"],
+      "contra": ["Çok pahalı", "Über karmaşık"]
+    },
+    "d-id": {
+      "aban_note": "Fotodan konuşan baş. Düşük giriş engeli. Çıktı şimdi HeyGen tarafından yenildi.",
+      "dsgvo_note": "",
+      "use_cases": ["Avatar Videolar"],
+      "pro": ["Kolay başlama", "Hızlı oluşturma"],
+      "contra": ["Kalite düşük", "HeyGen kadar iyi değil"]
+    },
+    "descript": {
+      "aban_note": "Transkript yoluyla ses/video düzenleme. Podcaster'lar için oyun değiştirici — metinde kelimeyi sil, ses takip eder. Ses klonu (Overdub) temiz.",
+      "dsgvo_note": "",
+      "use_cases": ["Podcast Düzenleme", "Transkript Editörü"],
+      "pro": ["Transkript düzenleme", "Overdub kalitesi"],
+      "contra": ["Pahalı", "Sınırlı video"]
+    },
+    "veed": {
+      "aban_note": "AI yardımı ile tarayıcı video düzenleme. Altyazı üretimi iyi. Güç düzenleme için çok sınırlı.",
+      "dsgvo_note": "",
+      "use_cases": ["Tarayıcı Video", "Altyazılar"],
+      "pro": ["Kolay öğrenme", "Altyazı hızlı"],
+      "contra": ["Çok temel", "Sınırlı özellikleri"]
+    },
+    "capcut": {
+      "aban_note": "Mobil ilk düzenleme AI özellikler. TikTok boru hattı yerleştirilmiş araç. Veri koruması endişesi: ByteDance.",
+      "dsgvo_note": "",
+      "use_cases": ["Mobil Düzenleme", "Sosyal Video"],
+      "pro": ["TikTok entegre", "Hızlı oluşturma"],
+      "contra": ["Gizlilik endişesi", "Sınırlı masaüstü"]
+    },
+    "otter": {
+      "aban_note": "Toplantı transkriptleri klasiği. Almanca tamam, mükemmel değil. İngilizce toplantılar için: 1A.",
+      "dsgvo_note": "",
+      "use_cases": ["Toplantı Transkripti", "Notlar"],
+      "pro": ["Güvenilir", "İngilizce güçlü"],
+      "contra": ["Almanca zayıf", "Pahalı"]
+    },
+    "fireflies": {
+      "aban_note": "Otter gibi, daha iyi CRM sinkronizasyonu. Almanca modeller benzer tamam. Fiyatlandırma daha dostça.",
+      "dsgvo_note": "",
+      "use_cases": ["Toplantı AI", "CRM Entegrasyonu"],
+      "pro": ["CRM entegre", "Ucuz fiyat"],
+      "contra": ["Almanca orta", "Otter kadar bilinen değil"]
+    },
+    "granola": {
+      "aban_note": "Benim yeni varsayılanım. Toplantı botunun yokluğu — Mac'te arka planda çalışır. Almanca toplantılar için not çıktısı birinci sınıf. Otter'ı değiştirdi.",
+      "dsgvo_note": "",
+      "use_cases": ["Toplantı AI", "Almanca İlk"],
+      "pro": ["Arka plan çalışması", "Almanca mükemmel"],
+      "contra": ["Mac sadece", "Yeni platform"]
+    },
+    "tldv": {
+      "aban_note": "Alman şirketi (Münih). Sağlam çok dilli performans. Bot-in-toplantı iş akışı, Granola daha zarif çözer.",
+      "dsgvo_note": "",
+      "use_cases": ["Toplantı AI", "DACH Uyumluluğu"],
+      "pro": ["Alman yapımı", "Çok dil"],
+      "contra": ["Bot yaklaşım", "Granola kadar iyi değil"]
+    },
+    "krisp": {
+      "aban_note": "Çağrılar için gürültü iptal. Güvenilir çalışır. 2025'ten bu yana yerleşik AI toplantı notları.",
+      "dsgvo_note": "",
+      "use_cases": ["Gürültü İptal", "Arama Kalitesi"],
+      "pro": ["Güvenilir", "Basit"],
+      "contra": ["Toplantı notları temel", "Sınırlı kişiselleştirme"]
+    },
+    "fathom": {
+      "aban_note": "Sınırsız toplantılarla cömert ücretsiz katman. ABD odaklı, Almanca konuşma kalitesi ok.",
+      "dsgvo_note": "",
+      "use_cases": ["Toplantı AI", "Ücretsiz Güç Kullanıcı"],
+      "pro": ["Cömert ücretsiz", "Sınırsız toplantı"],
+      "contra": ["ABD odaklı", "Almanca zayıf"]
+    },
+    "deepl": {
+      "aban_note": "Alman şirketi (Köln). En iyi DE↔EN çevirisi, nokta. Write Grammarly rakibi — Almanca için sağlam. Pro hesap her DACH solo'sunun standart donanımı.",
+      "dsgvo_note": "",
+      "use_cases": ["DE↔EN Çevirisi", "Yazma Geliştirme", "API"],
+      "pro": ["En iyi çevirisi", "Almanca güçlü"],
+      "contra": ["Pahalı", "Limitli diller"]
+    },
+    "deepl-write": {
+      "aban_note": "Almanca için açıkça Grammarly'den daha iyi. Stil ayarlama 'İş', 'Akademik', 'Rahat' işleri. 14 günlük test édition 017'de.",
+      "dsgvo_note": "",
+      "use_cases": ["Almanca Geliştirme", "Stil Çeşitlendirmesi"],
+      "pro": ["Almanca uzman", "Stil değiştirir"],
+      "contra": ["İngilizce zayıf", "Pahalı"]
+    },
+    "grammarly": {
+      "aban_note": "İngilizce-refiner. Almanca metinler için çok zayıf — DeepL Write veya LanguageTool al. İngilizce erişim için: ok.",
+      "dsgvo_note": "",
+      "use_cases": ["İngilizce Dilbilgisi"],
+      "pro": ["İngilizce mükemmel", "Yaygın"],
+      "contra": ["Almanca zayıf", "Pahalı"]
+    },
+    "languagetool": {
+      "aban_note": "Alman şirketi (Potsdam). Açık kaynak çekirdek. Almanca stil sorunları için Duden'den güçlü. Self-hostable.",
+      "dsgvo_note": "",
+      "use_cases": ["Almanca Dilbilgisi", "Self-Hosted Düzeltme"],
+      "pro": ["Açık kaynak", "Almanca güçlü"],
+      "contra": ["İngilizce orta", "UI eski]"]
+    },
+    "tavily": {
+      "aban_note": "AI aracı arama API'si. Araçlarınız web araştırması lazımsa: Tavily temiz varsayılan. SerpAPI'den daha ucuz.",
+      "dsgvo_note": "",
+      "use_cases": ["Araç Arama", "RAG"],
+      "pro": ["API temiz", "Ucuz"],
+      "contra": ["Sınırlı özelleştirme", "Kalite değişken"]
+    },
+    "exa": {
+      "aban_note": "Anlam arama API'si. Anahtar sözcük aramasından tematik benzer içerik daha iyi bulur. Araştırma aracı ideali.",
+      "dsgvo_note": "",
+      "use_cases": ["Anlam Arama", "RAG", "Araştırma"],
+      "pro": ["Anlam güçlü", "Kalite yüksek"],
+      "contra": ["Pahalı", "Sınırlı özellik"]
+    },
+    "you": {
+      "aban_note": "AI arama + Kod, Araştırma modları. Perplexity 2026'da daha iyi seçim, You'nun niş var.",
+      "dsgvo_note": "",
+      "use_cases": ["AI Arama", "Çok Mod Arama"],
+      "pro": ["Çok mod", "Esnek"],
+      "contra": ["Perplexity daha iyi", "Almanca zayıf"]
+    },
+    "phind": {
+      "aban_note": "Dev arama. Kod odaklı cevaplar kaynaklarla. Stack-Overflow değiştirme için kullanılabilir.",
+      "dsgvo_note": "",
+      "use_cases": ["Dev Arama", "Kod Araştırması"],
+      "pro": ["Dev odaklı", "Kaynak dahil"],
+      "contra": ["Sınırlı kapsam", "Almanca zayıf"]
+    },
+    "kagi": {
+      "aban_note": "Ücretli arama reklam yok, AI yardımı. Güç arayanlar için: çok ferah. Maliyeti var ama günlük googlelersen değer.",
+      "dsgvo_note": "",
+      "use_cases": ["Reklamsız Arama", "Güç Arama"],
+      "pro": ["Reklamsız", "Özel"],
+      "contra": ["Pahalı", "Daha az sonuç"]
+    },
+    "brave": {
+      "aban_note": "Kendi endeksi. Gizlilik ilk. AI özeti entegre. Google alternatifi takip yok.",
+      "dsgvo_note": "",
+      "use_cases": ["Gizlilik Arama", "Takip Yok"],
+      "pro": ["Gizlilik", "Takip yok"],
+      "contra": ["Daha az sonuç", "Almanca zayıf"]
+    },
+    "groq": {
+      "aban_note": "İnferans hız şampiyonu. Llama, Mixtral çılgın token/s. Latency duyarlı uygulamalar yaparsanız: ilk seçim.",
+      "dsgvo_note": "",
+      "use_cases": ["Düşük Latans İnferans", "Gerçek Zamanlı AI"],
+      "pro": ["Hız harika", "Uygun fiyat"],
+      "contra": ["Model sınırlı", "Başlangıç karmaşık"]
+    },
+    "together-ai": {
+      "aban_note": "Açık kaynak modeller (Llama, Mixtral, Qwen) API. Ucuz çıkarım, iyi model seçimi.",
+      "dsgvo_note": "",
+      "use_cases": ["Açık Kaynak API", "Çok Model Hosting"],
+      "pro": ["Ucuz", "Model çeşitli"],
+      "contra": ["Kalite değişken", "Başlama zor"]
+    },
+    "cerebras": {
+      "aban_note": "Özel çipler, çok hızlı çıkarım. Llama hosting üst. Model seçimi Groq'tan sınırlı.",
+      "dsgvo_note": "",
+      "use_cases": ["Yüksek Hız İnferans"],
+      "pro": ["Çok hızlı", "Ucuz"],
+      "contra": ["Model sınırlı", "Yeni hizmet"]
+    },
+    "replicate": {
+      "aban_note": "Açık kaynak modeller API host. Resim/Ses/Video modelleri dahil. Prototip oluşturma iyi.",
+      "dsgvo_note": "",
+      "use_cases": ["Model Prototipleme", "Çok Modal API"],
+      "pro": ["Modal çeşitli", "Kolay başlama"],
+      "contra": ["Pahalı hacim", "Başlama karışık"]
+    },
+    "hugging-face": {
+      "aban_note": "GitHub AI modelleri. Çıkarım uç noktaları sağlam. Veri seti kütüphanesi araştırmacılar için altın.",
+      "dsgvo_note": "",
+      "use_cases": ["Model Hosting", "Veri Kümeleri", "Açık Kaynak AI"],
+      "pro": ["Geniş model", "Veri kütüphanesi"],
+      "contra": ["Pahalı üretim", "Platform karma"]
+    },
+    "langchain": {
+      "aban_note": "LLM uygulamaları çerçevesi. Kutuplaştırılmış: çoğu aşırı mühendislik bulur. Standart desenler iyi, özel mantık doğrudan yaz.",
+      "dsgvo_note": "",
+      "use_cases": ["Araç Çerçevesi", "LLM İşlem Hatları"],
+      "pro": ["Geniş ekosistem", "Belgeleri"],
+      "contra": ["Aşırı karmaşık", "Yavaş gelişme"]
+    },
+    "llamaindex": {
+      "aban_note": "RAG çerçevesi. LangChain'den alma için daha ince. Doc arama uygulamaları için temiz seçim.",
+      "dsgvo_note": "",
+      "use_cases": ["RAG", "Belge Arama"],
+      "pro": ["RAG odaklı", "Basit API"],
+      "contra": ["LangChain kadar geniş değil", "Daha yeni"]
+    },
+    "weaviate": {
+      "aban_note": "AB merkezli vektör DB. Hollanda, KVKK uyumlu. Üretim hazır. Açık kaynak çekirdek.",
+      "dsgvo_note": "",
+      "use_cases": ["Vektör Arama", "RAG", "AB Uyumluluğu"],
+      "pro": ["AB merkezli", "Üretim hazır"],
+      "contra": ["Qdrant kadar Alman değil", "Pahalı"]
+    },
+    "qdrant": {
+      "aban_note": "Alman vektör DB (Berlin). Açık kaynak. Self-hostable. Performans üst. DACH RAG kurulum ilk seçim.",
+      "dsgvo_note": "",
+      "use_cases": ["Vektör Arama", "DACH Uyumluluğu", "Self-Hosted RAG"],
+      "pro": ["Alman yapımı", "Açık kaynak"],
+      "contra": ["İngilizce desteği orta", "Dokümantasyon kısıtlı"]
+    },
+    "pinecone": {
+      "aban_note": "Yönetilen vektör DB. Yalnızca ABD Bulut. Uygun, ama kilitleme. DACH uyumluluğu: Qdrant al.",
+      "dsgvo_note": "",
+      "use_cases": ["Yönetilen Vektör DB"],
+      "pro": ["Yönetilen", "Uygun fiyat"],
+      "contra": ["ABD sadece", "Kilitleme"]
+    },
+    "chroma": {
+      "aban_note": "Yerel geliştirme için ince vektör DB ve küçük prototip. Üretim: Qdrant'a geç.",
+      "dsgvo_note": "",
+      "use_cases": ["Yerel Geliştirme", "Prototipleme"],
+      "pro": ["Basit kurulum", "Hafif"],
+      "contra": ["Üretim zayıf", "Scalability sorun"]
+    },
+    "notion-ai": {
+      "aban_note": "Notion'da yaşarsan: değer. Q&A çalışma alanında ok. Notion dışı iş akışları için: değeri yok.",
+      "dsgvo_note": "",
+      "use_cases": ["Notion Çalışma Alanı AI"],
+      "pro": ["Notion entegre", "Basit"],
+      "contra": ["Notion bağlı", "Sınırlı özellik"]
+    },
+    "mem": {
+      "aban_note": "Yerleşik AI ile not uygulaması. Otomatik etiketleme ve anlam arama iyi çalışır. Mobil güçlü.",
+      "dsgvo_note": "",
+      "use_cases": ["Akıllı Notlar", "Otomatik Etiketleme"],
+      "pro": ["Anlam arama", "Mobil iyi"],
+      "contra": ["Sınırlı paylaşım", "Üretim zayıf"]
+    },
+    "reflect": {
+      "aban_note": "GPT-4 entegre not uygulaması. Çok temiz. Günlük notlar + arka bağlantılar Roam gibi, üzerine AI.",
+      "dsgvo_note": "",
+      "use_cases": ["Günlük Notlar", "Arka Bağlantılar", "AI Güçlenmiş"],
+      "pro": ["Temiz UX", "Arka bağlantılar"],
+      "contra": ["Sınırlı belge", "Niche aracı"]
+    },
+    "obsidian": {
+      "aban_note": "Yerel ilk, düz Markdown. Eklentiler (Copilot, Akıllı Bağlantılar) ile AI yetkin. 4 yıl benim ikinci beynim.",
+      "dsgvo_note": "",
+      "use_cases": ["Yerel Notlar", "Markdown", "Zettelkasten"],
+      "pro": ["Yerel ilk", "Güçlü eklentiler"],
+      "contra": ["Dik öğrenme", "Kurulum karmaşık"]
+    },
+    "loom": {
+      "aban_note": "Ekran kaydı AI transkript + özet. Müşterilere eşzamansız güncellemeler altın. Ücretsiz katman solo'lara yeterli.",
+      "dsgvo_note": "",
+      "use_cases": ["Ekran Kaydı", "Eşzamansız İletişim"],
+      "pro": ["Kolay paylaşım", "Transkript iyi"],
+      "contra": ["Sınırlı düzenleme", "Pahalı pro"]
+    },
+    "capso": {
+      "aban_note": "Açık kaynak Loom alternatifi. AB hosting olasılık. DACH veri koruma ilginç.",
+      "dsgvo_note": "",
+      "use_cases": ["Açık Kaynak Ekran Kaydı", "DACH Uyumluluğu"],
+      "pro": ["Açık kaynak", "AB hosting"],
+      "contra": ["Az özellik", "Daha az olgun"]
+    },
+    "jasper": {
+      "aban_name": "Pazarlama yazma aracı. 2023'te sıcak, şimdi Claude/ChatGPT karafından yenildi. Şablonlar artık öldürücü özellik değil.",
+      "dsgvo_note": "",
+      "use_cases": ["Pazarlama Yazı"],
+      "pro": ["Şablonlar başlangıç", "Kolay"],
+      "contra": ["Kalite düşük", "Claude daha iyi"]
+    },
+    "copy-ai": {
+      "aban_note": "Artık iş akışı odaklı. AI becerisi olmayan satış ekipleri için kullanılabilir. Solo pazarcı: Claude yeterli.",
+      "dsgvo_note": "",
+      "use_cases": ["Pazarlama İş Akışları", "Satış Yazısı"],
+      "pro": ["İş akışı odaklı", "Takımlar için"],
+      "contra": ["Kalite orta", "Sınırlı özellik"]
+    },
+    "writesonic": {
+      "aban_note": "İçerik üretim aracı. Orta çıktı, Claude daha iyi. Chatsonic kendi sohbet — ChatGPT daha iyi.",
+      "dsgvo_note": "",
+      "use_cases": ["Hacim İçerik"],
+      "pro": ["Hızlı oluşturma", "Şablonlar"],
+      "contra": ["Kalite düşük", "Claude daha iyi"]
+    },
+    "sudowrite": {
+      "aban_note": "Kurgu yazma AI. Roman yazarlar için uzmanlaştırılmış. İngilizce ilk, Almanca ok.",
+      "dsgvo_note": "",
+      "use_cases": ["Kurgu Yazma", "Hikaye Vuruşları"],
+      "pro": ["Kurgu odaklı", "Yaratıcı"],
+      "contra": ["İngilizce ilk", "Sınırlı Almanca"]
+    },
+    "lex": {
+      "aban_note": "AI güçlenmiş metin editörü. Vurgulama üzerinden satır içi AI çağrıları. Güzel dikkat dağıtmayan UI.",
+      "dsgvo_note": "",
+      "use_cases": ["AI Güçlenmiş Yazma"],
+      "pro": ["Basit UX", "Satır içi AI"],
+      "contra": ["Sınırlı özellik", "Niche aracı"]
+    },
+    "wordtune": {
+      "aban_note": "Cümle yeniden yazma. İngilizce ilk. Almanca çok zayıf.",
+      "dsgvo_note": "",
+      "use_cases": ["İngilizce Yeniden Yazma"],
+      "pro": ["İngilizce iyi", "Hızlı"],
+      "contra": ["Almanca zayıf", "Sınırlı fonksiyon"]
+    },
+    "quillbot": {
+      "aban_note": "Yeniden yazma + dilbilgisi. İngilizce güçlü. Plagiarism kontrol güzel bonus.",
+      "dsgvo_note": "",
+      "use_cases": ["Yeniden Yazma"],
+      "pro": ["Plagiarism kontrol", "İngilizce güçlü"],
+      "contra": ["Almanca zayıf", "Sınırlı alan"]
+    },
+    "anyword": {
+      "aban_note": "İlan yazısı performans puanlama. İngilizce ilk. Solo için pahalı.",
+      "dsgvo_note": "",
+      "use_cases": ["İlan Yazısı", "Performans Pazarlama"],
+      "pro": ["Puanlama sistemimi", "İlan odaklı"],
+      "contra": ["Pahalı", "İngilizce sadece"]
+    },
+    "profound": {
+      "aban_note": "Üretken motor optimizasyonu takibi. ChatGPT, Claude, Perplexity'de markan görünür. 2026 Google sıra gibi.",
+      "dsgvo_note": "",
+      "use_cases": ["GEO Takibi", "Marka LLM"],
+      "pro": ["Yeni metrik", "Değerli veri"],
+      "contra": ["Pahalı", "Sınırlı doğruluk"]
+    },
+    "athenahq": {
+      "aban_note": "GEO takibi Profound rakibi. Orta Pazar fiyatlandırması. Raporlar Almancada ok.",
+      "dsgvo_note": "",
+      "use_cases": ["GEO", "Marka İzleme"],
+      "pro": ["Ucuz fiyat", "Rapor temiz"],
+      "contra": ["Daha az özellik", "Doğruluk değişken"]
+    },
+    "otterly": {
+      "aban_note": "Avusturyalı şirketi (Viyana). DACH dilinde ilk. KMU'lar için uygun GEO başlangıç.",
+      "dsgvo_note": "",
+      "use_cases": ["GEO DACH", "KMU Marka İzleme"],
+      "pro": ["Avusturya yapımı", "KMU uygun"],
+      "contra": ["Sınırlı özellik", "Daha az veri"]
+    },
+    "ahrefs": {
+      "aban_note": "SEO standart. Arka bağlantı, anahtar kelime, site denetimi. AI özellik yan ürün, endeks değer.",
+      "dsgvo_note": "",
+      "use_cases": ["SEO", "Arka Bağlantı Analizi"],
+      "pro": ["En iyi endeks", "Arka bağlantı güçlü"],
+      "contra": ["Pahalı", "Öğrenme eğrisi"]
+    },
+    "semrush": {
+      "aban_note": "Ahrefs'den geniş (ayrıca reklam istihbarat). Daha pahalı. Her ikisi yapıyorsan: SEMrush.",
+      "dsgvo_note": "",
+      "use_cases": ["SEO", "Rakip Reklamlar", "Pazarlama Yığını"],
+      "pro": ["Geniş araçlar", "Reklam intel"],
+      "contra": ["Çok pahalı", "Aşırı özellik"]
+    },
+    "surfer": {
+      "aban_note": "Sayfada SEO optimizatör AI yazma. İngilizce içerik için iyi, Almanca ok.",
+      "dsgvo_note": "",
+      "use_cases": ["Sayfada SEO", "İçerik Optimizasyonu"],
+      "pro": ["Optimize puanlaması", "Yazma entegre"],
+      "contra": ["Almanca orta", "Pahalı"]
+    },
+    "frase": {
+      "aban_note": "SEO içerik kısa oluşturucu. Surfer'den ucuz. Pazarlama içeriği için katı araç.",
+      "dsgvo_note": "",
+      "use_cases": ["İçerik Kısaltması", "SERP Analizi"],
+      "pro": ["Ucuz fiyat", "Hızlı kısa"],
+      "contra": ["Sınırlı özellik", "Kalite değişken"]
+    },
+    "marketmuse": {
+      "aban_note": "Konu küme stratejisi kurumsal içerik. Solo'lar için fazla büyük.",
+      "dsgvo_note": "",
+      "use_cases": ["Kurumsal SEO"],
+      "pro": ["Konu strateji", "Kurumsal ölçek"],
+      "contra": ["Çok pahalı", "Solo fazla"]
+    },
+    "canva": {
+      "aban_note": "Magic Studio Canva'yı AI tasarım platformu yaptı. DACH solo'lar için pragmatik tasarım aracı. Şablonlar + AI = hızlı çıktı.",
+      "dsgvo_note": "",
+      "use_cases": ["Tasarım", "Sosyal Şablonlar", "Sunumlar"],
+      "pro": ["Magic Studio güçlü", "Şablonlar geniş"],
+      "contra": ["Sınırlı özelleştirme", "Pahalı pro"]
+    },
+    "figma": {
+      "aban_note": "Figma içinde AI özellik (Tasarım Yap, Prototip Yap) sağlam. UI tasarımı standart.",
+      "dsgvo_note": "",
+      "use_cases": ["UI Tasarımı", "Prototipleme"],
+      "pro": ["UI standart", "Takım iş akışı"],
+      "contra": ["Pahalı", "AI sınırlı"]
+    },
+    "gamma": {
+      "aban_note": "Metinden AI slaytlar. Decktopus'dan güzel, PowerPoint+AI'den hızlı. Pitch dekler için kullanılabilir.",
+      "dsgvo_note": "",
+      "use_cases": ["AI Slaytlar", "Pitch Destekleri"],
+      "pro": ["Güzel tasarım", "Hızlı oluşturma"],
+      "contra": ["Sınırlı özelleştirme", "Kısıtlı şablonlar"]
+    },
+    "tome": {
+      "aban_name": "Satış aracı dönüş. AI slaytlar var, ama Gamma geçiyor.",
+      "dsgvo_note": "",
+      "use_cases": ["Satış Destekleri", "AI Slaytlar"],
+      "pro": ["Satış odaklı", "Basit"],
+      "contra": ["Sınırlı özellik", "Gamma daha iyi"]
+    },
+    "beautiful-ai": {
+      "aban_note": "Akıllı şablonlar otomatik düzen. Sağlam, ama olağanüstü değil.",
+      "dsgvo_note": "",
+      "use_cases": ["Otomatik Slaytlar"],
+      "pro": ["Otomatik düzen", "Basit"],
+      "contra": ["Sınırlı tasarım", "Orta kalite"]
+    },
+    "ollama": {
+      "aban_note": "Mac/PC'de yerel LLM'ler. Llama, Mistral, Qwen yerel. KVKK sert: dostun. Donanım aç.",
+      "dsgvo_note": "",
+      "use_cases": ["Yerel LLM", "KVKK Güvenli", "Çevrimdışı AI"],
+      "pro": ["Yerel çalıştırma", "Ücretsiz"],
+      "contra": ["Başlama zor", "GPU gerekli"]
+    },
+    "lm-studio": {
+      "aban_note": "Yerel LLM'ler GUI. Ollama CLI'den güzel giriş. Kendi uygulamalardan API çağrıları için sunucu modu.",
+      "dsgvo_note": "",
+      "use_cases": ["Yerel LLM GUI", "Çevrimdışı Test"],
+      "pro": ["Kolay GUI", "Sunucu modesi"],
+      "contra": ["Ollama kadar güçlü değil", "Dokumentasyon eksik"]
+    },
+    "open-webui": {
+      "aban_note": "Ollama için ChatGPT klonu. Self-hosted. Takımın yerel AI lazımsa: bu.",
+      "dsgvo_note": "",
+      "use_cases": ["Self-Hosted Sohbet", "Takım Yerel AI"],
+      "pro": ["Self-hosted", "Takım paylaşımı"],
+      "contra": ["Kurulum karmaşık", "Performans değişken"]
+    },
+    "lovable-translate-deepl": {
+      "aban_name": "Lingo.dev",
+      "aban_note": "Yazılım dizeleri yerelleştirme. AI JSON/i18n dosyaları çevirir. Çok dilli uygulamalar için yararlı.",
+      "dsgvo_note": "",
+      "use_cases": ["Yazılım Yerelleştirme", "i18n"],
+      "pro": ["Otomatik çevirisi", "Hızlı"],
+      "contra": ["Sınırlı diller", "Kalite değişken"]
+    },
+    "browserbase": {
+      "aban_note": "AI aracı tarayıcısı kontrolü için bulut. Araçların web sitelerini çalıştırması lazımsa: sağlam altyapı.",
+      "dsgvo_note": "",
+      "use_cases": ["Araç Tarayıcı Kontrolü"],
+      "pro": ["Bulut altyapısı", "Güvenilir"],
+      "contra": ["Pahalı", "Başlama karmaşık"]
+    },
+    "browse-ai": {
+      "aban_note": "Görsel kazıyıcı. Alanlar üzerine tıkla, AI çıkarır. Liste yapısı ve izleme için.",
+      "dsgvo_note": "",
+      "use_cases": ["Kazıma", "İzleme"],
+      "pro": ["Görsel kolay", "Hızlı kurulum"],
+      "contra": ["Sınırlı mantık", "Veri kalitesi sorun"]
+    },
+    "apify": {
+      "aban_note": "AB merkezli (Çekya). En büyük kazıyıcı kütüphane. Güç kullanıcı araç veri işlem hatları.",
+      "dsgvo_note": "",
+      "use_cases": ["Web Kazıma", "Veri İşlem Hatları"],
+      "pro": ["Geniş kütüphane", "AB merkezli"],
+      "contra": ["Pahalı", "Öğrenme eğrisi"]
+    },
+    "bardeen": {
+      "aban_note": "Tarayıcı otomasyonu bilgi işçileri için. Zapier tarayıcın gibi. AI oynatma listeler güzel.",
+      "dsgvo_note": "",
+      "use_cases": ["Tarayıcı İş Akışları", "Bilgi İşi Otomasyonu"],
+      "pro": ["Tarayıcı entegre", "Kolay kurulum"],
+      "contra": ["Sınırlı mantık", "Kapsamı kısıtlı"]
+    },
+    "clay": {
+      "aban_note": "Satış istihbarat + zenginleştirme. Kurşun oluşturma ekipleri güç aracı. Pahalı, ama işlerse: bir haftada geri dön.",
+      "dsgvo_note": "",
+      "use_cases": ["Kurşun Zenginleştirme", "Satış İstihbarat"],
+      "pro": ["Güçlü zenginleştirme", "B2B iyi"],
+      "contra": ["Çok pahalı", "Öğrenme karmaşık"]
+    },
+    "apollo": {
+      "aban_note": "Satış veritabanı + erişim paketi. DACH kullanmada iyi, dikkatli — DACH veri kalitesi dalgalı.",
+      "dsgvo_note": "",
+      "use_cases": ["B2B Veritabanı", "Ulaşım"],
+      "pro": ["Geniş veri", "Erişim araçları"],
+      "contra": ["KVKK endişeli", "Veri kalitesi değişken"]
+    },
+    "lusha": {
+      "aban_note": "İletişim veri zenginleştirme. KVKK sorunlar belgelendi — dikkatli. ABD verileri için ok.",
+      "dsgvo_note": "",
+      "use_cases": ["İletişim Verisi"],
+      "pro": ["Hızlı zenginleştirme", "ABD güçlü"],
+      "contra": ["KVKK sorun", "DACH zayıf"]
+    },
+    "intercom-fin": {
+      "aban_note": "Destek AI aracısı. %50 otomatik çözünürlük olasılık. Çözünürlük başına pahalı, hacim matematik çalışıyor.",
+      "dsgvo_note": "",
+      "use_cases": ["Destek Otomasyonu"],
+      "pro": ["Otomatik çözüm", "Hacim iyi"],
+      "contra": ["Pahalı başlangıç", "Sınırlı özelleştirme"]
+    },
+    "zendesk-ai": {
+      "aban_note": "Zendesk üzerine AI eklenti. Zaten Zendesk'in varsa: etkinleştir. Standalone değer: orta.",
+      "dsgvo_note": "",
+      "use_cases": ["Yardım Masası AI"],
+      "pro": ["Zendesk entegre", "Kurulu"],
+      "contra": ["Bağımlı", "Sınırlı AI"]
+    },
+    "aider": {
+      "aban_note": "Terminal kodlama aracısı. Git farkında, çok dosya. Açık kaynak. Güç kullanıcılar için Cursor temiz alternatifi.",
+      "dsgvo_note": "",
+      "use_cases": ["Terminal Kodlama", "Açık Kaynak Aracısı"],
+      "pro": ["Git farkında", "Açık kaynak"],
+      "contra": ["CLI yalnız", "Öğrenme eğrisi"]
+    },
+    "cline": {
+      "aban_note": "VSCode uzantı aracısı. Plan + eylem modları. Çok iyi düşünülmüş. Açık kaynak.",
+      "dsgvo_note": "",
+      "use_cases": ["VSCode Aracısı", "Kodlama"],
+      "pro": ["Plan modesi", "Açık kaynak"],
+      "contra": ["VSCode bağımlı", "Daha yeni"]
+    },
+    "tabnine": {
+      "aban_note": "Gizlilik ilk kod tamamlama. Kurumsal self-host. Uyum ağır şirketler için ilginç.",
+      "dsgvo_note": "",
+      "use_cases": ["Gizlilik İlk Kodlama", "Kurumsal Self-Host"],
+      "pro": ["Gizlilik", "Self-hostable"],
+      "contra": ["Kalite orta", "Pahalı"]
+    },
+    "cody": {
+      "aban_note": "Kod tabanı farkında AI büyük repo'lar için. Monorepo varsa: güçlü. Solo: Cursor yeterli.",
+      "dsgvo_note": "",
+      "use_cases": ["Kurumsal Kod Tabanı", "Kod Arama"],
+      "pro": ["Kod tabanı bağlam", "Güçlü"],
+      "contra": ["Pahalı", "Solo pürüz"]
+    },
+    "warp": {
+      "aban_note": "AI terminal. Aracısı mod çok adımlı kabuk görevleri yapabilir. Güzel UI. Bulut senkron — gizlilik endişesi.",
+      "dsgvo_note": "",
+      "use_cases": ["AI Terminal"],
+      "pro": ["Aracı mod güçlü", "Güzel UX"],
+      "contra": ["Bulut bağımlı", "Gizlilik endişe"]
+    },
+    "codex": {
+      "aban_note": "OpenAI kodlama aracısı. Bulut tabanlı. Çalışır, ama Claude Code terminal daha yuvarlak.",
+      "dsgvo_note": "",
+      "use_cases": ["Bulut Kodlama Aracısı"],
+      "pro": ["OpenAI backend", "Güvenilir"],
+      "contra": ["Bulut sadece", "Sınırlı gücü"]
+    },
+    "pipedream": {
+      "aban_note": "Kod + kod olmayan melez. İş akışları JavaScript yazmak istemeyen geliştirler için.",
+      "dsgvo_note": "",
+      "use_cases": ["Kod Melez İş Akışları"],
+      "pro": ["Kod+no-code", "JavaScript"],
+      "contra": ["Öğrenme eğrisi", "Satıcı kilitleme"]
+    },
+    "windmill": {
+      "aban_note": "Self-hosted iş akışı motoru. AB merkezli (Paris). n8n sınırlı ve kod istersen.",
+      "dsgvo_note": "",
+      "use_cases": ["Self-Hosted Otomasyonu", "AB Uyumluluğu"],
+      "pro": ["Self-hosted", "Kod destekli"],
+      "contra": ["Daha yeni", "Daha az olgun"]
+    },
+    "supabase": {
+      "aban_note": "Açık kaynak Firebase. AB barındırması. pgvector dahil. Solo geliştirici arka ucu yapı seti.",
+      "dsgvo_note": "",
+      "use_cases": ["Arka Uç", "Vektör Arama", "AB Barındırması"],
+      "pro": ["Açık kaynak", "Vektör dahil"],
+      "contra": ["PostgreSQL eğrisi", "Pahalı ölçek"]
+    },
+    "vercel-ai": {
+      "aban_note": "TypeScript için AI SDK. LangChain'den standart kullanım durumları için temiz. Next.js yapıyorsan: ilk seçim.",
+      "dsgvo_note": "",
+      "use_cases": ["TypeScript AI", "Next.js Entegrasyonu"],
+      "pro": ["Temiz API", "Next.js entegre"],
+      "contra": ["TypeScript sadece", "Sınırlı özellik"]
+    },
+    "modal": {
+      "aban_note": "Sunucusuz GPU hesaplama. Özel model dağıtımı altyapı stres olmadan.",
+      "dsgvo_note": "",
+      "use_cases": ["Sunucusuz GPU", "Özel Model Barındırması"],
+      "pro": ["Ölçeklenebilir", "Kolay dağıtım"],
+      "contra": ["Pahalı", "Başlama karmaşık"]
+    },
+    "linear": {
+      "aban_note": "Sorun izleyici AI özellik (otomatik sıfırlama, özet). Yan projeleri aracı. UX sınıf kendi.",
+      "dsgvo_note": "",
+      "use_cases": ["Sorun Takibi", "Proje Yönetimi"],
+      "pro": ["UX çok iyi", "AI özellikler"],
+      "contra": ["Pahalı", "Sınırlı entegrasyon"]
+    },
+    "humata": {
+      "aban_note": "PDF soru-cevap aracı. Şimdi Claude/ChatGPT PDF yükleme tarafından geçti.",
+      "dsgvo_note": "",
+      "use_cases": ["PDF Araştırması"],
+      "pro": ["Hızlı başlama", "Basit"],
+      "contra": ["Claude kadar iyi değil", "Sınırlı veri"]
+    },
+    "consensus": {
+      "aban_note": "Bilimsel makale AI arama. LinkedIn bilgisi ötesinde fakta araştırması için altın.",
+      "dsgvo_note": "",
+      "use_cases": ["Bilim Araştırması"],
+      "pro": ["Bilim odaklı", "Kaynak güvenilir"],
+      "contra": ["Sınırlı kapsam", "Pahalı pro"]
+    },
+    "elicit": {
+      "aban_note": "Bilimsel edebiyat araştırma iş akışı. Bulgular otomatik çıkarım. Araştırmacılar için ChatGPT'den açık.",
+      "dsgvo_note": "",
+      "use_cases": ["Edebiyat Araştırması", "Meta Analiz"],
+      "pro": ["Çıkarım otomatik", "İş akışı"],
+      "contra": ["Sınırlı kapsam", "Öğrenme eğrisi"]
+    },
+    "scite": {
+      "aban_note": "Alıntı doğrulama. Makale desteklenmiş veya çürütülmüş mi göster. Ciddiye alınmış araştırma.",
+      "dsgvo_note": "",
+      "use_cases": ["Alıntı Kontrolü", "Bilim Doğrulaması"],
+      "pro": ["Doğrulama güvenilir", "Araştırma"],
+      "contra": ["Sınırlı kapsam", "Pahalı"]
+    },
+    "tactiq": {
+      "aban_note": "Tarayıcı tabanlı toplantı AI. Ucuz, ok çıktı. Granola açık yüksek vurur.",
+      "dsgvo_note": "",
+      "use_cases": ["Toplantı AI Bütçe"],
+      "pro": ["Ucuz", "Basit kurulum"],
+      "contra": ["Kalite orta", "Granola daha iyi"]
+    },
+    "supahub": {
+      "aban_name": "Castmagic",
+      "aban_note": "Podcast-to-content. Show notları, alıntı, tweet'ler ses üret. Podcaster'lar için.",
+      "dsgvo_note": "",
+      "use_cases": ["Podcast Yeniden Amaçlandırması"],
+      "pro": ["Hızlı içerik", "Çok çıktı"],
+      "contra": ["Sınırlı özelleştirme", "Pahalı"]
+    },
+    "pictory": {
+      "aban_note": "Blog-to-video. Yazılardan video oluştur. Çıktı AI tanınabilir. Hacim sosyal snippet'leri ok.",
+      "dsgvo_note": "",
+      "use_cases": ["Blog Video"],
+      "pro": ["Hızlı oluşturma", "Hacim ucuz"],
+      "contra": ["Kalite düşük", "Özelleştirme sınırlı"]
+    },
+    "lumen5": {
+      "aban_note": "Blog-to-social video. Şablon amaçlı. Çıktı LinkedIn yazısı, daha fazlası değil.",
+      "dsgvo_note": "",
+      "use_cases": ["Sosyal Video"],
+      "pro": ["Hızlı başlama", "Şablonlar iyi"],
+      "contra": ["Kalite sınırlı", "Özelleştirme zayıf"]
+    },
+    "wisper-flow": {
+      "aban_name": "Whisper Flow",
+      "aban_note": "Ses-to-metin dikte Mac. Yazıdan daha hızlı. Almanca tanım birinci sınıf.",
+      "dsgvo_note": "",
+      "use_cases": ["Ses Dikte"],
+      "pro": ["Almanca mükemmel", "Hızlı yazma"],
+      "contra": ["Mac sadece", "Sınırlı özellik"]
+    },
+    "raycast-ai": {
+      "aban_note": "Spotlight değiştirme AI çağrıları OS genelinde. Hızlı istem iş akışı tarayıcı geçişi olmadan. Mac sadece.",
+      "dsgvo_note": "",
+      "use_cases": ["OS Geniş AI", "Hızlı İstemi"],
+      "pro": ["OS entegre", "Hızlı akış"],
+      "contra": ["Mac sadece", "Gizlilik endişe"]
+    },
+    "arc": {
+      "aban_note": "Mobil tarayıcı AI özeti. 'Bana tarayıcı' güzel. Dia'ya pivot geliyor.",
+      "dsgvo_note": "",
+      "use_cases": ["AI Tarayıcı Mobil"],
+      "pro": ["Mobil ilk", "Özeti basit"],
+      "contra": ["Sınırlı özellik", "Pivot belirsiz"]
+    },
+    "dia": {
+      "aban_note": "AI ilk tarayıcı. Sekme arası sohbet. İlginç kavram, Beta durum.",
+      "dsgvo_note": "",
+      "use_cases": ["AI Tarayıcı"],
+      "pro": ["İlginç tasarım", "Sekme entegre"],
+      "contra": ["Beta", "Belirsiz"],
+      "use_cases": ["AI Tarayıcı"]
+    },
+    "snowball": {
+      "aban_name": "Klue",
+      "aban_note": "Rekabet istihbarat platformu. Kurumsal fiyatlandırma. Solo: çok büyük.",
+      "dsgvo_note": "",
+      "use_cases": ["Kurumsal Rekabet Zekası"],
+      "pro": ["Kapsamlı veri", "Kurumsal"],
+      "contra": ["Çok pahalı", "Solo pürüz"]
+    },
+    "crayon": {
+      "aban_note": "Rekabet izleme. Klue gibi. Kurumsal.",
+      "dsgvo_note": "",
+      "use_cases": ["Rekabet Takibi"],
+      "pro": ["İzleme otomatik", "Kurumsal"],
+      "contra": ["Çok pahalı", "Solo fazla"]
+    },
+    "glean": {
+      "aban_note": "Kurumsal arama tüm SaaS'lar üzerinde. Takım > 50 kişi katilin. Solo kurulum: fazla.",
+      "dsgvo_note": "",
+      "use_cases": ["Kurumsal Arama", "İş AI"],
+      "pro": ["Kapsamlı arama", "Kurumsal güçlü"],
+      "contra": ["Çok pahalı", "Solo lüks"]
+    },
+    "anthropic-mcp": {
+      "aban_note": "Araç çağrısı için açık standart. Claude, Cursor, Windsurf, tümü benimse. Aracılar için araçlar yapıyorsan: bu.",
+      "dsgvo_note": "",
+      "use_cases": ["Araç Protokolü", "Entegrasyonlar"],
+      "pro": ["Açık standart", "Geniş destek"],
+      "contra": ["Daha yeni", "Sınırlı özellik"]
+    },
+    "ollama-cloud": {
+      "aban_name": "Together Code Interpreter",
+      "aban_note": "Kod çalıştırma sandbox API. Aracılar kodu çalıştırması lazımsa.",
+      "dsgvo_note": "",
+      "use_cases": ["Sandbox Kodu", "Araç Yürütme"],
+      "pro": ["Güvenli yürütme", "Hızlı"],
+      "contra": ["Pahalı", "Sınırlı diller"]
+    },
+    "e2b": {
+      "aban_note": "Sandbox altyapı AI aracı. AB merkezli (Prag). Açık kaynak çekirdek. Araç oluşturucu için temiz seçim.",
+      "dsgvo_note": "",
+      "use_cases": ["Araç Sandbox", "AB Uyumluluğu"],
+      "pro": ["Açık kaynak", "AB merkezli"],
+      "contra": ["Pahalı hacim", "Başlama karmaşık"]
+    },
+    "langfuse": {
+      "aban_note": "Alman LLM gözlemlenebilirlik platformu (Berlin). İzleme, değerlendirme, maliyet. Self-hostable. LLM yığını ciddiyse: ilk seçim.",
+      "dsgvo_note": "",
+      "use_cases": ["LLM Gözlemlenebilirlik", "İstem Yönetimi", "DACH Uyumluluğu"],
+      "pro": ["Alman yapımı", "Self-hostable"],
+      "contra": ["Pahalı", "Yeni platform"]
+    },
+    "langsmith": {
+      "aban_note": "LangChain uygulamaları için LLM gözlemlenebilirlik. Hafif satıcı kilitleme. Bulut sadece AB bölgesi 2026.",
+      "dsgvo_note": "",
+      "use_cases": ["LangChain İzlemesi"],
+      "pro": ["LangChain tümleşik", "Güvenilir"],
+      "contra": ["Satıcı kilitleme", "Bulut sadece"]
+    },
+    "browser-use": {
+      "aban_note": "Python kütüphane AI tarayıcı kontrolü. Açık kaynak. Araç oluşturucu için ince yığın.",
+      "dsgvo_note": "",
+      "use_cases": ["Tarayıcı Aracısı", "Açık Kaynak Otomasyon"],
+      "pro": ["Açık kaynak", "Basit API"],
+      "contra": ["Daha yeni", "Daha az olgun"]
+    }
+  }
+}

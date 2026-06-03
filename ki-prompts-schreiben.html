@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d97706">
+  <title>KI-Prompts schreiben — der praktische Leitfaden | aban news</title>
+  <meta name="description" content="Bessere KI-Prompts in 4 Schritten: Kontext, Format, Beispiel, Iteration. Mit Vorher/Nachher, Copy-Vorlage und den 5 häufigsten Fehlern. Kein Prompt-Pack nötig.">
+  <link rel="canonical" href="https://abannews.com/ki-prompts-schreiben.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/ki-prompts-schreiben.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-prompts-schreiben.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ki-prompts-schreiben.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/ki-prompts-schreiben.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-prompts-schreiben.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="KI-Prompts schreiben — der praktische Leitfaden">
+  <meta property="og:description" content="Vier Schritte für bessere Prompts: Kontext, Format, Beispiel, Iteration. Mit Vorher/Nachher.">
+  <meta property="og:url" content="https://abannews.com/ki-prompts-schreiben.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://abannews.com/img/og/ki-prompts-schreiben.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/img/og/ki-prompts-schreiben.png">
+  <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;margin-left:1.2rem}
+    .lang a{padding:.3rem .55rem;color:var(--muted);text-decoration:none;margin:0}
+    .lang a.on{background:var(--ink);color:#fff}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:3rem 0 2rem;text-align:center}
+    h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:58ch;margin:0 auto 1.5rem}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    section{padding:1.2rem 0}
+    section h2{font-size:1.4rem;line-height:1.2;margin:1.4rem 0 .6rem}
+    section h3{font-size:1.1rem;margin:1.1rem 0 .35rem}
+    section p{margin-bottom:.8rem}
+    section ul{margin:0 0 .9rem 1.2rem}
+    section li{margin-bottom:.35rem}
+    .method{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.5rem;margin-bottom:1rem;box-shadow:var(--shadow)}
+    .method h3{margin-top:0;display:flex;align-items:center;gap:.5rem}
+    .method .num{background:var(--amber);color:#fff;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;flex-shrink:0}
+    .callout{background:var(--amber-lt);border-left:4px solid var(--amber);border-radius:8px;padding:.9rem 1.1rem;margin:1rem 0;font-weight:600}
+    .ba{display:grid;gap:.8rem;margin:1rem 0}
+    @media(min-width:560px){.ba{grid-template-columns:1fr 1fr}}
+    .ba div{border:1px solid var(--line);border-radius:12px;padding:1rem;background:#fff;font-size:.92rem}
+    .ba .w{border-color:#fca5a5;background:#fef2f2}
+    .ba .s{border-color:#86efac;background:#f0fdf4}
+    .ba .tag{display:block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem}
+    .ba .w .tag{color:#b91c1c}.ba .s .tag{color:#15803d}
+    .tmpl{background:#1f2937;color:#f9fafb;border-radius:12px;padding:1.1rem 1.2rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;line-height:1.6;white-space:pre-wrap;margin:1rem 0}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2rem 0}
+    .cta-box h2{font-size:1.3rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .btn--ghost{border:1px solid var(--amber);color:var(--amber-dk);background:#fff}
+    details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem;padding:0}
+    details[open]{border-color:#fed7aa}
+    summary{padding:1rem 1.1rem;font-weight:600;cursor:pointer;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";float:right;color:#a3a3a3;font-weight:300;font-size:1.3rem;line-height:1}
+    details[open] summary::after{content:"−"}
+    details .a{padding:0 1.1rem 1.1rem;color:var(--muted);font-size:.95rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:2rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"KI-Prompts schreiben — der praktische Leitfaden","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"datePublished":"2026-05-31","dateModified":"2026-05-31","description":"Bessere KI-Prompts in vier Schritten: Kontext, Format, Beispiel, Iteration — mit Vorher/Nachher und Copy-Vorlage."}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HowTo","name":"Einen guten KI-Prompt schreiben","description":"In vier Schritten von einer vagen Anfrage zu einem brauchbaren Ergebnis.","step":[
+    {"@type":"HowToStep","position":1,"name":"Kontext geben","text":"Sag, wer du bist und für wen der Text ist."},
+    {"@type":"HowToStep","position":2,"name":"Format vorgeben","text":"Sag, was rauskommen soll: fünf Punkte, eine Tabelle, eine kurze E-Mail."},
+    {"@type":"HowToStep","position":3,"name":"Beispiel zeigen","text":"Häng ein Beispiel deines Stils an und sag: in diesem Ton."},
+    {"@type":"HowToStep","position":4,"name":"Iterieren","text":"Sag konkret, was nicht passt, statt neu zu würfeln."}
+  ]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Was macht einen guten KI-Prompt aus?","acceptedAnswer":{"@type":"Answer","text":"Vier Dinge: Kontext (wer du bist, für wen der Text ist), Format (was rauskommen soll), ein Beispiel deines Stils und Iteration (konkrete Korrektur statt neu würfeln). Wer diese vier liefert, braucht kein 47-Euro-Prompt-Paket."}},
+    {"@type":"Question","name":"Muss ich „Prompt Engineering“ lernen?","acceptedAnswer":{"@type":"Answer","text":"Nicht als eigene Disziplin. Für die meisten Selbstständigen reicht es, klar zu sagen, was man will, ein Beispiel zu geben und nachzubessern. Das ist weniger Technik als gutes Briefing."}},
+    {"@type":"Question","name":"Warum sind meine KI-Antworten so generisch?","acceptedAnswer":{"@type":"Answer","text":"Meist, weil der Prompt vage ist. Eine vage Anfrage liefert den Durchschnitt des halben Internets — korrekt, aber austauschbar. Kontext und ein Stil-Beispiel heben die Qualität mehr als jeder Tool-Wechsel."}},
+    {"@type":"Question","name":"Sind teure Prompt-Pakete sinnvoll?","acceptedAnswer":{"@type":"Answer","text":"Selten. Fertige Prompts sparen Tippzeit, ersetzen aber nicht das Verständnis. Wer die vier Schritte beherrscht, passt jeden Prompt selbst an — und merkt schnell, welche gekauften Pakete nur hübsch verpackte Selbstverständlichkeiten sind."}}
+  ]}
+  </script>
+<style>.skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}</style>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/preview.html">Beispiel</a>
+      <a href="/ebook.html">eBook</a>
+      <a href="/ki-prompts-schreiben.html"><strong>Prompts schreiben</strong></a>
+      <a href="#subscribe" class="btn">Abonnieren</a>
+      <span class="lang"><a href="/ki-prompts-schreiben.html" class="on" aria-current="true">DE</a><a href="/en/ki-prompts-schreiben.html">EN</a><a href="/fr/ki-prompts-schreiben.html">FR</a><a href="/it/ki-prompts-schreiben.html">IT</a></span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Stand: Mai 2026 · ohne Hype</span>
+      <h1>KI-Prompts schreiben — der praktische Leitfaden</h1>
+      <p class="lead">Die meisten schlechten KI-Antworten liegen nicht am Modell, sondern am Prompt. Vier Handgriffe ändern fast alles — kein „Prompt Engineering"-Kurs, kein 47-Euro-Paket nötig.</p>
+    </div>
+
+    <section>
+      <p>Ein gutes Sprachmodell ist wie ein fähiger Praktikant: Je klarer die Anweisung, desto weniger korrigierst du danach. Eine vage Anfrage liefert den Durchschnitt des halben Internets — korrekt, aber austauschbar. Diese vier Schritte heben die Qualität mehr als jeder Tool-Wechsel.</p>
+    </section>
+
+    <section>
+      <h2>Die vier Schritte zu einem brauchbaren Prompt</h2>
+
+      <div class="method">
+        <h3><span class="num">1</span> Sag, wer du bist und für wen der Text ist</h3>
+        <p>„Schreib einen Text über Steuern" ist ein Würfelwurf. „Ich bin Steuerberaterin und schreibe für selbstständige Handwerker mit wenig Zeit — erklär die Kleinunternehmerregelung in einfachen Worten" liefert etwas Brauchbares. Kontext ist kein Beiwerk, er ist die halbe Anweisung.</p>
+      </div>
+
+      <div class="method">
+        <h3><span class="num">2</span> Gib das Format vor</h3>
+        <p>Sag, was rauskommen soll: fünf Punkte, eine Tabelle, ein Absatz unter hundert Wörtern, eine E-Mail mit Betreff. Ohne Format bekommst du Fließtext, den du danach wieder zerlegst.</p>
+      </div>
+
+      <div class="method">
+        <h3><span class="num">3</span> Zeig ein Beispiel</h3>
+        <p>Ein einziges Beispiel deines Stils sagt mehr als drei Absätze Erklärung. Häng einen alten Post, eine frühere Mail oder eine Formulierung an, die nach dir klingt, und sag: „in diesem Ton". Das Modell imitiert — gib ihm also etwas Gutes zum Imitieren.</p>
+      </div>
+
+      <div class="method">
+        <h3><span class="num">4</span> Iteriere, statt neu zu würfeln</h3>
+        <p>Die erste Antwort ist ein Entwurf, kein Endprodukt. Sag konkret, was nicht passt: „zu werblich", „kürzer", „der zweite Punkt stimmt nicht, streich ihn". Zwei, drei gezielte Korrekturen bringen dich weiter als zehnmal „mach's nochmal".</p>
+      </div>
+
+      <div class="callout">Kontext, Format, Beispiel, Korrektur. Wer diese vier liefert, braucht kein Prompt-Paket — und bekommt aus jedem Modell mehr heraus.</div>
+    </section>
+
+    <section>
+      <h2>Der Unterschied in einem Beispiel</h2>
+      <div class="ba">
+        <div class="w"><span class="tag">Schwach</span>„Schreib mir eine Newsletter über KI."</div>
+        <div class="s"><span class="tag">Stark</span>„Schreib die Einleitung meiner Newsletter für selbstständige Handwerker. Ton sachlich, du-Form, kein Hype, höchstens 80 Wörter, der erste Satz soll neugierig machen ohne zu übertreiben. Thema: warum die meisten KI-Tools ein Problem lösen, das du nicht hast."</div>
+      </div>
+      <p>Gleicher Tippaufwand, ein Unterschied wie Tag und Nacht im Ergebnis. Der starke Prompt enthält Rolle, Zielgruppe, Ton, Format, Länge und Thema — genau die Dinge, die das Modell sonst raten muss.</p>
+    </section>
+
+    <section>
+      <h2>Fünf Fehler, die Prompts schwach machen</h2>
+      <ul>
+        <li><strong>Kein Kontext:</strong> „Schreib mir X" ohne Rolle und Zielgruppe. Das Modell rät — und rät Durchschnitt.</li>
+        <li><strong>Mehrere Aufgaben auf einmal:</strong> Recherchieren, schreiben und kürzen in einem Prompt. Trenn die Schritte.</li>
+        <li><strong>Kein Format:</strong> Du bekommst Fließtext, wo du Stichpunkte wolltest.</li>
+        <li><strong>Höflichkeits-Ballast:</strong> Lange Einleitungen helfen nicht. Klarheit schlägt Floskeln.</li>
+        <li><strong>Aufgeben statt nachbessern:</strong> Bei der ersten mittelmäßigen Antwort das Tool wechseln, statt eine konkrete Korrektur zu geben.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Copy-Vorlage zum Anpassen</h2>
+      <p>Füll die Klammern aus, kopier es vor deine eigentliche Aufgabe — fertig:</p>
+      <div class="tmpl">Rolle: Ich bin [Beruf/Branche].
+Zielgruppe: Der Text ist für [wer, mit welchem Problem].
+Aufgabe: [was genau soll entstehen].
+Format: [z. B. 5 Stichpunkte / Tabelle / E-Mail mit Betreff], max. [Länge].
+Ton: [z. B. sachlich, du-Form, kein Hype].
+Beispiel meines Stils: [kurzer Ausschnitt] — bitte in diesem Ton.</div>
+      <p>Diese sechs Zeilen ersetzen die meisten gekauften Prompt-Pakete. Du sagst dem Modell einmal, wer du bist und was du willst — den Rest macht es.</p>
+    </section>
+
+    <section>
+      <h2>Brauchst du ein fertiges Prompt-Paket?</h2>
+      <p>Meistens nicht. Fertige Prompts sparen Tippzeit, ersetzen aber nicht das Verständnis — und viele teure Pakete sind hübsch verpackte Selbstverständlichkeiten. Wenn du trotzdem eine Sammlung getesteter deutscher Prompts zum schnellen Kopieren willst, hab ich eine ehrliche zusammengestellt.</p>
+      <p><a href="/prompt-pack.html" style="color:var(--amber-dk);font-weight:600;">→ Das Pro-Prompt-Pack ansehen</a></p>
+    </section>
+
+    <section>
+      <h2>Häufige Fragen</h2>
+      <details><summary>Was macht einen guten KI-Prompt aus?</summary><div class="a">Kontext, Format, ein Stil-Beispiel und Iteration. Wer diese vier liefert, braucht kein teures Prompt-Paket.</div></details>
+      <details><summary>Muss ich „Prompt Engineering" lernen?</summary><div class="a">Nicht als eigene Disziplin. Klar sagen, was du willst, ein Beispiel geben, nachbessern — das ist weniger Technik als gutes Briefing.</div></details>
+      <details><summary>Warum sind meine Antworten so generisch?</summary><div class="a">Meist, weil der Prompt vage ist. Kontext und ein Stil-Beispiel heben die Qualität mehr als jeder Tool-Wechsel.</div></details>
+      <details><summary>Sind teure Prompt-Pakete sinnvoll?</summary><div class="a">Selten. Sie sparen Tippzeit, ersetzen aber nicht das Verständnis. Wer die vier Schritte beherrscht, passt jeden Prompt selbst an.</div></details>
+    </section>
+
+    <div class="cta-box" style="background:var(--card);border:1px solid var(--line);">
+      <h2>Gratis-eBook: „Anti-Hype“</h2>
+      <p>Dieses Kapitel ausführlich plus mehr: Mein kostenloses eBook zeigt dir den 3-Fragen-Filter, deinen minimalen KI-Stack und wie du mit jedem Modell bessere Ergebnisse bekommst. Ohne Anmeldung.</p>
+      <a href="/ebook.html" class="btn btn--ghost">eBook lesen →</a>
+    </div>
+
+    <div class="cta-box" id="subscribe">
+      <h2>Jeden Werktag: KI ohne Bullshit, in 5 Minuten</h2>
+      <p>aban news liefert dir Mo–Fr die relevanten KI-Entwicklungen für deine Arbeit — inklusive Prompts, die du sofort einsetzen kannst.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">5-Min-KI-Briefing gratis →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Kein Spam. Abmeldung per Klick. DSGVO-konform.</p>
+    </div>
+
+    <section>
+      <h2 style="font-size:1.05rem;">Weiterlesen</h2>
+      <div style="display:grid;gap:.7rem;grid-template-columns:1fr 1fr;">
+        <a href="/chatgpt-vs-claude.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">ChatGPT vs. Claude</strong><span style="color:var(--muted);font-size:.82rem;">Der ehrliche Vergleich</span></a>
+        <a href="/ki-halluzinationen-erkennen.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">KI-Halluzinationen erkennen</strong><span style="color:var(--muted);font-size:.82rem;">5 Warnsignale + 30-Sekunden-Check</span></a>
+        <a href="/ki-tools-fuer-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">KI-Tools für Selbstständige</strong><span style="color:var(--muted);font-size:.82rem;">Der ehrliche Stack 2026</span></a>
+        <a href="/prompt-pack.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Pro-Prompt-Pack</strong><span style="color:var(--muted);font-size:.82rem;">54 getestete deutsche Prompts</span></a>
+        <a href="/ebook.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Gratis-eBook „Anti-Hype“</strong><span style="color:var(--muted);font-size:.82rem;">KI ohne Bullshit einsetzen</span></a>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <p><strong>Ehrlichkeits-Hinweis:</strong> Dieser Leitfaden enthält keine Affiliate-Links. Die Methode ist bewusst einfach gehalten — gutes Prompten ist näher an klarem Briefing als an Technik. Modelle ändern sich; die vier Schritte bleiben.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/">Startseite</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Werbung in aban news schalten — Sponsoring &amp; Rate-Card</title>
-  <meta name="description" content="Werbung in aban news — dem ersten täglichen deutschsprachigen AI-Newsletter. Maximal 1 Anzeige pro Ausgabe. Engagierte DACH-Zielgruppe. Rate-Card, Booking, Discovery-Call.">
+  <meta name="description" content="Werbung im täglichen deutschsprachigen KI-Newsletter aban news. Max. 1 Anzeige pro Ausgabe, engagierte DACH-Zielgruppe. Rate-Card, Booking, Discovery-Call.">
   <meta name="theme-color" content="#d97706">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://abannews.com/sponsoring.html">
@@ -15,11 +15,14 @@
   <meta property="og:title" content="Werbung in aban news schalten">
   <meta property="og:description" content="Maximal 1 Anzeige pro Ausgabe. DACH-Audience. Klar gekennzeichnet, ehrlich geprüft.">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="aban news — Werbung & Sponsoring"><meta name="twitter:image" content="https://abannews.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="aban news — Werbung & Sponsoring"><meta name="twitter:image" content="https://abannews.com/img/og/sponsoring.png">
   <meta property="og:url" content="https://abannews.com/sponsoring.html">
-  <meta property="og:image" content="https://abannews.com/og-image.png">
+  <meta property="og:image" content="https://abannews.com/img/og/sponsoring.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -189,6 +192,15 @@
           <li><strong>Power-Mix:</strong> 1× Primary + 4× Inline + 4× Classified im Monat = <strong>20 % Rabatt</strong></li>
         </ul>
       </div>
+
+      <p class="small muted">
+        <strong>Ehrlich zur Listengröße:</strong> Du zahlst nach der aktuell <em>verifizierten</em> Abozahl — nicht nach Wunschzahl. Die großen Tarife oben gelten ab der jeweiligen Listengröße. Liegt die Liste noch unter 500 (Aufbauphase), gibt es einen fairen, anteiligen Start-Tarif. Frag einfach nach dem aktuellen Stand: <a href="mailto:sponsoring@abannews.com">sponsoring@abannews.com</a> — ich nenne dir die echten Zahlen.
+      </p>
+
+      <div class="card card--highlight" style="margin-top:var(--space-4);">
+        <h3 style="margin-top:0;">🌱 Gründungs-Sponsor werden</h3>
+        <p>Du bist früh dran? Der erste Sponsor-Slot läuft zum fairen Gründungs-Tarif: vergünstigter Einstieg in der Aufbauphase gegen ehrliches Feedback und — wenn du magst — ein Logo als erste Referenz. Du sicherst dir den Platz, bevor die Liste (und der Preis) wächst. Der kompakte Überblick steht im <a href="/media-kit.html">Media-Kit</a>.</p>
+      </div>
     </div>
   </section>
 
@@ -256,7 +268,7 @@
         <h3 style="margin-top:0;">Discovery-Call buchen</h3>
         <p>15 Minuten, du erzählst was du willst — wir schauen ob's passt. Wenn nicht, sag ich's dir direkt (statt eine Mail-Loop zu starten).</p>
         <p style="margin-bottom:0;">
-          <a href="https://calendly.com/abannews/sponsor" class="btn">
+          <a id="sponsor-book" href="https://calendly.com/abannews/sponsor" class="btn">
             Termin buchen →
           </a>
         </p>
@@ -273,8 +285,9 @@
 <aside class="related-pages" aria-label="Was dich auch interessieren könnte">
   <h3>Was dich auch interessieren könnte</h3>
   <div class="related-cards">
+    <a href="/media-kit.html"><strong>Media-Kit</strong><span>Der kompakte Überblick zum Verschicken</span></a>
     <a href="/werbung.html"><strong>Werbe-Policy</strong><span>Transparenz statt versteckte Promotion</span></a>
-    <a href="/founding.html"><strong>Founding Member werden</strong><span>€149 lifetime statt Sponsoring</span></a>
+    <a href="/founding.html"><strong>Founding Member werden</strong><span>€69 lifetime statt Sponsoring</span></a>
     <a href="/about.html"><strong>Wer schreibt das eigentlich?</strong><span>Aban's Story in 3 Min</span></a>
   </div>
 </aside>
@@ -297,7 +310,7 @@
       </div>
       <div>
         <strong>Premium</strong>
-        <a href="/founding.html">Founding Member €149</a>
+        <a href="/founding.html">Founding Member €69</a>
         <a href="/sponsoring.html">Sponsoring</a>
         <a href="/werbung.html">Werbe-Policy</a>
       </div>
@@ -313,6 +326,25 @@
     </div>
   </div>
 </footer>
+
+<script>
+// ============================================================
+// SPONSOR-BOOKING — Calendly-Link hier in EINER Zeile pflegen:
+// calendly.com (Free-Tier) → Event "Sponsor Discovery Call · 15 Min" → Link kopieren.
+// Leer lassen ("") → Button schaltet automatisch auf den Mail-Fallback um.
+// ============================================================
+(function(){
+  var CALENDLY_URL = "https://calendly.com/abannews/sponsor";
+  var btn = document.getElementById('sponsor-book');
+  if(!btn) return;
+  if(/^https:\/\/calendly\.com\/.+/.test(CALENDLY_URL)){
+    btn.href = CALENDLY_URL;
+  } else {
+    btn.href = "mailto:sponsoring@abannews.com?subject=Sponsoring-Anfrage%20aban%20news";
+    btn.textContent = "Anfrage per Mail →";
+  }
+})();
+</script>
 
 </body>
 </html>

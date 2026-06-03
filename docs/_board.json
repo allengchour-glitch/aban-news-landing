@@ -1,0 +1,61 @@
+{
+  "next_id": 8,
+  "tasks": [
+    {
+      "id": 1,
+      "task": "Affiliate bei 1 Programm anmelden (z. B. Jasper) → Link an Code",
+      "who": "aban",
+      "status": "doing",
+      "note": "Writesonic-Bewerbung abgeschickt — wartet auf Freigabe",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 2,
+      "task": "Affiliate-Link in affiliate.json eintragen + push",
+      "who": "code",
+      "status": "blocked",
+      "note": "wartet auf Link von Aban",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 3,
+      "task": "Gumroad-Konto + Datensatz hochladen → Buy-Link",
+      "who": "aban",
+      "status": "doing",
+      "note": "Voll-Datensatz erzeugt (326 Tools CSV+JSON), an Aban geliefert; wartet auf Gumroad-Konto + Buy-Link",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 4,
+      "task": "Gumroad-Buy-Link in ki-tools-datensatz.html eintragen",
+      "who": "code",
+      "status": "blocked",
+      "note": "wartet auf Link von Aban",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 5,
+      "task": "KDP-Konto erstellen (Steuer/Bank)",
+      "who": "aban",
+      "status": "todo",
+      "note": "in ~1 Woche geplant",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 6,
+      "task": "eBook-Upload auf KDP (docs/KDP-UPLOAD-BROWSER-AGENT.md)",
+      "who": "browser",
+      "status": "blocked",
+      "note": "braucht KDP-Konto (Task 5)",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 7,
+      "task": "Radars auf Cloudflare deployen (docs/CLOUDFLARE-DEPLOY-BROWSER-AGENT.md)",
+      "who": "browser",
+      "status": "doing",
+      "note": "einige schon live",
+      "updated": "2026-06-03"
+    }
+  ]
+}

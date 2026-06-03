@@ -1,0 +1,57 @@
+{
+ "title": "Das KI-Glossar zum Nachschlagen",
+ "kicker": "Bonus 7",
+ "toc": true,
+ "kind": "bonus",
+ "blocks": [
+  ["lead", "Die KI-Welt ist voll von Wörtern, die wichtig klingen und oft wenig bedeuten. Dieses Glossar erklärt dir die Begriffe, die dir wirklich begegnen — ehrlich, kurz, und mit dem Hinweis, wo Marketing und Wirklichkeit auseinandergehen."],
+  ["p", "Schlag hier nach, wann immer dir in einem Artikel, einer Tool-Beschreibung oder einem Verkaufsgespräch ein Begriff über den Weg läuft, bei dem du kurz stutzt. Du musst nichts davon auswendig lernen — du musst es nur einordnen können."],
+
+  ["h3", "Die Grundbegriffe"],
+  ["p", "Diese sechs Wörter tauchen überall auf. Wenn du sie verstanden hast, verstehst du 90 Prozent jeder KI-Diskussion."],
+  ["ul", [
+    "<b>Sprachmodell (LLM).</b> Das Programm hinter Chatbots wie ChatGPT. Es sagt anhand riesiger Textmengen das jeweils wahrscheinlichste nächste Wort voraus. Es &bdquo;weiß&ldquo; nichts — es rechnet sehr gut, wie ein Satz weitergeht.",
+    "<b>Prompt.</b> Deine Eingabe, also die Anweisung oder Frage, die du dem Modell gibst. Die Qualität deines Prompts entscheidet über die Qualität der Antwort — darum dreht sich Modul 3.",
+    "<b>Token.</b> Die kleinste Texteinheit, in der das Modell rechnet — meist ein Wortteil. Wichtig nur, weil viele Tools nach Token abrechnen und Längenlimits in Token messen.",
+    "<b>Halluzination.</b> Wenn das Modell etwas Falsches mit voller Überzeugung behauptet — eine erfundene Quelle, ein falsches Datum, ein nicht existierendes Gesetz. Kein Bug, sondern eine Eigenschaft. Darum gilt: immer prüfen.",
+    "<b>Kontextfenster.</b> Wie viel Text das Modell auf einmal &bdquo;im Blick&ldquo; behalten kann. Ist es voll, vergisst es den Anfang. Bei langen Gesprächen erklärt das, warum die KI plötzlich Dinge vom Anfang vergisst.",
+    "<b>Trainingsdaten.</b> Die Texte, mit denen das Modell gebaut wurde. Sie haben einen Stichtag — alles danach kennt das Modell nicht, außer es darf live im Netz suchen."
+  ]],
+
+  ["h3", "Die Werkzeuge und Techniken"],
+  ["p", "Begriffe, die dir bei der Tool-Auswahl begegnen. Du musst sie nicht selbst bauen — nur wissen, was gemeint ist, wenn ein Anbieter damit wirbt."],
+  ["ul", [
+    "<b>Chatbot.</b> Die Oberfläche, über die du mit einem Sprachmodell sprichst. ChatGPT, Claude, Gemini und Copilot sind Chatbots — verschiedene Türen zu ähnlicher Technik.",
+    "<b>KI-Agent.</b> Ein Modell, das nicht nur antwortet, sondern selbst Schritte ausführt — etwa im Netz sucht, Dateien öffnet, Aufgaben verkettet. Klingt mächtiger, als es heute zuverlässig ist. Bei allem mit Verantwortung gilt: kurze Leine.",
+    "<b>RAG (Retrieval-Augmented Generation).</b> Technik, bei der das Modell vor der Antwort in deinen eigenen Dokumenten nachschlägt. Dahinter steckt jede Funktion, die verspricht, &bdquo;mit deinen Daten zu chatten&ldquo;.",
+    "<b>Feinabstimmung (Fine-Tuning).</b> Ein Modell mit zusätzlichen Beispielen nachschärfen, damit es einen bestimmten Stil oder ein Fachgebiet besser trifft. Für die meisten Solo-Profis unnötig — ein guter Prompt mit Stilvorlage reicht.",
+    "<b>API.</b> Eine Schnittstelle, über die andere Programme die KI nutzen, ohne dass du tippst. Relevant, sobald du KI in einen automatischen Ablauf einbaust (Modul 4).",
+    "<b>Multimodal.</b> Ein Modell, das nicht nur Text, sondern auch Bilder, Ton oder Tabellen verarbeitet. Praktisch, wenn du der KI einen Screenshot oder ein Foto zeigen willst.",
+    "<b>Lokales Modell.</b> Eine KI, die direkt auf deinem Rechner läuft, ohne dass Daten in die Cloud gehen. Datenschutz-Pluspunkt, dafür schwächer und aufwändiger. Für sensible Fälle relevant (Modul 5)."
+  ]],
+
+  ["h3", "Hype-Wörter, ehrlich übersetzt"],
+  ["p", "Diese Wörter sollen beeindrucken. Hier steht, was sie meist wirklich bedeuten — damit du dich nicht von Sprache blenden lässt."],
+  ["ul", [
+    "<b>&bdquo;KI-gestützt&ldquo;.</b> Heißt oft nur: Irgendwo im Produkt steckt ein Sprachmodell. Sagt nichts über den Nutzen. Frag immer: Welche konkrete Aufgabe nimmt es mir ab?",
+    "<b>&bdquo;Autonom&ldquo; / &bdquo;vollautomatisch&ldquo;.</b> Klingt nach &bdquo;läuft ohne mich&ldquo;. In der Praxis brauchst du fast immer eine Kontrollinstanz. Behandle es als Entwurfs-Hilfe, nicht als Selbstläufer.",
+    "<b>&bdquo;Die KI versteht / denkt / weiß&ldquo;.</b> Menschliche Wörter für einen Rechenvorgang. Das Modell hat keine Absicht und kein Verständnis — es erzeugt plausibel klingenden Text. Diese Unterscheidung schützt dich vor Überschätzung.",
+    "<b>&bdquo;Lernt aus deinen Daten&ldquo;.</b> Kann zweierlei heißen: Es nutzt deine Daten nur im Moment (harmlos) — oder es trainiert dauerhaft damit (heikel). Lies nach, was gemeint ist, bevor du Kundendaten eingibst.",
+    "<b>&bdquo;Game-Changer&ldquo; / &bdquo;die Zukunft der Arbeit&ldquo;.</b> Marketing-Superlative ohne Inhalt. Ignorier sie und schau auf das eine, was zählt: Spart es dir heute Zeit bei einer echten Aufgabe?",
+    "<b>AGI (Allgemeine künstliche Intelligenz).</b> Eine hypothetische KI auf menschlichem Niveau in allen Bereichen. Existiert nicht. Wenn jemand damit wirbt, verkauft er dir eine Erwartung, kein Produkt."
+  ]],
+
+  ["h3", "Recht und Daten"],
+  ["p", "Die Begriffe aus Modul 5, kompakt zum Nachschlagen. Keine Rechtsberatung, sondern Orientierung."],
+  ["ul", [
+    "<b>DSGVO.</b> Die europäische Datenschutz-Grundverordnung. Sie regelt, wie du mit personenbezogenen Daten umgehen darfst — auch, wenn du sie in ein KI-Tool eingibst.",
+    "<b>Personenbezogene Daten.</b> Alles, womit sich eine Person identifizieren lässt: Name, E-Mail, Adresse, aber auch Details, die zusammen eindeutig werden. Im Zweifel anonymisieren, bevor es in die KI geht.",
+    "<b>Auftragsverarbeitung (AVV).</b> Ein Vertrag, der nötig wird, wenn ein Anbieter in deinem Auftrag personenbezogene Daten verarbeitet. Seriöse KI-Anbieter mit Geschäftskunden-Tarif bieten ihn an.",
+    "<b>EU AI Act.</b> Das KI-Gesetz der EU. Für die meisten Solo-Profis als Nutzer wenig direkter Aufwand — relevant vor allem, wenn du KI-Ergebnisse in heiklen Bereichen einsetzt. Im Blick behalten, nicht fürchten.",
+    "<b>Opt-out beim Training.</b> Die Einstellung, mit der du verhinderst, dass deine Eingaben zum Trainieren des Modells genutzt werden. Bei den großen Anbietern in den Konto-Einstellungen — einmal prüfen und setzen."
+  ]],
+
+  ["callout", "Wenn dir ein Begriff begegnet, der hier fehlt: Lass ihn dir von der KI selbst erklären — aber mit dem Zusatz &bdquo;ehrlich, ohne Marketing-Sprache, mit dem Hinweis, was übertrieben ist&ldquo;. So bekommst du eine Definition im Geist dieses Kurses."],
+  ["p", "Dieses Glossar wächst mit. Im täglichen aban-news-Newsletter erkläre ich neue Begriffe, sobald sie auftauchen — immer nach demselben Prinzip: Was sagt das Marketing, und was ist wirklich dran."]
+ ]
+}

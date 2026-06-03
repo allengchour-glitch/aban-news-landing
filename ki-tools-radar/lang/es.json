@@ -1,0 +1,1030 @@
+{
+  "ui": {
+    "tagline": "Evaluación honesta de herramientas de IA para el mercado hispanohablante",
+    "all_tools": "← Todas las herramientas",
+    "categories": "Categorías",
+    "home_heading": "{n} herramientas de IA, evaluadas honestamente",
+    "use_cases": "Casos de uso",
+    "editor_note": "Nota editorial",
+    "dsgvo": "RGPD",
+    "pro": "Pros",
+    "contra": "Contras",
+    "alternatives": "Alternativas",
+    "cta": "Ir a {name}",
+    "best_in": "Mejores herramientas de {cat}",
+    "dach": "Relevancia DACH",
+    "free": "gratis",
+    "price_from": "desde",
+    "language": "Idioma",
+    "privacy": "Privacidad",
+    "imprint": "Aviso legal",
+    "data_note": "Datos: curados, investigación con IA",
+    "disclosure": "Transparencia: Algunos enlaces son de afiliación (marcados con *). Si compras a través de ellos, recibimos una comisión sin coste adicional para ti. Las valoraciones son independientes de esto.",
+    "meta_home": "{n} herramientas de IA para el mercado hispanohablante: evaluaciones honestas, precios, avisos de RGPD, pros/contras y alternativas.",
+    "meta_tool": "{name} en prueba: valoración, pros y contras, precios, RGPD, alternativas.",
+    "meta_cat": "Las mejores herramientas de IA de {cat}, evaluadas honestamente y comparadas."
+  },
+  "tools": {
+    "claude": {
+      "aban_note": "Mejor IA conversacional para textos en español. Lo uso a diario. Sonnet 4.6 es mi modelo por defecto, Opus para investigación larga, Haiku para procesamiento en volumen.",
+      "dsgvo_note": "Residencia de datos en UE vía API de Anthropic; retención cero bajo solicitud.",
+      "use_cases": ["Escritura", "Investigación", "Programación", "Análisis de PDF"],
+      "pro": ["Mejor para español", "API fiable", "Modelos especializados"],
+      "contra": ["Más caro que alternativas", "Curva de aprendizaje", "API limitada sin Pro"]
+    },
+    "chatgpt": {
+      "aban_note": "Equipamiento estándar. GPT-5 es un buen todoterreno, pero para textos comerciales en español Claude es más preciso. Si solo tienes una herramienta: esta.",
+      "dsgvo_note": "",
+      "use_cases": ["Escritura", "Investigación", "Programación", "Generación de imágenes"],
+      "pro": ["Versátil", "Interfaz intuitiva", "Multimodal"],
+      "contra": ["Privacidad cuestionable", "Entrenamiento con datos públicos", "Limitaciones en contexto"]
+    },
+    "gemini": {
+      "aban_note": "Fuerte en multimodal y contexto largo. Integración con Google Workspace interesante. Como herramienta independiente: segunda opción frente a Claude.",
+      "dsgvo_note": "",
+      "use_cases": ["Investigación", "Multimodal", "Integración con Google Docs"],
+      "pro": ["Contexto largo", "Buena multimedia", "Integración Google"],
+      "contra": ["Rendimiento inconsistente", "Interfaz confusa", "Almacenamiento de datos"]
+    },
+    "mistral": {
+      "aban_note": "Basada en UE (París). Para clientes sensibles a cumplimiento, ahora es una opción limpia. Grandes clientes como BNP y Harvey AI son la prueba de confianza. Codestral para programación es sólido.",
+      "dsgvo_note": "",
+      "use_cases": ["Escritura", "Programación", "Cumplimiento UE", "Razonamiento"],
+      "pro": ["Empresa europea", "Cumplimiento RGPD", "Modelos especializados"],
+      "contra": ["Menos conocida", "Ecosistema menor", "Documentación limitada"]
+    },
+    "deepseek": {
+      "aban_note": "Precios disruptivos (-75 a -99% vs OpenAI). Para cargas de trabajo en volumen sin preocupaciones de cumplimiento, inmejorable. Para datos empresariales DACH, no lo haría pasar por proveedor chino.",
+      "dsgvo_note": "",
+      "use_cases": ["API en volumen", "Optimización de costes", "Razonamiento"],
+      "pro": ["Precios muy bajos", "Buen rendimiento", "Desarrollo rápido"],
+      "contra": ["Proveedor chino", "Sin soporte RGPD", "Riesgos de privacidad"]
+    },
+    "perplexity": {
+      "aban_note": "Herramienta de investigación número 1. Pro con modelos Sonar reemplaza Google en el 80% de mis preguntas. Transparencia en fuentes es la característica ganadora.",
+      "dsgvo_note": "",
+      "use_cases": ["Investigación", "Búsqueda de noticias", "Búsqueda de fuentes"],
+      "pro": ["Fuentes claras", "Búsqueda web real-time", "Muy preciso"],
+      "contra": ["Requiere suscripción Pro", "Interfaz a veces lenta", "Límites de consultas"]
+    },
+    "aleph-alpha": {
+      "aban_note": "LLMs alemanas, Heidelberg. Pharia-1 para industrias reguladas (farmacia, banca, administración). Rendimiento por detrás de Claude/Mistral pero si tu oficial de cumplimiento quiere 'soberanía UE', esta es la respuesta. Sin autoservicio.",
+      "dsgvo_note": "",
+      "use_cases": ["Soberanía UE", "Banca", "Farmacia", "Administración"],
+      "pro": ["Totalmente alemana", "RGPD garantizado", "Sectores regulados"],
+      "contra": ["Rendimiento limitado", "Modelo heredado", "Muy caro"]
+    },
+    "cowork": {
+      "aban_note": "Tres días de autoevaluación real. Vale la pena para análisis de PDF, generación de diapositivas, tablas dinámicas en Excel. Lo necesito 2 veces por semana. No es herramienta milagrosa, pero ahorro de tiempo concreto.",
+      "dsgvo_note": "",
+      "use_cases": ["Análisis de PDF", "Generación de diapositivas", "Tablas dinámicas Excel"],
+      "pro": ["Análisis PDF excelente", "Integración Office", "Interfaz limpia"],
+      "contra": ["Solo en Claude Max", "Caro", "Características limitadas"]
+    },
+    "openrouter": {
+      "aban_note": "Router pragmático multi-modelo. Para cuestiones de costes API, inmejorable. Lo ignoré durante meses, error. Ahora mi estándar para pruebas A/B entre proveedores.",
+      "dsgvo_note": "",
+      "use_cases": ["API multi-proveedor", "Enrutamiento por coste", "Pruebas de modelos"],
+      "pro": ["Mejor precio agregado", "Muchos modelos", "Sin registro obligatorio"],
+      "contra": ["Requiere API keys", "Latencia variable", "Soporte limitado"]
+    },
+    "n8n": {
+      "aban_note": "Autoalojable, amigable con RGPD, empresa alemana. Mi backend para automatización de boletines. Make.com es más pulido, n8n es más robusto y controlable.",
+      "dsgvo_note": "",
+      "use_cases": ["Automatización de flujos", "Pipeline de boletines", "Integración API"],
+      "pro": ["Autoalojable", "Empresa alemana", "RGPD cumplidor"],
+      "contra": ["Curva de aprendizaje", "Soporte variable", "UI a veces confusa"]
+    },
+    "make": {
+      "aban_note": "Constructor visual bonito. Inicio rápido que n8n. Pero: dependencia del proveedor y más caro en volumen. Para principiantes excelente, para profesionales n8n.",
+      "dsgvo_note": "",
+      "use_cases": ["Automatización de flujos", "Integración SaaS sin código"],
+      "pro": ["Visual intuitivo", "Rápido de aprender", "Muchas integraciones"],
+      "contra": ["Dependencia del proveedor", "Caro en volumen", "Exportación limitada"]
+    },
+    "zapier": {
+      "aban_note": "Ecosistema más grande (7000+ apps). Pero caro y limitado en lógica. Si solo necesitas SaaS-A → SaaS-B, funciona. Para flujos con IA: Make o n8n.",
+      "dsgvo_note": "",
+      "use_cases": ["Integración SaaS", "Flujos rápidos"],
+      "pro": ["Más integraciones", "Muy confiable", "Fácil de usar"],
+      "contra": ["Muy caro", "Lógica limitada", "Sin flexibilidad"]
+    },
+    "cursor": {
+      "aban_note": "Mi editor por defecto. Fork de VSCode con Claude/GPT integrado. Modo Composer es el cambio de juego para programación por intuición. Si escribes código sin Cursor, pierdes tiempo.",
+      "dsgvo_note": "",
+      "use_cases": ["Programación", "Refactoring de código", "Programación en pareja"],
+      "pro": ["Mejor editor IA", "Integración Claude", "Muy rápido"],
+      "contra": ["Suscripción cara", "Dependencia de proveedor", "Offline limitado"]
+    },
+    "windsurf": {
+      "aban_note": "Competidor de Cursor. Cascade Mode es conceptualmente más limpio. Probado, pero mi flujo de Cursor era demasiado profundo. Quien empieza nuevo: buena opción.",
+      "dsgvo_note": "",
+      "use_cases": ["Programación", "Programación intuitiva"],
+      "pro": ["Cascade Mode innovador", "UI limpia", "Buena performance"],
+      "contra": ["Comunidad pequeña", "Menos integraciones", "Caro"]
+    },
+    "github-copilot": {
+      "aban_note": "Clásico, ahora con Claude Sonnet como opción. Autocompletado sólido. Cursor superior en modo agente, Copilot en flujo integrado de GitHub.",
+      "dsgvo_note": "",
+      "use_cases": ["Autocompletado de código", "Integración GitHub"],
+      "pro": ["Integración GitHub nativa", "Precio competitivo", "Muy confiable"],
+      "contra": ["Autocompletado limitado", "Sin análisis codebase", "Privacidad variable"]
+    },
+    "claude-code": {
+      "aban_note": "Agente de codificación basado en terminal. Si automatizas rutinas (Refactor 50 archivos, aumentar cobertura de pruebas), es fuerte. CLI > GUI para usuarios avanzados.",
+      "dsgvo_note": "",
+      "use_cases": ["Refactoring en volumen", "Análisis de codebase", "Codificación en terminal"],
+      "pro": ["Terminal nativo", "Muy poderoso", "Buena integración"],
+      "contra": ["Curva de aprendizaje", "No visual", "Requiere suscripción"]
+    },
+    "bolt": {
+      "aban_note": "Programación intuitiva basada en navegador. Una página de destino en 20 min. Lock-in y límites una vez que sea más complejo. Para MVPs: utilizable.",
+      "dsgvo_note": "",
+      "use_cases": ["Prototipado MVP", "Páginas de destino"],
+      "pro": ["Muy rápido", "Sin instalación", "Buenos templates"],
+      "contra": ["Lock-in de plataforma", "Escala limitada", "Exportación difícil"]
+    },
+    "lovable": {
+      "aban_note": "Constructor de programación intuitiva muy suave. Salidas bonitas. Escala mal más allá de los primeros 200 prompts. Para solos con un solo side-project: ok.",
+      "dsgvo_note": "",
+      "use_cases": ["Prototipado MVP", "Programación intuitiva"],
+      "pro": ["Muy pulido", "Interfaz hermosa", "Rápido inicio"],
+      "contra": ["Escalabilidad pobre", "Opciones limitadas", "Caro por proyecto"]
+    },
+    "v0": {
+      "aban_note": "Next.js + shadcn desde el principio. Si estás en ecosistema Vercel: primera opción. De otro modo: la salida es React-específica, eso limita.",
+      "dsgvo_note": "",
+      "use_cases": ["Prototipado React", "Generación UI"],
+      "pro": ["Integración Next.js", "Componentes Shadcn", "Output profesional"],
+      "contra": ["Solo React", "Dependencia Vercel", "Caro en volumen"]
+    },
+    "replit": {
+      "aban_note": "Full-stack en navegador incluyendo hosting. Apropiado para mini-apps completas. Precio duro en volumen.",
+      "dsgvo_note": "",
+      "use_cases": ["MVP full-stack", "Hosting incluido"],
+      "pro": ["Hosting integrado", "Full-stack", "Sin configuración"],
+      "contra": ["Muy caro", "Escalabilidad limitada", "Vendor lock-in"]
+    },
+    "midjourney": {
+      "aban_note": "Rey de calidad de imagen. v7 es asombroso. Para activos de marketing, imágenes editoriales, arte conceptual. Discord-first es molesto, pero web UI funciona ahora.",
+      "dsgvo_note": "",
+      "use_cases": ["Activos de marketing", "Imágenes editoriales", "Arte conceptual"],
+      "pro": ["Mejor calidad imagen", "Muy versátil", "Comunidad grande"],
+      "contra": ["Discord obligatorio", "Caro por imagen", "Sin comercial full"]
+    },
+    "flux": {
+      "aban_note": "Empresa alemana (Friburgo), creadores de Stable Diffusion. Flux.1 Dev es rendimiento superior. Pesos abiertos, ideal para cumplimiento DACH.",
+      "dsgvo_note": "",
+      "use_cases": ["Generación de imágenes", "Autoalojamiento", "Cumplimiento DACH"],
+      "pro": ["Empresa alemana", "Pesos abiertos", "Muy rápido"],
+      "contra": ["Menos conocido", "Documentación limitada", "Sin interfaz web oficial"]
+    },
+    "stable-diffusion": {
+      "aban_note": "Clásico de código abierto. Autoalojable. Si tienes tarjeta gráfica RTX: ComfyUI + SD = imágenes ilimitadas sin dependencia del proveedor.",
+      "dsgvo_note": "",
+      "use_cases": ["Generación de imágenes autoalojada", "Imágenes en volumen"],
+      "pro": ["Código abierto", "Autoalojable", "Ilimitado localmente"],
+      "contra": ["Requiere GPU", "Configuración técnica", "Interfaz compleja"]
+    },
+    "ideogram": {
+      "aban_note": "Mejor renderizado de texto en imagen. Para pósters, logos, diseños con tipografía. Más débil en fotorrealismo.",
+      "dsgvo_note": "",
+      "use_cases": ["Tipografía", "Pósters", "Conceptos de logo"],
+      "pro": ["Texto en imágenes", "Diseño tipográfico", "Muy preciso"],
+      "contra": ["Sin fotorrealismo", "Caro", "Interfaz limitada"]
+    },
+    "krea": {
+      "aban_note": "Generación de imágenes real-time + bundle multi-modelo. Para diseñadores interesante, porque el control de salida es bueno. Tier 1 es limitante.",
+      "dsgvo_note": "",
+      "use_cases": ["Diseño real-time", "Generación de imágenes"],
+      "pro": ["Real-time visual", "Múltiples modelos", "Control muy bueno"],
+      "contra": ["Tier 1 muy limitado", "Precio confuso", "Comunidad pequeña"]
+    },
+    "recraft": {
+      "aban_note": "Generación SVG + consistencia de estilo de marca. Si necesitas mantener imágenes de marca consistentes: superior.",
+      "dsgvo_note": "",
+      "use_cases": ["Generación SVG", "Consistencia de marca"],
+      "pro": ["SVG nativo", "Consistencia marca", "Editable vectorial"],
+      "contra": ["Caso de uso específico", "Caro", "Comunidad pequeña"]
+    },
+    "leonardo": {
+      "aban_note": "Generación de imágenes enfocada en activos de juegos. UI sólida, pero salida para marketing es segunda liga.",
+      "dsgvo_note": "",
+      "use_cases": ["Activos de juegos", "Arte conceptual"],
+      "pro": ["Buena UI", "Efectos especiales", "Comunidad gaming"],
+      "contra": ["Específico para juegos", "Calidad media marketing", "Caro"]
+    },
+    "playground": {
+      "aban_note": "Tier gratuito generoso. Salida generalmente aceptable, raramente sobresaliente. Para hobby ok.",
+      "dsgvo_note": "",
+      "use_cases": ["Generación de imágenes hobby"],
+      "pro": ["Gratis generoso", "Sin requisitos", "Fácil uso"],
+      "contra": ["Calidad variable", "Pocas opciones avanzadas", "Soporte limitado"]
+    },
+    "dalle": {
+      "aban_note": "Entretanto superado por Midjourney/Flux. Pero: perfectamente integrado en flujo ChatGPT. Para imágenes rápidas de diapositivas alcanza.",
+      "dsgvo_note": "",
+      "use_cases": ["Integrado ChatGPT", "Imagen rápida"],
+      "pro": ["Integración ChatGPT", "Rápido", "Seguro comercial"],
+      "contra": ["Calidad limitada", "Caro por imagen", "Sin control fino"]
+    },
+    "adobe-firefly": {
+      "aban_note": "Seguro comercial (entrenado en datos licenciados). Para marcas que deben generar legalmente. Integración sin costuras en Photoshop/Illustrator.",
+      "dsgvo_note": "",
+      "use_cases": ["Comercialmente seguro", "Flujo Adobe"],
+      "pro": ["Seguridad legal", "Integración Adobe", "Licencia clara"],
+      "contra": ["Integración suscripción", "Calidad media", "Caro dentro Adobe"]
+    },
+    "sora": {
+      "aban_note": "Generación de video. Emocionante, pero en 2026 aún no listo para producción de marketing. Clips de demostración sí, vídeos héroes no.",
+      "dsgvo_note": "",
+      "use_cases": ["Demostraciones de video", "Video conceptual"],
+      "pro": ["Calidad impresionante", "Nativo en ChatGPT", "Fácil de usar"],
+      "contra": ["Aún en beta", "Limitaciones creativas", "Caro"]
+    },
+    "runway": {
+      "aban_note": "Suite de herramientas más robusta para video-IA (Motion-Brush, Inpainting). Para profesionales que realmente producen.",
+      "dsgvo_note": "",
+      "use_cases": ["Edición de video", "VFX", "Gráficos en movimiento"],
+      "pro": ["Suite completa", "Profesional", "Herramientas avanzadas"],
+      "contra": ["Curva de aprendizaje", "Muy caro", "Requiere potencia"]
+    },
+    "pika": {
+      "aban_note": "Video de corta duración para redes sociales. Inicio simple, pero la salida es duración limitada.",
+      "dsgvo_note": "",
+      "use_cases": ["Video de formato corto", "Redes sociales"],
+      "pro": ["Muy fácil", "Rápido", "Social-first"],
+      "contra": ["Duración limitada", "Calidad media", "Opciones limitadas"]
+    },
+    "elevenlabs": {
+      "aban_note": "Voces alemanas suenan sorprendentemente naturales en 2026. Para podcasts, voiceovers, audiolibros. Clonación de voz es escalofriante, con todas las implicaciones éticas.",
+      "dsgvo_note": "",
+      "use_cases": ["Voiceover", "Podcast", "Audiolibro"],
+      "pro": ["Voces muy naturales", "Clonación buena", "Multiidioma"],
+      "contra": ["Preocupaciones éticas", "Caro por minuto", "Sin características avanzadas"]
+    },
+    "suno": {
+      "aban_note": "Generación de música. Para jingles, música de fondo, diversión. Para producción seria: situación legal en DACH poco clara.",
+      "dsgvo_note": "",
+      "use_cases": ["Jingles", "Música de fondo"],
+      "pro": ["Fácil de usar", "Muy versátil", "Sin experiencia musical"],
+      "contra": ["Derechos de autor inciertos", "Calidad inconsistente", "Caro"]
+    },
+    "udio": {
+      "aban_note": "Competidor de Suno. Calidad de salida similar. Situación de licencia igual de poco clara, cuidado con uso comercial.",
+      "dsgvo_note": "",
+      "use_cases": ["Generación de música"],
+      "pro": ["Buena interfaz", "Estilos diversos", "Rápido"],
+      "contra": ["Derechos inciertos", "Calidad variable", "Limitaciones uso"]
+    },
+    "murf": {
+      "aban_note": "Clásico sólido de TTS. Voces alemanas ok, pero ElevenLabs es 2026 superior.",
+      "dsgvo_note": "",
+      "use_cases": ["Voiceover", "TTS"],
+      "pro": ["Voces decentes", "Interfaz simple", "Rápido"],
+      "contra": ["Menos natural que ElevenLabs", "Caro", "Opciones limitadas"]
+    },
+    "heygen": {
+      "aban_note": "Avatares de IA que recitan textos. Traducción a 40+ idiomas con sincronización labial. Fuerte para marketing multilingüe. Avatar output sigue siendo reconociblemente sintético.",
+      "dsgvo_note": "",
+      "use_cases": ["Videos avatar IA", "Contenido multiidioma"],
+      "pro": ["Sincronización labial", "Multiidioma", "Profesional"],
+      "contra": ["Avatar sintético", "Muy caro", "Personalización limitada"]
+    },
+    "synthesia": {
+      "aban_note": "Avatares IA empresarial. Templates bonitos, más caro que HeyGen. Más para departamentos de L&D que para solos.",
+      "dsgvo_note": "",
+      "use_cases": ["Capacitación corporativa", "Avatar IA"],
+      "pro": ["Templates profesionales", "Muy pulido", "Buena UI"],
+      "contra": ["Muy caro", "Overkill para solos", "Avatar obvio"]
+    },
+    "d-id": {
+      "aban_note": "Foto a cabeza hablante. Baja barrera de entrada. La salida ahora es superada por HeyGen.",
+      "dsgvo_note": "",
+      "use_cases": ["Videos avatar"],
+      "pro": ["Muy simple", "Entrada barata", "Rápido"],
+      "contra": ["Calidad baja", "Avatar poco natural", "Precio bajo justificado"]
+    },
+    "descript": {
+      "aban_note": "Edición audio/video vía transcripción. Cambio de juego para podcasters: eliminas palabras en texto, el audio sigue. Overdub (clonación de voz) es limpio.",
+      "dsgvo_note": "",
+      "use_cases": ["Edición de podcast", "Edición basada en transcripción"],
+      "pro": ["Edición única", "Overdub bueno", "Interfaz intuitiva"],
+      "contra": ["Caro por minuto", "Requiere transcripción", "AI limitada"]
+    },
+    "veed": {
+      "aban_note": "Edición de video en navegador con ayuda IA. Generación de subtítulos es buena. Para edición potente demasiado limitado.",
+      "dsgvo_note": "",
+      "use_cases": ["Edición de video navegador", "Subtítulos"],
+      "pro": ["Sin instalación", "Subtítulos automáticos", "Interfaz limpia"],
+      "contra": ["Características limitadas", "Proyecto compartido complejo", "Caro"]
+    },
+    "capcut": {
+      "aban_note": "Edición mobile-first con características IA. Pipeline TikTok es su herramienta integrada. Preocupación privacidad: ByteDance.",
+      "dsgvo_note": "",
+      "use_cases": ["Edición móvil", "Video social"],
+      "pro": ["Integración TikTok", "Muy potente móvil", "Gratis bueno"],
+      "contra": ["Propiedad ByteDance", "Privacidad cuestionable", "Desktop débil"]
+    },
+    "otter": {
+      "aban_note": "Clásico para transcripción de reuniones. Alemán ok, no perfecto. Para reuniones en inglés: 1A.",
+      "dsgvo_note": "",
+      "use_cases": ["Transcripción de reunión", "Notas"],
+      "pro": ["Muy confiable", "Notas automáticas", "Compartible"],
+      "contra": ["Alemán imperfecto", "Caro por reunión", "Interfaz antigua"]
+    },
+    "fireflies": {
+      "aban_note": "Como Otter, con mejor sincronización CRM. Modelos alemanes similarmente ok. Precios más amigables.",
+      "dsgvo_note": "",
+      "use_cases": ["IA de reunión", "Integración CRM"],
+      "pro": ["CRM mejor integrado", "Precio más bajo", "Flexible"],
+      "contra": ["Alemán limitado", "Interfaz confusa", "Soporte variable"]
+    },
+    "granola": {
+      "aban_note": "Mi nuevo estándar. Sin bot en reunión, se ejecuta en segundo plano en tu Mac. Salida de notas para reuniones en alemán: de clase mundial. Ha reemplazado Otter.",
+      "dsgvo_note": "",
+      "use_cases": ["IA de reunión", "Alemán-first"],
+      "pro": ["Nativo Mac", "Notas alemán excelente", "Privacidad nativa"],
+      "contra": ["Solo Mac", "No CRM", "Interfaz minimalista"]
+    },
+    "tldv": {
+      "aban_note": "Empresa alemana (Múnich). Bueno rendimiento multiidioma. Flujo bot-en-reunión, que Granola resuelve más elegantemente.",
+      "dsgvo_note": "",
+      "use_cases": ["IA de reunión", "Cumplimiento DACH"],
+      "pro": ["Empresa alemana", "Multiidioma", "Buena UI"],
+      "contra": ["Bot en reunión", "Menos pulido Granola", "Caro"]
+    },
+    "krisp": {
+      "aban_note": "Cancelación de ruido para llamadas. Funciona fiable sin fanfarria. Notas IA desde 2025 integradas.",
+      "dsgvo_note": "",
+      "use_cases": ["Cancelación de ruido", "Calidad de llamada"],
+      "pro": ["Muy confiable", "Ligero", "Eficaz"],
+      "contra": ["Función única", "Caro para lo que hace", "Sin trascripción"]
+    },
+    "fathom": {
+      "aban_note": "Tier gratuito generoso con reuniones ilimitadas. Enfoque EE.UU., calidad de voz alemana ok.",
+      "dsgvo_note": "",
+      "use_cases": ["IA de reunión", "Gratuito potente usuario"],
+      "pro": ["Gratis muy bueno", "Sin límites free", "Fácil de usar"],
+      "contra": ["Enfoque EE.UU.", "Alemán limitado", "Interfaz anticuada"]
+    },
+    "deepl": {
+      "aban_note": "Empresa alemana (Colonia). Mejor traducción DE↔EN, punto. Write es competidor de Grammarly, sólido para alemán. Cuenta Pro es equipamiento estándar para todo solo DACH.",
+      "dsgvo_note": "",
+      "use_cases": ["Traducción DE↔EN", "Refinamiento Write", "API"],
+      "pro": ["Mejor alemán", "Empresa alemana", "Muy confiable"],
+      "contra": ["Caro por volumen", "Sin otros idiomas bueno", "Dependencia de suscripción"]
+    },
+    "deepl-write": {
+      "aban_note": "Para alemán claramente mejor que Grammarly. Ajuste de estilo 'Comercial', 'Académico', 'Informal' funciona. Prueba 14 días en edición 017.",
+      "dsgvo_note": "",
+      "use_cases": ["Refinamiento alemán", "Variación de estilo"],
+      "pro": ["Mejor para alemán", "Estilos flexibles", "Muy natural"],
+      "contra": ["Solo alemán bueno", "Caro", "Sin análisis profundo"]
+    },
+    "grammarly": {
+      "aban_note": "Refinador inglés. Para textos alemanes demasiado débil, toma DeepL Write o LanguageTool. Para alcance inglés: ok.",
+      "dsgvo_note": "",
+      "use_cases": ["Gramática inglesa"],
+      "pro": ["Muy bueno inglés", "Amplia integración", "Barrato"],
+      "contra": ["Alemán muy débil", "Privacy concerns", "Sobrevalorado"]
+    },
+    "languagetool": {
+      "aban_note": "Empresa alemana (Potsdam). Núcleo de código abierto. Más fuerte que corrector de Duden para problemas de estilo alemán. Autoalojable.",
+      "dsgvo_note": "",
+      "use_cases": ["Gramática alemana", "Corrección autoalojada"],
+      "pro": ["Alemán excelente", "Código abierto", "Autoalojable"],
+      "contra": ["Interfaz simple", "Menos pulido DeepL", "Soporte limitado"]
+    },
+    "tavily": {
+      "aban_note": "API de búsqueda para agentes IA. Si tus agentes necesitan investigación web, Tavily es el estándar limpio. Más barato que SerpAPI.",
+      "dsgvo_note": "",
+      "use_cases": ["Búsqueda agente", "RAG"],
+      "pro": ["API clara", "Precio justo", "Documentación buena"],
+      "contra": ["API requiere", "Límites de llamadas", "Sin UI"]
+    },
+    "exa": {
+      "aban_note": "API de búsqueda semántica. Encuentra contenido temáticamente similar mejor que búsqueda por palabras clave. Ideal para agentes de investigación.",
+      "dsgvo_note": "",
+      "use_cases": ["Búsqueda semántica", "RAG", "Investigación"],
+      "pro": ["Búsqueda muy buena", "Semántica fuerte", "Agentes excelente"],
+      "contra": ["Caro por volumen", "No full-text search", "Documentación limitada"]
+    },
+    "you": {
+      "aban_note": "Búsqueda IA + modos para código, investigación. Perplexity 2026 es la mejor opción, You tiene nicho de todos modos.",
+      "dsgvo_note": "",
+      "use_cases": ["Búsqueda IA", "Búsqueda multi-modo"],
+      "pro": ["Modos especializados", "Buena búsqueda", "Interfaz limpia"],
+      "contra": ["Menos known than Perplexity", "Comunidad pequeña", "Funciones limitadas"]
+    },
+    "phind": {
+      "aban_note": "Búsqueda para desarrolladores. Respuestas enfocadas en código con fuentes. Para reemplazo Stack Overflow utilizable.",
+      "dsgvo_note": "",
+      "use_cases": ["Búsqueda desarrollo", "Búsqueda código"],
+      "pro": ["Código enfocado", "Fuentes claras", "Muy útil devs"],
+      "contra": ["Específico nichos", "Comunidad pequeña", "A veces inexacto"]
+    },
+    "kagi": {
+      "aban_note": "Búsqueda de pago sin publicidad, con asistencia IA. Para buscadores potentes: refrescante. Cuesta, pero vale si buscas diario.",
+      "dsgvo_note": "",
+      "use_cases": ["Búsqueda sin publicidad", "Búsqueda potencia"],
+      "pro": ["Sin publicidad", "Muy rápida", "Privacidad", "Resultados mejores"],
+      "contra": ["Requiere pago", "Pequeña comunidad", "Base datos limitada"]
+    },
+    "brave": {
+      "aban_note": "Índice propio. Privacy-first. Resumen IA integrado. Alternativa sólida a Google sin rastreo.",
+      "dsgvo_note": "",
+      "use_cases": ["Búsqueda privacidad", "Sin rastreo"],
+      "pro": ["Privacidad", "Índice propio", "Rápida"],
+      "contra": ["Índice pequeño", "Menos resultados", "Comunidad pequeña"]
+    },
+    "groq": {
+      "aban_note": "Campeón de velocidad de inferencia. Llama, Mixtral con tokens/s locos. Si construyes aplicaciones sensibles a latencia: primera opción.",
+      "dsgvo_note": "",
+      "use_cases": ["Inferencia baja latencia", "IA en tiempo real"],
+      "pro": ["Más rápido posible", "Modelos buenos", "Muy confiable"],
+      "contra": ["Selección modelo limitada", "Caro para volumen", "Sin custom"]
+    },
+    "together-ai": {
+      "aban_note": "Modelos de código abierto (Llama, Mixtral, Qwen) como API. Inferencia barata, buena selección de modelos.",
+      "dsgvo_note": "",
+      "use_cases": ["API código abierto", "Hosting multi-modelo"],
+      "pro": ["Modelos open-source", "Barato", "Flexible"],
+      "contra": ["Soporte variable", "Documentación limitada", "Performance inconsistente"]
+    },
+    "cerebras": {
+      "aban_note": "Chips personalizados, inferencia muy rápida. Hosting Llama top. Selección de modelos más limitada que Groq.",
+      "dsgvo_note": "",
+      "use_cases": ["Inferencia alta velocidad"],
+      "pro": ["Muy rápido", "Llama excelente", "Barato"],
+      "contra": ["Pocos modelos", "Soporte limitado", "Documentación pobre"]
+    },
+    "replicate": {
+      "aban_note": "Modelos de código abierto como API hosting. Incluyendo modelos imagen/audio/video. Bueno para prototipado.",
+      "dsgvo_note": "",
+      "use_cases": ["Prototipado modelo", "API multimodal"],
+      "pro": ["Muy versátil", "Prototipado fácil", "Documentación buena"],
+      "contra": ["Precio por segundo caro", "Performance variable", "Límites"]
+    },
+    "hugging-face": {
+      "aban_note": "GitHub para modelos IA. Inference-Endpoints sólidos. Datasets-Library es oro para investigadores.",
+      "dsgvo_note": "",
+      "use_cases": ["Hosting de modelos", "Datasets", "IA de código abierto"],
+      "pro": ["Comunidad enorme", "Datasets excelentes", "Herramientas mejores"],
+      "contra": ["Interfaz confusa", "Endpoints caros", "Documentación a veces pobre"]
+    },
+    "langchain": {
+      "aban_note": "Framework para aplicaciones LLM. Polarizador: muchos piensan excesivamente engineered. Para patrones estándar ok, para lógica personalizada mejor escribir directo.",
+      "dsgvo_note": "",
+      "use_cases": ["Framework agente", "Pipelines LLM"],
+      "pro": ["Comunidad grande", "Muchas integraciones", "Docs buenos"],
+      "contra": ["Sobrecomplejo", "Cambios frecuentes", "Overkill a menudo"]
+    },
+    "llamaindex": {
+      "aban_note": "Framework RAG. Más esbelta que LangChain para casos de uso de recuperación. Para aplicaciones de búsqueda de documentos: opción limpia.",
+      "dsgvo_note": "",
+      "use_cases": ["RAG", "Búsqueda de documentos"],
+      "pro": ["Esbelta RAG", "Comunidad creciente", "Buena documentación"],
+      "contra": ["Casos uso limitados", "Ecosistema menor", "Overkill búsqueda simple"]
+    },
+    "weaviate": {
+      "aban_note": "Base de datos de vector basada en UE. Países Bajos, conforme a RGPD. Production-ready. Núcleo de código abierto.",
+      "dsgvo_note": "",
+      "use_cases": ["Búsqueda de vectores", "RAG", "Cumplimiento UE"],
+      "pro": ["EU-basada", "Muy confiable", "Código abierto"],
+      "contra": ["Caro cloud", "Learning curve", "Comunidad más pequeña"]
+    },
+    "qdrant": {
+      "aban_note": "Base de datos de vector alemana (Berlín). De código abierto. Autoalojable. Rendimiento superior. Primera opción para configuraciones RAG DACH.",
+      "dsgvo_note": "",
+      "use_cases": ["Búsqueda de vectores", "Cumplimiento DACH", "RAG autoalojado"],
+      "pro": ["Empresa alemana", "Muy rápido", "Código abierto"],
+      "contra": ["Interfaz mínima", "Comunidad creciente", "Documentación a veces"]
+    },
+    "pinecone": {
+      "aban_note": "Base de datos de vector administrada. Solo nube EE.UU. Conveniente, pero lock-in. Para cumplimiento DACH: tomar Qdrant.",
+      "dsgvo_note": "",
+      "use_cases": ["Base de datos de vector administrada"],
+      "pro": ["Sin operaciones", "Muy confiable", "Interfaz simple"],
+      "contra": ["Lock-in completo", "Solo nube", "Muy caro"]
+    },
+    "chroma": {
+      "aban_note": "Base de datos de vector esbelta para desarrollo local y pequeños prototipos. Producción: cambiar a Qdrant.",
+      "dsgvo_note": "",
+      "use_cases": ["Desarrollo local", "Prototipado"],
+      "pro": ["Muy simple", "Ligero", "Sin operaciones"],
+      "contra": ["Escalabilidad limitada", "Sin cluster", "Desarrollo activo"]
+    },
+    "notion-ai": {
+      "aban_note": "Si vives en Notion, vale. Q&A sobre workspace ok. Para flujos fuera Notion: no vale la pena.",
+      "dsgvo_note": "",
+      "use_cases": ["Workspace Notion IA"],
+      "pro": ["Integración nativa", "Muy simple", "Notion usuarios"],
+      "contra": ["Locked Notion", "Funcionalidad limitada", "Caro add-on"]
+    },
+    "mem": {
+      "aban_note": "Aplicación de notas con IA integrada. Etiquetado automático y búsqueda semántica funcionan bien. Aplicación móvil sólida.",
+      "dsgvo_note": "",
+      "use_cases": ["Notas inteligentes", "Etiquetado automático"],
+      "pro": ["IA muy buena", "Busqueda semantica", "Móvil sólida"],
+      "contra": ["Menos conocida", "Comunidad pequeña", "Precio relativamente caro"]
+    },
+    "reflect": {
+      "aban_note": "Aplicación de notas con GPT-4 integrado. Muy limpia. Notas diarias + backlinks como Roam, con IA encima.",
+      "dsgvo_note": "",
+      "use_cases": ["Notas diarias", "Backlinks", "Aumentada IA"],
+      "pro": ["Muy pulida", "GPT-4 integrado", "Interfaz limpia"],
+      "contra": ["Nicho específico", "Comunidad pequeña", "Caro"]
+    },
+    "obsidian": {
+      "aban_note": "Local-first, markdown plano. Con plugins (Copilot, Smart Connections) se vuelve capaz de IA. Mi segundo cerebro desde 4 años.",
+      "dsgvo_note": "",
+      "use_cases": ["Notas locales", "Markdown", "Zettelkasten"],
+      "pro": ["Local-first", "Comunidad enorme", "Muy flexible"],
+      "contra": ["Curva de aprendizaje", "Requiere plugins", "No nube gratis"]
+    },
+    "loom": {
+      "aban_note": "Grabación de pantalla con transcripción IA + resumen. Para actualizaciones asincrónicas a clientes: oro puro. Tier gratuito alcanza para solos.",
+      "dsgvo_note": "",
+      "use_cases": ["Grabación de pantalla", "Comunicación asincrónica"],
+      "pro": ["Muy fácil", "Resumen automático", "Compartible"],
+      "contra": ["Precio suscripción", "Límites gratis", "Edición video limitada"]
+    },
+    "capso": {
+      "aban_note": "Alternativa de código abierto a Loom. Hosting en UE posible. Para privacidad de datos DACH interesante.",
+      "dsgvo_note": "",
+      "use_cases": ["Grabación de pantalla código abierto", "Cumplimiento DACH"],
+      "pro": ["Código abierto", "EU hosting", "Privacidad"],
+      "contra": ["Comunidad pequeña", "Menos pulida Loom", "Soporte limitado"]
+    },
+    "jasper": {
+      "aban_note": "Herramienta de escritura de marketing. Fue caliente 2023, ahora superado por Claude/ChatGPT. Templates no son características que matan.",
+      "dsgvo_note": "",
+      "use_cases": ["Copywriting de marketing"],
+      "pro": ["Templates", "Fácil de usar", "Escritura rápida"],
+      "contra": ["Superado Claude", "Caro", "Límites funcionales"]
+    },
+    "copy-ai": {
+      "aban_note": "Herramienta de flujos de marketing. Para equipos de ventas sin habilidades IA utilizable. Solo marketer: Claude alcanza.",
+      "dsgvo_note": "",
+      "use_cases": ["Flujos de marketing", "Sales copy"],
+      "pro": ["Flujos buenos", "Plantillas útiles", "Equipo fácil"],
+      "contra": ["Menor que Claude", "Caro por volumen", "Ui poco clara"]
+    },
+    "writesonic": {
+      "aban_note": "Herramienta de generación de contenido. Outputs mediocres, Claude mejor. Chatsonic es su propio chat, ChatGPT mejor.",
+      "dsgvo_note": "",
+      "use_cases": ["Generación contenido volumen"],
+      "pro": ["Muy rápido", "Barato volumen", "UI simple"],
+      "contra": ["Calidad pobre", "Sobrevaluado", "Sin innovación"]
+    },
+    "sudowrite": {
+      "aban_note": "IA de escritura de ficción. Especializada para autores de novelas. Inglés-first, alemán ok.",
+      "dsgvo_note": "",
+      "use_cases": ["Escritura de ficción", "Story beats"],
+      "pro": ["Ficción especializada", "Beat estructurado", "Creativo"],
+      "contra": ["Muy específico", "Comunidad pequeña", "Caro"]
+    },
+    "lex": {
+      "aban_note": "Editor de texto aumentado con IA. Llamadas IA inline en selecciones. UI limpia sin distracciones.",
+      "dsgvo_note": "",
+      "use_cases": ["Escritura aumentada IA"],
+      "pro": ["IA inline", "Interfaz limpia", "Distraction-free"],
+      "contra": ["Nicho pequeño", "Comunidad pequeña", "Caro"]
+    },
+    "wordtune": {
+      "aban_note": "Paráfrasis de oraciones. Inglés-first. Para alemán demasiado débil.",
+      "dsgvo_note": "",
+      "use_cases": ["Paráfrasis inglés"],
+      "pro": ["Paráfrasis rápida", "Integraciones", "Barato"],
+      "contra": ["Alemán muy débil", "Función única", "Menos avanzado"]
+    },
+    "quillbot": {
+      "aban_note": "Paráfrasis + gramática. Inglés-fuerte. Verificación de plagio es bonus agradable.",
+      "dsgvo_note": "",
+      "use_cases": ["Paráfrasis"],
+      "pro": ["Paráfrasis muy buena", "Verificación plagio", "Barato"],
+      "contra": ["Inglés principalmente", "Función singular", "Sin Deutsch"]
+    },
+    "anyword": {
+      "aban_note": "Marketing copy con puntuación de rendimiento. Inglés-first. Caro para solos.",
+      "dsgvo_note": "",
+      "use_cases": ["Ad copy", "Marketing rendimiento"],
+      "pro": ["Scoring performance", "Optimización A/B", "Data-driven"],
+      "contra": ["Muy caro", "Inglés principalmente", "Solos prohibitivo"]
+    },
+    "profound": {
+      "aban_note": "Generative-Engine-Optimization-Tracking. Mide si tu marca aparece en ChatGPT, Claude, Perplexity. 2026 esto es lo que Google-ranking era 2010.",
+      "dsgvo_note": "",
+      "use_cases": ["GEO-tracking", "Brand en LLM"],
+      "pro": ["Métrica futura", "Inteligencia competitiva", "Datos claros"],
+      "contra": ["Muy caro", "Mercado nuevo", "Interfaces complejas"]
+    },
+    "athenahq": {
+      "aban_note": "Competidor GEO-tracking a Profound. Precios mid-market. Reportes en DE ok.",
+      "dsgvo_note": "",
+      "use_cases": ["GEO", "Brand monitoring"],
+      "pro": ["Precio accesible", "Reportes DE", "Interfaz clara"],
+      "contra": ["Menos conocida Profound", "Datos limitados", "UI anticuada"]
+    },
+    "otterly": {
+      "aban_note": "Empresa austriaca (Viena). DACH-idioma-first. Para KMU la entrada asequible a GEO-tracking.",
+      "dsgvo_note": "",
+      "use_cases": ["GEO-DACH", "Brand monitoring KMU"],
+      "pro": ["Empresa austriaca", "Precios KMU", "Lengua DACH"],
+      "contra": ["Datos europeos limitados", "Comunidad pequeña", "Interfaz básica"]
+    },
+    "ahrefs": {
+      "aban_note": "Estándar SEO. Backlinks, keywords, auditoría de sitio. Características IA son adornos, el índice es el valor.",
+      "dsgvo_note": "",
+      "use_cases": ["SEO", "Análisis backlink"],
+      "pro": ["Mejor índice", "Muy completo", "Confiable"],
+      "contra": ["Muy caro", "Interfaz compleja", "Overkill para solos"]
+    },
+    "semrush": {
+      "aban_name": "Conjunto de herramientas más amplio que Ahrefs (también inteligencia de anuncios). Más caro. Si haces ambos: SEMrush.",
+      "dsgvo_note": "",
+      "use_cases": ["SEO", "Anuncios competidores", "Marketing stack"],
+      "pro": ["Más herramientas", "Inteligencia anuncios", "Muy completo"],
+      "contra": ["Muy caro", "Curva de aprendizaje", "Overkill para solos"]
+    },
+    "surfer": {
+      "aban_note": "Optimizador SEO en página con escritura IA. Content-Score-Optimization funciona bien para inglés, alemán ok.",
+      "dsgvo_note": "",
+      "use_cases": ["SEO en página", "Optimización contenido"],
+      "pro": ["Escritura IA buena", "Score clear", "Integraciones"],
+      "contra": ["Alemán limitado", "Caro", "Solos imposible"]
+    },
+    "frase": {
+      "aban_note": "Generador de brief de contenido SEO. Más barato que Surfer. Herramienta sólida para content marketers.",
+      "dsgvo_note": "",
+      "use_cases": ["Briefs de contenido", "Análisis SERP"],
+      "pro": ["Briefing excelente", "Precio bueno", "Sencillo"],
+      "contra": ["Funcionalidad limitada", "Sin escritura IA", "Interfaz básica"]
+    },
+    "marketmuse": {
+      "aban_note": "Estrategia de cluster de temas para contenido empresarial. Para solos excesivo.",
+      "dsgvo_note": "",
+      "use_cases": ["SEO empresarial"],
+      "pro": ["Clusters topic", "Estrategia clara", "Enterprise"],
+      "contra": ["Muy caro", "Solos innecesario", "Interfaz compleja"]
+    },
+    "canva": {
+      "aban_note": "Magic Studio convierte Canva en plataforma de diseño IA. Para solos DACH la herramienta de diseño más pragmática. Templates + IA = salida rápido y utilizable.",
+      "dsgvo_note": "",
+      "use_cases": ["Diseño", "Templates sociales", "Presentaciones"],
+      "pro": ["IA integrada", "Muy fácil", "Templates excelentes"],
+      "contra": ["Calidad output limitada", "Caro Pro", "Sin edición profesional"]
+    },
+    "figma": {
+      "aban_note": "Características IA en Figma (Make Designs, Make Prototype) son sólidas. Para diseño UI el estándar.",
+      "dsgvo_note": "",
+      "use_cases": ["Diseño UI", "Prototipado"],
+      "pro": ["Estándar industria", "Colaboración", "IA integrada"],
+      "contra": ["Curva de aprendizaje", "Precio suscripción", "Datenschutz concerns"]
+    },
+    "gamma": {
+      "aban_note": "Diapositivas IA de texto. Más bonito que Decktopus, más rápido que PowerPoint+IA. Para pitch decks utilizable.",
+      "dsgvo_note": "",
+      "use_cases": ["Diapositivas IA", "Pitch decks"],
+      "pro": ["Muy rápido", "Hermoso output", "Fácil"],
+      "contra": ["Plantillas limitadas", "Edición manual pesada", "Caro"]
+    },
+    "tome": {
+      "aban_note": "Giro a herramienta de ventas. Las diapositivas IA todavía existen, pero Gamma supera.",
+      "dsgvo_note": "",
+      "use_cases": ["Sales decks", "Diapositivas IA"],
+      "pro": ["Sales features", "Colaboración", "Pulida"],
+      "contra": ["Menos diapositivas focus", "Competidor Gamma", "Caro"]
+    },
+    "beautiful-ai": {
+      "aban_note": "Smart-templates con auto-layout. Sólido, no sobresaliente.",
+      "dsgvo_note": "",
+      "use_cases": ["Diapositivas auto-layout"],
+      "pro": ["Auto-layout", "Templates pulidas", "Fácil"],
+      "contra": ["Función singular", "Menos flexible", "Caro"]
+    },
+    "ollama": {
+      "aban_note": "LLMs locales en Mac/PC. Llama, Mistral, Qwen localmente. Si RGPD es duro: tu amigo. Hambriento en hardware.",
+      "dsgvo_note": "",
+      "use_cases": ["LLM local", "RGPD-seguro", "IA offline"],
+      "pro": ["Totalmente local", "Sin privacidad", "Ilimitado"],
+      "contra": ["Requiere GPU potente", "CLI complejo", "Modelos limitados"]
+    },
+    "lm-studio": {
+      "aban_name": "GUI para LLMs locales. Entrada más bonita que Ollama CLI. Modo servidor para API-calls desde apps propias.",
+      "dsgvo_note": "",
+      "use_cases": ["LLM local GUI", "Testing offline"],
+      "pro": ["GUI intuitiva", "Servidor incluido", "Sin CLI"],
+      "contra": ["Menos flexible Ollama", "Comunidad pequeña", "Desarrollo"]
+    },
+    "open-webui": {
+      "aban_note": "Clon ChatGPT para Ollama. Autoalojado. Si tu equipo necesita IA local: es esto.",
+      "dsgvo_note": "",
+      "use_cases": ["Chat autoalojado", "Equipo IA local"],
+      "pro": ["ChatGPT clone", "Equipo ready", "Código abierto"],
+      "contra": ["Requiere infraestructura", "Documentación limitada", "UI mínima"]
+    },
+    "lovable-translate-deepl": {
+      "aban_note": "Localización para strings de software. IA traduce archivos JSON/i18n. Útil para apps multi-idioma.",
+      "dsgvo_note": "",
+      "use_cases": ["Localización software", "i18n"],
+      "pro": ["Traducción automática", "JSON directo", "Rápido"],
+      "contra": ["Calidad a veces pobre", "Caro por volumen", "Sin verificación"]
+    },
+    "browserbase": {
+      "aban_note": "Navegador sin cabeza en nube para agentes IA. Si tu agente debe manejar sitios web: infraestructura sólida.",
+      "dsgvo_note": "",
+      "use_cases": ["Control de navegador agente"],
+      "pro": ["Muy confiable", "Escalable", "API clara"],
+      "contra": ["Caro por minuto", "Documentación limitada", "Solución específica"]
+    },
+    "browse-ai": {
+      "aban_note": "Scraper visual. Haces clic en campos, IA extrae. Para list-building y monitoring.",
+      "dsgvo_note": "",
+      "use_cases": ["Scraping", "Monitoring"],
+      "pro": ["Visual simple", "No código", "Rápido setup"],
+      "contra": ["Escalabilidad limitada", "Frágil cambios sitio", "Caro"]
+    },
+    "apify": {
+      "aban_note": "Basado en UE (República Checa). Mayor librería de scrapers. Power-user-tool para data-pipelines.",
+      "dsgvo_note": "",
+      "use_cases": ["Web scraping", "Data pipelines"],
+      "pro": ["Mejor librería", "Muy potente", "EU-basada"],
+      "contra": ["Curva de aprendizaje", "Caro volumen", "Documentación densa"]
+    },
+    "bardeen": {
+      "aban_note": "Automatización de navegador para knowledge workers. Quasi Zapier para tu navegador. AI-Playbooks agradables.",
+      "dsgvo_note": "",
+      "use_cases": ["Automatización navegador", "Automatización trabajo-conocimiento"],
+      "pro": ["Visual simple", "AI playbooks", "No-code"],
+      "contra": ["Fragilidad sitio", "Limitado funcionalidad", "Caro"]
+    },
+    "clay": {
+      "aban_note": "Sales-intelligence + enriquecimiento. Power-tool para equipos lead-gen. Caro, pero ROI en una semana si funciona.",
+      "dsgvo_note": "",
+      "use_cases": ["Enriquecimiento lead", "Inteligencia ventas"],
+      "pro": ["Muy poderoso", "Datos excelentes", "Automatización"],
+      "contra": ["Muy caro", "Curva de aprendizaje", "Complejidad"]
+    },
+    "apollo": {
+      "aban_note": "Base de datos B2B + suite outreach. Bien para DACH si usas con cuidado, calidad datos en DE varía.",
+      "dsgvo_note": "",
+      "use_cases": ["Base de datos B2B", "Outreach"],
+      "pro": ["Muy completo", "Datos decentes", "Automatización"],
+      "contra": ["Datos DACH variable", "Muy caro", "Privacy concerns"]
+    },
+    "lusha": {
+      "aban_note": "Enriquecimiento de contactos. Problemas RGPD documentados, ser cuidadoso. Para datos EE.UU. ok.",
+      "dsgvo_note": "",
+      "use_cases": ["Datos de contacto"],
+      "pro": ["Muy rápido", "Buena cobertura", "API"],
+      "contra": ["RGPD problems", "Menos fiable DACH", "Reputación"]
+    },
+    "intercom-fin": {
+      "aban_note": "Agente IA de soporte. Resolución automática 50% posible. Caro por resolución, pero matemática funciona para soporte volumen.",
+      "dsgvo_note": "",
+      "use_cases": ["Automatización soporte"],
+      "pro": ["Auto-resolución buena", "Muy pulido", "Integración clara"],
+      "contra": ["Muy caro", "Tiempos configuración", "Límites personalizción"]
+    },
+    "zendesk-ai": {
+      "aban_note": "Add-on IA en Zendesk. Si ya tienes Zendesk: activar. Valor standalone: meh.",
+      "dsgvo_note": "",
+      "use_cases": ["Helpdesk IA"],
+      "pro": ["Integración Zendesk", "Fácil activar", "Mejora helpdesk"],
+      "contra": ["Solo útil con Zendesk", "Funcionalidad limitada", "Caro add-on"]
+    },
+    "aider": {
+      "aban_note": "Agente de codificación en terminal. Git-aware, multi-archivo. Código abierto. Para power-users alternativa limpia a Cursor.",
+      "dsgvo_note": "",
+      "use_cases": ["Codificación terminal", "Agente código abierto"],
+      "pro": ["Código abierto", "Git native", "Muy potente"],
+      "contra": ["CLI solamente", "Curva de aprendizaje", "Comunidad pequeña"]
+    },
+    "cline": {
+      "aban_note": "Agente VSCode-Extension. Modos Plan + Act. Muy bien diseñado. Código abierto.",
+      "dsgvo_note": "",
+      "use_cases": ["Agente VSCode", "Codificación"],
+      "pro": ["Integración VSCode", "Muy pulido", "Código abierto"],
+      "contra": ["Requiere VSCode", "Menos maduro Cursor", "Comunidad pequeña"]
+    },
+    "tabnine": {
+      "aban_note": "Autocompletado código privacy-first. Autoalojable para empresas. Para empresas compliance-heavy interesante.",
+      "dsgvo_note": "",
+      "use_cases": ["Autocompletado privacy-first", "Autoalojamiento empresarial"],
+      "pro": ["Privacidad fuerte", "Autoalojable", "Modelos personalizables"],
+      "contra": ["Menos IA que Copilot", "Comunidad pequeña", "Caro"]
+    },
+    "cody": {
+      "aban_note": "IA consciente de codebase para grandes repos. Si tienes monorepo: fuerte. Solo: Cursor alcanza.",
+      "dsgvo_note": "",
+      "use_cases": ["Codebase empresarial", "Búsqueda de código"],
+      "pro": ["Codebase-aware", "Muy preciso", "Empresarial"],
+      "contra": ["Solo útil grandes repos", "Muy caro", "Comunidad pequeña"]
+    },
+    "warp": {
+      "aban_note": "Terminal IA. Modo agente puede multi-step shell tasks. UI bonita. Cloud-sync, preocupaciones privacidad.",
+      "dsgvo_note": "",
+      "use_cases": ["Terminal IA"],
+      "pro": ["UI hermosa", "Rápida", "Multi-step tasks"],
+      "contra": ["Cloud sync concerns", "Caro", "Menos maduro"]
+    },
+    "codex": {
+      "aban_note": "Agente de codificación de OpenAI. Basado en nube. Funciona, pero Claude Code en terminal es más redondo.",
+      "dsgvo_note": "",
+      "use_cases": ["Agente codificación nube"],
+      "pro": ["Integración ChatGPT", "Muy fácil", "Pulido"],
+      "contra": ["Menos potente Claude Code", "Cloud solamente", "Privacidad"]
+    },
+    "pipedream": {
+      "aban_note": "Código + híbrido sin-código. Para devs que quieren escribir flujos en JavaScript.",
+      "dsgvo_note": "",
+      "use_cases": ["Flujos híbrido código"],
+      "pro": ["JavaScript flexible", "Sin-código híbrido", "Integraciones"],
+      "contra": ["Específico desarrolladores", "Comunidad pequeña", "Documentación limitada"]
+    },
+    "windmill": {
+      "aban_name": "Motor de flujo autoalojado. Basado en UE (París). Si n8n es muy limitado y quieres código.",
+      "dsgvo_note": "",
+      "use_cases": ["Automatización autoalojada", "Cumplimiento UE"],
+      "pro": ["Autoalojado", "EU-basada", "Código flexible"],
+      "contra": ["Curva de aprendizaje", "Comunidad pequeña", "Documentación pobre"]
+    },
+    "supabase": {
+      "aban_note": "Firebase de código abierto. Hosting UE. pgvector incluido. Backend builder para solos devs.",
+      "dsgvo_note": "",
+      "use_cases": ["Backend", "Búsqueda de vectores", "Hosting EU"],
+      "pro": ["Muy completo", "EU hosting", "pgvector", "Barato"],
+      "contra": ["Documentación a veces", "Comunidad creciente", "Menos pulido Firebase"]
+    },
+    "vercel-ai": {
+      "aban_note": "SDK IA para TypeScript. Más limpio que LangChain para casos estándar. Si haces Next.js: primera opción.",
+      "dsgvo_note": "",
+      "use_cases": ["TypeScript IA", "Integración Next.js"],
+      "pro": ["Muy limpio", "Next.js native", "Documentación buena"],
+      "contra": ["TypeScript solamente", "Comunidad pequeña", "Casos específicos"]
+    },
+    "modal": {
+      "aban_note": "GPU compute sin servidor. Para custom-model-deployment sin estrés infraestructura.",
+      "dsgvo_note": "",
+      "use_cases": ["GPU sin servidor", "Custom model hosting"],
+      "pro": ["Muy escalable", "Sin operaciones", "GPU potente"],
+      "contra": ["Caro por hora GPU", "Documentación densa", "Comunidad pequeña"]
+    },
+    "linear": {
+      "aban_note": "Issue-tracker con características IA (auto-triage, resumen). Mi herramienta para side-projects. La UI es de clase propia.",
+      "dsgvo_note": "",
+      "use_cases": ["Seguimiento de problemas", "Gestión de proyectos"],
+      "pro": ["UI excelente", "Rápida", "IA integrada"],
+      "contra": ["Caro por asiento", "Específico solos/pequeño", "Sin autohostable"]
+    },
+    "humata": {
+      "aban_note": "Herramienta Q&A de PDF. Entretanto superada por carga PDF de Claude/ChatGPT.",
+      "dsgvo_note": "",
+      "use_cases": ["Investigación PDF"],
+      "pro": ["PDF específica", "Búsqueda buena", "Rápida"],
+      "contra": ["Función singular", "Superada alternativas", "Caro"]
+    },
+    "consensus": {
+      "aban_note": "Búsqueda IA sobre papers científicos. Para investigación de hechos más allá de LinkedIn-knowledge: oro.",
+      "dsgvo_note": "",
+      "use_cases": ["Investigación científica"],
+      "pro": ["Papers científicos", "Muy preciso", "Fuentes claras"],
+      "contra": ["Caso de uso específico", "Caro Pro", "Comunidad académica"]
+    },
+    "elicit": {
+      "aban_note": "Flujo de investigación para literatura científica. Auto-extracción de hallazgos. Para investigadores claramente mejor que ChatGPT.",
+      "dsgvo_note": "",
+      "use_cases": ["Investigación literatura", "Meta-análisis"],
+      "pro": ["Literatura especializada", "Extracción automática", "Flujo investigación"],
+      "contra": ["Caso de uso específico", "Caro", "Comunidad pequeña"]
+    },
+    "scite": {
+      "aban_note": "Validación de citas. Muestra si paper es apoyado u obiectado. Para investigación seria.",
+      "dsgvo_note": "",
+      "use_cases": ["Validación cita", "Validación científica"],
+      "pro": ["Validación única", "Transparencia cita", "Seriedad"],
+      "contra": ["Función específica", "Caro", "Comunidad académica"]
+    },
+    "tactiq": {
+      "aban_note": "Meeting IA basada en navegador. Barato, output ok. Granola lo supera claramente.",
+      "dsgvo_note": "",
+      "use_cases": ["Meeting IA presupuesto"],
+      "pro": ["Muy barato", "Fácil", "Sin bot"],
+      "contra": ["Calidad limitada", "Función singular", "Granola mejor"]
+    },
+    "supahub": {
+      "aban_note": "Podcast-a-contenido. Genera show-notes, citas, tweets de audio. Para podcasters.",
+      "dsgvo_note": "",
+      "use_cases": ["Repurposing de podcast"],
+      "pro": ["Podcast específica", "Muy útil podcasters", "Automatización"],
+      "contra": ["Función singular", "Calidad variable", "Caro"]
+    },
+    "pictory": {
+      "aban_note": "Blog-a-video. Output es reconociblemente IA-generado. Para snippets sociales en volumen ok.",
+      "dsgvo_note": "",
+      "use_cases": ["Blog a video"],
+      "pro": ["Blog a video", "Rápido", "Volumen"],
+      "contra": ["Obvio IA", "Calidad limitada", "Edición pobre"]
+    },
+    "lumen5": {
+      "aban_note": "Blog a video social. Template-driven. Output alcanza LinkedIn-posts, nada más.",
+      "dsgvo_note": "",
+      "use_cases": ["Video social"],
+      "pro": ["Muy simple", "Plantillas", "Rápido"],
+      "contra": ["Calidad baja", "Muy limitado", "No profesional"]
+    },
+    "wisper-flow": {
+      "aban_note": "Voice-to-text dictación para Mac. Más rápido que tipear. Reconocimiento alemán de clase mundial.",
+      "dsgvo_note": "",
+      "use_cases": ["Voice dictación"],
+      "pro": ["Alemán excelente", "Muy rápido", "Mac native"],
+      "contra": ["Solo Mac", "Caro suscripción", "Sin edición"]
+    },
+    "raycast-ai": {
+      "aban_note": "Spotlight-replacement con llamadas IA en todas partes en OS. Flujo quick-prompt sin cambio navegador. Solo Mac.",
+      "dsgvo_note": "",
+      "use_cases": ["IA en todo OS", "Quick prompts"],
+      "pro": ["Integración OS", "Muy rápido", "Potente"],
+      "contra": ["Solo Mac", "Curva de aprendizaje", "Caro"]
+    },
+    "arc": {
+      "aban_note": "Navegador móvil con resumen IA. 'Browse for me' es agradable. Pivot a Dia viene.",
+      "dsgvo_note": "",
+      "use_cases": ["Navegador móvil IA"],
+      "pro": ["Resumen automático", "Mobile first", "Novedad"],
+      "contra": ["Navegador limitado", "Resumen débil a veces", "Adopción lenta"]
+    },
+    "dia": {
+      "aban_note": "Navegador IA-first. Chat sobre pestañas. Concepto interesante, estado beta.",
+      "dsgvo_note": "",
+      "use_cases": ["Navegador IA"],
+      "pro": ["Concepto innovador", "Tab chat", "Muy novel"],
+      "contra": ["Beta solamente", "Funcionalidad limitada", "Navegador incompleto"]
+    },
+    "snowball": {
+      "aban_note": "Plataforma competitive-intelligence. Pricing empresarial. Para solos: demasiado grande.",
+      "dsgvo_note": "",
+      "use_cases": ["Inteligencia competitiva empresarial"],
+      "pro": ["Muy completo", "Datos buenos", "Enterprise"],
+      "contra": ["Muy caro", "Solos prohibitivo", "Overkill"]
+    },
+    "crayon": {
+      "aban_note": "Competitive-tracking. Como Klue. Pricing empresarial.",
+      "dsgvo_note": "",
+      "use_cases": ["Competitive tracking"],
+      "pro": ["Datos buenos", "UI clara", "Enterprise"],
+      "contra": ["Muy caro", "Solos prohibitivo", "Función limitada"]
+    },
+    "glean": {
+      "aban_note": "Búsqueda empresarial sobre todas herramientas SaaS. Para equipos > 50 personas asesino. Setup solo: excesivo.",
+      "dsgvo_note": "",
+      "use_cases": ["Búsqueda empresarial", "Trabajo IA"],
+      "pro": ["Muy poderoso", "Integración total", "Equipo grande"],
+      "contra": ["Muy caro", "Solos imposible", "Configuración compleja"]
+    },
+    "anthropic-mcp": {
+      "aban_note": "Especificación abierta para tool-calling. Claude, Cursor, Windsurf, todos adoptan. Si construyes herramientas para agentes: esto es.",
+      "dsgvo_note": "",
+      "use_cases": ["Herramientas agente", "Integraciones"],
+      "pro": ["Estándar abierto", "Adopción rápida", "Flexible"],
+      "contra": ["Aún nuevo", "Comunidad creciente", "Documentación limitada"]
+    },
+    "ollama-cloud": {
+      "aban_note": "Sandbox de intérprete código como API. Para agentes que ejecutan código.",
+      "dsgvo_note": "",
+      "use_cases": ["Sandbox código", "Ejecución agente"],
+      "pro": ["Sandbox seguro", "Fácil integración", "Confiable"],
+      "contra": ["Caro por segundo", "Sin personalizazión", "Limitaciones"]
+    },
+    "e2b": {
+      "aban_note": "Infraestructura sandbox para agentes IA. Basada en UE (Praga). Núcleo código abierto. Opción limpia para constructor de agentes.",
+      "dsgvo_note": "",
+      "use_cases": ["Sandbox agente", "Cumplimiento UE"],
+      "pro": ["EU-basada", "Código abierto", "Segura"],
+      "contra": ["Comunidad pequeña", "Documentación limitada", "Caro"]
+    },
+    "langfuse": {
+      "aban_note": "Plataforma observabilidad LLM alemana (Berlín). Tracing, eval, cost-tracking. Autoalojable. Si tu stack LLM se pone serio: primera opción.",
+      "dsgvo_note": "",
+      "use_cases": ["Observabilidad LLM", "Gestión prompt", "Cumplimiento DACH"],
+      "pro": ["Empresa alemana", "Autoalojable", "Muy completa"],
+      "contra": ["Curva de aprendizaje", "Comunidad pequeña", "Documentación"]
+    },
+    "langsmith": {
+      "aban_note": "Observabilidad LLM para apps LangChain. Vendor-lock-light. Cloud-only región UE aún 2026.",
+      "dsgvo_note": "",
+      "use_cases": ["Tracing LangChain"],
+      "pro": ["Tracing excelente", "Integración native", "Debugging"],
+      "contra": ["Vendor lock-in", "Cloud solamente", "Dependencia LangChain"]
+    },
+    "browser-use": {
+      "aban_note": "Librería Python para control de navegador IA. Código abierto. Stack más delgado para constructor de agentes.",
+      "dsgvo_note": "",
+      "use_cases": ["Agente de navegador", "Automatización de código abierto"],
+      "pro": ["Código abierto", "Python simple", "Muy flexible"],
+      "contra": ["Documentación limitada", "Comunidad pequeña", "Mantenimiento"]
+    }
+  }
+}

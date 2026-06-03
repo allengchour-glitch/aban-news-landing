@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "last_updated": "2026-06-03",
+  "last_updated": "2026-05-27",
   "source": "aban news — kuratiert aus 30 Newsletter-Ausgaben + DACH-Standard-Stack",
   "license": "CC-BY-4.0 (Attribution: aban news, abannews.com)",
   "rating_scale": "1-10 (10 = täglich, würd ich kaufen)",
@@ -2695,7 +2695,8 @@
       "url": "https://surferseo.com",
       "alternatives": [
         "frase",
-        "marketmuse"
+        "marketmuse",
+        "semrush"
       ],
       "use_cases": [
         "On-Page-SEO",
@@ -2837,32 +2838,6 @@
       "use_cases": [
         "AI-Slides",
         "Pitch-Decks"
-      ]
-    },
-    {
-      "id": "tome",
-      "name": "Tome",
-      "vendor": "Tome",
-      "category": [
-        "Slides"
-      ],
-      "pricing": {
-        "free_tier": true,
-        "paid_from_eur": 16,
-        "currency": "EUR",
-        "model": "Subscription"
-      },
-      "dach_relevance": 5,
-      "worth_it_score": 7,
-      "aban_note": "Pivot zu Sales-Tool. AI-Slides gibt's noch, aber Gamma überholt.",
-      "ausgaben_mentions": [],
-      "url": "https://tome.app",
-      "alternatives": [
-        "gamma"
-      ],
-      "use_cases": [
-        "Sales-Decks",
-        "AI-Slides"
       ]
     },
     {
@@ -4100,6 +4075,966 @@
         "Browser-Agent",
         "Open-Source-Automation"
       ]
+    },
+    {
+      "id": "poe",
+      "name": "Poe",
+      "vendor": "Quora",
+      "category": [
+        "AI-Chat"
+      ],
+      "use_cases": [
+        "Writing",
+        "Research"
+      ],
+      "url": "https://poe.com",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 18
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Poe buendelt mehrere KI-Modelle (ChatGPT, Claude, Gemini u.a.) in einer Oberflaeche und erlaubt eigene Chatbots.",
+      "alternatives": [
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "notebooklm",
+      "name": "NotebookLM",
+      "vendor": "Google",
+      "category": [
+        "Research",
+        "Productivity"
+      ],
+      "use_cases": [
+        "Research",
+        "PDF-Analyse"
+      ],
+      "url": "https://notebooklm.google",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Freemium"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 8.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Analysiert hochgeladene Dokumente und antwortet nur auf Basis der eigenen Quellen, inkl. automatischer Podcast-Zusammenfassungen.",
+      "alternatives": [
+        "humata",
+        "elicit"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "fellow",
+      "name": "Fellow",
+      "vendor": "Fellow Insights",
+      "category": [
+        "Meeting-AI",
+        "Productivity"
+      ],
+      "use_cases": [
+        "Meeting-AI",
+        "Notizen"
+      ],
+      "url": "https://fellow.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 6
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] KI-Meetingassistent mit Agendas, automatischen Notizen, Aktionspunkten und 1-on-1-Tools.",
+      "alternatives": [
+        "otter",
+        "fathom",
+        "tldv"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "avoma",
+      "name": "Avoma",
+      "vendor": "Avoma",
+      "category": [
+        "Meeting-AI"
+      ],
+      "use_cases": [
+        "Meeting-AI"
+      ],
+      "url": "https://www.avoma.com",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 18
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Transkribiert Meetings, erstellt KI-Notizen und aktualisiert CRM-Eintraege, fokussiert auf Sales-Teams.",
+      "alternatives": [
+        "otter",
+        "fathom",
+        "fireflies"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "readwise",
+      "name": "Readwise Reader",
+      "vendor": "Readwise",
+      "category": [
+        "Productivity",
+        "Research"
+      ],
+      "use_cases": [
+        "Research",
+        "Notizen"
+      ],
+      "url": "https://readwise.io",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 9
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Read-it-Later fuer Artikel, PDFs und Newsletter mit KI-Zusammenfassungen und Highlight-Sync.",
+      "alternatives": [
+        "mem",
+        "obsidian",
+        "reflect"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "tana",
+      "name": "Tana",
+      "vendor": "Tana",
+      "category": [
+        "Productivity",
+        "Meeting-AI"
+      ],
+      "use_cases": [
+        "Notizen",
+        "Meeting-AI"
+      ],
+      "url": "https://tana.inc",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 18
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Agentenbasierter Meeting- und Wissens-Workspace mit Live-Transkription und Kontext-Diagramm.",
+      "alternatives": [
+        "obsidian",
+        "mem",
+        "reflect"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "napkin-ai",
+      "name": "Napkin AI",
+      "vendor": "Napkin AI",
+      "category": [
+        "Productivity",
+        "Design"
+      ],
+      "use_cases": [
+        "Design",
+        "Writing"
+      ],
+      "url": "https://www.napkin.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 8
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 6.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Wandelt Text automatisch in Infografiken, Diagramme und Flussdiagramme um.",
+      "alternatives": [
+        "gamma",
+        "beautiful-ai",
+        "tome"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "komo",
+      "name": "Komo Search",
+      "vendor": "Komo",
+      "category": [
+        "Search",
+        "Research"
+      ],
+      "use_cases": [
+        "Research"
+      ],
+      "url": "https://komo.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 14
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 6.5,
+      "dsgvo_note": "Kein Tracking, datenschutzfreundliches Design.",
+      "aban_note": "[Redaktion: pruefen & bewerten] Werbefreie KI-Suchmaschine mit generativen Antworten und Quellenangaben, ohne Nutzer-Tracking.",
+      "alternatives": [
+        "perplexity",
+        "you",
+        "brave"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "lindy",
+      "name": "Lindy",
+      "vendor": "Lindy AI",
+      "category": [
+        "Agent",
+        "Automation"
+      ],
+      "use_cases": [
+        "Automation",
+        "Agent"
+      ],
+      "url": "https://www.lindy.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 45
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Persoenlicher KI-Assistent, der E-Mails verwaltet, Meetings aufzeichnet und kalenderbasierte Aufgaben erledigt.",
+      "alternatives": [
+        "make",
+        "zapier",
+        "n8n"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "spinach",
+      "name": "Spinach AI",
+      "vendor": "StayIn",
+      "category": [
+        "Meeting-AI",
+        "Productivity"
+      ],
+      "use_cases": [
+        "Meeting-AI"
+      ],
+      "url": "https://www.spinach.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Freemium",
+        "paid_from_eur": 18
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Automatisiert Agile-Standups und Meetingnotizen und synchronisiert Aktionspunkte mit Jira, GitHub und Slack.",
+      "alternatives": [
+        "otter",
+        "fathom",
+        "fireflies"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "le-chat",
+      "name": "Le Chat (Mistral)",
+      "vendor": "Mistral AI",
+      "category": [
+        "AI-Chat"
+      ],
+      "use_cases": [
+        "Writing",
+        "Research",
+        "Coding"
+      ],
+      "url": "https://chat.mistral.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 14
+      },
+      "dach_relevance": 8,
+      "worth_it_score": 8.0,
+      "dsgvo_note": "EU-Anbieter (Frankreich), Daten verbleiben in der EU.",
+      "aban_note": "[Redaktion: pruefen & bewerten] Mistrals europaeischer KI-Assistent mit Websuche, Code-Interpreter und Canvas-Editor, als EU-Anbieter DSGVO-relevant.",
+      "alternatives": [
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "coda-ai",
+      "name": "Coda AI",
+      "vendor": "Coda",
+      "category": [
+        "Productivity",
+        "Writing"
+      ],
+      "use_cases": [
+        "Writing",
+        "Automation"
+      ],
+      "url": "https://coda.io",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 10
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Vereint Dokumente, Tabellen und Automatisierungen mit integrierter KI fuer Texte, Zusammenfassungen und Formeln.",
+      "alternatives": [
+        "notion-ai"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "goblin-tools",
+      "name": "Goblin Tools",
+      "vendor": "Arcology",
+      "category": [
+        "Productivity"
+      ],
+      "use_cases": [
+        "Productivity"
+      ],
+      "url": "https://goblin.tools",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Free"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Kostenlose Sammlung kleiner KI-Helfer, u.a. zum Aufteilen grosser Aufgaben in kleine Schritte, entwickelt fuer neurodivergente Menschen.",
+      "alternatives": [],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "mymind",
+      "name": "mymind",
+      "vendor": "mymind",
+      "category": [
+        "Productivity",
+        "Research"
+      ],
+      "use_cases": [
+        "Notizen",
+        "Research"
+      ],
+      "url": "https://mymind.com",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 6
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "Privat, kein Tracking, kein Weiterverkauf von Nutzerdaten.",
+      "aban_note": "[Redaktion: pruefen & bewerten] Privater KI-Speicher fuer Lesezeichen, Notizen und Bilder mit automatischer Verschlagwortung und semantischer Suche.",
+      "alternatives": [
+        "mem",
+        "reflect",
+        "obsidian"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "freepik-ai",
+      "name": "Freepik AI Suite",
+      "vendor": "Freepik",
+      "category": [
+        "Image-Gen",
+        "Design"
+      ],
+      "use_cases": [
+        "Image-Gen",
+        "Design"
+      ],
+      "url": "https://www.freepik.com",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 5
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] KI-Bildgenerator und Kreativplattform mit vielen Bild- und Videomodellen sowie Bearbeitungs-Suite.",
+      "alternatives": [
+        "midjourney",
+        "ideogram",
+        "dalle"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "magnific",
+      "name": "Magnific AI",
+      "vendor": "Magnific",
+      "category": [
+        "Image-Gen",
+        "Design"
+      ],
+      "use_cases": [
+        "Image-Gen",
+        "Design"
+      ],
+      "url": "https://www.magnific.com",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 36
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] KI-Bild-Upscaler, der Fotos und KI-Bilder hochskaliert und Details rekonstruiert.",
+      "alternatives": [
+        "topaz-photo-ai",
+        "freepik-ai"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "topaz-photo-ai",
+      "name": "Topaz Photo AI",
+      "vendor": "Topaz Labs",
+      "category": [
+        "Image-Gen",
+        "Design"
+      ],
+      "use_cases": [
+        "Image-Gen",
+        "Design"
+      ],
+      "url": "https://www.topazlabs.com/topaz-photo",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 16
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "Lokale Desktop-Software, kein Cloud-Upload.",
+      "aban_note": "[Redaktion: pruefen & bewerten] Lokale Software fuer KI-Fotoverbesserung mit Rauschreduzierung, Schaerfung und Upscaling.",
+      "alternatives": [
+        "magnific",
+        "freepik-ai"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "topaz-video-ai",
+      "name": "Topaz Video AI",
+      "vendor": "Topaz Labs",
+      "category": [
+        "Video-Gen",
+        "Design"
+      ],
+      "use_cases": [
+        "Video-Gen"
+      ],
+      "url": "https://www.topazlabs.com/topaz-video",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 62
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "Lokale Desktop-Software.",
+      "aban_note": "[Redaktion: pruefen & bewerten] Lokale Software fuer KI-Videooptimierung: Upscaling auf 4K, Frame-Interpolation, Stabilisierung.",
+      "alternatives": [
+        "runway",
+        "capcut"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "luma-dream-machine",
+      "name": "Luma Dream Machine",
+      "vendor": "Luma AI",
+      "category": [
+        "Video-Gen"
+      ],
+      "use_cases": [
+        "Video-Gen"
+      ],
+      "url": "https://lumalabs.ai/dream-machine",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 28
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] KI-Videogenerator, der aus Text- und Bildprompts Videos mit Kamerabewegungen erzeugt.",
+      "alternatives": [
+        "runway",
+        "kling",
+        "sora"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "kling",
+      "name": "Kling AI",
+      "vendor": "Kuaishou",
+      "category": [
+        "Video-Gen",
+        "Image-Gen"
+      ],
+      "use_cases": [
+        "Video-Gen"
+      ],
+      "url": "https://klingai.com",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 9
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "Anbieter in China (Kuaishou); Datenschutzpruefung empfohlen.",
+      "aban_note": "[Redaktion: pruefen & bewerten] KI-Videogenerator mit realistischer Bewegungsphysik und kostenlosem Einstiegstier fuer kurze Clips.",
+      "alternatives": [
+        "runway",
+        "luma-dream-machine",
+        "sora"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "hailuo-ai",
+      "name": "Hailuo AI",
+      "vendor": "MiniMax",
+      "category": [
+        "Video-Gen"
+      ],
+      "use_cases": [
+        "Video-Gen"
+      ],
+      "url": "https://hailuoai.video",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 9
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "Anbieter in China (MiniMax); Datenschutzpruefung empfohlen.",
+      "aban_note": "[Redaktion: pruefen & bewerten] Schneller KI-Videogenerator, der Text und Bilder in kurze 1080p-Videos umwandelt.",
+      "alternatives": [
+        "kling",
+        "luma-dream-machine",
+        "runway"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "cartesia",
+      "name": "Cartesia AI",
+      "vendor": "Cartesia",
+      "category": [
+        "Voice-Clone",
+        "Audio-Gen",
+        "API"
+      ],
+      "use_cases": [
+        "Voiceover",
+        "API"
+      ],
+      "url": "https://www.cartesia.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Usage"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Echtzeit-TTS-API mit niedriger Latenz und Voice-Cloning, fuer Entwickler und Produktteams.",
+      "alternatives": [
+        "elevenlabs",
+        "playht"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "wondercraft",
+      "name": "Wondercraft AI",
+      "vendor": "Wondercraft",
+      "category": [
+        "Audio-Gen",
+        "Voice-Clone"
+      ],
+      "use_cases": [
+        "Podcast",
+        "Audio-Gen"
+      ],
+      "url": "https://www.wondercraft.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 23
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Wandelt Skripte in fertig produzierte Podcast-Episoden mit KI-Sprechern, Musik und Soundeffekten.",
+      "alternatives": [
+        "elevenlabs",
+        "murf",
+        "playht"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "opus-clip",
+      "name": "OpusClip",
+      "vendor": "Opus AI",
+      "category": [
+        "Video-Gen",
+        "Marketing-AI"
+      ],
+      "use_cases": [
+        "Social-Video",
+        "Video-Editing"
+      ],
+      "url": "https://www.opus.pro",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 14
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Schneidet lange Videos automatisch in kurze Clips fuer TikTok, Reels und Shorts, mit Untertiteln.",
+      "alternatives": [
+        "submagic",
+        "vizard",
+        "descript"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "submagic",
+      "name": "Submagic",
+      "vendor": "Submagic",
+      "category": [
+        "Video-Gen",
+        "Marketing-AI"
+      ],
+      "use_cases": [
+        "Untertitel",
+        "Social-Video"
+      ],
+      "url": "https://www.submagic.co",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 11
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] KI-Tool fuer animierte Untertitel auf Kurzvideos in vielen Sprachen mit Keyword-Highlighting.",
+      "alternatives": [
+        "opus-clip",
+        "vizard",
+        "capcut"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "vizard",
+      "name": "Vizard AI",
+      "vendor": "Vizard",
+      "category": [
+        "Video-Gen",
+        "Marketing-AI"
+      ],
+      "use_cases": [
+        "Social-Video",
+        "Video-Editing"
+      ],
+      "url": "https://vizard.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 13
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Zerschneidet Webinare und Podcasts automatisch in Social-Media-Clips mit Untertiteln.",
+      "alternatives": [
+        "opus-clip",
+        "submagic"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "adcreative-ai",
+      "name": "AdCreative.ai",
+      "vendor": "AdCreative AI",
+      "category": [
+        "Marketing-AI",
+        "Design",
+        "Image-Gen"
+      ],
+      "use_cases": [
+        "Marketing-Assets",
+        "Design"
+      ],
+      "url": "https://www.adcreative.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 36
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Generiert aus Markenassets performanceoptimierte Bild- und Videoanzeigen fuer Social- und Display-Kampagnen.",
+      "alternatives": [
+        "canva",
+        "freepik-ai"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "gumloop",
+      "name": "Gumloop",
+      "vendor": "Gumloop",
+      "category": [
+        "Automation",
+        "Agent"
+      ],
+      "use_cases": [
+        "Workflow-Automation",
+        "Agent"
+      ],
+      "url": "https://www.gumloop.com",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 34
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] No-Code-KI-Automatisierung mit visuellem Node-Editor fuer Datenverarbeitung und Lead-Generierung.",
+      "alternatives": [
+        "make",
+        "n8n",
+        "zapier"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "relay-app",
+      "name": "Relay.app",
+      "vendor": "Relay",
+      "category": [
+        "Automation",
+        "Agent"
+      ],
+      "use_cases": [
+        "Workflow-Automation"
+      ],
+      "url": "https://www.relay.app",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 17
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] KI-Workflow-Automatisierung, die KI-Aktionen, Logik und menschliche Freigaben in einem visuellen Editor kombiniert.",
+      "alternatives": [
+        "make",
+        "zapier",
+        "n8n"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "dust-ai",
+      "name": "Dust",
+      "vendor": "Dust",
+      "category": [
+        "Agent",
+        "Automation"
+      ],
+      "use_cases": [
+        "Agent",
+        "Knowledge-Work-Automation"
+      ],
+      "url": "https://dust.tt",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 29
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Plattform, um spezialisierte KI-Agenten mit Zugriff auf interne Datenquellen (Slack, Notion, CRM) aufzubauen.",
+      "alternatives": [
+        "glean"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "zed",
+      "name": "Zed",
+      "vendor": "Zed Industries",
+      "category": [
+        "Coding"
+      ],
+      "use_cases": [
+        "Coding"
+      ],
+      "url": "https://zed.dev",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 9
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Schneller KI-Code-Editor in Rust mit eingebautem KI-Assistenten und kollaborativem Editing.",
+      "alternatives": [
+        "cursor",
+        "windsurf",
+        "aider"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "devin",
+      "name": "Devin",
+      "vendor": "Cognition AI",
+      "category": [
+        "Coding",
+        "Agent"
+      ],
+      "use_cases": [
+        "Coding",
+        "Agent"
+      ],
+      "url": "https://devin.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Usage",
+        "paid_from_eur": 18
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Autonomer KI-Software-Engineer, der Code plant, schreibt, debuggt und deployed.",
+      "alternatives": [
+        "cursor",
+        "github-copilot",
+        "claude-code"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "systeme",
+      "name": "Systeme.io",
+      "vendor": "Systeme.io",
+      "category": [
+        "Marketing-AI",
+        "Automation",
+        "No-Code"
+      ],
+      "use_cases": [
+        "Marketing-Stack",
+        "Automation",
+        "Landing-Pages"
+      ],
+      "url": "https://systeme.io/de",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Freemium",
+        "paid_from_eur": 27
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] All-in-One-Plattform fuer Online-Business: Sales-Funnels, E-Mail-Marketing, Kurse und Automatisierung in einem Tool, mit grosszuegigem Gratis-Tarif.",
+      "alternatives": [
+        "getresponse",
+        "make",
+        "zapier"
+      ],
+      "ausgaben_mentions": []
     }
   ]
 }

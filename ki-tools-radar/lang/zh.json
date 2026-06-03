@@ -1,0 +1,1035 @@
+{
+  "ui": {
+    "tagline": "143款AI工具，诚实评测",
+    "all_tools": "所有工具",
+    "categories": "分类",
+    "home_heading": "143款AI工具，诚实评测",
+    "use_cases": "用途",
+    "editor_note": "编辑点评",
+    "dsgvo": "GDPR",
+    "pro": "优点",
+    "contra": "缺点",
+    "alternatives": "替代品",
+    "cta": "前往 {name}",
+    "best_in": "最佳 {cat} 工具",
+    "dach": "DACH 相关度",
+    "free": "免费",
+    "price_from": "起",
+    "language": "语言",
+    "privacy": "隐私",
+    "imprint": "法律声明",
+    "data_note": "数据隐私声明",
+    "disclosure": "透明度：部分链接为联盟链接（标记*）。如你通过这些链接购买，我们将获得佣金——对你无额外成本。评测独立于此。",
+    "meta_home": "143款精选AI工具的诚实对比与评测。",
+    "meta_tool": "{name} 的完整评测、定价与可用替代品。",
+    "meta_cat": "{cat} 类别的最佳AI工具与完整对比。"
+  },
+  "tools": {
+    "claude": {
+      "aban_note": "德语文本最佳对话AI。我每天都在用。Sonnet 4.6是我的默认选择，Opus用于长期研究，Haiku用于批量处理。",
+      "dsgvo_note": "通过Anthropic API的EU数据驻留；应要求可提供零保留。",
+      "use_cases": ["写作", "研究", "编程", "PDF分析"],
+      "pro": ["德语理解最佳", "多种模型适应不同需求", "API和订阅灵活选择"],
+      "contra": ["比ChatGPT略贵", "Opus模型成本较高"]
+    },
+    "chatgpt": {
+      "aban_note": "标配工具。GPT-5是可靠的全能者，但对于德文商业文本，Claude的表现始终更精细。如果你只有一个工具，选这个。",
+      "dsgvo_note": "",
+      "use_cases": ["写作", "研究", "编程", "图像生成"],
+      "pro": ["最广泛的集成生态", "多种模型选择", "Web访问和代码执行"],
+      "contra": ["德语表现不如Claude", "数据隐私问题"]
+    },
+    "gemini": {
+      "aban_note": "在多模态和长上下文中表现强劲。对Google用户的工作区集成很有趣。独立使用：对比Claude是第二选择。",
+      "dsgvo_note": "",
+      "use_cases": ["研究", "多模态", "Google Docs集成"],
+      "pro": ["多模态能力强", "与Google生态无缝集成", "长上下文支持"],
+      "contra": ["单独使用不如Claude", "多语言支持有限"]
+    },
+    "mistral": {
+      "aban_note": "欧盟总部（巴黎）。对于合规敏感的DACH客户，现在是干净的选择。像BNP和Harvey AI这样的大客户是信任信号。Codestral用于编程是扎实的。",
+      "dsgvo_note": "",
+      "use_cases": ["写作", "编程", "EU合规", "推理"],
+      "pro": ["欧盟总部，GDPR友好", "企业级可靠性", "编程能力强"],
+      "contra": ["社区较小", "文档不如OpenAI完整"]
+    },
+    "deepseek": {
+      "aban_note": "颠覆性定价（相比OpenAI低75-99%）。对于无合规顾虑的批量工作负载无法击败。对于DACH业务数据，我不会通过它路由——中国供应商。",
+      "dsgvo_note": "",
+      "use_cases": ["批量API", "成本优化", "推理"],
+      "pro": ["极低定价", "推理能力不错", "API调用快速"],
+      "contra": ["来自中国供应商的隐私风险", "欧洲不推荐用于敏感数据"]
+    },
+    "perplexity": {
+      "aban_note": "第一号研究工具。Pro版本配备Sonar模型可替代80%的Google搜索。源代码透明度是杀手级特性。",
+      "dsgvo_note": "",
+      "use_cases": ["研究", "新闻扫描", "来源研究"],
+      "pro": ["实时网络搜索集成", "来源透明", "比Google更相关"],
+      "contra": ["订阅需求较高", "有时搜索结果不准确"]
+    },
+    "aleph-alpha": {
+      "aban_note": "德国LLM，海德堡。Pharia-1用于监管行业（制药、银行、行政）。性能落后于Claude/Mistral——但如果你的合规官要求'EU主权'，这是答案。无自助服务。",
+      "dsgvo_note": "",
+      "use_cases": ["EU主权", "银行", "制药", "行政"],
+      "pro": ["德国开发，GDPR完全合规", "适合高监管行业", "数据驻留保证"],
+      "contra": ["性能有限", "企业级定价", "社区和文档缺乏"]
+    },
+    "cowork": {
+      "aban_note": "三天实际自测（见第002期）。值得用于PDF分析、从简报生成幻灯片、从原始数据生成Excel数据透视表。我一周用两次。不是奇迹工具，但确实节省时间。",
+      "dsgvo_note": "",
+      "use_cases": ["PDF分析", "幻灯片生成", "Excel数据透视表"],
+      "pro": ["PDF处理出色", "幻灯片生成快速", "Excel协作流畅"],
+      "contra": ["仅限Claude Max订户", "某些复杂任务可能失败"]
+    },
+    "openrouter": {
+      "aban_note": "务实的多模型路由器。在API成本问题上无法击败。我忽视了它几个月——错误。现在是我A/B测试提供商的默认工具。",
+      "dsgvo_note": "",
+      "use_cases": ["多供应商API", "成本路由", "模型测试"],
+      "pro": ["访问多个模型提供商", "成本优化路由", "灵活的提供商选择"],
+      "contra": ["API成本加价", "需要管理多个提供商账户"]
+    },
+    "n8n": {
+      "aban_note": "可自托管，DACH友好，德国公司。我的新闻通讯自动化后端。Make.com更精细，n8n更稳健和可控。",
+      "dsgvo_note": "",
+      "use_cases": ["工作流自动化", "新闻通讯管道", "API集成"],
+      "pro": ["自托管选项", "DACH友好", "强大的工作流引擎"],
+      "contra": ["学习曲线较陡", "UI不如Make.com直观"]
+    },
+    "make": {
+      "aban_note": "漂亮的可视化构建器。比n8n更快入门。但是：供应商锁定和高容量成本。对于初学者很棒，对于专业人士用n8n。",
+      "dsgvo_note": "",
+      "use_cases": ["工作流自动化", "无代码集成"],
+      "pro": ["易学的可视化界面", "集成生态丰富", "快速原型"],
+      "contra": ["供应商锁定严重", "成本随容量快速增长"]
+    },
+    "zapier": {
+      "aban_note": "最大生态（7000+应用）。但昂贵且逻辑有限。如果你只需要SaaS-A → SaaS-B，可行。对于AI工作流：Make或n8n。",
+      "dsgvo_note": "",
+      "use_cases": ["SaaS集成", "快速工作流"],
+      "pro": ["应用集成最多", "极易上手", "广泛的模板库"],
+      "contra": ["定价昂贵", "复杂工作流支持有限"]
+    },
+    "cursor": {
+      "aban_note": "我的默认编辑器。VSCode分支，集成Claude/GPT。Composer模式是编程氛围的游戏改变者。如果你写代码但没有Cursor——你浪费时间。",
+      "dsgvo_note": "",
+      "use_cases": ["编程氛围", "代码重构", "结对编程"],
+      "pro": ["最佳AI编程体验", "Composer模式出色", "价格合理"],
+      "contra": ["基于VSCode的限制", "某些功能付费"]
+    },
+    "windsurf": {
+      "aban_note": "Cursor竞争对手。Cascade模式在概念上更干净。已尝试，但Cursor工作流太根深蒂固。谁新开始：扎实的选择。",
+      "dsgvo_note": "",
+      "use_cases": ["编程氛围", "编程"],
+      "pro": ["Cascade模式创新", "快速执行", "好的UI"],
+      "contra": ["社区较小", "Cursor仍有优势"]
+    },
+    "github-copilot": {
+      "aban_note": "经典之作，现可选Claude Sonnet。扎实的自动完成。Cursor在Agent模式中更优越，Copilot在GitHub集成流中更优越。",
+      "dsgvo_note": "",
+      "use_cases": ["代码补全", "GitHub集成"],
+      "pro": ["GitHub集成紧密", "支持多个模型", "可靠的补全"],
+      "contra": ["定价较高", "Agent功能有限"]
+    },
+    "claude-code": {
+      "aban_note": "基于终端的编码Agent。当你自动化例程时强大（重构50个文件、提高测试覆盖率）。对于Power用户来说，CLI > GUI。",
+      "dsgvo_note": "",
+      "use_cases": ["批量重构", "代码库分析", "终端编程"],
+      "pro": ["强大的批量操作", "代码库理解深", "CLI效率高"],
+      "contra": ["学习曲线陡", "需要终端熟悉度"]
+    },
+    "bolt": {
+      "aban_note": "基于浏览器的编程氛围。20分钟完成一个登陆页面。一旦变得复杂就有锁定和限制。对于MVP：可用。",
+      "dsgvo_note": "",
+      "use_cases": ["MVP原型", "登陆页面"],
+      "pro": ["快速原型", "无需设置", "简单直观"],
+      "contra": ["复杂度扩展差", "供应商锁定"]
+    },
+    "lovable": {
+      "aban_note": "非常流畅的编程氛围构建器。漂亮的输出。超过前200个提示后扩展性差。对于只有一个边项目的独立开发者：可以。",
+      "dsgvo_note": "",
+      "use_cases": ["MVP原型", "编程氛围"],
+      "pro": ["UI漂亮", "快速生成", "易学"],
+      "contra": ["扩展性差", "成本不透明"]
+    },
+    "v0": {
+      "aban_note": "Next.js+shadcn开箱即用。如果你在Vercel生态中：第一选择。否则：输出是React特定的，这限制了灵活性。",
+      "dsgvo_note": "",
+      "use_cases": ["React原型", "UI生成"],
+      "pro": ["Vercel生态集成", "React专门优化", "高质量输出"],
+      "contra": ["React特定", "其他框架支持差"]
+    },
+    "replit": {
+      "aban_name": "Replit Agent",
+      "aban_note": "浏览器中的全栈，包含托管。适合完整的小应用。容量成本很高。",
+      "dsgvo_note": "",
+      "use_cases": ["全栈MVP", "托管包含"],
+      "pro": ["全栈一体", "托管内置", "快速部署"],
+      "contra": ["成本随容量增加", "性能限制"]
+    },
+    "midjourney": {
+      "aban_note": "图像质量之王。v7令人惊讶。用于营销资产、社论图片、概念艺术。Discord优先令人恼火，但Web UI现在有效。",
+      "dsgvo_note": "",
+      "use_cases": ["营销资产", "社论图片", "概念艺术"],
+      "pro": ["图像质量最佳", "风格控制强", "社区大"],
+      "contra": ["Discord依赖烦人", "成本较高"]
+    },
+    "flux": {
+      "aban_note": "德国公司（弗赖堡），Stable Diffusion制造者。Flux.1 Dev性能顶级。开源权重——对DACH合规理想。",
+      "dsgvo_note": "",
+      "use_cases": ["图像生成", "自托管", "DACH合规"],
+      "pro": ["德国开发", "开源模型", "DACH友好", "高质量输出"],
+      "contra": ["较新，社区较小"]
+    },
+    "stable-diffusion": {
+      "aban_note": "开源经典。可自托管。如果你有RTX显卡：ComfyUI+SD=无限图像，无供应商依赖。",
+      "dsgvo_note": "",
+      "use_cases": ["自托管图像生成", "批量图像"],
+      "pro": ["开源", "可自托管", "成本低", "社区丰富"],
+      "contra": ["需要GPU", "质量不如商业工具"]
+    },
+    "ideogram": {
+      "aban_note": "最好的文字到图像渲染。用于海报、标志、排版重型设计。在照片现实主义中较弱。",
+      "dsgvo_note": "",
+      "use_cases": ["排版", "海报", "标志概念"],
+      "pro": ["文本渲染最佳", "排版出色", "设计工具好"],
+      "contra": ["照片真实感差", "定价较高"]
+    },
+    "krea": {
+      "aban_note": "实时图像生成+多模型捆绑。对设计师有趣，因为输出控制很好。第1层很有限。",
+      "dsgvo_note": "",
+      "use_cases": ["实时设计", "图像生成"],
+      "pro": ["实时反馈", "多模型选择", "设计友好"],
+      "contra": ["免费层限制多", "成本较高"]
+    },
+    "recraft": {
+      "aban_note": "SVG生成+品牌样式一致性。如果你必须保持品牌图像一致：顶级。",
+      "dsgvo_note": "",
+      "use_cases": ["SVG生成", "品牌一致性"],
+      "pro": ["SVG输出独特", "品牌保持强", "设计工具好"],
+      "contra": ["特定用例", "成本较高"]
+    },
+    "leonardo": {
+      "aban_note": "图像生成，专注于游戏资产。扎实的UI，但输出对于营销来说是二级联赛。",
+      "dsgvo_note": "",
+      "use_cases": ["游戏资产", "概念艺术"],
+      "pro": ["游戏资产优化", "UI友好", "成本合理"],
+      "contra": ["营销用途有限", "质量不稳定"]
+    },
+    "playground": {
+      "aban_note": "免费层慷慨。输出通常还可以，很少杰出。对于爱好来说可以。",
+      "dsgvo_note": "",
+      "use_cases": ["爱好图像生成"],
+      "pro": ["免费层慷慨", "易用", "快速"],
+      "contra": ["质量不稳定", "功能有限"]
+    },
+    "dalle": {
+      "aban_note": "现被Midjourney/Flux超越。但：在ChatGPT工作流中无缝集成。对于快速幻灯片图像足够。",
+      "dsgvo_note": "",
+      "use_cases": ["ChatGPT集成", "快速图像"],
+      "pro": ["ChatGPT集成", "快速生成", "易用"],
+      "contra": ["质量已过时", "贵于替代品"]
+    },
+    "adobe-firefly": {
+      "aban_note": "商业安全（在许可数据上训练）。对于必须合法生成的品牌。在Photoshop/Illustrator中无缝。",
+      "dsgvo_note": "",
+      "use_cases": ["商业安全", "Adobe工作流"],
+      "pro": ["法律安全", "Adobe集成完美", "商业友好"],
+      "contra": ["成本较高", "功能有限"]
+    },
+    "sora": {
+      "aban_note": "视频生成。有趣，但2026年对营销来说还不生产就绪。演示剪辑可以，英雄视频不行。",
+      "dsgvo_note": "",
+      "use_cases": ["视频演示", "概念视频"],
+      "pro": ["质量有趣", "OpenAI品牌", "快速"],
+      "contra": ["非生产就绪", "高成本"]
+    },
+    "runway": {
+      "aban_note": "Gen-4很扎实。最好的视频AI工具套件（Motion Brush、Inpainting）。对于真正想要生成的专业人士。",
+      "dsgvo_note": "",
+      "use_cases": ["视频编辑", "VFX", "动态图形"],
+      "pro": ["专业工具完整", "质量高", "灵活性强"],
+      "contra": ["陡峭学习曲线", "成本很高"]
+    },
+    "pika": {
+      "aban_note": "短视频社交媒体。简单入门，但输出是限制时长。",
+      "dsgvo_note": "",
+      "use_cases": ["短视频", "社交媒体"],
+      "pro": ["易用", "快速生成", "社交优化"],
+      "contra": ["时长限制", "质量一般"]
+    },
+    "elevenlabs": {
+      "aban_note": "2026年德文声音听起来令人惊讶地自然。用于播客、配音、有声书。语音克隆令人恐惧地好——带所有伦理含义。",
+      "dsgvo_note": "",
+      "use_cases": ["配音", "播客", "有声书"],
+      "pro": ["德文质量优秀", "语音克隆好", "自然听感"],
+      "contra": ["伦理问题", "成本较高"]
+    },
+    "suno": {
+      "aban_note": "音乐生成。用于叮声、背景音乐、乐趣。对于认真生产：DACH法律地位不清楚。",
+      "dsgvo_note": "",
+      "use_cases": ["叮声", "背景音乐"],
+      "pro": ["有趣创意", "快速生成", "易用"],
+      "contra": ["法律地位不清", "商业用途风险"]
+    },
+    "udio": {
+      "aban_note": "Suno竞争对手。输出质量相似。许可证情况同样不清楚——商业使用时小心。",
+      "dsgvo_note": "",
+      "use_cases": ["音乐生成"],
+      "pro": ["Suno替代", "快速", "有趣"],
+      "contra": ["法律不清", "许可证模糊"]
+    },
+    "murf": {
+      "aban_note": "扎实的TTS经典。德文声音可以，但ElevenLabs在2026年领先。",
+      "dsgvo_note": "",
+      "use_cases": ["配音", "TTS"],
+      "pro": ["稳定可靠", "多语言", "成本合理"],
+      "contra": ["质量不如ElevenLabs", "功能有限"]
+    },
+    "heygen": {
+      "aban_note": "AI化身讲述文本。40+种语言翻译带唇同步。对多语言营销强大。化身输出仍显然是合成的。",
+      "dsgvo_note": "",
+      "use_cases": ["AI化身视频", "多语言内容"],
+      "pro": ["多语言支持强", "唇同步好", "自动化程度高"],
+      "contra": ["合成感明显", "价格高"]
+    },
+    "synthesia": {
+      "aban_note": "企业AI化身。漂亮的模板，比HeyGen贵。更适合L&D部门而非独立开发者。",
+      "dsgvo_note": "",
+      "use_cases": ["企业培训", "AI化身"],
+      "pro": ["专业模板", "企业级质量", "支持好"],
+      "contra": ["定价企业级", "独立开发者贵"]
+    },
+    "d-id": {
+      "aban_note": "照片到说话头部。低入门门槛。输出现在被HeyGen超越。",
+      "dsgvo_note": "",
+      "use_cases": ["化身视频"],
+      "pro": ["易学", "快速", "低成本"],
+      "contra": ["质量已过时", "功能有限"]
+    },
+    "descript": {
+      "aban_note": "通过转录编辑音频/视频。播客革命者——你删除文本中的词，音频跟随。Overdub语音克隆很干净。",
+      "dsgvo_note": "",
+      "use_cases": ["播客编辑", "基于转录的编辑"],
+      "pro": ["编辑方式创新", "语音克隆好", "播客理想"],
+      "contra": ["成本较高", "编辑功能有限"]
+    },
+    "veed": {
+      "aban_name": "VEED",
+      "aban_note": "浏览器视频编辑带AI帮助。字幕生成很好。对于强力编辑太有限。",
+      "dsgvo_note": "",
+      "use_cases": ["浏览器视频", "字幕"],
+      "pro": ["浏览器便捷", "字幕生成好", "易用"],
+      "contra": ["功能有限", "专业编辑不足"]
+    },
+    "capcut": {
+      "aban_note": "移动优先编辑带AI功能。TikTok管道是内置工具。隐私问题：字节跳动。",
+      "dsgvo_note": "",
+      "use_cases": ["移动编辑", "社交视频"],
+      "pro": ["移动优化", "TikTok集成", "易用"],
+      "contra": ["隐私风险", "桌面功能弱"]
+    },
+    "otter": {
+      "aban_note": "会议转录的经典。德文还可以，不完美。用于英文会议：1A。",
+      "dsgvo_note": "",
+      "use_cases": ["会议转录", "笔记"],
+      "pro": ["稳定可靠", "英文表现好", "易用"],
+      "contra": ["德文支持弱", "成本较高"]
+    },
+    "fireflies": {
+      "aban_note": "如Otter，但CRM同步更好。德文模型类似还可以。定价对消费者更友好。",
+      "dsgvo_note": "",
+      "use_cases": ["会议AI", "CRM集成"],
+      "pro": ["CRM集成好", "定价友好", "可靠"],
+      "contra": ["德文支持一般", "功能有限"]
+    },
+    "granola": {
+      "aban_note": "我的新默认。无需机器人进会议——在Mac后台运行。德文会议输出笔记一流。取代Otter。",
+      "dsgvo_note": "",
+      "use_cases": ["会议AI", "德文优先"],
+      "pro": ["德文表现最佳", "后台运行", "笔记质量高"],
+      "contra": ["仅Mac", "订阅成本"]
+    },
+    "tldv": {
+      "aban_note": "德国公司（慕尼黑）。多语言性能好。机器人进会议工作流，Granola更优雅解决。",
+      "dsgvo_note": "",
+      "use_cases": ["会议AI", "DACH合规"],
+      "pro": ["德国公司", "多语言好", "可靠"],
+      "contra": ["机器人进会议", "成本较高"]
+    },
+    "krisp": {
+      "aban_note": "噪声消除用于通话。稳定可靠地工作。自2025年起内置AI会议笔记。",
+      "dsgvo_note": "",
+      "use_cases": ["噪声消除", "通话质量"],
+      "pro": ["噪声消除有效", "可靠稳定", "价格合理"],
+      "contra": ["功能单一", "会议笔记有限"]
+    },
+    "fathom": {
+      "aban_note": "慷慨的免费层含无限会议。美国聚焦，德文语言质量还可以。",
+      "dsgvo_note": "",
+      "use_cases": ["会议AI", "免费功能强"],
+      "pro": ["免费层慷慨", "无限会议", "基本好"],
+      "contra": ["德文弱", "功能有限"]
+    },
+    "deepl": {
+      "aban_note": "德国公司（科隆）。最好的DE↔EN翻译，句号。Write是Grammarly竞争对手——对德文扎实。Pro账户是每个DACH独立开发者的标配。",
+      "dsgvo_note": "",
+      "use_cases": ["翻译DE↔EN", "写作精化", "API"],
+      "pro": ["德文翻译最佳", "Write功能强", "DACH优化"],
+      "contra": ["成本较高", "专业翻译需人工"]
+    },
+    "deepl-write": {
+      "aban_note": "对于德文明确优于Grammarly。样式调整'商务''学术''随意'有效。第017期14天测试。",
+      "dsgvo_note": "",
+      "use_cases": ["德文精化", "风格变化"],
+      "pro": ["德文表现最佳", "风格选项多", "价格合理"],
+      "contra": ["仅限德文", "功能有限"]
+    },
+    "grammarly": {
+      "aban_note": "英文文法精化。对德文太弱——用DeepL Write或LanguageTool。对英文外联：还可以。",
+      "dsgvo_note": "",
+      "use_cases": ["英文文法"],
+      "pro": ["英文表现好", "易用", "集成丰富"],
+      "contra": ["德文表现差", "成本较高"]
+    },
+    "languagetool": {
+      "aban_note": "德国公司（波茨坦）。开源核心。对德文风格问题比Duden纠正器更强。可自托管。",
+      "dsgvo_note": "",
+      "use_cases": ["德文文法", "自托管纠正"],
+      "pro": ["德文优化", "开源可自托管", "隐私友好"],
+      "contra": ["UI一般", "功能不如DeepL"]
+    },
+    "tavily": {
+      "aban_note": "AI Agent搜索API。如果你的Agent需要网络研究，Tavily是干净的默认。比SerpAPI便宜。",
+      "dsgvo_note": "",
+      "use_cases": ["Agent搜索", "RAG"],
+      "pro": ["Agent优化", "成本低", "可靠"],
+      "contra": ["功能单一", "定制有限"]
+    },
+    "exa": {
+      "aban_note": "语义搜索API。比关键词搜索更好地找到主题相似内容。理想用于研究Agent。",
+      "dsgvo_note": "",
+      "use_cases": ["语义搜索", "RAG", "研究"],
+      "pro": ["语义理解强", "研究优化", "质量高"],
+      "contra": ["成本较高", "学习曲线"]
+    },
+    "you": {
+      "aban_note": "AI搜索+代码/研究模式。Perplexity在2026年更好，You仍有小众。",
+      "dsgvo_note": "",
+      "use_cases": ["AI搜索", "多模式搜索"],
+      "pro": ["多模式选择", "代码搜索好", "易用"],
+      "contra": ["Perplexity更好", "结果不稳定"]
+    },
+    "phind": {
+      "aban_note": "开发者搜索。代码聚焦回答带来源。用作Stack Overflow替代可用。",
+      "dsgvo_note": "",
+      "use_cases": ["开发搜索", "代码研究"],
+      "pro": ["代码搜索优化", "有来源", "开发友好"],
+      "contra": ["范围窄", "非代码弱"]
+    },
+    "kagi": {
+      "aban_note": "付费搜索无广告，带AI辅助。对Power搜索者：刷新。花费，但如果你每天搜索值得。",
+      "dsgvo_note": "",
+      "use_cases": ["无广告搜索", "Power搜索"],
+      "pro": ["无广告", "AI辅助好", "隐私优先"],
+      "contra": ["成本高", "社区小"]
+    },
+    "brave": {
+      "aban_note": "自有索引。隐私优先。AI总结集成。无追踪的扎实Google替代。",
+      "dsgvo_note": "",
+      "use_cases": ["隐私搜索", "无追踪"],
+      "pro": ["隐私好", "独立索引", "无广告"],
+      "contra": ["索引覆盖小于Google", "功能有限"]
+    },
+    "groq": {
+      "aban_name": "Groq",
+      "aban_note": "推理速度冠军。Llama、Mixtral带疯狂的Token/s。如果你构建延迟敏感应用：首选。",
+      "dsgvo_note": "",
+      "use_cases": ["低延迟推理", "实时AI"],
+      "pro": ["速度最快", "Token成本低", "实时优化"],
+      "contra": ["模型选择有限", "社区较小"]
+    },
+    "together-ai": {
+      "aban_note": "开源模型（Llama、Mixtral、Qwen）作为API。便宜推理，好模型选择。",
+      "dsgvo_note": "",
+      "use_cases": ["开源API", "多模型托管"],
+      "pro": ["开源模型", "成本低", "选择多"],
+      "contra": ["稳定性有限", "文档不足"]
+    },
+    "cerebras": {
+      "aban_note": "定制芯片，快速推理。Llama托管顶级。模型选择比Groq有限。",
+      "dsgvo_note": "",
+      "use_cases": ["高速推理"],
+      "pro": ["速度快", "稳定可靠", "支持好"],
+      "contra": ["模型选择少", "社区小"]
+    },
+    "replicate": {
+      "aban_note": "开源模型作API托管。包括Image/Audio/Video模型。好用于原型。",
+      "dsgvo_note": "",
+      "use_cases": ["模型原型", "多模态API"],
+      "pro": ["多模型支持", "易用", "文档好"],
+      "contra": ["成本较高", "性能可变"]
+    },
+    "hugging-face": {
+      "aban_note": "AI模型的GitHub。推理端点扎实。Datasets库对研究者是黄金。",
+      "dsgvo_note": "",
+      "use_cases": ["模型托管", "数据集", "开源AI"],
+      "pro": ["最大模型库", "数据集资源丰富", "社区大"],
+      "contra": ["免费层有限", "计算成本高"]
+    },
+    "langchain": {
+      "aban_note": "LLM应用框架。两极分化：许多人觉得过度工程化。标准模式还可以，自定义逻辑直接写。",
+      "dsgvo_note": "",
+      "use_cases": ["Agent框架", "LLM管道"],
+      "pro": ["应用广泛", "文档详细", "社区大"],
+      "contra": ["过度复杂", "学习曲线陡"]
+    },
+    "llamaindex": {
+      "aban_note": "RAG框架。比LangChain用于检索用例更精简。文档搜索应用干净选择。",
+      "dsgvo_note": "",
+      "use_cases": ["RAG", "文档搜索"],
+      "pro": ["RAG优化", "代码清晰", "易学"],
+      "contra": ["功能较限", "社区较小"]
+    },
+    "weaviate": {
+      "aban_note": "欧盟向量DB。荷兰，GDPR兼容。生产就绪。开源核心。",
+      "dsgvo_note": "",
+      "use_cases": ["向量搜索", "RAG", "EU合规"],
+      "pro": ["EU优先", "GDPR合规", "企业级"],
+      "contra": ["成本较高", "学习曲线"]
+    },
+    "qdrant": {
+      "aban_note": "德国向量DB（柏林）。开源。可自托管。性能顶级。DACH RAG设置首选。",
+      "dsgvo_note": "",
+      "use_cases": ["向量搜索", "DACH合规", "自托管RAG"],
+      "pro": ["德国开发", "开源可自托管", "性能好", "DACH友好"],
+      "contra": ["社区较小", "文档有限"]
+    },
+    "pinecone": {
+      "aban_note": "托管向量DB。仅US云。便捷但锁定。DACH合规：用Qdrant。",
+      "dsgvo_note": "",
+      "use_cases": ["托管向量DB"],
+      "pro": ["托管便捷", "无需维护", "稳定"],
+      "contra": ["供应商锁定", "美国数据"]
+    },
+    "chroma": {
+      "aban_note": "本地开发轻量向量DB和小原型。生产：切换到Qdrant。",
+      "dsgvo_note": "",
+      "use_cases": ["本地开发", "原型"],
+      "pro": ["轻量易用", "免费开源", "快速原型"],
+      "contra": ["生产不适", "性能有限"]
+    },
+    "notion-ai": {
+      "aban_note": "如果你住在Notion中，值得。工作区Q&A还可以。Notion外工作流：不值得。",
+      "dsgvo_note": "",
+      "use_cases": ["Notion工作区AI"],
+      "pro": ["Notion集成完美", "易用", "价格合理"],
+      "contra": ["Notion限制", "功能有限"]
+    },
+    "mem": {
+      "aban_note": "带内置AI的笔记应用。自动标签和语义搜索工作好。移动应用扎实。",
+      "dsgvo_note": "",
+      "use_cases": ["智能笔记", "自动标签"],
+      "pro": ["笔记+AI无缝", "语义搜索好", "移动app强"],
+      "contra": ["成本高", "生态小"]
+    },
+    "reflect": {
+      "aban_note": "集成GPT-4的笔记应用。非常干净。日常笔记+反向链接如Roam，AI在上面。",
+      "dsgvo_note": "",
+      "use_cases": ["日常笔记", "反向链接", "AI增强"],
+      "pro": ["干净设计", "AI集成好", "反向链接强"],
+      "contra": ["成本较高", "功能有限"]
+    },
+    "obsidian": {
+      "aban_note": "本地优先，纯Markdown。带插件（Copilot、Smart Connections）AI就位。我的第二大脑4年。",
+      "dsgvo_note": "",
+      "use_cases": ["本地笔记", "Markdown", "Zettelkasten"],
+      "pro": ["本地优先", "开源可扩展", "完全控制", "社区大"],
+      "contra": ["移动弱", "学习曲线"]
+    },
+    "loom": {
+      "aban_note": "屏幕录制带AI转录+总结。对客户异步更新值黄金。免费层对独立开发者足够。",
+      "dsgvo_note": "",
+      "use_cases": ["屏幕录制", "异步通信"],
+      "pro": ["录制+共享简单", "AI转录好", "免费层实用"],
+      "contra": ["成本高档版", "功能有限"]
+    },
+    "capso": {
+      "aban_note": "开源Loom替代。可能EU托管。DACH数据保护有趣。",
+      "dsgvo_note": "",
+      "use_cases": ["开源屏幕录制", "DACH合规"],
+      "pro": ["开源可自托管", "EU选项", "DACH友好"],
+      "contra": ["社区小", "功能不如Loom"]
+    },
+    "jasper": {
+      "aban_note": "营销写作工具。2023年热，现被Claude/ChatGPT超越。模板不再是杀手级特性。",
+      "dsgvo_note": "",
+      "use_cases": ["营销文案"],
+      "pro": ["营销聚焦", "模板多", "易学"],
+      "contra": ["已过时", "成本高"]
+    },
+    "copy-ai": {
+      "aban_note": "现在工作流聚焦。对无AI技能销售团队有用。独立营销者：Claude足够。",
+      "dsgvo_note": "",
+      "use_cases": ["营销工作流", "销售文案"],
+      "pro": ["工作流强", "销售聚焦", "模板多"],
+      "contra": ["输出一般", "成本高"]
+    },
+    "writesonic": {
+      "aban_note": "内容生成工具。平均输出，Claude更好。Chatsonic是独立聊天——ChatGPT更好。",
+      "dsgvo_note": "",
+      "use_cases": ["批量内容"],
+      "pro": ["批量聚焦", "模板库大", "价格合理"],
+      "contra": ["质量一般", "已过时"]
+    },
+    "sudowrite": {
+      "aban_note": "小说写作AI。对作者专门化。英文优先，德文还可以。",
+      "dsgvo_note": "",
+      "use_cases": ["小说写作", "故事节拍"],
+      "pro": ["小说专门化", "写作工具好", "社区活跃"],
+      "contra": ["英文优先", "成本较高"]
+    },
+    "lex": {
+      "aban_note": "AI增强文本编辑。内联AI调用标记。漂亮无干扰UI。",
+      "dsgvo_note": "",
+      "use_cases": ["AI增强写作"],
+      "pro": ["UI干净", "内联AI好", "无干扰"],
+      "contra": ["功能有限", "社区小"]
+    },
+    "wordtune": {
+      "aban_note": "句子改写。英文优先。对德文太弱。",
+      "dsgvo_note": "",
+      "use_cases": ["英文改写"],
+      "pro": ["英文表现好", "快速简单", "价格合理"],
+      "contra": ["德文弱", "功能单一"]
+    },
+    "quillbot": {
+      "aban_note": "改写+文法。英文强。抄袭检查是好奖励。",
+      "dsgvo_note": "",
+      "use_cases": ["改写"],
+      "pro": ["英文强", "抄袭检查", "易用"],
+      "contra": ["德文弱", "功能有限"]
+    },
+    "anyword": {
+      "aban_note": "营销文案带性能评分。英文优先。独立开发者太贵。",
+      "dsgvo_note": "",
+      "use_cases": ["广告文案", "性能营销"],
+      "pro": ["性能评分", "营销优化", "模板多"],
+      "contra": ["英文优先", "定价高"]
+    },
+    "profound": {
+      "aban_note": "生成引擎优化追踪。测量你的品牌是否出现在ChatGPT、Claude、Perplexity。2026年这是Google排名2010年的东西。",
+      "dsgvo_note": "",
+      "use_cases": ["GEO追踪", "品牌在LLM中"],
+      "pro": ["全新概念", "追踪LLM提及", "竞争优势"],
+      "contra": ["企业定价", "新技术未验证"]
+    },
+    "athenahq": {
+      "aban_note": "GEO追踪竞争对手到Profound。中市场定价。德文报告还可以。",
+      "dsgvo_note": "",
+      "use_cases": ["GEO", "品牌监控"],
+      "pro": ["GEO全面", "竞争对手分析", "报告清晰"],
+      "contra": ["中市场定价", "功能不如Profound"]
+    },
+    "otterly": {
+      "aban_note": "奥地利公司（维也纳）。DACH语言优先。KMU的经济GEO入门。",
+      "dsgvo_note": "",
+      "use_cases": ["GEO DACH", "KMU品牌监控"],
+      "pro": ["DACH优化", "KMU友好", "价格合理"],
+      "contra": ["功能有限", "社区小"]
+    },
+    "ahrefs": {
+      "aban_note": "SEO标准。反向链接、关键词、网站审计。AI功能是附加品，索引是价值。",
+      "dsgvo_note": "",
+      "use_cases": ["SEO", "反向链接分析"],
+      "pro": ["最好的反向链接数据", "关键词研究完整", "审计深入"],
+      "contra": ["成本很高", "学习曲线"]
+    },
+    "semrush": {
+      "aban_name": "SEMrush",
+      "aban_note": "比Ahrefs更广工具集（也含广告智能）。更贵。如果两者都做：SEMrush。",
+      "dsgvo_note": "",
+      "use_cases": ["SEO", "竞争广告", "营销栈"],
+      "pro": ["功能范围广", "广告智能好", "集成强"],
+      "contra": ["定价最高", "学习复杂"]
+    },
+    "surfer": {
+      "aban_note": "页面SEO优化器带AI写作。英文内容内容评分优化好，德文还可以。",
+      "dsgvo_note": "",
+      "use_cases": ["页面SEO", "内容优化"],
+      "pro": ["页面优化聚焦", "内容评分好", "易用"],
+      "contra": ["德文表现弱", "范围窄"]
+    },
+    "frase": {
+      "aban_note": "SEO内容简报生成。比Surfer便宜。内容营销工具扎实。",
+      "dsgvo_note": "",
+      "use_cases": ["内容简报", "SERP分析"],
+      "pro": ["内容简报强", "成本低", "易用"],
+      "contra": ["功能有限", "竞争有限"]
+    },
+    "marketmuse": {
+      "aban_note": "企业内容主题集群策略。对独立开发者过度。",
+      "dsgvo_note": "",
+      "use_cases": ["企业SEO"],
+      "pro": ["主题策略强", "内容规划完整", "数据深"],
+      "contra": ["企业定价", "独立开发者不适"]
+    },
+    "canva": {
+      "aban_note": "Magic Studio使Canva成为AI设计平台。对DACH独立开发者最实用设计工具。模板+AI=快到可用输出。",
+      "dsgvo_note": "",
+      "use_cases": ["设计", "社交模板", "演讲"],
+      "pro": ["AI设计整合", "模板库大", "易用超好"],
+      "contra": ["设计灵活性有限", "商业用途有限制"]
+    },
+    "figma": {
+      "aban_note": "Figma中的AI功能（生成设计、生成原型）扎实。UI设计标准。",
+      "dsgvo_note": "",
+      "use_cases": ["UI设计", "原型"],
+      "pro": ["UI设计标准", "协作强", "原型好"],
+      "contra": ["定价高", "学习曲线"]
+    },
+    "gamma": {
+      "aban_note": "从文本AI幻灯片。比Decktopus漂亮，比PowerPoint+AI快。用于推销甲板可用。",
+      "dsgvo_note": "",
+      "use_cases": ["AI幻灯片", "推销甲板"],
+      "pro": ["生成快", "设计漂亮", "演讲友好"],
+      "contra": ["定制有限", "专业用途不足"]
+    },
+    "tome": {
+      "aban_note": "旋向销售工具。AI幻灯片还在，但Gamma超越。",
+      "dsgvo_note": "",
+      "use_cases": ["销售甲板", "AI幻灯片"],
+      "pro": ["销售聚焦", "演讲优化", "易用"],
+      "contra": ["Gamma更好", "功能有限"]
+    },
+    "beautiful-ai": {
+      "aban_note": "智能模板带自动布局。扎实但不突出。",
+      "dsgvo_note": "",
+      "use_cases": ["自动布局幻灯片"],
+      "pro": ["自动布局好", "模板多", "价格合理"],
+      "contra": ["功能有限", "创意空间小"]
+    },
+    "ollama": {
+      "aban_note": "Mac/PC上的本地LLM。Llama、Mistral、Qwen本地。如果GDPR硬：你的朋友。硬件饥渴。",
+      "dsgvo_note": "",
+      "use_cases": ["本地LLM", "GDPR安全", "离线AI"],
+      "pro": ["完全离线", "GDPR合规", "成本低", "隐私最好"],
+      "contra": ["硬件要求高", "性能有限"]
+    },
+    "lm-studio": {
+      "aban_note": "本地LLM的GUI。比Ollama CLI更漂亮入门。服务器模式用于自有应用API调用。",
+      "dsgvo_note": "",
+      "use_cases": ["本地LLM GUI", "离线测试"],
+      "pro": ["UI友好", "入门简单", "服务器模式"],
+      "contra": ["功能不如Ollama", "社区较小"]
+    },
+    "open-webui": {
+      "aban_note": "Ollama的ChatGPT克隆。自托管。如果你的团队需要本地AI：这就是。",
+      "dsgvo_note": "",
+      "use_cases": ["自托管聊天", "团队本地AI"],
+      "pro": ["ChatGPT界面熟悉", "自托管完全", "团队友好"],
+      "contra": ["设置复杂", "功能有限"]
+    },
+    "lovable-translate-deepl": {
+      "aban_note": "软件字符串本地化。AI翻译JSON/i18n文件。对多语言应用有用。",
+      "dsgvo_note": "",
+      "use_cases": ["软件本地化", "i18n"],
+      "pro": ["自动化本地化", "多格式支持", "成本低"],
+      "contra": ["质量需审查", "功能有限"]
+    },
+    "browserbase": {
+      "aban_note": "AI Agent云无头浏览器。如果你的Agent需要操作网站：扎实基础设施。",
+      "dsgvo_note": "",
+      "use_cases": ["Agent浏览器控制"],
+      "pro": ["Agent优化", "可靠稳定", "易集成"],
+      "contra": ["成本较高", "功能单一"]
+    },
+    "browse-ai": {
+      "aban_note": "可视化抓取。点击字段，AI提取。用于列表构建和监控。",
+      "dsgvo_note": "",
+      "use_cases": ["抓取", "监控"],
+      "pro": ["可视化简单", "无需编码", "可靠"],
+      "contra": ["复杂逻辑有限", "成本较高"]
+    },
+    "apify": {
+      "aban_note": "欧盟基地（捷克）。最大抓取库。Power用户工具用于数据管道。",
+      "dsgvo_note": "",
+      "use_cases": ["网络抓取", "数据管道"],
+      "pro": ["库最完整", "EU友好", "高级功能", "企业级"],
+      "contra": ["学习曲线陡", "成本高"]
+    },
+    "bardeen": {
+      "aban_note": "知识工作者浏览器自动化。类似Zapier用于你的浏览器。AI剧本很好。",
+      "dsgvo_note": "",
+      "use_cases": ["浏览器工作流", "知识工作自动化"],
+      "pro": ["浏览器自动化强", "AI剧本好", "易学"],
+      "contra": ["功能有限", "性能不稳定"]
+    },
+    "clay": {
+      "aban_note": "销售智能+丰富化。Lead-Gen团队电源工具。贵，但如果行得通——一周内收回成本。",
+      "dsgvo_note": "",
+      "use_cases": ["Lead丰富化", "销售智能"],
+      "pro": ["Lead数据完整", "丰富化精确", "ROI快"],
+      "contra": ["定价很高", "学习曲线"]
+    },
+    "apollo": {
+      "aban_note": "销售数据库+外联套件。对DACH好如果小心使用——数据质量在DE波动。",
+      "dsgvo_note": "",
+      "use_cases": ["B2B数据库", "外联"],
+      "pro": ["Lead库大", "外联自动化", "DACH数据"],
+      "contra": ["数据质量波动", "GDPR风险"]
+    },
+    "lusha": {
+      "aban_note": "联系数据丰富化。已记录GDPR问题——谨慎。US数据还可以。",
+      "dsgvo_note": "",
+      "use_cases": ["联系数据"],
+      "pro": ["数据库大", "快速查询", "成本合理"],
+      "contra": ["GDPR风险记录", "DE数据弱"]
+    },
+    "intercom-fin": {
+      "aban_note": "支持AI Agent。可能50%自动解决。按解决率昂贵，但数学对Volume支持有效。",
+      "dsgvo_note": "",
+      "use_cases": ["支持自动化"],
+      "pro": ["自动化高效", "支持快速", "ROI明显"],
+      "contra": ["按使用定价贵", "定制有限"]
+    },
+    "zendesk-ai": {
+      "aban_note": "Zendesk的AI附加。如果你已有Zendesk：启用。独立价值：一般。",
+      "dsgvo_note": "",
+      "use_cases": ["帮助台AI"],
+      "pro": ["Zendesk集成完美", "现有设置简单", "扎实基础"],
+      "contra": ["独立价值低", "定价高档版"]
+    },
+    "aider": {
+      "aban_note": "终端编码Agent。Git感知，多文件。开源。对于Power用户来说是Cursor的干净替代。",
+      "dsgvo_note": "",
+      "use_cases": ["终端编程", "开源Agent"],
+      "pro": ["开源可自定制", "Git集成好", "功能强"],
+      "contra": ["CLI陡峭", "社区较小"]
+    },
+    "cline": {
+      "aban_note": "VSCode扩展Agent。计划+Act模式。想法周到。开源。",
+      "dsgvo_note": "",
+      "use_cases": ["VSCode Agent", "编程"],
+      "pro": ["VSCode集成", "计划透明", "开源可自定制"],
+      "contra": ["新兴项目", "社区小"]
+    },
+    "tabnine": {
+      "aban_note": "隐私优先代码补全。企业自托管。对于合规重企业有趣。",
+      "dsgvo_note": "",
+      "use_cases": ["隐私优先编程", "企业自托管"],
+      "pro": ["隐私最好", "自托管选项", "企业级"],
+      "contra": ["性能有限", "成本高"]
+    },
+    "cody": {
+      "aban_note": "代码库感知AI用于大仓库。如果你有Monorepo：强。独立：Cursor足够。",
+      "dsgvo_note": "",
+      "use_cases": ["企业代码库", "代码搜索"],
+      "pro": ["代码库理解深", "Monorepo优化", "搜索强"],
+      "contra": ["定价高", "独立开发者不需要"]
+    },
+    "warp": {
+      "aban_note": "AI终端。Agent模式可多步Shell任务。漂亮UI。云同步——隐私顾虑。",
+      "dsgvo_note": "",
+      "use_cases": ["AI终端"],
+      "pro": ["终端现代化", "Agent功能好", "UI漂亮"],
+      "contra": ["云同步隐私风险", "Rust学习曲线"]
+    },
+    "codex": {
+      "aban_note": "OpenAI编码Agent。云基础。工作，但Claude Code在终端更完整。",
+      "dsgvo_note": "",
+      "use_cases": ["云编程Agent"],
+      "pro": ["OpenAI品牌", "稳定可靠", "功能完整"],
+      "contra": ["云仅有", "成本高"]
+    },
+    "pipedream": {
+      "aban_note": "代码+无代码混合。对想在JavaScript写工作流的开发者。",
+      "dsgvo_note": "",
+      "use_cases": ["代码混合工作流"],
+      "pro": ["代码灵活", "混合方式好", "集成丰富"],
+      "contra": ["学习曲线", "成本可变"]
+    },
+    "windmill": {
+      "aban_note": "自托管工作流引擎。欧盟基地（巴黎）。如果n8n太有限且你要代码。",
+      "dsgvo_note": "",
+      "use_cases": ["自托管自动化", "EU合规"],
+      "pro": ["自托管完全", "EU优先", "代码灵活"],
+      "contra": ["学习曲线陡", "社区较小"]
+    },
+    "supabase": {
+      "aban_note": "开源Firebase。EU托管。pgvector包含。独立开发者后端工具箱。",
+      "dsgvo_note": "",
+      "use_cases": ["后端", "向量搜索", "EU托管"],
+      "pro": ["全栈功能", "EU托管", "开源可自托管", "成本低"],
+      "contra": ["功能不如Firebase", "社区较小"]
+    },
+    "vercel-ai": {
+      "aban_note": "TypeScript AI SDK。比LangChain对标准用例更干净。如果你做Next.js：首选。",
+      "dsgvo_note": "",
+      "use_cases": ["TypeScript AI", "Next.js集成"],
+      "pro": ["代码清晰", "Next.js完美集成", "文档好"],
+      "contra": ["功能较限", "Vercel锁定"]
+    },
+    "modal": {
+      "aban_note": "无服务器GPU计算。用于无基础设施应力的定制模型部署。",
+      "dsgvo_note": "",
+      "use_cases": ["无服务器GPU", "定制模型托管"],
+      "pro": ["GPU易获取", "自动扩展", "按使用付费"],
+      "contra": ["学习曲线", "成本不可预测"]
+    },
+    "linear": {
+      "aban_note": "问题追踪带AI功能（自动分类、总结）。我的边项目工具。UI是自己的一类。",
+      "dsgvo_note": "",
+      "use_cases": ["问题追踪", "项目管理"],
+      "pro": ["UI最漂亮", "AI功能有用", "团队协作强"],
+      "contra": ["成本较高", "小团队可能过度"]
+    },
+    "humata": {
+      "aban_note": "PDF问答工具。现被Claude/ChatGPT PDF上传超越。",
+      "dsgvo_note": "",
+      "use_cases": ["PDF研究"],
+      "pro": ["简单快速", "易用", "成本合理"],
+      "contra": ["功能已过时", "被超越"]
+    },
+    "consensus": {
+      "aban_note": "科学论文AI搜索。用于事实研究超越LinkedIn知识：金色。",
+      "dsgvo_note": "",
+      "use_cases": ["科学研究"],
+      "pro": ["学术专门化", "验证信息强", "研究聚焦"],
+      "contra": ["范围窄", "成本较高"]
+    },
+    "elicit": {
+      "aban_note": "科学文献研究工作流。自动提取发现。对于研究者明确优于ChatGPT。",
+      "dsgvo_note": "",
+      "use_cases": ["文献研究", "元分析"],
+      "pro": ["研究工作流优化", "自动提取好", "学术聚焦"],
+      "contra": ["范围窄", "成本较高"]
+    },
+    "scite": {
+      "aban_name": "Scite.ai",
+      "aban_note": "引用验证。显示论文是否被支持或反驳。用于严肃研究。",
+      "dsgvo_note": "",
+      "use_cases": ["引用检查", "科学验证"],
+      "pro": ["引用验证独特", "信息完整", "学术优化"],
+      "contra": ["范围窄", "成本较高"]
+    },
+    "tactiq": {
+      "aban_note": "浏览器会议AI。便宜，输出还可以。Granola明确击败。",
+      "dsgvo_note": "",
+      "use_cases": ["会议AI预算"],
+      "pro": ["价格低", "易用", "基本功能"],
+      "contra": ["Granola更好", "功能有限"]
+    },
+    "supahub": {
+      "aban_note": "播客到内容。从音频生成节目笔记、引用、推文。用于播客。",
+      "dsgvo_note": "",
+      "use_cases": ["播客再利用"],
+      "pro": ["播客优化", "多输出格式", "自动化高"],
+      "contra": ["成本较高", "功能单一"]
+    },
+    "pictory": {
+      "aban_note": "博客到视频。输出明显是AI生成的。用于批量社交片段可以。",
+      "dsgvo_note": "",
+      "use_cases": ["博客到视频"],
+      "pro": ["自动化高", "批量快速", "成本合理"],
+      "contra": ["质量低", "合成明显"]
+    },
+    "lumen5": {
+      "aban_note": "博客到社交视频。模板驱动。输出足用于LinkedIn帖子，不更多。",
+      "dsgvo_note": "",
+      "use_cases": ["社交视频"],
+      "pro": ["简单快速", "社交优化", "易用"],
+      "contra": ["质量一般", "定制有限"]
+    },
+    "wisper-flow": {
+      "aban_note": "Mac语音到文本口述。比打字快。德文识别一流。",
+      "dsgvo_note": "",
+      "use_cases": ["语音口述"],
+      "pro": ["德文识别最佳", "快速方便", "自然输入"],
+      "contra": ["仅Mac", "成本较高"]
+    },
+    "raycast-ai": {
+      "aban_note": "Spotlight替代带AI调用遍布OS。快速提示工作流无浏览器切换。仅Mac。",
+      "dsgvo_note": "",
+      "use_cases": ["OS级AI", "快速提示"],
+      "pro": ["OS集成完美", "快速无缝", "效率高"],
+      "contra": ["仅Mac", "功能有限"]
+    },
+    "arc": {
+      "aban_note": "移动浏览器带AI总结。'浏览我'不错。旋向Dia到来。",
+      "dsgvo_note": "",
+      "use_cases": ["AI浏览器移动"],
+      "pro": ["移动AI独特", "总结快速", "创新"],
+      "contra": ["功能有限", "新兴"]
+    },
+    "dia": {
+      "aban_note": "AI优先浏览器。标签间聊天。有趣概念，Beta状态。",
+      "dsgvo_note": "",
+      "use_cases": ["AI浏览器"],
+      "pro": ["创新概念", "AI深集成", "界面现代"],
+      "contra": ["Beta不稳定", "功能有限"]
+    },
+    "snowball": {
+      "aban_note": "竞争智能平台。企业定价。对独立开发者太大。",
+      "dsgvo_note": "",
+      "use_cases": ["企业竞争智能"],
+      "pro": ["功能完整", "企业级", "深度分析"],
+      "contra": ["企业定价", "独立开发者不适"]
+    },
+    "crayon": {
+      "aban_note": "竞争跟踪。如Klue。企业。",
+      "dsgvo_note": "",
+      "use_cases": ["竞争跟踪"],
+      "pro": ["追踪全面", "企业级", "支持好"],
+      "contra": ["企业定价", "功能过度"]
+    },
+    "glean": {
+      "aban_note": "企业搜索遍布所有SaaS工具。用于团队>50人是杀手。独立设置：过度。",
+      "dsgvo_note": "",
+      "use_cases": ["企业搜索", "工作AI"],
+      "pro": ["企业搜索强", "多工具集成", "AI完整"],
+      "contra": ["企业定价", "小团队过度"]
+    },
+    "anthropic-mcp": {
+      "aban_note": "开放工具调用标准。Claude、Cursor、Windsurf、所有采纳。如果你为Agent构建工具：这就是。",
+      "dsgvo_note": "",
+      "use_cases": ["Agent工具", "集成"],
+      "pro": ["开放标准", "快速采纳", "互操作强"],
+      "contra": ["新兴标准", "文档发展中"]
+    },
+    "ollama-cloud": {
+      "aban_note": "代码执行沙箱作为API。用于需要执行代码的Agent。",
+      "dsgvo_note": "",
+      "use_cases": ["沙箱代码", "Agent执行"],
+      "pro": ["代码执行安全", "Agent聚焦", "可靠"],
+      "contra": ["成本较高", "功能单一"]
+    },
+    "e2b": {
+      "aban_note": "AI Agent沙箱基础设施。欧盟基地（布拉格）。开源核心。Agent构建者干净选择。",
+      "dsgvo_note": "",
+      "use_cases": ["Agent沙箱", "EU合规"],
+      "pro": ["Agent优化", "EU友好", "开源可自托管"],
+      "contra": ["成本较高", "学习曲线"]
+    },
+    "langfuse": {
+      "aban_note": "德国LLM可观测性平台（柏林）。追踪、评估、成本追踪。可自托管。当你的LLM堆栈变认真：首选。",
+      "dsgvo_note": "",
+      "use_cases": ["LLM可观测性", "提示管理", "DACH合规"],
+      "pro": ["德国开发", "可自托管", "功能完整", "DACH优化"],
+      "contra": ["定价较高", "学习曲线"]
+    },
+    "langsmith": {
+      "aban_note": "LangChain应用的LLM可观测性。供应商锁定轻。云仅有EU地区2026。",
+      "dsgvo_note": "",
+      "use_cases": ["LangChain追踪"],
+      "pro": ["LangChain集成完美", "追踪完整", "文档好"],
+      "contra": ["供应商锁定", "EU迟到"]
+    },
+    "browser-use": {
+      "aban_note": "AI浏览器控制的Python库。开源。Agent构建者的精简堆栈。",
+      "dsgvo_note": "",
+      "use_cases": ["浏览器Agent", "开源自动化"],
+      "pro": ["开源可自定制", "Python友好", "轻量级"],
+      "contra": ["社区较小", "文档发展中"]
+    }
+  }
+}

@@ -1,0 +1,147 @@
+================================================================
+ABAN NEWS — STRATEGIE (Go-to-Market & Monetarisierung)
+Stand: 2026-05-30 · Allen Chour (Aban), Belp CH
+================================================================
+
+KERN-WAHRHEIT (zuerst lesen)
+----------------------------------------------------------------
+Das Produkt steht: Newsletter + Gratis-eBook (4 Sprachen) + Buch
+(pay-what-you-want) + Founding (149 EUR) + 5 SEO-Money-Pages x 4
+Sprachen + E-Mail-Funnel. Der Engpass ist NICHT das Produkt.
+Der Engpass ist Reichweite (Traffic / Abonnenten).
+
+Solange du keine Leser hast, bringt der beste Funnel 0 EUR. Also:
+95 Prozent deiner Zeit gehoeren in den naechsten Monaten in EIN
+Ziel -> mehr qualifizierte Abonnenten. Alles andere ist Deko.
+
+Realistische Erwartung: Das ist ein 6-12-Monats-Spiel mit
+Zinseszins. Die ersten Monate fuehlen sich nach wenig an. Das ist
+normal, kein Grund die Strategie zu wechseln.
+
+
+DIE REIHENFOLGE DER GELDQUELLEN (nicht ueberspringen)
+----------------------------------------------------------------
+1. GRATIS-Newsletter  -> baut Publikum + Vertrauen (jetzt)
+2. PWYW-Buch          -> kleiner, aber echter Umsatz + Goodwill
+3. Founding 149 EUR   -> hohe Marge, braucht warmes Publikum
+4. Sponsoring/Werbung -> erst ab ca. 1.000+ Lesern sinnvoll
+
+Fehler Nr. 1 waere, das 149-EUR-Angebot an kalten Traffic zu
+druecken. Reihenfolge: gratis -> Nutzen beweisen -> dann bezahlt.
+
+
+TRAFFIC: WO DEINE LESER WIRKLICH SIND (0 Budget)
+----------------------------------------------------------------
+DACH-Solopreneure/B2B sind auf LinkedIn. Das ist Kanal Nummer 1.
+
+A) LINKEDIN (Hauptkanal, taeglich)
+   - Jede Newsletter-Ausgabe = 1 LinkedIn-Post (Repurposing).
+   - Format: 1 konkrete KI-Sache, was sie bedeutet, was DU tun
+     wuerdest. Gleiche Anti-Hype-Stimme wie der Newsletter.
+   - Am Ende: ein Satz "Taeglich per Mail: abannews.com".
+   - Konsistenz schlaegt Genialitaet: lieber 5x/Woche solide als
+     1x/Monat perfekt.
+
+B) BEEHIIV RECOMMENDATIONS / BOOSTS (kostenlos, eingebaut)
+   - In beehiiv aktivieren: empfiehl 3-5 verwandte Newsletter,
+     bitte deren Betreiber um Gegen-Empfehlung. Wachstum quasi
+     ohne Kosten. Spaeter Boosts (bezahlte Empfehlungen) wenn Geld
+     reinkommt.
+
+C) SEO-MONEY-PAGES (schon gebaut, kompoundiert langsam)
+   - Greift erst nach 3-6 Monaten. Nichts tun ausser: 1x/Monat
+     eine Seite mit einem konkreten Beispiel/FAQ erweitern.
+
+D) COMMUNITIES (dosiert, ehrlich)
+   - Relevante Subreddits / Slack- / Discord-Gruppen / Foren fuer
+     Selbststaendige. Erst Nutzen liefern, Link nur wenn er passt.
+     Kein Spam -> sonst Rauswurf und Markenschaden.
+
+Regel: Nimm EINEN Kanal (LinkedIn) und mach ihn 60 Tage richtig,
+bevor du den zweiten dazunimmst. Streuen = nichts wirkt.
+
+
+BUCH SCHARF SCHALTEN (konkrete Schritte, kostenlos)
+----------------------------------------------------------------
+1. Gumroad ODER Lemon Squeezy Konto anlegen (0 EUR Fixkosten).
+   - Lemon Squeezy = "Merchant of Record": kuemmert sich um EU-
+     MwSt/OSS. Fuer eine Schweizer Einzelperson, die in die EU
+     verkauft, der bequemste Start.
+   - Produkt = das Anti-Hype-Buch, "pay what you want", Minimum 0.
+   - Lege die fertigen Dateien hoch: downloads/anti-hype-ebook.pdf
+     und .epub (bzw. die Sprachversionen).
+2. Den Produktlink in buch.html (und en/fr/it/buch.html) als
+   BUY_URL eintragen -> Button wird automatisch scharf.
+3. Spaeter Amazon KDP: Kindle + Taschenbuch. 0 EUR vorab, gibt
+   Auffindbarkeit ("Amazon-Suche" ist ein Kanal). Link als KDP_URL
+   eintragen. ACHTUNG: Inhalt fuer KDP sollte die erweiterte
+   Vollversion sein (siehe unten), nicht nur die Kurzfassung.
+
+PREIS-ANKER (Vorschlag, anpassbar)
+   - PWYW-Vorschlagspreis: 9 EUR (Bandbreite 0-29).
+   - KDP Kindle: 4,99-6,99 EUR. Taschenbuch: 12-15 EUR.
+   - Founding bleibt 149 EUR lifetime (30 Tage Geld-zurueck).
+
+
+PRODUKT-LUECKE (ehrlich)
+----------------------------------------------------------------
+Die aktuelle Fassung ist kompakt. Fuer einen bezahlten KDP-Titel,
+den niemand als "zu duenn" empfindet, sollte das Buch auf echte
+Buchlaenge wachsen (mehr Kapitel, mehr durchgespielte Beispiele,
+Vorlagen). Der Generator (generate_ebook.py) macht das einfach:
+Inhalt liegt zentral im CONTENT-Dict, PDF+ePub fallen automatisch
+raus. -> Naechster grosser Hebel, wenn Traffic laeuft.
+
+Bis dahin: PWYW-Kurzfassung ist voellig ok (gratis ladbar, zahlen
+freiwillig -> kein Rip-off-Risiko, passt zur Marke).
+
+
+30 / 60 / 90 TAGE
+----------------------------------------------------------------
+TAG 1-30  (Fundament + erster Umsatz)
+  [ ] Gumroad/Lemon anlegen, BUY_URL eintragen -> Buch verkaufbar
+  [ ] beehiiv: Welcome-Serie (automation/email-welcome-sequence.txt)
+      eintragen + Recommendations aktivieren
+  [ ] LinkedIn: 5 Posts/Woche aus den Ausgaben, jeder mit CTA
+  [ ] Ziel: erste 100 Abonnenten, erster Buch-"Verkauf"
+
+TAG 31-60  (Verstaerken)
+  [ ] KDP Kindle + Taschenbuch live (KDP_URL eintragen)
+  [ ] LinkedIn weiter, 2-3 Newsletter-Swaps abschliessen
+  [ ] Erste Founding-Member aus der warmen Liste ansprechen
+      (Mail an aktive Leser, nicht an kalte)
+  [ ] Ziel: 250-500 Abonnenten
+
+TAG 61-90  (Skalieren, was funktioniert)
+  [ ] Anschauen: welcher Kanal bringt Anmeldungen? -> dort doppeln
+  [ ] SEO-Seiten beginnen zu ranken -> Themen ausbauen, die ziehen
+  [ ] Ab ~1.000 Lesern: beehiiv-Ad-Network / erster Sponsor pruefen
+  [ ] Ziel: 1.000 Abonnenten, Entscheidung Founding-Cohort vs.
+      laufendes Bezahl-Abo
+
+
+WAS DU MESSstattEST (woechentlich, 5 Min)
+----------------------------------------------------------------
+  - Abonnenten-Wachstum pro Woche (die EINE Zahl, die zaehlt)
+  - Open-Rate (Ziel > 40 Prozent; sonst Betreffzeilen pruefen)
+  - Anmeldungen pro Quelle (welcher Kanal traegt wirklich?)
+  - Gratis -> PWYW-Buch Konversion
+  - Abonnent -> Founding Konversion
+
+Wenn eine Zahl 4 Wochen flach ist: am Kanal/Angebot schrauben,
+NICHT die ganze Strategie wegwerfen.
+
+
+WAS DU (BEWUSST) NICHT TUST
+----------------------------------------------------------------
+  - Keine bezahlte Werbung, solange der Funnel nicht organisch
+    konvertiert (sonst bezahlst du fuer ein Leck).
+  - Kein zweiter/dritter Kanal, bevor der erste laeuft.
+  - Kein Hard-Sell von 149 EUR an Fremde.
+  - Keine erfundenen Zahlen/Bewertungen. Vertrauen ist hier das
+    ganze Geschaeftsmodell.
+
+================================================================
+Kurz: Produkt steht. Jetzt 60 Tage LinkedIn + beehiiv-Recos +
+Buch scharf schalten. Reichweite ist das einzige Spiel.
+================================================================

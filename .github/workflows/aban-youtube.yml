@@ -1,0 +1,69 @@
+name: ABAN Files auto-publish (eigener Kanal)
+
+# Rendert die naechste ABAN-Files-Folge (Pexels-Footage + ElevenLabs-Stimme +
+# Untertitel) DIREKT in der CI und laedt sie als Short auf den eigenen
+# ABAN-Files-YouTube-Kanal. Fortschritt in video-prototypes/aban-files/uploaded.json.
+#
+# Benoetigte Repo-Secrets:
+#   XI                     - ElevenLabs API-Key (neu hinzufuegen)
+#   PEXELS                 - Pexels API-Key, gratis (neu hinzufuegen)
+#   YT_CLIENT_ID           - OAuth-Client (existiert bereits, Bunny-Pipeline)
+#   YT_CLIENT_SECRET       - OAuth-Client-Secret (existiert bereits)
+#   YT_REFRESH_TOKEN       - existiert bereits; gilt fuer denselben Kanal -> wird
+#                            wiederverwendet. (Optional eigenes ABAN_YT_REFRESH_TOKEN.)
+
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "Wie viele Folgen jetzt veroeffentlichen"
+        default: "1"
+      privacy:
+        description: "Sichtbarkeit: public / unlisted / private"
+        default: "public"
+  schedule:
+    - cron: "0 17 * * *"   # taeglich 17:00 UTC (~19:00 Berlin) — Testphase fuer schnelle Daten
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aban-youtube
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq fonts-dejavu-core
+          pip install Pillow numpy imageio-ffmpeg \
+            google-api-python-client google-auth-oauthlib google-auth-httplib2
+      - name: Render + upload next episode(s)
+        working-directory: video-prototypes/aban-files
+        env:
+          XI: ${{ secrets.XI }}
+          PEXELS: ${{ secrets.PEXELS }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          ABAN_YT_REFRESH_TOKEN: ${{ secrets.ABAN_YT_REFRESH_TOKEN }}
+        run: python3 aban_publish.py --count "${{ github.event.inputs.count || 1 }}" --privacy "${{ github.event.inputs.privacy || 'public' }}"
+      - name: Persist upload state
+        working-directory: video-prototypes/aban-files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add uploaded.json video_ids.json
+          # --cached erkennt auch NEUE (bisher ungetrackte) Dateien
+          if ! git diff --cached --quiet; then
+            git commit -m "aban: Upload-Fortschritt + Video-IDs"
+            git push
+          else
+            echo "kein neuer Upload."
+          fi

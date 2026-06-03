@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MwSt-Rechner (CH / DE / AT) · aban news</title>
+<meta name="description" content="Kostenloses Tool: Mehrwertsteuer für Schweiz, Deutschland und Österreich rechnen — netto ↔ brutto, mit gängigen Steuersätzen. Lokal im Browser, ohne Login. Keine Steuerberatung.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/mwst-rechner.html">
+<meta property="og:title" content="MwSt-Rechner (CH / DE / AT)">
+<meta property="og:description" content="Mehrwertsteuer für CH, DE, AT rechnen: netto ↔ brutto. Lokal im Browser, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/mwst-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"MwSt-Rechner (CH / DE / AT)",
+"url":"https://abannews.com/mwst-rechner.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Rechnet Mehrwertsteuer fuer Schweiz, Deutschland und Oesterreich, netto und brutto.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+.grid{display:flex;gap:14px;flex-wrap:wrap}
+.fld{flex:1;min-width:140px}
+select,input[type=text]{width:100%;font-size:15px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink)}
+select:focus,input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.seg{display:inline-flex;border:1px solid var(--amber-lt);border-radius:9px;overflow:hidden;margin-top:6px}
+.seg button{background:transparent;border:0;padding:9px 14px;cursor:pointer;font-weight:600;color:var(--amber-dk);font-size:.9rem}
+.seg button.on{background:var(--amber-dk);color:#fff}
+.out{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.box{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center}
+.box b{display:block;font-size:22px;font-weight:800;color:var(--amber-dk)}
+.box span{font-size:.8rem;color:var(--muted)}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.warn{font-size:.85rem;color:var(--ink2);background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:10px 12px;margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Mehrwertsteuer</span> rechnen</h1>
+    <p>Netto ↔ brutto für Schweiz, Deutschland und Österreich — mit den gängigen Steuersätzen vorausgewählt. Für Rechnungen, Angebote und schnelle Checks. Lokal im Browser, nichts wird gesendet.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="grid">
+      <div class="fld"><label for="land">Land</label>
+        <select id="land">
+          <option value="CH">Schweiz (CHF)</option>
+          <option value="DE" selected>Deutschland (€)</option>
+          <option value="AT">Österreich (€)</option>
+        </select></div>
+      <div class="fld"><label for="satz">Steuersatz</label>
+        <select id="satz"></select></div>
+      <div class="fld"><label for="betrag">Betrag</label>
+        <input type="text" id="betrag" value="100" inputmode="decimal" spellcheck="false"></div>
+    </div>
+    <div style="margin-top:12px"><label>Betrag ist …</label>
+      <div class="seg" id="seg">
+        <button data-m="net" class="on">Netto (ohne MwSt)</button>
+        <button data-m="gross">Brutto (mit MwSt)</button>
+      </div>
+    </div>
+    <div class="out" id="out"></div>
+    <div class="warn"><strong>Hinweis:</strong> Die Sätze sind die gängigen Regel-/ermäßigten Sätze (Stand 2024/2025) und dienen der schnellen Schätzung — <strong>keine Steuerberatung</strong>. Für deine konkrete Rechnung gilt immer der amtliche Satz; im Zweifel Steuerberater oder offizielle Quelle prüfen.</div>
+    <p class="note">CH: 8,1 % regulär · 3,8 % Beherbergung · 2,6 % ermäßigt. DE: 19 % regulär · 7 % ermäßigt. AT: 20 % regulär · 13 % / 10 % ermäßigt. Alles lokal, kein Upload.</p>
+  </section>
+  <div class="cta"><strong>Mehr Rechner</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">fürs Geschäftliche.</p>
+    <p><a class="btn" href="/prozent-rechner.html">Prozent/Dreisatz</a>
+      <a class="btn ghost" href="/finanz-rechner.html">Stundensatz</a>
+      <a class="btn ghost" href="/automatisierung-rechner.html">Automatisierung</a></p></div>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/prozent-rechner.html">Prozent</a> · <a href="/finanz-rechner.html">Finanz-Rechner</a> ·
+  <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var RATES={
+    CH:{cur:"CHF",rows:[["8.1","8,1 % – Normalsatz"],["3.8","3,8 % – Beherbergung"],["2.6","2,6 % – ermäßigt"]]},
+    DE:{cur:"€",rows:[["19","19 % – Regelsatz"],["7","7 % – ermäßigt"]]},
+    AT:{cur:"€",rows:[["20","20 % – Normalsatz"],["13","13 % – ermäßigt"],["10","10 % – ermäßigt"]]}
+  };
+  var mode="net";
+  var landEl=document.getElementById("land"),satzEl=document.getElementById("satz"),
+      betragEl=document.getElementById("betrag"),out=document.getElementById("out");
+  function fillSatz(){
+    var r=RATES[landEl.value];satzEl.innerHTML="";
+    r.rows.forEach(function(row){var o=document.createElement("option");o.value=row[0];o.textContent=row[1];satzEl.appendChild(o);});
+  }
+  function fmt(n,cur){return (isFinite(n)?n.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2}):"—")+" "+cur;}
+  function run(){
+    var cur=RATES[landEl.value].cur;
+    var p=parseFloat(satzEl.value);
+    var b=parseFloat(betragEl.value.trim().replace(",","."));
+    if(!isFinite(b)){out.innerHTML='<div class="box" style="grid-column:1/-1"><span>Bitte einen Betrag eingeben.</span></div>';return;}
+    var net,gross,tax;
+    if(mode==="net"){net=b;tax=b*p/100;gross=b+tax;}
+    else{gross=b;net=b/(1+p/100);tax=gross-net;}
+    out.innerHTML=
+      '<div class="box"><b>'+fmt(net,cur)+'</b><span>Netto</span></div>'+
+      '<div class="box"><b>'+fmt(tax,cur)+'</b><span>MwSt ('+satzEl.value.replace(".",",")+' %)</span></div>'+
+      '<div class="box"><b>'+fmt(gross,cur)+'</b><span>Brutto</span></div>';
+  }
+  landEl.addEventListener("change",function(){fillSatz();run();});
+  satzEl.addEventListener("change",run);
+  betragEl.addEventListener("input",run);
+  document.querySelectorAll("#seg button").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      mode=btn.getAttribute("data-m");
+      document.querySelectorAll("#seg button").forEach(function(b){b.classList.toggle("on",b===btn);});
+      run();
+    });
+  });
+  fillSatz();run();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="aban news Ausgabe 010: Werkzeugkasten Woche 2 — drei neu, eins fliegt">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <g fill="#ffffff" opacity="0.08">
+    <circle cx="1040" cy="120" r="6"/><circle cx="1090" cy="170" r="6"/><circle cx="1140" cy="120" r="6"/>
+    <circle cx="1090" cy="70" r="6"/><circle cx="1040" cy="220" r="6"/><circle cx="1140" cy="220" r="6"/>
+  </g>
+  <text x="80" y="92" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="30" font-weight="800" fill="#ffffff" opacity="0.95">☕ aban news</text>
+  <rect x="80" y="120" width="175" height="40" rx="20" fill="#ffffff" opacity="0.18"/>
+  <text x="100" y="147" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="22" font-weight="700" fill="#ffffff">Tool-Test</text>
+  <text x="980" y="150" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="120" opacity="0.9">🧰</text>
+  <text x="80" y="268" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="58" font-weight="800" fill="#ffffff" letter-spacing="-1"><tspan x="80" dy="0">Werkzeugkasten Woche 2 —</tspan><tspan x="80" dy="64">drei neu, eins fliegt</tspan></text>
+  <text x="80" y="560" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="26" font-weight="600" fill="#ffffff" opacity="0.9">Ausgabe 010 · 2026-06-12</text>
+</svg>

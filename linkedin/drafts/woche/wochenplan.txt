@@ -1,0 +1,191 @@
+==========================================================================
+aban news - Wochenplan LinkedIn
+==========================================================================
+
+2 Ausgabe(n) verarbeitet. Pro Ausgabe 5 Winkel.
+Idee: 5 Winkel = waehle 1 Post pro Tag und mische die
+Winkel ueber die Woche. Kopiere den Block direkt in
+deinen Planer und wuerze jeden Post mit einem echten Detail.
+
+--------------------------------------------------------------------------
+POSTING-VORSCHLAG (1 Post pro Tag, Winkel gemischt)
+--------------------------------------------------------------------------
+  Montag:     tag-1                  -> Winkel: news  (post-1-news.txt)
+  Dienstag:   tag-2                  -> Winkel: howto  (post-2-howto.txt)
+
+Die uebrigen 4 Winkel pro Ausgabe sind Reserve fuer 
+Folgetage, A/B-Tests oder als Vorrat.
+
+
+==========================================================================
+TAG 1 - tag-1  (Montag)
+Quelle-Entwuerfe: linkedin/drafts/woche/tag-1/
+==========================================================================
+
+--------------------------------------------------------------------------
+  WINKEL 1 - news  [post-1-news.txt]
+--------------------------------------------------------------------------
+  Heute gelesen, nuechtern eingeordnet: Mehrere Anbieter werben damit, dass ihre Modelle laengere Eingaben am Stueck verarbeiten koennen, etwa ganze Dokumente statt einzelner Abschnitte.
+
+  Mehrere Anbieter werben damit, dass ihre Modelle laengere Eingaben am Stueck verarbeiten koennen, etwa ganze Dokumente statt einzelner Abschnitte.
+
+  Einordnung: Fuer Selbststaendige heisst das: weniger Copy-Paste-Schnipsel, mehr "ganzes Dokument rein, Frage stellen". Ob es im Alltag wirklich Zeit spart, haengt davon ab, wie sauber deine Eingabe ist.
+
+  Takeaway: Neugier ja, aber erst pruefen, dann uebernehmen.
+
+  Taeglich in 5 Min: abannews.com
+
+  #KI #Newsletter #Selbststaendigkeit
+
+
+--------------------------------------------------------------------------
+  WINKEL 2 - howto  [post-2-howto.txt]
+--------------------------------------------------------------------------
+  So gehst du es praktisch an: such dir eine wiederkehrende Mini-Aufgabe (z.
+
+  Worum geht es: KI-Funktionen direkt in Office-Programmen
+
+  Dein Schritt:
+  - Such dir eine wiederkehrende Mini-Aufgabe (z. B. Protokoll in Stichpunkte) und teste die eingebaute Funktion eine Woche lang. Danach entscheidest du, ob sie bleibt.
+
+  Takeaway: Ein getesteter Schritt schlaegt zehn gespeicherte Tipps.
+
+  Taeglich in 5 Min: abannews.com
+
+  #KI #Produktivitaet #Solopreneur
+
+
+--------------------------------------------------------------------------
+  WINKEL 3 - contrarian  [post-3-contrarian.txt]
+--------------------------------------------------------------------------
+  Der Hype sagt lokale Modelle auf dem eigenen Rechner. Die Praxis sagt etwas anderes.
+
+  Die News ist nett. Aber sie aendert deinen Montag nicht von allein.
+
+  Was wirklich zaehlt: Fuer alle mit sensiblen Mandanten- oder Kundendaten ist das relevant: Datenschutz wird einfacher, dafuer ist die Einrichtung mehr Bastelei.
+
+  Takeaway: Frag bei jedem Tool, ob es ein echtes Problem von dir loest.
+
+  Taeglich in 5 Min: abannews.com
+
+  #KI #antiHype
+
+
+--------------------------------------------------------------------------
+  WINKEL 4 - case  [post-4-case.txt]
+--------------------------------------------------------------------------
+  Ein kleines Beispiel aus meinem Alltag: mehrere Anbieter werben damit, dass ihre Modelle laengere Eingaben am Stueck verarbeiten.
+
+  Statt darauf zu warten, dass es sich von selbst lohnt, mache ich das:
+  - Nimm ein echtes Dokument aus deinem Arbeitsalltag und lass es einmal zusammenfassen. Pruefe die Zusammenfassung gegen das Original, bevor du ihr vertraust.
+
+  Ergebnis bisher: weniger Klicks, mehr Kontrolle.
+
+  Takeaway: Kleine, echte Tests zeigen schneller, was taugt.
+
+  Taeglich in 5 Min: abannews.com
+
+  #KI #Praxis #Selbststaendigkeit
+
+
+--------------------------------------------------------------------------
+  WINKEL 5 - frage  [post-5-frage.txt]
+--------------------------------------------------------------------------
+  Mal angenommen: nutzt du KI-Funktionen direkt in Office-Programmen schon im Alltag, oder wartest du noch ab. Wie machst du das?
+
+  Kurzer Kontext: Bekannte Buero-Suiten bauen Assistenz-Funktionen ein, die Texte entwerfen oder Tabellen erklaeren - dort, wo man ohnehin arbeitet.
+
+  Bei mir ist es so: erst testen, dann entscheiden.
+
+  Wie haeltst du es? Schreib es in die Kommentare.
+
+  Taeglich in 5 Min: abannews.com
+
+  #KI #Community
+
+
+==========================================================================
+TAG 2 - tag-2  (Dienstag)
+Quelle-Entwuerfe: linkedin/drafts/woche/tag-2/
+==========================================================================
+
+--------------------------------------------------------------------------
+  WINKEL 1 - news  [post-1-news.txt]
+--------------------------------------------------------------------------
+  Heute gelesen, nuechtern eingeordnet: Mehr Tools schreiben Online-Meetings automatisch mit und liefern danach eine Zusammenfassung mit Aufgabenliste.
+
+  Mehr Tools schreiben Online-Meetings automatisch mit und liefern danach eine Zusammenfassung mit Aufgabenliste.
+
+  Einordnung: Fuer Solo-Selbststaendige spart das Mitschreiben Zeit, verschiebt die Arbeit aber aufs Pruefen: Stimmt die Aufgabenliste wirklich mit dem ueberein, was besprochen wurde?
+
+  Takeaway: Neugier ja, aber erst pruefen, dann uebernehmen.
+
+  Taeglich in 5 Min: abannews.com
+
+  #KI #Newsletter #Selbststaendigkeit
+
+
+--------------------------------------------------------------------------
+  WINKEL 2 - howto  [post-2-howto.txt]
+--------------------------------------------------------------------------
+  Kein Tutorial-Marathon noetig. Nur das hier: teste ein Bild fuer einen echten Post, den du sowieso.
+
+  Worum geht es: Bildgenerierung fuer kleine Marketing-Aufgaben
+
+  Dein Schritt:
+  - Teste ein Bild fuer einen echten Post, den du sowieso geplant hast. Pruefe vorab, ob die Nutzungsbedingungen die kommerzielle Verwendung erlauben.
+
+  Takeaway: Ein getesteter Schritt schlaegt zehn gespeicherte Tipps.
+
+  Taeglich in 5 Min: abannews.com
+
+  #KI #Produktivitaet #Solopreneur
+
+
+--------------------------------------------------------------------------
+  WINKEL 3 - contrarian  [post-3-contrarian.txt]
+--------------------------------------------------------------------------
+  Alle reden ueber KI-Assistenten fuer die Inbox. Ich finde, das ist der falsche Fokus.
+
+  Die News ist nett. Aber sie aendert deinen Montag nicht von allein.
+
+  Was wirklich zaehlt: Das kann die taegliche Mail-Last senken. Gefahr: generische Antworten, die nach Vorlage klingen und das Gegenueber merken laesst, dass kaum jemand mitgedacht hat.
+
+  Takeaway: Frag bei jedem Tool, ob es ein echtes Problem von dir loest.
+
+  Taeglich in 5 Min: abannews.com
+
+  #KI #antiHype
+
+
+--------------------------------------------------------------------------
+  WINKEL 4 - case  [post-4-case.txt]
+--------------------------------------------------------------------------
+  Ich habe etwas umgestellt. Vorher: mehr Tools schreiben Online-Meetings automatisch mit und liefern danach eine Zusammenfassung.
+
+  Statt darauf zu warten, dass es sich von selbst lohnt, mache ich das:
+  - Lass das naechste Kundengespraech mitschreiben, aber gleiche die Aufgabenliste danach einmal von Hand ab. Erst wenn das mehrfach passt, vertrau dem Ergebnis.
+
+  Ergebnis bisher: weniger Klicks, mehr Kontrolle.
+
+  Takeaway: Kleine, echte Tests zeigen schneller, was taugt.
+
+  Taeglich in 5 Min: abannews.com
+
+  #KI #Praxis #Selbststaendigkeit
+
+
+--------------------------------------------------------------------------
+  WINKEL 5 - frage  [post-5-frage.txt]
+--------------------------------------------------------------------------
+  Kurze Umfrage in die Runde: nutzt du bildgenerierung fuer kleine Marketing-Aufgaben schon im Alltag, oder wartest du noch ab?
+
+  Kurzer Kontext: Tools erzeugen aus Textbeschreibungen Bilder, die fuer Social-Posts oder einfache Grafiken brauchbar sind.
+
+  Bei mir ist es so: erst testen, dann entscheiden.
+
+  Wie haeltst du es? Schreib es in die Kommentare.
+
+  Taeglich in 5 Min: abannews.com
+
+  #KI #Community

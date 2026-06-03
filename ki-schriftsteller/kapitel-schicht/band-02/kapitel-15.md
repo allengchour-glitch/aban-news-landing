@@ -1,0 +1,19 @@
+Kapitel 15 - Marga unter den Männern
+
+Marga war vierzehn, als der Krieg vier Jahre vorbei war, und sie war anders als die anderen Mädchen der Kolonie, und das wussten alle, und nicht allen gefiel es. Sie war klug, klüger als ihr Bruder, klüger als die meisten Jungen, und sie war neugierig auf eine Weise, die man bei Mädchen nicht gern sah. Sie wollte wissen. Wie die Dinge zusammenhingen, warum es war, wie es war, was hinter den Worten lag und unter dem Schweigen, das ihr Vaterhaus erfüllte.
+
+Vor allem wollte sie hinunter. Das war das Unmögliche an Marga: dass sie, ein Mädchen, zum Berg drängte wie ihr Bruder, wie ihr Vater, wie alle Männer der Familie. Sie hing am Förderturm herum, wie August als Junge daran gehangen hatte, kannte die Schichtzeiten, löcherte die Hauer mit Fragen über das, was unten geschah, über die Flöze, die Strecken, den alten Mann. Aber für Marga gab es keinen Korb. Frauen fuhren nicht an. Das war Gesetz, altes, eisernes Gesetz, so alt wie der Bergbau selbst: Eine Frau im Schacht bringt Unglück, hieß es, und ob man das glaubte oder nicht, das Gesetz galt, und Marga stand am Zechentor, das sie nie würde durchschreiten dürfen, und sah die Männer anfahren und ausfahren, und in ihr brannte ein Zorn, der nie ganz verging.
+
+«Warum darf ich nicht», fragte sie die Mutter. «Jakob darf, und der ist jünger und dümmer.»
+
+«Weil du ein Mädchen bist», sagte Lena.
+
+«Das ist kein Grund. Das ist nur, wie es ist.»
+
+Lena sah ihre Tochter an, und in ihrem Blick lag Stolz und Sorge zugleich. «Du hast recht», sagte sie, was Mütter selten sagten. «Es ist kein Grund. Es ist nur, wie es ist. Und es wird sich nicht ändern, solange du lebst, Marga. Du wirst nie anfahren. Aber» – und sie legte der Tochter die Hand auf die Schulter – «vielleicht ist das nicht das Schlimmste. Die da unten sehen den Berg. Du, von oben, du siehst alles andere. Du siehst, wer anfährt und wer nicht, wer welches Hemd trägt, wer wem nicht in die Augen schaut. Manchmal sieht der, der draußen steht, mehr als der, der drin ist.»
+
+Es war ein Trost und es war wahr, und Marga merkte es sich, wie sie sich alles merkte. Sie blieb draußen, vor dem Tor, und sie sah. Sie sah die Feindschaft zwischen den Familien, das Sich-nicht-Grüßen am Sonntag, die kalten Blicke. Sie sah, dass die Brass die Kortmann nicht grüßten, und sie fragte sich, warum, und niemand sagte es ihr, und das Nichtgesagte reizte sie mehr als jede Auskunft. Sie sah ihren Vater nachts reden, von einem Strich, von einem fremden Namen. Sie sah ihren Großvater sterben mit einem unvollendeten Satz. Sie sammelte das alles, legte es beiseite, Beweisstück um Beweisstück, in der Geduld dessen, der weiß, dass die Zeit kommen wird, in der die Stücke ein Bild ergeben.
+
+Jakob dagegen fragte nichts. Jakob, jetzt elf, wollte nur eines: hinunter, Hauer werden, wie der Vater, wie der Großvater. Er war kein Grübler; er war ein Macher, kräftig, treu, geradeheraus, und für ihn war die Welt einfach, weil er sie einfach haben wollte. Die alte Familiengeschichte interessierte ihn nicht; was vorbei war, war vorbei. Er würde der pflichttreue Sohn werden, der die Tradition fortsetzte, der anfuhr, ein guter Kumpel war, und der mit dem Schweigen lebte, ohne je daran zu rühren, weil Rühren nichts brachte und nur wehtat.
+
+So teilten sich die Geschwister die Erbschaft des Schweigens auf zwei Arten auf, wie sich die Erbschaften in dieser Familie immer aufteilten: Der eine, Jakob, würde es weitertragen, unangetastet, in den Berg, in die Pflicht, in die gelebte Kameradschaft, die nicht fragte. Die andere, Marga, würde es eines Tages aufbrechen, weil sie nicht anders konnte, weil sie nichts vergaß, weil sie von draußen alles sah. Und zwischen den beiden, dem Bewahrer und der Aufbrecherin, würde sich entscheiden, was aus dem Riss wurde, den ein Großvater vor einem halben Jahrhundert in einer warmen Nacht im Kontor gelegt hatte.

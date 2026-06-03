@@ -19,6 +19,7 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="aban news — täglicher KI-Newsletter für DACH"><meta name="twitter:image" content="https://abannews.com/og-image.png">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://abannews.beehiiv.com" crossorigin>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebSite","name":"aban news","url":"https://abannews.com/","description":"Täglicher deutschsprachiger AI-Newsletter für DACH-Profis.","inLanguage":"de-DE"}
@@ -31,7 +32,12 @@
       --shadow:0 18px 50px rgba(28,37,48,.12);--shadow-sm:0 6px 18px rgba(28,37,48,.08);
       --r:18px;
     }
-    html{-webkit-text-size-adjust:100%}
+    html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:4px}
+    .skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:#fff;
+      padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+    .skip:focus{left:0}
     body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
       color:var(--ink);background:radial-gradient(1200px 600px at 85% -10%,var(--cream),transparent 60%),var(--bg);
       line-height:1.5;-webkit-font-smoothing:antialiased}
@@ -47,17 +53,22 @@
     .hnav{display:flex;align-items:center;gap:1.25rem;font-size:.92rem}
     .hnav a{color:var(--muted);text-decoration:none}
     .hnav a:hover{color:var(--ink)}
+    /* Aufgeräumt auf kleinen Screens: Sekundär-Links weg, nur Sprache + CTA bleiben */
+    @media(max-width:760px){.hnav{gap:.7rem}.hnav .lk{display:none}}
     .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700}
     .lang a{padding:.32rem .6rem;color:var(--muted);text-decoration:none}
     .lang a.on{background:var(--ink);color:#fff}
     .btn{display:inline-flex;align-items:center;gap:.45rem;border:0;border-radius:12px;cursor:pointer;
-      font-weight:700;font-size:1rem;padding:.8rem 1.15rem;background:var(--amber);color:#fff;text-decoration:none;
+      font-weight:700;font-size:1rem;padding:.8rem 1.15rem;background:#b45309;color:#fff;text-decoration:none;
       box-shadow:0 8px 20px rgba(217,119,6,.28);transition:transform .12s ease,box-shadow .12s ease}
     .btn:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(217,119,6,.34)}
     .btn--sm{padding:.5rem .85rem;font-size:.9rem;border-radius:10px}
     .btn--ghost{background:transparent;color:var(--amber-dk);box-shadow:none;border:1px solid var(--line)}
 
     /* Hero */
+    .hero-in{opacity:0;transform:translateY(12px);animation:heroIn .6s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
+    @keyframes heroIn{to{opacity:1;transform:none}}
+    @media(prefers-reduced-motion:reduce){.hero-in{opacity:1;transform:none;animation:none}}
     .hero{padding:clamp(1.5rem,4vw,3rem) 0 1.5rem}
     .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
     .chip-status{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--amber-dk);
@@ -118,8 +129,15 @@
     .honest b{color:var(--ink)}
 
     footer{margin-top:2rem;border-top:1px solid var(--line);background:rgba(255,255,255,.5)}
-    footer .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:center;justify-content:center;padding:1.1rem 1.25rem;font-size:.82rem;color:var(--muted)}
+    footer .wrap{padding:2rem 1.25rem 1.4rem}
     footer a{text-decoration:none;color:var(--muted)}footer a:hover{color:var(--ink)}
+    .footcols{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+    .footcols h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink);margin:0 0 .7rem;font-weight:800}
+    .footcols a{display:block;font-size:.88rem;color:var(--muted);padding:.2rem 0;line-height:1.3}
+    .footbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.6rem;
+      margin-top:1.6rem;padding-top:1.1rem;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+    .footbar-links{display:flex;gap:.9rem;flex-wrap:wrap}
+    @media(max-width:680px){.footcols{grid-template-columns:1fr 1fr;gap:1.2rem}}
 
     @media(max-width:860px){
       .hero-grid{grid-template-columns:1fr;gap:1.5rem}
@@ -131,50 +149,61 @@
       .hnav .lk{display:none}.row{flex-direction:column}.row .btn{width:100%}
     }
   @media (hover:none) and (pointer:coarse){.tab{min-height:44px;padding:.55rem 1rem}.lang a{min-height:38px;display:inline-flex;align-items:center}.btn--sm{min-height:40px}}
-    /* --- pimp 2026-06-03: micro-polish + gratis-asset teaser --- */
-    .chip{transition:transform .12s ease,box-shadow .12s ease}
-    .chip:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
-    .step{transition:background .15s ease}
-    .step:hover{background:#fffdf8}
-    .freebie{margin-top:1rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;
-      background:linear-gradient(100deg,#fff,var(--cream));border:1px solid #f6d9ad;border-radius:var(--r);box-shadow:var(--shadow-sm);padding:1rem 1.2rem}
-    .freebie p{margin:0;font-size:.95rem}.freebie b{color:var(--amber-dk)}
-    .freebie .lns{display:flex;gap:.5rem;flex-wrap:wrap}
-    :focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+
+  /* ── Premium polish ───────────────────────────────────────── */
+  .sec{padding:clamp(2.6rem,6vw,4rem) 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem}
+  .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--amber-dk)}
+  .eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--amber)}
+  .sec-head h2{margin:.35rem 0 0;font-size:clamp(1.45rem,3vw,2rem);letter-spacing:-.02em;line-height:1.1}
+  .sec-head .more{color:var(--amber-dk);font-weight:700;font-size:.9rem;text-decoration:none;white-space:nowrap}
+  .sec-head .more:hover{text-decoration:underline}
+  /* edlere News-Karten */
+  .nw-card{border-color:#efe9df!important;box-shadow:0 1px 2px rgba(28,37,48,.04),0 10px 28px rgba(28,37,48,.06)!important}
+  .nw-card:hover{box-shadow:0 6px 14px rgba(28,37,48,.08),0 22px 44px rgba(28,37,48,.14)!important}
+  .nw-img{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+  .nw-card:hover .nw-img{transform:scale(1.04)}
+  .nw-h{transition:color .15s}
+  .nw-card:hover .nw-h{color:var(--amber-dk)}
+  /* edleres Netzwerk */
+  .netz-band{background:linear-gradient(180deg,#fffdf8,#fef3c7)!important;border-top:1px solid #f1e4c4!important}
+  .nx-card{box-shadow:0 1px 2px rgba(28,37,48,.04),0 8px 22px rgba(28,37,48,.05)!important;border-color:#efe6d4!important}
+  @media(prefers-reduced-motion:reduce){.nw-img,.nw-card{transition:none!important}.nw-card:hover .nw-img{transform:none}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","@id":"https://abannews.com/#organization","name":"aban news","url":"https://abannews.com/","logo":"https://abannews.com/og-image.png","founder":{"@type":"Person","name":"Allen Chour"},"foundingLocation":"Belp, CH"}
 </script>
 </head>
 <body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
 <header>
   <div class="wrap">
     <a href="/" class="brand"><span class="dot"></span> aban news</a>
-    <nav class="hnav">
+    <nav class="hnav" aria-label="Hauptnavigation">
       <a href="/preview.html" class="lk">Beispiel</a>
-      <a href="/tools.html" class="lk">Tools</a>
-      <a href="/geld-verdienen-mit-ki.html" class="lk">KI & Geld</a>
+      <a href="/ki-ratgeber.html" class="lk">Ratgeber</a>
       <a href="/founding.html" class="lk">Premium</a>
-      <span class="lang"><a href="/" class="on">DE</a><a href="/en/">EN</a><a href="/fr/">FR</a><a href="/it/">IT</a></span>
+      <span class="lang" role="group" aria-label="Sprache wählen"><a href="/" class="on" hreflang="de" aria-current="page">DE</a><a href="/en/" hreflang="en">EN</a><a href="/fr/" hreflang="fr">FR</a><a href="/it/" hreflang="it">IT</a></span>
       <a href="#signup" class="btn btn--sm">Abonnieren</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
   <section class="hero">
     <div class="wrap hero-grid">
       <!-- LEFT -->
       <div>
-        <span class="chip-status"><span class="pulse"></span> Mo–Fr · kuratiert von Aban in der Schweiz</span>
-        <h1>Die wichtigsten KI-Updates für DACH-Profis — jeden Morgen in 5&nbsp;Minuten.</h1>
-        <p class="lead">Jeden Morgen die 3 KI-Entwicklungen, die dein Business heute betreffen — und nichts sonst.</p>
-        <div class="chips">
+        <span class="chip-status hero-in" style="--d:.05s"><span class="pulse"></span> Mo–Fr · kuratiert von Aban in der Schweiz</span>
+        <h1 class="hero-in" style="--d:.12s">Die wichtigsten KI-Updates für DACH-Profis — jeden Morgen in 5&nbsp;Minuten.</h1>
+        <p class="lead hero-in" style="--d:.2s">Jeden Morgen die 3 KI-Entwicklungen, die dein Business heute betreffen — und nichts sonst.</p>
+        <div class="chips hero-in" style="--d:.28s">
           <span class="chip">📰 3–5 News</span>
           <span class="chip">🛠 1 getestetes Tool</span>
           <span class="chip">💡 1 Prompt</span>
         </div>
-        <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
+        <form class="cta hero-in" style="--d:.36s" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
           <div class="row">
             <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">
             <button type="submit" class="btn">5-Min-Briefing gratis →</button>
@@ -216,12 +245,283 @@
         <div class="step"><span class="n">3</span><h2>Du liest, 5 Min</h2><p>07:30 im Posteingang. Kaffee, durchlesen, eine Sache mitnehmen — fertig vor dem ersten Meeting.</p></div>
       </div>
       <p class="honest"><b>Noch keine Testimonials — und das ist ehrlich so.</b> aban news startet gerade. Keine erfundenen Stimmen, keine Fake-Zahlen. Du bist früh dran und prägst mit.</p>
-      <div class="freebie">
-        <p><b>Gratis & ohne Anmeldung:</b> 143 AI-Tools mit ehrlichem DACH-Rating + ein KI-Glossar zum Nachschlagen.</p>
-        <span class="lns">
-          <a href="/tools.html" class="btn btn--sm">🛠 Tool-Database →</a>
-          <a href="/glossary.html" class="btn btn--sm btn--ghost">📖 KI-Glossar</a>
-        </span>
+    </div>
+  </section>
+
+  <!-- Fakten-Leiste -->
+  <section style="border-top:1px solid #ece6db;background:#fff;">
+    <div class="wrap">
+      <style>
+        .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;text-align:center}
+        .facts div{padding:1.4rem .6rem;border-right:1px solid var(--line)}
+        .facts div:last-child{border-right:0}
+        .facts .num{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;color:var(--amber-dk);line-height:1;letter-spacing:-.02em}
+        .facts .lbl{display:block;margin-top:.35rem;font-size:.82rem;color:var(--muted);font-weight:600}
+        @media(max-width:560px){.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(2){border-right:0}.facts div:nth-child(1),.facts div:nth-child(2){border-bottom:1px solid var(--line)}}
+      </style>
+      <div class="facts">
+        <div><span class="num" data-count="25" data-suffix="+">25+</span><span class="lbl">Ausgaben (Mo–Fr)</span></div>
+        <div><span class="num" data-count="177">177</span><span class="lbl">KI-Tools bewertet</span></div>
+        <div><span class="num" data-count="86">86</span><span class="lbl">Förderprogramme</span></div>
+        <div><span class="num" data-count="4">4</span><span class="lbl">Sprachen (DE·EN·FR·IT)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="border-top:1px solid #ece6db;" data-reveal>
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Aus dem Newsletter</span>
+          <h2>Neueste Ausgaben</h2>
+        </div>
+        <a href="/archive.html" class="more">Alle 25 Ausgaben →</a>
+      </div>
+      <p style="display:flex;flex-wrap:wrap;gap:.45rem;margin:-.4rem 0 1.4rem;">
+        <a href="/themen.html" style="font-size:.84rem;color:#b45309;font-weight:700;align-self:center;margin-right:.2rem;text-decoration:none;">Worüber ich schreibe →</a>
+        <span style="font-size:.8rem;font-weight:700;background:#eff6ff;color:#1e40af;padding:.25rem .65rem;border-radius:999px;">🤖 Modelle</span>
+        <span style="font-size:.8rem;font-weight:700;background:#f0fdfa;color:#0f766e;padding:.25rem .65rem;border-radius:999px;">🧰 Tool-Tests</span>
+        <span style="font-size:.8rem;font-weight:700;background:#fef3c7;color:#b45309;padding:.25rem .65rem;border-radius:999px;">⚖️ Regulierung</span>
+        <span style="font-size:.8rem;font-weight:700;background:#f5f3ff;color:#6d28d9;padding:.25rem .65rem;border-radius:999px;">⚙️ Automatisierung</span>
+        <span style="font-size:.8rem;font-weight:700;background:#fff1f2;color:#be123c;padding:.25rem .65rem;border-radius:999px;">📊 Markt</span>
+      </p>
+      <style>
+        .nw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+        .nw-card{display:flex;flex-direction:column;background:#fff;border:1px solid #ece6db;border-radius:16px;
+          overflow:hidden;text-decoration:none;color:#1c2530;transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s}
+        .nw-card:hover{transform:translateY(-4px)}
+        .nw-img{width:100%;height:185px;object-fit:cover;display:block;background:#0f766e;flex:0 0 auto}
+        .nw-meta{font-size:.74rem;color:#b45309;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+        .nw-body{padding:15px 17px 19px;display:flex;flex-direction:column;gap:7px}
+        .nw-h{font-weight:800;font-size:1.06rem;line-height:1.25}
+        .nw-t{color:#6b7280;font-size:.9rem;line-height:1.45}
+        @media(max-width:820px){.nw-grid{grid-template-columns:1fr 1fr}}
+        @media(max-width:560px){.nw-grid{grid-template-columns:1fr;gap:14px}.nw-img{height:160px}}
+      </style>
+      <div class="nw-grid">
+        <a class="nw-card" href="/archive/025-2026-07-03-werkzeugkasten-h1-bilanz-quantensprung-entlarvt.html">
+          <img class="nw-img" src="/img/issues/025.svg" alt="" loading="lazy" width="1200" height="630">
+          <span class="nw-body"><span class="nw-meta"><span class="nw-cat">Tool-Test</span> · 3. Juli · 5 Min · Nr. 25</span><span class="nw-h">Werkzeugkasten H1-Bilanz — Quantensprung entlarvt</span><span class="nw-t">Halbjahres-Wechsel. 25 Ausgaben aban news durch. Heute der Friday-Werkzeugkasten mit H1-Bilanz: zwei …</span></span>
+        </a>
+        <a class="nw-card" href="/archive/024-2026-07-02-halbjahres-drift-mistral-w-chst.html">
+          <img class="nw-img" src="/img/issues/024.svg" alt="" loading="lazy" width="1200" height="630">
+          <span class="nw-body"><span class="nw-meta"><span class="nw-cat">Modelle</span> · 2. Juli · 4 Min · Nr. 24</span><span class="nw-h">Halbjahres-Drift: Mistral wächst, OpenAI verschiebt, Brussels reguliert</span><span class="nw-t">Erster Donnerstag im neuen Halbjahr. Die Branche sortiert sich um — Q3-Roadmaps werden veröffentlicht, …</span></span>
+        </a>
+        <a class="nw-card" href="/archive/023-2026-07-01-ki-ersetzt-deine-mitarbeiter-die.html">
+          <img class="nw-img" src="/img/issues/023.svg" alt="" loading="lazy" width="1200" height="630">
+          <span class="nw-body"><span class="nw-meta"><span class="nw-cat">Analyse</span> · 1. Juli · 4 Min · Nr. 23</span><span class="nw-h">„KI ersetzt deine Mitarbeiter&quot; — die ehrlichen Numbers</span><span class="nw-t">Halbjahres-Wechsel. Heute keine News, sondern ein Thema, das ich seit drei Wochen sortiere: Die …</span></span>
+        </a>
+        <a class="nw-card" href="/archive/022-2026-06-30-mail-stack-f-r-solopreneure.html">
+          <img class="nw-img" src="/img/issues/022.svg" alt="" loading="lazy" width="1200" height="630">
+          <span class="nw-body"><span class="nw-meta"><span class="nw-cat">Tool-Test</span> · 30. Juni · 4 Min · Nr. 22</span><span class="nw-h">Mail-Stack für Solopreneure: Loops.so vs. Resend</span><span class="nw-t">Zwischen Newsletter-Versand, Onboarding-Sequenzen und Transactional-Mails ist E-Mail das einsamste Tool …</span></span>
+        </a>
+        <a class="nw-card" href="/archive/021-2026-06-29-schweizer-selbstst-ndige-was-du.html">
+          <img class="nw-img" src="/img/issues/021.svg" alt="" loading="lazy" width="1200" height="630">
+          <span class="nw-body"><span class="nw-meta"><span class="nw-cat">Tool-Test</span> · 29. Juni · 4 Min · Nr. 21</span><span class="nw-h">Schweizer Selbstständige: was du wirklich absetzen kannst</span><span class="nw-t">Drei Mails diese Woche zur selben Frage: „Aban, ich bin Solopreneur in Zürich, zahle 220 € im Monat für …</span></span>
+        </a>
+        <a class="nw-card" href="/archive/020-2026-06-26-werkzeugkasten-woche-4-synergistisch-entlarvt.html">
+          <img class="nw-img" src="/img/issues/020.svg" alt="" loading="lazy" width="1200" height="630">
+          <span class="nw-body"><span class="nw-meta"><span class="nw-cat">Tool-Test</span> · 26. Juni · 4 Min · Nr. 20</span><span class="nw-h">Werkzeugkasten Woche 4 — synergistisch entlarvt</span><span class="nw-t">Vier Wochen aban news durch. Wenn du noch dabei bist: danke. Heute der Friday-Werkzeugkasten — drei neue …</span></span>
+        </a>
+        <a class="nw-card" href="/archive/019-2026-06-25-leadgen-workflow-in-30-minuten.html">
+          <img class="nw-img" src="/img/issues/019.svg" alt="" loading="lazy" width="1200" height="630">
+          <span class="nw-body"><span class="nw-meta"><span class="nw-cat">Workflow</span> · 25. Juni · 4 Min · Nr. 19</span><span class="nw-h">LeadGen-Workflow in 30 Minuten — ohne Code</span><span class="nw-t">Letzte Woche kam eine Leserin aus Zürich auf mich zu: „Ich brauch ein System, das Termin-Anfragen …</span></span>
+        </a>
+        <a class="nw-card" href="/archive/018-2026-06-24-vibe-coding-was-wirklich-produktiv.html">
+          <img class="nw-img" src="/img/issues/018.svg" alt="" loading="lazy" width="1200" height="630">
+          <span class="nw-body"><span class="nw-meta"><span class="nw-cat">KI-News</span> · 24. Juni · 4 Min · Nr. 18</span><span class="nw-h">„Vibe-Coding&quot; — was wirklich produktiv ist (nicht)</span><span class="nw-t">Drei Wochen lang hab ich versucht, ehrlich zu sein über „Vibe-Coding</span></span>
+        </a>
+        <a class="nw-card" href="/archive/017-2026-06-23-deepl-write-14-tage-sp.html">
+          <img class="nw-img" src="/img/issues/017.svg" alt="" loading="lazy" width="1200" height="630">
+          <span class="nw-body"><span class="nw-meta"><span class="nw-cat">Tool-Test</span> · 23. Juni · 4 Min · Nr. 17</span><span class="nw-h">DeepL Write — 14 Tage später</span><span class="nw-t">Gestern hab ich DeepL Write Pro als „Tool des Tages</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec netz-band" data-reveal>
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:1.6rem">
+        <span class="eyebrow" style="justify-content:center">Mehr als der Newsletter</span>
+        <h2 style="margin:.35rem 0 .4rem;font-size:clamp(1.45rem,3vw,2rem);letter-spacing:-.02em;">Das Aban-Netzwerk</h2>
+        <p style="color:#6b7280;margin:0 auto;max-width:54ch;">Kostenlose KI-Werkzeuge für den DACH-Raum — kuratiert, ehrlich, ohne Anmeldung. Die Radars laufen als eigene Seiten, der Rest direkt hier.</p>
+      </div>
+      <p style="font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#b45309;margin:0 0 .7rem;">Die Radars</p>
+      <style>
+        .nx-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+        .nx-card{display:flex;align-items:flex-start;gap:14px;text-align:left;padding:18px;background:#fff;
+          border:1px solid #e5e7eb;border-radius:14px;text-decoration:none;color:#1f2937;
+          transition:transform .15s,box-shadow .15s,border-color .15s}
+        .nx-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(31,41,55,.10);border-color:#d97706}
+        .nx-ico{flex:0 0 auto;width:46px;height:46px;border-radius:12px;background:#fef3c7;
+          display:flex;align-items:center;justify-content:center;font-size:24px}
+        .nx-name{font-weight:800;font-size:1.05rem;display:block;margin-bottom:3px}
+        .nx-tag{font-size:.7rem;font-weight:700;color:#b45309;background:#fef3c7;padding:1px 8px;border-radius:999px;margin-left:6px;white-space:nowrap}
+        .nx-desc{display:block;font-size:.9rem;color:#6b7280;line-height:1.45}
+        @media(max-width:600px){.nx-grid{grid-template-columns:1fr;gap:10px}.nx-card{padding:14px}}
+      </style>
+      <div class="nx-grid">
+        <a href="https://radar.abannews.com" class="nx-card">
+          <span class="nx-ico">📡</span>
+          <span>
+            <span class="nx-name">KI-Tools Radar <span class="nx-tag">177 Tools</span></span>
+            <span class="nx-desc">Der ehrliche Tool-Vergleich: DACH-Relevanz, Worth-it-Score und DSGVO-Check für jedes Tool — kein Marketing-Geschwurbel.</span>
+          </span>
+        </a>
+        <a href="https://foerder.abannews.com" class="nx-card">
+          <span class="nx-ico">🧭</span>
+          <span>
+            <span class="nx-name">Förder-Radar <span class="nx-tag">86 Programme</span></span>
+            <span class="nx-desc">Fördermittel für KI &amp; Digitalisierung in DE, AT &amp; CH — mit Fristen und wer antragsberechtigt ist, verständlich erklärt.</span>
+          </span>
+        </a>
+        <a href="https://jobs.abannews.com" class="nx-card">
+          <span class="nx-ico">🤖</span>
+          <span>
+            <span class="nx-name">KI-Jobs Radar <span class="nx-tag">täglich neu</span></span>
+            <span class="nx-desc">Aktuelle KI- und AI-Stellen im DACH-Raum — Remote und vor Ort, vom Einstieg bis Senior, täglich aktualisiert.</span>
+          </span>
+        </a>
+        <a href="https://kurse.abannews.com" class="nx-card">
+          <span class="nx-ico">🎓</span>
+          <span>
+            <span class="nx-name">KI-Kurs-Radar</span>
+            <span class="nx-desc">KI-Kurse &amp; Zertifikate im ehrlichen Vergleich: Aufwand, Preis und was du wirklich lernst — auch geförderte Optionen.</span>
+          </span>
+        </a>
+        <a href="https://prompts.abannews.com" class="nx-card">
+          <span class="nx-ico">✍️</span>
+          <span>
+            <span class="nx-name">Prompt-Bibliothek <span class="nx-tag">50 Prompts</span></span>
+            <span class="nx-desc">Sofort einsetzbare deutsche Prompts zum Kopieren — für Angebote, Mails, Content und Recherche. Getestet, kein Dump.</span>
+          </span>
+        </a>
+        <a href="https://agenturen.abannews.com" class="nx-card">
+          <span class="nx-ico">🏢</span>
+          <span>
+            <span class="nx-name">Agentur-Radar</span>
+            <span class="nx-desc">Geprüfte KI-Dienstleister &amp; Agenturen für DACH — finde Hilfe bei Automatisierung, Content und Beratung.</span>
+          </span>
+        </a>
+        <a href="https://video.abannews.com" class="nx-card">
+          <span class="nx-ico">🎬</span>
+          <span>
+            <span class="nx-name">KI-Video-Radar <span class="nx-tag">22 Tools</span></span>
+            <span class="nx-desc">KI-Video-Tools ehrlich verglichen: Text→Video, Avatare, Schnitt &amp; Untertitel — mit EU-Hosting-Spalte und Drittland-Warnung, kein „fertiges Video per Klick".</span>
+          </span>
+        </a>
+        <a href="https://lifestyle.abannews.com" class="nx-card">
+          <span class="nx-ico">🌿</span>
+          <span>
+            <span class="nx-name">KI-Lifestyle-Radar <span class="nx-tag">18 Apps</span></span>
+            <span class="nx-desc">KI-Apps für Alltag &amp; Lifestyle: Fitness, Ernährung, Sprache, Reise, Geld, mentale Gesundheit — nüchtern verglichen, mit Datenschutz-Blick.</span>
+          </span>
+        </a>
+      </div>
+
+      <p style="font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#b45309;margin:1.6rem 0 .7rem;">Direkt auf abannews</p>
+      <div class="nx-grid">
+        <a href="/tools.html" class="nx-card">
+          <span class="nx-ico">🧰</span>
+          <span>
+            <span class="nx-name">KI-Tool-Datenbank <span class="nx-tag">durchsuchbar</span></span>
+            <span class="nx-desc">Alle bewerteten KI-Tools an einem Ort — filterbar nach Kategorie, Preis und DACH-Relevanz. Ohne Affiliate-Bias.</span>
+          </span>
+        </a>
+        <a href="/resources.html" class="nx-card">
+          <span class="nx-ico">📦</span>
+          <span>
+            <span class="nx-name">Gratis-Resourcen <span class="nx-tag">kostenlos</span></span>
+            <span class="nx-desc">Prompts, Checklisten und Templates zum Mitnehmen — DSGVO-Checkliste, Cold-Email-Vorlagen, Tool-Stack 2026.</span>
+          </span>
+        </a>
+        <a href="/glossary.html" class="nx-card">
+          <span class="nx-ico">📖</span>
+          <span>
+            <span class="nx-name">KI-Glossar</span>
+            <span class="nx-desc">Die wichtigsten KI-Begriffe verständlich erklärt — auf Deutsch, ohne Buzzword-Bingo. Zum schnellen Nachschlagen.</span>
+          </span>
+        </a>
+        <a href="/ki-kosten-rechner.html" class="nx-card">
+          <span class="nx-ico">🧮</span>
+          <span>
+            <span class="nx-name">KI-Kosten-Rechner <span class="nx-tag">neu</span></span>
+            <span class="nx-desc">Was deine KI-Abos wirklich kosten — Jahreskosten und Kosten pro Nutzung, mit ehrlichem Urteil. Ohne Login.</span>
+          </span>
+        </a>
+        <a href="/ki-stimmen.html" class="nx-card">
+          <span class="nx-ico">🎙️</span>
+          <span>
+            <span class="nx-name">KI-Stimmen &amp; Text-to-Speech</span>
+            <span class="nx-desc">Was Text-to-Speech 2026 wirklich kann, wo die Grenzen liegen — ehrlich getestet, mit Datenschutz-Blick.</span>
+          </span>
+        </a>
+        <a href="/ki-videos-erstellen.html" class="nx-card">
+          <span class="nx-ico">🎬</span>
+          <span>
+            <span class="nx-name">KI-Videos erstellen</span>
+            <span class="nx-desc">Was KI-Video 2026 wirklich kann, wo die Grenzen liegen — Text→Video, Avatare, Schnitt, mit Datenschutz- &amp; Rechte-Blick.</span>
+          </span>
+        </a>
+        <a href="/ki-lifestyle.html" class="nx-card">
+          <span class="nx-ico">🌿</span>
+          <span>
+            <span class="nx-name">KI im Alltag &amp; Lifestyle</span>
+            <span class="nx-desc">Fitness, Ernährung, Sprache, Reise, Finanzen, mentale Gesundheit — was KI-Apps wirklich können, mit Datenschutz-Blick.</span>
+          </span>
+        </a>
+        <a href="/ki-und-krypto-daten.html" class="nx-card">
+          <span class="nx-ico">📊</span>
+          <span>
+            <span class="nx-name">KI &amp; Krypto in Zahlen <span class="nx-tag">neu</span></span>
+            <span class="nx-desc">Sektor, Energieverbrauch, Trading-Realität und DACH-Steuer — nüchtern in Tabellen, mit Quellen. Keine Anlageberatung.</span>
+          </span>
+        </a>
+        <a href="/geld-verdienen-mit-ki.html" class="nx-card">
+          <span class="nx-ico">💶</span>
+          <span>
+            <span class="nx-name">Geld verdienen mit KI</span>
+            <span class="nx-desc">7 ehrlich kalkulierte Wege, mit KI ein Einkommen aufzubauen — mit realistischem Aufwand und Ertrag, kein Hype.</span>
+          </span>
+        </a>
+        <a href="/ki-tools-fuer-selbststaendige.html" class="nx-card">
+          <span class="nx-ico">🛠️</span>
+          <span>
+            <span class="nx-name">KI-Tools für Selbstständige</span>
+            <span class="nx-desc">Der ehrliche Stack 2026: welche Werkzeuge sich wirklich lohnen — nach Aufgabe sortiert, mit DSGVO-Hinweisen.</span>
+          </span>
+        </a>
+        <a href="/ki-dsgvo-konform.html" class="nx-card">
+          <span class="nx-ico">🛡️</span>
+          <span>
+            <span class="nx-name">KI DSGVO-konform nutzen</span>
+            <span class="nx-desc">Die 5-Fragen-Datenschutz-Prüfung für KI-Tools: Serverstandort, AVV, Training-Opt-out — praktisch, keine Rechtsberatung.</span>
+          </span>
+        </a>
+        <a href="/ebook.html" class="nx-card">
+          <span class="nx-ico">📘</span>
+          <span>
+            <span class="nx-name">Anti-Hype eBook <span class="nx-tag">gratis</span></span>
+            <span class="nx-desc">Wie deutsche Solopreneure KI ohne Bullshit einsetzen — als kostenloses PDF, ohne Email-Gate.</span>
+          </span>
+        </a>
+        <a href="/buch.html" class="nx-card">
+          <span class="nx-ico">📚</span>
+          <span>
+            <span class="nx-name">Anti-Hype — das Buch</span>
+            <span class="nx-desc">Die ausführliche Fassung als Buch (PDF, ePub, Kindle) — „pay what you want", für alle die tiefer einsteigen wollen.</span>
+          </span>
+        </a>
+        <a href="https://dropshipping.abannews.com" style="display:block;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px;text-decoration:none;color:#1f2937;">
+          <div style="font-size:1.8rem;">📦</div>
+          <strong style="display:block;margin:6px 0 4px;">Dropshipping-Radar</strong>
+          <span style="color:#6b7280;font-size:.9rem;">POD-Anbieter mit EU-Lager, ehrlich verglichen</span>
+        </a>
+        <a href="/geld-verdienen-mit-3d-druck.html" style="display:block;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px;text-decoration:none;color:#1f2937;">
+          <div style="font-size:1.8rem;">🖨️</div>
+          <strong style="display:block;margin:6px 0 4px;">Geld mit 3D-Druck</strong>
+          <span style="color:#6b7280;font-size:.9rem;">Print-on-Demand ohne eigenen Drucker</span>
+        </a>
       </div>
     </div>
   </section>
@@ -229,17 +529,71 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
-    <a href="/preview.html">Beispiel-Ausgabe</a>
-    <a href="/tools.html">Tools</a>
-    <a href="/glossary.html">Glossar</a>
-    <a href="/archive.html">Archiv</a>
-    <a href="/founding.html">Premium</a>
-    <a href="/impressum.html">Impressum</a>
-    <a href="/datenschutz.html">Datenschutz</a>
-    <a href="/en/">EN</a>
-    <a href="/fr/">FR</a>
-    <a href="/it/">IT</a>
+    <div class="footcols">
+      <div>
+        <h4>Newsletter</h4>
+        <a href="/preview.html">Beispiel-Ausgabe</a>
+        <a href="/archive.html">Archiv</a>
+        <a href="/themen.html">Themen</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/ueber-aban.html">Über</a>
+      </div>
+      <div>
+        <h4>Gratis-Tools</h4>
+        <a href="/online-tools.html"><strong>→ Alle Tools auf einen Blick</strong></a>
+        <a href="/ki-erwaehnungs-check.html">Werde ich von KI genannt?</a>
+        <a href="/ai-sichtbarkeit.html">AI-Sichtbarkeit</a>
+        <a href="/hype-filter.html">Hype-Filter</a>
+        <a href="/ki-kosten-rechner.html">KI-Kosten-Rechner</a>
+        <a href="/automatisierung-rechner.html">Automatisierungs-Rechner</a>
+        <a href="/cron-generator.html">Cron-Generator</a>
+        <a href="/regex-tester.html">Regex-Tester</a>
+        <a href="/json-formatter.html">JSON-Formatter</a>
+        <a href="/encoder.html">Base64/URL-Encoder</a>
+        <a href="/uuid-generator.html">UUID/Slug-Generator</a>
+        <a href="/diff-tool.html">Text-Vergleich (Diff)</a>
+        <a href="/markdown-tabelle.html">Markdown-Tabelle ↔ CSV</a>
+        <a href="/env-parser.html">.env/Header → JSON</a>
+        <a href="/hash-generator.html">Hash-Generator (SHA)</a>
+        <a href="/kontrast-checker.html">Farb-Kontrast (WCAG)</a>
+        <a href="/passwort-generator.html">Passwort-Generator</a>
+        <a href="/zeichenzaehler.html">Zeichen-/Wortzähler</a>
+        <a href="/timestamp-konverter.html">Timestamp-Konverter</a>
+        <a href="/jwt-decoder.html">JWT-Decoder</a>
+        <a href="/qr-code.html">QR-Code-Generator</a>
+        <a href="/farb-umrechner.html">Farb-Umrechner</a>
+        <a href="/prozent-rechner.html">Prozent-/Dreisatz-Rechner</a>
+        <a href="/mwst-rechner.html">MwSt-Rechner (CH/DE/AT)</a>
+      </div>
+      <div>
+        <h4>Produkte</h4>
+        <a href="/ki-sichtbarkeit-buch.html">Buch: Von KI gefunden werden</a>
+        <a href="/vorlagen-set.html">Klartext-Vorlagen</a>
+        <a href="/ki-tools-datensatz.html">KI-Tools-Datensatz</a>
+        <a href="/ki-sichtbarkeit-monitor.html">Sichtbarkeits-Monitor</a>
+        <a href="/buch.html">Anti-Hype-Buch</a>
+        <a href="/founding.html">Premium</a>
+      </div>
+      <div>
+        <h4>Mehr</h4>
+        <a href="/ki-ratgeber.html">KI-Ratgeber (alle Guides)</a>
+        <a href="/ebook.html">Gratis-eBook</a>
+        <a href="/prompt-pack.html">Prompt-Pack</a>
+        <a href="/kurs.html">KI-Kurs</a>
+        <a href="/trilogie.html">Roman-Trilogie</a>
+        <a href="/presse.html">Presse</a>
+      </div>
+    </div>
+    <div class="footbar">
+      <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+      <span class="footbar-links">
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <a href="/en/" hreflang="en">EN</a>
+        <a href="/fr/" hreflang="fr">FR</a>
+        <a href="/it/" hreflang="it">IT</a>
+      </span>
+    </div>
   </div>
 </footer>
 
@@ -275,6 +629,83 @@
   // form loading state
   var f=document.getElementById('signup');
   f.addEventListener('submit',function(){var b=f.querySelector('button');if(b){b.textContent='Wird geöffnet…';}});
+})();
+</script>
+
+<!-- Sticky Mobile-CTA: erscheint, wenn das Hero-Formular weggescrollt ist (nur Mobile) -->
+<a href="#signup" id="stickyCta" aria-label="Newsletter abonnieren">☕ Gratis abonnieren — Mo–Fr, 5 Min</a>
+<style>
+  #stickyCta{position:fixed;left:12px;right:12px;bottom:12px;z-index:80;display:none;
+    text-align:center;background:var(--amber-dk);color:#fff;font-weight:800;font-size:1rem;
+    padding:.95rem 1rem;border-radius:14px;text-decoration:none;
+    box-shadow:0 10px 30px rgba(180,83,9,.42);border:1px solid rgba(255,255,255,.2)}
+  #stickyCta.show{display:block;animation:ctaUp .25s ease}
+  @keyframes ctaUp{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+  @media(min-width:861px){#stickyCta{display:none!important}}
+  @media(prefers-reduced-motion:reduce){#stickyCta.show{animation:none}}
+</style>
+<script>
+(function(){
+  var cta=document.getElementById('stickyCta'), anchor=document.getElementById('signup');
+  if(!cta||!anchor||!('IntersectionObserver' in window))return;
+  // Nur auf Mobile aktiv
+  if(window.matchMedia('(min-width:861px)').matches)return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      // Formular sichtbar -> CTA aus; weggescrollt -> CTA an
+      cta.classList.toggle('show', !e.isIntersecting);
+    });
+  },{threshold:0});
+  io.observe(anchor);
+})();
+</script>
+
+<!-- Dezentes Leben: Zähl-Animation der Fakten + sanftes Scroll-Reveal -->
+<style>
+  [data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  [data-reveal].in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1!important;transform:none!important;transition:none}}
+</style>
+<noscript><style>[data-reveal],.hero-in{opacity:1!important;transform:none!important;animation:none!important}</style></noscript>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(!('IntersectionObserver' in window)){
+    // Fallback: alles sofort sichtbar
+    document.querySelectorAll('[data-reveal]').forEach(function(el){el.classList.add('in');});
+    return;
+  }
+  // 1) Scroll-Reveal der Sektionen
+  if(!reduce){
+    var rio=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); rio.unobserve(e.target);} });
+    },{threshold:.12});
+    document.querySelectorAll('[data-reveal]').forEach(function(el){rio.observe(el);});
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){el.classList.add('in');});
+  }
+  // 2) Zähl-Animation der Fakten-Leiste (einmalig, wenn sichtbar)
+  var nums=document.querySelectorAll('.facts .num[data-count]');
+  if(nums.length){
+    var run=function(el){
+      var target=parseInt(el.getAttribute('data-count'),10)||0,
+          suffix=el.getAttribute('data-suffix')||'';
+      if(reduce){ el.textContent=target+suffix; return; }
+      var dur=900, start=null;
+      function tick(ts){
+        if(!start)start=ts;
+        var p=Math.min((ts-start)/dur,1),
+            val=Math.round((1-Math.pow(1-p,3))*target); // ease-out
+        el.textContent=val+suffix;
+        if(p<1)requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    };
+    var nio=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ run(e.target); nio.unobserve(e.target);} });
+    },{threshold:.5});
+    nums.forEach(function(el){nio.observe(el);});
+  }
 })();
 </script>
 </body>

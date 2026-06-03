@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passwort-Generator (sicher) · aban news</title>
+<meta name="description" content="Kostenloses Tool: starke Passwörter im Browser erzeugen — einstellbare Länge und Zeichen, kryptografischer Zufall. Nichts wird gesendet oder gespeichert.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/passwort-generator.html">
+<meta property="og:title" content="Passwort-Generator (sicher)">
+<meta property="og:description" content="Starke Passwörter erzeugen — einstellbar, kryptografischer Zufall. Lokal im Browser, nichts wird gesendet.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/passwort-generator.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Passwort-Generator (sicher)",
+"url":"https://abannews.com/passwort-generator.html","applicationCategory":"SecurityApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Erzeugt starke Passwörter mit kryptografischem Zufall, einstellbar in Länge und Zeichen.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.out{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.out input{flex:1;min-width:220px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:18px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink)}
+label{font-weight:600;font-size:13px;color:var(--ink2)}
+.opts{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.opt input[type=range]{flex:1;min-width:160px;accent-color:var(--amber-dk)}
+.opt label.cb{display:inline-flex;gap:6px;align-items:center;font-weight:500}
+.lenval{font-weight:800;color:var(--amber-dk);min-width:2.2em;text-align:right}
+.strength{height:8px;border-radius:999px;background:var(--line);overflow:hidden;margin-top:14px}
+.strength i{display:block;height:100%;width:0;transition:width .2s,background .2s}
+.smeta{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);margin-top:6px}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.warn{font-size:.85rem;color:var(--ink2);background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:10px 12px;margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Starkes Passwort</span> erzeugen</h1>
+    <p>Lange Zufallspasswörter mit kryptografischem Zufall — Länge und Zeichensatz frei wählbar. Lokal im Browser, nichts wird gesendet oder gespeichert.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="out">
+      <input type="text" id="pw" readonly aria-label="Erzeugtes Passwort">
+      <button class="btn" id="gen">Neu</button>
+      <button class="btn ghost" id="copy">Kopieren</button>
+    </div>
+    <div class="strength"><i id="sbar"></i></div>
+    <div class="smeta"><span id="slabel">—</span><span id="sentropy"></span></div>
+    <div class="opts">
+      <div class="opt"><label for="len">Länge</label>
+        <input type="range" id="len" min="6" max="64" value="20"><span class="lenval" id="lenv">20</span></div>
+      <div class="opt">
+        <label class="cb"><input type="checkbox" id="lower" checked> Kleinbuchstaben</label>
+        <label class="cb"><input type="checkbox" id="upper" checked> Großbuchstaben</label>
+        <label class="cb"><input type="checkbox" id="num" checked> Ziffern</label>
+        <label class="cb"><input type="checkbox" id="sym" checked> Sonderzeichen</label>
+        <label class="cb"><input type="checkbox" id="amb"> Verwechsel-Zeichen meiden (0/O, 1/l…)</label>
+      </div>
+    </div>
+    <div class="warn"><strong>Hinweis:</strong> Das Passwort entsteht nur in deinem Browser, wird nicht gespeichert und verschwindet beim Neuladen. Für viele Passwörter besser einen echten Passwort-Manager nutzen.</div>
+    <p class="note">Zeichen werden mit <code>crypto.getRandomValues</code> und Ablehnungs-Sampling gezogen (keine Verzerrung). Die Stärke ist die geschätzte Entropie in Bit (Zeichenraum × Länge) — eine grobe Orientierung, keine Garantie.</p>
+  </section>
+  <div class="cta"><strong>Mehr Tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Sicherheit &amp; Automatisierung.</p>
+    <p><a class="btn" href="/hash-generator.html">Hash</a>
+      <a class="btn ghost" href="/uuid-generator.html">UUID/Slug</a>
+      <a class="btn ghost" href="/encoder.html">Base64/URL</a></p></div>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/hash-generator.html">Hash</a> · <a href="/encoder.html">Encoder</a> ·
+  <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var L="abcdefghijklmnopqrstuvwxyz",U="ABCDEFGHIJKLMNOPQRSTUVWXYZ",N="0123456789",S="!@#$%^&*()-_=+[]{};:,.?/";
+  var AMBIG=/[0O1lI|`'"]/g;
+  var pw=document.getElementById("pw"),len=document.getElementById("len"),lenv=document.getElementById("lenv");
+  function pool(){
+    var p="";
+    if(document.getElementById("lower").checked)p+=L;
+    if(document.getElementById("upper").checked)p+=U;
+    if(document.getElementById("num").checked)p+=N;
+    if(document.getElementById("sym").checked)p+=S;
+    if(document.getElementById("amb").checked)p=p.replace(AMBIG,"");
+    return p;
+  }
+  function pick(n){ // unbiased index in [0,n)
+    var max=Math.floor(256/n)*n,b=new Uint8Array(1);
+    do{crypto.getRandomValues(b);}while(b[0]>=max);
+    return b[0]%n;
+  }
+  function gen(){
+    var p=pool();
+    if(!p){pw.value="";strength(0,0);return;}
+    var n=parseInt(len.value,10),out="";
+    for(var i=0;i<n;i++)out+=p[pick(p.length)];
+    pw.value=out;
+    strength(p.length,n);
+  }
+  function strength(poolSize,n){
+    var bits=poolSize?Math.round(n*Math.log2(poolSize)):0;
+    var bar=document.getElementById("sbar"),lab=document.getElementById("slabel"),ent=document.getElementById("sentropy");
+    var pct=Math.min(100,Math.round(bits/128*100));
+    bar.style.width=pct+"%";
+    var col,txt;
+    if(bits<50){col="#a01616";txt="schwach";}
+    else if(bits<80){col="#d97706";txt="ok";}
+    else if(bits<110){col="#059669";txt="stark";}
+    else{col="#047857";txt="sehr stark";}
+    bar.style.background=col;
+    lab.textContent=bits?("Stärke: "+txt):"Kein Zeichensatz gewählt";
+    ent.textContent=bits?("~"+bits+" Bit Entropie"):"";
+  }
+  document.getElementById("gen").addEventListener("click",gen);
+  len.addEventListener("input",function(){lenv.textContent=len.value;gen();});
+  ["lower","upper","num","sym","amb"].forEach(function(id){document.getElementById(id).addEventListener("change",gen);});
+  document.getElementById("copy").addEventListener("click",function(){var b=this;if(!pw.value)return;try{navigator.clipboard.writeText(pw.value);b.textContent="kopiert ✓";setTimeout(function(){b.textContent="Kopieren";},1500);}catch(e){}});
+  gen();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{
+  "_comment": "So verdienst du Geld: Melde dich beim Partnerprogramm des jeweiligen Anbieters an (Liste '_programme'). Du bekommst einen persönlichen Link. Trage ihn bei 'affiliate_url' ein und entferne das führende '_' im Key. Die Seite markiert ihn dann automatisch mit * und blendet den Transparenzhinweis ein, dann baut sie sich neu. Anbieter ohne aktiven Eintrag verlinken auf die offizielle URL aus data/anbieter.json (keine Provision).",
+  "_status": "ALLE SLOTS DEAKTIVIERT (Key mit '_'-Präfix). Noch keine Affiliate-Links freigegeben. Fallback = offizielle URL / Mail.",
+  "_kontakt_fallback": "mailto:hallo@abannews.com",
+  "_programme": {
+    "_hinweis": "Kuratierte Liste typischer Partnerprogramme, gemappt auf Anbieter in data/anbieter.json. 'signup' = wo du dich bewirbst. 'rate' = typische Provision (kann sich ändern, vor Nutzung prüfen). Quelle der Wahrheit für die echte URL bleibt data/anbieter.json. Nur Anbieter mit real existierendem Programm sind gelistet.",
+    "make": {
+      "signup": "https://www.make.com/en/partners",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "zapier": {
+      "signup": "https://zapier.com/platform/partner-program",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "partner/referral"
+    },
+    "seatable": {
+      "signup": "https://seatable.io/partner/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "partner"
+    },
+    "uipath": {
+      "signup": "https://www.uipath.com/company/partners",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "partner"
+    },
+    "bardeen": {
+      "signup": "https://www.bardeen.ai/affiliate",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    }
+  },
+  "links": {
+    "_anleitung": "Trage deinen persönlichen Affiliate-Link bei 'affiliate_url' ein und entferne das führende '_' im Anbieter-Key (z.B. '_make' -> 'make'). Erst dann wird der Link auf der Seite aktiv (mit * + Transparenzhinweis). Solange das '_' steht, bleibt der Slot deaktiviert und es wird die offizielle URL verlinkt.",
+    "_make": {
+      "affiliate_url": "https://www.make.com/en/register?pc=DEIN-CODE"
+    },
+    "_zapier": {
+      "affiliate_url": "https://zapier.com/?via=DEIN-CODE"
+    },
+    "_bardeen": {
+      "affiliate_url": "https://www.bardeen.ai/?via=DEIN-CODE"
+    }
+  }
+}

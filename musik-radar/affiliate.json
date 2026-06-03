@@ -1,0 +1,23 @@
+{
+  "_comment": "So verdienst du Geld: Melde dich beim Partnerprogramm des jeweiligen Anbieters an (Liste '_programme'). Du bekommst einen persönlichen Link. Trage ihn bei 'affiliate_url' ein und entferne das führende '_' im Key. Die Seite markiert ihn dann automatisch mit * und blendet den Transparenzhinweis ein. Anbieter ohne aktiven Eintrag verlinken auf die offizielle URL aus data/anbieter.json (keine Provision).",
+  "_status": "ALLE SLOTS DEAKTIVIERT (Key mit '_'-Präfix). Noch keine Affiliate-Links freigegeben. Fallback = offizielle URL / Mail.",
+  "_kontakt_fallback": "mailto:hallo@abannews.com",
+  "_programme": {
+    "_hinweis": "Kuratierte Liste typischer Partnerprogramme, gemappt auf Anbieter in data/anbieter.json. 'signup' = wo du dich bewirbst. 'rate' = typische Provision (kann sich ändern, vor Nutzung prüfen). Quelle der Wahrheit für die echte URL bleibt data/anbieter.json. Nur Anbieter mit real existierendem Programm sind gelistet.",
+    "soundraw": {"signup": "https://soundraw.io/affiliate", "rate": "[Redaktion: prüfen]", "typ": "recurring"},
+    "aiva": {"signup": "https://www.aiva.ai/", "rate": "[Redaktion: prüfen]", "typ": "recurring"},
+    "mubert": {"signup": "https://mubert.com/render/partners", "rate": "[Redaktion: prüfen]", "typ": "recurring"},
+    "landr": {"signup": "https://www.landr.com/affiliate-program/", "rate": "[Redaktion: prüfen]", "typ": "recurring"},
+    "loudly": {"signup": "https://www.loudly.com/", "rate": "[Redaktion: prüfen]", "typ": "recurring"},
+    "soundful": {"signup": "https://soundful.com/", "rate": "[Redaktion: prüfen]", "typ": "recurring"},
+    "lalal-ai": {"signup": "https://www.lalal.ai/affiliate/", "rate": "[Redaktion: prüfen]", "typ": "recurring"}
+  },
+  "links": {
+    "_anleitung": "Trage deinen persönlichen Affiliate-Link bei 'affiliate_url' ein und entferne das führende '_' im Anbieter-Key (z.B. '_soundraw' -> 'soundraw'). Erst dann wird der Link auf der Seite aktiv (mit * + Transparenzhinweis). Solange das '_' steht, bleibt der Slot deaktiviert und es wird die offizielle URL verlinkt.",
+    "_soundraw": {"affiliate_url": "https://soundraw.io/?ref=DEIN-CODE"},
+    "_aiva": {"affiliate_url": "https://www.aiva.ai/?via=DEIN-CODE"},
+    "_mubert": {"affiliate_url": "https://mubert.com/?ref=DEIN-CODE"},
+    "_landr": {"affiliate_url": "https://www.landr.com/?via=DEIN-CODE"},
+    "_lalal-ai": {"affiliate_url": "https://www.lalal.ai/?fp_ref=DEIN-CODE"}
+  }
+}

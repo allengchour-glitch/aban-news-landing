@@ -1,0 +1,42 @@
+name: ABAN Files stats (Analyst/Grower)
+
+# Liest woechentlich die YouTube-View-Zahlen der ABAN-Files-Folgen und schreibt
+# einen Report nach reports/ABAN-STATS.md (committet nur bei Aenderung).
+# Nutzt dieselben Secrets wie der Upload (nur Lese-Zugriff).
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 8 * * 1"   # jeden Montag 08:00 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build view report
+        working-directory: video-prototypes/aban-files
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: python3 aban_stats.py --report
+      - name: Commit report
+        run: |
+          if [ ! -f reports/ABAN-STATS.md ]; then
+            echo "Kein Report erzeugt (z.B. kein YT_API_KEY) — nichts zu committen."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reports/ABAN-STATS.md
+          if ! git diff --cached --quiet; then
+            git commit -m "aban: View-Report [skip ci]"
+            git push
+          else
+            echo "kein neuer Report."
+          fi

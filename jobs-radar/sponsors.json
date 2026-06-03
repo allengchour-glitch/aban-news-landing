@@ -1,0 +1,13 @@
+{
+  "_comment": "Bezahlte Stellen-Platzierungen (Sponsoring). So verdient der KI-Jobs-Radar Geld: Arbeitgeber zahlen für eine hervorgehobene/gesponserte Anzeige ('Featured Job') ganz oben + auf jeder Seite. Trage einen Job in '_featured' ein. Wird als 'Anzeige/Gesponsert' gekennzeichnet (UWG). Leer = kein Slot.",
+  "_anleitung": "1) Arbeitgeber/Recruiter gewinnen (z. B. €99-299 pro Featured-Listing/Monat, oder Pauschale). 2) Stelle in 'slots._featured' eintragen. 3) Rebuild. Später mehrere Slots/Rotation möglich.",
+  "_beispiel": {
+    "_featured": {
+      "title": "Senior ML Engineer (m/w/d)",
+      "company": "Beispiel GmbH",
+      "url": "https://arbeitgeber.example/stelle?ref=ki-jobs-radar",
+      "cta": "Jetzt bewerben"
+    }
+  },
+  "slots": {}
+}

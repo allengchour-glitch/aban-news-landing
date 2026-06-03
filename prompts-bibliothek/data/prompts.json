@@ -1,0 +1,665 @@
+{
+  "meta": {
+    "name": "Deutsche KI-Prompt-Bibliothek",
+    "note": "Alle Prompts sind original verfasst. Platzhalter in [eckigen Klammern] selbst ausfuellen."
+  },
+  "prompts": [
+    {
+      "id": "solo-angebot-text",
+      "titel": "Angebotstext fuer ein Erstgespraech schreiben",
+      "kategorie": "Solopreneure",
+      "aufgabe": "Angebot",
+      "prompt_text": "Du bist mein Texter. Schreibe ein Angebot fuer [Leistung] an [Kundentyp]. Nenne zuerst das Ziel des Kunden in einem Satz, dann genau drei Pakete (klein, mittel, gross) mit Preis [Preisbereich] und je drei konkreten Leistungen. Schliesse mit einem klaren naechsten Schritt. Ton: sachlich, ohne Werbefloskeln. Maximal 250 Woerter.",
+      "erklaerung": "Fuer ein schnelles, gut strukturiertes Angebot nach einem Erstgespraech.",
+      "tipp": "Gib dem Modell die echten Preise und kuerze danach selbst, statt es raten zu lassen."
+    },
+    {
+      "id": "solo-positionierung",
+      "titel": "Positionierung in einem Satz schaerfen",
+      "kategorie": "Solopreneure",
+      "aufgabe": "Strategie",
+      "prompt_text": "Hilf mir, meine Positionierung zu schaerfen. Hier ist, was ich mache: [kurze Beschreibung]. Formuliere fuenf Varianten des Satzes 'Ich helfe [Zielgruppe], [Ergebnis] zu erreichen, ohne [typisches Problem]'. Jede Variante maximal 20 Woerter, konkret, ohne Buzzwords. Frage mich danach, welche zwei Varianten ich kombinieren wuerde.",
+      "erklaerung": "Wenn du deine Leistung noch nicht klar in einem Satz sagen kannst.",
+      "tipp": "Lies die Varianten laut vor: was sich gestelzt anfuehlt, fliegt raus."
+    },
+    {
+      "id": "solo-preis-rechtfertigen",
+      "titel": "Preis ruhig begruenden",
+      "kategorie": "Solopreneure",
+      "aufgabe": "Vertrieb",
+      "prompt_text": "Ein Interessent findet meinen Preis von [Preis] zu hoch fuer [Leistung]. Schreibe mir drei kurze Antworten: eine, die den Nutzen in Zahlen zeigt, eine, die ein guenstigeres Paket anbietet, und eine, die freundlich Nein sagt. Jede Antwort hoechstens vier Saetze, du-Form, ohne Druck.",
+      "erklaerung": "Fuer den Moment, in dem ein Preis hinterfragt wird.",
+      "tipp": "Nimm die Antwort, bei der du dich am wohlsten fuehlst, sie wirkt echter."
+    },
+    {
+      "id": "solo-wochenplan",
+      "titel": "Realistischen Wochenplan bauen",
+      "kategorie": "Solopreneure",
+      "aufgabe": "Produktivitaet",
+      "prompt_text": "Hier sind meine Aufgaben fuer diese Woche: [Liste]. Ich habe [Anzahl] fokussierte Stunden pro Tag. Sortiere die Aufgaben nach Wirkung auf [mein Ziel], markiere, was ich streichen oder verschieben kann, und schlage einen Wochenplan vor, der nicht ueberladen ist. Plane jeden Tag eine Pufferstunde ein.",
+      "erklaerung": "Gegen To-do-Listen, die du nie schaffst.",
+      "tipp": "Sag dem Modell ehrlich, wie viele Stunden du wirklich hast, nicht wie viele du moechtest."
+    },
+    {
+      "id": "handwerk-kostenvoranschlag",
+      "titel": "Kostenvoranschlag verstaendlich erklaeren",
+      "kategorie": "Handwerker",
+      "aufgabe": "Angebot",
+      "prompt_text": "Schreibe einen Begleittext zu meinem Kostenvoranschlag fuer [Gewerk] beim Kunden [Name]. Erklaere in einfacher Sprache, was die Positionen [Position 1], [Position 2] und [Position 3] bedeuten und warum sie noetig sind. Ton: ruhig, ehrlich, kein Verkaufsdruck. Schliesse mit der Bitte um Rueckfragen.",
+      "erklaerung": "Damit Kunden den Voranschlag verstehen und seltener nachverhandeln.",
+      "tipp": "Fuege echte Stundensaetze und Materialkosten ein, dann stimmt die Erklaerung."
+    },
+    {
+      "id": "handwerk-terminabsage",
+      "titel": "Termin kurzfristig verschieben",
+      "kategorie": "Handwerker",
+      "aufgabe": "E-Mail",
+      "prompt_text": "Schreibe eine kurze Nachricht an einen Kunden, dass ich den Termin am [Datum] wegen [Grund] verschieben muss. Biete zwei neue Termine an, entschuldige dich knapp ohne lange Erklaerung und bestaetige, dass der Auftrag fest bleibt. Hoechstens fuenf Saetze, du-Form wenn der Kunde geduzt wird, sonst Sie.",
+      "erklaerung": "Fuer die unangenehme, aber haeufige Terminverschiebung.",
+      "tipp": "Schick zwei feste Alternativtermine mit, das spart das Hin und Her."
+    },
+    {
+      "id": "handwerk-google-bewertung",
+      "titel": "Auf eine Online-Bewertung antworten",
+      "kategorie": "Handwerker",
+      "aufgabe": "Kundenservice",
+      "prompt_text": "Ein Kunde hat folgende Bewertung hinterlassen: [Bewertungstext]. Schreibe eine oeffentliche Antwort: bedanke dich, gehe auf den konkreten Punkt ein und biete bei Kritik eine Loesung an. Bleib sachlich, auch wenn die Bewertung unfair ist. Maximal vier Saetze, keine Standardfloskeln.",
+      "erklaerung": "Bewertungsantworten, die andere Leser ueberzeugen.",
+      "tipp": "Antworte auch auf gute Bewertungen, das sehen kuenftige Kunden mit."
+    },
+    {
+      "id": "handwerk-materialliste",
+      "titel": "Materialliste fuer einen Auftrag erstellen",
+      "kategorie": "Handwerker",
+      "aufgabe": "Produktivitaet",
+      "prompt_text": "Ich plane [Arbeit, z.B. Badezimmer fliesen, 12 qm]. Erstelle eine strukturierte Materialliste mit Mengen, geteilt in 'Pflicht' und 'sicherheitshalber mehr'. Markiere Posten, bei denen ich die Menge selbst pruefen muss. Frage am Ende nach drei Angaben, die dir fuer eine genauere Liste fehlen.",
+      "erklaerung": "Schnelle erste Materialliste, die du dann pruefst.",
+      "tipp": "Die KI schaetzt Mengen nur grob, nimm sie als Startpunkt, nicht als Bestellung."
+    },
+    {
+      "id": "steuer-mandanten-info",
+      "titel": "Gesetzesaenderung fuer Mandanten erklaeren",
+      "kategorie": "Steuerberater",
+      "aufgabe": "E-Mail",
+      "prompt_text": "Fasse die Aenderung [Thema, z.B. neue Kleinunternehmergrenze] fuer meine Mandanten zusammen. Schreibe: was sich aendert, ab wann, wen es betrifft und was der Mandant jetzt tun sollte. Vermeide Paragraphen-Wuesten, erklaere in Alltagssprache. Ende mit dem Hinweis, dass dies keine individuelle Beratung ersetzt. Maximal 200 Woerter.",
+      "erklaerung": "Mandanten-Rundschreiben zu neuen Regelungen.",
+      "tipp": "Pruefe die genannten Fristen und Zahlen immer selbst, hier zaehlt Genauigkeit."
+    },
+    {
+      "id": "steuer-belegnachfrage",
+      "titel": "Fehlende Belege freundlich anfordern",
+      "kategorie": "Steuerberater",
+      "aufgabe": "E-Mail",
+      "prompt_text": "Schreibe eine kurze E-Mail an Mandant [Name], in der ich folgende fehlende Unterlagen anfordere: [Liste]. Nenne pro Unterlage in Klammern, warum sie gebraucht wird, und setze eine Frist bis [Datum]. Ton: hoeflich, klar, ohne Vorwurf. Biete an, bei Fragen kurz anzurufen.",
+      "erklaerung": "Die wiederkehrende Belegnachfrage in der Saison.",
+      "tipp": "Eine nummerierte Liste mit kurzem Grund erhoeht die Rueckmeldequote spuerbar."
+    },
+    {
+      "id": "steuer-fachbegriff",
+      "titel": "Fachbegriff fuer Laien uebersetzen",
+      "kategorie": "Steuerberater",
+      "aufgabe": "Zusammenfassung",
+      "prompt_text": "Erklaere den Begriff [Fachbegriff] so, dass ihn ein Mandant ohne steuerliches Vorwissen versteht. Nutze ein Alltagsbeispiel, vermeide weitere Fachwoerter und halte es unter 120 Woertern. Schliesse mit einem Satz, was das praktisch fuer ihn bedeutet.",
+      "erklaerung": "Fuer Erklaerungen im Gespraech oder in Schreiben.",
+      "tipp": "Lass dir das Beispiel zeigen und tausche es gegen eins aus deiner Branche."
+    },
+    {
+      "id": "coach-erstgespraech-fragen",
+      "titel": "Fragen fuer ein Kennenlerngespraech",
+      "kategorie": "Coaches",
+      "aufgabe": "Strategie",
+      "prompt_text": "Ich coache [Zielgruppe] zu [Thema]. Erstelle einen Leitfaden mit acht offenen Fragen fuer ein kostenloses Kennenlerngespraech. Die Fragen sollen den Ist-Zustand, das Ziel und das groesste Hindernis des Klienten herausarbeiten, ohne wie ein Verhoer zu wirken. Ordne sie in eine sinnvolle Reihenfolge.",
+      "erklaerung": "Struktur fuer Erstgespraeche, die nicht zerfasern.",
+      "tipp": "Halte dich nicht sklavisch an die Reihenfolge, gute Fragen entstehen im Gespraech."
+    },
+    {
+      "id": "coach-reflexionsfragen",
+      "titel": "Reflexionsfragen fuer Klienten formulieren",
+      "kategorie": "Coaches",
+      "aufgabe": "Strategie",
+      "prompt_text": "Mein Klient steckt fest bei [Situation]. Formuliere fuenf Reflexionsfragen, die er zwischen unseren Sitzungen schriftlich beantworten kann. Die Fragen sollen zum Nachdenken anregen, nicht zu schnellen Antworten draengen. Keine Suggestivfragen, keine Ratschlaege verpackt als Frage.",
+      "erklaerung": "Hausaufgaben zwischen den Sitzungen.",
+      "tipp": "Streiche jede Frage, auf die du dir selbst eine bestimmte Antwort wuenschst."
+    },
+    {
+      "id": "coach-programm-aufbau",
+      "titel": "Coaching-Programm in Module gliedern",
+      "kategorie": "Coaches",
+      "aufgabe": "Strategie",
+      "prompt_text": "Ich baue ein [Dauer]-Coaching-Programm zu [Thema] fuer [Zielgruppe]. Schlage eine Gliederung in Module vor, je mit Lernziel, einem Schwerpunkt und einer Uebung. Achte darauf, dass jedes Modul auf dem vorigen aufbaut. Markiere, wo Klienten erfahrungsgemaess abspringen, und wie ich das abfedern kann.",
+      "erklaerung": "Grobgeruest fuer ein neues Programm.",
+      "tipp": "Lass die Module bewusst schlank, lieber spaeter ergaenzen als ueberladen starten."
+    },
+    {
+      "id": "marketing-newsletter-betreff",
+      "titel": "Betreffzeilen fuer einen Newsletter",
+      "kategorie": "Marketing",
+      "aufgabe": "Social Media",
+      "prompt_text": "Mein naechster Newsletter handelt von [Thema] fuer [Zielgruppe]. Schreibe zehn Betreffzeilen unter 50 Zeichen: drei neugierig, drei nutzenorientiert, zwei mit konkreter Zahl, zwei schlicht beschreibend. Keine Grossbuchstaben-Schreierei, keine irrefuehrenden Versprechen. Markiere deine drei Favoriten mit Begruendung.",
+      "erklaerung": "Wenn dir bei der Betreffzeile nichts einfaellt.",
+      "tipp": "Teste zwei Betreffzeilen gegeneinander, statt lange an einer einzigen zu feilen."
+    },
+    {
+      "id": "marketing-landingpage",
+      "titel": "Struktur fuer eine Landingpage",
+      "kategorie": "Marketing",
+      "aufgabe": "Content",
+      "prompt_text": "Ich brauche eine Landingpage fuer [Angebot] an [Zielgruppe]. Gib mir die Abschnitte in Reihenfolge: Ueberschrift, Unterzeile, drei Nutzenpunkte, Einwandbehandlung, Beweis, Handlungsaufforderung. Schreibe pro Abschnitt einen Beispieltext und sage in einem Satz, welches Ziel der Abschnitt hat. Klare Sprache, keine Werbefloskeln.",
+      "erklaerung": "Bauplan plus Beispieltexte fuer eine Verkaufsseite.",
+      "tipp": "Ersetze die Beispiel-Nutzenpunkte durch echte Aussagen deiner Kunden."
+    },
+    {
+      "id": "marketing-content-plan",
+      "titel": "Content-Plan fuer einen Monat",
+      "kategorie": "Marketing",
+      "aufgabe": "Content",
+      "prompt_text": "Erstelle einen Content-Plan fuer [Kanal] fuer vier Wochen rund um [Thema]. Pro Woche ein Schwerpunkt, pro Beitrag: Format, Kernaussage in einem Satz und Handlungsaufforderung. Mische lehrreiche, persoenliche und produktbezogene Beitraege im Verhaeltnis 3:1:1. Halte es umsetzbar fuer eine Person.",
+      "erklaerung": "Damit du nicht jeden Tag bei null anfaengst.",
+      "tipp": "Plan lieber zwoelf gute Beitraege als dreissig halbe, die du nie postest."
+    },
+    {
+      "id": "marketing-anzeigentext",
+      "titel": "Anzeigentexte fuer eine Kampagne",
+      "kategorie": "Marketing",
+      "aufgabe": "Content",
+      "prompt_text": "Schreibe drei Anzeigenvarianten fuer [Angebot] an [Zielgruppe] auf [Plattform]. Jede mit Hook (erste Zeile), Hauptteil (max. drei Saetze) und Handlungsaufforderung. Variante A nennt ein Problem, B eine Zahl, C eine Frage. Bleib ehrlich, kein uebertriebenes Versprechen. Gib darunter die Zielgruppen-Idee in einem Satz.",
+      "erklaerung": "Mehrere Ansaetze, die du gegeneinander testen kannst.",
+      "tipp": "Die erste Zeile entscheidet fast alles, feile da am laengsten."
+    },
+    {
+      "id": "vertrieb-kalt-email",
+      "titel": "Kurze Erstkontakt-E-Mail (B2B)",
+      "kategorie": "Vertrieb",
+      "aufgabe": "E-Mail",
+      "prompt_text": "Schreibe eine kurze Erstkontakt-Mail an [Rolle] bei [Firmentyp]. Aufhaenger: [konkreter Anlass, z.B. Stellenanzeige, Beitrag]. Mein Angebot loest [Problem]. Struktur: ein Satz Bezug, ein Satz Nutzen, eine niedrigschwellige Frage. Maximal 90 Woerter, kein Verkaufsdeutsch, keine Anhaenge erwaehnen.",
+      "erklaerung": "Erstkontakt, der nicht nach Massenmail klingt.",
+      "tipp": "Der echte, persoenliche Aufhaenger in Zeile eins schlaegt jede Vorlage."
+    },
+    {
+      "id": "vertrieb-followup",
+      "titel": "Hoefliche Erinnerung nach dem Angebot",
+      "kategorie": "Vertrieb",
+      "aufgabe": "E-Mail",
+      "prompt_text": "Ich habe vor [Zeitraum] ein Angebot an [Name] geschickt und nichts gehoert. Schreibe eine kurze Nachfass-Mail: kein Druck, biete an, offene Fragen zu klaeren, und gib einen konkreten naechsten Schritt vor. Maximal vier Saetze. Frage am Ende, ob das Thema noch aktuell ist.",
+      "erklaerung": "Das Nachfassen, das viele aus Hoeflichkeit verschieben.",
+      "tipp": "Die Frage 'noch aktuell?' gibt dem Gegenueber einen leichten Ausweg und bringt oft eine ehrliche Antwort."
+    },
+    {
+      "id": "vertrieb-einwand",
+      "titel": "Einwand 'keine Zeit' aufgreifen",
+      "kategorie": "Vertrieb",
+      "aufgabe": "Vertrieb",
+      "prompt_text": "Ein Interessent sagt 'gerade keine Zeit' zu [Angebot]. Schreibe drei moegliche Reaktionen: eine, die einen spaeteren Termin vorschlaegt, eine, die den Zeitaufwand realistisch klein haelt, und eine, die nachfragt, ob Zeit oder Prioritaet das Thema ist. Ruhig, ohne Ueberredung, je hoechstens drei Saetze.",
+      "erklaerung": "Fuer den haeufigsten weichen Einwand.",
+      "tipp": "Oft steckt hinter 'keine Zeit' ein anderer Grund, die dritte Variante findet ihn heraus."
+    },
+    {
+      "id": "vertrieb-gespraechsnotiz",
+      "titel": "Gespraechsnotiz und naechste Schritte",
+      "kategorie": "Vertrieb",
+      "aufgabe": "Zusammenfassung",
+      "prompt_text": "Hier sind meine Stichpunkte aus einem Verkaufsgespraech: [Notizen]. Fasse zusammen in: Bedarf des Kunden, Budget/Zeitrahmen falls genannt, offene Fragen, vereinbarte naechste Schritte mit Verantwortlichem. Markiere, was ich noch nicht weiss. Halte es so kurz, dass ich es in zwei Minuten lese.",
+      "erklaerung": "Aus losen Notizen eine saubere Gespraechsnotiz.",
+      "tipp": "Diktier deine Stichpunkte direkt nach dem Termin, dann ist die Notiz vollstaendig."
+    },
+    {
+      "id": "service-beschwerde-antwort",
+      "titel": "Antwort auf eine Beschwerde",
+      "kategorie": "Kundenservice",
+      "aufgabe": "Kundenservice",
+      "prompt_text": "Ein Kunde beschwert sich: [Beschwerdetext]. Schreibe eine Antwort, die zuerst sein Anliegen anerkennt, dann sachlich den Sachverhalt klaert und eine konkrete Loesung anbietet ([moegliche Loesung]). Keine Ausreden, keine Schuldzuweisung. Ton: ruhig und loesungsorientiert. Schliesse mit einer klaren Zusage.",
+      "erklaerung": "Beschwerden so beantworten, dass Kunden bleiben.",
+      "tipp": "Erst das Gefuehl anerkennen, dann die Sache, in dieser Reihenfolge entspannt sich fast jede Lage."
+    },
+    {
+      "id": "service-faq-aufbau",
+      "titel": "FAQ aus echten Kundenfragen bauen",
+      "kategorie": "Kundenservice",
+      "aufgabe": "Content",
+      "prompt_text": "Hier sind die haeufigsten Fragen meiner Kunden: [Liste]. Formuliere daraus eine FAQ mit klaren, kurzen Antworten. Gruppiere thematisch, schreibe in du-Form und vermeide Verweise wie 'siehe oben'. Markiere, wo eine Antwort eher ein Telefonat braucht als einen Text.",
+      "erklaerung": "Wiederkehrende Fragen einmal sauber beantworten.",
+      "tipp": "Nimm die Fragen woertlich aus deinem Postfach, dann triffst du den echten Bedarf."
+    },
+    {
+      "id": "service-makro-vorlagen",
+      "titel": "Textbausteine fuer den Support",
+      "kategorie": "Kundenservice",
+      "aufgabe": "Kundenservice",
+      "prompt_text": "Erstelle fuenf Textbausteine fuer wiederkehrende Support-Faelle: [Fall 1], [Fall 2], [Fall 3], [Fall 4], [Fall 5]. Jeder Baustein freundlich, mit Platzhaltern fuer den Namen und das konkrete Detail, sodass er nicht wie eine Maschine klingt. Du-Form, hoechstens fuenf Saetze pro Baustein.",
+      "erklaerung": "Schnellere, gleichmaessige Antworten ohne Roboterton.",
+      "tipp": "Lass je einen Satz frei zum Persoenlich-Machen, das hebt jede Vorlage."
+    },
+    {
+      "id": "content-blog-gliederung",
+      "titel": "Gliederung fuer einen Fachartikel",
+      "kategorie": "Texte & Content",
+      "aufgabe": "Content",
+      "prompt_text": "Ich schreibe einen Artikel ueber [Thema] fuer [Zielgruppe], die [Vorwissen] hat. Erstelle eine Gliederung mit Einleitung, vier bis sechs Zwischenueberschriften und Fazit. Pro Abschnitt ein Satz, was rein soll. Markiere, wo ein Beispiel, eine Zahl oder eine eigene Erfahrung den Text staerken wuerde.",
+      "erklaerung": "Bevor du schreibst, erst die Struktur klaeren.",
+      "tipp": "Schreib den Text selbst, nutze die Gliederung nur als Geruest, das liest man dem Ergebnis an."
+    },
+    {
+      "id": "content-text-kuerzen",
+      "titel": "Einen Text auf die Haelfte kuerzen",
+      "kategorie": "Texte & Content",
+      "aufgabe": "Zusammenfassung",
+      "prompt_text": "Kuerze den folgenden Text auf etwa die Haelfte, ohne Kernaussagen zu verlieren: [Text]. Streiche Fuellwoerter und Wiederholungen, behalte konkrete Zahlen und Beispiele. Liste am Ende in drei Punkten auf, was du entfernt hast, damit ich pruefen kann.",
+      "erklaerung": "Lange Texte straffen, ohne den Sinn zu verlieren.",
+      "tipp": "Lass dir zeigen, was gestrichen wurde, manchmal willst du etwas zuruckholen."
+    },
+    {
+      "id": "content-ton-anpassen",
+      "titel": "Ton eines Textes anpassen",
+      "kategorie": "Texte & Content",
+      "aufgabe": "Content",
+      "prompt_text": "Schreibe den folgenden Text im Ton [gewuenschter Ton, z.B. sachlich und freundlich] um, ohne Inhalte zu aendern: [Text]. Behalte alle Fakten, passe nur Wortwahl und Satzlaenge an. Vermeide Werbefloskeln und uebertriebene Adjektive. Zeige mir zwei, drei Stellen, an denen sich der Ton am staerksten geaendert hat.",
+      "erklaerung": "Denselben Inhalt fuer einen anderen Anlass anpassen.",
+      "tipp": "Gib ein Beispiel fuer den Zielton mit, dann trifft das Modell ihn genauer."
+    },
+    {
+      "id": "content-ueberschriften",
+      "titel": "Ueberschriften ohne Clickbait",
+      "kategorie": "Texte & Content",
+      "aufgabe": "Content",
+      "prompt_text": "Mein Text handelt von [Thema] und sagt im Kern: [Kernaussage]. Schlage acht Ueberschriften vor, die neugierig machen, aber das Versprechen auch halten. Keine reisserischen Wendungen, keine Mehrfach-Ausrufezeichen. Sortiere von sachlich bis pointiert und markiere, welche zur Zielgruppe [Zielgruppe] am besten passt.",
+      "erklaerung": "Ueberschriften, die klicken lassen und trotzdem halten, was sie sagen.",
+      "tipp": "Wenn die Ueberschrift mehr verspricht als der Text liefert, verlierst du Vertrauen, das merkt man."
+    },
+    {
+      "id": "content-social-umwandeln",
+      "titel": "Artikel in Social-Posts umwandeln",
+      "kategorie": "Texte & Content",
+      "aufgabe": "Social Media",
+      "prompt_text": "Hier ist mein Artikel: [Text oder Link-Inhalt]. Mach daraus fuenf eigenstaendige Posts fuer [Plattform]: jeder mit einer klaren Aussage, einer kurzen Begruendung und einer Frage oder Handlungsaufforderung am Ende. Kein Hashtag-Spam, hoechstens drei pro Post. Behalte meinen sachlichen Ton.",
+      "erklaerung": "Aus einem laengeren Text mehrere Beitraege ziehen.",
+      "tipp": "Ein Gedanke pro Post, gequetschte Mehrfachaussagen liest niemand zu Ende."
+    },
+    {
+      "id": "produktiv-meeting-zusammenfassung",
+      "titel": "Meeting-Notizen in Aufgaben verwandeln",
+      "kategorie": "Produktivitaet",
+      "aufgabe": "Zusammenfassung",
+      "prompt_text": "Hier sind meine Meeting-Notizen: [Notizen]. Fasse zusammen in: Entscheidungen, offene Punkte und Aufgaben mit Verantwortlichem und Frist. Trenne klar, was beschlossen wurde, von dem, was nur diskutiert wurde. Markiere alles, wo Verantwortlicher oder Frist fehlt, damit ich nachhaken kann.",
+      "erklaerung": "Aus Notizen ein klares Protokoll mit To-dos.",
+      "tipp": "Schick das Ergebnis ins Team, ungeklaerte Verantwortlichkeiten loesen sich dann von selbst."
+    },
+    {
+      "id": "produktiv-email-entwurf-pruefen",
+      "titel": "Eine heikle E-Mail vor dem Senden pruefen",
+      "kategorie": "Produktivitaet",
+      "aufgabe": "E-Mail",
+      "prompt_text": "Pruefe diese E-Mail vor dem Senden: [Entwurf]. Sag mir: Ist die Kernbotschaft in den ersten zwei Saetzen klar? Wo koennte sie falsch verstanden werden? Wo klingt sie unbeabsichtigt schroff? Schlage konkrete Aenderungen vor, ohne meinen Stil komplett umzuschreiben.",
+      "erklaerung": "Fuer Mails, bei denen der Ton heikel ist.",
+      "tipp": "Lass dir nur Hinweise geben und entscheide selbst, sonst klingt die Mail nicht mehr nach dir."
+    },
+    {
+      "id": "produktiv-entscheidung",
+      "titel": "Eine Entscheidung strukturieren",
+      "kategorie": "Produktivitaet",
+      "aufgabe": "Strategie",
+      "prompt_text": "Ich muss mich entscheiden zwischen [Option A] und [Option B] mit Blick auf [Ziel]. Stelle die Optionen in einer Tabelle gegenueber: Aufwand, Kosten, Risiko, Wirkung auf das Ziel. Nenne pro Option den groessten Vorteil und den groessten Haken. Gib am Ende keine Empfehlung, sondern die drei Fragen, die ich mir selbst beantworten sollte.",
+      "erklaerung": "Wenn du dich im Kreis drehst und Klarheit brauchst.",
+      "tipp": "Die KI soll nicht fuer dich entscheiden, sondern die Lage ordnen, die Entscheidung bleibt deine."
+    },
+    {
+      "id": "produktiv-doku-erklaeren",
+      "titel": "Lange Dokumente verstaendlich zusammenfassen",
+      "kategorie": "Produktivitaet",
+      "aufgabe": "Zusammenfassung",
+      "prompt_text": "Fasse das folgende Dokument fuer [Zweck, z.B. eine schnelle Entscheidung] zusammen: [Text]. Gib mir: drei Kernaussagen, was es konkret fuer mich bedeutet und welche Fragen offen bleiben. Markiere Stellen, die ich im Original selbst nachlesen sollte. Maximal 150 Woerter.",
+      "erklaerung": "Lange Texte schnell erfassen, ohne alles zu lesen.",
+      "tipp": "Bei wichtigen Dokumenten die markierten Stellen wirklich im Original gegenlesen."
+    },
+    {
+      "id": "produktiv-checkliste",
+      "titel": "Checkliste fuer einen wiederkehrenden Ablauf",
+      "kategorie": "Produktivitaet",
+      "aufgabe": "Produktivitaet",
+      "prompt_text": "Ich mache regelmaessig [Ablauf, z.B. einen neuen Kunden aufnehmen]. Erstelle daraus eine Schritt-fuer-Schritt-Checkliste, die auch ein Vertreter abarbeiten koennte. Pro Schritt: was zu tun ist und woran ich erkenne, dass er erledigt ist. Markiere Schritte, die man leicht vergisst.",
+      "erklaerung": "Routinen festhalten, damit nichts durchrutscht.",
+      "tipp": "Lass jemand anderen die Liste einmal durchgehen, Luecken faellt nur Aussenstehenden auf."
+    },
+    {
+      "id": "recherche-fragenkatalog",
+      "titel": "Recherchefragen zu einem Thema sammeln",
+      "kategorie": "Produktivitaet",
+      "aufgabe": "Recherche",
+      "prompt_text": "Ich recherchiere [Thema] fuer [Zweck]. Liste die zwoelf wichtigsten Fragen auf, die ich beantworten sollte, geordnet vom Grundlegenden zum Speziellen. Markiere, welche ich aus eigenen Quellen klaeren kann und welche ich extern verifizieren muss. Nenne keine Antworten, nur die Fragen.",
+      "erklaerung": "Eine Recherche planen, bevor du dich verzettelst.",
+      "tipp": "Nutze die KI fuer die Fragen, nicht fuer die Antworten, Fakten pruefst du selbst."
+    },
+    {
+      "id": "recherche-quellen-pruefen",
+      "titel": "Aussagen auf Pruefpunkte herunterbrechen",
+      "kategorie": "Produktivitaet",
+      "aufgabe": "Recherche",
+      "prompt_text": "Hier ist ein Text mit Behauptungen: [Text]. Liste jede konkrete Tatsachenbehauptung einzeln auf und gib pro Punkt an, wie ich sie pruefen koennte (welche Art Quelle, welcher Suchbegriff). Trenne klar zwischen Fakten, Meinungen und Schaetzungen. Erfinde keine Quellen.",
+      "erklaerung": "Texte kritisch pruefen, statt blind zu vertrauen.",
+      "tipp": "Sag ausdruecklich 'erfinde keine Quellen', sonst werden welche halluziniert."
+    },
+    {
+      "id": "recherche-wettbewerb",
+      "titel": "Vergleichsraster fuer Wettbewerber",
+      "kategorie": "Marketing",
+      "aufgabe": "Recherche",
+      "prompt_text": "Ich vergleiche meine Loesung [Eigenes] mit [Wettbewerber 1] und [Wettbewerber 2] fuer [Zielgruppe]. Erstelle ein Vergleichsraster mit den Kriterien, die dieser Zielgruppe wichtig sind. Lass die Bewertungsfelder leer, ich fuelle sie mit echten Daten. Schlage am Ende drei Kriterien vor, an die ich vielleicht nicht gedacht habe.",
+      "erklaerung": "Struktur fuer eine ehrliche Wettbewerbsanalyse.",
+      "tipp": "Die KI kennt aktuelle Preise und Funktionen oft nicht zuverlaessig, trag echte Daten selbst ein."
+    },
+    {
+      "id": "solo-rechnung-mahnung",
+      "titel": "Freundliche Zahlungserinnerung",
+      "kategorie": "Solopreneure",
+      "aufgabe": "E-Mail",
+      "prompt_text": "Rechnung [Nummer] ueber [Betrag] an [Kunde] ist seit [Tage] ueberfaellig. Schreibe eine erste, freundliche Zahlungserinnerung: kurz, ohne Vorwurf, mit Rechnungsdetails und neuem Zahlungsziel [Datum]. Biete an, bei Problemen eine Loesung zu finden. Hoechstens fuenf Saetze.",
+      "erklaerung": "Die erste Erinnerung, bevor es foermlich wird.",
+      "tipp": "Bleib bei der ersten Erinnerung locker, ein Versehen ist wahrscheinlicher als Absicht."
+    },
+    {
+      "id": "solo-onboarding-mail",
+      "titel": "Willkommens-Mail fuer neue Kunden",
+      "kategorie": "Solopreneure",
+      "aufgabe": "E-Mail",
+      "prompt_text": "Ein neuer Kunde hat [Leistung] gebucht. Schreibe eine Willkommens-Mail: bedanke dich, nenne die naechsten drei Schritte mit Zeitrahmen und sage, wie und wann er mich erreicht. Ton: herzlich, aber sachlich. Ende mit einer einzelnen Frage, die ich fuer den Start brauche.",
+      "erklaerung": "Ein klarer Start nimmt neuen Kunden die Unsicherheit.",
+      "tipp": "Eine konkrete Rueckfrage am Ende bringt sofort die erste Reaktion und haelt den Faden."
+    },
+    {
+      "id": "handwerk-anfrage-qualifizieren",
+      "titel": "Anfrage mit Rueckfragen qualifizieren",
+      "kategorie": "Handwerker",
+      "aufgabe": "Vertrieb",
+      "prompt_text": "Ein Interessent fragt per Mail nach [Leistung], aber ohne Details. Schreibe eine kurze Antwort mit den fuenf wichtigsten Rueckfragen, die ich fuer ein Angebot brauche (z.B. Umfang, Ort, Zeitrahmen, Budgetrahmen, Zugang). Freundlich, nummeriert, sodass er nur kurz antworten muss.",
+      "erklaerung": "Damit du nicht ins Blaue hinein kalkulierst.",
+      "tipp": "Frag auch nach dem Zeitrahmen, das trennt ernste Anfragen von Preisumfragen."
+    },
+    {
+      "id": "coach-testimonial-fragen",
+      "titel": "Fragen fuer ein ehrliches Testimonial",
+      "kategorie": "Coaches",
+      "aufgabe": "Marketing",
+      "prompt_text": "Ich moechte einen zufriedenen Klienten um ein Testimonial bitten. Formuliere fuenf Fragen, die ihn dazu bringen, konkret und glaubwuerdig zu erzaehlen statt nur 'war toll' zu sagen: Ausgangslage, was sich konkret geaendert hat, fuer wen mein Coaching passt. Schreibe dazu eine kurze Bitte um seine Erlaubnis zur Veroeffentlichung.",
+      "erklaerung": "Testimonials, die nach echten Menschen klingen.",
+      "tipp": "Frag nach Zahlen oder konkreten Veraenderungen, 'mir geht es besser' ueberzeugt niemanden."
+    },
+    {
+      "id": "marketing-umfrage",
+      "titel": "Kurze Kundenumfrage entwerfen",
+      "kategorie": "Marketing",
+      "aufgabe": "Recherche",
+      "prompt_text": "Ich will von meinen Kunden [Erkenntnisziel, z.B. warum sie sich entschieden haben] erfahren. Entwirf eine Umfrage mit hoechstens sieben Fragen: meist geschlossen, ein bis zwei offen. Vermeide Suggestivfragen und Doppelfragen. Sortiere von leicht zu beantworten zu nachdenklich und schaetze die Ausfuelldauer.",
+      "erklaerung": "Eine Umfrage, die Leute auch zu Ende ausfuellen.",
+      "tipp": "Kuerze auf fuenf Fragen, je laenger die Umfrage, desto weniger Antworten."
+    },
+    {
+      "id": "vertrieb-angebot-varianten",
+      "titel": "Angebot in drei Stufen anbieten",
+      "kategorie": "Vertrieb",
+      "aufgabe": "Angebot",
+      "prompt_text": "Fasse mein Angebot fuer [Leistung] in drei Stufen: Basis, Standard, Komplett. Pro Stufe: enthaltene Leistungen, Preis [Bereich] und fuer wen sie passt. Mach die mittlere Stufe zur naheliegenden Wahl, ohne die anderen schlechtzureden. Schreibe sachlich, ohne Verknappungstricks.",
+      "erklaerung": "Stufenangebote helfen Kunden bei der Wahl.",
+      "tipp": "Die meisten waehlen die Mitte, leg dein Wunschpaket genau dorthin."
+    },
+    {
+      "id": "service-rueckruf-skript",
+      "titel": "Leitfaden fuer einen Beschwerde-Rueckruf",
+      "kategorie": "Kundenservice",
+      "aufgabe": "Kundenservice",
+      "prompt_text": "Ich rufe einen veraergerten Kunden wegen [Problem] zurueck. Gib mir einen kurzen Gespraechsleitfaden: Einstieg, zuhoeren und anerkennen, Sachverhalt klaeren, Loesung anbieten ([Loesung]), Abschluss mit Zusage. Pro Phase ein Beispielsatz, den ich frei abwandeln kann. Ruhiger, ehrlicher Ton.",
+      "erklaerung": "Sicherheit fuer ein unangenehmes Telefonat.",
+      "tipp": "Lies den Leitfaden vorher einmal, am Telefon dann frei sprechen, nicht ablesen."
+    },
+    {
+      "id": "content-glossar",
+      "titel": "Glossar fuer die eigene Branche",
+      "kategorie": "Texte & Content",
+      "aufgabe": "Content",
+      "prompt_text": "Erstelle ein kleines Glossar fuer [Zielgruppe] zu den Begriffen [Liste]. Pro Begriff: eine Definition in zwei Saetzen, Alltagssprache, und ein Beispiel aus [Branche]. Vermeide es, Fachwoerter mit anderen Fachwoertern zu erklaeren. Sortiere alphabetisch.",
+      "erklaerung": "Begriffe erklaeren, ohne Vorwissen vorauszusetzen.",
+      "tipp": "Pruefe die Definitionen fachlich, gerade bei Nischenbegriffen liegt die KI mal daneben."
+    },
+    {
+      "id": "produktiv-prompt-verbessern",
+      "titel": "Den eigenen Prompt schaerfen lassen",
+      "kategorie": "Produktivitaet",
+      "aufgabe": "Produktivitaet",
+      "prompt_text": "Hier ist ein Prompt, den ich nutzen will: [Prompt]. Sag mir, wo er unklar ist, welche Angaben fehlen und wo das Modell raten muesste. Schlage eine verbesserte Fassung vor und erklaere in drei Punkten, was du geaendert hast und warum. Erfinde keine Annahmen ueber mein Ziel, frag lieber nach.",
+      "erklaerung": "Bessere Ergebnisse durch bessere Prompts.",
+      "tipp": "Je konkreter dein Prompt, desto weniger musst du nacharbeiten, das spart am meisten Zeit."
+    },
+    {
+      "id": "steuer-jahresend-info",
+      "titel": "Jahresend-Checkliste fuer Mandanten",
+      "kategorie": "Steuerberater",
+      "aufgabe": "Content",
+      "prompt_text": "Erstelle eine kurze Jahresend-Checkliste fuer meine Mandanten ([Mandantentyp, z.B. Selbststaendige]). Punkte, die sie bis Jahresende pruefen oder erledigen sollten, jeweils mit einem Satz, warum. Allgemein gehalten, mit dem Hinweis, dass individuelle Faelle eine Beratung brauchen. Maximal zehn Punkte.",
+      "erklaerung": "Ein hilfreiches Rundschreiben zum Jahresende.",
+      "tipp": "Pruefe jeden Punkt auf Aktualitaet, Steuerregeln aendern sich jaehrlich."
+    },
+    {
+      "id": "vertrieb-linkedin-nachricht",
+      "titel": "Vernetzungsnachricht mit echtem Bezug",
+      "kategorie": "Vertrieb",
+      "aufgabe": "Social Media",
+      "prompt_text": "Ich moechte mich mit [Rolle/Person] vernetzen, Anlass: [konkreter Bezug, z.B. gemeinsamer Beitrag, Veranstaltung]. Schreibe eine kurze, persoenliche Nachricht ohne sofortigen Verkauf: ein Satz Bezug, ein Satz, warum ich mich vernetzen will. Maximal 40 Woerter, keine Standardphrase.",
+      "erklaerung": "Vernetzen, ohne gleich etwas zu verkaufen.",
+      "tipp": "Lass das Pitchen weg, eine Vernetzung ohne Hintergedanke wird viel eher angenommen."
+    },
+    {
+      "id": "coach-workshop-ablauf",
+      "titel": "Ablaufplan fuer einen halbtaegigen Workshop",
+      "kategorie": "Coaches",
+      "aufgabe": "Strategie",
+      "prompt_text": "Plane einen halbtaegigen Workshop zu [Thema] fuer [Anzahl] Teilnehmer mit dem Ziel [Lernziel]. Gib einen Ablauf mit Zeitblocken: Einstieg, Input, Uebung, Austausch, Abschluss. Pro Block: Dauer, Ziel und Methode. Plane bewusst Pausen und einen Puffer ein. Halte den Input-Anteil unter einem Drittel.",
+      "erklaerung": "Ein Workshop-Geruest mit realistischer Zeitplanung.",
+      "tipp": "Plan weniger Inhalt als du denkst, gute Workshops leben von Uebung, nicht von Folien."
+    },
+    {
+      "id": "steuer-fristerinnerung",
+      "titel": "Fristerinnerung an Mandanten schreiben",
+      "kategorie": "Steuerberater",
+      "aufgabe": "E-Mail",
+      "prompt_text": "Du bist meine Assistenz in einer Steuerkanzlei. Schreibe eine freundliche, knappe Erinnerung an [Mandant], dass die Unterlagen fuer [Zweck] bis [Datum] fehlen. Nenne in einer Liste genau die [3-4] fehlenden Dokumente. Erklaere in einem Satz, warum die Frist wichtig ist. Biete an, bei Rueckfragen anzurufen. Ton: sachlich, nicht mahnend. Maximal 150 Woerter.",
+      "erklaerung": "Holt fehlende Belege ein, ohne den Mandanten zu veraergern.",
+      "tipp": "Liste die Dokumente exakt auf - 'alle Unterlagen' fuehrt zu Rueckfragen."
+    },
+    {
+      "id": "steuer-bescheid-klartext",
+      "titel": "Steuerbescheid in Klartext erklaeren",
+      "kategorie": "Steuerberater",
+      "aufgabe": "Zusammenfassung",
+      "prompt_text": "Du bist mein Erklaerer. Fasse den folgenden Steuerbescheid fuer einen Mandanten ohne Fachwissen zusammen. Beantworte drei Fragen in je zwei Saetzen: Was wurde festgesetzt? Muss er zahlen oder bekommt er zurueck, und wie viel? Was ist bis wann zu tun? Keine Paragrafen, kein Fachjargon. Bescheidtext: [hier einfuegen]",
+      "erklaerung": "Macht einen Bescheid fuer Mandanten verstaendlich.",
+      "tipp": "Pruefe die Zahlen am Ende selbst gegen - das Modell darf nicht rechnen, nur erklaeren."
+    },
+    {
+      "id": "steuer-kleinunternehmer-check",
+      "titel": "Checkliste Wechsel aus der Kleinunternehmer-Regelung",
+      "kategorie": "Steuerberater",
+      "aufgabe": "Strategie",
+      "prompt_text": "Du bist mein Fachredakteur. Erstelle eine Entscheidungs-Checkliste fuer einen Mandanten, der ueberlegt, die Kleinunternehmer-Regelung zu verlassen. Gliedere in: Wann es sich lohnt, Wann nicht, Was sich praktisch aendert, Welche Fristen gelten. Je Punkt ein kurzer Satz. Markiere am Ende klar, dass dies keine verbindliche Beratung ersetzt. Stand der Grenzen: [aktuelle Werte einsetzen].",
+      "erklaerung": "Strukturiert ein haeufiges Mandantengespraech vor.",
+      "tipp": "Trag die aktuellen Euro-Grenzen selbst ein, statt sie vom Modell zu uebernehmen."
+    },
+    {
+      "id": "service-lieferverzug",
+      "titel": "Lieferverzug erklaeren und entschuldigen",
+      "kategorie": "Kundenservice",
+      "aufgabe": "E-Mail",
+      "prompt_text": "Du bist mein Kundenservice. Schreibe eine ehrliche Mail an [Kunde] wegen einer Verzoegerung bei [Bestellung]. Struktur: Entschuldigung in einem Satz, konkreter neuer Liefertermin [Datum], was wir tun, damit es klappt, ein fairer Ausgleich [z.B. Gutschrift]. Keine Ausreden, keine Schuldzuweisung an Dritte. Ton: ruhig, verbindlich. Maximal 140 Woerter.",
+      "erklaerung": "Haelt den Kunden bei einer Verzoegerung an Bord.",
+      "tipp": "Nenne nur einen Termin, den du sicher haeltst - lieber spaeter und verlaesslich."
+    },
+    {
+      "id": "service-deeskalation",
+      "titel": "Wuetende Kundenmail deeskalieren",
+      "kategorie": "Kundenservice",
+      "aufgabe": "Kundenservice",
+      "prompt_text": "Du bist meine erfahrene Servicekraft. Antworte auf die folgende veraergerte Nachricht. Beginne damit, das Anliegen in eigenen Worten zu spiegeln, damit der Kunde sich verstanden fuehlt. Trenne Fakten von Emotion. Biete genau einen klaren naechsten Schritt mit Zeitangabe. Keine Floskeln wie 'Ihr Anliegen ist uns wichtig'. Ton: ruhig, konkret. Kundennachricht: [hier einfuegen]",
+      "erklaerung": "Nimmt Druck aus einer Beschwerde und lenkt zur Loesung.",
+      "tipp": "Das Spiegeln zuerst - direkt mit der Loesung zu starten wirkt oft abweisend."
+    },
+    {
+      "id": "service-bewertung-oeffentlich",
+      "titel": "Oeffentliche negative Bewertung beantworten",
+      "kategorie": "Kundenservice",
+      "aufgabe": "Social Media",
+      "prompt_text": "Du bist meine Stimme nach aussen. Formuliere eine oeffentliche Antwort auf eine kritische [Google/Portal]-Bewertung. Mitlesende sind die eigentliche Zielgruppe. Struktur: Dank fuers Feedback, kurze sachliche Einordnung ohne Rechtfertigung, Angebot, das Problem privat zu klaeren [Kontakt]. Keine Details des Falls oeffentlich nennen. Maximal 80 Woerter. Bewertung: [hier einfuegen]",
+      "erklaerung": "Zeigt anderen Lesern, dass du fair mit Kritik umgehst.",
+      "tipp": "Kurz halten - lange Rechtfertigungen wirken oeffentlich schlechter als die Kritik selbst."
+    },
+    {
+      "id": "handwerk-nachtrag-begruenden",
+      "titel": "Nachtrag zur Rechnung begruenden",
+      "kategorie": "Handwerker",
+      "aufgabe": "Angebot",
+      "prompt_text": "Du bist mein Buero. Schreibe eine kurze, verstaendliche Begruendung fuer einen Nachtrag zu Auftrag [Nummer]. Erklaere in einfacher Sprache: Was war zusaetzlich noetig, warum war es vorher nicht absehbar, was kostet es [Betrag]. Verweise auf die Stelle im urspruenglichen Angebot. Ton: sachlich, nachvollziehbar. Maximal 120 Woerter.",
+      "erklaerung": "Macht eine Mehrkostenforderung fuer den Kunden plausibel.",
+      "tipp": "Foto oder Beleg der Zusatzarbeit anhaengen - das verhindert die meisten Einwaende."
+    },
+    {
+      "id": "handwerk-google-business",
+      "titel": "Google-Business-Profil-Text schreiben",
+      "kategorie": "Handwerker",
+      "aufgabe": "Marketing",
+      "prompt_text": "Du bist mein Texter fuer lokale Sichtbarkeit. Schreibe einen Profiltext fuer einen [Gewerk]-Betrieb in [Ort]. Nenne konkret: Leistungen, Einzugsgebiet, was uns von anderen unterscheidet (echte Punkte, keine Werbefloskeln), wie man uns erreicht. Baue [Gewerk] und [Ort] natuerlich ein, ohne Stichwort-Stapelung. Zwei kurze Absaetze, maximal 130 Woerter.",
+      "erklaerung": "Verbessert das lokale Profil ohne aufgesetzte Werbesprache.",
+      "tipp": "Schreib eine echte Besonderheit rein (z.B. Notdienst, Festpreis) statt 'Qualitaet und Zuverlaessigkeit'."
+    },
+    {
+      "id": "solo-nische-schaerfen",
+      "titel": "Nische schaerfen und benennen",
+      "kategorie": "Solopreneure",
+      "aufgabe": "Strategie",
+      "prompt_text": "Du bist mein Sparringspartner fuer Positionierung. Ich biete [Leistung] fuer [grobe Zielgruppe]. Stelle mir nacheinander fuenf Fragen, die meine Nische enger fassen (Zielgruppe, Problem, Ergebnis, Abgrenzung, Preisbereich). Warte meine Antwort jeweils ab. Fasse am Ende meine Nische in einem Satz nach dem Muster: Ich helfe [wem], [welches Ergebnis] zu erreichen, ohne [typische Huerde].",
+      "erklaerung": "Arbeitet eine klare Positionierung im Dialog heraus.",
+      "tipp": "Antworte ehrlich statt ideal - die Schaerfe kommt aus echten Einschraenkungen."
+    },
+    {
+      "id": "solo-paketpreise-testen",
+      "titel": "Paketpreise auf Schwachstellen pruefen",
+      "kategorie": "Solopreneure",
+      "aufgabe": "Angebot",
+      "prompt_text": "Du bist mein kritischer Pricing-Berater. Hier sind meine drei Pakete mit Leistungen und Preisen: [einfuegen]. Pruefe: Ist der Sprung zwischen den Stufen nachvollziehbar? Welches Paket wirkt als Anker, welches als Standardwahl? Wo fehlt ein Grund, die teurere Stufe zu nehmen? Gib pro Punkt eine konkrete Aenderung, keine allgemeinen Tipps.",
+      "erklaerung": "Findet Logikluecken in der Preisstaffelung vor dem Versand.",
+      "tipp": "Lass das mittlere Paket bewusst am attraktivsten wirken - dorthin wandern die meisten Kunden."
+    },
+    {
+      "id": "coach-linkedin-insight",
+      "titel": "LinkedIn-Post aus einer Session-Erkenntnis",
+      "kategorie": "Coaches",
+      "aufgabe": "Social Media",
+      "prompt_text": "Du bist mein Ghostwriter. Mach aus dieser anonymisierten Erkenntnis aus einer Coaching-Session einen LinkedIn-Post: [Erkenntnis]. Struktur: erster Satz als Haken ohne Clickbait, kurze Geschichte, eine uebertragbare Lektion, eine Frage an die Leser am Ende. Keine Hashtag-Wand, hoechstens drei. Ich-Form, ruhiger Ton. Maximal 150 Woerter.",
+      "erklaerung": "Verwandelt Praxiswissen in regelmaessigen Content.",
+      "tipp": "Niemals erkennbare Klientendetails nennen - abstrahiere die Situation immer."
+    },
+    {
+      "id": "coach-no-show-nachfassen",
+      "titel": "Nach einem verpassten Termin nachfassen",
+      "kategorie": "Coaches",
+      "aufgabe": "E-Mail",
+      "prompt_text": "Du bist meine Assistenz. Schreibe eine kurze, freundliche Mail an [Klient], der den Termin am [Datum] verpasst hat. Kein Vorwurf. Frag, ob alles in Ordnung ist, biete zwei neue Terminvorschlaege [A/B] und erinnere kurz an die Ausfallregelung. Ton: warm, professionell. Maximal 110 Woerter.",
+      "erklaerung": "Holt ausgefallene Termine zurueck, ohne Druck aufzubauen.",
+      "tipp": "Zwei feste Terminoptionen statt 'meld dich mal' erhoehen die Antwortquote deutlich."
+    },
+    {
+      "id": "marketing-repurposing-plan",
+      "titel": "Einen Inhalt in mehrere Formate aufteilen",
+      "kategorie": "Marketing",
+      "aufgabe": "Social Media",
+      "prompt_text": "Du bist mein Content-Planer. Aus diesem Ausgangsinhalt [Link/Text] mach einen Repurposing-Plan: ein LinkedIn-Post, drei kurze Posts fuer [Plattform], eine Newsletter-Passage, eine Kernaussage als Zitat-Grafik. Gib je Format nur Kernbotschaft und ersten Satz vor, nicht den ganzen Text. Keine Wiederholung derselben Formulierung ueber die Formate.",
+      "erklaerung": "Macht aus einem Stueck Arbeit eine Woche Content.",
+      "tipp": "Pro Format einen anderen Aspekt betonen - sonst merken Mehrfach-Follower die Doppelung."
+    },
+    {
+      "id": "marketing-interview-leitfaden",
+      "titel": "Leitfaden fuer ein Zielgruppen-Interview",
+      "kategorie": "Marketing",
+      "aufgabe": "Recherche",
+      "prompt_text": "Du bist mein Researcher. Erstelle einen Leitfaden fuer ein 20-Minuten-Gespraech mit einem potenziellen Kunden in [Zielgruppe]. Ziel: verstehen, welches Problem [Produkt] loesen soll. Acht offene Fragen, die nach Verhalten und letzten konkreten Faellen fragen, nicht nach Meinungen oder Zukunft. Keine Suggestivfragen. Ordne die Fragen vom Allgemeinen zum Konkreten.",
+      "erklaerung": "Liefert echte Einblicke statt hoeflicher Zustimmung.",
+      "tipp": "Frag nach dem letzten realen Mal, nicht nach 'wuerdest du' - Erinnerungen sind ehrlicher als Absichten."
+    },
+    {
+      "id": "vertrieb-angebot-nachfassen",
+      "titel": "Angebot mit Frist nachfassen",
+      "kategorie": "Vertrieb",
+      "aufgabe": "E-Mail",
+      "prompt_text": "Du bist mein Vertrieb. Schreibe eine kurze Nachfass-Mail zu Angebot [Nummer] an [Kontakt], gesendet am [Datum]. Kein Druck, aber ein klarer Anlass: erinnere an den Gueltigkeitszeitraum, biete an, offene Fragen in einem kurzen Call zu klaeren, schlage zwei Zeitfenster vor. Ein konkreter naechster Schritt. Maximal 110 Woerter.",
+      "erklaerung": "Bringt ein liegengebliebenes Angebot wieder in Bewegung.",
+      "tipp": "Ein echter Anlass (Frist, Verfuegbarkeit) wirkt besser als 'wollte nur nachhaken'."
+    },
+    {
+      "id": "vertrieb-pipeline-review",
+      "titel": "Pipeline mit den richtigen Fragen pruefen",
+      "kategorie": "Vertrieb",
+      "aufgabe": "Strategie",
+      "prompt_text": "Du bist mein Vertriebscoach. Hier sind meine offenen Deals mit Status: [Liste]. Stelle pro Deal drei pruefende Fragen, die zeigen, ob er echt ist: Wer entscheidet wirklich? Was ist der naechste vereinbarte Schritt mit Datum? Was haelt den Kunden noch ab? Markiere Deals ohne klaren naechsten Schritt als gefaehrdet.",
+      "erklaerung": "Trennt echte Chancen von Karteileichen.",
+      "tipp": "Jeder Deal ohne terminierten naechsten Schritt steht in Wahrheit still."
+    },
+    {
+      "id": "content-fachtext-laien",
+      "titel": "Fachtext fuer Laien uebersetzen",
+      "kategorie": "Texte & Content",
+      "aufgabe": "Content",
+      "prompt_text": "Du bist mein Uebersetzer von Fachsprache in Alltagssprache. Schreibe den folgenden Text so um, dass ihn jemand ohne Vorwissen versteht. Ersetze Fachbegriffe oder erklaere sie in einem Halbsatz. Nutze kurze Saetze und ein Alltagsbeispiel. Inhalt darf nicht verfaelscht werden. Behalte die wichtigsten Zahlen bei. Ausgangstext: [hier einfuegen]",
+      "erklaerung": "Macht Fachinhalte fuer eine breite Leserschaft zugaenglich.",
+      "tipp": "Pruefe nach, ob durch die Vereinfachung keine Aussage falsch wurde - Klarheit darf nicht zu Fehlern fuehren."
+    },
+    {
+      "id": "content-studie-kernaussagen",
+      "titel": "Studie auf fuenf Kernaussagen verdichten",
+      "kategorie": "Texte & Content",
+      "aufgabe": "Zusammenfassung",
+      "prompt_text": "Du bist mein Analyst. Fasse die folgende Studie in fuenf Kernaussagen zusammen. Pro Aussage: ein Satz Ergebnis plus die zugehoerige Zahl. Trenne klar, was die Studie belegt, von dem, was sie nur vermutet. Nenne am Ende eine Einschraenkung der Aussagekraft (z.B. Stichprobe). Keine eigene Wertung. Studie: [hier einfuegen]",
+      "erklaerung": "Zieht das Wesentliche aus langen Quellen.",
+      "tipp": "Die genannte Einschraenkung schuetzt dich davor, eine schwache Studie zu stark zu zitieren."
+    },
+    {
+      "id": "content-produktbeschreibung",
+      "titel": "Produktbeschreibung ohne Floskeln",
+      "kategorie": "Texte & Content",
+      "aufgabe": "Marketing",
+      "prompt_text": "Du bist mein Produkttexter. Schreibe eine Beschreibung fuer [Produkt]. Nenne fuer jede Eigenschaft den konkreten Nutzen fuer den Kaeufer. Verbote: innovativ, einzigartig, hochwertig, revolutionaer, Marktfuehrer. Stattdessen pruefbare Fakten und Masse. Struktur: ein Satz Kernnutzen, drei bis fuenf Stichpunkte, ein Satz fuer wen es nicht passt. Maximal 130 Woerter.",
+      "erklaerung": "Erzeugt glaubwuerdige Texte ohne austauschbare Werbewoerter.",
+      "tipp": "Der Satz 'fuer wen es nicht passt' schafft Vertrauen und spart dir spaetere Retouren."
+    },
+    {
+      "id": "produktiv-mailverlauf-aufgaben",
+      "titel": "Mailverlauf in Aufgabenliste umwandeln",
+      "kategorie": "Produktivitaet",
+      "aufgabe": "Zusammenfassung",
+      "prompt_text": "Du bist meine Assistenz. Lies den folgenden Mailverlauf und zieh daraus eine Aufgabenliste. Pro Aufgabe: Was ist zu tun, wer ist zustaendig, bis wann. Trenne meine Aufgaben von denen anderer. Markiere offene Punkte ohne klare Zustaendigkeit. Keine Zusammenfassung des Verlaufs, nur die To-dos. Verlauf: [hier einfuegen]",
+      "erklaerung": "Verwandelt einen langen Thread in klare naechste Schritte.",
+      "tipp": "Offene Punkte ohne Zustaendigen sofort selbst zuordnen, sonst bleiben sie liegen."
+    },
+    {
+      "id": "produktiv-quartalsziele-wochen",
+      "titel": "Quartalsziele in Wochenschritte zerlegen",
+      "kategorie": "Produktivitaet",
+      "aufgabe": "Strategie",
+      "prompt_text": "Du bist mein Planer. Ich habe dieses Ziel fuer das Quartal: [Ziel]. Zerlege es rueckwaerts in monatliche Meilensteine und daraus in woechentliche, konkrete Schritte. Jeder Schritt soll an einem halben Tag machbar sein und ein pruefbares Ergebnis haben. Markiere Abhaengigkeiten zwischen Schritten. Frag nach, wenn das Ziel zu vage fuer eine Planung ist.",
+      "erklaerung": "Macht ein grosses Ziel ueber die Woche umsetzbar.",
+      "tipp": "Schritte mit pruefbarem Ergebnis ('Entwurf fertig') statt vager Taetigkeit ('an X arbeiten')."
+    },
+    {
+      "id": "produktiv-tool-vergleich",
+      "titel": "Tool-Auswahl strukturiert vergleichen",
+      "kategorie": "Produktivitaet",
+      "aufgabe": "Recherche",
+      "prompt_text": "Du bist mein nuechterner Berater. Ich vergleiche [Tool A], [Tool B] und [Tool C] fuer [Zweck]. Erstelle eine Tabelle mit den fuer mich wichtigen Kriterien: [z.B. Preis, DSGVO, Datenexport, Lernkurve]. Trag nur ein, was du sicher weisst, und markiere Unsicheres mit 'pruefen'. Gib am Ende keine Wertung, sondern fuer welchen Fall welches Tool passt.",
+      "erklaerung": "Bringt eine Entscheidung in eine vergleichbare Form.",
+      "tipp": "Felder mit 'pruefen' selbst auf der Anbieterseite verifizieren - Modelle raten bei Details gern."
+    },
+    {
+      "id": "service-tickets-clustern",
+      "titel": "Support-Anfragen zu Themen clustern",
+      "kategorie": "Kundenservice",
+      "aufgabe": "Zusammenfassung",
+      "prompt_text": "Du bist mein Analyst im Support. Hier sind die letzten Kundenanfragen: [Liste]. Gruppiere sie in maximal sechs Themen. Pro Thema: kurze Bezeichnung, Anzahl, ein typisches Beispiel, ein Vorschlag, wie sich diese Anfrage kuenftig vermeiden laesst (z.B. FAQ, klarere Produktseite). Sortiere nach Haeufigkeit.",
+      "erklaerung": "Zeigt, welche wiederkehrenden Probleme du an der Wurzel loesen kannst.",
+      "tipp": "Das haeufigste Thema zuerst angehen - eine FAQ-Seite spart oft die meisten Tickets."
+    }
+  ]
+}

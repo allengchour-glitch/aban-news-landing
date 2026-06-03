@@ -1,0 +1,660 @@
+{
+ "title": "Die 50-Prompt-Werkstatt",
+ "kicker": "Bonus 1",
+ "toc": true,
+ "kind": "bonus",
+ "blocks": [
+  [
+   "lead",
+   "Fünfzig fertige Prompts, die du heute noch nutzen kannst. Keine Theorie mehr, nur Vorlagen zum Kopieren, Einsetzen und Verschicken."
+  ],
+  [
+   "p",
+   "Jeder Prompt hier folgt der RKAF-Struktur aus Modul 3: Rolle, Kontext, Aufgabe, Format. Du musst die Struktur nicht selbst bauen, sie steckt schon drin. Deine einzige Aufgabe: die Stellen in [eckigen Klammern] durch deine echten Angaben ersetzen."
+  ],
+  [
+   "p",
+   "So gehst du vor: Such dir einen Prompt aus, kopier ihn in deinen KI-Chat, fülle die Platzhalter aus und schick ihn ab. Die erste Antwort ist ein Entwurf. Schärfe sie in ein, zwei Runden nach (&bdquo;kürzer&ldquo;, &bdquo;weniger förmlich&ldquo;, &bdquo;ein Beispiel mehr&ldquo;), bis sie sitzt."
+  ],
+  [
+   "callout",
+   "Tipp: Leg dir die drei bis fünf Prompts, die du täglich brauchst, in einer Notiz oder als Textbaustein ab. Dann bist du in zwei Sekunden startklar, statt jedes Mal hier zu blättern."
+  ],
+  [
+   "h3",
+   "E-Mail &amp; Kommunikation"
+  ],
+  [
+   "p",
+   "<b>1 — Höfliche Zahlungserinnerung</b>"
+  ],
+  [
+   "code",
+   "Du bist eine freundliche, klare Bueroleitung.\nEin Kunde namens [Name] hat die Rechnung ueber\n[Betrag] seit [Anzahl] Wochen offen. Die Beziehung\nist [gut / neu / angespannt].\nSchreib eine hoefliche Zahlungserinnerung.\nMaximal 120 Woerter, du-Form, mit einem klaren\nnaechsten Schritt am Ende."
+  ],
+  [
+   "p",
+   "Nutze ihn, wenn du eine offene Rechnung anmahnen willst, ohne den Kunden zu verlieren."
+  ],
+  [
+   "p",
+   "<b>2 — Absage ohne Brücken abreißen</b>"
+  ],
+  [
+   "code",
+   "Du bist ein hoeflicher, ehrlicher Selbststaendiger.\nIch muss eine Anfrage von [Name] absagen, weil\n[Grund: keine Zeit / kein Fit / Budget zu klein].\nSchreib eine freundliche Absage, die die Tuer offen\nlaesst. Maximal 90 Woerter, warm aber klar."
+  ],
+  [
+   "p",
+   "Für den Moment, in dem du Nein sagen musst, aber die Beziehung erhalten willst."
+  ],
+  [
+   "p",
+   "<b>3 — Lange E-Mail beantworten</b>"
+  ],
+  [
+   "code",
+   "Du bist mein Assistent.\nHier ist eine E-Mail, die ich erhalten habe:\n[E-Mail einfuegen]\nFasse zuerst in drei Stichpunkten zusammen, was der\nAbsender will. Schlag dann eine Antwort vor in\nmeinem Ton: [sachlich / locker / herzlich]."
+  ],
+  [
+   "p",
+   "Spart dir das zweimalige Lesen langer Mails und liefert direkt einen Antwortentwurf."
+  ],
+  [
+   "p",
+   "<b>4 — Termin höflich verschieben</b>"
+  ],
+  [
+   "code",
+   "Du bist ich, in einer freundlichen E-Mail.\nIch muss den Termin mit [Name] am [Datum]\nverschieben, weil [Grund].\nSchlag zwei neue Termine vor: [Option 1] und\n[Option 2]. Maximal 70 Woerter, entschuldigend\naber nicht unterwuerfig."
+  ],
+  [
+   "p",
+   "Wenn etwas dazwischenkommt und du den Termin sauber verlegen willst."
+  ],
+  [
+   "p",
+   "<b>5 — Kalte Erstkontakt-Mail</b>"
+  ],
+  [
+   "code",
+   "Du bist ein Texter fuer kurze, ehrliche\nVertriebsmails ohne Werbefloskeln.\nIch biete [Leistung] fuer [Zielgruppe].\nIch schreibe an [Firma / Person], weil [konkreter\nAnlass]. Schreib eine kalte E-Mail: maximal 90\nWoerter, eine konkrete Frage am Ende, kein\nSelbstlob."
+  ],
+  [
+   "p",
+   "Für den ersten Kontakt zu einem Wunschkunden, der dich noch nicht kennt."
+  ],
+  [
+   "p",
+   "<b>6 — Nachfass-Mail nach Funkstille</b>"
+  ],
+  [
+   "code",
+   "Du bist ich, locker und ohne Druck.\nIch hatte [Name] vor [Zeitraum] ein Angebot ueber\n[Thema] geschickt, seitdem nichts gehoert.\nSchreib eine kurze, freundliche Nachfass-Mail.\nMaximal 60 Woerter, keine Schuldzuweisung, eine\neinfache Ja-Nein-Frage am Ende."
+  ],
+  [
+   "p",
+   "Holt höflich eine Antwort ab, wenn ein Angebot im Sande verläuft."
+  ],
+  [
+   "p",
+   "<b>7 — Beschwerde deeskalieren</b>"
+  ],
+  [
+   "code",
+   "Du bist ein ruhiger, loesungsorientierter\nKundenservice.\nEin Kunde ist veraergert, weil [Problem].\nSchreib eine Antwort, die zuerst Verstaendnis\nzeigt, dann eine konkrete Loesung anbietet:\n[Loesung]. Maximal 110 Woerter, ehrlich,\nkeine Ausreden."
+  ],
+  [
+   "p",
+   "Wenn ein Kunde sauer ist und du die Lage beruhigen willst, bevor sie eskaliert."
+  ],
+  [
+   "p",
+   "<b>8 — Newsletter-Begrüßung</b>"
+  ],
+  [
+   "code",
+   "Du bist ich, herzlich und direkt.\nJemand hat sich gerade fuer meinen Newsletter zu\n[Thema] angemeldet. Schreib eine kurze\nWillkommens-Mail: was sie erwartet, wie oft ich\nschreibe ([Rhythmus]), eine kleine erste Frage,\num ins Gespraech zu kommen. Maximal 100 Woerter."
+  ],
+  [
+   "p",
+   "Für die erste Mail an neue Abonnenten, damit sie sich gleich gesehen fühlen."
+  ],
+  [
+   "h3",
+   "Angebote &amp; Vertrieb"
+  ],
+  [
+   "p",
+   "<b>9 — Angebot strukturieren</b>"
+  ],
+  [
+   "code",
+   "Du bist ein erfahrener Berater fuer kleine\nDienstleister.\nIch will [Kunde] ein Angebot fuer [Leistung]\nmachen. Der Umfang ist [Beschreibung], mein Preis\n[Betrag]. Strukturiere das als klares Angebot:\nAusgangslage, Leistung, Ergebnis, Preis, naechster\nSchritt. Sachlich, ohne Werbefloskeln."
+  ],
+  [
+   "p",
+   "Verwandelt deine Notizen in ein sauber gegliedertes Angebot."
+  ],
+  [
+   "p",
+   "<b>10 — Preis selbstbewusst nennen</b>"
+  ],
+  [
+   "code",
+   "Du bist ein ehrlicher Verkaufscoach.\nEin Kunde fragt nach dem Preis fuer [Leistung].\nMein Preis ist [Betrag]. Formuliere drei Saetze,\ndie den Preis ruhig und ohne Rechtfertigung\nnennen und den Nutzen knapp begruenden."
+  ],
+  [
+   "p",
+   "Für den Moment der Preisnennung, wenn dir sonst die Worte oder der Mut fehlen."
+  ],
+  [
+   "p",
+   "<b>11 — Einwand entkräften</b>"
+  ],
+  [
+   "code",
+   "Du bist ein ruhiger Verkaeufer.\nEin Kunde sagt: [Einwand, z. B. zu teuer / keine\nZeit]. Gib mir drei moegliche Antworten, die den\nEinwand ernst nehmen und nicht in die Defensive\ngehen. Je zwei bis drei Saetze, ehrlich."
+  ],
+  [
+   "p",
+   "Bereitet dich auf typische Bedenken vor, bevor das Gespräch stockt."
+  ],
+  [
+   "p",
+   "<b>12 — Upsell-Vorschlag</b>"
+  ],
+  [
+   "code",
+   "Du bist mein Vertriebsassistent.\nEin Kunde hat [bestehende Leistung] gebucht.\nPassend dazu koennte ich [Zusatzleistung]\nanbieten. Schreib einen kurzen, ehrlichen\nVorschlag, der wirklich zum Bedarf passt, kein\nVerkauf um jeden Preis. Maximal 80 Woerter."
+  ],
+  [
+   "p",
+   "Wenn du einem zufriedenen Kunden eine sinnvolle Ergänzung anbieten willst."
+  ],
+  [
+   "p",
+   "<b>13 — Verkaufsseite gliedern</b>"
+  ],
+  [
+   "code",
+   "Du bist ein nuechterner Verkaufstexter.\nIch verkaufe [Produkt / Leistung] an [Zielgruppe].\nDer Hauptnutzen ist [Nutzen]. Entwirf die\nGliederung einer Verkaufsseite: Ueberschrift,\nProblem, Loesung, was drin ist, Preis, haeufige\nFragen. Keine Uebertreibungen."
+  ],
+  [
+   "p",
+   "Als Gerüst für eine Landingpage oder ein Verkaufs-PDF."
+  ],
+  [
+   "p",
+   "<b>14 — Rabatt mit Würde</b>"
+  ],
+  [
+   "code",
+   "Du bist ich, freundlich und klar.\nEin Kunde fragt nach einem Rabatt auf [Leistung].\nIch will [einen kleinen Nachlass geben /\nhoeflich ablehnen]. Formuliere eine Antwort, die\nmeine Position wahrt und respektvoll bleibt.\nMaximal 70 Woerter."
+  ],
+  [
+   "p",
+   "Hilft dir, Rabattfragen zu beantworten, ohne dich kleinzumachen."
+  ],
+  [
+   "p",
+   "<b>15 — Empfehlung erbitten</b>"
+  ],
+  [
+   "code",
+   "Du bist ich, dankbar und unaufdringlich.\nEin Kunde [Name] war mit [Projekt] zufrieden.\nSchreib eine kurze Bitte um eine Empfehlung oder\nVorstellung an Bekannte, die [Leistung] brauchen\nkoennten. Maximal 70 Woerter, kein Druck."
+  ],
+  [
+   "p",
+   "Der einfachste Vertriebskanal: bestehende Kunden, die dich weiterempfehlen."
+  ],
+  [
+   "h3",
+   "Content &amp; Social Media"
+  ],
+  [
+   "p",
+   "<b>16 — LinkedIn-Post aus einer Idee</b>"
+  ],
+  [
+   "code",
+   "Du bist ein ruhiger LinkedIn-Texter ohne\nFloskeln.\nMeine Idee: [in einem Satz]. Meine Zielgruppe:\n[Wer]. Schreib einen Post in du-Form, der mit\neiner konkreten Beobachtung startet, eine\nLehre zieht und mit einer Frage endet.\nMaximal 150 Woerter, keine Hashtag-Wand."
+  ],
+  [
+   "p",
+   "Macht aus einem Gedanken im Kopf einen veröffentlichbaren Post."
+  ],
+  [
+   "p",
+   "<b>17 — Sieben Post-Ideen finden</b>"
+  ],
+  [
+   "code",
+   "Du bist mein Content-Stratege.\nIch arbeite als [Beruf] fuer [Zielgruppe].\nGib mir sieben Post-Ideen, die echte Fragen\nmeiner Kunden beantworten. Pro Idee: ein Titel\nund ein Satz, worum es geht. Keine Klickkoeder."
+  ],
+  [
+   "p",
+   "Gegen das leere Blatt, wenn dir keine Themen einfallen."
+  ],
+  [
+   "p",
+   "<b>18 — Langtext zu Snippets</b>"
+  ],
+  [
+   "code",
+   "Du bist mein Redakteur.\nHier ist ein laengerer Text von mir:\n[Text einfuegen]\nZieh die drei staerksten Aussagen heraus und\nformuliere sie als kurze, eigenstaendige Posts.\nJeder maximal 50 Woerter, in meinem Ton."
+  ],
+  [
+   "p",
+   "Holt aus einem Artikel oder Newsletter mehrere kleine Beiträge heraus."
+  ],
+  [
+   "p",
+   "<b>19 — Profil-Beschreibung schärfen</b>"
+  ],
+  [
+   "code",
+   "Du bist ein ehrlicher Positionierungs-Berater.\nIch bin [Beruf] und helfe [Zielgruppe] dabei,\n[Ergebnis]. Schreib drei Varianten einer\nkurzen Profil-Beschreibung (je maximal 220\nZeichen), klar und ohne Selbstlob."
+  ],
+  [
+   "p",
+   "Für die Kurzbeschreibung auf LinkedIn, Instagram oder deiner Website."
+  ],
+  [
+   "p",
+   "<b>20 — Hook-Varianten testen</b>"
+  ],
+  [
+   "code",
+   "Du bist ein Texter fuer erste Saetze.\nMein Thema: [Thema]. Schreib mir fuenf\nverschiedene erste Saetze fuer einen Post, die\nneugierig machen, ohne zu uebertreiben. Je\neine andere Richtung: Frage, Beobachtung, Zahl,\nGegensatz, kleine Geschichte."
+  ],
+  [
+   "p",
+   "Wenn der erste Satz nicht zündet und du Alternativen brauchst."
+  ],
+  [
+   "p",
+   "<b>21 — Aus Kunden-Feedback einen Post</b>"
+  ],
+  [
+   "code",
+   "Du bist mein Redakteur.\nEin Kunde hat gesagt: [Zitat / Feedback].\nMach daraus einen kurzen Post, der die Aussage\naufgreift und einen Gedanken fuer meine\nZielgruppe daraus macht. Maximal 120 Woerter,\nkein Eigenlob, Zustimmung des Kunden\nvorausgesetzt."
+  ],
+  [
+   "p",
+   "Verwandelt echtes Lob in einen Beitrag, ohne angeberisch zu wirken."
+  ],
+  [
+   "p",
+   "<b>22 — Bildunterschrift schreiben</b>"
+  ],
+  [
+   "code",
+   "Du bist ein knapper Social-Media-Texter.\nIch poste ein Bild von [Motiv / Situation].\nSchreib drei Bildunterschriften in du-Form:\neine sachliche, eine persoenliche, eine mit\nleiser Frage. Je maximal 40 Woerter."
+  ],
+  [
+   "p",
+   "Spart Zeit, wenn das Bild steht, aber die Worte fehlen."
+  ],
+  [
+   "h3",
+   "Recherche &amp; Analyse"
+  ],
+  [
+   "p",
+   "<b>23 — Thema schnell verstehen</b>"
+  ],
+  [
+   "code",
+   "Du bist ein geduldiger Erklaerer.\nErklaer mir [Thema] so, dass ich es einem\nKunden in zwei Minuten weitergeben kann.\nZuerst die Kernidee in einem Satz, dann drei\nPunkte, die ich wissen muss, dann ein Beispiel\naus dem Alltag."
+  ],
+  [
+   "p",
+   "Wenn du dich vor einem Gespräch schnell in ein Thema einlesen willst."
+  ],
+  [
+   "p",
+   "<b>24 — Pro und Kontra abwägen</b>"
+  ],
+  [
+   "code",
+   "Du bist ein nuechterner Berater.\nIch ueberlege, ob ich [Entscheidung] treffen\nsoll. Mein Kontext: [Lage]. Stell mir Pro und\nKontra gegenueber, je drei Punkte, und nenne\nzum Schluss die eine Frage, die ich vorher\nbeantworten sollte."
+  ],
+  [
+   "p",
+   "Für Entscheidungen, bei denen du im Kreis denkst und Struktur brauchst."
+  ],
+  [
+   "p",
+   "<b>25 — Wettbewerb beobachten</b>"
+  ],
+  [
+   "code",
+   "Du bist mein Analyst.\nHier ist die Beschreibung eines Mitbewerbers:\n[Text / Website-Inhalt einfuegen]\nFass zusammen, fuer wen er arbeitet, was er\nanbietet und wo eine Luecke fuer mich sein\nkoennte. Sachlich, drei kurze Abschnitte."
+  ],
+  [
+   "p",
+   "Hilft dir, einen Mitbewerber einzuordnen, ohne stundenlang zu lesen."
+  ],
+  [
+   "p",
+   "<b>26 — Dokument zusammenfassen</b>"
+  ],
+  [
+   "code",
+   "Du bist mein Assistent.\nHier ist ein langer Text:\n[Text einfuegen]\nGib mir erst eine Zusammenfassung in fuenf\nStichpunkten, dann die drei Stellen, die fuer\n[meine Aufgabe] am wichtigsten sind."
+  ],
+  [
+   "p",
+   "Spart Zeit bei Verträgen, Reports oder langen Artikeln."
+  ],
+  [
+   "p",
+   "<b>27 — Fragenliste vorbereiten</b>"
+  ],
+  [
+   "code",
+   "Du bist ein erfahrener Berater.\nIch habe bald ein Gespraech mit [Person / Rolle]\nzum Thema [Thema]. Gib mir acht kluge Fragen,\ndie ich stellen sollte, sortiert von leicht zu\ntief. Keine Suggestivfragen."
+  ],
+  [
+   "p",
+   "Vor einem wichtigen Gespräch, damit du nichts Wesentliches vergisst."
+  ],
+  [
+   "p",
+   "<b>28 — Zahlen in Worte fassen</b>"
+  ],
+  [
+   "code",
+   "Du bist mein Analyst.\nHier sind ein paar Zahlen aus meinem Geschaeft:\n[Zahlen einfuegen, z. B. Umsatz pro Monat]\nBeschreib in drei Saetzen, was auffaellt, und\nnenne eine Frage, der ich nachgehen sollte.\nKeine Spekulation ueber Ursachen ohne Hinweis."
+  ],
+  [
+   "p",
+   "Wenn du eine Zahlenreihe vor dir hast und den roten Faden suchst."
+  ],
+  [
+   "h3",
+   "Produktivität &amp; Organisation"
+  ],
+  [
+   "p",
+   "<b>29 — Tag planen</b>"
+  ],
+  [
+   "code",
+   "Du bist mein ruhiger Planungshelfer.\nDas sind meine Aufgaben fuer heute:\n[Liste einfuegen]\nIch habe [Anzahl] Stunden Zeit. Sortiere nach\nWichtigkeit, schlag eine realistische\nReihenfolge vor und markiere, was warten kann."
+  ],
+  [
+   "p",
+   "Morgens, wenn die To-do-Liste lang ist und du nicht weißt, wo anfangen."
+  ],
+  [
+   "p",
+   "<b>30 — Großes Projekt zerlegen</b>"
+  ],
+  [
+   "code",
+   "Du bist ein Projektplaner.\nMein Ziel: [Projekt]. Frist: [Datum].\nZerleg es in klare Schritte mit grober\nReihenfolge. Markiere den ersten Schritt, den\nich heute machen kann, in einem Satz."
+  ],
+  [
+   "p",
+   "Wenn ein Vorhaben so groß wirkt, dass du es vor dir herschiebst."
+  ],
+  [
+   "p",
+   "<b>31 — Meeting-Notizen aufräumen</b>"
+  ],
+  [
+   "code",
+   "Du bist mein Protokollant.\nHier sind meine rohen Notizen aus einem Gespraech:\n[Notizen einfuegen]\nMach daraus ein sauberes Protokoll: Beschluesse,\noffene Punkte, Aufgaben mit Verantwortlichen.\nKurz und klar."
+  ],
+  [
+   "p",
+   "Nach einem Termin, damit aus dem Gekritzel ein nutzbares Protokoll wird."
+  ],
+  [
+   "p",
+   "<b>32 — Checkliste erstellen</b>"
+  ],
+  [
+   "code",
+   "Du bist ein gruendlicher Organisator.\nIch mache regelmaessig [wiederkehrende Aufgabe].\nErstell eine Schritt-fuer-Schritt-Checkliste,\ndie ich jedes Mal abarbeiten kann, damit nichts\nuntergeht. Knapp formuliert."
+  ],
+  [
+   "p",
+   "Für wiederkehrende Abläufe, die du nicht jedes Mal neu durchdenken willst."
+  ],
+  [
+   "p",
+   "<b>33 — Wochenrückblick</b>"
+  ],
+  [
+   "code",
+   "Du bist mein ruhiger Coach.\nDas ist meine Woche in Stichpunkten:\n[was lief, was nicht]\nStell mir drei Fragen, die mir helfen, daraus zu\nlernen, und fass am Ende eine Sache zusammen,\ndie ich naechste Woche anders machen koennte."
+  ],
+  [
+   "p",
+   "Am Freitagnachmittag, um die Woche bewusst abzuschließen."
+  ],
+  [
+   "p",
+   "<b>34 — Entscheidung zwischen Optionen</b>"
+  ],
+  [
+   "code",
+   "Du bist ein nuechterner Entscheidungshelfer.\nIch waehle zwischen [Option A] und [Option B]\nfuer [Ziel]. Stell beide in einer kleinen\nTabelle gegenueber: Aufwand, Kosten, Risiko,\nNutzen. Gib keine Empfehlung, nur die\nGegenueberstellung."
+  ],
+  [
+   "p",
+   "Wenn du selbst entscheiden willst, aber die Übersicht fehlt."
+  ],
+  [
+   "h3",
+   "Kundenservice"
+  ],
+  [
+   "p",
+   "<b>35 — Häufige Frage beantworten</b>"
+  ],
+  [
+   "code",
+   "Du bist ein klarer Kundenservice.\nKunden fragen mich oft: [Frage].\nSchreib eine freundliche Standardantwort, die\nich speichern und wiederverwenden kann.\nMaximal 100 Woerter, du-Form, mit Platz fuer\neine persoenliche Zeile am Anfang."
+  ],
+  [
+   "p",
+   "Für Fragen, die immer wieder kommen, damit du nicht jedes Mal neu tippst."
+  ],
+  [
+   "p",
+   "<b>36 — Fehler eingestehen</b>"
+  ],
+  [
+   "code",
+   "Du bist ich, ehrlich und ruhig.\nMir ist ein Fehler passiert: [was].\nDas betrifft [Kunde]. Schreib eine ehrliche\nNachricht, die den Fehler benennt, eine Loesung\nanbietet ([Loesung]) und nicht ins Jammern\nkippt. Maximal 100 Woerter."
+  ],
+  [
+   "p",
+   "Wenn etwas schiefging und du es offen ansprechen willst."
+  ],
+  [
+   "p",
+   "<b>37 — Onboarding-Nachricht</b>"
+  ],
+  [
+   "code",
+   "Du bist ich, hilfsbereit und strukturiert.\nEin neuer Kunde hat [Leistung] gebucht.\nSchreib eine Start-Nachricht: was als Naechstes\npassiert, was ich von ihm brauche, wann er von\nmir hoert. Maximal 110 Woerter, mit einer kurzen\nSchritt-Liste."
+  ],
+  [
+   "p",
+   "Damit neue Kunden vom ersten Tag an wissen, woran sie sind."
+  ],
+  [
+   "p",
+   "<b>38 — Wartezeit erklären</b>"
+  ],
+  [
+   "code",
+   "Du bist ein ehrlicher Kundenservice.\nEin Kunde wartet auf [Leistung / Lieferung],\nes dauert laenger wegen [Grund]. Schreib eine\nNachricht, die ehrlich erklaert, eine neue Frist\nnennt ([Datum]) und kurz danke sagt. Maximal\n80 Woerter."
+  ],
+  [
+   "p",
+   "Wenn etwas länger dauert und du Vertrauen halten willst."
+  ],
+  [
+   "p",
+   "<b>39 — Feedback einholen</b>"
+  ],
+  [
+   "code",
+   "Du bist ich, freundlich und neugierig.\nEin Projekt mit [Kunde] ist abgeschlossen.\nSchreib eine kurze Nachricht, die um ehrliches\nFeedback bittet: was gut lief, was besser sein\nkoennte. Drei einfache Fragen, maximal 80\nWoerter."
+  ],
+  [
+   "p",
+   "Nach Projektende, um aus jeder Zusammenarbeit zu lernen."
+  ],
+  [
+   "h3",
+   "Texte überarbeiten"
+  ],
+  [
+   "p",
+   "<b>40 — Text kürzen</b>"
+  ],
+  [
+   "code",
+   "Du bist mein strenger Redakteur.\nHier ist mein Text:\n[Text einfuegen]\nKuerze ihn um die Haelfte, ohne dass eine\nKernaussage verloren geht. Behalte meinen Ton.\nZeig mir nur die gekuerzte Fassung."
+  ],
+  [
+   "p",
+   "Wenn ein Text zu lang ist und du ihn auf das Wesentliche bringen willst."
+  ],
+  [
+   "p",
+   "<b>41 — Ton anpassen</b>"
+  ],
+  [
+   "code",
+   "Du bist mein Lektor.\nHier ist mein Text:\n[Text einfuegen]\nSchreib ihn um, sodass er [foermlicher /\nlockerer / waermer] klingt, ohne den Inhalt zu\naendern. Behalte die du-Form."
+  ],
+  [
+   "p",
+   "Wenn der Inhalt stimmt, aber der Ton nicht zur Situation passt."
+  ],
+  [
+   "p",
+   "<b>42 — Verständlich machen</b>"
+  ],
+  [
+   "code",
+   "Du bist ein Lektor fuer klare Sprache.\nHier ist mein Text:\n[Text einfuegen]\nMach ihn einfacher: kurze Saetze, keine\nFachwoerter ohne Erklaerung, aktive Sprache.\nDer Inhalt bleibt gleich."
+  ],
+  [
+   "p",
+   "Für Texte, die deine Leser ohne Anstrengung verstehen sollen."
+  ],
+  [
+   "p",
+   "<b>43 — Rechtschreibung und Stil prüfen</b>"
+  ],
+  [
+   "code",
+   "Du bist ein gruendlicher Korrektor.\nHier ist mein Text:\n[Text einfuegen]\nKorrigiere Rechtschreibung und Grammatik.\nMarkiere danach in einer Liste, wo der Stil\nholpert, und schlag pro Stelle eine Alternative\nvor."
+  ],
+  [
+   "p",
+   "Letzter Schliff, bevor ein Text rausgeht."
+  ],
+  [
+   "p",
+   "<b>44 — Überschrift verbessern</b>"
+  ],
+  [
+   "code",
+   "Du bist ein nuechterner Texter.\nMein aktueller Titel: [Titel].\nWorum geht es: [Inhalt in einem Satz].\nGib mir fuenf bessere Titel, klar und ehrlich,\nohne Uebertreibung. Markiere deinen Favoriten\nund sag in einem Satz, warum."
+  ],
+  [
+   "p",
+   "Wenn die Überschrift noch nicht trägt, aber der Text steht."
+  ],
+  [
+   "p",
+   "<b>45 — Doppeltes streichen</b>"
+  ],
+  [
+   "code",
+   "Du bist mein Redakteur.\nHier ist mein Text:\n[Text einfuegen]\nFinde Wiederholungen, Fuellwoerter und\nFloskeln und streich sie. Zeig die schlankere\nFassung und darunter eine kurze Liste, was du\nentfernt hast."
+  ],
+  [
+   "p",
+   "Gegen aufgeblähte Texte, die sich im Kreis drehen."
+  ],
+  [
+   "h3",
+   "Lernen &amp; Verstehen"
+  ],
+  [
+   "p",
+   "<b>46 — Begriff einfach erklärt</b>"
+  ],
+  [
+   "code",
+   "Du bist ein geduldiger Lehrer.\nErklaer mir [Begriff], als waere ich klug, aber\nneu im Thema. Erst die Idee in einem Satz, dann\nein Alltagsbeispiel, dann der haeufigste\nIrrtum dazu."
+  ],
+  [
+   "p",
+   "Wenn dir ein Fachbegriff begegnet, den du wirklich verstehen willst."
+  ],
+  [
+   "p",
+   "<b>47 — Wissen abfragen</b>"
+  ],
+  [
+   "code",
+   "Du bist mein Lerncoach.\nIch will [Thema] besser verstehen. Stell mir\nfuenf Fragen, eine nach der anderen, und warte\nauf meine Antwort, bevor du die naechste\nstellst. Korrigiere mich freundlich, wenn ich\nfalsch liege."
+  ],
+  [
+   "p",
+   "Aktives Lernen statt nur Lesen, im Frage-Antwort-Rhythmus."
+  ],
+  [
+   "p",
+   "<b>48 — Eine neue Fähigkeit angehen</b>"
+  ],
+  [
+   "code",
+   "Du bist mein ruhiger Lernbegleiter.\nIch will [Faehigkeit] lernen und habe pro Woche\n[Stunden] Zeit. Schlag einen einfachen Plan fuer\nvier Wochen vor: pro Woche ein Ziel und eine\nkonkrete Uebung. Realistisch, ohne mich zu\nueberfordern."
+  ],
+  [
+   "p",
+   "Wenn du etwas Neues lernen willst, aber nicht weißt, wo du anfangen sollst."
+  ],
+  [
+   "p",
+   "<b>49 — Aus einem Fehler lernen</b>"
+  ],
+  [
+   "code",
+   "Du bist ein ehrlicher, freundlicher Coach.\nMir ist das passiert: [Situation].\nStell mir drei Fragen, die mir helfen zu\nverstehen, was ich daraus mitnehme. Keine\nSchuldzuweisung, kein Trostpflaster."
+  ],
+  [
+   "p",
+   "Wenn etwas danebenging und du es nicht nur abhaken, sondern verstehen willst."
+  ],
+  [
+   "p",
+   "<b>50 — Eigenen Standpunkt schärfen</b>"
+  ],
+  [
+   "code",
+   "Du bist ein kluger Gespraechspartner.\nMeine Meinung zu [Thema] ist: [Position].\nSpiel den ehrlichen Gegenpart: nenne die drei\nstaerksten Einwaende gegen meine Position.\nKeine Strohmaenner, nur Argumente, die\nwirklich zaehlen."
+  ],
+  [
+   "p",
+   "Bevor du eine Meinung öffentlich vertrittst, teste sie gegen echte Gegenargumente."
+  ],
+  [
+   "callout",
+   "Das sind 50 Prompts zum Start. Eine wachsende Sammlung mit Live-Suche und Kopier-Knopf findest du auf prompts.abannews.com, sortiert nach Beruf und Aufgabe, damit du den passenden Prompt in Sekunden hast."
+  ]
+ ]
+}

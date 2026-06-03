@@ -1,0 +1,35 @@
+name: Video-Pipeline — Clip-Pakete bauen
+
+# Baut die Clip-Pakete als herunterladbares Artefakt, wenn sich die Pipeline oder
+# die Hype-Watch-Daten ändern. Kein Deploy (Output ist kein Website-Inhalt) —
+# du lädst das Artefakt, ziehst Slides+SRT in CapCut/Resolve und postest.
+on:
+  push:
+    paths:
+      - 'video-pipeline/**'
+      - 'data/hype-watch.json'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Generate clip packages
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Pillow
+        run: pip install --quiet Pillow
+      - name: Build clips
+        run: |
+          cd video-pipeline
+          python generate_clips.py
+          find ausgabe -type f | wc -l
+      - name: Upload clip packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: video-clip-pakete
+          path: video-pipeline/ausgabe
+          retention-days: 30

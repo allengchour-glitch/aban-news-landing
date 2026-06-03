@@ -1,0 +1,67 @@
+{
+  "titel": "The Valley Holds Its Breath",
+  "autor": "aban news",
+  "genre": "Drama",
+  "sprache": "English",
+  "praemisse": "Across three generations, a family in a remote Swiss mountain valley keeps a guilt under lock: a death entered in the records as an accident, a letter never sent, and the silent agreement of an entire village not to ask. What the grandmother conceals descends as pressure on the son and as a question to the granddaughter — until the water that began it all lays everything bare again.",
+  "hinweis": "Englische Ausgabe. Struktur fuer den Compiler (buch_bauen/buch_pdf/kdp_paket); die Prosa liegt in kapitel-en/band-0N/. Kapitel tragen hier nur nummer+titel (Beats stehen in der deutschen Bibel).",
+  "baende": [
+    {
+      "nummer": 1,
+      "titel": "The Slope",
+      "untertitel": "Riedmatt, 1961–1963",
+      "kapitel": [
+        {"nummer": 1, "titel": "The Woman Who Married In"},
+        {"nummer": 2, "titel": "The Building Site"},
+        {"nummer": 3, "titel": "Water Rights"},
+        {"nummer": 4, "titel": "What Anton Knew"},
+        {"nummer": 5, "titel": "The First Snow"},
+        {"nummer": 6, "titel": "The Day at the Tunnel"},
+        {"nummer": 7, "titel": "The Record"},
+        {"nummer": 8, "titel": "The Settlement"},
+        {"nummer": 9, "titel": "Winter over the Reservoir"},
+        {"nummer": 10, "titel": "Who Asks"},
+        {"nummer": 11, "titel": "The Child"},
+        {"nummer": 12, "titel": "Spring Flood"}
+      ]
+    },
+    {
+      "nummer": 2,
+      "titel": "The Middle",
+      "untertitel": "Riedmatt, 1991–1992",
+      "kapitel": [
+        {"nummer": 1, "titel": "The Heir to the Sternen"},
+        {"nummer": 2, "titel": "The Lift"},
+        {"nummer": 3, "titel": "The Box in the Attic"},
+        {"nummer": 4, "titel": "Money That Isn't Enough"},
+        {"nummer": 5, "titel": "What the Accounts Reveal"},
+        {"nummer": 6, "titel": "Ruth Berger Knows"},
+        {"nummer": 7, "titel": "The Daughter"},
+        {"nummer": 8, "titel": "The Bargain"},
+        {"nummer": 9, "titel": "The Opening"},
+        {"nummer": 10, "titel": "The Conversation No One Has"},
+        {"nummer": 11, "titel": "Cracks"},
+        {"nummer": 12, "titel": "Marlene's Silence Does Not End"}
+      ]
+    },
+    {
+      "nummer": 3,
+      "titel": "The Water",
+      "untertitel": "Riedmatt, present day",
+      "kapitel": [
+        {"nummer": 1, "titel": "Return in the Summer of Drought"},
+        {"nummer": 2, "titel": "The Man from the Sternen"},
+        {"nummer": 3, "titel": "The Crack in the Dam"},
+        {"nummer": 4, "titel": "The Uncovered Chapel"},
+        {"nummer": 5, "titel": "What Niklaus Had Known All Along"},
+        {"nummer": 6, "titel": "Theo's Version"},
+        {"nummer": 7, "titel": "The Letter"},
+        {"nummer": 8, "titel": "What to Do with It"},
+        {"nummer": 9, "titel": "The Valley Speaks"},
+        {"nummer": 10, "titel": "The Drawdown"},
+        {"nummer": 11, "titel": "Niklaus and Eva"},
+        {"nummer": 12, "titel": "What Remains When the Water Falls"}
+      ]
+    }
+  ]
+}

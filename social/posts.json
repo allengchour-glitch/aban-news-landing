@@ -1,0 +1,190 @@
+{
+  "_comment": "Fertige Posts zum 1-Klick-Versand an Telegram/Discord (via post.py). Reihenfolge = Reihenfolge des Versands. 'sent: false' = noch nicht gesendet. Texte ehrlich, kein Hype (Aban-Markenstimme). Zahlen aus echten Daten (177 Tools, 142 mit Gratis-Tier, 86 Förderprogramme). Vor dem Versand Links/Domains prüfen, sobald live.",
+  "posts": [
+    {
+      "id": "p1-start",
+      "sent": false,
+      "text": "📡 Neu: KI-Tools Radar\n\nIch habe 177 KI-Tools für den deutschsprachigen Raum ehrlich bewertet — mit Preisen, DSGVO-Blick und Pro/Contra. Kein Hype, nur was sich im Alltag bewährt.\n\nViele davon haben ein kostenloses Angebot.\n\n👉 https://radar.abannews.com"
+    },
+    {
+      "id": "p2-top5",
+      "sent": false,
+      "text": "🏆 Die 5 bestbewerteten KI-Tools im DACH-Check:\n\n1. Claude — 9.5/10\n2. DeepL — 9/10\n3. n8n — 9/10 (Open-Source-Automatisierung)\n4. Cursor — 9/10\n5. Granola — 9/10\n\nAlle 177 mit Bewertung & Preis 👉 https://radar.abannews.com"
+    },
+    {
+      "id": "p3-gratis",
+      "sent": false,
+      "text": "💸 Du musst für KI nicht viel zahlen.\n\nVon den 177 Tools in meinem Radar haben 142 ein kostenloses Angebot — viele reichen für den Alltag völlig.\n\nKostenlose KI-Tools, sortiert 👉 https://radar.abannews.com/preis/kostenlos.html"
+    },
+    {
+      "id": "p4-foerder",
+      "sent": false,
+      "text": "🧭 Die meisten DACH-Gründer kennen 2–3 Förderprogramme. Es gibt deutlich mehr.\n\nIch habe 63 echte Programme aus DE, AT, CH und EU gesammelt — sortier- und filterbar nach Region, Art und Zielgruppe.\n\nAlle Angaben ohne Gewähr, mit Link zur offiziellen Quelle.\n\n👉 https://foerder.abannews.com"
+    },
+    {
+      "id": "p5-jobs",
+      "sent": false,
+      "text": "🤖 KI-Jobs im DACH-Raum, täglich aktualisiert.\n\nKein manuelles Pflegen — die Stellen werden automatisch aus offenen Quellen aggregiert und verlinken zur Originalanzeige.\n\nRemote & vor Ort, filterbar 👉 https://jobs.abannews.com"
+    },
+    {
+      "id": "p6-newsletter",
+      "sent": false,
+      "text": "📬 Hinter all dem steckt Aban News — der deutschsprachige KI-Newsletter.\n\nMo–Fr, 3–5 Minuten, kuratiert, kein Hype. 1 Tool + relevante Updates pro Ausgabe.\n\nGratis abonnieren + das „Top-30-KI-Tools“-PDF holen 👉 https://abannews.com/gratis-ki-tools.html"
+    },
+    {
+      "id": "p7-buildinpublic",
+      "sent": false,
+      "text": "🛠️ Wie ich als Einzelperson 3 automatisierte Webseiten betreibe:\n\nEin Skript baut tausende Seiten aus einer Datenbank. Ich pflege nur die Daten — den Rest macht die Automatik (täglicher Auto-Build).\n\nKein Team, keine Investoren. Ehrlich gesagt: Der schwierigste Teil ist nicht die Technik, sondern dranzubleiben.\n\nMehr dazu im Newsletter 👉 https://abannews.com"
+    },
+    {
+      "id": "p8-dsgvo",
+      "sent": false,
+      "text": "🇪🇺 DSGVO ist beim KI-Einsatz im DACH-Raum oft wichtiger als das beste Feature.\n\nDeshalb steht in meinem Tool-Radar bei jedem Tool ein Datenschutz-Hinweis — und es gibt eine eigene Bestenliste für den DACH-Raum.\n\n👉 https://radar.abannews.com/dsgvo.html"
+    },
+    {
+      "id": "p9-vergleich",
+      "sent": false,
+      "text": "🆚 ChatGPT oder Claude? DeepL oder Google Übersetzer?\n\nIch habe die gängigsten KI-Tools direkt gegenübergestellt — mit Pro, Contra und Fazit. Kein Sieger-Hype, sondern: Wofür ist welches besser.\n\n👉 https://radar.abannews.com/vergleiche.html"
+    },
+    {
+      "id": "p10-glossar",
+      "sent": false,
+      "text": "📖 Was ist eigentlich RAG? Ein Embedding? Ein KI-Agent?\n\nIch erkläre die 30 wichtigsten KI-Begriffe in einfachem Deutsch — ohne Fachchinesisch, mit passenden Tools dazu.\n\n👉 https://radar.abannews.com/glossar.html"
+    },
+    {
+      "id": "p11-stack-entwickler",
+      "sent": false,
+      "text": "💻 Der KI-Werkzeugkasten für Entwickler:\n\nVom Code-Editor über Terminal-Tools bis zum Review — die Tools, die im Alltag wirklich Zeit sparen. Ehrlich eingeordnet, mit Preisen.\n\n👉 https://radar.abannews.com/stack/entwickler.html"
+    },
+    {
+      "id": "p12-budget",
+      "sent": false,
+      "text": "💶 Gute KI muss nichts kosten.\n\nIch habe die besten KI-Tools nach Budget sortiert: kostenlos, unter 10 €, unter 20 €, unter 50 €. So findest du, was zu deinem Geldbeutel passt.\n\n👉 https://radar.abannews.com/preis/kostenlos.html"
+    },
+    {
+      "id": "p13-foerder-gruender",
+      "sent": false,
+      "text": "🧭 Du gründest in DACH? Diese Förderungen solltest du kennen.\n\nIch habe die wichtigsten Programme für Gründer aus DE, AT, CH und EU gesammelt — sortierbar, mit Link zur offiziellen Quelle. Angaben ohne Gewähr.\n\n👉 https://foerder.abannews.com/fuer/gruender.html"
+    },
+    {
+      "id": "p14-remote-jobs",
+      "sent": false,
+      "text": "🤖 Remote-Jobs rund um KI & Machine Learning im DACH-Raum.\n\nTäglich aktualisiert, an einem Ort gesammelt. Kein Scrollen durch zehn Portale.\n\n👉 https://jobs.abannews.com/remote.html"
+    },
+    {
+      "id": "p15-kurs-launch",
+      "sent": false,
+      "text": "🛠️ Neu: Die KI-Werkstatt\n\nMein ehrlicher KI-Kurs für deutschsprachige Solo-Profis. 6 Module plus 7 Bonus-Pakete, über 50 Seiten zum Mitmachen — kein Hype, nur was im Arbeitsalltag wirklich funktioniert.\n\nLaunch-Preis für die ersten Käufer.\n\n👉 https://abannews.com/kurs.html"
+    },
+    {
+      "id": "p16-kurs-inhalt",
+      "sent": false,
+      "text": "📚 Was in der KI-Werkstatt steckt:\n\nVom Grundverständnis ohne Buzzwords über Prompten, Workflows und DSGVO bis zur Kundengewinnung. Dazu 50 fertige deutsche Prompts, Vorlagen, ein KI-Audit und ein 30-Tage-Fahrplan.\n\nEinmal zahlen, lebenslang deins.\n\n👉 https://abannews.com/kurs.html"
+    },
+    {
+      "id": "p17-kurs-antihype",
+      "sent": false,
+      "text": "🚫 Kein „in 7 Tagen zum KI-Experten“.\n\nDie KI-Werkstatt zeigt dir nüchtern, wo KI dir Zeit spart — und wo du ihr besser nicht traust. Mit 14 Tagen Geld-zurück-Garantie, ohne Nachfragen.\n\n👉 https://abannews.com/kurs.html"
+    },
+    {
+      "id": "p18-kurs-gratis-erst",
+      "sent": false,
+      "text": "💡 Unsicher, ob der Kurs was für dich ist?\n\nLies erst gratis mit: Das Anti-Hype-eBook und die freien Resourcen zeigen dir den Ton. Wenn das passt, wartet die KI-Werkstatt mit allen Details.\n\n👉 https://abannews.com/kurs.html"
+    },
+    {
+      "id": "p19-ratgeber-hub",
+      "sent": false,
+      "text": "📚 Neu & gratis: der KI-Ratgeber für Selbstständige\n\nAlle wichtigen Fragen an einem Ort — Tool-Wahl, Prompts, Automatisierung, Datenschutz, Halluzinationen. Kein Hype, kein Affiliate, keine Anmeldung.\n\n👉 https://abannews.com/ki-ratgeber.html"
+    },
+    {
+      "id": "p20-chatgpt-vs-claude",
+      "sent": false,
+      "text": "🤔 ChatGPT oder Claude?\n\nEhrliche Antwort: keinen Gesamtsieger. Claude ist oft die präzisere Schreibhilfe, ChatGPT das breitere Werkzeug (Bilder, Web, Sprachmodus). Für die meisten reicht eins — die Aufgabe entscheidet.\n\nVoller Vergleich 👉 https://abannews.com/chatgpt-vs-claude.html"
+    },
+    {
+      "id": "p21-dsgvo",
+      "sent": false,
+      "text": "🛡️ KI datenschutzkonform nutzen — in 5 Fragen:\n\n1. Wo stehen die Server?\n2. Gibt es einen AVV?\n3. Wird mit deinen Eingaben trainiert?\n4. Was muss überhaupt rein?\n5. Würdest du es dem Kunden so erklären?\n\nDer ganze Guide (echte Quellen) 👉 https://abannews.com/ki-dsgvo-konform.html"
+    },
+    {
+      "id": "p22-prompts",
+      "sent": false,
+      "text": "✍️ Die meisten schlechten KI-Antworten liegen nicht am Modell, sondern am Prompt.\n\n4 Handgriffe: Kontext, Format, Beispiel, Iteration. Das ersetzt jedes 47-€-Prompt-Paket.\n\nMit Vorher/Nachher & Copy-Vorlage 👉 https://abannews.com/ki-prompts-schreiben.html"
+    },
+    {
+      "id": "p23-halluzinationen",
+      "sent": false,
+      "text": "⚠️ KI erfindet Fakten — selbstbewusst und überzeugend. Kein Defekt, sondern die Funktionsweise.\n\n5 Warnsignale + ein 30-Sekunden-Check, damit dich keine erfundene Quelle erwischt.\n\n👉 https://abannews.com/ki-halluzinationen-erkennen.html"
+    },
+    {
+      "id": "p24-automatisierung",
+      "sent": false,
+      "text": "⚙️ Wann lohnt sich KI-Automatisierung wirklich?\n\nFaustregel: ab ~3 gleichen Wiederholungen pro Woche. Darunter ist Handarbeit günstiger als das Basteln am Workflow.\n\nMinimaler Stack + 5 Abläufe 👉 https://abannews.com/ki-automatisierung-selbststaendige.html"
+    },
+    {
+      "id": "p25-email",
+      "sent": false,
+      "text": "📧 E-Mails mit KI schreiben, ohne wie ein Roboter zu klingen:\n\nKontext + ein Beispiel deines Stils + Bitte um Kürze. Lass die KI vorbereiten — aber lies und sende selbst.\n\nMit Copy-Vorlage 👉 https://abannews.com/ki-email-schreiben.html"
+    },
+    {
+      "id": "fin-stundensatz",
+      "sent": false,
+      "text": "Der teuerste Fehler von Selbstständigen: Wunschgehalt ÷ 160 Stunden = Stundensatz.\n\nFalsch. Nur 4–6 Stunden pro Tag sind verrechenbar — Akquise, Angebote und Buchhaltung zahlt niemand direkt. Und Steuern fehlen auch noch.\n\nRechne rückwärts: Ziel-Netto + Steuern + Kosten, geteilt durch deine echten fakturierbaren Stunden. Oft kommt da ein Drittel mehr raus als gedacht.\n\nNachrechnen (im Browser, kein Tracking): abannews.com/finanz-rechner\n\n#Selbstständigkeit #Freelancing",
+      "url": "https://abannews.com/finanz-rechner.html",
+      "tags": [
+        "Selbstständigkeit",
+        "Freelancing"
+      ]
+    },
+    {
+      "id": "fin-ruecklage",
+      "sent": false,
+      "text": "Ein einfacher Trick gegen die böseste Überraschung als Selbstständiger:\n\nLeg von jeder Einnahme am Tag des Eingangs einen festen Anteil auf ein getrenntes Konto. Grober Richtwert: 30–40 %.\n\nDann ist die Steuernachzahlung ein Nicht-Ereignis statt ein Schock.\n\n#Steuern #Selbstständigkeit",
+      "url": "https://abannews.com/finanz-skills-fuer-selbststaendige.html",
+      "tags": [
+        "Steuern",
+        "Selbstständigkeit"
+      ]
+    },
+    {
+      "id": "fin-puffer",
+      "sent": false,
+      "text": "Als Selbstständiger in der Schweiz zahlst du keine Arbeitslosenversicherung.\n\nHeißt: Wenn drei Monate kein Auftrag kommt, fängt dich niemand auf — außer deinem Puffer.\n\n3–6 Monate Fixkosten auf einem getrennten Konto sind kein Luxus. Sie sind der Unterschied zwischen „ich kann Nein sagen\" und „ich nehme jeden Auftrag zu jedem Preis\".\n\n#Selbstständigkeit #Finanzen",
+      "url": "https://abannews.com/finanz-rechner.html",
+      "tags": [
+        "Selbstständigkeit",
+        "Finanzen"
+      ]
+    },
+    {
+      "id": "fin-automatisierung",
+      "sent": false,
+      "text": "„Automatisier doch einfach!\" Klingt leicht, ist es selten.\n\nEin Automatisierungs-Tool spart erst Zeit, wenn der Prozess dahinter sauber durchdacht ist — sonst automatisierst du nur das Chaos schneller. Und bei personenbezogenen Daten zählt, wo das Tool hostet.\n\nIch habe 36 Tools ehrlich verglichen, mit EU-Hosting-Filter für den DACH-Raum: automatisierung.abannews.com\n\n#Automatisierung #KMU",
+      "url": "https://automatisierung.abannews.com",
+      "tags": [
+        "Automatisierung",
+        "KMU"
+      ]
+    },
+    {
+      "id": "hypewatch-launch",
+      "sent": false,
+      "text": "Neu: Hype-Watch — überhypte KI-Behauptungen, ruhig auseinandergenommen, mit Belegen.\n\nErster Fall: „KI macht Entwickler massiv produktiver.\" Eine randomisierte Studie (METR 2025) hat gemessen: erfahrene Devs brauchten mit KI-Tools 19 % LÄNGER — obwohl sie sich 20 % schneller fühlten.\n\nGanzer Faktencheck: abannews.com/hype-watch\n\n#KI #AntiHype",
+      "url": "https://abannews.com/hype-watch.html",
+      "tags": [
+        "KI",
+        "AntiHype"
+      ]
+    },
+    {
+      "id": "hypewatch-faktenquelle",
+      "sent": false,
+      "text": "„Frag einfach ChatGPT\" — als Faktenquelle? Vorsicht.\n\nIm Fall Mata v. Avianca reichten Anwälte einen Schriftsatz mit Gerichtsurteilen ein, die ChatGPT komplett erfunden hatte. Strafe: 5.000 $. Sprachmodelle erzeugen plausibel klingende, aber teils erfundene Belege.\n\nKI ist top fürs Formulieren, nicht als Quelle ohne Prüfung. Mehr: abannews.com/hype-watch\n\n#KI #Faktencheck",
+      "url": "https://abannews.com/hype-watch/chatgpt-als-verlaessliche-faktenquelle.html",
+      "tags": [
+        "KI",
+        "Faktencheck"
+      ]
+    }
+  ]
+}

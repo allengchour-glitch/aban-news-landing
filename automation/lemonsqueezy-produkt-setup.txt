@@ -1,0 +1,104 @@
+================================================================
+LEMON SQUEEZY — PRODUKT-SETUP zum Kopieren & Einfuegen
+Buch "Anti-Hype" · aban news · Stand 2026-05-30
+================================================================
+
+So nutzt du diese Datei: Lege in Lemon Squeezy ein neues Produkt an
+(Products -> New Product -> Digital Product) und kopiere die Werte
+unten Feld fuer Feld. Ueberall, wo [DU] steht, musst du selbst etwas
+eintragen (Bank, Steuer) — das kann niemand fuer dich.
+
+----------------------------------------------------------------
+1) PRODUKTTYP
+----------------------------------------------------------------
+Digital Product  (einmaliger Kauf, kein Abo)
+
+----------------------------------------------------------------
+2) NAME (Produkttitel)
+----------------------------------------------------------------
+Anti-Hype — Wie Solopreneure KI ohne Bullshit einsetzen
+
+----------------------------------------------------------------
+3) PREIS / PRICING
+----------------------------------------------------------------
+Modell:        Pay what you want  (Haken setzen)
+Mindestpreis:  0
+Vorschlagspreis (suggested / default): 9
+Waehrung:      EUR
+
+Hinweis: Lemon Squeezy ist "Merchant of Record" und kuemmert sich um
+die EU-MwSt — du musst die Steuer nicht selbst abrechnen.
+
+----------------------------------------------------------------
+4) BESCHREIBUNG (Description) — alles ab hier kopieren
+----------------------------------------------------------------
+KI ohne Hype, ohne Bullshit, ohne 10x-Versprechen.
+
+Dieses Buch ist die Essenz aus dem taeglichen Newsletter aban news:
+Wie du als Selbststaendige oder Selbststaendiger KI wirklich nutzt —
+und den ganzen Laerm drumherum ignorierst.
+
+Drin ist unter anderem:
+- Der 3-Fragen-Filter, mit dem du Hype von Nutzen trennst
+- Dein minimaler KI-Stack: vier Bausteine, mehr brauchst du nicht
+- Fertige Vorlagen zum Kopieren (Angebot, Cold-Mail, Zusammenfassung)
+- Ein Tag, komplett durchgespielt: vorher von Hand, nachher mit KI
+- Werkzeug nach Aufgabe — mit ehrlichen Hinweisen zu Kosten und DSGVO
+- Die sieben Hype-Fallen, die dich Zeit und Geld kosten
+
+Du bekommst PDF und ePub (fuer Kindle und E-Reader). Kein Tracking,
+keine Anmeldung noetig, auf jedem Geraet lesbar.
+
+Pay what you want: Lad es zum Preis, der dir fair ist. Wenn es dir
+geholfen hat, kannst du mehr geben — du entscheidest.
+
+Geschrieben von Aban (Allen Chour), abannews.com
+
+----------------------------------------------------------------
+5) DATEIEN HOCHLADEN (Files / Content)
+----------------------------------------------------------------
+Lade beide hoch (hast du im Chat bekommen, liegen im Repo unter downloads/):
+- anti-hype-ebook.pdf
+- anti-hype-ebook.epub
+
+Optional spaeter zusaetzlich die Sprachversionen:
+- anti-hype-ebook-en.pdf / .epub
+- anti-hype-ebook-fr.pdf / .epub
+- anti-hype-ebook-it.pdf / .epub
+
+----------------------------------------------------------------
+6) PRODUKTBILD / THUMBNAIL (Cover)
+----------------------------------------------------------------
+Nutze das fertige Cover:  downloads/kdp-cover-ebook.png
+(1600x2560, markengerecht — passt auch hier als Produktbild.)
+
+----------------------------------------------------------------
+7) KURZ-INFOS / WEITERE FELDER (falls gefragt)
+----------------------------------------------------------------
+Kategorie:        Ebooks / Education / Business
+Sprache:          Deutsch (de)
+Tax category:     E-book / Digital goods (Standard)
+"Receipt note" / Dankesnachricht nach Kauf:
+    Danke dir. Viel Spass beim Lesen — und schreib mir gern, was du
+    umgesetzt hast: abannews.com
+
+----------------------------------------------------------------
+8) NUR DU (kann ich nicht ausfuellen)
+----------------------------------------------------------------
+[DU] Bankverbindung / Auszahlung (Payout settings)
+[DU] Steuer-/Identitaetsangaben (Schweiz)
+[DU] Store-Name bestaetigen: "aban news"
+
+----------------------------------------------------------------
+9) NACH "PUBLISH"
+----------------------------------------------------------------
+Kopiere den Produkt-/Buy-Link (sieht aus wie:
+  https://abannews.lemonsqueezy.com/buy/xxxxxxxx )
+und schick ihn mir. Ich trage ihn an EINER Stelle ein:
+  js/buch-config.js  ->  BUY_URL: "https://abannews.lemonsqueezy.com/buy/..."
+Alle vier Buchseiten (de/en/fr/it) lesen daraus — ein Eintrag genuegt.
+Danach committe und pushe ich, der Kauf-Button ist sofort live.
+
+(Falls du es selbst machen willst: in js/buch-config.js den Link
+zwischen die Anfuehrungszeichen von BUY_URL setzen, speichern, pushen.)
+================================================================

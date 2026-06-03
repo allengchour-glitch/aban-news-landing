@@ -1,0 +1,13 @@
+Kapitel 6 - Ruth Berger weiß es
+
+Theo ging ins Gemeindearchiv, und er gab vor, es sei wegen des Lifts. Man brauche für die Konzession alte Pläne, sagte er, Wegerechte, Parzellen, das Übliche, und das stimmte sogar halb. Ruth Berger empfing ihn in dem engen, nach Papier riechenden Raum hinter dem Gemeindebüro, in dem sie ihr halbes Leben verbracht hatte, und sie war hilfsbereit und genau, wie sie immer hilfsbereit und genau war. Sie holte Mappen, schlug Register auf, fand jede Parzelle, jedes Wegerecht, jedes Datum. Es gab nichts, was sie nicht fand.
+
+Bis Theo, so beiläufig, wie er es drei Nächte lang geübt hatte, nach den Bauunterlagen des Damms fragte. Nach dem Protokoll von 1962. Wegen der alten Wasserrechte, sagte er, für die Liftgesellschaft.
+
+Ruth Berger hielt einen Augenblick inne, nur einen, dann ging sie zum Regal und zog eine Mappe und legte sie auf den Tisch und schlug sie auf. Das Bauprotokoll, die Versammlungen, die Beschlüsse, alles war da, ordentlich, vollständig. Fast vollständig. «Hier», sagte sie und blätterte, «ist das, was Sie für die Wasserrechte brauchen.» Und dann, ohne den Ton zu wechseln, ohne lauter oder leiser zu werden: «Das Unfallprotokoll vom November sechzig zwei ist nicht ganz beisammen. Da fehlt eine Seite. Schon immer. Manche Akten sind so.»
+
+Sie sah ihn an über den Rand ihrer Brille, und in diesem Blick lag dreißig Jahre Genauigkeit und alles, was Genauigkeit über ein Tal weiß. «Sie suchen nicht Wasserrechte, Herr Aregger», sagte sie, freundlich, fast mütterlich, und es war keine Frage. «Sie suchen, woher Ihr Hof sein Geld hat.»
+
+Theo brachte kein Wort heraus. Ruth schlug die Mappe wieder zu, langsam, und legte die Hand darauf, eine alte, fleckige Hand mit ruhigen Fingern. «Ich habe diese Seite nicht. Niemand hat sie. Und glauben Sie mir, junger Mann: Es ist besser so, für mehr Leute, als Sie ahnen. Es hängt das halbe Tal an dieser fehlenden Seite. Auch Ihre Mutter. Auch Sie.» Sie sah ihn an, ohne Härte, fast traurig. «Manche Mauern soll man nicht einreißen, weil das halbe Dorf darauf gebaut hat. Rühren Sie nicht daran.»
+
+Theo ging mit leeren Händen und einem vollen Kopf. Er hatte eine Tür gefunden, das wusste er jetzt, eine wirkliche Tür, hinter der etwas lag. Und er hatte zugleich begriffen, dass sie verschlossen war und dass die Frau, die den Schlüssel hatte, ihn niemals herausgeben würde, nicht aus Bosheit, sondern aus etwas, das im Tal älter und stärker war als Bosheit. Was er nicht begriff, war, dass Ruth Berger ihm in diesen Minuten keinen Riegel vorgeschoben, sondern einen Gefallen getan hatte, den er erst Jahre später verstehen würde.

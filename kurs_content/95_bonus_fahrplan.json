@@ -1,0 +1,61 @@
+{
+ "title": "Dein 30-Tage-Fahrplan",
+ "kicker": "Bonus 6",
+ "toc": true,
+ "kind": "bonus",
+ "blocks": [
+  ["lead", "Wissen verändert nichts. Gewohnheiten schon. Dieser Fahrplan macht aus dem Kurs eine Routine — in vier Wochen, ohne dass es sich nach Mehrarbeit anfühlt."],
+  ["p", "Die meisten Kurse werden gelesen und dann vergessen. Damit dir das nicht passiert, bekommst du hier einen konkreten Plan: kleine Schritte, einer nach dem anderen, jeder baut auf dem vorigen auf. Plane pro Tag 15 bis 20 Minuten ein — mehr braucht es nicht. Wenn du einen Tag verpasst, mach einfach am nächsten weiter. Es ist ein Fahrplan, kein Prüfungsdruck."],
+  ["callout", "Das Ziel nach 30 Tagen ist nicht, KI-Experte zu sein. Es ist, drei Aufgaben aus deinem Alltag dauerhaft mit KI zu erledigen — so selbstverständlich wie E-Mails abrufen."],
+
+  ["h3", "Woche 1: Verstehen und ausprobieren"],
+  ["p", "Diese Woche legst du das Fundament und sammelst erste echte Erfahrung. Kein Druck, nur Neugier."],
+  ["ul", [
+    "<b>Tag 1:</b> Modul 1 lesen. Die Übung machen: der KI eine Frage aus deinem Fachgebiet stellen und die Antwort kritisch prüfen.",
+    "<b>Tag 2:</b> Modul 2 lesen. Deinen Werkzeugkasten-Bogen ausfüllen. Entscheide dich für einen Chatbot, mit dem du diese 30 Tage arbeitest.",
+    "<b>Tag 3:</b> Das KI-Audit aus Bonus 5 machen (30 Minuten). Deine drei Hebel-Aufgaben festlegen.",
+    "<b>Tag 4:</b> Modul 3 lesen. Die RKAF-Struktur an einer echten kleinen Aufgabe ausprobieren.",
+    "<b>Tag 5:</b> Eine deiner drei Audit-Aufgaben zum ersten Mal mit KI erledigen. Egal wie holprig — Hauptsache gemacht."
+  ]],
+  ["callout", "Merksatz für Woche 1: Es muss nicht perfekt sein. Es muss passiert sein. Die erste holprige Runde ist mehr wert als der beste ungelesene Plan."],
+
+  ["h3", "Woche 2: Besser werden"],
+  ["p", "Jetzt verfeinerst du. Du kennst die Grundlagen — diese Woche machst du die Ergebnisse spürbar besser."],
+  ["ul", [
+    "<b>Tag 6–7:</b> Aus der 50-Prompt-Werkstatt (Bonus 1) drei Prompts heraussuchen, die zu deiner Arbeit passen, und anpassen.",
+    "<b>Tag 8:</b> Modul 3 noch einmal: das Nachschärfen in Runden bewusst üben. Eine Antikürzen, umformulieren, verbessern.",
+    "<b>Tag 9:</b> Der KI dein eigenes Material als Stilvorlage geben. Vergleiche: klingt das Ergebnis jetzt mehr nach dir?",
+    "<b>Tag 10:</b> Deine zweite Audit-Aufgabe mit KI angehen.",
+    "<b>Tag 11–12:</b> Aus der Vorlagen-Sammlung (Bonus 2) eine Vorlage nehmen und an deine Stimme anpassen. Abspeichern, wo du sie wiederfindest."
+  ]],
+
+  ["h3", "Woche 3: Routinen bauen"],
+  ["p", "Diese Woche wird aus &bdquo;ich probiere KI&ldquo; ein &bdquo;so arbeite ich jetzt&ldquo;. Du baust dir Bausteine, die immer wieder laufen."],
+  ["ul", [
+    "<b>Tag 13:</b> Modul 4 lesen. Deine häufigste wiederkehrende Aufgabe identifizieren.",
+    "<b>Tag 14:</b> Für diese Aufgabe einen Baustein-Prompt bauen und speichern. Ab jetzt nur noch Details austauschen.",
+    "<b>Tag 15:</b> Den Drei-Formate-Trick anwenden: aus einem Text eine E-Mail- und eine Social-Fassung machen lassen.",
+    "<b>Tag 16:</b> Deine dritte Audit-Aufgabe mit KI erledigen. Jetzt laufen alle drei.",
+    "<b>Tag 17–19:</b> Jeden Tag mindestens eine reale Aufgabe bewusst mit KI lösen. Notiere kurz, wie viel Zeit du gespart hast."
+  ]],
+  ["callout", "Am Ende von Woche 3 hast du gespeicherte Bausteine für deine wichtigsten Aufgaben. Das ist der Punkt, an dem KI anfängt, dir wirklich Zeit zurückzugeben."],
+
+  ["h3", "Woche 4: Absichern und ausweiten"],
+  ["p", "Die letzte Woche macht das Ganze sicher und nachhaltig — rechtlich sauber, ehrlich in der Außenwirkung, und mit Blick nach vorn."],
+  ["ul", [
+    "<b>Tag 20:</b> Modul 5 lesen. Die DSGVO-Checkliste für deine drei Aufgaben durchgehen: Wo sind Personendaten im Spiel?",
+    "<b>Tag 21:</b> Für jede Aufgabe eine klare Datenregel festlegen (anonymisieren, weglassen, lokal arbeiten).",
+    "<b>Tag 22:</b> Modul 6 lesen. Einen echten Wunschkunden auswählen und die KI-gestützte Recherche ausprobieren.",
+    "<b>Tag 23:</b> Eine persönliche Akquise-Mail in acht Sätzen schreiben — KI recherchiert, du formulierst. Abschicken.",
+    "<b>Tag 24–27:</b> Den Branchen-Spickzettel (Bonus 4) für deinen Beruf durchgehen und einen neuen Quick-Win ausprobieren.",
+    "<b>Tag 28:</b> Deine Tool-Kosten prüfen (Bonus 3). Brauchst du wirklich alles, wofür du zahlst?",
+    "<b>Tag 29:</b> Rückblick: Welche drei Aufgaben laufen jetzt dauerhaft mit KI? Wie viel Zeit pro Woche sparst du?",
+    "<b>Tag 30:</b> Das Audit (Bonus 5) noch einmal kurz machen. Such dir die nächste Aufgabe für den nächsten Monat."
+  ]],
+
+  ["h3", "Nach den 30 Tagen"],
+  ["p", "Du hast jetzt keine Theorie, sondern Gewohnheiten. Drei Aufgaben laufen mit KI, du weißt, wo deine Grenzen liegen, und du hast einen wiederholbaren Weg, neue Aufgaben dazuzunehmen. Genau das war das Ziel."],
+  ["p", "Bleib dran, indem du das Monats-Ritual beibehältst: einmal im Monat das Audit, eine neue Aufgabe, ein kurzer Kosten-Check. So wächst dein KI-Einsatz mit deinem Geschäft, ohne dass du je wieder einen Kurs brauchst."],
+  ["callout", "Wenn du dabei Neues entdeckst oder eine Frage hast: Im täglichen aban-news-Newsletter teste ich laufend Werkzeuge und sortiere, was zählt. Schreib mir an hallo@abannews.com — ich antworte selbst."]
+ ]
+}

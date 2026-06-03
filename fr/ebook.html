@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anti-Hype — Le eBook IA gratuit pour indépendants | aban news</title>
+  <meta name="description" content="Anti-Hype : comment les indépendants utilisent l'IA sans bullshit. eBook gratuit (PDF) — le filtre en 3 questions, ton stack IA minimal, 5 routines, 7 pièges du hype. Sans email.">
+  <meta name="theme-color" content="#d97706">
+  <link rel="canonical" href="https://abannews.com/fr/ebook.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/ebook.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/ebook.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ebook.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/ebook.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/ebook.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="Anti-Hype — Le eBook IA gratuit (2026)">
+  <meta property="og:description" content="Comment les indépendants utilisent l'IA sans bullshit. Gratuit, sans email.">
+  <meta property="og:url" content="https://abannews.com/fr/ebook.html">
+  <meta property="og:image" content="https://abannews.com/og-ebook.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="book">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/og-ebook.png">
+  <meta name="twitter:title" content="Anti-Hype — Le eBook IA gratuit (2026)">
+  <meta name="author" content="Aban (Allen Chour)">
+  <style>
+    *{box-sizing:border-box;margin:0}
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--ok:#0f9d6b;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    a{color:inherit}
+    #progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--amber),var(--amber-dk));z-index:60;transition:width .15s ease}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;margin-left:1.2rem}
+    .lang a{padding:.3rem .55rem;color:var(--muted);text-decoration:none;margin:0}
+    .lang a.on{background:var(--ink);color:#fff}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:var(--amber-dk);color:#fff;text-decoration:none}
+    .btn--ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--line)}
+    .hero{padding:3rem 0 1.5rem;text-align:center}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber-dk);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    h1{font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.4rem}
+    .sub{font-size:1.15rem;color:var(--amber-dk);font-weight:600;margin-bottom:.9rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:55ch;margin:0 auto 1.5rem}
+    .dl{background:var(--card);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow);display:flex;gap:1.25rem;align-items:center;text-align:left;margin:1.5rem 0}
+    .cover{flex-shrink:0;width:120px;height:160px;border-radius:10px;background:linear-gradient(160deg,var(--amber),var(--amber-dk));color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.3rem;box-shadow:var(--shadow);padding:.5rem;text-align:center}
+    .cover .c-emoji{font-size:1.6rem}
+    .cover .c-t{font-weight:800;font-size:1.05rem;line-height:1.1}
+    .cover .c-s{font-size:.62rem;opacity:.9;line-height:1.2}
+    .dl-meta h2{font-size:1.15rem;margin-bottom:.3rem}
+    .dl-meta p{font-size:.9rem;color:var(--muted);margin-bottom:.8rem}
+    .dl-actions{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+    .dl-state{font-size:.78rem;color:var(--ok);font-weight:600}
+    #resume{display:none;background:var(--amber-lt);border:1px solid #f6d9ad;border-radius:12px;padding:.7rem 1rem;margin:1rem 0;font-size:.9rem;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap}
+    #resume.show{display:flex}
+    #resume .btn{padding:.45rem .8rem;font-size:.85rem}
+    #resume .dismiss{background:none;border:0;color:var(--muted);cursor:pointer;font-size:.85rem;text-decoration:underline}
+    .toc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.25rem;margin:1.5rem 0}
+    .toc h2{font-size:1rem;margin-bottom:.6rem}
+    .toc ol{margin:0;padding-left:0;list-style:none;counter-reset:c}
+    .toc li{counter-increment:c;padding:.35rem 0;font-size:.95rem;display:flex;align-items:center;gap:.6rem;border-bottom:1px solid var(--line)}
+    .toc li:last-child{border-bottom:0}
+    .toc li::before{content:counter(c,decimal-leading-zero);color:var(--amber);font-weight:700;font-size:.85rem;min-width:1.6rem}
+    .toc a{text-decoration:none;flex:1}
+    .toc a:hover{color:var(--amber-dk)}
+    .toc .tick{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff}
+    .toc li.read .tick{background:var(--ok);border-color:var(--ok)}
+    .toc li.read .tick::after{content:"✓"}
+    article{padding:1rem 0 2rem}
+    article h2{font-size:1.5rem;margin:2.2rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:70px}
+    article h3{font-size:1.1rem;margin:1.3rem 0 .3rem}
+    article p{margin-bottom:.9rem}
+    article ul{margin:0 0 1rem 1.2rem}
+    article li{margin-bottom:.4rem}
+    .callout{background:var(--amber-lt);border-left:4px solid var(--amber);border-radius:8px;padding:.9rem 1.1rem;font-weight:600;margin:1rem 0}
+    .ch-lead{font-style:italic;color:var(--muted);font-size:1.05rem;margin-bottom:1rem}
+    .subscribe{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.25rem 1.5rem;box-shadow:var(--shadow);margin:1.5rem 0}
+    .subscribe h2{font-size:1.15rem;margin-bottom:.25rem}
+    .subscribe p{font-size:.9rem;color:var(--muted);margin-bottom:.9rem}
+    .subscribe .row{display:flex;gap:.5rem}
+    .subscribe input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:.8rem .9rem;font-size:1rem;background:#fff}
+    .subscribe input:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:var(--amber)}
+    .subscribe .micro{font-size:.74rem;color:var(--muted);margin:.55rem 0 0}
+    @media(max-width:560px){.subscribe .row{flex-direction:column}.subscribe .row .btn{width:100%;justify-content:center}}
+    .upsell{background:linear-gradient(160deg,#fff7ed,#fff);border:1px solid #fed7aa;border-radius:var(--r);padding:1.5rem;margin:1.5rem 0;display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap}
+    .upsell .u-body{flex:1;min-width:220px}
+    .upsell h2{font-size:1.15rem;margin-bottom:.3rem;color:var(--amber-dk)}
+    .upsell p{font-size:.92rem;color:#7c2d12;margin-bottom:0}
+    /* Pay-what-you-want */
+    .support{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r);padding:1.3rem 1.5rem;margin:1.5rem 0}
+    .support h2{font-size:1.15rem;margin-bottom:.35rem}
+    .support p{font-size:.92rem;color:var(--muted);margin-bottom:.9rem}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2.5rem 0}
+    .cta-box h2{font-size:1.3rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .privacy{font-size:.78rem;color:var(--muted);padding:1.2rem 0;border-top:1px solid var(--line);margin-top:2rem}
+    .privacy a{color:var(--muted)}
+    .reset{background:none;border:0;color:var(--muted);cursor:pointer;text-decoration:underline;font-size:.78rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+    @media(max-width:560px){.dl{flex-direction:column;text-align:center}.dl-actions{justify-content:center}}
+    @media (prefers-reduced-motion:reduce){#progress{transition:none}}
+    .sticky-cta{display:none}
+    @media(max-width:600px){
+      .sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:80;background:#fff;border-top:1px solid var(--line);padding:.6rem .9rem;gap:.6rem;align-items:center;justify-content:space-between;box-shadow:0 -4px 16px rgba(31,41,55,.12)}
+      .sticky-cta span{font-size:.84rem;font-weight:700}
+      .sticky-cta .btn{padding:.55rem .9rem;font-size:.85rem}
+      body{padding-bottom:64px}
+    }
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Book","name":"Anti-Hype — Comment les indépendants utilisent l'IA sans bullshit","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"inLanguage":"fr","bookFormat":"https://schema.org/EBook","datePublished":"2026","url":"https://abannews.com/fr/ebook.html","isAccessibleForFree":true}
+  </script>
+</head>
+<body>
+
+<div id="progress" role="progressbar" aria-label="Progression de lecture" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+<header>
+  <div class="wrap">
+    <a href="/fr/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/fr/ebook.html"><strong>eBook</strong></a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn">S'abonner</a>
+      <span class="lang"><a href="/ebook.html">DE</a><a href="/en/ebook.html">EN</a><a href="/fr/ebook.html" class="on" aria-current="true">FR</a><a href="/it/ebook.html">IT</a></span>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">eBook gratuit · sans email</span>
+      <h1>Anti-Hype</h1>
+      <p class="sub">Comment les indépendants utilisent l'IA sans bullshit</p>
+      <p class="lead">L'essence de plus de 200 numéros de newsletter : une façon de penser qui sépare le fond du spectacle, plus des routines concrètes qui font vraiment gagner du temps. Sans liens affiliés, sans histoires de réussite inventées.</p>
+    </div>
+
+    <div id="resume" role="status">
+      <span id="resume-text">Bon retour.</span>
+      <span style="display:flex;gap:.6rem;align-items:center">
+        <a href="#" class="btn" id="resume-btn">Continuer →</a>
+        <button class="dismiss" id="resume-dismiss" type="button">masquer</button>
+      </span>
+    </div>
+
+    <div class="dl">
+      <div class="cover" aria-hidden="true">
+        <span class="c-emoji">☕</span>
+        <span class="c-t">Anti-Hype</span>
+        <span class="c-s">L'IA sans bullshit<br>pour indépendants</span>
+      </div>
+      <div class="dl-meta">
+        <h2>Tout le eBook en PDF</h2>
+        <p>13 chapitres avec modèles à copier, une journée déroulée, un aperçu outil par tâche et un glossaire — mise en page soignée, lisible hors ligne. Sans suivi, sans inscription.</p>
+        <div class="dl-actions">
+          <a href="/downloads/anti-hype-ebook-fr.pdf" class="btn" id="dl-btn" download>Télécharger le PDF ↓</a>
+          <a href="/downloads/anti-hype-ebook-fr.epub" class="btn btn--ghost" download>ePub ↓</a>
+          <a href="/fr/buch.html" style="font-size:.85rem;align-self:center;">ou prends le livre →</a>
+          <span class="dl-state" id="dl-state" hidden>✓ Déjà téléchargé</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="subscribe" aria-label="S'abonner à la newsletter">
+      <h2>Le eBook est gratuit — la newsletter aussi.</h2>
+      <p>Si cette façon de penser t'aide : chaque jour ouvré à 7h30, les trois évolutions IA qui touchent ton activité aujourd'hui. Cinq minutes, sans hype, sans spam.</p>
+      <form class="row" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
+        <input type="email" name="email" placeholder="toi@mail.com" required autocomplete="email" inputmode="email" aria-label="Adresse e-mail">
+        <button type="submit" class="btn">S'abonner gratuitement →</button>
+      </form>
+      <p class="micro">Lun–Ven · désabonnement en 1 clic · conforme RGPD · sans pixel de suivi.</p>
+    </section>
+
+    <nav class="toc" aria-label="Sommaire">
+      <h2>Sommaire</h2>
+      <ol id="toc-list">
+        <li data-ch="ch1"><span class="tick"></span><a href="#ch1">Pourquoi ce eBook existe</a></li>
+        <li data-ch="ch2"><span class="tick"></span><a href="#ch2">Le filtre anti-bullshit en 3 questions</a></li>
+        <li data-ch="ch3"><span class="tick"></span><a href="#ch3">Ton stack IA minimal</a></li>
+        <li data-ch="ch4"><span class="tick"></span><a href="#ch4">Cinq routines qui font gagner du temps</a></li>
+        <li data-ch="ch5"><span class="tick"></span><a href="#ch5">Sept pièges du hype</a></li>
+        <li data-ch="ch6"><span class="tick"></span><a href="#ch6">Et maintenant ?</a></li>
+      </ol>
+    </nav>
+
+    <article>
+      <h2 id="ch1">Pourquoi ce eBook existe</h2>
+      <p class="ch-lead">La plupart des guides IA te vendent une sensation. Pas celui-ci.</p>
+      <p>Depuis 2024 j'écris chaque jour ouvré une newsletter sur l'IA pour des gens qui en gagnent leur vie — pas qui en parlent. En chemin j'ai testé des centaines d'outils, supprimé des dizaines, et constaté : la plupart de ce qu'on vend comme « indispensable 2026 » résout un problème que tu n'as pas.</p>
+      <p>Ce eBook est la version concentrée pour une personne : l'indépendant dont la journée fait 24 heures et qui n'en gaspillera aucune en démos d'outils.</p>
+      <h3>Ce que tu ne trouveras PAS ici</h3>
+      <ul>
+        <li>Des prompts qui « automatisent ton activité » mais ne produisent qu'un joli paragraphe.</li>
+        <li>Des listes de 50 outils dont tu n'en ouvriras jamais 47.</li>
+        <li>La promesse que l'IA te rend riche pendant que tu dors.</li>
+      </ul>
+      <p class="callout">Ce que tu trouveras : une façon de penser qui sépare le fond du spectacle — et quelques routines concrètes qui font gagner des heures.</p>
+
+      <h2 id="ch2">Le filtre anti-bullshit en 3 questions</h2>
+      <p>Avant de prendre au sérieux un outil, une formation ou une tendance IA, passe-le par trois questions. S'il survit aux trois, il mérite un second regard.</p>
+      <h3>1. Qu'est-ce qui est remplacé, exactement ?</h3>
+      <p>Pas « que sait-il faire », mais : quelle tâche concrète que tu fais à la main aujourd'hui disparaît ? Si la réponse reste floue, c'est du spectacle. Si elle est concrète, c'est du fond.</p>
+      <h3>2. Combien ça me coûte quand il se trompe ?</h3>
+      <p>L'IA hallucine. Toujours. La seule question, c'est le coût d'une erreur. Relire un brouillon de post coûte 30 secondes — délègue. Reprendre un chiffre fiscal sans vérifier coûte de l'argent réel — vérifie chaque ligne.</p>
+      <h3>3. Ça marche sans moi — ou avec moi ?</h3>
+      <p>« Entièrement automatique » est presque toujours un mensonge. Les outils qui tiennent la route sont des accélérateurs : tu restes la tête, l'IA fait le travail ingrat entre les deux.</p>
+      <p class="callout">L'IA est un stagiaire à la mémoire parfaite et au jugement nul. Traite-la ainsi — et tu seras rarement déçu.</p>
+
+      <h2 id="ch3">Ton stack IA minimal</h2>
+      <p class="ch-lead">Tu n'as pas besoin de 20 abonnements. Tu as besoin de quatre briques.</p>
+      <h3>1. Un bon modèle de langage (obligatoire)</h3>
+      <p>Claude ou ChatGPT, version payante. Ton cheval de trait pour rédiger, trier, résumer. Un seul suffit — apprends-le bien plutôt que d'en changer sans cesse.</p>
+      <h3>2. Un hub d'automatisation (optionnel)</h3>
+      <p>Make.com ou n8n. C'est là que tu relies tes services. À ajouter seulement quand tu fais vraiment une tâche à la main trois fois par semaine.</p>
+      <h3>3. Un endroit pour ton savoir</h3>
+      <p>Notion, Obsidian, peu importe — du moment que c'est cherchable. L'IA ne vaut que le contexte que tu lui donnes.</p>
+      <h3>4. Clarté RGPD (non négociable)</h3>
+      <p>Avant de verser des données clients dans un outil : où sont les serveurs ? Y a-t-il un contrat de sous-traitance ? Une violation RGPD coûte plus cher que tout gain de productivité.</p>
+      <p class="callout">Règle : le processus d'abord, l'outil ensuite. Qui commence par l'outil cherche ensuite un problème à lui coller.</p>
+
+      <h2 id="ch4">Cinq routines qui font vraiment gagner du temps</h2>
+      <p>Pas de magie — juste du travail répétitif que tu délègues.</p>
+      <ul>
+        <li><strong>Pré-trier ta boîte mail :</strong> l'IA range les mails en trois paniers — maintenant, plus tard, ignorer. C'est toi qui décides.</li>
+        <li><strong>Faire trois formats d'un long contenu :</strong> une entrée, plusieurs sorties. Tu édites au lieu de partir de zéro.</li>
+        <li><strong>Rédiger des offres plus vite :</strong> un modèle plus les données clés, l'IA fait le brouillon. 45 minutes deviennent 10.</li>
+        <li><strong>Grouper la recherche :</strong> un brief clair avec obligation de sources — puis vérifie les sources toi-même.</li>
+        <li><strong>Faire le miroir de ta semaine :</strong> l'IA comme miroir lucide, pas comme coach à confettis.</li>
+      </ul>
+      <p class="callout">Chaque routine te garde comme dernière instance. L'IA fournit la matière ; ton jugement fait le produit.</p>
+
+      <h2 id="ch5">Sept pièges du hype</h2>
+      <ul>
+        <li><strong>La collectionnite d'outils.</strong> Dix outils à moitié appris sont plus lents qu'un seul maîtrisé.</li>
+        <li><strong>Le mythe du pilote automatique.</strong> « Ça tourne tout seul » veut souvent dire « ça casse tout seul quand tu ne regardes pas ».</li>
+        <li><strong>Les packs de prompts à 47 €.</strong> Un bon prompt est une tâche claire — tu peux l'écrire toi-même, gratuitement.</li>
+        <li><strong>La production de vanité.</strong> De la portée sans fond reste du vide.</li>
+        <li><strong>L'IA comme substitut de stratégie.</strong> Un modèle ne décidera pas pour toi qui tu veux être.</li>
+        <li><strong>La confiance aveugle dans les chiffres.</strong> L'IA énonce avec assurance des statistiques qu'elle invente.</li>
+        <li><strong>La FOMO comme modèle économique.</strong> Qui te fait peur de rater quelque chose te vend aussi le remède.</li>
+      </ul>
+      <p class="callout">La vérité qui dérange : beaucoup de ceux qui parlent fort d'IA gagnent leur argent en parlant — pas avec l'IA.</p>
+
+      <h2 id="ch6">Et maintenant ?</h2>
+      <p>Si tu as lu jusqu'ici, tu as déjà la compétence la plus importante : la patience du fond plutôt que le réflexe du hype.</p>
+      <p>Ce eBook est un instantané. L'IA change chaque semaine. Ce qui reste, c'est l'état d'esprit : demander concrètement, peser le risque, juger soi-même. C'est exactement ce que je fais chaque jour ouvré dans la newsletter.</p>
+    </article>
+
+    <div class="support">
+      <h2>Ce eBook t'a aidé ?</h2>
+      <p>Il reste gratuit — sans barrière, sans pression. S'il t'a servi, tu peux payer ce qu'il valait pour toi, en guise de merci. Tu fixes le prix, pas de minimum.</p>
+      <a href="/fr/buch.html" class="btn">Paie ce que tu veux →</a>
+    </div>
+
+    <div class="upsell">
+      <div class="u-body">
+        <h2>Plus que la newsletter ? Deviens membre fondateur.</h2>
+        <p>Les 100 premiers lecteurs obtiennent l'accès premium à vie pour 69 € une fois — édition approfondie du mercredi, modèles de workflow, offres outils, ligne directe. Pas de réouverture, 30 jours satisfait ou remboursé.</p>
+      </div>
+      <a href="/founding.html" class="btn btn--ghost">Voir l'offre fondateur →</a>
+    </div>
+
+    <div class="cta-box">
+      <h2>L'IA sans bullshit — chaque matin, en 5 minutes</h2>
+      <p>aban news te livre les trois évolutions IA qui touchent ton activité aujourd'hui. Un outil, trois infos, sans spam.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">Recevoir le briefing IA de 5 min →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Sans spam. Désabonnement en 1 clic. Conforme RGPD.</p>
+    </div>
+
+    <div class="privacy">
+      <p><strong>Ta progression de lecture reste chez toi.</strong> Cette page retient jusqu'où tu as lu et si tu as téléchargé le PDF — uniquement en local dans ton navigateur (<code>localStorage</code>), sans serveur, sans cookies, sans suivi. Rien ne quitte ton appareil. <button class="reset" id="reset-btn" type="button">Réinitialiser</button></p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/fr/">Accueil</a> · <a href="/impressum.html">Mentions légales</a> · <a href="/datenschutz.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <span>Briefing IA de 5 min — gratuit</span>
+  <a href="https://abannews.beehiiv.com/subscribe" class="btn">S'abonner →</a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var KEY = "aban_ebook_fr_v1";
+  var hasLS = (function(){try{var k="__t";localStorage.setItem(k,k);localStorage.removeItem(k);return true;}catch(e){return false;}})();
+  function load(){ if(!hasLS) return {}; try{return JSON.parse(localStorage.getItem(KEY)||"{}");}catch(e){return {};} }
+  function save(s){ if(hasLS){try{localStorage.setItem(KEY, JSON.stringify(s));}catch(e){}} }
+  var state = load();
+  state.chapters = state.chapters || {}; state.percent = state.percent || 0; state.scrollY = state.scrollY || 0;
+  var bar = document.getElementById("progress");
+  var article = document.querySelector("article");
+  function computePercent(){ var doc=document.documentElement; var max=doc.scrollHeight-doc.clientHeight; if(max<=0)return 100; return Math.min(100,Math.round((window.scrollY/max)*100)); }
+  var saveTimer=null;
+  function onScroll(){ var p=computePercent(); bar.style.width=p+"%"; bar.setAttribute("aria-valuenow",p); if(p>state.percent)state.percent=p; state.scrollY=window.scrollY; if(saveTimer)return; saveTimer=setTimeout(function(){saveTimer=null;save(state);},400); }
+  window.addEventListener("scroll",onScroll,{passive:true});
+  window.addEventListener("resize",onScroll,{passive:true});
+  var lis={};
+  [].forEach.call(document.querySelectorAll("#toc-list li"),function(li){ lis[li.getAttribute("data-ch")]=li; if(state.chapters[li.getAttribute("data-ch")])li.classList.add("read"); });
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(entries){ var changed=false; entries.forEach(function(en){ if(en.isIntersecting){ var id=en.target.id; if(lis[id]&&!state.chapters[id]){ state.chapters[id]=true; lis[id].classList.add("read"); changed=true; } } }); if(changed)save(state); },{rootMargin:"0px 0px -55% 0px",threshold:0.01});
+    [].forEach.call(article.querySelectorAll("h2[id]"),function(h){io.observe(h);});
+  }
+  var resume=document.getElementById("resume"), resumeText=document.getElementById("resume-text"), resumeBtn=document.getElementById("resume-btn");
+  var readCount=Object.keys(state.chapters).filter(function(k){return state.chapters[k];}).length;
+  if((state.percent>4&&state.percent<96)||readCount>0){ resumeText.textContent="Bon retour — tu en étais à "+state.percent+"% ("+readCount+"/6 chapitres)."; resume.classList.add("show"); }
+  resumeBtn.addEventListener("click",function(e){ e.preventDefault(); window.scrollTo({top:state.scrollY||0,behavior:"smooth"}); resume.classList.remove("show"); });
+  document.getElementById("resume-dismiss").addEventListener("click",function(){ resume.classList.remove("show"); });
+  var dlBtn=document.getElementById("dl-btn"), dlState=document.getElementById("dl-state");
+  function renderDl(){ if(state.downloaded){ var d=new Date(state.downloaded); dlState.textContent="✓ Téléchargé le "+d.toLocaleDateString("fr-FR"); dlState.hidden=false; } }
+  renderDl();
+  dlBtn.addEventListener("click",function(){ state.downloaded=Date.now(); save(state); renderDl(); });
+  document.getElementById("reset-btn").addEventListener("click",function(){ if(hasLS){try{localStorage.removeItem(KEY);}catch(e){}} location.reload(); });
+  onScroll();
+})();
+</script>
+</body>
+</html>

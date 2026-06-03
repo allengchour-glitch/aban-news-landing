@@ -1,0 +1,58 @@
+{
+  "_comment": "So verdienst du Geld: Melde dich beim Partnerprogramm des jeweiligen Anbieters an (Liste '_programme'). Du bekommst einen persönlichen Link. Trage ihn bei 'affiliate_url' ein und entferne das führende '_' im Key. Die Seite markiert ihn dann automatisch mit * und blendet den Transparenzhinweis ein, dann baut sie sich neu. Anbieter ohne aktiven Eintrag verlinken auf die offizielle URL aus data/anbieter.json (keine Provision).",
+  "_status": "ALLE SLOTS DEAKTIVIERT (Key mit '_'-Präfix). Noch keine Affiliate-Links freigegeben. Fallback = offizielle URL / Mail.",
+  "_kontakt_fallback": "mailto:hallo@abannews.com",
+  "_programme": {
+    "_hinweis": "Kuratierte Liste typischer Partnerprogramme, gemappt auf Anbieter in data/anbieter.json. 'signup' = wo du dich bewirbst. 'rate' = typische Provision (kann sich ändern, vor Nutzung prüfen). Quelle der Wahrheit für die echte URL bleibt data/anbieter.json. Nur Anbieter mit real existierendem Programm sind gelistet.",
+    "tidio": {
+      "signup": "https://www.tidio.com/affiliate-program/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "intercom-fin": {
+      "signup": "https://www.intercom.com/partners",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "partner/referral"
+    },
+    "freshchat": {
+      "signup": "https://www.freshworks.com/company/partners/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "partner/referral"
+    },
+    "livechat": {
+      "signup": "https://partners.livechat.com/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "hubspot-service": {
+      "signup": "https://www.hubspot.com/partners/affiliates",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring/bounty"
+    },
+    "landbot": {
+      "signup": "https://landbot.io/partners",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "manychat": {
+      "signup": "https://manychat.partnerstack.com/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    }
+  },
+  "links": {
+    "_anleitung": "Trage deinen persönlichen Affiliate-Link bei 'affiliate_url' ein und entferne das führende '_' im Anbieter-Key (z.B. '_tidio' -> 'tidio'). Erst dann wird der Link auf der Seite aktiv (mit * + Transparenzhinweis). Solange das '_' steht, bleibt der Slot deaktiviert und es wird die offizielle URL verlinkt.",
+    "_tidio": {
+      "affiliate_url": "https://www.tidio.com/?ref=DEIN-CODE"
+    },
+    "_livechat": {
+      "affiliate_url": "https://www.livechat.com/?a=DEIN-CODE"
+    },
+    "_landbot": {
+      "affiliate_url": "https://landbot.io/?via=DEIN-CODE"
+    },
+    "_manychat": {
+      "affiliate_url": "https://manychat.com/?fp_ref=DEIN-CODE"
+    }
+  }
+}
