@@ -73,6 +73,7 @@ RADARS = {
     "handwerk":        {"dir": "handwerk-radar",        "sub": "handwerk"},
     "tools":           {"dir": "ki-verzeichnis",        "sub": "tools"},
     "shop":            {"dir": "pod-shop",              "sub": "shop"},
+    "lifestyle":       {"dir": "lifestyle-radar",       "sub": "lifestyle"},
 }
 
 
