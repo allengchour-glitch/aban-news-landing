@@ -121,21 +121,27 @@ def fmt_ts(t):
     return f"{h:01d}:{m:02d}:{s:05.2f}"
 
 
-def build_ass(words, total, path):
+def build_ass(words, total, path, hook=""):
     head = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {W}
 PlayResY: {H}
+WrapStyle: 0
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: K,DejaVu Sans,64,&H004FCFFF,&H00F2F2F2,&H00101010,&H64000000,1,0,0,0,100,100,0,0,1,4,3,5,80,80,250,1
+Style: K,DejaVu Sans,64,&H004FCFFF,&H00F2F2F2,&H00101010,&H64000000,1,0,0,0,100,100,0,0,1,4,3,2,80,80,470,1
 Style: TAG,DejaVu Sans,40,&H0050C8FF,&H0050C8FF,&H00101010,&H00000000,1,0,0,0,100,100,6,0,1,2,2,8,0,0,70,1
+Style: HOOK,DejaVu Sans,82,&H0050C8FF,&H0050C8FF,&H00101010,&H64000000,1,0,0,0,100,100,0,0,1,5,4,5,120,120,0,1
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,A B A N   F I L E S
 """
-    groups = [words[i:i + 4] for i in range(0, len(words), 4)]
     lines = []
+    if hook:
+        # Retention-Hook: grosser Text in den ersten ~2.8s (50-60% Drop-off-Zone)
+        hk = hook.upper().replace("\n", " ")
+        lines.append(f"Dialogue: 1,{fmt_ts(0)},{fmt_ts(2.8)},HOOK,,0,0,0,,{{\\fad(250,350)}}{hk}")
+    groups = [words[i:i + 4] for i in range(0, len(words), 4)]
     for gi, g in enumerate(groups):
         gs = g[0][1]
         ge = groups[gi + 1][0][1] if gi + 1 < len(groups) else (g[-1][2] + 0.4)
@@ -151,7 +157,8 @@ Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,A B A N   F I L E S
 def render(ep):
     scenes = SCENES[ep]
     sc_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "aban_scripts.json")
-    words, dur = tts(text=json.load(open(sc_path))[ep]["text"])
+    sc = json.load(open(sc_path))[ep]
+    words, dur = tts(text=sc["text"])
     total = dur + 0.7
     seg = total / len(scenes)
     # Stockclips holen + normalisieren auf 9:16
@@ -173,7 +180,7 @@ def render(ep):
     # Audio: Stimme + Drone
     subprocess.run([FF, "-y", "-i", "/tmp/_a.mp3", "-ar", "44100",
                     "-af", "highpass=f=60,dynaudnorm=f=200", "/tmp/_vo.wav"], check=True, capture_output=True)
-    build_ass(words, total, "/tmp/_subs.ass")
+    build_ass(words, total, "/tmp/_subs.ass", sc.get("hook", ""))
     # dunkler Ambient-Score (a-moll-Pad) statt nur Drone -> fuellt stille Stellen
     music = ("sine=f=110,volume=0.5[m1];sine=f=164.81,volume=0.4[m2];sine=f=220,volume=0.3[m3];"
              "sine=f=329.63,volume=0.12[m4];[m1][m2][m3][m4]amix=inputs=4:normalize=0,"
