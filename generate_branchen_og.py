@@ -117,6 +117,9 @@ BRANCHEN = {
     "smart-home":          ("Smart-Home",          ["Angebote & Support,", "nicht die Installation"]),
     "vermessungsbuero":    ("Vermessungsbüros",    ["Berichte & Orga,", "nicht die Messung"]),
     "hundesalon":          ("Hundesalons",         ["Termine & Social,", "nicht die Fellpflege"]),
+    "estrichleger":        ("Estrichleger",        ["Angebote & Bau-Kommunikation,", "nicht der Estrich"]),
+    "bodenleger":          ("Bodenleger",          ["Angebote & Pflegeinfos,", "nicht das Verlegen"]),
+    "ingenieurbuero":      ("Ingenieurbüros",      ["Berichte & Orga,", "nicht die Statik"]),
 }
 
 
