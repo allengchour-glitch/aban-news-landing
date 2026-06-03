@@ -159,6 +159,9 @@
 /mwst             /mwst-rechner.html    301
 /mwst-rechner     /mwst-rechner.html    301
 /mehrwertsteuer   /mwst-rechner.html    301
+/iban             /iban-pruefer.html    301
+/iban-pruefer     /iban-pruefer.html    301
+/iban-checker     /iban-pruefer.html    301
 
 # QR-Code + Tool-Uebersicht (Teil 4)
 /qr               /qr-code.html       301
