@@ -1438,3 +1438,18 @@ User: „mache alles in automation, alle 4 stunde 1 reel, binde ein mit selbstge
 **Aktivierung (User, 1×):** Buffer TikTok+IG verbinden · Blueprint importieren (Modul 2 = natives Buffer) ·
 Webhook-URL → GitHub-Secret MAKE_REEL_WEBHOOK. Dann postet die Action alle 4h automatisch 1 ready-Reel.
 **Regel:** Reels jetzt ganze Produktpalette (REEL-REGELN Regel 3), nicht nur Damenmode.
+
+## 2026-06-03 — Reel-Regel „gute Bewertung", Analyse-Tool + 2-Wochen-Autonomie
+User: „keine random Bilder, nur gute Bilder mit guter Bewertung; sonst frei; mache das 2 Wochen ohne Pause;
+gib Feedback mit Analyse von Views; Tools nutzen."
+- **REEL-REGELN Regel 7b NEU:** nur Produkte mit Judge.me ≥4,3★ + authentischem Top-Bild; schlecht bewertete
+  raus (z.B. „Sommerkleid ärmellos" 3,3★). Keine Random-Auswahl.
+- **2-Wochen-Autonomie = GitHub Actions** (laufen auf GitHub-Infra, nicht in der Session!): reel-autopost.yml
+  (alle 4h 1 Reel) + NEU **reel-analytics.yml** (alle 2 Tage Feedback-Report).
+- **`automation/reel-analytics.mjs`** (getestet, no-op-safe): liest Queue-Status (gepostet/ready/pending) +
+  zieht Shop-Bestellungen/Umsatz (Shopify Admin GraphQL, Secret) + schickt Telegram-Report. Views auf
+  TikTok/IG sind NICHT per API abrufbar → Hinweis im Report (App-Insights/Buffer Analytics prüfen).
+- **Baseline 7T (Messstart):** 1.559 Sessions (direct 779 · tiktok 710 · fb 49 · google 16), 2 ATC, 0 Käufe, Conv 0%.
+**EHRLICH:** Ich kann nicht selbst 2 Wochen durchlaufen — die Actions tun es. Damit 2 Wochen kontinuierlich
+gepostet wird, braucht die Queue genug `ready`-Reels (aktuell 3) → entweder pro Session nachfüllen oder eine
+Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN_TOKEN / TELEGRAM_* + Branch→main.

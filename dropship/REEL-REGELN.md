@@ -17,11 +17,17 @@
 6. **Format:** 9:16 vertikal, 1080×1920.
 7. **Kuratieren statt ersetzen:** Wenn der User einzelne Bilder streicht („letztes Bild raus"), Reel neu rendern;
    Bilder NICHT ungefragt durch andere ersetzen. Nur auf Wunsch mehr/andere Shots.
+7b. **Nur Produkte mit GUTER Bewertung + GUTEM Bild — keine Random-Auswahl.** Reel-Produkte müssen
+   (a) eine gute Judge.me-Bewertung haben (Richtwert **≥ 4,3★**, idealerweise viele Reviews) UND
+   (b) ein authentisches, hochwertiges Model-/Lifestyle-Bild (Regel 1). Schlecht bewertete ausschliessen
+   (z.B. „Sommerkleid ärmellos" 3,3★ NICHT verwenden). Im Zweifel Rating im Shop/Judge.me prüfen.
 8. **Hook in den ersten 1–2 Sek** (grosser Text) — entscheidet ~80% der Reichweite (GRATIS-WACHSTUM §A).
    Preisfrei, kurz, gern eine Frage („Welches Kleid ist dein Favorit?").
 9. **Freigabe-Workflow:** Reel EINZELN per Telegram zur Freigabe (ja/nein/Kommentar), erst nach „ja" posten.
 
 ## Verbesserungs-Log (chronologisch — neue Punkte kommen oben dazu)
+- 2026-06-03: „Verbesserung: keine random Bilder, nur gute Bilder mit guter Bewertung" → neue Regel 7b
+  (nur Produkte mit Judge.me ≥4,3★ + authentischem Top-Bild; schlecht bewertete raus).
 - 2026-06-03: „Verbesserung: mach nicht nur Mode für Frauen, mach alles Mögliche" → Regel 3 erweitert:
   ganze Produktpalette inkl. Tech-Gadgets/Wohnen/Beauty/Herren; frühere „keine Gadgets"-Regel aufgehoben.
 - 2026-06-03: «Sommer» (Hook „Sommer-Looks, die auffallen") + «Premium #52» (Hook „Sommer-Mode 2026")
