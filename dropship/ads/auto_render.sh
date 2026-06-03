@@ -15,6 +15,19 @@ PTR="$ROOT/automation/.render_pointer"
 N="${N:-5}"                          # Produkte pro Reel (max 9)
 BASEURL="${BASEURL:-https://abannews.com/reels}"
 HOOKS=("Welcher Look ist deiner?" "Sommer-Looks, die auffallen" "Dein Sommer-Favorit?" "Welches Teil nimmst du?" "Sommer-Mode 2026")
+# Rotierende, conversion-fokussierte Caption-Templates (%s = gezeigtes Top-Produkt) — nie zwei gleich hintereinander.
+CAPS=(
+  "%s & mehr Sommer-Lieblinge ✨ Schweizer Shop · Gratis-Versand ab CHF 65 · -10%% mit Code WELCOME10 → luxestyle.ch"
+  "Welcher Look ist deiner? 👇 Sommer-Favoriten wie %s ab CHF 34.90. Code WELCOME10 = -10%% → luxestyle.ch"
+  "Sommer 2026 bei LuxeStyle ☀️ %s & weitere Looks. -10%% mit WELCOME10 · Gratis-Versand ab CHF 65 → luxestyle.ch"
+  "Neu für deinen Sommer: %s 🤍 Plus weitere Styles. Schweizer Shop, -10%% Code WELCOME10 → luxestyle.ch"
+  "Spar dir den Designer-Preis 👀 %s & Co. ab CHF 34.90 bei LuxeStyle. -10%% WELCOME10 → luxestyle.ch"
+)
+TAGSETS=(
+  "#schweizmode #sommerkleid #ootdschweiz #fashiontiktokschweiz #luxestyle"
+  "#swissfashion #sommeroutfit #ootd #fashionschweiz #styletipps"
+  "#sommermode2026 #ootdschweiz #fashiontiktok #schweizmode #kleider"
+)
 
 [ -f "$LIST" ] || { echo "good_products.csv fehlt"; exit 0; }
 [ -f "$MUSIC" ] || { echo "reel_music.m4a fehlt"; exit 0; }
@@ -48,8 +61,10 @@ HOOK="$HOOK" bash "$ROOT/dropship/ads/render_premium_reel.sh" "$ROOT/reels/$SLUG
 # Queue-Zeile (ready) anhängen — CSV-sicher gequotet
 csv(){ printf '"%s"' "$(printf '%s' "$1" | sed 's/"/""/g')"; }
 ID=$(date +%s)
-CAP="Sommer-Lieblinge von LuxeStyle ✨ Schweizer Shop · -10% mit Code WELCOME10 → luxestyle.ch"
-TAGS="#schweizmode #sommerkleid #ootdschweiz #fashiontiktokschweiz #luxestyle"
+FEATURED=$(head -1 "$IMGDIR/names.txt")
+# shellcheck disable=SC2059
+CAP=$(printf "${CAPS[$(( start % ${#CAPS[@]} ))]}" "$FEATURED")
+TAGS="${TAGSETS[$(( start % ${#TAGSETS[@]} ))]}"
 printf '%s,%s,%s,%s,%s,%s,ready,,\n' "$ID" "$(date +%F)" "$(csv "$BASEURL/$SLUG.mp4")" "$(csv "$CAP")" "$(csv "$TAGS")" "$(csv "tiktok,instagram")" >> "$QUEUE"
 
 echo ">> Auto-Reel: reels/$SLUG.mp4 ($k Produkte, Hook: \"$HOOK\") + Queue-Zeile ready. Pointer→$(cat "$PTR")"
