@@ -19,6 +19,7 @@
 9. **Freigabe-Workflow:** Reel EINZELN per Telegram zur Freigabe (ja/nein/Kommentar), erst nach „ja" posten.
 
 ## Verbesserungs-Log (chronologisch — neue Punkte kommen oben dazu)
+- 2026-06-03: «Eleganz» v2 mit Hook „Welcher Look ist deiner?" = FREIGEGEBEN (User: „passt alles"). → Hook-Polish (Regel 8) ist ab jetzt Standard für alle Reels.
 - 2026-06-03: Regel-Datei angelegt, mit allen bisher gelernten Präferenzen (oben) als Seed.
 <!-- NEUE VERBESSERUNGEN HIER EINTRAGEN, Format: -->
 <!-- - YYYY-MM-DD: „Verbesserung: <O-Ton>" → Regel: <was ich künftig immer mache> -->
