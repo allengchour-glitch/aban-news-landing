@@ -262,9 +262,45 @@ def pixabay_links(query, cache):
     return out
 
 
+NASA_KW = re.compile(r"moon|mars|earth|space|rocket|satellite|\bsun\b|galaxy|planet|nebula|"
+                     r"eclipse|astronaut|lunar|orbit|cosmos|\bstars?\b|comet|aurora|spacecraft", re.I)
+
+
+def nasa_links(query, cache):
+    """3. Quelle (kein Key): echte NASA-Weltraum-Videos, public domain. Nur fuer Space-Queries."""
+    if not NASA_KW.search(query):
+        return []
+    k = "nasa:" + query
+    if k in cache:
+        return cache[k]
+    out = []
+    try:
+        url = "https://images-api.nasa.gov/search?" + urllib.parse.urlencode({"q": query, "media_type": "video"})
+        items = json.load(urllib.request.urlopen(
+            urllib.request.Request(url, headers={"User-Agent": UA}), timeout=40)
+        ).get("collection", {}).get("items", [])
+        for it in items[:5]:
+            href = it.get("href")
+            if not href:
+                continue
+            try:
+                files = json.load(urllib.request.urlopen(
+                    urllib.request.Request(href, headers={"User-Agent": UA}), timeout=30))
+            except Exception:
+                continue
+            mp4 = {t: f for f in files for t in ("medium", "small", "mobile", "large") if f.endswith("~%s.mp4" % t)}
+            link = mp4.get("medium") or mp4.get("small") or mp4.get("mobile") or mp4.get("large")
+            if link:
+                out.append((1, "nasa-" + href.split("/")[-2], link))
+    except Exception:
+        out = []
+    cache[k] = out
+    return out
+
+
 def fetch_clip(query, idx, used, cache):
-    """Laedt den besten NOCH NICHT verwendeten Clip (Pexels + Pixabay, kein Wiederholen)."""
-    for sc, vid, link in pexels_links(query, cache) + pixabay_links(query, cache):
+    """Laedt den besten NOCH NICHT verwendeten Clip (Pexels + Pixabay + NASA, kein Wiederholen)."""
+    for sc, vid, link in pexels_links(query, cache) + pixabay_links(query, cache) + nasa_links(query, cache):
         if vid in used:
             continue
         used.add(vid)
