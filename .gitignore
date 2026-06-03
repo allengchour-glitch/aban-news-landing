@@ -20,3 +20,7 @@ downloads/ki-sichtbarkeit-buch-en.pdf
 # Bezahltes Vorlagen-Set: Vollversion nicht ins Repo
 downloads/vorlagen-set.pdf
 downloads/vorlagen-set-en.pdf
+
+# ABAN Files Film-Output
+video-prototypes/aban-files/aban-files-collection.mp4
+video-prototypes/aban-files/*.base.mp4

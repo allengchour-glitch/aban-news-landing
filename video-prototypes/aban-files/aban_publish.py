@@ -18,6 +18,7 @@ import os, sys, json, subprocess, argparse
 HERE = os.path.dirname(os.path.abspath(__file__))
 SCRIPTS = os.path.join(HERE, "aban_scripts.json")
 UPLOADED = os.path.join(HERE, "uploaded.json")
+VIDEO_IDS = os.path.join(HERE, "video_ids.json")
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 
 
@@ -89,11 +90,14 @@ def main():
         print("Nichts zu tun — alle Folgen veroeffentlicht.")
         return
     svc = get_service()
+    ids = json.load(open(VIDEO_IDS)) if os.path.exists(VIDEO_IDS) else {}
     for ep in todo:
         path = render(ep)
-        upload(svc, ep, scripts[ep], path, args.privacy)
+        vid = upload(svc, ep, scripts[ep], path, args.privacy)
         done.append(ep)
         json.dump(done, open(UPLOADED, "w"), indent=2)
+        ids[ep] = vid
+        json.dump(ids, open(VIDEO_IDS, "w"), indent=2)
 
 
 if __name__ == "__main__":
