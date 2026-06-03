@@ -4,12 +4,10 @@
 Liest die YouTube-View-Zahlen der hochgeladenen Folgen und sagt, welche
 Themen/Formate am besten ziehen -> datengetriebener Wachstums-Loop.
 
-WICHTIG: oeffentliche View-Zahlen liest man mit einem **API-Key** (YouTube Data
-API v3). Das Upload-OAuth-Token darf `videos.list` NICHT aufrufen
-(Scope youtube.upload -> 403). Setze daher einen der folgenden Env-Keys:
+Braucht einen **API-Key** (YouTube Data API v3 im Projekt aktiviert):
   YT_API_KEY  (empfohlen)  |  GOOGLE_API_KEY  |  GEMINI_API_KEY
-Der API-Key braucht ein Google-Cloud-Projekt mit aktivierter „YouTube Data API v3".
-Ein bereits vorhandener Gemini/AI-Key (AIza…) funktioniert, wenn die API dort an ist.
+Das Upload-OAuth-Token darf `videos.list` NICHT lesen (Scope-403), daher API-Key.
+Reine stdlib (urllib) — keine google-Client-Lib, proxy-robust.
 
 Video-IDs kommen aus video_ids.json (vom Publisher gepflegt).
 
@@ -17,7 +15,7 @@ Aufruf:
   YT_API_KEY=AIza... python3 aban_stats.py            # Tabelle
   YT_API_KEY=AIza... python3 aban_stats.py --report   # + reports/ABAN-STATS.md
 """
-import os, sys, json, argparse, datetime
+import os, sys, json, argparse, datetime, urllib.request, urllib.parse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 IDS = os.path.join(HERE, "video_ids.json")
@@ -38,6 +36,19 @@ def title_to_ep(title, scripts):
     return "?"
 
 
+def fetch(ids, key):
+    out = []
+    for i in range(0, len(ids), 50):
+        q = urllib.parse.urlencode({"part": "snippet,statistics",
+                                    "id": ",".join(ids[i:i + 50]), "key": key})
+        with urllib.request.urlopen(f"https://www.googleapis.com/youtube/v3/videos?{q}", timeout=60) as r:
+            d = json.load(r)
+        if "error" in d:
+            raise RuntimeError(d["error"].get("message", "API-Fehler"))
+        out += d.get("items", [])
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--report", action="store_true")
@@ -45,37 +56,32 @@ def main():
 
     key = api_key()
     if not key:
-        print("Kein API-Key gesetzt (YT_API_KEY / GOOGLE_API_KEY / GEMINI_API_KEY).\n"
-              "View-Zahlen koennen ohne API-Key nicht gelesen werden — das Upload-Token\n"
-              "darf das nicht. Lege einen YT_API_KEY an (YouTube Data API v3 aktiviert)\n"
-              "und hinterlege ihn als GitHub-Secret. (Kein Fehler — nur uebersprungen.)")
-        return  # absichtlich Exit 0: Workflow bleibt gruen
+        print("Kein API-Key (YT_API_KEY / GOOGLE_API_KEY / GEMINI_API_KEY) gesetzt —\n"
+              "View-Zahlen koennen nicht gelesen werden. Uebersprungen (kein Fehler).")
+        return  # Exit 0: Workflow bleibt gruen
 
     seed = json.load(open(IDS)) if os.path.exists(IDS) else {}
     ids = list(dict.fromkeys(seed.values()))
     if not ids:
         print("Keine Video-IDs in video_ids.json."); return
 
-    from googleapiclient.discovery import build
-    from googleapiclient.errors import HttpError
-    svc = build("youtube", "v3", developerKey=key)
+    scripts = json.load(open(SCRIPTS))
+    try:
+        items = fetch(ids, key)
+    except Exception as e:
+        print(f"API-Fehler (YouTube Data API v3 fuer den Key aktiviert?): {e}")
+        return  # Exit 0: kein roter Workflow
 
     rows = []
-    try:
-        for i in range(0, len(ids), 50):
-            r = svc.videos().list(part="snippet,statistics", id=",".join(ids[i:i + 50])).execute()
-            for it in r["items"]:
-                st = it.get("statistics", {})
-                rows.append({"id": it["id"], "title": it["snippet"]["title"],
-                             "ep": title_to_ep(it["snippet"]["title"], json.load(open(SCRIPTS))),
-                             "views": int(st.get("viewCount", 0)),
-                             "likes": int(st.get("likeCount", 0)),
-                             "comments": int(st.get("commentCount", 0))})
-    except HttpError as e:
-        print(f"API-Fehler (ist die YouTube Data API v3 fuer den Key aktiviert?): {e}")
-        return
-
+    for it in items:
+        st = it.get("statistics", {})
+        rows.append({"title": it["snippet"]["title"],
+                     "ep": title_to_ep(it["snippet"]["title"], scripts),
+                     "views": int(st.get("viewCount", 0)),
+                     "likes": int(st.get("likeCount", 0)),
+                     "comments": int(st.get("commentCount", 0))})
     rows.sort(key=lambda x: x["views"], reverse=True)
+
     lines = [f"# ABAN Files — View-Report ({datetime.date.today()})", "",
              f"{len(rows)} Videos, sortiert nach Views.", "",
              "| # | Ep | Titel | Views | Likes | Kommentare |",
