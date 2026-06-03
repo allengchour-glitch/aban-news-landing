@@ -22,7 +22,7 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 8 (82→92, #136): Sportgeschäfte, Modeboutiquen, Getränkehandel, Fahrschulen, Musikschulen, Tanzschulen, Sprachschulen, Nagelstudios, Tattoostudios, Hochzeitsfotografen.
 - **DE-Backlog weitgehend erschöpft** → Fokus wechselt auf **P2-Übersetzungen** (kein Thin-Content-Risiko). Neue DE-Hubs nur bei klar distinkten neuen Branchen.
 
-## Mehrsprachige Hubs (P2, EN+FR+IT) — **57 von 92 Hubs viersprachig**
+## Mehrsprachige Hubs (P2, EN+FR+IT) — **75 von 92 Hubs viersprachig**
 
 - Charge 1 (#126): handwerker, steuerberater, coaches.
 - Charge 2 (#129): immobilienmakler, onlineshops, gastronomie.
