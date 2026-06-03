@@ -292,3 +292,7 @@ Fortschritt: `video-prototypes/aban-files/uploaded.json` (ep1–ep11).
 - **Länge ~25–35 s** hält am besten → neue Skripte kurz halten (ep11 mit 73 s ist zu lang).
 - **Loop-Struktur**: Ende soll neugierig zum Anfang zurückführen (Re-Watches).
 - Quellen: opus.pro/blog, virvid.ai/blog (Shorts-Hooks/Retention 2025/26).
+- **Bild-zu-Text-Passung** (in `aban_stock.py`): Skript wird in Sätze zerlegt (Wort-
+  Timings), pro Satz wählt eine Stichwort-Map (`KW`) den passenden Stock-Clip (Mond→Mond,
+  Server→Data-Center, Pyramide→Ruinen, Thron/Befehl→Thronsaal …), exakt auf die Satzdauer
+  getimt; ohne Treffer Fallback auf den Episoden-Pool (`SCENES`). „passende vor allem".
