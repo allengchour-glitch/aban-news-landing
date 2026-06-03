@@ -53,6 +53,12 @@ SCENES = {
              "ai control room screens", "robotic assembly line", "human silhouette fading",
              "server farm endless", "city aerial night future", "machine hand human hand",
              "dark throne empty hall", "earth slowly rotating space", "glowing red eye dark"],
+    "ep11": ["egyptian pyramids at sunset", "ancient stone temple ruins", "hieroglyphics carved wall",
+             "mayan pyramid jungle", "stonehenge megalith dusk", "giant ancient statue close up",
+             "desert ruins aerial", "starry night sky over pyramids", "carved serpent stone relief",
+             "ancient gold artifact museum", "prehistoric cave painting", "monolith standing stones desert",
+             "ancient temple interior torchlight", "ufo light over desert night", "ancient ruins drone shot",
+             "milky way over ancient ruins"],
 }
 
 
