@@ -13,7 +13,7 @@
 | The Seam: A Ruhr Valley Saga in Three Volumes (EN) | Taschenbuch | ✅ **Live** (Dashboard bestätigt) | $9.99 | B0H3NH1JTB | ki-schriftsteller |
 | **Vision Board Workbook for Women** (Pen: Sage Whitfield) | Taschenbuch | ✅ **Live** (Dashboard bestätigt) | $11.99 | B0H3JZZPM5 | extern |
 | **ADHD Daily Planner for Adults** (Pen: Marcus Reilly) | Taschenbuch | 🟡 **Eingereicht, in Prüfung** (3. Juni 2026, ~72 h → live; bei Low-Content bis 10 Werktage) | $8.99 | folgt | `build_book.py` (`adhd`) |
-| **Mileage Log Book for Small Business** (Pen: Marcus Reilly) | Taschenbuch | ⏳ **KDP-Entwurf**; ⚠️ Innenteil-PDF noch nicht gebaut (nur Cover in `out/`) | $8.99 | — | `build_book.py` (`mileage`) |
+| **Mileage Log Book for Small Business** (Pen: Marcus Reilly) | Taschenbuch | ⏳ **In Einrichtung** — Innenteil (119 S.) liegt im KDP-Entwurf, Cover gebaut/gesendet, Upload+Veröffentlichen offen | $6.99 | — | `build_book.py` (`mileage`, Innenteil extern) |
 
 ## Legende
 - ✅ Live (im Dashboard/Mail bestätigt)
