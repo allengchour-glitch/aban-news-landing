@@ -121,6 +121,7 @@ SCENES = {
 # Stichwort -> passender Stock-Suchbegriff: das Bild matcht den gesprochenen Satz.
 # Reihenfolge = Priorität (spezifisch zuerst).
 KW = [
+    (r"\bbern\b|bundeshaus|swiss federal", "Bundeshaus Bern federal palace"),
     (r"moon|lunar", "moon surface craters close up"),
     (r"rocket|launch|flag", "rocket launch at night"),
     (r"satellite|orbit|\bstars?\b|the sky|night sky|lattice", "satellites orbiting earth night"),
@@ -264,6 +265,8 @@ def pixabay_links(query, cache):
 
 NASA_KW = re.compile(r"moon|mars|earth|space|rocket|satellite|\bsun\b|galaxy|planet|nebula|"
                      r"eclipse|astronaut|lunar|orbit|cosmos|\bstars?\b|comet|aurora|spacecraft", re.I)
+# Begriffe, fuer die ein echtes Wikimedia-Foto besser ist als generisches Stock-Video:
+IMG_PREFER = re.compile(r"bundeshaus|nazca|geoglyph|cuneiform|sumerian|stonehenge", re.I)
 
 
 def nasa_links(query, cache):
@@ -313,6 +316,55 @@ def fetch_clip(query, idx, used, cache):
         except Exception:
             continue
     return None
+
+
+WUA = "ABANFiles/1.0 (https://abannews.com)"   # Wikimedia verlangt aussagekraeftigen UA
+
+
+def wiki_images(query, cache):
+    """Gemeinfreie/CC-Bilder von Wikimedia Commons (fuer Begriffe, die Stock-Video nicht hat)."""
+    k = "wiki:" + query
+    if k in cache:
+        return cache[k]
+    out = []
+    try:
+        url = "https://commons.wikimedia.org/w/api.php?" + urllib.parse.urlencode({
+            "action": "query", "generator": "search", "gsrnamespace": "6", "gsrsearch": query,
+            "gsrlimit": "8", "prop": "imageinfo", "iiprop": "url|mime", "iiurlwidth": "1600", "format": "json"})
+        d = json.load(urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": WUA}), timeout=40))
+        for p in d.get("query", {}).get("pages", {}).values():
+            ii = (p.get("imageinfo") or [{}])[0]
+            link, mime = ii.get("thumburl") or ii.get("url"), ii.get("mime", "")
+            if link and mime.startswith("image/") and "svg" not in mime:
+                out.append(("wiki-" + str(p.get("pageid")), link))
+    except Exception:
+        out = []
+    cache[k] = out
+    return out
+
+
+def kenburns_segment(queries, i, dur, used, cache):
+    """Bild -> langsamer Zoom (Ken-Burns) als fertiger 9:16-Clip. Schreibt /tmp/_seg_<i>.mp4."""
+    out = f"/tmp/_seg_{i}.mp4"
+    frames = max(1, int(dur * FPS))
+    for qi in queries:
+        for wid, link in wiki_images(qi, cache):
+            if wid in used:
+                continue
+            used.add(wid)
+            img = f"/tmp/_img_{i}.bin"
+            try:
+                with urllib.request.urlopen(urllib.request.Request(link, headers={"User-Agent": WUA}), timeout=60) as r, open(img, "wb") as fo:
+                    fo.write(r.read())
+            except Exception:
+                continue
+            rc = subprocess.run([FF, "-y", "-loop", "1", "-i", img, "-t", f"{dur:.2f}", "-r", str(FPS),
+                "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},"
+                       f"zoompan=z='min(zoom+0.0008,1.2)':d={frames}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={W}x{H}:fps={FPS},setsar=1",
+                "-an", "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", out], capture_output=True)
+            if rc.returncode == 0 and os.path.exists(out):
+                return True
+    return False
 
 
 def media_dur(path):
@@ -375,6 +427,12 @@ def render(ep):
     for i, s in enumerate(segs):
         seg_dur = max(0.8, bounds[i + 1] - bounds[i])
         q = pick_query(s[2], pool, i)
+        out = f"/tmp/_seg_{i}.mp4"
+        # Spezifische Motive (Bundeshaus …): echtes Foto schlaegt generisches Stock-Video
+        if IMG_PREFER.search(q) and kenburns_segment([q], i, seg_dur, used, cache):
+            last_src = out
+            norm.append(out)
+            continue
         # passender Clip; bei Wiederholung der Query automatisch ein ANDERER (used-Set).
         # Fallbacks: Episoden-Pool (rotierend), sonst letzter Clip.
         src = fetch_clip(q, i, used, cache)
@@ -382,16 +440,23 @@ def render(ep):
             if src:
                 break
             src = fetch_clip(pool[(i + k) % len(pool)], 900 + i * 9 + k, used, cache)
-        src = src or last_src
-        if not src:
-            continue
-        last_src = src
         out = f"/tmp/_seg_{i}.mp4"
-        subprocess.run([FF, "-y", "-stream_loop", "5", "-i", src, "-t", f"{seg_dur:.2f}",
-                        "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps={FPS}",
-                        "-an", "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", out],
-                       check=True, capture_output=True)
-        norm.append(out)
+        if src:
+            last_src = src
+            subprocess.run([FF, "-y", "-stream_loop", "5", "-i", src, "-t", f"{seg_dur:.2f}",
+                            "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps={FPS}",
+                            "-an", "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", out],
+                           check=True, capture_output=True)
+            norm.append(out)
+        elif kenburns_segment([q, pool[i % len(pool)]], i, seg_dur, used, cache):
+            # kein Video -> gemeinfreies Bild mit Ken-Burns (z.B. Bundeshaus, Spezial-Motive)
+            norm.append(out)
+        elif last_src:
+            subprocess.run([FF, "-y", "-stream_loop", "5", "-i", last_src, "-t", f"{seg_dur:.2f}",
+                            "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps={FPS}",
+                            "-an", "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", out],
+                           check=True, capture_output=True)
+            norm.append(out)
     concat = "/tmp/_concat.txt"
     open(concat, "w").write("\n".join(f"file '{p}'" for p in norm))
     subprocess.run([FF, "-y", "-f", "concat", "-safe", "0", "-i", concat, "-c", "copy", "/tmp/_base.mp4"],
