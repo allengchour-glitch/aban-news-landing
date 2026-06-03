@@ -1,5 +1,5 @@
 {
-  "next_id": 13,
+  "next_id": 15,
   "tasks": [
     {
       "id": 1,
@@ -92,6 +92,22 @@
     {
       "id": 12,
       "task": "luxestyle.ch: Sample drucken → Shopify-Produkte live (Inhaber)",
+      "who": "aban",
+      "status": "todo",
+      "note": "",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 13,
+      "task": "luxestyle: echtes Mimi-Slicer-Gewicht+Druckzeit messen → in produkte.json (echter Preis)",
+      "who": "aban",
+      "status": "todo",
+      "note": "",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 14,
+      "task": "luxestyle Shop: TWINT + Rechts-Seiten (Impressum/AGB/Widerruf) einrichten",
       "who": "aban",
       "status": "todo",
       "note": "",
