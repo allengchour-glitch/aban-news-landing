@@ -116,6 +116,11 @@ durchgehend die du-Form.
 | `was-automatisieren.html` | Tool: **Aufgaben-Priorisierer** — was zuerst automatisieren (Zeit × Nervfaktor, client-side, localStorage-frei). Pretty-URL `/was-automatisieren`. Alle drei verlinken automatisierung.abannews.com. |
 | `regex-tester.html` | Tool: **Regex live testen** (Treffer/Gruppen-Highlight, Vorlagen, client-side, ReDoS-unkritisch da Browser). Pretty-URL `/regex`. |
 | `json-formatter.html` | Tool: **JSON formatieren/validieren/minifizieren** (Webhook-/API-Payloads, client-side, Fehler mit Zeilennr.). Pretty-URL `/json`. |
+| `encoder.html` | Tool: **Base64-/URL-Encoder** + JSON-String-Escape (UTF-8-sicher, client-side). Pretty-URLs `/encode`, `/base64`. |
+| `uuid-generator.html` | Tool: **UUID v4 (Stapel) + URL-Slug** aus Text (crypto-Zufall, Umlaut-Map, client-side). Pretty-URLs `/uuid`, `/slug`. |
+| `diff-tool.html` | Tool: **Text-Vergleich (Diff)** zeilenweise via LCS, farbig (add/del), Trim-/Case-Optionen, client-side. Pretty-URLs `/diff`, `/textvergleich`. |
+| `markdown-tabelle.html` | Tool: **Markdown-Tabelle ↔ CSV** (CSV-Parser mit Quotes, `\|`-Escape, Trennzeichen-Wahl, client-side). Pretty-URLs `/tabelle`, `/csv`. |
+| `env-parser.html` | Tool: **.env-/HTTP-Header ↔ JSON** (KEY=value & Name: Wert, client-side, Secret-Hinweis). Pretty-URLs `/env`, `/header`. |
 | `anti-hype-texten.html` | SEO-Cornerstone-Ratgeber zum Tool (Vorher/Nachher, FAQ) |
 | `hype-widget-demo.html` | `noindex` — Doku/Demo fürs einbettbare Widget |
 | `impressum.html` / `datenschutz.html` | CH-Impressum / DSGVO |
