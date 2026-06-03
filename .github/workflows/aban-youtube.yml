@@ -22,7 +22,7 @@ on:
         description: "Sichtbarkeit: public / unlisted / private"
         default: "public"
   schedule:
-    - cron: "0 17 2-30/2 * *"   # an geraden Tagen 17:00 UTC (~19:00 Berlin)
+    - cron: "0 17 * * *"   # taeglich 17:00 UTC (~19:00 Berlin) — Testphase fuer schnelle Daten
 
 permissions:
   contents: write

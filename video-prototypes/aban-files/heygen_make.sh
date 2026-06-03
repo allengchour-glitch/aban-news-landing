@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ABAN Files - HeyGen Avatar IV (echter sprechender ALLENG-Avatar).
+# ABAN Files - HeyGen Avatar IV (echter sprechender ABAN-Avatar).
 # Key kommt aus der Umgebung -> NIEMALS hier hartcodieren.
 #   export HG="<dein-heygen-api-key>"
 #   bash heygen_make.sh ep1
@@ -7,7 +7,7 @@
 set -euo pipefail
 : "${HG:?Bitte HG (HeyGen API-Key) als Umgebungsvariable setzen}"
 EP="${1:-ep1}"
-TP="${TALKING_PHOTO_ID:-46dd26982dfb48f896b40850e75f4fed}"   # "ABAN ALLENG"
+TP="${TALKING_PHOTO_ID:-46dd26982dfb48f896b40850e75f4fed}"   # "ABAN" Talking-Photo
 VID="${HEYGEN_VOICE_ID:-828b59f834fd4c7188da322b6d9b6c75}"   # tiefe Stimme
 TXT=$(python3 -c "import json;print(json.load(open('aban_scripts.json'))['$EP']['text'])")
 BODY=$(python3 -c "
@@ -25,7 +25,7 @@ for i in $(seq 1 60); do
   echo "[$i] $ST"
   if [ "$ST" = "completed" ]; then
     URL=$(echo "$R" | python3 -c "import sys,json;print(json.load(sys.stdin)['data']['video_url'])")
-    curl -s -m 180 -o "alleng_$EP.mp4" "$URL" && echo "SAVED alleng_$EP.mp4"
+    curl -s -m 180 -o "aban_$EP.mp4" "$URL" && echo "SAVED aban_$EP.mp4"
     exit 0
   fi
   [ "$ST" = "failed" ] && { echo "FAILED: $R"; exit 1; }
