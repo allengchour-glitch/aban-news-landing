@@ -1,0 +1,8 @@
+[
+  {
+    "_hinweis": "NUR ECHTE Reviews hier eintragen (z.B. von der AliExpress-Quelle desselben Produkts). product_external_id = numerische Shopify-Produkt-ID. Beispiel-Eintrag unten ist auskommentiert/leer — wird vom Importer ignoriert, weil reviews[] leer ist.",
+    "product_external_id": 0,
+    "source": "https://www.aliexpress.com/item/....html",
+    "reviews": []
+  }
+]
