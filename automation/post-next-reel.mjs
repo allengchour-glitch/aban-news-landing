@@ -13,7 +13,9 @@
 import fs from 'node:fs';
 
 const CSV = new URL('./reels_seed.csv', import.meta.url).pathname;
-const HOOK = process.env.MAKE_REEL_WEBHOOK || '';
+// Default = der bestehende Make-Webhook aus dem abannews/dropship-Setup (Buffer bereits verbunden).
+// Per Secret MAKE_REEL_WEBHOOK überschreibbar. (Webhook steht bereits in dropship/CJ-IMPORT-LOG.md.)
+const HOOK = process.env.MAKE_REEL_WEBHOOK || 'https://hook.eu1.make.com/pkgmkm46y3aw6r3fy4ttedr5os7yn0ly';
 const DRY = process.env.DRY_RUN === '1';
 const COLS = ['id','scheduled_date','video_url','caption','hashtags','platforms','status','posted_at','post_url'];
 
