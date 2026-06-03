@@ -22,14 +22,14 @@
       "task": "Gumroad-Konto + Datensatz hochladen → Buy-Link",
       "who": "aban",
       "status": "doing",
-      "note": "Datensatz frisch gebaut (326 Tools), Gumroad-ZIP an Aban geliefert, Anleitung docs/GUMROAD-DATENSATZ.md. Wartet auf Gumroad-Link.",
+      "note": "Produkt angelegt (Cover drauf), Link https://chourallen.gumroad.com/l/ki-tools-dach. OFFEN bei Aban: Waehrung USD->EUR, Bankkonto verbinden, Publish.",
       "updated": "2026-06-03"
     },
     {
       "id": 4,
       "task": "Gumroad-Buy-Link in ki-tools-datensatz.html eintragen",
       "who": "code",
-      "status": "blocked",
+      "status": "done",
       "note": "Seite auf Gumroad umgestellt. Wartet nur noch auf den Gumroad-Link von Aban.",
       "updated": "2026-06-03"
     },
