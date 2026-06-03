@@ -17,16 +17,16 @@ BASEURL="${BASEURL:-https://abannews.com/reels}"
 HOOKS=("Welcher Look ist deiner?" "Sommer-Looks, die auffallen" "Dein Sommer-Favorit?" "Welches Teil nimmst du?" "Sommer-Mode 2026")
 # Rotierende, conversion-fokussierte Caption-Templates (%s = gezeigtes Top-Produkt) — nie zwei gleich hintereinander.
 CAPS=(
-  "%s & mehr Sommer-Lieblinge ✨ Schweizer Shop · Gratis-Versand ab CHF 65 · -10%% mit Code WELCOME10 → luxestyle.ch"
-  "Welcher Look ist deiner? 👇 Sommer-Favoriten wie %s ab CHF 34.90. Code WELCOME10 = -10%% → luxestyle.ch"
-  "Sommer 2026 bei LuxeStyle ☀️ %s & weitere Looks. -10%% mit WELCOME10 · Gratis-Versand ab CHF 65 → luxestyle.ch"
-  "Neu für deinen Sommer: %s 🤍 Plus weitere Styles. Schweizer Shop, -10%% Code WELCOME10 → luxestyle.ch"
-  "Spar dir den Designer-Preis 👀 %s & Co. ab CHF 34.90 bei LuxeStyle. -10%% WELCOME10 → luxestyle.ch"
+  "CHF 34.90 statt Designer-Preis – gleicher Look 👀 %s. Code WELCOME10 = -10%% → luxestyle.ch"
+  "%s & mehr Sommer-Lieblinge ✨ Schweizer Shop · Gratis-Versand ab CHF 65 · -10%% Code WELCOME10 → luxestyle.ch"
+  "Welcher Look ist deiner? 👇 Sommer-Favoriten wie %s. Code WELCOME10 = -10%% → luxestyle.ch"
+  "Spar dir den Designer-Preis 👀 %s & Co. – gleicher Look, fairer Preis. -10%% WELCOME10 → luxestyle.ch"
+  "Neu für deinen Sommer: %s 🤍 Schweizer Shop, schnelle Lieferung. -10%% Code WELCOME10 → luxestyle.ch"
 )
 TAGSETS=(
-  "#schweizmode #sommerkleid #ootdschweiz #fashiontiktokschweiz #luxestyle"
-  "#swissfashion #sommeroutfit #ootd #fashionschweiz #styletipps"
-  "#sommermode2026 #ootdschweiz #fashiontiktok #schweizmode #kleider"
+  "#schweizmode #sommerkleid #ootdschweiz #fyp #luxestylech"
+  "#swissfashion #sommeroutfit #foryou #fashionschweiz #luxestyle"
+  "#sommermode2026 #ootdschweiz #fyp #schweizmode #fashiontiktok"
 )
 
 [ -f "$LIST" ] || { echo "good_products.csv fehlt"; exit 0; }
