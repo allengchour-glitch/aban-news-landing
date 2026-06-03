@@ -53,6 +53,8 @@
     .hnav{display:flex;align-items:center;gap:1.25rem;font-size:.92rem}
     .hnav a{color:var(--muted);text-decoration:none}
     .hnav a:hover{color:var(--ink)}
+    /* Aufgeräumt auf kleinen Screens: Sekundär-Links weg, nur Sprache + CTA bleiben */
+    @media(max-width:760px){.hnav{gap:.7rem}.hnav .lk{display:none}}
     .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700}
     .lang a{padding:.32rem .6rem;color:var(--muted);text-decoration:none}
     .lang a.on{background:var(--ink);color:#fff}
@@ -127,8 +129,15 @@
     .honest b{color:var(--ink)}
 
     footer{margin-top:2rem;border-top:1px solid var(--line);background:rgba(255,255,255,.5)}
-    footer .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:center;justify-content:center;padding:1.1rem 1.25rem;font-size:.82rem;color:var(--muted)}
+    footer .wrap{padding:2rem 1.25rem 1.4rem}
     footer a{text-decoration:none;color:var(--muted)}footer a:hover{color:var(--ink)}
+    .footcols{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+    .footcols h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink);margin:0 0 .7rem;font-weight:800}
+    .footcols a{display:block;font-size:.88rem;color:var(--muted);padding:.2rem 0;line-height:1.3}
+    .footbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.6rem;
+      margin-top:1.6rem;padding-top:1.1rem;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+    .footbar-links{display:flex;gap:.9rem;flex-wrap:wrap}
+    @media(max-width:680px){.footcols{grid-template-columns:1fr 1fr;gap:1.2rem}}
 
     @media(max-width:860px){
       .hero-grid{grid-template-columns:1fr;gap:1.5rem}
@@ -173,9 +182,7 @@
     <a href="/" class="brand"><span class="dot"></span> aban news</a>
     <nav class="hnav" aria-label="Hauptnavigation">
       <a href="/preview.html" class="lk">Beispiel</a>
-      <a href="/ki-ratgeber.html" class="lk">KI-Ratgeber</a>
-      <a href="/ebook.html" class="lk">eBook</a>
-      <a href="/geld-verdienen-mit-ki.html" class="lk">KI & Geld</a>
+      <a href="/ki-ratgeber.html" class="lk">Ratgeber</a>
       <a href="/founding.html" class="lk">Premium</a>
       <span class="lang" role="group" aria-label="Sprache wählen"><a href="/" class="on" hreflang="de" aria-current="page">DE</a><a href="/en/" hreflang="en">EN</a><a href="/fr/" hreflang="fr">FR</a><a href="/it/" hreflang="it">IT</a></span>
       <a href="#signup" class="btn btn--sm">Abonnieren</a>
@@ -508,43 +515,51 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
-    <a href="/archive.html">Archiv</a>
-    <a href="/themen.html">Themen</a>
-    <a href="/preview.html">Beispiel-Ausgabe</a>
-    <a href="/ebook.html">Gratis-eBook</a>
-    <a href="/buch.html">Buch</a>
-    <a href="/kurs.html">KI-Kurs</a>
-    <a href="/prompt-pack.html">Prompt-Pack</a>
-    <a href="/hype-filter.html">Hype-Filter</a>
-    <a href="/ai-sichtbarkeit.html">AI-Sichtbarkeit</a>
-    <a href="/ki-erwaehnungs-check.html">Werde ich von KI genannt?</a>
-    <a href="/ki-sichtbarkeit-buch.html">Buch: Von KI gefunden werden</a>
-    <a href="/vorlagen-set.html">Klartext-Vorlagen</a>
-    <a href="/ki-tools-datensatz.html">KI-Tools-Datensatz</a>
-    <a href="/ki-sichtbarkeit-monitor.html">Sichtbarkeits-Monitor</a>
-    <a href="/ki-kosten-rechner.html">KI-Kosten-Rechner</a>
-    <a href="/anti-hype-texten.html">Anti-Hype texten</a>
-    <a href="/trilogie.html">Roman-Trilogie</a>
-    <a href="/schicht.html">Roman „Schicht“</a>
-    <a href="/ki-ratgeber.html">KI-Ratgeber (alle Guides)</a>
-    <a href="/ki-tools-fuer-selbststaendige.html">KI-Tools</a>
-    <a href="/chatgpt-fuer-solopreneure.html">ChatGPT-Guide</a>
-    <a href="/chatgpt-vs-claude.html">ChatGPT vs. Claude</a>
-    <a href="/ki-automatisierung-selbststaendige.html">KI-Automatisierung</a>
-    <a href="/ki-prompts-schreiben.html">Prompts schreiben</a>
-    <a href="/ki-halluzinationen-erkennen.html">KI-Halluzinationen</a>
-    <a href="/ki-email-schreiben.html">E-Mails mit KI</a>
-    <a href="/ki-dsgvo-konform.html">KI &amp; DSGVO</a>
-    <a href="/founding.html">Premium</a>
-    <a href="/ueber-aban.html">Über</a>
-    <a href="/faq.html">FAQ</a>
-    <a href="/presse.html">Presse</a>
-    <a href="/impressum.html">Impressum</a>
-    <a href="/datenschutz.html">Datenschutz</a>
-    <a href="/en/">EN</a>
-    <a href="/fr/">FR</a>
-    <a href="/it/">IT</a>
+    <div class="footcols">
+      <div>
+        <h4>Newsletter</h4>
+        <a href="/preview.html">Beispiel-Ausgabe</a>
+        <a href="/archive.html">Archiv</a>
+        <a href="/themen.html">Themen</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/ueber-aban.html">Über</a>
+      </div>
+      <div>
+        <h4>Gratis-Tools</h4>
+        <a href="/ki-erwaehnungs-check.html">Werde ich von KI genannt?</a>
+        <a href="/ai-sichtbarkeit.html">AI-Sichtbarkeit</a>
+        <a href="/hype-filter.html">Hype-Filter</a>
+        <a href="/ki-kosten-rechner.html">KI-Kosten-Rechner</a>
+      </div>
+      <div>
+        <h4>Produkte</h4>
+        <a href="/ki-sichtbarkeit-buch.html">Buch: Von KI gefunden werden</a>
+        <a href="/vorlagen-set.html">Klartext-Vorlagen</a>
+        <a href="/ki-tools-datensatz.html">KI-Tools-Datensatz</a>
+        <a href="/ki-sichtbarkeit-monitor.html">Sichtbarkeits-Monitor</a>
+        <a href="/buch.html">Anti-Hype-Buch</a>
+        <a href="/founding.html">Premium</a>
+      </div>
+      <div>
+        <h4>Mehr</h4>
+        <a href="/ki-ratgeber.html">KI-Ratgeber (alle Guides)</a>
+        <a href="/ebook.html">Gratis-eBook</a>
+        <a href="/prompt-pack.html">Prompt-Pack</a>
+        <a href="/kurs.html">KI-Kurs</a>
+        <a href="/trilogie.html">Roman-Trilogie</a>
+        <a href="/presse.html">Presse</a>
+      </div>
+    </div>
+    <div class="footbar">
+      <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+      <span class="footbar-links">
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <a href="/en/" hreflang="en">EN</a>
+        <a href="/fr/" hreflang="fr">FR</a>
+        <a href="/it/" hreflang="it">IT</a>
+      </span>
+    </div>
   </div>
 </footer>
 
