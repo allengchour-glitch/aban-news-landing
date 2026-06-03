@@ -156,7 +156,7 @@ footer a{color:var(--muted)}
       <p id="buywrap">
         <a class="btn" id="buybtn" href="#">Jetzt kaufen</a>
       </p>
-      <p class="note">Zahlung über Lemon Squeezy (Karte/PayPal, MwSt automatisch). Rechnung inklusive.</p>
+      <p class="note">Zahlung über Gumroad (Karte/PayPal, MwSt automatisch). Rechnung inklusive.</p>
     </div>
     <p class="note">Für Entwickler:innen: kostenlose JSON-Vorschau unter <code>/api/ki-tools</code> (30 Tools, CORS). Voller Datensatz per API-Key auf Anfrage.</p>
     <p class="note">Lizenz: zur eigenen Nutzung. Keine Weiterverbreitung/Weiterverkauf des Datensatzes als Ganzes. Daten „ohne Gewähr", Anbieter-Angaben können sich ändern — offizielle URLs sind zur Prüfung dabei.</p>
@@ -170,9 +170,9 @@ footer a{color:var(--muted)}
 </div></footer>
 
 <script>
-// Geld-Schalter: echten Lemon-Squeezy-Produktlink hier eintragen.
+// Geld-Schalter: echten Gumroad-Produktlink hier eintragen (z. B. https://…gumroad.com/l/ki-tools-dach).
 // Leer => Mail-Fallback (kein toter Button), genau wie bei Founding/Buch.
-var DATENSATZ_BUY_URL = "";
+var DATENSATZ_BUY_URL = "https://chourallen.gumroad.com/l/ki-tools-dach";
 (function(){
   var b=document.getElementById("buybtn");
   if(DATENSATZ_BUY_URL){
