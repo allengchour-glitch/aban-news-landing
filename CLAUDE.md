@@ -130,6 +130,8 @@ durchgehend die du-Form.
 | `farb-umrechner.html` | Tool: **Farb-Umrechner HEX ↔ RGB ↔ HSL** (Color-Picker + Live-Vorschau, CSS-fertig, client-side). Pretty-URLs `/farben`, `/hex`, `/rgb`. |
 | `prozent-rechner.html` | Tool: **Prozent- & Dreisatz-Rechner** (Anteil, X-von-Y, Zu-/Abschlag, prozentuale Änderung, Dreisatz; client-side). Pretty-URLs `/prozent`, `/dreisatz`. |
 | `mwst-rechner.html` | Tool: **MwSt-Rechner CH/DE/AT** (netto ↔ brutto, gängige Sätze: CH 8,1/3,8/2,6 · DE 19/7 · AT 20/13/10; client-side, keine Steuerberatung). Pretty-URLs `/mwst`, `/mehrwertsteuer`. |
+| `qr-code.html` | Tool: **QR-Code-Generator** (Byte-Modus/UTF-8, Versionen 1–40, ECC L/M/Q/H, Auto-Maske; PNG+SVG-Export, Quiet-Zone, immer dunkel-auf-weiß). **Eigener QR-Encoder inline** (GF(256), RS, ISO-Maskierung); Datentabellen aus `segno` extrahiert, Encoder **gegen segno verifiziert** (296/296 byte-identische Matrizen, V1–39, alle ECC, Auto-Maske, UTF-8). Client-side, kein Upload. Pretty-URLs `/qr`, `/qrcode`. |
+| `online-tools.html` | **SEO-Hub** „Kostenlose Online-Tools für Selbstständige" — listet alle ~26 client-side Gratis-Tools nach Themen (Entwickler/Daten · Text/Farbe/Web · Rechnen/Geld · KI-Sichtbarkeit), CollectionPage+ItemList+FAQPage+Breadcrumb-JSON-LD, Newsletter-CTA. Indexierbarer Einstieg statt nur Footer. Pretty-URLs `/werkzeuge`, `/online-tools`, `/gratis-tools`. |
 | `anti-hype-texten.html` | SEO-Cornerstone-Ratgeber zum Tool (Vorher/Nachher, FAQ) |
 | `hype-widget-demo.html` | `noindex` — Doku/Demo fürs einbettbare Widget |
 | `impressum.html` / `datenschutz.html` | CH-Impressum / DSGVO |

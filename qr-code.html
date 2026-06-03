@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR-Code-Generator (lokal) · aban news</title>
+<meta name="description" content="Kostenloses Tool: QR-Code aus Text oder Link erzeugen und als PNG oder SVG herunterladen. Fehlerkorrektur waehlbar. Lokal im Browser, ohne Login, ohne Upload.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/qr-code.html">
+<meta property="og:title" content="QR-Code-Generator (lokal)">
+<meta property="og:description" content="QR-Code aus Text/Link erzeugen, als PNG oder SVG laden. Lokal im Browser, ohne Upload.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/qr-code.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"QR-Code-Generator (lokal)",
+"url":"https://abannews.com/qr-code.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Erzeugt QR-Codes aus Text oder Links und exportiert sie als PNG oder SVG. Laeuft komplett im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.grid{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:640px){.grid{grid-template-columns:1fr auto}}
+label{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+textarea{width:100%;min-height:120px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);resize:vertical;word-break:break-all}
+textarea:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.opts{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;margin-top:12px}
+select{font-size:14px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink)}
+.preview{display:flex;flex-direction:column;align-items:center;gap:10px;justify-content:center}
+.qrbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;line-height:0}
+canvas{display:block;width:240px;height:240px;image-rendering:pixelated}
+.meta{font-size:.82rem;color:var(--muted);text-align:center}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.preset{font-size:.8rem;cursor:pointer;background:transparent;border:1px solid var(--amber-lt);color:var(--amber-dk);border-radius:999px;padding:5px 12px}
+.status{font-size:.9rem;font-weight:600;min-height:1.2em;margin-top:8px}
+.status.bad{color:var(--bad)}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">QR-Code</span> erzeugen</h1>
+    <p>Aus Text oder Link einen QR-Code machen und als PNG oder SVG herunterladen. Fehlerkorrektur waehlbar. Laeuft komplett im Browser &mdash; nichts wird hochgeladen, nichts gespeichert.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="grid">
+      <div>
+        <label for="in">Text oder Link</label>
+        <textarea id="in" spellcheck="false">https://abannews.com</textarea>
+        <div class="bar">
+          <button class="preset" data-v="https://abannews.com">Website</button>
+          <button class="preset" data-v="https://abannews.beehiiv.com/subscribe">Newsletter</button>
+          <button class="preset" data-v="mailto:hallo@abannews.com">E-Mail</button>
+        </div>
+        <div class="opts">
+          <div><label for="ecc">Fehlerkorrektur</label>
+            <select id="ecc">
+              <option value="L">L &mdash; niedrig (mehr Daten)</option>
+              <option value="M" selected>M &mdash; mittel (Standard)</option>
+              <option value="Q">Q &mdash; hoch</option>
+              <option value="H">H &mdash; sehr hoch (robust)</option>
+            </select></div>
+        </div>
+        <div class="status" id="status"></div>
+      </div>
+      <div class="preview">
+        <div class="qrbox"><canvas id="cv" width="240" height="240" aria-label="QR-Code-Vorschau"></canvas></div>
+        <div class="meta" id="meta"></div>
+        <div class="bar">
+          <button class="btn" id="png">PNG laden</button>
+          <button class="btn ghost" id="svg">SVG laden</button>
+        </div>
+      </div>
+    </div>
+    <p class="note">Byte-Modus (UTF-8), Versionen 1&ndash;40, Maske automatisch nach ISO/IEC 18004. Hoehere Fehlerkorrektur = robuster gegen Kratzer/Logo, aber groesserer Code. Der QR-Code ist immer dunkel auf weiss (am besten scanbar) &mdash; auch im Dark-Mode. Alles lokal, kein Upload, kein Tracking. <strong>Tipp:</strong> nach dem Erzeugen kurz mit dem Handy gegenpruefen.</p>
+  </section>
+  <div class="cta"><strong>Mehr Tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">fuer Web, Links &amp; Automatisierung.</p>
+    <p><a class="btn" href="/encoder.html">Base64/URL</a>
+      <a class="btn ghost" href="/uuid-generator.html">UUID/Slug</a>
+      <a class="btn ghost" href="/kontrast-checker.html">Kontrast</a></p></div>
+</div></main>
+<footer><div class="wrap">&copy; 2026 aban news &middot; Allen Chour &middot; Belp (CH) &middot;
+  <a href="/encoder.html">Encoder</a> &middot; <a href="/uuid-generator.html">UUID/Slug</a> &middot;
+  <a href="/impressum.html">Impressum</a> &middot; <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+// QR-Daten aus segno 1.6.6 (BSD) extrahiert — Algorithmus selbst, gegen segno verifiziert.
+var QR_VER=[{"v":1,"a":[],"L":{"ec":7,"g":[[1,19]]},"M":{"ec":10,"g":[[1,16]]},"Q":{"ec":13,"g":[[1,13]]},"H":{"ec":17,"g":[[1,9]]}},{"v":2,"a":[6,18],"L":{"ec":10,"g":[[1,34]]},"M":{"ec":16,"g":[[1,28]]},"Q":{"ec":22,"g":[[1,22]]},"H":{"ec":28,"g":[[1,16]]}},{"v":3,"a":[6,22],"L":{"ec":15,"g":[[1,55]]},"M":{"ec":26,"g":[[1,44]]},"Q":{"ec":18,"g":[[2,17]]},"H":{"ec":22,"g":[[2,13]]}},{"v":4,"a":[6,26],"L":{"ec":20,"g":[[1,80]]},"M":{"ec":18,"g":[[2,32]]},"Q":{"ec":26,"g":[[2,24]]},"H":{"ec":16,"g":[[4,9]]}},{"v":5,"a":[6,30],"L":{"ec":26,"g":[[1,108]]},"M":{"ec":24,"g":[[2,43]]},"Q":{"ec":18,"g":[[2,15],[2,16]]},"H":{"ec":22,"g":[[2,11],[2,12]]}},{"v":6,"a":[6,34],"L":{"ec":18,"g":[[2,68]]},"M":{"ec":16,"g":[[4,27]]},"Q":{"ec":24,"g":[[4,19]]},"H":{"ec":28,"g":[[4,15]]}},{"v":7,"a":[6,22,38],"L":{"ec":20,"g":[[2,78]]},"M":{"ec":18,"g":[[4,31]]},"Q":{"ec":18,"g":[[2,14],[4,15]]},"H":{"ec":26,"g":[[4,13],[1,14]]}},{"v":8,"a":[6,24,42],"L":{"ec":24,"g":[[2,97]]},"M":{"ec":22,"g":[[2,38],[2,39]]},"Q":{"ec":22,"g":[[4,18],[2,19]]},"H":{"ec":26,"g":[[4,14],[2,15]]}},{"v":9,"a":[6,26,46],"L":{"ec":30,"g":[[2,116]]},"M":{"ec":22,"g":[[3,36],[2,37]]},"Q":{"ec":20,"g":[[4,16],[4,17]]},"H":{"ec":24,"g":[[4,12],[4,13]]}},{"v":10,"a":[6,28,50],"L":{"ec":18,"g":[[2,68],[2,69]]},"M":{"ec":26,"g":[[4,43],[1,44]]},"Q":{"ec":24,"g":[[6,19],[2,20]]},"H":{"ec":28,"g":[[6,15],[2,16]]}},{"v":11,"a":[6,30,54],"L":{"ec":20,"g":[[4,81]]},"M":{"ec":30,"g":[[1,50],[4,51]]},"Q":{"ec":28,"g":[[4,22],[4,23]]},"H":{"ec":24,"g":[[3,12],[8,13]]}},{"v":12,"a":[6,32,58],"L":{"ec":24,"g":[[2,92],[2,93]]},"M":{"ec":22,"g":[[6,36],[2,37]]},"Q":{"ec":26,"g":[[4,20],[6,21]]},"H":{"ec":28,"g":[[7,14],[4,15]]}},{"v":13,"a":[6,34,62],"L":{"ec":26,"g":[[4,107]]},"M":{"ec":22,"g":[[8,37],[1,38]]},"Q":{"ec":24,"g":[[8,20],[4,21]]},"H":{"ec":22,"g":[[12,11],[4,12]]}},{"v":14,"a":[6,26,46,66],"L":{"ec":30,"g":[[3,115],[1,116]]},"M":{"ec":24,"g":[[4,40],[5,41]]},"Q":{"ec":20,"g":[[11,16],[5,17]]},"H":{"ec":24,"g":[[11,12],[5,13]]}},{"v":15,"a":[6,26,48,70],"L":{"ec":22,"g":[[5,87],[1,88]]},"M":{"ec":24,"g":[[5,41],[5,42]]},"Q":{"ec":30,"g":[[5,24],[7,25]]},"H":{"ec":24,"g":[[11,12],[7,13]]}},{"v":16,"a":[6,26,50,74],"L":{"ec":24,"g":[[5,98],[1,99]]},"M":{"ec":28,"g":[[7,45],[3,46]]},"Q":{"ec":24,"g":[[15,19],[2,20]]},"H":{"ec":30,"g":[[3,15],[13,16]]}},{"v":17,"a":[6,30,54,78],"L":{"ec":28,"g":[[1,107],[5,108]]},"M":{"ec":28,"g":[[10,46],[1,47]]},"Q":{"ec":28,"g":[[1,22],[15,23]]},"H":{"ec":28,"g":[[2,14],[17,15]]}},{"v":18,"a":[6,30,56,82],"L":{"ec":30,"g":[[5,120],[1,121]]},"M":{"ec":26,"g":[[9,43],[4,44]]},"Q":{"ec":28,"g":[[17,22],[1,23]]},"H":{"ec":28,"g":[[2,14],[19,15]]}},{"v":19,"a":[6,30,58,86],"L":{"ec":28,"g":[[3,113],[4,114]]},"M":{"ec":26,"g":[[3,44],[11,45]]},"Q":{"ec":26,"g":[[17,21],[4,22]]},"H":{"ec":26,"g":[[9,13],[16,14]]}},{"v":20,"a":[6,34,62,90],"L":{"ec":28,"g":[[3,107],[5,108]]},"M":{"ec":26,"g":[[3,41],[13,42]]},"Q":{"ec":30,"g":[[15,24],[5,25]]},"H":{"ec":28,"g":[[15,15],[10,16]]}},{"v":21,"a":[6,28,50,72,94],"L":{"ec":28,"g":[[4,116],[4,117]]},"M":{"ec":26,"g":[[17,42]]},"Q":{"ec":28,"g":[[17,22],[6,23]]},"H":{"ec":30,"g":[[19,16],[6,17]]}},{"v":22,"a":[6,26,50,74,98],"L":{"ec":28,"g":[[2,111],[7,112]]},"M":{"ec":28,"g":[[17,46]]},"Q":{"ec":30,"g":[[7,24],[16,25]]},"H":{"ec":24,"g":[[34,13]]}},{"v":23,"a":[6,30,54,78,102],"L":{"ec":30,"g":[[4,121],[5,122]]},"M":{"ec":28,"g":[[4,47],[14,48]]},"Q":{"ec":30,"g":[[11,24],[14,25]]},"H":{"ec":30,"g":[[16,15],[14,16]]}},{"v":24,"a":[6,28,54,80,106],"L":{"ec":30,"g":[[6,117],[4,118]]},"M":{"ec":28,"g":[[6,45],[14,46]]},"Q":{"ec":30,"g":[[11,24],[16,25]]},"H":{"ec":30,"g":[[30,16],[2,17]]}},{"v":25,"a":[6,32,58,84,110],"L":{"ec":26,"g":[[8,106],[4,107]]},"M":{"ec":28,"g":[[8,47],[13,48]]},"Q":{"ec":30,"g":[[7,24],[22,25]]},"H":{"ec":30,"g":[[22,15],[13,16]]}},{"v":26,"a":[6,30,58,86,114],"L":{"ec":28,"g":[[10,114],[2,115]]},"M":{"ec":28,"g":[[19,46],[4,47]]},"Q":{"ec":28,"g":[[28,22],[6,23]]},"H":{"ec":30,"g":[[33,16],[4,17]]}},{"v":27,"a":[6,34,62,90,118],"L":{"ec":30,"g":[[8,122],[4,123]]},"M":{"ec":28,"g":[[22,45],[3,46]]},"Q":{"ec":30,"g":[[8,23],[26,24]]},"H":{"ec":30,"g":[[12,15],[28,16]]}},{"v":28,"a":[6,26,50,74,98,122],"L":{"ec":30,"g":[[3,117],[10,118]]},"M":{"ec":28,"g":[[3,45],[23,46]]},"Q":{"ec":30,"g":[[4,24],[31,25]]},"H":{"ec":30,"g":[[11,15],[31,16]]}},{"v":29,"a":[6,30,54,78,102,126],"L":{"ec":30,"g":[[7,116],[7,117]]},"M":{"ec":28,"g":[[21,45],[7,46]]},"Q":{"ec":30,"g":[[1,23],[37,24]]},"H":{"ec":30,"g":[[19,15],[26,16]]}},{"v":30,"a":[6,26,52,78,104,130],"L":{"ec":30,"g":[[5,115],[10,116]]},"M":{"ec":28,"g":[[19,47],[10,48]]},"Q":{"ec":30,"g":[[15,24],[25,25]]},"H":{"ec":30,"g":[[23,15],[25,16]]}},{"v":31,"a":[6,30,56,82,108,134],"L":{"ec":30,"g":[[13,115],[3,116]]},"M":{"ec":28,"g":[[2,46],[29,47]]},"Q":{"ec":30,"g":[[42,24],[1,25]]},"H":{"ec":30,"g":[[23,15],[28,16]]}},{"v":32,"a":[6,34,60,86,112,138],"L":{"ec":30,"g":[[17,115]]},"M":{"ec":28,"g":[[10,46],[23,47]]},"Q":{"ec":30,"g":[[10,24],[35,25]]},"H":{"ec":30,"g":[[19,15],[35,16]]}},{"v":33,"a":[6,30,58,86,114,142],"L":{"ec":30,"g":[[17,115],[1,116]]},"M":{"ec":28,"g":[[14,46],[21,47]]},"Q":{"ec":30,"g":[[29,24],[19,25]]},"H":{"ec":30,"g":[[11,15],[46,16]]}},{"v":34,"a":[6,34,62,90,118,146],"L":{"ec":30,"g":[[13,115],[6,116]]},"M":{"ec":28,"g":[[14,46],[23,47]]},"Q":{"ec":30,"g":[[44,24],[7,25]]},"H":{"ec":30,"g":[[59,16],[1,17]]}},{"v":35,"a":[6,30,54,78,102,126,150],"L":{"ec":30,"g":[[12,121],[7,122]]},"M":{"ec":28,"g":[[12,47],[26,48]]},"Q":{"ec":30,"g":[[39,24],[14,25]]},"H":{"ec":30,"g":[[22,15],[41,16]]}},{"v":36,"a":[6,24,50,76,102,128,154],"L":{"ec":30,"g":[[6,121],[14,122]]},"M":{"ec":28,"g":[[6,47],[34,48]]},"Q":{"ec":30,"g":[[46,24],[10,25]]},"H":{"ec":30,"g":[[2,15],[64,16]]}},{"v":37,"a":[6,28,54,80,106,132,158],"L":{"ec":30,"g":[[17,122],[4,123]]},"M":{"ec":28,"g":[[29,46],[14,47]]},"Q":{"ec":30,"g":[[49,24],[10,25]]},"H":{"ec":30,"g":[[24,15],[46,16]]}},{"v":38,"a":[6,32,58,84,110,136,162],"L":{"ec":30,"g":[[4,122],[18,123]]},"M":{"ec":28,"g":[[13,46],[32,47]]},"Q":{"ec":30,"g":[[48,24],[14,25]]},"H":{"ec":30,"g":[[42,15],[32,16]]}},{"v":39,"a":[6,26,54,82,110,138,166],"L":{"ec":30,"g":[[20,117],[4,118]]},"M":{"ec":28,"g":[[40,47],[7,48]]},"Q":{"ec":30,"g":[[43,24],[22,25]]},"H":{"ec":30,"g":[[10,15],[67,16]]}},{"v":40,"a":[6,30,58,86,114,142,170],"L":{"ec":30,"g":[[19,118],[6,119]]},"M":{"ec":28,"g":[[18,47],[31,48]]},"Q":{"ec":30,"g":[[34,24],[34,25]]},"H":{"ec":30,"g":[[20,15],[61,16]]}}];
+var QR_FMT=[21522,20773,24188,23371,17913,16590,20375,19104,30660,29427,32170,30877,26159,25368,27713,26998,5769,5054,7399,6608,1890,597,3340,2107,13663,12392,16177,14854,9396,8579,11994,11245];
+var QR_VERINFO=[31892,34236,39577,42195,48118,51042,55367,58893,63784,68472,70749,76311,79154,84390,87683,92361,96236,102084,102881,110507,110734,117786,119615,126325,127568,133589,136944,141498,145311,150283,152622,158308,161089,167017];
+
+// Standalone QR (byte mode, versions 1-40). Algorithmus selbst geschrieben,
+// Datentabellen aus segno extrahiert. GF(256), prim 0x11d.
+function buildQR(text, eccLevel, forceMask){
+  var bytes = utf8(text);
+  // char count indicator length: 8 bits v1-9, 16 bits v10-40 (byte mode)
+  function fits(v){
+    var cap = dataCodewords(v, eccLevel);
+    var cci = v<=9 ? 8 : 16;
+    var bits = 4 + cci + bytes.length*8;
+    return bits <= cap*8;
+  }
+  var ver=0,i;
+  for(i=1;i<=40;i++){ if(fits(i)){ver=i;break;} }
+  if(!ver) throw new Error("Text zu lang für QR (max ~2900 Zeichen).");
+  // build bitstream
+  var bb=[];
+  function put(val,len){ for(var b=len-1;b>=0;b--) bb.push((val>>b)&1); }
+  put(0x4,4); // byte mode
+  put(bytes.length, ver<=9?8:16);
+  for(i=0;i<bytes.length;i++) put(bytes[i],8);
+  var cap=dataCodewords(ver,eccLevel);
+  // terminator
+  var rem=cap*8-bb.length; put(0, Math.min(4,rem));
+  // padding bits (folgt segno: 8-(len%8) -> fuegt ein volles Null-Byte ein, wenn schon Byte-aligned;
+  // fuer Scanner irrelevant, da Fueller nach der Datenlaenge ignoriert wird)
+  var padbits=8-(bb.length%8); for(var pbk=0;pbk<padbits;pbk++) bb.push(0);
+  var data=[]; for(i=0;i<bb.length;i+=8){var x=0;for(var j=0;j<8;j++)x=(x<<1)|bb[i+j];data.push(x);}
+  var pad=[0xEC,0x11],pi=0;
+  while(data.length<cap){ data.push(pad[pi%2]); pi++; }
+  // split into blocks
+  var spec=verSpec(ver,eccLevel), ecPer=spec.ec, groups=spec.g;
+  var blocks=[], pos=0;
+  groups.forEach(function(grp){
+    for(var k=0;k<grp[0];k++){
+      var d=data.slice(pos,pos+grp[1]); pos+=grp[1];
+      blocks.push({d:d, e:rsEncode(d,ecPer)});
+    }
+  });
+  // interleave
+  var maxData=0,maxEc=0;
+  blocks.forEach(function(b){maxData=Math.max(maxData,b.d.length);maxEc=Math.max(maxEc,b.e.length);});
+  var finalCW=[];
+  for(i=0;i<maxData;i++) blocks.forEach(function(b){ if(i<b.d.length) finalCW.push(b.d[i]); });
+  for(i=0;i<maxEc;i++) blocks.forEach(function(b){ if(i<b.e.length) finalCW.push(b.e[i]); });
+  // module placement
+  var size=17+ver*4;
+  var m=[], reserved=[];
+  for(i=0;i<size;i++){ m.push(new Array(size).fill(null)); reserved.push(new Array(size).fill(false)); }
+  function setF(r,c,v){ m[r][c]=v; reserved[r][c]=true; }
+  // finder + separators
+  function finder(r,c){
+    for(var dr=-1;dr<=7;dr++)for(var dc=-1;dc<=7;dc++){
+      var rr=r+dr,cc=c+dc; if(rr<0||cc<0||rr>=size||cc>=size)continue;
+      var inb=(dr>=0&&dr<=6&&(dc===0||dc===6))||(dc>=0&&dc<=6&&(dr===0||dr===6))||(dr>=2&&dr<=4&&dc>=2&&dc<=4);
+      setF(rr,cc, inb?1:0);
+    }
+  }
+  finder(0,0); finder(0,size-7); finder(size-7,0);
+  // timing
+  for(i=8;i<size-8;i++){ setF(6,i,(i%2===0)?1:0); setF(i,6,(i%2===0)?1:0); }
+  // alignment
+  var ap=spec.a;
+  for(var a1=0;a1<ap.length;a1++)for(var a2=0;a2<ap.length;a2++){
+    var r=ap[a1],c=ap[a2];
+    if((r<=7&&c<=7)||(r<=7&&c>=size-8)||(r>=size-8&&c<=7))continue;
+    for(var dr=-2;dr<=2;dr++)for(var dc=-2;dc<=2;dc++){
+      var inb=Math.max(Math.abs(dr),Math.abs(dc));
+      setF(r+dr,c+dc,(inb===1)?0:1);
+    }
+  }
+  // dark module: nur reservieren; Wert wird (wie bei segno) erst nach der Masken-Wahl in placeFormat gesetzt
+  reserved[size-8][8]=true;
+  // reserve format areas
+  for(i=0;i<=8;i++){ if(i!==6){reserved[8][i]=true;reserved[i][8]=true;} }
+  for(i=0;i<8;i++){ reserved[8][size-1-i]=true; reserved[size-1-i][8]=true; }
+  reserved[8][size-8]=true;
+  // reserve version info (v7+)
+  if(ver>=7){
+    for(var rr2=0;rr2<6;rr2++)for(var cc2=0;cc2<3;cc2++){ reserved[rr2][size-11+cc2]=true; reserved[size-11+cc2][rr2]=true; }
+  }
+  // place data zigzag (mirrors ISO 18004 / segno: direction from column value)
+  var bit=0;
+  function placeBit(r,c){
+    if(reserved[r][c])return;
+    var v = bit<finalCW.length*8 ? (finalCW[bit>>3]>>(7-(bit&7)))&1 : 0;
+    m[r][c]=v; bit++;
+  }
+  for(var rc=size-1;rc>0;rc-=2){
+    var right=rc;
+    if(right<=6)right--;        // lokale Korrektur — verschiebt rc (die Laufvariable) NICHT
+    for(var vert=0;vert<size;vert++){
+      for(var z=0;z<2;z++){
+        var col=right-z;
+        var up=(right&2)===0;
+        if(col<6) up=!up;        // Richtung links der Timing-Spalte umkehren (ISO/segno: upwards ^= j<6)
+        var r=up?size-1-vert:vert;
+        placeBit(r,col);
+      }
+    }
+  }
+  // mask + penalty
+  function maskFn(k,r,c){
+    switch(k){case 0:return (r+c)%2===0;case 1:return r%2===0;case 2:return c%3===0;
+      case 3:return (r+c)%3===0;case 4:return (Math.floor(r/2)+Math.floor(c/3))%2===0;
+      case 5:return (r*c)%2+(r*c)%3===0;case 6:return ((r*c)%2+(r*c)%3)%2===0;
+      default:return ((r+c)%2+(r*c)%3)%2===0;}
+  }
+  function apply(k){
+    var g=[]; for(var r=0;r<size;r++){g.push(m[r].slice());}
+    for(var r=0;r<size;r++)for(var c=0;c<size;c++){ if(!reserved[r][c]&&maskFn(k,r,c)) g[r][c]^=1; }
+    return g;
+  }
+  function n3occ(seq){
+    var pat=[1,0,1,1,1,0,1], count=0, n=seq.length;
+    function findFrom(from){
+      for(var p=from;p+7<=n;p++){var ok=true;for(var t=0;t<7;t++){if(seq[p+t]!==pat[t]){ok=false;break;}}if(ok)return p;}
+      return -1;
+    }
+    function allZero(a,b){for(var x=a;x<b;x++)if(seq[x])return false;return true;}
+    var idx=findFrom(0);
+    while(idx!==-1){
+      var offset=idx+7;
+      var edge=(idx===0||idx===n-7);
+      if(edge||allZero(Math.max(idx-4,0),Math.min(idx,n))||allZero(Math.max(offset,0),Math.min(offset+4,n))){count+=40;}
+      else{offset=idx+4;}
+      idx=findFrom(offset);
+    }
+    return count;
+  }
+  function penalty(g){
+    var n1=0,n2=0,n3=0,dark=0,i,j,run;
+    for(i=0;i<size;i++){
+      run=1; for(j=1;j<size;j++){ if(g[i][j]===g[i][j-1])run++; else{if(run>=5)n1+=run-2;run=1;} } if(run>=5)n1+=run-2;
+      for(j=0;j<size;j++) dark+=g[i][j];
+      if(i>0) for(j=1;j<size;j++){ if(g[i][j]===g[i][j-1]&&g[i][j]===g[i-1][j]&&g[i][j]===g[i-1][j-1]) n2+=3; }
+      n3+=n3occ(g[i]);
+    }
+    for(j=0;j<size;j++){
+      var col=new Array(size); for(i=0;i<size;i++)col[i]=g[i][j];
+      run=1; for(i=1;i<size;i++){ if(col[i]===col[i-1])run++; else{if(run>=5)n1+=run-2;run=1;} } if(run>=5)n1+=run-2;
+      n3+=n3occ(col);
+    }
+    var percent=dark/(size*size);
+    var n4=10*Math.floor(Math.abs(percent*100-50)/5);
+    return n1+n2+n3+n4;
+  }
+  var best, bestK, bestP=Infinity;
+  var masks = (forceMask==null)?[0,1,2,3,4,5,6,7]:[forceMask];
+  masks.forEach(function(k){
+    var g=apply(k);
+    var gs=g.map(function(row){return row.slice();});
+    for(var r=0;r<size;r++)for(var c=0;c<size;c++) if(gs[r][c]===null) gs[r][c]=0;
+    var p=penalty(gs);
+    if(p<bestP){bestP=p;best=g;bestK=k;}
+  });
+  placeFormat(best,eccLevel,bestK);
+  if(ver>=7) placeVersion(best,ver);
+  return {matrix:best, version:ver, mask:bestK, size:size};
+
+  // ---- helpers using outer scope ----
+  function placeFormat(g,lvl,k){
+    var idx = ({L:1,M:0,Q:3,H:2}[lvl])*8 + k;
+    var fi = QR_FMT[idx];
+    var voff=0,hoff=0;
+    for(var i=0;i<8;i++){
+      var vbit=(fi>>i)&1, hbit=(fi>>(14-i))&1;
+      if(i===6){voff+=1;hoff=1;}
+      g[i+voff][8]=vbit;        // vertical, top-left
+      g[8][i+hoff]=hbit;        // horizontal, top-left
+      g[8][size-1-i]=vbit;      // horizontal, top-right
+      g[size-1-i][8]=hbit;      // vertical, bottom-left
+    }
+    g[size-8][8]=1;             // dark module
+  }
+  function placeVersion(g,v){
+    if(v<7)return;
+    var vi=QR_VERINFO[v-7];
+    for(var i=0;i<6;i++){
+      var b1=(vi>>(i*3))&1, b2=(vi>>(i*3+1))&1, b3=(vi>>(i*3+2))&1;
+      g[size-11][i]=b1; g[size-10][i]=b2; g[size-9][i]=b3;   // lower left
+      g[i][size-11]=b1; g[i][size-10]=b2; g[i][size-9]=b3;   // upper right
+    }
+  }
+}
+function utf8(s){ var u=unescape(encodeURIComponent(s)),a=[]; for(var i=0;i<u.length;i++)a.push(u.charCodeAt(i)); return a; }
+function verSpec(v,lvl){ var o=QR_VER[v-1]; return {ec:o[lvl].ec, g:o[lvl].g, a:o.a}; }
+function dataCodewords(v,lvl){ var s=verSpec(v,lvl),t=0; s.g.forEach(function(grp){t+=grp[0]*grp[1];}); return t; }
+// GF(256)
+var EXP=new Array(512),LOG=new Array(256);
+(function(){var x=1;for(var i=0;i<255;i++){EXP[i]=x;LOG[x]=i;x<<=1;if(x&0x100)x^=0x11d;}for(i=255;i<512;i++)EXP[i]=EXP[i-255];})();
+function gmul(a,b){if(a===0||b===0)return 0;return EXP[LOG[a]+LOG[b]];}
+function genPoly(n){var g=[1];for(var i=0;i<n;i++){var ng=new Array(g.length+1).fill(0);for(var j=0;j<g.length;j++){ng[j]^=gmul(g[j],EXP[i]);ng[j+1]^=g[j];}g=ng;}return g.reverse();}
+function rsEncode(data,nec){var gen=genPoly(nec);var res=new Array(nec).fill(0);for(var i=0;i<data.length;i++){var factor=data[i]^res[0];res.shift();res.push(0);if(factor!==0)for(var j=0;j<nec;j++)res[j]^=gmul(gen[j+1],factor);}return res;}
+
+
+</script>
+<script>
+(function(){
+  var inp=document.getElementById("in"),ecc=document.getElementById("ecc"),
+      cv=document.getElementById("cv"),meta=document.getElementById("meta"),status=document.getElementById("status");
+  var DARK="#1f2937", LIGHT="#ffffff", QZ=4; // quiet zone modules
+  var current=null;
+  function draw(){
+    var text=inp.value;
+    status.className="status";status.textContent="";
+    if(!text){meta.textContent="";var ctx=cv.getContext("2d");ctx.fillStyle=LIGHT;ctx.fillRect(0,0,cv.width,cv.height);current=null;return;}
+    var r;
+    try{ r=buildQR(text,ecc.value,null); }
+    catch(e){ status.className="status bad";status.textContent="✗ "+(e.message||e); current=null; return; }
+    current=r;
+    var n=r.size, total=n+2*QZ;
+    var px=Math.max(2,Math.floor(640/total)); // device px per module
+    var dim=total*px;
+    cv.width=dim;cv.height=dim;
+    var ctx=cv.getContext("2d");
+    ctx.fillStyle=LIGHT;ctx.fillRect(0,0,dim,dim);
+    ctx.fillStyle=DARK;
+    for(var y=0;y<n;y++)for(var x=0;x<n;x++){ if(r.matrix[y][x]) ctx.fillRect((x+QZ)*px,(y+QZ)*px,px,px); }
+    // CSS display size: keep crisp, cap ~280
+    var disp=Math.min(280,dim); cv.style.width=disp+"px";cv.style.height=disp+"px";
+    meta.textContent="Version "+r.version+" · "+n+"×"+n+" Module · Fehlerkorrektur "+ecc.value+" · Maske "+r.mask;
+  }
+  function svgString(r){
+    var n=r.size, total=n+2*QZ;
+    var rects="";
+    for(var y=0;y<n;y++)for(var x=0;x<n;x++){ if(r.matrix[y][x]) rects+='<rect x="'+(x+QZ)+'" y="'+(y+QZ)+'" width="1" height="1"/>'; }
+    return '<?xml version="1.0" encoding="UTF-8"?>\n'+
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+total+' '+total+'" shape-rendering="crispEdges" width="'+(total*8)+'" height="'+(total*8)+'">'+
+      '<rect width="'+total+'" height="'+total+'" fill="#ffffff"/>'+
+      '<g fill="#1f2937">'+rects+'</g></svg>';
+  }
+  function dl(blob,name){
+    var a=document.createElement("a"),url=URL.createObjectURL(blob);
+    a.href=url;a.download=name;document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(url);a.remove();},100);
+  }
+  document.getElementById("png").addEventListener("click",function(){
+    if(!current)return;
+    cv.toBlob(function(b){ if(b) dl(b,"qr-code.png"); });
+  });
+  document.getElementById("svg").addEventListener("click",function(){
+    if(!current)return;
+    dl(new Blob([svgString(current)],{type:"image/svg+xml"}),"qr-code.svg");
+  });
+  document.querySelectorAll(".preset").forEach(function(b){
+    b.addEventListener("click",function(){ inp.value=b.getAttribute("data-v"); draw(); });
+  });
+  var t; inp.addEventListener("input",function(){clearTimeout(t);t=setTimeout(draw,200);});
+  ecc.addEventListener("change",draw);
+  draw();
+})();
+</script>
+</body>
+</html>
