@@ -3,8 +3,11 @@
   "posts": [
     {
       "id": "p1-start",
-      "sent": false,
-      "text": "📡 Neu: KI-Tools Radar\n\nIch habe 177 KI-Tools für den deutschsprachigen Raum ehrlich bewertet — mit Preisen, DSGVO-Blick und Pro/Contra. Kein Hype, nur was sich im Alltag bewährt.\n\nViele davon haben ein kostenloses Angebot.\n\n👉 https://radar.abannews.com"
+      "sent": true,
+      "text": "📡 Neu: KI-Tools Radar\n\nIch habe 177 KI-Tools für den deutschsprachigen Raum ehrlich bewertet — mit Preisen, DSGVO-Blick und Pro/Contra. Kein Hype, nur was sich im Alltag bewährt.\n\nViele davon haben ein kostenloses Angebot.\n\n👉 https://radar.abannews.com",
+      "sent_channels": [
+        "telegram"
+      ]
     },
     {
       "id": "p2-top5",
