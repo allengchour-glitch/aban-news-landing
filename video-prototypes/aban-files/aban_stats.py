@@ -4,23 +4,26 @@
 Liest die YouTube-View-Zahlen der hochgeladenen Folgen und sagt, welche
 Themen/Formate am besten ziehen -> datengetriebener Wachstums-Loop.
 
-Braucht einen **API-Key** (YouTube Data API v3 im Projekt aktiviert):
-  YT_API_KEY  (empfohlen)  |  GOOGLE_API_KEY  |  GEMINI_API_KEY
-Das Upload-OAuth-Token darf `videos.list` NICHT lesen (Scope-403), daher API-Key.
-Reine stdlib (urllib) — keine google-Client-Lib, proxy-robust.
+Zwei Wege (automatisch):
+  1. **API-Key** (YT_API_KEY / GOOGLE_API_KEY / GEMINI_API_KEY, YouTube Data API v3
+     im Projekt aktiviert + Key nicht auf andere APIs beschraenkt) -> Views+Likes+Komm.
+  2. **Scrape-Fallback** (kein Key noetig): liest die View-Zahl von der oeffentlichen
+     Watch-Seite. Funktioniert auf sauberen IPs (GitHub-Runner); auf manchen
+     Cloud-/Sandbox-IPs blockt Google mit CAPTCHA.
 
-Video-IDs kommen aus video_ids.json (vom Publisher gepflegt).
+Video-IDs aus video_ids.json (vom Publisher gepflegt). Reine stdlib.
 
 Aufruf:
-  YT_API_KEY=AIza... python3 aban_stats.py            # Tabelle
-  YT_API_KEY=AIza... python3 aban_stats.py --report   # + reports/ABAN-STATS.md
+  python3 aban_stats.py            # Tabelle (Key wenn vorhanden, sonst Scrape)
+  python3 aban_stats.py --report   # + reports/ABAN-STATS.md
 """
-import os, sys, json, argparse, datetime, urllib.request, urllib.parse
+import os, sys, re, json, argparse, datetime, urllib.request, urllib.parse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 IDS = os.path.join(HERE, "video_ids.json")
 SCRIPTS = os.path.join(HERE, "aban_scripts.json")
 REPORT = os.path.abspath(os.path.join(HERE, "..", "..", "reports", "ABAN-STATS.md"))
+UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
 
 
 def api_key():
@@ -29,15 +32,15 @@ def api_key():
 
 
 def title_to_ep(title, scripts):
-    t = title.upper()
+    t = (title or "").upper()
     for ep, sc in scripts.items():
         if sc["title"].upper() in t:
             return ep
     return "?"
 
 
-def fetch(ids, key):
-    out = []
+def via_api(ids, key, scripts):
+    rows = []
     for i in range(0, len(ids), 50):
         q = urllib.parse.urlencode({"part": "snippet,statistics",
                                     "id": ",".join(ids[i:i + 50]), "key": key})
@@ -45,8 +48,33 @@ def fetch(ids, key):
             d = json.load(r)
         if "error" in d:
             raise RuntimeError(d["error"].get("message", "API-Fehler"))
-        out += d.get("items", [])
-    return out
+        for it in d.get("items", []):
+            st = it.get("statistics", {})
+            rows.append({"title": it["snippet"]["title"], "ep": title_to_ep(it["snippet"]["title"], scripts),
+                         "views": int(st.get("viewCount", 0)), "likes": int(st.get("likeCount", 0)),
+                         "comments": int(st.get("commentCount", 0))})
+    return rows
+
+
+def via_scrape(ids, scripts):
+    rows = []
+    for vid in ids:
+        try:
+            req = urllib.request.Request(f"https://www.youtube.com/watch?v={vid}",
+                                         headers={"User-Agent": UA, "Accept-Language": "en-US,en"})
+            html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "ignore")
+        except Exception:
+            continue
+        if "/sorry/" in html or len(html) < 5000:
+            raise RuntimeError("Google blockt diese IP (CAPTCHA) — Scrape hier nicht moeglich")
+        m = re.search(r'"viewCount":"(\d+)"', html)
+        tm = re.search(r'<meta name="title" content="([^"]*)"', html) or re.search(r"<title>([^<]*)</title>", html)
+        title = tm.group(1).replace(" - YouTube", "") if tm else vid
+        rows.append({"title": title, "ep": title_to_ep(title, scripts),
+                     "views": int(m.group(1)) if m else 0, "likes": -1, "comments": -1})
+    if not rows:
+        raise RuntimeError("keine Daten erhalten (vermutlich IP-Block/CAPTCHA)")
+    return rows
 
 
 def main():
@@ -54,40 +82,37 @@ def main():
     ap.add_argument("--report", action="store_true")
     args = ap.parse_args()
 
-    key = api_key()
-    if not key:
-        print("Kein API-Key (YT_API_KEY / GOOGLE_API_KEY / GEMINI_API_KEY) gesetzt —\n"
-              "View-Zahlen koennen nicht gelesen werden. Uebersprungen (kein Fehler).")
-        return  # Exit 0: Workflow bleibt gruen
-
     seed = json.load(open(IDS)) if os.path.exists(IDS) else {}
     ids = list(dict.fromkeys(seed.values()))
     if not ids:
         print("Keine Video-IDs in video_ids.json."); return
-
     scripts = json.load(open(SCRIPTS))
-    try:
-        items = fetch(ids, key)
-    except Exception as e:
-        print(f"API-Fehler (YouTube Data API v3 fuer den Key aktiviert?): {e}")
-        return  # Exit 0: kein roter Workflow
 
-    rows = []
-    for it in items:
-        st = it.get("statistics", {})
-        rows.append({"title": it["snippet"]["title"],
-                     "ep": title_to_ep(it["snippet"]["title"], scripts),
-                     "views": int(st.get("viewCount", 0)),
-                     "likes": int(st.get("likeCount", 0)),
-                     "comments": int(st.get("commentCount", 0))})
+    rows, mode = None, ""
+    key = api_key()
+    if key:
+        try:
+            rows, mode = via_api(ids, key, scripts), "API-Key"
+        except Exception as e:
+            print(f"(API-Key nicht nutzbar: {e}; versuche Scrape)")
+    if rows is None:
+        try:
+            rows, mode = via_scrape(ids, scripts), "Scrape"
+        except Exception as e:
+            print(f"View-Zahlen nicht lesbar: {e}\n"
+                  "-> Im woechentlichen GitHub-Workflow (saubere IP) klappt der Scrape;"
+                  " oder einen unbeschraenkten YT_API_KEY hinterlegen.")
+            return  # Exit 0: Workflow bleibt gruen
+
     rows.sort(key=lambda x: x["views"], reverse=True)
-
-    lines = [f"# ABAN Files — View-Report ({datetime.date.today()})", "",
+    def cell(n):
+        return "—" if n < 0 else str(n)
+    lines = [f"# ABAN Files — View-Report ({datetime.date.today()}, Quelle: {mode})", "",
              f"{len(rows)} Videos, sortiert nach Views.", "",
              "| # | Ep | Titel | Views | Likes | Kommentare |",
              "|---|----|-------|------:|------:|-----------:|"]
     for n, r in enumerate(rows, 1):
-        lines.append(f"| {n} | {r['ep']} | {r['title'][:40]} | {r['views']} | {r['likes']} | {r['comments']} |")
+        lines.append(f"| {n} | {r['ep']} | {r['title'][:40]} | {r['views']} | {cell(r['likes'])} | {cell(r['comments'])} |")
     lines += ["", f"**Gesamt-Views:** {sum(r['views'] for r in rows)}"]
     if rows:
         b = rows[0]
