@@ -17,9 +17,9 @@ on:
       radar:
         description: 'Radar-Kürzel (z. B. video) oder "all-pending" für alle offenen'
         required: true
-        default: 'video'
+        default: 'all-pending'
       dry_run:
-        description: 'Nur anzeigen, nichts ändern'
+        description: 'Nur anzeigen, nichts ändern (erst so testen, dann Haken weg)'
         type: boolean
         default: true
       no_deploy:
