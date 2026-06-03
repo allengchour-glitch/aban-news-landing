@@ -141,25 +141,47 @@ def _search(params):
     return json.load(urllib.request.urlopen(req, timeout=60)).get("videos", [])
 
 
-def pexels_dl(query, idx):
-    vids = _search({"query": query, "orientation": "portrait", "per_page": 8, "size": "medium"})
-    if not vids:
-        vids = _search({"query": query, "per_page": 8})
-    if not vids:
-        return None
-    # bestes File: portrait, hoehe>=1080, sonst groesstes
-    best, bestscore = None, -1
+def _rank(vids):
+    """Pro Video bestes File -> Liste (score, video_id, link), beste zuerst."""
+    out = []
     for v in vids:
+        best, bs = None, -1
         for f in v.get("video_files", []):
             h, w = f.get("height", 0), f.get("width", 0)
-            score = h + (5000 if h >= w else 0) + min(h, 1920)
-            if score > bestscore:
-                bestscore, best = score, f["link"]
-    out = f"/tmp/_stock_{idx}.mp4"
-    dreq = urllib.request.Request(best, headers={"User-Agent": UA})
-    with urllib.request.urlopen(dreq, timeout=120) as r, open(out, "wb") as fo:
-        fo.write(r.read())
+            sc = h + (5000 if h >= w else 0) + min(h, 1920)
+            if sc > bs:
+                bs, best = sc, f["link"]
+        if best:
+            out.append((bs, v.get("id"), best))
+    out.sort(reverse=True)
     return out
+
+
+def pexels_links(query, cache):
+    if query in cache:
+        return cache[query]
+    vids = _search({"query": query, "orientation": "portrait", "per_page": 15, "size": "medium"})
+    if not vids:
+        vids = _search({"query": query, "per_page": 15})
+    cache[query] = _rank(vids)
+    return cache[query]
+
+
+def fetch_clip(query, idx, used, cache):
+    """Laedt den besten NOCH NICHT verwendeten Clip fuer die Query (kein Wiederholen)."""
+    for sc, vid, link in pexels_links(query, cache):
+        if vid in used:
+            continue
+        used.add(vid)
+        out = f"/tmp/_stock_{idx}.mp4"
+        try:
+            dreq = urllib.request.Request(link, headers={"User-Agent": UA})
+            with urllib.request.urlopen(dreq, timeout=120) as r, open(out, "wb") as fo:
+                fo.write(r.read())
+            return out
+        except Exception:
+            continue
+    return None
 
 
 def fmt_ts(t):
@@ -209,11 +231,18 @@ def render(ep):
     # pro SATZ ein passender Clip, exakt auf die Satzdauer getimt (Bild matcht Text)
     segs = sentence_segments(words)
     bounds = [s[0] for s in segs] + [total]
-    norm, last_src = [], None
+    norm, last_src, used, cache = [], None, set(), {}
     for i, s in enumerate(segs):
         seg_dur = max(0.8, bounds[i + 1] - bounds[i])
         q = pick_query(s[2], pool, i)
-        src = pexels_dl(q, i) or pexels_dl(pool[i % len(pool)], 900 + i) or last_src
+        # passender Clip; bei Wiederholung der Query automatisch ein ANDERER (used-Set).
+        # Fallbacks: Episoden-Pool (rotierend), sonst letzter Clip.
+        src = fetch_clip(q, i, used, cache)
+        for k in range(len(pool)):
+            if src:
+                break
+            src = fetch_clip(pool[(i + k) % len(pool)], 900 + i * 9 + k, used, cache)
+        src = src or last_src
         if not src:
             continue
         last_src = src
