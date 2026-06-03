@@ -269,3 +269,13 @@ Bei der nächsten Session:
 ep3=A9OlozIzQ2o, ep7=Qapp3WIt9L8, ep8=HGRFQKkjWNw, ep9=k2NJE-BOtRE, ep10=HG4i0MXc0GI
 (ep4–ep6 + ep11 ebenfalls auf dem Kanal). ep1–ep3 ggf. noch ungelistet → manuell öffentlich.
 Fortschritt: `video-prototypes/aban-files/uploaded.json` (ep1–ep11).
+
+### ABAN Files — Tools (neu)
+- `video-prototypes/aban-files/aban_film.py` — baut aus `clips/ep*.mp4` einen
+  Collection-Film mit Ambient-Score (`python3 aban_film.py [out.mp4] [ep…]`).
+- `aban_stats.py` (+ Workflow `aban-stats.yml`, wöchentlich Mo) — liest YouTube-Views
+  (`video_ids.json` + Kanal-Erkennung) → Report `reports/ABAN-STATS.md`, Top-Performer
+  → datengetriebener Wachstums-Loop.
+- `aban_publish.py` schreibt jede Upload-Video-ID in `video_ids.json`.
+- Untertitel jetzt im **unteren Drittel**; Ambient-Musik fest in der Pipeline.
+- Volle Doku: `video-prototypes/aban-files/README.md`.
