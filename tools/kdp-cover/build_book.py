@@ -328,7 +328,7 @@ BOOKS = {
     },
     "mileage": {
         "slug": "mileage-log-book",
-        "uploaded": False,          # auf True setzen, sobald bei KDP hochgeladen
+        "uploaded": True,           # eingereicht 2026-06-03, KDP-Prüfung; ASIN folgt
         "title": "Mileage Log Book for Small Business",
         "subtitle": "IRS Publication 463 Contemporaneous Trip Log for Self-Employed, 1099 Contractors, Rideshare Drivers, Realtors & Etsy Sellers — Built to Substantiate Schedule C Line 9 at the 2025 Rate of $0.67/Mile",
         "author": "Marcus Reilly", "trim": (6, 9), "paper": "white",
