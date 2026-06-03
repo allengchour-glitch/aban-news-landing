@@ -305,6 +305,10 @@ BOOKS = {
     "adhd": {
         "slug": "adhd-daily-planner",
         "uploaded": True,           # eingereicht 2026-06-03, KDP-Prüfung; ASIN folgt
+        # ACHTUNG: Das LIVE-Buch auf KDP nutzt einen EXTERNEN 102-Seiten-Innenteil
+        # (ADHDPlanner_Innenteil_6x9_102Seiten.pdf), der mit seinem Cover bereits
+        # Amazons Druckprüfung bestanden hat. Der hier generierte Planner-Innenteil
+        # (100 S.) ist eine SEPARATE Version — nicht mit dem Live-Buch verwechseln.
         "title": "ADHD Daily Planner for Adults",
         "subtitle": "A 90-Day Undated Journal with Time-Blocks, Body Doubling, and a Top-3 Each Day",
         "author": "Marcus Reilly", "trim": (6, 9), "paper": "white",
