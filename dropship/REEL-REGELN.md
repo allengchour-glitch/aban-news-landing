@@ -26,6 +26,11 @@
 9. **Freigabe-Workflow:** Reel EINZELN per Telegram zur Freigabe (ja/nein/Kommentar), erst nach „ja" posten.
 
 ## Verbesserungs-Log (chronologisch — neue Punkte kommen oben dazu)
+- 2026-06-03: **Autopost weg von Make → Eigentool (User: „make nicht brauchen, eigenes Tool oder von abannews").**
+  `post-next-reel.mjs` postet jetzt wie das abannews-Eigentool `social/post.py`: direkt per **Telegram**
+  (Zero-Relay) und/oder über **n8n** (gratis, self-hosted, `social/n8n-publish-workflow.json`) an IG/TikTok —
+  via generischem `PUBLISH_WEBHOOK_URL`. Kein hartkodierter Make-Link mehr; `MAKE_REEL_WEBHOOK` nur Legacy-Alias.
+  Workflow + SETUP + KAMPAGNE-TODO entsprechend umgeschrieben. **Make ist nicht mehr nötig.**
 - 2026-06-03: **Rating-Audit (Judge.me-Metafelder).** Geprüft: fast alle Produkte haben `reviews.rating = null`
   (keine Reviews). Echt ≥4,3★ verifiziert: **Bali 4,93★** (15) + **Ibiza 4,47★** (15) → Ibiza neu in
   `good_products.csv` aufgenommen (echter Model-Shot). **Sommerkleid ärmellos = 3,54★ (26)** → bleibt aus
