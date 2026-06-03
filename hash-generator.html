@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hash-Generator (SHA-256 …) · aban news</title>
+<meta name="description" content="Kostenloses Tool: SHA-1, SHA-256, SHA-384 und SHA-512 von Text berechnen. Für Prüfsummen, Webhook-Signaturen, Integritäts-Checks. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/hash-generator.html">
+<meta property="og:title" content="Hash-Generator (SHA-256 …)">
+<meta property="og:description" content="SHA-1/256/384/512 von Text berechnen. Für Prüfsummen & Signaturen. Lokal im Browser, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/hash-generator.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Hash-Generator (SHA-256 …)",
+"url":"https://abannews.com/hash-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Berechnet SHA-1, SHA-256, SHA-384 und SHA-512 von Text.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+textarea{width:100%;min-height:110px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);resize:vertical;word-break:break-all}
+textarea:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;align-items:center}
+.res{margin-top:14px}
+.res .item{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;padding:8px 0;border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.res .item:last-child{border-bottom:0}
+.res .alg{flex:0 0 5em;font-weight:700;color:var(--amber-dk)}
+.res .hx{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;word-break:break-all;flex:1;min-width:200px}
+.res .cp{font-size:.78rem;cursor:pointer;background:transparent;border:1px solid var(--amber-lt);color:var(--amber-dk);border-radius:6px;padding:2px 8px}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">SHA-Hash</span> berechnen</h1>
+    <p>SHA-1, SHA-256, SHA-384 und SHA-512 von beliebigem Text. Für Prüfsummen, Webhook-Signaturen oder um zu prüfen, ob zwei Inhalte identisch sind. Lokal im Browser, nichts wird gesendet.</p>
+  </section>
+  <section class="panel" id="tool">
+    <label for="in">Eingabe</label>
+    <textarea id="in" spellcheck="false">aban news — kein Hype</textarea>
+    <div class="bar"><button class="btn" id="go">Hashen</button>
+      <span class="note" style="margin:0">aktualisiert sich auch live beim Tippen</span></div>
+    <div class="res" id="res" aria-live="polite"></div>
+    <p class="note">Rechnet mit der <code>SubtleCrypto</code>-API des Browsers (UTF-8). SHA-1 gilt als kryptografisch gebrochen — für Signaturen SHA-256 oder höher nehmen, SHA-1 nur für simple Prüfsummen. Alles lokal, kein Upload. <strong>MD5 fehlt bewusst</strong> (nicht im Browser-Standard und ohnehin unsicher).</p>
+  </section>
+  <div class="cta"><strong>Mehr Glue-Tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Automatisierungen &amp; APIs.</p>
+    <p><a class="btn" href="/encoder.html">Base64/URL</a>
+      <a class="btn ghost" href="/uuid-generator.html">UUID/Slug</a>
+      <a class="btn ghost" href="/json-formatter.html">JSON</a></p></div>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/encoder.html">Encoder</a> · <a href="/passwort-generator.html">Passwort</a> ·
+  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var inp=document.getElementById("in"),res=document.getElementById("res");
+  var algs=["SHA-1","SHA-256","SHA-384","SHA-512"];
+  function hex(buf){var b=new Uint8Array(buf),s="";for(var i=0;i<b.length;i++)s+=(b[i]+0x100).toString(16).slice(1);return s;}
+  function run(){
+    var data=new TextEncoder().encode(inp.value);
+    res.innerHTML="";
+    algs.forEach(function(a){
+      var row=document.createElement("div");row.className="item";
+      row.innerHTML='<span class="alg">'+a+'</span><span class="hx">…</span><button class="cp">Kopieren</button>';
+      res.appendChild(row);
+      crypto.subtle.digest(a,data).then(function(buf){
+        var h=hex(buf);row.querySelector(".hx").textContent=h;
+        row.querySelector(".cp").addEventListener("click",function(){var b=this;try{navigator.clipboard.writeText(h);b.textContent="kopiert ✓";setTimeout(function(){b.textContent="Kopieren";},1500);}catch(e){}});
+      });
+    });
+  }
+  document.getElementById("go").addEventListener("click",run);
+  var t;inp.addEventListener("input",function(){clearTimeout(t);t=setTimeout(run,250);});
+  run();
+})();
+</script>
+</body>
+</html>
