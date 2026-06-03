@@ -212,3 +212,20 @@ Dieses Repo enthält neben der Newsletter-Site mehrere automatisierte KI-Geld-Pr
   Geldkanäle: `docs/NEWSLETTER-GELD.md`.
 - PayPal in `datenschutz.html` + CSP in `_headers` (`*.paypal.com`) hinterlegt.
 - ⚠️ Diese Site nutzt **kein** Google Analytics / kein 3rd-Party-Tracking (DSGVO/Markenversprechen) — nie hinzufügen.
+
+## ABAN Files — automatisierte YouTube-Shorts
+
+Sci-Fi/Reptiloid-Kurzvideo-Serie (faceless), Pipeline unter `video-prototypes/aban-files/`.
+
+- **Render (gratis, aktiv):** `aban_stock.py` — Pexels-Footage (12 Shots/Folge) +
+  ElevenLabs-Stimme + Karaoke-Untertitel (ASS/libass, `Name`-Feld in der Events-Format-
+  Zeile zwingend, sonst Komma-Bug) + Dark-Grade + Drone. Backups: `aban_render.py`
+  (prozedural faceless), `heygen_make.sh` (HeyGen Avatar IV — braucht api-Credits).
+- Skripte: `aban_scripts.json` (ep1–ep3). Abschluss-Satz **„The ABAN Files. Check it out."**
+- **Auto-Publish:** `aban_publish.py` + Workflow `.github/workflows/aban-youtube.yml`
+  (nimmt fertige `clips/<ep>.mp4`, sonst rendert frisch; lädt als Short hoch;
+  Fortschritt in `uploaded.json`; `--privacy public|unlisted|private`).
+- **WICHTIG:** echten Namen NICHT nennen (Owner = „alleng"/@allengchour). Marke = „ABAN Files".
+- **YouTube-Kanal:** Haupt-Kanal `@allengchour`, umbenannt zu **„ABAN Files"**.
+  **OAuth ist eingerichtet** — Secrets `YT_CLIENT_ID/SECRET/REFRESH_TOKEN` existieren und
+  gelten für diesen Kanal → ABAN nutzt sie wieder. CI-Render-Secrets noch: `XI`, `PEXELS`.
