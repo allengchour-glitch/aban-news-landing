@@ -282,3 +282,11 @@ Fortschritt: `video-prototypes/aban-files/uploaded.json` (ep1–ep11).
 - `aban_publish.py` schreibt jede Upload-Video-ID in `video_ids.json`.
 - Untertitel jetzt im **unteren Drittel**; Ambient-Musik fest in der Pipeline.
 - Volle Doku: `video-prototypes/aban-files/README.md`.
+
+### ABAN Files — Retention-Optimierung (aus Analyse erfolgreicher Shorts)
+- **Erste 3 Sek = 50–60 % Drop-off.** `aban_stock.py` zeigt jetzt den `hook` als
+  großen Text in den ersten ~2.8 s (Stil `HOOK` in der ASS). Größter Hebel.
+- **Untertitel ab Wort 1** (haben wir) = +15–25 % Retention.
+- **Länge ~25–35 s** hält am besten → neue Skripte kurz halten (ep11 mit 73 s ist zu lang).
+- **Loop-Struktur**: Ende soll neugierig zum Anfang zurückführen (Re-Watches).
+- Quellen: opus.pro/blog, virvid.ai/blog (Shorts-Hooks/Retention 2025/26).
