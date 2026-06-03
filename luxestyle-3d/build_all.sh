@@ -7,7 +7,7 @@ cd "$(dirname "$0")"
 mkdir -p samples
 
 echo "== Tiere =="
-for k in cat bear rabbit fish paw dog heart star butterfly; do
+for k in cat bear rabbit fish paw dog heart star; do
   openscad -o "samples/tier_$k.stl" -D "kind=\"$k\"" animal.scad >/dev/null 2>&1 \
     && echo "  ok tier_$k"
 done
