@@ -10,10 +10,10 @@ Herrscher). **Echten Owner-Namen NIE nennen** — nur „ABAN" / „we of ABAN".
 Kanal = Haupt-Kanal `@allengchour` (umbenannt zu „ABAN Files").
 
 ## Stand
-- **20 Folgen** (ep1–ep20) als fertige Clips in `clips/`.
+- **28 Folgen** (ep1–ep28) als fertige Clips in `clips/` (~4 Wochen täglich).
 - **Öffentlich auf YT:** ep1–ep13 (+ ep12=RBEaa5csRWY, ep13=ye2sgjpUxv8 u.a. in `video_ids.json`).
-- **In der Queue (noch nicht gepostet):** ep14–ep20 → täglicher Cron postet automatisch.
-- ep14–ep20 wurden mit den Voice-Fixes neu gerendert.
+- **In der Queue (noch nicht gepostet):** ep14–ep28 → täglicher Cron postet automatisch.
+- ep14–ep28 mit Voice-Fixes; ep21–ep28 zusätzlich mit Pexels+Pixabay (mehr Auswahl).
 
 ## Pipeline-Features (alle in `aban_stock.py`)
 - Hook-Text in den ersten ~2.8 s (Retention).
