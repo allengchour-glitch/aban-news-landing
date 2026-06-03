@@ -1,5 +1,5 @@
 {
-  "next_id": 15,
+  "next_id": 16,
   "tasks": [
     {
       "id": 1,
@@ -21,8 +21,8 @@
       "id": 3,
       "task": "Gumroad-Konto + Datensatz hochladen → Buy-Link",
       "who": "aban",
-      "status": "doing",
-      "note": "Produkt angelegt (Cover drauf), Link https://chourallen.gumroad.com/l/ki-tools-dach. OFFEN bei Aban: Waehrung USD->EUR, Bankkonto verbinden, Publish.",
+      "status": "done",
+      "note": "Produkt veroeffentlicht (19 EUR, Cover), Buy-Button live auf abannews.com (PR #282 gemerged). Nur pruefen: zeigt die Gumroad-Seite einen Kauf-Button (nicht 'not for sale')?",
       "updated": "2026-06-03"
     },
     {
@@ -108,6 +108,14 @@
     {
       "id": 14,
       "task": "luxestyle Shop: TWINT + Rechts-Seiten (Impressum/AGB/Widerruf) einrichten",
+      "who": "aban",
+      "status": "todo",
+      "note": "",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 15,
+      "task": "ABAN Files: Render-Secrets setzen (PEXELS aktiv, XI=ElevenLabs fehlt) -> autonomer YouTube-Render",
       "who": "aban",
       "status": "todo",
       "note": "",
