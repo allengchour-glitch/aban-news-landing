@@ -1501,3 +1501,15 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **Verworfen (Qualität):** Naturstein-Armband (39 Bilder, aber 34 Steine mit wirren CJ-Namen wie „Magnetic Belt"/
   „Imported White" → unsauber) · Boys-Set (off-brand). „Hohe Qualität sonst sein lassen" befolgt.
 - **Heute total 6 neue Produkte live:** Aurélie, Bureau, Capucine, Lussa (Echtleder-Tasche), Lina (Hose), Riva (Kleid).
+
+## 2026-06-03 — Produkt-Texte aufgewertet (alle 6 Neu-Produkte auf Premium-Standard)
+- **Auslöser (User):** „jetzt unsere produkte aufwerten? verbessern". Audit ergab: der bestehende Gadget-/
+  Accessoire-Katalog hatte bereits reiche Premium-Texte (Hook → „Deine Vorteile auf einen Blick"-Bullets →
+  „Material & Ausführung" → „Warum bei LuxeStyle CH kaufen" → gestylte „Schweizer Versprechen"-Trust-Box mit
+  Tabelle). Meine 6 heutigen Neu-Produkte hatten kürzere Texte OHNE Trust-Box → echte Lücke war umgekehrt.
+- **Erledigt (per `productUpdate`, alle userErrors leer):** alle 6 (Aurélie 15416342675841, Bureau 15416343757185,
+  Capucine 15416343986561, Lussa 15416470208897, Lina 15416491704705, Riva 15416493506945) auf denselben
+  Premium-Standard gehoben: gestylte Trust-Box (#faf7f2/#e8dcc4, 2×2-Tabelle: Versand · 30 Tage Rückgabe ·
+  TWINT/Visa/MC/PayPal · WELCOME10), Benefit-Bullets mit Fettlead, „Warum bei LuxeStyle CH kaufen".
+- **LEHRE:** Neu importierte CJ-Produkte bekommen erst eine schlanke Beschreibung — nach dem Anlegen IMMER auf
+  den Katalog-Premium-Standard (Trust-Box + strukturierte Bullets) nachziehen, damit sie zum restlichen Shop passen.
