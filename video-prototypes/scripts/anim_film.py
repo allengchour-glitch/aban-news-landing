@@ -1,0 +1,354 @@
+#!/usr/bin/env python3
+"""CINEMATIC: IK-Lauf-Zyklus, federnde menschliche Bewegung, Shot-System (Schnitte/
+Push-ins/Handheld), Tiefenschaerfe (bg-Blur), Licht (Schatten/Rim/Scheinwerfer-Sweep/
+Grade/Bloom), Smears. Reuse: Stimme/Lip-Sync/Captions/Props.
+Aufruf: python3 anim_film.py <key> [--still T]"""
+import sys, json, math, bisect, subprocess, random, numpy as np, imageio.v2 as imageio, imageio_ffmpeg
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
+from render_s6_max import draw_bg, draw_dust, W, H, SS, font, E, RR, limb, OUT, WHITE, AMBER, key as KEY
+FONTP="/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+_VG=Image.new("L",(W*SS,H*SS),0); ImageDraw.Draw(_VG).ellipse([-W*SS*0.2,-H*SS*0.12,W*SS*1.2,H*SS*1.12],fill=255)
+_VG=_VG.filter(ImageFilter.GaussianBlur(120*SS//3)); _BLACK=Image.new("RGB",(W*SS,H*SS),(0,0,0))
+
+BODY=(245,205,222); BODYD=(224,176,200); BODYL=(255,233,242); BELLY=(255,244,249)
+EAR=(245,205,222); NOSE=(208,110,135); BLUSH=(255,150,170); MOUTH=(150,66,70)
+TONGUE=(228,118,120); PUP=(40,32,46); TEETH=(255,255,255)
+CW,CH=360,560
+def L(v): return v*SS
+def sm(x): x=max(0.0,min(1.0,x)); return x*x*(3-2*x)
+def pt(x,y,ang,ln): a=math.radians(ang); return (x+math.sin(a)*ln, y+math.cos(a)*ln)
+def nz(t,s): return (math.sin(t*1.7+s)+math.sin(t*2.9+s*2)*0.6+math.sin(t*0.7+s*3)*0.4)/2.0
+
+# ---- 2-bone IK (2D): hip + foot target -> knee, foot (clamped) ----
+def ik(hip,foot,l1,l2,bend=1):
+    hx,hy=hip; fx,fy=foot; dx,dy=fx-hx,fy-hy; d=math.hypot(dx,dy) or 1e-3
+    d=max(abs(l1-l2)+1,min(l1+l2-1,d)); ang=math.atan2(dy,dx)
+    fx,fy=hx+math.cos(ang)*d,hy+math.sin(ang)*d
+    a=math.acos(max(-1,min(1,(l1*l1+d*d-l2*l2)/(2*l1*d))))
+    ka=ang-bend*a; kx,ky=hx+math.cos(ka)*l1,hy+math.sin(ka)*l1
+    return (kx,ky),(fx,fy)
+
+# ================= dynamic background (parallax-ready) =================
+random.seed(21)
+FLICK=[(random.uniform(0.04,0.96)*W,random.uniform(0.22,0.55)*H,random.uniform(1.5,5),random.uniform(0,6.28)) for _ in range(22)]
+CLOUDS=[(random.uniform(0,1),random.uniform(0.06,0.20),random.uniform(34,60),random.uniform(0.006,0.014)) for _ in range(3)]
+NEON=[(random.uniform(0.06,0.9)*W,random.uniform(0.24,0.5)*H,random.uniform(26,52),random.choice([(255,90,160),(90,220,255),(255,180,60),(150,120,255)]),random.uniform(2,5),random.uniform(0,6.28)) for _ in range(6)]
+PEOPLE=[(random.uniform(0,1),random.choice([-1,1])*random.uniform(0.03,0.06),random.uniform(0,6.28),random.uniform(0.85,1.2)) for _ in range(7)]
+def draw_bg_extra(d,t):
+    SW=H*0.585
+    for x0,y0,r,v in CLOUDS:
+        x=((x0+t*v)%1.3-0.15)*W
+        for dx in (-r*0.7,0,r*0.7): d.ellipse([(x+dx-r)*SS,(y0*H-r*0.6)*SS,(x+dx+r)*SS,(y0*H+r*0.6)*SS],fill=(60,54,92,70))
+    for fx,fy,rate,ph in FLICK:
+        on=math.sin(t*rate+ph)>0.25; c=(255,216,130) if on else (30,26,50)
+        d.rectangle([fx*SS,fy*SS,(fx+10)*SS,(fy+14)*SS],fill=c)
+        if on: d.rectangle([(fx-1)*SS,(fy-1)*SS,(fx+11)*SS,(fy+15)*SS],fill=(255,216,130,40))
+    for nx,ny,nw,col,rate,ph in NEON:
+        pulse=0.4+0.6*(0.5+0.5*math.sin(t*rate+ph)); c=tuple(int(v*pulse) for v in col)
+        d.rounded_rectangle([nx*SS,ny*SS,(nx+nw)*SS,(ny+12)*SS],radius=3*SS,fill=c,outline=tuple(min(255,int(v*1.2)) for v in col),width=2*SS)
+        d.ellipse([(nx-10)*SS,(ny-8)*SS,(nx+nw+10)*SS,(ny+20)*SS],fill=col+(int(50*pulse),))
+    ax=((t*0.03)%1.2-0.1)*W; ay=H*0.09
+    d.ellipse([(ax-2)*SS,(ay-2)*SS,(ax+2)*SS,(ay+2)*SS],fill=(220,220,255))
+    if int(t*2)%2==0: d.ellipse([(ax-3)*SS,(ay-1)*SS,(ax+1)*SS,(ay+3)*SS],fill=(255,80,80))
+    for x0,sp,ph,sc in PEOPLE:
+        x=((x0+t*sp)%1.25-0.12)*W; y=SW; hh=22*sc; step=math.sin(t*sp*60+ph); bob=abs(math.sin(t*sp*60+ph))*2; col=(18,16,30)
+        d.ellipse([(x-3*sc)*SS,(y-hh-bob)*SS,(x+3*sc)*SS,(y-hh+6*sc-bob)*SS],fill=col)
+        d.line([((x)*SS,(y-hh+4*sc-bob)*SS),((x)*SS,(y-6*sc)*SS)],fill=col,width=int(3*sc*SS))
+        d.line([((x)*SS,(y-6*sc)*SS),((x-4*sc*step)*SS,y*SS)],fill=col,width=int(2.5*sc*SS))
+        d.line([((x)*SS,(y-6*sc)*SS),((x+4*sc*step)*SS,y*SS)],fill=col,width=int(2.5*sc*SS))
+    lanes=[(0.55,0.0,0.70,1),(0.40,0.5,0.80,1),(0.7,0.25,0.66,1),(0.5,0.15,0.74,-1),(0.62,0.7,0.86,-1)]
+    for sp,off,yy,dr in lanes:
+        p=((t*sp+off)%1.6)-0.2
+        if 0<=p<=1.05:
+            cxp=(p if dr>0 else 1-p)*W; ry=yy*H; gw=70
+            glow=(255,238,180,60) if dr>0 else (255,90,90,55); core=(255,250,220,160) if dr>0 else (255,120,120,150)
+            d.ellipse([(cxp-gw)*SS,(ry-7)*SS,(cxp+gw)*SS,(ry+7)*SS],fill=glow)
+            d.ellipse([(cxp-12)*SS,(ry-4)*SS,(cxp+12)*SS,(ry+4)*SS],fill=core)
+
+def draw_prop(ld,name,hx,hy,t,lit=None):
+    if name=="phone":
+        sc=lit or (58,45,94); RR(ld,hx-L(12),hy-L(18),hx+L(12),hy+L(18),L(5),(30,30,30)); RR(ld,hx-L(8),hy-L(13),hx+L(8),hy+L(13),L(3),sc,outline=sc,ow=1)
+    elif name=="cig":
+        ex,ey=hx-L(36),hy-L(22); ld.line([(hx,hy),(ex,ey)],fill=(40,40,40),width=int(L(9))); ld.line([(hx,hy),(ex,ey)],fill=WHITE,width=int(L(6)))
+        ld.line([(hx,hy),(hx-L(11),hy-L(7))],fill=(210,160,90),width=int(L(6))); E(ld,ex,ey,L(7),L(7),(255,120,40,90),outline=None,ow=0); E(ld,ex,ey,L(3.5),L(3.5),(255,140,50),outline=(255,140,50),ow=1)
+        for i in range(3): sx=ex+math.sin(t*3+i)*L(6); sy=ey-L(12)-i*L(13); ld.ellipse([sx-L(4),sy-L(5),sx+L(4),sy+L(5)],fill=(225,225,225,70))
+    elif name=="donut":
+        E(ld,hx,hy,L(22),L(22),(228,170,120)); E(ld,hx,hy-L(2),L(22),L(18),(246,150,200))
+        for dx,dy,c in [(-9,-6,(255,255,255)),(6,-9,(120,220,255)),(1,2,(255,240,120)),(11,1,(150,255,150)),(-11,4,(255,150,150))]: ld.line([(hx+L(dx),hy+L(dy)),(hx+L(dx+4),hy+L(dy+4))],fill=c,width=int(L(2.5)))
+        E(ld,hx,hy,L(8),L(8),(36,28,48))
+    elif name=="cal":
+        ld.rectangle([hx-L(10),hy-L(26),hx-L(7),hy-L(17)],fill=(120,120,130)); ld.rectangle([hx+L(7),hy-L(26),hx+L(10),hy-L(17)],fill=(120,120,130))
+        RR(ld,hx-L(17),hy-L(20),hx+L(17),hy+L(18),L(3),WHITE); ld.rectangle([hx-L(17),hy-L(20),hx+L(17),hy-L(8)],fill=(220,70,70))
+        for gy2 in range(3):
+            for gx in range(4): cx=hx-L(12)+gx*L(8); cy=hy-L(3)+gy2*L(7); ld.ellipse([cx-L(1.5),cy-L(1.5),cx+L(1.5),cy+L(1.5)],fill=(150,150,160))
+        ld.ellipse([hx+L(1),hy+L(2),hx+L(13),hy+L(14)],outline=(220,70,70),width=int(L(2.5)))
+
+# ================= character (IK legs, spring secondary) =================
+LT,LSh=L(42),L(40)   # thigh, shin (matched to hip->ground span for a natural standing leg)
+def draw_char(ld,t,P):
+    """returns (head_local, hand_local) in layer px. P: pose dict."""
+    cx=L(CW/2)+P["X"]*SS; bob=P["bob"]*SS; lean=P["lean"]
+    hipY=L(400)+bob; hip=(cx,hipY)
+    sh=(cx+math.sin(math.radians(lean))*L(120), L(300)+bob)
+    grY=L(470)
+    # tail (spring)
+    E(ld,cx+L(70),L(388)+bob,L(30),L(34),BODYD); E(ld,cx+L(74)+P["tail"]*SS,L(380)+bob,L(19),L(21),WHITE)
+    # pelvis mass — bridges body bottom into the legs so they read as connected
+    E(ld,cx,hipY-L(2),L(58),L(30),BODY,outline=OUT,ow=3)
+    # legs via IK to foot targets (symmetric knees: each knee splays to its own side)
+    for side in ("L","R"):
+        s=-1 if side=="L" else 1; hx=hip[0]+s*L(18); ft=P["foot"+side]
+        knee,foot=ik((hx,hipY),(ft[0]*SS+cx,ft[1]*SS),LT,LSh,bend=s)
+        # unified leg: thigh + shin near-equal width, no harsh knee step
+        limb(ld,(hx,hipY),knee,25,BODY,hi=BODYL); limb(ld,knee,foot,22,BODY,hi=BODYL)
+        E(ld,knee[0],knee[1],L(11),L(11),BODY,outline=None,ow=0)   # smooth knee
+        fx,fy=foot
+        # shoe: rounded foot pointing outward, lighter top + darker sole
+        E(ld,fx+s*L(10),fy+L(2),L(26),L(13),BODYD,outline=OUT,ow=3)
+        ld.ellipse([fx+s*L(10)-L(26),fy+L(7),fx+s*L(10)+L(26),fy+L(15)],fill=OUT)  # sole shadow
+        E(ld,fx+s*L(11),fy-L(2),L(15),L(7),BODYL,outline=None,ow=0)
+    # body
+    bx0,bx1=sh[0]-L(70),sh[0]+L(70)
+    ld.polygon([(bx0,sh[1]),(bx1,sh[1]),(hip[0]+L(60),hip[1]),(hip[0]-L(60),hip[1])],fill=BODY,outline=OUT)
+    E(ld,(sh[0]+hip[0])/2,(sh[1]+hip[1])/2+L(20),L(46),L(58),BELLY)
+    # arms
+    for side,(sa,ea) in (("L",P["armL"]),("R",P["armR"])):
+        if side=="R" and P.get("prop"): continue
+        s=-1 if side=="L" else 1; shx=sh[0]+s*L(56); shy=sh[1]+L(6)
+        el=pt(shx,shy,sa,L(54)); hand=pt(*el,sa+ea,L(48))
+        limb(ld,(shx,shy),el,18,BODY,hi=BODYL); limb(ld,el,hand,15,BODY,hi=BODYL)
+        E(ld,el[0],el[1],L(8),L(8),BODY,outline=None,ow=0)              # smooth elbow
+        E(ld,hand[0],hand[1],L(15),L(15),BODY)                          # paw
+        if P.get("smear") and side=="R": ld.line([(shx,shy),hand],fill=(255,176,32,90),width=int(L(3)))
+    # head
+    ht=P["headturn"]; look=P["look"]; hx=sh[0]+ht*L(16); hy=sh[1]-L(70)+bob*0.2+P.get("headdip",0)*SS
+    # ears
+    for s in (-1,1):
+        exu=hx+s*L(38)+ht*L(10); ey=hy-L(96)+P["ear"]*(1 if s>0 else -1)
+        E(ld,exu,ey,L(18),L(54),EAR); E(ld,exu,ey+L(6),L(10),L(40),BLUSH)
+    # head + soft top highlight (NO outline) + cheeks
+    E(ld,hx,hy,L(92),L(88),BODY); E(ld,hx-L(30),hy-L(34),L(33),L(27),BODYL,outline=None,ow=0)
+    for s in (-1,1): E(ld,hx+s*L(56),hy+L(23),L(19),L(12),BLUSH,outline=None,ow=0)
+    # ---- eyes (clean, glossy: iris ring + pupil + 2 catchlights) ----
+    ewd=P["eyewide"]; rW=L(34)*(1+0.18*ewd); rH=L(42)*(1+0.26*ewd); eyy=hy-L(8); sacx=P.get("sac",0)*L(5)
+    for s in (-1,1):
+        ox=hx+s*L(35)+ht*L(9)
+        if P["blink"]:
+            ld.arc([ox-rW,eyy-rH*0.45,ox+rW,eyy+rH*0.55],15,165,fill=OUT,width=int(L(6))); continue
+        E(ld,ox,eyy,rW,rH,WHITE,ow=3)
+        pr=L(17)*(1-0.20*ewd); px=ox+look*L(8)+sacx+ht*L(4); py=eyy+L(3)
+        E(ld,px,py,pr*1.18,pr*1.30,(74,60,90),outline=None,ow=0)              # iris ring
+        E(ld,px,py,pr,pr*1.12,PUP,outline=None,ow=0)                          # pupil
+        E(ld,px-pr*0.34,py-pr*0.46,pr*0.46,pr*0.46,WHITE,outline=None,ow=0)   # main catchlight
+        E(ld,px+pr*0.36,py+pr*0.30,pr*0.20,pr*0.20,WHITE,outline=None,ow=0)   # 2nd catchlight
+    # nose
+    E(ld,hx+ht*L(6),hy+L(18),L(10),L(8),NOSE,outline=None,ow=0)
+    # ---- mouth (clean visemes) ----
+    mcx=hx+ht*L(6); my=hy+L(37); env=P["env"]; mw=L(15)*P["mw"]*(1+0.22*env); mo=L(3)+env*L(20)
+    if mo<=L(8):    # near-closed: friendly curve + clean bunny front teeth
+        ld.arc([mcx-mw,my-L(3),mcx+mw,my+L(9)],8,172,fill=MOUTH,width=int(L(5)))
+        RR(ld,mcx-L(7),my+L(2),mcx+L(7),my+L(13),L(3),TEETH,outline=OUT,ow=2)
+        ld.line([(mcx,my+L(3)),(mcx,my+L(12))],fill=BODYD,width=int(L(1.5)))
+    else:           # open: lips + single upper-teeth strip + tongue
+        E(ld,mcx,my,mw,mo,MOUTH,outline=OUT,ow=3)
+        RR(ld,mcx-mw*0.66,my-mo*0.82,mcx+mw*0.66,my-mo*0.18,L(4),TEETH,outline=None,ow=0)
+        if mo>L(13): E(ld,mcx,my+mo*0.42,mw*0.5,mo*0.42,TONGUE,outline=None,ow=0)
+    handR=(hx,hy)
+    if P.get("prop"):
+        sa,ea=P["armR"]; shx=sh[0]+L(56); shy=sh[1]+L(6); el=pt(shx,shy,sa,L(54)); hand=pt(*el,sa+ea,L(48))
+        limb(ld,(shx,shy),el,18,BODY,hi=BODYL); limb(ld,el,hand,15,BODY,hi=BODYL)
+        E(ld,el[0],el[1],L(8),L(8),BODY,outline=None,ow=0); E(ld,hand[0],hand[1],L(15),L(15),BODY)
+        draw_prop(ld,P["prop"],hand[0],hand[1],t,P.get("phone_lit")); handR=hand
+        if P.get("phone_lit")==(127,208,255): ld.ellipse([hx-L(48),hy+L(2),hx+L(48),hy+L(70)],fill=(127,208,255,46))
+    return (hx,hy),handR
+
+# ================= performance blocking (walk + act) =================
+def perform(t,DUR,env,eyewide,blink,prop,sac):
+    P=dict(env=env,eyewide=eyewide,blink=blink,mw=1.0,sac=sac)
+    WALK=2.2; gr=470.0          # ground y in layer-local (pre-SS)
+    stance_w=26
+    if t<WALK:   # WALK IN (locomotion, IK planted feet)
+        p=sm(t/WALK); P["X"]=-160+160*p
+        ph=t*2.4
+        def footpos(off):
+            cyc=(ph+off)%1.0; stride=34
+            if cyc<0.6: fx=stride*(0.5-cyc/0.6); fy=gr            # stance (planted, slides back)
+            else: s=(cyc-0.6)/0.4; fx=stride*(-0.5+s); fy=gr-30*math.sin(s*math.pi)  # swing (lift)
+            return (fx,fy)
+        P["footL"]=footpos(0.0); P["footR"]=footpos(0.5)
+        P["bob"]=-4-3*math.cos(ph*2*math.pi*2); P["lean"]=6
+        P["armL"]=(-22+26*math.sin(ph*2*math.pi+math.pi),16); P["armR"]=(22+26*math.sin(ph*2*math.pi),16)
+        P["headturn"]=0.35; P["look"]=0.1; P["ear"]=math.sin(ph*2*math.pi)*7*SS/SS; P["tail"]=math.sin(ph*8)*8
+        P["headdip"]=0; P["smear"]=False
+    else:        # STAND & ACT — human idle: weight shift (contrapposto), breathing, speech-gated gestures
+        tt=t-WALK
+        # slow weight shift onto alternating leg (~every 3.4s)
+        wsh=math.sin(tt/3.4*2*math.pi)                 # -1..1 weighted side
+        P["X"]=3.5*wsh                                 # body drifts over the weighted leg
+        P["lean"]=5*wsh + 1.5*math.sin(tt*0.55)        # hip/shoulder sway + slow drift
+        # planted feet; the un-weighted heel lifts a touch (life)
+        liftL=max(0.0,-wsh)*7; liftR=max(0.0,wsh)*7
+        P["footL"]=(-stance_w+2*wsh,gr-liftL); P["footR"]=(stance_w+2*wsh,gr-liftR)
+        # breathing + speech micro-bounce (body dips a hair as the mouth opens)
+        breath=math.sin(tt*2*math.pi*0.45)*2.2
+        P["bob"]=breath -1.2*abs(wsh) -env*1.8
+        P["headdip"]=env*5 + 1.2*math.sin(tt*2*math.pi*0.45)   # head nods on emphasis + breathes
+        # gestures: quicker beats (~1.8s), eased arcs, 3-way variation, amplitude follows the voice
+        amp=0.55+0.75*min(1.0,env*1.7)
+        g=tt%1.8; gv=0.0
+        if g<0.8:
+            gg=sm(g/0.4) if g<0.4 else sm((0.8-g)/0.4); gv=gg
+            beat=int(tt/1.8)%3
+            if beat==0:                                # right hand rises / points outward
+                P["armR"]=(-26-52*gg*amp,-6-36*gg*amp); P["armL"]=(-16+8*nz(tt,1),16)
+            elif beat==1:                              # left hand
+                P["armL"]=(26+52*gg*amp,6+36*gg*amp);  P["armR"]=(16+8*nz(tt,2),16)
+            else:                                      # both hands open outward (presenting)
+                P["armR"]=(-22-36*gg*amp,-28*gg*amp);  P["armL"]=(22+36*gg*amp,28*gg*amp)
+        else:                                          # rest: gentle idle sway in the arms
+            P["armR"]=(18+7*nz(tt,3),16+3*math.sin(tt*1.3)); P["armL"]=(-18+7*nz(tt,4),16+3*math.sin(tt*1.1+1))
+        # head life: turn follows weight + slow scan, eyes lead
+        P["headturn"]=0.30*math.sin(tt*0.8)+0.12*wsh+0.06*nz(tt,5); P["look"]=0.22*math.sin(tt*0.8)+0.1*wsh
+        P["ear"]=math.sin(tt*5)*5 + gv*4; P["tail"]=math.sin(tt*6)*12 + 8*wsh
+        P["smear"]= gv>0.55                            # motion streak at the gesture peak
+    if prop:
+        if prop in ("phone","cig"): P["armR"]=(-95,-54); P["look"]=0.9
+        else: P["armR"]=(-74,-30); P["look"]=0.6
+        P["headturn"]=0.05; P["eyewide"]=max(P["eyewide"],0.3); P["headdip"]=P.get("headdip",0)*0.4
+    return P
+
+# ================= load audio-driven data =================
+K=sys.argv[1]
+cues=json.load(open(f"/tmp/{K}_cues.json")); DUR=cues["metadata"]["duration"]
+words=json.load(open(f"/tmp/{K}_words.json")); FPS=30; N=int(FPS*DUR)
+SHAPE={"X":(0,1),"A":(0,0.9),"B":(0.2,1),"C":(0.5,1.15),"D":(0.9,1.25),"E":(0.55,0.7),"F":(0.35,0.55),"G":(0.22,0.95),"H":(0.42,1)}
+mc=cues["mouthCues"]; mstarts=[c["start"] for c in mc]
+def shp(tt): i=max(0,min(bisect.bisect_right(mstarts,tt)-1,len(mc)-1)); return mc[i]["value"]
+ENV=[0.0]*N; MW=[1.0]*N; pe,pw=0.0,1.0
+for fi in range(N): e,w=SHAPE.get(shp(fi/FPS),(0.2,1.0)); pe+=(e-pe)*0.5; pw+=(w-pw)*0.5; ENV[fi]=pe; MW[fi]=pw
+wstarts=[w["start"] for w in words]
+PROP_TRIG={"s6":("phone","handy"),"s7":("cig","zigarette"),"s5":("donut","süße"),"s3":("cal","tage"),
+           "s1":("phone","handy"),"s8":("phone","scroll"),"s14":("donut","marshmallow"),"s11":("phone","zwei")}
+PNAME,PSUB=PROP_TRIG.get(K,(None,None)); TRIG=None
+if PSUB:
+    for w in words:
+        if PSUB in w["w"].lower(): TRIG=w["start"]; break
+    if TRIG is None: TRIG=DUR*0.5
+def word_at(tt):
+    i=bisect.bisect_right(wstarts,tt)-1
+    if 0<=i<len(words) and words[i]["start"]<=tt<=words[i]["end"]+0.08: return words[i]
+    return None
+
+# ================= shot / camera system =================
+def shots():
+    # fractions of DUR; type, base zoom; focus: body/head/hand
+    base=[(0.00,0.18,"wide",1.18,"body"),(0.18,0.34,"med",1.6,"chest"),(0.34,0.50,"cu",2.3,"head"),
+          (0.50,0.66,"med",1.65,"chest"),(0.66,0.82,"cu",2.3,"head"),(0.82,1.01,"wide",1.2,"body")]
+    return base
+SHOTS=shots()
+def cam_at(t, head, hand, prop):
+    fr=t/DUR
+    sh=SHOTS[-1]
+    for s in SHOTS:
+        if s[0]<=fr<s[1]: sh=s; break
+    a,b,typ,zoom,foc=sh
+    # prop insert override: cut to medium-close on the hand while prop active
+    if prop and TRIG is not None and TRIG<=t<=TRIG+3.4:
+        typ="insert"; zoom=1.9; foc="hand"
+    p=(fr-a)/max(1e-3,(b-a))
+    zoom=zoom*(1+0.04*sm(p))            # gentle push-in within shot
+    if foc=="head": fx,fy=head
+    elif foc=="hand": fx,fy=hand
+    elif foc=="chest": fx,fy=head[0],head[1]+H*SS*0.10
+    else: fx,fy=W*SS*0.42,H*SS*0.62
+    # handheld micro-shake (gentle)
+    fx+=nz(t,7)*W*SS*0.004; fy+=nz(t,8)*H*SS*0.004
+    dof = {"cu":9,"insert":6,"med":2,"wide":0}.get(typ,0)
+    grade={"cu":(1.10,1.07,(255,238,210,18)),"insert":(1.12,1.05,(255,238,210,16)),
+           "med":(1.14,1.06,(255,235,225,10)),"wide":(1.18,1.05,(180,200,255,14))}.get(typ,(1.15,1.05,None))
+    return fx,fy,zoom,dof,grade,typ
+
+# ================= compositing =================
+def render_scene(t,fi):
+    """full-res scene image (RGB) + char head/hand scene coords + prop info."""
+    bg=Image.new("RGB",(W*SS,H*SS),(20,18,40)); d=ImageDraw.Draw(bg,"RGBA")
+    draw_bg(d,t); draw_bg_extra(d,t)
+    prop=PNAME if (TRIG is not None and TRIG-0.3<=t<=TRIG+3.6) else None
+    lit=None
+    if prop=="phone": lit=(127,208,255) if t<=TRIG+2.4 else (140,140,140)
+    sac=1.0 if (math.sin(t*3.3)>0.93) else 0.0
+    P=perform(t,DUR,ENV[fi],0.2*max(0,math.sin(t*1.1)),(t%3.1)>3.0,prop,sac)
+    P["prop"]=prop; P["phone_lit"]=lit; P["mw"]=MW[fi]
+    layer=Image.new("RGBA",(CW*SS,CH*SS),(0,0,0,0)); ld=ImageDraw.Draw(layer,"RGBA")
+    headL,handL=draw_char(ld,t,P)
+    # squash & stretch + scale + paste
+    bnc=math.sin(t*2*math.pi*1.5); sy=1+0.035*bnc; sx=1/sy; scl=0.74
+    w2=max(1,int(CW*SS*sx*scl)); h2=max(1,int(CH*SS*sy*scl)); sc=layer.resize((w2,h2),Image.LANCZOS)
+    px=int(W*SS*0.42+P["X"]*SS-w2*0.5); py=int(H*SS*0.99-h2)
+    # ground contact shadow (on bg, before char)
+    shy=H*SS*0.965; d.ellipse([px+w2*0.5-L(60),shy-L(12),px+w2*0.5+L(60),shy+L(12)],fill=(0,0,0,90))
+    bg.paste(sc,(px,py),sc)
+    def mapL(p): return (px+p[0]*w2/(CW*SS), py+p[1]*h2/(CH*SS))
+    head=mapL(headL); hand=mapL(handL)
+    # rim light + headlight sweep over character region
+    sweep=(t*0.5)%4.0
+    if sweep<1.0:
+        sx0=int((sweep-0.2)*W*SS); gl=Image.new("RGBA",(W*SS,H*SS),(0,0,0,0)); gd=ImageDraw.Draw(gl)
+        gd.ellipse([sx0-L(60),py,sx0+L(60),py+h2],fill=(255,225,170,46)); bg=Image.alpha_composite(bg.convert("RGBA"),gl).convert("RGB")
+    return bg,head,hand,prop
+
+def bloom(img):
+    arr=np.asarray(img).astype(np.float32); br=np.clip(arr-175,0,255)
+    bl=Image.fromarray(br.astype(np.uint8)).filter(ImageFilter.GaussianBlur(8*SS//3))
+    out=np.clip(arr+np.asarray(bl).astype(np.float32)*0.3,0,255).astype(np.uint8)
+    return Image.fromarray(out)
+
+def frame(fi):
+    t=fi/FPS
+    scene,head,hand,prop=render_scene(t,fi)
+    fx,fy,zoom,dof,grade,typ=cam_at(t,head,hand,prop)
+    # depth of field: blur background-ish (whole scene) for close shots, char stays mostly sharp
+    if dof>0:
+        blurred=scene.filter(ImageFilter.GaussianBlur(dof*SS//3))
+        # keep a sharp oval around the subject (focus)
+        m=Image.new("L",scene.size,0); md=ImageDraw.Draw(m)
+        rr=W*SS*0.42 if typ=="cu" else W*SS*0.55
+        md.ellipse([head[0]-rr,head[1]-rr*1.25,head[0]+rr,head[1]+rr*1.3],fill=255); m=m.filter(ImageFilter.GaussianBlur(30*SS//3))
+        scene=Image.composite(scene,blurred,m)
+    # camera crop
+    cw,ch=W*SS/zoom,H*SS/zoom
+    l=max(0,min(W*SS-cw,fx-cw/2)); tp=max(0,min(H*SS-ch,fy-ch/2))
+    img=scene.crop((int(l),int(tp),int(l+cw),int(tp+ch))).resize((W*SS,H*SS),Image.LANCZOS)
+    # grade + bloom + vignette
+    cc,ct,tint=grade
+    img=ImageEnhance.Color(img).enhance(cc); img=ImageEnhance.Contrast(img).enhance(ct)
+    if tint:
+        ov=Image.new("RGBA",img.size,tint); img=Image.alpha_composite(img.convert("RGBA"),ov).convert("RGB")
+    img=bloom(img)
+    img=Image.composite(img,_BLACK,_VG)
+    img=img.resize((W,H),Image.LANCZOS)
+    # captions (screen space, after camera)
+    d=ImageDraw.Draw(img,"RGBA"); wd=word_at(t)
+    if wd and wd["w"].strip():
+        txt=wd["w"].upper().strip(".,!?")
+        if txt:
+            sz=46; ft=ImageFont.truetype(FONTP,sz)
+            bb=d.textbbox((0,0),txt,font=ft); tw=bb[2]-bb[0]
+            if tw>W*0.84: sz=int(sz*W*0.84/tw); ft=ImageFont.truetype(FONTP,sz); bb=d.textbbox((0,0),txt,font=ft); tw=bb[2]-bb[0]
+            th=bb[3]-bb[1]; bx=W/2; by=H*0.13
+            d.rounded_rectangle([bx-tw/2-14,by-8,bx+tw/2+14,by+th+16],radius=12,fill=(18,12,32,230),outline=(255,176,32,210),width=3)
+            d.text((bx-tw/2+2,by+5),txt,font=ft,fill=(0,0,0,170)); d.text((bx-tw/2,by+3),txt,font=ft,fill=(250,235,120))
+    return img
+
+if __name__=="__main__":
+    if "--still" in sys.argv:
+        T=float(sys.argv[sys.argv.index("--still")+1]); frame(int(T*FPS)).save(f"/tmp/film_{K}_{T}.png"); print("still saved")
+    else:
+        print(f"[{K}] FILM {N} frames")
+        tmp=f"/tmp/{K}_film_noa.mp4"; wr=imageio.get_writer(tmp,fps=FPS,codec="libx264",quality=9,ffmpeg_params=["-pix_fmt","yuv420p"])
+        for i in range(N):
+            wr.append_data(np.asarray(frame(i).convert("RGB")))
+            if i%60==0: print(f"  {i}/{N}")
+        wr.close(); ff=imageio_ffmpeg.get_ffmpeg_exe()
+        subprocess.run([ff,"-y","-i",tmp,"-i",f"/tmp/{K}.wav","-c:v","copy","-c:a","aac","-b:a","128k","-shortest",f"/tmp/clipfilm_{K}.mp4"],check=True,capture_output=True)
+        print(f"done -> /tmp/clipfilm_{K}.mp4")

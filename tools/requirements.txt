@@ -8,3 +8,7 @@
 # the toolchain (e.g. PyYAML for front-matter parsing, requests for link-checking).
 #
 # Add deps below as `package==pinned-version` when needed.
+#
+# Optional (only needed by tools/tiktok_analyze.py — invoked via subprocess,
+# not imported, so safe to omit if you don't run that script):
+#   yt-dlp>=2024.1.0

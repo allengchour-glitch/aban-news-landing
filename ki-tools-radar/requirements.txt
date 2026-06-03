@@ -1,0 +1,4 @@
+# KI-Tools Radar — optional build dependency.
+# Only needed for Open Graph image generation (og_images.py).
+# The HTML/RSS/sitemap build works without it (OG step is skipped gracefully).
+Pillow>=10,<13

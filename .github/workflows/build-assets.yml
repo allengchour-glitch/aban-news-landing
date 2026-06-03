@@ -1,0 +1,86 @@
+name: Build Assets
+
+# Automatisiert die Asset-Pipeline: sobald ein Generator-Skript geändert wird,
+# werden PDFs, ePubs und OG-Bilder neu erzeugt und zurück committet.
+# Kein manuelles `python3 generate_*.py` mehr nötig.
+
+on:
+  push:
+    paths:
+      - "generate_ebook.py"
+      - "generate_pdfs.py"
+      - "generate_og_images.py"
+      - "generate_buch_og.py"
+      - "generate_trilogie_og.py"
+      - "generate_trilogie_covers.py"
+      - "ki-schriftsteller/buch_bauen.py"
+      - "ki-schriftsteller/buch_pdf.py"
+      - "ki-schriftsteller/roman-drama-trilogie.json"
+      - "ki-schriftsteller/kapitel/**"
+      - ".github/workflows/build-assets.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# Verhindert parallele Läufe, die sich beim Zurück-Pushen in die Quere kommen.
+concurrency:
+  group: build-assets-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Regenerate PDFs / ePubs / OG images
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install deps
+        run: pip install reportlab pillow
+
+      - name: Generate eBook PDFs + ePubs (de/en/fr/it)
+        run: python generate_ebook.py
+
+      - name: Generate lead-magnet PDFs
+        run: python generate_pdfs.py
+
+      - name: Generate OG images
+        run: python generate_og_images.py
+
+      - name: Generate book + trilogy OG images
+        run: |
+          python generate_buch_og.py
+          python generate_trilogie_og.py
+
+      - name: Generate trilogy covers + ePub/PDF -> downloads/
+        run: |
+          python generate_trilogie_covers.py
+          python ki-schriftsteller/buch_bauen.py --roman ki-schriftsteller/roman-drama-trilogie.json
+          python ki-schriftsteller/buch_pdf.py   --roman ki-schriftsteller/roman-drama-trilogie.json
+          S=das-tal-haelt-den-atem-an; A=ki-schriftsteller/ausgabe
+          cp "$A/$S-gesamt.epub" "downloads/$S.epub"
+          cp "$A/$S-gesamt.pdf"  "downloads/$S.pdf"
+          for n in 01 02 03; do
+            cp "$A/$S-band-$n.epub" downloads/
+            cp "$A/$S-band-$n.pdf"  downloads/
+          done
+
+      - name: Commit regenerated assets (if changed)
+        run: |
+          git config user.name "aban-assets-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add downloads/*.pdf downloads/*.epub og-*.png img/covers/*.jpg
+          if git diff --cached --quiet; then
+            echo "No asset changes — nothing to commit."
+          else
+            git commit -m "chore: regenerate assets (PDF/ePub/OG) [skip ci]"
+            git push
+          fi

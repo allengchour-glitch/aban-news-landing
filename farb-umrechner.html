@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farb-Umrechner (HEX ↔ RGB ↔ HSL) · aban news</title>
+<meta name="description" content="Kostenloses Tool: Farben zwischen HEX, RGB und HSL umrechnen — mit Live-Vorschau und CSS-fertigen Werten. Für Webdesign & Branding. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/farb-umrechner.html">
+<meta property="og:title" content="Farb-Umrechner (HEX ↔ RGB ↔ HSL)">
+<meta property="og:description" content="Farben zwischen HEX, RGB und HSL umrechnen, mit Live-Vorschau. Für Webdesign. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/farb-umrechner.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Farb-Umrechner (HEX ↔ RGB ↔ HSL)",
+"url":"https://abannews.com/farb-umrechner.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Rechnet Farben zwischen HEX, RGB und HSL um, mit Live-Vorschau.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+.top{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.swatch{width:96px;height:96px;border-radius:12px;border:1px solid var(--line);flex:0 0 auto}
+.pickrow{display:flex;gap:8px;align-items:center;flex:1;min-width:200px}
+input[type=color]{width:52px;height:46px;border:1px solid var(--line);border-radius:8px;background:var(--field);cursor:pointer;padding:2px}
+.fields{margin-top:16px;display:flex;flex-direction:column;gap:12px}
+.f{display:flex;gap:8px;align-items:center}
+.f label{flex:0 0 3.2em;margin:0}
+.f input[type=text]{flex:1;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink)}
+.f input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.f .cp{font-size:.78rem;cursor:pointer;background:transparent;border:1px solid var(--amber-lt);color:var(--amber-dk);border-radius:6px;padding:6px 10px}
+.f .err{font-size:.78rem;color:var(--bad);flex:0 0 auto}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Farben</span> umrechnen</h1>
+    <p>HEX, RGB und HSL ineinander umrechnen — mit Live-Vorschau und Werten, die du direkt in CSS kopieren kannst. Für Webdesign, Branding, Style-Tokens. Lokal im Browser, nichts wird gesendet.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="top">
+      <div class="swatch" id="swatch" style="background:#d97706"></div>
+      <div class="pickrow">
+        <input type="color" id="picker" value="#d97706" aria-label="Farbwähler">
+        <span class="note" style="margin:0">Wähle eine Farbe oder tippe einen Wert unten ein.</span>
+      </div>
+    </div>
+    <div class="fields">
+      <div class="f"><label for="hex">HEX</label><input type="text" id="hex" value="#d97706" spellcheck="false"><button class="cp" data-f="hex">Kopieren</button></div>
+      <div class="f"><label for="rgb">RGB</label><input type="text" id="rgb" value="rgb(217, 119, 6)" spellcheck="false"><button class="cp" data-f="rgb">Kopieren</button></div>
+      <div class="f"><label for="hsl">HSL</label><input type="text" id="hsl" value="hsl(32, 95%, 44%)" spellcheck="false"><button class="cp" data-f="hsl">Kopieren</button></div>
+    </div>
+    <p class="note">Tipp in jedes Feld, der Rest rechnet sich. HEX akzeptiert <code>#abc</code> und <code>#aabbcc</code>; RGB/HSL akzeptieren auch nur Zahlen (z. B. <code>217 119 6</code>). HSL wird gerundet — beim Hin- und Herrechnen können sich Werte um 1 verschieben. Alles lokal, kein Upload.</p>
+  </section>
+  <div class="cta"><strong>Mehr Tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für saubere Websites.</p>
+    <p><a class="btn" href="/kontrast-checker.html">Kontrast (WCAG)</a>
+      <a class="btn ghost" href="/ai-sichtbarkeit.html">AI-Sichtbarkeit</a>
+      <a class="btn ghost" href="/zeichenzaehler.html">Zeichenzähler</a></p></div>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/kontrast-checker.html">Kontrast</a> · <a href="/encoder.html">Encoder</a> ·
+  <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var picker=document.getElementById("picker"),swatch=document.getElementById("swatch"),
+      hexEl=document.getElementById("hex"),rgbEl=document.getElementById("rgb"),hslEl=document.getElementById("hsl");
+  function clamp(v,lo,hi){return Math.max(lo,Math.min(hi,v));}
+  function toHex(n){return (clamp(Math.round(n),0,255)+0x100).toString(16).slice(1);}
+  function rgb2hex(r,g,b){return "#"+toHex(r)+toHex(g)+toHex(b);}
+  function parseHex(h){h=(h||"").trim().replace(/^#/,"");if(/^[0-9a-fA-F]{3}$/.test(h))h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];if(!/^[0-9a-fA-F]{6}$/.test(h))return null;return[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+  function parseNums(s,n){var m=(s||"").match(/-?\d+(\.\d+)?/g);if(!m||m.length<n)return null;return m.slice(0,n).map(Number);}
+  function rgb2hsl(r,g,b){
+    r/=255;g/=255;b/=255;
+    var max=Math.max(r,g,b),min=Math.min(r,g,b),h,s,l=(max+min)/2;
+    if(max===min){h=s=0;}
+    else{var d=max-min;s=l>0.5?d/(2-max-min):d/(max+min);
+      switch(max){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;default:h=(r-g)/d+4;}h/=6;}
+    return [Math.round(h*360),Math.round(s*100),Math.round(l*100)];
+  }
+  function hsl2rgb(h,s,l){
+    h=((h%360)+360)%360/360;s=clamp(s,0,100)/100;l=clamp(l,0,100)/100;
+    var r,g,b;
+    if(s===0){r=g=b=l;}
+    else{
+      function hue(p,q,t){if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p;}
+      var q=l<0.5?l*(1+s):l+s-l*s,p=2*l-q;
+      r=hue(p,q,h+1/3);g=hue(p,q,h);b=hue(p,q,h-1/3);
+    }
+    return [r*255,g*255,b*255];
+  }
+  function setAll(rgb,from){
+    var r=rgb[0],g=rgb[1],b=rgb[2];
+    var hx=rgb2hex(r,g,b),hsl=rgb2hsl(r,g,b);
+    swatch.style.background=hx;picker.value=hx;
+    if(from!=="hex")hexEl.value=hx;
+    if(from!=="rgb")rgbEl.value="rgb("+Math.round(r)+", "+Math.round(g)+", "+Math.round(b)+")";
+    if(from!=="hsl")hslEl.value="hsl("+hsl[0]+", "+hsl[1]+"%, "+hsl[2]+"%)";
+  }
+  picker.addEventListener("input",function(){setAll(parseHex(picker.value),null);});
+  hexEl.addEventListener("input",function(){var c=parseHex(hexEl.value);if(c)setAll(c,"hex");});
+  rgbEl.addEventListener("input",function(){var c=parseNums(rgbEl.value,3);if(c)setAll([clamp(c[0],0,255),clamp(c[1],0,255),clamp(c[2],0,255)],"rgb");});
+  hslEl.addEventListener("input",function(){var c=parseNums(hslEl.value,3);if(c)setAll(hsl2rgb(c[0],c[1],c[2]),"hsl");});
+  document.querySelectorAll(".cp").forEach(function(b){b.addEventListener("click",function(){var el=document.getElementById(b.getAttribute("data-f"));try{navigator.clipboard.writeText(el.value);b.textContent="kopiert ✓";setTimeout(function(){b.textContent="Kopieren";},1500);}catch(e){}});});
+})();
+</script>
+</body>
+</html>

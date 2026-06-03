@@ -1,0 +1,11 @@
+# KI-Schriftsteller - Abhaengigkeiten
+#   pip install -r requirements.txt
+#
+# anthropic : Claude-SDK (schreibe_roman / plane_kapitel / lektor / ueberarbeiten / politur)
+# reportlab : PDF-Bau (buch_pdf.py, kdp_paket.py)
+# Pillow    : Cover-Bilder (../generate_trilogie_covers.py)
+#
+# qualitaet.py braucht NICHTS davon (reine Standardbibliothek) - laeuft offline.
+anthropic>=0.105
+reportlab>=4.0
+Pillow>=10.0

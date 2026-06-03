@@ -1,0 +1,63 @@
+{
+  "_comment": "So verdienst du Geld: Melde dich beim Partnerprogramm des jeweiligen Anbieters an (Liste '_programme'). Du bekommst einen persönlichen Link. Trage ihn bei 'affiliate_url' ein und entferne das führende '_' im Key. Die Seite markiert ihn dann automatisch mit * und blendet den Transparenzhinweis ein, dann baut sie sich neu. Anbieter ohne aktiven Eintrag verlinken auf die offizielle URL aus data/anbieter.json (keine Provision).",
+  "_status": "ALLE SLOTS DEAKTIVIERT (Key mit '_'-Präfix). Noch keine Affiliate-Links freigegeben. Fallback = offizielle URL / Mail.",
+  "_kontakt_fallback": "mailto:hallo@abannews.com",
+  "_programme": {
+    "_hinweis": "Kuratierte Liste typischer Partnerprogramme, gemappt auf Anbieter in data/anbieter.json. 'signup' = wo du dich bewirbst. 'rate' = typische Provision (kann sich ändern, vor Nutzung prüfen). Quelle der Wahrheit für die echte URL bleibt data/anbieter.json. Nur Anbieter mit real existierendem bzw. plausibel angebotenem Programm sind gelistet — vor Nutzung jeweils prüfen.",
+    "lexoffice": {
+      "signup": "https://www.lexware.de/partner/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "bounty/recurring"
+    },
+    "sevdesk": {
+      "signup": "https://sevdesk.de/partnerprogramm/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "bounty/recurring"
+    },
+    "fastbill": {
+      "signup": "https://www.fastbill.com/partner",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "bounty"
+    },
+    "easybill": {
+      "signup": "https://www.easybill.de/partnerprogramm",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "bounty"
+    },
+    "kontist": {
+      "signup": "https://kontist.com/partner",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "bounty"
+    },
+    "xero": {
+      "signup": "https://www.xero.com/de/partner-programs/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "partner/recurring"
+    },
+    "quickbooks": {
+      "signup": "https://quickbooks.intuit.com/partners/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "bounty/recurring"
+    },
+    "zoho-books": {
+      "signup": "https://www.zoho.com/affiliates/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    }
+  },
+  "links": {
+    "_anleitung": "Trage deinen persönlichen Affiliate-Link bei 'affiliate_url' ein und entferne das führende '_' im Anbieter-Key (z.B. '_lexoffice' -> 'lexoffice'). Erst dann wird der Link auf der Seite aktiv (mit * + Transparenzhinweis). Solange das '_' steht, bleibt der Slot deaktiviert und es wird die offizielle URL verlinkt.",
+    "_lexoffice": {
+      "affiliate_url": "https://www.lexware.de/lexware-office/?partner=DEIN-CODE"
+    },
+    "_sevdesk": {
+      "affiliate_url": "https://sevdesk.de/?ref=DEIN-CODE"
+    },
+    "_fastbill": {
+      "affiliate_url": "https://www.fastbill.com/?ref=DEIN-CODE"
+    },
+    "_xero": {
+      "affiliate_url": "https://www.xero.com/de/?ref=DEIN-CODE"
+    }
+  }
+}

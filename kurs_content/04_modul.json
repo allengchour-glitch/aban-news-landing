@@ -1,0 +1,61 @@
+{
+  "title": "Workflows, die Zeit sparen",
+  "kicker": "Modul 4",
+  "toc": true,
+  "kind": "modul",
+  "blocks": [
+    ["lead", "Ein guter Prompt spart dir einmal Zeit. Ein guter Workflow spart dir jede Woche Zeit. In diesem Modul machst du aus einzelnen Prompts feste Abläufe, die du immer wieder nutzt — ohne die Kontrolle abzugeben."],
+
+    ["h3", "Wiederkehrende Aufgaben finden"],
+    ["p", "Einen Ablauf einzurichten lohnt sich nur dort, wo etwas regelmäßig vorkommt. Der erste Schritt ist deshalb kein Tool, sondern eine ehrliche Bestandsaufnahme: Welche Aufgaben machst du jede Woche aufs Neue, oft in derselben Form?"],
+    ["p", "Führ eine Woche lang eine kurze Liste. Immer wenn du dich bei einer Aufgabe ertappst, die sich vertraut anfühlt, notierst du sie in einem Satz. Am Ende der Woche siehst du Muster: Angebote schreiben, Mails beantworten, Termine zusammenfassen, Texte kürzen."],
+    ["p", "Gute Kandidaten für einen Workflow erkennst du an drei Merkmalen."],
+    ["ul", ["<b>Wiederholung:</b> Die Aufgabe kommt mindestens wöchentlich vor.", "<b>Klares Muster:</b> Eingabe und gewünschtes Ergebnis sehen jedes Mal ähnlich aus.", "<b>Erklärbar:</b> Du könntest die Aufgabe einem neuen Mitarbeiter in fünf Sätzen erklären."]],
+    ["callout", "Was nur ein- oder zweimal im Jahr vorkommt, gießt du nicht in einen Ablauf. Der Aufwand, einen sauberen Workflow zu bauen, rechnet sich erst bei Wiederholung."],
+
+    ["h3", "Bausteine: Prompts, die du speicherst"],
+    ["p", "Sobald du einen Prompt gefunden hast, der gute Ergebnisse liefert, wirf ihn nicht weg. Mach ihn zu einem Baustein, den du wiederverwendest. Das ist der einfachste Workflow überhaupt: ein gespeicherter, geprüfter Prompt mit Platzhaltern."],
+    ["code", "Baustein: Angebots-Mail\n\nDu bist ich — freundlich, sachlich, verbindlich.\nKontext: Ein Interessent hat nach [LEISTUNG] gefragt.\nBudget-Rahmen: [PREIS]. Verfügbar ab: [TERMIN].\nAufgabe: eine kurze Angebots-Mail schreiben, die die\nLeistung beschreibt, den Preis nennt und einen nächsten\nSchritt vorschlägt.\nFormat: maximal zehn Sätze, du-Form, ein klarer\nAbschlusssatz mit Handlungsaufforderung."],
+    ["p", "Die Platzhalter in eckigen Klammern füllst du jedes Mal neu. Der Rest bleibt gleich. So bekommst du verlässliche Qualität, ohne den Prompt jedes Mal neu zu erfinden."],
+    ["p", "Sammle deine Bausteine an einem Ort: ein Textdokument, eine Notiz-App, eine einfache Tabelle. Wichtig ist nur, dass du sie in zehn Sekunden wiederfindest. Eine kleine, gut sortierte Sammlung schlägt eine große, unübersichtliche."],
+
+    ["h3", "Der Drei-Formate-Trick"],
+    ["p", "Viel Arbeit besteht darin, dieselbe Aussage für verschiedene Kanäle aufzubereiten. Statt drei Texte einzeln zu schreiben, lieferst du den Kern einmal und lässt die KI drei Formate daraus machen."],
+    ["code", "Du bist mein Redaktions-Assistent.\nHier ist der Kern einer Botschaft:\n[STICHWORTE ODER ROHTEXT]\n\nMach daraus drei Formate:\n1. Eine Betreffzeile plus drei Sätze für eine Mail.\n2. Einen kurzen Beitrag für Social Media, höchstens\n   fünf Zeilen.\n3. Drei Stichpunkte für eine Präsentationsfolie.\n\nTon durchgehend nüchtern, keine Floskeln."],
+    ["p", "Aus einer Idee werden so drei einsatzbereite Stücke in einem Durchgang. Du prüfst, kürzt wo nötig und nimmst, was passt. Der Trick funktioniert für fast alles, was du mehrfach ausspielst: Angebote, Ankündigungen, Zusammenfassungen."],
+
+    ["h3", "Halb-automatisiert arbeiten"],
+    ["p", "Der Punkt, den viele falsch verstehen: Ein Workflow muss nicht vollautomatisch sein. Im Gegenteil. Die beste Aufteilung für Solo-Profis ist halb-automatisiert — die KI macht die Fleißarbeit, du behältst die letzte Kontrolle."],
+    ["p", "Das läuft in drei Schritten ab, die immer gleich bleiben."],
+    ["ol", ["<b>Du gibst die Eingabe.</b> Rohnotizen, eine Mail, ein Dokument — das, was nur du hast.", "<b>Die KI macht den Entwurf.</b> Mit deinem gespeicherten Baustein, schnell und in der richtigen Form.", "<b>Du prüfst und gibst frei.</b> Fakten checken, Ton anpassen, abschicken. Diesen Schritt gibst du nie ab."]],
+    ["callout", "Die letzte Kontrolle bleibt bei dir. Was deinen Namen trägt oder nach außen geht, liest du selbst, bevor es rausgeht. Das ist kein Rückschritt, sondern der Grund, warum du dich auf den Ablauf verlassen kannst."],
+
+    ["h3", "Zwei konkrete Workflow-Beispiele"],
+    ["p", "So sehen fertige Abläufe aus, die du direkt nachbauen kannst."],
+    ["p", "<b>Workflow 1: Wochenrückblick aus Notizen.</b> Du sammelst über die Woche kurze Stichworte in einer Notiz. Am Freitag lässt du daraus eine saubere Zusammenfassung machen."],
+    ["code", "Du bist mein Assistent für Wochenberichte.\nHier sind meine Stichworte der Woche:\n[NOTIZEN EINFÜGEN]\n\nAufgabe: daraus einen kurzen Rückblick machen.\nFormat:\n- Drei erledigte Punkte (je eine Zeile)\n- Zwei offene Punkte für nächste Woche\n- Ein Satz Gesamteinschätzung\nTon: sachlich, du-Form. Erfinde nichts dazu — nutze\nnur, was in den Notizen steht."],
+    ["p", "<b>Workflow 2: Eingehende Mail vorsortieren.</b> Eine längere Kundenmail lässt du erst einordnen, bevor du antwortest. Das spart dir das mehrfache Lesen."],
+    ["code", "Du bist mein Assistent.\nHier ist eine eingegangene Mail:\n[MAIL EINFÜGEN]\n\nAufgabe:\n1. Fass die Mail in zwei Sätzen zusammen.\n2. Nenne, was der Absender konkret von mir will.\n3. Schlag drei Stichpunkte für meine Antwort vor.\nKeine fertige Antwortmail — die schreibe ich selbst."],
+    ["p", "Beachte den letzten Satz im zweiten Beispiel: Du grenzt bewusst ein, was die KI tun soll. Sie bereitet vor, du entscheidest. Genau so bleibt der Ablauf schnell und du trotzdem im Lenkrad."],
+
+    ["h3", "Häufige Fehler"],
+    ["p", "Diese Stolpersteine kosten am Ende mehr Zeit, als der Workflow spart. Achte darauf."],
+    ["ul", ["<b>Alles in einen Ablauf gießen wollen:</b> auch Aufgaben, die selten oder hochsensibel sind. Manches bleibt besser Handarbeit.", "<b>Die Prüfung weglassen:</b> Entwürfe ungelesen verschicken, weil es schnell gehen soll.", "<b>Bausteine nicht pflegen:</b> Ein Prompt, der vor Monaten gut war, passt vielleicht nicht mehr zum heutigen Angebot.", "<b>Zu viele Bausteine:</b> eine unübersichtliche Sammlung, in der du nichts wiederfindest.", "<b>Kontext vergessen:</b> den Baustein ohne die nötigen Platzhalter abschicken und ein generisches Ergebnis bekommen.", "<b>Vertrauliches hineingeben:</b> sensible Kundendaten in Tools eingeben, ohne zu wissen, wo sie landen."]],
+    ["callout", "Bei vertraulichen Inhalten gilt: erst prüfen, was das Tool mit den Daten macht. Im Zweifel anonymisierst du Namen und Zahlen, bevor du sie eingibst."],
+
+    ["h3", "Grenzen der Automatisierung"],
+    ["p", "Ein ehrliches Modul nennt auch, wo Schluss ist. Workflows helfen bei Aufgaben mit klarem Muster. Sie helfen nicht da, wo Urteilsvermögen, Verantwortung oder echte Entscheidungen gefragt sind."],
+    ["ul", ["<b>Entscheidungen:</b> Ob du ein Angebot annimmst, entscheidest du — nicht der Ablauf.", "<b>Beziehung:</b> Ein schwieriges Kundengespräch führst du selbst, nicht per Vorlage.", "<b>Fachliche Haftung:</b> Rechtliches, Steuerliches, Medizinisches prüft am Ende ein Mensch mit der nötigen Qualifikation.", "<b>Originalität:</b> Deine eigene Stimme und deine echten Erfahrungen kann kein Baustein ersetzen."]],
+    ["p", "Die Faustregel: Routine kannst du an einen Workflow abgeben, Verantwortung nicht. Je klarer du diese Linie ziehst, desto entspannter nutzt du die Abläufe."],
+
+    ["h3", "Deine Workflow-Checkliste"],
+    ["p", "Bevor du eine Aufgabe in einen festen Ablauf gießt, geh diese Punkte durch."],
+    ["ul", ["Kommt die Aufgabe regelmäßig vor — mindestens wöchentlich?", "Sieht das Ergebnis jedes Mal ähnlich aus?", "Habe ich einen geprüften Baustein mit Platzhaltern?", "Ist klar, welchen Schritt ich selbst prüfe und freigebe?", "Weiß ich, welche Daten ich besser nicht hineingebe?", "Finde ich den Baustein in zehn Sekunden wieder?"]],
+
+    ["h3", "Mini-Übung"],
+    ["p", "Bau diese Woche deinen ersten echten Workflow."],
+    ["ol", ["Wähl aus deiner Wochenliste die Aufgabe, die am häufigsten vorkommt.", "Schreib einen RKAF-Prompt dafür und teste ihn an einem echten Fall.", "Schärfe ihn nach, bis das Ergebnis ohne große Nacharbeit passt.", "Ersetze die festen Stellen durch Platzhalter in eckigen Klammern.", "Speichere den fertigen Baustein an deinem Sammelort und nutze ihn beim nächsten Mal."]],
+    ["p", "Wenn dieser eine Ablauf sitzt, baust du den nächsten. Drei bis fünf gut gepflegte Bausteine decken bei den meisten Solo-Profis schon einen großen Teil der wiederkehrenden Schreibarbeit ab."],
+    ["callout", "Fertige Prompts als Startpunkt für deine Bausteine findest du nach Beruf und Aufgabe sortiert unter prompts.abannews.com."]
+  ]
+}

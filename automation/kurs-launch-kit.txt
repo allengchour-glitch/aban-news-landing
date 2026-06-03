@@ -1,0 +1,180 @@
+================================================================
+KI-WERKSTATT — LAUNCH-KIT (Kurs, €59)
+aban news · alles an einem Ort zum Kopieren & Loslegen
+================================================================
+
+Dieses Kit bündelt, was du zum Verkaufsstart der KI-Werkstatt
+brauchst: Produkt anlegen, Kauf-Button scharf schalten, ankündigen.
+Überall, wo [DU] steht, musst du selbst etwas eintragen (Bank,
+Steuer, Links) — das kann dir niemand abnehmen.
+
+Produkt-Stand: 6 Module + 7 Bonus-Pakete, über 50 Seiten.
+Auslieferung: downloads/ki-werkstatt-kurs.pdf (+ Arbeitsblätter).
+Verkaufsseite: https://abannews.com/kurs.html
+Lieferseite (noindex): https://abannews.com/kurs-zugang.html
+
+
+================================================================
+TEIL 1 — PRODUKT IN LEMON SQUEEZY ANLEGEN (~15 Min)
+================================================================
+Empfehlung: Lemon Squeezy, weil es als "Merchant of Record" die
+EU-MwSt automatisch übernimmt — aus der Schweiz heraus der
+einfachste Weg. (Alternativ Stripe Payment Link, dann kümmerst du
+dich selbst um die Umsatzsteuer.)
+
+Products -> New Product -> Digital Product, dann Feld für Feld:
+
+1) PRODUKTTYP
+   Digital Product  (einmaliger Kauf, kein Abo)
+
+2) NAME
+   Die KI-Werkstatt — der ehrliche KI-Kurs für DACH-Profis
+
+3) PREIS
+   Modell:    Einmalpreis (Single payment)
+   Preis:     59
+   Währung:   EUR
+   (Optional Launch-Rabatt: regulär 89, Coupon o. durchgestrichen.)
+
+4) BESCHREIBUNG (kopieren)
+   ------------------------------------------------------------
+   KI im Arbeitsalltag nutzen — ohne Hype, ohne Buzzwords.
+
+   Die KI-Werkstatt ist ein selbstbestimmter Kurs für
+   deutschsprachige Solo-Profis. In 6 Modulen plus 7 Bonus-
+   Paketen lernst du, KI für deine echte Arbeit einzusetzen:
+   Angebote, E-Mails, Content, Recherche — und wo du ihr besser
+   nicht traust.
+
+   Drin sind: über 50 Seiten zum Mitmachen, 50 fertige deutsche
+   Prompts, eine Vorlagen-Sammlung, ein KI-Audit deines
+   Geschäfts, ein 30-Tage-Fahrplan und ein KI-Glossar zum
+   Nachschlagen. Einmal zahlen, lebenslang deins, inklusive
+   Updates. 14 Tage Geld-zurück-Garantie, ohne Nachfragen.
+   ------------------------------------------------------------
+
+5) DATEI ANHÄNGEN (Deliverables)
+   downloads/ki-werkstatt-kurs.pdf hochladen.
+   Optional zusätzlich die Arbeitsblätter, falls separat.
+
+6) KAUF-BESTÄTIGUNG / DANKE-TEXT
+   "Danke! Dein Kurs liegt als PDF in dieser Mail. Lies
+   selbstbestimmt, fang am besten mit dem KI-Audit (Bonus 5) an.
+   Fragen? Antworte einfach auf diese Mail — ich lese selbst."
+
+7) STEUER / AUSZAHLUNG
+   [DU]: Bankverbindung und Steuerangaben im Lemon-Squeezy-Konto
+   hinterlegen (Settings -> Payouts / Tax). Einmalig.
+
+-> Produkt veröffentlichen, dann den öffentlichen Buy-Link kopieren
+   (Form: https://[name].lemonsqueezy.com/buy/...).
+
+
+================================================================
+TEIL 2 — KAUF-BUTTON SCHARF SCHALTEN (1 Zeile)
+================================================================
+In kurs.html, im <script> ganz unten, EINE Zeile setzen:
+
+   var KURS_BUY_LINK = "https://[name].lemonsqueezy.com/buy/...";
+
+Solange die Zeile leer ist, läuft der Kauf automatisch per E-Mail
+(kein toter Button). Sobald ein gültiger Stripe-/Lemon-Squeezy-Link
+drinsteht, zeigt der Button direkt auf die Kasse. Erlaubte Hosts
+sind aus Sicherheitsgründen begrenzt auf buy.stripe.com,
+checkout.stripe.com und *.lemonsqueezy.com.
+
+Danach committen und pushen -> Cloudflare deployt automatisch.
+Testkauf machen (Lemon Squeezy hat einen Test-Modus).
+
+
+================================================================
+TEIL 3 — E-MAIL-LAUNCH-SEQUENZ (beehiiv an Newsletter-Liste)
+================================================================
+Drei Mails über ~5 Tage. Ton: ruhig, ehrlich, kein Countdown-Druck.
+Betreffzeilen klein geschrieben, wie im Newsletter üblich.
+
+--- MAIL 1 (Tag 0 · Ankündigung) ---------------------------------
+Betreff: ich hab einen kurs gebaut (die ki-werkstatt)
+
+Hi,
+
+du liest aban news, weil du KI nüchtern angehen willst — ohne das
+10x-Geschwätz. Genau daraus ist ein Kurs geworden: die KI-Werkstatt.
+
+6 Module plus 7 Bonus-Pakete, über 50 Seiten zum Mitmachen. Vom
+Grundverständnis über Prompten und Workflows bis DSGVO und
+Kundengewinnung. Dazu 50 fertige Prompts, Vorlagen, ein KI-Audit
+deines Geschäfts und ein 30-Tage-Fahrplan.
+
+Kein Abo, keine Plattform, kein Login-Zirkus: Du kaufst einmal,
+bekommst das PDF und arbeitest, wann es dir passt.
+
+Für die ersten Käufer gilt der Launch-Preis von 59 statt 89 Euro.
+14 Tage Geld-zurück, ohne Nachfragen.
+
+-> https://abannews.com/kurs.html
+
+Aban
+
+--- MAIL 2 (Tag 2 · Was drin ist / Einwände) ---------------------
+Betreff: „brauche ich das, wenn ich chatgpt schon nutze?“
+
+Kurz: Den Chatbot zu öffnen ist das eine. Ihn so einzusetzen, dass
+er dir bei echten Aufgaben Zeit spart, ist das andere.
+
+Genau dafür ist die KI-Werkstatt. Drei Beispiele aus dem Kurs:
+
+- Die RKAF-Struktur, mit der deine Prompts endlich brauchbare
+  Antworten liefern statt Bla.
+- Wie du der KI deinen eigenen Schreibstil beibringst, damit
+  Texte nach dir klingen und nicht nach Maschine.
+- Der DSGVO-Teil: was du eingeben darfst und was nicht, ohne
+  Jura-Studium.
+
+Und ein Teil, den viele übersehen: das KI-Audit. 30 Minuten, an
+deren Ende du genau weißt, welche drei Aufgaben KI dir ab morgen
+abnimmt — und welche besser bei dir bleiben.
+
+Launch-Preis 59 Euro, einmal: https://abannews.com/kurs.html
+
+Aban
+
+--- MAIL 3 (Tag 5 · letzte Erinnerung) ---------------------------
+Betreff: launch-preis läuft aus
+
+Letzte kurze Erinnerung: Der Launch-Preis von 59 Euro für die
+KI-Werkstatt gilt nur noch [DU: Datum].
+
+Wenn du KI im Alltag nutzen willst, ohne dich durch 40 YouTube-
+Videos zu wühlen — das ist der direkte Weg. Über 50 Seiten,
+selbstbestimmt, 14 Tage Geld-zurück.
+
+Und wenn nicht: auch gut. Der Newsletter bleibt für dich kostenlos.
+
+-> https://abannews.com/kurs.html
+
+Aban
+
+
+================================================================
+TEIL 4 — SOCIAL (liegt schon bereit)
+================================================================
+Vier fertige Posts in social/posts.json:
+  p15-kurs-launch · p16-kurs-inhalt · p17-kurs-antihype ·
+  p18-kurs-gratis-erst
+Versand über social/post.py (Telegram/Discord). Vor dem Senden
+prüfen, dass der Buy-Link live ist.
+
+
+================================================================
+TEIL 5 — GO-LIVE-CHECKLISTE
+================================================================
+[ ] Lemon-Squeezy-Produkt angelegt, PDF hochgeladen, veröffentlicht
+[ ] Bank-/Steuerdaten im Zahlungs-Konto hinterlegt
+[ ] Testkauf gemacht (Test-Modus), Liefer-Mail geprüft
+[ ] KURS_BUY_LINK in kurs.html gesetzt, gepusht, deployt
+[ ] Button auf der Live-Seite klickt zur echten Kasse
+[ ] Datum in E-Mail-Mail-3 und ggf. Coupon-Ablauf gesetzt
+[ ] Mail 1 in beehiiv terminiert
+[ ] Social-Posts p15–p18 eingeplant
+[ ] Nach dem ersten echten Kauf: Liefer-Mail noch einmal selbst lesen

@@ -23,11 +23,13 @@
   <meta name="twitter:image" content="https://abannews.com/og-image.png">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="alternate icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
 
   <link rel="stylesheet" href="css/styles.css">
 
   <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
     .filters{display:grid;grid-template-columns:1fr;gap:.75rem;background:var(--c-bg-alt);padding:1rem;border-radius:var(--r-lg);margin:1rem 0}
     @media(min-width:720px){.filters{grid-template-columns:repeat(4,1fr)}}
     .filters label{font-size:.85rem;color:var(--c-muted);font-weight:600;display:block;margin-bottom:.25rem}
@@ -66,6 +68,23 @@
     .reset-btn:hover{background:#fff}
     .filter-row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem}
     .ausgaben-mentions a{color:var(--c-accent-hi);text-decoration:none;margin-right:.5rem;font-size:.8rem}
+    /* --- pimp 2026-06-03: card polish, colored scores, top-pick, copy-link, skeleton --- */
+    .tool-card{transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+    .tool-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.09);border-color:var(--c-accent)}
+    .top-pick{font-size:.6rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:linear-gradient(90deg,#f59e0b,#d97706);color:#fff;padding:.12rem .42rem;border-radius:99px;vertical-align:middle;white-space:nowrap}
+    .score-pills{display:flex;gap:.5rem;margin-top:.3rem}
+    .score-pill{flex:1;border-radius:var(--r);padding:.35rem .5rem;text-align:center;border:1px solid var(--c-border);background:var(--c-bg)}
+    .score-pill .lbl{display:block;font-size:.6rem;text-transform:uppercase;letter-spacing:.05em;color:var(--c-muted)}
+    .score-pill .val{display:block;font-size:1.05rem;font-weight:700;line-height:1.15}
+    .score-pill.s-hi{background:#ecfdf5;border-color:#a7f3d0}.score-pill.s-hi .val{color:#047857}
+    .score-pill.s-mid{background:#fffbeb;border-color:#fde68a}.score-pill.s-mid .val{color:#b45309}
+    .score-pill.s-lo{background:#fef2f2;border-color:#fecaca}.score-pill.s-lo .val{color:#b91c1c}
+    .copy-link{background:none;border:none;cursor:pointer;color:var(--c-muted);font-size:.85rem;padding:0;font-family:inherit}
+    .copy-link:hover{color:var(--c-accent-hi)}.copy-link.done{color:#047857;font-weight:600}
+    .kbd{display:inline-block;border:1px solid var(--c-border);border-bottom-width:2px;border-radius:4px;padding:0 .3rem;font-size:.72rem;color:var(--c-muted);background:#fff;font-family:ui-monospace,monospace}
+    .tool-skel{height:240px;border-radius:var(--r-lg);background:linear-gradient(90deg,#f3f4f6 25%,#e9eaec 37%,#f3f4f6 63%);background-size:400% 100%;animation:shimmer 1.4s ease infinite}
+    @keyframes shimmer{0%{background-position:100% 0}100%{background-position:0 0}}
+    @media(prefers-reduced-motion:reduce){.tool-card{transition:none}.tool-card:hover{transform:none}.tool-skel{animation:none}}
   </style>
 
   <script type="application/ld+json" id="tools-jsonld">
@@ -107,6 +126,12 @@
       <p class="lead">
         <span id="tool-count">140+</span> AI-Tools, ehrlich bewertet für DACH-Solos und KMU. DACH-Relevanz, Worth-it-Score, Aban-Notes. Keine Affiliate-Links, kein Sponsoring, kein Email-Gate. Filtern, suchen, mehr finden in der nächsten Werkzeugkasten-Ausgabe.
       </p>
+      <p style="max-width:760px;margin:1rem auto 0;padding:1rem 1.2rem;border:1px solid #ece3d4;border-radius:12px;background:#fffbf5;color:#374151;font-size:.95rem;line-height:1.6">
+        Suchst du nach Kategorie (Video, Musik, Voice, Buchhaltung, Automatisierung …)?
+        Das große <a href="https://tools.abannews.com" style="font-weight:700;color:#b45309">KI-Tools-Verzeichnis</a>
+        bündelt alle aban-Radars mit EU-Hosting-Filter. Und prüf, ob KI dich nennt:
+        <a href="/ki-erwaehnungs-check.html" style="font-weight:700;color:#b45309">KI-Sichtbarkeits-Check</a>.
+      </p>
     </div>
   </section>
 
@@ -115,7 +140,7 @@
 
       <div class="filters" role="region" aria-label="Filter">
         <div>
-          <label for="f-search">Suche</label>
+          <label for="f-search">Suche <span class="kbd" aria-hidden="true">/</span></label>
           <input type="text" id="f-search" placeholder="Tool, Vendor, Use-Case..." autocomplete="off">
         </div>
         <div>
@@ -273,6 +298,8 @@
     });
   }
 
+  function scoreClass(v){ return v >= 8 ? 's-hi' : v >= 6 ? 's-mid' : 's-lo'; }
+
   function renderTool(t){
     var id = esc(t.id);
     var price = t.pricing && t.pricing.free_tier ? '<span class="badge badge-free">Free-Tier</span>' : '<span class="badge badge-paid">Paid</span>';
@@ -291,19 +318,21 @@
     var uses = (t.use_cases || []).map(function(u){ return esc(u); }).join(', ');
     var isOpen = STATE.expandedIds.has(t.id);
 
+    var pick = score >= 9 ? ' <span class="top-pick" title="Worth-it-Score 9+ — Aban-Empfehlung">★ Top-Pick</span>' : '';
+
     return '<article class="tool-card" id="' + id + '">' +
-      '<h3>' + esc(t.name) + '</h3>' +
+      '<h3>' + esc(t.name) + pick + '</h3>' +
       '<div class="vendor">von ' + esc(t.vendor) + '</div>' +
       '<div>' + price + '</div>' +
       '<div class="tool-cats">' + cats + '</div>' +
-      '<div class="scores">' +
-        '<div class="score-block"><span>DACH</span><strong>' + dach + '/10</strong></div>' +
-        '<div class="score-block"><span>Worth-it</span><strong>' + score + '/10</strong></div>' +
+      '<div class="score-pills">' +
+        '<div class="score-pill ' + scoreClass(dach) + '"><span class="lbl">DACH</span><span class="val">' + dach + '<span style="font-size:.7rem;font-weight:400">/10</span></span></div>' +
+        '<div class="score-pill ' + scoreClass(score) + '"><span class="lbl">Worth-it</span><span class="val">' + score + '<span style="font-size:.7rem;font-weight:400">/10</span></span></div>' +
       '</div>' +
-      '<div>' + stars(dach/2) + '</div>' +
       '<p class="tool-note">' + esc(t.aban_note) + '</p>' +
       '<div class="tool-actions">' +
         '<a href="' + esc(t.url) + '" target="_blank" rel="noopener nofollow">' + esc(t.name) + ' →</a>' +
+        '<button class="copy-link" data-link="' + id + '" title="Link zu diesem Tool kopieren">🔗 Link</button>' +
         '<button class="toggle-btn" data-id="' + id + '">' + (isOpen ? 'Weniger ↑' : 'Mehr ↓') + '</button>' +
       '</div>' +
       '<div class="tool-more' + (isOpen ? ' open' : '') + '" id="more-' + id + '">' +
@@ -333,6 +362,16 @@
         var more = document.getElementById('more-' + id);
         var open = more.classList.toggle('open');
         this.textContent = open ? 'Weniger ↑' : 'Mehr ↓';
+      });
+    }
+    // Copy-permalink handlers
+    var cps = els.grid.querySelectorAll('.copy-link');
+    for (var k=0;k<cps.length;k++){
+      cps[k].addEventListener('click', function(){
+        var b = this, url = location.origin + location.pathname + '#' + b.getAttribute('data-link');
+        try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url); } catch(e){}
+        b.classList.add('done'); b.textContent = '✓ kopiert';
+        setTimeout(function(){ b.classList.remove('done'); b.textContent = '🔗 Link'; }, 1500);
       });
     }
   }
@@ -416,6 +455,7 @@
   }
 
   function init(){
+    els.grid.innerHTML = new Array(7).join('<div class="tool-skel"></div>');
     fetch('/data/tools.json').then(function(r){ return r.json(); }).then(function(data){
       STATE.tools = data.tools || [];
       els.toolCount.textContent = STATE.tools.length;
@@ -453,6 +493,13 @@
       els.dach.value = '1'; els.dachVal.textContent = '1';
       els.score.value = '1'; els.scoreVal.textContent = '1';
       applyFilters();
+    });
+    // "/" fokussiert die Suche (wenn nicht in einem Eingabefeld)
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' ) {
+        var tag = (document.activeElement && document.activeElement.tagName || '').toLowerCase();
+        if (tag !== 'input' && tag !== 'textarea' && tag !== 'select') { e.preventDefault(); els.search.focus(); }
+      }
     });
   }
 

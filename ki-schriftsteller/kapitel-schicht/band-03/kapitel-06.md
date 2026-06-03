@@ -1,0 +1,21 @@
+Kapitel 6 - Jakob unter Tage
+
+Während Marga oben mit der Vergangenheit rang, lebte Jakob unten die Gegenwart, und die Gegenwart war ein Wassereinbruch im Ostfeld.
+
+Es kam ohne Vorwarnung, wie das Wasser oft kommt: ein altes, vergessenes Standwasser hinter einer dünnen Schicht Gestein, und als sie das Flöz anhauten, brach es durch, eine schwarze, kalte Flut, die in die Strecke schoss und alles mitriss. Jakob und Hasan waren am weitesten vorn, am Stoß, und das Wasser kam zwischen ihnen und dem Rückweg, stieg schnell, und für einen Moment war da nur Panik, das Urteil des Berges, das Ertrinken im Dunkeln, achthundert Meter unter der Sonne.
+
+Aber sie verloren den Kopf nicht, keiner von beiden. Hasan kannte einen alten Wetterüberhau, einen Querschlag nach oben, von dem die Karten nichts mehr sagten, den er aber bei einer früheren Schicht entdeckt hatte, und er zog Jakob mit, durch das steigende Wasser, hinauf in den Überhau, und sie kletterten, im Dunkeln, das Wasser unter sich, bis sie eine höhere Sohle erreichten und in Sicherheit waren. Ohne Hasans Wissen um den vergessenen Überhau wäre Jakob ertrunken. Ohne Jakobs Kraft, der den schmaleren Hasan an den schwierigen Stellen stützte, wäre Hasan nicht hinaufgekommen. Sie retteten einander, abwechselnd, im Dunkeln, und kamen lebend heraus, und in der Kaue, als sie das Wasser von der Haut wuschen, sahen sie einander an und lachten, das Lachen der Überlebenden, und Hasan sagte in seinem Ruhrdeutsch mit dem anatolischen Klang: «Wir zwei, Jakob. Berg kriegt uns nich.»
+
+Das war Kameradschaft, im ältesten, härtesten Sinn, derselbe Sinn, in dem einmal Heinrich Brass den jungen Wilhelm Kortmann am Kragen aus dem Hangenden gerissen hatte, vor sechzig Jahren, in demselben Berg. Der Berg wiederholte sich, wie er sich immer wiederholte, und stellte dieselbe Lage her: zwei Männer, die einander das Leben retteten, ohne zu fragen, ohne zu rechnen, ohne nach Herkunft oder Glauben oder Pass zu fragen. Nur dass diese Geschichte anders weiterging als die von Wilhelm und Heinrich. Jakob würde Hasan nicht verraten. Der Gedanke wäre Jakob nie gekommen, so wenig wie ihm der Gedanke gekommen wäre, im Schlaf das Atmen zu vergessen. Der Kumpel war der Kumpel. Das war alles. Das war Jakobs ganze Philosophie, und es war, ohne dass er es wusste, der Gegenentwurf zu allem, was seine Familie auf dem Gewissen hatte.
+
+An jenem Abend kam Jakob nach Hause, müde, lebendig, und Marga war da, sie war oft da jetzt, beim kranken Vater, und sie sah ihrem Bruder an, dass etwas geschehen war.
+
+«Wasser im Ostfeld», sagte Jakob knapp. «Hasan und ich, wir sind grad noch raus.» Er sagte es ohne Drama, wie Bergleute solche Dinge sagten. «Der Hasan hat einen alten Überhau gewusst. Ohne den wär ich jetzt unten geblieben.»
+
+Marga sah ihren Bruder an, den geradlinigen, einfachen Jakob, der sein Leben einem türkischen Kumpel verdankte und nicht eine Sekunde darüber nachdachte, dass der Türke war, und sie dachte an die Liste in ihrer Tasche, an Wilhelm, der seinen Kumpel verraten hatte, und sie sagte, fast unwillkürlich: «Jakob. Würdest du Hasan je verraten? Wenn es eng würde. Wenn du wählen müsstest zwischen ihm und dir.»
+
+Jakob sah sie an, als hätte sie etwas Verrücktes gefragt. «Verraten? Den Hasan?» Er schüttelte den Kopf, langsam, ohne zu verstehen, warum sie das überhaupt fragte. «Marga. Der Mann hat mir heut das Leben gerettet. Unter Tage verrät man keinen. Niemals. Eher beißt du dir die Zunge ab.» Er ging zum Waschbecken. «Was ist das für eine Frage.»
+
+«Nichts», sagte Marga. «Eine dumme Frage.»
+
+Aber es war keine dumme Frage gewesen. Es war die Frage, um die sich ihre ganze Familiengeschichte drehte, und Jakob hatte sie beantwortet, ohne es zu wissen, mit der Selbstverständlichkeit dessen, der noch nie in die Versuchung geraten war und vielleicht nie geraten würde, weil er aus einem Holz war, das nicht verriet. Und Marga begriff, dass es das gab, beides, in derselben Familie, im selben Blut: den Verrat des Großvaters und die unbedingte Treue des Bruders, und dass das eine das andere nicht aufhob, aber dass es bedeutete, dass nichts vorbestimmt war, dass jeder neu wählte, dass der Riss sich vererbte und die Treue auch, und dass es darauf ankam, was man daraus machte, wenn die Stunde kam.

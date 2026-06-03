@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Env / secrets — never commit
+.env
+.env.local
+*.local
+
+# Build output
+.svelte-kit/
+build/
+dist/
+apps/web/build/
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Supabase local
+supabase/.branches/
+supabase/.temp/

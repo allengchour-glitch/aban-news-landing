@@ -18,9 +18,11 @@
   <meta property="og:site_name" content="aban news">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="css/styles.css">
 
   <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
     /* Brand-Page only */
     .brand-section { padding: 3rem 0; border-bottom: 1px solid #f3f4f6; }
     .brand-section h2 { color: #d97706; font-size: 1.75rem; margin-bottom: 0.5rem; }
@@ -105,6 +107,8 @@
       <span>aban news</span>
     </a>
     <nav class="nav" aria-label="Hauptnavigation">
+      <a href="/tools.html">Tools</a>
+      <a href="/glossary.html">Glossar</a>
       <a href="/sponsoring.html">Werbung</a>
       <a href="/resources.html">Resources</a>
       <a href="/brand.html" aria-current="page">Brand</a>
@@ -157,7 +161,7 @@
     <div class="logo-card">
       <h4>Icon-only (Light)</h4>
       <div class="preview">
-        <img src="/logo-icon.svg" alt="aban news icon" style="height: 64px;">
+        <img src="/logo-icon.svg" alt="aban news icon" width="64" height="64" style="height: 64px;">
       </div>
       <div class="meta">logo-icon.svg — verwende für Avatare, Favicons, App-Icons</div>
     </div>
@@ -165,7 +169,7 @@
     <div class="logo-card dark">
       <h4>Icon-only (Dark)</h4>
       <div class="preview">
-        <img src="/logo-icon.svg" alt="aban news icon dark" style="height: 64px;">
+        <img src="/logo-icon.svg" alt="aban news icon dark" width="64" height="64" style="height: 64px;">
       </div>
       <div class="meta" style="color: #fbbf24;">Same SVG, dark background</div>
     </div>
@@ -173,7 +177,7 @@
     <div class="logo-card" style="grid-column: 1 / -1;">
       <h4>Full Logo (Icon + Wortmark)</h4>
       <div class="preview">
-        <img src="/logo-full.svg" alt="aban news full logo" style="height: 50px;">
+        <img src="/logo-full.svg" alt="aban news full logo" width="250" height="50" style="height: 50px;">
       </div>
       <div class="meta">logo-full.svg — Header, Footer, formelle Kontexte</div>
     </div>
@@ -181,7 +185,7 @@
     <div class="logo-card" style="grid-column: 1 / -1;">
       <h4>Monochrome</h4>
       <div class="preview" style="color: #1f2937;">
-        <img src="/logo-mono.svg" alt="aban news monochrome" style="height: 50px;">
+        <img src="/logo-mono.svg" alt="aban news monochrome" width="250" height="50" style="height: 50px;">
       </div>
       <div class="meta">logo-mono.svg — Print, Fax, Single-Color-Drucke; verwendet currentColor</div>
     </div>
@@ -293,7 +297,7 @@
 
   <div class="type-sample">
     <div class="label">H1 — 2.5rem / 700 / line-height 1.2</div>
-    <h1 style="margin: 0; color: #1f2937; font-size: 2.5rem;">aban news — kein Hype.</h1>
+    <div style="margin: 0; color: #1f2937; font-size: 2.5rem; font-weight: 700; line-height: 1.2;">aban news — kein Hype.</div>
   </div>
 
   <div class="type-sample">
@@ -577,5 +581,6 @@
   </div>
 </footer>
 
+<script defer src="/js/enhance.js"></script>
 </body>
 </html>

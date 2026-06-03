@@ -1,1 +1,5040 @@
-{"version":"1.0.0","last_updated":"2026-05-27","source":"aban news — kuratiert aus 30 Newsletter-Ausgaben + DACH-Standard-Stack","license":"CC-BY-4.0 (Attribution: aban news, abannews.com)","rating_scale":"1-10 (10 = täglich, würd ich kaufen)","categories":["AI-Chat","API","Coding","Image-Gen","Video-Gen","Audio-Gen","Voice-Clone","Meeting-AI","Writing","Translation","Research","Search","Notes","Automation","Multi-Model","Vector-DB","Framework","Agent","Marketing-AI","SEO","Analytics","GEO","Sales","Customer-Support","Design","Slides","Local-LLM","Compliance-DACH","Productivity","Vibecoding","Browser-Automation","Scraping"],"tools":[{"id":"claude","name":"Claude","vendor":"Anthropic","category":["AI-Chat","API","Coding"],"pricing":{"free_tier":true,"paid_from_eur":18,"currency":"EUR","model":"Subscription + API"},"dach_relevance":9,"worth_it_score":9.5,"aban_note":"Bester Conversational-AI für deutsche Texte. Nutze ich täglich für aban news. Sonnet 4.6 ist mein Default, Opus für lange Recherche, Haiku für Bulk.","ausgaben_mentions":["001","002","003","006","008","017","021","022"],"url":"https://claude.ai","alternatives":["chatgpt","gemini","mistral"],"use_cases":["Writing","Research","Coding","PDF-Analyse"],"dsgvo_note":"EU-Datenresidenz via Anthropic-API; Zero-Retention auf Anfrage."},{"id":"chatgpt","name":"ChatGPT","vendor":"OpenAI","category":["AI-Chat","API"],"pricing":{"free_tier":true,"paid_from_eur":20,"currency":"EUR","model":"Subscription + API"},"dach_relevance":9,"worth_it_score":8.5,"aban_note":"Standardausstattung. GPT-5 ist solider Allrounder, aber für deutsche Wirtschaftstexte landet Claude konsistent feiner. Wenn du nur ein Tool hast: dieses.","ausgaben_mentions":["001","003","005","008","016","022","024"],"url":"https://chatgpt.com","alternatives":["claude","gemini","mistral"],"use_cases":["Writing","Research","Coding","Image-Gen"]},{"id":"gemini","name":"Gemini","vendor":"Google","category":["AI-Chat","API","Multimodal"],"pricing":{"free_tier":true,"paid_from_eur":20,"currency":"EUR","model":"Subscription + API"},"dach_relevance":7,"worth_it_score":7.5,"aban_note":"Stark in Multimodal + Long-Context. Workspace-Integration interessant für Google-User. Standalone: zweite Wahl gegen Claude.","ausgaben_mentions":["004","016","024"],"url":"https://gemini.google.com","alternatives":["claude","chatgpt"],"use_cases":["Research","Multimodal","Google-Docs-Integration"]},{"id":"mistral","name":"Mistral Le Chat","vendor":"Mistral AI","category":["AI-Chat","API","Compliance-DACH"],"pricing":{"free_tier":true,"paid_from_eur":15,"currency":"EUR","model":"Subscription + API"},"dach_relevance":9,"worth_it_score":8,"aban_note":"EU-basiert (Paris). Für Compliance-sensible DACH-Kunden mittlerweile saubere Wahl. Großkunden wie BNP, Harvey AI sind das Vertrauenssignal. Codestral für Coding ist solide.","ausgaben_mentions":["004","005","009","024"],"url":"https://chat.mistral.ai","alternatives":["claude","aleph-alpha"],"use_cases":["Writing","Coding","EU-Compliance","Reasoning"]},{"id":"deepseek","name":"DeepSeek","vendor":"DeepSeek (CN)","category":["AI-Chat","API"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"API pay-per-token, ultra-günstig"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Disruptive Preise (-75 bis -99% vs OpenAI). Für Bulk-Workloads ohne Compliance-Sorgen unschlagbar. Für DACH-Business-Daten würd ich's nicht durchrouten — China-Provider.","ausgaben_mentions":["001","005","024"],"url":"https://chat.deepseek.com","alternatives":["openrouter","groq"],"use_cases":["Bulk-API","Cost-Optimization","Reasoning"]},{"id":"perplexity","name":"Perplexity","vendor":"Perplexity AI","category":["Search","Research","AI-Chat"],"pricing":{"free_tier":true,"paid_from_eur":20,"currency":"EUR","model":"Subscription"},"dach_relevance":8,"worth_it_score":8.5,"aban_note":"Recherche-Tool Nr. 1. Pro mit Sonar-Modellen ersetzt für mich Google bei 80% der Fragen. Quellen-Transparenz ist der Killer-Feature.","ausgaben_mentions":["012","017"],"url":"https://perplexity.ai","alternatives":["you","phind","tavily","exa"],"use_cases":["Research","News-Sweep","Quellen-Recherche"]},{"id":"aleph-alpha","name":"Aleph Alpha (Pharia)","vendor":"Aleph Alpha (DE)","category":["AI-Chat","API","Compliance-DACH"],"pricing":{"free_tier":false,"paid_from_eur":0,"currency":"EUR","model":"Enterprise, on-request"},"dach_relevance":10,"worth_it_score":6.5,"aban_note":"Deutsche LLMs, Heidelberg. Pharia-1 für regulierte Branchen (Pharma, Banking, Verwaltung). Performance hinkt Claude/Mistral hinterher — aber wenn dein Compliance-Officer 'EU-souverän' will, ist's die Antwort. Kein Self-Service.","ausgaben_mentions":["004","009","024"],"url":"https://aleph-alpha.com","alternatives":["mistral"],"use_cases":["EU-Souveränität","Banking","Pharma","Verwaltung"]},{"id":"cowork","name":"Claude Cowork","vendor":"Anthropic","category":["AI-Chat","Productivity"],"pricing":{"free_tier":false,"paid_from_eur":100,"currency":"EUR","model":"In Claude Max enthalten"},"dach_relevance":8,"worth_it_score":8,"aban_note":"Drei Tage echter Selbsttest (siehe Ausgabe 002). Lohnt sich für PDF-Auswertung, Slide-Decks aus Briefings, Excel-Pivots aus Rohdaten. Brauch ich 2x/Woche. Kein Wunder-Tool, aber konkrete Zeit-Ersparnis.","ausgaben_mentions":["002","005","006"],"url":"https://claude.com","alternatives":["chatgpt","gemini"],"use_cases":["PDF-Analyse","Slide-Generation","Excel-Pivots"]},{"id":"openrouter","name":"OpenRouter","vendor":"OpenRouter","category":["Multi-Model","API"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Pay-per-token, Provider-Markup"},"dach_relevance":7,"worth_it_score":9,"aban_note":"Pragmatischer Multi-Model-Router. Bei API-Kosten-Fragen unschlagbar. Hatte ich monatelang ignoriert — Fehler. Jetzt mein Default für A/B-Tests zwischen Providern.","ausgaben_mentions":["005","024"],"url":"https://openrouter.ai","alternatives":["together-ai","groq","replicate"],"use_cases":["Multi-Provider-API","Cost-Routing","Modell-Tests"]},{"id":"n8n","name":"n8n","vendor":"n8n (DE)","category":["Automation","Framework"],"pricing":{"free_tier":true,"paid_from_eur":20,"currency":"EUR","model":"Cloud oder Self-Host"},"dach_relevance":9,"worth_it_score":9,"aban_note":"Self-hostbar, DSGVO-freundlich, deutsche Firma. Mein Backend für Newsletter-Automation. Make.com ist polierter, n8n ist robuster und kontrollierbarer.","ausgaben_mentions":["010","014","019","022"],"url":"https://n8n.io","alternatives":["make","zapier","pipedream"],"use_cases":["Workflow-Automation","Newsletter-Pipeline","API-Integration"]},{"id":"make","name":"Make.com","vendor":"Make (formerly Integromat)","category":["Automation"],"pricing":{"free_tier":true,"paid_from_eur":9,"currency":"EUR","model":"Operations-based"},"dach_relevance":7,"worth_it_score":7.5,"aban_note":"Schöner Visual-Builder. Schneller Einstieg als n8n. Aber: Vendor-Lock-in und teurer bei Volume. Für Einsteiger super, für Profis n8n.","ausgaben_mentions":["010","014","019"],"url":"https://make.com","alternatives":["n8n","zapier"],"use_cases":["Workflow-Automation","No-Code-Integration"]},{"id":"zapier","name":"Zapier","vendor":"Zapier","category":["Automation"],"pricing":{"free_tier":true,"paid_from_eur":20,"currency":"EUR","model":"Task-based"},"dach_relevance":6,"worth_it_score":7,"aban_note":"Größtes Ökosystem (7000+ Apps). Aber teuer und limitiert in Logik. Wenn du nur SaaS-A → SaaS-B brauchst, geht's. Für AI-Workflows: Make oder n8n.","ausgaben_mentions":["010","019"],"url":"https://zapier.com","alternatives":["make","n8n"],"use_cases":["SaaS-Integration","Quick-Workflows"]},{"id":"cursor","name":"Cursor","vendor":"Anysphere","category":["Coding","Vibecoding"],"pricing":{"free_tier":true,"paid_from_eur":20,"currency":"EUR","model":"Subscription"},"dach_relevance":8,"worth_it_score":9,"aban_note":"Mein Default-Editor. VSCode-Fork mit Claude/GPT integriert. Composer-Modus ist der Game-Changer für Vibecoding. Wenn du Code schreibst und kein Cursor hast — verlierst du Zeit.","ausgaben_mentions":["014","018","024"],"url":"https://cursor.com","alternatives":["windsurf","copilot","claude-code"],"use_cases":["Vibecoding","Code-Refactoring","Pair-Programming"]},{"id":"windsurf","name":"Windsurf","vendor":"Codeium","category":["Coding"],"pricing":{"free_tier":true,"paid_from_eur":15,"currency":"EUR","model":"Subscription"},"dach_relevance":7,"worth_it_score":8,"aban_note":"Cursor-Konkurrent. Cascade-Mode ist konzeptionell sauberer. Probiert, aber Cursor-Workflow saß zu tief. Wer neu anfängt: solider Pick.","ausgaben_mentions":["014"],"url":"https://windsurf.com","alternatives":["cursor","copilot"],"use_cases":["Vibecoding","Coding"]},{"id":"github-copilot","name":"GitHub Copilot","vendor":"GitHub (Microsoft)","category":["Coding"],"pricing":{"free_tier":true,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":8,"worth_it_score":7.5,"aban_note":"Klassiker, mittlerweile mit Claude Sonnet als Option. Solide Autocomplete. Cursor ist im Agent-Mode überlegen, Copilot im GitHub-Integration-Flow.","ausgaben_mentions":["005","014","018"],"url":"https://github.com/features/copilot","alternatives":["cursor","tabnine","cody"],"use_cases":["Code-Completion","GitHub-Integration"]},{"id":"claude-code","name":"Claude Code","vendor":"Anthropic","category":["Coding","Agent"],"pricing":{"free_tier":false,"paid_from_eur":0,"currency":"EUR","model":"Nutzungs-basiert via Claude-Sub"},"dach_relevance":7,"worth_it_score":9,"aban_note":"Terminal-basierter Coding-Agent. Wenn du Routinen automatisierst (Refactor 50 Files, Test-Coverage hochziehen), ist's stark. CLI > GUI für Power-User.","ausgaben_mentions":["018"],"url":"https://claude.com/code","alternatives":["cursor","aider","cline"],"use_cases":["Bulk-Refactoring","Codebase-Analyse","Terminal-Coding"]},{"id":"bolt","name":"Bolt.new","vendor":"StackBlitz","category":["Vibecoding"],"pricing":{"free_tier":true,"paid_from_eur":20,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":7,"aban_note":"Browser-basiertes Vibecoding. Eine Landing-Page in 20 Min. Lock-in & Limits sobald's komplexer wird. Für MVPs: brauchbar.","ausgaben_mentions":["005","018"],"url":"https://bolt.new","alternatives":["v0","lovable","replit"],"use_cases":["MVP-Prototyping","Landing-Pages"]},{"id":"lovable","name":"Lovable","vendor":"Lovable","category":["Vibecoding"],"pricing":{"free_tier":true,"paid_from_eur":20,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":7,"aban_note":"Sehr glatter Vibecoding-Builder. Schöne Outputs. Skaliert schlecht über die ersten 200 Prompts hinaus. Für Solos mit nur einem Side-Project: ok.","ausgaben_mentions":["005","018"],"url":"https://lovable.dev","alternatives":["bolt","v0"],"use_cases":["MVP-Prototyping","Vibecoding"]},{"id":"v0","name":"v0","vendor":"Vercel","category":["Vibecoding","Design"],"pricing":{"free_tier":true,"paid_from_eur":20,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":7.5,"aban_note":"Next.js + shadcn ab Werk. Wenn du im Vercel-Ökosystem bist: erste Wahl. Otherwise: Output ist React-spezifisch, das schränkt ein.","ausgaben_mentions":["005","018"],"url":"https://v0.dev","alternatives":["bolt","lovable"],"use_cases":["React-Prototyping","UI-Generation"]},{"id":"replit","name":"Replit Agent","vendor":"Replit","category":["Vibecoding","Coding"],"pricing":{"free_tier":true,"paid_from_eur":20,"currency":"EUR","model":"Credits"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Full-Stack im Browser inklusive Hosting. Eignet sich für komplette Mini-Apps. Pricing ist hart bei Volume.","ausgaben_mentions":["018"],"url":"https://replit.com","alternatives":["bolt","lovable"],"use_cases":["Full-Stack-MVP","Hosting-inkludiert"]},{"id":"midjourney","name":"Midjourney","vendor":"Midjourney","category":["Image-Gen"],"pricing":{"free_tier":false,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":7,"worth_it_score":8.5,"aban_note":"Bildqualitäts-König. v7 ist erstaunlich. Für Marketing-Assets, Editorial-Bilder, Cover. Discord-First ist nervig, aber Web-UI funktioniert mittlerweile.","ausgaben_mentions":["007","009","014"],"url":"https://midjourney.com","alternatives":["flux","ideogram","krea"],"use_cases":["Marketing-Assets","Editorial-Bilder","Konzept-Art"]},{"id":"flux","name":"Flux","vendor":"Black Forest Labs (DE)","category":["Image-Gen"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"API + Open-Source"},"dach_relevance":9,"worth_it_score":8.5,"aban_note":"Deutsche Firma (Freiburg), Stable-Diffusion-Macher. Flux.1 Dev ist Top-Performance. Open-Weights — ideal für DACH-Compliance.","ausgaben_mentions":["014"],"url":"https://blackforestlabs.ai","alternatives":["stable-diffusion","midjourney","ideogram"],"use_cases":["Image-Gen","Self-Hosted","DACH-Compliance"]},{"id":"stable-diffusion","name":"Stable Diffusion","vendor":"Stability AI","category":["Image-Gen","Local-LLM"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Open-Source"},"dach_relevance":7,"worth_it_score":7,"aban_note":"Open-Source-Klassiker. Self-Hostbar. Wenn du eine RTX-Grafikkarte hast: ComfyUI + SD = unbegrenzte Bilder ohne Vendor-Abhängigkeit.","ausgaben_mentions":["014"],"url":"https://stability.ai","alternatives":["flux","krea"],"use_cases":["Self-Hosted-Image-Gen","Bulk-Image"]},{"id":"ideogram","name":"Ideogram","vendor":"Ideogram","category":["Image-Gen"],"pricing":{"free_tier":true,"paid_from_eur":8,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":7.5,"aban_note":"Beste Text-in-Bild-Renderings. Für Poster, Logos, Typografie-lastige Designs. Schwächer in Photorealismus.","ausgaben_mentions":["014"],"url":"https://ideogram.ai","alternatives":["midjourney","flux"],"use_cases":["Typografie","Poster","Logo-Konzepte"]},{"id":"krea","name":"Krea","vendor":"Krea","category":["Image-Gen","Video-Gen"],"pricing":{"free_tier":true,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":7.5,"aban_note":"Realtime-Image-Gen + Multi-Model-Bundle. Für Designer interessant, weil Output-Kontrolle gut ist. Tier 1 ist limitierend.","ausgaben_mentions":["014"],"url":"https://krea.ai","alternatives":["midjourney","ideogram"],"use_cases":["Realtime-Design","Image-Gen"]},{"id":"recraft","name":"Recraft","vendor":"Recraft","category":["Image-Gen","Design"],"pricing":{"free_tier":true,"paid_from_eur":12,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"SVG-Generation + Brand-Style-Consistency. Wenn du Marken-Bilder konsistent halten musst: Top.","ausgaben_mentions":[],"url":"https://recraft.ai","alternatives":["midjourney","ideogram"],"use_cases":["SVG-Gen","Brand-Konsistenz"]},{"id":"leonardo","name":"Leonardo.ai","vendor":"Leonardo","category":["Image-Gen"],"pricing":{"free_tier":true,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":6.5,"aban_note":"Image-Gen mit Fokus auf Game-Assets. Solide UI, aber Output für Marketing eher zweite Liga.","ausgaben_mentions":[],"url":"https://leonardo.ai","alternatives":["midjourney","flux"],"use_cases":["Game-Assets","Konzept-Art"]},{"id":"playground","name":"Playground AI","vendor":"Playground","category":["Image-Gen"],"pricing":{"free_tier":true,"paid_from_eur":12,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":6,"aban_note":"Free-Tier ist großzügig. Output meist passabel, selten herausragend. Für Hobby ok.","ausgaben_mentions":["014"],"url":"https://playground.com","alternatives":["midjourney"],"use_cases":["Hobby-Image-Gen"]},{"id":"dalle","name":"DALL-E 3","vendor":"OpenAI","category":["Image-Gen"],"pricing":{"free_tier":false,"paid_from_eur":0,"currency":"EUR","model":"In ChatGPT enthalten"},"dach_relevance":6,"worth_it_score":6.5,"aban_note":"Mittlerweile von Midjourney/Flux überholt. Aber: nahtlos in ChatGPT-Workflow integriert. Für schnelle Slide-Bilder reicht's.","ausgaben_mentions":["007","014"],"url":"https://openai.com/dall-e-3","alternatives":["midjourney","flux"],"use_cases":["ChatGPT-integriert","Quick-Image"]},{"id":"adobe-firefly","name":"Adobe Firefly","vendor":"Adobe","category":["Image-Gen","Design"],"pricing":{"free_tier":true,"paid_from_eur":5,"currency":"EUR","model":"Subscription oder Credits"},"dach_relevance":6,"worth_it_score":7,"aban_note":"Commercial-Safe (trainiert auf lizensierten Daten). Für Marken, die rechtssicher generieren müssen. In Photoshop/Illustrator nahtlos.","ausgaben_mentions":[],"url":"https://firefly.adobe.com","alternatives":["midjourney","flux"],"use_cases":["Commercial-Safe","Adobe-Workflow"]},{"id":"sora","name":"Sora","vendor":"OpenAI","category":["Video-Gen"],"pricing":{"free_tier":false,"paid_from_eur":20,"currency":"EUR","model":"In ChatGPT Plus"},"dach_relevance":5,"worth_it_score":6.5,"aban_note":"Video-Gen. Spannend, aber 2026 noch nicht Produktions-ready für Marketing. Demo-Clips ja, Hero-Videos nein.","ausgaben_mentions":["007","014","016","024"],"url":"https://sora.com","alternatives":["runway","pika","veo"],"use_cases":["Video-Demos","Konzept-Video"]},{"id":"runway","name":"Runway","vendor":"Runway","category":["Video-Gen"],"pricing":{"free_tier":true,"paid_from_eur":15,"currency":"EUR","model":"Subscription + Credits"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Gen-4 ist solide. Beste Tool-Suite für Video-AI (Motion-Brush, Inpainting). Für Pros, die wirklich produzieren wollen.","ausgaben_mentions":["007","014"],"url":"https://runwayml.com","alternatives":["sora","pika"],"use_cases":["Video-Editing","VFX","Motion-Graphics"]},{"id":"pika","name":"Pika","vendor":"Pika Labs","category":["Video-Gen"],"pricing":{"free_tier":true,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":6,"aban_note":"Short-Form-Video für Social. Einfacher Einstieg, aber Output ist limited duration.","ausgaben_mentions":[],"url":"https://pika.art","alternatives":["runway","sora"],"use_cases":["Short-Form-Video","Social-Media"]},{"id":"elevenlabs","name":"ElevenLabs","vendor":"ElevenLabs","category":["Audio-Gen","Voice-Clone"],"pricing":{"free_tier":true,"paid_from_eur":5,"currency":"EUR","model":"Subscription"},"dach_relevance":7,"worth_it_score":8.5,"aban_note":"Deutsche Stimmen klingen 2026 erstaunlich natürlich. Für Podcasts, Voiceovers, Hörbücher. Voice-Clone ist erschreckend gut — mit allen ethischen Implikationen.","ausgaben_mentions":["014","024"],"url":"https://elevenlabs.io","alternatives":["murf","playht"],"use_cases":["Voiceover","Podcast","Audiobook"]},{"id":"suno","name":"Suno","vendor":"Suno","category":["Audio-Gen"],"pricing":{"free_tier":true,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Musik-Generierung. Für Jingles, Hintergrundmusik, Spaß. Für ernsthafte Produktion: Rechtslage in DACH unklar.","ausgaben_mentions":[],"url":"https://suno.com","alternatives":["udio"],"use_cases":["Jingles","Hintergrundmusik"]},{"id":"udio","name":"Udio","vendor":"Udio","category":["Audio-Gen"],"pricing":{"free_tier":true,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":6.5,"aban_note":"Suno-Konkurrent. Output-Qualität ähnlich. Lizenz-Lage genauso unklar — vorsicht bei kommerzieller Nutzung.","ausgaben_mentions":[],"url":"https://udio.com","alternatives":["suno"],"use_cases":["Musik-Gen"]},{"id":"murf","name":"Murf","vendor":"Murf","category":["Audio-Gen","Voice-Clone"],"pricing":{"free_tier":true,"paid_from_eur":19,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":6.5,"aban_note":"Solider TTS-Klassiker. Deutsche Stimmen ok, aber ElevenLabs ist 2026 vorne.","ausgaben_mentions":[],"url":"https://murf.ai","alternatives":["elevenlabs"],"use_cases":["Voiceover","TTS"]},{"id":"heygen","name":"HeyGen","vendor":"HeyGen","category":["Video-Gen","Voice-Clone"],"pricing":{"free_tier":true,"paid_from_eur":24,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"AI-Avatars die Texte vortragen. Translation in 40+ Sprachen mit Lippen-Sync. Stark für Multi-Language-Marketing. Avatar-Output bleibt erkennbar synthetisch.","ausgaben_mentions":[],"url":"https://heygen.com","alternatives":["synthesia","d-id"],"use_cases":["AI-Avatar-Videos","Multi-Language-Content"]},{"id":"synthesia","name":"Synthesia","vendor":"Synthesia","category":["Video-Gen"],"pricing":{"free_tier":false,"paid_from_eur":30,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":6.5,"aban_note":"Enterprise-AI-Avatars. Schöne Templates, teurer als HeyGen. Eher für L&D-Departments als Solos.","ausgaben_mentions":["014"],"url":"https://synthesia.io","alternatives":["heygen"],"use_cases":["Corporate-Training","AI-Avatar"]},{"id":"d-id","name":"D-ID","vendor":"D-ID","category":["Video-Gen"],"pricing":{"free_tier":true,"paid_from_eur":5,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":6,"aban_note":"Foto-zu-sprechender-Kopf. Niedrige Einstiegshürde. Output ist mittlerweile von HeyGen überholt.","ausgaben_mentions":[],"url":"https://d-id.com","alternatives":["heygen"],"use_cases":["Avatar-Videos"]},{"id":"descript","name":"Descript","vendor":"Descript","category":["Audio-Gen","Meeting-AI"],"pricing":{"free_tier":true,"paid_from_eur":12,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7.5,"aban_note":"Audio/Video-Editing über Transkript. Game-Changer für Podcaster — du löschst Wörter im Text, das Audio folgt. Voice-Clone (Overdub) ist sauber.","ausgaben_mentions":[],"url":"https://descript.com","alternatives":["capcut","veed"],"use_cases":["Podcast-Editing","Transkript-basiertes-Editing"]},{"id":"veed","name":"VEED","vendor":"VEED","category":["Video-Gen"],"pricing":{"free_tier":true,"paid_from_eur":18,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":6,"aban_note":"Browser-Video-Editing mit AI-Hilfen. Untertitel-Gen ist gut. Für Power-Editing zu limitiert.","ausgaben_mentions":[],"url":"https://veed.io","alternatives":["descript","capcut"],"use_cases":["Browser-Video","Untertitel"]},{"id":"capcut","name":"CapCut","vendor":"ByteDance","category":["Video-Gen"],"pricing":{"free_tier":true,"paid_from_eur":8,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Mobile-First-Editing mit AI-Features. TikTok-Pipeline ist's eingebaute Tool. Datenschutz-Bedenken: ByteDance.","ausgaben_mentions":["007"],"url":"https://capcut.com","alternatives":["descript","veed"],"use_cases":["Mobile-Editing","Social-Video"]},{"id":"otter","name":"Otter.ai","vendor":"Otter","category":["Meeting-AI"],"pricing":{"free_tier":true,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Klassiker für Meeting-Transkripte. Deutsch okay, nicht perfekt. Für englische Meetings: 1A.","ausgaben_mentions":["013","016","022"],"url":"https://otter.ai","alternatives":["fireflies","granola"],"use_cases":["Meeting-Transkript","Notizen"]},{"id":"fireflies","name":"Fireflies","vendor":"Fireflies","category":["Meeting-AI"],"pricing":{"free_tier":true,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Wie Otter, mit besserem CRM-Sync. Deutsche Modelle ähnlich okay. Pricing kundenfreundlicher.","ausgaben_mentions":["013","022"],"url":"https://fireflies.ai","alternatives":["otter","granola"],"use_cases":["Meeting-AI","CRM-Integration"]},{"id":"granola","name":"Granola","vendor":"Granola","category":["Meeting-AI"],"pricing":{"free_tier":true,"paid_from_eur":18,"currency":"EUR","model":"Subscription"},"dach_relevance":8,"worth_it_score":9,"aban_note":"Mein neuer Default. Kein Bot-Im-Meeting — läuft im Hintergrund auf deinem Mac. Notizen-Output für deutsche Meetings ist erstklassig. Hat Otter abgelöst.","ausgaben_mentions":["013","016","022"],"url":"https://granola.ai","alternatives":["otter","fireflies","tldv"],"use_cases":["Meeting-AI","Deutsch-First"]},{"id":"tldv","name":"tl;dv","vendor":"tl;dv (DE)","category":["Meeting-AI"],"pricing":{"free_tier":true,"paid_from_eur":19,"currency":"EUR","model":"Subscription"},"dach_relevance":8,"worth_it_score":7.5,"aban_note":"Deutsche Firma (München). Gute Multi-Language-Performance. Bot-Im-Meeting-Workflow, was Granola eleganter löst.","ausgaben_mentions":["013","022"],"url":"https://tldv.io","alternatives":["granola","otter"],"use_cases":["Meeting-AI","DACH-Compliance"]},{"id":"krisp","name":"Krisp","vendor":"Krisp","category":["Audio-Gen","Meeting-AI"],"pricing":{"free_tier":true,"paid_from_eur":8,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":7.5,"aban_note":"Noise-Cancellation für Anrufe. Funktioniert unaufgeregt-zuverlässig. Built-in-AI-Meeting-Notes seit 2025.","ausgaben_mentions":[],"url":"https://krisp.ai","alternatives":["granola"],"use_cases":["Noise-Cancellation","Call-Quality"]},{"id":"fathom","name":"Fathom","vendor":"Fathom","category":["Meeting-AI"],"pricing":{"free_tier":true,"paid_from_eur":15,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":7,"aban_note":"Generöser Free-Tier mit unlimited Meetings. US-fokussiert, deutsche Sprachqualität ok.","ausgaben_mentions":[],"url":"https://fathom.video","alternatives":["granola","otter"],"use_cases":["Meeting-AI","Free-Power-User"]},{"id":"deepl","name":"DeepL","vendor":"DeepL (DE)","category":["Translation","Writing"],"pricing":{"free_tier":true,"paid_from_eur":8,"currency":"EUR","model":"Subscription + API"},"dach_relevance":10,"worth_it_score":9,"aban_note":"Deutsche Firma (Köln). Beste DE↔EN-Übersetzung, Punkt. Write ist Grammarly-Konkurrent — solider für Deutsch. Pro-Account ist Standard-Ausstattung jedes DACH-Solos.","ausgaben_mentions":["005","017","021","024"],"url":"https://deepl.com","alternatives":["google-translate"],"use_cases":["Übersetzung DE↔EN","Write-Refinement","API"]},{"id":"deepl-write","name":"DeepL Write","vendor":"DeepL (DE)","category":["Writing"],"pricing":{"free_tier":true,"paid_from_eur":5,"currency":"EUR","model":"Subscription"},"dach_relevance":9,"worth_it_score":8,"aban_note":"Für Deutsch klar besser als Grammarly. Style-Anpassung 'Geschäftlich', 'Akademisch', 'Locker' funktioniert. 14-Tage-Test in Ausgabe 017.","ausgaben_mentions":["017"],"url":"https://deepl.com/write","alternatives":["grammarly","languagetool"],"use_cases":["Deutsch-Refinement","Stil-Variation"]},{"id":"grammarly","name":"Grammarly","vendor":"Grammarly","category":["Writing"],"pricing":{"free_tier":true,"paid_from_eur":12,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Englisch-Refiner. Für deutsche Texte zu schwach — nimm DeepL Write oder LanguageTool. Für englische Outreach: ok.","ausgaben_mentions":["017"],"url":"https://grammarly.com","alternatives":["deepl-write","languagetool"],"use_cases":["Englisch-Grammar"]},{"id":"languagetool","name":"LanguageTool","vendor":"LanguageTool (DE)","category":["Writing","Compliance-DACH"],"pricing":{"free_tier":true,"paid_from_eur":5,"currency":"EUR","model":"Subscription"},"dach_relevance":9,"worth_it_score":8,"aban_note":"Deutsche Firma (Potsdam). Open-Source-Kern. Stärker als Duden-Korrektor für deutsche Stil-Probleme. Self-Hostbar.","ausgaben_mentions":[],"url":"https://languagetool.org","alternatives":["deepl-write","grammarly"],"use_cases":["Deutsche-Grammatik","Self-Hosted-Korrektur"]},{"id":"tavily","name":"Tavily","vendor":"Tavily","category":["Search","API"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"API pay-per-call"},"dach_relevance":6,"worth_it_score":8,"aban_note":"Search-API für AI-Agents. Wenn deine Agenten Web-Recherche brauchen, ist Tavily der saubere Default. Günstiger als SerpAPI.","ausgaben_mentions":["019"],"url":"https://tavily.com","alternatives":["exa","brave-search-api"],"use_cases":["Agent-Search","RAG"]},{"id":"exa","name":"Exa","vendor":"Exa AI","category":["Search","API"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"API pay-per-call"},"dach_relevance":6,"worth_it_score":8,"aban_note":"Semantic-Search-API. Findet thematisch ähnliche Inhalte besser als Keyword-Suche. Ideal für Research-Agenten.","ausgaben_mentions":["019"],"url":"https://exa.ai","alternatives":["tavily"],"use_cases":["Semantic-Search","RAG","Research"]},{"id":"you","name":"You.com","vendor":"You.com","category":["Search","AI-Chat"],"pricing":{"free_tier":true,"paid_from_eur":15,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":6.5,"aban_note":"AI-Search + Modi für Code, Research. Perplexity ist 2026 die bessere Wahl, You hat trotzdem Nische.","ausgaben_mentions":[],"url":"https://you.com","alternatives":["perplexity"],"use_cases":["AI-Search","Multi-Mode-Search"]},{"id":"phind","name":"Phind","vendor":"Phind","category":["Search","Coding"],"pricing":{"free_tier":true,"paid_from_eur":17,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Search für Devs. Code-fokussierte Antworten mit Quellen. Für Stack-Overflow-Ersatz brauchbar.","ausgaben_mentions":["019"],"url":"https://phind.com","alternatives":["perplexity","chatgpt"],"use_cases":["Dev-Search","Code-Recherche"]},{"id":"kagi","name":"Kagi","vendor":"Kagi","category":["Search"],"pricing":{"free_tier":false,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":8,"aban_note":"Paid-Search ohne Werbung, mit AI-Assist. Für Power-Sucher: erfrischend. Kostet, aber lohnt sich wenn du täglich googelst.","ausgaben_mentions":[],"url":"https://kagi.com","alternatives":["perplexity","brave"],"use_cases":["Werbefreie-Suche","Power-Search"]},{"id":"brave","name":"Brave Search","vendor":"Brave","category":["Search"],"pricing":{"free_tier":true,"paid_from_eur":3,"currency":"EUR","model":"Free + Premium-API"},"dach_relevance":6,"worth_it_score":7,"aban_note":"Eigener Index. Privacy-First. AI-Summary integriert. Solide Google-Alternative ohne Tracking.","ausgaben_mentions":[],"url":"https://brave.com/search","alternatives":["kagi","google"],"use_cases":["Privacy-Suche","Tracking-frei"]},{"id":"groq","name":"Groq","vendor":"Groq","category":["API","Multi-Model"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"API pay-per-token"},"dach_relevance":5,"worth_it_score":8,"aban_note":"Inferenz-Speed-Champion. Llama, Mixtral mit irren Token/s. Wenn du Latency-sensitive Apps baust: erste Wahl.","ausgaben_mentions":[],"url":"https://groq.com","alternatives":["together-ai","cerebras"],"use_cases":["Low-Latency-Inferenz","Real-Time-AI"]},{"id":"together-ai","name":"Together AI","vendor":"Together","category":["API","Multi-Model"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"API pay-per-token"},"dach_relevance":5,"worth_it_score":7.5,"aban_note":"Open-Source-Modelle (Llama, Mixtral, Qwen) als API. Günstige Inferenz, gute Modell-Auswahl.","ausgaben_mentions":[],"url":"https://together.ai","alternatives":["groq","replicate"],"use_cases":["Open-Source-API","Multi-Modell-Hosting"]},{"id":"cerebras","name":"Cerebras Inference","vendor":"Cerebras","category":["API"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"API pay-per-token"},"dach_relevance":4,"worth_it_score":7.5,"aban_note":"Custom-Chips, sehr schnelle Inferenz. Llama-Hosting top. Modell-Auswahl limitierter als Groq.","ausgaben_mentions":[],"url":"https://cerebras.ai","alternatives":["groq","together-ai"],"use_cases":["High-Speed-Inferenz"]},{"id":"replicate","name":"Replicate","vendor":"Replicate","category":["API","Multi-Model"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"API pay-per-second"},"dach_relevance":5,"worth_it_score":7.5,"aban_note":"Open-Source-Modelle als API hosten. Inkl. Image/Audio/Video-Modelle. Gut für Prototyping.","ausgaben_mentions":[],"url":"https://replicate.com","alternatives":["together-ai","hugging-face"],"use_cases":["Modell-Prototyping","Multi-Modal-API"]},{"id":"hugging-face","name":"Hugging Face","vendor":"Hugging Face","category":["API","Framework"],"pricing":{"free_tier":true,"paid_from_eur":9,"currency":"EUR","model":"Subscription + Compute"},"dach_relevance":7,"worth_it_score":8,"aban_note":"GitHub für AI-Modelle. Inference-Endpoints sind solid. Datasets-Library ist Gold für Researcher.","ausgaben_mentions":["024"],"url":"https://huggingface.co","alternatives":["replicate","together-ai"],"use_cases":["Modell-Hosting","Datasets","Open-Source-AI"]},{"id":"langchain","name":"LangChain","vendor":"LangChain","category":["Framework","Agent"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Open-Source + LangSmith paid"},"dach_relevance":5,"worth_it_score":6,"aban_note":"Framework für LLM-Apps. Polarisierend: viele finden's überengineered. Für Standard-Patterns ok, für Custom-Logic schreib lieber direkt.","ausgaben_mentions":["019"],"url":"https://langchain.com","alternatives":["llamaindex"],"use_cases":["Agent-Framework","LLM-Pipelines"]},{"id":"llamaindex","name":"LlamaIndex","vendor":"LlamaIndex","category":["Framework","Vector-DB"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Open-Source + Cloud paid"},"dach_relevance":5,"worth_it_score":7,"aban_note":"RAG-Framework. Schlanker als LangChain für Retrieval-Use-Cases. Für Doc-Search-Anwendungen die saubere Wahl.","ausgaben_mentions":["019"],"url":"https://llamaindex.ai","alternatives":["langchain"],"use_cases":["RAG","Doc-Search"]},{"id":"weaviate","name":"Weaviate","vendor":"Weaviate (NL)","category":["Vector-DB"],"pricing":{"free_tier":true,"paid_from_eur":25,"currency":"EUR","model":"Cloud + Self-Host"},"dach_relevance":7,"worth_it_score":8,"aban_note":"EU-basierte Vector-DB. Niederlande, GDPR-konform. Production-ready. Open-Source-Core.","ausgaben_mentions":[],"url":"https://weaviate.io","alternatives":["qdrant","pinecone"],"use_cases":["Vector-Search","RAG","EU-Compliance"]},{"id":"qdrant","name":"Qdrant","vendor":"Qdrant (DE)","category":["Vector-DB","Compliance-DACH"],"pricing":{"free_tier":true,"paid_from_eur":25,"currency":"EUR","model":"Cloud + Self-Host"},"dach_relevance":9,"worth_it_score":8.5,"aban_note":"Deutsche Vector-DB (Berlin). Open-Source. Self-Hostbar. Performance ist Top. Erste Wahl für DACH-RAG-Setups.","ausgaben_mentions":[],"url":"https://qdrant.tech","alternatives":["weaviate","pinecone"],"use_cases":["Vector-Search","DACH-Compliance","Self-Hosted-RAG"]},{"id":"pinecone","name":"Pinecone","vendor":"Pinecone","category":["Vector-DB"],"pricing":{"free_tier":true,"paid_from_eur":70,"currency":"EUR","model":"Cloud-only"},"dach_relevance":5,"worth_it_score":6.5,"aban_note":"Managed Vector-DB. US-only Cloud. Bequem, aber Lock-in. Für DACH-Compliance: Qdrant nehmen.","ausgaben_mentions":[],"url":"https://pinecone.io","alternatives":["qdrant","weaviate"],"use_cases":["Managed-Vector-DB"]},{"id":"chroma","name":"Chroma","vendor":"Chroma","category":["Vector-DB"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Open-Source"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Schlanke Vector-DB für Local-Dev und kleine Prototypen. Production: switch to Qdrant.","ausgaben_mentions":[],"url":"https://trychroma.com","alternatives":["qdrant"],"use_cases":["Local-Dev","Prototyping"]},{"id":"notion-ai","name":"Notion AI","vendor":"Notion","category":["Productivity","Notes","Writing"],"pricing":{"free_tier":false,"paid_from_eur":10,"currency":"EUR","model":"Add-on auf Notion"},"dach_relevance":6,"worth_it_score":7,"aban_note":"Wenn du in Notion lebst, lohnt sich's. Q&A über Workspace ist okay. Für Outside-of-Notion-Workflows: nicht lohnenswert.","ausgaben_mentions":["013","022"],"url":"https://notion.so","alternatives":["mem","obsidian"],"use_cases":["Notion-Workspace-AI"]},{"id":"mem","name":"Mem","vendor":"Mem","category":["Notes","Productivity"],"pricing":{"free_tier":true,"paid_from_eur":14,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Notes-App mit eingebauter AI. Auto-Tagging und Semantic-Search funktionieren gut. Mobile-App ist solid.","ausgaben_mentions":["013"],"url":"https://mem.ai","alternatives":["notion-ai","reflect"],"use_cases":["Smart-Notes","Auto-Tagging"]},{"id":"reflect","name":"Reflect","vendor":"Reflect","category":["Notes"],"pricing":{"free_tier":false,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7.5,"aban_note":"Notes-App mit GPT-4 integriert. Sehr clean. Tägliche Notes + Backlinks wie Roam, mit AI obendrauf.","ausgaben_mentions":["013"],"url":"https://reflect.app","alternatives":["mem","obsidian"],"use_cases":["Daily-Notes","Backlinks","AI-augmentiert"]},{"id":"obsidian","name":"Obsidian","vendor":"Obsidian","category":["Notes"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Free, Sync optional"},"dach_relevance":7,"worth_it_score":9,"aban_note":"Local-First, plain Markdown. Mit Plugins (Copilot, Smart Connections) wird's AI-fähig. Mein zweites Brain seit 4 Jahren.","ausgaben_mentions":[],"url":"https://obsidian.md","alternatives":["logseq","reflect"],"use_cases":["Local-Notes","Markdown","Zettelkasten"]},{"id":"loom","name":"Loom","vendor":"Loom (Atlassian)","category":["Video-Gen","Productivity"],"pricing":{"free_tier":true,"paid_from_eur":15,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":7.5,"aban_note":"Screen-Recording mit AI-Transkript + Summary. Für Async-Updates an Kunden Gold wert. Free-Tier reicht für Solos.","ausgaben_mentions":["007"],"url":"https://loom.com","alternatives":["capso"],"use_cases":["Screen-Record","Async-Communication"]},{"id":"capso","name":"Cap.so","vendor":"Cap","category":["Video-Gen"],"pricing":{"free_tier":true,"paid_from_eur":9,"currency":"EUR","model":"Open-Source + Pro"},"dach_relevance":6,"worth_it_score":7.5,"aban_note":"Open-Source-Loom-Alternative. EU-Hosting möglich. Für DACH-Datenschutz interessant.","ausgaben_mentions":["007"],"url":"https://cap.so","alternatives":["loom"],"use_cases":["Open-Source-Screen-Record","DACH-Compliance"]},{"id":"jasper","name":"Jasper","vendor":"Jasper","category":["Writing","Marketing-AI"],"pricing":{"free_tier":false,"paid_from_eur":39,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":5,"aban_note":"Marketing-Writing-Tool. War 2023 heiß, mittlerweile von Claude/ChatGPT überholt. Templates sind kein Killer-Feature mehr.","ausgaben_mentions":[],"url":"https://jasper.ai","alternatives":["claude","copy-ai"],"use_cases":["Marketing-Copywriting"]},{"id":"copy-ai","name":"Copy.ai","vendor":"Copy.ai","category":["Writing","Marketing-AI"],"pricing":{"free_tier":true,"paid_from_eur":36,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":5,"aban_note":"Workflow-Focus jetzt. Für Sales-Teams ohne AI-Skills brauchbar. Solo-Marketer: Claude reicht.","ausgaben_mentions":[],"url":"https://copy.ai","alternatives":["claude","jasper"],"use_cases":["Marketing-Workflows","Sales-Copy"]},{"id":"writesonic","name":"Writesonic","vendor":"Writesonic","category":["Writing"],"pricing":{"free_tier":true,"paid_from_eur":13,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":5,"aban_note":"Content-Gen-Tool. Mittelmäßige Outputs, Claude besser. Chatsonic ist eigener Chat — ChatGPT besser.","ausgaben_mentions":[],"url":"https://writesonic.com","alternatives":["claude","jasper"],"use_cases":["Bulk-Content"]},{"id":"sudowrite","name":"Sudowrite","vendor":"Sudowrite","category":["Writing"],"pricing":{"free_tier":false,"paid_from_eur":19,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":7,"aban_note":"Fiction-Writing-AI. Für Romanautoren spezialisiert. Englisch-First, Deutsch ok.","ausgaben_mentions":[],"url":"https://sudowrite.com","alternatives":["claude"],"use_cases":["Fiction-Writing","Story-Beats"]},{"id":"lex","name":"Lex","vendor":"Lex","category":["Writing"],"pricing":{"free_tier":true,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":7.5,"aban_note":"AI-augmentierter Texteditor. Inline-AI-Calls auf Markierungen. Schöne Distraction-Free-UI.","ausgaben_mentions":[],"url":"https://lex.page","alternatives":["claude"],"use_cases":["AI-augmented-Writing"]},{"id":"wordtune","name":"Wordtune","vendor":"AI21","category":["Writing"],"pricing":{"free_tier":true,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":6,"aban_note":"Satz-Umschreibung. Englisch-First. Für Deutsch zu schwach.","ausgaben_mentions":[],"url":"https://wordtune.com","alternatives":["deepl-write","grammarly"],"use_cases":["Englisch-Paraphrasieren"]},{"id":"quillbot","name":"QuillBot","vendor":"QuillBot","category":["Writing"],"pricing":{"free_tier":true,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":6,"aban_note":"Paraphrasieren + Grammar. Englisch-stark. Plagiarism-Check ist netter Bonus.","ausgaben_mentions":[],"url":"https://quillbot.com","alternatives":["wordtune","grammarly"],"use_cases":["Paraphrasieren"]},{"id":"anyword","name":"Anyword","vendor":"Anyword","category":["Marketing-AI","Writing"],"pricing":{"free_tier":true,"paid_from_eur":49,"currency":"EUR","model":"Subscription"},"dach_relevance":3,"worth_it_score":5.5,"aban_note":"Marketing-Copy mit Performance-Scoring. Englisch-First. Teuer für Solos.","ausgaben_mentions":[],"url":"https://anyword.com","alternatives":["jasper","copy-ai"],"use_cases":["Ad-Copy","Performance-Marketing"]},{"id":"profound","name":"Profound","vendor":"Profound","category":["GEO","SEO","Analytics"],"pricing":{"free_tier":false,"paid_from_eur":500,"currency":"EUR","model":"Enterprise"},"dach_relevance":6,"worth_it_score":7,"aban_note":"Generative-Engine-Optimization-Tracking. Misst ob deine Marke in ChatGPT, Claude, Perplexity auftaucht. 2026 das, was Google-Ranking 2010 war.","ausgaben_mentions":["005","020","024"],"url":"https://tryprofound.com","alternatives":["athenahq","otterly"],"use_cases":["GEO-Tracking","Brand-in-LLM"]},{"id":"athenahq","name":"AthenaHQ","vendor":"AthenaHQ","category":["GEO","SEO"],"pricing":{"free_tier":false,"paid_from_eur":200,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":6.5,"aban_note":"GEO-Tracking-Competitor zu Profound. Mid-Market-Pricing. Reports in DE ok.","ausgaben_mentions":["005","020"],"url":"https://athenahq.ai","alternatives":["profound","otterly"],"use_cases":["GEO","Brand-Monitoring"]},{"id":"otterly","name":"Otterly","vendor":"Otterly (AT)","category":["GEO","Compliance-DACH"],"pricing":{"free_tier":true,"paid_from_eur":39,"currency":"EUR","model":"Subscription"},"dach_relevance":8,"worth_it_score":7.5,"aban_note":"Österreichische Firma (Wien). DACH-Sprach-First. Für KMU der bezahlbare GEO-Einstieg.","ausgaben_mentions":["005","020"],"url":"https://otterly.ai","alternatives":["profound","athenahq"],"use_cases":["GEO-DACH","KMU-Brand-Monitoring"]},{"id":"ahrefs","name":"Ahrefs","vendor":"Ahrefs","category":["SEO"],"pricing":{"free_tier":false,"paid_from_eur":99,"currency":"EUR","model":"Subscription"},"dach_relevance":7,"worth_it_score":8,"aban_note":"SEO-Standard. Backlinks, Keywords, Site-Audit. AI-Features sind Beifang, der Index ist der Wert.","ausgaben_mentions":[],"url":"https://ahrefs.com","alternatives":["semrush"],"use_cases":["SEO","Backlink-Analysis"]},{"id":"semrush","name":"SEMrush","vendor":"SEMrush","category":["SEO","Marketing-AI"],"pricing":{"free_tier":false,"paid_from_eur":130,"currency":"EUR","model":"Subscription"},"dach_relevance":7,"worth_it_score":7.5,"aban_note":"Breiteres Toolset als Ahrefs (auch Ad-Intel). Teurer. Wenn du beides machst: SEMrush.","ausgaben_mentions":[],"url":"https://semrush.com","alternatives":["ahrefs"],"use_cases":["SEO","Competitor-Ads","Marketing-Stack"]},{"id":"surfer","name":"Surfer SEO","vendor":"Surfer","category":["SEO","Writing"],"pricing":{"free_tier":false,"paid_from_eur":89,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":7,"aban_note":"On-Page-SEO-Optimizer mit AI-Writing. Content-Score-Optimierung funktioniert für englischen Content gut, deutsch okay.","ausgaben_mentions":[],"url":"https://surferseo.com","alternatives":["frase","marketmuse"],"use_cases":["On-Page-SEO","Content-Optimization"]},{"id":"frase","name":"Frase","vendor":"Frase","category":["SEO","Writing"],"pricing":{"free_tier":false,"paid_from_eur":15,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"SEO-Content-Brief-Generator. Günstiger als Surfer. Solides Tool für Content-Marketer.","ausgaben_mentions":[],"url":"https://frase.io","alternatives":["surfer"],"use_cases":["Content-Briefs","SERP-Analysis"]},{"id":"marketmuse","name":"MarketMuse","vendor":"MarketMuse","category":["SEO","Marketing-AI"],"pricing":{"free_tier":true,"paid_from_eur":99,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":6.5,"aban_note":"Topic-Cluster-Strategie für Enterprise-Content. Für Solos überdimensioniert.","ausgaben_mentions":[],"url":"https://marketmuse.com","alternatives":["surfer","frase"],"use_cases":["Enterprise-SEO"]},{"id":"canva","name":"Canva","vendor":"Canva","category":["Design","Image-Gen"],"pricing":{"free_tier":true,"paid_from_eur":12,"currency":"EUR","model":"Subscription"},"dach_relevance":8,"worth_it_score":8.5,"aban_note":"Magic Studio macht Canva zur AI-Design-Plattform. Für DACH-Solos das pragmatischste Design-Tool. Templates + AI = schnell zum brauchbaren Output.","ausgaben_mentions":[],"url":"https://canva.com","alternatives":["figma","adobe-firefly"],"use_cases":["Design","Social-Templates","Präsentationen"]},{"id":"figma","name":"Figma AI","vendor":"Figma","category":["Design"],"pricing":{"free_tier":true,"paid_from_eur":15,"currency":"EUR","model":"Subscription"},"dach_relevance":7,"worth_it_score":8,"aban_note":"AI-Features in Figma (Make Designs, Make Prototype) sind solid. Für UI-Design der Standard.","ausgaben_mentions":[],"url":"https://figma.com","alternatives":["canva"],"use_cases":["UI-Design","Prototyping"]},{"id":"gamma","name":"Gamma","vendor":"Gamma","category":["Slides","Design"],"pricing":{"free_tier":true,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":7.5,"aban_note":"AI-Slides aus Text. Schöner als Decktopus, schneller als PowerPoint+AI. Für Pitch-Decks brauchbar.","ausgaben_mentions":[],"url":"https://gamma.app","alternatives":["tome","beautiful-ai"],"use_cases":["AI-Slides","Pitch-Decks"]},{"id":"tome","name":"Tome","vendor":"Tome","category":["Slides"],"pricing":{"free_tier":true,"paid_from_eur":16,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Pivot zu Sales-Tool. AI-Slides gibt's noch, aber Gamma überholt.","ausgaben_mentions":[],"url":"https://tome.app","alternatives":["gamma"],"use_cases":["Sales-Decks","AI-Slides"]},{"id":"beautiful-ai","name":"Beautiful.ai","vendor":"Beautiful.ai","category":["Slides"],"pricing":{"free_tier":true,"paid_from_eur":12,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":6.5,"aban_note":"Smart-Templates mit Auto-Layout. Solid, aber nicht herausragend.","ausgaben_mentions":[],"url":"https://beautiful.ai","alternatives":["gamma"],"use_cases":["Auto-Layout-Slides"]},{"id":"ollama","name":"Ollama","vendor":"Ollama","category":["Local-LLM"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Open-Source"},"dach_relevance":7,"worth_it_score":8.5,"aban_note":"Lokale LLMs auf Mac/PC. Llama, Mistral, Qwen lokal. Wenn DSGVO hart ist: dein Freund. Hardware-Hungrig.","ausgaben_mentions":[],"url":"https://ollama.com","alternatives":["lm-studio"],"use_cases":["Local-LLM","DSGVO-Safe","Offline-AI"]},{"id":"lm-studio","name":"LM Studio","vendor":"LM Studio","category":["Local-LLM"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Free"},"dach_relevance":7,"worth_it_score":8,"aban_note":"GUI für lokale LLMs. Schöner Einstieg als Ollama-CLI. Server-Mode für API-Calls aus eigenen Apps.","ausgaben_mentions":[],"url":"https://lmstudio.ai","alternatives":["ollama"],"use_cases":["Local-LLM-GUI","Offline-Test"]},{"id":"open-webui","name":"Open WebUI","vendor":"Open WebUI (Community)","category":["Local-LLM"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Open-Source"},"dach_relevance":7,"worth_it_score":8,"aban_note":"ChatGPT-Clone für Ollama. Self-Hosted. Wenn dein Team lokale AI braucht: das ist's.","ausgaben_mentions":[],"url":"https://openwebui.com","alternatives":["lm-studio"],"use_cases":["Self-Hosted-Chat","Team-Local-AI"]},{"id":"lovable-translate-deepl","name":"Lingo.dev","vendor":"Lingo","category":["Translation"],"pricing":{"free_tier":true,"paid_from_eur":25,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Localization für Software-Strings. AI-übersetzt JSON/i18n-Files. Für Multi-Lang-Apps nützlich.","ausgaben_mentions":[],"url":"https://lingo.dev","alternatives":["deepl"],"use_cases":["Software-Localization","i18n"]},{"id":"browserbase","name":"Browserbase","vendor":"Browserbase","category":["Browser-Automation"],"pricing":{"free_tier":true,"paid_from_eur":39,"currency":"EUR","model":"API + Subscription"},"dach_relevance":5,"worth_it_score":7.5,"aban_note":"Headless-Browser-Cloud für AI-Agents. Wenn dein Agent Websites bedienen muss: solide Infra.","ausgaben_mentions":[],"url":"https://browserbase.com","alternatives":["browse-ai"],"use_cases":["Agent-Browser-Steuerung"]},{"id":"browse-ai","name":"Browse AI","vendor":"Browse AI","category":["Scraping","Browser-Automation"],"pricing":{"free_tier":true,"paid_from_eur":19,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Visual-Scraper. Klick auf Felder, AI extrahiert. Für Listen-Building & Monitoring.","ausgaben_mentions":[],"url":"https://browse.ai","alternatives":["apify"],"use_cases":["Scraping","Monitoring"]},{"id":"apify","name":"Apify","vendor":"Apify (CZ)","category":["Scraping"],"pricing":{"free_tier":true,"paid_from_eur":49,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":7.5,"aban_note":"EU-basiert (Tschechien). Größte Scraper-Library. Power-User-Tool für Data-Pipelines.","ausgaben_mentions":[],"url":"https://apify.com","alternatives":["browse-ai"],"use_cases":["Web-Scraping","Data-Pipelines"]},{"id":"bardeen","name":"Bardeen","vendor":"Bardeen","category":["Automation","Browser-Automation"],"pricing":{"free_tier":true,"paid_from_eur":15,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Browser-Automation für Knowledge-Worker. Quasi Zapier für deinen Browser. AI-Playbooks sind nett.","ausgaben_mentions":[],"url":"https://bardeen.ai","alternatives":["zapier"],"use_cases":["Browser-Workflows","Knowledge-Work-Automation"]},{"id":"clay","name":"Clay","vendor":"Clay","category":["Sales","Marketing-AI"],"pricing":{"free_tier":true,"paid_from_eur":134,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":8.5,"aban_note":"Sales-Intelligence + Enrichment. Power-Tool für Lead-Gen-Teams. Teuer, aber wenn's funkt — Geld zurück in einer Woche.","ausgaben_mentions":["019"],"url":"https://clay.com","alternatives":["apollo","lusha"],"use_cases":["Lead-Enrichment","Sales-Intelligence"]},{"id":"apollo","name":"Apollo.io","vendor":"Apollo","category":["Sales"],"pricing":{"free_tier":true,"paid_from_eur":49,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":7.5,"aban_note":"Sales-Datenbank + Outreach-Suite. Gut für DACH wenn man's mit Bedacht nutzt — Datenqualität in DE schwankt.","ausgaben_mentions":[],"url":"https://apollo.io","alternatives":["clay","lusha"],"use_cases":["B2B-Datenbank","Outreach"]},{"id":"lusha","name":"Lusha","vendor":"Lusha (IL)","category":["Sales"],"pricing":{"free_tier":true,"paid_from_eur":39,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":7,"aban_note":"Contact-Enrichment. DSGVO-Probleme dokumentiert — vorsichtig sein. Für US-Daten ok.","ausgaben_mentions":[],"url":"https://lusha.com","alternatives":["clay","apollo"],"use_cases":["Contact-Data"]},{"id":"intercom-fin","name":"Intercom Fin","vendor":"Intercom","category":["Customer-Support"],"pricing":{"free_tier":false,"paid_from_eur":75,"currency":"EUR","model":"Per Resolution"},"dach_relevance":5,"worth_it_score":7.5,"aban_note":"Support-AI-Agent. 50% Auto-Resolution möglich. Teuer per Resolution, aber Mathematik geht für Volume-Support auf.","ausgaben_mentions":[],"url":"https://intercom.com/fin","alternatives":["zendesk-ai"],"use_cases":["Support-Automation"]},{"id":"zendesk-ai","name":"Zendesk AI","vendor":"Zendesk","category":["Customer-Support"],"pricing":{"free_tier":false,"paid_from_eur":50,"currency":"EUR","model":"Add-on"},"dach_relevance":5,"worth_it_score":6.5,"aban_note":"AI-Add-on auf Zendesk. Wenn du eh Zendesk hast: aktivieren. Standalone-Wert: meh.","ausgaben_mentions":[],"url":"https://zendesk.com","alternatives":["intercom-fin"],"use_cases":["Helpdesk-AI"]},{"id":"aider","name":"Aider","vendor":"Aider (Open-Source)","category":["Coding"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Open-Source + LLM-Costs"},"dach_relevance":6,"worth_it_score":8,"aban_note":"Terminal-Coding-Agent. Git-aware, multi-file. Open-Source. Für Power-User die saubere Alternative zu Cursor.","ausgaben_mentions":[],"url":"https://aider.chat","alternatives":["claude-code","cline"],"use_cases":["Terminal-Coding","Open-Source-Agent"]},{"id":"cline","name":"Cline","vendor":"Cline (Open-Source)","category":["Coding"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Open-Source + LLM-Costs"},"dach_relevance":6,"worth_it_score":8,"aban_note":"VSCode-Extension-Agent. Plan + Act-Modi. Sehr durchdacht. Open-Source.","ausgaben_mentions":[],"url":"https://cline.bot","alternatives":["aider","cursor"],"use_cases":["VSCode-Agent","Coding"]},{"id":"tabnine","name":"Tabnine","vendor":"Tabnine","category":["Coding"],"pricing":{"free_tier":true,"paid_from_eur":12,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":6.5,"aban_note":"Privacy-First-Code-Completion. Self-Hostbar für Enterprise. Für Compliance-Heavy-Unternehmen interessant.","ausgaben_mentions":[],"url":"https://tabnine.com","alternatives":["copilot","cursor"],"use_cases":["Privacy-First-Coding","Enterprise-Self-Host"]},{"id":"cody","name":"Sourcegraph Cody","vendor":"Sourcegraph","category":["Coding"],"pricing":{"free_tier":true,"paid_from_eur":9,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Codebase-aware AI für große Repos. Wenn du Monorepo hast: stark. Solo: Cursor reicht.","ausgaben_mentions":[],"url":"https://sourcegraph.com/cody","alternatives":["cursor","copilot"],"use_cases":["Enterprise-Codebase","Code-Search"]},{"id":"warp","name":"Warp","vendor":"Warp","category":["Coding","Productivity"],"pricing":{"free_tier":true,"paid_from_eur":20,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7.5,"aban_note":"AI-Terminal. Agent-Mode kann Multi-Step-Shell-Tasks. Schöne UI. Cloud-Sync — Privacy bedenken.","ausgaben_mentions":[],"url":"https://warp.dev","alternatives":["claude-code"],"use_cases":["AI-Terminal"]},{"id":"codex","name":"GPT Codex","vendor":"OpenAI","category":["Coding","Agent"],"pricing":{"free_tier":false,"paid_from_eur":0,"currency":"EUR","model":"Via ChatGPT Pro"},"dach_relevance":5,"worth_it_score":7,"aban_note":"OpenAI's Coding-Agent. Cloud-basiert. Funktioniert, aber Claude Code im Terminal ist's runder.","ausgaben_mentions":["014","018"],"url":"https://openai.com/codex","alternatives":["claude-code","cursor"],"use_cases":["Cloud-Coding-Agent"]},{"id":"pipedream","name":"Pipedream","vendor":"Pipedream","category":["Automation"],"pricing":{"free_tier":true,"paid_from_eur":19,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Code + No-Code-Hybrid. Für Devs die Workflows in JavaScript schreiben wollen.","ausgaben_mentions":[],"url":"https://pipedream.com","alternatives":["n8n","make"],"use_cases":["Code-Hybrid-Workflows"]},{"id":"windmill","name":"Windmill","vendor":"Windmill (FR)","category":["Automation"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Open-Source + Cloud"},"dach_relevance":6,"worth_it_score":7.5,"aban_note":"Self-Hosted-Workflow-Engine. EU-basiert (Paris). Wenn n8n zu limitiert ist und du Code willst.","ausgaben_mentions":[],"url":"https://windmill.dev","alternatives":["n8n","pipedream"],"use_cases":["Self-Hosted-Automation","EU-Compliance"]},{"id":"supabase","name":"Supabase","vendor":"Supabase","category":["API","Vector-DB"],"pricing":{"free_tier":true,"paid_from_eur":25,"currency":"EUR","model":"Cloud + Self-Host"},"dach_relevance":6,"worth_it_score":8.5,"aban_note":"Open-Source-Firebase. EU-Hosting. pgvector inkludiert. Backend-Baukasten für Solo-Devs.","ausgaben_mentions":[],"url":"https://supabase.com","alternatives":["firebase"],"use_cases":["Backend","Vector-Search","EU-Hosting"]},{"id":"vercel-ai","name":"Vercel AI SDK","vendor":"Vercel","category":["Framework"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Open-Source"},"dach_relevance":5,"worth_it_score":8,"aban_note":"AI-SDK für TypeScript. Sauberer als LangChain für Standard-Use-Cases. Wenn du Next.js machst: erste Wahl.","ausgaben_mentions":[],"url":"https://sdk.vercel.ai","alternatives":["langchain"],"use_cases":["TypeScript-AI","Next.js-Integration"]},{"id":"modal","name":"Modal","vendor":"Modal","category":["API"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Pay-per-second"},"dach_relevance":4,"worth_it_score":8,"aban_note":"Serverless GPU-Compute. Für Custom-Model-Deployment ohne Infrastruktur-Stress.","ausgaben_mentions":[],"url":"https://modal.com","alternatives":["replicate"],"use_cases":["Serverless-GPU","Custom-Model-Hosting"]},{"id":"linear","name":"Linear","vendor":"Linear","category":["Productivity"],"pricing":{"free_tier":true,"paid_from_eur":8,"currency":"EUR","model":"Per Seat"},"dach_relevance":6,"worth_it_score":8.5,"aban_note":"Issue-Tracker mit AI-Features (Auto-Triage, Summary). Mein Tool für Side-Projects. UI ist eine Klasse für sich.","ausgaben_mentions":[],"url":"https://linear.app","alternatives":["jira"],"use_cases":["Issue-Tracking","Project-Management"]},{"id":"humata","name":"Humata","vendor":"Humata","category":["Research"],"pricing":{"free_tier":true,"paid_from_eur":14,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":6.5,"aban_note":"PDF-Q&A-Tool. Mittlerweile von Claude/ChatGPT-PDF-Upload überholt.","ausgaben_mentions":[],"url":"https://humata.ai","alternatives":["claude","chatgpt"],"use_cases":["PDF-Research"]},{"id":"consensus","name":"Consensus","vendor":"Consensus","category":["Research"],"pricing":{"free_tier":true,"paid_from_eur":9,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":8,"aban_note":"AI-Search über wissenschaftliche Paper. Für Faktenrecherche jenseits LinkedIn-Wissens: Gold.","ausgaben_mentions":[],"url":"https://consensus.app","alternatives":["perplexity"],"use_cases":["Wissenschafts-Recherche"]},{"id":"elicit","name":"Elicit","vendor":"Elicit","category":["Research"],"pricing":{"free_tier":true,"paid_from_eur":12,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":8,"aban_note":"Research-Workflow für wissenschaftliche Literatur. Auto-Extraction von Findings. Für Researcher klar besser als ChatGPT.","ausgaben_mentions":[],"url":"https://elicit.com","alternatives":["consensus"],"use_cases":["Literatur-Recherche","Meta-Analyse"]},{"id":"scite","name":"Scite.ai","vendor":"Scite","category":["Research"],"pricing":{"free_tier":true,"paid_from_eur":20,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":7,"aban_note":"Citation-Validation. Zeigt ob Paper unterstützt oder widerlegt werden. Für seriöse Recherche.","ausgaben_mentions":[],"url":"https://scite.ai","alternatives":["consensus"],"use_cases":["Citation-Check","Wissenschafts-Validierung"]},{"id":"tactiq","name":"Tactiq","vendor":"Tactiq","category":["Meeting-AI"],"pricing":{"free_tier":true,"paid_from_eur":8,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":6.5,"aban_note":"Browser-basiertes Meeting-AI. Günstig, ok-Output. Granola schlägt's deutlich.","ausgaben_mentions":[],"url":"https://tactiq.io","alternatives":["granola","otter"],"use_cases":["Meeting-AI-Budget"]},{"id":"supahub","name":"Castmagic","vendor":"Castmagic","category":["Audio-Gen"],"pricing":{"free_tier":false,"paid_from_eur":29,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":7,"aban_note":"Podcast-to-Content. Generiert Show-Notes, Quotes, Tweets aus Audio. Für Podcaster.","ausgaben_mentions":[],"url":"https://castmagic.io","alternatives":["descript"],"use_cases":["Podcast-Repurposing"]},{"id":"pictory","name":"Pictory","vendor":"Pictory","category":["Video-Gen"],"pricing":{"free_tier":true,"paid_from_eur":19,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":6,"aban_note":"Text-zu-Video aus Blog-Posts. Output ist erkennbar AI-generiert. Für Bulk-Social-Snippets ok.","ausgaben_mentions":[],"url":"https://pictory.ai","alternatives":["lumen5"],"use_cases":["Blog-to-Video"]},{"id":"lumen5","name":"Lumen5","vendor":"Lumen5","category":["Video-Gen"],"pricing":{"free_tier":true,"paid_from_eur":19,"currency":"EUR","model":"Subscription"},"dach_relevance":4,"worth_it_score":6,"aban_note":"Blog-to-Social-Video. Template-getrieben. Output reicht für LinkedIn-Posts, nicht mehr.","ausgaben_mentions":[],"url":"https://lumen5.com","alternatives":["pictory"],"use_cases":["Social-Video"]},{"id":"wisper-flow","name":"Whisper Flow","vendor":"Wisp","category":["Audio-Gen","Productivity"],"pricing":{"free_tier":true,"paid_from_eur":12,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":8,"aban_note":"Voice-to-Text-Diktat für Mac. Schneller tippen als Tippen. Deutsche Erkennung erstklassig.","ausgaben_mentions":[],"url":"https://wisprflow.ai","alternatives":["aiko"],"use_cases":["Voice-Diktat"]},{"id":"raycast-ai","name":"Raycast AI","vendor":"Raycast","category":["Productivity"],"pricing":{"free_tier":true,"paid_from_eur":10,"currency":"EUR","model":"Subscription"},"dach_relevance":6,"worth_it_score":8.5,"aban_note":"Spotlight-Replacement mit AI-Calls überall im OS. Quick-Prompt-Workflow ohne Browser-Wechsel. Mac-only.","ausgaben_mentions":[],"url":"https://raycast.com","alternatives":["alfred"],"use_cases":["OS-Wide-AI","Quick-Prompts"]},{"id":"arc","name":"Arc Search","vendor":"The Browser Company","category":["Search"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Free"},"dach_relevance":5,"worth_it_score":7,"aban_note":"Mobile-Browser mit AI-Summary. 'Browse for me' ist nett. Pivot zu Dia kommt.","ausgaben_mentions":[],"url":"https://arc.net","alternatives":["brave"],"use_cases":["AI-Browser-Mobile"]},{"id":"dia","name":"Dia (Browser)","vendor":"The Browser Company","category":["Search","Productivity"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Free (Beta)"},"dach_relevance":5,"worth_it_score":7,"aban_note":"AI-First-Browser. Tab-übergreifender Chat. Interessantes Konzept, Beta-Status.","ausgaben_mentions":[],"url":"https://diabrowser.com","alternatives":["arc"],"use_cases":["AI-Browser"]},{"id":"snowball","name":"Klue","vendor":"Klue","category":["Marketing-AI","Sales"],"pricing":{"free_tier":false,"paid_from_eur":500,"currency":"EUR","model":"Enterprise"},"dach_relevance":4,"worth_it_score":6.5,"aban_note":"Competitive-Intelligence-Plattform. Enterprise-Pricing. Für Solos: zu groß.","ausgaben_mentions":[],"url":"https://klue.com","alternatives":["crayon"],"use_cases":["Enterprise-Competitive-Intel"]},{"id":"crayon","name":"Crayon","vendor":"Crayon","category":["Marketing-AI"],"pricing":{"free_tier":false,"paid_from_eur":500,"currency":"EUR","model":"Enterprise"},"dach_relevance":4,"worth_it_score":6.5,"aban_note":"Competitive-Tracking. Wie Klue. Enterprise.","ausgaben_mentions":[],"url":"https://crayon.co","alternatives":["klue"],"use_cases":["Competitive-Tracking"]},{"id":"glean","name":"Glean","vendor":"Glean","category":["Research","Productivity"],"pricing":{"free_tier":false,"paid_from_eur":0,"currency":"EUR","model":"Enterprise"},"dach_relevance":5,"worth_it_score":8,"aban_note":"Enterprise-Search über alle SaaS-Tools. Für Teams > 50 Personen Killer. Solo-Setup: overkill.","ausgaben_mentions":[],"url":"https://glean.com","alternatives":[],"use_cases":["Enterprise-Search","Work-AI"]},{"id":"anthropic-mcp","name":"MCP (Model Context Protocol)","vendor":"Anthropic (Open Spec)","category":["Framework"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Open-Source"},"dach_relevance":7,"worth_it_score":9,"aban_note":"Offener Standard für Tool-Calling. Claude, Cursor, Windsurf, alle adoptieren. Wenn du Tools für Agents baust: das ist's.","ausgaben_mentions":["024"],"url":"https://modelcontextprotocol.io","alternatives":[],"use_cases":["Agent-Tools","Integrations"]},{"id":"ollama-cloud","name":"Together Code Interpreter","vendor":"Together AI","category":["API","Coding"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Pay-per-second"},"dach_relevance":4,"worth_it_score":7,"aban_note":"Code-Execution-Sandbox als API. Für Agents die Code ausführen müssen.","ausgaben_mentions":[],"url":"https://together.ai/code-interpreter","alternatives":["e2b"],"use_cases":["Sandbox-Code","Agent-Execution"]},{"id":"e2b","name":"E2B","vendor":"E2B (CZ)","category":["API","Coding"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Pay-per-second"},"dach_relevance":5,"worth_it_score":8,"aban_note":"Sandbox-Infrastructure für AI-Agents. EU-basiert (Prag). Open-Source-Kern. Saubere Wahl für Agent-Builder.","ausgaben_mentions":[],"url":"https://e2b.dev","alternatives":["modal"],"use_cases":["Agent-Sandbox","EU-Compliance"]},{"id":"langfuse","name":"Langfuse","vendor":"Langfuse (DE)","category":["Framework","Analytics","Compliance-DACH"],"pricing":{"free_tier":true,"paid_from_eur":59,"currency":"EUR","model":"Cloud + Self-Host"},"dach_relevance":9,"worth_it_score":8.5,"aban_note":"Deutsche LLM-Observability-Plattform (Berlin). Tracing, Eval, Cost-Tracking. Self-Hostbar. Wenn dein LLM-Stack ernst wird: erste Wahl.","ausgaben_mentions":[],"url":"https://langfuse.com","alternatives":["langsmith"],"use_cases":["LLM-Observability","Prompt-Mgmt","DACH-Compliance"]},{"id":"langsmith","name":"LangSmith","vendor":"LangChain","category":["Framework","Analytics"],"pricing":{"free_tier":true,"paid_from_eur":39,"currency":"EUR","model":"Subscription"},"dach_relevance":5,"worth_it_score":7,"aban_note":"LLM-Observability für LangChain-Apps. Vendor-Lock-Light. Cloud-only EU-Region erst 2026.","ausgaben_mentions":[],"url":"https://smith.langchain.com","alternatives":["langfuse"],"use_cases":["LangChain-Tracing"]},{"id":"browser-use","name":"browser-use","vendor":"browser-use (Open-Source)","category":["Browser-Automation","Agent"],"pricing":{"free_tier":true,"paid_from_eur":0,"currency":"EUR","model":"Open-Source"},"dach_relevance":5,"worth_it_score":8,"aban_note":"Python-Library für AI-Browser-Steuerung. Open-Source. Schlanker Stack für Agent-Builder.","ausgaben_mentions":[],"url":"https://github.com/browser-use/browser-use","alternatives":["browserbase"],"use_cases":["Browser-Agent","Open-Source-Automation"]}]}
+{
+  "version": "1.0.0",
+  "last_updated": "2026-05-27",
+  "source": "aban news — kuratiert aus 30 Newsletter-Ausgaben + DACH-Standard-Stack",
+  "license": "CC-BY-4.0 (Attribution: aban news, abannews.com)",
+  "rating_scale": "1-10 (10 = täglich, würd ich kaufen)",
+  "categories": [
+    "AI-Chat",
+    "API",
+    "Coding",
+    "Image-Gen",
+    "Video-Gen",
+    "Audio-Gen",
+    "Voice-Clone",
+    "Meeting-AI",
+    "Writing",
+    "Translation",
+    "Research",
+    "Search",
+    "Notes",
+    "Automation",
+    "Multi-Model",
+    "Vector-DB",
+    "Framework",
+    "Agent",
+    "Marketing-AI",
+    "SEO",
+    "Analytics",
+    "GEO",
+    "Sales",
+    "Customer-Support",
+    "Design",
+    "Slides",
+    "Local-LLM",
+    "Compliance-DACH",
+    "Productivity",
+    "Vibecoding",
+    "Browser-Automation",
+    "Scraping"
+  ],
+  "tools": [
+    {
+      "id": "claude",
+      "name": "Claude",
+      "vendor": "Anthropic",
+      "category": [
+        "AI-Chat",
+        "API",
+        "Coding"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 18,
+        "currency": "EUR",
+        "model": "Subscription + API"
+      },
+      "dach_relevance": 9,
+      "worth_it_score": 9.5,
+      "aban_note": "Bester Conversational-AI für deutsche Texte. Nutze ich täglich für aban news. Sonnet 4.6 ist mein Default, Opus für lange Recherche, Haiku für Bulk.",
+      "ausgaben_mentions": [
+        "001",
+        "002",
+        "003",
+        "006",
+        "008",
+        "017",
+        "021",
+        "022"
+      ],
+      "url": "https://claude.ai",
+      "alternatives": [
+        "chatgpt",
+        "gemini",
+        "mistral"
+      ],
+      "use_cases": [
+        "Writing",
+        "Research",
+        "Coding",
+        "PDF-Analyse"
+      ],
+      "dsgvo_note": "EU-Datenresidenz via Anthropic-API; Zero-Retention auf Anfrage."
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "vendor": "OpenAI",
+      "category": [
+        "AI-Chat",
+        "API"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 20,
+        "currency": "EUR",
+        "model": "Subscription + API"
+      },
+      "dach_relevance": 9,
+      "worth_it_score": 8.5,
+      "aban_note": "Standardausstattung. GPT-5 ist solider Allrounder, aber für deutsche Wirtschaftstexte landet Claude konsistent feiner. Wenn du nur ein Tool hast: dieses.",
+      "ausgaben_mentions": [
+        "001",
+        "003",
+        "005",
+        "008",
+        "016",
+        "022",
+        "024"
+      ],
+      "url": "https://chatgpt.com",
+      "alternatives": [
+        "claude",
+        "gemini",
+        "mistral"
+      ],
+      "use_cases": [
+        "Writing",
+        "Research",
+        "Coding",
+        "Image-Gen"
+      ]
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "vendor": "Google",
+      "category": [
+        "AI-Chat",
+        "API",
+        "Multimodal"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 20,
+        "currency": "EUR",
+        "model": "Subscription + API"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 7.5,
+      "aban_note": "Stark in Multimodal + Long-Context. Workspace-Integration interessant für Google-User. Standalone: zweite Wahl gegen Claude.",
+      "ausgaben_mentions": [
+        "004",
+        "016",
+        "024"
+      ],
+      "url": "https://gemini.google.com",
+      "alternatives": [
+        "claude",
+        "chatgpt"
+      ],
+      "use_cases": [
+        "Research",
+        "Multimodal",
+        "Google-Docs-Integration"
+      ]
+    },
+    {
+      "id": "mistral",
+      "name": "Mistral Le Chat",
+      "vendor": "Mistral AI",
+      "category": [
+        "AI-Chat",
+        "API",
+        "Compliance-DACH"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 15,
+        "currency": "EUR",
+        "model": "Subscription + API"
+      },
+      "dach_relevance": 9,
+      "worth_it_score": 8,
+      "aban_note": "EU-basiert (Paris). Für Compliance-sensible DACH-Kunden mittlerweile saubere Wahl. Großkunden wie BNP, Harvey AI sind das Vertrauenssignal. Codestral für Coding ist solide.",
+      "ausgaben_mentions": [
+        "004",
+        "005",
+        "009",
+        "024"
+      ],
+      "url": "https://chat.mistral.ai",
+      "alternatives": [
+        "claude",
+        "aleph-alpha"
+      ],
+      "use_cases": [
+        "Writing",
+        "Coding",
+        "EU-Compliance",
+        "Reasoning"
+      ]
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek",
+      "vendor": "DeepSeek (CN)",
+      "category": [
+        "AI-Chat",
+        "API"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "API pay-per-token, ultra-günstig"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Disruptive Preise (-75 bis -99% vs OpenAI). Für Bulk-Workloads ohne Compliance-Sorgen unschlagbar. Für DACH-Business-Daten würd ich's nicht durchrouten — China-Provider.",
+      "ausgaben_mentions": [
+        "001",
+        "005",
+        "024"
+      ],
+      "url": "https://chat.deepseek.com",
+      "alternatives": [
+        "openrouter",
+        "groq"
+      ],
+      "use_cases": [
+        "Bulk-API",
+        "Cost-Optimization",
+        "Reasoning"
+      ]
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity",
+      "vendor": "Perplexity AI",
+      "category": [
+        "Search",
+        "Research",
+        "AI-Chat"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 20,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 8,
+      "worth_it_score": 8.5,
+      "aban_note": "Recherche-Tool Nr. 1. Pro mit Sonar-Modellen ersetzt für mich Google bei 80% der Fragen. Quellen-Transparenz ist der Killer-Feature.",
+      "ausgaben_mentions": [
+        "012",
+        "017"
+      ],
+      "url": "https://perplexity.ai",
+      "alternatives": [
+        "you",
+        "phind",
+        "tavily",
+        "exa"
+      ],
+      "use_cases": [
+        "Research",
+        "News-Sweep",
+        "Quellen-Recherche"
+      ]
+    },
+    {
+      "id": "aleph-alpha",
+      "name": "Aleph Alpha (Pharia)",
+      "vendor": "Aleph Alpha (DE)",
+      "category": [
+        "AI-Chat",
+        "API",
+        "Compliance-DACH"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Enterprise, on-request"
+      },
+      "dach_relevance": 10,
+      "worth_it_score": 6.5,
+      "aban_note": "Deutsche LLMs, Heidelberg. Pharia-1 für regulierte Branchen (Pharma, Banking, Verwaltung). Performance hinkt Claude/Mistral hinterher — aber wenn dein Compliance-Officer 'EU-souverän' will, ist's die Antwort. Kein Self-Service.",
+      "ausgaben_mentions": [
+        "004",
+        "009",
+        "024"
+      ],
+      "url": "https://aleph-alpha.com",
+      "alternatives": [
+        "mistral"
+      ],
+      "use_cases": [
+        "EU-Souveränität",
+        "Banking",
+        "Pharma",
+        "Verwaltung"
+      ]
+    },
+    {
+      "id": "cowork",
+      "name": "Claude Cowork",
+      "vendor": "Anthropic",
+      "category": [
+        "AI-Chat",
+        "Productivity"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 100,
+        "currency": "EUR",
+        "model": "In Claude Max enthalten"
+      },
+      "dach_relevance": 8,
+      "worth_it_score": 8,
+      "aban_note": "Drei Tage echter Selbsttest (siehe Ausgabe 002). Lohnt sich für PDF-Auswertung, Slide-Decks aus Briefings, Excel-Pivots aus Rohdaten. Brauch ich 2x/Woche. Kein Wunder-Tool, aber konkrete Zeit-Ersparnis.",
+      "ausgaben_mentions": [
+        "002",
+        "005",
+        "006"
+      ],
+      "url": "https://claude.com",
+      "alternatives": [
+        "chatgpt",
+        "gemini"
+      ],
+      "use_cases": [
+        "PDF-Analyse",
+        "Slide-Generation",
+        "Excel-Pivots"
+      ]
+    },
+    {
+      "id": "openrouter",
+      "name": "OpenRouter",
+      "vendor": "OpenRouter",
+      "category": [
+        "Multi-Model",
+        "API"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Pay-per-token, Provider-Markup"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 9,
+      "aban_note": "Pragmatischer Multi-Model-Router. Bei API-Kosten-Fragen unschlagbar. Hatte ich monatelang ignoriert — Fehler. Jetzt mein Default für A/B-Tests zwischen Providern.",
+      "ausgaben_mentions": [
+        "005",
+        "024"
+      ],
+      "url": "https://openrouter.ai",
+      "alternatives": [
+        "together-ai",
+        "groq",
+        "replicate"
+      ],
+      "use_cases": [
+        "Multi-Provider-API",
+        "Cost-Routing",
+        "Modell-Tests"
+      ]
+    },
+    {
+      "id": "n8n",
+      "name": "n8n",
+      "vendor": "n8n (DE)",
+      "category": [
+        "Automation",
+        "Framework"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 20,
+        "currency": "EUR",
+        "model": "Cloud oder Self-Host"
+      },
+      "dach_relevance": 9,
+      "worth_it_score": 9,
+      "aban_note": "Self-hostbar, DSGVO-freundlich, deutsche Firma. Mein Backend für Newsletter-Automation. Make.com ist polierter, n8n ist robuster und kontrollierbarer.",
+      "ausgaben_mentions": [
+        "010",
+        "014",
+        "019",
+        "022"
+      ],
+      "url": "https://n8n.io",
+      "alternatives": [
+        "make",
+        "zapier",
+        "pipedream"
+      ],
+      "use_cases": [
+        "Workflow-Automation",
+        "Newsletter-Pipeline",
+        "API-Integration"
+      ]
+    },
+    {
+      "id": "make",
+      "name": "Make.com",
+      "vendor": "Make (formerly Integromat)",
+      "category": [
+        "Automation"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 9,
+        "currency": "EUR",
+        "model": "Operations-based"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 7.5,
+      "aban_note": "Schöner Visual-Builder. Schneller Einstieg als n8n. Aber: Vendor-Lock-in und teurer bei Volume. Für Einsteiger super, für Profis n8n.",
+      "ausgaben_mentions": [
+        "010",
+        "014",
+        "019"
+      ],
+      "url": "https://make.com",
+      "alternatives": [
+        "n8n",
+        "zapier"
+      ],
+      "use_cases": [
+        "Workflow-Automation",
+        "No-Code-Integration"
+      ]
+    },
+    {
+      "id": "zapier",
+      "name": "Zapier",
+      "vendor": "Zapier",
+      "category": [
+        "Automation"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 20,
+        "currency": "EUR",
+        "model": "Task-based"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7,
+      "aban_note": "Größtes Ökosystem (7000+ Apps). Aber teuer und limitiert in Logik. Wenn du nur SaaS-A → SaaS-B brauchst, geht's. Für AI-Workflows: Make oder n8n.",
+      "ausgaben_mentions": [
+        "010",
+        "019"
+      ],
+      "url": "https://zapier.com",
+      "alternatives": [
+        "make",
+        "n8n"
+      ],
+      "use_cases": [
+        "SaaS-Integration",
+        "Quick-Workflows"
+      ]
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "vendor": "Anysphere",
+      "category": [
+        "Coding",
+        "Vibecoding"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 20,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 8,
+      "worth_it_score": 9,
+      "aban_note": "Mein Default-Editor. VSCode-Fork mit Claude/GPT integriert. Composer-Modus ist der Game-Changer für Vibecoding. Wenn du Code schreibst und kein Cursor hast — verlierst du Zeit.",
+      "ausgaben_mentions": [
+        "014",
+        "018",
+        "024"
+      ],
+      "url": "https://cursor.com",
+      "alternatives": [
+        "windsurf",
+        "copilot",
+        "claude-code"
+      ],
+      "use_cases": [
+        "Vibecoding",
+        "Code-Refactoring",
+        "Pair-Programming"
+      ]
+    },
+    {
+      "id": "windsurf",
+      "name": "Windsurf",
+      "vendor": "Codeium",
+      "category": [
+        "Coding"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 15,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 8,
+      "aban_note": "Cursor-Konkurrent. Cascade-Mode ist konzeptionell sauberer. Probiert, aber Cursor-Workflow saß zu tief. Wer neu anfängt: solider Pick.",
+      "ausgaben_mentions": [
+        "014"
+      ],
+      "url": "https://windsurf.com",
+      "alternatives": [
+        "cursor",
+        "copilot"
+      ],
+      "use_cases": [
+        "Vibecoding",
+        "Coding"
+      ]
+    },
+    {
+      "id": "github-copilot",
+      "name": "GitHub Copilot",
+      "vendor": "GitHub (Microsoft)",
+      "category": [
+        "Coding"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 8,
+      "worth_it_score": 7.5,
+      "aban_note": "Klassiker, mittlerweile mit Claude Sonnet als Option. Solide Autocomplete. Cursor ist im Agent-Mode überlegen, Copilot im GitHub-Integration-Flow.",
+      "ausgaben_mentions": [
+        "005",
+        "014",
+        "018"
+      ],
+      "url": "https://github.com/features/copilot",
+      "alternatives": [
+        "cursor",
+        "tabnine",
+        "cody"
+      ],
+      "use_cases": [
+        "Code-Completion",
+        "GitHub-Integration"
+      ]
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "vendor": "Anthropic",
+      "category": [
+        "Coding",
+        "Agent"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Nutzungs-basiert via Claude-Sub"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 9,
+      "aban_note": "Terminal-basierter Coding-Agent. Wenn du Routinen automatisierst (Refactor 50 Files, Test-Coverage hochziehen), ist's stark. CLI > GUI für Power-User.",
+      "ausgaben_mentions": [
+        "018"
+      ],
+      "url": "https://claude.com/code",
+      "alternatives": [
+        "cursor",
+        "aider",
+        "cline"
+      ],
+      "use_cases": [
+        "Bulk-Refactoring",
+        "Codebase-Analyse",
+        "Terminal-Coding"
+      ]
+    },
+    {
+      "id": "bolt",
+      "name": "Bolt.new",
+      "vendor": "StackBlitz",
+      "category": [
+        "Vibecoding"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 20,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7,
+      "aban_note": "Browser-basiertes Vibecoding. Eine Landing-Page in 20 Min. Lock-in & Limits sobald's komplexer wird. Für MVPs: brauchbar.",
+      "ausgaben_mentions": [
+        "005",
+        "018"
+      ],
+      "url": "https://bolt.new",
+      "alternatives": [
+        "v0",
+        "lovable",
+        "replit"
+      ],
+      "use_cases": [
+        "MVP-Prototyping",
+        "Landing-Pages"
+      ]
+    },
+    {
+      "id": "lovable",
+      "name": "Lovable",
+      "vendor": "Lovable",
+      "category": [
+        "Vibecoding"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 20,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7,
+      "aban_note": "Sehr glatter Vibecoding-Builder. Schöne Outputs. Skaliert schlecht über die ersten 200 Prompts hinaus. Für Solos mit nur einem Side-Project: ok.",
+      "ausgaben_mentions": [
+        "005",
+        "018"
+      ],
+      "url": "https://lovable.dev",
+      "alternatives": [
+        "bolt",
+        "v0"
+      ],
+      "use_cases": [
+        "MVP-Prototyping",
+        "Vibecoding"
+      ]
+    },
+    {
+      "id": "v0",
+      "name": "v0",
+      "vendor": "Vercel",
+      "category": [
+        "Vibecoding",
+        "Design"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 20,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "aban_note": "Next.js + shadcn ab Werk. Wenn du im Vercel-Ökosystem bist: erste Wahl. Otherwise: Output ist React-spezifisch, das schränkt ein.",
+      "ausgaben_mentions": [
+        "005",
+        "018"
+      ],
+      "url": "https://v0.dev",
+      "alternatives": [
+        "bolt",
+        "lovable"
+      ],
+      "use_cases": [
+        "React-Prototyping",
+        "UI-Generation"
+      ]
+    },
+    {
+      "id": "replit",
+      "name": "Replit Agent",
+      "vendor": "Replit",
+      "category": [
+        "Vibecoding",
+        "Coding"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 20,
+        "currency": "EUR",
+        "model": "Credits"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Full-Stack im Browser inklusive Hosting. Eignet sich für komplette Mini-Apps. Pricing ist hart bei Volume.",
+      "ausgaben_mentions": [
+        "018"
+      ],
+      "url": "https://replit.com",
+      "alternatives": [
+        "bolt",
+        "lovable"
+      ],
+      "use_cases": [
+        "Full-Stack-MVP",
+        "Hosting-inkludiert"
+      ]
+    },
+    {
+      "id": "midjourney",
+      "name": "Midjourney",
+      "vendor": "Midjourney",
+      "category": [
+        "Image-Gen"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 8.5,
+      "aban_note": "Bildqualitäts-König. v7 ist erstaunlich. Für Marketing-Assets, Editorial-Bilder, Cover. Discord-First ist nervig, aber Web-UI funktioniert mittlerweile.",
+      "ausgaben_mentions": [
+        "007",
+        "009",
+        "014"
+      ],
+      "url": "https://midjourney.com",
+      "alternatives": [
+        "flux",
+        "ideogram",
+        "krea"
+      ],
+      "use_cases": [
+        "Marketing-Assets",
+        "Editorial-Bilder",
+        "Konzept-Art"
+      ]
+    },
+    {
+      "id": "flux",
+      "name": "Flux",
+      "vendor": "Black Forest Labs (DE)",
+      "category": [
+        "Image-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "API + Open-Source"
+      },
+      "dach_relevance": 9,
+      "worth_it_score": 8.5,
+      "aban_note": "Deutsche Firma (Freiburg), Stable-Diffusion-Macher. Flux.1 Dev ist Top-Performance. Open-Weights — ideal für DACH-Compliance.",
+      "ausgaben_mentions": [
+        "014"
+      ],
+      "url": "https://blackforestlabs.ai",
+      "alternatives": [
+        "stable-diffusion",
+        "midjourney",
+        "ideogram"
+      ],
+      "use_cases": [
+        "Image-Gen",
+        "Self-Hosted",
+        "DACH-Compliance"
+      ]
+    },
+    {
+      "id": "stable-diffusion",
+      "name": "Stable Diffusion",
+      "vendor": "Stability AI",
+      "category": [
+        "Image-Gen",
+        "Local-LLM"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Open-Source"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 7,
+      "aban_note": "Open-Source-Klassiker. Self-Hostbar. Wenn du eine RTX-Grafikkarte hast: ComfyUI + SD = unbegrenzte Bilder ohne Vendor-Abhängigkeit.",
+      "ausgaben_mentions": [
+        "014"
+      ],
+      "url": "https://stability.ai",
+      "alternatives": [
+        "flux",
+        "krea"
+      ],
+      "use_cases": [
+        "Self-Hosted-Image-Gen",
+        "Bulk-Image"
+      ]
+    },
+    {
+      "id": "ideogram",
+      "name": "Ideogram",
+      "vendor": "Ideogram",
+      "category": [
+        "Image-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 8,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "aban_note": "Beste Text-in-Bild-Renderings. Für Poster, Logos, Typografie-lastige Designs. Schwächer in Photorealismus.",
+      "ausgaben_mentions": [
+        "014"
+      ],
+      "url": "https://ideogram.ai",
+      "alternatives": [
+        "midjourney",
+        "flux"
+      ],
+      "use_cases": [
+        "Typografie",
+        "Poster",
+        "Logo-Konzepte"
+      ]
+    },
+    {
+      "id": "krea",
+      "name": "Krea",
+      "vendor": "Krea",
+      "category": [
+        "Image-Gen",
+        "Video-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "aban_note": "Realtime-Image-Gen + Multi-Model-Bundle. Für Designer interessant, weil Output-Kontrolle gut ist. Tier 1 ist limitierend.",
+      "ausgaben_mentions": [
+        "014"
+      ],
+      "url": "https://krea.ai",
+      "alternatives": [
+        "midjourney",
+        "ideogram"
+      ],
+      "use_cases": [
+        "Realtime-Design",
+        "Image-Gen"
+      ]
+    },
+    {
+      "id": "recraft",
+      "name": "Recraft",
+      "vendor": "Recraft",
+      "category": [
+        "Image-Gen",
+        "Design"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 12,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "SVG-Generation + Brand-Style-Consistency. Wenn du Marken-Bilder konsistent halten musst: Top.",
+      "ausgaben_mentions": [],
+      "url": "https://recraft.ai",
+      "alternatives": [
+        "midjourney",
+        "ideogram"
+      ],
+      "use_cases": [
+        "SVG-Gen",
+        "Brand-Konsistenz"
+      ]
+    },
+    {
+      "id": "leonardo",
+      "name": "Leonardo.ai",
+      "vendor": "Leonardo",
+      "category": [
+        "Image-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 6.5,
+      "aban_note": "Image-Gen mit Fokus auf Game-Assets. Solide UI, aber Output für Marketing eher zweite Liga.",
+      "ausgaben_mentions": [],
+      "url": "https://leonardo.ai",
+      "alternatives": [
+        "midjourney",
+        "flux"
+      ],
+      "use_cases": [
+        "Game-Assets",
+        "Konzept-Art"
+      ]
+    },
+    {
+      "id": "playground",
+      "name": "Playground AI",
+      "vendor": "Playground",
+      "category": [
+        "Image-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 12,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6,
+      "aban_note": "Free-Tier ist großzügig. Output meist passabel, selten herausragend. Für Hobby ok.",
+      "ausgaben_mentions": [
+        "014"
+      ],
+      "url": "https://playground.com",
+      "alternatives": [
+        "midjourney"
+      ],
+      "use_cases": [
+        "Hobby-Image-Gen"
+      ]
+    },
+    {
+      "id": "dalle",
+      "name": "DALL-E 3",
+      "vendor": "OpenAI",
+      "category": [
+        "Image-Gen"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "In ChatGPT enthalten"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 6.5,
+      "aban_note": "Mittlerweile von Midjourney/Flux überholt. Aber: nahtlos in ChatGPT-Workflow integriert. Für schnelle Slide-Bilder reicht's.",
+      "ausgaben_mentions": [
+        "007",
+        "014"
+      ],
+      "url": "https://openai.com/dall-e-3",
+      "alternatives": [
+        "midjourney",
+        "flux"
+      ],
+      "use_cases": [
+        "ChatGPT-integriert",
+        "Quick-Image"
+      ]
+    },
+    {
+      "id": "adobe-firefly",
+      "name": "Adobe Firefly",
+      "vendor": "Adobe",
+      "category": [
+        "Image-Gen",
+        "Design"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 5,
+        "currency": "EUR",
+        "model": "Subscription oder Credits"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7,
+      "aban_note": "Commercial-Safe (trainiert auf lizensierten Daten). Für Marken, die rechtssicher generieren müssen. In Photoshop/Illustrator nahtlos.",
+      "ausgaben_mentions": [],
+      "url": "https://firefly.adobe.com",
+      "alternatives": [
+        "midjourney",
+        "flux"
+      ],
+      "use_cases": [
+        "Commercial-Safe",
+        "Adobe-Workflow"
+      ]
+    },
+    {
+      "id": "sora",
+      "name": "Sora",
+      "vendor": "OpenAI",
+      "category": [
+        "Video-Gen"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 20,
+        "currency": "EUR",
+        "model": "In ChatGPT Plus"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 6.5,
+      "aban_note": "Video-Gen. Spannend, aber 2026 noch nicht Produktions-ready für Marketing. Demo-Clips ja, Hero-Videos nein.",
+      "ausgaben_mentions": [
+        "007",
+        "014",
+        "016",
+        "024"
+      ],
+      "url": "https://sora.com",
+      "alternatives": [
+        "runway",
+        "pika",
+        "veo"
+      ],
+      "use_cases": [
+        "Video-Demos",
+        "Konzept-Video"
+      ]
+    },
+    {
+      "id": "runway",
+      "name": "Runway",
+      "vendor": "Runway",
+      "category": [
+        "Video-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 15,
+        "currency": "EUR",
+        "model": "Subscription + Credits"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Gen-4 ist solide. Beste Tool-Suite für Video-AI (Motion-Brush, Inpainting). Für Pros, die wirklich produzieren wollen.",
+      "ausgaben_mentions": [
+        "007",
+        "014"
+      ],
+      "url": "https://runwayml.com",
+      "alternatives": [
+        "sora",
+        "pika"
+      ],
+      "use_cases": [
+        "Video-Editing",
+        "VFX",
+        "Motion-Graphics"
+      ]
+    },
+    {
+      "id": "pika",
+      "name": "Pika",
+      "vendor": "Pika Labs",
+      "category": [
+        "Video-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6,
+      "aban_note": "Short-Form-Video für Social. Einfacher Einstieg, aber Output ist limited duration.",
+      "ausgaben_mentions": [],
+      "url": "https://pika.art",
+      "alternatives": [
+        "runway",
+        "sora"
+      ],
+      "use_cases": [
+        "Short-Form-Video",
+        "Social-Media"
+      ]
+    },
+    {
+      "id": "elevenlabs",
+      "name": "ElevenLabs",
+      "vendor": "ElevenLabs",
+      "category": [
+        "Audio-Gen",
+        "Voice-Clone"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 5,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 8.5,
+      "aban_note": "Deutsche Stimmen klingen 2026 erstaunlich natürlich. Für Podcasts, Voiceovers, Hörbücher. Voice-Clone ist erschreckend gut — mit allen ethischen Implikationen.",
+      "ausgaben_mentions": [
+        "014",
+        "024"
+      ],
+      "url": "https://elevenlabs.io",
+      "alternatives": [
+        "murf",
+        "playht"
+      ],
+      "use_cases": [
+        "Voiceover",
+        "Podcast",
+        "Audiobook"
+      ]
+    },
+    {
+      "id": "suno",
+      "name": "Suno",
+      "vendor": "Suno",
+      "category": [
+        "Audio-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Musik-Generierung. Für Jingles, Hintergrundmusik, Spaß. Für ernsthafte Produktion: Rechtslage in DACH unklar.",
+      "ausgaben_mentions": [],
+      "url": "https://suno.com",
+      "alternatives": [
+        "udio"
+      ],
+      "use_cases": [
+        "Jingles",
+        "Hintergrundmusik"
+      ]
+    },
+    {
+      "id": "udio",
+      "name": "Udio",
+      "vendor": "Udio",
+      "category": [
+        "Audio-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6.5,
+      "aban_note": "Suno-Konkurrent. Output-Qualität ähnlich. Lizenz-Lage genauso unklar — vorsicht bei kommerzieller Nutzung.",
+      "ausgaben_mentions": [],
+      "url": "https://udio.com",
+      "alternatives": [
+        "suno"
+      ],
+      "use_cases": [
+        "Musik-Gen"
+      ]
+    },
+    {
+      "id": "murf",
+      "name": "Murf",
+      "vendor": "Murf",
+      "category": [
+        "Audio-Gen",
+        "Voice-Clone"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 19,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 6.5,
+      "aban_note": "Solider TTS-Klassiker. Deutsche Stimmen ok, aber ElevenLabs ist 2026 vorne.",
+      "ausgaben_mentions": [],
+      "url": "https://murf.ai",
+      "alternatives": [
+        "elevenlabs"
+      ],
+      "use_cases": [
+        "Voiceover",
+        "TTS"
+      ]
+    },
+    {
+      "id": "heygen",
+      "name": "HeyGen",
+      "vendor": "HeyGen",
+      "category": [
+        "Video-Gen",
+        "Voice-Clone"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 24,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "AI-Avatars die Texte vortragen. Translation in 40+ Sprachen mit Lippen-Sync. Stark für Multi-Language-Marketing. Avatar-Output bleibt erkennbar synthetisch.",
+      "ausgaben_mentions": [],
+      "url": "https://heygen.com",
+      "alternatives": [
+        "synthesia",
+        "d-id"
+      ],
+      "use_cases": [
+        "AI-Avatar-Videos",
+        "Multi-Language-Content"
+      ]
+    },
+    {
+      "id": "synthesia",
+      "name": "Synthesia",
+      "vendor": "Synthesia",
+      "category": [
+        "Video-Gen"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 30,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 6.5,
+      "aban_note": "Enterprise-AI-Avatars. Schöne Templates, teurer als HeyGen. Eher für L&D-Departments als Solos.",
+      "ausgaben_mentions": [
+        "014"
+      ],
+      "url": "https://synthesia.io",
+      "alternatives": [
+        "heygen"
+      ],
+      "use_cases": [
+        "Corporate-Training",
+        "AI-Avatar"
+      ]
+    },
+    {
+      "id": "d-id",
+      "name": "D-ID",
+      "vendor": "D-ID",
+      "category": [
+        "Video-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 5,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6,
+      "aban_note": "Foto-zu-sprechender-Kopf. Niedrige Einstiegshürde. Output ist mittlerweile von HeyGen überholt.",
+      "ausgaben_mentions": [],
+      "url": "https://d-id.com",
+      "alternatives": [
+        "heygen"
+      ],
+      "use_cases": [
+        "Avatar-Videos"
+      ]
+    },
+    {
+      "id": "descript",
+      "name": "Descript",
+      "vendor": "Descript",
+      "category": [
+        "Audio-Gen",
+        "Meeting-AI"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 12,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.5,
+      "aban_note": "Audio/Video-Editing über Transkript. Game-Changer für Podcaster — du löschst Wörter im Text, das Audio folgt. Voice-Clone (Overdub) ist sauber.",
+      "ausgaben_mentions": [],
+      "url": "https://descript.com",
+      "alternatives": [
+        "capcut",
+        "veed"
+      ],
+      "use_cases": [
+        "Podcast-Editing",
+        "Transkript-basiertes-Editing"
+      ]
+    },
+    {
+      "id": "veed",
+      "name": "VEED",
+      "vendor": "VEED",
+      "category": [
+        "Video-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 18,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6,
+      "aban_note": "Browser-Video-Editing mit AI-Hilfen. Untertitel-Gen ist gut. Für Power-Editing zu limitiert.",
+      "ausgaben_mentions": [],
+      "url": "https://veed.io",
+      "alternatives": [
+        "descript",
+        "capcut"
+      ],
+      "use_cases": [
+        "Browser-Video",
+        "Untertitel"
+      ]
+    },
+    {
+      "id": "capcut",
+      "name": "CapCut",
+      "vendor": "ByteDance",
+      "category": [
+        "Video-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 8,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Mobile-First-Editing mit AI-Features. TikTok-Pipeline ist's eingebaute Tool. Datenschutz-Bedenken: ByteDance.",
+      "ausgaben_mentions": [
+        "007"
+      ],
+      "url": "https://capcut.com",
+      "alternatives": [
+        "descript",
+        "veed"
+      ],
+      "use_cases": [
+        "Mobile-Editing",
+        "Social-Video"
+      ]
+    },
+    {
+      "id": "otter",
+      "name": "Otter.ai",
+      "vendor": "Otter",
+      "category": [
+        "Meeting-AI"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Klassiker für Meeting-Transkripte. Deutsch okay, nicht perfekt. Für englische Meetings: 1A.",
+      "ausgaben_mentions": [
+        "013",
+        "016",
+        "022"
+      ],
+      "url": "https://otter.ai",
+      "alternatives": [
+        "fireflies",
+        "granola"
+      ],
+      "use_cases": [
+        "Meeting-Transkript",
+        "Notizen"
+      ]
+    },
+    {
+      "id": "fireflies",
+      "name": "Fireflies",
+      "vendor": "Fireflies",
+      "category": [
+        "Meeting-AI"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Wie Otter, mit besserem CRM-Sync. Deutsche Modelle ähnlich okay. Pricing kundenfreundlicher.",
+      "ausgaben_mentions": [
+        "013",
+        "022"
+      ],
+      "url": "https://fireflies.ai",
+      "alternatives": [
+        "otter",
+        "granola"
+      ],
+      "use_cases": [
+        "Meeting-AI",
+        "CRM-Integration"
+      ]
+    },
+    {
+      "id": "granola",
+      "name": "Granola",
+      "vendor": "Granola",
+      "category": [
+        "Meeting-AI"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 18,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 8,
+      "worth_it_score": 9,
+      "aban_note": "Mein neuer Default. Kein Bot-Im-Meeting — läuft im Hintergrund auf deinem Mac. Notizen-Output für deutsche Meetings ist erstklassig. Hat Otter abgelöst.",
+      "ausgaben_mentions": [
+        "013",
+        "016",
+        "022"
+      ],
+      "url": "https://granola.ai",
+      "alternatives": [
+        "otter",
+        "fireflies",
+        "tldv"
+      ],
+      "use_cases": [
+        "Meeting-AI",
+        "Deutsch-First"
+      ]
+    },
+    {
+      "id": "tldv",
+      "name": "tl;dv",
+      "vendor": "tl;dv (DE)",
+      "category": [
+        "Meeting-AI"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 19,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 8,
+      "worth_it_score": 7.5,
+      "aban_note": "Deutsche Firma (München). Gute Multi-Language-Performance. Bot-Im-Meeting-Workflow, was Granola eleganter löst.",
+      "ausgaben_mentions": [
+        "013",
+        "022"
+      ],
+      "url": "https://tldv.io",
+      "alternatives": [
+        "granola",
+        "otter"
+      ],
+      "use_cases": [
+        "Meeting-AI",
+        "DACH-Compliance"
+      ]
+    },
+    {
+      "id": "krisp",
+      "name": "Krisp",
+      "vendor": "Krisp",
+      "category": [
+        "Audio-Gen",
+        "Meeting-AI"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 8,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "aban_note": "Noise-Cancellation für Anrufe. Funktioniert unaufgeregt-zuverlässig. Built-in-AI-Meeting-Notes seit 2025.",
+      "ausgaben_mentions": [],
+      "url": "https://krisp.ai",
+      "alternatives": [
+        "granola"
+      ],
+      "use_cases": [
+        "Noise-Cancellation",
+        "Call-Quality"
+      ]
+    },
+    {
+      "id": "fathom",
+      "name": "Fathom",
+      "vendor": "Fathom",
+      "category": [
+        "Meeting-AI"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 15,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 7,
+      "aban_note": "Generöser Free-Tier mit unlimited Meetings. US-fokussiert, deutsche Sprachqualität ok.",
+      "ausgaben_mentions": [],
+      "url": "https://fathom.video",
+      "alternatives": [
+        "granola",
+        "otter"
+      ],
+      "use_cases": [
+        "Meeting-AI",
+        "Free-Power-User"
+      ]
+    },
+    {
+      "id": "deepl",
+      "name": "DeepL",
+      "vendor": "DeepL (DE)",
+      "category": [
+        "Translation",
+        "Writing"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 8,
+        "currency": "EUR",
+        "model": "Subscription + API"
+      },
+      "dach_relevance": 10,
+      "worth_it_score": 9,
+      "aban_note": "Deutsche Firma (Köln). Beste DE↔EN-Übersetzung, Punkt. Write ist Grammarly-Konkurrent — solider für Deutsch. Pro-Account ist Standard-Ausstattung jedes DACH-Solos.",
+      "ausgaben_mentions": [
+        "005",
+        "017",
+        "021",
+        "024"
+      ],
+      "url": "https://deepl.com",
+      "alternatives": [
+        "google-translate"
+      ],
+      "use_cases": [
+        "Übersetzung DE↔EN",
+        "Write-Refinement",
+        "API"
+      ]
+    },
+    {
+      "id": "deepl-write",
+      "name": "DeepL Write",
+      "vendor": "DeepL (DE)",
+      "category": [
+        "Writing"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 5,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 9,
+      "worth_it_score": 8,
+      "aban_note": "Für Deutsch klar besser als Grammarly. Style-Anpassung 'Geschäftlich', 'Akademisch', 'Locker' funktioniert. 14-Tage-Test in Ausgabe 017.",
+      "ausgaben_mentions": [
+        "017"
+      ],
+      "url": "https://deepl.com/write",
+      "alternatives": [
+        "grammarly",
+        "languagetool"
+      ],
+      "use_cases": [
+        "Deutsch-Refinement",
+        "Stil-Variation"
+      ]
+    },
+    {
+      "id": "grammarly",
+      "name": "Grammarly",
+      "vendor": "Grammarly",
+      "category": [
+        "Writing"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 12,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Englisch-Refiner. Für deutsche Texte zu schwach — nimm DeepL Write oder LanguageTool. Für englische Outreach: ok.",
+      "ausgaben_mentions": [
+        "017"
+      ],
+      "url": "https://grammarly.com",
+      "alternatives": [
+        "deepl-write",
+        "languagetool"
+      ],
+      "use_cases": [
+        "Englisch-Grammar"
+      ]
+    },
+    {
+      "id": "languagetool",
+      "name": "LanguageTool",
+      "vendor": "LanguageTool (DE)",
+      "category": [
+        "Writing",
+        "Compliance-DACH"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 5,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 9,
+      "worth_it_score": 8,
+      "aban_note": "Deutsche Firma (Potsdam). Open-Source-Kern. Stärker als Duden-Korrektor für deutsche Stil-Probleme. Self-Hostbar.",
+      "ausgaben_mentions": [],
+      "url": "https://languagetool.org",
+      "alternatives": [
+        "deepl-write",
+        "grammarly"
+      ],
+      "use_cases": [
+        "Deutsche-Grammatik",
+        "Self-Hosted-Korrektur"
+      ]
+    },
+    {
+      "id": "tavily",
+      "name": "Tavily",
+      "vendor": "Tavily",
+      "category": [
+        "Search",
+        "API"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "API pay-per-call"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 8,
+      "aban_note": "Search-API für AI-Agents. Wenn deine Agenten Web-Recherche brauchen, ist Tavily der saubere Default. Günstiger als SerpAPI.",
+      "ausgaben_mentions": [
+        "019"
+      ],
+      "url": "https://tavily.com",
+      "alternatives": [
+        "exa",
+        "brave-search-api"
+      ],
+      "use_cases": [
+        "Agent-Search",
+        "RAG"
+      ]
+    },
+    {
+      "id": "exa",
+      "name": "Exa",
+      "vendor": "Exa AI",
+      "category": [
+        "Search",
+        "API"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "API pay-per-call"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 8,
+      "aban_note": "Semantic-Search-API. Findet thematisch ähnliche Inhalte besser als Keyword-Suche. Ideal für Research-Agenten.",
+      "ausgaben_mentions": [
+        "019"
+      ],
+      "url": "https://exa.ai",
+      "alternatives": [
+        "tavily"
+      ],
+      "use_cases": [
+        "Semantic-Search",
+        "RAG",
+        "Research"
+      ]
+    },
+    {
+      "id": "you",
+      "name": "You.com",
+      "vendor": "You.com",
+      "category": [
+        "Search",
+        "AI-Chat"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 15,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 6.5,
+      "aban_note": "AI-Search + Modi für Code, Research. Perplexity ist 2026 die bessere Wahl, You hat trotzdem Nische.",
+      "ausgaben_mentions": [],
+      "url": "https://you.com",
+      "alternatives": [
+        "perplexity"
+      ],
+      "use_cases": [
+        "AI-Search",
+        "Multi-Mode-Search"
+      ]
+    },
+    {
+      "id": "phind",
+      "name": "Phind",
+      "vendor": "Phind",
+      "category": [
+        "Search",
+        "Coding"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 17,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Search für Devs. Code-fokussierte Antworten mit Quellen. Für Stack-Overflow-Ersatz brauchbar.",
+      "ausgaben_mentions": [
+        "019"
+      ],
+      "url": "https://phind.com",
+      "alternatives": [
+        "perplexity",
+        "chatgpt"
+      ],
+      "use_cases": [
+        "Dev-Search",
+        "Code-Recherche"
+      ]
+    },
+    {
+      "id": "kagi",
+      "name": "Kagi",
+      "vendor": "Kagi",
+      "category": [
+        "Search"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 8,
+      "aban_note": "Paid-Search ohne Werbung, mit AI-Assist. Für Power-Sucher: erfrischend. Kostet, aber lohnt sich wenn du täglich googelst.",
+      "ausgaben_mentions": [],
+      "url": "https://kagi.com",
+      "alternatives": [
+        "perplexity",
+        "brave"
+      ],
+      "use_cases": [
+        "Werbefreie-Suche",
+        "Power-Search"
+      ]
+    },
+    {
+      "id": "brave",
+      "name": "Brave Search",
+      "vendor": "Brave",
+      "category": [
+        "Search"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 3,
+        "currency": "EUR",
+        "model": "Free + Premium-API"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7,
+      "aban_note": "Eigener Index. Privacy-First. AI-Summary integriert. Solide Google-Alternative ohne Tracking.",
+      "ausgaben_mentions": [],
+      "url": "https://brave.com/search",
+      "alternatives": [
+        "kagi",
+        "google"
+      ],
+      "use_cases": [
+        "Privacy-Suche",
+        "Tracking-frei"
+      ]
+    },
+    {
+      "id": "groq",
+      "name": "Groq",
+      "vendor": "Groq",
+      "category": [
+        "API",
+        "Multi-Model"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "API pay-per-token"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 8,
+      "aban_note": "Inferenz-Speed-Champion. Llama, Mixtral mit irren Token/s. Wenn du Latency-sensitive Apps baust: erste Wahl.",
+      "ausgaben_mentions": [],
+      "url": "https://groq.com",
+      "alternatives": [
+        "together-ai",
+        "cerebras"
+      ],
+      "use_cases": [
+        "Low-Latency-Inferenz",
+        "Real-Time-AI"
+      ]
+    },
+    {
+      "id": "together-ai",
+      "name": "Together AI",
+      "vendor": "Together",
+      "category": [
+        "API",
+        "Multi-Model"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "API pay-per-token"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.5,
+      "aban_note": "Open-Source-Modelle (Llama, Mixtral, Qwen) als API. Günstige Inferenz, gute Modell-Auswahl.",
+      "ausgaben_mentions": [],
+      "url": "https://together.ai",
+      "alternatives": [
+        "groq",
+        "replicate"
+      ],
+      "use_cases": [
+        "Open-Source-API",
+        "Multi-Modell-Hosting"
+      ]
+    },
+    {
+      "id": "cerebras",
+      "name": "Cerebras Inference",
+      "vendor": "Cerebras",
+      "category": [
+        "API"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "API pay-per-token"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 7.5,
+      "aban_note": "Custom-Chips, sehr schnelle Inferenz. Llama-Hosting top. Modell-Auswahl limitierter als Groq.",
+      "ausgaben_mentions": [],
+      "url": "https://cerebras.ai",
+      "alternatives": [
+        "groq",
+        "together-ai"
+      ],
+      "use_cases": [
+        "High-Speed-Inferenz"
+      ]
+    },
+    {
+      "id": "replicate",
+      "name": "Replicate",
+      "vendor": "Replicate",
+      "category": [
+        "API",
+        "Multi-Model"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "API pay-per-second"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.5,
+      "aban_note": "Open-Source-Modelle als API hosten. Inkl. Image/Audio/Video-Modelle. Gut für Prototyping.",
+      "ausgaben_mentions": [],
+      "url": "https://replicate.com",
+      "alternatives": [
+        "together-ai",
+        "hugging-face"
+      ],
+      "use_cases": [
+        "Modell-Prototyping",
+        "Multi-Modal-API"
+      ]
+    },
+    {
+      "id": "hugging-face",
+      "name": "Hugging Face",
+      "vendor": "Hugging Face",
+      "category": [
+        "API",
+        "Framework"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 9,
+        "currency": "EUR",
+        "model": "Subscription + Compute"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 8,
+      "aban_note": "GitHub für AI-Modelle. Inference-Endpoints sind solid. Datasets-Library ist Gold für Researcher.",
+      "ausgaben_mentions": [
+        "024"
+      ],
+      "url": "https://huggingface.co",
+      "alternatives": [
+        "replicate",
+        "together-ai"
+      ],
+      "use_cases": [
+        "Modell-Hosting",
+        "Datasets",
+        "Open-Source-AI"
+      ]
+    },
+    {
+      "id": "langchain",
+      "name": "LangChain",
+      "vendor": "LangChain",
+      "category": [
+        "Framework",
+        "Agent"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Open-Source + LangSmith paid"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 6,
+      "aban_note": "Framework für LLM-Apps. Polarisierend: viele finden's überengineered. Für Standard-Patterns ok, für Custom-Logic schreib lieber direkt.",
+      "ausgaben_mentions": [
+        "019"
+      ],
+      "url": "https://langchain.com",
+      "alternatives": [
+        "llamaindex"
+      ],
+      "use_cases": [
+        "Agent-Framework",
+        "LLM-Pipelines"
+      ]
+    },
+    {
+      "id": "llamaindex",
+      "name": "LlamaIndex",
+      "vendor": "LlamaIndex",
+      "category": [
+        "Framework",
+        "Vector-DB"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Open-Source + Cloud paid"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "RAG-Framework. Schlanker als LangChain für Retrieval-Use-Cases. Für Doc-Search-Anwendungen die saubere Wahl.",
+      "ausgaben_mentions": [
+        "019"
+      ],
+      "url": "https://llamaindex.ai",
+      "alternatives": [
+        "langchain"
+      ],
+      "use_cases": [
+        "RAG",
+        "Doc-Search"
+      ]
+    },
+    {
+      "id": "weaviate",
+      "name": "Weaviate",
+      "vendor": "Weaviate (NL)",
+      "category": [
+        "Vector-DB"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 25,
+        "currency": "EUR",
+        "model": "Cloud + Self-Host"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 8,
+      "aban_note": "EU-basierte Vector-DB. Niederlande, GDPR-konform. Production-ready. Open-Source-Core.",
+      "ausgaben_mentions": [],
+      "url": "https://weaviate.io",
+      "alternatives": [
+        "qdrant",
+        "pinecone"
+      ],
+      "use_cases": [
+        "Vector-Search",
+        "RAG",
+        "EU-Compliance"
+      ]
+    },
+    {
+      "id": "qdrant",
+      "name": "Qdrant",
+      "vendor": "Qdrant (DE)",
+      "category": [
+        "Vector-DB",
+        "Compliance-DACH"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 25,
+        "currency": "EUR",
+        "model": "Cloud + Self-Host"
+      },
+      "dach_relevance": 9,
+      "worth_it_score": 8.5,
+      "aban_note": "Deutsche Vector-DB (Berlin). Open-Source. Self-Hostbar. Performance ist Top. Erste Wahl für DACH-RAG-Setups.",
+      "ausgaben_mentions": [],
+      "url": "https://qdrant.tech",
+      "alternatives": [
+        "weaviate",
+        "pinecone"
+      ],
+      "use_cases": [
+        "Vector-Search",
+        "DACH-Compliance",
+        "Self-Hosted-RAG"
+      ]
+    },
+    {
+      "id": "pinecone",
+      "name": "Pinecone",
+      "vendor": "Pinecone",
+      "category": [
+        "Vector-DB"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 70,
+        "currency": "EUR",
+        "model": "Cloud-only"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 6.5,
+      "aban_note": "Managed Vector-DB. US-only Cloud. Bequem, aber Lock-in. Für DACH-Compliance: Qdrant nehmen.",
+      "ausgaben_mentions": [],
+      "url": "https://pinecone.io",
+      "alternatives": [
+        "qdrant",
+        "weaviate"
+      ],
+      "use_cases": [
+        "Managed-Vector-DB"
+      ]
+    },
+    {
+      "id": "chroma",
+      "name": "Chroma",
+      "vendor": "Chroma",
+      "category": [
+        "Vector-DB"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Open-Source"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Schlanke Vector-DB für Local-Dev und kleine Prototypen. Production: switch to Qdrant.",
+      "ausgaben_mentions": [],
+      "url": "https://trychroma.com",
+      "alternatives": [
+        "qdrant"
+      ],
+      "use_cases": [
+        "Local-Dev",
+        "Prototyping"
+      ]
+    },
+    {
+      "id": "notion-ai",
+      "name": "Notion AI",
+      "vendor": "Notion",
+      "category": [
+        "Productivity",
+        "Notes",
+        "Writing"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Add-on auf Notion"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7,
+      "aban_note": "Wenn du in Notion lebst, lohnt sich's. Q&A über Workspace ist okay. Für Outside-of-Notion-Workflows: nicht lohnenswert.",
+      "ausgaben_mentions": [
+        "013",
+        "022"
+      ],
+      "url": "https://notion.so",
+      "alternatives": [
+        "mem",
+        "obsidian"
+      ],
+      "use_cases": [
+        "Notion-Workspace-AI"
+      ]
+    },
+    {
+      "id": "mem",
+      "name": "Mem",
+      "vendor": "Mem",
+      "category": [
+        "Notes",
+        "Productivity"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 14,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Notes-App mit eingebauter AI. Auto-Tagging und Semantic-Search funktionieren gut. Mobile-App ist solid.",
+      "ausgaben_mentions": [
+        "013"
+      ],
+      "url": "https://mem.ai",
+      "alternatives": [
+        "notion-ai",
+        "reflect"
+      ],
+      "use_cases": [
+        "Smart-Notes",
+        "Auto-Tagging"
+      ]
+    },
+    {
+      "id": "reflect",
+      "name": "Reflect",
+      "vendor": "Reflect",
+      "category": [
+        "Notes"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.5,
+      "aban_note": "Notes-App mit GPT-4 integriert. Sehr clean. Tägliche Notes + Backlinks wie Roam, mit AI obendrauf.",
+      "ausgaben_mentions": [
+        "013"
+      ],
+      "url": "https://reflect.app",
+      "alternatives": [
+        "mem",
+        "obsidian"
+      ],
+      "use_cases": [
+        "Daily-Notes",
+        "Backlinks",
+        "AI-augmentiert"
+      ]
+    },
+    {
+      "id": "obsidian",
+      "name": "Obsidian",
+      "vendor": "Obsidian",
+      "category": [
+        "Notes"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Free, Sync optional"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 9,
+      "aban_note": "Local-First, plain Markdown. Mit Plugins (Copilot, Smart Connections) wird's AI-fähig. Mein zweites Brain seit 4 Jahren.",
+      "ausgaben_mentions": [],
+      "url": "https://obsidian.md",
+      "alternatives": [
+        "logseq",
+        "reflect"
+      ],
+      "use_cases": [
+        "Local-Notes",
+        "Markdown",
+        "Zettelkasten"
+      ]
+    },
+    {
+      "id": "loom",
+      "name": "Loom",
+      "vendor": "Loom (Atlassian)",
+      "category": [
+        "Video-Gen",
+        "Productivity"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 15,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "aban_note": "Screen-Recording mit AI-Transkript + Summary. Für Async-Updates an Kunden Gold wert. Free-Tier reicht für Solos.",
+      "ausgaben_mentions": [
+        "007"
+      ],
+      "url": "https://loom.com",
+      "alternatives": [
+        "capso"
+      ],
+      "use_cases": [
+        "Screen-Record",
+        "Async-Communication"
+      ]
+    },
+    {
+      "id": "capso",
+      "name": "Cap.so",
+      "vendor": "Cap",
+      "category": [
+        "Video-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 9,
+        "currency": "EUR",
+        "model": "Open-Source + Pro"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "aban_note": "Open-Source-Loom-Alternative. EU-Hosting möglich. Für DACH-Datenschutz interessant.",
+      "ausgaben_mentions": [
+        "007"
+      ],
+      "url": "https://cap.so",
+      "alternatives": [
+        "loom"
+      ],
+      "use_cases": [
+        "Open-Source-Screen-Record",
+        "DACH-Compliance"
+      ]
+    },
+    {
+      "id": "jasper",
+      "name": "Jasper",
+      "vendor": "Jasper",
+      "category": [
+        "Writing",
+        "Marketing-AI"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 39,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 5,
+      "aban_note": "Marketing-Writing-Tool. War 2023 heiß, mittlerweile von Claude/ChatGPT überholt. Templates sind kein Killer-Feature mehr.",
+      "ausgaben_mentions": [],
+      "url": "https://jasper.ai",
+      "alternatives": [
+        "claude",
+        "copy-ai"
+      ],
+      "use_cases": [
+        "Marketing-Copywriting"
+      ]
+    },
+    {
+      "id": "copy-ai",
+      "name": "Copy.ai",
+      "vendor": "Copy.ai",
+      "category": [
+        "Writing",
+        "Marketing-AI"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 36,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 5,
+      "aban_note": "Workflow-Focus jetzt. Für Sales-Teams ohne AI-Skills brauchbar. Solo-Marketer: Claude reicht.",
+      "ausgaben_mentions": [],
+      "url": "https://copy.ai",
+      "alternatives": [
+        "claude",
+        "jasper"
+      ],
+      "use_cases": [
+        "Marketing-Workflows",
+        "Sales-Copy"
+      ]
+    },
+    {
+      "id": "writesonic",
+      "name": "Writesonic",
+      "vendor": "Writesonic",
+      "category": [
+        "Writing"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 13,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 5,
+      "aban_note": "Content-Gen-Tool. Mittelmäßige Outputs, Claude besser. Chatsonic ist eigener Chat — ChatGPT besser.",
+      "ausgaben_mentions": [],
+      "url": "https://writesonic.com",
+      "alternatives": [
+        "claude",
+        "jasper"
+      ],
+      "use_cases": [
+        "Bulk-Content"
+      ]
+    },
+    {
+      "id": "sudowrite",
+      "name": "Sudowrite",
+      "vendor": "Sudowrite",
+      "category": [
+        "Writing"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 19,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 7,
+      "aban_note": "Fiction-Writing-AI. Für Romanautoren spezialisiert. Englisch-First, Deutsch ok.",
+      "ausgaben_mentions": [],
+      "url": "https://sudowrite.com",
+      "alternatives": [
+        "claude"
+      ],
+      "use_cases": [
+        "Fiction-Writing",
+        "Story-Beats"
+      ]
+    },
+    {
+      "id": "lex",
+      "name": "Lex",
+      "vendor": "Lex",
+      "category": [
+        "Writing"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 7.5,
+      "aban_note": "AI-augmentierter Texteditor. Inline-AI-Calls auf Markierungen. Schöne Distraction-Free-UI.",
+      "ausgaben_mentions": [],
+      "url": "https://lex.page",
+      "alternatives": [
+        "claude"
+      ],
+      "use_cases": [
+        "AI-augmented-Writing"
+      ]
+    },
+    {
+      "id": "wordtune",
+      "name": "Wordtune",
+      "vendor": "AI21",
+      "category": [
+        "Writing"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6,
+      "aban_note": "Satz-Umschreibung. Englisch-First. Für Deutsch zu schwach.",
+      "ausgaben_mentions": [],
+      "url": "https://wordtune.com",
+      "alternatives": [
+        "deepl-write",
+        "grammarly"
+      ],
+      "use_cases": [
+        "Englisch-Paraphrasieren"
+      ]
+    },
+    {
+      "id": "quillbot",
+      "name": "QuillBot",
+      "vendor": "QuillBot",
+      "category": [
+        "Writing"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6,
+      "aban_note": "Paraphrasieren + Grammar. Englisch-stark. Plagiarism-Check ist netter Bonus.",
+      "ausgaben_mentions": [],
+      "url": "https://quillbot.com",
+      "alternatives": [
+        "wordtune",
+        "grammarly"
+      ],
+      "use_cases": [
+        "Paraphrasieren"
+      ]
+    },
+    {
+      "id": "anyword",
+      "name": "Anyword",
+      "vendor": "Anyword",
+      "category": [
+        "Marketing-AI",
+        "Writing"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 49,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 3,
+      "worth_it_score": 5.5,
+      "aban_note": "Marketing-Copy mit Performance-Scoring. Englisch-First. Teuer für Solos.",
+      "ausgaben_mentions": [],
+      "url": "https://anyword.com",
+      "alternatives": [
+        "jasper",
+        "copy-ai"
+      ],
+      "use_cases": [
+        "Ad-Copy",
+        "Performance-Marketing"
+      ]
+    },
+    {
+      "id": "profound",
+      "name": "Profound",
+      "vendor": "Profound",
+      "category": [
+        "GEO",
+        "SEO",
+        "Analytics"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 500,
+        "currency": "EUR",
+        "model": "Enterprise"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7,
+      "aban_note": "Generative-Engine-Optimization-Tracking. Misst ob deine Marke in ChatGPT, Claude, Perplexity auftaucht. 2026 das, was Google-Ranking 2010 war.",
+      "ausgaben_mentions": [
+        "005",
+        "020",
+        "024"
+      ],
+      "url": "https://tryprofound.com",
+      "alternatives": [
+        "athenahq",
+        "otterly"
+      ],
+      "use_cases": [
+        "GEO-Tracking",
+        "Brand-in-LLM"
+      ]
+    },
+    {
+      "id": "athenahq",
+      "name": "AthenaHQ",
+      "vendor": "AthenaHQ",
+      "category": [
+        "GEO",
+        "SEO"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 200,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 6.5,
+      "aban_note": "GEO-Tracking-Competitor zu Profound. Mid-Market-Pricing. Reports in DE ok.",
+      "ausgaben_mentions": [
+        "005",
+        "020"
+      ],
+      "url": "https://athenahq.ai",
+      "alternatives": [
+        "profound",
+        "otterly"
+      ],
+      "use_cases": [
+        "GEO",
+        "Brand-Monitoring"
+      ]
+    },
+    {
+      "id": "otterly",
+      "name": "Otterly",
+      "vendor": "Otterly (AT)",
+      "category": [
+        "GEO",
+        "Compliance-DACH"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 39,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 8,
+      "worth_it_score": 7.5,
+      "aban_note": "Österreichische Firma (Wien). DACH-Sprach-First. Für KMU der bezahlbare GEO-Einstieg.",
+      "ausgaben_mentions": [
+        "005",
+        "020"
+      ],
+      "url": "https://otterly.ai",
+      "alternatives": [
+        "profound",
+        "athenahq"
+      ],
+      "use_cases": [
+        "GEO-DACH",
+        "KMU-Brand-Monitoring"
+      ]
+    },
+    {
+      "id": "ahrefs",
+      "name": "Ahrefs",
+      "vendor": "Ahrefs",
+      "category": [
+        "SEO"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 99,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 8,
+      "aban_note": "SEO-Standard. Backlinks, Keywords, Site-Audit. AI-Features sind Beifang, der Index ist der Wert.",
+      "ausgaben_mentions": [],
+      "url": "https://ahrefs.com",
+      "alternatives": [
+        "semrush"
+      ],
+      "use_cases": [
+        "SEO",
+        "Backlink-Analysis"
+      ]
+    },
+    {
+      "id": "semrush",
+      "name": "SEMrush",
+      "vendor": "SEMrush",
+      "category": [
+        "SEO",
+        "Marketing-AI"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 130,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 7.5,
+      "aban_note": "Breiteres Toolset als Ahrefs (auch Ad-Intel). Teurer. Wenn du beides machst: SEMrush.",
+      "ausgaben_mentions": [],
+      "url": "https://semrush.com",
+      "alternatives": [
+        "ahrefs"
+      ],
+      "use_cases": [
+        "SEO",
+        "Competitor-Ads",
+        "Marketing-Stack"
+      ]
+    },
+    {
+      "id": "surfer",
+      "name": "Surfer SEO",
+      "vendor": "Surfer",
+      "category": [
+        "SEO",
+        "Writing"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 89,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7,
+      "aban_note": "On-Page-SEO-Optimizer mit AI-Writing. Content-Score-Optimierung funktioniert für englischen Content gut, deutsch okay.",
+      "ausgaben_mentions": [],
+      "url": "https://surferseo.com",
+      "alternatives": [
+        "frase",
+        "marketmuse",
+        "semrush"
+      ],
+      "use_cases": [
+        "On-Page-SEO",
+        "Content-Optimization"
+      ]
+    },
+    {
+      "id": "frase",
+      "name": "Frase",
+      "vendor": "Frase",
+      "category": [
+        "SEO",
+        "Writing"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 15,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "SEO-Content-Brief-Generator. Günstiger als Surfer. Solides Tool für Content-Marketer.",
+      "ausgaben_mentions": [],
+      "url": "https://frase.io",
+      "alternatives": [
+        "surfer"
+      ],
+      "use_cases": [
+        "Content-Briefs",
+        "SERP-Analysis"
+      ]
+    },
+    {
+      "id": "marketmuse",
+      "name": "MarketMuse",
+      "vendor": "MarketMuse",
+      "category": [
+        "SEO",
+        "Marketing-AI"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 99,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6.5,
+      "aban_note": "Topic-Cluster-Strategie für Enterprise-Content. Für Solos überdimensioniert.",
+      "ausgaben_mentions": [],
+      "url": "https://marketmuse.com",
+      "alternatives": [
+        "surfer",
+        "frase"
+      ],
+      "use_cases": [
+        "Enterprise-SEO"
+      ]
+    },
+    {
+      "id": "canva",
+      "name": "Canva",
+      "vendor": "Canva",
+      "category": [
+        "Design",
+        "Image-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 12,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 8,
+      "worth_it_score": 8.5,
+      "aban_note": "Magic Studio macht Canva zur AI-Design-Plattform. Für DACH-Solos das pragmatischste Design-Tool. Templates + AI = schnell zum brauchbaren Output.",
+      "ausgaben_mentions": [],
+      "url": "https://canva.com",
+      "alternatives": [
+        "figma",
+        "adobe-firefly"
+      ],
+      "use_cases": [
+        "Design",
+        "Social-Templates",
+        "Präsentationen"
+      ]
+    },
+    {
+      "id": "figma",
+      "name": "Figma AI",
+      "vendor": "Figma",
+      "category": [
+        "Design"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 15,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 8,
+      "aban_note": "AI-Features in Figma (Make Designs, Make Prototype) sind solid. Für UI-Design der Standard.",
+      "ausgaben_mentions": [],
+      "url": "https://figma.com",
+      "alternatives": [
+        "canva"
+      ],
+      "use_cases": [
+        "UI-Design",
+        "Prototyping"
+      ]
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma",
+      "vendor": "Gamma",
+      "category": [
+        "Slides",
+        "Design"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "aban_note": "AI-Slides aus Text. Schöner als Decktopus, schneller als PowerPoint+AI. Für Pitch-Decks brauchbar.",
+      "ausgaben_mentions": [],
+      "url": "https://gamma.app",
+      "alternatives": [
+        "tome",
+        "beautiful-ai"
+      ],
+      "use_cases": [
+        "AI-Slides",
+        "Pitch-Decks"
+      ]
+    },
+    {
+      "id": "beautiful-ai",
+      "name": "Beautiful.ai",
+      "vendor": "Beautiful.ai",
+      "category": [
+        "Slides"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 12,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6.5,
+      "aban_note": "Smart-Templates mit Auto-Layout. Solid, aber nicht herausragend.",
+      "ausgaben_mentions": [],
+      "url": "https://beautiful.ai",
+      "alternatives": [
+        "gamma"
+      ],
+      "use_cases": [
+        "Auto-Layout-Slides"
+      ]
+    },
+    {
+      "id": "ollama",
+      "name": "Ollama",
+      "vendor": "Ollama",
+      "category": [
+        "Local-LLM"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Open-Source"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 8.5,
+      "aban_note": "Lokale LLMs auf Mac/PC. Llama, Mistral, Qwen lokal. Wenn DSGVO hart ist: dein Freund. Hardware-Hungrig.",
+      "ausgaben_mentions": [],
+      "url": "https://ollama.com",
+      "alternatives": [
+        "lm-studio"
+      ],
+      "use_cases": [
+        "Local-LLM",
+        "DSGVO-Safe",
+        "Offline-AI"
+      ]
+    },
+    {
+      "id": "lm-studio",
+      "name": "LM Studio",
+      "vendor": "LM Studio",
+      "category": [
+        "Local-LLM"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Free"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 8,
+      "aban_note": "GUI für lokale LLMs. Schöner Einstieg als Ollama-CLI. Server-Mode für API-Calls aus eigenen Apps.",
+      "ausgaben_mentions": [],
+      "url": "https://lmstudio.ai",
+      "alternatives": [
+        "ollama"
+      ],
+      "use_cases": [
+        "Local-LLM-GUI",
+        "Offline-Test"
+      ]
+    },
+    {
+      "id": "open-webui",
+      "name": "Open WebUI",
+      "vendor": "Open WebUI (Community)",
+      "category": [
+        "Local-LLM"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Open-Source"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 8,
+      "aban_note": "ChatGPT-Clone für Ollama. Self-Hosted. Wenn dein Team lokale AI braucht: das ist's.",
+      "ausgaben_mentions": [],
+      "url": "https://openwebui.com",
+      "alternatives": [
+        "lm-studio"
+      ],
+      "use_cases": [
+        "Self-Hosted-Chat",
+        "Team-Local-AI"
+      ]
+    },
+    {
+      "id": "lovable-translate-deepl",
+      "name": "Lingo.dev",
+      "vendor": "Lingo",
+      "category": [
+        "Translation"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 25,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Localization für Software-Strings. AI-übersetzt JSON/i18n-Files. Für Multi-Lang-Apps nützlich.",
+      "ausgaben_mentions": [],
+      "url": "https://lingo.dev",
+      "alternatives": [
+        "deepl"
+      ],
+      "use_cases": [
+        "Software-Localization",
+        "i18n"
+      ]
+    },
+    {
+      "id": "browserbase",
+      "name": "Browserbase",
+      "vendor": "Browserbase",
+      "category": [
+        "Browser-Automation"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 39,
+        "currency": "EUR",
+        "model": "API + Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.5,
+      "aban_note": "Headless-Browser-Cloud für AI-Agents. Wenn dein Agent Websites bedienen muss: solide Infra.",
+      "ausgaben_mentions": [],
+      "url": "https://browserbase.com",
+      "alternatives": [
+        "browse-ai"
+      ],
+      "use_cases": [
+        "Agent-Browser-Steuerung"
+      ]
+    },
+    {
+      "id": "browse-ai",
+      "name": "Browse AI",
+      "vendor": "Browse AI",
+      "category": [
+        "Scraping",
+        "Browser-Automation"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 19,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Visual-Scraper. Klick auf Felder, AI extrahiert. Für Listen-Building & Monitoring.",
+      "ausgaben_mentions": [],
+      "url": "https://browse.ai",
+      "alternatives": [
+        "apify"
+      ],
+      "use_cases": [
+        "Scraping",
+        "Monitoring"
+      ]
+    },
+    {
+      "id": "apify",
+      "name": "Apify",
+      "vendor": "Apify (CZ)",
+      "category": [
+        "Scraping"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 49,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "aban_note": "EU-basiert (Tschechien). Größte Scraper-Library. Power-User-Tool für Data-Pipelines.",
+      "ausgaben_mentions": [],
+      "url": "https://apify.com",
+      "alternatives": [
+        "browse-ai"
+      ],
+      "use_cases": [
+        "Web-Scraping",
+        "Data-Pipelines"
+      ]
+    },
+    {
+      "id": "bardeen",
+      "name": "Bardeen",
+      "vendor": "Bardeen",
+      "category": [
+        "Automation",
+        "Browser-Automation"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 15,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Browser-Automation für Knowledge-Worker. Quasi Zapier für deinen Browser. AI-Playbooks sind nett.",
+      "ausgaben_mentions": [],
+      "url": "https://bardeen.ai",
+      "alternatives": [
+        "zapier"
+      ],
+      "use_cases": [
+        "Browser-Workflows",
+        "Knowledge-Work-Automation"
+      ]
+    },
+    {
+      "id": "clay",
+      "name": "Clay",
+      "vendor": "Clay",
+      "category": [
+        "Sales",
+        "Marketing-AI"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 134,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 8.5,
+      "aban_note": "Sales-Intelligence + Enrichment. Power-Tool für Lead-Gen-Teams. Teuer, aber wenn's funkt — Geld zurück in einer Woche.",
+      "ausgaben_mentions": [
+        "019"
+      ],
+      "url": "https://clay.com",
+      "alternatives": [
+        "apollo",
+        "lusha"
+      ],
+      "use_cases": [
+        "Lead-Enrichment",
+        "Sales-Intelligence"
+      ]
+    },
+    {
+      "id": "apollo",
+      "name": "Apollo.io",
+      "vendor": "Apollo",
+      "category": [
+        "Sales"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 49,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "aban_note": "Sales-Datenbank + Outreach-Suite. Gut für DACH wenn man's mit Bedacht nutzt — Datenqualität in DE schwankt.",
+      "ausgaben_mentions": [],
+      "url": "https://apollo.io",
+      "alternatives": [
+        "clay",
+        "lusha"
+      ],
+      "use_cases": [
+        "B2B-Datenbank",
+        "Outreach"
+      ]
+    },
+    {
+      "id": "lusha",
+      "name": "Lusha",
+      "vendor": "Lusha (IL)",
+      "category": [
+        "Sales"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 39,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7,
+      "aban_note": "Contact-Enrichment. DSGVO-Probleme dokumentiert — vorsichtig sein. Für US-Daten ok.",
+      "ausgaben_mentions": [],
+      "url": "https://lusha.com",
+      "alternatives": [
+        "clay",
+        "apollo"
+      ],
+      "use_cases": [
+        "Contact-Data"
+      ]
+    },
+    {
+      "id": "intercom-fin",
+      "name": "Intercom Fin",
+      "vendor": "Intercom",
+      "category": [
+        "Customer-Support"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 75,
+        "currency": "EUR",
+        "model": "Per Resolution"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.5,
+      "aban_note": "Support-AI-Agent. 50% Auto-Resolution möglich. Teuer per Resolution, aber Mathematik geht für Volume-Support auf.",
+      "ausgaben_mentions": [],
+      "url": "https://intercom.com/fin",
+      "alternatives": [
+        "zendesk-ai"
+      ],
+      "use_cases": [
+        "Support-Automation"
+      ]
+    },
+    {
+      "id": "zendesk-ai",
+      "name": "Zendesk AI",
+      "vendor": "Zendesk",
+      "category": [
+        "Customer-Support"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 50,
+        "currency": "EUR",
+        "model": "Add-on"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 6.5,
+      "aban_note": "AI-Add-on auf Zendesk. Wenn du eh Zendesk hast: aktivieren. Standalone-Wert: meh.",
+      "ausgaben_mentions": [],
+      "url": "https://zendesk.com",
+      "alternatives": [
+        "intercom-fin"
+      ],
+      "use_cases": [
+        "Helpdesk-AI"
+      ]
+    },
+    {
+      "id": "aider",
+      "name": "Aider",
+      "vendor": "Aider (Open-Source)",
+      "category": [
+        "Coding"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Open-Source + LLM-Costs"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 8,
+      "aban_note": "Terminal-Coding-Agent. Git-aware, multi-file. Open-Source. Für Power-User die saubere Alternative zu Cursor.",
+      "ausgaben_mentions": [],
+      "url": "https://aider.chat",
+      "alternatives": [
+        "claude-code",
+        "cline"
+      ],
+      "use_cases": [
+        "Terminal-Coding",
+        "Open-Source-Agent"
+      ]
+    },
+    {
+      "id": "cline",
+      "name": "Cline",
+      "vendor": "Cline (Open-Source)",
+      "category": [
+        "Coding"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Open-Source + LLM-Costs"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 8,
+      "aban_note": "VSCode-Extension-Agent. Plan + Act-Modi. Sehr durchdacht. Open-Source.",
+      "ausgaben_mentions": [],
+      "url": "https://cline.bot",
+      "alternatives": [
+        "aider",
+        "cursor"
+      ],
+      "use_cases": [
+        "VSCode-Agent",
+        "Coding"
+      ]
+    },
+    {
+      "id": "tabnine",
+      "name": "Tabnine",
+      "vendor": "Tabnine",
+      "category": [
+        "Coding"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 12,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 6.5,
+      "aban_note": "Privacy-First-Code-Completion. Self-Hostbar für Enterprise. Für Compliance-Heavy-Unternehmen interessant.",
+      "ausgaben_mentions": [],
+      "url": "https://tabnine.com",
+      "alternatives": [
+        "copilot",
+        "cursor"
+      ],
+      "use_cases": [
+        "Privacy-First-Coding",
+        "Enterprise-Self-Host"
+      ]
+    },
+    {
+      "id": "cody",
+      "name": "Sourcegraph Cody",
+      "vendor": "Sourcegraph",
+      "category": [
+        "Coding"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 9,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Codebase-aware AI für große Repos. Wenn du Monorepo hast: stark. Solo: Cursor reicht.",
+      "ausgaben_mentions": [],
+      "url": "https://sourcegraph.com/cody",
+      "alternatives": [
+        "cursor",
+        "copilot"
+      ],
+      "use_cases": [
+        "Enterprise-Codebase",
+        "Code-Search"
+      ]
+    },
+    {
+      "id": "warp",
+      "name": "Warp",
+      "vendor": "Warp",
+      "category": [
+        "Coding",
+        "Productivity"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 20,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.5,
+      "aban_note": "AI-Terminal. Agent-Mode kann Multi-Step-Shell-Tasks. Schöne UI. Cloud-Sync — Privacy bedenken.",
+      "ausgaben_mentions": [],
+      "url": "https://warp.dev",
+      "alternatives": [
+        "claude-code"
+      ],
+      "use_cases": [
+        "AI-Terminal"
+      ]
+    },
+    {
+      "id": "codex",
+      "name": "GPT Codex",
+      "vendor": "OpenAI",
+      "category": [
+        "Coding",
+        "Agent"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Via ChatGPT Pro"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "OpenAI's Coding-Agent. Cloud-basiert. Funktioniert, aber Claude Code im Terminal ist's runder.",
+      "ausgaben_mentions": [
+        "014",
+        "018"
+      ],
+      "url": "https://openai.com/codex",
+      "alternatives": [
+        "claude-code",
+        "cursor"
+      ],
+      "use_cases": [
+        "Cloud-Coding-Agent"
+      ]
+    },
+    {
+      "id": "pipedream",
+      "name": "Pipedream",
+      "vendor": "Pipedream",
+      "category": [
+        "Automation"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 19,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Code + No-Code-Hybrid. Für Devs die Workflows in JavaScript schreiben wollen.",
+      "ausgaben_mentions": [],
+      "url": "https://pipedream.com",
+      "alternatives": [
+        "n8n",
+        "make"
+      ],
+      "use_cases": [
+        "Code-Hybrid-Workflows"
+      ]
+    },
+    {
+      "id": "windmill",
+      "name": "Windmill",
+      "vendor": "Windmill (FR)",
+      "category": [
+        "Automation"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Open-Source + Cloud"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "aban_note": "Self-Hosted-Workflow-Engine. EU-basiert (Paris). Wenn n8n zu limitiert ist und du Code willst.",
+      "ausgaben_mentions": [],
+      "url": "https://windmill.dev",
+      "alternatives": [
+        "n8n",
+        "pipedream"
+      ],
+      "use_cases": [
+        "Self-Hosted-Automation",
+        "EU-Compliance"
+      ]
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "vendor": "Supabase",
+      "category": [
+        "API",
+        "Vector-DB"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 25,
+        "currency": "EUR",
+        "model": "Cloud + Self-Host"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 8.5,
+      "aban_note": "Open-Source-Firebase. EU-Hosting. pgvector inkludiert. Backend-Baukasten für Solo-Devs.",
+      "ausgaben_mentions": [],
+      "url": "https://supabase.com",
+      "alternatives": [
+        "firebase"
+      ],
+      "use_cases": [
+        "Backend",
+        "Vector-Search",
+        "EU-Hosting"
+      ]
+    },
+    {
+      "id": "vercel-ai",
+      "name": "Vercel AI SDK",
+      "vendor": "Vercel",
+      "category": [
+        "Framework"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Open-Source"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 8,
+      "aban_note": "AI-SDK für TypeScript. Sauberer als LangChain für Standard-Use-Cases. Wenn du Next.js machst: erste Wahl.",
+      "ausgaben_mentions": [],
+      "url": "https://sdk.vercel.ai",
+      "alternatives": [
+        "langchain"
+      ],
+      "use_cases": [
+        "TypeScript-AI",
+        "Next.js-Integration"
+      ]
+    },
+    {
+      "id": "modal",
+      "name": "Modal",
+      "vendor": "Modal",
+      "category": [
+        "API"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Pay-per-second"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 8,
+      "aban_note": "Serverless GPU-Compute. Für Custom-Model-Deployment ohne Infrastruktur-Stress.",
+      "ausgaben_mentions": [],
+      "url": "https://modal.com",
+      "alternatives": [
+        "replicate"
+      ],
+      "use_cases": [
+        "Serverless-GPU",
+        "Custom-Model-Hosting"
+      ]
+    },
+    {
+      "id": "linear",
+      "name": "Linear",
+      "vendor": "Linear",
+      "category": [
+        "Productivity"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 8,
+        "currency": "EUR",
+        "model": "Per Seat"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 8.5,
+      "aban_note": "Issue-Tracker mit AI-Features (Auto-Triage, Summary). Mein Tool für Side-Projects. UI ist eine Klasse für sich.",
+      "ausgaben_mentions": [],
+      "url": "https://linear.app",
+      "alternatives": [
+        "jira"
+      ],
+      "use_cases": [
+        "Issue-Tracking",
+        "Project-Management"
+      ]
+    },
+    {
+      "id": "humata",
+      "name": "Humata",
+      "vendor": "Humata",
+      "category": [
+        "Research"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 14,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6.5,
+      "aban_note": "PDF-Q&A-Tool. Mittlerweile von Claude/ChatGPT-PDF-Upload überholt.",
+      "ausgaben_mentions": [],
+      "url": "https://humata.ai",
+      "alternatives": [
+        "claude",
+        "chatgpt"
+      ],
+      "use_cases": [
+        "PDF-Research"
+      ]
+    },
+    {
+      "id": "consensus",
+      "name": "Consensus",
+      "vendor": "Consensus",
+      "category": [
+        "Research"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 9,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 8,
+      "aban_note": "AI-Search über wissenschaftliche Paper. Für Faktenrecherche jenseits LinkedIn-Wissens: Gold.",
+      "ausgaben_mentions": [],
+      "url": "https://consensus.app",
+      "alternatives": [
+        "perplexity"
+      ],
+      "use_cases": [
+        "Wissenschafts-Recherche"
+      ]
+    },
+    {
+      "id": "elicit",
+      "name": "Elicit",
+      "vendor": "Elicit",
+      "category": [
+        "Research"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 12,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 8,
+      "aban_note": "Research-Workflow für wissenschaftliche Literatur. Auto-Extraction von Findings. Für Researcher klar besser als ChatGPT.",
+      "ausgaben_mentions": [],
+      "url": "https://elicit.com",
+      "alternatives": [
+        "consensus"
+      ],
+      "use_cases": [
+        "Literatur-Recherche",
+        "Meta-Analyse"
+      ]
+    },
+    {
+      "id": "scite",
+      "name": "Scite.ai",
+      "vendor": "Scite",
+      "category": [
+        "Research"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 20,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 7,
+      "aban_note": "Citation-Validation. Zeigt ob Paper unterstützt oder widerlegt werden. Für seriöse Recherche.",
+      "ausgaben_mentions": [],
+      "url": "https://scite.ai",
+      "alternatives": [
+        "consensus"
+      ],
+      "use_cases": [
+        "Citation-Check",
+        "Wissenschafts-Validierung"
+      ]
+    },
+    {
+      "id": "tactiq",
+      "name": "Tactiq",
+      "vendor": "Tactiq",
+      "category": [
+        "Meeting-AI"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 8,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6.5,
+      "aban_note": "Browser-basiertes Meeting-AI. Günstig, ok-Output. Granola schlägt's deutlich.",
+      "ausgaben_mentions": [],
+      "url": "https://tactiq.io",
+      "alternatives": [
+        "granola",
+        "otter"
+      ],
+      "use_cases": [
+        "Meeting-AI-Budget"
+      ]
+    },
+    {
+      "id": "supahub",
+      "name": "Castmagic",
+      "vendor": "Castmagic",
+      "category": [
+        "Audio-Gen"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 29,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 7,
+      "aban_note": "Podcast-to-Content. Generiert Show-Notes, Quotes, Tweets aus Audio. Für Podcaster.",
+      "ausgaben_mentions": [],
+      "url": "https://castmagic.io",
+      "alternatives": [
+        "descript"
+      ],
+      "use_cases": [
+        "Podcast-Repurposing"
+      ]
+    },
+    {
+      "id": "pictory",
+      "name": "Pictory",
+      "vendor": "Pictory",
+      "category": [
+        "Video-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 19,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6,
+      "aban_note": "Text-zu-Video aus Blog-Posts. Output ist erkennbar AI-generiert. Für Bulk-Social-Snippets ok.",
+      "ausgaben_mentions": [],
+      "url": "https://pictory.ai",
+      "alternatives": [
+        "lumen5"
+      ],
+      "use_cases": [
+        "Blog-to-Video"
+      ]
+    },
+    {
+      "id": "lumen5",
+      "name": "Lumen5",
+      "vendor": "Lumen5",
+      "category": [
+        "Video-Gen"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 19,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6,
+      "aban_note": "Blog-to-Social-Video. Template-getrieben. Output reicht für LinkedIn-Posts, nicht mehr.",
+      "ausgaben_mentions": [],
+      "url": "https://lumen5.com",
+      "alternatives": [
+        "pictory"
+      ],
+      "use_cases": [
+        "Social-Video"
+      ]
+    },
+    {
+      "id": "wisper-flow",
+      "name": "Whisper Flow",
+      "vendor": "Wisp",
+      "category": [
+        "Audio-Gen",
+        "Productivity"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 12,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 8,
+      "aban_note": "Voice-to-Text-Diktat für Mac. Schneller tippen als Tippen. Deutsche Erkennung erstklassig.",
+      "ausgaben_mentions": [],
+      "url": "https://wisprflow.ai",
+      "alternatives": [
+        "aiko"
+      ],
+      "use_cases": [
+        "Voice-Diktat"
+      ]
+    },
+    {
+      "id": "raycast-ai",
+      "name": "Raycast AI",
+      "vendor": "Raycast",
+      "category": [
+        "Productivity"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 10,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 8.5,
+      "aban_note": "Spotlight-Replacement mit AI-Calls überall im OS. Quick-Prompt-Workflow ohne Browser-Wechsel. Mac-only.",
+      "ausgaben_mentions": [],
+      "url": "https://raycast.com",
+      "alternatives": [
+        "alfred"
+      ],
+      "use_cases": [
+        "OS-Wide-AI",
+        "Quick-Prompts"
+      ]
+    },
+    {
+      "id": "arc",
+      "name": "Arc Search",
+      "vendor": "The Browser Company",
+      "category": [
+        "Search"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Free"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "Mobile-Browser mit AI-Summary. 'Browse for me' ist nett. Pivot zu Dia kommt.",
+      "ausgaben_mentions": [],
+      "url": "https://arc.net",
+      "alternatives": [
+        "brave"
+      ],
+      "use_cases": [
+        "AI-Browser-Mobile"
+      ]
+    },
+    {
+      "id": "dia",
+      "name": "Dia (Browser)",
+      "vendor": "The Browser Company",
+      "category": [
+        "Search",
+        "Productivity"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Free (Beta)"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "AI-First-Browser. Tab-übergreifender Chat. Interessantes Konzept, Beta-Status.",
+      "ausgaben_mentions": [],
+      "url": "https://diabrowser.com",
+      "alternatives": [
+        "arc"
+      ],
+      "use_cases": [
+        "AI-Browser"
+      ]
+    },
+    {
+      "id": "snowball",
+      "name": "Klue",
+      "vendor": "Klue",
+      "category": [
+        "Marketing-AI",
+        "Sales"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 500,
+        "currency": "EUR",
+        "model": "Enterprise"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6.5,
+      "aban_note": "Competitive-Intelligence-Plattform. Enterprise-Pricing. Für Solos: zu groß.",
+      "ausgaben_mentions": [],
+      "url": "https://klue.com",
+      "alternatives": [
+        "crayon"
+      ],
+      "use_cases": [
+        "Enterprise-Competitive-Intel"
+      ]
+    },
+    {
+      "id": "crayon",
+      "name": "Crayon",
+      "vendor": "Crayon",
+      "category": [
+        "Marketing-AI"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 500,
+        "currency": "EUR",
+        "model": "Enterprise"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6.5,
+      "aban_note": "Competitive-Tracking. Wie Klue. Enterprise.",
+      "ausgaben_mentions": [],
+      "url": "https://crayon.co",
+      "alternatives": [
+        "klue"
+      ],
+      "use_cases": [
+        "Competitive-Tracking"
+      ]
+    },
+    {
+      "id": "glean",
+      "name": "Glean",
+      "vendor": "Glean",
+      "category": [
+        "Research",
+        "Productivity"
+      ],
+      "pricing": {
+        "free_tier": false,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Enterprise"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 8,
+      "aban_note": "Enterprise-Search über alle SaaS-Tools. Für Teams > 50 Personen Killer. Solo-Setup: overkill.",
+      "ausgaben_mentions": [],
+      "url": "https://glean.com",
+      "alternatives": [],
+      "use_cases": [
+        "Enterprise-Search",
+        "Work-AI"
+      ]
+    },
+    {
+      "id": "anthropic-mcp",
+      "name": "MCP (Model Context Protocol)",
+      "vendor": "Anthropic (Open Spec)",
+      "category": [
+        "Framework"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Open-Source"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 9,
+      "aban_note": "Offener Standard für Tool-Calling. Claude, Cursor, Windsurf, alle adoptieren. Wenn du Tools für Agents baust: das ist's.",
+      "ausgaben_mentions": [
+        "024"
+      ],
+      "url": "https://modelcontextprotocol.io",
+      "alternatives": [],
+      "use_cases": [
+        "Agent-Tools",
+        "Integrations"
+      ]
+    },
+    {
+      "id": "ollama-cloud",
+      "name": "Together Code Interpreter",
+      "vendor": "Together AI",
+      "category": [
+        "API",
+        "Coding"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Pay-per-second"
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 7,
+      "aban_note": "Code-Execution-Sandbox als API. Für Agents die Code ausführen müssen.",
+      "ausgaben_mentions": [],
+      "url": "https://together.ai/code-interpreter",
+      "alternatives": [
+        "e2b"
+      ],
+      "use_cases": [
+        "Sandbox-Code",
+        "Agent-Execution"
+      ]
+    },
+    {
+      "id": "e2b",
+      "name": "E2B",
+      "vendor": "E2B (CZ)",
+      "category": [
+        "API",
+        "Coding"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Pay-per-second"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 8,
+      "aban_note": "Sandbox-Infrastructure für AI-Agents. EU-basiert (Prag). Open-Source-Kern. Saubere Wahl für Agent-Builder.",
+      "ausgaben_mentions": [],
+      "url": "https://e2b.dev",
+      "alternatives": [
+        "modal"
+      ],
+      "use_cases": [
+        "Agent-Sandbox",
+        "EU-Compliance"
+      ]
+    },
+    {
+      "id": "langfuse",
+      "name": "Langfuse",
+      "vendor": "Langfuse (DE)",
+      "category": [
+        "Framework",
+        "Analytics",
+        "Compliance-DACH"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 59,
+        "currency": "EUR",
+        "model": "Cloud + Self-Host"
+      },
+      "dach_relevance": 9,
+      "worth_it_score": 8.5,
+      "aban_note": "Deutsche LLM-Observability-Plattform (Berlin). Tracing, Eval, Cost-Tracking. Self-Hostbar. Wenn dein LLM-Stack ernst wird: erste Wahl.",
+      "ausgaben_mentions": [],
+      "url": "https://langfuse.com",
+      "alternatives": [
+        "langsmith"
+      ],
+      "use_cases": [
+        "LLM-Observability",
+        "Prompt-Mgmt",
+        "DACH-Compliance"
+      ]
+    },
+    {
+      "id": "langsmith",
+      "name": "LangSmith",
+      "vendor": "LangChain",
+      "category": [
+        "Framework",
+        "Analytics"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 39,
+        "currency": "EUR",
+        "model": "Subscription"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7,
+      "aban_note": "LLM-Observability für LangChain-Apps. Vendor-Lock-Light. Cloud-only EU-Region erst 2026.",
+      "ausgaben_mentions": [],
+      "url": "https://smith.langchain.com",
+      "alternatives": [
+        "langfuse"
+      ],
+      "use_cases": [
+        "LangChain-Tracing"
+      ]
+    },
+    {
+      "id": "browser-use",
+      "name": "browser-use",
+      "vendor": "browser-use (Open-Source)",
+      "category": [
+        "Browser-Automation",
+        "Agent"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Open-Source"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 8,
+      "aban_note": "Python-Library für AI-Browser-Steuerung. Open-Source. Schlanker Stack für Agent-Builder.",
+      "ausgaben_mentions": [],
+      "url": "https://github.com/browser-use/browser-use",
+      "alternatives": [
+        "browserbase"
+      ],
+      "use_cases": [
+        "Browser-Agent",
+        "Open-Source-Automation"
+      ]
+    },
+    {
+      "id": "poe",
+      "name": "Poe",
+      "vendor": "Quora",
+      "category": [
+        "AI-Chat"
+      ],
+      "use_cases": [
+        "Writing",
+        "Research"
+      ],
+      "url": "https://poe.com",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 18
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Poe buendelt mehrere KI-Modelle (ChatGPT, Claude, Gemini u.a.) in einer Oberflaeche und erlaubt eigene Chatbots.",
+      "alternatives": [
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "notebooklm",
+      "name": "NotebookLM",
+      "vendor": "Google",
+      "category": [
+        "Research",
+        "Productivity"
+      ],
+      "use_cases": [
+        "Research",
+        "PDF-Analyse"
+      ],
+      "url": "https://notebooklm.google",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Freemium"
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 8.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Analysiert hochgeladene Dokumente und antwortet nur auf Basis der eigenen Quellen, inkl. automatischer Podcast-Zusammenfassungen.",
+      "alternatives": [
+        "humata",
+        "elicit"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "fellow",
+      "name": "Fellow",
+      "vendor": "Fellow Insights",
+      "category": [
+        "Meeting-AI",
+        "Productivity"
+      ],
+      "use_cases": [
+        "Meeting-AI",
+        "Notizen"
+      ],
+      "url": "https://fellow.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 6
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] KI-Meetingassistent mit Agendas, automatischen Notizen, Aktionspunkten und 1-on-1-Tools.",
+      "alternatives": [
+        "otter",
+        "fathom",
+        "tldv"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "avoma",
+      "name": "Avoma",
+      "vendor": "Avoma",
+      "category": [
+        "Meeting-AI"
+      ],
+      "use_cases": [
+        "Meeting-AI"
+      ],
+      "url": "https://www.avoma.com",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 18
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Transkribiert Meetings, erstellt KI-Notizen und aktualisiert CRM-Eintraege, fokussiert auf Sales-Teams.",
+      "alternatives": [
+        "otter",
+        "fathom",
+        "fireflies"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "readwise",
+      "name": "Readwise Reader",
+      "vendor": "Readwise",
+      "category": [
+        "Productivity",
+        "Research"
+      ],
+      "use_cases": [
+        "Research",
+        "Notizen"
+      ],
+      "url": "https://readwise.io",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 9
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Read-it-Later fuer Artikel, PDFs und Newsletter mit KI-Zusammenfassungen und Highlight-Sync.",
+      "alternatives": [
+        "mem",
+        "obsidian",
+        "reflect"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "tana",
+      "name": "Tana",
+      "vendor": "Tana",
+      "category": [
+        "Productivity",
+        "Meeting-AI"
+      ],
+      "use_cases": [
+        "Notizen",
+        "Meeting-AI"
+      ],
+      "url": "https://tana.inc",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 18
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Agentenbasierter Meeting- und Wissens-Workspace mit Live-Transkription und Kontext-Diagramm.",
+      "alternatives": [
+        "obsidian",
+        "mem",
+        "reflect"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "napkin-ai",
+      "name": "Napkin AI",
+      "vendor": "Napkin AI",
+      "category": [
+        "Productivity",
+        "Design"
+      ],
+      "use_cases": [
+        "Design",
+        "Writing"
+      ],
+      "url": "https://www.napkin.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 8
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 6.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Wandelt Text automatisch in Infografiken, Diagramme und Flussdiagramme um.",
+      "alternatives": [
+        "gamma",
+        "beautiful-ai",
+        "tome"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "komo",
+      "name": "Komo Search",
+      "vendor": "Komo",
+      "category": [
+        "Search",
+        "Research"
+      ],
+      "use_cases": [
+        "Research"
+      ],
+      "url": "https://komo.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 14
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 6.5,
+      "dsgvo_note": "Kein Tracking, datenschutzfreundliches Design.",
+      "aban_note": "[Redaktion: pruefen & bewerten] Werbefreie KI-Suchmaschine mit generativen Antworten und Quellenangaben, ohne Nutzer-Tracking.",
+      "alternatives": [
+        "perplexity",
+        "you",
+        "brave"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "lindy",
+      "name": "Lindy",
+      "vendor": "Lindy AI",
+      "category": [
+        "Agent",
+        "Automation"
+      ],
+      "use_cases": [
+        "Automation",
+        "Agent"
+      ],
+      "url": "https://www.lindy.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 45
+      },
+      "dach_relevance": 4,
+      "worth_it_score": 6.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Persoenlicher KI-Assistent, der E-Mails verwaltet, Meetings aufzeichnet und kalenderbasierte Aufgaben erledigt.",
+      "alternatives": [
+        "make",
+        "zapier",
+        "n8n"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "spinach",
+      "name": "Spinach AI",
+      "vendor": "StayIn",
+      "category": [
+        "Meeting-AI",
+        "Productivity"
+      ],
+      "use_cases": [
+        "Meeting-AI"
+      ],
+      "url": "https://www.spinach.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Freemium",
+        "paid_from_eur": 18
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Automatisiert Agile-Standups und Meetingnotizen und synchronisiert Aktionspunkte mit Jira, GitHub und Slack.",
+      "alternatives": [
+        "otter",
+        "fathom",
+        "fireflies"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "le-chat",
+      "name": "Le Chat (Mistral)",
+      "vendor": "Mistral AI",
+      "category": [
+        "AI-Chat"
+      ],
+      "use_cases": [
+        "Writing",
+        "Research",
+        "Coding"
+      ],
+      "url": "https://chat.mistral.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 14
+      },
+      "dach_relevance": 8,
+      "worth_it_score": 8.0,
+      "dsgvo_note": "EU-Anbieter (Frankreich), Daten verbleiben in der EU.",
+      "aban_note": "[Redaktion: pruefen & bewerten] Mistrals europaeischer KI-Assistent mit Websuche, Code-Interpreter und Canvas-Editor, als EU-Anbieter DSGVO-relevant.",
+      "alternatives": [
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "coda-ai",
+      "name": "Coda AI",
+      "vendor": "Coda",
+      "category": [
+        "Productivity",
+        "Writing"
+      ],
+      "use_cases": [
+        "Writing",
+        "Automation"
+      ],
+      "url": "https://coda.io",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 10
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Vereint Dokumente, Tabellen und Automatisierungen mit integrierter KI fuer Texte, Zusammenfassungen und Formeln.",
+      "alternatives": [
+        "notion-ai"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "goblin-tools",
+      "name": "Goblin Tools",
+      "vendor": "Arcology",
+      "category": [
+        "Productivity"
+      ],
+      "use_cases": [
+        "Productivity"
+      ],
+      "url": "https://goblin.tools",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Free"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Kostenlose Sammlung kleiner KI-Helfer, u.a. zum Aufteilen grosser Aufgaben in kleine Schritte, entwickelt fuer neurodivergente Menschen.",
+      "alternatives": [],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "mymind",
+      "name": "mymind",
+      "vendor": "mymind",
+      "category": [
+        "Productivity",
+        "Research"
+      ],
+      "use_cases": [
+        "Notizen",
+        "Research"
+      ],
+      "url": "https://mymind.com",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 6
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "Privat, kein Tracking, kein Weiterverkauf von Nutzerdaten.",
+      "aban_note": "[Redaktion: pruefen & bewerten] Privater KI-Speicher fuer Lesezeichen, Notizen und Bilder mit automatischer Verschlagwortung und semantischer Suche.",
+      "alternatives": [
+        "mem",
+        "reflect",
+        "obsidian"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "freepik-ai",
+      "name": "Freepik AI Suite",
+      "vendor": "Freepik",
+      "category": [
+        "Image-Gen",
+        "Design"
+      ],
+      "use_cases": [
+        "Image-Gen",
+        "Design"
+      ],
+      "url": "https://www.freepik.com",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 5
+      },
+      "dach_relevance": 7,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] KI-Bildgenerator und Kreativplattform mit vielen Bild- und Videomodellen sowie Bearbeitungs-Suite.",
+      "alternatives": [
+        "midjourney",
+        "ideogram",
+        "dalle"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "magnific",
+      "name": "Magnific AI",
+      "vendor": "Magnific",
+      "category": [
+        "Image-Gen",
+        "Design"
+      ],
+      "use_cases": [
+        "Image-Gen",
+        "Design"
+      ],
+      "url": "https://www.magnific.com",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 36
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] KI-Bild-Upscaler, der Fotos und KI-Bilder hochskaliert und Details rekonstruiert.",
+      "alternatives": [
+        "topaz-photo-ai",
+        "freepik-ai"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "topaz-photo-ai",
+      "name": "Topaz Photo AI",
+      "vendor": "Topaz Labs",
+      "category": [
+        "Image-Gen",
+        "Design"
+      ],
+      "use_cases": [
+        "Image-Gen",
+        "Design"
+      ],
+      "url": "https://www.topazlabs.com/topaz-photo",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 16
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "Lokale Desktop-Software, kein Cloud-Upload.",
+      "aban_note": "[Redaktion: pruefen & bewerten] Lokale Software fuer KI-Fotoverbesserung mit Rauschreduzierung, Schaerfung und Upscaling.",
+      "alternatives": [
+        "magnific",
+        "freepik-ai"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "topaz-video-ai",
+      "name": "Topaz Video AI",
+      "vendor": "Topaz Labs",
+      "category": [
+        "Video-Gen",
+        "Design"
+      ],
+      "use_cases": [
+        "Video-Gen"
+      ],
+      "url": "https://www.topazlabs.com/topaz-video",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 62
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "Lokale Desktop-Software.",
+      "aban_note": "[Redaktion: pruefen & bewerten] Lokale Software fuer KI-Videooptimierung: Upscaling auf 4K, Frame-Interpolation, Stabilisierung.",
+      "alternatives": [
+        "runway",
+        "capcut"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "luma-dream-machine",
+      "name": "Luma Dream Machine",
+      "vendor": "Luma AI",
+      "category": [
+        "Video-Gen"
+      ],
+      "use_cases": [
+        "Video-Gen"
+      ],
+      "url": "https://lumalabs.ai/dream-machine",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 28
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] KI-Videogenerator, der aus Text- und Bildprompts Videos mit Kamerabewegungen erzeugt.",
+      "alternatives": [
+        "runway",
+        "kling",
+        "sora"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "kling",
+      "name": "Kling AI",
+      "vendor": "Kuaishou",
+      "category": [
+        "Video-Gen",
+        "Image-Gen"
+      ],
+      "use_cases": [
+        "Video-Gen"
+      ],
+      "url": "https://klingai.com",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 9
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "Anbieter in China (Kuaishou); Datenschutzpruefung empfohlen.",
+      "aban_note": "[Redaktion: pruefen & bewerten] KI-Videogenerator mit realistischer Bewegungsphysik und kostenlosem Einstiegstier fuer kurze Clips.",
+      "alternatives": [
+        "runway",
+        "luma-dream-machine",
+        "sora"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "hailuo-ai",
+      "name": "Hailuo AI",
+      "vendor": "MiniMax",
+      "category": [
+        "Video-Gen"
+      ],
+      "use_cases": [
+        "Video-Gen"
+      ],
+      "url": "https://hailuoai.video",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 9
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "Anbieter in China (MiniMax); Datenschutzpruefung empfohlen.",
+      "aban_note": "[Redaktion: pruefen & bewerten] Schneller KI-Videogenerator, der Text und Bilder in kurze 1080p-Videos umwandelt.",
+      "alternatives": [
+        "kling",
+        "luma-dream-machine",
+        "runway"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "cartesia",
+      "name": "Cartesia AI",
+      "vendor": "Cartesia",
+      "category": [
+        "Voice-Clone",
+        "Audio-Gen",
+        "API"
+      ],
+      "use_cases": [
+        "Voiceover",
+        "API"
+      ],
+      "url": "https://www.cartesia.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Usage"
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Echtzeit-TTS-API mit niedriger Latenz und Voice-Cloning, fuer Entwickler und Produktteams.",
+      "alternatives": [
+        "elevenlabs",
+        "playht"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "wondercraft",
+      "name": "Wondercraft AI",
+      "vendor": "Wondercraft",
+      "category": [
+        "Audio-Gen",
+        "Voice-Clone"
+      ],
+      "use_cases": [
+        "Podcast",
+        "Audio-Gen"
+      ],
+      "url": "https://www.wondercraft.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 23
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Wandelt Skripte in fertig produzierte Podcast-Episoden mit KI-Sprechern, Musik und Soundeffekten.",
+      "alternatives": [
+        "elevenlabs",
+        "murf",
+        "playht"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "opus-clip",
+      "name": "OpusClip",
+      "vendor": "Opus AI",
+      "category": [
+        "Video-Gen",
+        "Marketing-AI"
+      ],
+      "use_cases": [
+        "Social-Video",
+        "Video-Editing"
+      ],
+      "url": "https://www.opus.pro",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 14
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Schneidet lange Videos automatisch in kurze Clips fuer TikTok, Reels und Shorts, mit Untertiteln.",
+      "alternatives": [
+        "submagic",
+        "vizard",
+        "descript"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "submagic",
+      "name": "Submagic",
+      "vendor": "Submagic",
+      "category": [
+        "Video-Gen",
+        "Marketing-AI"
+      ],
+      "use_cases": [
+        "Untertitel",
+        "Social-Video"
+      ],
+      "url": "https://www.submagic.co",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 11
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] KI-Tool fuer animierte Untertitel auf Kurzvideos in vielen Sprachen mit Keyword-Highlighting.",
+      "alternatives": [
+        "opus-clip",
+        "vizard",
+        "capcut"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "vizard",
+      "name": "Vizard AI",
+      "vendor": "Vizard",
+      "category": [
+        "Video-Gen",
+        "Marketing-AI"
+      ],
+      "use_cases": [
+        "Social-Video",
+        "Video-Editing"
+      ],
+      "url": "https://vizard.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 13
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Zerschneidet Webinare und Podcasts automatisch in Social-Media-Clips mit Untertiteln.",
+      "alternatives": [
+        "opus-clip",
+        "submagic"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "adcreative-ai",
+      "name": "AdCreative.ai",
+      "vendor": "AdCreative AI",
+      "category": [
+        "Marketing-AI",
+        "Design",
+        "Image-Gen"
+      ],
+      "use_cases": [
+        "Marketing-Assets",
+        "Design"
+      ],
+      "url": "https://www.adcreative.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 36
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Generiert aus Markenassets performanceoptimierte Bild- und Videoanzeigen fuer Social- und Display-Kampagnen.",
+      "alternatives": [
+        "canva",
+        "freepik-ai"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "gumloop",
+      "name": "Gumloop",
+      "vendor": "Gumloop",
+      "category": [
+        "Automation",
+        "Agent"
+      ],
+      "use_cases": [
+        "Workflow-Automation",
+        "Agent"
+      ],
+      "url": "https://www.gumloop.com",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 34
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] No-Code-KI-Automatisierung mit visuellem Node-Editor fuer Datenverarbeitung und Lead-Generierung.",
+      "alternatives": [
+        "make",
+        "n8n",
+        "zapier"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "relay-app",
+      "name": "Relay.app",
+      "vendor": "Relay",
+      "category": [
+        "Automation",
+        "Agent"
+      ],
+      "use_cases": [
+        "Workflow-Automation"
+      ],
+      "url": "https://www.relay.app",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 17
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] KI-Workflow-Automatisierung, die KI-Aktionen, Logik und menschliche Freigaben in einem visuellen Editor kombiniert.",
+      "alternatives": [
+        "make",
+        "zapier",
+        "n8n"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "dust-ai",
+      "name": "Dust",
+      "vendor": "Dust",
+      "category": [
+        "Agent",
+        "Automation"
+      ],
+      "use_cases": [
+        "Agent",
+        "Knowledge-Work-Automation"
+      ],
+      "url": "https://dust.tt",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Subscription",
+        "paid_from_eur": 29
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Plattform, um spezialisierte KI-Agenten mit Zugriff auf interne Datenquellen (Slack, Notion, CRM) aufzubauen.",
+      "alternatives": [
+        "glean"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "zed",
+      "name": "Zed",
+      "vendor": "Zed Industries",
+      "category": [
+        "Coding"
+      ],
+      "use_cases": [
+        "Coding"
+      ],
+      "url": "https://zed.dev",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Subscription",
+        "paid_from_eur": 9
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Schneller KI-Code-Editor in Rust mit eingebautem KI-Assistenten und kollaborativem Editing.",
+      "alternatives": [
+        "cursor",
+        "windsurf",
+        "aider"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "devin",
+      "name": "Devin",
+      "vendor": "Cognition AI",
+      "category": [
+        "Coding",
+        "Agent"
+      ],
+      "use_cases": [
+        "Coding",
+        "Agent"
+      ],
+      "url": "https://devin.ai",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": false,
+        "model": "Usage",
+        "paid_from_eur": 18
+      },
+      "dach_relevance": 5,
+      "worth_it_score": 7.0,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] Autonomer KI-Software-Engineer, der Code plant, schreibt, debuggt und deployed.",
+      "alternatives": [
+        "cursor",
+        "github-copilot",
+        "claude-code"
+      ],
+      "ausgaben_mentions": []
+    },
+    {
+      "id": "systeme",
+      "name": "Systeme.io",
+      "vendor": "Systeme.io",
+      "category": [
+        "Marketing-AI",
+        "Automation",
+        "No-Code"
+      ],
+      "use_cases": [
+        "Marketing-Stack",
+        "Automation",
+        "Landing-Pages"
+      ],
+      "url": "https://systeme.io/de",
+      "pricing": {
+        "currency": "EUR",
+        "free_tier": true,
+        "model": "Freemium",
+        "paid_from_eur": 27
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 7.5,
+      "dsgvo_note": "",
+      "aban_note": "[Redaktion: pruefen & bewerten] All-in-One-Plattform fuer Online-Business: Sales-Funnels, E-Mail-Marketing, Kurse und Automatisierung in einem Tool, mit grosszuegigem Gratis-Tarif.",
+      "alternatives": [
+        "getresponse",
+        "make",
+        "zapier"
+      ],
+      "ausgaben_mentions": []
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Was zuerst automatisieren? — Aufgaben-Priorisierer · aban news</title>
+<meta name="description" content="Kostenloses Tool: Trag deine wiederkehrenden Aufgaben ein und sieh, welche du zuerst automatisieren solltest — sortiert nach Zeitersparnis und Nervfaktor, mit Weg-Empfehlung. Ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/was-automatisieren.html">
+<meta property="og:title" content="Was zuerst automatisieren? — Aufgaben-Priorisierer">
+<meta property="og:description" content="Wiederkehrende Aufgaben eintragen, Prioritäten-Ranking bekommen, Weg-Empfehlung. Gratis, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/was-automatisieren.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Aufgaben-Priorisierer: Was zuerst automatisieren?",
+"url":"https://abannews.com/was-automatisieren.html","applicationCategory":"BusinessApplication",
+"operatingSystem":"Web","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Priorisiert wiederkehrende Aufgaben nach Zeitersparnis und Nervfaktor und empfiehlt den Automatisierungs-Weg.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:9px;border:0;cursor:pointer;font-size:1rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(26px,4.6vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,18px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--muted);font-size:.8rem}
+input,select{width:100%;font:inherit;font-size:14px;padding:7px 8px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink)}
+td.num{width:84px}td.ted{width:120px}td.del{width:34px;text-align:center}
+.del button{background:none;border:0;color:var(--muted);font-size:1.1rem;cursor:pointer}
+.addbtn{margin-top:12px;background:var(--card);border:1px dashed var(--amber-lt);color:var(--amber-dk);font-weight:700;border-radius:10px;padding:9px 14px;cursor:pointer;font:inherit}
+.rank{margin-top:8px}
+.rank li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.rank li.top{border-color:var(--amber);background:var(--cream)}
+.rank .meta{font-size:.85rem;color:var(--muted)}
+.score{font-weight:800;color:var(--amber-dk);white-space:nowrap}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:20px;text-align:center}
+.ways{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+@media(max-width:560px){.ways{grid-template-columns:1fr}}
+.way{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.way b{display:block;margin-bottom:3px}.way span{font-size:.86rem;color:var(--ink2)}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap">
+  <a href="/" class="brand">aban news</a>
+  <a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a>
+</div></header>
+
+<main><div class="wrap">
+  <section class="hero">
+    <h1>Was zuerst <span class="a">automatisieren</span>?</h1>
+    <p>Nicht alles lohnt sich. Trag deine wiederkehrenden Aufgaben ein — das Tool sortiert sie nach Hebel (Zeit × Häufigkeit × Nervfaktor) und sagt dir, wo du anfängst. Alles lokal im Browser, kein Login.</p>
+  </section>
+
+  <section class="panel" id="tool">
+    <table>
+      <thead><tr><th>Aufgabe</th><th>Min/Mal</th><th>×/Woche</th><th>Nervt?</th><th></th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <button class="addbtn" type="button" id="add">+ Aufgabe hinzufügen</button>
+
+    <h2 style="font-size:1.1rem;margin:20px 0 4px">Deine Reihenfolge</h2>
+    <ol class="rank" id="rank"></ol>
+    <p class="note" id="sum"></p>
+    <p class="note">Score = gesparte Minuten pro Woche × Nervfaktor. Hoher Score = früh automatisieren. Faustregel: was oft kommt, nervt und gleich abläuft, zuerst. Einmal-Aufgaben und seltene Spezialfälle: meist von Hand schneller.</p>
+  </section>
+
+  <section class="panel">
+    <h2 style="font-size:1.1rem;margin:0 0 4px">Welcher Weg?</h2>
+    <div class="ways">
+      <div class="way"><b>Vorlage / Textbaustein</b><span>Immer gleicher Text (Mails, Angebote): Vorlage + Platzhalter. Null Technik. → unser Vorlagen-Set.</span></div>
+      <div class="way"><b>No-Code (Make / n8n / Zapier)</b><span>„Wenn X passiert, mach Y" zwischen Apps. Der häufigste Fall. n8n self-hostbar (EU).</span></div>
+      <div class="way"><b>KI-Schritt einbauen</b><span>Texte zusammenfassen/klassifizieren/umschreiben: KI-Knoten im No-Code-Flow.</span></div>
+      <div class="way"><b>Kleines Skript</b><span>Datei-/Daten-Kram, der sich wiederholt: ein Python-Skript + Cron. Mehr Kontrolle.</span></div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <strong>Top-Kandidat gefunden? Jetzt umsetzen.</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">Prüf, ob's sich lohnt, und finde das passende Tool.</p>
+    <p>
+      <a class="btn" href="/automatisierung-rechner.html">Lohnt sich's? (Rechner)</a>
+      <a class="btn ghost" href="https://automatisierung.abannews.com" target="_blank" rel="noopener">Tools vergleichen →</a>
+    </p>
+  </div>
+</div></main>
+
+<footer><div class="wrap">
+  © 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/automatisierung-rechner.html">Rechner</a> ·
+  <a href="/cron-generator.html">Cron-Generator</a> ·
+  <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+</div></footer>
+
+<script>
+(function(){
+  var rows=document.getElementById("rows"), rank=document.getElementById("rank"), sum=document.getElementById("sum");
+  var seed=[["E-Mails sortieren & beantworten",10,15,2],["Angebote schreiben",25,3,2],["Social-Posts erstellen",30,3,1],["Rechnungen erfassen",8,10,3]];
+  function row(name,min,wk,ned){
+    var tr=document.createElement("tr");
+    tr.innerHTML='<td><input type="text" class="c-name" value="'+name.replace(/"/g,"&quot;")+'" placeholder="z. B. Rechnungen erfassen"></td>'+
+      '<td class="num"><input type="number" class="c-min" min="0" step="1" value="'+min+'" inputmode="decimal"></td>'+
+      '<td class="num"><input type="number" class="c-wk" min="0" step="1" value="'+wk+'" inputmode="decimal"></td>'+
+      '<td class="ted"><select class="c-ned"><option value="1">geht so</option><option value="2">nervt</option><option value="3">hasse ich</option></select></td>'+
+      '<td class="del"><button type="button" title="löschen">✕</button></td>';
+    rows.appendChild(tr);
+    tr.querySelector(".c-ned").value=ned;
+    tr.querySelectorAll("input,select").forEach(function(e){e.addEventListener("input",compute);});
+    tr.querySelector(".del button").addEventListener("click",function(){tr.remove();compute();});
+  }
+  function compute(){
+    var items=[], totalWk=0;
+    rows.querySelectorAll("tr").forEach(function(tr){
+      var name=tr.querySelector(".c-name").value.trim()||"(ohne Namen)";
+      var min=+tr.querySelector(".c-min").value||0, wk=+tr.querySelector(".c-wk").value||0, ned=+tr.querySelector(".c-ned").value||1;
+      var perWk=min*wk; totalWk+=perWk;
+      items.push({name:name,perWk:perWk,score:perWk*ned,ned:ned});
+    });
+    items.sort(function(a,b){return b.score-a.score;});
+    rank.innerHTML="";
+    items.forEach(function(it,i){
+      var li=document.createElement("li"); if(i===0&&it.score>0)li.className="top";
+      var hrsYr=(it.perWk*52/60);
+      li.innerHTML='<span><strong>'+(i+1)+'. '+escapeHtml(it.name)+'</strong>'+
+        '<span class="meta"> · '+Math.round(it.perWk)+' Min/Woche ≈ '+hrsYr.toFixed(0)+' Std/Jahr</span></span>'+
+        '<span class="score">'+Math.round(it.score)+'</span>';
+      rank.appendChild(li);
+    });
+    sum.textContent = totalWk>0 ? ("Zusammen ~"+Math.round(totalWk/60*52)+" Stunden pro Jahr in diesen Aufgaben. Fang oben an — eine nach der anderen.") : "Trag oben Aufgaben ein.";
+  }
+  function escapeHtml(s){return s.replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
+  document.getElementById("add").addEventListener("click",function(){row("",10,3,2);compute();});
+  seed.forEach(function(r){row(r[0],r[1],r[2],r[3]);});
+  compute();
+})();
+</script>
+</body>
+</html>

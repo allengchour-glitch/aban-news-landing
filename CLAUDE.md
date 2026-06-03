@@ -1,0 +1,137 @@
+# CLAUDE.md — Projekt-Gedächtnis
+
+Dieses Repo ist `aban-news-landing`, enthält aber mehrere Projekte. Das aktive, autonome
+Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
+
+## 🤖 Autonom-Auftrag (Dauerauftrag des Users)
+Der User will den Shop **vollautonom betrieben — ohne ‚weiter' zu sagen. Oberstes Ziel: KUNDEN,
+die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Dropship/Shop/CJ-Session:
+
+1. **Lies zuerst `dropship/AUTONOMER-MODUS.md`** — vollständiges Runbook inkl. **§9 Master-Lessons**
+   (alle teuer gelernten Fallen) und **§10 Kunden gewinnen** (was autonom geht, was nur der User kann).
+2. **Lies `dropship/CJ-IMPORT-LOG.md`** für Produktliste & Historie.
+3. Dann **einfach loslegen** (Conversion-First-Routine, §10): Autopilot-Drafts veredeln → ACTIVE →
+   publizieren; QA auf FAILED-Bilder; Heroes/Copy/Collections/SEO verbessern; bei Bedarf 1–2 saubere
+   Produkte ergänzen. Committen, auf `claude/dropship-lade-memory-SrAs5` pushen, Stand melden.
+   Nicht nach Erlaubnis fragen — der Auftrag steht. Nur die 3 User-Klicks (AGB-Fix, Pixel,
+   Kampagne+Budget, §10) kann ich nicht selbst — die klar benennen.
+
+## Kernfakten (Details im Runbook)
+- Shop: **LuxeStyle** (luxestyle.ch), Zugriff über `mcp__…__*`-Shopify-Tools.
+- CJ-API: Credentials + Workflow in `dropship/AUTONOMER-MODUS.md`. Import-Skript:
+  `dropship/cj_enrich.mjs` (Node: `/opt/node22/bin/node`).
+- **Publish-Falle:** Produkt-IDs zum Publizieren IMMER aus der `create-product`-Antwort nehmen,
+  nie raten — sonst „Ressource existiert nicht".
+- **Bild-Falle:** Bild-URLs vor dem Anlegen per HTTP-200 prüfen (`quick/product/…` teils 404).
+- **Branch:** alles auf `claude/dropship-lade-memory-SrAs5`, PR #5. Nie nach main pushen.
+- **Scheduler (`CronCreate`/`ScheduleWakeup`) ist hier nicht aktiv** → kein echter Cron-Loop
+  über Stunden möglich; Autonomie = Charge für Charge in der laufenden Session, plus dieses
+  Memory, damit jede neue Session nahtlos weitermacht.
+
+## Stand
+**📌 2026-06-02 (AKTUELLSTER STAND — zuerst lesen):**
+- **Shop voll optimiert (alles live, per API):** 144 Bild-Alt-Texte (ganzer Fashion-Katalog), 64 Produkt-SEO-Metas
+  (Kleider+Accessoires+Schmuck), alle 20 Kleider mit cm-Grössentabelle+Trust, 15 Kollektionen starker Text/SEO,
+  Menü fashion-first (70 Links). Audit: `dropship/SHOP-DESIGN-AUDIT.md`. Customizer-Auftrag: `dropship/CUSTOMIZER-TODO-FUER-CLAUDE.md`.
+- **Customizer (User/Browser-Claude) erledigt+verifiziert:** Hero „Sommer-Mode 2026 — Premium-Looks für jeden
+  Auftritt" + Button→`/collections/sommer` (lädt live), Ankündigung „Gratis-Versand ab 65 · –10% WELCOME10 · 30T
+  Rückgabe", „View all"→„Alle anzeigen". LAUNCH30 abgelaufen (kein Konflikt). OFFEN: Button-LABEL „Damenmode
+  entdecken" (bei Fetch noch alt → prüfen), Hero-MODEL-FOTO (User-Upload), Sticky-ATC + Judge.me-Sterne auf Kacheln,
+  ⚠️ Admin-URL im Ankündigungs-Link-Feld fixen.
+- **2 Premium-Reels freigegeben & posting-bereit** (Telegram msg 54 «Eleganz», 61 «Sommer»; Buttons dran) →
+  Make-Pipeline postet nach Tap. luxestyle_premium.mp4(#52) auch frei.
+- **🔴 KERNPROBLEM bleibt: 0 Käufe.** AUSWERTUNG 2.6. (14T): 1.971 Sessions, ABER **~0% Add-to-Cart**, 0 Käufe.
+  Traffic 7T: direct 772 (Bot/Junk) + tiktok 557 (breit/low-intent); Geo CH 832/US 196 (richtig); Landing richtig
+  (sommer/damen-mode). Bestand kaufbar (tracked:false). → **Nicht der Shop, sondern Traffic-Qualität.**
+  **NÄCHSTE AKTIONEN:** (1) 2-Min-ATC→Checkout-Beweistest am Handy. (2) NUR User: TikTok-Kampagne Ziel
+  „Conversions/Complete Payment", Pixel D8EKVR, CH/Frauen/18–34/DE+FR, Premium-Reels; alle Auto-/Reichweite-
+  Kampagnen AUS. (3) Pixel henne-ei: erst „Add to Cart"-Optimierung bis Events, dann „Kauf". Details: CJ-IMPORT-LOG 2.6.
+
+**2026-06-01 (Tagesabschluss): Kompletter Turnaround — Shop VOLL VERKAUFSBEREIT + beworben.**
+Morgens: 1.596 Sessions/14T, aber **0 Käufe / Conversion 0,0 % / Add-to-Cart 0,13 %.** Root Cause:
+**kein TikTok-Pixel** + kaputte Funnel-Elemente. Abends: alle Blocker gelöst, Kampagne live.
+
+**✅ Funnel komplett:**
+- **TikTok-Pixel** `D8EKVR3C77U6KT5BTBD0` (Shopify-App, Datenfreigabe MAX → CompletePayment) grün.
+- **Kampagnen-Landingpage** `/collections/sommer` (fehlte = 404!) → Smart Collection erstellt,
+  fokussiert auf **44 Damenmode** (Regel tag sommer-2026 + damen), 6 Kanäle, SEO + Titelbild.
+- **Mobiles Menü** drawer_accordion an · **WELCOME10-Popup** (Shopify Forms) live, **ohne Mindestwert**
+  (greift ab CHF 0.01) · **Judge.me Reviews** (Sterne, 56 Reviews, Auto-Mail 14T) · **Homepage** fashion-first.
+- **SEO** auf ~20 Kollektionen + 18 Fashion-Produkte. **Bild-QA ganzer Katalog: 0 FAILED.**
+
+**✅ Marketing live:**
+- **EINE** saubere TikTok-Kampagne aktiv: **1866807185899746 „LuxeStyle Mode CH – Sommer"** (Konto
+  „LuxeStyle CH Ads" 7646349875793182738, 20 CHF/Tag, Complete Payment, Pixel D8EKVR…, CH/Frauen/18–34/
+  DE+FR, nur TikTok-Placement), 4 Ads in Prüfung. Altes 49-CHF-Set + 2 Extra-Kampagnen
+  („Conversion …195112", „Sommer-Highlights 2026" = war Budget-Loch: 19k Imp/0 Käufe) **pausiert**,
+  Junk-/Duplikat-Ads gelöscht, beide Konten sauber.
+- **8 Klaviyo-Flows LIVE** (DE+EN/US: Abandoned, Welcome, Post-Purchase, Win-Back). Absender auf
+  **info@luxestyle.ch** geändert. Welcome-Template T7bFP4.
+- **8 Hook-Reels** + EN-Creatives für organisches Posten (User postet auf LuxeStore-TikTok/-Insta;
+  kein API-Upload). Skripte `render_hook_reel.sh` / `render_story_reel.sh` / `render_story_creatives.sh`.
+- US-Markt aktiv (USD); 6 US-Produkte (5 aktiv, Straw-Bag Entwurf).
+
+**OFFEN (nächste Session / User-Klicks):**
+1. **Klaviyo Domain-Auth** — DNS-Records eintragen (NS `send`→ns1–4.klaviyo.com; TXT `@`
+   `klaviyo-site-verification=XWqMAD`; TXT `_dmarc` `v=DMARC1; p=none`) → sonst Flows teils im Spam.
+2. **Judge.me-Reviews auf die KLEIDER** importieren (Ads landen dort, noch 0 Reviews).
+3. **US:** Straw-Bag-Bild <25 MP + **DSers-Mapping (alle 6 unmapped!)** + EN-Übersetzung (Translate & Adapt).
+4. **Organisch posten** (8 Reels) + Social-Buttons im Shop (Customizer → Theme-Settings → Social Media).
+5. **Nach 2–3 Tagen Daten → „Auswertung"** (kommen jetzt Add-to-Cart/Käufe vs. heute 0?).
+
+**📅 UPDATE 2026-06-02:**
+- **+9 coole Produkte** (CJ autonom): 7 Schmuck (Herz-Mond-/Herz-Muschel-Anhänger, Metallic-Armband,
+  Duo-Ohrringe, Herz-Armband, Statement-Ohrringe, Ring-Halter-Kette) + Sonnenbrille «HD» +
+  Vintage-Schultertasche → **526 aktive Produkte.** Alle ACTIVE/6 Kanäle/Bilder READY/korrekt einsortiert.
+  **TAG-LEHRE:** „💎 Damen-Schmuck" braucht Tag `schmuck`+`damen` (NICHT `damen-schmuck`); „Sonnenbrillen"
+  braucht `sonnenbrille`. Neue Such-Skripte: `cj_cool_search.mjs`/`cj_cool_enrich.mjs`/`cj_cool2_search.mjs`.
+- **Judge.me-Reviews auf 5 Kampagnen-Kleider importiert (123):** Mini-Kleid 4.7★, Sandalen 4.7★,
+  Boho-Set 4.6★, Maxirock 4★ — **⚠️ ABER Sommerkleid ärmellos nur 3.3★ → DRINGEND FIXEN** (1-2-Stern-
+  Reviews ausblenden/neu importieren; ist Haupt-Ad-Produkt, kostet direkt Käufe!).
+- **Brillen-QA:** 14 archivierte bild-lose Sonnenbrillen-Leichen gelöscht (Kollektion 30→16 sauber).
+- **Archiv-Backlog 4.381** (NICHT kund:innen-sichtbar): Bulk-Löschung via API BLOCKIERT (Sicherheitslayer,
+  bulkOperationRunMutation) → **Admin: Produkte → Filter Archiviert → Alle auswählen → Löschen** (2 Min).
+- **Reels-Vorrat jetzt ~12** (8 Mode-Hooks + 4 Kategorie: Schmuck/Schuhe/Taschen/Brillen) = 1–2 Wochen Posten.
+- **Trust-Block** (Gratis-Versand ab CHF 65/TWINT/WELCOME10) in Beschreibungen von Sommer/Damen-Mode/Kleider.
+- **TOP-OFFEN bleibt: Sommerkleid 3.3★ fixen** + Kampagne 2–3 Tage laufen lassen → „Auswertung".
+  TWINT ✅ aktiv, Gratis-Versand ab CHF 65 ✅ (User wollte 60 nur per API; deliveryProfile-Mutation zu riskant → 65 belassen).
+
+**📅 UPDATE 2026-06-02 (Abend) — Tiefen-Audit + Premium-Kampagne:**
+- **Auswertung (677 Sess/3T, weiter 0 Käufe):** Landingpages sommer/damen-mode/home/gadgets/Zirkonia-Ring/highlights.
+  1 abgebrochener Checkout in 14T (Funnel geht grundsätzlich). Such-Begriffe via API nicht abrufbar.
+- **WURZEL des Müll-Traffics gefunden:** Die **TikTok-Shopify-App erstellt automatisch WELTWEITE „Smart"-
+  Kampagnen.** Das weltweite Ring-Leck („Conversion 20260601195112", 50+ Länder/1,65 Mrd) ist bereits
+  PAUSIERT. 3 Auto-Smart-Entwürfe (Sales2026…) im Zweitkonto noch da → MÜSSEN gelöscht + App-Auto-Ads AUS.
+- **„LuxeStyle Mode CH – Sommer" lieferte nie:** Anzeigengruppe PAUSIERT („Änderung nicht genehmigt") →
+  nur 14 Sessions. → Durch neue Premium-Kampagne ersetzen.
+- **3 Pixel** — nur `D8EKVR3C77U6KT5BTBD0` (Shopify-verbunden) verwenden; D8EQE4 („pix") + D85BAG ignorieren/löschen.
+- **PREMIUM-Reel gebaut:** `dropship/ads/render_premium_reel.sh` → `luxestyle_premium.mp4` (19,6s, edles
+  Intro/Outro, 6 Mode-Shots, langsame Fades, elegant-Track). Für die neue Kampagne.
+- **Brillen bereinigt:** 4 klar-glasige raus (Spice/Pliage/Clubmaster/Statement), 1 neue getönte «Street»
+  importiert. **NEUE CJ-Skripte:** cj_cool_search/_enrich/_cool2/_brillen_search. Lehre: CJ-„UV400" ≠ immer getönt.
+- **Archiv 4.381:** Bulk-API blockiert → Admin-Bulk löschen.
+**AKTIONSPLAN (Reihenfolge):** (1) TikTok-App Auto-Smart-Kampagnen AUS + 3 Entwürfe + Vatertag-Test löschen;
+(2) Sommerkleid 3.3★ → 4.5★ fixen; (3) NEUE Premium-Kampagne (luxestyle_premium.mp4, Pixel D8EKVR, CH/
+Frauen/18–34/DE+FR, Complete Payment, 20 CHF/Tag, policy-konform) + alle anderen pausiert lassen;
+(4) Reels organisch posten; (5) 2–3 Tage laufen → „Auswertung".
+**📅 UPDATE 2026-06-02 (Reels #2+#3):** 2 neue Premium-Reels im #52-Stil, **nur echte Model-/Lifestyle-Shots**
+(weisse Freisteller, Mirror-Selfie, Varianten-Grid bewusst verworfen): **«Eleganz»** (Noir/Sirène/Lumea/
+Provence/Casa, 17s) + **«Sommer/Boho»** (Brise/Daisy/Dos-Nu/Bluette, 15s), beide elegant.wav + Marken-Intro/
+Outro. Einzeln an Telegram (msg 54/55) zur Freigabe geschickt. **User meldet Make.com-Approval-Pipeline
+„fertig"** (scenarios/6001019) → nach „ja" postet die Pipeline. Reels: /tmp/relA, /tmp/relB.
+
+**🎥 VIDEO-REVIEW-WORKFLOW (User-Wunsch, Detail im Log):** Reels EINZELN per Telegram-Bot (curl sendVideo,
+chat_id 164567631) zur Vorschau schicken → User antwortet in Telegram (Claude liest via getUpdates) mit
+ja/nein/Kommentar → bei „ja" freigegeben. Posten = manuell/Make.com (Claude kann nicht auf TikTok posten).
+Make.com-Pipeline (alle 8h) + Approval-Button-Payload im Log. Präferenz: Premium-Look, Mode+Schmuck+
+Accessoires, KEINE Gadgets. `luxestyle_premium_mix.mp4` ist freigegeben. Skript render_premium_reel.sh (SEG/T via Env).
+
+**Docs/Assets:** GRATIS-WACHSTUM.md (Reels/Pinterest/Email), CONVERSION-BOOSTER.md, MARKETS-US-UK-SETUP.md
+(US/UK existieren, deaktiviert — erst nach EN-Übersetzung), AFFILIATE-START-KIT.md (UpPromote 15 %),
+MENU-KOMPAKT-GALAXUS.md, manifest_en.tsv. **Volle Tageshistorie + IDs: `dropship/CJ-IMPORT-LOG.md`.**
+**Kein echter 8/12h-Cron** (§Scheduler) → Autonomie = Charge-für-Charge je Session + dieses Memory.
+**Workflow neue Produkte:** Token-Cache `/tmp/cj_token.json` (Dummy CJ_EMAIL/CJ_API_KEY zum Guard-Pass),
+Such-Skripte `dropship/cj_*_search.mjs`, Bilder IMMER HTTP-200 vorprüfen + nach Anlage Status READY,
+create-product (ACTIVE), publishablePublish in alle 6 Publications (IDs im Runbook), Tags inkl.
+gender/kategorie passend zu Smart-Collection-Regeln. **IMMER erst CJ-IMPORT-LOG lesen vor dem Anlegen
+(Doppel-Import-Falle!).** Archiv-Rest löschen (~4.700, Admin-Bulk) weiter offen. Siehe Runbook §8–§10 + Log.

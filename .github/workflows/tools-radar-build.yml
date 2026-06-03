@@ -1,0 +1,52 @@
+name: KI-Tools Radar — Auto-Build
+
+# Vollautomatischer Rebuild der Tool-Vergleichsseite:
+# - wöchentlich (frische Seiten ohne manuelles Zutun)
+# - bei Änderung an den Daten oder am Generator
+on:
+  schedule:
+    - cron: '0 6 * * 1'        # jeden Montag 06:00 UTC
+  push:
+    paths:
+      - 'ki-tools-radar/**'
+      - 'data/tools.json'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Generate static site
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install build deps (Pillow for OG images)
+        run: pip install -r ki-tools-radar/requirements.txt
+
+      - name: Generate site
+        run: |
+          cd ki-tools-radar
+          python generate.py
+          echo "Built files:"
+          find dist -type f | wc -l
+
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ki-tools-radar-dist
+          path: ki-tools-radar/dist
+          retention-days: 14
+
+      # --- Deployment (aktivieren, sobald das Projekt ein eigenes Repo +
+      #     Cloudflare-Pages-/GitHub-Pages-Ziel hat) ---
+      # - name: Deploy to Cloudflare Pages
+      #   uses: cloudflare/pages-action@v1
+      #   with:
+      #     apiToken: ${{ secrets.CF_API_TOKEN }}
+      #     accountId: ${{ secrets.CF_ACCOUNT_ID }}
+      #     projectName: ki-tools-radar
+      #     directory: ki-tools-radar/dist

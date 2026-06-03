@@ -1,0 +1,29 @@
+name: Aban-Netzwerk Portal — Auto-Build
+
+on:
+  push:
+    paths:
+      - 'portal/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Generate portal
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generate portal
+        run: |
+          cd portal
+          python generate.py
+          find dist -type f | wc -l
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: portal-dist
+          path: portal/dist
+          retention-days: 14

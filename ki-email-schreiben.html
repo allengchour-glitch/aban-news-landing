@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d97706">
+  <title>E-Mails mit KI schreiben — der Leitfaden | aban news</title>
+  <meta name="description" content="E-Mails mit KI schneller schreiben, ohne wie ein Roboter zu klingen: wofür es sich lohnt, eine Copy-Vorlage, Vorher/Nachher und wo Vorsicht gilt. Kein Hype.">
+  <link rel="canonical" href="https://abannews.com/ki-email-schreiben.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/ki-email-schreiben.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-email-schreiben.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ki-email-schreiben.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/ki-email-schreiben.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-email-schreiben.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="E-Mails mit KI schreiben — der praktische Leitfaden">
+  <meta property="og:description" content="Schneller schreiben, eigene Stimme behalten, Fallen vermeiden. Mit Copy-Vorlage und Vorher/Nachher.">
+  <meta property="og:url" content="https://abannews.com/ki-email-schreiben.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://abannews.com/img/og/ki-email-schreiben.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/img/og/ki-email-schreiben.png">
+  <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;margin-left:1.2rem}
+    .lang a{padding:.3rem .55rem;color:var(--muted);text-decoration:none;margin:0}
+    .lang a.on{background:var(--ink);color:#fff}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:3rem 0 2rem;text-align:center}
+    h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:58ch;margin:0 auto 1.5rem}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    section{padding:1.2rem 0}
+    section h2{font-size:1.4rem;line-height:1.2;margin:1.4rem 0 .6rem}
+    section h3{font-size:1.1rem;margin:1.1rem 0 .35rem}
+    section p{margin-bottom:.8rem}
+    section ul{margin:0 0 .9rem 1.2rem}
+    section li{margin-bottom:.35rem}
+    .method{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.5rem;margin-bottom:1rem;box-shadow:var(--shadow)}
+    .method h3{margin-top:0;display:flex;align-items:center;gap:.5rem}
+    .method .num{background:var(--amber);color:#fff;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;flex-shrink:0}
+    .callout{background:var(--amber-lt);border-left:4px solid var(--amber);border-radius:8px;padding:.9rem 1.1rem;margin:1rem 0;font-weight:600}
+    .ba{display:grid;gap:.8rem;margin:1rem 0}
+    @media(min-width:560px){.ba{grid-template-columns:1fr 1fr}}
+    .ba div{border:1px solid var(--line);border-radius:12px;padding:1rem;background:#fff;font-size:.92rem}
+    .ba .w{border-color:#fca5a5;background:#fef2f2}
+    .ba .s{border-color:#86efac;background:#f0fdf4}
+    .ba .tag{display:block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem}
+    .ba .w .tag{color:#b91c1c}.ba .s .tag{color:#15803d}
+    .tmpl{background:#1f2937;color:#f9fafb;border-radius:12px;padding:1.1rem 1.2rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;line-height:1.6;white-space:pre-wrap;margin:1rem 0}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2rem 0}
+    .cta-box h2{font-size:1.3rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .btn--ghost{border:1px solid var(--amber);color:var(--amber-dk);background:#fff}
+    details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem;padding:0}
+    details[open]{border-color:#fed7aa}
+    summary{padding:1rem 1.1rem;font-weight:600;cursor:pointer;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";float:right;color:#a3a3a3;font-weight:300;font-size:1.3rem;line-height:1}
+    details[open] summary::after{content:"−"}
+    details .a{padding:0 1.1rem 1.1rem;color:var(--muted);font-size:.95rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:2rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"E-Mails mit KI schreiben — der praktische Leitfaden","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"datePublished":"2026-05-31","dateModified":"2026-05-31","description":"E-Mails mit KI schneller schreiben, ohne wie ein Roboter zu klingen — mit Copy-Vorlage, Vorher/Nachher und den Grenzen."}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Wofür lohnt sich KI beim E-Mail-Schreiben?","acceptedAnswer":{"@type":"Answer","text":"Für Erstentwürfe, das Kürzen langer Nachrichten, das Anpassen des Tons und Antworten auf lange Verläufe. Nicht für heikle, beziehungskritische oder rechtlich sensible Mails — die schreibst oder prüfst du selbst."}},
+    {"@type":"Question","name":"Wie klingt eine KI-Mail nicht wie ein Roboter?","acceptedAnswer":{"@type":"Answer","text":"Gib der KI ein Beispiel deiner echten Mails als Stilvorlage und sag „in diesem Ton“. Streich Floskeln wie „ich hoffe, diese Mail erreicht Sie gut“. Kurz, konkret, eine klare Bitte — das klingt menschlicher als jede aufgeblähte Höflichkeit."}},
+    {"@type":"Question","name":"Sollte ich ganze E-Mails automatisch versenden lassen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Lass die KI vorbereiten, aber lies und sende selbst. Eine automatisch verschickte Mail mit falschem Detail oder schiefem Ton kostet mehr Vertrauen, als die gesparte Minute wert ist."}},
+    {"@type":"Question","name":"Ist es datenschutzkonform, Kundenmails in die KI zu geben?","acceptedAnswer":{"@type":"Answer","text":"Nur mit Vorsicht. Gib keine echten Namen, Adressen oder Vertragsdetails ohne Not hinein; anonymisiere, wo es geht, und nutze einen Business-Plan mit Auftragsverarbeitungsvertrag. Im Zweifel die fünf Datenschutz-Fragen durchgehen."}}
+  ]}
+  </script>
+<style>.skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}</style>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/preview.html">Beispiel</a>
+      <a href="/ebook.html">eBook</a>
+      <a href="/ki-email-schreiben.html"><strong>E-Mails mit KI</strong></a>
+      <a href="#subscribe" class="btn">Abonnieren</a>
+      <span class="lang"><a href="/ki-email-schreiben.html" class="on" aria-current="true">DE</a><a href="/en/ki-email-schreiben.html">EN</a><a href="/fr/ki-email-schreiben.html">FR</a><a href="/it/ki-email-schreiben.html">IT</a></span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Stand: Mai 2026 · ohne Hype</span>
+      <h1>E-Mails mit KI schreiben</h1>
+      <p class="lead">E-Mail ist für die meisten Selbstständigen der größte stille Zeitfresser. KI kann hier echte Minuten sparen — wenn du sie als Beschleuniger nutzt und deine Stimme behältst, statt wie ein Roboter zu klingen.</p>
+    </div>
+
+    <section>
+      <h2>Wofür sich KI bei E-Mails wirklich lohnt</h2>
+      <p>Nicht jede Mail gehört in die KI. Die Faustregel: Routine und Volumen ja, Beziehung und Risiko nein.</p>
+      <ul>
+        <li><strong>Erstentwürfe:</strong> die leere Seite füllen, damit du editierst statt erfindest.</li>
+        <li><strong>Kürzen:</strong> aus drei Absätzen Gewaffel zwei klare Sätze machen.</li>
+        <li><strong>Ton anpassen:</strong> denselben Inhalt sachlicher, freundlicher oder bestimmter formulieren.</li>
+        <li><strong>Lange Verläufe:</strong> einen Mail-Thread zusammenfassen und einen Antwortvorschlag liefern.</li>
+      </ul>
+      <p>Finger weg dagegen bei heiklen, beziehungskritischen oder rechtlich sensiblen Mails — Absagen, Beschwerden, Verhandlungen. Die schreibst oder prüfst du selbst.</p>
+    </section>
+
+    <section>
+      <h2>In drei Schritten zur brauchbaren Mail</h2>
+      <div class="method">
+        <h3><span class="num">1</span> Kontext und Ziel nennen</h3>
+        <p>Sag, wer schreibt, an wen, und was die Mail erreichen soll. „Antwort an einen Kunden, der einen Liefertermin verschieben will — freundlich, aber mit klarer neuer Frist" ist konkret genug für ein gutes Ergebnis.</p>
+      </div>
+      <div class="method">
+        <h3><span class="num">2</span> Deinen Stil als Beispiel mitgeben</h3>
+        <p>Häng eine echte frühere Mail an und sag „in diesem Ton". So klingt die Antwort nach dir und nicht nach Standard-Bot. Ohne Beispiel bekommst du die höfliche Durchschnittsmail, die jeder erkennt.</p>
+      </div>
+      <div class="method">
+        <h3><span class="num">3</span> Kürzen und schärfen</h3>
+        <p>Die erste Version ist meist zu lang und zu höflich. Sag „halb so lang, eine klare Bitte, kein Floskel-Einstieg". Zwei Korrekturen reichen fast immer.</p>
+      </div>
+      <div class="callout">E-Mail-Regel: kurz, konkret, eine klare Bitte. Das klingt menschlicher als jede aufgeblähte Höflichkeit — und spart allen Zeit.</div>
+    </section>
+
+    <section>
+      <h2>Vorher / nachher</h2>
+      <div class="ba">
+        <div class="w"><span class="tag">KI ohne Stilvorlage</span>„Sehr geehrte Damen und Herren, ich hoffe, diese Nachricht erreicht Sie bei bester Gesundheit. Ich wollte mich diesbezüglich erkundigen, ob es eventuell möglich wäre …"</div>
+        <div class="s"><span class="tag">Mit Kontext + Beispiel</span>„Hallo Frau Berger, kurze Rückfrage zum Termin: Passt Ihnen Donnerstag 14 Uhr statt Mittwoch? Wenn ja, schick ich die Einladung gleich raus. Viele Grüße, …"</div>
+      </div>
+      <p>Beide hat die KI geschrieben. Der Unterschied ist allein das Briefing: Kontext, ein Stil-Beispiel und die Bitte um Kürze.</p>
+    </section>
+
+    <section>
+      <h2>Copy-Vorlage für E-Mails</h2>
+      <p>Vor die eigentliche Aufgabe kopieren, Klammern ausfüllen:</p>
+      <div class="tmpl">Schreib eine E-Mail von mir [Rolle] an [Empfänger].
+Ziel der Mail: [was sie erreichen soll].
+Kontext: [worum es geht, 1-2 Sätze].
+Ton: freundlich, sachlich, du/Sie — kein Floskel-Einstieg.
+Länge: höchstens [z. B. 80] Wörter, eine klare Bitte am Ende.
+Mein Stil (so klinge ich): [kurzer Ausschnitt einer echten Mail].</div>
+    </section>
+
+    <section>
+      <h2>Wo Vorsicht gilt</h2>
+      <p>Zwei Dinge prüfst du bei E-Mails besonders:</p>
+      <ul>
+        <li><strong>Datenschutz:</strong> Keine echten Namen, Adressen oder Vertragsdetails ohne Not in die KI geben. Anonymisieren, wo es geht. <a href="/ki-dsgvo-konform.html" style="color:var(--amber-dk);font-weight:600;">→ Die 5 Datenschutz-Fragen</a></li>
+        <li><strong>Erfundene Fakten:</strong> Nennt die KI Zahlen, Termine oder Zusagen, die du nicht geprüft hast — raus damit. <a href="/ki-halluzinationen-erkennen.html" style="color:var(--amber-dk);font-weight:600;">→ Halluzinationen erkennen</a></li>
+      </ul>
+      <div class="callout">Lass die KI vorbereiten — aber lies und sende selbst. Der letzte Blick ist deiner.</div>
+    </section>
+
+    <section>
+      <h2>Häufige Fragen</h2>
+      <details><summary>Wofür lohnt sich KI beim E-Mail-Schreiben?</summary><div class="a">Für Erstentwürfe, Kürzen, Ton anpassen und Antworten auf lange Verläufe. Nicht für heikle, beziehungskritische oder rechtlich sensible Mails.</div></details>
+      <details><summary>Wie klingt die Mail nicht wie ein Roboter?</summary><div class="a">Gib ein Beispiel deiner echten Mails als Stilvorlage und sag „in diesem Ton". Streich Floskeln, sei kurz und konkret.</div></details>
+      <details><summary>Ganze Mails automatisch versenden?</summary><div class="a">Nein. KI vorbereiten lassen, aber selbst lesen und senden. Ein falsches Detail kostet mehr Vertrauen als die gesparte Minute.</div></details>
+      <details><summary>Ist das datenschutzkonform?</summary><div class="a">Nur mit Vorsicht. Keine echten Personendaten ohne Not, anonymisieren, Business-Plan mit AVV. Im Zweifel die fünf Datenschutz-Fragen durchgehen.</div></details>
+    </section>
+
+    <div class="cta-box" style="background:var(--card);border:1px solid var(--line);">
+      <h2>Gratis-eBook: „Anti-Hype“</h2>
+      <p>E-Mail ist nur ein Anfang. Mein kostenloses eBook zeigt dir den 3-Fragen-Filter, deinen minimalen KI-Stack und fünf Routinen, die wirklich Zeit sparen. Ohne Anmeldung.</p>
+      <a href="/ebook.html" class="btn btn--ghost">eBook lesen →</a>
+    </div>
+
+    <div class="cta-box" id="subscribe">
+      <h2>Jeden Werktag: KI ohne Bullshit, in 5 Minuten</h2>
+      <p>aban news liefert dir Mo–Fr die relevanten KI-Entwicklungen für deine Arbeit — inklusive Vorlagen, die du sofort einsetzen kannst.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">5-Min-KI-Briefing gratis →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Kein Spam. Abmeldung per Klick. DSGVO-konform.</p>
+    </div>
+
+    <section>
+      <h2 style="font-size:1.05rem;">Weiterlesen</h2>
+      <div style="display:grid;gap:.7rem;grid-template-columns:1fr 1fr;">
+        <a href="/ki-prompts-schreiben.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">KI-Prompts schreiben</strong><span style="color:var(--muted);font-size:.82rem;">Bessere Prompts in 4 Schritten</span></a>
+        <a href="/ki-automatisierung-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">KI-Automatisierung</strong><span style="color:var(--muted);font-size:.82rem;">Wann sie sich lohnt — und wann nicht</span></a>
+        <a href="/ki-tools-fuer-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">KI-Tools für Selbstständige</strong><span style="color:var(--muted);font-size:.82rem;">Der ehrliche Stack 2026</span></a>
+        <a href="/ebook.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Gratis-eBook „Anti-Hype“</strong><span style="color:var(--muted);font-size:.82rem;">KI ohne Bullshit einsetzen</span></a>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <p><strong>Ehrlichkeits-Hinweis:</strong> Dieser Leitfaden enthält keine Affiliate-Links. KI ersetzt nicht dein Urteil darüber, was in eine Mail gehört und was nicht — der letzte Blick und das Senden bleiben bei dir.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/">Startseite</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+name: Automatisierungs-Radar — Tool-Vorschläge
+
+# Wachstum „von selbst", ehrlich: schlägt regelmäßig echte, bekannte Tools zum
+# Prüfen vor (kein Erfinden von Daten). Das Ergebnis liegt als Artefakt bereit;
+# ein Mensch verifiziert die offenen Felder und verschiebt den Eintrag nach
+# data/anbieter.json — erst dann wird er live.
+
+on:
+  schedule:
+    - cron: '23 5 * * 1'
+  workflow_dispatch:
+
+jobs:
+  suggest:
+    name: Neue Tool-Kandidaten vorschlagen
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Vorschläge erzeugen
+        run: |
+          cd automatisierung-radar
+          python suggest_tools.py
+      - name: Vorschläge als Artefakt hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: automatisierung-radar-vorschlaege
+          path: automatisierung-radar/data/_vorschlaege.json
+          retention-days: 30
+      - name: Hinweis
+        run: |
+          echo "Vorschläge liegen im Artefakt 'automatisierung-radar-vorschlaege'."
+          echo "Prüfen → offene Felder ausfüllen → Eintrag nach data/anbieter.json verschieben"
+          echo "→ python3 generate.py. Erst dann wird das Tool live."

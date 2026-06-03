@@ -1,0 +1,158 @@
+==========================================================================
+aban news - LinkedIn-System (Playbook)
+==========================================================================
+
+LinkedIn ist unser wichtigster Wachstumskanal. Dieses System macht aus
+jeder Tagesausgabe (3 KI-Items) fuenf Posts - planbar, ohne Hype, du-Form.
+
+Tooling: generate_linkedin_posts.py (reines Python, keine Abhaengigkeiten).
+
+  EINZEL-MODUS (eine Ausgabe -> 5 Posts):
+    python3 generate_linkedin_posts.py [ausgabe-datei]
+    Standard-Eingabe: linkedin/beispiel-ausgabe.txt
+    Entwuerfe landen in: linkedin/drafts/
+
+  WOCHEN-MODUS (eine ganze Woche auf einmal):
+    python3 generate_linkedin_posts.py --woche [ordner]
+    Standard-Ordner: linkedin/woche/  (alle *.txt, sortiert nach Name)
+    Entwuerfe landen in: linkedin/drafts/woche/<dateiname>/
+    Copy-Sheet: linkedin/drafts/woche/wochenplan.txt
+
+
+--------------------------------------------------------------------------
+1. DIE METHODE: 5 POSTS PRO AUSGABE
+--------------------------------------------------------------------------
+
+Eine Ausgabe = drei Items. Daraus baut der Generator fuenf Entwuerfe mit
+fuenf verschiedenen Blickwinkeln:
+
+  1) News-Reaktion   - Was passiert ist + nuechterne Einordnung.
+  2) How-to          - Ein konkreter Schritt aus dem TIPP.
+  3) Contrarian      - Was alle hypen vs. was wirklich zaehlt.
+  4) Mini-Case       - "Statt X mache ich jetzt Y."
+  5) Frage           - Offene Frage an die Zielgruppe.
+
+Die Entwuerfe sind ein Startpunkt, kein Endprodukt. Immer kurz mit der
+eigenen Stimme drueberlesen, ein echtes Detail aus deinem Alltag ergaenzen
+und erst dann posten.
+
+
+--------------------------------------------------------------------------
+2. SWIPE FILE: 12 HOOK-FORMELN (deutsch, anti-hype)
+--------------------------------------------------------------------------
+
+Die erste Zeile entscheidet. LinkedIn schneidet nach ~210 Zeichen ab, also
+muss der erste Satz allein neugierig machen - ohne Clickbait.
+
+  1.  "Kurz und ohne Hype: {Sache}."
+  2.  "Heute gelesen, nuechtern eingeordnet: {Sache}."
+  3.  "Ein Schritt, den du heute machen kannst: {Schritt}."
+  4.  "Unpopulaere Meinung: {Sache} ist weniger wichtig, als alle tun."
+  5.  "Statt {alte Gewohnheit} mache ich es jetzt anders."
+  6.  "Frueher: {Vorher}. Heute laeuft es bei mir so."
+  7.  "Eine ehrliche Frage an dich: {Frage}?"
+  8.  "Der Hype sagt X. Die Praxis sagt etwas anderes."
+  9.  "Kein Tutorial-Marathon noetig. Nur das hier: {Schritt}."
+  10. "Das ist passiert: {News}. Was es wirklich bedeutet, steht unten."
+  11. "Mal angenommen: {Situation}. Wie machst du das?"
+  12. "Spar dir die Aufregung um {Thema}. Wichtig ist etwas anderes."
+
+Regel fuer Hooks: konkret statt gross. Eine Zahl oder ein Beispiel schlaegt
+ein Adjektiv. Nie etwas versprechen, das der Post nicht einloest.
+
+
+--------------------------------------------------------------------------
+2b. WOCHEN-WORKFLOW (Batch): EINMAL FUELLEN, GANZE WOCHE ERNTEN
+--------------------------------------------------------------------------
+
+Statt jeden Tag eine Datei zu pflegen, kannst du die Woche am Stueck
+vorbereiten. Drei Schritte:
+
+  1) Pro Tag eine Datei in linkedin/woche/ anlegen, z. B. tag-1.txt,
+     tag-2.txt, ... (oder montag.txt, dienstag.txt). Format pro Datei
+     ist dasselbe wie sonst: 3 Items mit THEMA / WAS / BEDEUTUNG / TIPP,
+     getrennt durch eine Zeile mit nur "---". Reihenfolge = Dateiname
+     (alphabetisch sortiert), also tag-1 vor tag-2.
+
+  2) Einmal laufen lassen:
+        python3 generate_linkedin_posts.py --woche
+
+  3) Ergebnis abholen:
+     - Pro Tag ein Unterordner: linkedin/drafts/woche/<dateiname>/
+       mit den 5 Winkel-Entwuerfen (post-1-news.txt ... post-5-frage.txt).
+     - Ein kombiniertes Copy-Sheet: linkedin/drafts/woche/wochenplan.txt
+       Es listet jeden Tag mit allen 5 Winkeln zum direkten Kopieren und
+       schlaegt vor, welcher Winkel an welchem Wochentag oben laeuft.
+
+SO MAPPST DU "5 WINKEL PRO AUSGABE" AUF "1 POST PRO TAG":
+
+  Jede Ausgabe liefert 5 Winkel - das ist bewusst Vorrat, nicht 5 Posts
+  fuer denselben Tag. Praxis:
+    - Pro Wochentag EINE Ausgabe-Datei = EIN Post pro Tag.
+    - Pro Tag waehlst du genau einen der 5 Winkel (der wochenplan.txt
+      macht einen rotierenden Vorschlag, damit nicht jeden Tag derselbe
+      Typ oben steht).
+    - Die uebrigen 4 Winkel des Tages sind Reserve: Vorrat fuer schwache
+      Tage, A/B-Test der Hook oder Material fuer die Folgewoche.
+  Faustregel: 5 Ausgabe-Dateien (Mo-Fr) -> 5 Posts, einer pro Tag,
+  Winkel ueber die Woche gemischt.
+
+
+--------------------------------------------------------------------------
+3. POSTING-RHYTHMUS
+--------------------------------------------------------------------------
+
+  - 5x pro Woche (Mo-Fr), passend zum taeglichen Newsletter.
+  - Pro Tag EIN Post. Die anderen vier Entwuerfe wandern in den Vorrat
+    fuer die Folgetage oder dienen als Reserve.
+  - Pro Woche die Winkel mischen, nicht fuenfmal denselben Typ.
+  - Konsistenz schlaegt Lautstaerke: lieber jeden Tag ein solider Post
+    als einmal pro Woche ein langer.
+
+
+--------------------------------------------------------------------------
+4. BESTE ZEIT (allgemein, ohne Garantie)
+--------------------------------------------------------------------------
+
+Es gibt keine magische Uhrzeit. Faustregeln fuer ein DACH-B2B-Publikum:
+
+  - Werktags, vormittags (grob 7-10 Uhr) oder fruehe Mittagspause.
+  - Dienstag bis Donnerstag tendenziell aktiver als Montag/Freitag.
+  - Wochenende meist schwaecher fuer Business-Themen.
+
+Das sind Startwerte. Teste zwei, drei Zeitfenster ueber ein paar Wochen
+und richte dich nach deinen eigenen Zahlen, nicht nach fremden Studien.
+
+
+--------------------------------------------------------------------------
+5. VOICE-REGELN (Pflicht)
+--------------------------------------------------------------------------
+
+  - Durchgehend du-Form.
+  - Keine Hype-Woerter: revolutionaer, bahnbrechend, game-changer,
+    disruptiv, quantensprung, einzigartig, unglaublich, "tauche ein"
+    und Verwandtes. (Kanonische Sperrliste:
+    automation/brand-voice-validator-api.py)
+  - Keine Mehrfach-Ausrufezeichen. Ein Punkt reicht meistens.
+  - Keine erfundenen Zahlen, Testimonials oder Versprechen.
+  - Eine Idee pro Post. Wer drei Dinge sagt, sagt nichts.
+  - Kurze Zeilen, viel Weissraum, ein klares Takeaway.
+  - Weiche CTA, nicht aufdringlich: "Taeglich in 5 Min: abannews.com".
+  - 0-3 Hashtags, thematisch, kein Tag-Spam.
+
+
+--------------------------------------------------------------------------
+6. WOCHEN-CHECKLISTE
+--------------------------------------------------------------------------
+
+  [ ] Montag: Wochen-Dateien in linkedin/woche/ vorbereiten (tag-1.txt ...)
+      ODER taeglich eine Ausgabe-Datei pflegen.
+  [ ] Generator laufen lassen (--woche fuer die ganze Woche), Entwuerfe
+      sichten; wochenplan.txt als Copy-Sheet nutzen.
+  [ ] Jeden Entwurf mit einem echten Detail aus deinem Alltag wuerzen.
+  [ ] Hooks gegen die Swipe-Liste pruefen: zieht die erste Zeile?
+  [ ] Voice-Check: keine Hype-Woerter, du-Form, keine "!!".
+  [ ] Pro Tag einen Post planen (Mo-Fr), Winkel ueber die Woche mischen.
+  [ ] Auf Kommentare in den ersten 1-2 Stunden antworten.
+  [ ] Freitag: kurz schauen, welcher Winkel am besten lief - merken.
+==========================================================================

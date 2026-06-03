@@ -1,0 +1,557 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-06-02",
+  "source": "aban news — kuratierte Liste echter KI-Musik-Tools (Song-Generierung mit Gesang, Royalty-Free für Content, Stems & Mastering, Open Source, Funktionsmusik). Preise/Bewertungen bewusst nicht erfunden: '[Redaktion: prüfen]' oder null.",
+  "license": "CC-BY-4.0 (Attribution: aban news, abannews.com)",
+  "rating_scale": "1-10 (10 = uneingeschränkt empfehlenswert). null = noch nicht redaktionell geprüft.",
+  "_integritaet": "Jeder Eintrag verweist auf eine offizielle, verifizierbare Anbieter-URL. Preise (preis_eur), Bewertungen (worth_it_score) und konkrete Konditionen werden NICHT geschätzt — null oder '[Redaktion: prüfen]', bis ein Mensch sie verifiziert. eu_lager = EU-/DSGVO-Hosting bzw. EU-Anbieter, deutsche_oberflaeche = deutsche Oberfläche. WICHTIG bei Musik: die kommerzielle Lizenz/Urheberrechtslage (wem gehört der Song, was darfst du nutzen) ist je Anbieter/Tarif verschieden und teils umstritten — im aban_note markiert, vor kommerzieller Nutzung selbst prüfen.",
+  "kategorien": [
+    "Song-Generierung (Text→Song mit Gesang)",
+    "Instrumental & Royalty-Free für Content",
+    "Stems & Mastering",
+    "Open Source / Self-Hosting",
+    "Funktionsmusik / Soundscapes"
+  ],
+  "fokus": [
+    "Song mit Gesang",
+    "Royalty-Free für Content",
+    "Mastering & Stems",
+    "Self-Hosting / Open Source",
+    "EU-Anbieter",
+    "International"
+  ],
+  "anbieter": [
+    {
+      "id": "suno",
+      "name": "Suno",
+      "anbieter": "Suno, Inc.",
+      "url": "https://suno.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Song mit Gesang",
+      "kategorie": [
+        "Song-Generierung (Text→Song mit Gesang)"
+      ],
+      "themen": [
+        "Text→Song mit Gesang",
+        "viele Genres",
+        "schnelle Ergebnisse"
+      ],
+      "format": "Web-App + App (Cloud)",
+      "integration": [
+        "Browser",
+        "App",
+        "Export MP3"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Gratis-Credits, danach Abo. Kommerzielle Nutzung meist nur im Bezahltarif.",
+      "worth_it_score": null,
+      "aban_note": "der bekannteste Song-Generator (Text → fertiger Song mit Gesang), beeindruckend für Demos/Spaß. US-Anbieter; kommerzielle Rechte nur im Bezahltarif, und die Branche steht in Urheberrechts-Streits — vor geschäftlicher Nutzung Lizenz genau prüfen."
+    },
+    {
+      "id": "udio",
+      "name": "Udio",
+      "anbieter": "Uncharted Labs",
+      "url": "https://www.udio.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Song mit Gesang",
+      "kategorie": [
+        "Song-Generierung (Text→Song mit Gesang)"
+      ],
+      "themen": [
+        "Text→Song mit Gesang",
+        "hohe Audioqualität",
+        "Remix/Extend"
+      ],
+      "format": "Web-App (Cloud)",
+      "integration": [
+        "Browser",
+        "Export MP3"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Gratis-Kontingent, danach Abo. Kommerzielle Nutzung tarifabhängig.",
+      "worth_it_score": null,
+      "aban_note": "Hauptkonkurrent von Suno, oft sehr saubere Klangqualität. Gleiche Einschränkung: US-Hosting, kommerzielle Rechte und Urheberrechtslage vor dem Einsatz klären."
+    },
+    {
+      "id": "elevenlabs-music",
+      "name": "ElevenLabs Music",
+      "anbieter": "ElevenLabs",
+      "url": "https://elevenlabs.io/music",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Song mit Gesang",
+      "kategorie": [
+        "Song-Generierung (Text→Song mit Gesang)",
+        "Instrumental & Royalty-Free für Content"
+      ],
+      "themen": [
+        "Text→Musik",
+        "Studio-Qualität",
+        "API"
+      ],
+      "format": "Web-App + API (Cloud)",
+      "integration": [
+        "Browser",
+        "API",
+        "Export MP3"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — über ElevenLabs-Abo/Credits. Kommerzielle Nutzung tarifabhängig.",
+      "worth_it_score": null,
+      "aban_note": "Musik-Variante von ElevenLabs, naheliegend, wenn du dort eh Stimmen nutzt, und mit API. US-Hosting; Lizenz/kommerzielle Nutzung prüfen."
+    },
+    {
+      "id": "stable-audio",
+      "name": "Stable Audio",
+      "anbieter": "Stability AI",
+      "url": "https://stableaudio.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Royalty-Free für Content",
+      "kategorie": [
+        "Instrumental & Royalty-Free für Content",
+        "Open Source / Self-Hosting"
+      ],
+      "themen": [
+        "Text→Audio",
+        "Sound-Design",
+        "Stable Audio Open (Self-Hosting)"
+      ],
+      "format": "Web-App (Cloud) + Open-Source-Variante",
+      "integration": [
+        "Browser",
+        "Export WAV"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Abo; zusätzlich eine offene, self-hostbare Variante (Stable Audio Open).",
+      "worth_it_score": null,
+      "aban_note": "von Stability AI (UK), eher für Instrumental/Sound-Design. Mit „Stable Audio Open“ gibt es eine self-hostbare Variante — interessant für Datenhoheit."
+    },
+    {
+      "id": "soundraw",
+      "name": "Soundraw",
+      "anbieter": "Soundraw",
+      "url": "https://soundraw.io/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Royalty-Free für Content",
+      "kategorie": [
+        "Instrumental & Royalty-Free für Content"
+      ],
+      "themen": [
+        "Royalty-Free-Tracks",
+        "nach Stimmung/Genre",
+        "für Video/Podcast"
+      ],
+      "format": "Web-App (Cloud)",
+      "integration": [
+        "Browser",
+        "Export MP3/WAV"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Abo. Lizenz zur Nutzung inklusive; Urheberrecht verbleibt i. d. R. beim Anbieter — Bedingungen prüfen.",
+      "worth_it_score": null,
+      "aban_note": "gemacht für Creator: lizenzfreie Hintergrundmusik nach Stimmung. Du bekommst ein Nutzungsrecht, „besitzt“ den Track aber meist nicht — für YouTube/Podcast i. d. R. unkompliziert, Bedingungen lesen."
+    },
+    {
+      "id": "mubert",
+      "name": "Mubert",
+      "anbieter": "Mubert",
+      "url": "https://mubert.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Royalty-Free für Content",
+      "kategorie": [
+        "Instrumental & Royalty-Free für Content",
+        "Funktionsmusik / Soundscapes"
+      ],
+      "themen": [
+        "generative Royalty-Free-Musik",
+        "API",
+        "Streams/Loops"
+      ],
+      "format": "Web-App + API (Cloud)",
+      "integration": [
+        "Browser",
+        "API",
+        "Export MP3"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Abos je nach Nutzung (Creator/Business/API). Lizenzumfang tarifabhängig.",
+      "worth_it_score": null,
+      "aban_note": "generative Royalty-Free-Musik, stark als API/für Apps und endlose Loops. Lizenzumfang hängt am Tarif — für kommerzielle Nutzung genau prüfen."
+    },
+    {
+      "id": "aiva",
+      "name": "AIVA",
+      "anbieter": "AIVA Technologies",
+      "url": "https://www.aiva.ai/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "EU-Anbieter",
+      "kategorie": [
+        "Instrumental & Royalty-Free für Content"
+      ],
+      "themen": [
+        "Komposition (Soundtrack/Klassik)",
+        "Editor",
+        "Lizenzoptionen"
+      ],
+      "format": "Web-App (Cloud)",
+      "integration": [
+        "Browser",
+        "Export MP3/MIDI"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Gratis-Tarif (eingeschränkt), Pro mit Urheberrechts-Optionen. Anbieter aus Luxemburg (EU).",
+      "worth_it_score": null,
+      "aban_note": "Komponist-Tool aus Luxemburg (EU) — DACH-näher. Stark für Soundtrack/instrumentale Stücke, mit klareren Lizenz-/Eigentumsoptionen in höheren Tarifen."
+    },
+    {
+      "id": "loudly",
+      "name": "Loudly",
+      "anbieter": "Loudly GmbH",
+      "url": "https://www.loudly.com/",
+      "sprache": [
+        "en",
+        "de"
+      ],
+      "fokus": "EU-Anbieter",
+      "kategorie": [
+        "Instrumental & Royalty-Free für Content"
+      ],
+      "themen": [
+        "Royalty-Free-Generator",
+        "Genre/Länge steuerbar",
+        "API"
+      ],
+      "format": "Web-App + API (Cloud)",
+      "integration": [
+        "Browser",
+        "API",
+        "Export MP3/WAV"
+      ],
+      "deutsche_oberflaeche": null,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Abos; Lizenz zur Nutzung inklusive. Anbieter aus Berlin (DE).",
+      "worth_it_score": null,
+      "aban_note": "Berliner Anbieter (DE/EU) — relevanter DACH-Aspekt für Datenhoheit. Royalty-Free-Musik nach Genre/Länge, auch per API."
+    },
+    {
+      "id": "soundful",
+      "name": "Soundful",
+      "anbieter": "Soundful",
+      "url": "https://soundful.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Royalty-Free für Content",
+      "kategorie": [
+        "Instrumental & Royalty-Free für Content"
+      ],
+      "themen": [
+        "Royalty-Free-Tracks",
+        "Templates",
+        "für Creator/Brands"
+      ],
+      "format": "Web-App (Cloud)",
+      "integration": [
+        "Browser",
+        "Export MP3/WAV"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Gratis-Tarif, danach Abo. Lizenz/Eigentum tarifabhängig.",
+      "worth_it_score": null,
+      "aban_note": "lizenzfreie Tracks aus Vorlagen, gedacht für Creator und Marken. US-Anbieter; Lizenzumfang vor kommerzieller Nutzung prüfen."
+    },
+    {
+      "id": "beatoven",
+      "name": "Beatoven.ai",
+      "anbieter": "Beatoven.ai",
+      "url": "https://www.beatoven.ai/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Royalty-Free für Content",
+      "kategorie": [
+        "Instrumental & Royalty-Free für Content"
+      ],
+      "themen": [
+        "stimmungsbasierte Royalty-Free-Musik",
+        "für Video/Podcast"
+      ],
+      "format": "Web-App (Cloud)",
+      "integration": [
+        "Browser",
+        "Export MP3/WAV"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Abo/Credits; Nutzungslizenz inklusive. Bedingungen prüfen.",
+      "worth_it_score": null,
+      "aban_note": "lizenzfreie Hintergrundmusik nach Stimmung, schlicht für Creator. Solide Alternative zu Soundraw; Lizenzbedingungen lesen."
+    },
+    {
+      "id": "boomy",
+      "name": "Boomy",
+      "anbieter": "Boomy Corporation",
+      "url": "https://boomy.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Song mit Gesang",
+      "kategorie": [
+        "Song-Generierung (Text→Song mit Gesang)"
+      ],
+      "themen": [
+        "Songs erstellen",
+        "Distribution zu Streaming"
+      ],
+      "format": "Web-App (Cloud)",
+      "integration": [
+        "Browser",
+        "Streaming-Distribution"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Gratis-Einstieg, Abos; Distribution teils kostenpflichtig.",
+      "worth_it_score": null,
+      "aban_note": "niedrigschwellig Songs bauen und zu Streaming-Diensten verteilen. Erwartungen real halten: Massen-KI-Uploads werden von Plattformen zunehmend kritisch gesehen."
+    },
+    {
+      "id": "musicgen",
+      "name": "Meta MusicGen / AudioCraft",
+      "anbieter": "Meta",
+      "url": "https://github.com/facebookresearch/audiocraft",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Self-Hosting / Open Source",
+      "kategorie": [
+        "Open Source / Self-Hosting",
+        "Instrumental & Royalty-Free für Content"
+      ],
+      "themen": [
+        "Open Source (MIT)",
+        "Text→Musik",
+        "self-hostbar"
+      ],
+      "format": "Open-Source-Modell (lokal/Server)",
+      "integration": [
+        "Python",
+        "lokale GPU"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": null,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Open Source, kostenlos; du betreibst es selbst (GPU nötig). Lizenz/Modellbedingungen beachten.",
+      "worth_it_score": null,
+      "aban_note": "quelloffenes Musikmodell von Meta (AudioCraft). Self-Hosting = volle Datenhoheit, aber Entwickler-Terrain mit GPU-Bedarf. Für Bastler/Produkte, nicht für Klick-Nutzer."
+    },
+    {
+      "id": "riffusion",
+      "name": "Riffusion",
+      "anbieter": "Riffusion",
+      "url": "https://www.riffusion.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Song mit Gesang",
+      "kategorie": [
+        "Song-Generierung (Text→Song mit Gesang)"
+      ],
+      "themen": [
+        "Text→Song",
+        "großzügiger Gratis-Zugang",
+        "Open-Source-Wurzeln"
+      ],
+      "format": "Web-App (Cloud)",
+      "integration": [
+        "Browser",
+        "Export"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — derzeit großzügiger Gratis-Zugang; Konditionen können sich ändern.",
+      "worth_it_score": null,
+      "aban_note": "Song-Generator mit Open-Source-Wurzeln und (Stand jetzt) großzügigem Gratis-Zugang. Gut zum Ausprobieren; Lizenz für kommerzielle Nutzung prüfen."
+    },
+    {
+      "id": "google-musicfx",
+      "name": "Google MusicFX (Lyria)",
+      "anbieter": "Google",
+      "url": "https://aitestkitchen.withgoogle.com/tools/music-fx",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "International",
+      "kategorie": [
+        "Instrumental & Royalty-Free für Content"
+      ],
+      "themen": [
+        "Text→Musik",
+        "Experiment (AI Test Kitchen)"
+      ],
+      "format": "Web (AI Test Kitchen)",
+      "integration": [
+        "Browser",
+        "Google-Konto"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": null,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — experimentell, Verfügbarkeit je Region; Nutzungsbedingungen prüfen.",
+      "worth_it_score": null,
+      "aban_note": "Googles experimentelles Musik-Tool (Lyria). Eher zum Ausprobieren als für verlässliche Produktion; Verfügbarkeit und Rechte wechseln."
+    },
+    {
+      "id": "landr",
+      "name": "LANDR",
+      "anbieter": "LANDR Audio",
+      "url": "https://www.landr.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Mastering & Stems",
+      "kategorie": [
+        "Stems & Mastering"
+      ],
+      "themen": [
+        "KI-Mastering",
+        "Distribution",
+        "Plugins",
+        "Samples"
+      ],
+      "format": "Web-App + Desktop",
+      "integration": [
+        "Browser",
+        "DAW-Plugins",
+        "Streaming-Distribution"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Abos je nach Umfang (Mastering/Distribution). Datenregion vor Nutzung prüfen.",
+      "worth_it_score": null,
+      "aban_note": "Anbieter aus Montreal/Kanada (nicht EU). etabliertes KI-Mastering (plus Distribution/Plugins). Für schnelles, brauchbares Mastering ohne Tonstudio; ersetzt keinen Profi bei anspruchsvollen Releases."
+    },
+    {
+      "id": "moises",
+      "name": "Moises",
+      "anbieter": "Music.AI (Moises)",
+      "url": "https://moises.ai/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Mastering & Stems",
+      "kategorie": [
+        "Stems & Mastering"
+      ],
+      "themen": [
+        "Stem-Separation",
+        "Tonart/Tempo",
+        "Üben/Playback"
+      ],
+      "format": "App + Web (Cloud)",
+      "integration": [
+        "App",
+        "Browser",
+        "Export Stems"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Gratis-Tarif, danach Abo. Datenverarbeitung überwiegend USA.",
+      "worth_it_score": null,
+      "aban_note": "trennt Songs in Spuren (Gesang/Drums/Bass), erkennt Tonart/Tempo — top zum Üben und für Remixe/Karaoke. Für fremde Songs nur im erlaubten Rahmen nutzen."
+    },
+    {
+      "id": "lalal-ai",
+      "name": "LALAL.AI",
+      "anbieter": "LALAL.AI",
+      "url": "https://www.lalal.ai/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Mastering & Stems",
+      "kategorie": [
+        "Stems & Mastering"
+      ],
+      "themen": [
+        "Stem-/Vocal-Removal",
+        "hohe Trennqualität",
+        "Batch"
+      ],
+      "format": "Web-App + API",
+      "integration": [
+        "Browser",
+        "API",
+        "Export Stems"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Bezahlung nach Minuten-Paketen. Datenregion vor Nutzung prüfen.",
+      "worth_it_score": null,
+      "aban_note": "Schweizer Anbieter (OmniSale GmbH, Zug) — DACH, DSGVO-adäquat. spezialisiert auf saubere Stem-/Vocal-Trennung, auch per API. Stark, wenn es nur ums Heraustrennen geht; Rechte am Ausgangsmaterial beachten."
+    },
+    {
+      "id": "endel",
+      "name": "Endel",
+      "anbieter": "Endel",
+      "url": "https://endel.io/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "Funktionsmusik / Soundscapes",
+      "kategorie": [
+        "Funktionsmusik / Soundscapes"
+      ],
+      "themen": [
+        "Fokus-/Schlaf-Soundscapes",
+        "personalisiert",
+        "Apps"
+      ],
+      "format": "App (iOS/Android/Desktop)",
+      "integration": [
+        "App",
+        "Streaming"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Abo. Anbieter mit Berliner Wurzeln; Datenregion prüfen.",
+      "worth_it_score": null,
+      "aban_note": "Berliner Anbieter (Endel Sound GmbH) — DACH/EU. keine „Songs“, sondern personalisierte Funktions-Soundscapes (Fokus, Schlaf, Entspannung). Eher Wellness-/Produktivitäts-Tool als Musikproduktion."
+    }
+  ]
+}

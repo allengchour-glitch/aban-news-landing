@@ -1,0 +1,19 @@
+Chapter 9 - Essential to the War
+
+When the war came, in August fourteen, they marched through Voßlohe with music and flags, and the young men, who had never got out of the district, signed up as if going on an outing. Wilhelm watched them go and did not sign up. Miners were exempted, it was soon said, essential to the war, for without coal no steel, without steel no shells, and so most of the hewers stayed underground, where the war needed them, alive. It was a bitter mercy. While the farmers' sons bled to death in Flanders, the miners' sons bled more slowly, in the depths, at the lung, at the driven-up quota.
+
+For the production had to rise, always rise. The directorate took orders from the War Office, and the orders meant more coal, and more coal meant more shifts, less safety, more pressure on every man who had stayed. Wilhelm as overman stood in the middle of it. He was to drive the gangs, who were already working at the limit, older men, half-children, for the strongest were gone after all, voluntarily or fetched. He saw the accidents coming before they came, because one hurried, because one set props where one should not hurry and should build the roof properly, and sometimes he could prevent it and sometimes not, and when not, he carried them, one after another, in his already loaded reckoning.
+
+Otto Brass went to war in the second year. He need not have; he had become a miner, somewhere at the edge of the district, where they would still take a Brass who bore the name of his blacklisted father. But he went, half out of defiance, half out of the hunger for some other life than the one the district had left him. Wilhelm heard of it and thought of Heinrich, who now saw his only son go off to war, the war of the gentlemen, for whom he was nothing, and Wilhelm thought that the poor always bled for other men's causes, underground as above ground, and that no war changed that, but only made it clearer.
+
+At home the hunger became habit. There was bread made of anything that could be milled, and ration cards for everything, and the cards counted for more than the money, because there was nothing to buy for the money. Bertha ran the economy of scarcity the way she ran everything, with iron exactness. She knew where there were secretly eggs, by barter, where a farmwife at the town's edge gave potatoes for a length of cloth. She sent little August, now eleven, foraging through the countryside, with a sack and a face that stirred pity, and August came back with turnips and pride, because he was contributing to the family's survival, and Wilhelm watched with worry, for the boy was growing into the scarcity as though it were normal, and for him it was.
+
+"He's tough," said Bertha one evening, almost in praise, when August slept. "He'll get through."
+
+"He shouldn't have to be tough," said Wilhelm.
+
+Bertha looked at him. "Here everyone gets tough. Or they go under. What do you want him to be?"
+
+To that Wilhelm had no answer. He wanted August not to have to go down, neither into the mountain nor into the war, to get out of the district that wore people away. But he saw no way there, no honest one, and the dishonest ways he knew, one of them he knew very well, and he had sworn his son would not have to walk them. That was his atonement and his hope at once: that out of the betrayal at least this might come, a boy who would never have to betray, because he would never stand so deep down that betrayal was the only way out.
+
+It was a hope as thin as the war bread, and Wilhelm held on to it because he had nothing else to hold on to, and outside the winding ran day and night, coal for the steel, steel for the front, and the district gave what it had, coal and men, and got back what it always got: cards, scarcity, and the names of the fallen, which the pastor read from the pulpit on Sundays, ever longer, a second blacklist, the one the war kept.

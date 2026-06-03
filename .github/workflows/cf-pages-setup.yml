@@ -1,0 +1,62 @@
+name: Cloudflare Pages — Projekt anlegen
+
+# Manuell ausgelöster Workflow: legt ein (oder alle offenen) Radar-Subdomain-
+# Projekt(e) per Cloudflare-API an — Pages-Projekt + Custom-Domain + DNS-CNAME.
+# Ersetzt den Dashboard-Klick. Idempotent: bereits Vorhandenes wird übersprungen.
+#
+# Voraussetzung (einmalig): Repo-Secrets setzen unter
+#   Settings → Secrets and variables → Actions
+#     CLOUDFLARE_API_TOKEN   (Account · Cloudflare Pages · Edit  +  Zone · DNS · Edit)
+#     CLOUDFLARE_ACCOUNT_ID  (optional, falls der Token mehrere Accounts sieht)
+# Und einmalig im CF-Dashboard die GitHub-App-Verbindung autorisiert haben
+# (Connect to Git) — diese OAuth-Verknüpfung lässt sich per API nicht herstellen.
+
+on:
+  workflow_dispatch:
+    inputs:
+      radar:
+        description: 'Radar-Kürzel (z. B. video) oder "all-pending" für alle offenen'
+        required: true
+        default: 'all-pending'
+      dry_run:
+        description: 'Nur anzeigen, nichts ändern (erst so testen, dann Haken weg)'
+        type: boolean
+        default: true
+      no_deploy:
+        description: 'Keinen ersten Deploy auslösen (CF deployt sonst beim nächsten main-Push)'
+        type: boolean
+        default: false
+
+jobs:
+  setup:
+    name: CF Pages Setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run cf_pages_setup.py
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::Secret CLOUDFLARE_API_TOKEN fehlt — bitte in den Repo-Secrets setzen."
+            exit 1
+          fi
+          ARGS=""
+          [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          [ "${{ inputs.no_deploy }}" = "true" ] && ARGS="$ARGS --no-deploy"
+          if [ "${{ inputs.radar }}" = "all-pending" ]; then
+            ARGS="$ARGS --all-pending"
+          else
+            ARGS="$ARGS ${{ inputs.radar }}"
+          fi
+          echo "Aufruf: python3 tools/cf_pages_setup.py$ARGS"
+          python3 tools/cf_pages_setup.py $ARGS

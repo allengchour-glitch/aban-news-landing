@@ -1,0 +1,129 @@
+================================================================
+GUMROAD — PRODUKT-SETUP zum Kopieren & Einfuegen
+Buch "Anti-Hype" · aban news · Stand 2026-05-30
+================================================================
+
+Wofuer diese Datei: Gumroad ist die Alternative zu Lemon Squeezy —
+oft schneller startklar, weil weniger Setup noetig ist. Der wichtige
+Unterschied steht in Abschnitt 3: Gumroad ist NICHT in gleicher Weise
+"Merchant of Record" fuer die EU-MwSt. Auf Ebooks zieht Gumroad zwar
+in vielen EU-Laendern die MwSt am Checkout ein und fuehrt sie ab, aber
+deine eigene Steuerpflicht (Schweiz, ggf. EU-Registrierung) bleibt bei
+dir. Klaer das mit deiner Treuhand/deinem Steuerberater. Wenn du es
+ohne eigenen Steuer-Aufwand willst, ist Lemon Squeezy der ruhigere Weg
+(siehe lemonsqueezy-produkt-setup.txt).
+
+So nutzt du diese Datei: Lege in Gumroad ein neues Produkt an
+(Products -> New product -> Digital product) und kopiere die Werte
+unten Feld fuer Feld. Ueberall, wo [DU] steht, musst du selbst etwas
+eintragen (Bank, Steuer) — das kann niemand fuer dich.
+
+----------------------------------------------------------------
+1) PRODUKTTYP
+----------------------------------------------------------------
+Digital product  (einmaliger Kauf, kein Abo / kein Membership)
+
+----------------------------------------------------------------
+2) NAME (Produkttitel)
+----------------------------------------------------------------
+Anti-Hype — Wie Solopreneure KI ohne Bullshit einsetzen
+
+----------------------------------------------------------------
+3) PREIS / PRICING
+----------------------------------------------------------------
+Modell:        "Pay what you want" / Gumroad nennt es
+               "Let customer pay what they want" — Haken setzen.
+Mindestpreis:  0
+Vorschlagspreis (suggested amount): 9
+Waehrung:      EUR
+
+Steuer-Hinweis (ehrlich): Gumroad ist NICHT in gleicher Weise wie
+Lemon Squeezy dein "Merchant of Record" fuer die EU-MwSt. In der
+Praxis kassiert Gumroad bei Ebook-Verkaeufen in vielen EU-Laendern die
+MwSt am Checkout und fuehrt sie ab — aber deine eigene steuerliche
+Situation (Schweiz, evtl. EU-Registrierung, Verbuchung der Einnahmen)
+musst du selbst regeln. Du bist hier mehr in der Pflicht als bei Lemon
+Squeezy. Im Zweifel kurz mit deiner Treuhand abklaeren.
+
+----------------------------------------------------------------
+4) BESCHREIBUNG (Description) — alles ab hier kopieren
+----------------------------------------------------------------
+KI ohne Hype, ohne Bullshit, ohne 10x-Versprechen.
+
+Dieses Buch ist die Essenz aus dem taeglichen Newsletter aban news:
+Wie du als Selbststaendige oder Selbststaendiger KI wirklich nutzt —
+und den ganzen Laerm drumherum ignorierst.
+
+Drin ist unter anderem:
+- Der 3-Fragen-Filter, mit dem du Hype von Nutzen trennst
+- Dein minimaler KI-Stack: vier Bausteine, mehr brauchst du nicht
+- Fertige Vorlagen zum Kopieren (Angebot, Cold-Mail, Zusammenfassung)
+- Ein Tag, komplett durchgespielt: vorher von Hand, nachher mit KI
+- Werkzeug nach Aufgabe — mit ehrlichen Hinweisen zu Kosten und DSGVO
+- Die sieben Hype-Fallen, die dich Zeit und Geld kosten
+
+Du bekommst PDF und ePub (fuer Kindle und E-Reader). Kein Tracking,
+keine Anmeldung noetig, auf jedem Geraet lesbar.
+
+Pay what you want: Lad es zum Preis, der dir fair ist. Wenn es dir
+geholfen hat, kannst du mehr geben — du entscheidest.
+
+Geschrieben von Aban (Allen Chour), abannews.com
+
+----------------------------------------------------------------
+5) DATEIEN HOCHLADEN (Content / Files)
+----------------------------------------------------------------
+Lade beide hoch (liegen im Repo unter downloads/):
+- anti-hype-ebook.pdf
+- anti-hype-ebook.epub
+
+Optional spaeter zusaetzlich die Sprachversionen:
+- anti-hype-ebook-en.pdf / .epub
+- anti-hype-ebook-fr.pdf / .epub
+- anti-hype-ebook-it.pdf / .epub
+
+----------------------------------------------------------------
+6) PRODUKTBILD / COVER (Thumbnail + Cover)
+----------------------------------------------------------------
+Nutze das fertige Cover:  downloads/kdp-cover-ebook.png
+(1600x2560, markengerecht.)
+
+Hinweis zum Zuschnitt: Gumroad zeigt das Cover je nach Stelle im Shop
+unterschiedlich an und schneidet hochformatige Bilder teils zu einem
+breiteren/quadratischen Ausschnitt. Falls dir der Zuschnitt nicht
+gefaellt, leg zusaetzlich eine quadratische Variante an (z. B. 1200x1200
+mit dem Titel mittig, Rand drumherum) und nutze die als Thumbnail.
+
+----------------------------------------------------------------
+7) KURZ-INFOS / WEITERE FELDER (falls gefragt)
+----------------------------------------------------------------
+Kategorie:        Ebooks / Education / Business
+Tags:             ki, kuenstliche-intelligenz, solopreneur,
+                  selbststaendig, produktivitaet, newsletter, ebook
+Sprache:          Deutsch (de)
+URL-Slug (permalink): anti-hype
+Dankesnachricht nach Kauf (Receipt / "Content" -> Confirmation):
+    Danke dir. Viel Spass beim Lesen — und schreib mir gern, was du
+    umgesetzt hast: abannews.com
+
+----------------------------------------------------------------
+8) NUR DU (kann ich nicht ausfuellen)
+----------------------------------------------------------------
+[DU] Bankverbindung / Auszahlung (Settings -> Payments / Payouts)
+[DU] Steuer- und Identitaetsangaben (Schweiz) — bei Gumroad bist du
+     fuer deine eigene Steuer mehr selbst zustaendig, siehe Abschnitt 3.
+[DU] Profil-/Shop-Name bestaetigen: "aban news"
+
+----------------------------------------------------------------
+9) NACH "PUBLISH"
+----------------------------------------------------------------
+Kopiere den Produkt-/Buy-Link. Bei Gumroad sieht er aus wie:
+  https://abannews.gumroad.com/l/anti-hype
+und schick ihn mir. Ich trage ihn an EINER Stelle ein:
+  js/buch-config.js  ->  BUY_URL: "https://abannews.gumroad.com/l/anti-hype"
+Alle vier Buchseiten (de/en/fr/it) lesen daraus — ein Eintrag genuegt.
+Danach committe und pushe ich, der Kauf-Button ist sofort live.
+
+(Falls du es selbst machen willst: in js/buch-config.js den Link
+zwischen die Anfuehrungszeichen von BUY_URL setzen, speichern, pushen.)
+================================================================

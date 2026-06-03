@@ -1,0 +1,170 @@
+COMMUNITY-GUIDE: aban news in Online-Communities wachsen, ohne zu spammen
+========================================================================
+
+Worum es hier geht
+------------------
+Communities sind fuer aban news ein Kanal mit Null Budget - aber dosiert.
+Du gewinnst Leute, indem du zuerst nuetzlich bist, nicht indem du Links streust.
+Ein einziger Spam-Post kann dem Ruf der Marke mehr schaden als zehn gute
+Beitraege ihm nutzen. Lies diesen Leitfaden, bevor du in einer neuen Community
+postest.
+
+
+1. Das Grundprinzip
+-------------------
+- Erst Nutzen liefern. Den Link zum Newsletter erwaehnst du nur dann, wenn er
+  zur konkreten Frage wirklich passt und die Community das erlaubt.
+- Verhaeltnis grob 10:1. Auf etwa zehn rein hilfreiche Beitraege kommt
+  hoechstens eine eigene Erwaehnung. Wenn du unsicher bist, lass die Erwaehnung
+  weg.
+- Du bist Teilnehmer, kein Werbeplatz. Stell dir vor, du wuerdest die Person
+  auch ohne Newsletter beraten. Genau so antwortest du.
+- Qualitaet vor Menge. Drei durchdachte Antworten pro Woche bringen dir mehr
+  als zwanzig schnelle Einzeiler.
+- Sei du selbst, in der du-Form, ohne Werbesprech.
+
+
+2. Relevante Community-TYPEN (Kategorien, keine konkreten Namen)
+---------------------------------------------------------------
+Wichtig: Such die konkreten Orte selbst und pruefe sie. Behaupte nie, eine
+bestimmte Gruppe sei aktiv oder gross, wenn du es nicht selbst gesehen hast.
+
+a) DACH-Selbststaendigen- und Freelancer-Foren
+   - Wie suchen: Suchbegriffe wie "Forum Selbststaendige", "Freelancer Community
+     Deutschland", "Solo-Selbststaendige Austausch" in einer Suchmaschine.
+     Auch Branchenverbaende und Handelskammern verlinken oft Foren.
+   - Worauf achten: Lies zuerst die Forenregeln und die Rubrik fuer Vorstellungen.
+     Viele Foren haben einen eigenen Bereich fuer eigene Projekte - nutze den,
+     statt anderswo zu werben.
+   - So hilfst du: Beantworte konkrete Fragen zu Tools, Steuern-nahe
+     Organisation, Akquise, Zeiteinteilung. Teile, was bei dir funktioniert hat.
+
+b) KI- und Tech-Subreddits
+   - Wie suchen: Auf Reddit nach Themen wie KI, maschinelles Lernen,
+     Produktivitaet oder Solo-Business suchen. Achte auf deutschsprachige
+     Subreddits und auf Subreddits mit klarem Fokus.
+   - Worauf achten: Reddit ist streng bei Eigenwerbung. Lies die Sidebar-Regeln
+     und die Pinned-Posts. Viele Subreddits verbieten Links zu eigenen
+     Newslettern komplett oder erlauben sie nur an festen Tagen.
+   - So hilfst du: Erklaere ein Konzept verstaendlich, raeume mit einem
+     Missverstaendnis auf, gib eine konkrete Schritt-fuer-Schritt-Antwort.
+
+c) Slack- und Discord-Communities fuer Solopreneure
+   - Wie suchen: Suchbegriffe wie "Slack community solopreneurs",
+     "Discord indie business", "Discord KI deutsch". Viele Newsletter und
+     Kurse betreiben eigene Slack-/Discord-Raeume - schau in deren Footer.
+   - Worauf achten: Es gibt fast immer einen Vorstellungs-Channel und einen
+     eigenen Channel fuer "share your work". Poste nur dort, was dort hingehoert.
+     Direktnachrichten an Fremde mit Werbung sind tabu.
+   - So hilfst du: Antworte schnell und konkret in den Hilfe-Channels.
+     Bleib praesent ueber Wochen, nicht nur einmal.
+
+d) Fachgruppen auf LinkedIn
+   - Wie suchen: In der LinkedIn-Suche nach Gruppen zu KI, Selbststaendigkeit,
+     DACH-Mittelstand filtern. Achte auf Gruppen mit echter Diskussion, nicht
+     nur Link-Ablage.
+   - Worauf achten: Pruefe die Gruppenregeln und ob Moderation aktiv ist.
+     Reine Werbegruppen bringen wenig. Persoenliche Beitraege auf deinem eigenen
+     Profil wirken oft besser als Gruppen-Posts.
+   - So hilfst du: Teile eine konkrete Beobachtung aus der Praxis, kommentiere
+     hilfreich unter Beitraegen anderer, stell eine ehrliche Frage.
+
+e) Indie-Hacker- und Maker-Communities
+   - Wie suchen: Suchbegriffe wie "indie hacker community", "maker community
+     newsletter", "bootstrapper forum". Solche Orte sind oft offen fuer Leute,
+     die etwas aufbauen.
+   - Worauf achten: Hier ist "zeig, was du baust" meist ausdruecklich erwuenscht -
+     aber mit ehrlichem Kontext, nicht als Verkaufspitch. Trotzdem die Regeln
+     lesen.
+   - So hilfst du: Teile, was du gelernt hast, auch Fehlschlaege. Beantworte
+     Fragen anderer Maker zu ihrem Aufbau.
+
+
+3. Vier Beispiel-Antwort-Vorlagen
+---------------------------------
+Passe sie immer an die konkrete Frage an. Kopiere sie nicht wortgleich in viele
+Communities - das faellt auf und wirkt wie Spam.
+
+--- Vorlage A: Hilfreiche Antwort auf eine KI-Frage (verkauft NICHTS) ---
+
+"Kurze Einordnung dazu: Fuer den Fall, den du beschreibst, reicht meist ein
+einfacher Ablauf. Erstens [konkreter Schritt]. Zweitens [konkreter Schritt].
+Achte vor allem auf [Stolperstein], da geht bei den meisten Zeit verloren.
+Wenn du magst, beschreib deinen genauen Use-Case, dann kann ich praeziser
+antworten."
+
+(Kein Link, keine Marke. Reine Hilfe. Das ist der Normalfall.)
+
+
+--- Vorlage B: Hilfreiche Antwort mit dezenter Newsletter-Erwaehnung ---
+(NUR posten, wenn die Community-Regeln eigene Links ausdruecklich erlauben.)
+
+"So wuerde ich da rangehen: [konkreter, vollstaendiger Loesungsweg in zwei,
+drei Saetzen]. Das deckt deinen Fall schon ab.
+Falls du sowas regelmaessig auf Deutsch zusammengefasst haben willst: Ich
+schreibe dazu einen taeglichen Newsletter (aban news). Kein Pflichtteil meiner
+Antwort - der Loesungsweg oben steht fuer sich."
+
+(Die Hilfe steht zuerst und ist vollstaendig. Die Erwaehnung ist optional,
+klein und ehrlich gekennzeichnet.)
+
+
+--- Vorlage C: "Show what you built"-Post ---
+(Nur im dafuer vorgesehenen Channel/Bereich.)
+
+"Ich baue aban news - einen taeglichen deutschsprachigen Newsletter zu KI fuer
+Selbststaendige im DACH-Raum. Idee: Mo bis Fr, fuenf Minuten, ohne Hype.
+Was ich bisher gelernt habe: [eine konkrete, ehrliche Erkenntnis oder ein
+Fehler]. Worauf ich gerade keine gute Antwort habe: [echte offene Frage].
+Feedback zu beidem nehme ich gern."
+
+(Ehrlicher Kontext plus echte Frage. Kein Superlativ, keine Versprechen.)
+
+
+--- Vorlage D: Vorstellung in einer neuen Community ---
+(Nur im Vorstellungs-Channel/Thread.)
+
+"Hallo zusammen, ich bin Allen aus Belp in der Schweiz. Ich bin selbststaendig
+und beschaeftige mich taeglich mit praktischer KI-Nutzung. Hier bin ich vor
+allem, um mitzulesen und bei konkreten Fragen zu helfen. Nebenbei schreibe ich
+einen Newsletter dazu, aber dafuer bin ich nicht hier - freue mich auf den
+Austausch."
+
+(Person zuerst, Projekt als Randnotiz, klare Absicht: helfen.)
+
+
+4. Do / Don't
+-------------
+DO
+- Forenregeln und Pinned-Posts lesen, bevor du den ersten Beitrag schreibst.
+- Eigene Links nur im dafuer vorgesehenen Bereich posten.
+- Vollstaendig antworten, auch ohne Gegenleistung.
+- Auf Antworten reagieren und nachfragen - bleib im Gespraech.
+- Den eigenen Newsletter offen als deinen kennzeichnen.
+- Ueber Wochen praesent bleiben statt einmal viel zu posten.
+
+DON'T
+- Keinen Link in jeden Beitrag setzen.
+- Keine identischen Texte in mehrere Communities kopieren.
+- Keine Werbung per Direktnachricht an Fremde schicken.
+- Keine Diskussion kapern, um auf dich zu lenken.
+- Keine erfundenen Zahlen oder Behauptungen ueber den Newsletter aufstellen.
+- Keine Hype-Worte, keine Mehrfach-Ausrufezeichen.
+
+
+5. Warnung zu Self-Promo-Regeln und Banns
+-----------------------------------------
+Fast jede Community hat eigene Regeln zur Eigenwerbung - und Moderatoren setzen
+sie durch. Typische Folgen bei Verstoessen: Beitrag wird geloescht, Account wird
+stummgeschaltet, im schlimmsten Fall dauerhafter Bann. Ein Bann ist oft
+endgueltig und kann auch andere Communities auf derselben Plattform betreffen.
+
+Praktische Regeln, um das zu vermeiden:
+- Erst mehrere Wochen nur mitlesen und helfen, bevor du das erste Mal den
+  Newsletter erwaehnst.
+- Im Zweifel einen Moderator vorher fragen, ob eine Erwaehnung in Ordnung ist.
+- Lieber gar nicht verlinken als gegen eine Regel verstossen. Ein guter Ruf in
+  der Community ist mehr wert als ein einzelner Klick.
+
+Merksatz: Wenn sich ein Beitrag fuer dich wie Werbung anfuehlt, fuehlt er sich
+fuer die Community auch so an. Dann lass den Link weg.

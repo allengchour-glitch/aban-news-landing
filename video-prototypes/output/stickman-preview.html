@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neo-Stickman — Stil-Vorschau</title>
+<style>
+  :root{
+    --bg1:#1a1530; --bg2:#2d1b4e;
+    --amber:#ffb020; --amber2:#ff7a18;
+    --ink:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 50% 30%, var(--bg2), var(--bg1));
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#fff;
+    flex-direction:column;gap:24px;padding:24px;
+  }
+  .stage{
+    position:relative;width:340px;height:380px;
+    border-radius:28px;overflow:hidden;
+    background:
+      radial-gradient(120px 120px at 50% 60%, rgba(255,176,32,.18), transparent 70%),
+      linear-gradient(160deg,#241a3f,#160f2b);
+    box-shadow:0 30px 80px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
+  }
+  /* drifting bg blobs */
+  .blob{position:absolute;border-radius:50%;filter:blur(26px);opacity:.45;mix-blend-mode:screen}
+  .b1{width:160px;height:160px;background:#7b5cff;left:-30px;top:-20px;animation:drift 7s ease-in-out infinite}
+  .b2{width:130px;height:130px;background:#ff5ca8;right:-20px;bottom:10px;animation:drift 9s ease-in-out infinite reverse}
+  @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,18px)}}
+
+  /* whole-body energetic bob */
+  .guy{position:absolute;left:50%;top:50%;transform:translate(-50%,-46%);
+       transform-origin:50% 90%;animation:bob .42s ease-in-out infinite}
+  @keyframes bob{
+    0%,100%{transform:translate(-50%,-46%) rotate(-1.5deg) scaleY(1)}
+    50%{transform:translate(-50%,-49%) rotate(1.5deg) scaleY(1.03)}
+  }
+  svg{overflow:visible}
+  .limb{stroke:url(#g);stroke-width:13;stroke-linecap:round;fill:none;
+        filter:drop-shadow(0 4px 6px rgba(0,0,0,.35))}
+  .body{stroke:url(#g);stroke-width:15;stroke-linecap:round;fill:none;
+        filter:drop-shadow(0 6px 10px rgba(0,0,0,.4))}
+  .head{fill:url(#g);filter:drop-shadow(0 6px 10px rgba(0,0,0,.4))}
+  .hand{fill:#fff;filter:drop-shadow(0 3px 4px rgba(0,0,0,.3))}
+  .eye{fill:#160f2b}
+  .brow{stroke:#160f2b;stroke-width:4.5;stroke-linecap:round}
+
+  /* fast "zappelig" joints */
+  .armL{transform-origin:0 0;animation:armL .34s ease-in-out infinite}
+  .armR{transform-origin:0 0;animation:armR .30s ease-in-out infinite}
+  .legL{transform-origin:0 0;animation:legL .42s ease-in-out infinite}
+  .legR{transform-origin:0 0;animation:legR .42s ease-in-out infinite}
+  @keyframes armL{0%,100%{transform:rotate(18deg)}50%{transform:rotate(-46deg)}}
+  @keyframes armR{0%,100%{transform:rotate(-22deg)}50%{transform:rotate(40deg)}}
+  @keyframes legL{0%,100%{transform:rotate(8deg)}50%{transform:rotate(-8deg)}}
+  @keyframes legR{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(9deg)}}
+
+  .headG{transform-origin:50% 100%;animation:nod .42s ease-in-out infinite}
+  @keyframes nod{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+
+  .blink{animation:blink 3.1s infinite}
+  @keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+
+  /* motion smear lines on arm swing */
+  .smear{stroke:var(--amber);stroke-width:3;stroke-linecap:round;opacity:0;
+         animation:smear .30s ease-in-out infinite}
+  @keyframes smear{0%,100%{opacity:0}40%{opacity:.55}}
+
+  .caption{font-weight:800;font-size:15px;letter-spacing:.3px;
+    background:rgba(255,255,255,.08);padding:7px 14px;border-radius:999px;
+    border:1px solid rgba(255,176,32,.4)}
+  h1{font-size:19px;font-weight:800}
+  .legend{font-size:13px;opacity:.7;max-width:340px;text-align:center;line-height:1.5}
+  b{color:var(--amber)}
+</style>
+</head>
+<body>
+  <h1>🪩 Neo-Stickman — „zappelig / viral"</h1>
+  <div class="stage">
+    <div class="blob b1"></div><div class="blob b2"></div>
+
+    <div class="guy">
+      <svg width="180" height="240" viewBox="0 0 180 240">
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffd76a"/>
+            <stop offset="1" stop-color="#ff7a18"/>
+          </linearGradient>
+        </defs>
+
+        <!-- legs (pivot at hip ~90,150) -->
+        <g transform="translate(90,150)">
+          <g class="legL"><line class="limb" x1="0" y1="0" x2="-22" y2="60"/>
+            <circle class="hand" cx="-22" cy="60" r="7"/></g>
+          <g class="legR"><line class="limb" x1="0" y1="0" x2="22" y2="60"/>
+            <circle class="hand" cx="22" cy="60" r="7"/></g>
+        </g>
+
+        <!-- body -->
+        <line class="body" x1="90" y1="78" x2="90" y2="150"/>
+
+        <!-- arms (pivot at shoulder ~90,92) -->
+        <g transform="translate(90,92)">
+          <g class="armL">
+            <line class="smear" x1="0" y1="0" x2="-40" y2="20"/>
+            <line class="limb" x1="0" y1="0" x2="-34" y2="34"/>
+            <circle class="hand" cx="-34" cy="34" r="9"/>
+          </g>
+          <g class="armR">
+            <line class="smear" x1="0" y1="0" x2="40" y2="-18"/>
+            <line class="limb" x1="0" y1="0" x2="34" y2="-30"/>
+            <circle class="hand" cx="34" cy="-30" r="9"/>
+          </g>
+        </g>
+
+        <!-- head -->
+        <g class="headG">
+          <circle class="head" cx="90" cy="50" r="30"/>
+          <g class="blink" style="transform-box:fill-box;transform-origin:center">
+            <circle class="eye" cx="80" cy="50" r="4.5"/>
+            <circle class="eye" cx="100" cy="50" r="4.5"/>
+          </g>
+          <path class="brow" d="M73,39 q7,-5 14,-1" fill="none"/>
+          <path class="brow" d="M93,38 q7,-4 14,1" fill="none"/>
+        </g>
+      </svg>
+    </div>
+
+    <div style="position:absolute;left:50%;bottom:16px;transform:translateX(-50%)">
+      <span class="caption">…und drittens: die Belohnung ⭐</span>
+    </div>
+  </div>
+
+  <p class="legend">
+    <b>Was neu ist:</b> dicke, runde Verlaufs-Striche (amber→orange) statt dünn-schwarz ·
+    <b>Hände/Füße als Punkte</b> für Klarheit · <b>Squash &amp; Stretch</b> + Overshoot beim Bobben ·
+    <b>Motion-Smears</b> bei schnellen Arm-Swings · ausdrucksvoller Kopf mit Augenbrauen &amp; Blinzeln ·
+    Drop-Shadow hebt die Figur vom bewegten Hintergrund ab.
+  </p>
+</body>
+</html>

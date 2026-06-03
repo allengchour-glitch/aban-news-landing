@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unix-Timestamp-Konverter · aban news</title>
+<meta name="description" content="Kostenloses Tool: Unix-Timestamp in Datum/Uhrzeit umwandeln und zurück — lokale Zeit und UTC, ISO 8601, deutsches Format. Für Logs, APIs, Automatisierungen. Lokal im Browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/timestamp-konverter.html">
+<meta property="og:title" content="Unix-Timestamp-Konverter">
+<meta property="og:description" content="Unix-Timestamp ↔ Datum/Uhrzeit (lokal + UTC, ISO). Für Logs & APIs. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/timestamp-konverter.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Unix-Timestamp-Konverter",
+"url":"https://abannews.com/timestamp-konverter.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Wandelt Unix-Timestamps in Datum/Uhrzeit um und zurück (lokal, UTC, ISO 8601).",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.panel h2{font-size:1.1rem;margin-bottom:10px}
+label{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+input[type=text]{width:100%;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink)}
+input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;align-items:center}
+.kv{margin-top:10px}
+.kv .r{display:flex;gap:10px;flex-wrap:wrap;padding:7px 0;border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent);font-size:.92rem}
+.kv .r:last-child{border-bottom:0}
+.kv .k{flex:0 0 9em;color:var(--muted)}
+.kv .v{flex:1;min-width:180px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;word-break:break-all}
+.status{font-size:.9rem;font-weight:600;min-height:1.2em}
+.status.bad{color:var(--bad)}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Unix-Timestamp</span> umwandeln</h1>
+    <p>Einen Unix-Timestamp in lesbares Datum/Uhrzeit umwandeln — oder ein Datum in den Timestamp. Praktisch für Log-Dateien, API-Antworten und Cron-Debugging. Lokal im Browser, nichts wird gesendet.</p>
+  </section>
+
+  <section class="panel" id="tool">
+    <h2>Timestamp → Datum</h2>
+    <div class="bar">
+      <button class="btn" id="now">Jetzt einsetzen</button>
+      <span class="note" style="margin:0">Sekunden oder Millisekunden — wird automatisch erkannt</span>
+    </div>
+    <input type="text" id="ts" value="1700000000" spellcheck="false" inputmode="numeric">
+    <div class="status bad" id="tsErr"></div>
+    <div class="kv" id="tsOut"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Datum → Timestamp</h2>
+    <label for="dt">Datum &amp; Uhrzeit (lokale Zeit)</label>
+    <input type="text" id="dt" value="2023-11-14 23:13:20" spellcheck="false" placeholder="z. B. 2024-12-31 18:00 oder 14.11.2023 23:13">
+    <div class="status bad" id="dtErr"></div>
+    <div class="kv" id="dtOut"></div>
+  </section>
+
+  <div class="cta"><strong>Mehr Glue-Tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Logs, APIs &amp; Automatisierung.</p>
+    <p><a class="btn" href="/cron-generator.html">Cron</a>
+      <a class="btn ghost" href="/json-formatter.html">JSON</a>
+      <a class="btn ghost" href="/encoder.html">Base64/URL</a></p></div>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/cron-generator.html">Cron</a> · <a href="/json-formatter.html">JSON</a> ·
+  <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var DOW=["So","Mo","Di","Mi","Do","Fr","Sa"];
+  function pad(n){return (n<10?"0":"")+n;}
+  function deLocal(d){return DOW[d.getDay()]+", "+pad(d.getDate())+"."+pad(d.getMonth()+1)+"."+d.getFullYear()+" "+pad(d.getHours())+":"+pad(d.getMinutes())+":"+pad(d.getSeconds());}
+  function deUTC(d){return pad(d.getUTCDate())+"."+pad(d.getUTCMonth()+1)+"."+d.getUTCFullYear()+" "+pad(d.getUTCHours())+":"+pad(d.getUTCMinutes())+":"+pad(d.getUTCSeconds())+" UTC";}
+  function rel(d){
+    var diff=Math.round((d.getTime()-Date.now())/1000),a=Math.abs(diff),s;
+    if(a<60)s=a+" Sek.";else if(a<3600)s=Math.round(a/60)+" Min.";
+    else if(a<86400)s=Math.round(a/3600)+" Std.";else s=Math.round(a/86400)+" Tage";
+    return diff<0?("vor "+s):("in "+s);
+  }
+  function row(k,v){return '<div class="r"><span class="k">'+k+'</span><span class="v">'+v+'</span></div>';}
+
+  var ts=document.getElementById("ts"),tsOut=document.getElementById("tsOut"),tsErr=document.getElementById("tsErr");
+  function fromTs(){
+    var raw=ts.value.trim();tsErr.textContent="";
+    if(!/^-?\d+$/.test(raw)){tsErr.textContent=raw?"Bitte eine ganze Zahl eingeben.":"";tsOut.innerHTML="";return;}
+    var num=parseInt(raw,10);
+    var ms=Math.abs(num)>=1e12?num:num*1000; // >=1e12 → schon Millisekunden
+    var d=new Date(ms);
+    if(isNaN(d.getTime())){tsErr.textContent="Ungültiger Timestamp.";tsOut.innerHTML="";return;}
+    tsOut.innerHTML=
+      row("Lokal",deLocal(d))+
+      row("UTC",deUTC(d))+
+      row("ISO 8601",d.toISOString())+
+      row("Relativ",rel(d))+
+      row("Erkannt als",Math.abs(num)>=1e12?"Millisekunden":"Sekunden");
+  }
+  document.getElementById("now").addEventListener("click",function(){ts.value=Math.floor(Date.now()/1000);fromTs();});
+  ts.addEventListener("input",fromTs);
+
+  var dt=document.getElementById("dt"),dtOut=document.getElementById("dtOut"),dtErr=document.getElementById("dtErr");
+  function parseDate(s){
+    s=s.trim();if(!s)return null;
+    var m;
+    // 14.11.2023 23:13:20  oder  14.11.2023
+    if((m=s.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})(?:[ T](\d{1,2}):(\d{2})(?::(\d{2}))?)?$/)))
+      return new Date(+m[3],+m[2]-1,+m[1],+(m[4]||0),+(m[5]||0),+(m[6]||0));
+    // 2023-11-14 23:13:20  oder  2023-11-14
+    if((m=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})(?:[ T](\d{1,2}):(\d{2})(?::(\d{2}))?)?$/)))
+      return new Date(+m[1],+m[2]-1,+m[3],+(m[4]||0),+(m[5]||0),+(m[6]||0));
+    var d=new Date(s);return isNaN(d.getTime())?null:d;
+  }
+  function fromDate(){
+    dtErr.textContent="";
+    var d=parseDate(dt.value);
+    if(!d){dtErr.textContent=dt.value.trim()?"Datum nicht erkannt. Beispiel: 2024-12-31 18:00":"";dtOut.innerHTML="";return;}
+    var sec=Math.floor(d.getTime()/1000);
+    dtOut.innerHTML=
+      row("Timestamp (s)",sec)+
+      row("Timestamp (ms)",d.getTime())+
+      row("ISO 8601",d.toISOString())+
+      row("UTC",deUTC(d));
+  }
+  dt.addEventListener("input",fromDate);
+
+  fromTs();fromDate();
+})();
+</script>
+</body>
+</html>

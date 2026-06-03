@@ -1,0 +1,823 @@
+{
+  "_hinweis": "Themen-Hub-Datenquelle. Neues Thema = neuen Block hier ergänzen, dann `python3 automation/build_themen.py` ausführen → erzeugt themen/<slug>.html + aktualisiert den Index. Felder: slug, titel, eyebrow, intro, sektionen[{h2,text,punkte[]}], faq[{q,a}], related[].",
+  "themen": [
+    {
+      "slug": "ki-tools",
+      "titel": "KI-Tools für DACH-Solos & KMU",
+      "eyebrow": "Thema",
+      "kurz": "Welche KI-Tools sich 2026 wirklich lohnen — ehrlich bewertet, DSGVO-geprüft.",
+      "intro": "Es gibt tausende KI-Tools. Die wenigsten lohnen sich für eine Einzelperson oder ein kleines Team im DACH-Raum. Hier sammle ich, was ich selbst nutze oder getestet habe — mit ehrlicher Einschätzung, DACH-Relevanz und einem Blick auf den Datenschutz.",
+      "sektionen": [
+        {
+          "h2": "Wie ich Tools bewerte",
+          "text": "Drei Fragen entscheiden, ob ein Tool hier landet:",
+          "punkte": [
+            "Löst es ein echtes Problem im Arbeitsalltag — oder ist es nur ein Demo-Effekt?",
+            "Funktioniert es für deutsche Texte und DACH-Geschäftsmodelle?",
+            "Wie steht es um Datenschutz: EU-Hosting, AVV, Datenresidenz?"
+          ]
+        },
+        {
+          "h2": "Die Kategorien, die zählen",
+          "text": "Statt 'alles mit KI' konzentriere ich mich auf das, was Solos und KMU produktiv macht:",
+          "punkte": [
+            "Texten & Recherche (Claude, ChatGPT, Perplexity)",
+            "Automatisierung ohne Code (Make.com, n8n)",
+            "Deutsche Sprache & Übersetzung (DeepL)",
+            "Audio, Bild, Video — wo es sich rechnet"
+          ]
+        },
+        {
+          "h2": "Der ehrliche Teil",
+          "text": "Nicht jedes Tool ist sein Geld wert. Manche kosten viel und können wenig, andere sind gratis und besser als die bezahlte Konkurrenz. Genau diese Unterschiede findest du in der durchsuchbaren Tool-Database — ohne Affiliate-Bias.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Sind die Bewertungen unabhängig?",
+          "a": "Ja. Die Tool-Database ist bewusst affiliate-frei — die Bewertung ändert sich nicht, ob ein Tool zahlt oder nicht."
+        },
+        {
+          "q": "Wie aktuell sind die Tools?",
+          "a": "Die Liste wird laufend gepflegt; jede Werkzeugkasten-Ausgabe im Newsletter testet neue Tools."
+        }
+      ],
+      "related": [
+        "geld-verdienen-mit-ki",
+        "ki-fuer-anfaenger"
+      ]
+    },
+    {
+      "slug": "dsgvo-und-ki",
+      "titel": "DSGVO & KI — was Selbstständige in DACH wissen müssen",
+      "eyebrow": "Thema",
+      "kurz": "KI nutzen, ohne Datenschutz-Ärger. Die 5-Minuten-Version für Solos und KMU.",
+      "intro": "Viele KI-Tools kommen aus den USA und ignorieren EU-Datenschutz. Für DACH-Selbstständige ist das ein echtes Thema — aber kein Grund zur Panik. Wer ein paar Grundregeln beachtet, kann KI rechtssicher einsetzen und macht den Datenschutz sogar zum Verkaufsargument.",
+      "sektionen": [
+        {
+          "h2": "Die Grundregel",
+          "text": "Personenbezogene und vertrauliche Daten gehören nicht ungeschützt in US-KI-Tools. Konkret heißt das:",
+          "punkte": [
+            "Für sensible Kundendaten: Business-Tarife mit Auftragsverarbeitungsvertrag (AVV)",
+            "Oder EU-/self-hosted-Lösungen (z.B. n8n self-hosted, DeepL)",
+            "Im Zweifel: keine echten Namen, keine vertraulichen Inhalte in den Prompt"
+          ]
+        },
+        {
+          "h2": "DSGVO als Vorteil",
+          "text": "In DACH ist 'datenschutzkonform' ein Türöffner. Viele größere Kunden dürfen US-Tools gar nicht nutzen — wer hier sauber arbeitet, gewinnt Aufträge, die anderen verschlossen bleiben.",
+          "punkte": []
+        },
+        {
+          "h2": "Kennzeichnung & Recht",
+          "text": "Ein paar Dinge solltest du transparent machen:",
+          "punkte": [
+            "KI-generierte Inhalte kennzeichnen, wo es relevant ist",
+            "Bei KI-Bildern/Stimmen: Nutzungsrechte und Einwilligungen klären",
+            "Keine Rechtsberatung — im Zweifel Fachperson fragen"
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Darf ich ChatGPT/Claude geschäftlich nutzen?",
+          "a": "Ja — für sensible Daten aber im Business-/Enterprise-Tarif mit AVV, und das Training mit deinen Daten in den Einstellungen abschalten."
+        },
+        {
+          "q": "Ist das hier Rechtsberatung?",
+          "a": "Nein. Es ist eine praktische Orientierung. Bei konkreten Fragen wende dich an eine Datenschutz- oder Rechtsfachperson."
+        }
+      ],
+      "related": [
+        "ki-tools",
+        "geld-verdienen-mit-ki"
+      ]
+    },
+    {
+      "slug": "ki-fuer-anfaenger",
+      "titel": "KI für Anfänger — der ehrliche Einstieg ohne Hype",
+      "eyebrow": "Thema",
+      "kurz": "Du willst KI im Arbeitsalltag nutzen, weißt aber nicht wo anfangen? Hier der ruhige Einstieg.",
+      "intro": "KI klingt nach Raketenwissenschaft — ist es aber nicht. Für den Arbeitsalltag brauchst du kein Studium, sondern ein, zwei Werkzeuge und die richtige Haltung. Dieser Einstieg zeigt dir, wie du in einer Woche von 'nie benutzt' zu 'spart mir täglich Zeit' kommst.",
+      "sektionen": [
+        {
+          "h2": "Fang mit einem Tool an",
+          "text": "Der häufigste Anfängerfehler: zehn Tools gleichzeitig ausprobieren. Besser: ein gutes KI-Chat-Tool (Claude oder ChatGPT) richtig kennenlernen.",
+          "punkte": [
+            "Nutze es für eine echte Aufgabe, die du heute hast",
+            "Formuliere klar, was du willst — und gib Kontext",
+            "Frag nach, korrigiere, lass es nochmal — wie mit einem Praktikanten"
+          ]
+        },
+        {
+          "h2": "Was realistisch geht",
+          "text": "KI ist gut in: Texte entwerfen, zusammenfassen, strukturieren, Ideen sammeln, Code-Schnipsel. KI ist schlecht in: aktuelle Fakten, Rechnen, alles wo Fehler teuer sind. Prüfe immer nach.",
+          "punkte": []
+        },
+        {
+          "h2": "Die richtige Haltung",
+          "text": "KI nimmt dir den ersten Entwurf ab, nicht das Urteil. Du bleibst verantwortlich für das, was rauskommt. Wer das verstanden hat, wird schnell produktiv — ohne dem Hype aufzusitzen.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Brauche ich Programmierkenntnisse?",
+          "a": "Nein. Die meisten KI-Tools bedienst du auf Deutsch in normaler Sprache."
+        },
+        {
+          "q": "Was kostet der Einstieg?",
+          "a": "Wenig bis nichts. Viele Tools haben gute Gratis-Tarife; oft reicht das für den Anfang."
+        }
+      ],
+      "related": [
+        "ki-tools",
+        "dsgvo-und-ki"
+      ]
+    },
+    {
+      "slug": "prompt-engineering",
+      "titel": "Prompt Engineering für den Arbeitsalltag",
+      "eyebrow": "Thema",
+      "kurz": "Bessere Ergebnisse aus KI — ohne Zauberformeln, mit ein paar klaren Prinzipien.",
+      "intro": "Gute Prompts sind kein Geheimwissen. Wer der KI Kontext, Ziel und Format klar macht, bekommt brauchbare Ergebnisse — ohne 200-Wörter-„Mega-Prompts“ aus dem Internet.",
+      "sektionen": [
+        {
+          "h2": "Die vier Bausteine",
+          "text": "Fast jeder gute Prompt hat dieselbe Struktur:",
+          "punkte": [
+            "Rolle/Kontext: Wer bist du, worum geht's?",
+            "Aufgabe: Was genau soll rauskommen?",
+            "Format: Länge, Ton, Struktur",
+            "Beispiel: ein Muster, wenn möglich"
+          ]
+        },
+        {
+          "h2": "Iterieren statt perfektionieren",
+          "text": "Der erste Prompt muss nicht perfekt sein. Schick die Aufgabe ab, korrigiere das Ergebnis im Gespräch — das ist schneller als der Versuch, alles vorab zu durchdenken.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Brauche ich fertige Prompt-Sammlungen?",
+          "a": "Selten. Die Prinzipien hier schlagen die meisten gekauften Prompt-Packs. Eine kuratierte Auswahl gibt es trotzdem in der Prompt-Bibliothek."
+        },
+        {
+          "q": "Werden meine Prompts mit der Zeit besser?",
+          "a": "Ja, aber nicht durch Tricks. Du lernst, das Ziel präziser zu beschreiben und Beispiele mitzugeben. Speichere deine drei, vier besten Prompts als Vorlage — das bringt mehr als jede neue Technik."
+        }
+      ],
+      "related": [
+        "ki-fuer-anfaenger",
+        "ki-tools"
+      ]
+    },
+    {
+      "slug": "ki-automatisierung",
+      "titel": "KI-Automatisierung für kleine Unternehmen",
+      "eyebrow": "Thema",
+      "kurz": "Wiederkehrende Aufgaben an KI + No-Code abgeben — Schritt für Schritt.",
+      "intro": "Die größten Zeitfresser im KMU-Alltag sind selten kreativ: Belege erfassen, Anfragen sortieren, Standard-Mails. Genau das lässt sich mit KI und No-Code-Tools automatisieren — ohne Programmierer.",
+      "sektionen": [
+        {
+          "h2": "Wo Automatisierung sich lohnt",
+          "text": "Faustregel: alles, was wiederkehrt und Regeln folgt:",
+          "punkte": [
+            "Belege & Rechnungen vorsortieren",
+            "Lead-Anfragen einsammeln und ablegen",
+            "Mail-Triage und Standard-Antworten",
+            "Content aus einem Format in mehrere"
+          ]
+        },
+        {
+          "h2": "Womit du startest",
+          "text": "Make.com oder n8n verbinden deine Tools mit KI-APIs. Fang mit EINEM Workflow an, der dir wöchentlich Zeit spart — und bau von dort aus.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Brauche ich Programmierkenntnisse?",
+          "a": "Nein. Make.com ist visuell. n8n kannst du self-hosten für volle Datenkontrolle."
+        },
+        {
+          "q": "Was sollte ich zuerst automatisieren?",
+          "a": "Die Aufgabe, die du mehrmals pro Woche gleich machst und die klar definiert ist — etwa Eingangs-Mails sortieren oder Rechnungen ablegen. Kreative oder heikle Entscheidungen bleiben beim Menschen."
+        }
+      ],
+      "related": [
+        "ki-tools",
+        "dsgvo-und-ki"
+      ]
+    },
+    {
+      "slug": "ki-newsletter-starten",
+      "titel": "Einen KI-Newsletter starten",
+      "eyebrow": "Thema",
+      "kurz": "Wie du in einer Nische einen Newsletter aufbaust — mit KI-Unterstützung, ohne Hype.",
+      "intro": "Ein Newsletter ist eines der ehrlichsten Online-Geschäftsmodelle: du baust direkte Beziehung zu Lesern auf, niemand kann sie dir wegnehmen. KI hilft beim Recherchieren und Schreiben — den Geschmack und das Urteil bringst du.",
+      "sektionen": [
+        {
+          "h2": "Die Basis",
+          "text": "Bevor du startest:",
+          "punkte": [
+            "Spitze Nische mit kaufkräftigem Publikum",
+            "Klares Versprechen: was, in wie viel Zeit?",
+            "20 Ausgaben vorschreiben — Konstanz schlägt Perfektion"
+          ]
+        },
+        {
+          "h2": "Monetarisierung kommt später",
+          "text": "Erst Reichweite, dann Geld: Sponsoring (ein Slot/Ausgabe), ein Premium-Tier, Affiliate. Die ersten Monate verdienst du nichts — das ist normal.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wie lange bis zum ersten Euro?",
+          "a": "Realistisch 3–6 Monate konsequenter Arbeit. Wer das nicht durchhält, sollte es lassen."
+        },
+        {
+          "q": "Welche Plattform für den Start?",
+          "a": "Für den Anfang reicht beehiiv oder Substack — kostenlos, schnell aufgesetzt, du brauchst keine eigene Technik. Wechseln kannst du später immer noch. Wichtiger als die Plattform ist, dass du regelmäßig sendest."
+        }
+      ],
+      "related": [
+        "geld-verdienen-mit-ki",
+        "ki-tools"
+      ]
+    },
+    {
+      "slug": "ki-bilder",
+      "titel": "KI-Bilder erstellen — Praxis für Solos",
+      "eyebrow": "Thema",
+      "kurz": "Midjourney, & Co. sinnvoll nutzen — für Content, ohne rechtliche Stolperfallen.",
+      "intro": "KI-Bildgeneratoren sind beeindruckend — aber für den geschäftlichen Einsatz zählen andere Dinge als der Wow-Effekt: Konsistenz, Nutzungsrechte und ob es schneller ist als eine Stock-Foto-Suche.",
+      "sektionen": [
+        {
+          "h2": "Wofür es taugt",
+          "text": "Realistisch einsetzbar für:",
+          "punkte": [
+            "Blog-/Social-Header und Illustrationen",
+            "Mockups und Konzept-Visuals",
+            "Varianten einer Idee schnell durchspielen"
+          ]
+        },
+        {
+          "h2": "Die rechtliche Seite",
+          "text": "KI-Bilder sind eine Grauzone. Für kommerzielle Nutzung: Lizenzbedingungen des Tools prüfen, keine echten Personen/Marken abbilden, im Zweifel kennzeichnen.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Darf ich KI-Bilder kommerziell nutzen?",
+          "a": "Je nach Tool und Tarif. Prüfe die Nutzungsrechte — viele erlauben es ab dem bezahlten Plan."
+        },
+        {
+          "q": "Welches Tool für deutsche Prompts?",
+          "a": "Die großen Generatoren verstehen Deutsch, liefern aber mit englischen Prompts oft präzisere Ergebnisse. Schreib den Prompt ruhig auf Deutsch und lass ihn von Claude oder DeepL übersetzen — das kostet zehn Sekunden und spart Fehlversuche."
+        }
+      ],
+      "related": [
+        "ki-tools",
+        "dsgvo-und-ki"
+      ]
+    },
+    {
+      "slug": "ki-texte-deutsch",
+      "titel": "KI für deutsche Texte",
+      "eyebrow": "Thema",
+      "kurz": "Warum viele KI-Tools bei Deutsch schwächeln — und wie du trotzdem gute Texte bekommst.",
+      "intro": "Die meisten KI-Modelle sind auf Englisch trainiert. Bei deutschen Texten zeigt sich das in Anglizismen, steifem Ton und Fehlern. Mit den richtigen Tools und Kniffen klingt es trotzdem natürlich.",
+      "sektionen": [
+        {
+          "h2": "Was hilft",
+          "text": "Konkret:",
+          "punkte": [
+            "Modelle wählen, die bei Deutsch stark sind (Claude, DeepL Write)",
+            "Im Prompt Ton und Zielgruppe vorgeben",
+            "Immer redigieren — KI liefert den Rohentwurf, nicht das Endprodukt"
+          ]
+        },
+        {
+          "h2": "Die DeepL-Kombi",
+          "text": "Für reine Übersetzung ist DeepL (EU-Anbieter) oft besser als ein LLM. Für Ton und Kontext kombinierst du es mit Claude/ChatGPT.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Welches Tool ist am besten für Deutsch?",
+          "a": "Für Texte: Claude und DeepL Write. Für Übersetzung: DeepL. Immer mit menschlichem Feinschliff."
+        },
+        {
+          "q": "Klingt KI-Deutsch nicht steif?",
+          "a": "Aus dem Rohzustand oft ja — zu glatt, zu viele Füllwörter. Gib dem Tool ein, zwei Sätze von dir als Stilvorlage und streiche danach jeden Satz, den du selbst nie sagen würdest. Dann klingt es nach dir."
+        }
+      ],
+      "related": [
+        "prompt-engineering",
+        "ki-tools"
+      ]
+    },
+    {
+      "slug": "chatgpt-vs-claude",
+      "titel": "ChatGPT vs. Claude vs. Gemini",
+      "eyebrow": "Thema",
+      "kurz": "Welcher KI-Assistent für was? Ein ehrlicher Vergleich für den Arbeitsalltag.",
+      "intro": "Es gibt nicht „den besten“ KI-Assistenten — es kommt auf die Aufgabe an. Hier die ehrlichen Stärken, ohne Lagerdenken.",
+      "sektionen": [
+        {
+          "h2": "Grobe Faustregel",
+          "text": "Aus der Praxis:",
+          "punkte": [
+            "Claude: lange Texte, Analyse, sauberes Arbeiten",
+            "ChatGPT: größtes Ökosystem, viele Integrationen",
+            "Gemini: tief in Google-Workspace integriert"
+          ]
+        },
+        {
+          "h2": "Welchen nehmen?",
+          "text": "Für die meisten Solos reicht EINER im Bezahl-Tarif. Probier zwei zwei Wochen an echten Aufgaben aus — das entscheidet mehr als jeder Benchmark.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Brauche ich mehrere?",
+          "a": "Nein, für den Start reicht einer. Wer viel mit KI arbeitet, hat oft zwei für verschiedene Stärken."
+        },
+        {
+          "q": "Lohnt sich die Bezahlversion?",
+          "a": "Wenn du KI mehrmals pro Woche beruflich nutzt: ja, die rund 20 Euro im Monat sparen schnell mehr Zeit ein. Für gelegentliches Ausprobieren reicht die Gratis-Stufe."
+        }
+      ],
+      "related": [
+        "ki-tools",
+        "prompt-engineering"
+      ]
+    },
+    {
+      "slug": "ki-datenschutz-tools",
+      "titel": "DSGVO-konforme KI-Tools",
+      "eyebrow": "Thema",
+      "kurz": "Welche KI-Tools du in DACH bedenkenlos nutzen kannst — und worauf du achten musst.",
+      "intro": "Nicht jedes KI-Tool ist für sensible Daten geeignet. Diese Übersicht hilft dir, die DSGVO-Frage pro Tool schnell einzuordnen.",
+      "sektionen": [
+        {
+          "h2": "Die grünen Optionen",
+          "text": "Tendenziell unkritischer:",
+          "punkte": [
+            "EU-Anbieter wie DeepL",
+            "Self-hosted Lösungen (n8n)",
+            "Business-Tarife mit AVV und abschaltbarem Training"
+          ]
+        },
+        {
+          "h2": "Die Checkliste",
+          "text": "Pro Tool fragen: Wo stehen die Server? Gibt es einen AVV? Werden meine Daten zum Training genutzt? Kann ich das abschalten?",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Ist die kostenlose Version DSGVO-konform?",
+          "a": "Oft nicht für sensible Daten — Gratis-Tarife nutzen Eingaben häufig zum Training. Für Kundendaten Business-Tarif + AVV."
+        },
+        {
+          "q": "Woran erkenne ich ein DSGVO-taugliches Tool?",
+          "a": "Drei Dinge im Kleingedruckten: EU- oder Schweiz-Hosting, ein angebotener AV-Vertrag und die Möglichkeit, das Training mit deinen Daten abzuschalten. Fehlt eines davon, gib keine personenbezogenen Daten ein."
+        }
+      ],
+      "related": [
+        "dsgvo-und-ki",
+        "ki-tools"
+      ]
+    },
+    {
+      "slug": "ki-meetings",
+      "titel": "KI für Meetings & Protokolle",
+      "eyebrow": "Thema",
+      "kurz": "Transkription, Zusammenfassung, To-dos — automatisch aus jedem Meeting.",
+      "intro": "Meeting-KI gehört zu den Tools mit dem schnellsten Aha-Effekt: aufnehmen, transkribieren, zusammenfassen, Aufgaben rausziehen — in Minuten statt manuell.",
+      "sektionen": [
+        {
+          "h2": "Was es kann",
+          "text": "Typische Funktionen:",
+          "punkte": [
+            "Automatisches Transkript (auch Deutsch)",
+            "Zusammenfassung + Action-Items",
+            "Durchsuchbares Meeting-Archiv"
+          ]
+        },
+        {
+          "h2": "Der DSGVO-Hinweis",
+          "text": "Aufnahmen von Gesprächen brauchen die Einwilligung aller Teilnehmenden. Kläre das vorab — sonst ist es heikel.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Versteht die KI Deutsch in Meetings?",
+          "a": "Ja, die guten Tools transkribieren Deutsch zuverlässig — Dialekt bleibt aber eine Herausforderung."
+        },
+        {
+          "q": "Ist das mit dem Datenschutz heikel?",
+          "a": "Ja, sobald echte Personen sprechen. Hol dir vorab das Einverständnis aller Teilnehmer, nutze ein Tool mit EU-Hosting und lösche Aufnahmen, sobald das Protokoll steht. Bei sensiblen Themen lieber selbst mitschreiben."
+        }
+      ],
+      "related": [
+        "ki-tools",
+        "dsgvo-und-ki"
+      ]
+    },
+    {
+      "slug": "ki-content-erstellung",
+      "titel": "KI für Content & Social Media",
+      "eyebrow": "Thema",
+      "kurz": "Mehr Content in weniger Zeit — ohne dass es nach Maschine klingt.",
+      "intro": "KI kann deinen Content-Output vervielfachen: aus einem Stück Inhalt mehrere Formate, Ideen auf Knopfdruck, Entwürfe in Sekunden. Der Unterschied zwischen gutem und seelenlosem Content bleibt aber dein Job.",
+      "sektionen": [
+        {
+          "h2": "Repurposing als Hebel",
+          "text": "Aus einem Artikel werden:",
+          "punkte": [
+            "mehrere Social-Posts",
+            "ein Newsletter-Abschnitt",
+            "ein Video-Skript / Reel-Idee"
+          ]
+        },
+        {
+          "h2": "Die Falle",
+          "text": "Reiner KI-Output fällt auf — er ist generisch. Gib deine Meinung, Beispiele und Stimme dazu. KI macht den Rohbau, du das Haus.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Erkennt man KI-Content?",
+          "a": "Schlechten ja. Guten — wenn du redigierst und eigene Substanz einbringst — nicht."
+        },
+        {
+          "q": "Wie viel Content schaffe ich realistisch?",
+          "a": "Mehr als ohne Tool, aber kein Fließband. Rechne mit halber Zeit pro Stück, nicht mit dem Zehnfachen an Menge. Wer Masse ohne Redaktion rausschiebt, verliert Vertrauen schneller, als er es aufbaut."
+        }
+      ],
+      "related": [
+        "ki-texte-deutsch",
+        "ki-tools"
+      ]
+    },
+    {
+      "slug": "ki-foerderung",
+      "titel": "Fördermittel für KI & Digitalisierung",
+      "eyebrow": "Thema",
+      "kurz": "Welche Programme dir in DACH bei KI-Projekten helfen — und ob sich der Aufwand lohnt.",
+      "intro": "Es gibt mehr Fördermittel für Digitalisierung, als viele denken. Der Aufwand für den Antrag ist real — aber bei größeren Vorhaben lohnt er sich oft.",
+      "sektionen": [
+        {
+          "h2": "Wo du suchst",
+          "text": "Die offiziellen Quellen:",
+          "punkte": [
+            "Deutschland: Förderdatenbank des Bundes, Länderprogramme",
+            "Österreich: aws, FFG",
+            "Schweiz: Innosuisse, kantonale Förderung"
+          ]
+        },
+        {
+          "h2": "Ehrlich gesagt",
+          "text": "Förderung ist nie garantiert und kostet Zeit. Für eine 19-€-Software lohnt kein Antrag — für ein größeres Digitalisierungsprojekt schon. Details im Förder-Radar.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Lohnt sich der Antrag?",
+          "a": "Bei kleinen Beträgen selten, bei größeren Projekten oft. Den Aufwand ehrlich gegen die Summe rechnen."
+        },
+        {
+          "q": "Wo finde ich passende Programme?",
+          "a": "Bund, Länder und Kantone haben eigene Töpfe — die Übersicht im Förder-Radar bündelt 86 echte DACH-Programme. Filter nach Region und Vorhaben, dann zur offiziellen Stelle. Fristen und Bedingungen ändern sich, prüf immer das Original."
+        }
+      ],
+      "related": [
+        "ki-automatisierung",
+        "dsgvo-und-ki"
+      ]
+    },
+    {
+      "slug": "ki-weiterbildung",
+      "titel": "KI lernen & Weiterbildung",
+      "eyebrow": "Thema",
+      "kurz": "Welche KI-Kurse sich lohnen — und wo du gratis genauso gut lernst.",
+      "intro": "Der Markt für KI-Kurse boomt — und ist voller überteuerter Versprechen. Vieles lernst du gratis genauso gut. Hier die ehrliche Orientierung.",
+      "sektionen": [
+        {
+          "h2": "Gratis weit kommen",
+          "text": "Starke kostenlose Quellen:",
+          "punkte": [
+            "Elements of AI (Grundlagen)",
+            "KI-Campus (deutsch, gefördert)",
+            "Herstellerkurse (Google, Microsoft)"
+          ]
+        },
+        {
+          "h2": "Wann bezahlen?",
+          "text": "Für anerkannte Zertifikate (IHK, DEKRA) oder geförderte AZAV-Maßnahmen. Sonst: erst gratis testen, ob das Thema trägt.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Brauche ich ein Zertifikat?",
+          "a": "Für manche Jobs ja, für die meisten Solo-Tätigkeiten zählt Können mehr als Papier."
+        },
+        {
+          "q": "Kurs kaufen oder selbst lernen?",
+          "a": "Für die Grundlagen reicht konsequentes Selbstlernen mit guten Gratis-Quellen. Ein bezahlter Kurs lohnt, wenn du Struktur, Feedback oder ein anerkanntes Zertifikat brauchst. Erst das kostenlose Material ausschöpfen, dann gezielt zukaufen."
+        }
+      ],
+      "related": [
+        "ki-fuer-anfaenger",
+        "ki-foerderung"
+      ]
+    },
+    {
+      "slug": "ki-recht",
+      "titel": "KI & Recht — EU AI Act kurz erklärt",
+      "eyebrow": "Thema",
+      "kurz": "Was der EU AI Act für kleine Unternehmen bedeutet — ohne Jura-Studium.",
+      "intro": "Der EU AI Act ist das erste große KI-Gesetz. Für die meisten Solos und KMU ist er weniger dramatisch als befürchtet — aber ein paar Dinge solltest du kennen.",
+      "sektionen": [
+        {
+          "h2": "Risiko-Klassen",
+          "text": "Der AI Act stuft KI nach Risiko ein:",
+          "punkte": [
+            "Verbotene Anwendungen (z.B. Social Scoring)",
+            "Hochrisiko (strenge Auflagen)",
+            "Begrenztes Risiko (Transparenzpflicht)",
+            "Minimales Risiko (das meiste, was du nutzt)"
+          ]
+        },
+        {
+          "h2": "Für dich relevant",
+          "text": "Meist nur die Transparenzpflicht: KI-generierte Inhalte und Chatbots kennzeichnen. Plus die KI-Kompetenz-Pflicht (Art. 4) — Mitarbeitende schulen.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Bin ich als Solo betroffen?",
+          "a": "Meist nur durch Transparenz- und Kompetenzpflichten. Hochrisiko-Regeln treffen die wenigsten. Keine Rechtsberatung — im Zweifel Fachperson."
+        },
+        {
+          "q": "Muss ich KI-Inhalte kennzeichnen?",
+          "a": "In vielen Fällen ja — der AI Act verlangt Transparenz bei künstlich erzeugten Texten, Bildern und Stimmen. Ein knapper Hinweis genügt meist. Im Zweifel kennzeichnen: Es kostet nichts und schützt dein Vertrauen beim Leser."
+        }
+      ],
+      "related": [
+        "dsgvo-und-ki",
+        "ki-weiterbildung"
+      ]
+    },
+    {
+      "slug": "ki-kosten-sparen",
+      "titel": "KI-Kosten im Griff behalten",
+      "eyebrow": "Thema",
+      "kurz": "Wie du nicht in der Tool-Abo-Falle landest — und trotzdem gut ausgestattet bist.",
+      "intro": "Es ist leicht, monatlich 200 € für KI-Tools auszugeben, die sich überschneiden. Mit etwas Disziplin kommst du mit einem Bruchteil aus.",
+      "sektionen": [
+        {
+          "h2": "Die Abo-Falle",
+          "text": "Typische Kostentreiber:",
+          "punkte": [
+            "Mehrere LLM-Abos parallel",
+            "Tools für Aufgaben, die ein Tool mit erledigt",
+            "Vergessene Test-Abos"
+          ]
+        },
+        {
+          "h2": "Der schlanke Stack",
+          "text": "Meist reichen: ein gutes LLM, DeepL, ein Automations-Tool. Alle drei Monate ausmisten: Was nutze ich wirklich?",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wie viel sollte ich ausgeben?",
+          "a": "Als Solo oft 20–60 €/Monat. Mehr nur, wenn ein Tool nachweislich Zeit/Geld spart."
+        },
+        {
+          "q": "Lohnt sich ein Jahresabo?",
+          "a": "Erst nach ein, zwei Monaten Nutzung. Starte monatlich, miss deinen echten Verbrauch, und wechsle erst aufs Jahresabo, wenn klar ist, dass du das Tool dauerhaft brauchst. Viele Jahresabos verfallen ungenutzt."
+        }
+      ],
+      "related": [
+        "ki-tools",
+        "geld-verdienen-mit-ki"
+      ]
+    },
+    {
+      "slug": "ki-freelancing",
+      "titel": "Mit KI als Freelancer durchstarten",
+      "eyebrow": "Thema",
+      "kurz": "KI-Skills als Dienstleistung verkaufen — der schnellste Weg zu echtem Geld.",
+      "intro": "Unternehmen suchen Leute, die KI produktiv einsetzen — nicht Programmierer, sondern Anwender. Das ist 2026 der Markt mit der größten Lücke zwischen Nachfrage und Angebot.",
+      "sektionen": [
+        {
+          "h2": "Worauf spezialisieren",
+          "text": "Eine klare Leistung schlägt „kann alles“:",
+          "punkte": [
+            "KI-gestützte Content-Produktion",
+            "Automatisierung für KMU",
+            "Prompt-/Workflow-Beratung"
+          ]
+        },
+        {
+          "h2": "Akquise",
+          "text": "Direkt bei KMU anfragen, die „irgendwas mit KI“ wollen, schlägt Plattformen wie Fiverr. Zeig 2–3 echte Arbeitsproben.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Was kann ich verlangen?",
+          "a": "Realistisch 50–150 €/h, je nach Leistung. Rechne deinen echten Stundensatz aus, bevor du Preise nennst."
+        },
+        {
+          "q": "Muss ich Kunden sagen, dass ich KI nutze?",
+          "a": "Transparenz zahlt sich aus. Die meisten Kunden stört nicht das Werkzeug, sondern verstecktes Abrechnen von Zeit, die du nicht gebraucht hast. Verkauf das Ergebnis, nenne KI offen als Teil deines Vorgehens — das wirkt souverän, nicht billig."
+        }
+      ],
+      "related": [
+        "geld-verdienen-mit-ki",
+        "ki-automatisierung"
+      ]
+    },
+    {
+      "slug": "ki-buecher-kdp",
+      "titel": "KI-Bücher auf Amazon (KDP)",
+      "eyebrow": "Thema",
+      "kurz": "Bücher mit KI-Unterstützung schreiben und auf Amazon verkaufen — was wirklich geht.",
+      "intro": "KI senkt die Hürde, Bücher zu veröffentlichen. Aber Amazon geht hart gegen Massen-Müll vor — Erfolg braucht echte Nische und Qualität.",
+      "sektionen": [
+        {
+          "h2": "Was funktioniert",
+          "text": "Nicht „KI-Buch in 1 Stunde“, sondern:",
+          "punkte": [
+            "Echte Nischen-Recherche zuerst",
+            "KI als Schreibhilfe, du redigierst",
+            "Sauberes Cover, Keywords, Metadaten"
+          ]
+        },
+        {
+          "h2": "Die ehrliche Erwartung",
+          "text": "Die meisten Bücher verdienen fast nichts; wenige tragen den Rest. Es ist ein kleines Verlags-Business, kein passives Einkommen.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Darf ich KI-generierte Bücher verkaufen?",
+          "a": "Ja, aber Amazon verlangt Kennzeichnung und straft Müll ab. Qualität und Nische sind Pflicht."
+        },
+        {
+          "q": "Wie viel verdient man realistisch?",
+          "a": "Für die meisten wenige Euro im Monat pro Titel — kein passives Vermögen. Wer Geld verdient, baut über Monate eine Reihe guter Bücher in einer Nische auf. Ein einzelnes KI-Buch ohne Lektorat und Thema fällt durch."
+        }
+      ],
+      "related": [
+        "geld-verdienen-mit-ki",
+        "ki-texte-deutsch"
+      ]
+    },
+    {
+      "slug": "ki-kundenservice",
+      "titel": "KI im Kundenservice",
+      "eyebrow": "Thema",
+      "kurz": "Chatbots & Auto-Antworten, die wirklich helfen — statt Kunden zu vergraulen.",
+      "intro": "KI im Support kann Zeit sparen — oder Kunden vertreiben, wenn sie schlecht gemacht ist. Der Unterschied liegt im Detail.",
+      "sektionen": [
+        {
+          "h2": "Sinnvolle Einsätze",
+          "text": "Gut geeignet für:",
+          "punkte": [
+            "Häufige Fragen rund um die Uhr beantworten",
+            "Anfragen vorsortieren und weiterleiten",
+            "Antwort-Entwürfe für dein Team"
+          ]
+        },
+        {
+          "h2": "Die Grenze",
+          "text": "Lass die KI nie so tun, als sei sie ein Mensch, und biete immer einen Weg zum echten Menschen. Transparenz schafft Vertrauen.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Ersetzt das meinen Support?",
+          "a": "Nein — es entlastet ihn. Komplexe oder emotionale Fälle gehören zum Menschen."
+        },
+        {
+          "q": "Merken Kunden, dass ein Bot antwortet?",
+          "a": "Einen guten Bot bei einfachen Fragen kaum — einen schlechten sofort. Die Faustregel: KI für Standardfragen und Sortierung, Mensch für Beschwerden und alles Emotionale. Biete immer einen sichtbaren Weg zum Menschen an."
+        }
+      ],
+      "related": [
+        "ki-automatisierung",
+        "dsgvo-und-ki"
+      ]
+    },
+    {
+      "slug": "ki-trends-2026",
+      "titel": "KI-Trends 2026 — was wirklich zählt",
+      "eyebrow": "Thema",
+      "kurz": "Jenseits des Hypes: welche KI-Entwicklungen 2026 für DACH-Solos relevant sind.",
+      "intro": "Jede Woche eine neue „Revolution“ — die meisten verpuffen. Hier die Entwicklungen, die für deinen Arbeitsalltag wirklich einen Unterschied machen.",
+      "sektionen": [
+        {
+          "h2": "Was zählt",
+          "text": "Relevante Linien 2026:",
+          "punkte": [
+            "Agenten, die mehrstufige Aufgaben erledigen — mit Vorsicht",
+            "Bessere deutsche Sprachqualität",
+            "EU-Anbieter holen auf (Datenschutz-Vorteil)"
+          ]
+        },
+        {
+          "h2": "Was Lärm ist",
+          "text": "Benchmark-Rekorde, „AGI bald“-Schlagzeilen, Tool-des-Tages-Hype. Ignorieren — und schauen, was sich im echten Einsatz bewährt.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Muss ich jedem Trend folgen?",
+          "a": "Nein. Ein, zwei solide Tools beherrschen schlägt jedem Trend hinterherzulaufen."
+        },
+        {
+          "q": "Worauf sollte ich 2026 wirklich achten?",
+          "a": "Auf Werkzeuge, die eine konkrete Aufgabe in deinem Alltag schneller machen — nicht auf das, was gerade am lautesten beworben wird. Ein Trend ist erst dann deiner, wenn er dir messbar Zeit oder Geld spart."
+        }
+      ],
+      "related": [
+        "ki-tools",
+        "ki-fuer-anfaenger"
+      ]
+    },
+    {
+      "slug": "ki-und-krypto",
+      "titel": "KI & Krypto — was dran ist, was Hype ist",
+      "eyebrow": "Thema",
+      "kurz": "KI trifft Krypto: nüchtern eingeordnet für DACH — Chancen, Risiken, was für Solos zählt.",
+      "intro": "Kaum zwei Themen ziehen so viel Hype an wie KI und Krypto — und an ihrer Schnittstelle wird es besonders laut. Hier die nüchterne Einordnung: was wirklich nützlich ist, was reines Spekulations-Marketing, und was DACH-Selbstständige beachten sollten. Keine Anlageberatung.",
+      "sektionen": [
+        {
+          "h2": "Wo die Verbindung sinnvoll ist",
+          "text": "Jenseits des Spekulations-Lärms gibt es ein paar echte Berührungspunkte:",
+          "punkte": [
+            "KI-Tools zur Recherche und Markt-Einordnung (kein Signal-Verkauf)",
+            "Automatisierung von Reporting/Buchhaltung für Krypto-Transaktionen",
+            "On-Chain-Datenanalyse mit KI für Fortgeschrittene"
+          ]
+        },
+        {
+          "h2": "Wo Vorsicht gilt",
+          "text": "Der Großteil der „KI+Krypto“-Angebote ist Marketing:",
+          "punkte": [
+            "„KI-Trading-Bots, die dich reich machen“ — fast immer unseriös",
+            "Token von Projekten, die nur KI als Buzzword nutzen",
+            "Garantierte Renditen — die gibt es nicht"
+          ]
+        },
+        {
+          "h2": "Steuer & Recht in DACH",
+          "text": "Krypto-Gewinne sind steuerpflichtig — in DE/AT/CH mit je eigenen Regeln (Haltefristen, Freigrenzen). Führe saubere Aufzeichnungen; KI kann beim Sortieren helfen, ersetzt aber keine Steuerberatung. Dies ist keine Anlage- oder Steuerberatung.",
+          "punkte": []
+        }
+      ],
+      "faq": [
+        {
+          "q": "Lohnen sich KI-Trading-Bots?",
+          "a": "Für die allermeisten nein. Wer dir garantierte Gewinne verspricht, verkauft dir etwas. Sei besonders skeptisch."
+        },
+        {
+          "q": "Ist das Anlageberatung?",
+          "a": "Nein. Dies ist eine allgemeine, nüchterne Einordnung — keine Anlage- oder Steuerberatung. Entscheidungen triffst du eigenverantwortlich."
+        }
+      ],
+      "related": [
+        "ki-trends-2026",
+        "ki-tools",
+        "dsgvo-und-ki"
+      ],
+      "vertiefung": {
+        "href": "/ki-und-krypto-daten.html",
+        "text": "KI & Krypto in Zahlen — Statistik-Tabellen zu Sektor, Energie, Trading und DACH-Steuer"
+      }
+    }
+  ]
+}
