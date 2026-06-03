@@ -1,8 +1,14 @@
-# KI-News-Rohmaterial — 2026-06-02
+# KI-News-Rohmaterial — 2026-06-03
 
 > **Kuratier-Vorlage, KEINE fertige Ausgabe.** Echte Quellen, aggregiert. Wähle 3–5 relevante Meldungen, prüfe sie an der Quelle und schreibe sie in deiner Stimme (kein Hype). Dann via Werkbank/beehiiv versenden.
 
 ## OpenAI
+- [ ] **[OpenAI public policy agenda](https://openai.com/index/public-policy-agenda)**  
+  _Wed, 03 Jun 2026 10:00:00 GMT_
+  OpenAI outlines its public policy agenda for AI, including safety, youth protection, workforce transition, and global standards to ensure AI benefits society.
+- [ ] **[A blueprint for democratic governance of frontier AI](https://openai.com/index/frontier-safety-blueprint)**  
+  _Wed, 03 Jun 2026 10:00:00 GMT_
+  OpenAI outlines a blueprint for U.S. governance of frontier AI, proposing a federal framework for safety, resilience, and national security.
 - [ ] **[Travelers deploys AI-powered claims countrywide with OpenAI](https://openai.com/index/travelers)**  
   _Tue, 02 Jun 2026 12:00:00 GMT_
   Travelers built an AI-powered Claim Assistant with OpenAI to guide customers through filing claims, provide 24/7 support, and scale operations during peak demand.
@@ -15,14 +21,11 @@
 - [ ] **[Codex is becoming a productivity tool for everyone](https://openai.com/index/codex-for-knowledge-work)**  
   _Tue, 02 Jun 2026 02:00:00 GMT_
   The Next Era of Knowledge Work report explores how Codex is transforming productivity through AI-powered research, data analysis, workflow automation, and content creation.
-- [ ] **[Our views on AI policy and political advocacy](https://openai.com/index/our-views-on-ai-policy-and-political-advocacy)**  
-  _Mon, 01 Jun 2026 17:00:00 GMT_
-  Our approach to AI policy and political advocacy, transparency, support for thoughtful regulation and AI safety, and that no outside political group speaks on the company’s behalf.
-- [ ] **[Building the infrastructure for the Intelligence Age in Michigan](https://openai.com/index/stargate-michigan-data-center)**  
-  _Mon, 01 Jun 2026 12:00:00 GMT_
-  OpenAI breaks ground on a 1GW data center project in Michigan as part of Stargate, building AI infrastructure to expand access, create jobs, and support communities.
 
 ## Google AI
+- [ ] **[5 ways Google Search can level up your thrift and vintage shopping](https://blog.google/products-and-platforms/products/search/thrifting-tips/)**  
+  _Wed, 03 Jun 2026 13:00:00 +0000_
+  <img src=" second-hand scores with AI tools in Google Search and Shopping.
 - [ ] **[How we used Gemini to build Google I/O 2026](https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/)**  
   _Mon, 01 Jun 2026 16:00:00 +0000_
   <img src=" how Googlers used AI to produce Google I/O 2026.
@@ -38,11 +41,12 @@
 - [ ] **[Catch up on 12 major I/O 2026 moments](https://blog.google/innovation-and-ai/technology/ai/io-2026-keynote-moment-videos/)**  
   _Thu, 28 May 2026 15:00:00 +0000_
   <img src=" are 12 of the biggest Google I/O 2026 keynote moments, including news about Gemini Omni, Gemini 3.5 Flash and more.
-- [ ] **[Catch up on the Dialogues stage at Google I/O 2026.](https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-recap/)**  
-  _Fri, 22 May 2026 18:00:00 +0000_
-  <img src=" recap of the 2026 I/O Dialogues, where leaders discuss the future of AI, quantum computing, robotics and creativity.
 
 ## Hugging Face
+- [ ] **[Direct Preference Optimization Beyond Chatbots](https://huggingface.co/blog/Dharma-AI/direct-preference-optimization-beyond-chatbots)**  
+  _Wed, 03 Jun 2026 12:55:11 GMT_
+- [ ] **[Adding MCP Tools to Reachy Mini](https://huggingface.co/blog/adding-mcp-tools-to-reachy-mini)**  
+  _Wed, 03 Jun 2026 00:00:00 GMT_
 - [ ] **[Holo3.1: Fast & Local Computer Use Agents](https://huggingface.co/blog/Hcompany/holo31)**  
   _Tue, 02 Jun 2026 14:13:23 GMT_
 - [ ] **[Introducing Mellum2: A 12B Mixture-of-Experts Model by JetBrains](https://huggingface.co/blog/JetBrains/mellum2-launch)**  
@@ -51,30 +55,26 @@
   _Mon, 01 Jun 2026 13:51:18 GMT_
 - [ ] **[Welcome NVIDIA Cosmos 3: The First Open Omni-model for Physical AI Reasoning and Action](https://huggingface.co/blog/nvidia/cosmos-3-for-physical-ai)**  
   _Mon, 01 Jun 2026 04:44:55 GMT_
-- [ ] **[Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler](https://huggingface.co/blog/torch-profiler)**  
-  _Fri, 29 May 2026 00:00:00 GMT_
-- [ ] **[Reachy Mini goes fully local](https://huggingface.co/blog/local-reachy-mini-conversation)**  
-  _Wed, 27 May 2026 00:00:00 GMT_
 
 ## TechCrunch AI
-- [ ] **[Martin Scorsese becomes the latest — and most unlikely — Hollywood voice for AI](https://techcrunch.com/2026/06/02/martin-scorsese-becomes-the-latest-and-most-unlikely-hollywood-voice-for-ai/)**  
-  _Tue, 02 Jun 2026 18:16:53 +0000_
-  The caveat is that one of the world's most famous living directors is using the tech solely for storyboarding.
-- [ ] **[Microsoft launches Scout, an OpenClaw-inspired personal assistant](https://techcrunch.com/2026/06/02/microsoft-launches-scout-an-openclaw-inspired-personal-assistant/)**  
-  _Tue, 02 Jun 2026 18:02:44 +0000_
-  Launched at Build, Microsoft Scout is a new AI assistant meant to bring the power and flexibility of OpenClaw into the Microsoft 365 system.
-- [ ] **[Google rolls out fake call detection to protect against AI deepfake impersonation scams](https://techcrunch.com/2026/06/02/google-rolls-out-fake-call-detection-to-protect-against-ai-deepfake-impersonation-scams/)**  
-  _Tue, 02 Jun 2026 18:00:00 +0000_
-  As people increasingly refuse to answer calls from unknown numbers, scammers are shifting their tactics by spoofing trusted phone numbers and using AI deepfake technology to sound like authority figur…
-- [ ] **[Microsoft offers devs a better way to control AI agent behavior](https://techcrunch.com/2026/06/02/microsoft-offers-devs-a-better-way-to-control-ai-agent-behavior/)**  
-  _Tue, 02 Jun 2026 18:00:00 +0000_
-  The specification lets developer, compliance, and security teams define their own policies for agents to follow in portable policy files.
-- [ ] **[Amazon faces class action lawsuit over Ring facial-recognition feature](https://techcrunch.com/2026/06/02/amazon-faces-class-action-lawsuit-over-ring-facial-recognition-feature/)**  
-  _Tue, 02 Jun 2026 17:47:28 +0000_
-  The class action lawsuit, filed in Seattle by Virginia resident Charles Sigwalt, claims that Ring's Familiar Faces feature stores images of passersby without consent.
-- [ ] **[Trump signs narrower executive order on AI oversight after industry objections](https://techcrunch.com/2026/06/02/trump-signs-narrower-executive-order-on-ai-oversight-after-industry-objections/)**  
-  _Tue, 02 Jun 2026 16:23:08 +0000_
-  After industry objections, President Trump signed a revised AI executive order requiring only voluntary prerelease government reviews of advanced models.
+- [ ] **[Amazon will show AI product images when you search for some reason](https://techcrunch.com/2026/06/03/amazon-will-show-ai-product-images-when-you-search-for-some-reason/)**  
+  _Wed, 03 Jun 2026 15:50:26 +0000_
+  Amazon will use visual search and AI to show AI-generated product images that match your search queries. The retailer says it will help guide users to products.
+- [ ] **[These two founders left Goldman and Meta to build voice AI for markets everyone else overlooked](https://techcrunch.com/2026/06/03/these-two-founders-left-goldman-and-meta-to-build-voice-ai-for-markets-everyone-else-overlooked/)**  
+  _Wed, 03 Jun 2026 15:00:00 +0000_
+  The startup's own stack for Africa and Middle East is now handling more than 17,000 calls per day.
+- [ ] **[Publishers will be able to opt out of AI Search, thanks to new regulation](https://techcrunch.com/2026/06/03/publishers-will-be-able-to-opt-out-of-ai-search-thanks-to-new-regulation/)**  
+  _Wed, 03 Jun 2026 14:58:33 +0000_
+  U.K. regulators are requiring Google offer a tool allowing website publishers to opt-out of generative AI search features. The option will be tested in the U.K. then rolled out globally.
+- [ ] **[Meta’s AI agent for WhatsApp Business is now available globally](https://techcrunch.com/2026/06/03/metas-ai-agent-for-whatsapp-business-is-now-available-globally/)**  
+  _Wed, 03 Jun 2026 13:40:00 +0000_
+  WhatsApp will charge businesses for using its AI agent based on token usage.
+- [ ] **[Coralogix raises $200M on bet that someone needs to watch the AI agents](https://techcrunch.com/2026/06/03/coralogix-raises-200m-in-race-to-build-the-monitoring-layer-for-ai-agents/)**  
+  _Wed, 03 Jun 2026 13:02:51 +0000_
+  Coralogix is among a growing number of infrastructure firms betting that as AI systems move into production, demand will rise for tools that can monitor their behavior, troubleshoot failures, and prov…
+- [ ] **[Cyera eyes $12B valuation at 80x ARR multiple despite operating losses](https://techcrunch.com/2026/06/02/cyera-eyes-12b-valuation-at-80x-arr-multiple-despite-operating-losses/)**  
+  _Tue, 02 Jun 2026 22:50:56 +0000_
+  The cybersecurity company is nearing a $300 million round led by Evolution Equity Partners.
 
 ## VentureBeat AI
 - [ ] **[Google just redesigned the search box for the first time in 25 years — here’s why it matters more than you think.](https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think)**  
@@ -97,6 +97,9 @@
   Anthropic released Cowork on Monday, a new AI agent capability that extends the power of its wildly successful Claude Code tool to non-technical users — and according to company insiders, the team bui…
 
 ## MIT Tech Review
+- [ ] **[The Download: Trump’s new AI order, and smart glasses for warfare](https://www.technologyreview.com/2026/06/03/1138322/the-download-trump-ai-order-smart-glasses-warfare/)**  
+  _Wed, 03 Jun 2026 12:10:00 +0000_
+  This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. 5 key points in Trump’s new AI order Less than two weeks after…
 - [ ] **[The Download: AI can run your admin department now](https://www.technologyreview.com/2026/06/02/1138277/the-download-ai-tips-small-businesses-admin/)**  
   _Tue, 02 Jun 2026 12:10:00 +0000_
   This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. How small businesses can leverage AI From accounting to design…
@@ -109,57 +112,53 @@
 - [ ] **[How the Pope’s Magnifica Humanitas offers a template for individuals to meet the AI moment](https://www.technologyreview.com/2026/05/29/1138107/how-the-popes-magnifica-humanitas-offers-a-template-for-individuals-to-meet-the-ai-moment/)**  
   _Fri, 29 May 2026 10:00:00 +0000_
   Pope Leo XIV’s new encyclical on artificial intelligence includes a statement that warrants serious attention from technologists and policymakers: “Technology is never neutral.” Magnifica Humanitas (“…
-- [ ] **[The Download: climate tech goes public and the AI Hype Index returns](https://www.technologyreview.com/2026/05/28/1138085/the-download-climate-tech-ipos-ai-hype-index/)**  
-  _Thu, 28 May 2026 12:10:00 +0000_
-  This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Climate tech companies are going public. What’s next? Solar an…
 
 ## heise
-- [ ] **[Nvidia bringt nächste große KI-Modelle heraus](https://www.heise.de/news/Nvidia-bringt-naechste-grosse-KI-Modelle-heraus-11314083.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
-  _2026-06-02T20:21:00+02:00_
-  Nvidia präsentiert Nemotron 3 Ultra als neues Frontier-Modell, sowie Cosmos 3, ein Weltmodell für Robotik und autonome Systeme.
-- [ ] **[Microsoft Build 2026: KI-Entwicklung mit, unter und für Windows](https://www.heise.de/news/Microsoft-Build-2026-KI-Entwicklung-mit-unter-und-fuer-Windows-11315395.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
-  _2026-06-02T20:00:00+02:00_
-  Die Entwicklerkonferenz Microsoft Build 2026 liefert mehr KI-Tools und -Integration für Developer von Windows-Apps.
-- [ ] **[Zoom: KI-Agent schließt ab, was Meetings beginnen](https://www.heise.de/news/Zoom-KI-Agent-erledigt-was-im-Meeting-beschlossen-wurde-11315525.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
-  _2026-06-02T17:02:00+02:00_
-  ZoomMate soll Meetings direkt in fertige Arbeit überführen: Der KI-Agent greift auf Salesforce, Jira und Microsoft 365 zu und stößt Aktionen an.
-- [ ] **[Computex: KI-Beschleuniger mit 480 GByte Speicher als PCIe-Karte mit 350 Watt von Intel](https://www.heise.de/news/KI-Beschleuniger-mit-480-GByte-Speicher-als-PCIe-Karte-mit-350-Watt-von-Intel-11315339.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
-  _2026-06-02T14:02:00+02:00_
-  Intel kündigt noch fürs laufende Jahr den Inferencing-Beschleuniger „Crescent Island“ mit sehr viel LPDDR5X-RAM statt teurem HBM an.
+- [ ] **[heise+ | Lightroom-Masken optimieren: KI-Auswahlen verfeinern und schneller bearbeiten](https://www.heise.de/ratgeber/Lightroom-Masken-optimieren-KI-Auswahlen-verfeinern-und-schneller-bearbeiten-11299312.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus)**  
+  _2026-06-03T17:30:00+02:00_
+  So nutzen Sie Masken in Lightroom effizienter: Auswahlen präzise anpassen, Presets synchronisieren und Porträts schneller retuschieren.
+- [ ] **[DuckDuckGo: KI-freie Suche boomt – jetzt als Standard](https://www.heise.de/news/DuckDuckGo-KI-freie-Suche-boomt-jetzt-als-Standard-11317527.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-03T18:17:00+02:00_
+  DuckDuckGos no-AI-Websuche boomt, seit Google seine KI-Suchfunktionen aufbaut. Jetzt gibt es eine Erweiterung, die diese Websuche der Ente zum Standard macht.
+- [ ] **[Microsofts MAI-Modelle: Eigene KI-Offensive gestartet](https://www.heise.de/news/Microsofts-KI-Offensive-MAI-Modelle-und-Frontier-Tuning-11314091.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-03T17:19:00+02:00_
+  Microsoft startet mit der MAI-Modellfamilie eine eigene KI-Offensive. Das Frontier-Modell MAI-Thinking-1 soll mit Konkurrenzmodellen mithalten.
 
 ## Golem
-- [ ] **[Weniger Cloudkosten: Microsoft frdert lokale KI-Entwicklung](https://www.golem.de/news/weniger-cloudkosten-microsoft-foerdert-lokale-ki-entwicklung-2606-209328.html)**  
-  _Tue, 02 Jun 2026 20:29:02 +0200_
-  Mit einer ganzen Reihe neuer Funktionen will Microsoft Windows 11 zur optimalen Entwicklerplattform fr lokale KI-Modelle machen. (<a href=" Build 2026</a>, <a href=" <img src=" alt="" width="1" height…
-- [ ] **[Fr lokale KI-Entwicklung: Microsoft zeigt Desktop-PC mit Nvidia-Spark-Superchip](https://www.golem.de/news/fuer-lokale-ki-entwicklung-microsoft-zeigt-desktop-pc-mit-nvidia-spark-superchip-2606-209327.html)**  
-  _Tue, 02 Jun 2026 19:59:02 +0200_
-  Microsoft stellt mit dem Surface Laptop Ultra und der Surface RTX Spark Dev Box zwei Gerte fr KI- und Softwareentwickler vor. (<a href=" Build 2026</a>, <a href=" <img src=" alt="" width="1" height="1…
-- [ ] **[Fr KI-Infrastruktur: Alphabet plant grte Kapitalbeschaffung der Geschichte](https://www.golem.de/news/fuer-ki-infrastruktur-alphabet-plant-groesste-kapitalbeschaffung-der-geschichte-2606-209323.html)**  
-  _Tue, 02 Jun 2026 16:45:02 +0200_
-  Die vom Google-Mutterkonzern geplante Kapitalbeschaffung bertrifft die drei grten Brsengnge der Geschichte zusammengenommen. (<a href=" <a href=" <img src=" alt="" width="1" height="1" />
-- [ ] **[Noch vor OpenAI: Anthropic reicht Antrag fr Brsengang ein](https://www.golem.de/news/noch-vor-openai-anthropic-reicht-antrag-fuer-boersengang-ein-2606-209307.html)**  
-  _Tue, 02 Jun 2026 15:05:01 +0200_
-  Im Falle eines Brsengangs knnte Anthropic vom Investorenhype um SpaceX profitieren. Fr OpenAI knnten sich ebenfalls Vorteile ergeben. (<a href=" <a href=" <img src=" alt="" width="1" height="1" />
+- [ ] **[Donald Trump: US-Regierung erhlt Vorabzugang zu neuen KI-Modellen](https://www.golem.de/news/donald-trump-us-regierung-erhaelt-vorabzugang-zu-neuen-ki-modellen-2606-209381.html)**  
+  _Wed, 03 Jun 2026 18:30:01 +0200_
+  Ursprnglich wollte die Trump-Regierung den KI-Entwicklern freie Hand lassen. Doch wegen Gefahren fr die IT-Sicherheit ist nun ein Vorabzugriff vorgesehen. (<a href=" <a href=" <img src=" alt="" width=…
+- [ ] **[Scout: Microsoft will Nutzer von neuer KI "abhngig machen"](https://www.golem.de/news/scout-microsoft-will-nutzer-von-neuer-ki-abhaengig-machen-2606-209380.html)**  
+  _Wed, 03 Jun 2026 18:00:02 +0200_
+  Microsoft erklrt in einem internen Dokument zum neuen KI-Agenten Scout, Nutzer in einem ersten Schritt abhngig davon machen zu wollen. (<a href=" <a href=" <img src=" alt="" width="1" height="1" />
+- [ ] **[Digitale Souvernitt: Vier Sicherheitsniveaus fr EU-Clouddienste geplant](https://www.golem.de/news/digitale-souveraenitaet-vier-sicherheitsniveaus-fuer-eu-clouddienste-geplant-2606-209374.html)**  
+  _Wed, 03 Jun 2026 17:15:02 +0200_
+  Die EU-Kommission will europische Cloud- und KI-Dienste gesetzlich frdern. US-Konzerne drften die Vorgaben hufig nicht erfllen. (<a href=" <a href=" <img src=" alt="" width="1" height="1" />
+- [ ] **[(g+) Meta Platforms: Inside Alexandr Wang's bid to revive Meta's AI edge](https://www.golem.de/news/meta-platforms-inside-alexandr-wang-s-bid-to-revive-meta-s-ai-edge-2606-209364.html)**  
+  _Wed, 03 Jun 2026 17:00:02 +0200_
+  Muse Spark model has brought momentum, but doubts linger over whether billionaire prodigy can close the gap with rivals (<a href=" <a href=" Zuckerberg</a>) <img src=" alt="" width="1" height="1" />
 
 ## t3n
-- [ ] **[KI-Ausbau: Alphabet sammelt 80 Milliarden Dollar ein – und macht die Börse nervös](https://t3n.de/news/ki-ausbau-alphabet-boerse-1745533/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Tue, 2 Jun 2026 19:14:38 +0200_
-  Um den Ausbau der KI-Infrastruktur zu finanzieren, will Google-Mutterkonzern Alphabet bis zu 80 Milliarden US-Dollar einsammeln – eine der größten Kapitalerhöhungen bisher. Das damit gesendete Signal …
-- [ ] **[KI-Bilder systematisch erstellen: Wie Workflow-Tools Inkonsistenz und Prompt-Frust beseitigen](https://t3n.de/news/system-ki-bilder-workflow-tools-inkonsistenz-prompt-frust-1731511/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Tue, 2 Jun 2026 17:55:00 +0200_
-  Hochwertige KI-Bilder und -Videos entstehen selten mit einem einzigen Tool. Der kreative Prozess zerfällt oft in eine Schnitzeljagd über verschiedene Browser-Tabs – unterbrochen von Downloads, Uploads…
-- [ ] **[RTX Spark: Nvidia bringt KI-Chip für Windows-PCs](https://t3n.de/news/rtx-spark-nvidia-chip-1745106/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Tue, 2 Jun 2026 16:55:00 +0200_
-  Mit RTX Spark hat Nvidia einen neuen Chip vorgestellt, der für Windows-Systeme entwickelt wurde. Damit greift das Unternehmen direkt andere Chiphersteller wie Intel und AMD an. Was den RTX Spark konku…
-- [ ] **[Neue Studie: Warum Remote Work mehr Einstiegsjobs verdrängt als KI](https://t3n.de/news/neue-studie-warum-remote-work-mehr-einstiegsjobs-verdraengt-als-ki-1745433/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Tue, 2 Jun 2026 16:30:15 +0200_
-  Absolvent:innen fällt der Berufseinstieg so schwer wie nie. Als Grund dafür werden oft neue Technologien genannt. Tatsächlich könnten sich die Auswirkungen der Pandemie aber immer noch bemerkbar mache…
-- [ ] **[ChatGPT: Diese Tricks sparen dir eine Menge Zeit](https://t3n.de/news/chatgpt-diese-tricks-sparen-dir-eine-menge-zeit-1745438/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Tue, 2 Jun 2026 16:00:50 +0200_
-  ChatGPT hat einige versteckte Features parat, die die meisten User:innen gar nicht auf dem Schirm haben. Damit kannst du den Chatbot noch effizienter steuern und die Übersicht in langen Unterhaltungen…
-- [ ] **[10.000-mal schneller: Wie KI-Modelle die klassische Wettervorhersage herausfordern](https://t3n.de/news/ki-wettervorhersage-10000-mal-schneller-1742229/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Tue, 2 Jun 2026 15:55:00 +0200_
-  Regnet es am Wochenende oder scheint die Sonne? Instabile Wetterlagen wie jetzt gerade machen die Wettervorhersage besonders unzuverlässig. Wie KI-Modelle hier Abhilfe schaffen – und wo ihre Grenzen l…
+- [ ] **[Forschende erschaffen KI-Wurm, der für jedes Ziel eine neue Strategie entwickelt](https://t3n.de/news/it-sicherheit-cybersecurity-forschende-erschaffen-ki-wurm-der-fuer-jedes-ziel-eine-neue-strategie-entwickelt-1745734/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Wed, 3 Jun 2026 17:30:27 +0200_
+  Herkömmliche Computerwürmer lassen sich stoppen, wenn man ihre Schwachstellen kennt. Eine neue Variante mit eingebauter KI entwickelte für jedes Ziel individuelle Angriffsstrategien – und nutzte sogar…
+- [ ] **[Nvidia stellt Cosmos 3 als Weltmodell vor: Aber was ist das eigentlich?](https://t3n.de/news/genie-3-superintelligenz-und-weltmodell-was-hinter-den-ki-buzzwords-steckt-1702570/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Wed, 3 Jun 2026 16:55:00 +0200_
+  Cosmos 3 ist Nvidias neues KI-Modell für Robotik und autonome Systeme. „Weltmodelle“ werden oft als „wichtiger Schritt“ zur Superintelligenz bezeichnet. Aber was sind „Weltmodelle“ und was hat das mit…
+- [ ] **[Scam-Anrufe mit KI-generierter Stimme: Google schützt Android-Nutzer mit dieser Neuerung](https://t3n.de/news/scam-anrufe-ki-generierte-stimme-android-nutzer-schuetzen-1745653/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Wed, 3 Jun 2026 16:30:32 +0200_
+  Google will Android-User:innen noch besser vor Scam-Anrufen schützen. Dafür baut das Unternehmen eine neue KI-Warnung in die Telefon-App ein. Wie euch das vor größeren Schäden bewahren soll.
+weiterles…
+- [ ] **[Souveräne Chips, Cloud und KI: EU stellt Gesetzespaket gegen Tech-Abhängigkeit vor](https://t3n.de/news/souveraene-chips-cloud-und-ki-eu-stellt-gesetzespaket-gegen-tech-abhaengigkeit-vor-1745744/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Wed, 3 Jun 2026 15:45:21 +0200_
+  Europa will unabhängiger werden von den USA und China. Die Europäische Kommission hat nun ein umfassendes Gesetzespaket mit genau diesem Ziel vorgestellt. Dazu gehören unter anderem ein Chips Act 2.0,…
+- [ ] **[Project Solara: So will Microsoft KI mit Würfel und Badge tragbar machen](https://t3n.de/news/solara-microsoft-testet-neue-ki-gadgets-fuer-arbeitsplatz-1745603/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Wed, 3 Jun 2026 14:00:04 +0200_
+  Microsoft hat bei zukünftigen Entwicklungen auch ein besonderes Auge auf KI-Gadgets für den Arbeitsplatz. Das Unternehmen hat nun zwei potenzielle Geräte vorgestellt.
+weiterlesen auf t3n.de
+- [ ] **[Trotz einer Milliarde ChatGPT-Nutzern: OpenAI kämpft mit einem unerwarteten Problem](https://t3n.de/news/trotz-milliarden-chatgpt-nutzern-openai-kaempft-mit-einem-unerwarteten-problem-1745665/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Wed, 3 Jun 2026 13:30:31 +0200_
+  Daten von Sensor Tower zeigen, wie schnell ChatGPT eine Milliarde aktive App-User generieren konnte und welche Mega-Apps man damit in den Schatten stellt. Trotzdem hat OpenAI ein großes Problem.weiter…
 
 ## netzpolitik.org
 - [ ] **[Peinliche Lücke: Hacker bringen Meta-KI dazu, fremde Instagram-Accounts herauszugeben](https://netzpolitik.org/2026/peinliche-luecke-hacker-ueberreden-meta-ki-fremde-instagram-accounts-herauszugeben/)**  
@@ -179,4 +178,4 @@
   Karsten Wildberger freut sich auf die KI-Cloud für die Verwaltung. (Symbolbild)    –   Alle Rechte vorbehalten: IMAGO / dts NachrichtenagenturFür eine dreistellige Millionensumme sollen SAP und Teleko…
 
 ---
-Gesammelt: 54 Meldungen aus 10 Quellen. Quellen immer gegenprüfen — Aggregation ersetzt keine Recherche.
+Gesammelt: 53 Meldungen aus 10 Quellen. Quellen immer gegenprüfen — Aggregation ersetzt keine Recherche.
