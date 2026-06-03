@@ -17,6 +17,7 @@ printf '%s' "Sommer-Kollektion 2026" > "$W/sub.txt"
 printf '%s' "Jetzt entdecken" > "$W/o1.txt"
 printf '%s' "luxestyle.ch" > "$W/o2.txt"
 printf '%s' "-10% mit Code  WELCOME10" > "$W/o3.txt"
+HOOK=${HOOK:-}; [ -n "$HOOK" ] && printf '%s' "$HOOK" > "$W/hook.txt"   # Regel 8: Hook in ersten 1-2s
 
 # Intro (3.0s): edel, off-white, Goldlinie + Wortmarke + Subtitle (sanftes Fade)
 IFC="[0:v]drawbox=x=(iw-360)/2:y=ih/2-150:w=360:h=3:color=${GOLD}:t=fill:enable='gte(t,0.2)',"
@@ -34,7 +35,13 @@ for f in "$IMG"/[0-9]*.jpg; do
   fc+="drawbox=x=0:y=1610:w=1080:h=310:color=black@0.34:t=fill,"
   fc+="drawbox=x=80:y=1700:w=8:h=120:color=${GOLD}:t=fill,"
   fc+="drawtext=fontfile=${SANS}:textfile=${W}/n_${ni}.txt:fontcolor=white:fontsize=52:x=118:y=1710,"
-  fc+="drawtext=fontfile=${SANSR}:text='LUXESTYLE':fontcolor=white@0.85:fontsize=30:x=118:y=1772[v]"
+  fc+="drawtext=fontfile=${SANSR}:text='LUXESTYLE':fontcolor=white@0.85:fontsize=30:x=118:y=1772"
+  if [ -n "$HOOK" ] && [ "$idx" = "1" ]; then
+    fc+=",drawbox=x=0:y=0:w=1080:h=250:color=black@0.38:t=fill"
+    fc+=",drawtext=fontfile=${SANS}:textfile=${W}/hook.txt:fontcolor=white:fontsize=62:x=(w-text_w)/2:y=95:line_spacing=14"
+    fc+=",drawbox=x=(iw-220)/2:y=210:w=220:h=4:color=${GOLD}:t=fill"
+  fi
+  fc+="[v]"
   $FF -loop 1 -framerate $FPS -t $SEG -i "$f" -filter_complex "$fc" -map "[v]" -t $SEG -r $FPS \
       -c:v libx264 -pix_fmt yuv420p -crf 18 -preset veryfast "$W/seg_${idx}.mp4"
   N=$((N+1))
