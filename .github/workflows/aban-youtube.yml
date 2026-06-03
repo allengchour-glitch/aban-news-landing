@@ -57,10 +57,11 @@ jobs:
       - name: Persist upload state
         working-directory: video-prototypes/aban-files
         run: |
-          if ! git diff --quiet uploaded.json 2>/dev/null; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add uploaded.json
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add uploaded.json
+          # --cached erkennt auch NEUE (bisher ungetrackte) uploaded.json
+          if ! git diff --cached --quiet; then
             git commit -m "aban: Upload-Fortschritt"
             git push
           else
