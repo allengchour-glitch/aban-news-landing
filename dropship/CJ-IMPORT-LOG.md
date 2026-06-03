@@ -1453,3 +1453,16 @@ gib Feedback mit Analyse von Views; Tools nutzen."
 **EHRLICH:** Ich kann nicht selbst 2 Wochen durchlaufen — die Actions tun es. Damit 2 Wochen kontinuierlich
 gepostet wird, braucht die Queue genug `ready`-Reels (aktuell 3) → entweder pro Session nachfüllen oder eine
 Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN_TOKEN / TELEGRAM_* + Branch→main.
+
+## 2026-06-03 — AUTO-RENDER-ENGINE gebaut (echte 2-Wochen-Autonomie) + Automation-Memory für beide Projekte
+- **`dropship/ads/auto_render.sh`** (lokal getestet ✅): rendert 1 Reel NUR aus `automation/good_products.csv`
+  (Allow-Liste = Regel 7b: gut bewertet + echtes Top-Bild, rotierend via .render_pointer, nie random/doppelt),
+  Hook + Musik, hängt es als `ready` an die Queue. Testlauf erzeugte reels/auto-20260603-1222.mp4 (5 Kleider).
+- **`.github/workflows/reel-render.yml`** (cron alle 4h, 01/05/09…, versetzt zum Poster) installiert ffmpeg+Fonts,
+  rendert + committet. → zusammen mit reel-autopost.yml läuft die Maschine 2 Wochen ohne mich.
+- **`automation/good_products.csv`** — 11 geprüfte Kleider (Shopify-CDN-Bild-URLs). Vielfalt = Zeilen ergänzen.
+- **`automation/reel_music.m4a`** — generiertes, lizenzfreies Ambient (ersetzbar durch elegant.wav).
+- **`automation/AUTOMATION-OVERVIEW.md`** — gemeinsames Automation-Gedächtnis für LuxeStyle + abannews:
+  dokumentiert das ganze System + dass dasselbe Framework für abannews wiederverwendbar ist (Queue-Quelle +
+  Creative-Generator tauschen, Rest identisch).
+**Aktivierung:** Secrets setzen + Branch→main (geplante Actions laufen nur vom Default-Branch). Ohne Secrets No-Op.
