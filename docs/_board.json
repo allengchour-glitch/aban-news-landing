@@ -22,7 +22,7 @@
       "task": "Gumroad-Konto + Datensatz hochladen → Buy-Link",
       "who": "aban",
       "status": "doing",
-      "note": "Voll-Datensatz erzeugt (326 Tools CSV+JSON), an Aban geliefert; wartet auf Gumroad-Konto + Buy-Link",
+      "note": "Datensatz frisch gebaut (326 Tools), Gumroad-ZIP an Aban geliefert, Anleitung docs/GUMROAD-DATENSATZ.md. Wartet auf Gumroad-Link.",
       "updated": "2026-06-03"
     },
     {
@@ -30,7 +30,7 @@
       "task": "Gumroad-Buy-Link in ki-tools-datensatz.html eintragen",
       "who": "code",
       "status": "blocked",
-      "note": "wartet auf Link von Aban",
+      "note": "Seite auf Gumroad umgestellt. Wartet nur noch auf den Gumroad-Link von Aban.",
       "updated": "2026-06-03"
     },
     {
