@@ -25,11 +25,13 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `nametag_base.scad` | Grundplatte (ohne Text) für mehrfarbige Anhänger (X1C + AMS) |
 | `animal.scad` | 8 Tier-Silhouetten (cat, bear, rabbit, fish, paw, dog, heart, star) |
 | `flexi_chain.scad` | Print-in-Place Gliederkette (beweglich, in einem Stück) |
-| `flexi.scad` | **Print-in-Place Flexi-Tier** (Kugel-Pfannen-Gelenke): `kind=cat\|snake\|caterpillar`, `n` Segmente. Katze mit Ohren/Augen/Öse. Bewegliche Segmente, captive Gelenke (im Querschnitt geprüft) |
-| `flexi_cat_keychain.scad` | **Flexi-Loaf-Schlüsselanhänger** (dein IP). `look=mimi\|pancake\|dog\|bear\|seal`, optional `txt="Name"` (in die Seite graviert), Farb-Regionen `part=…`. `part="caltest"` = Toleranz-Kalibrierstreifen (4 Gelenk-Rods clear 0.30–0.45 mit Zahlen) |
-| `flexi_build.py` | **Flexi-Keychain → EINE Mehrfarb-3MF.** Rendert jede Farbregion via OpenSCAD, überspringt leere automatisch, fügt via `assemble.py` zusammen. `python3 flexi_build.py LOOK [NAME]` |
 | `cart_token.scad` | **Einkaufswagen-Chip** (Münz-Token + Lasche + Öse + Initialen). `coin=chf1\|chf2\|chf5\|eur1\|eur2\|eur050\|custom`, `txt="AC"`, `part=base\|text` (2-farbig) |
 | `lithophane.py` | **Foto → 3D-Lithophane** (Relief-Anhänger/Nachtlicht). Pure Python+Pillow, wasserdicht, optional Öse. `python3 lithophane.py foto.jpg out.stl --width 60 --ring`. Kundenfoto = kein Lizenzrisiko |
+
+> ⛔ **Flexi verworfen (Kunde, Juni 2026):** KEINE beweglichen/gegliederten Tiere mehr
+> — die wirken länglich wie **Wurm/Schlange**. Schlüsselanhänger = **kompakte statische
+> Figur** (wie Mimi) + **`hole.py`** fürs Ring-Loch. Die alten Flexi-Skripte sind
+> deprecated (siehe unten).
 | `make.py` | erzeugt aus jedem Text eine druckfertige `.stl` |
 | `meshy_text.py` | **Text → 3D** (Meshy v2): Prompt → GLB, optional `REFINE=1`. Key aus `MESHY_API_KEY` |
 | `meshy_image.py` | **Bild → 3D** (Meshy v1): ein Referenzbild → texturiertes GLB (treffsicherer bei Vorlage) |
@@ -48,21 +50,14 @@ python3 make.py caketopper "Happy Birthday"
 
 openscad -o tier_cat.stl -D 'kind="cat"' animal.scad
 openscad -o flexi_chain.stl flexi_chain.scad
-openscad -o flexi_cat.stl   -D 'kind="cat"'            flexi.scad
-openscad -o flexi_snake.stl -D 'kind="snake"' -D 'n=12' flexi.scad
-
-# Flexi-Keychain (neu): Looks, Name-Gravur, Kalibrierstreifen
-openscad -o flexi_bear.stl -D 'look="bear"' -D 'txt="Max"' flexi_cat_keychain.scad
-openscad -o caltest.stl    -D 'part="caltest"'             flexi_cat_keychain.scad
-python3 flexi_build.py mimi Mia          # -> samples/flexi_mimi_mia.3mf (mehrfarbig)
-
-# Einkaufswagen-Chip + Lithophane (neu)
+# Einkaufswagen-Chip + Lithophane (neu, beide KEIN Flexi)
 openscad -o token.stl -D 'coin="chf2"' -D 'txt="AC"' cart_token.scad
 python3 lithophane.py foto.jpg litho.stl --width 60 --pixels 200 --ring
-```
 
-> **Erst auf dem X1C kalibrieren:** `caltest` einmal drucken → der lockerste Rod,
-> der NICHT auseinanderfällt, ist deine `clear`-Toleranz für alle Flexi-Teile.
+# Schlüsselanhänger aus statischer Figur: Ring-Loch in Mimi bohren (kein Flexi)
+IN=samples/mimi.glb OUT=/tmp/mimi_hole.glb PNG=renders/check.png \
+  SIZE=50 AXIS=x HY=-7 HZ=21 HD=5 blender --background --python hole.py
+```
 Voraussetzung: OpenSCAD (https://openscad.org/downloads.html). Für Render/Mesh-Cleanup
 zusätzlich Blender headless (siehe Lern-Memory).
 
@@ -121,7 +116,11 @@ den Spülturm + etwas mehr Zeit.
 
 ---
 
-## Flexi (print-in-place)
+## Flexi (print-in-place) — ⛔ DEPRECATED (Kunde Juni 2026: Flexi verworfen)
+
+> **Nicht mehr verwenden.** Bewegliche/gegliederte Tiere wirken länglich wie
+> Wurm/Schlange — der Kunde will sie nicht. Schlüsselanhänger = kompakte statische
+> Figur + `hole.py`. Der Abschnitt bleibt nur als technisches Archiv stehen.
 
 - **Eigene Flexi = sicher verkaufbar.** `flexi_chain.scad` (Kette) und `flexi.scad`
   (Flexi-Tier: Katze/Schlange/Raupe) sind beide selbst gebaut → frei verkaufbar.
@@ -291,11 +290,12 @@ Druck-/Aufräum-Tipps (decken sich mit unserer Pipeline):
 - **Social:** `posts.json` für `../social/post.py` (eigene LuxeStyle-Kanäle nutzen).
 - **Bestehender Shop:** CJdropshipping-Artikel (Mode + Gadgets) — Sortiment unfokussiert.
 
-### FESTE REGEL Flexi-Reihe (Juni 2026, vom Kunden bestätigt)
-- **Alle Modelle = niedlicher Flexi-Tier-Stil** wie die hochgeladenen Referenzen
-  (Flexi-Katze/Robbe/Schaf/Hummer/T-Rex … : runder Kopf, grosse Augen, gegliederter
-  beweglicher Körper, oft Schlüsselring).
-- **KEIN Teller / kein Boden** unter dem Tier, und **keine Druckplatte** in Render-Bildern
-  (Hero-Shot vor neutralem Hintergrund, wie `CatKeychain`/`FlexiLobster`).
-- Bauweise (eigenes IP): süsser Kopf (Meshy/Pipeline) + beweglicher Körper (`flexi_cutter`)
-  + Ring + Farb-Akzente (`colorize`/`assemble`). Profi-Sculpts (Drache/Figur) = nur Lizenz.
+### FESTE REGEL (Juni 2026, vom Kunden bestätigt) — Flexi verworfen
+- **KEINE Flexi / keine beweglichen / keine gegliederten Tiere.** Sie wirken länglich
+  wie **Wurm/Schlange** — unerwünscht. (Ersetzt die frühere Flexi-Reihen-Regel.)
+- **Schlüsselanhänger = kompakte, runde STATISCHE Figur** (wie Mimi) mit Ring-Loch
+  (`hole.py`). Voller Körper, kurz & rund, nie länglich.
+- **KEIN Teller / kein Boden** unter dem Tier, **keine Druckplatte** in Render-Bildern
+  (Hero-Shot vor neutralem Hintergrund).
+- Bauweise (eigenes IP): Meshy/Pipeline → `polish.py` → Farbe (`colorize`/`assemble`)
+  → optional Ring-Loch (`hole.py`). Profi-Sculpts (Drache/Figur) = nur Lizenz.
