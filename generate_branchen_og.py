@@ -114,6 +114,9 @@ BRANCHEN = {
     "solarteure":          ("Solarteure",          ["Angebote & Anmeldung,", "nicht die Montage"]),
     "waermepumpen":        ("Wärmepumpen",         ["Angebote & Förder-Kram,", "nicht die Heizlast"]),
     "energieberater":      ("Energieberater",      ["Berichte & Akquise,", "nicht das Testat"]),
+    "smart-home":          ("Smart-Home",          ["Angebote & Support,", "nicht die Installation"]),
+    "vermessungsbuero":    ("Vermessungsbüros",    ["Berichte & Orga,", "nicht die Messung"]),
+    "hundesalon":          ("Hundesalons",         ["Termine & Social,", "nicht die Fellpflege"]),
 }
 
 
