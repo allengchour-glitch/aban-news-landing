@@ -56,3 +56,10 @@ Customizer (du) bzw. App-Installation.** Ich kann Produkte/Kollektionen/SEO per 
 - ✓ Sichere Zahlung: TWINT · Visa · Mastercard · PayPal
 
 Quellen: Shopify App Store (Marketing & Conversion), Judge.me, Hextom, EasyApps Suite.
+
+## ✅ ERLEDIGT per API (live, 2026-06-03)
+- **Entscheidung: 30 Tage Rückgabe = Standard** (die Ankündigungsleiste verspricht das ohnehin allen Besuchern → rauf-geleveled statt Inkonsistenz).
+- **`/collections/sommer`**, **`/collections/damen-mode`**, **`/collections/highlights`**: Beschreibung + SEO geschärft
+  mit **Preis-Anker** („Designer-Look, fairer Preis · ab CHF 34.90/14"), Trust vereinheitlicht auf **30 Tage**, WELCOME10.
+- Das sind die 3 Top-Landingpages der letzten Tage (Analytics: damen-mode 289 · sommer 194 · highlights 163 Sessions).
+- **Offen (Customizer/du):** Ankündigungsleisten-Link-Fix · Hero-Text · Judge.me-Sterne · Trust-Icons · 1 Conversion-App.
