@@ -55,14 +55,16 @@ Ich kann Judge.me-Reviews **nicht** per API bearbeiten — das geht nur im Judge
 > Bis dahin ist das Kleid **bewusst aus allen Reels/Ads ausgeschlossen** (Allow-Liste `good_products.csv`
 > nutzt nur geprüft gut bzw. visuell kuratierte Produkte — neu mit **Ibiza 4,47★** neben **Bali 4,93★**).
 
-## 📲 Make/Buffer-Kurz-Checkliste (gratis abannews-Tool) — einmalig ~15 Min
-1. **Buffer** (buffer.com, gratis): TikTok-Konto **und** Instagram-Konto **je als eigenen Channel** verbinden.
-2. **Make** (eu1.make.com, dein bestehender gratis Account): `automation/video-autopost.blueprint.json` importieren.
-   - Modul 1 = Webhook (bestehenden nutzen → kein GitHub-Secret nötig; oder neuen → URL als Secret `MAKE_REEL_WEBHOOK`).
-   - Modul 2 = **Buffer → Create Post**: Text `{{1.caption}}`+`{{1.hashtags}}`, Video `{{1.video_url}}`, Profiles = TikTok+IG.
-   - Modul 3 = Telegram-Bestätigung. Szenario **ON**.
-3. Test: GitHub → Actions → **„Reel Auto-Post" → Run workflow** → 1 Reel sollte in Buffer/auf IG landen.
-Danach postet die Engine **alle 4h** automatisch das nächste freigegebene Reel (7 in der Queue).
+## 📲 Autopost-Kurz-Checkliste (Eigentool + n8n, gratis — KEIN Make) — einmalig ~15 Min
+> Voll auf das abannews-Eigentool umgestellt (`automation/post-next-reel.mjs`, analog `social/post.py`):
+> postet direkt per **Telegram** und/oder über **n8n** (gratis, self-hosted) an **TikTok + Instagram**.
+1. **Schnellstart (0 Min, sofort sichtbar):** im Repo Secrets `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID`
+   (`164567631`) setzen → die 4h-Action meldet jedes fällige Reel direkt in Telegram (Zero-Relay).
+2. **Voll-Autopost auf IG/TikTok (gratis, ohne Make):** **n8n** bereitstellen (`npx n8n` oder Docker, EU),
+   `social/n8n-publish-workflow.json` importieren, IG-/TikTok-Node per OAuth verbinden, aktivieren →
+   Production-Webhook-URL als Repo-Secret **`PUBLISH_WEBHOOK_URL`** setzen. Doku: `social/N8N-WEBHOOK.md`.
+3. Test: GitHub → Actions → **„Reel Auto-Post" → Run workflow** → Reel sollte in Telegram bzw. via n8n auf IG/TikTok landen.
+Danach postet die Engine **alle 4h** automatisch das nächste freigegebene Reel (Queue füllt sich selbst per `reel-render.yml`).
 
 ---
 ## Traffic-Diagnose 2026-06-03 (warum 0 Käufe)

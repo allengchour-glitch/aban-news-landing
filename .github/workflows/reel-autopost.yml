@@ -1,13 +1,17 @@
 name: Reel Auto-Post (alle 4 Stunden 1 Reel)
 
-# Selbstgemachtes Automatik-Tool (wie cj-autopilot.yml): postet alle 4h das nächste
-# freigegebene Reel (status=ready) aus automation/reels_seed.csv über den Make-Webhook
-# (→ Buffer → TikTok + Instagram) und markiert die Zeile als posted (Commit zurück ins Repo).
+# Selbstgemachtes Automatik-Tool (wie cj-autopilot.yml + analog abannews social/post.py):
+# postet alle 4h das nächste freigegebene Reel (status=ready) aus automation/reels_seed.csv
+# und markiert die Zeile als posted (Commit zurück ins Repo). KEIN Make nötig.
 #
-# Voraussetzung: Repository-Secret MAKE_REEL_WEBHOOK = die Webhook-URL des Make-Szenarios
-# (Settings → Secrets and variables → Actions). Ohne Secret = sauberer No-Op (nichts passiert).
+# Kanäle (Repository-Secrets, Settings → Secrets and variables → Actions; mind. einer):
+#   PUBLISH_WEBHOOK_URL = generischer Webhook → n8n (gratis, self-hosted) → TikTok + Instagram
+#                         (n8n-Workflow im Repo: social/n8n-publish-workflow.json)
+#   TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID = direkte Telegram-Meldung (Zero-Relay)
+#   MAKE_REEL_WEBHOOK   = Legacy-Alias (optional, falls doch Make)
+# Ohne jeden Secret = sauberer No-Op (nichts passiert, kein Fehler).
 # Reels müssen unter reels/<slug>.mp4 liegen (GitHub Pages, öffentlich) und in reels_seed.csv
-# mit status=ready stehen (Freigabe via Telegram setzt ready).
+# mit status=ready stehen (Freigabe setzt ready).
 
 on:
   schedule:
@@ -37,6 +41,9 @@ jobs:
 
       - name: Post next ready reel
         env:
+          PUBLISH_WEBHOOK_URL: ${{ secrets.PUBLISH_WEBHOOK_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           MAKE_REEL_WEBHOOK: ${{ secrets.MAKE_REEL_WEBHOOK }}
         run: node automation/post-next-reel.mjs
 
