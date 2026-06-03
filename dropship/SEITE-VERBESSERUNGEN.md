@@ -105,3 +105,13 @@ erscheinen (kein Archiv, da archivierte nicht publiziert sind).
 smart-home-sleep, wellness-self-care, premium-fitness-yoga, schule-buro, express-lieferung.
 **LEHRE/TOOL-IDEE:** Menü-Links regelmässig per `publishedOnPublication` prüfen (curl wird von Shopify
 gedrosselt → Admin-API nutzen). Gehört in den Site-Health-Monitor, sobald die App Produkt-Scopes hat.
+
+## ✅ ERLEDIGT + Customizer-Schritte: Discoverability (Suche + Kategorie-Kacheln, 2026-06-03)
+**Per API erledigt:** 6 Top-Kategorien mit Kollektions-Bild versehen (kleider, premium-schmuck, schuhe,
+taschen-sub, sonnenbrillen-eyewear, unter-chf-25) → Kategorie-Kacheln sehen sofort gut aus.
+**Customizer (du, Theme API-gesperrt):**
+- A) Header → Such-Block → Stil von „Icon" auf „Leiste/Input", Platzhalter „Suche Kleider, Schmuck, Schuhe …".
+- B) Startseite → Abschnitt „Kollektionsliste/Collage" → Kleider/Schmuck/Schuhe/Taschen/Sonnenbrillen/Sale → „Shop nach Kategorie".
+- C) Menü-Label „Kategorien" statt nur ☰ (falls Theme erlaubt).
+**Warum:** Menü+Suche waren nur kleine Icons → User finden Kategorien/Suche nicht. Sichtbare Suche = Sucher
+kaufen 2–3× häufiger; Kategorie-Kacheln = keine versteckte Navigation.
