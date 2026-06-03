@@ -1,0 +1,195 @@
+{
+    "name": "LuxeStyle Reel auto-post (TikTok + Instagram)",
+    "flow": [
+        {
+            "id": 1,
+            "module": "google-sheets:searchRows",
+            "version": 4,
+            "parameters": {
+                "__IMTCONN__": "__GOOGLE_SHEETS_CONNECTION__"
+            },
+            "mapper": {
+                "from": "drive",
+                "mode": "fromAll",
+                "sheetId": "reels_queue",
+                "spreadsheetId": "__SHEET_ID__",
+                "includesHeaders": true,
+                "valueRenderOption": "FORMATTED_VALUE",
+                "dateTimeRenderOption": "FORMATTED_STRING",
+                "filter": [
+                    [
+                        {
+                            "a": "status",
+                            "b": "ready",
+                            "o": "text:equal"
+                        },
+                        {
+                            "a": "scheduled_date",
+                            "b": "{{formatDate(now; \"YYYY-MM-DD\")}}",
+                            "o": "text:equal"
+                        }
+                    ]
+                ],
+                "order": {
+                    "type": "ASC",
+                    "cellRef": "id"
+                },
+                "maxRows": 1
+            },
+            "metadata": {
+                "designer": { "x": 0, "y": 0 },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": { "label": "Google Sheets (LuxeStyle)" }
+                    }
+                },
+                "notes": "Liest die erste Zeile mit status=ready UND scheduled_date=heute (max 1). status wird durch die Telegram-Freigabe von 'pending' auf 'ready' gesetzt."
+            }
+        },
+        {
+            "id": 2,
+            "module": "http:ActionSendData",
+            "version": 3,
+            "parameters": {
+                "handleErrors": true
+            },
+            "mapper": {
+                "url": "https://api.bufferapp.com/1/updates/create.json",
+                "method": "post",
+                "headers": [
+                    {
+                        "name": "Authorization",
+                        "value": "Bearer __BUFFER_ACCESS_TOKEN__"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                    }
+                ],
+                "qs": [],
+                "bodyType": "x_www_form_urlencoded",
+                "parseResponse": true,
+                "timeout": 40,
+                "shareCookies": false,
+                "rejectUnauthorized": true,
+                "followRedirect": true,
+                "useQuerystring": true,
+                "gzip": true,
+                "data": "profile_ids[]=__BUFFER_TIKTOK_PROFILE_ID__&profile_ids[]=__BUFFER_IG_PROFILE_ID__&text={{1.caption}}%0A%0A{{1.hashtags}}&media[video]={{1.video_url}}&media[thumbnail]={{1.video_url}}&now=true"
+            },
+            "metadata": {
+                "designer": { "x": 300, "y": 0 },
+                "notes": "POSTET das Reel an TikTok + Instagram. EMPFOHLEN: Dieses HTTP-Modul nach dem Import durch das native Make-Modul 'Buffer > Create Post / Create Update' ersetzen (One-Click-OAuth, kein Token-Management). Mapping dort: Text = {{1.caption}} + Zeilenumbruch + {{1.hashtags}}; Media/Video-URL = {{1.video_url}}; Profiles = TikTok + Instagram. Über die Spalte {{1.platforms}} lassen sich pro Reel einzelne Channels an-/abwählen (Router/Filter)."
+            }
+        },
+        {
+            "id": 3,
+            "module": "google-sheets:updateRow",
+            "version": 4,
+            "parameters": {
+                "__IMTCONN__": "__GOOGLE_SHEETS_CONNECTION__"
+            },
+            "mapper": {
+                "from": "drive",
+                "mode": "fromAll",
+                "sheetId": "reels_queue",
+                "spreadsheetId": "__SHEET_ID__",
+                "rowNumber": "{{1.`__ROW_NUMBER__`}}",
+                "includesHeaders": true,
+                "values": {
+                    "0": "{{1.id}}",
+                    "1": "{{1.scheduled_date}}",
+                    "2": "{{1.video_url}}",
+                    "3": "{{1.caption}}",
+                    "4": "{{1.hashtags}}",
+                    "5": "{{1.platforms}}",
+                    "6": "posted",
+                    "7": "{{formatDate(now; \"YYYY-MM-DD HH:mm:ss\"; \"Europe/Zurich\")}}",
+                    "8": "{{2.id}}"
+                }
+            },
+            "metadata": {
+                "designer": { "x": 600, "y": 0 },
+                "notes": "Markiert die Zeile als posted. Spalte G(6)=status, H(7)=posted_at, I(8)=post_url (Buffer-Response-ID)."
+            }
+        },
+        {
+            "id": 4,
+            "module": "http:ActionSendData",
+            "version": 3,
+            "parameters": {
+                "handleErrors": false
+            },
+            "mapper": {
+                "url": "https://api.telegram.org/bot__TELEGRAM_BOT_TOKEN__/sendMessage",
+                "method": "post",
+                "headers": [
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "qs": [],
+                "bodyType": "raw",
+                "parseResponse": false,
+                "timeout": 10,
+                "shareCookies": false,
+                "rejectUnauthorized": true,
+                "followRedirect": true,
+                "useQuerystring": false,
+                "gzip": true,
+                "contentType": "application/json",
+                "data": "{\"chat_id\":\"__TELEGRAM_CHAT_ID__\",\"text\":\"\\u2705 Reel {{1.id}} live ({{1.platforms}}) \\u2014 {{substring(1.caption; 0; 80)}}\\u2026\"}"
+            },
+            "metadata": {
+                "designer": { "x": 900, "y": 0 },
+                "notes": "Telegram-Bestaetigung an dich (chat_id 164567631). Optional entfernbar."
+            }
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": { "orphans": [] },
+        "zone": "eu1.make.com",
+        "scheduling": {
+            "type": "cron",
+            "cron": "0 */8 * * *",
+            "timezone": "Europe/Zurich"
+        },
+        "notes": [
+            {
+                "moduleIds": [1],
+                "content": "Cron alle 8h. Liest 1 freigegebenes Reel (status=ready, scheduled_date=heute) aus dem Google Sheet 'reels_queue'.",
+                "color": "#2E8AE6"
+            },
+            {
+                "moduleIds": [2],
+                "content": "EMPFOHLEN durch natives Buffer-Modul ersetzen (gratis, kein Token). Postet Video an TikTok + Instagram. Variablen: __BUFFER_*__ Profile-IDs.",
+                "color": "#FFB200"
+            },
+            {
+                "moduleIds": [3],
+                "content": "Sheet-Zeile -> status=posted, posted_at, post_url. Gleiche Google-Sheets-Connection.",
+                "color": "#34A853"
+            },
+            {
+                "moduleIds": [4],
+                "content": "Telegram-Bestaetigung. __TELEGRAM_BOT_TOKEN__ + __TELEGRAM_CHAT_ID__ via Scenario-Variables.",
+                "color": "#E63946"
+            }
+        ]
+    }
+}

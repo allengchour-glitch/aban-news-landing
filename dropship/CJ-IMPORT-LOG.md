@@ -1404,3 +1404,22 @@ CHF 34.90, 45 Varianten Farbe×Grösse [9 Farben S–XXL, DE-Farbnamen], deutsch
 Media READY ✅. **Publiziert in 6 Kanäle** (Onlineshop, Shop, TikTok, FB&IG, Google&YT, Pinterest) — 0 Fehler.
 Live: luxestyle.ch/products/floral-sommerkleid-marguerite-ruschen-trager-figurbetont. Auto-Join Sommer-Collection via Tags.
 **Hinweis:** Bei 0 Verkäufen ist „mehr Produkte" der schwächste Hebel — Traffic bleibt das Kernthema.
+
+## 2026-06-03 — Video-Autopost-Pipeline gebaut (Reels → TikTok + Instagram, gratis)
+Gespiegelt vom abannews-Make-Blueprint (automation/linkedin-auto-post). Neu:
+- `automation/video-autopost.blueprint.json` — Make-Scenario (Cron 8h → Google-Sheet `reels_queue`
+  status=ready/heute → Buffer CreatePost TikTok+IG → Sheet=posted → Telegram-Bestätigung). JSON valide,
+  gleiches Make-Schema wie LinkedIn-Blueprint. Modul 2 = HTTP-Buffer-Platzhalter + Note „durch natives
+  Buffer-Modul ersetzen" (gratis, kein Token).
+- `automation/video-autopost-SETUP.md` — Anleitung inkl. **Kanal-Trennung** (Buffer = je Konto 1 Channel:
+  TikTok + Instagram separat verbinden, Profile-IDs), Sheet-Schema, GitHub-Pages-Hosting, Import+Variablen,
+  Telegram-Freigabe-Kopplung (Szenario 6001019, Bot 8904564755, chat 164567631), Test, Budget = 0 CHF.
+- `automation/reels_seed.csv` — Start-Queue: 3 freigegebene Reels (eleganz/sommer/premium) + 7 Caption/
+  Hashtag-Ideen aus GRATIS-WACHSTUM, Spalten id,scheduled_date,video_url,caption,hashtags,platforms,status,
+  posted_at,post_url. (platforms gequotet → 9 Spalten valide.)
+- `dropship/ads/publish_reel.sh` — mp4 → `reels/<slug>.mp4` (GitHub-Pages, öffentlich via abannews.com/reels/)
+  + fertige CSV-Zeile. Getestet (kopiert, URL+Zeile korrekt).
+- `reels/.gitkeep` — öffentlich gehosteter Ordner.
+**Freigabe-Modus:** Telegram zuerst (status pending→ready erst nach Tap). **Grenze:** Claude postet nicht selbst;
+TikTok-Auto-Publish via Buffer teils „Push-to-App"; IG-Reels meist voll auto. Organik = Reichweite, Käufer-Hebel
+bleibt die bezahlte Conversion-Kampagne.
