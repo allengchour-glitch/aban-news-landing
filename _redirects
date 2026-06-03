@@ -89,6 +89,10 @@
 /monitor          /ki-sichtbarkeit-monitor.html  301
 /sichtbarkeit-monitor /ki-sichtbarkeit-monitor.html 301
 
+# Buch: Von KI gefunden werden
+/ki-buch          /ki-sichtbarkeit-buch.html  301
+/gefunden-werden  /ki-sichtbarkeit-buch.html  301
+
 # 404 fallback — Cloudflare Pages serves /404.html automatically for missing routes,
 # aber für SPA-like fallback explicit:
 /*                /404.html             404
