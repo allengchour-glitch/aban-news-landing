@@ -1,8 +1,9 @@
 # ABAN Files — Faceless Sci-Fi/Ancient-Aliens Shorts (vollautomatisch)
 
-Automatisierte 9:16-Kurzvideo-Serie für YouTube. Sprecher ist **ALLENG**, ein
-reptiloider Herrscher aus dem Inneren der Erde („KING ALLENG" wird **nicht** mehr
-genannt — `ALLENG` ist der echte Vorname des Owners und bleibt draußen). Jede Folge
+Automatisierte 9:16-Kurzvideo-Serie für YouTube. Sprecher ist **ABAN**, ein
+reptiloider Herrscher aus dem Inneren der Erde. Im Skript wird er nur als „ABAN"
+bzw. „we of ABAN" genannt — **der echte Name des Owners darf NIE auftauchen**
+(weder gesprochen, im Bild, im Titel/Beschreibung noch im Code). Jede Folge
 ist ein kurzer, mysteriöser Monolog im Ancient-Aliens-Doku-Ton, endet mit
 **„The ABAN Files. Check it out."**
 

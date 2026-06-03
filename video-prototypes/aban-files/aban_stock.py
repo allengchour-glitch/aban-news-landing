@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ABAN Files - Stock-Footage Pipeline (GRATIS).
-ElevenLabs ALLENG-Stimme + Pexels-Stockclips + Karaoke-Untertitel (ASS) + Dark-Drone
+ElevenLabs ABAN-Stimme + Pexels-Stockclips + Karaoke-Untertitel (ASS) + Dark-Drone
 -> cinematisches 9:16-Video. Aufruf:  XI=<el> PEXELS=<key> python3 aban_stock.py <ep>
 """
 import os, sys, json, base64, subprocess, urllib.request, urllib.parse
