@@ -14,13 +14,14 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **92 live**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **98 live, alle viersprachig (de/en/fr/it = 392 Seiten)**
 
-- Welle 5 (52→62, #109): Elektriker, Sanitär/Heizung, Fliesenleger, Trockenbau, Glaser, Metallbauer, Zimmerer, Gerüstbau, Raumausstatter, Schornsteinfeger.
-- Welle 6 (62→72, #113): Heilpraktiker, Hörakustiker, Podologen, Zahntechniker, Sanitätshäuser, Kieferorthopäden, Notare, Wirtschaftsprüfer, Sachverständige, Hausmeisterservice.
-- Welle 7 (72→82, #130): Sicherheitsdienste, Umzugsunternehmen, Schlüsseldienste, Entrümpelung, Schädlingsbekämpfer, Metzgereien, Eisdielen, Cafés, Buchhandlungen, Fahrradläden.
-- Welle 8 (82→92, #136): Sportgeschäfte, Modeboutiquen, Getränkehandel, Fahrschulen, Musikschulen, Tanzschulen, Sprachschulen, Nagelstudios, Tattoostudios, Hochzeitsfotografen.
-- **DE-Backlog weitgehend erschöpft** → Fokus wechselt auf **P2-Übersetzungen** (kein Thin-Content-Risiko). Neue DE-Hubs nur bei klar distinkten neuen Branchen.
+- Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
+- Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
+- Welle 10 (95→98, #291): Smart-Home, Vermessungsbüros, Hundesalons — **direkt viersprachig**.
+- **Neue Hubs (Welle 9+) werden sofort 4-sprachig** gebaut (DE-Vollstandard inkl. Tools-CTA-aside + 5 hreflang + nav-Switch, Übersetzungen mit übersetztem aside). Vorlage: `ki-fuer-elektriker.html` (+ `en/`).
+- Backlog-Kandidaten weitere distinkte Nischen: estrichleger, rollladenbauer, bodenleger, ingenieurbuero, aenderungsschneiderei, uhrmacher, druckereien, werbetechnik, ladestation-installateur, brandschutz, aufzugswartung.
+- **Qualität:** FAQ-Drift in coaches/handwerker behoben (#290); Tools-CTA-aside auf allen 276 alten i18n-Hubs (#287).
 
 ## Mehrsprachige Hubs (P2, EN+FR+IT) — **92 von 92 Hubs viersprachig — P2 KOMPLETT ✅**
 
