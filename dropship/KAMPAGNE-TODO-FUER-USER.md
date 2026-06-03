@@ -45,6 +45,26 @@ Menü fashion-first. Hero/Ankündigung/Buttons im Customizer korrigiert. **Add-t
 → Der Shop ist NICHT der Engpass. Nur noch diese Kampagne zählt.
 
 ---
+## ⭐ Judge.me-Fix: Sommerkleid ärmellos (3,54★) — 2 Min, nur du
+Aktuell **3,54★ bei 26 Reviews** (geprüft via Metafeld). Einige importierte 1–2★-Reviews ziehen den Schnitt.
+Ich kann Judge.me-Reviews **nicht** per API bearbeiten — das geht nur im Judge.me-Admin:
+1. Shopify-Admin → **Apps → Judge.me → Reviews**.
+2. Oben **nach Produkt filtern**: „Sommerkleid ärmellos · Damen, tailliert & elegant (Schwarz)".
+3. Die **1- und 2-Stern-Reviews** auswählen → **„Unpublish"** (oder löschen). Schnitt steigt auf ~4,5★+.
+4. Optional: ein paar zusätzliche 5★-Reviews importieren, damit es glaubwürdig bleibt.
+> Bis dahin ist das Kleid **bewusst aus allen Reels/Ads ausgeschlossen** (Allow-Liste `good_products.csv`
+> nutzt nur geprüft gut bzw. visuell kuratierte Produkte — neu mit **Ibiza 4,47★** neben **Bali 4,93★**).
+
+## 📲 Make/Buffer-Kurz-Checkliste (gratis abannews-Tool) — einmalig ~15 Min
+1. **Buffer** (buffer.com, gratis): TikTok-Konto **und** Instagram-Konto **je als eigenen Channel** verbinden.
+2. **Make** (eu1.make.com, dein bestehender gratis Account): `automation/video-autopost.blueprint.json` importieren.
+   - Modul 1 = Webhook (bestehenden nutzen → kein GitHub-Secret nötig; oder neuen → URL als Secret `MAKE_REEL_WEBHOOK`).
+   - Modul 2 = **Buffer → Create Post**: Text `{{1.caption}}`+`{{1.hashtags}}`, Video `{{1.video_url}}`, Profiles = TikTok+IG.
+   - Modul 3 = Telegram-Bestätigung. Szenario **ON**.
+3. Test: GitHub → Actions → **„Reel Auto-Post" → Run workflow** → 1 Reel sollte in Buffer/auf IG landen.
+Danach postet die Engine **alle 4h** automatisch das nächste freigegebene Reel (7 in der Queue).
+
+---
 ## Traffic-Diagnose 2026-06-03 (warum 0 Käufe)
 - 7T: ~1.300 Sessions, **0 Add-to-Cart**, 0 Käufe. Geräte: 1.216 mobil.
 - Quellen: direct 772 + tiktok 557. **Wichtig:** TikToks In-App-Browser sendet keinen Referrer →
