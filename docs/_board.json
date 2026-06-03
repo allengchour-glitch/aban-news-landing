@@ -1,5 +1,5 @@
 {
-  "next_id": 12,
+  "next_id": 13,
   "tasks": [
     {
       "id": 1,
@@ -87,6 +87,14 @@
       "who": "code",
       "status": "blocked",
       "note": "wartet auf Deploy (Task 9) + Link von Aban (Task 10)",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 12,
+      "task": "luxestyle.ch: Sample drucken → Shopify-Produkte live (Inhaber)",
+      "who": "aban",
+      "status": "todo",
+      "note": "",
       "updated": "2026-06-03"
     }
   ]
