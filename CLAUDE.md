@@ -237,3 +237,24 @@ Sci-Fi/Reptiloid-Kurzvideo-Serie (faceless), Pipeline unter `video-prototypes/ab
 - **YouTube-Kanal:** Haupt-Kanal `@allengchour`, umbenannt zu **„ABAN Files"**.
   **OAuth ist eingerichtet** — Secrets `YT_CLIENT_ID/SECRET/REFRESH_TOKEN` existieren und
   gelten für diesen Kanal → ABAN nutzt sie wieder. CI-Render-Secrets noch: `XI`, `PEXELS`.
+
+## ABAN Files — Roadmap / nächste Schritte (datengetrieben)
+
+**Plan vom Owner:** NICHT blind weiterproduzieren. Erst ~1 Tag laufen lassen,
+dann **YouTube-Views analysieren** und gezielt **bessere** Folgen bauen.
+
+Bei der nächsten Session:
+1. View-Zahlen je Folge prüfen (Kanal des Tokens, Handle `@Aban-news` / „ABAN Files").
+   Hinweis: Upload-Token hat nur `youtube.upload`-Scope → für Statistik ggf.
+   `videos.list(part=statistics)` via API-Key (öffentliche Videos) nutzen.
+2. Bestperformer nach Thema/Stil erkennen → nur diese Richtung ausbauen.
+3. Look-Wünsche fürs Upgrade: **mehr & mysteriösere/passendere Clips**,
+   **3–4 Shots mehr** (also ~16–20), **andere Perspektiven** (Drohne/Totale/
+   Makro/Slow-Mo) → soll wie eine **Film-Doku** wirken (Ancient-Aliens-Doku-Stil:
+   Fragen-Hooks, echte Mysterien wie Göbekli Tepe/Nazca/Puma Punku, Spannungsbogen,
+   Musik-Schwellen). Musik-Score ist bereits in `aban_stock.py` fest verbaut.
+
+**Bisher hochgeladen (öffentlich, Kanal-Token):** ep1=Asf2gb0SAIw, ep2=kUE7lN1sChY,
+ep3=A9OlozIzQ2o, ep7=Qapp3WIt9L8, ep8=HGRFQKkjWNw, ep9=k2NJE-BOtRE, ep10=HG4i0MXc0GI
+(ep4–ep6 + ep11 ebenfalls auf dem Kanal). ep1–ep3 ggf. noch ungelistet → manuell öffentlich.
+Fortschritt: `video-prototypes/aban-files/uploaded.json` (ep1–ep11).
