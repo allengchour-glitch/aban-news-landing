@@ -38,6 +38,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 
 ## Stand
 **📌 2026-06-03 (AKTUELLSTER STAND — zuerst lesen):**
+- **VIDEO-PRODUKTION macht die andere Session** (GEHIRN-HACKS/ABAN Files, `video-prototypes/`) — ich (Dropship)
+  baue dort NICHT weiter. ABER gesichert: **piper-TTS funktioniert im Container** (XTTS scheiterte) → Voiceover-
+  Reels sind hier baubar. Rezept in `video-prototypes/HANDOFF.md`. LuxeStyle-PoC: `reels/script-sommer-20260603-1834.mp4`
+  (piper-Voiceover + B-Roll pro Satz + Hook + geduckter Beat, reines ffmpeg). **TikTok-Analyzer** `tools/tiktok_analyze.py`
+  (`--insecure` im Sandbox) zieht echte @luxestyle.ch-Performance — Lehre: Preis-Anker-Caption schlägt generische 20:1.
 - **Gratis-Reel-Pipeline komplett & auf `main`** (Cron-Workflows laufen nur vom Default-Branch):
   `reel-render.yml` (alle 4h Reel aus `automation/good_products.csv` → `reels/auto-*.mp4`, nur geprüfte Produkte),
   `reel-autopost.yml` (alle 4h nächstes `ready`-Reel posten), `reel-analytics.yml` (alle 2T Report).

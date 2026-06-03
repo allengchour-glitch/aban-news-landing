@@ -50,3 +50,17 @@ Ausführen: `pip install Pillow imageio imageio-ffmpeg` dann `python3 scripts/re
 2. Skripte #3 und #7 ausschreiben.
 3. In `make-blueprint`/Remotion: Cutout-`Character.tsx` bauen, Word-Sync + Props anbinden,
    1 PoC-Render von #6, an Qualitäts-Checkliste messen, DANN Batch über alle 100.
+
+## ✅ TTS-LÖSUNG: piper funktioniert IM Container (von der Dropship-Session getestet, 2026-06-03)
+XTTS scheiterte (Dependency-Hölle, siehe XTTS-SETUP.md) — **piper läuft sauber, ohne Build-Probleme**:
+```bash
+pip install piper-tts                       # Binary + Python-Modul, keine Kaskade
+# Deutsche Stimme laden (HuggingFace rhasspy/piper-voices):
+#   weiblich: de/de_DE/kerstin/low/de_DE-kerstin-low.onnx(+.json)  (~61 MB)
+#   maennlich Top-Qualitaet: de/de_DE/thorsten/medium/de_DE-thorsten-medium.onnx
+echo "Dein Satz." | piper -m de_DE-kerstin-low.onnx -f vo.wav   # -> sauberes WAV
+```
+Fallback `espeak-ng` (apt) ist auch da (roboterhaft). Damit ist **Voiceover im Container moeglich** —
+kein make-blueprint noetig, falls nur Stimme + ffmpeg-B-Roll gebraucht wird.
+**PoC (LuxeStyle, gleiche Methode):** `reels/script-sommer-20260603-1834.mp4` — piper-Voiceover +
+B-Roll pro Satz + Hook + geduckter Beat, voll mit ffmpeg gebaut. Vorgehen dort als Vorlage nutzbar.
