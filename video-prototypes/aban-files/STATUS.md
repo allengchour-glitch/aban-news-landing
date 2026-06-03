@@ -20,8 +20,8 @@ Kanal = Haupt-Kanal `@allengchour` (umbenannt zu „ABAN Files").
 - **Bild-zu-Text-Passung:** pro Satz passender Clip via Stichwort-Map `KW` (Mond→Mond …),
   exakt auf die Satzdauer getimt; Fallback = Episoden-Pool `SCENES`.
 - **Kein Clip doppelt** (used-Set über alle Quellen).
-- **Footage-Quellen:** Pexels + **Pixabay** (Env `PEXELS`, optional `PIXABAY`). NASA als 3.
-  Quelle vorgeschlagen (kein Key) — noch nicht eingebaut.
+- **Footage-Quellen:** Pexels + **Pixabay** + **NASA** (Env `PEXELS`, optional `PIXABAY`;
+  NASA kein Key, nur für Weltraum-Queries via `NASA_KW`, public domain).
 - **ABAN deutsch ausgesprochen:** TTS bekommt „Ahbahn", Untertitel mappen zurück auf „ABAN".
 - **Keine verschluckten Enden:** Videolänge = `max(Alignment, echte Audiolänge)+0.6`.
 - Untertitel unten · Ambient-Musik · Dark-Grade. Länge: **neue Folgen ~75–90 s** (länger).
