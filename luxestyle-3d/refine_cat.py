@@ -69,7 +69,7 @@ except: pass
 BELLY_STR=float(g("belly_strength",0.0))
 if TABBY>0.01:
     tex=nt.nodes.new("ShaderNodeTexWave"); tex.inputs["Scale"].default_value=TABBY_SCALE
-    tex.inputs["Distortion"].default_value=float(g("tabby_dist",3.0)); tex.wave_type='BANDS'; tex.bands_direction='Z'
+    tex.inputs["Distortion"].default_value=float(g("tabby_dist",3.0)); tex.wave_type='BANDS'; tex.bands_direction=g("tabby_dir","X")
     try: tex.inputs["Detail"].default_value=float(g("tabby_detail",2.0))
     except: pass
     ramp=nt.nodes.new("ShaderNodeValToRGB")
@@ -132,8 +132,14 @@ for si,sidem in enumerate((Ve[Ve[:,0]<midx], Ve[Ve[:,0]>=midx])):
     sidesign = -1.0 if si==0 else 1.0
     # Pupille: rund, vorne zentriert (Iris-Ring bleibt sichtbar)
     ppos=c+front*(rad*0.55)
-    bpy.ops.mesh.primitive_uv_sphere_add(radius=rad*0.52, location=ppos, segments=24, ring_count=12)
-    pu=bpy.context.active_object; bpy.ops.object.shade_smooth(); pu.data.materials.append(black_mat())
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=rad*float(g("pupil_size",0.52)), location=ppos, segments=24, ring_count=12)
+    pu=bpy.context.active_object; bpy.ops.object.shade_smooth()
+    slit=float(g("pupil_slit",0.0))
+    if slit>0.01:   # vertikaler Katzen-Schlitz: schmal entlang horizontaler Achse
+        if long_axis=='y': pu.scale=(1.0-0.85*slit,1,1)
+        else: pu.scale=(1,1.0-0.85*slit,1)
+        bpy.ops.object.transform_apply(scale=True)
+    pu.data.materials.append(black_mat())
     # Glanzlicht oben-seitlich
     if HIGHLIGHT>0.01:
         gpos=c+front*(rad*0.85)+up*(rad*0.45)+Vector((sidesign*rad*0.2,0,0))
