@@ -23,7 +23,7 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `nameplate.scad` | Namensschild (Tür / Schreibtisch) |
 | `caketopper.scad` | Cake-Topper mit Wunschtext |
 | `nametag_base.scad` | Grundplatte (ohne Text) für mehrfarbige Anhänger (X1C + AMS) |
-| `animal.scad` | 8 Tier-Silhouetten (cat, bear, rabbit, fish, paw, dog, heart, star) |
+| `animal.scad` | 9 Silhouetten (cat, bear, rabbit, fish, paw, dog, heart, star, butterfly) |
 | `cart_token.scad` | **Einkaufswagen-Chip** (Münz-Token + Lasche + Öse + Initialen). `coin=chf1\|chf2\|chf5\|eur1\|eur2\|eur050\|custom`, `txt="AC"`, `part=base\|text` (2-farbig) |
 | `lithophane.py` | **Foto → 3D-Lithophane** (Relief-Anhänger/Nachtlicht). Pure Python+Pillow, wasserdicht, optional Öse. `python3 lithophane.py foto.jpg out.stl --width 60 --ring`. Kundenfoto = kein Lizenzrisiko |
 
