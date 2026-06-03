@@ -168,6 +168,13 @@
 /online-tools     /online-tools.html  301
 /gratis-tools     /online-tools.html  301
 
+# Rechnung + Vorlagen-Pack (Teil 5)
+/rechnung         /rechnung-generator.html 301
+/rechnung-generator /rechnung-generator.html 301
+/rechnung-schreiben /rechnung-generator.html 301
+/vorlagen-pack    /vorlagen-pack.html   301
+/geschaeftsvorlagen /vorlagen-pack.html 301
+
 # 404 fallback — Cloudflare Pages serves /404.html automatically for missing routes,
 # aber für SPA-like fallback explicit:
 /*                /404.html             404
