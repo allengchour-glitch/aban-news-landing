@@ -131,6 +131,16 @@
       .hnav .lk{display:none}.row{flex-direction:column}.row .btn{width:100%}
     }
   @media (hover:none) and (pointer:coarse){.tab{min-height:44px;padding:.55rem 1rem}.lang a{min-height:38px;display:inline-flex;align-items:center}.btn--sm{min-height:40px}}
+    /* --- pimp 2026-06-03: micro-polish + gratis-asset teaser --- */
+    .chip{transition:transform .12s ease,box-shadow .12s ease}
+    .chip:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+    .step{transition:background .15s ease}
+    .step:hover{background:#fffdf8}
+    .freebie{margin-top:1rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;
+      background:linear-gradient(100deg,#fff,var(--cream));border:1px solid #f6d9ad;border-radius:var(--r);box-shadow:var(--shadow-sm);padding:1rem 1.2rem}
+    .freebie p{margin:0;font-size:.95rem}.freebie b{color:var(--amber-dk)}
+    .freebie .lns{display:flex;gap:.5rem;flex-wrap:wrap}
+    :focus-visible{outline:2px solid var(--amber);outline-offset:2px}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","@id":"https://abannews.com/#organization","name":"aban news","url":"https://abannews.com/","logo":"https://abannews.com/og-image.png","founder":{"@type":"Person","name":"Allen Chour"},"foundingLocation":"Belp, CH"}
@@ -142,6 +152,7 @@
     <a href="/" class="brand"><span class="dot"></span> aban news</a>
     <nav class="hnav">
       <a href="/preview.html" class="lk">Beispiel</a>
+      <a href="/tools.html" class="lk">Tools</a>
       <a href="/geld-verdienen-mit-ki.html" class="lk">KI & Geld</a>
       <a href="/founding.html" class="lk">Premium</a>
       <span class="lang"><a href="/" class="on">DE</a><a href="/en/">EN</a><a href="/fr/">FR</a><a href="/it/">IT</a></span>
@@ -205,6 +216,13 @@
         <div class="step"><span class="n">3</span><h2>Du liest, 5 Min</h2><p>07:30 im Posteingang. Kaffee, durchlesen, eine Sache mitnehmen — fertig vor dem ersten Meeting.</p></div>
       </div>
       <p class="honest"><b>Noch keine Testimonials — und das ist ehrlich so.</b> aban news startet gerade. Keine erfundenen Stimmen, keine Fake-Zahlen. Du bist früh dran und prägst mit.</p>
+      <div class="freebie">
+        <p><b>Gratis & ohne Anmeldung:</b> 143 AI-Tools mit ehrlichem DACH-Rating + ein KI-Glossar zum Nachschlagen.</p>
+        <span class="lns">
+          <a href="/tools.html" class="btn btn--sm">🛠 Tool-Database →</a>
+          <a href="/glossary.html" class="btn btn--sm btn--ghost">📖 KI-Glossar</a>
+        </span>
+      </div>
     </div>
   </section>
 </main>
@@ -213,6 +231,9 @@
   <div class="wrap">
     <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
     <a href="/preview.html">Beispiel-Ausgabe</a>
+    <a href="/tools.html">Tools</a>
+    <a href="/glossary.html">Glossar</a>
+    <a href="/archive.html">Archiv</a>
     <a href="/founding.html">Premium</a>
     <a href="/impressum.html">Impressum</a>
     <a href="/datenschutz.html">Datenschutz</a>
