@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cron-Generator & Erklärer (auf Deutsch) · aban news</title>
+<meta name="description" content="Kostenloses Tool: Cron-Zeitpläne per Klick bauen und beliebige Cron-Ausdrücke auf Deutsch erklären lassen — für n8n, Make, GitHub Actions, Server-Cronjobs. Ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/cron-generator.html">
+<meta property="og:title" content="Cron-Generator & Erklärer — auf Deutsch">
+<meta property="og:description" content="Cron-Zeitpläne per Klick bauen und jeden Cron-Ausdruck auf Deutsch erklären lassen. Gratis, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/cron-generator.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Cron-Generator & Erklärer",
+"url":"https://abannews.com/cron-generator.html","applicationCategory":"DeveloperApplication",
+"operatingSystem":"Web","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Baut Cron-Zeitpläne per Klick und erklärt beliebige Cron-Ausdrücke auf Deutsch.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:9px;border:0;cursor:pointer;font-size:1rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(26px,4.6vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,18px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:18px 0}
+h2{font-size:1.15rem;margin:0 0 12px}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 6px;color:var(--ink2)}
+select,input{width:100%;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink)}
+select:focus,input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.out{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.cronbox{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1.25rem;font-weight:700;background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:10px 16px;color:var(--amber-dk);letter-spacing:1px}
+.copybtn{font:inherit;font-size:14px;background:var(--card);border:1px solid var(--line);color:var(--amber-dk);border-radius:8px;padding:8px 14px;cursor:pointer}
+.expl{margin-top:12px;font-size:.95rem;color:var(--ink2);background:var(--bg);border-left:3px solid var(--amber);border-radius:6px;padding:10px 14px}
+.expl.bad{border-color:var(--bad);color:var(--bad)}
+.fields{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10px;font-size:.75rem;text-align:center;color:var(--muted)}
+.fields code{display:block;font-size:1rem;color:var(--ink);background:var(--cream);border-radius:6px;padding:4px 0;margin-bottom:3px}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:20px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#builder">Zum Tool</a>
+<header class="site"><div class="wrap">
+  <a href="/" class="brand">aban news</a>
+  <a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a>
+</div></header>
+
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Cron</span>-Zeitplan bauen &amp; verstehen</h1>
+    <p>Wann soll deine Automatisierung laufen? Klick dir den Cron-Ausdruck zusammen — oder lass dir einen bestehenden auf Deutsch erklären. Für n8n, Make, GitHub Actions, Server-Cronjobs. Ohne Login.</p>
+  </section>
+
+  <section class="panel" id="builder">
+    <h2>1 · Bauen</h2>
+    <label for="mode">Wie oft soll es laufen?</label>
+    <select id="mode">
+      <option value="min5">alle 5 Minuten</option>
+      <option value="min15">alle 15 Minuten</option>
+      <option value="hourly">jede Stunde (zur vollen Stunde)</option>
+      <option value="daily" selected>täglich um …</option>
+      <option value="weekly">wöchentlich um …</option>
+      <option value="monthly">monatlich am … um …</option>
+      <option value="weekdays">werktags (Mo–Fr) um …</option>
+    </select>
+    <div id="opts"></div>
+    <div class="out">
+      <span class="cronbox" id="cron">0 9 * * *</span>
+      <button class="copybtn" type="button" id="copy">kopieren</button>
+    </div>
+    <div class="fields">
+      <div><code id="f0">0</code>Minute</div>
+      <div><code id="f1">9</code>Stunde</div>
+      <div><code id="f2">*</code>Tag (Monat)</div>
+      <div><code id="f3">*</code>Monat</div>
+      <div><code id="f4">*</code>Wochentag</div>
+    </div>
+    <p class="expl" id="bexpl"></p>
+    <p class="note">Hinweis: Cron läuft in der <strong>Zeitzone des Servers</strong> (oft UTC). Für 9:00 Schweizer Zeit ggf. die Zeitzone im Tool setzen oder die UTC-Stunde eintragen.</p>
+  </section>
+
+  <section class="panel">
+    <h2>2 · Erklären</h2>
+    <label for="parse">Cron-Ausdruck eingeben (5 Felder)</label>
+    <input type="text" id="parse" value="*/15 8-18 * * 1-5" spellcheck="false" autocomplete="off">
+    <p class="expl" id="pexpl"></p>
+  </section>
+
+  <div class="cta">
+    <strong>Zeitplan steht — womit automatisieren?</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">Ehrlicher Tool-Vergleich (n8n, Make, Zapier …) + ob sich's überhaupt lohnt.</p>
+    <p>
+      <a class="btn" href="https://automatisierung.abannews.com" target="_blank" rel="noopener">Tools vergleichen →</a>
+      <a class="btn ghost" href="/automatisierung-rechner.html">Lohnt sich's? (Rechner)</a>
+    </p>
+  </div>
+</div></main>
+
+<footer><div class="wrap">
+  © 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/automatisierung-rechner.html">Automatisierungs-Rechner</a> ·
+  <a href="/was-automatisieren.html">Was automatisieren?</a> ·
+  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+</div></footer>
+
+<script>
+(function(){
+  var TAGE=["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
+  var MON=["","Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+  var mode=document.getElementById("mode"), opts=document.getElementById("opts"),
+      cronEl=document.getElementById("cron"), bexpl=document.getElementById("bexpl");
+
+  function opt(html){opts.innerHTML=html;}
+  function num(id){var e=document.getElementById(id);return e?(+e.value||0):0;}
+
+  function render(){
+    var m=mode.value, h, mm, dow, dom, cron;
+    if(m==="min5"){cron="*/5 * * * *";opt("");}
+    else if(m==="min15"){cron="*/15 * * * *";opt("");}
+    else if(m==="hourly"){cron="0 * * * *";opt("");}
+    else if(m==="daily"){opt(timeRow());h=num("h");mm=num("m");cron=mm+" "+h+" * * *";}
+    else if(m==="weekly"){opt(dowRow()+timeRow());dow=num("dow");h=num("h");mm=num("m");cron=mm+" "+h+" * * "+dow;}
+    else if(m==="weekdays"){opt(timeRow());h=num("h");mm=num("m");cron=mm+" "+h+" * * 1-5";}
+    else if(m==="monthly"){opt(domRow()+timeRow());dom=num("dom");h=num("h");mm=num("m");cron=mm+" "+h+" "+dom+" * *";}
+    cronEl.textContent=cron;
+    var f=cron.split(" ");
+    for(var i=0;i<5;i++){document.getElementById("f"+i).textContent=f[i];}
+    bexpl.textContent="Bedeutet: "+explain(cron);
+    rebind();
+  }
+  function timeRow(){return '<label>Uhrzeit</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+
+    '<select id="h" aria-label="Stunde">'+hours()+'</select>'+
+    '<select id="m" aria-label="Minute">'+mins()+'</select></div>';}
+  function dowRow(){var o="";for(var i=1;i<=7;i++){var v=i%7;o+='<option value="'+v+'"'+(v===1?" selected":"")+'>'+TAGE[v]+'</option>';}return '<label>Wochentag</label><select id="dow">'+o+'</select>';}
+  function domRow(){var o="";for(var i=1;i<=28;i++){o+='<option value="'+i+'"'+(i===1?" selected":"")+'>'+i+'.</option>';}return '<label>Tag im Monat</label><select id="dom">'+o+'</select>';}
+  function hours(){var o="";for(var i=0;i<24;i++){o+='<option value="'+i+'"'+(i===9?" selected":"")+'>'+(i<10?"0":"")+i+' Uhr</option>';}return o;}
+  function mins(){var o="";[0,5,10,15,30,45].forEach(function(i){o+='<option value="'+i+'"'+(i===0?" selected":"")+'>'+(i<10?"0":"")+i+' Min</option>';});return o;}
+  function rebind(){["h","m","dow","dom"].forEach(function(id){var e=document.getElementById(id);if(e)e.addEventListener("change",render);});}
+
+  // --- Cron -> Deutsch ---
+  function explain(c){
+    var p=c.trim().split(/\s+/);
+    if(p.length!==5) return null;
+    var mi=p[0],h=p[1],dom=p[2],mon=p[3],dow=p[4];
+    function every(field,unit){var mm=field.match(/^\*\/(\d+)$/);return mm?("alle "+mm[1]+" "+unit):null;}
+    var parts=[];
+    // Zeit
+    var em=every(mi,"Minuten"), eh=every(h,"Stunden");
+    if(mi==="*"&&h==="*"){parts.push("jede Minute");}
+    else if(em&&h==="*"){parts.push(em);}
+    else if(mi!=="*"&&h==="*"){parts.push("jede Stunde zur Minute "+mi);}
+    else if(eh){parts.push(eh+(mi!=="*"?(" zur Minute "+mi):""));}
+    else {
+      var hr=h.match(/^(\d+)-(\d+)$/);
+      if(hr){parts.push("stündlich von "+hr[1]+" bis "+hr[2]+" Uhr"+(em?(" "+em):(mi!=="*"?(" zur Minute "+mi):"")));}
+      else {parts.push("um "+(h<10?"0":"")+h+":"+(mi.length<2?"0"+mi:mi)+" Uhr");}
+    }
+    // Wochentag
+    if(dow!=="*"){
+      var dr=dow.match(/^(\d)-(\d)$/);
+      if(dow==="1-5")parts.push("werktags (Mo–Fr)");
+      else if(dr)parts.push("von "+TAGE[+dr[1]%7]+" bis "+TAGE[+dr[2]%7]);
+      else if(/^\d$/.test(dow))parts.push("nur "+TAGE[+dow%7]);
+      else parts.push("an Wochentagen "+dow);
+    }
+    // Tag im Monat
+    if(dom!=="*"){ if(/^\d+$/.test(dom))parts.push("am "+dom+". des Monats"); else parts.push("an den Tagen "+dom); }
+    // Monat
+    if(mon!=="*"){ if(/^\d+$/.test(mon))parts.push("im "+(MON[+mon]||mon)); else parts.push("in den Monaten "+mon); }
+    return parts.join(", ")+".";
+  }
+
+  // Builder events
+  document.getElementById("copy").addEventListener("click",function(){
+    var t=cronEl.textContent, b=this;
+    try{navigator.clipboard.writeText(t);b.textContent="kopiert ✓";setTimeout(function(){b.textContent="kopieren";},1500);}catch(e){}
+  });
+  mode.addEventListener("change",render);
+
+  // Parser events
+  var parse=document.getElementById("parse"), pexpl=document.getElementById("pexpl");
+  function doParse(){
+    var ex=explain(parse.value);
+    if(ex){pexpl.className="expl";pexpl.textContent="Läuft: "+ex;}
+    else{pexpl.className="expl bad";pexpl.textContent="Das sind keine 5 gültigen Cron-Felder (Minute Stunde Tag Monat Wochentag).";}
+  }
+  parse.addEventListener("input",doParse);
+
+  render(); doParse();
+})();
+</script>
+</body>
+</html>
