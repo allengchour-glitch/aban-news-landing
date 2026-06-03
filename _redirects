@@ -108,6 +108,12 @@
 /cron-generator   /cron-generator.html  301
 /was-automatisieren /was-automatisieren.html 301
 
+# Entwickler-/Glue-Tools
+/regex            /regex-tester.html  301
+/regex-tester     /regex-tester.html  301
+/json             /json-formatter.html 301
+/json-formatter   /json-formatter.html 301
+
 # 404 fallback — Cloudflare Pages serves /404.html automatically for missing routes,
 # aber für SPA-like fallback explicit:
 /*                /404.html             404
