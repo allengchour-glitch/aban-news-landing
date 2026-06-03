@@ -16,7 +16,8 @@ def col(env,d):
     v=os.environ.get(env);
     return tuple(float(x) for x in v.split(",")) if v else d
 BODY=col("BODY_COL",(0.52,0.50,0.47)); EYE=col("EYE_COL",(0.05,0.05,0.06)); NOSE=col("NOSE_COL",(0.78,0.42,0.46))
-EXPORT=os.environ.get("EXPORT_PARTS")
+WHITE=col("WHITE_COL",(0.90,0.89,0.85))
+EXPORT=os.environ.get("EXPORT_PARTS"); MULTI=os.environ.get("MULTI")
 
 bpy.ops.wm.read_factory_settings(use_empty=True)
 try: bpy.ops.wm.stl_import(filepath=IN)
@@ -51,7 +52,7 @@ print("FACE axis=%s sign=%+d"%(FA,FS),flush=True)
 def face_pt(z,offc):  # Punkt+Normal auf der Gesichtsflaeche
     return cast(FA,FS,z,offc)
 
-SEP=0.15*crossdim; EYE_R=0.13*crossdim; NOSE_R=0.08*crossdim
+SEP=0.15*crossdim; EYE_R=0.075*crossdim; NOSE_R=0.05*crossdim
 zeye=zmin+0.62*dimz; znose=zmin+0.52*dimz
 pL,_=face_pt(zeye,-SEP); pR,_=face_pt(zeye,+SEP); pN,_=face_pt(znose,0.0)
 print("eyes",pL is not None,pR is not None,"nose",pN is not None,flush=True)
@@ -67,24 +68,36 @@ except: pass
 mn=bpy.data.materials.new("nose"); mn.use_nodes=True
 mn.node_tree.nodes["Principled BSDF"].inputs["Base Color"].default_value=(*NOSE,1)
 mn.node_tree.nodes["Principled BSDF"].inputs["Roughness"].default_value=0.4
-ob.data.materials.clear(); ob.data.materials.append(mb); ob.data.materials.append(me); ob.data.materials.append(mn)
+mw_=bpy.data.materials.new("weiss"); mw_.use_nodes=True
+mw_.node_tree.nodes["Principled BSDF"].inputs["Base Color"].default_value=(*WHITE,1)
+mw_.node_tree.nodes["Principled BSDF"].inputs["Roughness"].default_value=0.62
+ob.data.materials.clear()
+for mm in (mb,me,mn,mw_): ob.data.materials.append(mm)  # 0 body,1 eye,2 nose,3 weiss
 
 SOLID=os.environ.get("SOLID")
 def near(c,p,r): return (c-p).length<r if p is not None else False
 pL=Vector(pL) if pL is not None else None; pR=Vector(pR) if pR is not None else None; pN=Vector(pN) if pN is not None else None
-ecount=ncount=0
+ecount=ncount=wcount=0
+zwhite=zmin+float(os.environ.get("WHITE_ZF","0.30"))*dimz   # weisse Pfoten/untere Brust
+EYECOLOR=os.environ.get("EYECOLOR","1")=="1"   # Augen einfaerben? sonst Relief-Form
 if not SOLID:
     for poly in ob.data.polygons:
         c=ob.matrix_world@poly.center
-        if near(c,pL,EYE_R) or near(c,pR,EYE_R): poly.material_index=1; ecount+=1
+        if EYECOLOR and (near(c,pL,EYE_R) or near(c,pR,EYE_R)): poly.material_index=1; ecount+=1
         elif near(c,pN,NOSE_R): poly.material_index=2; ncount+=1
+        elif MULTI and c.z<zwhite: poly.material_index=3; wcount+=1
         else: poly.material_index=0
-print("mode",("SOLID" if SOLID else "colored"),"eyes_faces",ecount,"nose_faces",ncount,flush=True)
+print("mode",("SOLID" if SOLID else ("MULTI" if MULTI else "colored")),
+      "eyes",ecount,"nose",ncount,"weiss",wcount,flush=True)
 
 if EXPORT:
     os.makedirs(EXPORT,exist_ok=True)
+    for mm,rgb in ((mb,BODY),(me,EYE),(mn,NOSE),(mw_,WHITE)):  # OBJ-Kd fuer assemble
+        mm.diffuse_color=(*rgb,1)
     try: bpy.ops.wm.stl_export(filepath=os.path.join(EXPORT,"cat_solid.stl"))
     except Exception: bpy.ops.export_mesh.stl(filepath=os.path.join(EXPORT,"cat_solid.stl"))
+    try: bpy.ops.wm.obj_export(filepath=os.path.join(EXPORT,"cat_colored.obj"),export_materials=True)
+    except Exception: bpy.ops.export_scene.obj(filepath=os.path.join(EXPORT,"cat_colored.obj"),use_materials=True)
 
 # Render von vorn
 scn=bpy.context.scene
