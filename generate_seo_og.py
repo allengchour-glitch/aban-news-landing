@@ -84,6 +84,8 @@ PAGES = {
         "Was 2026 wirklich gut klingt — und wo die Grenzen liegen"),
     "ki-videos-erstellen": ("EHRLICH ERKLÄRT", ["KI-Videos", "erstellen"],
         "Was KI-Video 2026 wirklich kann — und wo die Grenzen liegen"),
+    "ki-lifestyle": ("EHRLICH ERKLÄRT", ["KI im Alltag", "& Lifestyle"],
+        "Fitness, Ernährung, Reise, Geld — was wirklich hilft, mit Datenschutz-Blick"),
 }
 
 
