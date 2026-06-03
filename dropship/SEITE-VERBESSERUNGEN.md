@@ -1,5 +1,23 @@
 # 🛠️ luxestyle.ch — Verbesserungen & Tools (Audit 2026-06-03)
 
+## 📌 VORGEMERKT (User-Auftrag, „später erledigen")
+- **[C] 1-Bild-Gadget-Filler aufwerten:** Produkte mit nur 1 Bild (Mini-Massagepistole, diverse Diffuser,
+  Gewichtsdecke, Resistance-Bands, Brillen-Einzel-Imports, Galaxus-Batch-IDs `15410836xxxxx` u.a.) — das eine
+  Bild durch ein **sauberes** ersetzen; danach User-Entscheid, ob das Produkt überhaupt im Sortiment bleibt.
+  **WICHTIG/LEHRE (warum kein Auto-Galerie-Nachzug):** Diese Produkte haben **KEINE gespeicherte CJ-pid/SKU**.
+  CJ-Keyword-Resuche ist unzuverlässig — Test „mini massage gun": 40 Treffer, **0** mit passendem Bild-Hash
+  (`bfe1b40c1fd145fd9f5587732d2259d2`), Top-Treffer komplett fremde Produkte. → Mehr „Originale" nur sicher,
+  wenn pro Produkt der echte CJ-/AliExpress-Link vorliegt (sonst Falschbild-Risiko, Regel „Qualität sonst sein lassen").
+  Status: **vom User auf „später" gesetzt** (2026-06-03).
+- **[Tile-Layout] Startseiten-Kacheln vereinheitlichen (Customizer/User):** Alle 4 Produkt-Sektionen der
+  Startseite (`templates/index.json`) haben `_product-card-gallery` → `"image_ratio": "adapt"` → Kachelhöhe
+  folgt Originalbild → ungleiche Grössen (Querbild klein, Hochbild gross). **Fix:** Bildverhältnis auf
+  **„Quadratisch"** (square) stellen → gleiche Box/Position, Desktop+Mobile. 4 Sektionen: „⭐ Top 10 Bestseller",
+  „✨ CJ Neuheiten 2026", „Unsere Highlights", „🔥 Bestseller". Theme ist API-schreibgesperrt → Customizer ODER
+  Claude baut **unveröffentlichte Theme-Kopie** mit dem Fix (User tippt nur „Veröffentlichen"). Offen.
+
+
+
 Live-Audit der Startseite + Tool-Recherche. **Theme ist API-gesperrt → die meisten Fixes laufen über den
 Customizer (du) bzw. App-Installation.** Ich kann Produkte/Kollektionen/SEO per API, aber keine Theme-Sections/Apps.
 
