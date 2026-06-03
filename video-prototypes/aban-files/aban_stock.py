@@ -7,6 +7,7 @@ import os, sys, re, json, base64, subprocess, urllib.request, urllib.parse
 import imageio_ffmpeg
 
 XI = os.environ["XI"]; PEXELS = os.environ["PEXELS"]
+PIXABAY = os.environ.get("PIXABAY", "")   # optionale 2. Quelle (mehr Auswahl)
 VOICE = os.environ.get("VOICE", "pNInz6obpgDQGcFmaJgB")
 FF = imageio_ffmpeg.get_ffmpeg_exe()
 W, H, FPS = 1080, 1920, 30
@@ -200,9 +201,37 @@ def pexels_links(query, cache):
     return cache[query]
 
 
+def pixabay_links(query, cache):
+    """2. Quelle (optional): Pixabay-Videos -> (score, 'pix-<id>', link)."""
+    if not PIXABAY:
+        return []
+    k = "px:" + query
+    if k in cache:
+        return cache[k]
+    url = "https://pixabay.com/api/videos/?" + urllib.parse.urlencode(
+        {"key": PIXABAY, "q": query, "per_page": 20, "safesearch": "true"})
+    out = []
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        d = json.load(urllib.request.urlopen(req, timeout=60))
+        for h in d.get("hits", []):
+            best, bw = None, 0
+            for size in ("large", "medium", "small", "tiny"):
+                v = h.get("videos", {}).get(size)
+                if v and v.get("url") and v.get("width", 0) > bw:
+                    bw, best = v["width"], v["url"]
+            if best:
+                out.append((bw, "pix-" + str(h.get("id")), best))
+        out.sort(reverse=True)
+    except Exception:
+        out = []
+    cache[k] = out
+    return out
+
+
 def fetch_clip(query, idx, used, cache):
-    """Laedt den besten NOCH NICHT verwendeten Clip fuer die Query (kein Wiederholen)."""
-    for sc, vid, link in pexels_links(query, cache):
+    """Laedt den besten NOCH NICHT verwendeten Clip (Pexels + Pixabay, kein Wiederholen)."""
+    for sc, vid, link in pexels_links(query, cache) + pixabay_links(query, cache):
         if vid in used:
             continue
         used.add(vid)
