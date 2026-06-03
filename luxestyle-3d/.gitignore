@@ -1,6 +1,7 @@
 # Arbeits-/Scratch-Ordner (reproduzierbar) -> nicht versionieren
 samples/
 renders/
+out/
 # lose Test-Dateien im Wurzelordner ignorieren ...
 /*.stl
 /*.png
