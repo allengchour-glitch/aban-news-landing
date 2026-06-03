@@ -53,13 +53,19 @@ SCENES = {
              "ai control room screens", "robotic assembly line", "human silhouette fading",
              "server farm endless", "city aerial night future", "machine hand human hand",
              "dark throne empty hall", "earth slowly rotating space", "glowing red eye dark"],
+    "ep11": ["egyptian pyramids at sunset", "ancient stone temple ruins", "hieroglyphics carved wall",
+             "mayan pyramid jungle", "stonehenge megalith dusk", "giant ancient statue close up",
+             "desert ruins aerial", "starry night sky over pyramids", "carved serpent stone relief",
+             "ancient gold artifact museum", "prehistoric cave painting", "monolith standing stones desert",
+             "ancient temple interior torchlight", "ufo light over desert night", "ancient ruins drone shot",
+             "milky way over ancient ruins"],
 }
 
 
 def tts(text):
     body = json.dumps({"text": text, "model_id": "eleven_multilingual_v2",
-                       "voice_settings": {"stability": 0.35, "similarity_boost": 0.75,
-                                          "style": 0.5, "use_speaker_boost": True}}).encode()
+                       "voice_settings": {"stability": 0.5, "similarity_boost": 0.8,
+                                          "style": 0.45, "use_speaker_boost": True}}).encode()
     req = urllib.request.Request(
         f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE}/with-timestamps?output_format=mp3_44100_128",
         data=body, method="POST", headers={"xi-api-key": XI, "Content-Type": "application/json"})
@@ -168,11 +174,14 @@ def render(ep):
     subprocess.run([FF, "-y", "-i", "/tmp/_a.mp3", "-ar", "44100",
                     "-af", "highpass=f=60,dynaudnorm=f=200", "/tmp/_vo.wav"], check=True, capture_output=True)
     build_ass(words, total, "/tmp/_subs.ass")
-    drone = "sine=f=48,volume=0.05[a];sine=f=72,volume=0.035[b];[a][b]amix=2,lowpass=f=180,aecho=0.6:0.5:600:0.3,volume=0.5[d]"
+    # dunkler Ambient-Score (a-moll-Pad) statt nur Drone -> fuellt stille Stellen
+    music = ("sine=f=110,volume=0.5[m1];sine=f=164.81,volume=0.4[m2];sine=f=220,volume=0.3[m3];"
+             "sine=f=329.63,volume=0.12[m4];[m1][m2][m3][m4]amix=inputs=4:normalize=0,"
+             "tremolo=f=0.12:d=0.45,lowpass=f=1500,aecho=0.8:0.7:450|800:0.4|0.25,volume=0.2[d]")
     vf = (f"eq=brightness=-0.12:saturation=0.92:contrast=1.05,vignette=PI/4.5,"
           f"noise=alls=7:allf=t,subtitles=/tmp/_subs.ass")
     subprocess.run([FF, "-y", "-i", "/tmp/_base.mp4", "-i", "/tmp/_vo.wav",
-                    "-filter_complex", f"[0:v]{vf}[v];{drone};[1:a]volume=1.0[vo];[vo][d]amix=2:duration=first[ao]",
+                    "-filter_complex", f"[0:v]{vf}[v];{music};[1:a]volume=1.0[vo];[vo][d]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[ao]",
                     "-map", "[v]", "-map", "[ao]", "-c:v", "libx264", "-crf", "22", "-preset", "veryfast",
                     "-c:a", "aac", "-b:a", "160k", "-shortest", f"/tmp/aban_stock_{ep}.mp4"],
                    check=True, capture_output=True)
