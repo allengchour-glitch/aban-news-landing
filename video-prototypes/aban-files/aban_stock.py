@@ -217,6 +217,12 @@ def fetch_clip(query, idx, used, cache):
     return None
 
 
+def media_dur(path):
+    out = subprocess.run([FF, "-i", path], capture_output=True, text=True).stderr
+    m = re.search(r"Duration: (\d+):(\d+):(\d+\.\d+)", out)
+    return int(m.group(1)) * 3600 + int(m.group(2)) * 60 + float(m.group(3)) if m else 0.0
+
+
 def fmt_ts(t):
     h = int(t // 3600); m = int((t % 3600) // 60); s = t % 60
     return f"{h:01d}:{m:02d}:{s:05.2f}"
@@ -250,7 +256,7 @@ Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,A B A N   F I L E S
         for wi, (w, ws, we) in enumerate(g):
             nxt = g[wi + 1][1] if wi + 1 < len(g) else ge
             kcs = max(1, int((nxt - ws) * 100))
-            parts.append(f"{{\\k{kcs}}}{w} ")
+            parts.append(f"{{\\k{kcs}}}{w.replace('Ahbahn', 'ABAN')} ")
         lines.append(f"Dialogue: 0,{fmt_ts(gs)},{fmt_ts(ge)},K,,0,0,0,,{''.join(parts).strip()}")
     open(path, "w").write(head + "\n".join(lines) + "\n")
 
@@ -259,8 +265,11 @@ def render(ep):
     pool = SCENES[ep]
     sc_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "aban_scripts.json")
     sc = json.load(open(sc_path))[ep]
-    words, dur = tts(text=sc["text"])
-    total = dur + 0.7
+    # "ABAN" -> Lautschrift fuer deutsche Aussprache (Untertitel zeigen via Remap wieder ABAN)
+    tts_text = sc["text"].replace("ABAN", "Ahbahn")
+    words, dur = tts(text=tts_text)
+    # Video MUSS das ganze Audio abdecken, sonst schneidet -shortest die letzten Worte ab
+    total = max(dur, media_dur("/tmp/_a.mp3")) + 0.6
     # pro SATZ ein passender Clip, exakt auf die Satzdauer getimt (Bild matcht Text)
     segs = sentence_segments(words)
     bounds = [s[0] for s in segs] + [total]
