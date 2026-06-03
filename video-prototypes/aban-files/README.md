@@ -26,7 +26,7 @@ video_ids.json         # ep -> YouTube-Video-ID (für den Analysten)
 
 ## 1. Render-Pipeline (`aban_stock.py`) — GRATIS, in Nutzung
 
-ElevenLabs-Stimme (mit Wort-Timing) + echtes **Pexels**-Footage (16 Shots/Folge) +
+ElevenLabs-Stimme (mit Wort-Timing) + echtes **Pexels**-Footage, **pro Satz passend zum Text gewählt** (Stichwort-Map, auf die Satzdauer getimt) +
 **Karaoke-Untertitel** (ASS/libass, im unteren Drittel) + Dark-Grade/Vignette/Korn +
 **ABAN-Branding** oben + **dunkler Ambient-Score** (a-moll-Pad, füllt stille Stellen).
 
