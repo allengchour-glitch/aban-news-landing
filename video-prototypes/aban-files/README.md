@@ -33,6 +33,7 @@ ElevenLabs-Stimme (mit Wort-Timing) + echtes **Pexels**-Footage, **pro Satz pass
 ```bash
 export XI="<elevenlabs-key>"
 export PEXELS="<pexels-key>"        # gratis: https://www.pexels.com/api/
+export PIXABAY="<pixabay-key>"     # optional, 2. Quelle = mehr Auswahl: https://pixabay.com/api/docs/
 python3 aban_stock.py ep11          # -> /tmp/aban_stock_ep11.mp4
 ```
 
