@@ -26,6 +26,12 @@
 9. **Freigabe-Workflow:** Reel EINZELN per Telegram zur Freigabe (ja/nein/Kommentar), erst nach „ja" posten.
 
 ## Verbesserungs-Log (chronologisch — neue Punkte kommen oben dazu)
+- 2026-06-03: **Themen-Vielfalt in die Allow-Liste (User: „ja alles").** Katalog nach Schmuck/Accessoires
+  geprüft: fast alle Schmuck-Bilder sind **weisse Freisteller** (Armband, Ketten, Ohrring-Set, Bucket-Hat)
+  → per Regel 1 NICHT geeignet. Nur echte Lifestyle-Shots aufgenommen: **Strand-Strohtasche** (Modell hält Tasche)
+  + **Cat-Eye-Sonnenbrille** (Frau trägt sie). Beide `.webp` — Engine dekodiert das via ffmpeg problemlos.
+  In `good_products.csv` **interleaved** (Tasche nach Pos.1, Brille nach Pos.4) → jedes 5er-Reel mischt
+  Kleid+Accessoire. Lehre: CJ-Schmuckbilder sind meist Freisteller → vor Aufnahme IMMER visuell prüfen.
 - 2026-06-03: **Autopost weg von Make → Eigentool (User: „make nicht brauchen, eigenes Tool oder von abannews").**
   `post-next-reel.mjs` postet jetzt wie das abannews-Eigentool `social/post.py`: direkt per **Telegram**
   (Zero-Relay) und/oder über **n8n** (gratis, self-hosted, `social/n8n-publish-workflow.json`) an IG/TikTok —
