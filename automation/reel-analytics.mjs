@@ -8,7 +8,11 @@
  * Alles no-op-safe: fehlende Secrets => nur Konsolen-Log, kein harter Fehler.
  *
  * ENV (alle optional):
- *   SHOPIFY_SHOP=...myshopify.com  SHOPIFY_ADMIN_TOKEN=shpat_...
+ *   SHOPIFY_SHOP=...myshopify.com
+ *   Entweder direkter Token:  SHOPIFY_ADMIN_TOKEN=shpat_/shpca_...
+ *   ODER (Shopify 2026, empfohlen) Client-Credentials der Custom-App:
+ *       SHOPIFY_CLIENT_ID=...   SHOPIFY_CLIENT_SECRET=shpss_...
+ *     -> der Token wird pro Lauf frisch geholt (gültig ~24h), kein manuelles shpat_ mehr nötig.
  *   TELEGRAM_BOT_TOKEN=...  TELEGRAM_CHAT_ID=...
  *   DAYS=7  (Vergleichszeitraum)  ·  BASEURL=https://abannews.com/reels
  */
@@ -16,7 +20,9 @@ import fs from 'node:fs';
 
 const DAYS = parseInt(process.env.DAYS || '7', 10);
 const SHOP = process.env.SHOPIFY_SHOP || '';
-const TOK  = process.env.SHOPIFY_ADMIN_TOKEN || '';
+const TOK_STATIC = process.env.SHOPIFY_ADMIN_TOKEN || '';
+const CID = process.env.SHOPIFY_CLIENT_ID || '';
+const CSECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
 const TG_T = process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_C = process.env.TELEGRAM_CHAT_ID || '';
 const BASE = (process.env.BASEURL || 'https://abannews.com/reels').replace(/\/$/, '');
@@ -43,21 +49,37 @@ try{
 }catch(e){}
 
 // --- 2) Shop-Kennzahlen via Admin GraphQL (Bestellungen heute + N Tage) ---
-async function orders(sinceDate){
+// Token: entweder statisch (SHOPIFY_ADMIN_TOKEN) ODER pro Lauf frisch aus Client-Credentials
+// (Shopify 2026: kein shpat_-Knopf mehr → POST /admin/oauth/access_token, grant_type=client_credentials).
+async function getToken(){
+  if(TOK_STATIC) return TOK_STATIC;
+  if(SHOP && CID && CSECRET){
+    const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({client_id:CID,client_secret:CSECRET,grant_type:'client_credentials'})});
+    const j=await r.json(); return j.access_token||'';
+  }
+  return '';
+}
+async function orders(token,sinceDate){
   const query=`{ orders(first:250, query:"created_at:>=${sinceDate}") { edges { node { totalPriceSet { shopMoney { amount currencyCode } } } } } }`;
   const r=await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',
-    headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query})});
+    headers:{'Content-Type':'application/json','X-Shopify-Access-Token':token},body:JSON.stringify({query})});
   const j=await r.json(); const edges=j?.data?.orders?.edges||[];
   let sum=0,cur='CHF'; edges.forEach(e=>{const m=e.node.totalPriceSet.shopMoney;sum+=parseFloat(m.amount||0);cur=m.currencyCode||cur;});
   return {n:edges.length,sum,cur};
 }
-let shopLines=['Shop-Zahlen: übersprungen (kein SHOPIFY_ADMIN_TOKEN/SHOP).'];
-if(SHOP && TOK){
+let shopLines=['Shop-Zahlen: übersprungen (kein SHOPIFY_SHOP + Token/Client-Credentials).'];
+if(SHOP){
   try{
-    const sinceN=new Date(Date.now()-DAYS*864e5).toISOString().slice(0,10);
-    const [t,n]=await Promise.all([orders(today),orders(sinceN)]);
-    shopLines=[`🛒 Heute: ${t.n} Bestellungen · ${t.sum.toFixed(2)} ${t.cur}`,
-               `📈 ${DAYS} Tage: ${n.n} Bestellungen · ${n.sum.toFixed(2)} ${n.cur} Umsatz`];
+    const token=await getToken();
+    if(!token){ shopLines=['Shop-Zahlen: übersprungen (kein gültiger Token aus Client-Credentials).']; }
+    else{
+      const sinceN=new Date(Date.now()-DAYS*864e5).toISOString().slice(0,10);
+      const [t,n]=await Promise.all([orders(token,today),orders(token,sinceN)]);
+      shopLines=[`🛒 Heute: ${t.n} Bestellungen · ${t.sum.toFixed(2)} ${t.cur}`,
+                 `📈 ${DAYS} Tage: ${n.n} Bestellungen · ${n.sum.toFixed(2)} ${n.cur} Umsatz`];
+    }
   }catch(e){ shopLines=['Shop-Zahlen: Abruf-Fehler ('+e.message+').']; }
 }
 
