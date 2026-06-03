@@ -1,0 +1,38 @@
+name: Radar-Daten-Audit (wöchentlich)
+
+# Autonome Daten-Verifikation: macht die Verifikations-Schuld sichtbar (offene
+# [Redaktion: prüfen], EU-Flag-Abdeckung) und prüft tote Anbieter-URLs. Schreibt
+# reports/RADAR-DATEN-AUDIT.md und committet nur bei Änderung. Erfindet nichts.
+
+on:
+  schedule:
+    - cron: '0 5 * * 1'   # montags 05:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Daten-Audit erzeugen
+        run: python3 tools/radar_daten_audit.py
+      - name: Tote URLs prüfen (nur Report, kein Fail)
+        run: python3 tools/radar_link_check.py || true
+      - name: Report committen, wenn geändert
+        run: |
+          git config user.name "aban-bot"
+          git config user.email "bot@abannews.com"
+          if ! git diff --quiet -- reports/RADAR-DATEN-AUDIT.md; then
+            git add reports/RADAR-DATEN-AUDIT.md
+            git commit -m "chore(audit): Radar-Daten-Audit aktualisiert [skip ci]"
+            git push
+          else
+            echo "Keine Änderung am Audit-Report."
+          fi

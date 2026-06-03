@@ -23,7 +23,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 EXCLUDE_PARTS = ("/dist/", "/node_modules/", "/ki-schriftsteller/", "/reports/",
-                 "/.git/", "/automatisierung-radar/", "/data/")  # Generate-Output & Entwürfe aus
+                 "/.git/", "/automatisierung-radar/", "/data/", "/ausgabe/")  # Generate-Output & Entwürfe aus
 
 # Spiegel der Aban-Sperrliste (Quelle: automation/brand-voice-validator-api.py).
 HYPE = [
