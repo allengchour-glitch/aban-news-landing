@@ -26,9 +26,11 @@ def get_service():
     from google.oauth2.credentials import Credentials
     from googleapiclient.discovery import build
     cid, csec = os.environ.get("YT_CLIENT_ID"), os.environ.get("YT_CLIENT_SECRET")
-    rt = os.environ.get("ABAN_YT_REFRESH_TOKEN")
+    # eigenes ABAN-Token bevorzugen; sonst das vorhandene (Bunny-)Token wiederverwenden,
+    # da es zum selben Konto/Kanal gehoert.
+    rt = os.environ.get("ABAN_YT_REFRESH_TOKEN") or os.environ.get("YT_REFRESH_TOKEN")
     if not (cid and csec and rt):
-        sys.exit("FEHLT: YT_CLIENT_ID / YT_CLIENT_SECRET / ABAN_YT_REFRESH_TOKEN")
+        sys.exit("FEHLT: YT_CLIENT_ID / YT_CLIENT_SECRET / (ABAN_YT_REFRESH_TOKEN|YT_REFRESH_TOKEN)")
     creds = Credentials(None, refresh_token=rt, client_id=cid, client_secret=csec,
                         token_uri="https://oauth2.googleapis.com/token", scopes=SCOPES)
     creds.refresh(Request())
