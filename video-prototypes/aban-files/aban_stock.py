@@ -3,7 +3,7 @@
 ElevenLabs ABAN-Stimme + Pexels-Stockclips + Karaoke-Untertitel (ASS) + Dark-Drone
 -> cinematisches 9:16-Video. Aufruf:  XI=<el> PEXELS=<key> python3 aban_stock.py <ep>
 """
-import os, sys, json, base64, subprocess, urllib.request, urllib.parse
+import os, sys, re, json, base64, subprocess, urllib.request, urllib.parse
 import imageio_ffmpeg
 
 XI = os.environ["XI"]; PEXELS = os.environ["PEXELS"]
@@ -60,6 +60,52 @@ SCENES = {
              "ancient temple interior torchlight", "ufo light over desert night", "ancient ruins drone shot",
              "milky way over ancient ruins"],
 }
+
+# Stichwort -> passender Stock-Suchbegriff: das Bild matcht den gesprochenen Satz.
+# Reihenfolge = Priorität (spezifisch zuerst).
+KW = [
+    (r"moon|lunar", "moon surface craters close up"),
+    (r"rocket|launch|flag", "rocket launch at night"),
+    (r"satellite|orbit|\bstars?\b|the sky|night sky|lattice", "satellites orbiting earth night"),
+    (r"pyramid|megalith|temple|monument|serpent|ancient|\bstone|gods?|myth|wheel|calendar|harvest|watcher|feathered", "ancient egyptian pyramid ruins"),
+    (r"phone|glass|pocket|listen|camera|advertis|whisper|microphone|confession", "smartphone screen dark surveillance"),
+    (r"mine|lithium|cobalt|metal|mineral|\bdig|excavat|vein|cars?\b", "open pit mine excavator dark"),
+    (r"fusion|reactor|collision|captive sun|plasma|\batom|knock|door|sealed", "fusion reactor plasma energy"),
+    (r"robot|automat|assembl|factory|inherit|caretaker|hands?\b", "humanoid robot factory automation"),
+    (r"histor|memory|forget|record|photograph|\bpast\b|archive|eras|update", "old library archive paper dark"),
+    (r"cave|underground|chamber|below|beneath|tunnel|vault|down here", "deep underground tunnel cave glowing"),
+    (r"data center|data centre|server|silicon|chip|circuit|machine|intelligence|\bai\b|model|algorithm|feed|grid|current|heat|power", "server room data center blue lights"),
+    (r"city|cities|world|future|progress", "futuristic city night aerial"),
+    (r"earth|planet|space|cosmos|galax|silence|universe|quarantine", "earth from space stars"),
+    (r"throne|rule|\bking|reign|claim|empire|guided|design|obey|orders?", "dark throne hall ominous"),
+]
+
+
+def pick_query(text, pool, idx):
+    t = text.lower()
+    for pat, q in KW:
+        if re.search(pat, t):
+            return q
+    return pool[idx % len(pool)]
+
+
+def sentence_segments(words, min_dur=2.4):
+    """Saetze mit Zeitspannen bilden; zu kurze zu >= min_dur zusammenfassen."""
+    segs, cur = [], []
+    for w, ws, we in words:
+        cur.append((w, ws, we))
+        if w.rstrip().endswith((".", "!", "?", "…")):
+            segs.append(cur); cur = []
+    if cur:
+        segs.append(cur)
+    out = []
+    for s in segs:
+        st, en, txt = s[0][1], s[-1][2], " ".join(x[0] for x in s)
+        if out and (out[-1][1] - out[-1][0]) < min_dur:
+            out[-1][1] = en; out[-1][2] += " " + txt
+        else:
+            out.append([st, en, txt])
+    return out
 
 
 def tts(text):
@@ -155,20 +201,24 @@ Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,A B A N   F I L E S
 
 
 def render(ep):
-    scenes = SCENES[ep]
+    pool = SCENES[ep]
     sc_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "aban_scripts.json")
     sc = json.load(open(sc_path))[ep]
     words, dur = tts(text=sc["text"])
     total = dur + 0.7
-    seg = total / len(scenes)
-    # Stockclips holen + normalisieren auf 9:16
-    norm = []
-    for i, q in enumerate(scenes):
-        src = pexels_dl(q, i)
+    # pro SATZ ein passender Clip, exakt auf die Satzdauer getimt (Bild matcht Text)
+    segs = sentence_segments(words)
+    bounds = [s[0] for s in segs] + [total]
+    norm, last_src = [], None
+    for i, s in enumerate(segs):
+        seg_dur = max(0.8, bounds[i + 1] - bounds[i])
+        q = pick_query(s[2], pool, i)
+        src = pexels_dl(q, i) or pexels_dl(pool[i % len(pool)], 900 + i) or last_src
         if not src:
             continue
+        last_src = src
         out = f"/tmp/_seg_{i}.mp4"
-        subprocess.run([FF, "-y", "-stream_loop", "3", "-i", src, "-t", f"{seg:.2f}",
+        subprocess.run([FF, "-y", "-stream_loop", "5", "-i", src, "-t", f"{seg_dur:.2f}",
                         "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps={FPS}",
                         "-an", "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", out],
                        check=True, capture_output=True)
