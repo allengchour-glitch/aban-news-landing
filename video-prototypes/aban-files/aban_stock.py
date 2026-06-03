@@ -13,12 +13,18 @@ W, H, FPS = 1080, 1920, 30
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 
 SCENES = {
-    "ep1": ["dark server room data center", "glowing circuit board macro", "artificial intelligence network",
-            "earth from space at night", "deep cave tunnel dark", "futuristic city night fog"],
-    "ep2": ["moon surface craters", "dark side of the moon", "rocket launch night",
-            "astronaut space dark", "stars galaxy time lapse", "radar satellite dish night"],
-    "ep3": ["data center servers blinking", "power grid electricity night", "cooling fans technology",
-            "underground tunnel industrial", "glowing fiber optics", "city power lines dusk"],
+    "ep1": ["futuristic server room blue light", "supercomputer data center", "glowing circuit board macro",
+            "ai neural network animation", "earth from space at night city lights", "deep underground cave glowing",
+            "futuristic city night rain neon", "robot hand artificial intelligence", "digital code matrix green",
+            "ancient stone temple dark", "fiber optic light particles", "dark tunnel mysterious light"],
+    "ep2": ["moon surface craters close up", "full moon dark night sky", "rocket launch at night",
+            "astronaut on the moon", "spacecraft orbiting earth", "satellite floating in space",
+            "lunar landscape barren", "futuristic space base 3d render", "space station interior corridor",
+            "stars galaxy time lapse", "radar telescope dish night", "alien planet surface"],
+    "ep3": ["data center server racks", "blinking server lights close up", "high voltage power lines night",
+            "electricity sparks dark", "server cooling fans spinning", "underground industrial tunnel",
+            "glowing fiber optic cables", "power plant at night", "electric grid city aerial night",
+            "steam vapor machinery dark", "circuit electricity flowing", "neon data flow abstract"],
 }
 
 
