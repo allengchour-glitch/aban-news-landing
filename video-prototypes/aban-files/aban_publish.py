@@ -53,10 +53,10 @@ def render(ep):
 def upload(svc, ep, sc, path, immediate):
     from googleapiclient.http import MediaFileUpload
     title = f"{sc['title']} 🦎 #ABANFiles"
-    desc = (f"{sc['hook']}\n\nKING ALLENG spricht. The ABAN Files.\n\n"
-            f"#ABANFiles #shorts #scifi #ai #conspiracy #reptilian #kingalleng")
+    desc = (f"{sc['hook']}\n\nThe ABAN Files. Check it out.\n\n"
+            f"#ABANFiles #shorts #scifi #ai #conspiracy #reptilian #aban")
     body = {"snippet": {"title": title[:100], "description": desc,
-                        "tags": ["ABAN Files", "KING ALLENG", "sci-fi", "AI", "shorts"],
+                        "tags": ["ABAN Files", "ABAN", "sci-fi", "AI", "shorts"],
                         "categoryId": "24"},
             "status": {"privacyStatus": "public", "selfDeclaredMadeForKids": False}}
     media = MediaFileUpload(path, chunksize=-1, resumable=True, mimetype="video/mp4")

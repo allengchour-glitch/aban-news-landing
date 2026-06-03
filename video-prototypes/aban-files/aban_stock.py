@@ -91,7 +91,7 @@ Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour,
 Style: K,DejaVu Sans,64,&H004FCFFF,&H00F2F2F2,&H00101010,&H64000000,1,0,0,0,100,100,0,0,1,4,3,5,80,80,250,1
 Style: TAG,DejaVu Sans,40,&H0050C8FF,&H0050C8FF,&H00101010,&H00000000,1,0,0,0,100,100,6,0,1,2,2,8,0,0,70,1
 [Events]
-Format: Layer, Start, End, Style, MarginL, MarginR, MarginV, Effect, Text
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,A B A N   F I L E S
 """
     groups = [words[i:i + 4] for i in range(0, len(words), 4)]
@@ -110,7 +110,8 @@ Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,A B A N   F I L E S
 
 def render(ep):
     scenes = SCENES[ep]
-    words, dur = tts(text=json.load(open("/tmp/aban_scripts.json"))[ep]["text"])
+    sc_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "aban_scripts.json")
+    words, dur = tts(text=json.load(open(sc_path))[ep]["text"])
     total = dur + 0.7
     seg = total / len(scenes)
     # Stockclips holen + normalisieren auf 9:16

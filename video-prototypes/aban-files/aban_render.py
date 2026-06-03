@@ -127,7 +127,7 @@ def render(ep, title, hook, text):
                     d.text((c["x"], yy), ch, font=F_MONO, fill=col)
         # Top-Tag
         draw_text_glow(d, (W // 2, 92), "A B A N   F I L E S", F_TAG, AMBER, glow=(40, 20, 0))
-        d.text((W // 2, 132), "· KING ALLENG ·", font=ImageFont.truetype(f"{FD}/DejaVuSans.ttf", 24),
+        d.text((W // 2, 132), "· THE ABAN FILES ·", font=ImageFont.truetype(f"{FD}/DejaVuSans.ttf", 24),
                fill=DIM, anchor="mm")
         # Intro-Titel (0..2.1s)
         if t < 2.1:
