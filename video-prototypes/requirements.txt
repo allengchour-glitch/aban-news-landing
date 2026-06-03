@@ -1,0 +1,19 @@
+# Video-Stack — Python-Abhängigkeiten
+# Ein Befehl:  pip install -r video-prototypes/requirements.txt
+# Danach Stand prüfen:  python3 video-prototypes/scripts/doctor.py
+
+# --- Kern (beide Säulen: Clips bauen + shrink.py) ---
+Pillow
+numpy
+imageio
+imageio-ffmpeg
+
+# --- Säule 2: YouTube-Auto-Upload (nur falls du den eigenen Kanal bespielst) ---
+# Einkommentieren bei Bedarf:
+# google-api-python-client
+# google-auth-oauthlib
+# google-auth-httplib2
+
+# --- Lip-Sync / lokale Stimme (optional, fortgeschritten, groß) ---
+# openai-whisper
+# TTS

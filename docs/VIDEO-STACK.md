@@ -3,6 +3,18 @@
 > Eine Quelle der Wahrheit für die Video-Produktion im aban-Netzwerk. Es gibt
 > **zwei Säulen** mit unterschiedlichem Zweck — bewusst getrennt, hier zusammengeführt.
 
+## Schnellstart (macht es einfach)
+```bash
+cd video-prototypes
+make setup      # pip install -r requirements.txt (Kern)
+make doctor     # zeigt: was ist bereit, was fehlt (Pakete/ffmpeg/Keys)
+make help       # alle Befehle
+```
+- **`scripts/doctor.py`** (`make doctor`) — Preflight-Check: prüft Python-Pakete,
+  ffmpeg und Keys und sagt dir mit ✓/●/✗ genau, was zu tun ist. Verrät keine Key-Werte.
+- **`requirements.txt`** — ein `pip install -r` für den Kern; YouTube-/XTTS-Pakete
+  sind dort dokumentiert und bei Bedarf einkommentierbar.
+
 ## Säule 1 — `video-pipeline/` (Funnel-Clips, schlicht)
 **Zweck:** kurze 9:16-Clips, die auf den Newsletter führen. Geld kommt über den
 **Funnel**, nicht über Views.

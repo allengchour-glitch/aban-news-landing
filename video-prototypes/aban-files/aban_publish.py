@@ -50,6 +50,28 @@ def render(ep):
     return out
 
 
+def maybe_shrink(path, ep):
+    """Clip vor dem Upload klein rendern (kleiner = schneller hochgeladen).
+    Steuerbar per Env: ABAN_SHRINK=0 schaltet ab; ABAN_SHRINK_TARGET_MB=N nutzt
+    den Zielgrößen-Modus statt CRF. Bei jedem Fehler: Original behalten."""
+    if os.environ.get("ABAN_SHRINK", "1") == "0":
+        return path
+    shrink = os.path.join(HERE, "..", "scripts", "shrink.py")
+    if not os.path.exists(shrink):
+        return path
+    small = f"/tmp/aban_small_{ep}.mp4"
+    target = os.environ.get("ABAN_SHRINK_TARGET_MB")
+    cmd = [sys.executable, shrink, path, "-o", small]
+    cmd += ["--target-mb", target] if target else ["--crf", os.environ.get("ABAN_SHRINK_CRF", "28")]
+    try:
+        subprocess.run(cmd, check=True)
+        if os.path.exists(small) and os.path.getsize(small) > 0:
+            return small
+    except Exception as exc:
+        print(f"[{ep}] shrink übersprungen ({exc}) — nutze Original", flush=True)
+    return path
+
+
 def upload(svc, ep, sc, path, immediate):
     from googleapiclient.http import MediaFileUpload
     title = f"{sc['title']} 🦎 #ABANFiles"
@@ -82,7 +104,7 @@ def main():
         return
     svc = get_service()
     for ep in todo:
-        path = render(ep)
+        path = maybe_shrink(render(ep), ep)
         upload(svc, ep, scripts[ep], path, args.immediate)
         done.append(ep)
         json.dump(done, open(UPLOADED, "w"), indent=2)

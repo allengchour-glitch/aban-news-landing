@@ -23,7 +23,7 @@ VOICE  ?= BswSp506E1rUw7uja1V5           # Mary Kai (deutsch, Social)
 PY     ?= python3
 S      := scripts
 
-.PHONY: all audio clips schedule youtube shrink setup clean help
+.PHONY: all audio clips schedule youtube shrink doctor setup clean help
 .DEFAULT_GOAL := help
 
 ## Audio + alle Clips
@@ -55,6 +55,10 @@ schedule:
 youtube:
 	$(PY) scripts/yt_upload.py
 
+## Preflight-Check: was ist bereit, was fehlt (Pakete/ffmpeg/Keys)
+doctor:
+	$(PY) $(S)/doctor.py
+
 ## Fertige Clips klein rendern (ffmpeg). 'make shrink' = ganzer output/-Ordner,
 ## 'make shrink-s6' = ein Clip, 'make shrink TARGET=8' = ~8 MB pro Clip.
 shrink:
@@ -63,11 +67,11 @@ shrink:
 shrink-%:
 	$(PY) $(S)/shrink.py output/clipfilm_$*.mp4 $(if $(TARGET),--target-mb $(TARGET),)
 
-## Hinweis auf die Setup-Dokumentation
+## Kern-Pakete installieren (pip install -r requirements.txt)
 setup:
-	@echo "Siehe XTTS-SETUP.md und LIPSYNC-SETUP.md."
-	@echo "Kurz: pip install TTS openai-whisper imageio imageio-ffmpeg pillow numpy torch"
-	@echo "Rhubarb nach $(WORK)/rhubarb entpacken (Lip-Sync)."
+	pip install -r requirements.txt
+	@echo "Kern installiert. Stand prüfen:  make doctor"
+	@echo "Optional (YouTube/XTTS): siehe requirements.txt + XTTS-SETUP.md / LIPSYNC-SETUP.md."
 
 ## Zwischenstände aufräumen (Clips in output/ bleiben erhalten)
 clean:
