@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JWT-Decoder · aban news</title>
+<meta name="description" content="Kostenloses Tool: JSON Web Token (JWT) lesbar machen — Header und Payload entschlüsseln, Ablauf-Datum prüfen. Lokal im Browser, Token verlässt den Browser nicht.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/jwt-decoder.html">
+<meta property="og:title" content="JWT-Decoder">
+<meta property="og:description" content="JWT lesbar machen — Header & Payload, Ablauf-Datum. Lokal im Browser, Token bleibt lokal.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/jwt-decoder.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"JWT-Decoder",
+"url":"https://abannews.com/jwt-decoder.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Entschlüsselt Header und Payload eines JSON Web Token (JWT) lesbar.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.panel h2{font-size:1rem;margin-bottom:8px;color:var(--amber-dk)}
+label{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+textarea{width:100%;min-height:110px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);resize:vertical;word-break:break-all}
+textarea:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;white-space:pre-wrap;word-break:break-word}
+.status{font-size:.9rem;font-weight:600;min-height:1.2em;margin-top:6px}
+.status.bad{color:var(--bad)}.status.ok{color:var(--ok)}
+.claims{margin-top:10px}
+.claims .r{display:flex;gap:10px;flex-wrap:wrap;padding:6px 0;border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent);font-size:.9rem}
+.claims .k{flex:0 0 8em;color:var(--muted)}
+.claims .v{flex:1;min-width:160px}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.warn{font-size:.85rem;color:var(--ink2);background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:10px 12px;margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">JWT</span> lesbar machen</h1>
+    <p>Ein JSON Web Token (z. B. aus einem API-Header) in Header und Payload zerlegen und entschlüsseln — inklusive Ablauf- und Ausstelldatum im Klartext. Lokal im Browser, der Token wird nicht gesendet.</p>
+  </section>
+  <section class="panel" id="tool">
+    <label for="in">JWT einfügen (drei Teile, durch Punkte getrennt)</label>
+    <textarea id="in" spellcheck="false">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFiYW4iLCJpYXQiOjE3MDAwMDAwMDAsImV4cCI6MTcwMDAwMzYwMH0.signature</textarea>
+    <div class="status" id="status">—</div>
+  </section>
+  <section class="panel" id="hp" hidden>
+    <h2>Header</h2>
+    <pre id="header"></pre>
+    <h2 style="margin-top:14px">Payload</h2>
+    <pre id="payload"></pre>
+    <div class="claims" id="claims"></div>
+    <div class="warn"><strong>Wichtig:</strong> Dieses Tool <strong>liest</strong> den Token nur — es prüft die <strong>Signatur nicht</strong>. Ein JWT ist nicht verschlüsselt, jeder kann den Inhalt lesen. Verlass dich für Echtheit/Gültigkeit immer auf die Server-Prüfung, nie auf das, was hier steht.</div>
+  </section>
+  <div class="cta"><strong>Mehr Glue-Tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für APIs &amp; Automatisierung.</p>
+    <p><a class="btn" href="/encoder.html">Base64/URL</a>
+      <a class="btn ghost" href="/json-formatter.html">JSON</a>
+      <a class="btn ghost" href="/timestamp-konverter.html">Timestamp</a></p></div>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/encoder.html">Encoder</a> · <a href="/json-formatter.html">JSON</a> ·
+  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var inp=document.getElementById("in"),status=document.getElementById("status"),
+      hp=document.getElementById("hp"),hEl=document.getElementById("header"),
+      pEl=document.getElementById("payload"),claims=document.getElementById("claims");
+  function b64urlDecode(s){
+    s=s.replace(/-/g,"+").replace(/_/g,"/");
+    while(s.length%4)s+="=";
+    return decodeURIComponent(escape(atob(s)));
+  }
+  function pretty(s){return JSON.stringify(JSON.parse(s),null,2);}
+  function ts(sec){var d=new Date(sec*1000);
+    function p(n){return (n<10?"0":"")+n;}
+    return p(d.getDate())+"."+p(d.getMonth()+1)+"."+d.getFullYear()+" "+p(d.getHours())+":"+p(d.getMinutes())+":"+p(d.getSeconds());}
+  function row(k,v){return '<div class="r"><span class="k">'+k+'</span><span class="v">'+v+'</span></div>';}
+  function run(){
+    var raw=inp.value.trim();
+    if(!raw){status.className="status";status.textContent="—";hp.hidden=true;return;}
+    var parts=raw.split(".");
+    if(parts.length<2){status.className="status bad";status.textContent="✗ Kein gültiges JWT (erwarte Teile mit Punkten getrennt).";hp.hidden=true;return;}
+    try{
+      var h=pretty(b64urlDecode(parts[0]));
+      var pStr=b64urlDecode(parts[1]);var p=pretty(pStr);var po=JSON.parse(pStr);
+      hEl.textContent=h;pEl.textContent=p;
+      var c="";
+      if(po.iat)c+=row("Ausgestellt (iat)",ts(po.iat));
+      if(po.nbf)c+=row("Gültig ab (nbf)",ts(po.nbf));
+      if(po.exp){
+        var expired=po.exp*1000<Date.now();
+        c+=row("Läuft ab (exp)",ts(po.exp)+(expired?'  <strong style="color:var(--bad)">— abgelaufen</strong>':'  <strong style="color:var(--ok)">— noch gültig</strong>'));
+      }
+      claims.innerHTML=c;
+      hp.hidden=false;
+      status.className="status ok";status.textContent="✓ dekodiert"+(parts.length===3?" (3 Teile)":" ("+parts.length+" Teile)");
+    }catch(e){
+      status.className="status bad";status.textContent="✗ Konnte nicht dekodieren: "+(e.message||e);hp.hidden=true;
+    }
+  }
+  inp.addEventListener("input",run);
+  run();
+})();
+</script>
+</body>
+</html>

@@ -129,6 +129,25 @@
 /env-parser       /env-parser.html    301
 /header           /env-parser.html    301
 
+# Entwickler-/Glue-Tools (Teil 2)
+/hash             /hash-generator.html  301
+/hash-generator   /hash-generator.html  301
+/sha256           /hash-generator.html  301
+/kontrast         /kontrast-checker.html 301
+/kontrast-checker /kontrast-checker.html 301
+/contrast         /kontrast-checker.html 301
+/passwort         /passwort-generator.html 301
+/passwort-generator /passwort-generator.html 301
+/password         /passwort-generator.html 301
+/zeichen          /zeichenzaehler.html  301
+/zeichenzaehler   /zeichenzaehler.html  301
+/wortzaehler      /zeichenzaehler.html  301
+/timestamp        /timestamp-konverter.html 301
+/timestamp-konverter /timestamp-konverter.html 301
+/unixzeit         /timestamp-konverter.html 301
+/jwt              /jwt-decoder.html     301
+/jwt-decoder      /jwt-decoder.html     301
+
 # 404 fallback — Cloudflare Pages serves /404.html automatically for missing routes,
 # aber für SPA-like fallback explicit:
 /*                /404.html             404

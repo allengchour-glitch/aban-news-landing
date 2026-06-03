@@ -121,6 +121,12 @@ durchgehend die du-Form.
 | `diff-tool.html` | Tool: **Text-Vergleich (Diff)** zeilenweise via LCS, farbig (add/del), Trim-/Case-Optionen, client-side. Pretty-URLs `/diff`, `/textvergleich`. |
 | `markdown-tabelle.html` | Tool: **Markdown-Tabelle ↔ CSV** (CSV-Parser mit Quotes, `\|`-Escape, Trennzeichen-Wahl, client-side). Pretty-URLs `/tabelle`, `/csv`. |
 | `env-parser.html` | Tool: **.env-/HTTP-Header ↔ JSON** (KEY=value & Name: Wert, client-side, Secret-Hinweis). Pretty-URLs `/env`, `/header`. |
+| `hash-generator.html` | Tool: **SHA-1/256/384/512** von Text (`SubtleCrypto`, live, client-side; MD5 bewusst weggelassen). Pretty-URLs `/hash`, `/sha256`. |
+| `kontrast-checker.html` | Tool: **Farb-Kontrast nach WCAG** (AA/AAA, Relativ-Luminanz, Color-Picker + Hex, Live-Vorschau, client-side). Pretty-URLs `/kontrast`, `/contrast`. |
+| `passwort-generator.html` | Tool: **Passwort-Generator** (crypto-Zufall, Ablehnungs-Sampling, Längen-/Zeichen-Optionen, Entropie-Anzeige, client-side, speichert nichts). Pretty-URLs `/passwort`, `/password`. |
+| `zeichenzaehler.html` | Tool: **Zeichen-/Wortzähler** (Zeichen/Wörter/Sätze/Absätze/Lesezeit + Social-/SEO-Limits, client-side). Pretty-URLs `/zeichen`, `/wortzaehler`. |
+| `timestamp-konverter.html` | Tool: **Unix-Timestamp ↔ Datum** (lokal/UTC/ISO/relativ, s+ms-Autoerkennung, DE+ISO-Parser, client-side). Pretty-URLs `/timestamp`, `/unixzeit`. |
+| `jwt-decoder.html` | Tool: **JWT lesbar machen** (Header/Payload base64url-dekodiert, iat/nbf/exp als Datum, client-side; liest nur, **prüft keine Signatur** — Hinweis). Pretty-URLs `/jwt`, `/jwt-decoder`. |
 | `anti-hype-texten.html` | SEO-Cornerstone-Ratgeber zum Tool (Vorher/Nachher, FAQ) |
 | `hype-widget-demo.html` | `noindex` — Doku/Demo fürs einbettbare Widget |
 | `impressum.html` / `datenschutz.html` | CH-Impressum / DSGVO |
