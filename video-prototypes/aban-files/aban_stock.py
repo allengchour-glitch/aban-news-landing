@@ -116,6 +116,30 @@ SCENES = {
     "ep28": ["giant ocean wave", "flood water in city", "stormy dark sea", "heavy rain storm night",
              "ancient wooden ark boat", "tsunami aerial view", "rising flood water", "dark storm clouds lightning",
              "ancient flooded ruins", "ocean horizon storm", "submerged street water", "lightning over ocean"],
+    "ep29": ["puma punku ruins", "tiwanaku bolivia stone", "precision cut megalith", "ancient stone blocks",
+             "andes mountains ancient", "megalithic ruins drone", "carved stone macro", "ancient temple ruins andes",
+             "mysterious stone carving", "archaeological site stone", "granite block precise", "ancient ruins sunset"],
+    "ep30": ["ancient clay pot artifact", "museum vault dark", "copper artifact old", "ancient pottery jar",
+             "electric spark dark", "mesopotamia ruins", "museum display case glass", "archaeology artifact macro",
+             "glowing electric arc", "ancient workshop dark", "old ruins desert", "artifact close up"],
+    "ep31": ["gobekli tepe ruins", "ancient carved pillar", "neolithic temple stone", "turkey archaeology site",
+             "stone relief carving animal", "excavation ancient temple", "megalithic standing stones", "ancient temple aerial drone",
+             "carved stone macro", "desert hills ruins", "archaeology dig site", "mysterious ancient stone"],
+    "ep32": ["sirius bright star night", "starry sky over africa", "african tribal mask", "ancient african art",
+             "night sky stars desert", "observatory telescope night", "african village dusk", "binary star space",
+             "ancient cave painting", "deep space star glow", "desert night sky", "milky way over savanna"],
+    "ep33": ["ancient indian temple", "old sanskrit manuscript", "ufo glowing in sky", "fire falling from sky",
+             "ancient ruins india", "glowing craft night sky", "old palm leaf manuscript", "explosion of light sky",
+             "ancient stone sculpture", "temple carving relief", "fireball in night sky", "mysterious craft silhouette"],
+    "ep34": ["old antique world map", "ancient nautical chart", "antarctica coastline ice", "old parchment map",
+             "vintage sailing ship", "antique globe", "antarctica aerial ice", "old brass compass map",
+             "old archive documents", "vintage world map", "frozen continent aerial", "old explorer map table"],
+    "ep35": ["ancient scroll text", "dark stone angel statue", "old religious manuscript", "dramatic stormy sky",
+             "ancient stone tablet carving", "candlelit old book", "fallen angel sculpture", "dark gothic cathedral",
+             "glowing figure in sky", "old church interior dim", "ancient ruins at night", "ominous dark clouds"],
+    "ep36": ["elongated skull artifact", "museum skull display dark", "paracas peru desert", "ancient human skull macro",
+             "archaeology bones excavation", "peru desert ruins", "museum vault dark", "ancient burial site",
+             "skull close up shadow", "desert excavation dig", "mysterious ancient artifact", "ancient gold burial mask"],
 }
 
 # Stichwort -> passender Stock-Suchbegriff: das Bild matcht den gesprochenen Satz.
@@ -266,7 +290,8 @@ def pixabay_links(query, cache):
 NASA_KW = re.compile(r"moon|mars|earth|space|rocket|satellite|\bsun\b|galaxy|planet|nebula|"
                      r"eclipse|astronaut|lunar|orbit|cosmos|\bstars?\b|comet|aurora|spacecraft", re.I)
 # Begriffe, fuer die ein echtes Wikimedia-Foto besser ist als generisches Stock-Video:
-IMG_PREFER = re.compile(r"bundeshaus|nazca|geoglyph|cuneiform|sumerian|stonehenge", re.I)
+IMG_PREFER = re.compile(r"bundeshaus|nazca|geoglyph|cuneiform|sumerian|stonehenge|puma punku|tiwanaku|"
+                        r"gobekli|baghdad|piri reis|paracas|elongated skull|vimana|dogon", re.I)
 
 
 def nasa_links(query, cache):
