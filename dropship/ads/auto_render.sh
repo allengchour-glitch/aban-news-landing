@@ -56,7 +56,8 @@ echo "$(( (start + N) % TOTAL ))" > "$PTR"
 HOOK="${HOOKS[$(( start % ${#HOOKS[@]} ))]}"
 SLUG="auto-$(date +%Y%m%d-%H%M)"
 mkdir -p "$ROOT/reels"
-HOOK="$HOOK" bash "$ROOT/dropship/ads/render_premium_reel.sh" "$ROOT/reels/$SLUG.mp4" "$MUSIC" "$IMGDIR"
+# Schnelleres, TikTok-natives Pacing (kurze Segmente + knappe Fades) — via Env überschreibbar.
+HOOK="$HOOK" SEG="${SEG_DUR:-1.7}" T="${FADE_DUR:-0.35}" bash "$ROOT/dropship/ads/render_premium_reel.sh" "$ROOT/reels/$SLUG.mp4" "$MUSIC" "$IMGDIR"
 
 # Queue-Zeile (ready) anhängen — CSV-sicher gequotet
 csv(){ printf '"%s"' "$(printf '%s' "$1" | sed 's/"/""/g')"; }

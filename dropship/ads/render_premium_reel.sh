@@ -30,8 +30,10 @@ $FF -f lavfi -t 3.0 -i "color=c=${BG}:s=1080x1920:r=${FPS}" -filter_complex "$IF
 N=0
 for f in "$IMG"/[0-9]*.jpg; do
   idx=$(basename "$f" .jpg); ni=$((idx-1))
-  fc="[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1,"
-  fc+="zoompan=z='min(1+0.0009*on\,1.06)':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1080x1920:fps=${FPS},"
+  # Quelle 2x hochskalieren -> zoompan rechnet x/y auf feinem Raster = sub-pixel-glatt (kein Ruckeln).
+  # Sehr sanfter Zoom (1.0->1.035), damit der Rücksprung beim schnellen Schnitt kaum sichtbar ist.
+  fc="[0:v]scale=2160:3840:force_original_aspect_ratio=increase,crop=2160:3840,setsar=1,"
+  fc+="zoompan=z='min(1+0.00045*on\,1.035)':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1080x1920:fps=${FPS},"
   fc+="drawbox=x=0:y=1610:w=1080:h=310:color=black@0.34:t=fill,"
   fc+="drawbox=x=80:y=1700:w=8:h=120:color=${GOLD}:t=fill,"
   fc+="drawtext=fontfile=${SANS}:textfile=${W}/n_${ni}.txt:fontcolor=white:fontsize=52:x=118:y=1710,"

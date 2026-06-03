@@ -1,66 +1,84 @@
 #!/usr/bin/env node
-/* aban/LuxeStyle — reel-analytics.mjs
- * Automatischer Feedback-Report (läuft via .github/workflows/reel-analytics.yml).
- * Liest die Reel-Queue (was wurde gepostet) + zieht Shop-Kennzahlen (Bestellungen/Umsatz der letzten Tage)
- * über die Shopify Admin GraphQL API und schickt eine Zusammenfassung per Telegram.
- * Alles no-op-safe: fehlende Secrets => nur Konsolen-Log, kein Fehler.
+/* LuxeStyle — reel-analytics.mjs  (täglicher Telegram-Report + Tagesreel als Video)
+ * Läuft via .github/workflows/reel-analytics.yml (täglich).
+ *  1) Shop-Kennzahlen (Bestellungen heute + letzte N Tage + Umsatz) via Shopify Admin GraphQL.
+ *  2) Reel-Queue-Status aus reels_seed.csv.
+ *  3) Schickt den Text-Report per Telegram (sendMessage).
+ *  4) Schickt zusätzlich EIN Reel als Video (sendVideo, rotiert täglich) — „nebst video reels".
+ * Alles no-op-safe: fehlende Secrets => nur Konsolen-Log, kein harter Fehler.
  *
  * ENV (alle optional):
- *   SHOPIFY_SHOP=luxestyle.myshopify.com  SHOPIFY_ADMIN_TOKEN=shpat_...
+ *   SHOPIFY_SHOP=...myshopify.com  SHOPIFY_ADMIN_TOKEN=shpat_...
  *   TELEGRAM_BOT_TOKEN=...  TELEGRAM_CHAT_ID=...
- *   DAYS=3  (Betrachtungszeitraum)
+ *   DAYS=7  (Vergleichszeitraum)  ·  BASEURL=https://abannews.com/reels
  */
 import fs from 'node:fs';
 
-const DAYS = parseInt(process.env.DAYS || '3', 10);
+const DAYS = parseInt(process.env.DAYS || '7', 10);
 const SHOP = process.env.SHOPIFY_SHOP || '';
 const TOK  = process.env.SHOPIFY_ADMIN_TOKEN || '';
 const TG_T = process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_C = process.env.TELEGRAM_CHAT_ID || '';
+const BASE = (process.env.BASEURL || 'https://abannews.com/reels').replace(/\/$/, '');
+const today = new Date().toISOString().slice(0, 10);
 
-// --- 1) Queue-Status aus der CSV ---
+// --- CSV parse ---
 function parse(t){const rows=[];let row=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];
   if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++;}else q=false;}else f+=c;}
   else{if(c==='"')q=true;else if(c===','){row.push(f);f='';}else if(c==='\n'){row.push(f);rows.push(row);row=[];f='';}else if(c!=='\r')f+=c;}}
   if(f.length||row.length){row.push(f);rows.push(row);}return rows.filter(r=>r.length>1);}
-let qLine='Queue: (reels_seed.csv nicht gefunden)';
+
+// --- 1) Queue-Status + Reel-Auswahl (täglich rotierend) ---
+let qLine='Reels-Queue: (reels_seed.csv nicht gefunden)';
+let pickUrl='', pickCap='';
 try{
   const rows=parse(fs.readFileSync(new URL('./reels_seed.csv',import.meta.url).pathname,'utf8'));
-  const h=rows[0], si=h.indexOf('status');
+  const h=rows[0], si=h.indexOf('status'), vi=h.indexOf('video_url'), ci=h.indexOf('caption');
   const c={posted:0,ready:0,pending:0};
-  rows.slice(1).forEach(r=>{const s=(r[si]||'').trim();if(s in c)c[s]++;});
+  const vids=[];
+  rows.slice(1).forEach(r=>{const s=(r[si]||'').trim();if(s in c)c[s]++; if((r[vi]||'').trim())vids.push({u:r[vi].trim(),cap:r[ci]||''});});
   qLine=`Reels-Queue: ${c.posted} gepostet · ${c.ready} bereit · ${c.pending} in Vorbereitung`;
+  if(vids.length){ const doy=Math.floor((Date.now()-Date.UTC(new Date().getUTCFullYear(),0,0))/864e5);
+    const p=vids[doy%vids.length]; pickUrl=p.u; pickCap=p.cap; }
 }catch(e){}
 
-// --- 2) Shop-Kennzahlen (Bestellungen/Umsatz) via Admin GraphQL ---
-let shopLine='Shop-Zahlen: übersprungen (kein SHOPIFY_ADMIN_TOKEN/SHOP).';
+// --- 2) Shop-Kennzahlen via Admin GraphQL (Bestellungen heute + N Tage) ---
+async function orders(sinceDate){
+  const query=`{ orders(first:250, query:"created_at:>=${sinceDate}") { edges { node { totalPriceSet { shopMoney { amount currencyCode } } } } } }`;
+  const r=await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',
+    headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query})});
+  const j=await r.json(); const edges=j?.data?.orders?.edges||[];
+  let sum=0,cur='CHF'; edges.forEach(e=>{const m=e.node.totalPriceSet.shopMoney;sum+=parseFloat(m.amount||0);cur=m.currencyCode||cur;});
+  return {n:edges.length,sum,cur};
+}
+let shopLines=['Shop-Zahlen: übersprungen (kein SHOPIFY_ADMIN_TOKEN/SHOP).'];
 if(SHOP && TOK){
-  const since=new Date(Date.now()-DAYS*864e5).toISOString().slice(0,10);
-  const query=`{ orders(first:100, query:"created_at:>=${since}") { edges { node { totalPriceSet { shopMoney { amount currencyCode } } } } } }`;
   try{
-    const r=await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',
-      headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query})});
-    const j=await r.json();
-    const edges=j?.data?.orders?.edges||[];
-    let sum=0,cur='CHF';
-    edges.forEach(e=>{const m=e.node.totalPriceSet.shopMoney;sum+=parseFloat(m.amount||0);cur=m.currencyCode||cur;});
-    shopLine=`Shop (${DAYS}T): ${edges.length} Bestellungen · ${sum.toFixed(2)} ${cur} Umsatz`;
-  }catch(e){ shopLine='Shop-Zahlen: Abruf-Fehler ('+e.message+').'; }
+    const sinceN=new Date(Date.now()-DAYS*864e5).toISOString().slice(0,10);
+    const [t,n]=await Promise.all([orders(today),orders(sinceN)]);
+    shopLines=[`🛒 Heute: ${t.n} Bestellungen · ${t.sum.toFixed(2)} ${t.cur}`,
+               `📈 ${DAYS} Tage: ${n.n} Bestellungen · ${n.sum.toFixed(2)} ${n.cur} Umsatz`];
+  }catch(e){ shopLines=['Shop-Zahlen: Abruf-Fehler ('+e.message+').']; }
 }
 
-const msg = [
-  `📊 LuxeStyle Reel-Autopost — Auto-Report`,
-  qLine,
-  shopLine,
-  `Views/Engagement auf TikTok+Instagram: bitte in den App-Insights bzw. in Buffer Analytics prüfen (keine API-Anbindung).`
-].join('\n');
+const msg=[`📊 LuxeStyle — Tagesreport ${today}`,...shopLines,qLine,
+  `ℹ️ TikTok-Ads-Zahlen (Impressionen/CTR/ATC) im TikTok Ads Manager; Reel-Views in den App-Insights.`].join('\n');
 console.log(msg);
+if(pickUrl) console.log('Tagesreel:',pickUrl);
 
-// --- 3) Telegram-Report ---
+// --- 3) + 4) Telegram: Report + ein Reel als Video ---
 if(TG_T && TG_C){
   try{
     await fetch(`https://api.telegram.org/bot${TG_T}/sendMessage`,{method:'POST',
-      headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG_C,text:msg})});
+      headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG_C,text:msg,disable_web_page_preview:true})});
     console.log('Telegram-Report gesendet.');
-  }catch(e){ console.error('Telegram-Fehler:',e.message); }
+  }catch(e){ console.error('Telegram sendMessage-Fehler:',e.message); }
+  if(pickUrl){
+    try{
+      const cap=(pickCap?pickCap+'\n':'')+'🎬 Reel des Tages';
+      const res=await fetch(`https://api.telegram.org/bot${TG_T}/sendVideo`,{method:'POST',
+        headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG_C,video:pickUrl,caption:cap.slice(0,1000)})});
+      console.log(res.ok?'Telegram-Reel gesendet.':'Telegram sendVideo HTTP '+res.status);
+    }catch(e){ console.error('Telegram sendVideo-Fehler:',e.message); }
+  }
 } else { console.log('(Kein Telegram-Secret → Report nur im Log.)'); }
