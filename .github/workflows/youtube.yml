@@ -1,4 +1,10 @@
-name: YouTube auto-publish (1 Clip / 2 Tage)
+name: YouTube auto-publish (1 Clip / 2 Tage) [VERALTET]
+
+# VERALTET: Dieser Workflow lud vorab-gerenderte Clips aus video-prototypes/output/
+# hoch. Diese Renders liegen nicht mehr im Repo (schlanker Stack). Nutze stattdessen
+# aban-youtube.yml, der in der CI frisch rendert. Zeitplan unten deaktiviert; nur noch
+# manuell startbar, falls du lokal gerenderte Clips selbst nach video-prototypes/output/
+# legst.
 
 # Lädt alle 2 Tage den nächsten noch nicht veröffentlichten Clip direkt auf
 # YouTube (als Short, sofort öffentlich) und merkt sich den Fortschritt in
@@ -12,8 +18,8 @@ on:
       count:
         description: "Wie viele Clips jetzt hochladen"
         default: "1"
-  schedule:
-    - cron: "0 16 1-31/2 * *"   # an ungeraden Tagen 16:00 UTC (~18:00 Berlin)
+  # schedule:  # DEAKTIVIERT (siehe Hinweis oben — Renders nicht mehr im Repo)
+  #   - cron: "0 16 1-31/2 * *"
 
 permissions:
   contents: write               # um uploaded.json zurückzucommitten
