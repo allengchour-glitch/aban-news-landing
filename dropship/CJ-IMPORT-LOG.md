@@ -1491,3 +1491,13 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - 11 Bilder (alle 200, READY) · 6 Kanäle live · Tags premium/tasche/sommer-2026 · productType Accessoires.
 - **Lehre:** Varianten-Key enthielt Masse („Coffee-19x13x24cm") → vor Mapping Dimension per Regex strippen.
 - Taschen-Suche sonst mager: 2. Treffer war Tier-Schlafsack (off-brand) → verworfen („hohe Qualität sonst sein lassen").
+
+## 2026-06-03 — Qualitäts-Nachschub Runde 2 (Schmuck-Suche → 2 Mode-Teile)
+- **High-Waist-Hose «Lina»** (Wide-Leg): CJ pid 2606030104391619800 · SKU CJTZ2918807 (01–25) · $4.86 →
+  Shopify 15416491704705 · CHF 34.90 · 25 Var (5 Farben × S–2XL) · 10 Bilder · 6 Kanäle live.
+- **Tunika-Mini-Kleid «Riva»** (V-Ausschnitt, Strand): CJ pid 2606030645561620400 · SKU CJLY2919596 (01–20) ·
+  $7.30 → Shopify 15416493506945 · CHF 34.90 · 20 Var (5 Farben × S–XL) · 10 Bilder · 6 Kanäle live.
+  **LEHRE:** CJ nannte es „Mini Skirt", Bild zeigte aber ein V-Ausschnitt-TUNIKA-KLEID → vor Titel IMMER 1 Bild prüfen.
+- **Verworfen (Qualität):** Naturstein-Armband (39 Bilder, aber 34 Steine mit wirren CJ-Namen wie „Magnetic Belt"/
+  „Imported White" → unsauber) · Boys-Set (off-brand). „Hohe Qualität sonst sein lassen" befolgt.
+- **Heute total 6 neue Produkte live:** Aurélie, Bureau, Capucine, Lussa (Echtleder-Tasche), Lina (Hose), Riva (Kleid).
