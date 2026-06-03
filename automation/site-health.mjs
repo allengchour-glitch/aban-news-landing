@@ -51,7 +51,9 @@ async function publish(gid, token){
   const r = await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',
     headers:{'Content-Type':'application/json','X-Shopify-Access-Token':token},
     body:JSON.stringify({query:q, variables:{id:gid, p:[{publicationId:ONLINESHOP_PUB}]}})});
-  const j = await r.json(); return j?.data?.publishablePublish?.userErrors?.length ? j.data.publishablePublish.userErrors[0].message : '';
+  const j = await r.json();
+  if(j?.errors?.length) return j.errors[0].message;
+  return j?.data?.publishablePublish?.userErrors?.[0]?.message || '';
 }
 
 // 1) URL-Status (+ Auto-Fix 404-Homepage-Kollektionen)

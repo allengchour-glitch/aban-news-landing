@@ -40,7 +40,8 @@ async function setSort(id, order, token){
   const r = await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',
     headers:{'Content-Type':'application/json','X-Shopify-Access-Token':token},
     body:JSON.stringify({query:q, variables:{input:{id, sortOrder:order}}})});
-  const j = await r.json(); return j?.data?.collectionUpdate?.userErrors?.[0]?.message || '';
+  const j = await r.json();
+  return j?.errors?.[0]?.message || j?.data?.collectionUpdate?.userErrors?.[0]?.message || '';
 }
 
 const token = await getToken();

@@ -77,3 +77,19 @@ Kollektion. IMMER prüfen: `curl -o /dev/null -w "%{http_code}" https://luxestyl
 MAIN nicht schreibbar.)
 **KORREKTUR:** Mein früheres „Falschalarm/Halluzination" war falsch — die Platzhalter waren real (im roh-HTML
 nur per `grep -o`, nicht mit Kontext-Pattern auffindbar, da minifiziert).
+
+## 📋 Status „alle bis 8" (2026-06-03)
+- **#1 Channel-Publish:** ✅ verifiziert — Produkte sind bereits auf Pinterest/Google&YouTube/Facebook&IG/TikTok. Rest (Merchant-Feed-Freigabe, Pinterest-Katalog) = App-Config/du.
+- **#2 Auto-SEO:** ✅ Tool gebaut (`automation/seo-optimizer.mjs` + `seo-optimizer.yml`, wöchentlich). 3 akute Lücken sofort gefüllt (Marguerite, Discovery-Set, Angel's Love). **Voll-Sweep läuft, sobald App Produkt-Scopes hat** (siehe unten).
+- **#3 FAILED-Bilder:** ✅ Check im SEO-Tool integriert. Stichprobe: alle Bilder READY (gesund).
+- **Homepage-Rotation:** ✅ live gesetzt (highlights→CREATED_DESC, bestseller-shop→PRICE_ASC). **Autonom alle 3h, sobald Scopes da.**
+- **#4 Bundle/AOV-Rabatt:** ⏸️ NICHT auto-angelegt (ändert Marge für alle Kunden + stapelt evtl. mit WELCOME10). **Empfehlung:** automatischer Rabatt „ab CHF 90 → kleines Geschenk/–10%" ODER echtes Bundle-Produkt „3 Sommer-Looks". Sag die Konditionen, dann lege ich's an.
+- **#5 Reviews-Sterne:** Judge.me (installiert) → Star-Widget auf Produktkacheln aktivieren (App-Seite/du).
+- **#6 Kampagne / #7 Ankündigungs-Link / #8 Conversion-App:** nur du (Customizer/Ads/App-Install).
+
+## ⚠️ Scope-Blocker (wichtig für volle Autonomie)
+Dein App-Token („read") hat nur **Order-Scopes** (`write_orders,customer_*`). Damit funktionieren **Rotate,
+SEO, Auto-Publish NICHT autonom** über den Cron (Produkt-/Publication-Zugriff fehlt → ACCESS_DENIED).
+**Fix (einmalig, im Dev-Dashboard der App „read"):** Scopes ergänzen → **`read_products`, `write_products`,
+`write_publications`** → Version speichern → App neu installieren. Danach laufen alle 3 Tools vollautonom.
+Bis dahin: der **Site-Health-Monitor (URL-Check) läuft autonom**; Rotation/SEO/Publish mache ICH on-demand via MCP.
