@@ -70,7 +70,7 @@
       "task": "dropshipping-radar auf Cloudflare deployen (dropshipping.abannews.com) — Vorbedingung fürs Affiliate-Geld",
       "who": "browser",
       "status": "todo",
-      "note": "",
+      "note": "Build verifiziert: dropshipping-rad 'python generate.py' laeuft fehlerfrei, 37 Seiten. Brief docs/CLOUDFLARE-DEPLOY-BROWSER-AGENT.md (Zeile 6) deckt es ab.",
       "updated": "2026-06-03"
     },
     {

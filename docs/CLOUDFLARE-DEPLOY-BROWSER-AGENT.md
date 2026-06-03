@@ -60,6 +60,15 @@ Mach das pro Zeile aus der Tabelle unten **einmal**:
 **Schon live (nicht anfassen):** `radar.abannews.com` (ki-tools-radar) und die
 Hauptseite `abannews.com`.
 
+> ✅ **Build-Check (Code-Session, 2026-06-03):** Alle 12 Ordner sind auf `main`
+> vorhanden und `python generate.py` läuft bei **allen 12** lokal fehlerfrei durch
+> (jeweils `dist/index.html` + Unterseiten erzeugt: prompts 95 · foerder 127 ·
+> jobs 20 · kurse 40 · automatisierung 373 · dropshipping 37 · newsletter 37 ·
+> buchhaltung 35 · chatbot 39 · voice 35 · agenturen 15 · handwerk 68). Build-Command
+> und Output-Dir aus der Tabelle stimmen also — wenn auf Cloudflare ein Build trotzdem
+> fehlschlägt, liegt es an den **Projekt-Einstellungen** (Framework=None? Output-Dir
+> exakt? `PYTHON_VERSION=3.11` gesetzt?), nicht am Code.
+
 ---
 
 ## Ehrliche Hinweise (an den Browser-Agenten)
