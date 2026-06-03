@@ -6,7 +6,7 @@
       "task": "Affiliate bei 1 Programm anmelden (z. B. Jasper) → Link an Code",
       "who": "aban",
       "status": "doing",
-      "note": "Jasper-Affiliate retired → Wechsel auf Writesonic (writesonic.com/affiliate, _writesonic-Slot bereit, oft Instant-Freigabe)",
+      "note": "Writesonic-Bewerbung abgeschickt — wartet auf Freigabe",
       "updated": "2026-06-03"
     },
     {
@@ -21,8 +21,8 @@
       "id": 3,
       "task": "Gumroad-Konto + Datensatz hochladen → Buy-Link",
       "who": "aban",
-      "status": "todo",
-      "note": "20 Min",
+      "status": "doing",
+      "note": "Voll-Datensatz erzeugt (326 Tools CSV+JSON), an Aban geliefert; wartet auf Gumroad-Konto + Buy-Link",
       "updated": "2026-06-03"
     },
     {
