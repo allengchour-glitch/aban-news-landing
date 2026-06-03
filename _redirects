@@ -113,6 +113,21 @@
 /regex-tester     /regex-tester.html  301
 /json             /json-formatter.html 301
 /json-formatter   /json-formatter.html 301
+/encode           /encoder.html       301
+/encoder          /encoder.html       301
+/base64           /encoder.html       301
+/uuid             /uuid-generator.html 301
+/uuid-generator   /uuid-generator.html 301
+/slug             /uuid-generator.html 301
+/diff             /diff-tool.html     301
+/diff-tool        /diff-tool.html     301
+/textvergleich    /diff-tool.html     301
+/tabelle          /markdown-tabelle.html 301
+/markdown-tabelle /markdown-tabelle.html 301
+/csv              /markdown-tabelle.html 301
+/env              /env-parser.html    301
+/env-parser       /env-parser.html    301
+/header           /env-parser.html    301
 
 # 404 fallback — Cloudflare Pages serves /404.html automatically for missing routes,
 # aber für SPA-like fallback explicit:
