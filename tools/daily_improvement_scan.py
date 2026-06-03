@@ -104,7 +104,16 @@ def scan_page(p: Path, findings: list):
     if not any(x in rel for x in HYPE_EXEMPT):
         text = re.sub(r"<(script|style)\b.*?</\1>", " ", s, flags=re.S | re.I)
         text = re.sub(r"<[^>]+>", " ", text)
-        hits = sorted(set(m.group(0) for m in HYPE_RX.finditer(text)))
+        # Debunking-Kontext ignorieren: Hype-Wort in Anführungszeichen oder nach
+        # Negation/„verboten"-Marker ist Absicht (die Marke entlarvt Hype), kein
+        # Verstoß. Prüft die 60 Zeichen direkt vor dem Treffer.
+        DEBUNK = re.compile(
+            r'(?:\b(?:kein|keine|ohne|nicht|statt|nie|no|not|banned|verboten|'
+            r'verbannt|tabu|liste)\b|sperrlist|[„“”"»«])', re.I)
+        hits = sorted(set(
+            m.group(0) for m in HYPE_RX.finditer(text)
+            if not DEBUNK.search(text[max(0, m.start() - 60):m.start()])
+        ))
         if hits:
             add("low", "Voice: Hype-Wörter", ", ".join(hits[:6]))
 
