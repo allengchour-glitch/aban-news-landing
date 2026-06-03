@@ -160,6 +160,14 @@
 /mwst-rechner     /mwst-rechner.html    301
 /mehrwertsteuer   /mwst-rechner.html    301
 
+# QR-Code + Tool-Uebersicht (Teil 4)
+/qr               /qr-code.html       301
+/qr-code          /qr-code.html       301
+/qrcode           /qr-code.html       301
+/werkzeuge        /online-tools.html  301
+/online-tools     /online-tools.html  301
+/gratis-tools     /online-tools.html  301
+
 # 404 fallback — Cloudflare Pages serves /404.html automatically for missing routes,
 # aber für SPA-like fallback explicit:
 /*                /404.html             404
