@@ -12,7 +12,7 @@
 | **The Seam: A Ruhr Valley Saga in Three Volumes** (EN) | Kindle eBook | ✅ **Live** (Dashboard bestätigt) | $9.99 | B0H3KNC6TM | ki-schriftsteller |
 | The Seam: A Ruhr Valley Saga in Three Volumes (EN) | Taschenbuch | ✅ **Live** (Dashboard bestätigt) | $9.99 | B0H3NH1JTB | ki-schriftsteller |
 | **Vision Board Workbook for Women** (Pen: Sage Whitfield) | Taschenbuch | ✅ **Live** (Dashboard bestätigt) | $11.99 | B0H3JZZPM5 | extern |
-| **ADHD Daily Planner for Adults** (Pen: Marcus Reilly) | Taschenbuch | 🟡 **Eingereicht, in Prüfung** (3. Juni 2026, ~72 h → live; bei Low-Content bis 10 Werktage) | $8.99 | folgt | `build_book.py` (`adhd`) |
+| **ADHD Daily Planner for Adults** (Pen: Marcus Reilly) | Taschenbuch | 🟠 **Untertitel beanstandet** (Wiederholung/Keyword-Liste, PRI-2640XYPFH86) → bereinigt, **neu einzureichen** (Frist 5 Tage ab 3. Juni) | $8.99 | folgt | `build_book.py` (`adhd`) |
 | **Mileage Log Book for Small Business** (Pen: Marcus Reilly) | Taschenbuch | 🟡 **Eingereicht, in Prüfung** (3. Juni 2026; Innenteil 119 S., Cover hochgeladen) | $6.99 | folgt | `build_book.py` (`mileage`, Innenteil extern) |
 
 ## Legende
@@ -28,6 +28,13 @@
 - **Planer/Logbücher (ADHD, Mileage): bewusst KEIN Kindle-eBook.** Die zum
   Reinschreiben gedachten Seiten funktionieren auf dem Reader nicht → schlechte
   Rezensionen. Diese Titel bleiben Taschenbuch-only (eBook-Upsell „Schließen").
+- **Untertitel-Lehre (KDP-Richtlinie):** Untertitel darf Titelwörter NICHT
+  wiederholen und keine Keyword-Liste sein. ADHD-Untertitel war
+  „A 90-Day Planner Built for an ADHD Brain — Time-Blocks, Body Doubling,
+  Dopamine Tracking, and the Three Most Important Tasks of the Day" → beanstandet
+  (ADHD/Planner doppelt + Vierer-Liste). Neu: „A 90-Day Undated Journal with
+  Time-Blocks, Body Doubling, and a Top-3 Each Day". Bei neuen Low-Content-Titeln
+  gleich repetitionsfrei + ohne Listen-Untertitel anlegen.
 
 ## Pflege
 - **„BUCHDRUCK"** baut nur die `build_book.py`-Bücher mit `uploaded: False`

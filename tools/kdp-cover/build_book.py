@@ -306,7 +306,7 @@ BOOKS = {
         "slug": "adhd-daily-planner",
         "uploaded": True,           # eingereicht 2026-06-03, KDP-Prüfung; ASIN folgt
         "title": "ADHD Daily Planner for Adults",
-        "subtitle": "A 90-Day Planner Built for an ADHD Brain — Time-Blocks, Body Doubling, Dopamine Tracking, and the Three Most Important Tasks of the Day",
+        "subtitle": "A 90-Day Undated Journal with Time-Blocks, Body Doubling, and a Top-3 Each Day",
         "author": "Marcus Reilly", "trim": (6, 9), "paper": "white",
         "closing": "Undated. Start today. Miss a day guilt-free.",
         "interior": {"type": "planner", "days": 90, "accent": "#138086",
