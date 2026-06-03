@@ -1,0 +1,120 @@
+{
+  "_hinweis": "Produkt-Memory für luxestyle.ch. Anti-Hype-Ton (du-Form, ehrlich, keine Werbe-Floskeln). 'gramm'/'druckzeit_h' = echte Slicer-Werte aus Bambu Studio eintragen, dann rechnet der Listing-Generator den CHF-Preis. null = noch nicht gemessen -> Listing bleibt Entwurf ohne Preis ('Preis folgt'). Keine erfundenen Preise.",
+  "_waehrung": "CHF",
+  "produkte": [
+    {
+      "id": "mimi-katze",
+      "name": "Mimi — sitzende Katze",
+      "typ": "3D-Figur",
+      "kurz": "Kompakte sitzende Katze, einzeln für dich gedruckt. Einfarbig oder mehrfarbig (Augen, Ohren, Nase abgesetzt).",
+      "punkte": [
+        "Vollkörper-3D, steht ohne Stütze (flache Unterseite)",
+        "Wunschfarbe aus der PLA-Palette",
+        "ca. 50 mm — passt auf Schreibtisch, Regal, Fensterbank",
+        "einzeln nach Bestellung gefertigt, kein Lagerartikel"
+      ],
+      "varianten": ["einfarbig", "mehrfarbig (AMS)"],
+      "gramm": 21,
+      "druckzeit_h": 2.5,
+      "stl": "../luxestyle-3d/products/mimi/mimi_einfarbig_komplett.stl",
+      "bild": "produkte/mimi_render.png",
+      "tags": ["Katze", "Figur", "Geschenk", "personalisierbar", "3D-Druck"]
+    },
+    {
+      "id": "loaf-hund",
+      "name": "Loaf-Hund",
+      "typ": "3D-Figur",
+      "kurz": "Liegender Welpe im kompakten Loaf-Stil. Ruhige Form, kräftige Proportionen.",
+      "punkte": [
+        "Vollkörper-3D, liegend, steht plan auf",
+        "Wunschfarbe aus der PLA-Palette",
+        "einzeln nach Bestellung gefertigt"
+      ],
+      "varianten": ["einfarbig", "mehrfarbig (AMS)"],
+      "gramm": null,
+      "druckzeit_h": null,
+      "bild": null,
+      "tags": ["Hund", "Figur", "Geschenk", "3D-Druck"]
+    },
+    {
+      "id": "namens-anhaenger",
+      "name": "Namens-Schlüsselanhänger",
+      "typ": "Schlüsselanhänger",
+      "kurz": "Dein Name oder Wunschtext als stabiler Schlüsselanhänger mit Ring-Loch.",
+      "punkte": [
+        "dein Text — ein Wort, Name oder kurzer Spruch",
+        "Wunschfarbe, Ring-Loch für den Schlüsselring",
+        "robust, alltagstauglich"
+      ],
+      "varianten": ["einfarbig", "2-farbig (Text abgesetzt)"],
+      "gramm": null,
+      "druckzeit_h": null,
+      "bild": null,
+      "tags": ["Schlüsselanhänger", "Name", "personalisiert", "Geschenk"]
+    },
+    {
+      "id": "namensschild",
+      "name": "Namensschild (Tür / Schreibtisch)",
+      "typ": "Namensschild",
+      "kurz": "Personalisiertes Schild für Tür oder Schreibtisch. Schlicht und stabil.",
+      "punkte": [
+        "dein Name oder Familienname",
+        "Wunschfarbe, klare Schrift",
+        "für Tür, Büro oder Werkstatt"
+      ],
+      "varianten": ["einfarbig", "2-farbig (Schrift abgesetzt)"],
+      "gramm": null,
+      "druckzeit_h": null,
+      "bild": null,
+      "tags": ["Namensschild", "Tür", "Schreibtisch", "personalisiert"]
+    },
+    {
+      "id": "cake-topper",
+      "name": "Cake-Topper mit Wunschtext",
+      "typ": "Cake-Topper",
+      "kurz": "Name, Alter oder kurzer Spruch auf die Torte. Für Geburtstage und Feiern.",
+      "punkte": [
+        "dein Text (Name, Zahl, kurzer Gruß)",
+        "Wunschfarbe",
+        "abwaschbar, wiederverwendbar"
+      ],
+      "varianten": ["einfarbig"],
+      "gramm": null,
+      "druckzeit_h": null,
+      "bild": null,
+      "tags": ["Cake-Topper", "Geburtstag", "Torte", "personalisiert"]
+    },
+    {
+      "id": "einkaufswagen-chip",
+      "name": "Einkaufswagen-Chip mit Initialen",
+      "typ": "Einkaufswagen-Chip",
+      "kurz": "Münz-Chip mit Lasche und Öse, mit deinen Initialen. Passt an den Schlüsselbund.",
+      "punkte": [
+        "deine Initialen (1–3 Buchstaben)",
+        "Größe für gängige Einkaufswagen",
+        "Öse für den Schlüsselring"
+      ],
+      "varianten": ["einfarbig", "2-farbig (Initialen abgesetzt)"],
+      "gramm": null,
+      "druckzeit_h": null,
+      "bild": null,
+      "tags": ["Einkaufswagen-Chip", "Initialen", "Schlüsselbund", "praktisch"]
+    },
+    {
+      "id": "foto-lithophane",
+      "name": "Foto-Lithophane (Licht-Bild)",
+      "typ": "Lithophane",
+      "kurz": "Dein Foto als 3D-Relief — vor Licht gehalten erscheint das Bild. Anhänger oder Nachtlicht.",
+      "punkte": [
+        "dein eigenes Foto (kein Lizenzproblem)",
+        "als Anhänger oder kleines Nachtlicht",
+        "Schwarz-Weiß-Relief, durchscheinend"
+      ],
+      "varianten": ["Anhänger", "mit Öse"],
+      "gramm": null,
+      "druckzeit_h": null,
+      "bild": null,
+      "tags": ["Lithophane", "Foto", "Geschenk", "personalisiert"]
+    }
+  ]
+}

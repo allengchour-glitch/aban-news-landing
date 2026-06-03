@@ -1,0 +1,11 @@
+{
+  "_hinweis": "Annahmen — vor dem ersten echten Verkauf prüfen. Schweizer Werte (CHF).",
+  "filament_chf_pro_kg": 25.0,
+  "maschine_chf_pro_h": 0.8,
+  "arbeit_chf_pro_h": 30.0,
+  "verpackung_chf": 1.2,
+  "marge_faktor": 2.5,
+  "runden_auf": 0.9,
+  "fuellfaktor_default": 0.4,
+  "pla_dichte_g_cm3": 1.24
+}

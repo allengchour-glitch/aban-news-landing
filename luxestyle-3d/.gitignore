@@ -1,0 +1,12 @@
+# Arbeits-/Scratch-Ordner (reproduzierbar) -> nicht versionieren
+samples/
+renders/
+out/
+# lose Test-Dateien im Wurzelordner ignorieren ...
+/*.stl
+/*.png
+# API-Keys NIE versionieren
+*.key
+.env
+# ... ABER models/ wird versioniert (Meshy-Modelle sind nicht reproduzierbar)
+!models/
