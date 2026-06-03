@@ -18,6 +18,7 @@ def col(env,d):
 BODY=col("BODY_COL",(0.52,0.50,0.47)); EYE=col("EYE_COL",(0.05,0.05,0.06)); NOSE=col("NOSE_COL",(0.78,0.42,0.46))
 WHITE=col("WHITE_COL",(0.90,0.89,0.85))
 EXPORT=os.environ.get("EXPORT_PARTS"); MULTI=os.environ.get("MULTI")
+SPLIT=os.environ.get("SPLIT_STL")   # Ordner -> eine STL pro Farbzone (color_<name>.stl)
 
 bpy.ops.wm.read_factory_settings(use_empty=True)
 try: bpy.ops.wm.stl_import(filepath=IN)
@@ -98,6 +99,25 @@ if EXPORT:
     except Exception: bpy.ops.export_mesh.stl(filepath=os.path.join(EXPORT,"cat_solid.stl"))
     try: bpy.ops.wm.obj_export(filepath=os.path.join(EXPORT,"cat_colored.obj"),export_materials=True)
     except Exception: bpy.ops.export_scene.obj(filepath=os.path.join(EXPORT,"cat_colored.obj"),use_materials=True)
+
+# Farbe als STL: Mesh nach Material trennen -> eine STL pro Farbe (vor dem Render)
+if SPLIT:
+    os.makedirs(SPLIT,exist_ok=True)
+    NAMEMAP={"body":"koerper","weiss":"weiss","nose":"nase","eye":"augen"}
+    bpy.ops.object.select_all(action='DESELECT')
+    ob.select_set(True); bpy.context.view_layer.objects.active=ob
+    bpy.ops.object.mode_set(mode='EDIT'); bpy.ops.mesh.separate(type='MATERIAL'); bpy.ops.object.mode_set(mode='OBJECT')
+    written=[]
+    for p in [m for m in bpy.context.scene.objects if m.type=='MESH']:
+        if not p.material_slots or not p.material_slots[0].material: continue
+        mnm=p.material_slots[0].material.name.split('.')[0]
+        fn=NAMEMAP.get(mnm,mnm); path=os.path.join(SPLIT,"color_%s.stl"%fn)
+        bpy.ops.object.select_all(action='DESELECT'); p.select_set(True); bpy.context.view_layer.objects.active=p
+        try: bpy.ops.wm.stl_export(filepath=path,export_selected_objects=True)
+        except Exception: bpy.ops.export_mesh.stl(filepath=path,use_selection=True)
+        written.append((fn,len(p.data.polygons))); print("SPLIT_PART",fn,len(p.data.polygons),flush=True)
+    print("SPLIT_DONE",SPLIT,sorted(written),flush=True)
+    if os.environ.get("NORENDER"): import sys; sys.exit(0)
 
 # Render von vorn
 scn=bpy.context.scene
