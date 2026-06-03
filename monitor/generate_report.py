@@ -25,6 +25,7 @@ import re
 import sys
 from datetime import date
 from pathlib import Path
+import live_check
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "ausgabe"
@@ -98,22 +99,41 @@ CSS = ("body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-hei
 def render(abo, ym, ki, vorher):
     firma = abo.get("firma", "deine Firma")
     ps = prompts_for(abo.get("branche", ""), abo.get("ort", ""), abo.get("leistungen", []))
+    genannt = ki.get("genannt") if isinstance(ki, dict) else None
     delta = ""
-    if ki is not None and vorher is not None:
-        if ki[0] and not vorher:
-            delta = '<p class="flag ja">Neu: Das Modell nennt dich jetzt — letzten Monat noch nicht. 👍</p>'
-        elif not ki[0] and vorher:
+    if genannt is not None and vorher is not None:
+        if genannt and not vorher:
+            delta = '<p class="flag ja">Neu: Du wirst jetzt genannt — letzten Monat noch nicht. 👍</p>'
+        elif not genannt and vorher:
             delta = '<p class="flag nein">Achtung: Letzten Monat genannt, diesen Monat nicht mehr.</p>'
         else:
             delta = '<p class="muted">Keine Veränderung ggü. Vormonat.</p>'
     kibox = ""
-    if ki is not None:
-        cls = "ja" if ki[0] else "nein"
-        lbl = "Modell kennt dich" if ki[0] else "Modell kennt dich (noch) nicht"
+    if isinstance(ki, dict) and ki.get("live"):
+        # Echte Live-Abfrage: pro Engine ein Ergebnis.
+        rows = ""
+        for e in ki.get("engines", []):
+            if e.get("fehler"):
+                rows += f'<li>{esc(e["engine"])}: <span class="muted">nicht geprüft ({esc(e["fehler"])})</span></li>'
+                continue
+            cls = "ja" if e.get("genannt") else "nein"
+            lbl = "genannt" if e.get("genannt") else "nicht genannt"
+            rows += (f'<li><span class="flag {cls}">{lbl}</span> {esc(e["engine"])} '
+                     f'— {e.get("treffer",0)}/{e.get("geprueft",0)} Prompts</li>')
+        head_cls = "ja" if genannt else "nein"
+        head_lbl = "Du wirst in KI-Antworten genannt" if genannt else "Noch nicht in KI-Antworten genannt"
+        kibox = (f'<div class="box"><span class="flag {head_cls}">{head_lbl}</span>'
+                 f'<ul style="margin:10px 0 0 18px">{rows}</ul>{delta}'
+                 '<p class="muted">Live geprüft per API bei den oben genannten Engines. Momentaufnahme — '
+                 'Web-Oberflächen können wegen Region/Personalisierung abweichen. Prompts unten zum Selbsttest.</p></div>')
+    elif isinstance(ki, dict):
+        # Stellvertreter-Fallback (kein Live-Key).
+        cls = "ja" if genannt else "nein"
+        lbl = "Modell kennt dich" if genannt else "Modell kennt dich (noch) nicht"
         kibox = (f'<div class="box"><span class="flag {cls}">{lbl}</span>'
-                 f'<p>{esc(ki[1])}</p>{delta}'
+                 f'<p>{esc(ki.get("einschaetzung", ""))}</p>{delta}'
                  '<p class="muted">Stellvertreter-Einschätzung eines Sprachmodells aus Trainingswissen — '
-                 'kein Live-ChatGPT/Perplexity. Teste die Prompts unten selbst.</p></div>')
+                 'kein Live-Abgriff. Teste die Prompts unten selbst.</p></div>')
     prompts_html = "".join(f"<li>{esc(p)}</li>" for p in ps)
     mass_html = "".join(f"<li><b>{esc(t)}</b> — {esc(d)}</li>" for t, d in MASSNAHMEN)
     return f"""<!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
@@ -151,10 +171,19 @@ def main():
     ym = date.today().strftime("%Y-%m")
     for abo in abos:
         ki = None
-        if has_key and abo.get("firma"):
+        prompts = prompts_for(abo.get("branche", ""), abo.get("ort", ""), abo.get("leistungen", []))
+        # 1) Echte Live-Abfrage, wenn ein Anbieter-Key gesetzt ist (das "echte SaaS").
+        try:
+            ki = live_check.run_live(abo, prompts, env)
+        except Exception as e:
+            print(f"  Live-Check Fehler für {abo.get('id')}: {e}")
+            ki = None
+        # 2) Sonst Stellvertreter-Check via Claude (Fallback), wenn ANTHROPIC_API_KEY da ist.
+        if ki is None and has_key and abo.get("firma"):
             try:
-                ki = claude_check(abo["firma"], abo.get("branche", ""), abo.get("ort", ""),
-                                  abo.get("leistungen", []), env)
+                g, txt = claude_check(abo["firma"], abo.get("branche", ""), abo.get("ort", ""),
+                                      abo.get("leistungen", []), env)
+                ki = {"live": False, "genannt": g, "einschaetzung": txt}
             except Exception as e:
                 print(f"  KI-Check übersprungen für {abo.get('id')}: {e}")
         vorher = verlauf.get(abo.get("id", ""), {}).get("genannt")
@@ -162,8 +191,8 @@ def main():
         f = OUT / f"{abo.get('id','abo')}-{ym.replace('-','')}.html"
         f.write_text(html, encoding="utf-8")
         if ki is not None:
-            verlauf.setdefault(abo.get("id", ""), {})["genannt"] = ki[0]
-        print(f"  ✓ Report: {f.name}" + ("  [Versand: Mail-Weg im README anbinden]" if not env.get("MONITOR_DELIVERED") else ""))
+            verlauf.setdefault(abo.get("id", ""), {})["genannt"] = ki.get("genannt")
+        print(f"  ✓ Report: {f.name}" + ("  [live]" if ki and ki.get("live") else ""))
     VERLAUF.write_text(json.dumps(verlauf, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"\n{len(abos)} Report(s) → {OUT}" + ("" if has_key else "  (ohne KI-Check — kein ANTHROPIC_API_KEY)"))
     print("Versand nicht automatisch — siehe monitor/README.md (Stripe/Lemon-Squeezy + Mail).")

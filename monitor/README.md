@@ -34,3 +34,10 @@ eigentliche Versand bleibt dein Schritt (siehe oben).
 ## Ehrlich
 Kein Live-ChatGPT, keine Garantie auf Nennung. Der Wert ist das monatliche Dranbleiben +
 der Maßnahmenplan. Daten „ohne Gewähr".
+
+## Live-Modus (echtes SaaS)
+`monitor/live_check.py` fragt mit gesetzten Keys echte Engines ab (statt Stellvertreter):
+- `PERPLEXITY_API_KEY` (empfohlen, Websuche), `OPENAI_API_KEY`, `GEMINI_API_KEY`.
+- `generate_report.py` nutzt automatisch Live, wenn ein Key da ist; sonst Claude-Fallback;
+  ohne jeden Key nur Prompts+Maßnahmen. Kosten-Deckel: 5 Prompts/Engine.
+- Vollprodukt-Briefing (Stripe/Speicher/Versand): `docs/MONITOR-SAAS-BRIEFING.md`.
