@@ -26,6 +26,13 @@
 9. **Freigabe-Workflow:** Reel EINZELN per Telegram zur Freigabe (ja/nein/Kommentar), erst nach „ja" posten.
 
 ## Verbesserungs-Log (chronologisch — neue Punkte kommen oben dazu)
+- 2026-06-03: **Echte TikTok-Daten analysiert** (Tool `tools/tiktok_analyze.py --user @luxestyle.ch --seed-video <url> --insecure`,
+  von abannews gebaut, yt-dlp, kein API/Login; Report in `reports/`). 15 Videos, 2.769 Views, ~0 Engagement.
+  **Lehre:** Preis-Anker-Caption **„CHF X statt Designer-Preis – gleicher Look 👀"** zog **771 Views** vs. nur
+  24–35 bei generischen „Sommer-Kollektion ✨"-Captions. Wow-/Gadget-Hooks (Diffuser 1.085, Watch-Dupe 371) ziehen
+  am meisten Views. → `auto_render.sh`: Preis-Anker-Caption als #1-Template, Reach-Tags #fyp/#foryou/#luxestylech
+  ergänzt. On-Screen-Hook bleibt preisfrei (Regel 4) — der Preis steht nur in der Caption. Engagement (Likes/Kommentare)
+  bleibt das Hauptproblem (Account klein/neu) → künftig stärkere Hooks + Fragen testen, Tool regelmässig laufen lassen.
 - 2026-06-03: **Themen-Vielfalt in die Allow-Liste (User: „ja alles").** Katalog nach Schmuck/Accessoires
   geprüft: fast alle Schmuck-Bilder sind **weisse Freisteller** (Armband, Ketten, Ohrring-Set, Bucket-Hat)
   → per Regel 1 NICHT geeignet. Nur echte Lifestyle-Shots aufgenommen: **Strand-Strohtasche** (Modell hält Tasche)
