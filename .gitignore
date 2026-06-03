@@ -3,6 +3,7 @@
 __pycache__/
 ausgabe/
 ausgabe-en/
+ausgabe-*/
 ausgabe-schicht/
 ausgabe-schicht-en/
 reports/*

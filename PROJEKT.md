@@ -264,6 +264,24 @@ Erstes echtes Backend-Tool im Netzwerk (raus aus rein statischem HTML).
 **Sponsoring/Rate-Card:** ehrlicher Hinweis ergänzt (Abrechnung nach verifizierter Listengröße,
 fairer Start-Tarif in Aufbauphase). Calendly `abannews/sponsor` aktiv.
 
+**🛠 KDP-Automation (im Repo):** `tools/kdp-cover/` — **Pipeline** `build_book.py`
+(ein Aufruf → Vektor-Cover + Innenteil + `metadata.md` + `upload-playbook.md` pro Buch;
+Cover-Rücken wird aus der echten Innenteil-Seitenzahl berechnet, Cover/Innenteil passen
+automatisch). Bausteine: `kdp_cover.py` (Cover), `planner_interior.py` (Planer-Innenteil).
+README hält alle KDP-Lehren fest (Vektor statt Raster, exakte Größe, Rücken-/Papier-Formel,
+kein eigener Barcode, Fonts einbetten). Beispiel-Configs ADHD + Mileage. `out/` git-ignored.
+
+**🔑 Codewort „BUCHDRUCK"** (Konvention): Sagt Allen **„BUCHDRUCK"**, dann
+`cd tools/kdp-cover && python3 build_book.py --pending` ausführen — baut **nur die
+Bücher mit `uploaded: False`** in `BOOKS` (die noch nicht bei KDP hochgeladen sind)
+neu und zeigt die Cover-Vorschauen. Sobald ein Buch hochgeladen ist, sein
+`"uploaded"` in `build_book.py` auf `True` setzen (dann überspringt es BUCHDRUCK).
+Cover-Bild pro Buch: `cover["art"]` mit `mode` image|draw|auto|none + `motif`
+rings|burst|dots|arc (Modul `cover_art.py`, mit Selbst-Diagnose/Fallback).
+**Echter KDP-Katalog-Status** (alle Titel inkl. Romane/externe Workbooks, mit
+ASIN + Live-/Prüf-Status) steht in `tools/kdp-cover/KDP-STATUS.md` — von Hand
+gepflegt, da nicht alles aus `build_book.py` kommt.
+
 **Gemergte PRs dieser Session:** #15 (eBook/KDP+PayPal-Founding), #16 (€69+Payment-Link),
 #18 (Founding-Seite Maximum de), #19 (en-Parität), #20 (Fix toter #checkout-Anker en).
 

@@ -22,9 +22,11 @@ Plot-Bibel als deutsche Fantasy-/Drama-Prosa.
 ## Installation
 
 ```bash
-pip install anthropic
+pip install -r requirements.txt      # anthropic + reportlab + Pillow
 export ANTHROPIC_API_KEY="sk-ant-..."
 ```
+
+(`qualitaet.py` braucht nichts davon — reine Standardbibliothek, laeuft offline.)
 
 ## Verwendung
 
@@ -86,7 +88,43 @@ python3 kdp_paket.py      --roman roman-drama-trilogie.json            # Amazon-
 python3 plane_kapitel.py  --roman roman-drama-trilogie.json --band 2 --anzahl 6 --schreiben
 python3 lektor.py         --roman roman-drama-trilogie.json --band 1 --kapitel 3
 python3 ueberarbeiten.py  --roman roman-drama-trilogie.json --band 1 --kapitel 3 --feedback "..."
+python3 qualitaet.py      --roman roman-drama-trilogie.json --band 1            # lokaler Check (ohne API)
+python3 politur.py        --roman roman-drama-trilogie.json --band 1 --kapitel 3 # autonome Schleife bis Schwelle
 ```
+
+## Qualitaet & Automatik
+
+Zwei Werkzeuge schliessen den Kreis vom Entwurf zum veroeffentlichungsreifen Kapitel:
+
+- **`qualitaet.py`** — lokaler Prosa-Check **ohne API** (reine Standardbibliothek,
+  kein Schluessel, kein Netz). Misst pro Kapitel Wortzahl gegen das Zielband,
+  Fuellwort-Dichte, Adverb-am-Inquit, Satzlaengen-Varianz, monotone Satzanfaenge,
+  nahe Wortwiederholungen und abgegriffene Klischees. **Exit 0 = sauber, 1 =
+  Befund** → taugt als CI-Schritt und als gratis Vor-Filter. `--json` fuer
+  maschinenlesbare Ausgabe.
+
+  ```bash
+  python3 qualitaet.py --kapitel 1            # ein Kapitel
+  python3 qualitaet.py --band 1               # ganzer Band
+  python3 qualitaet.py --json                 # maschinenlesbar
+  ```
+
+- **`politur.py`** — die **autonome Qualitaetsschleife**. Pro Kapitel: lokaler
+  Vor-Filter (gratis) → **Gutachten** (Claude bewertet mit Score 0-100 + Blocker,
+  Structured Outputs) → unter der Schwelle wird mit `ueberarbeiten` automatisch
+  neu geschrieben → erneut bewerten. Endet, sobald **Score ≥ Schwelle, keine
+  Blocker, lokal sauber** — oder die Maximalrunden erreicht sind. Die
+  Original-Fassung wird einmalig als `kapitel-NN.politur-orig.md` gesichert.
+
+  ```bash
+  python3 politur.py --kapitel 1                       # ein Kapitel auf Schwelle treiben
+  python3 politur.py --band 1                          # ganzer Band
+  python3 politur.py --kapitel 1 --schwelle 90 --max-runden 4
+  python3 politur.py --kapitel 1 --trocken             # nur bewerten, nichts umschreiben
+  ```
+
+  Empfohlener Ablauf: `schreibe_roman.py` → `qualitaet.py` (gratis sichten) →
+  `politur.py` (automatisch auf Schwelle) → `buch_bauen.py`/`kdp_paket.py`.
 
 Output-Layout der Trilogie:
 

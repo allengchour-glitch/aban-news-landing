@@ -8,6 +8,7 @@ ausgabe/
 # Backups und Lektorate (Output)
 kapitel/*.bak.md
 kapitel/*.lektorat.md
+kapitel/*.politur-orig.md
 roman*.json.bak
 
 # --- Ausnahme: handgeschriebene Trilogie "Das Tal haelt den Atem an" ---
@@ -21,6 +22,7 @@ roman*.json.bak
 !kapitel/band-03/kapitel-*.md
 kapitel/band-*/*.bak.md
 kapitel/band-*/*.lektorat.md
+kapitel/band-*/*.politur-orig.md
 
 # --- Ausnahme: englische Uebersetzung "The Valley Holds Its Breath" ---
 !kapitel-en/
@@ -30,6 +32,10 @@ kapitel/band-*/*.lektorat.md
 !kapitel-en/band-02/kapitel-*.md
 !kapitel-en/band-03/
 !kapitel-en/band-03/kapitel-*.md
+# Backups/Lektorate/Politur auch in der englischen Ausgabe = Output.
+kapitel-en/band-*/*.bak.md
+kapitel-en/band-*/*.lektorat.md
+kapitel-en/band-*/*.politur-orig.md
 
 # --- Ausnahme: handgeschriebener Roman "Schicht" (Ruhrgebiet-Saga) ---
 !kapitel-schicht/
@@ -41,6 +47,7 @@ kapitel/band-*/*.lektorat.md
 !kapitel-schicht/band-03/kapitel-*.md
 kapitel-schicht/band-*/*.bak.md
 kapitel-schicht/band-*/*.lektorat.md
+kapitel-schicht/band-*/*.politur-orig.md
 
 # --- Ausnahme: englische Uebersetzung "The Seam" ---
 !kapitel-schicht-en/
@@ -50,3 +57,6 @@ kapitel-schicht/band-*/*.lektorat.md
 !kapitel-schicht-en/band-02/kapitel-*.md
 !kapitel-schicht-en/band-03/
 !kapitel-schicht-en/band-03/kapitel-*.md
+kapitel-schicht-en/band-*/*.bak.md
+kapitel-schicht-en/band-*/*.lektorat.md
+kapitel-schicht-en/band-*/*.politur-orig.md
