@@ -1,0 +1,44 @@
+name: ABAN Files director (autonom, alle 4h)
+
+# Wertet alle 4 Stunden die View-Zahlen aus, entscheidet regelbasiert (weiter /
+# Gewinner ausbauen / nach 1 Woche ohne Traktion Thema wechseln), merkt sich den
+# Verlauf und schreibt reports/ABAN-DIRECTOR.md + director_state.json.
+# Trifft NUR Empfehlungen — kein Auto-Publish. Optionaler YT_API_KEY fuer exakte Zahlen
+# (sonst Scrape auf der sauberen Runner-IP).
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */4 * * *"   # alle 4 Stunden
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aban-director
+  cancel-in-progress: false
+
+jobs:
+  director:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Evaluate + decide
+        working-directory: video-prototypes/aban-files
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: python3 aban_director.py
+      - name: Commit log + state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reports/ABAN-DIRECTOR.md video-prototypes/aban-files/director_state.json
+          if ! git diff --cached --quiet; then
+            git commit -m "aban: Director-Auswertung [skip ci]"
+            git push
+          else
+            echo "keine Aenderung."
+          fi

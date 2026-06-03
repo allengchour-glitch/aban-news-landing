@@ -10,6 +10,7 @@ reports/*
 !reports/IMPROVEMENT-REPORT.md
 !reports/RADAR-DATEN-AUDIT.md
 !reports/ABAN-STATS.md
+!reports/ABAN-DIRECTOR.md
 
 video-prototypes/client_secret.json
 video-prototypes/token.json
