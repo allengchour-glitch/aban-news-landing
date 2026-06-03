@@ -120,6 +120,15 @@ BRANCHEN = {
     "estrichleger":        ("Estrichleger",        ["Angebote & Bau-Kommunikation,", "nicht der Estrich"]),
     "bodenleger":          ("Bodenleger",          ["Angebote & Pflegeinfos,", "nicht das Verlegen"]),
     "ingenieurbuero":      ("Ingenieurbüros",      ["Berichte & Orga,", "nicht die Statik"]),
+    "ladestationen":       ("Ladestationen",       ["Angebote & Förder-Kram,", "nicht die Montage"]),
+    "rollladenbauer":      ("Rollladenbauer",      ["Angebote & Service,", "nicht der Einbau"]),
+    "schneidereien":       ("Änderungsschneidereien", ["Anfragen & Preisliste,", "nicht die Naht"]),
+    "uhrmacher":           ("Uhrmacher",            ["Anfragen & Kostenvoranschlag,", "nicht das Uhrwerk"]),
+    "druckereien":         ("Druckereien",          ["Angebote & Auftrags-Mails,", "nicht der Druck"]),
+    "werbetechnik":        ("Werbetechnik",         ["Angebote & Text-Ideen,", "nicht die Montage"]),
+    "brandschutz":         ("Brandschutz",          ["Angebote & Wartungs-Orga,", "nicht die Prüfung"]),
+    "aufzugswartung":      ("Aufzugswartung",       ["Verträge & Disposition,", "nicht die Wartung"]),
+    "polsterei":           ("Polsterei",            ["Anfragen & Kostenvoranschlag,", "nicht das Beziehen"]),
 }
 
 

@@ -14,13 +14,18 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **98 live, alle viersprachig (de/en/fr/it = 392 Seiten)**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **110 live, alle viersprachig (de/en/fr/it = 440 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
 - Welle 10 (95→98, #291): Smart-Home, Vermessungsbüros, Hundesalons — **direkt viersprachig**.
+- Welle 11 (98→101): Estrichleger, Bodenleger, Ingenieurbüros — **direkt viersprachig**.
+- Welle 12 (101→104, #295): Ladestationen (Wallbox), Rollladenbauer, Änderungsschneidereien — **direkt viersprachig**.
+- Welle 13 (104→107, #296): Uhrmacher, Druckereien, Werbetechnik — **direkt viersprachig**.
+- Welle 14 (107→110): Brandschutz, Aufzugswartung, Polsterei — **direkt viersprachig** (Brandschutz/Aufzug mit Sicherheits-/„keine-Prüfung-durch-KI"-Grenze).
+- **Qualitäts-Audit (Welle-12-Stand):** 104 DE-Hubs geprüft — 0 fehlende OG-Bilder, alle hreflang-Blöcke wohlgeformt (genau 5), alle mit Tools-CTA-aside. Sauber.
 - **Neue Hubs (Welle 9+) werden sofort 4-sprachig** gebaut (DE-Vollstandard inkl. Tools-CTA-aside + 5 hreflang + nav-Switch, Übersetzungen mit übersetztem aside). Vorlage: `ki-fuer-elektriker.html` (+ `en/`).
-- Backlog-Kandidaten weitere distinkte Nischen: estrichleger, rollladenbauer, bodenleger, ingenieurbuero, aenderungsschneiderei, uhrmacher, druckereien, werbetechnik, ladestation-installateur, brandschutz, aufzugswartung.
+- Backlog-Kandidaten weitere distinkte Nischen (Welle 13+): uhrmacher, druckereien, werbetechnik, brandschutz, aufzugswartung, gartencenter, polsterei, naturheilkunde, gerueststellung, parkettleger, kaelteanlagenbau, brunnenbau.
 - **Qualität:** FAQ-Drift in coaches/handwerker behoben (#290); Tools-CTA-aside auf allen 276 alten i18n-Hubs (#287).
 
 ## Mehrsprachige Hubs (P2, EN+FR+IT) — **92 von 92 Hubs viersprachig — P2 KOMPLETT ✅**
