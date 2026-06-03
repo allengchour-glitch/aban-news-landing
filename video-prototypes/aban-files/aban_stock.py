@@ -84,6 +84,11 @@ SCENES = {
              "strange lights over city night", "dark sky mysterious lights", "drone swarm formation night",
              "ancient omen in sky", "silhouette looking at sky", "stars moving time lapse", "eerie sky at dusk",
              "light descending through fog"],
+    "ep20": ["ballot box voting election", "crowd protest street", "royal palace ornate interior",
+             "old oil portrait gallery dark", "gold bars vault", "secret meeting silhouettes dark",
+             "ancient family crest", "stock exchange trading floor", "world leaders handshake",
+             "puppet on strings dark", "luxury mansion aerial", "old castle dusk", "chess king piece dark",
+             "dark boardroom long table"],
 }
 
 # Stichwort -> passender Stock-Suchbegriff: das Bild matcht den gesprochenen Satz.
@@ -100,6 +105,9 @@ KW = [
     (r"histor|memory|forget|record|photograph|\bpast\b|archive|eras|update", "old library archive paper dark"),
     (r"cave|underground|chamber|below|beneath|tunnel|vault|down here", "deep underground tunnel cave glowing"),
     (r"data center|data centre|server|silicon|chip|circuit|machine|intelligence|\bai\b|model|algorithm|feed|grid|current|heat|power", "server room data center blue lights"),
+    (r"election|vote|ballot|democrac", "ballot box voting election"),
+    (r"gold|wealth|rich|fortune|\bbank|stock exchange", "gold bars vault wealth"),
+    (r"family|families|bloodline|lineage|dynasty|breed|whip|reins|throne|crown|royal|palace", "royal palace portrait gallery"),
     (r"city|cities|world|future|progress", "futuristic city night aerial"),
     (r"earth|planet|space|cosmos|galax|silence|universe|quarantine", "earth from space stars"),
     (r"throne|rule|\bking|reign|claim|empire|guided|design|obey|orders?", "dark throne hall ominous"),
