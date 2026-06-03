@@ -22,6 +22,8 @@ Kanal = Haupt-Kanal `@allengchour` (umbenannt zu „ABAN Files").
 - **Kein Clip doppelt** (used-Set über alle Quellen).
 - **Footage-Quellen:** Pexels + **Pixabay** + **NASA** (Env `PEXELS`, optional `PIXABAY`;
   NASA kein Key, nur für Weltraum-Queries via `NASA_KW`, public domain).
+- **Bild-Fallback:** wenn kein Video passt -> gemeinfreies/CC-**Wikimedia-Commons-Bild** mit
+  Ken-Burns-Zoom (z.B. Bundeshaus Bern, Spezial-Motive). KEIN Doku-Footage (Copyright!).
 - **ABAN deutsch ausgesprochen:** TTS bekommt „Ahbahn", Untertitel mappen zurück auf „ABAN".
 - **Keine verschluckten Enden:** Videolänge = `max(Alignment, echte Audiolänge)+0.6`.
 - Untertitel unten · Ambient-Musik · Dark-Grade. Länge: **neue Folgen ~75–90 s** (länger).
