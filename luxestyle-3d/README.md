@@ -26,6 +26,10 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `animal.scad` | 8 Tier-Silhouetten (cat, bear, rabbit, fish, paw, dog, heart, star) |
 | `flexi_chain.scad` | Print-in-Place Gliederkette (beweglich, in einem Stück) |
 | `flexi.scad` | **Print-in-Place Flexi-Tier** (Kugel-Pfannen-Gelenke): `kind=cat\|snake\|caterpillar`, `n` Segmente. Katze mit Ohren/Augen/Öse. Bewegliche Segmente, captive Gelenke (im Querschnitt geprüft) |
+| `flexi_cat_keychain.scad` | **Flexi-Loaf-Schlüsselanhänger** (dein IP). `look=mimi\|pancake\|dog\|bear\|seal`, optional `txt="Name"` (in die Seite graviert), Farb-Regionen `part=…`. `part="caltest"` = Toleranz-Kalibrierstreifen (4 Gelenk-Rods clear 0.30–0.45 mit Zahlen) |
+| `flexi_build.py` | **Flexi-Keychain → EINE Mehrfarb-3MF.** Rendert jede Farbregion via OpenSCAD, überspringt leere automatisch, fügt via `assemble.py` zusammen. `python3 flexi_build.py LOOK [NAME]` |
+| `cart_token.scad` | **Einkaufswagen-Chip** (Münz-Token + Lasche + Öse + Initialen). `coin=chf1\|chf2\|chf5\|eur1\|eur2\|eur050\|custom`, `txt="AC"`, `part=base\|text` (2-farbig) |
+| `lithophane.py` | **Foto → 3D-Lithophane** (Relief-Anhänger/Nachtlicht). Pure Python+Pillow, wasserdicht, optional Öse. `python3 lithophane.py foto.jpg out.stl --width 60 --ring`. Kundenfoto = kein Lizenzrisiko |
 | `make.py` | erzeugt aus jedem Text eine druckfertige `.stl` |
 | `meshy_text.py` | **Text → 3D** (Meshy v2): Prompt → GLB, optional `REFINE=1`. Key aus `MESHY_API_KEY` |
 | `meshy_image.py` | **Bild → 3D** (Meshy v1): ein Referenzbild → texturiertes GLB (treffsicherer bei Vorlage) |
@@ -46,7 +50,19 @@ openscad -o tier_cat.stl -D 'kind="cat"' animal.scad
 openscad -o flexi_chain.stl flexi_chain.scad
 openscad -o flexi_cat.stl   -D 'kind="cat"'            flexi.scad
 openscad -o flexi_snake.stl -D 'kind="snake"' -D 'n=12' flexi.scad
+
+# Flexi-Keychain (neu): Looks, Name-Gravur, Kalibrierstreifen
+openscad -o flexi_bear.stl -D 'look="bear"' -D 'txt="Max"' flexi_cat_keychain.scad
+openscad -o caltest.stl    -D 'part="caltest"'             flexi_cat_keychain.scad
+python3 flexi_build.py mimi Mia          # -> samples/flexi_mimi_mia.3mf (mehrfarbig)
+
+# Einkaufswagen-Chip + Lithophane (neu)
+openscad -o token.stl -D 'coin="chf2"' -D 'txt="AC"' cart_token.scad
+python3 lithophane.py foto.jpg litho.stl --width 60 --pixels 200 --ring
 ```
+
+> **Erst auf dem X1C kalibrieren:** `caltest` einmal drucken → der lockerste Rod,
+> der NICHT auseinanderfällt, ist deine `clear`-Toleranz für alle Flexi-Teile.
 Voraussetzung: OpenSCAD (https://openscad.org/downloads.html). Für Render/Mesh-Cleanup
 zusätzlich Blender headless (siehe Lern-Memory).
 
