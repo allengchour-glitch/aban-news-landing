@@ -265,6 +265,8 @@ def pixabay_links(query, cache):
 
 NASA_KW = re.compile(r"moon|mars|earth|space|rocket|satellite|\bsun\b|galaxy|planet|nebula|"
                      r"eclipse|astronaut|lunar|orbit|cosmos|\bstars?\b|comet|aurora|spacecraft", re.I)
+# Begriffe, fuer die ein echtes Wikimedia-Foto besser ist als generisches Stock-Video:
+IMG_PREFER = re.compile(r"bundeshaus|nazca|geoglyph|cuneiform|sumerian|stonehenge", re.I)
 
 
 def nasa_links(query, cache):
@@ -425,6 +427,12 @@ def render(ep):
     for i, s in enumerate(segs):
         seg_dur = max(0.8, bounds[i + 1] - bounds[i])
         q = pick_query(s[2], pool, i)
+        out = f"/tmp/_seg_{i}.mp4"
+        # Spezifische Motive (Bundeshaus …): echtes Foto schlaegt generisches Stock-Video
+        if IMG_PREFER.search(q) and kenburns_segment([q], i, seg_dur, used, cache):
+            last_src = out
+            norm.append(out)
+            continue
         # passender Clip; bei Wiederholung der Query automatisch ein ANDERER (used-Set).
         # Fallbacks: Episoden-Pool (rotierend), sonst letzter Clip.
         src = fetch_clip(q, i, used, cache)
