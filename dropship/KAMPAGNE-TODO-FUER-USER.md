@@ -43,3 +43,13 @@ Funnel komplett: Pixel grün, WELCOME10-Popup, Judge.me-Reviews, mobiles Menü, 
 Katalog: 144 Bild-Alt-Texte, 64 Produkt-SEO, alle 20 Kleider mit Grössentabelle+Trust, 15 Kollektionen,
 Menü fashion-first. Hero/Ankündigung/Buttons im Customizer korrigiert. **Add-to-Cart live getestet ✓.**
 → Der Shop ist NICHT der Engpass. Nur noch diese Kampagne zählt.
+
+---
+## Traffic-Diagnose 2026-06-03 (warum 0 Käufe)
+- 7T: ~1.300 Sessions, **0 Add-to-Cart**, 0 Käufe. Geräte: 1.216 mobil.
+- Quellen: direct 772 + tiktok 557. **Wichtig:** TikToks In-App-Browser sendet keinen Referrer →
+  ein Grossteil des „direct" ist in Wahrheit auch TikTok (Link in Bio/Video). Plus etwas Bot-Rauschen
+  (/password, /cmd_sco).
+- Heisst: Es ist fast alles **dieselbe breite, kaufunwillige TikTok-Quelle**. Es gibt KEINEN separaten
+  „Junk-Kanal" zum Abschalten — die Lösung ist, den TikTok-Traffic über eine **Conversion-Kampagne**
+  (Ziel Complete Payment) auf Käufer:innen zu optimieren statt über Reichweite/Organik/Auto-Smart.

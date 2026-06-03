@@ -1381,3 +1381,16 @@ Live-Test gegen Storefront (curl /cart/add.js + /cart.js), Kleid «Brise» Varia
 - Nebenbefund: Test kam von US-IP → Warenkorb in USD (presentment 46.0). Für CH-Geo läuft CHF — kein Problem.
 **FAZIT bleibt:** Einziger echter Hebel = saubere TikTok-CONVERSION-Kampagne (Complete Payment, Pixel D8EKVR,
 CH/Frauen/18–34/DE+FR, Premium-Reels) + alle Auto-/Reichweite-Kampagnen AUS. Shop ist verkaufsbereit.
+
+## 2026-06-03 — Dropship-Fokus: Funnel-Verify + Junk-Traffic-Diagnose + frische Zahlen
+**Zahlen (bis 3.6.):** 31.5. 300 / 1.6. 679 / 2.6. 237 / 3.6. 84 Sessions — durchgehend **0 ATC, 0 Checkout, 0 Käufe.**
+Traffic versiegt, Conversion unverändert 0. Bestätigt: Shop fertig, Hebel = Traffic.
+**Funnel-Verify (WebFetch luxestyle.ch):** Hero-Headline ✅ live, Ankündigung ✅ live (WELCOME10).
+❌ Hero-Button-Label noch „Sommer-Trends entdecken" (Änderung auf „Damenmode entdecken" NICHT gespeichert).
+❌ Keine Judge.me-Sterne auf Produktkacheln (App/Theme-seitig offen). Beides offen für Browser-Claude.
+**Junk-Traffic-Diagnose (7T):** Geräte mobile 1216/desktop 293. Quellen direct 772 + tiktok 557.
+„direct" landet auf / (178), sommer/damen-mode/highlights (wie TikTok) + Rauschen /password(12), /cmd_sco(7).
+→ **LEHRE: TikTok-In-App-Browser sendet keinen Referrer → erscheint als „direct".** Das „direct 772" ist
+also grösstenteils DIESELBE TikTok-Quelle (Link-in-Bio/Video), kein separater killbarer Kanal. Alles Low-Intent.
+**FIX bleibt:** Conversion-Kampagne (Complete Payment, Pixel D8EKVR, CH/Frauen/18–34) statt breit/organisch.
+Anleitung: dropship/KAMPAGNE-TODO-FUER-USER.md.
