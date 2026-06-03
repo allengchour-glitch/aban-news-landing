@@ -93,3 +93,15 @@ SEO, Auto-Publish NICHT autonom** über den Cron (Produkt-/Publication-Zugriff f
 **Fix (einmalig, im Dev-Dashboard der App „read"):** Scopes ergänzen → **`read_products`, `write_products`,
 `write_publications`** → Version speichern → App neu installieren. Danach laufen alle 3 Tools vollautonom.
 Bis dahin: der **Site-Health-Monitor (URL-Check) läuft autonom**; Rotation/SEO/Publish mache ICH on-demand via MCP.
+
+## 🔴→✅ GELÖST: 5 tote Menü-Links (Navigation, 2026-06-03)
+Mega-Menü-Audit (Admin-API `publishedOnPublication`, da curl rate-limited): 5 Kollektionen waren im Menü
+verlinkt, aber NICHT im Onlineshop veröffentlicht → 404 beim Klick (Conversion-Killer):
+- **kleider** („Kleider", 21 Prod.) · **unter-chf-25** („💰 Sale" TOP-LEVEL, 344) · **taschen-sub** („Taschen", 14)
+- **fitness-sub** („Fitness", 110) · **baby-kids** („👶 Baby + Kinder" TOP-LEVEL, 102)
+**Fix (per API):** alle 5 via `publishablePublish` auf Onlineshop → verifiziert `p=true`. Nur aktive Produkte
+erscheinen (kein Archiv, da archivierte nicht publiziert sind).
+**Nicht im Menü, aber unveröffentlicht (bewusst/ungenutzt, NICHT gefixt):** bambus-living, bundles-sets,
+smart-home-sleep, wellness-self-care, premium-fitness-yoga, schule-buro, express-lieferung.
+**LEHRE/TOOL-IDEE:** Menü-Links regelmässig per `publishedOnPublication` prüfen (curl wird von Shopify
+gedrosselt → Admin-API nutzen). Gehört in den Site-Health-Monitor, sobald die App Produkt-Scopes hat.
