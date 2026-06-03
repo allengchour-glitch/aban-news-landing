@@ -1466,3 +1466,12 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   dokumentiert das ganze System + dass dasselbe Framework für abannews wiederverwendbar ist (Queue-Quelle +
   Creative-Generator tauschen, Rest identisch).
 **Aktivierung:** Secrets setzen + Branch→main (geplante Actions laufen nur vom Default-Branch). Ohne Secrets No-Op.
+
+## 2026-06-03 — Import: Off-Shoulder-Plisseekleid «Aurélie»
+- **CJ pid:** 2606030804201615900 · SKU-Basis **CJLY2919966** (Varianten 01–12) · CJ-Kost $8.96
+- **Shopify:** Product 15416342675841 · ACTIVE · CHF 39.90 · 12 Var (Schwarz/Weinrot/Rot/Hellgrün × S/M/L)
+- 9 Bilder (alle HTTP 200 vorgeprüft, READY) · publiziert in alle 6 Kanäle · Tag sommer-2026 → Sommer-Kollektion
+- Quelle: cj_kleider_search (listedNum=7, Top-Kandidat). Dedupe ok (SKU war neu).
+- **Verworfen aus selber Suche:** French-Floral (=Marguerite, Dup), Mermaid/Backless (off-brand), $51-Kleid (zu teuer).
+- Weitere geprüfte, NEUE Kandidaten (Bilder 200, falls Nachschub gewünscht): V-neck Lace-up (CJLY291991501),
+  Office Dress 36v (CJLY291901501), Cotton-linen Shirt-collar 70v (CJLY291889801), Puff-sleeve (CJLY291990701).
