@@ -44,18 +44,23 @@ Mach das pro Zeile aus der Tabelle unten **einmal**:
 
 | # | CF-Projektname | Build command | Output dir | Custom domain |
 |---|----------------|---------------|------------|---------------|
-| 1 | `prompts-bibliothek` | `cd prompts-bibliothek && python generate.py` | `prompts-bibliothek/dist` | `prompts.abannews.com` |
-| 2 | `foerder-radar` | `cd foerder-radar && python generate.py` | `foerder-radar/dist` | `foerder.abannews.com` |
-| 3 | `jobs-radar` | `cd jobs-radar && python generate.py` | `jobs-radar/dist` | `jobs.abannews.com` |
-| 4 | `kurse-radar` | `cd kurse-radar && python generate.py` | `kurse-radar/dist` | `kurse.abannews.com` |
-| 5 | `automatisierung-radar` | `cd automatisierung-radar && python generate.py` | `automatisierung-radar/dist` | `automatisierung.abannews.com` |
+| 1 | `foerder-radar` | `cd foerder-radar && python generate.py` | `foerder-radar/dist` | `foerder.abannews.com` |
+| 2 | `jobs-radar` | `cd jobs-radar && python generate.py` | `jobs-radar/dist` | `jobs.abannews.com` |
+| 3 | `kurse-radar` | `cd kurse-radar && python generate.py` | `kurse-radar/dist` | `kurse.abannews.com` |
+| 4 | `prompts-bibliothek` | `cd prompts-bibliothek && python generate.py` | `prompts-bibliothek/dist` | `prompts.abannews.com` |
+| 5 | `agenturen-radar` | `cd agenturen-radar && python generate.py` | `agenturen-radar/dist` | `agenturen.abannews.com` |
 | 6 | `dropshipping-radar` | `cd dropshipping-radar && python generate.py` | `dropshipping-radar/dist` | `dropshipping.abannews.com` |
 | 7 | `newsletter-radar` | `cd newsletter-radar && python generate.py` | `newsletter-radar/dist` | `newsletter.abannews.com` |
 | 8 | `buchhaltung-radar` | `cd buchhaltung-radar && python generate.py` | `buchhaltung-radar/dist` | `buchhaltung.abannews.com` |
 | 9 | `chatbot-radar` | `cd chatbot-radar && python generate.py` | `chatbot-radar/dist` | `chatbot.abannews.com` |
 | 10 | `voice-radar` | `cd voice-radar && python generate.py` | `voice-radar/dist` | `voice.abannews.com` |
-| 11 | `agenturen-radar` | `cd agenturen-radar && python generate.py` | `agenturen-radar/dist` | `agenturen.abannews.com` |
-| 12 | `handwerk-radar` | `cd handwerk-radar && python generate.py` | `handwerk-radar/dist` | `handwerk.abannews.com` |
+| 11 | `video-radar` | `cd video-radar && python generate.py` | `video-radar/dist` | `video.abannews.com` |
+| 12 | `musik-radar` | `cd musik-radar && python generate.py` | `musik-radar/dist` | `musik.abannews.com` |
+| 13 | `automatisierung-radar` | `cd automatisierung-radar && python generate.py` | `automatisierung-radar/dist` | `automatisierung.abannews.com` |
+| 14 | `handwerk-radar` | `cd handwerk-radar && python generate.py` | `handwerk-radar/dist` | `handwerk.abannews.com` |
+| 15 | `ki-verzeichnis` | `cd ki-verzeichnis && python generate.py` | `ki-verzeichnis/dist` | `tools.abannews.com` |
+| 16 | `pod-shop` | `cd pod-shop && python generate.py` | `pod-shop/dist` | `shop.abannews.com` |
+| 17 | `lifestyle-radar` | `cd lifestyle-radar && python generate.py` | `lifestyle-radar/dist` | `lifestyle.abannews.com` |
 
 **Schon live (nicht anfassen):** `radar.abannews.com` (ki-tools-radar) und die
 Hauptseite `abannews.com`.
