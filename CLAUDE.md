@@ -127,6 +127,9 @@ durchgehend die du-Form.
 | `zeichenzaehler.html` | Tool: **Zeichen-/Wortzähler** (Zeichen/Wörter/Sätze/Absätze/Lesezeit + Social-/SEO-Limits, client-side). Pretty-URLs `/zeichen`, `/wortzaehler`. |
 | `timestamp-konverter.html` | Tool: **Unix-Timestamp ↔ Datum** (lokal/UTC/ISO/relativ, s+ms-Autoerkennung, DE+ISO-Parser, client-side). Pretty-URLs `/timestamp`, `/unixzeit`. |
 | `jwt-decoder.html` | Tool: **JWT lesbar machen** (Header/Payload base64url-dekodiert, iat/nbf/exp als Datum, client-side; liest nur, **prüft keine Signatur** — Hinweis). Pretty-URLs `/jwt`, `/jwt-decoder`. |
+| `farb-umrechner.html` | Tool: **Farb-Umrechner HEX ↔ RGB ↔ HSL** (Color-Picker + Live-Vorschau, CSS-fertig, client-side). Pretty-URLs `/farben`, `/hex`, `/rgb`. |
+| `prozent-rechner.html` | Tool: **Prozent- & Dreisatz-Rechner** (Anteil, X-von-Y, Zu-/Abschlag, prozentuale Änderung, Dreisatz; client-side). Pretty-URLs `/prozent`, `/dreisatz`. |
+| `mwst-rechner.html` | Tool: **MwSt-Rechner CH/DE/AT** (netto ↔ brutto, gängige Sätze: CH 8,1/3,8/2,6 · DE 19/7 · AT 20/13/10; client-side, keine Steuerberatung). Pretty-URLs `/mwst`, `/mehrwertsteuer`. |
 | `anti-hype-texten.html` | SEO-Cornerstone-Ratgeber zum Tool (Vorher/Nachher, FAQ) |
 | `hype-widget-demo.html` | `noindex` — Doku/Demo fürs einbettbare Widget |
 | `impressum.html` / `datenschutz.html` | CH-Impressum / DSGVO |

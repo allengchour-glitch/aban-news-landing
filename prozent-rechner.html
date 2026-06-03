@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prozent- & Dreisatz-Rechner · aban news</title>
+<meta name="description" content="Kostenloses Tool: Prozent rechnen (Anteil, Zu-/Abschlag, prozentuale Änderung) und Dreisatz lösen. Für Angebote, Rabatte, Aufschläge. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/prozent-rechner.html">
+<meta property="og:title" content="Prozent- & Dreisatz-Rechner">
+<meta property="og:description" content="Prozent & Dreisatz rechnen: Anteil, Zu-/Abschlag, Änderung. Lokal im Browser, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/prozent-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Prozent- & Dreisatz-Rechner",
+"url":"https://abannews.com/prozent-rechner.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Rechnet Prozente (Anteil, Zu-/Abschlag, prozentuale Änderung) und löst den Dreisatz.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.panel h2{font-size:1.05rem;margin-bottom:4px}
+.panel .sub{font-size:.86rem;color:var(--muted);margin-bottom:12px}
+.line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:1rem}
+.line input{width:110px;font-size:15px;padding:9px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink)}
+.line input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.res{margin-top:12px;font-size:1.05rem;font-weight:700;color:var(--amber-dk)}
+.res small{display:block;font-weight:500;color:var(--muted);font-size:.82rem;margin-top:2px}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Prozent &amp; Dreisatz</span> rechnen</h1>
+    <p>Die vier Prozent-Fragen, die im Alltag wirklich vorkommen — plus der klassische Dreisatz. Für Angebote, Rabatte, Aufschläge und schnelle Plausibilitäts-Checks. Lokal im Browser, nichts wird gesendet.</p>
+  </section>
+
+  <section class="panel" id="tool">
+    <h2>Wie viel sind X % von Y?</h2>
+    <p class="sub">Beispiel: 19 % von 250</p>
+    <div class="line">
+      <input type="text" id="a1" value="19" inputmode="decimal"> % von
+      <input type="text" id="a2" value="250" inputmode="decimal">
+    </div>
+    <div class="res" id="ar">—</div>
+  </section>
+
+  <section class="panel">
+    <h2>X ist wie viel Prozent von Y?</h2>
+    <p class="sub">Beispiel: 45 von 180</p>
+    <div class="line">
+      <input type="text" id="b1" value="45" inputmode="decimal"> von
+      <input type="text" id="b2" value="180" inputmode="decimal">
+    </div>
+    <div class="res" id="br">—</div>
+  </section>
+
+  <section class="panel">
+    <h2>Zu-/Abschlag (z. B. Rabatt oder Aufschlag)</h2>
+    <p class="sub">Beispiel: 120 plus/minus 15 %</p>
+    <div class="line">
+      <input type="text" id="c1" value="120" inputmode="decimal"> Betrag,
+      <input type="text" id="c2" value="15" inputmode="decimal"> %
+    </div>
+    <div class="res" id="cr">—</div>
+  </section>
+
+  <section class="panel">
+    <h2>Prozentuale Änderung (von alt zu neu)</h2>
+    <p class="sub">Beispiel: von 200 auf 250</p>
+    <div class="line">
+      von <input type="text" id="d1" value="200" inputmode="decimal">
+      auf <input type="text" id="d2" value="250" inputmode="decimal">
+    </div>
+    <div class="res" id="dr">—</div>
+  </section>
+
+  <section class="panel">
+    <h2>Dreisatz</h2>
+    <p class="sub">Wenn A → B, was ergibt C? (proportional)</p>
+    <div class="line">
+      <input type="text" id="e1" value="3" inputmode="decimal"> →
+      <input type="text" id="e2" value="12" inputmode="decimal"> , dann
+      <input type="text" id="e3" value="7" inputmode="decimal"> →
+    </div>
+    <div class="res" id="er">—</div>
+  </section>
+
+  <div class="cta"><strong>Mehr Rechner</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">fürs Geschäftliche.</p>
+    <p><a class="btn" href="/mwst-rechner.html">MwSt-Rechner</a>
+      <a class="btn ghost" href="/finanz-rechner.html">Stundensatz</a>
+      <a class="btn ghost" href="/automatisierung-rechner.html">Automatisierung</a></p></div>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/mwst-rechner.html">MwSt</a> · <a href="/finanz-rechner.html">Finanz-Rechner</a> ·
+  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  function num(id){var v=document.getElementById(id).value.trim().replace(",",".");return v===""?NaN:parseFloat(v);}
+  function fmt(n){if(!isFinite(n))return "—";return n.toLocaleString("de-DE",{maximumFractionDigits:2});}
+  function on(ids,fn){ids.forEach(function(id){document.getElementById(id).addEventListener("input",fn);});}
+
+  function ca(){var p=num("a1"),y=num("a2");document.getElementById("ar").textContent=(isFinite(p)&&isFinite(y))?fmt(p/100*y):"—";}
+  function cb(){var x=num("b1"),y=num("b2");var el=document.getElementById("br");el.innerHTML=(isFinite(x)&&isFinite(y)&&y!==0)?(fmt(x/y*100)+" %"):"—";}
+  function cc(){var b=num("c1"),p=num("c2"),el=document.getElementById("cr");
+    if(isFinite(b)&&isFinite(p)){var amt=b*p/100;el.innerHTML="+ "+fmt(p)+" %: <strong>"+fmt(b+amt)+"</strong> &nbsp;·&nbsp; − "+fmt(p)+" %: <strong>"+fmt(b-amt)+"</strong><small>Differenz: "+fmt(amt)+"</small>";}
+    else el.textContent="—";}
+  function cd(){var o=num("d1"),n=num("d2"),el=document.getElementById("dr");
+    if(isFinite(o)&&isFinite(n)&&o!==0){var ch=(n-o)/Math.abs(o)*100;el.innerHTML=(ch>=0?"+":"")+fmt(ch)+" %<small>"+(ch>=0?"Anstieg":"Rückgang")+" um "+fmt(Math.abs(n-o))+"</small>";}
+    else el.textContent="—";}
+  function ce(){var a=num("e1"),b=num("e2"),c=num("e3"),el=document.getElementById("er");
+    if(isFinite(a)&&isFinite(b)&&isFinite(c)&&a!==0){el.innerHTML="<strong>"+fmt(b/a*c)+"</strong><small>(je Einheit: "+fmt(b/a)+")</small>";}
+    else el.textContent="—";}
+
+  on(["a1","a2"],ca);on(["b1","b2"],cb);on(["c1","c2"],cc);on(["d1","d2"],cd);on(["e1","e2","e3"],ce);
+  ca();cb();cc();cd();ce();
+})();
+</script>
+</body>
+</html>
