@@ -43,12 +43,18 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Charge 17 (#201): trockenbau, glaser, metallbauer.
 - Charge 18 (#202): zimmerer, geruestbau, raumausstatter.
 - Charge 19 (#204): schornsteinfeger, schreiner, maler. (Handwerk-Familie komplett)
+- Charge 20 (#206): dachdecker, goldschmiede, hochzeitsfotografen.
+- Charge 21 (#207): heilpraktiker, hoerakustiker, podologen.
+- Charge 22 (#208): kieferorthopaeden, sanitaetshaeuser, zahntechniker. (Gesundheit/Dental komplett)
+- Charge 23 (#209): notare, wirtschaftspruefer, sachverstaendige.
+- Charge 24 (#210): sicherheitsdienste, umzugsunternehmen, schluesseldienste.
+- Charge 25 (#258): entruempelung, schaedlingsbekaempfer, hausmeisterservice.
 - Muster: pro Hub DE um hreflang-Block + nav-Sprach-Switch ergänzen, je `en/ fr/ it/`-Datei
   (eigene canonical, 5 reziproke hreflang-Zeilen inkl. x-default=de, og:locale, WebPage-inLanguage,
   FAQ pro Sprache wortgleich), sitemap +3/Hub (priority 0.7). FAQ-Markup variiert je Hub (dl/dt/dd ODER details/summary).
   **Achtung 1:** manche DE-Originale haben pre-existing FAQ-Drift (JSON-LD↔sichtbar) — bei i18n DE-Inhalt unverändert lassen.
   **Achtung 2:** DE-Hubs haben inzwischen einen Tools-CTA-`<aside data-aban-tools-cta>` vor `</main>` (DE-only, Übersetzungen ohne). i18n-Branches **immer von aktuellem `main` rebasen**, sonst geht der aside verloren.
-- **Noch einsprachig (35, nächste Chargen):** brauereien, buchhandlungen, cafes, dachdecker, eisdielen, entruempelung, ernaehrungsberatung, fahrradlaeden, fahrschulen, getraenkehandel, goldschmiede, hausmeisterservice, hebammen, heilpraktiker, hochzeitsfotografen, hoerakustiker, kieferorthopaeden, metzgereien, modeboutiquen, musikschulen, nagelstudios, notare, podologen, sachverstaendige, sanitaetshaeuser, schaedlingsbekaempfer, schluesseldienste, sicherheitsdienste, sportgeschaefte, sprachschulen, tanzschulen, tattoostudios, umzugsunternehmen, wirtschaftspruefer, zahntechniker.
+- **Noch einsprachig (17, nächste Chargen):** brauereien, buchhandlungen, cafes, eisdielen, ernaehrungsberatung, fahrradlaeden, fahrschulen, getraenkehandel, hebammen, metzgereien, modeboutiquen, musikschulen, nagelstudios, sportgeschaefte, sprachschulen, tanzschulen, tattoostudios.
 
 
 ## Automations-/Radar-Projekte
