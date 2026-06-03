@@ -1484,3 +1484,10 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - Beide: Farbe+Grösse-Optionen, deutsche Copy, Trust-Block, Tag sommer-2026, Bilder HTTP-200 vorgeprüft+READY.
 - Heute total 3 neue Kleider live (Aurélie/Bureau/Capucine). Verbleibende geprüfte Kandidaten: V-neck Lace-up
   (CJLY291991501), Cotton-linen Shirt-collar 70v (CJLY291889801) — falls weiterer Nachschub gewünscht.
+
+## 2026-06-03 — Qualitäts-Nachschub: Boston-Henkeltasche «Lussa» (Echtleder)
+- CJ pid 2606020745251635200 · SKU-Basis CJNS2918315 (01–09) · Kost $33.17 → Shopify 15416470208897
+- CHF 99.90 (Premium-Anker, Echtleder) · 9 Farben (Kaffeebraun/Schwarz/Rosa/Gelb/Braun/Petrolblau/Beige/Ebenholz/Aprikose)
+- 11 Bilder (alle 200, READY) · 6 Kanäle live · Tags premium/tasche/sommer-2026 · productType Accessoires.
+- **Lehre:** Varianten-Key enthielt Masse („Coffee-19x13x24cm") → vor Mapping Dimension per Regex strippen.
+- Taschen-Suche sonst mager: 2. Treffer war Tier-Schlafsack (off-brand) → verworfen („hohe Qualität sonst sein lassen").
