@@ -4,12 +4,12 @@ Live-Audit der Startseite + Tool-Recherche. **Theme ist API-gesperrt → die mei
 Customizer (du) bzw. App-Installation.** Ich kann Produkte/Kollektionen/SEO per API, aber keine Theme-Sections/Apps.
 
 ## 🔴 Dringend (Glaubwürdigkeit)
-1. **Fremde Admin-URL im Live-Code:** `https://admin.shopify.com/store/aban-192/themes` taucht im
-   Seiten-Markup auf (Überbleibsel aus anderem Store). Unprofessionell/Leak. → Customizer: Section mit
-   hartkodiertem Link/Custom-HTML finden und entfernen.
-2. **Platzhalter-Produkte „Produkttitel · CHF 19.99"** auf der Startseite (Theme-Demo-Section, nicht mit
-   echter Kollektion verknüpft). Killt Vertrauen. → Customizer: „Ausgewählte Kollektion" auf
-   `/collections/sommer` zeigen lassen ODER Section ausblenden. (Im Katalog gibt's KEINE solchen Produkte → rein Theme.)
+1. **Ankündigungsleiste verlinkt auf fremdes Admin (BESTÄTIGT, exakt lokalisiert):** Der Banner-Text
+   „Gratis-Versand ab CHF 65 · –10% WELCOME10 · 30 Tage Rückgabe" hat
+   `href="https://admin.shopify.com/store/aban-192/themes"` → Kunde landet im fremden Shopify-Login.
+   → **Customizer → Ankündigungsleiste → Link-Feld** leeren ODER auf `/collections/sommer` setzen. (1 Min.)
+2. ~~Platzhalter-Produkte „Produkttitel · CHF 19.99"~~ → **FALSCHALARM** (WebFetch-Halluzination). Live-HTML
+   geprüft: Startseite zeigt **23 echte Produkte**. Kein Fix nötig.
 
 ## 🟠 Hoher Hebel (Conversion)
 3. **Review-Sterne auf Produktkacheln/Startseite fehlen** (Judge.me ist installiert, Widget nicht auf den
@@ -39,5 +39,20 @@ Customizer (du) bzw. App-Installation.** Ich kann Produkte/Kollektionen/SEO per 
 - Judge.me-Reviews-Strategie + welche Produkte zuerst.
 - Kollektions-Inhalte/SEO weiter optimieren.
 - Nach jeder Änderung per ShopifyQL messen (ATC-Rate).
+
+## ✍️ Fertige Texte (1× im Customizer einsetzen)
+**Hero:**
+- Headline: `Schweizer Sommer-Mode 2026 — Designer-Look, fairer Preis.`
+- Subline: `Premium-Looks ab CHF 34.90 · Gratis-Versand ab CHF 65 · –10% mit Code WELCOME10`
+- Button: `Sommer-Kollektion entdecken` → `/collections/sommer`
+
+**Ankündigungsleiste (Text bleibt, nur Link fixen):**
+`Gratis-Versand ab CHF 65 · –10% mit Code WELCOME10 · 30 Tage Rückgabe`  → Link: `/collections/sommer`
+
+**Trust-Block (unter Hero oder im Footer, als Icon-Reihe):**
+- ✓ Schweizer Shop · schnelle Lieferung
+- ✓ Gratis-Versand ab CHF 65
+- ✓ 30 Tage Rückgabe
+- ✓ Sichere Zahlung: TWINT · Visa · Mastercard · PayPal
 
 Quellen: Shopify App Store (Marketing & Conversion), Judge.me, Hextom, EasyApps Suite.
