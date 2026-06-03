@@ -1,5 +1,5 @@
 {
-  "next_id": 8,
+  "next_id": 12,
   "tasks": [
     {
       "id": 1,
@@ -55,6 +55,38 @@
       "who": "browser",
       "status": "doing",
       "note": "einige schon live",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 8,
+      "task": "5 Reels für aban news gebaut + geliefert (video-pipeline/ausgabe)",
+      "who": "code",
+      "status": "done",
+      "note": "",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 9,
+      "task": "dropshipping-radar auf Cloudflare deployen (dropshipping.abannews.com) — Vorbedingung fürs Affiliate-Geld",
+      "who": "browser",
+      "status": "todo",
+      "note": "",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 10,
+      "task": "Affiliate anmelden für dropshipping-radar (Printful/Spocket/Shopify) → Link an Code",
+      "who": "aban",
+      "status": "todo",
+      "note": "",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 11,
+      "task": "Dropshipping-Affiliate-Link in dropshipping-radar/affiliate.json eintragen + push",
+      "who": "code",
+      "status": "blocked",
+      "note": "wartet auf Deploy (Task 9) + Link von Aban (Task 10)",
       "updated": "2026-06-03"
     }
   ]
