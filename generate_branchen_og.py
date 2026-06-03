@@ -111,6 +111,9 @@ BRANCHEN = {
     "nagelstudios":        ("Nagelstudios",        ["Termine & Social,", "nicht die Behandlung"]),
     "tattoostudios":       ("Tattoostudios",       ["Anfragen & Social,", "nicht das Tattoo"]),
     "hochzeitsfotografen": ("Hochzeitsfotografen", ["Angebote & Paar-Mails,", "nicht das Foto"]),
+    "solarteure":          ("Solarteure",          ["Angebote & Anmeldung,", "nicht die Montage"]),
+    "waermepumpen":        ("Wärmepumpen",         ["Angebote & Förder-Kram,", "nicht die Heizlast"]),
+    "energieberater":      ("Energieberater",      ["Berichte & Akquise,", "nicht das Testat"]),
 }
 
 
