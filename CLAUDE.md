@@ -75,6 +75,12 @@ durchgehend die du-Form.
 - Trilogie-Beispiel: `roman-drama-trilogie.json` → `trilogie.html`. Shared Helfer:
   `roman_util.py`. Output (Kapitel + `ausgabe/`) ist **git-ignored**, braucht
   `ANTHROPIC_API_KEY`. Details: `ki-schriftsteller/README.md`.
+- **Pipeline:** `plane_kapitel.py` (Outline) → `schreibe_roman.py` (Prosa) →
+  `qualitaet.py` (lokaler Prosa-Check, **ohne API/Netz**, Exit-Code → CI-tauglich)
+  → `politur.py` (autonome Schleife: Gutachten-Score 0-100 + Blocker via Structured
+  Outputs → `ueberarbeiten` bis Schwelle erreicht; Original als `*.politur-orig.md`
+  gesichert) → `buch_bauen.py`/`buch_pdf.py`/`kdp_paket.py`. `lektor.py` = manuelle
+  Einzelkritik ohne Umschrieb. Abhängigkeiten in `requirements.txt` (`pip install -r`).
 
 ## Seiten-Inventar (Auswahl)
 
