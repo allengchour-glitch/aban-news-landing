@@ -44,6 +44,11 @@ def load_uploaded():
 
 
 def render(ep):
+    # 1) fertig vorgerenderten Clip nehmen, falls vorhanden (kein XI/PEXELS noetig)
+    pre = os.path.join(HERE, "clips", f"{ep}.mp4")
+    if os.path.exists(pre):
+        return pre
+    # 2) sonst frisch rendern (braucht XI + PEXELS)
     out = f"/tmp/aban_stock_{ep}.mp4"
     subprocess.run([sys.executable, os.path.join(HERE, "aban_stock.py"), ep],
                    check=True, cwd=HERE)
