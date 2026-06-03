@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d97706">
+  <title>IA pour les kinésithérapeutes — l'orga du cabinet, pas la thérapie (2026) | aban news</title>
+  <meta name="description" content="L'IA au cabinet de kiné sans battage : expliquer clairement les exercices à domicile, envoyer des rappels, traduire les comptes rendus, rédiger les textes d'organisation. Cas d'usage concrets et limites honnêtes.">
+  <link rel="canonical" href="https://abannews.com/fr/ki-fuer-physiotherapeuten.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/ki-fuer-physiotherapeuten.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-fuer-physiotherapeuten.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ki-fuer-physiotherapeuten.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/ki-fuer-physiotherapeuten.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-fuer-physiotherapeuten.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="IA pour les kinésithérapeutes — l'orga du cabinet, pas la thérapie">
+  <meta property="og:description" content="Là où l'IA décharge le travail d'écriture et d'organisation au cabinet de kiné — et là où elle n'a explicitement pas sa place. Sans battage.">
+  <meta property="og:url" content="https://abannews.com/fr/ki-fuer-physiotherapeuten.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://abannews.com/img/og/ki-fuer-physiotherapeuten.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/img/og/ki-fuer-physiotherapeuten.png">
+  <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:3rem 0 2rem;text-align:center}
+    h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:55ch;margin:0 auto 1.5rem}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    .methods{padding:1rem 0 2rem}
+    main p{margin-bottom:1rem}
+    main h2{font-size:1.35rem;margin:2rem 0 .6rem;letter-spacing:-.01em}
+    main h3{font-size:1.05rem;margin:1.2rem 0 .3rem}
+    main ul{margin:0 0 1rem 1.1rem}
+    main li{margin-bottom:.4rem}
+    .method{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.5rem;margin-bottom:1.1rem;box-shadow:var(--shadow)}
+    .method h3{margin-top:0}
+    .limits{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r);padding:1.3rem 1.5rem;margin:1.5rem 0}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2.5rem 0}
+    .cta-box h2{font-size:1.3rem;margin:0 0 .5rem}
+    .cta-box p{color:var(--ink);margin-bottom:1rem;font-size:.95rem}
+    .faq{margin-top:1rem}
+    .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.4rem 1rem;margin-bottom:.7rem}
+    .faq summary{font-weight:700;cursor:pointer;padding:.6rem 0}
+    .faq p{font-size:.95rem;color:var(--muted);padding-bottom:.6rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:2rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"IA pour les kinésithérapeutes","url":"https://abannews.com/fr/ki-fuer-physiotherapeuten.html","inLanguage":"fr","description":"Comment les cabinets de kinésithérapie utilisent l'IA pour les consignes d'exercices à domicile, les rappels, des comptes rendus compréhensibles et les textes d'organisation — sans la laisser approcher le diagnostic ou la thérapie.","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"fr","mainEntity":[
+    {"@type":"Question","name":"L'IA peut-elle poser un diagnostic au cabinet de kiné ?","acceptedAnswer":{"@type":"Answer","text":"Non. L'IA ne pose pas de diagnostic et ne prend aucune décision thérapeutique. Le bilan, le plan de traitement et la responsabilité restent chez toi. L'IA aide seulement à formuler, à expliquer et à organiser autour de la thérapie."}},
+    {"@type":"Question","name":"Puis-je faire rédiger des exercices à domicile par l'IA ?","acceptedAnswer":{"@type":"Answer","text":"Le texte explicatif, oui. C'est toi qui décides quel exercice le patient reçoit. L'IA rend ta consigne compréhensible pour un profane et ajoute une consigne de sécurité claire. Tu supprimes toute promesse de guérison et tu relis chaque texte avant de le diffuser."}},
+    {"@type":"Question","name":"Puis-je saisir des données de patients ou de santé dans des outils d'IA ?","acceptedAnswer":{"@type":"Answer","text":"Aucune donnée de patient ou de santé dans des outils grand public gratuits. Ce sont des données particulièrement sensibles (RGPD art. 9). Travaille sans noms ni détails, ou utilise un prestataire avec hébergement dans l'UE et un contrat de sous-traitance."}},
+    {"@type":"Question","name":"L'IA remplace-t-elle le traitement du patient ?","acceptedAnswer":{"@type":"Answer","text":"Non. Les mains sur le patient, le bilan et l'accompagnement sur place restent ton travail. L'IA te décharge seulement de l'écriture et de l'organisation entre les séances, pour laisser plus de temps à la thérapie."}}
+  ]}
+  </script>
+<style>.skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}</style>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/geld-verdienen-mit-ki.html">IA &amp; argent</a>
+      <a href="/ebook.html">eBook</a>
+      <a href="/ki-fuer-physiotherapeuten.html">DE</a>
+      <a href="/en/ki-fuer-physiotherapeuten.html">EN</a>
+      <a href="/fr/ki-fuer-physiotherapeuten.html" aria-current="page">FR</a>
+      <a href="/it/ki-fuer-physiotherapeuten.html">IT</a>
+      <a href="https://abannews.com/gratis-ki-tools.html" class="btn">S'abonner</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Guide sectoriel · kinésithérapeutes</span>
+      <h1>L'IA en kiné : l'organisation du cabinet, pas la thérapie</h1>
+      <p class="lead">Ton travail, ce sont les mains sur le patient et ce que tu observes au bilan. Ce qui prend du temps, c'est tout le reste : fiches d'exercices, rappels, traduire des courriers, e-mails d'organisation. C'est exactement là que l'IA aide — et seulement là.</p>
+    </div>
+
+    <div class="methods">
+
+      <p>Un cabinet de kiné est aussi un petit bureau. Entre les séances, tu rédiges des consignes d'exercices, tu rappelles les rendez-vous aux patients, tu expliques des bilans et tu réponds aux e-mails. C'est cette écriture que l'IA te décharge. Le traitement lui-même t'appartient — et le reste.</p>
+
+      <p>Cette séparation est justement le cœur du sujet : ici, l'IA est un outil d'écriture et d'organisation, pas un thérapeute. Une fois cela en tête, la question devient simple. S'agit-il de mots, de rendez-vous ou d'explications ? Alors l'IA peut aider. S'agit-il du corps du patient, d'une évaluation ou d'une décision ? Alors non. Avec cette ligne, tu ne te trompes pas.</p>
+
+      <h2>Ce dont il ne s'agit pas ici</h2>
+      <p>L'IA ne pose pas de diagnostic et ne prend aucune décision thérapeutique. Faire un bilan, traiter, remplacer ton expertise — un modèle ne peut rien de tout cela. Si quelqu'un veut te vendre un outil d'IA comme thérapeute, n'y touche pas. Ce qui est écrit ici ne concerne que l'organisation et les textes autour du vrai travail.</p>
+
+      <h2>Cas d'usage utiles</h2>
+
+      <div class="method">
+        <h3>1. Expliquer les exercices à domicile de façon compréhensible</h3>
+        <p>C'est toi qui décides quel exercice le patient emporte. L'IA transforme tes mots-clés en consignes claires, compréhensibles même sans langage technique — avec les étapes, les répétitions et une indication du moment où s'arrêter. Important : aucune promesse de guérison, aucun diagnostic dans le texte. Écris « en cas de douleur, faire une pause et consulter » et relis chaque consigne avant de la diffuser.</p>
+        <p>Un exemple : tu tapes « cercles d'épaules debout, 2 séries, 10 répétitions, lentement, pour la maison » et tu reçois un paragraphe clair qu'un profane comprend sans question. N'hésite pas à demander une sortie en langage simple — phrases courtes, sans mots compliqués. La responsabilité du choix reste chez toi ; l'IA ne livre que la formulation propre.</p>
+      </div>
+
+      <div class="method">
+        <h3>2. Rappels de rendez-vous et d'exercices</h3>
+        <p>Entre deux séances, beaucoup oublient leurs exercices — ou le prochain rendez-vous. L'IA te rédige de courts rappels amicaux que tu enregistres comme modèle et n'as plus qu'à adapter. « Pense à tes trois exercices pour le dos, on se voit jeudi. » Un ton personnel, sans avoir à tout retaper à chaque fois.</p>
+        <p>Le mieux est de demander tout de suite trois variantes : une factuelle, une plus chaleureuse et une courte pour les gens pressés. Ainsi tu as le bon ton prêt pour chaque type de patient et tu n'as pas à y réfléchir à chaque fois. L'envoi lui-même passe toujours par ton canal habituel — l'IA n'écrit que le texte, elle n'envoie rien et ne voit aucun contact.</p>
+      </div>
+
+      <div class="method">
+        <h3>3. Résumer comptes rendus et bilans de façon compréhensible</h3>
+        <p>Les patients ne comprennent souvent pas leur propre compte rendu médical. L'IA peut traduire les termes techniques en langage normal, pour que tu puisses expliquer ce qui y figure. Important : expliquer, pas évaluer. L'IA n'interprète rien, ne modifie aucune recommandation et ne pose aucun nouveau diagnostic. Tu n'utilises le langage simple que comme passerelle — l'analyse professionnelle reste chez toi et chez le médecin.</p>
+        <p>Demande à l'IA précisément : « Explique ces termes en mots simples, sans porter de jugement. » Tu obtiens ainsi une aide de vocabulaire et non un deuxième avis. L'échange avec le patient devient plus facile, mais la conversation reste la tienne — et pour les questions médicales, tu renvoies vers le médecin traitant.</p>
+      </div>
+
+      <div class="method">
+        <h3>4. Motivation en rééducation et textes d'organisation</h3>
+        <p>Un e-mail encourageant aux patients qui flanchent au cours d'une longue rééducation. Le règlement du cabinet, une note sur l'annulation des rendez-vous, l'affichette pour la pause estivale. Des textes que tu écris rarement et qui, pour cela, prennent du temps. L'IA t'amène en cinq minutes à un brouillon utilisable, que tu peaufines à ton ton. Garde la motivation honnête : « persévérer en vaut la peine » est bien, « sans douleur dans deux semaines » est une promesse que tu ne peux pas tenir. Supprime ce genre de phrases avant qu'elles ne partent.</p>
+      </div>
+
+      <div class="limits">
+        <strong>Limites honnêtes :</strong>
+        <ul>
+          <li>L'IA ne pose pas de diagnostic et ne prend aucune décision thérapeutique — point.</li>
+          <li>Elle invente parfois des détails. Relis chaque texte avant qu'il n'arrive chez le patient.</li>
+          <li>Aucune promesse de guérison dans les fiches d'exercices. Ce n'est pas seulement douteux, c'est une question de responsabilité.</li>
+          <li>Elle ne change rien au traitement. Le levier est uniquement dans l'organisation et l'écriture.</li>
+        </ul>
+      </div>
+
+      <h2>Protection des données : particulièrement sensible</h2>
+      <p>Les données de santé sont la catégorie la plus délicate qui soit. Ne tape aucune donnée de patient ou de santé dans des outils grand public gratuits. Travaille sans noms et sans détails identifiables — formule de façon générale, pas « Mme M. avec l'épaule ». Si tu traites régulièrement des textes sensibles, utilise un prestataire avec hébergement dans l'UE et un contrat de sous-traitance (CST). En cas de doute : mieux vaut anonymisé et sobre que pratique.</p>
+      <p>Concrètement : pour traduire un compte rendu, tu retires le nom, la date de naissance et tout ce qui mène à la personne avant de coller le texte. Tu as besoin des termes techniques traduits, pas du dossier mis en ligne. Cette petite routine te coûte dix secondes et retire le plus gros risque de tout le processus. Qui prévoit une solution plus large clarifie d'abord avec son délégué à la protection des données ce qui est permis — cela évite des ennuis plus tard.</p>
+
+      <h2>Un démarrage pragmatique</h2>
+      <ul>
+        <li>Commence par les consignes d'exercices à domicile — tu y gagnes du temps tout de suite.</li>
+        <li>Construis-toi quelques modèles fixes de rappels que tu n'as plus qu'à adapter.</li>
+        <li>Relis chaque texte et supprime toute promesse qui sonne comme une garantie.</li>
+        <li>Ne saisis jamais de vraies données de patients, même pas « juste pour tester ».</li>
+      </ul>
+      <p>Quels outils proposent un hébergement dans l'UE et conviennent à l'organisation, nous le comparons honnêtement dans le <a href="https://radar.abannews.com">Radar des outils IA</a> — tu peux y filtrer par cas d'usage au lieu de te frayer un chemin dans la publicité.</p>
+
+    </div>
+
+    <div class="cta-box">
+      <h2>Un conseil IA par jour, en 5 minutes</h2>
+      <p>aban news est la newsletter IA en allemand sans battage : du lundi au vendredi, un conseil concret que tu peux appliquer aussitôt dans ton cabinet. Gratuit.</p>
+      <a href="https://abannews.com/gratis-ki-tools.html" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">S'abonner gratuitement →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Pas de spam. Désinscription en un clic. Conforme au RGPD.</p>
+    </div>
+
+    <h2>Questions fréquentes</h2>
+    <div class="faq">
+      <details><summary>L'IA peut-elle poser un diagnostic au cabinet de kiné ?</summary><p>Non. L'IA ne pose pas de diagnostic et ne prend aucune décision thérapeutique. Le bilan, le plan de traitement et la responsabilité restent chez toi. L'IA aide seulement à formuler, à expliquer et à organiser autour de la thérapie.</p></details>
+      <details><summary>Puis-je faire rédiger des exercices à domicile par l'IA ?</summary><p>Le texte explicatif, oui. C'est toi qui décides quel exercice le patient reçoit. L'IA rend ta consigne compréhensible pour un profane et ajoute une consigne de sécurité claire. Tu supprimes toute promesse de guérison et tu relis chaque texte avant de le diffuser.</p></details>
+      <details><summary>Puis-je saisir des données de patients ou de santé dans des outils d'IA ?</summary><p>Aucune donnée de patient ou de santé dans des outils grand public gratuits. Ce sont des données particulièrement sensibles (RGPD art. 9). Travaille sans noms ni détails, ou utilise un prestataire avec hébergement dans l'UE et un contrat de sous-traitance.</p></details>
+      <details><summary>L'IA remplace-t-elle le traitement du patient ?</summary><p>Non. Les mains sur le patient, le bilan et l'accompagnement sur place restent ton travail. L'IA te décharge seulement de l'écriture et de l'organisation entre les séances, pour laisser plus de temps à la thérapie.</p></details>
+    </div>
+
+    <div class="disclaimer">
+      <p><strong>Remarque :</strong> Ce guide ne remplace pas un conseil juridique, en protection des données ou médical. L'IA ne pose pas de diagnostic et ne remplace pas une évaluation professionnelle. Traite les données de patients et de santé avec une confidentialité particulière et vérifie toi-même chaque sortie de l'IA. Les outils et fonctions évoluent vite.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/">Accueil</a> · <a href="/impressum.html">Mentions légales</a> · <a href="/datenschutz.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

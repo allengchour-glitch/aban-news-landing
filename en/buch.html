@@ -13,6 +13,7 @@
   <link rel="alternate" hreflang="it" href="https://abannews.com/it/buch.html">
   <link rel="alternate" hreflang="x-default" href="https://abannews.com/buch.html">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:title" content="Anti-Hype — the book">
   <meta property="og:description" content="How solopreneurs put AI to work without the bullshit. PDF & ePub — pay what you want.">
   <meta property="og:url" content="https://abannews.com/en/buch.html">
@@ -37,7 +38,7 @@
     .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;margin-left:1.2rem}
     .lang a{padding:.3rem .55rem;color:var(--muted);text-decoration:none;margin:0}
     .lang a.on{background:var(--ink);color:#fff}
-    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:var(--amber);color:#fff;text-decoration:none}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:var(--amber-dk);color:#fff;text-decoration:none}
     .btn--ghost{background:#fff;color:var(--amber-dk);border:1px solid var(--amber)}
     .hero{padding:3rem 0 1.5rem;text-align:center}
     .badge{display:inline-block;background:var(--amber-lt);color:var(--amber-dk);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
@@ -59,6 +60,16 @@
     .pay .note{font-size:.78rem;color:var(--muted)}
     section.block{padding:1.2rem 0;border-top:1px solid var(--line)}
     section.block h2{font-size:1.4rem;margin-bottom:.6rem}
+    .peek-grid{display:grid;gap:1rem;margin:.6rem 0 0}
+    @media(min-width:640px){.peek-grid{grid-template-columns:1fr 1fr}}
+    .peek-grid figure{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+    .peek-grid img{width:100%;height:auto;display:block}
+    .peek-grid figcaption{font-size:.8rem;color:var(--muted);padding:.5rem .7rem;border-top:1px solid var(--line)}
+    .amazon{display:none;background:linear-gradient(160deg,#fff7ed,#fff);border:1px solid var(--amber);border-radius:var(--r);padding:1.5rem;margin:1.5rem 0;box-shadow:var(--shadow)}
+    .amazon.show{display:block}
+    .amazon h2{font-size:1.3rem;margin-bottom:.4rem}
+    .amazon p{font-size:.95rem;color:var(--muted);margin-bottom:1rem}
+    .amazon .azbtns{display:flex;flex-wrap:wrap;gap:.6rem}
     .toc-list{margin:.2rem 0 0 1.1rem}
     .toc-list li{margin-bottom:.3rem}
     .faq details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:.6rem;padding:0}
@@ -148,6 +159,34 @@
     </section>
 
     <section class="block">
+      <h2>A look inside</h2>
+      <p>No stock-photo filler — only diagrams that actually explain something. Three of them:</p>
+      <div class="peek-grid">
+        <figure>
+          <img src="/downloads/fig-filter-en.png" alt="The 3-question bullshit filter as a flowchart" loading="lazy" width="900" height="560">
+          <figcaption>The 3-question filter at a glance.</figcaption>
+        </figure>
+        <figure>
+          <img src="/downloads/fig-stack-en.png" alt="The minimal AI stack of four building blocks" loading="lazy" width="900" height="540">
+          <figcaption>Four building blocks, no more.</figcaption>
+        </figure>
+        <figure>
+          <img src="/downloads/fig-day-en.png" alt="One workday before and after, as a bar chart" loading="lazy" width="900" height="460">
+          <figcaption>An honest halving, not “10x”.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="amazon" id="amazon">
+      <h2>📕 Now on Amazon too</h2>
+      <p>Prefer Kindle or a printed paperback on the shelf? It's on Amazon now. The PDF &amp; ePub above stay free — the Amazon edition is for those who want it more conveniently or in print (and support me with it).</p>
+      <div class="azbtns">
+        <a href="#" class="btn" id="az-btn" target="_blank" rel="noopener">See it on Amazon →</a>
+      </div>
+      <p style="font-size:.8rem;margin:.9rem 0 0;">Already read it? An <strong>honest review</strong> on Amazon helps more than any ad — thank you.</p>
+    </section>
+
+    <section class="block">
       <h2>Why “pay what you want”?</h2>
       <p>Because it fits the brand. Knowledge that genuinely helps you shouldn't fail at a paywall — and whoever values it gets to show that. You set the price. No minimum, no guilt trip, no fake scarcity.</p>
     </section>
@@ -204,6 +243,10 @@
   }
   if(/^https?:\/\//.test(KDP_URL)){
     kdp.href = KDP_URL; kdp.target = "_blank"; kdp.rel = "noopener"; kdp.hidden = false;
+    var az = document.getElementById("amazon");
+    var azBtn = document.getElementById("az-btn");
+    if(azBtn){ azBtn.href = KDP_URL; }
+    if(az){ az.classList.add("show"); }
   }
 })();
 </script>

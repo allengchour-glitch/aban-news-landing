@@ -4,6 +4,49 @@
 
 # Pretty URLs (no .html in URLs that users might type)
 /founding         /founding.html        301
+/hype             /hype-filter.html     301
+/hype-filter      /hype-filter.html     301
+/anti-hype        /anti-hype-texten.html  301
+/anti-hype-texten /anti-hype-texten.html  301
+/widget           /hype-widget-demo.html  301
+/hype-widget      /hype-widget-demo.html  301
+/ai-sichtbarkeit  /ai-sichtbarkeit.html   301
+/aeo              /ai-sichtbarkeit.html   301
+/ki-erwaehnung    /ki-erwaehnungs-check.html  301
+/genannt          /ki-erwaehnungs-check.html  301
+/chatgpt-nennt-mich  /ki-erwaehnungs-check.html  301
+/hype-watch       /hype-watch.html        301
+/hypewatch        /hype-watch.html        301
+/hype-radar       /hype-watch.html        301
+/namen            /namen-generator.html   301
+/premium          /premium-briefing.html  301
+/briefing         /premium-briefing.html  301
+/premium-briefing /premium-briefing.html  301
+/premium-beispiel /premium-briefing-beispiel.html  301
+/name             /namen-generator.html   301
+/namensschild     /namen-generator.html   301
+/schluesselanhaenger /namen-generator.html 301
+/finanz-rechner   /finanz-rechner.html    301
+/finanzrechner    /finanz-rechner.html    301
+/finanz-skills    /finanz-skills-fuer-selbststaendige.html  301
+/finanzen         /finanz-skills-fuer-selbststaendige.html  301
+/stundensatz      /finanz-rechner.html    301
+/ai-check         /ai-sichtbarkeit.html   301
+/ki-kosten        /ki-kosten-rechner.html 301
+/kosten-rechner   /ki-kosten-rechner.html 301
+/ki-kosten-rechner /ki-kosten-rechner.html 301
+/ki-stimmen       /ki-stimmen.html        301
+/text-to-speech   /ki-stimmen.html        301
+/tts              /ki-stimmen.html        301
+/ki-video         /ki-videos-erstellen.html 301
+/ki-videos        /ki-videos-erstellen.html 301
+/videos           /ki-videos-erstellen.html 301
+/ki-lifestyle     /ki-lifestyle.html        301
+/lifestyle        /ki-lifestyle.html        301
+/ki-alltag        /ki-lifestyle.html        301
+/krypto           /ki-und-krypto-daten.html 301
+/ki-krypto        /ki-und-krypto-daten.html 301
+/krypto-daten     /ki-und-krypto-daten.html 301
 /ebook            /ebook.html           301
 /buch             /buch.html            301
 /book             /buch.html            301
@@ -12,8 +55,14 @@
 /das-tal          /trilogie.html        301
 /the-valley       /en/trilogie.html     301
 /en/trilogy       /en/trilogie.html     301
+/schicht          /schicht.html         301
+/the-seam         /en/the-seam.html     301
+/seam             /en/the-seam.html     301
 /ki-tools         /ki-tools-fuer-selbststaendige.html   301
 /chatgpt          /chatgpt-fuer-solopreneure.html       301
+/3d-druck         /geld-verdienen-mit-3d-druck.html     301
+/3d               /geld-verdienen-mit-3d-druck.html     301
+/dropshipping     /geld-verdienen-mit-3d-druck.html     301
 /sponsoring       /sponsoring.html      301
 /werbung          /werbung.html         301
 /datenschutz      /datenschutz.html     301
@@ -33,6 +82,37 @@
 # Email aliases short-links
 /mail             mailto:hallo@abannews.com       301
 /sponsoren        /sponsoring.html      301
+
+# KI-Tools-Datensatz (Daten-Produkt)
+/datensatz        /ki-tools-datensatz.html  301
+/ki-tools-datensatz /ki-tools-datensatz.html  301
+/dataset          /ki-tools-datensatz.html  301
+
+# KI-Sichtbarkeits-Monitor (Abo)
+/monitor          /ki-sichtbarkeit-monitor.html  301
+/sichtbarkeit-monitor /ki-sichtbarkeit-monitor.html 301
+
+# Buch: Von KI gefunden werden
+/ki-buch          /ki-sichtbarkeit-buch.html  301
+/gefunden-werden  /ki-sichtbarkeit-buch.html  301
+
+# Vorlagen-Set
+/vorlagen         /vorlagen-set.html  301
+/vorlagen-set     /vorlagen-set.html  301
+/templates        /vorlagen-set.html  301
+
+# Automatisierungs-Tools
+/automatisierung-rechner /automatisierung-rechner.html 301
+/automatisieren-lohnt    /automatisierung-rechner.html 301
+/cron             /cron-generator.html  301
+/cron-generator   /cron-generator.html  301
+/was-automatisieren /was-automatisieren.html 301
+
+# Entwickler-/Glue-Tools
+/regex            /regex-tester.html  301
+/regex-tester     /regex-tester.html  301
+/json             /json-formatter.html 301
+/json-formatter   /json-formatter.html 301
 
 # 404 fallback — Cloudflare Pages serves /404.html automatically for missing routes,
 # aber für SPA-like fallback explicit:

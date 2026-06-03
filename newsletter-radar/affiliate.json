@@ -1,0 +1,73 @@
+{
+  "_comment": "So verdienst du Geld: Melde dich beim Partnerprogramm des jeweiligen Anbieters an (Liste '_programme'). Du bekommst einen persönlichen Link. Trage ihn bei 'affiliate_url' ein und entferne das führende '_' im Key. Die Seite markiert ihn dann automatisch mit * und blendet den Transparenzhinweis ein, dann baut sie sich neu. Anbieter ohne aktiven Eintrag verlinken auf die offizielle URL aus data/anbieter.json (keine Provision).",
+  "_status": "ALLE SLOTS DEAKTIVIERT (Key mit '_'-Präfix). Noch keine Affiliate-Links freigegeben. Fallback = offizielle URL / Mail.",
+  "_kontakt_fallback": "mailto:hallo@abannews.com",
+  "_programme": {
+    "_hinweis": "Kuratierte Liste typischer Partnerprogramme, gemappt auf Anbieter in data/anbieter.json. 'signup' = wo du dich bewirbst. 'rate' = typische Provision (kann sich ändern, vor Nutzung prüfen). Quelle der Wahrheit für die echte URL bleibt data/anbieter.json. Nur Anbieter mit real existierendem Programm sind gelistet.",
+    "brevo": {
+      "signup": "https://www.brevo.com/partners/affiliate/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "getresponse": {
+      "signup": "https://www.getresponse.com/partners/affiliate-programme",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring/bounty"
+    },
+    "activecampaign": {
+      "signup": "https://www.activecampaign.com/partner/affiliate",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "mailchimp": {
+      "signup": "https://mailchimp.com/partners/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "einmal/credit"
+    },
+    "klaviyo": {
+      "signup": "https://www.klaviyo.com/partners",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "agency/partner"
+    },
+    "hubspot-email": {
+      "signup": "https://www.hubspot.com/partners/affiliates",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring/bounty"
+    },
+    "kit": {
+      "signup": "https://kit.com/affiliate",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "mailerlite": {
+      "signup": "https://www.mailerlite.com/affiliate-program",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "omnisend": {
+      "signup": "https://www.omnisend.com/affiliates/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "beehiiv": {
+      "signup": "https://www.beehiiv.com/partners",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    }
+  },
+  "links": {
+    "_anleitung": "Trage deinen persönlichen Affiliate-Link bei 'affiliate_url' ein und entferne das führende '_' im Anbieter-Key (z.B. '_brevo' -> 'brevo'). Erst dann wird der Link auf der Seite aktiv (mit * + Transparenzhinweis). Solange das '_' steht, bleibt der Slot deaktiviert und es wird die offizielle URL verlinkt.",
+    "_brevo": {
+      "affiliate_url": "https://www.brevo.com/?tap_a=DEIN-CODE"
+    },
+    "_getresponse": {
+      "affiliate_url": "https://www.getresponse.com/? a=DEIN-CODE"
+    },
+    "_activecampaign": {
+      "affiliate_url": "https://www.activecampaign.com/?_r=DEIN-CODE"
+    },
+    "_mailerlite": {
+      "affiliate_url": "https://www.mailerlite.com/a/DEIN-CODE"
+    }
+  }
+}

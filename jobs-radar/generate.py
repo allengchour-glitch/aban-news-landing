@@ -30,7 +30,7 @@ TEXT, MUTED, SUCCESS, BORDER = "#1f2937", "#6b7280", "#059669", "#e5e7eb"
 SITE_NAME = "KI-Jobs Radar"
 TAGLINE = "KI- & Machine-Learning-Jobs im DACH-Raum — täglich aktualisiert"
 BASE_URL = "https://jobs.abannews.com"
-NEWSLETTER_URL = "https://abannews.de"
+NEWSLETTER_URL = "https://abannews.com"
 
 
 def slug(v: str) -> str:
@@ -42,6 +42,15 @@ def slug(v: str) -> str:
 
 def e(v) -> str:
     return html.escape(str(v if v is not None else ""))
+
+
+def clip(text: str, limit: int = 155) -> str:
+    """Trim a meta description to a word boundary (cleaner SERP snippets)."""
+    text = " ".join(str(text or "").split())
+    if len(text) <= limit:
+        return text
+    cut = text[:limit].rsplit(" ", 1)[0].rstrip(",;:–-")
+    return (cut or text[:limit]) + "…"
 
 
 def job_slug(j: dict) -> str:
@@ -158,7 +167,7 @@ def featured_slot(sponsors: dict) -> str:
         return ""
     return (f'<div class="feat"><span class="feat-label">⭐ Gesponsert</span><br>'
             f'<strong>{e(s.get("title",""))}</strong> — {e(s.get("company",""))}<br>'
-            f'<a class="cta" href="{e(s.get("url","#"))}" rel="sponsored nofollow" target="_blank">'
+            f'<a class="cta" href="{e(s.get("url","#"))}" rel="sponsored noopener" target="_blank">'
             f'{e(s.get("cta","Zur Stelle"))} →</a>'
             f'<br><small style="color:var(--muted)">Anzeige</small></div>')
 
@@ -167,21 +176,28 @@ def job_page(j: dict, sponsors: dict) -> str:
     rem = '<span class="b rem">Remote</span>' if j.get("remote") else ""
     tags = "".join(f'<span class="b">{e(t)}</span>' for t in j.get("tags", []))
     types = ", ".join(e(t) for t in j.get("types", [])) or "—"
+    loc = j.get("location") or "DACH"
+    # Apply CTA = primary action: place it right under the title/badges (early/visible).
+    # External apply link: no link equity to the source, reverse-tabnabbing-safe.
+    apply_cta = (f'<a class="cta" href="{e(j.get("url","#"))}" target="_blank" '
+                 f'rel="noopener nofollow">Jetzt bewerben →</a>')
     body = f"""{job_jsonld(j)}
 <p><a href="/">← Alle KI-Jobs</a></p>
 <h1>{e(j.get('title',''))}</h1>
 <div class="badges"><span class="b">🏢 {e(j.get('company','—'))}</span>
 <span class="b">📍 {e(j.get('location') or 'k. A.')}</span>{rem}</div>
+{apply_cta}
 <p><strong>Art:</strong> {types}<br>
 <strong>Veröffentlicht:</strong> {e(iso_date(j.get('created_at')))}</p>
 <p>{tags}</p>
-<a class="cta" href="{e(j.get('url','#'))}" target="_blank" rel="noopener">Zur Original-Stellenanzeige →</a>
 {featured_slot(sponsors)}
 <p class="disc">⚠️ Stelle von {e(j.get('company','—'))}, verlinkt zur Originalquelle (arbeitnow.com).
 Angaben ohne Gewähr — Details bitte beim Arbeitgeber prüfen.</p>"""
-    return page(f"{j.get('title','')} bei {j.get('company','')} — {SITE_NAME}",
-                f"{j.get('title','')} bei {j.get('company','')} ({j.get('location') or 'DACH'}). KI-/ML-Stelle.",
-                body, BASE_URL + f"/job/{job_slug(j)}.html")
+    # Unique, keyword-rich title per job (title + company + location + year vary).
+    title = f"{j.get('title','')} bei {j.get('company','')} ({loc}) — Stellenangebot {date.today().year} | {SITE_NAME}"
+    meta = clip(f"{j.get('title','')} bei {j.get('company','')} in {loc}. "
+                f"KI-/ML-Stelle, {types}. Jetzt direkt beim Arbeitgeber bewerben.")
+    return page(title, meta, body, BASE_URL + f"/job/{job_slug(j)}.html")
 
 
 def build(data_path: Path, out: Path, here: Path):
@@ -230,8 +246,9 @@ def build(data_path: Path, out: Path, here: Path):
             f'<p class="disc">⚠️ Stellen werden automatisch aggregiert und verlinken zur Originalquelle. '
             f'Angaben ohne Gewähr.</p>')
     (out / "index.html").write_text(
-        page(f"{SITE_NAME} — {TAGLINE}",
-             f"{len(jobs)} aktuelle KI-, Machine-Learning- und Data-Science-Jobs im DACH-Raum, täglich aktualisiert.",
+        page(f"{SITE_NAME} {date.today().year} — {TAGLINE}",
+             clip(f"{len(jobs)} aktuelle KI-, Machine-Learning- und Data-Science-Jobs im "
+                  f"DACH-Raum, täglich aktualisiert. Remote und vor Ort."),
              home, BASE_URL + "/"), encoding="utf-8")
 
     for j in jobs:
@@ -243,8 +260,9 @@ def build(data_path: Path, out: Path, here: Path):
                 f'<p class="tag" style="color:var(--muted)">{len(remote_jobs)} Remote-Stellen rund um KI & ML.</p>'
                 + "\n".join(job_card(j) for j in remote_jobs))
         (out / "remote.html").write_text(
-            page(f"Remote KI-Jobs — {SITE_NAME}",
-                 f"{len(remote_jobs)} aktuelle Remote-Jobs rund um KI und Machine Learning im DACH-Raum.",
+            page(f"Remote KI-Jobs im DACH-Raum {date.today().year} — {SITE_NAME}",
+                 clip(f"{len(remote_jobs)} aktuelle Remote-Jobs rund um KI und Machine Learning "
+                      f"im DACH-Raum, täglich aktualisiert."),
                  body, BASE_URL + "/remote.html"), encoding="utf-8")
 
     # City hubs
@@ -255,8 +273,9 @@ def build(data_path: Path, out: Path, here: Path):
                 f'<p class="tag" style="color:var(--muted)">{len(members)} KI- & ML-Stellen in {e(c)}.</p>'
                 + "\n".join(job_card(j) for j in members))
         (out / "ort" / f"{slug(c)}.html").write_text(
-            page(f"KI-Jobs in {c} — {SITE_NAME}",
-                 f"Aktuelle KI-, ML- und Data-Science-Jobs in {c}.", body,
+            page(f"KI-Jobs in {c} {date.today().year} — {SITE_NAME}",
+                 clip(f"{len(members)} aktuelle KI-, ML- und Data-Science-Jobs in {c}, "
+                      f"täglich aktualisiert."), body,
                  BASE_URL + f"/ort/{slug(c)}.html"), encoding="utf-8")
 
     (out / "filter.js").write_text(FILTER_JS, encoding="utf-8")
@@ -300,6 +319,29 @@ Beschwerderecht. Stand: {date.today().strftime('%m/%Y')}.</p>"""
         "User-agent: *\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\n"
         "User-agent: PerplexityBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\n"
         f"Sitemap: {BASE_URL}/sitemap.xml\n", encoding="utf-8")
+
+    # 404 (Cloudflare Pages serviert es automatisch bei unbekannten Pfaden)
+    (out / "404.html").write_text(page(
+        f"404 — Seite nicht gefunden | {SITE_NAME}",
+        "Diese Seite gibt es nicht (mehr).",
+        '<h1>404 — Seite nicht gefunden</h1>\n'
+        '<p>Dieser Job ist vielleicht schon abgelaufen. Zur '
+        '<a href="/">aktuellen Jobübersicht</a>.</p>',
+        BASE_URL + "/404.html"), encoding="utf-8")
+
+    # _headers (Cloudflare Pages) — Security-Header für die Subdomain.
+    # Strikte CSP ist sicher: nur externe same-origin Scripts (filter.js),
+    # keine Inline-Scripts/Handler; nur Inline-Styles -> style-src 'unsafe-inline'.
+    (out / "_headers").write_text(
+        "/*\n"
+        "  X-Frame-Options: DENY\n"
+        "  X-Content-Type-Options: nosniff\n"
+        "  Referrer-Policy: strict-origin-when-cross-origin\n"
+        "  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()\n"
+        "  Content-Security-Policy: default-src 'self'; script-src 'self'; "
+        "style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; "
+        "connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'\n",
+        encoding="utf-8")
 
     print(f"Built {1 + len(jobs)} pages ({len(jobs)} jobs) → {out}/")
     return 1 + len(jobs)

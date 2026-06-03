@@ -50,6 +50,23 @@ def e(value) -> str:
     return html.escape(str(value if value is not None else ""))
 
 
+def clip(text: str, limit: int = 155) -> str:
+    """Meta-Description an Wortgrenze kuerzen (sauberere SERP-Snippets)."""
+    text = " ".join(str(text or "").split())
+    if len(text) <= limit:
+        return text
+    cut = text[:limit].rsplit(" ", 1)[0].rstrip(",;:–-")
+    return (cut or text[:limit]) + "…"
+
+
+# Wiederverwendbarer Inline-Newsletter-CTA (primaere Monetarisierung = Opt-in).
+def newsletter_cta(headline: str) -> str:
+    return (f'<aside class="nl"><strong>📬 {e(headline)}</strong>'
+            f'<span>Kuratierte KI-News fuer den Arbeitsalltag, 5 Minuten, kein Hype.</span>'
+            f'<a class="cta" href="{e(NEWSLETTER_URL)}" target="_blank" rel="noopener">'
+            f'Kostenlos abonnieren →</a></aside>')
+
+
 # --- URL-Pfade -----------------------------------------------------------------
 
 def page_path(kind: str, slug: str = "") -> str:
@@ -294,9 +311,9 @@ und Aufgabe. Kein Konto, kein Tracking, kostenlos.</p>
          "url": BASE_URL + "/", "description": TAGLINE},
         itemlist_schema(prompts),
     )
-    desc = (f"{len(prompts)} praxistaugliche deutsche KI-Prompts fuer Beruf und Alltag: "
-            "Angebote, E-Mails, Social Media, Recherche und mehr. Kopieren und nutzen.")
-    return page(title=f"{SITE_NAME} — {len(prompts)} Prompts zum Kopieren",
+    desc = clip(f"{len(prompts)} praxistaugliche deutsche KI-Prompts fuer Beruf und Alltag: "
+                "Angebote, E-Mails, Social Media, Recherche und mehr. Kopieren und nutzen.")
+    return page(title=f"{SITE_NAME} {date.today().year} — {len(prompts)} Prompts zum Kopieren",
                 description=desc, body=schema + body,
                 canonical=BASE_URL + page_path("home"), kind="home")
 
@@ -343,6 +360,7 @@ def prompt_page(p, related) -> str:
 <button class="copybtn" type="button" onclick="abanCopy(this)" data-target="prompt-text">📋 Prompt kopieren</button>
 </div>
 {tipp_html}
+{newsletter_cta("Jede Woche neue Prompts & KI-Tipps")}
 {related_html}
 <script>
 function abanCopy(btn){{
@@ -359,8 +377,12 @@ function abanFallback(t,cb){{
   document.body.removeChild(ta);
 }}
 </script>"""
-    desc = (p.get("erklaerung") or p["titel"])[:155]
-    return page(title=f"{p['titel']} — Prompt fuer {p['kategorie']} | {SITE_NAME}",
+    desc = clip(f"{p.get('erklaerung') or p['titel']} Fertiger Prompt zum Kopieren — "
+                f"fuer {p['kategorie']}, Aufgabe: {p['aufgabe']}.")
+    # Einzigartiger, keyword-reicher Title je Prompt (Beruf + Aufgabe + Jahr variieren).
+    title = (f"{p['titel']} — Prompt fuer {p['kategorie']} ({p['aufgabe']}) "
+             f"{date.today().year} | {SITE_NAME}")
+    return page(title=title,
                 description=desc, body=jsonld(crumb, howto) + body,
                 canonical=BASE_URL + page_path("prompt", p["slug"]),
                 kind="prompt", slug=p["slug"])
@@ -377,8 +399,8 @@ def listing_page(kind, label, slug, prompts, intro) -> str:
 <h1>{e(label)}: {len(prompts)} Prompts</h1>
 <p>{e(intro)}</p>
 {cards}"""
-    desc = f"{label}: {len(prompts)} praxistaugliche deutsche KI-Prompts zum Kopieren. {intro}"[:155]
-    return page(title=f"{label} — KI-Prompts ({nav_label}) | {SITE_NAME}",
+    desc = clip(f"{label}: {len(prompts)} praxistaugliche deutsche KI-Prompts zum Kopieren. {intro}")
+    return page(title=f"{label} — KI-Prompts ({nav_label}) {date.today().year} | {SITE_NAME}",
                 description=desc, body=jsonld(crumb, itemlist_schema(prompts)) + body,
                 canonical=BASE_URL + page_path(kind, slug), kind=kind, slug=slug)
 
@@ -493,6 +515,29 @@ def build(data_path: Path, out: Path) -> int:
     (out / "feed.xml").write_text(rss_feed(prompts), encoding="utf-8")
     (out / "sitemap.xml").write_text(sitemap(urls), encoding="utf-8")
     (out / "robots.txt").write_text(robots(), encoding="utf-8")
+
+    # 404 (Cloudflare Pages serviert es automatisch bei unbekannten Pfaden)
+    (out / "404.html").write_text(page(
+        title=f"404 — Seite nicht gefunden | {SITE_NAME}",
+        description="Diese Seite gibt es nicht (mehr).",
+        body='<h1>404 — Seite nicht gefunden</h1>\n'
+             '<p>Diese Seite gibt es nicht (mehr). Zur '
+             '<a href="/">Prompt-Bibliothek</a>.</p>',
+        canonical=BASE_URL + "/404.html", kind="home"), encoding="utf-8")
+
+    # _headers (Cloudflare Pages) — Security-Header. script-src erlaubt 'unsafe-inline',
+    # weil die Seiten Inline-Scripts + onclick/oninput (Live-Suche/Copy) nutzen; alle
+    # Ausgaben sind escaped. Übrige Direktiven bleiben streng.
+    (out / "_headers").write_text(
+        "/*\n"
+        "  X-Frame-Options: DENY\n"
+        "  X-Content-Type-Options: nosniff\n"
+        "  Referrer-Policy: strict-origin-when-cross-origin\n"
+        "  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()\n"
+        "  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; "
+        "style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; "
+        "connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'\n",
+        encoding="utf-8")
 
     pages = len(urls)
     print(f"OK: {len(prompts)} Prompts, {len(berufe)} Berufe, {len(aufgaben)} Aufgaben")

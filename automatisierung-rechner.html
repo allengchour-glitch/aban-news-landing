@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatisierungs-Rechner — lohnt sich das? · aban news</title>
+<meta name="description" content="Kostenloser Rechner: Lohnt sich die Automatisierung dieser Aufgabe? Zeitersparnis, jährliche Ersparnis und Amortisation in Sekunden — ehrlich, mit Wartungs-Caveat. Ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/automatisierung-rechner.html">
+<meta property="og:title" content="Automatisierungs-Rechner — lohnt sich das?">
+<meta property="og:description" content="Zeit- und Geldersparnis + Amortisation einer Automatisierung in Sekunden ausrechnen. Ehrlich, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/automatisierung-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Automatisierungs-Rechner",
+"url":"https://abannews.com/automatisierung-rechner.html","applicationCategory":"BusinessApplication",
+"operatingSystem":"Web","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Rechnet Zeitersparnis, jährliche Ersparnis und Amortisation einer Automatisierung aus.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--warn:#a16207;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:9px;border:0;cursor:pointer;font-size:1rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(26px,4.6vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,18px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:20px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+label{display:block;font-weight:600;font-size:14px;margin:0 0 6px;color:var(--ink2)}
+input,select{width:100%;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink)}
+input:focus,select:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.inline{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.res{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:560px){.res{grid-template-columns:1fr}}
+.metric{background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:14px;text-align:center}
+.metric b{display:block;font-size:1.6rem;color:var(--amber-dk);line-height:1.1}
+.metric span{font-size:.8rem;color:var(--muted)}
+.verdict{margin-top:16px;border-radius:12px;padding:14px 16px;font-weight:600}
+.verdict.ok{background:#dcfce7;color:#15803d}.verdict.warn{background:#fdeccd;color:#92560a}.verdict.bad{background:#fcd9d9;color:#a01616}
+@media(prefers-color-scheme:dark){.verdict.ok{background:#1c3a26;color:#86e8ab}.verdict.warn{background:#5a3f12;color:#ffd98a}.verdict.bad{background:#4a1818;color:#ffbcbc}}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:20px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#rechner">Zum Rechner</a>
+<header class="site"><div class="wrap">
+  <a href="/" class="brand">aban news</a>
+  <a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a>
+</div></header>
+
+<main><div class="wrap">
+  <section class="hero">
+    <h1>Lohnt sich diese <span class="a">Automatisierung</span>?</h1>
+    <p>Bevor du Stunden ins Automatisieren steckst: rechne in 30 Sekunden, ob es sich überhaupt auszahlt. Ehrlich, mit Wartungs-Realität. Kein Login, kein Tracking.</p>
+  </section>
+
+  <section class="panel" id="rechner">
+    <div class="grid">
+      <div>
+        <label for="min">Minuten pro Durchlauf</label>
+        <input type="number" id="min" min="0" step="1" value="15" inputmode="decimal">
+      </div>
+      <div>
+        <label for="freq">Wie oft?</label>
+        <div class="inline">
+          <input type="number" id="anz" min="0" step="1" value="5" inputmode="decimal" aria-label="Anzahl">
+          <select id="per" aria-label="Zeitraum">
+            <option value="252">pro Tag (Werktage)</option>
+            <option value="52" selected>pro Woche</option>
+            <option value="12">pro Monat</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label for="rate">Dein Stundensatz (€)</label>
+        <input type="number" id="rate" min="0" step="5" value="60" inputmode="decimal">
+      </div>
+      <div>
+        <label for="build">Aufwand zum Automatisieren (Stunden, einmalig)</label>
+        <input type="number" id="build" min="0" step="0.5" value="8" inputmode="decimal">
+      </div>
+      <div>
+        <label for="toolm">Tool-Kosten (€ / Monat, optional)</label>
+        <input type="number" id="toolm" min="0" step="1" value="0" inputmode="decimal">
+      </div>
+      <div>
+        <label for="rest">Restzeit nach Automatisierung (Min / Durchlauf)</label>
+        <input type="number" id="rest" min="0" step="1" value="1" inputmode="decimal">
+      </div>
+    </div>
+
+    <div class="res" id="res" aria-live="polite">
+      <div class="metric"><b id="mTime">–</b><span>Stunden gespart / Jahr</span></div>
+      <div class="metric"><b id="mMoney">–</b><span>Ersparnis / Jahr (netto)</span></div>
+      <div class="metric"><b id="mPay">–</b><span>Amortisation</span></div>
+    </div>
+    <div class="verdict" id="verdict" role="status">Werte eingeben…</div>
+    <p class="note" id="detail"></p>
+    <p class="note">Ehrlich: Eingerechnet sind Bauaufwand und Tool-Kosten. <strong>Nicht</strong> eingerechnet sind Wartung, Fehlersuche und das Risiko, dass die Automatisierung bei Änderungen bricht — rechne real mit ~10–20 % der gesparten Zeit als laufende Pflege. Eine Automatisierung, die nur knapp lohnt, lohnt oft nicht.</p>
+  </section>
+
+  <div class="cta">
+    <strong>Lohnt sich's? Dann: womit umsetzen.</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">Vergleich ehrlicher Automatisierungs-Tools (n8n, Make, Zapier … mit EU-Hosting-Filter) im aban-Radar.</p>
+    <p>
+      <a class="btn" href="https://automatisierung.abannews.com" target="_blank" rel="noopener">Automatisierungs-Tools vergleichen →</a>
+      <a class="btn ghost" href="/was-automatisieren.html">Was zuerst automatisieren?</a>
+    </p>
+  </div>
+</div></main>
+
+<footer><div class="wrap">
+  © 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/cron-generator.html">Cron-Generator</a> ·
+  <a href="/ki-kosten-rechner.html">KI-Kosten-Rechner</a> ·
+  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+</div></footer>
+
+<script>
+(function(){
+  var ids=["min","anz","per","rate","build","toolm","rest"], el={};
+  ids.forEach(function(i){el[i]=document.getElementById(i);});
+  var euro=function(n){return n.toLocaleString("de-DE",{maximumFractionDigits:0})+" €";};
+  function calc(){
+    var min=+el.min.value||0, anz=+el.anz.value||0, per=+el.per.value||0,
+        rate=+el.rate.value||0, build=+el.build.value||0, toolm=+el.toolm.value||0,
+        rest=Math.min(+el.rest.value||0, min);
+    var runsYear=anz*per;
+    var savedMinYear=Math.max(0,(min-rest))*runsYear;
+    var savedHrsYear=savedMinYear/60;
+    var grossYear=savedHrsYear*rate;
+    var toolYear=toolm*12;
+    var netYear=grossYear-toolYear;
+    var buildCost=build*rate;
+    document.getElementById("mTime").textContent=savedHrsYear.toLocaleString("de-DE",{maximumFractionDigits:0});
+    document.getElementById("mMoney").textContent=euro(netYear);
+    // Amortisation: Bauaufwand / (Netto-Ersparnis pro Monat)
+    var netMonth=netYear/12;
+    var payTxt="—", weeks=null;
+    if(netMonth>0 && buildCost>0){
+      var months=buildCost/netMonth;
+      weeks=months*4.33;
+      payTxt = months<1 ? Math.round(weeks)+" Wochen" : months.toFixed(1)+" Monate";
+    } else if(buildCost===0){ payTxt="sofort"; }
+    document.getElementById("mPay").textContent=payTxt;
+    var v=document.getElementById("verdict"), d=document.getElementById("detail");
+    d.textContent="Bauaufwand kostet rund "+euro(buildCost)+" deiner Zeit · "+
+      Math.round(runsYear)+" Durchläufe/Jahr · "+euro(grossYear)+" Brutto-Ersparnis minus "+euro(toolYear)+" Tool-Kosten.";
+    v.className="verdict";
+    if(netYear<=0){ v.classList.add("bad"); v.textContent="❌ Lohnt sich nicht — die Tool-Kosten fressen die Ersparnis. Anders lösen oder lassen."; }
+    else if(weeks!==null && weeks>52){ v.classList.add("warn"); v.textContent="⚠️ Grenzwertig — Amortisation über einem Jahr. Nur automatisieren, wenn die Aufgabe sicher bleibt."; }
+    else if(savedHrsYear<5){ v.classList.add("warn"); v.textContent="⚠️ Wenig Hebel — unter 5 Std./Jahr. Lohnt meist nur, wenn die Aufgabe nervt oder fehleranfällig ist."; }
+    else { v.classList.add("ok"); v.textContent="✅ Lohnt sich — spürbarer Zeitgewinn und schnelle Amortisation. Bau es, plane etwas Wartung ein."; }
+  }
+  ids.forEach(function(i){el[i].addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{
+  "_comment": "So verdienst du Geld: Melde dich beim Partnerprogramm des jeweiligen Anbieters an (Liste '_programme'). Du bekommst einen persönlichen Link. Trage ihn bei 'affiliate_url' ein und entferne das führende '_' im Key. Die Seite markiert ihn dann automatisch mit * und blendet den Transparenzhinweis ein, dann baut sie sich neu. Anbieter ohne aktiven Eintrag verlinken auf die offizielle URL aus data/anbieter.json (keine Provision).",
+  "_status": "ALLE SLOTS DEAKTIVIERT (Key mit '_'-Präfix). Noch keine Affiliate-Links freigegeben. Fallback = offizielle URL / Mail.",
+  "_kontakt_fallback": "mailto:hallo@abannews.com",
+  "_programme": {
+    "_hinweis": "Kuratierte Liste typischer Partnerprogramme, gemappt auf Anbieter in data/anbieter.json. 'signup' = wo du dich bewirbst. 'rate' = typische Provision (kann sich ändern, vor Nutzung prüfen). Quelle der Wahrheit für die echte URL bleibt data/anbieter.json. Nur Anbieter mit real existierendem Programm sind gelistet.",
+    "otter-ai": {
+      "signup": "https://otter.ai/affiliates",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring/bounty"
+    },
+    "fireflies-ai": {
+      "signup": "https://fireflies.ai/affiliates",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "descript": {
+      "signup": "https://www.descript.com/affiliates",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "elevenlabs": {
+      "signup": "https://elevenlabs.io/affiliates",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "murf": {
+      "signup": "https://murf.ai/affiliate-program",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "happy-scribe": {
+      "signup": "https://www.happyscribe.com/affiliates",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "tldv": {
+      "signup": "https://tldv.io/affiliate-program/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "sonix": {
+      "signup": "https://sonix.ai/affiliate",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    }
+  },
+  "links": {
+    "_anleitung": "Trage deinen persönlichen Affiliate-Link bei 'affiliate_url' ein und entferne das führende '_' im Anbieter-Key (z.B. '_otter-ai' -> 'otter-ai'). Erst dann wird der Link auf der Seite aktiv (mit * + Transparenzhinweis). Solange das '_' steht, bleibt der Slot deaktiviert und es wird die offizielle URL verlinkt.",
+    "_otter-ai": {
+      "affiliate_url": "https://otter.ai/?via=DEIN-CODE"
+    },
+    "_fireflies-ai": {
+      "affiliate_url": "https://fireflies.ai/?fpr=DEIN-CODE"
+    },
+    "_descript": {
+      "affiliate_url": "https://www.descript.com/?lmref=DEIN-CODE"
+    },
+    "_elevenlabs": {
+      "affiliate_url": "https://elevenlabs.io/?from=DEIN-CODE"
+    }
+  }
+}

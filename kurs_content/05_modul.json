@@ -1,0 +1,55 @@
+{
+  "title": "DSGVO &amp; Recht: Was du beachten musst",
+  "kicker": "Modul 5",
+  "toc": true,
+  "kind": "modul",
+  "blocks": [
+    ["lead", "KI-Tools sind Datenverarbeiter. Wenn du Kundendaten eingibst, gelten Regeln. Dieses Modul macht dich nicht zum Juristen, aber es bewahrt dich vor den teuersten Anf&auml;ngerfehlern."],
+    ["callout", "Wichtig: Diese Seite ist praktische Orientierung, keine Rechtsberatung. Sie nennt keine konkreten Paragraphen oder Urteile. Im Zweifel fragst du eine Fachperson f&uuml;r dein Land."],
+
+    ["h3", "Die eine Frage vor jeder Eingabe"],
+    ["p", "Bevor du irgendetwas in ein KI-Tool tippst, stell dir eine Frage: W&uuml;rde ich diese Information einem fremden Dienstleister per E-Mail schicken, ohne Vertrag? Wenn nein, geh&ouml;rt sie nicht ungepr&uuml;ft in die KI."],
+    ["p", "Diese Frage klingt simpel, aber sie filtert die meisten Probleme heraus. Sie zwingt dich, kurz innezuhalten, statt einen ganzen Kundenchat blind ins Tool zu kopieren. Mach sie dir zur Gewohnheit, bis sie automatisch l&auml;uft."],
+    ["p", "Ein zweiter Pr&uuml;fgedanke hilft zus&auml;tzlich: Geht es um eine echte Person, die man wiedererkennen kann? Sobald die Antwort ja lautet, gilt erh&ouml;hte Vorsicht. Eine erfundene Beispielfirma ist unkritisch, ein realer Kunde mit Namen und Adresse nicht."],
+
+    ["h3", "Was nie ungefiltert in die KI geh&ouml;rt"],
+    ["p", "Manche Daten haben in einem fremden Tool ohne klare Grundlage nichts verloren. Die folgende Liste ist dein schneller Stopp-Filter."],
+    ["ul", ["Klarnamen zusammen mit Kontaktdaten von Kunden", "Gesundheits- oder Finanzdaten", "Vertr&auml;ge mit personenbezogenen Angaben", "Bewerbungen, Personalakten, Krankmeldungen", "Interna, die unter einer Verschwiegenheitsvereinbarung stehen", "Zugangsdaten, Passw&ouml;rter, API-Schl&uuml;ssel"]],
+    ["callout", "Faustregel: Je sensibler die Daten, desto wichtiger ist die Grundlage. Bei Gesundheits- und Finanzdaten ist die H&uuml;rde besonders hoch &mdash; hier lieber zweimal pr&uuml;fen."],
+
+    ["h3", "Anonymisieren statt verbieten"],
+    ["p", "Du musst KI nicht meiden. Du musst nur sauber arbeiten. Ersetz echte Namen, Adressen und Aktenzeichen durch Platzhalter, bevor du einen Text zur &Uuml;berarbeitung gibst. Das Tool versteht den Inhalt trotzdem und du gibst nichts Personenbezogenes preis."],
+    ["code", "Statt: Herr M&uuml;ller aus Bern beschwert sich &uuml;ber Rechnung 4711\nBesser: Kunde X beschwert sich &uuml;ber Rechnung Y\n\nStatt: Termin mit Frau Keller, Tel. 079 123 45 67\nBesser: Termin mit Kontaktperson A, Telefon entfernt"],
+    ["p", "Wenn du das Ergebnis zur&uuml;ckbekommst, setzt du die echten Daten wieder ein &mdash; in deinem eigenen Editor, nicht im Tool. So bleibt die KI ein Werkzeug f&uuml;r Sprache, ohne deine Akten zu kennen."],
+
+    ["h3", "Anbieter und Standort pr&uuml;fen"],
+    ["p", "Nicht jedes Tool ist gleich. Bevor du ein Werkzeug f&uuml;r echte Arbeit einsetzt, schau dir den Anbieter an: Wer steht dahinter, wo werden die Daten verarbeitet und unter welchen Bedingungen?"],
+    ["ul", ["Gibt es einen Vertrag zur Auftragsverarbeitung, den du abschlie&szlig;en kannst?", "Wo stehen die Server und wo sitzt der Anbieter?", "Kann ich abschalten, dass meine Eingaben zum Training verwendet werden?", "Wie lange werden meine Eingaben gespeichert?", "Gibt es eine bezahlte Variante mit klareren Datenregeln?"]],
+    ["p", "Viele Anbieter bieten in den Gesch&auml;fts- oder Team-Tarifen strengere Datenregeln als in der Gratis-Version. Wenn du beruflich arbeitest, ist das oft die ehrlichere Wahl."],
+
+    ["h3", "Auftragsverarbeitung kurz erkl&auml;rt"],
+    ["p", "Sobald ein Tool personenbezogene Daten in deinem Auftrag verarbeitet, brauchst du in der Regel eine vertragliche Grundlage daf&uuml;r. Diesen Vertrag nennt man Auftragsverarbeitungsvertrag. Seri&ouml;se Anbieter stellen ihn zum Abschluss bereit, oft direkt im Konto-Bereich."],
+    ["p", "Du musst diesen Vertrag nicht selbst formulieren. Es reicht, dass du pr&uuml;fst, ob der Anbieter einen anbietet, und dass du ihn aktiv abschlie&szlig;t, statt ihn zu &uuml;berspringen. Fehlt er ganz, ist das ein Warnsignal."],
+
+    ["h3", "Trainingsdaten abschalten und EU-Datenstandort"],
+    ["p", "Bei vielen Tools landen deine Eingaben standardm&auml;&szlig;ig im Training des Modells. Such in den Einstellungen nach einem Schalter dazu und deaktiviere ihn, wenn du mit echten Daten arbeitest. Bei einigen Anbietern ist das in den Business-Tarifen ohnehin abgeschaltet."],
+    ["p", "Wenn dir der Verarbeitungsort wichtig ist, achte auf Optionen f&uuml;r einen EU-Datenstandort oder auf Anbieter mit Servern in der EU oder der Schweiz. Das ersetzt keine Pr&uuml;fung, reduziert aber das Risiko und vereinfacht die Dokumentation."],
+
+    ["h3", "Kennzeichnungspflicht: der EU AI Act"],
+    ["p", "Die EU hat Regeln f&uuml;r den Umgang mit KI beschlossen, den sogenannten AI Act. Teile davon greifen schrittweise. Ab August 2026 werden unter anderem Transparenzpflichten relevant: Nutzer sollen erkennen k&ouml;nnen, wenn sie mit KI sprechen oder wenn Inhalte von KI erzeugt wurden."],
+    ["p", "F&uuml;r dich als Solo-Profi hei&szlig;t das praktisch: Sei ehrlich. Wenn ein Chatbot auf deiner Seite antwortet, weise darauf hin. Wenn ein Bild oder Text von KI stammt und das relevant ist, verschweige es nicht. Die genauen Details kl&auml;ren sich erst mit der Anwendung &mdash; halte dich grob an den Grundsatz Transparenz, dann liegst du selten falsch."],
+    ["callout", "Merke: Der AI Act bestraft vor allem T&auml;uschung. Wer offen sagt, wo KI im Spiel ist, hat die wichtigste H&uuml;rde schon genommen."],
+
+    ["h3", "H&auml;ufige Fehler"],
+    ["ul", ["Ganze Kundenchats oder E-Mail-Verl&auml;ufe ungefiltert ins Tool kopieren", "Glauben, dass eine Gratis-Version automatisch datenschutzfreundlich ist", "Den Vertrag zur Auftragsverarbeitung &uuml;berspringen, weil es schneller geht", "Den Trainings-Schalter nie in den Einstellungen suchen", "KI-Antworten als eigene Fachauskunft ausgeben, ohne sie zu pr&uuml;fen", "Annehmen, anonymisieren sei n&ouml;tig nur bei Namen &mdash; auch Adresse, Telefon und Aktenzeichen verraten Personen"]],
+
+    ["h3", "Deine Mini-Checkliste vor dem echten Einsatz"],
+    ["p", "Geh diese Punkte einmal durch, bevor du ein Tool f&uuml;r echte Kundenarbeit nutzt. Hak ab, was du gepr&uuml;ft hast."],
+    ["ul", ["Ich wei&szlig;, wo der Anbieter sitzt und wo verarbeitet wird", "Ich habe den Vertrag zur Auftragsverarbeitung gepr&uuml;ft oder abgeschlossen", "Ich habe das Training mit meinen Daten abgeschaltet, wo m&ouml;glich", "Ich anonymisiere sensible Inhalte vor der Eingabe", "Ich kennzeichne KI-Inhalte dort, wo es f&uuml;r andere wichtig ist", "Ich habe im Zweifel eine Fachperson gefragt"]],
+
+    ["h3", "Mini-&Uuml;bung: dein Tool-Steckbrief"],
+    ["p", "Nimm dir das eine KI-Tool, das du am h&auml;ufigsten nutzt, und beantworte die folgenden Schritte schriftlich. Das dauert zehn Minuten und du hast danach eine kleine Akte, auf die du dich berufen kannst."],
+    ["ol", ["Notiere Name des Tools und Anbieter mit Sitz", "Suche in den Einstellungen den Trainings-Schalter und stelle ihn richtig ein", "Pr&uuml;fe, ob ein Vertrag zur Auftragsverarbeitung verf&uuml;gbar ist, und halte das Ergebnis fest", "Lege eine Liste an mit Daten, die du in dieses Tool nie ohne Anonymisierung gibst", "Entscheide, ob du f&uuml;r echte Kundenarbeit den bezahlten Tarif brauchst"]],
+    ["callout", "Wenn du diesen Steckbrief f&uuml;r deine zwei, drei wichtigsten Tools anlegst, hast du den gr&ouml;&szlig;ten Teil der Praxis abgedeckt &mdash; ruhig und ohne Panik."]
+  ]
+}

@@ -449,6 +449,11 @@ NEW_UI = {
                  "tr": "{v} firmasının {name} aracı {u} için {s}/10 alıyor. Fiyat: {p}.",
                  "ja": "{v}の{name}は{u}で{s}/10。価格: {p}。",
                  "zh": "{v} 的 {name} 在{u}方面获得 {s}/10。价格：{p}。"},
+    # Title suffix for tool pages: keyword-rich + unique (vendor + year vary per tool).
+    "tool_title": {"de": "Test & Bewertung", "en": "review & rating", "fr": "test & avis",
+                   "es": "análisis y opinión", "it": "recensione e voto", "pt": "análise e nota",
+                   "nl": "review & beoordeling", "pl": "test i ocena", "tr": "inceleme & puan",
+                   "ja": "レビューと評価", "zh": "测评与评分"},
     "glossary_sub": {"de": "Die wichtigsten KI-Begriffe verständlich erklärt — mit passenden Tools.",
                      "en": "The most important AI terms, clearly explained — with matching tools.",
                      "fr": "Les termes IA essentiels, clairement expliqués — avec des outils adaptés.",
@@ -460,6 +465,66 @@ NEW_UI = {
                      "tr": "En önemli YZ terimleri, açıkça anlatıldı — ilgili araçlarla.",
                      "ja": "重要なAI用語をわかりやすく解説 — 関連ツール付き。",
                      "zh": "最重要的 AI 术语清晰解析 — 附相关工具。"},
+    # --- Methodik / how we rate (E-E-A-T transparency page) ----------------------
+    "methodik_nav": {"de": "So bewerten wir", "en": "How we rate", "fr": "Notre méthode",
+                     "es": "Cómo evaluamos", "it": "Come valutiamo", "pt": "Como avaliamos",
+                     "nl": "Hoe we beoordelen", "pl": "Jak oceniamy", "tr": "Nasıl puanlıyoruz",
+                     "ja": "評価方法", "zh": "评分方法"},
+    "methodik_title": {"de": "So testen und bewerten wir KI-Tools",
+                       "en": "How we test and rate AI tools",
+                       "fr": "Comment nous testons et évaluons les outils IA",
+                       "es": "Cómo probamos y evaluamos las herramientas de IA",
+                       "it": "Come testiamo e valutiamo gli strumenti IA",
+                       "pt": "Como testamos e avaliamos ferramentas de IA",
+                       "nl": "Hoe we AI-tools testen en beoordelen",
+                       "pl": "Jak testujemy i oceniamy narzędzia AI",
+                       "tr": "Yapay zekâ araçlarını nasıl test edip puanlıyoruz",
+                       "ja": "AIツールのテストと評価の方法",
+                       "zh": "我们如何测试和评分AI工具"},
+    "methodik_intro": {"de": "Transparent erklärt: woher unsere Wertungen kommen, was sie bedeuten und was sie nicht sind.",
+                       "en": "Explained openly: where our ratings come from, what they mean and what they don't.",
+                       "fr": "En toute transparence : d'où viennent nos notes, ce qu'elles signifient et ce qu'elles ne sont pas.",
+                       "es": "Explicado con transparencia: de dónde salen nuestras valoraciones y qué significan.",
+                       "it": "Spiegato apertamente: da dove vengono i nostri voti e cosa significano.",
+                       "pt": "Explicado com transparência: de onde vêm as nossas notas e o que significam.",
+                       "nl": "Open uitgelegd: waar onze beoordelingen vandaan komen en wat ze betekenen.",
+                       "pl": "Jasno wyjaśnione: skąd biorą się nasze oceny i co oznaczają.",
+                       "tr": "Açıkça anlatıldı: puanlarımız nereden geliyor ve ne anlama geliyor.",
+                       "ja": "透明性をもって説明：評価の出どころと意味。",
+                       "zh": "坦诚说明：评分的来源与含义。"},
+    "method_label": {"de": "Methodik", "en": "Methodology", "fr": "Méthode", "es": "Metodología",
+                     "it": "Metodologia", "pt": "Metodologia", "nl": "Methodiek", "pl": "Metodyka",
+                     "tr": "Yöntem", "ja": "評価方法", "zh": "评分方法"},
+    "method_link": {"de": "So bewerten wir →", "en": "How we rate →", "fr": "Notre méthode →",
+                    "es": "Cómo evaluamos →", "it": "Come valutiamo →", "pt": "Como avaliamos →",
+                    "nl": "Hoe we beoordelen →", "pl": "Jak oceniamy →", "tr": "Nasıl puanlıyoruz →",
+                    "ja": "評価方法 →", "zh": "评分方法 →"},
+    "checked_on": {"de": "Zuletzt geprüft", "en": "Last checked", "fr": "Dernière vérification",
+                   "es": "Última revisión", "it": "Ultima verifica", "pt": "Última verificação",
+                   "nl": "Laatst gecontroleerd", "pl": "Ostatnio sprawdzone", "tr": "Son kontrol",
+                   "ja": "最終確認", "zh": "最近核查"},
+    "praxis_note": {"de": "Praxis-Notiz", "en": "Hands-on note", "fr": "Note de terrain",
+                    "es": "Nota práctica", "it": "Nota pratica", "pt": "Nota prática",
+                    "nl": "Praktijknotitie", "pl": "Notatka z praktyki", "tr": "Saha notu",
+                    "ja": "実践メモ", "zh": "实践笔记"},
+    "sources_label": {"de": "Quellen", "en": "Sources", "fr": "Sources", "es": "Fuentes",
+                      "it": "Fonti", "pt": "Fontes", "nl": "Bronnen", "pl": "Źródła",
+                      "tr": "Kaynaklar", "ja": "出典", "zh": "来源"},
+    "author_by": {"de": "Redaktion", "en": "Editor", "fr": "Rédaction", "es": "Redacción",
+                  "it": "Redazione", "pt": "Redação", "nl": "Redactie", "pl": "Redakcja",
+                  "tr": "Editör", "ja": "編集", "zh": "编辑"},
+    "author_bio": {
+        "de": "Allen Chour (\u201eAban\u201c) schreibt täglich den Newsletter aban news über KI für den deutschsprachigen Raum und kuratiert diesen Tool-Radar. Die Tools hier nutzt oder prüft er selbst — die Notizen kommen aus der Praxis, nicht aus Pressetexten.",
+        "en": "Allen Chour (\"Aban\") writes the daily aban news newsletter about AI for German speakers and curates this tool radar. He uses or checks the tools himself — the notes come from hands-on work, not press releases.",
+        "fr": "Allen Chour (« Aban ») rédige la newsletter quotidienne aban news sur l'IA et sélectionne ce radar d'outils. Il utilise ou vérifie lui-même les outils — les notes viennent du terrain, pas des communiqués.",
+        "es": "Allen Chour («Aban») escribe la newsletter diaria aban news sobre IA y selecciona este radar de herramientas. Usa o revisa las herramientas él mismo — las notas vienen de la práctica, no de notas de prensa.",
+        "it": "Allen Chour (\"Aban\") scrive la newsletter quotidiana aban news sull'IA e cura questo radar di strumenti. Usa o verifica gli strumenti di persona — le note vengono dalla pratica, non dai comunicati.",
+        "pt": "Allen Chour (\"Aban\") escreve a newsletter diária aban news sobre IA e seleciona este radar de ferramentas. Ele próprio usa ou verifica as ferramentas — as notas vêm da prática, não de comunicados.",
+        "nl": "Allen Chour (\"Aban\") schrijft de dagelijkse nieuwsbrief aban news over AI en stelt deze tool-radar samen. Hij gebruikt of controleert de tools zelf — de notities komen uit de praktijk, niet uit persberichten.",
+        "pl": "Allen Chour (\u201eAban\u201c) pisze codzienny newsletter aban news o AI i tworzy ten radar narzędzi. Sam używa lub sprawdza narzędzia — notatki pochodzą z praktyki, nie z komunikatów prasowych.",
+        "tr": "Allen Chour (\"Aban\"), yapay zekâ üzerine günlük aban news bültenini yazıyor ve bu araç radarını derliyor. Araçları kendisi kullanıyor ya da inceliyor — notlar basın bültenlerinden değil, sahadan geliyor.",
+        "ja": "Allen Chour（「Aban」）はAIに関する日刊ニュースレター aban news を執筆し、このツールレーダーを編集しています。ツールは本人が使うか確認しており、メモはプレスリリースではなく実践から来ています。",
+        "zh": "Allen Chour（\"Aban\"）撰写每日 AI 通讯 aban news，并整理本工具雷达。工具均由他亲自使用或核查 — 笔记来自实践，而非新闻稿。"},
 }
 # Newsletter box links to the existing owned audience (compounding revenue lever).
 NEWSLETTER_URL = "https://abannews.com/gratis-ki-tools.html"
@@ -475,6 +540,22 @@ def slugify(value: str) -> str:
 
 def e(value) -> str:
     return html.escape(str(value if value is not None else ""))
+
+
+def clip(text: str, limit: int = 155) -> str:
+    """Trim a meta description to a word boundary (cleaner SERP snippets)."""
+    text = " ".join(str(text or "").split())
+    if len(text) <= limit:
+        return text
+    cut = text[:limit].rsplit(" ", 1)[0].rstrip(",;:–-")
+    return (cut or text[:limit]) + "…"
+
+
+def strip_marker(text):
+    """Drop the internal "[Redaktion: …]" editorial flag from any visitor-facing
+    text. Single source of truth so no public surface (page, feed, snippet) can
+    leak the marker if a flagged tool later gets covered."""
+    return re.sub(r"\[Redaktion:[^\]]*\]\s*", "", str(text or "")).strip()
 
 
 # --- Localization loading ------------------------------------------------------
@@ -542,6 +623,8 @@ def page_path(lang: str, kind: str, slug: str = "") -> str:
         return f"{prefix}/glossar/{slug}.html"
     if kind == "partner":
         return f"{prefix}/partner.html"
+    if kind == "methodik":
+        return f"{prefix}/methodik.html"
     if kind == "alt":
         return f"{prefix}/alternativen/{slug}.html"
     return prefix + "/"
@@ -587,7 +670,7 @@ def lang_switcher(available: list[str], current: str, kind: str, slug: str = "")
 
 
 def page(*, lang, ui, title, description, body, canonical,
-         available, kind, slug="", og_image=None):
+         available, kind, slug="", og_image=None, og_type="website"):
     og_img = og_image or (BASE_URL + "/og/default.png")
     return f"""<!DOCTYPE html>
 <html lang="{e(lang)}">
@@ -601,7 +684,7 @@ def page(*, lang, ui, title, description, body, canonical,
 <link rel="alternate" type="application/rss+xml" title="{e(SITE_NAME)}" href="{e(BASE_URL + feed_path(lang))}">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(description)}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{e(og_type)}">
 <meta property="og:site_name" content="{e(SITE_NAME)}">
 <meta property="og:locale" content="{e(lang)}">
 <meta property="og:image" content="{e(og_img)}">
@@ -675,6 +758,10 @@ padding:10px 18px;border-radius:8px;font-weight:600;margin-top:8px;}}
 .ctab th{{color:var(--muted);font-weight:600;}} .ctab tr:hover td{{background:var(--bg-alt);}}
 .ctab .num{{text-align:center;white-space:nowrap;}}
 .tldr{{background:var(--bg-alt);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:.95rem;}}
+.author{{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin:22px 0;font-size:.92rem;}}
+.author-name{{font-weight:600;margin-bottom:4px;}} .author p{{margin:6px 0 0;color:var(--muted);}}
+.praxis{{background:var(--bg-alt);border-left:3px solid var(--success);padding:10px 14px;border-radius:6px;margin:12px 0;font-size:.92rem;}}
+.srcs{{font-size:.84rem;color:var(--muted);margin:8px 0;}} .srcs a{{color:var(--accent-h);}}
 .disclosure{{color:var(--muted);font-size:.82rem;border-top:1px solid var(--border);margin-top:24px;padding-top:14px;}}
 footer{{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);font-size:.85rem;}}
 </style>
@@ -697,8 +784,10 @@ footer{{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);fon
 <p class="disclosure">{e(ui['disclosure'])}</p>
 </div></main>
 <footer><div class="wrap">
-© {date.today().year} {e(SITE_NAME)} · <a href="/datenschutz.html">{e(ui['privacy'])}</a> ·
-<a href="/impressum.html">{e(ui['imprint'])}</a> · <a href="/partner.html">{e(ui['partner_nav'])}</a> · {e(ui['data_note'])}
+© {date.today().year} {e(SITE_NAME)} · <a href="{e(page_path(lang,'methodik'))}">{e(ui['methodik_nav'])}</a> ·
+<a href="{e(page_path(lang,'partner'))}">{e(ui['partner_nav'])}</a> ·
+<a href="/datenschutz.html">{e(ui['privacy'])}</a> ·
+<a href="/impressum.html">{e(ui['imprint'])}</a> · {e(ui['data_note'])}
 </div></footer>
 <script>
 function abanTheme(){{var h=document.documentElement;var t=h.getAttribute('data-theme')==='dark'?'light':'dark';
@@ -725,9 +814,21 @@ def affiliate_link(tool, aff):
     return tool.get("url", "#"), False
 
 
-def tool_card(tool, aff, ui, lang):
+def cta_link(tool, aff, ui, *, style=""):
+    """Single source of truth for outbound tool/affiliate buttons.
+
+    Affiliate links: rel="sponsored noopener" (paid relationship) + visible *.
+    Plain links: rel="noopener nofollow" (no equity passed to the vendor).
+    Both open in a new tab with noopener (prevents reverse-tabnabbing)."""
     url, is_aff = affiliate_link(tool, aff)
     star = " *" if is_aff else ""
+    rel = "sponsored noopener" if is_aff else "noopener nofollow"
+    st = f' style="{style}"' if style else ""
+    return (f'<a class="cta" href="{e(url)}" rel="{rel}" target="_blank"{st}>'
+            f'{e(ui["cta"].format(name=tool["name"]))}{e(star)} →</a>')
+
+
+def tool_card(tool, aff, ui, lang):
     cats = "".join(f'<span class="chip">{e(c)}</span>' for c in tool.get("category", []))
     search = " ".join([tool["name"], tool.get("vendor", "")]
                       + tool.get("category", []) + tool.get("use_cases", [])).lower()
@@ -740,8 +841,15 @@ def tool_card(tool, aff, ui, lang):
 <span>🇩🇪 {e(ui['dach'])} {e(tool.get('dach_relevance','—'))}/10</span>
 </div>
 <p class="meta">{cats}</p>
-<a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank">{e(ui['cta'].format(name=tool['name']))}{e(star)} →</a>
+{cta_link(tool, aff, ui)}
 </article>"""
+
+
+# Real publisher/editor entity (E-E-A-T): named person behind the ratings, no
+# invented credentials. Reused across SoftwareApplication review + site schema.
+EDITOR_PERSON = {"@type": "Person", "name": "Allen Chour", "url": "https://abannews.com"}
+PUBLISHER_ORG = {"@type": "Organization", "name": SITE_NAME, "url": BASE_URL + "/",
+                 "founder": EDITOR_PERSON, "sameAs": ["https://abannews.com"]}
 
 
 def jsonld(tool):
@@ -757,8 +865,12 @@ def jsonld(tool):
         data["offers"] = {"@type": "Offer", "price": str(p.get("paid_from_eur", 0)),
                           "priceCurrency": p.get("currency", "EUR")}
     if tool.get("worth_it_score") is not None:
+        # Named human reviewer + publisher org + dateModified = genuine E-E-A-T
+        # signals for "who, when, on what basis" (Google reviews / AI citation).
         data["review"] = {"@type": "Review",
-                          "author": {"@type": "Organization", "name": SITE_NAME},
+                          "author": EDITOR_PERSON,
+                          "publisher": PUBLISHER_ORG,
+                          "dateModified": date.today().isoformat(),
                           "reviewRating": {"@type": "Rating",
                                            "ratingValue": str(tool["worth_it_score"]),
                                            "bestRating": "10"}}
@@ -823,14 +935,18 @@ def faq_section(tool, loc, ui, tools_by_id, lang):
 
 
 def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None, related=None):
-    url, is_aff = affiliate_link(tool, aff)
-    star = " *" if is_aff else ""
     loc = loc_tools.get(tool["id"], {})
     note = loc.get("aban_note") or tool.get("aban_note")
     # Internen Redaktions-Marker nicht öffentlich zeigen (Daten-Flag, kein Besucher-Text).
     if note:
-        note = re.sub(r"\[Redaktion:[^\]]*\]\s*", "", note).strip()
+        note = strip_marker(note)
     dsgvo = loc.get("dsgvo_note") or tool.get("dsgvo_note")
+    # Optional first-hand "hands-on note" + sources — render ONLY if present in
+    # data (localized override wins). Empty = nothing shown, nothing invented.
+    praxis = loc.get("praxis_note") or tool.get("praxis_note")
+    if praxis:
+        praxis = strip_marker(praxis)
+    sources = loc.get("sources") or tool.get("sources") or []
     use_cases = loc.get("use_cases") or tool.get("use_cases", [])
     uc = "".join(f'<span class="chip">{e(u)}</span>' for u in use_cases)
     alts = ", ".join(e(a) for a in tool.get("alternatives", [])) or "—"
@@ -844,12 +960,22 @@ def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None, relat
         s=tool.get("worth_it_score", "n/a"),
         u=(use_cases[0] if use_cases else (tool.get("category") or ["KI"])[0]),
         p=price_str(tool, ui))
+    praxis_html = (f'<div class="praxis"><strong>🛠️ {e(ui["praxis_note"])}:</strong> '
+                   f'{e(praxis)}</div>' if praxis else "")
+    if sources:
+        src_links = " · ".join(
+            (f'<a href="{e(s)}" rel="noopener nofollow" target="_blank">{e(s)}</a>'
+             if str(s).startswith("http") else e(s)) for s in sources)
+        sources_html = f'<p class="srcs">📎 {e(ui["sources_label"])}: {src_links}</p>'
+    else:
+        sources_html = ""
     body = f"""{jsonld(tool)}{crumb}
 <p><a href="{e(page_path(lang,'home'))}">{e(ui['all_tools'])}</a></p>
 <h1 style="margin:0">{e(tool['name'])} <span class="score">{e(tool.get('worth_it_score','—'))}/10</span></h1>
 <p class="tldr"><strong>{e(ui['tldr'])}:</strong> {e(tldr)}</p>
+{cta_link(tool, aff, ui)}
 <div class="grid-meta" style="margin:10px 0">
-<span>🕒 {e(ui['updated'])}: {date.today().strftime('%m/%Y')}</span>
+<span>🕒 {e(ui['checked_on'])}: {date.today().strftime('%m/%Y')} · <a href="{e(page_path(lang,'methodik'))}">{e(ui['method_label'])}</a></span>
 <span>🏢 {e(tool.get('vendor','—'))}</span>
 <span>💶 {e(p.get('model','—'))}{e(price_extra)}</span>
 <span>🇩🇪 {e(ui['dach'])} {e(tool.get('dach_relevance','—'))}/10</span>
@@ -857,19 +983,23 @@ def tool_page(tool, aff, ui, loc_tools, lang, available, tools_by_id=None, relat
 <p><strong>{e(ui['use_cases'])}:</strong><br>{uc or '—'}</p>
 {pro_contra(loc, ui)}
 {'<div class="note"><strong>'+e(ui['editor_note'])+':</strong> '+e(note)+'</div>' if note else ''}
+{praxis_html}
 {'<div class="note"><strong>'+e(ui['dsgvo'])+':</strong> '+e(dsgvo)+'</div>' if dsgvo else ''}
+{sources_html}
 {newsletter_mention(tool, ui, lang)}
 <p><strong>{e(ui['alternatives'])}:</strong> {alts}{(' · <a href="'+e(page_path(lang,'alt',slugify(tool['id'])))+'">'+e(ui['alt_title'].format(name=tool['name']))+' →</a>') if (tool.get('alternatives') or related) else ''}</p>
 {comparison_links(tool, tools_by_id or {}, ui, lang)}
 {related_links(related, ui, lang)}
-<a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank">{e(ui['cta'].format(name=tool['name']))}{e(star)} →</a>
+{author_box(ui, lang)}
+{cta_link(tool, aff, ui)}
 {faq_section(tool, loc, ui, tools_by_id or {}, lang)}"""
-    desc = (note or ui["meta_tool"].format(name=tool["name"]))[:155]
+    desc = clip(note or ui["meta_tool"].format(name=tool["name"]))
+    title = f"{tool['name']} {ui['tool_title']} {date.today().year} — {SITE_NAME}"
     return page(lang=lang, ui=ui,
-                title=f"{tool['name']} — {SITE_NAME}", description=desc, body=body,
+                title=title, description=desc, body=body,
                 canonical=BASE_URL + page_path(lang, "tool", slugify(tool["id"])),
                 available=available, kind="tool", slug=slugify(tool["id"]),
-                og_image=BASE_URL + f"/og/{slugify(tool['id'])}.png")
+                og_image=BASE_URL + f"/og/{slugify(tool['id'])}.png", og_type="product")
 
 
 def vs_slug(a_id, b_id):
@@ -909,8 +1039,6 @@ def comparison_links(tool, tools_by_id, ui, lang):
 
 
 def vs_column(tool, aff, ui, loc_tools, lang):
-    url, is_aff = affiliate_link(tool, aff)
-    star = " *" if is_aff else ""
     loc = loc_tools.get(tool["id"], {})
     return f"""<div>
 <h2 style="margin:0 0 6px"><a href="{e(page_path(lang,'tool',slugify(tool['id'])))}"
@@ -920,7 +1048,7 @@ style="text-decoration:none;color:var(--text)">{e(tool['name'])}</a>
 <span>💶 {e(price_str(tool, ui))}</span>
 <span>🇩🇪 {e(ui['dach'])} {e(tool.get('dach_relevance','—'))}/10</span></div>
 {pro_contra(loc, ui)}
-<a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank">{e(ui['cta'].format(name=tool['name']))}{e(star)} →</a>
+{cta_link(tool, aff, ui)}
 </div>"""
 
 
@@ -928,14 +1056,11 @@ def comp_table(tools, aff, ui, lang):
     """Scannable comparison table: tool, price, score, CTA."""
     rows = []
     for t in tools:
-        url, is_aff = affiliate_link(t, aff)
-        star = " *" if is_aff else ""
         rows.append(
             f'<tr><td><a href="{e(page_path(lang,"tool",slugify(t["id"])))}">{e(t["name"])}</a></td>'
             f'<td>{e(price_str(t, ui))}</td>'
             f'<td class="num"><span class="score">{e(t.get("worth_it_score","—"))}/10</span></td>'
-            f'<td><a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank" '
-            f'style="padding:5px 12px">{e(ui["cta"].format(name=t["name"]))}{e(star)} →</a></td></tr>')
+            f'<td>{cta_link(t, aff, ui, style="padding:5px 12px")}</td></tr>')
     return (f'<table class="ctab"><thead><tr><th>{e(ui["col_tool"])}</th>'
             f'<th>{e(ui["col_price"])}</th><th class="num">{e(ui["col_score"])}</th><th></th>'
             f'</tr></thead><tbody>{"".join(rows)}</tbody></table>')
@@ -1016,6 +1141,18 @@ def newsletter_mention(tool, ui, lang):
             f'rel="noopener">{e(ui["covered_in"].format(n=n))}</a></p>')
 
 
+def author_box(ui, lang):
+    """E-E-A-T author/editor identity block. Real person, real bio, real links —
+    nothing invented. Links to the methodology + newsletter for verification."""
+    return (
+        f'<aside class="author">'
+        f'<div class="author-name">✍️ {e(ui["author_by"])}: '
+        f'<a href="https://abannews.com" rel="author noopener">Allen Chour</a></div>'
+        f'<p>{e(ui["author_bio"])}</p>'
+        f'<p class="subnav"><a href="{e(page_path(lang,"methodik"))}">{e(ui["method_link"])}</a></p>'
+        f'</aside>')
+
+
 def trending_page(members, aff, ui, lang, available):
     crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
                         (ui["trending_nav"], page_path(lang, "trending"))], lang)
@@ -1034,7 +1171,7 @@ def rss_feed(members, ui, loc_tools, lang):
     items = []
     for t in members:
         loc = loc_tools.get(t["id"], {})
-        desc = loc.get("aban_note") or t.get("aban_note") or ""
+        desc = strip_marker(loc.get("aban_note") or t.get("aban_note"))
         link = BASE_URL + page_path(lang, "tool", slugify(t["id"]))
         items.append(
             f"<item><title>{e(t['name'])}</title><link>{e(link)}</link>"
@@ -1067,7 +1204,8 @@ def site_schema(ui, lang):
          "url": BASE_URL + page_path(lang, "home"), "inLanguage": lang,
          "description": ui["tagline"]},
         {"@context": "https://schema.org", "@type": "Organization", "name": SITE_NAME,
-         "url": BASE_URL + "/", "description": ui["tagline"]},
+         "url": BASE_URL + "/", "description": ui["tagline"],
+         "founder": EDITOR_PERSON, "sameAs": ["https://abannews.com"]},
     ]
     return "".join(
         f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>'
@@ -1145,7 +1283,7 @@ def term_page(term, related, aff, ui, lang, available, gi18n=None):
     body = (f'{crumb}{sj}<p><a href="{e(page_path(lang,"glossary"))}">← {e(ui["glossary_nav"])}</a></p>\n'
             f'<h1>{e(tname)}</h1>\n<p>{e(tdef)}</p>\n{rel_html}')
     return page(lang=lang, ui=ui, title=f'{tname} — {SITE_NAME}',
-                description=tdef[:155], body=body,
+                description=clip(tdef), body=body,
                 canonical=BASE_URL + page_path(lang, "term", term["slug"]),
                 available=available, kind="term", slug=term["slug"])
 
@@ -1335,6 +1473,101 @@ def partner_page(ui, available, lang="de"):
                 available=available, kind="partner")
 
 
+# --- Methodology copy (per language; de + en authored, others fall back to de) -
+# Honest, first-hand. Describes the ACTUAL scoring fields in the data — no
+# invented test rigs, panels, or numbers. {n}=tool count, {issues}=newsletter issues.
+METHODIK_BODY = {
+    "de": """<h2>Wer hier bewertet</h2>
+<p>Diesen Radar pflegt eine Person, nicht eine anonyme Redaktion: Allen Chour, der täglich
+den Newsletter aban news über KI schreibt. Die Tools hier nutze ich selbst, teste neue
+Funktionen oder prüfe sie gezielt für den deutschsprachigen Markt. Wenn ich ein Tool noch
+nicht ausreichend in der Hand hatte, markiere ich das intern als „zu prüfen" und halte die
+Aussagen entsprechend zurück — du siehst dann nur, was belastbar ist.</p>
+<h2>Die zwei Wertungen, die du siehst</h2>
+<p><strong>Worth-it-Score (0–10):</strong> Lohnt sich das Tool für den Preis und den
+versprochenen Zweck? Hier fließen Nutzen im Alltag, Reife, Stabilität und das
+Preis-Leistungs-Verhältnis ein. Wir vergeben in halben Schritten (z. B. 7,5/10), keine
+Dezimalstellen-Genauigkeit, die es nicht gibt.</p>
+<p><strong>DACH-Relevanz (0–10):</strong> Wie gut passt das Tool zum deutschsprachigen Raum?
+Bewertet werden u. a. deutsche Sprachqualität, EU-/DSGVO-Tauglichkeit, EUR-Preise und
+Support. Ein global starkes Tool kann hier niedriger liegen, wenn es Deutsch nur halbherzig
+beherrscht.</p>
+<h2>Woher die Daten kommen</h2>
+<ul>
+<li>Eigene Nutzung und gezielte Prüfung der Tools.</li>
+<li>Beobachtung über den Newsletter: Tools, die in den Ausgaben besprochen wurden, sind
+entsprechend markiert und verlinken zurück ins Archiv.</li>
+<li>Offizielle Anbieterseiten für Preise, Pläne und Funktionsumfang — Preise ändern sich,
+deshalb steht auf jeder Tool-Seite ein „Zuletzt geprüft"-Datum.</li>
+</ul>
+<h2>Was die Wertungen nicht sind</h2>
+<p>Es sind keine Labormessungen und keine Sterne-Durchschnitte aus Nutzerstimmen. Es ist eine
+begründete Einschätzung — transparent, aber subjektiv. Lies die Pro/Contra-Punkte und die
+Praxis-Notiz, nicht nur die Zahl.</p>
+<h2>Geld ändert die Reihenfolge nicht</h2>
+<p>Einige Links sind Affiliate-Links (mit * markiert). Ob ein Tool ein Affiliate-Programm hat,
+beeinflusst weder Score noch Platzierung. Tools ohne Provision können oben stehen, Tools mit
+Provision unten. Mehr dazu auf der Partner-Seite.</p>
+<h2>Korrekturen</h2>
+<p>Fehler gefunden oder ein Preis veraltet? Schreib uns — wir korrigieren und aktualisieren das
+„Zuletzt geprüft"-Datum.</p>""",
+    "en": """<h2>Who rates here</h2>
+<p>This radar is kept by one person, not an anonymous desk: Allen Chour, who writes the daily
+aban news newsletter about AI. I use these tools myself, test new features or check them
+specifically for the German-speaking market. When I haven't worked with a tool enough, I flag
+it internally as "to check" and hold back the claims — you only see what's solid.</p>
+<h2>The two ratings you see</h2>
+<p><strong>Worth-it score (0–10):</strong> Is the tool worth its price for what it promises?
+Everyday usefulness, maturity, stability and value for money go in here. We rate in half steps
+(e.g. 7.5/10), no fake decimal precision.</p>
+<p><strong>DACH relevance (0–10):</strong> How well does the tool fit the German-speaking
+market? German language quality, EU/GDPR fit, EUR pricing and support all count. A globally
+strong tool can rank lower here if its German is half-hearted.</p>
+<h2>Where the data comes from</h2>
+<ul>
+<li>My own use and targeted checks of the tools.</li>
+<li>Newsletter coverage: tools covered in issues are flagged and link back to the archive.</li>
+<li>Official vendor pages for pricing, plans and feature scope — prices change, so every tool
+page carries a "last checked" date.</li>
+</ul>
+<h2>What the ratings are not</h2>
+<p>They are not lab measurements or star averages from user votes. They are a reasoned
+judgement — transparent, but subjective. Read the pros/cons and the hands-on note, not just
+the number.</p>
+<h2>Money does not change the order</h2>
+<p>Some links are affiliate links (marked *). Whether a tool has an affiliate program affects
+neither score nor placement. Tools without commission can rank on top. More on the partner
+page.</p>
+<h2>Corrections</h2>
+<p>Spotted an error or an outdated price? Write to us — we fix it and update the "last checked"
+date.</p>""",
+}
+
+
+def methodik_page(ui, lang, available, n_tools, n_issues):
+    crumb = breadcrumb([(SITE_NAME, page_path(lang, "home")),
+                        (ui["methodik_nav"], page_path(lang, "methodik"))], lang)
+    intro = e(ui["methodik_intro"])
+    copy = METHODIK_BODY.get(lang, METHODIK_BODY["de"])
+    # Real, build-time stats — no invented numbers.
+    stat = {
+        "de": f"<p class=\"meta\">Aktuell {n_tools} Tools im Radar, davon {n_issues} im "
+              f"aban-news-Newsletter besprochen. Stand: {date.today().strftime('%d.%m.%Y')}.</p>",
+        "en": f"<p class=\"meta\">Currently {n_tools} tools in the radar, {n_issues} of them "
+              f"covered in the aban news newsletter. As of {date.today().strftime('%Y-%m-%d')}.</p>",
+    }.get(lang, f"<p class=\"meta\">{n_tools} Tools · {n_issues} im Newsletter · "
+                f"{date.today().strftime('%d.%m.%Y')}</p>")
+    body = (f'{crumb}<p><a href="{e(page_path(lang,"home"))}">{e(ui["all_tools"])}</a></p>\n'
+            f'<h1>🔍 {e(ui["methodik_title"])}</h1>\n'
+            f'<p class="meta">{intro}</p>\n{stat}\n{copy}\n'
+            f'<p class="subnav"><a href="{e(page_path(lang,"partner"))}">'
+            f'{e(ui["partner_nav"])} →</a></p>')
+    return page(lang=lang, ui=ui, title=f"{ui['methodik_title']} — {SITE_NAME}",
+                description=clip(ui["methodik_intro"]), body=body,
+                canonical=BASE_URL + page_path(lang, "methodik"),
+                available=available, kind="methodik")
+
+
 FAVICON_SVG = (
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
     f'<rect width="64" height="64" rx="14" fill="{ACCENT}"/>'
@@ -1453,6 +1686,9 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
         members = [t for t in tools_sorted if cats & set(t.get("category", []))]
         stack_members[st["slug"]] = members[:8]
 
+    # Real stat for the methodology page: how many tools the newsletter covered.
+    n_covered = sum(1 for t in tools if t.get("ausgaben_mentions"))
+
     # Trending = most-recently covered in the newsletter (fallback: top-rated).
     trending = sorted([t for t in tools if latest_issue(t) > 0],
                       key=latest_issue, reverse=True)[:24]
@@ -1508,7 +1744,8 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                   f' · 🆕 <a href="{e(page_path(lang,"trending"))}">{e(ui["trending_nav"])}</a>'
                   f' · 🔤 <a href="{e(page_path(lang,"az"))}">{e(ui["az_nav"])}</a>'
                   f' · 🆚 <a href="{e(page_path(lang,"vshub"))}">{e(ui["vshub_nav"])}</a>'
-                  f' · 📖 <a href="{e(page_path(lang,"glossary"))}">{e(ui["glossary_nav"])}</a></p>\n'
+                  f' · 📖 <a href="{e(page_path(lang,"glossary"))}">{e(ui["glossary_nav"])}</a>'
+                  f' · 🔍 <a href="{e(page_path(lang,"methodik"))}">{e(ui["methodik_nav"])}</a></p>\n'
                   f'<p class="subnav"><strong>{e(ui["budget_nav"])}:</strong> {budget_links}</p>\n'
                   f'<p class="subnav"><strong>{e(ui["stack_nav"])}:</strong> {stack_links}</p>\n'
                   f'<p class="subnav"><strong>{e(ui["by_use_case"])}:</strong> {uc_links}</p>')
@@ -1631,6 +1868,13 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
         of.write_text(partner_page(ui, available, lang), encoding="utf-8")
         pages += 1
 
+        # Methodology / "how we rate" page (E-E-A-T: transparent scoring + author)
+        of = out_file(out, lang, "methodik")
+        of.parent.mkdir(parents=True, exist_ok=True)
+        of.write_text(methodik_page(ui, lang, available, len(tools), n_covered),
+                      encoding="utf-8")
+        pages += 1
+
         # Glossary hub + term pages (localized definitions, German fallback)
         if glossary:
             of = out_file(out, lang, "glossary")
@@ -1660,7 +1904,8 @@ def build(data_path: Path, aff_path: Path, out: Path, here: Path) -> int:
                 + [BASE_URL + page_path(lang, "uc", slugify(uc)) for uc, _ in use_cases]
                 + [BASE_URL + page_path(lang, "budget", s) for s, _, _ in budget_tiers]
                 + [BASE_URL + page_path(lang, "stack", st["slug"]) for st in STACKS]
-                + [BASE_URL + page_path(lang, "vshub"), BASE_URL + page_path(lang, "partner")]
+                + [BASE_URL + page_path(lang, "vshub"), BASE_URL + page_path(lang, "partner"),
+                   BASE_URL + page_path(lang, "methodik")]
                 + [BASE_URL + page_path(lang, "alt", slugify(t["id"])) for t in tools if t["id"] in alt_map]
                 + ([BASE_URL + page_path(lang, "glossary")] if glossary else [])
                 + [BASE_URL + page_path(lang, "term", t["slug"]) for t in glossary])

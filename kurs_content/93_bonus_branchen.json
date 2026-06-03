@@ -1,0 +1,102 @@
+{
+ "title": "Branchen-Spickzettel",
+ "kicker": "Bonus 4",
+ "toc": true,
+ "kind": "bonus",
+ "blocks": [
+  ["lead", "KI hilft in jeder Branche anders. Dieser Spickzettel zeigt dir pro Beruf, wo du sofort ansetzen kannst — und wo du besser die Finger lässt."],
+  ["p", "Such dir deinen Beruf heraus (oder den, der deinem am nächsten kommt). Die Quick-Wins sind so gewählt, dass du sie diese Woche umsetzen kannst, ohne neue Tools zu kaufen. Die Grenze am Ende jedes Abschnitts ist ernst gemeint: Sie schützt dich vor genau den Fehlern, die in dieser Branche teuer werden."],
+
+  ["h3", "KI für Handwerker"],
+  ["p", "Im Handwerk frisst die Büroarbeit nach Feierabend die Zeit. Genau dort hilft KI — nicht auf der Baustelle, sondern beim Papierkram danach."],
+  ["ul", [
+    "Angebote und Kostenvoranschläge sprachlich ausformulieren (Zahlen rechnest du selbst).",
+    "Termin- und Rückruf-Mails an Kunden in Sekunden statt Minuten.",
+    "Antworten auf Online-Bewertungen — freundlich, auch bei Kritik.",
+    "Eine kurze Leistungsbeschreibung für deine Website oder das Branchenbuch.",
+    "Diktierte Sprachnotizen von der Baustelle in saubere Notizen verwandeln."
+  ]],
+  ["callout", "Grenze: Mengen, Maße und Preise gehören nicht in die Hände der KI. Sie formuliert, du kalkulierst. Eine erfundene Zahl im Angebot kostet dich bares Geld."],
+
+  ["h3", "KI für Steuerberater"],
+  ["p", "In der Kanzlei zählt Präzision und Verschwiegenheit. KI darf hier Entwürfe liefern und Routine abnehmen, aber nie die fachliche Verantwortung tragen."],
+  ["ul", [
+    "Mandanten-Korrespondenz vorformulieren (Fristen, Nachfragen, Standardinfos).",
+    "Komplexe Sachverhalte für Mandanten in verständliche Sprache übersetzen.",
+    "Checklisten und Merkblätter für wiederkehrende Themen erstellen.",
+    "Lange Dokumente zur ersten Orientierung zusammenfassen.",
+    "Kanzlei-Newsletter oder Blog-Beiträge entwerfen."
+  ]],
+  ["callout", "Grenze: Keine Mandantendaten in öffentliche KI-Tools, niemals. Und jede steuerliche Aussage prüfst du selbst — die KI kennt deinen Fall nicht und erfindet im Zweifel Paragraphen."],
+
+  ["h3", "KI für Ärzte und Praxen"],
+  ["p", "In der Praxis ist der Datenschutz besonders streng. KI hilft bei Organisation und Kommunikation rund um die Behandlung — nicht bei der Behandlung selbst."],
+  ["ul", [
+    "Patienteninformationen und Aufklärungstexte verständlich formulieren.",
+    "Texte für Praxis-Website, Aushänge und Wartezimmer.",
+    "Antworten auf häufige organisatorische Fragen vorbereiten.",
+    "Stellenanzeigen für Praxispersonal entwerfen.",
+    "Interne Abläufe und Checklisten dokumentieren."
+  ]],
+  ["callout", "Grenze: Keine Patientendaten in die KI. Diagnose und Therapie bleiben ärztliche Aufgabe — allgemeine KI-Tools sind keine Medizinprodukte und dürfen so nicht eingesetzt werden."],
+
+  ["h3", "KI für Anwälte und Kanzleien"],
+  ["p", "Sprache ist dein Werkzeug, und genau da ist KI stark — solange du jede Tatsache und jede Fundstelle selbst prüfst."],
+  ["ul", [
+    "Standardschreiben und Korrespondenz-Entwürfe.",
+    "Lange Dokumente strukturieren und zur Orientierung zusammenfassen.",
+    "Sachverhalte für Mandanten verständlich erklären.",
+    "Textbausteine für wiederkehrende Schreiben anlegen.",
+    "Inhalte für Website und Mandanten-Info aufbereiten."
+  ]],
+  ["callout", "Grenze: KI erfindet überzeugend klingende Urteile und Paragraphen, die es nicht gibt. Jede Fundstelle gegenprüfen. Und die Verschwiegenheitspflicht gilt auch gegenüber dem KI-Tool — keine Mandatsdaten hineingeben."],
+
+  ["h3", "KI für Immobilienmakler"],
+  ["p", "Im Maklergeschäft entscheidet die Geschwindigkeit der Kommunikation. KI hilft dir, schneller und mit besseren Texten zu reagieren."],
+  ["ul", [
+    "Exposé-Texte aus deinen Stichpunkten ausformulieren.",
+    "Schnelle, freundliche Antworten auf Anfragen.",
+    "Social-Media-Beiträge zu neuen Objekten.",
+    "Nachfass-Mails an Interessenten nach der Besichtigung.",
+    "Vergleichstexte und Lagebeschreibungen entwerfen."
+  ]],
+  ["callout", "Grenze: Harte Objektangaben — Fläche, Baujahr, Energiewerte, Preis — prüfst du selbst. Falsche Angaben im Exposé sind ein rechtliches Risiko, kein Tippfehler."],
+
+  ["h3", "KI für Coaches und Berater"],
+  ["p", "Dein Wert liegt in der Beziehung und im Gespräch. KI nimmt dir das Drumherum ab, damit du mehr Zeit für deine Klienten hast."],
+  ["ul", [
+    "Content für Akquise: Beiträge, Newsletter, Website-Texte.",
+    "Programm- und Angebotsbeschreibungen strukturieren.",
+    "Arbeitsblätter und Übungen für Klienten entwerfen.",
+    "Anfragen und Erstkontakt-Mails vorbereiten.",
+    "Aus einem Thema mehrere Content-Formate machen."
+  ]],
+  ["callout", "Grenze: Die eigentliche Coaching-Arbeit und alles, was Klienten dir anvertrauen, gehört nicht in die KI. Vertraulichkeit ist dein Kapital."],
+
+  ["h3", "KI für Onlineshops und E-Commerce"],
+  ["p", "Im Handel zählt Menge: viele Produkte, viele Texte, viele Anfragen. Hier spielt KI ihren Volumen-Vorteil aus."],
+  ["ul", [
+    "Produktbeschreibungen aus den Eckdaten ausformulieren — auch für hunderte Artikel.",
+    "Meta-Titel und Beschreibungen für die Suchmaschine.",
+    "Antwortvorlagen für den Kundenservice (Versand, Retoure, Fragen).",
+    "Newsletter- und Kampagnentexte entwerfen.",
+    "Produkttexte in andere Sprachen übersetzen (Rohfassung)."
+  ]],
+  ["callout", "Grenze: Produktangaben, Maße und Verfügbarkeit müssen stimmen. Lass die KI keine Eigenschaften erfinden und keine Kundenbewertungen schreiben — das ist Irreführung und rechtlich heikel."],
+
+  ["h3", "KI für Gastronomie"],
+  ["p", "In der Gastro bleibt neben dem Tagesgeschäft kaum Zeit fürs Marketing. Genau das kann KI im Hintergrund übernehmen."],
+  ["ul", [
+    "Antworten auf Online-Bewertungen — souverän, auch bei Kritik.",
+    "Social-Media-Beiträge zu Gerichten, Aktionen und Öffnungszeiten.",
+    "Speisekarten-Beschreibungen, die Appetit machen.",
+    "Stellenanzeigen für Service und Küche.",
+    "Texte für Website, Reservierungsseite und Lieferdienste."
+  ]],
+  ["callout", "Grenze: Allergen- und Inhaltsangaben sind Chefsache und müssen korrekt sein — niemals von der KI raten lassen. Und das Gastgeben selbst kann dir keine Maschine abnehmen."],
+
+  ["h3", "Dein Beruf ist nicht dabei?"],
+  ["p", "Das Muster ist immer gleich: KI übernimmt die sprachliche Routine drumherum, du behältst das Fachliche und die Verantwortung. Frag dich bei jeder Aufgabe: Ist das Schreiben, Zusammenfassen oder Umformulieren? Dann ist es ein Kandidat für KI. Geht es um harte Fakten, Zahlen oder eine Entscheidung, die bei dir liegt? Dann nur als Entwurf, den du prüfst."],
+  ["callout", "Passende Werkzeuge für deine Branche findest du im KI-Tools-Radar auf radar.abannews.com — ehrlich bewertet, mit Preis und Datenschutz-Blick."]
+ ]
+}

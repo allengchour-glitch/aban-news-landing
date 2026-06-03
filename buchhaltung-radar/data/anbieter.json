@@ -1,0 +1,788 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-06-02",
+  "source": "aban news — kuratierte Liste echter KI-Buchhaltungs- & Rechnungs-Tools für Selbstständige & KMU (DACH-Fokus). Viele mit KI-Funktionen wie OCR-Belegscan, automatischer Belegerkennung und Kategorisierung. Preise/Bewertungen bewusst nicht erfunden: '[Redaktion: prüfen]' oder null.",
+  "license": "CC-BY-4.0 (Attribution: aban news, abannews.com)",
+  "rating_scale": "1-10 (10 = uneingeschränkt empfehlenswert). null = noch nicht redaktionell geprüft.",
+  "_integritaet": "Jeder Eintrag verweist auf eine offizielle, verifizierbare Anbieter-URL. Preise (preis_eur), Bewertungen (worth_it_score) und konkrete Konditionen werden NICHT geschätzt — Felder sind null oder mit '[Redaktion: prüfen]' markiert, bis ein Mensch sie verifiziert. eu_lager = EU-/DSGVO-Hosting, deutsche_oberflaeche = deutsche Oberfläche/Support — nur gesetzt, wo sicher. Buchhaltungs-Software wird oft beworben: hier wird ehrlich verglichen, keine Versprechen auf automatische Steuerersparnis. GoBD-Konformität, DATEV-Export und korrekte UStVA hängen von der Nutzung und der Abstimmung mit dem Steuerbüro ab.",
+  "kategorien": [
+    "Buchhaltung",
+    "Rechnungsstellung",
+    "Belegerfassung & OCR",
+    "Ausgaben & Kreditkarten",
+    "Banking & Liquidität",
+    "Steuerkanzlei-Software"
+  ],
+  "fokus": [
+    "EU-Hosting / DSGVO",
+    "International",
+    "Selbstständige & Freelancer",
+    "KMU & Mittelstand",
+    "Steuerberater & Kanzlei"
+  ],
+  "anbieter": [
+    {
+      "id": "lexoffice",
+      "name": "Lexware Office (lexoffice)",
+      "anbieter": "Haufe-Lexware GmbH & Co. KG",
+      "url": "https://office.lexware.de/",
+      "sprache": [
+        "de"
+      ],
+      "fokus": "Selbstständige & Freelancer",
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Belegerfassung",
+        "GoBD",
+        "DATEV-Export",
+        "UStVA über ELSTER",
+        "Banking-Anbindung"
+      ],
+      "format": "SaaS (Online-Buchhaltung)",
+      "integration": [
+        "DATEV",
+        "ELSTER",
+        "Banking (HBCI/FinTS)",
+        "Shopify",
+        "Stripe"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, Testphase üblich. Preise beim Anbieter.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — deutscher Anbieter (Haufe-Lexware) mit Hosting in Deutschland, sehr verbreitet bei Selbstständigen und kleinen Firmen. Stark bei Rechnungen, Belegerfassung und DATEV-Export für die Zusammenarbeit mit dem Steuerbüro. GoBD-Konformität hängt von sauberer Nutzung ab."
+    },
+    {
+      "id": "sevdesk",
+      "name": "sevDesk",
+      "anbieter": "sevdesk GmbH",
+      "url": "https://sevdesk.de/",
+      "sprache": [
+        "de"
+      ],
+      "fokus": "Selbstständige & Freelancer",
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "OCR-Belegscan",
+        "GoBD",
+        "DATEV-Export",
+        "UStVA über ELSTER",
+        "Mahnwesen"
+      ],
+      "format": "SaaS (Online-Buchhaltung)",
+      "integration": [
+        "DATEV",
+        "ELSTER",
+        "Banking (FinTS)",
+        "Shopify",
+        "Amazon"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Monatstarife je nach Funktionsumfang, Testphase üblich.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — Offenburger Anbieter mit Hosting in Deutschland, beliebt bei Freelancern und kleinen Betrieben. OCR-Belegscan per App, DATEV-Schnittstelle und ELSTER-Anbindung. Funktionsumfang je nach Tarif vor dem Abschluss prüfen."
+    },
+    {
+      "id": "datev-unternehmen-online",
+      "name": "DATEV Unternehmen online",
+      "anbieter": "DATEV eG",
+      "url": "https://www.datev.de/",
+      "sprache": [
+        "de"
+      ],
+      "fokus": "KMU & Mittelstand",
+      "kategorie": [
+        "Buchhaltung",
+        "Belegerfassung & OCR",
+        "Steuerkanzlei-Software"
+      ],
+      "themen": [
+        "Belegerfassung",
+        "DATEV-Export",
+        "GoBD",
+        "Zusammenarbeit Steuerberater",
+        "Bankbuchungen"
+      ],
+      "format": "SaaS (Beleg- & Buchungsplattform)",
+      "integration": [
+        "DATEV",
+        "Banking",
+        "Steuerkanzlei-Systeme"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Lizenz/Abrechnung meist über die Steuerkanzlei. Konditionen beim Steuerberater oder DATEV erfragen.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — Standard für die digitale Belegübergabe an die Steuerkanzlei im DACH-Raum, Hosting bei DATEV in Deutschland. Sinnvoll, wenn dein Steuerberater mit DATEV arbeitet; eigenständige Nutzung ohne Kanzlei weniger üblich."
+    },
+    {
+      "id": "fastbill",
+      "name": "FastBill",
+      "anbieter": "FastBill GmbH",
+      "url": "https://www.fastbill.com/",
+      "sprache": [
+        "de",
+        "en"
+      ],
+      "fokus": "Selbstständige & Freelancer",
+      "kategorie": [
+        "Rechnungsstellung",
+        "Buchhaltung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Belegerfassung",
+        "DATEV-Export",
+        "Banking-Anbindung",
+        "wiederkehrende Rechnungen"
+      ],
+      "format": "SaaS (Rechnungen & Buchhaltung)",
+      "integration": [
+        "DATEV",
+        "Banking",
+        "Stripe",
+        "PayPal",
+        "Zapier"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, Konditionen beim Anbieter.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — Frankfurter Anbieter mit Fokus auf Rechnungen und Beleg-Workflow für Selbstständige und kleine Teams. DATEV-Export und Banking-Anbindung vorhanden; Hosting/EU-Frage und genauer Leistungsumfang vor dem Start prüfen."
+    },
+    {
+      "id": "papierkram",
+      "name": "Papierkram",
+      "anbieter": "Papierkram GmbH",
+      "url": "https://www.papierkram.de/",
+      "sprache": [
+        "de"
+      ],
+      "fokus": "Selbstständige & Freelancer",
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "EÜR",
+        "Belegerfassung",
+        "Zeiterfassung",
+        "Projekte",
+        "UStVA über ELSTER"
+      ],
+      "format": "SaaS (Buchhaltung & Projekte)",
+      "integration": [
+        "ELSTER",
+        "Banking",
+        "DATEV-Export"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Gratis-Einstieg für kleine Nutzung, darüber gestaffelte Tarife.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — deutscher Anbieter mit Hosting in Deutschland, kombiniert Buchhaltung mit Projekt- und Zeiterfassung. Gut für Freelancer mit EÜR; Funktionsumfang der Gratis-Stufe und DATEV-Bedarf vorher abklären."
+    },
+    {
+      "id": "buchhaltungsbutler",
+      "name": "BuchhaltungsButler",
+      "anbieter": "BuchhaltungsButler GmbH",
+      "url": "https://www.buchhaltungsbutler.de/",
+      "sprache": [
+        "de"
+      ],
+      "fokus": "KMU & Mittelstand",
+      "kategorie": [
+        "Buchhaltung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "automatische Belegerkennung",
+        "OCR-Belegscan",
+        "DATEV-Export",
+        "Banking-Abgleich",
+        "GoBD"
+      ],
+      "format": "SaaS (Online-Buchhaltung)",
+      "integration": [
+        "DATEV",
+        "Banking",
+        "Stripe",
+        "PayPal",
+        "Amazon"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife nach Belegmenge. Preise beim Anbieter.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — deutscher Anbieter mit Hosting in Deutschland, Schwerpunkt auf automatischer Belegerkennung und Banking-Abgleich. Richtet sich an Unternehmen mit höherem Belegvolumen; DATEV-Export für die Kanzlei vorhanden."
+    },
+    {
+      "id": "easybill",
+      "name": "easybill",
+      "anbieter": "easybill GmbH",
+      "url": "https://www.easybill.de/",
+      "sprache": [
+        "de"
+      ],
+      "fokus": "KMU & Mittelstand",
+      "kategorie": [
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "GoBD",
+        "DATEV-Export",
+        "E-Commerce-Abrechnung",
+        "wiederkehrende Rechnungen"
+      ],
+      "format": "SaaS (Rechnungsstellung)",
+      "integration": [
+        "DATEV",
+        "Amazon",
+        "eBay",
+        "Shopify",
+        "Banking"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife nach Dokumentenzahl.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — deutscher Anbieter mit Hosting in Deutschland, stark bei der Rechnungsstellung für Online-Händler (Amazon, eBay, Shopify). DATEV-Export vorhanden; weniger eine Voll-Buchhaltung als ein spezialisiertes Rechnungstool."
+    },
+    {
+      "id": "billomat",
+      "name": "Billomat",
+      "anbieter": "Billomat GmbH & Co. KG",
+      "url": "https://www.billomat.com/",
+      "sprache": [
+        "de"
+      ],
+      "fokus": "Selbstständige & Freelancer",
+      "kategorie": [
+        "Rechnungsstellung",
+        "Buchhaltung"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Angebote",
+        "Mahnwesen",
+        "DATEV-Export",
+        "Banking-Anbindung"
+      ],
+      "format": "SaaS (Rechnungen & Buchhaltung)",
+      "integration": [
+        "DATEV",
+        "Banking",
+        "Zapier",
+        "Stripe"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, Konditionen beim Anbieter.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — Nürnberger Anbieter für Rechnungen und einfache Buchhaltung, gerichtet auf Selbstständige und kleine Firmen. DATEV-Export und Banking-Anbindung vorhanden; aktuellen Funktionsumfang vor dem Wechsel prüfen."
+    },
+    {
+      "id": "getmyinvoices",
+      "name": "GetMyInvoices",
+      "anbieter": "fino.digital GmbH",
+      "url": "https://www.getmyinvoices.com/de/",
+      "sprache": [
+        "de",
+        "en"
+      ],
+      "fokus": "KMU & Mittelstand",
+      "kategorie": [
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "automatischer Belegabruf",
+        "OCR-Belegscan",
+        "DATEV-Export",
+        "Rechnungsverwaltung",
+        "GoBD"
+      ],
+      "format": "SaaS (Belegmanagement)",
+      "integration": [
+        "DATEV",
+        "lexoffice",
+        "sevDesk",
+        "Banking"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife nach Belegmenge und Quellen.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — deutscher Anbieter, spezialisiert auf das automatische Einsammeln von Rechnungen aus Portalen und Postfächern. Ergänzt eine Buchhaltungs-Software (lexoffice, sevDesk, DATEV) eher, als sie zu ersetzen."
+    },
+    {
+      "id": "candis",
+      "name": "Candis",
+      "anbieter": "CANDIS GmbH",
+      "url": "https://www.candis.io/",
+      "sprache": [
+        "de",
+        "en"
+      ],
+      "fokus": "KMU & Mittelstand",
+      "kategorie": [
+        "Belegerfassung & OCR",
+        "Buchhaltung"
+      ],
+      "themen": [
+        "Rechnungsfreigabe-Workflows",
+        "OCR-Belegscan",
+        "DATEV-Export",
+        "Zahlungen",
+        "Kreditorenbuchhaltung"
+      ],
+      "format": "SaaS (Rechnungsworkflow)",
+      "integration": [
+        "DATEV",
+        "Banking",
+        "ERP-Systeme"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Tarife nach Belegvolumen, oft auf Anfrage.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — Berliner Anbieter für automatisierte Rechnungsfreigabe und Kreditorenbuchhaltung im Mittelstand. Spielt seine Stärke bei vielen Eingangsrechnungen und Freigabe-Workflows aus; DATEV-Export vorhanden."
+    },
+    {
+      "id": "kontist",
+      "name": "Kontist",
+      "anbieter": "Kontist GmbH",
+      "url": "https://kontist.com/",
+      "sprache": [
+        "de",
+        "en"
+      ],
+      "fokus": "Selbstständige & Freelancer",
+      "kategorie": [
+        "Banking & Liquidität",
+        "Buchhaltung"
+      ],
+      "themen": [
+        "Geschäftskonto",
+        "Steuerrücklage automatisch",
+        "Buchhaltung",
+        "UStVA",
+        "Banking-Anbindung"
+      ],
+      "format": "SaaS (Banking & Buchhaltung)",
+      "integration": [
+        "DATEV",
+        "Banking",
+        "Steuerservice"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Kontomodelle mit/ohne Buchhaltung, teils mit Steuerservice. Preise beim Anbieter.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — deutsches Angebot rund um Geschäftskonto plus Buchhaltung für Selbstständige, mit automatischer Steuerrücklage. Praktisch als Kombi aus Konto und Buchhaltung; Leistungsumfang und Steuerservice-Optionen genau prüfen."
+    },
+    {
+      "id": "accountable",
+      "name": "Accountable",
+      "anbieter": "Accountable GmbH",
+      "url": "https://www.accountable.de/",
+      "sprache": [
+        "de",
+        "en",
+        "fr"
+      ],
+      "fokus": "Selbstständige & Freelancer",
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "EÜR",
+        "Rechnungen",
+        "OCR-Belegscan",
+        "UStVA über ELSTER",
+        "Steuererklärung"
+      ],
+      "format": "App / SaaS (Steuer & Buchhaltung)",
+      "integration": [
+        "ELSTER",
+        "Banking"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Gratis-Einstieg, darüber Abo. Konditionen beim Anbieter.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — App-zentriertes Tool für Solo-Selbstständige, das Buchhaltung und Steuererklärung (UStVA, EÜR) zusammenbringt. Gut für Einsteiger ohne Steuerberater; bei komplexerer Buchhaltung an Grenzen prüfen."
+    },
+    {
+      "id": "norman",
+      "name": "Norman",
+      "anbieter": "Norman Drebes GmbH",
+      "url": "https://www.norman.finance/de",
+      "sprache": [
+        "de",
+        "en"
+      ],
+      "fokus": "Selbstständige & Freelancer",
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "EÜR",
+        "Rechnungen",
+        "OCR-Belegscan",
+        "UStVA über ELSTER",
+        "Steuer"
+      ],
+      "format": "SaaS (Steuer & Buchhaltung)",
+      "integration": [
+        "ELSTER",
+        "Banking"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Gratis-Einstieg, darüber Abo. Preise beim Anbieter.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — junges Tool für Freelancer und kleine Firmen, das Buchhaltung, Rechnungen und Steuer-Voranmeldungen bündelt. Eher für einfache Fälle; bei Wachstum DATEV-Anbindung und Funktionsumfang prüfen."
+    },
+    {
+      "id": "wiso-mein-buero",
+      "name": "WISO MeinBüro (Buhl)",
+      "anbieter": "Buhl Data Service GmbH",
+      "url": "https://www.buhl.de/",
+      "sprache": [
+        "de"
+      ],
+      "fokus": "KMU & Mittelstand",
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Buchhaltung",
+        "DATEV-Export",
+        "UStVA über ELSTER",
+        "Banking-Anbindung",
+        "Auftragsverwaltung"
+      ],
+      "format": "SaaS / Desktop (Bürosoftware)",
+      "integration": [
+        "DATEV",
+        "ELSTER",
+        "Banking",
+        "Shopify",
+        "Amazon"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Web- und Desktop-Varianten mit gestaffelten Tarifen.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — deutscher Anbieter (Buhl) mit lange etablierter Bürosoftware für kleine und mittlere Betriebe, als Web- und Desktop-Version. Breiter Funktionsumfang inkl. Auftragsverwaltung; passenden Tarif und Web/Desktop-Frage klären."
+    },
+    {
+      "id": "tidely",
+      "name": "Tidely",
+      "anbieter": "Tidely GmbH",
+      "url": "https://tidely.com/",
+      "sprache": [
+        "de",
+        "en"
+      ],
+      "fokus": "KMU & Mittelstand",
+      "kategorie": [
+        "Banking & Liquidität"
+      ],
+      "themen": [
+        "Liquiditätsplanung",
+        "Cashflow-Prognose",
+        "Banking-Anbindung",
+        "Szenarien"
+      ],
+      "format": "SaaS (Liquiditätsmanagement)",
+      "integration": [
+        "Banking",
+        "DATEV",
+        "lexoffice"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Tarife nach Funktionsumfang, oft auf Anfrage.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — Münchner Anbieter für Liquiditätsplanung und Cashflow-Prognosen, kein Ersatz für eine Buchhaltung, sondern eine Ergänzung. Sinnvoll, wenn du deine Zahlungsfähigkeit aktiv planen willst; an Buchhaltung/Banking angebunden."
+    },
+    {
+      "id": "agicap",
+      "name": "Agicap",
+      "anbieter": "Agicap SAS",
+      "url": "https://agicap.com/de/",
+      "sprache": [
+        "de",
+        "en",
+        "fr"
+      ],
+      "fokus": "KMU & Mittelstand",
+      "kategorie": [
+        "Banking & Liquidität"
+      ],
+      "themen": [
+        "Liquiditätsplanung",
+        "Cashflow-Management",
+        "Banking-Anbindung",
+        "Forderungen"
+      ],
+      "format": "SaaS (Cashflow-Management)",
+      "integration": [
+        "Banking",
+        "DATEV",
+        "ERP-Systeme"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Tarife meist auf Anfrage je nach Unternehmensgröße.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — französischer Anbieter (mit deutscher Oberfläche) für Liquiditäts- und Cashflow-Management im Mittelstand. Ergänzt die Buchhaltung um Planung; eigenständige Buchführung ersetzt es nicht."
+    },
+    {
+      "id": "pleo",
+      "name": "Pleo",
+      "anbieter": "Pleo Technologies A/S",
+      "url": "https://www.pleo.io/de",
+      "sprache": [
+        "de",
+        "en"
+      ],
+      "fokus": "KMU & Mittelstand",
+      "kategorie": [
+        "Ausgaben & Kreditkarten",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Firmenkreditkarten",
+        "Ausgabenmanagement",
+        "OCR-Belegscan",
+        "DATEV-Export",
+        "Freigaben"
+      ],
+      "format": "SaaS (Ausgabenmanagement)",
+      "integration": [
+        "DATEV",
+        "Banking",
+        "ERP-Systeme"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Tarife nach Nutzerzahl, teils mit Gratis-Einstieg.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — dänischer Anbieter für Firmenkreditkarten und Ausgabenmanagement mit Beleg-Foto und DATEV-Export. Löst das Problem von Mitarbeiter-Ausgaben und Belegen, ist aber keine vollständige Buchhaltung."
+    },
+    {
+      "id": "moss",
+      "name": "Moss",
+      "anbieter": "Nufin GmbH (Moss)",
+      "url": "https://www.getmoss.com/de",
+      "sprache": [
+        "de",
+        "en"
+      ],
+      "fokus": "KMU & Mittelstand",
+      "kategorie": [
+        "Ausgaben & Kreditkarten",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Firmenkreditkarten",
+        "Ausgabenmanagement",
+        "OCR-Belegscan",
+        "DATEV-Export",
+        "Rechnungsfreigabe"
+      ],
+      "format": "SaaS (Ausgabenmanagement)",
+      "integration": [
+        "DATEV",
+        "Banking",
+        "ERP-Systeme"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": true,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — Tarife nach Funktionsumfang und Nutzerzahl.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — Berliner Anbieter für Firmenkarten, Ausgaben- und Rechnungsmanagement mit DATEV-Anbindung. Stark bei Teams, die Ausgaben und Freigaben digital steuern wollen; ergänzt die Buchhaltung."
+    },
+    {
+      "id": "xero",
+      "name": "Xero",
+      "anbieter": "Xero Limited",
+      "url": "https://www.xero.com/",
+      "sprache": [
+        "en",
+        "de"
+      ],
+      "fokus": "International",
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Belegerfassung",
+        "Bankabgleich",
+        "Reporting"
+      ],
+      "format": "SaaS (Online-Buchhaltung)",
+      "integration": [
+        "Banking",
+        "Stripe",
+        "Shopify",
+        "Zapier"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, Preise beim Anbieter.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — international sehr verbreitete Buchhaltungs-Software (NZ/UK), stark bei Bankabgleich und Reporting. Auf den deutschen Markt (DATEV, ELSTER, UStVA, GoBD) aber nur eingeschränkt zugeschnitten — für DACH genau prüfen."
+    },
+    {
+      "id": "quickbooks",
+      "name": "QuickBooks Online",
+      "anbieter": "Intuit Inc.",
+      "url": "https://quickbooks.intuit.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "International",
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Buchhaltung",
+        "Bankabgleich",
+        "Reporting",
+        "KI-Funktionen"
+      ],
+      "format": "SaaS (Online-Buchhaltung)",
+      "integration": [
+        "Banking",
+        "Stripe",
+        "PayPal",
+        "Shopify"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, regionale Verfügbarkeit prüfen.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — weltweit verbreitete Buchhaltung von Intuit. Für den deutschen Markt aber kaum zugeschnitten (kein nativer DATEV-/ELSTER-Fokus, Oberfläche englisch, US-Anbieter) — im DACH-Raum eher Sonderfall."
+    },
+    {
+      "id": "zoho-books",
+      "name": "Zoho Books",
+      "anbieter": "Zoho Corporation",
+      "url": "https://www.zoho.com/de/books/",
+      "sprache": [
+        "de",
+        "en"
+      ],
+      "fokus": "International",
+      "kategorie": [
+        "Buchhaltung",
+        "Rechnungsstellung",
+        "Belegerfassung & OCR"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Belegerfassung",
+        "Bankabgleich",
+        "Automatisierung",
+        "Reporting"
+      ],
+      "format": "SaaS (Online-Buchhaltung)",
+      "integration": [
+        "Banking",
+        "Stripe",
+        "PayPal",
+        "Zoho-Suite"
+      ],
+      "deutsche_oberflaeche": true,
+      "eu_lager": null,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, teils Gratis-Stufe.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — Teil der Zoho-Suite mit deutscher Oberfläche und EU-Rechenzentrum-Option (vor Nutzung prüfen). Solide Buchhaltung, aber DATEV-/ELSTER-Integration und GoBD-Tauglichkeit für DACH genau gegenprüfen."
+    },
+    {
+      "id": "freshbooks",
+      "name": "FreshBooks",
+      "anbieter": "2ndSite Inc. (FreshBooks)",
+      "url": "https://www.freshbooks.com/",
+      "sprache": [
+        "en"
+      ],
+      "fokus": "International",
+      "kategorie": [
+        "Rechnungsstellung",
+        "Buchhaltung"
+      ],
+      "themen": [
+        "Rechnungen",
+        "Zeiterfassung",
+        "Ausgaben",
+        "Reporting"
+      ],
+      "format": "SaaS (Rechnungen & Buchhaltung)",
+      "integration": [
+        "Banking",
+        "Stripe",
+        "PayPal",
+        "Zapier"
+      ],
+      "deutsche_oberflaeche": false,
+      "eu_lager": false,
+      "preis_eur": null,
+      "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, Preise beim Anbieter.",
+      "worth_it_score": null,
+      "aban_note": "[Redaktion: prüfen] — kanadisches Tool, beliebt bei Freelancern für Rechnungen und Zeiterfassung. Oberfläche englisch, US-/CA-Hosting, kein DATEV-/ELSTER-Fokus — für den DACH-Raum nur eingeschränkt geeignet."
+    }
+  ]
+}

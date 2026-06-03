@@ -1,0 +1,17 @@
+Chapter 9 - Rheinhausen
+
+In the winter of eighty-seven the district rose once more, a last great time, and it rose for the steel, not the coal, but it was all one, for coal and steel were siblings, and when the one died, the other died with it. In Rheinhausen, on the Rhine, the Krupp steelworks was to be closed, a works with ten thousand men, the heart of a whole town, and the workforce resisted as the district had not resisted in a long time, and their resistance became a beacon for all who would no longer accept the dying of industry.
+
+They occupied the bridge over the Rhine, the Bridge of Solidarity, as they called it, and day and night they held it occupied, in the cold, with fires in barrels, and the whole district came, from all the pits, from all the works, to show that one was not alone, that the old solidarity was not dead, that the many were still the many.
+
+Marga went there, with Jakob and Hasan and, to her own surprise, with Ruth Brass. They drove together, in one car, the Kortmann and the Brass and the Turk, the three lines that should never have met by the logic of history, and they stood together on the bridge, in the crowd, in the smoke of the fires, and it was cold, and it was full of people, and it was, Marga thought, the opposite of everything her family had on its conscience.
+
+For here it was, the solidarity that Wilhelm Kortmann had betrayed in nineteen-hundred-five. Here, eighty years later, on a bridge over the Rhine, it lived again, unbroken, the standing-together of the many against those who decided over their heads. It was too late, they all knew that; Rheinhausen would be closed, one way or another, the decision had been taken elsewhere, in boardrooms, in balance sheets, and no bridge in the world would overturn it. But they stood all the same. Not because they could win, but because the standing itself was the thing, because a person must straighten up, even knowing he will fall, because dignity lies not in victory but in not giving up.
+
+Jakob and Hasan stood shoulder to shoulder, the way they stood shoulder to shoulder underground, and sang along when they sang the miner's song, the old song, Glück auf, Glück auf, der Steiger kommt, and Hasan knew it by now, sang it with his Anatolian ring, and no one found it strange, for here, in this moment, no one was strange, here all were only one thing: people who would not let go of what was being taken from them.
+
+And Marga looked at Ruth Brass, in the glow of the fires, and Ruth looked at Marga, and between them passed something, an understanding. "Look," said Marga. "This. This is what my grandfather betrayed. This is what your great-grandfather fought for. And look, it's still here. Eighty years later. They can't kill it."
+
+"No," said Ruth. "They can't kill it." And after a while, more quietly: "Perhaps that's the best rehabilitation for my great-grandfather. Not an entry in a chronicle. But that what he died for is still alive. Here. Today. On this bridge."
+
+They stood until deep into the night, in the smoke and the cold, and it was a defeat they experienced there together, for Rheinhausen fell, the way everything fell. But it was a defeat that transformed something, between the two families, who here for the first time stood not against but beside each other, in the service of the same cause for which a Brass had once died and been betrayed by a Kortmann, and which now, eighty years and three generations later, brought the two lines together again, on a bridge that bore the name that said it all: Solidarity.

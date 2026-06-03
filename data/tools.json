@@ -2695,7 +2695,8 @@
       "url": "https://surferseo.com",
       "alternatives": [
         "frase",
-        "marketmuse"
+        "marketmuse",
+        "semrush"
       ],
       "use_cases": [
         "On-Page-SEO",
@@ -2837,32 +2838,6 @@
       "use_cases": [
         "AI-Slides",
         "Pitch-Decks"
-      ]
-    },
-    {
-      "id": "tome",
-      "name": "Tome",
-      "vendor": "Tome",
-      "category": [
-        "Slides"
-      ],
-      "pricing": {
-        "free_tier": true,
-        "paid_from_eur": 16,
-        "currency": "EUR",
-        "model": "Subscription"
-      },
-      "dach_relevance": 5,
-      "worth_it_score": 7,
-      "aban_note": "Pivot zu Sales-Tool. AI-Slides gibt's noch, aber Gamma überholt.",
-      "ausgaben_mentions": [],
-      "url": "https://tome.app",
-      "alternatives": [
-        "gamma"
-      ],
-      "use_cases": [
-        "Sales-Decks",
-        "AI-Slides"
       ]
     },
     {
@@ -4703,36 +4678,6 @@
         "kling",
         "luma-dream-machine",
         "runway"
-      ],
-      "ausgaben_mentions": []
-    },
-    {
-      "id": "playht",
-      "name": "PlayHT",
-      "vendor": "PlayAI",
-      "category": [
-        "Voice-Clone",
-        "Audio-Gen"
-      ],
-      "use_cases": [
-        "Voiceover",
-        "Voice-Clone"
-      ],
-      "url": "https://play.ht",
-      "pricing": {
-        "currency": "EUR",
-        "free_tier": true,
-        "model": "Subscription",
-        "paid_from_eur": 29
-      },
-      "dach_relevance": 5,
-      "worth_it_score": 7.0,
-      "dsgvo_note": "",
-      "aban_note": "[Redaktion: pruefen & bewerten] Text-to-Speech mit vielen KI-Stimmen in 140+ Sprachen und Voice-Cloning fuer Podcasts und Videos.",
-      "alternatives": [
-        "elevenlabs",
-        "murf",
-        "cartesia"
       ],
       "ausgaben_mentions": []
     },

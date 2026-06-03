@@ -1,0 +1,26 @@
+{
+  "_readme": "Newsletter-Planungs-Queue für automation/newsletter_scheduler.py. Liste von Einträgen {datum (YYYY-MM-DD), tool_id, foerder_id, thema, status}. status: 'geplant' | 'entwurf' | 'versendet'. Die folgenden Einträge sind BEISPIELE (siehe 'thema'-Text) — keine echten Redaktionsdaten. Bearbeiten via: python3 automation/newsletter_scheduler.py add/list/next/generate-for.",
+  "queue": [
+    {
+      "datum": "2099-01-05",
+      "tool_id": "claude",
+      "foerder_id": null,
+      "thema": "BEISPIEL — bitte ersetzen oder löschen",
+      "status": "geplant"
+    },
+    {
+      "datum": "2099-01-06",
+      "tool_id": "deepl",
+      "foerder_id": "kfw-gruenderkredit",
+      "thema": "BEISPIEL — Tool + Förder-Tipp kombinieren",
+      "status": "geplant"
+    },
+    {
+      "datum": "2099-01-07",
+      "tool_id": "n8n",
+      "foerder_id": null,
+      "thema": "BEISPIEL — Automatisierung ehrlich einordnen",
+      "status": "geplant"
+    }
+  ]
+}

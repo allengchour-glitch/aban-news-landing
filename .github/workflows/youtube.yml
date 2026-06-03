@@ -1,0 +1,52 @@
+name: YouTube auto-publish (1 Clip / 2 Tage)
+
+# Lädt alle 2 Tage den nächsten noch nicht veröffentlichten Clip direkt auf
+# YouTube (als Short, sofort öffentlich) und merkt sich den Fortschritt in
+# video-prototypes/uploaded.json. Manuell auch per "Run workflow" startbar.
+# Voraussetzung: Repo-Secrets YT_CLIENT_ID / YT_CLIENT_SECRET / YT_REFRESH_TOKEN
+# (siehe video-prototypes/YOUTUBE-UPLOAD.md).
+
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "Wie viele Clips jetzt hochladen"
+        default: "1"
+  schedule:
+    - cron: "0 16 1-31/2 * *"   # an ungeraden Tagen 16:00 UTC (~18:00 Berlin)
+
+permissions:
+  contents: write               # um uploaded.json zurückzucommitten
+
+concurrency:
+  group: youtube-upload
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install google-api-python-client google-auth-oauthlib google-auth-httplib2
+      - name: Upload next clip(s)
+        working-directory: video-prototypes
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python3 scripts/yt_upload.py --immediate --next "${{ github.event.inputs.count || 1 }}"
+      - name: Persist upload state
+        working-directory: video-prototypes
+        run: |
+          git add uploaded.json
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git commit -m "yt: Upload-Fortschritt"
+            git push
+          else
+            echo "kein neuer Upload."
+          fi

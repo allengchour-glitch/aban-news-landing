@@ -1,0 +1,63 @@
+{
+  "_comment": "So verdienst du Geld: Melde dich beim Partnerprogramm des jeweiligen Anbieters an (Liste '_programme'). Du bekommst einen persönlichen Link. Trage ihn bei 'affiliate_url' ein und entferne das führende '_' im Key. Die Seite markiert ihn dann automatisch mit * und blendet den Transparenzhinweis ein, dann baut sie sich neu. Anbieter ohne aktiven Eintrag verlinken auf die offizielle URL aus data/anbieter.json (keine Provision).",
+  "_status": "ALLE SLOTS DEAKTIVIERT (Key mit '_'-Präfix). Noch keine Affiliate-Links freigegeben. Fallback = offizielle URL / Mail.",
+  "_kontakt_fallback": "mailto:hallo@abannews.com",
+  "_programme": {
+    "_hinweis": "Kuratierte Liste typischer Partnerprogramme, gemappt auf Anbieter in data/anbieter.json. 'signup' = wo du dich bewirbst. 'rate' = typische Provision (kann sich ändern, vor Nutzung prüfen). Quelle der Wahrheit für die echte URL bleibt data/anbieter.json.",
+    "shopify": {
+      "signup": "https://www.shopify.com/affiliates",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "einmal/bounty"
+    },
+    "spocket": {
+      "signup": "https://www.spocket.co/affiliate-program",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "autods": {
+      "signup": "https://www.autods.com/affiliate-program/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "zendrop": {
+      "signup": "https://zendrop.com/affiliates/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "printful": {
+      "signup": "https://www.printful.com/affiliate",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "printify": {
+      "signup": "https://printify.com/affiliates/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "syncee": {
+      "signup": "https://syncee.com/affiliate-program/",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "recurring"
+    },
+    "bigbuy": {
+      "signup": "https://www.bigbuy.eu/en/affiliates",
+      "rate": "[Redaktion: prüfen]",
+      "typ": "einmal"
+    }
+  },
+  "links": {
+    "_anleitung": "Trage deinen persönlichen Affiliate-Link bei 'affiliate_url' ein und entferne das führende '_' im Anbieter-Key (z.B. '_spocket' -> 'spocket'). Erst dann wird der Link auf der Seite aktiv (mit * + Transparenzhinweis). Solange das '_' steht, bleibt der Slot deaktiviert und es wird die offizielle URL verlinkt.",
+    "_shopify": {
+      "affiliate_url": "https://www.shopify.com/?ref=DEIN-CODE"
+    },
+    "_spocket": {
+      "affiliate_url": "https://www.spocket.co/?ref=DEIN-CODE"
+    },
+    "_printful": {
+      "affiliate_url": "https://www.printful.com/a/DEIN-CODE"
+    },
+    "_autods": {
+      "affiliate_url": "https://www.autods.com/?ref=DEIN-CODE"
+    }
+  }
+}

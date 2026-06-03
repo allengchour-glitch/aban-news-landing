@@ -13,6 +13,7 @@
   <link rel="alternate" hreflang="it" href="https://abannews.com/it/buch.html">
   <link rel="alternate" hreflang="x-default" href="https://abannews.com/buch.html">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:title" content="Anti-Hype — il libro">
   <meta property="og:description" content="Come i liberi professionisti usano l'IA senza bullshit. PDF ed ePub — paga quanto vuoi.">
   <meta property="og:url" content="https://abannews.com/it/buch.html">
@@ -37,7 +38,7 @@
     .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;margin-left:1.2rem}
     .lang a{padding:.3rem .55rem;color:var(--muted);text-decoration:none;margin:0}
     .lang a.on{background:var(--ink);color:#fff}
-    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:var(--amber);color:#fff;text-decoration:none}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:var(--amber-dk);color:#fff;text-decoration:none}
     .btn--ghost{background:#fff;color:var(--amber-dk);border:1px solid var(--amber)}
     .hero{padding:3rem 0 1.5rem;text-align:center}
     .badge{display:inline-block;background:var(--amber-lt);color:var(--amber-dk);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
@@ -59,6 +60,16 @@
     .pay .note{font-size:.78rem;color:var(--muted)}
     section.block{padding:1.2rem 0;border-top:1px solid var(--line)}
     section.block h2{font-size:1.4rem;margin-bottom:.6rem}
+    .peek-grid{display:grid;gap:1rem;margin:.6rem 0 0}
+    @media(min-width:640px){.peek-grid{grid-template-columns:1fr 1fr}}
+    .peek-grid figure{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+    .peek-grid img{width:100%;height:auto;display:block}
+    .peek-grid figcaption{font-size:.8rem;color:var(--muted);padding:.5rem .7rem;border-top:1px solid var(--line)}
+    .amazon{display:none;background:linear-gradient(160deg,#fff7ed,#fff);border:1px solid var(--amber);border-radius:var(--r);padding:1.5rem;margin:1.5rem 0;box-shadow:var(--shadow)}
+    .amazon.show{display:block}
+    .amazon h2{font-size:1.3rem;margin-bottom:.4rem}
+    .amazon p{font-size:.95rem;color:var(--muted);margin-bottom:1rem}
+    .amazon .azbtns{display:flex;flex-wrap:wrap;gap:.6rem}
     .toc-list{margin:.2rem 0 0 1.1rem}
     .toc-list li{margin-bottom:.3rem}
     .faq details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:.6rem;padding:0}
@@ -148,6 +159,34 @@
     </section>
 
     <section class="block">
+      <h2>Uno sguardo dentro</h2>
+      <p>Niente riempitivi con foto stock — solo diagrammi che spiegano davvero qualcosa. Eccone tre:</p>
+      <div class="peek-grid">
+        <figure>
+          <img src="/downloads/fig-filter-it.png" alt="Il filtro anti-bullshit in 3 domande come diagramma di flusso" loading="lazy" width="900" height="560">
+          <figcaption>Il filtro in 3 domande a colpo d'occhio.</figcaption>
+        </figure>
+        <figure>
+          <img src="/downloads/fig-stack-it.png" alt="Lo stack IA minimo in quattro mattoni" loading="lazy" width="900" height="540">
+          <figcaption>Quattro mattoni, non di più.</figcaption>
+        </figure>
+        <figure>
+          <img src="/downloads/fig-day-it.png" alt="Una giornata prima e dopo, come grafico a barre" loading="lazy" width="900" height="460">
+          <figcaption>Un dimezzamento onesto, non il “10x”.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="amazon" id="amazon">
+      <h2>📕 Ora anche su Amazon</h2>
+      <p>Preferisci Kindle o un tascabile stampato sullo scaffale? Ora è su Amazon. Il PDF e l'ePub qui sopra restano gratis — l'edizione Amazon è per chi lo vuole più comodo o su carta (e così mi sostiene).</p>
+      <div class="azbtns">
+        <a href="#" class="btn" id="az-btn" target="_blank" rel="noopener">Guarda su Amazon →</a>
+      </div>
+      <p style="font-size:.8rem;margin:.9rem 0 0;">Già letto? Una <strong>recensione onesta</strong> su Amazon aiuta più di qualsiasi pubblicità — grazie.</p>
+    </section>
+
+    <section class="block">
       <h2>Perché „paga quanto vuoi“?</h2>
       <p>Perché è coerente con il marchio. La conoscenza che ti aiuta davvero non deve fermarsi a un paywall — e chi la apprezza può dimostrarlo. Decidi tu il prezzo. Nessun importo minimo, nessun senso di colpa, nessuna falsa scarsità.</p>
     </section>
@@ -204,6 +243,10 @@
   }
   if(/^https?:\/\//.test(KDP_URL)){
     kdp.href = KDP_URL; kdp.target = "_blank"; kdp.rel = "noopener"; kdp.hidden = false;
+    var az = document.getElementById("amazon");
+    var azBtn = document.getElementById("az-btn");
+    if(azBtn){ azBtn.href = KDP_URL; }
+    if(az){ az.classList.add("show"); }
   }
 })();
 </script>

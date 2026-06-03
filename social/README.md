@@ -1,7 +1,16 @@
-# 📣 Social-Poster — 1-Klick an Telegram & Discord
+# 📣 Mehrkanal-Publisher — 1-Klick / Null-Klick veröffentlichen
 
-Sendet die fertigen Posts aus `posts.json` mit **einem Befehl** an deinen Telegram-Kanal
-und/oder Discord. Anders als LinkedIn erlauben beide offiziell automatisches Posten.
+Sendet die fertigen Posts aus `posts.json` mit **einem Befehl** (oder voll automatisch) an
+mehrere Kanäle. Jeder Kanal ist optional und wird per Secret aktiviert; nicht gesetzt = übersprungen.
+
+**Kanäle:**
+- **Discord** & **Telegram** — direktes Posten (offiziell erlaubt).
+- **Mastodon** — offenes Netzwerk, einfacher Access-Token.
+- **Webhook (`PUBLISH_WEBHOOK_URL`)** — der „überall"-Hebel: häng ihn an **Make / n8n /
+  Zapier** und fächere von dort an **LinkedIn, X, Instagram & Co.** (deren APIs lassen sich
+  nicht sauber direkt aus einem Skript bedienen). Pro Post geht ein JSON `{id,text,url,tags}` raus.
+
+Einrichtung aller Kanäle Schritt für Schritt: **`SECRETS-EINRICHTEN.md`**.
 
 ## 🔐 Sicherheit zuerst
 Tokens/Webhook-URLs kommen **nur aus Umgebungsvariablen** — NIE in den Code, NIE ins Git,
@@ -28,12 +37,14 @@ NIE in einen Chat. So kann nichts geleakt werden.
 
 ## Nutzen
 ```bash
-python social/post.py            # sendet den NÄCHSTEN ungesendeten Post (1 Klick)
+python social/post.py            # sendet den NÄCHSTEN ungesendeten Post an alle aktiven Kanäle
 python social/post.py --id p2-top5   # bestimmten Post senden
 python social/post.py --dry-run  # nur anzeigen, nichts senden
 python social/post.py --all      # alle ungesendeten (Vorsicht)
+python social/post.py --add "Mein Text" --link https://abannews.com/finanz-rechner.html  # Post einreihen
 ```
-Nach Versand wird `"sent": true` gesetzt — beim nächsten Aufruf kommt automatisch der nächste Post.
+Nach Versand wird `"sent": true` + `sent_channels` gesetzt — beim nächsten Aufruf kommt
+automatisch der nächste Post, und ein bereits erfolgreicher Kanal wird nicht doppelt bespielt.
 
 ## Voll-automatisch (3×/Woche, Null-Klick) — eingerichtet ✅
 Der Workflow `.github/workflows/social-autopost.yml` postet automatisch **Mo/Mi/Fr** den

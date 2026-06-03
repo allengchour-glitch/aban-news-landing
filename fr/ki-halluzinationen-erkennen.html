@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repérer les hallucinations de l'IA — le guide | aban news</title>
+  <meta name="description" content="Pourquoi l'IA hallucine, 5 signaux d'alerte de faits inventés et comment vérifier en 30 secondes. Pratique, pour indépendants — sans panique, sans hype.">
+  <link rel="canonical" href="https://abannews.com/fr/ki-halluzinationen-erkennen.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/ki-halluzinationen-erkennen.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-halluzinationen-erkennen.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ki-halluzinationen-erkennen.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/ki-halluzinationen-erkennen.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-halluzinationen-erkennen.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="Repérer les hallucinations de l'IA — le guide pratique">
+  <meta property="og:description" content="Pourquoi l'IA invente des faits, 5 signaux d'alerte et la vérification en 30 secondes. Sans panique, sans hype.">
+  <meta property="og:url" content="https://abannews.com/fr/ki-halluzinationen-erkennen.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://abannews.com/img/og/ki-halluzinationen-erkennen.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/img/og/ki-halluzinationen-erkennen.png">
+  <style>
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;margin-left:1.2rem}
+    .lang a{padding:.3rem .55rem;color:var(--muted);text-decoration:none;margin:0}
+    .lang a.on{background:var(--ink);color:#fff}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:3rem 0 2rem;text-align:center}
+    h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:58ch;margin:0 auto 1.5rem}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    section{padding:1.2rem 0}
+    section h2{font-size:1.4rem;line-height:1.2;margin:1.4rem 0 .6rem}
+    section h3{font-size:1.1rem;margin:1.1rem 0 .35rem}
+    section p{margin-bottom:.8rem}
+    section ul{margin:0 0 .9rem 1.2rem}
+    section li{margin-bottom:.35rem}
+    .method{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.5rem;margin-bottom:1rem;box-shadow:var(--shadow)}
+    .method h3{margin-top:0;display:flex;align-items:center;gap:.5rem}
+    .method .num{background:var(--amber);color:#fff;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;flex-shrink:0}
+    .callout{background:var(--amber-lt);border-left:4px solid var(--amber);border-radius:8px;padding:.9rem 1.1rem;margin:1rem 0;font-weight:600}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2rem 0}
+    .cta-box h2{font-size:1.3rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .btn--ghost{border:1px solid var(--amber);color:var(--amber-dk);background:#fff}
+    details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem;padding:0}
+    details[open]{border-color:#fed7aa}
+    summary{padding:1rem 1.1rem;font-weight:600;cursor:pointer;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";float:right;color:#a3a3a3;font-weight:300;font-size:1.3rem;line-height:1}
+    details[open] summary::after{content:"−"}
+    details .a{padding:0 1.1rem 1.1rem;color:var(--muted);font-size:.95rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:2rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Repérer les hallucinations de l'IA — le guide pratique","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"datePublished":"2026-05-31","dateModified":"2026-05-31","description":"Pourquoi l'IA hallucine, cinq signaux d'alerte de faits inventés et la vérification en 30 secondes — pratique et sans panique.","inLanguage":"fr"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"fr","mainEntity":[
+    {"@type":"Question","name":"Qu'est-ce qu'une hallucination de l'IA ?","acceptedAnswer":{"@type":"Answer","text":"Une réponse inventée mais présentée avec assurance. Pas un défaut, mais l'envers de son fonctionnement : elle calcule le mot suivant le plus probable, pas la vérité. Sources inventées, chiffres ou noms faux paraissent donc aussi convaincants que les corrects."}},
+    {"@type":"Question","name":"Pourquoi l'IA invente-t-elle des sources et des citations ?","acceptedAnswer":{"@type":"Answer","text":"Parce qu'une citation qui sonne plausible est statistiquement probable — même si elle n'a jamais existé. Le modèle ne sait pas si une source est réelle ; il produit quelque chose qui ressemble à une source. Donc : ouvre et vérifie toi-même chaque source citée."}},
+    {"@type":"Question","name":"Comment repérer une hallucination ?","acceptedAnswer":{"@type":"Answer","text":"Méfie-toi des détails trop précis sans preuve, des chiffres et dates exacts, des études ou articles de loi nommés, et des contradictions internes. Plus une affirmation est précise et assurée sans source, plus tu la vérifies vite."}},
+    {"@type":"Question","name":"Comment éviter les hallucinations ?","acceptedAnswer":{"@type":"Answer","text":"On ne peut pas les éviter totalement. Mais tu réduis le risque : donne les documents sources au modèle, demande des citations, laisse-le dire « je ne sais pas » en cas de doute, et vérifie tout ce qui coûte cher à la source primaire."}},
+    {"@type":"Question","name":"Les modèles récents sont-ils exempts d'hallucinations ?","acceptedAnswer":{"@type":"Answer","text":"Non. Les modèles récents hallucinent moins souvent, mais pas jamais — et cela rend le reste plus convaincant. La routine de vérification reste la même, quelle que soit la qualité du modèle."}}
+  ]}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/fr/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/fr/ebook.html">eBook</a>
+      <a href="/fr/ki-halluzinationen-erkennen.html"><strong>Hallucinations</strong></a>
+      <a href="#subscribe" class="btn">S'abonner</a>
+      <span class="lang"><a href="/ki-halluzinationen-erkennen.html">DE</a><a href="/en/ki-halluzinationen-erkennen.html">EN</a><a href="/fr/ki-halluzinationen-erkennen.html" class="on" aria-current="true">FR</a><a href="/it/ki-halluzinationen-erkennen.html">IT</a></span>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Mise à jour : mai 2026 · sans panique</span>
+      <h1>Repérer les hallucinations de l'IA</h1>
+      <p class="lead">L'IA invente des faits — avec assurance et de façon convaincante. Ce n'est pas un défaut, c'est l'envers de son fonctionnement. Voici les signaux d'alerte et la vérification en 30 secondes qui te protègent.</p>
+    </div>
+
+    <section>
+      <h2>Pourquoi l'IA hallucine, au fond</h2>
+      <p>Un modèle de langage est au fond une machine qui prédit le mot suivant. Il ne calcule pas la vérité, mais la probabilité. Cela explique presque tout : pourquoi il formule brillamment et invente des faits dans la même phrase, pourquoi il ne remarque jamais son erreur, et pourquoi la même question donne deux fois des réponses légèrement différentes.</p>
+      <p>Une hallucination n'est donc pas un bug, mais la conséquence logique de cela. Une citation inventée est statistiquement probable — même si elle n'a jamais existé. Une fois que tu comprends ça, tu traites chaque réponse de l'IA comme un brouillon, pas comme une preuve.</p>
+      <div class="callout">L'IA est un stagiaire à la mémoire parfaite et au jugement nul. Elle a toujours l'air sûre d'elle — qu'elle ait raison ou non.</div>
+    </section>
+
+    <section>
+      <h2>Cinq signaux d'alerte de faits inventés</h2>
+      <div class="method">
+        <h3><span class="num">1</span> Détails trop précis sans preuve</h3>
+        <p>Plus une affirmation sonne précise sans qu'une source l'accompagne, plus tu la vérifies. « Des études montrent que 73 % … » sans étude est un signal d'alerte, pas un fait.</p>
+      </div>
+      <div class="method">
+        <h3><span class="num">2</span> Sources, études ou articles de loi nommés</h3>
+        <p>Les sources nommées paraissent sérieuses — et sont particulièrement souvent inventées. Les modèles produisent quelque chose qui ressemble à une source. Ouvre toi-même chaque étude, décision et article cités.</p>
+      </div>
+      <div class="method">
+        <h3><span class="num">3</span> Chiffres et dates exacts</h3>
+        <p>Des chiffres ronds et assurés et des années précises paraissent fiables mais s'inventent facilement. Traite chaque chiffre qui compte comme non vérifié tant que tu ne l'as pas vu.</p>
+      </div>
+      <div class="method">
+        <h3><span class="num">4</span> Contradictions internes</h3>
+        <p>Si la réponse dit X à un endroit et le contraire à un autre, au moins un endroit est deviné. Fais expliquer le même point deux fois et compare.</p>
+      </div>
+      <div class="method">
+        <h3><span class="num">5</span> Des réponses sur des choses inventées</h3>
+        <p>Demande un livre ou une loi qui n'existe pas — beaucoup de modèles le décrivent quand même volontiers. Si l'IA ne dit jamais « je ne connais pas », la méfiance est de mise.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>La vérification en 30 secondes</h2>
+      <ul>
+        <li><strong>Vérifier à la source :</strong> ce qui doit être exact, tu le vérifies à l'original — pas auprès de l'IA, pas dans un article de blog.</li>
+        <li><strong>Exiger les sources :</strong> « Nomme la source et cite le passage mot pour mot. » L'inventé s'effondre souvent ici.</li>
+        <li><strong>Autoriser le doute :</strong> dis dans le prompt : « Si tu n'es pas sûr, dis-le. » Cela réduit nettement l'invention.</li>
+        <li><strong>Recouper :</strong> pose la même question reformulée. Si les réponses divergent beaucoup, au moins une est devinée.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Où les hallucinations coûtent particulièrement cher</h2>
+      <p>Toutes les erreurs ne coûtent pas pareil. Un titre maladroit, tu le corriges en quelques secondes — un chiffre faux dans un devis ou un article de loi inventé dans un courrier client, non. Traite ces domaines comme à vérifier par défaut :</p>
+      <ul>
+        <li><strong>Droit :</strong> articles, délais, décisions — toujours recouper avec le texte légal.</li>
+        <li><strong>Santé &amp; finances :</strong> dosages, montants, règles fiscales — jamais repris sans vérification.</li>
+        <li><strong>Citations &amp; sources :</strong> tout ce que tu transmets comme preuve, ouvre-le d'abord toi-même.</li>
+        <li><strong>Chiffres vers l'extérieur :</strong> tout ce qui va aux clients ou dans des publications.</li>
+      </ul>
+      <div class="callout">Règle simple : plus une erreur coûte cher, plus ton propre regard compte. L'IA prépare — tu valides.</div>
+    </section>
+
+    <section>
+      <h2>Questions fréquentes</h2>
+      <details><summary>Qu'est-ce qu'une hallucination de l'IA ?</summary><div class="a">Une réponse inventée mais présentée avec assurance. Pas un défaut, mais l'envers de son fonctionnement — elle calcule la probabilité, pas la vérité.</div></details>
+      <details><summary>Pourquoi l'IA invente-t-elle des sources ?</summary><div class="a">Parce qu'une citation plausible est statistiquement probable, même si elle n'a jamais existé. Le modèle produit quelque chose qui ressemble à une source. Ouvre chaque source citée toi-même.</div></details>
+      <details><summary>Comment repérer une hallucination ?</summary><div class="a">Méfie-toi des détails trop précis sans preuve, des chiffres exacts, des études nommées et des contradictions internes. Plus c'est assuré sans source, plus tu vérifies vite.</div></details>
+      <details><summary>Les modèles récents en sont-ils exempts ?</summary><div class="a">Non. Ils hallucinent moins souvent, mais pas jamais — ce qui les rend plus convaincants. La routine de vérification reste la même.</div></details>
+    </section>
+
+    <div class="cta-box" style="background:var(--card);border:1px solid var(--line);">
+      <h2>eBook gratuit : « Anti-Hype »</h2>
+      <p>Cette façon de penser traverse tout l'eBook : le filtre en 3 questions, ton stack IA minimal et comment séparer la substance du spectacle. Sans inscription.</p>
+      <a href="/fr/ebook.html" class="btn btn--ghost">Lire l'eBook →</a>
+    </div>
+
+    <div class="cta-box" id="subscribe">
+      <h2>Chaque jour ouvré : l'IA sans le bullshit, en 5 minutes</h2>
+      <p>aban news t'apporte du lundi au vendredi les évolutions de l'IA qui comptent pour ton travail — honnêtement remises en contexte, sans panique et sans hype.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">Recevoir le briefing IA de 5 min →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Pas de spam. Désinscription en un clic. Conforme au RGPD.</p>
+    </div>
+
+    <section>
+      <h2 style="font-size:1.05rem;">À lire ensuite</h2>
+      <div style="display:grid;gap:.7rem;grid-template-columns:1fr 1fr;">
+        <a href="/fr/ki-prompts-schreiben.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Écrire des prompts IA</strong><span style="color:var(--muted);font-size:.82rem;">De meilleurs prompts en 4 étapes</span></a>
+        <a href="/fr/chatgpt-vs-claude.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">ChatGPT vs Claude</strong><span style="color:var(--muted);font-size:.82rem;">Le comparatif honnête</span></a>
+        <a href="/fr/ki-tools-fuer-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Outils d'IA pour indépendants</strong><span style="color:var(--muted);font-size:.82rem;">Le stack honnête 2026</span></a>
+        <a href="/fr/ebook.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">eBook gratuit « Anti-Hype »</strong><span style="color:var(--muted);font-size:.82rem;">Utiliser l'IA sans le bullshit</span></a>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <p><strong>Note d'honnêteté :</strong> ce guide ne contient aucun lien d'affiliation. Les hallucinations ne se désactivent pas, elles se contiennent — la routine décrite ici ne remplace pas une vérification professionnelle dans un cas particulier. Pour les sujets juridiques ou médicaux sensibles : vérifie à la source primaire ou demande à un professionnel.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/fr/">Accueil</a> · <a href="/impressum.html">Mentions légales</a> · <a href="/datenschutz.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

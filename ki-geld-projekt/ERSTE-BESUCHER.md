@@ -62,6 +62,181 @@ Würde mich über Feedback freuen 🙏
 
 ---
 
+---
+
+# 📨 Teil 2: Posts für den NEWSLETTER (nicht das Tool-Radar)
+
+> Die Posts oben führen zum Tool-Verzeichnis. Diese hier führen direkt zum Newsletter —
+> dein eigentliches Ziel. Value zuerst, Anmeldung als sanfter Schluss.
+
+## 4) LinkedIn — Anti-Hype-Haltung (Newsletter)
+
+**Post:**
+```
+„KI verändert alles" — diesen Satz lese ich zehnmal am Tag. Er hilft niemandem.
+
+Ich schreibe einen täglichen Newsletter für den deutschsprachigen Raum, der das
+Gegenteil versucht: Mo–Fr, 5 Minuten, eine Sache, die du heute anwenden kannst.
+Kein Hype, keine Tool-des-Tages-Jagd, keine Angst, etwas zu verpassen.
+
+Wer den ganzen Tag arbeitet, hat keine Zeit, 40 KI-News zu sortieren. Das mache ich,
+damit du es nicht musst. Wenn nichts Brauchbares passiert ist, sage ich auch das.
+```
+**Kommentar 1 (direkt nach dem Posten):**
+```
+Kostenlos, Mo–Fr 👉 https://abannews.com
+```
+
+---
+
+## 5) Reddit — Value-Post zu einem Thema (z.B. r/de_EDV, r/datenschutz, r/kmu)
+
+> Erst echt mitdiskutieren. Dann diesen Beitrag — er gibt zuerst Wissen, verlinkt
+> die Themen-Seite (kein Login), Newsletter nur als Fußnote.
+
+**Titel:**
+```
+DSGVO & KI im Alltag: worauf ich bei jedem Tool zuerst schaue (kurze Checkliste)
+```
+**Text:**
+```
+Mir ist beim Vergleichen von KI-Tools eine kleine Routine geblieben, die viel Ärger
+spart. Drei Fragen, bevor ich überhaupt Daten eingebe:
+
+1. Wo stehen die Server? (EU/US — steht oft im Kleingedruckten)
+2. Gibt es einen AV-Vertrag? (bei beruflicher Nutzung Pflicht)
+3. Werden meine Eingaben zum Training verwendet? (oft per Schalter abstellbar)
+
+Ausführlicher mit Beispielen habe ich es hier aufgeschrieben (ohne Anmeldung):
+https://abannews.com/themen/dsgvo-und-ki.html
+
+Falls dich sowas täglich in 5 Minuten interessiert, schreibe ich einen Newsletter dazu —
+aber der Link oben hilft auch ohne. Über Ergänzungen freue ich mich.
+```
+
+---
+
+## 6) Mastodon / Bluesky — kurz, pseudonym-freundlich (passt zu „faceless")
+
+> Tech-affine DACH-Leute sind hier aktiv und link-freundlicher als LinkedIn.
+
+```
+Ich kuratiere KI-News auf Deutsch — Mo–Fr, 5 Minuten, eine anwendbare Sache pro Tag.
+Anti-Hype: wenn nichts Brauchbares passiert ist, sage ich das auch.
+Kostenlos, kein Tracking → https://abannews.com
+#KI #Newsletter #DACH
+```
+
+---
+
+## 7) Kommentar-first (die 80%-Hälfte der 80/20-Regel)
+
+> Das bringt langfristig die meisten Klicks: NICHT posten, sondern in fremden Threads
+> echt helfen. Kein Link — nur Wissen. Vorlage als Haltung, nicht zum Copy-Paste:
+
+```
+Frage im Thread: „Welches KI-Tool für X?"
+Deine Antwort: konkrete Empfehlung + ein ehrliches Gegen-Argument + ein Datenschutz-Hinweis.
+Kein Link. Wer mehr wissen will, klickt auf dein Profil — da steht abannews.com.
+```
+
+---
+
+---
+
+# 📊 Teil 3: Daten-Posts (funktionieren ohne Eigenwerbung-Gefühl)
+
+> Zahlen werden lieber geteilt als Meinungen. Diese Posts führen auf die neue
+> Seite „KI & Krypto in Zahlen" (abannews.com/krypto) — nüchtern, mit Quellen.
+
+## 8) LinkedIn / Mastodon — eine überraschende Zahl
+
+```
+Ethereum hat seinen Stromverbrauch 2022 um über 99 % gesenkt — mit dem Wechsel
+von Proof-of-Work auf Proof-of-Stake. Bitcoin liegt weiter bei rund 150 TWh im Jahr,
+also etwa wie ein mittleres Industrieland.
+
+„Krypto frisst Strom" stimmt also nur noch für einen Teil des Marktes.
+
+Ich hab die Zahlen zu KI & Krypto mal nüchtern in Tabellen gepackt — Sektor,
+Energie, Trading-Realität, DACH-Steuer. Mit Quellen, ohne Anlage-Geschwurbel.
+```
+**Link in Kommentar 1:** `https://abannews.com/krypto`
+
+## 9) Reddit — Value-Post (r/Finanzen, r/de_EDV, r/Kryptowaehrungen)
+
+> Erst echt mitdiskutieren, dann das hier. Gibt zuerst die Zahl, dann den Link.
+
+**Titel:**
+```
+KI im Krypto-Trading: was sie wirklich kann (und was nur verkauft wird)
+```
+**Text:**
+```
+Kurz und nüchtern, weil mich „KI-Bot verdoppelt dein Konto" nervt:
+
+- Kurs zuverlässig vorhersagen: nein (kurzfristig minimal über Zufall, nach Gebühren weg)
+- Muster/Betrug erkennen: ja, funktioniert real
+- Diszipliniert Regeln ausführen: ja (Bots halten Stop-Loss, Menschen nicht)
+- Garantierte Gewinne: nein — wer das verspricht, will dein Geld
+
+Hab das mit Quellen + DACH-Steuer-Eckwerten zusammengeschrieben (keine
+Anlageberatung): https://abannews.com/krypto
+```
+
+---
+
+---
+
+# 🎙️ Teil 4: Posts zur KI-Stimmen-Seite (abannews.com/tts)
+
+> Führen auf das ehrliche Text-to-Speech-Review. Enthält einen Affiliate-Link —
+> deshalb beim Teilen NICHT verschweigen, sondern die Ehrlichkeit zum Verkaufsargument
+> machen. Das passt zu Aban und schützt vor „nur Werbung"-Vorwürfen.
+
+## 10) LinkedIn / Mastodon — die ehrliche Grenze
+
+```
+KI-Stimmen sind 2026 erstaunlich gut — für Erklärvideos, Voiceover und Menüansagen
+merkt kaum jemand den Unterschied.
+
+Wo man die KI weiter hört: lange, emotionale Passagen. Für die Hörbuch-Hauptrolle
+ist die menschliche Stimme noch vorn.
+
+Hab aufgeschrieben, wofür sich Text-to-Speech wirklich lohnt — und wofür nicht.
+Mit Datenschutz-Blick (die meisten Anbieter hosten in den USA).
+```
+**Link in Kommentar 1:** `https://abannews.com/tts`
+*(Hinweis: Die Seite enthält einen Affiliate-Link — das steht dort offen dabei. Wer
+fragt, bekommt von dir dieselbe ehrliche Antwort.)*
+
+## 11) Reddit — Value-Post (r/de_EDV, r/Podcasting, r/youtube_de)
+
+> Erst mitdiskutieren. Dann das hier — gibt zuerst die Entscheidungshilfe, Link als Fußnote.
+
+**Titel:**
+```
+Wann lohnt sich eine KI-Stimme statt eines echten Sprechers? (ehrliche Einordnung)
+```
+**Text:**
+```
+Faustregel nach einigem Ausprobieren:
+
+KI-Stimme reicht: Erklärvideos, Social-Voiceover, Menü-/Telefonansagen,
+mehrsprachige Versionen, schnelle Entwürfe.
+Echter Sprecher: Werbespots, die vom Stimm-Charakter leben, Hörbücher,
+alles wo eine Persönlichkeit verkauft.
+
+Datenschutz nicht vergessen: die meisten Tools hosten in den USA — für
+Marketing-Skripte ohne Personenbezug okay, sonst Serverstandort prüfen.
+
+Ausführlicher (mit Auswahl-Kriterien) hier, falls es jemandem hilft:
+https://abannews.com/tts — enthält einen Affiliate-Link, ist auf der Seite
+gekennzeichnet, meine Einschätzung ändert das nicht.
+```
+
+---
+
 ## Danach: dran bleiben
 - 1× pro Woche ein Build-in-Public-Update auf LinkedIn (was lief, was nicht).
 - Jede Newsletter-Ausgabe → 1 Post ableiten (`automation/werkbank.py social ...`).

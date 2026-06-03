@@ -1,0 +1,71 @@
+{
+  "_hinweis": "Produktkatalog für den personalisierten Print-on-Demand-Shop. Preise (preis_eur) und Lieferzeit bleiben null/[Redaktion: prüfen], bis sie beim POD-Anbieter real kalkuliert und eingetragen sind. Keine erfundenen Zahlen. pod_anbieter = wer druckt+versendet (EU-Lager bevorzugt). shopify_handle wird beim Import vergeben.",
+  "waehrung": "EUR",
+  "produkte": [
+    {
+      "id": "schluesselanhaenger-acryl",
+      "name": "Schlüsselanhänger mit Name",
+      "kurz": "Acryl, lasergraviert — dein Name oder Wort, klar lesbar.",
+      "material": "Acryl (3–4 mm), Edelstahl-Ring",
+      "personalisierung": "Freitext (Name/Wort), 1 Zeile",
+      "pod_anbieter": "EU-Acryl-/Laser-POD",
+      "eu_lager": true,
+      "preis_eur": null,
+      "lieferzeit": null,
+      "design_quelle": "/namen-generator.html",
+      "aban_note": "[Redaktion: prüfen] — Druckkosten und Mindestpreis vor dem Live-Schalten beim Anbieter kalkulieren."
+    },
+    {
+      "id": "namensschild-3d",
+      "name": "3D-Namensschild",
+      "kurz": "Gedruckter Schriftzug für Tür, Tisch oder Regal.",
+      "material": "PLA (3D-Druck), matt",
+      "personalisierung": "Freitext (Name), 1 Zeile",
+      "pod_anbieter": "EU-3D-Druck-POD",
+      "eu_lager": true,
+      "preis_eur": null,
+      "lieferzeit": null,
+      "design_quelle": "/namen-generator.html",
+      "aban_note": "[Redaktion: prüfen] — 3D-Druck-Stückkosten hängen an Größe/Füllung; vor Verkauf real kalkulieren."
+    },
+    {
+      "id": "grusskarte-personalisiert",
+      "name": "Personalisierte Grußkarte",
+      "kurz": "Name groß, kurzer Spruch — gedruckt und verschickt.",
+      "material": "Recycling-Karton, 300 g",
+      "personalisierung": "Name + kurzer Text",
+      "pod_anbieter": "Gelato (EU-Druck)",
+      "eu_lager": true,
+      "preis_eur": null,
+      "lieferzeit": null,
+      "design_quelle": "/namen-generator.html",
+      "aban_note": "[Redaktion: prüfen] — Gelato druckt regional; Preis je Format vor Live prüfen."
+    },
+    {
+      "id": "tasse-mit-name",
+      "name": "Tasse mit Name",
+      "kurz": "Schlichte Tasse, dein Name sauber gesetzt.",
+      "material": "Keramik, 330 ml",
+      "personalisierung": "Freitext (Name), 1 Zeile",
+      "pod_anbieter": "Gelato (EU-Druck)",
+      "eu_lager": true,
+      "preis_eur": null,
+      "lieferzeit": null,
+      "design_quelle": "/namen-generator.html",
+      "aban_note": "[Redaktion: prüfen] — Tassendruck ist Standard-POD; Mindestmarge vor Live festlegen."
+    },
+    {
+      "id": "poster-name",
+      "name": "Namens-Poster",
+      "kurz": "Typografisches Poster mit Name — schlicht, kein Kitsch.",
+      "material": "Mattes Posterpapier (A3/A2)",
+      "personalisierung": "Name + optional Datum",
+      "pod_anbieter": "Gelato (EU-Druck)",
+      "eu_lager": true,
+      "preis_eur": null,
+      "lieferzeit": null,
+      "design_quelle": "/namen-generator.html",
+      "aban_note": "[Redaktion: prüfen] — Posterpreise je Format vor Live kalkulieren."
+    }
+  ]
+}

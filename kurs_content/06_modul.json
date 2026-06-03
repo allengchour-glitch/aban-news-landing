@@ -1,0 +1,51 @@
+{
+  "title": "Kunden gewinnen mit KI &mdash; ohne Spam",
+  "kicker": "Modul 6",
+  "toc": true,
+  "kind": "modul",
+  "blocks": [
+    ["lead", "KI macht es leicht, hundert Nachrichten in einer Minute zu verschicken. Genau das ist das Problem. Dieses Modul zeigt dir den anderen Weg: weniger, daf&uuml;r relevant &mdash; und so, dass du dich danach noch im Spiegel ansehen kannst."],
+
+    ["h3", "Relevanz schl&auml;gt Masse"],
+    ["p", "Eine gute, recherchierte Nachricht an die richtige Person bringt mehr als f&uuml;nfzig Serienmails. KI hilft dir bei der Recherche und beim Formulieren, nicht beim Massenversand. Wer auf Masse setzt, verbrennt seinen Namen und landet im Spam-Ordner."],
+    ["p", "Der ehrliche Weg ist auch der bequemere: Du schreibst weniger Nachrichten, bekommst aber mehr Antworten. Statt dich zu fragen, wie du noch mehr Leute erreichst, fragst du, welche zehn Personen wirklich zu dem passen, was du anbietest."],
+    ["callout", "Eine Antwort von der richtigen Person ist mehr wert als hundert Mails, die niemand &ouml;ffnet."],
+
+    ["h3", "Erst nachdenken, wen du ansprichst"],
+    ["p", "Bevor KI ins Spiel kommt, kl&auml;rst du die einfache Frage: Wem kann ich konkret helfen? Schreib dir ein scharfes Bild deiner Wunschkunden auf &mdash; Branche, Gr&ouml;&szlig;e, typisches Problem. Je sch&auml;rfer das Bild, desto leichter f&auml;llt jede sp&auml;tere Nachricht."],
+    ["ul", ["Welche Branche und welche Gr&ouml;&szlig;e?", "Welches Problem l&ouml;se ich, das diese Person wirklich hat?", "Woran erkenne ich, dass jemand gerade jetzt passt?"]],
+
+    ["h3", "KI f&uuml;r die Vorbereitung nutzen"],
+    ["p", "Bevor du jemanden ansprichst, brauchst du Kontext. Nutz KI, um &ouml;ffentlich verf&uuml;gbare Informationen zu ordnen und passende Ankn&uuml;pfungspunkte zu finden. Du f&uuml;tterst das Tool also mit Material, das ohnehin frei einsehbar ist, etwa dem Text einer Firmen-Website."],
+    ["code", "Du bist mein Rechercheassistent. Hier ist der Text einer Firmen-Website.\nFasse in drei S&auml;tzen zusammen, was die Firma macht.\nNenne dann drei konkrete Themen, bei denen mein Angebot helfen k&ouml;nnte.\nMein Angebot: [kurz beschreiben]\nWebsite-Text: [hier einf&uuml;gen]"],
+    ["p", "Die KI liefert dir Ansatzpunkte, keine fertige Wahrheit. Pr&uuml;fe jede Aussage, bevor du sie in einer Mail verwendest. Eine erfundene Behauptung &uuml;ber das Gegen&uuml;ber zerst&ouml;rt das Gespr&auml;ch schneller als gar kein Kontakt."],
+    ["callout", "Gib in die Recherche nur ein, was &ouml;ffentlich ist. Vertrauliche Daten haben hier nichts verloren &mdash; siehe Modul 5."],
+
+    ["h3", "Die pers&ouml;nliche Mail in acht S&auml;tzen"],
+    ["p", "Eine gute Erstansprache ist kurz. Wenn du mehr als acht bis zehn S&auml;tze brauchst, hast du dich verrannt. Diese Reihenfolge gibt dir ein Ger&uuml;st, das du selbst f&uuml;llst &mdash; die KI darf beim Formulieren helfen, der Inhalt kommt von dir."],
+    ["ol", ["Konkreter Bezug zur Person oder Firma, der zeigt, dass du hingeschaut hast", "Das Problem, das du vermutest, in einem Satz", "Warum es gerade jetzt passt", "Was du anbietest, in einfachen Worten", "Ein ehrlicher Beleg, etwa ein Beispiel oder eine kurze Referenz", "Ein kleiner, leichter n&auml;chster Schritt", "Ein Satz, der eine Antwort einfach macht", "Abschluss ohne Druck und mit Namen"]],
+    ["p", "Lass die KI den Entwurf gegenlesen: Bitte sie, alles zu streichen, was nach Werbung klingt, und den Ton auf ruhig und direkt zu stellen. Den letzten Schliff machst du selbst, damit es nach dir klingt und nicht nach Maschine."],
+    ["callout", "Wenn du die Mail an hundert Leute gleichzeitig schicken k&ouml;nntest, ist sie nicht pers&ouml;nlich genug. Schreib sie um, bis genau eine Person gemeint ist."],
+
+    ["h3", "Follow-up ohne zu nerven"],
+    ["p", "Die meisten Antworten kommen nicht auf die erste Mail. Ein einziges, freundliches Nachfassen ist normal und oft entscheidend. Wichtig ist, dass es etwas Neues bringt, statt nur zu fragen, ob die erste Mail angekommen ist."],
+    ["ul", ["Warte ein paar Tage, nicht ein paar Stunden", "Gib im Follow-up einen zus&auml;tzlichen Gedanken oder eine kleine Hilfe", "H&ouml;chstens ein, zwei Mal nachfassen, dann ist Schluss", "Akzeptiere ein Nein freundlich &mdash; es h&auml;lt die T&uuml;r f&uuml;r sp&auml;ter offen"]],
+    ["p", "Ein gutes Follow-up klingt wie von einem Menschen, der hilfreich sein will, nicht wie ein Automat, der eine Quote erf&uuml;llt. Wenn du merkst, dass du jemanden bedr&auml;ngst, h&ouml;rst du auf."],
+
+    ["h3", "Ma&szlig; halten: was Spam ausmacht"],
+    ["p", "Der Unterschied zwischen Ansprache und Spam liegt nicht in der Technik, sondern in der Haltung. Spam ist beliebig, anonym und nur an deinem Vorteil orientiert. Eine gute Nachricht ist gemeint, gepr&uuml;ft und am Gegen&uuml;ber orientiert."],
+    ["ul", ["Spam: gleicher Text an viele, ohne echten Bezug", "Spam: erfundene Komplimente oder vorget&auml;uschte Vertrautheit", "Spam: kein Weg, sich abzumelden oder h&ouml;flich Nein zu sagen", "Ehrlich: erkennbarer Bezug zur Person und zur Lage", "Ehrlich: ein klarer Absender, der zu seinem Namen steht", "Ehrlich: Respekt vor einem Nein"]],
+    ["p", "Halte dich auch an die Regeln deines Landes zur Kontaktaufnahme &mdash; gerade bei Werbung gibt es Grenzen. Das ist praktische Orientierung, keine Rechtsberatung: Im Zweifel pr&uuml;fst du, ob du jemanden &uuml;berhaupt unaufgefordert anschreiben darfst."],
+
+    ["h3", "H&auml;ufige Fehler"],
+    ["ul", ["Den KI-Entwurf ungepr&uuml;ft abschicken, samt erfundener Details", "Dasselbe Schema an Dutzende schicken und es pers&ouml;nlich nennen", "Zu lang schreiben und das Anliegen im dritten Absatz verstecken", "Drei, vier Mal nachfassen, bis es aufdringlich wird", "Auf ein Nein gar nicht oder beleidigt reagieren", "Den ersten Kontakt mit dem Verkauf verwechseln, statt erst Vertrauen aufzubauen"]],
+
+    ["h3", "Mini-&Uuml;bung: deine erste ehrliche Ansprache"],
+    ["p", "Such dir genau eine Person oder Firma aus, der du wirklich helfen k&ouml;nntest. Dann gehst du die Schritte einmal sauber durch &mdash; lieber eine gute Mail als zehn mittelm&auml;&szlig;ige."],
+    ["ol", ["W&auml;hle eine konkrete Wunschperson und sammle &ouml;ffentlich verf&uuml;gbaren Kontext", "Lass dir von der KI drei Ankn&uuml;pfungspunkte vorschlagen und pr&uuml;fe sie", "Schreibe die Acht-Satz-Mail selbst und lass die KI nur gl&auml;tten", "Streiche jeden Satz, der nach Werbung klingt", "Plane ein einziges Follow-up mit einem neuen Gedanken f&uuml;r in ein paar Tagen"]],
+
+    ["h3", "Arbeitsblatt zum Weiterarbeiten"],
+    ["p", "Wenn du fertige Vorlagen f&uuml;r die erste Ansprache und das Nachfassen willst, nutze das Arbeitsblatt cold-email-templates.pdf aus den Kurs-Ressourcen. Es gibt dir Ger&uuml;ste, die du mit deinem eigenen Inhalt f&uuml;llst &mdash; ehrlich gemeint, nicht zum Massenversand."],
+    ["callout", "Merksatz f&uuml;r dieses Modul: Sprich weniger Leute an, aber meine es ernst. Das ist der ganze Trick &mdash; und der einzige, der auf Dauer tr&auml;gt."]
+  ]
+}

@@ -3,13 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#d97706">
 <title>Archiv — alle Ausgaben | aban news</title>
 <meta name="description" content="Alle bisherigen Ausgaben von aban news — dem deutschsprachigen KI-Newsletter. Ehrlich, kein Hype, zum Nachlesen.">
 <link rel="canonical" href="https://abannews.com/archive.html">
+<meta property="og:image" content="https://abannews.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://abannews.com/og-image.png">
 <link rel="alternate" type="application/rss+xml" title="aban news" href="https://abannews.com/archive.rss">
 <meta property="og:title" content="aban news — Archiv">
 <meta property="og:description" content="Alle bisherigen Ausgaben zum Nachlesen.">
 <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
 :root{--accent:#d97706;--accent-h:#b45309;--bg:#fffbf5;--bg-alt:#fef3c7;--text:#1f2937;--muted:#6b7280;--border:#e5e7eb;}
 @media(prefers-color-scheme:dark){:root{--bg:#1a1714;--bg-alt:#2a2420;--text:#f3f0ec;--muted:#a8a29e;--border:#3a332d;}}
 *{box-sizing:border-box;}
@@ -24,17 +31,19 @@ main{padding:26px 0;}
 .issue h2{margin:0;font-size:1.15rem;} .issue a{text-decoration:none;color:var(--text);}
 .issue .meta{color:var(--muted);font-size:.85rem;margin:2px 0;}
 .issue .desc{color:var(--muted);margin:4px 0 0;font-size:.95rem;}
-.cta{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:11px 20px;border-radius:10px;font-weight:600;}
+.cta{display:inline-block;background:var(--accent-h);color:#fff;text-decoration:none;padding:11px 20px;border-radius:10px;font-weight:600;}
 footer{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);font-size:.85rem;text-align:center;}
 </style>
+<style>.skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}</style>
 </head>
 <body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
 <header><div class="wrap">
 <a href="/"><h1>📬 aban news — Archiv</h1></a>
 <p>Alle 28 Ausgaben zum Nachlesen · Mo–Fr, kein Hype</p>
 <p style="margin-top:14px;"><a class="cta" href="/gratis-ki-tools.html">Kostenlos abonnieren →</a></p>
 </div></header>
-<main><div class="wrap">
+<main id="main"><div class="wrap">
 <input id="q" class="search" type="search" placeholder="Ausgaben durchsuchen…" aria-label="Suche" oninput="abanFilter()">
 <div id="list">
 <article class="issue">
@@ -151,6 +160,44 @@ footer{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);font
 <p class="desc">Mittwoch, und in jedem zweiten Newsletter heute steht „Anthropic überholt OpenAI</p>
 </article>
 </div>
+<!-- Weiterempfehlen — trackingfrei, keine 3rd-Party-Skripte -->
+<div class="refer-box">
+  <h3 class="refer-h">🤝 Kennst du jemanden, dem das hilft?</h3>
+  <p class="refer-p">aban news wächst durchs Weitersagen, nicht durch Werbe-Budget. Wenn dir die Ausgaben gefallen, leite sie an eine Person weiter, die täglich 5 Minuten ehrliche KI-News gebrauchen kann.</p>
+  <div class="refer-row">
+    <a class="refer-btn" target="_blank" rel="noopener" href="https://wa.me/?text=T%C3%A4glich%205%20Min%20ehrliche%20KI-News%20f%C3%BCr%20DACH-Profis%20%E2%80%94%20kein%20Hype%2C%20kein%20Spam.%20Schau%20dir%20aban%20news%20an%3A%20https%3A//abannews.com/">💬 WhatsApp</a>
+    <a class="refer-btn" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//abannews.com/">in LinkedIn</a>
+    <a class="refer-btn" href="mailto:?subject=Schau%20dir%20aban%20news%20an&amp;body=T%C3%A4glich%205%20Min%20ehrliche%20KI-News%20f%C3%BCr%20DACH-Profis%20%E2%80%94%20kein%20Hype%2C%20kein%20Spam.%20Schau%20dir%20aban%20news%20an%3A%0A%0Ahttps%3A//abannews.com/">✉️ E-Mail</a>
+    <button class="refer-btn" type="button" id="shCopy">🔗 Link kopieren</button>
+  </div>
+  <p class="refer-ok" id="shMsg" role="status" aria-live="polite"></p>
+</div>
+<style>
+  .refer-box{background:#fff;border:1px solid #ece6db;border-radius:16px;padding:1.25rem 1.4rem;margin:1.5rem 0;box-shadow:0 6px 18px rgba(28,37,48,.08)}
+  .refer-h{margin:0 0 .4rem;font-size:1.15rem}
+  .refer-p{margin:0;color:#3b4654;line-height:1.5}
+  .refer-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
+  .refer-btn{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #ece6db;background:#fff;
+    color:#b45309;font-weight:700;font-size:.92rem;line-height:1;padding:.65rem .95rem;border-radius:10px;
+    text-decoration:none;cursor:pointer;font-family:inherit;transition:transform .12s ease,border-color .12s ease}
+  .refer-btn:hover{transform:translateY(-1px);border-color:#d97706}
+  .refer-btn:focus-visible{outline:3px solid #d97706;outline-offset:2px}
+  .refer-ok{color:#0f9d6b;font-weight:700;font-size:.88rem;margin:.6rem 0 0;min-height:1.1em}
+  @media(prefers-reduced-motion:reduce){.refer-btn{transition:none}.refer-btn:hover{transform:none}}
+</style>
+<script>
+(function(){
+  var cp=document.getElementById('shCopy'),msg=document.getElementById('shMsg');
+  if(!cp)return;
+  cp.addEventListener('click',function(){
+    var url="https://abannews.com/";
+    var ok=function(){msg.textContent="Link kopiert — danke fürs Weitersagen! ☕";};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(ok,function(){msg.textContent=url;});
+    }else{msg.textContent=url;}
+  });
+})();
+</script>
 </div></main>
 <footer><div class="wrap">
 © <span id="y"></span> aban news · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a> · <a href="/archive.rss">RSS</a>

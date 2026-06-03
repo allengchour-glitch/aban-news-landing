@@ -47,6 +47,8 @@ REDAKTION_RE = re.compile(r"\[Redaktion:[^\]]*\]\s*")
 
 UI = {
     "tagline": "KI-Kurse & Zertifikate, ehrlich verglichen — für den DACH-Raum",
+    # Keyword-reicher, einzigartiger Title-Suffix je Kurs (Anbieter + Jahr variieren).
+    "course_title": "Test & Bewertung",
     "all_courses": "← Alle Kurse",
     "categories": "Themen",
     "levels": "Niveau",
@@ -109,6 +111,15 @@ def clean(text):
     if not text:
         return ""
     return REDAKTION_RE.sub("", str(text)).strip()
+
+
+def clip(text: str, limit: int = 155) -> str:
+    """Meta-Description an Wortgrenze kürzen (sauberere SERP-Snippets)."""
+    text = " ".join(str(text or "").split())
+    if len(text) <= limit:
+        return text
+    cut = text[:limit].rsplit(" ", 1)[0].rstrip(",;:–-")
+    return (cut or text[:limit]) + "…"
 
 
 # --- URL helper ----------------------------------------------------------------
@@ -277,6 +288,21 @@ def affiliate_link(course, aff):
     return course.get("url", "#"), False
 
 
+def provider_link(course, aff, *, label=None, style=""):
+    """Zentrale Quelle für ausgehende Anbieter-Buttons (Single Source of Truth).
+
+    Affiliate aktiv: rel="sponsored noopener" (bezahlte Beziehung) + sichtbares *.
+    Direktlink: rel="noopener nofollow" (kein Link-Equity an den Anbieter).
+    Beide öffnen in neuem Tab mit noopener (Reverse-Tabnabbing-Schutz)."""
+    url, is_aff = affiliate_link(course, aff)
+    star = " *" if is_aff else ""
+    rel = "sponsored noopener" if is_aff else "noopener nofollow"
+    txt = label if label is not None else UI["to_provider"]
+    st = f' style="{style}"' if style else ""
+    return (f'<a class="cta" href="{e(url)}" rel="{rel}" target="_blank"{st}>'
+            f'{e(txt)}{e(star)} →</a>')
+
+
 def cert_str(course):
     z = course.get("zertifikat")
     if z is True:
@@ -384,8 +410,6 @@ def faq_section(course):
 # --- Components ----------------------------------------------------------------
 
 def course_card(course, aff):
-    url, is_aff = affiliate_link(course, aff)
-    star = " *" if is_aff else ""
     cats = "".join(f'<span class="chip">{e(c)}</span>' for c in course.get("kategorie", []))
     search = " ".join([course["name"], course.get("anbieter", ""), course.get("level", "")]
                       + course.get("kategorie", []) + course.get("themen", [])).lower()
@@ -398,22 +422,19 @@ def course_card(course, aff):
 <span>💶 {e(price_str(course))}</span>
 </div>
 <p class="meta">{cats}</p>
-<a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank">{e(UI['to_provider'])}{e(star)} →</a>
+{provider_link(course, aff)}
 </article>"""
 
 
 def comp_table(courses, aff):
     rows = []
     for c in courses:
-        url, is_aff = affiliate_link(c, aff)
-        star = " *" if is_aff else ""
         rows.append(
             f'<tr><td><a href="{e(page_path("course", slugify(c["id"])))}">{e(c["name"])}</a></td>'
             f'<td>{e(c.get("anbieter","—"))}</td>'
             f'<td>{e(c.get("level","—"))}</td>'
             f'<td>{e(price_str(c))}</td>'
-            f'<td><a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank" '
-            f'style="padding:5px 12px">{e(UI["to_provider"])}{e(star)} →</a></td></tr>')
+            f'<td>{provider_link(c, aff, style="padding:5px 12px")}</td></tr>')
     return (f'<table class="ctab"><thead><tr><th>{e(UI["course"])}</th>'
             f'<th>{e(UI["provider"])}</th><th>{e(UI["level"])}</th>'
             f'<th>{e(UI["price"])}</th><th></th></tr></thead>'
@@ -423,8 +444,6 @@ def comp_table(courses, aff):
 # --- Pages ---------------------------------------------------------------------
 
 def course_page(course, aff, related):
-    url, is_aff = affiliate_link(course, aff)
-    star = " *" if is_aff else ""
     slug = slugify(course["id"])
     note = clean(course.get("aban_note"))
     price_note = clean(course.get("preis_hinweis"))
@@ -438,6 +457,8 @@ def course_page(course, aff, related):
             f'<a href="{e(page_path("course", slugify(r["id"])))}">{e(r["name"])}</a>'
             for r in related)
         rel_html = f'<p class="subnav"><strong>Ähnliche Kurse:</strong> {links}</p>'
+    # Primärer CTA above-the-fold: direkt nach der Kurz-Übersicht (TLDR).
+    cta_label = f"{UI['to_provider']} ({course.get('anbieter','')})"
     body = f"""{course_jsonld(course)}{crumb}{itemlist([course])}
 <p><a href="{e(page_path('home'))}">{e(UI['all_courses'])}</a></p>
 <h1 style="margin:0 0 6px">{e(course['name'])} {score_html(course)}</h1>
@@ -450,16 +471,20 @@ def course_page(course, aff, related):
 <span>📜 {e(UI['certificate'])}: {e(cert_str(course))}</span>
 <span>🧩 {e(UI['format'])}: {e(course.get('format','—'))}</span>
 </div>
+{provider_link(course, aff, label=cta_label)}
 <p><strong>{e(UI['categories'])}:</strong><br>{cats or '—'}</p>
 <p><strong>{e(UI['topics'])}:</strong><br>{themen or '—'}</p>
 {('<div class="note"><strong>'+e(UI['editor_note'])+':</strong> '+e(note)+'</div>') if note else ''}
 {('<div class="note"><strong>'+e(UI['price'])+':</strong> '+e(price_note)+'</div>') if price_note else ''}
 {rel_html}
-<a class="cta" href="{e(url)}" rel="sponsored nofollow" target="_blank">{e(UI['to_provider'])} ({e(course.get('anbieter',''))}){e(star)} →</a>
+{provider_link(course, aff, label=cta_label)}
 {faq_section(course)}"""
-    desc = (note or UI["meta_course"].format(
-        name=course["name"], anbieter=course.get("anbieter", "")))[:155]
-    return page(title=f"{course['name']} — {SITE_NAME}", description=desc, body=body,
+    desc = clip(note or UI["meta_course"].format(
+        name=course["name"], anbieter=course.get("anbieter", "")))
+    # Einzigartiger, keyword-reicher Title je Kurs (Anbieter + Jahr variieren).
+    title = (f"{course['name']} {UI['course_title']} {date.today().year} "
+             f"({course.get('anbieter','')}) | {SITE_NAME}")
+    return page(title=title, description=desc, body=body,
                 canonical=BASE_URL + page_path("course", slug), kind="course", slug=slug)
 
 
@@ -471,7 +496,8 @@ def category_page(cat, members, aff):
             f'<p><a href="{e(page_path("home"))}">{e(UI["all_courses"])}</a></p>\n'
             f'<h1>{e(title)}</h1>\n{comp_table(members, aff)}\n'
             + "\n".join(course_card(c, aff) for c in members))
-    return page(title=f"{title} — {SITE_NAME}", description=UI["meta_cat"].format(cat=cat),
+    return page(title=f"{title} {date.today().year} — {SITE_NAME}",
+                description=clip(UI["meta_cat"].format(cat=cat)),
                 body=body, canonical=BASE_URL + page_path("cat", slug), kind="cat", slug=slug)
 
 
@@ -483,7 +509,8 @@ def level_page(lvl, members, aff):
             f'<p><a href="{e(page_path("home"))}">{e(UI["all_courses"])}</a></p>\n'
             f'<h1>{e(title)}</h1>\n{comp_table(members, aff)}\n'
             + "\n".join(course_card(c, aff) for c in members))
-    return page(title=f"{title} — {SITE_NAME}", description=UI["meta_lvl"].format(lvl=lvl),
+    return page(title=f"{title} {date.today().year} — {SITE_NAME}",
+                description=clip(UI["meta_lvl"].format(lvl=lvl)),
                 body=body, canonical=BASE_URL + page_path("level", slug), kind="level", slug=slug)
 
 
@@ -505,8 +532,8 @@ def home_page(courses, categories, levels, aff):
             f'{comp_table(courses, aff)}\n'
             f'{search}\n<p id="nores" hidden>{e(UI["no_results"])}</p>\n{cards}\n'
             f'<script src="/search.js" defer></script>')
-    return page(title=f"{SITE_NAME} — {UI['tagline']}",
-                description=UI["meta_home"].format(n=len(courses)), body=body,
+    return page(title=f"{SITE_NAME} {date.today().year} — {UI['tagline']}",
+                description=clip(UI["meta_home"].format(n=len(courses))), body=body,
                 canonical=BASE_URL + page_path("home"), kind="home")
 
 
@@ -725,6 +752,20 @@ def build(data_path: Path, aff_path: Path, out: Path) -> int:
         lines += [f"User-agent: {bot}", "Allow: /", ""]
     lines.append(f"Sitemap: {BASE_URL}/sitemap.xml")
     (out / "robots.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    # _headers (Cloudflare Pages) — Security-Header. script-src erlaubt 'unsafe-inline',
+    # weil die Seiten Inline-Scripts + onclick/oninput (Live-Suche/Copy) nutzen; alle
+    # Ausgaben sind escaped. Übrige Direktiven bleiben streng.
+    (out / "_headers").write_text(
+        "/*\n"
+        "  X-Frame-Options: DENY\n"
+        "  X-Content-Type-Options: nosniff\n"
+        "  Referrer-Policy: strict-origin-when-cross-origin\n"
+        "  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()\n"
+        "  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; "
+        "style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; "
+        "connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'\n",
+        encoding="utf-8")
 
     # Statische Assets (favicon, client-side search).
     (out / "favicon.svg").write_text(FAVICON_SVG, encoding="utf-8")

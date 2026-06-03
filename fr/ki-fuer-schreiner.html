@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d97706">
+  <title>L'IA en menuiserie — les devis et l'administratif client, pas l'atelier (2026) | aban news</title>
+  <meta name="description" content="L'IA pour menuisiers et ébénistes sans le battage : rédiger des devis, répondre aux demandes de meubles, textes de portfolio, e-mails de relance. Cas d'usage concrets et limites honnêtes.">
+  <link rel="canonical" href="https://abannews.com/fr/ki-fuer-schreiner.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/ki-fuer-schreiner.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-fuer-schreiner.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ki-fuer-schreiner.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/ki-fuer-schreiner.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-fuer-schreiner.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="L'IA en menuiserie — les devis et l'administratif client, pas l'atelier">
+  <meta property="og:description" content="Là où l'IA te décharge de la paperasse en tant que menuisier — devis, demandes de meubles, textes de portfolio, e-mails de relance. Sans battage.">
+  <meta property="og:url" content="https://abannews.com/fr/ki-fuer-schreiner.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://abannews.com/img/og/ki-fuer-schreiner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/img/og/ki-fuer-schreiner.png">
+  <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:3rem 0 2rem;text-align:center}
+    h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:55ch;margin:0 auto 1.5rem}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    .methods{padding:1rem 0 2rem}
+    main p{margin-bottom:1rem}
+    main h2{font-size:1.35rem;margin:2rem 0 .6rem;letter-spacing:-.01em}
+    main h3{font-size:1.05rem;margin:1.2rem 0 .3rem}
+    main ul{margin:0 0 1rem 1.1rem}
+    main li{margin-bottom:.4rem}
+    .method{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.5rem;margin-bottom:1.1rem;box-shadow:var(--shadow)}
+    .method h3{margin-top:0}
+    .limits{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r);padding:1.3rem 1.5rem;margin:1.5rem 0}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2.5rem 0}
+    .cta-box h2{font-size:1.3rem;margin:0 0 .5rem}
+    .cta-box p{color:var(--ink);margin-bottom:1rem;font-size:.95rem}
+    .faq{margin-top:1rem}
+    .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.4rem 1rem;margin-bottom:.7rem}
+    .faq summary{font-weight:700;cursor:pointer;padding:.6rem 0}
+    .faq p{font-size:.95rem;color:var(--muted);padding-bottom:.6rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:2rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"L'IA en menuiserie : les devis et l'administratif client, pas l'atelier","url":"https://abannews.com/fr/ki-fuer-schreiner.html","inLanguage":"fr","description":"Cas d'usage concrets de l'IA pour menuisiers et ébénistes : devis, demandes de meubles, textes de portfolio, e-mails de relance. Honnête et sans battage.","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"fr","mainEntity":[
+    {"@type":"Question","name":"L'IA vaut-elle le coup pour une petite menuiserie ?","acceptedAnswer":{"@type":"Answer","text":"Oui, si la paperasse te coûte tes soirées : devis, demandes de meubles, textes de portfolio, e-mails de relance. C'est exactement là que l'IA fait gagner du temps. À l'établi et à l'atelier, elle ne change rien."}},
+    {"@type":"Question","name":"L'IA peut-elle rédiger l'intégralité de mon devis pour un meuble ?","acceptedAnswer":{"@type":"Answer","text":"La partie texte et la structure, oui. Les dimensions, les matériaux et les prix, c'est toi qui les fixes et les vérifies. L'IA met en forme proprement, elle ne chiffre pas et n'offre aucune garantie sur les dimensions ou les matériaux."}},
+    {"@type":"Question","name":"Puis-je saisir des données client dans des outils d'IA ?","acceptedAnswer":{"@type":"Answer","text":"Aucune adresse complète ni donnée personnelle dans des outils gratuits. Utilise un hébergement UE ou des forfaits professionnels avec accord sur les données, et ne saisis que les informations factuelles dont le texte a vraiment besoin."}},
+    {"@type":"Question","name":"Ai-je besoin de connaissances techniques pour cela ?","acceptedAnswer":{"@type":"Answer","text":"Non. Si tu sais taper un message WhatsApp, tu sais utiliser un chatbot comme ChatGPT. Il s'agit de décrire clairement ton travail, pas de programmer."}}
+  ]}
+  </script>
+<style>.skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}</style>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/geld-verdienen-mit-ki.html">IA &amp; argent</a>
+      <a href="/ebook.html">eBook</a>
+      <a href="/ki-fuer-schreiner.html">DE</a>
+      <a href="/en/ki-fuer-schreiner.html">EN</a>
+      <a href="/fr/ki-fuer-schreiner.html" aria-current="page">FR</a>
+      <a href="/it/ki-fuer-schreiner.html">IT</a>
+      <a href="https://abannews.com/gratis-ki-tools.html" class="btn">S'abonner</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Guide métier · menuisiers</span>
+      <h1>L'IA en menuiserie : les devis et l'administratif client, pas l'atelier</h1>
+      <p class="lead">Tu scies, tu rabotes, tu colles. Le travail est le tien. Ce qui dévore tes soirées, c'est la paperasse d'après : devis, demandes, e-mails. C'est précisément là que l'IA aide — pas à l'établi, mais au bureau. Voici ce qui fonctionne concrètement et ce qui ne fonctionne pas.</p>
+    </div>
+
+    <div class="methods">
+
+      <p>Ton métier, c'est l'artisanat : la planche, le placage, l'assemblage propre. Aucun logiciel ne te déchargera de ça. Mais en tant que menuisier, tu es aussi le bureau, le rédacteur et le commercial en une seule personne. C'est cette charge-là que l'IA réduit — si tu la nourris de tes chiffres et de ton ton.</p>
+
+      <h2>Ce dont il ne s'agit pas ici</h2>
+      <p>L'IA ne scie aucune planche et ne colle aucun tenon. Elle n'offre aucune garantie sur les dimensions ni sur les matériaux. Si quelqu'un te raconte que l'IA remplace ton atelier ou double ton chiffre d'affaires, fais demi-tour. Ce que l'IA sait faire : te décharger de la paperasse qui te vole tes soirées. Les dimensions, l'essence du bois et le prix restent chez toi — la responsabilité de la pièce aussi, bien sûr. Pour un petit atelier, ce gain de temps vaut souvent plus que n'importe quelle grande promesse.</p>
+
+      <h2>Cas d'usage utiles</h2>
+
+      <div class="method">
+        <h3>1. Rédiger des devis et des descriptifs de projet</h3>
+        <p>Tu connais les dimensions, le bois et le prix. Ce qui coûte du temps, c'est la mise en forme propre. Donne par mots-clés à un chatbot d'IA ce qui sera construit — « armoire d'entrée encastrée, chêne massif, 2,40 m de large, trois portes coulissantes, casiers intérieurs blancs » — et fais-en sortir un descriptif de projet clair que le client comprend. Les dimensions et les prix, c'est toi qui les inscris et les vérifies. L'outil fournit la forme, toi tu fournis les chiffres. Ainsi un devis propre part en quelques minutes, au lieu de finir le soir sur le canapé.</p>
+      </div>
+
+      <div class="method">
+        <h3>2. Répondre aux demandes de meubles et d'agencements</h3>
+        <p>Demandes pour une table, une cuisine, un agencement sous combles — souvent avec beaucoup d'allers-retours avant même qu'un rendez-vous soit fixé. Tu saisis les points clés, l'IA formule une réponse aimable et claire dans ton ton. Pour les e-mails délicats (demande spéciale, long délai, réclamation), un premier jet aide : tu le lisses au lieu de taper sous la pression. Qui répond vite et poliment décroche plus de commandes — et avec un brouillon, ça ne te prend plus une heure.</p>
+      </div>
+
+      <div class="method">
+        <h3>3. Textes de portfolio et réseaux sociaux pour tes réalisations</h3>
+        <p>Une table à manger terminée, un nouvel escalier, une armoire sur mesure — tu as de belles photos, mais les mots manquent. En cinq minutes, l'IA t'amène à un texte pour le portfolio, le site web ou un post. Décris la pièce : le bois, la commande, ce qui était particulier. Tu n'as plus qu'à ajuster le brouillon pour qu'il te ressemble et ne sente pas la publicité.</p>
+      </div>
+
+      <div class="method">
+        <h3>4. Écrire des e-mails de relance et d'avis</h3>
+        <p>Après le devis, on n'entend souvent plus rien — un e-mail de relance aimable ramène certaines commandes. Et après la pose, une brève demande d'avis Google amène de nouveaux clients. Ce sont des textes que tu écris rarement et qui, de ce fait, prennent longtemps. L'IA te donne le bon ton : poli, court, sans insistance. Tu indiques le motif, elle formule.</p>
+      </div>
+
+      <div class="limits">
+        <strong>Limites honnêtes :</strong>
+        <ul>
+          <li>L'IA ne calcule pas de prix corrects. Le chiffrage et les dimensions restent ton travail.</li>
+          <li>Elle n'offre aucune garantie sur les dimensions ni sur les matériaux — la pièce, c'est ta responsabilité.</li>
+          <li>Elle invente parfois des détails. Relis chaque texte avant qu'il ne parte.</li>
+          <li>À l'atelier, elle ne change rien. Le levier est uniquement au bureau.</li>
+        </ul>
+      </div>
+
+      <h2>Protection des données : aucune donnée client dans des outils gratuits</h2>
+      <p>Les demandes de meubles et d'agencements contiennent souvent des noms, des adresses et parfois des photos d'espaces privés. Cela n'a pas sa place, sans filtre, dans une version grand public gratuite. Ne saisis que les informations factuelles dont le texte a vraiment besoin — dimensions, essence du bois, prestation. Pour le reste, utilise des outils avec hébergement UE ou des forfaits professionnels avec accord sur les données. Le RGPD s'applique aussi à ta menuiserie.</p>
+
+      <h2>Un démarrage pragmatique</h2>
+      <ul>
+        <li>Commence par la paperasse qui te coûte le plus à affronter — souvent le devis.</li>
+        <li>Donne à l'IA un ou deux de tes propres e-mails en exemple, pour que le ton soit juste.</li>
+        <li>Relis tout avant que ça parte au client — l'IA invente parfois des choses.</li>
+        <li>Ne laisse jamais passer dimensions, prix et indications de bois sans les vérifier.</li>
+      </ul>
+      <p>Pour commencer, un seul chatbot suffit (ChatGPT ou Claude). Quels outils valent le coup pour les devis, les e-mails et les textes, nous le comparons honnêtement dans le <a href="https://radar.abannews.com">Radar des outils d'IA</a> — là, tu filtres par cas d'usage au lieu de te frayer un chemin dans la publicité.</p>
+
+    </div>
+
+    <div class="cta-box">
+      <h2>Un conseil IA par jour, en 5 minutes</h2>
+      <p>aban news est la newsletter IA germanophone sans battage : du lundi au vendredi, un conseil concret que tu peux appliquer tout de suite dans ton atelier. Gratuit.</p>
+      <a href="https://abannews.com/gratis-ki-tools.html" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">S'abonner gratuitement →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Pas de spam. Désabonnement en un clic. Conforme au RGPD.</p>
+    </div>
+
+    <h2>Questions fréquentes</h2>
+    <div class="faq">
+      <details><summary>L'IA vaut-elle le coup pour une petite menuiserie ?</summary><p>Oui, si la paperasse te coûte tes soirées : devis, demandes de meubles, textes de portfolio, e-mails de relance. C'est exactement là que l'IA fait gagner du temps. À l'établi et à l'atelier, elle ne change rien.</p></details>
+      <details><summary>L'IA peut-elle rédiger l'intégralité de mon devis pour un meuble ?</summary><p>La partie texte et la structure, oui. Les dimensions, les matériaux et les prix, c'est toi qui les fixes et les vérifies. L'IA met en forme proprement, elle ne chiffre pas et n'offre aucune garantie sur les dimensions ou les matériaux.</p></details>
+      <details><summary>Puis-je saisir des données client dans des outils d'IA ?</summary><p>Aucune adresse complète ni donnée personnelle dans des outils gratuits. Utilise un hébergement UE ou des forfaits professionnels avec accord sur les données, et ne saisis que les informations factuelles dont le texte a vraiment besoin.</p></details>
+      <details><summary>Ai-je besoin de connaissances techniques pour cela ?</summary><p>Non. Si tu sais taper un message WhatsApp, tu sais utiliser un chatbot comme ChatGPT. Il s'agit de décrire clairement ton travail, pas de programmer.</p></details>
+    </div>
+
+    <div class="disclaimer">
+      <p><strong>Note d'honnêteté :</strong> Cette page ne contient aucune recommandation rémunérée pour les exemples cités. Les outils d'IA évoluent vite — vérifie toi-même la protection des données et les fonctionnalités avant usage. Ni conseil juridique ni fiscal.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/">Accueil</a> · <a href="/impressum.html">Mentions légales</a> · <a href="/datenschutz.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

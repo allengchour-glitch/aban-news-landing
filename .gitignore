@@ -4,3 +4,19 @@ __pycache__/
 ausgabe/
 ausgabe-en/
 ausgabe-*/
+ausgabe-schicht/
+ausgabe-schicht-en/
+reports/*
+!reports/IMPROVEMENT-REPORT.md
+!reports/RADAR-DATEN-AUDIT.md
+
+video-prototypes/client_secret.json
+video-prototypes/token.json
+
+# Bezahltes Buch: Vollversion nicht ins Repo (nur Leseprobe ist frei)
+downloads/ki-sichtbarkeit-buch.pdf
+downloads/ki-sichtbarkeit-buch-en.pdf
+
+# Bezahltes Vorlagen-Set: Vollversion nicht ins Repo
+downloads/vorlagen-set.pdf
+downloads/vorlagen-set-en.pdf

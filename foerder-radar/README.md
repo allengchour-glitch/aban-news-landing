@@ -35,13 +35,30 @@ Der Startdatensatz enthält ~16 große, echte Programme (Bund/EU/AT/CH). Für vo
 Export aus foerderdatenbank.de / aws.at / FFG / Innosuisse ins Schema von `foerderungen.json`
 überführen (Feld-Mapping: name, traeger, region, zielgruppe[], bereich[], art, url, kurz).
 
+## Förder-Matcher (3-Fragen-Funnel + Lead-Gen)
+`/matcher.html` (plus Teaser auf der Startseite) ist ein clientseitiger Funnel: drei Fragen —
+**Region, Vorhaben/Zweck, Unternehmensgröße** — filtern die echten Programme aus `foerderungen.json`
+und zeigen passende Treffer mit Link zur offiziellen Quelle. Reines Vanilla-JS im Browser, **kein
+Tracking, kein Backend**.
+
+- **Klassifikation:** `ZWECK_GROUPS` / `GROESSE_GROUPS` in `generate.py` gruppieren die vorhandenen
+  `bereich`- bzw. `zielgruppe`-Werte in wenige auswählbare Buckets (Teil-Match). Es werden **keine
+  Programme/Beträge erfunden** — passt nichts, taucht nichts auf. Fallback-Buckets („Etwas anderes" /
+  „Egal") zeigen alle Treffer der übrigen Dimensionen.
+- **Lead-Capture:** am Ende des Funnels eine ehrliche Beratungs-Anfrage. Ist in `leadgen.json` ein
+  `_default`-Slot gesetzt, erscheint er als „Anzeige". Zusätzlich/immer ein DSGVO-konformes
+  Mail-Fallback-Formular (Einwilligungs-Checkbox → baut einen `mailto:hallo@abannews.com`-Link,
+  kein erfundener Berater, kein Fake-Preis).
+- Daten werden als `<script type="application/json">` eingebettet; Logik in `dist/matcher.js`
+  (Quelle: `MATCHER_JS` in `generate.py`).
+
 ## Struktur
 ```
 foerder-radar/
-├── generate.py        # Generator (stdlib): index+filter, /programm, /region, /art, Recht, sitemap
+├── generate.py        # Generator (stdlib): index+filter, Matcher, /programm, /region, /art, Recht, sitemap
 ├── foerderungen.json  # Förderprogramme (kuratierter echter Seed)
-├── leadgen.json       # Berater-/Lead-Gen-Slots
-└── dist/              # generiert (gitignored)
+├── leadgen.json       # Berater-/Lead-Gen-Slots (auch fürs Matcher-Ende)
+└── dist/              # generiert (gitignored): + matcher.html, matcher.js
 ```
 
 ## Vor dem Live-Gang
@@ -50,5 +67,5 @@ foerder-radar/
 - Cloudflare Pages: Build `cd foerder-radar && python generate.py`, Output `foerder-radar/dist`.
 
 ## Status
-🟢 Generator + Startdatensatz laufen (24 Seiten aus 16 Programmen).
-🟡 Offen: Daten erweitern, Berater-Partner + `leadgen.json`, Domain/Deployment, Newsletter-Teaser.
+🟢 Generator + Startdatensatz laufen (126 Seiten aus 86 Programmen, inkl. Förder-Matcher).
+🟡 Offen: Daten weiter ausbauen, Berater-Partner + `leadgen.json`-Slots, Domain/Deployment.

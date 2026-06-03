@@ -70,6 +70,121 @@
       "id": "p14-remote-jobs",
       "sent": false,
       "text": "🤖 Remote-Jobs rund um KI & Machine Learning im DACH-Raum.\n\nTäglich aktualisiert, an einem Ort gesammelt. Kein Scrollen durch zehn Portale.\n\n👉 https://jobs.abannews.com/remote.html"
+    },
+    {
+      "id": "p15-kurs-launch",
+      "sent": false,
+      "text": "🛠️ Neu: Die KI-Werkstatt\n\nMein ehrlicher KI-Kurs für deutschsprachige Solo-Profis. 6 Module plus 7 Bonus-Pakete, über 50 Seiten zum Mitmachen — kein Hype, nur was im Arbeitsalltag wirklich funktioniert.\n\nLaunch-Preis für die ersten Käufer.\n\n👉 https://abannews.com/kurs.html"
+    },
+    {
+      "id": "p16-kurs-inhalt",
+      "sent": false,
+      "text": "📚 Was in der KI-Werkstatt steckt:\n\nVom Grundverständnis ohne Buzzwords über Prompten, Workflows und DSGVO bis zur Kundengewinnung. Dazu 50 fertige deutsche Prompts, Vorlagen, ein KI-Audit und ein 30-Tage-Fahrplan.\n\nEinmal zahlen, lebenslang deins.\n\n👉 https://abannews.com/kurs.html"
+    },
+    {
+      "id": "p17-kurs-antihype",
+      "sent": false,
+      "text": "🚫 Kein „in 7 Tagen zum KI-Experten“.\n\nDie KI-Werkstatt zeigt dir nüchtern, wo KI dir Zeit spart — und wo du ihr besser nicht traust. Mit 14 Tagen Geld-zurück-Garantie, ohne Nachfragen.\n\n👉 https://abannews.com/kurs.html"
+    },
+    {
+      "id": "p18-kurs-gratis-erst",
+      "sent": false,
+      "text": "💡 Unsicher, ob der Kurs was für dich ist?\n\nLies erst gratis mit: Das Anti-Hype-eBook und die freien Resourcen zeigen dir den Ton. Wenn das passt, wartet die KI-Werkstatt mit allen Details.\n\n👉 https://abannews.com/kurs.html"
+    },
+    {
+      "id": "p19-ratgeber-hub",
+      "sent": false,
+      "text": "📚 Neu & gratis: der KI-Ratgeber für Selbstständige\n\nAlle wichtigen Fragen an einem Ort — Tool-Wahl, Prompts, Automatisierung, Datenschutz, Halluzinationen. Kein Hype, kein Affiliate, keine Anmeldung.\n\n👉 https://abannews.com/ki-ratgeber.html"
+    },
+    {
+      "id": "p20-chatgpt-vs-claude",
+      "sent": false,
+      "text": "🤔 ChatGPT oder Claude?\n\nEhrliche Antwort: keinen Gesamtsieger. Claude ist oft die präzisere Schreibhilfe, ChatGPT das breitere Werkzeug (Bilder, Web, Sprachmodus). Für die meisten reicht eins — die Aufgabe entscheidet.\n\nVoller Vergleich 👉 https://abannews.com/chatgpt-vs-claude.html"
+    },
+    {
+      "id": "p21-dsgvo",
+      "sent": false,
+      "text": "🛡️ KI datenschutzkonform nutzen — in 5 Fragen:\n\n1. Wo stehen die Server?\n2. Gibt es einen AVV?\n3. Wird mit deinen Eingaben trainiert?\n4. Was muss überhaupt rein?\n5. Würdest du es dem Kunden so erklären?\n\nDer ganze Guide (echte Quellen) 👉 https://abannews.com/ki-dsgvo-konform.html"
+    },
+    {
+      "id": "p22-prompts",
+      "sent": false,
+      "text": "✍️ Die meisten schlechten KI-Antworten liegen nicht am Modell, sondern am Prompt.\n\n4 Handgriffe: Kontext, Format, Beispiel, Iteration. Das ersetzt jedes 47-€-Prompt-Paket.\n\nMit Vorher/Nachher & Copy-Vorlage 👉 https://abannews.com/ki-prompts-schreiben.html"
+    },
+    {
+      "id": "p23-halluzinationen",
+      "sent": false,
+      "text": "⚠️ KI erfindet Fakten — selbstbewusst und überzeugend. Kein Defekt, sondern die Funktionsweise.\n\n5 Warnsignale + ein 30-Sekunden-Check, damit dich keine erfundene Quelle erwischt.\n\n👉 https://abannews.com/ki-halluzinationen-erkennen.html"
+    },
+    {
+      "id": "p24-automatisierung",
+      "sent": false,
+      "text": "⚙️ Wann lohnt sich KI-Automatisierung wirklich?\n\nFaustregel: ab ~3 gleichen Wiederholungen pro Woche. Darunter ist Handarbeit günstiger als das Basteln am Workflow.\n\nMinimaler Stack + 5 Abläufe 👉 https://abannews.com/ki-automatisierung-selbststaendige.html"
+    },
+    {
+      "id": "p25-email",
+      "sent": false,
+      "text": "📧 E-Mails mit KI schreiben, ohne wie ein Roboter zu klingen:\n\nKontext + ein Beispiel deines Stils + Bitte um Kürze. Lass die KI vorbereiten — aber lies und sende selbst.\n\nMit Copy-Vorlage 👉 https://abannews.com/ki-email-schreiben.html"
+    },
+    {
+      "id": "fin-stundensatz",
+      "sent": false,
+      "text": "Der teuerste Fehler von Selbstständigen: Wunschgehalt ÷ 160 Stunden = Stundensatz.\n\nFalsch. Nur 4–6 Stunden pro Tag sind verrechenbar — Akquise, Angebote und Buchhaltung zahlt niemand direkt. Und Steuern fehlen auch noch.\n\nRechne rückwärts: Ziel-Netto + Steuern + Kosten, geteilt durch deine echten fakturierbaren Stunden. Oft kommt da ein Drittel mehr raus als gedacht.\n\nNachrechnen (im Browser, kein Tracking): abannews.com/finanz-rechner\n\n#Selbstständigkeit #Freelancing",
+      "url": "https://abannews.com/finanz-rechner.html",
+      "tags": [
+        "Selbstständigkeit",
+        "Freelancing"
+      ]
+    },
+    {
+      "id": "fin-ruecklage",
+      "sent": false,
+      "text": "Ein einfacher Trick gegen die böseste Überraschung als Selbstständiger:\n\nLeg von jeder Einnahme am Tag des Eingangs einen festen Anteil auf ein getrenntes Konto. Grober Richtwert: 30–40 %.\n\nDann ist die Steuernachzahlung ein Nicht-Ereignis statt ein Schock.\n\n#Steuern #Selbstständigkeit",
+      "url": "https://abannews.com/finanz-skills-fuer-selbststaendige.html",
+      "tags": [
+        "Steuern",
+        "Selbstständigkeit"
+      ]
+    },
+    {
+      "id": "fin-puffer",
+      "sent": false,
+      "text": "Als Selbstständiger in der Schweiz zahlst du keine Arbeitslosenversicherung.\n\nHeißt: Wenn drei Monate kein Auftrag kommt, fängt dich niemand auf — außer deinem Puffer.\n\n3–6 Monate Fixkosten auf einem getrennten Konto sind kein Luxus. Sie sind der Unterschied zwischen „ich kann Nein sagen\" und „ich nehme jeden Auftrag zu jedem Preis\".\n\n#Selbstständigkeit #Finanzen",
+      "url": "https://abannews.com/finanz-rechner.html",
+      "tags": [
+        "Selbstständigkeit",
+        "Finanzen"
+      ]
+    },
+    {
+      "id": "fin-automatisierung",
+      "sent": false,
+      "text": "„Automatisier doch einfach!\" Klingt leicht, ist es selten.\n\nEin Automatisierungs-Tool spart erst Zeit, wenn der Prozess dahinter sauber durchdacht ist — sonst automatisierst du nur das Chaos schneller. Und bei personenbezogenen Daten zählt, wo das Tool hostet.\n\nIch habe 36 Tools ehrlich verglichen, mit EU-Hosting-Filter für den DACH-Raum: automatisierung.abannews.com\n\n#Automatisierung #KMU",
+      "url": "https://automatisierung.abannews.com",
+      "tags": [
+        "Automatisierung",
+        "KMU"
+      ]
+    },
+    {
+      "id": "hypewatch-launch",
+      "sent": false,
+      "text": "Neu: Hype-Watch — überhypte KI-Behauptungen, ruhig auseinandergenommen, mit Belegen.\n\nErster Fall: „KI macht Entwickler massiv produktiver.\" Eine randomisierte Studie (METR 2025) hat gemessen: erfahrene Devs brauchten mit KI-Tools 19 % LÄNGER — obwohl sie sich 20 % schneller fühlten.\n\nGanzer Faktencheck: abannews.com/hype-watch\n\n#KI #AntiHype",
+      "url": "https://abannews.com/hype-watch.html",
+      "tags": [
+        "KI",
+        "AntiHype"
+      ]
+    },
+    {
+      "id": "hypewatch-faktenquelle",
+      "sent": false,
+      "text": "„Frag einfach ChatGPT\" — als Faktenquelle? Vorsicht.\n\nIm Fall Mata v. Avianca reichten Anwälte einen Schriftsatz mit Gerichtsurteilen ein, die ChatGPT komplett erfunden hatte. Strafe: 5.000 $. Sprachmodelle erzeugen plausibel klingende, aber teils erfundene Belege.\n\nKI ist top fürs Formulieren, nicht als Quelle ohne Prüfung. Mehr: abannews.com/hype-watch\n\n#KI #Faktencheck",
+      "url": "https://abannews.com/hype-watch/chatgpt-als-verlaessliche-faktenquelle.html",
+      "tags": [
+        "KI",
+        "Faktencheck"
+      ]
     }
   ]
 }

@@ -36,3 +36,27 @@ kapitel/band-*/*.politur-orig.md
 kapitel-en/band-*/*.bak.md
 kapitel-en/band-*/*.lektorat.md
 kapitel-en/band-*/*.politur-orig.md
+
+# --- Ausnahme: handgeschriebener Roman "Schicht" (Ruhrgebiet-Saga) ---
+!kapitel-schicht/
+!kapitel-schicht/band-01/
+!kapitel-schicht/band-01/kapitel-*.md
+!kapitel-schicht/band-02/
+!kapitel-schicht/band-02/kapitel-*.md
+!kapitel-schicht/band-03/
+!kapitel-schicht/band-03/kapitel-*.md
+kapitel-schicht/band-*/*.bak.md
+kapitel-schicht/band-*/*.lektorat.md
+kapitel-schicht/band-*/*.politur-orig.md
+
+# --- Ausnahme: englische Uebersetzung "The Seam" ---
+!kapitel-schicht-en/
+!kapitel-schicht-en/band-01/
+!kapitel-schicht-en/band-01/kapitel-*.md
+!kapitel-schicht-en/band-02/
+!kapitel-schicht-en/band-02/kapitel-*.md
+!kapitel-schicht-en/band-03/
+!kapitel-schicht-en/band-03/kapitel-*.md
+kapitel-schicht-en/band-*/*.bak.md
+kapitel-schicht-en/band-*/*.lektorat.md
+kapitel-schicht-en/band-*/*.politur-orig.md
