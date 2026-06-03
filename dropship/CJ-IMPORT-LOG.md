@@ -1423,3 +1423,18 @@ Gespiegelt vom abannews-Make-Blueprint (automation/linkedin-auto-post). Neu:
 **Freigabe-Modus:** Telegram zuerst (status pending→ready erst nach Tap). **Grenze:** Claude postet nicht selbst;
 TikTok-Auto-Publish via Buffer teils „Push-to-App"; IG-Reels meist voll auto. Organik = Reichweite, Käufer-Hebel
 bleibt die bezahlte Conversion-Kampagne.
+
+## 2026-06-03 — Reel-Autopost VOLLAUTOMATIK (alle 4h, via GitHub Actions = selbstgemachtes abannews-Tool)
+User: „mache alles in automation, alle 4 stunde 1 reel, binde ein mit selbstgemachtem tool von abannews".
+- **`.github/workflows/reel-autopost.yml`** — cron `0 */4 * * *` (gleiches Muster wie cj-autopilot.yml),
+  ruft das Skript, committet Status zurück. No-Op ohne Secret.
+- **`automation/post-next-reel.mjs`** — nimmt nächstes `status=ready`-Reel aus `automation/reels_seed.csv`,
+  POSTet an Make-Webhook (Secret MAKE_REEL_WEBHOOK) {id,video_url,caption,hashtags,platforms}, markiert posted.
+  Getestet: No-Op + DRY_RUN erkennen Reel 1 korrekt, CSV unverändert.
+- **Make-Blueprint umgestellt** auf Webhook-Empfänger (gateway:CustomWebHook → Buffer CreatePost TikTok+IG →
+  Telegram-Notify). instant=true. JSON valide.
+- **Queue = Repo-CSV** (kein Google-Sheet mehr nötig). Die 3 freigegebenen Reels stehen auf `ready`.
+- SETUP.md neu: GH-Action-Flow + Buffer-Connect + Webhook + Secret. Kosten 0 CHF.
+**Aktivierung (User, 1×):** Buffer TikTok+IG verbinden · Blueprint importieren (Modul 2 = natives Buffer) ·
+Webhook-URL → GitHub-Secret MAKE_REEL_WEBHOOK. Dann postet die Action alle 4h automatisch 1 ready-Reel.
+**Regel:** Reels jetzt ganze Produktpalette (REEL-REGELN Regel 3), nicht nur Damenmode.

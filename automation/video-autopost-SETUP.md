@@ -1,100 +1,65 @@
-# Reel-Autopost-Pipeline — Setup (TikTok + Instagram, gratis)
+# Reel-Autopost — Vollautomatik (alle 4h 1 Reel) → TikTok + Instagram, gratis
 
-> Postet freigegebene Reels automatisch auf **TikTok + Instagram** — gratis über **Buffer**,
-> mit **Telegram-Freigabe davor** (kein Blind-Post) und **GitHub-Pages-Hosting** der Videos.
-> Spiegelt das bestehende `linkedin-auto-post`-Blueprint-Muster, nur für Video.
+> **Selbstgemachtes abannews-Tool (GitHub Actions)** taktet alle 4 Stunden und postet das nächste
+> freigegebene Reel über **Make-Webhook → Buffer → TikTok + Instagram**. Queue + Logik liegen im Repo
+> (kein Google Sheet nötig). Freigabe passiert beim Setzen von `status=ready` (z.B. per Telegram).
+
+## Architektur
+```
+.github/workflows/reel-autopost.yml   (cron 0 */4 * * * — DAS abannews-Tool)
+   → automation/post-next-reel.mjs    : nächstes Reel mit status=ready aus automation/reels_seed.csv
+        → POST Make-Webhook (Secret MAKE_REEL_WEBHOOK)  { id, video_url, caption, hashtags, platforms }
+            → Make: Buffer Create Post → TikTok + Instagram   (Video von https://abannews.com/reels/<slug>.mp4)
+            → Make: Telegram-Bestätigung
+        → markiert Zeile als posted + committet zurück
+```
+**Kosten: 0 CHF** — GitHub Actions (gratis), Make Free, Buffer Free, GitHub Pages (Video-Hosting), Telegram.
 
 ## Dateien
 | Datei | Zweck |
 |-------|-------|
-| `video-autopost.blueprint.json` | Make.com-Scenario zum Importieren |
-| `reels_seed.csv` | Start-Queue (3 freigegebene Reels + 7 fertige Caption/Hashtag-Ideen) |
-| `../dropship/ads/publish_reel.sh` | mp4 → öffentliche URL + fertige CSV-Zeile |
-| `video-autopost-SETUP.md` | diese Anleitung |
+| `.github/workflows/reel-autopost.yml` | 4h-Cron, ruft das Skript, committet Status |
+| `automation/post-next-reel.mjs` | wählt nächstes `ready`-Reel → Make-Webhook → markiert posted |
+| `automation/video-autopost.blueprint.json` | Make-Szenario (Webhook → Buffer → Telegram), importierbar |
+| `automation/reels_seed.csv` | **die Queue** (id,scheduled_date,video_url,caption,hashtags,platforms,status,posted_at,post_url) |
+| `../dropship/ads/publish_reel.sh` | mp4 → `reels/<slug>.mp4` + fertige CSV-Zeile |
 
-## Architektur
-```
-render_premium_reel.sh → reel.mp4
-   → publish_reel.sh → /reels/<slug>.mp4 (Repo) + CSV-Zeile (status=pending)
-      → git push → öffentlich: https://abannews.com/reels/<slug>.mp4
-         → Telegram-Freigabe: Tap «✅ Posten» → Sheet status=ready
-            → Make-Cron (8h) → Buffer → TikTok + Instagram
-               → Sheet status=posted → Telegram-Bestätigung
-```
-**Kosten: 0 CHF** — Make Free (1.000 Ops/Mt, Pipeline braucht ~4/Post), Buffer Free (3 Channels),
-GitHub Pages gratis, Telegram gratis.
+## Status-Logik (Queue = reels_seed.csv)
+`pending` (gerendert, wartet auf Freigabe) → `ready` (freigegeben, darf gepostet werden) → `posted` (live).
+Die 4h-Action nimmt immer die **erste** Zeile mit `status=ready` UND gesetztem `video_url`.
 
----
+## Einmaliges Setup (≈20 Min)
+### 1. Buffer (gratis) + Kanäle TRENNEN
+- Konto auf https://buffer.com. **TikTok-Konto** und **Instagram-Konto** (Business/Creator + FB-Seite) **je als eigenen Channel** verbinden → 2 Profile-IDs notieren.
+- (Optional später: YouTube Shorts/Pinterest als weitere Channels.)
 
-## 1. Buffer einrichten — und die Kanäle TRENNEN
-Das beantwortet deine Frage „ich habe 1 Kanal — wie trennen?": **In Buffer ist jedes Social-Konto ein eigener „Channel".**
-1. Gratis-Konto auf https://buffer.com.
-2. **Channel verbinden → TikTok** (dein TikTok-Konto, One-Click-OAuth).
-3. **Channel verbinden → Instagram** (Instagram **Business/Creator**-Konto, verknüpft mit einer Facebook-Seite — sonst kein Auto-Publish).
-4. Du hast jetzt **2 getrennte Channels**. Jeder hat eine **Profile-ID** (in der Buffer-URL/Channel-Settings) → beide notieren:
-   - TikTok-Profile-ID → `__BUFFER_TIKTOK_PROFILE_ID__`
-   - Instagram-Profile-ID → `__BUFFER_IG_PROFILE_ID__`
-> Über die Spalte `platforms` im Sheet (`tiktok`, `instagram` oder `tiktok,instagram`) steuerst du pro Reel,
-> an welche Channels es geht. Caption/Hashtags kannst du pro Plattform variieren (IG = mehr Hashtags, TikTok = kürzer + Trend-Sound).
-> **Später erweiterbar:** YouTube Shorts / Pinterest einfach als weitere Buffer-Channels verbinden.
+### 2. Reels hosten (GitHub Pages)
+- `dropship/ads/render_premium_reel.sh out.mp4 musik.wav img_dir` → `dropship/ads/publish_reel.sh ...` → `reels/<slug>.mp4` + CSV-Zeile.
+- `git push` → live unter `https://abannews.com/reels/<slug>.mp4`. CSV-Zeile in `reels_seed.csv` (status `pending`).
+- **Die 3 Start-Reels (eleganz/sommer/premium) liegen bereits drin und sind `ready`.**
 
-## 2. Google Sheet `reels_queue` anlegen
-1. Neues Google Sheet → Tab umbenennen zu **`reels_queue`**.
-2. Zeile 1 (genau diese Reihenfolge):
-   `id | scheduled_date | video_url | caption | hashtags | platforms | status | posted_at | post_url`
-3. **File → Import → Upload → `reels_seed.csv`** → „Append to current sheet", „Convert text to numbers/dates: **NO**".
-4. Spalte `scheduled_date` → Format **Plain text** (ISO-Dates bleiben 1:1).
-5. Sheet-ID aus URL kopieren (zwischen `/d/` und `/edit`) → `__SHEET_ID__`.
-
-**Status-Logik:** `pending` (Reel gerendert, wartet auf Freigabe) → `ready` (per Telegram freigegeben) → `posted` (live).
-
-## 3. Reels hosten (GitHub Pages, gratis)
-1. Reel rendern: `dropship/ads/render_premium_reel.sh out.mp4 musik.wav img_dir`.
-2. Veröffentlich-fertig machen:
-   ```
-   dropship/ads/publish_reel.sh /tmp/relA/out/luxestyle_eleganz.mp4 eleganz 2026-06-04 \
-     "Sommer-Eleganz von LuxeStyle ✨ -10% WELCOME10 → luxestyle.ch" \
-     "#schweizmode #sommerkleid #ootdschweiz #luxestyle" "tiktok,instagram"
-   ```
-   → kopiert nach `reels/eleganz.mp4`, gibt **öffentliche URL** + **CSV-Zeile** aus.
-3. `git add reels/eleganz.mp4 && git commit && git push` → Video ist live unter
-   `https://abannews.com/reels/eleganz.mp4` (Buffer/Make holen es von dort).
-4. CSV-Zeile ins Google Sheet einfügen (status bleibt `pending`).
-
-## 4. Make.com-Scenario importieren
+### 3. Make-Szenario importieren
 1. https://eu1.make.com → New Scenario → **Import Blueprint** → `video-autopost.blueprint.json`.
-2. **Modul 2 (HTTP an Buffer) durch das native Modul ersetzen** (empfohlen, kein Token):
-   - Modul 2 löschen → **Buffer → „Create Post"/„Create Update"** einfügen.
-   - Connection: Buffer per OAuth verbinden.
-   - Mapping: **Text** = `{{1.caption}}` + Zeilenumbruch + `{{1.hashtags}}` · **Media/Video-URL** = `{{1.video_url}}` ·
-     **Profiles** = TikTok- + Instagram-Channel · **Share now** = true.
-   - (Wer lieber bei HTTP bleibt: `__BUFFER_ACCESS_TOKEN__` + Profile-IDs in Scenario-Variablen setzen.)
-3. **Scenario-Variablen** (Make → Scenario settings → Variables):
-   `SHEET_ID`, `BUFFER_TIKTOK_PROFILE_ID`, `BUFFER_IG_PROFILE_ID`, `TELEGRAM_BOT_TOKEN` (`8904564755:…`), `TELEGRAM_CHAT_ID` (`164567631`).
-4. Google-Sheets-Module (1 + 3): Connection setzen, Spreadsheet = dein Sheet, Tab = `reels_queue`.
-5. Schedule ist im Blueprint = `0 */8 * * *` Europe/Zurich (alle 8h). Anpassbar.
+2. **Modul 1 (Custom Webhook):** Webhook erstellen → **URL kopieren**.
+3. **Modul 2:** durch natives **Buffer → „Create Post"** ersetzen (empfohlen, kein Token). Mapping:
+   Text = `{{1.caption}}` + Zeilenumbruch + `{{1.hashtags}}` · Video = `{{1.video_url}}` · Profiles = TikTok + Instagram.
+   *(Wer HTTP behält: `__BUFFER_*__`-Variablen setzen.)*
+4. **Modul 3 (Telegram):** Variablen `TELEGRAM_BOT_TOKEN` (`8904564755:…`) + `TELEGRAM_CHAT_ID` (`164567631`).
+5. Szenario **ON** (instant/Webhook — wartet auf Aufrufe).
 
-## 5. Telegram-Freigabe koppeln
-Du hast die Freigabe schon (Szenario **6001019**, Bot `8904564755:…`, chat `164567631`, Buttons `post_<id>`).
-- Reel kommt per `sendVideo` mit Buttons «✅ Posten / ❌» in Telegram (wie msg 54/61).
-- Tap «✅ Posten» → dein Telegram-Watch-Szenario setzt im Sheet die passende Zeile auf **status=ready**
-  (Google-Sheets „Update/Search Row" nach `id` aus dem callback_data `post_<id>`).
-- Erst dann zieht der Cron oben das Reel und postet.
-> Ohne Telegram-Kopplung: Du setzt `status` im Sheet manuell von `pending` auf `ready`.
+### 4. GitHub-Action scharfschalten
+- Repo → **Settings → Secrets and variables → Actions → New secret**: `MAKE_REEL_WEBHOOK` = die Make-Webhook-URL aus Schritt 3.2.
+- Fertig. `.github/workflows/reel-autopost.yml` läuft ab jetzt **alle 4h** und postet je 1 `ready`-Reel.
+  Manuell testen: Actions-Tab → „Reel Auto-Post" → **Run workflow**.
+- **Ohne Secret = sauberer No-Op** (es passiert nichts, kein Fehler).
 
-## 6. Test-Run
-1. Im Sheet: eine Zeile mit echtem `video_url` (z.B. eleganz.mp4) → `scheduled_date = heute`, `status = ready`.
-2. Make → **Run once**.
-3. Buffer-Queue prüfen → Post bei TikTok + Instagram? Sheet → `status=posted`? Telegram-Bestätigung da?
-4. Schedule **ON**.
+### 5. Nachschub (laufend)
+- Neue Reels via `publish_reel.sh` → `reels/`, Zeile in `reels_seed.csv`, `status` auf `ready` setzen
+  (manuell oder per Telegram-Freigabe). Solange `ready`-Zeilen da sind, postet die Action alle 4h weiter.
+- **Themen-Vielfalt (REEL-REGELN Regel 3):** nicht nur Damenmode — Schmuck, Accessoires, Schuhe, Taschen,
+  Brillen, Herren, Tech-Gadgets, Wohnen, Beauty … alles möglich, premium präsentiert.
 
 ## Grenzen (ehrlich)
-- **TikTok:** Buffer-Auto-Publish ist je nach Kontotyp teils „Push-to-App" (1 finaler Tap in der TikTok-App).
-  **Instagram-Reels** via Buffer i.d.R. voll automatisch (Business/Creator-Konto vorausgesetzt).
-- **Organik = Reichweite, kein Käufer-Garant.** Für echte Käufe bleibt die bezahlte TikTok-Conversion-Kampagne
-  (`KAMPAGNE-TODO-FUER-USER.md`) der Haupthebel — diese Pipeline ist der kostenlose Zusatz-Traffic.
-- Reels-mp4 im Repo halten die Größe klein halten (≤ ~10 MB/Reel); alte rausräumen, wenn gepostet.
-
-## Wartung
-- Wöchentlich: Sheet auffüllen (neue Reels via publish_reel.sh) — genug Zeilen mit `status=ready` für die Woche.
-- Make → History: letzte Runs prüfen. Buffer Free = 10 Posts/Channel Queue (reicht, da Cron laufend nachschiebt).
+- Claude/GitHub posten nicht direkt in die Apps — **Buffer** tut es. **IG-Reels** via Buffer meist voll automatisch,
+  **TikTok** je nach Kontotyp teils „Push-to-App" (1 finaler Tap).
+- Organik = Reichweite; für Käufe bleibt die bezahlte TikTok-Conversion-Kampagne (`KAMPAGNE-TODO-FUER-USER.md`) der Haupthebel.
