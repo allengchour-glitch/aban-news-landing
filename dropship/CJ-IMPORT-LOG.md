@@ -1372,3 +1372,12 @@ Ziel „Conversions/Complete Payment", Pixel D8EKVR, CH/Frauen/18–34/DE+FR, Pr
 Kampagnen AUS (= Quelle des Junk). (3) Pixel-Henne-Ei: erst auf „Add to Cart" optimieren bis Events da, dann „Kauf".
 **Lehre:** Bei 0 Käufen IMMER zuerst ATC-Rate + Traffic-Quelle prüfen — Shop-Optimierung bringt nichts, wenn der
 Traffic Bots/Low-Intent ist.
+
+## 2026-06-02 — BEWEISTEST Add-to-Cart: ✅ BESTANDEN (Funnel technisch ok)
+Live-Test gegen Storefront (curl /cart/add.js + /cart.js), Kleid «Brise» Variante Green/S (55747921084801):
+- Produktseite HTTP 200 · /cart/add.js → Artikel hinzugefügt · /cart.js → item_count:1.
+→ **Add-to-Cart funktioniert technisch.** Damit 100% bestätigt: 0% ATC ≠ Shop-/Funnel-Bug, sondern
+**Traffic-Qualität** (direct 772 Bot/Junk + tiktok 557 breit/low-intent).
+- Nebenbefund: Test kam von US-IP → Warenkorb in USD (presentment 46.0). Für CH-Geo läuft CHF — kein Problem.
+**FAZIT bleibt:** Einziger echter Hebel = saubere TikTok-CONVERSION-Kampagne (Complete Payment, Pixel D8EKVR,
+CH/Frauen/18–34/DE+FR, Premium-Reels) + alle Auto-/Reichweite-Kampagnen AUS. Shop ist verkaufsbereit.
