@@ -133,10 +133,13 @@ Was in dieser Session gelernt/entschieden wurde — damit es nicht verloren geht
 - `openscad` (parametrische STL + Renders), `blender` 4.0 headless + `xvfb`
   (Mesh-Reparatur/Cleanup von KI-Modellen, Format-Konvertierung, Renders).
 
-**KI-3D (Meshy):**
-- Erzeugt nur **statische** Meshes, **kein** Flexi (keine Gelenke).
-- Meshes oft nicht druckbar → Blender-Cleanup (manifold) nötig.
-- Sicherer ohne API-Key: Meshy-Download-Link schicken → hier per Skript verarbeiten.
+**KI-3D (Meshy) — Standard-Quelle für neue Figuren:**
+- **Arbeitsteilung:** Meshy generiert das Modell, Claude bearbeitet es. Neue Figuren
+  kommen aus Meshy, nicht aus handgeschriebenem OpenSCAD (das bleibt Fallback).
+- Erzeugt nur **statische** Meshes, **kein** Flexi (keine Gelenke) — passt zur Regel.
+- Meshes oft nicht druckbar → Blender-Cleanup (manifold) + `polish.py` nötig.
+- Sicherer ohne API-Key: Meshy-Download-Link schicken → hier per Skript verarbeiten
+  (`meshy_text.py` / `meshy_image.py` brauchen `MESHY_API_KEY`).
 
 **Recht / Lizenzen:**
 - „Keine Lizenz" = automatisch verboten. Verkaufbar nur **CC0** oder **Commercial**.
@@ -272,6 +275,11 @@ Druck-/Aufräum-Tipps (decken sich mit unserer Pipeline):
 ### FESTE REGEL (Juni 2026, vom Kunden bestätigt) — Flexi verworfen
 - **KEINE Flexi / keine beweglichen / keine gegliederten Tiere.** Sie wirken länglich
   wie **Wurm/Schlange** — unerwünscht. (Ersetzt die frühere Flexi-Reihen-Regel.)
+- **Arbeitsteilung (Kunde, Juni 2026):** **Meshy erstellt** die 3D-Modelle, **Claude
+  bearbeitet** sie (Cleanup/manifold in Blender, `polish.py`, Farbe, Ring-Loch). D.h.
+  neue Figuren primär aus Meshy-Output veredeln — nicht von Hand in OpenSCAD scripten.
+  Workflow: Meshy-Modell (Link/Datei) → `polish.py` → `colorize`/`assemble` →
+  optional `hole.py`. Parametrische `*.scad` bleiben nur Fallback/Beispiele.
 - **Schlüsselanhänger = kompakte, runde STATISCHE Figur** (wie Mimi) mit Ring-Loch
   (`hole.py`). Voller Körper, kurz & rund, nie länglich.
 - **KEIN Teller / kein Boden** unter dem Tier, **keine Druckplatte** in Render-Bildern
