@@ -41,10 +41,10 @@ jobs:
       - name: Persist upload state
         working-directory: video-prototypes
         run: |
-          if ! git diff --quiet uploaded.json; then
+          git add uploaded.json
+          if ! git diff --cached --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add uploaded.json
             git commit -m "yt: Upload-Fortschritt"
             git push
           else
