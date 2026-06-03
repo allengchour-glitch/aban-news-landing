@@ -32,10 +32,11 @@ def service():
     rt = os.environ.get("YT_REFRESH_TOKEN") or os.environ.get("ABAN_YT_REFRESH_TOKEN")
     if not (cid and csec and rt):
         sys.exit("FEHLT: YT_CLIENT_ID / YT_CLIENT_SECRET / YT_REFRESH_TOKEN")
+    # KEINE Scopes erzwingen: das Upload-Token hat nur youtube.upload; ein
+    # zusaetzlich verlangter readonly-Scope -> invalid_scope. Public videos.list
+    # geht auch mit dem vorhandenen Token.
     creds = Credentials(None, refresh_token=rt, client_id=cid, client_secret=csec,
-                        token_uri="https://oauth2.googleapis.com/token",
-                        scopes=["https://www.googleapis.com/auth/youtube.readonly",
-                                "https://www.googleapis.com/auth/youtube.upload"])
+                        token_uri="https://oauth2.googleapis.com/token")
     creds.refresh(Request())
     return build("youtube", "v3", credentials=creds)
 
