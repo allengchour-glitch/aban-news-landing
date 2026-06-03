@@ -26,6 +26,12 @@
 9. **Freigabe-Workflow:** Reel EINZELN per Telegram zur Freigabe (ja/nein/Kommentar), erst nach „ja" posten.
 
 ## Verbesserungs-Log (chronologisch — neue Punkte kommen oben dazu)
+- 2026-06-03: **Rating-Audit (Judge.me-Metafelder).** Geprüft: fast alle Produkte haben `reviews.rating = null`
+  (keine Reviews). Echt ≥4,3★ verifiziert: **Bali 4,93★** (15) + **Ibiza 4,47★** (15) → Ibiza neu in
+  `good_products.csv` aufgenommen (echter Model-Shot). **Sommerkleid ärmellos = 3,54★ (26)** → bleibt aus
+  allen Reels/Ads draussen (Regel 7b). Judge.me-Review-Bearbeitung geht NICHT per API → User-TODO in
+  KAMPAGNE-TODO-FUER-USER.md (1–2★ im Judge.me-Admin „Unpublish"). Lehre: vor „verifiziert gut" das
+  `reviews.rating`-Metafeld wirklich abfragen, nicht annehmen.
 - 2026-06-03: **Caption-Engine entwirrt.** Auto-Render erzeugte für jedes Reel dieselbe Generic-Caption →
   TikTok/IG werten Triplicate-Text als Spam (Reichweite sinkt). Fix: `auto_render.sh` hat jetzt 5 rotierende,
   conversion-fokussierte Caption-Templates (benennen das gezeigte Top-Produkt, z.B. «Savanna») + 3 rotierende
