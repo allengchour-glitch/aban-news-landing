@@ -46,3 +46,10 @@
 - Amazon-Buch-Link an Aban geben → kann auf `buch.html` ergänzt werden.
 - Optional später: Taschenbuch (Interior `anti-hype-print-de.pdf` 28 S. ✅; Wrap-Cover
   prüft KDP beim Upload — ggf. neu generieren) + EN/FR/IT-Ausgaben.
+
+## 🔁 Am Schluss zurückmelden (wichtig)
+Trag dein Ergebnis in **`docs/_HANDBACK.md`** ein und **committe + pushe** es:
+Status (✅ live / ⚠️ hängt / ❌ Fehler), den Amazon-Buch-Link, und ggf. die exakte
+Fehlermeldung. Die Code-Session liest das beim nächsten Sync und macht weiter
+(z. B. Link auf `buch.html` eintragen). Alternativ gibt Aban die Antwort direkt
+im Chat weiter.
