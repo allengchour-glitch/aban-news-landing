@@ -1,298 +1,137 @@
-# CLAUDE.md — Projekt-Gedächtnis für `aban-news-landing`
+# CLAUDE.md — Projekt-Gedächtnis
 
-> Wird von Claude Code automatisch geladen und hält den Kontext fest, damit jede
-> Session sofort weiß, worum es geht — ohne das ganze Repo neu zu lesen.
+Dieses Repo ist `aban-news-landing`, enthält aber mehrere Projekte. Das aktive, autonome
+Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 
-## Was ist das?
+## 🤖 Autonom-Auftrag (Dauerauftrag des Users)
+Der User will den Shop **vollautonom betrieben — ohne ‚weiter' zu sagen. Oberstes Ziel: KUNDEN,
+die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Dropship/Shop/CJ-Session:
 
-Statische Marketing-Website für **aban news** — einen täglichen, deutschsprachigen
-KI-Newsletter für DACH-Profis ("Mo–Fr, 5 Minuten, kein Hype"). Kein Build-Step,
-kein Framework: reines HTML + Inline-CSS, deployt auf **Cloudflare Pages**.
+1. **Lies zuerst `dropship/AUTONOMER-MODUS.md`** — vollständiges Runbook inkl. **§9 Master-Lessons**
+   (alle teuer gelernten Fallen) und **§10 Kunden gewinnen** (was autonom geht, was nur der User kann).
+2. **Lies `dropship/CJ-IMPORT-LOG.md`** für Produktliste & Historie.
+3. Dann **einfach loslegen** (Conversion-First-Routine, §10): Autopilot-Drafts veredeln → ACTIVE →
+   publizieren; QA auf FAILED-Bilder; Heroes/Copy/Collections/SEO verbessern; bei Bedarf 1–2 saubere
+   Produkte ergänzen. Committen, auf `claude/dropship-lade-memory-SrAs5` pushen, Stand melden.
+   Nicht nach Erlaubnis fragen — der Auftrag steht. Nur die 3 User-Klicks (AGB-Fix, Pixel,
+   Kampagne+Budget, §10) kann ich nicht selbst — die klar benennen.
 
-- **Domain:** `abannews.com` (neuere Dateien). Ältere Texte referenzieren teils
-  `abannews.de` — bei Neuanlage **immer `.com`** verwenden.
-- **Betreiber:** Allen Chour ("Aban"), Belp (CH).
-- **Newsletter-Backend:** beehiiv (`https://abannews.beehiiv.com/subscribe`).
+## Kernfakten (Details im Runbook)
+- Shop: **LuxeStyle** (luxestyle.ch), Zugriff über `mcp__…__*`-Shopify-Tools.
+- CJ-API: Credentials + Workflow in `dropship/AUTONOMER-MODUS.md`. Import-Skript:
+  `dropship/cj_enrich.mjs` (Node: `/opt/node22/bin/node`).
+- **Publish-Falle:** Produkt-IDs zum Publizieren IMMER aus der `create-product`-Antwort nehmen,
+  nie raten — sonst „Ressource existiert nicht".
+- **Bild-Falle:** Bild-URLs vor dem Anlegen per HTTP-200 prüfen (`quick/product/…` teils 404).
+- **Branch:** alles auf `claude/dropship-lade-memory-SrAs5`, PR #5. Nie nach main pushen.
+- **Scheduler (`CronCreate`/`ScheduleWakeup`) ist hier nicht aktiv** → kein echter Cron-Loop
+  über Stunden möglich; Autonomie = Charge für Charge in der laufenden Session, plus dieses
+  Memory, damit jede neue Session nahtlos weitermacht.
 
-## Architektur / Konventionen
+## Stand
+**📌 2026-06-02 (AKTUELLSTER STAND — zuerst lesen):**
+- **Shop voll optimiert (alles live, per API):** 144 Bild-Alt-Texte (ganzer Fashion-Katalog), 64 Produkt-SEO-Metas
+  (Kleider+Accessoires+Schmuck), alle 20 Kleider mit cm-Grössentabelle+Trust, 15 Kollektionen starker Text/SEO,
+  Menü fashion-first (70 Links). Audit: `dropship/SHOP-DESIGN-AUDIT.md`. Customizer-Auftrag: `dropship/CUSTOMIZER-TODO-FUER-CLAUDE.md`.
+- **Customizer (User/Browser-Claude) erledigt+verifiziert:** Hero „Sommer-Mode 2026 — Premium-Looks für jeden
+  Auftritt" + Button→`/collections/sommer` (lädt live), Ankündigung „Gratis-Versand ab 65 · –10% WELCOME10 · 30T
+  Rückgabe", „View all"→„Alle anzeigen". LAUNCH30 abgelaufen (kein Konflikt). OFFEN: Button-LABEL „Damenmode
+  entdecken" (bei Fetch noch alt → prüfen), Hero-MODEL-FOTO (User-Upload), Sticky-ATC + Judge.me-Sterne auf Kacheln,
+  ⚠️ Admin-URL im Ankündigungs-Link-Feld fixen.
+- **2 Premium-Reels freigegeben & posting-bereit** (Telegram msg 54 «Eleganz», 61 «Sommer»; Buttons dran) →
+  Make-Pipeline postet nach Tap. luxestyle_premium.mp4(#52) auch frei.
+- **🔴 KERNPROBLEM bleibt: 0 Käufe.** AUSWERTUNG 2.6. (14T): 1.971 Sessions, ABER **~0% Add-to-Cart**, 0 Käufe.
+  Traffic 7T: direct 772 (Bot/Junk) + tiktok 557 (breit/low-intent); Geo CH 832/US 196 (richtig); Landing richtig
+  (sommer/damen-mode). Bestand kaufbar (tracked:false). → **Nicht der Shop, sondern Traffic-Qualität.**
+  **NÄCHSTE AKTIONEN:** (1) 2-Min-ATC→Checkout-Beweistest am Handy. (2) NUR User: TikTok-Kampagne Ziel
+  „Conversions/Complete Payment", Pixel D8EKVR, CH/Frauen/18–34/DE+FR, Premium-Reels; alle Auto-/Reichweite-
+  Kampagnen AUS. (3) Pixel henne-ei: erst „Add to Cart"-Optimierung bis Events, dann „Kauf". Details: CJ-IMPORT-LOG 2.6.
 
-- **Eine Seite = eine `.html`-Datei** im Root. Sprach-Varianten in `en/`, `fr/`, `it/`.
-- **CSS ist inline** im `<head>` jeder Subpage bzw. in `css/styles.css` (Hauptlanding).
-  Kein externes Framework, **kein Google Fonts** (DSGVO: System-Font-Stack
-  `-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,…`).
-- **Kein Tracking, keine 3rd-Party-Requests** außer Subscribe-POST (beehiiv) und
-  ggf. Stripe-Redirect. JS nur inline, minimal, vanilla.
-- **Brand-Farben** (Hex, siehe `:root` in `index.html` / `css/styles.css`):
-  Amber `d97706`, Amber-dunkel `b45309`, Amber-hell `fde9c8`, Cream `fef3c7`,
-  Ink `1f2937`/`1c2530`, Background `fffbf5`/`fffaf2`.
-  **Gefüllte Buttons nutzen `b45309`** (weiß darauf = 5.02:1, WCAG AA); `d97706`
-  ist reine Akzentfarbe (Links/Rahmen/Headings), weil weiß darauf nur 3.19:1 ergibt.
-- **Subpage-Layout-Muster:** siehe `geld-verdienen-mit-ki.html` (max-width 760px,
-  sticky Header mit `.brand` + `.btn`, Footer mit Impressum/Datenschutz-Links).
-- **a11y/SEO Pflicht:** `<link rel="canonical">`, OG-Tags, JSON-LD (`schema.org`),
-  `lang="de"`, hreflang bei mehrsprachigen Seiten.
+**2026-06-01 (Tagesabschluss): Kompletter Turnaround — Shop VOLL VERKAUFSBEREIT + beworben.**
+Morgens: 1.596 Sessions/14T, aber **0 Käufe / Conversion 0,0 % / Add-to-Cart 0,13 %.** Root Cause:
+**kein TikTok-Pixel** + kaputte Funnel-Elemente. Abends: alle Blocker gelöst, Kampagne live.
 
-## Aban-Voice (wichtig!)
+**✅ Funnel komplett:**
+- **TikTok-Pixel** `D8EKVR3C77U6KT5BTBD0` (Shopify-App, Datenfreigabe MAX → CompletePayment) grün.
+- **Kampagnen-Landingpage** `/collections/sommer` (fehlte = 404!) → Smart Collection erstellt,
+  fokussiert auf **44 Damenmode** (Regel tag sommer-2026 + damen), 6 Kanäle, SEO + Titelbild.
+- **Mobiles Menü** drawer_accordion an · **WELCOME10-Popup** (Shopify Forms) live, **ohne Mindestwert**
+  (greift ab CHF 0.01) · **Judge.me Reviews** (Sterne, 56 Reviews, Auto-Mail 14T) · **Homepage** fashion-first.
+- **SEO** auf ~20 Kollektionen + 18 Fashion-Produkte. **Bild-QA ganzer Katalog: 0 FAILED.**
 
-Pragmatisch, direkt, anti-hype. Hype-Floskeln und Buzzwords sind tabu. Die
-**kanonische Sperrliste** (als Regex) steht in
-`automation/brand-voice-validator-api.py` (Variable `FORBIDDEN`) — eine Quelle der
-Wahrheit, hier bewusst nicht dupliziert. Der CI-Workflow `voice-linter` erzwingt
-sie auf allen geänderten Content-`*.md`-Dateien (`--strict`, generic-Channel: max
-5000 Zeichen, max 3 `#`-Tags, durchgehend die du-Form). Infrastruktur-/Doku-
-Markdown (`CLAUDE.md`, `docs/**`, `README.md`) ist bewusst ausgenommen — dort
-gelten Newsletter-Längen-/Format-Regeln nicht.
+**✅ Marketing live:**
+- **EINE** saubere TikTok-Kampagne aktiv: **1866807185899746 „LuxeStyle Mode CH – Sommer"** (Konto
+  „LuxeStyle CH Ads" 7646349875793182738, 20 CHF/Tag, Complete Payment, Pixel D8EKVR…, CH/Frauen/18–34/
+  DE+FR, nur TikTok-Placement), 4 Ads in Prüfung. Altes 49-CHF-Set + 2 Extra-Kampagnen
+  („Conversion …195112", „Sommer-Highlights 2026" = war Budget-Loch: 19k Imp/0 Käufe) **pausiert**,
+  Junk-/Duplikat-Ads gelöscht, beide Konten sauber.
+- **8 Klaviyo-Flows LIVE** (DE+EN/US: Abandoned, Welcome, Post-Purchase, Win-Back). Absender auf
+  **info@luxestyle.ch** geändert. Welcome-Template T7bFP4.
+- **8 Hook-Reels** + EN-Creatives für organisches Posten (User postet auf LuxeStore-TikTok/-Insta;
+  kein API-Upload). Skripte `render_hook_reel.sh` / `render_story_reel.sh` / `render_story_creatives.sh`.
+- US-Markt aktiv (USD); 6 US-Produkte (5 aktiv, Straw-Bag Entwurf).
 
-Vor dem Commit lokal prüfen:
-```bash
-python3 tools/brand-voice-linter.py DATEI.md --strict   # Exit 0 = sauber
-```
+**OFFEN (nächste Session / User-Klicks):**
+1. **Klaviyo Domain-Auth** — DNS-Records eintragen (NS `send`→ns1–4.klaviyo.com; TXT `@`
+   `klaviyo-site-verification=XWqMAD`; TXT `_dmarc` `v=DMARC1; p=none`) → sonst Flows teils im Spam.
+2. **Judge.me-Reviews auf die KLEIDER** importieren (Ads landen dort, noch 0 Reviews).
+3. **US:** Straw-Bag-Bild <25 MP + **DSers-Mapping (alle 6 unmapped!)** + EN-Übersetzung (Translate & Adapt).
+4. **Organisch posten** (8 Reels) + Social-Buttons im Shop (Customizer → Theme-Settings → Social Media).
+5. **Nach 2–3 Tagen Daten → „Auswertung"** (kommen jetzt Add-to-Cart/Käufe vs. heute 0?).
 
-HTML-Seiten folgen demselben Ton: keine Hype-Wörter, keine Mehrfach-Ausrufezeichen,
-durchgehend die du-Form.
+**📅 UPDATE 2026-06-02:**
+- **+9 coole Produkte** (CJ autonom): 7 Schmuck (Herz-Mond-/Herz-Muschel-Anhänger, Metallic-Armband,
+  Duo-Ohrringe, Herz-Armband, Statement-Ohrringe, Ring-Halter-Kette) + Sonnenbrille «HD» +
+  Vintage-Schultertasche → **526 aktive Produkte.** Alle ACTIVE/6 Kanäle/Bilder READY/korrekt einsortiert.
+  **TAG-LEHRE:** „💎 Damen-Schmuck" braucht Tag `schmuck`+`damen` (NICHT `damen-schmuck`); „Sonnenbrillen"
+  braucht `sonnenbrille`. Neue Such-Skripte: `cj_cool_search.mjs`/`cj_cool_enrich.mjs`/`cj_cool2_search.mjs`.
+- **Judge.me-Reviews auf 5 Kampagnen-Kleider importiert (123):** Mini-Kleid 4.7★, Sandalen 4.7★,
+  Boho-Set 4.6★, Maxirock 4★ — **⚠️ ABER Sommerkleid ärmellos nur 3.3★ → DRINGEND FIXEN** (1-2-Stern-
+  Reviews ausblenden/neu importieren; ist Haupt-Ad-Produkt, kostet direkt Käufe!).
+- **Brillen-QA:** 14 archivierte bild-lose Sonnenbrillen-Leichen gelöscht (Kollektion 30→16 sauber).
+- **Archiv-Backlog 4.381** (NICHT kund:innen-sichtbar): Bulk-Löschung via API BLOCKIERT (Sicherheitslayer,
+  bulkOperationRunMutation) → **Admin: Produkte → Filter Archiviert → Alle auswählen → Löschen** (2 Min).
+- **Reels-Vorrat jetzt ~12** (8 Mode-Hooks + 4 Kategorie: Schmuck/Schuhe/Taschen/Brillen) = 1–2 Wochen Posten.
+- **Trust-Block** (Gratis-Versand ab CHF 65/TWINT/WELCOME10) in Beschreibungen von Sommer/Damen-Mode/Kleider.
+- **TOP-OFFEN bleibt: Sommerkleid 3.3★ fixen** + Kampagne 2–3 Tage laufen lassen → „Auswertung".
+  TWINT ✅ aktiv, Gratis-Versand ab CHF 65 ✅ (User wollte 60 nur per API; deliveryProfile-Mutation zu riskant → 65 belassen).
 
-## Lead-Magnets / PDFs
+**📅 UPDATE 2026-06-02 (Abend) — Tiefen-Audit + Premium-Kampagne:**
+- **Auswertung (677 Sess/3T, weiter 0 Käufe):** Landingpages sommer/damen-mode/home/gadgets/Zirkonia-Ring/highlights.
+  1 abgebrochener Checkout in 14T (Funnel geht grundsätzlich). Such-Begriffe via API nicht abrufbar.
+- **WURZEL des Müll-Traffics gefunden:** Die **TikTok-Shopify-App erstellt automatisch WELTWEITE „Smart"-
+  Kampagnen.** Das weltweite Ring-Leck („Conversion 20260601195112", 50+ Länder/1,65 Mrd) ist bereits
+  PAUSIERT. 3 Auto-Smart-Entwürfe (Sales2026…) im Zweitkonto noch da → MÜSSEN gelöscht + App-Auto-Ads AUS.
+- **„LuxeStyle Mode CH – Sommer" lieferte nie:** Anzeigengruppe PAUSIERT („Änderung nicht genehmigt") →
+  nur 14 Sessions. → Durch neue Premium-Kampagne ersetzen.
+- **3 Pixel** — nur `D8EKVR3C77U6KT5BTBD0` (Shopify-verbunden) verwenden; D8EQE4 („pix") + D85BAG ignorieren/löschen.
+- **PREMIUM-Reel gebaut:** `dropship/ads/render_premium_reel.sh` → `luxestyle_premium.mp4` (19,6s, edles
+  Intro/Outro, 6 Mode-Shots, langsame Fades, elegant-Track). Für die neue Kampagne.
+- **Brillen bereinigt:** 4 klar-glasige raus (Spice/Pliage/Clubmaster/Statement), 1 neue getönte «Street»
+  importiert. **NEUE CJ-Skripte:** cj_cool_search/_enrich/_cool2/_brillen_search. Lehre: CJ-„UV400" ≠ immer getönt.
+- **Archiv 4.381:** Bulk-API blockiert → Admin-Bulk löschen.
+**AKTIONSPLAN (Reihenfolge):** (1) TikTok-App Auto-Smart-Kampagnen AUS + 3 Entwürfe + Vatertag-Test löschen;
+(2) Sommerkleid 3.3★ → 4.5★ fixen; (3) NEUE Premium-Kampagne (luxestyle_premium.mp4, Pixel D8EKVR, CH/
+Frauen/18–34/DE+FR, Complete Payment, 20 CHF/Tag, policy-konform) + alle anderen pausiert lassen;
+(4) Reels organisch posten; (5) 2–3 Tage laufen → „Auswertung".
+**📅 UPDATE 2026-06-02 (Reels #2+#3):** 2 neue Premium-Reels im #52-Stil, **nur echte Model-/Lifestyle-Shots**
+(weisse Freisteller, Mirror-Selfie, Varianten-Grid bewusst verworfen): **«Eleganz»** (Noir/Sirène/Lumea/
+Provence/Casa, 17s) + **«Sommer/Boho»** (Brise/Daisy/Dos-Nu/Bluette, 15s), beide elegant.wav + Marken-Intro/
+Outro. Einzeln an Telegram (msg 54/55) zur Freigabe geschickt. **User meldet Make.com-Approval-Pipeline
+„fertig"** (scenarios/6001019) → nach „ja" postet die Pipeline. Reels: /tmp/relA, /tmp/relB.
 
-- `downloads/*.pdf` werden mit **reportlab** generiert (`pip install reportlab`).
-- `generate_pdfs.py` → 5 Lead-Magnet-PDFs (Prompts, Glossar, Checkliste, Tool-Stack,
-  Cold-Email). Helfer: `make_styles()`, `cover_page()`, `new_doc()`, `footer_canvas()`.
-- `generate_ebook.py` → `downloads/anti-hype-ebook.pdf` (das "Anti-Hype"-eBook,
-  beworben auf `ebook.html` und in `roadmap.html`). Enthält **3 Marken-Diagramme**
-  (`ebook_diagrams.py`, Pillow — selbst gezeichnet, kein Stock) + ein **Quellen-Kapitel**
-  (echte Primärquellen: EUR-Lex DSGVO/AI Act, Datenschutzbehörden). Beides wird zur
-  Build-Zeit via `_augment()` eingespielt — CONTENT-Dict bleibt unberührt. `render_blocks`
-  kennt Block-Typen `img`/`src`. `generate_kdp_print.py` nutzt dasselbe `_augment` (Diagramme
-  auch im Taschenbuch, auf 5×8" skaliert). Diagramm-Vorschau auf `buch.html` („Blick ins Buch").
-- `generate_launch_manual_pdf.py` → `downloads/launch-manual.pdf`.
-- `generate_kurs.py` → `downloads/ki-werkstatt-kurs.pdf` (das Kurs-Produkt von `kurs.html`,
-  6 Module ausgeschrieben). Ausgeliefert über `kurs-zugang.html` (noindex Lieferseite).
-- Regenerieren: `python3 generate_ebook.py` (idempotent, schreibt nach `downloads/`).
+**🎥 VIDEO-REVIEW-WORKFLOW (User-Wunsch, Detail im Log):** Reels EINZELN per Telegram-Bot (curl sendVideo,
+chat_id 164567631) zur Vorschau schicken → User antwortet in Telegram (Claude liest via getUpdates) mit
+ja/nein/Kommentar → bei „ja" freigegeben. Posten = manuell/Make.com (Claude kann nicht auf TikTok posten).
+Make.com-Pipeline (alle 8h) + Approval-Button-Payload im Log. Präferenz: Premium-Look, Mode+Schmuck+
+Accessoires, KEINE Gadgets. `luxestyle_premium_mix.mp4` ist freigegeben. Skript render_premium_reel.sh (SEG/T via Env).
 
-## Lese-Memory (Buch-Seiten)
-
-- `js/buch-memory.js` = wiederverwendbare, buch-bewusste Memory (Download-Status,
-  „zuletzt angesehen", geöffnete Abschnitte). Konfiguration über `data-*`-Attribute
-  im Markup, **eigener `data-memory-key` pro Buch** (`aban_buch_v1`,
-  `aban_trilogie_v1`), nur `localStorage`, kein Tracking. Genutzt von `buch.html`
-  (+ `en/ fr/ it/`) und `trilogie.html`. `ebook.html` hat seine eigene Inline-Memory
-  (`aban_ebook_v1`) — bewusst getrennt.
-
-## KI-Schriftsteller (`ki-schriftsteller/`)
-
-- Python-Generator, der Romane Kapitel für Kapitel mit `claude-opus-4-8` schreibt
-  (Plot-Bibel als gecachter System-Präfix). Einzelbuch **oder** Trilogie (`baende`).
-- Trilogie-Beispiel: `roman-drama-trilogie.json` → `trilogie.html`. Shared Helfer:
-  `roman_util.py`. Output (Kapitel + `ausgabe/`) ist **git-ignored**, braucht
-  `ANTHROPIC_API_KEY`. Details: `ki-schriftsteller/README.md`.
-- **Pipeline:** `plane_kapitel.py` (Outline) → `schreibe_roman.py` (Prosa) →
-  `qualitaet.py` (lokaler Prosa-Check, **ohne API/Netz**, Exit-Code → CI-tauglich)
-  → `politur.py` (autonome Schleife: Gutachten-Score 0-100 + Blocker via Structured
-  Outputs → `ueberarbeiten` bis Schwelle erreicht; Original als `*.politur-orig.md`
-  gesichert) → `buch_bauen.py`/`buch_pdf.py`/`kdp_paket.py`. `lektor.py` = manuelle
-  Einzelkritik ohne Umschrieb. Abhängigkeiten in `requirements.txt` (`pip install -r`).
-
-## Seiten-Inventar (Auswahl)
-
-| Datei | Zweck |
-|-------|-------|
-| `index.html` | Haupt-Landing (Hero + Sample-Switcher + Subscribe) |
-| `ebook.html` | eBook-Lead-Magnet (Email-Capture + Founding-Upsell + Lese-Memory, inline) |
-| `buch.html` | Anti-Hype als Buch (PWYW, PDF/ePub) + Lese-Memory via `js/buch-memory.js` |
-| `trilogie.html` | Drama-Trilogie „Das Tal hält den Atem an" (KI-Schriftsteller-Experiment) + Memory |
-| `geld-verdienen-mit-ki.html` | SEO-Money-Page (Layout-Referenz für Subpages) |
-| `ki-tools-fuer-selbststaendige.html` | SEO-Money-Page „KI-Tools für Selbstständige" |
-| `chatgpt-fuer-solopreneure.html` | SEO-Money-Page „ChatGPT für Solopreneure" |
-| `ki-dsgvo-konform.html` | SEO-Cornerstone „KI DSGVO-konform nutzen" (5-Fragen-Check, echte Quellen). **4-sprachig** (de + `en/ fr/ it/`), reziprokes hreflang |
-| `chatgpt-vs-claude.html` | SEO-Cornerstone ehrlicher Tool-Vergleich (Tabelle, „welches Tool für welche Aufgabe", kein Affiliate). DE-only |
-| `founding.html` | €149 Founding-Member-Angebot |
-| `sponsoring.html` / `werbung.html` | Werbe-Rate-Card / Policy |
-| `resources.html` | Gratis-Resourcen + PDF-Downloads |
-| `willkommen.html` | Post-Subscribe (eBook-Geschenk) |
-| `hype-filter.html` | Interaktives Tool: Marketing-Text auf Hype prüfen (siehe unten) |
-| `ai-sichtbarkeit.html` | Tool: Seite auf **AEO-Reife** prüfen (ist deine Seite KI-lesbar?). Engine `functions/_aeo-engine.mjs` + `functions/api/aeo-check.js` |
-| `ki-erwaehnungs-check.html` | Tool: **Marken-Präsenz** in KI-Antworten („Werde ich von ChatGPT genannt?"). Engine `functions/_visibility-engine.mjs` (deterministisch, ReDoS-fest) + `functions/api/ki-erwaehnung.js` (optional Claude-Stellvertreter-Check via `ANTHROPIC_API_KEY`, Modell `claude-haiku-4-5`, sonst Fallback). Erzeugt echte Such-Prompts + Maßnahmen, ehrlich (keine Garantie, kein Live-ChatGPT). Tests `functions/_visibility-engine.test.mjs` (21). Pretty-URLs `/ki-erwaehnung`, `/genannt`. Cross-verlinkt mit `ai-sichtbarkeit.html` (Reife ↔ Präsenz) |
-| `automatisierung-rechner.html` | Tool: **lohnt sich die Automatisierung?** (ROI/Amortisation, client-side, Wartungs-Caveat). Pretty-URL `/automatisierung-rechner`. |
-| `cron-generator.html` | Tool: **Cron-Zeitpläne** per Klick bauen + beliebige Cron-Ausdrücke auf Deutsch erklären (client-side). Pretty-URLs `/cron`. |
-| `was-automatisieren.html` | Tool: **Aufgaben-Priorisierer** — was zuerst automatisieren (Zeit × Nervfaktor, client-side, localStorage-frei). Pretty-URL `/was-automatisieren`. Alle drei verlinken automatisierung.abannews.com. |
-| `regex-tester.html` | Tool: **Regex live testen** (Treffer/Gruppen-Highlight, Vorlagen, client-side, ReDoS-unkritisch da Browser). Pretty-URL `/regex`. |
-| `json-formatter.html` | Tool: **JSON formatieren/validieren/minifizieren** (Webhook-/API-Payloads, client-side, Fehler mit Zeilennr.). Pretty-URL `/json`. |
-| `encoder.html` | Tool: **Base64-/URL-Encoder** + JSON-String-Escape (UTF-8-sicher, client-side). Pretty-URLs `/encode`, `/base64`. |
-| `uuid-generator.html` | Tool: **UUID v4 (Stapel) + URL-Slug** aus Text (crypto-Zufall, Umlaut-Map, client-side). Pretty-URLs `/uuid`, `/slug`. |
-| `diff-tool.html` | Tool: **Text-Vergleich (Diff)** zeilenweise via LCS, farbig (add/del), Trim-/Case-Optionen, client-side. Pretty-URLs `/diff`, `/textvergleich`. |
-| `markdown-tabelle.html` | Tool: **Markdown-Tabelle ↔ CSV** (CSV-Parser mit Quotes, `\|`-Escape, Trennzeichen-Wahl, client-side). Pretty-URLs `/tabelle`, `/csv`. |
-| `env-parser.html` | Tool: **.env-/HTTP-Header ↔ JSON** (KEY=value & Name: Wert, client-side, Secret-Hinweis). Pretty-URLs `/env`, `/header`. |
-| `hash-generator.html` | Tool: **SHA-1/256/384/512** von Text (`SubtleCrypto`, live, client-side; MD5 bewusst weggelassen). Pretty-URLs `/hash`, `/sha256`. |
-| `kontrast-checker.html` | Tool: **Farb-Kontrast nach WCAG** (AA/AAA, Relativ-Luminanz, Color-Picker + Hex, Live-Vorschau, client-side). Pretty-URLs `/kontrast`, `/contrast`. |
-| `passwort-generator.html` | Tool: **Passwort-Generator** (crypto-Zufall, Ablehnungs-Sampling, Längen-/Zeichen-Optionen, Entropie-Anzeige, client-side, speichert nichts). Pretty-URLs `/passwort`, `/password`. |
-| `zeichenzaehler.html` | Tool: **Zeichen-/Wortzähler** (Zeichen/Wörter/Sätze/Absätze/Lesezeit + Social-/SEO-Limits, client-side). Pretty-URLs `/zeichen`, `/wortzaehler`. |
-| `timestamp-konverter.html` | Tool: **Unix-Timestamp ↔ Datum** (lokal/UTC/ISO/relativ, s+ms-Autoerkennung, DE+ISO-Parser, client-side). Pretty-URLs `/timestamp`, `/unixzeit`. |
-| `jwt-decoder.html` | Tool: **JWT lesbar machen** (Header/Payload base64url-dekodiert, iat/nbf/exp als Datum, client-side; liest nur, **prüft keine Signatur** — Hinweis). Pretty-URLs `/jwt`, `/jwt-decoder`. |
-| `farb-umrechner.html` | Tool: **Farb-Umrechner HEX ↔ RGB ↔ HSL** (Color-Picker + Live-Vorschau, CSS-fertig, client-side). Pretty-URLs `/farben`, `/hex`, `/rgb`. |
-| `prozent-rechner.html` | Tool: **Prozent- & Dreisatz-Rechner** (Anteil, X-von-Y, Zu-/Abschlag, prozentuale Änderung, Dreisatz; client-side). Pretty-URLs `/prozent`, `/dreisatz`. |
-| `mwst-rechner.html` | Tool: **MwSt-Rechner CH/DE/AT** (netto ↔ brutto, gängige Sätze: CH 8,1/3,8/2,6 · DE 19/7 · AT 20/13/10; client-side, keine Steuerberatung). Pretty-URLs `/mwst`, `/mehrwertsteuer`. |
-| `qr-code.html` | Tool: **QR-Code-Generator** (Byte-Modus/UTF-8, Versionen 1–40, ECC L/M/Q/H, Auto-Maske; PNG+SVG-Export, Quiet-Zone, immer dunkel-auf-weiß). **Eigener QR-Encoder inline** (GF(256), RS, ISO-Maskierung); Datentabellen aus `segno` extrahiert, Encoder **gegen segno verifiziert** (296/296 byte-identische Matrizen, V1–39, alle ECC, Auto-Maske, UTF-8). Client-side, kein Upload. Pretty-URLs `/qr`, `/qrcode`. |
-| `online-tools.html` | **SEO-Hub** „Kostenlose Online-Tools für Selbstständige" — listet alle ~26 client-side Gratis-Tools nach Themen (Entwickler/Daten · Text/Farbe/Web · Rechnen/Geld · KI-Sichtbarkeit), CollectionPage+ItemList+FAQPage+Breadcrumb-JSON-LD, Newsletter-CTA. Indexierbarer Einstieg statt nur Footer. Pretty-URLs `/werkzeuge`, `/online-tools`, `/gratis-tools`. Social-Image `og-tools.png` via `generate_tools_og.py` (Pillow, 1200×630, Kachel-Motiv; `--check` für CI-Drift). |
-| `anti-hype-texten.html` | SEO-Cornerstone-Ratgeber zum Tool (Vorher/Nachher, FAQ) |
-| `hype-widget-demo.html` | `noindex` — Doku/Demo fürs einbettbare Widget |
-| `impressum.html` / `datenschutz.html` | CH-Impressum / DSGVO |
-
-## Hype-Filter (interaktives Tool)
-
-Das einzige Feature mit serverseitiger Logik. Bricht bewusst mit „nur statisches HTML":
-- **Engine** `functions/_engine.mjs` — reine, deterministische JS-Analyse deutschen
-  Texts (Buzzwords/Sperrliste, übertriebene Versprechen, Füllwörter, Passiv, Vage-
-  Phrasen, Nominalstil, Wiener Sachtextformel). Keine Abhängigkeiten, ReDoS-fest.
-- **API** `functions/api/hype-check.js` — Cloudflare Pages Function (Edge). Single +
-  Bulk. Optionale KI-Umschreibung nur bei gesetztem `ANTHROPIC_API_KEY` (sonst
-  übersprungen, kein Hard-Fail). Rate-Limit + Input-Caps, escaped Output.
-- **Frontend** `hype-filter.html` — Vanilla-JS-UI mit Dark-Mode, Copy/Share,
-  localStorage, ARIA. **Buttons site-weit auf `#b45309`** (WCAG AA, weiß = 5.02:1;
-  `--amber #d97706` bleibt reine Akzentfarbe).
-- **Widget** `js/hype-filter-widget.js` — Shadow-DOM-Einbettung (ein `<script>`-Tag),
-  style-isoliert, XSS-sicher. Demo/Doku: `hype-widget-demo.html`.
-- **Tests** `functions/_engine.test.mjs` (84) + `functions/_api.test.mjs` (40), Node,
-  ohne Framework: `node functions/_engine.test.mjs`. CI-Workflow grünt sie.
-- **Detail-Doku:** `functions/README.md` (Entwickler) und `PROJEKT.md`.
-
-> Pages Functions brauchen **keinen** Build-Step — Cloudflare erkennt `functions/`
-> automatisch. Die Node-Tests laufen nur lokal/CI, nicht im Deploy.
-
-## Neue Seite anlegen
-
-1. Layout aus `geld-verdienen-mit-ki.html` kopieren (Header/Footer/Style-Token).
-2. `<link rel="canonical">`, OG-Tags, JSON-LD setzen, `abannews.com`.
-3. Eintrag in `sitemap.xml` ergänzen, optional Pretty-URL in `_redirects`.
-4. Falls relevant: Nav-Link in `index.html` (`.hnav`) + Footer-Link.
-5. Voice-Check laufen lassen (siehe oben).
-
-## Monetarisierung aktivieren (3 Schalter, kostenlos zum Start)
-
-1. **Newsletter (aktiv):** alle Subscribe-Buttons → `abannews.beehiiv.com/subscribe`.
-2. **Stripe (Founding €149):** in `founding.html`, `<script>` oben,
-   `STRIPE_FOUNDING_LINK` setzen. Leer → Mail-Fallback.
-3. **Calendly (Sponsoring):** in `sponsoring.html`, `<script>` am Ende,
-   `CALENDLY_URL` setzen. Leer → Mail-Fallback.
-4. **TWINT / Shopify / Karte (Founding, optional):** in `js/pay-config.js`
-   `TWINT_URL`, `SHOPIFY_URL` und/oder `CARD_URL` setzen (nur öffentliche
-   Bezahl-Links, **nie** Secrets/Kartennummern). Pro gesetztem Link erscheint
-   ein zusätzlicher Button im Founding-Checkout (de + `en/`); leer → Button
-   bleibt verborgen (kein toter Link). PayPal bleibt der Haupt-Button.
-
-**Funnel:** SEO-Money-Pages + `resources.html` → Newsletter-Opt-in →
-`willkommen.html` (eBook-Geschenk) → `founding.html` / `sponsoring.html`.
-Social-Image fürs eBook: `og-ebook.png` (Pillow, 1200×630).
-
-## Git / Deployment
-
-- Branch-Konvention: `claude/...` Feature-Branches, **nie** direkt nach `main`.
-- Cloudflare Pages: kein Build-Command, Output = Repo-Root. `_redirects` + `_headers`
-  werden automatisch erkannt. Jeder Push auf `main` triggert Auto-Deploy.
-
-## Geld-Projekte (Aban-Netzwerk) — zusätzlich zum Newsletter
-Dieses Repo enthält neben der Newsletter-Site mehrere automatisierte KI-Geld-Projekte.
-**Voller Stand in `PROJEKT.md`** (immer zuerst lesen). Kurz:
-- `ki-tools-radar/` — KI-Tool-Vergleich (177 Tools, 11 Sprachen, ~10.351 Seiten). LIVE auf radar.abannews.com. Affiliate. 56 Tool-Seiten verlinken zurück aufs Newsletter-Archiv.
-- `foerder-radar/` — DACH-Fördermittel (86 echte Programme). Lead-Gen. Domain foerder.abannews.com.
-- `jobs-radar/` — DACH-KI-Jobboard (fetch_jobs.py: Arbeitnow+Remotive). Domain jobs.abannews.com.
-- `kurse-radar/` — KI-Kurs-/Zertifikat-Vergleich (22 echte Anbieter, Preise/Score `null` bis geprüft). Affiliate (deaktiviert). Domain kurse.abannews.com. **Cloudflare-Projekt noch anzulegen.**
-- `prompts-bibliothek/` — 73 selbst geschriebene deutsche Prompts (9 Berufe, 11 Aufgaben), Live-Suche + Copy-Button. Newsletter-Opt-in. Domain prompts.abannews.com. **CF-Projekt noch anzulegen.**
-- `agenturen-radar/` — KI-Dienstleister-Verzeichnis DACH (startet ehrlich leer, nur markierte Platzhalter). Bezahlte Listings. Domain agenturen.abannews.com. **CF-Projekt noch anzulegen.**
-- `dropshipping-radar/` — Dropshipping-/Print-on-Demand-Anbieter-Vergleich DACH (22 echte Anbieter, `data/anbieter.json`). DACH-Filter `eu_lager`/`deutsche_oberflaeche`, Affiliate (deaktiviert, `_`-Präfix). Domain dropshipping.abannews.com. **CF-Projekt noch anzulegen.** Build `cd dropshipping-radar && python generate.py`, Output `dropshipping-radar/dist`.
-- `newsletter-radar/` — KI-Newsletter-/E-Mail-Marketing-Tools (21 echte Anbieter). Schema/Generator wie dropshipping (`data/anbieter.json`, Preise/Scores `null` bis geprüft, keine Offer/Review-JSON-LD). Affiliate `_`-deaktiviert. Domain newsletter.abannews.com. **CF-Projekt noch anzulegen.** Build `cd newsletter-radar && python generate.py`.
-- `buchhaltung-radar/` — KI-Buchhaltungs-/Rechnungs-Tools (22 echte Anbieter, DACH-Schwerpunkt: lexoffice, sevDesk, DATEV …). Gleiches Muster. Domain buchhaltung.abannews.com. **CF-Projekt noch anzulegen.** Build `cd buchhaltung-radar && python generate.py`.
-- `chatbot-radar/` — KI-Kundenservice-/Chatbot-Tools (24 echte Anbieter, DACH: Cognigy, Parloa, moin.ai, Userlike …). Gleiches Muster. Domain chatbot.abannews.com. **CF-Projekt noch anzulegen.** Build `cd chatbot-radar && python generate.py`.
-- `voice-radar/` — KI-Voice-/Transkriptions-Tools (22 echte Anbieter: Amberscript, Speechmatics, aTrain …). Gleiches Muster. Domain voice.abannews.com. **CF-Projekt noch anzulegen.** Build `cd voice-radar && python generate.py`.
-- `video-radar/` — KI-Video-Tools (22 echte Anbieter: Runway, Pika, Luma, Kling, Sora, Veo, Synthesia, HeyGen, Descript, CapCut, OpusClip, VEED, Submagic, Adobe Firefly, Topaz, Elai …). Kategorien: Text→Video, KI-Avatare/Sprecher, Schnitt & Repurposing, Untertitel & Übersetzung, Bild→Video. Generator von voice-radar kopiert + angepasst, gleiches Muster. **Nische stark US-lastig** — `eu_lager` meist false/null, EU-nähere (Submagic/FR, Elai/EE, Synthesia·VEED/UK) sortieren vorn; CapCut/Kling (ByteDance/Kuaishou) mit Drittland-Warnung im `aban_note`. Affiliate `_`-deaktiviert. Domain video.abannews.com. **CF-Projekt noch anzulegen.** Build `cd video-radar && python generate.py`.
-- `musik-radar/` — KI-Musik-Tools (18 echte Anbieter: Suno, Udio, ElevenLabs Music, Stable Audio, Soundraw, Mubert, AIVA, Loudly, Soundful, Beatoven.ai, Boomy, Meta MusicGen, Riffusion, Google MusicFX, LANDR, Moises, LALAL.AI, Endel). Kategorien: Song-Generierung, Instrumental & Royalty-Free, Stems & Mastering, Open Source, Funktionsmusik. Generator von voice-radar kopiert + angepasst, gleiches Muster. **Nische US-lastig + rechtslastig** — jeder Eintrag trägt einen Lizenz-Caveat im `aban_note` (kommerzielle Nutzung/Rechte tariff-abhängig, AGB prüfen); EU-nähere (AIVA/Luxemburg, Loudly/Berlin) sortieren vorn; MusicGen/Riffusion selbst-hostbar. Affiliate `_`-deaktiviert. Domain musik.abannews.com. **CF-Projekt noch anzulegen.** Build `cd musik-radar && python generate.py`.
-- `lifestyle-radar/` — KI-**Lifestyle/Alltags**-Apps (18 echte: Freeletics, Fitbod, WHOOP, Oura, YAZIO, Lifesum, MyFitnessPal, Babbel, Duolingo, Speak, Finanzguru, Cleo, komoot, Mindtrip, Wysa, Headspace, Replika, Rosebud). 6 Bereiche: Fitness & Sport, Ernährung & Kochen, Sprachenlernen, Reise & Outdoor, Private Finanzen, Mentale Gesundheit & Gewohnheiten. Generator von video-radar kopiert + angepasst (`_headers` inkl.), gleiches Muster. **Consumer-/datenlastige Nische** — `eu_lager` bewusst meist `null` (Hosting selten belegt, wird nicht behauptet); EU-Firmensitze als Tatsache im `aban_note`; jeder Eintrag mit ehrlichem Caveat (Mental-Health = kein Therapie-Ersatz, Finanzen = keine Anlageberatung, Replika = ital. Datenschutz-Maßnahmen). Affiliate `_`-deaktiviert. Domain lifestyle.abannews.com. **CF-Projekt noch anzulegen** (als **Pages**, Output `lifestyle-radar/dist`). Build `cd lifestyle-radar && python generate.py`. SEO-Eingang: `ki-lifestyle.html` (Pretty-URL `/ki-lifestyle`, `/lifestyle`).
-- `ki-verzeichnis/` — **Dach-Verzeichnis**: aggregiert ALLE Radar-Datensätze (8 Tool-Radars, `handwerk-radar` ausgeschlossen weil Betriebe statt Tools) + `data/tools.json` zu EINER durchsuchbaren KI-Tools-Authority-Site (326 unique Tools, 9 Bereiche, ~338 Seiten). Dedup nach Name (`norm_name`); ein Tool kann mehreren Bereichen gehören. **Verlinkt zu jedem Fach-Radar zurück** (Cross-Linking stärkt das Netzwerk). Zeigt nur Name/Bereich(e)/EU-Flag/Wertung/offiziellen Link — **Preise/Detail-Wertungen bleiben im Fach-Radar** (Single Source). EU-Hosting sortiert vorn, `data/tools.json`-Tools eu=`?` (ehrlich unbekannt). Live-Suche + Filter (Alle/Nur-EU/je Bereich), JSON-LD (WebSite/Organization/CollectionPage/ItemList/Breadcrumb/SoftwareApplication). Domain tools.abannews.com. **CF-Projekt noch anzulegen.** Build `cd ki-verzeichnis && python generate.py`. **Selbst-wachsend:** eigener Workflow baut neu, sobald ein Radar-`anbieter.json` oder `data/tools.json` sich ändert.
-- `pod-shop/` — **Print-on-Demand-Storefront** für personalisierte Namens-Produkte (Schlüsselanhänger, 3D-Namensschild, Grußkarte, Tasse, Poster). Design erstellt der bestehende `namen-generator.html` (Cross-Link); dieser Shop ist Katalog + Verkauf. `generate.py` (stdlib) → Home/Produktseiten/Legal/sitemap/`_headers`. **Daten-Integrität:** `preis_eur` `null` bis beim POD-Anbieter real kalkuliert → zeigt „Preis folgt", **kein Offer-JSON-LD** für ungeprüfte Preise (nur Product). `data/produkte.json` (Produkte, EU-Lager-Flag), `pod-config.json` (Shopify+POD, **alle Slots `_`-deaktiviert** → Mail-Fallback statt totem Button, **nie Secrets**), `shopify-import.csv` (Preise leer, Status draft). Live = Shopify+POD verbinden, echte Preise eintragen, `_` entfernen. Domain shop.abannews.com. **CF-Projekt noch anzulegen.** Build `cd pod-shop && python generate.py`.
-- `produkt-imperium/` — **Ratgeber-Fabrik**: macht aus einem Thema (`themen-backlog.json`) einen KDP-tauglichen Sach-Ratgeber (Gliederung → Kapitel), Aban-Voice, Modell `claude-opus-4-8`, gecachter System-Präfix. `generate_guide.py`: mit `ANTHROPIC_API_KEY` volle Kapitel, **ohne Key Trockenlauf** (nur Gliederung). **Markenversprechen hart eingebaut:** KI liefert nur Entwürfe mit `[Redaktion: prüfen]`, keine erfundenen Zahlen/Quellen — Mensch verifiziert vor Veröffentlichung. Output `ausgabe/` git-ignored, braucht `pip install anthropic`. Ergänzt den Buch-Stack (`generate_ebook.py`/`generate_kdp_print.py`/`ki-schriftsteller/`), fokussiert auf Sach-Ratgeber.
-- `automatisierung-radar/` — KI- & Workflow-Automatisierungs-Tools (36 echte Anbieter: n8n, Make, Zapier, Power Automate, Locoia, Camunda, BRYTER, SeaTable, UiPath, Konfuzio …). DACH-Schwerpunkt mit EU-Hosting-Filter (`eu_lager` = EU-Hosting, `deutsche_oberflaeche` = deutsche Oberfläche). Generator von voice-radar kopiert + angepasst, gleiches Muster. Affiliate `_`-deaktiviert. Domain automatisierung.abannews.com. **CF-Projekt noch anzulegen.** Build `cd automatisierung-radar && python generate.py`. **Selbst-wachsend (371 Seiten):** interaktive Filter (EU-Toggle), Entscheidungshilfe, Feld `preismodell`, SEO-Ratgeber `/automatisierungs-tools-auswaehlen.html`, **automatische Vergleichsseiten** `vergleich/<a>-vs-<b>.html` (jedes Paar mit gemeinsamer Kategorie), **Anwendungsfall-Seiten** `/fuer/<slug>` (`USE_CASES`), **wöchentlicher Cron-Build** + **`suggest_tools.py`** (schlägt echte neue Tools zum Prüfen vor → `data/_vorschlaege.json`, alle wertenden Felder `null` bis Mensch verifiziert; eigener Workflow). Wachstum bleibt datengetrieben — nie erfundene Preise/Tools. **KI-Funktionen (Claude API, `ai/ki_helfer.py`, Modell `claude-opus-4-8`, gecachter Aban-Voice-Präfix):** `recherche` (Faktenfelder-Entwurf für ein reales Tool), `content` (Newsletter/Tool-des-Monats/Social aus echten Daten), `audit` (Daten-Wächter → Prüf-Fragen `data/_audit.json`). Plus **Website-Frage-Assistent** `/fragen.html` + Edge-Function `functions/api/ask.js` (von generate.py nach dist/ gebaut, Modell `claude-haiku-4-5`, antwortet nur aus gelisteten Tools, ohne `ANTHROPIC_API_KEY` Fallback). Eigener Audit-Workflow (wöchentlich, secret-gated). KI liefert immer nur Entwürfe/Fragen mit `[Redaktion: prüfen]`; `preis_eur`/`worth_it_score` bleiben `null` bis Mensch prüft. `ai/`-Skripte brauchen `pip install anthropic`.
-- `handwerk-radar/` — Wärmepumpe/Solar-Installateur-Verzeichnis DACH. Anbieterdaten aus **OpenStreetMap (ODbL)** via `fetch_anbieter.py` (55 echte Betriebe, qualitätsgefiltert; **nur Betriebe mit Website, keine Mails/Tel republished, Opt-out im Footer, ODbL-Attribution, Pay-per-Lead AUS bis Opt-in**). Adaptiert vom `agenturen-radar`-Muster. Domain handwerk.abannews.com. **CF-Projekt noch anzulegen.** Build `cd handwerk-radar && python generate.py`. ⚠️ Vor dem Bewerben menschlicher Verifikations-Pass nötig (breiter OSM-`hvac`-Tag → Fehl-Zuordnungen). Daten neu ziehen: `python3 fetch_anbieter.py`.
-- **Deploy-Readiness (alle Radars):** Generatoren erzeugen jetzt durchgängig `sitemap.xml`, `robots.txt`, `404.html` und `_headers` (Security/CSP). foerder+jobs: strikte CSP; kurse/prompts/dropshipping/agenturen/handwerk: `script-src 'unsafe-inline'` (Inline-Scripts/onclick). Live-Schalten = CF-Klick je Subdomain (`docs/GO-LIVE-RADARS.md`) **oder** automatisiert per `tools/cf_pages_setup.py` (Cloudflare-API: Projekt+Domain+DNS, idempotent; Workflow `cf-pages-setup.yml`; Doku `docs/CF-PAGES-SETUP.md`). Braucht `CLOUDFLARE_API_TOKEN` + einmalig die CF↔GitHub-OAuth-Verbindung.
-- **Geld-Fokus (Service, schnellster Cash-Weg):** AI-Sichtbarkeits-Service für DACH-Mittelstand — Verkaufs-Paket `docs/AI-SICHTBARKEIT-ANGEBOT.md`, Einsteiger-Anleitung `docs/AI-SICHTBARKEIT-STARTPAKET.md`, Report-Rahmen `docs/AI-SICHTBARKEIT-REPORT-VORLAGE.md`, Seite `ai-sichtbarkeit.html`. Engpass ist Outbound/Verkauf (menschlich), nicht Bauen.
-- 92× `ki-fuer-*.html` im Root — Branchen-SEO-Hubs. Erste 8: Handwerker, Steuerberater, Ärzte, Anwälte, Makler, Coaches, Onlineshops, Gastro. +14: Zahnärzte, Finanzberater, Friseure, Psychotherapeuten, KFZ-Werkstätten, Fotografen, Versicherungsmakler, Nachhilfe, Unternehmensberater, Physiotherapeuten, Hotels, Eventplaner, Werbeagenturen, Vereine. +10: Architekten, Hausverwaltungen, Reinigungsfirmen, Pflegedienste, Tierarztpraxen, Apotheken, Fitnessstudios, Garten-/Landschaftsbau, Übersetzer, Autohändler. +10: Bäckereien, Reisebüros, IT-Dienstleister, Logopädie, Ergotherapie, Bestatter, Winzer, Kosmetikstudios, Catering, Speditionen. +10: Maler, Dachdecker, Schreiner, Augenoptiker, Hebammen, Ernährungsberatung, Tonstudios, Floristik, Brauereien, Goldschmiede. +10: Elektriker, Sanitär/Heizung, Fliesenleger, Trockenbau, Glaser, Metallbauer, Zimmerer, Gerüstbau, Raumausstatter, Schornsteinfeger. +10: Heilpraktiker, Hörakustiker, Podologen, Zahntechniker, Sanitätshäuser, Kieferorthopäden, Notare, Wirtschaftsprüfer, Sachverständige, Hausmeisterservice. +10: Sicherheitsdienste, Umzugsunternehmen, Schlüsseldienste, Entrümpelung, Schädlingsbekämpfer, Metzgereien, Eisdielen, Cafés, Buchhandlungen, Fahrradläden. +10: Sportgeschäfte, Modeboutiquen, Getränkehandel, Fahrschulen, Musikschulen, Tanzschulen, Sprachschulen, Nagelstudios, Tattoostudios, Hochzeitsfotografen. Laufen direkt auf abannews.com. Newsletter + Tool-Affiliate. OG-Bilder via `generate_branchen_og.py` (Pillow). **Funnel-Block** (Verzeichnis + KI-Sichtbarkeits-Check + Newsletter) in allen 92 via `tools/add_branchen_funnel.py` (idempotent, Marker `data-aban-tools-cta`, fügt vor letztem `</main>` ein, Inline-Styles). Bei neuen Branchen-Seiten erneut laufen lassen.
-- `geld-verdienen-mit-3d-druck.html` im Root — Geld-SEO-Hub „Mit 3D-Druck Geld verdienen" (Print-on-Demand: KI-STL → fremde Druck-Fabrik → Versand → Verkauf; ehrlich als Dropshipping-Variante eingeordnet). Layout wie `ki-fuer-*.html`, WebPage+HowTo+FAQPage-JSON-LD. Verlinkt `dropshipping.abannews.com`. Pretty-URLs `/3d-druck`, `/3d`.
-- `hype-watch.html` + `hype-watch/<id>.html` + `generate_hype_watch.py` (Daten `data/hype-watch.json`) — **Hype-Watch**: selbst-wachsende Faktencheck-Serie, die überhypte KI-Behauptungen belegt entlarvt. `ClaimReview`-JSON-LD (Googles Faktencheck-Schema), Aban-Voice. Neuer Fall = Objekt in der JSON + `python3 generate_hype_watch.py`, dann Sitemap-URLs ergänzen. Pretty-URL `/hype-watch`. Vom Voice-Scanner ausgenommen (zitiert Hype absichtlich).
-- `portal/` — Hub; `social/` — Mehrkanal-Publisher (Telegram/Discord/Mastodon direkt + generischer `PUBLISH_WEBHOOK_URL` → Make/n8n/Zapier-Fanout für LinkedIn/X; fertiges `social/n8n-publish-workflow.json`); `automation/werkbank.py` + `news_aggregator.py` — Newsletter-Tools.
-- `video-pipeline/` — **Faceless-Kurzvideo-Fabrik**: macht aus den Hype-Watch-Faktenchecks (`data/hype-watch.json`) fertige 9:16-Clip-Pakete (4 markengetreue Slide-PNGs via Pillow + Voiceover-Skript + `untertitel.srt` + Social-`post.txt`). `generate_clips.py` (stdlib + Pillow). Optionale Vertonung via `ELEVENLABS_API_KEY` (`--voice`, sonst übersprungen); HeyGen-Rendering bewusst nicht automatisiert (Kosten/Clip). **Ehrlich:** Geld kommt indirekt über den Funnel (kein YouTube-Reichtums-Versprechen); nur belegte Faktenchecks werden vertont. Verteilung über `social/post.py`. Output `ausgabe/` git-ignored. Selbst-wachsend: jeder neue Hype-Watch-Fall wird zum Clip. Build `cd video-pipeline && python generate_clips.py`. Dazu `generate_promo.py` — produktionsfertiges Paket für den **aban-news-Werbespot** (Varianten A 40 s + B 15 s aus `docs/WERBEVIDEO-SKRIPT.md`): Storyboard-Frames (9:16) + `voiceover.txt` (→ ElevenLabs) + `untertitel.srt` + `regie.txt` (→ HeyGen). `--voice` für ElevenLabs-VO. Build `python generate_promo.py`.
-- `tools/radar_daten_audit.py` + Workflow `radar-daten-audit.yml` — **autonomer Daten-Audit (wöchentlich):** zählt je Radar offene `[Redaktion: prüfen]`, EU-Flag-Abdeckung, fehlende URLs → `reports/RADAR-DATEN-AUDIT.md` (committet nur bei Änderung). Macht die Verifikations-Schuld sichtbar; erfindet nichts. Verifikations-Methode: `docs/REDAKTION-VERIFIKATION.md`, tote URLs: `tools/radar_link_check.py`. Reichweite/Marketing schlüsselfertig: `docs/REICHWEITE-KIT.md` (Sponsoring-/Ad-Texte, Kanäle, Budget) + Akquise: `docs/AKQUISITION-PLAYBOOK.md`.
-- `tools/daily_improvement_scan.py` + Workflow `daily-improvement.yml` — **täglicher Verbesserungs-Scan (autonom, Cron 06:00 UTC):** prüft alle HTML-Seiten + sitemap auf SEO/a11y/Security/JSON-LD/Voice-Schwachstellen, schreibt priorisierten Report nach `reports/IMPROVEMENT-REPORT.md` (nur bei Änderung committet, `[skip ci]`). Reine Heuristik, stdlib, erfindet nichts — Befunde manuell verifizieren. Ergänzt `tools/link_checker.py`.
-- Jedes Geld-Projekt: `generate.py` (stdlib), eigener Auto-Build-Workflow, baut nach `dist/`.
-- Daten `data/tools.json` (177 Tools, 33 neue mit „[Redaktion: prüfen]") speist den ki-tools-radar.
-
-- `monitor/` — **KI-Sichtbarkeits-Monitor** (Abo-Mikro-SaaS, MRR, kein Kundenkontakt): monatlicher Auto-Report, ob eine Firma in KI-Antworten genannt wird, mit Veränderung zum Vormonat + Maßnahmen. `generate_report.py` (stdlib, optional `anthropic`, Modell `claude-haiku-4-5`) baut HTML-Reports nach `monitor/ausgabe/` (git-ignored) aus `monitor/abos.json` (git-ignored, Kundendaten — **nie committen**; Vorlage `abos.example.json`), Verlauf in `verlauf.json`. Ohne Key Prompts+Maßnahmen, mit Key Stellvertreter-Check. Reuse der Logik aus `functions/_visibility-engine.mjs`. **Live-Modus (echtes SaaS, `monitor/live_check.py`):** fragt mit `PERPLEXITY_API_KEY`/`OPENAI_API_KEY`/`GEMINI_API_KEY` echte Engines ab und prüft Nennung (Kosten-Deckel 5 Prompts/Engine); ohne Key Claude-Fallback, ohne jeden Key nur Prompts+Maßnahmen. Vollprodukt-Briefing (Stripe/Speicher/Versand) in `docs/MONITOR-SAAS-BRIEFING.md`. Verkaufsseite `ki-sichtbarkeit-monitor.html` (Stripe-Abo `MONITOR_ABO_URL` leer → Mail-Fallback, 9 €/Monat), Pretty-URL `/monitor`, Upsell aus `ki-erwaehnungs-check.html`. Monats-Cron `.github/workflows/sichtbarkeit-monitor.yml` (Versand bleibt manuell/anzubinden). Ehrlich: kein Live-ChatGPT, keine Garantie.
-- `daten-produkt/` — **verkaufbarer KI-Tools-Datensatz DACH** (CSV+JSON) aus den Netzwerk-Daten (alle Tool-Radars + `data/tools.json`, dedupliziert, 326 Tools). Spalten name/bereiche/eu_hosting/offizielle_url, **keine erfundenen Preise/Scores** (nicht Verifiziertes = leer/„unbekannt“). `generate_datensatz.py` baut `downloads/ki-tools-dach-sample.csv` (Gratis-Probe, committet) + `dist/ki-tools-dach-voll.csv|json` (git-ignored → Lemon Squeezy). Verkaufsseite `ki-tools-datensatz.html` (Buy-Link `DATENSATZ_BUY_URL` leer → Mail-Fallback), Pretty-URL `/datensatz`. Deckt die Geld-Richtungen „digitales Produkt“ + „Daten/API“ ab. **Daten-API** `functions/api/ki-tools.js`: offener Sample-Endpoint (`/api/ki-tools`, 30 Tools, CORS, Lead-Gen) + Voll-Endpoint (`?full`, Header `X-API-Key`) — liest Volldaten aus KV (`DATENSATZ_KV`, Key `datensatz`) nur bei gesetztem `DATENSATZ_API_KEY`; bewusst **nicht** im öffentlichen Repo eingebettet, sonst wäre das bezahlte CSV frei. Aktivierung: `daten-produkt/README.md`.
-
-- `generate_sichtbarkeit_buch.py` → `downloads/ki-sichtbarkeit-buch*.pdf` — **verkaufbares eBook „Von KI gefunden werden“** (KI-Sichtbarkeit für lokale Anbieter, 14 Kapitel, DE+EN). Nutzt die Layout-Helfer aus `generate_ebook.py` (gleiche Marke/Print). Baut **Vollversion** (git-ignored → KDP/Lemon Squeezy) **+ Gratis-Leseprobe** `*-sample.pdf` (committet, 3 Kap.). Verkaufsseite `ki-sichtbarkeit-buch.html` (Buy-Link `BUCH_BUY_URL` leer → Mail-Fallback, 9,99 €), Pretty-URL `/ki-buch`. Inhalt von Hand geschrieben (anti-hype), keine erfundenen Zahlen. Cross-verlinkt mit Monitor + Gratis-Check. ePub noch offen (nur PDF).
-- `generate_vorlagen.py` → `downloads/vorlagen-set*.pdf` — **verkaufbares Vorlagen-Set „Klartext-Vorlagen“** (26 Vorlagen, 6 Bereiche: Kunden/Akquise/Social/Termine/Geld/Checklisten, DE+EN). Nutzt Helfer aus `generate_ebook.py`. Vollversion git-ignored (→ Lemon Squeezy/Gumroad) + Gratis-Auszug `*-sample.pdf` (committet, 1 Bereich). Verkaufsseite `vorlagen-set.html` (Buy-Link `VORLAGEN_BUY_URL` leer → Mail-Fallback, 19 €), Pretty-URL `/vorlagen`. Anti-hype, kein Spam-Ton.
-## Verkauf/Zahlung — Stand 2026-05-31 (Details in PROJEKT.md)
-- **Founding €69** (von €149 gesenkt), Zahlung per **PayPal Payment Link** `ncp/payment/7GPXCMBCETCUY`
-  in `founding.html` + `en/founding.html` (kein SDK, nur Link-Button). Rechnung per Mail-Fallback.
-- **Buch „Anti-Hype"** = 13 Kapitel (de/en/fr/it), KDP-tauglich (Print ≥24 S.). Inhalt nur in
-  `generate_ebook.py` ändern (Single Source); danach `generate_ebook.py` + `generate_kdp_print.py de en fr it` neu bauen.
-- Buch-Verkauf via **Lemon Squeezy** (`js/buch-config.js`). KDP-Anleitung: `docs/KDP-VEROEFFENTLICHEN.md`,
-  Geldkanäle: `docs/NEWSLETTER-GELD.md`.
-- PayPal in `datenschutz.html` + CSP in `_headers` (`*.paypal.com`) hinterlegt.
-- ⚠️ Diese Site nutzt **kein** Google Analytics / kein 3rd-Party-Tracking (DSGVO/Markenversprechen) — nie hinzufügen.
-
-## ABAN Files — automatisierte YouTube-Shorts
-
-Sci-Fi/Reptiloid-Kurzvideo-Serie (faceless), Pipeline unter `video-prototypes/aban-files/`.
-
-- **Render (gratis, aktiv):** `aban_stock.py` — Pexels-Footage (12 Shots/Folge) +
-  ElevenLabs-Stimme + Karaoke-Untertitel (ASS/libass, `Name`-Feld in der Events-Format-
-  Zeile zwingend, sonst Komma-Bug) + Dark-Grade + Drone. Backups: `aban_render.py`
-  (prozedural faceless), `heygen_make.sh` (HeyGen Avatar IV — braucht api-Credits).
-- Skripte: `aban_scripts.json` (ep1–ep3). Abschluss-Satz **„The ABAN Files. Check it out."**
-- **Auto-Publish:** `aban_publish.py` + Workflow `.github/workflows/aban-youtube.yml`
-  (nimmt fertige `clips/<ep>.mp4`, sonst rendert frisch; lädt als Short hoch;
-  Fortschritt in `uploaded.json`; `--privacy public|unlisted|private`).
-- **WICHTIG:** echten Namen NICHT nennen (Owner = „alleng"/@allengchour). Marke = „ABAN Files".
-- **YouTube-Kanal:** Haupt-Kanal `@allengchour`, umbenannt zu **„ABAN Files"**.
-  **OAuth ist eingerichtet** — Secrets `YT_CLIENT_ID/SECRET/REFRESH_TOKEN` existieren und
-  gelten für diesen Kanal → ABAN nutzt sie wieder. CI-Render-Secrets noch: `XI`, `PEXELS`.
-
-## ABAN Files — Roadmap / nächste Schritte (datengetrieben)
-
-**Plan vom Owner:** NICHT blind weiterproduzieren. Erst ~1 Tag laufen lassen,
-dann **YouTube-Views analysieren** und gezielt **bessere** Folgen bauen.
-
-Bei der nächsten Session:
-1. View-Zahlen je Folge prüfen (Kanal des Tokens, Handle `@Aban-news` / „ABAN Files").
-   Hinweis: Upload-Token hat nur `youtube.upload`-Scope → für Statistik ggf.
-   `videos.list(part=statistics)` via API-Key (öffentliche Videos) nutzen.
-2. Bestperformer nach Thema/Stil erkennen → nur diese Richtung ausbauen.
-3. Look-Wünsche fürs Upgrade: **mehr & mysteriösere/passendere Clips**,
-   **3–4 Shots mehr** (also ~16–20), **andere Perspektiven** (Drohne/Totale/
-   Makro/Slow-Mo) → soll wie eine **Film-Doku** wirken (Ancient-Aliens-Doku-Stil:
-   Fragen-Hooks, echte Mysterien wie Göbekli Tepe/Nazca/Puma Punku, Spannungsbogen,
-   Musik-Schwellen). Musik-Score ist bereits in `aban_stock.py` fest verbaut.
-
-**Bisher hochgeladen (öffentlich, Kanal-Token):** ep1=Asf2gb0SAIw, ep2=kUE7lN1sChY,
-ep3=A9OlozIzQ2o, ep7=Qapp3WIt9L8, ep8=HGRFQKkjWNw, ep9=k2NJE-BOtRE, ep10=HG4i0MXc0GI
-(ep4–ep6 + ep11 ebenfalls auf dem Kanal). ep1–ep3 ggf. noch ungelistet → manuell öffentlich.
-Fortschritt: `video-prototypes/aban-files/uploaded.json` (ep1–ep11).
-
-### ABAN Files — Tools (neu)
-- `video-prototypes/aban-files/aban_film.py` — baut aus `clips/ep*.mp4` einen
-  Collection-Film mit Ambient-Score (`python3 aban_film.py [out.mp4] [ep…]`).
-- `aban_stats.py` (+ Workflow `aban-stats.yml`, wöchentlich Mo) — liest YouTube-Views
-  (`video_ids.json` + Kanal-Erkennung) → Report `reports/ABAN-STATS.md`, Top-Performer
-  → datengetriebener Wachstums-Loop.
-- `aban_publish.py` schreibt jede Upload-Video-ID in `video_ids.json`.
-- Untertitel jetzt im **unteren Drittel**; Ambient-Musik fest in der Pipeline.
-- Volle Doku: `video-prototypes/aban-files/README.md`.
-
-### ABAN Files — Retention-Optimierung (aus Analyse erfolgreicher Shorts)
-- **Erste 3 Sek = 50–60 % Drop-off.** `aban_stock.py` zeigt jetzt den `hook` als
-  großen Text in den ersten ~2.8 s (Stil `HOOK` in der ASS). Größter Hebel.
-- **Untertitel ab Wort 1** (haben wir) = +15–25 % Retention.
-- **Länge ~25–35 s** hält am besten → neue Skripte kurz halten (ep11 mit 73 s ist zu lang).
-- **Loop-Struktur**: Ende soll neugierig zum Anfang zurückführen (Re-Watches).
-- Quellen: opus.pro/blog, virvid.ai/blog (Shorts-Hooks/Retention 2025/26).
-- **Bild-zu-Text-Passung** (in `aban_stock.py`): Skript wird in Sätze zerlegt (Wort-
-  Timings), pro Satz wählt eine Stichwort-Map (`KW`) den passenden Stock-Clip (Mond→Mond,
-  Server→Data-Center, Pyramide→Ruinen, Thron/Befehl→Thronsaal …), exakt auf die Satzdauer
-  getimt; ohne Treffer Fallback auf den Episoden-Pool (`SCENES`). „passende vor allem".
+**Docs/Assets:** GRATIS-WACHSTUM.md (Reels/Pinterest/Email), CONVERSION-BOOSTER.md, MARKETS-US-UK-SETUP.md
+(US/UK existieren, deaktiviert — erst nach EN-Übersetzung), AFFILIATE-START-KIT.md (UpPromote 15 %),
+MENU-KOMPAKT-GALAXUS.md, manifest_en.tsv. **Volle Tageshistorie + IDs: `dropship/CJ-IMPORT-LOG.md`.**
+**Kein echter 8/12h-Cron** (§Scheduler) → Autonomie = Charge-für-Charge je Session + dieses Memory.
+**Workflow neue Produkte:** Token-Cache `/tmp/cj_token.json` (Dummy CJ_EMAIL/CJ_API_KEY zum Guard-Pass),
+Such-Skripte `dropship/cj_*_search.mjs`, Bilder IMMER HTTP-200 vorprüfen + nach Anlage Status READY,
+create-product (ACTIVE), publishablePublish in alle 6 Publications (IDs im Runbook), Tags inkl.
+gender/kategorie passend zu Smart-Collection-Regeln. **IMMER erst CJ-IMPORT-LOG lesen vor dem Anlegen
+(Doppel-Import-Falle!).** Archiv-Rest löschen (~4.700, Admin-Bulk) weiter offen. Siehe Runbook §8–§10 + Log.

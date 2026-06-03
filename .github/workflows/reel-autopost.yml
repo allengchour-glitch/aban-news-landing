@@ -1,0 +1,53 @@
+name: Reel Auto-Post (alle 4 Stunden 1 Reel)
+
+# Selbstgemachtes Automatik-Tool (wie cj-autopilot.yml): postet alle 4h das nächste
+# freigegebene Reel (status=ready) aus automation/reels_seed.csv über den Make-Webhook
+# (→ Buffer → TikTok + Instagram) und markiert die Zeile als posted (Commit zurück ins Repo).
+#
+# Voraussetzung: Repository-Secret MAKE_REEL_WEBHOOK = die Webhook-URL des Make-Szenarios
+# (Settings → Secrets and variables → Actions). Ohne Secret = sauberer No-Op (nichts passiert).
+# Reels müssen unter reels/<slug>.mp4 liegen (GitHub Pages, öffentlich) und in reels_seed.csv
+# mit status=ready stehen (Freigabe via Telegram setzt ready).
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'   # alle 4 Stunden
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reel-autopost
+  cancel-in-progress: false
+
+jobs:
+  post:
+    name: Nächstes Reel posten
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Post next ready reel
+        env:
+          MAKE_REEL_WEBHOOK: ${{ secrets.MAKE_REEL_WEBHOOK }}
+        run: node automation/post-next-reel.mjs
+
+      - name: Commit status update (falls etwas gepostet wurde)
+        run: |
+          if ! git diff --quiet -- automation/reels_seed.csv; then
+            git config user.name  "reel-autopost-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add automation/reels_seed.csv
+            git commit -m "reel-autopost: Reel als posted markiert [skip ci]"
+            git push
+          else
+            echo "Keine Änderung an der Queue — nichts zu committen."
+          fi

@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?><Error><Code>SignatureDoesNotMatch</Code><Message>Access denied.</Message><Details>The request signature we calculated does not match the signature you provided. Check your Google secret key and signing method.</Details><StringToSign>GET
+
+
+1780172987
+/shopify-tiers-assets-prod-us-east1/bulk-operation-outputs/mk7nq8ztvfrxmkld97v5ggts2zkr-final</StringToSign></Error>

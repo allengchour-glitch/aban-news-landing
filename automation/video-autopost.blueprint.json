@@ -1,0 +1,103 @@
+{
+    "name": "LuxeStyle Reel auto-post (Webhook → Buffer → TikTok + Instagram)",
+    "flow": [
+        {
+            "id": 1,
+            "module": "gateway:CustomWebHook",
+            "version": 1,
+            "parameters": {
+                "hook": "__MAKE_WEBHOOK__",
+                "maxResults": 1
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": { "x": 0, "y": 0 },
+                "restore": {
+                    "parameters": {
+                        "hook": { "label": "LuxeStyle Reel Webhook" }
+                    }
+                },
+                "notes": "Custom Webhook. Beim Import einen Webhook erstellen → die URL ins GitHub-Secret MAKE_REEL_WEBHOOK eintragen. Die GitHub-Action (.github/workflows/reel-autopost.yml) POSTet alle 4h JSON: {id, video_url, caption, hashtags, platforms, posted_at}."
+            }
+        },
+        {
+            "id": 2,
+            "module": "http:ActionSendData",
+            "version": 3,
+            "parameters": { "handleErrors": true },
+            "mapper": {
+                "url": "https://api.bufferapp.com/1/updates/create.json",
+                "method": "post",
+                "headers": [
+                    { "name": "Authorization", "value": "Bearer __BUFFER_ACCESS_TOKEN__" },
+                    { "name": "Content-Type", "value": "application/x-www-form-urlencoded" }
+                ],
+                "qs": [],
+                "bodyType": "x_www_form_urlencoded",
+                "parseResponse": true,
+                "timeout": 40,
+                "useQuerystring": true,
+                "data": "profile_ids[]=__BUFFER_TIKTOK_PROFILE_ID__&profile_ids[]=__BUFFER_IG_PROFILE_ID__&text={{1.caption}}%0A%0A{{1.hashtags}}&media[video]={{1.video_url}}&media[thumbnail]={{1.video_url}}&now=true"
+            },
+            "metadata": {
+                "designer": { "x": 300, "y": 0 },
+                "notes": "EMPFOHLEN: dieses HTTP-Modul nach dem Import durch das native 'Buffer > Create Post'-Modul ersetzen (One-Click-OAuth, kein Token). Mapping: Text = {{1.caption}} + Zeilenumbruch + {{1.hashtags}}; Video-URL = {{1.video_url}}; Profile = TikTok + Instagram. Über {{1.platforms}} (z.B. 'tiktok,instagram') per Router/Filter einzelne Channels steuern."
+            }
+        },
+        {
+            "id": 3,
+            "module": "http:ActionSendData",
+            "version": 3,
+            "parameters": { "handleErrors": false },
+            "mapper": {
+                "url": "https://api.telegram.org/bot__TELEGRAM_BOT_TOKEN__/sendMessage",
+                "method": "post",
+                "headers": [ { "name": "Content-Type", "value": "application/json" } ],
+                "qs": [],
+                "bodyType": "raw",
+                "parseResponse": false,
+                "timeout": 10,
+                "contentType": "application/json",
+                "data": "{\"chat_id\":\"__TELEGRAM_CHAT_ID__\",\"text\":\"\\u2705 Reel {{1.id}} live ({{1.platforms}}) \\u2014 {{substring(1.caption; 0; 80)}}\\u2026\"}"
+            },
+            "metadata": {
+                "designer": { "x": 600, "y": 0 },
+                "notes": "Telegram-Bestaetigung (chat 164567631). Optional."
+            }
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": true,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": { "orphans": [] },
+        "zone": "eu1.make.com",
+        "notes": [
+            {
+                "moduleIds": [1],
+                "content": "Trigger = Custom Webhook. URL nach Erstellung ins GitHub-Secret MAKE_REEL_WEBHOOK. Die GitHub-Action liefert die 4h-Taktung + Queue (reels_seed.csv).",
+                "color": "#2E8AE6"
+            },
+            {
+                "moduleIds": [2],
+                "content": "Durch natives Buffer-Modul ersetzen (gratis). Postet Video an TikTok + Instagram.",
+                "color": "#FFB200"
+            },
+            {
+                "moduleIds": [3],
+                "content": "Telegram-Bestaetigung. __TELEGRAM_BOT_TOKEN__ + __TELEGRAM_CHAT_ID__ via Variables.",
+                "color": "#E63946"
+            }
+        ]
+    }
+}

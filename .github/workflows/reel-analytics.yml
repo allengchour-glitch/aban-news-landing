@@ -1,0 +1,31 @@
+name: Reel Analytics (Auto-Report alle 2 Tage)
+
+# Schickt alle 2 Tage einen Feedback-Report (gepostete Reels + Shop-Bestellungen/Umsatz) per Telegram.
+# Secrets (optional): SHOPIFY_SHOP, SHOPIFY_ADMIN_TOKEN, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID.
+# Ohne Secrets = nur Log, kein Fehler.
+
+on:
+  schedule:
+    - cron: '0 7 */2 * *'   # alle 2 Tage, 07:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Analytics-Report
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DAYS: '3'
+        run: node automation/reel-analytics.mjs

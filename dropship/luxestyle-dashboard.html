@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LuxeStyle CH — Shop-Dashboard</title>
+<meta name="robots" content="noindex"/>
+<style>
+  :root{ --bg:#faf7f2; --ink:#2c2c2c; --muted:#6e6256; --gold:#b8915a; --line:#e3d8c6; --card:#fffdf9; --green:#3f7d52; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;padding:24px}
+  .wrap{max-width:1000px;margin:0 auto}
+  header{display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid var(--gold);padding-bottom:16px;margin-bottom:8px;flex-wrap:wrap;gap:8px}
+  h1{font-size:26px;font-weight:800;letter-spacing:-.5px}
+  h1 span{color:var(--gold)}
+  .stamp{font-size:13px;color:var(--muted)}
+  .note{font-size:12.5px;color:var(--muted);background:#fff6e6;border-left:3px solid var(--gold);padding:10px 14px;border-radius:6px;margin:14px 0 22px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:26px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+  .kpi .label{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .kpi .value{font-size:32px;font-weight:800;line-height:1.1}
+  .kpi .sub{font-size:13px;color:var(--muted);margin-top:6px}
+  .kpi .value.green{color:var(--green)}
+  .kpi .value.gold{color:var(--gold)}
+  h2{font-size:16px;letter-spacing:.5px;margin:26px 0 12px;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:6px}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line)}
+  th{background:#f3ebdd;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+  tr:last-child td{border-bottom:none}
+  .pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px}
+  .pill.paid{background:#e3f1e7;color:var(--green)}
+  .pill.ok{background:#fff0d6;color:var(--gold)}
+  .todo{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px}
+  .todo li{padding:10px 0;border-bottom:1px solid var(--line);list-style:none;font-size:14.5px}
+  .todo li:last-child{border-bottom:none}
+  .todo b{color:var(--gold)}
+  footer{margin-top:30px;font-size:12px;color:var(--muted);text-align:center}
+  a{color:var(--gold)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Luxe<span>Style</span> CH — Shop-Dashboard</h1>
+    <div class="stamp">Stand: 31.05.2026 · luxestyle.ch</div>
+  </header>
+
+  <div class="note">
+    📌 <strong>Ehrlicher Hinweis:</strong> Dies ist ein <strong>Snapshot</strong> mit echten Shopify-Zahlen vom 31.05.2026 — keine Live-Aktualisierung (statische Seite). Für tagesaktuelle Werte: Shopify Admin → Analytics. Keine geschätzten/erfundenen Zahlen.
+  </div>
+
+  <div class="grid">
+    <div class="kpi"><div class="label">Bezahlte Bestellungen</div><div class="value green">1</div><div class="sub">#1001 · PAID</div></div>
+    <div class="kpi"><div class="label">Umsatz gesamt</div><div class="value green">CHF 21.90</div><div class="sub">1 Bestellung</div></div>
+    <div class="kpi"><div class="label">Aktive Produkte</div><div class="value">461</div><div class="sub">davon 133 CJ-Echtprodukte</div></div>
+    <div class="kpi"><div class="label">Verkaufskanäle</div><div class="value gold">7</div><div class="sub">Shop · TikTok · Meta · Google · Pinterest · POS</div></div>
+    <div class="kpi"><div class="label">Rabattcode</div><div class="value gold">WELCOME10</div><div class="sub">10% · aktiv bis 31.08.2026</div></div>
+    <div class="kpi"><div class="label">Status Storefront</div><div class="value green">LIVE</div><div class="sub">HTTP 200 · Zahlungen ✓</div></div>
+  </div>
+
+  <h2>🛒 Letzte Bestellungen</h2>
+  <table>
+    <tr><th>Bestellung</th><th>Datum</th><th>Produkt</th><th>Betrag</th><th>Status</th></tr>
+    <tr><td>#1001</td><td>28.05.2026</td><td>Jade Roller &amp; Gua Sha Set</td><td>CHF 21.90</td><td><span class="pill paid">PAID</span></td></tr>
+  </table>
+
+  <h2>📦 Sortiment nach Kategorie (aktive Produkte)</h2>
+  <table>
+    <tr><th>Kollektion</th><th>Produkte</th></tr>
+    <tr><td>👗 Damen-Mode</td><td>269</td></tr>
+    <tr><td>💎 Damen-Schmuck</td><td>89</td></tr>
+    <tr><td>👗 Kleider</td><td>18</td></tr>
+    <tr><td>Herrenuhren &amp; Schmuck (Herren)</td><td>16</td></tr>
+    <tr><td>⭐ Top 10 Bestseller (kuratiert)</td><td>10</td></tr>
+  </table>
+
+  <h2>🧹 Backend-Hygiene</h2>
+  <div class="grid">
+    <div class="kpi"><div class="label">Entwürfe</div><div class="value">38</div><div class="sub">u.a. bildlos / in Prüfung</div></div>
+    <div class="kpi"><div class="label">Archiviert</div><div class="value">4 895</div><div class="sub">bildlose Phantom-Produkte → löschen</div></div>
+  </div>
+
+  <h2>🎯 Nächste Schritte (nur User-Klicks)</h2>
+  <ul class="todo">
+    <li>📱 <b>„Drawer accordion"</b> im Theme-Customizer aktivieren → kompaktes Galaxus-Menü</li>
+    <li>🗑️ <b>Archiv-Rest löschen</b> (Admin → Produkte → Status: Archiviert → Alle → Löschen)</li>
+    <li>🎯 <b>TikTok-Kampagne starten</b> (350 CHF, 9:16-Clips + WELCOME10 stehen bereit)</li>
+    <li>🔔 <b>Discord-Sales-App</b> installieren (Verkäufe auto-posten)</li>
+  </ul>
+
+  <footer>
+    LuxeStyle CH · Belp, Schweiz · <a href="https://luxestyle.ch">luxestyle.ch</a><br/>
+    Snapshot erzeugt 31.05.2026 — echte Shopify-Daten, kein Live-Refresh.
+  </footer>
+</div>
+</body>
+</html>
