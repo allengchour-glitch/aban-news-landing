@@ -84,6 +84,11 @@ SCENES = {
              "strange lights over city night", "dark sky mysterious lights", "drone swarm formation night",
              "ancient omen in sky", "silhouette looking at sky", "stars moving time lapse", "eerie sky at dusk",
              "light descending through fog"],
+    "ep20": ["ballot box voting election", "crowd protest street", "royal palace ornate interior",
+             "old oil portrait gallery dark", "gold bars vault", "secret meeting silhouettes dark",
+             "ancient family crest", "stock exchange trading floor", "world leaders handshake",
+             "puppet on strings dark", "luxury mansion aerial", "old castle dusk", "chess king piece dark",
+             "dark boardroom long table"],
 }
 
 # Stichwort -> passender Stock-Suchbegriff: das Bild matcht den gesprochenen Satz.
@@ -100,6 +105,9 @@ KW = [
     (r"histor|memory|forget|record|photograph|\bpast\b|archive|eras|update", "old library archive paper dark"),
     (r"cave|underground|chamber|below|beneath|tunnel|vault|down here", "deep underground tunnel cave glowing"),
     (r"data center|data centre|server|silicon|chip|circuit|machine|intelligence|\bai\b|model|algorithm|feed|grid|current|heat|power", "server room data center blue lights"),
+    (r"election|vote|ballot|democrac", "ballot box voting election"),
+    (r"gold|wealth|rich|fortune|\bbank|stock exchange", "gold bars vault wealth"),
+    (r"family|families|bloodline|lineage|dynasty|breed|whip|reins|throne|crown|royal|palace", "royal palace portrait gallery"),
     (r"city|cities|world|future|progress", "futuristic city night aerial"),
     (r"earth|planet|space|cosmos|galax|silence|universe|quarantine", "earth from space stars"),
     (r"throne|rule|\bking|reign|claim|empire|guided|design|obey|orders?", "dark throne hall ominous"),
@@ -209,6 +217,12 @@ def fetch_clip(query, idx, used, cache):
     return None
 
 
+def media_dur(path):
+    out = subprocess.run([FF, "-i", path], capture_output=True, text=True).stderr
+    m = re.search(r"Duration: (\d+):(\d+):(\d+\.\d+)", out)
+    return int(m.group(1)) * 3600 + int(m.group(2)) * 60 + float(m.group(3)) if m else 0.0
+
+
 def fmt_ts(t):
     h = int(t // 3600); m = int((t % 3600) // 60); s = t % 60
     return f"{h:01d}:{m:02d}:{s:05.2f}"
@@ -242,7 +256,7 @@ Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,A B A N   F I L E S
         for wi, (w, ws, we) in enumerate(g):
             nxt = g[wi + 1][1] if wi + 1 < len(g) else ge
             kcs = max(1, int((nxt - ws) * 100))
-            parts.append(f"{{\\k{kcs}}}{w} ")
+            parts.append(f"{{\\k{kcs}}}{w.replace('Ahbahn', 'ABAN')} ")
         lines.append(f"Dialogue: 0,{fmt_ts(gs)},{fmt_ts(ge)},K,,0,0,0,,{''.join(parts).strip()}")
     open(path, "w").write(head + "\n".join(lines) + "\n")
 
@@ -251,8 +265,11 @@ def render(ep):
     pool = SCENES[ep]
     sc_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "aban_scripts.json")
     sc = json.load(open(sc_path))[ep]
-    words, dur = tts(text=sc["text"])
-    total = dur + 0.7
+    # "ABAN" -> Lautschrift fuer deutsche Aussprache (Untertitel zeigen via Remap wieder ABAN)
+    tts_text = sc["text"].replace("ABAN", "Ahbahn")
+    words, dur = tts(text=tts_text)
+    # Video MUSS das ganze Audio abdecken, sonst schneidet -shortest die letzten Worte ab
+    total = max(dur, media_dur("/tmp/_a.mp3")) + 0.6
     # pro SATZ ein passender Clip, exakt auf die Satzdauer getimt (Bild matcht Text)
     segs = sentence_segments(words)
     bounds = [s[0] for s in segs] + [total]
