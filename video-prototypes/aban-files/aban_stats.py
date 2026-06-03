@@ -57,23 +57,32 @@ def via_api(ids, key, scripts):
 
 
 def via_scrape(ids, scripts):
-    rows = []
+    rows, ok = [], 0
     for vid in ids:
+        # hl=en + bpctr + CONSENT-Cookie -> umgeht die EU-Consent-Zwischenseite
+        url = f"https://www.youtube.com/watch?v={vid}&hl=en&bpctr=9999999999&has_verified=1"
         try:
-            req = urllib.request.Request(f"https://www.youtube.com/watch?v={vid}",
-                                         headers={"User-Agent": UA, "Accept-Language": "en-US,en"})
+            req = urllib.request.Request(url, headers={
+                "User-Agent": UA, "Accept-Language": "en-US,en",
+                "Cookie": "CONSENT=YES+1; SOCS=CAI"})
             html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "ignore")
         except Exception:
             continue
-        if "/sorry/" in html or len(html) < 5000:
+        if "/sorry/" in html:
             raise RuntimeError("Google blockt diese IP (CAPTCHA) — Scrape hier nicht moeglich")
         m = re.search(r'"viewCount":"(\d+)"', html)
-        tm = re.search(r'<meta name="title" content="([^"]*)"', html) or re.search(r"<title>([^<]*)</title>", html)
+        tm = (re.search(r'<meta property="og:title" content="([^"]*)"', html)
+              or re.search(r'<meta name="title" content="([^"]*)"', html)
+              or re.search(r'"title":"([^"]{3,80})"', html)
+              or re.search(r"<title>([^<]*)</title>", html))
         title = tm.group(1).replace(" - YouTube", "") if tm else vid
+        if m or (tm and title != vid):
+            ok += 1
         rows.append({"title": title, "ep": title_to_ep(title, scripts),
                      "views": int(m.group(1)) if m else 0, "likes": -1, "comments": -1})
-    if not rows:
-        raise RuntimeError("keine Daten erhalten (vermutlich IP-Block/CAPTCHA)")
+    if ok == 0:
+        raise RuntimeError("Seiten geladen, aber keine View-/Titel-Daten gefunden "
+                           "(Consent-/Bot-Seite?) — Scrape hier nicht verwertbar")
     return rows
 
 
