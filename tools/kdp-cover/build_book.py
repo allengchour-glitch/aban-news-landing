@@ -304,7 +304,7 @@ def build_book(book, outroot="out"):
 BOOKS = {
     "adhd": {
         "slug": "adhd-daily-planner",
-        "uploaded": False,          # auf True setzen, sobald bei KDP hochgeladen
+        "uploaded": True,           # eingereicht 2026-06-03, KDP-Prüfung; ASIN folgt
         "title": "ADHD Daily Planner for Adults",
         "subtitle": "A 90-Day Planner Built for an ADHD Brain — Time-Blocks, Body Doubling, Dopamine Tracking, and the Three Most Important Tasks of the Day",
         "author": "Marcus Reilly", "trim": (6, 9), "paper": "white",

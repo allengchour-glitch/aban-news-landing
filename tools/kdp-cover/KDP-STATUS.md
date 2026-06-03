@@ -3,26 +3,31 @@
 > Register aller KDP-Titel + Upload-Status. **Quelle der Wahrheit fürs Tracking.**
 > Getrennt von `build_book.py` (das nur die *baubaren* Low-Content-Bücher kennt:
 > ADHD, Mileage). Bücher aus anderen Pipelines (Romane, externe Workbooks) werden
-> hier nur **verzeichnet**, nicht gebaut. Stand: 2026-06-02.
+> hier nur **verzeichnet**, nicht gebaut. Stand: 2026-06-03.
 
 | Buch | Format | Status | Preis | ASIN | Pipeline |
 |------|--------|--------|-------|------|----------|
-| **Schicht: Eine Ruhrgebiet-Saga in drei Bänden** („The Seam") | Kindle eBook | ✅ **Live** (Amazon-Mail bestätigt, 3. Juni 2026) · **KDP Select** angemeldet | €8.99 | B0GX2YK983 | ki-schriftsteller |
-| Schicht: Eine Ruhrgebiet-Saga in drei Bänden | Taschenbuch | 🟡 **Wird veröffentlicht** (Amazon-Prüfung, ~72 h → live; geändert 31. Mai 2026) | $8.99 | B0H3R73GWZ | ki-schriftsteller |
-| **Vision Board Workbook for Women** | (?) | ✅ Live *(unbestätigt — vom Betreiber angenommen, ASIN nachtragen)* | — | — | extern |
-| **ADHD Daily Planner for Adults** (Pen: Marcus Reilly) | Taschenbuch | ⏳ **gebaut, noch nicht hochgeladen** | $8.99 | — | `build_book.py` (`adhd`) |
-| **Mileage Log Book for Small Business** (Pen: Marcus Reilly) | Taschenbuch | ⏳ **gebaut, noch nicht hochgeladen** | $8.99 | — | `build_book.py` (`mileage`) |
+| **Schicht: Eine Ruhrgebiet-Saga in drei Bänden** (DE) | Kindle eBook | ✅ **Live** (Amazon-Mail bestätigt, 3. Juni 2026) · **KDP Select** angemeldet | €8.99 | B0GX2YK983 | ki-schriftsteller |
+| Schicht: Eine Ruhrgebiet-Saga in drei Bänden (DE) | Taschenbuch | ✅ **Live** (Dashboard bestätigt, 3. Juni 2026) | $8.99 | B0H3R73GWZ | ki-schriftsteller |
+| **The Seam: A Ruhr Valley Saga in Three Volumes** (EN) | Kindle eBook | ✅ **Live** (Dashboard bestätigt) | $9.99 | B0H3KNC6TM | ki-schriftsteller |
+| The Seam: A Ruhr Valley Saga in Three Volumes (EN) | Taschenbuch | ✅ **Live** (Dashboard bestätigt) | $9.99 | B0H3NH1JTB | ki-schriftsteller |
+| **Vision Board Workbook for Women** (Pen: Sage Whitfield) | Taschenbuch | ✅ **Live** (Dashboard bestätigt) | $11.99 | B0H3JZZPM5 | extern |
+| **ADHD Daily Planner for Adults** (Pen: Marcus Reilly) | Taschenbuch | 🟡 **Eingereicht, in Prüfung** (3. Juni 2026, ~72 h → live; bei Low-Content bis 10 Werktage) | $8.99 | folgt | `build_book.py` (`adhd`) |
+| **Mileage Log Book for Small Business** (Pen: Marcus Reilly) | Taschenbuch | ⏳ **KDP-Entwurf**; ⚠️ Innenteil-PDF noch nicht gebaut (nur Cover in `out/`) | $8.99 | — | `build_book.py` (`mileage`) |
 
 ## Legende
-- ✅ Live · ✅ *(unbestätigt)* = vermutlich live, im Dashboard noch verifizieren
-- 🟡 in Amazon-Prüfung („Wird veröffentlicht", nichts mehr zu tun)
-- ⏳ Dateien fertig (Cover/Innenteil/metadata/Runbook), Upload steht noch aus
+- ✅ Live (im Dashboard/Mail bestätigt)
+- 🟡 in Amazon-Prüfung („Wird veröffentlicht"/„eingereicht", nichts mehr zu tun)
+- ⏳ Dateien/Entwurf in Arbeit, Upload bzw. Build steht noch aus
 - ❔ Status unklar / nachsehen
 
 ## Notizen
-- **Schicht eBook**: bei **KDP Select** (90 Tage Exklusiv) → Kindle Unlimited
+- **Schicht eBook (DE)**: bei **KDP Select** (90 Tage Exklusiv) → Kindle Unlimited
   (Seiten-Tantieme aus dem Fonds) + Werbetools (Kindle Countdown Deals,
   Gratis-Aktionen). Beim Vermarkten nutzbar.
+- **Planer/Logbücher (ADHD, Mileage): bewusst KEIN Kindle-eBook.** Die zum
+  Reinschreiben gedachten Seiten funktionieren auf dem Reader nicht → schlechte
+  Rezensionen. Diese Titel bleiben Taschenbuch-only (eBook-Upsell „Schließen").
 
 ## Pflege
 - **„BUCHDRUCK"** baut nur die `build_book.py`-Bücher mit `uploaded: False`
