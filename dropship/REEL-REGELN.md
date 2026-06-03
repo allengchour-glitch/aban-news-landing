@@ -8,7 +8,10 @@
 1. **Nur echte, authentisch fotografierte Model-/Lifestyle-Shots.** KEINE weissen Katalog-Freisteller,
    KEINE Varianten-/Farb-Grids, KEINE Spiegel-Selfies mit Handy vorm Gesicht, KEINE KI-gerenderten/„stock"-Bilder.
 2. **Nur echte, im Shop gelistete Kleider/Produkte.** Im Zweifel Produkt vorher verifizieren.
-3. **Premium-Look:** Mode + Schmuck + Accessoires. **KEINE Gadgets.**
+3. **Ganze Produktpalette, premium präsentiert** — NICHT nur Damenmode. Reels für **alles Mögliche**:
+   Mode (Damen+Herren), Schmuck, Accessoires, Schuhe, Taschen, Sonnenbrillen, Wohnen/Deko, **Tech-Gadgets**,
+   Beauty, Wellness usw. Immer sauber/edel präsentiert (keine Billig-Stock-Optik). *(Update 03.06.: User
+   „mach nicht nur Mode für Frauen, mach alles Mögliche" — hebt die frühere „keine Gadgets"-Regel auf.)*
 4. **Preisfrei im Reel** — kein Preis einblenden (Preis erst im Shop). Outro darf „-10% WELCOME10 · luxestyle.ch".
 5. **Musik:** elegant.wav (ruhig/edel). Marken-Intro + -Outro.
 6. **Format:** 9:16 vertikal, 1080×1920.
@@ -19,6 +22,10 @@
 9. **Freigabe-Workflow:** Reel EINZELN per Telegram zur Freigabe (ja/nein/Kommentar), erst nach „ja" posten.
 
 ## Verbesserungs-Log (chronologisch — neue Punkte kommen oben dazu)
+- 2026-06-03: „Verbesserung: mach nicht nur Mode für Frauen, mach alles Mögliche" → Regel 3 erweitert:
+  ganze Produktpalette inkl. Tech-Gadgets/Wohnen/Beauty/Herren; frühere „keine Gadgets"-Regel aufgehoben.
+- 2026-06-03: «Sommer» (Hook „Sommer-Looks, die auffallen") + «Premium #52» (Hook „Sommer-Mode 2026")
+  = FREIGEGEBEN (User: „die 3 sind ok"). Alle 3 Reels publish-ready unter reels/.
 - 2026-06-03: «Eleganz» v2 mit Hook „Welcher Look ist deiner?" = FREIGEGEBEN (User: „passt alles"). → Hook-Polish (Regel 8) ist ab jetzt Standard für alle Reels.
 - 2026-06-03: Regel-Datei angelegt, mit allen bisher gelernten Präferenzen (oben) als Seed.
 <!-- NEUE VERBESSERUNGEN HIER EINTRAGEN, Format: -->
