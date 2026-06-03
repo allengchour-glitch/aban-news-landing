@@ -23,7 +23,6 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `nameplate.scad` | Namensschild (Tür / Schreibtisch) |
 | `caketopper.scad` | Cake-Topper mit Wunschtext |
 | `nametag_base.scad` | Grundplatte (ohne Text) für mehrfarbige Anhänger (X1C + AMS) |
-| `animal.scad` | ⚠️ veraltet (flache Silhouetten — Kunde will echte 3D-Minifiguren) |
 | `cart_token.scad` | **Einkaufswagen-Chip** (Münz-Token + Lasche + Öse + Initialen). `coin=chf1\|chf2\|chf5\|eur1\|eur2\|eur050\|custom`, `txt="AC"`, `part=base\|text` (2-farbig) |
 | `lithophane.py` | **Foto → 3D-Lithophane** (Relief-Anhänger/Nachtlicht). Pure Python+Pillow, wasserdicht, optional Öse. `python3 lithophane.py foto.jpg out.stl --width 60 --ring`. Kundenfoto = kein Lizenzrisiko |
 
@@ -46,8 +45,6 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 python3 make.py keychain  "Mia"
 python3 make.py nameplate "Familie Müller"
 python3 make.py caketopper "Happy Birthday"
-
-openscad -o tier_cat.stl -D 'kind="cat"' animal.scad
 
 # Einkaufswagen-Chip + Lithophane (neu)
 openscad -o token.stl -D 'coin="chf2"' -D 'txt="AC"' cart_token.scad
@@ -267,8 +264,8 @@ Druck-/Aufräum-Tipps (decken sich mit unserer Pipeline):
   Einzelfirma, nicht im HR, nicht mehrwertsteuerpflichtig.
 - **Recht:** 6 Shop-Texte geschrieben → in Shopify → Einstellungen → Richtlinien einfügen.
 - **Drucker:** Bambu Lab X1C + 2 AMS. In-House = Hauptweg, Craftcloud = Backup.
-- **Shopify (DRAFT, nichts live):** Tier-Schlüsselanhänger (8 Tiere × 6 Farben),
-  Namens-Anhänger, Namensschild, Cake-Topper.
+- **Shopify (DRAFT, nichts live):** 3D-Minifiguren (Meshy → Claude veredelt) als
+  Schlüsselanhänger, Namens-Anhänger, Namensschild, Cake-Topper.
 - **Social:** `posts.json` für `../social/post.py` (eigene LuxeStyle-Kanäle nutzen).
 - **Bestehender Shop:** CJdropshipping-Artikel (Mode + Gadgets) — Sortiment unfokussiert.
 
@@ -277,8 +274,8 @@ Druck-/Aufräum-Tipps (decken sich mit unserer Pipeline):
   wie **Wurm/Schlange** — unerwünscht. (Ersetzt die frühere Flexi-Reihen-Regel.)
 - **KEINE flachen „Teller" / Silhouetten-Anhänger** (Kunde, Juni 2026). Das Produkt
   sind **echte, volumetrische 3D-Minifiguren** (rundherum modelliert, wie Mimi) — KEIN
-  flach extrudierter 2D-Umriss. Deshalb ist `animal.scad` (flache Silhouetten) **nicht
-  mehr die Produktlinie**, nur noch Notnagel. Figuren = Meshy-Modell → Claude veredelt.
+  flach extrudierter 2D-Umriss. Der flache Silhouetten-Generator (`animal.scad`) wurde
+  **gelöscht** (per Git-Historie rückholbar). Figuren = Meshy-Modell → Claude veredelt.
 - **Arbeitsteilung (Kunde, Juni 2026):** **Meshy erstellt** die 3D-Modelle, **Claude
   bearbeitet** sie (Cleanup/manifold in Blender, `polish.py`, Farbe, Ring-Loch). D.h.
   neue Figuren primär aus Meshy-Output veredeln — nicht von Hand in OpenSCAD scripten.
