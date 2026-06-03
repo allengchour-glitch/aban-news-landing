@@ -1,0 +1,17 @@
+Chapter 5 - The First Snow
+
+Winter came early that year. In the first week of November snow fell far down the slopes, wet, heavy snow that made the scaffolding at the dam dangerous and halted work for a few days. The men loitered about, irritable, because no shift meant no wages, and the money the valley had already spent in its head, before it arrived, now came slower than expected.
+
+In the Höfli things grew tight. The mother counted the wood. Kaspar counted in his head. And between everyone lay something Marlene could not name but which had grown denser since Kaspar had stood in the barn door. He looked at Anton differently now. Not with hostility — Kaspar was too contained for hostility — but watchfully, the way you watch a sky that has not yet decided.
+
+On one of those grey afternoons Imhof came. The brother-in-law, the husband of Kaspar's sister, a large, affable man with a handshake like a vice. He and Kaspar sat in the parlour, and Marlene was in the kitchen and could hear their voices, partial, muffled. She heard the word "authority," she heard "the young man," she heard Imhof say: "If this gets down to them, then not only him, then —" and then she came in with the jug to refill the glasses, and the conversation broke off mid-sentence, and both men looked at her with the polite, blank faces of people who have been talking about something that is not continued when a woman comes in.
+
+"Cider?" she said.
+
+"Thank you," said Imhof and smiled, and the smile stayed in the lower part of his face and did not come higher.
+
+That evening Anton announced it at supper, casually, with a full mouth, as though it were the most ordinary thing in the world. "Saturday I'm going to Interlaken. Got something to sort out." He did not look at Marlene as he said it, and precisely because he did not look at her she knew what he wanted to sort out. The week was not up. He had not waited. Kaspar put his spoon down slowly and said: "What do you have in Interlaken?" And Anton, lightly, cheerfully, without thinking: "Business." The mother looked from one to the other, and in her dry face something moved that Marlene recognised as fear, an old, practised fear that knew how to hide itself.
+
+That night Marlene got up when everyone was asleep, lit a splint at the stove, and sat at the table and wrote. She wrote to Anton. She wrote that he should wait, just a few more days, that he did not know who he would be dealing with when he followed the trail to the end, that these figures referred to people closer to them than the site manager with his clean coat. She wrote it as plainly as she dared not say it, and at the end she wrote that she loved him and that love sometimes meant carrying a truth for a while instead of letting it drop, because when it fell it would break too many things.
+
+She read the letter twice. Then she folded it and put it in an envelope and wrote his name on it. But she did not put it in the post box down by the bridge, as she had intended. It was too late for the post, and besides, she thought, a letter was the wrong thing; she would give it to him herself in the morning, press it into his hand and look him in the eyes, and then he would wait, because he could not refuse her face to face. She put the envelope under her pillow and snuffed the splint and went back to bed, and outside it was silent, completely silent, because the snow swallowed everything, even the thudding of the building site, which for this one night did not sound.

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anti-Hype — Das kostenlose KI-eBook für DACH-Solopreneure | aban news</title>
+  <meta name="description" content="Anti-Hype: Wie deutsche Solopreneure KI ohne Bullshit einsetzen. Kostenloses eBook (PDF) — 3-Fragen-Filter, minimaler KI-Stack, 5 Abläufe. Ohne Email-Gate.">
+  <meta name="theme-color" content="#d97706">
+  <link rel="canonical" href="https://abannews.com/ebook.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/ebook.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/ebook.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ebook.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/ebook.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/ebook.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="Anti-Hype — Das kostenlose KI-eBook (2026)">
+  <meta property="og:description" content="Wie deutsche Solopreneure KI ohne Bullshit einsetzen. Kostenlos, ohne Email-Gate.">
+  <meta property="og:url" content="https://abannews.com/ebook.html">
+  <meta property="og:image" content="https://abannews.com/og-ebook.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="book">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/og-ebook.png">
+  <meta name="twitter:title" content="Anti-Hype — Das kostenlose KI-eBook (2026)">
+  <meta name="twitter:description" content="Wie deutsche Solopreneure KI ohne Bullshit einsetzen. Kostenlos, ohne Email-Gate.">
+  <meta name="author" content="Aban (Allen Chour)">
+  <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
+    *{box-sizing:border-box;margin:0}
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--ok:#0f9d6b;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    a{color:inherit}
+
+    /* Reading-progress bar (memory feature) */
+    #progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--amber),var(--amber-dk));z-index:60;transition:width .15s ease}
+
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;margin-left:1.2rem}
+    .lang a{padding:.3rem .55rem;color:var(--muted);text-decoration:none;margin:0}
+    .lang a.on{background:var(--ink);color:#fff}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .btn--ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--line)}
+
+    .hero{padding:3rem 0 1.5rem;text-align:center}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber-dk);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    h1{font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.4rem}
+    .sub{font-size:1.15rem;color:var(--amber-dk);font-weight:600;margin-bottom:.9rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:55ch;margin:0 auto 1.5rem}
+
+    /* Cover + download card */
+    .dl{background:var(--card);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow);display:flex;gap:1.25rem;align-items:center;text-align:left;margin:1.5rem 0}
+    .cover{flex-shrink:0;width:120px;height:160px;border-radius:10px;background:linear-gradient(160deg,var(--amber),var(--amber-dk));color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.3rem;box-shadow:var(--shadow);padding:.5rem;text-align:center}
+    .cover .c-emoji{font-size:1.6rem}
+    .cover .c-t{font-weight:800;font-size:1.05rem;line-height:1.1}
+    .cover .c-s{font-size:.62rem;opacity:.9;line-height:1.2}
+    .dl-meta h2{font-size:1.15rem;margin-bottom:.3rem}
+    .dl-meta p{font-size:.9rem;color:var(--muted);margin-bottom:.8rem}
+    .dl-actions{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+    .dl-state{font-size:.78rem;color:var(--ok);font-weight:600}
+
+    /* Resume banner (memory feature) */
+    #resume{display:none;background:var(--amber-lt);border:1px solid #f6d9ad;border-radius:12px;padding:.7rem 1rem;margin:1rem 0;font-size:.9rem;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap}
+    #resume.show{display:flex}
+    #resume .btn{padding:.45rem .8rem;font-size:.85rem}
+    #resume .dismiss{background:none;border:0;color:var(--muted);cursor:pointer;font-size:.85rem;text-decoration:underline}
+
+    /* TOC with read-state ticks (memory feature) */
+    .toc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.25rem;margin:1.5rem 0}
+    .toc h2{font-size:1rem;margin-bottom:.6rem}
+    .toc ol{margin:0;padding-left:0;list-style:none;counter-reset:c}
+    .toc li{counter-increment:c;padding:.35rem 0;font-size:.95rem;display:flex;align-items:center;gap:.6rem;border-bottom:1px solid var(--line)}
+    .toc li:last-child{border-bottom:0}
+    .toc li::before{content:counter(c,decimal-leading-zero);color:var(--amber);font-weight:700;font-size:.85rem;min-width:1.6rem}
+    .toc a{text-decoration:none;flex:1}
+    .toc a:hover{color:var(--amber-dk)}
+    .toc .tick{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff}
+    .toc li.read .tick{background:var(--ok);border-color:var(--ok)}
+    .toc li.read .tick::after{content:"✓"}
+
+    article{padding:1rem 0 2rem}
+    article h2{font-size:1.5rem;margin:2.2rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:70px}
+    article h3{font-size:1.1rem;margin:1.3rem 0 .3rem}
+    article p{margin-bottom:.9rem}
+    article ul{margin:0 0 1rem 1.2rem}
+    article li{margin-bottom:.4rem}
+    .callout{background:var(--amber-lt);border-left:4px solid var(--amber);border-radius:8px;padding:.9rem 1.1rem;font-weight:600;margin:1rem 0}
+    .ch-lead{font-style:italic;color:var(--muted);font-size:1.05rem;margin-bottom:1rem}
+
+    /* Inline subscribe (Funnel-Capture) */
+    .subscribe{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.25rem 1.5rem;box-shadow:var(--shadow);margin:1.5rem 0}
+    .subscribe h2{font-size:1.15rem;margin-bottom:.25rem}
+    .subscribe p{font-size:.9rem;color:var(--muted);margin-bottom:.9rem}
+    .subscribe .row{display:flex;gap:.5rem}
+    .subscribe input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:.8rem .9rem;font-size:1rem;background:#fff}
+    .subscribe input:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:var(--amber)}
+    .subscribe .micro{font-size:.74rem;color:var(--muted);margin:.55rem 0 0}
+    @media(max-width:560px){.subscribe .row{flex-direction:column}.subscribe .row .btn{width:100%;justify-content:center}}
+    /* Founding upsell */
+    .upsell{background:linear-gradient(160deg,#fff7ed,#fff);border:1px solid #fed7aa;border-radius:var(--r);padding:1.5rem;margin:1.5rem 0;display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap}
+    .upsell .u-body{flex:1;min-width:220px}
+    .upsell h2{font-size:1.15rem;margin-bottom:.3rem;color:var(--amber-dk)}
+    .upsell p{font-size:.92rem;color:#7c2d12;margin-bottom:0}
+    /* Pay-what-you-want (Buch verkaufen) */
+    .support{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r);padding:1.3rem 1.5rem;margin:1.5rem 0}
+    .support h2{font-size:1.15rem;margin-bottom:.35rem}
+    .support p{font-size:.92rem;color:var(--muted);margin-bottom:.9rem}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2.5rem 0}
+    .cta-box h2{font-size:1.3rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .privacy{font-size:.78rem;color:var(--muted);padding:1.2rem 0;border-top:1px solid var(--line);margin-top:2rem}
+    .privacy a{color:var(--muted)}
+    .reset{background:none;border:0;color:var(--muted);cursor:pointer;text-decoration:underline;font-size:.78rem}
+
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+
+    @media(max-width:560px){.dl{flex-direction:column;text-align:center}.dl-actions{justify-content:center}}
+    @media (prefers-reduced-motion:reduce){#progress{transition:none}}
+    /* Sticky mobile CTA */
+    .sticky-cta{display:none}
+    @media(max-width:600px){
+      .sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:80;background:#fff;border-top:1px solid var(--line);padding:.6rem .9rem;gap:.6rem;align-items:center;justify-content:space-between;box-shadow:0 -4px 16px rgba(31,41,55,.12)}
+      .sticky-cta span{font-size:.84rem;font-weight:700}
+      .sticky-cta .btn{padding:.55rem .9rem;font-size:.85rem}
+      body{padding-bottom:64px}
+    }
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Book","name":"Anti-Hype — Wie deutsche Solopreneure KI ohne Bullshit einsetzen","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"inLanguage":"de","bookFormat":"https://schema.org/EBook","datePublished":"2026","url":"https://abannews.com/ebook.html","isAccessibleForFree":true,"description":"Kostenloses eBook: KI pragmatisch und ohne Hype für DACH-Solopreneure einsetzen."}
+  </script>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<style>.skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}</style>
+
+<div id="progress" role="progressbar" aria-label="Lesefortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/preview.html">Beispiel</a>
+      <a href="/ebook.html"><strong>eBook</strong></a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn">Abonnieren</a>
+      <span class="lang"><a href="/ebook.html" class="on" hreflang="de" aria-current="true">DE</a><a href="/en/ebook.html" hreflang="en">EN</a><a href="/fr/ebook.html" hreflang="fr">FR</a><a href="/it/ebook.html" hreflang="it">IT</a></span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Kostenloses eBook · ohne Email-Gate</span>
+      <h1>Anti-Hype</h1>
+      <p class="sub">Wie deutsche Solopreneure KI ohne Bullshit einsetzen</p>
+      <p class="lead">Die Essenz aus 200+ Newsletter-Ausgaben: ein Denkmodell, das Substanz von Show trennt, plus konkrete Abläufe, die wirklich Zeit sparen. Kein Affiliate-Müll, keine erfundenen Erfolgsgeschichten.</p>
+    </div>
+
+    <!-- Resume banner: zeigt sich nur, wenn localStorage Fortschritt kennt -->
+    <div id="resume" role="status">
+      <span id="resume-text">Willkommen zurück.</span>
+      <span style="display:flex;gap:.6rem;align-items:center">
+        <a href="#" class="btn" id="resume-btn">Weiterlesen →</a>
+        <button class="dismiss" id="resume-dismiss" type="button">ausblenden</button>
+      </span>
+    </div>
+
+    <div class="dl">
+      <div class="cover" aria-hidden="true">
+        <span class="c-emoji">☕</span>
+        <span class="c-t">Anti-Hype</span>
+        <span class="c-s">KI ohne Bullshit<br>für DACH-Solopreneure</span>
+      </div>
+      <div class="dl-meta">
+        <h2>Das ganze eBook als PDF</h2>
+        <p>13 Kapitel inkl. Kopier-Vorlagen, durchgerechnetem Arbeitstag, Werkzeug-Übersicht und Glossar — sauber gesetzt, offline lesbar. Kein Tracking, keine Anmeldung nötig. Lieber ePub oder als <a href="/buch.html">Buch (pay what you want)</a>?</p>
+        <div class="dl-actions">
+          <a href="/downloads/anti-hype-ebook.pdf" class="btn" id="dl-btn" download>PDF herunterladen ↓</a>
+          <a href="/downloads/anti-hype-ebook.epub" class="btn btn--ghost" download>ePub ↓</a>
+          <span class="dl-state" id="dl-state" hidden>✓ Schon geladen</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="subscribe" aria-label="Newsletter abonnieren">
+      <h2>Das eBook ist gratis — der Newsletter auch.</h2>
+      <p>Wenn dir dieses Denkmodell hilft: Jeden Werktag um 7:30 die drei KI-Entwicklungen, die dein Business heute betreffen. 5 Minuten, kein Hype, kein Spam.</p>
+      <form class="row" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
+        <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">
+        <button type="submit" class="btn">Gratis abonnieren →</button>
+      </form>
+      <p class="micro">Mo–Fr · 1-Klick-Abmeldung · DSGVO-konform · kein Tracking-Pixel.</p>
+    </section>
+
+    <nav class="toc" aria-label="Inhaltsverzeichnis">
+      <h2>Inhalt</h2>
+      <ol id="toc-list">
+        <li data-ch="ch1"><span class="tick"></span><a href="#ch1">Warum dieses eBook existiert</a></li>
+        <li data-ch="ch2"><span class="tick"></span><a href="#ch2">Der 3-Fragen-Bullshit-Filter</a></li>
+        <li data-ch="ch3"><span class="tick"></span><a href="#ch3">Dein minimaler KI-Stack</a></li>
+        <li data-ch="ch4"><span class="tick"></span><a href="#ch4">Fünf Abläufe, die echt Zeit sparen</a></li>
+        <li data-ch="ch5"><span class="tick"></span><a href="#ch5">Sieben Hype-Fallen</a></li>
+        <li data-ch="ch6"><span class="tick"></span><a href="#ch6">Wie es weitergeht</a></li>
+      </ol>
+    </nav>
+
+    <article>
+      <h2 id="ch1">Warum dieses eBook existiert</h2>
+      <p class="ch-lead">Die meisten KI-Ratgeber verkaufen dir ein Gefühl. Dieser hier nicht.</p>
+      <p>Seit 2024 schreibe ich jeden Werktag einen Newsletter über KI für Leute, die damit Geld verdienen — nicht darüber reden. In der Zeit habe ich hunderte Tools getestet, dutzende wieder gelöscht und gemerkt: Das meiste, was als „Must-have 2026“ verkauft wird, löst ein Problem, das du gar nicht hast.</p>
+      <p>Dieses eBook ist die Essenz für eine Person: den deutschsprachigen Solopreneur, der einen Tag mit 24 Stunden hat und keinen davon an Tool-Demos verschwenden will.</p>
+      <h3>Was du hier NICHT findest</h3>
+      <ul>
+        <li>Prompts, die angeblich „dein Business automatisieren“, in Wahrheit aber nur einen netten Absatz produzieren.</li>
+        <li>Tool-Listen mit 50 Einträgen, von denen du 47 nie öffnest.</li>
+        <li>Das Versprechen, dass KI dich reich macht, während du schläfst.</li>
+      </ul>
+      <p class="callout">Was du findest: ein Denkmodell, das zwischen Substanz und Show unterscheidet — und ein paar konkrete Abläufe, die Stunden sparen.</p>
+
+      <h2 id="ch2">Der 3-Fragen-Bullshit-Filter</h2>
+      <p>Bevor du ein KI-Tool, einen Kurs oder einen Trend ernst nimmst, jag ihn durch drei Fragen. Übersteht er alle drei, lohnt sich ein zweiter Blick.</p>
+      <h3>1. Was genau wird hier ersetzt?</h3>
+      <p>Nicht „was kann es“, sondern: welche konkrete Aufgabe, die du heute manuell machst, fällt weg? Bleibt die Antwort vage („es macht dich produktiver“), ist es Show. Ist sie konkret („es schreibt den ersten Entwurf deiner Angebots-Mails“), ist es Substanz.</p>
+      <h3>2. Was kostet es mich, wenn es falsch liegt?</h3>
+      <p>KI halluziniert. Immer. Die Frage ist nur, wie teuer ein Fehler ist. Einen Post-Entwurf gegenlesen kostet 30 Sekunden — delegier es. Eine Steuerzahl ungeprüft übernehmen kostet echtes Geld — verifizier jede Zeile.</p>
+      <h3>3. Funktioniert es ohne mich — oder mit mir?</h3>
+      <p>„Vollautomatisch“ ist fast immer eine Lüge. Die Tools, die wirklich tragen, sind Beschleuniger: Du bleibst der Kopf, KI macht die stumpfe Arbeit dazwischen.</p>
+      <p class="callout">KI ist ein Praktikant mit perfektem Gedächtnis und null Urteilsvermögen. Behandle sie so — und du wirst selten enttäuscht.</p>
+
+      <h2 id="ch3">Dein minimaler KI-Stack</h2>
+      <p class="ch-lead">Du brauchst keine 20 Abos. Du brauchst vier Bausteine.</p>
+      <h3>1. Ein gutes Sprachmodell (Pflicht)</h3>
+      <p>Claude oder ChatGPT, Bezahlversion. Dein Arbeitspferd für Texten, Sortieren, Zusammenfassen. ~20 €/Monat. Eines reicht — lern es richtig kennen, statt ständig zu wechseln.</p>
+      <h3>2. Ein Automations-Hub (optional)</h3>
+      <p>Make.com oder n8n. Hier klebst du Dienste zusammen. Erst einbauen, wenn du eine Aufgabe wirklich dreimal die Woche manuell machst.</p>
+      <h3>3. Ein Ort für dein Wissen</h3>
+      <p>Notion, Obsidian, egal — Hauptsache durchsuchbar. KI ist nur so gut wie der Kontext, den du ihr gibst.</p>
+      <h3>4. DSGVO-Klarheit (nicht verhandelbar)</h3>
+      <p>Bevor du Kundendaten in ein Tool kippst: Wo stehen die Server? Gibt es einen AV-Vertrag? Ein DSGVO-Verstoß ist teurer als jeder Produktivitätsgewinn.</p>
+      <p class="callout">Faustregel: Erst der Ablauf, dann das Tool. Wer mit dem Tool anfängt, sucht sich ein Problem dazu.</p>
+
+      <h2 id="ch4">Fünf Abläufe, die echt Zeit sparen</h2>
+      <p>Kein Hexenwerk — nur Routine-Arbeit, die du delegierst.</p>
+      <ul>
+        <li><strong>Posteingang vorsortieren:</strong> KI wirft Mails in drei Körbe — jetzt, später, ignorieren. Du entscheidest weiter selbst.</li>
+        <li><strong>Aus einem Long-Form drei Formate machen:</strong> Ein Input, mehrere Outputs. Du redigierst, statt bei Null anzufangen.</li>
+        <li><strong>Angebote schneller schreiben:</strong> Vorlage plus Eckdaten, KI baut den Entwurf. Aus 45 Minuten werden 10.</li>
+        <li><strong>Recherche bündeln:</strong> Ein klarer Auftrag mit Quellenpflicht — dann selbst die Quellen prüfen.</li>
+        <li><strong>Die eigene Woche spiegeln:</strong> KI als nüchterner Spiegel, nicht als Coach mit Konfetti.</li>
+      </ul>
+      <p class="callout">Jeder Ablauf hat dich als letzte Instanz. KI liefert den Rohstoff, dein Urteil macht das Produkt.</p>
+
+      <h2 id="ch5">Sieben Hype-Fallen</h2>
+      <ul>
+        <li><strong>Die Tool-Sammelsucht.</strong> Zehn halb gelernte Tools sind langsamer als eins, das du beherrschst.</li>
+        <li><strong>Der Autopilot-Mythos.</strong> „Läuft von allein“ heißt meist „bricht von allein, wenn du nicht hinschaust“.</li>
+        <li><strong>Prompt-Pakete für 47 €.</strong> Ein guter Prompt ist eine klare Aufgabe — die formulierst du selbst, kostenlos.</li>
+        <li><strong>Der Vanity-Output.</strong> Reichweite ohne Substanz ist trotzdem Leere.</li>
+        <li><strong>KI als Strategie-Ersatz.</strong> Ein Modell entscheidet nicht für dich, wer du sein willst.</li>
+        <li><strong>Blindes Vertrauen in Zahlen.</strong> KI nennt selbstbewusst Statistiken, die sie erfindet.</li>
+        <li><strong>FOMO als Geschäftsmodell.</strong> Wer dir Angst macht, etwas zu verpassen, verkauft dir die Lösung gleich mit.</li>
+      </ul>
+      <p class="callout">Die unbequeme Wahrheit: Viele, die laut über KI reden, verdienen ihr Geld mit dem Reden — nicht mit der KI.</p>
+
+      <h2 id="ch6">Wie es weitergeht</h2>
+      <p>Wenn du bis hier gelesen hast, hast du schon den wichtigsten Skill: Geduld für Substanz statt Reflex für Hype.</p>
+      <p>Dieses eBook ist ein Schnappschuss. KI ändert sich wöchentlich. Was bleibt, ist die Denkweise: konkret fragen, Risiko abschätzen, selbst urteilen. Genau das mache ich jeden Werktag im Newsletter.</p>
+    </article>
+
+    <div class="support">
+      <h2>Hat dir das eBook etwas gebracht?</h2>
+      <p>Es bleibt gratis — ohne Gate, ohne Druck. Wenn es dir geholfen hat, kannst du als Dankeschön zahlen, was es dir wert war. Du entscheidest den Preis, kein Mindestbetrag.</p>
+      <a href="/buch.html" class="btn">Zahl, was du willst →</a>
+    </div>
+
+    <div class="upsell">
+      <div class="u-body">
+        <h2>Mehr als der Newsletter? Werde Founding-Member.</h2>
+        <p>Die ersten 100 Leser bekommen lebenslang Premium für €69 einmal — Mittwoch-Tiefenausgabe, Workflow-Templates, Tool-Deals, direkter Draht. Kein Re-Open, 30 Tage Geld-zurück.</p>
+      </div>
+      <a href="/founding.html" class="btn btn--ghost">Founding ansehen →</a>
+    </div>
+
+    <div class="cta-box">
+      <h2>Jeden Morgen KI ohne Bullshit — in 5 Minuten</h2>
+      <p>aban news liefert dir Mo–Fr die drei KI-Entwicklungen, die dein Business heute betreffen. Ein Tool, drei Updates, kein Spam.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">5-Min-KI-Briefing gratis →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Kein Spam. Abmeldung per Klick. DSGVO-konform.</p>
+    </div>
+
+    <!-- Weiterempfehlen — trackingfrei, keine 3rd-Party-Skripte -->
+    <div class="refer-box">
+      <h3 class="refer-h">🤝 Kennst du jemanden, dem das hilft?</h3>
+      <p class="refer-p">aban news wächst durchs Weitersagen, nicht durch Werbe-Budget. Wenn dir das eBook etwas bringt, leite es an eine Person weiter, die täglich 5 Minuten ehrliche KI-News gebrauchen kann.</p>
+      <div class="refer-row">
+        <a class="refer-btn" target="_blank" rel="noopener" href="https://wa.me/?text=T%C3%A4glich%205%20Min%20ehrliche%20KI-News%20f%C3%BCr%20DACH-Profis%20%E2%80%94%20kein%20Hype%2C%20kein%20Spam.%20Schau%20dir%20aban%20news%20an%3A%20https%3A//abannews.com/">💬 WhatsApp</a>
+        <a class="refer-btn" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//abannews.com/">in LinkedIn</a>
+        <a class="refer-btn" href="mailto:?subject=Schau%20dir%20aban%20news%20an&amp;body=T%C3%A4glich%205%20Min%20ehrliche%20KI-News%20f%C3%BCr%20DACH-Profis%20%E2%80%94%20kein%20Hype%2C%20kein%20Spam.%20Schau%20dir%20aban%20news%20an%3A%0A%0Ahttps%3A//abannews.com/">✉️ E-Mail</a>
+        <button class="refer-btn" type="button" id="shCopy">🔗 Link kopieren</button>
+      </div>
+      <p class="refer-ok" id="shMsg" role="status" aria-live="polite"></p>
+    </div>
+    <style>
+      .refer-box{background:#fff;border:1px solid #ece6db;border-radius:16px;padding:1.25rem 1.4rem;margin:1.5rem 0;box-shadow:0 6px 18px rgba(28,37,48,.08)}
+      .refer-h{margin:0 0 .4rem;font-size:1.15rem}
+      .refer-p{margin:0;color:#3b4654;line-height:1.5}
+      .refer-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
+      .refer-btn{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #ece6db;background:#fff;
+        color:#b45309;font-weight:700;font-size:.92rem;line-height:1;padding:.65rem .95rem;border-radius:10px;
+        text-decoration:none;cursor:pointer;font-family:inherit;transition:transform .12s ease,border-color .12s ease}
+      .refer-btn:hover{transform:translateY(-1px);border-color:#d97706}
+      .refer-btn:focus-visible{outline:3px solid #d97706;outline-offset:2px}
+      .refer-ok{color:#0f9d6b;font-weight:700;font-size:.88rem;margin:.6rem 0 0;min-height:1.1em}
+      @media(prefers-reduced-motion:reduce){.refer-btn{transition:none}.refer-btn:hover{transform:none}}
+    </style>
+    <script>
+    (function(){
+      var cp=document.getElementById('shCopy'),msg=document.getElementById('shMsg');
+      if(!cp)return;
+      cp.addEventListener('click',function(){
+        var url="https://abannews.com/";
+        var ok=function(){msg.textContent="Link kopiert — danke fürs Weitersagen! ☕";};
+        if(navigator.clipboard&&navigator.clipboard.writeText){
+          navigator.clipboard.writeText(url).then(ok,function(){msg.textContent=url;});
+        }else{msg.textContent=url;}
+      });
+    })();
+    </script>
+
+    <div class="privacy">
+      <p><strong>Dein Lesefortschritt bleibt bei dir.</strong> Diese Seite merkt sich, wie weit du gelesen und ob du das PDF geladen hast — ausschließlich lokal in deinem Browser (<code>localStorage</code>), ohne Server, ohne Cookies, ohne Tracking. Nichts davon verlässt dein Gerät. <button class="reset" id="reset-btn" type="button">Fortschritt zurücksetzen</button></p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/">Startseite</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <span>5-Min-KI-Briefing — gratis</span>
+  <a href="https://abannews.beehiiv.com/subscribe" class="btn">Abonnieren →</a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  // ---- Memory feature: lokale Persistenz von Lesefortschritt ----
+  var KEY = "aban_ebook_v1";
+  var hasLS = (function(){try{var k="__t";localStorage.setItem(k,k);localStorage.removeItem(k);return true;}catch(e){return false;}})();
+
+  function load(){
+    if(!hasLS) return {};
+    try{return JSON.parse(localStorage.getItem(KEY)||"{}");}catch(e){return {};}
+  }
+  function save(s){ if(hasLS){try{localStorage.setItem(KEY, JSON.stringify(s));}catch(e){}} }
+
+  var state = load();
+  state.chapters = state.chapters || {};   // {ch1:true,...}
+  state.percent = state.percent || 0;      // max erreichter Lese-%
+  state.scrollY = state.scrollY || 0;      // letzte Scroll-Position (px)
+
+  var bar = document.getElementById("progress");
+  var article = document.querySelector("article");
+
+  // ---- Scroll-Fortschritt berechnen + speichern (gedrosselt) ----
+  function computePercent(){
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    if(max <= 0) return 100;
+    return Math.min(100, Math.round((window.scrollY / max) * 100));
+  }
+  var saveTimer=null;
+  function onScroll(){
+    var p = computePercent();
+    bar.style.width = p + "%";
+    bar.setAttribute("aria-valuenow", p);
+    if(p > state.percent) state.percent = p;
+    state.scrollY = window.scrollY;
+    if(saveTimer) return;
+    saveTimer = setTimeout(function(){ saveTimer=null; save(state); }, 400);
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  window.addEventListener("resize", onScroll, {passive:true});
+
+  // ---- Kapitel als gelesen markieren (sichtbar = gelesen) ----
+  var lis = {};
+  [].forEach.call(document.querySelectorAll("#toc-list li"), function(li){
+    lis[li.getAttribute("data-ch")] = li;
+    if(state.chapters[li.getAttribute("data-ch")]) li.classList.add("read");
+  });
+  if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      var changed=false;
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          var id = en.target.id;
+          if(lis[id] && !state.chapters[id]){
+            state.chapters[id] = true;
+            lis[id].classList.add("read");
+            changed = true;
+          }
+        }
+      });
+      if(changed) save(state);
+    }, {rootMargin:"0px 0px -55% 0px", threshold:0.01});
+    [].forEach.call(article.querySelectorAll("h2[id]"), function(h){ io.observe(h); });
+  }
+
+  // ---- Resume-Banner ----
+  var resume = document.getElementById("resume");
+  var resumeText = document.getElementById("resume-text");
+  var resumeBtn = document.getElementById("resume-btn");
+  var readCount = Object.keys(state.chapters).filter(function(k){return state.chapters[k];}).length;
+  if((state.percent > 4 && state.percent < 96) || readCount > 0){
+    resumeText.textContent = "Willkommen zurück — du warst zuletzt bei " + state.percent + "% (" + readCount + "/6 Kapiteln).";
+    resume.classList.add("show");
+  }
+  resumeBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    window.scrollTo({top: state.scrollY || 0, behavior: "smooth"});
+    resume.classList.remove("show");
+  });
+  document.getElementById("resume-dismiss").addEventListener("click", function(){
+    resume.classList.remove("show");
+  });
+
+  // ---- Download-Status merken ----
+  var dlBtn = document.getElementById("dl-btn");
+  var dlState = document.getElementById("dl-state");
+  function renderDl(){
+    if(state.downloaded){
+      var d = new Date(state.downloaded);
+      dlState.textContent = "✓ Geladen am " + d.toLocaleDateString("de-DE");
+      dlState.hidden = false;
+    }
+  }
+  renderDl();
+  dlBtn.addEventListener("click", function(){
+    state.downloaded = Date.now();
+    save(state);
+    renderDl();
+  });
+
+  // ---- Reset ----
+  document.getElementById("reset-btn").addEventListener("click", function(){
+    if(hasLS){try{localStorage.removeItem(KEY);}catch(e){}}
+    location.reload();
+  });
+
+  onScroll();
+})();
+</script>
+</body>
+</html>

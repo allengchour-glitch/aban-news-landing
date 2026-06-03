@@ -1,0 +1,11 @@
+{
+  "_comment": "So verdienst du Geld: Melde dich beim Partnerprogramm des jeweiligen Anbieters an. Du bekommst einen persönlichen Link. Trage ihn bei 'affiliate_url' ein und entferne das führende '_' im Key. Die Seite markiert ihn dann automatisch mit * und blendet den Transparenzhinweis ein. Anbieter ohne aktiven Eintrag verlinken auf die offizielle URL aus data/anbieter.json (keine Provision).",
+  "_status": "ALLE SLOTS DEAKTIVIERT (Key mit '_'-Präfix). Noch keine Affiliate-Links freigegeben. Fallback = offizielle URL.",
+  "_kontakt_fallback": "mailto:hallo@abannews.com",
+  "_hinweis": "Viele Lifestyle-Apps (Babbel, Duolingo, YAZIO, Headspace u. a.) haben Partnerprogramme (z. B. über Impact, Awin, Partnerize). Vor Aktivierung das echte Programm prüfen und nur den persönlichen Link eintragen — nie Secrets committen.",
+  "links": {
+    "_anleitung": "Trage deinen persönlichen Affiliate-Link bei 'affiliate_url' ein und entferne das führende '_' im Anbieter-Key (z.B. '_babbel' -> 'babbel'). Erst dann wird der Link auf der Seite aktiv (mit * + Transparenzhinweis). Solange das '_' steht, bleibt der Slot deaktiviert und es wird die offizielle URL verlinkt.",
+    "_babbel": {"affiliate_url": "https://www.babbel.com/?ref=DEIN-CODE"},
+    "_yazio": {"affiliate_url": "https://www.yazio.com/?ref=DEIN-CODE"}
+  }
+}

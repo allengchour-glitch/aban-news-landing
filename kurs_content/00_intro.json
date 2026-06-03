@@ -1,0 +1,52 @@
+{
+ "title": "Bevor du anfängst",
+ "kicker": "",
+ "toc": true,
+ "kind": "front",
+ "blocks": [
+  ["lead", "Willkommen in der Werkstatt. Du hast diesen Kurs gekauft, weil du KI nicht bewundern, sondern nutzen willst. Genau darum geht es hier — und um nichts anderes."],
+  ["p", "Ich bin Aban. Ich schreibe den täglichen aban-news-Newsletter für deutschsprachige Solo-Profis und teste KI-Werkzeuge im echten Arbeitsalltag — nicht im Labor, nicht für Konzerne. Dieser Kurs ist die Essenz aus dieser Arbeit: was funktioniert, was Geld und Zeit spart, und wo du der Technik besser nicht traust."],
+
+  ["h3", "Was diesen Kurs ausmacht"],
+  ["p", "Es gibt unzählige KI-Kurse, die dir das Blaue vom Himmel versprechen. Dieser nicht. Hier bekommst du keine Wunder, sondern Handwerk. Drei Dinge halte ich konsequent durch:"],
+  ["ul", [
+    "<b>Ehrlich.</b> Ich sage dir auch, was KI nicht kann und wo sie dir schadet, wenn du blind vertraust. Das ist wertvoller als jede Schwärmerei.",
+    "<b>Praktisch.</b> Jedes Modul endet mit einer Übung an deiner echten Arbeit. Wissen, das du nicht anwendest, ist verschwendetes Geld.",
+    "<b>Für Solo-Profis.</b> Kein Konzern-Jargon, keine Abteilung, die etwas umsetzt. Du bist die Abteilung. Alles hier ist auf eine Person zugeschnitten."
+  ]],
+
+  ["h3", "Was du am Ende kannst"],
+  ["ul", [
+    "Eine KI so anleiten, dass brauchbare Ergebnisse herauskommen — wiederholbar, nicht zufällig.",
+    "Die richtigen Werkzeuge für deine Arbeit auswählen, statt Abos zu sammeln, die du nie nutzt.",
+    "Wiederkehrende Aufgaben halb automatisieren und so jede Woche Stunden sparen.",
+    "KI im DACH-Raum einsetzen, ohne dir Datenschutz-Ärger einzuhandeln.",
+    "KI für ehrliche Kundengewinnung nutzen, ohne nach Spam zu klingen."
+  ]],
+
+  ["h3", "Wie der Kurs aufgebaut ist"],
+  ["p", "Sechs Module bringen dich Schritt für Schritt vom Grundverständnis bis zur Kundengewinnung. Danach folgen vier Bonus-Pakete, die du immer wieder zur Hand nimmst:"],
+  ["ul", [
+    "<b>Modul 1–6:</b> Grundlagen, Werkzeugkasten, Prompten, Workflows, DSGVO und Recht, Kundengewinnung.",
+    "<b>Bonus 1 — Die 50-Prompt-Werkstatt:</b> 50 fertige, kopierbare Prompts nach Aufgabenbereich.",
+    "<b>Bonus 2 — Die Vorlagen-Sammlung:</b> ausgearbeitete E-Mails, Angebote und Abläufe zum Anpassen.",
+    "<b>Bonus 3 — Tool-Auswahl &amp; Kostenkontrolle:</b> welche Tools sich lohnen und wie du Abo-Kosten im Griff behältst.",
+    "<b>Bonus 4 — Branchen-Spickzettel:</b> konkrete Quick-Wins für acht Berufe."
+  ]],
+
+  ["h3", "So holst du am meisten heraus"],
+  ["ol", [
+    "Arbeite Modul 1 und 2 zuerst durch — sie legen das Fundament für alles andere.",
+    "Mach die Übungen wirklich, nicht nur im Kopf. Eine Stunde echte Anwendung schlägt zehn Stunden Lesen.",
+    "Halte beim Lesen einen KI-Chatbot offen und probiere sofort aus, was du gerade liest.",
+    "Komm zu den Bonus-Paketen zurück, wann immer du eine Vorlage oder einen Prompt brauchst."
+  ]],
+
+  ["h3", "Eine realistische Erwartung"],
+  ["p", "KI ist ein Werkzeug, kein Mitarbeiter und kein Wunder. Sie nimmt dir Tipparbeit, Entwürfe und Routine ab — und gibt dir Zeit für das, was nur du kannst. Was sie nicht ersetzt, ist dein Urteilsvermögen. Du bleibst der Mensch, der prüft, entscheidet und verantwortet. Genau diese Rollenverteilung macht dich produktiv, ohne dich abhängig zu machen."],
+  ["callout", "Regel des Kurses: Wenn ein Tipp dir nicht innerhalb einer Woche Zeit spart oder bessere Ergebnisse bringt, wirf ihn weg. Ehrliche Arbeit schlägt jedes Versprechen."],
+
+  ["h3", "Wenn du nicht weiterkommst"],
+  ["p", "Du hast eine Frage zum Kurs oder kommst an einer Stelle nicht weiter? Schreib mir direkt an hallo@abannews.com. Ich lese und antworte selbst — das gehört zu dem, was du hier gekauft hast. Und jetzt: leg los."]
+ ]
+}

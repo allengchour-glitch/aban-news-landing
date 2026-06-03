@@ -1,0 +1,45 @@
+{
+  "_hinweis": "Backlog echter, nützlicher Ratgeber-Themen für die DACH-KI-Zielgruppe (Solopreneure, KMU, Selbstständige). Jedes Thema wird mit generate_guide.py zu einem KDP-tauglichen Ratgeber ausgearbeitet. Aban-Voice: anti-hype, du-Form, ehrlich, keine erfundenen Zahlen — die KI liefert Entwürfe, ein Mensch prüft Fakten vor Veröffentlichung. status: backlog | entwurf | geprueft | veroeffentlicht.",
+  "themen": [
+    {
+      "id": "ki-ohne-bullshit-fuer-handwerker",
+      "titel": "KI ohne Bullshit für Handwerker",
+      "zielgruppe": "Handwerksbetriebe (1–20 Mitarbeitende)",
+      "versprechen": "Welche KI im Betrieb wirklich Zeit spart — Angebote, Termine, Kundenkommunikation — und welche Zeitverschwendung ist.",
+      "umfang_kapitel": 8,
+      "status": "backlog"
+    },
+    {
+      "id": "chatgpt-fuer-die-buchhaltung",
+      "titel": "ChatGPT für die Buchhaltung — was geht, was nicht",
+      "zielgruppe": "Selbstständige und kleine Büros in DACH",
+      "versprechen": "Konkrete, DSGVO-bewusste Einsätze rund um Belege, Mahnungen und Reporting — mit klaren Grenzen, wo der Steuerberater ran muss.",
+      "umfang_kapitel": 7,
+      "status": "backlog"
+    },
+    {
+      "id": "ki-dsgvo-konform-im-kleinbetrieb",
+      "titel": "KI DSGVO-konform im Kleinbetrieb nutzen",
+      "zielgruppe": "KMU ohne eigene Rechtsabteilung",
+      "versprechen": "Eine alltagstaugliche Checkliste: welche Tools, welche Daten, welche AVV — ohne juristisches Kauderwelsch.",
+      "umfang_kapitel": 6,
+      "status": "backlog"
+    },
+    {
+      "id": "prompts-die-im-alltag-funktionieren",
+      "titel": "Prompts, die im Arbeitsalltag funktionieren",
+      "zielgruppe": "Berufstätige, die KI praktisch nutzen wollen",
+      "versprechen": "Wiederverwendbare Prompt-Muster für E-Mails, Angebote, Texte und Recherche — zum Anpassen, nicht zum Blind-Kopieren.",
+      "umfang_kapitel": 9,
+      "status": "backlog"
+    },
+    {
+      "id": "ki-sichtbarkeit-fuer-lokale-anbieter",
+      "titel": "Gefunden werden — KI-Sichtbarkeit für lokale Anbieter",
+      "zielgruppe": "Lokale Dienstleister (Praxen, Kanzleien, Werkstätten)",
+      "versprechen": "Wie deine Firma in ChatGPT, Perplexity und Google-AI auftaucht — die ehrlichen Hebel, ohne Agentur-Versprechen.",
+      "umfang_kapitel": 7,
+      "status": "backlog"
+    }
+  ]
+}

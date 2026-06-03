@@ -1,0 +1,721 @@
+{
+  "titel": "Asche (Aschebund-Trilogie, Band 2)",
+  "genre": "Dark Fantasy / Romantasy",
+  "sprache": "Deutsch",
+  "praemisse": "Der Verrat ist geschehen, der Krieg bricht offen aus, und Sayra Vael flieht mit dem todmüden Drachen Kaelith aus der Akademie Korvath - gejagt vom eigenen Konkordat, weil sie weiß, was niemand wissen darf. Jenseits des Aschemeers ist die einzige Zuflucht das Land der Sturmfürsten, der alten Feinde, und der einzige Weg dorthin führt über eine Allianz, die niemand will. Während Sayra Stück für Stück die ganze Wahrheit zusammenträgt - dass die Drachen sterben, weil das Konkordat sie verbrennt - wird ihre Liebe zu Renkar über feindliche Linien hinweg auf die Probe gestellt, bis ein Geheimnis sie auseinanderreißt. Am Ende dieses Bandes hat der Krieg jemanden genommen, den sie nicht hergeben wollte, und die Lüge ist größer, als sie es sich je vorgestellt hat.",
+  "ton": "Dunkel, intensiv, sinnlich - und in diesem Band rastlos, atemlos, von der Flucht getrieben. Hoher emotionaler Einsatz. Kurze, harte Sätze in Kampf, Flucht und Gefahr; lange, fiebrige Sätze in Momenten von Nähe, Schmerz und Verrat. Die Müdigkeit der Gejagten liegt über allem, das Vertrauen wird zur Währung. Spannung in jedem Kapitel, Cliffhanger am Ende. Gewalt und Begehren sind real, aber nie billig; der Tod ist hier nah und wird nicht geschont.",
+  "erzaehlperspektive": "Dritte Person, personal, dicht an Sayra. Präteritum. Vereinzelt kurze Kapitel aus Renkars Sicht, klar mit '[Renkar-Sicht]' im Titel markiert.",
+  "stilregeln": [
+    "Zeige Gefühle durch Körper, Atem, Puls und Handlung - benenne sie selten.",
+    "Die Drachenbindung ist körperlich spürbar: geteilter Herzschlag, fremde Erinnerungen, Schmerz bei Trennung.",
+    "Jeder Zauber kostet sichtbare Lebenszeit - mache den Preis konkret (eine Strähne ergraut, ein Gelenk knackt, Tage schwinden); auf der Flucht zaubert man zu oft, und es zeichnet Sayra.",
+    "Romantik brennt langsam und wird in diesem Band geprüft: Nähe trotz Misstrauen, Begehren trotz feindlicher Linien, Treue trotz Geheimnissen. Kein Insta-Love, kein billiges Drama.",
+    "Jedes Kapitel endet mit einer offenen Spannung, einer Drohung oder einer Wendung.",
+    "Kein moderner Slang. Die Welt ist hart, mittelalterlich-feudal, von Asche und Glut durchzogen; der Krieg macht sie noch härter.",
+    "Verluste werden verdient, nicht behauptet - wer stirbt, hinterlässt eine Lücke, die nachhallt."
+  ],
+  "welt": {
+    "name": "Das Aschekonkordat von Vyr",
+    "regeln_der_magie": "Das Glutband: Drachen binden sich nur an Sterbende und halten sie am Leben. Reiter und Drache teilen Herzschlag und Erinnerungen. Jeder Zauber verbrennt messbare Lebenszeit ('Asche'); mächtige Reiter altern sichtbar zu früh. Trennung von Reiter und Drache verursacht beiden reißenden Schmerz, ein zweiter Tod droht. Auf der Flucht und im Krieg zaubert man häufiger, als der Körper es verträgt - jeder Tag, den die Magie verschlingt, ist ein Tag weniger mit dem, den man liebt.",
+    "orte": [
+      "Akademie Korvath - eine Festung aus schwarzem Basalt auf den Klippen über dem Aschemeer; jetzt im Kriegszustand, hinter Sayra her.",
+      "Das Aschemeer - eine Wüste aus erkalteter Drachenglut, über die geflogen wird; jetzt von Patrouillen des Konkordats durchkämmt.",
+      "Die Brutgründe - verbotene Höhlen, in denen einst Drachen schlüpften; heute fast leer und ein Zeugnis des Sterbens.",
+      "Die Neun Festungsstädte des Konkordats auf den Klippen.",
+      "Die Sturmküste der Sturmfürsten - jenseits des Aschemeers gelegene, von Gewittern umtoste Klippenburgen aus Sturmglas, wo Drachen nicht verbrannt, sondern verehrt werden; das Land der alten Feinde.",
+      "Der Drachenfriedhof von Vael - ein verborgenes Tal voller versteinerter Drachenleiber, auf dem die ganze Wahrheit über das Sterben geschrieben steht; hierher führte einst Sayras Vater die Spur."
+    ],
+    "konflikt": "Offen und nun entfesselt: Der Krieg zwischen Konkordat und Sturmfürsten bricht in voller Härte aus; Schlachten am Aschemeer, brennende Festungen. Verborgen, jetzt enthüllt: Die Drachen sterben aus, weil das Konkordat sie als Waffen verbrennt - jeder Kriegszauber ist ein weiterer toter Drache, und der Krieg selbst ist die Maschine, die die Wahrheit begräbt. Sayra trägt nicht mehr nur ein Bruchstück, sondern die Spur zum ganzen Beweis - und das Konkordat wird sie und Kaelith jagen, bis einer von beiden tot ist. Die Sturmfürsten wissen Teile der Wahrheit, doch ihr Preis für Hilfe ist hoch und ihre Loyalität ungewiss."
+  },
+  "figuren": [
+    {
+      "name": "Sayra Vael",
+      "rolle": "Protagonistin",
+      "alter": 19,
+      "beschreibung": "Nicht mehr Anwärterin, sondern Gejagte. Die Aschelunge ist durch die Bindung gebändigt, doch das viele Zaubern auf der Flucht zeichnet sie: zwei Strähnen ergraut, die Hände früh schwielig, ein Knie, das knackt. Härter geworden, schneller im Entschluss, aber müder im Herzen. Trägt die Wahrheit wie eine offene Wunde.",
+      "wunsch": "Den ganzen Beweis sichern und die Welt die Wahrheit über die sterbenden Drachen sehen lassen - und dabei die wenigen behalten, die sie liebt.",
+      "geheimnis": "Sie hat in Kaeliths Erinnerungen mehr gesehen, als sie zugibt: dass auch Kaelith einst gezwungen wurde, einen anderen Drachen verbrennen zu helfen - und dass ihr Vater am Drachenfriedhof von Vael starb, nicht in Korvath.",
+      "stimme": "Scharf, beobachtend, sarkastisch als Panzer - der Panzer bekommt Risse, wenn die Erschöpfung zu groß wird. Denkt in Bildern; spricht weniger, als sie denkt."
+    },
+    {
+      "name": "Kaelith",
+      "rolle": "Drache / Seelengefährte",
+      "alter": 400,
+      "beschreibung": "Uralter Drache mit verascht-grauen Schuppen, eine Flügelspitze zerfetzt - die Flucht und die Kämpfe haben neue Narben hinzugefügt. Nicht mehr todmüde, sondern grimmig entschlossen: Sayra hat ihm einen Grund gegeben. Aber sein Körper ist alt, und jeder Kampf könnte sein letzter sein.",
+      "wunsch": "Sayra am Leben und frei sehen - und vor seinem Ende die Wahrheit über das Sterben seiner Art ans Licht bringen.",
+      "geheimnis": "Er kennt den Weg zum Drachenfriedhof und weiß, was dort begraben liegt; er verschweigt, dass er selbst einst, vor Jahrhunderten, dem Konkordat half, die ersten Drachen zu verbrennen - eine Schuld, die ihn zerfrisst.",
+      "stimme": "Trocken, uralt, vernichtend ehrlich. Spricht in Sayras Kopf, oft spöttisch, selten zärtlich - und dann trifft es hart. Auf der Flucht öfter beschützend, manchmal verzweifelt."
+    },
+    {
+      "name": "Renkar Stahl",
+      "rolle": "Love Interest / abtrünniger Offizier",
+      "alter": 26,
+      "beschreibung": "Der Mann, der Sayra in Band 1 fliehen ließ und dafür alles aufgab. Vernarbt, verschlossen, nun selbst gejagt oder im Zwiespalt - zwischen seinem Eid auf das Konkordat und seiner Liebe. Seine wenigen Lebensjahre schwinden weiter, jeder Zauber im Krieg nimmt davon. Härte als Maske über einer tiefen Erschöpfung.",
+      "wunsch": "Sayra beschützen und für seinen Gehorsam von einst büßen - auch wenn beides sein Leben kostet.",
+      "geheimnis": "Olvenne hat ihn als Doppelagent zurückgeschickt oder erpresst: Er soll Sayra zum Beweis führen und sie dann ausliefern - und er weiß nicht, ob er es tun wird, bis es zu spät ist. Außerdem verschweigt er, dass er einst einen Befehl ausführte, der Tamsins Familie betraf.",
+      "stimme": "Knapp, befehlend, kalt - bis Risse zeigen. Sagt das Gegenteil von dem, was er fühlt; in der Nähe Sayras verliert die Maske ihren Halt."
+    },
+    {
+      "name": "Tamsin Oar",
+      "rolle": "Beste Freundin",
+      "alter": 18,
+      "beschreibung": "Floh mit Sayra aus Korvath; ihre instabile Bindung zu ihrem jungen Drachen ist auf der Flucht gefährlicher denn je. Trotzdem das warme Herz der kleinen Gruppe, mutiger geworden, aber zunehmend von ihrer eigenen schwindenden Zeit gezeichnet. Bringt Licht - solange sie es noch kann.",
+      "wunsch": "An Sayras Seite bleiben und beweisen, dass auch eine schwache Bindung etwas wert ist; ihren Drachen am Leben halten.",
+      "geheimnis": "Sie weiß seit Korvath, dass ihre Bindung sie schneller verbrennt als die anderen, und verschweigt, wie nah sie dem zweiten Tod schon ist - sie hat sich entschieden, ihre letzte Zeit für Sayras Sache zu opfern.",
+      "stimme": "Warm, schnell, lebensbejahend; Galgenhumor gegen die Angst - der Humor wird dünner, je näher das Ende rückt."
+    },
+    {
+      "name": "Hochmarschall Olvenne",
+      "rolle": "Antagonistin",
+      "alter": 54,
+      "beschreibung": "Eiserne Befehlshaberin, nun Kriegsherrin des Konkordats. Früh ergraut von zu viel Magie, jetzt zusätzlich gezeichnet vom Krieg, den sie selbst entfacht hat, um die Wahrheit zu begraben. Glaubt aufrichtig, dass die Lüge das Reich vor dem Zusammenbruch bewahrt - und tötet dafür ohne Zögern.",
+      "wunsch": "Den Beweis vernichten und Sayra zum Schweigen bringen - das Konkordat um jeden Preis bewahren, auch um den der letzten Drachen.",
+      "geheimnis": "Sie weiß, dass das Verbrennen der Drachen den endgültigen Tod der Art beschleunigt - und hat berechnet, dass das Reich keine zwei Generationen mehr Drachen hat. Sie hält Renkar an einer unsichtbaren Leine.",
+      "stimme": "Ruhig, würdevoll, eiskalt vernünftig. Spricht von Opfern wie von Buchhaltung - im Krieg wird die Buchhaltung blutig."
+    },
+    {
+      "name": "Sturmfürstin Iseryn Vauld",
+      "rolle": "Verbündete / Rivalin im Dreieck",
+      "alter": 28,
+      "beschreibung": "Junge, scharfkantige Sturmfürstin der Sturmküste, Reiterin eines wilden Sturmdrachen, der nicht aus dem Glutband stammt, sondern frei gebunden ist. Stolz, ehrenhaft auf eine fremde, harte Art, von Blitzen gezeichnet. Sieht in Sayra eine Waffe gegen das Konkordat - und in Renkar einen Feind, dem sie dennoch zu nah kommt.",
+      "wunsch": "Das Konkordat für Generationen von Krieg bluten lassen und ihr Volk rächen; die Wahrheit als Waffe nutzen.",
+      "geheimnis": "Ihr Volk kennt die Wahrheit über die sterbenden Drachen längst - und hat sie aus eigenem Kalkül verschwiegen, weil das Sterben der Konkordats-Drachen ihnen den Krieg gewinnen würde. Sie ist bereit, Sayra zu opfern, wenn es nützt.",
+      "stimme": "Direkt, schneidend, ehrlich bis zur Grausamkeit; ein rauer Sturmküsten-Akzent. Lacht selten, und wenn, dann gefährlich."
+    },
+    {
+      "name": "Corm Daved",
+      "rolle": "Überläufer aus dem Konkordat",
+      "alter": 34,
+      "beschreibung": "Ein desillusionierter Quartiermeister und einstiger Drachenschmied der Akademie, der dem Konkordat den Rücken kehrte, als er begriff, wie viele Drachen für Waffen verbrannt wurden. Kein Reiter, kein Kämpfer - aber er kennt die Logistik des Krieges und die Lagerorte der Beweise.",
+      "wunsch": "Wiedergutmachung für die Jahre, in denen er die Maschine am Laufen hielt; den Beweis aus dem Konkordat schmuggeln.",
+      "geheimnis": "Er hat selbst Listen geführt, wie viele Drachen sterben mussten, und trägt eine Kopie bei sich - aber er war auch der, der Sayras Vater einst unwissentlich verriet, indem er dessen Namen in einem Bericht nannte.",
+      "stimme": "Müde, präzise, gewissenhaft; spricht in Zahlen und Fakten, bis ihn die Schuld einholt und die Stimme bricht."
+    }
+  ],
+  "kapitel": [
+    {
+      "nummer": 1,
+      "titel": "Über dem brennenden Meer",
+      "ziel": "Direkt nach Band 1 einsteigen: Flucht aus Korvath, Krieg bricht offen aus, den neuen, gejagten Status etablieren.",
+      "beats": [
+        "Sayra und Kaelith fliehen in der Nacht von Korvath über das Aschemeer, hinter ihnen brennen Signalfeuer der Akademie.",
+        "Tamsin und ihr junger Drache halten kaum mit; die instabile Bindung droht sie abstürzen zu lassen.",
+        "Eine Patrouille des Konkordats nimmt die Verfolgung auf; Sayra muss zaubern und spürt, wie Tage verbrennen.",
+        "Kaelith zwingt einen riskanten Sturzflug ins Aschemeer, um die Verfolger abzuschütteln; eine Strähne ergraut.",
+        "Sayra begreift, dass der Krieg, den Olvenne losgetreten hat, nun ganz Vyr erfasst.",
+        "Kapitelende: Am Horizont, über der Sturmküste, türmt sich ein Gewitter auf - und etwas Riesiges, Geflügeltes hebt sich daraus, das kein Konkordats-Drache ist."
+      ]
+    },
+    {
+      "nummer": 2,
+      "titel": "Aschelandung",
+      "ziel": "Die Gruppe strandet erschöpft im Niemandsland; Verletzlichkeit und erste Risse im Vertrauen zeigen.",
+      "beats": [
+        "Erschöpft landen sie in einer toten Bucht am Rand des Aschemeers; Kaeliths Flügel zittert.",
+        "Tamsins Drache kollabiert fast; sie verheimlicht, wie schlecht es um die Bindung steht.",
+        "Sayra rationiert das wenige Wasser; Hunger und Angst nagen an der Gruppe.",
+        "Sie findet in Kaeliths Erinnerungen einen Hinweis auf einen sicheren Ort jenseits des Meeres.",
+        "Erste Spuren einer Konkordats-Bodentruppe am Strand - sie sind nicht allein.",
+        "Kapitelende: Aus dem Ascherauch tritt eine vermummte Gestalt mit gezogener Klinge auf Sayra zu."
+      ]
+    },
+    {
+      "nummer": 3,
+      "titel": "[Renkar-Sicht] Der Eid und der Riss",
+      "ziel": "Renkars Lage nach Band 1 zeigen: zwischen Olvennes Leine und seiner Liebe; den Doppelagenten-Konflikt etablieren.",
+      "beats": [
+        "Renkar steht vor Olvenne in Korvath; sie hat ihn nicht hinrichten lassen, sondern benutzt ihn.",
+        "Olvenne enthüllt, dass sie weiß, dass er Sayra fliehen ließ - und macht ihn zum Köder: Er soll sie finden und ausliefern.",
+        "Sie droht mit den Leben anderer Schüler, falls er versagt; Renkar erkennt die Falle, die keine Wahl lässt.",
+        "Allein spürt Renkar den Phantomschmerz seines eigenen Drachen und zählt die Tage, die ihm bleiben.",
+        "Er sattelt heimlich auf, scheinbar gehorsam, innerlich zerrissen.",
+        "Kapitelende: Renkar schwört sich, Sayra zu finden - und weiß nicht, ob er sie retten oder verraten wird."
+      ]
+    },
+    {
+      "nummer": 4,
+      "titel": "Die Klinge im Rauch",
+      "ziel": "Corm Daved einführen; den ersten unwilligen Verbündeten gewinnen; die Logistik des Verrats anreißen.",
+      "beats": [
+        "Die vermummte Gestalt entpuppt sich als Corm Daved, ein Überläufer, der ebenfalls vor dem Konkordat flieht.",
+        "Misstrauen auf beiden Seiten; Kaelith liest in Corms Angst, dass er die Wahrheit sagt.",
+        "Corm zeigt eine geschmuggelte Liste: Zahlen verbrannter Drachen, Jahr für Jahr steigend.",
+        "Sayra erkennt eine Handschrift auf der Liste, die der ihres Vaters ähnelt.",
+        "Corm warnt, dass das Konkordat das Aschemeer mit Bodentruppen abriegelt; der einzige Ausweg ist die Sturmküste.",
+        "Kapitelende: In der Ferne erheben sich drei Konkordats-Drachen, und ihre Reiter tragen die Farben von Olvennes Garde."
+      ]
+    },
+    {
+      "nummer": 5,
+      "titel": "Der Preis des Fliegens",
+      "ziel": "Die Verfolgung eskaliert; den Magie-kostet-Lebenszeit-Preis im Kampf konkret machen.",
+      "beats": [
+        "Flucht in die Luft; Olvennes Garde greift über dem Aschemeer an.",
+        "Sayra muss einen Schildzauber halten; sie fühlt, wie Wochen ihrer Zeit verbrennen.",
+        "Tamsin lenkt einen Verfolger ab und rettet die Gruppe, riskiert dabei ihren schwachen Drachen.",
+        "Corm klammert sich hinter Sayra fest und schreit Koordinaten zur Sturmküste.",
+        "Ein Gardist stürzt brennend ins Meer; Sayra sieht zum ersten Mal, dass sie getötet hat.",
+        "Kapitelende: Sie durchbrechen die Gewitterfront der Sturmküste - und fliegen geradewegs in eine Staffel wilder Sturmdrachen."
+      ]
+    },
+    {
+      "nummer": 6,
+      "titel": "Sturmglas",
+      "ziel": "Die Sturmküste und die Sturmfürsten einführen; Iseryn als komplexe Verbündete etablieren.",
+      "beats": [
+        "Die Sturmdrachen zwingen die Gruppe zur Landung auf einer Klippenburg aus Sturmglas.",
+        "Sturmfürstin Iseryn Vauld empfängt sie mit gezogener Waffe - Gefangene oder Gäste, noch unklar.",
+        "Sayra sieht, dass hier Drachen frei gebunden sind und nicht verbrennen; die Welt steht auf dem Kopf.",
+        "Iseryn erkennt in Kaelith einen uralten Konkordats-Drachen und mustert ihn mit Hass und Faszination.",
+        "Sayra bietet die Wahrheit als Tauschware an - doch Iseryn deutet an, dass sie sie längst kennt.",
+        "Kapitelende: Iseryn lässt Sayra leben, aber nur, weil sie für sie eine Waffe ist - das spricht sie offen aus."
+      ]
+    },
+    {
+      "nummer": 7,
+      "titel": "Gäste in Ketten",
+      "ziel": "Die unbehagliche Allianz beginnen; die fremde Kultur der Sturmfürsten zeigen; Tamsins Zustand verschärfen.",
+      "beats": [
+        "Die Gruppe wird in der Sturmburg untergebracht - frei, aber bewacht.",
+        "Sayra lernt die Sitten der Sturmfürsten kennen: Drachen werden hier verehrt, nicht verbrannt.",
+        "Tamsins Drache erkrankt sichtbar; eine Sturmküsten-Heilerin warnt, dass die Bindung kippt.",
+        "Iseryn verlangt als Preis für Asyl, dass Sayra ihr Wissen über das Konkordat teilt.",
+        "Kaelith warnt Sayra im Kopf, dass die Sturmfürsten mehr verbergen, als sie zeigen.",
+        "Kapitelende: Sayra entdeckt in der Burg eine Karte, auf der der Drachenfriedhof von Vael markiert ist - der Ort, an dem ihr Vater wirklich starb."
+      ]
+    },
+    {
+      "nummer": 8,
+      "titel": "Was die Toten wissen",
+      "ziel": "Die Spur zum Drachenfriedhof legen; Kaeliths Geheimnis anreißen; den Einsatz für die Wahrheit erhöhen.",
+      "beats": [
+        "Sayra konfrontiert Kaelith mit dem Drachenfriedhof; er weicht aus, was sie misstrauisch macht.",
+        "In einer geteilten Erinnerung sieht sie Kaelith jung, an der Seite anderer Drachen, bei einem Brand.",
+        "Iseryn erklärt, dass der Friedhof die ganze Wahrheit trägt: dort liegen die ersten verbrannten Drachen.",
+        "Corm bestätigt aus seinen Listen, dass alle Spuren zum Friedhof führen.",
+        "Sayra beschließt, dorthin zu reisen - gegen Kaeliths Widerstand.",
+        "Kapitelende: Kaelith sagt zum ersten Mal, dass er Angst hat - nicht vor dem Tod, sondern davor, was Sayra dort über ihn erfahren wird."
+      ]
+    },
+    {
+      "nummer": 9,
+      "titel": "Der Späher am Horizont",
+      "ziel": "Renkar nähert sich; Spannung der drohenden Wiederbegegnung aufbauen; Iseryns Misstrauen schüren.",
+      "beats": [
+        "Sturmküsten-Späher melden einen einzelnen Konkordats-Reiter, der die Gewitterfront durchquert.",
+        "Iseryn vermutet einen Spion und will ihn abschießen lassen.",
+        "Sayra spürt durch eine alte Resonanz, wer es ist, und ihr Herz setzt aus.",
+        "Sie ringt mit sich, ob sie Renkar verraten oder schützen soll.",
+        "Kaelith warnt, dass Renkar nicht zufällig hier ist - jemand hat ihn geschickt.",
+        "Kapitelende: Renkar landet gefesselt vor Sayra, blutend, und sagt nur ihren Namen."
+      ]
+    },
+    {
+      "nummer": 10,
+      "titel": "Wiedersehen über Klingen",
+      "ziel": "Die Romantik wieder entfachen, aber unter Misstrauen; den Doppelagenten-Verdacht in den Raum stellen.",
+      "beats": [
+        "Sayra und Renkar wiedersehen sich - Begehren und Argwohn zugleich, kein einfaches Glück.",
+        "Iseryn verhört Renkar hart; er gibt zu, dass Olvenne ihn schickte, behauptet aber, übergelaufen zu sein.",
+        "Sayra glaubt ihm halb; Kaelith glaubt ihm gar nicht.",
+        "In einem heimlichen Moment berühren sich Sayra und Renkar - die alte Hitze ist da, jetzt mit Schuld vermischt.",
+        "Corm erkennt Renkar als den Offizier, der einst einen Befehl gegen Tamsins Familie ausführte.",
+        "Kapitelende: Tamsin erfährt, wer Renkar ist, und sieht Sayra an, als wäre sie verraten worden."
+      ]
+    },
+    {
+      "nummer": 11,
+      "titel": "Risse zwischen Freundinnen",
+      "ziel": "Den Konflikt zwischen Sayra, Tamsin und Renkar vertiefen; Loyalitäten testen.",
+      "beats": [
+        "Tamsin stellt Renkar zur Rede wegen ihrer Familie; er kann es nicht leugnen.",
+        "Sayra steht zwischen ihrer Freundin und dem Mann, den sie liebt.",
+        "Renkar gesteht, dass er den Befehl ausführte, bevor er zu zweifeln begann - Reue, aber keine Entschuldigung.",
+        "Iseryn nutzt den Riss, um Sayra für ihre Sache zu gewinnen.",
+        "Tamsins Drache bekommt einen Anfall; ihre Zeit schwindet sichtbar.",
+        "Kapitelende: Tamsin flüstert Sayra zu, dass sie nicht mehr lange hat - und bittet sie, es vor den anderen geheim zu halten."
+      ]
+    },
+    {
+      "nummer": 12,
+      "titel": "Die Bedingung der Sturmfürstin",
+      "ziel": "Die Allianz formalisieren mit hohem Preis; Iseryns wahre Agenda anreißen.",
+      "beats": [
+        "Iseryn bietet Geleit zum Drachenfriedhof - im Tausch gegen Sayras Hilfe in einer Schlacht.",
+        "Sie soll das Konkordat mit der Wahrheit treffen, sobald der Beweis gesichert ist.",
+        "Sayra zögert, weil Iseryns Krieg ebenso Leben kostet wie Olvennes.",
+        "Renkar warnt, dass die Sturmfürsten Sayra nur benutzen.",
+        "Kaelith deckt auf, dass Iseryns Volk die Wahrheit über die Drachen schon lange kennt und verschwieg.",
+        "Kapitelende: Sayra begreift, dass es keine sauberen Verbündeten gibt - nur Feinde mit verschiedenen Zielen."
+      ]
+    },
+    {
+      "nummer": 13,
+      "titel": "Sturmflug",
+      "ziel": "Die Reise zum Friedhof beginnen; Nähe zwischen Sayra und Renkar trotz allem; Iseryn als Rivalin etablieren.",
+      "beats": [
+        "Aufbruch zum Drachenfriedhof, geleitet von Iseryn und ihren Sturmdrachen.",
+        "Im Flug durch ein Gewitter rettet Renkar Sayra vor einem Blitzschlag und verbrennt dafür eigene Lebenszeit.",
+        "Sayra sieht, wie ihn das Zaubern altern lässt, und versteht den Preis seiner Liebe.",
+        "Iseryn beobachtet die beiden und mischt sich provozierend ein - ein erster Funke des Dreiecks.",
+        "Eine Konkordats-Vorhut kreuzt den Weg; sie müssen ausweichen.",
+        "Kapitelende: Über einem zerklüfteten Tal erkennt Sayra die ersten versteinerten Drachenleiber - der Friedhof von Vael."
+      ]
+    },
+    {
+      "nummer": 14,
+      "titel": "Der Drachenfriedhof von Vael",
+      "ziel": "Die zentrale Enthüllung beginnen; den Ort des Sterbens zeigen; Sayras Vater-Spur aufnehmen.",
+      "beats": [
+        "Landung im Tal der versteinerten Drachen; eine Stille, die schwerer wiegt als jeder Lärm.",
+        "Kaelith wird beim Anblick der Toten von Trauer und Schuld überwältigt.",
+        "Sayra findet Inschriften, die das systematische Verbrennen der Drachen dokumentieren.",
+        "Sie entdeckt Spuren eines Lagers - ihr Vater war hier, kurz bevor er starb.",
+        "Corm gleicht die Inschriften mit seinen Listen ab; alles passt zusammen.",
+        "Kapitelende: In einer Felsspalte findet Sayra das versteckte Tagebuch ihres Vaters - mit ihrem Namen auf der ersten Seite."
+      ]
+    },
+    {
+      "nummer": 15,
+      "titel": "Die Schrift des Vaters",
+      "ziel": "Die ganze Wahrheit Stück für Stück enthüllen; Sayras persönliche Wunde aufreißen.",
+      "beats": [
+        "Sayra liest im Tagebuch, wie ihr Vater die Wahrheit über die Drachen entdeckte.",
+        "Sie erfährt, dass das Verbrennen die Art unwiederbringlich ausrottet, nicht nur einzelne Drachen.",
+        "Das Tagebuch nennt Olvenne als die, die den Befehl gab, ihn zum Schweigen zu bringen.",
+        "Eine Zeile erwähnt einen Verräter, der den Vater ans Konkordat lieferte.",
+        "Sayra spürt, wie die Trauer in kalte Entschlossenheit umschlägt.",
+        "Kapitelende: Der letzte Eintrag bricht mitten im Satz ab - mit einem Blutfleck auf der Seite."
+      ]
+    },
+    {
+      "nummer": 16,
+      "titel": "[Renkar-Sicht] Die Botschaft im Stein",
+      "ziel": "Renkars Doppelrolle zuspitzen; die Spannung um seinen Verrat erhöhen.",
+      "beats": [
+        "Renkar findet abseits der Gruppe ein verborgenes Konkordats-Botenzeichen am Friedhof.",
+        "Eine versteckte Anweisung Olvennes: melde den Standort, sobald der Beweis gefunden ist.",
+        "Renkar steht vor der Wahl - er kennt nun den Ort und könnte Sayra ausliefern.",
+        "Er erinnert sich an Sayras Berührung und an Olvennes Drohung gegen andere Leben.",
+        "Er zerstört das Zeichen, doch ein Sturmküsten-Späher hat ihn dabei beobachtet.",
+        "Kapitelende: Renkar weiß, dass sein Geheimnis nun nicht mehr nur ihm gehört."
+      ]
+    },
+    {
+      "nummer": 17,
+      "titel": "Was Kaelith verschwieg",
+      "ziel": "Kaeliths Geheimnis enthüllen; die Bindung erschüttern; Vergebung als Thema setzen.",
+      "beats": [
+        "Sayra konfrontiert Kaelith mit einer Inschrift, die seinen Namen unter den frühen Verbrennern nennt.",
+        "Kaelith gesteht, dass er vor Jahrhunderten gezwungen wurde, beim ersten Verbrennen zu helfen.",
+        "Sayra fühlt durch die Bindung seine jahrhundertealte Schuld wie eine offene Wunde.",
+        "Sie ringt mit Wut und Mitgefühl zugleich; die Bindung droht zu reißen.",
+        "Kaelith bittet nicht um Vergebung, sondern nur, dass sie die Wahrheit vollendet.",
+        "Kapitelende: Der geteilte Herzschlag stolpert - und beide spüren, wie nah ein Bruch der Bindung dem Tod ist."
+      ]
+    },
+    {
+      "nummer": 18,
+      "titel": "Der Beweis und die Last",
+      "ziel": "Den Beweis sichern; die Gruppe um ihre nächste Bewegung ringen lassen; Verfolgung wieder näher rücken.",
+      "beats": [
+        "Sayra sichert Tagebuch, Inschriften-Abschriften und Corms Listen zu einem vollständigen Beweis.",
+        "Iseryn will den Beweis sofort als Kriegswaffe gegen das Konkordat nutzen.",
+        "Sayra will ihn dem ganzen Reich zeigen, nicht nur einer Kriegspartei.",
+        "Renkar drängt zur Eile - er ahnt, dass Olvenne den Standort bald kennt.",
+        "Tamsin, geschwächt, besteht darauf, mitzukämpfen.",
+        "Kapitelende: Am Talrand erscheinen Konkordats-Banner - jemand hat den Friedhof verraten."
+      ]
+    },
+    {
+      "nummer": 19,
+      "titel": "Verrat im Tal",
+      "ziel": "Den Verdacht des Verrats auf Renkar lenken; die Romantik schwer auf die Probe stellen.",
+      "beats": [
+        "Konkordats-Truppen riegeln das Tal ab; die Gruppe ist eingekesselt.",
+        "Der Sturmküsten-Späher beschuldigt Renkar öffentlich, ein Zeichen zerstört zu haben.",
+        "Sayra fordert die Wahrheit; Renkar gesteht, dass Olvenne ihn schickte - aber schweigt, dass er das Zeichen vernichtete.",
+        "Sayra fühlt sich verraten und stößt ihn von sich; die Bindung an Kaelith flackert vor Schmerz.",
+        "Iseryn will Renkar töten lassen; Sayra kann es nicht zulassen.",
+        "Kapitelende: Bevor die Wahrheit ganz ans Licht kommt, beginnt der Angriff."
+      ]
+    },
+    {
+      "nummer": 20,
+      "titel": "Asche und Blitz",
+      "ziel": "Die erste große Schlacht; den hohen Preis der Magie im Krieg zeigen; Bündnis im Feuer schmieden.",
+      "beats": [
+        "Schlacht im Tal: Konkordats-Drachen gegen Sturmdrachen und Kaelith.",
+        "Sayra zaubert über ihre Grenzen; eine weitere Strähne ergraut, ihre Hände zittern.",
+        "Renkar kämpft an ihrer Seite, um seine Loyalität zu beweisen, trotz des Bruchs.",
+        "Corm rettet den Beweis aus dem Feuer, wird dabei verwundet.",
+        "Iseryns Sturmdrache reißt eine Bresche in die Konkordats-Linie.",
+        "Kapitelende: Sie durchbrechen die Belagerung - aber Tamsins Drache stürzt getroffen ins Tal."
+      ]
+    },
+    {
+      "nummer": 21,
+      "titel": "Der Fall des jungen Drachen",
+      "ziel": "Tamsins Drama zuspitzen; Verlust ankündigen, ohne ihn schon zu vollziehen; Tempo halten.",
+      "beats": [
+        "Tamsin und ihr Drache stürzen; Sayra und Kaelith jagen hinterher.",
+        "Der junge Drache ist schwer verwundet; die Bindung beginnt zu reißen.",
+        "Tamsin weigert sich, ihn zurückzulassen, obwohl es sie töten könnte.",
+        "Sayra heilt mit einem Zauber, der sie Wochen kostet - nur ein Aufschub.",
+        "Die Gruppe flieht weiter, Tamsin auf Kaeliths Rücken, sterbensbleich.",
+        "Kapitelende: Die Heilerin der Sturmküste sagt, dass beim nächsten Riss niemand sie mehr retten kann."
+      ]
+    },
+    {
+      "nummer": 22,
+      "titel": "Zuflucht in der Sturmburg",
+      "ziel": "Atempause; die Romantik zwischen Schuld und Begehren vertiefen; das Dreieck verschärfen.",
+      "beats": [
+        "Rückkehr zur Sturmburg; die Erschöpfung der Gruppe wird greifbar.",
+        "Sayra und Renkar haben eine Aussprache - Wut, Verletzung, und doch die alte Anziehung.",
+        "Renkar gesteht, dass er das Botenzeichen zerstörte, um sie zu schützen; Sayra weiß nicht, ob sie es glauben soll.",
+        "Iseryn macht Renkar gegenüber einen kühlen, provokanten Annäherungsversuch - oder spielt damit.",
+        "Sayra ertappt sich bei Eifersucht und hasst sich dafür.",
+        "Kapitelende: In der Nacht kommt Renkar zu Sayra, und zum ersten Mal geben beide dem Begehren nach - im Wissen, dass es Zeit kostet."
+      ]
+    },
+    {
+      "nummer": 23,
+      "titel": "Geliehene Zeit",
+      "ziel": "Die Intimität der Beziehung; den Lebenszeit-Preis von Nähe und Magie ins Persönliche holen.",
+      "beats": [
+        "Morgen nach der Nacht; eine seltene Zärtlichkeit zwischen Sayra und Renkar.",
+        "Kaelith bemerkt trocken, dass Liebe in dieser Welt buchstäblich Lebenszeit kostet.",
+        "Renkar zeigt Sayra, wie wenig Zeit ihm bleibt - eine Zahl, die er auf den Tag kennt.",
+        "Sayra schwört, die Wahrheit ans Licht zu bringen, bevor einer von ihnen stirbt.",
+        "Corm bringt die Nachricht, dass das Konkordat eine große Offensive plant.",
+        "Kapitelende: Iseryn eröffnet, dass die Schlacht, zu der sie Sayra verpflichtet hat, in drei Tagen beginnt."
+      ]
+    },
+    {
+      "nummer": 24,
+      "titel": "[Renkar-Sicht] Die zweite Leine",
+      "ziel": "Renkars inneren Konflikt auf den Höhepunkt treiben; eine neue Drohung Olvennes einführen.",
+      "beats": [
+        "Renkar empfängt heimlich eine letzte Botschaft Olvennes über einen gefangenen Boten.",
+        "Olvenne hat seinen Drachen in ihrer Gewalt und droht, ihn verbrennen zu lassen.",
+        "Das stellt Renkar vor die unmögliche Wahl: Sayra oder sein eigenes Überleben.",
+        "Er erkennt, dass Olvenne ihn nie als Verräter, sondern als Werkzeug sah.",
+        "Renkar beschließt, Sayra die ganze Wahrheit zu sagen - bevor die Schlacht beginnt.",
+        "Kapitelende: Doch als er zu ihr will, ist sie schon fort - zur Kriegsberatung mit Iseryn."
+      ]
+    },
+    {
+      "nummer": 25,
+      "titel": "Kriegsrat der Sturmfürsten",
+      "ziel": "Die kommende Schlacht planen; Iseryns Kalkül offenlegen; Sayra in eine moralische Zwickmühle bringen.",
+      "beats": [
+        "Sayra sitzt im Kriegsrat; die Sturmfürsten wollen die Konkordats-Offensive mit der Wahrheit als Waffe brechen.",
+        "Iseryn enthüllt ihren Plan: den Beweis erst nach dem Sieg verbreiten, um maximal zu schaden.",
+        "Sayra erkennt, dass Iseryn die Wahrheit für den Krieg horten will, nicht für die Drachen.",
+        "Ein Streit darüber, ob man die Konkordats-Drachen retten oder den Feind brechen will.",
+        "Kaelith warnt, dass jede Schlacht weitere Drachen verbrennt - auf beiden Seiten.",
+        "Kapitelende: Sayra begreift, dass sie zwischen zwei Mächten gefangen ist, die beide die Drachen opfern."
+      ]
+    },
+    {
+      "nummer": 26,
+      "titel": "Die Nacht vor der Schlacht",
+      "ziel": "Ruhe vor dem Sturm; Beziehungen vertiefen; Tamsins Abschied vorbereiten.",
+      "beats": [
+        "Die Gruppe verbringt die letzte Nacht vor der Schlacht zusammen.",
+        "Tamsin erzählt Sayra, wie sie sich kennenlernten, und nimmt heimlich Abschied.",
+        "Sayra ahnt, dass Tamsin etwas verschweigt, kann sie aber nicht zum Reden bringen.",
+        "Renkar versucht, Sayra die Wahrheit über Olvennes neue Drohung zu sagen, wird unterbrochen.",
+        "Kaelith und Sayra teilen einen stillen Moment der Verbundenheit trotz allem.",
+        "Kapitelende: Im Morgengrauen heben sich am Horizont die Drachen des Konkordats - die Schlacht beginnt."
+      ]
+    },
+    {
+      "nummer": 27,
+      "titel": "Die Schlacht am Sturmwall",
+      "ziel": "Die große Schlacht entfesseln; den Krieg in seiner ganzen Brutalität zeigen; Tempo und Einsatz maximieren.",
+      "beats": [
+        "Die Konkordats-Offensive prallt auf die Sturmfürsten am Sturmwall.",
+        "Sayra und Kaelith stürzen sich ins Gefecht; jeder Zauber verbrennt Tage.",
+        "Renkar kämpft an ihrer Seite, hin- und hergerissen, ob er Olvenne gehorchen soll.",
+        "Iseryn führt die Sturmdrachen in einen Gegenangriff.",
+        "Corm koordiniert vom Boden aus die Verteidigung mit seinem Logistikwissen.",
+        "Kapitelende: Inmitten des Chaos erscheint Olvenne selbst, auf einem mächtigen Drachen, und ruft Sayras Namen."
+      ]
+    },
+    {
+      "nummer": 28,
+      "titel": "Olvenne im Sturm",
+      "ziel": "Die Antagonistin direkt konfrontieren; ihre Überzeugung und Gefährlichkeit zeigen; den Verrat zuspitzen.",
+      "beats": [
+        "Olvenne fordert Sayra heraus; ein Duell der Drachen über dem Schlachtfeld.",
+        "Olvenne argumentiert, dass die Lüge das Reich rettet und Sayra es zerstört.",
+        "Sayra wirft ihr den Mord am Vater vor; Olvenne leugnet nicht.",
+        "Olvenne enthüllt, dass Renkar in ihrem Dienst steht - um Sayra zu spalten.",
+        "Sayra blickt zu Renkar, voller Zweifel; die Bindung an Kaelith flackert vor Schmerz.",
+        "Kapitelende: Olvenne befiehlt Renkar, Sayra jetzt auszuliefern - und alle warten auf seine Entscheidung."
+      ]
+    },
+    {
+      "nummer": 29,
+      "titel": "Renkars Wahl",
+      "ziel": "Renkars Loyalitätsfrage entscheiden; die Romantik durch eine Tat statt Worte beweisen; Olvennes Plan stören.",
+      "beats": [
+        "Renkar steht zwischen Olvenne und Sayra, sein eigener gefangener Drache als Druckmittel.",
+        "Er trifft seine Wahl: Er wendet sich offen gegen Olvenne.",
+        "Olvenne lässt zur Strafe seinen Drachen verbrennen - Renkar bricht unter dem Phantomschmerz fast zusammen.",
+        "Sayra fängt ihn auf; der Beweis seiner Treue ist mit Blut bezahlt.",
+        "Die Schlacht kippt vorübergehend zugunsten der Sturmfürsten.",
+        "Kapitelende: Doch Olvenne lächelt - als hätte selbst Renkars Verrat ihrem Plan gedient."
+      ]
+    },
+    {
+      "nummer": 30,
+      "titel": "Der Rückzug der Konkordatsdrachen",
+      "ziel": "Eine trügerische Atempause; Olvennes größeren Plan andeuten; Verluste zählen.",
+      "beats": [
+        "Das Konkordat zieht sich scheinbar geschlagen zurück.",
+        "Die Sturmfürsten feiern, doch Sayra traut dem Frieden nicht.",
+        "Renkar, gebrochen vom Verlust seines Drachen, erklärt, dass Olvenne nie ohne Grund weicht.",
+        "Corm entdeckt in erbeuteten Befehlen Hinweise auf eine zweite, geheime Operation.",
+        "Kaelith spürt etwas Falsches in der Asche des Schlachtfelds.",
+        "Kapitelende: Sayra erkennt, dass der Rückzug eine Falle ist - und dass das eigentliche Ziel nie der Sturmwall war."
+      ]
+    },
+    {
+      "nummer": 31,
+      "titel": "Die zweite Front",
+      "ziel": "Olvennes wahren Plan enthüllen; die Bedrohung auf das Persönliche lenken; Tempo wieder anziehen.",
+      "beats": [
+        "Erbeutete Befehle zeigen: Olvenne greift heimlich die Sturmburg an, wo Verwundete und Tamsin liegen.",
+        "Die Gruppe jagt zurück zur Burg, zu spät befürchten sie.",
+        "Iseryn zögert, ihre Krieger vom Sturmwall abzuziehen - Kalkül gegen Mitgefühl.",
+        "Sayra fliegt mit Kaelith, Renkar und Corm allein der Burg entgegen.",
+        "Unterwegs verbrennt Sayra erneut Lebenszeit für mehr Tempo.",
+        "Kapitelende: Über der Sturmburg steht schon Rauch - der Angriff hat begonnen."
+      ]
+    },
+    {
+      "nummer": 32,
+      "titel": "Feuer in der Burg",
+      "ziel": "Den Angriff auf die Burg zeigen; Tamsins finalen Bogen einleiten; den Verlust näher rücken.",
+      "beats": [
+        "Die Burg brennt; Konkordats-Reiter durchsuchen sie nach dem Beweis.",
+        "Sayra und die anderen kämpfen sich zu den Verwundeten durch.",
+        "Tamsin hat sich mit letzter Kraft den Angreifern entgegengestellt.",
+        "Ihr junger Drache ist bereits gefallen; die Bindung reißt, und sie stirbt langsam.",
+        "Sayra erreicht Tamsin inmitten der Flammen.",
+        "Kapitelende: Tamsin lächelt, blutig, und sagt, sie habe gewusst, dass es so enden würde."
+      ]
+    },
+    {
+      "nummer": 33,
+      "titel": "Der letzte Atem einer Freundin",
+      "ziel": "Den großen Verlust vollziehen - Tamsins Tod, verdient und schmerzhaft; Sayra brechen.",
+      "beats": [
+        "Sayra versucht verzweifelt, Tamsin mit einem Zauber zu retten, der sie selbst Monate kosten würde.",
+        "Tamsin hält sie auf - sie hat ihre Zeit längst für diesen Moment aufgespart.",
+        "Tamsin gesteht, dass sie schon in Korvath wusste, dass ihre Bindung sie früh töten würde.",
+        "Sie bittet Sayra, die Wahrheit zu vollenden, und stirbt in ihren Armen.",
+        "Kaelith teilt Sayras Schmerz durch die Bindung; selbst Renkar wendet den Blick ab.",
+        "Kapitelende: Sayra hält die Tote und spürt, wie etwas in ihr endgültig zu Asche wird."
+      ]
+    },
+    {
+      "nummer": 34,
+      "titel": "Asche der Freundschaft",
+      "ziel": "Die Trauer gestalten; den Verlust nachhallen lassen; Sayras Härtung in Entschlossenheit wandeln.",
+      "beats": [
+        "Die Überlebenden bestatten Tamsin nach Sturmküsten-Brauch im Sturm.",
+        "Sayra trauert kalt und still; ihr Sarkasmus ist erloschen.",
+        "Renkar versucht sie zu trösten, doch sie lässt ihn nicht nah heran.",
+        "Corm zeigt Sayra, dass Tamsin ihm heimlich Aufzeichnungen anvertraute - ein letztes Geschenk für die Sache.",
+        "Kaelith spricht zum ersten Mal sanft zu ihr, ohne Spott.",
+        "Kapitelende: Sayra schwört über Tamsins Grab, dass die Wahrheit ans Licht kommt - koste es, was es wolle."
+      ]
+    },
+    {
+      "nummer": 35,
+      "titel": "Iseryns Preis",
+      "ziel": "Iseryns Verrat vorbereiten; die Allianz zerbrechen lassen; Sayra isolieren.",
+      "beats": [
+        "Iseryn trifft mit ihren Kriegern verspätet ein, nachdem die Burg gefallen ist.",
+        "Sayra wirft ihr vor, die Verwundeten geopfert zu haben, um den Sturmwall zu halten.",
+        "Iseryn rechtfertigt sich kalt mit der Logik des Krieges.",
+        "Sie verlangt nun den Beweis, um ihn als Kriegswaffe zu nutzen - sofort.",
+        "Sayra weigert sich; die Allianz droht zu zerbrechen.",
+        "Kapitelende: Iseryn lässt durchblicken, dass sie den Beweis auch mit Gewalt nehmen wird."
+      ]
+    },
+    {
+      "nummer": 36,
+      "titel": "Diebstahl im Sturm",
+      "ziel": "Iseryns Verrat vollziehen; die Gruppe erneut auf die Flucht treiben; Corms Bogen anreißen.",
+      "beats": [
+        "In der Nacht versuchen Iseryns Leute, den Beweis zu stehlen.",
+        "Corm verteidigt ihn und wird dabei schwer verwundet.",
+        "Sayra, Renkar und Kaelith schlagen sich durch und sichern den Beweis knapp.",
+        "Iseryn stellt sich Sayra; ein bitteres Wortgefecht über Verrat und Notwendigkeit.",
+        "Kaelith deckt vor allen auf, dass die Sturmfürsten die Wahrheit aus Kriegskalkül verschwiegen.",
+        "Kapitelende: Die Allianz ist zerbrochen; die Gruppe muss erneut fliehen - in einen Sturm hinein."
+      ]
+    },
+    {
+      "nummer": 37,
+      "titel": "Corms Geständnis",
+      "ziel": "Corms Geheimnis enthüllen; Sayras Vergebungsfähigkeit testen; ein stilles Drama vor der finalen Eskalation.",
+      "beats": [
+        "Auf der Flucht liegt der verwundete Corm im Sterben.",
+        "Er gesteht, dass er einst unwissentlich Sayras Vaters Namen in einem Bericht nannte.",
+        "Sayra erkennt, dass er der Verräter aus dem Tagebuch war - ohne es zu wollen.",
+        "Sie ringt mit Hass und der Erkenntnis, dass auch er ein Opfer der Maschine war.",
+        "Corm übergibt ihr seine letzten Aufzeichnungen und bittet um keine Vergebung.",
+        "Kapitelende: Corm stirbt, bevor Sayra weiß, ob sie ihm vergeben kann - eine zweite Lücke in der Gruppe."
+      ]
+    },
+    {
+      "nummer": 38,
+      "titel": "[Renkar-Sicht] Was bleibt",
+      "ziel": "Renkar nach dem Verlust seines Drachen zeigen; die Beziehung neu vermessen; seine schwindende Zeit betonen.",
+      "beats": [
+        "Renkar, ohne Drache, spürt sein Leben rascher schwinden - die Bindung hielt ihn jung.",
+        "Er reflektiert, dass er nichts mehr hat als Sayra und die Sache.",
+        "Er beobachtet Sayra in ihrer Trauer und fürchtet, sie an die Verbitterung zu verlieren.",
+        "Er entscheidet, ihr alles zu beichten - auch Olvennes alte Drohung.",
+        "Eine Erinnerung an Tamsin zeigt ihm, wofür der Kampf war.",
+        "Kapitelende: Renkar geht zu Sayra mit dem Vorsatz, kein Geheimnis mehr zwischen ihnen zu lassen."
+      ]
+    },
+    {
+      "nummer": 39,
+      "titel": "Keine Geheimnisse mehr",
+      "ziel": "Die Romantik durch volle Ehrlichkeit festigen, bevor das dunkle Ende sie prüft.",
+      "beats": [
+        "Renkar beichtet Sayra die ganze Geschichte seiner Doppelrolle und Olvennes Druckmittel.",
+        "Sayra ringt mit dem Verrat, erkennt aber, dass er sich für sie entschieden hat.",
+        "Sie verzeihen einander unter Tränen; eine harte, ehrliche Nähe.",
+        "Kaelith warnt, dass diese Ruhe nicht halten wird.",
+        "Sie planen, den Beweis an einen Ort zu bringen, wo das ganze Reich ihn sehen muss.",
+        "Kapitelende: Eine Sturmküsten-Botin überbringt eine Nachricht, die alles ändert: Olvenne hält die Brutgründe besetzt."
+      ]
+    },
+    {
+      "nummer": 40,
+      "titel": "Die letzten Bruteier",
+      "ziel": "Den Einsatz auf das Überleben der Drachenart heben; Olvennes finale Grausamkeit enthüllen.",
+      "beats": [
+        "Die Botschaft enthüllt, dass in den Brutgründen die letzten Dracheneier liegen.",
+        "Olvenne plant, sie zu verbrennen, um die Sturmfürsten endgültig zu entwaffnen und die Wahrheit zu begraben.",
+        "Kaelith ist erschüttert - das wäre das Ende seiner Art.",
+        "Sayra erkennt, dass der Beweis wertlos ist, wenn keine Drachen mehr leben.",
+        "Sie beschließen, zu den Brutgründen zu fliegen, gegen jede Vernunft.",
+        "Kapitelende: Iseryn taucht unerwartet wieder auf - sie will dieselben Eier, aus eigenem Kalkül."
+      ]
+    },
+    {
+      "nummer": 41,
+      "titel": "Zweckbündnis im letzten Licht",
+      "ziel": "Eine letzte, brüchige Allianz mit Iseryn schmieden; das Dreieck zuspitzen; auf die Brutgründe zusteuern.",
+      "beats": [
+        "Sayra und Iseryn schließen ein widerwilliges Bündnis, um die Eier zu retten.",
+        "Beide misstrauen einander zutiefst; Renkar steht dazwischen.",
+        "Iseryn provoziert Renkar offen; Sayra muss ihre Eifersucht beiseiteschieben.",
+        "Sie planen einen Angriff auf die besetzten Brutgründe.",
+        "Kaelith opfert eine geteilte Erinnerung, um den geheimen Eingang zu zeigen - es kostet ihn Kraft.",
+        "Kapitelende: Sie fliegen los, und Sayra weiß, dass nicht alle zurückkehren werden."
+      ]
+    },
+    {
+      "nummer": 42,
+      "titel": "Rückkehr zu den Brutgründen",
+      "ziel": "Den Schauplatz von Sayras Entzündung wiederaufgreifen; die finale Eskalation einleiten; Erinnerung und Gegenwart verweben.",
+      "beats": [
+        "Anflug auf die Brutgründe, wo Sayra einst entzündet wurde - der Kreis schließt sich.",
+        "Konkordats-Truppen haben die Höhlen schwer befestigt.",
+        "Sayra erinnert sich an die Nacht ihrer Bindung; Kaelith teilt den Moment mit ihr.",
+        "Sie infiltrieren die Höhlen über den geheimen Eingang.",
+        "Im Inneren finden sie die letzten Eier - bewacht und zum Verbrennen vorbereitet.",
+        "Kapitelende: Olvenne erwartet sie bereits, als hätte sie mit ihrem Kommen gerechnet."
+      ]
+    },
+    {
+      "nummer": 43,
+      "titel": "Die Falle der Hochmarschallin",
+      "ziel": "Olvennes endgültige Falle zuschnappen lassen; die dunkelste Stunde einleiten; Verrat in den eigenen Reihen.",
+      "beats": [
+        "Olvenne offenbart, dass die ganze Spur zu den Brutgründen ihre Inszenierung war.",
+        "Sie wollte Sayra, den Beweis und die letzten Drachenfreunde an einem Ort.",
+        "Iseryn wägt offen ab, ob sie Sayra für die Eier opfert.",
+        "Konkordats-Truppen umstellen die Gruppe in den Höhlen.",
+        "Olvenne bietet Sayra ein letztes Mal an, zu schweigen und zu leben.",
+        "Kapitelende: Sayra lehnt ab - und Olvenne gibt den Befehl, die Eier zu entzünden."
+      ]
+    },
+    {
+      "nummer": 44,
+      "titel": "Brand der Hoffnung",
+      "ziel": "Die finale Schlacht der Brutgründe; höchste Opfer; den Tiefpunkt vorbereiten.",
+      "beats": [
+        "Kampf um die brennenden Brutgründe; jeder Zauber kostet jetzt offen sichtbar Leben.",
+        "Sayra rettet einige Eier, kann aber nicht alle bergen.",
+        "Renkar kämpft sich verzweifelt zu ihr durch.",
+        "Iseryn wendet sich im entscheidenden Moment ab - sie zieht ihre Drachen zurück, um die Eier nicht dem Konkordat zu überlassen, opfert dabei aber Sayras Deckung.",
+        "Kaelith stellt sich Olvennes Drachen entgegen, alt und unterlegen.",
+        "Kapitelende: Olvennes Drache reißt Kaelith eine furchtbare Wunde - und Sayra spürt den geteilten Schmerz wie den eigenen Tod."
+      ]
+    },
+    {
+      "nummer": 45,
+      "titel": "Geteilter Schmerz",
+      "ziel": "Kaeliths Verletzung zur existenziellen Krise machen; die Bindung an den Rand des zweiten Todes treiben.",
+      "beats": [
+        "Kaelith ist schwer verwundet; durch die Bindung blutet auch Sayra innerlich.",
+        "Sie steht vor der Wahl: Kaelith mit einem gewaltigen Zauber retten und dafür Jahre verbrennen.",
+        "Renkar fleht sie an, sich nicht für den Drachen zu opfern; Kaelith fleht, sie solle fliehen.",
+        "Sayra zaubert dennoch - Strähne um Strähne ergraut, ihr Körper altert in Minuten.",
+        "Kaelith überlebt knapp, doch beide sind ausgebrannt und gefangen.",
+        "Kapitelende: Olvenne steht über ihnen, triumphierend - der Beweis liegt nun in ihren Händen."
+      ]
+    },
+    {
+      "nummer": 46,
+      "titel": "Der Verlust des Beweises",
+      "ziel": "Den zweiten großen Schlag setzen; den Tiefpunkt fast vollenden; Olvennes Sieg zeigen.",
+      "beats": [
+        "Olvenne hält den Beweis und befiehlt seine Vernichtung im Drachenfeuer.",
+        "Sayra muss zusehen, wie Tagebuch und Listen zu Asche werden.",
+        "Renkar versucht ein letztes Aufbäumen und wird niedergeschlagen.",
+        "Olvenne erklärt, dass die Wahrheit nun für immer begraben ist.",
+        "Sie verschont Sayra bewusst - als gebrochene Zeugin ist sie ungefährlicher als als Märtyrerin.",
+        "Kapitelende: Olvenne fliegt davon und lässt Sayra mit nichts zurück als Asche und einem sterbenskranken Drachen."
+      ]
+    },
+    {
+      "nummer": 47,
+      "titel": "Was die Asche bewahrt",
+      "ziel": "Einen Funken Hoffnung im Tiefpunkt setzen, ohne den Schmerz zu mildern; das letzte gerettete Ei enthüllen.",
+      "beats": [
+        "Sayra, Renkar und der verwundete Kaelith schleppen sich aus den rauchenden Brutgründen.",
+        "Sayra ist gealtert, erschöpft, scheinbar besiegt - der Beweis ist fort, Tamsin und Corm sind tot.",
+        "In ihrem Mantel entdeckt sie ein einziges überlebendes Drachenei, das sie unbewusst gerettet hat.",
+        "Kaelith erkennt es als das letzte seiner Art und nennt es einen letzten Funken.",
+        "Sayra begreift, dass Olvenne nicht weiß, dass ein Ei überlebte.",
+        "Kapitelende: Renkar sagt, dass sie nun nichts mehr haben als einander und dieses Ei - und dass das reichen muss."
+      ]
+    },
+    {
+      "nummer": 48,
+      "titel": "Die dunkelste Stunde",
+      "ziel": "Band 2 auf einem Tiefpunkt enden lassen, der den Aufstand von Band 3 zündet; alle Fäden in einen Cliffhanger ziehen.",
+      "beats": [
+        "Die Überlebenden finden Unterschlupf in einer verlassenen Festungsstadt.",
+        "Sayra zählt die Verluste: der Beweis, Tamsin, Corm, fast Kaelith, fast sich selbst.",
+        "Iseryn schickt eine Botschaft: Sie hat einige Eier gerettet und ruft zum offenen Aufstand auf.",
+        "Sayra erkennt, dass die begrabene Wahrheit nur durch einen Aufstand wieder ans Licht kommt.",
+        "Sie schwört, aus der Gejagten eine Anführerin zu werden, und Renkar und Kaelith stellen sich an ihre Seite.",
+        "Kapitelende: Am Himmel über der Festung erscheinen Konkordats-Drachen mit Olvennes Bannern - die Jagd geht weiter, und der Krieg um die Wahrheit hat gerade erst begonnen."
+      ]
+    }
+  ]
+}

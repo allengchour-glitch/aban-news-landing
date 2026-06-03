@@ -1,0 +1,52 @@
+# Generierte Kapitel nicht einchecken (Output, kein Quellcode)
+kapitel/*.md
+# Trilogie: Kapitel liegen pro Band in Unterordnern (kapitel/band-0N/...)
+kapitel/band-*/
+kapitel/**/*.md
+# Kompilierte Buch-Ausgaben (Output)
+ausgabe/
+# Backups und Lektorate (Output)
+kapitel/*.bak.md
+kapitel/*.lektorat.md
+roman*.json.bak
+
+# --- Ausnahme: handgeschriebene Trilogie "Das Tal haelt den Atem an" ---
+# Diese Kapitel sind echte, redigierte Prosa (nicht API-regenerierbar) und
+# werden bewusst versioniert. Backups/Lektorate bleiben Output (siehe unten).
+!kapitel/band-01/
+!kapitel/band-01/kapitel-*.md
+!kapitel/band-02/
+!kapitel/band-02/kapitel-*.md
+!kapitel/band-03/
+!kapitel/band-03/kapitel-*.md
+kapitel/band-*/*.bak.md
+kapitel/band-*/*.lektorat.md
+
+# --- Ausnahme: englische Uebersetzung "The Valley Holds Its Breath" ---
+!kapitel-en/
+!kapitel-en/band-01/
+!kapitel-en/band-01/kapitel-*.md
+!kapitel-en/band-02/
+!kapitel-en/band-02/kapitel-*.md
+!kapitel-en/band-03/
+!kapitel-en/band-03/kapitel-*.md
+
+# --- Ausnahme: handgeschriebener Roman "Schicht" (Ruhrgebiet-Saga) ---
+!kapitel-schicht/
+!kapitel-schicht/band-01/
+!kapitel-schicht/band-01/kapitel-*.md
+!kapitel-schicht/band-02/
+!kapitel-schicht/band-02/kapitel-*.md
+!kapitel-schicht/band-03/
+!kapitel-schicht/band-03/kapitel-*.md
+kapitel-schicht/band-*/*.bak.md
+kapitel-schicht/band-*/*.lektorat.md
+
+# --- Ausnahme: englische Uebersetzung "The Seam" ---
+!kapitel-schicht-en/
+!kapitel-schicht-en/band-01/
+!kapitel-schicht-en/band-01/kapitel-*.md
+!kapitel-schicht-en/band-02/
+!kapitel-schicht-en/band-02/kapitel-*.md
+!kapitel-schicht-en/band-03/
+!kapitel-schicht-en/band-03/kapitel-*.md

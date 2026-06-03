@@ -1,0 +1,42 @@
+name: Automatisierungs-Radar — Daten-Wächter (KI)
+
+# Wöchentliche KI-Prüf-Checkliste: Welche Tool-Angaben könnten veraltet sein?
+# Erzeugt FRAGEN (keine Behauptungen) als Artefakt; ein Mensch verifiziert gegen die
+# offizielle Anbieterseite. Läuft nur mit gesetztem ANTHROPIC_API_KEY-Secret — ohne
+# Key wird der Schritt übersprungen (Check bleibt grün, kein Hard-Fail).
+
+on:
+  schedule:
+    - cron: '41 6 * * 1'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    name: KI-Prüf-Checkliste erzeugen
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Hinweis, wenn kein API-Key gesetzt ist
+        if: ${{ env.ANTHROPIC_API_KEY == '' }}
+        run: echo "ANTHROPIC_API_KEY nicht gesetzt — Daten-Wächter übersprungen (ok)."
+      - name: anthropic installieren
+        if: ${{ env.ANTHROPIC_API_KEY != '' }}
+        run: pip install anthropic
+      - name: Daten-Wächter laufen lassen
+        if: ${{ env.ANTHROPIC_API_KEY != '' }}
+        run: |
+          cd automatisierung-radar
+          python ai/ki_helfer.py audit
+      - name: Prüf-Checkliste als Artefakt hochladen
+        if: ${{ env.ANTHROPIC_API_KEY != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: automatisierung-radar-audit
+          path: automatisierung-radar/data/_audit.json
+          retention-days: 30

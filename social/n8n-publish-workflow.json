@@ -1,0 +1,114 @@
+{
+  "name": "aban — Publish Fanout",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## aban Publish-Fanout\n\nEmpfängt den Webhook von `social/post.py` (Feld `PUBLISH_WEBHOOK_URL`) und postet an\nLinkedIn, X und Mastodon.\n\n**Einrichten:**\n1. Workflow importieren.\n2. In jedem Post-Node deine **Credential** verbinden (LinkedIn / X OAuth, Mastodon-Token).\n3. Workflow **aktivieren**.\n4. Im Webhook-Node die **Production-URL** kopieren → als GitHub-Secret `PUBLISH_WEBHOOK_URL` setzen.\n\nFelder unter `{{ $json.body }}`: `text`, `url`, `id`, `tags`.\n`Text bauen` liefert `text` (voll, für LinkedIn/Mastodon) und `text_x` (≤280 Zeichen, für X).\nNicht gebrauchte Plattform-Nodes einfach löschen oder deaktivieren.",
+        "height": 340,
+        "width": 380
+      },
+      "id": "note1",
+      "name": "Anleitung",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-40, 0]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "aban-publish",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "webhook1",
+      "name": "Webhook (von post.py)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [420, 200],
+      "webhookId": "aban-publish"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Baut Post-Texte aus dem Webhook-Body.\n// text   = voll (LinkedIn/Mastodon)\n// text_x = auf 280 Zeichen gekuerzt (X/Twitter): bei Ueberlaenge erste Zeile + Link.\nconst b = ($input.first().json.body) || $input.first().json || {};\nconst body = (b.text || '').trim();\nconst link = b.url ? String(b.url) : '';\nconst full = (body + (link ? '\\n' + link : '')).trim();\n\nfunction forX(){\n  if (full.length <= 280) return full;\n  const firstLine = body.split('\\n')[0].trim();\n  let t = link ? (firstLine + ' ' + link) : firstLine;\n  if (t.length > 280) t = t.slice(0, 279) + '\\u2026';\n  return t;\n}\n\nreturn [{ json: { text: full, text_x: forX(), raw: b } }];"
+      },
+      "id": "format1",
+      "name": "Text bauen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 200]
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.text }}",
+        "additionalFields": {}
+      },
+      "id": "linkedin1",
+      "name": "LinkedIn posten",
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [920, 40],
+      "notesInFlow": true,
+      "notes": "LinkedIn-Credential (OAuth2) hier verbinden. Nutzt den vollen Text."
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.text_x }}",
+        "additionalFields": {}
+      },
+      "id": "twitter1",
+      "name": "X / Twitter posten",
+      "type": "n8n-nodes-base.twitter",
+      "typeVersion": 2,
+      "position": [920, 200],
+      "notesInFlow": true,
+      "notes": "X/Twitter-Credential (OAuth2) hier verbinden. Nutzt text_x (automatisch auf 280 Zeichen gekuerzt)."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.MASTODON_INSTANCE }}/api/v1/statuses",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            { "name": "status", "value": "={{ $json.text }}" },
+            { "name": "visibility", "value": "public" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "mastodon1",
+      "name": "Mastodon posten",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [920, 360],
+      "notesInFlow": true,
+      "notes": "Header-Auth-Credential anlegen: Name 'Authorization', Wert 'Bearer DEIN_TOKEN'. MASTODON_INSTANCE als n8n-Env setzen oder URL fest eintragen."
+    }
+  ],
+  "connections": {
+    "Webhook (von post.py)": {
+      "main": [
+        [
+          { "node": "Text bauen", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Text bauen": {
+      "main": [
+        [
+          { "node": "LinkedIn posten", "type": "main", "index": 0 },
+          { "node": "X / Twitter posten", "type": "main", "index": 0 },
+          { "node": "Mastodon posten", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}

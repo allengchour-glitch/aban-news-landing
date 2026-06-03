@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT vs Claude (2026) — il confronto onesto | aban news</title>
+  <meta name="description" content="ChatGPT o Claude? Confronto onesto per chi lavora in proprio: scrittura, ricerca, contesto, protezione dei dati, prezzo — e quale strumento per quale compito.">
+  <link rel="canonical" href="https://abannews.com/it/chatgpt-vs-claude.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/chatgpt-vs-claude.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/chatgpt-vs-claude.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/chatgpt-vs-claude.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/chatgpt-vs-claude.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/chatgpt-vs-claude.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="ChatGPT vs Claude — il confronto onesto (2026)">
+  <meta property="og:description" content="Niente hype del vincitore: quale strumento per quale compito. Scrittura, ricerca, contesto, dati, prezzo.">
+  <meta property="og:url" content="https://abannews.com/it/chatgpt-vs-claude.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://abannews.com/img/og/chatgpt-vs-claude.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/img/og/chatgpt-vs-claude.png">
+  <style>
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;margin-left:1.2rem}
+    .lang a{padding:.3rem .55rem;color:var(--muted);text-decoration:none;margin:0}
+    .lang a.on{background:var(--ink);color:#fff}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:3rem 0 2rem;text-align:center}
+    h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:58ch;margin:0 auto 1.5rem}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    section{padding:1.2rem 0}
+    section h2{font-size:1.4rem;line-height:1.2;margin:1.4rem 0 .6rem}
+    section h3{font-size:1.1rem;margin:1.1rem 0 .35rem}
+    section p{margin-bottom:.8rem}
+    section ul{margin:0 0 .9rem 1.2rem}
+    section li{margin-bottom:.35rem}
+    .tldr{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.5rem;box-shadow:var(--shadow)}
+    .tldr h2{margin-top:0}
+    .ctable{width:100%;border-collapse:collapse;font-size:.92rem;margin:1rem 0;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+    .ctable th,.ctable td{padding:.7rem .8rem;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+    .ctable thead th{background:var(--amber-lt);color:var(--amber-dk);font-size:.85rem}
+    .ctable td:first-child{font-weight:600;color:var(--ink)}
+    .ctable tr:last-child td{border-bottom:0}
+    .callout{background:var(--amber-lt);border-left:4px solid var(--amber);border-radius:8px;padding:.9rem 1.1rem;margin:1rem 0;font-weight:600}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2rem 0}
+    .cta-box h2{font-size:1.3rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .btn--ghost{border:1px solid var(--amber);color:var(--amber-dk);background:#fff}
+    details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem;padding:0}
+    details[open]{border-color:#fed7aa}
+    summary{padding:1rem 1.1rem;font-weight:600;cursor:pointer;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";float:right;color:#a3a3a3;font-weight:300;font-size:1.3rem;line-height:1}
+    details[open] summary::after{content:"−"}
+    details .a{padding:0 1.1rem 1.1rem;color:var(--muted);font-size:.95rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:2rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+    @media(max-width:560px){.ctable{font-size:.82rem}.ctable th,.ctable td{padding:.55rem .5rem}}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"ChatGPT vs Claude — il confronto onesto per chi lavora in proprio","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"datePublished":"2026-05-31","dateModified":"2026-05-31","description":"Confronto onesto di ChatGPT e Claude per liberi professionisti: scrittura, ricerca, contesto, protezione dei dati, prezzo — quale strumento per quale compito.","inLanguage":"it"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"it","mainEntity":[
+    {"@type":"Question","name":"Qual è migliore, ChatGPT o Claude?","acceptedAnswer":{"@type":"Answer","text":"Non c'è un vincitore assoluto. Molti trovano Claude più forte nella scrittura lunga e sfumata e nel seguire con pulizia istruzioni complesse; ChatGPT segna punti con l'ecosistema più ampio, la generazione di immagini, la modalità vocale e l'accesso al web. Per la maggior parte di chi lavora in proprio decide il compito concreto, non il logo."}},
+    {"@type":"Question","name":"Qual è migliore per scrivere?","acceptedAnswer":{"@type":"Answer","text":"Entrambi scrivono molto bene. In pratica molti trovano il tono di Claude un po' più naturale e meno pubblicitario, mentre ChatGPT è forte sugli output brevi e strutturati. La differenza è più piccola dell'effetto di un buon prompt."}},
+    {"@type":"Question","name":"Mi servono entrambi?","acceptedAnswer":{"@type":"Answer","text":"Di solito no. Inizia con un piano a pagamento, imparalo bene, e prendi il secondo solo se un compito concreto ti porta regolarmente a un limite — ad es. la generazione di immagini (ChatGPT) o documenti molto lunghi (Claude)."}},
+    {"@type":"Question","name":"Quanto costano ChatGPT e Claude?","acceptedAnswer":{"@type":"Answer","text":"I piani individuali a pagamento sono circa 20-25 euro al mese a inizio 2026. Entrambi hanno livelli gratuiti con limiti e piani business/team con garanzie migliori. Verifica tu stesso lo stato attuale e l'impostazione di addestramento."}},
+    {"@type":"Question","name":"Quale rispetta di più la privacy?","acceptedAnswer":{"@type":"Answer","text":"Entrambi sono fornitori statunitensi e offrono controlli sui dati nei piani business (nessun addestramento sui tuoi input, talvolta opzioni UE). Ciò che conta non è il logo ma il piano scelto, le tue impostazioni — e se inserisci dati personali."}}
+  ]}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/it/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/it/ebook.html">eBook</a>
+      <a href="/it/chatgpt-vs-claude.html"><strong>ChatGPT vs Claude</strong></a>
+      <a href="#subscribe" class="btn">Iscriviti</a>
+      <span class="lang"><a href="/chatgpt-vs-claude.html">DE</a><a href="/en/chatgpt-vs-claude.html">EN</a><a href="/fr/chatgpt-vs-claude.html">FR</a><a href="/it/chatgpt-vs-claude.html" class="on" aria-current="true">IT</a></span>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Aggiornato: maggio 2026 · cambia in fretta</span>
+      <h1>ChatGPT vs Claude — il confronto onesto</h1>
+      <p class="lead">Niente hype del vincitore, nessuna trovata di affiliazione. Cosa distingue davvero i due — e quale strumento conviene per quale compito, se lavori in proprio e non hai tempo da perdere.</p>
+    </div>
+
+    <section>
+      <div class="tldr">
+        <h2>In breve</h2>
+        <p>Non c'è un vincitore assoluto — e chi te ne vende uno di solito vuole venderti qualcosa. A grandi linee:</p>
+        <ul>
+          <li><strong>Claude</strong> è spesso l'aiuto alla scrittura più calmo e preciso: testo lungo e sfumato, rispetto pulito di istruzioni complesse, documenti molto lunghi in un colpo solo.</li>
+          <li><strong>ChatGPT</strong> è lo strumento più ampio: generazione di immagini, modalità vocale, accesso al web, un grande ecosistema di integrazioni e « GPT ».</li>
+          <li>Per la maggior parte di chi lavora in proprio <strong>uno</strong> basta. Quale, lo decide il compito più frequente — non il logo.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Il confronto per compito</h2>
+      <table class="ctable">
+        <thead><tr><th>Compito</th><th>ChatGPT</th><th>Claude</th></tr></thead>
+        <tbody>
+          <tr><td>Testo lungo &amp; tono</td><td>Buono, a volte un po' pubblicitario</td><td>Spesso più naturale, meno frasi fatte</td></tr>
+          <tr><td>Istruzioni complesse</td><td>Forte</td><td>Forte, segue le indicazioni molto da vicino</td></tr>
+          <tr><td>Documenti molto lunghi</td><td>Buono</td><td>Contesto molto ampio, un punto di forza</td></tr>
+          <tr><td>Ricerca con il web</td><td>Accesso web integrato</td><td>Dipende dal piano, meno centrale</td></tr>
+          <tr><td>Generare immagini</td><td>Sì, integrato</td><td>No (focus sul testo)</td></tr>
+          <tr><td>Voce / parlato</td><td>Modalità vocale matura</td><td>Più limitata</td></tr>
+          <tr><td>Ecosistema / integrazioni</td><td>Grande (GPT, molte app)</td><td>Più snello, ma focalizzato</td></tr>
+          <tr><td>Qualità dell'italiano</td><td>Molto buona</td><td>Molto buona</td></tr>
+          <tr><td>Prezzo (piano singolo, ~2026)</td><td>~20-25 €/mese</td><td>~20-25 €/mese</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.85rem;color:var(--muted);">Queste sono impressioni sul campo, non valori di laboratorio — ed entrambi i fornitori avanzano ogni settimana. Prendi la tabella come punto di partenza, non come ultima parola.</p>
+    </section>
+
+    <section>
+      <h2>Quale strumento per quale compito?</h2>
+      <h3>Scegli ChatGPT se …</h3>
+      <ul>
+        <li>ti servono regolarmente <strong>immagini</strong> o vuoi usare la <strong>modalità vocale</strong>.</li>
+        <li>apprezzi la <strong>ricerca sul web</strong> direttamente nello strumento e un grande ecosistema di integrazioni.</li>
+        <li>ti piace lavorare con « GPT » già pronti per compiti ricorrenti.</li>
+      </ul>
+      <h3>Scegli Claude se …</h3>
+      <ul>
+        <li>il tuo focus è <strong>scrivere e revisionare</strong> e il tono conta per te.</li>
+        <li>elabori <strong>documenti lunghi</strong> in un colpo solo (contratti, report, interi scambi di mail).</li>
+        <li>tieni a che le istruzioni complesse vengano seguite <strong>con precisione</strong>.</li>
+      </ul>
+      <div class="callout">La verità onesta: la differenza tra i due è più piccola di quella tra un prompt scadente e uno buono. Imparane uno per bene invece di saltare tra i due.</div>
+    </section>
+
+    <section>
+      <h2>Protezione dei dati: stesso compito per entrambi</h2>
+      <p>Entrambi sono fornitori statunitensi. Entrambi offrono controlli sui dati nei piani business — nessun addestramento sui tuoi input, talvolta opzioni UE. Ciò che conta non è il logo, ma il piano scelto, le tue impostazioni e se inserisci o no dati personali. Le cinque domande che passi prima del primo clic sono le stesse per entrambi.</p>
+      <p><a href="/it/ki-dsgvo-konform.html" style="color:var(--amber-dk);font-weight:600;">→ Usare l'IA conforme al GDPR: la verifica in 5 domande</a></p>
+    </section>
+
+    <section>
+      <h2>Domande frequenti</h2>
+      <details><summary>Qual è migliore, ChatGPT o Claude?</summary><div class="a">Nessun vincitore assoluto. Molti trovano Claude più forte nella scrittura lunga e sfumata e nel seguire le istruzioni; ChatGPT segna con ecosistema, immagini, modalità vocale e accesso web. Decide il compito.</div></details>
+      <details><summary>Qual è migliore per scrivere?</summary><div class="a">Entrambi scrivono molto bene. Molti trovano il tono di Claude un po' più naturale, ChatGPT è forte sugli output brevi e strutturati. La differenza è più piccola dell'effetto di un buon prompt.</div></details>
+      <details><summary>Mi servono entrambi?</summary><div class="a">Di solito no. Inizia con un piano a pagamento, imparalo bene, e prendi il secondo solo se un compito concreto ti porta regolarmente a un limite.</div></details>
+      <details><summary>Quanto costano?</summary><div class="a">I piani singoli sono circa 20-25 €/mese a inizio 2026. Entrambi hanno livelli gratuiti con limiti e piani business con garanzie migliori. Verifica tu stesso lo stato attuale.</div></details>
+      <details><summary>Quale rispetta di più la privacy?</summary><div class="a">Due fornitori statunitensi, entrambi con controlli sui dati nei piani business. Conta il piano, le tue impostazioni e se inserisci dati personali — non il logo.</div></details>
+    </section>
+
+    <div class="cta-box" style="background:var(--card);border:1px solid var(--line);">
+      <h2>eBook gratuito: « Anti-Hype »</h2>
+      <p>La scelta dello strumento è solo l'inizio. Il mio eBook gratuito ti mostra il filtro in 3 domande, il tuo stack IA minimo e come ottenere risultati migliori da entrambi i modelli. Senza iscrizione.</p>
+      <a href="/it/ebook.html" class="btn btn--ghost">Leggi l'eBook →</a>
+    </div>
+
+    <div class="cta-box" id="subscribe">
+      <h2>Ogni giorno feriale: l'IA senza il bullshit, in 5 minuti</h2>
+      <p>aban news ti porta dal lunedì al venerdì le evoluzioni dell'IA che contano per il tuo lavoro — inclusi test di strumenti onesti, senza bias di affiliazione.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">Ricevi il briefing IA da 5 min →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Niente spam. Disiscrizione con un clic. Conforme al GDPR.</p>
+    </div>
+
+    <section>
+      <h2 style="font-size:1.05rem;">Continua a leggere</h2>
+      <div style="display:grid;gap:.7rem;grid-template-columns:1fr 1fr;">
+        <a href="/it/chatgpt-fuer-solopreneure.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">ChatGPT per solopreneur</strong><span style="color:var(--muted);font-size:.82rem;">Valore vero, non giochini</span></a>
+        <a href="/it/ki-tools-fuer-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Strumenti di IA per liberi professionisti</strong><span style="color:var(--muted);font-size:.82rem;">Lo stack onesto 2026</span></a>
+        <a href="/it/ki-dsgvo-konform.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Usare l'IA conforme al GDPR</strong><span style="color:var(--muted);font-size:.82rem;">La verifica in 5 domande</span></a>
+        <a href="/it/ki-prompts-schreiben.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Scrivere prompt IA</strong><span style="color:var(--muted);font-size:.82rem;">Prompt migliori in 4 passi</span></a>
+        <a href="/it/ebook.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">eBook gratuito « Anti-Hype »</strong><span style="color:var(--muted);font-size:.82rem;">Usare l'IA senza il bullshit</span></a>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <p><strong>Nota di onestà:</strong> questo confronto non contiene link di affiliazione né posizionamenti a pagamento. Le valutazioni sono impressioni sul campo di inizio 2026; entrambi i fornitori evolvono in fretta. Prezzi e funzioni cambiano — verifica lo stato attuale presso OpenAI o Anthropic.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/it/">Home</a> · <a href="/impressum.html">Note legali</a> · <a href="/datenschutz.html">Privacy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

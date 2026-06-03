@@ -1,0 +1,92 @@
+{
+  "titel": "Die Asche von Vael'Doran",
+  "genre": "Fantasy / Drama",
+  "sprache": "Deutsch",
+  "praemisse": "In einem Reich, dessen Magie aus der Erinnerung der Toten gespeist wird, entdeckt eine junge Archivarin, dass das Vergessen selbst zur Waffe geschmiedet wurde - und dass ihre eigene Familie den ersten Schnitt führte.",
+  "ton": "Ernst, bildreich, getragen. Innerlichkeit vor Action. Kurze, harte Sätze in Momenten der Gewalt; lange, atmende Sätze in Momenten der Stille.",
+  "erzaehlperspektive": "Dritte Person, personal, dicht an Miras Innenleben. Präteritum.",
+  "stilregeln": [
+    "Zeige durch Handlung und Sinneseindruck, statt Gefühle zu benennen.",
+    "Kein moderner Slang, keine Anachronismen.",
+    "Jedes Kapitel endet mit einer offenen Spannung oder einer leisen Wendung.",
+    "Dialoge tragen Subtext - Figuren sagen selten direkt, was sie meinen.",
+    "Magie hat immer einen Preis und wird nie beiläufig eingesetzt."
+  ],
+  "welt": {
+    "name": "Das Mnemonische Reich von Vael'Doran",
+    "regeln_der_magie": "Magie (das 'Entsinnen') zieht Kraft aus den Erinnerungen Verstorbener, die in Aschesteinen gebunden sind. Wer zaubert, verliert dafür eigene Erinnerungen - je größer der Zauber, desto mehr Vergangenheit verschwindet. Mächtige Magier sind oft Menschen ohne eigene Kindheit.",
+    "orte": [
+      "Das Große Archiv von Sehlen - eine Bibliothek aus schwarzem Glas, in der die Erinnerungen des Reiches lagern.",
+      "Die Aschefelder - verbrannte Ebenen, auf denen die Aschesteine geerntet werden.",
+      "Die Stille Stadt Doran - die Hauptstadt, in der das Vergessen Gesetz ist."
+    ],
+    "konflikt": "Der Hohe Rat will das 'Große Vergessen' auslösen: einen Zauber, der die kollektive Erinnerung an einen vergangenen Bürgerkrieg auslöscht - und damit auch die Schuld der Herrschenden. Mira hält den letzten Beweis in Händen."
+  },
+  "figuren": [
+    {
+      "name": "Mira Sehlenwacht",
+      "rolle": "Protagonistin",
+      "alter": 24,
+      "beschreibung": "Junge Archivarin im Großen Archiv. Akribisch, leise, mit einem fast schmerzhaften Gedächtnis - sie vergisst nichts. Trägt die Handschuhe ihrer verstorbenen Mutter.",
+      "wunsch": "Die Wahrheit über den Tod ihrer Mutter bewahren.",
+      "geheimnis": "Ihre Mutter war die Architektin des ersten Vergessens-Zaubers - und bereute es bis zuletzt.",
+      "stimme": "Bedacht, beobachtend, selten laut. Denkt in Bildern aus Büchern."
+    },
+    {
+      "name": "Archivar Caleb Vorn",
+      "rolle": "Mentor / Antagonist",
+      "alter": 58,
+      "beschreibung": "Miras Lehrmeister, oberster Hüter des Archivs. Würdevoll, müde, mit ausgelöschter Kindheit. Glaubt, das Vergessen sei Gnade.",
+      "wunsch": "Das Reich vor der Last seiner eigenen Geschichte schützen.",
+      "geheimnis": "Er war als junger Mann an der Niederschlagung des Aufstands beteiligt und hat seine eigene Schuld weggezaubert.",
+      "stimme": "Ruhig, salbungsvoll, väterlich - bis er bedroht wird."
+    },
+    {
+      "name": "Renn",
+      "rolle": "Verbündeter",
+      "alter": 27,
+      "beschreibung": "Ascheernter von den Feldern, raue Hände, trockener Humor. Misstraut dem Archiv und seinen Leuten - und Mira im Besonderen.",
+      "wunsch": "Überleben, und seine Schwester aus der Schuldknechtschaft freikaufen.",
+      "geheimnis": "Er kann sich an Dinge erinnern, die er nie erlebt hat - ein Fehler im Vergessen.",
+      "stimme": "Knapp, sarkastisch, ehrlich bis zur Grobheit."
+    }
+  ],
+  "kapitel": [
+    {
+      "nummer": 1,
+      "titel": "Das Glas, das nicht vergisst",
+      "ziel": "Mira bei ihrer Arbeit im Archiv einführen; die Welt und die Magie des Entsinnens zeigen; den verbotenen Beweis finden, der die Handlung auslöst.",
+      "beats": [
+        "Mira katalogisiert nachts allein im Großen Archiv und zeigt ihr unfehlbares Gedächtnis.",
+        "Ein Aschestein, der nicht im Verzeichnis steht, fällt ihr in die Hände.",
+        "Sie berührt ihn und sieht eine Erinnerung, die nicht ihre ist: ihre Mutter, die etwas verbirgt.",
+        "Caleb ertappt sie fast; sie versteckt den Stein.",
+        "Kapitelende: Sie erkennt, dass jemand eine Erinnerung versteckt hat, die es nicht geben dürfte."
+      ]
+    },
+    {
+      "nummer": 2,
+      "titel": "Asche unter den Nägeln",
+      "ziel": "Renn einführen; Mira aus dem Archiv hinaus in die Aschefelder treiben; das erste Bündnis (widerwillig) schließen.",
+      "beats": [
+        "Mira verlässt heimlich das Archiv, um die Herkunft des Steins zu finden.",
+        "Auf den Aschefeldern trifft sie Renn, der sie für eine Spionin des Rates hält.",
+        "Eine Patrouille der Stillen Garde taucht auf; beide müssen sich gemeinsam verstecken.",
+        "Renn erkennt das Siegel auf dem Stein - es ist verboten.",
+        "Kapitelende: Renn sagt ihr, dass Menschen, die solche Steine tragen, zu verschwinden pflegen."
+      ]
+    },
+    {
+      "nummer": 3,
+      "titel": "Was Caleb vergaß",
+      "ziel": "Den Antagonisten vertiefen; die Verschwörung des Großen Vergessens enthüllen; Mira vor eine moralische Wahl stellen.",
+      "beats": [
+        "Mira kehrt ins Archiv zurück und konfrontiert Caleb vorsichtig.",
+        "Caleb spricht in Andeutungen über das kommende Große Vergessen als Akt der Gnade.",
+        "Mira entdeckt, dass ihre Mutter den Zauber erfand - und ihn aufzuhalten versuchte.",
+        "Caleb bietet ihr an, ihren Schmerz vergessen zu lassen - eine Versuchung.",
+        "Kapitelende: Mira lehnt ab und versteht, dass sie nun selbst zur Zielscheibe wird."
+      ]
+    }
+  ]
+}

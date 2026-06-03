@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d97706">
+  <title>KI-Ratgeber für Selbstständige — alle Guides | aban news</title>
+  <meta name="description" content="Der ehrliche KI-Ratgeber für Selbstständige: Tools, Prompts, Automatisierung, Datenschutz, Halluzinationen — alle Guides an einem Ort. Kein Hype.">
+  <link rel="canonical" href="https://abannews.com/ki-ratgeber.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/ki-ratgeber.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-ratgeber.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ki-ratgeber.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/ki-ratgeber.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-ratgeber.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="KI-Ratgeber für Selbstständige — alle Guides">
+  <meta property="og:description" content="Tools, Prompts, Automatisierung, Datenschutz, Halluzinationen — die ehrlichen Guides an einem Ort.">
+  <meta property="og:url" content="https://abannews.com/ki-ratgeber.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://abannews.com/img/og/ki-ratgeber.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/img/og/ki-ratgeber.png">
+  <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:860px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;margin-left:1.2rem}
+    .lang a{padding:.3rem .55rem;color:var(--muted);text-decoration:none;margin:0}
+    .lang a.on{background:var(--ink);color:#fff}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:3rem 0 1.5rem;text-align:center}
+    h1{font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.08rem;color:var(--muted);max-width:60ch;margin:0 auto 1rem}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    section{padding:1rem 0}
+    .grp{margin:1.6rem 0}
+    .grp h2{font-size:1.3rem;margin-bottom:.2rem}
+    .grp p.sub{color:var(--muted);font-size:.95rem;margin-bottom:.9rem}
+    .cards{display:grid;gap:.8rem;grid-template-columns:1fr}
+    @media(min-width:620px){.cards{grid-template-columns:1fr 1fr}}
+    .gcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.25rem;text-decoration:none;color:var(--ink);box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+    .gcard:hover{transform:translateY(-2px);border-color:var(--amber)}
+    .gcard .t{font-weight:700;font-size:1.02rem;display:block;margin-bottom:.2rem}
+    .gcard .d{color:var(--muted);font-size:.88rem}
+    .gcard .langs{display:block;margin-top:.5rem;font-size:.72rem;color:var(--amber-dk);font-weight:700;letter-spacing:.03em}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2rem 0}
+    .cta-box h2{font-size:1.3rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:1.5rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"CollectionPage","name":"KI-Ratgeber für Selbstständige","description":"Alle ehrlichen KI-Guides von aban news an einem Ort: Tools, Prompts, Automatisierung, Datenschutz, Halluzinationen.","url":"https://abannews.com/ki-ratgeber.html","publisher":{"@type":"Organization","name":"aban news"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ItemList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"KI-Tools für Selbstständige","url":"https://abannews.com/ki-tools-fuer-selbststaendige.html"},
+    {"@type":"ListItem","position":2,"name":"ChatGPT für Solopreneure","url":"https://abannews.com/chatgpt-fuer-solopreneure.html"},
+    {"@type":"ListItem","position":3,"name":"ChatGPT vs. Claude","url":"https://abannews.com/chatgpt-vs-claude.html"},
+    {"@type":"ListItem","position":4,"name":"KI-Prompts schreiben","url":"https://abannews.com/ki-prompts-schreiben.html"},
+    {"@type":"ListItem","position":5,"name":"E-Mails mit KI schreiben","url":"https://abannews.com/ki-email-schreiben.html"},
+    {"@type":"ListItem","position":6,"name":"KI-Automatisierung für Selbstständige","url":"https://abannews.com/ki-automatisierung-selbststaendige.html"},
+    {"@type":"ListItem","position":7,"name":"KI DSGVO-konform nutzen","url":"https://abannews.com/ki-dsgvo-konform.html"},
+    {"@type":"ListItem","position":8,"name":"KI-Halluzinationen erkennen","url":"https://abannews.com/ki-halluzinationen-erkennen.html"},
+    {"@type":"ListItem","position":9,"name":"Geld verdienen mit KI","url":"https://abannews.com/geld-verdienen-mit-ki.html"}
+  ]}
+  </script>
+<style>.skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}</style>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/preview.html">Beispiel</a>
+      <a href="/ebook.html">eBook</a>
+      <a href="/ki-ratgeber.html"><strong>KI-Ratgeber</strong></a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn">Abonnieren</a>
+      <span class="lang"><a href="/ki-ratgeber.html" class="on" aria-current="true">DE</a><a href="/en/ki-ratgeber.html">EN</a><a href="/fr/ki-ratgeber.html">FR</a><a href="/it/ki-ratgeber.html">IT</a></span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Der ehrliche KI-Ratgeber</span>
+      <h1>KI für Selbstständige — alle Guides an einem Ort</h1>
+      <p class="lead">Keine Tool-Listen zum Wegklicken, keine Affiliate-Masche. Praktische Guides, die ein konkretes Problem lösen — von der Tool-Wahl bis zum Datenschutz. Alle gratis, alle ohne Hype.</p>
+    </div>
+
+    <div class="grp">
+      <h2>1. Einstieg &amp; Tool-Wahl</h2>
+      <p class="sub">Womit anfangen, was sich lohnt, welches Modell für welche Aufgabe.</p>
+      <div class="cards">
+        <a href="/ki-tools-fuer-selbststaendige.html" class="gcard"><span class="t">KI-Tools für Selbstständige</span><span class="d">Der ehrliche Stack 2026 — welche Werkzeuge sich wirklich lohnen, nach Aufgabe sortiert.</span><span class="langs">DE · EN · FR · IT</span></a>
+        <a href="/chatgpt-fuer-solopreneure.html" class="gcard"><span class="t">ChatGPT für Solopreneure</span><span class="d">Echter Nutzen statt Spielerei — wo ChatGPT im Soloalltag wirklich Zeit spart.</span><span class="langs">DE · EN · FR · IT</span></a>
+        <a href="/chatgpt-vs-claude.html" class="gcard"><span class="t">ChatGPT vs. Claude</span><span class="d">Der ehrliche Vergleich: welches Tool für welche Aufgabe, ohne Gewinner-Hype.</span><span class="langs">DE · EN · FR · IT</span></a>
+      </div>
+    </div>
+
+    <div class="grp">
+      <h2>2. Richtig anwenden</h2>
+      <p class="sub">Wie du aus jedem Modell bessere Ergebnisse holst — und Zeit sparst.</p>
+      <div class="cards">
+        <a href="/ki-prompts-schreiben.html" class="gcard"><span class="t">KI-Prompts schreiben</span><span class="d">Bessere Prompts in 4 Schritten — mit Vorher/Nachher und Copy-Vorlage.</span><span class="langs">DE · EN · FR · IT</span></a>
+        <a href="/ki-email-schreiben.html" class="gcard"><span class="t">E-Mails mit KI schreiben</span><span class="d">Schneller schreiben, ohne wie ein Roboter zu klingen — mit Copy-Vorlage.</span><span class="langs">DE · EN · FR · IT</span></a>
+        <a href="/ki-automatisierung-selbststaendige.html" class="gcard"><span class="t">KI-Automatisierung</span><span class="d">Wann sie sich lohnt, der minimale Stack und 5 Abläufe, die wirklich Zeit sparen.</span><span class="langs">DE · EN · FR · IT</span></a>
+      </div>
+    </div>
+
+    <div class="grp">
+      <h2>3. Sicher bleiben</h2>
+      <p class="sub">Datenschutz und Verlässlichkeit — die zwei Fallen, die wirklich teuer werden.</p>
+      <div class="cards">
+        <a href="/ki-dsgvo-konform.html" class="gcard"><span class="t">KI DSGVO-konform nutzen</span><span class="d">Die 5-Fragen-Datenschutz-Prüfung für KI-Tools — praktisch, keine Rechtsberatung.</span><span class="langs">DE · EN · FR · IT</span></a>
+        <a href="/ki-halluzinationen-erkennen.html" class="gcard"><span class="t">KI-Halluzinationen erkennen</span><span class="d">5 Warnsignale für erfundene Fakten und der 30-Sekunden-Check.</span><span class="langs">DE · EN · FR · IT</span></a>
+      </div>
+    </div>
+
+    <div class="grp">
+      <h2>4. Geld verdienen</h2>
+      <p class="sub">Ehrlich kalkuliert, ohne Kurs-Verkaufs-Masche.</p>
+      <div class="cards">
+        <a href="/geld-verdienen-mit-ki.html" class="gcard"><span class="t">Geld verdienen mit KI</span><span class="d">7 Wege, die 2026 wirklich funktionieren — mit realistischem Aufwand und Ertrag.</span><span class="langs">DE</span></a>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <h2>Lieber alles am Stück?</h2>
+      <p>Mein Gratis-eBook „Anti-Hype" bündelt das Denken hinter allen Guides: der 3-Fragen-Filter, dein minimaler KI-Stack, die teuersten Hype-Fallen. Ohne Anmeldung.</p>
+      <a href="/ebook.html" class="btn">eBook lesen →</a>
+    </div>
+
+    <div class="cta-box" style="background:var(--card);border:1px solid var(--line);">
+      <h2>Jeden Werktag in 5 Minuten</h2>
+      <p>aban news liefert dir Mo–Fr die relevanten KI-Entwicklungen für deine Arbeit — ehrlich eingeordnet, ohne Hype.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn">5-Min-KI-Briefing gratis →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Kein Spam. Abmeldung per Klick. DSGVO-konform.</p>
+    </div>
+
+    <div class="disclaimer">
+      <p><strong>Ehrlichkeits-Hinweis:</strong> Alle Guides hier sind kostenlos und enthalten keine Affiliate-Links. KI-Tools ändern sich schnell — prüfe den aktuellen Stand beim Anbieter selbst. Bei rechtlich oder gesundheitlich heiklen Themen gilt: an der Primärquelle prüfen oder Fachperson fragen.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/">Startseite</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

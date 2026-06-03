@@ -1,0 +1,60 @@
+name: Täglicher Verbesserungs-Scan
+
+# Läuft jeden Tag von selbst (ohne Befehl): wendet erst sichere, mechanische Auto-Fixes
+# an (rel=noopener bei target=_blank), scannt dann alle HTML-Seiten + sitemap auf
+# Schwachstellen (SEO, a11y, Security, JSON-LD, Aban-Voice) und schreibt den Report nach
+# reports/IMPROVEMENT-REPORT.md. Auto-Fixes + Report werden committet, wenn sich etwas
+# geändert hat (kein Spam, [skip ci]). So bessert sich die Seite selbst nach.
+
+on:
+  schedule:
+    - cron: '0 6 * * *'      # täglich 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-improvement
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Sichere Auto-Fixes anwenden (rel=noopener)
+        run: python3 tools/daily_improvement_scan.py --fix
+
+      - name: Verbesserungs-Scan (Report nach Fixes)
+        run: python3 tools/daily_improvement_scan.py
+
+      - name: Telegram-Report (mit Buttons)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 tools/telegram_report.py
+
+      - name: Report als Artefakt
+        uses: actions/upload-artifact@v4
+        with:
+          name: improvement-report
+          path: reports/IMPROVEMENT-REPORT.md
+          retention-days: 14
+
+      - name: Auto-Fixes + Report committen, wenn geändert
+        run: |
+          git add -A -- '*.html' reports/IMPROVEMENT-REPORT.md
+          if ! git diff --cached --quiet; then
+            git config user.name "aban-improvement-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git commit -m "chore: täglicher Auto-Fix + Verbesserungs-Report [skip ci]"
+            git push
+          else
+            echo "Nichts geändert — nichts zu committen."
+          fi

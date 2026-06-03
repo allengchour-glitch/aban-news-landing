@@ -1,0 +1,225 @@
+aban news — Broadcast-Vorlagen (beehiiv)
+========================================
+
+Was ist das?
+------------
+6 wiederverwendbare Broadcast-Vorlagen für einmalige Sends (KEINE Onboarding-
+Sequenz — die liegt separat in automation/email-welcome-sequence.txt).
+Gedacht für einen Solo-Betrieb: einmal anlegen, dann wöchentlich/monatlich
+wiederverwenden und nur die Platzhalter füllen.
+
+So nutzt du die Datei:
+1. In beehiiv "Create > Broadcast" wählen.
+2. Passende Vorlage unten kopieren: Betreff in die Subject-Zeile,
+   Preheader ins Preheader-Feld, Body in den Editor.
+3. Platzhalter in [eckigen Klammern] ersetzen. Nichts in Klammern stehen lassen.
+4. Jede Mail hat genau EINE CTA — nicht aufweichen.
+5. Vor dem Senden Voice-Check: keine Hype-Wörter, kein doppeltes "!",
+   durchgehend du-Form, keine erfundenen Zahlen/Stimmen.
+
+Platzhalter-Konvention:
+[THEMA], [WAS], [BEDEUTUNG], [TIPP], [LINK], [VORNAME], [DATUM] usw.
+
+Links (Standard):
+- Newsletter/Abo: https://abannews.beehiiv.com/subscribe
+- Buch (pay-what-you-want): https://abannews.com/buch.html
+- Founding-Member: https://abannews.com/founding.html
+
+----------------------------------------------------------------------
+
+
+[1] LABEL: Tages-Ausgabe (Standard-Vorlage)
+-------------------------------------------
+Betreff: [THEMA-KURZ] — und was es für dich heißt
+Preheader: Drei KI-Sachen von heute. In 5 Minuten durch.
+
+Body:
+Moin [VORNAME],
+
+heute drei Dinge aus der KI-Welt, die für deinen Tag als Solo-Selbstständige:r
+zählen. Kein Hype, nur was du wissen musst.
+
+1) [THEMA 1]
+Was: [WAS — ein, zwei Sätze, sachlich.]
+Bedeutung: [BEDEUTUNG — warum das für dich relevant ist.]
+Tipp: [TIPP — ein konkreter nächster Schritt.]
+
+2) [THEMA 2]
+Was: [WAS]
+Bedeutung: [BEDEUTUNG]
+Tipp: [TIPP]
+
+3) [THEMA 3]
+Was: [WAS]
+Bedeutung: [BEDEUTUNG]
+Tipp: [TIPP]
+
+Das war's für heute. Wenn dir ein Punkt hilft, probier ihn direkt aus — eine
+Sache reicht.
+
+Wenn du eine Frage zu einem der Themen hast, antworte einfach auf diese Mail.
+Ich lese mit.
+
+Bis morgen,
+Aban
+
+----------------------------------------------------------------------
+
+
+[2] LABEL: Wochenrückblick (Freitag)
+------------------------------------
+Betreff: Die 3 KI-Sachen, die diese Woche zählten
+Preheader: Kurz aufgeräumt fürs Wochenende. Rest kannst du ignorieren.
+
+Body:
+Moin [VORNAME],
+
+Freitag. Statt allem, was diese Woche durch die Timeline lief, hier die drei
+Dinge, die für deine Arbeit wirklich etwas ändern.
+
+1) [THEMA 1]
+[Ein, zwei Sätze: was passiert ist und was du davon hast.]
+
+2) [THEMA 2]
+[Ein, zwei Sätze.]
+
+3) [THEMA 3]
+[Ein, zwei Sätze.]
+
+Mehr brauchst du fürs Wochenende nicht. Den Rest kannst du guten Gewissens
+liegen lassen.
+
+Eine Bitte: Wenn dir der Wochenrückblick was bringt, antworte mir mit der einen
+Sache, die du nächste Woche ausprobierst. Das hilft mir, die Themen zu schärfen.
+
+Schönes Wochenende,
+Aban
+
+----------------------------------------------------------------------
+
+
+[3] LABEL: Buch-Ankündigung (pay-what-you-want)
+-----------------------------------------------
+Betreff: Mein Buch ist da — zahl, was es dir wert ist
+Preheader: KI ohne Hype, als Buch. Preis bestimmst du selbst.
+
+Body:
+Moin [VORNAME],
+
+ich habe das, was hier täglich im kurzen Format läuft, sauber sortiert und zu
+einem Buch zusammengefasst: KI im Alltag von Selbstständigen, ohne Hype, ohne
+Buzzwords — die Sachen, die wirklich Zeit sparen.
+
+Preis: zahl, was es dir wert ist. Auch 0 Euro ist eine ehrliche Antwort. Wenn
+es dir später mehr wert war, kannst du jederzeit nachlegen.
+
+Drin sind unter anderem:
+- [PUNKT 1: konkretes Kapitel/Thema]
+- [PUNKT 2]
+- [PUNKT 3]
+
+Es ist kein Kurs und kein Funnel. Ein Buch, das du an einem Nachmittag durch
+hast und danach anwenden kannst.
+
+Hol es dir hier und setz deinen Preis:
+https://abannews.com/buch.html
+
+Bis morgen,
+Aban
+
+----------------------------------------------------------------------
+
+
+[4] LABEL: Founding-Member-Push (warme Leser)
+---------------------------------------------
+Betreff: Founding-Member: 149 Euro, einmalig
+Preheader: Lifetime-Zugang, 30 Tage Geld zurück. Kein Zähler, ehrlich.
+
+Body:
+Moin [VORNAME],
+
+du liest hier schon eine Weile mit — danke dafür. Deshalb bekommst du das hier
+zuerst.
+
+Es gibt eine Founding-Member-Option: 149 Euro, einmalig, Lifetime-Zugang zu
+allem, was hinter der kostenlosen Ausgabe kommt — [LEISTUNG 1], [LEISTUNG 2]
+und [LEISTUNG 3].
+
+Ehrlich zur Knappheit: Ich halte die Founding-Plätze bewusst klein, weil ich
+mit jedem Member persönlich arbeiten will. Ich blende dir keinen Countdown ein
+und erfinde keine Zahlen. Wenn die Plätze voll sind, schreibe ich das hier
+genauso klar.
+
+Das Risiko liegt bei mir: 30 Tage Geld zurück, ohne Begründung. Eine Mail
+reicht.
+
+Wenn dir aban news bisher was gebracht hat, ist das der faire Weg, es zu
+unterstützen — und mehr rauszuholen.
+
+Hier sind die Details und der Founding-Platz:
+https://abannews.com/founding.html
+
+Bis morgen,
+Aban
+
+----------------------------------------------------------------------
+
+
+[5] LABEL: Reaktivierung (inaktive Leser)
+-----------------------------------------
+Betreff: Lese ich dich noch? Kurze Frage
+Preheader: Du hast eine Weile nicht geöffnet. Alles okay — du entscheidest.
+
+Body:
+Moin [VORNAME],
+
+du hast aban news eine Weile nicht mehr geöffnet. Völlig in Ordnung — Postfächer
+sind voll, und ich will keinen Platz belegen, der dir nichts bringt.
+
+Deshalb kurz und ehrlich: Du entscheidest, ob es weitergeht.
+
+- Wenn du dranbleiben willst, musst du nichts tun. Öffne einfach die nächste
+  Ausgabe, dann passt alles.
+- Wenn es gerade nicht passt, melde dich unten ab. Kein Groll, ein Klick.
+
+Damit du weißt, was dir entgeht: Diese Woche ging es um [THEMA 1] und [THEMA 2]
+— beides Sachen, die dir als Selbstständige:r konkret Zeit sparen.
+
+Sag mir gern in einer Antwort, was du dir mehr wünschst. Das ist die schnellste
+Art, den Newsletter für dich besser zu machen.
+
+Abmelden kannst du jederzeit über den Link ganz unten.
+
+Bis bald — oder eben nicht,
+Aban
+
+----------------------------------------------------------------------
+
+
+[6] LABEL: Empfehlungs-/Weiterleitungs-Bitte
+--------------------------------------------
+Betreff: Kennst du jemanden, dem das hier hilft?
+Preheader: Eine Weiterleitung bringt mehr als jede Werbung. Danke.
+
+Body:
+Moin [VORNAME],
+
+kurze Bitte, kein Verkauf.
+
+aban news wächst über Menschen wie dich — nicht über Werbung. Wenn dir der
+Newsletter etwas bringt, kennst du wahrscheinlich jemanden, dem er auch helfen
+würde: jemand, der selbstständig arbeitet und bei KI eher genervt als begeistert
+ist.
+
+So einfach geht's: Leite diese Mail weiter und schreib einen Satz dazu, warum du
+sie liest. Ein ehrlicher Satz von dir wirkt mehr als alles, was ich schreiben
+könnte.
+
+Wer den Newsletter dann selbst abonnieren will, findet ihn hier:
+https://abannews.beehiiv.com/subscribe
+
+Das ist die einzige Sache, um die ich dich heute bitte. Danke, dass du dir die
+30 Sekunden nimmst.
+
+Bis morgen,
+Aban

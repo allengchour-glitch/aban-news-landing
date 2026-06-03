@@ -1,0 +1,22 @@
+# Tag 1 der Woche - aban news LinkedIn-Batch
+# Format pro Item: THEMA / WAS / BEDEUTUNG / TIPP. Items mit --- trennen.
+# Inhalte nuechtern halten, keine erfundenen Zahlen.
+
+THEMA: Sprachmodelle mit groesseren Kontextfenstern
+WAS: Mehrere Anbieter werben damit, dass ihre Modelle laengere Eingaben am Stueck verarbeiten koennen, etwa ganze Dokumente statt einzelner Abschnitte.
+BEDEUTUNG: Fuer Selbststaendige heisst das: weniger Copy-Paste-Schnipsel, mehr "ganzes Dokument rein, Frage stellen". Ob es im Alltag wirklich Zeit spart, haengt davon ab, wie sauber deine Eingabe ist.
+TIPP: Nimm ein echtes Dokument aus deinem Arbeitsalltag und lass es einmal zusammenfassen. Pruefe die Zusammenfassung gegen das Original, bevor du ihr vertraust.
+
+---
+
+THEMA: KI-Funktionen direkt in Office-Programmen
+WAS: Bekannte Buero-Suiten bauen Assistenz-Funktionen ein, die Texte entwerfen oder Tabellen erklaeren - dort, wo man ohnehin arbeitet.
+BEDEUTUNG: Der Wechsel zwischen Tool und Extra-Chatfenster faellt teils weg. Das senkt die Huerde, kann aber auch zu mehr Halb-Automatik fuehren, die niemand mehr prueft.
+TIPP: Such dir eine wiederkehrende Mini-Aufgabe (z. B. Protokoll in Stichpunkte) und teste die eingebaute Funktion eine Woche lang. Danach entscheidest du, ob sie bleibt.
+
+---
+
+THEMA: Lokale Modelle auf dem eigenen Rechner
+WAS: Kleinere Modelle laufen inzwischen auf normaler Hardware, ohne dass Daten an einen Anbieter geschickt werden muessen.
+BEDEUTUNG: Fuer alle mit sensiblen Mandanten- oder Kundendaten ist das relevant: Datenschutz wird einfacher, dafuer ist die Einrichtung mehr Bastelei.
+TIPP: Wenn du regelmaessig mit vertraulichen Texten arbeitest, teste ein lokales Modell an einem unkritischen Beispiel, bevor du es ernsthaft einsetzt.

@@ -1,8 +1,21 @@
 *.pyc
 .audit/
 __pycache__/
-# YouTube-Uploader Secrets
+ausgabe/
+ausgabe-en/
+ausgabe-schicht/
+ausgabe-schicht-en/
+reports/*
+!reports/IMPROVEMENT-REPORT.md
+!reports/RADAR-DATEN-AUDIT.md
+
 video-prototypes/client_secret.json
 video-prototypes/token.json
-# uploaded.json wird absichtlich versioniert (nur Video-IDs, kein Secret) —
-# die GitHub-Action nutzt es als Fortschrittsspeicher.
+
+# Bezahltes Buch: Vollversion nicht ins Repo (nur Leseprobe ist frei)
+downloads/ki-sichtbarkeit-buch.pdf
+downloads/ki-sichtbarkeit-buch-en.pdf
+
+# Bezahltes Vorlagen-Set: Vollversion nicht ins Repo
+downloads/vorlagen-set.pdf
+downloads/vorlagen-set-en.pdf

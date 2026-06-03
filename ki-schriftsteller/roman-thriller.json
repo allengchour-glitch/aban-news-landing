@@ -1,0 +1,101 @@
+{
+  "titel": "Der stille Posten",
+  "genre": "Psychothriller / Drama",
+  "sprache": "Deutsch",
+  "praemisse": "Eine forensische Buchprüferin wird in eine ruhige Berner Gemeinde geschickt, um eine harmlose Routineprüfung der Gemeindekasse abzuschliessen - und stösst auf eine Differenz von wenigen Franken, die sich, je länger sie hinsieht, in die Spur eines Menschen verwandelt, den es offiziell nie gegeben hat.",
+  "ton": "Nüchtern, kühl, beobachtend. Spannung entsteht aus Genauigkeit, nicht aus Lärm. Kurze, präzise Sätze in Momenten der Gewissheit; tastende, lange Sätze, wenn die Zahlen nicht mehr aufgehen.",
+  "erzaehlperspektive": "Dritte Person, personal, dicht an Lenas Wahrnehmung. Präteritum.",
+  "stilregeln": [
+    "Zeige Anspannung durch Beobachtung und Detail, statt sie zu benennen.",
+    "Kein Sensationston, keine reisserischen Cliffhanger - die Bedrohung bleibt lange beiläufig und alltäglich.",
+    "Jedes Kapitel endet mit einer leisen Verschiebung der Gewissheit, nicht mit einem Knall.",
+    "Dialoge tragen Subtext - die Leute hier sagen weniger, als sie wissen.",
+    "Zahlen, Belege und Verwaltungsdetails sind konkret und überprüfbar; die Glaubwürdigkeit liegt im Banalen."
+  ],
+  "welt": {
+    "name": "Niederwil - eine Gemeinde im Berner Mittelland",
+    "regeln_der_magie": "Es gibt keine Magie. Das beherrschende System ist die Logik der doppelten Buchführung und des öffentlichen Verwaltungsrechts: Jede Bewegung von Geld muss durch einen Beleg gedeckt sein, jeder Beleg durch eine Unterschrift, jede Unterschrift durch eine Befugnis. Eine forensische Prüfung folgt der Spur rückwärts - von der Differenz zum Konto, vom Konto zum Beleg, vom Beleg zum Menschen. Wer eine Zahl fälscht, muss alle Zahlen rundherum mitfälschen, sonst entsteht eine Lücke; und Lücken haben in einem geschlossenen System immer eine Form. Die Regel des Ortes lautet: Was man in einer kleinen Gemeinde nicht offen sagt, wird in den Akten begraben - aber die Akten lügen langsamer als die Menschen.",
+    "orte": [
+      "Das Gemeindehaus von Niederwil - ein Bau aus den Siebzigern, Linoleum, Aktenkeller im Untergeschoss, eine Kaffeemaschine, die nie ganz heiss wird.",
+      "Der Gasthof Sternen - das einzige Hotel am Ort, wo Lena wohnt und abends die immer gleichen Gesichter an der Theke sieht.",
+      "Das Altersheim Sonnmatt - eine gemeindeeigene Stiftung, deren Buchhaltung an die Gemeindekasse grenzt und in der die Differenz beginnt."
+    ],
+    "konflikt": "Eine Differenz von 84 Franken im Quartalsabschluss führt Lena auf ein Konto, über das jahrelang Pflegegelder an Heimbewohner ausbezahlt wurden, die längst gestorben waren. Jemand im Ort hat die Toten weiterleben lassen - und der Gemeindeschreiber, der Heimleiter und der halbe Gemeinderat haben ein Interesse daran, dass die Prüfung mit einem freundlichen Häkchen endet. Lena muss entscheiden, ob sie die Spur zu Ende geht, obwohl sie ahnt, dass am Ende kein anonymer Betrug steht, sondern ein Mensch, den sie zu mögen beginnt."
+    },
+  "figuren": [
+    {
+      "name": "Lena Brun",
+      "rolle": "Protagonistin",
+      "alter": 39,
+      "beschreibung": "Forensische Buchprüferin bei einer mittelgrossen Zürcher Treuhandgesellschaft. Genau bis zur Sturheit, allein lebend, seit einer geplatzten Anzeige gegen einen früheren Arbeitgeber innerlich vorsichtig geworden. Notiert alles mit Bleistift, traut keinem PDF.",
+      "wunsch": "Eine Prüfung sauber zu Ende bringen, ohne erneut weichgeklopft zu werden.",
+      "geheimnis": "Vor drei Jahren hat sie eine Unregelmässigkeit gedeckt, um ihren Job zu behalten - und es bereut. Niederwil ist für sie eine zweite Chance, die sie sich selbst nicht eingesteht.",
+      "stimme": "Sachlich, knapp, präzise. Denkt in Konten, Fristen und Wahrscheinlichkeiten. Selten Ironie, dann trocken."
+    },
+    {
+      "name": "Walter Imhof",
+      "rolle": "Gemeindeschreiber / Antagonist",
+      "alter": 61,
+      "beschreibung": "Seit dreissig Jahren Gemeindeschreiber von Niederwil, kennt jeden Beleg und jeden Bürger. Höflich, hilfsbereit, scheinbar das offene Buch des Ortes. Bietet Lena Kaffee an, bevor sie fragen kann.",
+      "wunsch": "Niederwil und seinen eigenen Ruf bis zur Pensionierung intakt durch die Prüfung bringen.",
+      "geheimnis": "Er hat die fingierten Pflegegelder nicht aus Gier umgeleitet, sondern um das defizitäre Altersheim zu stützen - und einer einzelnen Bewohnerin, seiner Jugendliebe, einen Platz zu sichern, den die Gemeinde sonst gestrichen hätte.",
+      "stimme": "Freundlich, weitschweifig, väterlich - lenkt mit Anekdoten vom Konkreten ab. Wird einsilbig, sobald Zahlen genau werden."
+    },
+    {
+      "name": "Andrea Frei",
+      "rolle": "Verbündete / Unsicherheitsfaktor",
+      "alter": 34,
+      "beschreibung": "Junge Sachbearbeiterin der Gemeindekasse, ortsfremd, erst seit zwei Jahren in Niederwil. Tüchtig, unterbezahlt, hört mehr, als man ihr zutraut. Die Einzige, die Lena nicht sofort zum Kaffee einlädt.",
+      "wunsch": "Endlich ernst genommen werden und aus Niederwil heraus in eine richtige Stelle in der Stadt.",
+      "geheimnis": "Sie hat die Differenz vor Monaten selbst bemerkt und geschwiegen - aus Angst um ihre Probezeit. Lenas Ankunft ist ihre Erleichterung und ihre Gefahr zugleich.",
+      "stimme": "Vorsichtig, leise, dann plötzlich sehr direkt. Spricht in Halbsätzen, wenn jemand mithören könnte."
+    },
+    {
+      "name": "Dr. Béat Rüfenacht",
+      "rolle": "Heimleiter / Mitwisser",
+      "alter": 56,
+      "beschreibung": "Leiter des Altersheims Sonnmatt, promovierter Betriebsökonom, korrekt gekleidet, immer eine Spur zu beherrscht. Sieht in der Prüfung weniger eine Gefahr als eine Verhandlung.",
+      "wunsch": "Das Heim solvent halten, koste es, was es wolle - sein Lebenswerk soll ihn überdauern.",
+      "geheimnis": "Er weiss von Imhofs Konstruktion und hat sie geduldet, weil sie das Heim gerettet hat - aber er hat zusätzlich kleine Beträge für sich selbst abgezweigt, was Imhof nicht ahnt.",
+      "stimme": "Glatt, kontrolliert, in Bilanzbegriffen denkend. Bietet Kompromisse an, wo Lena Antworten will."
+    }
+  ],
+  "kapitel": [
+    {
+      "nummer": 1,
+      "titel": "Vierundachtzig Franken",
+      "ziel": "Lena und den Ort einführen; die Routineprüfung etablieren; die winzige Differenz finden, die alles auslöst, und zeigen, wie freundlich der Widerstand hier ist.",
+      "beats": [
+        "Lena kommt im Gemeindehaus an, bekommt einen zu kleinen Tisch im Aktenkeller und von Walter Imhof sofort Kaffee und beruhigende Worte über eine reine Formsache.",
+        "Beim Abgleich des Quartalsabschlusses fällt ihr eine Differenz von 84 Franken auf, die mehrere Buchungen nicht erklären.",
+        "Imhof tut die Zahl als Rundungsfehler ab und lenkt mit einer Anekdote über die alte Buchhaltungssoftware ab.",
+        "Lena verfolgt die Differenz still bis zu einem Sammelkonto, das mit dem Altersheim Sonnmatt verknüpft ist.",
+        "Kapitelende: Sie bemerkt, dass eine Pflegegeld-Zahlung an eine Bewohnerin ausging, deren Todesdatum sie zufällig auf einer Liste daneben liest - zwei Jahre alt."
+      ]
+    },
+    {
+      "nummer": 2,
+      "titel": "Die Lebenden und die Listen",
+      "ziel": "Den Verdacht zur Spur verdichten; Andrea als ambivalente Verbündete einführen; den Druck spürbar machen, ohne dass jemand offen droht.",
+      "beats": [
+        "Lena gleicht heimlich die Auszahlungsliste der Sonnmatt mit dem Sterberegister der Gemeinde ab und findet drei weitere Namen, die nicht aufgehen.",
+        "Andrea Frei sucht Lena ausserhalb des Gemeindehauses auf und gibt in Halbsätzen zu verstehen, dass sie die Differenz selbst kennt - und schweigen musste.",
+        "Heimleiter Rüfenacht lädt Lena in die Sonnmatt ein, führt sie freundlich herum und bietet ihr beiläufig an, die Prüfung gemeinsam abzukürzen.",
+        "Im Aktenkeller stellt Lena fest, dass ein Ordner mit Heimbelegen, den sie morgens noch gesehen hatte, nicht mehr am Platz ist.",
+        "Kapitelende: An der Theke des Sternen sagt Imhof beiläufig, sie sehe müde aus und solle doch das schöne Wetter nutzen, bevor sie zurück nach Zürich fahre - und Lena versteht, dass man sie weghaben will."
+      ]
+    },
+    {
+      "nummer": 3,
+      "titel": "Was die Akten länger wissen",
+      "ziel": "Den menschlichen Kern hinter dem Betrug enthüllen; Lena vor die moralische Wahl zwischen Vorschrift und Mitgefühl stellen; die Spannung auf die unausweichliche Entscheidung zuspitzen.",
+      "beats": [
+        "Lena rekonstruiert die Geldspur vollständig und erkennt, dass die abgezweigten Pflegegelder das defizitäre Heim am Leben hielten - kein privater Reichtum, sondern ein Loch, das gestopft wurde.",
+        "Im Gespräch gesteht Imhof indirekt, dass hinter einem der Toten-Namen eine reale, lebende Bewohnerin steht, der er so heimlich den Heimplatz finanziert - seine Jugendliebe.",
+        "Andrea zeigt Lena einen Beleg, der beweist, dass Rüfenacht zusätzlich für sich selbst kassiert hat - der eine Betrug ist nicht der saubere, den Imhof meint.",
+        "Imhof bietet Lena an, das Ganze als geordneten Rundungsfehler zu schliessen, und appelliert an ihr Gewissen statt an ihr Schweigegeld.",
+        "Kapitelende: Lena legt abends ihren Bleistift weg und beginnt, den Prüfbericht zu schreiben - und der erste Satz entscheidet, welcher Mensch fällt und welcher gedeckt wird."
+      ]
+    }
+  ]
+}

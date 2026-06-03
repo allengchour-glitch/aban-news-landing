@@ -1,0 +1,6 @@
+# Generated output — built by generate.py / CI, not committed
+dist/
+
+__pycache__/
+*.pyc
+.DS_Store

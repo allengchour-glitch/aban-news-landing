@@ -1,0 +1,40 @@
+name: Link-Checker (wöchentlich)
+
+# Prüft die ausgehenden Links der Aban-News-Daten (data/tools.json,
+# social/posts.json, automation/news-roh-*.md) auf Erreichbarkeit und lädt einen
+# Markdown-Report als Artifact hoch. Reine Standardbibliothek, kein Secret nötig.
+# Bewusst OHNE --fail-on-broken: tote Fremd-Links sollen den Lauf nicht rot färben.
+on:
+  schedule:
+    - cron: '0 6 * * 1'      # Montag 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: link-checker
+  cancel-in-progress: false
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Links prüfen
+        run: |
+          python3 tools/link_checker.py --out link-report.md \
+            || echo "Link-Check mit Warnung beendet"
+
+      - name: Report als Artifact hochladen
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-report
+          path: link-report.md
+          if-no-files-found: warn

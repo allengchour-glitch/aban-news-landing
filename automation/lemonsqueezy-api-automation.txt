@@ -1,0 +1,54 @@
+================================================================
+AUTOMATION: Lemon-Squeezy Buy-URL automatisch eintragen
+Skript: sync_lemonsqueezy_link.py
+================================================================
+
+WAS GEHT AUTOMATISCH / WAS NICHT (ehrlich)
+----------------------------------------------------------------
+Die Lemon-Squeezy-API kann Produkte AUSLESEN und Checkout-Links holen,
+aber ein Produkt komplett NEU ANLEGEN samt PDF/ePub-Upload ist ueber
+die API nicht zuverlaessig moeglich.
+
+Darum die Aufteilung:
+  EINMAL VON HAND (5 Min, im Dashboard):
+    - Konto/Store anlegen, Bank-/Steuerangaben (nur du, rechtlich noetig)
+    - Produkt "Anti-Hype" anlegen + PDF/ePub hochladen + Publish
+      (Felder zum Kopieren: automation/lemonsqueezy-produkt-setup.txt)
+
+  AUTOMATISCH (dieses Skript):
+    - holt die Buy-URL deines Produkts ueber die API
+    - traegt sie als BUY_URL in js/buch-config.js ein
+    - danach lesen alle 4 Buchseiten (de/en/fr/it) den Link
+
+SO NUTZT DU ES
+----------------------------------------------------------------
+1. API-Key anlegen: LS-Dashboard -> Settings -> API -> "+".
+   Key kopieren (beginnt mit eyJ...). NIE ins Repo schreiben!
+
+2. Key als Umgebungsvariable setzen (im Terminal):
+     export LEMONSQUEEZY_API_KEY="dein-key-hier"
+
+3. Erst testen, was gefunden wird:
+     python3 sync_lemonsqueezy_link.py --list      # zeigt alle Produkte
+     python3 sync_lemonsqueezy_link.py --dry-run    # zeigt die URL, schreibt nichts
+
+4. Scharf schalten:
+     python3 sync_lemonsqueezy_link.py              # traegt BUY_URL ein
+
+5. Committen + pushen:
+     git add js/buch-config.js
+     git commit -m "feat: Buy-URL gesetzt"
+     git push
+
+OPTIONEN
+----------------------------------------------------------------
+  --produkt <wort>   anderes Stichwort im Produktnamen (Default: anti-hype)
+  --dry-run          nur anzeigen, nichts schreiben
+  --list             alle Produkte auflisten
+
+SICHERHEIT
+----------------------------------------------------------------
+  - Der API-Key ist ein Geheimnis. Nur als Umgebungsvariable nutzen,
+    niemals in eine Datei committen.
+  - Reine Python-Standardbibliothek, kein pip install noetig.
+================================================================

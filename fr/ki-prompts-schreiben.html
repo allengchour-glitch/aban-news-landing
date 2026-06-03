@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Écrire des prompts IA — le guide pratique | aban news</title>
+  <meta name="description" content="De meilleurs prompts IA en 4 étapes : contexte, format, exemple, itération. Avec avant/après, un modèle à copier et les 5 erreurs les plus courantes.">
+  <link rel="canonical" href="https://abannews.com/fr/ki-prompts-schreiben.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/ki-prompts-schreiben.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-prompts-schreiben.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ki-prompts-schreiben.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/ki-prompts-schreiben.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-prompts-schreiben.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="Écrire des prompts IA — le guide pratique">
+  <meta property="og:description" content="Quatre gestes pour de meilleurs prompts : contexte, format, exemple, itération. Avec avant/après.">
+  <meta property="og:url" content="https://abannews.com/fr/ki-prompts-schreiben.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://abannews.com/img/og/ki-prompts-schreiben.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/img/og/ki-prompts-schreiben.png">
+  <style>
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;margin-left:1.2rem}
+    .lang a{padding:.3rem .55rem;color:var(--muted);text-decoration:none;margin:0}
+    .lang a.on{background:var(--ink);color:#fff}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:3rem 0 2rem;text-align:center}
+    h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:58ch;margin:0 auto 1.5rem}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    section{padding:1.2rem 0}
+    section h2{font-size:1.4rem;line-height:1.2;margin:1.4rem 0 .6rem}
+    section h3{font-size:1.1rem;margin:1.1rem 0 .35rem}
+    section p{margin-bottom:.8rem}
+    section ul{margin:0 0 .9rem 1.2rem}
+    section li{margin-bottom:.35rem}
+    .method{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.5rem;margin-bottom:1rem;box-shadow:var(--shadow)}
+    .method h3{margin-top:0;display:flex;align-items:center;gap:.5rem}
+    .method .num{background:var(--amber);color:#fff;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;flex-shrink:0}
+    .callout{background:var(--amber-lt);border-left:4px solid var(--amber);border-radius:8px;padding:.9rem 1.1rem;margin:1rem 0;font-weight:600}
+    .ba{display:grid;gap:.8rem;margin:1rem 0}
+    @media(min-width:560px){.ba{grid-template-columns:1fr 1fr}}
+    .ba div{border:1px solid var(--line);border-radius:12px;padding:1rem;background:#fff;font-size:.92rem}
+    .ba .w{border-color:#fca5a5;background:#fef2f2}
+    .ba .s{border-color:#86efac;background:#f0fdf4}
+    .ba .tag{display:block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem}
+    .ba .w .tag{color:#b91c1c}.ba .s .tag{color:#15803d}
+    .tmpl{background:#1f2937;color:#f9fafb;border-radius:12px;padding:1.1rem 1.2rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;line-height:1.6;white-space:pre-wrap;margin:1rem 0}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2rem 0}
+    .cta-box h2{font-size:1.3rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .btn--ghost{border:1px solid var(--amber);color:var(--amber-dk);background:#fff}
+    details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem;padding:0}
+    details[open]{border-color:#fed7aa}
+    summary{padding:1rem 1.1rem;font-weight:600;cursor:pointer;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";float:right;color:#a3a3a3;font-weight:300;font-size:1.3rem;line-height:1}
+    details[open] summary::after{content:"−"}
+    details .a{padding:0 1.1rem 1.1rem;color:var(--muted);font-size:.95rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:2rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Écrire des prompts IA — le guide pratique","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"},"datePublished":"2026-05-31","dateModified":"2026-05-31","description":"De meilleurs prompts IA en quatre étapes : contexte, format, exemple, itération — avec avant/après et un modèle à copier.","inLanguage":"fr"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HowTo","name":"Écrire un bon prompt IA","description":"D'une demande vague à un résultat utilisable en quatre étapes.","step":[
+    {"@type":"HowToStep","position":1,"name":"Donner le contexte","text":"Dis qui tu es et à qui s'adresse le texte."},
+    {"@type":"HowToStep","position":2,"name":"Fixer le format","text":"Dis ce qui doit sortir : cinq points, un tableau, un court e-mail."},
+    {"@type":"HowToStep","position":3,"name":"Montrer un exemple","text":"Joins un échantillon de ton style et dis : dans ce ton."},
+    {"@type":"HowToStep","position":4,"name":"Itérer","text":"Dis précisément ce qui ne va pas plutôt que de relancer les dés."}
+  ]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"fr","mainEntity":[
+    {"@type":"Question","name":"Qu'est-ce qui fait un bon prompt IA ?","acceptedAnswer":{"@type":"Answer","text":"Quatre choses : le contexte (qui tu es, pour qui est le texte), le format (ce qui doit sortir), un exemple de ton style et l'itération (une correction précise plutôt que de relancer). Qui fournit ces quatre n'a pas besoin d'un pack de prompts à 47 euros."}},
+    {"@type":"Question","name":"Dois-je apprendre le « prompt engineering » ?","acceptedAnswer":{"@type":"Answer","text":"Pas comme une discipline à part. Pour la plupart des indépendants, il suffit de dire clairement ce qu'on veut, de donner un exemple et de corriger. C'est moins de la technique qu'un bon brief."}},
+    {"@type":"Question","name":"Pourquoi mes réponses IA sont-elles si génériques ?","acceptedAnswer":{"@type":"Answer","text":"Le plus souvent parce que le prompt est vague. Une demande vague donne la moyenne de la moitié d'internet — correcte, mais interchangeable. Le contexte et un exemple de style relèvent la qualité plus que tout changement d'outil."}},
+    {"@type":"Question","name":"Les packs de prompts payants valent-ils le coup ?","acceptedAnswer":{"@type":"Answer","text":"Rarement. Les prompts tout prêts font gagner du temps de saisie mais ne remplacent pas la compréhension. Qui maîtrise les quatre étapes adapte n'importe quel prompt lui-même — et repère vite quels packs achetés ne sont que des évidences joliment emballées."}}
+  ]}
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/fr/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/fr/ebook.html">eBook</a>
+      <a href="/fr/ki-prompts-schreiben.html"><strong>Écrire des prompts</strong></a>
+      <a href="#subscribe" class="btn">S'abonner</a>
+      <span class="lang"><a href="/ki-prompts-schreiben.html">DE</a><a href="/en/ki-prompts-schreiben.html">EN</a><a href="/fr/ki-prompts-schreiben.html" class="on" aria-current="true">FR</a><a href="/it/ki-prompts-schreiben.html">IT</a></span>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Mise à jour : mai 2026 · sans hype</span>
+      <h1>Écrire des prompts IA — le guide pratique</h1>
+      <p class="lead">La plupart des mauvaises réponses de l'IA ne viennent pas du modèle, mais du prompt. Quatre gestes changent presque tout — pas de cours de « prompt engineering », pas de pack à 47 euros.</p>
+    </div>
+
+    <section>
+      <p>Un bon modèle de langage est comme un stagiaire compétent : plus l'instruction est claire, moins tu corriges après. Une demande vague donne la moyenne de la moitié d'internet — correcte, mais interchangeable. Ces quatre gestes relèvent la qualité plus que tout changement d'outil.</p>
+    </section>
+
+    <section>
+      <h2>Les quatre gestes vers un prompt utilisable</h2>
+
+      <div class="method">
+        <h3><span class="num">1</span> Dis qui tu es et à qui s'adresse le texte</h3>
+        <p>« Écris un texte sur les impôts » est un coup de dés. « Je suis comptable et j'écris pour des artisans indépendants qui ont peu de temps — explique le régime micro en mots simples » donne quelque chose d'utilisable. Le contexte n'est pas un accessoire, c'est la moitié de l'instruction.</p>
+      </div>
+
+      <div class="method">
+        <h3><span class="num">2</span> Fixe le format</h3>
+        <p>Dis ce qui doit sortir : cinq points, un tableau, un paragraphe sous cent mots, un e-mail avec objet. Sans format, tu obtiens un texte continu que tu dois ensuite redécouper.</p>
+      </div>
+
+      <div class="method">
+        <h3><span class="num">3</span> Montre un exemple</h3>
+        <p>Un seul exemple de ton style en dit plus que trois paragraphes d'explication. Joins un ancien post, un e-mail précédent ou une formulation qui te ressemble, et dis : « dans ce ton ». Le modèle imite — donne-lui donc quelque chose de bon à imiter.</p>
+      </div>
+
+      <div class="method">
+        <h3><span class="num">4</span> Itère au lieu de relancer les dés</h3>
+        <p>La première réponse est un brouillon, pas un produit fini. Dis précisément ce qui ne va pas : « trop commercial », « plus court », « le deuxième point est faux, enlève-le ». Deux ou trois corrections ciblées t'amènent plus loin que dix « refais ».</p>
+      </div>
+
+      <div class="callout">Contexte, format, exemple, correction. Qui fournit ces quatre n'a pas besoin de pack de prompts — et tire plus de n'importe quel modèle.</div>
+    </section>
+
+    <section>
+      <h2>La différence en un exemple</h2>
+      <div class="ba">
+        <div class="w"><span class="tag">Faible</span>« Écris-moi une newsletter sur l'IA. »</div>
+        <div class="s"><span class="tag">Fort</span>« Écris l'intro de ma newsletter pour artisans indépendants. Ton factuel, tutoiement, pas de hype, 80 mots max, la première phrase doit intriguer sans exagérer. Sujet : pourquoi la plupart des outils IA résolvent un problème que tu n'as pas. »</div>
+      </div>
+      <p>Même effort de saisie, une différence du jour à la nuit dans le résultat. Le prompt fort contient rôle, public, ton, format, longueur et sujet — exactement ce que le modèle devrait sinon deviner.</p>
+    </section>
+
+    <section>
+      <h2>Cinq erreurs qui affaiblissent les prompts</h2>
+      <ul>
+        <li><strong>Pas de contexte :</strong> « Écris-moi X » sans rôle ni public. Le modèle devine — et devine la moyenne.</li>
+        <li><strong>Plusieurs tâches à la fois :</strong> rechercher, écrire et raccourcir dans un seul prompt. Sépare les étapes.</li>
+        <li><strong>Pas de format :</strong> tu obtiens du texte continu là où tu voulais des points.</li>
+        <li><strong>Du remplissage poli :</strong> les longues introductions n'aident pas. La clarté bat les formules.</li>
+        <li><strong>Abandonner au lieu de corriger :</strong> changer d'outil à la première réponse moyenne au lieu de donner une correction précise.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Modèle à copier et adapter</h2>
+      <p>Remplis les crochets, colle-le avant ta vraie tâche — c'est prêt :</p>
+      <div class="tmpl">Rôle : je suis [métier/secteur].
+Public : le texte est pour [qui, avec quel problème].
+Tâche : [ce qui doit être produit exactement].
+Format : [p. ex. 5 points / tableau / e-mail avec objet], max [longueur].
+Ton : [p. ex. factuel, tutoiement, sans hype].
+Exemple de mon style : [court extrait] — dans ce ton, s'il te plaît.</div>
+      <p>Ces six lignes remplacent la plupart des packs de prompts achetés. Tu dis une fois au modèle qui tu es et ce que tu veux — il fait le reste.</p>
+    </section>
+
+    <section>
+      <h2>As-tu besoin d'un pack de prompts tout prêt ?</h2>
+      <p>Le plus souvent non. Les prompts tout prêts font gagner du temps de saisie mais ne remplacent pas la compréhension — et beaucoup de packs chers sont des évidences joliment emballées. Si tu veux quand même une collection de prompts allemands testés à copier vite, j'en ai composé une honnête.</p>
+      <p><a href="/prompt-pack.html" style="color:var(--amber-dk);font-weight:600;">→ Voir le Pro Prompt Pack</a></p>
+    </section>
+
+    <section>
+      <h2>Questions fréquentes</h2>
+      <details><summary>Qu'est-ce qui fait un bon prompt IA ?</summary><div class="a">Le contexte, le format, un exemple de style et l'itération. Qui fournit ces quatre n'a pas besoin d'un pack de prompts cher.</div></details>
+      <details><summary>Dois-je apprendre le « prompt engineering » ?</summary><div class="a">Pas comme une discipline à part. Dis clairement ce que tu veux, donne un exemple, corrige — c'est moins de la technique qu'un bon brief.</div></details>
+      <details><summary>Pourquoi mes réponses sont-elles si génériques ?</summary><div class="a">Le plus souvent parce que le prompt est vague. Le contexte et un exemple de style relèvent la qualité plus que tout changement d'outil.</div></details>
+      <details><summary>Les packs de prompts payants valent-ils le coup ?</summary><div class="a">Rarement. Ils font gagner du temps de saisie mais ne remplacent pas la compréhension. Qui maîtrise les quatre étapes adapte n'importe quel prompt lui-même.</div></details>
+    </section>
+
+    <div class="cta-box" style="background:var(--card);border:1px solid var(--line);">
+      <h2>eBook gratuit : « Anti-Hype »</h2>
+      <p>Ce chapitre en détail et plus encore : mon eBook gratuit te montre le filtre en 3 questions, ton stack IA minimal et comment obtenir de meilleurs résultats de n'importe quel modèle. Sans inscription.</p>
+      <a href="/fr/ebook.html" class="btn btn--ghost">Lire l'eBook →</a>
+    </div>
+
+    <div class="cta-box" id="subscribe">
+      <h2>Chaque jour ouvré : l'IA sans le bullshit, en 5 minutes</h2>
+      <p>aban news t'apporte du lundi au vendredi les évolutions de l'IA qui comptent pour ton travail — y compris des prompts utilisables tout de suite.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">Recevoir le briefing IA de 5 min →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Pas de spam. Désinscription en un clic. Conforme au RGPD.</p>
+    </div>
+
+    <section>
+      <h2 style="font-size:1.05rem;">À lire ensuite</h2>
+      <div style="display:grid;gap:.7rem;grid-template-columns:1fr 1fr;">
+        <a href="/fr/chatgpt-vs-claude.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">ChatGPT vs Claude</strong><span style="color:var(--muted);font-size:.82rem;">Le comparatif honnête</span></a>
+        <a href="/fr/ki-halluzinationen-erkennen.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Repérer les hallucinations de l'IA</strong><span style="color:var(--muted);font-size:.82rem;">5 signaux + vérification en 30 s</span></a>
+        <a href="/fr/ki-tools-fuer-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Outils d'IA pour indépendants</strong><span style="color:var(--muted);font-size:.82rem;">Le stack honnête 2026</span></a>
+        <a href="/fr/ki-automatisierung-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Automatisation IA</strong><span style="color:var(--muted);font-size:.82rem;">Quand ça vaut le coup — et quand non</span></a>
+        <a href="/fr/ebook.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">eBook gratuit « Anti-Hype »</strong><span style="color:var(--muted);font-size:.82rem;">Utiliser l'IA sans le bullshit</span></a>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <p><strong>Note d'honnêteté :</strong> ce guide ne contient aucun lien d'affiliation. La méthode est volontairement simple — bien prompter est plus proche d'un brief clair que de la technique. Les modèles changent ; les quatre gestes restent.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/fr/">Accueil</a> · <a href="/impressum.html">Mentions légales</a> · <a href="/datenschutz.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

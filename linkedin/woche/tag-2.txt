@@ -1,0 +1,22 @@
+# Tag 2 der Woche - aban news LinkedIn-Batch
+# Format pro Item: THEMA / WAS / BEDEUTUNG / TIPP. Items mit --- trennen.
+# Inhalte nuechtern halten, keine erfundenen Zahlen.
+
+THEMA: Transkription von Meetings per KI
+WAS: Mehr Tools schreiben Online-Meetings automatisch mit und liefern danach eine Zusammenfassung mit Aufgabenliste.
+BEDEUTUNG: Fuer Solo-Selbststaendige spart das Mitschreiben Zeit, verschiebt die Arbeit aber aufs Pruefen: Stimmt die Aufgabenliste wirklich mit dem ueberein, was besprochen wurde?
+TIPP: Lass das naechste Kundengespraech mitschreiben, aber gleiche die Aufgabenliste danach einmal von Hand ab. Erst wenn das mehrfach passt, vertrau dem Ergebnis.
+
+---
+
+THEMA: Bildgenerierung fuer kleine Marketing-Aufgaben
+WAS: Tools erzeugen aus Textbeschreibungen Bilder, die fuer Social-Posts oder einfache Grafiken brauchbar sind.
+BEDEUTUNG: Wer kein Budget fuer Stockfotos hat, bekommt schnell etwas Brauchbares. Bei Rechten, Markenlogos und echten Personen ist trotzdem Vorsicht geboten.
+TIPP: Teste ein Bild fuer einen echten Post, den du sowieso geplant hast. Pruefe vorab, ob die Nutzungsbedingungen die kommerzielle Verwendung erlauben.
+
+---
+
+THEMA: KI-Assistenten fuer die Inbox
+WAS: E-Mail-Programme bieten Funktionen, die Antworten vorschlagen oder lange Threads zusammenfassen.
+BEDEUTUNG: Das kann die taegliche Mail-Last senken. Gefahr: generische Antworten, die nach Vorlage klingen und das Gegenueber merken laesst, dass kaum jemand mitgedacht hat.
+TIPP: Nutz den Vorschlag nur als Rohgeruest und schreib mindestens einen persoenlichen Satz selbst. So bleibt die Mail deine, nicht die der Maschine.

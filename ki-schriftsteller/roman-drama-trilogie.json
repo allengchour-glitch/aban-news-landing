@@ -1,0 +1,549 @@
+{
+  "titel": "Das Tal hält den Atem an",
+  "autor": "aban news",
+  "genre": "Drama",
+  "sprache": "Deutsch",
+  "praemisse": "Über drei Generationen hält eine Familie in einem abgelegenen Schweizer Bergtal eine Schuld unter Verschluss, die mit dem Bau einer Staumauer beginnt: ein Tod, der als Unfall in die Akten kam, ein Brief, der nie abgeschickt wurde, und das stille Übereinkommen eines ganzen Dorfes, nicht zu fragen. Was die Großmutter verschweigt, vererbt sich als Druck auf den Sohn und als Frage an die Enkelin - bis das Wasser, das alles begann, am Ende auch alles wieder freilegt.",
+  "ton": "Nüchtern, dicht, beobachtend. Spannung entsteht aus Genauigkeit und aus dem, was nicht gesagt wird, nicht aus Lärm. Kurze, präzise Sätze in Momenten der Gewissheit; tastende, längere Sätze, wenn die Wahrheit sich entzieht. Die Landschaft ist Figur, nicht Kulisse.",
+  "erzaehlperspektive": "Dritte Person, personal, je Band dicht an einer Hauptfigur ihrer Generation (Band 1: Marlene, Band 2: Theo, Band 3: Eva). Präteritum.",
+  "stilregeln": [
+    "Zeige Gefühle und Anspannung durch Beobachtung, Handlung und Detail, statt sie zu benennen.",
+    "Kein Sensationston, keine reißerischen Cliffhanger - die Bedrohung bleibt lange beiläufig und alltäglich.",
+    "Jedes Kapitel endet mit einer leisen Verschiebung der Gewissheit, nicht mit einem Knall.",
+    "Dialoge tragen Subtext - die Leute hier sagen weniger, als sie wissen; Schweigen ist eine Antwort.",
+    "Wetter, Wasser, Höhe und Jahreszeit sind konkret und spürbar; die Glaubwürdigkeit liegt im Körperlichen und im Wirtschaftlichen.",
+    "Wiederkehrende Motive (der ungesandte Brief, die Marke 84, das Wasser, die Kapelle) tauchen über die Bände hinweg wieder auf, ohne erklärt zu werden."
+  ],
+  "welt": {
+    "name": "Riedmatt - ein Seitental im Berner Oberland",
+    "regeln_der_magie": "Es gibt keine Magie. Das beherrschende System ist die soziale und wirtschaftliche Logik eines abgeschlossenen Bergtals: Land, Wasser und Wegerechte sind knapp und vererbt; wer den Hof hält, hält die Stimme in der Gemeinde. Jede Familie hängt an der nächsten - über Schulden, Heiraten, Pacht und Nachbarschaftshilfe -, und genau das macht Schweigen billig und Reden teuer. Eine Wahrheit, die einen trifft, trifft alle, also wird sie verwaltet statt ausgesprochen. Das Wasser folgt seinen eigenen Gesetzen: Es staut sich, wo man es zwingt, und sucht sich seinen Weg, wenn der Damm altert. Was der Stausee 1962 überflutet hat, gibt der sinkende Pegel im Dürresommer 2024 wieder frei.",
+    "konflikt": "Beim Bau der Staumauer 1962 stirbt der Knecht Anton Roos; sein Tod wird als Arbeitsunfall protokolliert, obwohl die Familie Aregger weiß, dass er nicht einer war. Das verschwiegene Geschehen sichert dem Hof die Entschädigung und der Gemeinde den Frieden - und bindet drei Generationen an eine Lüge, die mit jedem Erben schwerer und teurer wird. Der äußere Konflikt (Damm, Geld, Land, Tourismus, später der sinkende Pegel) treibt jeweils die innere Frage hervor: sagen oder weitertragen.",
+    "orte": [
+      "Das Höfli - der Aregger-Hof am Hang über dem späteren Stausee, mit Stall, Tenn und einer Stube, in der nie das richtige Wort fällt.",
+      "Der Gasthof Sternen - das einzige Wirtshaus im Tal, das in jeder Generation um sein Überleben ringt und in dem das Dorf seine Übereinkünfte trifft.",
+      "Die Staumauer und der Stausee - 1962 gebaut, in Band 3 ein alterndes Bauwerk mit Rissen und sinkendem Spiegel.",
+      "Die Kapelle am alten Weg - halb überflutet, ihr Dachreiter ragt bei niedrigem Wasser aus dem See; hierher geht, wer mit niemandem reden kann.",
+      "Das Gemeinde- und das Bezirksarchiv in Interlaken - wo die Protokolle von 1962 und die Pachtverträge lagern und langsamer lügen als die Menschen."
+    ]
+  },
+  "figuren": [
+    {
+      "name": "Marlene Aregger, geb. Roos",
+      "rolle": "Hauptfigur Band 1 / Großmutter",
+      "alter": 23,
+      "beschreibung": "Heiratet 1961 von außerhalb auf das Höfli ein, eine Lehrerstochter aus dem Mittelland, klarer als das Tal ihr lieb ist. Lernt schnell, dass man hier mit Schweigen heizt. In den späteren Bänden die alte, stumme Frau am Fenster.",
+      "wunsch": "Auf dem Höfli ankommen, dazugehören, eine Familie, die hält.",
+      "geheimnis": "Sie war dabei, als Anton Roos starb, und hat geschwiegen, weil ihr eigener Bruder mit der Schuld zusammenhängt - nicht der Hof. Sie trägt den Brief, den sie nie abgeschickt hat.",
+      "stimme": "Beobachtend, genau, mit trockener Schärfe nach außen und einer wachsenden inneren Kälte. Spricht wenig, sieht alles."
+    },
+    {
+      "name": "Kaspar Aregger",
+      "rolle": "Marlenes Mann / Bauer",
+      "alter": 31,
+      "beschreibung": "Erbt das Höfli und die Verantwortung für eine Familie, die nie über Geld redet, obwohl es immer um Geld geht. Stolz, wortkarg, dem Tal verpflichtet bis zur Selbstaufgabe.",
+      "wunsch": "Den Hof durch die Zeit des Dammbaus retten, ohne sich etwas zu vergeben.",
+      "geheimnis": "Er hat die Protokollierung des Unfalls mitbetrieben und die Entschädigung angenommen - er hält die Lüge für eine Pflicht gegenüber dem Hof.",
+      "stimme": "Knapp, fest, fast nie ein Nebensatz. Wenn er viel sagt, lügt er."
+    },
+    {
+      "name": "Anton Roos",
+      "rolle": "Knecht / das Opfer",
+      "alter": 27,
+      "beschreibung": "Marlenes Bruder, kam mit ihr ins Tal und verdingte sich am Dammbau. Freundlich, schnell, zu offen für diesen Ort. Stirbt im Spätherbst 1962. Über alle Bände hinweg die Leerstelle, um die sich alles dreht.",
+      "wunsch": "Genug Geld für eine eigene Existenz, weg vom Dienen.",
+      "geheimnis": "Er hatte herausgefunden, dass bei der Bauabrechnung des Damms betrogen wurde, und wollte es melden.",
+      "stimme": "Warm, direkt, ein Lachen, das im Tal auffällt. Nur in Rückblenden und Erzählungen präsent."
+    },
+    {
+      "name": "Theo Aregger",
+      "rolle": "Hauptfigur Band 2 / Sohn",
+      "alter": 29,
+      "beschreibung": "Marlenes und Kaspars Sohn, übernimmt 1991 den verschuldeten Gasthof Sternen, während das Tal vom Skitourismus träumt. Will heraus aus dem Schatten des Hofs und merkt nicht, dass er ihn mitschleppt.",
+      "wunsch": "Den Sternen retten und sich beweisen, dass er kein Aregger zweiter Wahl ist.",
+      "geheimnis": "Er findet die alten Bauabrechnungen und ahnt, dass das Familienvermögen auf der verschwiegenen Sache ruht - und nutzt das Wissen zunächst, statt es zu öffnen.",
+      "stimme": "Getrieben, redet zu viel, wenn er unsicher ist; Wärme und Aufschneiderei dicht beieinander."
+    },
+    {
+      "name": "Ruth Berger",
+      "rolle": "Gemeindeschreiberin / das Gedächtnis des Tals",
+      "alter": 58,
+      "beschreibung": "Führt in Band 2 die Gemeindeakten und kennt jede Familie über drei Generationen. Höflich, unbestechlich genau, eine, die nichts vergisst und wenig herausgibt.",
+      "wunsch": "Dass das Tal seine Geschichte ordentlich verwaltet, ohne dass jemand zu Schaden kommt.",
+      "geheimnis": "Sie hat als junge Frau das Protokoll von 1962 mit getippt und weiß, an welcher Stelle eine Seite fehlt.",
+      "stimme": "Sachlich, freundlich-verschlossen, jeder Satz wohlüberlegt."
+    },
+    {
+      "name": "Eva Aregger",
+      "rolle": "Hauptfigur Band 3 / Enkelin",
+      "alter": 42,
+      "beschreibung": "Theos Tochter, als Hydrologin weggezogen, kehrt 2024 zurück, um im Dürresommer den alternden Damm zu begutachten. Genau, rational, der Familie entfremdet - bis das fallende Wasser sie zwingt, hinzusehen.",
+      "wunsch": "Ihre Arbeit sauber zu Ende bringen und mit dem Tal abschließen.",
+      "geheimnis": "Sie hat das Tal als junge Frau überstürzt verlassen, nach einem Streit mit Theo, dessen wahren Grund sie nie genannt hat.",
+      "stimme": "Klar, knapp, denkt in Pegeln, Fristen und Wahrscheinlichkeiten; Ironie nur trocken und selten."
+    },
+    {
+      "name": "Niklaus Roos",
+      "rolle": "Nachfahre des Opfers / Gegenüber in Band 3",
+      "alter": 41,
+      "beschreibung": "Großneffe von Anton Roos, betreibt heute den Sternen weiter und sammelt seit Jahren still, was über den Tod von 1962 zu finden ist. Kein Rächer, ein Mensch, der eine Lücke in der eigenen Familie schließen will.",
+      "wunsch": "Wissen, was mit seinem Großonkel wirklich geschah - und ob die Areggers es wussten.",
+      "geheimnis": "Er hat den halb überfluteten Briefkasten der alten Kapelle geöffnet und weiß bereits mehr, als er Eva zeigt.",
+      "stimme": "Ruhig, freundlich, mit einer Geduld, die unter Druck zur Härte wird."
+    }
+  ],
+  "baende": [
+    {
+      "nummer": 1,
+      "titel": "Der Hang",
+      "untertitel": "Riedmatt, 1961-1963",
+      "kapitel": [
+        {
+          "nummer": 1,
+          "titel": "Die Eingeheiratete",
+          "ziel": "Marlene und das Tal einführen; ihre Fremdheit und die Stille der Familie etablieren; das Höfli und die Schwelle, über die sie tritt.",
+          "beats": [
+            "Marlene kommt im Frühherbst 1961 mit Kaspar auf dem Höfli an; die Mutter Aregger mustert sie, ohne ein Wort zu viel.",
+            "Beim ersten Abendessen wird über alles geredet außer über Geld und über den Damm, obwohl beides im Raum steht.",
+            "Marlene bemerkt, dass ihr Bruder Anton, den sie ins Tal mitgebracht hat, am Sternen schon zu laut beliebt ist.",
+            "Nachts hört sie das Tal: das ferne Hämmern der Baustelle, das Vieh, das Schweigen zwischen ihr und Kaspar.",
+            "Eine beiläufige Bemerkung der Schwiegermutter macht klar, dass Heiraten hier ein Vertrag ist, kein Versprechen."
+          ]
+        },
+        {
+          "nummer": 2,
+          "titel": "Die Baustelle",
+          "ziel": "Den Dammbau als ökonomische Hoffnung und soziale Verwerfung zeigen; Antons Stellung und Risiko aufbauen.",
+          "beats": [
+            "Anton verdingt sich am Dammbau; die Löhne sind besser als alles, was das Tal sonst bietet.",
+            "Der Bauführer von außerhalb behandelt die Talleute herablassend; Kaspar schluckt es, Anton nicht.",
+            "Marlene sieht, wie die Familie auf die Entschädigung für überflutetes Land hofft, und wie viel davon abhängt.",
+            "Anton erzählt Marlene halb im Scherz, die Abrechnungen 'stimmten hinten und vorne nicht'.",
+            "Am Feierabend fällt der erste Satz, den später keiner gesagt haben will."
+          ]
+        },
+        {
+          "nummer": 3,
+          "titel": "Wasserrecht",
+          "ziel": "Den Druck der Übereinkünfte zeigen: wer im Tal mitredet, hängt am Land; Kaspars Loyalitätskonflikt anlegen.",
+          "beats": [
+            "Gemeindeversammlung im Sternen: Abstimmung über Wegerechte und Entschädigungen für die Flutung.",
+            "Kaspar stimmt mit der Mehrheit, gegen die kleinen Pächter, weil das Höfli es braucht.",
+            "Marlene erkennt das Geflecht aus Schulden und Gefälligkeiten, das jede Stimme bindet.",
+            "Anton stichelt öffentlich gegen den Bauführer; ein paar lachen, andere senken den Blick.",
+            "Auf dem Heimweg warnt Kaspar Anton zum ersten Mal, ruhig zu sein - es klingt fast freundlich."
+          ]
+        },
+        {
+          "nummer": 4,
+          "titel": "Was Anton wusste",
+          "ziel": "Die konkrete Brisanz von Antons Wissen etablieren; den Mechanismus der Schuld scharf stellen.",
+          "beats": [
+            "Anton zeigt Marlene heimlich abgeschriebene Zahlen aus der Bauabrechnung: Material, das bezahlt, aber nie geliefert wurde.",
+            "Er will es der Bezirksbehörde melden und glaubt, das bringe dem Tal sein Recht.",
+            "Marlene begreift, dass der Betrug nicht nur den Bauführer trifft, sondern auch jemanden im Tal - womöglich nahe der Familie.",
+            "Sie bittet Anton zu warten; er verspricht es, ohne es zu meinen.",
+            "Kaspar bemerkt die abgeschriebenen Zahlen in Antons Jacke."
+          ]
+        },
+        {
+          "nummer": 5,
+          "titel": "Der erste Schnee",
+          "ziel": "Die Spannung verdichten; Marlenes Position zwischen Bruder und Ehe unhaltbar machen.",
+          "beats": [
+            "Früher Wintereinbruch legt die Baustelle teilweise still; die Männer sind gereizt, das Geld knapp.",
+            "Ein Gespräch zwischen Kaspar und seinem Schwager Imhof, das abbricht, als Marlene eintritt.",
+            "Anton kündigt an, am Wochenende nach Interlaken zur Behörde zu fahren.",
+            "Marlene schreibt in der Nacht einen Brief an Anton, der ihn warnen und halten soll.",
+            "Sie schickt ihn nicht ab - sie will ihn am Morgen selbst geben."
+          ]
+        },
+        {
+          "nummer": 6,
+          "titel": "Der Tag am Stollen",
+          "ziel": "Das zentrale Ereignis - Antons Tod - zeigen, ohne es vollständig aufzudecken; die Lücke schaffen, die alles trägt.",
+          "beats": [
+            "Am Morgen ist Anton schon zur Baustelle hoch; Marlene folgt mit dem ungelesenen Brief.",
+            "Am Stollen herrscht Aufruhr; Wasser ist eingebrochen, Männer rennen.",
+            "Marlene sieht aus der Ferne eine Szene am Gerüst, die sie nie ganz wird einordnen können: Anton, Kaspar, der Bauführer, ein Sturz.",
+            "Als sie hinkommt, ist Anton tot und alle reden bereits von einem Unglück.",
+            "Niemand sieht den Brief in ihrer Hand; sie steckt ihn weg."
+          ]
+        },
+        {
+          "nummer": 7,
+          "titel": "Protokoll",
+          "ziel": "Den Übergang vom Geschehen zur verwalteten Wahrheit zeigen; die Mitwisserschaft des Tals etablieren.",
+          "beats": [
+            "Der Landjäger nimmt auf; die Aussagen fügen sich auffällig glatt zu 'Arbeitsunfall'.",
+            "Die junge Ruth Berger tippt das Protokoll im Gemeindebüro mit.",
+            "Kaspar sagt knapp aus; was er weglässt, fällt nur Marlene auf.",
+            "Der Bauführer verspricht eine 'großzügige Regelung' für Hof und Hinterbliebene.",
+            "Marlene wird gefragt, ob sie etwas gesehen habe; sie sagt nein - der erste eigene Stein der Lüge."
+          ]
+        },
+        {
+          "nummer": 8,
+          "titel": "Die Regelung",
+          "ziel": "Zeigen, wie die Schuld in Geld und Frieden umgewandelt wird; den Preis der Wahrheit beziffern.",
+          "beats": [
+            "Die Entschädigung für Hof und Tal wird ausgezahlt; das Höfli ist gerettet, der Sternen bekommt seinen Teil.",
+            "Antons karges Erbe geht an Marlene; niemand spricht über die abgeschriebenen Zahlen.",
+            "Imhof, der Schwager, ist plötzlich flüssig - Marlene rechnet im Kopf und schweigt.",
+            "Bei der Beerdigung lobt der Pfarrer einen 'fleißigen, fröhlichen' Mann; das Tal nickt.",
+            "Kaspar legt Marlene wortlos die Hand auf die Schulter; es ist Trost und Vertrag zugleich."
+          ]
+        },
+        {
+          "nummer": 9,
+          "titel": "Winter über dem Stausee",
+          "ziel": "Marlenes innere Entscheidung zur Loyalität zeigen und ihren Preis; das Wassermotiv setzen.",
+          "beats": [
+            "Der Damm wird geschlossen; das Wasser beginnt zu steigen und überflutet die Felder am alten Weg.",
+            "Marlene sieht zu, wie die Kapelle langsam im See versinkt, nur der Dachreiter bleibt.",
+            "Sie verbirgt den Brief an einem Ort, von dem sie glaubt, dass das Wasser ihn nie erreicht.",
+            "Kaspar und sie finden eine zärtliche, traurige Nähe, die auf dem Verschwiegenen ruht.",
+            "Sie merkt, dass sie schwanger ist - die nächste Generation beginnt auf diesem Grund."
+          ]
+        },
+        {
+          "nummer": 10,
+          "titel": "Wer fragt",
+          "ziel": "Eine äußere Bedrohung der Lüge einführen und ihre Abwehr durch das Tal zeigen.",
+          "beats": [
+            "Ein Beamter der Baufirma taucht auf, weil die Abrechnungen geprüft werden sollen.",
+            "Das Tal schließt sich; Aussagen werden abgestimmt, ohne dass es jemand ausspricht.",
+            "Ruth Berger 'findet' eine Akte nicht; Marlene versteht, dass auch sie nun trägt.",
+            "Der Beamte reist unverrichteter Dinge ab; man feiert im Sternen, als sei eine Gefahr gebannt.",
+            "Marlene erkennt: Die Lüge ist jetzt größer als ihr Anlass und gehört allen."
+          ]
+        },
+        {
+          "nummer": 11,
+          "titel": "Das Kind",
+          "ziel": "Die Vererbung der Last konkret machen; Marlenes endgültige Verwandlung in die schweigende Frau.",
+          "beats": [
+            "Theo wird im Sommer 1962 geboren; das Höfli atmet auf, das Geld trägt.",
+            "Marlene hält das Kind und denkt an den Brief und an Anton.",
+            "Kaspar, weicher geworden, deutet einmal an, dass er 'es anders gewollt' habe - sagt es nicht aus.",
+            "Marlene beschließt, dem Kind nie etwas zu erzählen; sie hält das für Schutz.",
+            "Im Spiegel sieht sie zum ersten Mal die alte Frau, die sie werden wird."
+          ]
+        },
+        {
+          "nummer": 12,
+          "titel": "Hochwasser im Frühjahr",
+          "ziel": "Band 1 schließen, das Motiv für die Folgebände öffnen: Wasser gibt zurück, was man ihm gibt.",
+          "beats": [
+            "Schneeschmelze treibt den Pegel; der junge Damm hält, aber es gibt einen Riss-Verdacht.",
+            "Bei niedrigem Wasser sieht Marlene kurz den Dachreiter der Kapelle und glaubt, ihr Versteck sei gefährdet.",
+            "Sie steht am Ufer und entscheidet, den Brief dort zu lassen, wo er ist - für jemand späteren.",
+            "Kaspar ruft sie zum Hof zurück; sie geht, ohne sich umzudrehen.",
+            "Schlussbild: das Tal im Maienregen, die Mauer, der See, das schlafende Kind - und ein Brief unter Wasser."
+          ]
+        }
+      ]
+    },
+    {
+      "nummer": 2,
+      "titel": "Die Mitte",
+      "untertitel": "Riedmatt, 1991-1992",
+      "kapitel": [
+        {
+          "nummer": 1,
+          "titel": "Der Erbe des Sternen",
+          "ziel": "Theo und seine Generation einführen; den wirtschaftlichen Druck und seinen Ehrgeiz etablieren.",
+          "beats": [
+            "Theo übernimmt 1991 den verschuldeten Gasthof Sternen von einem kränkelnden Onkel.",
+            "Das Tal diskutiert einen Skilift; Theo sieht darin seine Rettung und seinen Beweis.",
+            "Die alte Marlene sitzt stumm am Fenster des Höfli; Theo hält ihr Schweigen für Alter.",
+            "Erste Andeutung: ein altes Schuldverhältnis zwischen Sternen und Höfli, das niemand erklärt.",
+            "Theo verspricht der Bank und sich selbst zu viel."
+          ]
+        },
+        {
+          "nummer": 2,
+          "titel": "Der Lift",
+          "ziel": "Den äußeren Konflikt der Generation aufbauen; das Tal zwischen Bewahren und Verkaufen.",
+          "beats": [
+            "Investoren von außerhalb werben für den Lift; das Tal spaltet sich wie 1962 beim Damm.",
+            "Theo wird Wortführer der Befürworter und genießt es, gebraucht zu werden.",
+            "Ruth Berger, nun alt, mahnt in der Versammlung zur Vorsicht und sieht Theo lange an.",
+            "Niklaus Roos' Vater stimmt dagegen; eine alte Feindschaft Aregger-Roos schwelt unausgesprochen.",
+            "Die Abstimmung ist knapp; Theo gewinnt und macht sich Feinde."
+          ]
+        },
+        {
+          "nummer": 3,
+          "titel": "Die Kiste auf dem Estrich",
+          "ziel": "Theo an die Vergangenheit heranführen; das zentrale Wissen des Bandes anlegen.",
+          "beats": [
+            "Beim Entrümpeln des Sternen-Estrichs findet Theo alte Papiere aus der Dammbauzeit.",
+            "Darunter Bauabrechnungen von 1962 und ein Bündel Quittungen, die nicht zusammenpassen.",
+            "Er versteht die Tragweite nicht, spürt aber, dass hier Geld und Schweigen verknüpft sind.",
+            "Marlene reagiert auf seine beiläufige Frage mit einem Schweigen, das ihn frösteln lässt.",
+            "Theo legt die Kiste zur Seite - und vergisst sie nicht mehr."
+          ]
+        },
+        {
+          "nummer": 4,
+          "titel": "Geld, das nicht reicht",
+          "ziel": "Den finanziellen Abgrund zeigen; Theo in Versuchung führen.",
+          "beats": [
+            "Die Liftkosten explodieren; der Sternen steht vor der Pfändung.",
+            "Theo bittet das Höfli um Hilfe; die alte Marlene lässt über die Pflegerin ausrichten, sie 'könne nichts geben'.",
+            "Theo durchschaut, dass das Höfli mehr hat, als es zeigt, und fragt sich, woher.",
+            "Er beginnt, die alten Papiere ernsthaft zu lesen.",
+            "Ein Bankmann setzt ihm eine Frist."
+          ]
+        },
+        {
+          "nummer": 5,
+          "titel": "Was die Abrechnung verrät",
+          "ziel": "Den Betrug von 1962 aus Theos Sicht rekonstruieren; die Verbindung zum Familienvermögen herstellen.",
+          "beats": [
+            "Theo gleicht die Sternen-Quittungen mit alten Grundbuchauszügen ab.",
+            "Er erkennt, dass die Entschädigung von 1962 weit über den Schaden hinausging und Höfli wie Sternen sanierte.",
+            "Der Name Anton Roos taucht auf - ein 'verunglückter' Knecht, Marlenes Bruder.",
+            "Theo ahnt zum ersten Mal, dass der Wohlstand der Familie auf etwas Verschwiegenem ruht.",
+            "Statt zu fragen, denkt er, wie ihm dieses Wissen helfen könnte."
+          ]
+        },
+        {
+          "nummer": 6,
+          "titel": "Ruth Berger weiß es",
+          "ziel": "Die Hüterin des Gedächtnisses und Theo gegeneinanderstellen; die fehlende Seite einführen.",
+          "beats": [
+            "Theo sucht Ruth im Gemeindearchiv auf, vorgeblich wegen des Lifts.",
+            "Ruth zeigt ihm bereitwillig vieles - außer dem Protokoll von 1962, bei dem 'eine Seite fehle'.",
+            "In einem genauen, höflichen Gespräch macht sie ihm klar, dass sie weiß, was er sucht.",
+            "Sie warnt ihn, nicht in Geschichten zu rühren, an denen das halbe Tal hängt.",
+            "Theo geht mit dem Gefühl, eine Tür gefunden und zugleich verschlossen zu haben."
+          ]
+        },
+        {
+          "nummer": 7,
+          "titel": "Die Tochter",
+          "ziel": "Eva als Kind einführen und die Vater-Tochter-Bindung anlegen, die Band 3 trägt.",
+          "beats": [
+            "Theos Tochter Eva, neun Jahre, streift am sinkenden Sommerpegel des Sees herum.",
+            "Sie entdeckt den Dachreiter der versunkenen Kapelle und fragt Theo danach.",
+            "Theo erzählt ihr eine harmlose Version - das erste Mal, dass er die Familienlüge weitergibt.",
+            "Eva spürt, dass etwas nicht stimmt, lässt aber locker.",
+            "Ein zärtlicher Moment, der in Band 3 schwer wiegen wird."
+          ]
+        },
+        {
+          "nummer": 8,
+          "titel": "Der Handel",
+          "ziel": "Theos moralischen Fehltritt vollziehen: Wissen als Druckmittel statt als Wahrheit.",
+          "beats": [
+            "Theo konfrontiert nicht die Familie, sondern Imhofs alten, reichen Erben, der auch profitierte.",
+            "Er deutet an, was er gefunden hat, und bittet 'unter Verwandten' um ein Darlehen für den Sternen.",
+            "Der Erbe zahlt - und Theo merkt zu spät, dass er sich damit selbst eingekauft hat.",
+            "Der Sternen ist vorerst gerettet, der Lift läuft an.",
+            "Theo fühlt sich nicht erleichtert, sondern beschmutzt."
+          ]
+        },
+        {
+          "nummer": 9,
+          "titel": "Eröffnung",
+          "ziel": "Den scheinbaren Triumph der Generation zeigen und seinen hohlen Kern.",
+          "beats": [
+            "Der Skilift wird mit Fest und Presse eröffnet; das Tal feiert seinen Aufbruch.",
+            "Theo hält eine Rede über Zukunft und Zusammenhalt, die ihm im Hals stecken bleibt.",
+            "Niklaus' Vater bleibt der Feier fern; die Areggers und die Roos' grüßen sich nicht.",
+            "Marlene, im Rollstuhl hergebracht, weint stumm, was alle für Rührung halten.",
+            "Nur Theo ahnt, dass sie etwas anderes sieht als den Lift."
+          ]
+        },
+        {
+          "nummer": 10,
+          "titel": "Das Gespräch, das niemand führt",
+          "ziel": "Theo an die Schwelle zur Wahrheit bringen und ihn daran scheitern lassen.",
+          "beats": [
+            "Theo setzt sich entschlossen zu Marlene, um endlich zu fragen.",
+            "Marlene gibt ihm ein einziges Mosaikstück: 'Frag das Wasser, nicht mich.'",
+            "Sie deutet die Existenz des Briefes an, ohne ihn zu nennen.",
+            "Theo, überfordert, weicht aus und redet über den Lift.",
+            "Marlene schließt die Augen; die Chance ist vertan, die Last bleibt bei ihm."
+          ]
+        },
+        {
+          "nummer": 11,
+          "titel": "Risse",
+          "ziel": "Den Niedergang einleiten und das Generationenmotiv spiegeln; Wasser und Schuld koppeln.",
+          "beats": [
+            "Ein milder Winter, wenig Schnee - der Lift wirft nicht ab, was er kostet.",
+            "Gleichzeitig meldet die Dammaufsicht erste Haarrisse in der alternden Mauer.",
+            "Theos Schulden kehren wieder; der Erbe, dem er sich verkauft hat, fordert mehr.",
+            "Eva fragt erneut nach dem versunkenen Dorf; Theo wird ungewohnt scharf.",
+            "Der Streit hinterlässt einen Riss zwischen Vater und Tochter."
+          ]
+        },
+        {
+          "nummer": 12,
+          "titel": "Marlenes Schweigen endet nicht",
+          "ziel": "Band 2 schließen: die Last geht ungelöst an die nächste Generation über.",
+          "beats": [
+            "Marlene stirbt im Frühjahr 1992, ohne je das Wort gesagt zu haben.",
+            "In ihrem Nachlass findet Theo einen Hinweis auf 'die Kapelle' und einen leeren, beschrifteten Umschlag.",
+            "Er begreift, dass irgendwo ein Brief liegt, und dass das Wasser ihn hütet.",
+            "Eva, inzwischen Jugendliche, beobachtet ihren Vater am Seeufer und versteht nur, dass er leidet.",
+            "Schlussbild: Theo am Damm, das Wissen halb in der Hand, unfähig, es zu öffnen - er wird wegziehen lassen, was er hätte halten müssen."
+          ]
+        }
+      ]
+    },
+    {
+      "nummer": 3,
+      "titel": "Das Wasser",
+      "untertitel": "Riedmatt, Gegenwart",
+      "kapitel": [
+        {
+          "nummer": 1,
+          "titel": "Rückkehr im Dürresommer",
+          "ziel": "Eva als erwachsene Hauptfigur einführen; den sinkenden Pegel als Motor etablieren.",
+          "beats": [
+            "Eva kommt 2024 als Hydrologin ins Tal, um den alternden Damm im Rekordsommer zu begutachten.",
+            "Der Stausee ist historisch niedrig; Ufer, Wege und Mauerwerk liegen frei, die seit 1962 unter Wasser lagen.",
+            "Sie quartiert sich widerwillig im Sternen ein, den nun Niklaus Roos führt.",
+            "Die alten Spannungen sind ihr fremd geworden; sie will nur ihre Arbeit machen.",
+            "Beim ersten Rundgang sieht sie den ganzen Dachreiter der Kapelle aus dem Schlamm ragen."
+          ]
+        },
+        {
+          "nummer": 2,
+          "titel": "Der Mann vom Sternen",
+          "ziel": "Eva und Niklaus zusammenführen; seine verborgene Recherche andeuten.",
+          "beats": [
+            "Niklaus ist höflich, hilfsbereit, fast zu gut informiert über die Familiengeschichte der Areggers.",
+            "Er erwähnt beiläufig einen Großonkel, der 1962 am Damm 'verunglückt' sei.",
+            "Eva, beruflich auf Daten getrimmt, hört die Lücke in seiner Beiläufigkeit nicht.",
+            "Sie bemerkt in seinem Büro alte Fotos und Kopien, die nicht zu einem Wirt passen.",
+            "Erste Reibung und erste Anziehung zwischen den beiden."
+          ]
+        },
+        {
+          "nummer": 3,
+          "titel": "Der Riss in der Mauer",
+          "ziel": "Den technischen Konflikt scharf stellen und mit der Familiensache verzahnen.",
+          "beats": [
+            "Evas Messungen zeigen ernste Risse; der Damm ist sanierungsbedürftig, womöglich gefährlich.",
+            "Eine Sanierung würde den Pegel dauerhaft senken und den Seegrund freilegen.",
+            "Die Gemeinde, die vom See und vom Tourismus lebt, will die Befunde kleinreden.",
+            "Eva gerät zwischen Wahrheit und Talinteressen - wie ihre Großmutter, ohne es zu wissen.",
+            "Niklaus bietet ihr unaufgefordert Archivmaterial an."
+          ]
+        },
+        {
+          "nummer": 4,
+          "titel": "Die freigelegte Kapelle",
+          "ziel": "Das zentrale Objekt zugänglich machen; das Brief-Motiv aktivieren.",
+          "beats": [
+            "Der sinkende Pegel legt die alte Kapelle samt Vorraum frei, erstmals seit 1962 begehbar.",
+            "Eva betritt sie aus beruflicher Neugier; Niklaus begleitet sie auffällig bereitwillig.",
+            "In einer wasserdichten Blechdose, hinter einem losen Stein, liegen Papiere.",
+            "Niklaus greift schneller zu, als ein Zufallsfund erlauben würde - Eva stutzt.",
+            "Er gibt vor, nichts gefunden zu haben; sie glaubt ihm nicht ganz."
+          ]
+        },
+        {
+          "nummer": 5,
+          "titel": "Was Niklaus längst wusste",
+          "ziel": "Die Asymmetrie des Wissens offenlegen; Vertrauen brechen und neu verhandeln.",
+          "beats": [
+            "Eva stellt Niklaus; er gesteht, seit Jahren über den Tod von Anton Roos zu forschen.",
+            "Er zeigt ihr Kopien der unstimmigen Abrechnungen und das Protokoll mit der fehlenden Seite.",
+            "Er hat den Brief gefunden, aber noch nicht geöffnet - er wollte, dass eine Aregger dabei ist.",
+            "Eva ist hin- und hergerissen zwischen Empörung und der Ahnung, dass er recht hat.",
+            "Sie verlangt, den Brief gemeinsam zu öffnen, oder gar nicht."
+          ]
+        },
+        {
+          "nummer": 6,
+          "titel": "Theos Version",
+          "ziel": "Den alten Theo einbinden; die Vater-Tochter-Wunde aus Band 2 aufnehmen.",
+          "beats": [
+            "Eva fährt zu ihrem gealterten Vater Theo, der das Tal vor Jahren verlassen hat.",
+            "Theo gesteht stückweise, was er 1991 herausfand - und dass er es benutzt statt geöffnet hat.",
+            "Er erzählt von Marlenes Satz 'Frag das Wasser' und vom leeren Umschlag.",
+            "Eva versteht erstmals den wahren Grund ihres alten Streits mit ihm.",
+            "Theo bittet sie, zu tun, wozu er zu feige war - die Wahrheit ans Licht zu lassen."
+          ]
+        },
+        {
+          "nummer": 7,
+          "titel": "Der Brief",
+          "ziel": "Die Kernenthüllung vollziehen, aber nicht alle Fragen schließen; Marlenes Stimme ein letztes Mal.",
+          "beats": [
+            "Eva und Niklaus öffnen Marlenes Brief von 1962, geschrieben an Anton, nie abgeschickt.",
+            "Der Brief warnt Anton und enthüllt, dass Marlenes und Antons eigener Bruder/Verwandter in den Betrug verstrickt war - nicht nur die Areggers.",
+            "Er belegt, dass Marlene am Morgen des Todes zur Baustelle ging und etwas sah, das sie nie einordnen konnte.",
+            "Die Schuld erweist sich als geteilt: Roos wie Aregger, Tat wie Schweigen.",
+            "Eva und Niklaus erkennen, dass es kein einfaches Opfer-Täter-Bild gibt, das man verkünden könnte."
+          ]
+        },
+        {
+          "nummer": 8,
+          "titel": "Was man damit macht",
+          "ziel": "Den moralischen Kern der Trilogie verhandeln: sagen oder weitertragen - aktualisiert.",
+          "beats": [
+            "Eva und Niklaus streiten über das Richtige: öffentlich machen, der Behörde geben, oder schützen.",
+            "Die Sanierung des Damms zwingt ohnehin dazu, den Seegrund und die Archive zu öffnen.",
+            "Die Gemeinde, Ruth Bergers Nachfolger an der Spitze, drängt erneut auf Schweigen 'zum Wohl des Tals'.",
+            "Eva spürt den Sog der alten Übereinkunft, der schon ihre Großmutter band.",
+            "Sie trifft eine Entscheidung, die niemandem ganz recht ist."
+          ]
+        },
+        {
+          "nummer": 9,
+          "titel": "Das Tal redet",
+          "ziel": "Die Konsequenz zeigen: das erste laute Aussprechen seit drei Generationen und seinen Preis.",
+          "beats": [
+            "Eva legt Befund und Brief gemeinsam offen - der Damm und die Geschichte werden in einem Zug zur Sprache gebracht.",
+            "Das Tal reagiert nicht mit Skandal, sondern mit dem alten Reflex: Verwalten, Eindämmen, Beschwichtigen.",
+            "Einige danken ihr im Stillen, andere wenden sich ab; der Tourismus bangt.",
+            "Niklaus findet Frieden mit der Geschichte seines Großonkels, aber keine einfache Genugtuung.",
+            "Eva verliert die letzte Illusion, Wahrheit mache automatisch frei."
+          ]
+        },
+        {
+          "nummer": 10,
+          "titel": "Absenkung",
+          "ziel": "Das Wassermotiv auflösen; das Bauwerk und die Familie parallel zur Ruhe bringen.",
+          "beats": [
+            "Die Sanierung beginnt; der Pegel wird kontrolliert dauerhaft gesenkt.",
+            "Der alte Weg, die Felder und die Kapelle tauchen endgültig wieder auf - das Tal von 1962 kehrt sichtbar zurück.",
+            "Eva dokumentiert es nüchtern und merkt, dass ihre Arbeit und ihre Familie dieselbe Bewegung vollziehen.",
+            "Theo kommt ein letztes Mal ins Tal und steht mit Eva am freigelegten Grund.",
+            "Vater und Tochter sprechen wenig, aber zum ersten Mal ohne die alte Lüge zwischen sich."
+          ]
+        },
+        {
+          "nummer": 11,
+          "titel": "Niklaus und Eva",
+          "ziel": "Die persönliche Linie schließen, ohne sie zu versüßen; Versöhnung als Arbeit zeigen.",
+          "beats": [
+            "Zwischen Eva und Niklaus ist mehr als die gemeinsame Geschichte, aber die Geschichte steht dazwischen.",
+            "Sie verhandeln, ob aus Aregger und Roos je etwas Gemeinsames werden kann.",
+            "Niklaus bleibt im Tal und am Sternen; Eva gehört nicht mehr hierher.",
+            "Sie treffen keine kitschige Entscheidung, sondern eine ehrliche, offene.",
+            "Ein letzter gemeinsamer Gang zur trockengefallenen Kapelle."
+          ]
+        },
+        {
+          "nummer": 12,
+          "titel": "Was bleibt, wenn das Wasser sinkt",
+          "ziel": "Die Trilogie schließen: die Schuld nicht getilgt, aber benannt; Generationenbogen runden.",
+          "beats": [
+            "Eva verlässt das Tal, diesmal ohne Flucht; sie nimmt den Brief und gibt eine beglaubigte Kopie ins Archiv.",
+            "Sie steht ein letztes Mal an der Mauer, die ihre Großmutter steigen sah und die nun sinkt.",
+            "Rückblende-Echo auf Marlenes Schlussbild aus Band 1 - dasselbe Ufer, drei Generationen später.",
+            "Eva begreift, dass nicht die Wahrheit erlöst, sondern das Aufhören zu verwalten.",
+            "Schlussbild: das freigelegte Tal im Abendlicht, die Kapelle wieder da, der Atem, den das Tal drei Generationen lang anhielt, geht hörbar aus."
+          ]
+        }
+      ]
+    }
+  ]
+}
