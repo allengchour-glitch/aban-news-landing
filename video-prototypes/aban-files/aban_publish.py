@@ -57,7 +57,7 @@ def render(ep):
     return out
 
 
-def upload(svc, ep, sc, path, immediate):
+def upload(svc, ep, sc, path, privacy):
     from googleapiclient.http import MediaFileUpload
     title = f"{sc['title']} 🦎 #ABANFiles"
     desc = (f"{sc['hook']}\n\nThe ABAN Files. Check it out.\n\n"
@@ -65,7 +65,7 @@ def upload(svc, ep, sc, path, immediate):
     body = {"snippet": {"title": title[:100], "description": desc,
                         "tags": ["ABAN Files", "ABAN", "sci-fi", "AI", "shorts"],
                         "categoryId": "24"},
-            "status": {"privacyStatus": "public", "selfDeclaredMadeForKids": False}}
+            "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": False}}
     media = MediaFileUpload(path, chunksize=-1, resumable=True, mimetype="video/mp4")
     req = svc.videos().insert(part="snippet,status", body=body, media_body=media)
     resp = None
@@ -79,7 +79,8 @@ def upload(svc, ep, sc, path, immediate):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--count", type=int, default=1)
-    ap.add_argument("--immediate", action="store_true", default=True)
+    ap.add_argument("--privacy", default="public",
+                    choices=["public", "unlisted", "private"])
     args = ap.parse_args()
     scripts = json.load(open(SCRIPTS))
     done = load_uploaded()
@@ -90,7 +91,7 @@ def main():
     svc = get_service()
     for ep in todo:
         path = render(ep)
-        upload(svc, ep, scripts[ep], path, args.immediate)
+        upload(svc, ep, scripts[ep], path, args.privacy)
         done.append(ep)
         json.dump(done, open(UPLOADED, "w"), indent=2)
 

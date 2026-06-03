@@ -18,6 +18,9 @@ on:
       count:
         description: "Wie viele Folgen jetzt veroeffentlichen"
         default: "1"
+      privacy:
+        description: "Sichtbarkeit: public / unlisted / private"
+        default: "public"
   schedule:
     - cron: "0 17 2-30/2 * *"   # an geraden Tagen 17:00 UTC (~19:00 Berlin)
 
@@ -50,7 +53,7 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           ABAN_YT_REFRESH_TOKEN: ${{ secrets.ABAN_YT_REFRESH_TOKEN }}
-        run: python3 aban_publish.py --count "${{ github.event.inputs.count || 1 }}"
+        run: python3 aban_publish.py --count "${{ github.event.inputs.count || 1 }}" --privacy "${{ github.event.inputs.privacy || 'public' }}"
       - name: Persist upload state
         working-directory: video-prototypes/aban-files
         run: |
