@@ -1475,3 +1475,12 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **Verworfen aus selber Suche:** French-Floral (=Marguerite, Dup), Mermaid/Backless (off-brand), $51-Kleid (zu teuer).
 - Weitere geprüfte, NEUE Kandidaten (Bilder 200, falls Nachschub gewünscht): V-neck Lace-up (CJLY291991501),
   Office Dress 36v (CJLY291901501), Cotton-linen Shirt-collar 70v (CJLY291889801), Puff-sleeve (CJLY291990701).
+
+## 2026-06-03 — Import +2 (Nachschub „noch 2")
+- **Etuikleid «Bureau»** (Office): CJ pid 2606030250041616900 · SKU-Basis CJLY2919015 (01–36) · $6.30 →
+  Shopify 15416343757185 · CHF 39.90 · 36 Var (6 Farben × S–3XL) · 6 Bilder · 6 Kanäle live.
+- **Floral-Sommerkleid «Capucine»**: CJ pid 2606030748211611600 · SKU-Basis CJLY2919907 (01–20) · $4.70 →
+  Shopify 15416343986561 · CHF 34.90 · 20 Var (Weiss/Rosa/Hellgrün/Floral × S–XXL) · 9 Bilder · 6 Kanäle live.
+- Beide: Farbe+Grösse-Optionen, deutsche Copy, Trust-Block, Tag sommer-2026, Bilder HTTP-200 vorgeprüft+READY.
+- Heute total 3 neue Kleider live (Aurélie/Bureau/Capucine). Verbleibende geprüfte Kandidaten: V-neck Lace-up
+  (CJLY291991501), Cotton-linen Shirt-collar 70v (CJLY291889801) — falls weiterer Nachschub gewünscht.
