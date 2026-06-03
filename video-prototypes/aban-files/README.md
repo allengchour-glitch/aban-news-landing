@@ -68,12 +68,17 @@ python3 aban_film.py best.mp4 ep11 ep2 ep9   # nur ausgewählte
 
 ## 4. Analyst / Grower (`aban_stats.py` + `.github/workflows/aban-stats.yml`)
 
-Liest die View-Zahlen (über `video_ids.json` und/oder Kanal-Erkennung) und gibt eine
-nach Views sortierte Tabelle + Top-Performer-Hinweis aus.
+Liest die View-Zahlen (Video-IDs aus `video_ids.json`) und gibt eine nach Views
+sortierte Tabelle + Top-Performer-Hinweis aus.
+
+**Braucht einen API-Key** (`YT_API_KEY` / `GOOGLE_API_KEY` / `GEMINI_API_KEY`):
+das Upload-OAuth-Token darf `videos.list` **nicht** aufrufen (403). Ein vorhandener
+AIza-Key funktioniert, wenn die „YouTube Data API v3" im Projekt aktiviert ist.
+Ohne Key überspringt das Tool sauber (kein Fehler) → Workflow bleibt grün.
 
 ```bash
-python3 aban_stats.py            # Tabelle in die Konsole
-python3 aban_stats.py --report   # zusätzlich reports/ABAN-STATS.md
+YT_API_KEY=AIza... python3 aban_stats.py            # Tabelle
+YT_API_KEY=AIza... python3 aban_stats.py --report   # + reports/ABAN-STATS.md
 ```
 
 Der Workflow läuft **wöchentlich** (Montag) und committet den Report. **So wächst der
