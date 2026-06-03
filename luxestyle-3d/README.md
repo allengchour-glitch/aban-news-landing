@@ -5,15 +5,63 @@ Werkzeuge und Gedächtnis für den Geschäftszweig „3D-Druck-Produkte" im Shop
 Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 
 > 🚫 **FESTE REGEL (Kunde, verbindlich):** KEINE flachen Teile mehr — nie wieder flach
-> bauen/posten. Es gibt **genau 2 Katzen, beide Vollkörper-3D**, keine neuen Tiere/Varianten,
-> nur diese zwei ändern:
+> bauen/posten. Sortiment = **Vollkörper-3D-Figuren** (rundherum modelliert).
+> **Stand Juni 2026 (Kunde-Entscheid): Katze + Hund im kompakten Loaf-Stil freigegeben**
+> — siehe Abschnitt „Loaf-Serie (Katze + Hund)" unten. Bestand:
 > 1. **Pancake** — gespreizt liegend, schwarze X-Augen, orange Zunge (Meshy image-to-3D aus
 >    Geminis Bild → `polish.py`; X erhaben aufgesetzt). Datei: `samples/cat3d_finalX/smallX.stl`.
 > 2. **Full-Body** — sitzende Katze, ganzer Körper, RUNDE Augen, rosa Ohren, weiß.
 >    Prompt: „cute chubby white cat sitting upright, full body, four legs, tail, big round
 >    simple eyes, pink inner ears, orange tongue, smooth stylized, solid" → `polish.py`.
 >    Datei: `samples/cat3d_fullbody.stl`.
+> 3. **Loaf-Katze (Mimi)** + **Loaf-Hund** — kompakte, liegende Loaf-Figuren, NICHT rund-fett
+>    (siehe „Loaf-Serie" unten). Beide aus Meshy text-to-3D → `polish.py`.
 > Flache `.scad` (kawaii/pancake/charm) wurden **gelöscht**. Augen via Meshy-Prompt einbacken.
+
+## Loaf-Serie (Katze + Hund) — Kunde-Auftrag Juni 2026
+
+Zwei kompakte, **liegende Loaf-Figuren** (Pfoten untergezogen, gedrungen) — **NICHT rund-fett**,
+sondern leicht gestreckte, ausgewogene Loaf-Form. Beide entstehen über **Meshy text-to-3D**
+(`meshy_text.py`, `REFINE=1`) → `polish.py` → optional `hole.py` (Ring-Loch) → `colorize.py`/
+`assemble.py`. Augen-Stil im Prompt eingebacken (**große, einfache runde Augen** — keine X-Augen).
+
+### 🐱 Loaf-Katze „Mimi"
+```
+PROMPT="a cute cat figurine lying down in a compact loaf pose, paws tucked under the body,
+head up and alert, smooth stylized solid form, chunky but balanced proportions not overly
+chubby, small triangular ears, big simple round eyes, short tail wrapped to the side,
+no separate base"
+```
+
+### 🐶 Loaf-Hund (Welpe)
+```
+PROMPT="a cute puppy figurine lying down in a compact loaf pose, front paws tucked under the
+chest, head raised and alert, soft rounded ears folded down beside the face, smooth stylized
+solid form, chunky but balanced proportions not overly chubby, short tail tucked to the side,
+big simple round eyes, no separate base"
+```
+
+### Druck-Vorgaben (FDM, Bambu X1C/AMS — gilt für beide)
+- **Manifold/wasserdicht**, **flache Unterseite** (sitzt plan auf Platte → keine Stützen).
+- **Keine dünnen Features < ~1,2 mm** (Ohren/Schwanz im Prompt „chunky" halten; FDM-tauglich).
+  Hänge-Ohren des Hundes **eng am Kopf anliegend** (kein freistehender Überhang).
+- **Zielgröße:** Figur ~40–50 mm (Loaf-Form = tiefer Schwerpunkt, kippt nicht). Anhänger ~25–40 mm.
+- **Ring-Loch (optional):** Ø ~3–5 mm via `hole.py`, erst Geometrie **abtasten**, dann bohren
+  (Wand über Loch ≥3 mm). Default ohne — nur für Schlüsselanhänger-Variante.
+- **Farbe (AMS):** einfarbig ODER 2-farbig (Körper + Augen/Schnauze) per `colorize.py`/`assemble.py`.
+
+### End-to-End (sobald `MESHY_API_KEY` gesetzt ist)
+```bash
+export MESHY_API_KEY=msy_...            # oder: echo msy_... > /tmp/meshy.key
+
+# Katze
+PROMPT="…(siehe oben)…" REFINE=1 OUT=/tmp/mimi_cat.glb python3 meshy_text.py
+python3 polish.py /tmp/mimi_cat.glb --size 50 --remesh 0.45 --decimate 0.5 --base --render
+
+# Hund
+PROMPT="…(siehe oben)…" REFINE=1 OUT=/tmp/loaf_dog.glb python3 meshy_text.py
+python3 polish.py /tmp/loaf_dog.glb --size 50 --remesh 0.45 --decimate 0.5 --base --render
+```
 
 ## Generator-Baukasten
 
