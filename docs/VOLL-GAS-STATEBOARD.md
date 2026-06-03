@@ -14,13 +14,14 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **92 live**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **98 live, alle viersprachig (de/en/fr/it = 392 Seiten)**
 
-- Welle 5 (52→62, #109): Elektriker, Sanitär/Heizung, Fliesenleger, Trockenbau, Glaser, Metallbauer, Zimmerer, Gerüstbau, Raumausstatter, Schornsteinfeger.
-- Welle 6 (62→72, #113): Heilpraktiker, Hörakustiker, Podologen, Zahntechniker, Sanitätshäuser, Kieferorthopäden, Notare, Wirtschaftsprüfer, Sachverständige, Hausmeisterservice.
-- Welle 7 (72→82, #130): Sicherheitsdienste, Umzugsunternehmen, Schlüsseldienste, Entrümpelung, Schädlingsbekämpfer, Metzgereien, Eisdielen, Cafés, Buchhandlungen, Fahrradläden.
-- Welle 8 (82→92, #136): Sportgeschäfte, Modeboutiquen, Getränkehandel, Fahrschulen, Musikschulen, Tanzschulen, Sprachschulen, Nagelstudios, Tattoostudios, Hochzeitsfotografen.
-- **DE-Backlog weitgehend erschöpft** → Fokus wechselt auf **P2-Übersetzungen** (kein Thin-Content-Risiko). Neue DE-Hubs nur bei klar distinkten neuen Branchen.
+- Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
+- Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
+- Welle 10 (95→98, #291): Smart-Home, Vermessungsbüros, Hundesalons — **direkt viersprachig**.
+- **Neue Hubs (Welle 9+) werden sofort 4-sprachig** gebaut (DE-Vollstandard inkl. Tools-CTA-aside + 5 hreflang + nav-Switch, Übersetzungen mit übersetztem aside). Vorlage: `ki-fuer-elektriker.html` (+ `en/`).
+- Backlog-Kandidaten weitere distinkte Nischen: estrichleger, rollladenbauer, bodenleger, ingenieurbuero, aenderungsschneiderei, uhrmacher, druckereien, werbetechnik, ladestation-installateur, brandschutz, aufzugswartung.
+- **Qualität:** FAQ-Drift in coaches/handwerker behoben (#290); Tools-CTA-aside auf allen 276 alten i18n-Hubs (#287).
 
 ## Mehrsprachige Hubs (P2, EN+FR+IT) — **92 von 92 Hubs viersprachig — P2 KOMPLETT ✅**
 
@@ -69,12 +70,18 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - **P1 — Surfer-Content (#111): ✅ gemerged.** critique + semrush-Vergleich; `_surfer`-Affiliate bleibt deaktiviert bis echter Code.
 - **P3 — Radars: ✅ alle vier gemerged:** newsletter-radar (#108), buchhaltung-radar (#119), chatbot-radar (#121), voice-radar (#123).
   - **Offen (Nutzer, manuell):** CF-Pages-Projekte + Subdomains anlegen für `newsletter`/`buchhaltung`/`chatbot`/`voice` (Deploy ist secret-gated). Ebenso `kurse`/`prompts`/`agenturen`/`dropshipping` laut PROJEKT.md.
-- **P2 — Mehrsprachige Hubs (EN+FR+IT): 🔄 laufend** — 6 Hubs fertig (s. o.), weitere Chargen offen.
+- **P2 — Mehrsprachige Hubs (EN+FR+IT): ✅ KOMPLETT** — alle 92 Hubs viersprachig (Charge 1–31, 276 i18n-URLs).
+- **Cornerstone-/Money-Pages i18n: ✅ KOMPLETT** — alle viersprachig; letzte Lücke `geld-verdienen-mit-ki` gefüllt (#286).
+- **Qualitäts-Pass — Tools-CTA-aside auf i18n-Hubs: ✅ (#287)** — alle 276 Übersetzungen haben jetzt den lokalisierten Tools-CTA-Block (wie DE).
 
-## Nächste offene Aufgabe
+## Status: gesamter Plan-Umfang erledigt ✅
+DE-Hubs (92) · i18n (92×4=368 Seiten) · 4 Radars · P4 · P1 · Cornerstone-i18n · CTA-Konsolidierung — alles auf `main`.
 
-→ **P2 Charge 3** (weitere Top-Hubs EN+FR+IT) **und/oder** Welle 8 (10 neue DE-Hubs).
-Beide laufen abwechselnd weiter (self-paced Loop).
+## Nächste offene Aufgaben (vom User freigegeben: alle 3 Tracks + mergen)
+
+1. **Welle 9+ — neue, klar distinkte Branchen-Hubs** (direkt viersprachig anlegen). NUR echte neue Nischen (kein Thin-Content). Kandidaten z. B.: Photovoltaik-/Solarteure, Wärmepumpen-Installateure, Smart-Home-Installateure, Energieberater, Vermessungsbüros, Ingenieurbüros, Änderungsschneidereien, Hundesalons, Estrichleger, Rollladenbauer, Bodenleger, Uhrmacher, Druckereien, Werbetechnik.
+2. **Qualitäts-Pass (weiter):** pre-existing FAQ-Drift in alten DE-Hubs (Wellen 1–4) fixen; `tools/link_checker.py` laufen lassen + Bericht; hreflang-/OG-Audit.
+3. **Dropship-Code-Seite (Option 1, später):** auf `claude/dropship-lade-memory-SrAs5` an Reel-Pipeline/Skripten/Doku arbeiten — **Achtung: diese Session hat KEINE Shopify-MCP-Tools**, nur Code-/GitHub-Seite möglich.
 
 ## Backlog DE-Hubs
 
