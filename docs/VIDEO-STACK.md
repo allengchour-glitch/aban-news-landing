@@ -39,6 +39,23 @@ mehr Keys.
 Setzen wie in [`API-KEYS.md`](API-KEYS.md). HeyGen-Rendering ist bewusst **nicht**
 voll automatisiert (Kosten pro Clip).
 
+## Videos klein rendern — `video-prototypes/scripts/shrink.py`
+ffmpeg-Wrapper (System- oder gebündeltes `imageio-ffmpeg`), der fertige `.mp4`
+deutlich verkleinert — für Shorts-Upload und um Repo-Bloat zu vermeiden.
+
+```bash
+python3 video-prototypes/scripts/shrink.py clip.mp4            # CRF 28, H.264 -> clip-small.mp4
+python3 video-prototypes/scripts/shrink.py clip.mp4 --target-mb 8   # ~8 MB (Zwei-Pass)
+python3 video-prototypes/scripts/shrink.py output/ --suffix -small  # ganzer Ordner
+python3 video-prototypes/scripts/shrink.py clip.mp4 --h265 --crf 30 # noch kleiner
+# oder per Makefile:  make shrink            (output/ -> *-small.mp4)
+#                     make shrink-s6         (ein Clip)
+#                     make shrink TARGET=8   (~8 MB pro Clip)
+```
+
+Standard: auf 1080×1920 begrenzt, `+faststart`, AAC 128k. Im Test: 31 MB → ~2–3 MB
+(−90 %) bei guter Optik. Zielgrößen-Modus trifft die MB recht genau.
+
 ## Veraltet
 - **`youtube.yml`** (lud vorab-gerenderte Clips aus `video-prototypes/output/`) ist
   **veraltet**: die 275 MB Renders wurden aus Git entfernt (schlanker Stack). Zeitplan

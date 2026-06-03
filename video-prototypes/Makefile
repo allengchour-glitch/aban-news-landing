@@ -23,7 +23,7 @@ VOICE  ?= BswSp506E1rUw7uja1V5           # Mary Kai (deutsch, Social)
 PY     ?= python3
 S      := scripts
 
-.PHONY: all audio clips schedule youtube setup clean help
+.PHONY: all audio clips schedule youtube shrink setup clean help
 .DEFAULT_GOAL := help
 
 ## Audio + alle Clips
@@ -54,6 +54,14 @@ schedule:
 ## Direkt auf YouTube laden, terminiert laut schedule.csv (siehe YOUTUBE-UPLOAD.md)
 youtube:
 	$(PY) scripts/yt_upload.py
+
+## Fertige Clips klein rendern (ffmpeg). 'make shrink' = ganzer output/-Ordner,
+## 'make shrink-s6' = ein Clip, 'make shrink TARGET=8' = ~8 MB pro Clip.
+shrink:
+	$(PY) $(S)/shrink.py output $(if $(TARGET),--target-mb $(TARGET),) --suffix -small
+
+shrink-%:
+	$(PY) $(S)/shrink.py output/clipfilm_$*.mp4 $(if $(TARGET),--target-mb $(TARGET),)
 
 ## Hinweis auf die Setup-Dokumentation
 setup:
