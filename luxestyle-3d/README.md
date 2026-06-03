@@ -1,4 +1,4 @@
-# LuxeStyle — 3D-Druck-Pipeline (personalisierte Geschenke + Flexi)
+# LuxeStyle — 3D-Druck-Pipeline (personalisierte Geschenke)
 
 Werkzeuge und Gedächtnis für den Geschäftszweig „3D-Druck-Produkte" im Shop
 **luxestyle.ch** (Shopify Basic, CHF, Schweiz). Selbst erzeugte Designs = null
@@ -24,7 +24,6 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `caketopper.scad` | Cake-Topper mit Wunschtext |
 | `nametag_base.scad` | Grundplatte (ohne Text) für mehrfarbige Anhänger (X1C + AMS) |
 | `animal.scad` | 8 Tier-Silhouetten (cat, bear, rabbit, fish, paw, dog, heart, star) |
-| `flexi_chain.scad` | Print-in-Place Gliederkette (beweglich, in einem Stück) |
 | `cart_token.scad` | **Einkaufswagen-Chip** (Münz-Token + Lasche + Öse + Initialen). `coin=chf1\|chf2\|chf5\|eur1\|eur2\|eur050\|custom`, `txt="AC"`, `part=base\|text` (2-farbig) |
 | `lithophane.py` | **Foto → 3D-Lithophane** (Relief-Anhänger/Nachtlicht). Pure Python+Pillow, wasserdicht, optional Öse. `python3 lithophane.py foto.jpg out.stl --width 60 --ring`. Kundenfoto = kein Lizenzrisiko |
 
@@ -40,7 +39,7 @@ Lizenzproblem. **Erst Sample, dann Shopify. Live schalten nur der Inhaber.**
 | `colorize.py` | **Universelles Farb-Tool**: MODE=texture (Meshy-Textur) ODER rules (Plain-Modell nach Regionen) → Farb-STLs + farbiges OBJ + Vorschau; Palette frei |
 | `hole.py` | **Schlüsselring-Loch:** skaliert GLB auf mm, bohrt vertikales Loch durch solides Material, exportiert GLB (Textur bleibt) + Kontroll-Render. Danach `colorize.py` für die Bambu-Teile |
 | `assemble.py` | **Farb-Teile → EINE fertige 3MF** (Bambu-nativ): aus `colored.obj` oder `color_*.stl`-Ordner. Jedes Dreieck trägt seine Farbe → Bambu öffnet 1 Objekt, matcht Farben auto auf Filamente. Kein 4-fach-Import |
-| `build_all.sh` | **1 Befehl** → kompletter Katalog als STL (alle Tiere, Flexi, Beispiel-Namen) |
+| `build_all.sh` | **1 Befehl** → kompletter Katalog als STL (alle Tiere, Beispiel-Namen) |
 
 ### Benutzen
 ```bash
@@ -49,8 +48,8 @@ python3 make.py nameplate "Familie Müller"
 python3 make.py caketopper "Happy Birthday"
 
 openscad -o tier_cat.stl -D 'kind="cat"' animal.scad
-openscad -o flexi_chain.stl flexi_chain.scad
-# Einkaufswagen-Chip + Lithophane (neu, beide KEIN Flexi)
+
+# Einkaufswagen-Chip + Lithophane (neu)
 openscad -o token.stl -D 'coin="chf2"' -D 'txt="AC"' cart_token.scad
 python3 lithophane.py foto.jpg litho.stl --width 60 --pixels 200 --ring
 
@@ -116,24 +115,13 @@ den Spülturm + etwas mehr Zeit.
 
 ---
 
-## Flexi (print-in-place) — ⛔ DEPRECATED (Kunde Juni 2026: Flexi verworfen)
+## Flexi — ⛔ entfernt (Kunde, Juni 2026)
 
-> **Nicht mehr verwenden.** Bewegliche/gegliederte Tiere wirken länglich wie
-> Wurm/Schlange — der Kunde will sie nicht. Schlüsselanhänger = kompakte statische
-> Figur + `hole.py`. Der Abschnitt bleibt nur als technisches Archiv stehen.
-
-- **Eigene Flexi = sicher verkaufbar.** `flexi_chain.scad` (Kette) und `flexi.scad`
-  (Flexi-Tier: Katze/Schlange/Raupe) sind beide selbst gebaut → frei verkaufbar.
-- **`flexi.scad`** nutzt Kugel-Pfannen-Gelenke: Pfanne umschliesst >Halbkugel (Kugel
-  gefangen), Spalt `clear=0.35`. Im Querschnitt geprüft, dass die Kugel sitzt; per
-  Loose-Parts geprüft, dass alle Segmente getrennt sind (CGAL `Volumes = Segmente+1`).
-  Default `$fn=48` (Bau ~2 Min); Segmente bewusst gleich gross (Pfanne braucht Material,
-  dünner Schwanz unmöglich). `n=3` für Test-Druck, dann hochdrehen.
-- **Fremde Flexi** (MakerWorld/Thingiverse) sind fast immer NonCommercial → **nicht
-  verkaufbar**. Bearbeiten in Blender macht sie NICHT legal.
-- **Echte Tier-Flexi** (Drache, Axolotl) → kommerzielle Lizenz (Cinderwing3D ~10 $/Mt)
-  oder selbst in printpal.io bauen.
-- Flexi braucht das richtige **Spaltmaß** → einmal auf dem X1C testen.
+> Flexi (bewegliche/gegliederte Print-in-Place-Tiere) ist **komplett raus**: wirkt
+> länglich wie Wurm/Schlange. Alle Flexi-Skripte (`flexi.scad`, `flexi_chain.scad`,
+> `flexi_cutter*`, `flexicut.py`, `flexi_limbs.py`) wurden gelöscht (per Git-Historie
+> rückholbar). **Schlüsselanhänger = kompakte statische Figur** (wie Mimi) + Ring-Loch
+> via `hole.py`.
 
 ---
 
@@ -144,15 +132,6 @@ Was in dieser Session gelernt/entschieden wurde — damit es nicht verloren geht
 **Werkzeuge im Container** (ephemer, pro Session neu via `apt`):
 - `openscad` (parametrische STL + Renders), `blender` 4.0 headless + `xvfb`
   (Mesh-Reparatur/Cleanup von KI-Modellen, Format-Konvertierung, Renders).
-
-**Flexi-Technik:**
-- CGAL meldet `Volumes = Anzahl Glieder + 1` (Außenraum zählt mit).
-  Geprüft `flexi_chain.scad`: `pitch` 11–11.5 → alle 6 Glieder getrennt UND verhakt
-  (Volumes 7). Verhakt nur solange `pitch < 2*R - r` (= 13.8).
-- Tuning: **verkleben → pitch erhöhen**; **fällt auseinander → pitch verringern**.
-- Flexi braucht echten Test-Druck; am besten auf eigenem X1C (Toleranz steuerbar),
-  über Craftcloud riskanter (Glieder können verkleben).
-- Komplexe Tier-Flexi (Kater mit Beinen) ist schwer zu skripten → printpal/Lizenz.
 
 **KI-3D (Meshy):**
 - Erzeugt nur **statische** Meshes, **kein** Flexi (keine Gelenke).
@@ -192,7 +171,7 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
   Rahmung. [TODO]
 - **Standard-Größen** festlegen: Anhänger ~40 mm, Figur ~55–60 mm (statt ad hoc). [merken]
 - **Mehrfarbig**: kein Auto-Multicolor; nur einfarbig (Filament) + manuell in Bambu Studio.
-- **Flexi an Figuren**: nicht möglich; nur eigenständige Flexi (Kette) oder Lizenz.
+- **Flexi**: komplett verworfen (Kunde) — nicht mehr anbieten.
 
 ### Stil-Vorgaben (Kunde — merken)
 - **Standard = flache, liegende Kawaii-Katze/-Tiere**, taschentauglich (~10 mm dünn, 5–9 cm).
@@ -201,7 +180,7 @@ Damit „alle Tiere/Gegenstände" zuverlässig druckbar + verkaufbar werden:
 - **Flache, gravierte Designs → OpenSCAD** (`kawaii_cat.scad`), nicht Meshy (scharf, sauber,
   kein Artefakt). Meshy nur für **runde 3D-Figuren**.
 - Farbe: einfarbig (Filament) ODER **AMS 2-farbig** (Körper + Gesicht/ Zunge in 2. Farbe).
-- Flexi-Gelenke an Figuren: weiterhin nicht möglich.
+- Flexi: verworfen (Kunde) — keine beweglichen Tiere mehr.
 
 ### Finaler 3D-Stil (Kunde bestätigt)
 - **Runde 3D-Figur** (Meshy Image/Text→3D) → `polish.py` → Augen = **die vorhandenen
