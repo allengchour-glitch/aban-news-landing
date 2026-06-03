@@ -1,0 +1,36 @@
+name: Site Health (alle 4h Live-Check + Auto-Fix)
+
+# Kontrolliert luxestyle.ch alle 4h: 404-Kollektionen, Startseiten-Platzhalter, Admin-Link-Leak.
+# Auto-Fix: 404-Homepage-Kollektion wird automatisch im Onlineshop veröffentlicht.
+# Meldung per Telegram nur bei Problemen/Fixes. Secrets siehe unten; ohne Shopify-Creds = nur URL-Check.
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-health
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Site-Check + Auto-Fix
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node automation/site-health.mjs
