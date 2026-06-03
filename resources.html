@@ -53,6 +53,8 @@
       <span>aban news</span>
     </a>
     <nav class="nav" aria-label="Hauptnavigation">
+      <a href="/tools.html">Tools</a>
+      <a href="/glossary.html">Glossar</a>
       <a href="/sponsoring.html">Werbung</a>
       <a href="/founding.html">Premium</a>
       <a href="/#signup" class="nav-cta">Abonnieren</a>
@@ -997,6 +999,37 @@ abannews.com</code></pre>
     </p>
   </div>
 </footer>
+
+<style>
+  /* --- pimp 2026-06-03: Copy-Button auf allen Prompt-/Code-Blöcken --- */
+  .pre-wrap{position:relative}
+  .pre-wrap pre{padding-top:2.4rem}
+  .copy-code{position:absolute;top:.5rem;right:.5rem;background:var(--c-accent);color:#fff;border:none;
+    border-radius:var(--r-sm);font:600 .75rem/1 var(--font);padding:.4rem .6rem;cursor:pointer;opacity:.9;transition:opacity .12s,background .12s}
+  .copy-code:hover{opacity:1}
+  .copy-code.done{background:var(--c-success)}
+  @media print{.copy-code{display:none}}
+</style>
+<script>
+(function(){
+  'use strict';
+  var pres = document.querySelectorAll('main pre');
+  Array.prototype.forEach.call(pres, function(pre){
+    var wrap = document.createElement('div'); wrap.className = 'pre-wrap';
+    pre.parentNode.insertBefore(wrap, pre); wrap.appendChild(pre);
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'copy-code'; btn.textContent = 'Kopieren';
+    btn.setAttribute('aria-label', 'In die Zwischenablage kopieren');
+    btn.addEventListener('click', function(){
+      var txt = pre.innerText;
+      try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt); } catch(e){}
+      btn.classList.add('done'); btn.textContent = '✓ Kopiert';
+      setTimeout(function(){ btn.classList.remove('done'); btn.textContent = 'Kopieren'; }, 1500);
+    });
+    wrap.appendChild(btn);
+  });
+})();
+</script>
 
 </body>
 </html>
