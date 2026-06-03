@@ -1394,3 +1394,13 @@ Traffic versiegt, Conversion unverändert 0. Bestätigt: Shop fertig, Hebel = Tr
 also grösstenteils DIESELBE TikTok-Quelle (Link-in-Bio/Video), kein separater killbarer Kanal. Alles Low-Intent.
 **FIX bleibt:** Conversion-Kampagne (Complete Payment, Pixel D8EKVR, CH/Frauen/18–34) statt breit/organisch.
 Anleitung: dropship/KAMPAGNE-TODO-FUER-USER.md.
+
+## 2026-06-03 — CJ-Import: +1 Kleid «Marguerite» (Dropship-Fokus, User-Wunsch)
+Token gültig (~14.06). Suche cj_kleider_search.mjs → French-style Floral-print Dress gewählt (pid 2606030235371634600,
+$5.31, 45v, 14img). Bild-QA: alle 14 HTTP-200, erstes Bild = echtes Model-Foto (floral, Rüschen-Träger, premium).
+**Angelegt:** „Floral-Sommerkleid «Marguerite» – Rüschen-Träger, figurbetont" (gid 15416026235265, ACTIVE,
+CHF 34.90, 45 Varianten Farbe×Grösse [9 Farben S–XXL, DE-Farbnamen], deutsche Beschreibung + cm-Grössentabelle
++ Trust-Zeile, Tags cj-real/damen/damen-mode/kleid/neu/sommer-2026, Kollektion Kleider).
+Media READY ✅. **Publiziert in 6 Kanäle** (Onlineshop, Shop, TikTok, FB&IG, Google&YT, Pinterest) — 0 Fehler.
+Live: luxestyle.ch/products/floral-sommerkleid-marguerite-ruschen-trager-figurbetont. Auto-Join Sommer-Collection via Tags.
+**Hinweis:** Bei 0 Verkäufen ist „mehr Produkte" der schwächste Hebel — Traffic bleibt das Kernthema.
