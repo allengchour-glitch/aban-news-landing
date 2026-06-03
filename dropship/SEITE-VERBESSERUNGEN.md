@@ -63,3 +63,17 @@ Quellen: Shopify App Store (Marketing & Conversion), Judge.me, Hextom, EasyApps 
   mit **Preis-Anker** („Designer-Look, fairer Preis · ab CHF 34.90/14"), Trust vereinheitlicht auf **30 Tage**, WELCOME10.
 - Das sind die 3 Top-Landingpages der letzten Tage (Analytics: damen-mode 289 · sommer 194 · highlights 163 Sessions).
 - **Offen (Customizer/du):** Ankündigungsleisten-Link-Fix · Hero-Text · Judge.me-Sterne · Trust-Icons · 1 Conversion-App.
+
+## 🔴→✅ GELÖST: „Vorgestellte Produkte · Produkttitel CHF 19.99"-Platzhalter auf der Startseite (2026-06-03)
+**Ursache (verifiziert):** Die Homepage-Sektion „✨ CJ Neuheiten 2026" (Horizon, `templates/index.json`,
+`product_list_cjneu`) bindet die Kollektion **`neu-eingetroffen`** — diese war **NICHT im Online-Store
+veröffentlicht** (`/collections/neu-eingetroffen` → 404). Horizon zeigt bei nicht auflösbarer Kollektion
+**Demo-Platzhalter** + Default-Titel „Vorgestellte Produkte".
+**Fix (per API, KEIN Theme):** `publishablePublish` der Kollektion `neu-eingetroffen` (ID 687980052865)
+auf Publication **Onlineshop** (301970915713). Danach 200, Platzhalter verschwinden (CDN-Cache regeneriert).
+**LEHRE:** Startseiten-Platzhalter = eine `product-list`-Sektion zeigt auf eine **unveröffentlichte/leere**
+Kollektion. IMMER prüfen: `curl -o /dev/null -w "%{http_code}" https://luxestyle.ch/collections/<handle>` →
+404 ⇒ per `publishablePublish` veröffentlichen. (Theme-Sektionen + ihre Collection-Bindung: `theme.files` lesbar,
+MAIN nicht schreibbar.)
+**KORREKTUR:** Mein früheres „Falschalarm/Halluzination" war falsch — die Platzhalter waren real (im roh-HTML
+nur per `grep -o`, nicht mit Kontext-Pattern auffindbar, da minifiziert).
