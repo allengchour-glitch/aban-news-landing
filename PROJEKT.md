@@ -1,8 +1,32 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
 > Dauerhafter Gedächtnis-Speicher für dieses Vorhaben. Überlebt Session-Resets.
-> Stand: **2026-06-02** (Netzwerk stark erweitert — siehe Abschnitt „🆕 Netzwerk-Ausbau" am Ende) · Betreiber: Allen Chour (abannews.com, Belp/CH).
-> Hinweis: Die laufend gepflegte Detail-Wahrheit steht in `CLAUDE.md`; dieses Dokument ist der Strategie-/Status-Überblick.
+> Stand: **2026-06-03** (Gratis-Tool-Offensive + interne Verlinkung — siehe nächster Abschnitt) · Betreiber: Allen Chour (abannews.com, Belp/CH).
+> ⚠️ Hinweis: `CLAUDE.md` im Repo-Root ist inzwischen das Arbeitsgedächtnis eines **anderen** Workstreams
+> (LuxeStyle-Dropshipping-Shop) und **nicht mehr** die aban-news-Wahrheit. Für aban-news ist **dieses**
+> Dokument (`PROJEKT.md`) maßgeblich. CLAUDE.md des Dropship-Projekts NICHT überschreiben.
+
+## 📌 Stand 2026-06-03 — Gratis-Tool-Offensive + interne Verlinkung
+**24 client-side Gratis-Tools** (kein Login/Upload/Tracking, Aban-Voice, Amber-Shell, JSON-LD) live auf abannews.com:
+- Entwickler/Daten: `json-formatter` `/json`, `regex-tester` `/regex`, `encoder` `/encode`, `hash-generator` `/hash`,
+  `uuid-generator` `/uuid`, `env-parser` `/env`, `jwt-decoder` `/jwt`, `diff-tool` `/diff`,
+  `timestamp-konverter` `/timestamp`, `markdown-tabelle` `/tabelle`, **`qr-code` `/qr`**.
+- Text/Farbe/Web: `hype-filter`, `zeichenzaehler` `/zeichen`, `kontrast-checker` `/kontrast`, `farb-umrechner` `/farben`.
+- Rechnen/Geld: `automatisierung-rechner`, `cron-generator` `/cron`, `was-automatisieren`, `prozent-rechner` `/prozent`,
+  `mwst-rechner` `/mwst`, `finanz-rechner`, `passwort-generator` `/passwort`, `ki-kosten-rechner`.
+- **QR-Code-Generator:** eigener Inline-Encoder (GF(256)/Reed-Solomon/ISO-18004-Maskierung, Byte/UTF-8, V1–40),
+  Datentabellen aus `segno` extrahiert, Encoder **gegen segno verifiziert (296/296 byte-identische Matrizen**,
+  V1–39, alle ECC, Auto-Maske, UTF-8). PNG+SVG-Export. Keine Fremd-Lib.
+- **SEO-Hub `online-tools.html`** (`/werkzeuge`, `/online-tools`, `/gratis-tools`): listet alle Tools nach Themen,
+  CollectionPage+ItemList+FAQPage+Breadcrumb-JSON-LD, eigenes Social-Bild `og-tools.png` (`generate_tools_og.py`).
+- **Interne Verlinkung (Hub-and-Spoke):** alle 92 `ki-fuer-*`-Branchenseiten (Funnel-Block, `tools/add_branchen_funnel.py`,
+  re-runnable) + alle 21 Tool-Seiten (Footer, `tools/link_tools_to_hub.py`) verlinken den Hub; Hub verlinkt zurück.
+- **Newsletter-Sample** (`preview.html`) inhaltlich erweitert.
+
+**Cloudflare-Go-Live der Radars (offen, nur User/Token):** `tools/cf_pages_setup.py --all-pending` + Workflow
+`cf-pages-setup.yml` (Default jetzt `all-pending`, ein Tap). Browser-Agent-Weg ohne Token:
+`docs/CLOUDFLARE-DEPLOY-BROWSER-AGENT.md` (Tabelle = alle 17 offenen Subdomains). Voraussetzungen: Repo-Secret
+`CLOUDFLARE_API_TOKEN` (Pages-Edit + DNS-Edit) **oder** CF-Login + einmal „Connect to Git". Token NIE ins Repo.
 
 ## Kontext / Ziel
 Solo-Operator mit KI-API-Zugang (LLM-Text, Bild, Audio/Voice) + bestehendem
