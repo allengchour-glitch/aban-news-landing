@@ -29,7 +29,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
-**📌 2026-06-02 (AKTUELLSTER STAND — zuerst lesen):**
+**📌 2026-06-03 (AKTUELLSTER STAND — zuerst lesen):**
+- **Gratis-Reel-Pipeline komplett & auf `main`** (Cron-Workflows laufen nur vom Default-Branch):
+  `reel-render.yml` (alle 4h Reel aus `automation/good_products.csv` → `reels/auto-*.mp4`, nur geprüfte Produkte),
+  `reel-autopost.yml` (alle 4h nächstes `ready`-Reel posten), `reel-analytics.yml` (alle 2T Report).
+- **Autopost OHNE Make** — Eigentool wie abannews `social/post.py`: `post-next-reel.mjs` postet direkt per
+  **Telegram** + über **n8n** (`PUBLISH_WEBHOOK_URL`, gratis self-hosted, `social/n8n-publish-workflow.json`) an
+  IG/TikTok. Make nur Legacy-Alias. User-Setup: Secrets `TELEGRAM_BOT_TOKEN/CHAT_ID` (sofort) bzw. `PUBLISH_WEBHOOK_URL` (n8n).
+- **Caption-Engine:** 5 rotierende produktspezifische Captions + 3 Hashtag-Sets (kein Triplicate-Spam).
+- **Rating-Audit (Judge.me-Metafelder):** fast alle Produkte `rating=null`. Verifiziert ≥4,3★: **Bali 4,93★**,
+  **Ibiza 4,47★**. **Sommerkleid ärmellos 3,54★** → bleibt aus Ads/Reels; Judge.me-Review-Fix nur per Admin (User-TODO).
+- **Themen-Vielfalt:** `good_products.csv` = 14 Einträge, Accessoires (Strohtasche + Cat-Eye-Sonnenbrille, echte
+  Lifestyle-Shots) interleaved zwischen Kleidern. Schmuck-Freisteller bewusst NICHT (Regel 1). Reels validiert 1080×1920.
+- **Feedback-Memory:** `dropship/REEL-REGELN.md` (alle Lehren). **User-Auftrag steht: weiter autonom, dann committen + PR.**
+  Merge nach `main` nur über die PR (GitHub-MCP war zeitweise rate-limited). 🔒 Telegram-Token noch rotieren.
+
+**📌 2026-06-02 (vorheriger Stand):**
 - **Shop voll optimiert (alles live, per API):** 144 Bild-Alt-Texte (ganzer Fashion-Katalog), 64 Produkt-SEO-Metas
   (Kleider+Accessoires+Schmuck), alle 20 Kleider mit cm-Grössentabelle+Trust, 15 Kollektionen starker Text/SEO,
   Menü fashion-first (70 Links). Audit: `dropship/SHOP-DESIGN-AUDIT.md`. Customizer-Auftrag: `dropship/CUSTOMIZER-TODO-FUER-CLAUDE.md`.
