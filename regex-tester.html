@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regex-Tester (auf Deutsch) — live testen & erklären · aban news</title>
+<meta name="description" content="Kostenloser Regex-Tester: Muster live gegen deinen Text prüfen, Treffer hervorheben, Gruppen sehen — mit fertigen Vorlagen (E-Mail, URL, PLZ, IBAN). Läuft lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/regex-tester.html">
+<meta property="og:title" content="Regex-Tester — live testen, auf Deutsch">
+<meta property="og:description" content="Regex live gegen deinen Text prüfen, Treffer & Gruppen sehen, mit Vorlagen. Lokal im Browser, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/regex-tester.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Regex-Tester",
+"url":"https://abannews.com/regex-tester.html","applicationCategory":"DeveloperApplication",
+"operatingSystem":"Web","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Testet reguläre Ausdrücke live gegen Text, hebt Treffer hervor und zeigt Gruppen. Mit Vorlagen.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9;--hl:#ffe08a}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15;--hl:#5a4422}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:9px;border:0;cursor:pointer;font-size:1rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(26px,4.6vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,18px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.rxrow{display:flex;align-items:center;gap:8px}
+.rxrow .slash{font-size:1.3rem;color:var(--muted);font-weight:700}
+#pat{flex:1;font-size:1.05rem;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink)}
+#pat:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+#flags{width:74px;font-size:1.05rem;padding:10px 8px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);text-align:center}
+.flagset{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 0;font-size:.86rem;color:var(--ink2)}
+.flagset label{display:flex;gap:5px;align-items:center;cursor:pointer}
+label.fld{display:block;font-weight:600;font-size:14px;margin:14px 0 6px;color:var(--ink2)}
+textarea{width:100%;min-height:130px;font:inherit;font-size:14px;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);resize:vertical}
+textarea:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.status{margin-top:10px;font-size:.9rem;font-weight:600}
+.status.ok{color:var(--ok)}.status.bad{color:var(--bad)}
+.hlbox{margin-top:12px;border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--bg);white-space:pre-wrap;word-break:break-word;font-size:14px;max-height:260px;overflow:auto}
+.hlbox mark{background:var(--hl);color:var(--ink);border-radius:3px;padding:0 1px}
+.groups{margin-top:12px;font-size:.88rem}
+.groups table{width:100%;border-collapse:collapse}
+.groups td,.groups th{border-bottom:1px solid var(--line);padding:5px 8px;text-align:left}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{font:inherit;font-size:13px;background:var(--bg);border:1px solid var(--line);color:var(--ink2);border-radius:999px;padding:6px 12px;cursor:pointer}
+.chip:hover{background:var(--cream);border-color:var(--amber-lt);color:var(--amber-dk)}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:20px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap">
+  <a href="/" class="brand">aban news</a>
+  <a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a>
+</div></header>
+
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Regex</span> testen — live, auf Deutsch</h1>
+    <p>Muster eingeben, Text einfügen, Treffer sofort sehen. Mit fertigen Vorlagen für die Klassiker. Läuft komplett lokal in deinem Browser — nichts wird gesendet, kein Login.</p>
+  </section>
+
+  <section class="panel" id="tool">
+    <label class="fld" for="pat">Regulärer Ausdruck</label>
+    <div class="rxrow">
+      <span class="slash mono">/</span>
+      <input id="pat" class="mono" value="\b[\w.+-]+@[\w-]+\.[\w.-]+\b" spellcheck="false" autocomplete="off">
+      <span class="slash mono">/</span>
+      <input id="flags" class="mono" value="gi" spellcheck="false" autocomplete="off" aria-label="Flags">
+    </div>
+    <div class="flagset">
+      <label><input type="checkbox" id="fg" checked> g — alle Treffer</label>
+      <label><input type="checkbox" id="fi" checked> i — Groß/klein egal</label>
+      <label><input type="checkbox" id="fm"> m — mehrzeilig (^$)</label>
+      <label><input type="checkbox" id="fs"> s — . matcht Zeilenumbruch</label>
+    </div>
+
+    <p class="note" style="margin-top:14px">Vorlagen:</p>
+    <div class="presets" id="presets"></div>
+
+    <label class="fld" for="txt">Testtext</label>
+    <textarea id="txt" spellcheck="false">Schreib mir an hallo@abannews.com oder team@example.org.
+Mehr unter https://abannews.com/regex-tester und tel. +41 79 123 45 67.
+PLZ 3123 Belp.</textarea>
+
+    <div class="status" id="status">—</div>
+    <div class="hlbox mono" id="hl" aria-live="polite"></div>
+    <div class="groups" id="groups"></div>
+    <p class="note">Tipp: Die Engine ist JavaScript-Regex (wie in n8n/Node, Browser, vielen No-Code-Tools). Kleine Unterschiede zu PCRE/Python möglich (z. B. Lookbehind, Named Groups). Alles läuft lokal — dein Text verlässt die Seite nicht.</p>
+  </section>
+
+  <div class="cta">
+    <strong>Regex sitzt — Rest automatisieren?</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">Zeitplan bauen, Tool finden, prüfen ob's sich lohnt.</p>
+    <p>
+      <a class="btn" href="/cron-generator.html">Cron-Generator</a>
+      <a class="btn ghost" href="/automatisierung-rechner.html">Lohnt sich's?</a>
+      <a class="btn ghost" href="/json-formatter.html">JSON-Formatter</a>
+    </p>
+  </div>
+</div></main>
+
+<footer><div class="wrap">
+  © 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/cron-generator.html">Cron</a> · <a href="/json-formatter.html">JSON</a> ·
+  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+</div></footer>
+
+<script>
+(function(){
+  var pat=document.getElementById("pat"),flags=document.getElementById("flags"),txt=document.getElementById("txt"),
+      status=document.getElementById("status"),hl=document.getElementById("hl"),groups=document.getElementById("groups");
+  var fg=document.getElementById("fg"),fi=document.getElementById("fi"),fm=document.getElementById("fm"),fs=document.getElementById("fs");
+  var presets=[
+    ["E-Mail","\\b[\\w.+-]+@[\\w-]+\\.[\\w.-]+\\b","gi"],
+    ["URL","https?:\\/\\/[^\\s]+","gi"],
+    ["Telefon (DACH)","(?:\\+|00)?[\\d\\s().\\/-]{7,}","g"],
+    ["PLZ (DE/AT 4–5)","\\b\\d{4,5}\\b","g"],
+    ["Datum TT.MM.JJJJ","\\b\\d{1,2}\\.\\d{1,2}\\.\\d{2,4}\\b","g"],
+    ["Wort doppelt","\\b(\\w+)\\s+\\1\\b","gi"],
+    ["Zahl mit Komma","\\d+,\\d+","g"]
+  ];
+  var pc=document.getElementById("presets");
+  presets.forEach(function(p){
+    var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=p[0];
+    b.addEventListener("click",function(){pat.value=p[1];flags.value=p[2];syncChecks();run();});
+    pc.appendChild(b);
+  });
+  function syncFlagsFromChecks(){
+    var f=(fg.checked?"g":"")+(fi.checked?"i":"")+(fm.checked?"m":"")+(fs.checked?"s":"");
+    flags.value=f;
+  }
+  function syncChecks(){
+    var f=flags.value;fg.checked=/g/.test(f);fi.checked=/i/.test(f);fm.checked=/m/.test(f);fs.checked=/s/.test(f);
+  }
+  function esc(s){return s.replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
+  function run(){
+    var p=pat.value, f=flags.value.replace(/[^gimsuy]/g,""), t=txt.value;
+    flags.value=f;
+    if(!p){status.className="status";status.textContent="—";hl.innerHTML=esc(t);groups.innerHTML="";return;}
+    var re;
+    try{ re=new RegExp(p, f.indexOf("g")<0 ? f+"g" : f); }
+    catch(e){ status.className="status bad";status.textContent="✗ Ungültiges Muster: "+e.message;hl.innerHTML=esc(t);groups.innerHTML="";return; }
+    var out="",last=0,m,count=0,grp=[],guard=0;
+    re.lastIndex=0;
+    while((m=re.exec(t))!==null){
+      if(guard++>10000)break;
+      out+=esc(t.slice(last,m.index))+"<mark>"+esc(m[0]||"")+"</mark>";
+      last=m.index+(m[0].length||0);
+      count++;
+      if(m.length>1 && count<=50) grp.push({n:count,full:m[0],groups:m.slice(1)});
+      if(m[0]===""){re.lastIndex++;} // Endlosschleife bei Leer-Match vermeiden
+      if(f.indexOf("g")<0)break;
+    }
+    out+=esc(t.slice(last));
+    hl.innerHTML=out||"&nbsp;";
+    status.className="status ok";status.textContent="✓ "+count+" Treffer";
+    if(grp.length){
+      var rows=grp.map(function(g){
+        return "<tr><td>"+g.n+"</td><td>"+esc(g.full)+"</td><td>"+g.groups.map(function(x,i){return "$"+(i+1)+"="+esc(x===undefined?"∅":x);}).join("  ")+"</td></tr>";
+      }).join("");
+      groups.innerHTML="<table><tr><th>#</th><th>Treffer</th><th>Gruppen</th></tr>"+rows+"</table>";
+    } else groups.innerHTML="";
+  }
+  [pat,txt].forEach(function(e){e.addEventListener("input",run);});
+  flags.addEventListener("input",function(){syncChecks();run();});
+  [fg,fi,fm,fs].forEach(function(c){c.addEventListener("change",function(){syncFlagsFromChecks();run();});});
+  run();
+})();
+</script>
+</body>
+</html>

@@ -108,6 +108,8 @@ durchgehend die du-Form.
 | `automatisierung-rechner.html` | Tool: **lohnt sich die Automatisierung?** (ROI/Amortisation, client-side, Wartungs-Caveat). Pretty-URL `/automatisierung-rechner`. |
 | `cron-generator.html` | Tool: **Cron-Zeitpläne** per Klick bauen + beliebige Cron-Ausdrücke auf Deutsch erklären (client-side). Pretty-URLs `/cron`. |
 | `was-automatisieren.html` | Tool: **Aufgaben-Priorisierer** — was zuerst automatisieren (Zeit × Nervfaktor, client-side, localStorage-frei). Pretty-URL `/was-automatisieren`. Alle drei verlinken automatisierung.abannews.com. |
+| `regex-tester.html` | Tool: **Regex live testen** (Treffer/Gruppen-Highlight, Vorlagen, client-side, ReDoS-unkritisch da Browser). Pretty-URL `/regex`. |
+| `json-formatter.html` | Tool: **JSON formatieren/validieren/minifizieren** (Webhook-/API-Payloads, client-side, Fehler mit Zeilennr.). Pretty-URL `/json`. |
 | `anti-hype-texten.html` | SEO-Cornerstone-Ratgeber zum Tool (Vorher/Nachher, FAQ) |
 | `hype-widget-demo.html` | `noindex` — Doku/Demo fürs einbettbare Widget |
 | `impressum.html` / `datenschutz.html` | CH-Impressum / DSGVO |
