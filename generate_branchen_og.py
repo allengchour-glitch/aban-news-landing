@@ -183,6 +183,9 @@ BRANCHEN = {
     "abschleppdienst":     ("Abschleppdienst",      ["Abrechnung & Disposition,", "nicht die Bergung"]),
     "motorradwerkstatt":   ("Motorradwerkstätten",  ["Termine & Angebote,", "nicht die Diagnose"]),
     "wohnmobilservice":    ("Wohnmobil-Service",    ["Termine & Angebote,", "nicht die Gasprüfung"]),
+    "kfz-gutachter":       ("Kfz-Gutachter",        ["Doku & Korrespondenz,", "nicht die Begutachtung"]),
+    "fahrzeugfolierung":   ("Fahrzeugfolierung",    ["Angebote & Design-Infos,", "nicht die Verklebung"]),
+    "bootsservice":        ("Bootsservice",         ["Saison-Orga & Angebote,", "nicht die Diagnose"]),
 }
 
 
