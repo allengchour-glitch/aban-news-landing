@@ -159,6 +159,9 @@ BRANCHEN = {
     "kuechenstudio":       ("Küchenstudios",        ["Angebote & Geräte-Infos,", "nicht das Aufmaß"]),
     "wasserschadensanierung": ("Wasserschaden-Sanierung", ["Versicherungs-Kram,", "nicht die Leckortung"]),
     "terrassenbau":        ("Terrassenbau",         ["Angebote & Pflegeinfos,", "nicht das Verlegen"]),
+    "carportbau":          ("Carportbau",           ["Angebote & Bauantrag,", "nicht die Statik"]),
+    "treppenlift":         ("Treppenlifte",         ["Angebote & Zuschuss-Kram,", "nicht das Aufmaß"]),
+    "gartenteichbau":      ("Gartenteichbau",       ["Angebote & Pflegeinfos,", "nicht der Aushub"]),
 }
 
 
