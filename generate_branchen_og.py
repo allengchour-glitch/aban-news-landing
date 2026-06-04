@@ -165,6 +165,9 @@ BRANCHEN = {
     "rohrreinigung":       ("Rohrreinigung",        ["Notdienst & Angebote,", "nicht die Befahrung"]),
     "industriereinigung":  ("Industriereinigung",   ["Angebote & Planung,", "nicht das Handling"]),
     "holzhausbau":         ("Holzhausbau",          ["Angebote & Förder-Infos,", "nicht die Statik"]),
+    "glasreinigung":       ("Glasreinigung",        ["Angebote & Tourenplanung,", "nicht die Höhenarbeit"]),
+    "winterdienst":        ("Winterdienst",         ["Verträge & Touren,", "nicht der Räumeinsatz"]),
+    "graffitientfernung":  ("Graffitientfernung",   ["Angebote & Schnell-Orga,", "nicht der Untergrund-Test"]),
 }
 
 
