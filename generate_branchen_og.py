@@ -135,6 +135,9 @@ BRANCHEN = {
     "brunnenbau":          ("Brunnenbau",           ["Angebote & Anträge,", "nicht die Bohrung"]),
     "wintergarten":        ("Wintergarten",         ["Angebote & Anfragen,", "nicht die Statik"]),
     "zaunbau":             ("Zaunbau",              ["Angebote & Material-Infos,", "nicht die Montage"]),
+    "saunabau":            ("Saunabau",             ["Angebote & Anfragen,", "nicht der Anschluss"]),
+    "pflasterbau":         ("Pflasterbau",          ["Angebote & Pflegeinfos,", "nicht das Verlegen"]),
+    "natursteinbetrieb":   ("Natursteinbetriebe",   ["Angebote & Stein-Infos,", "nicht der Zuschnitt"]),
 }
 
 
