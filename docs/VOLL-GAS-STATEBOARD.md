@@ -14,7 +14,7 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **125 live, alle viersprachig (de/en/fr/it = 500 Seiten)**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **128 live, alle viersprachig (de/en/fr/it = 512 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
@@ -27,7 +27,8 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 16 (113→116, #322): Brunnenbau, Wintergarten, Zaunbau — **direkt viersprachig** (Brunnenbau mit hydrogeologisch/wasserrechtlicher Grenze).
 - Welle 17 (116→119, #323): Saunabau, Pflasterbau, Natursteinbetriebe — **direkt viersprachig** (Naturstein mit Pietät-Hinweis Grabstein-Kontext).
 - Welle 18 (119→122, #324): Treppenbau, Ofen-/Kaminbau, Baumpflege — **direkt viersprachig** (Ofenbau mit Schornstein-/Abgas-Grenze, Baumpflege mit Artenschutz-/Genehmigungs-Grenze).
-- Welle 19 (122→125): Spenglerei, Abdichtungstechnik, Poolbau — **direkt viersprachig** (Abdichtung mit Vor-Ort-Diagnose-Grenze, Pool mit Wasserchemie-/Hygiene-Grenze).
+- Welle 19 (122→125, #325): Spenglerei, Abdichtungstechnik, Poolbau — **direkt viersprachig** (Abdichtung mit Vor-Ort-Diagnose-Grenze, Pool mit Wasserchemie-/Hygiene-Grenze).
+- Welle 20 (125→128): Schimmelsanierung, Betonsanierung, Lüftungsbau — **direkt viersprachig** (Schimmel mit Gesundheits-/keine-Diagnose-Grenze, Beton mit Statik-Grenze).
 - **Qualitäts-Audit (Welle-12-Stand):** 104 DE-Hubs geprüft — 0 fehlende OG-Bilder, alle hreflang-Blöcke wohlgeformt (genau 5), alle mit Tools-CTA-aside. Sauber.
 - **Neue Hubs (Welle 9+) werden sofort 4-sprachig** gebaut (DE-Vollstandard inkl. Tools-CTA-aside + 5 hreflang + nav-Switch, Übersetzungen mit übersetztem aside). Vorlage: `ki-fuer-elektriker.html` (+ `en/`).
 - Backlog-Kandidaten weitere distinkte Nischen (Welle 13+): uhrmacher, druckereien, werbetechnik, brandschutz, aufzugswartung, gartencenter, polsterei, naturheilkunde, gerueststellung, parkettleger, kaelteanlagenbau, brunnenbau.
