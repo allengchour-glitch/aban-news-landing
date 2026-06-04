@@ -141,6 +141,9 @@ BRANCHEN = {
     "treppenbau":          ("Treppenbau",           ["Angebote & Anfragen,", "nicht die Montage"]),
     "ofenbau":             ("Ofen- & Kaminbau",     ["Angebote & Service,", "nicht der Abgasweg"]),
     "baumpflege":          ("Baumpflege",           ["Angebote & Anträge,", "nicht die Fällung"]),
+    "spenglerei":          ("Spenglerei",           ["Angebote & Material-Infos,", "nicht die Kantarbeit"]),
+    "abdichtungstechnik":  ("Abdichtungstechnik",   ["Angebote & Anfragen,", "nicht die Diagnose"]),
+    "poolbau":             ("Poolbau",              ["Angebote & Pflegeinfos,", "nicht die Wasserchemie"]),
 }
 
 
