@@ -153,6 +153,9 @@ BRANCHEN = {
     "fensterbau":          ("Fensterbau",           ["Angebote & Förder-Infos,", "nicht der Einbau"]),
     "markisenbau":         ("Markisenbau",          ["Angebote & Stoff-Infos,", "nicht die Montage"]),
     "denkmalpflege":       ("Denkmalpflege",        ["Anträge & Doku,", "nicht die Befundung"]),
+    "torbau":              ("Torbau",               ["Angebote & Wartungs-Orga,", "nicht die Montage"]),
+    "akustikbau":          ("Akustikbau",           ["Angebote & Produkt-Infos,", "nicht die Messung"]),
+    "wasseraufbereitung":  ("Wasseraufbereitung",   ["Angebote & Service,", "nicht die Analyse"]),
 }
 
 
