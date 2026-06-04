@@ -132,6 +132,9 @@ BRANCHEN = {
     "gartencenter":        ("Gartencenter",         ["Tipps & Newsletter,", "nicht die Aufzucht"]),
     "parkettleger":        ("Parkettleger",         ["Angebote & Pflegeinfos,", "nicht das Verlegen"]),
     "kaelteanlagenbau":    ("Kälteanlagenbau",      ["Verträge & Disposition,", "nicht der Kältekreis"]),
+    "brunnenbau":          ("Brunnenbau",           ["Angebote & Anträge,", "nicht die Bohrung"]),
+    "wintergarten":        ("Wintergarten",         ["Angebote & Anfragen,", "nicht die Statik"]),
+    "zaunbau":             ("Zaunbau",              ["Angebote & Material-Infos,", "nicht die Montage"]),
 }
 
 
