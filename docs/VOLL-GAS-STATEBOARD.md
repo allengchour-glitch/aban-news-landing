@@ -14,7 +14,7 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **143 live, alle viersprachig (de/en/fr/it = 572 Seiten)**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **146 live, alle viersprachig (de/en/fr/it = 584 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
@@ -33,7 +33,8 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 22 (131→134, #329): Fensterbau, Markisenbau, Denkmalpflege — **direkt viersprachig** (DE-Hubs zuerst gebaut, Übersetzungen nach Session-Suspend per Recovery-Agenten nachgezogen).
 - Welle 23 (134→137, #330): Torbau, Akustikbau, Wasseraufbereitung — **direkt viersprachig** (Torbau mit Sicherheitsprüf-Grenze, Wasseraufbereitung mit Trinkwasser-/Gesundheits-Grenze).
 - Welle 24 (137→140, #331): Küchenstudio, Wasserschadensanierung, Terrassenbau — **direkt viersprachig** (Wasserschaden mit Leckortung-/Gutachter-Grenze).
-- Welle 25 (140→143): Carportbau, Treppenlift, Gartenteichbau — **direkt viersprachig** (Treppenlift senioren-sensibel mit Bedarfs-/Zuschuss-Grenze, Carport mit Statik-/Schneelast-Grenze).
+- Welle 25 (140→143, #332): Carportbau, Treppenlift, Gartenteichbau — **direkt viersprachig** (Treppenlift senioren-sensibel mit Bedarfs-/Zuschuss-Grenze, Carport mit Statik-/Schneelast-Grenze).
+- Welle 26 (143→146): Rohrreinigung, Industriereinigung, Holzhausbau — **direkt viersprachig** (Rohrreinigung mit Anti-Abzock-/Diagnose-Grenze, Industriereinigung mit Gefahrstoff-/Arbeitssicherheits-Grenze).
 - **Qualitäts-Audit (Welle-12-Stand):** 104 DE-Hubs geprüft — 0 fehlende OG-Bilder, alle hreflang-Blöcke wohlgeformt (genau 5), alle mit Tools-CTA-aside. Sauber.
 - **Neue Hubs (Welle 9+) werden sofort 4-sprachig** gebaut (DE-Vollstandard inkl. Tools-CTA-aside + 5 hreflang + nav-Switch, Übersetzungen mit übersetztem aside). Vorlage: `ki-fuer-elektriker.html` (+ `en/`).
 - Backlog-Kandidaten weitere distinkte Nischen (Welle 13+): uhrmacher, druckereien, werbetechnik, brandschutz, aufzugswartung, gartencenter, polsterei, naturheilkunde, gerueststellung, parkettleger, kaelteanlagenbau, brunnenbau.
