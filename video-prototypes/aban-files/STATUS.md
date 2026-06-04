@@ -10,10 +10,12 @@ Herrscher). **Echten Owner-Namen NIE nennen** — nur „ABAN" / „we of ABAN".
 Kanal = Haupt-Kanal `@allengchour` (umbenannt zu „ABAN Files").
 
 ## Stand
-- **28 Folgen** (ep1–ep28) als fertige Clips in `clips/` (~4 Wochen täglich).
-- **Öffentlich auf YT:** ep1–ep13 (+ ep12=RBEaa5csRWY, ep13=ye2sgjpUxv8 u.a. in `video_ids.json`).
-- **In der Queue (noch nicht gepostet):** ep14–ep28 → täglicher Cron postet automatisch.
-- ep14–ep28 mit Voice-Fixes; ep21–ep28 zusätzlich mit Pexels+Pixabay (mehr Auswahl).
+- **36 Folgen** (ep1–ep36) als fertige Clips in `clips/` (~5 Wochen täglich).
+- **ep29–ep36 = Ancient-Aliens-Reihe:** Puma Punku, Bagdad-Batterie, Göbekli Tepe, Dogon/Sirius,
+  Vimanas, Piri-Reis-Karte, Wächter/Henoch, Paracas-Langschädel.
+- **Öffentlich auf YT:** ep1–ep14 (+ ep12=RBEaa5csRWY, ep13=ye2sgjpUxv8 u.a. in `video_ids.json`).
+- **In der Queue (noch nicht gepostet):** ep15–ep36 → Cron (3×/Tag) postet automatisch.
+- ep14–ep36 mit Voice-Fixes; ep21–ep36 zusätzlich mit Pexels+Pixabay (mehr Auswahl).
 
 ## Pipeline-Features (alle in `aban_stock.py`)
 - Hook-Text in den ersten ~2.8 s (Retention).
