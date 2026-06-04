@@ -144,6 +144,9 @@ BRANCHEN = {
     "spenglerei":          ("Spenglerei",           ["Angebote & Material-Infos,", "nicht die Kantarbeit"]),
     "abdichtungstechnik":  ("Abdichtungstechnik",   ["Angebote & Anfragen,", "nicht die Diagnose"]),
     "poolbau":             ("Poolbau",              ["Angebote & Pflegeinfos,", "nicht die Wasserchemie"]),
+    "schimmelsanierung":   ("Schimmelsanierung",    ["Anfragen & Vorsorge-Infos,", "nicht die Diagnose"]),
+    "betonsanierung":      ("Betonsanierung",       ["Angebote & Doku,", "nicht die Statik"]),
+    "lueftungsbau":        ("Lüftungsbau",          ["Verträge & Planung,", "nicht die Auslegung"]),
 }
 
 
