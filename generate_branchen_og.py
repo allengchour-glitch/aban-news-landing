@@ -174,6 +174,9 @@ BRANCHEN = {
     "sicherheitstechnik":  ("Sicherheitstechnik",   ["Angebote & Wartungs-Orga,", "nicht die Risikoanalyse"]),
     "tiefbau":             ("Tiefbau",              ["Angebote & Bautagebuch,", "nicht der Verbau"]),
     "abbruch":             ("Abbruch",              ["Angebote & Doku,", "nicht die Statik"]),
+    "hausnotruf":          ("Hausnotruf",           ["Angebote & Zuschuss-Kram,", "nicht der Notruf"]),
+    "baumaschinenvermietung": ("Baumaschinen-Vermietung", ["Buchung & Angebote,", "nicht die Einweisung"]),
+    "partyverleih":        ("Partyverleih",         ["Angebote & Buchung,", "nicht der Aufbau"]),
 }
 
 

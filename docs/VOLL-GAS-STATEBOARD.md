@@ -14,7 +14,7 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **155 live, alle viersprachig (de/en/fr/it = 620 Seiten)**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **158 live, alle viersprachig (de/en/fr/it = 632 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
@@ -38,6 +38,10 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 27 (146→149, #334): Glasreinigung, Winterdienst, Graffitientfernung — **direkt viersprachig** (Winterdienst mit Haftungs-/Verkehrssicherungspflicht-Grenze, Glasreinigung mit Höhenarbeits-Grenze).
 - Welle 28 (149→152): Kanalsanierung, Containerdienst, Spielplatzbau — **direkt viersprachig** (Spielplatzbau kindersicherheits-sensibel mit Norm-/Prüf-Grenze, Container mit Abfall-Einstufungs-Grenze).
 - Welle 29 (152→155, #336): Sicherheitstechnik, Tiefbau, Abbruch — **direkt viersprachig** (Sicherheitstechnik DSGVO-/Risikoanalyse-Grenze, Tiefbau Grabenverbau-/Bodengutachten-Grenze, Abbruch Schadstoff-/Statik-Grenze). Tiefbau-Übersetzungen nach Session-Transition per Recovery-Agent nachgezogen.
+- Welle 30 (155→158): Hausnotruf, Baumaschinenvermietung, Partyverleih — **direkt viersprachig** (Hausnotruf sehr sensibel: „KI ist keine Notrufzentrale"; Baumaschinen/Party mit Sicherheits-/Haftungs-Grenze). Während „pause" gebaut, bei „weiter" ausgeliefert.
+
+## News-Aggregator
+- `automation/news_aggregator.py` am 2026-06-04 gelaufen: **105 KI-Meldungen aus 10 Quellen** → `automation/news-roh-2026-06-04.md` (gitignored, Kuratier-Vorlage). **BSI-Feed 404** (URL veraltet) — Fix offen.
 - **Qualitäts-Audit (Welle-12-Stand):** 104 DE-Hubs geprüft — 0 fehlende OG-Bilder, alle hreflang-Blöcke wohlgeformt (genau 5), alle mit Tools-CTA-aside. Sauber.
 - **Neue Hubs (Welle 9+) werden sofort 4-sprachig** gebaut (DE-Vollstandard inkl. Tools-CTA-aside + 5 hreflang + nav-Switch, Übersetzungen mit übersetztem aside). Vorlage: `ki-fuer-elektriker.html` (+ `en/`).
 - Backlog-Kandidaten weitere distinkte Nischen (Welle 13+): uhrmacher, druckereien, werbetechnik, brandschutz, aufzugswartung, gartencenter, polsterei, naturheilkunde, gerueststellung, parkettleger, kaelteanlagenbau, brunnenbau.
