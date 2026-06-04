@@ -180,6 +180,9 @@ BRANCHEN = {
     "autoaufbereitung":    ("Autoaufbereitung",     ["Pakete & Termine,", "nicht die Politur"]),
     "autoglas":            ("Autoglas-Service",     ["Versicherungs-Kram,", "nicht die Kalibrierung"]),
     "reifenservice":       ("Reifenservice",        ["Termine & Einlagerung,", "nicht die Montage"]),
+    "abschleppdienst":     ("Abschleppdienst",      ["Abrechnung & Disposition,", "nicht die Bergung"]),
+    "motorradwerkstatt":   ("Motorradwerkstätten",  ["Termine & Angebote,", "nicht die Diagnose"]),
+    "wohnmobilservice":    ("Wohnmobil-Service",    ["Termine & Angebote,", "nicht die Gasprüfung"]),
 }
 
 

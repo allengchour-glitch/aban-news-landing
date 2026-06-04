@@ -14,7 +14,7 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **161 live, alle viersprachig (de/en/fr/it = 644 Seiten)**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **164 live, alle viersprachig (de/en/fr/it = 656 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
@@ -39,7 +39,8 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 28 (149→152): Kanalsanierung, Containerdienst, Spielplatzbau — **direkt viersprachig** (Spielplatzbau kindersicherheits-sensibel mit Norm-/Prüf-Grenze, Container mit Abfall-Einstufungs-Grenze).
 - Welle 29 (152→155, #336): Sicherheitstechnik, Tiefbau, Abbruch — **direkt viersprachig** (Sicherheitstechnik DSGVO-/Risikoanalyse-Grenze, Tiefbau Grabenverbau-/Bodengutachten-Grenze, Abbruch Schadstoff-/Statik-Grenze). Tiefbau-Übersetzungen nach Session-Transition per Recovery-Agent nachgezogen.
 - Welle 30 (155→158, #337): Hausnotruf, Baumaschinenvermietung, Partyverleih — **direkt viersprachig** (Hausnotruf sehr sensibel: „KI ist keine Notrufzentrale"; Baumaschinen/Party mit Sicherheits-/Haftungs-Grenze). Während „pause" gebaut, bei „weiter" ausgeliefert.
-- Welle 31 (158→161): Autoaufbereitung, Autoglas, Reifenservice — **direkt viersprachig** (neue Fahrzeug-Service-Familie, distinkt von kfz-werkstatt; Autoglas mit ADAS-Kalibrierungs-Grenze, Reifen mit Freigabe-/Profiltiefen-Grenze).
+- Welle 31 (158→161, #338): Autoaufbereitung, Autoglas, Reifenservice — **direkt viersprachig** (neue Fahrzeug-Service-Familie, distinkt von kfz-werkstatt; Autoglas mit ADAS-Kalibrierungs-Grenze, Reifen mit Freigabe-/Profiltiefen-Grenze).
+- Welle 32 (161→164): Abschleppdienst, Motorradwerkstatt, Wohnmobilservice — **direkt viersprachig** (Abschlepp notfall-sensibel „KI ist keine Einsatzzentrale"; Wohnmobil mit G607-Gasprüfung-Grenze). Lehre: Wait-Loop `[ -f ]` kann 0-Byte-Datei mid-write erfassen → vor Validierung kurz auf Dateigröße >5 KB pollen.
 
 ## News-Aggregator
 - `automation/news_aggregator.py` am 2026-06-04 gelaufen: **105 KI-Meldungen aus 10 Quellen** → `automation/news-roh-2026-06-04.md` (gitignored, Kuratier-Vorlage). **BSI-Feed 404** (URL veraltet) — Fix offen.
