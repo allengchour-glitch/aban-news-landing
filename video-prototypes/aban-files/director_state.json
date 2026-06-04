@@ -8,6 +8,14 @@
       "best_ep": "ep1",
       "best_views": 4,
       "action": "\u23f3 Datensammeln (Tag 0, best 4, Trend +11). Kurs halten, weiter posten."
+    },
+    {
+      "ts": "2026-06-04T10:30Z",
+      "day": 1,
+      "total": 0,
+      "best_ep": "?",
+      "best_views": 0,
+      "action": "\u23f3 Datensammeln (Tag 1, best 0, Trend -11). Kurs halten, weiter posten."
     }
   ]
 }

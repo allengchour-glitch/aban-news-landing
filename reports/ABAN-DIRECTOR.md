@@ -1,18 +1,19 @@
 # ABAN Files — Director-Log (autonom, 4h-Rhythmus)
 
-Kanal-Start: 2026-06-03 · Tag 0 · letzte Auswertung 2026-06-03 (UTC)
+Kanal-Start: 2026-06-03 · Tag 1 · letzte Auswertung 2026-06-04 (UTC)
 
 ## Aktuelle Entscheidung
 
-> ⏳ Datensammeln (Tag 0, best 4, Trend +11). Kurs halten, weiter posten.
+> ⏳ Datensammeln (Tag 1, best 0, Trend -11). Kurs halten, weiter posten.
 
-- Gesamt-Views: **11** (Trend seit letztem Lauf: +11)
-- Top-Folge: **ep1** mit **4** Views
+- Gesamt-Views: **0** (Trend seit letztem Lauf: -11)
+- Top-Folge: **?** mit **0** Views
 
 ## Verlauf (letzte 40 Laeufe)
 
 | Zeit (UTC) | Tag | Views | Top | Entscheidung |
 |---|--:|--:|---|---|
+| 2026-06-04T10:30Z | 1 | 0 | ?(0) | ⏳ Datensammeln (Tag 1, best 0, Trend -11). Kurs halten, weiter p |
 | 2026-06-03T19:20Z | 0 | 11 | ep1(4) | ⏳ Datensammeln (Tag 0, best 4, Trend +11). Kurs halten, weiter p |
 
 _Regelwerk: Gewinner ab 1000 Views · Pivot wenn nach 7 Tagen < 100 · Empfehlungen only, kein Auto-Publish._
