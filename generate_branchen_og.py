@@ -156,6 +156,9 @@ BRANCHEN = {
     "torbau":              ("Torbau",               ["Angebote & Wartungs-Orga,", "nicht die Montage"]),
     "akustikbau":          ("Akustikbau",           ["Angebote & Produkt-Infos,", "nicht die Messung"]),
     "wasseraufbereitung":  ("Wasseraufbereitung",   ["Angebote & Service,", "nicht die Analyse"]),
+    "kuechenstudio":       ("Küchenstudios",        ["Angebote & Geräte-Infos,", "nicht das Aufmaß"]),
+    "wasserschadensanierung": ("Wasserschaden-Sanierung", ["Versicherungs-Kram,", "nicht die Leckortung"]),
+    "terrassenbau":        ("Terrassenbau",         ["Angebote & Pflegeinfos,", "nicht das Verlegen"]),
 }
 
 
