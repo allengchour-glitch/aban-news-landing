@@ -138,6 +138,9 @@ BRANCHEN = {
     "saunabau":            ("Saunabau",             ["Angebote & Anfragen,", "nicht der Anschluss"]),
     "pflasterbau":         ("Pflasterbau",          ["Angebote & Pflegeinfos,", "nicht das Verlegen"]),
     "natursteinbetrieb":   ("Natursteinbetriebe",   ["Angebote & Stein-Infos,", "nicht der Zuschnitt"]),
+    "treppenbau":          ("Treppenbau",           ["Angebote & Anfragen,", "nicht die Montage"]),
+    "ofenbau":             ("Ofen- & Kaminbau",     ["Angebote & Service,", "nicht der Abgasweg"]),
+    "baumpflege":          ("Baumpflege",           ["Angebote & Anträge,", "nicht die Fällung"]),
 }
 
 
