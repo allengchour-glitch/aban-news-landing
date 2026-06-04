@@ -150,6 +150,9 @@ BRANCHEN = {
     "entkernung":          ("Entkernung",           ["Angebote & Doku,", "nicht der Rückbau"]),
     "fassadenbau":         ("Fassadenbau",          ["Angebote & Förder-Infos,", "nicht die Montage"]),
     "blitzschutz":         ("Blitzschutz",          ["Angebote & Prüf-Orga,", "nicht die Auslegung"]),
+    "fensterbau":          ("Fensterbau",           ["Angebote & Förder-Infos,", "nicht der Einbau"]),
+    "markisenbau":         ("Markisenbau",          ["Angebote & Stoff-Infos,", "nicht die Montage"]),
+    "denkmalpflege":       ("Denkmalpflege",        ["Anträge & Doku,", "nicht die Befundung"]),
 }
 
 
