@@ -162,6 +162,9 @@ BRANCHEN = {
     "carportbau":          ("Carportbau",           ["Angebote & Bauantrag,", "nicht die Statik"]),
     "treppenlift":         ("Treppenlifte",         ["Angebote & Zuschuss-Kram,", "nicht das Aufmaß"]),
     "gartenteichbau":      ("Gartenteichbau",       ["Angebote & Pflegeinfos,", "nicht der Aushub"]),
+    "rohrreinigung":       ("Rohrreinigung",        ["Notdienst & Angebote,", "nicht die Befahrung"]),
+    "industriereinigung":  ("Industriereinigung",   ["Angebote & Planung,", "nicht das Handling"]),
+    "holzhausbau":         ("Holzhausbau",          ["Angebote & Förder-Infos,", "nicht die Statik"]),
 }
 
 
