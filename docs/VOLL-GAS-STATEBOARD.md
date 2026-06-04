@@ -14,7 +14,7 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **113 live, alle viersprachig (de/en/fr/it = 452 Seiten)**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **116 live, alle viersprachig (de/en/fr/it = 464 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
@@ -23,7 +23,8 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 12 (101→104, #295): Ladestationen (Wallbox), Rollladenbauer, Änderungsschneidereien — **direkt viersprachig**.
 - Welle 13 (104→107, #296): Uhrmacher, Druckereien, Werbetechnik — **direkt viersprachig**.
 - Welle 14 (107→110, #298): Brandschutz, Aufzugswartung, Polsterei — **direkt viersprachig** (Brandschutz/Aufzug mit Sicherheits-/„keine-Prüfung-durch-KI"-Grenze).
-- Welle 15 (110→113): Gartencenter, Parkettleger, Kälteanlagenbau — **direkt viersprachig** (Kälte/F-Gase mit klarer Grenze).
+- Welle 15 (110→113, #321): Gartencenter, Parkettleger, Kälteanlagenbau — **direkt viersprachig** (Kälte/F-Gase mit klarer Grenze).
+- Welle 16 (113→116): Brunnenbau, Wintergarten, Zaunbau — **direkt viersprachig** (Brunnenbau mit hydrogeologisch/wasserrechtlicher Grenze).
 - **Qualitäts-Audit (Welle-12-Stand):** 104 DE-Hubs geprüft — 0 fehlende OG-Bilder, alle hreflang-Blöcke wohlgeformt (genau 5), alle mit Tools-CTA-aside. Sauber.
 - **Neue Hubs (Welle 9+) werden sofort 4-sprachig** gebaut (DE-Vollstandard inkl. Tools-CTA-aside + 5 hreflang + nav-Switch, Übersetzungen mit übersetztem aside). Vorlage: `ki-fuer-elektriker.html` (+ `en/`).
 - Backlog-Kandidaten weitere distinkte Nischen (Welle 13+): uhrmacher, druckereien, werbetechnik, brandschutz, aufzugswartung, gartencenter, polsterei, naturheilkunde, gerueststellung, parkettleger, kaelteanlagenbau, brunnenbau.
