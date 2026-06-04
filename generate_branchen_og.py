@@ -171,6 +171,9 @@ BRANCHEN = {
     "kanalsanierung":      ("Kanalsanierung",       ["Angebote & Doku,", "nicht die TV-Auswertung"]),
     "containerdienst":     ("Containerdienst",      ["Buchung & Angebote,", "nicht die Abfuhr"]),
     "spielplatzbau":       ("Spielplatzbau",        ["Angebote & Wartungs-Orga,", "nicht die Sicherheitsprüfung"]),
+    "sicherheitstechnik":  ("Sicherheitstechnik",   ["Angebote & Wartungs-Orga,", "nicht die Risikoanalyse"]),
+    "tiefbau":             ("Tiefbau",              ["Angebote & Bautagebuch,", "nicht der Verbau"]),
+    "abbruch":             ("Abbruch",              ["Angebote & Doku,", "nicht die Statik"]),
 }
 
 
