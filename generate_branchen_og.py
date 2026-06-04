@@ -177,6 +177,9 @@ BRANCHEN = {
     "hausnotruf":          ("Hausnotruf",           ["Angebote & Zuschuss-Kram,", "nicht der Notruf"]),
     "baumaschinenvermietung": ("Baumaschinen-Vermietung", ["Buchung & Angebote,", "nicht die Einweisung"]),
     "partyverleih":        ("Partyverleih",         ["Angebote & Buchung,", "nicht der Aufbau"]),
+    "autoaufbereitung":    ("Autoaufbereitung",     ["Pakete & Termine,", "nicht die Politur"]),
+    "autoglas":            ("Autoglas-Service",     ["Versicherungs-Kram,", "nicht die Kalibrierung"]),
+    "reifenservice":       ("Reifenservice",        ["Termine & Einlagerung,", "nicht die Montage"]),
 }
 
 
