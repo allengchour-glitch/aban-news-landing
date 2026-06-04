@@ -147,6 +147,9 @@ BRANCHEN = {
     "schimmelsanierung":   ("Schimmelsanierung",    ["Anfragen & Vorsorge-Infos,", "nicht die Diagnose"]),
     "betonsanierung":      ("Betonsanierung",       ["Angebote & Doku,", "nicht die Statik"]),
     "lueftungsbau":        ("Lüftungsbau",          ["Verträge & Planung,", "nicht die Auslegung"]),
+    "entkernung":          ("Entkernung",           ["Angebote & Doku,", "nicht der Rückbau"]),
+    "fassadenbau":         ("Fassadenbau",          ["Angebote & Förder-Infos,", "nicht die Montage"]),
+    "blitzschutz":         ("Blitzschutz",          ["Angebote & Prüf-Orga,", "nicht die Auslegung"]),
 }
 
 
