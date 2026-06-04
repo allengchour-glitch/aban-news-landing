@@ -129,6 +129,9 @@ BRANCHEN = {
     "brandschutz":         ("Brandschutz",          ["Angebote & Wartungs-Orga,", "nicht die Prüfung"]),
     "aufzugswartung":      ("Aufzugswartung",       ["Verträge & Disposition,", "nicht die Wartung"]),
     "polsterei":           ("Polsterei",            ["Anfragen & Kostenvoranschlag,", "nicht das Beziehen"]),
+    "gartencenter":        ("Gartencenter",         ["Tipps & Newsletter,", "nicht die Aufzucht"]),
+    "parkettleger":        ("Parkettleger",         ["Angebote & Pflegeinfos,", "nicht das Verlegen"]),
+    "kaelteanlagenbau":    ("Kälteanlagenbau",      ["Verträge & Disposition,", "nicht der Kältekreis"]),
 }
 
 
