@@ -168,6 +168,9 @@ BRANCHEN = {
     "glasreinigung":       ("Glasreinigung",        ["Angebote & Tourenplanung,", "nicht die Höhenarbeit"]),
     "winterdienst":        ("Winterdienst",         ["Verträge & Touren,", "nicht der Räumeinsatz"]),
     "graffitientfernung":  ("Graffitientfernung",   ["Angebote & Schnell-Orga,", "nicht der Untergrund-Test"]),
+    "kanalsanierung":      ("Kanalsanierung",       ["Angebote & Doku,", "nicht die TV-Auswertung"]),
+    "containerdienst":     ("Containerdienst",      ["Buchung & Angebote,", "nicht die Abfuhr"]),
+    "spielplatzbau":       ("Spielplatzbau",        ["Angebote & Wartungs-Orga,", "nicht die Sicherheitsprüfung"]),
 }
 
 
