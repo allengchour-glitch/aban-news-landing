@@ -186,6 +186,9 @@ BRANCHEN = {
     "kfz-gutachter":       ("Kfz-Gutachter",        ["Doku & Korrespondenz,", "nicht die Begutachtung"]),
     "fahrzeugfolierung":   ("Fahrzeugfolierung",    ["Angebote & Design-Infos,", "nicht die Verklebung"]),
     "bootsservice":        ("Bootsservice",         ["Saison-Orga & Angebote,", "nicht die Diagnose"]),
+    "konditorei":          ("Konditoreien",         ["Bestell-Mails & Social,", "nicht das Dekorieren"]),
+    "hundeschule":         ("Hundeschulen",         ["Anmeldungen & Infos,", "nicht das Training"]),
+    "weinhandlung":        ("Weinhandlungen",       ["Produkttexte & Newsletter,", "nicht die Verkostung"]),
 }
 
 
