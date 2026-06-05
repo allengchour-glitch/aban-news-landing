@@ -189,6 +189,9 @@ BRANCHEN = {
     "konditorei":          ("Konditoreien",         ["Bestell-Mails & Social,", "nicht das Dekorieren"]),
     "hundeschule":         ("Hundeschulen",         ["Anmeldungen & Infos,", "nicht das Training"]),
     "weinhandlung":        ("Weinhandlungen",       ["Produkttexte & Newsletter,", "nicht die Verkostung"]),
+    "barbershop":          ("Barbershops",          ["Buchung & Social,", "nicht der Haarschnitt"]),
+    "sonnenstudio":        ("Sonnenstudios",        ["Buchung & Tarife,", "nicht die Hauttyp-Beratung"]),
+    "tierpension":         ("Tierpensionen",        ["Buchung & Belegung,", "nicht die Betreuung"]),
 }
 
 
