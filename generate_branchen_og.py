@@ -192,6 +192,9 @@ BRANCHEN = {
     "barbershop":          ("Barbershops",          ["Buchung & Social,", "nicht der Haarschnitt"]),
     "sonnenstudio":        ("Sonnenstudios",        ["Buchung & Tarife,", "nicht die Hauttyp-Beratung"]),
     "tierpension":         ("Tierpensionen",        ["Buchung & Belegung,", "nicht die Betreuung"]),
+    "foodtruck":           ("Foodtrucks",           ["Event-Anfragen & Social,", "nicht das Kochen"]),
+    "juwelier":            ("Juweliere",            ["Produkttexte & Social,", "nicht die Echtheitsprüfung"]),
+    "kaffeeroesterei":     ("Kaffeeröstereien",     ["Produkttexte & Shop,", "nicht das Rösten"]),
 }
 
 
