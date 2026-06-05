@@ -14,7 +14,7 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **227 live, alle viersprachig (de/en/fr/it = 908 Seiten)**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **230 live, alle viersprachig (de/en/fr/it = 920 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
@@ -61,7 +61,8 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 50 (215→218, #358): Sattlerei, Vinothek, Graveur — **direkt viersprachig** (Sattlerei Sattelanpassung-/Tierwohl-Grenze, Vinothek Sulfite-/Jugendschutz-/Alkohol-Werbe-Grenze, Graveur Korrekturabzug-/Marken-/Urheberrecht-Grenze).
 - Welle 51 (218→221, #359): Buchbinderei, Siebdruckerei, Stickerei — **direkt viersprachig** (Buchbinderei Restaurierungs-/Konservierungs-/Wert-Grenze, Siebdruckerei Druckdaten-/Farbraum-/Markenrecht-Grenze, Stickerei Punching-/Stichqualität-/Markenrecht-Grenze).
 - Welle 52 (221→224, #360): Maßschneiderei, Keramikwerkstatt, Kunstschmied — **direkt viersprachig** (Schneiderei Maßnehmen-/Anprobe-Grenze, Keramik Glasur-Sicherheits-/Lebensmittelechtheit-Grenze [Blei/Cadmium], Kunstschmied Statik-/Tragfähigkeits-/Geländer-Norm-Grenze).
-- Welle 53 (224→227): Vergolder, Geigenbau, Glasbläserei — **direkt viersprachig** (Vergolder Restaurierungs-/Denkmalschutz-/Echtheits-Grenze, Geigenbau Echtheits-/Zuschreibungs-/Wert-Grenze, Glasbläserei Lebensmittelechtheit-/Arbeitsschutz-Grenze). Seltenes Kunsthandwerk.
+- Welle 53 (224→227, #361): Vergolder, Geigenbau, Glasbläserei — **direkt viersprachig** (Vergolder Restaurierungs-/Denkmalschutz-/Echtheits-Grenze, Geigenbau Echtheits-/Zuschreibungs-/Wert-Grenze, Glasbläserei Lebensmittelechtheit-/Arbeitsschutz-Grenze). Seltenes Kunsthandwerk.
+- Welle 54 (227→230): Drechslerei, Orgelbau, Klavierstimmer — **direkt viersprachig** (Drechslerei Lebensmittelechtheit-/Maschinen-Sicherheits-Grenze, Orgelbau Denkmalwert-/Orgelsachverständigen-Grenze, Klavierstimmer Zustands-/Wert-/Kauf-Beurteilung-Grenze).
 
 ## LuxeStyle-/Dropship-Projekt (im Memory, separater Workstream)
 - Branch `claude/dropship-lade-memory-SrAs5`, PR #5. Runbook `dropship/AUTONOMER-MODUS.md`, Log `dropship/CJ-IMPORT-LOG.md`. ~65 Produkte live, Kernproblem 0 Käufe (Traffic-Qualität). **Diese abannews-Session hat KEINE Shopify-MCP-Tools** → Live-Betrieb nur in MCP-Session möglich; hier nur Code/Doku. User-Wunsch 2026-06-05: „nur Memory laden, Hub-Loop weiter".
