@@ -37,7 +37,61 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
-**📌 2026-06-03 (AKTUELLSTER STAND — zuerst lesen):**
+**📌 2026-06-05 (AKTUELLSTER STAND — zuerst lesen, dann 06-03 etc.):**
+
+**Heute erledigt (live per API):**
+- **Alle 6 neuen Produkte auf Premium-Text gehoben** (Aurélie 15416342675841, Bureau 15416343757185,
+  Capucine 15416343986561, Lussa 15416470208897, Lina 15416491704705, Riva 15416493506945): Trust-Box
+  (#faf7f2/#e8dcc4, 2×2-Tabelle) + Benefit-Bullets + „Warum bei LuxeStyle CH". Lehre: neue CJ-Produkte IMMER nachziehen.
+- **Bilder-Check ganzer aktiver Katalog:** KEINE fehlenden/kaputten Bilder. Ganze Damenmode (29) + ~250 Sample alle READY.
+  Einzige Macke behoben: **HEPA Luftreiniger (15401529540993)** + **Pillow Spray (15406134493569)** hatten ein VIDEO
+  als 1. Medium → per `productReorderMedia` Foto nach vorn (korrektes Kachel-Thumbnail).
+
+**🟡 VORGEMERKT „später" (User-Auftrag, Details in `dropship/SEITE-VERBESSERUNGEN.md` §VORGEMERKT):**
+- **[C] 1-Bild-Gadget-Filler** (Mini-Massagepistole, Diffuser, Gewichtsdecke, Galaxus-Batch `15410836xxxxx` …):
+  das 1 Bild durch ein sauberes ersetzen, dann User-Entscheid ob bleibt. **LEHRE:** diese Produkte haben KEINE
+  gespeicherte CJ-pid/SKU; CJ-Keyword-Resuche unzuverlässig (Test „mini massage gun": 40 Treffer, 0 Hash-Match)
+  → mehr Originale nur sicher mit echtem AliExpress-Link. **User-Entscheid C, aber „mach das später".**
+- **[Kachel-Layout]** Startseite: alle 4 Produkt-Sektionen in `templates/index.json` haben
+  `_product-card-gallery → "image_ratio":"adapt"` → ungleiche Kachelgrössen. **Fix:** auf **„square"** stellen
+  (gleiche Box/Position, Desktop+Mobile). MAIN-Theme API-schreibgesperrt → Customizer ODER ich baue unveröff.
+  Theme-Kopie (User tippt nur „Veröffentlichen"). Sektionen: ⭐Top10, ✨CJ Neuheiten, Highlights, 🔥Bestseller.
+
+**⭐ BEWERTUNGEN AUTOMATISIEREN (laufend — User wählte Weg A = API):**
+- **Tool gebaut & gepusht:** `automation/reviews-import.mjs` (Judge.me-API, importiert NUR ECHTE Reviews aus
+  `dropship/reviews_seed.json`, no-op-safe) + Workflow `.github/workflows/reviews-import.yml` (manuell, DRY-Option).
+- **User hat aktiviert:** Judge.me → „Review-Einreichungen über Integrationen (API)" = AN.
+- **OFFEN/User-Input:** Judge.me **Privat-Token** holen (Shopify Apps → Judge.me → General Settings → Integrations
+  → „View API Token" → **Private Token**) → als Secret `JUDGEME_PRIVATE_TOKEN` (+ `JUDGEME_SHOP_DOMAIN=au3j0y-hq.myshopify.com`)
+  ODER im Chat einfügen + danach in Judge.me neu generieren. UND je Hero-Produkt eine **AliExpress-URL** (echte Quelle).
+- **Empfohlene Alt-Route (kein Token):** Judge.mes **eingebauter AliExpress-Importer** (App → Import → AliExpress
+  → URL → Produkt zuordnen). **REGEL: NUR ≥4★ importieren** (1–3★ drückte früher Sommerkleid auf 3,5★!).
+- **Rating-Stand:** von 28 Damenmode haben NUR **Bali 4,93★(15)** + **Ibiza 4,47★(15)** Reviews; die anderen 26 = 0.
+  Sterne-Widget auf Kacheln = Customizer (User). **NIEMALS Fake-Reviews (illegal).**
+
+**📣 TIKTOK-KAMPAGNE (User füllte Catalog-Ad aus — beim Wiederaufnehmen prüfen):**
+- **Pflichtfelder:** Destination URL = `https://luxestyle.ch/collections/sommer` · Identity = „Luxestyle.ch" ·
+  Ad-Texte OHNE EMOJI (5 Preis-Anker-Texte geliefert, je <100 Z.).
+- **⚠️ WARNUNG:** Preview zeigte HERREN-Artikel (New-York-Admirals-Tee, Herren-Sommershirt «Breeze») → Produkt-Set
+  prüfen: Damen-Heroes statt zufälliger Herren, sonst getrennte Ad-Sets Damen/Herren.
+- **Musik-Copyright-Warnung** in 2 Creatives → „Fix in editor" → **Commercial Music Library** (lizenzfrei). Reels
+  künftig gleich mit Commercial-Library-Sound rendern. Budget-Tipp 42 CHF NICHT blind → erst 20/Tag testen.
+
+**📲 META-APP für IG-AUTO-POSTING (laufend, User will „auto"):**
+- App erstellen (developers.facebook.com): Name **„LuxeStyle Social"** (KEINE Wörter Insta/Instagram/Facebook/FB/Meta/Gram —
+  sonst Ablehnung), E-Mail `info@luxestyle.ch`, App-Typ **Business**.
+- **Fahrplan:** App → Produkt „Instagram"/Graph API → IG-Konto mit FB-Seite verknüpfen → **Token** mit
+  `instagram_basic, instagram_content_publish, pages_show_list` → Token + IG-Business-Account-ID in **n8n**
+  (`PUBLISH_WEBHOOK_URL`, `post-next-reel.mjs`). **Entwicklungsmodus reicht fürs eigene Konto** (keine App-Prüfung nötig).
+- **VORAUSSETZUNG noch unbestätigt:** IG muss **Business/Creator** + mit **FB-Seite** verbunden sein (sonst kein API-Post).
+- **Einfachere Alt-Route falls gewünscht:** Meta Business Suite Planer (business.facebook.com → Planer, kein App-Bau).
+
+**🇺🇸 US-VERSAND (User-Frage):** CJ→US Standard (China-Lager) **~10–15 Werktage**, **CJ-US-Lager 2–6 Tage**, +1–3 Tage
+Bearbeitung. **US-Produkte sind DSers-unmapped (keine CJ-pid)** → Lager nur in **DSers** prüfbar („Ship from" →
+„United States" wählbar = US-Lager). Konsistenz-Falle: DE-Texte sagen „Versand aus Belp" — für US-Bestellungen FALSCH
+→ EN-Versandtexte müssten realistische US-Lieferzeit nennen. Empfehlung: US nur mit Ship-from-US bewerben, sonst CH-Fokus.
+
+**📌 2026-06-03 (vorheriger Stand — zuerst lesen):**
 - **VIDEO-PRODUKTION macht die andere Session** (GEHIRN-HACKS/ABAN Files, `video-prototypes/`) — ich (Dropship)
   baue dort NICHT weiter. ABER gesichert: **piper-TTS funktioniert im Container** (XTTS scheiterte) → Voiceover-
   Reels sind hier baubar. Rezept in `video-prototypes/HANDOFF.md`. LuxeStyle-PoC: `reels/script-sommer-20260603-1834.mp4`
