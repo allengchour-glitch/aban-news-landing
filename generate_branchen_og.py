@@ -234,6 +234,9 @@ BRANCHEN = {
     "bilderrahmung":       ("Bilderrahmung",        ["Angebote & Auftrags-Texte,", "nicht das Einrahmen"]),
     "naehatelier":         ("Nähateliers",          ["Angebote & Anfragen,", "nicht das Nähen"]),
     "haushaltsaufloesung": ("Haushaltsauflösung",   ["Angebote & Anfragen,", "nicht die Besichtigung"]),
+    "sattlerei":           ("Sattlereien",          ["Angebote & Auftrags-Texte,", "nicht die Lederarbeit"]),
+    "vinothek":            ("Vinotheken",           ["Wein-Texte & Tastings,", "nicht die Verkostung"]),
+    "graveur":             ("Graveure",             ["Angebote & Gravur-Texte,", "nicht die Gravur"]),
 }
 
 
