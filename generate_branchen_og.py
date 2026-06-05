@@ -198,6 +198,9 @@ BRANCHEN = {
     "feinkost":            ("Feinkostgeschäfte",    ["Produkttexte & Social,", "nicht die Theke"]),
     "wimpernstudio":       ("Wimpernstudios",       ["Buchung & Social,", "nicht die Behandlung"]),
     "osteopathie":         ("Osteopathie-Praxen",   ["Termine & Orga,", "nicht die Behandlung"]),
+    "yogastudio":          ("Yogastudios",          ["Kursplan & Social,", "nicht das Anleiten"]),
+    "fischhandel":         ("Fischhandel",          ["Angebote & Rezepte,", "nicht die Frischeprüfung"]),
+    "spielwarengeschaeft": ("Spielwarengeschäfte",  ["Produkttexte & Social,", "nicht die Beratung"]),
 }
 
 
