@@ -201,6 +201,9 @@ BRANCHEN = {
     "yogastudio":          ("Yogastudios",          ["Kursplan & Social,", "nicht das Anleiten"]),
     "fischhandel":         ("Fischhandel",          ["Angebote & Rezepte,", "nicht die Frischeprüfung"]),
     "spielwarengeschaeft": ("Spielwarengeschäfte",  ["Produkttexte & Social,", "nicht die Beratung"]),
+    "kampfsportschule":    ("Kampfsportschulen",    ["Anmeldungen & Social,", "nicht das Training"]),
+    "schwimmschule":       ("Schwimmschulen",       ["Anmeldungen & Orga,", "nicht die Wasseraufsicht"]),
+    "reitschule":          ("Reitschulen",          ["Buchung & Orga,", "nicht der Unterricht"]),
 }
 
 
