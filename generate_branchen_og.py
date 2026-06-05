@@ -237,6 +237,9 @@ BRANCHEN = {
     "sattlerei":           ("Sattlereien",          ["Angebote & Auftrags-Texte,", "nicht die Lederarbeit"]),
     "vinothek":            ("Vinotheken",           ["Wein-Texte & Tastings,", "nicht die Verkostung"]),
     "graveur":             ("Graveure",             ["Angebote & Gravur-Texte,", "nicht die Gravur"]),
+    "buchbinderei":        ("Buchbindereien",       ["Angebote & Auftrags-Texte,", "nicht das Binden"]),
+    "siebdruckerei":       ("Siebdruckereien",      ["Angebote & Anfragen,", "nicht das Drucken"]),
+    "stickerei":           ("Stickereien",          ["Angebote & Anfragen,", "nicht das Sticken"]),
 }
 
 
