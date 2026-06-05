@@ -228,6 +228,9 @@ BRANCHEN = {
     "comicladen":          ("Comicläden",           ["Reihen-Texte & Social,", "nicht die Sammler-Beratung"]),
     "wollladen":           ("Wollläden",            ["Garn-Texte & Kurse,", "nicht die Beratung"]),
     "stoffgeschaeft":      ("Stoffgeschäfte",       ["Stoff-Texte & Projekte,", "nicht der Zuschnitt"]),
+    "modellbaugeschaeft":  ("Modellbau-Geschäfte",  ["Bausatz-Texte & Social,", "nicht die Technik-Beratung"]),
+    "bastelladen":         ("Bastelläden",          ["DIY-Ideen & Social,", "nicht die Beratung"]),
+    "kuenstlerbedarf":     ("Künstlerbedarf",       ["Material-Texte & Kurse,", "nicht die Fachberatung"]),
 }
 
 
