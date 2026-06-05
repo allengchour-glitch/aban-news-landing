@@ -240,6 +240,9 @@ BRANCHEN = {
     "buchbinderei":        ("Buchbindereien",       ["Angebote & Auftrags-Texte,", "nicht das Binden"]),
     "siebdruckerei":       ("Siebdruckereien",      ["Angebote & Anfragen,", "nicht das Drucken"]),
     "stickerei":           ("Stickereien",          ["Angebote & Anfragen,", "nicht das Sticken"]),
+    "schneiderei":         ("Maßschneidereien",     ["Angebote & Anfragen,", "nicht das Schneidern"]),
+    "keramikwerkstatt":    ("Keramikwerkstätten",   ["Produkttexte & Kurse,", "nicht das Töpfern"]),
+    "kunstschmied":        ("Kunstschmieden",       ["Angebote & Referenzen,", "nicht das Schmieden"]),
 }
 
 
