@@ -204,6 +204,9 @@ BRANCHEN = {
     "kampfsportschule":    ("Kampfsportschulen",    ["Anmeldungen & Social,", "nicht das Training"]),
     "schwimmschule":       ("Schwimmschulen",       ["Anmeldungen & Orga,", "nicht die Wasseraufsicht"]),
     "reitschule":          ("Reitschulen",          ["Buchung & Orga,", "nicht der Unterricht"]),
+    "skischule":           ("Skischulen",           ["Buchung & Gäste-Infos,", "nicht der Unterricht"]),
+    "tauchschule":         ("Tauchschulen",         ["Buchung & Packlisten,", "nicht die Tauchaufsicht"]),
+    "kletterhalle":        ("Kletterhallen",        ["Buchung & Events,", "nicht die Sicherung"]),
 }
 
 
