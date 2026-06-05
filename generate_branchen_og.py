@@ -225,6 +225,9 @@ BRANCHEN = {
     "kaesefachgeschaeft":  ("Käsefachgeschäfte",    ["Sorten-Texte & Pairing,", "nicht die Theke"]),
     "secondhandladen":     ("Secondhand-Läden",     ["Listings & Social,", "nicht der Ankauf"]),
     "plattenladen":        ("Plattenläden",         ["Listings & Social,", "nicht die Bewertung"]),
+    "comicladen":          ("Comicläden",           ["Reihen-Texte & Social,", "nicht die Sammler-Beratung"]),
+    "wollladen":           ("Wollläden",            ["Garn-Texte & Kurse,", "nicht die Beratung"]),
+    "stoffgeschaeft":      ("Stoffgeschäfte",       ["Stoff-Texte & Projekte,", "nicht der Zuschnitt"]),
 }
 
 

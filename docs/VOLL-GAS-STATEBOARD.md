@@ -14,7 +14,7 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **206 live, alle viersprachig (de/en/fr/it = 824 Seiten)**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **209 live, alle viersprachig (de/en/fr/it = 836 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
@@ -54,7 +54,8 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 43 (194→197, #350): Unverpacktladen, Imkerei, Weingut — **direkt viersprachig** (Unverpackt LMIV bei loser Ware, Imkerei Honigverordnung/Bienengesundheit/Health-Claims, Weingut Weinrecht/Sulfite/Jugendschutz/Alkohol-Werberegeln).
 - **Welle 44 (197→200 🎯, #351): Brennerei, Kunstgalerie, Eisdiele** — **direkt viersprachig** (Brennerei Alkohol-/Branntweinsteuer-/Jugendschutz-Grenze, Kunstgalerie Echtheits-/Provenienz-/Urheberrechts-Grenze [keine KI-Bilder im Stil lebender Künstler:innen], Eisdiele LMIV-/Allergen-/Kühlketten-Grenze). **MEILENSTEIN: 200 Branchen-Hubs, 800 Seiten viersprachig.**
 - Welle 45 (200→203, #352): Chocolaterie, Teeladen, Antiquariat — **direkt viersprachig** (Chocolaterie LMIV-/Allergen-Grenze, Teeladen LMIV-/Health-Claims-Grenze [Tee kein Heilmittel], Antiquariat Echtheits-/Erstausgaben-/Wert-Grenze [KI-Titelangaben fehleranfällig, immer prüfen]).
-- Welle 46 (203→206): Käsefachgeschäft, Secondhandladen, Plattenladen — **direkt viersprachig** (Käse LMIV-/Rohmilch-/Kühlketten-Grenze, Secondhand Echtheits-/Marken-/Wert-Grenze [Fälschungen → Fachprüfung], Plattenladen Grading-/Pressungs-/Wert-Grenze + Urheberrecht).
+- Welle 46 (203→206, #353): Käsefachgeschäft, Secondhandladen, Plattenladen — **direkt viersprachig** (Käse LMIV-/Rohmilch-/Kühlketten-Grenze, Secondhand Echtheits-/Marken-/Wert-Grenze [Fälschungen → Fachprüfung], Plattenladen Grading-/Pressungs-/Wert-Grenze + Urheberrecht).
+- Welle 47 (206→209): Comicladen, Wollladen, Stoffgeschäft — **direkt viersprachig** (Comic Grading-/Wert-/Lizenz-Grenze [keine KI-Bilder bestehender Figuren] + Kinderdaten, Wollladen Maschenproben-/Garnmengen-Grenze, Stoffgeschäft Stoffmengen-/Schnittmuster-/Öko-Tex-Grenze).
 
 ## LuxeStyle-/Dropship-Projekt (im Memory, separater Workstream)
 - Branch `claude/dropship-lade-memory-SrAs5`, PR #5. Runbook `dropship/AUTONOMER-MODUS.md`, Log `dropship/CJ-IMPORT-LOG.md`. ~65 Produkte live, Kernproblem 0 Käufe (Traffic-Qualität). **Diese abannews-Session hat KEINE Shopify-MCP-Tools** → Live-Betrieb nur in MCP-Session möglich; hier nur Code/Doku. User-Wunsch 2026-06-05: „nur Memory laden, Hub-Loop weiter".
