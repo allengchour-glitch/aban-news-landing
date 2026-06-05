@@ -231,6 +231,9 @@ BRANCHEN = {
     "modellbaugeschaeft":  ("Modellbau-Geschäfte",  ["Bausatz-Texte & Social,", "nicht die Technik-Beratung"]),
     "bastelladen":         ("Bastelläden",          ["DIY-Ideen & Social,", "nicht die Beratung"]),
     "kuenstlerbedarf":     ("Künstlerbedarf",       ["Material-Texte & Kurse,", "nicht die Fachberatung"]),
+    "bilderrahmung":       ("Bilderrahmung",        ["Angebote & Auftrags-Texte,", "nicht das Einrahmen"]),
+    "naehatelier":         ("Nähateliers",          ["Angebote & Anfragen,", "nicht das Nähen"]),
+    "haushaltsaufloesung": ("Haushaltsauflösung",   ["Angebote & Anfragen,", "nicht die Besichtigung"]),
 }
 
 
