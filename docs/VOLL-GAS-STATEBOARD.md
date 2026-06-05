@@ -14,7 +14,7 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **215 live, alle viersprachig (de/en/fr/it = 860 Seiten)**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **218 live, alle viersprachig (de/en/fr/it = 872 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
@@ -57,7 +57,8 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 46 (203→206, #353): Käsefachgeschäft, Secondhandladen, Plattenladen — **direkt viersprachig** (Käse LMIV-/Rohmilch-/Kühlketten-Grenze, Secondhand Echtheits-/Marken-/Wert-Grenze [Fälschungen → Fachprüfung], Plattenladen Grading-/Pressungs-/Wert-Grenze + Urheberrecht).
 - Welle 47 (206→209, #354): Comicladen, Wollladen, Stoffgeschäft — **direkt viersprachig** (Comic Grading-/Wert-/Lizenz-Grenze [keine KI-Bilder bestehender Figuren] + Kinderdaten, Wollladen Maschenproben-/Garnmengen-Grenze, Stoffgeschäft Stoffmengen-/Schnittmuster-/Öko-Tex-Grenze).
 - Welle 48 (209→212, #355): Modellbaugeschäft, Bastelladen, Künstlerbedarf — **direkt viersprachig** (Modellbau LiPo-Akku-/Drohnen-Recht-Grenze, Bastelladen Material-/CE-Sicherheits-Grenze [Kinderbastel], Künstlerbedarf Lichtechtheit-/Pigment-/Sicherheitsdatenblatt-Grenze).
-- Welle 49 (212→215): Bilderrahmung, Nähatelier, Haushaltsauflösung — **direkt viersprachig** (Bilderrahmung Konservierungs-/Wert-/Voranschlag-Grenze, Nähatelier Maßnehmen-/Anprobe-Grenze, Haushaltsauflösung Vor-Ort-Besichtigungs-/Entsorgungs-/Erbrecht-Grenze + sensibler Nachlass-Umgang). **Session-Limit** (Reset 18:40 UTC) schlug beim Start zu (0 Dateien) → nach Reset komplett neu gestartet. Außerdem: verirrter uncommitteter osteopathie.html-Edit (Welle-37-Überbleibsel) im Working Tree verworfen (live-Version auf main ist validiert).
+- Welle 49 (212→215, #357): Bilderrahmung, Nähatelier, Haushaltsauflösung — **direkt viersprachig** (Bilderrahmung Konservierungs-/Wert-/Voranschlag-Grenze, Nähatelier Maßnehmen-/Anprobe-Grenze, Haushaltsauflösung Vor-Ort-Besichtigungs-/Entsorgungs-/Erbrecht-Grenze + sensibler Nachlass-Umgang). **Session-Limit** (Reset 18:40 UTC) schlug beim Start zu (0 Dateien) → nach Reset komplett neu gestartet. Außerdem: verirrter uncommitteter osteopathie.html-Edit (Welle-37-Überbleibsel) im Working Tree verworfen (live-Version auf main ist validiert).
+- Welle 50 (215→218): Sattlerei, Vinothek, Graveur — **direkt viersprachig** (Sattlerei Sattelanpassung-/Tierwohl-Grenze, Vinothek Sulfite-/Jugendschutz-/Alkohol-Werbe-Grenze, Graveur Korrekturabzug-/Marken-/Urheberrecht-Grenze).
 
 ## LuxeStyle-/Dropship-Projekt (im Memory, separater Workstream)
 - Branch `claude/dropship-lade-memory-SrAs5`, PR #5. Runbook `dropship/AUTONOMER-MODUS.md`, Log `dropship/CJ-IMPORT-LOG.md`. ~65 Produkte live, Kernproblem 0 Käufe (Traffic-Qualität). **Diese abannews-Session hat KEINE Shopify-MCP-Tools** → Live-Betrieb nur in MCP-Session möglich; hier nur Code/Doku. User-Wunsch 2026-06-05: „nur Memory laden, Hub-Loop weiter".
