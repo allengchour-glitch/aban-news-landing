@@ -222,6 +222,9 @@ BRANCHEN = {
     "chocolaterie":        ("Chocolaterien",        ["Sorten-Texte & Aktionen,", "nicht die Herstellung"]),
     "teeladen":            ("Teeläden",             ["Sorten-Texte & Social,", "nicht die Verkostung"]),
     "antiquariat":         ("Antiquariate",         ["Katalog-Texte & Listings,", "nicht die Bewertung"]),
+    "kaesefachgeschaeft":  ("Käsefachgeschäfte",    ["Sorten-Texte & Pairing,", "nicht die Theke"]),
+    "secondhandladen":     ("Secondhand-Läden",     ["Listings & Social,", "nicht der Ankauf"]),
+    "plattenladen":        ("Plattenläden",         ["Listings & Social,", "nicht die Bewertung"]),
 }
 
 
