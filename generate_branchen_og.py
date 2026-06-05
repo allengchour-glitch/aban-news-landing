@@ -219,6 +219,9 @@ BRANCHEN = {
     "brennerei":           ("Brennereien",          ["Brand-Texte & Tastings,", "nicht das Destillieren"]),
     "kunstgalerie":        ("Kunstgalerien",        ["Werk-Texte & Vernissagen,", "nicht die Kuratierung"]),
     "eisdiele":            ("Eisdielen",            ["Sorten-Texte & Social,", "nicht die Eisherstellung"]),
+    "chocolaterie":        ("Chocolaterien",        ["Sorten-Texte & Aktionen,", "nicht die Herstellung"]),
+    "teeladen":            ("Teeläden",             ["Sorten-Texte & Social,", "nicht die Verkostung"]),
+    "antiquariat":         ("Antiquariate",         ["Katalog-Texte & Listings,", "nicht die Bewertung"]),
 }
 
 
