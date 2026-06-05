@@ -14,7 +14,7 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **185 live, alle viersprachig (de/en/fr/it = 740 Seiten)**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **188 live, alle viersprachig (de/en/fr/it = 752 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
@@ -47,7 +47,8 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 36 (173→176, #343): Foodtruck, Juwelier, Kaffeerösterei — **direkt viersprachig** (Foodtruck LMIV/HACCP-Grenze, Juwelier Echtheits-/Wertgutachten-Grenze, Kaffeerösterei Cupping-/Sensorik-Grenze). Erneut Account-Limit → 2 IT-Dateien (Foodtruck/Kaffeerösterei) per Recovery-Agent.
 - Welle 37 (176→179, #344): Feinkost, Wimpernstudio, Osteopathie — **direkt viersprachig** (Feinkost LMIV-/Theken-Grenze, Wimpernstudio Auge-/Patch-Test-Grenze, Osteopathie sehr sensibel Heilkunde: keine Anamnese/Diagnose/Behandlung/Heilversprechen, Schweigepflicht).
 - Welle 38 (179→182, #345): Yogastudio, Fischhandel, Spielwarengeschäft — **direkt viersprachig** (Yoga Gesundheits-/keine-Haltungskorrektur-Grenze, Fisch LMIV-/Frische-/Kühlketten-Grenze, Spielwaren CE-/Altersfreigabe-Grenze + Zurückhaltung bei Kinderdaten).
-- Welle 39 (182→185): Kampfsportschule, Schwimmschule, Reitschule — **direkt viersprachig** (Schwimmschule SEHR sensibel: KI ersetzt nie die Wasseraufsicht/Kinder-Ertrinkungsschutz; alle drei mit Aufsichtspflicht-/Verletzungs-Grenze, keine Kinder-/Gesundheitsdaten in KI-Tools).
+- Welle 39 (182→185, #346): Kampfsportschule, Schwimmschule, Reitschule — **direkt viersprachig** (Schwimmschule SEHR sensibel: KI ersetzt nie die Wasseraufsicht/Kinder-Ertrinkungsschutz; alle drei mit Aufsichtspflicht-/Verletzungs-Grenze, keine Kinder-/Gesundheitsdaten in KI-Tools).
+- Welle 40 (185→188): Skischule, Tauchschule, Kletterhalle — **direkt viersprachig** (Outdoor-/Sport-Schulen; Ski Lawinen-/Berg-Grenze, Tauchen SEHR sensibel Tauchmedizin/-tauglichkeit, Kletterhalle Sicherungs-/Sturz-Grenze — alle: KI ersetzt nie Anleitung/Aufsicht/Sicherheitsbeurteilung).
 
 ## LuxeStyle-/Dropship-Projekt (im Memory, separater Workstream)
 - Branch `claude/dropship-lade-memory-SrAs5`, PR #5. Runbook `dropship/AUTONOMER-MODUS.md`, Log `dropship/CJ-IMPORT-LOG.md`. ~65 Produkte live, Kernproblem 0 Käufe (Traffic-Qualität). **Diese abannews-Session hat KEINE Shopify-MCP-Tools** → Live-Betrieb nur in MCP-Session möglich; hier nur Code/Doku. User-Wunsch 2026-06-05: „nur Memory laden, Hub-Loop weiter".
