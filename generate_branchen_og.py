@@ -243,6 +243,9 @@ BRANCHEN = {
     "schneiderei":         ("Maßschneidereien",     ["Angebote & Anfragen,", "nicht das Schneidern"]),
     "keramikwerkstatt":    ("Keramikwerkstätten",   ["Produkttexte & Kurse,", "nicht das Töpfern"]),
     "kunstschmied":        ("Kunstschmieden",       ["Angebote & Referenzen,", "nicht das Schmieden"]),
+    "vergolder":           ("Vergolder",            ["Angebote & Referenzen,", "nicht das Vergolden"]),
+    "geigenbau":           ("Geigenbau",            ["Angebote & Anfragen,", "nicht der Bau"]),
+    "glasblaeserei":       ("Glasbläsereien",       ["Produkttexte & Kurse,", "nicht das Glasblasen"]),
 }
 
 
