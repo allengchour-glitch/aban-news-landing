@@ -14,7 +14,7 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **224 live, alle viersprachig (de/en/fr/it = 896 Seiten)**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **227 live, alle viersprachig (de/en/fr/it = 908 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
@@ -60,7 +60,8 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 49 (212→215, #357): Bilderrahmung, Nähatelier, Haushaltsauflösung — **direkt viersprachig** (Bilderrahmung Konservierungs-/Wert-/Voranschlag-Grenze, Nähatelier Maßnehmen-/Anprobe-Grenze, Haushaltsauflösung Vor-Ort-Besichtigungs-/Entsorgungs-/Erbrecht-Grenze + sensibler Nachlass-Umgang). **Session-Limit** (Reset 18:40 UTC) schlug beim Start zu (0 Dateien) → nach Reset komplett neu gestartet. Außerdem: verirrter uncommitteter osteopathie.html-Edit (Welle-37-Überbleibsel) im Working Tree verworfen (live-Version auf main ist validiert).
 - Welle 50 (215→218, #358): Sattlerei, Vinothek, Graveur — **direkt viersprachig** (Sattlerei Sattelanpassung-/Tierwohl-Grenze, Vinothek Sulfite-/Jugendschutz-/Alkohol-Werbe-Grenze, Graveur Korrekturabzug-/Marken-/Urheberrecht-Grenze).
 - Welle 51 (218→221, #359): Buchbinderei, Siebdruckerei, Stickerei — **direkt viersprachig** (Buchbinderei Restaurierungs-/Konservierungs-/Wert-Grenze, Siebdruckerei Druckdaten-/Farbraum-/Markenrecht-Grenze, Stickerei Punching-/Stichqualität-/Markenrecht-Grenze).
-- Welle 52 (221→224): Maßschneiderei, Keramikwerkstatt, Kunstschmied — **direkt viersprachig** (Schneiderei Maßnehmen-/Anprobe-Grenze, Keramik Glasur-Sicherheits-/Lebensmittelechtheit-Grenze [Blei/Cadmium], Kunstschmied Statik-/Tragfähigkeits-/Geländer-Norm-Grenze).
+- Welle 52 (221→224, #360): Maßschneiderei, Keramikwerkstatt, Kunstschmied — **direkt viersprachig** (Schneiderei Maßnehmen-/Anprobe-Grenze, Keramik Glasur-Sicherheits-/Lebensmittelechtheit-Grenze [Blei/Cadmium], Kunstschmied Statik-/Tragfähigkeits-/Geländer-Norm-Grenze).
+- Welle 53 (224→227): Vergolder, Geigenbau, Glasbläserei — **direkt viersprachig** (Vergolder Restaurierungs-/Denkmalschutz-/Echtheits-Grenze, Geigenbau Echtheits-/Zuschreibungs-/Wert-Grenze, Glasbläserei Lebensmittelechtheit-/Arbeitsschutz-Grenze). Seltenes Kunsthandwerk.
 
 ## LuxeStyle-/Dropship-Projekt (im Memory, separater Workstream)
 - Branch `claude/dropship-lade-memory-SrAs5`, PR #5. Runbook `dropship/AUTONOMER-MODUS.md`, Log `dropship/CJ-IMPORT-LOG.md`. ~65 Produkte live, Kernproblem 0 Käufe (Traffic-Qualität). **Diese abannews-Session hat KEINE Shopify-MCP-Tools** → Live-Betrieb nur in MCP-Session möglich; hier nur Code/Doku. User-Wunsch 2026-06-05: „nur Memory laden, Hub-Loop weiter".
