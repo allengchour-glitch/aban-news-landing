@@ -210,6 +210,9 @@ BRANCHEN = {
     "segelschule":         ("Segelschulen",         ["Buchung & Theorie-Infos,", "nicht die Navigation"]),
     "bioladen":            ("Bioläden",             ["Produkttexte & Social,", "nicht die Theke"]),
     "schreibwarengeschaeft": ("Schreibwarengeschäfte", ["Produkttexte & Aktionen,", "nicht die Beratung"]),
+    "flugschule":          ("Flugschulen",          ["Buchung & Theorie-Infos,", "nicht der Flugbetrieb"]),
+    "kochschule":          ("Kochschulen",          ["Buchung & Kurstexte,", "nicht das Kochen"]),
+    "hofladen":            ("Hofläden",             ["Saison-Posts & Schilder,", "nicht die Theke"]),
 }
 
 
