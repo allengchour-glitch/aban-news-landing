@@ -213,6 +213,9 @@ BRANCHEN = {
     "flugschule":          ("Flugschulen",          ["Buchung & Theorie-Infos,", "nicht der Flugbetrieb"]),
     "kochschule":          ("Kochschulen",          ["Buchung & Kurstexte,", "nicht das Kochen"]),
     "hofladen":            ("Hofläden",             ["Saison-Posts & Schilder,", "nicht die Theke"]),
+    "unverpacktladen":     ("Unverpackt-Läden",     ["Produkttexte & Social,", "nicht das Abfüllen"]),
+    "imkerei":             ("Imkereien",            ["Etiketten & Storys,", "nicht die Bienenpflege"]),
+    "weingut":             ("Weingüter",            ["Wein-Texte & Events,", "nicht die Verkostung"]),
 }
 
 
