@@ -11,8 +11,11 @@
     },
     {
       "id": "p2-top5",
-      "sent": false,
-      "text": "🏆 Die 5 bestbewerteten KI-Tools im DACH-Check:\n\n1. Claude — 9.5/10\n2. DeepL — 9/10\n3. n8n — 9/10 (Open-Source-Automatisierung)\n4. Cursor — 9/10\n5. Granola — 9/10\n\nAlle 177 mit Bewertung & Preis 👉 https://radar.abannews.com"
+      "sent": true,
+      "text": "🏆 Die 5 bestbewerteten KI-Tools im DACH-Check:\n\n1. Claude — 9.5/10\n2. DeepL — 9/10\n3. n8n — 9/10 (Open-Source-Automatisierung)\n4. Cursor — 9/10\n5. Granola — 9/10\n\nAlle 177 mit Bewertung & Preis 👉 https://radar.abannews.com",
+      "sent_channels": [
+        "telegram"
+      ]
     },
     {
       "id": "p3-gratis",
