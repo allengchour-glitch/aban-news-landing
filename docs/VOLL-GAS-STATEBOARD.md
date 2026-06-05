@@ -14,7 +14,7 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **170 live, alle viersprachig (de/en/fr/it = 680 Seiten)**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **173 live, alle viersprachig (de/en/fr/it = 692 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
@@ -42,7 +42,8 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 31 (158→161, #338): Autoaufbereitung, Autoglas, Reifenservice — **direkt viersprachig** (neue Fahrzeug-Service-Familie, distinkt von kfz-werkstatt; Autoglas mit ADAS-Kalibrierungs-Grenze, Reifen mit Freigabe-/Profiltiefen-Grenze).
 - Welle 32 (161→164, #339): Abschleppdienst, Motorradwerkstatt, Wohnmobilservice — **direkt viersprachig** (Abschlepp notfall-sensibel „KI ist keine Einsatzzentrale"; Wohnmobil mit G607-Gasprüfung-Grenze). Lehre: Wait-Loop `[ -f ]` kann 0-Byte-Datei mid-write erfassen → vor Validierung kurz auf Dateigröße >5 KB pollen.
 - Welle 33 (164→167, #340): Kfz-Gutachter, Fahrzeugfolierung, Bootsservice — **direkt viersprachig** (Kfz-Gutachter rechtlich/Unabhängigkeit „kein gerichtsfestes Gutachten durch KI" + Mandantendaten-Schutz; Folierung mit Tönungs-Zulassungs-Grenze). Wait-Loop nun mit `>5 KB`-Poll.
-- Welle 34 (167→170): Konditorei, Hundeschule, Weinhandlung — **direkt viersprachig** (Konditorei mit LMIV-Allergen-Grenze, Hundeschule mit keine-Ferndiagnose-Grenze, Weinhandlung mit Sensorik-/Jugendschutz-Grenze). Neue Familie: Lebensmittelhandwerk/Tier-Service/Fachhandel.
+- Welle 34 (167→170, #341): Konditorei, Hundeschule, Weinhandlung — **direkt viersprachig** (Konditorei mit LMIV-Allergen-Grenze, Hundeschule mit keine-Ferndiagnose-Grenze, Weinhandlung mit Sensorik-/Jugendschutz-Grenze). Neue Familie: Lebensmittelhandwerk/Tier-Service/Fachhandel.
+- Welle 35 (170→173): Barbershop, Sonnenstudio, Tierpension — **direkt viersprachig** (Sonnenstudio sehr sensibel: UV-/Strahlenschutz, keine Gesundheits-/Fototyp-Beratung, Jugendschutz <18; Tierpension Tierwohl-Grenze). **Account-Nutzungsgrenze** mitten in der Welle → die 3 Bau-Agenten lieferten nur DE/EN/FR, IT-Dateien per Recovery-Agent nachgezogen. Lehre: bei „session limit" liefern Agenten oft 3/4 Sprachen — fehlende Sprache gezielt per Recovery-Agent ergänzen.
 
 ## News-Aggregator
 - `automation/news_aggregator.py` am 2026-06-04 gelaufen: **105 KI-Meldungen aus 10 Quellen** → `automation/news-roh-2026-06-04.md` (gitignored, Kuratier-Vorlage). **BSI-Feed 404** (URL veraltet) — Fix offen.
