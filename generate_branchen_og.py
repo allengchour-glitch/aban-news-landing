@@ -216,6 +216,9 @@ BRANCHEN = {
     "unverpacktladen":     ("Unverpackt-Läden",     ["Produkttexte & Social,", "nicht das Abfüllen"]),
     "imkerei":             ("Imkereien",            ["Etiketten & Storys,", "nicht die Bienenpflege"]),
     "weingut":             ("Weingüter",            ["Wein-Texte & Events,", "nicht die Verkostung"]),
+    "brennerei":           ("Brennereien",          ["Brand-Texte & Tastings,", "nicht das Destillieren"]),
+    "kunstgalerie":        ("Kunstgalerien",        ["Werk-Texte & Vernissagen,", "nicht die Kuratierung"]),
+    "eisdiele":            ("Eisdielen",            ["Sorten-Texte & Social,", "nicht die Eisherstellung"]),
 }
 
 
