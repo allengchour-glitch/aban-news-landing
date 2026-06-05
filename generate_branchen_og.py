@@ -207,6 +207,9 @@ BRANCHEN = {
     "skischule":           ("Skischulen",           ["Buchung & Gäste-Infos,", "nicht der Unterricht"]),
     "tauchschule":         ("Tauchschulen",         ["Buchung & Packlisten,", "nicht die Tauchaufsicht"]),
     "kletterhalle":        ("Kletterhallen",        ["Buchung & Events,", "nicht die Sicherung"]),
+    "segelschule":         ("Segelschulen",         ["Buchung & Theorie-Infos,", "nicht die Navigation"]),
+    "bioladen":            ("Bioläden",             ["Produkttexte & Social,", "nicht die Theke"]),
+    "schreibwarengeschaeft": ("Schreibwarengeschäfte", ["Produkttexte & Aktionen,", "nicht die Beratung"]),
 }
 
 
