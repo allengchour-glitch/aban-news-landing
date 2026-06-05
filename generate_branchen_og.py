@@ -246,6 +246,9 @@ BRANCHEN = {
     "vergolder":           ("Vergolder",            ["Angebote & Referenzen,", "nicht das Vergolden"]),
     "geigenbau":           ("Geigenbau",            ["Angebote & Anfragen,", "nicht der Bau"]),
     "glasblaeserei":       ("Glasbläsereien",       ["Produkttexte & Kurse,", "nicht das Glasblasen"]),
+    "drechslerei":         ("Drechslereien",        ["Produkttexte & Kurse,", "nicht das Drechseln"]),
+    "orgelbau":            ("Orgelbau",             ["Angebote & Referenzen,", "nicht der Orgelbau"]),
+    "klavierstimmer":      ("Klavierstimmer",       ["Termine & Anfragen,", "nicht das Stimmen"]),
 }
 
 
