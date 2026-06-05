@@ -195,6 +195,9 @@ BRANCHEN = {
     "foodtruck":           ("Foodtrucks",           ["Event-Anfragen & Social,", "nicht das Kochen"]),
     "juwelier":            ("Juweliere",            ["Produkttexte & Social,", "nicht die Echtheitsprüfung"]),
     "kaffeeroesterei":     ("Kaffeeröstereien",     ["Produkttexte & Shop,", "nicht das Rösten"]),
+    "feinkost":            ("Feinkostgeschäfte",    ["Produkttexte & Social,", "nicht die Theke"]),
+    "wimpernstudio":       ("Wimpernstudios",       ["Buchung & Social,", "nicht die Behandlung"]),
+    "osteopathie":         ("Osteopathie-Praxen",   ["Termine & Orga,", "nicht die Behandlung"]),
 }
 
 
