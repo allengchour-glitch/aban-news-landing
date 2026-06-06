@@ -7,6 +7,10 @@
 
 ---
 
+> 📌 In der autonomen Queue (`social/linkedin_queue.json`) liegen **17 geprüfte, ehrliche** Posts:
+> diese 5 + 12 zusätzliche Evergreen-Posts (Prompts, Tool-Check, Datenschutz, Haltung — **ohne
+> erfundene Zahlen**). Die alten 30 Make-Seed-Posts sind wegen Fake-Statistiken **nicht** in der Queue.
+
 ## 5 fertige Feed-Posts (Woche 1)
 
 ### Post 1 — Warum es aban news gibt (Start-Story, ehrlich)
