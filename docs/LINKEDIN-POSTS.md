@@ -160,6 +160,34 @@ per Mail — 3 Updates, 1 Tool, 1 Prompt, in 5 Minuten. Gratis, ohne Tracking:
 → https://abannews.com
 ```
 
+### Beispiel-Ausgabe (Struktur gefüllt — die News-Zeilen pro Woche durch echte ersetzen)
+> ⚠️ Die drei „News" hier sind nur **Struktur-Beispiele**. Vor dem Veröffentlichen durch die echten
+> Themen der Woche ersetzen — **keine erfundenen Meldungen posten.** Tool & Prompt sind evergreen und so nutzbar.
+```
+Titel: KI für DACH — KW[NN]: Drei Dinge, die diese Woche wirklich zählten
+
+Diese Woche in 5 Minuten — was DACH-Profis bei KI nicht verpassen sollten.
+
+1) [Echte Meldung 1 einsetzen — 2–3 Sätze. Was ist passiert + was es für deine Arbeit heißt.]
+
+2) [Echte Meldung 2 einsetzen — 2–3 Sätze.]
+
+3) [Echte Meldung 3 einsetzen — 2–3 Sätze.]
+
+🛠 Tool der Woche: Wähle eins, das du selbst getestet hast — und sag ehrlich dazu, wofür es taugt,
+wo es schwächelt und wie es um Datenschutz/EU-Hosting steht. Lieber ein ehrliches „okay" als ein
+übertriebenes „grandios".
+
+💡 Prompt zum Kopieren:
+„Du bist mein Assistent. Fass den folgenden Text in 5 Stichpunkten zusammen, dann nenne die eine
+Sache, die ich übersehen könnte. Kurz, kein Marketing-Sprech. [Text einfügen]"
+
+—
+Das hier ist das wöchentliche Best-of. Das volle Briefing kommt Mo–Fr um 7:30 Uhr per Mail —
+3 Updates, 1 Tool, 1 Prompt, in 5 Minuten. Gratis, ohne Tracking:
+→ https://abannews.com
+```
+
 ---
 
 ## Mini-Spielregeln (damit es wirkt, nicht spammt)
