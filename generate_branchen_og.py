@@ -264,6 +264,9 @@ BRANCHEN = {
     "ofenbauer":           ("Ofenbauer",            ["Angebote & Anfragen,", "nicht der Brandschutz"]),
     "pflasterer":          ("Pflasterer",           ["Angebote & Anfragen,", "nicht das Pflastern"]),
     "abbruchunternehmen":  ("Abbruchunternehmen",   ["Angebote & Anfragen,", "nicht die Vor-Ort-Beurteilung"]),
+    "wintergartenbau":     ("Wintergartenbau",      ["Angebote & Anfragen,", "nicht die Statik"]),
+    "terrassenueberdachung": ("Terrassenüberdachung", ["Angebote & Anfragen,", "nicht die Statik"]),
+    "balkonbau":           ("Balkonbau",            ["Angebote & Anfragen,", "nicht die Statik"]),
 }
 
 
