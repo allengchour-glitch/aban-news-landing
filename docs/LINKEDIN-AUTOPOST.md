@@ -46,3 +46,11 @@ Warnung). Token im Developer-Portal erneuern und das Secret aktualisieren.
 - **LinkedIn-Newsletter** (wöchentlich) + 1 Feed-Post/Werktag ist ein guter Rhythmus.
 - Den vollen Tagesinhalt **nicht** auf LinkedIn spiegeln — nur Teaser mit Link auf https://abannews.com,
   damit das E-Mail-Abo der eigentliche Gewinn bleibt.
+
+## Verhältnis zum alten Make.com-Weg
+Es gibt im Repo noch `automation/linkedin-auto-post.blueprint.json` (+ `…-SETUP.md`, `linkedin_posts_seed.csv`)
+— das ältere Make.com-Muster (Google-Sheet → Make → Buffer → LinkedIn). **Diese native Pipeline hier ist
+der gewählte Weg (autonom + gratis, keine Fremdkonten).** ⚠️ Die 30 Seed-Posts der Make-CSV enthalten
+**erfundene Statistiken** (Bitkom-%, `n=327`-Umfragen, Open-/Reply-Rates, Abo-Zahlen) und sind **nicht** in
+diese Queue übernommen worden. In `social/linkedin_queue.json` stehen nur **5 geprüfte, evergreen** Posts.
+Wer die alten Posts nutzen will, muss vorher die erfundenen Zahlen entfernen/durch echte ersetzen.
