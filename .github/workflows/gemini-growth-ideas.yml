@@ -20,18 +20,20 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Gemini um Ideen fragen
+      - name: Gemini um Ideen fragen (Wachstum + Monetarisierung)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
-        run: python3 automation/gemini_growth_ideas.py
+        run: |
+          python3 automation/gemini_growth_ideas.py --topic growth
+          python3 automation/gemini_growth_ideas.py --topic monetization
       - name: Ideen committen
         run: |
-          if ! git diff --quiet -- docs/WACHSTUM-IDEEN.md; then
+          if ! git diff --quiet -- docs/WACHSTUM-IDEEN.md docs/MONETARISIERUNG-IDEEN.md; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add docs/WACHSTUM-IDEEN.md
-            git commit -m "Gemini-Wachstums-Ideen aktualisiert (Review) [skip ci]"
+            git add docs/WACHSTUM-IDEEN.md docs/MONETARISIERUNG-IDEEN.md
+            git commit -m "Gemini-Ideen aktualisiert: Wachstum + Monetarisierung (Review) [skip ci]"
             git push || echo "::warning::push fehlgeschlagen"
           else
             echo "Keine neuen Ideen (kein Key)."

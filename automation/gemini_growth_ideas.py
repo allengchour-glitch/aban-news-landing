@@ -20,23 +20,31 @@ import urllib.request
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-OUT = REPO / "docs" / "WACHSTUM-IDEEN.md"
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
 
-PROMPT = """Du berätst „aban news“ — einen brandneuen, täglichen deutschsprachigen KI-Newsletter
-für DACH-Profis (Start bei 0 Abonnenten). Marke: ehrlich, anti-Hype, kein Tracking-Pixel,
-KEINE erfundenen Zahlen, kein Affiliate-Müll. Solo-Betreiber, kleines/kein Budget.
+BRAND = ("„aban news“ + aban-Netzwerk (Radars: KI-Tools, Förder, Jobs, Kurse, Prompts, Agenturen, "
+         "Video) — ehrlich, anti-Hype, kein Tracking-Pixel, KEINE erfundenen Zahlen, kein Affiliate-"
+         "Müll. Solo-Betreiber, kleines/kein Budget, Start nahe 0 Reichweite.")
 
-Gib 12 KONKRETE, ehrliche, sofort umsetzbare Wachstumsideen — für E-Mail-Abonnenten UND
-Social-Follower (LinkedIn, Telegram). Pro Idee: 1 Satz Was + 1 Satz Wie + erwarteter Aufwand
-(klein/mittel/groß).
-
-STRIKT verboten (nicht vorschlagen): Follower/Abonnenten kaufen, Fake-Zahlen/Testimonials,
-Spam/DMs in Masse, Clickbait mit falschen Versprechen, Engagement-Pods/Bots, irreführende Taktiken.
-Bevorzugt: echter Mehrwert, Community, Kooperationen, SEO, Cross-Promotion, organische Reichweite.
-
-Antworte als Markdown-Liste, gegliedert in „## E-Mail-Abonnenten“ und „## Social-Follower“.
-"""
+PROMPTS = {
+    "growth": ("Du berätst " + BRAND + "\n\n"
+        "Gib 12 KONKRETE, ehrliche, sofort umsetzbare Wachstumsideen — für E-Mail-Abonnenten UND "
+        "Social-Follower (LinkedIn, Telegram). Pro Idee: 1 Satz Was + 1 Satz Wie + Aufwand (klein/mittel/groß).\n\n"
+        "STRIKT verboten: Follower/Abonnenten kaufen, Fake-Zahlen/Testimonials, Massen-Spam/DMs, Clickbait, "
+        "Engagement-Pods/Bots. Bevorzugt: echter Mehrwert, Community, Kooperationen, SEO, Cross-Promo.\n\n"
+        "Markdown, gegliedert in „## E-Mail-Abonnenten“ und „## Social-Follower“."),
+    "monetization": ("Du berätst " + BRAND + "\n\n"
+        "Gib 12 KONKRETE, ehrliche Wege, wie aus dem aban-Netzwerk Einnahmen/Budget entstehen — ethisch, "
+        "marken-konform. Pro Idee: Was + erster Schritt + 'ab welcher Reichweite sinnvoll' + Aufwand. "
+        "Decke ab: Newsletter-Sponsoring (klar gekennzeichnet), faire Affiliate-Links in den Radars (nur "
+        "ehrlich empfohlene Tools, transparent), Premium/Founding, bezahlte Verzeichnis-Listings (Agenturen), "
+        "Digitalprodukte (Kurs/Prompt-Pack/eBook), Lead-Gen/Kooperationen.\n\n"
+        "STRIKT verboten: irreführende Werbung, versteckte Affiliate-Links, Pay-for-positive-Review, "
+        "Datenverkauf, alles was 'ehrlich/kein Hype' verletzt. Sortiere nach Aufwand-Nutzen.\n\n"
+        "Markdown-Liste, je Idee 'erst ab X Abonnenten sinnvoll'."),
+}
+OUT_MAP = {"growth": REPO / "docs" / "WACHSTUM-IDEEN.md",
+           "monetization": REPO / "docs" / "MONETARISIERUNG-IDEEN.md"}
 
 
 def gemini(api_key, prompt):
@@ -51,12 +59,17 @@ def gemini(api_key, prompt):
 
 
 def main() -> int:
+    import argparse
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--topic", choices=list(PROMPTS), default="growth")
+    args = ap.parse_args()
+
     api_key = os.environ.get("GEMINI_API_KEY", "").strip()
     if not api_key:
         print("GEMINI_API_KEY nicht gesetzt → no-op (Exit 0).")
         return 0
     try:
-        ideas = gemini(api_key, PROMPT)
+        ideas = gemini(api_key, PROMPTS[args.topic])
     except urllib.error.HTTPError as e:
         print(f"::warning::Gemini HTTP {e.code}: {e.read().decode('utf-8','ignore')[:300]}")
         return 0
@@ -64,12 +77,14 @@ def main() -> int:
         print(f"::warning::Gemini-Aufruf fehlgeschlagen: {e}")
         return 0
 
+    title = "Wachstums-Ideen" if args.topic == "growth" else "Monetarisierungs-Ideen (Budget)"
     today = dt.date.today().isoformat()
-    header = (f"# Wachstums-Ideen (Gemini) — Stand {today}\n\n"
+    header = (f"# {title} (Gemini) — Stand {today}\n\n"
               "> ⚠️ VORSCHLÄGE von Gemini — vor Umsetzung prüfen. Nur marken-konforme, ehrliche "
-              "Ideen umsetzen (keine Fake-Zahlen, kein Spam/Bots/gekaufte Follower).\n\n---\n\n")
-    OUT.write_text(header + ideas.strip() + "\n", encoding="utf-8")
-    print(f"✓ Ideen geschrieben: {OUT} ({len(ideas)} Zeichen)")
+              "Ideen umsetzen (keine Fake-Zahlen, kein Spam/Bots, keine versteckten Affiliate-Links).\n\n---\n\n")
+    out = OUT_MAP[args.topic]
+    out.write_text(header + ideas.strip() + "\n", encoding="utf-8")
+    print(f"✓ {title} geschrieben: {out} ({len(ideas)} Zeichen)")
     return 0
 
 
