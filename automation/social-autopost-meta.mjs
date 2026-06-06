@@ -50,23 +50,29 @@ function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""
 function serialize(rows){ return rows.map(r=>r.map(esc).join(',')).join('\n')+'\n'; }
 
 function isJpg(u){ return /\.jpe?g($|\?)/i.test(u); }
-async function gget(url){ const r = await fetch(url, {method:'POST'}); const j = await r.json().catch(()=>({})); return {ok:r.ok, status:r.status, j}; }
+async function gpost(url, params){
+  const body = new URLSearchParams(params);
+  const r = await fetch(url, {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body});
+  const j = await r.json().catch(()=>({}));
+  return {ok:r.ok, status:r.status, j};
+}
 
 // --- Plattform-Poster (jeweils null, wenn keine Creds) -----------------------------
 async function postIG(imageUrl, caption){
   if(!IG_ID || !IG_TOK) return null;
   const base = `https://graph.facebook.com/${V}/${IG_ID}`;
-  const q = new URLSearchParams({ image_url: imageUrl, caption, access_token: IG_TOK });
-  const c = await gget(`${base}/media?${q}`);
+  const c = await gpost(`${base}/media`, { image_url: imageUrl, caption, access_token: IG_TOK });
   if(!c.ok || !c.j.id){ console.error('IG container:', c.status, JSON.stringify(c.j.error||c.j)); return false; }
-  const p = await gget(`${base}/media_publish?${new URLSearchParams({ creation_id:c.j.id, access_token:IG_TOK })}`);
+  const p = await gpost(`${base}/media_publish`, { creation_id:c.j.id, access_token:IG_TOK });
   if(!p.ok || !p.j.id){ console.error('IG publish:', p.status, JSON.stringify(p.j.error||p.j)); return false; }
   console.log('IG: gepostet', p.j.id); return p.j.id;
 }
 async function postFB(imageUrl, caption){
   if(!FB_ID || !FB_TOK) return null;
-  const q = new URLSearchParams({ url: imageUrl, caption, access_token: FB_TOK });
-  const r = await gget(`https://graph.facebook.com/${V}/${FB_ID}/photos?${q}`);
+  // Facebook-Page-Photo: Param heißt `message` (nicht `caption`); als POST-Body senden
+  // (Query-Param `caption=` wird sonst als deprecated `publish_actions` interpretiert → Fehler 200).
+  const r = await gpost(`https://graph.facebook.com/${V}/${FB_ID}/photos`,
+    { url: imageUrl, message: caption, access_token: FB_TOK });
   if(!r.ok || !(r.j.id||r.j.post_id)){ console.error('FB photo:', r.status, JSON.stringify(r.j.error||r.j)); return false; }
   console.log('FB: gepostet', r.j.post_id||r.j.id); return r.j.post_id||r.j.id;
 }
@@ -83,10 +89,9 @@ async function postThreads(imageUrl, caption){
   }catch(e){ /* Netzfehler → mit gesetzter ID weiter */ }
   if(!uid){ console.error('Threads: keine User-ID (weder via /me noch THREADS_USER_ID).'); return false; }
   const base = `https://graph.threads.net/v1.0/${uid}`;
-  const q = new URLSearchParams({ media_type:'IMAGE', image_url:imageUrl, text:caption, access_token:TH_TOK });
-  const c = await gget(`${base}/threads?${q}`);
+  const c = await gpost(`${base}/threads`, { media_type:'IMAGE', image_url:imageUrl, text:caption, access_token:TH_TOK });
   if(!c.ok || !c.j.id){ console.error('Threads container:', c.status, JSON.stringify(c.j.error||c.j)); return false; }
-  const p = await gget(`${base}/threads_publish?${new URLSearchParams({ creation_id:c.j.id, access_token:TH_TOK })}`);
+  const p = await gpost(`${base}/threads_publish`, { creation_id:c.j.id, access_token:TH_TOK });
   if(!p.ok || !p.j.id){ console.error('Threads publish:', p.status, JSON.stringify(p.j.error||p.j)); return false; }
   console.log('Threads: gepostet', p.j.id); return p.j.id;
 }
