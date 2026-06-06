@@ -13,6 +13,17 @@
 > ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
 > bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
 
+## Session 2026-06-06 (Teil 2) — Social-Maschine gebaut + Shop-Fixes + Voll-Automation
+- **Autonome Social-Maschine gebaut & committet** (PR #363, Branch LehDs): Meta-Autopilot IG+FB+Threads
+  (`social-autopost-meta.mjs`), Bild-Generator (`gen_post_image.py`, 5 JPG-Posts/Tag 1080×1350+1080×1080),
+  Reel-Dual-Export (Musik + clean für Trend-Sound), Selbst-Lern-Schleife (`learn_from_analytics.mjs`),
+  Rating-Lister (`list_by_rating.mjs`), Tages-Digest 1×/Tag, USER-CHECKLISTE. Alle Workflows no-op-safe.
+- **Shop-Fixes (live per API):** Bali (4,93★) + Ibiza (4,47★) → Tag `top-bestseller` (waren in KEINER
+  Featured-Collection!). „Bestsellers"-Collection in alle 6 Kanäle publiziert (fehlten Shop+TikTok).
+  14 SEO-lose Gadget-Produkte mit DE-SEO (Title+Description) versehen; Rest macht `seo-optimizer.mjs` in CI.
+- **Voll-Automation:** PR #363 → `main` gemergt (User-Freigabe), damit alle Crons greifen. CJ-Import inkl.
+  (`cj-autopilot.yml`). Aktivierung = Repo-Secrets (User, siehe USER-CHECKLISTE) + ggf. GitHub Pages an.
+
 ## Session 2026-06-06 — Conversion-QA (keine CJ-Creds in Session)
 - **Umgebung:** Shopify-MCP verbunden (LuxeStyle/luxestyle.ch/CHF/Basic ✅). **CJ_EMAIL/CJ_API_KEY
   NICHT gesetzt** → keine neuen CJ-Importe diese Session möglich (User müsste Creds als Env-Secrets
