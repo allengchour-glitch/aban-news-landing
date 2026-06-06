@@ -22,6 +22,6 @@
 // ============================================================
 window.ABAN_PAY = {
   TWINT_URL: "",
-  SHOPIFY_URL: "",
+  SHOPIFY_URL: "https://luxestyle.ch/products/aban-news-founding-member",
   CARD_URL: ""
 };
