@@ -13,6 +13,25 @@
 > ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
 > bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
 
+## Session 2026-06-06 — Conversion-QA (keine CJ-Creds in Session)
+- **Umgebung:** Shopify-MCP verbunden (LuxeStyle/luxestyle.ch/CHF/Basic ✅). **CJ_EMAIL/CJ_API_KEY
+  NICHT gesetzt** → keine neuen CJ-Importe diese Session möglich (User müsste Creds als Env-Secrets
+  hinterlegen). Stattdessen Conversion-First-Routine (§10) gefahren.
+- **Bestand:** 182 `cj-real` ACTIVE (alle 6 Kanäle), 530 ACTIVE gesamt.
+- **🖼️ Voll-QA aller 182 cj-real Live-Produkte: 0 FAILED-Bilder, alle Media READY.** Katalog sauber.
+- **Funnel verifiziert:** `WELCOME10` ist ACTIVE (10%, min 0.01 CHF, gültig bis 31.08.2026) ✅ ·
+  alle 6 Policies vorhanden (Impressum/AGB/Datenschutz/Rückgabe/Versand/Kontakt) ✅.
+- **Landingpages:** „Sommer-Kollektion 2026" (handle `sommer`, 52 Produkte, 6 Kanäle, Best-Selling) ✅ ·
+  „👗 Damen-Mode" (292 Produkte) war nur in Onlineshop+Copilot → **in alle 6 Kanäle publiziert**
+  (Shop/TikTok/Meta/Google/Pinterest) für konsistente Shopping-Feeds.
+- **Autopilot-Draft bereinigt:** „Premium Modern Shoe Rack In Wood" (`CJ-CJFU2915790`) ist laut Bild
+  ein **massives Holz-Schrank-Möbel** (4-Klappen-Kommode, Metallfüße) → §5 (sperrige Möbel,
+  dropship-untauglich). Tag `autopilot-needs-copy` entfernt, `nicht-live-moebel-sperrig` gesetzt,
+  bleibt DRAFT. So hängt es nicht mehr in der Veredelungs-Queue.
+- **🔴 Kernproblem unverändert:** 0 Bestellungen in 14 T. Katalog/Funnel sind nicht der Engpass —
+  es fehlt qualifizierte Reichweite. Das sind die 3 User-Klicks aus §10 (AGB-Domain, Pixel,
+  Kampagne+Budget). Autonom ist hier alles getan, was ohne CJ-Creds/Werbekonto geht.
+
 ## QA-Scan (2026-05-31) — alle Live-Produkte bildgeprüft
 Alle 54 `cj-real status:active` durchgeprüft: **kein einziges FAILED-Bild**, alle Media READY.
 Kleine Befunde (nicht kritisch): LED-Schreibtischlampe (1 Bild, aus früherer Session),

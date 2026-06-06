@@ -37,7 +37,21 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
-**📌 2026-06-03 (AKTUELLSTER STAND — zuerst lesen):**
+**📌 2026-06-06 (AKTUELLSTER STAND — zuerst lesen):**
+- **Session ohne CJ-Creds:** `CJ_EMAIL`/`CJ_API_KEY` waren NICHT gesetzt → keine neuen Importe.
+  Shopify-MCP war verbunden → Conversion-First-Routine (§10) gefahren. **Branch dieser Session:
+  `claude/dropshipping-session-LehDs`** (die alte `SrAs5`-Branch existiert auf diesem Remote NICHT;
+  Session-Vorgabe schlägt das Memory). Neue PR auf diesem Branch.
+- **Voll-QA 182 cj-real Live-Produkte: 0 FAILED-Bilder.** Funnel verifiziert: WELCOME10 ACTIVE
+  (10%, bis 31.08.2026), alle 6 Policies da. Landing `sommer` (52 Prod./6 Kanäle) gesund;
+  `damen-mode` (292) war nur in 1–2 Kanälen → jetzt in alle 6 publiziert.
+- **Möbel-Draft bereinigt:** „Shoe Rack In Wood" = sperriges Holzmöbel (§5) → aus Veredelungs-Queue
+  genommen (Tag `nicht-live-moebel-sperrig`, bleibt DRAFT).
+- **🔴 0 Bestellungen/14T bleibt** — Engpass ist NICHT Katalog/Funnel (beide top), sondern Reichweite.
+  Autonom ist alles Mögliche getan. Es fehlen die 3 User-Klicks (§10): AGB-Domain, Pixel,
+  Kampagne+Budget. **+ CJ-Creds als Env-Secrets, falls neue Produkte gewünscht.**
+
+**📌 2026-06-03 (vorheriger Stand):**
 - **VIDEO-PRODUKTION macht die andere Session** (GEHIRN-HACKS/ABAN Files, `video-prototypes/`) — ich (Dropship)
   baue dort NICHT weiter. ABER gesichert: **piper-TTS funktioniert im Container** (XTTS scheiterte) → Voiceover-
   Reels sind hier baubar. Rezept in `video-prototypes/HANDOFF.md`. LuxeStyle-PoC: `reels/script-sommer-20260603-1834.mp4`
