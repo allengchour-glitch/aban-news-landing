@@ -16,7 +16,14 @@
 - **Branch-Falle (wichtig):** Remote-`claude/ai-money-project-f25Ub` war **veraltet** (671 Commits hinter `main`, alte PRs #2/#13/#14 alle geschlossen). → mit `--force-with-lease` auf aktuellen `main` + neue Commits zurückgesetzt. Später `main`-Merge (8 neue Hubs nachgezogen → wieder 262/262 konsistent).
 - **CI-Status:** `check` (Quality) ✅, Pre-deploy-Validation (JSON-LD, einziger blockender Schritt) ✅, 762 JSON-LD-Blöcke valide. **Rot = NUR Cloudflare-Deploy-Previews** (`radar`/`aban-news-landing`/`aban-a`/`ki-verzeichnis`/`foerder-radar`): gemeinsame **Infra-/Token-Ursache** (Auth code 10000), **user-seitig**, kein Code-Fehler. PR `mergeable_state: unstable` = mergebar.
 - **🟡 Offene User-Schritte:** (1) `CF_TOKEN` in `js/analytics.js`; (2) optional CF-Deploy-Token-Rechte fixen (Pages/Workers Edit) → Previews grün; (3) PR #381 aus Draft holen/mergen.
-- **LinkedIn-Wachstum (beraten):** LinkedIn-**Newsletter**-Feature anlegen = **wöchentlich** (Best-of-Teaser → beehiiv-Link, NICHT voll spiegeln), Titel z.B. „KI für DACH — in 5 Minuten". Feed-Posts ~3–5/Woche (1 Insight aus der Tagesausgabe als eigenständiger Mehrwert-Post, dezenter Abo-Link). Angebot offen: 5 fertige Posts + LinkedIn-Newsletter-Vorlage.
+- **LinkedIn-Wachstum:** **Native, autonom+gratis Pipeline gebaut** — `automation/linkedin_post.py` +
+  `social/linkedin_queue.json` (**17 geprüfte, ehrliche** Evergreen-Posts, KEINE Fake-Zahlen) +
+  `.github/workflows/linkedin-autopost.yml` (Mo–Fr 08:00, no-op ohne Secrets) + `docs/LINKEDIN-AUTOPOST.md`.
+  **🟡 TOKEN STEHT NOCH AUS — User holt `LINKEDIN_ACCESS_TOKEN`+`LINKEDIN_AUTHOR_URN` SPÄTER** (LinkedIn-Dev-App
+  braucht Company Page → nur am Desktop anlegbar; Mobile 404t). **Empfohlene Alternative ohne Token/Company Page:
+  Buffer (gratis) → persönliches Profil verbinden → die 17 Posts einplanen.** LinkedIn-Newsletter = wöchentlich
+  (Teaser→beehiiv). ⚠️ Die alten 30 Make-Seed-Posts (`automation/linkedin_posts_seed.csv`) enthalten erfundene
+  Statistiken → bewusst NICHT in die Queue übernommen (in Docs als „erst nach Faktencheck" markiert).
 - **Fakten-Korrektur:** Founding ist **€69 einmalig** (PayPal), Premium €9/Mt bzw. €89/Jahr; beehiiv **Gratis-Plan**. (Ältere PROJEKT.md-Stellen mit „€149" sind veraltet.)
 
 ## 📌 Stand 2026-06-03 — Gratis-Tool-Offensive + interne Verlinkung
