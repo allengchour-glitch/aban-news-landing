@@ -22,7 +22,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://abannews.beehiiv.com" crossorigin>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"aban news","url":"https://abannews.com/","description":"Täglicher deutschsprachiger AI-Newsletter für DACH-Profis.","inLanguage":"de-DE"}
+  {"@context":"https://schema.org","@type":"WebSite","name":"aban news","url":"https://abannews.com/","description":"Täglicher deutschsprachiger AI-Newsletter für DACH-Profis.","inLanguage":"de-DE","publisher":{"@id":"https://abannews.com/#organization"}}
   </script>
   <style>
     *,*::before,*::after{box-sizing:border-box}
@@ -210,7 +210,7 @@
           </div>
           <p class="anchor">Jeden Werktag 7:30 Uhr · 1 Tool + 3 relevante Updates · kein Spam, kein Affiliate-Müll.</p>
           <label class="consent"><input type="checkbox" name="consent" value="1" required>
-            <span>Ich willige ein, Mo–Fr eine E-Mail zu erhalten. Abmeldung jederzeit per Klick. <a href="/datenschutz.html">Datenschutz</a>.</span></label>
+            <span>Ich willige ein, Mo–Fr eine E-Mail zu erhalten. Bestätigung per Double-Opt-in, Abmeldung jederzeit per Klick. <a href="/datenschutz.html">Datenschutz</a>.</span></label>
           <div class="trust"><span><b>DSGVO</b>-konform</span><span><b>1-Klick</b>-Abmeldung</span><span>kein Tracking-Pixel</span></div>
         </form>
       </div>
@@ -630,7 +630,7 @@
   render(0);
   // form loading state
   var f=document.getElementById('signup');
-  f.addEventListener('submit',function(){var b=f.querySelector('button');if(b){b.textContent='Wird geöffnet…';}});
+  f.addEventListener('submit',function(){var b=f.querySelector('button');if(b){b.textContent='Wird geöffnet…';b.disabled=true;}});
 })();
 </script>
 
