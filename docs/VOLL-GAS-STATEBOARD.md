@@ -14,7 +14,7 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **239 live, alle viersprachig (de/en/fr/it = 956 Seiten)**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **242 live, alle viersprachig (de/en/fr/it = 968 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
@@ -65,7 +65,8 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 54 (227→230, #362): Drechslerei, Orgelbau, Klavierstimmer — **direkt viersprachig** (Drechslerei Lebensmittelechtheit-/Maschinen-Sicherheits-Grenze, Orgelbau Denkmalwert-/Orgelsachverständigen-Grenze, Klavierstimmer Zustands-/Wert-/Kauf-Beurteilung-Grenze).
 - Welle 55 (230→233, #364): Holzbildhauer, Seifenmanufaktur, Kerzenmanufaktur — **direkt viersprachig** (Holzbildhauer Restaurierungs-/Echtheits-/KI-Entwurf-Rechte-Grenze, Seifenmanufaktur NaOH-Verseifung-/EU-Kosmetik-VO-/Health-Claims-Grenze, Kerzenmanufaktur EN-15493-Sicherheitsnorm-/CLP-/Health-Claims-Grenze).
 - Welle 56 (233→236, #365): Korbflechterei, Glasmalerei, Hutmacher — **direkt viersprachig** (Korbflechterei Restaurierungs-/Wert-Grenze, Glasmalerei Denkmalwert-/KI-Entwurf-Rechte-Grenze, Hutmacher Maßnehmen-/Anprobe-Grenze).
-- Welle 57 (236→239): Steinbildhauer, Messermacher, Goldschmied — **direkt viersprachig** (Steinbildhauer Grabmal-sensibel/Denkmalwert-/Friedhofsvorschriften-Grenze, Messermacher Stahl-/Arbeitsschutz-/Waffenrecht-Grenze, Goldschmied Edelstein-/Echtheits-/Karat-/Punzierungs-Grenze — abgegrenzt vom Juwelier-Hub: herstellendes Handwerk).
+- Welle 57 (236→239, #366): Steinbildhauer, Messermacher, Goldschmied — **direkt viersprachig** (Steinbildhauer Grabmal-sensibel/Denkmalwert-/Friedhofsvorschriften-Grenze, Messermacher Stahl-/Arbeitsschutz-/Waffenrecht-Grenze, Goldschmied Edelstein-/Echtheits-/Karat-/Punzierungs-Grenze — abgegrenzt vom Juwelier-Hub: herstellendes Handwerk).
+- Welle 58 (239→242): Lederwerkstatt, Kalligrafie, Buchhandlung — **direkt viersprachig** (Lederwerkstatt Material-Beratungs-Grenze [abgegrenzt von Sattlerei], Kalligrafie KI-„Kalligrafie"-nicht-handgemacht-/Tippfehler-/Urheberrecht-Grenze, Buchhandlung Buchpreisbindungs-/Lieferbarkeits-Grenze [abgegrenzt von Antiquariat]).
 
 ## LuxeStyle-/Dropship-Projekt (im Memory, separater Workstream)
 - Branch `claude/dropship-lade-memory-SrAs5`, PR #5. Runbook `dropship/AUTONOMER-MODUS.md`, Log `dropship/CJ-IMPORT-LOG.md`. ~65 Produkte live, Kernproblem 0 Käufe (Traffic-Qualität). **Diese abannews-Session hat KEINE Shopify-MCP-Tools** → Live-Betrieb nur in MCP-Session möglich; hier nur Code/Doku. User-Wunsch 2026-06-05: „nur Memory laden, Hub-Loop weiter".
