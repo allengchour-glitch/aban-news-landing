@@ -14,6 +14,9 @@ on:
       batch:
         description: 'Anzahl Produkte pro Lauf'
         default: '5'
+      only:
+        description: 'Komma-Liste von names neu rendern (Queue unberührt); leer = normaler Batch'
+        default: ''
 
 permissions:
   contents: write
@@ -36,6 +39,7 @@ jobs:
       - name: Render post images
         env:
           BATCH: ${{ inputs.batch || '5' }}
+          ONLY: ${{ inputs.only }}
           OUT_BASE_URL: https://abannews.com
         run: python3 automation/gen_post_image.py
       - name: Commit rendered images + queue
@@ -44,7 +48,7 @@ jobs:
             git config user.name "luxestyle-image-bot"
             git config user.email "bot@users.noreply.github.com"
             git add social/static social/posts_image.csv automation/.image_pointer
-            git commit -m "chore(social): neue Produkt-Post-Bilder gerendert [skip ci]"
+            git commit -m "chore(social): Produkt-Post-Bilder gerendert [skip ci]"
             git push
           else
             echo "Keine neuen Bilder."
