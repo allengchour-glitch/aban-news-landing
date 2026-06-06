@@ -27,6 +27,20 @@
 - ℹ️ Token-Scopes: `instagram_basic, instagram_content_publish, pages_show_list, pages_manage_posts`.
       IG muss **Business/Creator** + mit der FB-Seite verbunden sein. Entwicklungsmodus reicht fürs eigene Konto.
 
+**TikTok (Content Posting API v2) — für `tiktok-autopost.yml`:**
+- [ ] `TT_ACCESS_TOKEN` (Pflicht — gültig 24h)
+- [ ] `TT_REFRESH_TOKEN` + `TT_CLIENT_KEY` + `TT_CLIENT_SECRET` (optional, aber dringend empfohlen → Auto-Refresh)
+- [ ] **Repo-Variable** `TT_PRIVACY_LEVEL` (Settings → Variables): bis zur App-Review **`SELF_ONLY`** (nur du siehst es),
+      danach **`PUBLIC_TO_EVERYONE`**.
+- ℹ️ **Setup:**
+      1. TikTok for Developers → eigene App anlegen (Business/Creator).
+      2. Scopes: `user.info.basic`, `video.upload`, `video.publish` (letzteres erst nach Audit aktiv).
+      3. OAuth-Flow durchlaufen → `access_token` + `refresh_token` aus der Antwort kopieren.
+      4. Optional: PAT mit `secrets:write` als `REPO_ADMIN_PAT` setzen, damit der Workflow die rotierten Tokens
+         nach jedem Refresh selbst zurückschreibt (sonst muss `TT_ACCESS_TOKEN` alle 24h neu gesetzt werden).
+- ℹ️ **Sandbox-Modus:** Solange die App nicht auditiert ist, landet jedes Video nur in deinem Profil
+      (`SELF_ONLY`) — perfekt zum stillen Testen. Nach Audit Variable auf `PUBLIC_TO_EVERYONE` umstellen.
+
 **Telegram (Tages-Digest 1×/Tag) — für `reel-analytics.yml`:**
 - [ ] `TELEGRAM_BOT_TOKEN` (🔒 **bitte rotieren**, der alte wurde im Chat geteilt) + `TELEGRAM_CHAT_ID`
 
@@ -67,6 +81,8 @@
 
 ## 🤖 Was bereits AUTONOM gebaut & committet ist (läuft, sobald C+D erledigt)
 - **Meta-Autopilot** `automation/social-autopost-meta.mjs` (+ Workflow 2×/Tag) — IG+FB+Threads, JPG-Pflicht, Throttle.
+- **TikTok-Autopilot** `automation/tiktok-autopost.mjs` (+ Workflow 1×/Tag) — Content Posting API v2, FILE_UPLOAD,
+  Auto-Refresh, Sandbox-tauglich (SELF_ONLY bis Audit).
 - **Bild-Generator** `automation/gen_post_image.py` (+ `image-render.yml`) — 5 Marken-JPGs/Tag (1080×1350 & 1080×1080).
 - **Reel-Engine** mit **Dual-Export** (Musik-Version für FB/Ads + `-clean.mp4` tonarm für Trend-Sound in TikTok/IG).
 - **Selbst-Lern-Schleife** `automation/learn_from_analytics.mjs` (+ `analytics-learn.yml`) — TikTok-Daten → beste Hashtags.
