@@ -270,6 +270,9 @@ BRANCHEN = {
     "natursteinarbeiten":  ("Natursteinarbeiten",   ["Angebote & Anfragen,", "nicht die Verlegung"]),
     "holzterrassenbau":    ("Holzterrassenbau",     ["Angebote & Anfragen,", "nicht der Bau"]),
     "reetdachdecker":      ("Reetdachdecker",       ["Angebote & Anfragen,", "nicht das Dachdecken"]),
+    "zimmerei":            ("Zimmereien",           ["Angebote & Anfragen,", "nicht die Statik"]),
+    "gewaechshausbau":     ("Gewächshausbau",       ["Angebote & Anfragen,", "nicht die Statik"]),
+    "gabionenbau":         ("Gabionenbau",          ["Angebote & Anfragen,", "nicht die Statik"]),
 }
 
 
