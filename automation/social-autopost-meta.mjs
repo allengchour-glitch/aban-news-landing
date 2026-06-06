@@ -71,8 +71,18 @@ async function postFB(imageUrl, caption){
   console.log('FB: gepostet', r.j.post_id||r.j.id); return r.j.post_id||r.j.id;
 }
 async function postThreads(imageUrl, caption){
-  if(!TH_ID || !TH_TOK) return null;
-  const base = `https://graph.threads.net/v1.0/${TH_ID}`;
+  if(!TH_TOK) return null;
+  // Threads-User-ID robust aus dem Token auflösen (/me) — vermeidet die häufige Falle einer
+  // falsch eingetragenen THREADS_USER_ID (Graph-Fehler 100/Subcode 33). Fallback: gesetzte ID.
+  let uid = TH_ID;
+  try{
+    const me = await fetch(`https://graph.threads.net/v1.0/me?fields=id&access_token=${encodeURIComponent(TH_TOK)}`);
+    const mj = await me.json().catch(()=>({}));
+    if(me.ok && mj.id){ uid = mj.id; if(mj.id!==TH_ID) console.log('Threads: User-ID via /me aufgelöst →', mj.id); }
+    else if(!uid) console.error('Threads /me:', me.status, JSON.stringify(mj.error||mj));
+  }catch(e){ /* Netzfehler → mit gesetzter ID weiter */ }
+  if(!uid){ console.error('Threads: keine User-ID (weder via /me noch THREADS_USER_ID).'); return false; }
+  const base = `https://graph.threads.net/v1.0/${uid}`;
   const q = new URLSearchParams({ media_type:'IMAGE', image_url:imageUrl, text:caption, access_token:TH_TOK });
   const c = await gget(`${base}/threads?${q}`);
   if(!c.ok || !c.j.id){ console.error('Threads container:', c.status, JSON.stringify(c.j.error||c.j)); return false; }
@@ -82,7 +92,7 @@ async function postThreads(imageUrl, caption){
 }
 
 // --- Hauptlauf ---------------------------------------------------------------------
-const configured = [IG_ID&&IG_TOK&&'IG', FB_ID&&FB_TOK&&'FB', TH_ID&&TH_TOK&&'Threads'].filter(Boolean);
+const configured = [IG_ID&&IG_TOK&&'IG', FB_ID&&FB_TOK&&'FB', TH_TOK&&'Threads'].filter(Boolean);
 if(configured.length===0 && !DRY){
   console.log('Kein Meta-Kanal konfiguriert (IG/FB/Threads Secrets fehlen) → No-op. Setze THREADS_ACCESS_TOKEN etc.');
   process.exit(0);
