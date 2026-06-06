@@ -434,6 +434,7 @@
         <a href="https://t.me/share/url?url=https%3A%2F%2Fabannews.com&text=T%C3%A4glicher%20KI-Newsletter%20f%C3%BCr%20DACH%20in%205%20Min" target="_blank" rel="noopener">Telegram</a>
         <a href="mailto:?subject=T%C3%A4glicher%20KI-Newsletter&body=Schau%20mal%3A%20https%3A%2F%2Fabannews.com" rel="noopener">E-Mail</a>
       </div>
+      <p style="max-width:560px;margin:1.3rem auto 0;font-size:.92rem;color:var(--muted)"><b style="color:var(--ink)">Dialog statt Monolog:</b> Du kannst auf jede Ausgabe direkt antworten — ich lese jede Mail selbst und richte den Newsletter danach aus.</p>
     </div>
   </section>
 
@@ -504,25 +505,23 @@
     }
 
     // Rotierende Mail-Vorschau (dekorativ, reduced-motion-safe, Pause bei Hover)
+    // Echte Schlagzeilen aus den letzten Ausgaben (Snapshot aus dem Archiv)
     var issues=[
-      {from:'Von <b>aban news</b> · Mo, 5 Min Lesezeit',subj:'☕ 3 KI-Updates, die heute zählen',
-       items:['<span class="mk">1.</span> OpenAI senkt API-Preise — was das für deine Automationen heißt.',
-              '<span class="mk">2.</span> Neues DSGVO-Urteil zu KI-Tools: 1 Sache, die du prüfen solltest.',
-              '<span class="mk">3.</span> Claude vs. Gemini im Praxis-Test: wer schreibt bessere E-Mails?',
-              '<span class="mk">🛠</span> Tool der Woche: ehrlich getestet, mit Datenschutz-Blick.',
-              '<span class="mk">💡</span> Prompt zum Kopieren: Meeting-Notizen in 30 Sek. zusammenfassen.']},
-      {from:'Von <b>aban news</b> · Mi, 5 Min Lesezeit',subj:'🧭 Mittwoch: was diese Woche wirklich zählt',
-       items:['<span class="mk">1.</span> Mistral legt offene Modelle nach — relevant für EU-Hosting.',
-              '<span class="mk">2.</span> Microsoft Copilot-Update: 1 Funktion, die Zeit spart.',
-              '<span class="mk">3.</span> KI-Förderung in DACH: neue Frist, die du nicht verpassen solltest.',
-              '<span class="mk">🛠</span> Tool der Woche: EU-gehostet, gratis Einstieg.',
-              '<span class="mk">💡</span> Prompt zum Kopieren: Angebot in 2 Minuten formulieren.']},
-      {from:'Von <b>aban news</b> · Fr, 5 Min Lesezeit',subj:'🚨 Freitag: der Hype-Check',
-       items:['<span class="mk">1.</span> „KI-first" entlarvt: 3 Fragen, die Substanz von Lärm trennen.',
-              '<span class="mk">2.</span> Datenschutz-Falle bei beliebtem KI-Tool — kurz erklärt.',
-              '<span class="mk">3.</span> Was sich in der KI-Welt diese Woche wirklich geändert hat.',
-              '<span class="mk">🛠</span> Tool der Woche: ehrlich geprüft, ohne Marketing-Sprech.',
-              '<span class="mk">💡</span> Prompt zum Kopieren: kalte Mail entschärfen statt generisch.']}
+      {from:'Von <b>aban news</b> · Fr · Ausgabe 025',subj:'🧰 Werkzeugkasten: die H1-Bilanz',
+       items:['<span class="mk">1.</span> Recap: Mistral-Runde, GPT-6-Verschiebung, EU-Code of Practice',
+              '<span class="mk">2.</span> Halbjahres-Bilanz: welche KI-Tools wirklich blieben',
+              '<span class="mk">🛠</span> 3 Tools getestet — Notion AI bleibt, ein 1.490-€-Workshop fliegt',
+              '<span class="mk">💡</span> Prompt der Ausgabe zum Kopieren']},
+      {from:'Von <b>aban news</b> · Do · Ausgabe 024',subj:'🧭 Halbjahres-Drift in der KI-Branche',
+       items:['<span class="mk">1.</span> Mistral schließt 1,2-Mrd.-Runde',
+              '<span class="mk">2.</span> EU-Kommission: GPAI-Code of Practice ab 1. September verbindlich',
+              '<span class="mk">3.</span> Helsing holt 600 Mio. € — Sovereign-Defense-AI wird Mainstream',
+              '<span class="mk">💡</span> Was das für DACH-Profis konkret heißt']},
+      {from:'Von <b>aban news</b> · Di · Ausgabe 023',subj:'🧠 „KI ersetzt deine Mitarbeiter" — nachgerechnet',
+       items:['<span class="mk">1.</span> Warum die meisten KI-Pilotprojekte beim Skalieren scheitern',
+              '<span class="mk">2.</span> Deutsche KMU bremsen KI-Investitionen erstmals',
+              '<span class="mk">3.</span> Was bleibt: ehrliche Einordnung statt Schlagzeile',
+              '<span class="mk">💡</span> 1 Prompt, den du sofort übernehmen kannst']}
     ];
     var mNl=document.getElementById('mNl'),mSubj=document.getElementById('mSubj'),
         mFrom=document.getElementById('mFrom'),body=mNl?mNl.closest('.mockbody'):null,mi=0;
