@@ -14,7 +14,7 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **248 live, alle viersprachig (de/en/fr/it = 992 Seiten)**
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **251 live, alle viersprachig (de/en/fr/it = 1004 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
@@ -68,7 +68,8 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 57 (236→239, #366): Steinbildhauer, Messermacher, Goldschmied — **direkt viersprachig** (Steinbildhauer Grabmal-sensibel/Denkmalwert-/Friedhofsvorschriften-Grenze, Messermacher Stahl-/Arbeitsschutz-/Waffenrecht-Grenze, Goldschmied Edelstein-/Echtheits-/Karat-/Punzierungs-Grenze — abgegrenzt vom Juwelier-Hub: herstellendes Handwerk).
 - Welle 58 (239→242, #367): Lederwerkstatt, Kalligrafie, Buchhandlung — **direkt viersprachig** (Lederwerkstatt Material-Beratungs-Grenze [abgegrenzt von Sattlerei], Kalligrafie KI-„Kalligrafie"-nicht-handgemacht-/Tippfehler-/Urheberrecht-Grenze, Buchhandlung Buchpreisbindungs-/Lieferbarkeits-Grenze [abgegrenzt von Antiquariat]).
 - Welle 59 (242→245, #368): Ofenbauer, Pflasterer, Abbruchunternehmen — **direkt viersprachig** (Ofenbauer Brandschutz-/Abgas-/Schornsteinfeger-Abnahme-Grenze, Pflasterer Unterbau-/Aufmaß-/Versickerungs-Grenze, Abbruch Statik-/Asbest-TRGS-519-/Entsorgungs-Grenze). Zurück zu Bau-/Ausbau-Gewerken. **Lehre: Env benennt Branch nach Inhalt um (w59→ofenbauer-hub) → nach Commit `git push -u origin HEAD` nutzen, dann PR vom tatsächlichen Branch.**
-- Welle 60 (245→248): Wintergartenbau, Terrassenüberdachung, Balkonbau — **direkt viersprachig** (alle Statik-/Lasten-/Baurecht-Grenze; Balkon zusätzlich Absturzsicherung/Geländer-Norm). 1 Agent fiel mit transientem API-500 aus → neu gestartet.
+- Welle 60 (245→248, #369): Wintergartenbau, Terrassenüberdachung, Balkonbau — **direkt viersprachig** (alle Statik-/Lasten-/Baurecht-Grenze; Balkon zusätzlich Absturzsicherung/Geländer-Norm). 1 Agent fiel mit transientem API-500 aus → neu gestartet. `git push -u origin HEAD` verhinderte erneute Branch-Umbenennung.
+- Welle 61 (248→251): Natursteinarbeiten, Holzterrassenbau, Reetdachdecker — **direkt viersprachig** (Naturstein Stein-/Untergrund-/Eignungs-Grenze, Holzterrasse Unterkonstruktions-/Entwässerungs-Grenze, Reetdach Brandschutz-[Reet brennbar]/Höhen-Arbeitssicherheit-Grenze). **>1000 i18n-Seiten erreicht.**
 
 ## LuxeStyle-/Dropship-Projekt (im Memory, separater Workstream)
 - Branch `claude/dropship-lade-memory-SrAs5`, PR #5. Runbook `dropship/AUTONOMER-MODUS.md`, Log `dropship/CJ-IMPORT-LOG.md`. ~65 Produkte live, Kernproblem 0 Käufe (Traffic-Qualität). **Diese abannews-Session hat KEINE Shopify-MCP-Tools** → Live-Betrieb nur in MCP-Session möglich; hier nur Code/Doku. User-Wunsch 2026-06-05: „nur Memory laden, Hub-Loop weiter".

@@ -267,6 +267,9 @@ BRANCHEN = {
     "wintergartenbau":     ("Wintergartenbau",      ["Angebote & Anfragen,", "nicht die Statik"]),
     "terrassenueberdachung": ("Terrassenüberdachung", ["Angebote & Anfragen,", "nicht die Statik"]),
     "balkonbau":           ("Balkonbau",            ["Angebote & Anfragen,", "nicht die Statik"]),
+    "natursteinarbeiten":  ("Natursteinarbeiten",   ["Angebote & Anfragen,", "nicht die Verlegung"]),
+    "holzterrassenbau":    ("Holzterrassenbau",     ["Angebote & Anfragen,", "nicht der Bau"]),
+    "reetdachdecker":      ("Reetdachdecker",       ["Angebote & Anfragen,", "nicht das Dachdecken"]),
 }
 
 
