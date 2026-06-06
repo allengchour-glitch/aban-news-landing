@@ -1,0 +1,44 @@
+name: Telegram Autopost
+
+# Postet werktags den naechsten faelligen Eintrag aus social/telegram_queue.json
+# in den Telegram-Kanal. No-op ohne Secrets. Cron laeuft nur vom Default-Branch.
+
+on:
+  schedule:
+    - cron: '30 6 * * 1-5'   # Mo–Fr 06:30 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Post next queued item
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_IMAGE_MODEL: ${{ vars.GEMINI_IMAGE_MODEL }}
+        run: |
+          pip install --quiet pillow || true
+          python3 automation/telegram_post.py
+
+      - name: Persist queue status (falls gepostet)
+        run: |
+          if ! git diff --quiet -- social/telegram_queue.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add social/telegram_queue.json
+            git commit -m "Telegram-Autopost: Queue-Status aktualisiert [skip ci]"
+            git push
+          else
+            echo "Queue unveraendert — kein Commit."
+          fi

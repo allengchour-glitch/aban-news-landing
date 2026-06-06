@@ -1,4 +1,16 @@
-# LinkedIn Auto-Post Pipeline — Setup-Anleitung
+# LinkedIn Auto-Post Pipeline — Setup-Anleitung (Make.com-ALTERNATIVE)
+
+> ⚠️ **WICHTIG — Markensicherheit (2026-06-06):** Die hier mitgelieferte `linkedin_posts_seed.csv`
+> (30 „Launch-Sprint"-Posts) enthält **erfundene Statistiken und Metriken** — z. B. Bitkom-Zahlen
+> (41 %/19 %), Umfragen mit `n=327`/`142 Leser`, Abo-Zahlen („285 Abos"), Open-/Reply-Rates. Das
+> verstößt gegen das Markenversprechen „keine erfundenen Fakten". **Diese 30 Posts NICHT ungeprüft
+> autonom posten.** Vor Verwendung: erfundene Zahlen entfernen/durch echte ersetzen.
+>
+> ✅ **Empfohlener (autonom + gratis) Weg ist jetzt die native Pipeline** — keine Fremdkonten:
+> `automation/linkedin_post.py` + `social/linkedin_queue.json` + `.github/workflows/linkedin-autopost.yml`
+> (Setup: `docs/LINKEDIN-AUTOPOST.md`). Deren Queue enthält nur **geprüfte, evergreen** Posts (kein Fake).
+> Dieses Make.com-Blueprint bleibt als **Alternative** (LinkedIn-Login bequem über Buffer), ist aber
+> **nicht** verdrahtet und nutzt obige CSV — also erst nach Faktencheck einsetzen.
 
 > Veröffentlicht täglich (Mo–Fr, 08:00 Europe/Zurich) automatisch einen LinkedIn-Post
 > aus einer Google-Sheet-Queue, markiert die Zeile als "posted" und sendet

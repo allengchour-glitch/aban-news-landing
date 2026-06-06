@@ -1,0 +1,40 @@
+name: Gemini Wachstums-Ideen
+
+# Gemini schlaegt Wachstumsideen vor -> docs/WACHSTUM-IDEEN.md (zum Review, KEINE Auto-Umsetzung).
+# No-op ohne GEMINI_API_KEY. Cron laeuft nur vom Default-Branch.
+
+on:
+  schedule:
+    - cron: '0 5 1 * *'   # monatlich (1. des Monats) frische Ideen
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ideas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Gemini um Ideen fragen (Wachstum + Monetarisierung)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+        run: |
+          python3 automation/gemini_growth_ideas.py --topic growth
+          python3 automation/gemini_growth_ideas.py --topic monetization
+      - name: Ideen committen
+        run: |
+          if ! git diff --quiet -- docs/WACHSTUM-IDEEN.md docs/MONETARISIERUNG-IDEEN.md; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add docs/WACHSTUM-IDEEN.md docs/MONETARISIERUNG-IDEEN.md
+            git commit -m "Gemini-Ideen aktualisiert: Wachstum + Monetarisierung (Review) [skip ci]"
+            git push || echo "::warning::push fehlgeschlagen"
+          else
+            echo "Keine neuen Ideen (kein Key)."
+          fi

@@ -121,7 +121,14 @@
     .intl-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.55rem 1rem;background:var(--amber-lt);border:1px solid #f6d9ad;border-radius:12px;padding:.6rem .9rem;margin:1rem 0 0;font-size:.9rem;color:var(--amber-dk);line-height:1.45}
     .intl-bar b{color:var(--ink)}
     .intl-bar .btn{flex:0 0 auto;padding:.5rem .85rem;font-size:.88rem}
-</style>
+
+    /* sticky Mobile-CTA */
+    .mcta{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px));background:rgba(255,250,242,.96);backdrop-filter:saturate(160%) blur(8px);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(28,37,48,.12);transform:translateY(115%);transition:transform .25s ease}
+    .mcta.show{transform:translateY(0)}
+    .mcta .btn{width:100%}
+    @media(max-width:860px){.mcta{display:block}}
+    @media(prefers-reduced-motion:reduce){.mcta{transition:none}}
+  </style>
 </head>
 <body>
 <header>
@@ -282,5 +289,8 @@
   f.addEventListener('submit',function(){var b=f.querySelector('button');if(b){b.textContent='Ouverture…';}});
 })();
 </script>
+<div class="mcta" id="mcta"><a href="#signup" class="btn">S’abonner gratuitement →</a></div>
+<script>(function(){var m=document.getElementById("mcta");if(!m)return;var f=function(){if(window.pageYOffset>600)m.classList.add("show");else m.classList.remove("show");};window.addEventListener("scroll",f,{passive:true});f();})();</script>
+<script defer src="/js/analytics.js"></script>
 </body>
 </html>

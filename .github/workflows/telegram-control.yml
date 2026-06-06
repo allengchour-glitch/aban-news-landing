@@ -1,0 +1,46 @@
+name: Telegram Steuerbot
+
+# Pollt Telegram-Befehle (/status /next /skip /post /gen /draft) und fuehrt sie aus.
+# Reagiert NUR auf TELEGRAM_OWNER_ID. No-op ohne Secrets. Cron nur vom Default-Branch.
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'   # alle ~10 Minuten nach Befehlen schauen
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: telegram-control
+  cancel-in-progress: false
+
+jobs:
+  control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Befehle verarbeiten
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_ID: ${{ secrets.TELEGRAM_OWNER_ID }}
+          TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          pip install --quiet pillow || true
+          python3 automation/telegram_control.py
+      - name: Zustand/Queues sichern
+        run: |
+          if ! git diff --quiet -- automation/tg_state.json social/ automation/entwurf-gemini-*.md 2>/dev/null; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add automation/tg_state.json social/ automation/entwurf-gemini-*.md 2>/dev/null || true
+            git commit -m "Telegram-Steuerbot: Zustand/Queues aktualisiert [skip ci]" || echo "nichts"
+            git push || echo "::warning::push fehlgeschlagen"
+          else
+            echo "Keine Aenderung."
+          fi

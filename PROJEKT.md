@@ -1,10 +1,37 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
 > Dauerhafter Gedächtnis-Speicher für dieses Vorhaben. Überlebt Session-Resets.
-> Stand: **2026-06-03** (Gratis-Tool-Offensive + interne Verlinkung — siehe nächster Abschnitt) · Betreiber: Allen Chour (abannews.com, Belp/CH).
+> Stand: **2026-06-06** (Wachstum & Conversion — PR #381, siehe nächster Abschnitt) · Betreiber: Allen Chour (abannews.com, Belp/CH).
 > ⚠️ Hinweis: `CLAUDE.md` im Repo-Root ist inzwischen das Arbeitsgedächtnis eines **anderen** Workstreams
 > (LuxeStyle-Dropshipping-Shop) und **nicht mehr** die aban-news-Wahrheit. Für aban-news ist **dieses**
 > Dokument (`PROJEKT.md`) maßgeblich. CLAUDE.md des Dropship-Projekts NICHT überschreiben.
+
+## 📌 Stand 2026-06-06 — Wachstum & Conversion (PR #381, Branch `claude/ai-money-project-f25Ub`)
+**Ziel der Session:** „sehr reif, aber 0 Abonnenten" → *gefunden werden + Besucher→Abonnent*. 4 Workstreams + Hub-Boost. Markenversprechen gewahrt (kein Tracking-Pixel, DSGVO, keine Fake-Zahlen). **Engpass = Reichweite/Conversion, nicht Bauen.**
+- **A · Analytics:** `js/analytics.js` = **Cloudflare Web Analytics** (cookielos, kein Pixel, Do-Not-Track-aware, **no-op bis `CF_TOKEN` gesetzt**). Eingebunden auf DE/EN/FR/IT `index`, `founding`, `gratis-ki-tools`, `online-tools`, `preview`. `datenschutz.html` §6.2 + AV-Tabelle auf CF korrigiert (war fälschlich Plausible/Umami). 🙋 **User:** Token aus CF-Dashboard in `js/analytics.js` (`CF_TOKEN`) eintragen.
+- **C · Conversion (Startseite):** Sticky Mobile-CTA auf allen 4 `index` (DE/EN/FR/IT). DE zusätzlich: Lead-Magnet-Sekundär-CTA (→`/gratis-ki-tools.html`), rotierende Mail-Vorschau (Mo/Mi/Fr, Pause b. Hover), ehrliche Founding-ROI-Zeile („≈8 Monate Premium"). EN/FR/IT haben das Vorschau-Karussell bereits.
+- **B · SEO:** DE-Homepage `noindex→index` + `canonical` + reziprokes `hreflang` (fehlten als einzige Sprachvariante). `BreadcrumbList`-JSON-LD auf **allen 262** `ki-fuer-*.html`. Archiv-Ausgaben hatten schon `NewsArticle`.
+- **🚀 Hub-Boost (alle 262 `ki-fuer-*.html` = SEO-Eintrittspunkte):** (1) **Inline-E-Mail-Formular** in der CTA-Box `#abo` → direkt `https://abannews.beehiiv.com/subscribe` (GET `email`), Lead-Magnet bleibt Sekundär-Link — *kein Extra-Klick mehr*. (2) Sticky Mobile-CTA → springt zu `#abo`. (3) „**Verwandte Branchen-Guides**"-Block (4 Links via Keyword-Buckets, Fallback alphabet. Nachbarn) für Crawl-Tiefe. Migration war Einmal-Skript (entfernt).
+- **F · QA:** `tools/check_internal_links.py` (interne href/src vs. Dateien; schließt `/dist/`, `<script>`, Platzhalter aus) → **1.213 Seiten, 0 defekte interne Links**. `quality-check.yml` JSON-Validator überspringt jetzt Shopify-JSONC (`/*`-Header in `dropship/assets/theme-index-branded.json`) — `main` hatte parallel denselben Fix (Merge: main-Version genommen, robuster m. BOM).
+- **Branch-Falle (wichtig):** Remote-`claude/ai-money-project-f25Ub` war **veraltet** (671 Commits hinter `main`, alte PRs #2/#13/#14 alle geschlossen). → mit `--force-with-lease` auf aktuellen `main` + neue Commits zurückgesetzt. Später `main`-Merge (8 neue Hubs nachgezogen → wieder 262/262 konsistent).
+- **CI-Status:** `check` (Quality) ✅, Pre-deploy-Validation (JSON-LD, einziger blockender Schritt) ✅, 762 JSON-LD-Blöcke valide. **Rot = NUR Cloudflare-Deploy-Previews** (`radar`/`aban-news-landing`/`aban-a`/`ki-verzeichnis`/`foerder-radar`): gemeinsame **Infra-/Token-Ursache** (Auth code 10000), **user-seitig**, kein Code-Fehler. PR `mergeable_state: unstable` = mergebar.
+- **🟡 Offene User-Schritte:** (1) `CF_TOKEN` in `js/analytics.js`; (2) optional CF-Deploy-Token-Rechte fixen (Pages/Workers Edit) → Previews grün; (3) PR #381 aus Draft holen/mergen.
+- **LinkedIn-Wachstum:** **Native, autonom+gratis Pipeline gebaut** — `automation/linkedin_post.py` +
+  `social/linkedin_queue.json` (**17 geprüfte, ehrliche** Evergreen-Posts, KEINE Fake-Zahlen) +
+  `.github/workflows/linkedin-autopost.yml` (Mo–Fr 08:00, no-op ohne Secrets) + `docs/LINKEDIN-AUTOPOST.md`.
+  **🟡 TOKEN STEHT NOCH AUS — User holt `LINKEDIN_ACCESS_TOKEN`+`LINKEDIN_AUTHOR_URN` SPÄTER** (LinkedIn-Dev-App
+  braucht Company Page → nur am Desktop anlegbar; Mobile 404t). **Empfohlene Alternative ohne Token/Company Page:
+  Buffer (gratis) → persönliches Profil verbinden → die 17 Posts einplanen.** LinkedIn-Newsletter = wöchentlich
+  (Teaser→beehiiv). ⚠️ Die alten 30 Make-Seed-Posts (`automation/linkedin_posts_seed.csv`) enthalten erfundene
+  Statistiken → bewusst NICHT in die Queue übernommen (in Docs als „erst nach Faktencheck" markiert).
+- **Fakten-Korrektur:** Founding ist **€69 einmalig** (PayPal), Premium €9/Mt bzw. €89/Jahr; beehiiv **Gratis-Plan**. (Ältere PROJEKT.md-Stellen mit „€149" sind veraltet.)
+- **Newsletter attraktiver (Startseite, live nach Merge):** echte Archiv-Vorschau (3 neueste Ausgaben) + „Beispielausgabe"-Button; Anmelde-Geschenk **`downloads/10-ki-prompts.pdf`** (via `automation/generate_prompts_pdf.py`, reportlab); ehrlicher Gründer-Block + Teilen-Buttons; „Dialog statt Monolog"-Block; Hero-Live-Vorschau zeigt **echte Schlagzeilen** der letzten Ausgaben; `ueber-aban.html` Foto-Platzhalter. Doku: `docs/NEWSLETTER-ATTRAKTIV.md` (beehiiv-Referral + Welcome-Mail-Text).
+- **Telegram-Autopost (einfachster autonom+gratis Kanal!):** `automation/telegram_post.py` + `.github/workflows/telegram-autopost.yml` + `social/telegram_queue.json` (17 ehrliche Posts), no-op ohne Secrets. **🟡 User: `TELEGRAM_BOT_TOKEN`+`TELEGRAM_CHANNEL` setzen** (BotFather, ~5 Min, kein OAuth/Ablauf — viel leichter als LinkedIn). Setup: `docs/TELEGRAM-SETUP.md`.
+- **Retention:** `docs/RETENTION-BAUSTEINE.md` (10 Hebel: Zustellbarkeit/Domain-Auth, Welcome+Geschenk, Dialog-Frage, Prompt als Sticky, Telegram-Touchpoint, Win-back, sanfte Upgrades, Preferences).
+- **🤖 Autonome Content-Engine (Gemini=Arbeiter, Brand-Voice-Linter=Boss-Gate):** `automation/gemini_generate_posts.py` + `.github/workflows/gemini-content-engine.yml` (Mo-Fr Cron) erzeugt **evergreen** Posts (zeitlos, KEINE erfundenen Zahlen/News), jeder Post MUSS `tools/brand-voice-linter.py --strict` bestehen, nur dann ab in Telegram+LinkedIn-Queue → Kanäle nie leer. Verifiziert: Hype-Post wird abgelehnt, sauberer Post besteht.
+- **Bild/Content-Studio (Pillow + Gemini):** `automation/studio.py` = ein CLI für `card` (Marken-Textkarte, gen_card.py), `image` (Gemini-Bild, editorial, KEINE Fake-Gesichter/Zahlen, gen_image_gemini.py), `chart` (Balken aus ECHTEN Zahlen+Pflicht-Quelle, gen_chart.py), `chart-template`, `draft` (Gemini-Ausgabenentwurf). Doku `docs/CONTENT-STUDIO.md`. Telegram-Autopost hängt automatisch Bild an (Gemini-Bild→Karte→Text).
+- **🟡 Aktivierung (alles no-op bis dahin):** Secret `GEMINI_API_KEY` (+ optional vars `GEMINI_MODEL`/`GEMINI_IMAGE_MODEL`) → dann arbeiten Content-Engine, Bilder & Entwürfe autonom. **Wichtige Lehre:** KI darf NIE Zahlen/Diagramme erfinden — Diagramme nur aus echten, gelieferten Daten (gen_chart.py mit Quelle); News-Posts nur als ENTWURF (Mensch sendet). Evergreen-Posts dürfen auto-posten.
+- **🔴 Security-Lehre:** Telegram-Bot-Token war im Repo (CJ-IMPORT-LOG.md) öffentlich geleakt → entfernt; muss in BotFather revoked werden. **NIE Secrets ins Repo, immer GitHub-Secrets.**
 
 ## 📌 Stand 2026-06-03 — Gratis-Tool-Offensive + interne Verlinkung
 **24 client-side Gratis-Tools** (kein Login/Upload/Tracking, Aban-Voice, Amber-Shell, JSON-LD) live auf abannews.com:

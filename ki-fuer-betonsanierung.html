@@ -57,8 +57,27 @@
     footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
     footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
     footer a{color:var(--muted)}
+    .hub-cta{display:flex;gap:.5rem;max-width:420px;margin:0 auto}
+    .hub-cta input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;font-size:1rem;background:#fff;font-family:inherit}
+    .hub-cta input:focus{outline:2px solid var(--amber);border-color:var(--amber)}
+    .hub-cta .btn{white-space:nowrap}
+    @media(max-width:480px){.hub-cta{flex-direction:column}.hub-cta .btn{width:100%;justify-content:center}}
+    .related{max-width:760px;margin:2.5rem auto 0;padding:0 1.25rem}
+    .related h2{font-size:1.25rem;margin-bottom:.8rem}
+    .related ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+    .related a{display:block;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem;text-decoration:none;color:var(--ink);font-weight:600;font-size:.92rem}
+    .related a:hover{border-color:var(--amber)}
+    @media(max-width:480px){.related ul{grid-template-columns:1fr}}
+    .mcta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;padding:.6rem .9rem calc(.6rem + env(safe-area-inset-bottom,0px));background:rgba(255,251,245,.97);backdrop-filter:saturate(160%) blur(8px);border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(31,41,55,.12);transform:translateY(115%);transition:transform .25s ease}
+    .mcta.show{transform:translateY(0)}
+    .mcta .btn{width:100%;justify-content:center}
+    @media(max-width:860px){.mcta{display:block}}
+    @media(prefers-reduced-motion:reduce){.mcta{transition:none}}
   </style>
 
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://abannews.com/"}, {"@type": "ListItem", "position": 2, "name": "KI für Betonsanierung — wo sie wirklich hilft", "item": "https://abannews.com/ki-fuer-betonsanierung.html"}]}
+  </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"KI für Betonsanierung — wo sie wirklich hilft","url":"https://abannews.com/ki-fuer-betonsanierung.html","inLanguage":"de","description":"Konkrete KI-Anwendungsfälle für die Betoninstandsetzung: Angebote, Anfrage-Mails, Material-Infos, Vorher-Nachher-Posts, Doku. Ehrlich und ohne Hype.","author":{"@type":"Person","name":"Aban (Allen Chour)"},"publisher":{"@type":"Organization","name":"aban news"}}
   </script>
@@ -136,10 +155,14 @@
 
     </section>
 
-    <div class="cta-box">
+    <div class="cta-box" id="abo">
       <h2>Einmal pro Tag: was bei KI wirklich zählt</h2>
       <p>aban news ist der deutschsprachige KI-Newsletter für Profis, die keine Zeit für Hype haben. Mo–Fr, 5 Minuten, konkret. Gratis.</p>
-      <a href="https://abannews.com/gratis-ki-tools.html" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">Gratis abonnieren →</a>
+      <form class="hub-cta" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
+        <input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="deine@mail.de" aria-label="E-Mail-Adresse">
+        <button type="submit" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">Gratis abonnieren →</button>
+      </form>
+      <p style="font-size:.82rem;margin-top:.7rem;margin-bottom:0"><a href="https://abannews.com/gratis-ki-tools.html" style="color:var(--amber-dk)">Lieber erst die Gratis-KI-Tools ansehen →</a></p>
       <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Kein Spam. Abmeldung per Klick. DSGVO-konform.</p>
     </div>
 
@@ -162,6 +185,10 @@
     </div>
 
   </div>
+<section class="related" aria-label="Verwandte Branchen">
+  <h2>Verwandte Branchen-Guides</h2>
+  <ul><li><a href="/ki-fuer-abbruch.html">KI für Abbruchunternehmen</a></li><li><a href="/ki-fuer-abbruchunternehmen.html">KI für Abbruchunternehmen</a></li><li><a href="/ki-fuer-abdichtungstechnik.html">KI für Abdichtungstechnik</a></li><li><a href="/ki-fuer-akustikbau.html">KI für Akustikbau &amp; Schallschutz</a></li></ul>
+</section>
 <aside data-aban-tools-cta style="max-width:760px;margin:2.5rem auto;padding:1.3rem 1.4rem;border:1px solid #ece3d4;border-radius:14px;background:#fffbf5">
   <h2 style="margin:0 0 .5rem;font-size:1.15rem;color:#1f2937">Passende Werkzeuge — gratis, ohne Login</h2>
   <p style="margin:0 0 .9rem;color:#374151;font-size:.96rem;line-height:1.6">Bevor du Geld für KI ausgibst: nutz die kostenlosen Tools, vergleich die KI-Anbieter ehrlich und prüf, ob KI dich überhaupt nennt. Alles ohne Anmeldung.</p>
@@ -181,5 +208,7 @@
   </div>
 </footer>
 
+<div class="mcta" id="mcta"><a href="#abo" class="btn">Newsletter gratis abonnieren →</a></div>
+<script>(function(){var m=document.getElementById("mcta");if(!m)return;var f=function(){if(window.pageYOffset>500)m.classList.add("show");else m.classList.remove("show");};window.addEventListener("scroll",f,{passive:true});f();})();</script>
 </body>
 </html>

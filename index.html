@@ -5,7 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KI-Newsletter für DACH – täglich in 5 Min | aban news</title>
   <meta name="description" content="Täglicher deutschsprachiger KI-Newsletter für DACH-Profis. Mo–Fr 7:30 Uhr: 3 relevante Updates, 1 getestetes Tool, 1 Prompt — in 5 Minuten. Ehrlich, ohne Hype.">
-  <meta name="robots" content="noindex,follow">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://abannews.com/">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/">
   <meta name="theme-color" content="#d97706">
   <meta property="og:title" content="aban news — täglicher KI-Newsletter für DACH">
   <meta property="og:description" content="Mo–Fr 7:30 Uhr: 3 Updates, 1 Tool, 1 Prompt — in 5 Minuten. Ehrlich, ohne Hype.">
@@ -168,6 +174,48 @@
       .cta{flex-direction:column}.cta .btn{width:100%}
       .footcols{grid-template-columns:1fr 1fr}
     }
+
+    /* lead-magnet secondary CTA */
+    .leadmag{margin:.7rem 0 0;font-size:.86rem;color:var(--muted)}
+    .leadmag a{color:var(--amber-dk);font-weight:700;text-decoration:none;border-bottom:1px solid var(--amber-lt)}
+    .leadmag a:hover{border-color:var(--amber)}
+
+    /* Founding ROI-Anker */
+    .proi{font-size:.82rem;color:var(--amber-dk);background:var(--cream);border-radius:10px;padding:.55rem .7rem;margin:0 0 1.1rem;font-weight:700;text-align:center}
+
+    /* rotierende Mail-Vorschau */
+    .mockbody.fade{animation:mfade .5s ease}
+    @keyframes mfade{from{opacity:.35;transform:translateY(4px)}to{opacity:1;transform:none}}
+    @media(prefers-reduced-motion:reduce){.mockbody.fade{animation:none}}
+
+    /* sticky Mobile-CTA */
+    .mcta{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;
+      padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px));
+      background:rgba(255,250,242,.96);backdrop-filter:saturate(160%) blur(8px);
+      border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(28,37,48,.12);
+      transform:translateY(115%);transition:transform .25s ease}
+    .mcta.show{transform:translateY(0)}
+    .mcta .btn{width:100%}
+    @media(max-width:860px){.mcta{display:block}}
+    @media(prefers-reduced-motion:reduce){.mcta{transition:none}}
+
+    /* Archiv-Vorschau */
+    .issues{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem;text-align:left}
+    .issue{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink);transition:transform .14s,box-shadow .14s}
+    .issue:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .issue .no{font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--amber-dk)}
+    .issue h3{margin:.3rem 0 0;font-size:1.02rem;line-height:1.25;letter-spacing:-.01em}
+    .issue .rd{margin-top:auto;padding-top:.7rem;font-size:.84rem;color:var(--amber-dk);font-weight:700}
+    @media(max-width:860px){.issues{grid-template-columns:1fr}}
+    /* Gründer-Block */
+    .founder{display:flex;gap:1rem;align-items:center;max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.1rem 1.3rem;box-shadow:var(--shadow-sm);text-align:left}
+    .founder .av{flex:none;width:54px;height:54px;border-radius:50%;background:var(--amber);color:#fff;display:grid;place-items:center;font-weight:900;font-size:1.4rem}
+    .founder p{margin:0;font-size:.92rem;color:var(--muted)}.founder b{color:var(--ink)}
+    /* Teilen */
+    .share{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;align-items:center;margin-top:1.1rem}
+    .share span{font-size:.85rem;color:var(--muted)}
+    .share a{font-size:.85rem;font-weight:700;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:.45rem .9rem;color:var(--ink);background:#fff}
+    .share a:hover{border-color:var(--amber);color:var(--amber-dk)}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebSite","name":"aban news","url":"https://abannews.com/","description":"Täglicher deutschsprachiger AI-Newsletter für DACH-Profis.","inLanguage":"de-DE","publisher":{"@id":"https://abannews.com/#organization"}}
@@ -210,14 +258,15 @@
         <label class="consent"><input type="checkbox" name="consent" value="1" required>
           <span>Ich willige ein, Mo–Fr eine E-Mail zu erhalten. Bestätigung per Double-Opt-in, Abmeldung jederzeit per Klick. <a href="/datenschutz.html">Datenschutz</a>.</span></label>
         <div class="subcta"><span><b>DSGVO</b>-konform</span><span><b>1-Klick</b>-Abmeldung</span><span>kein Tracking-Pixel</span><span>kein Affiliate-Müll</span></div>
+        <p class="leadmag">Gratis-Geschenk zum Reinkommen: <a href="/downloads/10-ki-prompts.pdf">10 erprobte KI-Prompts (PDF) →</a></p>
       </div>
       <!-- mail mock -->
       <div class="mock" aria-hidden="true">
         <div class="mockbar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="mockmeta">Posteingang · 7:30 Uhr</span></div>
         <div class="mockbody">
-          <div class="from">Von <b>aban news</b> · Mo, 5 Min Lesezeit</div>
-          <div class="subj">☕ 3 KI-Updates, die heute zählen</div>
-          <ul class="nl">
+          <div class="from" id="mFrom">Von <b>aban news</b> · Mo, 5 Min Lesezeit</div>
+          <div class="subj" id="mSubj">☕ 3 KI-Updates, die heute zählen</div>
+          <ul class="nl" id="mNl">
             <li><span class="mk">1.</span> OpenAI senkt API-Preise — was das für deine Automationen heißt.</li>
             <li><span class="mk">2.</span> Neues DSGVO-Urteil zu KI-Tools: 1 Sache, die du prüfen solltest.</li>
             <li><span class="mk">3.</span> Claude vs. Gemini im Praxis-Test: wer schreibt bessere E-Mails?</li>
@@ -318,10 +367,26 @@
             <li>Quartals-Strategy-Call</li>
             <li>First-Look auf alles Neue</li>
           </ul>
+          <p class="proi">≈ 8 Monate Premium — danach nie wieder zahlen</p>
           <a href="/founding.html" class="btn">Founding sichern</a>
         </div>
       </div>
       <p class="pfine">Preise inkl. ges. MwSt. · jederzeit kündbar · Zahlung sicher über den Anbieter. Details &amp; FAQ auf der <a href="/founding.html">Premium-Seite</a>.</p>
+    </div>
+  </section>
+
+  <!-- AUS DEM ARCHIV -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap center">
+      <span class="eyebrow">Reinlesen statt raten</span>
+      <h2>So sieht eine Ausgabe aus</h2>
+      <p class="sub">Kein Risiko: lies erst echte Ausgaben, dann entscheide. Jede in rund 5 Minuten.</p>
+      <div class="issues">
+        <a class="issue" href="/archive/025-2026-07-03-werkzeugkasten-h1-bilanz-quantensprung-entlarvt.html"><span class="no">Ausgabe 025</span><h3>Werkzeugkasten H1-Bilanz — Quantensprung entlarvt</h3><span class="rd">Lesen →</span></a>
+        <a class="issue" href="/archive/024-2026-07-02-halbjahres-drift-mistral-w-chst.html"><span class="no">Ausgabe 024</span><h3>Halbjahres-Drift: Mistral wächst, OpenAI verschiebt, Brüssel reguliert</h3><span class="rd">Lesen →</span></a>
+        <a class="issue" href="/archive/023-2026-07-01-ki-ersetzt-deine-mitarbeiter-die.html"><span class="no">Ausgabe 023</span><h3>„KI ersetzt deine Mitarbeiter" — die ehrlichen Zahlen</h3><span class="rd">Lesen →</span></a>
+      </div>
+      <p style="margin-top:1.3rem"><a class="btn btn--ghost" href="/preview.html">Komplette Beispielausgabe ansehen →</a></p>
     </div>
   </section>
 
@@ -355,6 +420,24 @@
     </div>
   </section>
 
+  <!-- GRÜNDER + TEILEN -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap center">
+      <div class="founder">
+        <span class="av" aria-hidden="true">A</span>
+        <p><b>Kuratiert von Aban (Allen Chour)</b> in Belp, Schweiz. Kein anonymes Netzwerk, kein Tracking-Pixel, keine erfundenen Zahlen — ich lese jede Quelle selbst und schreibe mit Meinung. <a href="/ueber-aban.html">Mehr über mich →</a></p>
+      </div>
+      <div class="share" aria-label="aban news weiterempfehlen">
+        <span>Kennst du jemanden, dem das hilft?</span>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabannews.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://wa.me/?text=T%C3%A4glicher%20KI-Newsletter%20f%C3%BCr%20DACH%20in%205%20Min%3A%20https%3A%2F%2Fabannews.com" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://t.me/share/url?url=https%3A%2F%2Fabannews.com&text=T%C3%A4glicher%20KI-Newsletter%20f%C3%BCr%20DACH%20in%205%20Min" target="_blank" rel="noopener">Telegram</a>
+        <a href="mailto:?subject=T%C3%A4glicher%20KI-Newsletter&body=Schau%20mal%3A%20https%3A%2F%2Fabannews.com" rel="noopener">E-Mail</a>
+      </div>
+      <p style="max-width:560px;margin:1.3rem auto 0;font-size:.92rem;color:var(--muted)"><b style="color:var(--ink)">Dialog statt Monolog:</b> Du kannst auf jede Ausgabe direkt antworten — ich lese jede Mail selbst und richte den Newsletter danach aus.</p>
+    </div>
+  </section>
+
   <!-- CTA BAND -->
   <section class="sec" style="padding-top:0">
     <div class="wrap">
@@ -370,6 +453,11 @@
     </div>
   </section>
 </main>
+
+<!-- sticky Mobile-CTA -->
+<div class="mcta" id="mcta">
+  <a href="#signup" class="btn btn--amber">Gratis-Briefing abonnieren →</a>
+</div>
 
 <footer>
   <div class="wrap">
@@ -405,7 +493,55 @@
       mo.setAttribute('aria-pressed',m); yr.setAttribute('aria-pressed',!m);
     }
     if(mo&&yr){mo.addEventListener('click',function(){setP('mo')});yr.addEventListener('click',function(){setP('yr')});}
+
+    // Sticky Mobile-CTA: nach etwas Scrollen einblenden
+    var mcta=document.getElementById('mcta');
+    if(mcta){
+      var onScroll=function(){
+        if(window.pageYOffset>600) mcta.classList.add('show');
+        else mcta.classList.remove('show');
+      };
+      window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+    }
+
+    // Rotierende Mail-Vorschau (dekorativ, reduced-motion-safe, Pause bei Hover)
+    // Echte Schlagzeilen aus den letzten Ausgaben (Snapshot aus dem Archiv)
+    var issues=[
+      {from:'Von <b>aban news</b> · Fr · Ausgabe 025',subj:'🧰 Werkzeugkasten: die H1-Bilanz',
+       items:['<span class="mk">1.</span> Recap: Mistral-Runde, GPT-6-Verschiebung, EU-Code of Practice',
+              '<span class="mk">2.</span> Halbjahres-Bilanz: welche KI-Tools wirklich blieben',
+              '<span class="mk">🛠</span> 3 Tools getestet — Notion AI bleibt, ein 1.490-€-Workshop fliegt',
+              '<span class="mk">💡</span> Prompt der Ausgabe zum Kopieren']},
+      {from:'Von <b>aban news</b> · Do · Ausgabe 024',subj:'🧭 Halbjahres-Drift in der KI-Branche',
+       items:['<span class="mk">1.</span> Mistral schließt 1,2-Mrd.-Runde',
+              '<span class="mk">2.</span> EU-Kommission: GPAI-Code of Practice ab 1. September verbindlich',
+              '<span class="mk">3.</span> Helsing holt 600 Mio. € — Sovereign-Defense-AI wird Mainstream',
+              '<span class="mk">💡</span> Was das für DACH-Profis konkret heißt']},
+      {from:'Von <b>aban news</b> · Di · Ausgabe 023',subj:'🧠 „KI ersetzt deine Mitarbeiter" — nachgerechnet',
+       items:['<span class="mk">1.</span> Warum die meisten KI-Pilotprojekte beim Skalieren scheitern',
+              '<span class="mk">2.</span> Deutsche KMU bremsen KI-Investitionen erstmals',
+              '<span class="mk">3.</span> Was bleibt: ehrliche Einordnung statt Schlagzeile',
+              '<span class="mk">💡</span> 1 Prompt, den du sofort übernehmen kannst']}
+    ];
+    var mNl=document.getElementById('mNl'),mSubj=document.getElementById('mSubj'),
+        mFrom=document.getElementById('mFrom'),body=mNl?mNl.closest('.mockbody'):null,mi=0;
+    function renderMock(n){
+      var d=issues[n];
+      mFrom.innerHTML=d.from; mSubj.textContent=d.subj;
+      mNl.innerHTML=d.items.map(function(x){return '<li>'+x+'</li>';}).join('');
+      if(body){body.classList.remove('fade');void body.offsetWidth;body.classList.add('fade');}
+    }
+    if(mNl&&mSubj&&mFrom){
+      var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(!reduce){
+        var paused=false,mock=mNl.closest('.mock');
+        if(mock){mock.addEventListener('mouseenter',function(){paused=true;});
+                 mock.addEventListener('mouseleave',function(){paused=false;});}
+        setInterval(function(){if(!paused){mi=(mi+1)%issues.length;renderMock(mi);}},5000);
+      }
+    }
   })();
 </script>
+<script defer src="/js/analytics.js"></script>
 </body>
 </html>

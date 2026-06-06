@@ -1,0 +1,44 @@
+name: Gemini Ausgaben-Entwurf
+
+# Manuell ausloesbar: sammelt frisches Rohmaterial (RSS) und laesst Gemini einen
+# Ausgaben-ENTWURF formulieren (kein Versand!). Committet den Entwurf zum Review.
+# No-op ohne GEMINI_API_KEY. Optional als taeglicher Cron aktivierbar (auskommentiert).
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '0 4 * * 1-5'   # bei Bedarf: werktags 04:00 UTC Rohmaterial+Entwurf
+
+permissions:
+  contents: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Rohmaterial sammeln (echte Quellen, keine Erfindung)
+        run: python3 automation/news_aggregator.py || echo "::warning::Aggregator-Fehler (evtl. Netz) — fahre fort"
+
+      - name: Entwurf mit Gemini erzeugen
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+        run: python3 automation/draft_with_gemini.py
+
+      - name: Entwurf committen (zum Review)
+        run: |
+          if ! git diff --quiet -- automation/ ; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add automation/news-roh-*.md automation/entwurf-gemini-*.md 2>/dev/null || true
+            git commit -m "Gemini-Entwurf + Rohmaterial (ENTWURF, nicht gesendet) [skip ci]" || echo "nichts zu committen"
+            git push || echo "::warning::push fehlgeschlagen"
+          else
+            echo "Keine Aenderung."
+          fi
