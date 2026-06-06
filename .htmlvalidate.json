@@ -1,0 +1,20 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "no-inline-style": "off",
+    "element-permitted-content": "off",
+    "void-style": "off",
+    "no-trailing-whitespace": "off",
+    "attr-quotes": "off",
+    "doctype-style": "off",
+    "long-title": "off",
+    "prefer-native-element": "off",
+    "no-implicit-button-type": "warn",
+    "hidden-focusable": "warn",
+    "wcag/h37": "error",
+    "element-required-attributes": "error",
+    "no-dup-id": "error",
+    "valid-id": "error",
+    "no-missing-references": "error"
+  }
+}

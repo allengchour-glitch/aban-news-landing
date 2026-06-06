@@ -1,0 +1,20 @@
+{
+  "name": "abannews-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "abannews.com — statische Site (handgeschriebenes HTML/CSS, kein Build-Step). Dieses package.json liefert NUR optionale Webdesign-/QA-Dev-Tools, keine Runtime-Abhängigkeiten.",
+  "scripts": {
+    "validate": "html-validate index.html about.html ueber-aban.html impressum.html datenschutz.html founding.html premium-briefing.html",
+    "validate:all": "html-validate \"*.html\"",
+    "format:check": "prettier --check index.html about.html ueber-aban.html impressum.html datenschutz.html",
+    "shots": "node tools/screenshots.mjs",
+    "audit": "node tools/lh-audit.mjs"
+  },
+  "devDependencies": {
+    "html-validate": "^9.7.1",
+    "prettier": "^3.6.2",
+    "playwright": "^1.56.0",
+    "lighthouse": "^12.8.2"
+  },
+  "comment": "WICHTIG: NIE 'prettier --write' ueber ki-fuer-*.html laufen lassen — aendert Whitespace in JSON-LD/FAQ und bricht die zeichengenaue FAQ-Paritaet. Formatierung nur check-only auf Nicht-Hub-Seiten."
+}
