@@ -273,6 +273,8 @@ BRANCHEN = {
     "zimmerei":            ("Zimmereien",           ["Angebote & Anfragen,", "nicht die Statik"]),
     "gewaechshausbau":     ("Gewächshausbau",       ["Angebote & Anfragen,", "nicht die Statik"]),
     "gabionenbau":         ("Gabionenbau",          ["Angebote & Anfragen,", "nicht die Statik"]),
+    "muenzhandel":         ("Münzhandel",           ["Listings & Beschreibungen,", "nicht die Bewertung"]),
+    "reformhaus":          ("Reformhäuser",         ["Produkttexte & Social,", "keine Heilversprechen"]),
 }
 
 
