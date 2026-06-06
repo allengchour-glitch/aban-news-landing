@@ -56,6 +56,17 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **Branch-Hinweis korrigiert:** `SrAs5` **existiert** auf dem Remote (neuester committeter Dropship-Stand
   bis 06-05: Premium-Texte, `reviews-import.mjs`). Diese Session arbeitet auf **LehDs** und hat das
   `reviews-import`-Tool gezielt von SrAs5 übernommen (Render-Engine/Musik/good_products sind identisch).
+- **✅ GEBAUT & COMMITTET diese Session (alles persistent!):**
+  - `automation/social-autopost-meta.mjs` + `.github/workflows/social-meta-autopost.yml` — **Meta-Autopilot**
+    IG+FB+Threads (Graph-API, JPG-Pflicht, Throttle, no-op-safe), Cron 2×/Tag.
+  - `automation/gen_post_image.py` + `image-render.yml` — **Bild-Generator** (5 JPG-Posts/Tag, 1080×1350+1080×1080,
+    Markenband/Preis-Anker), Queue `social/posts_image.csv`, 5 Start-Creatives in `social/static/`.
+  - `dropship/ads/render_premium_reel.sh` — **Dual-Export** (`<slug>.mp4` Musik + `<slug>-clean.mp4` für Trend-Sound).
+  - `automation/learn_from_analytics.mjs` + `analytics-learn.yml` — **Selbst-Lern-Schleife** (TikTok → Hashtag-Pools,
+    `learned_pools.sh` überschreibt auto_render-Defaults). `post-next-reel.mjs`: Telegram nur noch 1×/Tag (Digest).
+  - `automation/list_by_rating.mjs` — **Rating-Lister** (≥4★ → `dropship/rated_products.csv`).
+  - **`dropship/USER-CHECKLISTE.md`** — ALLE Tokens/Secrets/Klicks zum Scharfschalten (zuerst lesen für Aktivierung!).
+- **Aktivierung offen (User):** Secrets setzen + Branch→`main` mergen (Cron läuft nur von main). Siehe Checkliste.
 
 **📌 2026-06-06 (Conversion-QA-Lauf — vorher):**
 - **Session ohne CJ-Creds:** `CJ_EMAIL`/`CJ_API_KEY` waren NICHT gesetzt → keine neuen Importe.
