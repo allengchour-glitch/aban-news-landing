@@ -255,6 +255,9 @@ BRANCHEN = {
     "korbflechterei":      ("Korbflechtereien",     ["Produkttexte & Kurse,", "nicht das Flechten"]),
     "glasmalerei":         ("Glasmalerei",          ["Angebote & Referenzen,", "nicht der Entwurf"]),
     "hutmacher":           ("Hutmacher",            ["Modell-Texte & Anfragen,", "nicht die Anprobe"]),
+    "steinbildhauer":      ("Steinbildhauer",       ["Werk-Texte & Anfragen,", "nicht das Bildhauen"]),
+    "messermacher":        ("Messermacher",         ["Produkttexte & Anfragen,", "nicht das Schmieden"]),
+    "goldschmied":         ("Goldschmiede",         ["Anfertigungs-Texte & Anfragen,", "nicht das Fassen"]),
 }
 
 
