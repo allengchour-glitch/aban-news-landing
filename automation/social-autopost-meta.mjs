@@ -69,11 +69,25 @@ async function postIG(imageUrl, caption){
 }
 async function postFB(imageUrl, caption){
   if(!FB_ID || !FB_TOK) return null;
-  // Facebook-Page-Photo: Param heißt `message` (nicht `caption`); als POST-Body senden
-  // (Query-Param `caption=` wird sonst als deprecated `publish_actions` interpretiert → Fehler 200).
+  // Page-Access-Token auto-holen: User-Token → /me/accounts → Page-Token mit pages_manage_posts.
+  // Nötig weil ein normaler User-Token aus dem Graph-API-Explorer "publish_actions" triggert (deprecated).
+  let tok = FB_TOK;
+  try{
+    const ar = await fetch(`https://graph.facebook.com/${V}/me/accounts?access_token=${encodeURIComponent(FB_TOK)}`);
+    const aj = await ar.json().catch(()=>({}));
+    if(ar.ok && Array.isArray(aj.data)){
+      const pg = aj.data.find(p => p.id === FB_ID);
+      if(pg?.access_token){ tok = pg.access_token; console.log('FB: Page-Token via /me/accounts geholt.'); }
+      else console.log('FB: Seite', FB_ID, 'nicht in /me/accounts gefunden — nutze Original-Token.');
+    }
+  }catch(e){ /* Netzfehler → Fallback auf Original-Token */ }
   const r = await gpost(`https://graph.facebook.com/${V}/${FB_ID}/photos`,
-    { url: imageUrl, message: caption, access_token: FB_TOK });
-  if(!r.ok || !(r.j.id||r.j.post_id)){ console.error('FB photo:', r.status, JSON.stringify(r.j.error||r.j)); return false; }
+    { url: imageUrl, message: caption, access_token: tok });
+  if(!r.ok || !(r.j.id||r.j.post_id)){
+    console.error('FB photo:', r.status, JSON.stringify(r.j.error||r.j));
+    if(r.status===403) console.error('FB-Tipp: Token braucht Scope "pages_manage_posts" + Admin-Rolle auf Seite', FB_ID, '— im Graph-API-Explorer neu generieren mit pages_manage_posts + pages_read_engagement.');
+    return false;
+  }
   console.log('FB: gepostet', r.j.post_id||r.j.id); return r.j.post_id||r.j.id;
 }
 async function postThreads(imageUrl, caption){
