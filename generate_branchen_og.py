@@ -278,6 +278,9 @@ BRANCHEN = {
     "aquaristik":          ("Aquaristik",           ["Pflegetexte & Listings,", "nicht die Ferndiagnose"]),
     "gartenbaumschule":    ("Baumschulen",          ["Pflanzentexte & Saison,", "nicht die Standortberatung"]),
     "fotofachhandel":      ("Fotofachhandel",       ["Produkttexte & Service,", "nicht die Reparatur-Diagnose"]),
+    "zoofachhandel":       ("Zoofachhandel",        ["Produkttexte & Social,", "nicht die Tierberatung"]),
+    "musikfachhandel":     ("Musikfachhandel",      ["Produkttexte & Listings,", "nicht das Klangurteil"]),
+    "teppichhandel":       ("Teppichhandel",        ["Beschreibungen & Listings,", "nicht die Bewertung"]),
 }
 
 
