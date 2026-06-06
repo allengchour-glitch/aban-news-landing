@@ -1,0 +1,41 @@
+name: LinkedIn Autopost
+
+# Postet werktags den naechsten faelligen Eintrag aus social/linkedin_queue.json.
+# No-op-sicher: ohne die Secrets passiert nichts (Exit 0, kein Commit).
+# Cron laeuft nur vom Default-Branch (main).
+
+on:
+  schedule:
+    - cron: '0 8 * * 1-5'   # Mo–Fr 08:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Post next queued item
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
+        run: python3 automation/linkedin_post.py
+
+      - name: Persist queue status (falls gepostet)
+        run: |
+          if ! git diff --quiet -- social/linkedin_queue.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add social/linkedin_queue.json
+            git commit -m "LinkedIn-Autopost: Queue-Status aktualisiert [skip ci]"
+            git push
+          else
+            echo "Queue unveraendert — kein Commit."
+          fi
