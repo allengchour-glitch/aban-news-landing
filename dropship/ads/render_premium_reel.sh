@@ -72,7 +72,18 @@ $FF $inputs -filter_complex "$fc" -map "[vout]" -r $FPS -c:v libx264 -pix_fmt yu
 
 DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$W/silent.mp4")
 FADE=$(echo "$DUR - 1.4" | bc -l)
+# (1) MUSIK-Version (FB/Ads): voller royalty-free Track, loudnorm.
 $FF -i "$W/silent.mp4" -i "$MUSIC" \
     -filter_complex "[1:a]afade=t=in:st=0:d=0.8,afade=t=out:st=${FADE}:d=1.4,loudnorm=I=-14:TP=-1.5:LRA=11[a]" \
     -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -shortest -movflags +faststart "$OUT"
-rm -rf "$W"; echo ">> DONE $OUT (~${DUR}s)"
+echo ">> DONE $OUT (~${DUR}s, Musik-Version)"
+# (2) CLEAN-Version (TikTok/IG): leises Tonbett (-30 dB), damit man in der App den TREND-SOUND drüberlegt
+#     (Trend-Sounds dürfen nicht ins File gebrannt werden). Schaltbar via DUAL=0.
+if [ "${DUAL:-1}" = "1" ]; then
+  CLEAN="${OUT%.*}-clean.mp4"
+  $FF -i "$W/silent.mp4" -i "$MUSIC" \
+      -filter_complex "[1:a]volume=-30dB,afade=t=in:st=0:d=0.8,afade=t=out:st=${FADE}:d=1.2[a]" \
+      -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 128k -shortest -movflags +faststart "$CLEAN"
+  echo ">> DONE $CLEAN (Clean-Version für Trend-Sound)"
+fi
+rm -rf "$W"

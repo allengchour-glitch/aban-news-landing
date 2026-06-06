@@ -37,7 +37,67 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
-**📌 2026-06-03 (AKTUELLSTER STAND — zuerst lesen):**
+**📌 2026-06-06 (ÜBERGABE — ZUERST LESEN: Social-Maschine wird gebaut):**
+- **🎯 Grosser User-Auftrag:** vollautonome, **selbstlernende Content-Maschine** — 5 Bild-Posts + 1–2 Reels/Tag,
+  gestaffelt, für **Instagram, Facebook, TikTok, Threads**; nur gut bewertete Produkte (≥4★); Reels „nicht
+  wackeln" + Trend-Musik (Pro-Edit, beide Musik-Versionen); **Telegram-Status 1×/Tag**; Profil selbst
+  analysieren + besser werden + Abonnenten gewinnen; ganzen Shop verbessern + Log-Punkte beheben.
+  **Plan freigegeben** → Umsetzung phasenweise auf `claude/dropshipping-session-LehDs`.
+- **🔑 WICHTIGSTE LEHRE:** Eine frühere Session hatte **Threads/IG/FB-Posting per Meta-Graph-API zum Laufen**
+  (Scopes `pages_manage_posts`/`instagram_content_publish`, CDN, **JPG-Pflicht**, Autopilot 2×/Tag) — aber
+  **NIE committet → verloren** (Tokens nicht persistent). **→ Diesmal ALLES committen.** Autopilot wird als
+  `automation/social-autopost-meta.mjs` + Workflow neu & persistent gebaut.
+- **Tokens sind weg (nicht persistent)** → neue Session braucht **frische Tokens vom User** vor dem Posten.
+  **EIN Schritt für Dauerbetrieb:** `THREADS_ACCESS_TOKEN` als GitHub-Secret → Autopilot läuft 2×/Tag selbst.
+- **Heute schon viel gepostet → Tempo drosseln** (Spam-Schutz); erster Live-Lauf erst morgen. Theme-Hover ist
+  aktiv, **Katalog bleibt unangetastet**. WebP→JPG-Pipeline für Bestseller-Bilder dokumentiert.
+- **🟡 3 manuelle User-To-dos:** (1) `THREADS_ACCESS_TOKEN`-Secret setzen; (2) Doppel-FB-Seiten löschen —
+  **nur „LuxeStyle CH" `1049840534888592` behalten**, ABAN nicht; (3) PureMax-Reel auf IG löschen.
+- **Branch-Hinweis korrigiert:** `SrAs5` **existiert** auf dem Remote (neuester committeter Dropship-Stand
+  bis 06-05: Premium-Texte, `reviews-import.mjs`). Diese Session arbeitet auf **LehDs** und hat das
+  `reviews-import`-Tool gezielt von SrAs5 übernommen (Render-Engine/Musik/good_products sind identisch).
+- **✅ GEBAUT & COMMITTET diese Session (alles persistent!):**
+  - `automation/social-autopost-meta.mjs` + `.github/workflows/social-meta-autopost.yml` — **Meta-Autopilot**
+    IG+FB+Threads (Graph-API, JPG-Pflicht, Throttle, no-op-safe), Cron 2×/Tag.
+  - `automation/gen_post_image.py` + `image-render.yml` — **Bild-Generator** (5 JPG-Posts/Tag, 1080×1350+1080×1080,
+    Markenband/Preis-Anker), Queue `social/posts_image.csv`, 5 Start-Creatives in `social/static/`.
+  - `dropship/ads/render_premium_reel.sh` — **Dual-Export** (`<slug>.mp4` Musik + `<slug>-clean.mp4` für Trend-Sound).
+  - `automation/learn_from_analytics.mjs` + `analytics-learn.yml` — **Selbst-Lern-Schleife** (TikTok → Hashtag-Pools,
+    `learned_pools.sh` überschreibt auto_render-Defaults). `post-next-reel.mjs`: Telegram nur noch 1×/Tag (Digest).
+  - `automation/list_by_rating.mjs` — **Rating-Lister** (≥4★ → `dropship/rated_products.csv`).
+  - **`dropship/USER-CHECKLISTE.md`** — ALLE Tokens/Secrets/Klicks zum Scharfschalten (zuerst lesen für Aktivierung!).
+- **Aktivierung offen (User):** Secrets setzen + Branch→`main` mergen (Cron läuft nur von main). Siehe Checkliste.
+
+**📌 2026-06-06 (Conversion-QA-Lauf — vorher):**
+- **Session ohne CJ-Creds:** `CJ_EMAIL`/`CJ_API_KEY` waren NICHT gesetzt → keine neuen Importe.
+  Shopify-MCP war verbunden → Conversion-First-Routine (§10) gefahren. **Branch dieser Session:
+  `claude/dropshipping-session-LehDs`**. Neue PR auf diesem Branch.
+- **Voll-QA 182 cj-real Live-Produkte: 0 FAILED-Bilder.** Funnel verifiziert: WELCOME10 ACTIVE
+  (10%, bis 31.08.2026), alle 6 Policies da. Landing `sommer` (52 Prod./6 Kanäle) gesund;
+  `damen-mode` (292) war nur in 1–2 Kanälen → jetzt in alle 6 publiziert.
+- **Möbel-Draft bereinigt:** „Shoe Rack In Wood" = sperriges Holzmöbel (§5) → aus Veredelungs-Queue
+  genommen (Tag `nicht-live-moebel-sperrig`, bleibt DRAFT).
+- **🔴 0 Bestellungen/14T bleibt** — Engpass ist NICHT Katalog/Funnel (beide top), sondern Reichweite.
+  Autonom ist alles Mögliche getan. Es fehlen die 3 User-Klicks (§10): AGB-Domain, Pixel,
+  Kampagne+Budget. **+ CJ-Creds als Env-Secrets, falls neue Produkte gewünscht.**
+
+**📌 2026-06-05 (vorheriger Stand — Quelle: SrAs5):**
+- **Reviews-Automation (Weg A=API):** Tool `automation/reviews-import.mjs` + `.github/workflows/reviews-import.yml`
+  + Seed `dropship/reviews_seed.json` (importiert NUR echte ≥4★-Reviews, no-op-safe). User-Input offen:
+  `JUDGEME_PRIVATE_TOKEN` (+ `JUDGEME_SHOP_DOMAIN=au3j0y-hq.myshopify.com`) als Secret. **NIE Fake-Reviews.**
+  Rating-Stand: von 28 Damenmode nur **Bali 4,93★** + **Ibiza 4,47★** mit Reviews, Rest 0.
+- **Meta-App für IG-Auto-Posting (Fahrplan):** App „LuxeStyle Social" (Business-Typ, KEINE Wörter
+  Insta/FB/Meta/Gram im Namen), Scopes `instagram_basic, instagram_content_publish, pages_show_list`;
+  IG muss Business/Creator + mit FB-Seite verbunden sein. Entwicklungsmodus reicht fürs eigene Konto.
+- **TikTok-Catalog-Ad (User füllte aus):** Destination `luxestyle.ch/collections/sommer`, Identity „Luxestyle.ch",
+  Ad-Texte OHNE Emoji. ⚠️ Produkt-Set zeigte Herren-Artikel → Damen-Heroes prüfen. Musik-Copyright-Warnung →
+  **Commercial Music Library** nutzen. Budget erst 20 CHF/Tag testen.
+- **Kachel-Layout-Fix (Theme):** `templates/index.json` alle 4 Produkt-Sektionen `image_ratio:"adapt"` → auf
+  **„square"** (gleichmässige Kacheln). MAIN-Theme schreibgesperrt → Customizer/Theme-Kopie (User).
+- **US-Versand:** CJ-China ~10–15 Werktage, CJ-US-Lager 2–6 Tage; US-Produkte DSers-unmapped → nur mit
+  Ship-from-US bewerben, sonst CH-Fokus.
+
+**📌 2026-06-03 (vorheriger Stand):**
 - **VIDEO-PRODUKTION macht die andere Session** (GEHIRN-HACKS/ABAN Files, `video-prototypes/`) — ich (Dropship)
   baue dort NICHT weiter. ABER gesichert: **piper-TTS funktioniert im Container** (XTTS scheiterte) → Voiceover-
   Reels sind hier baubar. Rezept in `video-prototypes/HANDOFF.md`. LuxeStyle-PoC: `reels/script-sommer-20260603-1834.mp4`

@@ -1,0 +1,50 @@
+name: Analytics Learn (TikTok → bessere Reels)
+
+# Selbst-Lern-Schleife: zieht öffentliche TikTok-Performance (yt-dlp, kein API/Login),
+# schreibt einen Report nach reports/ und lässt learn_from_analytics.mjs daraus datengetriebene
+# Hashtag-Pools (automation/learned_pools.sh) bauen, die auto_render.sh automatisch nutzt.
+# No-op-safe: kein Handle/keine Daten → nichts passiert.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'        # wöchentlich Montag 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      handle:
+        description: 'TikTok-Handle (z.B. @luxestyle.ch)'
+        default: '@luxestyle.ch'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: analytics-learn
+  cancel-in-progress: false
+
+jobs:
+  learn:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install yt-dlp
+        run: pip install --quiet yt-dlp
+      - name: Analyse TikTok-Profil (best effort)
+        continue-on-error: true
+        run: python3 tools/tiktok_analyze.py --user "${{ inputs.handle || '@luxestyle.ch' }}" --max 40 || echo "Analyse übersprungen (keine Daten)."
+      - name: Lernen → learned_pools.sh
+        run: node automation/learn_from_analytics.mjs
+      - name: Commit Reports + gelernte Pools
+        run: |
+          if ! git diff --quiet -- reports/ automation/learned_pools.sh dropship/REEL-REGELN.md ; then
+            git config user.name "luxestyle-learn-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add reports/ automation/learned_pools.sh dropship/REEL-REGELN.md
+            git commit -m "chore(learn): TikTok-Analyse + datengetriebene Hashtag-Pools [skip ci]"
+            git push
+          else
+            echo "Keine neuen Lerndaten."
+          fi
