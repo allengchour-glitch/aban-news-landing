@@ -21,6 +21,7 @@ ENV: BATCH (Default 5) · OUT_BASE_URL (Default https://abannews.com) · ONLY (K
 import csv
 import os
 import io
+import re
 import ssl
 import math
 import urllib.request
@@ -154,9 +155,9 @@ def scrims(width, height):
     """RGBA-Overlay: weicher Verlauf oben (für Wortmarke) + unten (für Text)."""
     ov = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     d = ImageDraw.Draw(ov)
-    top_h = int(height * 0.18)
+    top_h = int(height * 0.20)
     for y in range(top_h):
-        a = int(150 * (1 - y / top_h) ** 1.4)
+        a = int(180 * (1 - y / top_h) ** 1.3)
         d.line([(0, y), (width, y)], fill=(18, 18, 20, a))
     bot_h = int(height * 0.56)
     y0 = height - bot_h
@@ -184,11 +185,14 @@ def render_card(product_img, label, width, height):
     draw.rectangle([(width / 2 - gw / 2, gy), (width / 2 + gw / 2, gy + 2)], fill=GOLD)
     tag = font(int(width * 0.020), "sans-bold")
     draw_spaced(draw, (width / 2, gy + 14), "SOMMER 2026", tag, GOLD_SOFT,
-                tracking=int(width * 0.006), anchor="ma")
+                tracking=int(width * 0.006), anchor="ma", shadow=((0, 0, 0, 150), 1))
 
     # — Fuss: Produktname (Serif), Goldlinie, Rabatt-Pill + Domain —
-    name_f = fit_font(draw, label, width - 2 * pad, int(width * 0.066), "serif-bold", floor=36)
-    lines = wrap(draw, label, name_f, width - 2 * pad, maxlines=2)
+    # Rating-Klammer & ★ aus der Headline entfernen (Serifen-Font hat kein ★-Glyph → Tofu-Box);
+    # die Bewertung bleibt in der Caption erhalten.
+    disp = re.sub(r"\s*\(\s*\d[.,]\d+\s*★?\s*\)", "", label).replace("★", "").strip()
+    name_f = fit_font(draw, disp, width - 2 * pad, int(width * 0.066), "serif-bold", floor=36)
+    lines = wrap(draw, disp, name_f, width - 2 * pad, maxlines=2)
     line_h = int(name_f.size * 1.16)
     block_h = line_h * len(lines)
     pill_h = int(height * 0.052)
