@@ -14,6 +14,8 @@ Branch-Protection verlangt **keine** Pflicht-Checks. Deshalb: **PRs direkt als
 non-draft anlegen und per REST squash-mergen.** Hintergrund-Agenten können bei
 Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
+- **2026-06-06 Homepage-Redesign LIVE:** `index.html` auf Brevo/Mailchimp-Stil umgestellt (Gradient-Hero+Highlight, Mail-Mock, große Pill-CTAs, ehrliche Stats-Band ohne Fake-Zahlen, Feature-Cards, How-it-works-Schritte, dunkles CTA-Band, 4-spaltiger Footer). Signup/Consent/Double-Opt-in/Schema beibehalten, anti-hype, kein Fake-Social-Proof. **CI-Hinweis:** GitHub-Actions-Deploy `wrangler … --project-name=radar` scheitert an CLOUDFLARE_API_TOKEN (Auth 10000) — pre-existing Infra-/Secret-Problem, betrifft alle Commits, Live-Deploy läuft über Cloudflare-Git-Integration. User-To-do: Token mit Pages:Edit neu setzen.
+
 ## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **254 live, alle viersprachig (de/en/fr/it = 1016 Seiten)**
 
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
