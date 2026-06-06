@@ -168,6 +168,30 @@
       .cta{flex-direction:column}.cta .btn{width:100%}
       .footcols{grid-template-columns:1fr 1fr}
     }
+
+    /* lead-magnet secondary CTA */
+    .leadmag{margin:.7rem 0 0;font-size:.86rem;color:var(--muted)}
+    .leadmag a{color:var(--amber-dk);font-weight:700;text-decoration:none;border-bottom:1px solid var(--amber-lt)}
+    .leadmag a:hover{border-color:var(--amber)}
+
+    /* Founding ROI-Anker */
+    .proi{font-size:.82rem;color:var(--amber-dk);background:var(--cream);border-radius:10px;padding:.55rem .7rem;margin:0 0 1.1rem;font-weight:700;text-align:center}
+
+    /* rotierende Mail-Vorschau */
+    .mockbody.fade{animation:mfade .5s ease}
+    @keyframes mfade{from{opacity:.35;transform:translateY(4px)}to{opacity:1;transform:none}}
+    @media(prefers-reduced-motion:reduce){.mockbody.fade{animation:none}}
+
+    /* sticky Mobile-CTA */
+    .mcta{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;
+      padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px));
+      background:rgba(255,250,242,.96);backdrop-filter:saturate(160%) blur(8px);
+      border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(28,37,48,.12);
+      transform:translateY(115%);transition:transform .25s ease}
+    .mcta.show{transform:translateY(0)}
+    .mcta .btn{width:100%}
+    @media(max-width:860px){.mcta{display:block}}
+    @media(prefers-reduced-motion:reduce){.mcta{transition:none}}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebSite","name":"aban news","url":"https://abannews.com/","description":"Täglicher deutschsprachiger AI-Newsletter für DACH-Profis.","inLanguage":"de-DE","publisher":{"@id":"https://abannews.com/#organization"}}
@@ -210,14 +234,15 @@
         <label class="consent"><input type="checkbox" name="consent" value="1" required>
           <span>Ich willige ein, Mo–Fr eine E-Mail zu erhalten. Bestätigung per Double-Opt-in, Abmeldung jederzeit per Klick. <a href="/datenschutz.html">Datenschutz</a>.</span></label>
         <div class="subcta"><span><b>DSGVO</b>-konform</span><span><b>1-Klick</b>-Abmeldung</span><span>kein Tracking-Pixel</span><span>kein Affiliate-Müll</span></div>
+        <p class="leadmag">Lieber erst reinschnuppern? <a href="/gratis-ki-tools.html">Hol dir die besten Gratis-KI-Tools →</a></p>
       </div>
       <!-- mail mock -->
       <div class="mock" aria-hidden="true">
         <div class="mockbar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="mockmeta">Posteingang · 7:30 Uhr</span></div>
         <div class="mockbody">
-          <div class="from">Von <b>aban news</b> · Mo, 5 Min Lesezeit</div>
-          <div class="subj">☕ 3 KI-Updates, die heute zählen</div>
-          <ul class="nl">
+          <div class="from" id="mFrom">Von <b>aban news</b> · Mo, 5 Min Lesezeit</div>
+          <div class="subj" id="mSubj">☕ 3 KI-Updates, die heute zählen</div>
+          <ul class="nl" id="mNl">
             <li><span class="mk">1.</span> OpenAI senkt API-Preise — was das für deine Automationen heißt.</li>
             <li><span class="mk">2.</span> Neues DSGVO-Urteil zu KI-Tools: 1 Sache, die du prüfen solltest.</li>
             <li><span class="mk">3.</span> Claude vs. Gemini im Praxis-Test: wer schreibt bessere E-Mails?</li>
@@ -318,6 +343,7 @@
             <li>Quartals-Strategy-Call</li>
             <li>First-Look auf alles Neue</li>
           </ul>
+          <p class="proi">≈ 8 Monate Premium — danach nie wieder zahlen</p>
           <a href="/founding.html" class="btn">Founding sichern</a>
         </div>
       </div>
@@ -371,6 +397,11 @@
   </section>
 </main>
 
+<!-- sticky Mobile-CTA -->
+<div class="mcta" id="mcta">
+  <a href="#signup" class="btn btn--amber">Gratis-Briefing abonnieren →</a>
+</div>
+
 <footer>
   <div class="wrap">
     <div class="footcols">
@@ -405,6 +436,55 @@
       mo.setAttribute('aria-pressed',m); yr.setAttribute('aria-pressed',!m);
     }
     if(mo&&yr){mo.addEventListener('click',function(){setP('mo')});yr.addEventListener('click',function(){setP('yr')});}
+
+    // Sticky Mobile-CTA: nach etwas Scrollen einblenden
+    var mcta=document.getElementById('mcta');
+    if(mcta){
+      var onScroll=function(){
+        if(window.pageYOffset>600) mcta.classList.add('show');
+        else mcta.classList.remove('show');
+      };
+      window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+    }
+
+    // Rotierende Mail-Vorschau (dekorativ, reduced-motion-safe, Pause bei Hover)
+    var issues=[
+      {from:'Von <b>aban news</b> · Mo, 5 Min Lesezeit',subj:'☕ 3 KI-Updates, die heute zählen',
+       items:['<span class="mk">1.</span> OpenAI senkt API-Preise — was das für deine Automationen heißt.',
+              '<span class="mk">2.</span> Neues DSGVO-Urteil zu KI-Tools: 1 Sache, die du prüfen solltest.',
+              '<span class="mk">3.</span> Claude vs. Gemini im Praxis-Test: wer schreibt bessere E-Mails?',
+              '<span class="mk">🛠</span> Tool der Woche: ehrlich getestet, mit Datenschutz-Blick.',
+              '<span class="mk">💡</span> Prompt zum Kopieren: Meeting-Notizen in 30 Sek. zusammenfassen.']},
+      {from:'Von <b>aban news</b> · Mi, 5 Min Lesezeit',subj:'🧭 Mittwoch: was diese Woche wirklich zählt',
+       items:['<span class="mk">1.</span> Mistral legt offene Modelle nach — relevant für EU-Hosting.',
+              '<span class="mk">2.</span> Microsoft Copilot-Update: 1 Funktion, die Zeit spart.',
+              '<span class="mk">3.</span> KI-Förderung in DACH: neue Frist, die du nicht verpassen solltest.',
+              '<span class="mk">🛠</span> Tool der Woche: EU-gehostet, gratis Einstieg.',
+              '<span class="mk">💡</span> Prompt zum Kopieren: Angebot in 2 Minuten formulieren.']},
+      {from:'Von <b>aban news</b> · Fr, 5 Min Lesezeit',subj:'🚨 Freitag: der Hype-Check',
+       items:['<span class="mk">1.</span> „KI-first" entlarvt: 3 Fragen, die Substanz von Lärm trennen.',
+              '<span class="mk">2.</span> Datenschutz-Falle bei beliebtem KI-Tool — kurz erklärt.',
+              '<span class="mk">3.</span> Was sich in der KI-Welt diese Woche wirklich geändert hat.',
+              '<span class="mk">🛠</span> Tool der Woche: ehrlich geprüft, ohne Marketing-Sprech.',
+              '<span class="mk">💡</span> Prompt zum Kopieren: kalte Mail entschärfen statt generisch.']}
+    ];
+    var mNl=document.getElementById('mNl'),mSubj=document.getElementById('mSubj'),
+        mFrom=document.getElementById('mFrom'),body=mNl?mNl.closest('.mockbody'):null,mi=0;
+    function renderMock(n){
+      var d=issues[n];
+      mFrom.innerHTML=d.from; mSubj.textContent=d.subj;
+      mNl.innerHTML=d.items.map(function(x){return '<li>'+x+'</li>';}).join('');
+      if(body){body.classList.remove('fade');void body.offsetWidth;body.classList.add('fade');}
+    }
+    if(mNl&&mSubj&&mFrom){
+      var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(!reduce){
+        var paused=false,mock=mNl.closest('.mock');
+        if(mock){mock.addEventListener('mouseenter',function(){paused=true;});
+                 mock.addEventListener('mouseleave',function(){paused=false;});}
+        setInterval(function(){if(!paused){mi=(mi+1)%issues.length;renderMock(mi);}},5000);
+      }
+    }
   })();
 </script>
 <script defer src="/js/analytics.js"></script>
