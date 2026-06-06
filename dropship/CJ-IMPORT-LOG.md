@@ -1157,7 +1157,7 @@ Kampagnen DEAKTIVIEREN + 3 Entwürfe + „Vatertag-Test-1" löschen, sonst wiede
 
 ## 2026-06-02 — VIDEO-REVIEW-WORKFLOW + Premium-Mix freigegeben
 **Workflow (so will es der User):**
-1. Reel EINZELN in Telegram schicken (Bot @LuxestyleCHbot, Token 8904564755:AAFdym4pK62Zs2I58nebeYfBXZ83KgoqJJM,
+1. Reel EINZELN in Telegram schicken (Bot @LuxestyleCHbot, Token via Env/Secret TELEGRAM_BOT_TOKEN — NIE im Repo,
    chat_id 164567631) via curl `sendVideo`. Caption: „ja=posten / nein=verwerfen / Kommentar=ändern".
 2. User antwortet IN Telegram. Claude liest Antwort via `getUpdates` (curl). → Feedback-Loop:
    User kann sagen „Bild X raus", „langsamer", „kein Schmuck" usw. → Claude baut Reel danach um.

@@ -19,7 +19,7 @@ Alles läuft auf GitHub-Infra (keine laufende Claude-Session nötig), no-op-safe
 | Regeln | `dropship/REEL-REGELN.md` | verbindliche Reel-Regeln (User-Feedback-Gedächtnis) |
 
 **Secrets (Repo → Settings → Actions):** `MAKE_REEL_WEBHOOK`, `SHOPIFY_SHOP`, `SHOPIFY_ADMIN_TOKEN`,
-`TELEGRAM_BOT_TOKEN` (8904564755:…), `TELEGRAM_CHAT_ID` (164567631). Ohne = sauberer No-Op.
+`TELEGRAM_BOT_TOKEN` (nur in Secrets, NIE im Repo), `TELEGRAM_CHAT_ID`. Ohne = sauberer No-Op.
 **Wichtig:** Geplante Actions laufen nur vom **Default-Branch** → Branch nach `main` mergen, damit der Cron greift.
 
 ## abannews — gleiches Muster, wiederverwendbar
