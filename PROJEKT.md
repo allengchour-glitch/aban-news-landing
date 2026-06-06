@@ -1,10 +1,23 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
 > Dauerhafter Gedächtnis-Speicher für dieses Vorhaben. Überlebt Session-Resets.
-> Stand: **2026-06-03** (Gratis-Tool-Offensive + interne Verlinkung — siehe nächster Abschnitt) · Betreiber: Allen Chour (abannews.com, Belp/CH).
+> Stand: **2026-06-06** (Wachstum & Conversion — PR #381, siehe nächster Abschnitt) · Betreiber: Allen Chour (abannews.com, Belp/CH).
 > ⚠️ Hinweis: `CLAUDE.md` im Repo-Root ist inzwischen das Arbeitsgedächtnis eines **anderen** Workstreams
 > (LuxeStyle-Dropshipping-Shop) und **nicht mehr** die aban-news-Wahrheit. Für aban-news ist **dieses**
 > Dokument (`PROJEKT.md`) maßgeblich. CLAUDE.md des Dropship-Projekts NICHT überschreiben.
+
+## 📌 Stand 2026-06-06 — Wachstum & Conversion (PR #381, Branch `claude/ai-money-project-f25Ub`)
+**Ziel der Session:** „sehr reif, aber 0 Abonnenten" → *gefunden werden + Besucher→Abonnent*. 4 Workstreams + Hub-Boost. Markenversprechen gewahrt (kein Tracking-Pixel, DSGVO, keine Fake-Zahlen). **Engpass = Reichweite/Conversion, nicht Bauen.**
+- **A · Analytics:** `js/analytics.js` = **Cloudflare Web Analytics** (cookielos, kein Pixel, Do-Not-Track-aware, **no-op bis `CF_TOKEN` gesetzt**). Eingebunden auf DE/EN/FR/IT `index`, `founding`, `gratis-ki-tools`, `online-tools`, `preview`. `datenschutz.html` §6.2 + AV-Tabelle auf CF korrigiert (war fälschlich Plausible/Umami). 🙋 **User:** Token aus CF-Dashboard in `js/analytics.js` (`CF_TOKEN`) eintragen.
+- **C · Conversion (Startseite):** Sticky Mobile-CTA auf allen 4 `index` (DE/EN/FR/IT). DE zusätzlich: Lead-Magnet-Sekundär-CTA (→`/gratis-ki-tools.html`), rotierende Mail-Vorschau (Mo/Mi/Fr, Pause b. Hover), ehrliche Founding-ROI-Zeile („≈8 Monate Premium"). EN/FR/IT haben das Vorschau-Karussell bereits.
+- **B · SEO:** DE-Homepage `noindex→index` + `canonical` + reziprokes `hreflang` (fehlten als einzige Sprachvariante). `BreadcrumbList`-JSON-LD auf **allen 262** `ki-fuer-*.html`. Archiv-Ausgaben hatten schon `NewsArticle`.
+- **🚀 Hub-Boost (alle 262 `ki-fuer-*.html` = SEO-Eintrittspunkte):** (1) **Inline-E-Mail-Formular** in der CTA-Box `#abo` → direkt `https://abannews.beehiiv.com/subscribe` (GET `email`), Lead-Magnet bleibt Sekundär-Link — *kein Extra-Klick mehr*. (2) Sticky Mobile-CTA → springt zu `#abo`. (3) „**Verwandte Branchen-Guides**"-Block (4 Links via Keyword-Buckets, Fallback alphabet. Nachbarn) für Crawl-Tiefe. Migration war Einmal-Skript (entfernt).
+- **F · QA:** `tools/check_internal_links.py` (interne href/src vs. Dateien; schließt `/dist/`, `<script>`, Platzhalter aus) → **1.213 Seiten, 0 defekte interne Links**. `quality-check.yml` JSON-Validator überspringt jetzt Shopify-JSONC (`/*`-Header in `dropship/assets/theme-index-branded.json`) — `main` hatte parallel denselben Fix (Merge: main-Version genommen, robuster m. BOM).
+- **Branch-Falle (wichtig):** Remote-`claude/ai-money-project-f25Ub` war **veraltet** (671 Commits hinter `main`, alte PRs #2/#13/#14 alle geschlossen). → mit `--force-with-lease` auf aktuellen `main` + neue Commits zurückgesetzt. Später `main`-Merge (8 neue Hubs nachgezogen → wieder 262/262 konsistent).
+- **CI-Status:** `check` (Quality) ✅, Pre-deploy-Validation (JSON-LD, einziger blockender Schritt) ✅, 762 JSON-LD-Blöcke valide. **Rot = NUR Cloudflare-Deploy-Previews** (`radar`/`aban-news-landing`/`aban-a`/`ki-verzeichnis`/`foerder-radar`): gemeinsame **Infra-/Token-Ursache** (Auth code 10000), **user-seitig**, kein Code-Fehler. PR `mergeable_state: unstable` = mergebar.
+- **🟡 Offene User-Schritte:** (1) `CF_TOKEN` in `js/analytics.js`; (2) optional CF-Deploy-Token-Rechte fixen (Pages/Workers Edit) → Previews grün; (3) PR #381 aus Draft holen/mergen.
+- **LinkedIn-Wachstum (beraten):** LinkedIn-**Newsletter**-Feature anlegen = **wöchentlich** (Best-of-Teaser → beehiiv-Link, NICHT voll spiegeln), Titel z.B. „KI für DACH — in 5 Minuten". Feed-Posts ~3–5/Woche (1 Insight aus der Tagesausgabe als eigenständiger Mehrwert-Post, dezenter Abo-Link). Angebot offen: 5 fertige Posts + LinkedIn-Newsletter-Vorlage.
+- **Fakten-Korrektur:** Founding ist **€69 einmalig** (PayPal), Premium €9/Mt bzw. €89/Jahr; beehiiv **Gratis-Plan**. (Ältere PROJEKT.md-Stellen mit „€149" sind veraltet.)
 
 ## 📌 Stand 2026-06-03 — Gratis-Tool-Offensive + interne Verlinkung
 **24 client-side Gratis-Tools** (kein Login/Upload/Tracking, Aban-Voice, Amber-Shell, JSON-LD) live auf abannews.com:
