@@ -273,6 +273,14 @@ BRANCHEN = {
     "zimmerei":            ("Zimmereien",           ["Angebote & Anfragen,", "nicht die Statik"]),
     "gewaechshausbau":     ("Gewächshausbau",       ["Angebote & Anfragen,", "nicht die Statik"]),
     "gabionenbau":         ("Gabionenbau",          ["Angebote & Anfragen,", "nicht die Statik"]),
+    "muenzhandel":         ("Münzhandel",           ["Listings & Beschreibungen,", "nicht die Bewertung"]),
+    "reformhaus":          ("Reformhäuser",         ["Produkttexte & Social,", "keine Heilversprechen"]),
+    "aquaristik":          ("Aquaristik",           ["Pflegetexte & Listings,", "nicht die Ferndiagnose"]),
+    "gartenbaumschule":    ("Baumschulen",          ["Pflanzentexte & Saison,", "nicht die Standortberatung"]),
+    "fotofachhandel":      ("Fotofachhandel",       ["Produkttexte & Service,", "nicht die Reparatur-Diagnose"]),
+    "zoofachhandel":       ("Zoofachhandel",        ["Produkttexte & Social,", "nicht die Tierberatung"]),
+    "musikfachhandel":     ("Musikfachhandel",      ["Produkttexte & Listings,", "nicht das Klangurteil"]),
+    "teppichhandel":       ("Teppichhandel",        ["Beschreibungen & Listings,", "nicht die Bewertung"]),
 }
 
 
