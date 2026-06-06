@@ -198,6 +198,24 @@
     .mcta .btn{width:100%}
     @media(max-width:860px){.mcta{display:block}}
     @media(prefers-reduced-motion:reduce){.mcta{transition:none}}
+
+    /* Archiv-Vorschau */
+    .issues{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem;text-align:left}
+    .issue{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink);transition:transform .14s,box-shadow .14s}
+    .issue:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .issue .no{font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--amber-dk)}
+    .issue h3{margin:.3rem 0 0;font-size:1.02rem;line-height:1.25;letter-spacing:-.01em}
+    .issue .rd{margin-top:auto;padding-top:.7rem;font-size:.84rem;color:var(--amber-dk);font-weight:700}
+    @media(max-width:860px){.issues{grid-template-columns:1fr}}
+    /* Gründer-Block */
+    .founder{display:flex;gap:1rem;align-items:center;max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.1rem 1.3rem;box-shadow:var(--shadow-sm);text-align:left}
+    .founder .av{flex:none;width:54px;height:54px;border-radius:50%;background:var(--amber);color:#fff;display:grid;place-items:center;font-weight:900;font-size:1.4rem}
+    .founder p{margin:0;font-size:.92rem;color:var(--muted)}.founder b{color:var(--ink)}
+    /* Teilen */
+    .share{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;align-items:center;margin-top:1.1rem}
+    .share span{font-size:.85rem;color:var(--muted)}
+    .share a{font-size:.85rem;font-weight:700;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:.45rem .9rem;color:var(--ink);background:#fff}
+    .share a:hover{border-color:var(--amber);color:var(--amber-dk)}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebSite","name":"aban news","url":"https://abannews.com/","description":"Täglicher deutschsprachiger AI-Newsletter für DACH-Profis.","inLanguage":"de-DE","publisher":{"@id":"https://abannews.com/#organization"}}
@@ -240,7 +258,7 @@
         <label class="consent"><input type="checkbox" name="consent" value="1" required>
           <span>Ich willige ein, Mo–Fr eine E-Mail zu erhalten. Bestätigung per Double-Opt-in, Abmeldung jederzeit per Klick. <a href="/datenschutz.html">Datenschutz</a>.</span></label>
         <div class="subcta"><span><b>DSGVO</b>-konform</span><span><b>1-Klick</b>-Abmeldung</span><span>kein Tracking-Pixel</span><span>kein Affiliate-Müll</span></div>
-        <p class="leadmag">Lieber erst reinschnuppern? <a href="/gratis-ki-tools.html">Hol dir die besten Gratis-KI-Tools →</a></p>
+        <p class="leadmag">Gratis-Geschenk zum Reinkommen: <a href="/downloads/10-ki-prompts.pdf">10 erprobte KI-Prompts (PDF) →</a></p>
       </div>
       <!-- mail mock -->
       <div class="mock" aria-hidden="true">
@@ -357,6 +375,21 @@
     </div>
   </section>
 
+  <!-- AUS DEM ARCHIV -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap center">
+      <span class="eyebrow">Reinlesen statt raten</span>
+      <h2>So sieht eine Ausgabe aus</h2>
+      <p class="sub">Kein Risiko: lies erst echte Ausgaben, dann entscheide. Jede in rund 5 Minuten.</p>
+      <div class="issues">
+        <a class="issue" href="/archive/025-2026-07-03-werkzeugkasten-h1-bilanz-quantensprung-entlarvt.html"><span class="no">Ausgabe 025</span><h3>Werkzeugkasten H1-Bilanz — Quantensprung entlarvt</h3><span class="rd">Lesen →</span></a>
+        <a class="issue" href="/archive/024-2026-07-02-halbjahres-drift-mistral-w-chst.html"><span class="no">Ausgabe 024</span><h3>Halbjahres-Drift: Mistral wächst, OpenAI verschiebt, Brüssel reguliert</h3><span class="rd">Lesen →</span></a>
+        <a class="issue" href="/archive/023-2026-07-01-ki-ersetzt-deine-mitarbeiter-die.html"><span class="no">Ausgabe 023</span><h3>„KI ersetzt deine Mitarbeiter" — die ehrlichen Zahlen</h3><span class="rd">Lesen →</span></a>
+      </div>
+      <p style="margin-top:1.3rem"><a class="btn btn--ghost" href="/preview.html">Komplette Beispielausgabe ansehen →</a></p>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="sec" id="faq" style="padding-top:0">
     <div class="wrap center">
@@ -383,6 +416,23 @@
           <summary>Wer steckt hinter aban news?</summary>
           <p>aban news wird von Allen Chour in Belp (Schweiz) kuratiert — kein anonymes Netzwerk. Impressum und Datenschutz sind im Footer verlinkt, Hintergründe findest du auf der Über-Seite.</p>
         </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRÜNDER + TEILEN -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap center">
+      <div class="founder">
+        <span class="av" aria-hidden="true">A</span>
+        <p><b>Kuratiert von Aban (Allen Chour)</b> in Belp, Schweiz. Kein anonymes Netzwerk, kein Tracking-Pixel, keine erfundenen Zahlen — ich lese jede Quelle selbst und schreibe mit Meinung. <a href="/ueber-aban.html">Mehr über mich →</a></p>
+      </div>
+      <div class="share" aria-label="aban news weiterempfehlen">
+        <span>Kennst du jemanden, dem das hilft?</span>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabannews.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://wa.me/?text=T%C3%A4glicher%20KI-Newsletter%20f%C3%BCr%20DACH%20in%205%20Min%3A%20https%3A%2F%2Fabannews.com" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://t.me/share/url?url=https%3A%2F%2Fabannews.com&text=T%C3%A4glicher%20KI-Newsletter%20f%C3%BCr%20DACH%20in%205%20Min" target="_blank" rel="noopener">Telegram</a>
+        <a href="mailto:?subject=T%C3%A4glicher%20KI-Newsletter&body=Schau%20mal%3A%20https%3A%2F%2Fabannews.com" rel="noopener">E-Mail</a>
       </div>
     </div>
   </section>
