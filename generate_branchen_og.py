@@ -252,6 +252,9 @@ BRANCHEN = {
     "holzbildhauer":       ("Holzbildhauer",        ["Werk-Texte & Anfragen,", "nicht das Schnitzen"]),
     "seifenmanufaktur":    ("Seifenmanufakturen",   ["Produkttexte & Social,", "nicht das Sieden"]),
     "kerzenmanufaktur":    ("Kerzenmanufakturen",   ["Produkttexte & Social,", "nicht das Giessen"]),
+    "korbflechterei":      ("Korbflechtereien",     ["Produkttexte & Kurse,", "nicht das Flechten"]),
+    "glasmalerei":         ("Glasmalerei",          ["Angebote & Referenzen,", "nicht der Entwurf"]),
+    "hutmacher":           ("Hutmacher",            ["Modell-Texte & Anfragen,", "nicht die Anprobe"]),
 }
 
 
