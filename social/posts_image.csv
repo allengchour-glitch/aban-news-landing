@@ -1,0 +1,2 @@
+id,scheduled_date,image_url,caption,platforms,status,posted_at,post_url
+example,2026-06-07,https://luxestyle.ch/cdn/PLACEHOLDER.jpg,"Beispielzeile (status=pending → wird NICHT gepostet). gen_post_image.mjs füllt echte Zeilen mit status=ready.","instagram,facebook,threads",pending,,
