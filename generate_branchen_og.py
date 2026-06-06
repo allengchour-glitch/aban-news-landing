@@ -261,6 +261,9 @@ BRANCHEN = {
     "lederwerkstatt":      ("Lederwerkstätten",     ["Produkttexte & Anfragen,", "nicht der Zuschnitt"]),
     "kalligraphie":        ("Kalligrafie-Ateliers", ["Angebote & Text-Ideen,", "nicht die Handschrift"]),
     "buchhandlung":        ("Buchhandlungen",       ["Empfehlungstexte & Events,", "nicht die Beratung"]),
+    "ofenbauer":           ("Ofenbauer",            ["Angebote & Anfragen,", "nicht der Brandschutz"]),
+    "pflasterer":          ("Pflasterer",           ["Angebote & Anfragen,", "nicht das Pflastern"]),
+    "abbruchunternehmen":  ("Abbruchunternehmen",   ["Angebote & Anfragen,", "nicht die Vor-Ort-Beurteilung"]),
 }
 
 
