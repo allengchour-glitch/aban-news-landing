@@ -29,6 +29,12 @@ TAGSETS=(
   "#sommermode2026 #ootdschweiz #fyp #schweizmode #fashiontiktok"
 )
 
+# 🧠 SELBST-LERNEN: learn_from_analytics.mjs schreibt aus echten TikTok-Daten optimierte Pools
+# (v.a. datengetriebene TAGSETS) hierher und überschreibt die Defaults oben. No-op, wenn die Datei fehlt.
+LEARNED="$ROOT/automation/learned_pools.sh"
+# shellcheck disable=SC1090
+[ -f "$LEARNED" ] && source "$LEARNED" && echo "(learned_pools.sh aktiv)" || true
+
 [ -f "$LIST" ] || { echo "good_products.csv fehlt"; exit 0; }
 [ -f "$MUSIC" ] || { echo "reel_music.m4a fehlt"; exit 0; }
 mapfile -t LINES < <(tail -n +2 "$LIST" | sed '/^$/d')
