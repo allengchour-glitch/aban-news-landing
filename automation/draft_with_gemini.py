@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+"""aban news — Ausgaben-ENTWURF mit Gemini (no-op-sicher, reine Standardbibliothek).
+
+Nimmt das von news_aggregator.py gesammelte Rohmaterial (automation/news-roh-*.md)
+und lässt Gemini daraus einen Tagesausgaben-ENTWURF im aban-Format formulieren.
+
+HARTE REGELN (im Prompt verankert):
+  - NUR die gelieferten Quellen verwenden, NICHTS erfinden (keine Zahlen/Studien/Zitate dazudichten).
+  - du-Form, anti-Hype (keine Wörter wie revolutionär/disruptiv/game-changer/bahnbrechend).
+  - Format: 3 Updates (je mit Einordnung „was heißt das für dich") + 1 Tool + 1 Prompt.
+  - Jede Faktbehauptung verweist auf die Quelle aus dem Rohmaterial.
+  - Ergebnis ist ein ENTWURF — Versand macht IMMER der Mensch.
+
+No-op ohne GEMINI_API_KEY (Exit 0, kein Crash, kein CI-Rot). Schreibt nichts Verschicktes,
+nur eine Datei automation/entwurf-gemini-JJJJ-MM-TT.md.
+
+Aufrufe:
+    python3 automation/draft_with_gemini.py
+    GEMINI_MODEL=gemini-2.0-flash python3 automation/draft_with_gemini.py
+"""
+from __future__ import annotations
+
+import datetime as dt
+import glob
+import json
+import os
+import sys
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+
+PROMPT_HEADER = """Du bist die Redaktion von „aban news", einem täglichen deutschsprachigen KI-Newsletter für DACH-Profis.
+Schreibe aus dem folgenden RECHERCHE-ROHMATERIAL einen Ausgaben-ENTWURF.
+
+STRIKTE REGELN:
+- Verwende AUSSCHLIESSLICH Informationen aus dem Rohmaterial unten. Erfinde NICHTS dazu —
+  keine Zahlen, Prozente, Studien, Zitate oder Tools, die nicht im Material stehen.
+- du-Form. Ehrlich, nüchtern, anti-Hype. Verboten: revolutionär, disruptiv, game-changer,
+  bahnbrechend, „verändert alles", AI-powered, Buzzwords, Ausrufezeichen-Ketten.
+- Struktur:
+  1) Kurzer Intro-Satz.
+  2) „📰 Was heute zählt" — 3 Updates. Pro Update 2–3 Sätze + 1 Zeile „Was das für dich heißt:".
+     Hänge die Quell-URL aus dem Material an.
+  3) „🛠 Tool" — nur wenn im Material ein konkretes Tool vorkommt; sonst weglassen.
+  4) „💡 Prompt zum Kopieren" — ein praktischer, allgemein nützlicher Prompt (kein erfundener Fakt).
+- Wenn das Material für 3 gute Updates nicht reicht, schreib lieber weniger und sag das ehrlich.
+- Maximal ~450 Wörter.
+
+ROHMATERIAL:
+"""
+
+
+def latest_roh() -> Path | None:
+    files = sorted(glob.glob(str(ROOT / "news-roh-*.md")))
+    # "news-roh-aktuell.md" bevorzugen, sonst das neueste datierte
+    aktuell = ROOT / "news-roh-aktuell.md"
+    if aktuell.exists():
+        return aktuell
+    return Path(files[-1]) if files else None
+
+
+def call_gemini(api_key: str, prompt: str) -> str:
+    url = (f"https://generativelanguage.googleapis.com/v1beta/models/"
+           f"{MODEL}:generateContent?key={api_key}")
+    body = {"contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {"temperature": 0.4, "maxOutputTokens": 1200}}
+    req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
+                                 headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        data = json.loads(r.read().decode("utf-8"))
+    return data["candidates"][0]["content"]["parts"][0]["text"]
+
+
+def main() -> int:
+    roh = latest_roh()
+    if not roh:
+        print("Kein Rohmaterial (automation/news-roh-*.md) — erst news_aggregator.py laufen lassen.")
+        return 0
+    material = roh.read_text(encoding="utf-8")[:12000]
+    print(f"Rohmaterial: {roh.name} ({len(material)} Zeichen)")
+
+    api_key = os.environ.get("GEMINI_API_KEY", "").strip()
+    if not api_key:
+        print("GEMINI_API_KEY nicht gesetzt → no-op (Exit 0). Key gehört in GitHub-Secrets.")
+        return 0
+
+    try:
+        draft = call_gemini(api_key, PROMPT_HEADER + material)
+    except urllib.error.HTTPError as e:
+        print(f"::warning::Gemini HTTP {e.code}: {e.read().decode('utf-8','ignore')[:300]}")
+        return 0
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning::Gemini-Aufruf fehlgeschlagen: {e}")
+        return 0
+
+    today = dt.date.today().isoformat()
+    out = ROOT / f"entwurf-gemini-{today}.md"
+    header = (f"# ENTWURF (Gemini) — {today}\n\n"
+              "> ⚠️ NICHT senden. Erst selbst prüfen: Fakten gegen Quellen checken, kürzen, in deine Stimme bringen.\n"
+              f"> Quelle Rohmaterial: {roh.name} · Modell: {MODEL}\n\n---\n\n")
+    out.write_text(header + draft.strip() + "\n", encoding="utf-8")
+    print(f"✓ Entwurf geschrieben: {out.name} ({len(draft)} Zeichen)")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
