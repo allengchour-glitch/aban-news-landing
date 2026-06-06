@@ -1,29 +1,29 @@
-*.pyc
-.audit/
-__pycache__/
-ausgabe/
-ausgabe-en/
-ausgabe-*/
-ausgabe-schicht/
-ausgabe-schicht-en/
-reports/*
+
+!reports/ABAN-DIRECTOR.md
+!reports/ABAN-STATS.md
 !reports/IMPROVEMENT-REPORT.md
 !reports/RADAR-DATEN-AUDIT.md
-!reports/ABAN-STATS.md
-!reports/ABAN-DIRECTOR.md
-
+# ABAN Files Film-Output
+# Bezahltes Buch: Vollversion nicht ins Repo (nur Leseprobe ist frei)
+# Bezahltes Vorlagen-Set: Vollversion nicht ins Repo
+*.pyc
+.audit/
+.lighthouseci/
+__pycache__/
+ausgabe-*/
+ausgabe-en/
+ausgabe-schicht-en/
+ausgabe-schicht/
+ausgabe/
+design-preview/.cache/
+downloads/ki-sichtbarkeit-buch-en.pdf
+downloads/ki-sichtbarkeit-buch.pdf
+downloads/vorlagen-pack.pdf
+downloads/vorlagen-set-en.pdf
+downloads/vorlagen-set.pdf
+node_modules/
+reports/*
+video-prototypes/aban-files/*.base.mp4
+video-prototypes/aban-files/aban-files-collection.mp4
 video-prototypes/client_secret.json
 video-prototypes/token.json
-
-# Bezahltes Buch: Vollversion nicht ins Repo (nur Leseprobe ist frei)
-downloads/ki-sichtbarkeit-buch.pdf
-downloads/ki-sichtbarkeit-buch-en.pdf
-
-# Bezahltes Vorlagen-Set: Vollversion nicht ins Repo
-downloads/vorlagen-set.pdf
-downloads/vorlagen-set-en.pdf
-
-# ABAN Files Film-Output
-video-prototypes/aban-files/aban-files-collection.mp4
-video-prototypes/aban-files/*.base.mp4
-downloads/vorlagen-pack.pdf
