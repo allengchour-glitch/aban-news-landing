@@ -249,6 +249,9 @@ BRANCHEN = {
     "drechslerei":         ("Drechslereien",        ["Produkttexte & Kurse,", "nicht das Drechseln"]),
     "orgelbau":            ("Orgelbau",             ["Angebote & Referenzen,", "nicht der Orgelbau"]),
     "klavierstimmer":      ("Klavierstimmer",       ["Termine & Anfragen,", "nicht das Stimmen"]),
+    "holzbildhauer":       ("Holzbildhauer",        ["Werk-Texte & Anfragen,", "nicht das Schnitzen"]),
+    "seifenmanufaktur":    ("Seifenmanufakturen",   ["Produkttexte & Social,", "nicht das Sieden"]),
+    "kerzenmanufaktur":    ("Kerzenmanufakturen",   ["Produkttexte & Social,", "nicht das Giessen"]),
 }
 
 
