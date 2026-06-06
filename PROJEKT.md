@@ -25,6 +25,9 @@
   (Teaser→beehiiv). ⚠️ Die alten 30 Make-Seed-Posts (`automation/linkedin_posts_seed.csv`) enthalten erfundene
   Statistiken → bewusst NICHT in die Queue übernommen (in Docs als „erst nach Faktencheck" markiert).
 - **Fakten-Korrektur:** Founding ist **€69 einmalig** (PayPal), Premium €9/Mt bzw. €89/Jahr; beehiiv **Gratis-Plan**. (Ältere PROJEKT.md-Stellen mit „€149" sind veraltet.)
+- **Newsletter attraktiver (Startseite, live nach Merge):** echte Archiv-Vorschau (3 neueste Ausgaben) + „Beispielausgabe"-Button; Anmelde-Geschenk **`downloads/10-ki-prompts.pdf`** (via `automation/generate_prompts_pdf.py`, reportlab); ehrlicher Gründer-Block + Teilen-Buttons; „Dialog statt Monolog"-Block; Hero-Live-Vorschau zeigt **echte Schlagzeilen** der letzten Ausgaben; `ueber-aban.html` Foto-Platzhalter. Doku: `docs/NEWSLETTER-ATTRAKTIV.md` (beehiiv-Referral + Welcome-Mail-Text).
+- **Telegram-Autopost (einfachster autonom+gratis Kanal!):** `automation/telegram_post.py` + `.github/workflows/telegram-autopost.yml` + `social/telegram_queue.json` (17 ehrliche Posts), no-op ohne Secrets. **🟡 User: `TELEGRAM_BOT_TOKEN`+`TELEGRAM_CHANNEL` setzen** (BotFather, ~5 Min, kein OAuth/Ablauf — viel leichter als LinkedIn). Setup: `docs/TELEGRAM-SETUP.md`.
+- **Retention:** `docs/RETENTION-BAUSTEINE.md` (10 Hebel: Zustellbarkeit/Domain-Auth, Welcome+Geschenk, Dialog-Frage, Prompt als Sticky, Telegram-Touchpoint, Win-back, sanfte Upgrades, Preferences).
 
 ## 📌 Stand 2026-06-03 — Gratis-Tool-Offensive + interne Verlinkung
 **24 client-side Gratis-Tools** (kein Login/Upload/Tracking, Aban-Voice, Amber-Shell, JSON-LD) live auf abannews.com:
