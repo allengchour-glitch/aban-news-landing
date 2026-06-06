@@ -37,14 +37,20 @@ jobs:
           python - <<'PY'
           import json, subprocess, sys
           files = subprocess.check_output(["git","ls-files","*.json"]).decode().split()
-          bad = 0
+          bad = 0; skipped = 0
           for f in files:
+              raw = open(f, encoding="utf-8").read()
+              # Shopify-Theme-Dateien (auto-generiert) beginnen mit einem
+              # /* ... */-Kommentar-Header und sind bewusst kein striktes JSON.
+              if raw.lstrip().startswith("/*"):
+                  skipped += 1
+                  continue
               try:
-                  json.load(open(f, encoding="utf-8"))
+                  json.loads(raw)
               except Exception as ex:
                   print(f"::error file={f}::Ungültiges JSON: {ex}")
                   bad += 1
-          print(f"{len(files)} JSON-Dateien geprüft, {bad} fehlerhaft")
+          print(f"{len(files)} JSON-Dateien geprüft, {bad} fehlerhaft, {skipped} übersprungen (Shopify-Kommentar-Header)")
           sys.exit(1 if bad else 0)
           PY
 
