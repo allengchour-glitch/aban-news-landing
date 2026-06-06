@@ -258,6 +258,9 @@ BRANCHEN = {
     "steinbildhauer":      ("Steinbildhauer",       ["Werk-Texte & Anfragen,", "nicht das Bildhauen"]),
     "messermacher":        ("Messermacher",         ["Produkttexte & Anfragen,", "nicht das Schmieden"]),
     "goldschmied":         ("Goldschmiede",         ["Anfertigungs-Texte & Anfragen,", "nicht das Fassen"]),
+    "lederwerkstatt":      ("Lederwerkstätten",     ["Produkttexte & Anfragen,", "nicht der Zuschnitt"]),
+    "kalligraphie":        ("Kalligrafie-Ateliers", ["Angebote & Text-Ideen,", "nicht die Handschrift"]),
+    "buchhandlung":        ("Buchhandlungen",       ["Empfehlungstexte & Events,", "nicht die Beratung"]),
 }
 
 
