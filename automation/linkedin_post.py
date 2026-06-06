@@ -24,12 +24,25 @@ import datetime as dt
 import json
 import os
 import sys
+import tempfile
+import uuid
 import urllib.error
 import urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+try:
+    from gen_image_gemini import make_image  # KI-Bild (optional)
+except Exception:  # noqa: BLE001
+    make_image = None
+try:
+    from gen_card import make_card  # Marken-Karte (Fallback)
+except Exception:  # noqa: BLE001
+    make_card = None
+
 QUEUE = Path(__file__).resolve().parent.parent / "social" / "linkedin_queue.json"
 API = "https://api.linkedin.com/v2/ugcPosts"
+REGISTER = "https://api.linkedin.com/v2/assets?action=registerUpload"
 
 
 def load_queue():
@@ -76,6 +89,70 @@ def post_to_linkedin(token, author, text):
         return resp.status, resp.headers.get("x-restli-id", "")
 
 
+def build_visual(text):
+    """KI-Bild (Gemini) bevorzugt, sonst Marken-Karte. Gibt Pfad oder None."""
+    hook = next((l.strip() for l in text.splitlines() if l.strip() and not l.startswith("#")), text[:120])
+    tmp = Path(tempfile.gettempdir())
+    if make_image:
+        p = make_image(hook, str(tmp / f"li-{uuid.uuid4().hex}.png"))
+        if p:
+            return p
+    if make_card:
+        try:
+            return make_card(text, str(tmp / f"li-{uuid.uuid4().hex}.jpg"))
+        except Exception as e:  # noqa: BLE001
+            print(f"::warning::Karten-Fallback fehlgeschlagen: {e}")
+    return None
+
+
+def _hdrs(token):
+    return {"Authorization": f"Bearer {token}", "Content-Type": "application/json",
+            "X-Restli-Protocol-Version": "2.0.0"}
+
+
+def register_upload(token, author):
+    body = {"registerUploadRequest": {
+        "recipes": ["urn:li:digitalmediaRecipe:feedshare-image"],
+        "owner": author,
+        "serviceRelationships": [{"relationshipType": "OWNER",
+                                  "identifier": "urn:li:userGeneratedContent"}]}}
+    req = urllib.request.Request(REGISTER, data=json.dumps(body).encode("utf-8"),
+                                 method="POST", headers=_hdrs(token))
+    with urllib.request.urlopen(req, timeout=30) as r:
+        v = json.loads(r.read().decode("utf-8"))["value"]
+    asset = v["asset"]
+    upload_url = v["uploadMechanism"][
+        "com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest"]["uploadUrl"]
+    return upload_url, asset
+
+
+def upload_image(upload_url, token, path):
+    data = Path(path).read_bytes()
+    req = urllib.request.Request(upload_url, data=data, method="PUT",
+                                 headers={"Authorization": f"Bearer {token}",
+                                          "Content-Type": "application/octet-stream"})
+    with urllib.request.urlopen(req, timeout=90) as r:
+        return r.status
+
+
+def post_to_linkedin_image(token, author, text, asset):
+    body = {
+        "author": author,
+        "lifecycleState": "PUBLISHED",
+        "specificContent": {"com.linkedin.ugc.ShareContent": {
+            "shareCommentary": {"text": text},
+            "shareMediaCategory": "IMAGE",
+            "media": [{"status": "READY", "media": asset,
+                       "title": {"text": "aban news"},
+                       "description": {"text": "aban news — KI in 5 Minuten"}}]}},
+        "visibility": {"com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"},
+    }
+    req = urllib.request.Request(API, data=json.dumps(body).encode("utf-8"),
+                                 method="POST", headers=_hdrs(token))
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return resp.status, resp.headers.get("x-restli-id", "")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--dry-run", action="store_true")
@@ -100,8 +177,19 @@ def main() -> int:
         print("LINKEDIN_ACCESS_TOKEN / LINKEDIN_AUTHOR_URN nicht gesetzt → no-op (Exit 0).")
         return 0
 
+    text = item["text"]
+    img = build_visual(text)  # KI-Bild → Karte → None
     try:
-        status, post_id = post_to_linkedin(token, author, item["text"])
+        if img:
+            try:
+                upload_url, asset = register_upload(token, author)
+                upload_image(upload_url, token, img)
+                status, post_id = post_to_linkedin_image(token, author, text, asset)
+            except Exception as ie:  # noqa: BLE001 — Bild-Pfad scheitert → Text-Post
+                print(f"::warning::Bild-Upload fehlgeschlagen ({ie}); poste als Text.")
+                status, post_id = post_to_linkedin(token, author, text)
+        else:
+            status, post_id = post_to_linkedin(token, author, text)
     except urllib.error.HTTPError as e:
         print(f"::warning::LinkedIn API HTTP {e.code}: {e.read().decode('utf-8','ignore')[:300]}")
         return 0  # nicht den Workflow rot machen
