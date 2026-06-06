@@ -1,0 +1,45 @@
+name: Gemini Content-Engine
+
+# Gemini = Arbeiter: erzeugt laufend evergreen Posts. Brand-Voice-Linter = Boss/Gate.
+# Nur bestandene Posts landen in den Autopost-Queues (Telegram + LinkedIn) -> Kanäle nie leer.
+# No-op ohne GEMINI_API_KEY. Cron laeuft nur vom Default-Branch.
+
+on:
+  schedule:
+    - cron: '0 3 * * 1-5'   # Mo–Fr 03:00 UTC: Nachschub erzeugen
+  workflow_dispatch:
+    inputs:
+      n:
+        description: "Anzahl Posts"
+        default: "3"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Gemini erzeugt + Linter prüft
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+        run: python3 automation/gemini_generate_posts.py --n "${{ github.event.inputs.n || '3' }}"
+
+      - name: Queues committen
+        run: |
+          if ! git diff --quiet -- social/telegram_queue.json social/linkedin_queue.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add social/telegram_queue.json social/linkedin_queue.json
+            git commit -m "Content-Engine: neue geprüfte Posts in Autopost-Queues [skip ci]"
+            git push || echo "::warning::push fehlgeschlagen"
+          else
+            echo "Keine neuen Posts (kein Key oder nichts bestanden)."
+          fi
