@@ -26,7 +26,7 @@ def title_link(stem):
     if stem.startswith("tool-"):
         t = TOOLS.get(stem[5:])
         name = t["name"] if t else stem[5:]
-        return f"Lohnt sich {name}?", "https://radar.abannews.com/"
+        return f"Lohnt sich {name}?", f"https://radar.abannews.com/tool/{stem[5:]}.html"
     return stem.replace("-", " ").capitalize(), f"https://abannews.com/hype-watch/{stem}.html"
 
 

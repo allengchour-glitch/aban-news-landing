@@ -47,7 +47,8 @@ def build_ass(words, total, path, hook="", tag="aban news",
               primary=brand.AMBER, secondary=brand.CREAM, outline=brand.INK):
     """Karaoke-ASS aus Wort-Timings [(wort, start, end), …]. `Name`-Feld ist gesetzt."""
     head = _header(primary, secondary, outline, tag)
-    head += f"Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,{tag}\n"
+    if tag:
+        head += f"Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,{tag}\n"
     lines = []
     if hook:
         hk = hook.upper().replace("\n", " ")
@@ -101,7 +102,8 @@ def srt_to_ass(srt_path, path, hook="", tag="aban news",
     cues = parse_srt(srt_path)
     total = cues[-1][1] if cues else 0.0
     head = _header(primary, secondary, outline, tag)
-    head += f"Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,{tag}\n"
+    if tag:
+        head += f"Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,{tag}\n"
     lines = []
     if hook:
         hk = hook.upper().replace("\n", " ")

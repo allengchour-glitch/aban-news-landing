@@ -1,19 +1,19 @@
 {
   "reels": [
     {
-      "file": "/media/reels/tool-claude.mp4",
-      "title": "Lohnt sich Claude?",
-      "link": "https://radar.abannews.com/"
-    },
-    {
       "file": "/media/reels/tool-n8n.mp4",
       "title": "Lohnt sich n8n?",
-      "link": "https://radar.abannews.com/"
+      "link": "https://radar.abannews.com/tool/n8n.html"
     },
     {
       "file": "/media/reels/tool-cursor.mp4",
       "title": "Lohnt sich Cursor?",
-      "link": "https://radar.abannews.com/"
+      "link": "https://radar.abannews.com/tool/cursor.html"
+    },
+    {
+      "file": "/media/reels/tool-claude.mp4",
+      "title": "Lohnt sich Claude?",
+      "link": "https://radar.abannews.com/tool/claude.html"
     }
   ]
 }

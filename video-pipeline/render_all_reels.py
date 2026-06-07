@@ -37,9 +37,9 @@ def main():
     print(f"Rendere {len(faelle)} Reel(s) — Stufe { 'A (Voice/Karaoke)' if voice else 'B/C' }")
     fertig = 0
     for f in faelle:
-        gc.build_one(f, voice)          # Slides + Skript + SRT (+ optional Voiceover)
+        gc.build_one(f, voice)          # Slides + Overlays + Skript + SRT + Queries (+ optional Voiceover)
         try:
-            reel.render(f["id"], voice=voice)
+            reel.render(f["id"], voice=voice, broll=True)
             fertig += 1
         except Exception as e:           # ein kaputter Fall darf den Lauf nicht stoppen
             print(f"  ✗ {f['id']}: {e}")
