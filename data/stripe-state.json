@@ -1,1 +1,32 @@
-{}
+{
+  "aerzte": {
+    "product": "prod_Uf2MVRVuOGk7ci",
+    "price": "price_1TfiHVRXvVMyfaIr9T970P2F",
+    "link": "https://buy.stripe.com/test_eVq5kF422bbm5oj4Mt5wI00",
+    "cents": 1200
+  },
+  "handwerker": {
+    "product": "prod_Uf2MDlW6DVgiQI",
+    "price": "price_1TfiHWRXvVMyfaIrw60ZJK0W",
+    "link": "https://buy.stripe.com/test_cNi9AV9mmbbmaID1Ah5wI01",
+    "cents": 1200
+  },
+  "steuerberater": {
+    "product": "prod_Uf2M02c6jwCRg4",
+    "price": "price_1TfiHXRXvVMyfaIrpXUsOsqm",
+    "link": "https://buy.stripe.com/test_6oU5kF4226V65ojen35wI02",
+    "cents": 1200
+  },
+  "anwaelte": {
+    "product": "prod_Uf2MOwvPErA5bK",
+    "price": "price_1TfiHXRXvVMyfaIrYoLHE4pO",
+    "link": "https://buy.stripe.com/test_fZu14p7ee3IU03ZdiZ5wI03",
+    "cents": 1200
+  },
+  "gastronomie": {
+    "product": "prod_Uf2MzqKR1W8C8N",
+    "price": "price_1TfiHYRXvVMyfaIr3uP085RD",
+    "link": "https://buy.stripe.com/test_cNi9AVdCCgvG9Ez4Mt5wI04",
+    "cents": 1200
+  }
+}
