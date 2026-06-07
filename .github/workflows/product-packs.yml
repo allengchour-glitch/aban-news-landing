@@ -1,0 +1,45 @@
+name: Produkt-Pakete bauen
+
+# Baut die KI-Starter-Kits (ZIP je Branche) und stellt sie als Download-Artefakt bereit.
+# Kein lokales Python nötig: Run starten → unten beim Run das Artefakt "produkt-pakete" laden →
+# jedes ZIP in Lemon Squeezy als Produkt hochladen → Link in js/shop-config.js eintragen.
+
+on:
+  workflow_dispatch:
+    inputs:
+      slugs:
+        description: "Branchen (Komma-getrennt)"
+        default: "aerzte,handwerker,steuerberater,anwaelte,gastronomie"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Pakete bauen
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_LOCATION: ${{ vars.GCP_LOCATION }}
+          VERTEX_TEXT_MODEL: ${{ vars.VERTEX_TEXT_MODEL }}
+        run: |
+          pip install --quiet reportlab pillow google-auth requests || true
+          python3 automation/generate_branchen_pdfs.py --slugs "${{ github.event.inputs.slugs || 'aerzte,handwerker,steuerberater' }}" || true
+          python3 automation/build_product_pack.py --slugs "${{ github.event.inputs.slugs || 'aerzte,handwerker,steuerberater' }}"
+
+      - name: ZIPs als Download bereitstellen
+        uses: actions/upload-artifact@v4
+        with:
+          name: produkt-pakete
+          path: downloads/packs/*.zip
+          if-no-files-found: warn
