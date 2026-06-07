@@ -76,14 +76,64 @@ def _gemini(api_key, prompt, out_path):
     return None
 
 
+def _vertex(prompt, out_path):
+    """Vertex AI Imagen (:predict) mit Service-Account-Auth. None bei Fehler."""
+    info = os.environ.get("GCP_SA_KEY", "").strip()
+    project = os.environ.get("GCP_PROJECT", "").strip()
+    if not info or not project:
+        return None
+    location = os.environ.get("GCP_LOCATION", "us-central1")
+    model = os.environ.get("VERTEX_IMAGE_MODEL", "imagen-3.0-generate-002")
+    try:
+        from google.oauth2 import service_account
+        import google.auth.transport.requests as gatr
+    except Exception:  # noqa: BLE001
+        print("::warning::google-auth fehlt (pip install google-auth requests) → Karte als Fallback.")
+        return None
+    try:
+        creds = service_account.Credentials.from_service_account_info(
+            json.loads(info), scopes=["https://www.googleapis.com/auth/cloud-platform"])
+        creds.refresh(gatr.Request())
+        token = creds.token
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning::Vertex-Auth fehlgeschlagen: {e}")
+        return None
+    url = (f"https://{location}-aiplatform.googleapis.com/v1/projects/{project}"
+           f"/locations/{location}/publishers/google/models/{model}:predict")
+    body = {"instances": [{"prompt": prompt}],
+            "parameters": {"sampleCount": 1, "aspectRatio": ASPECT}}
+    req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
+                                 headers={"Authorization": f"Bearer {token}",
+                                          "Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=120) as r:
+            data = json.loads(r.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        print(f"::warning::Vertex HTTP {e.code}: {e.read().decode('utf-8','ignore')[:300]}")
+        return None
+    for p in data.get("predictions", []):
+        b64 = p.get("bytesBase64Encoded") or p.get("image", {}).get("imageBytes")
+        if b64:
+            print(f"(Vertex {model} @ {location})")
+            return _save(out_path, b64)
+    print(f"::warning::Vertex ohne Bilddaten: {str(data)[:200]}")
+    return None
+
+
 def make_image(hook: str, out_path: str):
-    """Gibt out_path zurück (Bild erzeugt) oder None (no-op/Fehler).
-    imagen-* → :predict, sonst → :generateContent."""
+    """Bild erzeugen. Reihenfolge: Vertex AI (GCP_SA_KEY) → Gemini-API (GEMINI_API_KEY) → None.
+    None ⇒ Aufrufer nutzt die Marken-Karte als Fallback."""
+    prompt = PROMPT_TMPL.format(hook=hook[:300])
+
+    if os.environ.get("GCP_SA_KEY"):
+        r = _vertex(prompt, out_path)
+        if r:
+            return r
+
     api_key = os.environ.get("GEMINI_API_KEY", "").strip()
     if not api_key:
-        print("GEMINI_API_KEY nicht gesetzt → kein Bild (no-op).")
+        print("Kein GCP_SA_KEY/GEMINI_API_KEY → kein KI-Bild (Karte als Fallback).")
         return None
-    prompt = PROMPT_TMPL.format(hook=hook[:300])
     try:
         if MODEL.startswith("imagen"):
             return _imagen(api_key, prompt, out_path)

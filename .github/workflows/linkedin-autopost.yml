@@ -28,8 +28,12 @@ jobs:
           LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_IMAGE_MODEL: ${{ vars.GEMINI_IMAGE_MODEL }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_LOCATION: ${{ vars.GCP_LOCATION }}
+          VERTEX_IMAGE_MODEL: ${{ vars.VERTEX_IMAGE_MODEL }}
         run: |
-          pip install --quiet pillow || true
+          pip install --quiet pillow google-auth requests || true
           python3 automation/linkedin_post.py
 
       - name: Persist queue status (falls gepostet)
