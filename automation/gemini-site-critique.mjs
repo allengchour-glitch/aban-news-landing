@@ -59,9 +59,24 @@ async function shoot(){
       const page = await ctx.newPage();
       const url = BASE + p;
       try{
-        await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
-        await page.waitForTimeout(1500);
-        const buf = await page.screenshot({ fullPage: true });
+        // domcontentloaded statt networkidle: Shopify-Seiten werden durch Tracking-Pixel nie "idle"
+        // → networkidle lief immer in den 45s-Timeout. Danach durchscrollen für Lazy-Bilder.
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+        await page.evaluate(async () => {
+          await new Promise(res => {
+            let y = 0;
+            const step = () => {
+              window.scrollBy(0, 900); y += 900;
+              if (y < document.body.scrollHeight && y < 12000) setTimeout(step, 150);
+              else { window.scrollTo(0, 0); setTimeout(res, 300); }
+            };
+            step();
+          });
+        });
+        await page.waitForTimeout(1200);
+        // Höhe auf max 6000px deckeln → keine Riesen-PNGs, die Gemini ausbremsen.
+        const h = Math.min(6000, await page.evaluate(() => document.body.scrollHeight) || vp.height);
+        const buf = await page.screenshot({ clip: { x: 0, y: 0, width: vp.width, height: h } });
         shots.push({ label: `${p} (${vp.name})`, b64: buf.toString('base64') });
         console.log('📸', url, vp.name, `${(buf.length/1024|0)}kB`);
       }catch(e){ console.error('Screenshot-Fehler', url, vp.name, e.message); }
