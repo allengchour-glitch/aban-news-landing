@@ -43,8 +43,10 @@
   },
   {
     "id": "tg-evg-halluzination",
-    "status": "ready",
-    "text": "KI erfindet Dinge — und zwar überzeugend. Das ist kein Bug, das ist eingebaut.\n\nMeine simple Routine, damit mich das nicht erwischt:\n\n1. Bei Fakten/Zahlen immer nachfragen: „Woher stammt das? Nenne die Quelle.“\n2. Quelle selbst kurz prüfen — nicht blind übernehmen.\n3. Für Wichtiges: zweites Modell oder eine echte Suche gegenchecken.\n\nFaustregel: KI ist top für Formulieren, Strukturieren, Brainstorming. Bei Fakten ist sie ein Praktikant, kein Lexikon.\n\nIch teste Tools mit genau diesem Blick — ehrlich, ohne Hype: https://abannews.com\n\n#KI #KünstlicheIntelligenz #Datenkompetenz #DACH"
+    "status": "posted",
+    "text": "KI erfindet Dinge — und zwar überzeugend. Das ist kein Bug, das ist eingebaut.\n\nMeine simple Routine, damit mich das nicht erwischt:\n\n1. Bei Fakten/Zahlen immer nachfragen: „Woher stammt das? Nenne die Quelle.“\n2. Quelle selbst kurz prüfen — nicht blind übernehmen.\n3. Für Wichtiges: zweites Modell oder eine echte Suche gegenchecken.\n\nFaustregel: KI ist top für Formulieren, Strukturieren, Brainstorming. Bei Fakten ist sie ein Praktikant, kein Lexikon.\n\nIch teste Tools mit genau diesem Blick — ehrlich, ohne Hype: https://abannews.com\n\n#KI #KünstlicheIntelligenz #Datenkompetenz #DACH",
+    "posted_at": "2026-06-07T01:29:08Z",
+    "telegram_message_id": 14
   },
   {
     "id": "tg-evg-meeting-prompt",
