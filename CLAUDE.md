@@ -48,13 +48,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   **Page-Token mit `pages_manage_posts`** für Seite `1049840534888592` als Secret setzen (Code `/{page}/photos`
   ist korrekt — nur der Token-Typ fehlt). Deckt sich mit der früher verlorenen Working-Session (Scope
   `pages_manage_posts`).
-- **TikTok (4. Account) — KORREKTUR 07.06.: geht doch direkt per API (mein früheres „keine Bild-Post-API" war
-  falsch).** TikTok hat eine **Content Posting API** mit **Foto-Direktpost** (`POST open.tiktokapis.com/v2/post/
-  publish/content/init/`, `media_type=PHOTO`, Carousel bis 35 Bilder, JPEG/PNG/WebP). Eigenes Tool gebaut:
-  **`automation/tiktok-autopost.mjs`** + `tiktok-autopost.yml` + Queue `social/posts_tiktok.csv` (no-op ohne Token).
-  Braucht (User): TikTok-App mit Scope **`video.publish`**, **Domain `abannews.com` im App verifizieren** (Pflicht für
-  PULL_FROM_URL), **App-Audit** für öffentliche Posts (sonst nur privat), Secret **`TIKTOK_ACCESS_TOKEN`**. Reel-Weg
-  (`PUBLISH_WEBHOOK_URL`→n8n) bleibt für Videos optional; Reel-Autopost ist aktuell No-op (Telegram-Token tot).
+- **TikTok (4. Account) — KORREKTUR 07.06.: war SCHON gebaut (auf `main`)!** Frühere Session hat
+  `automation/tiktok-autopost.mjs` + `tiktok-autopost.yml`: postet **Reels/Videos** aus `reels_seed.csv` per
+  Content-Posting-API v2 (**FILE_UPLOAD** → braucht KEINE Domain-Verifizierung), Auto-Refresh + Token-Persistenz
+  (PAT `REPO_ADMIN_PAT`). Secrets **`TT_ACCESS_TOKEN/TT_REFRESH_TOKEN/TT_CLIENT_KEY/TT_CLIENT_SECRET`** vom User
+  **bereits gesetzt**, Lauf 06-06 ok. App „LuxeStyle Poster" (ID `7644952871552960533`).
+  `TT_PRIVACY_LEVEL=SELF_ONLY` bis **App-Audit** → danach `PUBLIC_TO_EVERYONE`. **Einziger offener Schritt: Audit.**
+  ⚠️ Lehre: mein Branch baute (auf altem main) versehentlich ein **Foto-Duplikat** (`TIKTOK_`-Präfix,
+  `posts_tiktok.csv`) → zurückgenommen, main-Version übernommen, damit der Merge die funktionierende Version
+  nicht überschreibt. (Foto-Direktpost `media_type=PHOTO`/PULL_FROM_URL bliebe als Zusatz möglich, bräuchte Domain-Verify.)
 - **On-demand posten geht** ohne Session-Tokens: `social-meta-autopost.yml` per `workflow_dispatch` triggern
   (postet 1 Bild/Lauf, `MAX_PER_RUN`). Posten läuft IMMER über die GitHub-Action (Secrets dort), nie aus der Session-Env.
 - **🚫 REGEL (User): KEINE doppelten Bilder pro Profil.** Der Meta-Poster respektiert jetzt die `platforms`-Spalte

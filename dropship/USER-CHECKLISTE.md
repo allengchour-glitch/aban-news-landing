@@ -33,25 +33,12 @@
 **Telegram (Tages-Digest 1×/Tag) — für `reel-analytics.yml`:**
 - [ ] `TELEGRAM_BOT_TOKEN` (🔒 **bitte rotieren**, der alte wurde im Chat geteilt) + `TELEGRAM_CHAT_ID`
 
-**TikTok Foto-Direktpost — Schritt für Schritt (offizielle Content Posting API):**
-1. **App anlegen:** developers.tiktok.com → „Manage apps" → **Create app**. Produkte hinzufügen: **Login Kit** +
-   **Content Posting API**. Scope **`video.publish`** aktivieren. Notiere **Client key** + **Client secret**.
-2. **Redirect-URI** eintragen (z. B. `https://abannews.com/tiktok/callback` — muss existieren/erreichbar sein).
-3. **Domain verifizieren:** App-Settings → „URL properties" → Prefix **`https://abannews.com/`** verifizieren
-   (Pflicht für `PULL_FROM_URL`, sonst werden die Bild-URLs abgelehnt).
-4. **Einmal autorisieren (OAuth):** im Browser die Authorize-URL öffnen
-   `https://www.tiktok.com/v2/auth/authorize/?client_key=<KEY>&scope=video.publish&response_type=code&redirect_uri=<REDIRECT>&state=x`
-   → einloggen/zustimmen → aus der Rücksprung-URL den **`code`** kopieren.
-5. **Code gegen Tokens tauschen** (einmal, z. B. lokal):
-   `curl -X POST https://open.tiktokapis.com/v2/oauth/token/ -d "client_key=<KEY>&client_secret=<SECRET>&code=<CODE>&grant_type=authorization_code&redirect_uri=<REDIRECT>"`
-   → Antwort enthält `access_token` (24 h) **und `refresh_token` (365 Tage)**.
-6. **Secrets setzen** (für den Cron den Refresh-Weg nehmen, dann läuft er dauerhaft selbst):
-   `TIKTOK_CLIENT_KEY`, `TIKTOK_CLIENT_SECRET`, `TIKTOK_REFRESH_TOKEN` → `tiktok-autopost.mjs` holt sich pro Lauf
-   selbst ein frisches Access-Token. (Alternativ nur `TIKTOK_ACCESS_TOKEN` für einen schnellen Test — läuft nach 24 h ab.)
-   Optional Variable `TIKTOK_PRIVACY` (Default `PUBLIC_TO_EVERYONE`).
-7. **App-Audit** einreichen → ohne Audit sind alle Posts nur **privat (SELF_ONLY)**; für öffentliche Posts nötig.
-- ℹ️ Queue = `social/posts_tiktok.csv` (5 Meisterwerke ready, mit Produkt-Direktlinks). Ohne Token = sauberer No-Op.
-- ℹ️ Video/Reels nach TikTok optional zusätzlich über `PUBLISH_WEBHOOK_URL`→n8n (`reel-autopost.yml`).
+**TikTok (Content Posting API v2) — `tiktok-autopost.yml` (Reels/Video, FILE_UPLOAD):**
+- ✅ **BEREITS EINGERICHTET** (App „LuxeStyle Poster", App-ID `7644952871552960533`; Secrets gesetzt; Lauf vom 06.06. erfolgreich).
+- Secrets (schon gesetzt): `TT_ACCESS_TOKEN` (24h) + `TT_REFRESH_TOKEN` + `TT_CLIENT_KEY` + `TT_CLIENT_SECRET` (Auto-Refresh).
+- [ ] **Repo-Variable** `TT_PRIVACY_LEVEL`: bis App-Audit **`SELF_ONLY`** (nur du siehst es) → nach Audit **`PUBLIC_TO_EVERYONE`**.
+- [ ] Optional PAT **`REPO_ADMIN_PAT`** (`secrets: write`) → Workflow persistiert die rotierten Tokens selbst (sonst `TT_ACCESS_TOKEN` alle 24h neu).
+- ℹ️ Postet **Reels** aus `reels_seed.csv` (Video, FILE_UPLOAD → **keine Domain-Verifizierung nötig**). Der **einzige offene Schritt für ÖFFENTLICHES Posten** ist der **TikTok-App-Audit**.
 
 **Shopify (Kennzahlen im Digest + Rating-Lister) — Client-Credentials der Custom-App:**
 - [ ] `SHOPIFY_SHOP` = `au3j0y-hq.myshopify.com` · `SHOPIFY_CLIENT_ID` · `SHOPIFY_CLIENT_SECRET`
