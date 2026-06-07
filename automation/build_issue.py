@@ -42,8 +42,13 @@ LABELS = ("INTRO", "UPDATE", "WAS", "QUELLE", "BILD", "TIEFER", "TOOL", "PROMPT"
 LABEL_RE = re.compile(r"^\s*[#*>\s]*(" + "|".join(LABELS) + r")\s*:\s*(.*)$", re.I)
 
 
-def latest_entwurf() -> Path | None:
-    files = sorted(glob.glob(str(ROOT / "entwurf-gemini-*.md")))
+def latest_entwurf(niche: str | None = None) -> Path | None:
+    if niche:
+        nf = sorted(glob.glob(str(ROOT / f"entwurf-gemini-{niche}-*.md")))
+        return Path(nf[-1]) if nf else None
+    # Standard: nur datierte Haupt-Entwürfe, Nischen-Dateien (entwurf-gemini-<niche>-*) ausschließen
+    files = [f for f in sorted(glob.glob(str(ROOT / "entwurf-gemini-*.md")))
+             if re.match(r"entwurf-gemini-\d{4}-\d{2}-\d{2}\.md$", Path(f).name)]
     return Path(files[-1]) if files else None
 
 
@@ -149,8 +154,8 @@ def optimize(p: Path | None) -> Path | None:
         return p
 
 
-def rel_url(p: Path | None, date: str) -> str:
-    return f"{SITE}/img/issues/{date}/{p.name}" if p else ""
+def rel_url(p: Path | None, sub: str) -> str:
+    return f"{SITE}/img/issues/{sub}/{p.name}" if p else ""
 
 
 def img_tag(url: str, alt: str, maxh: int = 360) -> str:
@@ -204,7 +209,8 @@ def voice_gate(text: str):
         os.unlink(tmp)
 
 
-def render(s: dict, date: str, imgdir: Path) -> str:
+def render(s: dict, date: str, imgdir: Path, sub: str | None = None) -> str:
+    sub = sub or date
     A = "#b45309"
     css = ("body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;"
            "color:#1f2937;background:#fffbf5;line-height:1.7;max-width:680px;margin:0 auto;padding:24px;font-size:17px}"
@@ -224,7 +230,7 @@ def render(s: dict, date: str, imgdir: Path) -> str:
          "<!-- ENTWURF — vor Versand prüfen. Für beehiiv: diesen Body kopieren. -->",
          f"<p style='font-size:.8rem;color:#9a3412'>☕ aban news · Ausgabe {date}</p>"]
     if cover:
-        H.append(img_tag(rel_url(cover, date), "aban news", 420))
+        H.append(img_tag(rel_url(cover, sub), "aban news", 420))
     if s["intro"]:
         H.append(f"<h1>{html.escape(s['intro'][:90])}</h1>" if len(s["intro"]) < 90
                  else f"<p style='font-size:1.1rem'>{html.escape(s['intro'])}</p>")
@@ -234,7 +240,7 @@ def render(s: dict, date: str, imgdir: Path) -> str:
                                    prefer="pexels" if i % 2 == 0 else "ai"))
         H.append("<div class=card>")
         H.append(f"<h2 style='margin-top:0'>{html.escape(u['headline'])}</h2>")
-        H.append(img_tag(rel_url(img, date), u["headline"]))
+        H.append(img_tag(rel_url(img, sub), u["headline"]))
         H.append(paras(" ".join(u["body"])))
         if u["was"]:
             H.append(f"<div class=was><b>Was das für dich heißt:</b> {html.escape(' '.join(u['was']))}</div>")
@@ -245,7 +251,7 @@ def render(s: dict, date: str, imgdir: Path) -> str:
     chart, csrc = build_chart(date, imgdir)
     if chart:
         H.append("<h2>📊 In Zahlen</h2>")
-        H.append(img_tag(rel_url(chart, date), "Diagramm", 520))
+        H.append(img_tag(rel_url(chart, sub), "Diagramm", 520))
         if csrc:
             H.append(f"<p class=cap>{html.escape(csrc)}</p>")
     if s["tiefer"]:
@@ -302,16 +308,19 @@ def promote(date: str, s: dict) -> int:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--entwurf", help="Pfad zum Entwurf (sonst neuester)")
+    ap.add_argument("--niche", default=None,
+                    help="Nischen-ID (nutzt entwurf-gemini-<niche>-*, eigener Bild-Ordner + Draft)")
     ap.add_argument("--promote", action="store_true",
                     help="freigegebene Ausgabe ins öffentliche Archiv übernehmen (NACH dem Versand)")
     args = ap.parse_args()
 
-    ent = Path(args.entwurf) if args.entwurf else latest_entwurf()
+    ent = Path(args.entwurf) if args.entwurf else latest_entwurf(args.niche)
     if not ent or not ent.exists():
         print("Kein Entwurf gefunden (automation/entwurf-gemini-*.md) — erst draft_with_gemini.py laufen lassen.")
         return 0
     date = issue_date(ent)
-    imgdir = REPO / "img" / "issues" / date
+    sub = f"{args.niche}/{date}" if args.niche else date
+    imgdir = REPO / "img" / "issues" / sub
     imgdir.mkdir(parents=True, exist_ok=True)
 
     s = parse(ent.read_text(encoding="utf-8"))
@@ -320,11 +329,13 @@ def main() -> int:
         return 0
     if args.promote:
         return promote(date, s)
-    print(f"Ausgabe {date}: {len(s['updates'])} Updates, Bilder → img/issues/{date}/")
+    print(f"Ausgabe {date}{(' [' + args.niche + ']') if args.niche else ''}: "
+          f"{len(s['updates'])} Updates, Bilder → img/issues/{sub}/")
 
-    out = REPO / "data" / f"issue-{date}-draft.html"
+    out = REPO / "data" / (f"issue-{args.niche}-{date}-draft.html" if args.niche
+                           else f"issue-{date}-draft.html")
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(render(s, date, imgdir), encoding="utf-8")
+    out.write_text(render(s, date, imgdir, sub), encoding="utf-8")
     voice_gate(plaintext(s))
     words = len(plaintext(s).split())
     print(f"✓ Ausgabe gebaut: {out.relative_to(REPO)} (~{words} Wörter)")

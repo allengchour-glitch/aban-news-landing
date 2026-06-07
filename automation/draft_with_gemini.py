@@ -62,7 +62,10 @@ ROHMATERIAL:
 """
 
 
-def latest_roh() -> Path | None:
+def latest_roh(niche: str | None = None) -> Path | None:
+    if niche:
+        nf = sorted(glob.glob(str(ROOT / f"news-roh-{niche}-*.md")))
+        return Path(nf[-1]) if nf else None
     files = sorted(glob.glob(str(ROOT / "news-roh-*.md")))
     # "news-roh-aktuell.md" bevorzugen, sonst das neueste datierte
     aktuell = ROOT / "news-roh-aktuell.md"
@@ -72,9 +75,14 @@ def latest_roh() -> Path | None:
 
 
 def main() -> int:
-    roh = latest_roh()
+    import argparse
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--niche", default=None, help="Nischen-ID (nutzt news-roh-<niche>-*.md)")
+    args = ap.parse_args()
+
+    roh = latest_roh(args.niche)
     if not roh:
-        print("Kein Rohmaterial (automation/news-roh-*.md) — erst news_aggregator.py laufen lassen.")
+        print("Kein Rohmaterial gefunden — erst news_aggregator.py (ggf. mit --niche) laufen lassen.")
         return 0
     material = roh.read_text(encoding="utf-8")[:12000]
     print(f"Rohmaterial: {roh.name} ({len(material)} Zeichen)")
@@ -83,14 +91,17 @@ def main() -> int:
         print("Weder GCP_SA_KEY noch GEMINI_API_KEY gesetzt → no-op (Exit 0).")
         return 0
 
+    prompt = PROMPT_HEADER
+    if args.niche:
+        prompt = f"ZIELGRUPPE dieser Ausgabe: {args.niche}. Halte alle Inhalte für diese Nische relevant.\n\n" + PROMPT_HEADER
     from gemini_text import generate  # Vertex → Developer-API → None
-    draft = generate(PROMPT_HEADER + material, max_tokens=4000, temperature=0.4, thinking_budget=0)
+    draft = generate(prompt + material, max_tokens=4000, temperature=0.4, thinking_budget=0)
     if not draft:
         print("::warning::Kein Text erzeugt (Vertex + Developer-API fehlgeschlagen) → kein Entwurf.")
         return 0
 
     today = dt.date.today().isoformat()
-    out = ROOT / f"entwurf-gemini-{today}.md"
+    out = ROOT / (f"entwurf-gemini-{args.niche}-{today}.md" if args.niche else f"entwurf-gemini-{today}.md")
     header = (f"# ENTWURF (Gemini) — {today}\n\n"
               "> ⚠️ NICHT senden. Erst selbst prüfen: Fakten gegen Quellen checken, kürzen, in deine Stimme bringen.\n"
               f"> Quelle Rohmaterial: {roh.name} · Modell: {MODEL}\n\n---\n\n")

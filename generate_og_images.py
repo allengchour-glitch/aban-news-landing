@@ -119,7 +119,7 @@ def build():
     make("og-chatgpt.png", "CHATGPT-GUIDE", "Echter Nutzen",
          ["ChatGPT für Solopreneure —", "7 Anwendungen, klare Grenzen"],
          "abannews.com  ·  ohne Prompt-Magie-Versprechen", title_size=96,
-         bg_hook="abstract soft speech bubbles, warm amber, minimal")
+         bg_hook="soft abstract amber gradient waves, minimal calm background")
     make("og-3d-druck.png", "3D-DRUCK & POD", "Mit KI Geld verdienen",
          ["Eigene Designs verkaufen —", "ohne eigene Maschine"],
          "abannews.com  ·  ehrlich gerechnet: Margen, Recht, Anbieter", title_size=92,
