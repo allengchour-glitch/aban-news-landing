@@ -82,8 +82,10 @@ def _vertex(prompt, out_path):
     project = os.environ.get("GCP_PROJECT", "").strip()
     if not info or not project:
         return None
-    location = os.environ.get("GCP_LOCATION", "us-central1")
-    model = os.environ.get("VERTEX_IMAGE_MODEL", "imagen-3.0-generate-002")
+    # .get(default) greift nicht, wenn die Var als LEERER String gesetzt ist
+    # (z. B. ${{ vars.GCP_LOCATION }} ohne hinterlegte Variable) → `or` fängt das ab.
+    location = (os.environ.get("GCP_LOCATION") or "us-central1").strip()
+    model = (os.environ.get("VERTEX_IMAGE_MODEL") or "imagen-3.0-generate-002").strip()
     try:
         from google.oauth2 import service_account
         import google.auth.transport.requests as gatr
@@ -110,6 +112,9 @@ def _vertex(prompt, out_path):
             data = json.loads(r.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         print(f"::warning::Vertex HTTP {e.code}: {e.read().decode('utf-8','ignore')[:300]}")
+        return None
+    except Exception as e:  # noqa: BLE001  (URLError/DNS/Timeout → Karte als Fallback statt Crash)
+        print(f"::warning::Vertex-Aufruf fehlgeschlagen ({location}/{model}): {e}")
         return None
     for p in data.get("predictions", []):
         b64 = p.get("bytesBase64Encoded") or p.get("image", {}).get("imageBytes")
