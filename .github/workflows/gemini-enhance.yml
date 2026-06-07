@@ -7,8 +7,6 @@ name: KI-Bild-Veredelung (Gemini)
 #
 # WICHTIG: Modell ist Gemini 2.5 Flash Image ("Nano Banana") via :generateContent — Bild-zu-Bild,
 # produkttreu. NICHT Imagen (das ist Text->Bild via :predict und erhält das Produktfoto nicht).
-# Modell-Default kommt aus dem Skript; per Repo-Variable GEMINI_IMAGE_MODEL nur überschreiben,
-# wenn es ein generateContent-fähiges Bild-Modell ist.
 
 on:
   schedule:
@@ -61,7 +59,8 @@ jobs:
           fi
           git config user.name "luxestyle-ki-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add social/enhanced social/posts_image.csv automation/.enhance_pointer
+          git add social/enhanced social/posts_image.csv 2>/dev/null || true
+          [ -f automation/.enhance_pointer ] && git add automation/.enhance_pointer || true
           git commit -m "chore(ki): veredelte Produktbilder + Queue [skip ci]" || { echo "nichts zu committen"; exit 0; }
           for i in 1 2 3 4 5; do
             if git push; then echo "gepusht."; break; fi
