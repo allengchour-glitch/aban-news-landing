@@ -16,6 +16,12 @@ Kanal = Haupt-Kanal `@allengchour` (umbenannt zu „ABAN Files").
 - **Öffentlich auf YT:** ep1–ep14 (+ ep12=RBEaa5csRWY, ep13=ye2sgjpUxv8 u.a. in `video_ids.json`).
 - **In der Queue (noch nicht gepostet):** ep15–ep36 → Cron (3×/Tag) postet automatisch.
 - ep14–ep36 mit Voice-Fixes; ep21–ep36 zusätzlich mit Pexels+Pixabay (mehr Auswahl).
+- **🆕 2026-06-07 — ep15–ep36 Skripte NEU (doppelt so lang + spannend + Abo-Schluss):**
+  Alle 22 Skripte nach **6-Beat-Formel** neu geschrieben (~1080–1140 Zeichen ≈ 150–170 s):
+  Cold-Open → Open Loop → Eskalation → Re-Hook (Mitte) → Cliffhanger → **gesprochener
+  SUBSCRIBE-Aufruf** (ersetzt „Check it out"). Renderer skaliert Länge automatisch.
+  **⚠️ ep15–ep36 müssen mit diesen neuen Skripten NEU gerendert werden** (alte `clips/ep15..36.mp4`
+  sind noch die kurzen Versionen) — Render braucht `XI`+`PEXELS`. ep1–ep14 bleiben (schon public).
 
 ## Pipeline-Features (alle in `aban_stock.py`)
 - Hook-Text in den ersten ~2.8 s (Retention).
@@ -28,7 +34,9 @@ Kanal = Haupt-Kanal `@allengchour` (umbenannt zu „ABAN Files").
   Ken-Burns-Zoom (z.B. Bundeshaus Bern, Spezial-Motive). KEIN Doku-Footage (Copyright!).
 - **ABAN deutsch ausgesprochen:** TTS bekommt „Ahbahn", Untertitel mappen zurück auf „ABAN".
 - **Keine verschluckten Enden:** Videolänge = `max(Alignment, echte Audiolänge)+0.6`.
-- Untertitel unten · Ambient-Musik · Dark-Grade. Länge: **neue Folgen ~75–90 s** (länger).
+- **SUBSCRIBE-Endcard** (neu): grosse zentrierte cyan Karte „▶ SUBSCRIBE / for the next ABAN file"
+  in den letzten ~3.6 s (ASS-Style `SUB`, Fade + Scale-Puls via `\t`); `TAG`-Logo blendet dafür aus.
+- Untertitel unten · Ambient-Musik · Dark-Grade. Länge: **neue ep15–ep36 ~150–170 s** (verdoppelt).
 
 ## Automatik
 - `aban-youtube.yml` (täglich): postet nächste Folge aus `clips/` (vorgerendert) via
