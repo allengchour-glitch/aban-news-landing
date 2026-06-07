@@ -22,6 +22,25 @@ Verifiziert im Workflow-Log (`telegram-autopost.yml`, Run 27079834486):
 - **🟡 Optional offen (User):** alten Key `a7be9889…` in GCP löschen (falls noch nicht); optional Variables `GCP_LOCATION=us-central1` + `VERTEX_IMAGE_MODEL=imagen-3.0-generate-002` setzen (nötig ist es nicht, Code hat Defaults).
 - **Workflows mit Vertex-Bild verdrahtet:** `telegram-autopost.yml`, `linkedin-autopost.yml`, `telegram-control.yml`, `gemini-content-engine.yml`, `gemini-draft.yml`, `gemini-growth-ideas.yml` (alle bekommen `GCP_SA_KEY`/`GCP_PROJECT`/`GCP_LOCATION`/`VERTEX_IMAGE_MODEL` + `pip install google-auth requests`).
 
+## 📌 Stand 2026-06-07 (Teil 8) — Bild-reiche Ausgaben + €9-Checkout + Lemon-Squeezy-Live-Zahlen
+- **Längere, bild-reiche Newsletter-Ausgaben:** `draft_with_gemini.py` schreibt jetzt **strukturiert**
+  (INTRO/UPDATE/WAS/QUELLE/BILD/TIEFER/TOOL/PROMPT/OUTRO), Ziel **1100–1300 Wörter** (maxTokens 4000),
+  „länger = mehr Erklärung, KEINE neuen Fakten". NEU `automation/build_issue.py` baut daraus eine fertige
+  HTML-Ausgabe (`data/issue-<DATUM>-draft.html`, NOINDEX, beehiiv-Copy-Paste) mit **Bildern pro Update**
+  (abwechselnd Pexels-Foto / Imagen-Illustration via `BILD:`-Hinweis), **Cover**, und **optionalem echten
+  Chart** nur wenn `automation/issue-data-<DATUM>.json` existiert (`gen_chart`, Quelle Pflicht → nie Fake).
+  Selbst gehostet `img/issues/<DATUM>/`, absolute URLs (laden in beehiiv+Web). Brand-Voice-Gate. Lokal getestet
+  (Karten-Fallback, Chart-Pfad). Workflow `gemini-draft.yml` erweitert (Bild-Secrets, committet issue+img).
+  Linter ignoriert `entwurf-gemini-*.md`. **Versand bleibt Mensch** (beehiiv).
+- **€9/€89-Premium-Checkout LIVE:** Lemon-Squeezy-Links in `js/pay-config.js` (Monats+Jahres), Startseiten-
+  Button mit Toggle aktiv. **Währung: international** — Seite zeigt **€**, LS (MoR) rechnet beim Checkout in
+  Landeswährung um + Steuer. 🟡 **User: beide LS-Produkte von CHF auf EUR stellen** (Anzeige=Abbuchung).
+  Founding bleibt €69. Hinweis „Preis in €; beim Checkout ggf. Landeswährung" auf index.
+- **Lemon-Squeezy Live-Zahlen:** `automation/ls_stats.py` → `data/ls-stats.json` (echte aktive Abos aus
+  LS-API, MRR-Schätzung aus Listenpreisen), läuft im **Autopilot** (Secret `LEMONSQUEEZY_API_KEY` aktiv),
+  erscheint im **`tools/status.py`**-Dashboard. No-op ohne Key. 🔴 Falls LS-API-Key je im Chat war → rotieren.
+- 🔑 **Webseiten-Bilder-Fortschritt:** ~150/262 Hub-Header-Bilder erzeugt (CI-Batches); Autopilot füllt täglich 25 nach.
+
 ## 📌 Stand 2026-06-07 (Teil 7) — Webseiten-Bilder + Effizienz-Tools
 - **Webseiten-Bilder (`automation/gen_site_images.py` + `.github/workflows/site-images.yml`):** Header-Bilder pro Seite, selbst gehostet in `img/site/`, idempotent nach erstem `</h1>` eingefügt (Marker `data-aban-hero`, lazy, object-fit). Quelle gemischt/budgetbewusst: **Hubs=Pexels (gratis), themen/index/founding=KI/Imagen (~$1)**. Workflow manuell + batch-fähig (Pexels-Limit ~200/h). Test (3 Hubs) ✅ echte Fotos. Volle Läufe gestartet (hub batch 150 + themen).
 - **Selbst-vervollständigend:** Autopilot füllt täglich **25 Hub-Bilder** per Pexels nach (`ABAN_IMG_BATCH`, idempotent) → die 262 Hubs komplettieren sich über ~Tage von selbst. `PEXELS_API_KEY` jetzt auch in autopilot.yml; Commit-Pfade um `img/` erweitert.
