@@ -56,11 +56,25 @@ BLOCK_TMPL = """<aside {marker} style="max-width:760px;margin:2.5rem auto;paddin
 """
 
 
+BLOCK_EN = """<aside {marker} style="max-width:760px;margin:2.5rem auto;padding:1.3rem 1.4rem;border:1px solid #ece3d4;border-radius:14px;background:#fffbf5">
+  <h2 style="margin:0 0 .5rem;font-size:1.15rem;color:#1f2937">Useful tools — free, no login</h2>
+  <p style="margin:0 0 .9rem;color:#374151;font-size:.96rem;line-height:1.6">Before you spend money on AI: use the free tools and check whether AI even mentions you. No sign-up.</p>
+  <p style="margin:0;display:flex;flex-wrap:wrap;gap:.55rem">
+    <a href="https://tools.abannews.com" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">AI tools directory →</a>
+    <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:transparent;color:#b45309;border:1px solid #fde9c8;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">Free newsletter →</a>
+  </p>
+  <p style="margin:.9rem 0 0;color:#374151;font-size:.9rem;line-height:1.55">Want more? Ready-made industry kits (cheat sheet + proven prompts + checklist) are in the <a href="/en/shop.html" style="color:#b45309;font-weight:600;text-decoration:none">Shop →</a></p>
+</aside>
+"""
+
+
 def slug_of(path: Path) -> str:
     return path.name[len("ki-fuer-"):-len(".html")]
 
 
-def block_for(slug: str) -> str:
+def block_for(slug: str, lang: str = "de") -> str:
+    if lang == "en":
+        return BLOCK_EN.format(marker=MARKER)
     shop = SHOP_TARGETED.format(slug=slug) if slug in KIT_SLUGS else SHOP_GENERIC
     return BLOCK_TMPL.format(marker=MARKER, shop_line=shop)
 
@@ -71,13 +85,15 @@ EXISTING = re.compile(r'<aside ' + re.escape(MARKER) + r'.*?</aside>\n?', re.S)
 
 def main():
     dry = "--dry" in sys.argv
-    files = sorted(glob.glob(str(ROOT / "ki-fuer-*.html")))
+    lang = "en" if "--lang" in sys.argv and "en" in sys.argv else "de"
+    base = ROOT / "en" if lang == "en" else ROOT
+    files = sorted(glob.glob(str(base / "ki-fuer-*.html")))
     inserted = updated = unchanged = skipped = targeted = 0
     for f in files:
         p = Path(f)
         s = p.read_text(encoding="utf-8")
-        block = block_for(slug_of(p))
-        if slug_of(p) in KIT_SLUGS:
+        block = block_for(slug_of(p), lang)
+        if lang == "de" and slug_of(p) in KIT_SLUGS:
             targeted += 1
         if MARKER in s:
             new = EXISTING.sub(lambda _m: block, s, count=1)
