@@ -38,7 +38,11 @@
   3. Sommer-Set «Riviera» `15421165502849` (25 Var, 29.90) · 4. Herren-Set «Resort» `15421165601153` (30 Var, 39.90)
   5. Long-Blazer «Milano» `15421165666689` (40 Var, 39.90) · 6. Kapuzen-Cardigan «Cosy» `15421165764993` (50 Var, 34.90).
   **Abgelehnt (nicht angelegt):** Zip-Hoodie «Graffiti» (`CJWY292387001AZ`) — Airbrush-Gesicht-Print = IP/Marken-
-  Risiko (§5) + schwaches Bild (auf schmutzigem Boden). cj-real: 171 → **177**.
+  Risiko (§5) + schwaches Bild (auf schmutzigem Boden).
+- **✅ Charge 2 (Accessoires, alter Key):** Henkeltasche «Lune» `15421166059905` (4 Farben, 24.90) +
+  Crossbody-Tasche «Nuit» `15421166092673` (3 Farben, 24.90) — live in 6 Kanälen. Abgelehnt: Clip-Ohrringe
+  (Wasserzeichen „Gu Xiang Li"), Kinder-Cartoon-Cap (Kids/IP §5), Deko-Gans-Kostüm (off-theme), Boston-Bag
+  (Dublette zu vorhandener «Lussa»). cj-real: 171 → **179**.
   ⚠️ Lehre: CJ-API-Key ≠ Konto-Passwort; liegt NUR im Developer-Portal (`developers.cjdropshipping.com` →
   `…/myCJ.html#/apikey`), Format `CJ<ID>@api@<32hex>`. Key nach Lauf rotieren. CJ-ID `CJ5452995`, Free-Tier.
   (Die anderen Lieferanten-Apps DSers/Printful/Gelato/Faire/DropCommerce sind **nicht** autonom ziehbar —
