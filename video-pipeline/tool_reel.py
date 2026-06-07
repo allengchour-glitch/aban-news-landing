@@ -115,7 +115,7 @@ def build_slides(t):
     specs = [
         dict(kicker="KI-TOOL", headline=f"Lohnt sich {t['name']}?", body=""),
         dict(kicker="WAS IST DAS", headline=t["name"], body=f"{t.get('vendor','')} · {cats}\nGut für: {uses}"),
-        dict(kicker="ABAN-URTEIL", headline=_score_str(score), body=_short(t.get("aban_note", ""), 240), accent=accent),
+        dict(kicker="ABAN-URTEIL", headline=_score_str(score), body=_short(t.get("aban_note", ""), 150), accent=accent),
         dict(kicker="MEHR DAVON", headline="Ehrlicher KI-Tool-Vergleich", body=f"{RADAR} · Newsletter auf {SITE}"),
     ]
     for i, s in enumerate(specs, 1):
