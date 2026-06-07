@@ -36,8 +36,10 @@
   },
   {
     "id": "tg-evg-prompt-rkb",
-    "status": "ready",
-    "text": "Der Unterschied zwischen einer mittelmäßigen und einer brauchbaren KI-Antwort sind meist drei Zeilen Kontext.\n\nViele tippen: „Schreib mir eine Angebots-Mail.“\nBesser:\n\n→ Rolle: „Du bist mein Vertriebsassistent.“\n→ Kontext: „Kunde ist ein Handwerksbetrieb, wir hatten ein Telefonat, er will ein Angebot für X.“\n→ Beispiel/Ton: „Sachlich, du-Form, max. 120 Wörter, kein Marketing-Sprech.“\n\nGleiches Modell, völlig andere Qualität — weil du der KI gibst, was ein Mitarbeiter auch bräuchte.\n\nSolche Handgriffe gibt's bei mir täglich in 5 Minuten: https://abannews.com\n\n#KI #Prompting #Produktivität #DACH"
+    "status": "posted",
+    "text": "Der Unterschied zwischen einer mittelmäßigen und einer brauchbaren KI-Antwort sind meist drei Zeilen Kontext.\n\nViele tippen: „Schreib mir eine Angebots-Mail.“\nBesser:\n\n→ Rolle: „Du bist mein Vertriebsassistent.“\n→ Kontext: „Kunde ist ein Handwerksbetrieb, wir hatten ein Telefonat, er will ein Angebot für X.“\n→ Beispiel/Ton: „Sachlich, du-Form, max. 120 Wörter, kein Marketing-Sprech.“\n\nGleiches Modell, völlig andere Qualität — weil du der KI gibst, was ein Mitarbeiter auch bräuchte.\n\nSolche Handgriffe gibt's bei mir täglich in 5 Minuten: https://abannews.com\n\n#KI #Prompting #Produktivität #DACH",
+    "posted_at": "2026-06-07T01:24:21Z",
+    "telegram_message_id": 13
   },
   {
     "id": "tg-evg-halluzination",
