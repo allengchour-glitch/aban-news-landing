@@ -51,9 +51,9 @@ _STYLES = [
     "und klar komponiert",
 ]
 _GUARD = (
-    "STRIKT: kein Text, keine Buchstaben, keine Logos, keine realen Gesichter/erkennbaren Personen, "
-    "keine erfundenen Diagramme, Zahlen, Screenshots oder Marken. Abstrakt-konzeptionell, seriös, "
-    "nicht reißerisch."
+    "Menschenleere Szene — nur Objekte, Umgebung oder abstrakte Formen, KEINE Personen, "
+    "keine Gesichter, keine Hände. STRIKT: kein Text, keine Buchstaben, keine Logos, keine "
+    "erfundenen Diagramme, Zahlen, Screenshots oder Marken. Seriös, nicht reißerisch."
 )
 
 
