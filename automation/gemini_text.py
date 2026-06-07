@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""aban news — Gemini-Textgenerierung, robust: Vertex AI zuerst, dann Developer-API.
+"""aban news — Gemini-Textgenerierung, robust gegen Modell-Deprecation + 404.
 
-Hintergrund: der Developer-API-Key (`generativelanguage`) liefert für manche Modelle 404;
-die Vertex-AI-Anbindung (Service-Account `GCP_SA_KEY`) funktioniert dagegen zuverlässig
-(gleiche Auth wie bei den Bildern). Reihenfolge: **Vertex (GCP_SA_KEY) → Developer-API (GEMINI_API_KEY) → None**.
+Probiert mehrere aktuelle Modelle der Reihe nach, je Modell zuerst **Vertex AI**
+(Service-Account `GCP_SA_KEY`) und dann die **Developer-API** (`GEMINI_API_KEY`).
+Hintergrund: `gemini-2.0-flash` wurde abgeschaltet → wir testen neuere Namen automatisch.
 
     from gemini_text import generate
     text = generate(prompt, max_tokens=4000, temperature=0.4)  # -> str | None
@@ -16,6 +16,15 @@ import os
 import urllib.error
 import urllib.request
 
+# Reihenfolge: Env-Override zuerst, dann aktuelle Kandidaten (robust gegen Deprecation).
+_BASE_MODELS = ["gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash-001", "gemini-1.5-flash"]
+
+
+def _candidates() -> list[str]:
+    env = (os.environ.get("VERTEX_TEXT_MODEL") or os.environ.get("GEMINI_MODEL") or "").strip()
+    out = ([env] if env else []) + [m for m in _BASE_MODELS if m != env]
+    return out
+
 
 def _parse(data: dict) -> str | None:
     try:
@@ -26,18 +35,16 @@ def _parse(data: dict) -> str | None:
         return None
 
 
-def _vertex(prompt: str, max_tokens: int, temperature: float) -> str | None:
+def _vertex(prompt: str, model: str, max_tokens: int, temperature: float) -> str | None:
     info = os.environ.get("GCP_SA_KEY", "").strip()
     project = os.environ.get("GCP_PROJECT", "").strip()
     if not info or not project:
         return None
     location = (os.environ.get("GCP_LOCATION") or "us-central1").strip()
-    model = (os.environ.get("VERTEX_TEXT_MODEL") or "gemini-2.0-flash").strip()
     try:
         from google.oauth2 import service_account
         import google.auth.transport.requests as gatr
     except Exception:  # noqa: BLE001
-        print("::warning::google-auth fehlt (pip install google-auth requests).")
         return None
     try:
         creds = service_account.Credentials.from_service_account_info(
@@ -52,44 +59,52 @@ def _vertex(prompt: str, max_tokens: int, temperature: float) -> str | None:
     body = {"contents": [{"role": "user", "parts": [{"text": prompt}]}],
             "generationConfig": {"temperature": temperature, "maxOutputTokens": max_tokens}}
     req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
-                                 headers={"Authorization": f"Bearer {token}",
-                                          "Content-Type": "application/json"})
+                                 headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"})
     try:
         with urllib.request.urlopen(req, timeout=120) as r:
-            data = json.loads(r.read().decode("utf-8"))
+            out = _parse(json.loads(r.read().decode("utf-8")))
+        if out:
+            print(f"(Vertex-Text {model} @ {location})")
+        return out
     except urllib.error.HTTPError as e:
-        print(f"::warning::Vertex-Text HTTP {e.code}: {e.read().decode('utf-8','ignore')[:200]}")
+        print(f"::warning::Vertex-Text {model} HTTP {e.code}: {e.read().decode('utf-8','ignore')[:120]}")
         return None
     except Exception as e:  # noqa: BLE001
-        print(f"::warning::Vertex-Text-Aufruf fehlgeschlagen: {e}")
+        print(f"::warning::Vertex-Text {model} Fehler: {e}")
         return None
-    out = _parse(data)
-    if out:
-        print(f"(Vertex-Text {model} @ {location})")
-    return out
 
 
-def _dev(prompt: str, max_tokens: int, temperature: float) -> str | None:
+def _dev(prompt: str, model: str, max_tokens: int, temperature: float) -> str | None:
     key = os.environ.get("GEMINI_API_KEY", "").strip()
     if not key:
         return None
-    model = (os.environ.get("GEMINI_MODEL") or "gemini-2.0-flash").strip()
-    url = (f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}")
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
     body = {"contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {"temperature": temperature, "maxOutputTokens": max_tokens}}
     req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
                                  headers={"Content-Type": "application/json"})
     try:
         with urllib.request.urlopen(req, timeout=120) as r:
-            return _parse(json.loads(r.read().decode("utf-8")))
+            out = _parse(json.loads(r.read().decode("utf-8")))
+        if out:
+            print(f"(Developer-API {model})")
+        return out
     except urllib.error.HTTPError as e:
-        print(f"::warning::Developer-API HTTP {e.code}: {e.read().decode('utf-8','ignore')[:200]}")
+        print(f"::warning::Developer-API {model} HTTP {e.code}: {e.read().decode('utf-8','ignore')[:120]}")
         return None
     except Exception as e:  # noqa: BLE001
-        print(f"::warning::Developer-API-Aufruf fehlgeschlagen: {e}")
+        print(f"::warning::Developer-API {model} Fehler: {e}")
         return None
 
 
 def generate(prompt: str, max_tokens: int = 4000, temperature: float = 0.4) -> str | None:
-    """Text erzeugen: Vertex (GCP_SA_KEY) → Developer-API (GEMINI_API_KEY) → None."""
-    return _vertex(prompt, max_tokens, temperature) or _dev(prompt, max_tokens, temperature)
+    """Text erzeugen: je Kandidaten-Modell Vertex → Developer-API. Erstes Ergebnis gewinnt."""
+    for model in _candidates():
+        out = _vertex(prompt, model, max_tokens, temperature)
+        if out:
+            return out
+        out = _dev(prompt, model, max_tokens, temperature)
+        if out:
+            return out
+    print("::warning::Kein Modell lieferte Text (alle Kandidaten 404/Fehler).")
+    return None
