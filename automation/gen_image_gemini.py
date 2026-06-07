@@ -21,7 +21,8 @@ import sys
 import urllib.error
 import urllib.request
 
-MODEL = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-2.0-flash-preview-image-generation")
+MODEL = os.environ.get("GEMINI_IMAGE_MODEL", "imagen-3.0-generate-002")
+ASPECT = os.environ.get("GEMINI_IMAGE_ASPECT", "1:1")
 
 PROMPT_TMPL = (
     "Erzeuge eine editoriale, minimalistische Illustration im warmen Kaffee-/Amber-Stil "
@@ -32,47 +33,67 @@ PROMPT_TMPL = (
     "nicht reißerisch."
 )
 
+BASE = "https://generativelanguage.googleapis.com/v1beta/models"
+
+
+def _save(out_path, b64):
+    with open(out_path, "wb") as f:
+        f.write(base64.b64decode(b64))
+    print(f"✓ Bild erzeugt: {out_path} (Modell {MODEL})")
+    return out_path
+
+
+def _imagen(api_key, prompt, out_path):
+    url = f"{BASE}/{MODEL}:predict?key={api_key}"
+    body = {"instances": [{"prompt": prompt}],
+            "parameters": {"sampleCount": 1, "aspectRatio": ASPECT}}
+    req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
+                                 headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=120) as r:
+        data = json.loads(r.read().decode("utf-8"))
+    preds = data.get("predictions") or []
+    for p in preds:
+        b64 = p.get("bytesBase64Encoded") or p.get("image", {}).get("imageBytes")
+        if b64:
+            return _save(out_path, b64)
+    print(f"::warning::Imagen ohne Bilddaten: {str(data)[:200]}")
+    return None
+
+
+def _gemini(api_key, prompt, out_path):
+    url = f"{BASE}/{MODEL}:generateContent?key={api_key}"
+    body = {"contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {"responseModalities": ["TEXT", "IMAGE"]}}
+    req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
+                                 headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=120) as r:
+        data = json.loads(r.read().decode("utf-8"))
+    for p in data.get("candidates", [{}])[0].get("content", {}).get("parts", []):
+        inline = p.get("inlineData") or p.get("inline_data")
+        if inline and inline.get("data"):
+            return _save(out_path, inline["data"])
+    print(f"::warning::Keine Bilddaten (generateContent): {str(data)[:150]}")
+    return None
+
 
 def make_image(hook: str, out_path: str):
-    """Gibt out_path zurück (Bild erzeugt) oder None (no-op/Fehler)."""
+    """Gibt out_path zurück (Bild erzeugt) oder None (no-op/Fehler).
+    imagen-* → :predict, sonst → :generateContent."""
     api_key = os.environ.get("GEMINI_API_KEY", "").strip()
     if not api_key:
         print("GEMINI_API_KEY nicht gesetzt → kein Bild (no-op).")
         return None
-
-    url = (f"https://generativelanguage.googleapis.com/v1beta/models/"
-           f"{MODEL}:generateContent?key={api_key}")
-    body = {
-        "contents": [{"parts": [{"text": PROMPT_TMPL.format(hook=hook[:300])}]}],
-        "generationConfig": {"responseModalities": ["TEXT", "IMAGE"]},
-    }
-    req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
-                                 headers={"Content-Type": "application/json"})
+    prompt = PROMPT_TMPL.format(hook=hook[:300])
     try:
-        with urllib.request.urlopen(req, timeout=90) as r:
-            data = json.loads(r.read().decode("utf-8"))
+        if MODEL.startswith("imagen"):
+            return _imagen(api_key, prompt, out_path)
+        return _gemini(api_key, prompt, out_path)
     except urllib.error.HTTPError as e:
-        print(f"::warning::Gemini-Image HTTP {e.code}: {e.read().decode('utf-8','ignore')[:300]}")
+        print(f"::warning::Image HTTP {e.code}: {e.read().decode('utf-8','ignore')[:300]}")
         return None
     except Exception as e:  # noqa: BLE001
-        print(f"::warning::Gemini-Image-Aufruf fehlgeschlagen: {e}")
+        print(f"::warning::Image-Aufruf fehlgeschlagen: {e}")
         return None
-
-    try:
-        parts = data["candidates"][0]["content"]["parts"]
-    except (KeyError, IndexError):
-        print(f"::warning::Unerwartete Gemini-Antwort: {str(data)[:200]}")
-        return None
-
-    for p in parts:
-        inline = p.get("inlineData") or p.get("inline_data")
-        if inline and inline.get("data"):
-            with open(out_path, "wb") as f:
-                f.write(base64.b64decode(inline["data"]))
-            print(f"✓ Bild erzeugt: {out_path} (Modell {MODEL})")
-            return out_path
-    print("::warning::Keine Bilddaten in der Antwort (Modell evtl. ohne Bild-Output/Freischaltung).")
-    return None
 
 
 if __name__ == "__main__":
