@@ -48,6 +48,8 @@
 > Ohne Secrets passiert **nichts Schlimmes**: alle Workflows sind no-op-safe (sauberer Leerlauf).
 
 ## 🚀 D. Aktivierung (damit der Cron überhaupt läuft)
+- 🛠️ **Queue pflegen:** `node automation/social-queue.mjs status|add|add-product|requeue`
+      (Bild-Posts einfach einreihen/erneut einreihen — schreibt `social/posts_image.csv`).
 - [ ] **Branch nach `main` mergen** (PR). Geplante GitHub Actions laufen NUR vom Default-Branch.
 - [ ] **GitHub Pages** muss den Repo-Root servieren (tut es bereits für `reels/`). Die Post-Bilder liegen
       unter `social/static/*.jpg` und sind dann öffentlich als `https://abannews.com/social/static/…` (Meta-JPG-Pflicht ✅).
