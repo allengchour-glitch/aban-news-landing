@@ -12,6 +12,30 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 🗂️ OFFENE AUFGABEN / BACKLOG (Stand 2026-06-07) — NUR auf Kommando des Users starten
+> Der User hat gesagt: **nichts anfangen, bis er es sagt.** Diese Liste ist der gesammelte Backlog.
+> Jeweils per Stichwort auslösbar.
+
+**Autonom (ich, sobald „los"):**
+1. `test` — kompletten Kauf→Download-Ablauf des Stripe-Shops prüfen (Browser Check A + Testkauf 4242…).
+2. `mehr kits` — weitere Branchen in den Shop (`data/kit-catalog.json` erweitern → Workflow „Stripe-Shop").
+3. `hubs verlinken` — Shop-Link in alle 262 `ki-fuer-*`-Hubs (interner Verkaufs-Funnel).
+4. `muster` — GEO-Beispielreport für 1 Berner Firma erzeugen (Demo zum Verschicken).
+5. `geo-cron` — monatlicher GEO-Report-Workflow (`automation/geo_report.py`).
+6. `promote` — gesendete Newsletter-Ausgabe ins öffentliche Archiv (`build_issue.py --promote`) — NACH Versand.
+7. `nischen ausbau` — `--niche`-Flag in news_aggregator/draft für echte Nischen-Newsletter.
+8. `bausatz` — Autopilot-Template fertig (Lizenz/Listing) für Verkauf.
+9. `lead-magnete` — mehr Branchen-PDFs/Pakete generieren.
+10. `og-chatgpt` — OG-Bild chatgpt erneut mit Imagen (war zuletzt Filter→Flach-Fallback).
+
+**Nur User (extern):** TWINT-Freischaltung abwarten (in Prüfung) · Cloudflare-Env für Download bestätigen
+(Check A) · `sk_live_` ist aktiv (Shop live) · optional `CF_TOKEN` (Analytics) + LinkedIn-Token · 3 Wachstums-
+Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe senden.
+
+**Schon erledigt (nicht offen):** verwaiste Hubs 201→0, €9/89-Checkout live, CHF+TWINT-Code, Bild-Pipeline
+(Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
+
+
 ## 📌 Stand 2026-06-07 (Teil 10) — Vollautonomer Stripe-Shop (Tool)
 Auf Wunsch „bau ein Tool, das das autonom macht": **Stripe** statt Lemon Squeezy, weil Stripe Produkte/
 Preise/Bezahllinks **per API** erlaubt (LS nicht — daher dort 1 manueller Upload nötig).
