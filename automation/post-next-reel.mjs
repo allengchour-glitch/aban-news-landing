@@ -20,8 +20,11 @@ import fs from 'node:fs';
 
 const CSV = new URL('./reels_seed.csv', import.meta.url).pathname;
 const WEBHOOK = process.env.PUBLISH_WEBHOOK_URL || process.env.MAKE_REEL_WEBHOOK || '';
-const TG_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '';
-const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
+// Telegram-Ping pro Reel ist STANDARD AUS (User-Wunsch: nur 1×/Tag Telegram = Tages-Digest
+// reel-analytics.mjs). Opt-in über REEL_TELEGRAM_PING=1, falls man doch je Post eine Meldung will.
+const TG_PING = process.env.REEL_TELEGRAM_PING === '1';
+const TG_TOKEN = TG_PING ? (process.env.TELEGRAM_BOT_TOKEN || '') : '';
+const TG_CHAT = TG_PING ? (process.env.TELEGRAM_CHAT_ID || '') : '';
 const DRY = process.env.DRY_RUN === '1';
 const COLS = ['id','scheduled_date','video_url','caption','hashtags','platforms','status','posted_at','post_url'];
 

@@ -1,0 +1,35 @@
+name: Reviews-Import (echte Judge.me-Reviews)
+
+# Importiert ECHTE Bewertungen aus dropship/reviews_seed.json via Judge.me-API.
+# Manuell startbar. No-op-safe: ohne Secret/Seed passiert nichts.
+# Secrets nötig: JUDGEME_PRIVATE_TOKEN  (·optional JUDGEME_SHOP_DOMAIN, default au3j0y-hq.myshopify.com)
+#               ·optional TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID für den Report.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur testen (nichts senden)?'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Reviews importieren
+        env:
+          JUDGEME_PRIVATE_TOKEN: ${{ secrets.JUDGEME_PRIVATE_TOKEN }}
+          JUDGEME_SHOP_DOMAIN: ${{ secrets.JUDGEME_SHOP_DOMAIN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node automation/reviews-import.mjs
