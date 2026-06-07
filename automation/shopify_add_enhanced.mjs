@@ -8,14 +8,19 @@
  * Login wie automation/site-health.mjs: Client-Credentials-Grant ODER statischer Admin-Token.
  * No-op-safe: ohne Shopify-Creds sauberer Leerlauf.
  *
- * ENV: SHOPIFY_SHOP (z.B. au3j0y-hq.myshopify.com — Protokoll/Pfad werden automatisch entfernt) ·
+ * ENV: SHOPIFY_SHOP (myshopify-Domain; Protokoll/Pfad werden entfernt, Custom-Domain → Fallback) ·
  *      SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET (oder SHOPIFY_ADMIN_TOKEN) · OUT_BASE_URL · DRY_RUN=1
  */
 import fs from 'node:fs';
 import path from 'node:path';
 
-// SHOPIFY_SHOP robust säubern: https:// / http:// / Pfade / Leerzeichen entfernen → nur Hostname.
-const SHOP = (process.env.SHOPIFY_SHOP || '').trim().replace(/^https?:\/\//i, '').replace(/\/.*$/, '').replace(/\s+/g, '');
+// Das Admin-API braucht die *.myshopify.com-Domain (NICHT luxestyle.ch). Bekannter Shop aus dem Runbook.
+const SHOP_FALLBACK = 'au3j0y-hq.myshopify.com';
+let SHOP = (process.env.SHOPIFY_SHOP || '').trim().replace(/^https?:\/\//i, '').replace(/\/.*$/, '').replace(/\s+/g, '');
+if(!/\.myshopify\.com$/i.test(SHOP)){
+  if(SHOP) console.log(`Hinweis: SHOPIFY_SHOP="${SHOP}" ist keine .myshopify.com-Domain → nutze bekannten Shop ${SHOP_FALLBACK}.`);
+  SHOP = SHOP_FALLBACK;
+}
 const TOK_STATIC = (process.env.SHOPIFY_ADMIN_TOKEN || '').trim();
 const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
 const CSECRET = (process.env.SHOPIFY_CLIENT_SECRET || '').trim();
@@ -27,16 +32,12 @@ const ROOT = path.dirname(HERE);
 const MANIFEST = path.join(ROOT, 'social', 'enhanced', '_manifest.csv');
 const LEDGER = path.join(ROOT, 'social', 'enhanced', '_added.txt');
 
-if(!SHOP || (!TOK_STATIC && !(CID && CSECRET))){
-  console.log('Keine Shopify-Creds (SHOPIFY_SHOP + CLIENT_ID/SECRET oder ADMIN_TOKEN) → No-op. Bilder bleiben in social/enhanced + auf Social.');
+if(!TOK_STATIC && !(CID && CSECRET)){
+  console.log('Keine Shopify-Creds (CLIENT_ID/SECRET oder ADMIN_TOKEN) → No-op. Bilder bleiben in social/enhanced + auf Social.');
   process.exit(0);
-}
-if(!/\.myshopify\.com$/i.test(SHOP)){
-  console.log(`⚠️  SHOPIFY_SHOP="${SHOP}" endet nicht auf .myshopify.com — das Admin-API braucht die *.myshopify.com-Domain (z.B. au3j0y-hq.myshopify.com), NICHT die Custom-Domain. Versuche es trotzdem…`);
 }
 if(!fs.existsSync(MANIFEST)){ console.log('Kein _manifest.csv → nichts hinzuzufügen.'); process.exit(0); }
 
-// fetch mit kleinem Retry gegen transiente DNS/Netz-Fehler (EAI_AGAIN).
 async function fetchRetry(url, opts, tries=3){
   let lastErr;
   for(let i=0;i<tries;i++){
@@ -71,6 +72,7 @@ function readManifest(){
 }
 function ledger(){ try{ return new Set(fs.readFileSync(LEDGER,'utf8').split('\n').map(s=>s.trim()).filter(Boolean)); }catch{ return new Set(); } }
 
+console.log(`Shop: ${SHOP} · Auth: ${TOK_STATIC?'Admin-Token':'Client-Credentials'}`);
 const done = ledger();
 const items = readManifest().filter(m => !done.has(m.name));
 const uniq = [...new Map(items.map(m=>[m.name,m])).values()];
