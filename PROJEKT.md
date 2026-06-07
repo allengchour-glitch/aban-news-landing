@@ -22,6 +22,12 @@ Verifiziert im Workflow-Log (`telegram-autopost.yml`, Run 27079834486):
 - **🟡 Optional offen (User):** alten Key `a7be9889…` in GCP löschen (falls noch nicht); optional Variables `GCP_LOCATION=us-central1` + `VERTEX_IMAGE_MODEL=imagen-3.0-generate-002` setzen (nötig ist es nicht, Code hat Defaults).
 - **Workflows mit Vertex-Bild verdrahtet:** `telegram-autopost.yml`, `linkedin-autopost.yml`, `telegram-control.yml`, `gemini-content-engine.yml`, `gemini-draft.yml`, `gemini-growth-ideas.yml` (alle bekommen `GCP_SA_KEY`/`GCP_PROJECT`/`GCP_LOCATION`/`VERTEX_IMAGE_MODEL` + `pip install google-auth requests`).
 
+## 📌 Stand 2026-06-07 (Teil 5) — Konsistenz-Guard, lebhaftere Bilder, themen-Verlinkung
+- **#3 Konsistenz-Check (`tools/consistency_check.py` → `reports/CONSISTENCY.md`, im Autopilot):** prüft Preise (Founding €69 · Premium €9/Mt · €89/Jahr) + Garantie (30 Tage) site-weit gegen kanonische Werte, ignoriert Spannen („€5–€10") und Fremdprodukte (kurs.html=€59/14T, ebook/buch, launch-manual intern). Fand & behoben: **`en/faq.html` 14→30 Tage**. Jetzt ✅ keine Abweichungen. `--strict` = CI-tauglich (Exit 1). Verhindert künftige Preis/Garantie-Drifts automatisch.
+- **#2 Lebhaftere Bilder (`gen_image_gemini.py`):** 5 Stil-Varianten neu = fotorealistisch-warm / farbenfroh-flach / isometrisch-3D / cineastisches Stillleben / Papier-Collage (satte Farben, warmes Licht) statt vorher „minimal/ruhig". Weiterhin **keine Gesichter/Text/Zahlen** (Guardrail). Live verifiziert. **Option offen:** echte Stockfotos via Pexels/Unsplash (gratis API) — nur auf Wunsch, da Quellen-Pflicht + extra Key.
+- **#1 themen-Verlinkung (`tools/related_themen.py`, im Autopilot):** „Verwandte Themen"-Ring (je 5 Querverweise) in alle **21 `themen/`-Artikel** → kein verwaister Artikel, besserer Crawl. Idempotent, 0 defekte Links.
+- **Autopilot** ruft jetzt zusätzlich `consistency_check` + `related_themen`.
+
 ## 📌 Stand 2026-06-07 (Teil 4) — Ehrlichkeits-Pass: Founding & Pricing entschönt
 **Auftrag „ehrlich machen + überall verbessern".** Auf den Verkaufsseiten standen Versprechen, die bei
 0 Abonnenten/Solo nicht existieren können → entfernt/ehrlich umformuliert (Markenregel: keine Fake-Claims):
