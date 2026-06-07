@@ -26,7 +26,11 @@
 import fs from 'node:fs';
 
 const CSV = new URL('../social/posts_tiktok.csv', import.meta.url).pathname;
-const TOKEN = process.env.TIKTOK_ACCESS_TOKEN || '';
+let TOKEN = process.env.TIKTOK_ACCESS_TOKEN || '';
+// Empfohlen für den Cron: Refresh-Token (365 Tage gültig) statt 24h-Access-Token.
+const CK = process.env.TIKTOK_CLIENT_KEY || '';
+const CS = process.env.TIKTOK_CLIENT_SECRET || '';
+const RT = process.env.TIKTOK_REFRESH_TOKEN || '';
 const PRIVACY = process.env.TIKTOK_PRIVACY || 'PUBLIC_TO_EVERYONE';
 const MAX = Math.max(1, parseInt(process.env.MAX_PER_RUN || '1', 10) || 1);
 const DRY = process.env.DRY_RUN === '1';
@@ -47,7 +51,18 @@ function parse(text){
 function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
 function serialize(rows){ return rows.map(r=>r.map(esc).join(',')).join('\n')+'\n'; }
 
-if(!TOKEN && !DRY){ console.log('Kein TIKTOK_ACCESS_TOKEN → No-op (nichts gepostet). Siehe USER-CHECKLISTE §TikTok.'); process.exit(0); }
+// Access-Token bei Bedarf aus dem Refresh-Token holen (24h-Tokens taugen nicht für einen Cron).
+if(!TOKEN && CK && CS && RT && !DRY){
+  try{
+    const body = new URLSearchParams({ client_key:CK, client_secret:CS, grant_type:'refresh_token', refresh_token:RT });
+    const r = await fetch('https://open.tiktokapis.com/v2/oauth/token/', {
+      method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body });
+    const j = await r.json().catch(()=>({}));
+    if(r.ok && j.access_token){ TOKEN = j.access_token; console.log('TikTok: Access-Token via Refresh-Token erneuert (gültig', j.expires_in, 's).'); }
+    else console.error('TikTok-Token-Refresh fehlgeschlagen:', r.status, JSON.stringify(j));
+  }catch(e){ console.error('TikTok-Token-Refresh Netzfehler:', e.message); }
+}
+if(!TOKEN && !DRY){ console.log('Kein TIKTOK_ACCESS_TOKEN bzw. CLIENT_KEY/SECRET+REFRESH_TOKEN → No-op. Siehe USER-CHECKLISTE §TikTok.'); process.exit(0); }
 if(!fs.existsSync(CSV)){ console.log('Keine social/posts_tiktok.csv → nichts zu tun.'); process.exit(0); }
 
 const rows = parse(fs.readFileSync(CSV,'utf8'));
