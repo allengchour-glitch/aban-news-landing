@@ -84,7 +84,7 @@ def main() -> int:
         return 0
 
     from gemini_text import generate  # Vertex → Developer-API → None
-    draft = generate(PROMPT_HEADER + material, max_tokens=4000, temperature=0.4)
+    draft = generate(PROMPT_HEADER + material, max_tokens=4000, temperature=0.4, thinking_budget=0)
     if not draft:
         print("::warning::Kein Text erzeugt (Vertex + Developer-API fehlgeschlagen) → kein Entwurf.")
         return 0
