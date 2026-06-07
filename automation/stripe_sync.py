@@ -92,8 +92,14 @@ def main() -> int:
             print(f"::warning::Stripe {slug}: {e}")
             continue
         sym = SYM.get(cur, cur.upper() + " ")
-        products.append({"slug": slug, "title": title, "desc": kit.get("desc", ""),
-                         "price": f"{sym}{cents/100:.0f}", "buy": state[slug]["link"]})
+        entry = {"slug": slug, "title": title, "desc": kit.get("desc", ""),
+                 "price": f"{sym}{cents/100:.0f}", "buy": state[slug]["link"]}
+        if kit.get("bundle"):
+            entry["bundle"] = True
+        products.append(entry)
+
+    # Bundle-Angebote zuerst anzeigen (Spar-Angebot oben).
+    products.sort(key=lambda p: 0 if p.get("bundle") else 1)
 
     STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     OUT.write_text(json.dumps(products, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

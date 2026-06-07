@@ -60,7 +60,9 @@
       el.innerHTML=items.map(function(p){
         var btn=p.buy?('<a class="btn" href="'+p.buy+'" target="_blank" rel="noopener">Kaufen — '+p.price+'</a>')
                      :('<span class="btn soon">Bald verfügbar</span>');
-        return '<div class="card" id="kit-'+p.slug+'" style="scroll-margin-top:1.5rem"><h2>'+p.title+'</h2><p>'+p.desc+'</p><div class="price">'+p.price+'</div>'+btn+'</div>';
+        var badge=p.bundle?'<span style="display:inline-block;background:#b45309;color:#fff;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:99px;margin-bottom:.5rem">SPAR-PAKET</span><br>':'';
+        var style='scroll-margin-top:1.5rem'+(p.bundle?';border-color:#b45309;box-shadow:0 0 0 2px rgba(180,83,9,.12)':'');
+        return '<div class="card" id="kit-'+p.slug+'" style="'+style+'">'+badge+'<h2>'+p.title+'</h2><p>'+p.desc+'</p><div class="price">'+p.price+'</div>'+btn+'</div>';
       }).join('');
       // Kommt der Besucher per #kit-<slug> aus einem Branchen-Hub: Karte hervorheben.
       if(location.hash){

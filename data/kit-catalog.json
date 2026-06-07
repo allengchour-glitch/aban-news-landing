@@ -9,5 +9,6 @@
   {"slug":"friseure","title":"KI-Starter-Kit für Friseure & Salons","desc":"Social-Posts, Bewertungen, Terminmails.","price_cents":1200,"currency":"chf"},
   {"slug":"fotografen","title":"KI-Starter-Kit für Fotografen","desc":"Angebote, Bildtexte, Kundenkommunikation.","price_cents":1200,"currency":"chf"},
   {"slug":"architekten","title":"KI-Starter-Kit für Architekturbüros","desc":"Texte, Ausschreibungen, Recherche — mit Grenzen.","price_cents":1200,"currency":"chf"},
-  {"slug":"fitnessstudios","title":"KI-Starter-Kit für Fitnessstudios","desc":"Social, Mitglieder-Mails, Kurs-Beschreibungen.","price_cents":1200,"currency":"chf"}
+  {"slug":"fitnessstudios","title":"KI-Starter-Kit für Fitnessstudios","desc":"Social, Mitglieder-Mails, Kurs-Beschreibungen.","price_cents":1200,"currency":"chf"},
+  {"slug":"alle-kits","title":"Alle KI-Starter-Kits (Bundle)","desc":"Alle Branchen-Kits zusammen — deutlich günstiger als einzeln. Spickzettel, Prompts & Checklisten für jede Branche.","price_cents":7900,"currency":"chf","bundle":true}
 ]
