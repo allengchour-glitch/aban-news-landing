@@ -4,6 +4,11 @@ name: KI-Bild-Veredelung (Gemini)
 # + Queue social/posts_image.csv mit Produktlink füllen (Meta-Autopilot postet sie gedrosselt).
 # Danach (falls Shopify-Creds gesetzt) das veredelte Bild zusätzlich ans Produkt hängen.
 # No-op ohne GEMINI_API_KEY.
+#
+# WICHTIG: Modell ist Gemini 2.5 Flash Image ("Nano Banana") via :generateContent — Bild-zu-Bild,
+# produkttreu. NICHT Imagen (das ist Text->Bild via :predict und erhält das Produktfoto nicht).
+# Modell-Default kommt aus dem Skript; per Repo-Variable GEMINI_IMAGE_MODEL nur überschreiben,
+# wenn es ein generateContent-fähiges Bild-Modell ist.
 
 on:
   schedule:
@@ -12,6 +17,10 @@ on:
     inputs:
       only:
         description: 'Gezielt (Komma-Liste names aus good_products.csv), leer = rotierend 5'
+        type: string
+        default: ''
+      model:
+        description: 'Bild-Modell (leer = Skript-Default gemini-2.5-flash-image)'
         type: string
         default: ''
       dry_run:
@@ -36,10 +45,10 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Veredeln (Gemini 2.5 Flash Image)
+      - name: Veredeln (Gemini 2.5 Flash Image / Nano Banana)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_IMAGE_MODEL: ${{ vars.GEMINI_IMAGE_MODEL }}
+          GEMINI_IMAGE_MODEL: ${{ inputs.model }}
           ENHANCE_ONLY: ${{ inputs.only }}
           BATCH: '5'
           DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
@@ -61,7 +70,7 @@ jobs:
 
       - name: Warten auf GitHub Pages (Bild-URL live)
         if: ${{ !inputs.dry_run }}
-        run: sleep 120
+        run: sleep 90
 
       - name: Bild ans Shopify-Produkt hängen (no-op ohne Creds)
         env:
