@@ -33,6 +33,15 @@ Kanal = Haupt-Kanal (umbenannt zu „ABAN Files").
   Caption-Stroke verstärkt (pure-black Outline 5/Shadow 4). Endcard: „▶ SUBSCRIBE / before they erase this".
   **⚠️ ep15–ep36 müssen mit diesen Skripten NEU gerendert werden** (Render braucht `XI`+`PEXELS`).
   ep1–ep14 bleiben (schon public).
+- **🆕 2026-06-07 Render-Fortschritt + ElevenLabs-Quota-Wand:**
+  - **NEU & gut gerendert (~50–60 s, Gemini-optimiert):** ep15, ep16, ep17, ep18, ep20.
+  - **NOCH NEU zu rendern** (clips/ aktuell = valide ALT-Versionen, nicht die neuen Skripte):
+    **ep19, ep21, ep22, ep23–ep36** (17 Folgen).
+  - **🔴 ElevenLabs-Gratis-Quota (38.808 Zeichen) ERSCHÖPFT** (viel beim ep20-Debugging verbraucht).
+    Weiter-Rendern erst nach **Monats-Reset** ODER mit neuem/upgegradetem `XI`-Key.
+  - **Renderer ist jetzt ROBUST** (committet): Segment-Decode-Validierung (korrupte Downloads→dunkler
+    Füller), `-t total` statt `-shortest`, einheitlich yuv420p (concat+mux), tpad-Pad. → keine
+    abgeschnittenen Folgen mehr. Nächste Session: einfach ep19/21/22/23–36 rendern (Quota vorausgesetzt).
 
 ## Pipeline-Features (alle in `aban_stock.py`)
 - Hook-Text in den ersten ~2.8 s (Retention).
