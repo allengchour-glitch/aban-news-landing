@@ -49,11 +49,31 @@ def _ss(t):
 
 
 # ---- Bausteine (auch von reel.py genutzt) -----------------------------------
-def still_to_segment(img, dur, out):
-    """Standbild → Videosegment der Länge dur (9:16, yuv420p)."""
+def still_to_segment(img, dur, out, motion=True, idx=0, n=1, fade=0.4):
+    """Standbild → Videosegment der Länge dur (9:16, yuv420p).
+
+    motion=True: dezenter Ken-Burns-Zoom (gegen den „statisch/langweilig"-Look),
+    Drift-Richtung alterniert je Slide. Ein-/Ausblende nur am ersten/letzten Slide.
+    """
     ff = get_ffmpeg()
+    frames = max(1, int(round(dur * FPS)))
+    if motion:
+        # 20 % Auflösungs-Reserve, damit der Zoom nicht weichzeichnet
+        drift = 70 if idx % 2 == 0 else -70
+        z = "min(zoom+0.0008,1.12)"
+        x = f"iw/2-(iw/zoom/2)+{drift}*on/{frames}"
+        y = "ih/2-(ih/zoom/2)"
+        vf = (f"scale={int(W*1.2)}:{int(H*1.2)},"
+              f"zoompan=z='{z}':d={frames}:x='{x}':y='{y}':s={W}x{H}:fps={FPS}")
+        if idx == 0:
+            vf += f",fade=t=in:st=0:d={fade}"
+        if idx == n - 1:
+            vf += f",fade=t=out:st={max(0, dur - fade):.2f}:d={fade}"
+        vf += ",format=yuv420p"
+    else:
+        vf = f"{VERTICAL_VF},format=yuv420p"
     run([ff, "-y", "-loop", "1", "-i", str(img), "-t", f"{dur:.2f}",
-         "-vf", f"{VERTICAL_VF},format=yuv420p",
+         "-vf", vf,
          "-an", "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", str(out)])
     return out
 

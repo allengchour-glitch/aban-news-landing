@@ -132,7 +132,7 @@ def render(case_id, out=None, voice=False, ambient=True, gain=0.12, from_dir=Non
     segs = []
     for i, (img, d) in enumerate(zip(slides, durs)):
         seg = os.path.join(work, f"seg_{i}.mp4")
-        still_to_segment(img, d, seg)
+        still_to_segment(img, d, seg, idx=i, n=len(slides))
         segs.append(seg)
     base = os.path.join(work, "base.mp4")
     concat_demux(segs, base)
