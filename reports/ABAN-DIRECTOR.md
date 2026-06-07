@@ -13,6 +13,7 @@ Kanal-Start: 2026-06-03 · Tag 4 · letzte Auswertung 2026-06-07 (UTC)
 
 | Zeit (UTC) | Tag | Views | Top | Entscheidung |
 |---|--:|--:|---|---|
+| 2026-06-07T16:55Z | 4 | 0 | ?(0) | ⚠️ Schwache Fruehphase (best 0). Aktion: Hooks/Themen variieren, |
 | 2026-06-07T10:16Z | 4 | 0 | ?(0) | ⚠️ Schwache Fruehphase (best 0). Aktion: Hooks/Themen variieren, |
 | 2026-06-06T23:43Z | 3 | 0 | ?(0) | ⚠️ Schwache Fruehphase (best 0). Aktion: Hooks/Themen variieren, |
 | 2026-06-06T16:02Z | 3 | 0 | ?(0) | ⚠️ Schwache Fruehphase (best 0). Aktion: Hooks/Themen variieren, |
