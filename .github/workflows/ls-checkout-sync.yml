@@ -1,0 +1,38 @@
+name: Lemon-Squeezy Checkout-Links sync
+
+# Holt die Checkout-Links der Produkte aus deinem Lemon-Squeezy-Store (per API,
+# Secret LEMONSQUEEZY_API_KEY) und traegt sie automatisch in js/checkout-config.js
+# ein. Sobald ein Produkt (Monitor/Paket/…) im Store existiert, wird sein Button
+# von selbst live — ohne Link-Kopieren. Neue Produkte ANLEGEN geht nur im Dashboard.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1'   # woechentlich, Mo 06:00 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Checkout-Links syncen
+        env:
+          LEMONSQUEEZY_API_KEY: ${{ secrets.LEMONSQUEEZY_API_KEY }}
+        run: python3 automation/ls_sync_checkouts.py
+      - name: Aenderungen committen
+        run: |
+          if [ -n "$(git status --porcelain js/checkout-config.js)" ]; then
+            git config user.name "ls-sync-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add js/checkout-config.js
+            git commit -m "checkout: Lemon-Squeezy-Links automatisch verdrahtet [skip ci]"
+            git push
+          else
+            echo "Keine Aenderung an js/checkout-config.js."
+          fi
