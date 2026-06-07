@@ -43,6 +43,27 @@ Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe s
 (Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
 
 
+## 📌 Stand 2026-06-07 (Teil 14) — Hub-Welle, AGB, Shop-SEO, EN-Funnel (Loop-Runde)
+User: „Hintergrundaufgaben fertig + andere, gemütlich weiter, dann loop". Erledigt & gemerged:
+- **6 neue Branchen-Hubs** (PR #397) via parallele Agenten gebaut + voll integriert: Osteopathen, Masseure,
+  Tierheilpraktiker, Orthopädie-Schuhtechnik, Tierphysiotherapie, Kinderbetreuung. Je 5 Use-Cases + FAQ +
+  JSON-LD + OG-Bild + Lead-Magnet-PDF + Funnel + Querverlinkung + Sitemap. **262 → 268 Hubs**, Audit sauber.
+  (Hero-Bilder überlässt der site-images-Workflow mit Keys; hreflang/Sprachschalter auf existierende Ziele.)
+- **AGB & Widerruf** (`agb.html`, PR #397) für digitale Shop-Produkte (CH-Recht, Widerruf bei Downloads) →
+  Shop-Footer + Sitemap. ⚠️ vor scharfem Verkauf anwaltlich gegenlesen lassen.
+- **Shop-SEO** (PR #398): FAQ-Sektion + **FAQPage-JSON-LD** auf shop.html **und** en/shop.html (Rich-Results).
+- **EN-Funnel** (PR #399): `add_branchen_funnel.py --lang en` → Tools-/Shop-CTA (`/en/shop.html`) in allen
+  262 EN-Hubs (internationaler Funnel).
+- **⚠️ Kein Scheduler** (`ScheduleWakeup`/`CronCreate`) in dieser Umgebung → echter Timer-Loop nicht möglich.
+  „Loop" = synchron Iteration für Iteration, solange der User „weiter" sagt. Pro Iteration: frischer Branch →
+  PR → merge_pull_request → unsubscribe. **Lehre:** für jede Iteration WIRKLICH neuen Branch anlegen
+  (einmal versehentlich auf den schon gemergten FAQ-Branch committet — ging gut, weil main den Inhalt schon hatte).
+- **Offene Loop-Kandidaten (ehrlich, ohne Keys):** Product/Offer-JSON-LD auf shop (dynamische Preise → statisch
+  riskant, zurückgestellt); Cloudflare-Web-Analytics-Snippet (no-op bis Token); shop_selfcheck+growth_audit ins
+  Autopilot-Self-Monitoring; EN-Deep-Links Hub→eigenes en-Kit; weitere distinkte Hubs; Performance-Kleinfixes.
+- **Geld-Hebel weiterhin nur beim User:** Stripe-Workflow starten (DE+EN inkl. Bundle), Cloudflare-radar-Token,
+  Secrets, erste Ausgabe senden.
+
 ## 📌 Stand 2026-06-07 (Teil 13) — 4 Zusatz-Verbesserungen (schnellste zuerst) + International
 User: „alle vier, schnellste zuerst, am Schluss Memory speichern". Auf Branch `claude/go-live-bundle-leadmagnets`:
 - **(1) Go-Live-Selbsttest:** `tools/shop_selfcheck.py` prüft Konsistenz Katalog ↔ Live-Produkte ↔ ZIPs ↔
