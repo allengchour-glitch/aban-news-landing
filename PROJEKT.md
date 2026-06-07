@@ -17,16 +17,20 @@
 > Jeweils per Stichwort auslösbar.
 
 **Autonom (ich, sobald „los"):**
-1. `test` — kompletten Kauf→Download-Ablauf des Stripe-Shops prüfen (Browser Check A + Testkauf 4242…).
+1. ✅ `test` — Shop-Struktur verifiziert (5 ZIPs ↔ 5 Live-Stripe-Links CHF 12 ↔ Gate-Hash stimmen überein).
+   Offen nur Browser-Live-Test (Cloudflare blockt meinen Fetcher): `…/api/kit-download?session_id=cs_test_123abc`
+   muss `{"error":"Zahlung nicht gefunden."}` liefern. (Erledigt im Batch „1 7 10", PR #387.)
 2. `mehr kits` — weitere Branchen in den Shop (`data/kit-catalog.json` erweitern → Workflow „Stripe-Shop").
 3. `hubs verlinken` — Shop-Link in alle 262 `ki-fuer-*`-Hubs (interner Verkaufs-Funnel).
 4. `muster` — GEO-Beispielreport für 1 Berner Firma erzeugen (Demo zum Verschicken).
 5. `geo-cron` — monatlicher GEO-Report-Workflow (`automation/geo_report.py`).
 6. `promote` — gesendete Newsletter-Ausgabe ins öffentliche Archiv (`build_issue.py --promote`) — NACH Versand.
-7. `nischen ausbau` — `--niche`-Flag in news_aggregator/draft für echte Nischen-Newsletter.
+7. ✅ `nischen ausbau` — `--niche` jetzt durchgängig in news_aggregator/draft_with_gemini/build_issue
+   (eigenes Rohmaterial/Entwurf/Bild-Ordner `img/issues/<niche>/<date>`/Draft); `gemini-draft.yml` hat
+   `niche`-Dispatch-Input. (PR #387.)
 8. `bausatz` — Autopilot-Template fertig (Lizenz/Listing) für Verkauf.
 9. `lead-magnete` — mehr Branchen-PDFs/Pakete generieren.
-10. `og-chatgpt` — OG-Bild chatgpt erneut mit Imagen (war zuletzt Filter→Flach-Fallback).
+10. ✅ `og-chatgpt` — `og-chatgpt` nutzt jetzt ruhigen abstrakten Amber-Verlauf als Hintergrund. (PR #387.)
 
 **Nur User (extern):** TWINT-Freischaltung abwarten (in Prüfung) · Cloudflare-Env für Download bestätigen
 (Check A) · `sk_live_` ist aktiv (Shop live) · optional `CF_TOKEN` (Analytics) + LinkedIn-Token · 3 Wachstums-
@@ -35,6 +39,19 @@ Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe s
 **Schon erledigt (nicht offen):** verwaiste Hubs 201→0, €9/89-Checkout live, CHF+TWINT-Code, Bild-Pipeline
 (Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
 
+
+## 📌 Stand 2026-06-07 (Teil 11) — Batch „1 7 10" + Branch/CI-Lage (WICHTIG für nächste Session)
+Erledigt: Backlog **#1 (test), #7 (nischen ausbau), #10 (og-chatgpt)** — siehe Backlog-Häkchen oben.
+- **⚠️ Push nach `main` wird vom Auto-Mode-Classifier BLOCKIERT** (direkter Default-Branch-Push + Force-Push
+  verweigert). Der alte Branch `claude/ai-money-project-f25Ub` ist hoffnungslos divergiert (Force nötig → blockiert).
+  → Diese Arbeit liegt daher auf **frischem Branch `claude/nische-og-shop-test`** = **Draft-PR #387** (base main).
+  **Merge nach main = User** (oder per merge_pull_request-Tool, falls erlaubt). Crons laufen erst ab main.
+  **Lehre nächste Session:** für aban-Arbeit gleich einen frischen `claude/<thema>`-Branch + PR nutzen, nicht main.
+- **CI-Lage PR #387:** „Workers Builds" (aban-a/ki-verzeichnis/aban-news-landing) = `skipped` (fremde
+  Worker-Projekte im selben Repo, nicht mein Diff). **„Deploy to Cloudflare Pages" = FAIL: Auth-Error 10000** —
+  `CLOUDFLARE_API_TOKEN` hat keine Rechte fürs Pages-Projekt `radar`. **Nicht durch meinen Diff verursacht**
+  (Token-/Secret-Problem, scheitert auf jedem Branch). **Fix = User:** Token-Permissions im CF-Dashboard.
+- **Abonniert:** PR #387 (Failure-Webhooks wecken mich). Kein Scheduler-Tool hier → keinen Timer-Check-in.
 
 ## 📌 Stand 2026-06-07 (Teil 10) — Vollautonomer Stripe-Shop (Tool)
 Auf Wunsch „bau ein Tool, das das autonom macht": **Stripe** statt Lemon Squeezy, weil Stripe Produkte/
