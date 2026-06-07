@@ -66,7 +66,7 @@ def caption(t):
     return (
         f"Lohnt sich {t['name']}? Ehrliche Einschätzung in 20 Sekunden.\n\n"
         f"Aban-Score {_score_str(t.get('worth_it_score'))} — voller Vergleich + Alternativen:\n"
-        f"https://{RADAR}/\n\n#KI #Tools #{t['name'].replace(' ','')} #aban"
+        f"https://{RADAR}/tool/{t['id']}.html\n\n#KI #Tools #{t['name'].replace(' ','')} #aban"
     )
 
 

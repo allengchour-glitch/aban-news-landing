@@ -1,8 +1,9 @@
-name: Täglicher KI-Tool-Reel
+name: Tägliche KI-Reels (Tool + Hype-Watch)
 
-# Rendert jeden Tag automatisch das „KI-Tool des Tages"-Reel (9:16, fertig) aus
-# data/tools.json (Abans echte Urteile) und lädt es als Artefakt hoch. Treibt
-# Traffic auf radar.abannews.com + Newsletter. Mit Secret XI: Stimme + Karaoke.
+# Rendert täglich ZWEI fertige 9:16-Reels: das „KI-Tool des Tages" (data/tools.json)
+# und einen rotierenden Hype-Watch-Faktencheck (data/hype-watch.json). Beide landen
+# im /reels-Loop (media/reels) und als Artefakt. Mehr Video-Content = mehr Reichweite.
+# Mit Secret XI: Stimme+Karaoke. Mit PEXELS: dynamischer Stockclip-Look (sonst Zoom).
 on:
   schedule:
     - cron: '0 5 * * *'   # täglich 05:00 UTC
@@ -14,12 +15,12 @@ on:
         default: ''
 
 jobs:
-  reel:
-    name: Render KI-Tool-Reel
+  reels:
+    name: Render KI-Reels
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    timeout-minutes: 12
+    timeout-minutes: 18
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -27,8 +28,8 @@ jobs:
           python-version: '3.11'
       - name: Install deps (Pillow + ffmpeg)
         run: pip install --quiet Pillow imageio-ffmpeg
-      - name: Render reel
-        # XI → Stimme+Karaoke; PEXELS → dynamischer Stockclip-Look (sonst ruhiger Zoom)
+      - name: Render + publish (Tool + Hype-Watch)
+        # XI → Stimme+Karaoke; PEXELS → Stockclip-Look (sonst ruhiger Zoom)
         env:
           XI: ${{ secrets.XI }}
           PEXELS: ${{ secrets.PEXELS }}
@@ -36,25 +37,36 @@ jobs:
         run: |
           cd video-pipeline
           VOICE=""; [ -n "$XI" ] && VOICE="--voice"
+          # 1) KI-Tool des Tages
           python tool_reel.py ${{ github.event.inputs.tool_id }} $VOICE
-          echo "Fertig:"; find ausgabe -name 'reel.mp4' -newermt '-15 min'
-      - name: Upload reel
-        uses: actions/upload-artifact@v4
-        with:
-          name: ki-tool-reel
-          path: video-pipeline/ausgabe/tool-*
-          retention-days: 30
-      - name: Auf die Seite (/reels-Loop) veröffentlichen
-        run: |
-          cd video-pipeline
-          python publish_reel_to_site.py --latest
+          # 2) Hype-Watch des Tages (deterministisch rotierend)
+          HW=$(python - <<'PY'
+          import json, datetime
+          f = json.load(open('../data/hype-watch.json'))['faelle']
+          i = (datetime.date.today() - datetime.date(2026, 1, 1)).days % len(f)
+          print(f[i]['id'])
+          PY
+          )
+          echo "Hype-Watch des Tages: $HW"
+          python render_all_reels.py "$HW" $VOICE
+          # 3) Beide auf /reels veröffentlichen
+          python publish_reel_to_site.py --latest    # Tool-Reel
+          python publish_reel_to_site.py "$HW"       # Hype-Watch-Reel
+          echo "Fertige Reels:"; find ausgabe -name 'reel.mp4'
+          # 4) Commit media/reels (rollendes Fenster)
           cd ..
-          if ! git diff --quiet -- media/reels || [ -n "$(git status --porcelain media/reels)" ]; then
+          if [ -n "$(git status --porcelain media/reels)" ]; then
             git config user.name "reel-bot"
             git config user.email "actions@users.noreply.github.com"
             git add media/reels
-            git commit -m "reels: neues KI-Tool-Reel auf /reels [skip ci]"
+            git commit -m "reels: neue KI-Reels (Tool + Hype-Watch) auf /reels [skip ci]"
             git push
           else
             echo "Keine Änderung an media/reels."
           fi
+      - name: Upload reels (Artefakt)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ki-reels
+          path: video-pipeline/ausgabe
+          retention-days: 30

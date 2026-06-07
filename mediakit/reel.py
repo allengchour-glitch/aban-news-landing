@@ -121,7 +121,7 @@ def render(case_id, out=None, voice=False, ambient=True, gain=0.12, from_dir=Non
         if res:
             words, total = res
             durs = _durations_from_words(lines, words, total, n)
-            build_ass(words, total, ass_path)          # markengetreue Karaoke-ASS
+            build_ass(words, total, ass_path, tag="")  # Karaoke; tag="" → kein doppeltes „aban news“
             # Stimme entrumpeln/normalisieren
             voice_wav = os.path.join(work, "vo.wav")
             run([ff, "-y", "-i", os.path.join(work, "vo.mp3"),
@@ -133,17 +133,17 @@ def render(case_id, out=None, voice=False, ambient=True, gain=0.12, from_dir=Non
         durs_b, _total = _durations_from_srt(srt_path, lines, n)
         if durs_b:
             durs = durs_b
-            srt_to_ass(str(srt_path), ass_path)
+            srt_to_ass(str(srt_path), ass_path, tag="")
             tier = "B"
 
     # ---- Stufe C: feste Dauern ----
     if tier == "C":
         durs = _durations_fixed(lines or [""] * n, n)
         if srt_path.exists():
-            srt_to_ass(str(srt_path), ass_path)
+            srt_to_ass(str(srt_path), ass_path, tag="")
         else:
-            # Minimal-ASS ohne Cues (nur TAG), Untertitel optional
-            build_ass([], sum(durs), ass_path)
+            # Minimal-ASS ohne Cues, ohne TAG
+            build_ass([], sum(durs), ass_path, tag="")
 
     # ---- Segmente bauen + zusammenfügen ----
     # B-Roll-Material (transparente Overlays + Suchbegriffe), falls vorhanden

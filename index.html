@@ -289,6 +289,35 @@
     </div>
   </section>
 
+  <!-- KI-REELS TEASER -->
+  <section class="sec">
+    <div class="wrap center">
+      <span class="eyebrow">Neu · Video</span>
+      <h2>KI-Reels — ehrlich in 20 Sekunden</h2>
+      <p class="sub">Kurze, ehrliche Tool-Checks &amp; Faktenchecks als Video — täglich neu, ohne Hype.</p>
+      <div style="display:flex;justify-content:center;margin:1.2rem 0">
+        <a id="reelteaserwrap" href="/reels" style="display:none;width:248px;max-width:80vw;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 8px 26px rgba(0,0,0,.10);background:#000">
+          <video id="reelteaser" muted loop playsinline preload="metadata" style="display:block;width:100%;aspect-ratio:9/16;object-fit:cover" aria-label="KI-Reel Vorschau"></video>
+        </a>
+      </div>
+      <p><a href="/reels" class="btn btn--amber">Alle KI-Reels ansehen →</a></p>
+    </div>
+  </section>
+  <script>
+  (function(){
+    var v=document.getElementById('reelteaser'), w=document.getElementById('reelteaserwrap');
+    if(!v) return;
+    fetch('/media/reels/manifest.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
+      var reels=(d&&d.reels)||[]; if(!reels.length) return;
+      v.src=reels[0].file; w.style.display='block';
+      var play=function(){ v.play().catch(function(){}); };
+      if('IntersectionObserver' in window){
+        new IntersectionObserver(function(es){es.forEach(function(e){ e.isIntersecting?play():v.pause(); });},{threshold:0.4}).observe(v);
+      } else { v.setAttribute('autoplay',''); play(); }
+    }).catch(function(){});
+  })();
+  </script>
+
   <!-- FEATURES -->
   <section class="sec">
     <div class="wrap center">
