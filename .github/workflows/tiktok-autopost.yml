@@ -1,0 +1,59 @@
+name: TikTok Auto-Post (Foto-Direktpost)
+
+# Postet den nächsten fälligen Foto-Post aus social/posts_tiktok.csv direkt auf TikTok
+# (Content Posting API, media_type=PHOTO). KEIN Drittanbieter.
+# Token NUR aus GitHub-Secret. Ohne Secret = sauberer No-Op.
+#
+# Voraussetzungen (siehe dropship/USER-CHECKLISTE.md §TikTok):
+#   TIKTOK_ACCESS_TOKEN (Scope video.publish) · Domain abannews.com im App verifiziert · App-Audit für öffentlich.
+
+on:
+  schedule:
+    - cron: '30 9 * * *'    # 1×/Tag, versetzt zum Meta-Poster (≈ 11:30 CH)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur testen (nichts posten)'
+        type: boolean
+        default: false
+      max:
+        description: 'Wie viele Posts in diesem Lauf (Default 1)'
+        type: string
+        default: '1'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tiktok-autopost
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Post next TikTok photo
+        env:
+          TIKTOK_ACCESS_TOKEN: ${{ secrets.TIKTOK_ACCESS_TOKEN }}
+          TIKTOK_PRIVACY: ${{ vars.TIKTOK_PRIVACY }}
+          MAX_PER_RUN: ${{ inputs.max || '1' }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node automation/tiktok-autopost.mjs
+
+      - name: Commit posted-status if changed
+        run: |
+          if ! git diff --quiet -- social/posts_tiktok.csv; then
+            git config user.name "luxestyle-tiktok-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add social/posts_tiktok.csv
+            git commit -m "chore(tiktok): mark photo post as sent [skip ci]"
+            git push
+          else
+            echo "Kein neuer TikTok-Post — nichts zu committen."
+          fi

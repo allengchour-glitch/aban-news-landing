@@ -76,6 +76,25 @@ function parseArgs(argv){
 const today = () => new Date().toISOString().slice(0,10);
 const isJpg = u => /\.jpe?g($|\?)/i.test(u);
 
+// Rotierende Caption-Vorlagen → jeder Post variiert (kein Spam-Duplikat). {p}=Produktname, {link}=Linkzeile.
+const TEMPLATES = [
+  'Designer-Look zum fairen Preis 👀 {p} bei LuxeStyle. Code WELCOME10 = -10% {link}',
+  'Neu entdeckt: {p} 🤍 Sommer 2026 bei LuxeStyle. -10% mit WELCOME10 {link}',
+  'Dein Sommer-Liebling? {p} 🌿 Gratis-Versand ab CHF 65 · 30 Tage Rückgabe {link}',
+  '{p} ✨ Premium & bezahlbar, Schweizer Shop. -10% Code WELCOME10 {link}',
+  'Welcher Look ist deiner? 👇 {p} bei LuxeStyle. Code WELCOME10 = -10% {link}',
+];
+// Rotation an die ID/den Tag koppeln → stabil, aber pro Produkt/Tag anders.
+function pickTemplate(seed){
+  let h=0; for(const c of String(seed)) h=(h*31+c.charCodeAt(0))>>>0;
+  return TEMPLATES[h % TEMPLATES.length];
+}
+function buildCaption(product, link, seed){
+  const linkLine = link ? `→ ${link}` : '→ luxestyle.ch';
+  return pickTemplate(seed).replace('{p}', product).replace('{link}', linkLine)
+    + ' #schweizmode #sommermode2026 #ootdschweiz';
+}
+
 async function check200(url){
   try{
     const r = await fetch(url, { method:'HEAD' });
@@ -99,9 +118,10 @@ function cmdStatus(){
   console.log('Posten: Action „Social Meta Auto-Post" (2×/Tag) oder workflow_dispatch (Input max).');
 }
 
-async function addRow({ id, image, caption, platforms, date, check }){
+async function addRow({ id, image, caption, platforms, date, check, link }){
   if(!image){ console.error('Fehlt: --image <url>'); process.exit(1); }
   if(!caption){ console.error('Fehlt: --caption "<text>"'); process.exit(1); }
+  if(link && !caption.includes(link)) caption = caption.trimEnd() + ` → ${link}`;
   if(!isJpg(image)){ console.error(`❌ Meta-Pflicht: Bild muss .jpg/.jpeg sein (kein .webp): ${image}`); process.exit(1); }
   if(check){
     const code = await check200(image);
@@ -142,14 +162,18 @@ switch(cmd){
   case 'status': cmdStatus(); break;
   case 'add':
     await addRow({ id:opts.id, image:opts.image, caption:opts.caption,
-      platforms:opts.platforms, date:opts.date, check:!!opts.check });
+      platforms:opts.platforms, date:opts.date, check:!!opts.check, link:opts.link });
     break;
   case 'add-product': {
     const slug = pos[0];
-    if(!slug){ console.error('Nutzung: add-product <slug> --caption "<text>"'); process.exit(1); }
-    await addRow({ id:opts.id || `${slug}-${opts.date||today()}`,
-      image:opts.image || `https://abannews.com/social/static/${slug}-portrait.jpg`,
-      caption:opts.caption, platforms:opts.platforms, date:opts.date, check:!!opts.check });
+    if(!slug){ console.error('Nutzung: add-product <slug> [--name "Produktname"] [--link <url>] [--caption "<text>"]'); process.exit(1); }
+    const d = opts.date || today();
+    const id = opts.id || `${slug}-${d}`;
+    // Ohne --caption: rotierende Vorlage (jeder Post variiert), Produktname aus --name oder Slug.
+    const caption = opts.caption || buildCaption(opts.name || slug, opts.link, id);
+    await addRow({ id, image:opts.image || `https://abannews.com/social/static/${slug}-portrait.jpg`,
+      caption, platforms:opts.platforms, date:d, check:!!opts.check,
+      link:opts.caption ? opts.link : '' });  // bei Vorlage ist der Link schon drin
     break;
   }
   case 'requeue': cmdRequeue(pos); break;
@@ -157,8 +181,9 @@ switch(cmd){
     console.log(`social-queue.mjs — Queue-Helfer für Bild-Posts (IG+FB+Threads)
 
   status                          Queue-Übersicht + Kanal-Hinweise
-  add --image <url> --caption ".." [--platforms ..] [--date ..] [--id ..] [--check]
-  add-product <slug> --caption ".." [--check]   (nutzt social/static/<slug>-portrait.jpg)
+  add --image <url> --caption ".." [--link <produkt-url>] [--platforms ..] [--date ..] [--id ..] [--check]
+  add-product <slug> [--name "Produktname"] [--link <produkt-url>] [--caption ".."] [--check]
+        (nutzt social/static/<slug>-portrait.jpg; ohne --caption: rotierende Vorlage → jeder Post variiert)
   requeue <id> [<id> ...]         gepostete Zeile(n) wieder auf ready (z.B. FB nachposten)
 
 Danach postet die Action „Social Meta Auto-Post" (2×/Tag) oder manuell via workflow_dispatch.
