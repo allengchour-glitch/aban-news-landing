@@ -4,10 +4,18 @@
 > der Wurzel-`CLAUDE.md`, weil die von der Dropship-Session bespielt wird.
 > Stand: 2026-06-03.
 
+## 🎬 DAUERAUFTRAG — Video-Chef (User, 2026-06-07)
+**Claude ist Video-Chef.** Oberstes Ziel: **viele ABONNENTEN** gewinnen. Läuft der Kanal
+**nach 30 Tagen** nicht gut (zu wenig Abo-Wachstum) → **Thema wechseln** und neuen 30-Tage-Lauf
+starten. Umgesetzt in `aban_director.py` (abonnenten-first, `PIVOT_DAYS=30`, `SUB_30`-Schwelle,
+`PIVOT_THEMES`-Liste) + `aban_stats.py` (`channel_subs`). Der Director **empfiehlt** den Pivot;
+der Chef (jede neue Session) **führt ihn aus** (neue Themen-Skripte in `aban_scripts.json`).
+Jede Session zuerst `reports/ABAN-DIRECTOR.md` lesen → Entscheidung befolgen.
+
 ## Was es ist
 Faceless YouTube-Shorts-Kanal (Sci-Fi/Ancient-Aliens). Sprecher **ABAN** (reptiloider
 Herrscher). **Echten Owner-Namen NIE nennen** — nur „ABAN" / „we of ABAN".
-Kanal = Haupt-Kanal `@allengchour` (umbenannt zu „ABAN Files").
+Kanal = Haupt-Kanal (umbenannt zu „ABAN Files").
 
 ## Stand
 - **36 Folgen** (ep1–ep36) als fertige Clips in `clips/` (~5 Wochen täglich).

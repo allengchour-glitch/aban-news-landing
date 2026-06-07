@@ -31,6 +31,51 @@ def api_key():
             or os.environ.get("GEMINI_API_KEY"))
 
 
+def parse_count(s):
+    """'1.2K subscribers' / '12 subscribers' / '3.4M' -> int, sonst None."""
+    s = (s or "").lower().replace("subscribers", "").replace("subscriber", "").replace(",", "").strip()
+    mult = 1
+    if s and s[-1] in "kmb":
+        mult = {"k": 1e3, "m": 1e6, "b": 1e9}[s[-1]]
+        s = s[:-1]
+    try:
+        return int(float(s) * mult)
+    except ValueError:
+        return None
+
+
+def channel_subs(ids, key=None):
+    """Best-effort Abonnentenzahl des Kanals. API (channelId aus 1. Video) oder Scrape.
+    None, wenn versteckt/unlesbar. Kein Owner-Name hartcodiert (channelId aus Video)."""
+    if not ids:
+        return None
+    if key:
+        try:
+            q = urllib.parse.urlencode({"part": "snippet", "id": ids[0], "key": key})
+            with urllib.request.urlopen(f"https://www.googleapis.com/youtube/v3/videos?{q}", timeout=60) as r:
+                cid = json.load(r)["items"][0]["snippet"]["channelId"]
+            q2 = urllib.parse.urlencode({"part": "statistics", "id": cid, "key": key})
+            with urllib.request.urlopen(f"https://www.googleapis.com/youtube/v3/channels?{q2}", timeout=60) as r:
+                st = json.load(r)["items"][0]["statistics"]
+            if st.get("hiddenSubscriberCount"):
+                return None
+            return int(st.get("subscriberCount", 0))
+        except Exception:
+            pass
+    try:
+        url = f"https://www.youtube.com/watch?v={ids[0]}&hl=en&bpctr=9999999999&has_verified=1"
+        req = urllib.request.Request(url, headers={
+            "User-Agent": UA, "Accept-Language": "en-US,en", "Cookie": "CONSENT=YES+1; SOCS=CAI"})
+        html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "ignore")
+        m = (re.search(r'"subscriberCountText":\{[^}]*"simpleText":"([^"]+)"', html)
+             or re.search(r'([\d.,]+\s*[KMB]?)\s+subscribers', html))
+        if m:
+            return parse_count(m.group(1))
+    except Exception:
+        pass
+    return None
+
+
 def title_to_ep(title, scripts):
     t = (title or "").upper()
     for ep, sc in scripts.items():
@@ -122,7 +167,9 @@ def main():
              "|---|----|-------|------:|------:|-----------:|"]
     for n, r in enumerate(rows, 1):
         lines.append(f"| {n} | {r['ep']} | {r['title'][:40]} | {r['views']} | {cell(r['likes'])} | {cell(r['comments'])} |")
-    lines += ["", f"**Gesamt-Views:** {sum(r['views'] for r in rows)}"]
+    subs = channel_subs(ids, key)
+    lines += ["", f"**Abonnenten:** {subs if subs is not None else '— (versteckt/unlesbar)'}  ·  "
+              f"**Gesamt-Views:** {sum(r['views'] for r in rows)}"]
     if rows:
         b = rows[0]
         lines += ["", f"**Top-Performer:** {b['ep']} ({b['views']} Views) — mehr Folgen in diesem Thema/Stil bauen."]
