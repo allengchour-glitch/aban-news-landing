@@ -84,11 +84,14 @@ def main() -> int:
     elif args.dry_run and low < QUEUE_MIN:
         print(f"  [dry-run] würde auffüllen (Queue {low} < {QUEUE_MIN}).")
 
-    # 4+5: Audits/Funnel (gratis, deterministisch)
+    # 4+5: Audits/Funnel/Verlinkung (gratis, deterministisch)
     if not args.skip_scan:
         run([py, "tools/growth_audit.py"], "Wachstums-Audit")
-        funnel = [py, "tools/add_branchen_funnel.py"] + (["--dry"] if args.dry_run else [])
-        run(funnel, "Funnel-Block aktualisieren")
+        dry = ["--dry"] if args.dry_run else []
+        run([py, "tools/add_branchen_funnel.py"] + dry, "Funnel-Block aktualisieren")
+        run([py, "tools/related_hubs.py"] + dry, "Interne Verlinkung (verwandte Branchen)")
+        if not args.dry_run:
+            run([py, "tools/share_kit.py"], "Share-Kit aktualisieren")
 
     print("\n✅ Autopilot fertig. (Posten erledigen die Autopost-Workflows; "
           "Tages-Digest schickt daily-improvement.)")

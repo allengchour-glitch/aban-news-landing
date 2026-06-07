@@ -31,6 +31,9 @@ verbessert, automatisch Abonnenten sucht — alles autonom, auch Geld verdienen.
 - **Wachstums-Audit (`tools/growth_audit.py` → `reports/GROWTH-AUDIT.md`):** prüft OG-Bild-Abdeckung, Newsletter-CTA, Funnel-/Founding-Link, interne Link-Gesundheit (nutzt `check_internal_links.scan()`), **verwaiste Hubs**. Erst-Befund: 5 ohne OG-Bild, 51 ohne CTA, **201 verwaiste Hubs** (interne Verlinkung = nächster echter Hebel), 0 defekte Links.
 - **Tages-Digest erweitert:** `tools/telegram_report.py` zeigt jetzt zusätzlich **Wachstums-Befunde + Queue-Stände** → EINE tägliche Nachricht (gesendet vom 06:00-`daily-improvement.yml`, das nach dem 05:00-Autopilot läuft).
 - **Content-Gate gehärtet:** `gemini_generate_posts.py` splittet Posts robust (Regex `-{2,}\s*POST\s*-{2,}`), Mindestlänge 40→**200 Zeichen** (filtert Schnipsel/Vorworte).
+- **Interne Verlinkung (`tools/related_hubs.py`):** setzt in jeden der 262 Hubs einen „Verwandte Branchen"-Block (Ring: Hub i → nächste 6 alphabet. Nachbarn) → **verwaiste Hubs 201 → 0** (verifiziert via growth_audit). Idempotent, Labels aus `<title>`.
+- **Share-Kit (`tools/share_kit.py` → `docs/SHARE-KIT.md`):** fertige Copy-Paste-Teilen-Posts (LinkedIn/WhatsApp/Reddit) für 8 kauf-nahe Branchen, ehrlich/anti-hype, deterministisch (kein Key). Macht den Mensch-Hebel „organisch teilen" zum 1-Klick.
+- **Autopilot erweitert:** ruft jetzt zusätzlich `related_hubs.py` (idempotent) + `share_kit.py` daily auf; Commit-Pfade um `docs/SHARE-KIT.md` ergänzt.
 - **🔴 EHRLICHE GRENZE (dem User klar gesagt):** „Abonnenten automatisch suchen" gibt es nicht ToS-konform — kein Auto-DM/Follow/Scraping. Autonom = oberen Trichter breiter (OG/CTA/Funnel/Crawl) + Maschine gefüttert halten. Reichweite/Umsatz brauchen Mensch-Hebel (Posten-Tokens, organisch teilen, beehiiv-Referral, ggf. Ads). Steht im Audit + Digest.
 - **Bewusst NICHT angefasst:** andere Workstreams (`aban_*`, `aban-*.yml`, `scripts/yt_upload.py`, `dropship/**`, `gen_post_image.py`).
 
