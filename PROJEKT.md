@@ -22,6 +22,14 @@ Verifiziert im Workflow-Log (`telegram-autopost.yml`, Run 27079834486):
 - **🟡 Optional offen (User):** alten Key `a7be9889…` in GCP löschen (falls noch nicht); optional Variables `GCP_LOCATION=us-central1` + `VERTEX_IMAGE_MODEL=imagen-3.0-generate-002` setzen (nötig ist es nicht, Code hat Defaults).
 - **Workflows mit Vertex-Bild verdrahtet:** `telegram-autopost.yml`, `linkedin-autopost.yml`, `telegram-control.yml`, `gemini-content-engine.yml`, `gemini-draft.yml`, `gemini-growth-ideas.yml` (alle bekommen `GCP_SA_KEY`/`GCP_PROJECT`/`GCP_LOCATION`/`VERTEX_IMAGE_MODEL` + `pip install google-auth requests`).
 
+## 📌 Stand 2026-06-07 (Teil 7) — Webseiten-Bilder + Effizienz-Tools
+- **Webseiten-Bilder (`automation/gen_site_images.py` + `.github/workflows/site-images.yml`):** Header-Bilder pro Seite, selbst gehostet in `img/site/`, idempotent nach erstem `</h1>` eingefügt (Marker `data-aban-hero`, lazy, object-fit). Quelle gemischt/budgetbewusst: **Hubs=Pexels (gratis), themen/index/founding=KI/Imagen (~$1)**. Workflow manuell + batch-fähig (Pexels-Limit ~200/h). Test (3 Hubs) ✅ echte Fotos. Volle Läufe gestartet (hub batch 150 + themen).
+- **Selbst-vervollständigend:** Autopilot füllt täglich **25 Hub-Bilder** per Pexels nach (`ABAN_IMG_BATCH`, idempotent) → die 262 Hubs komplettieren sich über ~Tage von selbst. `PEXELS_API_KEY` jetzt auch in autopilot.yml; Commit-Pfade um `img/` erweitert.
+- **Effizienz-Tools (Wunsch „einfacher/schneller für später"):**
+  - **`tools/status.py`** — Ein-Blick-Dashboard: Queue-Stände, Hub/themen-Abdeckung (Funnel/Lead-Magnet/Bild/CTA/Verlinkung), Bilder/PDFs, letzte Audit-/Konsistenz-Befunde. Ein Befehl statt vieler greps.
+  - **`Makefile`** — Kurzbefehle: `make status|audit|growth|consistency|links|funnel|related|cta|leadmagnets|sharekit|og|all-content|check`. `make help` listet alles. (Lokale Wartung; Posten/Bilder laufen in CI wegen Secrets.)
+- **🟡 €9-Premium-Checkout fehlt bewusst:** Premium-Karten zeigen auf Founding (€69, PayPal). Für €9/Monat braucht es einen Zahlungsanbieter (PayPal-Abo/Stripe/beehiiv-Paid) = User-Setup; `premium-briefing.html` hat schon Config-Slot `PREMIUM.monthly.url` (leer → Warteliste, kein toter Link).
+
 ## 📌 Stand 2026-06-07 (Teil 6) — Pexels-Variante (echte Stockfotos)
 - **`automation/pexels_image.py`:** lädt echte, lizenzfreie Fotos von Pexels (gratis API, no-op ohne `PEXELS_API_KEY`). Kuratierte warm/professionelle Suchbegriffe (Arbeitsplatz/Objekt-lastig, wenig Gesichter), Orientierung je Seitenverhältnis, deterministische Auswahl pro Thema.
 - **`visuals.build_visual` Quelle wählbar** via `ABAN_IMAGE_SOURCE`: `auto` (Default: Pexels falls Key, sonst KI) · `pexels` · `ai`. Reihenfolge: **Pexels → Imagen → Marken-Karte**, alles no-op-sicher; `ABAN_DISABLE_IMAGE_GEN=1` = globaler Aus-Schalter.

@@ -94,6 +94,10 @@ def main() -> int:
         run([py, "tools/related_themen.py"] + dry, "Interne Verlinkung (verwandte Themen)")
         run([py, "tools/add_newsletter_cta.py"] + dry, "Newsletter-CTA auf Content-Seiten")
         if not args.dry_run:
+            # Hub-Header-Bilder Stück für Stück nachfüllen (gratis Pexels, idempotent →
+            # überspringt fertige). Füllt die 262 Hubs über mehrere Tage von selbst.
+            run([py, "automation/gen_site_images.py", "--kind", "hub", "--batch",
+                 os.environ.get("ABAN_IMG_BATCH", "25")], "Hub-Bilder nachfüllen (Pexels)")
             run([py, "tools/share_kit.py"], "Share-Kit aktualisieren")
 
     print("\n✅ Autopilot fertig. (Posten erledigen die Autopost-Workflows; "
