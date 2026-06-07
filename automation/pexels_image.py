@@ -34,6 +34,10 @@ QUERIES = [
     "soft morning light home office",
 ]
 API = "https://api.pexels.com/v1/search"
+# Cloudflare vor der Pexels-API blockt den Default-„Python-urllib"-User-Agent (Fehler 1010)
+# → echten Browser-UA mitschicken (für API-Call UND Bild-Download).
+UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 
 
 def _idx(seed: str, n: int) -> int:
@@ -50,7 +54,8 @@ def fetch_image(hook: str, out_path: str, orientation: str = "square"):
     query = QUERIES[_idx(hook + "q", len(QUERIES))]
     url = API + "?" + urllib.parse.urlencode(
         {"query": query, "per_page": 15, "orientation": orientation})
-    req = urllib.request.Request(url, headers={"Authorization": key})
+    req = urllib.request.Request(url, headers={"Authorization": key, "User-Agent": UA,
+                                               "Accept": "application/json"})
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
             data = json.loads(r.read().decode("utf-8"))
@@ -71,7 +76,8 @@ def fetch_image(hook: str, out_path: str, orientation: str = "square"):
     if not img_url:
         return None
     try:
-        with urllib.request.urlopen(img_url, timeout=60) as r:
+        dreq = urllib.request.Request(img_url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(dreq, timeout=60) as r:
             blob = r.read()
         with open(out_path, "wb") as f:
             f.write(blob)
