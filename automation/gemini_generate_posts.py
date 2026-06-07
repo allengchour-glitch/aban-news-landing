@@ -17,6 +17,7 @@ import argparse
 import datetime as dt
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -113,13 +114,17 @@ def main() -> int:
         print(f"::warning::Gemini-Aufruf fehlgeschlagen: {e}")
         return 0
 
-    candidates = [p.strip() for p in raw.split("---POST---") if p.strip()]
+    # Robust gegen Schreibweisen wie "--- POST ---", "----POST----" usw.
+    candidates = [p.strip() for p in re.split(r"-{2,}\s*POST\s*-{2,}", raw) if p.strip()]
     print(f"Gemini lieferte {len(candidates)} Kandidaten.")
     passed = []
     for c in candidates:
-        if 40 <= len(c) <= 1500 and passes_linter(c):
+        # 200–1500 Zeichen: 60–130 Wörter liegen klar darüber; filtert Schnipsel/Vorworte raus.
+        if 200 <= len(c) <= 1500 and passes_linter(c):
             passed.append(c)
             print("  ✓ akzeptiert:", c.split(chr(10))[0][:60])
+        elif len(c) < 200:
+            print("  ✗ zu kurz (kein vollständiger Post):", c.split(chr(10))[0][:50])
     if not passed:
         print("Keine Kandidaten bestanden das Gate — nichts hinzugefügt.")
         return 0

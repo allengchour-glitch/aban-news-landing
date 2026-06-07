@@ -26,7 +26,31 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 REPORT = ROOT / "reports" / "IMPROVEMENT-REPORT.md"
+GROWTH = ROOT / "reports" / "GROWTH-AUDIT.md"
+QUEUES = {"Telegram": ROOT / "social" / "telegram_queue.json",
+          "LinkedIn": ROOT / "social" / "linkedin_queue.json"}
 REPO = os.environ.get("GITHUB_REPOSITORY", "allengchour-glitch/aban-news-landing")
+
+
+def queue_depths() -> str:
+    """„ready"-Stände der Autopost-Queues (damit man sieht, ob Nachschub fehlt)."""
+    parts = []
+    for name, path in QUEUES.items():
+        try:
+            items = json.loads(path.read_text(encoding="utf-8"))
+            ready = sum(1 for it in items if it.get("status") not in ("posted", "skipped"))
+            parts.append(f"{name} {ready}")
+        except Exception:  # noqa: BLE001
+            continue
+    return " · ".join(parts)
+
+
+def growth_line() -> str:
+    """Erste Befund-Zeile aus dem Wachstums-Audit, falls vorhanden."""
+    if not GROWTH.exists():
+        return ""
+    m = re.search(r"\*\*Befunde:\*\*\s*(.+)", GROWTH.read_text(encoding="utf-8"))
+    return m.group(1).strip() if m else ""
 
 
 def build_message() -> str:
@@ -50,6 +74,12 @@ def build_message() -> str:
             lines.append(f"• {html.escape(name)} — <b>{n}</b>")
     else:
         lines.append("✅ Keine Befunde. Sauber.")
+    grow = growth_line()
+    if grow:
+        lines += ["", "<b>📈 Wachstum:</b>", html.escape(grow)]
+    depths = queue_depths()
+    if depths:
+        lines += ["", f"<b>📮 Post-Queues (ready):</b> {html.escape(depths)}"]
     lines.append("")
     lines.append("Tipp: Befunde sind Heuristik — kurz prüfen, dann fixen.")
     msg = "\n".join(lines)

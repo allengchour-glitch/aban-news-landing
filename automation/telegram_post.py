@@ -20,7 +20,6 @@ import datetime as dt
 import json
 import os
 import sys
-import tempfile
 import uuid
 import urllib.error
 import urllib.parse
@@ -28,14 +27,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # Geschwister-Module
-try:
-    from gen_image_gemini import make_image  # KI-Bild (optional, braucht Key)
-except Exception:  # noqa: BLE001
-    make_image = None
-try:
-    from gen_card import make_card  # markeneigene Text-Karte (Fallback)
-except Exception:  # noqa: BLE001
-    make_card = None
+from visuals import build_visual  # gemeinsame KI-Bild/Karten-Logik
 
 QUEUE = Path(__file__).resolve().parent.parent / "social" / "telegram_queue.json"
 
@@ -90,22 +82,6 @@ def send_photo(token, chat, image_path, caption):
         return json.loads(r.read().decode("utf-8"))
 
 
-def build_visual(text):
-    """KI-Bild (Gemini) bevorzugt, sonst markeneigene Text-Karte. Gibt Pfad oder None."""
-    hook = next((l.strip() for l in text.splitlines() if l.strip() and not l.startswith("#")), text[:120])
-    tmp = Path(tempfile.gettempdir())
-    if make_image:
-        p = make_image(hook, str(tmp / f"aban-{uuid.uuid4().hex}.png"))
-        if p:
-            return p
-    if make_card:
-        try:
-            return make_card(text, str(tmp / f"aban-{uuid.uuid4().hex}.jpg"))
-        except Exception as e:  # noqa: BLE001
-            print(f"::warning::Karten-Fallback fehlgeschlagen: {e}")
-    return None
-
-
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--dry-run", action="store_true")
@@ -129,7 +105,7 @@ def main() -> int:
         return 0
 
     text = item["text"]
-    img = build_visual(text)  # KI-Bild → Karte → None
+    img = build_visual(text, aspect="1:1", channel="telegram")  # KI-Bild → Karte → None
     try:
         if img and len(text) <= 1024:
             res = send_photo(token, chat, img, text)

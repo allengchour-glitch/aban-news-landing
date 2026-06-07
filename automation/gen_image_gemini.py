@@ -24,6 +24,17 @@ import urllib.request
 MODEL = os.environ.get("GEMINI_IMAGE_MODEL", "imagen-3.0-generate-002")
 ASPECT = os.environ.get("GEMINI_IMAGE_ASPECT", "1:1")
 
+# Imagen erlaubt nur diese Seitenverhältnisse.
+_ALLOWED_ASPECTS = {"1:1", "3:4", "4:3", "9:16", "16:9"}
+
+
+def set_aspect(ratio: str) -> None:
+    """Seitenverhältnis zur Laufzeit setzen (pro Kanal). _imagen/_vertex lesen das
+    Modul-Global ASPECT erst beim Aufruf → reicht, um es vorher umzustellen."""
+    global ASPECT
+    if ratio and ratio in _ALLOWED_ASPECTS:
+        ASPECT = ratio
+
 PROMPT_TMPL = (
     "Erzeuge eine editoriale, minimalistische Illustration im warmen Kaffee-/Amber-Stil "
     "(cremeweißer Hintergrund, Amber/Orange-Akzent #d97706, ruhig, viel Weißraum, flaches "
@@ -131,6 +142,12 @@ def _vertex(prompt, out_path):
 def make_image(hook: str, out_path: str):
     """Bild erzeugen. Reihenfolge: Vertex AI (GCP_SA_KEY) → Gemini-API (GEMINI_API_KEY) → None.
     None ⇒ Aufrufer nutzt die Marken-Karte als Fallback."""
+    # Kill-Switch: ein GitHub-Variable/Env schaltet die (kostenpflichtige) KI-Bild-
+    # Erzeugung sofort ab → Pillow-Karte als Fallback, ohne Secrets anzufassen.
+    if os.environ.get("ABAN_DISABLE_IMAGE_GEN", "").strip().lower() in ("1", "true", "yes", "on"):
+        print("ABAN_DISABLE_IMAGE_GEN gesetzt → kein KI-Bild (Karte als Fallback).")
+        return None
+
     prompt = PROMPT_TMPL.format(hook=hook[:300])
 
     if os.environ.get("GCP_SA_KEY"):

@@ -1,0 +1,50 @@
+name: aban Autopilot
+
+# EIN täglicher Lauf, der die Maschine selbst füttert: Roh­material auffrischen,
+# Post-Queues bei Bedarf auffüllen, Newsletter-ENTWURF schreiben, Wachstums-Audit,
+# Funnel-Block aktuell halten. Postet NICHT (das machen die Autopost-Workflows) und
+# versendet NICHTS. No-op ohne GEMINI_API_KEY. Cron läuft nur vom Default-Branch (main).
+# 05:00 UTC = vor dem 06:00-Verbesserungs-Scan, der den Tages-Digest (inkl. Wachstum) schickt.
+
+on:
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aban-autopilot
+  cancel-in-progress: false
+
+jobs:
+  autopilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Autopilot-Lauf
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          ABAN_QUEUE_MIN: ${{ vars.ABAN_QUEUE_MIN }}
+          ABAN_GEN_N: ${{ vars.ABAN_GEN_N }}
+        run: |
+          python3 automation/autopilot.py
+
+      - name: Änderungen sichern (falls vorhanden)
+        run: |
+          if ! git diff --quiet -- social/ reports/ automation/news-roh-aktuell.md automation/entwurf-gemini-*.md ki-fuer-*.html 2>/dev/null; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add social/ reports/ automation/news-roh-aktuell.md automation/entwurf-gemini-*.md ki-fuer-*.html 2>/dev/null || true
+            git commit -m "Autopilot: Queues/Audit/Entwurf aktualisiert [skip ci]" || echo "nichts zu committen"
+            git push || echo "::warning::push fehlgeschlagen"
+          else
+            echo "Keine Änderung."
+          fi

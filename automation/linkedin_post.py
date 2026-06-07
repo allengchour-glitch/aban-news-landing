@@ -24,21 +24,12 @@ import datetime as dt
 import json
 import os
 import sys
-import tempfile
-import uuid
 import urllib.error
 import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-try:
-    from gen_image_gemini import make_image  # KI-Bild (optional)
-except Exception:  # noqa: BLE001
-    make_image = None
-try:
-    from gen_card import make_card  # Marken-Karte (Fallback)
-except Exception:  # noqa: BLE001
-    make_card = None
+from visuals import build_visual  # gemeinsame KI-Bild/Karten-Logik
 
 QUEUE = Path(__file__).resolve().parent.parent / "social" / "linkedin_queue.json"
 API = "https://api.linkedin.com/v2/ugcPosts"
@@ -87,22 +78,6 @@ def post_to_linkedin(token, author, text):
     )
     with urllib.request.urlopen(req, timeout=30) as resp:
         return resp.status, resp.headers.get("x-restli-id", "")
-
-
-def build_visual(text):
-    """KI-Bild (Gemini) bevorzugt, sonst Marken-Karte. Gibt Pfad oder None."""
-    hook = next((l.strip() for l in text.splitlines() if l.strip() and not l.startswith("#")), text[:120])
-    tmp = Path(tempfile.gettempdir())
-    if make_image:
-        p = make_image(hook, str(tmp / f"li-{uuid.uuid4().hex}.png"))
-        if p:
-            return p
-    if make_card:
-        try:
-            return make_card(text, str(tmp / f"li-{uuid.uuid4().hex}.jpg"))
-        except Exception as e:  # noqa: BLE001
-            print(f"::warning::Karten-Fallback fehlgeschlagen: {e}")
-    return None
 
 
 def _hdrs(token):
@@ -178,7 +153,7 @@ def main() -> int:
         return 0
 
     text = item["text"]
-    img = build_visual(text)  # KI-Bild → Karte → None
+    img = build_visual(text, aspect="16:9", channel="linkedin")  # KI-Bild → Karte → None
     try:
         if img:
             try:
