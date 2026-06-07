@@ -24,12 +24,15 @@ Kanal = Haupt-Kanal (umbenannt zu „ABAN Files").
 - **Öffentlich auf YT:** ep1–ep14 (+ ep12=RBEaa5csRWY, ep13=ye2sgjpUxv8 u.a. in `video_ids.json`).
 - **In der Queue (noch nicht gepostet):** ep15–ep36 → Cron (3×/Tag) postet automatisch.
 - ep14–ep36 mit Voice-Fixes; ep21–ep36 zusätzlich mit Pexels+Pixabay (mehr Auswahl).
-- **🆕 2026-06-07 — ep15–ep36 Skripte NEU (doppelt so lang + spannend + Abo-Schluss):**
-  Alle 22 Skripte nach **6-Beat-Formel** neu geschrieben (~1080–1140 Zeichen ≈ 150–170 s):
-  Cold-Open → Open Loop → Eskalation → Re-Hook (Mitte) → Cliffhanger → **gesprochener
-  SUBSCRIBE-Aufruf** (ersetzt „Check it out"). Renderer skaliert Länge automatisch.
-  **⚠️ ep15–ep36 müssen mit diesen neuen Skripten NEU gerendert werden** (alte `clips/ep15..36.mp4`
-  sind noch die kurzen Versionen) — Render braucht `XI`+`PEXELS`. ep1–ep14 bleiben (schon public).
+- **🆕 2026-06-07 — ep15–ep36 Skripte NEU + Gemini-Review:**
+  Erst auf ~80 s verdoppelt; **Gemini (2.5-pro) bewertete ep15 mit 7/10**: Hook 9/10, Audio 10/10,
+  Footage 8/10, aber **„81 s ist für Shorts zu lang"** + Caption-Kontur fehlt + Abo-CTA zu generisch.
+  → **User-Entscheid: auf ~50 s kürzen + CTA in die Story einweben.** Jetzt: alle 22 Skripte
+  **Ø ~785 Zeichen ≈ 50–58 s** (6-Beat: Cold-Open → Open Loop → Eskalation → Re-Hook → Cliffhanger →
+  **in-persona-CTA** „Follow the ABAN Files before they erase it" statt „Check it out").
+  Caption-Stroke verstärkt (pure-black Outline 5/Shadow 4). Endcard: „▶ SUBSCRIBE / before they erase this".
+  **⚠️ ep15–ep36 müssen mit diesen Skripten NEU gerendert werden** (Render braucht `XI`+`PEXELS`).
+  ep1–ep14 bleiben (schon public).
 
 ## Pipeline-Features (alle in `aban_stock.py`)
 - Hook-Text in den ersten ~2.8 s (Retention).
@@ -49,7 +52,8 @@ Kanal = Haupt-Kanal (umbenannt zu „ABAN Files").
   - **Sidechain-Ducking:** Ambient-Musik senkt sich automatisch unter die Stimme → Stimme immer klar.
   - **Stiller Start:** Musik faded über 2.6 s ein (Pattern-Interrupt, Hook ohne Musik).
   - **Cinematic Grade:** kalter Teal-Shadow-Tint (`colorbalance`) zusätzlich zu Vignette + Film-Grain.
-- Untertitel unten · Ambient-Musik · Dark-Grade. Länge: **neue ep15–ep36 ~150–170 s** (verdoppelt).
+- Untertitel unten · Ambient-Musik · Dark-Grade. Länge: **neue ep15–ep36 ~50–58 s** (Gemini-optimiert
+  für Sehdauer-Quote/Abos; Hinweis: ElevenLabs spricht ~14 Zeichen/s, also ~700–820 Zeichen ≈ ~50–58 s).
 
 ## Automatik
 - `aban-youtube.yml` (täglich): postet nächste Folge aus `clips/` (vorgerendert) via

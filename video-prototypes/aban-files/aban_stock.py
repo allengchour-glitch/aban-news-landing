@@ -411,7 +411,7 @@ PlayResY: {H}
 WrapStyle: 0
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: K,DejaVu Sans,64,&H004FCFFF,&H00F2F2F2,&H00101010,&H64000000,1,0,0,0,100,100,0,0,1,4,3,2,80,80,470,1
+Style: K,DejaVu Sans,64,&H004FCFFF,&H00F2F2F2,&H00000000,&H96000000,1,0,0,0,100,100,0,0,1,5,4,2,80,80,470,1
 Style: TAG,DejaVu Sans,40,&H0050C8FF,&H0050C8FF,&H00101010,&H00000000,1,0,0,0,100,100,6,0,1,2,2,8,0,0,70,1
 Style: HOOK,DejaVu Sans,82,&H0050C8FF,&H0050C8FF,&H00101010,&H64000000,1,0,0,0,100,100,0,0,1,5,4,5,120,120,0,1
 Style: SUB,DejaVu Sans,96,&H0050C8FF,&H0050C8FF,&H00101010,&H64000000,1,0,0,0,100,100,0,0,1,6,4,5,80,80,0,1
@@ -439,7 +439,7 @@ Dialogue: 0,{fmt_ts(0)},{fmt_ts(max(0.0, total - 3.6))},TAG,,0,0,0,,A B A N   F 
     lines.append(
         f"Dialogue: 2,{fmt_ts(sub_start)},{fmt_ts(total)},SUB,,0,0,0,,"
         f"{{\\fad(300,150)\\t(0,1600,\\fscx115\\fscy115)\\t(1600,3300,\\fscx100\\fscy100)}}"
-        f"▶ SUBSCRIBE\\N{{\\fs54}}for the next ABAN file"
+        f"▶ SUBSCRIBE\\N{{\\fs54}}before they erase this"
     )
     open(path, "w").write(head + "\n".join(lines) + "\n")
 
