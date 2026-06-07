@@ -22,8 +22,8 @@
       "task": "Gumroad-Konto + Datensatz hochladen → Buy-Link",
       "who": "aban",
       "status": "done",
-      "note": "Produkt veroeffentlicht (19 EUR, Cover), Buy-Button live auf abannews.com (PR #282 gemerged). Nur pruefen: zeigt die Gumroad-Seite einen Kauf-Button (nicht 'not for sale')?",
-      "updated": "2026-06-03"
+      "note": "Produkt veroeffentlicht (19 EUR, Cover), Buy-Button live auf abannews.com (PR #282 gemerged). Von Aban bestaetigt: Kauf-Button live.",
+      "updated": "2026-06-07"
     },
     {
       "id": 4,
@@ -117,9 +117,9 @@
       "id": 15,
       "task": "ABAN Files: Render-Secrets setzen (PEXELS aktiv, XI=ElevenLabs fehlt) -> autonomer YouTube-Render",
       "who": "aban",
-      "status": "todo",
-      "note": "",
-      "updated": "2026-06-03"
+      "status": "done",
+      "note": "XI-Secret gesetzt. Schaltet auch mediakit-Reels-Stufe A (Stimme+Karaoke) in video-pipeline-build.yml automatisch frei.",
+      "updated": "2026-06-07"
     }
   ]
 }
