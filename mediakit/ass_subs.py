@@ -35,7 +35,7 @@ PlayResY: {H}
 WrapStyle: 0
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: K,DejaVu Sans,64,{p},{sec},{ol},&H64000000,1,0,0,0,100,100,0,0,1,4,3,2,80,80,470,1
+Style: K,DejaVu Sans,52,{p},{sec},{ol},&H64000000,1,0,0,0,100,100,0,0,1,4,3,2,90,90,150,1
 Style: TAG,DejaVu Sans,40,{p},{p},{ol},&H00000000,1,0,0,0,100,100,6,0,1,2,2,8,0,0,70,1
 Style: HOOK,DejaVu Sans,82,{p},{p},{ol},&H64000000,1,0,0,0,100,100,0,0,1,5,4,5,120,120,0,1
 [Events]

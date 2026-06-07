@@ -1,0 +1,60 @@
+name: Täglicher KI-Tool-Reel
+
+# Rendert jeden Tag automatisch das „KI-Tool des Tages"-Reel (9:16, fertig) aus
+# data/tools.json (Abans echte Urteile) und lädt es als Artefakt hoch. Treibt
+# Traffic auf radar.abannews.com + Newsletter. Mit Secret XI: Stimme + Karaoke.
+on:
+  schedule:
+    - cron: '0 5 * * *'   # täglich 05:00 UTC
+  workflow_dispatch:
+    inputs:
+      tool_id:
+        description: 'Bestimmtes Tool (leer = Tool des Tages)'
+        required: false
+        default: ''
+
+jobs:
+  reel:
+    name: Render KI-Tool-Reel
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps (Pillow + ffmpeg)
+        run: pip install --quiet Pillow imageio-ffmpeg
+      - name: Render reel
+        # XI → Stimme+Karaoke; PEXELS → dynamischer Stockclip-Look (sonst ruhiger Zoom)
+        env:
+          XI: ${{ secrets.XI }}
+          PEXELS: ${{ secrets.PEXELS }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: |
+          cd video-pipeline
+          VOICE=""; [ -n "$XI" ] && VOICE="--voice"
+          python tool_reel.py ${{ github.event.inputs.tool_id }} $VOICE
+          echo "Fertig:"; find ausgabe -name 'reel.mp4' -newermt '-15 min'
+      - name: Upload reel
+        uses: actions/upload-artifact@v4
+        with:
+          name: ki-tool-reel
+          path: video-pipeline/ausgabe/tool-*
+          retention-days: 30
+      - name: Auf die Seite (/reels-Loop) veröffentlichen
+        run: |
+          cd video-pipeline
+          python publish_reel_to_site.py --latest
+          cd ..
+          if ! git diff --quiet -- media/reels || [ -n "$(git status --porcelain media/reels)" ]; then
+            git config user.name "reel-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add media/reels
+            git commit -m "reels: neues KI-Tool-Reel auf /reels [skip ci]"
+            git push
+          else
+            echo "Keine Änderung an media/reels."
+          fi

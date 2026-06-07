@@ -1,0 +1,27 @@
+{
+  "_comment": "So verdienst du Geld: Melde dich beim Partnerprogramm des jeweiligen Anbieters an (Liste '_programme'). Du bekommst einen persönlichen Link. Trage ihn bei 'affiliate_url' ein und entferne das führende '_' im Key. Die Seite markiert ihn dann automatisch mit * und blendet den Transparenzhinweis ein, dann baut sie sich neu. Anbieter ohne aktiven Eintrag verlinken auf die offizielle URL aus data/anbieter.json (keine Provision).",
+  "_status": "Alle Slots deaktiviert (führendes '_'). Noch keine Provision aktiv — alle Links sind Direktlinks zum Anbieter.",
+  "_kontakt_fallback": "mailto:hallo@abannews.com",
+  "_programme": {
+    "_hinweis": "Kuratierte Liste typischer Partnerprogramme, gemappt auf Anbieter in data/anbieter.json. 'signup' = wo du dich bewirbst. 'rate' = typische Provision (kann sich ändern, vor Nutzung prüfen). Quelle der Wahrheit für die echte URL bleibt data/anbieter.json. Nur Anbieter mit real existierendem Programm sind gelistet.",
+    "wix": {"rate": "[Redaktion: prüfen]", "signup": "https://www.wix.com/about/affiliates", "typ": "cpa"},
+    "squarespace": {"rate": "[Redaktion: prüfen]", "signup": "https://www.squarespace.com/affiliates", "typ": "cpa"},
+    "webflow": {"rate": "[Redaktion: prüfen]", "signup": "https://webflow.com/partners/affiliates", "typ": "recurring"},
+    "hostinger": {"rate": "[Redaktion: prüfen]", "signup": "https://www.hostinger.com/affiliates", "typ": "cpa"},
+    "framer": {"rate": "[Redaktion: prüfen]", "signup": "https://www.framer.com/affiliates/", "typ": "recurring"},
+    "tenweb": {"rate": "[Redaktion: prüfen]", "signup": "https://10web.io/affiliate-program/", "typ": "recurring"},
+    "jimdo": {"rate": "[Redaktion: prüfen]", "signup": "https://www.jimdo.com/partner/", "typ": "cpa"},
+    "ionos-mywebsite": {"rate": "[Redaktion: prüfen]", "signup": "https://www.ionos.de/partnerprogramm", "typ": "cpa"}
+  },
+  "links": {
+    "_anleitung": "Entferne das '_' vor einem Tool-Key und trage deinen persönlichen Link bei 'affiliate_url' ein, sobald ein Partnerprogramm dich freigeschaltet hat. Dann erscheint der Link mit * und Transparenzhinweis.",
+    "_wix": {"affiliate_url": null},
+    "_squarespace": {"affiliate_url": null},
+    "_webflow": {"affiliate_url": null},
+    "_hostinger": {"affiliate_url": null},
+    "_framer": {"affiliate_url": null},
+    "_tenweb": {"affiliate_url": null},
+    "_jimdo": {"affiliate_url": null},
+    "_ionos-mywebsite": {"affiliate_url": null}
+  }
+}

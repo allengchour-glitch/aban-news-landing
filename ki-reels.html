@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI-Reels — ehrliche Tool-Checks in 20 Sekunden · aban news</title>
+<meta name="description" content="Kurze, ehrliche Video-Checks zu KI-Tools — täglich neu, ohne Hype. Lohnt sich das Tool für DACH-Selbstständige? In 20 Sekunden auf den Punkt.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/ki-reels.html">
+<meta property="og:title" content="KI-Reels — ehrliche Tool-Checks in 20 Sekunden">
+<meta property="og:description" content="Kurze, ehrliche Video-Checks zu KI-Tools, täglich neu. Ohne Hype, für DACH-Selbstständige.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/ki-reels.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;border:0;cursor:pointer;font-size:1rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 10px;text-align:center}
+.hero h1{font-size:clamp(26px,4.6vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin-bottom:10px}
+.hero h1 .a{color:var(--amber)}
+.hero p.lead{font-size:clamp(15px,2.2vw,18px);color:var(--ink2);max-width:600px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:24px 0}
+.rcard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.rcard video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#000}
+.rcard .cap{padding:10px 12px;font-size:.92rem;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.rcard .cap a{font-size:.8rem;font-weight:700;white-space:nowrap}
+.empty{text-align:center;color:var(--muted);padding:40px 0}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt</a>
+<header class="site"><div class="wrap">
+  <a href="/" class="brand">aban news</a>
+  <a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a>
+</div></header>
+
+<main id="main"><div class="wrap">
+  <section class="hero">
+    <h1>KI-Reels — ehrlich in <span class="a">20 Sekunden</span></h1>
+    <p class="lead">Lohnt sich das Tool? Kurze, ehrliche Video-Checks zu KI-Tools — täglich neu, ohne Hype. Läuft stumm im Loop; tippen für Ton.</p>
+  </section>
+
+  <section>
+    <div id="grid" class="grid" aria-live="polite"></div>
+    <p id="empty" class="empty" hidden>Reels werden gerade gerendert — schau gleich nochmal vorbei.</p>
+    <p style="text-align:center">
+      <a class="btn" href="https://radar.abannews.com/">Voller KI-Tool-Vergleich →</a>
+    </p>
+  </section>
+</div></main>
+
+<footer><div class="wrap">
+  © 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/tools.html">Tool-Datenbank</a> ·
+  <a href="/hype-watch">Hype-Watch</a> ·
+  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+</div></footer>
+
+<script>
+// Reels aus dem Manifest laden und stumm im Loop zeigen; nur das, was im Blick ist, spielt.
+(function(){
+  var grid=document.getElementById("grid"), empty=document.getElementById("empty");
+  fetch("/media/reels/manifest.json",{cache:"no-cache"}).then(function(r){return r.json();}).then(function(d){
+    var reels=(d&&d.reels)||[];
+    if(!reels.length){ empty.hidden=false; return; }
+    reels.forEach(function(it){
+      var c=document.createElement("div"); c.className="rcard";
+      var v=document.createElement("video");
+      v.src=it.file; v.muted=true; v.loop=true; v.playsInline=true;
+      v.setAttribute("preload","metadata"); v.setAttribute("playsinline","");
+      var cap=document.createElement("div"); cap.className="cap";
+      var t=document.createElement("span"); t.textContent=it.title||"KI-Tool-Check";
+      var a=document.createElement("a"); a.href=it.link||"https://radar.abannews.com/"; a.textContent="mehr →";
+      a.target="_blank"; a.rel="noopener";
+      cap.appendChild(t); cap.appendChild(a);
+      c.appendChild(v); c.appendChild(cap); grid.appendChild(c);
+    });
+    // Nur sichtbare Reels abspielen (spart Akku/Daten)
+    var vids=grid.querySelectorAll("video");
+    if("IntersectionObserver" in window){
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          var v=e.target;
+          if(e.isIntersecting){ v.play().catch(function(){}); } else { v.pause(); }
+        });
+      },{threshold:0.5});
+      vids.forEach(function(v){ io.observe(v); });
+    } else {
+      vids.forEach(function(v){ v.setAttribute("autoplay",""); v.play().catch(function(){}); });
+    }
+    // Tippen = Ton an/aus
+    grid.addEventListener("click",function(e){
+      var v=e.target.closest("video"); if(!v) return;
+      v.muted=!v.muted; if(!v.muted) v.play().catch(function(){});
+    });
+  }).catch(function(){ empty.hidden=false; });
+})();
+</script>
+</body>
+</html>

@@ -97,3 +97,35 @@ def slide(path, *, kicker, headline, body, accent=AMBER_DK, body_fill=INK,
     # Footer
     d.text((70, H - 120), footer, font=font(38), fill=MUTED)
     img.save(path)
+
+
+def slide_overlay(path, *, kicker, headline, body, accent=AMBER_DK,
+                  footer="radar.abannews.com"):
+    """Transparentes RGBA-Text-Overlay für den B-Roll-Look (Text über Stockvideo).
+
+    OBEN verankert (wie slide()): dunkler Verlauf oben für Lesbarkeit, Text hell.
+    Das untere Drittel bleibt frei — dort laufen die Untertitel, keine Überschneidung.
+    """
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    # Oberer Verlauf: dunkel am Kopf → transparent bei ~62 % (dahinter sitzt der Text)
+    panel = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    pd = ImageDraw.Draw(panel)
+    fade_to = int(H * 0.62)
+    for i in range(fade_to):
+        a = int(205 * (1 - i / fade_to))
+        pd.line([(0, i), (W, i)], fill=(15, 23, 42, max(0, a)))
+    img = Image.alpha_composite(img, panel)
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, 0, 20, H], fill=AMBER + (255,))            # Akzent-Balken
+    d.text((70, 90), "☕  aban news", font=font(40), fill=CREAM + (255,))
+    # Kicker-Badge (oben, wie slide())
+    bf = font(34)
+    bb = d.textbbox((0, 0), kicker, font=bf)
+    d.rounded_rectangle([70, 180, 70 + (bb[2] - bb[0]) + 56, 180 + (bb[3] - bb[1]) + 34],
+                        radius=20, fill=accent + (255,))
+    d.text((98, 196), kicker, font=bf, fill=WHITE + (255,))
+    # Headline + Body hell, im oberen Bereich
+    y = draw_block(d, 70, 320, headline, font(78), WHITE + (255,), W - 140, line_gap=16)
+    if body:
+        draw_block(d, 70, y + 36, body, font(46), CREAM + (255,), W - 140, line_gap=16)
+    img.save(path)

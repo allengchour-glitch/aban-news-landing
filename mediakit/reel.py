@@ -14,10 +14,27 @@ import os
 import tempfile
 from pathlib import Path
 
-from . import audio, tts
+from . import audio, pexels, tts
 from .ass_subs import build_ass, parse_srt, srt_to_ass
 from .ffmpeg_util import MediakitError, get_ffmpeg, run
-from .video_edit import concat_demux, still_to_segment
+from .video_edit import VERTICAL_VF, concat_demux, still_to_segment
+
+
+def _broll_segment(ff, query, overlay_png, dur, out, work, i):
+    """Ein Segment mit gedimmtem Pexels-Stockvideo + Marken-Text-Overlay. False bei Fehlschlag."""
+    clip = pexels.download(query, os.path.join(work, f"stock_{i}.mp4"))
+    if not clip:
+        return False
+    fc = (f"[0:v]{VERTICAL_VF},eq=brightness=-0.10:saturation=0.92,format=yuva420p[bg];"
+          f"[bg][1:v]overlay=0:0,format=yuv420p[v]")
+    try:
+        run([ff, "-y", "-stream_loop", "-1", "-i", clip, "-loop", "1", "-i", str(overlay_png),
+             "-t", f"{dur:.2f}", "-filter_complex", fc, "-map", "[v]", "-an",
+             "-c:v", "libx264", "-crf", "21", "-preset", "veryfast", str(out)])
+        return True
+    except MediakitError as e:
+        print(f"  B-Roll-Segment {i} fehlgeschlagen ({e}); Fallback Zoom")
+        return False
 
 REPO = Path(__file__).resolve().parent.parent
 VP_AUSGABE = REPO / "video-pipeline" / "ausgabe"
@@ -75,7 +92,8 @@ def _durations_fixed(lines, n_slides):
     return durs
 
 
-def render(case_id, out=None, voice=False, ambient=True, gain=0.14, from_dir=None):
+def render(case_id, out=None, voice=False, ambient=True, gain=0.12, from_dir=None,
+           ambient_style="warm", music=None, broll=False):
     ff = get_ffmpeg()
     src = Path(from_dir) if from_dir else (VP_AUSGABE / case_id)
     if not src.is_dir():
@@ -128,10 +146,24 @@ def render(case_id, out=None, voice=False, ambient=True, gain=0.14, from_dir=Non
             build_ass([], sum(durs), ass_path)
 
     # ---- Segmente bauen + zusammenfügen ----
+    # B-Roll-Material (transparente Overlays + Suchbegriffe), falls vorhanden
+    overlays = sorted(glob.glob(str(src / "overlay_*.png")))
+    qf = src / "queries.txt"
+    queries = [q for q in qf.read_text(encoding="utf-8").splitlines() if q.strip()] if qf.exists() else []
+    use_broll = broll and pexels.have_key() and len(overlays) == len(slides)
+    n_broll = 0
+
     segs = []
     for i, (img, d) in enumerate(zip(slides, durs)):
         seg = os.path.join(work, f"seg_{i}.mp4")
-        still_to_segment(img, d, seg)
+        done = False
+        if use_broll:
+            q = queries[i] if i < len(queries) else "technology abstract dark"
+            if _broll_segment(ff, q, overlays[i], d, seg, work, i):
+                done = True
+                n_broll += 1
+        if not done:
+            still_to_segment(img, d, seg, idx=i, n=len(slides))
         segs.append(seg)
     base = os.path.join(work, "base.mp4")
     concat_demux(segs, base)
@@ -139,24 +171,32 @@ def render(case_id, out=None, voice=False, ambient=True, gain=0.14, from_dir=Non
     # ---- Finaler Render: Untertitel einbrennen + Audio ----
     out = Path(out) if out else (src / "reel.mp4")
     ass_esc = ass_path.replace(":", r"\:")
-    drone = audio.ambient_drone(gain=gain, label="d")
     args = [ff, "-y", "-i", base]
+    idx = 1
+    voice_idx = music_idx = None
     if voice_wav:
-        args += ["-i", voice_wav]
+        args += ["-i", voice_wav]; voice_idx = idx; idx += 1
+    use_music = bool(music) and os.path.exists(str(music))
+    if use_music:
+        args += ["-stream_loop", "-1", "-i", str(music)]; music_idx = idx; idx += 1
 
-    if voice_wav and ambient:
-        fc = (f"[0:v]subtitles={ass_esc}[v];{drone};"
-              f"[1:a]volume=1.0[vo];[vo][d]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[ao]")
-        amap = ["-map", "[v]", "-map", "[ao]"]
-    elif voice_wav:
-        fc = f"[0:v]subtitles={ass_esc}[v];[1:a]volume=1.0,alimiter=limit=0.95[ao]"
-        amap = ["-map", "[v]", "-map", "[ao]"]
+    # Hintergrund-Bett bestimmen: eigene Musik > generierter Stil ('none'/ambient=False = keins)
+    bed_pre = None
+    if use_music:
+        bed_pre = f"[{music_idx}:a]volume=0.30[bed]"
     elif ambient:
-        fc = f"[0:v]subtitles={ass_esc}[v];{drone};[d]alimiter=limit=0.95[ao]"
-        amap = ["-map", "[v]", "-map", "[ao]"]
-    else:
-        fc = f"[0:v]subtitles={ass_esc}[v]"
-        amap = ["-map", "[v]"]
+        bed_pre = audio.ambient(ambient_style, gain=gain, label="bed")
+
+    chains = [f"[0:v]subtitles={ass_esc}[v]"]
+    if voice_idx is not None and bed_pre:
+        chains += [bed_pre,
+                   f"[{voice_idx}:a]volume=1.0[vo];[vo][bed]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[ao]"]
+    elif voice_idx is not None:
+        chains.append(f"[{voice_idx}:a]volume=1.0,alimiter=limit=0.95[ao]")
+    elif bed_pre:
+        chains += [bed_pre, "[bed]alimiter=limit=0.95[ao]"]
+    fc = ";".join(chains)
+    amap = ["-map", "[v]"] + (["-map", "[ao]"] if "[ao]" in fc else [])
 
     args += ["-filter_complex", fc] + amap + [
         "-c:v", "libx264", "-crf", "21", "-preset", "veryfast"]
@@ -165,5 +205,7 @@ def render(case_id, out=None, voice=False, ambient=True, gain=0.14, from_dir=Non
     args += ["-shortest", str(out)]
     run(args)
 
-    print(f"  ✓ Reel [{case_id}] Stufe {tier} → {out}  ({n} Slides, {sum(durs):.1f}s, 1080x1920)")
+    bett = "Musik" if use_music else (ambient_style if ambient else "stumm")
+    look = f"B-Roll {n_broll}/{n}" if n_broll else "Zoom"
+    print(f"  ✓ Reel [{case_id}] Stufe {tier} · {look} · Bett={bett} → {out}  ({n} Slides, {sum(durs):.1f}s, 1080x1920)")
     return out
