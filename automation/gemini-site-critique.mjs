@@ -89,6 +89,7 @@ async function shoot(){
 
 const SYSTEM_PROMPT = `Du bist ein erfahrener Senior-CRO- & UX-Designer für E-Commerce (Shopify, Schweizer Markt).
 Du bewertest Screenshots des Online-Shops LuxeStyle CH (luxestyle.ch, Premium-Mode & Lifestyle, CHF, Zielgruppe Frauen 18–40).
+WICHTIG: Das aktuelle Jahr ist 2026. Texte wie "Sommer-Mode 2026" sind also AKTUELL und korrekt — bewerte sie NICHT als veraltet.
 Ziel des Shops: aus Besuchern KÄUFER machen. Bewerte schonungslos ehrlich, aber konkret und umsetzbar.
 
 Analysiere besonders:
@@ -99,7 +100,7 @@ Analysiere besonders:
 - Produktkacheln (gleichmässig? Preise klar? Sterne? zu viele ähnliche Gadget-Fotos?)
 - Reibung im Funnel (zu viele Klicks, unklare Navigation, Ablenkung)
 
-Gib AUSSCHLIESSLICH valides JSON zurück (kein Markdown), Schema:
+Gib AUSSCHLIESSLICH valides JSON zurück (kein Markdown, keine Code-Fences), HALTE DICH KURZ pro Feld, Schema:
 {
  "gesamtnote": "<1-10>",
  "staerken": ["..."],
@@ -121,13 +122,15 @@ async function critique(shots){
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       contents: [{ role: 'user', parts }],
-      generationConfig: { temperature: 0.4, maxOutputTokens: 4096, responseMimeType: 'application/json' },
+      generationConfig: { temperature: 0.4, maxOutputTokens: 8192, responseMimeType: 'application/json' },
     }),
   });
   const j = await r.json().catch(()=>({}));
   if(!r.ok){ console.error('Gemini:', r.status, JSON.stringify(j).slice(0,400)); return null; }
-  const txt = j.candidates?.[0]?.content?.parts?.map(p=>p.text).join('') || '';
-  try{ return JSON.parse(txt); }catch{ console.error('Gemini-JSON nicht parsebar:', txt.slice(0,300)); return { raw: txt }; }
+  let txt = j.candidates?.[0]?.content?.parts?.map(p=>p.text).join('') || '';
+  // evtl. Markdown-Fences entfernen (manche Modelle wrappen trotz responseMimeType)
+  txt = txt.replace(/^\s*```(?:json)?\s*/i, '').replace(/\s*```\s*$/i, '').trim();
+  try{ return JSON.parse(txt); }catch{ console.error('Gemini-JSON nicht parsebar (evtl. abgeschnitten):', txt.slice(0,300)); return { raw: txt }; }
 }
 
 function toMarkdown(c, date){
