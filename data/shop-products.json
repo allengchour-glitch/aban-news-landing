@@ -3,35 +3,35 @@
     "slug": "aerzte",
     "title": "KI-Starter-Kit für Ärzte & Praxen",
     "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
-    "price": "€12",
-    "buy": "https://buy.stripe.com/test_eVq5kF422bbm5oj4Mt5wI00"
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/eVq5kF422bbm5oj4Mt5wI00"
   },
   {
     "slug": "handwerker",
     "title": "KI-Starter-Kit für Handwerk",
     "desc": "Angebote, Mails, Bewertungen schneller schreiben.",
-    "price": "€12",
-    "buy": "https://buy.stripe.com/test_cNi9AV9mmbbmaID1Ah5wI01"
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/cNi9AV9mmbbmaID1Ah5wI01"
   },
   {
     "slug": "steuerberater",
     "title": "KI-Starter-Kit für Steuerberatung",
     "desc": "Mandanten-Kommunikation, Standardschreiben, Recherche.",
-    "price": "€12",
-    "buy": "https://buy.stripe.com/test_6oU5kF4226V65ojen35wI02"
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/6oU5kF4226V65ojen35wI02"
   },
   {
     "slug": "anwaelte",
     "title": "KI-Starter-Kit für Kanzleien",
     "desc": "Entwürfe, lange Dokumente, Mandantentexte — mit Grenzen.",
-    "price": "€12",
-    "buy": "https://buy.stripe.com/test_fZu14p7ee3IU03ZdiZ5wI03"
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/fZu14p7ee3IU03ZdiZ5wI03"
   },
   {
     "slug": "gastronomie",
     "title": "KI-Starter-Kit für Gastronomie",
     "desc": "Bewertungen, Social, Speisekarten-Texte.",
-    "price": "€12",
-    "buy": "https://buy.stripe.com/test_cNi9AVdCCgvG9Ez4Mt5wI04"
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/cNi9AVdCCgvG9Ez4Mt5wI04"
   }
 ]
