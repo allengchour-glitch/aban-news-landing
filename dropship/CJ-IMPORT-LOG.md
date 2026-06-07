@@ -30,12 +30,21 @@
   **un**bewertete Produkte. Die 3 echten 5,0★-Gewinner (Slim Wallet `15396249502081`, Herrenuhr
   `15396249960833`, Jade Roller Premium `15397247385985`) fehlten → **hinzugefügt** (jetzt 9 Produkte,
   4 davon mit sichtbarem 4,8–5,0★-Rating statt vorher 1). Social Proof in der Featured-Collection. Reversibel.
-- **🟡 CJ-Import aufgeschoben:** User hat den CJ-API-Key heute nicht gefunden → holt ihn **morgen am PC**
-  (`developers.cjdropshipping.com` → API Key generieren). Pipeline steht (`cj_enrich.mjs` ready, CJ_EMAIL
-  bekannt: `allengchour@gmail.com`, CJ-ID `CJ5452995`, Free-Tier). **Sobald der Key kommt:** `cj_enrich.mjs`
-  laufen lassen → kuratieren → via MCP `productSet` anlegen (Farbe×Grösse+Farbbild) → Gemini-QA → ACTIVE+6 Kanäle.
-  ⚠️ Lehre: CJ-API-Key ≠ Konto-Passwort; liegt NUR im Developer-Portal, nicht in der m.cjdropshipping-App.
-  (Die anderen Lieferanten-Apps DSers/Printful/Gelato/Faire/DropCommerce sind **nicht** autonom ziehbar.)
+- **✅ CJ-Live-Import durchgeführt (Key erhalten, Mode-Charge):** Über CJ-API (`cj_enrich.mjs`) 7 Mode-Kandidaten
+  gesourct, Bilder HTTP-200-geprüft (0 kaputt), **visuelle QA** (Hero-Bilder angeschaut). **6 als ACTIVE
+  angelegt** via MCP `productSet` (Farbe×Grösse + Farbbild je Variante, echte CJ-SKUs, `tracked:false`),
+  in **alle 6 Kanäle publiziert, alle Media READY**:
+  1. Long-Weste «Resort» `15421165339009` (6 Var, 34.90) · 2. Workout-Set «Active» `15421165404545` (12 Var, 44.90)
+  3. Sommer-Set «Riviera» `15421165502849` (25 Var, 29.90) · 4. Herren-Set «Resort» `15421165601153` (30 Var, 39.90)
+  5. Long-Blazer «Milano» `15421165666689` (40 Var, 39.90) · 6. Kapuzen-Cardigan «Cosy» `15421165764993` (50 Var, 34.90).
+  **Abgelehnt (nicht angelegt):** Zip-Hoodie «Graffiti» (`CJWY292387001AZ`) — Airbrush-Gesicht-Print = IP/Marken-
+  Risiko (§5) + schwaches Bild (auf schmutzigem Boden). cj-real: 171 → **177**.
+  ⚠️ Lehre: CJ-API-Key ≠ Konto-Passwort; liegt NUR im Developer-Portal (`developers.cjdropshipping.com` →
+  `…/myCJ.html#/apikey`), Format `CJ<ID>@api@<32hex>`. Key nach Lauf rotieren. CJ-ID `CJ5452995`, Free-Tier.
+  (Die anderen Lieferanten-Apps DSers/Printful/Gelato/Faire/DropCommerce sind **nicht** autonom ziehbar —
+  POD = eigene Designs, Faire = Freigabe-API, DSers = App-UI.)
+- **⚠️ Fulfillment-To-do (User):** Die 6 neuen Mode-Produkte sind ACTIVE & verkäuflich, aber CJ muss die SKUs
+  noch in der CJ/DSers-App zu Aufträgen mappen (Connect-Store). Beim ersten Verkauf prüfen.
 - **🔴 Kernproblem unverändert:** Engpass bleibt Reichweite (3 User-Klicks §10: AGB-Domain, Pixel, Kampagne+Budget),
   nicht Katalog/Funnel. Autonom getan, was ohne CJ-Creds/Werbekonto geht.
 
