@@ -61,6 +61,7 @@ Mach das pro Zeile aus der Tabelle unten **einmal**:
 | 15 | `ki-verzeichnis` | `cd ki-verzeichnis && python generate.py` | `ki-verzeichnis/dist` | `tools.abannews.com` |
 | 16 | `pod-shop` | `cd pod-shop && python generate.py` | `pod-shop/dist` | `shop.abannews.com` |
 | 17 | `lifestyle-radar` | `cd lifestyle-radar && python generate.py` | `lifestyle-radar/dist` | `lifestyle.abannews.com` |
+| 18 | `webbaukasten-radar` | `cd webbaukasten-radar && python generate.py` | `webbaukasten-radar/dist` | `webbaukasten.abannews.com` |
 
 **Schon live (nicht anfassen):** `radar.abannews.com` (ki-tools-radar) und die
 Hauptseite `abannews.com`.
