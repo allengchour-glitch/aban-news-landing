@@ -42,13 +42,20 @@
 <script src="/js/shop-config.js"></script>
 <script>
   (function(){
-    var el=document.getElementById('shop'), items=(window.ABAN_SHOP||[]);
-    if(!items.length){el.innerHTML='<p>Pakete sind in Vorbereitung.</p>';return;}
-    el.innerHTML=items.map(function(p){
-      var btn=p.buy?('<a class="btn" href="'+p.buy+'" target="_blank" rel="noopener">Kaufen — '+p.price+'</a>')
-                   :('<span class="btn soon">Bald verfügbar</span>');
-      return '<div class="card"><h2>'+p.title+'</h2><p>'+p.desc+'</p><div class="price">'+p.price+'</div>'+btn+'</div>';
-    }).join('');
+    var el=document.getElementById('shop');
+    function render(items){
+      if(!items||!items.length){el.innerHTML='<p>Pakete sind in Vorbereitung.</p>';return;}
+      el.innerHTML=items.map(function(p){
+        var btn=p.buy?('<a class="btn" href="'+p.buy+'" target="_blank" rel="noopener">Kaufen — '+p.price+'</a>')
+                     :('<span class="btn soon">Bald verfügbar</span>');
+        return '<div class="card"><h2>'+p.title+'</h2><p>'+p.desc+'</p><div class="price">'+p.price+'</div>'+btn+'</div>';
+      }).join('');
+    }
+    // Bevorzugt automatisch erzeugte Stripe-Produkte (data/shop-products.json), sonst Config-Fallback.
+    fetch('/data/shop-products.json',{cache:'no-store'})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(d){ render((d&&d.length)?d:(window.ABAN_SHOP||[])); })
+      .catch(function(){ render(window.ABAN_SHOP||[]); });
   })();
 </script>
 </body>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Danke — dein KI-Starter-Kit | aban news</title>
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#1f2937;background:#fffbf5;line-height:1.6;max-width:640px;margin:0 auto;padding:2rem 1.25rem;text-align:center}
+    .btn{display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:14px 26px;border-radius:12px;font-size:1.05rem;margin:1rem 0}
+    .muted{color:#6b7280;font-size:.9rem}
+    .box{background:#fff;border:1px solid #ece3d4;border-radius:16px;padding:1.6rem;margin:1.4rem 0}
+  </style>
+</head>
+<body>
+  <p style="color:#9a3412;font-weight:700">☕ aban news</p>
+  <h1>Danke für deinen Kauf!</h1>
+  <div class="box" id="box"><p>Zahlung wird geprüft …</p></div>
+  <p class="muted">Problem mit dem Download? Schreib mir: <a href="mailto:hallo@abannews.com" style="color:#b45309">hallo@abannews.com</a></p>
+  <p class="muted"><a href="/" style="color:#6b7280">← zur Startseite</a> · <a href="/shop.html" style="color:#6b7280">weitere Kits</a></p>
+<script>
+  (function(){
+    var box=document.getElementById('box');
+    var sid=new URLSearchParams(location.search).get('session_id');
+    if(!sid){box.innerHTML='<p>Kein gültiger Kauf-Link. Bitte über den Shop kaufen.</p>';return;}
+    fetch('/api/kit-download?session_id='+encodeURIComponent(sid))
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if(d&&d.ok&&d.url){
+          box.innerHTML='<p>Dein Kit ist bereit:</p><a class="btn" href="'+d.url+'">📦 Kit herunterladen</a>'+
+                        '<p class="muted">Link gilt für dich — bitte nicht öffentlich teilen.</p>';
+        } else {
+          box.innerHTML='<p>'+((d&&d.error)||'Konnte den Download nicht freischalten.')+'</p>'+
+                        '<p class="muted">Falls du gerade gezahlt hast: kurz warten und Seite neu laden.</p>';
+        }
+      })
+      .catch(function(){box.innerHTML='<p>Netzwerkfehler. Seite neu laden oder mir schreiben.</p>';});
+  })();
+</script>
+</body>
+</html>
