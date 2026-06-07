@@ -1,10 +1,26 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
 > Dauerhafter Gedächtnis-Speicher für dieses Vorhaben. Überlebt Session-Resets.
-> Stand: **2026-06-06** (Wachstum & Conversion — PR #381, siehe nächster Abschnitt) · Betreiber: Allen Chour (abannews.com, Belp/CH).
+> Stand: **2026-06-07** (Vertex-AI-Bildpipeline LIVE — siehe nächster Abschnitt) · Betreiber: Allen Chour (abannews.com, Belp/CH).
 > ⚠️ Hinweis: `CLAUDE.md` im Repo-Root ist inzwischen das Arbeitsgedächtnis eines **anderen** Workstreams
 > (LuxeStyle-Dropshipping-Shop) und **nicht mehr** die aban-news-Wahrheit. Für aban-news ist **dieses**
 > Dokument (`PROJEKT.md`) maßgeblich. CLAUDE.md des Dropship-Projekts NICHT überschreiben.
+> 🔗 **Session-übergreifend:** Beide Sessions teilen sich dieses Repo. Bild-Generierung
+> (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
+> Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
+
+## 📌 Stand 2026-06-07 — Echte KI-Bilder (Google Imagen via Vertex AI) LIVE ✅
+**Ergebnis:** Telegram-Autopost erzeugt jetzt zu jedem Post ein **echtes Imagen-Bild** statt der Marken-Karte.
+Verifiziert im Workflow-Log (`telegram-autopost.yml`, Run 27079834486):
+`(Vertex imagen-3.0-generate-002 @ us-central1)` → `✓ Bild erzeugt` → `✓ Gepostet`.
+- **Pfad:** `automation/gen_image_gemini.py` → `make_image()` Reihenfolge: **Vertex (GCP_SA_KEY)** → Gemini-Dev-API → Marken-Karte (Fallback). Vertex ist der aktive Weg.
+- **Aktiviert (User, am Handy):** GCP-Projekt **`aban-imagen`** (Nr. 392921573891) · Service-Account **`abannews@aban-imagen.iam.gserviceaccount.com`** mit Rolle *Vertex AI User* · **Vertex AI / „Agent Platform" API aktiviert** · JSON-Key als **GitHub-Secret `GCP_SA_KEY`** + Secret **`GCP_PROJECT=aban-imagen`**.
+- **Zwei Bugs gefixt (Commit auf `main`):** (1) leere `${{ vars.GCP_LOCATION }}`/`VERTEX_IMAGE_MODEL` → `.get(default)` greift bei leerem String NICHT → mit `or`-Default abgefangen (Region `us-central1`, Modell `imagen-3.0-generate-002`); (2) `_vertex()` fing nur `HTTPError` → URLError/DNS crashte den ganzen Post → jetzt breiter `except` → Karte als Fallback statt Crash.
+- **Lehren (teuer gelernt):** Imagen läuft NICHT über die Developer-API (`generativelanguage`, gibt 404 für `:predict`) → **nur Vertex AI**. Vertex-403 „API not used/disabled" = `aiplatform.googleapis.com` im Projekt aktivieren. Leere GitHub-*Variables* kommen als `""` an, nicht als „unset" → Defaults mit `or` setzen, nicht `.get(k, default)`.
+- **Kosten:** ~0,03–0,04 $/Bild → bei 1 Post/Werktag ~**1 $/Monat** (User-Budget). Budget-Limit empfohlen: https://console.cloud.google.com/billing/budgets
+- **🔴 Security-Lehre (wiederholt):** User hat den **ersten** SA-JSON-Key (private_key) im Chat gepostet → verbrannt → muss in GCP gelöscht werden (Key-ID `a7be9889…`). Der **zweite** Key wurde direkt als GitHub-Secret gesetzt (sicher). NIE wieder Keys im Chat — immer direkt in GitHub-Secrets.
+- **🟡 Optional offen (User):** alten Key `a7be9889…` in GCP löschen (falls noch nicht); optional Variables `GCP_LOCATION=us-central1` + `VERTEX_IMAGE_MODEL=imagen-3.0-generate-002` setzen (nötig ist es nicht, Code hat Defaults).
+- **Workflows mit Vertex-Bild verdrahtet:** `telegram-autopost.yml`, `linkedin-autopost.yml`, `telegram-control.yml`, `gemini-content-engine.yml`, `gemini-draft.yml`, `gemini-growth-ideas.yml` (alle bekommen `GCP_SA_KEY`/`GCP_PROJECT`/`GCP_LOCATION`/`VERTEX_IMAGE_MODEL` + `pip install google-auth requests`).
 
 ## 📌 Stand 2026-06-06 — Wachstum & Conversion (PR #381, Branch `claude/ai-money-project-f25Ub`)
 **Ziel der Session:** „sehr reif, aber 0 Abonnenten" → *gefunden werden + Besucher→Abonnent*. 4 Workstreams + Hub-Boost. Markenversprechen gewahrt (kein Tracking-Pixel, DSGVO, keine Fake-Zahlen). **Engpass = Reichweite/Conversion, nicht Bauen.**
