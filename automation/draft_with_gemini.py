@@ -33,21 +33,30 @@ ROOT = Path(__file__).resolve().parent
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
 
 PROMPT_HEADER = """Du bist die Redaktion von „aban news", einem täglichen deutschsprachigen KI-Newsletter für DACH-Profis.
-Schreibe aus dem folgenden RECHERCHE-ROHMATERIAL einen Ausgaben-ENTWURF.
+Schreibe aus dem folgenden RECHERCHE-ROHMATERIAL einen ausführlichen Ausgaben-ENTWURF.
 
 STRIKTE REGELN:
 - Verwende AUSSCHLIESSLICH Informationen aus dem Rohmaterial unten. Erfinde NICHTS dazu —
   keine Zahlen, Prozente, Studien, Zitate oder Tools, die nicht im Material stehen.
+- „Länger" heißt: mehr ERKLÄRUNG, Kontext und konkrete Schritte — NIEMALS neue Fakten erfinden.
 - du-Form. Ehrlich, nüchtern, anti-Hype. Verboten: revolutionär, disruptiv, game-changer,
   bahnbrechend, „verändert alles", AI-powered, Buzzwords, Ausrufezeichen-Ketten.
-- Struktur:
-  1) Kurzer Intro-Satz.
-  2) „📰 Was heute zählt" — 3 Updates. Pro Update 2–3 Sätze + 1 Zeile „Was das für dich heißt:".
-     Hänge die Quell-URL aus dem Material an.
-  3) „🛠 Tool" — nur wenn im Material ein konkretes Tool vorkommt; sonst weglassen.
-  4) „💡 Prompt zum Kopieren" — ein praktischer, allgemein nützlicher Prompt (kein erfundener Fakt).
-- Wenn das Material für 3 gute Updates nicht reicht, schreib lieber weniger und sag das ehrlich.
-- Maximal ~450 Wörter.
+- Ziel-Länge: rund 1100–1300 Wörter (8–10 Min Lesezeit). Maximal 1500 Wörter. Höchstens 3 Emojis gesamt.
+
+FORMAT — verwende GENAU diese Markierungen (jede auf eigener Zeile), nichts anderes drumherum:
+INTRO: <2–3 Sätze, worum es heute geht>
+UPDATE: <Schlagzeile des Updates>
+<2–4 Sätze mit den Fakten aus dem Material>
+WAS: <ein ganzer Absatz (3–5 Sätze): was das konkret für DACH-Solo-/KMU-Profis bedeutet, was zu tun ist>
+QUELLE: <die Quell-URL aus dem Material>
+BILD: <kurzer ENGLISCHER Bild-Such-Hinweis, 3–6 Wörter, motivisch passend, ohne Personen>
+(WIEDERHOLE den UPDATE…BILD-Block 4–5 mal)
+TIEFER: <ein Thema vertieft erklärt, 5–8 Sätze, Hintergrund + Praxis-Schritte, nur aus Material>
+TOOL: <nur wenn im Material ein konkretes Tool vorkommt: Name + 2–3 Sätze + „für wen / für wen nicht">
+PROMPT: <ein praktischer, allgemein nützlicher Prompt zum Kopieren, kein erfundener Fakt>
+OUTRO: <2–3 ehrliche Schluss-Sätze>
+
+- Reicht das Material nicht für 4 Updates, schreib lieber weniger UPDATE-Blöcke und sag es im OUTRO ehrlich.
 
 ROHMATERIAL:
 """
@@ -66,7 +75,7 @@ def call_gemini(api_key: str, prompt: str) -> str:
     url = (f"https://generativelanguage.googleapis.com/v1beta/models/"
            f"{MODEL}:generateContent?key={api_key}")
     body = {"contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {"temperature": 0.4, "maxOutputTokens": 1200}}
+            "generationConfig": {"temperature": 0.4, "maxOutputTokens": 4000}}
     req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
                                  headers={"Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=60) as r:

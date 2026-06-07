@@ -25,19 +25,30 @@ jobs:
       - name: Rohmaterial sammeln (echte Quellen, keine Erfindung)
         run: python3 automation/news_aggregator.py || echo "::warning::Aggregator-Fehler (evtl. Netz) — fahre fort"
 
-      - name: Entwurf mit Gemini erzeugen
+      - name: Entwurf + bild-reiche Ausgabe erzeugen
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
-        run: python3 automation/draft_with_gemini.py
-
-      - name: Entwurf committen (zum Review)
+          GEMINI_IMAGE_MODEL: ${{ vars.GEMINI_IMAGE_MODEL }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_LOCATION: ${{ vars.GCP_LOCATION }}
+          VERTEX_IMAGE_MODEL: ${{ vars.VERTEX_IMAGE_MODEL }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          ABAN_IMAGE_SOURCE: ${{ vars.ABAN_IMAGE_SOURCE }}
+          ABAN_DISABLE_IMAGE_GEN: ${{ vars.ABAN_DISABLE_IMAGE_GEN }}
         run: |
-          if ! git diff --quiet -- automation/ ; then
+          pip install --quiet pillow google-auth requests || true
+          python3 automation/draft_with_gemini.py
+          python3 automation/build_issue.py
+
+      - name: Entwurf + Ausgabe committen (zum Review)
+        run: |
+          if ! git diff --quiet -- automation/ data/ img/ 2>/dev/null || [ -n "$(git status --porcelain img/ data/)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add automation/news-roh-*.md automation/entwurf-gemini-*.md 2>/dev/null || true
-            git commit -m "Gemini-Entwurf + Rohmaterial (ENTWURF, nicht gesendet) [skip ci]" || echo "nichts zu committen"
+            git add automation/news-roh-*.md automation/entwurf-gemini-*.md data/issue-*-draft.html img/issues/ 2>/dev/null || true
+            git commit -m "Gemini-Entwurf + bild-reiche Ausgabe (ENTWURF, nicht gesendet) [skip ci]" || echo "nichts zu committen"
             git push || echo "::warning::push fehlgeschlagen"
           else
             echo "Keine Aenderung."
