@@ -130,6 +130,25 @@ def make_visual(hook: str, base: str, imgdir: Path, prefer: str):
         return None
 
 
+def optimize(p: Path | None) -> Path | None:
+    """Große KI-PNGs (~1 MB) → schlanke JPGs (max 1280px) für E-Mail/Web. JPG bleibt JPG."""
+    if not p or p.suffix.lower() != ".png":
+        return p
+    try:
+        from PIL import Image
+        img = Image.open(p).convert("RGB")
+        if img.width > 1280:
+            img = img.resize((1280, round(img.height * 1280 / img.width)))
+        jpg = p.with_suffix(".jpg")
+        img.save(jpg, "JPEG", quality=82, optimize=True)
+        if jpg != p:
+            p.unlink(missing_ok=True)
+        return jpg
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning::Bild-Optimierung übersprungen ({p.name}): {e}")
+        return p
+
+
 def rel_url(p: Path | None, date: str) -> str:
     return f"{SITE}/img/issues/{date}/{p.name}" if p else ""
 
@@ -196,8 +215,8 @@ def render(s: dict, date: str, imgdir: Path) -> str:
            f".prompt{{background:#1c2530;color:#f3f4f6;border-radius:12px;padding:1rem 1.2rem}}.prompt pre{{white-space:pre-wrap;margin:0;font-size:.92rem}}"
            f".cta{{text-align:center;margin:2rem 0}}.cta a{{display:inline-block;background:{A};color:#fff;text-decoration:none;font-weight:700;padding:12px 24px;border-radius:10px}}"
            ".cap{font-size:.82rem;color:#6b7280;text-align:center;margin:.2rem 0 0}")
-    cover = make_visual(s["updates"][0]["bild"] if s["updates"] else "warm editorial ai workspace",
-                        "cover", imgdir, prefer="ai")
+    cover = optimize(make_visual(s["updates"][0]["bild"] if s["updates"] else "warm editorial ai workspace",
+                                 "cover", imgdir, prefer="ai"))
     H = [f"<!doctype html><html lang=de><head><meta charset=utf-8>",
          '<meta name="viewport" content="width=device-width,initial-scale=1">',
          '<meta name="robots" content="noindex,nofollow">',
@@ -211,8 +230,8 @@ def render(s: dict, date: str, imgdir: Path) -> str:
                  else f"<p style='font-size:1.1rem'>{html.escape(s['intro'])}</p>")
     H.append("<h2>📰 Was heute zählt</h2>")
     for i, u in enumerate(s["updates"]):
-        img = make_visual(u["bild"] or u["headline"], f"update-{i+1}", imgdir,
-                          prefer="pexels" if i % 2 == 0 else "ai")
+        img = optimize(make_visual(u["bild"] or u["headline"], f"update-{i+1}", imgdir,
+                                   prefer="pexels" if i % 2 == 0 else "ai"))
         H.append("<div class=card>")
         H.append(f"<h2 style='margin-top:0'>{html.escape(u['headline'])}</h2>")
         H.append(img_tag(rel_url(img, date), u["headline"]))
