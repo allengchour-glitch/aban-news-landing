@@ -20,17 +20,16 @@
 1. ✅ `test` — Shop-Struktur verifiziert (5 ZIPs ↔ 5 Live-Stripe-Links CHF 12 ↔ Gate-Hash stimmen überein).
    Offen nur Browser-Live-Test (Cloudflare blockt meinen Fetcher): `…/api/kit-download?session_id=cs_test_123abc`
    muss `{"error":"Zahlung nicht gefunden."}` liefern. (Erledigt im Batch „1 7 10", PR #387.)
-2. `mehr kits` — weitere Branchen in den Shop (`data/kit-catalog.json` erweitern → Workflow „Stripe-Shop").
-3. `hubs verlinken` — Shop-Link in alle 262 `ki-fuer-*`-Hubs (interner Verkaufs-Funnel).
-4. `muster` — GEO-Beispielreport für 1 Berner Firma erzeugen (Demo zum Verschicken).
-5. `geo-cron` — monatlicher GEO-Report-Workflow (`automation/geo_report.py`).
-6. `promote` — gesendete Newsletter-Ausgabe ins öffentliche Archiv (`build_issue.py --promote`) — NACH Versand.
-7. ✅ `nischen ausbau` — `--niche` jetzt durchgängig in news_aggregator/draft_with_gemini/build_issue
-   (eigenes Rohmaterial/Entwurf/Bild-Ordner `img/issues/<niche>/<date>`/Draft); `gemini-draft.yml` hat
-   `niche`-Dispatch-Input. (PR #387.)
-8. `bausatz` — Autopilot-Template fertig (Lizenz/Listing) für Verkauf.
-9. `lead-magnete` — mehr Branchen-PDFs/Pakete generieren.
-10. ✅ `og-chatgpt` — `og-chatgpt` nutzt jetzt ruhigen abstrakten Amber-Verlauf als Hintergrund. (PR #387.)
+2. ✅ `mehr kits` — `data/kit-catalog.json` 5→11 Branchen (+coaches, immobilienmakler, friseure,
+   fotografen, architekten, fitnessstudios). Stripe-Workflow legt Produkte/Links/ZIPs an. (PR #388.)
+3. ✅ `hubs verlinken` — Shop-Link im Funnel-Block aller 262 `ki-fuer-*`-Hubs (`tools/add_branchen_funnel.py`). (PR #388.)
+4. ✅ `muster` — `downloads/muster/geo-report-MUSTER.md` (erfundene Berner Firma, klar gekennzeichnet). (PR #388.)
+5. ✅ `geo-cron` — `.github/workflows/geo-report.yml` (monatlich, Reports als privates Artefakt, no-op-sicher). (PR #388.)
+6. `promote` — gesendete Newsletter-Ausgabe ins öffentliche Archiv (`build_issue.py --promote`) — NACH Versand. **(einzig offen)**
+7. ✅ `nischen ausbau` — `--niche` durchgängig (news_aggregator/draft/build_issue + Dispatch-Input). (PR #387.)
+8. ✅ `bausatz` — `tools/export_template.py` liefert LICENSE.txt (Single-Seat) + .env.example + LISTING.md. (PR #388.)
+9. ✅ `lead-magnete` — 6 neue Branchen-Schnellstart-PDFs aus echten Hub-Use-Cases + Hub-Links. (PR #388.)
+10. ✅ `og-chatgpt` — ruhiger abstrakter Amber-Verlauf als Hintergrund. (PR #387.)
 
 **Nur User (extern):** TWINT-Freischaltung abwarten (in Prüfung) · Cloudflare-Env für Download bestätigen
 (Check A) · `sk_live_` ist aktiv (Shop live) · optional `CF_TOKEN` (Analytics) + LinkedIn-Token · 3 Wachstums-
@@ -39,6 +38,22 @@ Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe s
 **Schon erledigt (nicht offen):** verwaiste Hubs 201→0, €9/89-Checkout live, CHF+TWINT-Code, Bild-Pipeline
 (Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
 
+
+## 📌 Stand 2026-06-07 (Teil 12) — Backlog fertig + Konversions-Politur
+Auf „weiter machen" autonom abgearbeitet, jeweils frischer Branch → Draft-PR → per
+`merge_pull_request`-Tool nach main gemerged (direkter main-Push bleibt classifier-blockiert):
+- **PR #388 (gemerged):** Backlog #2/#3/#4/#5/#8/#9 — Shop-Funnel in alle 262 Hubs, +6 Kits +6 Lead-
+  Magnet-PDFs, GEO-Report-Cron + Muster, Bausatz-Lizenz/Listing. voice-linter nimmt `downloads/`+`reports/` aus.
+- **PR #389 (gemerged):** Newsletter-CTA auf 12 weitere Inhalts-/Konversionsseiten (DE+EN-Block,
+  `</body>`-Fallback). Audit „ohne Newsletter-CTA" 21→9 (Rest bewusst B2B/Transparenz/auto-generiert).
+- **shop.html (dieser Branch):** „Was steckt drin"-Block + Gratis-First-Querlink; **TWINT-Claim entfernt**
+  (TWINT noch in Stripe-Prüfung → nur „per Karte" versprechen, bis live). founding.html TWINT-Buttons sind
+  ohnehin `hidden` bis URL gesetzt — ehrlich, kein Fix nötig.
+- **growth_audit jetzt:** 0 ohne OG, 0 Hub ohne Funnel/Founding, 0 defekte Links, 0 verwaiste Hubs.
+- **Offen Backlog: nur noch #6 `promote`** (erst nach echter gesendeter Ausgabe).
+- **User-Restaufgaben:** Cloudflare-`radar`-Token re-scopen (Deploy-CI Auth-Error 10000, betrifft jeden
+  Commit, nicht mein Diff) · `Stripe-Shop`-Workflow 1× starten (6 neue Kits → Produkte/Links/ZIPs) ·
+  Browser-Check `…/api/kit-download?session_id=cs_test_123abc` → `{"error":"Zahlung nicht gefunden."}`.
 
 ## 📌 Stand 2026-06-07 (Teil 11) — Batch „1 7 10" + Branch/CI-Lage (WICHTIG für nächste Session)
 Erledigt: Backlog **#1 (test), #7 (nischen ausbau), #10 (og-chatgpt)** — siehe Backlog-Häkchen oben.
