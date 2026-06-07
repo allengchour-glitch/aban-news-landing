@@ -25,11 +25,18 @@ except Exception:  # noqa: BLE001
     make_image = None
     set_aspect = None
 try:
+    from pexels_image import fetch_image  # echtes Stockfoto (optional, braucht PEXELS_API_KEY)
+except Exception:  # noqa: BLE001
+    fetch_image = None
+try:
     from gen_card import make_card  # markeneigene Text-Karte (Fallback, immer verfügbar)
 except Exception:  # noqa: BLE001
     make_card = None
 
 _ALLOWED_ASPECTS = {"1:1", "3:4", "4:3", "9:16", "16:9"}
+# Pexels-Orientierung je Seitenverhältnis
+_ORIENT = {"1:1": "square", "16:9": "landscape", "4:3": "landscape",
+           "9:16": "portrait", "3:4": "portrait"}
 
 
 def _hook(text: str) -> str:
@@ -48,14 +55,25 @@ def build_visual(text: str, *, aspect: str = "1:1", channel: str = "generic"):
     tmp = Path(tempfile.gettempdir())
     disabled = os.environ.get("ABAN_DISABLE_IMAGE_GEN", "").strip().lower() in (
         "1", "true", "yes", "on")
+    # Bildquelle: "pexels" (echte Fotos) | "ai" (Imagen) | "auto" (Pexels falls Key, sonst AI)
+    source = os.environ.get("ABAN_IMAGE_SOURCE", "auto").strip().lower()
 
-    if make_image and not disabled:
+    # 1) Echtes Stockfoto via Pexels (wenn gewünscht + Key vorhanden)
+    if fetch_image and not disabled and source in ("auto", "pexels"):
+        p = fetch_image(hook, str(tmp / f"aban-{channel}-{uuid.uuid4().hex}.jpg"),
+                        orientation=_ORIENT.get(aspect, "square"))
+        if p:
+            return p
+
+    # 2) KI-Bild via Imagen/Vertex
+    if make_image and not disabled and source in ("auto", "ai", "pexels"):
         if set_aspect and aspect in _ALLOWED_ASPECTS:
             set_aspect(aspect)
         p = make_image(hook, str(tmp / f"aban-{channel}-{uuid.uuid4().hex}.png"))
         if p:
             return p
 
+    # 3) Marken-Karte (immer verfügbar)
     if make_card:
         try:
             return make_card(text, str(tmp / f"aban-{channel}-{uuid.uuid4().hex}.jpg"))

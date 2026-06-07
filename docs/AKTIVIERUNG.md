@@ -40,6 +40,14 @@ Pro Secret: Name **exakt** wie unten + Wert einfügen → „Add secret".
 ## 5) (optional) CF Web Analytics — sehen, welche Seite zieht
 - Cloudflare-Dashboard → Web Analytics → Site → Token kopieren → in `js/analytics.js` bei `CF_TOKEN` einsetzen (oder mir schicken).
 
+## 5b) (optional) PEXELS_API_KEY — echte Stockfotos statt KI-Bilder
+1. Gratis-Key holen: **https://www.pexels.com/api/** → „Get Started" → Key kopieren.
+2. GitHub-Secret: Name `PEXELS_API_KEY`, Wert = der Key.
+3. Bildquelle steuern (GitHub → Settings → Variables):
+   - `ABAN_IMAGE_SOURCE` = `auto` (Default: Pexels falls Key, sonst KI) · `pexels` (nur echte Fotos) · `ai` (nur Imagen).
+   - Bildkosten ganz aus: Variable `ABAN_DISABLE_IMAGE_GEN` = `1` → nur die gratis Marken-Karte.
+   Reihenfolge im Code: **Pexels → Imagen → Marken-Karte** (alles no-op-sicher).
+
 ## 6) (optional, später) LinkedIn
 - `LINKEDIN_ACCESS_TOKEN` + `LINKEDIN_AUTHOR_URN` (siehe `docs/LINKEDIN-AUTOPOST.md`). Braucht Company Page am Desktop — kann warten.
 
