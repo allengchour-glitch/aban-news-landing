@@ -3,5 +3,11 @@
   {"slug":"handwerker","title":"KI-Starter-Kit für Handwerk","desc":"Angebote, Mails, Bewertungen schneller schreiben.","price_cents":1200,"currency":"chf"},
   {"slug":"steuerberater","title":"KI-Starter-Kit für Steuerberatung","desc":"Mandanten-Kommunikation, Standardschreiben, Recherche.","price_cents":1200,"currency":"chf"},
   {"slug":"anwaelte","title":"KI-Starter-Kit für Kanzleien","desc":"Entwürfe, lange Dokumente, Mandantentexte — mit Grenzen.","price_cents":1200,"currency":"chf"},
-  {"slug":"gastronomie","title":"KI-Starter-Kit für Gastronomie","desc":"Bewertungen, Social, Speisekarten-Texte.","price_cents":1200,"currency":"chf"}
+  {"slug":"gastronomie","title":"KI-Starter-Kit für Gastronomie","desc":"Bewertungen, Social, Speisekarten-Texte.","price_cents":1200,"currency":"chf"},
+  {"slug":"coaches","title":"KI-Starter-Kit für Coaches & Berater","desc":"Angebote, Posts, Session-Vorbereitung — ohne Hype.","price_cents":1200,"currency":"chf"},
+  {"slug":"immobilienmakler","title":"KI-Starter-Kit für Immobilienmakler","desc":"Exposés, Anfragen-Antworten, Inserate schneller.","price_cents":1200,"currency":"chf"},
+  {"slug":"friseure","title":"KI-Starter-Kit für Friseure & Salons","desc":"Social-Posts, Bewertungen, Terminmails.","price_cents":1200,"currency":"chf"},
+  {"slug":"fotografen","title":"KI-Starter-Kit für Fotografen","desc":"Angebote, Bildtexte, Kundenkommunikation.","price_cents":1200,"currency":"chf"},
+  {"slug":"architekten","title":"KI-Starter-Kit für Architekturbüros","desc":"Texte, Ausschreibungen, Recherche — mit Grenzen.","price_cents":1200,"currency":"chf"},
+  {"slug":"fitnessstudios","title":"KI-Starter-Kit für Fitnessstudios","desc":"Social, Mitglieder-Mails, Kurs-Beschreibungen.","price_cents":1200,"currency":"chf"}
 ]
