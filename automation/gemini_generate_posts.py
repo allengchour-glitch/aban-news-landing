@@ -46,6 +46,20 @@ REGELN (strikt):
 - Kein Vorwort, keine Nummerierung, nur die Posts.
 """
 
+PROMPT_ONE = """Schreibe EINEN eigenständigen, EVERGREEN Social-Post für „aban news“ (täglicher
+deutschsprachiger KI-Newsletter für DACH-Profis).
+
+REGELN (strikt):
+- du-Form, ehrlich, nüchtern, anti-Hype.
+- VERBOTEN: revolutionär, disruptiv, game-changer, bahnbrechend, „verändert alles“, AI-powered,
+  Ausrufezeichen-Ketten, Großbuchstaben-Schreien.
+- KEINE Statistiken, Prozente, Studien, Datums-/Aktualitätsbezüge oder konkreten Produkt-News
+  (zeitlos halten — keine Zahlen erfinden!).
+- Konkreter Nutzen: ein Tipp, ein Prompt zum Kopieren oder eine klare Haltung.
+- 60–130 Wörter. Am Ende: https://abannews.com und MAXIMAL 3 Hashtags.
+- Nur der Post-Text, kein Vorwort, keine Anführungszeichen drumherum.
+"""
+
 
 def gemini(api_key, prompt):
     url = (f"https://generativelanguage.googleapis.com/v1beta/models/"
@@ -105,24 +119,20 @@ def main() -> int:
         return 0
 
     from gemini_text import generate  # Vertex → Developer-API → None
-    raw = generate(PROMPT.format(n=args.n), max_tokens=2000, temperature=0.7)
-    if not raw:
-        print("::warning::Kein Text erzeugt (Vertex + Developer-API fehlgeschlagen).")
-        return 0
-
-    # Robust gegen Schreibweisen wie "--- POST ---", "----POST----" usw.
-    candidates = [p.strip() for p in re.split(r"-{2,}\s*POST\s*-{2,}", raw) if p.strip()]
-    print(f"Gemini lieferte {len(candidates)} Kandidaten.")
-    passed = []
-    for c in candidates:
-        # 200–1500 Zeichen: 60–130 Wörter liegen klar darüber; filtert Schnipsel/Vorworte raus.
-        if 200 <= len(c) <= 1500 and passes_linter(c):
+    # EINEN Post pro Aufruf = robust (Modelle ignorieren Sammel-Trenner gern).
+    passed: list[str] = []
+    for i in range(args.n):
+        c = generate(PROMPT_ONE, max_tokens=600, temperature=0.85)
+        if not c:
+            continue
+        c = c.strip()
+        if 200 <= len(c) <= 1300 and passes_linter(c):
             passed.append(c)
             print("  ✓ akzeptiert:", c.split(chr(10))[0][:60])
-        elif len(c) < 200:
-            print("  ✗ zu kurz (kein vollständiger Post):", c.split(chr(10))[0][:50])
+        else:
+            print(f"  ✗ verworfen ({len(c)} Zeichen / Gate):", c.split(chr(10))[0][:50])
     if not passed:
-        print("Keine Kandidaten bestanden das Gate — nichts hinzugefügt.")
+        print("Keine Posts bestanden das Gate — nichts hinzugefügt.")
         return 0
     append_to_queues(passed)
     print(f"✓ {len(passed)} geprüfte Posts in die Queues aufgenommen.")
