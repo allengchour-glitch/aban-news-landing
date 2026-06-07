@@ -41,6 +41,9 @@ jobs:
       - name: Post next TikTok photo
         env:
           TIKTOK_ACCESS_TOKEN: ${{ secrets.TIKTOK_ACCESS_TOKEN }}
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
           TIKTOK_PRIVACY: ${{ vars.TIKTOK_PRIVACY }}
           MAX_PER_RUN: ${{ inputs.max || '1' }}
           DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
