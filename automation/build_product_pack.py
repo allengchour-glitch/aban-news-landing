@@ -87,9 +87,11 @@ def main() -> int:
             "Inhalt: Spickzettel-PDF (falls beigelegt), prompts.md, checkliste.md.\n"
             "Nutzung: privat & geschäftlich erlaubt. Weiterverkauf nicht gestattet.\n"
             "Ergebnisse von KI immer selbst prüfen. © aban news, abannews.com\n", encoding="utf-8")
+        # Upload-fertiges ZIP fürs Lemon-Squeezy-Produkt
+        zip_path = shutil.make_archive(str(REPO / "downloads" / "packs" / slug), "zip", str(pack))
         built += 1
-        print(f"✓ Paket gebaut: downloads/packs/{slug}/")
-    print(f"Fertig: {built} Paket(e). Verkaufslink in js/shop-config.js eintragen.")
+        print(f"✓ Paket gebaut: downloads/packs/{slug}/  →  {Path(zip_path).name} (upload-fertig)")
+    print(f"Fertig: {built} Paket(e). ZIP in Lemon Squeezy hochladen → Link in js/shop-config.js eintragen.")
     return 0
 
 

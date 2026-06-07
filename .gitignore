@@ -29,3 +29,5 @@ video-prototypes/client_secret.json
 video-prototypes/token.json
 dist-template/
 downloads/packs/
+data/geo-clients.json
+reports/geo/
