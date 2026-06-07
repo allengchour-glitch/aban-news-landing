@@ -1,7 +1,12 @@
 # 🔄 SESSION-HANDOFF — Dropship LuxeStyle CH
 
-> **Lies das zuerst in einer neuen Session.** Kompletter Kontext + nächster Schritt.
-> Stand: 2026-05-30 · Branch: `claude/dropship-lade-memory-SrAs5` · PR #5 (Draft)
+> ⛔ **VERALTET (Stand 2026-05-30) — NICHT mehr als Wahrheit nehmen.** Spricht von „8 Live-Produkten"
+> & CJ-Tageslimit-Blocker; real sind es längst **517 aktiv / 171 cj-real**, Limit weg. Aktueller Kontext:
+> `CLAUDE.md` (Stand-Sektion oben), `dropship/USER-CHECKLISTE.md` (offene User-To-dos),
+> `dropship/CJ-IMPORT-LOG.md` (Historie). Fester Branch: `claude/luxestyle-product-CizQ6`.
+> Dieses Dokument bleibt nur als historischer Schnappschuss erhalten.
+
+> **(Historisch)** Stand: 2026-05-30 · Branch: `claude/dropship-lade-memory-SrAs5` · PR #5 (Draft)
 
 ---
 

@@ -12,7 +12,8 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 2. **Lies `dropship/CJ-IMPORT-LOG.md`** für Produktliste & Historie.
 3. Dann **einfach loslegen** (Conversion-First-Routine, §10): Autopilot-Drafts veredeln → ACTIVE →
    publizieren; QA auf FAILED-Bilder; Heroes/Copy/Collections/SEO verbessern; bei Bedarf 1–2 saubere
-   Produkte ergänzen. Committen, auf `claude/dropship-lade-memory-SrAs5` pushen, Stand melden.
+   Produkte ergänzen. Committen, auf **`claude/luxestyle-product-CizQ6`** pushen (fester Dropship-Branch,
+   vom User 2026-06-07 festgelegt), Draft-PR nach `main`, Stand melden.
    Nicht nach Erlaubnis fragen — der Auftrag steht. Nur die 3 User-Klicks (AGB-Fix, Pixel,
    Kampagne+Budget, §10) kann ich nicht selbst — die klar benennen.
 
@@ -31,12 +32,29 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   pro Lauf neu holen). LuxeStyle: shop `au3j0y-hq.myshopify.com`. `automation/reel-analytics.mjs` macht das
   bereits (Secrets `SHOPIFY_CLIENT_ID`/`SHOPIFY_CLIENT_SECRET`/`SHOPIFY_SHOP`). **Kein `shpat_` mehr suchen!**
   (Für Live-Abfragen nutze ich ohnehin die `mcp__…__*`-Shopify-Tools direkt.)
-- **Branch:** alles auf `claude/dropship-lade-memory-SrAs5`, PR #5. Nie nach main pushen.
+- **Branch (FEST, 2026-06-07):** alles auf **`claude/luxestyle-product-CizQ6`** → Draft-PR nach `main`.
+  Nie direkt nach `main` pushen. ⚠️ Die alten Branches `claude/dropship-lade-memory-SrAs5` (PR #5) und
+  `claude/dropshipping-session-LehDs` sind **in `main` gemergt und vom Remote gelöscht** — nicht mehr nutzen.
+  Der gesamte Dropship-Stand liegt jetzt auf `main` (zuletzt Memory Teil 14, PR #400).
 - **Scheduler (`CronCreate`/`ScheduleWakeup`) ist hier nicht aktiv** → kein echter Cron-Loop
   über Stunden möglich; Autonomie = Charge für Charge in der laufenden Session, plus dieses
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-07 (NEUESTER STAND — ZUERST LESEN: Memory aufgefrischt + Conversion-Fix):**
+- **Branch-Reset:** Alle früheren Dropship-Branches (SrAs5/LehDs) sind **in `main` gemergt + gelöscht**.
+  Neuer **fester Dropship-Branch: `claude/luxestyle-product-CizQ6`** (Draft-PR #401 nach `main`). Künftige
+  Sessions hier committen. `dropship/SESSION-HANDOFF.md` ist **veraltet** (Stand 30.05.) — nicht mehr als
+  Wahrheit nehmen; aktuell sind **dieses Dokument**, `dropship/USER-CHECKLISTE.md` (offene User-To-dos) und
+  `dropship/CJ-IMPORT-LOG.md`.
+- **Bestand verifiziert (live via Shopify-MCP):** **517 Produkte aktiv, davon 171 `cj-real`.** 0 Autopilot-Drafts.
+- **🖼️ Voll-QA aller 171 cj-real:** 0 FAILED-Bilder, alle Media READY. Einziger Altbefund: LED-Schreibtischlampe 1 Bild.
+- **🎯 Conversion-Leak behoben:** „Sommerkleid ärmellos · Schwarz" (3,54★/26 Rev.) aus Ad-Landing `/collections/sommer`
+  (Tag `sommer-2026` entfernt) + Home-Page entfernt, Tag `niedrig-bewertet-nicht-bewerben` gesetzt. Bleibt in
+  `damen-mode`/`kleider` kaufbar. Echte Review-Gewinner: Slim Wallet 5,0★, Herrenuhr 5,0★, Jade Roller 5,0★,
+  Mini Robo-Diffuser 4,8★, Bali 4,93★, Ibiza 4,47★.
+- **CJ-Creds** waren nicht gesetzt → keine neuen Importe. Kernengpass unverändert: **Reichweite** (3 User-Klicks §10).
+
 **📌 2026-06-06 (ÜBERGABE — ZUERST LESEN: Social-Maschine wird gebaut):**
 - **🎯 Grosser User-Auftrag:** vollautonome, **selbstlernende Content-Maschine** — 5 Bild-Posts + 1–2 Reels/Tag,
   gestaffelt, für **Instagram, Facebook, TikTok, Threads**; nur gut bewertete Produkte (≥4★); Reels „nicht

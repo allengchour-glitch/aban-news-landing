@@ -3,7 +3,7 @@
 > **Zweck:** EINE Liste mit allem, was nur DU (im Browser/Admin) tun kannst, damit die autonome
 > Content-Maschine (Bilder + Reels → Instagram/Facebook/Threads/TikTok, selbstlernend) scharf läuft.
 > Alles Übrige ist gebaut, committet und no-op-safe — es wartet nur auf die Tokens/Klicks unten.
-> Stand: 2026-06-07 · Branch `claude/dropshipping-session-LehDs`.
+> Stand: 2026-06-07 · Fester Dropship-Branch `claude/luxestyle-product-CizQ6` (frühere SrAs5/LehDs sind in `main` gemergt).
 
 ---
 
