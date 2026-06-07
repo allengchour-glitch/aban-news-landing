@@ -26,6 +26,16 @@
   aber nicht mehr auf Ad-Flächen. **Verifiziert:** Produkt-Collections enthalten weder `sommer` noch `frontpage` mehr.
 - **Echte Review-Gewinner bestätigt** (für künftigen Hero-Ausbau): Slim Wallet 5,0★(15), Herrenuhr Edelstahl
   5,0★(15), Jade Roller Set 5,0★(7), Mini Robo-Diffuser 4,8★(4), Bali 4,93★, Ibiza 4,47★.
+- **🏆 Hero-Favoriten-Collection gestärkt (live):** „🔥 Hero-Favoriten" (`bestseller`, manuell) hatte 6 meist
+  **un**bewertete Produkte. Die 3 echten 5,0★-Gewinner (Slim Wallet `15396249502081`, Herrenuhr
+  `15396249960833`, Jade Roller Premium `15397247385985`) fehlten → **hinzugefügt** (jetzt 9 Produkte,
+  4 davon mit sichtbarem 4,8–5,0★-Rating statt vorher 1). Social Proof in der Featured-Collection. Reversibel.
+- **🟡 CJ-Import aufgeschoben:** User hat den CJ-API-Key heute nicht gefunden → holt ihn **morgen am PC**
+  (`developers.cjdropshipping.com` → API Key generieren). Pipeline steht (`cj_enrich.mjs` ready, CJ_EMAIL
+  bekannt: `allengchour@gmail.com`, CJ-ID `CJ5452995`, Free-Tier). **Sobald der Key kommt:** `cj_enrich.mjs`
+  laufen lassen → kuratieren → via MCP `productSet` anlegen (Farbe×Grösse+Farbbild) → Gemini-QA → ACTIVE+6 Kanäle.
+  ⚠️ Lehre: CJ-API-Key ≠ Konto-Passwort; liegt NUR im Developer-Portal, nicht in der m.cjdropshipping-App.
+  (Die anderen Lieferanten-Apps DSers/Printful/Gelato/Faire/DropCommerce sind **nicht** autonom ziehbar.)
 - **🔴 Kernproblem unverändert:** Engpass bleibt Reichweite (3 User-Klicks §10: AGB-Domain, Pixel, Kampagne+Budget),
   nicht Katalog/Funnel. Autonom getan, was ohne CJ-Creds/Werbekonto geht.
 
