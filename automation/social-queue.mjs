@@ -139,14 +139,15 @@ async function addRow({ id, image, caption, platforms, date, check, link }){
   console.log(`✅ Hinzugefügt (ready): ${rid} → ${row[idx.platforms]}`);
 }
 
-function cmdRequeue(ids){
-  if(!ids.length){ console.error('Nutzung: requeue <id> [<id> ...]'); process.exit(1); }
+function cmdRequeue(ids, platforms){
+  if(!ids.length){ console.error('Nutzung: requeue <id> [<id> ...] [--platforms facebook]'); process.exit(1); }
   const { rows, idx, data } = load();
   let n=0;
   for(const r of data){
     if(ids.includes((r[idx.id]||'').trim())){
       r[idx.status]='ready'; r[idx.posted_at]=''; r[idx.post_url]=''; n++;
-      console.log(`↻ ready: ${r[idx.id]}`);
+      if(platforms){ r[idx.platforms]=platforms; }   // gezielt nur bestimmte Kanäle nachposten
+      console.log(`↻ ready: ${r[idx.id]}${platforms?' → '+platforms:''}`);
     }
   }
   if(n===0){ console.error('Keine passende ID gefunden.'); process.exit(1); }
@@ -176,7 +177,7 @@ switch(cmd){
       link:opts.caption ? opts.link : '' });  // bei Vorlage ist der Link schon drin
     break;
   }
-  case 'requeue': cmdRequeue(pos); break;
+  case 'requeue': cmdRequeue(pos, opts.platforms); break;
   default:
     console.log(`social-queue.mjs — Queue-Helfer für Bild-Posts (IG+FB+Threads)
 
