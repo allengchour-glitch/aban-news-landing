@@ -137,10 +137,18 @@ for(const next of ready.slice(0, MAX)){
     console.error(`⏭️  Übersprungen (keine JPG-URL, Meta-Pflicht): ${imageUrl}`);
     next[idx.status] = 'skipped-nonjpg'; anyFail = true; continue;
   }
-  console.log(`→ Post ${next[idx.id]} | ${imageUrl}`);
-  if(DRY){ console.log(`   DRY_RUN: würde an ${configured.join('+')||'(keine)'} senden.`); postedCount++; continue; }
+  // platforms-Spalte respektieren (leer = alle). So sind gezielte Einzel-Kanal-Posts möglich (z.B. nur FB nachposten).
+  const plats = (next[idx.platforms]||'').toLowerCase();
+  const want = (...keys) => plats==='' || keys.some(k => plats.includes(k));
+  const wIG = want('instagram','ig'), wFB = want('facebook','fb'), wTH = want('threads');
+  console.log(`→ Post ${next[idx.id]} | ${imageUrl} | Kanäle: ${[wIG&&'IG',wFB&&'FB',wTH&&'Threads'].filter(Boolean).join('+')||'(keine)'}`);
+  if(DRY){ console.log(`   DRY_RUN: würde senden.`); postedCount++; continue; }
 
-  const results = await Promise.all([ postIG(imageUrl,caption), postFB(imageUrl,caption), postThreads(imageUrl,caption) ]);
+  const results = await Promise.all([
+    wIG ? postIG(imageUrl,caption) : Promise.resolve(null),
+    wFB ? postFB(imageUrl,caption) : Promise.resolve(null),
+    wTH ? postThreads(imageUrl,caption) : Promise.resolve(null),
+  ]);
   const got = results.filter(x => x && x!==false);
   if(got.length>0){
     next[idx.status] = 'posted';
