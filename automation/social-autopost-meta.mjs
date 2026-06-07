@@ -66,7 +66,17 @@ async function postIG(imageUrl, caption){
 }
 async function postFB(imageUrl, caption){
   if(!FB_ID || !FB_TOK) return null;
-  const q = new URLSearchParams({ url: imageUrl, caption, access_token: FB_TOK });
+  // FB-Page-Posting braucht einen PAGE-Token. Ist nur ein User-Token (META_ACCESS_TOKEN) gesetzt,
+  // versuchen wir, den Page-Token daraus abzuleiten (geht NUR, wenn das Token pages_manage_posts hat).
+  let tok = FB_TOK;
+  if(!FB_PAGE_TOK){
+    try{
+      const pr = await fetch(`https://graph.facebook.com/${V}/${FB_ID}?fields=access_token&access_token=${encodeURIComponent(FB_TOK)}`);
+      const pj = await pr.json().catch(()=>({}));
+      if(pr.ok && pj.access_token){ tok = pj.access_token; console.log('FB: Page-Token aus User-Token abgeleitet.'); }
+    }catch(e){ /* Netzfehler → mit User-Token weiter (scheitert dann mit Hinweis) */ }
+  }
+  const q = new URLSearchParams({ url: imageUrl, caption, access_token: tok });
   const r = await gget(`https://graph.facebook.com/${V}/${FB_ID}/photos?${q}`);
   if(!r.ok || !(r.j.id||r.j.post_id)){
     const e = r.j.error||r.j;
