@@ -5,16 +5,16 @@
  * als Produktbild an das jeweilige Shopify-Produkt (productCreateMedia). Quelle: social/enhanced/_manifest.csv.
  * Ledger social/enhanced/_added.txt verhindert Doppel-Anhängen.
  *
- * Login wie automation/site-health.mjs: Client-Credentials-Grant ODER statischer Admin-Token.
- * No-op-safe: ohne Shopify-Creds sauberer Leerlauf.
+ * Auth: BEVORZUGT Client-Credentials-Grant (SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET → frischer Admin-Token),
+ * sonst statischer SHOPIFY_ADMIN_TOKEN. No-op-safe ohne Creds.
+ * Der Custom-App-Token braucht Scopes read_products + write_products (App danach neu installieren).
  *
- * ENV: SHOPIFY_SHOP (myshopify-Domain; Protokoll/Pfad werden entfernt, Custom-Domain → Fallback) ·
- *      SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET (oder SHOPIFY_ADMIN_TOKEN) · OUT_BASE_URL · DRY_RUN=1
+ * ENV: SHOPIFY_SHOP (myshopify-Domain; Custom-Domain → Fallback) · SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET
+ *      (empfohlen) ODER SHOPIFY_ADMIN_TOKEN · OUT_BASE_URL · DRY_RUN=1
  */
 import fs from 'node:fs';
 import path from 'node:path';
 
-// Das Admin-API braucht die *.myshopify.com-Domain (NICHT luxestyle.ch). Bekannter Shop aus dem Runbook.
 const SHOP_FALLBACK = 'au3j0y-hq.myshopify.com';
 let SHOP = (process.env.SHOPIFY_SHOP || '').trim().replace(/^https?:\/\//i, '').replace(/\/.*$/, '').replace(/\s+/g, '');
 if(!/\.myshopify\.com$/i.test(SHOP)){
@@ -47,14 +47,18 @@ async function fetchRetry(url, opts, tries=3){
   throw lastErr;
 }
 async function getToken(){
-  if(TOK_STATIC) return TOK_STATIC;
-  try{
-    const r = await fetchRetry(`https://${SHOP}/admin/oauth/access_token`, { method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ client_id:CID, client_secret:CSECRET, grant_type:'client_credentials' }) });
-    const j = await r.json().catch(()=>({}));
-    if(!r.ok) console.error('Token-Endpoint:', r.status, JSON.stringify(j).slice(0,200));
-    return j.access_token || '';
-  }catch(e){ console.error('Token-Fehler:', e.message); return ''; }
+  // Bevorzugt Client-Credentials (frischer, gültiger Token mit den App-Scopes); ADMIN_TOKEN nur als Fallback.
+  if(CID && CSECRET){
+    try{
+      const r = await fetchRetry(`https://${SHOP}/admin/oauth/access_token`, { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ client_id:CID, client_secret:CSECRET, grant_type:'client_credentials' }) });
+      const j = await r.json().catch(()=>({}));
+      if(j.access_token){ console.log('Token via Client-Credentials geholt.'); return j.access_token; }
+      console.error('Client-Credentials-Endpoint:', r.status, JSON.stringify(j).slice(0,200), '→ Fallback auf ADMIN_TOKEN (falls gesetzt).');
+    }catch(e){ console.error('Client-Credentials-Fehler:', e.message); }
+  }
+  if(TOK_STATIC){ console.log('Nutze statischen SHOPIFY_ADMIN_TOKEN.'); return TOK_STATIC; }
+  return '';
 }
 async function gql(token, query, variables){
   const r = await fetchRetry(`https://${SHOP}/admin/api/2025-01/graphql.json`, { method:'POST',
@@ -72,7 +76,7 @@ function readManifest(){
 }
 function ledger(){ try{ return new Set(fs.readFileSync(LEDGER,'utf8').split('\n').map(s=>s.trim()).filter(Boolean)); }catch{ return new Set(); } }
 
-console.log(`Shop: ${SHOP} · Auth: ${TOK_STATIC?'Admin-Token':'Client-Credentials'}`);
+console.log(`Shop: ${SHOP}`);
 const done = ledger();
 const items = readManifest().filter(m => !done.has(m.name));
 const uniq = [...new Map(items.map(m=>[m.name,m])).values()];
@@ -88,9 +92,11 @@ for(const m of uniq){
   if(DRY){ console.log('   DRY_RUN: würde productCreateMedia ausführen.'); added++; continue; }
   try{
     const pr = await gql(token, Q_PRODUCT, { q: `handle:${m.handle}` });
+    if(pr?.errors){ console.error('   ⚠️  GraphQL-Fehler (Scope/Token?):', JSON.stringify(pr.errors).slice(0,200)); continue; }
     const pid = pr?.data?.products?.edges?.[0]?.node?.id;
-    if(!pid){ console.error('   ⚠️  Produkt nicht gefunden / kein Zugriff:', m.handle, JSON.stringify(pr?.errors||pr).slice(0,200)); continue; }
+    if(!pid){ console.error('   ⚠️  Produkt nicht gefunden:', m.handle); continue; }
     const res = await gql(token, M_ADD, { id: pid, media: [{ originalSource: imgUrl, mediaContentType: 'IMAGE', alt: `${m.label} – LuxeStyle` }] });
+    if(res?.errors){ console.error('   ⚠️  write_products-Scope fehlt?', JSON.stringify(res.errors).slice(0,200)); continue; }
     const errs = res?.data?.productCreateMedia?.mediaUserErrors || [];
     if(errs.length){ console.error('   ⚠️  mediaUserErrors:', JSON.stringify(errs)); continue; }
     fs.appendFileSync(LEDGER, m.name + '\n');
