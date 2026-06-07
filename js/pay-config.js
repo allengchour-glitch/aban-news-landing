@@ -28,6 +28,6 @@ window.ABAN_PAY = {
   TWINT_URL: "",
   SHOPIFY_URL: "https://luxestyle.ch/products/aban-news-founding-member",
   CARD_URL: "",
-  PREMIUM_MONTHLY_URL: "",
-  PREMIUM_YEARLY_URL: ""
+  PREMIUM_MONTHLY_URL: "https://abannews.lemonsqueezy.com/checkout/buy/266dd736-8351-4d7c-9c3d-eb1c7dfd5e9c?media=0&logo=0&desc=0&discount=0",
+  PREMIUM_YEARLY_URL: "https://abannews.lemonsqueezy.com/checkout/buy/d3c8b929-3a65-47c7-ba2b-cbc08c686b79?media=0&logo=0&desc=0&discount=0"
 };
