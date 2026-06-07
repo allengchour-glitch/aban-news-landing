@@ -1,25 +1,25 @@
-name: TikTok Auto-Post (Foto-Direktpost)
+name: TikTok Auto-Post
 
-# Postet den nächsten fälligen Foto-Post aus social/posts_tiktok.csv direkt auf TikTok
-# (Content Posting API, media_type=PHOTO). KEIN Drittanbieter.
-# Token NUR aus GitHub-Secret. Ohne Secret = sauberer No-Op.
+# Postet das nächste fällige Reel aus automation/reels_seed.csv direkt per TikTok-Content-Posting-API v2.
+# Tokens NUR aus GitHub-Secrets:
+#   TT_ACCESS_TOKEN       (Pflicht — 24h Gültigkeit)
+#   TT_REFRESH_TOKEN, TT_CLIENT_KEY, TT_CLIENT_SECRET   (optional — Auto-Refresh)
+#   TT_PRIVACY_LEVEL als Repo-Variable (Default SELF_ONLY · nach Audit PUBLIC_TO_EVERYONE)
+# Ohne Secrets = sauberer No-Op.
 #
-# Voraussetzungen (siehe dropship/USER-CHECKLISTE.md §TikTok):
-#   TIKTOK_ACCESS_TOKEN (Scope video.publish) · Domain abannews.com im App verifiziert · App-Audit für öffentlich.
+# Token-Persistierung: Wenn Auto-Refresh erfolgreich war, schreibt das Skript die neuen Tokens
+# an $GITHUB_OUTPUT. Der nachgelagerte Step persistiert sie via `gh secret set` (braucht PAT
+# REPO_ADMIN_PAT mit `secrets: write` — sonst silent skip).
 
 on:
   schedule:
-    - cron: '30 9 * * *'    # 1×/Tag, versetzt zum Meta-Poster (≈ 11:30 CH)
+    - cron: '0 11 * * *'   # 11:00 UTC ≈ 13:00 CH (1×/Tag, gestaffelt zwischen IG/FB Slots)
   workflow_dispatch:
     inputs:
       dry_run:
         description: 'Nur testen (nichts posten)'
         type: boolean
         default: false
-      max:
-        description: 'Wie viele Posts in diesem Lauf (Default 1)'
-        type: string
-        default: '1'
 
 permissions:
   contents: write
@@ -31,32 +31,43 @@ concurrency:
 jobs:
   post:
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
 
-      - name: Post next TikTok photo
+      - name: Post next reel to TikTok
+        id: post
         env:
-          TIKTOK_ACCESS_TOKEN: ${{ secrets.TIKTOK_ACCESS_TOKEN }}
-          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
-          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
-          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
-          TIKTOK_PRIVACY: ${{ vars.TIKTOK_PRIVACY }}
-          MAX_PER_RUN: ${{ inputs.max || '1' }}
+          TT_ACCESS_TOKEN: ${{ secrets.TT_ACCESS_TOKEN }}
+          TT_REFRESH_TOKEN: ${{ secrets.TT_REFRESH_TOKEN }}
+          TT_CLIENT_KEY: ${{ secrets.TT_CLIENT_KEY }}
+          TT_CLIENT_SECRET: ${{ secrets.TT_CLIENT_SECRET }}
+          TT_PRIVACY_LEVEL: ${{ vars.TT_PRIVACY_LEVEL }}
+          MAX_PER_RUN: '1'
           DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
         run: node automation/tiktok-autopost.mjs
 
+      - name: Persist refreshed tokens (if rotated)
+        if: steps.post.outputs.tt_access_token != ''
+        env:
+          GH_TOKEN: ${{ secrets.REPO_ADMIN_PAT }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::warning::REPO_ADMIN_PAT nicht gesetzt — neue Tokens nicht persistiert. Nächster Lauf braucht frischen TT_ACCESS_TOKEN."
+            exit 0
+          fi
+          printf '%s' "${{ steps.post.outputs.tt_access_token }}" | gh secret set TT_ACCESS_TOKEN --repo "$GITHUB_REPOSITORY"
+          printf '%s' "${{ steps.post.outputs.tt_refresh_token }}" | gh secret set TT_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY"
+          echo "TikTok-Tokens persistiert."
+
       - name: Commit posted-status if changed
         run: |
-          if ! git diff --quiet -- social/posts_tiktok.csv; then
-            git config user.name "luxestyle-tiktok-bot"
+          if ! git diff --quiet -- automation/reels_seed.csv; then
+            git config user.name "luxestyle-autopost-bot"
             git config user.email "bot@users.noreply.github.com"
-            git add social/posts_tiktok.csv
-            git commit -m "chore(tiktok): mark photo post as sent [skip ci]"
+            git add automation/reels_seed.csv
+            git commit -m "chore(tiktok): mark reel as posted [skip ci]"
             git push
           else
-            echo "Kein neuer TikTok-Post — nichts zu committen."
+            echo "Kein neuer TikTok-Post (nichts zu committen)."
           fi

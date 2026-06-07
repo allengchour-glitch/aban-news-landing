@@ -1,43 +1,37 @@
 #!/usr/bin/env node
-/* LuxeStyle — tiktok-autopost.mjs  (TikTok Content Posting API — Foto-Direktpost)
+/* LuxeStyle — tiktok-autopost.mjs  (PERSISTENTER TikTok-Autopilot)
  *
- * Postet den nächsten fälligen Foto-Post (status=ready) aus social/posts_tiktok.csv direkt auf
- * TikTok über die offizielle Content Posting API (KEIN Drittanbieter). Foto-Modus (PHOTO),
- * Carousel bis 35 Bilder. Reines Node, keine Dependencies.
+ * Postet das nächste fällige Reel (status=ready) aus automation/reels_seed.csv direkt per
+ * TikTok-Content-Posting-API v2 (FILE_UPLOAD-Pfad: Video erst lokal laden, dann hochladen —
+ * funktioniert auch ohne verifizierte Pull-URL-Domain).
  *
- * Verifiziert (developers.tiktok.com, 2026):
- *   POST https://open.tiktokapis.com/v2/post/publish/content/init/
- *   Header: Authorization: Bearer <TIKTOK_ACCESS_TOKEN> · Content-Type: application/json
- *   Body:   media_type=PHOTO, post_mode=DIRECT_POST,
- *           post_info{title, description, privacy_level, disable_comment, auto_add_music},
- *           source_info{source:PULL_FROM_URL, photo_images:[urls], photo_cover_index}
+ * ⚠️ AUDIT-/SANDBOX-HINWEIS: Bis die App von TikTok auditiert ist, MUSS privacy_level=SELF_ONLY
+ *   sein → das Video erscheint nur im eigenen Profil (nicht öffentlich). Nach Audit: PUBLIC_TO_EVERYONE.
+ * ⚠️ THROTTLE: max MAX_PER_RUN Posts pro Lauf (Default 1).
+ * No-op (Exit 0), wenn TT_ACCESS_TOKEN nicht gesetzt oder keine Zeile 'ready'.
  *
- * ⚠️ VORAUSSETZUNGEN (User, einmalig — siehe dropship/USER-CHECKLISTE.md):
- *   1. TikTok-for-Developers-App mit Scope `video.publish` (+ Login-Kit, OAuth).
- *   2. Domain `abannews.com` (Bild-Host) im App **URL-Prefix verifizieren** (Pflicht für PULL_FROM_URL).
- *   3. App-**Audit** für öffentliche Posts — sonst sind Posts nur privat (SELF_ONLY) sichtbar.
- *   4. User-Access-Token als Secret `TIKTOK_ACCESS_TOKEN` (Tokens laufen ab → ggf. Refresh-Flow).
+ * Token-Lifecycle: TikTok-Access-Tokens leben 24h, Refresh-Tokens 365 Tage. Sind TT_REFRESH_TOKEN,
+ * TT_CLIENT_KEY und TT_CLIENT_SECRET als Secrets gesetzt, refresht das Skript automatisch und
+ * schreibt die neuen Tokens nach $GITHUB_OUTPUT (Workflow persistiert sie via `gh secret set`).
  *
  * ENV:
- *   TIKTOK_ACCESS_TOKEN   (Pflicht; ohne = sauberer No-Op)
- *   TIKTOK_PRIVACY        (optional, Default PUBLIC_TO_EVERYONE; unaudited→TikTok erzwingt privat)
- *   MAX_PER_RUN=1 · DRY_RUN=1
+ *   TT_ACCESS_TOKEN      (Pflicht — sonst No-op)
+ *   TT_REFRESH_TOKEN, TT_CLIENT_KEY, TT_CLIENT_SECRET (optional → Auto-Refresh)
+ *   TT_PRIVACY_LEVEL     (Default SELF_ONLY · nach Audit PUBLIC_TO_EVERYONE)
+ *   MAX_PER_RUN=1
+ *   DRY_RUN=1
  */
 import fs from 'node:fs';
+import path from 'node:path';
+import { tmpdir } from 'node:os';
 
-const CSV = new URL('../social/posts_tiktok.csv', import.meta.url).pathname;
-let TOKEN = process.env.TIKTOK_ACCESS_TOKEN || '';
-// Empfohlen für den Cron: Refresh-Token (365 Tage gültig) statt 24h-Access-Token.
-const CK = process.env.TIKTOK_CLIENT_KEY || '';
-const CS = process.env.TIKTOK_CLIENT_SECRET || '';
-const RT = process.env.TIKTOK_REFRESH_TOKEN || '';
-const PRIVACY = process.env.TIKTOK_PRIVACY || 'PUBLIC_TO_EVERYONE';
-const MAX = Math.max(1, parseInt(process.env.MAX_PER_RUN || '1', 10) || 1);
+const CSV = new URL('./reels_seed.csv', import.meta.url).pathname;
 const DRY = process.env.DRY_RUN === '1';
-const ENDPOINT = 'https://open.tiktokapis.com/v2/post/publish/content/init/';
-const COLS = ['id','scheduled_date','images','title','caption','status','posted_at','publish_id'];
+const MAX = Math.max(1, parseInt(process.env.MAX_PER_RUN || '1', 10) || 1);
+const PRIVACY = process.env.TT_PRIVACY_LEVEL || 'SELF_ONLY';
+const COLS = ['id','scheduled_date','video_url','caption','hashtags','platforms','status','posted_at','post_url'];
 
-// --- CSV (identisch zu den anderen Postern) ---
+// --- CSV parse/serialize (identisch zu post-next-reel.mjs) ---
 function parse(text){
   const rows=[]; let row=[], field='', q=false;
   for(let i=0;i<text.length;i++){const c=text[i];
@@ -51,68 +45,118 @@ function parse(text){
 function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
 function serialize(rows){ return rows.map(r=>r.map(esc).join(',')).join('\n')+'\n'; }
 
-// Access-Token bei Bedarf aus dem Refresh-Token holen (24h-Tokens taugen nicht für einen Cron).
-if(!TOKEN && CK && CS && RT && !DRY){
-  try{
-    const body = new URLSearchParams({ client_key:CK, client_secret:CS, grant_type:'refresh_token', refresh_token:RT });
-    const r = await fetch('https://open.tiktokapis.com/v2/oauth/token/', {
-      method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body });
-    const j = await r.json().catch(()=>({}));
-    if(r.ok && j.access_token){ TOKEN = j.access_token; console.log('TikTok: Access-Token via Refresh-Token erneuert (gültig', j.expires_in, 's).'); }
-    else console.error('TikTok-Token-Refresh fehlgeschlagen:', r.status, JSON.stringify(j));
-  }catch(e){ console.error('TikTok-Token-Refresh Netzfehler:', e.message); }
+// --- Token-Refresh (auto, falls Creds gesetzt) ---
+async function refreshIfNeeded(currentTok){
+  const key = process.env.TT_CLIENT_KEY, sec = process.env.TT_CLIENT_SECRET, ref = process.env.TT_REFRESH_TOKEN;
+  if(!currentTok) return '';
+  if(!key || !sec || !ref) return currentTok;  // ohne Creds: Token direkt nutzen
+  // Token validieren
+  const v = await fetch('https://open.tiktokapis.com/v2/user/info/?fields=open_id', {
+    headers: { Authorization: `Bearer ${currentTok}` }
+  });
+  if(v.ok) return currentTok;
+  // Refresh
+  const r = await fetch('https://open.tiktokapis.com/v2/oauth/token/', {
+    method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body: new URLSearchParams({ client_key:key, client_secret:sec, grant_type:'refresh_token', refresh_token:ref })
+  });
+  const j = await r.json().catch(()=>({}));
+  if(!r.ok || !j.access_token){ console.error('TT refresh:', r.status, JSON.stringify(j)); return currentTok; }
+  console.log('TT: Token refreshed (24h).');
+  // Neue Tokens an Workflow weitergeben (persistiert per `gh secret set`)
+  if(process.env.GITHUB_OUTPUT){
+    fs.appendFileSync(process.env.GITHUB_OUTPUT,
+      `tt_access_token=${j.access_token}\ntt_refresh_token=${j.refresh_token}\n`);
+  }
+  return j.access_token;
 }
-if(!TOKEN && !DRY){ console.log('Kein TIKTOK_ACCESS_TOKEN bzw. CLIENT_KEY/SECRET+REFRESH_TOKEN → No-op. Siehe USER-CHECKLISTE §TikTok.'); process.exit(0); }
-if(!fs.existsSync(CSV)){ console.log('Keine social/posts_tiktok.csv → nichts zu tun.'); process.exit(0); }
+
+// --- Helpers ---
+async function downloadToTemp(url){
+  const r = await fetch(url);
+  if(!r.ok) throw new Error(`Download ${url} → HTTP ${r.status}`);
+  const buf = Buffer.from(await r.arrayBuffer());
+  const p = path.join(tmpdir(), `tt-${Date.now()}.mp4`);
+  fs.writeFileSync(p, buf);
+  return { path: p, size: buf.length };
+}
+
+// --- TikTok-Posting (FILE_UPLOAD) ---
+async function postTikTok(token, videoUrl, caption){
+  const { path: localPath, size } = await downloadToTemp(videoUrl);
+  // 1) Init publish session
+  const init = await fetch('https://open.tiktokapis.com/v2/post/publish/video/init/', {
+    method:'POST',
+    headers:{ Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      post_info: {
+        title: caption.slice(0, 2200),  // TT-Limit
+        privacy_level: PRIVACY,
+        disable_duet: false, disable_comment: false, disable_stitch: false,
+        video_cover_timestamp_ms: 1000
+      },
+      source_info: {
+        source: 'FILE_UPLOAD',
+        video_size: size,
+        chunk_size: size,           // Single-Chunk-Upload (Videos < 64MB)
+        total_chunk_count: 1
+      }
+    })
+  });
+  const ij = await init.json().catch(()=>({}));
+  if(!init.ok || !ij.data?.upload_url){
+    console.error('TT init:', init.status, JSON.stringify(ij.error||ij));
+    fs.unlinkSync(localPath);
+    return false;
+  }
+  // 2) Upload binary (single PUT chunk)
+  const buf = fs.readFileSync(localPath);
+  const up = await fetch(ij.data.upload_url, {
+    method:'PUT',
+    headers: { 'Content-Type': 'video/mp4', 'Content-Range': `bytes 0-${size-1}/${size}` },
+    body: buf
+  });
+  fs.unlinkSync(localPath);
+  if(!up.ok){
+    const t = await up.text().catch(()=> '');
+    console.error('TT upload:', up.status, t.slice(0, 200));
+    return false;
+  }
+  console.log('TikTok: publish_id', ij.data.publish_id, '(privacy:', PRIVACY + ')');
+  return ij.data.publish_id;
+}
+
+// --- Hauptlauf ---
+const TOK = await refreshIfNeeded(process.env.TT_ACCESS_TOKEN || '');
+if(!TOK){ console.log('Kein TT_ACCESS_TOKEN → No-op. Setze TT_ACCESS_TOKEN als Secret.'); process.exit(0); }
+if(!fs.existsSync(CSV)){ console.log('Kein reels_seed.csv → No-op.'); process.exit(0); }
 
 const rows = parse(fs.readFileSync(CSV,'utf8'));
 const header = rows[0];
 const idx = Object.fromEntries(COLS.map(c=>[c, header.indexOf(c)]));
 const data = rows.slice(1);
-const ready = data.filter(r => (r[idx.status]||'').trim()==='ready' && (r[idx.images]||'').trim());
-if(ready.length===0){ console.log('Kein TikTok-Post mit status=ready — nichts zu tun.'); process.exit(0); }
+const ready = data.filter(r => (r[idx.status]||'').trim()==='ready' && (r[idx.video_url]||'').trim());
+if(ready.length===0){ console.log('Kein Reel mit status=ready → No-op.'); process.exit(0); }
 
-console.log(`TikTok-Queue · ready: ${ready.length} · MAX_PER_RUN: ${MAX} · privacy: ${PRIVACY}`);
-let posted = 0, anyFail = false;
-
+console.log(`TikTok ready: ${ready.length} · MAX_PER_RUN: ${MAX} · Privacy: ${PRIVACY}`);
+let postedCount = 0, anyFail = false;
 for(const next of ready.slice(0, MAX)){
-  const images = (next[idx.images]||'').split('|').map(s=>s.trim()).filter(Boolean);
-  const title = (next[idx.title]||'').slice(0,90);
-  const description = (next[idx.caption]||'').slice(0,4000);
-  if(images.length===0){ next[idx.status]='skipped-noimg'; anyFail=true; continue; }
-  console.log(`→ TikTok ${next[idx.id]} | ${images.length} Bild(er) | ${images[0]}`);
-  if(DRY){ console.log(`   DRY_RUN: würde Direktpost (PHOTO) senden.`); posted++; continue; }
-
-  const body = {
-    media_type: 'PHOTO',
-    post_mode: 'DIRECT_POST',
-    post_info: { title, description, privacy_level: PRIVACY, disable_comment: false, auto_add_music: true },
-    source_info: { source: 'PULL_FROM_URL', photo_images: images, photo_cover_index: 0 },
-  };
+  const videoUrl = next[idx.video_url].trim();
+  const caption = (next[idx.caption] || '') + (next[idx.hashtags] ? '\n' + next[idx.hashtags] : '');
+  console.log(`→ Reel ${next[idx.id]} | ${videoUrl}`);
+  if(DRY){ console.log('   DRY_RUN: würde an TikTok senden.'); postedCount++; continue; }
   try{
-    const r = await fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${TOKEN}`, 'Content-Type': 'application/json; charset=UTF-8' },
-      body: JSON.stringify(body),
-    });
-    const j = await r.json().catch(()=>({}));
-    const pubId = j?.data?.publish_id;
-    if(r.ok && pubId){
-      next[idx.status]='posted'; next[idx.posted_at]=new Date().toISOString(); next[idx.publish_id]=pubId;
-      posted++; console.log('   ✅ TikTok angenommen, publish_id:', pubId);
-    } else {
-      anyFail = true;
-      console.error('   ❌ TikTok-Fehler:', r.status, JSON.stringify(j?.error||j));
-      const msg = j?.error?.message || '';
-      if(/url ownership|unverified|domain/i.test(msg))
-        console.error('   ↳ FIX: Bild-Domain (abannews.com) im TikTok-App unter „URL properties" verifizieren.');
-      if(/scope|permission/i.test(msg))
-        console.error('   ↳ FIX: App/Token braucht Scope video.publish.');
-    }
-  }catch(e){ anyFail = true; console.error('   ❌ Netzfehler:', e.message); }
+    const pubId = await postTikTok(TOK, videoUrl, caption);
+    if(pubId){
+      next[idx.status] = 'posted-tiktok';
+      next[idx.posted_at] = new Date().toISOString();
+      next[idx.post_url] = `tt:${pubId}`;
+      postedCount++;
+      console.log('   ✅ veröffentlicht auf TikTok');
+    } else { anyFail = true; }
+  }catch(e){ console.error('TT error:', e.message); anyFail = true; }
 }
 
-if(!DRY && posted>0) fs.writeFileSync(CSV, serialize(rows));
-console.log(`Fertig: ${posted} an TikTok gesendet${DRY?' (DRY)':''}.`);
-// publish_id = Annahme durch TikTok; finaler Status via /v2/post/publish/status/fetch/ abrufbar.
-process.exit(anyFail && posted===0 ? 1 : 0);
+if(!DRY && postedCount>0) fs.writeFileSync(CSV, serialize(rows));
+console.log(`Fertig: ${postedCount} TikTok-Post(s)${DRY?' (DRY)':''}.`);
+process.exit(anyFail && postedCount===0 ? 1 : 0);
