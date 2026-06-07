@@ -122,7 +122,7 @@ def main() -> int:
     # EINEN Post pro Aufruf = robust (Modelle ignorieren Sammel-Trenner gern).
     passed: list[str] = []
     for i in range(args.n):
-        c = generate(PROMPT_ONE, max_tokens=2000, temperature=0.85)
+        c = generate(PROMPT_ONE, max_tokens=900, temperature=0.85, thinking_budget=0)
         if not c:
             continue
         c = c.strip()
