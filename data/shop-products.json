@@ -1,5 +1,13 @@
 [
   {
+    "slug": "alle-kits",
+    "title": "Alle KI-Starter-Kits (Bundle)",
+    "desc": "Alle Branchen-Kits zusammen — deutlich günstiger als einzeln. Spickzettel, Prompts & Checklisten für jede Branche.",
+    "price": "CHF 79",
+    "buy": "",
+    "bundle": true
+  },
+  {
     "slug": "aerzte",
     "title": "KI-Starter-Kit für Ärzte & Praxen",
     "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
@@ -33,5 +41,47 @@
     "desc": "Bewertungen, Social, Speisekarten-Texte.",
     "price": "CHF 12",
     "buy": "https://buy.stripe.com/cNi9AVdCCgvG9Ez4Mt5wI04"
+  },
+  {
+    "slug": "coaches",
+    "title": "KI-Starter-Kit für Coaches & Berater",
+    "desc": "Angebote, Posts, Session-Vorbereitung — ohne Hype.",
+    "price": "CHF 12",
+    "buy": ""
+  },
+  {
+    "slug": "immobilienmakler",
+    "title": "KI-Starter-Kit für Immobilienmakler",
+    "desc": "Exposés, Anfragen-Antworten, Inserate schneller.",
+    "price": "CHF 12",
+    "buy": ""
+  },
+  {
+    "slug": "friseure",
+    "title": "KI-Starter-Kit für Friseure & Salons",
+    "desc": "Social-Posts, Bewertungen, Terminmails.",
+    "price": "CHF 12",
+    "buy": ""
+  },
+  {
+    "slug": "fotografen",
+    "title": "KI-Starter-Kit für Fotografen",
+    "desc": "Angebote, Bildtexte, Kundenkommunikation.",
+    "price": "CHF 12",
+    "buy": ""
+  },
+  {
+    "slug": "architekten",
+    "title": "KI-Starter-Kit für Architekturbüros",
+    "desc": "Texte, Ausschreibungen, Recherche — mit Grenzen.",
+    "price": "CHF 12",
+    "buy": ""
+  },
+  {
+    "slug": "fitnessstudios",
+    "title": "KI-Starter-Kit für Fitnessstudios",
+    "desc": "Social, Mitglieder-Mails, Kurs-Beschreibungen.",
+    "price": "CHF 12",
+    "buy": ""
   }
 ]
