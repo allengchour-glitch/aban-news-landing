@@ -1,9 +1,11 @@
 name: Veo Hero-Clip
 
-# Generiert mit Veo einen cineastischen 9:16-Hero-Clip aus einem Produktbild (good_products.csv).
-# NUR manuell (Veo kostet pro Sekunde Video). No-op ohne GEMINI_API_KEY.
+# Generiert mit Veo-Fast (günstig) 1 cineastischen 9:16-Hero-Clip aus einem Produktbild (good_products.csv)
+# und reiht ihn als Reel (mit Produktlink) ein → reel-autopost.yml postet ihn. No-op ohne GEMINI_API_KEY.
 
 on:
+  schedule:
+    - cron: '0 5 * * *'   # täglich 05:00 UTC, 1 Clip (Veo-Fast)
   workflow_dispatch:
     inputs:
       only:
@@ -36,28 +38,29 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Generate Veo hero clip
+      - name: Veo Hero-Clip rendern + Reel einreihen
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          VEO_MODEL: ${{ inputs.model }}
+          VEO_MODEL: ${{ inputs.model || 'veo-3.0-fast-generate-001' }}
           VEO_ONLY: ${{ inputs.only }}
           MAX_CLIPS: '1'
           DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
         run: node automation/veo-hero-clip.mjs
 
-      - name: Commit clip if created
+      - name: Commit Clip + Reel-Queue
         run: |
-          if [ -n "$(git status --porcelain reels/ 2>/dev/null)" ]; then
-            git config user.name "luxestyle-veo-bot"
-            git config user.email "bot@users.noreply.github.com"
-            git add reels/
-            git commit -m "chore(veo): Hero-Clip generiert [skip ci]" || echo "nichts zu committen"
-            git push || echo "push skipped"
-          else
-            echo "Kein neuer Clip."
+          if [ -z "$(git status --porcelain reels/ automation/reels_seed.csv automation/.veo_pointer 2>/dev/null)" ]; then
+            echo "Kein neuer Clip (No-op?)."; exit 0
           fi
+          git config user.name "luxestyle-veo-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add reels automation/reels_seed.csv automation/.veo_pointer
+          git commit -m "chore(veo): Hero-Clip + Reel-Queue [skip ci]" || { echo "nichts zu committen"; exit 0; }
+          for i in 1 2 3 4 5; do
+            if git push; then echo "gepusht."; break; fi
+            echo "rebase --autostash & retry ($i)…"; git pull --rebase --autostash origin main || true; sleep 3
+          done
