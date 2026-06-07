@@ -39,7 +39,9 @@ MARKER = "data-aban-leadmagnet"
 EXISTING = re.compile(r'<aside ' + re.escape(MARKER) + r'.*?</aside>\n?', re.S)
 
 
-SEKTION_RE = re.compile(r'<h2[^>]*>\s*Sinnvolle Anwendungsf[äa]lle\s*</h2>(.*?)(?=<h2)', re.S | re.I)
+SEKTION_RE = re.compile(
+    r'<h2[^>]*>\s*(?:Sinnvolle Anwendungsf[äa]lle|[A-Za-z ]*use cases)\s*</h2>(.*?)(?=<h2)',
+    re.S | re.I)
 H3_RE = re.compile(r'<h3[^>]*>(.*?)</h3>', re.S | re.I)
 
 
