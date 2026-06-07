@@ -31,8 +31,11 @@ jobs:
         with:
           node-version: '20'
 
+      # npm in einen Unterordner auslagern → hält den Repo-Root sauber (sonst blockieren
+      # package.json/node_modules den späteren git rebase mit "unstaged changes").
       - name: Install Playwright (Chromium)
         run: |
+          mkdir -p .pw && cd .pw
           npm init -y >/dev/null 2>&1 || true
           npm i playwright@^1.48 >/dev/null 2>&1
           npx playwright install --with-deps chromium
@@ -45,20 +48,22 @@ jobs:
           CRITIQUE_PATHS: ${{ inputs.paths }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          NODE_PATH: ${{ github.workspace }}/.pw/node_modules
         run: node automation/gemini-site-critique.mjs
 
-      - name: Commit report (force-add + rebase-retry gegen parallele Pushes)
+      - name: Commit report (force-add + rebase-autostash gegen parallele Pushes)
         run: |
           f="reports/site-critique-$(date -u +%F).md"
           if [ ! -f "$f" ]; then echo "Kein Report-File ($f) — übersprungen."; exit 0; fi
           git config user.name "luxestyle-gemini-bot"
           git config user.email "bot@users.noreply.github.com"
+          # nur den Report committen; alles andere (npm-Reste) ignorieren
           git add -f "$f"
           git commit -m "chore(gemini): Site-Kritik-Report [skip ci]" || { echo "nichts zu committen"; exit 0; }
           for i in 1 2 3 4 5; do
             if git push; then echo "gepusht."; exit 0; fi
-            echo "Push abgelehnt — rebase & retry ($i)…"
-            git pull --rebase origin main || true
+            echo "Push abgelehnt — rebase --autostash & retry ($i)…"
+            git pull --rebase --autostash origin main || true
             sleep 3
           done
           echo "push nach 5 Versuchen übersprungen."
