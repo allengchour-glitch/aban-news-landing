@@ -3,8 +3,12 @@
 > Dauerhafter Gedächtnis-Speicher für dieses Vorhaben. Überlebt Session-Resets.
 > Stand: **2026-06-07** — LIVE & autonom: KI-Bilder (Vertex/Imagen) + echte Fotos (Pexels) in Social-Posts;
 > Content-Engine erzeugt Posts (gemini-2.5-flash via Vertex, thinking_budget=0); **bild-reiche, lange Newsletter-
-> Ausgaben** (`build_issue.py`); **€9/€89-Premium-Checkout live** (Lemon Squeezy, EUR); Hub-Header-Bilder füllen
-> sich täglich nach; Effizienz-Tools (`tools/status.py`, `Makefile`). Details: Teil 1–8 unten. · Betreiber: Allen Chour (abannews.com, Belp/CH).
+> Ausgaben** (`build_issue.py`, inkl. `--niche`); **€9/€89-Premium-Checkout live** (Lemon Squeezy, EUR);
+> **autonomer Stripe-Shop** mit 11 Branchen-Kits + Shop-Funnel in allen 262 Hubs; **GEO-Report-Abo-Cron** +
+> Muster; **Bausatz** verkaufsfertig (Lizenz/Listing); Newsletter-CTA auf allen Inhaltsseiten; growth_audit sauber.
+> Hub-Header-Bilder füllen sich täglich nach; Effizienz-Tools (`tools/status.py`, `Makefile`).
+> **👉 Neueste Lage + offene Punkte: Teil 12 (direkt unter dem Backlog).** Backlog leer bis auf #6 `promote`
+> (erst nach echtem Versand). · Betreiber: Allen Chour (abannews.com, Belp/CH).
 > ⚠️ Hinweis: `CLAUDE.md` im Repo-Root ist inzwischen das Arbeitsgedächtnis eines **anderen** Workstreams
 > (LuxeStyle-Dropshipping-Shop) und **nicht mehr** die aban-news-Wahrheit. Für aban-news ist **dieses**
 > Dokument (`PROJEKT.md`) maßgeblich. CLAUDE.md des Dropship-Projekts NICHT überschreiben.
