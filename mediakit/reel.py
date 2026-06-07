@@ -75,7 +75,8 @@ def _durations_fixed(lines, n_slides):
     return durs
 
 
-def render(case_id, out=None, voice=False, ambient=True, gain=0.14, from_dir=None):
+def render(case_id, out=None, voice=False, ambient=True, gain=0.12, from_dir=None,
+           ambient_style="warm", music=None):
     ff = get_ffmpeg()
     src = Path(from_dir) if from_dir else (VP_AUSGABE / case_id)
     if not src.is_dir():
@@ -139,24 +140,32 @@ def render(case_id, out=None, voice=False, ambient=True, gain=0.14, from_dir=Non
     # ---- Finaler Render: Untertitel einbrennen + Audio ----
     out = Path(out) if out else (src / "reel.mp4")
     ass_esc = ass_path.replace(":", r"\:")
-    drone = audio.ambient_drone(gain=gain, label="d")
     args = [ff, "-y", "-i", base]
+    idx = 1
+    voice_idx = music_idx = None
     if voice_wav:
-        args += ["-i", voice_wav]
+        args += ["-i", voice_wav]; voice_idx = idx; idx += 1
+    use_music = bool(music) and os.path.exists(str(music))
+    if use_music:
+        args += ["-stream_loop", "-1", "-i", str(music)]; music_idx = idx; idx += 1
 
-    if voice_wav and ambient:
-        fc = (f"[0:v]subtitles={ass_esc}[v];{drone};"
-              f"[1:a]volume=1.0[vo];[vo][d]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[ao]")
-        amap = ["-map", "[v]", "-map", "[ao]"]
-    elif voice_wav:
-        fc = f"[0:v]subtitles={ass_esc}[v];[1:a]volume=1.0,alimiter=limit=0.95[ao]"
-        amap = ["-map", "[v]", "-map", "[ao]"]
+    # Hintergrund-Bett bestimmen: eigene Musik > generierter Stil ('none'/ambient=False = keins)
+    bed_pre = None
+    if use_music:
+        bed_pre = f"[{music_idx}:a]volume=0.30[bed]"
     elif ambient:
-        fc = f"[0:v]subtitles={ass_esc}[v];{drone};[d]alimiter=limit=0.95[ao]"
-        amap = ["-map", "[v]", "-map", "[ao]"]
-    else:
-        fc = f"[0:v]subtitles={ass_esc}[v]"
-        amap = ["-map", "[v]"]
+        bed_pre = audio.ambient(ambient_style, gain=gain, label="bed")
+
+    chains = [f"[0:v]subtitles={ass_esc}[v]"]
+    if voice_idx is not None and bed_pre:
+        chains += [bed_pre,
+                   f"[{voice_idx}:a]volume=1.0[vo];[vo][bed]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[ao]"]
+    elif voice_idx is not None:
+        chains.append(f"[{voice_idx}:a]volume=1.0,alimiter=limit=0.95[ao]")
+    elif bed_pre:
+        chains += [bed_pre, "[bed]alimiter=limit=0.95[ao]"]
+    fc = ";".join(chains)
+    amap = ["-map", "[v]"] + (["-map", "[ao]"] if "[ao]" in fc else [])
 
     args += ["-filter_complex", fc] + amap + [
         "-c:v", "libx264", "-crf", "21", "-preset", "veryfast"]
@@ -165,5 +174,6 @@ def render(case_id, out=None, voice=False, ambient=True, gain=0.14, from_dir=Non
     args += ["-shortest", str(out)]
     run(args)
 
-    print(f"  ✓ Reel [{case_id}] Stufe {tier} → {out}  ({n} Slides, {sum(durs):.1f}s, 1080x1920)")
+    bett = "Musik" if use_music else (ambient_style if ambient else "stumm")
+    print(f"  ✓ Reel [{case_id}] Stufe {tier} · Bett={bett} → {out}  ({n} Slides, {sum(durs):.1f}s, 1080x1920)")
     return out
