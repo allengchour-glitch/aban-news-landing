@@ -1,0 +1,19 @@
+{
+  "reels": [
+    {
+      "file": "/media/reels/tool-n8n.mp4",
+      "title": "Lohnt sich n8n?",
+      "link": "https://radar.abannews.com/"
+    },
+    {
+      "file": "/media/reels/tool-cursor.mp4",
+      "title": "Lohnt sich Cursor?",
+      "link": "https://radar.abannews.com/"
+    },
+    {
+      "file": "/media/reels/tool-claude.mp4",
+      "title": "Lohnt sich Claude?",
+      "link": "https://radar.abannews.com/"
+    }
+  ]
+}
