@@ -88,6 +88,7 @@ def main() -> int:
     if not args.skip_scan:
         run([py, "tools/growth_audit.py"], "Wachstums-Audit")
         run([py, "tools/consistency_check.py"], "Konsistenz-Check (Preise/Garantie)")
+        run([py, "automation/ls_stats.py"], "Lemon-Squeezy Live-Zahlen (MRR/Abos)")
         dry = ["--dry"] if args.dry_run else []
         run([py, "tools/add_branchen_funnel.py"] + dry, "Funnel-Block aktualisieren")
         run([py, "tools/related_hubs.py"] + dry, "Interne Verlinkung (verwandte Branchen)")

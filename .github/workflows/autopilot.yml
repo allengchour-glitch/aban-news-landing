@@ -36,16 +36,17 @@ jobs:
           ABAN_GEN_N: ${{ vars.ABAN_GEN_N }}
           ABAN_IMG_BATCH: ${{ vars.ABAN_IMG_BATCH }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          LEMONSQUEEZY_API_KEY: ${{ secrets.LEMONSQUEEZY_API_KEY }}
         run: |
           pip install --quiet pillow requests || true
           python3 automation/autopilot.py
 
       - name: Änderungen sichern (falls vorhanden)
         run: |
-          if ! git diff --quiet -- social/ reports/ docs/SHARE-KIT.md automation/news-roh-aktuell.md automation/entwurf-gemini-*.md ki-fuer-*.html themen/ img/ 2>/dev/null; then
+          if ! git diff --quiet -- social/ reports/ docs/SHARE-KIT.md automation/news-roh-aktuell.md automation/entwurf-gemini-*.md ki-fuer-*.html themen/ img/ data/ls-stats.json 2>/dev/null; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add social/ reports/ docs/SHARE-KIT.md automation/news-roh-aktuell.md automation/entwurf-gemini-*.md ki-fuer-*.html themen/ img/ 2>/dev/null || true
+            git add social/ reports/ docs/SHARE-KIT.md automation/news-roh-aktuell.md automation/entwurf-gemini-*.md ki-fuer-*.html themen/ img/ data/ls-stats.json 2>/dev/null || true
             git commit -m "Autopilot: Queues/Audit/Verlinkung/Share-Kit aktualisiert [skip ci]" || echo "nichts zu committen"
             git push || echo "::warning::push fehlgeschlagen"
           else

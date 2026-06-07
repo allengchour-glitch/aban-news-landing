@@ -76,6 +76,15 @@ def main() -> int:
     L.append(f"   └ Header-Bild  : {th_hero}/{themen}")
     L.append(f"🖼️  Bilder gehostet: {site_imgs}   📄 Lead-PDFs: {pdfs}")
     L.append("")
+    # Premium-Live-Zahlen (Lemon Squeezy), falls vorhanden
+    ls = ROOT / "data" / "ls-stats.json"
+    if ls.exists():
+        try:
+            d = json.loads(ls.read_text(encoding="utf-8"))
+            L.append(f"💳 Premium aktiv : {d.get('active',0)} ({d.get('monthly',0)} mtl. / "
+                     f"{d.get('yearly',0)} jährl.) · ~€{d.get('mrr_eur_estimate',0)} MRR")
+        except Exception:  # noqa: BLE001
+            pass
     L.append(report_line("GROWTH-AUDIT.md", "📈 Wachstum"))
     L.append(report_line("CONSISTENCY.md", "💶 Konsistenz"))
     print("\n".join(L))
