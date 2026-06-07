@@ -12,7 +12,7 @@
  *
  * ENV (NUR aus GitHub-Secrets/Repo-Variablen — nie im Code):
  *   GEMINI_API_KEY        (Pflicht — AI-Studio-Key; Vertex-AI optional via GEMINI_BASE_URL)
- *   GEMINI_MODEL          (optional, Default gemini-2.0-flash)
+ *   GEMINI_MODEL          (optional, Default gemini-2.5-flash; bei Bedarf als Repo-Variable überschreiben)
  *   SITE_BASE_URL         (optional, Default https://luxestyle.ch)
  *   CRITIQUE_PATHS        (optional, Komma-Liste; Default "/, /collections/damen-mode, <erstes Produkt>")
  *   TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID  (optional — Kurzfassung)
@@ -22,7 +22,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const KEY = process.env.GEMINI_API_KEY || '';
-const MODEL = process.env.GEMINI_MODEL || 'gemini-2.0-flash';
+const MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const BASE = (process.env.SITE_BASE_URL || 'https://luxestyle.ch').replace(/\/$/, '');
 const GEMINI_BASE = process.env.GEMINI_BASE_URL || 'https://generativelanguage.googleapis.com/v1beta';
 const TG_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '';
