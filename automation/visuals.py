@@ -55,8 +55,9 @@ def build_visual(text: str, *, aspect: str = "1:1", channel: str = "generic"):
     tmp = Path(tempfile.gettempdir())
     disabled = os.environ.get("ABAN_DISABLE_IMAGE_GEN", "").strip().lower() in (
         "1", "true", "yes", "on")
-    # Bildquelle: "pexels" (echte Fotos) | "ai" (Imagen) | "auto" (Pexels falls Key, sonst AI)
-    source = os.environ.get("ABAN_IMAGE_SOURCE", "auto").strip().lower()
+    # Bildquelle: "pexels" | "ai" | "auto". `or` fängt leere Env-Vars ab
+    # (GitHub übergibt ${{ vars.X }} als "" wenn die Variable nicht existiert).
+    source = (os.environ.get("ABAN_IMAGE_SOURCE") or "auto").strip().lower()
 
     # 1) Echtes Stockfoto via Pexels (wenn gewünscht + Key vorhanden)
     if fetch_image and not disabled and source in ("auto", "pexels"):
