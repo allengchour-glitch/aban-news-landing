@@ -1,7 +1,7 @@
 [
-  {"slug":"aerzte","title":"KI-Starter-Kit für Ärzte & Praxen","desc":"Spickzettel + erprobte Prompts + Datenschutz-Checkliste.","price_cents":1200},
-  {"slug":"handwerker","title":"KI-Starter-Kit für Handwerk","desc":"Angebote, Mails, Bewertungen schneller schreiben.","price_cents":1200},
-  {"slug":"steuerberater","title":"KI-Starter-Kit für Steuerberatung","desc":"Mandanten-Kommunikation, Standardschreiben, Recherche.","price_cents":1200},
-  {"slug":"anwaelte","title":"KI-Starter-Kit für Kanzleien","desc":"Entwürfe, lange Dokumente, Mandantentexte — mit Grenzen.","price_cents":1200},
-  {"slug":"gastronomie","title":"KI-Starter-Kit für Gastronomie","desc":"Bewertungen, Social, Speisekarten-Texte.","price_cents":1200}
+  {"slug":"aerzte","title":"KI-Starter-Kit für Ärzte & Praxen","desc":"Spickzettel + erprobte Prompts + Datenschutz-Checkliste.","price_cents":1200,"currency":"chf"},
+  {"slug":"handwerker","title":"KI-Starter-Kit für Handwerk","desc":"Angebote, Mails, Bewertungen schneller schreiben.","price_cents":1200,"currency":"chf"},
+  {"slug":"steuerberater","title":"KI-Starter-Kit für Steuerberatung","desc":"Mandanten-Kommunikation, Standardschreiben, Recherche.","price_cents":1200,"currency":"chf"},
+  {"slug":"anwaelte","title":"KI-Starter-Kit für Kanzleien","desc":"Entwürfe, lange Dokumente, Mandantentexte — mit Grenzen.","price_cents":1200,"currency":"chf"},
+  {"slug":"gastronomie","title":"KI-Starter-Kit für Gastronomie","desc":"Bewertungen, Social, Speisekarten-Texte.","price_cents":1200,"currency":"chf"}
 ]

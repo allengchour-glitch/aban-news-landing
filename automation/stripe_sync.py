@@ -62,14 +62,18 @@ def main() -> int:
     catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
     state = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
     products = []
+    SYM = {"eur": "€", "chf": "CHF ", "usd": "$"}
     for kit in catalog:
         slug, title = kit["slug"], kit["title"]
         cents = int(kit["price_cents"])
+        cur = kit.get("currency", "eur").lower()
         try:
-            if slug not in state:
+            if slug not in state or state[slug].get("currency") != cur:
                 prod = stripe("/products", [("name", title), ("metadata[slug]", slug)], key)
                 price = stripe("/prices", [("product", prod["id"]), ("unit_amount", str(cents)),
-                                           ("currency", "eur")], key)
+                                           ("currency", cur)], key)
+                # Zahlarten kommen automatisch aus den Dashboard-Einstellungen
+                # (Karte immer; TWINT erscheint bei CHF, sobald im Stripe-Dashboard aktiviert).
                 link = stripe("/payment_links", [
                     ("line_items[0][price]", price["id"]), ("line_items[0][quantity]", "1"),
                     ("metadata[slug]", slug),
@@ -77,8 +81,8 @@ def main() -> int:
                     ("after_completion[redirect][url]",
                      f"{SITE}/danke-kit.html?slug={slug}&session_id={{CHECKOUT_SESSION_ID}}")], key)
                 state[slug] = {"product": prod["id"], "price": price["id"],
-                               "link": link["url"], "cents": cents}
-                print(f"✓ Stripe angelegt: {slug} → {link['url']}")
+                               "link": link["url"], "cents": cents, "currency": cur}
+                print(f"✓ Stripe angelegt: {slug} ({cur.upper()}) → {link['url']}")
             else:
                 print(f"• schon da: {slug}")
         except urllib.error.HTTPError as e:
@@ -87,8 +91,9 @@ def main() -> int:
         except Exception as e:  # noqa: BLE001
             print(f"::warning::Stripe {slug}: {e}")
             continue
+        sym = SYM.get(cur, cur.upper() + " ")
         products.append({"slug": slug, "title": title, "desc": kit.get("desc", ""),
-                         "price": f"€{cents/100:.0f}", "buy": state[slug]["link"]})
+                         "price": f"{sym}{cents/100:.0f}", "buy": state[slug]["link"]})
 
     STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     OUT.write_text(json.dumps(products, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
