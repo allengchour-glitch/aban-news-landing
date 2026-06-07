@@ -55,8 +55,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Shopify `productCreateMedia` an (Zuordnung über `handle` in `good_products.csv`; Videos via Manifest
   `social/generated_media.csv`, das `gen_veo_reel.mjs` schreibt). Bilder per URL, Videos per Staged-Upload. No-op ohne
   Shopify-Creds. ⚠️ Bilder tragen Promo-Overlays → Default nur `videos`; `images` nur bewusst setzen.
+- **⚠️ Shopify-Creds VERIFIZIERT 2026-06-07: nur `SHOPIFY_SHOP` gesetzt, `SHOPIFY_CLIENT_ID`/`SHOPIFY_CLIENT_SECRET`
+  FEHLEN** (reel-analytics-Log: „Shop-Zahlen übersprungen, kein gültiger Token"). Frühere Sessions nutzten die
+  `mcp__…`-Shopify-Tools, nie Repo-Secrets. → Shop-Zahlen/SEO + `add_media_to_products.mjs` brauchen erst diese 2 Secrets.
 - **OFFENE USER-SCHRITTE:** PR #386 → `main` mergen (aktiviert neue Workflows/Cron); Veo im GCP freischalten; TikTok
-  öffentlich = Metricool/manuell (kein HR); ggf. `SHOPIFY_*`-Creds für die Medien-Anbindung prüfen.
+  öffentlich = Metricool/manuell (kein HR); **`SHOPIFY_CLIENT_ID`+`SHOPIFY_CLIENT_SECRET` setzen** (für Medien-Anbindung).
 
 **📌 2026-06-07 (VERIFIZIERT — geteilte Cross-Session-Lehre, ZUERST LESEN):**
 - **Meta-Autopost LIVE getestet** (`social-meta-autopost.yml` per `workflow_dispatch`, echte Posts): **Instagram ✅
