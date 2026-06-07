@@ -51,9 +51,10 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **TikTok (4. Account) — KORREKTUR 07.06.: war SCHON gebaut (auf `main`)!** Frühere Session hat
   `automation/tiktok-autopost.mjs` + `tiktok-autopost.yml`: postet **Reels/Videos** aus `reels_seed.csv` per
   Content-Posting-API v2 (**FILE_UPLOAD** → braucht KEINE Domain-Verifizierung), Auto-Refresh + Token-Persistenz
-  (PAT `REPO_ADMIN_PAT`). Secrets **`TT_ACCESS_TOKEN/TT_REFRESH_TOKEN/TT_CLIENT_KEY/TT_CLIENT_SECRET`** vom User
-  **bereits gesetzt**, Lauf 06-06 ok. App „LuxeStyle Poster" (ID `7644952871552960533`).
-  `TT_PRIVACY_LEVEL=SELF_ONLY` bis **App-Audit** → danach `PUBLIC_TO_EVERYONE`. **Einziger offener Schritt: Audit.**
+  (PAT `REPO_ADMIN_PAT`). App „LuxeStyle Poster" (ID `7644952871552960533`) existiert. ⚠️ **Test 07-06: Secrets
+  `TT_ACCESS_TOKEN/…` NICHT gesetzt → No-op** (der „erfolgreiche" Lauf 06-06 war leer). **Offen: Token holen + 4
+  `TT_*`-Secrets setzen** (`TT_ACCESS_TOKEN` muss dabei sein, sonst refresht das Skript nicht), dann
+  `TT_PRIVACY_LEVEL=SELF_ONLY` bis **App-Audit** → danach `PUBLIC_TO_EVERYONE`.
   ⚠️ Lehre: mein Branch baute (auf altem main) versehentlich ein **Foto-Duplikat** (`TIKTOK_`-Präfix,
   `posts_tiktok.csv`) → zurückgenommen, main-Version übernommen, damit der Merge die funktionierende Version
   nicht überschreibt. (Foto-Direktpost `media_type=PHOTO`/PULL_FROM_URL bliebe als Zusatz möglich, bräuchte Domain-Verify.)

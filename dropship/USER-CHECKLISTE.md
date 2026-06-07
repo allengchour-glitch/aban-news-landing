@@ -34,11 +34,17 @@
 - [ ] `TELEGRAM_BOT_TOKEN` (🔒 **bitte rotieren**, der alte wurde im Chat geteilt) + `TELEGRAM_CHAT_ID`
 
 **TikTok (Content Posting API v2) — `tiktok-autopost.yml` (Reels/Video, FILE_UPLOAD):**
-- ✅ **BEREITS EINGERICHTET** (App „LuxeStyle Poster", App-ID `7644952871552960533`; Secrets gesetzt; Lauf vom 06.06. erfolgreich).
-- Secrets (schon gesetzt): `TT_ACCESS_TOKEN` (24h) + `TT_REFRESH_TOKEN` + `TT_CLIENT_KEY` + `TT_CLIENT_SECRET` (Auto-Refresh).
-- [ ] **Repo-Variable** `TT_PRIVACY_LEVEL`: bis App-Audit **`SELF_ONLY`** (nur du siehst es) → nach Audit **`PUBLIC_TO_EVERYONE`**.
-- [ ] Optional PAT **`REPO_ADMIN_PAT`** (`secrets: write`) → Workflow persistiert die rotierten Tokens selbst (sonst `TT_ACCESS_TOKEN` alle 24h neu).
-- ℹ️ Postet **Reels** aus `reels_seed.csv` (Video, FILE_UPLOAD → **keine Domain-Verifizierung nötig**). Der **einzige offene Schritt für ÖFFENTLICHES Posten** ist der **TikTok-App-Audit**.
+- Tool + App **fertig** (App „LuxeStyle Poster", ID `7644952871552960533`). ⚠️ **Test 07.06.: noch No-op — `TT_ACCESS_TOKEN`
+  ist NICHT gesetzt.** D. h. die **4 Token-Secrets fehlen noch** (der „erfolgreiche" Lauf 06.06. war ein leerer No-op).
+- **So holst du den Token (App existiert schon, nur autorisieren):**
+  1. In der App: **Content Posting API** + **Login Kit** aktiv, Scope **`video.publish`**; **Client key/secret** notieren; Redirect-URI eintragen.
+  2. Browser: `https://www.tiktok.com/v2/auth/authorize/?client_key=<KEY>&scope=video.publish&response_type=code&redirect_uri=<REDIRECT>&state=x` → zustimmen → `code` aus Adresszeile kopieren.
+  3. `curl -X POST https://open.tiktokapis.com/v2/oauth/token/ -d "client_key=<KEY>&client_secret=<SECRET>&code=<CODE>&grant_type=authorization_code&redirect_uri=<REDIRECT>"` → liefert `access_token` + `refresh_token`.
+- [ ] **4 Secrets setzen:** `TT_ACCESS_TOKEN` (24h), `TT_REFRESH_TOKEN`, `TT_CLIENT_KEY`, `TT_CLIENT_SECRET` (für Auto-Refresh).
+  ⚠️ `TT_ACCESS_TOKEN` muss gesetzt sein — das Skript refresht nur, wenn ein Access-Token vorhanden ist.
+- [ ] **Repo-Variable** `TT_PRIVACY_LEVEL`: bis App-Audit **`SELF_ONLY`** (nur du) → nach Audit **`PUBLIC_TO_EVERYONE`**.
+- [ ] Optional PAT **`REPO_ADMIN_PAT`** (`secrets: write`) → Workflow persistiert rotierte Tokens selbst.
+- ℹ️ Postet **Reels** aus `reels_seed.csv` (Video, FILE_UPLOAD → **keine Domain-Verifizierung nötig**). Für öffentliche Posts zusätzlich **App-Audit**.
 
 **Shopify (Kennzahlen im Digest + Rating-Lister) — Client-Credentials der Custom-App:**
 - [ ] `SHOPIFY_SHOP` = `au3j0y-hq.myshopify.com` · `SHOPIFY_CLIENT_ID` · `SHOPIFY_CLIENT_SECRET`
