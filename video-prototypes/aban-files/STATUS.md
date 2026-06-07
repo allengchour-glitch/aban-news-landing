@@ -36,6 +36,11 @@ Kanal = Haupt-Kanal `@allengchour` (umbenannt zu „ABAN Files").
 - **Keine verschluckten Enden:** Videolänge = `max(Alignment, echte Audiolänge)+0.6`.
 - **SUBSCRIBE-Endcard** (neu): grosse zentrierte cyan Karte „▶ SUBSCRIBE / for the next ABAN file"
   in den letzten ~3.6 s (ASS-Style `SUB`, Fade + Scale-Puls via `\t`); `TAG`-Logo blendet dafür aus.
+- **🆕 2026-06-07 Quality-Upgrades (aus abannews `scripts/audio_dress.sh` + `anim_film.py` portiert, alles gratis):**
+  - **Broadcast-Voice:** EQ (Wärme 220 Hz + Klarheit 3 kHz) + Kompressor + Platten-Hall statt nur highpass.
+  - **Sidechain-Ducking:** Ambient-Musik senkt sich automatisch unter die Stimme → Stimme immer klar.
+  - **Stiller Start:** Musik faded über 2.6 s ein (Pattern-Interrupt, Hook ohne Musik).
+  - **Cinematic Grade:** kalter Teal-Shadow-Tint (`colorbalance`) zusätzlich zu Vignette + Film-Grain.
 - Untertitel unten · Ambient-Musik · Dark-Grade. Länge: **neue ep15–ep36 ~150–170 s** (verdoppelt).
 
 ## Automatik

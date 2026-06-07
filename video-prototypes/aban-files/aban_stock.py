@@ -494,18 +494,29 @@ def render(ep):
     open(concat, "w").write("\n".join(f"file '{p}'" for p in norm))
     subprocess.run([FF, "-y", "-f", "concat", "-safe", "0", "-i", concat, "-c", "copy", "/tmp/_base.mp4"],
                    check=True, capture_output=True)
-    # Audio: Stimme + Drone
+    # Audio: Stimme broadcast-veredelt (EQ Waerme 220Hz + Klarheit 3kHz, Kompressor, Platten-Hall)
+    vo_chain = ("highpass=f=85,equalizer=f=220:width_type=q:w=1:g=2.5,"
+                "equalizer=f=3000:width_type=q:w=2:g=2,"
+                "acompressor=threshold=-18dB:ratio=3:attack=8:release=180,"
+                "dynaudnorm=f=200,aecho=0.8:0.8:33|52:0.2|0.13")
     subprocess.run([FF, "-y", "-i", "/tmp/_a.mp3", "-ar", "44100",
-                    "-af", "highpass=f=60,dynaudnorm=f=200", "/tmp/_vo.wav"], check=True, capture_output=True)
+                    "-af", vo_chain, "/tmp/_vo.wav"], check=True, capture_output=True)
     build_ass(words, total, "/tmp/_subs.ass", sc.get("hook", ""))
-    # dunkler Ambient-Score (a-moll-Pad) statt nur Drone -> fuellt stille Stellen
+    # dunkler Ambient-Score (a-moll-Pad); fade-in ueber 2.6s = stiller Start (Pattern-Interrupt)
     music = ("sine=f=110,volume=0.5[m1];sine=f=164.81,volume=0.4[m2];sine=f=220,volume=0.3[m3];"
              "sine=f=329.63,volume=0.12[m4];[m1][m2][m3][m4]amix=inputs=4:normalize=0,"
-             "tremolo=f=0.12:d=0.45,lowpass=f=1500,aecho=0.8:0.7:450|800:0.4|0.25,volume=0.2[d]")
-    vf = (f"eq=brightness=-0.12:saturation=0.92:contrast=1.05,vignette=PI/4.5,"
+             "tremolo=f=0.12:d=0.45,lowpass=f=1500,aecho=0.8:0.7:450|800:0.4|0.25,"
+             "volume=0.24,afade=t=in:st=0:d=2.6[d]")
+    # Cinematic Grade: dunkel + leicht entsaettigt + kalter Teal-Shadow-Tint + Vignette + Grain
+    vf = (f"eq=brightness=-0.12:saturation=0.9:contrast=1.06,"
+          f"colorbalance=rs=-0.04:gs=-0.01:bs=0.08:bm=0.03,vignette=PI/4.5,"
           f"noise=alls=7:allf=t,subtitles=/tmp/_subs.ass")
+    # Musik duckt automatisch unter die Stimme (Sidechain), Stimme bleibt klar vorne
     subprocess.run([FF, "-y", "-i", "/tmp/_base.mp4", "-i", "/tmp/_vo.wav",
-                    "-filter_complex", f"[0:v]{vf}[v];{music};[1:a]volume=1.0[vo];[vo][d]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[ao]",
+                    "-filter_complex",
+                    f"[0:v]{vf}[v];{music};[1:a]asplit=2[vo][vsc];"
+                    f"[d][vsc]sidechaincompress=threshold=0.05:ratio=6:attack=20:release=300[dk];"
+                    f"[vo][dk]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[ao]",
                     "-map", "[v]", "-map", "[ao]", "-c:v", "libx264", "-crf", "22", "-preset", "veryfast",
                     "-c:a", "aac", "-b:a", "160k", "-shortest", f"/tmp/aban_stock_{ep}.mp4"],
                    check=True, capture_output=True)
