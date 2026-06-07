@@ -87,6 +87,7 @@ def main() -> int:
     # 4+5: Audits/Funnel/Verlinkung (gratis, deterministisch)
     if not args.skip_scan:
         run([py, "tools/growth_audit.py"], "Wachstums-Audit")
+        run([py, "tools/consistency_check.py"], "Konsistenz-Check (Preise/Garantie)")
         dry = ["--dry"] if args.dry_run else []
         run([py, "tools/add_branchen_funnel.py"] + dry, "Funnel-Block aktualisieren")
         run([py, "tools/related_hubs.py"] + dry, "Interne Verlinkung (verwandte Branchen)")
