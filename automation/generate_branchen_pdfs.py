@@ -132,9 +132,13 @@ def link_in_hub(hub: Path, slug: str, label: str, dry: bool) -> str:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--slugs", default="")
+    ap.add_argument("--all", action="store_true", help="alle ki-fuer-*-Hubs (sonst PREFERRED-Set)")
     ap.add_argument("--dry", action="store_true")
     args = ap.parse_args()
-    slugs = [s.strip() for s in args.slugs.split(",") if s.strip()] or PREFERRED
+    if args.all:
+        slugs = sorted(p.name[len("ki-fuer-"):-len(".html")] for p in REPO.glob("ki-fuer-*.html"))
+    else:
+        slugs = [s.strip() for s in args.slugs.split(",") if s.strip()] or PREFERRED
 
     made = linked = skipped = 0
     for slug in slugs:
