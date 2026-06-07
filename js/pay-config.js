@@ -20,8 +20,14 @@
 // WICHTIG: Hier gehören nur ÖFFENTLICHE Bezahl-Links rein — niemals
 // Karten-Nummern, Secrets oder API-Keys. Die Site bleibt statisch & DSGVO-konform.
 // ============================================================
+//  PREMIUM_MONTHLY_URL / PREMIUM_YEARLY_URL — Checkout-Links für das €9/Monat- bzw.
+//                 €89/Jahr-Premium-Abo. Egal welcher Anbieter (Lemon Squeezy, Stripe
+//                 Payment Link, PayPal-Abo, beehiiv) — einfach den fertigen Checkout-Link
+//                 einfügen. Leer = der Premium-Button zeigt weiter auf die Founding-Seite.
 window.ABAN_PAY = {
   TWINT_URL: "",
   SHOPIFY_URL: "https://luxestyle.ch/products/aban-news-founding-member",
-  CARD_URL: ""
+  CARD_URL: "",
+  PREMIUM_MONTHLY_URL: "",
+  PREMIUM_YEARLY_URL: ""
 };

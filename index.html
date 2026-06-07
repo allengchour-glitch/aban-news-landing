@@ -352,7 +352,7 @@
             <li>Tool-Datenbank mit ehrlichen Bewertungen</li>
             <li>Werbefrei</li>
           </ul>
-          <a href="/founding.html" class="btn btn--amber">Premium ansehen</a>
+          <a href="/founding.html" id="prem-buy" class="btn btn--amber">Premium ansehen</a>
         </div>
         <!-- Founding -->
         <div class="price">
@@ -476,6 +476,7 @@
   </div>
 </footer>
 
+<script src="/js/pay-config.js"></script>
 <script>
   (function(){
     document.querySelectorAll('form.cta').forEach(function(f){
@@ -483,15 +484,21 @@
     });
     // Premium Monats-/Jahres-Umschalter
     var mo=document.getElementById('t-mo'),yr=document.getElementById('t-yr'),
-        pp=document.getElementById('prem-pp'),sub=document.getElementById('prem-sub');
+        pp=document.getElementById('prem-pp'),sub=document.getElementById('prem-sub'),
+        buy=document.getElementById('prem-buy'),PAY=(window.ABAN_PAY||{});
     function setP(per){
       var m=per==='mo';
       pp.innerHTML= m ? '€9<small> /Monat</small>' : '€89<small> /Jahr</small>';
       sub.textContent= m ? 'oder €89 / Jahr' : 'entspricht €7,42 / Monat';
       mo.classList.toggle('on',m); yr.classList.toggle('on',!m);
       mo.setAttribute('aria-pressed',m); yr.setAttribute('aria-pressed',!m);
+      if(buy){
+        var url= m ? PAY.PREMIUM_MONTHLY_URL : PAY.PREMIUM_YEARLY_URL;
+        if(url){ buy.href=url; buy.target='_blank'; buy.rel='noopener'; buy.textContent='Premium abonnieren →'; }
+        else { buy.href='/founding.html'; buy.removeAttribute('target'); buy.textContent='Premium ansehen'; }
+      }
     }
-    if(mo&&yr){mo.addEventListener('click',function(){setP('mo')});yr.addEventListener('click',function(){setP('yr')});}
+    if(mo&&yr){mo.addEventListener('click',function(){setP('mo')});yr.addEventListener('click',function(){setP('yr')});setP('mo');}
 
     // Sticky Mobile-CTA: nach etwas Scrollen einblenden
     var mcta=document.getElementById('mcta');
