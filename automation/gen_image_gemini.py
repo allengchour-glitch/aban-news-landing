@@ -102,8 +102,11 @@ def _vertex(prompt, out_path):
         return None
     url = (f"https://{location}-aiplatform.googleapis.com/v1/projects/{project}"
            f"/locations/{location}/publishers/google/models/{model}:predict")
+    # personGeneration=dont_allow → KEINE Personen/Gesichter (Marken-Guardrail + weniger
+    # Rechtsrisiko). SynthID-Wasserzeichen setzt Vertex bei Imagen ohnehin automatisch.
     body = {"instances": [{"prompt": prompt}],
-            "parameters": {"sampleCount": 1, "aspectRatio": ASPECT}}
+            "parameters": {"sampleCount": 1, "aspectRatio": ASPECT,
+                           "personGeneration": "dont_allow"}}
     req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
                                  headers={"Authorization": f"Bearer {token}",
                                           "Content-Type": "application/json"})
