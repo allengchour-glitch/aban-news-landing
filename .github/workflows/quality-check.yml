@@ -36,7 +36,9 @@ jobs:
         run: |
           python - <<'PY'
           import json, subprocess, sys
-          files = subprocess.check_output(["git","ls-files","*.json"]).decode().split()
+          # Shopify-Theme-JSON unter dropship/assets/ ist JSONC (erlaubt /* */-Kommentare),
+          # also bewusst kein striktes JSON → von der Validierung ausnehmen.
+          files = subprocess.check_output(["git","ls-files","*.json",":(exclude)dropship/assets/*.json"]).decode().split()
           bad = 0
           for f in files:
               try:
