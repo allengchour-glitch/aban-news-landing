@@ -1,35 +1,47 @@
-name: Video-Pipeline — Clip-Pakete bauen
+name: Video-Pipeline — Reels fertig rendern
 
-# Baut die Clip-Pakete als herunterladbares Artefakt, wenn sich die Pipeline oder
-# die Hype-Watch-Daten ändern. Kein Deploy (Output ist kein Website-Inhalt) —
-# du lädst das Artefakt, ziehst Slides+SRT in CapCut/Resolve und postest.
+# Baut die Clip-Pakete UND rendert daraus fertige 9:16-mp4-Reels (Slides +
+# Untertitel + Ambient-Ton), wenn sich Pipeline, Toolkit oder Hype-Watch-Daten
+# ändern. Kein Deploy (Output ist kein Website-Inhalt) — du lädst das Artefakt
+# und postest die fertigen Reels direkt (kein CapCut nötig).
 on:
   push:
     paths:
       - 'video-pipeline/**'
+      - 'mediakit/**'
       - 'data/hype-watch.json'
   workflow_dispatch:
 
 jobs:
   build:
-    name: Generate clip packages
+    name: Render finished reels
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install Pillow
-        run: pip install --quiet Pillow
-      - name: Build clips
+      - name: Install deps (Pillow + ffmpeg)
+        run: pip install --quiet Pillow imageio-ffmpeg
+      - name: Render reels
+        # XI gesetzt → Stufe A (ElevenLabs-Stimme + Karaoke); sonst sauber Stufe B/C.
+        env:
+          XI: ${{ secrets.XI }}
         run: |
           cd video-pipeline
-          python generate_clips.py
-          find ausgabe -type f | wc -l
-      - name: Upload clip packages
+          if [ -n "$XI" ]; then
+            echo "XI-Secret gefunden → rendere mit Stimme + Karaoke."
+            python render_all_reels.py --voice
+          else
+            echo "Kein XI-Secret → rendere lautlos+Ambient (Stufe B/C)."
+            python render_all_reels.py
+          fi
+          echo "Fertige Reels:"
+          find ausgabe -name 'reel.mp4' | sort
+      - name: Upload reels + clip packages
         uses: actions/upload-artifact@v4
         with:
-          name: video-clip-pakete
+          name: aban-reels-fertig
           path: video-pipeline/ausgabe
           retention-days: 30

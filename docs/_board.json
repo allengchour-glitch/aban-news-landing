@@ -1,5 +1,5 @@
 {
-  "next_id": 8,
+  "next_id": 16,
   "tasks": [
     {
       "id": 1,
@@ -21,16 +21,16 @@
       "id": 3,
       "task": "Gumroad-Konto + Datensatz hochladen → Buy-Link",
       "who": "aban",
-      "status": "doing",
-      "note": "Voll-Datensatz erzeugt (326 Tools CSV+JSON), an Aban geliefert; wartet auf Gumroad-Konto + Buy-Link",
-      "updated": "2026-06-03"
+      "status": "done",
+      "note": "Produkt veroeffentlicht (19 EUR, Cover), Buy-Button live auf abannews.com (PR #282 gemerged). Von Aban bestaetigt: Kauf-Button live.",
+      "updated": "2026-06-07"
     },
     {
       "id": 4,
       "task": "Gumroad-Buy-Link in ki-tools-datensatz.html eintragen",
       "who": "code",
-      "status": "blocked",
-      "note": "wartet auf Link von Aban",
+      "status": "done",
+      "note": "Seite auf Gumroad umgestellt. Wartet nur noch auf den Gumroad-Link von Aban.",
       "updated": "2026-06-03"
     },
     {
@@ -56,6 +56,70 @@
       "status": "doing",
       "note": "einige schon live",
       "updated": "2026-06-03"
+    },
+    {
+      "id": 8,
+      "task": "5 Reels für aban news gebaut + geliefert (video-pipeline/ausgabe)",
+      "who": "code",
+      "status": "done",
+      "note": "",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 9,
+      "task": "dropshipping-radar auf Cloudflare deployen (dropshipping.abannews.com) — Vorbedingung fürs Affiliate-Geld",
+      "who": "browser",
+      "status": "todo",
+      "note": "Build verifiziert: dropshipping-rad 'python generate.py' laeuft fehlerfrei, 37 Seiten. Brief docs/CLOUDFLARE-DEPLOY-BROWSER-AGENT.md (Zeile 6) deckt es ab.",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 10,
+      "task": "Affiliate anmelden für dropshipping-radar (Printful/Spocket/Shopify) → Link an Code",
+      "who": "aban",
+      "status": "todo",
+      "note": "",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 11,
+      "task": "Dropshipping-Affiliate-Link in dropshipping-radar/affiliate.json eintragen + push",
+      "who": "code",
+      "status": "blocked",
+      "note": "wartet auf Deploy (Task 9) + Link von Aban (Task 10)",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 12,
+      "task": "luxestyle.ch: Sample drucken → Shopify-Produkte live (Inhaber)",
+      "who": "aban",
+      "status": "todo",
+      "note": "",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 13,
+      "task": "luxestyle: echtes Mimi-Slicer-Gewicht+Druckzeit messen → in produkte.json (echter Preis)",
+      "who": "aban",
+      "status": "todo",
+      "note": "",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 14,
+      "task": "luxestyle Shop: TWINT + Rechts-Seiten (Impressum/AGB/Widerruf) einrichten",
+      "who": "aban",
+      "status": "todo",
+      "note": "",
+      "updated": "2026-06-03"
+    },
+    {
+      "id": 15,
+      "task": "ABAN Files: Render-Secrets setzen (PEXELS aktiv, XI=ElevenLabs fehlt) -> autonomer YouTube-Render",
+      "who": "aban",
+      "status": "done",
+      "note": "XI-Secret gesetzt. Schaltet auch mediakit-Reels-Stufe A (Stimme+Karaoke) in video-pipeline-build.yml automatisch frei.",
+      "updated": "2026-06-07"
     }
   ]
 }
