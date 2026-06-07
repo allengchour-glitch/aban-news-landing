@@ -13,6 +13,22 @@
 > ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
 > bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
 
+## Session 2026-06-07 — Conversion-QA + Ad-Landing bereinigt (Branch `claude/luxestyle-product-CizQ6`)
+- **Umgebung:** Shopify-MCP verbunden (LuxeStyle/au3j0y-hq/CHF ✅). **CJ_EMAIL/CJ_API_KEY NICHT gesetzt**
+  → keine neuen CJ-Importe. Conversion-First-Routine (§10) gefahren. **0 Autopilot-Drafts** (`tag:autopilot-needs-copy`).
+- **🖼️ Voll-QA aller 171 `cj-real` Live-Produkte (4 Seiten): 0 FAILED-Bilder, alle Media READY.** Katalog sauber.
+  Einziger Altbefund: „LED Schreibtischlampe Akku" hat 1 Bild (nicht kritisch, bekannt).
+- **🎯 Bekannten Conversion-Leak behoben:** „Sommerkleid ärmellos · Schwarz" (`15413739684225`) ist mit
+  **nur 3,54★ (26 Reviews)** das schwächste bewertete Produkt — lag aber live auf der **Kampagnen-
+  Landingpage `/collections/sommer`** UND auf der **Home-Page (`frontpage`)**. → Tag `sommer-2026` entfernt
+  (fällt aus der Smart-Collection `sommer`, Regel `sommer-2026` AND `damen`), aus Home-Page-Collection
+  entfernt, Tag `niedrig-bewertet-nicht-bewerben` gesetzt. Bleibt in `damen-mode`/`kleider` kaufbar (organisch),
+  aber nicht mehr auf Ad-Flächen. **Verifiziert:** Produkt-Collections enthalten weder `sommer` noch `frontpage` mehr.
+- **Echte Review-Gewinner bestätigt** (für künftigen Hero-Ausbau): Slim Wallet 5,0★(15), Herrenuhr Edelstahl
+  5,0★(15), Jade Roller Set 5,0★(7), Mini Robo-Diffuser 4,8★(4), Bali 4,93★, Ibiza 4,47★.
+- **🔴 Kernproblem unverändert:** Engpass bleibt Reichweite (3 User-Klicks §10: AGB-Domain, Pixel, Kampagne+Budget),
+  nicht Katalog/Funnel. Autonom getan, was ohne CJ-Creds/Werbekonto geht.
+
 ## Session 2026-06-06 (Teil 2) — Social-Maschine gebaut + Shop-Fixes + Voll-Automation
 - **Autonome Social-Maschine gebaut & committet** (PR #363, Branch LehDs): Meta-Autopilot IG+FB+Threads
   (`social-autopost-meta.mjs`), Bild-Generator (`gen_post_image.py`, 5 JPG-Posts/Tag 1080×1350+1080×1080),
