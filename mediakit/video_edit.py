@@ -58,18 +58,22 @@ def still_to_segment(img, dur, out, motion=True, idx=0, n=1, fade=0.4):
     ff = get_ffmpeg()
     frames = max(1, int(round(dur * FPS)))
     if motion:
-        # 20 % Auflösungs-Reserve, damit der Zoom nicht weichzeichnet
-        drift = 70 if idx % 2 == 0 else -70
-        z = "min(zoom+0.0008,1.12)"
-        x = f"iw/2-(iw/zoom/2)+{drift}*on/{frames}"
-        y = "ih/2-(ih/zoom/2)"
-        vf = (f"scale={int(W*1.2)}:{int(H*1.2)},"
-              f"zoompan=z='{z}':d={frames}:x='{x}':y='{y}':s={W}x{H}:fps={FPS}")
+        # Supersampling gegen das zoompan-Ruckeln: Slide 2,5x hochskalieren, ZENTRIERT
+        # (ohne Seitwärts-Drift) langsam zoomen, dann sauber auf 1080x1920 runterrechnen.
+        # Pixel-Rundungssprünge werden so unsichtbar → ruhiger Zoom, kein Wackeln.
+        ss_w, ss_h = int(W * 2.5), int(H * 2.5)
+        # gerade Slides leicht rein-, ungerade leicht rauszoomen (Abwechslung, beides ruhig)
+        if idx % 2 == 0:
+            z = "min(zoom+0.0004,1.08)"
+        else:
+            z = "if(eq(on,0),1.08,max(zoom-0.0004,1.0))"
+        vf = (f"scale={ss_w}:{ss_h}:flags=bicubic,"
+              f"zoompan=z='{z}':d={frames}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
+              f"s={W}x{H}:fps={FPS},format=yuv420p")
         if idx == 0:
-            vf += f",fade=t=in:st=0:d={fade}"
+            vf = vf.replace(",format=yuv420p", f",fade=t=in:st=0:d={fade},format=yuv420p")
         if idx == n - 1:
-            vf += f",fade=t=out:st={max(0, dur - fade):.2f}:d={fade}"
-        vf += ",format=yuv420p"
+            vf = vf.replace(",format=yuv420p", f",fade=t=out:st={max(0, dur - fade):.2f}:d={fade},format=yuv420p")
     else:
         vf = f"{VERTICAL_VF},format=yuv420p"
     run([ff, "-y", "-loop", "1", "-i", str(img), "-t", f"{dur:.2f}",
