@@ -1,0 +1,46 @@
+name: Medien an Shopify-Produkte anhängen
+
+# Hängt generierte Medien (Veo-Videos via Manifest; optional Masterpiece-Bilder) an die passenden
+# LuxeStyle-Produkte (Shopify productCreateMedia, Zuordnung über handle). Nur manuell. No-op ohne Shopify-Creds.
+#
+# Secrets/Variablen: SHOPIFY_SHOP (Var, z.B. au3j0y-hq.myshopify.com),
+#   SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET (Secrets, client_credentials)  ODER  SHOPIFY_ADMIN_TOKEN (Secret).
+
+on:
+  workflow_dispatch:
+    inputs:
+      kinds:
+        description: 'Welche Medien anhängen'
+        type: choice
+        options: [videos, images, 'images,videos']
+        default: videos
+      dry_run:
+        description: 'Nur testen (nichts schreiben)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: attach-media
+  cancel-in-progress: false
+
+jobs:
+  attach:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Attach media to products
+        env:
+          SHOPIFY_SHOP: ${{ vars.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          MEDIA_KINDS: ${{ inputs.kinds }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node automation/add_media_to_products.mjs

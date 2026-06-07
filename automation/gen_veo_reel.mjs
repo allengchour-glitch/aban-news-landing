@@ -186,6 +186,13 @@ async function main(){
   row[idx.status] = 'pending';   // erst nach Freigabe auf 'ready'
   rows.push(row);
   fs.writeFileSync(SEED, rows.map(r=>r.map(esc).join(',')).join('\n')+'\n');
+
+  // Medien-Manifest für add_media_to_products.mjs (handle→Video), nur bei Produkt-Animation
+  if(product?.handle){
+    const MAN = new URL('../social/generated_media.csv', import.meta.url).pathname;
+    if(!fs.existsSync(MAN)) fs.writeFileSync(MAN, 'handle,type,url,alt\n');
+    fs.appendFileSync(MAN, `${product.handle},VIDEO,${row[idx.video_url]},${esc(product.label)}\n`);
+  }
   console.log(`✅ ${finalName} erzeugt + als PENDING in reels_seed.csv eingetragen (Freigabe nötig vor dem Posten).`);
 }
 
