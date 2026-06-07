@@ -60,8 +60,14 @@
       el.innerHTML=items.map(function(p){
         var btn=p.buy?('<a class="btn" href="'+p.buy+'" target="_blank" rel="noopener">Kaufen — '+p.price+'</a>')
                      :('<span class="btn soon">Bald verfügbar</span>');
-        return '<div class="card"><h2>'+p.title+'</h2><p>'+p.desc+'</p><div class="price">'+p.price+'</div>'+btn+'</div>';
+        return '<div class="card" id="kit-'+p.slug+'" style="scroll-margin-top:1.5rem"><h2>'+p.title+'</h2><p>'+p.desc+'</p><div class="price">'+p.price+'</div>'+btn+'</div>';
       }).join('');
+      // Kommt der Besucher per #kit-<slug> aus einem Branchen-Hub: Karte hervorheben.
+      if(location.hash){
+        var t=document.getElementById(location.hash.slice(1));
+        if(t){t.style.borderColor='#b45309';t.style.boxShadow='0 0 0 2px rgba(180,83,9,.15)';
+              t.scrollIntoView({block:'center'});}
+      }
     }
     // Bevorzugt automatisch erzeugte Stripe-Produkte (data/shop-products.json), sonst Config-Fallback.
     fetch('/data/shop-products.json',{cache:'no-store'})
