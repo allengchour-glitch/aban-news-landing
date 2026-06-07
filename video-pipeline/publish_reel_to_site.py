@@ -20,6 +20,7 @@ REELS = ROOT / "media" / "reels"
 KEEP = 8  # rollendes Fenster
 
 TOOLS = {t["id"]: t for t in json.loads((ROOT / "data" / "tools.json").read_text(encoding="utf-8"))["tools"]}
+HYPE = {f["id"]: f for f in json.loads((ROOT / "data" / "hype-watch.json").read_text(encoding="utf-8"))["faelle"]}
 
 
 def title_link(stem):
@@ -27,7 +28,9 @@ def title_link(stem):
         t = TOOLS.get(stem[5:])
         name = t["name"] if t else stem[5:]
         return f"Lohnt sich {name}?", f"https://radar.abannews.com/tool/{stem[5:]}.html"
-    return stem.replace("-", " ").capitalize(), f"https://abannews.com/hype-watch/{stem}.html"
+    f = HYPE.get(stem)
+    title = f"Hype-Check: {f['claim']}" if f else stem.replace("-", " ").capitalize()
+    return title, f"https://abannews.com/hype-watch/{stem}.html"
 
 
 def publish(case_id):

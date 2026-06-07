@@ -1,6 +1,16 @@
 {
   "reels": [
     {
+      "file": "/media/reels/ki-bringt-im-unternehmen-schnell-roi.mp4",
+      "title": "Hype-Check: Generative KI bringt Unternehmen schnell messbaren Geschäftserfolg.",
+      "link": "https://abannews.com/hype-watch/ki-bringt-im-unternehmen-schnell-roi.html"
+    },
+    {
+      "file": "/media/reels/tool-claude.mp4",
+      "title": "Lohnt sich Claude?",
+      "link": "https://radar.abannews.com/tool/claude.html"
+    },
+    {
       "file": "/media/reels/tool-n8n.mp4",
       "title": "Lohnt sich n8n?",
       "link": "https://radar.abannews.com/tool/n8n.html"
@@ -9,11 +19,6 @@
       "file": "/media/reels/tool-cursor.mp4",
       "title": "Lohnt sich Cursor?",
       "link": "https://radar.abannews.com/tool/cursor.html"
-    },
-    {
-      "file": "/media/reels/tool-claude.mp4",
-      "title": "Lohnt sich Claude?",
-      "link": "https://radar.abannews.com/tool/claude.html"
     }
   ]
 }
