@@ -1,22 +1,25 @@
-name: YouTube auto-publish (1 Clip / 2 Tage)
+# name: YouTube auto-publish (Hasen-Lifestyle) — BEENDET 2026-06-07
+#
+# DEAKTIVIERT auf Wunsch des Users ("hase lifestyle short bei youtube beenden").
+# Diese Pipeline lud alle 2 Tage einen Bunny-/Lifestyle-Clip aus video-prototypes/
+# via scripts/yt_upload.py auf YouTube. Der automatische Zeitplan (cron) ist entfernt,
+# damit KEINE neuen Hasen-Shorts mehr gepostet werden.
+#
+# Nur noch manuell startbar (workflow_dispatch), falls je wieder gebraucht.
+# Voraussetzung waeren weiterhin: YT_CLIENT_ID / YT_CLIENT_SECRET / YT_REFRESH_TOKEN.
 
-# Lädt alle 2 Tage den nächsten noch nicht veröffentlichten Clip direkt auf
-# YouTube (als Short, sofort öffentlich) und merkt sich den Fortschritt in
-# video-prototypes/uploaded.json. Manuell auch per "Run workflow" startbar.
-# Voraussetzung: Repo-Secrets YT_CLIENT_ID / YT_CLIENT_SECRET / YT_REFRESH_TOKEN
-# (siehe video-prototypes/YOUTUBE-UPLOAD.md).
+name: YouTube auto-publish (Hasen-Lifestyle) [BEENDET]
 
 on:
   workflow_dispatch:
     inputs:
       count:
-        description: "Wie viele Clips jetzt hochladen"
+        description: "Wie viele Clips jetzt hochladen (nur manuell)"
         default: "1"
-  schedule:
-    - cron: "0 16 1-31/2 * *"   # an ungeraden Tagen 16:00 UTC (~18:00 Berlin)
+  # schedule ENTFERNT — kein Auto-Posting der Hasen-Shorts mehr.
 
 permissions:
-  contents: write               # um uploaded.json zurückzucommitten
+  contents: write
 
 concurrency:
   group: youtube-upload
