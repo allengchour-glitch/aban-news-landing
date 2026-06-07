@@ -490,9 +490,28 @@ def render(ep):
                             "-an", "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", out],
                            check=True, capture_output=True)
             norm.append(out)
+        else:
+            # Alles fehlgeschlagen -> dunkler Fueller (Segment NIE ueberspringen, sonst Video < Audio)
+            subprocess.run([FF, "-y", "-f", "lavfi", "-i",
+                            f"color=c=0x0A0A12:s={W}x{H}:d={seg_dur:.2f}:r={FPS}",
+                            "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", out],
+                           check=True, capture_output=True)
+            norm.append(out)
+        # Decode-Validierung: korruptes Segment (abgebrochener Download) -> durch Fueller ersetzen,
+        # sonst dekodiert die Concat-Basis nur bis zum Defekt und -t/-shortest schneidet die Folge ab.
+        chk = subprocess.run([FF, "-v", "error", "-i", out, "-f", "null", "-"], capture_output=True)
+        if chk.returncode != 0 or media_dur(out) < min(0.5, seg_dur * 0.5):
+            subprocess.run([FF, "-y", "-f", "lavfi", "-i",
+                            f"color=c=0x0A0A12:s={W}x{H}:d={seg_dur:.2f}:r={FPS}",
+                            "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", out],
+                           check=True, capture_output=True)
     concat = "/tmp/_concat.txt"
     open(concat, "w").write("\n".join(f"file '{p}'" for p in norm))
-    subprocess.run([FF, "-y", "-f", "concat", "-safe", "0", "-i", concat, "-c", "copy", "/tmp/_base.mp4"],
+    # Re-encode (statt -c copy): vertraegt gemischte Segment-Parameter (Video + Ken-Burns-Bild)
+    # -> kein Concat-Bruch mehr; einheitlich yuv420p/CFR.
+    subprocess.run([FF, "-y", "-f", "concat", "-safe", "0", "-i", concat,
+                    "-c:v", "libx264", "-crf", "18", "-preset", "veryfast",
+                    "-pix_fmt", "yuv420p", "-r", str(FPS), "/tmp/_base.mp4"],
                    check=True, capture_output=True)
     # Audio: Stimme broadcast-veredelt (EQ Waerme 220Hz + Klarheit 3kHz, Kompressor, Platten-Hall)
     vo_chain = ("highpass=f=85,equalizer=f=220:width_type=q:w=1:g=2.5,"
@@ -508,7 +527,9 @@ def render(ep):
              "tremolo=f=0.12:d=0.45,lowpass=f=1500,aecho=0.8:0.7:450|800:0.4|0.25,"
              "volume=0.24,afade=t=in:st=0:d=2.6[d]")
     # Cinematic Grade: dunkel + leicht entsaettigt + kalter Teal-Shadow-Tint + Vignette + Grain
-    vf = (f"eq=brightness=-0.12:saturation=0.9:contrast=1.06,"
+    # tpad haelt das letzte Bild, falls Footage kuerzer als Audio -> Stimme wird NIE abgeschnitten (-shortest trimmt dann auf Audio)
+    vf = (f"tpad=stop_mode=clone:stop_duration=20,"
+          f"eq=brightness=-0.12:saturation=0.9:contrast=1.06,"
           f"colorbalance=rs=-0.04:gs=-0.01:bs=0.08:bm=0.03,vignette=PI/4.5,"
           f"noise=alls=7:allf=t,subtitles=/tmp/_subs.ass")
     # Musik duckt automatisch unter die Stimme (Sidechain), Stimme bleibt klar vorne
@@ -518,7 +539,8 @@ def render(ep):
                     f"[d][vsc]sidechaincompress=threshold=0.05:ratio=6:attack=20:release=300[dk];"
                     f"[vo][dk]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[ao]",
                     "-map", "[v]", "-map", "[ao]", "-c:v", "libx264", "-crf", "22", "-preset", "veryfast",
-                    "-c:a", "aac", "-b:a", "160k", "-shortest", f"/tmp/aban_stock_{ep}.mp4"],
+                    "-pix_fmt", "yuv420p", "-r", str(FPS), "-fps_mode", "cfr",
+                    "-c:a", "aac", "-b:a", "160k", "-t", f"{total:.2f}", f"/tmp/aban_stock_{ep}.mp4"],
                    check=True, capture_output=True)
     print(f"[{ep}] done {dur:.1f}s {len(norm)} scenes -> /tmp/aban_stock_{ep}.mp4", flush=True)
 
