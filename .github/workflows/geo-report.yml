@@ -1,0 +1,52 @@
+name: GEO-Report (monatlich)
+
+# Erzeugt je Kunde aus data/geo-clients.json einen KI-Sichtbarkeits-Report.
+# WICHTIG: Reports enthalten Kundendaten → werden NICHT ins Repo committet, sondern
+# nur als (privates) Build-Artefakt der Action hochgeladen. data/geo-clients.json ist
+# gitignored. No-op ohne Kundenliste oder ohne Gemini/GCP-Key (Exit 0, kein CI-Rot).
+#
+# Aktivierung (User): data/geo-clients.json anlegen (Vorlage data/geo-clients.example.json)
+# + Secret GEMINI_API_KEY (oder GCP_SA_KEY/GCP_PROJECT). Dann läuft es am 1. jeden Monats.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 1 * *'   # am 1. jeden Monats, 06:00 UTC
+
+permissions:
+  contents: read
+
+concurrency:
+  group: geo-report
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Reports erzeugen (no-op ohne Kundenliste/Key)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_LOCATION: ${{ vars.GCP_LOCATION }}
+          VERTEX_TEXT_MODEL: ${{ vars.VERTEX_TEXT_MODEL }}
+        run: |
+          pip install --quiet google-auth requests || true
+          python3 automation/geo_report.py
+
+      - name: Reports als privates Artefakt hochladen (falls vorhanden)
+        if: ${{ hashFiles('reports/geo/*.md') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: geo-reports
+          path: reports/geo/*.md
+          retention-days: 60
+          if-no-files-found: ignore

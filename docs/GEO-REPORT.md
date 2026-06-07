@@ -6,6 +6,10 @@ sie dahin kommen. Du lieferst dafür einen **monatlichen Report** (Abo, B2B).
 ## Was schon da ist
 - `automation/geo_report.py` — erzeugt je Kunde einen ehrlichen Monats-Report → `reports/geo/<marke>-<YYYY-MM>.md`.
 - `data/geo-clients.example.json` — Vorlage für die Kundenliste (→ kopieren nach `data/geo-clients.json`).
+- **`.github/workflows/geo-report.yml`** — läuft am 1. jeden Monats, erzeugt die Reports und lädt sie
+  als **privates Build-Artefakt** hoch (kein Commit → Kundendaten bleiben aus dem Repo). No-op ohne Liste/Key.
+- **`downloads/muster/geo-report-MUSTER.md`** — fertiges **Beispiel-Report** (erfundene Berner Firma) zum
+  Verschicken/Zeigen, damit Interessenten das Format sehen.
 - Öffentliche Funnel-Seiten existieren: `ai-sichtbarkeit.html`, `ki-erwaehnungs-check.html`.
 
 ## So läuft's
@@ -23,5 +27,5 @@ sie dahin kommen. Du lieferst dafür einen **monatlichen Report** (Abo, B2B).
 - Akquise (die ersten Kunden) bleibt der menschliche Teil — am besten lokal/LinkedIn.
 
 ## Nächster Ausbau (optional)
-- Cron-Workflow `geo-report.yml` (monatlich) + Telegram-Benachrichtigung.
+- Telegram-Benachrichtigung, wenn neue Reports fertig sind.
 - Report-HTML/PDF-Template (statt Markdown) für den Versand.
