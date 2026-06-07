@@ -28,5 +28,19 @@ Anders als Lemon Squeezy erlaubt **Stripe** das Anlegen von Produkten, Preisen u
   ggf. später Steuer prüfen. Lemon Squeezy (MoR) bleibt die Alternative, wenn du das auslagern willst.
 - Stripe-Gebühr ~1.5–2.9 % + fix pro Transaktion.
 
+## Go-Live in 4 Schritten
+1. **Secrets setzen:** GitHub → `STRIPE_API_KEY` (sk_…), `DOWNLOAD_SALT` (langer Zufallsstring).
+2. **Cloudflare-Pages → Env:** dieselben `STRIPE_API_KEY` + `DOWNLOAD_SALT` (für die Download-Function).
+3. **Workflow „Stripe-Shop (autonom)" starten** → Produkte/Links/ZIPs entstehen, `shop.html` wird live.
+4. **Prüfen:**
+   - `python3 tools/shop_selfcheck.py` (lokal) → zeigt, welche Kits live sind und ob die Kette stimmt.
+     Mit `DOWNLOAD_SALT=… python3 tools/shop_selfcheck.py` werden auch die ZIP-Hash-Namen exakt geprüft.
+   - Browser: `https://abannews.com/api/kit-download?session_id=cs_test_123abc`
+     → muss `{"error":"Zahlung nicht gefunden."}` liefern (Gate lehnt unbezahlte/unbekannte Sessions ab).
+
+Neue Branche dazu: nur `data/kit-catalog.json` ergänzen + Workflow erneut starten. `shop_selfcheck.py`
+sagt dir danach, ob das neue Kit live ist.
+
 ## Status
 Grundgerüst steht & ist no-op-sicher (ohne `STRIPE_API_KEY` passiert nichts). Aktivierung = Secrets setzen.
+**Selbsttest:** `tools/shop_selfcheck.py` (Konsistenz Katalog ↔ Live-Produkte ↔ ZIPs ↔ Gate-Hash).

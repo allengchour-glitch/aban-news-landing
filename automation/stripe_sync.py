@@ -49,18 +49,27 @@ def stripe(path: str, params: list[tuple], key: str) -> dict:
 
 
 def main() -> int:
+    import argparse
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--catalog", default=str(CATALOG))
+    ap.add_argument("--out", default=str(OUT))
+    ap.add_argument("--state", default=str(STATE))
+    ap.add_argument("--danke", default="/danke-kit.html", help="Redirect-Ziel nach Kauf")
+    args = ap.parse_args()
+    catalog_path, out_path, state_path = Path(args.catalog), Path(args.out), Path(args.state)
+
     key = os.environ.get("STRIPE_API_KEY", "").strip()
     if not key:
         print("STRIPE_API_KEY nicht gesetzt → no-op (Exit 0). Key gehört in GitHub-Secrets.")
         return 0
-    if not CATALOG.exists():
-        print("Kein data/kit-catalog.json — nichts zu tun.")
+    if not catalog_path.exists():
+        print(f"Kein {catalog_path} — nichts zu tun.")
         return 0
     salt = os.environ.get("DOWNLOAD_SALT", "").strip()
     if not salt:
         print("::warning::DOWNLOAD_SALT fehlt — Download-Namen wären rätbar. Setze ein Secret DOWNLOAD_SALT.")
-    catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
-    state = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
+    catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+    state = json.loads(state_path.read_text(encoding="utf-8")) if state_path.exists() else {}
     products = []
     SYM = {"eur": "€", "chf": "CHF ", "usd": "$"}
     for kit in catalog:
@@ -79,7 +88,7 @@ def main() -> int:
                     ("metadata[slug]", slug),
                     ("after_completion[type]", "redirect"),
                     ("after_completion[redirect][url]",
-                     f"{SITE}/danke-kit.html?slug={slug}&session_id={{CHECKOUT_SESSION_ID}}")], key)
+                     f"{SITE}{args.danke}?slug={slug}&session_id={{CHECKOUT_SESSION_ID}}")], key)
                 state[slug] = {"product": prod["id"], "price": price["id"],
                                "link": link["url"], "cents": cents, "currency": cur}
                 print(f"✓ Stripe angelegt: {slug} ({cur.upper()}) → {link['url']}")
@@ -92,12 +101,18 @@ def main() -> int:
             print(f"::warning::Stripe {slug}: {e}")
             continue
         sym = SYM.get(cur, cur.upper() + " ")
-        products.append({"slug": slug, "title": title, "desc": kit.get("desc", ""),
-                         "price": f"{sym}{cents/100:.0f}", "buy": state[slug]["link"]})
+        entry = {"slug": slug, "title": title, "desc": kit.get("desc", ""),
+                 "price": f"{sym}{cents/100:.0f}", "buy": state[slug]["link"]}
+        if kit.get("bundle"):
+            entry["bundle"] = True
+        products.append(entry)
 
-    STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    OUT.write_text(json.dumps(products, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"✓ {len(products)} Produkt(e) → data/shop-products.json")
+    # Bundle-Angebote zuerst anzeigen (Spar-Angebot oben).
+    products.sort(key=lambda p: 0 if p.get("bundle") else 1)
+
+    state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    out_path.write_text(json.dumps(products, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"✓ {len(products)} Produkt(e) → {out_path}")
     return 0
 
 

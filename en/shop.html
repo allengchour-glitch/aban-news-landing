@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop — AI Starter Kits for professionals | aban news</title>
+  <meta name="description" content="Compact, honest AI starter kits per industry: cheat sheet, proven prompts, checklists. No hype, ready to use.">
+  <link rel="canonical" href="https://abannews.com/en/shop.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/shop.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/shop.html">
+  <meta property="og:title" content="aban news Shop — AI Starter Kits">
+  <meta property="og:description" content="Honest AI packs per industry: prompts, cheat sheets, checklists.">
+  <meta property="og:image" content="https://abannews.com/og-ki-tools.png">
+  <style>
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#1f2937;background:#fffbf5;line-height:1.6}
+    .wrap{max-width:880px;margin:0 auto;padding:1.25rem}
+    header{border-bottom:1px solid #ece3d4;background:#fff}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    a.brand{font-weight:900;text-decoration:none;color:#1f2937;font-size:1.15rem}
+    h1{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em;margin:1.6rem 0 .4rem}
+    .lead{color:#374151;max-width:60ch;margin:0 0 1.6rem}
+    .grid{display:grid;gap:1.1rem;grid-template-columns:1fr}
+    @media(min-width:680px){.grid{grid-template-columns:1fr 1fr}}
+    .card{background:#fff;border:1px solid #ece3d4;border-radius:16px;padding:1.3rem 1.4rem;display:flex;flex-direction:column}
+    .card h2{font-size:1.15rem;margin:0 0 .4rem}
+    .card p{color:#374151;font-size:.96rem;flex:1}
+    .price{font-weight:800;color:#1f2937;margin:.7rem 0}
+    .btn{display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:10px;text-align:center}
+    .btn.soon{background:#f3eee4;color:#9a7b4f;pointer-events:none}
+    .fine{color:#6b7280;font-size:.85rem;margin:1.4rem 0}
+    footer{border-top:1px solid #ece3d4;margin-top:2rem;color:#6b7280;font-size:.85rem}
+  </style>
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="/en/">☕ aban news</a><a class="btn" href="https://abannews.beehiiv.com/subscribe" style="padding:7px 14px">Newsletter</a></div></header>
+<main class="wrap">
+  <h1>AI Starter Kits — honest, per industry</h1>
+  <p class="lead">Compact packs for solo professionals and small teams: a cheat sheet, proven copy-paste prompts and a checklist — no hype, ready to use. One-time purchase, instant download.</p>
+
+  <div style="background:#fff;border:1px solid #ece3d4;border-radius:14px;padding:1rem 1.2rem;margin:0 0 1.6rem">
+    <strong style="display:block;margin-bottom:.4rem">What's in every kit:</strong>
+    <ul style="margin:0;padding-left:1.2rem;color:#374151;font-size:.95rem">
+      <li>Cheat sheet: the realistic AI use cases for your industry at a glance</li>
+      <li>Proven copy-paste prompts — tested, with clear limits</li>
+      <li>Data-protection / practice checklist to start safely</li>
+    </ul>
+  </div>
+
+  <div class="grid" id="shop"></div>
+
+  <p class="fine">Want to try first? Many industries have a <a href="/en/" style="color:#b45309">free cheat sheet</a> — and a weekday AI newsletter without hype: <a href="https://abannews.beehiiv.com/subscribe" style="color:#b45309">subscribe free</a>.</p>
+  <p class="fine">Secure payment by <strong>card</strong> (Stripe), shown in your local currency at checkout. Instant download. aban news is independent, ad-free and tracking-free. Questions? <a href="mailto:hallo@abannews.com" style="color:#b45309">hallo@abannews.com</a></p>
+</main>
+<footer><div class="wrap">© 2026 aban news · <a href="/en/" style="color:#6b7280">Home</a> · <a href="/shop.html" style="color:#6b7280">Deutsch</a></div></footer>
+<script>
+  (function(){
+    var el=document.getElementById('shop');
+    function render(items){
+      if(!items||!items.length){el.innerHTML='<p>Kits are in preparation. <a href="https://abannews.beehiiv.com/subscribe" style="color:#b45309">Subscribe</a> to hear first.</p>';return;}
+      el.innerHTML=items.map(function(p){
+        var btn=p.buy?('<a class="btn" href="'+p.buy+'" target="_blank" rel="noopener">Buy — '+p.price+'</a>')
+                     :('<span class="btn soon">Coming soon</span>');
+        var badge=p.bundle?'<span style="display:inline-block;background:#b45309;color:#fff;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:99px;margin-bottom:.5rem">BEST VALUE</span><br>':'';
+        var style='scroll-margin-top:1.5rem'+(p.bundle?';border-color:#b45309;box-shadow:0 0 0 2px rgba(180,83,9,.12)':'');
+        return '<div class="card" id="kit-'+p.slug+'" style="'+style+'">'+badge+'<h2>'+p.title+'</h2><p>'+p.desc+'</p><div class="price">'+p.price+'</div>'+btn+'</div>';
+      }).join('');
+      if(location.hash){
+        var t=document.getElementById(location.hash.slice(1));
+        if(t){t.style.borderColor='#b45309';t.style.boxShadow='0 0 0 2px rgba(180,83,9,.15)';t.scrollIntoView({block:'center'});}
+      }
+    }
+    fetch('/data/shop-products-en.json',{cache:'no-store'})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(d){ render(d||[]); })
+      .catch(function(){ render([]); });
+  })();
+</script>
+</body>
+</html>

@@ -43,6 +43,25 @@ Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe s
 (Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
 
 
+## 📌 Stand 2026-06-07 (Teil 13) — 4 Zusatz-Verbesserungen (schnellste zuerst) + International
+User: „alle vier, schnellste zuerst, am Schluss Memory speichern". Auf Branch `claude/go-live-bundle-leadmagnets`:
+- **(1) Go-Live-Selbsttest:** `tools/shop_selfcheck.py` prüft Konsistenz Katalog ↔ Live-Produkte ↔ ZIPs ↔
+  Gate-Hash (mit `DOWNLOAD_SALT` auch ZIP-Namen). Go-Live-Reihenfolge in `docs/STRIPE-SHOP.md` ergänzt.
+- **(2) Bundle „Alle Kits" (Default CHF 79, anpassbar):** Katalog-Eintrag `alle-kits` (bundle:true);
+  `build_product_pack.py` baut Bundle-ZIP aus allen Einzel-Packs; `stripe_sync.py` sortiert Bundle nach oben
+  + Flag; `shop.html` zeigt „SPAR-PAKET"-Badge + Hervorhebung.
+- **(3) Lead-Magnete:** bereits 261/262 Hubs mit Gratis-PDF (nur `bestatter` ohne Use-Cases) → nichts zu tun.
+- **(4) International/EN:** `generate_branchen_pdfs --lang en` (robuster Use-Case-Match „… use cases") → **257
+  englische Spickzettel** + EN-Lead-Magnet-Block in EN-Hubs; `data/kit-catalog-en.json` (EUR, `en-`-Slugs);
+  `build_product_pack --lang en` (englische Texte); `stripe_sync --catalog/--out/--state/--danke` = zweite
+  Produktwelt → `data/shop-products-en.json`; **`en/shop.html`** + **`en/danke-kit.html`**; `stripe-shop.yml`
+  baut/synct jetzt DE **und** EN; en/index + sitemap verlinkt. **Aktivierung wie DE: Stripe-Workflow starten.**
+- **Weitere Vorschläge (offen, gut):** Widerruf/AGB für digitale Produkte; FAQ+FAQPage-Schema & Product-JSON-LD
+  auf shop; Download-Härtung via R2+signierte URLs; Cloudflare-Web-Analytics (cookielos); Self-Monitoring
+  (shop_selfcheck+growth_audit) in den Autopilot.
+- **EN-Funnel für bezahlte Kits noch nicht in EN-Hubs** (add_branchen_funnel läuft nur auf DE-Root-Hubs) —
+  optionaler nächster Schritt: EN-Variante des Tools-CTA-Blocks für `en/`-Hubs.
+
 ## 📌 Stand 2026-06-07 (Teil 12) — Backlog fertig + Konversions-Politur
 Auf „weiter machen" autonom abgearbeitet, jeweils frischer Branch → Draft-PR → per
 `merge_pull_request`-Tool nach main gemerged (direkter main-Push bleibt classifier-blockiert):
