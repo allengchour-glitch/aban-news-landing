@@ -47,15 +47,18 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: node automation/gemini-site-critique.mjs
 
-      - name: Commit report (force-add, reports/ ist gitignored)
+      - name: Commit report (force-add + rebase-retry gegen parallele Pushes)
         run: |
           f="reports/site-critique-$(date -u +%F).md"
-          if [ -f "$f" ]; then
-            git config user.name "luxestyle-gemini-bot"
-            git config user.email "bot@users.noreply.github.com"
-            git add -f "$f"
-            git commit -m "chore(gemini): Site-Kritik-Report [skip ci]" || echo "nichts zu committen"
-            git push || echo "push skipped"
-          else
-            echo "Kein Report-File ($f) gefunden — übersprungen."
-          fi
+          if [ ! -f "$f" ]; then echo "Kein Report-File ($f) — übersprungen."; exit 0; fi
+          git config user.name "luxestyle-gemini-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -f "$f"
+          git commit -m "chore(gemini): Site-Kritik-Report [skip ci]" || { echo "nichts zu committen"; exit 0; }
+          for i in 1 2 3 4 5; do
+            if git push; then echo "gepusht."; exit 0; fi
+            echo "Push abgelehnt — rebase & retry ($i)…"
+            git pull --rebase origin main || true
+            sleep 3
+          done
+          echo "push nach 5 Versuchen übersprungen."
