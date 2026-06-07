@@ -39,16 +39,16 @@ def set_aspect(ratio: str) -> None:
 # Markenkonforme Stil-Varianten für Bild-Vielfalt (deterministisch pro Thema gewählt,
 # damit dieselbe Ausgabe stabil bleibt, die Posts aber abwechslungsreich aussehen).
 _STYLES = [
-    "editoriale, minimalistische Illustration im warmen Kaffee-/Amber-Stil (cremeweißer "
-    "Hintergrund, Amber/Orange-Akzent #d97706, viel Weißraum, flaches edles Vektor-Gefühl)",
-    "ruhige isometrische Illustration in warmen Amber-/Sand-Tönen auf cremeweißem Hintergrund, "
-    "klare Flächen, sanfte Schatten, edel und reduziert",
-    "abstrakt-geometrische Komposition aus weichen organischen Formen in Amber/Terrakotta auf "
-    "Creme, viel Weißraum, modern und ruhig",
-    "feine Linien-Illustration (line art) in Amber auf cremeweißem Hintergrund, minimalistisch, "
-    "viel Weißraum, elegant",
-    "sanfte Papier-/Verlaufstextur in warmen Bernstein-Tönen mit einem einzelnen symbolischen "
-    "Motiv, ruhig, hochwertig, reduziert",
+    "fotorealistische, warm beleuchtete Editorial-Szene mit weichem goldenem Licht, satten "
+    "Bernstein-/Karamell-Tönen und geringer Schärfentiefe, hochwertig und einladend",
+    "lebendige, farbenfrohe flache Illustration in warmer Amber-/Koralle-/Honig-Palette mit "
+    "frischen Akzenten, dynamische Komposition, klar und fröhlich",
+    "lebhafte isometrische 3D-Illustration in warmen, satten Tönen mit sanften Verläufen, "
+    "dezenter Tiefe und weichem Licht, modern und freundlich",
+    "cineastisches Stillleben passender Objekte in warmem Gegenlicht, satte Farben, weiche "
+    "Schatten, lebendige Stimmung, hochwertig",
+    "lebendige Papier-Collage im Cut-out-Stil in warmen, kräftigen Farben, taktil, verspielt "
+    "und klar komponiert",
 ]
 _GUARD = (
     "STRIKT: kein Text, keine Buchstaben, keine Logos, keine realen Gesichter/erkennbaren Personen, "
