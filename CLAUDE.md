@@ -37,6 +37,24 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-07 (VERIFIZIERT — geteilte Cross-Session-Lehre, ZUERST LESEN):**
+- **Meta-Autopost LIVE getestet** (`social-meta-autopost.yml` per `workflow_dispatch`, echte Posts): **Instagram ✅
+  + Threads ✅** funktionieren mit den aktuell gesetzten Secrets. **2 Meisterwerk-Bilder real gepostet** als
+  Beweis: «Brise» (IG `18371050558227777` / Threads `18083171150396642`) + «Strohtasche» (IG `17977255209042666`
+  / Threads `18145886521507109`).
+- **🔴 Facebook schlägt fehl** — beide Läufe `403 (#200) publish_actions … deprecated`. Ursache **verifiziert**:
+  es ist **kein echter Page-Token** gesetzt, der Code fällt auf `META_ACCESS_TOKEN` (User-Token) zurück, und
+  FB lehnt User-Token-Page-Posting mit dem abgeschafften Recht ab. **FIX (User):** `FB_PAGE_ACCESS_TOKEN` =
+  **Page-Token mit `pages_manage_posts`** für Seite `1049840534888592` als Secret setzen (Code `/{page}/photos`
+  ist korrekt — nur der Token-Typ fehlt). Deckt sich mit der früher verlorenen Working-Session (Scope
+  `pages_manage_posts`).
+- **TikTok (4. Account) NICHT über den Meta-Workflow möglich** — keine offizielle Bild-Post-API in diesem Setup.
+  Nur via Reel-Webhook/n8n (`PUBLISH_WEBHOOK_URL`, ungesetzt) oder manuell.
+- **On-demand posten geht** ohne Session-Tokens: `social-meta-autopost.yml` per `workflow_dispatch` triggern
+  (postet 1 Bild/Lauf, `MAX_PER_RUN`). Posten läuft IMMER über die GitHub-Action (Secrets dort), nie aus der Session-Env.
+- **Diese Lehre liegt auf Branch `claude/lade-projekt-luxestyle-fUo70` / PR #386** → Merge nach `main` teilt sie
+  mit allen Sessions (gemeinsame Memory).
+
 **📌 2026-06-06 (ÜBERGABE — ZUERST LESEN: Social-Maschine wird gebaut):**
 - **🎯 Grosser User-Auftrag:** vollautonome, **selbstlernende Content-Maschine** — 5 Bild-Posts + 1–2 Reels/Tag,
   gestaffelt, für **Instagram, Facebook, TikTok, Threads**; nur gut bewertete Produkte (≥4★); Reels „nicht
