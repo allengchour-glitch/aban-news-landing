@@ -1,0 +1,60 @@
+name: Gemini Site-Kritik
+
+# Lässt Gemini den Live-Shop (Desktop + Mobil) bewerten und erzeugt einen priorisierten Fix-Report
+# unter reports/site-critique-<datum>.md (+ Telegram-Kurzfassung). No-op ohne GEMINI_API_KEY.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # Montags 06:00 UTC (Wochen-Kritik)
+  workflow_dispatch:
+    inputs:
+      paths:
+        description: 'Pfade (Komma-Liste), z.B. /,/collections/damen-mode'
+        type: string
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gemini-site-critique
+  cancel-in-progress: false
+
+jobs:
+  critique:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright (Chromium)
+        run: |
+          npm init -y >/dev/null 2>&1 || true
+          npm i playwright@^1.48 >/dev/null 2>&1
+          npx playwright install --with-deps chromium
+
+      - name: Run Gemini critique
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+          CRITIQUE_PATHS: ${{ inputs.paths }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node automation/gemini-site-critique.mjs
+
+      - name: Commit report if changed
+        run: |
+          if ! git diff --quiet -- reports/ 2>/dev/null || [ -n "$(git status --porcelain reports/ 2>/dev/null)" ]; then
+            git config user.name "luxestyle-gemini-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add reports/
+            git commit -m "chore(gemini): Site-Kritik-Report [skip ci]" || echo "nichts zu committen"
+            git push || echo "push skipped"
+          else
+            echo "Kein neuer Report."
+          fi
