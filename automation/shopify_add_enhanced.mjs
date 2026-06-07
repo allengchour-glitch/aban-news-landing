@@ -2,23 +2,23 @@
 /* LuxeStyle — shopify_add_enhanced.mjs
  *
  * Hängt die KI-veredelten Bilder (social/enhanced/<name>.jpg, öffentlich via GitHub Pages) ZUSÄTZLICH
- * als Produktbild an das jeweilige Shopify-Produkt (productCreateMedia). So bekommt jedes veredelte
- * Produkt sein Editorial-Bild auch im Shop. Quelle: social/enhanced/_manifest.csv (name,handle,label,date).
+ * als Produktbild an das jeweilige Shopify-Produkt (productCreateMedia). Quelle: social/enhanced/_manifest.csv.
  * Ledger social/enhanced/_added.txt verhindert Doppel-Anhängen.
  *
  * Login wie automation/site-health.mjs: Client-Credentials-Grant ODER statischer Admin-Token.
- * No-op-safe: ohne Shopify-Creds (SHOPIFY_SHOP + CLIENT_ID/SECRET oder ADMIN_TOKEN) sauberer Leerlauf.
+ * No-op-safe: ohne Shopify-Creds sauberer Leerlauf.
  *
- * ENV: SHOPIFY_SHOP (z.B. au3j0y-hq.myshopify.com) · SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET
- *      (oder SHOPIFY_ADMIN_TOKEN) · OUT_BASE_URL (Default https://abannews.com) · DRY_RUN=1
+ * ENV: SHOPIFY_SHOP (z.B. au3j0y-hq.myshopify.com — Protokoll/Pfad werden automatisch entfernt) ·
+ *      SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET (oder SHOPIFY_ADMIN_TOKEN) · OUT_BASE_URL · DRY_RUN=1
  */
 import fs from 'node:fs';
 import path from 'node:path';
 
-const SHOP = process.env.SHOPIFY_SHOP || '';
-const TOK_STATIC = process.env.SHOPIFY_ADMIN_TOKEN || '';
-const CID = process.env.SHOPIFY_CLIENT_ID || '';
-const CSECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
+// SHOPIFY_SHOP robust säubern: https:// / http:// / Pfade / Leerzeichen entfernen → nur Hostname.
+const SHOP = (process.env.SHOPIFY_SHOP || '').trim().replace(/^https?:\/\//i, '').replace(/\/.*$/, '').replace(/\s+/g, '');
+const TOK_STATIC = (process.env.SHOPIFY_ADMIN_TOKEN || '').trim();
+const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
+const CSECRET = (process.env.SHOPIFY_CLIENT_SECRET || '').trim();
 const OUT_BASE = (process.env.OUT_BASE_URL || 'https://abannews.com').replace(/\/$/, '');
 const DRY = process.env.DRY_RUN === '1';
 
@@ -31,19 +31,32 @@ if(!SHOP || (!TOK_STATIC && !(CID && CSECRET))){
   console.log('Keine Shopify-Creds (SHOPIFY_SHOP + CLIENT_ID/SECRET oder ADMIN_TOKEN) → No-op. Bilder bleiben in social/enhanced + auf Social.');
   process.exit(0);
 }
+if(!/\.myshopify\.com$/i.test(SHOP)){
+  console.log(`⚠️  SHOPIFY_SHOP="${SHOP}" endet nicht auf .myshopify.com — das Admin-API braucht die *.myshopify.com-Domain (z.B. au3j0y-hq.myshopify.com), NICHT die Custom-Domain. Versuche es trotzdem…`);
+}
 if(!fs.existsSync(MANIFEST)){ console.log('Kein _manifest.csv → nichts hinzuzufügen.'); process.exit(0); }
 
+// fetch mit kleinem Retry gegen transiente DNS/Netz-Fehler (EAI_AGAIN).
+async function fetchRetry(url, opts, tries=3){
+  let lastErr;
+  for(let i=0;i<tries;i++){
+    try{ return await fetch(url, opts); }
+    catch(e){ lastErr=e; console.error(`   Netz-Fehler (${i+1}/${tries}): ${e.message} — retry…`); await new Promise(r=>setTimeout(r, 2000*(i+1))); }
+  }
+  throw lastErr;
+}
 async function getToken(){
   if(TOK_STATIC) return TOK_STATIC;
   try{
-    const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method:'POST', headers:{'Content-Type':'application/json'},
+    const r = await fetchRetry(`https://${SHOP}/admin/oauth/access_token`, { method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ client_id:CID, client_secret:CSECRET, grant_type:'client_credentials' }) });
     const j = await r.json().catch(()=>({}));
+    if(!r.ok) console.error('Token-Endpoint:', r.status, JSON.stringify(j).slice(0,200));
     return j.access_token || '';
   }catch(e){ console.error('Token-Fehler:', e.message); return ''; }
 }
 async function gql(token, query, variables){
-  const r = await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`, { method:'POST',
+  const r = await fetchRetry(`https://${SHOP}/admin/api/2025-01/graphql.json`, { method:'POST',
     headers:{'Content-Type':'application/json','X-Shopify-Access-Token':token}, body: JSON.stringify({ query, variables }) });
   return r.json().catch(()=>({}));
 }
@@ -60,7 +73,6 @@ function ledger(){ try{ return new Set(fs.readFileSync(LEDGER,'utf8').split('\n'
 
 const done = ledger();
 const items = readManifest().filter(m => !done.has(m.name));
-// Dedupe nach name (jüngster Manifest-Eintrag reicht)
 const uniq = [...new Map(items.map(m=>[m.name,m])).values()];
 if(uniq.length===0){ console.log('Alle veredelten Bilder bereits hinterlegt → nichts zu tun.'); process.exit(0); }
 
@@ -72,15 +84,17 @@ for(const m of uniq){
   const imgUrl = `${OUT_BASE}/social/enhanced/${m.name}.jpg`;
   console.log(`→ ${m.name} (${m.handle}) ← ${imgUrl}`);
   if(DRY){ console.log('   DRY_RUN: würde productCreateMedia ausführen.'); added++; continue; }
-  const pr = await gql(token, Q_PRODUCT, { q: `handle:${m.handle}` });
-  const pid = pr?.data?.products?.edges?.[0]?.node?.id;
-  if(!pid){ console.error('   ⚠️  Produkt nicht gefunden:', m.handle); continue; }
-  const res = await gql(token, M_ADD, { id: pid, media: [{ originalSource: imgUrl, mediaContentType: 'IMAGE', alt: `${m.label} – LuxeStyle` }] });
-  const errs = res?.data?.productCreateMedia?.mediaUserErrors || [];
-  if(errs.length){ console.error('   ⚠️  mediaUserErrors:', JSON.stringify(errs)); continue; }
-  fs.appendFileSync(LEDGER, m.name + '\n');
-  console.log('   ✅ als Produktbild hinzugefügt');
-  added++;
-  await new Promise(r=>setTimeout(r, 600)); // sanftes Rate-Limit
+  try{
+    const pr = await gql(token, Q_PRODUCT, { q: `handle:${m.handle}` });
+    const pid = pr?.data?.products?.edges?.[0]?.node?.id;
+    if(!pid){ console.error('   ⚠️  Produkt nicht gefunden / kein Zugriff:', m.handle, JSON.stringify(pr?.errors||pr).slice(0,200)); continue; }
+    const res = await gql(token, M_ADD, { id: pid, media: [{ originalSource: imgUrl, mediaContentType: 'IMAGE', alt: `${m.label} – LuxeStyle` }] });
+    const errs = res?.data?.productCreateMedia?.mediaUserErrors || [];
+    if(errs.length){ console.error('   ⚠️  mediaUserErrors:', JSON.stringify(errs)); continue; }
+    fs.appendFileSync(LEDGER, m.name + '\n');
+    console.log('   ✅ als Produktbild hinzugefügt');
+    added++;
+    await new Promise(r=>setTimeout(r, 600));
+  }catch(e){ console.error('   Fehler:', e.message); }
 }
 console.log(`Fertig: ${added} veredelte Bilder an Shopify-Produkte gehängt${DRY?' (DRY)':''}.`);
