@@ -127,10 +127,11 @@ footer a{color:var(--muted)}
   <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
 </div></footer>
 
+<script src="/js/checkout-config.js"></script>
 <script>
-// Geld-Schalter: Stripe-Abo-Payment-Link hier eintragen (Subscription).
+// Checkout-Link zentral in js/checkout-config.js eintragen → Button live.
 // Leer => Mail-Fallback, kein toter Button.
-var MONITOR_ABO_URL = "";
+var MONITOR_ABO_URL = (window.ABAN_CHECKOUT && window.ABAN_CHECKOUT.MONITOR_ABO_URL) || "";
 (function(){
   var b=document.getElementById("buybtn");
   if(MONITOR_ABO_URL){ b.href=MONITOR_ABO_URL; b.target="_blank"; b.rel="noopener"; }

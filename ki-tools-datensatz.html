@@ -176,12 +176,13 @@ footer a{color:var(--muted)}
   <a href="/tools.html">Tool-Datenbank (online)</a> · <a href="/">Startseite</a>
 </div></footer>
 
+<script src="/js/checkout-config.js"></script>
 <script>
 // Geld-Schalter: echten Gumroad-Produktlink hier eintragen (z. B. https://…gumroad.com/l/ki-tools-dach).
 // Leer => Mail-Fallback (kein toter Button), genau wie bei Founding/Buch.
 var DATENSATZ_BUY_URL = "https://chourallen.gumroad.com/l/ki-tools-dach";
-// Abo-Schalter: Lemon-Squeezy-/Gumroad-Abo-Link eintragen. Leer => Mail-Fallback.
-var DATENSATZ_ABO_URL = "";
+// Abo-Link zentral in js/checkout-config.js. Leer => Mail-Fallback.
+var DATENSATZ_ABO_URL = (window.ABAN_CHECKOUT && window.ABAN_CHECKOUT.DATENSATZ_ABO_URL) || "";
 (function(){
   var b=document.getElementById("buybtn");
   if(DATENSATZ_BUY_URL){
