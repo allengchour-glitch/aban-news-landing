@@ -116,6 +116,30 @@ SCENES = {
     "ep28": ["giant ocean wave", "flood water in city", "stormy dark sea", "heavy rain storm night",
              "ancient wooden ark boat", "tsunami aerial view", "rising flood water", "dark storm clouds lightning",
              "ancient flooded ruins", "ocean horizon storm", "submerged street water", "lightning over ocean"],
+    "ep29": ["puma punku ruins", "tiwanaku bolivia stone", "precision cut megalith", "ancient stone blocks",
+             "andes mountains ancient", "megalithic ruins drone", "carved stone macro", "ancient temple ruins andes",
+             "mysterious stone carving", "archaeological site stone", "granite block precise", "ancient ruins sunset"],
+    "ep30": ["ancient clay pot artifact", "museum vault dark", "copper artifact old", "ancient pottery jar",
+             "electric spark dark", "mesopotamia ruins", "museum display case glass", "archaeology artifact macro",
+             "glowing electric arc", "ancient workshop dark", "old ruins desert", "artifact close up"],
+    "ep31": ["gobekli tepe ruins", "ancient carved pillar", "neolithic temple stone", "turkey archaeology site",
+             "stone relief carving animal", "excavation ancient temple", "megalithic standing stones", "ancient temple aerial drone",
+             "carved stone macro", "desert hills ruins", "archaeology dig site", "mysterious ancient stone"],
+    "ep32": ["sirius bright star night", "starry sky over africa", "african tribal mask", "ancient african art",
+             "night sky stars desert", "observatory telescope night", "african village dusk", "binary star space",
+             "ancient cave painting", "deep space star glow", "desert night sky", "milky way over savanna"],
+    "ep33": ["ancient indian temple", "old sanskrit manuscript", "ufo glowing in sky", "fire falling from sky",
+             "ancient ruins india", "glowing craft night sky", "old palm leaf manuscript", "explosion of light sky",
+             "ancient stone sculpture", "temple carving relief", "fireball in night sky", "mysterious craft silhouette"],
+    "ep34": ["old antique world map", "ancient nautical chart", "antarctica coastline ice", "old parchment map",
+             "vintage sailing ship", "antique globe", "antarctica aerial ice", "old brass compass map",
+             "old archive documents", "vintage world map", "frozen continent aerial", "old explorer map table"],
+    "ep35": ["ancient scroll text", "dark stone angel statue", "old religious manuscript", "dramatic stormy sky",
+             "ancient stone tablet carving", "candlelit old book", "fallen angel sculpture", "dark gothic cathedral",
+             "glowing figure in sky", "old church interior dim", "ancient ruins at night", "ominous dark clouds"],
+    "ep36": ["elongated skull artifact", "museum skull display dark", "paracas peru desert", "ancient human skull macro",
+             "archaeology bones excavation", "peru desert ruins", "museum vault dark", "ancient burial site",
+             "skull close up shadow", "desert excavation dig", "mysterious ancient artifact", "ancient gold burial mask"],
 }
 
 # Stichwort -> passender Stock-Suchbegriff: das Bild matcht den gesprochenen Satz.
@@ -266,7 +290,8 @@ def pixabay_links(query, cache):
 NASA_KW = re.compile(r"moon|mars|earth|space|rocket|satellite|\bsun\b|galaxy|planet|nebula|"
                      r"eclipse|astronaut|lunar|orbit|cosmos|\bstars?\b|comet|aurora|spacecraft", re.I)
 # Begriffe, fuer die ein echtes Wikimedia-Foto besser ist als generisches Stock-Video:
-IMG_PREFER = re.compile(r"bundeshaus|nazca|geoglyph|cuneiform|sumerian|stonehenge", re.I)
+IMG_PREFER = re.compile(r"bundeshaus|nazca|geoglyph|cuneiform|sumerian|stonehenge|puma punku|tiwanaku|"
+                        r"gobekli|baghdad|piri reis|paracas|elongated skull|vimana|dogon", re.I)
 
 
 def nasa_links(query, cache):
@@ -386,12 +411,13 @@ PlayResY: {H}
 WrapStyle: 0
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: K,DejaVu Sans,64,&H004FCFFF,&H00F2F2F2,&H00101010,&H64000000,1,0,0,0,100,100,0,0,1,4,3,2,80,80,470,1
+Style: K,DejaVu Sans,64,&H004FCFFF,&H00F2F2F2,&H00000000,&H96000000,1,0,0,0,100,100,0,0,1,5,4,2,80,80,470,1
 Style: TAG,DejaVu Sans,40,&H0050C8FF,&H0050C8FF,&H00101010,&H00000000,1,0,0,0,100,100,6,0,1,2,2,8,0,0,70,1
 Style: HOOK,DejaVu Sans,82,&H0050C8FF,&H0050C8FF,&H00101010,&H64000000,1,0,0,0,100,100,0,0,1,5,4,5,120,120,0,1
+Style: SUB,DejaVu Sans,96,&H0050C8FF,&H0050C8FF,&H00101010,&H64000000,1,0,0,0,100,100,0,0,1,6,4,5,80,80,0,1
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,A B A N   F I L E S
+Dialogue: 0,{fmt_ts(0)},{fmt_ts(max(0.0, total - 3.6))},TAG,,0,0,0,,A B A N   F I L E S
 """
     lines = []
     if hook:
@@ -408,6 +434,13 @@ Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,A B A N   F I L E S
             kcs = max(1, int((nxt - ws) * 100))
             parts.append(f"{{\\k{kcs}}}{w.replace('Ahbahn', 'ABAN')} ")
         lines.append(f"Dialogue: 0,{fmt_ts(gs)},{fmt_ts(ge)},K,,0,0,0,,{''.join(parts).strip()}")
+    # SUBSCRIBE-Endcard: grosse zentrierte Karte in den letzten ~3.6s mit Fade + Scale-Puls
+    sub_start = max(0.0, total - 3.6)
+    lines.append(
+        f"Dialogue: 2,{fmt_ts(sub_start)},{fmt_ts(total)},SUB,,0,0,0,,"
+        f"{{\\fad(300,150)\\t(0,1600,\\fscx115\\fscy115)\\t(1600,3300,\\fscx100\\fscy100)}}"
+        f"▶ SUBSCRIBE\\N{{\\fs54}}before they erase this"
+    )
     open(path, "w").write(head + "\n".join(lines) + "\n")
 
 
@@ -457,24 +490,57 @@ def render(ep):
                             "-an", "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", out],
                            check=True, capture_output=True)
             norm.append(out)
+        else:
+            # Alles fehlgeschlagen -> dunkler Fueller (Segment NIE ueberspringen, sonst Video < Audio)
+            subprocess.run([FF, "-y", "-f", "lavfi", "-i",
+                            f"color=c=0x0A0A12:s={W}x{H}:d={seg_dur:.2f}:r={FPS}",
+                            "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", out],
+                           check=True, capture_output=True)
+            norm.append(out)
+        # Decode-Validierung: korruptes Segment (abgebrochener Download) -> durch Fueller ersetzen,
+        # sonst dekodiert die Concat-Basis nur bis zum Defekt und -t/-shortest schneidet die Folge ab.
+        chk = subprocess.run([FF, "-v", "error", "-i", out, "-f", "null", "-"], capture_output=True)
+        if chk.returncode != 0 or media_dur(out) < min(0.5, seg_dur * 0.5):
+            subprocess.run([FF, "-y", "-f", "lavfi", "-i",
+                            f"color=c=0x0A0A12:s={W}x{H}:d={seg_dur:.2f}:r={FPS}",
+                            "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", out],
+                           check=True, capture_output=True)
     concat = "/tmp/_concat.txt"
     open(concat, "w").write("\n".join(f"file '{p}'" for p in norm))
-    subprocess.run([FF, "-y", "-f", "concat", "-safe", "0", "-i", concat, "-c", "copy", "/tmp/_base.mp4"],
+    # Re-encode (statt -c copy): vertraegt gemischte Segment-Parameter (Video + Ken-Burns-Bild)
+    # -> kein Concat-Bruch mehr; einheitlich yuv420p/CFR.
+    subprocess.run([FF, "-y", "-f", "concat", "-safe", "0", "-i", concat,
+                    "-c:v", "libx264", "-crf", "18", "-preset", "veryfast",
+                    "-pix_fmt", "yuv420p", "-r", str(FPS), "/tmp/_base.mp4"],
                    check=True, capture_output=True)
-    # Audio: Stimme + Drone
+    # Audio: Stimme broadcast-veredelt (EQ Waerme 220Hz + Klarheit 3kHz, Kompressor, Platten-Hall)
+    vo_chain = ("highpass=f=85,equalizer=f=220:width_type=q:w=1:g=2.5,"
+                "equalizer=f=3000:width_type=q:w=2:g=2,"
+                "acompressor=threshold=-18dB:ratio=3:attack=8:release=180,"
+                "dynaudnorm=f=200,aecho=0.8:0.8:33|52:0.2|0.13")
     subprocess.run([FF, "-y", "-i", "/tmp/_a.mp3", "-ar", "44100",
-                    "-af", "highpass=f=60,dynaudnorm=f=200", "/tmp/_vo.wav"], check=True, capture_output=True)
+                    "-af", vo_chain, "/tmp/_vo.wav"], check=True, capture_output=True)
     build_ass(words, total, "/tmp/_subs.ass", sc.get("hook", ""))
-    # dunkler Ambient-Score (a-moll-Pad) statt nur Drone -> fuellt stille Stellen
+    # dunkler Ambient-Score (a-moll-Pad); fade-in ueber 2.6s = stiller Start (Pattern-Interrupt)
     music = ("sine=f=110,volume=0.5[m1];sine=f=164.81,volume=0.4[m2];sine=f=220,volume=0.3[m3];"
              "sine=f=329.63,volume=0.12[m4];[m1][m2][m3][m4]amix=inputs=4:normalize=0,"
-             "tremolo=f=0.12:d=0.45,lowpass=f=1500,aecho=0.8:0.7:450|800:0.4|0.25,volume=0.2[d]")
-    vf = (f"eq=brightness=-0.12:saturation=0.92:contrast=1.05,vignette=PI/4.5,"
+             "tremolo=f=0.12:d=0.45,lowpass=f=1500,aecho=0.8:0.7:450|800:0.4|0.25,"
+             "volume=0.24,afade=t=in:st=0:d=2.6[d]")
+    # Cinematic Grade: dunkel + leicht entsaettigt + kalter Teal-Shadow-Tint + Vignette + Grain
+    # tpad haelt das letzte Bild, falls Footage kuerzer als Audio -> Stimme wird NIE abgeschnitten (-shortest trimmt dann auf Audio)
+    vf = (f"tpad=stop_mode=clone:stop_duration=20,"
+          f"eq=brightness=-0.12:saturation=0.9:contrast=1.06,"
+          f"colorbalance=rs=-0.04:gs=-0.01:bs=0.08:bm=0.03,vignette=PI/4.5,"
           f"noise=alls=7:allf=t,subtitles=/tmp/_subs.ass")
+    # Musik duckt automatisch unter die Stimme (Sidechain), Stimme bleibt klar vorne
     subprocess.run([FF, "-y", "-i", "/tmp/_base.mp4", "-i", "/tmp/_vo.wav",
-                    "-filter_complex", f"[0:v]{vf}[v];{music};[1:a]volume=1.0[vo];[vo][d]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[ao]",
+                    "-filter_complex",
+                    f"[0:v]{vf}[v];{music};[1:a]asplit=2[vo][vsc];"
+                    f"[d][vsc]sidechaincompress=threshold=0.05:ratio=6:attack=20:release=300[dk];"
+                    f"[vo][dk]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[ao]",
                     "-map", "[v]", "-map", "[ao]", "-c:v", "libx264", "-crf", "22", "-preset", "veryfast",
-                    "-c:a", "aac", "-b:a", "160k", "-shortest", f"/tmp/aban_stock_{ep}.mp4"],
+                    "-pix_fmt", "yuv420p", "-r", str(FPS), "-fps_mode", "cfr",
+                    "-c:a", "aac", "-b:a", "160k", "-t", f"{total:.2f}", f"/tmp/aban_stock_{ep}.mp4"],
                    check=True, capture_output=True)
     print(f"[{ep}] done {dur:.1f}s {len(norm)} scenes -> /tmp/aban_stock_{ep}.mp4", flush=True)
 
