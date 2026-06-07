@@ -47,6 +47,12 @@ Verifiziert im Workflow-Log (`telegram-autopost.yml`, Run 27079834486):
   Damit funktionieren jetzt **alle Text-Generatoren** (Ausgaben-Entwurf, Content-Engine/Posts, Autopilot-Top-up).
   draft_with_gemini + gemini_generate_posts nutzen gemini_text. Workflows haben GCP-Text-Env + google-auth.
 - 🔑 **Webseiten-Bilder-Fortschritt:** ~150/262 Hub-Header-Bilder erzeugt (CI-Batches); Autopilot füllt täglich 25 nach.
+- ✅ **Content-Engine läuft (verifiziert):** erzeugt echte Gemini-Posts (Queue ready 6). **LEHRE gemini-2.5-flash:**
+  das Modell verbraucht Output-Budget fürs interne „Thinking" → kurze maxOutputTokens schneiden Antworten ab.
+  Fix: `gemini_text.generate(..., thinking_budget=0)` schaltet Thinking ab (Content-Engine nutzt das); für den
+  langen Newsletter-Entwurf bleibt Thinking an (maxTokens 4000). Damit füllt der Autopilot die Post-Queues autonom.
+- 🟢 **Gesamtstatus Bild/Text-Pipeline:** Telegram-Posts mit Bild ✅, Content-Nachschub ✅, bild-reiche Ausgabe ✅,
+  OG-Bilder mit Imagen-Hintergrund ✅ (3/4; chatgpt-OG Fallback flach), Hub-Bilder laufen nach, €9/€89-Checkout live.
 
 ## 📌 Stand 2026-06-07 (Teil 7) — Webseiten-Bilder + Effizienz-Tools
 - **Webseiten-Bilder (`automation/gen_site_images.py` + `.github/workflows/site-images.yml`):** Header-Bilder pro Seite, selbst gehostet in `img/site/`, idempotent nach erstem `</h1>` eingefügt (Marker `data-aban-hero`, lazy, object-fit). Quelle gemischt/budgetbewusst: **Hubs=Pexels (gratis), themen/index/founding=KI/Imagen (~$1)**. Workflow manuell + batch-fähig (Pexels-Limit ~200/h). Test (3 Hubs) ✅ echte Fotos. Volle Läufe gestartet (hub batch 150 + themen).
