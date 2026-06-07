@@ -24,6 +24,9 @@
 - [ ] `THREADS_ACCESS_TOKEN` + `THREADS_USER_ID`  → Threads
 - [ ] `IG_USER_ID` + `IG_ACCESS_TOKEN` (oder gemeinsamer `META_ACCESS_TOKEN`)  → Instagram Business
 - [ ] `FB_PAGE_ID` (= `1049840534888592`) + `FB_PAGE_ACCESS_TOKEN` (oder `META_ACCESS_TOKEN`)  → Facebook-Seite
+- ⚠️ **VERIFIZIERT 2026-06-07:** IG + Threads posten live OK; **FB schlägt mit nur `META_ACCESS_TOKEN` fehl**
+      (`403 (#200) publish_actions deprecated`). FB braucht zwingend einen **Page-Token mit `pages_manage_posts`**
+      als `FB_PAGE_ACCESS_TOKEN` (User-Token reicht NICHT). TikTok-Bildposts gehen NICHT über diesen Workflow.
 - ℹ️ Token-Scopes: `instagram_basic, instagram_content_publish, pages_show_list, pages_manage_posts`.
       IG muss **Business/Creator** + mit der FB-Seite verbunden sein. Entwicklungsmodus reicht fürs eigene Konto.
 
