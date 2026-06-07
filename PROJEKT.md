@@ -12,6 +12,22 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 📌 Stand 2026-06-07 (Teil 9) — 4 Automation-Geld-Grundgerüste (neu, no-op-sicher)
+Neue Projekt-Gerüste zum Geldverdienen mit Automation (alle nutzen vorhandenen Stack, ehrlich):
+- **#1 GEO-Report-Abo (B2B, wiederkehrend):** `automation/geo_report.py` → `reports/geo/<marke>-<monat>.md`
+  (KI-Sichtbarkeits-Einschätzung je Kunde via gemini_text, ehrlich als Momentaufnahme gekennzeichnet).
+  Config `data/geo-clients.json` (Vorlage `.example.json`). Doku `docs/GEO-REPORT.md`. Größtes MRR-Potenzial,
+  braucht Akquise. No-op ohne Key/Kundenliste.
+- **#3 Digital-PDF-Shop (passiv):** `automation/build_product_pack.py` → `downloads/packs/<slug>/`
+  (Branchen-PDF + prompts.md + checkliste + LIESMICH; Gemini oder ehrlicher Fallback). Storefront `shop.html`
+  liest `js/shop-config.js` (Lemon-Squeezy-Links, leer = „bald"). Doku `docs/PDF-SHOP.md`. MoR regelt MwSt.
+- **#2 Nischen-Newsletter:** Pipeline klonen je DACH-Nische. `data/niches.example.json` + `docs/NISCHEN-NEWSLETTER.md`
+  (Ausbau: `--niche`-Flag in news_aggregator/draft). Skaliert fast gratis.
+- **#4 Autopilot-Bausatz:** `tools/export_template.py` → `dist-template/` (generische Bausteine ohne Secrets/Inhalte
+  + README + leere Queues) zum Verkauf als Boilerplate. Doku `docs/AUTOPILOT-BAUSATZ.md`.
+- **Build-Artefakte gitignored:** `dist-template/`, `downloads/packs/`. **Alle 4 sind Grundgerüste** — Inhalte/
+  Akquise/Verkaufslinks = Mensch. Ehrliche Grenze überall notiert (Automation macht Arbeit, nicht Nachfrage).
+
 ## 📌 Stand 2026-06-07 — Echte KI-Bilder (Google Imagen via Vertex AI) LIVE ✅
 **Ergebnis:** Telegram-Autopost erzeugt jetzt zu jedem Post ein **echtes Imagen-Bild** statt der Marken-Karte.
 Verifiziert im Workflow-Log (`telegram-autopost.yml`, Run 27079834486):
