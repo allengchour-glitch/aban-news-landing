@@ -46,8 +46,13 @@
 - [ ] Optional PAT **`REPO_ADMIN_PAT`** (`secrets: write`) → Workflow persistiert rotierte Tokens selbst.
 - ℹ️ Postet **Reels** aus `reels_seed.csv` (Video, FILE_UPLOAD → **keine Domain-Verifizierung nötig**). Für öffentliche Posts zusätzlich **App-Audit**.
 
-**Shopify (Kennzahlen im Digest + Rating-Lister) — Client-Credentials der Custom-App:**
-- [ ] `SHOPIFY_SHOP` = `au3j0y-hq.myshopify.com` · `SHOPIFY_CLIENT_ID` · `SHOPIFY_CLIENT_SECRET`
+**Shopify (Kennzahlen im Digest + Rating-Lister + Medien-an-Produkte) — Client-Credentials der Custom-App:**
+- ⚠️ **VERIFIZIERT 2026-06-07 (reel-analytics-Log):** nur `SHOPIFY_SHOP` ist gesetzt — **`SHOPIFY_CLIENT_ID` +
+  `SHOPIFY_CLIENT_SECRET` FEHLEN** (Report: „Shop-Zahlen übersprungen, kein gültiger Token"). Frühere Sessions
+  nutzten die `mcp__…`-Shopify-Tools (session-intern), nie als Repo-Secret. → Shop-Tools + `add_media_to_products.mjs`
+  laufen erst, wenn diese 2 gesetzt sind.
+- [ ] `SHOPIFY_SHOP` = `au3j0y-hq.myshopify.com` ✅ · **`SHOPIFY_CLIENT_ID`** ❌ · **`SHOPIFY_CLIENT_SECRET`** ❌
+      (Shopify-Admin → Apps entwickeln → Custom-App → API-Zugangsdaten; Scopes inkl. `write_products`/`write_publications`).
 
 **Veo / Vertex AI (KI-Hook-Reels, `veo-render.yml`) — nur manuell, kostenpflichtig:**
 - [ ] **Secret `GCP_SA_KEY`** = Service-Account-JSON (oder base64), Rolle „Vertex AI User". GCP-Projekt mit **Vertex AI API**
