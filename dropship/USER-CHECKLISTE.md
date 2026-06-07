@@ -33,10 +33,17 @@
 **Telegram (Tages-Digest 1×/Tag) — für `reel-analytics.yml`:**
 - [ ] `TELEGRAM_BOT_TOKEN` (🔒 **bitte rotieren**, der alte wurde im Chat geteilt) + `TELEGRAM_CHAT_ID`
 
-**TikTok + Reels (Video) — für `reel-autopost.yml` (n8n-Fanout):**
-- [ ] `PUBLISH_WEBHOOK_URL` = n8n-Webhook → TikTok + IG. ⚠️ **VERIFIZIERT 2026-06-07: leer → TikTok bekommt NICHTS**,
-      Reel-Autopost ist aktuell kompletter No-op (Telegram-Channel ebenfalls tot → Token rotieren). TikTok kann **nur
-      Video** (kein Bild-Post); n8n braucht eine TikTok-Content-Posting-API-App (`video.publish`, App-Review).
+**TikTok Foto-Direktpost — für `tiktok-autopost.yml` (offizielle Content Posting API):**
+- [ ] **TikTok-for-Developers-App** anlegen (developers.tiktok.com) → Produkt **„Content Posting API"** + **Login Kit**
+      hinzufügen, Scope **`video.publish`** beantragen.
+- [ ] **Domain verifizieren:** im App unter „URL properties" das Prefix **`https://abannews.com/`** verifizieren
+      (Pflicht für `PULL_FROM_URL` — sonst lehnt TikTok die Bild-URLs ab).
+- [ ] **App-Audit** einreichen → ohne Audit sind Posts nur **privat (SELF_ONLY)** sichtbar; für öffentlich nötig.
+- [ ] User-Access-Token (OAuth, Scope `video.publish`) als Secret **`TIKTOK_ACCESS_TOKEN`** setzen (läuft ab →
+      ggf. Refresh-Token-Flow). Optional Variable `TIKTOK_PRIVACY` (Default `PUBLIC_TO_EVERYONE`).
+- ℹ️ Queue = `social/posts_tiktok.csv` (5 Meisterwerke schon ready). Ohne Token = sauberer No-Op.
+- ℹ️ Video/Reels nach TikTok optional zusätzlich über `PUBLISH_WEBHOOK_URL`→n8n (`reel-autopost.yml`); Reel-Autopost
+      ist aktuell No-op (Telegram-Token tot → rotieren).
 
 **Shopify (Kennzahlen im Digest + Rating-Lister) — Client-Credentials der Custom-App:**
 - [ ] `SHOPIFY_SHOP` = `au3j0y-hq.myshopify.com` · `SHOPIFY_CLIENT_ID` · `SHOPIFY_CLIENT_SECRET`
