@@ -71,18 +71,6 @@ def latest_roh() -> Path | None:
     return Path(files[-1]) if files else None
 
 
-def call_gemini(api_key: str, prompt: str) -> str:
-    url = (f"https://generativelanguage.googleapis.com/v1beta/models/"
-           f"{MODEL}:generateContent?key={api_key}")
-    body = {"contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {"temperature": 0.4, "maxOutputTokens": 4000}}
-    req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
-                                 headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        data = json.loads(r.read().decode("utf-8"))
-    return data["candidates"][0]["content"]["parts"][0]["text"]
-
-
 def main() -> int:
     roh = latest_roh()
     if not roh:
@@ -91,18 +79,14 @@ def main() -> int:
     material = roh.read_text(encoding="utf-8")[:12000]
     print(f"Rohmaterial: {roh.name} ({len(material)} Zeichen)")
 
-    api_key = os.environ.get("GEMINI_API_KEY", "").strip()
-    if not api_key:
-        print("GEMINI_API_KEY nicht gesetzt → no-op (Exit 0). Key gehört in GitHub-Secrets.")
+    if not (os.environ.get("GCP_SA_KEY") or os.environ.get("GEMINI_API_KEY")):
+        print("Weder GCP_SA_KEY noch GEMINI_API_KEY gesetzt → no-op (Exit 0).")
         return 0
 
-    try:
-        draft = call_gemini(api_key, PROMPT_HEADER + material)
-    except urllib.error.HTTPError as e:
-        print(f"::warning::Gemini HTTP {e.code}: {e.read().decode('utf-8','ignore')[:300]}")
-        return 0
-    except Exception as e:  # noqa: BLE001
-        print(f"::warning::Gemini-Aufruf fehlgeschlagen: {e}")
+    from gemini_text import generate  # Vertex → Developer-API → None
+    draft = generate(PROMPT_HEADER + material, max_tokens=4000, temperature=0.4)
+    if not draft:
+        print("::warning::Kein Text erzeugt (Vertex + Developer-API fehlgeschlagen) → kein Entwurf.")
         return 0
 
     today = dt.date.today().isoformat()

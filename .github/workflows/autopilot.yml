@@ -32,13 +32,17 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_LOCATION: ${{ vars.GCP_LOCATION }}
+          VERTEX_TEXT_MODEL: ${{ vars.VERTEX_TEXT_MODEL }}
           ABAN_QUEUE_MIN: ${{ vars.ABAN_QUEUE_MIN }}
           ABAN_GEN_N: ${{ vars.ABAN_GEN_N }}
           ABAN_IMG_BATCH: ${{ vars.ABAN_IMG_BATCH }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           LEMONSQUEEZY_API_KEY: ${{ secrets.LEMONSQUEEZY_API_KEY }}
         run: |
-          pip install --quiet pillow requests || true
+          pip install --quiet pillow requests google-auth || true
           python3 automation/autopilot.py
 
       - name: Änderungen sichern (falls vorhanden)

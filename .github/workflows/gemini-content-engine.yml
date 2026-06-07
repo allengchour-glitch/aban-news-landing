@@ -30,7 +30,13 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
-        run: python3 automation/gemini_generate_posts.py --n "${{ github.event.inputs.n || '3' }}"
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_LOCATION: ${{ vars.GCP_LOCATION }}
+          VERTEX_TEXT_MODEL: ${{ vars.VERTEX_TEXT_MODEL }}
+        run: |
+          pip install --quiet google-auth requests || true
+          python3 automation/gemini_generate_posts.py --n "${{ github.event.inputs.n || '3' }}"
 
       - name: Queues committen
         run: |

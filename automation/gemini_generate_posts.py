@@ -100,18 +100,14 @@ def main() -> int:
     ap.add_argument("--n", type=int, default=3)
     args = ap.parse_args()
 
-    api_key = os.environ.get("GEMINI_API_KEY", "").strip()
-    if not api_key:
-        print("GEMINI_API_KEY nicht gesetzt → no-op (Exit 0).")
+    if not (os.environ.get("GCP_SA_KEY") or os.environ.get("GEMINI_API_KEY")):
+        print("Weder GCP_SA_KEY noch GEMINI_API_KEY gesetzt → no-op (Exit 0).")
         return 0
 
-    try:
-        raw = gemini(api_key, PROMPT.format(n=args.n))
-    except urllib.error.HTTPError as e:
-        print(f"::warning::Gemini HTTP {e.code}: {e.read().decode('utf-8','ignore')[:300]}")
-        return 0
-    except Exception as e:  # noqa: BLE001
-        print(f"::warning::Gemini-Aufruf fehlgeschlagen: {e}")
+    from gemini_text import generate  # Vertex → Developer-API → None
+    raw = generate(PROMPT.format(n=args.n), max_tokens=2000, temperature=0.7)
+    if not raw:
+        print("::warning::Kein Text erzeugt (Vertex + Developer-API fehlgeschlagen).")
         return 0
 
     # Robust gegen Schreibweisen wie "--- POST ---", "----POST----" usw.
