@@ -39,6 +39,13 @@ Verifiziert im Workflow-Log (`telegram-autopost.yml`, Run 27079834486):
 - **Lemon-Squeezy Live-Zahlen:** `automation/ls_stats.py` → `data/ls-stats.json` (echte aktive Abos aus
   LS-API, MRR-Schätzung aus Listenpreisen), läuft im **Autopilot** (Secret `LEMONSQUEEZY_API_KEY` aktiv),
   erscheint im **`tools/status.py`**-Dashboard. No-op ohne Key. 🔴 Falls LS-API-Key je im Chat war → rotieren.
+- ✅ **VERIFIZIERT (CI):** `data/issue-2026-06-07-draft.html` gebaut — **~1010 Wörter, 5 Updates, 6 Bilder
+  gemischt** (Imagen-Cover + Pexels-Fotos + Imagen-Illustrationen). KI-PNGs werden zu schlanken JPGs optimiert.
+- 🔴 **WICHTIGE LEHRE (Text-Modell):** `gemini-2.0-flash` ist **abgeschaltet** (Vertex „no access" + Dev-API
+  „no longer available"). Fix: `automation/gemini_text.py` probiert **mehrere aktuelle Modelle** der Reihe nach
+  (gemini-2.5-flash → gemini-flash-latest → 2.0-flash-001 → 1.5-flash), je Modell **Vertex → Developer-API**.
+  Damit funktionieren jetzt **alle Text-Generatoren** (Ausgaben-Entwurf, Content-Engine/Posts, Autopilot-Top-up).
+  draft_with_gemini + gemini_generate_posts nutzen gemini_text. Workflows haben GCP-Text-Env + google-auth.
 - 🔑 **Webseiten-Bilder-Fortschritt:** ~150/262 Hub-Header-Bilder erzeugt (CI-Batches); Autopilot füllt täglich 25 nach.
 
 ## 📌 Stand 2026-06-07 (Teil 7) — Webseiten-Bilder + Effizienz-Tools
