@@ -37,6 +37,13 @@ jobs:
           python3 automation/generate_branchen_pdfs.py --slugs "${{ github.event.inputs.slugs || 'aerzte,handwerker,steuerberater' }}" || true
           python3 automation/build_product_pack.py --slugs "${{ github.event.inputs.slugs || 'aerzte,handwerker,steuerberater' }}"
 
+      - name: Master-Bundle (alle Kits in EINER Datei) bauen
+        run: |
+          cd downloads/packs
+          rm -f aban-ki-kits-bundle.zip
+          zip -j aban-ki-kits-bundle.zip *.zip || true
+          ls -la *.zip
+
       - name: ZIPs als Download bereitstellen
         uses: actions/upload-artifact@v4
         with:
