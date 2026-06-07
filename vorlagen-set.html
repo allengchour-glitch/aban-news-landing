@@ -124,8 +124,9 @@ footer a{color:var(--muted)}
   <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
 </div></footer>
 
+<script src="/js/checkout-config.js"></script>
 <script>
-var VORLAGEN_BUY_URL = "";
+var VORLAGEN_BUY_URL = (window.ABAN_CHECKOUT && window.ABAN_CHECKOUT.VORLAGEN_BUY_URL) || "";
 (function(){
   var b=document.getElementById("buybtn");
   if(VORLAGEN_BUY_URL){ b.href=VORLAGEN_BUY_URL; b.target="_blank"; b.rel="noopener"; }

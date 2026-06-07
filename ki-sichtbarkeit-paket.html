@@ -140,10 +140,11 @@ footer a{color:var(--muted)}
   <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
 </div></footer>
 
+<script src="/js/checkout-config.js"></script>
 <script>
-// Geld-Schalter: Stripe-/Lemon-Squeezy-Checkout fürs Bündel hier eintragen.
+// Checkout-Link zentral in js/checkout-config.js eintragen → Button live.
 // Leer => Mail-Fallback, kein toter Button.
-var PAKET_BUY_URL = "";
+var PAKET_BUY_URL = (window.ABAN_CHECKOUT && window.ABAN_CHECKOUT.PAKET_BUY_URL) || "";
 (function(){
   var b=document.getElementById("buybtn");
   if(PAKET_BUY_URL){ b.href=PAKET_BUY_URL; b.target="_blank"; b.rel="noopener"; }
