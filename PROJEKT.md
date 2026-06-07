@@ -12,6 +12,21 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 📌 Stand 2026-06-07 (Teil 10) — Vollautonomer Stripe-Shop (Tool)
+Auf Wunsch „bau ein Tool, das das autonom macht": **Stripe** statt Lemon Squeezy, weil Stripe Produkte/
+Preise/Bezahllinks **per API** erlaubt (LS nicht — daher dort 1 manueller Upload nötig).
+- **`automation/stripe_sync.py`** — legt je Kit aus `data/kit-catalog.json` idempotent Produkt+Preis(EUR)+
+  Payment-Link an (Redirect → `danke-kit.html`), schreibt `data/shop-products.json` (+ `data/stripe-state.json`). No-op ohne `STRIPE_API_KEY`.
+- **`functions/api/kit-download.js`** (Cloudflare Pages Function) — verifiziert die Stripe-Session
+  serverseitig und gibt erst dann den Download frei; Dateiname **gehasht via `DOWNLOAD_SALT`** (unrätbar).
+- **`danke-kit.html`** (Redirect-Ziel, noindex) holt den Link; **`shop.html`** liest `data/shop-products.json`
+  (Fallback `js/shop-config.js`). **`.github/workflows/stripe-shop.yml`** baut Kits → legt sie gehasht in
+  `downloads/kits/` → `stripe_sync` → committet. Doku `docs/STRIPE-SHOP.md`.
+- **🟡 Einmalige Aktivierung (User):** Stripe-Konto + Secrets `STRIPE_API_KEY`, `DOWNLOAD_SALT` (GitHub UND
+  Cloudflare-Pages-Env). Dann Workflow starten → Shop live, danach neue Branchen = Katalog ergänzen, kein Klick mehr.
+- **Ehrlich:** soft-gated (kein hartes DRM bei statischem Hosting; für €12-Kits ok; Ausbau: R2 + signierte URLs).
+  Stripe ≠ MoR (bei CH/MwSt-frei unkritisch). LS-Variante (`shop-config.js`) bleibt als MoR-Alternative bestehen.
+
 ## 📌 Stand 2026-06-07 (Teil 9) — 4 Automation-Geld-Grundgerüste (neu, no-op-sicher)
 Neue Projekt-Gerüste zum Geldverdienen mit Automation (alle nutzen vorhandenen Stack, ehrlich):
 - **#1 GEO-Report-Abo (B2B, wiederkehrend):** `automation/geo_report.py` → `reports/geo/<marke>-<monat>.md`
