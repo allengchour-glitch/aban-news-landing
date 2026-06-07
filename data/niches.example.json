@@ -1,0 +1,18 @@
+[
+  {
+    "niche": "ki-steuerberater",
+    "name": "KI für Steuerberatung",
+    "beehiiv": "https://abannews.beehiiv.com/subscribe",
+    "feeds": ["https://www.heise.de/rss/heise-atom.xml"],
+    "keywords": ["Steuer", "Kanzlei", "Buchhaltung", "DATEV", "Mandant"],
+    "cadence": "weekly"
+  },
+  {
+    "niche": "ki-handwerk",
+    "name": "KI fürs Handwerk",
+    "beehiiv": "https://abannews.beehiiv.com/subscribe",
+    "feeds": ["https://www.heise.de/rss/heise-atom.xml"],
+    "keywords": ["Handwerk", "Angebot", "Baustelle", "Termin", "Rechnung"],
+    "cadence": "weekly"
+  }
+]
