@@ -71,8 +71,10 @@
   },
   {
     "id": "tg-evg-bewertung-vorlage",
-    "status": "ready",
-    "text": "Schlechte Online-Bewertung bekommen? KI hilft dir, ruhig statt trotzig zu antworten.\n\nPrompt:\n„Formuliere eine sachliche, freundliche Antwort auf diese Bewertung. Kein Rechtfertigen, kein Streit, Lösung anbieten, max. 80 Wörter. [Bewertung einfügen]“\n\nLies drüber, mach es zu deiner Stimme, poste es selbst. Die KI nimmt dir nur die erste Hürde — den kühlen Kopf.\n\nFunktioniert genauso für Reklamations-Mails.\n\nPraxis-Tipps wie diesen gibt's täglich: https://abannews.com\n\n#KI #Kundenservice #Mittelstand #Kommunikation"
+    "status": "posted",
+    "text": "Schlechte Online-Bewertung bekommen? KI hilft dir, ruhig statt trotzig zu antworten.\n\nPrompt:\n„Formuliere eine sachliche, freundliche Antwort auf diese Bewertung. Kein Rechtfertigen, kein Streit, Lösung anbieten, max. 80 Wörter. [Bewertung einfügen]“\n\nLies drüber, mach es zu deiner Stimme, poste es selbst. Die KI nimmt dir nur die erste Hürde — den kühlen Kopf.\n\nFunktioniert genauso für Reklamations-Mails.\n\nPraxis-Tipps wie diesen gibt's täglich: https://abannews.com\n\n#KI #Kundenservice #Mittelstand #Kommunikation",
+    "posted_at": "2026-06-07T01:59:36Z",
+    "telegram_message_id": 18
   },
   {
     "id": "tg-evg-eine-aufgabe",
