@@ -69,6 +69,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Daisy=`polka-dot-retro-kleid-daisy-deep-v-mit-schleife`, Dos-Nu=`sommerkleid-dos-nu-locker-mit-rucken-cut-out`,
   Cat-Eye=`cat-eye-sonnenbrille-damen-retro-uv400`.
 - **Stand alle 5 Meisterwerke:** auf IG+FB+Threads live (Brise/Strohtasche FB nachgepostet). TikTok wartet auf Token.
+- **🎬 Veo/Vertex-Pipeline gebaut (07.06.):** `automation/gen_veo_reel.mjs` + `automation/_gcp_auth.mjs` (SA-JWT→OAuth2)
+  + `.github/workflows/veo-render.yml` (nur `workflow_dispatch`, no-op ohne `GCP_SA_KEY`). Erzeugt aus ECHTEM
+  Produktfoto einen **3-Sek-Hook** (Veo image-to-video), trimmt per ffmpeg, reiht als **`status=pending`** in
+  `reels_seed.csv` → Freigabe-Gate. Default **günstig `veo-3.0-fast-generate-001`** (User: „nimm günstig veo").
+  **Marken-Regel 10:** KI nur Bewegung/Mood, **Produkt bleibt echt** (Regel 1 gilt weiter). User-Setup: `GCP_SA_KEY`
+  (Secret) + `GCP_PROJECT`/`GCP_LOCATION` (Vars), Vertex-AI-API + Veo-Allowlist. Veo-Modell-ID/Parameter bei echtem
+  Lauf gegen Vertex-Doku verifizieren (`predictLongRunning`/`fetchPredictOperation`).
 - **Diese Lehre liegt auf Branch `claude/lade-projekt-luxestyle-fUo70` / PR #386** → Merge nach `main` teilt sie
   mit allen Sessions (gemeinsame Memory).
 

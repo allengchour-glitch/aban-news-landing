@@ -49,6 +49,14 @@
 **Shopify (Kennzahlen im Digest + Rating-Lister) — Client-Credentials der Custom-App:**
 - [ ] `SHOPIFY_SHOP` = `au3j0y-hq.myshopify.com` · `SHOPIFY_CLIENT_ID` · `SHOPIFY_CLIENT_SECRET`
 
+**Veo / Vertex AI (KI-Hook-Reels, `veo-render.yml`) — nur manuell, kostenpflichtig:**
+- [ ] **Secret `GCP_SA_KEY`** = Service-Account-JSON (oder base64), Rolle „Vertex AI User". GCP-Projekt mit **Vertex AI API**
+      aktiviert + **Veo-Modell freigeschaltet** (ggf. Allowlist).
+- [ ] **Variablen:** `GCP_PROJECT` (Projekt-ID), `GCP_LOCATION` (z. B. `us-central1`). Optional `VERTEX_VEO_MODEL`
+      (Default günstig: `veo-3.0-fast-generate-001`).
+- ℹ️ Start: Actions → „Veo Reel Render" → Run (mode=animate). Erzeugt 3-Sek-Hook aus echtem Produktfoto → `status=pending`
+      → erst nach **Sichtung/Freigabe** auf `ready` (Regel 9/10). Günstig: kurze Clips, kein Auto-Cron.
+
 **Optional:**
 - [ ] `JUDGEME_PRIVATE_TOKEN` + `JUDGEME_SHOP_DOMAIN=au3j0y-hq.myshopify.com` → echte Reviews importieren (`reviews-import.mjs`).
 - [ ] `YT_CLIENT_ID` / `YT_CLIENT_SECRET` / `YT_REFRESH_TOKEN` → YouTube-Shorts-Auto-Upload (Tool existiert).

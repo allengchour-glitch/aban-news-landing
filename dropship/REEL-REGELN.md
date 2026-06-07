@@ -24,8 +24,16 @@
 8. **Hook in den ersten 1–2 Sek** (grosser Text) — entscheidet ~80% der Reichweite (GRATIS-WACHSTUM §A).
    Preisfrei, kurz, gern eine Frage („Welches Kleid ist dein Favorit?").
 9. **Freigabe-Workflow:** Reel EINZELN per Telegram zur Freigabe (ja/nein/Kommentar), erst nach „ja" posten.
+10. **KI (Veo/Imagen) NUR für Bewegung/Mood/Hintergrund — NIE zum Erfinden/Verfälschen von Produkten.** Regel 1 bleibt:
+    keine KI-erfundenen Produktbilder. Erlaubt: echtes Produktfoto per Veo dezent **animieren** (3-Sek-Hook), KI-**B-Roll**
+    (Strand/City, ohne Produkt) als Intro/Übergang, Imagen-**Hintergründe**. Da image-to-video das Produkt verformen kann,
+    landen Veo-Clips als **`status=pending`** und müssen vor dem Posten **gesichtet/freigegeben** werden (Regel 9).
+    Günstig halten: **Veo-Fast-Modell**, kurze Clips, kein Auto-Cron (nur `workflow_dispatch`).
 
 ## Verbesserungs-Log (chronologisch — neue Punkte kommen oben dazu)
+- 2026-06-07: **Veo/Vertex-Pipeline gebaut** (`automation/gen_veo_reel.mjs` + `_gcp_auth.mjs` + `veo-render.yml`):
+  Bild→Video-Hook aus echtem Produktfoto, no-op ohne `GCP_SA_KEY`, Default günstiges `veo-3.0-fast-generate-001`,
+  Output `status=pending` → Freigabe-Gate. Marken-Regel 10 ergänzt (KI nur Bewegung/Mood, Produkt bleibt echt).
 - 2026-06-03: **Echte TikTok-Daten analysiert** (Tool `tools/tiktok_analyze.py --user @luxestyle.ch --seed-video <url> --insecure`,
   von abannews gebaut, yt-dlp, kein API/Login; Report in `reports/`). 15 Videos, 2.769 Views, ~0 Engagement.
   **Lehre:** Preis-Anker-Caption **„CHF X statt Designer-Preis – gleicher Look 👀"** zog **771 Views** vs. nur
