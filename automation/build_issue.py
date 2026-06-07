@@ -262,9 +262,48 @@ def render(s: dict, date: str, imgdir: Path) -> str:
     return "\n".join(H)
 
 
+def slugify(text: str) -> str:
+    t = text.lower()
+    for a, b in (("ä", "ae"), ("ö", "oe"), ("ü", "ue"), ("ß", "ss")):
+        t = t.replace(a, b)
+    t = re.sub(r"[^a-z0-9]+", "-", t).strip("-")
+    return (t or "ausgabe")[:50]
+
+
+def promote(date: str, s: dict) -> int:
+    """Freigegebene Ausgabe → öffentliche Archiv-Seite + Index/RSS aktualisieren."""
+    draft = REPO / "data" / f"issue-{date}-draft.html"
+    if not draft.exists():
+        print("::warning::Kein Draft zum Promoten — erst build_issue ohne --promote.")
+        return 0
+    nums = []
+    for f in glob.glob(str(REPO / "archive" / "*.html")):
+        m = re.match(r"(\d+)-", Path(f).name)
+        if m:
+            nums.append(int(m.group(1)))
+    n = (max(nums) + 1) if nums else 1
+    head = s["updates"][0]["headline"] if s["updates"] else (s["intro"] or "Ausgabe")
+    dst = REPO / "archive" / f"{n:03d}-{date}-{slugify(head)}.html"
+    htmlc = draft.read_text(encoding="utf-8").replace(
+        '<meta name="robots" content="noindex,nofollow">',
+        '<meta name="robots" content="index,follow">').replace("(Entwurf)", f"#{n}")
+    dst.write_text(htmlc, encoding="utf-8")
+    print(f"✓ Archiv-Seite: {dst.relative_to(REPO)}")
+    for tool in ("generate_archive.py", "generate_issue_covers.py"):
+        if (REPO / tool).exists():
+            try:
+                subprocess.run([sys.executable, str(REPO / tool)], cwd=str(REPO),
+                               capture_output=True, text=True, timeout=120)
+            except Exception as e:  # noqa: BLE001
+                print(f"::warning::{tool}: {e}")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--entwurf", help="Pfad zum Entwurf (sonst neuester)")
+    ap.add_argument("--promote", action="store_true",
+                    help="freigegebene Ausgabe ins öffentliche Archiv übernehmen (NACH dem Versand)")
     args = ap.parse_args()
 
     ent = Path(args.entwurf) if args.entwurf else latest_entwurf()
@@ -279,6 +318,8 @@ def main() -> int:
     if not s["updates"] and not s["intro"]:
         print("::warning::Entwurf nicht im strukturierten Format — nichts gebaut.")
         return 0
+    if args.promote:
+        return promote(date, s)
     print(f"Ausgabe {date}: {len(s['updates'])} Updates, Bilder → img/issues/{date}/")
 
     out = REPO / "data" / f"issue-{date}-draft.html"

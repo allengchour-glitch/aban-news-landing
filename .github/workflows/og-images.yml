@@ -1,0 +1,44 @@
+name: OG-Bilder (Imagen-Hintergrund)
+
+# Rendert die OG-/Money-Bilder neu, mit warmem Imagen-Hintergrund (Fallback: flacher
+# Marken-Stil). Manuell auslösbar. Committet die og-*.png.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  og:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: OG-Bilder rendern
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_LOCATION: ${{ vars.GCP_LOCATION }}
+          VERTEX_IMAGE_MODEL: ${{ vars.VERTEX_IMAGE_MODEL }}
+          GEMINI_IMAGE_MODEL: ${{ vars.GEMINI_IMAGE_MODEL }}
+          ABAN_DISABLE_IMAGE_GEN: ${{ vars.ABAN_DISABLE_IMAGE_GEN }}
+        run: |
+          pip install --quiet pillow google-auth requests || true
+          python3 generate_og_images.py
+
+      - name: OG-Bilder committen
+        run: |
+          if ! git diff --quiet -- 'og-*.png'; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add og-*.png
+            git commit -m "OG-Bilder neu gerendert (Imagen-Hintergrund) [skip ci]" || echo "nichts"
+            git push || echo "::warning::push fehlgeschlagen"
+          else
+            echo "Keine Änderung."
+          fi
