@@ -71,6 +71,7 @@ def build_parser():
     r.add_argument("--ambient-style", default="warm", choices=["warm", "soft", "lofi", "none"],
                    help="Hintergrund-Bett (Default warm); 'none' = stumm")
     r.add_argument("--music", help="eigene (royalty-free) Musikdatei statt generiertem Bett")
+    r.add_argument("--broll", action="store_true", help="Pexels-Stockvideo-Look (braucht overlay_*.png + queries.txt + PEXELS-Key)")
     r.add_argument("--gain", type=float, default=0.12); r.add_argument("--out"); r.add_argument("--from-dir")
 
     # ---- firefly ----
@@ -104,7 +105,7 @@ def dispatch(a):
         from . import reel
         reel.render(a.case_id, out=a.out, voice=a.voice, ambient=a.ambient,
                     gain=a.gain, from_dir=a.from_dir,
-                    ambient_style=a.ambient_style, music=a.music)
+                    ambient_style=a.ambient_style, music=a.music, broll=a.broll)
     elif a.group == "firefly":
         from . import firefly
         if a.cmd == "prepare": firefly.prepare(a.in_path, a.stage)

@@ -28,8 +28,11 @@ jobs:
       - name: Install deps (Pillow + ffmpeg)
         run: pip install --quiet Pillow imageio-ffmpeg
       - name: Render reel
+        # XI → Stimme+Karaoke; PEXELS → dynamischer Stockclip-Look (sonst ruhiger Zoom)
         env:
           XI: ${{ secrets.XI }}
+          PEXELS: ${{ secrets.PEXELS }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: |
           cd video-pipeline
           VOICE=""; [ -n "$XI" ] && VOICE="--voice"

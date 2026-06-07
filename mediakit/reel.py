@@ -14,10 +14,27 @@ import os
 import tempfile
 from pathlib import Path
 
-from . import audio, tts
+from . import audio, pexels, tts
 from .ass_subs import build_ass, parse_srt, srt_to_ass
 from .ffmpeg_util import MediakitError, get_ffmpeg, run
-from .video_edit import concat_demux, still_to_segment
+from .video_edit import VERTICAL_VF, concat_demux, still_to_segment
+
+
+def _broll_segment(ff, query, overlay_png, dur, out, work, i):
+    """Ein Segment mit gedimmtem Pexels-Stockvideo + Marken-Text-Overlay. False bei Fehlschlag."""
+    clip = pexels.download(query, os.path.join(work, f"stock_{i}.mp4"))
+    if not clip:
+        return False
+    fc = (f"[0:v]{VERTICAL_VF},eq=brightness=-0.10:saturation=0.92,format=yuva420p[bg];"
+          f"[bg][1:v]overlay=0:0,format=yuv420p[v]")
+    try:
+        run([ff, "-y", "-stream_loop", "-1", "-i", clip, "-loop", "1", "-i", str(overlay_png),
+             "-t", f"{dur:.2f}", "-filter_complex", fc, "-map", "[v]", "-an",
+             "-c:v", "libx264", "-crf", "21", "-preset", "veryfast", str(out)])
+        return True
+    except MediakitError as e:
+        print(f"  B-Roll-Segment {i} fehlgeschlagen ({e}); Fallback Zoom")
+        return False
 
 REPO = Path(__file__).resolve().parent.parent
 VP_AUSGABE = REPO / "video-pipeline" / "ausgabe"
@@ -76,7 +93,7 @@ def _durations_fixed(lines, n_slides):
 
 
 def render(case_id, out=None, voice=False, ambient=True, gain=0.12, from_dir=None,
-           ambient_style="warm", music=None):
+           ambient_style="warm", music=None, broll=False):
     ff = get_ffmpeg()
     src = Path(from_dir) if from_dir else (VP_AUSGABE / case_id)
     if not src.is_dir():
@@ -129,10 +146,24 @@ def render(case_id, out=None, voice=False, ambient=True, gain=0.12, from_dir=Non
             build_ass([], sum(durs), ass_path)
 
     # ---- Segmente bauen + zusammenfügen ----
+    # B-Roll-Material (transparente Overlays + Suchbegriffe), falls vorhanden
+    overlays = sorted(glob.glob(str(src / "overlay_*.png")))
+    qf = src / "queries.txt"
+    queries = [q for q in qf.read_text(encoding="utf-8").splitlines() if q.strip()] if qf.exists() else []
+    use_broll = broll and pexels.have_key() and len(overlays) == len(slides)
+    n_broll = 0
+
     segs = []
     for i, (img, d) in enumerate(zip(slides, durs)):
         seg = os.path.join(work, f"seg_{i}.mp4")
-        still_to_segment(img, d, seg, idx=i, n=len(slides))
+        done = False
+        if use_broll:
+            q = queries[i] if i < len(queries) else "technology abstract dark"
+            if _broll_segment(ff, q, overlays[i], d, seg, work, i):
+                done = True
+                n_broll += 1
+        if not done:
+            still_to_segment(img, d, seg, idx=i, n=len(slides))
         segs.append(seg)
     base = os.path.join(work, "base.mp4")
     concat_demux(segs, base)
@@ -175,5 +206,6 @@ def render(case_id, out=None, voice=False, ambient=True, gain=0.12, from_dir=Non
     run(args)
 
     bett = "Musik" if use_music else (ambient_style if ambient else "stumm")
-    print(f"  ✓ Reel [{case_id}] Stufe {tier} · Bett={bett} → {out}  ({n} Slides, {sum(durs):.1f}s, 1080x1920)")
+    look = f"B-Roll {n_broll}/{n}" if n_broll else "Zoom"
+    print(f"  ✓ Reel [{case_id}] Stufe {tier} · {look} · Bett={bett} → {out}  ({n} Slides, {sum(durs):.1f}s, 1080x1920)")
     return out
