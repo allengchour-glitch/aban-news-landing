@@ -48,8 +48,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   **Page-Token mit `pages_manage_posts`** für Seite `1049840534888592` als Secret setzen (Code `/{page}/photos`
   ist korrekt — nur der Token-Typ fehlt). Deckt sich mit der früher verlorenen Working-Session (Scope
   `pages_manage_posts`).
-- **TikTok (4. Account) NICHT über den Meta-Workflow möglich** — keine offizielle Bild-Post-API in diesem Setup.
-  Nur via Reel-Webhook/n8n (`PUBLISH_WEBHOOK_URL`, ungesetzt) oder manuell.
+- **TikTok (4. Account) — VERIFIZIERT aus dem Reel-Autopost-Log (07.06.):** `PUBLISH_WEBHOOK_URL` ist **leer**
+  → TikTok bekommt **gar nichts** (die `posted`-Markierungen in `reels_seed.csv` stammen aus Alt-Läufen, kein echter
+  TikTok-Upload). Reel-Autopost ist derzeit **kompletter No-op** (auch Telegram meldet „kein Kanal" → Token tot,
+  passt zu „🔒 Telegram rotieren"). TikTok = **nur Video/Reel**, keine Bild-Post-API. Scharf: n8n + TikTok-Content-
+  Posting-API-App (`video.publish`, App-Review) anbinden und n8n-Webhook als Secret `PUBLISH_WEBHOOK_URL` setzen.
 - **On-demand posten geht** ohne Session-Tokens: `social-meta-autopost.yml` per `workflow_dispatch` triggern
   (postet 1 Bild/Lauf, `MAX_PER_RUN`). Posten läuft IMMER über die GitHub-Action (Secrets dort), nie aus der Session-Env.
 - **Diese Lehre liegt auf Branch `claude/lade-projekt-luxestyle-fUo70` / PR #386** → Merge nach `main` teilt sie

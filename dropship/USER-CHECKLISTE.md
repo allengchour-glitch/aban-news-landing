@@ -33,6 +33,11 @@
 **Telegram (Tages-Digest 1×/Tag) — für `reel-analytics.yml`:**
 - [ ] `TELEGRAM_BOT_TOKEN` (🔒 **bitte rotieren**, der alte wurde im Chat geteilt) + `TELEGRAM_CHAT_ID`
 
+**TikTok + Reels (Video) — für `reel-autopost.yml` (n8n-Fanout):**
+- [ ] `PUBLISH_WEBHOOK_URL` = n8n-Webhook → TikTok + IG. ⚠️ **VERIFIZIERT 2026-06-07: leer → TikTok bekommt NICHTS**,
+      Reel-Autopost ist aktuell kompletter No-op (Telegram-Channel ebenfalls tot → Token rotieren). TikTok kann **nur
+      Video** (kein Bild-Post); n8n braucht eine TikTok-Content-Posting-API-App (`video.publish`, App-Review).
+
 **Shopify (Kennzahlen im Digest + Rating-Lister) — Client-Credentials der Custom-App:**
 - [ ] `SHOPIFY_SHOP` = `au3j0y-hq.myshopify.com` · `SHOPIFY_CLIENT_ID` · `SHOPIFY_CLIENT_SECRET`
 
