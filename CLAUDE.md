@@ -57,6 +57,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (`PUBLISH_WEBHOOK_URL`→n8n) bleibt für Videos optional; Reel-Autopost ist aktuell No-op (Telegram-Token tot).
 - **On-demand posten geht** ohne Session-Tokens: `social-meta-autopost.yml` per `workflow_dispatch` triggern
   (postet 1 Bild/Lauf, `MAX_PER_RUN`). Posten läuft IMMER über die GitHub-Action (Secrets dort), nie aus der Session-Env.
+- **🚫 REGEL (User): KEINE doppelten Bilder pro Profil.** Der Meta-Poster respektiert jetzt die `platforms`-Spalte
+  (leer = alle) → gezielte Einzel-Kanal-Posts möglich. So Brise+Strohtasche **nur auf FB** nachgepostet (dort
+  fehlten sie), IG/Threads NICHT erneut. Befehl: `social-queue.mjs requeue <id> --platforms facebook`.
+- **🔗 Produkt-Handles ohne Credentials:** `https://luxestyle.ch/search/suggest.json?q=<name>&resources[type]=product`
+  liefert echte Handles (öffentliche Storefront-API). Direktlinks `luxestyle.ch/products/<handle>` in TikTok-Captions
+  eingetragen. Bekannt: Brise=`off-shoulder-kleid-brise-locker-armellos`, Strohtasche=`strand-strohtasche-xl-geflochten`,
+  Daisy=`polka-dot-retro-kleid-daisy-deep-v-mit-schleife`, Dos-Nu=`sommerkleid-dos-nu-locker-mit-rucken-cut-out`,
+  Cat-Eye=`cat-eye-sonnenbrille-damen-retro-uv400`.
+- **Stand alle 5 Meisterwerke:** auf IG+FB+Threads live (Brise/Strohtasche FB nachgepostet). TikTok wartet auf Token.
 - **Diese Lehre liegt auf Branch `claude/lade-projekt-luxestyle-fUo70` / PR #386** → Merge nach `main` teilt sie
   mit allen Sessions (gemeinsame Memory).
 
