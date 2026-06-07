@@ -97,31 +97,56 @@ def parse(xml: str, source: str, max_items: int) -> list[dict]:
     return out
 
 
+def load_niche(niche: str):
+    """data/niches.json (oder .example) lesen → (feeds_dict|None, keyword_regex|None, name)."""
+    import json
+    for fn in ("niches.json", "niches.example.json"):
+        p = HERE.parent / "data" / fn
+        if p.exists():
+            for e in json.loads(p.read_text(encoding="utf-8")):
+                if e.get("niche") == niche:
+                    feeds = {f"Quelle {i+1}": u for i, u in enumerate(e.get("feeds", []))} or None
+                    kws = e.get("keywords", [])
+                    rx = re.compile("(" + "|".join(re.escape(k) for k in kws) + ")", re.I) if kws else None
+                    return feeds, rx, e.get("name", niche)
+    return None, None, niche
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--max", type=int, default=6, help="max Einträge pro Feed")
     ap.add_argument("--out", default=None, help="fester Ausgabepfad (sonst datiert)")
+    ap.add_argument("--niche", default=None, help="Nischen-ID aus data/niches.json")
     args = ap.parse_args()
 
+    feeds, niche_rx, niche_name = (FEEDS, None, "")
+    if args.niche:
+        nf, niche_rx, niche_name = load_niche(args.niche)
+        if nf:
+            feeds = nf
+
     all_items, seen = [], set()
-    for source, url in FEEDS.items():
+    for source, url in feeds.items():
         try:
             items = parse(fetch(url), source, args.max)
         except Exception as ex:
             sys.stderr.write(f"  {source}: nicht erreichbar ({ex})\n")
             continue
         for it in items:
+            if niche_rx and not niche_rx.search(f"{it['title']} {it['desc']}"):
+                continue
             key = re.sub(r"\W+", "", it["title"].lower())[:60]
             if key and key not in seen:
                 seen.add(key)
                 all_items.append(it)
 
     if not all_items:
-        sys.stderr.write("Keine Einträge gesammelt (Netzwerk?).\n")
+        sys.stderr.write("Keine Einträge gesammelt (Netzwerk/Nische zu eng?).\n")
         return 1
 
     today = date.today().isoformat()
-    md = [f"# KI-News-Rohmaterial — {today}",
+    title = f"KI-News-Rohmaterial{(' — ' + niche_name) if args.niche else ''} — {today}"
+    md = [f"# {title}",
           "",
           "> **Kuratier-Vorlage, KEINE fertige Ausgabe.** Echte Quellen, aggregiert. "
           "Wähle 3–5 relevante Meldungen, prüfe sie an der Quelle und schreibe sie in "
@@ -142,7 +167,8 @@ def main() -> int:
     md.append(f"Gesammelt: {len(all_items)} Meldungen aus {len(by_src)} Quellen. "
               "Quellen immer gegenprüfen — Aggregation ersetzt keine Recherche.")
 
-    dst = Path(args.out) if args.out else HERE / f"news-roh-{today}.md"
+    default_name = f"news-roh-{args.niche}-{today}.md" if args.niche else f"news-roh-{today}.md"
+    dst = Path(args.out) if args.out else HERE / default_name
     dst.write_text("\n".join(md), encoding="utf-8")
     print(f"Gesammelt: {len(all_items)} Meldungen aus {len(by_src)} Quellen "
           f"→ {dst}")

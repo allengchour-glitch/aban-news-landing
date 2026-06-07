@@ -6,6 +6,11 @@ name: Gemini Ausgaben-Entwurf
 
 on:
   workflow_dispatch:
+    inputs:
+      niche:
+        description: 'Nischen-ID aus data/niches.json (leer = Haupt-Ausgabe)'
+        required: false
+        default: ''
   # schedule:
   #   - cron: '0 4 * * 1-5'   # bei Bedarf: werktags 04:00 UTC Rohmaterial+Entwurf
 
@@ -23,7 +28,11 @@ jobs:
           python-version: '3.11'
 
       - name: Rohmaterial sammeln (echte Quellen, keine Erfindung)
-        run: python3 automation/news_aggregator.py || echo "::warning::Aggregator-Fehler (evtl. Netz) — fahre fort"
+        env:
+          NICHE: ${{ inputs.niche }}
+        run: |
+          ARG=""; [ -n "$NICHE" ] && ARG="--niche $NICHE"
+          python3 automation/news_aggregator.py $ARG || echo "::warning::Aggregator-Fehler (evtl. Netz) — fahre fort"
 
       - name: Entwurf + bild-reiche Ausgabe erzeugen
         env:
@@ -37,10 +46,12 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           ABAN_IMAGE_SOURCE: ${{ vars.ABAN_IMAGE_SOURCE }}
           ABAN_DISABLE_IMAGE_GEN: ${{ vars.ABAN_DISABLE_IMAGE_GEN }}
+          NICHE: ${{ inputs.niche }}
         run: |
           pip install --quiet pillow google-auth requests || true
-          python3 automation/draft_with_gemini.py
-          python3 automation/build_issue.py
+          ARG=""; [ -n "$NICHE" ] && ARG="--niche $NICHE"
+          python3 automation/draft_with_gemini.py $ARG
+          python3 automation/build_issue.py $ARG
 
       - name: Entwurf + Ausgabe committen (zum Review)
         run: |
