@@ -37,6 +37,27 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-07 (ÜBERGABE/HANDOFF — Social+Veo Komplettstand, ZUERST LESEN):**
+- **IG + FB + Threads: vollautomatisch & live.** 7 Masterpiece-Bilder gepostet (brise/strohtasche/daisy/dosnu/cateye
+  + bali/ibiza), alle mit Produkt-Direktlink. Meta-Autopilot `social-meta-autopost.yml` + Tool `automation/social-queue.mjs`
+  (status/add/add-product/requeue). FB-Page-Token wird im Code aus `META_ACCESS_TOKEN` abgeleitet (kein extra Secret nötig).
+  Poster **respektiert die `platforms`-Spalte** → gezielte Einzel-Kanal-Posts (Regel: KEINE Doppel-Bilder pro Profil).
+- **TikTok:** Token-Flow **funktioniert** (Sandbox-App „luxe", `TT_*`-Secrets gesetzt, OAuth getauscht). ABER unaudited →
+  Post nur auf **privates** Konto (`SELF_ONLY`). **Öffentlich** braucht App-Audit → Unternehmensverifizierung →
+  Handelsregister; User will KEIN HR → öffentliches TikTok daher via **Metricool** (auditierter Partner) oder **manuell**
+  (fertige Reels in `reels/`). `tiktok-autopost.mjs` (Video, FILE_UPLOAD) bleibt bereit für nach dem Audit.
+- **Veo/Vertex gebaut:** `automation/gen_veo_reel.mjs` (Bild→Video-Hook aus ECHTEM Foto, ~3 s) + `_gcp_auth.mjs` +
+  `veo-render.yml` (nur manuell, Default **günstig `veo-3.0-fast-generate-001`**, no-op ohne Key). **`GCP_SA_KEY` +
+  `GCP_PROJECT` sind im Repo bereits gesetzt** (Imagen läuft via telegram-autopost). Offen: `veo-render.yml` muss nach
+  **`main`** (workflow_dispatch geht nur von main) + **Veo im GCP-Projekt freischalten**. Marken-Regel 10: KI nur
+  Bewegung/Mood, Produkt bleibt echt; Veo-Output = `status=pending` (Freigabe-Gate).
+- **Medien an Produkte:** `automation/add_media_to_products.mjs` + `attach-media.yml` hängen generierte Medien per
+  Shopify `productCreateMedia` an (Zuordnung über `handle` in `good_products.csv`; Videos via Manifest
+  `social/generated_media.csv`, das `gen_veo_reel.mjs` schreibt). Bilder per URL, Videos per Staged-Upload. No-op ohne
+  Shopify-Creds. ⚠️ Bilder tragen Promo-Overlays → Default nur `videos`; `images` nur bewusst setzen.
+- **OFFENE USER-SCHRITTE:** PR #386 → `main` mergen (aktiviert neue Workflows/Cron); Veo im GCP freischalten; TikTok
+  öffentlich = Metricool/manuell (kein HR); ggf. `SHOPIFY_*`-Creds für die Medien-Anbindung prüfen.
+
 **📌 2026-06-07 (VERIFIZIERT — geteilte Cross-Session-Lehre, ZUERST LESEN):**
 - **Meta-Autopost LIVE getestet** (`social-meta-autopost.yml` per `workflow_dispatch`, echte Posts): **Instagram ✅
   + Threads ✅** funktionieren mit den aktuell gesetzten Secrets. **2 Meisterwerk-Bilder real gepostet** als
