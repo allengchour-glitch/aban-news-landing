@@ -42,12 +42,27 @@ FOUNDING = "/founding.html"
 OG_RE = re.compile(r'<meta\s+property=["\']og:image["\']\s+content=["\']([^"\']+)["\']', re.I)
 NOINDEX_RE = re.compile(r'<meta\s+name=["\']robots["\']\s+content=["\'][^"\']*noindex', re.I)
 HREF_RE = re.compile(r'href\s*=\s*"([^"]+)"')
+CTA_RE = re.compile(r'beehiiv\.com/subscribe', re.I)  # jede beehiiv-Anmeldung zählt
+
+# Nicht-abannews / interne Dateien aus dem Audit ausschließen (sonst falsche Befunde).
+EXCLUDE_PARTS = ("/dist/", "node_modules", "/video-prototypes/", "/aban-studio/")
+# Seiten, auf denen ein Newsletter-CTA NICHT erwartet wird (Recht/Utility).
+NO_CTA_EXPECTED = {"impressum.html", "datenschutz.html", "agb.html", "widerruf.html",
+                   "404.html", "barrierefreiheit.html", "sitemap.html"}
+
+
+def _internal(p: Path) -> bool:
+    rp = "/" + p.relative_to(REPO).as_posix()
+    if any(x in rp for x in EXCLUDE_PARTS):
+        return True
+    n = p.name
+    return n.endswith(("-preview.html", "-draft.html")) or (
+        n.startswith("issue-") and n.endswith("-final.html"))
 
 
 def main_site_html() -> list[Path]:
-    """Alle HTML-Seiten der Haupt-Website (ohne gebaute Sub-Sites/Node)."""
-    return [p for p in REPO.rglob("*.html")
-            if "/dist/" not in p.as_posix() and "node_modules" not in p.as_posix()]
+    """Alle indexierbaren HTML-Seiten der Haupt-Website (ohne Prototypen/Drafts/Sub-Sites)."""
+    return [p for p in REPO.rglob("*.html") if not _internal(p)]
 
 
 def og_target_exists(page: Path, url: str) -> bool:
@@ -72,11 +87,12 @@ def main() -> int:
         if NOINDEX_RE.search(s):
             continue  # bewusst nicht indexiert → für SEO/Teilen irrelevant
         indexable += 1
+        rp = p.relative_to(REPO).as_posix()
         m = OG_RE.search(s)
         if not m or not og_target_exists(p, m.group(1)):
-            no_og.append(p.name)
-        if BEEHIIV not in s:
-            no_cta.append(p.name)
+            no_og.append(rp)
+        if p.name not in NO_CTA_EXPECTED and not CTA_RE.search(s):
+            no_cta.append(rp)
 
     for h in hubs:
         s = h.read_text(encoding="utf-8", errors="ignore")

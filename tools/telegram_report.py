@@ -15,6 +15,7 @@ Nutzung:  python3 tools/telegram_report.py
 
 from __future__ import annotations
 
+import datetime as dt
 import html
 import json
 import os
@@ -53,6 +54,24 @@ def growth_line() -> str:
     return m.group(1).strip() if m else ""
 
 
+def hub_of_day() -> str:
+    """Ein konkreter Hub pro Tag zum Teilen (deterministisch rotierend) — macht den
+    Mensch-Hebel „organisch teilen" zur Ein-Klick-Entscheidung. Vorlagen: SHARE-KIT.md."""
+    hubs = sorted(ROOT.glob("ki-fuer-*.html"))
+    if not hubs:
+        return ""
+    h = hubs[dt.date.today().timetuple().tm_yday % len(hubs)]
+    label = h.stem.replace("ki-fuer-", "").replace("-", " ").title()
+    m = re.search(r"<title>(.*?)</title>", h.read_text(encoding="utf-8", errors="ignore"), re.S | re.I)
+    if m:
+        t = re.split(r"\s[—–-]\s", m.group(1).split("|")[0], 1)[0]
+        t = re.sub(r"\(20\d\d\)", "", t).strip()
+        if t:
+            label = t
+    url = f"https://abannews.com/{h.name}"
+    return f'<a href="{url}">{html.escape(label)}</a> — Vorlagen in docs/SHARE-KIT.md'
+
+
 def build_message() -> str:
     if not REPORT.exists():
         return "🔍 Verbesserungs-Scan: kein Report gefunden."
@@ -80,6 +99,9 @@ def build_message() -> str:
     depths = queue_depths()
     if depths:
         lines += ["", f"<b>📮 Post-Queues (ready):</b> {html.escape(depths)}"]
+    hub = hub_of_day()
+    if hub:
+        lines += ["", f"<b>📣 Hub des Tages (teilen):</b> {hub}"]
     lines.append("")
     lines.append("Tipp: Befunde sind Heuristik — kurz prüfen, dann fixen.")
     msg = "\n".join(lines)

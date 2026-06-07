@@ -71,6 +71,9 @@ def build():
     make("og-chatgpt.png", "CHATGPT-GUIDE", "Echter Nutzen",
          ["ChatGPT für Solopreneure —", "7 Anwendungen, klare Grenzen"],
          "abannews.com  ·  ohne Prompt-Magie-Versprechen", title_size=96)
+    make("og-3d-druck.png", "3D-DRUCK & POD", "Mit KI Geld verdienen",
+         ["Eigene Designs verkaufen —", "ohne eigene Maschine"],
+         "abannews.com  ·  ehrlich gerechnet: Margen, Recht, Anbieter", title_size=92)
 
 
 if __name__ == "__main__":

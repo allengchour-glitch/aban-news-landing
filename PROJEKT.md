@@ -22,6 +22,13 @@ Verifiziert im Workflow-Log (`telegram-autopost.yml`, Run 27079834486):
 - **🟡 Optional offen (User):** alten Key `a7be9889…` in GCP löschen (falls noch nicht); optional Variables `GCP_LOCATION=us-central1` + `VERTEX_IMAGE_MODEL=imagen-3.0-generate-002` setzen (nötig ist es nicht, Code hat Defaults).
 - **Workflows mit Vertex-Bild verdrahtet:** `telegram-autopost.yml`, `linkedin-autopost.yml`, `telegram-control.yml`, `gemini-content-engine.yml`, `gemini-draft.yml`, `gemini-growth-ideas.yml` (alle bekommen `GCP_SA_KEY`/`GCP_PROJECT`/`GCP_LOCATION`/`VERTEX_IMAGE_MODEL` + `pip install google-auth requests`).
 
+## 📌 Stand 2026-06-07 (Teil 3) — SEO-Lücken, Hub des Tages, Lead-Magnete + ehrlicheres Audit
+- **Wachstums-Audit ehrlich gemacht (`tools/growth_audit.py`):** war mit Fehlbefunden (Basenamen statt Pfaden; CTA-Check zu streng; Prototypen/Drafts/Video-Workstream mitgezählt). Jetzt: relative Pfade, CTA-Regex `beehiiv\.com/subscribe`, Ausschluss `video-prototypes/`/`-preview`/`-draft`/`issue-*-final`/Recht-Utility. Realbild: **OG fehlend 1→0, verwaiste Hubs 0, CTA-Lücken 47→21** (Rest = Utility/Listen, bewusst).
+- **Newsletter-CTA ergänzt (`tools/add_newsletter_cta.py`, idempotent):** Box vor `</main>` auf **26 Content-Seiten** (alle 21 `themen/*` + 5 Root-Artikel); Recht/Listen/Utility bewusst ausgenommen; läuft jetzt im Autopilot mit.
+- **OG-Bild** für `geld-verdienen-mit-3d-druck.html` ergänzt (`generate_og_images.py` → `og-3d-druck.png` + og:image/twitter:image-Meta). Die 2 fehlenden `canonical` liegen in `video-prototypes/output/` → **anderer Workstream, NICHT angefasst**.
+- **„Hub des Tages" im Digest (`tools/telegram_report.py`):** wählt täglich deterministisch einen Hub zum Teilen + verweist auf `docs/SHARE-KIT.md` → Mensch-Hebel wird Ein-Klick.
+- **Branchen-Lead-Magnete (`automation/generate_branchen_pdfs.py`):** 11 ehrliche 1-Seiten-PDFs „KI-Schnellstart für <Branche>" aus den ECHTEN Anwendungsfällen der Hubs (reportlab), in `downloads/branchen/`, idempotent im Hub verlinkt (Marker `data-aban-leadmagnet`) + Newsletter-CTA. Extraktion robust für beide Hub-Layouts (h3 unter „Sinnvolle Anwendungsfälle" + nummerierte h2). **Bewusst NICHT im Autopilot** (PDF-Bytes nicht deterministisch → Commit-Churn); bei neuen Branchen manuell laufen lassen.
+
 ## 📌 Stand 2026-06-07 (Teil 2) — Autopilot + ehrliches Wachstum + Bild-Pipeline gehärtet
 **Auftrag:** „setze alles autonom um … entwickle Tools, dass es noch einfacher läuft, die Seite automatisch
 verbessert, automatisch Abonnenten sucht — alles autonom, auch Geld verdienen." Umgesetzt (ehrlich, abannews-Scope):

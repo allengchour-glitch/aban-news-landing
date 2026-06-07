@@ -90,6 +90,7 @@ def main() -> int:
         dry = ["--dry"] if args.dry_run else []
         run([py, "tools/add_branchen_funnel.py"] + dry, "Funnel-Block aktualisieren")
         run([py, "tools/related_hubs.py"] + dry, "Interne Verlinkung (verwandte Branchen)")
+        run([py, "tools/add_newsletter_cta.py"] + dry, "Newsletter-CTA auf Content-Seiten")
         if not args.dry_run:
             run([py, "tools/share_kit.py"], "Share-Kit aktualisieren")
 
