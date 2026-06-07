@@ -47,14 +47,15 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: node automation/gemini-site-critique.mjs
 
-      - name: Commit report if changed
+      - name: Commit report (force-add, reports/ ist gitignored)
         run: |
-          if ! git diff --quiet -- reports/ 2>/dev/null || [ -n "$(git status --porcelain reports/ 2>/dev/null)" ]; then
+          f="reports/site-critique-$(date -u +%F).md"
+          if [ -f "$f" ]; then
             git config user.name "luxestyle-gemini-bot"
             git config user.email "bot@users.noreply.github.com"
-            git add reports/
+            git add -f "$f"
             git commit -m "chore(gemini): Site-Kritik-Report [skip ci]" || echo "nichts zu committen"
             git push || echo "push skipped"
           else
-            echo "Kein neuer Report."
+            echo "Kein Report-File ($f) gefunden — übersprungen."
           fi
