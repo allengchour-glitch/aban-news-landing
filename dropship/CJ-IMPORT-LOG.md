@@ -41,7 +41,16 @@
   Risiko (§5) + schwaches Bild (auf schmutzigem Boden).
 - **✅ Charge 2 (Accessoires, alter Key):** Henkeltasche «Lune» `15421166059905` (4 Farben, 24.90) +
   Crossbody-Tasche «Nuit» `15421166092673` (3 Farben, 24.90) — live in 6 Kanälen. Abgelehnt: Clip-Ohrringe
-  (Wasserzeichen „Gu - **✅ Charge 14 (Accessoire, alter Key):** Samt-Cap «Velours» Retro-Baseball (8 Farben, 19.90, accessoires).
+  (Wasserzeichen „Gu - **✅ Charge 15 (Mode, alter Key):** Strandkleid «Maré» Boho-Midi mit Volants & Quasten (6 Farben×6 Grössen=36 Var,
+  39.90, damen-mode/kleid/sommer — Top-Lifestyle-Strandshot, klarer Marken-Treffer). Live in 6 Kanälen, Media READY.
+  **Abgelehnt:** Tiered-Party-Mini CJLY2924170 (sehr kurz/clubby, off-brand premium), Clip-Ohrringe CJLX2924392
+  („Gu Xiang Li"-Wasserzeichen), Car-Clock CJYD2923711 (0.69$, off-theme Auto), + 3 Dubletten (Suede-Skirt, Herren-Set,
+  «Fleur Noir»-Kleid). cj-real: 206 → **207.**
+- **🔧 Katalog-Hygiene (live via API, kein Repo-File):** (1) **SEO-Title+Description für alle 9 neuen Produkte**
+  (Charges 11–15) ergänzt — vorher 0 SEO-Meta → jetzt Google-/Discovery-tauglich. (2) **Smart-Collection
+  „💎 Herren-Schmuck" gefixt:** Regel war nur `TAG=Herren` → fing ALLE 181 Herren-Artikel (Jeans/Shirts) statt nur
+  Schmuck. Regel auf `Herren AND schmuck` verschärft → 181 → ~58, jetzt korrekt schmuck-scoped. Reversibel.
+- **✅ Charge 14 (Accessoire, alter Key):** Samt-Cap «Velours» Retro-Baseball (8 Farben, 19.90, accessoires).
   Live in 6 Kanälen, alle Media READY. **Abgelehnt (strenger QA-Lauf):** Tunic-Pants-Set CJLS2924397 (88 Var, zu nah
   am 100-Limit), J-Shape-Stillkissen CJYD2924218 (sperrig/off-theme), Floral-Thermosflasche CJHS2924200 („Shangsheng
   Bio"-Wasserzeichen + kindlich), Gloce-Sonnenbrille CJCF2923061 (Marken-Logo am Bügel = IP-Risiko), Horseshoe-Cross-

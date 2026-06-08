@@ -40,7 +40,7 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 **2026-06-08 — Luxestyle product session:**
-- **Katalog:** **206 `cj-real` aktiv** (heute +33 neue Produkte: Mode, Taschen, Schmuck, Schuhe, Home, Gadget, Premium;
+- **Katalog:** **207 `cj-real` aktiv** (heute +34 neue Produkte: Mode, Taschen, Schmuck, Schuhe, Home, Gadget, Premium;
   zuletzt Charge 11+12: Jeans-Shorts, Make-up-Tasche, Kerzenwärmer-Lampe, Herren-Jeans, Sommerkleid, Blazer, Henley).
 - **Autonome Social-/Sourcing-Maschine gebaut & auf `main`:**
   - `dropship/cj_autopilot.mjs` + `cj-autopilot.yml` (VOLL-AUTO: sucht→QA→Varianten→Gemini-Gate→ACTIVE+publish, 2×/Tag)
