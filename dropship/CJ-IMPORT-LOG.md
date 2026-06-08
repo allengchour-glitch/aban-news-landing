@@ -13,6 +13,23 @@
 > ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
 > bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
 
+## Session 2026-06-08 — 16 neue Produkte voll verarbeitet + Pipeline gefüttert
+- **Bestand:** 533 aktive Produkte. **16 neue cj-real-Produkte** (angelegt 06-07 abends → 06-08 03:30,
+  Tags `cj-real neu`) komplett conversion-fertig gemacht — alles LIVE per Shopify-API:
+  - **SEO** (Title+Description) für alle 16 gesetzt (vorher `seo.title:null`). 0 userErrors.
+  - **Alt-Texte:** ~130 Produktbilder waren leer → alle gefüllt (`fileUpdate`, Alt = Titel + „– LuxeStyle").
+  - **Verifiziert:** alle 16 `ACTIVE` + auf **allen 6 Kanälen** publiziert; 5–15 Bilder je Produkt, 0 FAILED.
+  - Produkte: Glücks-Halskette «Fortune», Sommer-Armband «Évil», Statement-Ohrringe «Doré», Deko-Vase
+    «Antique», Moissanite-Ohrstecker «Éclat», Geburtsstein-Armband «Pois», Baskenmütze «Riviera»,
+    Perlen-Anhänger «Coquille», Crossbody-Tasche «Nuit», Henkeltasche «Lune», Kapuzen-Cardigan «Cosy»,
+    Long-Blazer «Milano», Herren-Set «Resort», Sommer-Set «Riviera», Workout-Set «Active», Long-Weste «Resort».
+- **Content-Pipeline gefüttert (`main`, commit 53a98f1):** 4 stärkste Lifestyle-Heroes in `good_products.csv`
+  (28→32) — `cosy` (On-Model-Street), `nuit` (Editorial Night-City-Bag), `active` (On-Model-Set),
+  `sommerriv` (On-Model-Set). Bilder vorab visuell geprüft: echte Model-/Lifestyle-Shots (keine Freisteller,
+  Regel 1 ok). Mit `handle` → Produktlink + KI-Veredelung + Veo + Social greifen automatisch.
+- **Bewusst NICHT in Pipeline:** Schmuck-Freisteller (Fortune/Évil/Doré/Pois/Coquille/Éclat), Deko-Vase,
+  Baskenmütze — Weiss-Freisteller passen nicht in Reel/Post-Look (Regel 1). Im Shop voll gepflegt & live.
+
 ## Session 2026-06-06 (Teil 2) — Social-Maschine gebaut + Shop-Fixes + Voll-Automation
 - **Autonome Social-Maschine gebaut & committet** (PR #363, Branch LehDs): Meta-Autopilot IG+FB+Threads
   (`social-autopost-meta.mjs`), Bild-Generator (`gen_post_image.py`, 5 JPG-Posts/Tag 1080×1350+1080×1080),
