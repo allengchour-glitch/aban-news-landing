@@ -43,6 +43,23 @@ Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe s
 (Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
 
 
+## 📌 Stand 2026-06-08 (Teil 15) — Preise überall sichtbar + EN-Kit-Deep-Links + Shop-Schema (Loop)
+User: „weiter in loop langsam" → „setzt überall kosten das die leute zahlen" → „weiter". Erledigt & gemerged:
+- **EN-Funnel Kit-Deep-Links** (PR #403): `add_branchen_funnel.py` liest jetzt `kit-catalog-en.json`; die 11
+  EN-Hubs mit eigenem Kit verlinken direkt auf `/en/shop.html#kit-en-<slug>` („View your industry kit →"),
+  Rest generisch. Spiegelt das DE-Muster. **+ Fix:** toter `/hype-watch`-Link in ki-reels.html → `.html`.
+- **Preise überall sichtbar** (PR #403): Cross-Sell-Blöcke mit konkreten Preisen auf **online-tools.html**
+  (Shop CHF 12 · Premium €9/mo · Founding €69), **gratis-ki-tools.html** (nach dem PDF) und
+  **archive/index.html** (Premium/Founding/Shop). Voller Shop-Katalog sichtbar: `shop-products.json` 5→**12
+  Produkte** (11 Kits + Bundle CHF 79, 5 mit aktivem Stripe-Link), `shop-products-en.json` 0→**12** (€12/€79).
+- **Shop Product/Offer-Schema** (PR #415): `ItemList` mit `Product`+`Offer` (Preis CHF/EUR + Kauflink) auf
+  shop.html **und** en/shop.html → Kits können in Google mit Preis erscheinen (Rich Results). JSON-LD validiert.
+- **Honesty geprüft:** premium-briefing.html zeigt €19/€190, aber Checkout leer → Button fällt **ehrlich** auf
+  „Auf die Liste — Start in Kürze" (kein toter Kauf). consistency_check + check_internal_links grün.
+- **🔴 Bottleneck bleibt Reichweite + fehlende Checkout-Links:** nur 5/11 DE-Kits + 0 EN-Kits haben Kauflinks.
+  **Nur User:** `STRIPE_API_KEY`-Secret → `stripe_sync.py` legt restliche Links + Bundle an; Lemon-Squeezy-Abo
+  fürs Premium-Briefing (€19/€190); Traffic (organisch teilen, beehiiv-Referral); erste Ausgabe senden.
+
 ## 📌 Stand 2026-06-07 (Teil 14) — Hub-Welle, AGB, Shop-SEO, EN-Funnel (Loop-Runde)
 User: „Hintergrundaufgaben fertig + andere, gemütlich weiter, dann loop". Erledigt & gemerged:
 - **6 neue Branchen-Hubs** (PR #397) via parallele Agenten gebaut + voll integriert: Osteopathen, Masseure,
