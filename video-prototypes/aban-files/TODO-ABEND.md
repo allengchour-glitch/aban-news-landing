@@ -3,6 +3,22 @@
 > Modus: **Analysieren + Videos kontinuierlich besser machen für mehr Reichweite** — keine Video-Masse.
 
 ## 🔑 NUR DU (kurze Klicks — schalten Reichweite/Analyse frei)
+
+### 🇩🇪 0. Deutsche CC automatisch (Weg B — gewählt) — einmal einrichten
+**Ziel:** YouTube-Token mit `force-ssl`-Scope → der Cron lädt die deutsche Untertitel-Spur bei jedem Video automatisch mit.
+- `client_secret.json` in `video-prototypes/` haben (habt ihr fürs Upload-Token; sonst `YOUTUBE-UPLOAD.md` Schritte 1–4).
+- Lokal ausführen:
+  ```
+  cd video-prototypes
+  python3 scripts/yt_get_refresh_token.py
+  ```
+  Browser-Freigabe bestätigen (fragt jetzt **Upload + force-ssl** an).
+- Skript druckt **`ABAN_YT_REFRESH_TOKEN = …`** → als Repo-Secret **`ABAN_YT_REFRESH_TOKEN`** hinterlegen
+  (Settings → Secrets → Actions). Fertig — deutsche CC ist ab dem nächsten Upload automatisch dabei.
+- *Sofort ohne Token (für schon öffentliche Folgen):* SRTs aus `aban-files/srt/` in **YouTube Studio →
+  Untertitel → Deutsch → Datei hochladen**.
+
+### Weitere Klicks
 1. **`YT_API_KEY` als Repo-Secret** (5 Min) — *wichtigster Punkt für „analysieren".*
    GitHub → Repo `aban-news-landing` → Settings → Secrets and variables → Actions → New secret
    → Name `YT_API_KEY`, Wert = ein YouTube-Data-API-v3-Key (console.cloud.google.com, API aktivieren).

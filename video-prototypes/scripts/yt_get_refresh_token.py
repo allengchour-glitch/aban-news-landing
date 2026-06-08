@@ -11,7 +11,9 @@ YT_CLIENT_ID / YT_CLIENT_SECRET / YT_REFRESH_TOKEN hinterlegen.
 import json, sys, os
 from google_auth_oauthlib.flow import InstalledAppFlow
 
-SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
+# upload = Video hochladen · force-ssl = deutsche CC-Untertitel-Spur hochladen
+SCOPES = ["https://www.googleapis.com/auth/youtube.upload",
+          "https://www.googleapis.com/auth/youtube.force-ssl"]
 CS = "client_secret.json"
 if not os.path.exists(CS):
     sys.exit("FEHLT: client_secret.json (siehe YOUTUBE-UPLOAD.md)")
@@ -21,9 +23,9 @@ creds = flow.run_local_server(port=0, prompt="consent")   # erzwingt Refresh-Tok
 conf = json.load(open(CS))
 c = conf.get("installed") or conf.get("web")
 print("\n==== als GitHub-Repo-Secrets hinterlegen ====")
-print("YT_CLIENT_ID     =", c["client_id"])
-print("YT_CLIENT_SECRET =", c["client_secret"])
-print("YT_REFRESH_TOKEN =", creds.refresh_token)
+print("YT_CLIENT_ID          =", c["client_id"])
+print("YT_CLIENT_SECRET      =", c["client_secret"])
+print("ABAN_YT_REFRESH_TOKEN =", creds.refresh_token, "  # NEU: enthaelt force-ssl -> deutsche CC")
 if not creds.refresh_token:
     print("\n(Kein Refresh-Token erhalten — OAuth-Client-Zugriff unter "
           "myaccount.google.com/permissions entfernen und erneut ausführen.)")
