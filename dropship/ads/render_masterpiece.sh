@@ -10,11 +10,21 @@ SANSR=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
 [ -f "$SANS" ] || SANS=$SANSR
 OUT="${1:?out}"; VOICE="${2:?voice}"; MUSIC="${3:?musik}"; MANIFEST="${4:?manifest}"; LANG_="${5:-de}"; HOOK="${6:-}"
 W=$(mktemp -d); FPS=30; BG=0x0e0e12; GOLD=0xc9a14a; INK=0xf4f3f1; T=0.45
-DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$VOICE")
+# --- Voiceover-Dauer robust ermitteln (Google-TTS-WAV hat teils keinen format=duration-Header) ---
+probe_dur(){ ffprobe -v error -show_entries format=duration -of csv=p=0 "$1" 2>/dev/null | head -n1; }
+DUR=$(probe_dur "$VOICE")
+if ! printf '%s' "$DUR" | grep -qE '^[0-9]+(\.[0-9]+)?$'; then
+  DUR=$(ffprobe -v error -select_streams a:0 -show_entries stream=duration -of csv=p=0 "$VOICE" 2>/dev/null | head -n1)
+fi
+if ! printf '%s' "$DUR" | grep -qE '^[0-9]+(\.[0-9]+)?$'; then
+  DUR=$(ffmpeg -nostdin -i "$VOICE" -f null - 2>&1 | sed -n 's/.*time=\([0-9:.]*\).*/\1/p' | tail -n1 | awk -F: '{print ($1*3600)+($2*60)+$3}')
+fi
+printf '%s' "$DUR" | grep -qE '^[0-9]+(\.[0-9]+)?$' || DUR=20
 mapfile -t LINES < <(grep -v '^[[:space:]]*$' "$MANIFEST")
 N=${#LINES[@]}; [ "$N" -ge 2 ] || { echo "zu wenig Segmente ($N)"; exit 1; }
 OUTRO=3.0
 SEG=$(python3 -c "print(round(max(1.7,($DUR-$OUTRO+($N)*$T)/$N),3))")
+echo "DEBUG render: voice=$VOICE  DUR=${DUR}s  N=$N  OUTRO=$OUTRO  T=$T  SEG=$SEG"
 if [ "$LANG_" = "en" ]; then O1="Shop now -> your look"; O4="Free shipping over CHF 65"; else O1="Jetzt shoppen -> dein Look"; O4="Gratis Versand ab CHF 65"; fi
 
 CAPBOX="drawbox=x=0:y=1560:w=1080:h=340:color=black@0.42:t=fill,drawbox=x=80:y=1665:w=8:h=150:color=${GOLD}:t=fill"
@@ -39,6 +49,7 @@ for line in "${LINES[@]}"; do
       "[0:v]scale=2160:3840:force_original_aspect_ratio=increase,crop=2160:3840,setsar=1,zoompan=${ZP}:d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1080x1920:fps=${FPS},${CAPBOX},${CAPTXT}${HOOKTXT}[v]" \
       -map "[v]" -t $SEG -r $FPS -c:v libx264 -pix_fmt yuv420p -crf 19 -preset veryfast "$W/seg$idx.mp4"
   fi
+  echo "DEBUG seg$idx ($typ): $(ffprobe -v error -show_entries format=duration -of csv=p=0 "$W/seg$idx.mp4" 2>/dev/null)s"
   idx=$((idx+1))
 done
 [ "$idx" -ge 2 ] || { echo "zu wenige gueltige Segmente"; exit 1; }
@@ -62,6 +73,7 @@ done
 fc+="[${prev}]format=yuv420p,drawtext=fontfile=${SANS}:text='luxestyle.ch':fontcolor=white:fontsize=38:x=(w-text_w)/2:y=64:alpha=0.85:shadowcolor=black@0.6:shadowx=2:shadowy=2[vout]"
 $FF $inputs -filter_complex "$fc" -map "[vout]" -r $FPS -c:v libx264 -pix_fmt yuv420p -crf 19 -preset medium "$W/silent.mp4"
 VD=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$W/silent.mp4")
+echo "DEBUG silent VD=${VD}s (Stimme DUR=${DUR}s)"
 FADE=$(python3 -c "print(max(0,$VD-1.4))")
 $FF -i "$W/silent.mp4" -i "$VOICE" -i "$MUSIC" -filter_complex \
   "[1:a]loudnorm=I=-15:TP=-1.5[vo];[2:a]volume=0.16,afade=t=in:st=0:d=0.6,afade=t=out:st=${FADE}:d=1.4[mu];[vo][mu]amix=inputs=2:duration=first:dropout_transition=0[a]" \
