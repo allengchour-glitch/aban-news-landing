@@ -126,3 +126,18 @@
 - **Gestaffelt:** je 1 Post/Lauf (MAX_PER_RUN=1) + `scheduled_date`-Gate → kein Spam. User postet TikTok selbst.
 - **Tokens (Secrets, funktionieren):** IG_USER_ID + (IG_ACCESS_TOKEN/META_ACCESS_TOKEN), FB_PAGE_ID + FB_PAGE_ACCESS_TOKEN
   (oder META_ACCESS_TOKEN), THREADS_USER_ID + THREADS_ACCESS_TOKEN.
+
+## 🎨 POD-Meisterwerk-Seite "Selbst gestalten" (2026-06-08 nacht) — produkt-first + Gemini-Loop
+- **Shopify-Page** gid://shopify/Page/698444710273 (handle `selbst-gestalten`) komplett neu: **PRODUKT-FIRST**
+  (User: "Kunden wollen zuerst Produkte sehen, nicht Text") — 26 wunschdesign-Produktkarten (Bild/Name/ab-Preis/
+  "Gestalten→", Links /products/<handle>) ganz oben, Erklärung/Steps/FAQ danach. Marken-Gold #c1922f, mobil-first.
+- **Pipeline (im Repo, wiederverwendbar):** `dropship/pod/gen_page.mjs` (Generator, liest `wunsch_raw.json`) →
+  `dropship/pod/page_body.html` → `automation/update_pod_page.mjs` (Shopify Client-Credentials pageUpdate) +
+  Workflow `pod-page-update.yml`. **Shopify-Creds (SHOPIFY_SHOP/CLIENT_ID/CLIENT_SECRET) sind gesetzt & funktionieren** ✅.
+- **Gemini-Kritik-Loop:** `automation/gemini_page_critique.mjs` + `pod-page-critique.yml` (GEMINI_API_KEY-Secret) →
+  Kritik nach `dropship/pod/gemini-critique.md`. Runde 1 (7.5/10) → v2 umgesetzt: Kategorie-Filter (Kleidung/Taschen/
+  Accessoires, data-cat + JS), Sticky-CTA, Preis-Klarheit, Step-Icons, ehrliche Trust-Zeile (KEINE Fake-Reviews),
+  Ideen-Chips. Runde 2 fand echten Bug (Count-Inkonsistenz 26 vs 120+) → v2.1: "100+ Farben&Grössen" + Desktop-Sticky.
+- **Offen/optional (Gemini):** echte Kundenbewertungen (Judge.me, sobald vorhanden) + Beispiel-Design-Galerie (braucht
+  Mockup-Assets). Bewusst weggelassen, keine Fake-Inhalte.
+- Storefront-Cache braucht ~Minuten nach pageUpdate (Admin-API ist sofort aktuell). URL: luxestyle.ch/pages/selbst-gestalten
