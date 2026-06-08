@@ -317,6 +317,9 @@ BRANCHEN = {
     "gartenmoebel":        ("Gartenmöbel",          ["Produkttexte & Social,", "nicht die Materialberatung"]),
     "fahrradverleih":      ("Fahrradverleih",       ["Angebote & Touren,", "nicht die Übergabe"]),
     "koffergeschaeft":     ("Koffergeschäfte",      ["Produkttexte & Reisetipps,", "nicht die Airline-Regeln"]),
+    "antiquitaetenhandel": ("Antiquitätenhandel",   ["Beschreibungen & Listings,", "nicht die Echtheitsprüfung"]),
+    "pfandhaus":           ("Pfandhäuser",          ["Erklär- & Service-Texte,", "nicht die Wertschätzung"]),
+    "gartenpflege":        ("Gartenpflege",         ["Angebote & Saisontipps,", "nicht die Vor-Ort-Arbeit"]),
 }
 
 
