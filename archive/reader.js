@@ -44,6 +44,40 @@
     body.insertBefore(nav, body.firstChild);
   }
 
+  /* ---------- Teilen ---------- */
+  (function () {
+    var url = location.href.split('#')[0];
+    var title = (document.title || '').replace(/\s*\|\s*aban news\s*$/, '');
+    var u = encodeURIComponent(url), t = encodeURIComponent(title);
+    var share = document.createElement('div');
+    share.className = 'issue-share';
+    share.innerHTML =
+      '<span class="is-l">Teilen:</span>' +
+      '<a class="is-b" target="_blank" rel="noopener" aria-label="Auf X teilen" href="https://twitter.com/intent/tweet?url=' + u + '&text=' + t + '">𝕏</a>' +
+      '<a class="is-b" target="_blank" rel="noopener" aria-label="Auf LinkedIn teilen" href="https://www.linkedin.com/sharing/share-offsite/?url=' + u + '">in</a>' +
+      '<a class="is-b" target="_blank" rel="noopener" aria-label="Per WhatsApp teilen" href="https://wa.me/?text=' + t + '%20' + u + '">WA</a>' +
+      '<button type="button" class="is-b is-copy" aria-label="Link kopieren">Link</button>';
+    var copyBtn = share.querySelector('.is-copy');
+    copyBtn.addEventListener('click', function () {
+      var done = function () {
+        var old = copyBtn.textContent;
+        copyBtn.textContent = '✓'; copyBtn.classList.add('copied');
+        setTimeout(function () { copyBtn.textContent = old; copyBtn.classList.remove('copied'); }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done, done);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = url; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta); done();
+      }
+    });
+    var pager = article.querySelector('.pager') || document.querySelector('.pager');
+    if (pager && pager.parentNode) pager.parentNode.insertBefore(share, pager);
+    else article.appendChild(share);
+  })();
+
   /* ---------- 3) Mehr zum Thema (verwandte Ausgaben) ---------- */
   var path = location.pathname.replace(/index\.html$/, '');
   fetch('/archive/topics.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (data) {
