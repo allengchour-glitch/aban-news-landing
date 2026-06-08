@@ -52,7 +52,7 @@ try{
 // Token: entweder statisch (SHOPIFY_ADMIN_TOKEN) ODER pro Lauf frisch aus Client-Credentials
 // (Shopify 2026: kein shpat_-Knopf mehr → POST /admin/oauth/access_token, grant_type=client_credentials).
 async function getToken(){
-  if(TOK_STATIC) return TOK_STATIC;
+  if(!(CID && CSECRET) && TOK_STATIC) return TOK_STATIC;
   if(SHOP && CID && CSECRET){
     const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',
       headers:{'Content-Type':'application/json'},
