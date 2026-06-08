@@ -1,0 +1,81 @@
+name: LuxeStyle Meisterwerk-Werbung (DE + EN)
+
+# Rendert die Premium-Werbung (9:16, ~30s) aus Veo-Clips (echte Bewegung, falls vorhanden) + Ken-Burns-Stills
+# + animierter Typo/Logo + ElevenLabs-Voiceover (Fallback Google-TTS) + geduckter Musik. DE & EN. Nur manuell.
+# Output: reels/luxestyle-werbung-meisterwerk-{de,en}.mp4 (+ -clean fuer Trend-Sound).
+
+on:
+  workflow_dispatch:
+    inputs:
+      stills:
+        description: 'Anzahl Still-Produkte aus good_products.csv'
+        type: string
+        default: '4'
+      veo_max:
+        description: 'Max. vorhandene Veo-Clips einbauen'
+        type: string
+        default: '2'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: masterpiece-ad
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: ffmpeg + Fonts
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+      - name: Manifest + Voiceover + Render (DE & EN)
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          NSTILL: ${{ github.event.inputs.stills || '4' }}
+          VEOMAX: ${{ github.event.inputs.veo_max || '2' }}
+        run: |
+          set -e
+          D=/tmp/mp; IMG=$D/img; mkdir -p "$IMG"; : > "$D/manifest.txt"
+          # 1) vorhandene Veo-Clips als bewegte Segmente (max VEOMAX)
+          vc=0
+          for f in reels/veo-hero-*.mp4; do
+            [ -e "$f" ] || continue
+            printf 'veo|%s|\n' "$f" >> "$D/manifest.txt"; vc=$((vc+1))
+            [ "$vc" -ge "$VEOMAX" ] && break
+          done
+          echo "Veo-Clips eingebaut: $vc"
+          # 2) Stills aus good_products.csv (Bilder laden) — als temp-Datei, dann in Manifest
+          k=0
+          tail -n +2 automation/good_products.csv | head -n "$NSTILL" > "$D/rows.csv" || true
+          while IFS= read -r line; do
+            [ -z "$line" ] && continue
+            url=$(printf '%s' "$line" | cut -d, -f2); label=$(printf '%s' "$line" | cut -d, -f3)
+            k=$((k+1))
+            if curl -sL --fail "$url" -o "$IMG/$k.jpg"; then
+              printf 'still|%s|%s\n' "$IMG/$k.jpg" "$label" >> "$D/manifest.txt"
+            fi
+          done < "$D/rows.csv"
+          echo "=== Manifest ==="; cat "$D/manifest.txt"
+          # 3) Skripte (Zahlen ausgeschrieben; 'punkt c h' = .ch; 'Welcome zehn' = WELCOME10)
+          DE="Das ist LuxeStyle. Premium-Mode aus der Schweiz, Designer-Looks zu fairen Preisen. Kleider, Taschen und Accessoires fuer deinen Sommer. Oder gestalte dein eigenes Teil, dein Design, on-demand gedruckt. Gratis Versand ab fuenfundsechzig Franken. Zehn Prozent mit dem Code Welcome zehn. LuxeStyle punkt c h. Dein Look, deine Story."
+          EN="This is LuxeStyle. Premium Swiss fashion, designer looks at fair prices. Dresses, bags and accessories for your summer. Or design your own piece, your design, printed on demand. Free shipping over sixty-five francs. Ten percent off with the code Welcome ten. LuxeStyle dot c h. Your look, your story."
+          bash dropship/ads/tts_eleven.sh de "$D/voice_de.wav" "$DE"
+          bash dropship/ads/tts_eleven.sh en "$D/voice_en.wav" "$EN"
+          mkdir -p reels
+          bash dropship/ads/render_masterpiece.sh reels/luxestyle-werbung-meisterwerk-de.mp4 "$D/voice_de.wav" automation/reel_music.m4a "$D/manifest.txt" de
+          bash dropship/ads/render_masterpiece.sh reels/luxestyle-werbung-meisterwerk-en.mp4 "$D/voice_en.wav" automation/reel_music.m4a "$D/manifest.txt" en
+          ls -la reels/luxestyle-werbung-meisterwerk-*.mp4
+      - name: Commit
+        run: |
+          git config user.name  "meisterwerk-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add reels/luxestyle-werbung-meisterwerk-*.mp4
+          git commit -m "Meisterwerk-Werbung LuxeStyle DE+EN (Veo+Stills+ElevenLabs+Musik) [skip ci]" || { echo "nichts"; exit 0; }
+          for i in 1 2 3 4 5; do
+            if git push; then echo gepusht; break; fi
+            git pull --rebase --autostash origin main || true; sleep 3
+          done
