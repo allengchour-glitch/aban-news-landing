@@ -19,7 +19,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SCRIPTS = os.path.join(HERE, "aban_scripts.json")
 UPLOADED = os.path.join(HERE, "uploaded.json")
 VIDEO_IDS = os.path.join(HERE, "video_ids.json")
-SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
+SCOPES = ["https://www.googleapis.com/auth/youtube.upload",
+          "https://www.googleapis.com/auth/youtube.force-ssl"]  # force-ssl = deutsche CC hochladen
 
 
 def get_service():
@@ -86,7 +87,25 @@ def upload(svc, ep, sc, path, privacy):
         _, resp = req.next_chunk()
     vid = resp["id"]
     print(f"[{ep}] hochgeladen -> https://youtube.com/watch?v={vid}", flush=True)
+    upload_caption_de(svc, ep, vid)
     return vid
+
+
+def upload_caption_de(svc, ep, vid):
+    """Deutsche CC-Spur hochladen, falls srt/<ep>.de.srt existiert. Best-effort:
+    braucht youtube.force-ssl-Scope; bei fehlendem Scope nur Hinweis, kein Abbruch."""
+    from googleapiclient.http import MediaFileUpload
+    srt = os.path.join(HERE, "srt", f"{ep}.de.srt")
+    if not os.path.exists(srt):
+        return
+    try:
+        body = {"snippet": {"videoId": vid, "language": "de", "name": "Deutsch", "isDraft": False}}
+        media = MediaFileUpload(srt, mimetype="application/octet-stream", resumable=False)
+        svc.captions().insert(part="snippet", body=body, media_body=media).execute()
+        print(f"[{ep}] deutsche CC-Spur hochgeladen.", flush=True)
+    except Exception as e:
+        print(f"[{ep}] CC-Upload uebersprungen ({str(e)[:80]}). "
+              f"-> YouTube force-ssl-Scope noetig oder .srt manuell in Studio hochladen.", flush=True)
 
 
 def main():
