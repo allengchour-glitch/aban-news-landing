@@ -22,14 +22,14 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
 const KEYWORDS = [
-  { kw: 'gold cuff bangle women',      must: ['bangle'],   take: 1 },
-  { kw: 'gemstone pendant necklace',   must: ['pendant'],  take: 1 },
-  { kw: 'silk headband women',         must: ['headband'], take: 1 },
-  { kw: 'mens woven leather belt',     must: ['belt'],     take: 1 },
-  { kw: 'crossbody phone bag women',   must: ['phone'],    take: 1 },
-  { kw: 'beaded charm bracelet',       must: ['bracelet'], take: 1 },
-  { kw: 'decorative table clock',      must: ['clock'],    take: 1 },
-  { kw: 'large pearl claw clip',       must: ['clip'],     take: 1 },
+  { kw: 'satin slip midi dress women', must: ['dress'],    take: 1 },
+  { kw: 'linen blazer women oversized',must: ['blazer'],   take: 1 },
+  { kw: 'gold hoop earrings stainless',must: ['earring'],  take: 1 },
+  { kw: 'crossbody bag leather women', must: ['bag'],      take: 1 },
+  { kw: 'ceramic vase home decor',     must: ['vase'],     take: 1 },
+  { kw: 'scented reed diffuser set',   must: ['diffuser'], take: 1 },
+  { kw: 'mens polo shirt slim fit',    must: ['polo'],     take: 1 },
+  { kw: 'cat eye sunglasses women uv', must: ['sunglass'], take: 1 },
 ];
 
 let _b, _ctx;
