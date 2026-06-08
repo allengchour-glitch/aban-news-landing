@@ -103,11 +103,18 @@ jobs:
             curl -sL --fail "$url" -o "$IMG/$k.jpg" && printf 'still|%s|%s\n' "$IMG/$k.jpg" "$label" >> "$D/manifest.txt" || true
           done < "$D/rows.csv"
           echo "=== Manifest ==="; cat "$D/manifest.txt"
+          if [ "$CONCEPT" = "print" ]; then
+            MUSIC_PROMPT="upbeat playful modern pop beat, energetic and fun, creative maker vibe, bright synths and claps, no vocals, social media ad, loopable"
+          else
+            MUSIC_PROMPT="upbeat modern fashion beat, stylish and energetic, driving drums and bright synths, premium social media ad, no vocals, loopable"
+          fi
+          MUSICFILE="$D/music.m4a"
+          bash dropship/ads/gen_music.sh "$MUSICFILE" "$MUSIC_PROMPT" 28000
           bash dropship/ads/tts_eleven.sh de "$D/voice_de.wav" "$DE"
           bash dropship/ads/tts_eleven.sh en "$D/voice_en.wav" "$EN"
           mkdir -p reels
-          bash dropship/ads/render_masterpiece.sh "reels/${OUTBASE}-de.mp4" "$D/voice_de.wav" automation/reel_music.m4a "$D/manifest.txt" de "$HOOK_DE"
-          bash dropship/ads/render_masterpiece.sh "reels/${OUTBASE}-en.mp4" "$D/voice_en.wav" automation/reel_music.m4a "$D/manifest.txt" en "$HOOK_EN"
+          bash dropship/ads/render_masterpiece.sh "reels/${OUTBASE}-de.mp4" "$D/voice_de.wav" "$MUSICFILE" "$D/manifest.txt" de "$HOOK_DE"
+          bash dropship/ads/render_masterpiece.sh "reels/${OUTBASE}-en.mp4" "$D/voice_en.wav" "$MUSICFILE" "$D/manifest.txt" en "$HOOK_EN"
           ls -la reels/${OUTBASE}-*.mp4
 
       - name: Commit
