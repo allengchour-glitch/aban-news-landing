@@ -211,3 +211,8 @@
 /schnellstart        /ki-schnellstart.html  301
 /ki-schnellstart     /ki-schnellstart.html  301
 /ki-einfuehrung      /ki-schnellstart.html  301
+
+# Angebote/Preise
+/preise              /angebote.html  301
+/angebote            /angebote.html  301
+/pricing             /angebote.html  301
