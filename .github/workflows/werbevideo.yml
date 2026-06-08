@@ -1,32 +1,40 @@
 name: "🎬 Werbevideo erstellen (1 Klick, DE+EN)"
 
-# EIN Tool: generiert (optional) Veo-Bewegung fuer ausgewaehlte Produkte UND rendert die fertige
-# Werbung (9:16, hook-first, ~20-25s) auf Deutsch + Englisch — in einem Lauf.
-# Stimme: ElevenLabs (Secret ELEVENLABS_API_KEY) sonst Google-TTS-Fallback. Musik geduckt + Clean-Version.
+# EIN Tool, 2 Konzepte: 'fashion' (Katalog) oder 'print' (Selbst gestalten). Generiert optional Veo-Bewegung
+# + rendert die fertige Werbung 9:16 hook-first DE+EN (ElevenLabs-Stimme, sonst Google-Fallback; Musik + Clean).
 
 on:
   workflow_dispatch:
     inputs:
+      concept:
+        description: 'Konzept'
+        type: choice
+        default: 'fashion'
+        options: [ 'fashion', 'print' ]
       heroes:
-        description: 'Produkt-namen fuer echte Veo-Bewegung (Komma-Liste aus good_products.csv; leer = nur Stills)'
+        description: 'Produkt-namen fuer echte Veo-Bewegung (Komma-Liste; leer = nur Stills)'
         type: string
         default: ''
       stills:
-        description: 'Anzahl Still-Produkte (Ken-Burns)'
+        description: 'Anzahl Still-Produkte'
         type: string
         default: '6'
       seconds:
         description: 'Veo Clip-Sekunden (4/6/8)'
         type: string
         default: '4'
+      source:
+        description: 'CSV-Quelle (leer = automatisch nach Konzept)'
+        type: string
+        default: ''
       hook_de:
-        description: 'Hook DE (erste ~2s)'
+        description: 'Hook DE (leer = Konzept-Default)'
         type: string
-        default: 'Designer-Look. Fairer Preis.'
+        default: ''
       hook_en:
-        description: 'Hook EN'
+        description: 'Hook EN (leer = Konzept-Default)'
         type: string
-        default: 'Designer looks. Fair prices.'
+        default: ''
 
 permissions:
   contents: write
@@ -60,33 +68,49 @@ jobs:
         env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          CONCEPT: ${{ github.event.inputs.concept || 'fashion' }}
           NSTILL: ${{ github.event.inputs.stills || '6' }}
-          HOOK_DE: ${{ github.event.inputs.hook_de }}
-          HOOK_EN: ${{ github.event.inputs.hook_en }}
+          SRC_IN: ${{ github.event.inputs.source }}
+          HOOK_DE_IN: ${{ github.event.inputs.hook_de }}
+          HOOK_EN_IN: ${{ github.event.inputs.hook_en }}
         run: |
           set -e
           D=/tmp/wv; IMG=$D/img; mkdir -p "$IMG"; : > "$D/manifest.txt"
+          if [ "$CONCEPT" = "print" ]; then
+            SRC="${SRC_IN:-dropship/ads/good_products_print.csv}"
+            HOOK_DE="${HOOK_DE_IN:-Dein Design. Dein Teil.}"
+            HOOK_EN="${HOOK_EN_IN:-Your design. Your piece.}"
+            DE="Dein Design, dein Teil. Bei LuxeStyle gestaltest du dein eigenes T-Shirt, Hoodie, Tasche oder Tasse, mit deinem Spruch, Motiv oder Logo. Waehle dein Produkt, lade dein Design hoch, fertig. On-demand gedruckt, kein Lager, keine Mindestmenge. Jetzt selbst gestalten auf LuxeStyle punkt c h."
+            EN="Your design, your piece. At LuxeStyle you create your own t-shirt, hoodie, bag or mug, with your slogan, artwork or logo. Pick your product, upload your design, done. Printed on demand, no inventory, no minimum. Start designing at LuxeStyle dot c h."
+            OUTBASE="werbung-selbst-gestalten"
+          else
+            SRC="${SRC_IN:-automation/good_products.csv}"
+            HOOK_DE="${HOOK_DE_IN:-Designer-Look. Fairer Preis.}"
+            HOOK_EN="${HOOK_EN_IN:-Designer looks. Fair prices.}"
+            DE="Das ist LuxeStyle. Premium-Mode aus der Schweiz, Designer-Looks zu fairen Preisen. Kleider, Taschen und Accessoires fuer deinen Sommer. Oder gestalte dein eigenes Teil, dein Design, on-demand gedruckt. Gratis Versand ab fuenfundsechzig Franken. Zehn Prozent mit dem Code Welcome zehn. Jetzt shoppen auf LuxeStyle punkt c h."
+            EN="This is LuxeStyle. Premium Swiss fashion, designer looks at fair prices. Dresses, bags and accessories for your summer. Or design your own piece, your design, printed on demand. Free shipping over sixty-five francs. Ten percent off with the code Welcome ten. Shop now at LuxeStyle dot c h."
+            OUTBASE="werbung-luxestyle"
+          fi
+          echo "Konzept=$CONCEPT  Quelle=$SRC  Out=$OUTBASE"
           for f in reels/veo-hero-*.mp4; do [ -e "$f" ] && printf 'veo|%s|\n' "$f" >> "$D/manifest.txt" || true; done
           k=0
-          tail -n +2 automation/good_products.csv | head -n "$NSTILL" > "$D/rows.csv" || true
+          tail -n +2 "$SRC" | head -n "$NSTILL" > "$D/rows.csv" || true
           while IFS= read -r line; do
             [ -z "$line" ] && continue
             url=$(printf '%s' "$line" | cut -d, -f2); label=$(printf '%s' "$line" | cut -d, -f3); k=$((k+1))
             curl -sL --fail "$url" -o "$IMG/$k.jpg" && printf 'still|%s|%s\n' "$IMG/$k.jpg" "$label" >> "$D/manifest.txt" || true
           done < "$D/rows.csv"
           echo "=== Manifest ==="; cat "$D/manifest.txt"
-          DE="Das ist LuxeStyle. Premium-Mode aus der Schweiz, Designer-Looks zu fairen Preisen. Kleider, Taschen und Accessoires fuer deinen Sommer. Oder gestalte dein eigenes Teil, dein Design, on-demand gedruckt. Gratis Versand ab fuenfundsechzig Franken. Zehn Prozent mit dem Code Welcome zehn. Jetzt shoppen auf LuxeStyle punkt c h."
-          EN="This is LuxeStyle. Premium Swiss fashion, designer looks at fair prices. Dresses, bags and accessories for your summer. Or design your own piece, your design, printed on demand. Free shipping over sixty-five francs. Ten percent off with the code Welcome ten. Shop now at LuxeStyle dot c h."
           bash dropship/ads/tts_eleven.sh de "$D/voice_de.wav" "$DE"
           bash dropship/ads/tts_eleven.sh en "$D/voice_en.wav" "$EN"
           mkdir -p reels
-          bash dropship/ads/render_masterpiece.sh reels/werbung-luxestyle-de.mp4 "$D/voice_de.wav" automation/reel_music.m4a "$D/manifest.txt" de "$HOOK_DE"
-          bash dropship/ads/render_masterpiece.sh reels/werbung-luxestyle-en.mp4 "$D/voice_en.wav" automation/reel_music.m4a "$D/manifest.txt" en "$HOOK_EN"
-          ls -la reels/werbung-luxestyle-*.mp4
+          bash dropship/ads/render_masterpiece.sh "reels/${OUTBASE}-de.mp4" "$D/voice_de.wav" automation/reel_music.m4a "$D/manifest.txt" de "$HOOK_DE"
+          bash dropship/ads/render_masterpiece.sh "reels/${OUTBASE}-en.mp4" "$D/voice_en.wav" automation/reel_music.m4a "$D/manifest.txt" en "$HOOK_EN"
+          ls -la reels/${OUTBASE}-*.mp4
 
       - name: Commit
         run: |
           git config user.name "werbevideo-bot"; git config user.email "actions@users.noreply.github.com"
-          git add reels/werbung-luxestyle-*.mp4 reels/veo-hero-*.mp4 2>/dev/null || true
+          git add reels/werbung-*.mp4 reels/veo-hero-*.mp4 2>/dev/null || true
           git commit -m "Werbevideo LuxeStyle DE+EN (1-Klick, hook-first) [skip ci]" || { echo nichts; exit 0; }
           for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
