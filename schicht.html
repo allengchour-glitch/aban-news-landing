@@ -108,6 +108,7 @@
         <a class="btn btn--ghost" href="#baende">Die Bände ansehen</a>
       </div>
       <span class="dl-state" data-dl-state="gesamt" data-dl-label="✓ Gesamtausgabe geladen am" hidden></span>
+      <p class="cta-fine" style="margin-top:.7rem">Gratis, ohne Anmeldung. Wenn es dich packt: <a href="#support" style="color:var(--amber-dk);font-weight:700;text-decoration:none">zahl, was es dir wert ist ↓</a></p>
     </div>
 
     <p class="welcome" data-resume data-resume-text="Willkommen zurück — zuletzt warst du am %d hier." hidden></p>
@@ -182,6 +183,13 @@
       <p class="how">Fertig: drei Bände, 48 Kapitel, durchgehend redigiert. Lad es oben als ePub (für E-Reader, Kindle per „An Kindle senden“ und jede Lese-App) oder als PDF (zum Lesen am Bildschirm oder zum Drucken). Gratis, ohne Anmeldung, ohne Tracking. Keine erfundenen Bewertungen, kein Erscheinungs-Hype: Es ist da, lies es oder lass es.</p>
     </section>
 
+    <div class="cta-box" id="support">
+      <h2>Zahl, was es dir wert ist</h2>
+      <p>„Schicht“ bleibt gratis — drei Bände, 48 Kapitel, kein Konto, kein Tracking. Wenn dich das Revier gepackt hat, kannst du den Autor direkt unterstützen: frei wählbarer Betrag, sichere Zahlung, ohne Abo. Das hält Schreiben wie dieses am Leben.</p>
+      <a class="btn" id="buybtn" href="#" rel="noopener">Was ist es dir wert? →</a>
+      <p class="cta-fine">PDF &amp; ePub · DE „Schicht“ + EN „The Seam“ · einmalig, ohne Konto</p>
+    </div>
+
     <div class="cta-box">
       <h2>Das Buch ist gratis — der Newsletter auch</h2>
       <p>Wenn dir das Revier gefallen hat: aban news liefert Mo–Fr in 5 Minuten die drei KI-Entwicklungen, die dein Business heute betreffen. Kein Hype, kein Spam, Abmeldung per Klick.</p>
@@ -203,6 +211,24 @@
     <span><a href="/">Startseite</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></span>
   </div>
 </footer>
+
+<!-- PWYW-Support: Lemon-Squeezy-Link EINMAL hier eintragen. Leer -> Mail-Fallback (kein toter Button). -->
+<script>
+  // Sobald das Lemon-Squeezy-Produkt existiert, hier den Checkout-/Buy-Link eintragen,
+  // z.B. "https://abannews.lemonsqueezy.com/buy/xxxxxxxx". Leer lassen -> Mail-Fallback.
+  var SCHICHT_BUY_URL = "";
+  (function(){
+    var b = document.getElementById("buybtn");
+    if(!b) return;
+    if(SCHICHT_BUY_URL){
+      b.href = SCHICHT_BUY_URL; b.target = "_blank"; b.rel = "noopener";
+    } else {
+      b.href = "mailto:hallo@abannews.com?subject=" +
+        encodeURIComponent("Schicht — unterstützen / kaufen") +
+        "&body=" + encodeURIComponent("Hallo Aban, ich möchte „Schicht“ unterstützen. Wie kann ich zahlen?");
+    }
+  })();
+</script>
 
 <!-- Lese-/Fortschritt-Memory: nur lokal (localStorage), kein Tracking. -->
 <script src="/js/buch-memory.js"></script>
