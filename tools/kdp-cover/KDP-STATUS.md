@@ -1,9 +1,14 @@
 # KDP-Status — echter Katalog (aban news / Pen-Names)
 
-> Register aller KDP-Titel + Upload-Status. **Quelle der Wahrheit fürs Tracking.**
-> Getrennt von `build_book.py` (das nur die *baubaren* Low-Content-Bücher kennt:
-> ADHD, Mileage). Bücher aus anderen Pipelines (Romane, externe Workbooks) werden
-> hier nur **verzeichnet**, nicht gebaut. Stand: 2026-06-03.
+> ⛔ **KDP-KONTO GESCHLOSSEN (7. Juni 2026, Fall 50155774).** Amazon hat das
+> Konto endgültig geschlossen und alle Bücher aus dem Verkauf genommen; Widerspruch
+> abgelehnt. **Keine neuen KDP-Konten eröffnen** (ToS-Verstoß, gefährdet auch das
+> Amazon-Einkaufskonto). Die unten gelisteten KDP-Status sind damit historisch.
+> **Weiter geht's über Direktvertrieb** (Lemon Squeezy via `schicht.html`, PWYW) und
+> Amazon-unabhängige Aggregatoren (Draft2Digital/Kobo/Apple). Manuskripte gehören uns,
+> liegen im Repo (`ki-schriftsteller/`, `downloads/`). Lehre: nicht auf einen Kanal setzen.
+>
+> Register aller KDP-Titel + Upload-Status (historisch). Stand: 2026-06-08.
 
 | Buch | Format | Status | Preis | ASIN | Pipeline |
 |------|--------|--------|-------|------|----------|
