@@ -293,6 +293,9 @@ BRANCHEN = {
     "gewuerzhandel":       ("Gewürzhandel",         ["Produkttexte & Rezepte,", "keine Heilversprechen"]),
     "bettenfachgeschaeft": ("Bettenfachgeschäft",   ["Produkttexte & Social,", "nicht das Probeliegen"]),
     "lampengeschaeft":     ("Lampengeschäfte",      ["Produkttexte & Lichttipps,", "nicht die Installation"]),
+    "briefmarkenhandel":   ("Briefmarkenhandel",    ["Beschreibungen & Listings,", "nicht die Echtheitsprüfung"]),
+    "fahrradladen":        ("Fahrradläden",         ["Produkttexte & Service,", "nicht die Reparatur-Diagnose"]),
+    "parfuemerie":         ("Parfümerien",          ["Dufttexte & Social,", "nicht die Hautberatung"]),
 }
 
 
