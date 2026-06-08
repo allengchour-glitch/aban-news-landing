@@ -132,6 +132,7 @@ textarea{min-height:84px;resize:vertical}
 .result h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:8px}
 .result .out{white-space:pre-wrap;font-size:1rem;line-height:1.65}
 .result .rowbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.reslink{margin-top:12px;font-size:.88rem;color:var(--muted)}.reslink a{font-weight:600}
 .copied{color:var(--ok)!important}
 /* Pro */
 .pro{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:26px}
@@ -259,6 +260,7 @@ footer a{color:var(--muted)}
         <div class="rowbtns">
           <button class="btn ghost" id="t-copy">In Zwischenablage kopieren</button>
         </div>
+        <p class="reslink" id="t-more"></p>
       </div>
       <div class="upsell" id="t-upsell">
         <b>Tageslimit erreicht.</b> Für unbegrenzte Texte und <b>echte KI</b> statt Vorlagen: <a href="#pro">Pro freischalten →</a>
@@ -368,8 +370,8 @@ footer a{color:var(--muted)}
     <a class="btn" href="https://abannews.beehiiv.com/subscribe">Newsletter gratis abonnieren</a>
   </div>
 
-  <section class="faq">
-    <h2>Häufige Fragen</h2>
+  <section class="faq" id="hilfe">
+    <h2>Häufige Fragen &amp; Hilfe</h2>
     <details><summary>Brauche ich Vorkenntnisse, um das Tool zu nutzen?</summary><p>Nein. Du wählst deine Branche, sagst in Stichworten, worum es geht, und drückst auf Erstellen. Es gibt eine Schritt-für-Schritt-Anleitung direkt auf der Seite, gedacht auch für Anfänger ohne KI-Erfahrung.</p></details>
     <details><summary>Ist das Tool kostenlos?</summary><p>Ja, du kannst gratis starten: pro Tag sind mehrere Texte und ein Fahrplan kostenlos. Wer mehr braucht, schaltet Pro frei — unbegrenzte Nutzung, echte KI statt Vorlagen, Export und mehr.</p></details>
     <details><summary>Werden meine Eingaben hochgeladen?</summary><p>In der Gratis-Version nicht: Die Texte werden direkt in deinem Browser aus geprüften Vorlagen erstellt, nichts verlässt dein Gerät. Die spätere Pro-Version nutzt echte KI; dabei wird dein Text an einen KI-Dienst gesendet — das steht dann klar dabei.</p></details>
@@ -587,13 +589,20 @@ footer a{color:var(--muted)}
     out += "3) Im nächsten Monat\n   Einen zweiten Bereich dazunehmen (z. B. Bewertungen oder Newsletter). Immer nur einen Schritt auf einmal.\n\n";
     out += "4) Dauerhaft\n   "+teamLine+"\n\n";
     out += "CHECKLISTE\n   [ ] 5 häufigste "+z.t.toLowerCase()+" aufgeschrieben\n   [ ] Für jede eine KI-Vorlage erstellt\n   [ ] Vorlagen an einem Ort gespeichert\n   [ ] Eine Woche getestet und verbessert\n   [ ] Ergebnis gemessen (gesparte Zeit / mehr Anfragen)\n\n";
-    out += "Mehr für „"+br+"“: abannews.com/ki-fuer-"+slug+".html";
+    var href = slug ? ("abannews.com/ki-fuer-"+slug+".html") : "abannews.com/online-tools.html";
+    out += "Mehr für „"+br+"“: "+href;
     return out;
   }
+  // Branchen-Slug → existierende ki-fuer-<slug>.html (alle Werte verifiziert vorhanden).
+  // Ohne passende Seite: "" → Fallback auf /online-tools.html (statt 404).
   function brancheSlug(b){
-    var m={"Friseur":"friseure","Restaurant":"restaurants","Bäckerei":"baeckereien","Kosmetik":"kosmetikstudios","Fitness":"fitnessstudios","KFZ":"kfz-werkstaetten","Handwerk":"maler","Einzelhandel":"einzelhandel","Online":"online-shop","Praxis":"physiotherapeuten","Immobilien":"immobilienmakler","Hotel":"hotels","Floristik":"floristen","Fotografie":"fotografen","Beratung":"unternehmensberater","Reinigung":"reinigungsfirmen","Garten":"garten-landschaftsbau","Tierservice":"hundesalons","Schmuck":"goldschmiede"};
+    var m={"Friseur":"friseure","Restaurant":"gastronomie","Bäckerei":"baeckereien","Kosmetik":"kosmetikstudios","Fitness":"fitnessstudios","KFZ":"kfz-werkstaetten","Handwerk":"maler","Online":"onlineshops","Praxis":"physiotherapeuten","Immobilien":"immobilienmakler","Hotel":"hotels","Floristik":"floristen","Fotografie":"fotografen","Beratung":"unternehmensberater","Reinigung":"reinigungsfirmen","Garten":"garten-landschaftsbau","Tierservice":"hundesalon","Schmuck":"goldschmiede"};
     for(var key in m){ if(b.indexOf(key)===0) return m[key]; }
-    return "friseure";
+    return "";
+  }
+  function brancheHref(b){
+    var s = brancheSlug(b);
+    return s ? ("/ki-fuer-"+s+".html") : "/online-tools.html";
   }
 
   // ---- Verdrahtung: Texte -------------------------------------------------
@@ -619,6 +628,13 @@ footer a{color:var(--muted)}
     $("t-out").textContent = lastText;
     $("t-result").classList.add("show");
     $("t-again").style.display="inline-block";
+    var more=$("t-more");
+    if(more){
+      var brName = d.branche.replace(/\s*\(.*\)/,"");
+      more.innerHTML = '📌 Mehr KI-Tipps für '+brName+': '
+        + '<a href="'+brancheHref(d.branche)+'">Branchen-Guide ansehen</a> · '
+        + '<a href="#hilfe">Hilfe &amp; FAQ</a>';
+    }
     q.use(); refreshQuota();
     if(quota("aban_kw_text",FREE_TEXT_LIMIT).left<=0) $("t-upsell").classList.add("show");
   }
