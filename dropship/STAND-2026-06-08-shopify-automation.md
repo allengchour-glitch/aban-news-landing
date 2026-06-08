@@ -97,3 +97,14 @@
 - **ElevenLabs-Key vom User neu gesetzt** → beide Videos neu gerendert mit echter Musik (gen_music.sh, instrumental)
   + ElevenLabs-Stimme. Fashion-Heroes-Reihenfolge: brise(Opener)→daisy→sirène→nuit→cosy.
 - Commit 48263c54. Weiterhin NICHT gepostet.
+
+## 📣 Posting-Status + Stil (2026-06-08 spät)
+- **User postet TikTok selbst** (hat 1 Werbevideo manuell auf TikTok gepostet). **Claude soll IG + FB + Threads** übernehmen
+  („mach du die andere 3"). → Posting jetzt FREIGEGEBEN (vorher „erst später").
+- **Musik final = lizenzfreier House-Track** (Mixkit, kommerziell frei) `dropship/ads/ad_music.mp3`; Stimme = Google
+  (User: ElevenLabs zu teuer/leer). gen_music.sh Fallback zeigt auf ad_music.mp3.
+- **Video-Posting-Weg:** `social/meta_post.mjs` postet IG-Reels (media_type=REELS, video_url) + FB-Page-Video (file_url)
+  von ÖFFENTLICHER URL. Reels sind unter `https://abannews.com/reels/<datei>.mp4` erreichbar (200, GitHub Pages).
+  ⚠️ Threads-VIDEO ist in meta_post.mjs NOCH NICHT drin (nur IG+FB). FB braucht gültigen Page-Token (früher gefehlt).
+- **Stil-Referenz vom User (gefällt ihm):** Graff-FB-Ad — enger Crop Model+Produkt, dunkler Hintergrund, großes
+  Marken-Logo mittig, shoppbare Produkt-Kacheln + „Jetzt kaufen". = Premium-Catalog-Look als Richtung für Bild-Ads.
