@@ -46,6 +46,12 @@
   **Abgelehnt:** Tiered-Party-Mini CJLY2924170 (sehr kurz/clubby, off-brand premium), Clip-Ohrringe CJLX2924392
   („Gu Xiang Li"-Wasserzeichen), Car-Clock CJYD2923711 (0.69$, off-theme Auto), + 3 Dubletten (Suede-Skirt, Herren-Set,
   «Fleur Noir»-Kleid). cj-real: 206 → **207.**
+- **✅ Charge 16 (Mode/Schuhe, alter Key):** Herren-Sommerhemd «Lido» Stehkragen Leinen-Look (5 Farben×5 Grössen=25 Var,
+  34.90, herren-mode/sommer) + Strand-Sandalen «Dorée» Metallic-Riemchen (6 Farben×10 Grössen=60 Var, 34.90,
+  schuhe/sommer). Beide live in 6 Kanälen, Media READY, SEO gesetzt, Farbnamen DE (Roségold/Rosarot/Hell-/Dunkelgold).
+  «Lido» statt «Riva» (Namenskollision mit Charge-9-Sandale vermieden). **Abgelehnt:** Herren-Trousers CJKT2924853
+  („NEWB"-Wasserzeichen-Infografik, low-res, „Winter heavyweight" off-season), Car-LED-Strip CJQC2922316 (off-theme Auto),
+  + 3 Dubletten (Beach-Dress «Maré», Acryl-Ohrringe, Boston-Bag «Lussa»). cj-real: 207 → **209.**
 - **🔧 Katalog-Hygiene (live via API, kein Repo-File):** (1) **SEO-Title+Description für alle 9 neuen Produkte**
   (Charges 11–15) ergänzt — vorher 0 SEO-Meta → jetzt Google-/Discovery-tauglich. (2) **Smart-Collection
   „💎 Herren-Schmuck" gefixt:** Regel war nur `TAG=Herren` → fing ALLE 181 Herren-Artikel (Jeans/Shirts) statt nur
