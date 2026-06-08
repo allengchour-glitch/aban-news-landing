@@ -290,6 +290,9 @@ BRANCHEN = {
     "zoofachhandel":       ("Zoofachhandel",        ["Produkttexte & Social,", "nicht die Tierberatung"]),
     "musikfachhandel":     ("Musikfachhandel",      ["Produkttexte & Listings,", "nicht das Klangurteil"]),
     "teppichhandel":       ("Teppichhandel",        ["Beschreibungen & Listings,", "nicht die Bewertung"]),
+    "gewuerzhandel":       ("Gewürzhandel",         ["Produkttexte & Rezepte,", "keine Heilversprechen"]),
+    "bettenfachgeschaeft": ("Bettenfachgeschäft",   ["Produkttexte & Social,", "nicht das Probeliegen"]),
+    "lampengeschaeft":     ("Lampengeschäfte",      ["Produkttexte & Lichttipps,", "nicht die Installation"]),
 }
 
 
