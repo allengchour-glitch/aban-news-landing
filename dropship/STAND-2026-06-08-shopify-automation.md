@@ -108,3 +108,21 @@
   ⚠️ Threads-VIDEO ist in meta_post.mjs NOCH NICHT drin (nur IG+FB). FB braucht gültigen Page-Token (früher gefehlt).
 - **Stil-Referenz vom User (gefällt ihm):** Graff-FB-Ad — enger Crop Model+Produkt, dunkler Hintergrund, großes
   Marken-Logo mittig, shoppbare Produkt-Kacheln + „Jetzt kaufen". = Premium-Catalog-Look als Richtung für Bild-Ads.
+
+## 📣 Social-Posting VOLL AUTOMATISIERT (2026-06-08 nacht) — Feed + Stories
+- **Feed-Videos:** `automation/video-autopost-meta.mjs` + `.github/workflows/video-meta-autopost.yml` (Cron 2×/Tag).
+  Queue `social/video_queue.csv`. Postet IG-Reel + FB-Page-Video + Threads-Video von ÖFFENTLICHER URL
+  (`https://abannews.com/reels/<datei>.mp4`). **LIVE getestet: IG+FB+Threads ALLE erfolgreich** (Fashion DE gepostet,
+  IDs IG 17967279882019494 / FB 2993507844185859 / Threads 18088917572624711). FB-Token zieht jetzt
+  (Page-Token via `/me/accounts` automatisch geholt — altes FB-Problem GELÖST).
+- **Stories:** `automation/story-autopost-meta.mjs` + `.github/workflows/story-meta-autopost.yml` (Cron 4×/Tag).
+  Queue `social/story_queue.csv` (type=image|video). IG-Stories (Bild+Video) + FB Foto-/Video-Story. Threads = keine Stories.
+  **LIVE getestet: IG-Video-Story ✅.**
+- **🔑 robots.txt-LEHRE:** Der FB-**rupload**-Fetcher (Video-Story) respektiert abannews.com/robots.txt → `403 Restricted
+  by robots.txt` beim `file_url`-Upload. FIX: Video-Bytes im Runner selbst laden + **binär** zu rupload hochladen
+  (`offset/file_size/Content-Type:octet-stream`). IG + FB-Feed-Video ziehen die URL problemlos (anderer Fetcher).
+- **Direktlinks in Feed-Captions:** Fashion → `luxestyle.ch/collections/sommer`, Print → `luxestyle.ch/collections/selbst-gestalten`
+  (beide 200). Stories haben per API KEINE Link-/Caption-Param → Marke steckt im Medium (Logo/Outro).
+- **Gestaffelt:** je 1 Post/Lauf (MAX_PER_RUN=1) + `scheduled_date`-Gate → kein Spam. User postet TikTok selbst.
+- **Tokens (Secrets, funktionieren):** IG_USER_ID + (IG_ACCESS_TOKEN/META_ACCESS_TOKEN), FB_PAGE_ID + FB_PAGE_ACCESS_TOKEN
+  (oder META_ACCESS_TOKEN), THREADS_USER_ID + THREADS_ACCESS_TOKEN.
