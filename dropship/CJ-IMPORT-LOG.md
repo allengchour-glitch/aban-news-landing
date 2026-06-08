@@ -41,7 +41,10 @@
   Risiko (§5) + schwaches Bild (auf schmutzigem Boden).
 - **✅ Charge 2 (Accessoires, alter Key):** Henkeltasche «Lune» `15421166059905` (4 Farben, 24.90) +
   Crossbody-Tasche «Nuit» `15421166092673` (3 Farben, 24.90) — live in 6 Kanälen. Abgelehnt: Clip-Ohrringe
-  (Wasserzeichen „Gu Xiang Li"), Kinder-Cartoon-Cap (Kids/IP §5), Deko-Gans-Kostüm (off-theme), Boston-Bag
+  (Wasserzeichen „Gu - **✅ Charge 8 (Mode, alter Key):** Boho-Jeansjacke «Dentelle» Spitzen-Panel `15421364896129` (44.90) +
+  Fransen-Minirock «Santa Fe» Wildleder-Optik `15421364928897` (5 Farben, 34.90). Live in 6 Kanälen.
+  Dublette übersprungen (Long-Weste «Resort»). cj-real: 189 → **191.**
+- **✅ Charge 7 (Ring + Gadgetiang Li"), Kinder-Cartoon-Cap (Kids/IP §5), Deko-Gans-Kostüm (off-theme), Boston-Bag
   (Dublette zu vorhandener «Lussa»). cj-real: 171 → **179**.
   ⚠️ Lehre: CJ-API-Key ≠ Konto-Passwort; liegt NUR im Developer-Portal (`developers.cjdropshipping.com` →
   `…/myCJ.html#/apikey`), Format `CJ<ID>@api@<32hex>`. Key nach Lauf rotieren. CJ-ID `CJ5452995`, Free-Tier.
@@ -70,7 +73,7 @@
 - **✅ Charge 5 (Schmuck, alter Key):** Statement-Ohrringe «Doré» gebürstetes Gold `15421171859841` (29.90) +
   Sommer-Armband «Évil» Schmetterling/Nazar `15421171892609` (5 Stile, 19.90) — live in 6 Kanälen. Abgelehnt:
   Hochzeits-Kartenbox (off-theme), Fruchtprint-Cap (Novelty). cj-real: 184 → **186** · **heute 15 Produkte live.**
-- **✅ Charge 7 (Ring + Gadget, alter Key):** Doppel-Ring «Duo» S925 Silber/Topas `15421328359809` (4 Ringgrössen,
+X, alter Key):** Doppel-Ring «Duo» S925 Silber/Topas `15421328359809` (4 Ringgrössen,
   49.90, → `premium-schmuck` zugefügt) + Boden-Ständer «FlexHold» `15421328425345` (24.90, Gadget). Live in 6 Kanälen.
   Abgelehnt: EMS-Gua-Sha (1 Bild + Geräte-Claims), Oval-Cushion-Ring ($116 §5), Silikon-Watch (zu billig/50 Var),
   Mikrofon (off-theme). cj-real: 187 → **189**.
