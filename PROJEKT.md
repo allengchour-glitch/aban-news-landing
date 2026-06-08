@@ -8,6 +8,11 @@
 > Pipeline (z. B. alter Schrift-/Layout-Bug, der in main längst gefixt ist).
 > Faustregel: **nie der Pipeline auf dem eigenen Branch trauen — erst gegen main abgleichen.**
 >
+> 🛑 **KEINE NEUEN BÜCHER (User-Anweisung 2026-06-08).** KDP-Konto geschlossen (Fall 50155774,
+> Auslöser: Low-Content-Massenpublishing + viele Pen-Names). Ab jetzt: **keine neuen Titel/Prosa
+> generieren** (`schreibe_roman.py`/`politur.py` nur auf ausdrückliche Einzel-Anweisung). Nur
+> **Vorhandenes upgraden + direkt verkaufen** (`schicht.html` PWYW/Lemon Squeezy, Draft2Digital/Kobo/Apple).
+>
 > Dauerhafter Gedächtnis-Speicher für dieses Vorhaben. Überlebt Session-Resets.
 > Stand: **2026-06-02** (Netzwerk stark erweitert — siehe Abschnitt „🆕 Netzwerk-Ausbau" am Ende) · Betreiber: Allen Chour (abannews.com, Belp/CH).
 > Hinweis: Die laufend gepflegte Detail-Wahrheit steht in `CLAUDE.md`; dieses Dokument ist der Strategie-/Status-Überblick.
