@@ -151,8 +151,83 @@ def build_rss(issues):
     (ROOT / "archive.rss").write_text(rss, encoding="utf-8")
 
 
+def build_index_en(issues):
+    """Englischsprachige Archiv-Übersicht (/en/archive.html). Verweist auf die
+    (deutschen) Ausgabenseiten mit klarem '(in German)'-Hinweis — ehrlich, kein
+    erfundener Inhalt. Englische Chrome + Abo-CTA für die /en/-Besucher."""
+    rows = []
+    for it in issues:
+        rows.append(f"""<article class="issue">
+<a href="/archive/{html.escape(it['file'])}"><h2>{html.escape(it['title'])}</h2></a>
+<p class="meta">Issue {html.escape(it['num'])} · {html.escape(it['date'])} · <span class="lng">in German</span></p>
+<p class="desc">{html.escape(it['desc'])}</p>
+</article>""")
+    body = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archive — all issues | aban news</title>
+<meta name="description" content="All past issues of aban news — the daily German AI newsletter. Honest, no hype. Issues are written in German.">
+<link rel="canonical" href="{BASE}/en/archive.html">
+<link rel="alternate" hreflang="de" href="{BASE}/archive/">
+<link rel="alternate" hreflang="en" href="{BASE}/en/archive.html">
+<link rel="alternate" hreflang="x-default" href="{BASE}/archive/">
+<link rel="alternate" type="application/rss+xml" title="aban news" href="{BASE}/archive.rss">
+<meta property="og:title" content="aban news — Archive">
+<meta property="og:description" content="All past issues to read back (in German).">
+<meta property="og:image" content="{BASE}/og-archive.png">
+<meta property="og:type" content="website"><meta property="og:locale" content="en_US">
+<style>
+:root{{--accent:{ACCENT};--accent-h:{ACCENT_H};--bg:{BG};--bg-alt:{BG_ALT};--text:{TEXT};--muted:{MUTED};--border:{BORDER};}}
+@media(prefers-color-scheme:dark){{:root{{--bg:#1a1714;--bg-alt:#2a2420;--text:#f3f0ec;--muted:#a8a29e;--border:#3a332d;}}}}
+*{{box-sizing:border-box;}}
+body{{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}}
+.wrap{{max-width:760px;margin:0 auto;padding:0 20px;}}
+header{{background:var(--bg-alt);border-bottom:1px solid var(--border);padding:28px 0;text-align:center;}}
+header h1{{margin:0;}} header a{{color:var(--accent-h);text-decoration:none;}}
+header p{{color:var(--muted);margin:6px 0 0;}}
+main{{padding:26px 0;}}
+.note{{background:var(--bg-alt);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--muted);font-size:.92rem;margin:0 0 18px;}}
+.search{{width:100%;padding:11px 14px;font-size:1rem;border:1px solid var(--border);border-radius:10px;margin:0 0 18px;background:#fff;}}
+.issue{{border-bottom:1px solid var(--border);padding:14px 0;}}
+.issue h2{{margin:0;font-size:1.15rem;}} .issue a{{text-decoration:none;color:var(--text);}}
+.issue .meta{{color:var(--muted);font-size:.85rem;margin:2px 0;}}
+.lng{{background:var(--bg-alt);border:1px solid var(--border);border-radius:99px;padding:.02rem .45rem;font-size:.75rem;}}
+.issue .desc{{color:var(--muted);margin:4px 0 0;font-size:.95rem;}}
+.cta{{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:11px 20px;border-radius:10px;font-weight:600;}}
+footer{{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);font-size:.85rem;text-align:center;}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a href="/en/"><h1>📬 aban news — Archive</h1></a>
+<p>All {len(issues)} issues to read back · Mon–Fri, no hype</p>
+<p style="margin-top:14px;"><a class="cta" href="/en/dossiers.html">📚 Topic dossiers</a> <a class="cta" href="https://abannews.beehiiv.com/subscribe" style="margin-left:8px;">Subscribe free →</a></p>
+</div></header>
+<main><div class="wrap">
+<p class="note">📝 The issues are written in <strong>German</strong> (aban news is a German-language newsletter). Opening one takes you to the original issue page.</p>
+<input id="q" class="search" type="search" placeholder="Search issues…" aria-label="Search" oninput="abanFilter()">
+<div id="list">
+{"".join(rows)}
+</div>
+</div></main>
+<footer><div class="wrap">
+© <span id="y"></span> aban news · <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a> · <a href="/archive/">Deutsch</a>
+</div></footer>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+function abanFilter(){{var q=document.getElementById('q').value.toLowerCase();
+document.querySelectorAll('.issue').forEach(function(a){{a.style.display=a.textContent.toLowerCase().indexOf(q)>-1?'':'none';}});}}
+</script>
+</body>
+</html>"""
+    (ROOT / "en" / "archive.html").write_text(body, encoding="utf-8")
+
+
 if __name__ == "__main__":
     issues = read_issues()
     build_index(issues)
+    build_index_en(issues)
     build_rss(issues)
-    print(f"Archiv gebaut: {len(issues)} Ausgaben → archive.html + archive.rss")
+    print(f"Archiv gebaut: {len(issues)} Ausgaben → archive.html + en/archive.html + archive.rss")
