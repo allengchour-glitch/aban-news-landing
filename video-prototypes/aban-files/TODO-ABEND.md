@@ -15,6 +15,14 @@
 4. **Optional:** alte **Hasen-Lifestyle-Videos** in YouTube Studio löschen (Pipeline ist gestoppt, alte Videos noch online).
 5. **Optional (IG/TikTok-Autopost):** frisches Meta-Token mit `instagram_content_publish` → dann poste ich LuxeStyle-Reels auch dorthin (separat vom YouTube/ABAN-Thema).
 
+## 🇩🇪 DEUTSCHE UNTERTITEL (CC-Spur) — fertig erzeugt
+- **19 deutsche `.srt`** liegen in `video-prototypes/aban-files/srt/` (ep1–18, ep20), getimt + via Gemini übersetzt.
+- **Sofort für die Live-Videos (manuell, kein Scope nötig):** YouTube Studio → Video → **Untertitel →
+  Deutsch hinzufügen → Datei hochladen** → die passende `srt/<ep>.de.srt`.
+- **Automatisch für künftige Uploads:** einmal YouTube **neu autorisieren mit `youtube.force-ssl`-Scope**
+  (breiteres Refresh-Token) → dann lädt der Cron die deutsche CC-Spur automatisch mit hoch (Code ist fertig).
+- ep19/21–36 bekommen ihre SRT erst beim Re-Render (sonst Ton ≠ Untertitel).
+
 ## 🤖 LÄUFT AUTONOM (kein Klick nötig)
 - ✅ **ABAN postet gespaced** (Cron 3×/Tag) — ep15 „THE GLITCH" geht gerade hoch, dann ep16, ep17 …
 - ✅ **Director wertet alle 4 h aus** → `reports/ABAN-DIRECTOR.md` (Abonnenten-first, 30-Tage-Pivot).
