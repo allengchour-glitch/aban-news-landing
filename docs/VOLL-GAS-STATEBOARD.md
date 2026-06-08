@@ -18,6 +18,20 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
 ## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **289 live, alle viersprachig (de/en/fr/it = 1156 Seiten)**
 
+> **⏸️ PAUSE (User, 2026-06-08): Hub-Bau ruht bis nächste Woche.** Rest grob ~15–20% des
+> DACH-Branchenkatalogs. Loop läuft sonst Welle für Welle (3 Branchen × 4 Sprachen + OG/Sitemap/Stateboard,
+> PR direkt non-draft + REST-Squash-Merge). **Beim Wiederaufnehmen Slugs IMMER zuerst gegen aktuelles `main`
+> prüfen** (eine Parallel-Session baut mit). **Kuratierte freie & saubere Kandidaten für nächste Welle(n):**
+> `zeitschriftenhandel` (Presse/Kiosk), `drogerie` (Retail, keine Heil-/Gesundheitsversprechen),
+> `tabakwaren` (sensibel: Tabakwerbeverbot/Jugendschutz), `naturkostladen` (Bio — vor Bau Überlappung mit
+> reformhaus/unverpacktladen/hofladen prüfen), `kuerschner` (sensibel: CITES/Artenschutz/Herkunft),
+> `koffergeschaeft` (Reisegepäck — grenzt an lederwaren), `baumfaellung`/`gartenpflege` (grenzen an
+> baumpflege/garten-landschaftsbau → klar abgrenzen). **MEIDEN (dünne Duplikate):** `sattler`≈sattlerei,
+> `spielwarenladen`≈spielwarengeschaeft, `anglerbedarf`≈angelladen, `schreibwarenladen`≈schreibwarengeschaeft,
+> `buchbinder`≈buchbinderei, `parfümerie`≈parfuemerie, `modelleisenbahn`≈modellbaugeschaeft, `glasereibedarf` (zu B2B/dünn).
+> **Alternative Stoßrichtung (User-Frage offen):** statt mehr Hubs auf **Monetarisierung** umschwenken
+> (echte Affiliate-Links in `data-aban-tools-cta`, Analytics/Search-Console scharf, „verkaufbar-machen"-Roadmap).
+
 - Wellen 1–8 (→92, PRs bis #136): Handwerk/Gesundheit/Dienstleistung/Handel/Kurse — kompletter Ursprungs-Backlog.
 - Welle 9 (92→95, #289): Solarteure, Wärmepumpen, Energieberater — **direkt viersprachig** angelegt.
 - Welle 10 (95→98, #291): Smart-Home, Vermessungsbüros, Hundesalons — **direkt viersprachig**.
