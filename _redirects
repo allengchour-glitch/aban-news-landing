@@ -216,3 +216,8 @@
 /preise              /angebote.html  301
 /angebote            /angebote.html  301
 /pricing             /angebote.html  301
+
+# KI-Sichtbarkeits-Audit (einmalig, DIY)
+/audit               /ki-sichtbarkeit-audit.html  301
+/ki-audit            /ki-sichtbarkeit-audit.html  301
+/sichtbarkeit-audit  /ki-sichtbarkeit-audit.html  301
