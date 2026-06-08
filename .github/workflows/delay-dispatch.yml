@@ -1,0 +1,70 @@
+name: Timer-Dispatch (Workflow zeitverzögert starten)
+
+# Generisches Timer-Tool: wartet eine einstellbare Zeit und startet dann einen
+# beliebigen anderen Workflow dieses Repos (per Datei-Name) mit optionalen Inputs.
+# Damit lässt sich alles „in N Stunden" auslösen — luxestyle UND abannews —
+# ohne dass eine Claude-/Browser-Session offen bleiben muss.
+#
+# Beispiele (Actions -> „Timer-Dispatch" -> Run workflow):
+#   workflow = aban-youtube.yml      delay_minutes = 180   inputs = {"count":"1","privacy":"public"}
+#       -> postet in 3 Std die nächste ABAN-Files-Folge
+#   workflow = aban-yt-stats.yml     delay_minutes = 480
+#       -> zieht heute Abend die YouTube-Aufrufe
+#   workflow = social-meta-autopost.yml  delay_minutes = 120
+#       -> luxestyle-Post in 2 Std
+#
+# Öffentliches Repo -> Runner-Minuten gratis, langes Warten ist also unkritisch.
+
+on:
+  workflow_dispatch:
+    inputs:
+      workflow:
+        description: "Ziel-Workflow (Dateiname, z. B. aban-youtube.yml)"
+        required: true
+      delay_minutes:
+        description: "Verzögerung in Minuten (Standard 120 = 2 Std)"
+        default: "120"
+      ref:
+        description: "Branch/Ref des Ziel-Workflows"
+        default: "main"
+      inputs:
+        description: 'Optionale Inputs als JSON, z. B. {"count":"1"}'
+        default: ""
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: timer-dispatch-${{ github.event.inputs.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  timer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350   # deckt bis ~5,8 Std Wartezeit ab
+    steps:
+      - name: Warten
+        run: |
+          D="${{ github.event.inputs.delay_minutes }}"; D="${D:-120}"
+          echo "Warte $D Minuten, dann ${{ github.event.inputs.workflow }} starten (Start $(date -u))."
+          sleep $(( D * 60 ))
+      - name: Ziel-Workflow starten
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WF: ${{ github.event.inputs.workflow }}
+          REF: ${{ github.event.inputs.ref }}
+          IN: ${{ github.event.inputs.inputs }}
+        run: |
+          set -e
+          R="$GITHUB_REPOSITORY"; REF="${REF:-main}"
+          ARGS=( workflow run "$WF" -R "$R" --ref "$REF" )
+          # optionale JSON-Inputs in -f key=value umwandeln
+          if [ -n "$IN" ] && [ "$IN" != "null" ]; then
+            while IFS=$'\t' read -r k v; do
+              [ -n "$k" ] && ARGS+=( -f "$k=$v" )
+            done < <(echo "$IN" | jq -r 'to_entries[] | [.key, (.value|tostring)] | @tsv')
+          fi
+          echo "Starte: gh ${ARGS[*]}"
+          gh "${ARGS[@]}"
+          echo "✅ $WF gestartet."
