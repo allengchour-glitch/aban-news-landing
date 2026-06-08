@@ -63,7 +63,7 @@ function readGood(){
 function loadPointer(n){ try{ return parseInt(fs.readFileSync(POINTER,'utf8').trim(),10) % n; }catch{ return 0; } }
 function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
 
-const PROMPT = `Premium editorial fashion photograph for a Swiss boutique. Use the provided product image as the EXACT reference: keep the product 100% identical — same garment/accessory, same colours, same pattern, same cut and details. Do NOT redesign or alter the product in any way. Improve ONLY the lighting, background and mood: soft natural daylight, elegant minimal premium setting (clean studio or tasteful lifestyle scene), gentle shadows, shallow depth of field, refined luxury-boutique aesthetic, true-to-life colours. No text, no logos, no watermarks, no extra props that hide the product. Vertical 4:5 composition, high quality.`;
+const PROMPT = `Premium editorial fashion photograph for a Swiss boutique. Use the provided product image as the EXACT reference: keep the product 100% identical — same garment/accessory, same colours, same pattern, same cut and details. Do NOT redesign or alter the product in any way. Improve ONLY the lighting, background and mood: soft natural daylight, elegant minimal premium setting (clean studio or tasteful lifestyle scene), gentle shadows, shallow depth of field, refined luxury-boutique aesthetic, true-to-life colours. COMPOSITION: show the full product/model a little SMALLER in the frame with elegant breathing room and comfortable negative space around it — NOT a tight close-up crop, slightly zoomed out, the subject well-centred. No text, no logos, no watermarks, no extra props that hide the product. Vertical 4:5, high quality.`;
 
 async function fetchImage(url){
   const r = await fetch(url);
@@ -120,15 +120,12 @@ for(let k=0;k<queue.length;k++){
 }
 
 if(!DRY){
-  // Pointer weiterdrehen (nur im Rotations-Modus)
   if(!ONLY.length){ const start = loadPointer(products.length); fs.writeFileSync(POINTER, String((start+BATCH)%products.length)); }
-  // Queue anhängen
   if(newRows.length){
     const exists = fs.existsSync(QUEUE) && fs.statSync(QUEUE).size>0;
     let out = exists ? '' : QUEUE_COLS.join(',') + '\n';
     out += newRows.map(r=>r.map(esc).join(',')).join('\n') + '\n';
     fs.appendFileSync(QUEUE, out);
-    // Manifest (für shopify_add_enhanced.mjs)
     const mExists = fs.existsSync(MANIFEST) && fs.statSync(MANIFEST).size>0;
     let m = mExists ? '' : 'name,handle,label,date\n';
     m += manifestRows.map(r=>r.map(esc).join(',')).join('\n') + '\n';
