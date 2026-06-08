@@ -41,7 +41,12 @@
   Risiko (§5) + schwaches Bild (auf schmutzigem Boden).
 - **✅ Charge 2 (Accessoires, alter Key):** Henkeltasche «Lune» `15421166059905` (4 Farben, 24.90) +
   Crossbody-Tasche «Nuit» `15421166092673` (3 Farben, 24.90) — live in 6 Kanälen. Abgelehnt: Clip-Ohrringe
-  (Wasserzeichen „Gu - **✅ Charge 12 (Mode, alter Key):** Sommerkleid «Sole» Casual-Midi Raglan (4 Farben×5 Grössen=20 Var, 34.90,
+  (Wasserzeichen „Gu - **✅ Charge 13 (Mode, alter Key):** Strick-Cardigan «Bohème» Ajour-Pointelle (9 Farben×5 Grössen=43 Var, 34.90,
+  damen-mode/sommer). Live in 6 Kanälen, alle Media READY, Farbnamen DE (Mintgrün/Mintblau/Silber…). **Abgelehnt:**
+  Suede-Minirock CJQZ2924206 + Moissanite-Herzkette CJJE2924620 (beide Dubletten: «Santa Fe» / «Coeur» schon live),
+  Herren-Shirt-Set CJTW2923835 (Dublette), San-Benito-Armband CJSL2922783 (religiös/niche + Hero nur Mass-Diagramm),
+  „Aging Body Oil" CJPF2924318 (schwacher Kosmetik-Name, Single-Var, §5). cj-real: 204 → **205.**
+- **✅ Charge 12 (Mode, alter Key):** Sommerkleid «Sole» Casual-Midi Raglan (4 Farben×5 Grössen=20 Var, 34.90,
   damen-mode/sommer) + Blazer «Roma» tailliert mit Bindegürtel (11 Farben×5 Grössen=55 Var, 49.90, damen-mode) +
   Herren-Henley «Waffle» Waffelstrick (6 Farben×6 Grössen=36 Var, 34.90, herren-mode). Alle 3 live in 6 Kanälen,
   alle Media READY, Farbnamen ins Deutsche übersetzt (Weiss/Dunkelgrau/Weinrot…), Blazer-Präfix „Belt Buckle Long"
