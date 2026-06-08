@@ -26,6 +26,17 @@
 9. **Freigabe-Workflow:** Reel EINZELN per Telegram zur Freigabe (ja/nein/Kommentar), erst nach „ja" posten.
 
 ## Verbesserungs-Log (chronologisch — neue Punkte kommen oben dazu)
+- 2026-06-08: **Print-Werbevideo „Selbst gestalten" — Entscheidung (User):** Stimme **bleibt**
+  (ElevenLabs + Musik), aber **beides verbessern** — Skript + On-Screen-Text UND Stimme natürlicher,
+  **mit Gemini-Hilfe**. Umsetzung (eigener, konfliktarmer Weg, fasst die von der Video-Session
+  gepflegte `werbevideo.yml`/`render_masterpiece.sh` NICHT an):
+  • `automation/gemini_ad_copy.mjs` schreibt Copy (Hook + Voiceover + 3 On-Screen-Schritte, DE+EN)
+    via Gemini; ohne `GEMINI_API_KEY` → bewährte Fallback-Texte. URL fürs TTS als „luxestyle punkt c h".
+  • **3-Schritte** (Produkt wählen → Design hochladen → fertig) als zusätzliche Still-Captions —
+    nutzt die bestehende Caption-Ebene, KEIN Engine-Umbau.
+  • Stimme ruhiger: `tts_eleven.sh` jetzt env-überschreibbar (`ELEVENLABS_STABILITY`/`_STYLE`/`_SIMILARITY`,
+    Defaults unverändert); empfohlen stability 0.62 / style 0.15.
+  • Eigener Workflow `.github/workflows/werbevideo-print.yml` (manuell). Secrets: GEMINI_API_KEY, ELEVENLABS_API_KEY.
 - 2026-06-08: **Selbst-Lernen (learn_from_analytics.mjs):** Hashtag-Pools aus echten TikTok-Daten (tiktok_luxestyle.ch_2026-06-08.json) neu gesetzt → Top-Performer: #schweizmode #ootdschweiz #sommerkleid #fashionschweiz #ootd #schweiz. auto_render.sh nutzt sie automatisch.
 - 2026-06-03: **Echte TikTok-Daten analysiert** (Tool `tools/tiktok_analyze.py --user @luxestyle.ch --seed-video <url> --insecure`,
   von abannews gebaut, yt-dlp, kein API/Login; Report in `reports/`). 15 Videos, 2.769 Views, ~0 Engagement.

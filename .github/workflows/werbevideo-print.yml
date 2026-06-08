@@ -1,0 +1,107 @@
+name: Werbevideo Print (Selbst gestalten — Gemini-Copy + 3 Schritte)
+
+# Eigenständiger Print-Werbespot-Workflow für LuxeStyle ("Selbst gestalten"):
+#  - Copy (Hook + Voiceover + 3 On-Screen-Schritte, DE+EN) kommt von Gemini
+#    (automation/gemini_ad_copy.mjs); ohne GEMINI_API_KEY → bewährte Fallback-Texte.
+#  - 3-Schritte werden als zusätzliche Still-Captions in die bestehende Engine
+#    (dropship/ads/render_masterpiece.sh) eingespeist — KEIN Engine-Umbau.
+#  - Stimme bleibt (ElevenLabs), aber ruhiger getunt (weniger Wobble) via Env.
+# Bewusst getrennt von werbevideo.yml (die die Video-Session pflegt).
+#
+# Secrets: GEMINI_API_KEY (Copy, optional) · ELEVENLABS_API_KEY (+ ELEVENLABS_VOICE_ID, optional).
+
+on:
+  workflow_dispatch:
+    inputs:
+      stills:
+        description: 'Anzahl Produkt-Stills'
+        default: '4'
+      stability:
+        description: 'ElevenLabs Stability (ruhiger = höher, 0–1)'
+        default: '0.62'
+      style:
+        description: 'ElevenLabs Style (niedriger = weniger Wobble, 0–1)'
+        default: '0.15'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: werbevideo-print
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: ffmpeg + Fonts
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+
+      - name: Copy (Gemini) + Manifest + Voice + Render (DE & EN)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          ELEVENLABS_STABILITY: ${{ github.event.inputs.stability || '0.62' }}
+          ELEVENLABS_STYLE: ${{ github.event.inputs.style || '0.15' }}
+          NSTILL: ${{ github.event.inputs.stills || '4' }}
+        run: |
+          set -e
+          SRC="dropship/ads/good_products_print.csv"
+          OUTBASE="werbung-selbst-gestalten"
+          D=/tmp/wvp; IMG=$D/img; mkdir -p "$IMG"
+
+          # 1) Copy von Gemini holen (Fallback eingebaut), als JSON-Datei
+          node automation/gemini_ad_copy.mjs print > "$D/copy.json" || true
+          get(){ python3 -c "import json,sys;print(json.load(open('$D/copy.json'))['$1'])"; }
+          getstep(){ python3 -c "import json;print(json.load(open('$D/copy.json'))['$1'][$2])"; }
+          HOOK_DE="$(get hook_de)"; HOOK_EN="$(get hook_en)"
+          VO_DE="$(get vo_de)";   VO_EN="$(get vo_en)"
+          echo "Hook DE: $HOOK_DE"; echo "VO DE: $VO_DE"
+
+          # 2) Produkt-Stills laden
+          : > "$D/manifest.txt"; k=0
+          tail -n +2 "$SRC" | head -n "$NSTILL" > "$D/rows.csv" || true
+          while IFS= read -r line; do
+            [ -z "$line" ] && continue
+            url=$(printf '%s' "$line" | cut -d, -f2); label=$(printf '%s' "$line" | cut -d, -f3); k=$((k+1))
+            curl -sL --fail "$url" -o "$IMG/$k.jpg" && printf 'still|%s|%s\n' "$IMG/$k.jpg" "$label" >> "$D/manifest.txt" || true
+          done < "$D/rows.csv"
+          [ "$k" -ge 1 ] || { echo "Keine Produktbilder geladen"; exit 1; }
+
+          # 3) 3 Schritt-Segmente anhängen (recap vor dem Outro) — bestehende Caption-Ebene,
+          #    Bild rotiert über die geladenen Produktfotos.
+          render_steps() {  # $1 = de|en
+            local lang="$1" i img si
+            for i in 0 1 2; do
+              si=$(getstep "steps_${lang}" "$i") || si=""
+              [ -z "$si" ] && continue
+              img="$IMG/$(( (i % k) + 1 )).jpg"
+              printf 'still|%s|%s\n' "$img" "$si"
+            done
+          }
+
+          # 4) Stimme (ruhiger getunt via Env oben) + Render je Sprache
+          mkdir -p reels
+          for lang in de en; do
+            if [ "$lang" = de ]; then VO="$VO_DE"; HOOK="$HOOK_DE"; else VO="$VO_EN"; HOOK="$HOOK_EN"; fi
+            cp "$D/manifest.txt" "$D/manifest_$lang.txt"
+            render_steps "$lang" >> "$D/manifest_$lang.txt"
+            echo "=== Manifest ($lang) ==="; cat "$D/manifest_$lang.txt"
+            bash dropship/ads/tts_eleven.sh "$lang" "$D/voice_$lang.wav" "$VO"
+            bash dropship/ads/render_masterpiece.sh "reels/${OUTBASE}-${lang}.mp4" \
+              "$D/voice_$lang.wav" automation/reel_music.m4a "$D/manifest_$lang.txt" "$lang" "$HOOK"
+          done
+          ls -la reels/${OUTBASE}-*.mp4
+
+      - name: Commit
+        run: |
+          git config user.name "werbevideo-bot"; git config user.email "actions@users.noreply.github.com"
+          git add reels/werbung-selbst-gestalten-*.mp4 2>/dev/null || true
+          git commit -m "Werbevideo Print: Gemini-Copy + 3 Schritte + ruhigere Stimme [skip ci]" || { echo nichts; exit 0; }
+          for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
