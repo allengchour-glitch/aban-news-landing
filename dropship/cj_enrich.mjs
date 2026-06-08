@@ -22,14 +22,14 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
 const KEYWORDS = [
-  { kw: 'men chino pants',      must:['men'],          take: 1 },
-  { kw: 'men cuban shirt',      must:['men','shirt'],  take: 1 },
-  { kw: 'men beach shorts',     must:['men','short'],  take: 1 },
-  { kw: 'men leather sandals',  must:['men','sandal'], take: 1 },
-  { kw: 'men knit polo shirt',  must:['men','polo'],   take: 1 },
-  { kw: 'men sweatshirt',       must:['men','sweat'],  take: 1 },
-  { kw: 'men canvas shoes',     must:['men','shoe'],   take: 1 },
-  { kw: 'men crossbody bag',    must:['men','bag'],    take: 1 },
+  { kw: 'mens beach shorts',    must:['men','short'], take: 1 },
+  { kw: 'mens cargo pants',     must:['men','cargo'], take: 1 },
+  { kw: 'mens tank top',        must:['men','tank'],  take: 1 },
+  { kw: 'mens swim trunks',     must:['men','swim'],  take: 1 },
+  { kw: 'mens vest waistcoat',  must:['men','vest'],  take: 1 },
+  { kw: 'mens slides slippers', must:['men','slipper'],take: 1 },
+  { kw: 'mens hoodie sweatshirt',must:['men','hood'], take: 1 },
+  { kw: 'mens linen trousers',  must:['men','trouser'],take: 1 },
 ];
 
 let _b, _ctx;
@@ -75,7 +75,10 @@ function stockByCountry(variants) {
       console.error(`🔎 ${kw}`);
       const r = await apiGet('/product/list', { pageNum: 1, pageSize: 40, productNameEn: kw });
       const list = (r.data?.list || []).filter(p => {
-        const n = (p.productNameEn || '').toLowerCase(); return must.every(w => n.includes(w));
+        const n = (p.productNameEn || '').toLowerCase();
+        // Herren-Suche: „women/woman" ausschliessen (sonst matcht das Teilwort „men").
+        if (must.includes('men') && /wom[ae]n/.test(n)) return false;
+        return must.every(w => n.includes(w));
       });
       list.sort((a, b) => (Number(b.listedNum) || 0) - (Number(a.listedNum) || 0)); // Popularität
       console.error(`   ${list.length} relevante Treffer`);
