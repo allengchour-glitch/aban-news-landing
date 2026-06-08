@@ -311,6 +311,9 @@ BRANCHEN = {
     "zeitschriftenhandel": ("Zeitschriftenhandel",  ["Sortiment & Profil,", "keine Tabak-/Lotto-Werbung"]),
     "drogerie":            ("Drogerien",            ["Produkttexte & Social,", "keine Gesundheitsberatung"]),
     "tabakwaren":          ("Tabakfachgeschäfte",   ["Interne Texte & Orga,", "keine Tabakwerbung"]),
+    "kuerschner":          ("Kürschner",            ["Service- & Restyling-Texte,", "nicht die Materialprüfung"]),
+    "baumfaellung":        ("Baumfällung",          ["Angebote & Anfragen,", "nicht die Genehmigung"]),
+    "elektrofachhandel":   ("Elektrofachhandel",    ["Produkttexte & Service,", "nicht die Reparatur-Diagnose"]),
 }
 
 
