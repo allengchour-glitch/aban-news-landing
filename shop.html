@@ -93,6 +93,9 @@
 <script>
   (function(){
     var el=document.getElementById('shop');
+    // Kit-Slug -> KI-Sichtbarkeits-Seite bzw. Compliance-Paket (Cross-Sell-Schleife)
+    var SICHT={aerzte:'praxen',handwerker:'handwerk',steuerberater:'steuerberatung',anwaelte:'kanzleien',gastronomie:'gastronomie',coaches:'coaches',immobilienmakler:'immobilienmakler',friseure:'friseure',fotografen:'fotografen',architekten:'architekten',fitnessstudios:'fitnessstudios'};
+    var COMP={aerzte:'aerzte',anwaelte:'anwaelte',steuerberater:'steuerberater'};
     function render(items){
       if(!items||!items.length){el.innerHTML='<p>Pakete sind in Vorbereitung.</p>';return;}
       el.innerHTML=items.map(function(p){
@@ -100,7 +103,12 @@
                      :('<span class="btn soon">Bald verfügbar</span>');
         var badge=p.bundle?'<span style="display:inline-block;background:#b45309;color:#fff;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:99px;margin-bottom:.5rem">SPAR-PAKET</span><br>':'';
         var style='scroll-margin-top:1.5rem'+(p.bundle?';border-color:#b45309;box-shadow:0 0 0 2px rgba(180,83,9,.12)':'');
-        return '<div class="card" id="kit-'+p.slug+'" style="'+style+'">'+badge+'<h2>'+p.title+'</h2><p>'+p.desc+'</p><div class="price">'+p.price+'</div>'+btn+'</div>';
+        var lk='color:#b45309;font-size:.85rem;font-weight:600;text-decoration:none';
+        var rel='';
+        if(SICHT[p.slug]) rel+='<a href="/ki-sichtbarkeit-'+SICHT[p.slug]+'.html" style="'+lk+'">Wirst du von KI gefunden? →</a>';
+        if(COMP[p.slug]) rel+=(rel?' &nbsp;·&nbsp; ':'')+'<a href="/ki-compliance-'+COMP[p.slug]+'.html" style="'+lk+'">KI rechtssicher →</a>';
+        rel=rel?('<div style="margin-top:.6rem">'+rel+'</div>'):'';
+        return '<div class="card" id="kit-'+p.slug+'" style="'+style+'">'+badge+'<h2>'+p.title+'</h2><p>'+p.desc+'</p><div class="price">'+p.price+'</div>'+btn+rel+'</div>';
       }).join('');
       // Kommt der Besucher per #kit-<slug> aus einem Branchen-Hub: Karte hervorheben.
       if(location.hash){
