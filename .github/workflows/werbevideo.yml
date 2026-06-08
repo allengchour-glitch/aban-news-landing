@@ -71,6 +71,7 @@ jobs:
           CONCEPT: ${{ github.event.inputs.concept || 'fashion' }}
           NSTILL: ${{ github.event.inputs.stills || '6' }}
           SRC_IN: ${{ github.event.inputs.source }}
+          HEROES_IN: ${{ github.event.inputs.heroes }}
           HOOK_DE_IN: ${{ github.event.inputs.hook_de }}
           HOOK_EN_IN: ${{ github.event.inputs.hook_en }}
         run: |
@@ -93,7 +94,18 @@ jobs:
           fi
           echo "Konzept=$CONCEPT  Quelle=$SRC  Out=$OUTBASE"
           if [ "$CONCEPT" = "fashion" ]; then
-            for f in reels/veo-hero-*.mp4; do [ -e "$f" ] && printf 'veo|%s|\n' "$f" >> "$D/manifest.txt" || true; done
+            if [ -n "$HEROES_IN" ]; then
+              # nur die gewaehlten Heroes, in genau dieser Reihenfolge (kein glob-all -> keine alten/rotierenden Clips)
+              IFS=',' read -ra HRS <<< "$HEROES_IN"
+              for nm in "${HRS[@]}"; do
+                nm=$(printf '%s' "$nm" | tr -d ' ')
+                [ -z "$nm" ] && continue
+                f=$(ls -1 reels/veo-hero-${nm}-*.mp4 2>/dev/null | sort | tail -n1)
+                [ -n "$f" ] && [ -e "$f" ] && printf 'veo|%s|\n' "$f" >> "$D/manifest.txt"
+              done
+            else
+              for f in reels/veo-hero-*.mp4; do [ -e "$f" ] && printf 'veo|%s|\n' "$f" >> "$D/manifest.txt" || true; done
+            fi
           fi
           k=0
           tail -n +2 "$SRC" | head -n "$NSTILL" > "$D/rows.csv" || true

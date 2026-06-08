@@ -54,10 +54,12 @@ function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""
 const REEL_HASHTAGS = '#schweizmode #sommerkleid #ootdschweiz #fashiontiktokschweiz #luxestyle';
 function buildPrompt(label){
   return `Cinematic fashion product video for a premium Swiss online boutique. Subject: ${label}. `
-    + `Slow, smooth, elegant camera move (gentle dolly-in and subtle parallax), soft natural daylight, `
-    + `shallow depth of field, warm premium color grading, luxury editorial mood. The product stays true `
-    + `to the reference image — same colours, same design, no distortion. No text, no logos, no watermark. `
-    + `Steady, stabilized footage (no shaking). Vertical 9:16, high quality.`;
+    + `Very subtle, gentle motion only: a slow soft dolly-in (push-in) and a touch of parallax / softly drifting `
+    + `daylight. The subject stays facing the camera the whole time. NO rotation, no turning around, no 180 or 360 `
+    + `degree spin, no orbit around the subject, no flipping. Soft natural daylight, shallow depth of field, warm `
+    + `premium color grading, luxury editorial mood. The product stays true to the reference image — same colours, `
+    + `same design, no distortion. No text, no logos, no watermark. Steady, stabilized, locked framing (no shaking). `
+    + `Vertical 9:16, high quality.`;
 }
 
 async function fetchImageBase64(url){
