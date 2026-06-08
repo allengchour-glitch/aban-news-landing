@@ -33,6 +33,7 @@ MATCHERS = [
     ("DATENSATZ_ABO_URL", lambda n: "datensatz" in n and ("abo" in n or "monat" in n or "subscription" in n)),
     ("VORLAGEN_BUY_URL", lambda n: "vorlagen" in n or "klartext" in n),
     ("COMPLIANCE_BUY_URL", lambda n: "compliance" in n),
+    ("SCHNELLSTART_BUY_URL", lambda n: "schnellstart" in n or "einfuehrung" in n or "einführung" in n),
 ]
 
 
