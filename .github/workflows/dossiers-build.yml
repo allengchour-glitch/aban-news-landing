@@ -54,7 +54,8 @@ jobs:
         run: |
           git config user.name "aban-assets-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dossiers.html dossier/*.html og-dossier*.png og-dossiers.png \
+          git add dossiers.html dossier/*.html og-dossier*.png og-dossiers.png og-dossiers-en.png \
+                  og-archive.png en/dossiers.html en/dossier/*.html \
                   archive/topics.json archive/*.html archive.html archive.rss
           if git diff --cached --quiet; then
             echo "No dossier changes — nothing to commit."
