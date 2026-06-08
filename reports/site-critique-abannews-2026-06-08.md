@@ -1,41 +1,29 @@
 # Gemini Site-Kritik — 2026-06-08
 
-**Gesamtnote: 7/10**
+**Gesamtnote: 8/10**
 
 ## ✅ Stärken
-- Klares Nutzenversprechen im Hero-Bereich.
-- Starke Vertrauenssignale (DSGVO, kein Tracking, kein Hype).
-- Prominentes Opt-in-Formular auf der Startseite.
-- Gutes Newsletter-Beispiel auf Desktop-Hero.
-- Sauberes Design und konsistente Typografie.
-- Effektive Content-Discovery für Dossiers/Archiv.
-- Ansprechendes Anreiz-Geschenk (10 Prompts).
+- Sehr klares und überzeugendes Nutzenversprechen im Hero-Bereich.
+- Starke Vertrauenssignale (Beispiel-Ausgabe, DSGVO-konform, kein Tracking, kein Hype) sind prominent platziert.
+- Der Anmeldeprozess ist einfach und reibungsarm gestaltet.
+- Das Design ist konsistent, sauber und professionell.
+- Gute Lesbarkeit und responsive Darstellung auf Mobilgeräten.
 
 ## 🔧 Kritische Probleme (nach Priorität)
 
-### 🔴 [Navigation] Irrelevante Navigationspunkte ('Preise', 'Premium', 'Shop', 'Werbung') lenken auf Desktop ab und widersprechen dem Fokus auf Gratis-Inhalte.
-- **Fix:** Entferne alle Navigationspunkte, die nicht direkt zum Newsletter-Abo, Dossiers oder Archiv führen.
-- **Umsetzbar per:** Theme-Customizer
-
-### 🔴 [Conversion] Fehlendes, direkt sichtbares Newsletter-Signup-Formular auf Dossier- und Archiv-Seiten. Der Header-Button erfordert einen zusätzlichen Klick.
-- **Fix:** Integriere ein kompaktes Signup-Formular direkt unter dem Hero-Bereich auf allen Unterseiten.
-- **Umsetzbar per:** Theme-Customizer
-
-### 🟡 [Hero] Mobile Hero-Sektion zeigt kein Beispiel des Newsletters, im Gegensatz zur Desktop-Version.
-- **Fix:** Integriere ein kurzes, ansprechendes Newsletter-Beispiel auch auf Mobilgeräten im Hero-Bereich.
+### 🔴 [Mobil] Der primäre Newsletter-CTA ('Gratis abonnieren') ist auf Mobilgeräten nicht sticky und scrollt aus dem Sichtfeld.
+- **Fix:** Implementierung eines sticky CTA-Buttons am unteren Bildschirmrand oder im Header, der immer sichtbar bleibt.
 - **Umsetzbar per:** CSS
 
-### 🟡 [Mobil] Checkbox für Einwilligung auf Mobilgeräten ist zu klein und eng platziert, beeinträchtigt Touch-Target und Lesbarkeit.
-- **Fix:** Vergrößere den Touch-Target-Bereich der Checkbox und sorge für mehr Abstand.
-- **Umsetzbar per:** CSS
+### 🟡 [Navigation] Auf Mobilgeräten sind 'Dossiers' und 'Archiv' nicht direkt in der sichtbaren Kopfzeile verlinkt, was die Content-Discovery erschwert.
+- **Fix:** Überprüfung der mobilen Navigation; wichtige Sekundärlinks im Hamburger-Menü hervorheben oder eine alternative Navigationslösung für Content-Discovery in Betracht ziehen.
+- **Umsetzbar per:** Theme-Customizer
 
-### 🟢 [Conversion] Der Header-Button 'Newsletter gratis' auf Dossier-Seiten ist weniger prominent als 'Gratis abonnieren' auf der Startseite.
-- **Fix:** Vereinheitliche die Beschriftung des Haupt-CTA im Header zu 'Gratis abonnieren' und nutze die gleiche, auffällige Button-Farbe.
+### 🟡 [Trust] Der 'Track-Record' (Anzahl der bereits erschienenen Ausgaben) ist nicht prominent auf der Hero-Seite sichtbar, obwohl er ein starkes Vertrauenssignal wäre.
+- **Fix:** Eine kleine, aber sichtbare Angabe wie 'Über X Ausgaben seit Y' oder 'Seit Y Wochen täglich' direkt unter dem Nutzenversprechen oder neben dem Beispiel-Newsletter platzieren.
 - **Umsetzbar per:** Copy
 
 ## ⚡ Quick Wins
-- Füge einen 'Über uns' oder 'Autor'-Bereich hinzu, um die Glaubwürdigkeit zu stärken.
-- Optimiere die mobile Navigation (z.B. Hamburger-Menü für bessere Übersicht).
-- Stelle sicher, dass der 'Frag aban' Chat-Button keine wichtigen Inhalte überdeckt.
-- Integriere einen Newsletter-CTA direkt in die Beschreibungen der Dossiers.
-- Verbessere die optische Integration der Sprachauswahl-Buttons.
+- Den 'Gratis-Geschenk' Anreiz (10 KI-Prompts) stärker in den CTA-Text oder direkt über dem Formular auf der Hero-Seite integrieren, um die Anmeldebereitschaft zu erhöhen.
+- Den 'Newsletter gratis' Button auf den Dossier- und Archivseiten farblich oder in der Größe an den primären Abo-CTA anpassen, um die Konsistenz und Prominenz zu erhöhen.
+- Die Anzahl der Ausgaben oder die Dauer des Newsletters (z.B. 'Seit 202X') auf der Hero-Seite hinzufügen, um den Track-Record zu betonen.
