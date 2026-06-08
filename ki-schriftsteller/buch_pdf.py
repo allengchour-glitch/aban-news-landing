@@ -156,7 +156,7 @@ def baue_pdf(gesamttitel, genre, gruppen, pfad, autor="aban news", cover_pfad=No
             for i, a in enumerate(absaetze):
                 if i == 0 and a:
                     # Versal-Initiale: erster Buchstabe gross + amber.
-                    markup = ('<font size="30" color="#b45309"><b>%s</b></font>%s'
+                    markup = ('<font size="16" color="#b45309"><b>%s</b></font>%s'
                               % (_esc(a[0]), _esc(a[1:])))
                     story.append(Paragraph(markup, s["first"]))
                 else:
