@@ -1,14 +1,14 @@
 {
   "reels": [
     {
-      "file": "/media/reels/ki-bringt-im-unternehmen-schnell-roi.mp4",
-      "title": "Hype-Check: Generative KI bringt Unternehmen schnell messbaren Geschäftserfolg.",
-      "link": "https://abannews.com/hype-watch/ki-bringt-im-unternehmen-schnell-roi.html"
+      "file": "/media/reels/ki-detektoren-erkennen-zuverlaessig-ki-texte.mp4",
+      "title": "Hype-Check: KI-Detektoren erkennen zuverlässig, ob ein Text von KI stammt.",
+      "link": "https://abannews.com/hype-watch/ki-detektoren-erkennen-zuverlaessig-ki-texte.html"
     },
     {
-      "file": "/media/reels/tool-claude.mp4",
-      "title": "Lohnt sich Claude?",
-      "link": "https://radar.abannews.com/tool/claude.html"
+      "file": "/media/reels/tool-tactiq.mp4",
+      "title": "Lohnt sich Tactiq?",
+      "link": "https://radar.abannews.com/tool/tactiq.html"
     },
     {
       "file": "/media/reels/tool-n8n.mp4",
@@ -19,6 +19,16 @@
       "file": "/media/reels/tool-cursor.mp4",
       "title": "Lohnt sich Cursor?",
       "link": "https://radar.abannews.com/tool/cursor.html"
+    },
+    {
+      "file": "/media/reels/tool-claude.mp4",
+      "title": "Lohnt sich Claude?",
+      "link": "https://radar.abannews.com/tool/claude.html"
+    },
+    {
+      "file": "/media/reels/ki-bringt-im-unternehmen-schnell-roi.mp4",
+      "title": "Hype-Check: Generative KI bringt Unternehmen schnell messbaren Geschäftserfolg.",
+      "link": "https://abannews.com/hype-watch/ki-bringt-im-unternehmen-schnell-roi.html"
     }
   ]
 }
