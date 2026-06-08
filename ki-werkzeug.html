@@ -281,9 +281,9 @@ footer a{color:var(--muted)}
   <!-- PRO / KAUFBUTTON -->
   <section class="pro" id="pro">
     <h2>Mehr brauchen? <span style="color:var(--amber-dk)">Pro</span> freischalten</h2>
-    <p class="price"><b id="pro-price">CHF 9</b> / Monat &middot; jederzeit kündbar</p>
+    <p class="price"><b id="pro-price">CHF 9.90</b> / Monat &middot; jederzeit kündbar</p>
     <ul>
-      <li>Unbegrenzt Texte &amp; Fahrpläne</li>
+      <li>Unbegrenzt Texte &amp; Fahrpläne <span style="color:var(--muted)">(faire Nutzung bei echter KI)</span></li>
       <li>Echte KI statt Vorlagen (mehr Qualität)</li>
       <li>Alle 4 Sprachen: DE · EN · FR · IT</li>
       <li>Verlauf speichern &amp; als PDF exportieren</li>
@@ -293,6 +293,14 @@ footer a{color:var(--muted)}
     <a class="btn big" id="pro-buy" href="/shop.html">Pro freischalten →</a>
     <a class="btn ghost big" href="/shop.html" style="margin-left:8px">Erst Branchen-Kit ansehen (CHF 12)</a>
     <p class="note" id="pro-note">Hinweis: Der automatische Kauf wird gerade scharfgeschaltet. Bis dahin führt der Button zum Shop. Die Pro-Version nutzt echte KI — dabei wird dein Text an einen KI-Dienst gesendet (steht dann klar dabei).</p>
+    <div class="unlock" style="margin-top:.9rem;padding-top:.8rem;border-top:1px solid var(--line)">
+      <label for="pro-unlock-code" style="font-size:.85rem;color:var(--muted)">Schon gekauft? Freischalt-Code eingeben:</label>
+      <div style="display:flex;gap:.4rem;max-width:360px;margin-top:.35rem">
+        <input id="pro-unlock-code" type="text" autocomplete="off" placeholder="Code" style="flex:1;min-width:0;border:1px solid var(--line);border-radius:8px;padding:.55rem .65rem">
+        <button id="pro-unlock-go" type="button" class="btn ghost">Freischalten</button>
+      </div>
+      <p id="pro-unlock-msg" class="note" style="margin-top:.4rem"></p>
+    </div>
   </section>
 
   <div class="band">
@@ -330,6 +338,11 @@ footer a{color:var(--muted)}
   const AI_ENDPOINT      = "";      // z. B. "/api/generate" (Cloudflare Worker) -> aktiviert echte KI
   const FREE_TEXT_LIMIT  = 5;       // Gratis-Texte pro Tag
   const FREE_PLAN_LIMIT  = 1;       // Gratis-Fahrpläne pro Tag
+  const PRO_UNLOCK_CODE  = "aban-pro";  // manueller Freischalt-Code (bis Stripe-Webhook steht)
+  // Verlust-Schutz für Phase 2: echte KI kostet Cent je Aufruf. Pro = unbegrenzte VORLAGEN
+  // (Grenzkosten 0). Bei echter KI gilt ein Fair-Use-Cap, der ZWINGEND serverseitig im
+  // Cloudflare-Worker erzwungen wird (Client ist umgehbar) — hier nur als Vertrag/Default:
+  const PRO_AI_DAILY_CAP = 50;          // max. echte-KI-Generierungen/Tag pro Pro-Nutzer
 
   const BRANCHEN = ["Friseur / Barbershop","Restaurant / Café","Bäckerei / Konditorei","Kosmetik / Nagelstudio","Fitness / Yoga","KFZ-Werkstatt","Handwerk (Maler, Elektriker, …)","Einzelhandel / Laden","Online-Shop","Praxis / Therapie","Immobilien / Makler","Hotel / Pension","Floristik","Fotografie","Beratung / Coaching","Reinigung / Gebäudeservice","Garten / GaLaBau","Tierservice","Schmuck / Juwelier","Mein Betrieb (andere)"];
 
@@ -341,8 +354,20 @@ footer a{color:var(--muted)}
   function cap(s){ return s ? s.charAt(0).toUpperCase()+s.slice(1) : s; }
   function today(){ return new Date().toISOString().slice(0,10); }
 
-  // Tages-Kontingent in localStorage (kein Login, kein Server)
+  // Pro-Status (gerätelokal; die echte KI-Kosten-Bremse läuft serverseitig im Worker)
+  function isPro(){ try{ return localStorage.getItem("aban_kw_pro")==="1"; }catch(e){ return false; } }
+  function applyPro(){
+    if(!isPro()) return;
+    var note=$("pro-note"); if(note){ note.textContent="✓ Pro ist auf diesem Gerät freigeschaltet — unbegrenzte Nutzung."; }
+    var buy=$("pro-buy"); if(buy){ buy.textContent="✓ Pro aktiv"; buy.removeAttribute("href"); buy.style.opacity=".7"; buy.style.pointerEvents="none"; }
+    var t=$("t-upsell"); if(t) t.classList.remove("show");
+    var p=$("p-upsell"); if(p) p.classList.remove("show");
+  }
+  function setPro(){ try{ localStorage.setItem("aban_kw_pro","1"); }catch(e){} applyPro(); }
+
+  // Tages-Kontingent in localStorage (kein Login, kein Server). Pro = unbegrenzt.
   function quota(key, limit){
+    if(isPro()) return { left: Infinity, use: function(){} };
     var raw; try{ raw = JSON.parse(localStorage.getItem(key)||"{}"); }catch(e){ raw={}; }
     if(raw.d !== today()){ raw = {d:today(), n:0}; }
     return {
@@ -495,6 +520,7 @@ footer a{color:var(--muted)}
             stimmung:$("t-stimmung").value};
   }
   function refreshQuota(){
+    if(isPro()){ $("t-quota").textContent="Pro · unbegrenzt"; $("p-quota").textContent="Pro · unbegrenzt"; return; }
     var q=quota("aban_kw_text", FREE_TEXT_LIMIT);
     $("t-quota").textContent = q.left>0 ? (q.left+" von "+FREE_TEXT_LIMIT+" gratis heute") : "Tageslimit erreicht";
     var qp=quota("aban_kw_plan", FREE_PLAN_LIMIT);
@@ -539,9 +565,33 @@ footer a{color:var(--muted)}
 
   // ---- Pro-Button (Phase 2: echter Stripe-Checkout) -----------------------
   if(STRIPE_PRO_LINK){
-    $("pro-buy").href = STRIPE_PRO_LINK;
+    $("pro-buy").href = STRIPE_PRO_LINK + (STRIPE_PRO_LINK.indexOf("?")>-1?"&":"?") + "redirect_status=ok";
     $("pro-note").textContent = "Sichere Zahlung über Stripe. Jederzeit kündbar.";
   }
+
+  // ---- Pro freischalten: Rückkehr vom Checkout (?pro=ok) ODER Freischalt-Code ----
+  try{
+    var u = new URL(window.location.href);
+    if(u.searchParams.get("pro")==="ok"){
+      setPro();
+      u.searchParams.delete("pro");
+      history.replaceState(null, "", u.pathname + (u.search||"") + (u.hash||""));
+    }
+  }catch(e){}
+  var unlockBtn = $("pro-unlock-go");
+  if(unlockBtn) unlockBtn.addEventListener("click", function(){
+    var v = ($("pro-unlock-code").value||"").trim().toLowerCase();
+    var msg = $("pro-unlock-msg");
+    if(v === PRO_UNLOCK_CODE){
+      setPro(); refreshQuota();
+      if(msg){ msg.textContent = "✓ Freigeschaltet — unbegrenzte Nutzung auf diesem Gerät."; msg.style.color = "var(--ok)"; }
+    } else if(msg){
+      msg.textContent = "Code stimmt nicht. Prüf die Schreibweise.";
+      msg.style.color = "#b91c1c";
+    }
+  });
+  applyPro();
+
   refreshQuota();
 })();
 </script>
