@@ -94,6 +94,23 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .step .n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--amber);color:#fff;font-weight:800;margin-bottom:8px}
 .step b{display:block;margin-bottom:3px}
 .step span{color:var(--muted);font-size:.9rem}
+/* Überblick */
+.ov-h{text-align:center;font-size:1.3rem;margin:34px 0 2px}
+.ov-sub{text-align:center;color:var(--muted);font-size:.95rem;margin-bottom:4px}
+.steps.ov{margin-top:18px}
+.step .ic{font-size:1.5rem;display:block;margin-bottom:6px;line-height:1}
+/* Vergleich Gratis vs Pro */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:30px 0}
+@media(max-width:560px){.compare{grid-template-columns:1fr}}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.plan.hl{border-color:var(--amber);box-shadow:0 0 0 1px var(--amber)}
+.plan h3{font-size:1.1rem;margin-bottom:2px}
+.plan .pp{font-weight:800;color:var(--amber-dk);font-size:1.15rem;margin-bottom:12px}
+.plan ul{list-style:none;display:grid;gap:8px;margin:0}
+.plan li{padding-left:24px;position:relative;font-size:.92rem;color:var(--ink2)}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}
+.plan .tag{display:inline-block;font-size:.72rem;font-weight:700;background:var(--amber);color:#fff;border-radius:999px;padding:2px 9px;margin-bottom:8px}
+.plan .free::before{content:"•";color:var(--muted)}
 /* App */
 .app{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px;margin:8px 0 6px}
 .tabs{display:flex;gap:6px;padding:8px 8px 0}
@@ -156,7 +173,21 @@ footer a{color:var(--muted)}
     </div>
   </section>
 
+  <!-- ÜBERBLICK: WAS DU ERSTELLST -->
+  <section aria-label="Was du erstellen kannst">
+    <h2 class="ov-h">Alles für deinen Betrieb &mdash; in einem Werkzeug</h2>
+    <p class="ov-sub">5 Sachen, die sonst Zeit kosten &mdash; hier in Minuten erledigt:</p>
+    <div class="steps ov">
+      <div class="step"><span class="ic">📝</span><b>Produkt- &amp; Leistungstexte</b><span>Verkaufstexte, die klingen wie du &mdash; nicht wie ein Roboter.</span></div>
+      <div class="step"><span class="ic">📣</span><b>Social-Media-Posts</b><span>Fertige Posts mit Aufhänger und Hashtags für Insta, Facebook &amp; Co.</span></div>
+      <div class="step"><span class="ic">⭐</span><b>Bewertungs-Antworten</b><span>Souverän auf Lob und Kritik reagieren &mdash; in Sekunden.</span></div>
+      <div class="step"><span class="ic">✉️</span><b>Kunden-E-Mails</b><span>Bestätigungen, Aktionen, Rückfragen &mdash; freundlich formuliert.</span></div>
+      <div class="step"><span class="ic">🗺️</span><b>Persönlicher KI-Fahrplan</b><span>Wo KI dir am meisten Zeit spart &mdash; Schritt für Schritt.</span></div>
+    </div>
+  </section>
+
   <!-- ANLEITUNG -->
+  <h2 class="ov-h">So einfach geht's</h2>
   <section class="steps" aria-label="So funktioniert's">
     <div class="step"><span class="n">1</span><b>Branche wählen</b><span>Sag, was du machst — z. B. Friseur, Laden, Werkstatt.</span></div>
     <div class="step"><span class="n">2</span><b>Stichworte eingeben</b><span>Ein paar Worte reichen. Ganze Sätze sind nicht nötig.</span></div>
@@ -278,6 +309,33 @@ footer a{color:var(--muted)}
   </div>
   <p class="disc">Gratis-Version: Entwürfe entstehen aus geprüften Vorlagen direkt in deinem Browser — nichts wird hochgeladen. Die Entwürfe sind Startpunkte; prüfe Preise, Pflichtangaben und Fakten selbst.</p>
 
+  <!-- ÜBERBLICK: GRATIS vs PRO -->
+  <h2 class="ov-h">Gratis testen &mdash; Pro, wenn du mehr brauchst</h2>
+  <p class="ov-sub">Kein Abo-Zwang: Gratis reicht für den Anfang. Pro lohnt sich, wenn du täglich schreibst.</p>
+  <section class="compare" aria-label="Gratis und Pro im Vergleich">
+    <div class="plan">
+      <h3>Gratis</h3>
+      <div class="pp">CHF 0</div>
+      <ul>
+        <li>5 Texte + 1 Fahrplan pro Tag</li>
+        <li>Alle Text-Arten &amp; der KI-Fahrplan</li>
+        <li>Kein Login, kein Upload &mdash; läuft im Browser</li>
+        <li>Sofort startklar, ohne Anmeldung</li>
+      </ul>
+    </div>
+    <div class="plan hl">
+      <span class="tag">Empfohlen</span>
+      <h3>Pro</h3>
+      <div class="pp"><span id="pro-price-2">CHF 9.90</span> / Monat</div>
+      <ul>
+        <li><b>Unbegrenzt</b> Texte &amp; Fahrpläne</li>
+        <li>Echte KI statt Vorlagen &mdash; mehr Qualität</li>
+        <li>4 Sprachen: DE · EN · FR · IT</li>
+        <li>Verlauf speichern &amp; als PDF exportieren</li>
+      </ul>
+    </div>
+  </section>
+
   <!-- PRO / KAUFBUTTON -->
   <section class="pro" id="pro">
     <h2>Mehr brauchen? <span style="color:var(--amber-dk)">Pro</span> freischalten</h2>
@@ -375,6 +433,7 @@ footer a{color:var(--muted)}
   function updateProTier(branche){
     var plus = isPlusBranche(branche);
     var price = $("pro-price"); if(price) price.textContent = plus ? "CHF 19.90" : "CHF 9.90";
+    var price2 = $("pro-price-2"); if(price2) price2.textContent = plus ? "CHF 19.90" : "CHF 9.90";
     var tn = $("pro-tier-note");
     if(tn) tn.textContent = plus
       ? "Pro+ für regulierte/sensible Branchen (Praxis, Immobilien, Beratung) — inkl. Compliance- & DSGVO-Hinweisen."

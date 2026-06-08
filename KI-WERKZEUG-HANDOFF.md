@@ -17,6 +17,11 @@
   `aban_kw_pro`. Aktivierung per **Checkout-Rückkehr `?pro=ok`** ODER **Freischalt-Code** (`PRO_UNLOCK_CODE`,
   Default `aban-pro`). `quota()` gibt bei Pro `left=Infinity` → Vorlagen unbegrenzt, kein Upsell;
   `refreshQuota()` zeigt „Pro · unbegrenzt".
+- **NEU (umgesetzt): Kunden-Überblick auf der Seite** („vorbereite so viel wie möglich für kunden",
+  „mach die seite mit gutem überblick"): (1) **„Alles für deinen Betrieb"**-Feature-Grid direkt unter dem Hero
+  (5 Karten: Produkttext / Social-Post / Bewertungs-Antwort / Kunden-Mail / KI-Fahrplan, reuse `.steps`/`.step`);
+  (2) **„Gratis vs Pro"-Vergleichsblock** vor der Kaufbox (`.compare`/`.plan`, `#pro-price-2` folgt der Branchen-Stufe
+  via `updateProTier`); Zwischen-Überschriften `.ov-h`/`.ov-sub` für klare Gliederung.
 - **NEU (umgesetzt): 2 Preis-Stufen nach Branche** (`updateProTier`, `PROPLUS_BRANCHEN`):
   - **Standard `STRIPE_PRO_LINK` = CHF 9.90** (`https://buy.stripe.com/6oUdRbfKKcfq03ZbaR5wI05`) — die meisten Branchen.
   - **Pro+ `STRIPE_PROPLUS_LINK` = CHF 19.90** (`https://buy.stripe.com/6oU00l1TUcfqg2XdiZ5wI06`) — regulierte/sensible:
