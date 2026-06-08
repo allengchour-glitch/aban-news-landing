@@ -46,6 +46,12 @@
   **Abgelehnt:** Tiered-Party-Mini CJLY2924170 (sehr kurz/clubby, off-brand premium), Clip-Ohrringe CJLX2924392
   („Gu Xiang Li"-Wasserzeichen), Car-Clock CJYD2923711 (0.69$, off-theme Auto), + 3 Dubletten (Suede-Skirt, Herren-Set,
   «Fleur Noir»-Kleid). cj-real: 206 → **207.**
+- **✅ Charge 18 (Mode/Accessoire, alter Key):** Maxi-Kleid «Aria» fliessend mit Gürtel & V-Ausschnitt (6 Farben×6
+  Grössen=36 Var, 49.90, kleid/sommer — Runway-Look, 1920px) + Sonnenbrille «Mirage» Cat-Eye verspiegelt (5 Farben,
+  19.90, →`sonnenbrille`-Collection). Beide live in 6 Kanälen, Media READY, SEO. Farbnamen DE (Saphirblau; CJ-Fassungs-
+  beschreibungen „Gold Frame Blue"→Blau etc.). **Abgelehnt:** Knit-Cape CJMY2926469 (alle Bilder nur ~573px, zu low-res),
+  Tote-Basket CJNS2921924 (Dackel-Applikation = Novelty, off-brand), Gothic-Skeleton-Hand CJDZ2922176 (off-theme),
+  Heart-Kette CJLX2923948 (0.53$ billig), + 1 Dublette (Long-Weste «Resort»). cj-real: 212 → **214.**
 - **✅ Charge 17 (Mode/Schuhe, alter Key):** Boho-Jacke «Fiore» Blüten-Stickerei (4 Grössen, 59.90, damen-mode —
   Top-Statement-Piece; Junk-Farbcode „09765" entfernt → reine Grössen-Option; low-res Hero gedroppt, nur 1785px-Bilder)
   + Boho-Kleid «Indigo» ärmellos m. Volant (5 Farben×6 Grössen=30 Var, 39.90, kleid/sommer) + Keil-Sandalen «Capri»
