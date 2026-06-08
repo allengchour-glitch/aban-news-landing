@@ -70,6 +70,12 @@
 - **✅ Charge 5 (Schmuck, alter Key):** Statement-Ohrringe «Doré» gebürstetes Gold `15421171859841` (29.90) +
   Sommer-Armband «Évil» Schmetterling/Nazar `15421171892609` (5 Stile, 19.90) — live in 6 Kanälen. Abgelehnt:
   Hochzeits-Kartenbox (off-theme), Fruchtprint-Cap (Novelty). cj-real: 184 → **186** · **heute 15 Produkte live.**
+- **🔧 Verbesserung (2026-06-08, live): Schmuck-Discoverability gefixt.** Die Menü-Collection
+  „💎 Schmuck & Uhren" → `premium-schmuck` ist **manuell** — neue/ältere Schmuckstücke landeten nur in
+  `damen-schmuck-sub`, nicht im Menü-Ziel. **Alle 81 `tag:schmuck`-Produkte** in `premium-schmuck` eingefügt
+  (63 → **82**), inkl. der 16 neuen. Audit ergab: SEO-Titel/-Description + Bild-Alt-Texte der 16 neuen Produkte
+  sind bereits durch die CI-SEO-Automation befüllt ✅. (Uhren ohne `schmuck`-Tag bleiben drin → kein Smart-Umbau,
+  sonst fielen sie raus; daher manueller Bulk-Add — idempotent, auch für künftige Läufe wiederholbar.)
 - **🤖 AUTO-QUEUE gebaut + auf `main` (PR #421):** `automation/queue_new_products.mjs` + `social-queue-build.yml`
   (2×/Tag 07:30/16:30 UTC) reihen die zuletzt angelegten ACTIVE-Produkte automatisch in `social/posts_image.csv`
   ein (Bild + DE-Caption + Produktlink + WELCOME10 + Hashtags, Dedup per Handle, nur .jpg). Kette komplett:
