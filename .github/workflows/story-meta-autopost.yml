@@ -1,0 +1,62 @@
+name: Social Meta Story Auto-Post (IG + FB Stories)
+
+# Postet die nächste fällige Story aus social/story_queue.csv per Meta-Graph-API:
+#   Instagram Stories (Bild/Video) + Facebook-Page Stories (Foto-/Video-Story).
+# 1 Story pro Lauf (gestaffelt). Medien per ÖFFENTLICHER URL (GitHub Pages). Threads = keine Stories.
+#
+# Tokens NUR aus GitHub-Secrets (identisch zum Feed-Poster). Ohne Secrets = No-Op.
+
+on:
+  schedule:
+    # 4×/Tag (Stories sind flüchtig → höhere Frequenz): 06/11/15/19 UTC
+    - cron: '0 6 * * *'
+    - cron: '0 11 * * *'
+    - cron: '0 15 * * *'
+    - cron: '0 19 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur testen (nichts posten)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: story-meta-autopost
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Post next story (Meta Graph API)
+        env:
+          META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          MAX_PER_RUN: '1'
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+        run: node automation/story-autopost-meta.mjs
+
+      - name: Commit posted-status if changed
+        run: |
+          if ! git diff --quiet -- social/story_queue.csv; then
+            git config user.name "luxestyle-autopost-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add social/story_queue.csv
+            git commit -m "chore(social): mark story as sent [skip ci]"
+            for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else
+            echo "Keine neue Story gesendet (nichts zu committen)."
+          fi
