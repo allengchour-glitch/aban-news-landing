@@ -1,0 +1,49 @@
+name: KI-Bild ans Produkt hängen
+
+# Hängt die veredelten KI-Bilder (social/enhanced/_manifest.csv) als Produktbild an die jeweiligen
+# Shopify-Produkte (productCreateMedia). Ledger social/enhanced/_added.txt verhindert Doppel-Anhängen.
+# Auth: SHOPIFY_CLIENT_ID/SECRET (bevorzugt) ODER SHOPIFY_ADMIN_TOKEN. No-op ohne Creds. Nur manuell.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur testen (kein Anhängen)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: attach-enhanced
+  cancel-in-progress: false
+
+jobs:
+  add:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Veredelte Bilder anhängen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+        run: node automation/shopify_add_enhanced.mjs
+      - name: Ledger committen
+        run: |
+          git config user.name  "ki-media-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f social/enhanced/_added.txt 2>/dev/null || true
+          if git diff --cached --quiet; then echo "kein Ledger-Update"; exit 0; fi
+          git commit -m "chore(ki): _added Ledger [skip ci]"
+          for i in 1 2 3 4 5; do
+            if git push; then echo gepusht; break; fi
+            git pull --rebase --autostash origin main || true; sleep 3
+          done
