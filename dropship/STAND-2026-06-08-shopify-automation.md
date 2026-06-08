@@ -84,3 +84,16 @@
 - Output `reels/werbung-luxestyle-{de,en}.mp4` (+`-clean`). Audio = Fallback (ElevenLabs 401) bis User neuen Key setzt;
   dann 1 Re-Render mit echter Musik+Stimme (Veo-Clips sind committet → kein neuer Veo-Cost).
 - **Posten: NICHT** (User: erst bei mehr Followern). Veo-`reels_seed.csv`-Queue wird vom Commit-Step NICHT committet → kein Auto-Post.
+
+## 🎬 Werbevideo v2 (2026-06-08 nachts) — User-Feedback eingearbeitet
+- **Veo-Bewegung entdreht:** `buildPrompt` in `automation/veo-hero-clip.mjs` verbietet jetzt explizit Rotation/180-360-Spin/
+  Orbit/Flip → nur sanfter Dolly-in + Parallaxe, Motiv bleibt frontal. (User: „muss nicht 180 sein, einfach animieren;
+  wenn's nicht geht, dann nicht" → Bewegung dezent, nicht erzwungen.)
+- **Fashion-Manifest = nur gewählte Heroes in Reihenfolge** (statt glob-all): `werbevideo.yml` Step 2 iteriert über
+  `HEROES_IN` (Komma-Liste) → `reels/veo-hero-<name>-*.mp4` neueste, in Input-Reihenfolge. Keine alten/rotierenden
+  Clips mehr. `HEROES_IN`-Env ergänzt.
+- **Strohtasche raus → Kleid:** `dropship/ads/good_products_fashion_ad.csv` Zeile strohtasche → **fleurette**
+  (Blumen-Maxikleid). Stills jetzt: dosnu, lumea, savanna, fleurette (alle Kleider, keine Schrift-Probleme).
+- **ElevenLabs-Key vom User neu gesetzt** → beide Videos neu gerendert mit echter Musik (gen_music.sh, instrumental)
+  + ElevenLabs-Stimme. Fashion-Heroes-Reihenfolge: brise(Opener)→daisy→sirène→nuit→cosy.
+- Commit 48263c54. Weiterhin NICHT gepostet.
