@@ -303,6 +303,11 @@ section{padding:14px 0}h2{font-size:1.25rem;margin:18px 0 10px}
 .route .mark:hover{color:var(--amber-dk)}
 .route li.read .mark{color:var(--amber-dk);font-weight:700}
 .read-counter{font-size:.82rem;color:var(--muted);margin:.2rem 0 0}
+.share{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:6px 0 2px}
+.share-l{font-size:.85rem;color:var(--muted);font-weight:600}
+.share-b{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;padding:0 10px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--amber-dk);font-weight:700;font-size:.85rem;text-decoration:none;cursor:pointer}
+.share-b:hover{border-color:var(--amber);transform:translateY(-1px)}
+.share-copy.copied{background:var(--cream);border-color:var(--amber)}
 footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
 footer a{color:var(--muted)}"""
 
@@ -348,6 +353,23 @@ __BODY__
 
 def e(s):
     return _html.escape(str(s or ""), quote=True)
+
+
+def share_row(canon, title):
+    import urllib.parse as up
+    url = "https://abannews.com/" + canon
+    u, t = up.quote(url, safe=""), up.quote(title + " · aban news", safe="")
+    x = f"https://twitter.com/intent/tweet?url={u}&text={t}"
+    li = f"https://www.linkedin.com/sharing/share-offsite/?url={u}"
+    wa = f"https://wa.me/?text={t}%20{u}"
+    return (
+        '<div class="share" aria-label="Dieses Dossier teilen">'
+        '<span class="share-l">Teilen:</span>'
+        f'<a class="share-b" href="{x}" target="_blank" rel="noopener" aria-label="Auf X teilen">𝕏</a>'
+        f'<a class="share-b" href="{li}" target="_blank" rel="noopener" aria-label="Auf LinkedIn teilen">in</a>'
+        f'<a class="share-b" href="{wa}" target="_blank" rel="noopener" aria-label="Per WhatsApp teilen">WA</a>'
+        f'<button type="button" class="share-b share-copy" data-url="{e(url)}" aria-label="Link kopieren">Link</button>'
+        '</div>')
 
 
 def signup_form(label="Kostenlos abonnieren →"):
@@ -511,6 +533,7 @@ def render_dossier(dos, issues):
     <p class="meta">{len(members)} Ausgaben · ca. {total_min} Min Lesen · laufend ergänzt</p>
   </section>
   <div class="intro"><p>{e(dos['blurb'])}</p></div>
+  {share_row(canon, dos['title'])}
   <section class="deepdive">{DEEPDIVES.get(dos['slug'], '')}</section>
   <section>
     <h2>Die Leseroute — {len(members)} Ausgaben zum Thema</h2>

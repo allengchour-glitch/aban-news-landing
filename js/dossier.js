@@ -33,6 +33,26 @@
   window.addEventListener('resize', onScroll);
   onScroll();
 
+  /* ---------- Link kopieren ---------- */
+  Array.prototype.slice.call(document.querySelectorAll('.share-copy')).forEach(function (b) {
+    b.addEventListener('click', function () {
+      var url = b.getAttribute('data-url') || location.href;
+      var done = function () {
+        var old = b.textContent;
+        b.textContent = '✓'; b.classList.add('copied');
+        setTimeout(function () { b.textContent = old; b.classList.remove('copied'); }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done, done);
+      } else {
+        var t = document.createElement('textarea');
+        t.value = url; document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(t); done();
+      }
+    });
+  });
+
   /* ---------- 3) „gelesen"-Markierung (localStorage) ---------- */
   var items = Array.prototype.slice.call(document.querySelectorAll('.route li[data-url]'));
   if (!items.length) return;
