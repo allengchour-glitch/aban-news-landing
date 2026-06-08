@@ -43,6 +43,26 @@ Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe s
 (Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
 
 
+## 📌 Stand 2026-06-08 (Teil 16) — Volle 4-Sprachen-Hub-Parität + Schema + Abend-TODO
+User: „alles weiter wo du kannst und das wo ich mache in todo abend". Erledigt & gemerged:
+- **BreadcrumbList-Schema in ALLEN Hubs** (PR #442 EN, #444 FR+IT): `tools/add_en_hub_breadcrumbs.py`
+  (generalisiert `--lang en|fr|it`, idempotent, Name/URL aus vorhandenem WebPage-JSON-LD) → EN/FR/IT-Hubs
+  bekommen BreadcrumbList (EN/IT „Home", FR „Accueil"). Schema-Parität zu DE jetzt komplett.
+- **6 EN-Hub-Übersetzungen** (PR #446): die zuletzt DE-only-Hubs (osteopathen, masseure, kinderbetreuung,
+  tierheilpraktiker, tierphysiotherapie, orthopaedieschuhtechnik) → native EN, + 6 EN-Schnellstart-PDFs
+  (`generate_branchen_pdfs.py --lang en`). **EN-Parität 262→268.**
+- **12 FR+IT-Hub-Übersetzungen** (PR #447): dieselben 6 nach FR + IT (native, via parallele Agenten mit
+  exaktem Sprach-Template). DE+EN-Hubs: hreflang fr+it + Nav auf konkrete Seiten. 12 Sitemap-Einträge.
+  **→ DE/EN/FR/IT je 268 Hubs, volle Schema- + hreflang-Parität.** Alle JSON-LD + Sitemap-XML + Links validiert.
+- **`docs/MORGEN-TODO.md` neu** (Abend-TODO, akkurat): 1) `STRIPE_API_KEY` (→ „sync": legt 6 fehlende DE-Kits
+  + alle EN-Kits + Bundle an) · 2) Cloudflare-Deploy-Token · 3) Premium-Briefing-LS-Link (€19/€190 →
+  „briefing-link") · 4) erste Ausgabe senden (→ „promote") · 5) Reichweite · 6) AGB-Anwaltscheck.
+- **Lehre (Branch-Falle):** nach `merge_pull_request` ist man lokal auf `main` ausgecheckt → vor neuer Arbeit
+  IMMER frischen Branch anlegen. Einmal versehentlich auf lokal-`main` committet → mit `git branch <neu> <sha>`
+  + `git reset --hard origin/main` gerettet, dann sauber via PR gemergt. NIE direkt `main` pushen (blockiert).
+- **Autonom erschöpft:** SEO/Schema/Conversion/Parität sind durch. Weiterer Umsatz hängt rein an den
+  User-Schritten in MORGEN-TODO (v.a. `STRIPE_API_KEY` + Reichweite). Kein Tool erfindet Nachfrage.
+
 ## 📌 Stand 2026-06-08 (Teil 15) — Preise überall sichtbar + EN-Kit-Deep-Links + Shop-Schema (Loop)
 User: „weiter in loop langsam" → „setzt überall kosten das die leute zahlen" → „weiter". Erledigt & gemerged:
 - **EN-Funnel Kit-Deep-Links** (PR #403): `add_branchen_funnel.py` liest jetzt `kit-catalog-en.json`; die 11
