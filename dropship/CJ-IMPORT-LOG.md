@@ -70,6 +70,10 @@
 - **✅ Charge 5 (Schmuck, alter Key):** Statement-Ohrringe «Doré» gebürstetes Gold `15421171859841` (29.90) +
   Sommer-Armband «Évil» Schmetterling/Nazar `15421171892609` (5 Stile, 19.90) — live in 6 Kanälen. Abgelehnt:
   Hochzeits-Kartenbox (off-theme), Fruchtprint-Cap (Novelty). cj-real: 184 → **186** · **heute 15 Produkte live.**
+- **✅ Charge 7 (Ring + Gadget, alter Key):** Doppel-Ring «Duo» S925 Silber/Topas `15421328359809` (4 Ringgrössen,
+  49.90, → `premium-schmuck` zugefügt) + Boden-Ständer «FlexHold» `15421328425345` (24.90, Gadget). Live in 6 Kanälen.
+  Abgelehnt: EMS-Gua-Sha (1 Bild + Geräte-Claims), Oval-Cushion-Ring ($116 §5), Silikon-Watch (zu billig/50 Var),
+  Mikrofon (off-theme). cj-real: 187 → **189**.
 - **🔧 Verbesserung (2026-06-08, live): Schmuck-Discoverability gefixt.** Die Menü-Collection
   „💎 Schmuck & Uhren" → `premium-schmuck` ist **manuell** — neue/ältere Schmuckstücke landeten nur in
   `damen-schmuck-sub`, nicht im Menü-Ziel. **Alle 81 `tag:schmuck`-Produkte** in `premium-schmuck` eingefügt
