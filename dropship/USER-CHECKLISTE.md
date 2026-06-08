@@ -1,100 +1,85 @@
 # ✅ USER-CHECKLISTE — LuxeStyle Social-Maschine aktivieren
 
 > **Zweck:** EINE Liste mit allem, was nur DU (im Browser/Admin) tun kannst, damit die autonome
-> Content-Maschine (Bilder + Reels → Instagram/Facebook/Threads/TikTok, selbstlernend) scharf läuft.
+> Content-Maschine (KI-Bilder + Reels → Instagram/Facebook/Threads/TikTok, selbstlernend) scharf läuft.
 > Alles Übrige ist gebaut, committet und no-op-safe — es wartet nur auf die Tokens/Klicks unten.
-> Stand: 2026-06-07 · Branch `claude/dropshipping-session-LehDs`.
+> Stand: 2026-06-08 · Branch `claude/dropshipping-session-LehDs`.
 
 ---
 
 ## 🔴 A. Manuelle To-dos
 - [ ] **1. `THREADS_ACCESS_TOKEN` als GitHub-Secret setzen** → Autopilot postet 2×/Tag von selbst.
-      (Repo → Settings → Secrets and variables → Actions → New repository secret.)
-- [ ] **2. Doppel-Facebook-Seiten löschen** — **nur „LuxeStyle CH" `1049840534888592` behalten**, die ABAN-Seite nicht.
+- [ ] **2. Doppel-Facebook-Seiten löschen** — **nur „LuxeStyle CH" `1049840534888592` behalten**.
 - [ ] **3. PureMax-Reel auf Instagram löschen** (Altbestand, passt nicht zur Marke).
-- [ ] **4. 🆕 TikTok-App-Audit beantragen** — IG+FB+Threads posten bereits automatisch; **TikTok ist technisch
-      fertig & bewiesen** (Token ok, Reel gefunden, API akzeptiert), aber eine *nicht-auditierte* App darf nur auf
-      **private** Konten posten — und ein Business-Konto kann nicht privat sein. → developers.tiktok.com → App
-      „LuxeStyle Poster" → **Content Posting API → Review/Audit beantragen** (App-Beschreibung, Demo-Video,
-      Datenschutz-URL). Nach Freigabe Repo-Variable `TT_PRIVACY_LEVEL` = `PUBLIC_TO_EVERYONE` → Cron postet öffentlich.
+- [ ] **4. TikTok-App-Audit beantragen** — IG+FB+Threads posten schon; TikTok technisch fertig, wartet nur auf Audit.
+      developers.tiktok.com → App „LuxeStyle Poster" → Content Posting API → Review beantragen. Danach
+      Repo-Variable `TT_PRIVACY_LEVEL` = `PUBLIC_TO_EVERYONE`.
 
-## ⏸️ B. Spam-Schutz
-- [ ] Throttle aktiv (`MAX_PER_RUN=1`); nichts wird geballert. (Nur zur Info.)
+## 🖼️ B. KI-Bild ans Shopify-Produkt — fast fertig, 1 Fix offen
+> Die KI-Veredelung + das Posten **laufen vollautomatisch**. Nur das *zusätzliche Hinterlegen am Produkt*
+> braucht gültige Shopify-Schreib-Creds. Diagnose aus den Live-Tests:
+> - `SHOPIFY_SHOP` muss die **myshopify-Domain** sein (`au3j0y-hq.myshopify.com`), NICHT `luxestyle.ch`.
+>   (Skript hat dafür jetzt einen Fallback — passt.)
+> - `SHOPIFY_ADMIN_TOKEN` war **ungültig** („Invalid API key/access token"). → Stattdessen:
+- [ ] **`SHOPIFY_CLIENT_ID` + `SHOPIFY_CLIENT_SECRET`** (der `shpss_…`-Schlüssel) als Secrets setzen
+      ([Link](https://github.com/allengchour-glitch/aban-news-landing/settings/secrets/actions/new)). Das Skript
+      holt damit einen frischen, gültigen Token.
+- [ ] **Custom-App-Scopes** auf **`read_products` + `write_products`** erweitern → **App neu installieren**.
+- [ ] Den falschen `SHOPIFY_ADMIN_TOKEN` löschen. → Danach „gesetzt" sagen, ich mache den finalen Test.
 
 ---
 
-## 🔑 C. Repo-Secrets für das Auto-Posting (Settings → Secrets → Actions)
-**Meta (Instagram + Facebook + Threads) — für `social-meta-autopost.yml`:**
-- [ ] `THREADS_ACCESS_TOKEN` + `THREADS_USER_ID`  → Threads
-- [ ] `IG_USER_ID` + `IG_ACCESS_TOKEN` (oder gemeinsamer `META_ACCESS_TOKEN`)  → Instagram Business
-- [ ] `FB_PAGE_ID` (= `1049840534888592`) + `FB_PAGE_ACCESS_TOKEN` (oder `META_ACCESS_TOKEN`)  → Facebook-Seite
-- ℹ️ Token-Scopes: `instagram_basic, instagram_content_publish, pages_show_list, pages_manage_posts`.
-- ℹ️ **Token-Lebensdauer:** Graph-Explorer-Tokens leben ~1-2h → „Erweiterten Token generieren" (60 Tage) oder System-User-Token.
+## 🔑 C. Repo-Secrets fürs Auto-Posting (Settings → Secrets → Actions)
+- [ ] **Meta:** `THREADS_ACCESS_TOKEN`+`THREADS_USER_ID` · `IG_USER_ID`+`IG_ACCESS_TOKEN`(o. `META_ACCESS_TOKEN`) ·
+      `FB_PAGE_ID`(=`1049840534888592`)+`FB_PAGE_ACCESS_TOKEN`. Scopes: `instagram_content_publish, pages_manage_posts` …
+      (Graph-Explorer-Token leben ~1-2h → 60-Tage-Token oder System-User.)
+- [x] **TikTok:** `TT_ACCESS_TOKEN`/`TT_REFRESH_TOKEN`/`TT_CLIENT_KEY`/`TT_CLIENT_SECRET` gesetzt (wartet auf Audit A.4).
+- [x] **Gemini:** `GEMINI_API_KEY` gesetzt (Billing aktiv, ~30 CHF) → Kritik + KI-Bilder + Veo laufen.
+- [ ] **Telegram:** `TELEGRAM_BOT_TOKEN` (🔒 rotieren) + `TELEGRAM_CHAT_ID`.
+- [ ] **Shopify (Crons):** `SHOPIFY_SHOP=au3j0y-hq.myshopify.com` · `SHOPIFY_CLIENT_ID` · `SHOPIFY_CLIENT_SECRET` (siehe B).
 
-**TikTok (Content Posting API v2) — für `tiktok-autopost.yml`:**
-- [x] `TT_ACCESS_TOKEN` + `TT_REFRESH_TOKEN` + `TT_CLIENT_KEY` + `TT_CLIENT_SECRET` (gesetzt — Pipeline bewiesen)
-- [ ] **Repo-Variable** `TT_PRIVACY_LEVEL`: aktuell `SELF_ONLY`; nach Audit (A.4) → `PUBLIC_TO_EVERYONE`.
-
-**Gemini (Site-Kritik + Veo) — für `gemini-site-critique.yml` / `veo-hero-clip.yml`:**
-- [x] `GEMINI_API_KEY` (gesetzt — Kritik-Pipeline läuft, postet Telegram-Digest + Report)
-
-**Telegram (Tages-Digest 1×/Tag):**
-- [ ] `TELEGRAM_BOT_TOKEN` (🔒 **bitte rotieren**, der alte wurde im Chat geteilt) + `TELEGRAM_CHAT_ID`
-
-**Shopify (Crons — Client-Credentials der Custom-App):**
-- [ ] `SHOPIFY_SHOP` = `au3j0y-hq.myshopify.com` · `SHOPIFY_CLIENT_ID` · `SHOPIFY_CLIENT_SECRET`
-
-**Optional:**
-- [ ] `JUDGEME_PRIVATE_TOKEN` + `JUDGEME_SHOP_DOMAIN=au3j0y-hq.myshopify.com` → echte Reviews (`reviews-import.mjs`).
-- [ ] `YT_CLIENT_ID` / `YT_CLIENT_SECRET` / `YT_REFRESH_TOKEN` → YouTube-Shorts-Auto-Upload.
-
-> Ohne Secrets passiert **nichts Schlimmes**: alle Workflows sind no-op-safe.
+> Ohne Secrets passiert nichts Schlimmes — alle Workflows sind no-op-safe.
 
 ## 🚀 D. Aktivierung
-- [ ] Geplante Actions laufen vom Default-Branch (`main`) — die Tools liegen dort.
-- [ ] **GitHub Pages** muss den Repo-Root servieren (für `reels/` + `social/static/*.jpg`).
+- [ ] Actions laufen vom Default-Branch (`main`). · **GitHub Pages** muss Repo-Root servieren (für `reels/`, `social/enhanced/`, `social/static/`).
 
 ---
 
-## 🧹 G. Collection-Aufräumen — 2-Min-Admin-Task (Unpublishing ist API-seitig gesperrt)
-> Die MCP-API blockt `publishableUnpublish` (Sicherheitslayer). Bitte diese **toten/Archiv-/Dubletten-Collections
-> im Admin unpublishen** (Verkaufskanäle → alle aus) — reduziert den Kategorie-Wildwuchs, den deine Freunde
-> bemängelt haben. Admin → Produkte → Sammlungen → je Collection „Aus Verkaufskanälen entfernen" (oder löschen).
-> **NICHT** die 8 Menü-Collections oder `sommer`/`sommer-2026` anfassen.
-- [ ] `[ARCHIV] Pet & Tierbedarf` · `[ARCHIV] Fitness & Sport` · `[ARCHIV] Tech & Gadgets` (3 Archiv-Reste)
-- [ ] `🔋 Auto-Power` (3) · `🍴 Küchengeräte` (2) · `Accessories` (2) · `Home & Gadgets` (3) · `🍽️ Servieren` (4)
-- [ ] `👠 Damen-Schuhe` (3) · `👞 Herren-Schuhe` (2) · `Strand & Bademode` (4) · `Self-Care & Wellness` (2) · `Schule & Büro` (3)
-- [ ] `US / Summer 2026` (6, deaktivierter US-Markt) · `🏡 Home & Family` (9, „für später reserviert")
-- [ ] Redundante Mini-Bundles: `🎁 Premium-Bundles — Spare CHF 19+` (4) · `🎁 Wellness-Box Bundles` (4) → Dublette zu `Bundles & Sets` (254)
+## 📱 E. Mobile-Verbesserung — „Bild-mit-Text"-Sektion (entschieden, fertig vorbereitet)
+> Beschluss (deckt sich mit Gemini): EINE „Bild mit Text"-Sektion gleich unter dem Hero. Stapelt auf dem Handy
+> perfekt zu **Bild oben + Headline + Button** und nutzt die neuen KI-Editorial-Bilder. Produktkacheln bleiben 2-spaltig.
+> **Die 4 KI-Editorial-Bilder (Bali, Daisy, Strohtasche, Sirène) liegen bereits in deiner Shopify-Medienbibliothek**
+> — im Customizer direkt auswählbar. Theme-Sektion kann nur im Customizer platziert werden (Live-Theme API-gesperrt):
+- [ ] Customizer (Startseite) → **Abschnitt hinzufügen → „Bild mit Text"**, Position unter dem Hero.
+- [ ] **Bild:** das KI-Bali-Editorial (aus Medien) · **Headline:** `Premium-Sommermode aus der Schweiz` ·
+      **Text:** `Designer-Looks zum fairen Preis · Gratis-Versand ab CHF 65 · –10 % mit Code WELCOME10` ·
+      **Button:** `Jetzt entdecken` → `/collections/damen-mode`.
 
-## 🎨 E. Shop-Feinschliff — nur Theme-Editor/Admin
-- [ ] **Kachel-Bildverhältnis „square"** (`templates/index.json`, 4 Produkt-Sektionen).
-- [ ] **Judge.me-Sterne auf Produktkacheln** aktivieren.
-- [ ] **Sticky „In den Warenkorb"** (mobil).
-- [ ] **Hero** auf Mode (Text + echtes Model-Bild).
-- [ ] **AGB-/Policy-Domain** `aban-192.myshopify.com` → `luxestyle.ch` (Scope `write_legal_policies` fehlt mir).
-- [ ] **Klaviyo-Flows**: `.com.co` → `.ch` in Live-Mails.
-- [ ] **~34 Nur-1-Bild-Produkte** (jüngere Autopilot-Importe) → 2./3. Bild von CJ ergänzen (bessere Heroes).
-- [ ] `aban news Founding-Member` (Produkt-ID `15420720808321`, 0 Bilder) gehört zum **abannews-Projekt** —
-      prüfen, ob es im LuxeStyle-Shop sichtbar ist; falls ja, ausblenden.
+## 🎨 F. Shop-Feinschliff — nur Theme-Editor/Admin
+- [ ] **Judge.me-Sterne auf Produktkacheln** · **Sticky „In den Warenkorb"** (mobil) · **Kachel-Verhältnis „square"**.
+- [ ] **AGB-/Policy-Domain** `aban-192.myshopify.com` → `luxestyle.ch` · **Klaviyo** `.com.co` → `.ch`.
+- [ ] **~34 Nur-1-Bild-Produkte** → 2./3. Bild ergänzen. · `aban news Founding-Member` (`15420720808321`, 0 Bilder, Fremdprojekt) prüfen/ausblenden.
 
-## 📣 F. Reichweite (nur du — Werbekonto/Login)
-- [ ] **TikTok-Pixel** aktiv + EINE saubere Kampagne („Complete Payment", CH/Frauen/18–34, 20 CHF/Tag testen).
-- [ ] **App-Scopes** der Custom-App erweitern (`read_products`,`write_products`,`write_publications`,`write_collections`)
-      → dann laufen SEO-/Rotations-/Health-**Crons** voll unbeaufsichtigt (in-Session geht es bereits via MCP).
+## 🧹 G. Collection-Aufräumen — 2-Min-Admin (Unpublishing API-gesperrt)
+> Admin → Sammlungen → je Collection „Aus Verkaufskanälen entfernen". **NICHT** die 8 Menü-Collections / `sommer`.
+- [ ] `[ARCHIV] Pet & Tierbedarf` · `[ARCHIV] Fitness & Sport` · `[ARCHIV] Tech & Gadgets`
+- [ ] `🔋 Auto-Power` · `🍴 Küchengeräte` · `Accessories` · `Home & Gadgets` · `🍽️ Servieren` · `👠 Damen-Schuhe` ·
+      `👞 Herren-Schuhe` · `Strand & Bademode` · `Self-Care & Wellness` · `Schule & Büro` · `US / Summer 2026` · `🏡 Home & Family`
+- [ ] Mini-Bundles `🎁 Premium-Bundles — Spare CHF 19+` · `🎁 Wellness-Box Bundles` (→ Dublette zu `Bundles & Sets`)
+
+## 📣 H. Reichweite (nur du — Werbekonto)
+- [ ] **TikTok-Pixel** + EINE Kampagne („Complete Payment", CH/Frauen/18–34, 20 CHF/Tag).
 
 ---
 
-## ✅ H. Autonom erledigt (Session 2026-06-07, live via Shopify-API)
-- **Menü verschlankt:** 18 Top-Kategorien + ~50 Unterpunkte → **8 flache Kategorien** (kein Drop-down-Gewühl mehr).
-- **13 echte Bild-Dubletten archiviert** (Re-Importe desselben CJ-Produkts; reversibel).
-- **56 Kategorie-Collections mit SEO** (Title + Description) befüllt (vorher `seo:null`).
-- **Bild-QA:** ganzer Katalog (519 Produkte) — **0 FAILED-Bilder**.
-- **Gebaut & committet:** TikTok-Autopilot + OAuth-Helfer, Gemini-Site-Kritik-Pipeline, Veo-Hero-Clip-Generator.
+## ✅ I. Autonom erledigt (Sessions 06-07/06-08, live via API)
+- **Menü** 18+50 → **8 flach** · **15 Bild-Dubletten** archiviert · **56 Collection-SEO** befüllt · **Bild-QA 0 FAILED** ·
+  **ganzer Katalog alt-getextet** (~600 Alt-Texte) · **Bestseller-Homepage** entgadgetisiert (Bali/Ibiza rein).
+- **🆕 KI-Meisterwerk-Pipeline** gebaut & **live verifiziert**: `gemini_enhance_image.mjs` (Nano Banana, echtfoto-
+  treu, Produkt etwas kleiner im Frame), `shopify_add_enhanced.mjs`, `veo-hero-clip.mjs` (Veo-Fast), Workflows
+  `gemini-enhance.yml` (tägl. 5 Bilder) + `veo-hero-clip.yml` (tägl. 1 Clip). Jeder Post mit **Produktlink**.
+- **Tools:** TikTok-Autopilot · Gemini-Site-Kritik (wöchentl.) · Veo-Generator · 4 KI-Editorial-Bilder in Shopify-Medien.
 
-## 🤖 Was bereits AUTONOM gebaut & committet ist (läuft, sobald C+D erledigt)
-- **Meta-Autopilot** `automation/social-autopost-meta.mjs` — IG+FB+Threads ✅ getestet.
-- **TikTok-Autopilot** `automation/tiktok-autopost.mjs` — wartet auf Audit (A.4).
-- **Gemini-Site-Kritik** `automation/gemini-site-critique.mjs` (+ `gemini-site-critique.yml`) — wöchentlich, Desktop+Mobil.
-- **Veo-Hero-Clip** `automation/veo-hero-clip.mjs` — on-demand cineastische 9:16-Clips.
-- **Bild-Generator** `gen_post_image.py` · **Reel-Engine** (Dual-Export) · **Lern-Schleife** · **Tages-Digest** · **Rating-Lister**.
+## 🤖 Läuft automatisch (sobald Secrets gesetzt)
+- IG+FB+Threads-Autopilot · TikTok (nach Audit) · KI-Bilder 04:30 · Veo-Clip 05:00 · Posts 08:00/17:00 ·
+  Tages-Digest · Gemini-Kritik Mo · Reel-/Rotations-/Health-Crons.
