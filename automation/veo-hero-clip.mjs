@@ -119,7 +119,7 @@ function queueReel(name, label, handle, fileName){
 // --- Hauptlauf ---
 const products = readGood();
 let queue;
-if(ONLY){ queue = products.filter(p=>p.name===ONLY); if(!queue.length){ console.error('VEO_ONLY nicht gefunden:', ONLY); process.exit(1); } }
+if(ONLY){ const _sel=new Set(ONLY.split(',').map(x=>x.trim()).filter(Boolean)); queue = products.filter(p=>_sel.has(p.name)); if(!queue.length){ console.error('VEO_ONLY nicht gefunden:', ONLY); process.exit(1); } }
 else { const start = loadPointer(products.length); queue = []; for(let k=0;k<MAX;k++) queue.push(products[(start+k)%products.length]); }
 
 fs.mkdirSync(OUT_DIR, { recursive: true });

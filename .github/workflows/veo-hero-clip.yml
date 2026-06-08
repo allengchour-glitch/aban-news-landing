@@ -1,30 +1,32 @@
 name: Veo Hero-Clip
 
-# Generiert mit Veo 1 cineastischen 9:16-Hero-Clip aus einem Produktbild (good_products.csv)
-# und reiht ihn als Reel (mit Produktlink) ein → reel-autopost.yml postet ihn. No-op ohne GEMINI_API_KEY.
-#
-# 💰 KOSTEN/BUDGET: Veo kostet pro Sekunde → Cron läuft nur WÖCHENTLICH (1 Clip), Default-Modell
-#    ist das GÜNSTIGE, bild-fähige veo-2.0-generate-001.
-# ⚠️ Bild→Video (Echtfoto-Ansatz, Regel 10) braucht ein Modell mit Bild-Input. Die Veo-FAST-Variante
-#    (veo-3.0-fast-generate-001) unterstützt über die Gemini-API KEIN Bild-Input → NICHT als Default nehmen.
+# Generiert 1+ cineastische 9:16-Hero-Clip(s) aus Produktbild(ern) (good_products.csv) und reiht sie
+# als Reel (mit Produktlink) ein. No-op ohne GEMINI_API_KEY.
+# Default-Modell: veo-3.1-lite-generate-preview (Bild->Video, ~$0.03/s, sehr guenstig). 'only' nimmt
+# eine Komma-Liste (Batch). Bild-Input via image.bytesBase64Encoded.
 
 on:
   schedule:
-    - cron: '0 5 * * 1'   # wöchentlich Montag 05:00 UTC, 1 Clip (Budget-schonend)
+    - cron: '0 5 * * 1'   # woechentlich Montag 05:00 UTC (Budget)
   workflow_dispatch:
     inputs:
       only:
-        description: 'Produkt-name aus good_products.csv (leer = rotierend)'
+        description: 'Produkt-name(n) aus good_products.csv, Komma-getrennt (leer = rotierend)'
         type: string
         default: ''
       model:
-        description: 'Veo-Modell (Fast = KEIN Bild-Input!)'
+        description: 'Veo-Modell'
         type: choice
-        default: 'veo-2.0-generate-001'
+        default: 'veo-3.1-lite-generate-preview'
         options:
+          - 'veo-3.1-lite-generate-preview'
           - 'veo-2.0-generate-001'
-          - 'veo-3.0-generate-001'
+          - 'veo-3.1-generate-preview'
           - 'veo-3.0-fast-generate-001'
+      seconds:
+        description: 'Clip-Laenge in Sekunden (4/6/8)'
+        type: string
+        default: '4'
       dry_run:
         description: 'Nur testen (kein Render, keine Kosten)'
         type: boolean
@@ -40,23 +42,24 @@ concurrency:
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Veo Hero-Clip rendern + Reel einreihen
+      - name: Veo Hero-Clip(s) rendern + Reel einreihen
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          VEO_MODEL: ${{ inputs.model || 'veo-2.0-generate-001' }}
+          VEO_MODEL: ${{ inputs.model || 'veo-3.1-lite-generate-preview' }}
           VEO_ONLY: ${{ inputs.only }}
+          VEO_SECONDS: ${{ inputs.seconds || '4' }}
           MAX_CLIPS: '1'
-          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+          DRY_RUN: ${{ inputs.dry_run == 'true' && '1' || '' }}
         run: node automation/veo-hero-clip.mjs
 
-      - name: Commit Clip + Reel-Queue
+      - name: Commit Clip(s) + Reel-Queue
         run: |
           if [ -z "$(git status --porcelain reels/ automation/reels_seed.csv automation/.veo_pointer 2>/dev/null)" ]; then
             echo "Kein neuer Clip (No-op?)."; exit 0
@@ -65,8 +68,8 @@ jobs:
           git config user.email "bot@users.noreply.github.com"
           git add reels automation/reels_seed.csv
           [ -f automation/.veo_pointer ] && git add automation/.veo_pointer || true
-          git commit -m "chore(veo): Hero-Clip + Reel-Queue [skip ci]" || { echo "nichts zu committen"; exit 0; }
+          git commit -m "chore(veo): Hero-Clip(s) + Reel-Queue [skip ci]" || { echo "nichts zu committen"; exit 0; }
           for i in 1 2 3 4 5; do
             if git push; then echo "gepusht."; break; fi
-            echo "rebase --autostash & retry ($i)…"; git pull --rebase --autostash origin main || true; sleep 3
+            echo "rebase --autostash & retry ($i)..."; git pull --rebase --autostash origin main || true; sleep 3
           done
