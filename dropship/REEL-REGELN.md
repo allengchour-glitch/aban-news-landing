@@ -26,6 +26,7 @@
 9. **Freigabe-Workflow:** Reel EINZELN per Telegram zur Freigabe (ja/nein/Kommentar), erst nach „ja" posten.
 
 ## Verbesserungs-Log (chronologisch — neue Punkte kommen oben dazu)
+- 2026-06-08: **Selbst-Lernen (learn_from_analytics.mjs):** Hashtag-Pools aus echten TikTok-Daten (tiktok_luxestyle.ch_2026-06-08.json) neu gesetzt → Top-Performer: #schweizmode #ootdschweiz #sommerkleid #fashionschweiz #ootd #schweiz. auto_render.sh nutzt sie automatisch.
 - 2026-06-03: **Echte TikTok-Daten analysiert** (Tool `tools/tiktok_analyze.py --user @luxestyle.ch --seed-video <url> --insecure`,
   von abannews gebaut, yt-dlp, kein API/Login; Report in `reports/`). 15 Videos, 2.769 Views, ~0 Engagement.
   **Lehre:** Preis-Anker-Caption **„CHF X statt Designer-Preis – gleicher Look 👀"** zog **771 Views** vs. nur
