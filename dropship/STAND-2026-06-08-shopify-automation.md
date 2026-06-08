@@ -74,3 +74,13 @@
   `ELEVENLABS_API_KEY` als Secret setzen → dann custom TikTok-Vibe-Musik (`gen_music.sh`, force_instrumental) + ElevenLabs-Stimme.
 - **Stand:** «Selbst gestalten»-Print-Werbung DE+EN fertig & geliefert (NICHT gepostet — User: erst posten wenn mehr
   Follower). Fashion-Werbung (2. Video) = Gate offen (Katalog fertig) → `werbevideo.yml concept=fashion heroes=<…> stills=…`.
+
+## 🎬 Fashion-Werbung (2. Video) — gebaut 2026-06-08 spät
+- 1-Klick: `werbevideo.yml concept=fashion heroes=brise,daisy,sirene stills=4 seconds=4 source=dropship/ads/good_products_fashion_ad.csv`.
+- Veo-Bewegung (veo-3.1-lite, image-to-video, 4s) für **brise/daisy/sirène** + bereits vorhandene `cosy`+`nuit`-Clips
+  → Manifest-Reihenfolge alphabetisch: **brise(Opener), cosy, daisy, nuit, sirène** = Kleider+Cardigan+Tasche
+  (passt zum Sprechertext „Kleider, Taschen & Accessoires"). Stills aus kuratierter `good_products_fashion_ad.csv`
+  (Strohtasche/Dos-Nu/Lumea/Savanna — keine Doppelung zu den Veo-Heroes).
+- Output `reels/werbung-luxestyle-{de,en}.mp4` (+`-clean`). Audio = Fallback (ElevenLabs 401) bis User neuen Key setzt;
+  dann 1 Re-Render mit echter Musik+Stimme (Veo-Clips sind committet → kein neuer Veo-Cost).
+- **Posten: NICHT** (User: erst bei mehr Followern). Veo-`reels_seed.csv`-Queue wird vom Commit-Step NICHT committet → kein Auto-Post.
