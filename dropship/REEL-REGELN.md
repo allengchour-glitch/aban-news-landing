@@ -65,3 +65,4 @@
 - 2026-06-03: Regel-Datei angelegt, mit allen bisher gelernten Präferenzen (oben) als Seed.
 <!-- NEUE VERBESSERUNGEN HIER EINTRAGEN, Format: -->
 <!-- - YYYY-MM-DD: „Verbesserung: <O-Ton>" → Regel: <was ich künftig immer mache> -->
+- 2026-06-08: „Verbesserung: Bali-Video löschen und nicht mehr posten (gilt überall), kam zu oft vor, keine asiatischen Frauen." → Regel: **KEINE asiatischen Models** in Bildern/Reels/Posts. Bali («Strand-Maxikleid») komplett aus der Pipeline entfernt (good_products.csv, product_reels.csv, reels_seed.csv, posts_image.csv) + alle Bali-Medien gelöscht (reels/, social/enhanced, social/static). Bei der Produktauswahl für good_products.csv/Reels künftig **immer das Hero-Bild prüfen** → keine asiatischen Models aufnehmen. Zusätzlich: ein Produkt nicht zu oft wiederholen (Abwechslung).
