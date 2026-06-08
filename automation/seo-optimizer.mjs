@@ -21,10 +21,18 @@ const DRY = process.env.DRY_RUN === '1';
 if(!(SHOP && (TOK_STATIC || (CID && CSECRET)))){ console.log('Keine Shopify-Credentials → No-op.'); process.exit(0); }
 
 async function getToken(){
-  if(TOK_STATIC) return TOK_STATIC;
-  const r = await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({client_id:CID,client_secret:CSECRET,grant_type:'client_credentials'})});
-  return (await r.json()).access_token || '';
+  // Client-Credentials BEVORZUGT (holt pro Lauf einen frischen, gültigen Token — läuft nie ab).
+  // Fallback: statischer SHOPIFY_ADMIN_TOKEN. So funktioniert es egal welches Secret gesetzt ist.
+  if(CID && CSECRET){
+    try{
+      const r = await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({client_id:CID,client_secret:CSECRET,grant_type:'client_credentials'})});
+      const j = await r.json();
+      if(j.access_token) return j.access_token;
+      console.error('Client-Credentials abgelehnt:', JSON.stringify(j).slice(0,200));
+    }catch(e){ console.error('Client-Credentials-Ausnahme:', e.message); }
+  }
+  return TOK_STATIC;
 }
 const API = `https://${SHOP}/admin/api/2025-01/graphql.json`;
 let TOKEN = '';

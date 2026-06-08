@@ -38,7 +38,7 @@ async function status(path){
   catch(e){ return 0; }
 }
 async function getToken(){
-  if(TOK_STATIC) return TOK_STATIC;
+  if(!(CID && CSECRET) && TOK_STATIC) return TOK_STATIC;
   if(SHOP && CID && CSECRET){
     try{ const r = await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({client_id:CID,client_secret:CSECRET,grant_type:'client_credentials'})}); const j=await r.json(); return j.access_token||''; }

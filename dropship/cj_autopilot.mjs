@@ -89,15 +89,15 @@ async function imgOk(url) {
   catch { return false; }
 }
 async function ensureShopToken() {
-  if (SHOP_TOKEN) return SHOP_TOKEN;
-  // Modern (2026): Client-Credentials-Grant → frischer Token (CLAUDE.md / reel-analytics.mjs)
+  // Client-Credentials-Grant BEVORZUGT (2026): frischer Token pro Lauf, läuft nie ab.
+  // Fallback: statischer SHOPIFY_ADMIN_TOKEN. So klappt es egal welches Secret gesetzt ist.
   if (SHOPIFY_CLIENT_ID && SHOPIFY_CLIENT_SECRET) {
     const r = await req('POST', `https://${SHOPIFY_SHOP}/admin/oauth/access_token`,
       { 'Content-Type': 'application/json' },
       { client_id: SHOPIFY_CLIENT_ID, client_secret: SHOPIFY_CLIENT_SECRET, grant_type: 'client_credentials' });
-    try { SHOP_TOKEN = JSON.parse(r.body).access_token || ''; } catch { SHOP_TOKEN = ''; }
+    try { const t = JSON.parse(r.body).access_token; if (t) { SHOP_TOKEN = t; return SHOP_TOKEN; } } catch {}
   }
-  return SHOP_TOKEN;
+  return SHOP_TOKEN; // statischer Token als Fallback
 }
 async function shopify(query, variables) {
   const r = await req('POST', `https://${SHOPIFY_SHOP}/admin/api/${API_VER}/graphql.json`,

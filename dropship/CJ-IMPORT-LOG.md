@@ -41,7 +41,75 @@
   Risiko (§5) + schwaches Bild (auf schmutzigem Boden).
 - **✅ Charge 2 (Accessoires, alter Key):** Henkeltasche «Lune» `15421166059905` (4 Farben, 24.90) +
   Crossbody-Tasche «Nuit» `15421166092673` (3 Farben, 24.90) — live in 6 Kanälen. Abgelehnt: Clip-Ohrringe
-  (Wasserzeichen „Gu Xiang Li"), Kinder-Cartoon-Cap (Kids/IP §5), Deko-Gans-Kostüm (off-theme), Boston-Bag
+  (Wasserzeichen „Gu - **✅ Charge 15 (Mode, alter Key):** Strandkleid «Maré» Boho-Midi mit Volants & Quasten (6 Farben×6 Grössen=36 Var,
+  39.90, damen-mode/kleid/sommer — Top-Lifestyle-Strandshot, klarer Marken-Treffer). Live in 6 Kanälen, Media READY.
+  **Abgelehnt:** Tiered-Party-Mini CJLY2924170 (sehr kurz/clubby, off-brand premium), Clip-Ohrringe CJLX2924392
+  („Gu Xiang Li"-Wasserzeichen), Car-Clock CJYD2923711 (0.69$, off-theme Auto), + 3 Dubletten (Suede-Skirt, Herren-Set,
+  «Fleur Noir»-Kleid). cj-real: 206 → **207.**
+- **✅ Charge 19 (Mode/Schuhe, alter Key):** Sommer-Playsuit «Marigold» Blüten-Print (5 Grössen, 29.90, damen-mode/
+  sommer) + Plateau-Pumps «Wild» Leoparden-Print mit Knöchelriemen (2 Farben×8 Grössen=16 Var, 44.90, schuhe/sommer).
+  Beide live in 6 Kanälen, Media READY, SEO. **Abgelehnt:** Washed-Denim-Kleid CJLY2925841 (alle Bilder ~426px, low-res),
+  + 4 Dubletten/Rejects (Rhinestone-Shorts «Cristal», WOSPORT-556-Magazintasche=Waffe, Acryl-Ohrringe, Clip-Ohrringe-
+  Wasserzeichen «Gu Xiang Li»). cj-real: 214 → **216.**
+  ⚠️ **API-Lehre:** Beim productSet-Call ein Emoji als kaputte `�`-Escape getippt → „Invalid JSON"-Abbruch (kein
+  Shopify-Fehler); sauber wiederholt. Emoji-Unicode-Escapes sorgfältig setzen.
+- **✅ Charge 18 (Mode/Accessoire, alter Key):** Maxi-Kleid «Aria» fliessend mit Gürtel & V-Ausschnitt (6 Farben×6
+  Grössen=36 Var, 49.90, kleid/sommer — Runway-Look, 1920px) + Sonnenbrille «Mirage» Cat-Eye verspiegelt (5 Farben,
+  19.90, →`sonnenbrille`-Collection). Beide live in 6 Kanälen, Media READY, SEO. Farbnamen DE (Saphirblau; CJ-Fassungs-
+  beschreibungen „Gold Frame Blue"→Blau etc.). **Abgelehnt:** Knit-Cape CJMY2926469 (alle Bilder nur ~573px, zu low-res),
+  Tote-Basket CJNS2921924 (Dackel-Applikation = Novelty, off-brand), Gothic-Skeleton-Hand CJDZ2922176 (off-theme),
+  Heart-Kette CJLX2923948 (0.53$ billig), + 1 Dublette (Long-Weste «Resort»). cj-real: 212 → **214.**
+- **✅ Charge 17 (Mode/Schuhe, alter Key):** Boho-Jacke «Fiore» Blüten-Stickerei (4 Grössen, 59.90, damen-mode —
+  Top-Statement-Piece; Junk-Farbcode „09765" entfernt → reine Grössen-Option; low-res Hero gedroppt, nur 1785px-Bilder)
+  + Boho-Kleid «Indigo» ärmellos m. Volant (5 Farben×6 Grössen=30 Var, 39.90, kleid/sommer) + Keil-Sandalen «Capri»
+  geflochten Espadrille (5 Farben×8 Grössen=40 Var, 39.90, schuhe/sommer). Alle 3 live in 6 Kanälen, Media READY, SEO.
+  **Bild-Lehre:** CJ-Hero kann Thumbnail (320px) sein, während Gallery 1785px hat → Bild-Auflösung prüfen, low-res droppen.
+  **Abgelehnt:** Fruit-Print-Hut CJMZ2922419 (1.40$ Novelty), + 3 Dubletten (Beach-Dress «Maré», Retro-Tote,
+  Geburtsstein-Armband «Pois»). cj-real: 209 → **212.**
+- **✅ Charge 16 (Mode/Schuhe, alter Key):** Herren-Sommerhemd «Lido» Stehkragen Leinen-Look (5 Farben×5 Grössen=25 Var,
+  34.90, herren-mode/sommer) + Strand-Sandalen «Dorée» Metallic-Riemchen (6 Farben×10 Grössen=60 Var, 34.90,
+  schuhe/sommer). Beide live in 6 Kanälen, Media READY, SEO gesetzt, Farbnamen DE (Roségold/Rosarot/Hell-/Dunkelgold).
+  «Lido» statt «Riva» (Namenskollision mit Charge-9-Sandale vermieden). **Abgelehnt:** Herren-Trousers CJKT2924853
+  („NEWB"-Wasserzeichen-Infografik, low-res, „Winter heavyweight" off-season), Car-LED-Strip CJQC2922316 (off-theme Auto),
+  + 3 Dubletten (Beach-Dress «Maré», Acryl-Ohrringe, Boston-Bag «Lussa»). cj-real: 207 → **209.**
+- **🔧 Katalog-Hygiene (live via API, kein Repo-File):** (1) **SEO-Title+Description für alle 9 neuen Produkte**
+  (Charges 11–15) ergänzt — vorher 0 SEO-Meta → jetzt Google-/Discovery-tauglich. (2) **Smart-Collection
+  „💎 Herren-Schmuck" gefixt:** Regel war nur `TAG=Herren` → fing ALLE 181 Herren-Artikel (Jeans/Shirts) statt nur
+  Schmuck. Regel auf `Herren AND schmuck` verschärft → 181 → ~58, jetzt korrekt schmuck-scoped. Reversibel.
+- **✅ Charge 14 (Accessoire, alter Key):** Samt-Cap «Velours» Retro-Baseball (8 Farben, 19.90, accessoires).
+  Live in 6 Kanälen, alle Media READY. **Abgelehnt (strenger QA-Lauf):** Tunic-Pants-Set CJLS2924397 (88 Var, zu nah
+  am 100-Limit), J-Shape-Stillkissen CJYD2924218 (sperrig/off-theme), Floral-Thermosflasche CJHS2924200 („Shangsheng
+  Bio"-Wasserzeichen + kindlich), Gloce-Sonnenbrille CJCF2923061 (Marken-Logo am Bügel = IP-Risiko), Horseshoe-Cross-
+  Kette CJLX2924662 (0.55$, religiös/billig), Hooded-Cardigan CJWY2923949 (Dublette «Cosy»). cj-real: 205 → **206.**
+- **✅ Charge 13 (Mode, alter Key):** Strick-Cardigan «Bohème» Ajour-Pointelle (9 Farben×5 Grössen=43 Var, 34.90,
+  damen-mode/sommer). Live in 6 Kanälen, alle Media READY, Farbnamen DE (Mintgrün/Mintblau/Silber…). **Abgelehnt:**
+  Suede-Minirock CJQZ2924206 + Moissanite-Herzkette CJJE2924620 (beide Dubletten: «Santa Fe» / «Coeur» schon live),
+  Herren-Shirt-Set CJTW2923835 (Dublette), San-Benito-Armband CJSL2922783 (religiös/niche + Hero nur Mass-Diagramm),
+  „Aging Body Oil" CJPF2924318 (schwacher Kosmetik-Name, Single-Var, §5). cj-real: 204 → **205.**
+- **✅ Charge 12 (Mode, alter Key):** Sommerkleid «Sole» Casual-Midi Raglan (4 Farben×5 Grössen=20 Var, 34.90,
+  damen-mode/sommer) + Blazer «Roma» tailliert mit Bindegürtel (11 Farben×5 Grössen=55 Var, 49.90, damen-mode) +
+  Herren-Henley «Waffle» Waffelstrick (6 Farben×6 Grössen=36 Var, 34.90, herren-mode). Alle 3 live in 6 Kanälen,
+  alle Media READY, Farbnamen ins Deutsche übersetzt (Weiss/Dunkelgrau/Weinrot…), Blazer-Präfix „Belt Buckle Long"
+  aus den Farbwerten gestript. **Abgelehnt:** Acryl-Ohrringe CJLX2924757 (Dublette), WOSPORT 556 Magazin-Tasche
+  (Waffen-Zubehör, §5), Wrought-Iron-Vase (Hero nur Mass-Diagramm + Wasserzeichen, Foto-Studio-Requisite, off-theme).
+  cj-real: 201 → **204.**
+- **✅ Charge 11 (Mode/Accessoire/Home, alter Key):** Jeans-Shorts «Cristal» Strass (5 Grössen, 29.90, damen-mode/sommer) +
+  Make-up-Tasche «Mirror» mit Spiegel (5 Farben, 19.90, accessoires) + Kerzenwärmer-Lampe «Lueur» Timer/Dimmer
+  (79.90, home) + Herren-Jeans «Heritage» Washed Vintage (10 Grössen M–8XL, 44.90, herren-mode). Alle 4 live in
+  6 Kanälen, alle Media READY, echte CJ-SKUs `tracked:false`. **Dubletten übersprungen** (Herren-Set CJTW2923835,
+  Acryl-Ohrringe CJLX2924757, Lune-Tote CJYD2923916). Jeans-Varianten-Parsing gefixt (6XL–8XL waren nicht in der
+  SIZES-Liste → sauber als reine Grössen-Option neu aufgebaut). cj-real: 197 → **201.**
+- **✅ Charge 10 (Schmuck/Kleid, alter Key):** Silber-Armreif «Serpent» S925 (34.90, →premium-schmuck) +
+  Sommerkleid «Fleur Noir» Blumen-Print (8 Farben×5 Grössen=40 Var, 39.90, →sommer-2026). Live in 6 Kanälen.
+  Dubletten übersprungen (Perlen-Anhänger, Clip-Ohrringe-Wasserzeichen). cj-real: 195 → **197.**
+- **✅ Charge 9 (Schuhe/Home/Schmuck, alter Key):** Zehensteg-Sandalen «Riva» (14 Var, 24.90, Schuhe) +
+  Smart-Diffuser «Aura» (EU-Stecker, 99.90) + Moissanite-Herzkette «Coeur» (3 Farben, 119.90, →premium-schmuck) +
+  Acryl-Ohrringe «Ambre» (24.90, →premium-schmuck). Live in 6 Kanälen. Abgelehnt: Brotbeutel/WM-Schal/60-Var-Sandale/
+  mehrdeutige Blue-Light-Brille. cj-real: 191 → **195.**
+- **✅ Charge 8 (Mode, alter Key):** Boho-Jeansjacke «Dentelle» Spitzen-Panel `15421364896129` (44.90) +
+  Fransen-Minirock «Santa Fe» Wildleder-Optik `15421364928897` (5 Farben, 34.90). Live in 6 Kanälen.
+  Dublette übersprungen (Long-Weste «Resort»). cj-real: 189 → **191.**
+- **✅ Charge 7 (Ring + Gadgetiang Li"), Kinder-Cartoon-Cap (Kids/IP §5), Deko-Gans-Kostüm (off-theme), Boston-Bag
   (Dublette zu vorhandener «Lussa»). cj-real: 171 → **179**.
   ⚠️ Lehre: CJ-API-Key ≠ Konto-Passwort; liegt NUR im Developer-Portal (`developers.cjdropshipping.com` →
   `…/myCJ.html#/apikey`), Format `CJ<ID>@api@<32hex>`. Key nach Lauf rotieren. CJ-ID `CJ5452995`, Free-Tier.
@@ -70,6 +138,43 @@
 - **✅ Charge 5 (Schmuck, alter Key):** Statement-Ohrringe «Doré» gebürstetes Gold `15421171859841` (29.90) +
   Sommer-Armband «Évil» Schmetterling/Nazar `15421171892609` (5 Stile, 19.90) — live in 6 Kanälen. Abgelehnt:
   Hochzeits-Kartenbox (off-theme), Fruchtprint-Cap (Novelty). cj-real: 184 → **186** · **heute 15 Produkte live.**
+X, alter Key):** Doppel-Ring «Duo» S925 Silber/Topas `15421328359809` (4 Ringgrössen,
+  49.90, → `premium-schmuck` zugefügt) + Boden-Ständer «FlexHold» `15421328425345` (24.90, Gadget). Live in 6 Kanälen.
+  Abgelehnt: EMS-Gua-Sha (1 Bild + Geräte-Claims), Oval-Cushion-Ring ($116 §5), Silikon-Watch (zu billig/50 Var),
+  Mikrofon (off-theme). cj-real: 187 → **189**.
+- **🔧 Verbesserung (2026-06-08, live): Schmuck-Discoverability gefixt.** Die Menü-Collection
+  „💎 Schmuck & Uhren" → `premium-schmuck` ist **manuell** — neue/ältere Schmuckstücke landeten nur in
+  `damen-schmuck-sub`, nicht im Menü-Ziel. **Alle 81 `tag:schmuck`-Produkte** in `premium-schmuck` eingefügt
+  (63 → **82**), inkl. der 16 neuen. Audit ergab: SEO-Titel/-Description + Bild-Alt-Texte der 16 neuen Produkte
+  sind bereits durch die CI-SEO-Automation befüllt ✅. (Uhren ohne `schmuck`-Tag bleiben drin → kein Smart-Umbau,
+  sonst fielen sie raus; daher manueller Bulk-Add — idempotent, auch für künftige Läufe wiederholbar.)
+  **Menü-Audit:** alle anderen Menü-Collections (Schuhe/Beauty/Home/Gadgets/Geschenke/Damen-Mode) sind Smart
+  (Tag-basiert) → füllen sich selbst, keine Lücke. **Bild-QA:** alle 16 neuen Produkte 0 FAILED, alle READY.
+  **Nicht gefixt (bewusst):** „Herren-Schmuck"-Sub (179 Prod.) hält echten Herren-Schmuck über den generischen
+  `herren`-Tag (Tag `herrenschmuck` nur 5×) → Regel-Umbau würde ~170 Produkte rauswerfen; Herren-Set bleibt
+  daher als harmlose Cross-Listung drin. Vase-Variantencodes (A2854…) = kosmetisch, gelassen.
+- **🤖 AUTO-QUEUE gebaut + auf `main` (PR #421):** `automation/queue_new_products.mjs` + `social-queue-build.yml`
+  (2×/Tag 07:30/16:30 UTC) reihen die zuletzt angelegten ACTIVE-Produkte automatisch in `social/posts_image.csv`
+  ein (Bild + DE-Caption + Produktlink + WELCOME10 + Hashtags, Dedup per Handle, nur .jpg). Kette komplett:
+  **Autopilot legt an → Auto-Queue reiht ein → Cron postet (FB/Threads/IG)**. Test-Lauf erfolgreich, aber **no-op**
+  (0 eingereiht) — **Shopify-Secrets fehlen** (`SHOPIFY_SHOP`+`SHOPIFY_CLIENT_ID/SECRET`, USER-CHECKLISTE §B/§C).
+  `GEMINI_API_KEY` gesetzt. **Aktivierung = Shopify-Secrets + CJ-Creds als Repo-Secrets.**
+- **📲 Social-Posting der NEUEN Produkte (2026-06-08):** Über `social-meta-autopost.yml` (Branch-Ref-Trick, ohne
+  `main` anzufassen) NEUE Produktbilder gepostet — **Facebook + Threads laufen** (IG mit gelegentlichem
+  Verarbeitungs-Delay). Queue `social/posts_image.csv` umgestellt: alte „hat-User-schon"-Bilder → `skip`,
+  **13 neue Produktposts** (mit Produktlink + WELCOME10) als `ready` eingefügt; werden seriell gepostet.
+- **🔴 TIKTOK FEHLT NOCH (User-Merker):** TikTok-Auto-Posting ist **noch nicht aktiv** — die TikTok-App ist
+  technisch fertig (`tiktok-autopost.yml`/`automation/tiktok-autopost.mjs`, Token gesetzt), aber eine
+  **nicht-auditierte App darf nur auf PRIVATE Konten posten** → Business-Konto geht nicht öffentlich. **To-do (User,
+  USER-CHECKLISTE §A.4):** developers.tiktok.com → App „LuxeStyle Poster" → Content Posting API → **Audit/Review
+  beantragen**; nach Freigabe Repo-Variable `TT_PRIVACY_LEVEL=PUBLIC_TO_EVERYONE`. Aktuell posten nur FB+Threads(+IG).
+- **🟡 Queue→main offen:** Direkter Push nach `main` ist (korrekt) gesperrt → Queue-Bereinigung für den
+  2×/Tag-Cron läuft über PR-Merge, am besten NACH dem aktuellen Post-Batch (sonst Doppel-Posts Branch↔Cron).
+- **✅ Charge 6 + Merge:** Glücks-Halskette «Fortune» Hufeisen/Kreuz `15421226746241` (16.90) live. cj-real → **187**
+  (**16 Produkte heute**). **PR #401 nach `main` gemergt** → Autopilot ist jetzt auf dem Default-Branch = aktiv.
+  Beim Merge: origin/main (aban-news Autonom-Ausbau) integriert; **Lehre aus aktualisierter Checkliste:**
+  `GEMINI_API_KEY` ist als Secret gesetzt (Billing aktiv), Shopify-Schreibzugriff läuft über
+  `SHOPIFY_CLIENT_ID/SECRET` (Client-Credentials) — Autopilot entsprechend umgestellt.
 - **🤖 AUTOPILOT zu VOLL-AUTO ausgebaut (fertig, committet):** `dropship/cj_autopilot.mjs` macht jetzt den
   KOMPLETTEN Flow autonom: CJ-Suche → §5-Hartfilter → SKU-Dedup → Bild-200-Check → **Varianten Farbe×Grösse +
   Farbbilder via `productSet`** → optional **Gemini-Gate** (DE-Copy + QA) → **ACTIVE + publish in 6 Kanäle**

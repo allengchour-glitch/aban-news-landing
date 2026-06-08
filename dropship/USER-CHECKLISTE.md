@@ -56,6 +56,11 @@
       **Button:** `Jetzt entdecken` → `/collections/damen-mode`.
 
 ## 🎨 F. Shop-Feinschliff — nur Theme-Editor/Admin
+- [ ] **🆕 Footer-Social-Links falsch:** zeigen auf **„Abannews"** statt LuxeStyle → Customizer → Footer/Theme-
+      Einstellungen → Social Media → eigene **LuxeStyle**-Profile (FB `1049840534888592`, IG/Threads `@luxestyle.ch`).
+- [ ] **🆕 „🎨 Selbst gestalten" als echter Live-Designer:** Customizer-App **Kickflip** (o. Teeinblue/Zakeke)
+      installieren + **Printful** verbinden → ersetzt das Wunsch-Design-Formular durch einen Designer direkt auf der
+      Produktseite. Danach hängt Claude den Designer + Basis-Produkte (T-Shirt/Hoodie/Tasse) ein.
 - [ ] **Judge.me-Sterne auf Produktkacheln** · **Sticky „In den Warenkorb"** (mobil) · **Kachel-Verhältnis „square"**.
 - [ ] **AGB-/Policy-Domain** `aban-192.myshopify.com` → `luxestyle.ch` · **Klaviyo** `.com.co` → `.ch`.
 - [ ] **~34 Nur-1-Bild-Produkte** → 2./3. Bild ergänzen. · `aban news Founding-Member` (`15420720808321`, 0 Bilder, Fremdprojekt) prüfen/ausblenden.

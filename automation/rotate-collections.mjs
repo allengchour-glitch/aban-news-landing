@@ -30,7 +30,7 @@ if(!(SHOP && (TOK_STATIC || (CID && CSECRET)))){
 
 const slot = Math.floor(Date.now() / (3 * 3600 * 1000)); // wechselt alle 3h
 async function getToken(){
-  if(TOK_STATIC) return TOK_STATIC;
+  if(!(CID && CSECRET) && TOK_STATIC) return TOK_STATIC;
   const r = await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({client_id:CID,client_secret:CSECRET,grant_type:'client_credentials'})});
   return (await r.json()).access_token || '';
