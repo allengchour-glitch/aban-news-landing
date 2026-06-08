@@ -107,9 +107,14 @@ async function fbVideoStory(url){
   const start = await gpost(`https://graph.facebook.com/${V}/${FB_ID}/video_stories`, { upload_phase:'start', access_token:tok });
   if(!start.ok || !start.j.video_id){ console.error('FB-Video-Story start:', start.status, JSON.stringify(start.j.error||start.j)); return false; }
   const vid = start.j.video_id;
-  // Hosted upload: rupload mit file_url-Header
+  // Bytes SELBST laden + binär hochladen (umgeht die robots.txt-Sperre des FB-rupload-Fetchers).
+  const vr = await fetch(url);
+  if(!vr.ok){ console.error('FB-Video-Story: Quelle nicht ladbar', vr.status, url); return false; }
+  const buf = Buffer.from(await vr.arrayBuffer());
   const rr = await fetch(`https://rupload.facebook.com/video-upload/${V}/${vid}`, {
-    method:'POST', headers:{ 'Authorization':`OAuth ${tok}`, 'file_url':url } });
+    method:'POST',
+    headers:{ 'Authorization':`OAuth ${tok}`, 'offset':'0', 'file_size':String(buf.length), 'Content-Type':'application/octet-stream' },
+    body: buf });
   const rj = await rr.json().catch(()=>({}));
   if(!rr.ok || rj.success===false){ console.error('FB-Video-Story upload:', rr.status, JSON.stringify(rj)); return false; }
   // kurz warten, bis Verarbeitung greift
