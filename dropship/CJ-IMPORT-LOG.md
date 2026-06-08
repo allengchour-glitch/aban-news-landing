@@ -46,6 +46,13 @@
   **Abgelehnt:** Tiered-Party-Mini CJLY2924170 (sehr kurz/clubby, off-brand premium), Clip-Ohrringe CJLX2924392
   („Gu Xiang Li"-Wasserzeichen), Car-Clock CJYD2923711 (0.69$, off-theme Auto), + 3 Dubletten (Suede-Skirt, Herren-Set,
   «Fleur Noir»-Kleid). cj-real: 206 → **207.**
+- **✅ Charge 17 (Mode/Schuhe, alter Key):** Boho-Jacke «Fiore» Blüten-Stickerei (4 Grössen, 59.90, damen-mode —
+  Top-Statement-Piece; Junk-Farbcode „09765" entfernt → reine Grössen-Option; low-res Hero gedroppt, nur 1785px-Bilder)
+  + Boho-Kleid «Indigo» ärmellos m. Volant (5 Farben×6 Grössen=30 Var, 39.90, kleid/sommer) + Keil-Sandalen «Capri»
+  geflochten Espadrille (5 Farben×8 Grössen=40 Var, 39.90, schuhe/sommer). Alle 3 live in 6 Kanälen, Media READY, SEO.
+  **Bild-Lehre:** CJ-Hero kann Thumbnail (320px) sein, während Gallery 1785px hat → Bild-Auflösung prüfen, low-res droppen.
+  **Abgelehnt:** Fruit-Print-Hut CJMZ2922419 (1.40$ Novelty), + 3 Dubletten (Beach-Dress «Maré», Retro-Tote,
+  Geburtsstein-Armband «Pois»). cj-real: 209 → **212.**
 - **✅ Charge 16 (Mode/Schuhe, alter Key):** Herren-Sommerhemd «Lido» Stehkragen Leinen-Look (5 Farben×5 Grössen=25 Var,
   34.90, herren-mode/sommer) + Strand-Sandalen «Dorée» Metallic-Riemchen (6 Farben×10 Grössen=60 Var, 34.90,
   schuhe/sommer). Beide live in 6 Kanälen, Media READY, SEO gesetzt, Farbnamen DE (Roségold/Rosarot/Hell-/Dunkelgold).
