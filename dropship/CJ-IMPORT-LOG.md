@@ -1,5 +1,9 @@
 # 📦 CJ-Import-Log — LuxeStyle CH
 
+> **➡️ NEUESTER STAND (2026-06-08): `dropship/STAND-2026-06-08-shopify-automation.md` ZUERST LESEN.**
+> Shopify-Schreib-Automatik läuft jetzt (Beschreibungen katalogweit + KI-Bild/Video ans Produkt) — via
+> **Client-Credentials** (CLIENT_ID/SECRET), der `atkn_`-Token wird abgelehnt. Details + alle Lehren dort.
+>
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
 > Stand: 2026-05-31 — **65 Produkte LIVE** + 6 Hero-Produkte mit Premium-Copy.
