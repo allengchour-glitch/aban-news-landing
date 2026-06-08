@@ -461,7 +461,7 @@ STR = {
     "issues_word": "Ausgaben", "deepdive_badge": "THEMEN-DOSSIER"},
 "en": {"locale": "en_US", "skip": "Skip to content", "navcta": "Free newsletter", "home": "/en/",
     "footer": ('© 2026 aban news · Allen Chour · Belp (CH) · <a href="/en/dossiers.html">Topic dossiers</a> · '
-               '<a href="/archive/">Archive (German)</a> · <a href="/impressum.html">Imprint</a> · '
+               '<a href="/en/archive.html">Archive</a> · <a href="/impressum.html">Imprint</a> · '
                '<a href="/datenschutz.html">Privacy</a>'),
     "crumb_start": "Home", "crumb_doss": "Dossiers", "ausgabe": "Issue", "min": "min",
     "meta": "{n} issues · approx. {m} min read · updated regularly", "start_here": "Start here",
@@ -845,7 +845,7 @@ def render_dossier(dos, issues, lang):
   <section>
     <h2>{e(s['more_h'])}</h2>
     <div class="grid">{others}</div>
-    <p class="note" style="margin-top:.8rem"><a href="/archive/">{e(s['all_archive'].format(n=n_aus))}</a></p>
+    <p class="note" style="margin-top:.8rem"><a href="{'/en/archive.html' if en else '/archive/'}">{e(s['all_archive'].format(n=n_aus))}</a></p>
   </section>"""
 
     tagline = "abannews.com/en/dossiers  ·  honest, no hype" if en else "abannews.com/dossiers  ·  ehrlich, kein Hype"
@@ -887,7 +887,7 @@ def render_index(issues, counts, lang):
       {signup_form(s['cta_btn'])}
       <p class="note">{e(s['hub_note'].format(n=n_aus))}</p>
     </div>
-    <p class="note"><a href="/archive/">{e(s['hub_archive'])}</a></p>
+    <p class="note"><a href="{'/en/archive.html' if en else '/archive/'}">{e(s['hub_archive'])}</a></p>
   </section>"""
     page = fill_shell(s, lang, title=s["hub_title"], ogt=s["hub_ogt"], desc=s["hub_desc"],
                       canon=canon, ogimg=("og-dossiers-en.png" if en else "og-dossiers.png"),
