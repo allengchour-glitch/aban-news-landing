@@ -58,7 +58,8 @@ jobs:
           fi
           git config user.name "luxestyle-veo-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add reels automation/reels_seed.csv automation/.veo_pointer
+          git add reels automation/reels_seed.csv
+          [ -f automation/.veo_pointer ] && git add automation/.veo_pointer || true
           git commit -m "chore(veo): Hero-Clip + Reel-Queue [skip ci]" || { echo "nichts zu committen"; exit 0; }
           for i in 1 2 3 4 5; do
             if git push; then echo "gepusht."; break; fi
