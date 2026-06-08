@@ -60,12 +60,24 @@ def render(ep):
 
 def upload(svc, ep, sc, path, privacy):
     from googleapiclient.http import MediaFileUpload
-    title = f"{sc['title']} 🦎 #ABANFiles"
-    desc = (f"{sc['hook']}\n\nThe ABAN Files. Check it out.\n\n"
-            f"#ABANFiles #shorts #scifi #ai #conspiracy #reptilian #aban")
-    body = {"snippet": {"title": title[:100], "description": desc,
-                        "tags": ["ABAN Files", "ABAN", "sci-fi", "AI", "shorts"],
-                        "categoryId": "24"},
+    # SEO (Recherche 2026): Haupt-Keyword vorn (nur ~40 Zeichen sichtbar vor Truncation),
+    # #Shorts fuer Klassifizierung, 3-5 Hashtags in der Beschreibung (erste 3 = klickbar),
+    # 6-8 relevante Tags, Abo-CTA in die BESCHREIBUNG (nicht ins Video -> stoert den Loop nicht).
+    topic = sc["title"].title()                       # "PUMA PUNKU" -> "Puma Punku"
+    topictag = "".join(c for c in sc["title"].title() if c.isalnum())  # "PumaPunku"
+    hook = sc.get("hook", "").rstrip(" .")
+    title = f"{topic} — {hook} #Shorts" if hook else f"{topic} #Shorts"
+    if len(title) > 100:
+        title = f"{topic} #Shorts"
+    hashtags = f"#Shorts #ancientaliens #conspiracy #mystery #{topictag}"
+    desc = (f"{sc.get('hook','')}\n\n"
+            f"{topic}: what they buried, decoded by ABAN. Watch to the very end.\n\n"
+            f"▶ Subscribe to the ABAN Files — before they erase the next transmission.\n\n"
+            f"{hashtags}")
+    tags = ["ABAN Files", "ancient aliens", "conspiracy theory", "unexplained",
+            "ancient mysteries", "paranormal", "shorts", topic][:10]
+    body = {"snippet": {"title": title[:100], "description": desc[:4900], "tags": tags,
+                        "categoryId": "24", "defaultLanguage": "en", "defaultAudioLanguage": "en"},
             "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": False}}
     media = MediaFileUpload(path, chunksize=-1, resumable=True, mimetype="video/mp4")
     req = svc.videos().insert(part="snippet,status", body=body, media_body=media)
