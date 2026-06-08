@@ -7,6 +7,11 @@
 (function () {
   'use strict';
 
+  var EN = (document.documentElement.lang || '').slice(0, 2) === 'en';
+  var T = EN
+    ? { read: '✓ read', mark: '○ mark as read', counter: function (a, b) { return a + ' of ' + b + ' issues read'; } }
+    : { read: '✓ gelesen', mark: '○ als gelesen markieren', counter: function (a, b) { return a + ' von ' + b + ' Ausgaben gelesen'; } };
+
   /* ---------- 1) Lesefortschritt ---------- */
   var bar = document.createElement('div');
   bar.className = 'reading-progress';
@@ -81,11 +86,11 @@
       var btn = li.querySelector('.mark');
       if (btn) {
         btn.setAttribute('aria-pressed', read ? 'true' : 'false');
-        btn.textContent = read ? '✓ gelesen' : '○ als gelesen markieren';
+        btn.textContent = read ? T.read : T.mark;
       }
       if (read) done++;
     });
-    counter.textContent = done + ' von ' + items.length + ' Ausgaben gelesen';
+    counter.textContent = T.counter(done, items.length);
   }
 
   items.forEach(function (li) {

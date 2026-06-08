@@ -234,6 +234,263 @@ FAQS = {
 ],
 }
 
+# --- Englische Inhalte (gleiche Ausgaben, übersetzte Rahmen — keine erfundenen Fakten) ---
+EN_META = {
+"ki-werkzeugkasten": {"title": "The AI Toolbox",
+    "sub": "Every Friday an honest tool test — bundled into one reading path.",
+    "blurb": "Which AI tools are actually worth it — and which just sound good. These issues take tools "
+             "apart in practice: what stays, what goes, what you can skip. Honestly tested, with a "
+             "data-protection eye for the German-speaking (DACH) region."},
+"ki-datenschutz-dach": {"title": "AI & Data Protection in the DACH Region",
+    "sub": "GDPR, the EU AI Act and what they mean in practice.",
+    "blurb": "Use AI without getting legally tangled up: these issues sort out data protection, EU "
+             "regulation and DACH-specific questions — practical, no panic, no hype. Not legal advice, but "
+             "the right framing before you put tools into production."},
+"ki-prompts-die-funktionieren": {"title": "Prompts That Actually Work",
+    "sub": "Proven prompts and workflows — to copy and adapt.",
+    "blurb": "No prompt voodoo, just what really saves time day to day. These issues collect proven prompts "
+             "and workflows for writing, research and routine — ready to use."},
+"anti-hype-reality-checks": {"title": "Anti-Hype & Reality Checks",
+    "sub": "What the headline promises — and what actually holds up.",
+    "blurb": "The signature of aban news: holding AI claims against reality. These issues separate substance "
+             "from marketing — so you decide on facts, not on LinkedIn noise."},
+"ki-modelle-vergleich": {"title": "AI Models & Providers Compared",
+    "sub": "Claude, Mistral, Aleph Alpha & co. — who really does what.",
+    "blurb": "The model market keeps reshuffling: China pushes prices down, Mistral and Aleph Alpha bring the "
+             "EU argument, the US providers catch up. These issues sort out who is good for what — so you "
+             "choose by fit, not by headline."},
+"ki-fuer-selbststaendige": {"title": "AI for the Self-Employed",
+    "sub": "Get more done as a one-person team — without replacing yourself.",
+    "blurb": "For solo founders and small teams, AI is a real lever — for acquisition, email, admin and "
+             "routine. These issues show concrete workflows from practice (with a DACH data-protection eye): "
+             "where AI takes work off your plate and where it doesn't."},
+}
+
+DEEPDIVES_EN = {
+"ki-werkzeugkasten": """
+<h2>In depth: how to judge AI tools honestly</h2>
+<p>More AI tools launch than any human could ever test — and new ones arrive daily. So the goal isn't to know them all, but to find the two or three that make your work <em>measurably</em> better. Everything else is well-made distraction. That's what the toolbox is for: not \"look what's new\", but \"is this worth it for you\".</p>
+<h3>Five questions before any subscription</h3>
+<ul>
+<li><strong>Does it solve a real problem of mine?</strong> Not \"is it impressive\", but \"does this task annoy me often enough that a fix pays off\".</li>
+<li><strong>Does it save more time than it costs?</strong> Setup, learning and the daily back-and-forth all count. A tool that saves five minutes but needs ten to manage is a net loss.</li>
+<li><strong>Where does my data live?</strong> Hosting location, data processing, what happens to your inputs. In the DACH region that's not a detail — it's often the deciding question.</li>
+<li><strong>How big is the lock-in?</strong> What happens if the provider shuts down, doubles the price, or drops the feature you depend on? The easier it is to leave, the safer the subscription.</li>
+<li><strong>Can a tool I already have do this \"well enough\"?</strong> The most honest saving is the subscription you never start.</li>
+</ul>
+<h3>The honest 14-day test</h3>
+<p>Never test on the glossy demo, but on a real, boring project from your everyday work. Run it for two weeks <em>in parallel</em> with your current method and note two things: where did it actually save time? And where did you have to redo the work because the output wasn't good enough? After 14 days that note decides — not the gut feeling right after the first \"wow\".</p>
+<h3>The costliest mistake: the subscription graveyard</h3>
+<p>Most people don't pay too little for tools — they pay too much for tools they don't use. A tool you touch every day beats ten you \"tried once\". Clean up once a quarter: what did you actually open in the last four weeks? The rest goes.</p>
+<div class="dd-note"><strong>Rule of thumb:</strong> workflow first, tool second. Start with the tool and look for the workflow afterwards, and you've built yourself work you didn't have before.</div>
+""",
+"ki-datenschutz-dach": """
+<h2>In depth: use AI without getting legally tangled up</h2>
+<p>In the DACH region, adopting AI rarely fails on the tech and often on the uncertainty: \"am I even allowed to?\" Good news — the key guardrails fit on one page. Honest news — they don't replace legal advice, but they prevent the expensive beginner mistakes.</p>
+<h3>What never belongs in a public AI tool</h3>
+<ul>
+<li>Real and personal names of customers, patients or clients</li>
+<li>Contract and offer contents, amounts, internal calculations</li>
+<li>Health, financial and other specially protected data</li>
+<li>Credentials, keys, anything from a password manager</li>
+</ul>
+<p>The simple rule: would you email it unasked to an unknown service provider abroad? If not, it doesn't belong unchecked in an AI tool either.</p>
+<h3>Three terms worth knowing</h3>
+<ul>
+<li><strong>Data processing agreement (DPA):</strong> if a tool processes personal data on your behalf, you usually need a contract for it. Reputable providers offer one; if it's missing, that's a warning sign.</li>
+<li><strong>Third-country transfer:</strong> where are the servers? If your data leaves the EU/EEA, extra requirements apply. The hosting location is often in the fine print — read it.</li>
+<li><strong>EU AI Act, in plain terms:</strong> applications are sorted by risk. Most of what solo self-employed people do (drafting, summarising) is lightly regulated — but transparency where required, and the data protection underneath, remain your duty.</li>
+</ul>
+<h3>Pre-flight checklist before using a tool</h3>
+<ul>
+<li>☐ Which data exactly am I entering — and is anything sensitive among it?</li>
+<li>☐ Is there a DPA, and do I have it?</li>
+<li>☐ Where is it processed (EU or third country)?</li>
+<li>☐ Can I anonymise/pseudonymise the input without hurting the result?</li>
+<li>☐ Does my team know what may go in and what may not (one page of policy is enough)?</li>
+</ul>
+<div class="dd-note"><strong>Not a substitute for legal advice.</strong> In sensitive fields (health, law, tax) get expert review when in doubt — the aban news compliance packs give you a clean starting point, but the responsibility stays with you.</div>
+""",
+"ki-prompts-die-funktionieren": """
+<h2>In depth: why most prompt tips don't help</h2>
+<p>\"You are an experienced expert in …\" — such magic formulas rarely make the difference. What actually improves a result isn't the magic word at the start, but <em>structure</em> and <em>iteration</em>. A good prompt isn't a phrase, it's a clear brief.</p>
+<h3>Anatomy of a prompt that works</h3>
+<ul>
+<li><strong>Role &amp; goal:</strong> from which perspective, to what end? Short, not theatrical.</li>
+<li><strong>Context:</strong> who reads this, what's the situation, what's off-limits? Most bad output comes from missing context, not from a weak model.</li>
+<li><strong>Task, precisely:</strong> one task per prompt, clearly stated. \"Write me something about X\" is gambling.</li>
+<li><strong>Format:</strong> length, tone, structure, language. Say it, or the model guesses.</li>
+<li><strong>Example:</strong> the most underrated element. One example of your desired style often beats three paragraphs of instruction.</li>
+</ul>
+<h3>Iteration beats perfection</h3>
+<p>Nobody writes the perfect prompt on the first try — and that's not the goal. Send a usable prompt, look at what's missing, and tell the model specifically what to change. Three quick rounds beat half an hour polishing the \"perfect\" first prompt.</p>
+<h3>When <em>not</em> to use AI</h3>
+<p>The honest line: if you can't judge the result yourself, don't use it unchecked. AI drafts, you decide. For facts, law and figures that means: verify, always.</p>
+<div class="dd-note"><strong>Build your own prompt library.</strong> Every prompt that worked well once belongs saved. After a few weeks you'll have a dozen proven templates — that saves more time than any collection of someone else's \"1000 best prompts\".</div>
+""",
+"anti-hype-reality-checks": """
+<h2>In depth: the anti-hype filter in 60 seconds</h2>
+<p>Every week something is \"the end of\" or \"the revolution for\". Most of it is neither. You don't need to be an expert to separate substance from marketing — you just need five questions and a minute.</p>
+<h3>Five questions for any AI headline</h3>
+<ul>
+<li><strong>Who benefits from the claim?</strong> Someone raising a round or selling a product talks about \"breakthroughs\" differently than someone who has to work with them.</li>
+<li><strong>Demo or production?</strong> A curated demo shows the best case. What's interesting is how something holds up on the third Tuesday with real, ugly data.</li>
+<li><strong>Cherry-picked?</strong> An impressive example is one example, not proof. Ask for the average, not the highlight.</li>
+<li><strong>Reproducible?</strong> Can others reproduce the result independently — or is there just the one viral screenshot?</li>
+<li><strong>What does it really cost?</strong> Including setup, learning curve, rework and your time. \"Saves 10 hours\" is worthless if onboarding costs 40.</li>
+</ul>
+<h3>Investor deck vs. Tuesday morning</h3>
+<p>The biggest gap in the AI discourse runs between what announcements promise and what actually works on a normal workday. Keep that gap in mind and you make better decisions — and save yourself expensive mis-purchases others only regret months later.</p>
+<h3>Reading benchmarks without fooling yourself</h3>
+<p>Numbers look objective but are often optimised for the test. Always ask: who measured, against what, under which conditions — and does that match your use case? A top score in a lab test says little about your inbox.</p>
+<div class="dd-note"><strong>Scepticism isn't pessimism.</strong> It's about saving your attention (and money) for what truly proves itself. That's the idea behind aban news.</div>
+""",
+"ki-modelle-vergleich": """
+<h2>In depth: choosing a model without falling for the benchmark circus</h2>
+<p>Which AI model is \"the best\" seems to change weekly — and that's the trap. Leaderboards measure lab conditions, not your inbox. The better question isn't \"which is on top\", but \"which fits my task, my budget and my data\".</p>
+<h3>What actually matters when choosing</h3>
+<ul>
+<li><strong>Fit for your task:</strong> test with your real texts/data. A model that tops the benchmark can still be worse for your use case.</li>
+<li><strong>Where the data sits:</strong> EU providers like Mistral or Aleph Alpha are often the stronger argument in the DACH region — not because of hype, but because of processing location and compliance.</li>
+<li><strong>Cost &amp; commoditisation:</strong> the price war (also from China) increasingly turns language models into a commodity. Don't pay for a name, pay for measurable value.</li>
+<li><strong>Lock-in:</strong> the easier you can switch provider, the more calmly you'll ride out the next market shift.</li>
+</ul>
+<h3>Why \"the market leader\" is rarely the right answer</h3>
+<p>The gap between the top models is shrinking, while specialisation and price differ more. For most tasks \"good enough\" is plenty — and \"good enough, EU-hosted, half the price\" beats \"top of the chart with open data-protection questions\".</p>
+<div class="dd-note"><strong>Rule of thumb:</strong> pick two candidates, test them for a week on real work, decide by result and data protection — not by ranking.</div>
+""",
+"ki-fuer-selbststaendige": """
+<h2>In depth: AI as your one-person team</h2>
+<p>As a self-employed person you're marketing, sales, accounting and delivery in one. That's exactly where AI is a real lever — not as a replacement for you, but as an assistant that takes the routine off your hands so you have time for what clients actually pay you for.</p>
+<h3>Where AI saves you the most time</h3>
+<ul>
+<li><strong>Acquisition &amp; lead gen:</strong> research, first-contact drafts, follow-up texts — prepared in minutes instead of hours.</li>
+<li><strong>Email &amp; communication:</strong> drafts, summaries of long threads, polite declines. You set the direction, AI types the first version.</li>
+<li><strong>Admin &amp; routine:</strong> structuring offers, rephrasing texts, building checklists.</li>
+</ul>
+<h3>Where it doesn't (yet) replace you</h3>
+<p>Relationship, judgement and responsibility stay with you. AI doesn't know your clients, isn't liable and makes no decisions. It delivers drafts — you approve. Confuse the two and sooner or later you send something embarrassing.</p>
+<h3>Data protection: the solo stumbling block</h3>
+<p>Working alone, it's easy to get sloppy. Customer data doesn't belong unchecked in public tools — pseudonymise, or clarify processing location and data-processing agreement first. More on that in the data-protection dossier.</p>
+<div class="dd-note"><strong>Start small:</strong> pick a single annoying, recurring task and automate exactly that. One running workflow beats ten tools you meant to \"try out\".</div>
+""",
+}
+
+FAQS_EN = {
+"ki-werkzeugkasten": [
+    ("Which AI tools are actually worth it?",
+     "The few that solve a real, recurring problem of yours and save more time than they cost. Rule of thumb: a tool you use daily beats ten you tried once. Test for 14 days on real work, not on the demo."),
+    ("How do I test an AI tool seriously?",
+     "In parallel with your current method, on a real project, for two weeks. Note where it saved time and where you had to redo the work. Then the note decides, not the first wow."),
+    ("What should I watch for with tools in the DACH region?",
+     "Where the data is processed (EU or third country), whether there's a data-processing agreement, and how big the lock-in is. More in the data-protection dossier."),
+],
+"ki-datenschutz-dach": [
+    ("Can I enter customer data into an AI tool?",
+     "Usually not unchecked. Real and personal names, contract contents and specially protected data don't belong unfiltered in public tools. Pseudonymise, or clarify processing location and a data-processing agreement first. This is not legal advice."),
+    ("What is a data-processing agreement (DPA)?",
+     "A contract governing how a provider processes personal data on your behalf. Reputable providers offer one; if it's missing, that's a warning sign."),
+    ("Does the EU AI Act affect me as a solo self-employed person?",
+     "Mostly only lightly: drafting or summarising text is lightly regulated. But transparency where required, and the data protection underneath, remain your duty."),
+],
+"ki-prompts-die-funktionieren": [
+    ("Why don't my prompts work?",
+     "Usually context or a clear format is missing, not the right magic word. Give a role, context, a precise task, the desired format and ideally an example."),
+    ("Do \"you are an expert\" prompts help?",
+     "Rarely the decisive difference. Structure and iteration beat magic formulas. One example of your desired style often helps more than three paragraphs of instruction."),
+    ("Should I buy ready-made prompt collections?",
+     "Rarely necessary. Your own library of prompts that have demonstrably worked for you is worth more after a few weeks than any external \"1000 prompts\" list."),
+],
+"anti-hype-reality-checks": [
+    ("How do I spot AI hype?",
+     "Five questions: who benefits from the claim? Demo or production? Cherry-picked? Reproducible? What does it really cost, including your time? That separates substance from marketing in 60 seconds."),
+    ("Can I trust AI benchmarks?",
+     "With caution. Numbers are often optimised for the test. Ask: who measured, against what, under which conditions — and does it match your use case?"),
+    ("Isn't scepticism just pessimism?",
+     "No. It's about saving your attention and money for what truly proves itself — instead of chasing every headline."),
+],
+"ki-modelle-vergleich": [
+    ("Which AI model is the best?",
+     "There's no single \"best\" for everyone. For your specific task a short practical test with real data decides — plus data protection and cost. The gap between the top models is smaller than the headlines suggest."),
+    ("Are EU providers like Mistral or Aleph Alpha a real alternative?",
+     "For many DACH applications, yes — mainly because of processing location and compliance. On raw performance it depends on the use case, so test yourself rather than trusting the ranking."),
+    ("Is it worth switching models all the time?",
+     "No. Choose by fit and keep the switching effort (lock-in) small. Only switch when it noticeably improves value or data protection."),
+],
+"ki-fuer-selbststaendige": [
+    ("What does AI help most with as a self-employed person?",
+     "Recurring routine: acquisition drafts, email, summaries, admin. Start with a single annoying task and automate exactly that."),
+    ("Will AI replace my work?",
+     "No. It delivers drafts and takes routine off your hands — judgement, relationship and responsibility stay with you. You always approve yourself."),
+    ("May I use customer data?",
+     "Not unchecked in public tools. Pseudonymise, or clarify processing location and a data-processing agreement first. Details in the data-protection dossier — not legal advice."),
+],
+}
+
+# UI-Strings je Sprache
+STR = {
+"de": {"locale": "de_DE", "skip": "Zum Inhalt", "navcta": "Newsletter gratis", "home": "/",
+    "footer": ('© 2026 aban news · Allen Chour · Belp (CH) · <a href="/dossiers.html">Themen-Dossiers</a> · '
+               '<a href="/archive/">Archiv</a> · <a href="/impressum.html">Impressum</a> · '
+               '<a href="/datenschutz.html">Datenschutz</a>'),
+    "crumb_start": "Start", "crumb_doss": "Dossiers", "ausgabe": "Ausgabe", "min": "Min",
+    "meta": "{n} Ausgaben · ca. {m} Min Lesen · laufend ergänzt", "start_here": "Start hier",
+    "route_h": "Die Leseroute — {n} Ausgaben zum Thema",
+    "route_note": "Die Analyse oben an konkreten Beispielen aus dem Archiv, chronologisch:",
+    "faq_h": "Häufige Fragen", "more_h": "Weitere Dossiers",
+    "all_archive": "→ Alle {n} Ausgaben im Archiv durchsuchen",
+    "cta_h": "Neue Ausgaben zu diesem Thema — automatisch im Postfach",
+    "cta_sub": "Der tägliche KI-Newsletter, der dir die Arbeit abnimmt:",
+    "sell": ["Mo–Fr in <strong>5 Minuten</strong> auf dem Laufenden",
+             "<strong>3 Updates · 1 Tool · 1 Prompt</strong> — sofort nutzbar",
+             "Ehrlich, <strong>kein Hype</strong>, mit DACH-Blick"],
+    "cta_btn": "Kostenlos abonnieren →", "cta_note": "Gratis · jederzeit kündbar · kein Tracking, kein Spam.",
+    "track": "Bereits {n} Ausgaben erschienen · täglich Mo–Fr · von Allen Chour, Belp (CH)",
+    "share": "Teilen:", "share_aria": "Dieses Dossier teilen", "copy": "Link",
+    "hub_title": "Themen-Dossiers — der KI-Newsletter vertieft · aban news",
+    "hub_ogt": "Themen-Dossiers — der KI-Newsletter vertieft",
+    "hub_desc": "Echte aban-news-Ausgaben, zu vertieften Themen-Leserouten gebündelt: Werkzeugkasten, Datenschutz im DACH-Raum, Prompts, Anti-Hype, KI-Modelle, KI für Selbstständige.",
+    "hub_h1": "Themen-Dossiers — der Newsletter, vertieft",
+    "hub_lead": "Aus {n} echten Ausgaben zu In-Depth-Leserouten gebündelt. Ein Thema, von Anfang bis aktuell — zum Einsteigen, Nachholen und Tieferbohren.",
+    "hub_cta_h": "Lieber täglich frisch statt nachlesen?",
+    "hub_cta_sub": "Bekomm den Newsletter, aus dem diese Dossiers entstehen:",
+    "hub_sell": ["Mo–Fr in <strong>5 Minuten</strong>", "<strong>3 Updates · 1 Tool · 1 Prompt</strong>",
+                 "Ehrlich, <strong>kein Hype</strong>"],
+    "hub_note": "Gratis · jederzeit kündbar · kein Tracking · {n} Ausgaben bereits erschienen.",
+    "hub_archive": "→ Oder alle Ausgaben im Archiv durchsuchen", "count_word": "Ausgaben →",
+    "issues_word": "Ausgaben", "deepdive_badge": "THEMEN-DOSSIER"},
+"en": {"locale": "en_US", "skip": "Skip to content", "navcta": "Free newsletter", "home": "/en/",
+    "footer": ('© 2026 aban news · Allen Chour · Belp (CH) · <a href="/en/dossiers.html">Topic dossiers</a> · '
+               '<a href="/archive/">Archive (German)</a> · <a href="/impressum.html">Imprint</a> · '
+               '<a href="/datenschutz.html">Privacy</a>'),
+    "crumb_start": "Home", "crumb_doss": "Dossiers", "ausgabe": "Issue", "min": "min",
+    "meta": "{n} issues · approx. {m} min read · updated regularly", "start_here": "Start here",
+    "route_h": "The reading path — {n} issues on this topic",
+    "route_note": "The analysis above, illustrated by concrete issues from the archive (in German), chronologically:",
+    "faq_h": "Frequently asked questions", "more_h": "More dossiers",
+    "all_archive": "→ Browse all {n} issues in the archive (German)",
+    "cta_h": "Get new issues on this topic — automatically in your inbox",
+    "cta_sub": "The daily AI newsletter that does the work for you:",
+    "sell": ["Mon–Fri, up to speed in <strong>5 minutes</strong>",
+             "<strong>3 updates · 1 tool · 1 prompt</strong> — ready to use",
+             "Honest, <strong>no hype</strong>, with a DACH lens"],
+    "cta_btn": "Subscribe for free →", "cta_note": "Free · cancel anytime · no tracking, no spam.",
+    "track": "Already {n} issues published · daily Mon–Fri · by Allen Chour, Belp (CH)",
+    "share": "Share:", "share_aria": "Share this dossier", "copy": "Link",
+    "hub_title": "Topic dossiers — the AI newsletter in depth · aban news",
+    "hub_ogt": "Topic dossiers — the AI newsletter in depth",
+    "hub_desc": "Real aban news issues bundled into in-depth reading paths: toolbox, data protection in the DACH region, prompts, anti-hype, AI models, AI for the self-employed.",
+    "hub_h1": "Topic dossiers — the newsletter, in depth",
+    "hub_lead": "Bundled from {n} real issues into in-depth reading paths. One topic, from the start to today — to get in, catch up and dig deeper.",
+    "hub_cta_h": "Prefer it fresh every day instead of catching up?",
+    "hub_cta_sub": "Get the newsletter these dossiers are built from:",
+    "hub_sell": ["Mon–Fri in <strong>5 minutes</strong>", "<strong>3 updates · 1 tool · 1 prompt</strong>",
+                 "Honest, <strong>no hype</strong>"],
+    "hub_note": "Free · cancel anytime · no tracking · {n} issues already published.",
+    "hub_archive": "→ Or browse all issues in the archive (German)", "count_word": "issues →",
+    "issues_word": "issues", "deepdive_badge": "TOPIC DOSSIER"},
+}
+
 CSS = """*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff}
 @media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19}}
@@ -312,7 +569,7 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size
 footer a{color:var(--muted)}"""
 
 SHELL = """<!DOCTYPE html>
-<html lang="de">
+<html lang="__LANG__">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -320,12 +577,13 @@ SHELL = """<!DOCTYPE html>
 <meta name="description" content="__DESC__">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://abannews.com/__CANON__">
+__HREFLANG__
 <meta property="og:title" content="__OGT__">
 <meta property="og:description" content="__DESC__">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://abannews.com/__CANON__">
 <meta property="og:image" content="https://abannews.com/__OGIMG__">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="__LOCALE__"><meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="aban news" href="/archive.rss">
@@ -333,17 +591,15 @@ __LD__
 <style>__CSS__</style>
 </head>
 <body>
-<a class="skip" href="#main">Zum Inhalt</a>
+<a class="skip" href="#main">__SKIP__</a>
 <header class="site"><div class="wrap">
-  <a href="/" class="brand">☕ aban news</a>
-  <a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a>
+  <a href="__HOME__" class="brand">☕ aban news</a>
+  <a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">__NAVCTA__</a>
 </div></header>
 <main id="main"><div class="wrap">
 __BODY__
 </div></main>
-<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
-<a href="/dossiers.html">Themen-Dossiers</a> · <a href="/archive/">Archiv</a> ·
-<a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<footer><div class="wrap">__FOOTER__</div></footer>
 <script defer src="/js/dossier.js"></script>
 <script defer src="/js/assistant.js"></script>
 </body>
@@ -355,7 +611,7 @@ def e(s):
     return _html.escape(str(s or ""), quote=True)
 
 
-def share_row(canon, title):
+def share_row(canon, title, s):
     import urllib.parse as up
     url = "https://abannews.com/" + canon
     u, t = up.quote(url, safe=""), up.quote(title + " · aban news", safe="")
@@ -363,16 +619,16 @@ def share_row(canon, title):
     li = f"https://www.linkedin.com/sharing/share-offsite/?url={u}"
     wa = f"https://wa.me/?text={t}%20{u}"
     return (
-        '<div class="share" aria-label="Dieses Dossier teilen">'
-        '<span class="share-l">Teilen:</span>'
-        f'<a class="share-b" href="{x}" target="_blank" rel="noopener" aria-label="Auf X teilen">𝕏</a>'
-        f'<a class="share-b" href="{li}" target="_blank" rel="noopener" aria-label="Auf LinkedIn teilen">in</a>'
-        f'<a class="share-b" href="{wa}" target="_blank" rel="noopener" aria-label="Per WhatsApp teilen">WA</a>'
-        f'<button type="button" class="share-b share-copy" data-url="{e(url)}" aria-label="Link kopieren">Link</button>'
+        f'<div class="share" aria-label="{e(s["share_aria"])}">'
+        f'<span class="share-l">{e(s["share"])}</span>'
+        f'<a class="share-b" href="{x}" target="_blank" rel="noopener" aria-label="X">𝕏</a>'
+        f'<a class="share-b" href="{li}" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>'
+        f'<a class="share-b" href="{wa}" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>'
+        f'<button type="button" class="share-b share-copy" data-url="{e(url)}" aria-label="Copy link">{e(s["copy"])}</button>'
         '</div>')
 
 
-def signup_form(label="Kostenlos abonnieren →"):
+def signup_form(label):
     # Gleicher Mechanismus wie auf der Startseite: GET an Beehiiv (CSP erlaubt das).
     return (
         '<form class="dform" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>'
@@ -440,7 +696,7 @@ def _wrap(d, text, fnt, maxw):
     return lines
 
 
-def og(path, badge, title):
+def og(path, badge, title, tagline="abannews.com/dossiers  ·  ehrlich, kein Hype"):
     W, H = 1200, 630
     img = Image.new("RGB", (W, H), BG); d = ImageDraw.Draw(img)
     d.ellipse([W-520,-260,W+260,360], fill=CR); d.rectangle([0,0,16,H], fill=A)
@@ -451,7 +707,7 @@ def og(path, badge, title):
     y = 220
     for ln in _wrap(d, title, font(74), W-140)[:3]:
         d.text((70, y), ln, font=font(74), fill=INK); y += 88
-    d.text((70, H-78), "abannews.com/dossiers  ·  ehrlich, kein Hype", font=font(26, bold=False), fill=MU)
+    d.text((70, H-78), tagline, font=font(26, bold=False), fill=MU)
     img.save(path, "PNG")
 
 
@@ -484,130 +740,165 @@ def breadcrumb(trail):
                    for i, (name, url) in enumerate(trail)]})
 
 
-def render_dossier(dos, issues):
+def dloc(dos, key, lang):
+    return EN_META[dos["slug"]][key] if lang == "en" else dos[key]
+
+
+def hreflang_pair(de_canon, en_canon):
+    return ("\n".join([
+        f'<link rel="alternate" hreflang="de" href="https://abannews.com/{de_canon}">',
+        f'<link rel="alternate" hreflang="en" href="https://abannews.com/{en_canon}">',
+        f'<link rel="alternate" hreflang="x-default" href="https://abannews.com/{de_canon}">']))
+
+
+def fill_shell(s, lang, *, title, ogt, desc, canon, ogimg, ld_blocks, hreflang, body):
+    return (SHELL.replace("__LANG__", lang).replace("__LOCALE__", s["locale"])
+            .replace("__SKIP__", e(s["skip"])).replace("__HOME__", s["home"])
+            .replace("__NAVCTA__", e(s["navcta"])).replace("__FOOTER__", s["footer"])
+            .replace("__HREFLANG__", hreflang)
+            .replace("__TITLE__", e(title)).replace("__OGT__", e(ogt))
+            .replace("__DESC__", e(desc)).replace("__CANON__", canon)
+            .replace("__OGIMG__", ogimg).replace("__LD__", ld_blocks)
+            .replace("__CSS__", CSS).replace("__BODY__", body))
+
+
+def render_dossier(dos, issues, lang):
+    s = STR[lang]
+    en = lang == "en"
+    slug = dos["slug"]
+    title, sub, blurb = dloc(dos, "title", lang), dloc(dos, "sub", lang), dloc(dos, "blurb", lang)
     members = select_members(dos, issues)
     n_aus = sum(1 for it in issues if it["kind"] == "ausgabe")
     total_min = sum(it["mins"] for it in members) or len(members) * 4
-    canon = f"dossier/{dos['slug']}.html"
-    ogimg = f"og-dossier-{dos['slug']}.png"
-    desc = f"{dos['sub']} Mit ehrlicher Deep-Dive-Analyse + {len(members)} echten Ausgaben aus dem aban-news-Archiv als Leseroute."
+    de_canon, en_canon = f"dossier/{slug}.html", f"en/dossier/{slug}.html"
+    canon = en_canon if en else de_canon
+    ogimg = f"og-dossier-{slug}-en.png" if en else f"og-dossier-{slug}.png"
+    dprefix = "/en/dossier/" if en else "/dossier/"
+    hub = "/en/dossiers.html" if en else "/dossiers.html"
+    if en:
+        desc = f"{sub} With an honest deep-dive analysis + {len(members)} real issues from the aban news archive as a reading path."
+    else:
+        desc = f"{sub} Mit ehrlicher Deep-Dive-Analyse + {len(members)} echten Ausgaben aus dem aban-news-Archiv als Leseroute."
 
     route = []
     for i, it in enumerate(members):
-        start = '<span class="start">Start hier</span>' if i == 0 else ""
+        start = f'<span class="start">{e(s["start_here"])}</span>' if i == 0 else ""
+        mins = f' · {it["mins"]} {s["min"]}' if it["mins"] else ""
+        marktxt = "○ mark as read" if en else "○ als gelesen markieren"
         route.append(
-            f'<li data-url="{e(it["url"])}"><div class="d">Ausgabe {e(it["num"])} · {e(it["nice"] or it["date"])}'
-            f'{" · " + str(it["mins"]) + " Min" if it["mins"] else ""}</div>'
+            f'<li data-url="{e(it["url"])}"><div class="d">{e(s["ausgabe"])} {e(it["num"])} · {e(it["nice"] or it["date"])}'
+            f'{e(mins)}</div>'
             f'<div class="t"><a href="{e(it["url"])}">{e(it["title"])}</a>{start}</div>'
             f'<div class="p">{e(it["preview"])}</div>'
-            f'<button type="button" class="mark" aria-pressed="false">○ als gelesen markieren</button></li>')
+            f'<button type="button" class="mark" aria-pressed="false">{e(marktxt)}</button></li>')
 
     others = "".join(
-        f'<a class="dcard" href="/dossier/{e(o["slug"])}.html"><span class="em">{o["emoji"]}</span>'
-        f'<h3>{e(o["title"])}</h3><p>{e(o["sub"])}</p></a>'
-        for o in DOSSIERS if o["slug"] != dos["slug"])
+        f'<a class="dcard" href="{dprefix}{e(o["slug"])}.html"><span class="em">{o["emoji"]}</span>'
+        f'<h3>{e(dloc(o, "title", lang))}</h3><p>{e(dloc(o, "sub", lang))}</p></a>'
+        for o in DOSSIERS if o["slug"] != slug)
 
     item_list = ld({"@context": "https://schema.org", "@type": "ItemList",
-                    "name": dos["title"], "description": dos["sub"],
+                    "name": title, "description": sub,
                     "itemListElement": [
                         {"@type": "ListItem", "position": i + 1,
                          "url": "https://abannews.com" + it["url"], "name": it["title"]}
                         for i, it in enumerate(members)]})
-    faqs = FAQS.get(dos["slug"], [])
-    faq_html = "".join(
-        f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in faqs)
-    faq_section = (f'<section><h2>Häufige Fragen</h2><div class="faq">{faq_html}</div></section>'
-                   if faqs else "")
+    fq = (FAQS_EN if en else FAQS).get(slug, [])
+    faq_html = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in fq)
+    faq_section = (f'<section><h2>{e(s["faq_h"])}</h2><div class="faq">{faq_html}</div></section>'
+                   if fq else "")
     faq_ld = ld({"@context": "https://schema.org", "@type": "FAQPage",
                  "mainEntity": [{"@type": "Question", "name": q,
                                  "acceptedAnswer": {"@type": "Answer", "text": a}}
-                                for q, a in faqs]}) if faqs else ""
-    crumb_ld = breadcrumb([("Start", ""), ("Themen-Dossiers", "dossiers.html"),
-                           (dos["title"], canon)])
+                                for q, a in fq]}) if fq else ""
+    crumb_ld = breadcrumb([(s["crumb_start"], ""), (s["crumb_doss"], hub.lstrip("/")), (title, canon)])
+    deepdive = (DEEPDIVES_EN if en else DEEPDIVES).get(slug, "")
+    sell = "".join(f"<li>{x}</li>" for x in s["sell"])
 
-    body = f"""<nav class="crumbs"><a href="/">Start</a> › <a href="/dossiers.html">Dossiers</a> › {e(dos['title'])}</nav>
+    body = f"""<nav class="crumbs"><a href="{s['home']}">{e(s['crumb_start'])}</a> › <a href="{hub}">{e(s['crumb_doss'])}</a> › {e(title)}</nav>
   <section class="hero">
     <div class="em">{dos['emoji']}</div>
-    <h1>{e(dos['title'])}</h1>
-    <p class="lead">{e(dos['sub'])}</p>
-    <p class="meta">{len(members)} Ausgaben · ca. {total_min} Min Lesen · laufend ergänzt</p>
+    <h1>{e(title)}</h1>
+    <p class="lead">{e(sub)}</p>
+    <p class="meta">{s['meta'].format(n=len(members), m=total_min)}</p>
   </section>
-  <div class="intro"><p>{e(dos['blurb'])}</p></div>
-  {share_row(canon, dos['title'])}
-  <section class="deepdive">{DEEPDIVES.get(dos['slug'], '')}</section>
+  <div class="intro"><p>{e(blurb)}</p></div>
+  {share_row(canon, title, s)}
+  <section class="deepdive">{deepdive}</section>
   <section>
-    <h2>Die Leseroute — {len(members)} Ausgaben zum Thema</h2>
-    <p class="note" style="margin:0 0 .4rem">Die Analyse oben an konkreten Beispielen aus dem Archiv, chronologisch:</p>
+    <h2>{s['route_h'].format(n=len(members))}</h2>
+    <p class="note" style="margin:0 0 .4rem">{e(s['route_note'])}</p>
     <ol class="route">{''.join(route)}</ol>
   </section>
   <section>
     <div class="buybox">
-      <p style="font-weight:800;font-size:1.18rem;margin-bottom:.4rem">Neue Ausgaben zu diesem Thema — automatisch im Postfach</p>
-      <p style="color:var(--ink2);margin-bottom:.7rem">Der tägliche KI-Newsletter, der dir die Arbeit abnimmt:</p>
-      <ul class="sell">
-        <li>Mo–Fr in <strong>5 Minuten</strong> auf dem Laufenden</li>
-        <li><strong>3 Updates · 1 Tool · 1 Prompt</strong> — sofort nutzbar</li>
-        <li>Ehrlich, <strong>kein Hype</strong>, mit DACH-Blick</li>
-      </ul>
-      {signup_form()}
-      <p class="note">Gratis · jederzeit kündbar · kein Tracking, kein Spam.</p>
-      <p class="note">Bereits {n_aus} Ausgaben erschienen · täglich Mo–Fr · von Allen Chour, Belp (CH)</p>
+      <p style="font-weight:800;font-size:1.18rem;margin-bottom:.4rem">{e(s['cta_h'])}</p>
+      <p style="color:var(--ink2);margin-bottom:.7rem">{e(s['cta_sub'])}</p>
+      <ul class="sell">{sell}</ul>
+      {signup_form(s['cta_btn'])}
+      <p class="note">{e(s['cta_note'])}</p>
+      <p class="note">{e(s['track'].format(n=n_aus))}</p>
     </div>
   </section>
   {faq_section}
   <section>
-    <h2>Weitere Dossiers</h2>
+    <h2>{e(s['more_h'])}</h2>
     <div class="grid">{others}</div>
-    <p class="note" style="margin-top:.8rem"><a href="/archive/">→ Alle {sum(1 for it in issues if it['kind']=='ausgabe')} Ausgaben im Archiv durchsuchen</a></p>
+    <p class="note" style="margin-top:.8rem"><a href="/archive/">{e(s['all_archive'].format(n=n_aus))}</a></p>
   </section>"""
 
-    page = (SHELL.replace("__TITLE__", e(f"{dos['title']} — Themen-Dossier · aban news"))
-            .replace("__OGT__", e(f"{dos['title']} — Themen-Dossier"))
-            .replace("__DESC__", e(desc)).replace("__CANON__", canon)
-            .replace("__OGIMG__", ogimg).replace("__LD__", item_list + faq_ld + crumb_ld)
-            .replace("__CSS__", CSS).replace("__BODY__", body))
-    os.makedirs(os.path.join(ROOT, "dossier"), exist_ok=True)
-    open(os.path.join(ROOT, "dossier", f"{dos['slug']}.html"), "w", encoding="utf-8").write(page)
-    og(os.path.join(ROOT, ogimg), "THEMEN-DOSSIER", dos["title"])
-    return members
+    tagline = "abannews.com/en/dossiers  ·  honest, no hype" if en else "abannews.com/dossiers  ·  ehrlich, kein Hype"
+    page = fill_shell(s, lang, title=f"{title} — {'Topic Dossier' if en else 'Themen-Dossier'} · aban news",
+                      ogt=f"{title} — {'Topic Dossier' if en else 'Themen-Dossier'}", desc=desc,
+                      canon=canon, ogimg=ogimg, ld_blocks=item_list + faq_ld + crumb_ld,
+                      hreflang=hreflang_pair(de_canon, en_canon), body=body)
+    outdir = os.path.join(ROOT, "en", "dossier") if en else os.path.join(ROOT, "dossier")
+    os.makedirs(outdir, exist_ok=True)
+    open(os.path.join(outdir, f"{slug}.html"), "w", encoding="utf-8").write(page)
+    og(os.path.join(ROOT, ogimg), s["deepdive_badge"], title, tagline)
 
 
-def render_index(issues, counts):
-    cards = "".join(
-        f'<a class="dcard" href="/dossier/{e(d["slug"])}.html"><span class="em">{d["emoji"]}</span>'
-        f'<h3>{e(d["title"])}</h3><p>{e(d["sub"])}</p>'
-        f'<div class="n">{counts[d["slug"]]} Ausgaben →</div></a>'
-        for d in DOSSIERS)
+def render_index(issues, counts, lang):
+    s = STR[lang]
+    en = lang == "en"
+    dprefix = "/en/dossier/" if en else "/dossier/"
     n_aus = sum(1 for it in issues if it["kind"] == "ausgabe")
-    body = f"""<nav class="crumbs"><a href="/">Start</a> › Themen-Dossiers</nav>
+    cards = "".join(
+        f'<a class="dcard" href="{dprefix}{e(d["slug"])}.html"><span class="em">{d["emoji"]}</span>'
+        f'<h3>{e(dloc(d, "title", lang))}</h3><p>{e(dloc(d, "sub", lang))}</p>'
+        f'<div class="n">{counts[d["slug"]]} {s["count_word"]}</div></a>'
+        for d in DOSSIERS)
+    sell = "".join(f"<li>{x}</li>" for x in s["hub_sell"])
+    de_canon, en_canon = "dossiers.html", "en/dossiers.html"
+    canon = en_canon if en else de_canon
+    body = f"""<nav class="crumbs"><a href="{s['home']}">{e(s['crumb_start'])}</a> › {e(s['crumb_doss'])}</nav>
   <section class="hero">
     <div class="em">📚</div>
-    <h1>Themen-Dossiers — der Newsletter, vertieft</h1>
-    <p class="lead">Aus {n_aus} echten Ausgaben zu In-Depth-Leserouten gebündelt. Ein Thema, von Anfang bis aktuell — zum Einsteigen, Nachholen und Tieferbohren.</p>
+    <h1>{e(s['hub_h1'])}</h1>
+    <p class="lead">{e(s['hub_lead'].format(n=n_aus))}</p>
   </section>
   <section><div class="grid">{cards}</div></section>
   <section>
     <div class="buybox">
-      <p style="font-weight:800;font-size:1.2rem;margin-bottom:.4rem">Lieber täglich frisch statt nachlesen?</p>
-      <p style="color:var(--ink2);margin-bottom:.7rem">Bekomm den Newsletter, aus dem diese Dossiers entstehen:</p>
-      <ul class="sell">
-        <li>Mo–Fr in <strong>5 Minuten</strong></li>
-        <li><strong>3 Updates · 1 Tool · 1 Prompt</strong></li>
-        <li>Ehrlich, <strong>kein Hype</strong></li>
-      </ul>
-      {signup_form()}
-      <p class="note">Gratis · jederzeit kündbar · kein Tracking · {n_aus} Ausgaben bereits erschienen.</p>
+      <p style="font-weight:800;font-size:1.2rem;margin-bottom:.4rem">{e(s['hub_cta_h'])}</p>
+      <p style="color:var(--ink2);margin-bottom:.7rem">{e(s['hub_cta_sub'])}</p>
+      <ul class="sell">{sell}</ul>
+      {signup_form(s['cta_btn'])}
+      <p class="note">{e(s['hub_note'].format(n=n_aus))}</p>
     </div>
-    <p class="note"><a href="/archive/">→ Oder alle Ausgaben im Archiv durchsuchen</a></p>
+    <p class="note"><a href="/archive/">{e(s['hub_archive'])}</a></p>
   </section>"""
-    page = (SHELL.replace("__TITLE__", "Themen-Dossiers — der KI-Newsletter vertieft · aban news")
-            .replace("__OGT__", "Themen-Dossiers — der KI-Newsletter vertieft")
-            .replace("__DESC__", "Echte aban-news-Ausgaben, zu vertieften Themen-Leserouten gebündelt: Werkzeugkasten, Datenschutz im DACH-Raum, Prompts, Anti-Hype.")
-            .replace("__CANON__", "dossiers.html").replace("__OGIMG__", "og-dossiers.png")
-            .replace("__LD__", breadcrumb([("Start", ""), ("Themen-Dossiers", "dossiers.html")]))
-            .replace("__CSS__", CSS).replace("__BODY__", body))
-    open(os.path.join(ROOT, "dossiers.html"), "w", encoding="utf-8").write(page)
-    og(os.path.join(ROOT, "og-dossiers.png"), "THEMEN-DOSSIERS", "Der Newsletter, vertieft")
+    page = fill_shell(s, lang, title=s["hub_title"], ogt=s["hub_ogt"], desc=s["hub_desc"],
+                      canon=canon, ogimg=("og-dossiers-en.png" if en else "og-dossiers.png"),
+                      ld_blocks=breadcrumb([(s["crumb_start"], ""), (s["crumb_doss"], canon)]),
+                      hreflang=hreflang_pair(de_canon, en_canon), body=body)
+    outdir = os.path.join(ROOT, "en") if en else ROOT
+    os.makedirs(outdir, exist_ok=True)
+    open(os.path.join(outdir, "dossiers.html"), "w", encoding="utf-8").write(page)
+    badge = s["deepdive_badge"].replace("DOSSIER", "DOSSIERS")
+    tagline = "abannews.com/en/dossiers  ·  honest, no hype" if en else "abannews.com/dossiers  ·  ehrlich, kein Hype"
+    og(os.path.join(ROOT, "og-dossiers-en.png" if en else "og-dossiers.png"),
+       badge, s["hub_h1"], tagline)
 
 
 def write_topics_json(issues, dossier_map):
@@ -629,16 +920,19 @@ def main():
     issues = parse_issues()
     counts, dossier_map = {}, {}
     for dos in DOSSIERS:
-        members = render_dossier(dos, issues)
+        members = select_members(dos, issues)
         counts[dos["slug"]] = len(members)
         for it in members:
             dossier_map.setdefault(it["url"], []).append(dos["slug"])
-    render_index(issues, counts)
+    for lang in ("de", "en"):
+        for dos in DOSSIERS:
+            render_dossier(dos, issues, lang)
+        render_index(issues, counts, lang)
     write_topics_json(issues, dossier_map)
     # OG-Karte fürs Archiv (Growth-Audit: archive.html ohne OG-Bild)
     og(os.path.join(ROOT, "og-archive.png"), "ARCHIV",
        f"Alle {sum(1 for it in issues if it['kind']=='ausgabe')} Ausgaben zum Nachlesen")
-    print(f"✓ Dossiers: {len(DOSSIERS)} Themen aus {len(issues)} Ausgaben "
+    print(f"✓ Dossiers DE+EN: {len(DOSSIERS)} Themen aus {len(issues)} Ausgaben "
           f"({', '.join(f'{k}={v}' for k, v in counts.items())}) + topics.json + OGs")
 
 
