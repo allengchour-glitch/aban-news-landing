@@ -296,6 +296,9 @@ BRANCHEN = {
     "briefmarkenhandel":   ("Briefmarkenhandel",    ["Beschreibungen & Listings,", "nicht die Echtheitsprüfung"]),
     "fahrradladen":        ("Fahrradläden",         ["Produkttexte & Service,", "nicht die Reparatur-Diagnose"]),
     "parfuemerie":         ("Parfümerien",          ["Dufttexte & Social,", "nicht die Hautberatung"]),
+    "naehmaschinenhandel": ("Nähmaschinen",         ["Produkttexte & Service,", "nicht die Reparatur-Diagnose"]),
+    "angelladen":          ("Angelfachgeschäfte",   ["Produkttexte & Social,", "keine Rechtsauskunft"]),
+    "wollgeschaeft":       ("Wollgeschäfte",        ["Garntexte & Kurse,", "nicht die Maschenprobe"]),
 }
 
 
