@@ -46,6 +46,13 @@
   **Abgelehnt:** Tiered-Party-Mini CJLY2924170 (sehr kurz/clubby, off-brand premium), Clip-Ohrringe CJLX2924392
   („Gu Xiang Li"-Wasserzeichen), Car-Clock CJYD2923711 (0.69$, off-theme Auto), + 3 Dubletten (Suede-Skirt, Herren-Set,
   «Fleur Noir»-Kleid). cj-real: 206 → **207.**
+- **✅ Charge 19 (Mode/Schuhe, alter Key):** Sommer-Playsuit «Marigold» Blüten-Print (5 Grössen, 29.90, damen-mode/
+  sommer) + Plateau-Pumps «Wild» Leoparden-Print mit Knöchelriemen (2 Farben×8 Grössen=16 Var, 44.90, schuhe/sommer).
+  Beide live in 6 Kanälen, Media READY, SEO. **Abgelehnt:** Washed-Denim-Kleid CJLY2925841 (alle Bilder ~426px, low-res),
+  + 4 Dubletten/Rejects (Rhinestone-Shorts «Cristal», WOSPORT-556-Magazintasche=Waffe, Acryl-Ohrringe, Clip-Ohrringe-
+  Wasserzeichen «Gu Xiang Li»). cj-real: 214 → **216.**
+  ⚠️ **API-Lehre:** Beim productSet-Call ein Emoji als kaputte `�`-Escape getippt → „Invalid JSON"-Abbruch (kein
+  Shopify-Fehler); sauber wiederholt. Emoji-Unicode-Escapes sorgfältig setzen.
 - **✅ Charge 18 (Mode/Accessoire, alter Key):** Maxi-Kleid «Aria» fliessend mit Gürtel & V-Ausschnitt (6 Farben×6
   Grössen=36 Var, 49.90, kleid/sommer — Runway-Look, 1920px) + Sonnenbrille «Mirage» Cat-Eye verspiegelt (5 Farben,
   19.90, →`sonnenbrille`-Collection). Beide live in 6 Kanälen, Media READY, SEO. Farbnamen DE (Saphirblau; CJ-Fassungs-
