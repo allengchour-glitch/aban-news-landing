@@ -98,9 +98,10 @@ beunruhigen, einzelne `node`-Abfrage ist die Wahrheit.
 Dann:
 ```
 git add dropship/ ; git commit -m "CJ Charge N: +X Produkte live → Y gesamt …"
-git push -u origin claude/dropship-lade-memory-SrAs5   # bei Netzfehler bis 4× Backoff 2/4/8/16s
+git push -u origin claude/luxestyle-product-CizQ6   # bei Netzfehler bis 4× Backoff 2/4/8/16s
 ```
-**Immer auf Branch `claude/dropship-lade-memory-SrAs5`** (nie main). PR #5 existiert bereits.
+**Fester Dropship-Branch: `claude/luxestyle-product-CizQ6`** → Draft-PR nach `main` (nie direkt auf main).
+⚠️ Alte Branches `claude/dropship-lade-memory-SrAs5` (PR #5) & `…-LehDs` sind in `main` gemergt + gelöscht — nicht mehr nutzen.
 
 ## 4. Pricing-Spickzettel (CJ-USD → VK CHF, auf .90)
 | Kost $ | VK CHF |

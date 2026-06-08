@@ -13,6 +13,80 @@
 > ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
 > bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
 
+## Session 2026-06-07 — Conversion-QA + Ad-Landing bereinigt (Branch `claude/luxestyle-product-CizQ6`)
+- **Umgebung:** Shopify-MCP verbunden (LuxeStyle/au3j0y-hq/CHF ✅). **CJ_EMAIL/CJ_API_KEY NICHT gesetzt**
+  → keine neuen CJ-Importe. Conversion-First-Routine (§10) gefahren. **0 Autopilot-Drafts** (`tag:autopilot-needs-copy`).
+- **🖼️ Voll-QA aller 171 `cj-real` Live-Produkte (4 Seiten): 0 FAILED-Bilder, alle Media READY.** Katalog sauber.
+  Einziger Altbefund: „LED Schreibtischlampe Akku" hat 1 Bild (nicht kritisch, bekannt).
+- **🎯 Bekannten Conversion-Leak behoben:** „Sommerkleid ärmellos · Schwarz" (`15413739684225`) ist mit
+  **nur 3,54★ (26 Reviews)** das schwächste bewertete Produkt — lag aber live auf der **Kampagnen-
+  Landingpage `/collections/sommer`** UND auf der **Home-Page (`frontpage`)**. → Tag `sommer-2026` entfernt
+  (fällt aus der Smart-Collection `sommer`, Regel `sommer-2026` AND `damen`), aus Home-Page-Collection
+  entfernt, Tag `niedrig-bewertet-nicht-bewerben` gesetzt. Bleibt in `damen-mode`/`kleider` kaufbar (organisch),
+  aber nicht mehr auf Ad-Flächen. **Verifiziert:** Produkt-Collections enthalten weder `sommer` noch `frontpage` mehr.
+- **Echte Review-Gewinner bestätigt** (für künftigen Hero-Ausbau): Slim Wallet 5,0★(15), Herrenuhr Edelstahl
+  5,0★(15), Jade Roller Set 5,0★(7), Mini Robo-Diffuser 4,8★(4), Bali 4,93★, Ibiza 4,47★.
+- **🏆 Hero-Favoriten-Collection gestärkt (live):** „🔥 Hero-Favoriten" (`bestseller`, manuell) hatte 6 meist
+  **un**bewertete Produkte. Die 3 echten 5,0★-Gewinner (Slim Wallet `15396249502081`, Herrenuhr
+  `15396249960833`, Jade Roller Premium `15397247385985`) fehlten → **hinzugefügt** (jetzt 9 Produkte,
+  4 davon mit sichtbarem 4,8–5,0★-Rating statt vorher 1). Social Proof in der Featured-Collection. Reversibel.
+- **✅ CJ-Live-Import durchgeführt (Key erhalten, Mode-Charge):** Über CJ-API (`cj_enrich.mjs`) 7 Mode-Kandidaten
+  gesourct, Bilder HTTP-200-geprüft (0 kaputt), **visuelle QA** (Hero-Bilder angeschaut). **6 als ACTIVE
+  angelegt** via MCP `productSet` (Farbe×Grösse + Farbbild je Variante, echte CJ-SKUs, `tracked:false`),
+  in **alle 6 Kanäle publiziert, alle Media READY**:
+  1. Long-Weste «Resort» `15421165339009` (6 Var, 34.90) · 2. Workout-Set «Active» `15421165404545` (12 Var, 44.90)
+  3. Sommer-Set «Riviera» `15421165502849` (25 Var, 29.90) · 4. Herren-Set «Resort» `15421165601153` (30 Var, 39.90)
+  5. Long-Blazer «Milano» `15421165666689` (40 Var, 39.90) · 6. Kapuzen-Cardigan «Cosy» `15421165764993` (50 Var, 34.90).
+  **Abgelehnt (nicht angelegt):** Zip-Hoodie «Graffiti» (`CJWY292387001AZ`) — Airbrush-Gesicht-Print = IP/Marken-
+  Risiko (§5) + schwaches Bild (auf schmutzigem Boden).
+- **✅ Charge 2 (Accessoires, alter Key):** Henkeltasche «Lune» `15421166059905` (4 Farben, 24.90) +
+  Crossbody-Tasche «Nuit» `15421166092673` (3 Farben, 24.90) — live in 6 Kanälen. Abgelehnt: Clip-Ohrringe
+  (Wasserzeichen „Gu Xiang Li"), Kinder-Cartoon-Cap (Kids/IP §5), Deko-Gans-Kostüm (off-theme), Boston-Bag
+  (Dublette zu vorhandener «Lussa»). cj-real: 171 → **179**.
+  ⚠️ Lehre: CJ-API-Key ≠ Konto-Passwort; liegt NUR im Developer-Portal (`developers.cjdropshipping.com` →
+  `…/myCJ.html#/apikey`), Format `CJ<ID>@api@<32hex>`. Key nach Lauf rotieren. CJ-ID `CJ5452995`, Free-Tier.
+  (Die anderen Lieferanten-Apps DSers/Printful/Gelato/Faire/DropCommerce sind **nicht** autonom ziehbar —
+  POD = eigene Designs, Faire = Freigabe-API, DSers = App-UI.)
+- **⚠️ Fulfillment-To-do (User):** Die 6 neuen Mode-Produkte sind ACTIVE & verkäuflich, aber CJ muss die SKUs
+  noch in der CJ/DSers-App zu Aufträgen mappen (Connect-Store). Beim ersten Verkauf prüfen.
+- **✅ Charge 3 (Schmuck/Accessoires, alter Key):** Perlen-Anhänger «Coquille» `15421167042945` (2 Var, 24.90) +
+  Baskenmütze «Riviera» `15421167075713` (4 Var, 19.90) + Geburtsstein-Armband «Pois» `15421167108481`
+  (18 Var, 24.90) — live in 6 Kanälen. Abgelehnt: Gothic-Skelett-Charm (off-brand), WM-Flaggen-Schal
+  (Lizenz+69 Var), Pet-Rucksack (off-theme), Collar-Mikrofon (off-theme/1 Bild). cj-real: 179 → **182**.
+- **✨ „Alleskönner"-Hub-Seite gebaut (live):** Seite `/pages/entdecken` (`Page/698444808577`) bündelt alle
+  Kategorien + Selbst-gestalten + Bestseller/Neu/Sommer/Sale. Als **erster Menüpunkt „✨ Entdecken"** ins
+  Hauptmenü (jetzt 10 Einträge, keiner verloren).
+- **🔑 Gemini-Key gesucht (User-Wunsch):** NICHT im Repo (keine Service-Account-JSON/.env mit echten Werten);
+  `GEMINI_API_KEY`/`GCP_SA_KEY` existieren nur als GitHub-Secrets → in der interaktiven Session nicht nutzbar.
+  Für KI-Designs: User pastet Key ODER Generierung via GitHub-Action.
+- **✅ Charge 4 (Premium/Home, alter Key):** Moissanite-Ohrstecker «Éclat» `15421167436161` (2 Var, 139.90) +
+  Deko-Vase «Antique» Schmiedeeisen `15421167468929` (4 Var, 44.90) — live in 6 Kanälen. Abgelehnt: 24K-Eye-Mask
+  (Fremdmarke EELHOE + Before/After-Claims), Silikon-Watch ($0.84/50 Var zu billig), Boston-Bag (Dublette). cj-real: 182 → **184**.
+- **🎯 Autonom-Lehre:** „40 Produkte in 1 Session" ist über den MCP-Inline-`productSet`-Weg NICHT praktikabel
+  (jede Variantenliste riesig → Token-Limit). Skalierbarer Weg = `cj_autopilot.mjs` + `cj-autopilot.yml` (GitHub-Action)
+  zu **Voll-Auto** ausbauen (productSet + Varianten + Bild-QA + publish) → läuft headless mit Repo-Secrets
+  (`CJ_EMAIL`,`CJ_API_KEY`,`SHOPIFY_SHOP`,`SHOPIFY_ADMIN_TOKEN`). In-Session sonst Charge-für-Charge (~2–6 Keeper je
+  Runde; CJ-Suche filtert hart). **Heute gesamt: 13 neue Produkte live** (6 Mode + 2 Taschen + 3 Schmuck/Acc. + 2 Premium/Home).
+- **✅ Charge 5 (Schmuck, alter Key):** Statement-Ohrringe «Doré» gebürstetes Gold `15421171859841` (29.90) +
+  Sommer-Armband «Évil» Schmetterling/Nazar `15421171892609` (5 Stile, 19.90) — live in 6 Kanälen. Abgelehnt:
+  Hochzeits-Kartenbox (off-theme), Fruchtprint-Cap (Novelty). cj-real: 184 → **186** · **heute 15 Produkte live.**
+- **🤖 AUTOPILOT zu VOLL-AUTO ausgebaut (fertig, committet):** `dropship/cj_autopilot.mjs` macht jetzt den
+  KOMPLETTEN Flow autonom: CJ-Suche → §5-Hartfilter → SKU-Dedup → Bild-200-Check → **Varianten Farbe×Grösse +
+  Farbbilder via `productSet`** → optional **Gemini-Gate** (DE-Copy + QA) → **ACTIVE + publish in 6 Kanäle**
+  (Gemini-PASS) bzw. **DRAFT** (Fail/kein Key). Media-FAILED→DRAFT-Downgrade. Workflow `cj-autopilot.yml`:
+  2×/Tag (06:00+16:00 UTC) → ~12 Produkte/Tag, „40" in ~3–4 Tagen autonom. **Aktivierung (User):** Repo-Secrets
+  `CJ_EMAIL`,`CJ_API_KEY`,`SHOPIFY_SHOP`,`SHOPIFY_ADMIN_TOKEN`(Scopes write_products+write_publications),
+  optional `GEMINI_API_KEY`. Ohne Secrets = sauberer No-Op. Branch muss in `main` sein, damit Cron läuft.
+- **🎨 Printful „Selbst gestalten" — Gerüst gebaut (live):** Neue **Menü-Leiste „🎨 Selbst gestalten"** (Pos. 2 im
+  Hauptmenü) → **Landingpage `/pages/selbst-gestalten`** (`Page/698444710273`): funktionierendes **Wunsch-Design-
+  Angebot** (Kunde schickt Idee/Logo per Kontakt → Vorschau → on-demand-Druck), funktioniert OHNE App.
+  ⚠️ **Wahrheit dokumentiert:** Printful = leere Rohlinge (kein fertiger Foto-Katalog wie CJ). Echtes
+  **Kunden-Selbst-Design** (Live-Canvas) braucht eine **Customizer-App** (Kickflip/Teeinblue/Zakeke) + Printful-
+  App — vom User zu installieren. **KI-Designs via Gemini** NICHT in Session möglich (`GEMINI_API_KEY`/`GCP_SA_KEY`
+  leer; nur als Repo-Secrets). Printful-API erreichbar (HTTP 200). User-Token im Chat geteilt → rotieren.
+- **🔴 Kernproblem unverändert:** Engpass bleibt Reichweite (3 User-Klicks §10: AGB-Domain, Pixel, Kampagne+Budget),
+  nicht Katalog/Funnel. Autonom getan, was ohne CJ-Creds/Werbekonto geht.
+
 ## Session 2026-06-06 (Teil 2) — Social-Maschine gebaut + Shop-Fixes + Voll-Automation
 - **Autonome Social-Maschine gebaut & committet** (PR #363, Branch LehDs): Meta-Autopilot IG+FB+Threads
   (`social-autopost-meta.mjs`), Bild-Generator (`gen_post_image.py`, 5 JPG-Posts/Tag 1080×1350+1080×1080),

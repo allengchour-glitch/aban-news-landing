@@ -1,31 +1,40 @@
-name: CJ Autopilot (täglicher Produkt-Sourcing-Lauf)
+name: CJ Autopilot (VOLL-AUTO Produkt-Sourcing)
 
-# Füllt die Produkt-Pipeline autonom: sourct CJ-Produkte, verifiziert Bilder, legt sie als
-# DRAFT (Tag 'autopilot-needs-copy') im Shop an. Finale deutsche Copy + Live-Schaltung +
-# Publizieren übernimmt eine Claude-Session (siehe dropship/AUTONOMER-MODUS.md).
+# Füllt den Shop autonom auf: sourct CJ-Produkte, filtert (§5), verifiziert Bilder, baut
+# Varianten (Farbe×Grösse + Farbbilder) via productSet. Mit GEMINI_API_KEY schreibt es
+# deutsche Copy + QA-Gate und schaltet bestandene Produkte ACTIVE + publiziert in alle 6
+# Kanäle. Ohne Gemini → DRAFT (Tag 'autopilot-needs-copy'). Nichts geht ungeprüft live.
 #
-# Voraussetzung: Repository-Secrets setzen (Settings → Secrets and variables → Actions):
-#   CJ_EMAIL, CJ_API_KEY, SHOPIFY_SHOP (z.B. luxestyle.myshopify.com), SHOPIFY_ADMIN_TOKEN
-# Ohne Secrets ist der Lauf ein sauberer No-Op (es passiert nichts).
+# Repository-Secrets (Settings → Secrets and variables → Actions):
+#   PFLICHT: CJ_EMAIL, CJ_API_KEY, SHOPIFY_SHOP (z.B. au3j0y-hq.myshopify.com), SHOPIFY_ADMIN_TOKEN
+#            (Custom-App-Token, Scopes: write_products, write_publications)
+#   OPTIONAL: GEMINI_API_KEY (→ DE-Copy + ACTIVE-Schaltung)
+#   Repo-Variable optional: AUTOPILOT_STATUS = ACTIVE | DRAFT (Default ACTIVE)
+# Ohne Pflicht-Secrets ist der Lauf ein sauberer No-Op.
 
 on:
   schedule:
-    - cron: '0 6 * * *'   # täglich 06:00 UTC
+    - cron: '0 6 * * *'    # täglich 06:00 UTC
+    - cron: '0 16 * * *'   # täglich 16:00 UTC (2×/Tag → ~12 Produkte/Tag)
   workflow_dispatch:
     inputs:
       max:
-        description: 'Wie viele Drafts anlegen'
+        description: 'Wie viele Produkte pro Lauf'
         required: false
-        default: '2'
+        default: '6'
+      status:
+        description: 'Ziel-Status bei QA-PASS (ACTIVE oder DRAFT)'
+        required: false
+        default: 'ACTIVE'
 
 permissions:
   contents: read
 
 jobs:
   autopilot:
-    name: CJ → Shopify Draft-Sourcing
+    name: CJ → Shopify (Voll-Auto)
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,5 +50,9 @@ jobs:
           CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
           SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
           SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
-          AUTOPILOT_MAX: ${{ github.event.inputs.max || '2' }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          AUTOPILOT_MAX: ${{ github.event.inputs.max || '6' }}
+          AUTOPILOT_STATUS: ${{ github.event.inputs.status || vars.AUTOPILOT_STATUS || 'ACTIVE' }}
         run: node dropship/cj_autopilot.mjs
