@@ -45,7 +45,7 @@ jobs:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
           THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
-          MAX_PER_RUN: '1'
+          MAX_PER_RUN: '8'
           DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
         run: node automation/social-autopost-meta.mjs
 
