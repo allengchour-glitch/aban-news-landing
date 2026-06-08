@@ -23,10 +23,7 @@
    GitHub → Repo `aban-news-landing` → Settings → Secrets and variables → Actions → New secret
    → Name `YT_API_KEY`, Wert = ein YouTube-Data-API-v3-Key (console.cloud.google.com, API aktivieren).
    → Dann liest der Director **echte Views + Abonnenten** statt zu schätzen.
-2. **Sicherheit: Keys rotieren**, die heute im Chat standen:
-   - ElevenLabs-Key (`XI`) in elevenlabs.io neu generieren.
-   - Meta-Token + App-Geheimcode (Facebook-App „LuxeStyle Social") zurücksetzen.
-   → danach nur noch als **Repo-Secrets** hinterlegen, nie im Chat.
+2. *(Key-Rotation bewusst weggelassen — auf User-Wunsch.)*
 3. **Optional `XI` + `PEXELS` als Repo-Secrets** → CI kann künftig selbst rendern (du musst nie mehr Keys schicken).
 4. **Optional:** alte **Hasen-Lifestyle-Videos** in YouTube Studio löschen (Pipeline ist gestoppt, alte Videos noch online).
 5. **Optional (IG/TikTok-Autopost):** frisches Meta-Token mit `instagram_content_publish` → dann poste ich LuxeStyle-Reels auch dorthin (separat vom YouTube/ABAN-Thema).
