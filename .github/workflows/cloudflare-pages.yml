@@ -35,17 +35,22 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     # Secrets sind in `if`-Bedingungen nicht direkt nutzbar -> als env mappen und
-    # darüber gaten. Fehlt das Token, laufen die Deploy-Schritte nicht.
+    # darüber gaten. Der Deploy läuft NUR, wenn beides gesetzt ist:
+    #   - CLOUDFLARE_API_TOKEN  (Secret, mit "Cloudflare Pages: Edit")
+    #   - Repo-Variable CF_DIRECT_DEPLOY = true  (expliziter Opt-in-Schalter)
+    # So entstehen keine roten Checks, solange der API-Deploy nicht bewusst
+    # scharfgeschaltet ist (Haupt-Site deployt ohnehin via Dashboard-Git-Integration).
     env:
       CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CF_ENABLED: ${{ vars.CF_DIRECT_DEPLOY }}
     steps:
       - name: Checkout
-        if: ${{ env.CF_API_TOKEN != '' }}
+        if: ${{ env.CF_API_TOKEN != '' && env.CF_ENABLED == 'true' }}
         uses: actions/checkout@v4
 
       - name: Deploy (wrangler pages deploy)
-        if: ${{ env.CF_API_TOKEN != '' }}
+        if: ${{ env.CF_API_TOKEN != '' && env.CF_ENABLED == 'true' }}
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ env.CF_API_TOKEN }}
@@ -53,16 +58,22 @@ jobs:
           # Output-Verzeichnis = Repo-Root (".") als Positional. Bewusst KEINE
           # wrangler.toml im Repo, damit die Pages-Git-Integration im Dashboard
           # unveraendert weiterlaeuft; dieser Action-Deploy ist ein opt-in
-          # Direct-Upload (laeuft nur mit gesetzten Secrets).
+          # Direct-Upload. Projektname MUSS via Repo-Variable CF_PAGES_PROJECT
+          # auf das Haupt-Site-Projekt zeigen (siehe CLOUDFLARE-SETUP.md;
+          # 'radar' ist nur ein Fallback und gehört zur ki-tools-radar-Subdomain).
           # branch=main -> Production, sonst Preview-Deploy fuer den Branch.
           command: >-
             pages deploy .
             --project-name=${{ vars.CF_PAGES_PROJECT || 'radar' }}
             --branch=${{ github.head_ref || github.ref_name }}
 
-      - name: Hinweis, wenn Secrets fehlen
-        if: ${{ env.CF_API_TOKEN == '' }}
+      - name: Hinweis, wenn nicht scharfgeschaltet
+        if: ${{ env.CF_API_TOKEN == '' || env.CF_ENABLED != 'true' }}
         run: |
-          echo "CLOUDFLARE_API_TOKEN ist nicht gesetzt — Deploy übersprungen."
-          echo "Secrets unter Settings → Secrets and variables → Actions hinterlegen:"
-          echo "  CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID"
+          echo "API-Direct-Deploy ist nicht aktiv — übersprungen (kein Fehler)."
+          echo "So scharfschalten (siehe CLOUDFLARE-SETUP.md):"
+          echo "  1) Secret  CLOUDFLARE_API_TOKEN  (mit 'Cloudflare Pages: Edit')"
+          echo "  2) Secret  CLOUDFLARE_ACCOUNT_ID"
+          echo "  3) Variable CF_PAGES_PROJECT = <Haupt-Site-Projektname>"
+          echo "  4) Variable CF_DIRECT_DEPLOY = true"
+          echo "Token vorher prüfen: Actions → 'Cloudflare — Preflight' → Run."

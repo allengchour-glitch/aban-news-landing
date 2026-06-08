@@ -1,0 +1,39 @@
+name: Cloudflare — Preflight (Token prüfen)
+
+# Prüft den CLOUDFLARE_API_TOKEN gegen die Cloudflare-API: aktiv? Account? Pages?
+# DNS? Welche Projekte gibt es, wie heißt das Haupt-Site-Projekt? Deployt NICHTS.
+# Manuell starten: Actions → diesen Workflow → "Run workflow".
+
+on:
+  workflow_dispatch:
+    inputs:
+      strict:
+        description: 'Strict: rot, sobald eine Deploy-Berechtigung fehlt'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    name: Token & Pages prüfen
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Preflight
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          ARGS=""
+          [ "${{ inputs.strict }}" = "true" ] && ARGS="--strict"
+          python3 tools/cf_preflight.py $ARGS
