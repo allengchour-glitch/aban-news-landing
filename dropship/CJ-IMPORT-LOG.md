@@ -59,6 +59,14 @@
 - **🔑 Gemini-Key gesucht (User-Wunsch):** NICHT im Repo (keine Service-Account-JSON/.env mit echten Werten);
   `GEMINI_API_KEY`/`GCP_SA_KEY` existieren nur als GitHub-Secrets → in der interaktiven Session nicht nutzbar.
   Für KI-Designs: User pastet Key ODER Generierung via GitHub-Action.
+- **✅ Charge 4 (Premium/Home, alter Key):** Moissanite-Ohrstecker «Éclat» `15421167436161` (2 Var, 139.90) +
+  Deko-Vase «Antique» Schmiedeeisen `15421167468929` (4 Var, 44.90) — live in 6 Kanälen. Abgelehnt: 24K-Eye-Mask
+  (Fremdmarke EELHOE + Before/After-Claims), Silikon-Watch ($0.84/50 Var zu billig), Boston-Bag (Dublette). cj-real: 182 → **184**.
+- **🎯 Autonom-Lehre:** „40 Produkte in 1 Session" ist über den MCP-Inline-`productSet`-Weg NICHT praktikabel
+  (jede Variantenliste riesig → Token-Limit). Skalierbarer Weg = `cj_autopilot.mjs` + `cj-autopilot.yml` (GitHub-Action)
+  zu **Voll-Auto** ausbauen (productSet + Varianten + Bild-QA + publish) → läuft headless mit Repo-Secrets
+  (`CJ_EMAIL`,`CJ_API_KEY`,`SHOPIFY_SHOP`,`SHOPIFY_ADMIN_TOKEN`). In-Session sonst Charge-für-Charge (~2–6 Keeper je
+  Runde; CJ-Suche filtert hart). **Heute gesamt: 13 neue Produkte live** (6 Mode + 2 Taschen + 3 Schmuck/Acc. + 2 Premium/Home).
 - **🎨 Printful „Selbst gestalten" — Gerüst gebaut (live):** Neue **Menü-Leiste „🎨 Selbst gestalten"** (Pos. 2 im
   Hauptmenü) → **Landingpage `/pages/selbst-gestalten`** (`Page/698444710273`): funktionierendes **Wunsch-Design-
   Angebot** (Kunde schickt Idee/Logo per Kontakt → Vorschau → on-demand-Druck), funktioniert OHNE App.
