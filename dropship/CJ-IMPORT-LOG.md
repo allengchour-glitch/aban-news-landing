@@ -1681,3 +1681,22 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   dokumentiert das ganze System + dass dasselbe Framework für abannews wiederverwendbar ist (Queue-Quelle +
   Creative-Generator tauschen, Rest identisch).
 **Aktivierung:** Secrets setzen + Branch→main (geplante Actions laufen nur vom Default-Branch). Ohne Secrets No-Op.
+
+## 2026-06-08 — Charge 27 (Beauty/Home feiner aufgeteilt) + 2 neue Produkte
+- **Kategorie-Feinschnitt (Discoverability):** Beauty & Home in Sub-Smart-Collections gesplittet, alle
+  in alle 6 Kanäle publiziert + als Menü-Untermenüs verlinkt (Main menu 310224093569 — spiegelt das
+  Geschlechter-Split-Muster von Mode/Schuhe/Schmuck):
+  - 💆 **Beauty & Wellness** → 🧴 *Hautpflege & Skincare* (`hautpflege-skincare`, beauty+hautpflege, 21)
+    · 💆 *Wellness & Beauty-Tools* (`wellness-beauty-tools`, beauty+wellness, 29)
+  - 🏠 **Home & Living** → 🕯️ *Deko & Wohnaccessoires* (`deko-wohnaccessoires`, home+deko, 15)
+    · 💡 *Beleuchtung & Lampen* (`beleuchtung-lampen`, home+beleuchtung, →20) · 🍽️ *Küche & Tisch*
+    (`kueche-tisch`, home+küche, 6).
+  - ⚠️ Lehre: erst Tag "licht" geraten → 0 Treffer; echtes Tag ist **beleuchtung** → ruleSet gefixt.
+- **+2 neue Produkte (productSet, ACTIVE, Media READY, 6 Kanäle):**
+  - **Gua-Sha-Set «Jade»** (CJMB289246601AZ, 34.90, beauty+wellness+hautpflege) → füllt beide Beauty-Subs.
+  - **Strick-Cape «Aria»** (CJMY292646901AZ, 39.90, 12 Farben, damen-mode/oberteil) — Watermark-Bilder
+    (`_water.jpeg`) für Aprikose/Braun entfernt (§5).
+  - **Dedup-Treffer übersprungen:** Vase CJJT292075701AZ (= „Deko-Vase «Antique»" schon live) +
+    LED-Lampe CJYD291551202BY (= „LED-Wandleuchte mit Akku" schon live) + Tennis-Skirt CJDK292568901AZ
+    (= Charge-26-Tennis-Kleid) + Yoga-Fitness-Bag (off-theme).
+- **Bestand: 232 cj-real aktiv (+2).**
