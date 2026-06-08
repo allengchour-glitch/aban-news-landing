@@ -19,6 +19,12 @@ try:
     d = urllib.request.urlopen(req, timeout=180).read(); open(out, "wb").write(d); print("ElevenLabs-Music OK:", len(d), "bytes")
 except Exception as e:
     print("Music-Fehler:", e)
+    try:
+        import urllib.error
+        if isinstance(e, urllib.error.HTTPError):
+            print("Music-Antwort (ElevenLabs):", e.read().decode("utf-8","replace")[:400])
+    except Exception as e2:
+        print("Music-Body-Fehler:", e2)
 PY
 if [ -s "$W/m.mp3" ]; then
   ffmpeg -y -hide_banner -loglevel error -i "$W/m.mp3" -c:a aac -b:a 192k "$OUT"

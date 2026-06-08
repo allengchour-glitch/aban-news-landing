@@ -26,6 +26,12 @@ try:
     d = urllib.request.urlopen(req, timeout=60).read(); open(out,"wb").write(d); print("ElevenLabs OK:", len(d), "bytes")
 except Exception as e:
     print("ElevenLabs-Fehler:", e)
+    try:
+        import urllib.error
+        if isinstance(e, urllib.error.HTTPError):
+            print("ElevenLabs-Antwort:", e.read().decode("utf-8","replace")[:400])
+    except Exception as e2:
+        print("ElevenLabs-Body-Fehler:", e2)
 PY
 
 if [ ! -s "$W/vo.mp3" ]; then rm -rf "$W"; fallback; exit $?; fi
