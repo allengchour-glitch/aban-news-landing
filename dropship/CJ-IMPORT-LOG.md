@@ -70,6 +70,11 @@
 - **✅ Charge 5 (Schmuck, alter Key):** Statement-Ohrringe «Doré» gebürstetes Gold `15421171859841` (29.90) +
   Sommer-Armband «Évil» Schmetterling/Nazar `15421171892609` (5 Stile, 19.90) — live in 6 Kanälen. Abgelehnt:
   Hochzeits-Kartenbox (off-theme), Fruchtprint-Cap (Novelty). cj-real: 184 → **186** · **heute 15 Produkte live.**
+- **✅ Charge 6 + Merge:** Glücks-Halskette «Fortune» Hufeisen/Kreuz `15421226746241` (16.90) live. cj-real → **187**
+  (**16 Produkte heute**). **PR #401 nach `main` gemergt** → Autopilot ist jetzt auf dem Default-Branch = aktiv.
+  Beim Merge: origin/main (aban-news Autonom-Ausbau) integriert; **Lehre aus aktualisierter Checkliste:**
+  `GEMINI_API_KEY` ist als Secret gesetzt (Billing aktiv), Shopify-Schreibzugriff läuft über
+  `SHOPIFY_CLIENT_ID/SECRET` (Client-Credentials) — Autopilot entsprechend umgestellt.
 - **🤖 AUTOPILOT zu VOLL-AUTO ausgebaut (fertig, committet):** `dropship/cj_autopilot.mjs` macht jetzt den
   KOMPLETTEN Flow autonom: CJ-Suche → §5-Hartfilter → SKU-Dedup → Bild-200-Check → **Varianten Farbe×Grösse +
   Farbbilder via `productSet`** → optional **Gemini-Gate** (DE-Copy + QA) → **ACTIVE + publish in 6 Kanäle**
