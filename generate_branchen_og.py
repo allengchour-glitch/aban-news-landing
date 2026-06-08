@@ -308,6 +308,9 @@ BRANCHEN = {
     "haushaltswaren":      ("Haushaltswaren",       ["Produkttexte & Social,", "nicht die Beratung"]),
     "schaedlingsbekaempfung": ("Schädlingsbekämpfung", ["Texte & Berichte,", "nicht die Diagnose"]),
     "gravurservice":       ("Gravurservice",        ["Service- & Anlasstexte,", "nicht die Rechteprüfung"]),
+    "zeitschriftenhandel": ("Zeitschriftenhandel",  ["Sortiment & Profil,", "keine Tabak-/Lotto-Werbung"]),
+    "drogerie":            ("Drogerien",            ["Produkttexte & Social,", "keine Gesundheitsberatung"]),
+    "tabakwaren":          ("Tabakfachgeschäfte",   ["Interne Texte & Orga,", "keine Tabakwerbung"]),
 }
 
 
