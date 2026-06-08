@@ -16,7 +16,7 @@ python3 - "$KEY" "$VOICE" "$TEXT" "$W/vo.mp3" <<'PY' || true
 import sys, json, urllib.request
 key, voice, text, out = sys.argv[1:5]
 body = json.dumps({"text": text, "model_id": "eleven_multilingual_v2",
-    "voice_settings": {"stability":0.4,"similarity_boost":0.75,"style":0.45,"use_speaker_boost":True}}).encode()
+    "voice_settings": {"stability":0.55,"similarity_boost":0.8,"style":0.3,"use_speaker_boost":True}}).encode()
 req = urllib.request.Request(f"https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_128",
     data=body, headers={"xi-api-key": key, "Content-Type":"application/json", "Accept":"audio/mpeg"})
 try:
