@@ -5,12 +5,20 @@
 > Stand: 2026-06-03.
 
 ## 🎬 DAUERAUFTRAG — Video-Chef (User, 2026-06-07)
-**Claude ist Video-Chef.** Oberstes Ziel: **viele ABONNENTEN** gewinnen. Läuft der Kanal
-**nach 30 Tagen** nicht gut (zu wenig Abo-Wachstum) → **Thema wechseln** und neuen 30-Tage-Lauf
-starten. Umgesetzt in `aban_director.py` (abonnenten-first, `PIVOT_DAYS=30`, `SUB_30`-Schwelle,
-`PIVOT_THEMES`-Liste) + `aban_stats.py` (`channel_subs`). Der Director **empfiehlt** den Pivot;
-der Chef (jede neue Session) **führt ihn aus** (neue Themen-Skripte in `aban_scripts.json`).
-Jede Session zuerst `reports/ABAN-DIRECTOR.md` lesen → Entscheidung befolgen.
+**Claude ist Video-Chef.** Oberstes Ziel: **viele ABONNENTEN / REICHWEITE**.
+
+**🔑 NEUE AUSRICHTUNG (User-Update 2026-06-07): KEINE Video-Masse mehr produzieren.**
+Stattdessen: **ANALYSIEREN** (was bringt Reichweite/Abos?) und die Videos **kontinuierlich BESSER
+machen** → Qualität & Daten statt Menge. Konkret pro Session:
+1. Zuerst `reports/ABAN-DIRECTOR.md` + `reports/ABAN-STATS.md` lesen → Top-Performer & Schwächen.
+2. **EINE gezielte Verbesserung** am Renderer/Skript-Stil/Hook/Thumbnail/Caption ableiten und umsetzen
+   (datenbasiert), statt viele neue Folgen zu rendern.
+3. Nur bei klarem Bedarf 1 verbesserte Muster-Folge rendern (z. B. neuer Hook-Stil) und gegen die
+   bisherige Performance testen. **Nicht** stumpf die Queue auffüllen.
+- Die bereits gequeueten Folgen posten weiter (Cron = Reichweite) — aber der CHEF-Fokus liegt auf
+  Auswertung + Qualitäts-Iteration, nicht auf Volumen.
+- 30-Tage-Regel bleibt: zu wenig Abo-Wachstum → **Thema wechseln** (`aban_director.py`: `PIVOT_DAYS=30`,
+  `SUB_30`, `PIVOT_THEMES`). Director **empfiehlt**, Chef **führt aus**.
 
 ## Was es ist
 Faceless YouTube-Shorts-Kanal (Sci-Fi/Ancient-Aliens). Sprecher **ABAN** (reptiloider

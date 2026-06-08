@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """ABAN Files - autonomer Director / VIDEO-CHEF (4-Stunden-Rhythmus).
 
-DAUERAUFTRAG (User, 2026-06-07): "Du bist Video-Chef. Sorge fuer viele ABONNENTEN.
-Laeuft es nach 30 TAGEN nicht gut -> neues Thema." -> Diese Logik ist abonnenten-first
-und kippt das Thema nach 30 Tagen ohne ausreichendes Abo-Wachstum.
+DAUERAUFTRAG (User, 2026-06-07): "Du bist Video-Chef. Sorge fuer viele ABONNENTEN/REICHWEITE.
+Laeuft es nach 30 TAGEN nicht gut -> neues Thema."
+UPDATE (User, 2026-06-07): KEINE Video-Masse mehr -> ANALYSIEREN + Videos kontinuierlich BESSER
+machen (Qualitaet/Daten statt Menge). Dieser Director liefert die Analyse-Basis; der Chef leitet
+daraus pro Lauf EINE gezielte Verbesserung ab, statt die Queue mit neuen Folgen zu fluten.
 
 Wertet Abonnenten + Views aus, ENTSCHEIDET regelbasiert (weiter posten / Gewinner-Thema
 ausbauen / nach 30 Tagen ohne Abo-Traktion das Thema wechseln), merkt sich den Verlauf in
@@ -112,7 +114,8 @@ def main():
 
     sub_disp = subs if subs is not None else "— (versteckt/unlesbar)"
     lines = ["# ABAN Files — Director-Log / VIDEO-CHEF (autonom, 4h-Rhythmus)", "",
-             "**Dauerauftrag:** viele Abonnenten sammeln; laeuft es nach 30 Tagen nicht gut -> neues Thema.", "",
+             "**Dauerauftrag:** viele Abonnenten/Reichweite. KEINE Video-Masse -> analysieren + Videos "
+             "kontinuierlich BESSER machen (Qualitaet/Daten statt Menge). Nach 30 Tagen schwach -> Thema wechseln.", "",
              f"Kanal-Start: {state['first_seen']} · Tag {days}/{PIVOT_DAYS} · letzte Auswertung {today} (UTC)", "",
              "## Aktuelle Entscheidung", "", f"> {action}", "",
              f"- **Abonnenten: {sub_disp}** (Trend seit letztem Lauf: {sub_trend:+d})",
