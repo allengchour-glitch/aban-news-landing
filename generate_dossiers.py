@@ -68,6 +68,14 @@ DOSSIERS = [
               "Arbeit abnimmt und wo sie es eben nicht tut.",
      "topics": set(),
      "keywords": ["selbstständ", "selbstst-nd", "solopreneur", "mail-stack", "leadgen", "mitarbeiter"]},
+    {"slug": "tool-duelle-vergleiche", "emoji": "🥊",
+     "title": "Tool-Duelle — A gegen B",
+     "sub": "Direkte Vergleiche über Tage und Wochen — welches Tool wirklich gewinnt.",
+     "blurb": "Nicht ein Tool vorgestellt, sondern zwei im echten Einsatz gegeneinander. Diese Ausgaben "
+              "tauschen Werkzeuge tagelang, vergleichen ehrlich und sagen, welches bleibt — damit du nicht "
+              "selbst beide abonnieren musst, um es herauszufinden.",
+     "topics": set(),
+     "keywords": [" vs. ", "selbsttest", "getauscht", "notes-app", "deepl write", "loops.so"]},
 ]
 
 # --- Deep-Dives (von aban selbst verfasst: immergültige Analyse/Frameworks, ----
@@ -180,6 +188,17 @@ DEEPDIVES = {
 <p>Gerade allein arbeitet man schnell unsauber. Kundendaten gehören nicht ungeprüft in öffentliche Tools — pseudonymisieren oder vorher Verarbeitungsort und Auftragsverarbeitung klären. Mehr dazu im Datenschutz-Dossier.</p>
 <div class="dd-note"><strong>Starte klein:</strong> Such dir einen einzigen nervigen, wiederkehrenden Vorgang und automatisiere genau den. Ein laufender Workflow bringt mehr als zehn Tools, die du „mal testen" wolltest.</div>
 """,
+    "tool-duelle-vergleiche": """
+    <h2>In der Tiefe: Wie man zwei Tools fair vergleicht</h2>
+    <p>Ein Tool allein lässt sich schönreden — zwei gegeneinander nicht. Das direkte Duell ist die ehrlichste Form des Tests: gleiche Aufgabe, gleicher Zeitraum, und am Ende bleibt eins. Aber nur, wenn man es richtig aufzieht.</p>
+    <h3>Gleiche Aufgabe, gleicher Zeitraum</h3>
+    <p>Beide Tools an <em>demselben</em> echten Projekt, ein paar Tage parallel — nicht an der Hochglanz-Demo. Erst im Alltag zeigt sich, welches sich wegklickt und welches im Weg steht.</p>
+    <h3>Wechselkosten zählen mit</h3>
+    <p>Export, Lernkurve, Team-Umgewöhnung, neue Tastenkürzel im Muskelgedächtnis — all das gehört auf die Rechnung. Ein <strong>minimal</strong> besseres Tool ist den Umzug selten wert; ein spürbar besserer Workflow schon.</p>
+    <h3>„Gut genug" gewinnt</h3>
+    <p>Selten ist ein Tool in allem besser. Entscheide nach dem, was du <em>täglich</em> brauchst, nicht nach der längsten Feature-Liste. Mehr Funktionen sind nicht mehr Nutzen — oft nur mehr Menüpunkte.</p>
+    <div class="dd-note"><strong>Faustregel:</strong> Lass das Duell von der täglichen Nutzung entscheiden, nicht vom ersten Wow. Das Tool, das du nach einer Woche reflexartig öffnest, hat gewonnen.</div>
+    """,
 }
 
 # --- FAQ je Dossier (ehrlich, immergültig → FAQPage-Schema + sichtbarer Block) -
@@ -232,6 +251,14 @@ FAQS = {
     ("Darf ich Kundendaten verwenden?",
      "Nicht ungeprüft in öffentlichen Tools. Pseudonymisiere oder kläre vorher Verarbeitungsort und Auftragsverarbeitung. Details im Datenschutz-Dossier — keine Rechtsberatung."),
 ],
+    "tool-duelle-vergleiche": [
+        ("Wie vergleiche ich zwei Tools fair?",
+         "Beide gleichzeitig am selben echten Projekt, ein paar Tage lang — nicht an der Demo. Notiere, wo du nacharbeiten musstest und was dich täglich nervt; danach entscheidet die Notiz."),
+        ("Lohnt sich der Wechsel überhaupt?",
+         "Oft nicht. Rechne Export, Lernkurve und Team-Umgewöhnung mit. Ein minimal besseres Tool ist den Umzug selten wert; ein spürbar besserer Workflow schon."),
+        ("Mehr Funktionen = besser?",
+         "Nein. Die längste Feature-Liste gewinnt selten. Das Tool, das du wirklich täglich benutzt, schlägt das mit den meisten Häkchen."),
+    ],
 }
 
 # --- Englische Inhalte (gleiche Ausgaben, übersetzte Rahmen — keine erfundenen Fakten) ---
@@ -264,6 +291,9 @@ EN_META = {
     "blurb": "For solo founders and small teams, AI is a real lever — for acquisition, email, admin and "
              "routine. These issues show concrete workflows from practice (with a DACH data-protection eye): "
              "where AI takes work off your plate and where it doesn't."},
+    "tool-duelle-vergleiche": {"title": "Tool Showdowns — A vs. B",
+        "sub": "Direct comparisons over days and weeks — which tool actually wins.",
+        "blurb": "Not one tool introduced, but two head-to-head in real use. These issues swap tools for days, compare honestly and tell you which one stays — so you don't have to subscribe to both to find out."},
 }
 
 DEEPDIVES_EN = {
@@ -374,6 +404,17 @@ DEEPDIVES_EN = {
 <p>Working alone, it's easy to get sloppy. Customer data doesn't belong unchecked in public tools — pseudonymise, or clarify processing location and data-processing agreement first. More on that in the data-protection dossier.</p>
 <div class="dd-note"><strong>Start small:</strong> pick a single annoying, recurring task and automate exactly that. One running workflow beats ten tools you meant to \"try out\".</div>
 """,
+    "tool-duelle-vergleiche": """
+    <h2>In depth: how to compare two tools fairly</h2>
+    <p>A single tool is easy to talk up — two against each other are not. The direct duel is the most honest kind of test: same task, same timeframe, and one is left standing at the end. But only if you set it up right.</p>
+    <h3>Same task, same timeframe</h3>
+    <p>Both tools on <em>the same</em> real project, a few days in parallel — not on the glossy demo. Only in daily use does it show which one disappears under your hands and which one gets in the way.</p>
+    <h3>Switching costs count</h3>
+    <p>Export, learning curve, getting the team used to it, new shortcuts in muscle memory — all of that goes on the bill. A <strong>marginally</strong> better tool is rarely worth the move; a noticeably better workflow is.</p>
+    <h3>\"Good enough\" wins</h3>
+    <p>One tool is rarely better at everything. Decide by what you need <em>daily</em>, not by the longest feature list. More features aren't more value — often just more menu items.</p>
+    <div class="dd-note"><strong>Rule of thumb:</strong> let the duel be decided by daily use, not by the first wow. The tool you reflexively open after a week has won.</div>
+    """,
 }
 
 FAQS_EN = {
@@ -425,6 +466,14 @@ FAQS_EN = {
     ("May I use customer data?",
      "Not unchecked in public tools. Pseudonymise, or clarify processing location and a data-processing agreement first. Details in the data-protection dossier — not legal advice."),
 ],
+    "tool-duelle-vergleiche": [
+        ("How do I compare two tools fairly?",
+         "Both at once on the same real project, for a few days — not on the demo. Note where you had to redo work and what annoys you daily; then the note decides."),
+        ("Is switching even worth it?",
+         "Often not. Factor in export, learning curve and getting the team used to it. A marginally better tool is rarely worth the move; a noticeably better workflow is."),
+        ("More features = better?",
+         "No. The longest feature list rarely wins. The tool you actually use every day beats the one with the most checkboxes."),
+    ],
 }
 
 # UI-Strings je Sprache
