@@ -16,7 +16,8 @@ Ohne ihn geht **nichts** öffentlich live (Deploy hängt: Auth-Fehler 10000).
 - Dann mir **„sync"** sagen → ich verdrahte den Link automatisch (Button live auf Monitor- + 5 Branchen-Seiten).
 
 ## 🟢 3. (optional) Weitere LS-Produkte (~je 2 Min)
-Paket (29 € einmalig) · Datensatz-Abo (9 €/M) · Vorlagen-Set (19 €) → anlegen, dann „sync".
+Paket (29 € einmalig) · Datensatz-Abo (9 €/M) · Vorlagen-Set (19 €) · **KI-Compliance-Paket (39 €,
+Name enthält „Compliance")** → anlegen, dann „sync". Der Sync verdrahtet alle automatisch.
 
 ## 🟢 4. Affiliate scharfschalten (~5 Min)
 Writesonic-Freigabe prüfen (oder Jasper `jasper.ai/partners`) → **Link an mich**.
