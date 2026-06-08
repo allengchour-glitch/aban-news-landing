@@ -11,12 +11,15 @@ fallback(){ echo "-> Google-TTS-Fallback ($LANG_)."; bash "$HERE/tts.sh" "$LANG_
 
 if [ -z "$KEY" ]; then echo "Kein ELEVENLABS_API_KEY."; fallback; exit $?; fi
 
+# Voice-Settings env-überschreibbar (Defaults = bisheriges Verhalten). Für eine ruhigere,
+# weniger „wobbelige" Stimme z.B. ELEVENLABS_STABILITY=0.62 ELEVENLABS_STYLE=0.15 setzen.
+STAB="${ELEVENLABS_STABILITY:-0.55}"; SIM="${ELEVENLABS_SIMILARITY:-0.8}"; STYLE="${ELEVENLABS_STYLE:-0.3}"
 W=$(mktemp -d)
-python3 - "$KEY" "$VOICE" "$TEXT" "$W/vo.mp3" <<'PY' || true
+python3 - "$KEY" "$VOICE" "$TEXT" "$W/vo.mp3" "$STAB" "$SIM" "$STYLE" <<'PY' || true
 import sys, json, urllib.request
-key, voice, text, out = sys.argv[1:5]
+key, voice, text, out, stab, sim, style = sys.argv[1:8]
 body = json.dumps({"text": text, "model_id": "eleven_multilingual_v2",
-    "voice_settings": {"stability":0.55,"similarity_boost":0.8,"style":0.3,"use_speaker_boost":True}}).encode()
+    "voice_settings": {"stability":float(stab),"similarity_boost":float(sim),"style":float(style),"use_speaker_boost":True}}).encode()
 req = urllib.request.Request(f"https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_128",
     data=body, headers={"xi-api-key": key, "Content-Type":"application/json", "Accept":"audio/mpeg"})
 try:
