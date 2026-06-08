@@ -291,6 +291,11 @@ section{padding:14px 0}h2{font-size:1.25rem;margin:18px 0 10px}
 .faq details[open] summary::after{content:"–"}
 .faq details p{color:var(--ink2);padding:0 0 14px;margin:0}
 .reading-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;background:var(--amber-dk);transform:scaleX(0);transform-origin:0 50%;transition:transform .08s linear;will-change:transform}
+.dform{display:flex;gap:10px;max-width:440px;margin:0 auto .5rem;flex-wrap:wrap;justify-content:center}
+.dform input{flex:1 1 200px;min-width:0;padding:13px 15px;font-size:1rem;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.dform input:focus{outline:3px solid var(--amber-dk);outline-offset:1px;border-color:var(--amber)}
+.dform .btn{flex:0 0 auto}
+@media(max-width:460px){.dform input,.dform .btn{flex:1 1 100%}}
 .to-top{position:fixed;right:18px;bottom:18px;z-index:55;width:44px;height:44px;border-radius:50%;border:1px solid var(--amber-lt);background:var(--card);color:var(--amber-dk);font-size:1.3rem;line-height:1;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s;box-shadow:0 4px 14px rgba(0,0,0,.12)}
 .to-top.show{opacity:1;pointer-events:auto}
 .route li.read{opacity:.62}
@@ -343,6 +348,15 @@ __BODY__
 
 def e(s):
     return _html.escape(str(s or ""), quote=True)
+
+
+def signup_form(label="Kostenlos abonnieren →"):
+    # Gleicher Mechanismus wie auf der Startseite: GET an Beehiiv (CSP erlaubt das).
+    return (
+        '<form class="dform" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>'
+        '<input type="email" name="email" placeholder="deine@mail.de" required '
+        'autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">'
+        f'<button type="submit" class="btn btn--xl">{e(label)}</button></form>')
 
 
 # --- archive/index.html parsen (kuratierte Quelle) ---------------------------
@@ -450,6 +464,7 @@ def breadcrumb(trail):
 
 def render_dossier(dos, issues):
     members = select_members(dos, issues)
+    n_aus = sum(1 for it in issues if it["kind"] == "ausgabe")
     total_min = sum(it["mins"] for it in members) or len(members) * 4
     canon = f"dossier/{dos['slug']}.html"
     ogimg = f"og-dossier-{dos['slug']}.png"
@@ -511,8 +526,9 @@ def render_dossier(dos, issues):
         <li><strong>3 Updates · 1 Tool · 1 Prompt</strong> — sofort nutzbar</li>
         <li>Ehrlich, <strong>kein Hype</strong>, mit DACH-Blick</li>
       </ul>
-      <a class="btn btn--xl" href="https://abannews.beehiiv.com/subscribe">Kostenlos abonnieren →</a>
+      {signup_form()}
       <p class="note">Gratis · jederzeit kündbar · kein Tracking, kein Spam.</p>
+      <p class="note">Bereits {n_aus} Ausgaben erschienen · täglich Mo–Fr · von Allen Chour, Belp (CH)</p>
     </div>
   </section>
   {faq_section}
@@ -556,8 +572,8 @@ def render_index(issues, counts):
         <li><strong>3 Updates · 1 Tool · 1 Prompt</strong></li>
         <li>Ehrlich, <strong>kein Hype</strong></li>
       </ul>
-      <a class="btn btn--xl" href="https://abannews.beehiiv.com/subscribe">Kostenlos abonnieren →</a>
-      <p class="note">Gratis · jederzeit kündbar · kein Tracking.</p>
+      {signup_form()}
+      <p class="note">Gratis · jederzeit kündbar · kein Tracking · {n_aus} Ausgaben bereits erschienen.</p>
     </div>
     <p class="note"><a href="/archive/">→ Oder alle Ausgaben im Archiv durchsuchen</a></p>
   </section>"""
