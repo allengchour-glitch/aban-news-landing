@@ -305,6 +305,9 @@ BRANCHEN = {
     "schuhmacherei":       ("Schuhmacherei",        ["Service- & Pflegetexte,", "nicht die Reparatur-Diagnose"]),
     "schluesseldienst":    ("Schlüsseldienste",     ["Service- & Preistexte,", "keine Türöffnungs-Anleitung"]),
     "rahmenwerkstatt":     ("Rahmenwerkstätten",    ["Service- & Beratungstexte,", "nicht die Konservierung"]),
+    "haushaltswaren":      ("Haushaltswaren",       ["Produkttexte & Social,", "nicht die Beratung"]),
+    "schaedlingsbekaempfung": ("Schädlingsbekämpfung", ["Texte & Berichte,", "nicht die Diagnose"]),
+    "gravurservice":       ("Gravurservice",        ["Service- & Anlasstexte,", "nicht die Rechteprüfung"]),
 }
 
 
