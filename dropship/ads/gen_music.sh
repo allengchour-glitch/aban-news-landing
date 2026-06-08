@@ -6,7 +6,8 @@ set -uo pipefail
 OUT="${1:?out}"; PROMPT="${2:?prompt}"; LEN="${3:-28000}"
 KEY="${ELEVENLABS_API_KEY:-}"
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-FALLBACK="$ROOT/automation/reel_music.m4a"
+FALLBACK="$ROOT/dropship/ads/ad_music.mp3"
+[ -s "$FALLBACK" ] || FALLBACK="$ROOT/automation/reel_music.m4a"
 if [ -z "$KEY" ]; then echo "kein ELEVENLABS_API_KEY -> Fallback-Musik."; cp "$FALLBACK" "$OUT"; exit 0; fi
 W=$(mktemp -d)
 python3 - "$KEY" "$PROMPT" "$LEN" "$W/m.mp3" <<'PY' || true
