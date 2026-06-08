@@ -1,0 +1,227 @@
+<div class="lspod">
+<style>
+.lspod{--gold:#c1922f;--ink:#16151a;--mut:#6b6b73;--bg:#faf8f5;--line:#ece7df;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--ink);max-width:1180px;margin:0 auto;line-height:1.5;}
+.lspod *{box-sizing:border-box;}
+.lspod a{text-decoration:none;color:inherit;}
+.lspod-hero{text-align:center;padding:30px 18px 26px;}
+.lspod-eyebrow{letter-spacing:.22em;font-size:12px;font-weight:700;color:var(--gold);margin:0 0 10px;text-transform:uppercase;}
+.lspod-hero h2{font-size:clamp(28px,5vw,46px);line-height:1.05;margin:0 0 12px;font-weight:800;letter-spacing:-.01em;}
+.lspod-hero .sub{font-size:clamp(15px,2.4vw,19px);color:var(--mut);max-width:620px;margin:0 auto 18px;}
+.lspod-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;font-size:13px;color:var(--ink);margin:0 auto 22px;font-weight:600;}
+.lspod-trust span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px;}
+.lspod-cta{display:inline-block;background:var(--ink);color:#fff;font-weight:700;font-size:16px;padding:14px 30px;border-radius:999px;transition:transform .15s,background .2s;}
+.lspod-cta:hover{background:var(--gold);transform:translateY(-2px);}
+.lspod-sech{text-align:center;font-size:clamp(20px,3.4vw,30px);font-weight:800;margin:6px 0 4px;}
+.lspod-secsub{text-align:center;color:var(--mut);font-size:15px;margin:0 0 22px;}
+.lspod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px;padding:8px 14px 6px;}
+.lspod-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .15s,box-shadow .2s,border-color .2s;}
+.lspod-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.10);border-color:var(--gold);}
+.lspod-imgwrap{aspect-ratio:1/1;background:#f4f1ec;overflow:hidden;}
+.lspod-imgwrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
+.lspod-card:hover .lspod-imgwrap img{transform:scale(1.05);}
+.lspod-info{padding:11px 13px 6px;display:flex;flex-direction:column;gap:3px;flex:1;}
+.lspod-name{font-weight:700;font-size:14.5px;line-height:1.25;}
+.lspod-price{color:var(--mut);font-size:13.5px;}
+.lspod-go{margin:0 13px 13px;align-self:flex-start;font-size:12.5px;font-weight:800;color:var(--gold);letter-spacing:.02em;}
+.lspod-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:14px;max-width:920px;margin:0 auto;}
+.lspod-step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 18px;text-align:center;}
+.lspod-num{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--gold);color:#fff;font-weight:800;font-size:19px;margin-bottom:10px;}
+.lspod-step b{display:block;font-size:16px;margin-bottom:4px;}
+.lspod-step p{margin:0;color:var(--mut);font-size:14px;}
+.lspod-band{background:var(--ink);color:#fff;border-radius:18px;padding:22px 18px;margin:26px 14px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px 30px;text-align:center;}
+.lspod-band div{min-width:140px;}
+.lspod-band b{display:block;font-size:22px;color:var(--gold);}
+.lspod-band span{font-size:13.5px;opacity:.88;}
+.lspod-section{padding:26px 14px;}
+.lspod-faq{max-width:760px;margin:0 auto;}
+.lspod-faq details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;padding:2px 16px;}
+.lspod-faq summary{cursor:pointer;font-weight:700;padding:13px 0;list-style:none;font-size:15.5px;}
+.lspod-faq summary::-webkit-details-marker{display:none;}
+.lspod-faq summary::after{content:'+';float:right;color:var(--gold);font-weight:800;font-size:20px;line-height:1;}
+.lspod-faq details[open] summary::after{content:'–';}
+.lspod-faq p{margin:0 0 14px;color:var(--mut);font-size:14.5px;}
+.lspod-final{text-align:center;background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:34px 18px;margin:10px 14px 6px;}
+.lspod-final h3{font-size:clamp(22px,3.6vw,32px);font-weight:800;margin:0 0 8px;}
+.lspod-final p{color:var(--mut);margin:0 0 18px;}
+@media(max-width:560px){.lspod-steps{grid-template-columns:1fr;}.lspod-grid{grid-template-columns:repeat(2,1fr);gap:11px;}}
+</style>
+
+<section class="lspod-hero">
+  <p class="lspod-eyebrow">LuxeStyle · Print on Demand</p>
+  <h2>Dein Design. Dein Teil.</h2>
+  <p class="sub">Wähle ein Produkt, lade dein Motiv hoch – wir drucken &amp; liefern. Spruch, Foto oder Logo. Keine Mindestmenge.</p>
+  <div class="lspod-trust"><span>🇨🇭 Gratis Versand ab CHF 65</span><span>⚡ On-Demand produziert</span><span>📦 5–10 Tage</span><span>↩️ 30 Tage Rückgabe</span></div>
+  <a class="lspod-cta" href="#produkte">Jetzt Produkt wählen ↓</a>
+</section>
+
+<section id="produkte" class="lspod-section" style="padding-top:8px;">
+  <h3 class="lspod-sech">Wähle dein Produkt</h3>
+  <p class="lspod-secsub">26 Produkte – ab CHF 3. Tippe auf eins, lade dein Design hoch.</p>
+  <div class="lspod-grid">
+    <a class="lspod-card" href="/products/klassisches-unisex-t-shirt-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-classic-tee-white-back-6a270582a6fc6.jpg?v=1780942223" alt="Klassisches Unisex T-Shirt selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Klassisches Unisex T-Shirt</span><span class="lspod-price">ab CHF 8.–</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/unisex-t-shirt-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-staple-t-shirt-white-front-6a26fe32875df.jpg?v=1780940358" alt="Unisex T-Shirt selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Unisex T-Shirt</span><span class="lspod-price">ab CHF 14.–</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/premium-hoodie-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-premium-pullover-hoodie-white-front-6a270618762ce.jpg?v=1780942379" alt="Premium-Hoodie selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Premium-Hoodie</span><span class="lspod-price">ab CHF 28.50</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/unisex-hoodie-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-crew-neck-sweatshirt-white-front-6a26fee594a32.jpg?v=1780940534" alt="Unisex Hoodie selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Unisex Hoodie</span><span class="lspod-price">ab CHF 19.50</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/keramik-tasse-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/white-glossy-mug-white-11-oz-front-view-6a27002eedba3.jpg?v=1780940873" alt="Keramik-Tasse selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Keramik-Tasse</span><span class="lspod-price">ab CHF 7.50</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/bio-jutebeutel-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/eco-tote-bag-oyster-front-6a26ff9aa2784.jpg?v=1780940714" alt="Bio-Jutebeutel selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Bio-Jutebeutel</span><span class="lspod-price">ab CHF 17.50</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/baumwolltasche-mit-langen-henkeln-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cotton-color-tote-bag-natural-front-6a2714bd1dfc7.jpg?v=1780946128" alt="Baumwolltasche mit langen Henkeln selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Baumwolltasche mit langen Henkeln</span><span class="lspod-price">ab CHF 10.–</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/dad-cap-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/classic-dad-hat-white-front-6a2704153578c.jpg?v=1780941865" alt="Dad-Cap selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Dad-Cap</span><span class="lspod-price">ab CHF 18.–</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/hardcase-iphone%C2%AE-hulle-mit-magsafe%C2%AE-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/magsafe-tough-case-for-iphone-matte-iphone-14-front-6a27161fd4bfb.jpg?v=1780946479" alt="Hardcase iPhone-Hülle mit MagSafe selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Hardcase iPhone-Hülle mit MagSafe</span><span class="lspod-price">ab CHF 19.50</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/transparente-iphone%C2%AE-hulle-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clear-case-for-iphone-iphone-11-pro-max-case-with-phone-6a271a84ca42d.jpg?v=1780947606" alt="Transparente iPhone-Hülle selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Transparente iPhone-Hülle</span><span class="lspod-price">ab CHF 13.50</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/edelstahl-trinkflasche-mit-strohhalm-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/stainless-steel-water-bottle-with-a-straw-lid-white-32-oz-front-6a2716901fa54.jpg?v=1780946595" alt="Edelstahl Trinkflasche mit Strohhalm selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Edelstahl Trinkflasche mit Strohhalm</span><span class="lspod-price">ab CHF 24.–</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/urban-umhangetasche-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/urban-crossbody-bag-natural-stone-front-6a27048d667d1.jpg?v=1780941973" alt="Urban-Umhängetasche selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Urban-Umhängetasche</span><span class="lspod-price">ab CHF 31.50</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/alltags-umhangetasche-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/everyday-crossbody-bag-fresh-pink-front-6a2704f779a4c.jpg?v=1780942088" alt="Alltags-Umhängetasche selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Alltags-Umhängetasche</span><span class="lspod-price">ab CHF 27.50</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/allover-stoffbeutel-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/all-over-print-tote-bag-yellow-15x15-front-6a271bc1b6d31.jpg?v=1780947923" alt="Allover-Stoffbeutel selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Allover-Stoffbeutel</span><span class="lspod-price">ab CHF 19.–</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/kiss-cut-aufkleber-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/kiss-cut-stickers-white-3x3-default-6a2717b4ee33e.jpg?v=1780946895" alt="Kiss-Cut Aufkleber selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Kiss-Cut Aufkleber</span><span class="lspod-price">ab CHF 3.–</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/allover-rucksack-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/all-over-print-backpack-white-front-6a2719b5540a1.jpg?v=1780947398" alt="Allover-Rucksack selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Allover-Rucksack</span><span class="lspod-price">ab CHF 43.–</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/allover-yoga-leggings-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/all-over-print-yoga-leggings-white-front-6a2718d6c8473.jpg?v=1780947178" alt="Allover-Yoga-Leggings selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Allover-Yoga-Leggings</span><span class="lspod-price">ab CHF 38.50</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/recycelter-unisex-allover-hoodie-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/all-over-print-recycled-unisex-hoodie-white-front-6a271c55cdb4b.jpg?v=1780948071" alt="Recycelter Unisex Allover-Hoodie selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Recycelter Unisex Allover-Hoodie</span><span class="lspod-price">ab CHF 51.50</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/recycelter-unisex-allover-pullover-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/all-over-print-recycled-unisex-sweatshirt-white-front-6a271b2dcf3bd.jpg?v=1780947784" alt="Recycelter Unisex Allover-Pullover selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Recycelter Unisex Allover-Pullover</span><span class="lspod-price">ab CHF 41.–</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/recycelte-allover-jogginghosen-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/all-over-print-recycled-mens-joggers-white-front-6a271e3a66302.jpg?v=1780948554" alt="Recycelte Allover-Jogginghosen selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Recycelte Allover-Jogginghosen</span><span class="lspod-price">ab CHF 46.–</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/unisex-allover-bomberjacke-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/all-over-print-unisex-bomber-jacket-white-front-6a271cef7e37f.jpg?v=1780948228" alt="Unisex Allover-Bomberjacke selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Unisex Allover-Bomberjacke</span><span class="lspod-price">ab CHF 61.50</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/kleid-mit-schlitz-und-allover-druck-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/all-over-print-slip-dress-white-front-6a271d8aa07fe.jpg?v=1780948379" alt="Kleid mit Schlitz und Allover-Druck selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Kleid mit Schlitz und Allover-Druck</span><span class="lspod-price">ab CHF 39.–</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/einteiliger-allover-badeanzug-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/all-over-print-one-piece-swimsuit-white-front-6a27184072d96.jpg?v=1780947025" alt="Einteiliger Allover-Badeanzug selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Einteiliger Allover-Badeanzug</span><span class="lspod-price">ab CHF 34.–</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/boardshorts-mit-allover-druck-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/all-over-print-mens-board-shorts-white-front-6a271594a268f.jpg?v=1780946340" alt="Boardshorts mit Allover-Druck selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Boardshorts mit Allover-Druck</span><span class="lspod-price">ab CHF 47.–</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/allover-sport-bh-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/all-over-print-sports-bra-white-front-6a271ed20aef1.jpg?v=1780948703" alt="Allover-Sport-BH selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Allover-Sport-BH</span><span class="lspod-price">ab CHF 32.50</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+    <a class="lspod-card" href="/products/baby-jersey-body-selbst-gestalten">
+      <div class="lspod-imgwrap"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/baby-jersey-bodysuit-white-front-6a271704b36b7.jpg?v=1780946707" alt="Baby-Jersey-Body selbst gestalten"></div>
+      <div class="lspod-info"><span class="lspod-name">Baby-Jersey-Body</span><span class="lspod-price">ab CHF 13.50</span></div>
+      <span class="lspod-go">Gestalten →</span>
+    </a>
+  </div>
+</section>
+
+<section class="lspod-section" style="background:var(--bg);border-radius:20px;margin:8px 0;">
+  <h3 class="lspod-sech">So einfach geht's</h3>
+  <p class="lspod-secsub">In unter 2 Minuten zu deinem Unikat.</p>
+  <div class="lspod-steps">
+    <div class="lspod-step"><span class="lspod-num">1</span><b>Produkt wählen</b><p>T-Shirt, Hoodie, Tasse, Tasche, Handyhülle &amp; mehr.</p></div>
+    <div class="lspod-step"><span class="lspod-num">2</span><b>Design hochladen</b><p>Spruch, Foto, Motiv oder Logo – direkt im Editor platzieren.</p></div>
+    <div class="lspod-step"><span class="lspod-num">3</span><b>Vorschau &amp; bestellen</b><p>Live-Vorschau ansehen, bestellen – wir drucken on-demand.</p></div>
+  </div>
+</section>
+
+<div class="lspod-band">
+  <div><b>120+</b><span>Produkte &amp; Farben</span></div>
+  <div><b>0</b><span>Mindestmenge</span></div>
+  <div><b>5–10</b><span>Tage Lieferzeit</span></div>
+  <div><b>🇨🇭</b><span>Schweizer Shop · TWINT</span></div>
+</div>
+
+<section class="lspod-section">
+  <h3 class="lspod-sech">Häufige Fragen</h3>
+  <div class="lspod-faq">
+    <details open><summary>Wie lade ich mein Design hoch?</summary><p>Wähle ein Produkt, öffne den Gestalten-Editor und lade dein Bild, Foto oder Logo hoch. Du siehst sofort eine Live-Vorschau und kannst Grösse &amp; Position anpassen.</p></details>
+    <details><summary>Gibt es eine Mindestbestellmenge?</summary><p>Nein. Du kannst ab einem einzigen Stück bestellen – jedes Teil wird on-demand für dich produziert.</p></details>
+    <details><summary>Wie lange dauert die Lieferung?</summary><p>Produktion &amp; Versand dauern zusammen ca. 5–10 Werktage. Gratis-Versand ab CHF 65.</p></details>
+    <details><summary>Welche Dateien funktionieren am besten?</summary><p>PNG oder JPG in hoher Auflösung (mind. 1500 px). Für scharfe Drucke empfehlen wir transparente PNGs bei Logos/Motiven.</p></details>
+    <details><summary>Kann ich zurückgeben?</summary><p>Bei Druckfehlern oder Mängeln ersetzen wir kostenlos. Es gilt unser 30-Tage-Rückgaberecht.</p></details>
+  </div>
+</section>
+
+<section class="lspod-final">
+  <h3>Bereit? Gestalte dein Unikat.</h3>
+  <p>Über 26 Produkte warten auf dein Design – ab CHF 3.</p>
+  <a class="lspod-cta" href="#produkte">Produkt wählen ↑</a>
+</section>
+</div>

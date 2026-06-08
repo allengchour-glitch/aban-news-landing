@@ -1,0 +1,30 @@
+name: POD-Seite "Selbst gestalten" aktualisieren
+
+# Schreibt dropship/pod/page_body.html in die Shopify-Seite (Print-on-Demand, produkt-first).
+# Auth via Client-Credentials-Grant (Shopify-Tokens 2026). Ohne Secrets = No-Op.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pod-page-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Seite aktualisieren
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: node automation/update_pod_page.mjs
