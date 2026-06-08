@@ -47,16 +47,16 @@ jobs:
           mkdir -p dropship/hero
           PROMPT="${{ github.event.inputs.prompt }}"
           if [ -z "$PROMPT" ]; then
-            PROMPT="Premium Sommer-Mode Editorial fuer eine Schweizer Online-Boutique: ein fliessendes helles Leinen-Sommerkleid auf einem eleganten Buegel, daneben ein Strohhut, eine Sonnenbrille und feine Sandalen, auf hellem Marmor und Sandtoenen, weiches goldenes mediterranes Abendlicht, luftig, hochwertig, viel Negativraum links fuer Text"
+            PROMPT="Premium Sommer-Mode Editorial fuer eine Schweizer Online-Boutique. Komposition: alle Objekte kompakt am RECHTEN Bildrand gruppiert (helles Leinen-Sommerkleid, Strohhut, Sonnenbrille, feine Sandalen), die LINKE Bildhaelfte bleibt eine ruhige, fast leere helle Sand-/Marmorflaeche als klarer Negativraum fuer Text. Weiches goldenes mediterranes Abendlicht, luftig, minimalistisch, hochwertig, viel Leerraum links"
           fi
-          python3 automation/gen_image_gemini.py "$PROMPT" dropship/hero/luxestyle-hero.png || true
+          python3 automation/gen_image_gemini.py "$PROMPT" dropship/hero/luxestyle-hero-v2.png || true
           ls -la dropship/hero/ || true
       - name: Committen
         run: |
-          if [ ! -f dropship/hero/luxestyle-hero.png ]; then echo "Kein Bild erzeugt (Secrets?)"; exit 0; fi
+          if [ ! -f dropship/hero/luxestyle-hero-v2.png ]; then echo "Kein Bild erzeugt (Secrets?)"; exit 0; fi
           git config user.name "luxestyle-hero-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add -f dropship/hero/luxestyle-hero.png
+          git add -f dropship/hero/luxestyle-hero-v2.png
           git commit -m "Hero-Bild erzeugt (Imagen) [skip ci]" || { echo "nichts zu committen"; exit 0; }
           for i in 1 2 3 4 5; do
             git push origin claude/luxestyle-product-CizQ6 && { echo gepusht; exit 0; }
