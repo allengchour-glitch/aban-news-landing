@@ -11,8 +11,45 @@ Hintergrund (Studien 2026): ChatGPT empfiehlt nur ~1,2 % der lokalen Betriebe ak
 
 Run:  python3 generate_sichtbarkeit_branchen.py
 """
+import glob
 import html
 import os
+
+from PIL import Image, ImageDraw, ImageFont
+
+_AMBER, _AMBER_DK, _CREAM, _INK, _MUTED, _BG = (217,119,6),(180,83,9),(254,243,199),(31,41,55),(107,114,128),(255,251,245)
+
+
+def _font(size, bold=True):
+    cands = ["/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"] + glob.glob("/usr/share/fonts/**/DejaVuSans*.ttf", recursive=True)
+    for c in cands:
+        if c and os.path.exists(c):
+            try:
+                return ImageFont.truetype(c, size)
+            except Exception:
+                pass
+    return ImageFont.load_default()
+
+
+def og(b):
+    """Per-Branche OG-Bild (1200×630) — schöner Teilen-Look."""
+    W, H = 1200, 630
+    img = Image.new("RGB", (W, H), _BG); d = ImageDraw.Draw(img)
+    d.ellipse([W-520,-260,W+260,360], fill=_CREAM); d.rectangle([0,0,16,H], fill=_AMBER)
+    d.text((70,70), "☕  aban news", font=_font(34), fill=_AMBER_DK)
+    bf = _font(24); badge = "WIRST DU VON KI EMPFOHLEN?"
+    bb = d.textbbox((0,0), badge, font=bf)
+    d.rounded_rectangle([70,140,70+(bb[2]-bb[0])+44,140+(bb[3]-bb[1])+26], radius=18, fill=_CREAM)
+    d.text((92,152), badge, font=bf, fill=_AMBER_DK)
+    d.text((70,212), "Empfiehlt ChatGPT", font=_font(60), fill=_INK)
+    d.text((70,212+72), e_plain(b["wer"]) + "?", font=_font(60), fill=_AMBER)
+    d.text((70,212+72+96), "1,2 % · 45 % · 96 % — die Lücke ist real.", font=_font(36), fill=_AMBER_DK)
+    d.text((70,H-78), "Gratis prüfen + dranbleiben  ·  abannews.com/ki-sichtbarkeit", font=_font(26, bold=False), fill=_MUTED)
+    img.save(os.path.join(ROOT, f"og-ki-sichtbar-{b['slug']}.png"), "PNG")
+
+
+def e_plain(s):
+    return str(s)
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -116,7 +153,7 @@ def page(b):
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="https://abannews.com/og-sichtbarkeit-paket.png">
+<meta property="og:image" content="https://abannews.com/og-ki-sichtbar-{slug}.png">
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
@@ -192,13 +229,51 @@ def page(b):
 """
 
 
+def hub():
+    cards = "".join(
+        f'<div class="card"><h3><a href="/ki-sichtbarkeit-{b["slug"]}.html">{e(b["wer"])}</a></h3>'
+        f'<p>Wirst du als {e(b["kurz"])} von ChatGPT &amp; Co. empfohlen? Gratis prüfen + dranbleiben.</p></div>'
+        for b in BRANCHEN)
+    body = f"""  <section class="hero">
+    <h1>Wirst du von <span class="a">KI empfohlen</span>?</h1>
+    <p class="lead">ChatGPT empfiehlt nur ~1,2 % der lokalen Betriebe — aber ~45 % der Menschen fragen KI nach Anbietern. Prüf gratis, ob dich die KI kennt, und bleib dran. Wähl deine Branche:</p>
+    <p><a class="btn" href="/ki-erwaehnungs-check.html">Jetzt gratis prüfen →</a></p>
+  </section>
+  <section>{cards}</section>
+  <section><p class="note">Mehr: <a href="/ki-sichtbarkeit-monitor.html">Monitor (9 €/M)</a> · <a href="/ki-sichtbarkeit-paket.html">Komplett-Paket (29 €)</a> · <a href="/ki-sichtbarkeit-buch.html">Buch</a></p></section>"""
+    title = "Wirst du von KI empfohlen? — KI-Sichtbarkeit für lokale Betriebe · aban news"
+    desc = "Prüf gratis, ob ChatGPT, Perplexity & Google AI deinen Betrieb empfehlen — und bleib mit dem Monitor dran. Für Handwerk, Praxen, Kanzleien, Steuer & Gastronomie."
+    # gleiche Shell wie page(): minimaler Wrapper
+    return f"""<!DOCTYPE html>
+<html lang="de"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{e(title)}</title><meta name="description" content="{e(desc)}">
+<meta name="robots" content="index, follow"><link rel="canonical" href="https://abannews.com/ki-sichtbarkeit.html">
+<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">
+<meta property="og:type" content="website"><meta property="og:url" content="https://abannews.com/ki-sichtbarkeit.html">
+<meta property="og:image" content="https://abannews.com/og-ki-sichtbar-handwerk.png">
+<meta property="og:site_name" content="aban news"><meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><style>{CSS}</style></head>
+<body><a class="skip" href="#main">Zum Inhalt</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main id="main"><div class="wrap">
+{body}
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+<a href="/start">Alles auf einen Blick</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+</body></html>
+"""
+
+
 def main():
     written = []
     for b in BRANCHEN:
-        path = os.path.join(ROOT, f"ki-sichtbarkeit-{b['slug']}.html")
-        open(path, "w", encoding="utf-8").write(page(b))
-        written.append(os.path.basename(path))
-    print("✓ Branchen-Seiten erzeugt:", ", ".join(written))
+        open(os.path.join(ROOT, f"ki-sichtbarkeit-{b['slug']}.html"), "w", encoding="utf-8").write(page(b))
+        og(b)
+        written.append(b["slug"])
+    open(os.path.join(ROOT, "ki-sichtbarkeit.html"), "w", encoding="utf-8").write(hub())
+    print("✓ Branchen-Seiten + OG-Bilder + Hub erzeugt:", ", ".join(written))
 
 
 if __name__ == "__main__":
