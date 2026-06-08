@@ -3,6 +3,7 @@ name: Produkt-Beschreibungs-Block (Styling + Bemerkung + passender Link)
 # Hängt bei Fashion-Produkten einen Block an (Styling-Text + Bemerkung + Link zur PASSENDEN Kollektion).
 # Idempotent (überspringt bereits ergänzte). No-op ohne Shopify-Creds. Nur manuell.
 # Pro Lauf max. MAX Produkte (Default 60) — für grosse Kollektionen mehrfach starten.
+# AUTH: SHOPIFY_ADMIN_TOKEN (Custom-App-Token, einfachste Variante) ODER SHOPIFY_CLIENT_ID/SECRET.
 
 on:
   workflow_dispatch:
@@ -39,6 +40,7 @@ jobs:
       - name: Beschreibungs-Block ergänzen
         env:
           SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
           COLLECTION: ${{ github.event.inputs.collection || 'damen-mode' }}
