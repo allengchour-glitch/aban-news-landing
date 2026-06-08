@@ -76,6 +76,11 @@
   (63 → **82**), inkl. der 16 neuen. Audit ergab: SEO-Titel/-Description + Bild-Alt-Texte der 16 neuen Produkte
   sind bereits durch die CI-SEO-Automation befüllt ✅. (Uhren ohne `schmuck`-Tag bleiben drin → kein Smart-Umbau,
   sonst fielen sie raus; daher manueller Bulk-Add — idempotent, auch für künftige Läufe wiederholbar.)
+  **Menü-Audit:** alle anderen Menü-Collections (Schuhe/Beauty/Home/Gadgets/Geschenke/Damen-Mode) sind Smart
+  (Tag-basiert) → füllen sich selbst, keine Lücke. **Bild-QA:** alle 16 neuen Produkte 0 FAILED, alle READY.
+  **Nicht gefixt (bewusst):** „Herren-Schmuck"-Sub (179 Prod.) hält echten Herren-Schmuck über den generischen
+  `herren`-Tag (Tag `herrenschmuck` nur 5×) → Regel-Umbau würde ~170 Produkte rauswerfen; Herren-Set bleibt
+  daher als harmlose Cross-Listung drin. Vase-Variantencodes (A2854…) = kosmetisch, gelassen.
 - **🤖 AUTO-QUEUE gebaut + auf `main` (PR #421):** `automation/queue_new_products.mjs` + `social-queue-build.yml`
   (2×/Tag 07:30/16:30 UTC) reihen die zuletzt angelegten ACTIVE-Produkte automatisch in `social/posts_image.csv`
   ein (Bild + DE-Caption + Produktlink + WELCOME10 + Hashtags, Dedup per Handle, nur .jpg). Kette komplett:
