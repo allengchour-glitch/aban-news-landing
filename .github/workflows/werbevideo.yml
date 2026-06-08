@@ -1,15 +1,32 @@
-name: LuxeStyle Werbevideo (DE + EN, Voiceover)
+name: "🎬 Werbevideo erstellen (1 Klick, DE+EN)"
 
-# Rendert ein Hype-Werbevideo (9:16) aus echten Produktbildern (good_products.csv) mit Voiceover
-# (Google-TTS) + geduckter Musik + Marken-CTA — auf Deutsch UND Englisch. Nur manuell.
+# EIN Tool: generiert (optional) Veo-Bewegung fuer ausgewaehlte Produkte UND rendert die fertige
+# Werbung (9:16, hook-first, ~20-25s) auf Deutsch + Englisch — in einem Lauf.
+# Stimme: ElevenLabs (Secret ELEVENLABS_API_KEY) sonst Google-TTS-Fallback. Musik geduckt + Clean-Version.
 
 on:
   workflow_dispatch:
     inputs:
-      images:
-        description: 'Anzahl Produktbilder'
+      heroes:
+        description: 'Produkt-namen fuer echte Veo-Bewegung (Komma-Liste aus good_products.csv; leer = nur Stills)'
+        type: string
+        default: ''
+      stills:
+        description: 'Anzahl Still-Produkte (Ken-Burns)'
         type: string
         default: '6'
+      seconds:
+        description: 'Veo Clip-Sekunden (4/6/8)'
+        type: string
+        default: '4'
+      hook_de:
+        description: 'Hook DE (erste ~2s)'
+        type: string
+        default: 'Designer-Look. Fairer Preis.'
+      hook_en:
+        description: 'Hook EN'
+        type: string
+        default: 'Designer looks. Fair prices.'
 
 permissions:
   contents: write
@@ -19,37 +36,57 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  render:
+  make:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
       - name: ffmpeg + Fonts
         run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
-      - name: Bilder + Voiceover + Render (DE & EN)
+
+      - name: 1) Veo-Bewegung (nur falls heroes gesetzt)
+        if: ${{ github.event.inputs.heroes != '' }}
         env:
-          NIMG: ${{ github.event.inputs.images || '6' }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          VEO_MODEL: veo-3.1-lite-generate-preview
+          VEO_ONLY: ${{ github.event.inputs.heroes }}
+          VEO_SECONDS: ${{ github.event.inputs.seconds || '4' }}
+        run: node automation/veo-hero-clip.mjs || echo "Veo uebersprungen/fehlgeschlagen -> weiter mit Stills"
+
+      - name: 2) Manifest + Voiceover + Render (DE & EN)
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          NSTILL: ${{ github.event.inputs.stills || '6' }}
+          HOOK_DE: ${{ github.event.inputs.hook_de }}
+          HOOK_EN: ${{ github.event.inputs.hook_en }}
         run: |
           set -e
-          D=/tmp/ad; IMG=$D/img; mkdir -p $IMG; : > $IMG/names.txt
+          D=/tmp/wv; IMG=$D/img; mkdir -p "$IMG"; : > "$D/manifest.txt"
+          for f in reels/veo-hero-*.mp4; do [ -e "$f" ] && printf 'veo|%s|\n' "$f" >> "$D/manifest.txt" || true; done
           k=0
-          tail -n +2 automation/good_products.csv | head -n "$NIMG" | while IFS= read -r line; do
-            url=$(printf '%s' "$line" | cut -d, -f2); label=$(printf '%s' "$line" | cut -d, -f3)
-            k=$((k+1))
-            if curl -sL --fail "$url" -o "$IMG/$k.jpg"; then printf '%s\n' "$label" >> "$IMG/names.txt"; fi
-          done
-          ls -la $IMG
-          DE="Entdecke LuxeStyle. Premium-Mode aus der Schweiz, Designer-Looks zu fairen Preisen. Kleider, Taschen und Accessoires, handverlesen für deinen Sommer. Gratis Versand ab fünfundsechzig Franken. Sichere dir jetzt zehn Prozent mit dem Code Welcome zehn. LuxeStyle punkt c h. Dein Look, deine Story."
-          EN="Discover LuxeStyle. Premium Swiss fashion, designer looks at fair prices. Dresses, bags and accessories, handpicked for your summer. Free shipping over sixty-five francs. Get ten percent off now with the code Welcome ten. LuxeStyle dot c h. Your look, your story."
-          bash dropship/ads/tts.sh de "$D/voice_de.wav" "$DE"
-          bash dropship/ads/tts.sh en "$D/voice_en.wav" "$EN"
+          tail -n +2 automation/good_products.csv | head -n "$NSTILL" > "$D/rows.csv" || true
+          while IFS= read -r line; do
+            [ -z "$line" ] && continue
+            url=$(printf '%s' "$line" | cut -d, -f2); label=$(printf '%s' "$line" | cut -d, -f3); k=$((k+1))
+            curl -sL --fail "$url" -o "$IMG/$k.jpg" && printf 'still|%s|%s\n' "$IMG/$k.jpg" "$label" >> "$D/manifest.txt" || true
+          done < "$D/rows.csv"
+          echo "=== Manifest ==="; cat "$D/manifest.txt"
+          DE="Das ist LuxeStyle. Premium-Mode aus der Schweiz, Designer-Looks zu fairen Preisen. Kleider, Taschen und Accessoires fuer deinen Sommer. Oder gestalte dein eigenes Teil, dein Design, on-demand gedruckt. Gratis Versand ab fuenfundsechzig Franken. Zehn Prozent mit dem Code Welcome zehn. Jetzt shoppen auf LuxeStyle punkt c h."
+          EN="This is LuxeStyle. Premium Swiss fashion, designer looks at fair prices. Dresses, bags and accessories for your summer. Or design your own piece, your design, printed on demand. Free shipping over sixty-five francs. Ten percent off with the code Welcome ten. Shop now at LuxeStyle dot c h."
+          bash dropship/ads/tts_eleven.sh de "$D/voice_de.wav" "$DE"
+          bash dropship/ads/tts_eleven.sh en "$D/voice_en.wav" "$EN"
           mkdir -p reels
-          bash dropship/ads/render_ad.sh reels/werbung-luxestyle-de.mp4 "$D/voice_de.wav" automation/reel_music.m4a "$IMG" "luxestyle.ch  ·  -10% mit Code WELCOME10"
-          bash dropship/ads/render_ad.sh reels/werbung-luxestyle-en.mp4 "$D/voice_en.wav" automation/reel_music.m4a "$IMG" "luxestyle.ch  ·  -10% with code WELCOME10"
+          bash dropship/ads/render_masterpiece.sh reels/werbung-luxestyle-de.mp4 "$D/voice_de.wav" automation/reel_music.m4a "$D/manifest.txt" de "$HOOK_DE"
+          bash dropship/ads/render_masterpiece.sh reels/werbung-luxestyle-en.mp4 "$D/voice_en.wav" automation/reel_music.m4a "$D/manifest.txt" en "$HOOK_EN"
           ls -la reels/werbung-luxestyle-*.mp4
+
       - name: Commit
         run: |
           git config user.name "werbevideo-bot"; git config user.email "actions@users.noreply.github.com"
-          git add reels/werbung-luxestyle-de.mp4 reels/werbung-luxestyle-en.mp4
-          git commit -m "Werbevideo LuxeStyle DE+EN (Voiceover + Musik) [skip ci]" || { echo nichts; exit 0; }
+          git add reels/werbung-luxestyle-*.mp4 reels/veo-hero-*.mp4 2>/dev/null || true
+          git commit -m "Werbevideo LuxeStyle DE+EN (1-Klick, hook-first) [skip ci]" || { echo nichts; exit 0; }
           for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
