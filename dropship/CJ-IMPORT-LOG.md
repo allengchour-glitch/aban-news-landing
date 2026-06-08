@@ -41,7 +41,10 @@
   Risiko (§5) + schwaches Bild (auf schmutzigem Boden).
 - **✅ Charge 2 (Accessoires, alter Key):** Henkeltasche «Lune» `15421166059905` (4 Farben, 24.90) +
   Crossbody-Tasche «Nuit» `15421166092673` (3 Farben, 24.90) — live in 6 Kanälen. Abgelehnt: Clip-Ohrringe
-  (Wasserzeichen „Gu - **✅ Charge 9 (Schuhe/Home/Schmuck, alter Key):** Zehensteg-Sandalen «Riva» (14 Var, 24.90, Schuhe) +
+  (Wasserzeichen „Gu - **✅ Charge 10 (Schmuck/Kleid, alter Key):** Silber-Armreif «Serpent» S925 (34.90, →premium-schmuck) +
+  Sommerkleid «Fleur Noir» Blumen-Print (8 Farben×5 Grössen=40 Var, 39.90, →sommer-2026). Live in 6 Kanälen.
+  Dubletten übersprungen (Perlen-Anhänger, Clip-Ohrringe-Wasserzeichen). cj-real: 195 → **197.**
+- **✅ Charge 9 (Schuhe/Home/Schmuck, alter Key):** Zehensteg-Sandalen «Riva» (14 Var, 24.90, Schuhe) +
   Smart-Diffuser «Aura» (EU-Stecker, 99.90) + Moissanite-Herzkette «Coeur» (3 Farben, 119.90, →premium-schmuck) +
   Acryl-Ohrringe «Ambre» (24.90, →premium-schmuck). Live in 6 Kanälen. Abgelehnt: Brotbeutel/WM-Schal/60-Var-Sandale/
   mehrdeutige Blue-Light-Brille. cj-real: 191 → **195.**
