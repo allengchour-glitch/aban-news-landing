@@ -1,0 +1,40 @@
+name: ABAN Files — YouTube-Aufrufe auswerten
+
+# Zieht täglich die echten viewCounts aller hochgeladenen ABAN-Files-Folgen und schreibt
+# einen sortierten Report (reports/aban-yt-stats-<datum>.md + -latest.md). So sieht man
+# datenbasiert, welches FORMAT zieht (Gewinner-Analyse) — inkl. Trend über die Tage.
+# Manuell startbar + täglich. Braucht Secret YT_API_KEY (sonst no-op). Optional Telegram.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 7 * * *'   # täglich 07:00 UTC
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aban-yt-stats
+  cancel-in-progress: false
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Aufrufe ziehen + Report schreiben
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node automation/aban_yt_stats.mjs
+      - name: Report committen
+        run: |
+          git config user.name "aban-stats-bot"; git config user.email "actions@users.noreply.github.com"
+          git add reports/aban-yt-stats-*.md 2>/dev/null || true
+          git commit -m "aban-yt-stats: Aufrufe-Report [skip ci]" || { echo "nichts"; exit 0; }
+          for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done

@@ -21,10 +21,11 @@ on:
       privacy:
         description: "Sichtbarkeit: public / unlisted / private"
         default: "public"
-  schedule:
-    # TEMPORAER alle 2h (Backlog heute schnell leeren). Sobald die Queue leer ist,
-    # macht der Lauf nichts ("kein neuer Upload"). Danach zurueck auf 3x/Tag empfohlen.
-    - cron: "0 */2 * * *"
+  # schedule:  # PAUSIERT 2026-06-08 — Daten zeigen: dunkler KI-Sci-Fi-Stil floppt (0–8 Aufrufe),
+  #            # echte-Menschen-Footage gewinnt (1527/605). Kein Auto-Posten von Flops mehr.
+  #            # Siehe video-prototypes/aban-files/WINNER-ANALYSE.md. Manuell weiter via "Run workflow".
+  #            # Wieder einkommentieren, wenn das Format auf den Gewinner-Stil umgestellt ist.
+  #   - cron: "0 */2 * * *"
 
 permissions:
   contents: write

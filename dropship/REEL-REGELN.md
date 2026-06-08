@@ -26,6 +26,13 @@
 9. **Freigabe-Workflow:** Reel EINZELN per Telegram zur Freigabe (ja/nein/Kommentar), erst nach „ja" posten.
 
 ## Verbesserungs-Log (chronologisch — neue Punkte kommen oben dazu)
+- 2026-06-08: **YouTube-Daten-Lehre (ABAN Files) — Format schlägt Menge.** Kanal-Aufrufe zeigen:
+  dunkle, gesichtslose **KI-Sci-Fi/Conspiracy-Shorts floppen** (0–8 Aufrufe), Clips mit **echten,
+  warmen Menschen gewinnen** (Bauarbeiter 1527, Geiger 605, Roboter 250) — ~200× Unterschied.
+  → **Regel:** echte-Menschen-/warme reale Footage, Gesicht im ersten Frame, greifbares Thema;
+  kein abstrakter dunkler KI-Look. Gilt auch für LuxeStyle-Reels. Auto-Posten der Flops pausiert
+  (`aban-youtube.yml`-Cron aus). Mess-Tool `automation/aban_yt_stats.mjs` + `aban-yt-stats.yml`
+  (täglich) verfolgt den Trend. Details: `video-prototypes/aban-files/WINNER-ANALYSE.md`.
 - 2026-06-08: **Print-Werbevideo „Selbst gestalten" — Entscheidung (User):** Stimme **bleibt**
   (ElevenLabs + Musik), aber **beides verbessern** — Skript + On-Screen-Text UND Stimme natürlicher,
   **mit Gemini-Hilfe**. Umsetzung (eigener, konfliktarmer Weg, fasst die von der Video-Session
