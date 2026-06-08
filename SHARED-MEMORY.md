@@ -40,7 +40,7 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 **2026-06-08 — Luxestyle product session:**
-- **Katalog:** **232 `cj-real` aktiv** (heute +59 neue Produkte: Mode, Taschen, Schmuck, Schuhe, Home, Beauty, Gadget, Premium).
+- **Katalog:** **235 `cj-real` aktiv** (heute +62 neue Produkte: Mode, Taschen, Schmuck, Schuhe, Home, Beauty, Gadget, Premium).
 - **Navigation feiner (Charge 27):** Beauty & Home in Sub-Collections gesplittet + als Menü-Untermenüs
   (Hautpflege & Skincare · Wellness & Beauty-Tools · Deko & Wohnaccessoires · Beleuchtung & Lampen · Küche & Tisch),
   alle in 6 Kanäle publiziert. Mode/Schuhe/Schmuck haben bereits Damen/Herren-Untermenüs.

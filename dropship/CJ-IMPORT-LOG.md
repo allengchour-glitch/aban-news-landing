@@ -1700,3 +1700,14 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
     LED-Lampe CJYD291551202BY (= „LED-Wandleuchte mit Akku" schon live) + Tennis-Skirt CJDK292568901AZ
     (= Charge-26-Tennis-Kleid) + Yoga-Fitness-Bag (off-theme).
 - **Bestand: 232 cj-real aktiv (+2).**
+
+## 2026-06-08 — Charge 28 (Feinkategorien nachgeladen)
+- **+3 neue Produkte (productSet, ACTIVE, Media READY, 6 Kanäle):**
+  - **Vitamin-C-Serum «Glow»** (CJMB292291601AZ, 19.90, beauty+hautpflege) → Hautpflege & Skincare.
+  - **Collagen-Masken-Set «Repair»** (CJMB292130001AZ, 24.90, beauty+hautpflege) → Hautpflege & Skincare.
+  - **Smart-Aroma-Diffuser «Aura»** (CJJT291816302BY, 89.90, home+wellness+beauty, Weiss/Schwarz) →
+    Wellness & Beauty-Tools. ⚠️ CJ lieferte US/EU/UK/AU-Stecker-Varianten → **nur EU-Stecker behalten** (CH-Markt).
+  - **Übersprungen:** Kerzenwärmer-Lampe CJHD289470101AZ (= „«Lueur»" schon live) + 1 Kleid das fälschlich
+    auf „light" matchte (Keyword-Mismatch).
+- **Lehre:** Single-Item-Beauty (Serum/Maske) kam mit Pseudo-„Farbe" (30ml / Schwarz) → auf 1 Standard-Variante normalisiert.
+- **Bestand: 235 cj-real aktiv (+3).**
