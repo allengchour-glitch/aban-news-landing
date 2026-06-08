@@ -635,6 +635,9 @@ def main():
             dossier_map.setdefault(it["url"], []).append(dos["slug"])
     render_index(issues, counts)
     write_topics_json(issues, dossier_map)
+    # OG-Karte fürs Archiv (Growth-Audit: archive.html ohne OG-Bild)
+    og(os.path.join(ROOT, "og-archive.png"), "ARCHIV",
+       f"Alle {sum(1 for it in issues if it['kind']=='ausgabe')} Ausgaben zum Nachlesen")
     print(f"✓ Dossiers: {len(DOSSIERS)} Themen aus {len(issues)} Ausgaben "
           f"({', '.join(f'{k}={v}' for k, v in counts.items())}) + topics.json + OGs")
 
