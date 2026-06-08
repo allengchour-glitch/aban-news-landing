@@ -67,6 +67,13 @@
   zu **Voll-Auto** ausbauen (productSet + Varianten + Bild-QA + publish) → läuft headless mit Repo-Secrets
   (`CJ_EMAIL`,`CJ_API_KEY`,`SHOPIFY_SHOP`,`SHOPIFY_ADMIN_TOKEN`). In-Session sonst Charge-für-Charge (~2–6 Keeper je
   Runde; CJ-Suche filtert hart). **Heute gesamt: 13 neue Produkte live** (6 Mode + 2 Taschen + 3 Schmuck/Acc. + 2 Premium/Home).
+- **🤖 AUTOPILOT zu VOLL-AUTO ausgebaut (fertig, committet):** `dropship/cj_autopilot.mjs` macht jetzt den
+  KOMPLETTEN Flow autonom: CJ-Suche → §5-Hartfilter → SKU-Dedup → Bild-200-Check → **Varianten Farbe×Grösse +
+  Farbbilder via `productSet`** → optional **Gemini-Gate** (DE-Copy + QA) → **ACTIVE + publish in 6 Kanäle**
+  (Gemini-PASS) bzw. **DRAFT** (Fail/kein Key). Media-FAILED→DRAFT-Downgrade. Workflow `cj-autopilot.yml`:
+  2×/Tag (06:00+16:00 UTC) → ~12 Produkte/Tag, „40" in ~3–4 Tagen autonom. **Aktivierung (User):** Repo-Secrets
+  `CJ_EMAIL`,`CJ_API_KEY`,`SHOPIFY_SHOP`,`SHOPIFY_ADMIN_TOKEN`(Scopes write_products+write_publications),
+  optional `GEMINI_API_KEY`. Ohne Secrets = sauberer No-Op. Branch muss in `main` sein, damit Cron läuft.
 - **🎨 Printful „Selbst gestalten" — Gerüst gebaut (live):** Neue **Menü-Leiste „🎨 Selbst gestalten"** (Pos. 2 im
   Hauptmenü) → **Landingpage `/pages/selbst-gestalten`** (`Page/698444710273`): funktionierendes **Wunsch-Design-
   Angebot** (Kunde schickt Idee/Logo per Kontakt → Vorschau → on-demand-Druck), funktioniert OHNE App.
