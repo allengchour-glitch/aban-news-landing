@@ -84,3 +84,26 @@
   (kein zuverlässiger Auto-Fix; betrifft v.a. ältere CJ-Importe; neue Produkte sind bereits sauber/Freisteller).
 - 🟡 **Top-10-Bestseller** auf Mode fokussieren oder Sektion umbenennen (z.B. „Unsere Lifestyle-Empfehlungen").
 - 🟡 **Cookie-Banner** als schmale untere Leiste (Theme/Consent-App).
+
+---
+
+## 🛠️ Umsetzung Runde 2 (autonom, 2026-06-08 Abend)
+
+**Autonom live umgesetzt (Shopify-API):**
+- ✅ **„Top 10 Bestseller" (Homepage) umsortiert** → Premium-Mode zuerst (Bali 4.93★ · Sirène · Ibiza 4.47★ · Savanna),
+  Menswear/Accessoires Mitte, 5★-Beauty/Uhr ans Ende. Adressiert Geminis „verwässerte Bestseller"-Kritik, OHNE die
+  Social-Proof-Anker (5★-Produkte) zu verlieren. Bewusste Abweichung von Gemini: gut bewertete Produkte bleiben sichtbar
+  (Conversion > Marken-Purismus).
+- ✅ **SEO-Meta für die 5 neuen Sub-Collections** gesetzt (Hautpflege, Wellness, Deko, Beleuchtung, Küche).
+
+**Hero (Weg A+B):**
+- ✅ **2 Premium-Hero-Bilder generiert** (Imagen, 16:9): `dropship/hero/luxestyle-hero.png` (v1, ruhiger Sand-Flatlay)
+  + `dropship/hero/luxestyle-hero-v2.png` (v2, vibranter Editorial-Flatlay). Merchant lädt eins im Customizer hoch.
+- ✅ **Draft-Theme** „Horizon · LuxeStyle Hero-Polish (Claude)" als sichere Spielwiese dupliziert.
+- 🔑 **Ursache Hero-Kontrast-Bug:** Hero zeigt auf `color_scheme: scheme-6`, das in settings_data.json NICHT existiert
+  (nur scheme-1/2/5) → Text fällt auf dunklen Default. **Fix (Customizer, 1 Dropdown):** Hero-Farbschema auf **scheme-5**
+  (dunkel → heller Text + goldener Primary-Button). + Overlay ~55–60 %, Button-Label „Sommer-Looks shoppen", Hero-Bild tauschen.
+- ⛔ **Live-Theme-Schreibzugriff per API ist von Shopify hart blockiert** (`themeFilesUpsert` gegen Live-Theme verweigert) →
+  Hero-Theme-Änderung nur im Customizer / via Draft-Publish möglich.
+
+**Verifiziert:** Preise werden auf allen Kacheln angezeigt (Gemini-Fehlalarm). Rückgabefrist überall 30 Tage.
