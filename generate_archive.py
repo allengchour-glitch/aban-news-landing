@@ -78,6 +78,10 @@ def build_index(issues):
 <link rel="alternate" type="application/rss+xml" title="aban news" href="{BASE}/archive.rss">
 <meta property="og:title" content="aban news — Archiv">
 <meta property="og:description" content="Alle bisherigen Ausgaben zum Nachlesen.">
+<meta property="og:image" content="{BASE}/og-archive.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{BASE}/og-archive.png">
 <style>
 :root{{--accent:{ACCENT};--accent-h:{ACCENT_H};--bg:{BG};--bg-alt:{BG_ALT};--text:{TEXT};--muted:{MUTED};--border:{BORDER};}}
 @media(prefers-color-scheme:dark){{:root{{--bg:#1a1714;--bg-alt:#2a2420;--text:#f3f0ec;--muted:#a8a29e;--border:#3a332d;}}}}
@@ -101,13 +105,21 @@ footer{{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);fon
 <header><div class="wrap">
 <a href="/"><h1>📬 aban news — Archiv</h1></a>
 <p>Alle {len(issues)} Ausgaben zum Nachlesen · Mo–Fr, kein Hype</p>
-<p style="margin-top:14px;"><a class="cta" href="/gratis-ki-tools.html">Kostenlos abonnieren →</a></p>
+<p style="margin-top:14px;"><a class="cta" href="/dossiers.html">📚 Themen-Dossiers</a> <a class="cta" href="/gratis-ki-tools.html" style="margin-left:8px;">Kostenlos abonnieren →</a></p>
 </div></header>
 <main><div class="wrap">
 <input id="q" class="search" type="search" placeholder="Ausgaben durchsuchen…" aria-label="Suche" oninput="abanFilter()">
 <div id="list">
 {"".join(rows)}
 </div>
+<section style="background:#fffaf2;border:2px solid #d97706;border-radius:14px;padding:1.2rem;margin:26px 0;text-align:center">
+<strong style="display:block;font-size:1.08rem;margin-bottom:.55rem">Täglich solche Einordnungen — gratis per Mail</strong>
+<form action="https://abannews.beehiiv.com/subscribe" method="get" style="display:flex;gap:.5rem;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
+<input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="deine@mail.de" aria-label="E-Mail-Adresse" style="flex:1;min-width:190px;border:1px solid var(--border);border-radius:10px;padding:.72rem .9rem;font-size:1rem;background:#fff">
+<button type="submit" style="background:var(--accent);color:#fff;border:0;border-radius:10px;padding:.72rem 1.15rem;font-weight:700;cursor:pointer;white-space:nowrap">Gratis abonnieren →</button>
+</form>
+<span style="display:block;font-size:.78rem;color:var(--muted);margin-top:.55rem">Mo–Fr · 5 Minuten · kein Spam · kein Tracking</span>
+</section>
 </div></main>
 <footer><div class="wrap">
 © <span id="y"></span> aban news · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a> · <a href="/archive.rss">RSS</a>

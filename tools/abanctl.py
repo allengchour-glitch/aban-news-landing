@@ -93,7 +93,7 @@ def cmd_status(_args):
 
 
 # --------------------------------------------------------------------------- #
-CHECKOUT_KEYS = ("PAKET_BUY_URL", "DATENSATZ_ABO_URL", "MONITOR_ABO_URL", "VORLAGEN_BUY_URL", "COMPLIANCE_BUY_URL")
+CHECKOUT_KEYS = ("PAKET_BUY_URL", "DATENSATZ_ABO_URL", "MONITOR_ABO_URL", "VORLAGEN_BUY_URL", "COMPLIANCE_BUY_URL", "SCHNELLSTART_BUY_URL", "AUDIT_BUY_URL")
 
 
 def cmd_wire_buy(args):

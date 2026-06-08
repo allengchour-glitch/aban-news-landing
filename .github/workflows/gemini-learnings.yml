@@ -1,0 +1,45 @@
+name: Gemini Dropship-Learnings
+
+# Lässt Gemini Erfolgsmuster erfolgreicher Dropship-/Fashion-Stores analysieren und einen getaggten
+# Aktionsplan für LuxeStyle ableiten ([API]/[THEME]/[USER]). Report -> reports/. No-op ohne GEMINI_API_KEY.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 7 * * 1'   # wöchentlich Montag 07:00 UTC
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gemini-learnings
+  cancel-in-progress: false
+
+jobs:
+  learn:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Gemini-Analyse
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node automation/gemini_dropship_learnings.mjs
+      - name: Report committen
+        run: |
+          git config user.name  "gemini-learnings-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f reports/ 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Kein Report erzeugt (No-op?)."; exit 0
+          fi
+          git commit -m "chore(learnings): Gemini Dropship-Aktionsplan [skip ci]"
+          for i in 1 2 3 4 5; do
+            if git push; then echo gepusht; break; fi
+            git pull --rebase --autostash origin main || true; sleep 3
+          done

@@ -283,3 +283,58 @@
   flex-shrink: 0;
 }
 .sib-hook { color: var(--c-text-2); }
+
+/* ── Lese-Erlebnis (reader.js) ─────────────────────────────────── */
+.reading-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60;
+  background: var(--c-accent); transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform .08s linear; will-change: transform;
+}
+.issue-toc {
+  background: var(--c-bg-alt); border: 1px solid var(--c-border);
+  border-radius: 12px; padding: 14px 18px; margin: 0 0 1.4rem;
+}
+.issue-toc-h {
+  margin: 0 0 .4rem; font-size: .72rem; font-weight: 800; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--c-accent-hi);
+}
+.issue-toc ol { margin: 0; padding-left: 1.1rem; }
+.issue-toc li { margin: .25rem 0; }
+.issue-toc a { color: var(--c-text); text-decoration: none; }
+.issue-toc a:hover { color: var(--c-accent); text-decoration: underline; }
+.issue-related { margin: 2rem 0 1rem; }
+.issue-related h2 { font-size: 1.15rem; margin: 0 0 .7rem; }
+.related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 560px) { .related-grid { grid-template-columns: 1fr; } }
+.related-card {
+  display: flex; flex-direction: column; gap: .15rem; text-decoration: none;
+  background: var(--c-card); border: 1px solid var(--c-border); border-radius: 12px;
+  padding: 12px 14px; transition: transform .12s, border-color .12s, box-shadow .12s;
+}
+.related-card:hover { transform: translateY(-2px); border-color: var(--c-accent); box-shadow: var(--c-shadow-lg); }
+.rc-num { font-size: .72rem; font-weight: 700; color: var(--c-accent-hi); }
+.rc-title { font-weight: 700; color: var(--c-text); line-height: 1.3; }
+.rc-prev { font-size: .85rem; color: var(--c-text-2); }
+.related-dossier { margin: .9rem 0 0; font-size: .9rem; color: var(--c-text-2); }
+.related-dossier a { color: var(--c-accent-hi); font-weight: 600; text-decoration: none; }
+.related-dossier a:hover { text-decoration: underline; }
+
+/* ── Teilen-Buttons (reader.js) ────────────────────────────────── */
+.issue-share { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 1.6rem 0 .4rem; }
+.issue-share .is-l { font-size: .85rem; color: var(--c-text-2); font-weight: 600; }
+.issue-share .is-b {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 34px; height: 34px; padding: 0 10px; border-radius: 9px;
+  border: 1px solid var(--c-border); background: var(--c-card);
+  color: var(--c-accent-hi); font-weight: 700; font-size: .85rem;
+  text-decoration: none; cursor: pointer; transition: border-color .12s, transform .12s;
+}
+.issue-share .is-b:hover { border-color: var(--c-accent); transform: translateY(-1px); }
+.issue-share .is-copy.copied { border-color: var(--c-accent); }
+
+/* ── Reduced motion (a11y) ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reading-progress { transition: none; }
+  .related-card:hover, .issue-share .is-b:hover { transform: none; }
+}

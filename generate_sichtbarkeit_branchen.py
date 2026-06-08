@@ -94,7 +94,62 @@ BRANCHEN = [
                    "Café zum Arbeiten mit WLAN in [Ort]?"],
         "pain": "Gäste lassen sich von KI Empfehlungen geben — wer fehlt, verliert Tische.",
     },
+    {
+        "slug": "coaches", "kurz": "Coaches", "betrieb": "dein Coaching-Angebot",
+        "wer": "Coaches & Berater:innen", "stadt": "Business-Coach",
+        "fragen": ["Guter Business-Coach in meiner Nähe?",
+                   "Wer hilft bei beruflicher Neuorientierung?",
+                   "Coach für Führungskräfte in [Stadt]?"],
+        "pain": "Klient:innen lassen sich Coaches von KI empfehlen — wer fehlt, wird seltener gebucht.",
+    },
+    {
+        "slug": "immobilienmakler", "kurz": "Immobilienmakler", "betrieb": "dein Maklerbüro",
+        "wer": "Immobilienmakler:innen", "stadt": "Immobilienmakler",
+        "fragen": ["Guter Immobilienmakler in [Stadt]?",
+                   "Wer verkauft Wohnungen in meiner Region?",
+                   "Makler mit Erfahrung bei Erbimmobilien?"],
+        "pain": "Verkäufer:innen fragen KI nach Maklern — Sichtbarkeit dort bringt Mandate.",
+    },
+    {
+        "slug": "friseure", "kurz": "Friseure & Salons", "betrieb": "deinen Salon",
+        "wer": "Friseur:innen & Salons", "stadt": "Friseur",
+        "fragen": ["Guter Friseur in meiner Nähe?",
+                   "Wo gibt es Balayage in [Stadt]?",
+                   "Salon mit kurzfristigem Termin?"],
+        "pain": "Kund:innen lassen sich Salons von KI empfehlen — wer fehlt, verliert Termine.",
+    },
+    {
+        "slug": "fotografen", "kurz": "Fotograf:innen", "betrieb": "dein Fotostudio",
+        "wer": "Fotograf:innen", "stadt": "Hochzeitsfotograf",
+        "fragen": ["Guter Hochzeitsfotograf in [Stadt]?",
+                   "Wer macht Business-Porträts in meiner Nähe?",
+                   "Fotograf für Immobilienfotos in der Region?"],
+        "pain": "Aufträge gehen an die Namen, die die KI nennt.",
+    },
+    {
+        "slug": "architekten", "kurz": "Architekturbüros", "betrieb": "dein Büro",
+        "wer": "Architekturbüros", "stadt": "Architekt für Einfamilienhaus",
+        "fragen": ["Architekt für ein Einfamilienhaus in [Region]?",
+                   "Wer plant nachhaltige Sanierungen?",
+                   "Architekturbüro mit Erfahrung bei Umbauten?"],
+        "pain": "Bauherr:innen recherchieren per KI — dort genannt zu werden bringt Anfragen.",
+    },
+    {
+        "slug": "fitnessstudios", "kurz": "Fitnessstudios", "betrieb": "dein Studio",
+        "wer": "Fitnessstudios", "stadt": "Fitnessstudio mit Kursen",
+        "fragen": ["Gutes Fitnessstudio in meiner Nähe?",
+                   "Wo gibt es Personal Training in [Stadt]?",
+                   "Studio mit Kursen am Abend?"],
+        "pain": "Mitglieder suchen Studios per KI-Empfehlung — wer fehlt, verliert Anmeldungen.",
+    },
 ]
+
+# Sichtbarkeits-Slug -> Shop-Kit-Slug (Starter-Kit-Cross-Link) und Compliance-Slug
+KIT = {"handwerk": "handwerker", "praxen": "aerzte", "steuerberatung": "steuerberater",
+       "kanzleien": "anwaelte", "gastronomie": "gastronomie", "coaches": "coaches",
+       "immobilienmakler": "immobilienmakler", "friseure": "friseure", "fotografen": "fotografen",
+       "architekten": "architekten", "fitnessstudios": "fitnessstudios"}
+COMPLIANCE = {"praxen": "aerzte", "kanzleien": "anwaelte", "steuerberatung": "steuerberater"}
 
 CSS = """*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669}
@@ -140,6 +195,16 @@ def page(b):
     title = f"Empfiehlt ChatGPT {b['kurz']}? — KI-Sichtbarkeit für {b['wer']} · aban news"
     desc = (f"Wird {b['kurz']} von ChatGPT, Perplexity & Google AI empfohlen? "
             f"Gratis prüfen und mit dem Monitor dranbleiben — ehrlich, ohne Hype.")
+    kit = KIT.get(slug)
+    comp = COMPLIANCE.get(slug)
+    cross = ""
+    if kit or comp:
+        links = ""
+        if kit:
+            links += f'<a class="btn ghost" href="/shop.html#kit-{kit}">Starter-Kit für {e(b["kurz"])} →</a> '
+        if comp:
+            links += f'<a class="btn ghost" href="/ki-compliance-{comp}.html">KI rechtssicher nutzen →</a>'
+        cross = f'  <section><h2>Mehr für {e(b["kurz"])}</h2><p>{links}</p></section>\n'
     return f"""<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -204,9 +269,10 @@ def page(b):
       <p><a class="btn" href="/ki-sichtbarkeit-monitor.html">Monitor ansehen →</a>
          <a class="btn ghost" href="/ki-sichtbarkeit-paket.html">Komplett-Paket (29 €) →</a></p>
     </div>
-    <p class="note">Lieber selbst lesen? Das <a href="/ki-sichtbarkeit-buch.html">Buch „Von KI gefunden werden“</a> erklärt den ganzen Weg.</p>
+    <p class="note">Lieber einmal selbst durchziehen? Das <a href="/ki-sichtbarkeit-audit.html">KI-Sichtbarkeits-Audit</a> (29 € einmalig) führt dich Schritt für Schritt + 90-Tage-Plan. Oder das <a href="/ki-sichtbarkeit-buch.html">Buch „Von KI gefunden werden“</a> für den ganzen Hintergrund.</p>
   </section>
 
+{cross}
   <section>
     <h2>Ehrlich, was es ist — und was nicht</h2>
     <div class="card"><ul>
@@ -224,6 +290,7 @@ def page(b):
   <a href="/start">Alles auf einen Blick</a> ·
   <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
 </div></footer>
+<script defer src="/js/assistant.js"></script>
 </body>
 </html>
 """
@@ -240,7 +307,7 @@ def hub():
     <p><a class="btn" href="/ki-erwaehnungs-check.html">Jetzt gratis prüfen →</a></p>
   </section>
   <section>{cards}</section>
-  <section><p class="note">Mehr: <a href="/ki-sichtbarkeit-monitor.html">Monitor (9 €/M)</a> · <a href="/ki-sichtbarkeit-paket.html">Komplett-Paket (29 €)</a> · <a href="/ki-sichtbarkeit-buch.html">Buch</a></p></section>"""
+  <section><p class="note">Mehr: <a href="/ki-sichtbarkeit-audit.html">Audit (29 € einmalig)</a> · <a href="/ki-sichtbarkeit-monitor.html">Monitor (9 €/M)</a> · <a href="/ki-sichtbarkeit-paket.html">Komplett-Paket (29 €)</a> · <a href="/ki-sichtbarkeit-buch.html">Buch</a></p></section>"""
     title = "Wirst du von KI empfohlen? — KI-Sichtbarkeit für lokale Betriebe · aban news"
     desc = "Prüf gratis, ob ChatGPT, Perplexity & Google AI deinen Betrieb empfehlen — und bleib mit dem Monitor dran. Für Handwerk, Praxen, Kanzleien, Steuer & Gastronomie."
     # gleiche Shell wie page(): minimaler Wrapper
@@ -262,6 +329,7 @@ def hub():
 </div></main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
 <a href="/start">Alles auf einen Blick</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script defer src="/js/assistant.js"></script>
 </body></html>
 """
 
