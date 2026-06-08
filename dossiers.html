@@ -16,7 +16,9 @@
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="aban news" href="/archive.rss">
-
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start"}, {"@type": "ListItem", "position": 2, "name": "Themen-Dossiers", "item": "https://abannews.com/dossiers.html"}]}
+</script>
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff}
 @media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19}}
@@ -61,6 +63,22 @@ section{padding:14px 0}h2{font-size:1.25rem;margin:18px 0 10px}
 .dcard p{color:var(--muted);font-size:.9rem}.dcard .n{color:var(--amber-dk);font-weight:700;font-size:.82rem;margin-top:.5rem}
 .buybox{background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:22px;text-align:center;margin:20px 0}
 .note{font-size:.85rem;color:var(--muted);margin-top:10px}
+.faq{margin:8px 0}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:2px 16px;margin:10px 0}
+.faq details[open]{border-color:var(--amber-lt)}
+.faq summary{cursor:pointer;font-weight:700;padding:13px 0;list-style:none;color:var(--ink);display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--amber-dk);font-weight:800;font-size:1.2rem}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--ink2);padding:0 0 14px;margin:0}
+.reading-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;background:var(--amber-dk);transform:scaleX(0);transform-origin:0 50%;transition:transform .08s linear;will-change:transform}
+.to-top{position:fixed;right:18px;bottom:18px;z-index:55;width:44px;height:44px;border-radius:50%;border:1px solid var(--amber-lt);background:var(--card);color:var(--amber-dk);font-size:1.3rem;line-height:1;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.to-top.show{opacity:1;pointer-events:auto}
+.route li.read{opacity:.62}
+.route .mark{display:inline-flex;align-items:center;gap:.3rem;margin-top:.5rem;font-size:.8rem;color:var(--muted);cursor:pointer;user-select:none;background:none;border:0;padding:0}
+.route .mark:hover{color:var(--amber-dk)}
+.route li.read .mark{color:var(--amber-dk);font-weight:700}
+.read-counter{font-size:.82rem;color:var(--muted);margin:.2rem 0 0}
 footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
 footer a{color:var(--muted)}</style>
 </head>
@@ -91,6 +109,7 @@ footer a{color:var(--muted)}</style>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
 <a href="/dossiers.html">Themen-Dossiers</a> · <a href="/archive/">Archiv</a> ·
 <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script defer src="/js/dossier.js"></script>
 <script defer src="/js/assistant.js"></script>
 </body>
 </html>

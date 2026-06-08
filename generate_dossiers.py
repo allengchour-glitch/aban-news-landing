@@ -137,6 +137,42 @@ DEEPDIVES = {
 """,
 }
 
+# --- FAQ je Dossier (ehrlich, immergültig → FAQPage-Schema + sichtbarer Block) -
+FAQS = {
+"ki-werkzeugkasten": [
+    ("Welche KI-Tools lohnen sich wirklich?",
+     "Die wenigen, die ein echtes, wiederkehrendes Problem von dir lösen und mehr Zeit sparen, als sie kosten. Faustregel: ein Tool, das du täglich nutzt, schlägt zehn ausprobierte. Teste 14 Tage an echter Arbeit, nicht an der Demo."),
+    ("Wie teste ich ein KI-Tool seriös?",
+     "Parallel zu deiner bisherigen Methode, an einem echten Projekt, zwei Wochen lang. Notiere, wo es Zeit gespart hat und wo du nacharbeiten musstest. Danach entscheidet die Notiz, nicht das erste Wow."),
+    ("Worauf muss ich bei Tools im DACH-Raum besonders achten?",
+     "Wo die Daten verarbeitet werden (EU oder Drittland), ob es eine Auftragsverarbeitung gibt und wie groß der Lock-in ist. Mehr dazu im Datenschutz-Dossier."),
+],
+"ki-datenschutz-dach": [
+    ("Darf ich Kundendaten in ein KI-Tool eingeben?",
+     "In der Regel nicht ungeprüft. Klar- und Personennamen, Vertragsinhalte und besonders geschützte Daten gehören nicht ungefiltert in öffentliche Tools. Pseudonymisiere oder kläre vorher Auftragsverarbeitung und Verarbeitungsort. Das ist keine Rechtsberatung."),
+    ("Was ist eine Auftragsverarbeitung (AVV)?",
+     "Ein Vertrag, der regelt, wie ein Dienstleister personenbezogene Daten in deinem Auftrag verarbeitet. Seriöse Anbieter stellen ihn bereit; fehlt er, ist das ein Warnsignal."),
+    ("Betrifft mich der EU AI Act als Solo-Selbstständige:r?",
+     "Meist nur leicht: Texte entwerfen oder zusammenfassen ist gering reguliert. Transparenz, wo nötig, und der Datenschutz darunter bleiben aber deine Pflicht."),
+],
+"ki-prompts-die-funktionieren": [
+    ("Warum funktionieren meine Prompts nicht?",
+     "Meist fehlt Kontext oder ein klares Format, nicht das richtige Zauberwort. Gib Rolle, Kontext, eine präzise Aufgabe, das gewünschte Format und idealerweise ein Beispiel."),
+    ("Bringen „Du bist ein Experte\"-Prompts etwas?",
+     "Selten den entscheidenden Unterschied. Struktur und Iteration schlagen Magie-Formeln. Ein einziges Beispiel deines Wunschstils hilft oft mehr als drei Absätze Anweisung."),
+    ("Soll ich fertige Prompt-Sammlungen kaufen?",
+     "Selten nötig. Eine eigene Bibliothek aus Prompts, die bei dir nachweislich funktioniert haben, ist nach wenigen Wochen wertvoller als jede fremde „1000 Prompts\"-Liste."),
+],
+"anti-hype-reality-checks": [
+    ("Wie erkenne ich KI-Hype?",
+     "Fünf Fragen: Wer profitiert von der Behauptung? Demo oder Produktion? Cherry-picked? Reproduzierbar? Was kostet es wirklich, inklusive deiner Zeit? So trennst du in 60 Sekunden Substanz von Marketing."),
+    ("Kann ich KI-Benchmarks trauen?",
+     "Mit Vorsicht. Zahlen sind oft auf den Test optimiert. Frag: Wer hat gemessen, gegen was, unter welchen Bedingungen — und passt das zu deinem Anwendungsfall?"),
+    ("Ist Skepsis nicht einfach Pessimismus?",
+     "Nein. Es geht darum, Aufmerksamkeit und Geld für das aufzuheben, was sich wirklich bewährt — statt jeder Schlagzeile hinterherzulaufen."),
+],
+}
+
 CSS = """*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff}
 @media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19}}
@@ -181,6 +217,22 @@ section{padding:14px 0}h2{font-size:1.25rem;margin:18px 0 10px}
 .dcard p{color:var(--muted);font-size:.9rem}.dcard .n{color:var(--amber-dk);font-weight:700;font-size:.82rem;margin-top:.5rem}
 .buybox{background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:22px;text-align:center;margin:20px 0}
 .note{font-size:.85rem;color:var(--muted);margin-top:10px}
+.faq{margin:8px 0}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:2px 16px;margin:10px 0}
+.faq details[open]{border-color:var(--amber-lt)}
+.faq summary{cursor:pointer;font-weight:700;padding:13px 0;list-style:none;color:var(--ink);display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--amber-dk);font-weight:800;font-size:1.2rem}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--ink2);padding:0 0 14px;margin:0}
+.reading-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;background:var(--amber-dk);transform:scaleX(0);transform-origin:0 50%;transition:transform .08s linear;will-change:transform}
+.to-top{position:fixed;right:18px;bottom:18px;z-index:55;width:44px;height:44px;border-radius:50%;border:1px solid var(--amber-lt);background:var(--card);color:var(--amber-dk);font-size:1.3rem;line-height:1;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.to-top.show{opacity:1;pointer-events:auto}
+.route li.read{opacity:.62}
+.route .mark{display:inline-flex;align-items:center;gap:.3rem;margin-top:.5rem;font-size:.8rem;color:var(--muted);cursor:pointer;user-select:none;background:none;border:0;padding:0}
+.route .mark:hover{color:var(--amber-dk)}
+.route li.read .mark{color:var(--amber-dk);font-weight:700}
+.read-counter{font-size:.82rem;color:var(--muted);margin:.2rem 0 0}
 footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
 footer a{color:var(--muted)}"""
 
@@ -217,6 +269,7 @@ __BODY__
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
 <a href="/dossiers.html">Themen-Dossiers</a> · <a href="/archive/">Archiv</a> ·
 <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script defer src="/js/dossier.js"></script>
 <script defer src="/js/assistant.js"></script>
 </body>
 </html>
@@ -305,6 +358,14 @@ def ld(obj):
     return '<script type="application/ld+json">\n' + json.dumps(obj, ensure_ascii=False) + '\n</script>'
 
 
+def breadcrumb(trail):
+    return ld({"@context": "https://schema.org", "@type": "BreadcrumbList",
+               "itemListElement": [
+                   {"@type": "ListItem", "position": i + 1, "name": name,
+                    **({"item": "https://abannews.com/" + url} if url else {})}
+                   for i, (name, url) in enumerate(trail)]})
+
+
 def render_dossier(dos, issues):
     members = [it for it in issues if it["kind"] == "ausgabe" and (set(it["topics"]) & dos["topics"])]
     members.sort(key=lambda x: x["date"])  # chronologisch = Leseroute
@@ -317,10 +378,11 @@ def render_dossier(dos, issues):
     for i, it in enumerate(members):
         start = '<span class="start">Start hier</span>' if i == 0 else ""
         route.append(
-            f'<li><div class="d">Ausgabe {e(it["num"])} · {e(it["nice"] or it["date"])}'
+            f'<li data-url="{e(it["url"])}"><div class="d">Ausgabe {e(it["num"])} · {e(it["nice"] or it["date"])}'
             f'{" · " + str(it["mins"]) + " Min" if it["mins"] else ""}</div>'
             f'<div class="t"><a href="{e(it["url"])}">{e(it["title"])}</a>{start}</div>'
-            f'<div class="p">{e(it["preview"])}</div></li>')
+            f'<div class="p">{e(it["preview"])}</div>'
+            f'<button type="button" class="mark" aria-pressed="false">○ als gelesen markieren</button></li>')
 
     others = "".join(
         f'<a class="dcard" href="/dossier/{e(o["slug"])}.html"><span class="em">{o["emoji"]}</span>'
@@ -333,6 +395,17 @@ def render_dossier(dos, issues):
                         {"@type": "ListItem", "position": i + 1,
                          "url": "https://abannews.com" + it["url"], "name": it["title"]}
                         for i, it in enumerate(members)]})
+    faqs = FAQS.get(dos["slug"], [])
+    faq_html = "".join(
+        f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in faqs)
+    faq_section = (f'<section><h2>Häufige Fragen</h2><div class="faq">{faq_html}</div></section>'
+                   if faqs else "")
+    faq_ld = ld({"@context": "https://schema.org", "@type": "FAQPage",
+                 "mainEntity": [{"@type": "Question", "name": q,
+                                 "acceptedAnswer": {"@type": "Answer", "text": a}}
+                                for q, a in faqs]}) if faqs else ""
+    crumb_ld = breadcrumb([("Start", ""), ("Themen-Dossiers", "dossiers.html"),
+                           (dos["title"], canon)])
 
     body = f"""<nav class="crumbs"><a href="/">Start</a> › <a href="/dossiers.html">Dossiers</a> › {e(dos['title'])}</nav>
   <section class="hero">
@@ -356,6 +429,7 @@ def render_dossier(dos, issues):
       <p class="note">Jederzeit kündbar · kein Tracking · kein Spam.</p>
     </div>
   </section>
+  {faq_section}
   <section>
     <h2>Weitere Dossiers</h2>
     <div class="grid">{others}</div>
@@ -365,7 +439,7 @@ def render_dossier(dos, issues):
     page = (SHELL.replace("__TITLE__", e(f"{dos['title']} — Themen-Dossier · aban news"))
             .replace("__OGT__", e(f"{dos['title']} — Themen-Dossier"))
             .replace("__DESC__", e(desc)).replace("__CANON__", canon)
-            .replace("__OGIMG__", ogimg).replace("__LD__", item_list)
+            .replace("__OGIMG__", ogimg).replace("__LD__", item_list + faq_ld + crumb_ld)
             .replace("__CSS__", CSS).replace("__BODY__", body))
     os.makedirs(os.path.join(ROOT, "dossier"), exist_ok=True)
     open(os.path.join(ROOT, "dossier", f"{dos['slug']}.html"), "w", encoding="utf-8").write(page)
@@ -400,7 +474,8 @@ def render_index(issues, counts):
             .replace("__OGT__", "Themen-Dossiers — der KI-Newsletter vertieft")
             .replace("__DESC__", "Echte aban-news-Ausgaben, zu vertieften Themen-Leserouten gebündelt: Werkzeugkasten, Datenschutz im DACH-Raum, Prompts, Anti-Hype.")
             .replace("__CANON__", "dossiers.html").replace("__OGIMG__", "og-dossiers.png")
-            .replace("__LD__", "").replace("__CSS__", CSS).replace("__BODY__", body))
+            .replace("__LD__", breadcrumb([("Start", ""), ("Themen-Dossiers", "dossiers.html")]))
+            .replace("__CSS__", CSS).replace("__BODY__", body))
     open(os.path.join(ROOT, "dossiers.html"), "w", encoding="utf-8").write(page)
     og(os.path.join(ROOT, "og-dossiers.png"), "THEMEN-DOSSIERS", "Der Newsletter, vertieft")
 
