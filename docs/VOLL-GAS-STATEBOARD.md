@@ -16,10 +16,31 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 
 - **2026-06-06 Homepage-Redesign LIVE:** `index.html` auf Brevo/Mailchimp-Stil umgestellt (Gradient-Hero+Highlight, Mail-Mock, große Pill-CTAs, ehrliche Stats-Band ohne Fake-Zahlen, Feature-Cards, How-it-works-Schritte, dunkles CTA-Band, 4-spaltiger Footer). Signup/Consent/Double-Opt-in/Schema beibehalten, anti-hype, kein Fake-Social-Proof. **CI-Hinweis:** GitHub-Actions-Deploy `wrangler … --project-name=radar` scheitert an CLOUDFLARE_API_TOKEN (Auth 10000) — pre-existing Infra-/Secret-Problem, betrifft alle Commits, Live-Deploy läuft über Cloudflare-Git-Integration. User-To-do: Token mit Pages:Edit neu setzen.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **289 live, alle viersprachig (de/en/fr/it = 1156 Seiten)**
+## 🛠️ KI-Werkzeug (`ki-werkzeug.html`) — Handoff für nächste Session
 
-> **⏸️ PAUSE (User, 2026-06-08): Hub-Bau ruht bis nächste Woche.** Rest grob ~15–20% des
-> DACH-Branchenkatalogs. Loop läuft sonst Welle für Welle (3 Branchen × 4 Sprachen + OG/Sitemap/Stateboard,
+- **Stand:** live (PR #477), **nur DE**, **Demo** — Texte-Generator (Produkttext/Social/Bewertungs-Antwort/E-Mail)
+  + KI-Fahrplan; Entwürfe entstehen aus **Vorlagen im Browser** (kein Upload). Verlinkt aus `online-tools.html`
+  + in `sitemap.xml`. 3-Schritt-Anleitung + 5er-FAQ (sichtbar==JSON-LD) sind drauf.
+- **Phase-2-Schalter im JS** (oben in `ki-werkzeug.html`): `AI_ENDPOINT` (echte KI über Cloudflare-Worker, API-Key
+  serverseitig verstecken) · `STRIPE_PRO_LINK` (echter Checkout) · `FREE_TEXT_LIMIT=5` · `FREE_PLAN_LIMIT=1`.
+- **Offene Folge-Schritte (vom User gewünscht, Entscheidungen teils offen):**
+  1. **Funnel:** `/ki-werkzeug.html`-Button in den `data-aban-tools-cta`-Asides der Hubs. Reuse **idempotentes**
+     `tools/add_branchen_funnel.py` (+ `make funnel`); pflegt aktuell **DE+EN**, **FR/IT müssen ergänzt** werden.
+     User-Tendenz: „verlinke die Themen" → wollte Funnel; Frage „nur DE vs. alle 4 Sprachen" war **offen**
+     (Tool ist deutsch → DE-Hubs sind die saubere UX). Vor Bulk-Edit: `git fetch`, idempotenz prüfen.
+  2. **Hilfe/Bilder:** ausführlichere Anleitung + Hilfe/FAQ-Footer-Link gewünscht; Site nutzt **keine Screenshots**
+     (für Grafik Pillow wie `generate_tools_og.py`). Mit/ohne Erklär-Bild war **offen**.
+  3. **Kosten-Limit:** User-Sorge „wenn zu viel benutzen → Kosten". Client-Limit (5/Tag) reicht NICHT gegen
+     Missbrauch der echten KI → in Phase 2 **serverseitig** im Worker kappen (z. B. Pro fair-use ~100/Tag +
+     Monats-Kostenbremse). Im Plan vermerkt.
+  4. **Preis:** „CHF 9/Monat" ist **Platzhalter** (JSON-LD + Anzeige) — User sagte „9 ok", aber **bestätigen**.
+  5. Optional: EN/FR/IT-Versionen der Tool-Seite.
+- **Voller Plan:** `~/.claude/plans/verlinke-die-themen-am-nifty-swan.md`.
+
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **292 live, alle viersprachig (de/en/fr/it = 1168 Seiten)**
+
+> **▶️ LÄUFT WIEDER (User, 2026-06-08): „fahre mit Wellen weiter".** Rest grob ~15–20% des
+> DACH-Branchenkatalogs. (Frühere Pause aufgehoben.) Loop läuft sonst Welle für Welle (3 Branchen × 4 Sprachen + OG/Sitemap/Stateboard,
 > PR direkt non-draft + REST-Squash-Merge). **Beim Wiederaufnehmen Slugs IMMER zuerst gegen aktuelles `main`
 > prüfen** (eine Parallel-Session baut mit). **Kuratierte freie & saubere Kandidaten für nächste Welle(n):**
 > `zeitschriftenhandel` (Presse/Kiosk), `drogerie` (Retail, keine Heil-/Gesundheitsversprechen),
@@ -87,6 +108,7 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
 - Welle 60 (245→248, #369): Wintergartenbau, Terrassenüberdachung, Balkonbau — **direkt viersprachig** (alle Statik-/Lasten-/Baurecht-Grenze; Balkon zusätzlich Absturzsicherung/Geländer-Norm). 1 Agent fiel mit transientem API-500 aus → neu gestartet. `git push -u origin HEAD` verhinderte erneute Branch-Umbenennung.
 - Welle 61 (248→251): Natursteinarbeiten, Holzterrassenbau, Reetdachdecker — **direkt viersprachig** (Naturstein Stein-/Untergrund-/Eignungs-Grenze, Holzterrasse Unterkonstruktions-/Entwässerungs-Grenze, Reetdach Brandschutz-[Reet brennbar]/Höhen-Arbeitssicherheit-Grenze). **>1000 i18n-Seiten erreicht.**
 - Welle 62 (251→254): Zimmerei, Gewächshausbau, Gabionenbau — **direkt viersprachig** (alle Statik-/Tragwerks-/Baurecht-Grenze; Zimmerei zusätzlich Holzschutz/Brandschutz, Gabionen Stützmauer-Statik). Stand ~75 % eines vollständigen DACH-Branchen-Katalogs.
+- Welle 72 (289→292): Zeitschriftenhandel, Drogerie, Tabakwaren — **direkt viersprachig** (distinkte Retail-Familien, alle mit Recht-/Jugendschutz-Grenzen. Zeitschriftenhandel/Kiosk: regulierte Waren [Tabak/Alkohol/Lotto, ab 18] + Werbeverbote → keine KI-Werbung, Remission/Abrechnung beim Inhaber; Drogerie [≠ Apotheke/Reformhaus]: keine Gesundheits-/Hautberatung + keine Heil-/Wirkversprechen [HCVO/EU-KosmetikVO], INCI/LMIV; Tabakwaren SEHR sensibel: gesetzliches **Tabakwerbeverbot** [TabakerzG/EU] → KI nur für interne/organisatorische + produktneutrale Texte, Jugendschutz/Tabaksteuer/Pflichthinweise beim Inhaber). Slugs vor Bau gegen aktuelles `main` geprüft; tabakwaren-Agent 1× „API Overloaded" → neu gestartet.
 - Welle 71 (286→289): Haushaltswaren, Schädlingsbekämpfung, Gravurservice — **direkt viersprachig** (distinkte Familien: Retail/Service/Personalisierung. Haushaltswaren keine Produktberatung-Ersatz + Lebensmittelkontakt-/Eignungs-Hinweise [Induktion/Spülmaschine] prüfen; Schädlingsbekämpfung SEHR sensibel: keine Ferndiagnose + keine Biozid-Dosierungs-Anleitung für Laien [sachkunde-/genehmigungspflichtig], Biozidrecht/Gefahrstoffe/Doku; Gravurservice keine Rechteprüfung an Logos/Marken/Wappen [liegt bei Kund:in] + keine Material-/Maschinen-Eignung + Korrektur-vor-Gravur-Pflicht; distinkt von Graveur-Kunsthandwerk). **Lehre:** Prep (OG/Sitemap/Stateboard) ging beim Rebase nach Agent-Session-Limit-Neustart verloren → nach Recovery neu erzeugt. Slugs vor Bau gegen aktuelles `main` geprüft.
 - Welle 70 (283→286): Schuhmacherei, Schlüsseldienst, Rahmenwerkstatt — **direkt viersprachig** (distinkte Service/Handwerk-Familien. Schuhmacherei keine Reparatur-Ferndiagnose/Machbarkeits-Fernzusage + materialabhängige Pflege; Schlüsseldienst SEHR sensibel: keine Türöffnungs-Anleitung/keine Hilfe für Unbefugte [Berechtigungsnachweis vor Ort], keine Sicherheits-/Einbruchschutz-Fernbewertung, Festpreis-Transparenz gegen Abzock-Ruf; Rahmenwerkstatt kein gestalterisches-Auge-Ersatz + konservatorisches Fachwissen bei wertvollen Originalen [säurefrei/UV/reversibel]). Slugs vor Bau gegen aktuelles `main` geprüft.
 - Welle 69 (280→283): Lederwaren, Brautmodengeschäft, Weltladen — **direkt viersprachig** (distinkte Familien: Lederwaren-Retail/Brautmode-Termin/Fairtrade-Mission. Lederwaren keine Material-/Echtheits-/Qualitätsbeurteilung [echtes Leder am Stück, „echt vs. Kunstleder" korrekt auszeichnen]; Brautmodengeschäft keine Stilberatung-/Anprobe-/Änderungsschneiderei-Ersatz [emotional, terminbasiert]; Weltladen keine Fairtrade-/Siegel-/Lieferketten-Prüfung per KI [Greenwashing-/Irreführungsrisiko, gegen Importeur/Siegelgeber prüfen] + LMIV). Slugs vor Bau gegen aktuelles `main` geprüft.
