@@ -46,6 +46,8 @@
   **Abgelehnt:** Tiered-Party-Mini CJLY2924170 (sehr kurz/clubby, off-brand premium), Clip-Ohrringe CJLX2924392
   („Gu Xiang Li"-Wasserzeichen), Car-Clock CJYD2923711 (0.69$, off-theme Auto), + 3 Dubletten (Suede-Skirt, Herren-Set,
   «Fleur Noir»-Kleid). cj-real: 206 → **207.**
+- **✅ Charge 21 (Herren, alter Key):** Herren-Sneaker «Marco» Leder-Optik Retro-Trainer (2 Farben×7=14 Var, 54.90, herren-mode/schuhe). Live in 6 Kanälen, Media READY, SEO. **Abgelehnt:** Herren-Denim-Jacke CJXZ2921540 (Ärmel-Muster ähnelt Goyard-Y-Weave → IP-Risiko §5), Muscle-Athletic-Shorts CJDK2922573 (522px low-res + off-brand Pfoten-Logo + 64 Var), + Dubletten (Herren-Set). Damit Herren-Auswahl: Jeans «Heritage», Henley «Waffle», Hemd «Lido», Sneaker «Marco». cj-real: 219 → **220.**
+- **✅ Charge 20 (Schuhe, alter Key):** Plateau-Sneaker «Cloud» Spitzen-Mesh (2 Farben×6, 39.90) + Mary-Jane-Ballerina «Dolce» Lack (2 Farben×7, 34.90) + Mule-Sandalette «Nodo» drapiert (2 Farben×6, 39.90). Alle Damen-Schuhe, live in 6 Kanälen, Media READY, SEO. **Herren-Schuhe/-Mode:** CJ-Suche lieferte mit Sneaker/Loafer/Polo/Bomber-Keywords kaum Brauchbares → separate Herren-Runde folgt. cj-real: 216 → **219.**
 - **✅ Charge 19 (Mode/Schuhe, alter Key):** Sommer-Playsuit «Marigold» Blüten-Print (5 Grössen, 29.90, damen-mode/
   sommer) + Plateau-Pumps «Wild» Leoparden-Print mit Knöchelriemen (2 Farben×8 Grössen=16 Var, 44.90, schuhe/sommer).
   Beide live in 6 Kanälen, Media READY, SEO. **Abgelehnt:** Washed-Denim-Kleid CJLY2925841 (alle Bilder ~426px, low-res),
