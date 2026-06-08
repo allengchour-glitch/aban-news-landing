@@ -49,6 +49,16 @@
   POD = eigene Designs, Faire = Freigabe-API, DSers = App-UI.)
 - **⚠️ Fulfillment-To-do (User):** Die 6 neuen Mode-Produkte sind ACTIVE & verkäuflich, aber CJ muss die SKUs
   noch in der CJ/DSers-App zu Aufträgen mappen (Connect-Store). Beim ersten Verkauf prüfen.
+- **✅ Charge 3 (Schmuck/Accessoires, alter Key):** Perlen-Anhänger «Coquille» `15421167042945` (2 Var, 24.90) +
+  Baskenmütze «Riviera» `15421167075713` (4 Var, 19.90) + Geburtsstein-Armband «Pois» `15421167108481`
+  (18 Var, 24.90) — live in 6 Kanälen. Abgelehnt: Gothic-Skelett-Charm (off-brand), WM-Flaggen-Schal
+  (Lizenz+69 Var), Pet-Rucksack (off-theme), Collar-Mikrofon (off-theme/1 Bild). cj-real: 179 → **182**.
+- **✨ „Alleskönner"-Hub-Seite gebaut (live):** Seite `/pages/entdecken` (`Page/698444808577`) bündelt alle
+  Kategorien + Selbst-gestalten + Bestseller/Neu/Sommer/Sale. Als **erster Menüpunkt „✨ Entdecken"** ins
+  Hauptmenü (jetzt 10 Einträge, keiner verloren).
+- **🔑 Gemini-Key gesucht (User-Wunsch):** NICHT im Repo (keine Service-Account-JSON/.env mit echten Werten);
+  `GEMINI_API_KEY`/`GCP_SA_KEY` existieren nur als GitHub-Secrets → in der interaktiven Session nicht nutzbar.
+  Für KI-Designs: User pastet Key ODER Generierung via GitHub-Action.
 - **🎨 Printful „Selbst gestalten" — Gerüst gebaut (live):** Neue **Menü-Leiste „🎨 Selbst gestalten"** (Pos. 2 im
   Hauptmenü) → **Landingpage `/pages/selbst-gestalten`** (`Page/698444710273`): funktionierendes **Wunsch-Design-
   Angebot** (Kunde schickt Idee/Logo per Kontakt → Vorschau → on-demand-Druck), funktioniert OHNE App.
