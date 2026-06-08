@@ -49,6 +49,13 @@
   POD = eigene Designs, Faire = Freigabe-API, DSers = App-UI.)
 - **⚠️ Fulfillment-To-do (User):** Die 6 neuen Mode-Produkte sind ACTIVE & verkäuflich, aber CJ muss die SKUs
   noch in der CJ/DSers-App zu Aufträgen mappen (Connect-Store). Beim ersten Verkauf prüfen.
+- **🎨 Printful „Selbst gestalten" — Gerüst gebaut (live):** Neue **Menü-Leiste „🎨 Selbst gestalten"** (Pos. 2 im
+  Hauptmenü) → **Landingpage `/pages/selbst-gestalten`** (`Page/698444710273`): funktionierendes **Wunsch-Design-
+  Angebot** (Kunde schickt Idee/Logo per Kontakt → Vorschau → on-demand-Druck), funktioniert OHNE App.
+  ⚠️ **Wahrheit dokumentiert:** Printful = leere Rohlinge (kein fertiger Foto-Katalog wie CJ). Echtes
+  **Kunden-Selbst-Design** (Live-Canvas) braucht eine **Customizer-App** (Kickflip/Teeinblue/Zakeke) + Printful-
+  App — vom User zu installieren. **KI-Designs via Gemini** NICHT in Session möglich (`GEMINI_API_KEY`/`GCP_SA_KEY`
+  leer; nur als Repo-Secrets). Printful-API erreichbar (HTTP 200). User-Token im Chat geteilt → rotieren.
 - **🔴 Kernproblem unverändert:** Engpass bleibt Reichweite (3 User-Klicks §10: AGB-Domain, Pixel, Kampagne+Budget),
   nicht Katalog/Funnel. Autonom getan, was ohne CJ-Creds/Werbekonto geht.
 
