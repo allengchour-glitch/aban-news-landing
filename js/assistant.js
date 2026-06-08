@@ -101,14 +101,31 @@
           '<a href="/start" style="color:' + A + ';font-weight:700">Überblick</a> hilft.');
         return;
       }
-      scored.slice(0, 3).forEach(function (p) {
-        var it = p[1], ext = /^https?:|^mailto:/.test(it.url), tgt = ext ? ' target="_blank" rel="noopener"' : "";
+      var top = scored.slice(0, 4).map(function (p) { return p[1]; });
+      // Platzhalter für die (optionale) KI-Antwort — erscheint ueber den Quellen
+      var think = el("div", { class: "aban-msg" });
+      think.innerHTML = '<em style="color:' + MUT + '">Aban schaut nach …</em>';
+      body.appendChild(think);
+      // Quellen-Karten
+      top.slice(0, 3).forEach(function (it) {
+        var ext = /^https?:|^mailto:/.test(it.url), tgt = ext ? ' target="_blank" rel="noopener"' : "";
         var c = el("div", { class: "aban-a" });
         c.innerHTML = '<div class="t">' + esc(it.q) + "</div><p>" + esc(it.a || "") + "</p>" +
           '<a href="' + it.url + '"' + tgt + ">Ansehen →</a>";
         body.appendChild(c);
       });
       body.scrollTop = body.scrollHeight;
+      // Optional: echter LLM-Modus (nur wenn /api/chat + Key aktiv); sonst sauber zurueck
+      fetch("/api/chat", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ q: q, context: top.map(function (it) { return { q: it.q, a: it.a, url: it.url }; }) })
+      }).then(function (r) { if (!r.ok) throw 0; return r.json(); })
+        .then(function (d) {
+          if (d && d.answer) { think.innerHTML = '<b>Aban:</b> ' + esc(d.answer); }
+          else { think.parentNode && think.parentNode.removeChild(think); }
+          body.scrollTop = body.scrollHeight;
+        })
+        .catch(function () { think.parentNode && think.parentNode.removeChild(think); });
     });
   }
 

@@ -27,6 +27,12 @@ Ich: `abanctl wire-affiliate ki-tools-radar <tool> <link>` → live.
 dash → Pages → Connect Git → Build `cd webbaukasten-radar && python generate.py`,
 Output `webbaukasten-radar/dist`, Domain `webbaukasten.abannews.com`.
 
+## 🟢 6. (optional) Echter KI-Chat auf der Seite (~1 Min)
+Der „Frag aban"-Assistent läuft schon kostenlos (Index-Suche). Für **natürlichsprachige
+Antworten**: `ANTHROPIC_API_KEY` als Repo-Secret setzen (nutzt schon `ki-erwaehnung.js`).
+Dann schaltet `/api/chat` automatisch den LLM-Modus frei (geerdet auf Abans Inhalten,
+~Cent/Chat). Kein Key = Gratis-Suchmodus bleibt.
+
 ---
 **Schon erledigt (musst du nicht):** ElevenLabs (`XI`) + Pexels-Secrets gesetzt → Reels rendern
 mit Stimme + Footage. Gumroad-Datensatz + Buch + Premium + 5 Starter-Kits sind live verdrahtet.
