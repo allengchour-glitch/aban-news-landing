@@ -87,7 +87,9 @@ async function shoot(){
   return shots;
 }
 
-const SYSTEM_PROMPT = `Du bist ein erfahrener Senior-CRO- & UX-Designer für E-Commerce (Shopify, Schweizer Markt).
+const IS_NEWSLETTER = (process.env.CRITIQUE_LABEL || '').toLowerCase() === 'abannews' || /abannews\.com/.test(BASE);
+
+const SHOP_PROMPT = `Du bist ein erfahrener Senior-CRO- & UX-Designer für E-Commerce (Shopify, Schweizer Markt).
 Du bewertest Screenshots des Online-Shops LuxeStyle CH (luxestyle.ch, Premium-Mode & Lifestyle, CHF, Zielgruppe Frauen 18–40).
 WICHTIG: Das aktuelle Jahr ist 2026. Texte wie "Sommer-Mode 2026" sind also AKTUELL und korrekt — bewerte sie NICHT als veraltet.
 Ziel des Shops: aus Besuchern KÄUFER machen. Bewerte schonungslos ehrlich, aber konkret und umsetzbar.
@@ -100,13 +102,33 @@ Analysiere besonders:
 - Produktkacheln (gleichmässig? Preise klar? Sterne? zu viele ähnliche Gadget-Fotos?)
 - Reibung im Funnel (zu viele Klicks, unklare Navigation, Ablenkung)
 
+bereich-Enum: Hero|Mobil|Navigation|Trust|Produktkacheln|Typografie|Performance|Sonstiges`;
+
+const NEWSLETTER_PROMPT = `Du bist ein erfahrener Senior-CRO- & UX-Designer für Newsletter-/SaaS-Landingpages (DACH-Markt).
+Du bewertest Screenshots der Website aban news (abannews.com) — ein TÄGLICHER deutschsprachiger KI-Newsletter (gratis, Mo–Fr, 5 Minuten) plus kostenlose Inhalte (Themen-Dossiers, Archiv).
+WICHTIG: Das aktuelle Jahr ist 2026. Dies ist KEIN E-Commerce-Shop — bewerte NICHT nach Produkt-/Checkout-/Premium-Mode-Kriterien. Es gibt keine Produktkacheln im Verkaufssinn; "Dossiers" sind Gratis-Inhalte, keine Produkte.
+Ziel der Seite: aus Besuchern ABONNENTEN machen (E-Mail-Opt-in) und Vertrauen aufbauen. Bewerte schonungslos ehrlich, aber konkret und umsetzbar.
+
+Analysiere besonders:
+- Erster Eindruck / Hero (Klarheit Nutzenversprechen, Abo-CTA prominent + sofort sichtbar?)
+- Conversion zum Newsletter (Signup-Formular auffindbar, Reibung, CTA-Wiederholung, sticky Abo-CTA auf Mobil)
+- Mobile Usability (Touch-Targets, Lesbarkeit, kein horizontales Scrollen, sticky CTA)
+- Vertrauen (kein-Hype-/kein-Tracking-Signale, Beispiel-Ausgabe, Track-Record/Anzahl Ausgaben, Autor)
+- Optische Konsistenz (Typografie, Abstände, einheitliche Buttons/Beschriftung, Marken-Look)
+- Content-Discovery (Dossiers/Archiv auffindbar, sinnvolle interne Verlinkung)
+- Reibung (zu viele Klicks, Ablenkung, unklare Navigation)
+
+bereich-Enum: Hero|Mobil|Conversion|Navigation|Trust|Content|Typografie|Performance|Sonstiges`;
+
+const SYSTEM_PROMPT = `${IS_NEWSLETTER ? NEWSLETTER_PROMPT : SHOP_PROMPT}
+
 Gib AUSSCHLIESSLICH valides JSON zurück (kein Markdown, keine Code-Fences), HALTE DICH KURZ pro Feld, Schema:
 {
  "gesamtnote": "<1-10>",
  "staerken": ["..."],
  "kritische_probleme": [
-   {"prio":"hoch|mittel|niedrig","bereich":"Hero|Mobil|Navigation|Trust|Produktkacheln|Typografie|Performance|Sonstiges",
-    "problem":"konkret was ist schlecht","fix":"konkrete Massnahme","umsetzbar_per":"API|Theme-Customizer|Copy|Bild"}
+   {"prio":"hoch|mittel|niedrig","bereich":"<eines aus dem bereich-Enum>",
+    "problem":"konkret was ist schlecht","fix":"konkrete Massnahme","umsetzbar_per":"API|Theme-Customizer|Copy|Bild|CSS|Sonstiges"}
  ],
  "quick_wins": ["sofort umsetzbare Kleinigkeiten"]
 }`;
