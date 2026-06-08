@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """tools/add_en_hub_breadcrumbs.py — fügt BreadcrumbList-JSON-LD in alle
-en/ki-fuer-*.html ein (Parität zu den DE-Hubs, die das schon haben).
+<lang>/ki-fuer-*.html ein (Parität zu den DE-Hubs, die das schon haben).
 
 Idempotent: Hubs mit bestehendem BreadcrumbList werden übersprungen. Name + URL
 werden aus dem vorhandenen WebPage-JSON-LD des Hubs gelesen (keine erfundenen
 Daten). Der Block wird direkt VOR dem WebPage-Script eingefügt (gleiche Stelle
-wie bei den DE-Hubs).
+wie bei den DE-Hubs). Der „Home"-Begriff ist je Sprache lokalisiert.
 
-    python3 tools/add_en_hub_breadcrumbs.py [--dry]
+    python3 tools/add_en_hub_breadcrumbs.py [--lang en|fr|it] [--dry]
 """
 import glob
 import json
@@ -16,7 +16,13 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-HOME = "https://abannews.com/en/"
+
+# Sprache → (Home-Label, Home-URL)
+LANGS = {
+    "en": ("Home", "https://abannews.com/en/"),
+    "fr": ("Accueil", "https://abannews.com/fr/"),
+    "it": ("Home", "https://abannews.com/it/"),
+}
 
 # matcht das WebPage-JSON-LD-Script (zum Auslesen von name/url + als Einfügepunkt)
 WEBPAGE_RE = re.compile(
@@ -24,12 +30,12 @@ WEBPAGE_RE = re.compile(
 )
 
 
-def breadcrumb(name: str, url: str) -> str:
+def breadcrumb(name: str, url: str, home_label: str, home_url: str) -> str:
     data = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "item": HOME},
+            {"@type": "ListItem", "position": 1, "name": home_label, "item": home_url},
             {"@type": "ListItem", "position": 2, "name": name, "item": url},
         ],
     }
@@ -39,7 +45,14 @@ def breadcrumb(name: str, url: str) -> str:
 
 def main():
     dry = "--dry" in sys.argv
-    files = sorted(glob.glob(str(ROOT / "en" / "ki-fuer-*.html")))
+    lang = "en"
+    if "--lang" in sys.argv:
+        lang = sys.argv[sys.argv.index("--lang") + 1]
+    if lang not in LANGS:
+        sys.exit(f"Unbekannte Sprache: {lang} (erlaubt: {', '.join(LANGS)})")
+    home_label, home_url = LANGS[lang]
+
+    files = sorted(glob.glob(str(ROOT / lang / "ki-fuer-*.html")))
     inserted = skipped = unchanged = 0
     for f in files:
         p = Path(f)
@@ -57,12 +70,12 @@ def main():
         except Exception:  # noqa: BLE001
             skipped += 1
             continue
-        block = breadcrumb(name, url)
+        block = breadcrumb(name, url, home_label, home_url)
         new = s[:m.start()] + block + s[m.start():]
         if not dry:
             p.write_text(new, encoding="utf-8")
         inserted += 1
-    print(f"{'[dry] ' if dry else ''}{inserted} eingefügt, {unchanged} schon vorhanden, "
+    print(f"[{lang}] {'[dry] ' if dry else ''}{inserted} eingefügt, {unchanged} schon vorhanden, "
           f"{skipped} übersprungen (kein WebPage-JSON-LD), {len(files)} gesamt.")
 
 
