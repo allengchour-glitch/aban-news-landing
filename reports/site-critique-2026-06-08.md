@@ -62,3 +62,25 @@
 - 'Sale'-Badge visuell aufwerten.
 - Produktbilder ohne Overlays verwenden (Wohnen & Deko).
 - Cookie-Banner als schmalere Leiste gestalten.
+
+---
+
+## 🛠️ Umsetzung durch Claude (2026-06-08) — was sofort gefixt wurde
+
+**Autonom live umgesetzt (per Shopify-API, Copy-Fixes):**
+- 🔴→✅ **Inkonsistente Rückgabefrist behoben:** Alle Kollektions-Texte auf **„30 Tage Rückgabe"** vereinheitlicht
+  (vorher 14 Tage in `premium-beauty`, `wohnen-dekoration`, `schuhe`, `premium-schmuck` — jetzt konsistent mit
+  Homepage/Ankündigungsleiste, die 30 Tage verspricht).
+- 🟢→✅ **Lange Kollektions-Texte gekürzt:** `damen-mode`-Beschreibung von 4 Absätzen auf 2 knappe, scanbare
+  Absätze reduziert (Produkte erscheinen auf dem Handy deutlich höher / über dem Falz).
+
+**Bleibt offen — nur via Theme-Customizer / Bild-Upload (User-Klicks, NICHT per API machbar):**
+- 🔴 **Hero:** CTA als echter, kontrastreicher **Button** (statt blasser Textlink) + **hochwertiges Premium-
+  Mode-Hero-Bild** statt der generischen Trockenpflanze; Hero-Textfarbe für Kontrast anpassen.
+- 🔴 **Produktkacheln:** **Preise (und Sterne)** auf Homepage-Featured-Sektionen sichtbar schalten
+  (Customizer → Sektions-Einstellungen „Preis anzeigen").
+- 🔴 **„Sale"-Badge** hochwertiger gestalten (Theme).
+- 🔴 **Wohnen-&-Deko-Bilder mit Mass-/Text-Overlays** ersetzen — manuelle Bild-Kuration pro Produkt
+  (kein zuverlässiger Auto-Fix; betrifft v.a. ältere CJ-Importe; neue Produkte sind bereits sauber/Freisteller).
+- 🟡 **Top-10-Bestseller** auf Mode fokussieren oder Sektion umbenennen (z.B. „Unsere Lifestyle-Empfehlungen").
+- 🟡 **Cookie-Banner** als schmale untere Leiste (Theme/Consent-App).
