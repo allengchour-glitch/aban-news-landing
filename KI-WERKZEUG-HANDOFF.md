@@ -16,7 +16,15 @@
 - **NEU (umgesetzt): Pro hebt das Tageslimit auf.** `isPro()`/`setPro()`/`applyPro()` + localStorage-Flag
   `aban_kw_pro`. Aktivierung per **Checkout-Rückkehr `?pro=ok`** ODER **Freischalt-Code** (`PRO_UNLOCK_CODE`,
   Default `aban-pro`). `quota()` gibt bei Pro `left=Infinity` → Vorlagen unbegrenzt, kein Upsell;
-  `refreshQuota()` zeigt „Pro · unbegrenzt". Vorlagenpfad live; Stripe-Link/AI-Endpoint noch offen.
+  `refreshQuota()` zeigt „Pro · unbegrenzt".
+- **NEU (umgesetzt): 2 Preis-Stufen nach Branche** (`updateProTier`, `PROPLUS_BRANCHEN`):
+  - **Standard `STRIPE_PRO_LINK` = CHF 9.90** (`https://buy.stripe.com/6oUdRbfKKcfq03ZbaR5wI05`) — die meisten Branchen.
+  - **Pro+ `STRIPE_PROPLUS_LINK` = CHF 19.90** (`https://buy.stripe.com/6oU00l1TUcfqg2XdiZ5wI06`) — regulierte/sensible:
+    Praxis/Therapie, Immobilien/Makler, Beratung/Coaching. Preis + Kauf-Link folgen automatisch der Branchen-Auswahl.
+- ⚠️ **User-TODO (sonst kein Auto-Unlock):** in **beiden** Stripe-Payment-Links „After payment → Redirect" auf
+  `https://abannews.com/ki-werkzeug.html?pro=ok` setzen. Sonst muss der Käufer den Freischalt-Code nutzen.
+- **AI_ENDPOINT** weiter offen (echte KI). Hinweis: Client-Unlock (`?pro=ok`/Code) ist UX und umgehbar — kostenlos ist
+  aber nur die Vorlage (0 Grenzkosten). Die echte **Kosten-/Pro-Durchsetzung muss der Worker** machen.
 
 ## 🟢 Antworten/Wünsche des Users (UMSETZEN)
 1. **Themen verlinken + Zahlung am Schluss:** In den Tool-Ergebnissen die passenden **Themen/Branchen-Hubs verlinken**; nach Erreichen des Gratis-Limits **am Ende einfach die Zahlung** zeigen.

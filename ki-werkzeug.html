@@ -282,6 +282,7 @@ footer a{color:var(--muted)}
   <section class="pro" id="pro">
     <h2>Mehr brauchen? <span style="color:var(--amber-dk)">Pro</span> freischalten</h2>
     <p class="price"><b id="pro-price">CHF 9.90</b> / Monat &middot; jederzeit kündbar</p>
+    <p id="pro-tier-note" class="note" style="margin:.1rem 0 .7rem"></p>
     <ul>
       <li>Unbegrenzt Texte &amp; Fahrpläne <span style="color:var(--muted)">(faire Nutzung bei echter KI)</span></li>
       <li>Echte KI statt Vorlagen (mehr Qualität)</li>
@@ -334,7 +335,10 @@ footer a{color:var(--muted)}
   "use strict";
 
   // ---- Phase-2-Schalter (später ausfüllen) --------------------------------
-  const STRIPE_PRO_LINK = "";      // z. B. "https://buy.stripe.com/XXXX" -> aktiviert echten Kauf-Button
+  const STRIPE_PRO_LINK     = "https://buy.stripe.com/6oUdRbfKKcfq03ZbaR5wI05"; // Standard CHF 9.90/Mon
+  const STRIPE_PROPLUS_LINK = "https://buy.stripe.com/6oU00l1TUcfqg2XdiZ5wI06"; // Pro+ CHF 19.90/Mon (regulierte Branchen)
+  // Höherwertige/sensible Branchen → Pro+ (Preis + spätere Compliance-/DSGVO-Extras)
+  const PROPLUS_BRANCHEN = ["Praxis / Therapie","Immobilien / Makler","Beratung / Coaching"];
   const AI_ENDPOINT      = "";      // z. B. "/api/generate" (Cloudflare Worker) -> aktiviert echte KI
   const FREE_TEXT_LIMIT  = 5;       // Gratis-Texte pro Tag
   const FREE_PLAN_LIMIT  = 1;       // Gratis-Fahrpläne pro Tag
@@ -365,6 +369,22 @@ footer a{color:var(--muted)}
   }
   function setPro(){ try{ localStorage.setItem("aban_kw_pro","1"); }catch(e){} applyPro(); }
 
+  // 2 Stufen nach Branche: Standard 9.90 / Pro+ 19.90 (regulierte Branchen). Preis +
+  // Kauf-Link aktualisieren sich nach gewählter Branche. (Pro-Status bleibt global.)
+  function isPlusBranche(b){ return PROPLUS_BRANCHEN.indexOf(b) > -1; }
+  function updateProTier(branche){
+    var plus = isPlusBranche(branche);
+    var price = $("pro-price"); if(price) price.textContent = plus ? "CHF 19.90" : "CHF 9.90";
+    var tn = $("pro-tier-note");
+    if(tn) tn.textContent = plus
+      ? "Pro+ für regulierte/sensible Branchen (Praxis, Immobilien, Beratung) — inkl. Compliance- & DSGVO-Hinweisen."
+      : "";
+    if(!isPro()){
+      var buy = $("pro-buy"); var link = plus ? STRIPE_PROPLUS_LINK : STRIPE_PRO_LINK;
+      if(buy && link) buy.href = link;
+    }
+  }
+
   // Tages-Kontingent in localStorage (kein Login, kein Server). Pro = unbegrenzt.
   function quota(key, limit){
     if(isPro()) return { left: Infinity, use: function(){} };
@@ -381,6 +401,10 @@ footer a{color:var(--muted)}
     BRANCHEN.forEach(function(b){ var o=document.createElement("option"); o.value=b; o.textContent=b; sel.appendChild(o); });
   });
 
+  // Preis-Stufe folgt der gewählten Branche (im jeweils aktiven Tab)
+  $("t-branche").addEventListener("change", function(){ updateProTier(this.value); });
+  $("p-branche").addEventListener("change", function(){ updateProTier(this.value); });
+
   // ---- Tabs ---------------------------------------------------------------
   function selectTab(which){
     var isText = which==="text";
@@ -388,6 +412,7 @@ footer a{color:var(--muted)}
     $("tab-plan").setAttribute("aria-selected", !isText);
     $("panel-text").hidden = !isText;
     $("panel-plan").hidden = isText;
+    updateProTier((isText ? $("t-branche") : $("p-branche")).value);
   }
   $("tab-text").addEventListener("click", function(){ selectTab("text"); });
   $("tab-plan").addEventListener("click", function(){ selectTab("plan"); });
@@ -563,11 +588,11 @@ footer a{color:var(--muted)}
     });
   }
 
-  // ---- Pro-Button (Phase 2: echter Stripe-Checkout) -----------------------
+  // ---- Pro-Button: echter Stripe-Checkout (Link je Stufe via updateProTier) ----
   if(STRIPE_PRO_LINK){
-    $("pro-buy").href = STRIPE_PRO_LINK + (STRIPE_PRO_LINK.indexOf("?")>-1?"&":"?") + "redirect_status=ok";
-    $("pro-note").textContent = "Sichere Zahlung über Stripe. Jederzeit kündbar.";
+    $("pro-note").textContent = "Sichere Zahlung über Stripe. Jederzeit kündbar. Nach dem Kauf schaltet sich Pro automatisch frei.";
   }
+  updateProTier($("t-branche").value);
 
   // ---- Pro freischalten: Rückkehr vom Checkout (?pro=ok) ODER Freischalt-Code ----
   try{
