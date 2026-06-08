@@ -70,6 +70,12 @@
 - **✅ Charge 5 (Schmuck, alter Key):** Statement-Ohrringe «Doré» gebürstetes Gold `15421171859841` (29.90) +
   Sommer-Armband «Évil» Schmetterling/Nazar `15421171892609` (5 Stile, 19.90) — live in 6 Kanälen. Abgelehnt:
   Hochzeits-Kartenbox (off-theme), Fruchtprint-Cap (Novelty). cj-real: 184 → **186** · **heute 15 Produkte live.**
+- **🤖 AUTO-QUEUE gebaut + auf `main` (PR #421):** `automation/queue_new_products.mjs` + `social-queue-build.yml`
+  (2×/Tag 07:30/16:30 UTC) reihen die zuletzt angelegten ACTIVE-Produkte automatisch in `social/posts_image.csv`
+  ein (Bild + DE-Caption + Produktlink + WELCOME10 + Hashtags, Dedup per Handle, nur .jpg). Kette komplett:
+  **Autopilot legt an → Auto-Queue reiht ein → Cron postet (FB/Threads/IG)**. Test-Lauf erfolgreich, aber **no-op**
+  (0 eingereiht) — **Shopify-Secrets fehlen** (`SHOPIFY_SHOP`+`SHOPIFY_CLIENT_ID/SECRET`, USER-CHECKLISTE §B/§C).
+  `GEMINI_API_KEY` gesetzt. **Aktivierung = Shopify-Secrets + CJ-Creds als Repo-Secrets.**
 - **📲 Social-Posting der NEUEN Produkte (2026-06-08):** Über `social-meta-autopost.yml` (Branch-Ref-Trick, ohne
   `main` anzufassen) NEUE Produktbilder gepostet — **Facebook + Threads laufen** (IG mit gelegentlichem
   Verarbeitungs-Delay). Queue `social/posts_image.csv` umgestellt: alte „hat-User-schon"-Bilder → `skip`,
