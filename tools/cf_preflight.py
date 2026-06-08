@@ -24,11 +24,42 @@ import urllib.request
 
 API = "https://api.cloudflare.com/client/v4"
 BASE_DOMAIN = "abannews.com"
-TOKEN = os.environ.get("CLOUDFLARE_API_TOKEN", "").strip()
+RAW_TOKEN = os.environ.get("CLOUDFLARE_API_TOKEN", "")
+TOKEN = RAW_TOKEN.strip()
 ACCOUNT_ID = os.environ.get("CLOUDFLARE_ACCOUNT_ID", "").strip()
 STRICT = "--strict" in sys.argv
 
 OK, WARN, BAD = "✅", "⚠️ ", "❌"
+
+
+def token_shape():
+    """Sichere Diagnose des Token-Werts — verrät den Token NICHT."""
+    import re as _re
+    msgs = []
+    if RAW_TOKEN != TOKEN:
+        n = len(RAW_TOKEN) - len(TOKEN)
+        msgs.append(f"{WARN}Wert hat {n} unsichtbare(s) Leerzeichen/Zeilenumbruch am Rand (wird getrimmt).")
+    low = TOKEN.lower()
+    if low.startswith("bearer "):
+        msgs.append(f"{BAD}Wert beginnt mit »Bearer « — nur den Token selbst eintragen, ohne »Bearer «.")
+    if TOKEN[:1] in ("'", '"') or TOKEN[-1:] in ("'", '"'):
+        msgs.append(f"{BAD}Wert ist in Anführungszeichen eingefasst — die '' bzw. \"\" entfernen.")
+    if "=" in TOKEN:
+        msgs.append(f"{BAD}Wert enthält »=« — vermutlich »NAME=wert« kopiert; nur den Wert eintragen.")
+    if any(c.isspace() for c in TOKEN):
+        msgs.append(f"{BAD}Wert enthält ein Leerzeichen/Tab MITTEN drin — da sind zwei Dinge zusammengeklebt.")
+    if _re.fullmatch(r"[0-9a-fA-F]{37}", TOKEN):
+        msgs.append(f"{BAD}Sieht aus wie der »Global API Key« (37 Hex). Wir brauchen einen »API Token« (40 Zeichen).")
+    if TOKEN and not _re.fullmatch(r"[A-Za-z0-9._\-]+", TOKEN):
+        bad = sorted(set(c for c in TOKEN if not _re.match(r"[A-Za-z0-9._\-]", c)))
+        shown = " ".join(repr(c) for c in bad[:6])
+        msgs.append(f"{BAD}Wert enthält ungültige Zeichen: {shown} — ein echter Token hat nur A–Z a–z 0–9 _ - .")
+    if len(TOKEN) != 40:
+        msgs.append(f"{WARN}Länge {len(TOKEN)} — ein Cloudflare-API-Token hat normalerweise genau 40 Zeichen.")
+    # Fingerprint (nicht rückführbar): erste 2 + letzte 2 Zeichen
+    if len(TOKEN) >= 6:
+        msgs.append(f"   Fingerprint: {TOKEN[:2]}…{TOKEN[-2:]} (Länge {len(TOKEN)}) — zum Abgleich mit dem, was du eingefügt hast.")
+    return msgs
 
 
 def call(method, path, body=None):
@@ -67,6 +98,8 @@ def main():
         print("   → Repo-Secret setzen: Settings → Secrets and variables → Actions.")
         sys.exit(1)
     print(f"   Token-Länge: {len(TOKEN)} Zeichen (Wert wird nie ausgegeben)")
+    for m in token_shape():
+        print("   " + m)
 
     missing = []  # für --strict
 
