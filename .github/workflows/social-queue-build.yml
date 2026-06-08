@@ -1,0 +1,59 @@
+name: Social Auto-Queue (neue Produkte einreihen)
+
+# Reiht die zuletzt angelegten ACTIVE-Produkte automatisch in social/posts_image.csv ein
+# (Bild + deutsche Caption + Produktlink + WELCOME10 + Hashtags, status=ready).
+# Läuft VOR den Post-Crons (social-meta-autopost um 08:00/17:00 UTC), damit immer frische
+# Produkte zum Posten bereitliegen. Dedupe per Produkt-Handle. No-op-safe ohne Secrets.
+#
+# Secrets: SHOPIFY_SHOP + (SHOPIFY_ADMIN_TOKEN ODER SHOPIFY_CLIENT_ID/SECRET).
+# Repo-Variable optional: QUEUE_MAX (Default 3).
+
+on:
+  schedule:
+    - cron: '30 7 * * *'    # 07:30 UTC, vor dem 08:00-Post
+    - cron: '30 16 * * *'   # 16:30 UTC, vor dem 17:00-Post
+  workflow_dispatch:
+    inputs:
+      max:
+        description: 'Wie viele neue Produkte einreihen'
+        required: false
+        default: '3'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: social-queue-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Neue Produkte einreihen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          QUEUE_MAX: ${{ github.event.inputs.max || vars.QUEUE_MAX || '3' }}
+        run: node automation/queue_new_products.mjs
+
+      - name: Queue committen, falls geändert
+        run: |
+          if ! git diff --quiet -- social/posts_image.csv; then
+            git config user.name "luxestyle-autoqueue-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add social/posts_image.csv
+            git commit -m "chore(social): neue Produkte in Post-Queue eingereiht [skip ci]"
+            git push
+          else
+            echo "Keine neuen Produkte — nichts zu committen."
+          fi
