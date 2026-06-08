@@ -269,7 +269,7 @@ def page(b):
       <p><a class="btn" href="/ki-sichtbarkeit-monitor.html">Monitor ansehen →</a>
          <a class="btn ghost" href="/ki-sichtbarkeit-paket.html">Komplett-Paket (29 €) →</a></p>
     </div>
-    <p class="note">Lieber selbst lesen? Das <a href="/ki-sichtbarkeit-buch.html">Buch „Von KI gefunden werden“</a> erklärt den ganzen Weg.</p>
+    <p class="note">Lieber einmal selbst durchziehen? Das <a href="/ki-sichtbarkeit-audit.html">KI-Sichtbarkeits-Audit</a> (29 € einmalig) führt dich Schritt für Schritt + 90-Tage-Plan. Oder das <a href="/ki-sichtbarkeit-buch.html">Buch „Von KI gefunden werden“</a> für den ganzen Hintergrund.</p>
   </section>
 
 {cross}
@@ -307,7 +307,7 @@ def hub():
     <p><a class="btn" href="/ki-erwaehnungs-check.html">Jetzt gratis prüfen →</a></p>
   </section>
   <section>{cards}</section>
-  <section><p class="note">Mehr: <a href="/ki-sichtbarkeit-monitor.html">Monitor (9 €/M)</a> · <a href="/ki-sichtbarkeit-paket.html">Komplett-Paket (29 €)</a> · <a href="/ki-sichtbarkeit-buch.html">Buch</a></p></section>"""
+  <section><p class="note">Mehr: <a href="/ki-sichtbarkeit-audit.html">Audit (29 € einmalig)</a> · <a href="/ki-sichtbarkeit-monitor.html">Monitor (9 €/M)</a> · <a href="/ki-sichtbarkeit-paket.html">Komplett-Paket (29 €)</a> · <a href="/ki-sichtbarkeit-buch.html">Buch</a></p></section>"""
     title = "Wirst du von KI empfohlen? — KI-Sichtbarkeit für lokale Betriebe · aban news"
     desc = "Prüf gratis, ob ChatGPT, Perplexity & Google AI deinen Betrieb empfehlen — und bleib mit dem Monitor dran. Für Handwerk, Praxen, Kanzleien, Steuer & Gastronomie."
     # gleiche Shell wie page(): minimaler Wrapper
