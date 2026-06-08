@@ -41,7 +41,11 @@
   Risiko (§5) + schwaches Bild (auf schmutzigem Boden).
 - **✅ Charge 2 (Accessoires, alter Key):** Henkeltasche «Lune» `15421166059905` (4 Farben, 24.90) +
   Crossbody-Tasche «Nuit» `15421166092673` (3 Farben, 24.90) — live in 6 Kanälen. Abgelehnt: Clip-Ohrringe
-  (Wasserzeichen „Gu - **✅ Charge 8 (Mode, alter Key):** Boho-Jeansjacke «Dentelle» Spitzen-Panel `15421364896129` (44.90) +
+  (Wasserzeichen „Gu - **✅ Charge 9 (Schuhe/Home/Schmuck, alter Key):** Zehensteg-Sandalen «Riva» (14 Var, 24.90, Schuhe) +
+  Smart-Diffuser «Aura» (EU-Stecker, 99.90) + Moissanite-Herzkette «Coeur» (3 Farben, 119.90, →premium-schmuck) +
+  Acryl-Ohrringe «Ambre» (24.90, →premium-schmuck). Live in 6 Kanälen. Abgelehnt: Brotbeutel/WM-Schal/60-Var-Sandale/
+  mehrdeutige Blue-Light-Brille. cj-real: 191 → **195.**
+- **✅ Charge 8 (Mode, alter Key):** Boho-Jeansjacke «Dentelle» Spitzen-Panel `15421364896129` (44.90) +
   Fransen-Minirock «Santa Fe» Wildleder-Optik `15421364928897` (5 Farben, 34.90). Live in 6 Kanälen.
   Dublette übersprungen (Long-Weste «Resort»). cj-real: 189 → **191.**
 - **✅ Charge 7 (Ring + Gadgetiang Li"), Kinder-Cartoon-Cap (Kids/IP §5), Deko-Gans-Kostüm (off-theme), Boston-Bag
