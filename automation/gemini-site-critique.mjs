@@ -165,14 +165,17 @@ console.log(`Gemini-Kritik (${MODEL}) über ${shots.length} Screenshots…`);
 const c = await critique(shots);
 if(!c){ console.error('Keine Kritik erhalten.'); process.exit(1); }
 
+// Optionales Label, damit mehrere Sites (z.B. abannews) sich nicht ueberschreiben.
+const LABEL = (process.env.CRITIQUE_LABEL || '').replace(/[^a-z0-9-]/gi, '').toLowerCase();
+const fname = `site-critique-${LABEL ? LABEL + '-' : ''}${date}.md`;
 const md = toMarkdown(c, date);
 const outDir = path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'reports');
 fs.mkdirSync(outDir, { recursive: true });
-const outFile = path.join(outDir, `site-critique-${date}.md`);
+const outFile = path.join(outDir, fname);
 fs.writeFileSync(outFile, md);
 console.log('✅ Report:', outFile);
 
 const note = c.gesamtnote ? `Note ${c.gesamtnote}/10` : '';
 const topProbs = (c.kritische_probleme||[]).filter(p=>p.prio==='hoch').slice(0,3).map(p=>`• ${p.bereich}: ${p.problem}`).join('\n');
-await telegram(`🎨 Gemini Site-Kritik ${date} ${note}\nTop-Baustellen:\n${topProbs||'(keine hoch-prio)'}\n\nVoller Report im Repo: reports/site-critique-${date}.md`);
+await telegram(`🎨 Gemini Site-Kritik ${LABEL || ''} ${date} ${note}\nTop-Baustellen:\n${topProbs||'(keine hoch-prio)'}\n\nVoller Report im Repo: reports/${fname}`);
 console.log('Fertig.');
