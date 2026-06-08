@@ -1,0 +1,64 @@
+name: Build Dossiers
+
+# Hält die Themen-Dossiers, die Themen-Map (archive/topics.json) und die
+# reader.js-Einbindung aktuell: sobald eine neue Ausgabe ins Archiv kommt
+# (archive/index.html ändert sich) oder ein Generator angepasst wird, wird
+# alles neu gebaut und zurück committet. Kein manueller Lauf nötig.
+
+on:
+  push:
+    paths:
+      - "archive/index.html"
+      - "archive/*.html"
+      - "generate_dossiers.py"
+      - "generate_archive.py"
+      - "automation/inject_reader.py"
+      - ".github/workflows/dossiers-build.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dossiers-build-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Regenerate dossiers + topics map + reader injection
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install deps
+        run: pip install pillow
+
+      - name: Build dossiers + topics.json + OGs
+        run: python generate_dossiers.py
+
+      - name: Rebuild archive index + RSS
+        run: python generate_archive.py
+
+      - name: Inject reader.js into issues (idempotent)
+        run: python automation/inject_reader.py
+
+      - name: Commit regenerated dossiers (if changed)
+        run: |
+          git config user.name "aban-assets-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dossiers.html dossier/*.html og-dossier*.png og-dossiers.png \
+                  archive/topics.json archive/*.html archive.html archive.rss
+          if git diff --cached --quiet; then
+            echo "No dossier changes — nothing to commit."
+          else
+            git commit -m "chore: regenerate dossiers + topics map + reader [skip ci]"
+            git push
+          fi

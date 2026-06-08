@@ -212,6 +212,15 @@
 /ki-schnellstart     /ki-schnellstart.html  301
 /ki-einfuehrung      /ki-schnellstart.html  301
 
+# Themen-Dossiers (Newsletter vertieft)
+/dossiers            /dossiers.html  301
+/dossier             /dossiers.html  301
+/themen              /dossiers.html  301
+/werkzeugkasten-dossier   /dossier/ki-werkzeugkasten.html  301
+/datenschutz-dossier      /dossier/ki-datenschutz-dach.html  301
+/prompts-dossier          /dossier/ki-prompts-die-funktionieren.html  301
+/anti-hype-dossier        /dossier/anti-hype-reality-checks.html  301
+
 # Angebote/Preise
 /preise              /angebote.html  301
 /angebote            /angebote.html  301
