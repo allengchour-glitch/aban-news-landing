@@ -5,10 +5,14 @@
  * IDEMPOTENT: überspringt Produkte, die den Block schon haben (Marker "Styling &amp; Bemerkung").
  * No-op ohne Shopify-Creds. Scope = eine Kollektion (Default 'damen-mode' = Fashion), via COLLECTION.
  *
- * ENV: SHOPIFY_SHOP (z.B. au3j0y-hq.myshopify.com), SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET
- *      (Client-Credentials-Grant) · COLLECTION (Default 'damen-mode') · MAX (Default 60/Lauf) · DRY_RUN=1
+ * AUTH (eins reicht):
+ *   - SHOPIFY_ADMIN_TOKEN  = Admin-API-Token der Custom-App (einmalig beim Installieren sichtbar; Prefix
+ *                            atkn_… oder shpat_…). EINFACHSTE Variante. ODER
+ *   - SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET = Client-Credentials-Grant (Fallback).
+ * ENV: SHOPIFY_SHOP (z.B. au3j0y-hq.myshopify.com) · COLLECTION (Default 'damen-mode') · MAX (Default 60) · DRY_RUN=1
  */
 const SHOPraw = process.env.SHOPIFY_SHOP || '';
+const ADMIN_TOKEN = process.env.SHOPIFY_ADMIN_TOKEN || '';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
 const CSEC = process.env.SHOPIFY_CLIENT_SECRET || '';
 const COLLECTION = process.env.COLLECTION || 'damen-mode';
@@ -20,7 +24,10 @@ const API = '2025-01';
 let SHOP = SHOPraw.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
 if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
 
-if (!CID || !CSEC) { console.log('Keine SHOPIFY_CLIENT_ID/SECRET → No-op (Creds in CI setzen).'); process.exit(0); }
+if (!ADMIN_TOKEN && !(CID && CSEC)) {
+  console.log('Keine Shopify-Creds (SHOPIFY_ADMIN_TOKEN ODER SHOPIFY_CLIENT_ID/SECRET) → No-op.');
+  process.exit(0);
+}
 
 // passende Kollektion: Priorität spezifisch -> generisch; Link-Text je Kategorie
 const PRIO = [
@@ -36,6 +43,7 @@ const PRIO = [
 const MARKER = 'Styling &amp; Bemerkung';
 
 async function token() {
+  if (ADMIN_TOKEN) return ADMIN_TOKEN;
   const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' })
