@@ -22,7 +22,9 @@ on:
         description: "Sichtbarkeit: public / unlisted / private"
         default: "public"
   schedule:
-    - cron: "0 6,14,22 * * *"   # 3x/Tag (~08/16/24 Berlin) — Queue schneller veroeffentlichen
+    # TEMPORAER alle 2h (Backlog heute schnell leeren). Sobald die Queue leer ist,
+    # macht der Lauf nichts ("kein neuer Upload"). Danach zurueck auf 3x/Tag empfohlen.
+    - cron: "0 */2 * * *"
 
 permissions:
   contents: write
