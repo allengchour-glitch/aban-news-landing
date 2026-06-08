@@ -1,0 +1,65 @@
+name: Gemini Site-Kritik — abannews
+
+# Lässt Gemini die LIVE-Newsletter-Seite abannews.com (Desktop + Mobil) bewerten und
+# erzeugt einen priorisierten Fix-Report unter reports/site-critique-abannews-<datum>.md.
+# Eigenes CRITIQUE_LABEL → kollidiert NICHT mit der luxestyle-Kritik. No-op ohne GEMINI_API_KEY.
+
+on:
+  workflow_dispatch:
+    inputs:
+      paths:
+        description: 'Pfade (Komma-Liste)'
+        type: string
+        default: '/,/dossiers.html,/dossier/ki-werkzeugkasten.html,/archive/'
+  schedule:
+    - cron: '0 7 1 * *'   # 1. des Monats, 07:00 UTC
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gemini-critique-abannews
+  cancel-in-progress: false
+
+jobs:
+  critique:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright (Chromium)
+        run: |
+          mkdir -p .pw && cd .pw
+          npm init -y >/dev/null 2>&1 || true
+          npm i playwright@^1.48 >/dev/null 2>&1
+          npx playwright install --with-deps chromium
+
+      - name: Run Gemini critique (abannews)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          SITE_BASE_URL: https://abannews.com
+          CRITIQUE_PATHS: ${{ inputs.paths }}
+          CRITIQUE_LABEL: abannews
+          NODE_PATH: ${{ github.workspace }}/.pw/node_modules
+        run: node automation/gemini-site-critique.mjs
+
+      - name: Commit report
+        run: |
+          f="reports/site-critique-abannews-$(date -u +%F).md"
+          if [ ! -f "$f" ]; then echo "Kein Report ($f) — übersprungen (fehlt GEMINI_API_KEY?)."; exit 0; fi
+          git config user.name "abannews-gemini-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -f "$f"
+          git commit -m "chore(gemini): abannews Site-Kritik-Report [skip ci]" || { echo "nichts zu committen"; exit 0; }
+          for i in 1 2 3 4 5; do
+            if git push; then echo "gepusht."; exit 0; fi
+            git pull --rebase --autostash origin main || true
+            sleep 3
+          done
+          echo "push nach 5 Versuchen übersprungen."
