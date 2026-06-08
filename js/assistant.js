@@ -49,8 +49,17 @@
   document.body.appendChild(fab); document.body.appendChild(panel);
 
   var body = panel.querySelector("#aban-body"), input = panel.querySelector("#aban-in");
-  var STARTERS = ["Werde ich von KI gefunden?", "Welche KI-Tools lohnen sich?", "Was kostet der Monitor?",
-                  "KI rechtssicher nutzen (Arzt/Anwalt)?", "Was ist aban news?"];
+  function startersFor(p) {
+    p = (p || "").toLowerCase();
+    if (/compliance/.test(p)) return ["Darf ich KI mit Mandanten-/Patientendaten nutzen?", "Was ist im Compliance-Paket?", "DSGVO & EU AI Act — was muss ich tun?"];
+    if (/sichtbarkeit|erwaehnung|ai-sichtbarkeit/.test(p)) return ["Werde ich von KI gefunden?", "Was kostet der Monitor?", "Wie werde ich von ChatGPT empfohlen?"];
+    if (/shop|starter|kit/.test(p)) return ["Was ist in einem Starter-Kit?", "Welches Kit passt zu mir?", "Was kostet das?"];
+    if (/datensatz/.test(p)) return ["Was ist im Datensatz?", "Gibt es ein Abo oder eine API?", "Was kostet der Datensatz?"];
+    if (/tools|reels|radar/.test(p)) return ["Welche KI-Tools lohnen sich?", "Lohnt sich Claude?", "Was sind die KI-Reels?"];
+    if (/schnellstart|workbook/.test(p)) return ["Wie führe ich KI im Betrieb ein?", "Gibt es Fördergeld dafür?", "Was ist im Workbook?"];
+    return ["Werde ich von KI gefunden?", "Welche KI-Tools lohnen sich?", "Was kostet der Monitor?", "Was ist aban news?"];
+  }
+  var STARTERS = startersFor(location.pathname);
 
   function greet() {
     body.innerHTML = "";
