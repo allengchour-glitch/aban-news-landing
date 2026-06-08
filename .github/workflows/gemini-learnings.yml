@@ -32,15 +32,14 @@ jobs:
         run: node automation/gemini_dropship_learnings.mjs
       - name: Report committen
         run: |
-          if [ -n "$(git status --porcelain reports/ 2>/dev/null)" ]; then
-            git config user.name  "gemini-learnings-bot"
-            git config user.email "actions@users.noreply.github.com"
-            git add -f reports/
-            git commit -m "chore(learnings): Gemini Dropship-Aktionsplan [skip ci]"
-            for i in 1 2 3 4 5; do
-              if git push; then echo gepusht; break; fi
-              git pull --rebase --autostash origin main || true; sleep 3
-            done
-          else
-            echo "Nichts erzeugt (No-op?)."
+          git config user.name  "gemini-learnings-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f reports/ 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Kein Report erzeugt (No-op?)."; exit 0
           fi
+          git commit -m "chore(learnings): Gemini Dropship-Aktionsplan [skip ci]"
+          for i in 1 2 3 4 5; do
+            if git push; then echo gepusht; break; fi
+            git pull --rebase --autostash origin main || true; sleep 3
+          done
