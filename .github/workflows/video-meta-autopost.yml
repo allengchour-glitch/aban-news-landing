@@ -1,0 +1,66 @@
+name: Social Meta Video Auto-Post (IG Reels + FB + Threads)
+
+# Postet das nächste fällige VIDEO aus social/video_queue.csv per Meta-Graph-API an
+# Instagram (Reels) + Facebook-Page (Video) + Threads (Video). 1 Video pro Lauf (gestaffelt).
+# Video wird per ÖFFENTLICHER URL gezogen (GitHub Pages: https://abannews.com/reels/<datei>.mp4).
+#
+# Tokens NUR aus GitHub-Secrets (identisch zum Bild-Poster):
+#   IG_USER_ID + IG_ACCESS_TOKEN (oder META_ACCESS_TOKEN)        → Instagram Business (Reels)
+#   FB_PAGE_ID + FB_PAGE_ACCESS_TOKEN (oder META_ACCESS_TOKEN)   → Facebook-Seite (Video)
+#   THREADS_USER_ID + THREADS_ACCESS_TOKEN                        → Threads (Video)
+# Ohne Secrets = sauberer No-Op.
+
+on:
+  schedule:
+    # 2×/Tag, versetzt zum Bild-Poster: 11:00 & 20:00 UTC (≈ 13:00 / 22:00 CH)
+    - cron: '0 11 * * *'
+    - cron: '0 20 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur testen (nichts posten)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: video-meta-autopost
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Post next video (Meta Graph API)
+        env:
+          META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          MAX_PER_RUN: '1'
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+        run: node automation/video-autopost-meta.mjs
+
+      - name: Commit posted-status if changed
+        run: |
+          if ! git diff --quiet -- social/video_queue.csv; then
+            git config user.name "luxestyle-autopost-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add social/video_queue.csv
+            git commit -m "chore(social): mark video post as sent [skip ci]"
+            for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else
+            echo "Kein neuer Video-Post gesendet (nichts zu committen)."
+          fi
