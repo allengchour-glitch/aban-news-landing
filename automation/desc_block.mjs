@@ -24,6 +24,12 @@ const API = '2025-01';
 let SHOP = SHOPraw.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
 if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
 
+// Diagnose (zeigt KEINE vollständigen Geheimnisse — nur Prefix/Länge zur Fehlersuche)
+console.log('Diag — SHOP:', SHOP,
+  '| ADMIN_TOKEN:', ADMIN_TOKEN ? `set(${ADMIN_TOKEN.slice(0,6)}…, len ${ADMIN_TOKEN.length})` : 'leer',
+  '| CLIENT_ID:', CID ? `set(${CID.slice(0,4)}…, len ${CID.length})` : 'leer',
+  '| CLIENT_SECRET:', CSEC ? `set(${CSEC.slice(0,6)}…, len ${CSEC.length})` : 'leer');
+
 if (!ADMIN_TOKEN && !(CID && CSEC)) {
   console.log('Keine Shopify-Creds (SHOPIFY_ADMIN_TOKEN ODER SHOPIFY_CLIENT_ID/SECRET) → No-op.');
   process.exit(0);
@@ -49,7 +55,8 @@ async function token() {
     body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' })
   });
   const j = await r.json().catch(() => ({}));
-  if (!j.access_token) { console.error('Token-Fehler:', r.status, JSON.stringify(j).slice(0, 300)); process.exit(0); }
+  if (!j.access_token) { console.error('Token-Fehler (Client-Credentials):', r.status, JSON.stringify(j).slice(0, 300)); process.exit(0); }
+  console.log('Client-Credentials-Token erhalten.');
   return j.access_token;
 }
 async function gql(tok, query, variables) {
@@ -83,7 +90,7 @@ const M = `mutation($p:ProductUpdateInput!){ productUpdate(product:$p){ userErro
   outer: while (true) {
     const res = await gql(tok, Q, { handle: COLLECTION, after });
     const conn = res?.data?.collectionByHandle?.products;
-    if (!conn) { console.error('Kollektion nicht gefunden:', COLLECTION, JSON.stringify(res).slice(0,300)); break; }
+    if (!conn) { console.error('Kollektion nicht gefunden / Auth-Fehler:', COLLECTION, JSON.stringify(res).slice(0,300)); break; }
     for (const p of conn.nodes) {
       done++;
       if ((p.descriptionHtml || '').includes(MARKER)) { skipped++; continue; }
