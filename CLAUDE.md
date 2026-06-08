@@ -37,6 +37,29 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-08 (SESSION-BEFUND — ZUERST LESEN, geteilte Cross-Session-Lehre):**
+- **⚠️ Diese Session hatte 0 Credentials & KEIN Shopify-MCP** (verifiziert per Env-Check: `CJ_EMAIL/CJ_API_KEY`,
+  `SHOPIFY_SHOP`, `SHOPIFY_CLIENT_ID/SECRET`, `META_ACCESS_TOKEN`, `TELEGRAM_BOT_TOKEN` **alle leer**). → Kein
+  Live-Shop, kein CJ-Import, kein Direkt-Posten aus der Session. **Autonom geht nur Repo/Content** — Posten/Shop
+  laufen ausschließlich über die GitHub-Actions (Secrets liegen dort, nicht in der Session-Env). **Lehre:** Vor jeder
+  „loslegen"-Aktion zuerst Env prüfen; ohne MCP/Creds ist die Conversion-First-Routine (§10) nicht live fahrbar.
+- **🔴 Reichweite steht still: `social/posts_image.csv` ist LEER-gepostet** — alle **7 Creatives `posted`, 0 `ready`**
+  (brise/strohtasche/daisy/dosnu/cateye/bali/ibiza). Der Meta-Autopilot (`social-meta-autopost.yml`) hat nichts mehr
+  zu posten. **Das ist der einzige autonom bewegliche Hebel fürs §10-Ziel (Reichweite).**
+- **▶️ Nächster Schritt zum Wiederanlaufen der Reichweite (für die nächste Session / wenn Bilder erwünscht):**
+  `automation/good_products.csv` hat **28 Produkte, aber nur 7 haben statische JPGs** in `social/static/`.
+  Für die **~20 restlichen** (savanna/lumea/noir/sirène/casa/fleurette/marguerite/alinie/sonnenhut/provence/
+  neckholder/herrbreeze/bluette/cardigan/lacey/strandrock/résille/herrpolo …) zwei Wege:
+  (a) **`BATCH=5 python3 automation/gen_post_image.py`** rendert Masterpiece-Creatives + reiht sie automatisch
+  `ready` ein (Rotation via `.image_pointer`); (b) ohne Rendern: **`node automation/social-queue.mjs add`** mit der
+  echten **`.jpg`-Shopify-CDN-URL** direkt aus `good_products.csv` (⚠️ die `.webp`-Einträge cateye/strohtasche/
+  herraviator scheiden aus — Meta-JPG-Pflicht; das Tool lehnt `.webp` selbst ab). **Diese Session hat auf
+  User-Wunsch KEINE Bilder erzeugt** → Hebel bleibt für die nächste Session/den User offen.
+- **OFFENE USER-SCHRITTE (unverändert, blockieren Live-Betrieb):** `SHOPIFY_CLIENT_ID`+`SHOPIFY_CLIENT_SECRET`
+  setzen (Shop-Zahlen/SEO + Medien-Anbindung); PR #386 → `main` mergen (aktiviert Veo+attach-media+Cron);
+  Veo im GCP freischalten; TikTok öffentlich via Metricool. Solange diese fehlen, ist jede Session auf Repo-Arbeit
+  beschränkt — der Katalog/Funnel ist laut Voll-QA gesund, es fehlt nur qualifizierte Reichweite + die User-Klicks.
+
 **📌 2026-06-07 (ÜBERGABE/HANDOFF — Social+Veo Komplettstand, ZUERST LESEN):**
 - **IG + FB + Threads: vollautomatisch & live.** 7 Masterpiece-Bilder gepostet (brise/strohtasche/daisy/dosnu/cateye
   + bali/ibiza), alle mit Produkt-Direktlink. Meta-Autopilot `social-meta-autopost.yml` + Tool `automation/social-queue.mjs`
