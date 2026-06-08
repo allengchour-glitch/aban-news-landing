@@ -314,6 +314,9 @@ BRANCHEN = {
     "kuerschner":          ("Kürschner",            ["Service- & Restyling-Texte,", "nicht die Materialprüfung"]),
     "baumfaellung":        ("Baumfällung",          ["Angebote & Anfragen,", "nicht die Genehmigung"]),
     "elektrofachhandel":   ("Elektrofachhandel",    ["Produkttexte & Service,", "nicht die Reparatur-Diagnose"]),
+    "gartenmoebel":        ("Gartenmöbel",          ["Produkttexte & Social,", "nicht die Materialberatung"]),
+    "fahrradverleih":      ("Fahrradverleih",       ["Angebote & Touren,", "nicht die Übergabe"]),
+    "koffergeschaeft":     ("Koffergeschäfte",      ["Produkttexte & Reisetipps,", "nicht die Airline-Regeln"]),
 }
 
 
