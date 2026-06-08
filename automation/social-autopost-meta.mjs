@@ -58,11 +58,25 @@ async function gpost(url, params){
 }
 
 // --- Plattform-Poster (jeweils null, wenn keine Creds) -----------------------------
+// Wartet, bis ein IG/Threads-Medien-Container fertig verarbeitet ist (status_code FINISHED).
+// Behebt den häufigen 9007/2207027-Fehler "Media ID is not available — bitte warte noch einen Moment".
+async function waitContainer(statusUrl){
+  for(let i=0;i<12;i++){
+    await new Promise(r=>setTimeout(r, i===0?1500:2500));
+    const r = await fetch(statusUrl).catch(()=>null);
+    const j = r ? await r.json().catch(()=>({})) : {};
+    const s = j.status_code || j.status;
+    if(s==='FINISHED') return true;
+    if(s==='ERROR' || s==='EXPIRED'){ console.error('Container-Status:', s, JSON.stringify(j)); return false; }
+  }
+  return false; // Timeout → trotzdem 1 Publish-Versuch unten
+}
 async function postIG(imageUrl, caption){
   if(!IG_ID || !IG_TOK) return null;
   const base = `https://graph.facebook.com/${V}/${IG_ID}`;
   const c = await gpost(`${base}/media`, { image_url: imageUrl, caption, access_token: IG_TOK });
   if(!c.ok || !c.j.id){ console.error('IG container:', c.status, JSON.stringify(c.j.error||c.j)); return false; }
+  await waitContainer(`https://graph.facebook.com/${V}/${c.j.id}?fields=status_code&access_token=${encodeURIComponent(IG_TOK)}`);
   const p = await gpost(`${base}/media_publish`, { creation_id:c.j.id, access_token:IG_TOK });
   if(!p.ok || !p.j.id){ console.error('IG publish:', p.status, JSON.stringify(p.j.error||p.j)); return false; }
   console.log('IG: gepostet', p.j.id); return p.j.id;
@@ -105,6 +119,7 @@ async function postThreads(imageUrl, caption){
   const base = `https://graph.threads.net/v1.0/${uid}`;
   const c = await gpost(`${base}/threads`, { media_type:'IMAGE', image_url:imageUrl, text:caption, access_token:TH_TOK });
   if(!c.ok || !c.j.id){ console.error('Threads container:', c.status, JSON.stringify(c.j.error||c.j)); return false; }
+  await waitContainer(`https://graph.threads.net/v1.0/${c.j.id}?fields=status&access_token=${encodeURIComponent(TH_TOK)}`);
   const p = await gpost(`${base}/threads_publish`, { creation_id:c.j.id, access_token:TH_TOK });
   if(!p.ok || !p.j.id){ console.error('Threads publish:', p.status, JSON.stringify(p.j.error||p.j)); return false; }
   console.log('Threads: gepostet', p.j.id); return p.j.id;
@@ -136,10 +151,19 @@ for(const next of ready.slice(0, MAX)){
     console.error(`⏭️  Übersprungen (keine JPG-URL, Meta-Pflicht): ${imageUrl}`);
     next[idx.status] = 'skipped-nonjpg'; anyFail = true; continue;
   }
-  console.log(`→ Post ${next[idx.id]} | ${imageUrl}`);
-  if(DRY){ console.log(`   DRY_RUN: würde an ${configured.join('+')||'(keine)'} senden.`); postedCount++; continue; }
+  // Optionale Kanal-Auswahl pro Zeile über die Spalte 'platforms' (leer = alle konfigurierten).
+  const plat = (next[idx.platforms]||'').toLowerCase();
+  const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
+  const wantFB = !plat.trim() || /facebook|\bfb\b/.test(plat);
+  const wantTH = !plat.trim() || /threads/.test(plat);
+  console.log(`→ Post ${next[idx.id]} | Kanäle: ${[wantIG&&'IG',wantFB&&'FB',wantTH&&'Threads'].filter(Boolean).join('+')} | ${imageUrl}`);
+  if(DRY){ console.log(`   DRY_RUN: würde senden.`); postedCount++; continue; }
 
-  const results = await Promise.all([ postIG(imageUrl,caption), postFB(imageUrl,caption), postThreads(imageUrl,caption) ]);
+  const results = await Promise.all([
+    wantIG?postIG(imageUrl,caption):Promise.resolve(null),
+    wantFB?postFB(imageUrl,caption):Promise.resolve(null),
+    wantTH?postThreads(imageUrl,caption):Promise.resolve(null),
+  ]);
   const got = results.filter(x => x && x!==false);
   if(got.length>0){
     next[idx.status] = 'posted';
