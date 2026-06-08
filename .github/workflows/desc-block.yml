@@ -3,7 +3,7 @@ name: Produkt-Beschreibungs-Block (Styling + Bemerkung + passender Link)
 # Hängt bei Fashion-Produkten einen Block an (Styling-Text + Bemerkung + Link zur PASSENDEN Kollektion).
 # Idempotent (überspringt bereits ergänzte). No-op ohne Shopify-Creds. Nur manuell.
 # Pro Lauf max. MAX Produkte (Default 60) — für grosse Kollektionen mehrfach starten.
-# AUTH: SHOPIFY_ADMIN_TOKEN (Custom-App-Token, einfachste Variante) ODER SHOPIFY_CLIENT_ID/SECRET.
+# AUTH: SHOPIFY_ADMIN_TOKEN (Custom-App-Token) ODER SHOPIFY_CLIENT_ID/SECRET (Client-Credentials).
 
 on:
   workflow_dispatch:
@@ -31,7 +31,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -45,5 +45,5 @@ jobs:
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
           COLLECTION: ${{ github.event.inputs.collection || 'damen-mode' }}
           MAX: ${{ github.event.inputs.max || '60' }}
-          DRY_RUN: ${{ github.event.inputs.dry_run && '1' || '' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
         run: node automation/desc_block.mjs
