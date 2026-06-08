@@ -1,0 +1,39 @@
+name: POD-Seite – Gemini-Kritik
+
+# Holt eine CRO/UX-Kritik von Gemini zur POD-Seite und committet sie nach dropship/pod/gemini-critique.md.
+# Ohne GEMINI_API_KEY = No-Op.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pod-page-critique
+  cancel-in-progress: false
+
+jobs:
+  critique:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Gemini-Kritik holen
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node automation/gemini_page_critique.mjs
+      - name: Kritik committen
+        run: |
+          if ! git diff --quiet -- dropship/pod/gemini-critique.md 2>/dev/null || [ -n "$(git status --porcelain dropship/pod/gemini-critique.md)" ]; then
+            git config user.name "luxestyle-autopilot"
+            git config user.email "bot@users.noreply.github.com"
+            git add dropship/pod/gemini-critique.md
+            git commit -m "POD-Seite: Gemini-Kritik [skip ci]"
+            for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else
+            echo "Keine Kritik-Datei (No-op?)."
+          fi
