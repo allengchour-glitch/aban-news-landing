@@ -299,6 +299,9 @@ BRANCHEN = {
     "naehmaschinenhandel": ("Nähmaschinen",         ["Produkttexte & Service,", "nicht die Reparatur-Diagnose"]),
     "angelladen":          ("Angelfachgeschäfte",   ["Produkttexte & Social,", "keine Rechtsauskunft"]),
     "wollgeschaeft":       ("Wollgeschäfte",        ["Garntexte & Kurse,", "nicht die Maschenprobe"]),
+    "lederwaren":          ("Lederwaren",           ["Produkt- & Pflegetexte,", "nicht die Materialprüfung"]),
+    "brautmodengeschaeft": ("Brautmoden",           ["Kollektion & Termine,", "nicht die Anprobe"]),
+    "weltladen":           ("Weltläden",            ["Produkttexte & Aktionen,", "nicht die Fairtrade-Prüfung"]),
 }
 
 
