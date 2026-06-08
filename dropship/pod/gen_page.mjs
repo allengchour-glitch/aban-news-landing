@@ -94,12 +94,14 @@ const html = `<div class="lspod">
 .lspod-final{text-align:center;background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:34px 18px;margin:10px 14px 6px;}
 .lspod-final h3{font-size:clamp(22px,3.6vw,32px);font-weight:800;margin:0 0 8px;}
 .lspod-final p{color:var(--mut);margin:0 0 18px;}
-.lspod-sticky{display:none;}
+.lspod-sticky{display:block;position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:50;background:var(--gold);color:#fff;text-align:center;font-weight:800;font-size:15px;padding:13px 28px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.22);transition:transform .15s;}
+.lspod-sticky:hover{transform:translateX(-50%) translateY(-2px);}
 @media(max-width:768px){
   .lspod-steps{grid-template-columns:1fr;}
   .lspod-grid{grid-template-columns:repeat(2,1fr);gap:11px;}
   .lspod-why{grid-template-columns:repeat(2,1fr);}
-  .lspod-sticky{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;background:var(--gold);color:#fff;text-align:center;font-weight:800;font-size:16px;padding:15px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.22);}
+  .lspod-sticky{left:12px;right:12px;transform:none;font-size:16px;padding:15px;}
+  .lspod-sticky:hover{transform:none;}
 }
 </style>
 
@@ -144,7 +146,7 @@ const html = `<div class="lspod">
 </section>
 
 <div class="lspod-band">
-  <div><b>120+</b><span>Produkte &amp; Farben</span></div>
+  <div><b>100+</b><span>Farben &amp; Grössen</span></div>
   <div><b>0</b><span>Mindestmenge</span></div>
   <div><b>5–10</b><span>Tage Lieferzeit</span></div>
   <div><b>🇨🇭</b><span>Schweizer Shop · TWINT</span></div>
