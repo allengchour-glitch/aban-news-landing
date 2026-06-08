@@ -331,3 +331,10 @@
 }
 .issue-share .is-b:hover { border-color: var(--c-accent); transform: translateY(-1px); }
 .issue-share .is-copy.copied { border-color: var(--c-accent); }
+
+/* ── Reduced motion (a11y) ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reading-progress { transition: none; }
+  .related-card:hover, .issue-share .is-b:hover { transform: none; }
+}

@@ -24,7 +24,10 @@
   top.type = 'button';
   top.setAttribute('aria-label', 'Nach oben');
   top.innerHTML = '↑';
-  top.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  top.addEventListener('click', function () {
+    var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: rm ? 'auto' : 'smooth' });
+  });
   document.body.appendChild(top);
 
   function onScroll() {
