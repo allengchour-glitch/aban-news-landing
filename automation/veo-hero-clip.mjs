@@ -13,6 +13,9 @@
  * ENV: GEMINI_API_KEY (Pflicht) · VEO_MODEL (Default veo-3.0-fast-generate-001) · VEO_ONLY (ein name) ·
  *      MAX_CLIPS (Default 1) · VEO_ASPECT (Default 9:16) · VEO_SECONDS (Default 8) ·
  *      OUT_BASE_URL (Default https://abannews.com) · SITE_URL (Default https://luxestyle.ch) · DRY_RUN=1
+ *
+ * Hinweis Bild→Video: die Gemini-REST-API erwartet das Referenzbild als image.bytesBase64Encoded
+ * (NICHT imageBytes — das ist nur der Python-SDK-Feldname).
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -65,7 +68,7 @@ async function fetchImageBase64(url){
 }
 async function startVeo(prompt, img){
   const url = `${BASE}/models/${MODEL}:predictLongRunning?key=${encodeURIComponent(KEY)}`;
-  const body = { instances: [{ prompt, image: { imageBytes: img.b64, mimeType: img.mime } }],
+  const body = { instances: [{ prompt, image: { bytesBase64Encoded: img.b64, mimeType: img.mime } }],
                  parameters: { aspectRatio: ASPECT, durationSeconds: SECONDS, personGeneration: 'allow_adult', sampleCount: 1 } };
   const r = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
   const j = await r.json().catch(()=>({}));
