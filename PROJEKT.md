@@ -1,5 +1,13 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
+> ⚠️ **SYNC-REGEL (zuerst lesen — teuer gelernt 2026-06-08):** Dieses Repo ist ein
+> **Multi-Session-Monorepo** (siehe `SHARED-MEMORY.md`). Feature-Branches können
+> **hunderte Commits hinter `main`** liegen. **Vor jedem Buch-/PDF-Build IMMER
+> zuerst syncen:** `git fetch origin main` und die Pipeline aus main holen
+> (`git checkout origin/main -- ki-schriftsteller/`), sonst baust du mit veralteter
+> Pipeline (z. B. alter Schrift-/Layout-Bug, der in main längst gefixt ist).
+> Faustregel: **nie der Pipeline auf dem eigenen Branch trauen — erst gegen main abgleichen.**
+>
 > Dauerhafter Gedächtnis-Speicher für dieses Vorhaben. Überlebt Session-Resets.
 > Stand: **2026-06-02** (Netzwerk stark erweitert — siehe Abschnitt „🆕 Netzwerk-Ausbau" am Ende) · Betreiber: Allen Chour (abannews.com, Belp/CH).
 > Hinweis: Die laufend gepflegte Detail-Wahrheit steht in `CLAUDE.md`; dieses Dokument ist der Strategie-/Status-Überblick.
