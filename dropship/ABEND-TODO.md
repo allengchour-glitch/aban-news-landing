@@ -34,6 +34,17 @@ Diese **4 Secrets** anlegen (Gemini + Meta-Tokens sind schon gesetzt ✅):
 
 ---
 
+## ⏰ 1b. DSers-Pro-Trial läuft am **9. Juni** ab → in 24h voll ausnützen, dann kündigen
+**Plan:** 1 Tag vorher kündigen ✅ (kein Doppel-Abo — nur **ein** DSers-Eintrag in Shopify-Billing, bitte gegenchecken).
+**Nur Pro-Aktionen nutzen, deren Ergebnis nach dem Downgrade BLEIBT** (Free hat ein Produkt-Limit → nicht 20'000 importieren, sonst verlieren sie Sync/Auto-Preis):
+1. **Automatic Pricing Rule einmal anwenden** (×2.8, Endung .90) → gesetzte Preise bleiben dauerhaft.
+2. **Supplier Optimizer über den ganzen DSers-Bestand** → schnellere/günstigere Lieferanten (Ship-from-CH/EU); Mapping bleibt.
+3. **Die 6 unmapped US-Produkte fertig mappen** (sonst nicht bestellbar) — dauerhaft.
+4. **Kuratierten Winner-Batch importieren — nur so viele, wie Free dauerhaft trägt**, voll gemappt + Pricing-Rule drauf.
+5. **Bundle/BOGO-Mapping** für Sets (Pro-only) — bleibt aktiv.
+> Hinweis: Unser Katalog (206) läuft über die **CJ-API**, nicht DSers. Pro-Features greifen nur auf AliExpress-Produkte,
+> die DU in DSers importierst. Grösster bleibender Wert = **Punkt 1–3**. Danach kündigen.
+
 ## 🎨 2. „SELBST GESTALTEN" — echter Live-Designer auf der Webseite
 **Wirkung:** Kunden gestalten T-Shirts/Hoodies/Tassen selbst (Text, Foto, Logo) → Druck via Printful. Ersetzt das Wunsch-Design-Formular.
 
