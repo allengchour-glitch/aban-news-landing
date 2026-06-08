@@ -1,5 +1,19 @@
 # ✅ USER-CHECKLISTE — LuxeStyle Social-Maschine aktivieren
 
+## 🔴 OFFEN (2026-06-08, todo morgen) — Hero-Farbschema fixen [1 Klick]
+**Einziger offener Punkt nach der Gemini-Polish-Session.** Hero-Bild, Button-Label & Overlay sind schon
+gesetzt; Top-10-Bestseller umsortiert; Rückgabefrist/SEO/Sub-Collections live. Es fehlt NUR:
+
+- **Customizer → Startseite → Sektion „Hero" → Feld „Farbschema" → „Schema 3"** wählen (das **dunkle/
+  anthrazitfarbene** Swatch) → Speichern.
+- Hintergrund: Der Hero zeigt aktuell auf das nicht existierende „Schema 6" → Titel-Text fällt auf dunkle
+  Default-Farbe (schlecht lesbar). Schema 3 = intern `scheme-5` (dunkel, heller Text `#faf7f2` + goldener
+  Primary-Button). Live-Theme hat genau 3 Schemata (intern scheme-1/2/5 = Customizer „Schema 1/2/3").
+- ⚠️ Live-Theme-Schreibzugriff per API ist Shopify-seitig blockiert → nur im Customizer machbar (nicht autonom).
+- **Danach:** Claude-Session bitten, den **Gemini-Verifikationslauf** zu starten (Note sollte über 4/10 steigen).
+- Optional: Draft-Theme „Horizon · LuxeStyle Hero-Polish (Claude)" kann gelöscht werden.
+- Hero-Bilder liegen bereit: `dropship/hero/luxestyle-hero.png` (v1) + `luxestyle-hero-v2.png` (v2, ist live hochgeladen).
+
 > **Zweck:** EINE Liste mit allem, was nur DU (im Browser/Admin) tun kannst, damit die autonome
 > Content-Maschine (KI-Bilder + Reels → Instagram/Facebook/Threads/TikTok, selbstlernend) scharf läuft.
 > Alles Übrige ist gebaut, committet und no-op-safe — es wartet nur auf die Tokens/Klicks unten.
