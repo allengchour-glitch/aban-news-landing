@@ -50,7 +50,58 @@
 4. Eine **Long-form-Kompilation** via `aban_film.py` posten (Hebel #6).
 Jede Änderung EINZELN testen, Director-Daten entscheiden lassen.
 
+---
+
+# DEEP DIVE (Vertiefung 2026-06-07 — „perfekte Videos")
+
+## 🔁 LOOP-PLAYBOOK (der stärkste Reichweiten-Hack — faceless ist hier im VORTEIL)
+Faceless hat keinen „Video-zu-Ende"-Hinweis (kein Gesicht/Körper) → Loop fühlt sich unsichtbar an.
+Replay-Rate >10 % = exzellent, >20 % = selten + stark belohnt. Optimal **20–25 s**.
+**5 Loop-Techniken (kombinieren):**
+1. **Callback-Hook:** Schlusszeile **echot die Eröffnungsfrage** (Hook als Frage stellen, am Ende
+   darauf zurück). → ABAN: Hook „Why reality keeps slipping." → Schlusszeile darauf zurückbiegen.
+2. **Visual Match Cut:** **letztes Bild = erstes Bild** (gleicher Clip/Winkel/Farbe) → Neustart unsichtbar.
+3. **Audio-Continuity:** Musik läuft **nahtlos über den Loop-Punkt** → KEIN Stille-Gap am Anfang
+   (⚠️ unser `afade=in` am Start bricht den Loop! → für Loop weglassen oder Cross-fade).
+4. **Cliffhanger-Reversal:** „Die Antwort war in der ersten Sekunde."
+5. **Open-Question-Close:** Schluss stellt die Frage, die der Anfang beantwortet.
+**How-to:** Ende ZUERST schreiben → Anfang dort hinführen; Callback-Phrase aus dem Hook in der
+letzten Zeile wiederholen; **CTA NICHT ins Video** (stört Loop) → in Beschreibung/Caption.
+3× loopen testen; wenn der Neustart ruckelt → Ende umschreiben.
+
+## ✍️ HOOK-VORLAGEN (auf ABAN gemünzt, erste 2–3 s entscheiden über 71 % der Zuschauer)
+- **„Did you know…"/Wissenslücke:** „You have been lied to about [X]."
+- **„Everything you know about X is wrong":** stark fürs Mystery-Genre, hält Watchtime hoch.
+- **„Only 1 % know this":** Exklusivität + Verschwörungs-Appeal (+80 % Shares).
+- **„You won't believe…"** / High-Arousal (10× mehr geteilt).
+- **„If you [erfahrung], stop scrolling":** Direktansprache (+91 % Aufmerksamkeit).
+Regeln: **kein** Logo/Intro/Stille; Pattern-Interrupt in Sek 1–5 (+23 % Retention); nie länger als
+**3 Sätze** auf demselben Shot; **Micro-Reset alle 5–8 s** (Winkel/Punch-in/Frage/Stat).
+
+## 🎙️ STIMME & AUDIO
+- **Ein Satz pro Beat.** Erste Zeile selbstbewusst + schnell, **keine Lead-in-Pause**.
+- Tempo durchgehend straff; **gezielte Pause nur am Twist/Reveal** (Pacing+Tonfall = +40 % Behalten).
+- Musik duckt unter die Stimme (haben wir ✅ Sidechain); Score nie gegen die Stimme kämpfen lassen.
+
+## 🔎 SEO / METADATEN (✅ JETZT in `aban_publish.py` umgesetzt)
+- Algorithmus liest Titel, Beschreibung, Hashtags, Auto-Captions **und die Audio-Waveform nach
+  Keywords** → Topic-Wort auch **laut sagen** (tun wir).
+- **Titel:** Haupt-Keyword in den ersten ~40 Zeichen; `#Shorts`; ~100 Zeichen Limit.
+- **3–5 Hashtags in der Beschreibung** (erste 3 = klickbar über dem Titel); **6–8 Tags**.
+- **Captioned Shorts ranken +23 %** (Captions brennen wir ein ✅).
+- Watch-through **>75 %** + überdurchschnittl. Like-Ratio → Algorithmus skaliert.
+
+## 🧩 RENDERER-TODOs (code-fertig, nächste Render-Session mit Quota testen)
+1. **Loopbares Ende:** in `render()` letzten Segment-Clip = `norm[0]`-Quelle (Visual Match Cut).
+2. **Audio-Continuity:** `afade=t=in:st=0:d=2.6` am Musik-Start für die Loop-Version entfernen/kürzen.
+3. **Pattern-Interrupt-Hook:** in Sek 1–2 einen harten Cut/Glitch-Frame (z. B. 2–3 sehr kurze
+   Segmente am Anfang) + lauter Impuls.
+4. **Kürzer testen:** 20–30-s-Variante (Skript ~300–420 Zeichen) gegen die ~50 s messen.
+5. **Multi-Format:** regelmäßig 1 Long-form-Kompilation via `aban_film.py` posten (+41 % Wachstum).
+Jede Änderung EINZELN rendern + gegen Director-Daten testen.
+
 ## Quellen
-- virvid.ai — Faceless YouTube Algorithm: Retention, Hooks (2026)
-- opus.pro — How to Make YouTube Shorts Go Viral
-- YouTube Creator Insider (7-Sekunden-Wert-Regel, 2025); Loop-Zählung seit 03/2025
+- virvid.ai — Faceless Algorithm/Retention; Looping-Structure; AI-Shorts-Hook-Guide (2026)
+- opus.pro — Shorts viral guide; Hook formulas
+- YouTube Creator Insider (7-Sek-Regel, 2025); Loop zählt als View seit 03/2025
+- hashtagtools.io / crawlvision — Shorts-SEO 2026 (Titel/Hashtags/Tags, +23 % captioned)
