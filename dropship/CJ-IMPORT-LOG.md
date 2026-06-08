@@ -41,7 +41,12 @@
   Risiko (§5) + schwaches Bild (auf schmutzigem Boden).
 - **✅ Charge 2 (Accessoires, alter Key):** Henkeltasche «Lune» `15421166059905` (4 Farben, 24.90) +
   Crossbody-Tasche «Nuit» `15421166092673` (3 Farben, 24.90) — live in 6 Kanälen. Abgelehnt: Clip-Ohrringe
-  (Wasserzeichen „Gu - **✅ Charge 13 (Mode, alter Key):** Strick-Cardigan «Bohème» Ajour-Pointelle (9 Farben×5 Grössen=43 Var, 34.90,
+  (Wasserzeichen „Gu - **✅ Charge 14 (Accessoire, alter Key):** Samt-Cap «Velours» Retro-Baseball (8 Farben, 19.90, accessoires).
+  Live in 6 Kanälen, alle Media READY. **Abgelehnt (strenger QA-Lauf):** Tunic-Pants-Set CJLS2924397 (88 Var, zu nah
+  am 100-Limit), J-Shape-Stillkissen CJYD2924218 (sperrig/off-theme), Floral-Thermosflasche CJHS2924200 („Shangsheng
+  Bio"-Wasserzeichen + kindlich), Gloce-Sonnenbrille CJCF2923061 (Marken-Logo am Bügel = IP-Risiko), Horseshoe-Cross-
+  Kette CJLX2924662 (0.55$, religiös/billig), Hooded-Cardigan CJWY2923949 (Dublette «Cosy»). cj-real: 205 → **206.**
+- **✅ Charge 13 (Mode, alter Key):** Strick-Cardigan «Bohème» Ajour-Pointelle (9 Farben×5 Grössen=43 Var, 34.90,
   damen-mode/sommer). Live in 6 Kanälen, alle Media READY, Farbnamen DE (Mintgrün/Mintblau/Silber…). **Abgelehnt:**
   Suede-Minirock CJQZ2924206 + Moissanite-Herzkette CJJE2924620 (beide Dubletten: «Santa Fe» / «Coeur» schon live),
   Herren-Shirt-Set CJTW2923835 (Dublette), San-Benito-Armband CJSL2922783 (religiös/niche + Hero nur Mass-Diagramm),
