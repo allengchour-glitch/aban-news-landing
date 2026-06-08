@@ -57,3 +57,20 @@
   Lagerbestand-Urgency + 2. Bild beim Hover, „Komplettiere deinen Look"-Cross-Sell, mobile „1 Reihe Bild+Text".
 - `FB_PAGE_ACCESS_TOKEN` (Facebook-Posting), TikTok-App-Audit (öffentlich).
 - `GEMINI_API_KEY` ist gesetzt (Billing aktiv, ~30 CHF) — KI-Bild + Veo + Learnings laufen.
+
+## 🎬 Werbevideo-Tool (1-Klick) — Stand 2026-06-08 abends
+- **`werbevideo.yml`** (workflow_dispatch, Inputs `concept=fashion|print`, `heroes`, `stills`, `seconds`): erzeugt
+  DE+EN 9:16-Werbung (hook-first) via `dropship/ads/render_masterpiece.sh` + Voiceover (`tts_eleven.sh`) +
+  Musik (`gen_music.sh`). Output `reels/werbung-{luxestyle|selbst-gestalten}-{de,en}.mp4` (+`-clean.mp4` für Trend-Sound).
+- **🐛 GELÖST (teuer): 5-Sekunden-Kollaps.** Symptom: fertiges Video nur ~1/5 der Voiceover-Länge. **2 Ursachen:**
+  (1) Standbild-Segmente rendern mit `-loop 1 -t SEG` nur 0.83×SEG lang (zoompan d=1, Input-25fps→fps=30-Verlust);
+  (2) die xfade-Offsets wurden aus dem NOMINALEN `SEG` berechnet → Offset > echte Segmentlänge → ffmpeg-xfade-Kette
+  **kollabiert auf 1 Segment**. **FIX:** Standbild-Input `-loop 1 -framerate $FPS -t $SEG -i` (volle Länge) **+**
+  xfade-Offsets aus den ECHT gemessenen Segmentlängen (`SEGDUR[]` per ffprobe) statt aus `SEG`. Verifiziert:
+  DE VD=25.1s/EN 21.3s = Voiceover-Länge. DEBUG-Echos (DUR/SEG/Segmentlängen/VD) bleiben im Skript.
+- **🔴 ElevenLabs-Key = HTTP 401 (ungültig/abgelaufen)** für BEIDE Endpoints (Music API **und** TTS). 401≠403 →
+  es ist nicht nur Plan-Sperre, der Key selbst wird abgelehnt. Fallback greift sauber: **Musik = `automation/reel_music.m4a`**
+  (royalty-free, legal), **Stimme = Google-TTS** (natürlich, Zahlen ausgeschrieben). **USER-TODO:** frischen
+  `ELEVENLABS_API_KEY` als Secret setzen → dann custom TikTok-Vibe-Musik (`gen_music.sh`, force_instrumental) + ElevenLabs-Stimme.
+- **Stand:** «Selbst gestalten»-Print-Werbung DE+EN fertig & geliefert (NICHT gepostet — User: erst posten wenn mehr
+  Follower). Fashion-Werbung (2. Video) = Gate offen (Katalog fertig) → `werbevideo.yml concept=fashion heroes=<…> stills=…`.
