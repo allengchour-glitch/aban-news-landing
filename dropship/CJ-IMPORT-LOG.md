@@ -67,6 +67,9 @@
   zu **Voll-Auto** ausbauen (productSet + Varianten + Bild-QA + publish) → läuft headless mit Repo-Secrets
   (`CJ_EMAIL`,`CJ_API_KEY`,`SHOPIFY_SHOP`,`SHOPIFY_ADMIN_TOKEN`). In-Session sonst Charge-für-Charge (~2–6 Keeper je
   Runde; CJ-Suche filtert hart). **Heute gesamt: 13 neue Produkte live** (6 Mode + 2 Taschen + 3 Schmuck/Acc. + 2 Premium/Home).
+- **✅ Charge 5 (Schmuck, alter Key):** Statement-Ohrringe «Doré» gebürstetes Gold `15421171859841` (29.90) +
+  Sommer-Armband «Évil» Schmetterling/Nazar `15421171892609` (5 Stile, 19.90) — live in 6 Kanälen. Abgelehnt:
+  Hochzeits-Kartenbox (off-theme), Fruchtprint-Cap (Novelty). cj-real: 184 → **186** · **heute 15 Produkte live.**
 - **🤖 AUTOPILOT zu VOLL-AUTO ausgebaut (fertig, committet):** `dropship/cj_autopilot.mjs` macht jetzt den
   KOMPLETTEN Flow autonom: CJ-Suche → §5-Hartfilter → SKU-Dedup → Bild-200-Check → **Varianten Farbe×Grösse +
   Farbbilder via `productSet`** → optional **Gemini-Gate** (DE-Copy + QA) → **ACTIVE + publish in 6 Kanäle**
