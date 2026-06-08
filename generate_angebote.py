@@ -23,6 +23,7 @@ GROUPS = [
         ("KI-Sichtbarkeits-Check", "gratis", "Nennt dich ChatGPT & Co.? Sofort prüfen.", "/ki-erwaehnungs-check.html"),
     ]),
     ("Von KI gefunden werden", [
+        ("KI-Sichtbarkeits-Audit (selbst)", "29 €", "Workbook + 90-Tage-Plan: prüf selbst, ob KI dich nennt. Einmalig, kein Abo.", "/ki-sichtbarkeit-audit.html"),
         ("KI-Sichtbarkeits-Monitor", "9 €/Monat", "Monatlicher Report, ob KI dich nennt + Maßnahmen.", "/ki-sichtbarkeit-monitor.html"),
         ("KI-Sichtbarkeit Komplett-Paket", "29 €", "Buch + 3 Monate Monitor + Maßnahmen-Vorlage.", "/ki-sichtbarkeit-paket.html"),
         ("Buch „Von KI gefunden werden“", "9,99 €", "14 Kapitel: wie lokale Anbieter in KI-Antworten auftauchen.", "/ki-sichtbarkeit-buch.html"),
