@@ -1,11 +1,16 @@
 name: Veo Hero-Clip
 
-# Generiert mit Veo-Fast (günstig) 1 cineastischen 9:16-Hero-Clip aus einem Produktbild (good_products.csv)
+# Generiert mit Veo 1 cineastischen 9:16-Hero-Clip aus einem Produktbild (good_products.csv)
 # und reiht ihn als Reel (mit Produktlink) ein → reel-autopost.yml postet ihn. No-op ohne GEMINI_API_KEY.
+#
+# 💰 KOSTEN/BUDGET: Veo kostet pro Sekunde → Cron läuft nur WÖCHENTLICH (1 Clip), Default-Modell
+#    ist das GÜNSTIGE, bild-fähige veo-2.0-generate-001.
+# ⚠️ Bild→Video (Echtfoto-Ansatz, Regel 10) braucht ein Modell mit Bild-Input. Die Veo-FAST-Variante
+#    (veo-3.0-fast-generate-001) unterstützt über die Gemini-API KEIN Bild-Input → NICHT als Default nehmen.
 
 on:
   schedule:
-    - cron: '0 5 * * *'   # täglich 05:00 UTC, 1 Clip (Veo-Fast)
+    - cron: '0 5 * * 1'   # wöchentlich Montag 05:00 UTC, 1 Clip (Budget-schonend)
   workflow_dispatch:
     inputs:
       only:
@@ -13,13 +18,13 @@ on:
         type: string
         default: ''
       model:
-        description: 'Veo-Modell'
+        description: 'Veo-Modell (Fast = KEIN Bild-Input!)'
         type: choice
-        default: 'veo-3.0-fast-generate-001'
+        default: 'veo-2.0-generate-001'
         options:
-          - 'veo-3.0-fast-generate-001'
-          - 'veo-3.0-generate-001'
           - 'veo-2.0-generate-001'
+          - 'veo-3.0-generate-001'
+          - 'veo-3.0-fast-generate-001'
       dry_run:
         description: 'Nur testen (kein Render, keine Kosten)'
         type: boolean
@@ -45,7 +50,7 @@ jobs:
       - name: Veo Hero-Clip rendern + Reel einreihen
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          VEO_MODEL: ${{ inputs.model || 'veo-3.0-fast-generate-001' }}
+          VEO_MODEL: ${{ inputs.model || 'veo-2.0-generate-001' }}
           VEO_ONLY: ${{ inputs.only }}
           MAX_CLIPS: '1'
           DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
