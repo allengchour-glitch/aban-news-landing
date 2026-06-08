@@ -302,6 +302,9 @@ BRANCHEN = {
     "lederwaren":          ("Lederwaren",           ["Produkt- & Pflegetexte,", "nicht die Materialprüfung"]),
     "brautmodengeschaeft": ("Brautmoden",           ["Kollektion & Termine,", "nicht die Anprobe"]),
     "weltladen":           ("Weltläden",            ["Produkttexte & Aktionen,", "nicht die Fairtrade-Prüfung"]),
+    "schuhmacherei":       ("Schuhmacherei",        ["Service- & Pflegetexte,", "nicht die Reparatur-Diagnose"]),
+    "schluesseldienst":    ("Schlüsseldienste",     ["Service- & Preistexte,", "keine Türöffnungs-Anleitung"]),
+    "rahmenwerkstatt":     ("Rahmenwerkstätten",    ["Service- & Beratungstexte,", "nicht die Konservierung"]),
 }
 
 
