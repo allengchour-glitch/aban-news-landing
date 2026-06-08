@@ -1,5 +1,8 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+> 🔗 **ZUERST `SHARED-MEMORY.md` (Repo-Root) lesen** — mehrere Sessions arbeiten parallel auf diesem
+> Repo + Shop; dort steht, wer was „besitzt" + der Live-Stand. CJ-Import/Katalog/Social = NUR diese Session.
+
 Dieses Repo ist `aban-news-landing`, enthält aber mehrere Projekte. Das aktive, autonome
 Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 
