@@ -41,7 +41,14 @@
   Risiko (§5) + schwaches Bild (auf schmutzigem Boden).
 - **✅ Charge 2 (Accessoires, alter Key):** Henkeltasche «Lune» `15421166059905` (4 Farben, 24.90) +
   Crossbody-Tasche «Nuit» `15421166092673` (3 Farben, 24.90) — live in 6 Kanälen. Abgelehnt: Clip-Ohrringe
-  (Wasserzeichen „Gu - **✅ Charge 11 (Mode/Accessoire/Home, alter Key):** Jeans-Shorts «Cristal» Strass (5 Grössen, 29.90, damen-mode/sommer) +
+  (Wasserzeichen „Gu - **✅ Charge 12 (Mode, alter Key):** Sommerkleid «Sole» Casual-Midi Raglan (4 Farben×5 Grössen=20 Var, 34.90,
+  damen-mode/sommer) + Blazer «Roma» tailliert mit Bindegürtel (11 Farben×5 Grössen=55 Var, 49.90, damen-mode) +
+  Herren-Henley «Waffle» Waffelstrick (6 Farben×6 Grössen=36 Var, 34.90, herren-mode). Alle 3 live in 6 Kanälen,
+  alle Media READY, Farbnamen ins Deutsche übersetzt (Weiss/Dunkelgrau/Weinrot…), Blazer-Präfix „Belt Buckle Long"
+  aus den Farbwerten gestript. **Abgelehnt:** Acryl-Ohrringe CJLX2924757 (Dublette), WOSPORT 556 Magazin-Tasche
+  (Waffen-Zubehör, §5), Wrought-Iron-Vase (Hero nur Mass-Diagramm + Wasserzeichen, Foto-Studio-Requisite, off-theme).
+  cj-real: 201 → **204.**
+- **✅ Charge 11 (Mode/Accessoire/Home, alter Key):** Jeans-Shorts «Cristal» Strass (5 Grössen, 29.90, damen-mode/sommer) +
   Make-up-Tasche «Mirror» mit Spiegel (5 Farben, 19.90, accessoires) + Kerzenwärmer-Lampe «Lueur» Timer/Dimmer
   (79.90, home) + Herren-Jeans «Heritage» Washed Vintage (10 Grössen M–8XL, 44.90, herren-mode). Alle 4 live in
   6 Kanälen, alle Media READY, echte CJ-SKUs `tracked:false`. **Dubletten übersprungen** (Herren-Set CJTW2923835,
