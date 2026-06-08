@@ -1,0 +1,58 @@
+name: PR Merge-Timer (verzögertes Mergen)
+
+# Wiederverwendbares Timer-Tool: wartet eine einstellbare Zeit und mergt dann
+# automatisch einen PR. Nützlich für „merge in 2 Stunden" o. Ä. ohne dass eine
+# Session offen bleiben muss. Draft-PRs werden vorher auf „ready" gesetzt.
+#
+# Start: Actions → „PR Merge-Timer" → Run workflow → PR-Nummer + Minuten angeben.
+# (Öffentliches Repo → Runner-Minuten gratis, daher ist langes Warten unkritisch.)
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: "PR-Nummer, die nach Ablauf gemergt wird"
+        required: true
+      delay_minutes:
+        description: "Verzögerung in Minuten (Standard 120 = 2 Std)"
+        default: "120"
+      method:
+        description: "Merge-Methode: squash / merge / rebase"
+        default: "squash"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: pr-merge-timer-${{ github.event.inputs.pr }}
+  cancel-in-progress: false
+
+jobs:
+  timer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350   # deckt bis ~5,8 Std Wartezeit ab
+    steps:
+      - name: Warten
+        run: |
+          D="${{ github.event.inputs.delay_minutes }}"; D="${D:-120}"
+          echo "Warte $D Minuten, dann PR #${{ github.event.inputs.pr }} mergen (Start $(date -u))."
+          sleep $(( D * 60 ))
+      - name: Mergen
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.inputs.pr }}
+          METHOD: ${{ github.event.inputs.method }}
+        run: |
+          set -e
+          M="${METHOD:-squash}"
+          R="$GITHUB_REPOSITORY"
+          # Draft-PRs lassen sich nicht mergen -> zuerst auf "ready" setzen (Fehler ignorieren, falls schon ready).
+          gh pr ready "$PR" -R "$R" || true
+          if gh pr merge "$PR" --"$M" -R "$R"; then
+            gh pr comment "$PR" -R "$R" -b "⏱️ Merge-Timer: PR nach Ablauf der Wartezeit automatisch gemergt ($M)."
+          else
+            gh pr comment "$PR" -R "$R" -b "⏱️ Merge-Timer: Automatisches Mergen fehlgeschlagen (Konflikt, fehlende Checks oder Branch-Schutz?). Bitte manuell prüfen." || true
+            echo "::error::Merge von PR #$PR fehlgeschlagen."
+            exit 1
+          fi
