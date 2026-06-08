@@ -65,7 +65,11 @@ section{padding:14px 0}h2{font-size:1.25rem;margin:18px 0 10px}
 .dcard:hover{transform:translateY(-2px);border-color:var(--amber);box-shadow:0 6px 18px rgba(0,0,0,.07)}
 .dcard .em{font-size:1.7rem}.dcard h3{margin:.3rem 0 .2rem;font-size:1.1rem}
 .dcard p{color:var(--muted);font-size:.9rem}.dcard .n{color:var(--amber-dk);font-weight:700;font-size:.82rem;margin-top:.5rem}
-.buybox{background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:22px;text-align:center;margin:20px 0}
+.buybox{background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:24px;text-align:center;margin:20px 0}
+.btn--xl{font-size:1.08rem;padding:14px 28px}
+.sell{list-style:none;display:inline-block;text-align:left;margin:0 auto .9rem;padding:0}
+.sell li{position:relative;padding-left:1.6rem;margin:.32rem 0;color:var(--ink2)}
+.sell li::before{content:"✓";position:absolute;left:0;color:var(--amber-dk);font-weight:800}
 .note{font-size:.85rem;color:var(--muted);margin-top:10px}
 .faq{margin:8px 0}
 .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:2px 16px;margin:10px 0}
@@ -125,16 +129,21 @@ footer a{color:var(--muted)}</style>
   </section>
   <section>
     <div class="buybox">
-      <p style="font-weight:700;font-size:1.1rem;margin-bottom:.4rem">Neue Ausgaben zu diesem Thema automatisch bekommen</p>
-      <p style="color:var(--ink2);margin-bottom:.8rem">Der tägliche Newsletter (Mo–Fr, 5 Min) liefert sie frei Haus — ehrlich, ohne Hype.</p>
-      <a class="btn" href="https://abannews.beehiiv.com/subscribe">Kostenlos abonnieren →</a>
-      <p class="note">Jederzeit kündbar · kein Tracking · kein Spam.</p>
+      <p style="font-weight:800;font-size:1.18rem;margin-bottom:.4rem">Neue Ausgaben zu diesem Thema — automatisch im Postfach</p>
+      <p style="color:var(--ink2);margin-bottom:.7rem">Der tägliche KI-Newsletter, der dir die Arbeit abnimmt:</p>
+      <ul class="sell">
+        <li>Mo–Fr in <strong>5 Minuten</strong> auf dem Laufenden</li>
+        <li><strong>3 Updates · 1 Tool · 1 Prompt</strong> — sofort nutzbar</li>
+        <li>Ehrlich, <strong>kein Hype</strong>, mit DACH-Blick</li>
+      </ul>
+      <a class="btn btn--xl" href="https://abannews.beehiiv.com/subscribe">Kostenlos abonnieren →</a>
+      <p class="note">Gratis · jederzeit kündbar · kein Tracking, kein Spam.</p>
     </div>
   </section>
   <section><h2>Häufige Fragen</h2><div class="faq"><details><summary>Wie erkenne ich KI-Hype?</summary><p>Fünf Fragen: Wer profitiert von der Behauptung? Demo oder Produktion? Cherry-picked? Reproduzierbar? Was kostet es wirklich, inklusive deiner Zeit? So trennst du in 60 Sekunden Substanz von Marketing.</p></details><details><summary>Kann ich KI-Benchmarks trauen?</summary><p>Mit Vorsicht. Zahlen sind oft auf den Test optimiert. Frag: Wer hat gemessen, gegen was, unter welchen Bedingungen — und passt das zu deinem Anwendungsfall?</p></details><details><summary>Ist Skepsis nicht einfach Pessimismus?</summary><p>Nein. Es geht darum, Aufmerksamkeit und Geld für das aufzuheben, was sich wirklich bewährt — statt jeder Schlagzeile hinterherzulaufen.</p></details></div></section>
   <section>
     <h2>Weitere Dossiers</h2>
-    <div class="grid"><a class="dcard" href="/dossier/ki-werkzeugkasten.html"><span class="em">🧰</span><h3>Der KI-Werkzeugkasten</h3><p>Jeden Freitag ein ehrlicher Tool-Test — hier gebündelt zur Leseroute.</p></a><a class="dcard" href="/dossier/ki-datenschutz-dach.html"><span class="em">🔒</span><h3>KI &amp; Datenschutz im DACH-Raum</h3><p>DSGVO, EU AI Act und was das praktisch für deine Arbeit heißt.</p></a><a class="dcard" href="/dossier/ki-prompts-die-funktionieren.html"><span class="em">💡</span><h3>Prompts, die wirklich funktionieren</h3><p>Erprobte Prompts und Arbeitsweisen — zum Kopieren und Anpassen.</p></a></div>
+    <div class="grid"><a class="dcard" href="/dossier/ki-werkzeugkasten.html"><span class="em">🧰</span><h3>Der KI-Werkzeugkasten</h3><p>Jeden Freitag ein ehrlicher Tool-Test — hier gebündelt zur Leseroute.</p></a><a class="dcard" href="/dossier/ki-datenschutz-dach.html"><span class="em">🔒</span><h3>KI &amp; Datenschutz im DACH-Raum</h3><p>DSGVO, EU AI Act und was das praktisch für deine Arbeit heißt.</p></a><a class="dcard" href="/dossier/ki-prompts-die-funktionieren.html"><span class="em">💡</span><h3>Prompts, die wirklich funktionieren</h3><p>Erprobte Prompts und Arbeitsweisen — zum Kopieren und Anpassen.</p></a><a class="dcard" href="/dossier/ki-modelle-vergleich.html"><span class="em">🤖</span><h3>KI-Modelle &amp; Anbieter im Vergleich</h3><p>Claude, Mistral, Aleph Alpha &amp; Co. — wer was wirklich kann.</p></a><a class="dcard" href="/dossier/ki-fuer-selbststaendige.html"><span class="em">🚀</span><h3>KI für Selbstständige</h3><p>Als Ein-Personen-Team mehr schaffen — ohne dich zu ersetzen.</p></a></div>
     <p class="note" style="margin-top:.8rem"><a href="/archive/">→ Alle 25 Ausgaben im Archiv durchsuchen</a></p>
   </section>
 </div></main>

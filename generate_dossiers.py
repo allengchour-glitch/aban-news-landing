@@ -52,6 +52,22 @@ DOSSIERS = [
      "blurb": "Die Signatur von aban news: KI-Behauptungen gegen die Realität halten. Diese Ausgaben trennen "
               "Substanz von Marketing — damit du Entscheidungen auf Fakten triffst, nicht auf LinkedIn-Lärm.",
      "topics": {"anti-hype", "news-recap"}},
+    {"slug": "ki-modelle-vergleich", "emoji": "🤖",
+     "title": "KI-Modelle & Anbieter im Vergleich",
+     "sub": "Claude, Mistral, Aleph Alpha & Co. — wer was wirklich kann.",
+     "blurb": "Der Modell-Markt sortiert sich ständig neu: China drückt die Preise, Mistral und Aleph Alpha "
+              "bringen das EU-Argument, die US-Anbieter ziehen nach. Diese Ausgaben ordnen ein, wer wofür taugt — "
+              "damit du nach Eignung wählst, nicht nach Schlagzeile.",
+     "topics": set(),
+     "keywords": ["china", "mistral", "sonnet", "claude", "aleph", "openai", "gpt-"]},
+    {"slug": "ki-fuer-selbststaendige", "emoji": "🚀",
+     "title": "KI für Selbstständige",
+     "sub": "Als Ein-Personen-Team mehr schaffen — ohne dich zu ersetzen.",
+     "blurb": "KI ist für Solo-Selbstständige und kleine Teams ein Hebel — bei Akquise, Mail, Admin und Routine. "
+              "Diese Ausgaben zeigen konkrete Workflows aus der Praxis (mit DACH-Datenschutz-Blick), wo KI dir "
+              "Arbeit abnimmt und wo sie es eben nicht tut.",
+     "topics": set(),
+     "keywords": ["selbstständ", "selbstst-nd", "solopreneur", "mail-stack", "leadgen", "mitarbeiter"]},
 ]
 
 # --- Deep-Dives (von aban selbst verfasst: immergültige Analyse/Frameworks, ----
@@ -135,6 +151,35 @@ DEEPDIVES = {
 <p>Zahlen wirken objektiv, sind aber oft auf den Test optimiert. Frag immer: Wer hat gemessen, gegen was, unter welchen Bedingungen — und entspricht das deinem Anwendungsfall? Ein Spitzenwert in einem Labortest sagt wenig über deinen Posteingang aus.</p>
 <div class="dd-note"><strong>Skepsis ist kein Pessimismus.</strong> Es geht nicht darum, alles schlechtzureden, sondern darum, deine Aufmerksamkeit (und dein Geld) für das aufzuheben, was sich wirklich bewährt. Genau das ist die Idee hinter aban news.</div>
 """,
+"ki-modelle-vergleich": """
+<h2>In der Tiefe: Ein Modell wählen, ohne dem Benchmark-Zirkus zu verfallen</h2>
+<p>Welches KI-Modell „das beste" ist, ändert sich gefühlt im Wochentakt — und genau das ist die Falle. Leaderboards messen Laborbedingungen, nicht deinen Posteingang. Die bessere Frage ist nicht „welches ist top", sondern „welches passt zu meiner Aufgabe, meinem Budget und meinen Daten".</p>
+<h3>Worauf es bei der Wahl wirklich ankommt</h3>
+<ul>
+<li><strong>Eignung für deine Aufgabe:</strong> Teste mit deinen echten Texten/Daten. Ein Modell, das im Benchmark vorn liegt, kann bei deinem Anwendungsfall trotzdem schlechter sein.</li>
+<li><strong>Wo die Daten liegen:</strong> EU-Anbieter wie Mistral oder Aleph Alpha sind im DACH-Raum oft das stärkere Argument — nicht wegen des Hypes, sondern wegen Verarbeitungsort und Compliance.</li>
+<li><strong>Kosten &amp; Commoditisierung:</strong> Der Preiskampf (auch aus China) macht Sprachmodelle zunehmend zur Massenware. Zahl nicht für einen Namen, sondern für messbaren Nutzen.</li>
+<li><strong>Lock-in:</strong> Je leichter du den Anbieter wechseln kannst, desto entspannter überstehst du die nächste Markt-Verschiebung.</li>
+</ul>
+<h3>Warum „der Marktführer" selten die richtige Antwort ist</h3>
+<p>Der Abstand zwischen den Top-Modellen schrumpft, während sich Spezialisierung und Preis stärker unterscheiden. Für die meisten Aufgaben reicht „gut genug" — und „gut genug, EU-gehostet, halber Preis" schlägt „Spitzenreiter mit offenen Datenschutz-Fragen".</p>
+<div class="dd-note"><strong>Faustregel:</strong> Wähle zwei Kandidaten, teste sie eine Woche an echter Arbeit, entscheide nach Ergebnis und Datenschutz — nicht nach Ranking.</div>
+""",
+"ki-fuer-selbststaendige": """
+<h2>In der Tiefe: KI als dein Ein-Personen-Team</h2>
+<p>Als Selbstständige:r bist du Marketing, Vertrieb, Buchhaltung und Umsetzung in einer Person. Genau da ist KI ein echter Hebel — nicht als Ersatz für dich, sondern als Assistent, der dir die Routine abnimmt, damit du Zeit für das hast, wofür Kund:innen dich bezahlen.</p>
+<h3>Wo KI dir am meisten Zeit spart</h3>
+<ul>
+<li><strong>Akquise &amp; Leadgen:</strong> Recherche, Erstansprache-Entwürfe, Nachfass-Texte — vorbereitet in Minuten statt Stunden.</li>
+<li><strong>Mail &amp; Kommunikation:</strong> Entwürfe, Zusammenfassungen langer Threads, höfliche Absagen. Du gibst die Richtung vor, KI tippt die erste Version.</li>
+<li><strong>Admin &amp; Routine:</strong> Angebote strukturieren, Texte umformulieren, Checklisten erstellen.</li>
+</ul>
+<h3>Wo sie dich (noch) nicht ersetzt</h3>
+<p>Beziehung, Urteil und Verantwortung bleiben bei dir. KI kennt deine Kund:innen nicht, haftet nicht und trifft keine Entscheidungen. Sie liefert Entwürfe — freigeben musst du. Wer das verwechselt, verschickt irgendwann etwas Peinliches.</p>
+<h3>Datenschutz: der Solo-Stolperstein</h3>
+<p>Gerade allein arbeitet man schnell unsauber. Kundendaten gehören nicht ungeprüft in öffentliche Tools — pseudonymisieren oder vorher Verarbeitungsort und Auftragsverarbeitung klären. Mehr dazu im Datenschutz-Dossier.</p>
+<div class="dd-note"><strong>Starte klein:</strong> Such dir einen einzigen nervigen, wiederkehrenden Vorgang und automatisiere genau den. Ein laufender Workflow bringt mehr als zehn Tools, die du „mal testen" wolltest.</div>
+""",
 }
 
 # --- FAQ je Dossier (ehrlich, immergültig → FAQPage-Schema + sichtbarer Block) -
@@ -170,6 +215,22 @@ FAQS = {
      "Mit Vorsicht. Zahlen sind oft auf den Test optimiert. Frag: Wer hat gemessen, gegen was, unter welchen Bedingungen — und passt das zu deinem Anwendungsfall?"),
     ("Ist Skepsis nicht einfach Pessimismus?",
      "Nein. Es geht darum, Aufmerksamkeit und Geld für das aufzuheben, was sich wirklich bewährt — statt jeder Schlagzeile hinterherzulaufen."),
+],
+"ki-modelle-vergleich": [
+    ("Welches KI-Modell ist das beste?",
+     "Es gibt kein \"bestes\" für alle. Für deine konkrete Aufgabe entscheidet ein kurzer Praxistest mit echten Daten — plus Datenschutz und Kosten. Der Abstand zwischen den Top-Modellen ist kleiner, als die Schlagzeilen suggerieren."),
+    ("Sind EU-Anbieter wie Mistral oder Aleph Alpha eine echte Alternative?",
+     "Für viele DACH-Anwendungen ja — vor allem wegen Verarbeitungsort und Compliance. Bei der reinen Leistung kommt es auf den Anwendungsfall an; deshalb selbst testen statt Ranking glauben."),
+    ("Lohnt es sich, das Modell ständig zu wechseln?",
+     "Nein. Wähle nach Eignung und halte den Wechsel-Aufwand (Lock-in) klein. Erst wenn ein Wechsel spürbar Nutzen oder Datenschutz verbessert, lohnt er sich."),
+],
+"ki-fuer-selbststaendige": [
+    ("Wofür lohnt sich KI als Selbstständige:r am meisten?",
+     "Für wiederkehrende Routine: Akquise-Entwürfe, Mail, Zusammenfassungen, Admin. Starte mit einem einzigen nervigen Vorgang und automatisiere genau den."),
+    ("Ersetzt KI meine Arbeit?",
+     "Nein. Sie liefert Entwürfe und nimmt Routine ab — Urteil, Beziehung und Verantwortung bleiben bei dir. Freigeben musst du immer selbst."),
+    ("Darf ich Kundendaten verwenden?",
+     "Nicht ungeprüft in öffentlichen Tools. Pseudonymisiere oder kläre vorher Verarbeitungsort und Auftragsverarbeitung. Details im Datenschutz-Dossier — keine Rechtsberatung."),
 ],
 }
 
@@ -215,7 +276,11 @@ section{padding:14px 0}h2{font-size:1.25rem;margin:18px 0 10px}
 .dcard:hover{transform:translateY(-2px);border-color:var(--amber);box-shadow:0 6px 18px rgba(0,0,0,.07)}
 .dcard .em{font-size:1.7rem}.dcard h3{margin:.3rem 0 .2rem;font-size:1.1rem}
 .dcard p{color:var(--muted);font-size:.9rem}.dcard .n{color:var(--amber-dk);font-weight:700;font-size:.82rem;margin-top:.5rem}
-.buybox{background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:22px;text-align:center;margin:20px 0}
+.buybox{background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:24px;text-align:center;margin:20px 0}
+.btn--xl{font-size:1.08rem;padding:14px 28px}
+.sell{list-style:none;display:inline-block;text-align:left;margin:0 auto .9rem;padding:0}
+.sell li{position:relative;padding-left:1.6rem;margin:.32rem 0;color:var(--ink2)}
+.sell li::before{content:"✓";position:absolute;left:0;color:var(--amber-dk);font-weight:800}
 .note{font-size:.85rem;color:var(--muted);margin-top:10px}
 .faq{margin:8px 0}
 .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:2px 16px;margin:10px 0}
@@ -358,6 +423,23 @@ def ld(obj):
     return '<script type="application/ld+json">\n' + json.dumps(obj, ensure_ascii=False) + '\n</script>'
 
 
+def select_members(dos, issues):
+    """Mitglied = echte Ausgabe, deren data-topics ODER Titel/URL/Teaser passen."""
+    kws = [k.lower() for k in dos.get("keywords", [])]
+    out = []
+    for it in issues:
+        if it["kind"] != "ausgabe":
+            continue
+        hit = bool(set(it["topics"]) & dos.get("topics", set()))
+        if not hit and kws:
+            hay = (it["title"] + " " + it["url"] + " " + it["preview"]).lower()
+            hit = any(k in hay for k in kws)
+        if hit:
+            out.append(it)
+    out.sort(key=lambda x: x["date"])  # chronologisch = Leseroute
+    return out
+
+
 def breadcrumb(trail):
     return ld({"@context": "https://schema.org", "@type": "BreadcrumbList",
                "itemListElement": [
@@ -367,8 +449,7 @@ def breadcrumb(trail):
 
 
 def render_dossier(dos, issues):
-    members = [it for it in issues if it["kind"] == "ausgabe" and (set(it["topics"]) & dos["topics"])]
-    members.sort(key=lambda x: x["date"])  # chronologisch = Leseroute
+    members = select_members(dos, issues)
     total_min = sum(it["mins"] for it in members) or len(members) * 4
     canon = f"dossier/{dos['slug']}.html"
     ogimg = f"og-dossier-{dos['slug']}.png"
@@ -423,10 +504,15 @@ def render_dossier(dos, issues):
   </section>
   <section>
     <div class="buybox">
-      <p style="font-weight:700;font-size:1.1rem;margin-bottom:.4rem">Neue Ausgaben zu diesem Thema automatisch bekommen</p>
-      <p style="color:var(--ink2);margin-bottom:.8rem">Der tägliche Newsletter (Mo–Fr, 5 Min) liefert sie frei Haus — ehrlich, ohne Hype.</p>
-      <a class="btn" href="https://abannews.beehiiv.com/subscribe">Kostenlos abonnieren →</a>
-      <p class="note">Jederzeit kündbar · kein Tracking · kein Spam.</p>
+      <p style="font-weight:800;font-size:1.18rem;margin-bottom:.4rem">Neue Ausgaben zu diesem Thema — automatisch im Postfach</p>
+      <p style="color:var(--ink2);margin-bottom:.7rem">Der tägliche KI-Newsletter, der dir die Arbeit abnimmt:</p>
+      <ul class="sell">
+        <li>Mo–Fr in <strong>5 Minuten</strong> auf dem Laufenden</li>
+        <li><strong>3 Updates · 1 Tool · 1 Prompt</strong> — sofort nutzbar</li>
+        <li>Ehrlich, <strong>kein Hype</strong>, mit DACH-Blick</li>
+      </ul>
+      <a class="btn btn--xl" href="https://abannews.beehiiv.com/subscribe">Kostenlos abonnieren →</a>
+      <p class="note">Gratis · jederzeit kündbar · kein Tracking, kein Spam.</p>
     </div>
   </section>
   {faq_section}
@@ -463,10 +549,15 @@ def render_index(issues, counts):
   <section><div class="grid">{cards}</div></section>
   <section>
     <div class="buybox">
-      <p style="font-weight:700;font-size:1.1rem;margin-bottom:.4rem">Lieber täglich frisch?</p>
-      <p style="color:var(--ink2);margin-bottom:.8rem">Mo–Fr in 5 Minuten: 3 Updates, 1 Tool, 1 Prompt. Ehrlich, ohne Hype.</p>
-      <a class="btn" href="https://abannews.beehiiv.com/subscribe">Kostenlos abonnieren →</a>
-      <p class="note">Jederzeit kündbar · kein Tracking.</p>
+      <p style="font-weight:800;font-size:1.2rem;margin-bottom:.4rem">Lieber täglich frisch statt nachlesen?</p>
+      <p style="color:var(--ink2);margin-bottom:.7rem">Bekomm den Newsletter, aus dem diese Dossiers entstehen:</p>
+      <ul class="sell">
+        <li>Mo–Fr in <strong>5 Minuten</strong></li>
+        <li><strong>3 Updates · 1 Tool · 1 Prompt</strong></li>
+        <li>Ehrlich, <strong>kein Hype</strong></li>
+      </ul>
+      <a class="btn btn--xl" href="https://abannews.beehiiv.com/subscribe">Kostenlos abonnieren →</a>
+      <p class="note">Gratis · jederzeit kündbar · kein Tracking.</p>
     </div>
     <p class="note"><a href="/archive/">→ Oder alle Ausgaben im Archiv durchsuchen</a></p>
   </section>"""
