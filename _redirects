@@ -191,3 +191,12 @@
 # 404 fallback — Cloudflare Pages serves /404.html automatically for missing routes,
 # aber für SPA-like fallback explicit:
 /*                /404.html             404
+
+# KI-Compliance-Pakete
+/compliance           /ki-compliance.html  301
+/ki-compliance        /ki-compliance.html  301
+/compliance-aerzte     /ki-compliance-aerzte.html  301
+/compliance-anwaelte   /ki-compliance-anwaelte.html  301
+/compliance-steuerberater/ki-compliance-steuerberater.html  301
+/ki-sichtbarkeit      /ki-sichtbarkeit.html  301
+/von-ki-empfohlen     /ki-sichtbarkeit.html  301
