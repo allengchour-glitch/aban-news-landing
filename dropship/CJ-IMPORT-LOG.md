@@ -1711,3 +1711,15 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
     auf „light" matchte (Keyword-Mismatch).
 - **Lehre:** Single-Item-Beauty (Serum/Maske) kam mit Pseudo-„Farbe" (30ml / Schwarz) → auf 1 Standard-Variante normalisiert.
 - **Bestand: 235 cj-real aktiv (+3).**
+
+## 2026-06-08 — Charge 29 (Küche/Deko nachgeladen)
+- **+3 neue Produkte (productSet, ACTIVE, Media READY, 6 Kanäle):**
+  - **Titan-Schneidebrett «Chef»** (CJCJ292269801AZ, 24.90, home+küche) → Küche & Tisch.
+  - **Strickblumen-Strauss «Fleur»** (CJJT292249301AZ, 16.90, 5 Farben, home+deko) → Deko & Wohnaccessoires.
+  - **Keramik-Vase «Craquelé»** (CJJT292033401AZ, 54.90, 10 Formen [Fischschwanz/Amphore/…], home+deko+wohnen).
+- **§5-Ablehnungen:** Astronauten-/Skateboard-Lampe (Name vs. Varianten-Mismatch „Skateboard Desk Lamp" →
+  Produkt nicht sauber beschreibbar) · Bad-Spiegelschrank $81 (sperrig/teuer) · Firewood-Shed $120 (sperrig) ·
+  Car-LED-Strips (off-theme) · diverse Keyword-Fehltreffer (Schachspiel, Makeup-Bag, Body-Cream, Sonnenbrille).
+- **Lehre:** generische 1-Token-`must` (board/jar/mirror/lamp) matchen Müll → 2-Token-`must` nötig; CJ-Such-
+  Qualität für Küche/Deko ist schwächer als für Mode/Beauty.
+- **Bestand: 238 cj-real aktiv (+3).**
