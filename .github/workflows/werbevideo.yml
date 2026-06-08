@@ -92,7 +92,9 @@ jobs:
             OUTBASE="werbung-luxestyle"
           fi
           echo "Konzept=$CONCEPT  Quelle=$SRC  Out=$OUTBASE"
-          for f in reels/veo-hero-*.mp4; do [ -e "$f" ] && printf 'veo|%s|\n' "$f" >> "$D/manifest.txt" || true; done
+          if [ "$CONCEPT" = "fashion" ]; then
+            for f in reels/veo-hero-*.mp4; do [ -e "$f" ] && printf 'veo|%s|\n' "$f" >> "$D/manifest.txt" || true; done
+          fi
           k=0
           tail -n +2 "$SRC" | head -n "$NSTILL" > "$D/rows.csv" || true
           while IFS= read -r line; do
