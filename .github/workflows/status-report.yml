@@ -1,0 +1,44 @@
+name: Status-Report (selbstlaufend)
+
+# Schreibt woechentlich den Geld-/Projekt-Status (tools/abanctl.py status) nach
+# docs/STATUS.md und committet ihn. So sieht man den Stand (Checkout-Links live/leer,
+# Affiliate-Slots, Reels, offene Tasks) ohne irgendetwas auszufuehren.
+on:
+  schedule:
+    - cron: '0 7 * * 1'   # Mo 07:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Status schreiben
+        run: |
+          {
+            echo "# Status — automatisch ($(date -u +%F\ %H:%M) UTC)"
+            echo
+            echo "_Erzeugt von tools/abanctl.py via status-report.yml. Nicht von Hand bearbeiten._"
+            echo
+            echo '```'
+            python3 tools/abanctl.py status
+            echo '```'
+          } > docs/STATUS.md
+      - name: Committen (nur bei Aenderung)
+        run: |
+          if [ -n "$(git status --porcelain docs/STATUS.md)" ]; then
+            git config user.name "status-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add docs/STATUS.md
+            git commit -m "status: Wochenstand aktualisiert [skip ci]"
+            git push
+          else
+            echo "Kein Statuswechsel."
+          fi

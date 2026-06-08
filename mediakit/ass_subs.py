@@ -35,7 +35,7 @@ PlayResY: {H}
 WrapStyle: 0
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: K,DejaVu Sans,64,{p},{sec},{ol},&H64000000,1,0,0,0,100,100,0,0,1,4,3,2,80,80,470,1
+Style: K,DejaVu Sans,52,{p},{sec},{ol},&H64000000,1,0,0,0,100,100,0,0,1,4,3,2,90,90,150,1
 Style: TAG,DejaVu Sans,40,{p},{p},{ol},&H00000000,1,0,0,0,100,100,6,0,1,2,2,8,0,0,70,1
 Style: HOOK,DejaVu Sans,82,{p},{p},{ol},&H64000000,1,0,0,0,100,100,0,0,1,5,4,5,120,120,0,1
 [Events]
@@ -47,7 +47,8 @@ def build_ass(words, total, path, hook="", tag="aban news",
               primary=brand.AMBER, secondary=brand.CREAM, outline=brand.INK):
     """Karaoke-ASS aus Wort-Timings [(wort, start, end), …]. `Name`-Feld ist gesetzt."""
     head = _header(primary, secondary, outline, tag)
-    head += f"Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,{tag}\n"
+    if tag:
+        head += f"Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,{tag}\n"
     lines = []
     if hook:
         hk = hook.upper().replace("\n", " ")
@@ -101,7 +102,8 @@ def srt_to_ass(srt_path, path, hook="", tag="aban news",
     cues = parse_srt(srt_path)
     total = cues[-1][1] if cues else 0.0
     head = _header(primary, secondary, outline, tag)
-    head += f"Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,{tag}\n"
+    if tag:
+        head += f"Dialogue: 0,{fmt_ts(0)},{fmt_ts(total)},TAG,,0,0,0,,{tag}\n"
     lines = []
     if hook:
         hk = hook.upper().replace("\n", " ")

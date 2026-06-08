@@ -157,6 +157,13 @@ footer a{color:var(--muted)}
         <a class="btn" id="buybtn" href="#">Jetzt kaufen</a>
       </p>
       <p class="note">Zahlung über Gumroad (Karte/PayPal, MwSt automatisch). Rechnung inklusive.</p>
+      <hr style="border:none;border-top:1px solid var(--line);margin:1rem 0">
+      <div class="price">9 €<small> / Monat · Abo</small></div>
+      <p>Lieber <strong>immer aktuell</strong>? Das Abo liefert dir <strong>monatlich den frisch
+      gebauten Datensatz</strong> (CSV + JSON) plus API-Zugang. Die Daten werden automatisch neu
+      erzeugt, sobald sich ein Tool-Radar oder die Tool-Datenbank ändert.</p>
+      <p><a class="btn" id="abobtn" href="#" style="background:var(--amber-dk)">Abo starten</a></p>
+      <p class="note">Jederzeit kündbar. Einmal-Kauf reicht für eine Momentaufnahme; das Abo lohnt sich, wenn du fortlaufend aktuelle Daten brauchst.</p>
     </div>
     <p class="note">Für Entwickler:innen: kostenlose JSON-Vorschau unter <code>/api/ki-tools</code> (30 Tools, CORS). Voller Datensatz per API-Key auf Anfrage.</p>
     <p class="note">Lizenz: zur eigenen Nutzung. Keine Weiterverbreitung/Weiterverkauf des Datensatzes als Ganzes. Daten „ohne Gewähr", Anbieter-Angaben können sich ändern — offizielle URLs sind zur Prüfung dabei.</p>
@@ -169,10 +176,13 @@ footer a{color:var(--muted)}
   <a href="/tools.html">Tool-Datenbank (online)</a> · <a href="/">Startseite</a>
 </div></footer>
 
+<script src="/js/checkout-config.js"></script>
 <script>
 // Geld-Schalter: echten Gumroad-Produktlink hier eintragen (z. B. https://…gumroad.com/l/ki-tools-dach).
 // Leer => Mail-Fallback (kein toter Button), genau wie bei Founding/Buch.
 var DATENSATZ_BUY_URL = "https://chourallen.gumroad.com/l/ki-tools-dach";
+// Abo-Link zentral in js/checkout-config.js. Leer => Mail-Fallback.
+var DATENSATZ_ABO_URL = (window.ABAN_CHECKOUT && window.ABAN_CHECKOUT.DATENSATZ_ABO_URL) || "";
 (function(){
   var b=document.getElementById("buybtn");
   if(DATENSATZ_BUY_URL){
@@ -180,6 +190,15 @@ var DATENSATZ_BUY_URL = "https://chourallen.gumroad.com/l/ki-tools-dach";
   }else{
     b.href="mailto:hallo@abannews.com?subject=KI-Tools-Datensatz%20bestellen&body=Hallo%20Aban%2C%20ich%20m%C3%B6chte%20den%20KI-Tools-Datensatz%20(CSV%2BJSON)%20kaufen.";
     b.textContent="Per Mail bestellen";
+  }
+  var a=document.getElementById("abobtn");
+  if(a){
+    if(DATENSATZ_ABO_URL){
+      a.href=DATENSATZ_ABO_URL; a.target="_blank"; a.rel="noopener";
+    }else{
+      a.href="mailto:hallo@abannews.com?subject=KI-Tools-Datensatz%20Abo&body=Hallo%20Aban%2C%20ich%20m%C3%B6chte%20das%20monatliche%20Datensatz-Abo%20(immer%20frische%20Daten%20%2B%20API).";
+      a.textContent="Abo per Mail anfragen";
+    }
   }
 })();
 </script>

@@ -14,6 +14,16 @@
 /aeo              /ai-sichtbarkeit.html   301
 /ki-erwaehnung    /ki-erwaehnungs-check.html  301
 /genannt          /ki-erwaehnungs-check.html  301
+/ki-paket            /ki-sichtbarkeit-paket.html  301
+/sichtbarkeit-paket  /ki-sichtbarkeit-paket.html  301
+/reels               /ki-reels.html  301
+/ki-sichtbar-handwerk      /ki-sichtbarkeit-handwerk.html  301
+/ki-sichtbar-praxen      /ki-sichtbarkeit-praxen.html  301
+/ki-sichtbar-steuerberatung      /ki-sichtbarkeit-steuerberatung.html  301
+/ki-sichtbar-kanzleien      /ki-sichtbarkeit-kanzleien.html  301
+/ki-sichtbar-gastronomie      /ki-sichtbarkeit-gastronomie.html  301
+/start               /links.html  301
+/links               /links.html  301
 /chatgpt-nennt-mich  /ki-erwaehnungs-check.html  301
 /hype-watch       /hype-watch.html        301
 /hypewatch        /hype-watch.html        301
@@ -181,3 +191,12 @@
 # 404 fallback — Cloudflare Pages serves /404.html automatically for missing routes,
 # aber für SPA-like fallback explicit:
 /*                /404.html             404
+
+# KI-Compliance-Pakete
+/compliance           /ki-compliance.html  301
+/ki-compliance        /ki-compliance.html  301
+/compliance-aerzte     /ki-compliance-aerzte.html  301
+/compliance-anwaelte   /ki-compliance-anwaelte.html  301
+/compliance-steuerberater/ki-compliance-steuerberater.html  301
+/ki-sichtbarkeit      /ki-sichtbarkeit.html  301
+/von-ki-empfohlen     /ki-sichtbarkeit.html  301

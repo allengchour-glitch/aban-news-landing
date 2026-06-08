@@ -159,7 +159,7 @@
     /* footer */
     footer{margin-top:1rem;border-top:1px solid var(--line);background:#fff}
     footer .wrap{padding:2.4rem 1.25rem 1.6rem}
-    .footcols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:1.6rem}
+    .footcols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:1.6rem}
     .footcols h4{font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;margin:0 0 .8rem;font-weight:900}
     .footcols a{display:block;font-size:.9rem;color:var(--muted);text-decoration:none;padding:.22rem 0}
     .footcols a:hover{color:var(--ink)}
@@ -288,6 +288,35 @@
       <div class="stat"><b>0&nbsp;€</b><span>kostenlos, jederzeit kündbar</span></div>
     </div>
   </section>
+
+  <!-- KI-REELS TEASER -->
+  <section class="sec">
+    <div class="wrap center">
+      <span class="eyebrow">Neu · Video</span>
+      <h2>KI-Reels — ehrlich in 20 Sekunden</h2>
+      <p class="sub">Kurze, ehrliche Tool-Checks &amp; Faktenchecks als Video — täglich neu, ohne Hype.</p>
+      <div style="display:flex;justify-content:center;margin:1.2rem 0">
+        <a id="reelteaserwrap" href="/reels" style="display:none;width:248px;max-width:80vw;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 8px 26px rgba(0,0,0,.10);background:#000">
+          <video id="reelteaser" muted loop playsinline preload="metadata" style="display:block;width:100%;aspect-ratio:9/16;object-fit:cover" aria-label="KI-Reel Vorschau"></video>
+        </a>
+      </div>
+      <p><a href="/reels" class="btn btn--amber">Alle KI-Reels ansehen →</a></p>
+    </div>
+  </section>
+  <script>
+  (function(){
+    var v=document.getElementById('reelteaser'), w=document.getElementById('reelteaserwrap');
+    if(!v) return;
+    fetch('/media/reels/manifest.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
+      var reels=(d&&d.reels)||[]; if(!reels.length) return;
+      v.src=reels[0].file; w.style.display='block';
+      var play=function(){ v.play().catch(function(){}); };
+      if('IntersectionObserver' in window){
+        new IntersectionObserver(function(es){es.forEach(function(e){ e.isIntersecting?play():v.pause(); });},{threshold:0.4}).observe(v);
+      } else { v.setAttribute('autoplay',''); play(); }
+    }).catch(function(){});
+  })();
+  </script>
 
   <!-- FEATURES -->
   <section class="sec">
@@ -467,6 +496,7 @@
         <p style="color:var(--muted);font-size:.9rem;margin:.2rem 0 0;max-width:30ch">Täglicher KI-Newsletter für DACH-Profis. Ehrlich, ohne Hype — kuratiert in der Schweiz.</p>
       </div>
       <div><h4>Newsletter</h4><a href="#signup">Abonnieren</a><a href="/preview.html">Beispiel-Ausgabe</a><a href="/founding.html">Premium</a></div>
+      <div><h4>Alles &amp; Angebote</h4><a href="/start">Alles auf einen Blick</a><a href="/reels">KI-Reels</a><a href="/ki-sichtbarkeit.html">Von KI gefunden werden</a><a href="/ki-compliance.html">KI-Compliance</a></div>
       <div><h4>Mehr</h4><a href="/gratis-ki-tools.html">Gratis KI-Tools</a><a href="/shop.html">Shop</a><a href="/ki-ratgeber.html">Ratgeber</a><a href="/ueber-aban.html">Über aban</a></div>
       <div><h4>Rechtliches</h4><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div>
     </div>

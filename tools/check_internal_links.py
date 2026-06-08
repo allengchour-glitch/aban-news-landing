@@ -49,6 +49,19 @@ def is_skippable(url: str) -> bool:
 
 def scan() -> dict[str, list[str]]:
     os.chdir(REPO)
+    # Pretty-URLs aus _redirects als gültige Ziele anerkennen (kein Fehlalarm).
+    redirects: set[str] = set()
+    rp = Path("_redirects")
+    if rp.exists():
+        for line in rp.read_text(encoding="utf-8", errors="ignore").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            parts = line.split()
+            if len(parts) >= 2:
+                frm = parts[0].split("?")[0].rstrip("/")
+                redirects.add(frm)
+                redirects.add(frm.lstrip("/"))
     htmls = [
         p for p in Path(".").rglob("*.html")
         if "/dist/" not in p.as_posix()
@@ -64,6 +77,9 @@ def scan() -> dict[str, list[str]]:
                 continue
             path = url.split("#")[0].split("?")[0]
             if not path:
+                continue
+            # Pretty-URL per _redirects? -> gültig
+            if path.rstrip("/") in redirects:
                 continue
             if path.startswith("/"):
                 tgt = Path(path.lstrip("/"))

@@ -48,7 +48,11 @@ def main() -> int:
     live = json.loads(sp.read_text(encoding="utf-8")) if sp.exists() else []
     live_slugs = {p["slug"] for p in live}
     for p in live:
-        if not str(p.get("buy", "")).startswith("https://"):
+        buy = str(p.get("buy", "")).strip()
+        if not buy:
+            # leer = bewusst „Bald verfügbar" (Shop zeigt sauberen Fallback) -> nur Hinweis
+            warn.append(f"Produkt {p.get('slug')}: Bezahllink noch leer (zeigt 'Bald verfügbar')")
+        elif not buy.startswith("https://"):
             fail.append(f"Produkt {p.get('slug')}: ungültiger Bezahllink")
     ok.append(f"Live-Produkte (shop-products.json): {len(live)}")
     for s in cat_slugs:

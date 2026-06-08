@@ -33,7 +33,7 @@ SITE = "abannews.com"
 # Markenkit (Farben, Fonts, Slide-Baustein) liegt jetzt zentral in mediakit/brand.py
 from mediakit.brand import (  # noqa: E402
     AMBER, AMBER_DK, CREAM, INK, MUTED, BG, STRIKE, WHITE, W, H,
-    font, wrap, draw_block, slide, _ts,
+    font, wrap, draw_block, slide, slide_overlay, _ts,
 )
 
 
@@ -98,27 +98,42 @@ def maybe_tts(text, out_path):
         return False
 
 
+# Pexels-Suchbegriffe je Slide (für den B-Roll-Look, dezent + thematisch)
+HYPE_QUERIES = [
+    "technology abstract dark motion",
+    "news headlines media screens flashing",
+    "data research charts calm office",
+    "coffee laptop morning newsletter desk",
+]
+FOOTER = "abannews.com/hype-watch"
+
+
 def build_one(fall, do_voice):
     d = OUT / fall["id"]
     d.mkdir(parents=True, exist_ok=True)
     lines = clip_script(fall)
 
-    # Slides
     accent = STRIKE if fall.get("verdikt", "").lower() in ("falsch", "irreführend") else AMBER_DK
-    slide(d / "slide_01.png", kicker="HYPE-CHECK", headline=fall["claim"], body="")
-    slide(d / "slide_02.png", kicker="DER HYPE", headline="Was behauptet wird",
-          body=_short(fall.get("der_hype", ""), 240))
-    slide(d / "slide_03.png", kicker="DIE REALITÄT", headline=fall.get("verdikt", "Geprüft"),
-          body=_short(fall.get("die_realitaet", ""), 260), accent=accent)
-    slide(d / "slide_04.png", kicker="MEHR DAVON", headline="Ehrliche KI-Faktenchecks",
-          body="Täglich 5 Minuten, kein Hype — Newsletter auf abannews.com.")
+    # 4 Slide-Specs einmal → deckende Slides + transparente Overlays (B-Roll)
+    specs = [
+        dict(kicker="HYPE-CHECK", headline=fall["claim"], body=""),
+        dict(kicker="DER HYPE", headline="Was behauptet wird", body=_short(fall.get("der_hype", ""), 160)),
+        dict(kicker="DIE REALITÄT", headline=fall.get("verdikt", "Geprüft"),
+             body=_short(fall.get("die_realitaet", ""), 170), accent=accent),
+        dict(kicker="MEHR DAVON", headline="Ehrliche KI-Faktenchecks",
+             body="Täglich 5 Minuten, kein Hype — Newsletter auf abannews.com."),
+    ]
+    for i, s in enumerate(specs, 1):
+        slide(d / f"slide_0{i}.png", footer=FOOTER, **s)
+        slide_overlay(d / f"overlay_0{i}.png", footer=FOOTER, **s)
 
     (d / "skript.txt").write_text("\n\n".join(lines), encoding="utf-8")
     (d / "untertitel.srt").write_text(srt(lines), encoding="utf-8")
     (d / "post.txt").write_text(social_caption(fall), encoding="utf-8")
+    (d / "queries.txt").write_text("\n".join(HYPE_QUERIES), encoding="utf-8")
     if do_voice:
         maybe_tts(" ".join(lines), d / "voiceover.mp3")
-    print(f"  ✓ {fall['id']} → 4 Slides + Skript + SRT + Caption")
+    print(f"  ✓ {fall['id']} → 4 Slides + Overlays + Skript + SRT + Caption + Queries")
 
 
 def main():

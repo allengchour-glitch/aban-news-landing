@@ -1,0 +1,91 @@
+name: KI-Bild-Veredelung (Gemini)
+
+# Täglich: 5 echte Produktfotos KI-veredeln (Editorial, produkttreu) → social/enhanced/ committen
+# + Queue social/posts_image.csv mit Produktlink füllen (Meta-Autopilot postet sie gedrosselt).
+# Danach (falls Shopify-Creds gesetzt) das veredelte Bild zusätzlich ans Produkt hängen.
+# No-op ohne GEMINI_API_KEY.
+#
+# WICHTIG: Modell ist Gemini 2.5 Flash Image ("Nano Banana") via :generateContent — Bild-zu-Bild,
+# produkttreu. NICHT Imagen (das ist Text->Bild via :predict und erhält das Produktfoto nicht).
+
+on:
+  schedule:
+    - cron: '30 4 * * *'   # 04:30 UTC — vor dem 08:00-Post-Slot
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 'Gezielt (Komma-Liste names aus good_products.csv), leer = rotierend 5'
+        type: string
+        default: ''
+      model:
+        description: 'Bild-Modell (leer = Skript-Default gemini-2.5-flash-image)'
+        type: string
+        default: ''
+      dry_run:
+        description: 'Nur testen (kein API-Call, keine Kosten)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gemini-enhance
+  cancel-in-progress: false
+
+jobs:
+  enhance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Veredeln (Gemini 2.5 Flash Image / Nano Banana)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_IMAGE_MODEL: ${{ inputs.model }}
+          ENHANCE_ONLY: ${{ inputs.only }}
+          BATCH: '5'
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node automation/gemini_enhance_image.mjs
+
+      - name: Commit veredelte Bilder + Queue
+        run: |
+          if [ -z "$(git status --porcelain social/ automation/.enhance_pointer 2>/dev/null)" ]; then
+            echo "Nichts veredelt (No-op?)."; exit 0
+          fi
+          git config user.name "luxestyle-ki-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add social/enhanced social/posts_image.csv 2>/dev/null || true
+          [ -f automation/.enhance_pointer ] && git add automation/.enhance_pointer || true
+          git commit -m "chore(ki): veredelte Produktbilder + Queue [skip ci]" || { echo "nichts zu committen"; exit 0; }
+          for i in 1 2 3 4 5; do
+            if git push; then echo "gepusht."; break; fi
+            echo "rebase --autostash & retry ($i)…"; git pull --rebase --autostash origin main || true; sleep 3
+          done
+
+      - name: Warten auf GitHub Pages (Bild-URL live)
+        if: ${{ !inputs.dry_run }}
+        run: sleep 90
+
+      - name: Bild ans Shopify-Produkt hängen (no-op ohne Creds)
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node automation/shopify_add_enhanced.mjs
+
+      - name: Commit Ledger (falls Bilder hinzugefügt)
+        run: |
+          if [ -n "$(git status --porcelain social/enhanced/_added.txt 2>/dev/null)" ]; then
+            git config user.name "luxestyle-ki-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add social/enhanced/_added.txt
+            git commit -m "chore(ki): Shopify-Bild-Ledger [skip ci]" || true
+            for i in 1 2 3; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          fi

@@ -109,6 +109,20 @@ footer a{color:var(--muted)}
     </ol>
   </section>
 
+  <section>
+    <h2>Speziell für deine Branche</h2>
+    <div class="card">
+      <p>Wie KI-Empfehlungen konkret in deinem Bereich laufen — mit echten Such-Fragen deiner Kund:innen:</p>
+      <p>
+        <a href="/ki-sichtbarkeit-handwerk.html">Handwerk</a> ·
+        <a href="/ki-sichtbarkeit-praxen.html">Arztpraxen</a> ·
+        <a href="/ki-sichtbarkeit-steuerberatung.html">Steuerberatung</a> ·
+        <a href="/ki-sichtbarkeit-kanzleien.html">Anwaltskanzleien</a> ·
+        <a href="/ki-sichtbarkeit-gastronomie.html">Gastronomie</a>
+      </p>
+    </div>
+  </section>
+
   <section id="abo">
     <div class="buybox">
       <div class="price">9 €<small> / Monat · jederzeit kündbar</small></div>
@@ -127,10 +141,11 @@ footer a{color:var(--muted)}
   <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
 </div></footer>
 
+<script src="/js/checkout-config.js"></script>
 <script>
-// Geld-Schalter: Stripe-Abo-Payment-Link hier eintragen (Subscription).
+// Checkout-Link zentral in js/checkout-config.js eintragen → Button live.
 // Leer => Mail-Fallback, kein toter Button.
-var MONITOR_ABO_URL = "";
+var MONITOR_ABO_URL = (window.ABAN_CHECKOUT && window.ABAN_CHECKOUT.MONITOR_ABO_URL) || "";
 (function(){
   var b=document.getElementById("buybtn");
   if(MONITOR_ABO_URL){ b.href=MONITOR_ABO_URL; b.target="_blank"; b.rel="noopener"; }

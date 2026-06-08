@@ -25,7 +25,8 @@
  */
 import https from 'node:https';
 
-const { CJ_EMAIL, CJ_API_KEY, SHOPIFY_SHOP, SHOPIFY_ADMIN_TOKEN, GEMINI_API_KEY } = process.env;
+const { CJ_EMAIL, CJ_API_KEY, SHOPIFY_SHOP, SHOPIFY_ADMIN_TOKEN, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET, GEMINI_API_KEY } = process.env;
+let SHOP_TOKEN = SHOPIFY_ADMIN_TOKEN || '';  // wird ggf. per Client-Credentials befüllt
 const MAX = Number(process.env.AUTOPILOT_MAX || 6);
 const TARGET_STATUS = (process.env.AUTOPILOT_STATUS || 'ACTIVE').toUpperCase() === 'DRAFT' ? 'DRAFT' : 'ACTIVE';
 const CJ_BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
@@ -40,8 +41,8 @@ const PUBLICATIONS = [
 
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '2XL', '3XL', '4XL', '5XL', 'XXXL'];
 
-if (!CJ_EMAIL || !CJ_API_KEY || !SHOPIFY_SHOP || !SHOPIFY_ADMIN_TOKEN) {
-  console.log('No-Op: Secrets fehlen (CJ_EMAIL/CJ_API_KEY/SHOPIFY_SHOP/SHOPIFY_ADMIN_TOKEN). Nichts zu tun.');
+if (!CJ_EMAIL || !CJ_API_KEY || !SHOPIFY_SHOP || !(SHOPIFY_ADMIN_TOKEN || (SHOPIFY_CLIENT_ID && SHOPIFY_CLIENT_SECRET))) {
+  console.log('No-Op: Secrets fehlen (CJ_EMAIL/CJ_API_KEY/SHOPIFY_SHOP + SHOPIFY_ADMIN_TOKEN ODER SHOPIFY_CLIENT_ID/SECRET).');
   process.exit(0);
 }
 
@@ -87,9 +88,20 @@ async function imgOk(url) {
         r = await req('GET', url); return r.status >= 200 && r.status < 300; }
   catch { return false; }
 }
+async function ensureShopToken() {
+  if (SHOP_TOKEN) return SHOP_TOKEN;
+  // Modern (2026): Client-Credentials-Grant → frischer Token (CLAUDE.md / reel-analytics.mjs)
+  if (SHOPIFY_CLIENT_ID && SHOPIFY_CLIENT_SECRET) {
+    const r = await req('POST', `https://${SHOPIFY_SHOP}/admin/oauth/access_token`,
+      { 'Content-Type': 'application/json' },
+      { client_id: SHOPIFY_CLIENT_ID, client_secret: SHOPIFY_CLIENT_SECRET, grant_type: 'client_credentials' });
+    try { SHOP_TOKEN = JSON.parse(r.body).access_token || ''; } catch { SHOP_TOKEN = ''; }
+  }
+  return SHOP_TOKEN;
+}
 async function shopify(query, variables) {
   const r = await req('POST', `https://${SHOPIFY_SHOP}/admin/api/${API_VER}/graphql.json`,
-    { 'X-Shopify-Access-Token': SHOPIFY_ADMIN_TOKEN, 'Content-Type': 'application/json' },
+    { 'X-Shopify-Access-Token': SHOP_TOKEN, 'Content-Type': 'application/json' },
     { query, variables });
   const j = JSON.parse(r.body);
   if (j.errors) throw new Error('Shopify: ' + JSON.stringify(j.errors).slice(0, 300));
@@ -150,6 +162,8 @@ async function geminiEnrich(name, rawDesc) {
   if (!aj.result) { console.log('CJ Auth fehlgeschlagen (Key prüfen/rotieren).'); process.exit(0); }
   const tok = aj.data.accessToken;
   console.log(`Autopilot VOLL-AUTO · Ziel-Status bei QA-PASS: ${TARGET_STATUS} · Gemini: ${GEMINI_API_KEY ? 'AN' : 'aus (→ DRAFT)'} · MAX ${MAX}`);
+  await ensureShopToken();
+  if (!SHOP_TOKEN) { console.log('Shopify-Auth fehlgeschlagen (SHOPIFY_ADMIN_TOKEN oder CLIENT_ID/SECRET prüfen).'); process.exit(0); }
 
   const doy = Math.floor((Date.now() - Date.UTC(new Date().getUTCFullYear(), 0, 0)) / 864e5);
   const picks = []; for (let i = 0; i < 14; i++) picks.push(POOL[(doy * 3 + i) % POOL.length]);

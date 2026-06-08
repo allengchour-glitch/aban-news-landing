@@ -50,6 +50,8 @@ jobs:
           CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
           SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
           SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           AUTOPILOT_MAX: ${{ github.event.inputs.max || '6' }}
           AUTOPILOT_STATUS: ${{ github.event.inputs.status || vars.AUTOPILOT_STATUS || 'ACTIVE' }}
