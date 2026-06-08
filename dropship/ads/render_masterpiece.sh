@@ -28,7 +28,7 @@ echo "DEBUG render: voice=$VOICE  DUR=${DUR}s  N=$N  OUTRO=$OUTRO  T=$T  SEG=$SE
 if [ "$LANG_" = "en" ]; then O1="Shop now -> your look"; O4="Free shipping over CHF 65"; else O1="Jetzt shoppen -> dein Look"; O4="Gratis Versand ab CHF 65"; fi
 
 CAPBOX="drawbox=x=0:y=1560:w=1080:h=340:color=black@0.42:t=fill,drawbox=x=80:y=1665:w=8:h=150:color=${GOLD}:t=fill"
-idx=0
+idx=0; SEGDUR=()
 for line in "${LINES[@]}"; do
   typ="${line%%|*}"; rest="${line#*|}"; src="${rest%%|*}"; cap="${rest#*|}"
   printf '%s' "$cap" > "$W/cap$idx.txt"
@@ -45,11 +45,14 @@ for line in "${LINES[@]}"; do
   else
     [ -f "$src" ] || { echo "fehlt, ueberspringe: $src"; continue; }
     if [ $((idx % 2)) -eq 0 ]; then ZP="z='min(1.03+0.0008*on,1.14)'"; else ZP="z='max(1.14-0.0008*on,1.03)'"; fi
-    $FF -loop 1 -t $SEG -i "$src" -filter_complex \
+    $FF -loop 1 -framerate $FPS -t $SEG -i "$src" -filter_complex \
       "[0:v]scale=2160:3840:force_original_aspect_ratio=increase,crop=2160:3840,setsar=1,zoompan=${ZP}:d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1080x1920:fps=${FPS},${CAPBOX},${CAPTXT}${HOOKTXT}[v]" \
       -map "[v]" -t $SEG -r $FPS -c:v libx264 -pix_fmt yuv420p -crf 19 -preset veryfast "$W/seg$idx.mp4"
   fi
-  echo "DEBUG seg$idx ($typ): $(ffprobe -v error -show_entries format=duration -of csv=p=0 "$W/seg$idx.mp4" 2>/dev/null)s"
+  sd=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$W/seg$idx.mp4" 2>/dev/null)
+  printf '%s' "$sd" | grep -qE '^[0-9]+(\.[0-9]+)?$' || sd=$SEG
+  SEGDUR+=( "$sd" )
+  echo "DEBUG seg$idx ($typ): ${sd}s"
   idx=$((idx+1))
 done
 [ "$idx" -ge 2 ] || { echo "zu wenige gueltige Segmente"; exit 1; }
@@ -61,7 +64,8 @@ $FF -f lavfi -t $OUTRO -i "color=c=${BG}:s=1080x1920:r=${FPS}" -filter_complex \
   -map "[v]" -t $OUTRO -r $FPS -c:v libx264 -pix_fmt yuv420p -crf 19 -preset veryfast "$W/outro.mp4"
 
 segs=(); for ((k=0;k<idx;k++)); do segs+=( "$W/seg$k.mp4" ); done; segs+=( "$W/outro.mp4" )
-durs=(); for ((k=0;k<idx;k++)); do durs+=( $SEG ); done; durs+=( $OUTRO )
+# Offsets aus den ECHT gemessenen Segmentlaengen (nicht aus dem nominalen SEG) -> xfade-Kette kollabiert nicht
+durs=(); for ((k=0;k<idx;k++)); do durs+=( "${SEGDUR[$k]}" ); done; durs+=( $OUTRO )
 inputs=""; for s in "${segs[@]}"; do inputs+=" -i $s"; done
 fc=""; prev="0:v"; acc=${durs[0]}
 for ((k=1;k<${#segs[@]};k++)); do
