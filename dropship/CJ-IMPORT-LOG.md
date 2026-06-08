@@ -70,6 +70,17 @@
 - **✅ Charge 5 (Schmuck, alter Key):** Statement-Ohrringe «Doré» gebürstetes Gold `15421171859841` (29.90) +
   Sommer-Armband «Évil» Schmetterling/Nazar `15421171892609` (5 Stile, 19.90) — live in 6 Kanälen. Abgelehnt:
   Hochzeits-Kartenbox (off-theme), Fruchtprint-Cap (Novelty). cj-real: 184 → **186** · **heute 15 Produkte live.**
+- **📲 Social-Posting der NEUEN Produkte (2026-06-08):** Über `social-meta-autopost.yml` (Branch-Ref-Trick, ohne
+  `main` anzufassen) NEUE Produktbilder gepostet — **Facebook + Threads laufen** (IG mit gelegentlichem
+  Verarbeitungs-Delay). Queue `social/posts_image.csv` umgestellt: alte „hat-User-schon"-Bilder → `skip`,
+  **13 neue Produktposts** (mit Produktlink + WELCOME10) als `ready` eingefügt; werden seriell gepostet.
+- **🔴 TIKTOK FEHLT NOCH (User-Merker):** TikTok-Auto-Posting ist **noch nicht aktiv** — die TikTok-App ist
+  technisch fertig (`tiktok-autopost.yml`/`automation/tiktok-autopost.mjs`, Token gesetzt), aber eine
+  **nicht-auditierte App darf nur auf PRIVATE Konten posten** → Business-Konto geht nicht öffentlich. **To-do (User,
+  USER-CHECKLISTE §A.4):** developers.tiktok.com → App „LuxeStyle Poster" → Content Posting API → **Audit/Review
+  beantragen**; nach Freigabe Repo-Variable `TT_PRIVACY_LEVEL=PUBLIC_TO_EVERYONE`. Aktuell posten nur FB+Threads(+IG).
+- **🟡 Queue→main offen:** Direkter Push nach `main` ist (korrekt) gesperrt → Queue-Bereinigung für den
+  2×/Tag-Cron läuft über PR-Merge, am besten NACH dem aktuellen Post-Batch (sonst Doppel-Posts Branch↔Cron).
 - **✅ Charge 6 + Merge:** Glücks-Halskette «Fortune» Hufeisen/Kreuz `15421226746241` (16.90) live. cj-real → **187**
   (**16 Produkte heute**). **PR #401 nach `main` gemergt** → Autopilot ist jetzt auf dem Default-Branch = aktiv.
   Beim Merge: origin/main (aban-news Autonom-Ausbau) integriert; **Lehre aus aktualisierter Checkliste:**
