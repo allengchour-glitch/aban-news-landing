@@ -134,3 +134,15 @@ gesetzt; Top-10-Bestseller umsortiert; Rückgabefrist/SEO/Sub-Collections live. 
    **30 Tagen** (Ankündigungsleiste + Collection-Texte). → in den Artikeln auf 30 Tage angleichen.
 **Empfehlung:** Beides über die Blog-/Content-Generator-Session als Bulk-Fix (find/replace im Body), nicht
 einzeln von Hand (Artikel-Bodies sind je ~6 KB; Einzel-Edits sind fehleranfällig + ausserhalb des CJ-Auftrags).
+
+## 🔴 PRODUKTSEITEN-FIXES (Befund 2026-06-09 via Search&Discovery-Check) — Customizer
+Live-Produkt-Template `templates/product.json` ausgelesen. Search & Discovery IST installiert.
+**Reihenfolge nach Wichtigkeit (alles Customizer → Produkt-Template):**
+1. **🔴 Versand-Akkordeon „Versand & Lieferung" enthält FALSCHE Horizon-Platzhalter** (auf JEDER Produktseite):
+   - „Lieferung in 2–5 Werktagen" → real **7–14 Tage / 1–2 Wochen** (sonst Beschwerden + Rückbuchungen bei Dropship-Laufzeit!).
+   - „Ab CHF 50 versenden wir kostenlos" → **ab CHF 65** (Konsistenz mit Ankündigungsleiste + Collections).
+2. **🟡 Empfehlungssektion „You may also like" → auf Cross-Sell umstellen:** im Abschnitt „Product recommendations"
+   die Einstellung **recommendation_type: „related" → „complementary"** (damit das eben gesetzte „Passt dazu"
+   angezeigt wird) + Heading „You may also like" → **„Das passt dazu"** (DE).
+3. **✅ schon ok:** Rückgabe „30 Tage", Judge.me-Badge + Review-Widget verdrahtet (nur Reviews/Token fehlen).
+Hinweis: Live-Theme-Schreibzugriff ist API-seitig gesperrt → diese 2 Punkte gehen nur im Customizer.
