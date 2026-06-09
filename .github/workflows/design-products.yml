@@ -38,7 +38,7 @@ jobs:
           PRINTFUL_STORE_ID: ${{ secrets.PRINTFUL_STORE_ID }}
           LIMIT: ${{ github.event.inputs.limit || '2' }}
           ONLY: ${{ github.event.inputs.only }}
-          DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && '' || '1' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && '0' || '1' }}
         run: node automation/printful_create_design_products.mjs
       - name: Ledger commit
         if: ${{ github.event.inputs.dry_run == 'false' }}
