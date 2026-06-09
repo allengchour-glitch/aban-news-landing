@@ -94,6 +94,10 @@ const html = `<div class="lspod">
 .lspod-final{text-align:center;background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:34px 18px;margin:10px 14px 6px;}
 .lspod-final h3{font-size:clamp(22px,3.6vw,32px);font-weight:800;margin:0 0 8px;}
 .lspod-final p{color:var(--mut);margin:0 0 18px;}
+.lspod-insp{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 14px;}
+.lspod-insp figure{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;}
+.lspod-insp img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
+.lspod-insp figcaption{font-size:12px;color:var(--mut);text-align:center;padding:7px 6px;font-weight:600;}
 .lspod-sticky{display:block;position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:50;background:var(--gold);color:#fff;text-align:center;font-weight:800;font-size:15px;padding:13px 28px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.22);transition:transform .15s;}
 .lspod-sticky:hover{transform:translateX(-50%) translateY(-2px);}
 @media(max-width:768px){
@@ -127,6 +131,19 @@ const html = `<div class="lspod">
     ${prods.map(card).join('\n    ')}
   </div>
   <p class="lspod-note">Preis inkl. einseitigem Druck. Alle Optionen &amp; den Endpreis siehst du transparent im Designer – keine versteckten Kosten.</p>
+</section>
+
+<section class="lspod-section">
+  <h3 class="lspod-sech">Inspiration</h3>
+  <p class="lspod-secsub">So könnte deins aussehen – Text, Foto, Logo oder Motiv. Du gestaltest, wir drucken.</p>
+  <div class="lspod-insp">
+    <figure><img loading="lazy" src="https://abannews.com/social/looks/ex-tshirt-mountain.png" alt="Design-Beispiel: Minimalistisches T-Shirt"><figcaption>Minimal-Linie</figcaption></figure>
+    <figure><img loading="lazy" src="https://abannews.com/social/looks/ex-hoodie-sunset.png" alt="Design-Beispiel: Retro-Hoodie"><figcaption>Retro-Sunset</figcaption></figure>
+    <figure><img loading="lazy" src="https://abannews.com/social/looks/ex-mug-quote.png" alt="Design-Beispiel: Tasse mit Spruch"><figcaption>Dein Spruch</figcaption></figure>
+    <figure><img loading="lazy" src="https://abannews.com/social/looks/ex-tote-cat.png" alt="Design-Beispiel: Tote mit Motiv"><figcaption>Dein Motiv</figcaption></figure>
+    <figure><img loading="lazy" src="https://abannews.com/social/looks/ex-tshirt-paint.png" alt="Design-Beispiel: Buntes T-Shirt"><figcaption>Farbenfroh</figcaption></figure>
+    <figure><img loading="lazy" src="https://abannews.com/social/looks/ex-case-marble.png" alt="Design-Beispiel: Handyhülle Marmor"><figcaption>Dein Stil</figcaption></figure>
+  </div>
 </section>
 
 <section class="lspod-section" style="background:var(--bg);border-radius:20px;margin:8px 0;">
