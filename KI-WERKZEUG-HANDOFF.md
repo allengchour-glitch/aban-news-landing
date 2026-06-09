@@ -41,6 +41,13 @@ Sitemap, `online-tools.html`, LinkedIn-Queue (`aban-tool-hype-detektor`, postet 
   erzeugt (Titel/JSON-LD/Count automatisch). **WICHTIG: ki-glossar.html ist GENERIERT** — Änderungen IMMER im
   Generator machen, sonst überschreibt der nächste Lauf sie (Hype-Link im Band ist jetzt im Generator). Zahl-Refs
   in index/online-tools/ki-start auf 33 aktualisiert. Begriffe füttern auch die Social-Posts (gen_social_content).
+- **OG-Bild für Hype-Detektor** (PR #554): `brand/gen_og_hype.py` → `og-ki-hype-detektor.png` (1200×630, Marke
+  + ehrlich→Hype-Balken); `og:image` + `twitter:card` auf beiden Hype-Seiten → bessere Teil-Klickrate.
+- **Vergleiche 194 → 197** (PR #554): Perplexity hatte keinen Vergleich mit den großen Chatbots → in
+  `data/tools.json` `perplexity.alternatives += chatgpt/gemini/claude` → `generate_tool_vergleiche.py` erzeugt
+  **chatgpt-vs-perplexity / gemini-vs-perplexity / claude-vs-perplexity** (Top-Suchbegriffe). Hub+Zahl-Refs auto/
+  manuell auf 197. **Merke:** `vergleich/*` + Hub sind GENERIERT; neue Paare über `alternatives` in tools.json +
+  Regenerieren; Sitemap-Zeilen manuell aus `vergleich/_sitemap-fragment.txt` nachziehen.
 - **Newsletter-Hebel offen (nur User):** beehiiv liefert nur Link, kein Inline-Formular. **beehiiv-Embed-Snippet**
   (`<iframe src="https://embeds.beehiiv.com/…">` aus Settings→Subscribe Forms) → dann baue ich Inline-Signup site-weit
   statt nur Weiterleitung (= direkter Abonnenten-Boost).

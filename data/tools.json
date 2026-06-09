@@ -250,7 +250,10 @@
         "you",
         "phind",
         "tavily",
-        "exa"
+        "exa",
+        "chatgpt",
+        "gemini",
+        "claude"
       ],
       "use_cases": [
         "Research",
