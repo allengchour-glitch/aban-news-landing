@@ -1,0 +1,323 @@
+typ,text,link,hashtags,status
+Glossar,"🧠 KI-Begriff erklärt: LLM (Large Language Model)
+
+Ein großes Sprachmodell, das aus riesigen Textmengen gelernt hat, das nächste Wort vorherzusagen.
+
+Klartext: Eine sehr gute Autovervollständigung. Es „versteht“ nicht wie ein Mensch — es rechnet Wahrscheinlichkeiten.
+
+⚠️ „Die KI denkt“ ist Marketing. Sie sagt plausible Wörter voraus, mehr nicht.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Prompt
+
+Die Eingabe/Anweisung, die du dem Modell gibst.
+
+Klartext: Was du in den Chat tippst. Je klarer und konkreter, desto besser das Ergebnis.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Token
+
+Die kleinste Einheit, in die Text fürs Modell zerlegt wird — oft Wortteile.
+
+Klartext: Abrechnungs- und Längeneinheit. „1000 Tokens“ sind grob 700–750 deutsche Wörter.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Kontextfenster
+
+Wie viel Text (Tokens) ein Modell gleichzeitig „im Blick“ behalten kann.
+
+Klartext: Das Kurzzeitgedächtnis pro Chat. Ist es voll, vergisst das Modell den Anfang.
+
+⚠️ Riesige Kontextfenster klingen toll — die Qualität in der Mitte langer Eingaben lässt aber oft nach.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Halluzination
+
+Wenn das Modell etwas Falsches selbstbewusst als Fakt ausgibt.
+
+Klartext: Es erfindet Quellen, Zahlen oder Namen, die echt klingen. Immer prüfen.
+
+⚠️ Kein seltener Bug, sondern Teil der Funktionsweise. Deshalb: nie ungeprüft übernehmen.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: RAG (Retrieval-Augmented Generation)
+
+Das Modell schlägt vor der Antwort in deinen Dokumenten/Daten nach und nutzt die Funde.
+
+Klartext: KI mit angeschlossenem Aktenschrank — antwortet auf Basis deiner echten Unterlagen.
+
+⚠️ Reduziert Halluzinationen, beseitigt sie aber nicht. Die Quelle muss stimmen.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Agent
+
+Ein KI-System, das mehrschrittig handelt: planen, Werkzeuge nutzen, Ergebnis prüfen.
+
+Klartext: Nicht nur antworten, sondern Aufgaben erledigen (z. B. recherchieren, Mails entwerfen, Tools bedienen).
+
+⚠️ 2026 das Buzzword schlechthin. Vieles „Agentic“ sind in Wahrheit ein paar verkettete Prompts.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Fine-Tuning
+
+Ein vortrainiertes Modell mit eigenen Beispielen auf einen Stil/eine Aufgabe nachjustieren.
+
+Klartext: Dem Modell deinen Ton/Spezialfall antrainieren.
+
+⚠️ Oft unnötig: ein gutes Prompt + RAG bringt für kleine Betriebe meist mehr als teures Fine-Tuning.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Embedding
+
+Text als Zahlenvektor, der Bedeutung abbildet — Ähnliches liegt nah beieinander.
+
+Klartext: Die Technik hinter „semantischer“ Suche und RAG.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Vektordatenbank
+
+Eine Datenbank, die Embeddings speichert und blitzschnell ähnliche findet.
+
+Klartext: Der Aktenschrank hinter RAG.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Temperatur
+
+Ein Regler für Zufall/Kreativität bei der Ausgabe (0 = konservativ, hoch = wilder).
+
+Klartext: Niedrig für Fakten/Code, höher für Brainstorming.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Multimodal
+
+Ein Modell, das mehrere Eingabe-/Ausgabearten kann: Text, Bild, Audio, teils Video.
+
+Klartext: Du kannst ein Foto reinschicken und Fragen dazu stellen.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Reasoning-Modell
+
+Ein Modell, das vor der Antwort sichtbar „nachdenkt“ (Zwischenschritte) — gut für Logik/Mathe.
+
+Klartext: Langsamer und teurer, dafür stärker bei kniffligen Aufgaben.
+
+⚠️ Für einfache Texte überdimensioniert — ein normales Modell reicht da und kostet weniger.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Inferenz
+
+Das Ausführen eines fertig trainierten Modells, um eine Antwort zu erzeugen.
+
+Klartext: Der Moment, in dem du auf „Senden“ drückst und es rechnet — das kostet pro Aufruf.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Parameter
+
+Die gelernten „Stellschrauben“ eines Modells; mehr ≈ mehr Kapazität.
+
+Klartext: „70B“ heißt 70 Milliarden Parameter.
+
+⚠️ Mehr Parameter ≠ automatisch besser. Kleinere, gut trainierte Modelle schlagen oft größere.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Open Weights vs. Open Source
+
+Open Weights: Modellgewichte frei nutzbar. Open Source: zusätzlich Code/Trainingsdaten offen.
+
+Klartext: Viele „offene“ Modelle sind nur Open Weights — nicht dasselbe wie echte Open Source.
+
+⚠️ „Open“ wird gern als Marketing benutzt. Lizenz genau lesen, bes. für kommerzielle Nutzung.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Quantisierung
+
+Modellgewichte mit weniger Präzision speichern, damit sie kleiner/schneller laufen.
+
+Klartext: Macht Modelle auf normaler Hardware nutzbar, bei minimalem Qualitätsverlust.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Distillation
+
+Ein kleines Modell lernt, ein großes nachzuahmen — kompakter bei ähnlicher Leistung.
+
+Klartext: Wie ein gutes Kompakt-Modell, das vom „Lehrer“ abgeschaut hat.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: System-Prompt
+
+Eine versteckte Grund-Anweisung, die Rolle und Regeln des Modells vorgibt.
+
+Klartext: Die Bühnenanweisung vor deinem eigentlichen Prompt.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Prompt Injection
+
+Ein Angriff, bei dem manipulierter Text dem Modell heimlich neue Befehle unterschiebt.
+
+Klartext: Sicherheitsrisiko, sobald KI fremde Inhalte (Webseiten, Mails) verarbeitet.
+
+⚠️ Real und ungelöst. Gib Agenten keine sensiblen Rechte ohne Kontrolle.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Guardrails
+
+Regeln/Filter, die unerwünschte oder riskante Ausgaben verhindern sollen.
+
+Klartext: Die Leitplanken — hilfreich, aber umgehbar.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Benchmark
+
+Standard-Test, um Modelle zu vergleichen (z. B. Mathe-, Code-Aufgaben).
+
+Klartext: Ranglisten-Punkte.
+
+⚠️ Benchmarks werden „trainiert“ und gern gecherrypickt. Dein eigener Praxistest zählt mehr.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: MCP (Model Context Protocol)
+
+Ein offener Standard, über den KI-Apps sicher an Tools und Datenquellen andocken.
+
+Klartext: Eine Art USB-Anschluss zwischen KI und deinen Programmen.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: EU AI Act
+
+EU-Verordnung, die KI nach Risiko reguliert — mit Pflichten je nach Einsatz.
+
+Klartext: Für die meisten kleinen Betriebe v. a.: Transparenz (kennzeichnen, dass KI im Spiel ist).",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: Datenresidenz / DSGVO
+
+Wo deine Daten verarbeitet/gespeichert werden und nach welchem Datenschutzrecht.
+
+Klartext: Für DACH wichtig: EU-Verarbeitung und „keine Trainingsnutzung“ möglichst vertraglich sichern.
+
+⚠️ „DSGVO-konform“ auf der Anbieter-Seite reicht nicht — prüf Auftragsverarbeitung und Serverstandort.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Glossar,"🧠 KI-Begriff erklärt: AGI (Artificial General Intelligence)
+
+Hypothetische KI, die Menschen über praktisch alle Aufgaben hinweg ebenbürtig ist.
+
+Klartext: Gibt es nicht. Heutige Modelle sind eng, auch wenn sie breit wirken.
+
+⚠️ Das größte Hype-Wort. Für deinen Betrieb irrelevant — es zählt, was heute zuverlässig funktioniert.",https://abannews.com/ki-glossar.html,#KI #KünstlicheIntelligenz #DACH #abannews #KIerklärt,entwurf
+Tool-Tipp,"🛠️ Tool-Tipp: Claude (Anthropic) — Worth-it 9.5/10
+
+Bester Conversational-AI für deutsche Texte. Nutze ich täglich für aban news. Sonnet 4.6 ist mein Default, Opus für lange Recherche, Haiku für Bulk.
+
+Ehrlich getestet, kein Affiliate-Hype.",https://abannews.com/welche-ki-fuer-was.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Tool-Tipp,"🛠️ Tool-Tipp: OpenRouter (OpenRouter) — Worth-it 9/10
+
+Pragmatischer Multi-Model-Router. Bei API-Kosten-Fragen unschlagbar. Hatte ich monatelang ignoriert — Fehler. Jetzt mein Default für A/B-Tests zwischen Providern.
+
+Ehrlich getestet, kein Affiliate-Hype.",https://abannews.com/welche-ki-fuer-was.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Tool-Tipp,"🛠️ Tool-Tipp: n8n (n8n (DE)) — Worth-it 9/10
+
+Self-hostbar, DSGVO-freundlich, deutsche Firma. Mein Backend für Newsletter-Automation. Make.com ist polierter, n8n ist robuster und kontrollierbarer.
+
+Ehrlich getestet, kein Affiliate-Hype.",https://abannews.com/welche-ki-fuer-was.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Tool-Tipp,"🛠️ Tool-Tipp: Cursor (Anysphere) — Worth-it 9/10
+
+Mein Default-Editor. VSCode-Fork mit Claude/GPT integriert. Composer-Modus ist der Game-Changer für Vibecoding. Wenn du Code schreibst und kein Cursor hast — verlierst du Zeit.
+
+Ehrlich getestet, kein Affiliate-Hype.",https://abannews.com/welche-ki-fuer-was.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Tool-Tipp,"🛠️ Tool-Tipp: Claude Code (Anthropic) — Worth-it 9/10
+
+Terminal-basierter Coding-Agent. Wenn du Routinen automatisierst (Refactor 50 Files, Test-Coverage hochziehen), ist's stark. CLI > GUI für Power-User.
+
+Ehrlich getestet, kein Affiliate-Hype.",https://abannews.com/welche-ki-fuer-was.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Tool-Tipp,"🛠️ Tool-Tipp: Granola (Granola) — Worth-it 9/10
+
+Mein neuer Default. Kein Bot-Im-Meeting — läuft im Hintergrund auf deinem Mac. Notizen-Output für deutsche Meetings ist erstklassig. Hat Otter abgelöst.
+
+Ehrlich getestet, kein Affiliate-Hype.",https://abannews.com/welche-ki-fuer-was.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Tool-Tipp,"🛠️ Tool-Tipp: DeepL (DeepL (DE)) — Worth-it 9/10
+
+Deutsche Firma (Köln). Beste DE↔EN-Übersetzung, Punkt. Write ist Grammarly-Konkurrent — solider für Deutsch. Pro-Account ist Standard-Ausstattung jedes DACH-Solos.
+
+Ehrlich getestet, kein Affiliate-Hype.",https://abannews.com/welche-ki-fuer-was.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Tool-Tipp,"🛠️ Tool-Tipp: Obsidian (Obsidian) — Worth-it 9/10
+
+Local-First, plain Markdown. Mit Plugins (Copilot, Smart Connections) wird's AI-fähig. Mein zweites Brain seit 4 Jahren.
+
+Ehrlich getestet, kein Affiliate-Hype.",https://abannews.com/welche-ki-fuer-was.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Tool-Tipp,"🛠️ Tool-Tipp: MCP (Model Context Protocol) (Anthropic (Open Spec)) — Worth-it 9/10
+
+Offener Standard für Tool-Calling. Claude, Cursor, Windsurf, alle adoptieren. Wenn du Tools für Agents baust: das ist's.
+
+Ehrlich getestet, kein Affiliate-Hype.",https://abannews.com/welche-ki-fuer-was.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Tool-Tipp,"🛠️ Tool-Tipp: ChatGPT (OpenAI) — Worth-it 8.5/10
+
+Standardausstattung. GPT-5 ist solider Allrounder, aber für deutsche Wirtschaftstexte landet Claude konsistent feiner. Wenn du nur ein Tool hast: dieses.
+
+Ehrlich getestet, kein Affiliate-Hype.",https://abannews.com/welche-ki-fuer-was.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Tool-Tipp,"🛠️ Tool-Tipp: Perplexity (Perplexity AI) — Worth-it 8.5/10
+
+Recherche-Tool Nr. 1. Pro mit Sonar-Modellen ersetzt für mich Google bei 80% der Fragen. Quellen-Transparenz ist der Killer-Feature.
+
+Ehrlich getestet, kein Affiliate-Hype.",https://abannews.com/welche-ki-fuer-was.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Tool-Tipp,"🛠️ Tool-Tipp: Midjourney (Midjourney) — Worth-it 8.5/10
+
+Bildqualitäts-König. v7 ist erstaunlich. Für Marketing-Assets, Editorial-Bilder, Cover. Discord-First ist nervig, aber Web-UI funktioniert mittlerweile.
+
+Ehrlich getestet, kein Affiliate-Hype.",https://abannews.com/welche-ki-fuer-was.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Tool-Tipp,"🛠️ Tool-Tipp: Flux (Black Forest Labs (DE)) — Worth-it 8.5/10
+
+Deutsche Firma (Freiburg), Stable-Diffusion-Macher. Flux.1 Dev ist Top-Performance. Open-Weights — ideal für DACH-Compliance.
+
+Ehrlich getestet, kein Affiliate-Hype.",https://abannews.com/welche-ki-fuer-was.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Tool-Tipp,"🛠️ Tool-Tipp: ElevenLabs (ElevenLabs) — Worth-it 8.5/10
+
+Deutsche Stimmen klingen 2026 erstaunlich natürlich. Für Podcasts, Voiceovers, Hörbücher. Voice-Clone ist erschreckend gut — mit allen ethischen Implikationen.
+
+Ehrlich getestet, kein Affiliate-Hype.",https://abannews.com/welche-ki-fuer-was.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Vergleich,"⚔️ ChatGPT vs Claude — ehrlich verglichen.
+
+Worth-it: ChatGPT 8.5/10 · Claude 9.5/10.
+Fürs Gros: Claude. Aber es kommt auf deinen Anwendungsfall an.",https://abannews.com/vergleich/chatgpt-vs-claude.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Vergleich,"⚔️ Claude Code vs Cursor — ehrlich verglichen.
+
+Worth-it: Claude Code 9/10 · Cursor 9/10.
+Fürs Gros: Claude Code. Aber es kommt auf deinen Anwendungsfall an.",https://abannews.com/vergleich/claude-code-vs-cursor.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Vergleich,"⚔️ Claude vs Mistral Le Chat — ehrlich verglichen.
+
+Worth-it: Claude 9.5/10 · Mistral Le Chat 8/10.
+Fürs Gros: Claude. Aber es kommt auf deinen Anwendungsfall an.",https://abannews.com/vergleich/claude-vs-mistral.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Vergleich,"⚔️ Claude vs Le Chat (Mistral) — ehrlich verglichen.
+
+Worth-it: Claude 9.5/10 · Le Chat (Mistral) 8.0/10.
+Fürs Gros: Claude. Aber es kommt auf deinen Anwendungsfall an.",https://abannews.com/vergleich/claude-vs-le-chat.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Vergleich,"⚔️ Groq vs OpenRouter — ehrlich verglichen.
+
+Worth-it: Groq 8/10 · OpenRouter 9/10.
+Fürs Gros: OpenRouter. Aber es kommt auf deinen Anwendungsfall an.",https://abannews.com/vergleich/groq-vs-openrouter.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Vergleich,"⚔️ Claude Code vs Cline — ehrlich verglichen.
+
+Worth-it: Claude Code 9/10 · Cline 8/10.
+Fürs Gros: Claude Code. Aber es kommt auf deinen Anwendungsfall an.",https://abannews.com/vergleich/claude-code-vs-cline.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Vergleich,"⚔️ Cline vs Cursor — ehrlich verglichen.
+
+Worth-it: Cline 8/10 · Cursor 9/10.
+Fürs Gros: Cursor. Aber es kommt auf deinen Anwendungsfall an.",https://abannews.com/vergleich/cline-vs-cursor.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Vergleich,"⚔️ Flux vs Midjourney — ehrlich verglichen.
+
+Worth-it: Flux 8.5/10 · Midjourney 8.5/10.
+Fürs Gros: Flux. Aber es kommt auf deinen Anwendungsfall an.",https://abannews.com/vergleich/flux-vs-midjourney.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Vergleich,"⚔️ Claude vs Lex — ehrlich verglichen.
+
+Worth-it: Claude 9.5/10 · Lex 7.5/10.
+Fürs Gros: Claude. Aber es kommt auf deinen Anwendungsfall an.",https://abannews.com/vergleich/claude-vs-lex.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Vergleich,"⚔️ Cursor vs Windsurf — ehrlich verglichen.
+
+Worth-it: Cursor 9/10 · Windsurf 8/10.
+Fürs Gros: Cursor. Aber es kommt auf deinen Anwendungsfall an.",https://abannews.com/vergleich/cursor-vs-windsurf.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Vergleich,"⚔️ Claude vs Gemini — ehrlich verglichen.
+
+Worth-it: Claude 9.5/10 · Gemini 7.5/10.
+Fürs Gros: Claude. Aber es kommt auf deinen Anwendungsfall an.",https://abannews.com/vergleich/claude-vs-gemini.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Vergleich,"⚔️ Aider vs Claude Code — ehrlich verglichen.
+
+Worth-it: Aider 8/10 · Claude Code 9/10.
+Fürs Gros: Claude Code. Aber es kommt auf deinen Anwendungsfall an.",https://abannews.com/vergleich/aider-vs-claude-code.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Vergleich,"⚔️ Kagi vs Perplexity — ehrlich verglichen.
+
+Worth-it: Kagi 8/10 · Perplexity 8.5/10.
+Fürs Gros: Perplexity. Aber es kommt auf deinen Anwendungsfall an.",https://abannews.com/vergleich/kagi-vs-perplexity.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Vergleich,"⚔️ Cursor vs GitHub Copilot — ehrlich verglichen.
+
+Worth-it: Cursor 9/10 · GitHub Copilot 7.5/10.
+Fürs Gros: Cursor. Aber es kommt auf deinen Anwendungsfall an.",https://abannews.com/vergleich/cursor-vs-github-copilot.html,#KI #KünstlicheIntelligenz #DACH #abannews #KITools,entwurf
+Prompt,"💡 Prompt zum Kopieren: Angebotstext fuer ein Erstgespraech schreiben
+
+„Du bist mein Texter. Schreibe ein Angebot fuer [Leistung] an [Kundentyp]. Nenne zuerst das Ziel des Kunden in einem Satz, dann genau drei Pakete (klein, mittel, gross) mit Preis [Preisbereich] und je drei konkreten Leistungen. Schliesse mit einem klaren naechsten Schritt. Ton: sachlich, ohne Werbefloskeln. Maximal 250 Woerter.""
+
+Tipp: Gib dem Modell die echten Preise und kuerze danach selbst, statt es raten zu lassen.",https://abannews.com/prompt-baukasten.html,#KI #KünstlicheIntelligenz #DACH #abannews #Prompt #Promptengineering,entwurf
+Prompt,"💡 Prompt zum Kopieren: Positionierung in einem Satz schaerfen
+
+„Hilf mir, meine Positionierung zu schaerfen. Hier ist, was ich mache: [kurze Beschreibung]. Formuliere fuenf Varianten des Satzes 'Ich helfe [Zielgruppe], [Ergebnis] zu erreichen, ohne [typisches Problem]'. Jede Variante maximal 20 Woerter, konkret, ohne Buzzwords. Frage mich danach, welche zwei Varianten ich kombinieren wuerde.""
+
+Tipp: Lies die Varianten laut vor: was sich gestelzt anfuehlt, fliegt raus.",https://abannews.com/prompt-baukasten.html,#KI #KünstlicheIntelligenz #DACH #abannews #Prompt #Promptengineering,entwurf
+Prompt,"💡 Prompt zum Kopieren: Preis ruhig begruenden
+
+„Ein Interessent findet meinen Preis von [Preis] zu hoch fuer [Leistung]. Schreibe mir drei kurze Antworten: eine, die den Nutzen in Zahlen zeigt, eine, die ein guenstigeres Paket anbietet, und eine, die freundlich Nein sagt. Jede Antwort hoechstens vier Saetze, du-Form, ohne Druck.""
+
+Tipp: Nimm die Antwort, bei der du dich am wohlsten fuehlst, sie wirkt echter.",https://abannews.com/prompt-baukasten.html,#KI #KünstlicheIntelligenz #DACH #abannews #Prompt #Promptengineering,entwurf
+Prompt,"💡 Prompt zum Kopieren: Realistischen Wochenplan bauen
+
+„Hier sind meine Aufgaben fuer diese Woche: [Liste]. Ich habe [Anzahl] fokussierte Stunden pro Tag. Sortiere die Aufgaben nach Wirkung auf [mein Ziel], markiere, was ich streichen oder verschieben kann, und schlage einen Wochenplan vor, der nicht ueberladen ist. Plane jeden Tag eine Pufferstunde ein.""
+
+Tipp: Sag dem Modell ehrlich, wie viele Stunden du wirklich hast, nicht wie viele du moechtest.",https://abannews.com/prompt-baukasten.html,#KI #KünstlicheIntelligenz #DACH #abannews #Prompt #Promptengineering,entwurf
+Prompt,"💡 Prompt zum Kopieren: Kostenvoranschlag verstaendlich erklaeren
+
+„Schreibe einen Begleittext zu meinem Kostenvoranschlag fuer [Gewerk] beim Kunden [Name]. Erklaere in einfacher Sprache, was die Positionen [Position 1], [Position 2] und [Position 3] bedeuten und warum sie noetig sind. Ton: ruhig, ehrlich, kein Verkaufsdruck. Schliesse mit der Bitte um Rueckfragen.""
+
+Tipp: Fuege echte Stundensaetze und Materialkosten ein, dann stimmt die Erklaerung.",https://abannews.com/prompt-baukasten.html,#KI #KünstlicheIntelligenz #DACH #abannews #Prompt #Promptengineering,entwurf
+Prompt,"💡 Prompt zum Kopieren: Termin kurzfristig verschieben
+
+„Schreibe eine kurze Nachricht an einen Kunden, dass ich den Termin am [Datum] wegen [Grund] verschieben muss. Biete zwei neue Termine an, entschuldige dich knapp ohne lange Erklaerung und bestaetige, dass der Auftrag fest bleibt. Hoechstens fuenf Saetze, du-Form wenn der Kunde geduzt wird, sonst Sie.""
+
+Tipp: Schick zwei feste Alternativtermine mit, das spart das Hin und Her.",https://abannews.com/prompt-baukasten.html,#KI #KünstlicheIntelligenz #DACH #abannews #Prompt #Promptengineering,entwurf
+Prompt,"💡 Prompt zum Kopieren: Auf eine Online-Bewertung antworten
+
+„Ein Kunde hat folgende Bewertung hinterlassen: [Bewertungstext]. Schreibe eine oeffentliche Antwort: bedanke dich, gehe auf den konkreten Punkt ein und biete bei Kritik eine Loesung an. Bleib sachlich, auch wenn die Bewertung unfair ist. Maximal vier Saetze, keine Standardfloskeln.""
+
+Tipp: Antworte auch auf gute Bewertungen, das sehen kuenftige Kunden mit.",https://abannews.com/prompt-baukasten.html,#KI #KünstlicheIntelligenz #DACH #abannews #Prompt #Promptengineering,entwurf
+Prompt,"💡 Prompt zum Kopieren: Materialliste fuer einen Auftrag erstellen
+
+„Ich plane [Arbeit, z.B. Badezimmer fliesen, 12 qm]. Erstelle eine strukturierte Materialliste mit Mengen, geteilt in 'Pflicht' und 'sicherheitshalber mehr'. Markiere Posten, bei denen ich die Menge selbst pruefen muss. Frage am Ende nach drei Angaben, die dir fuer eine genauere Liste fehlen.""
+
+Tipp: Die KI schaetzt Mengen nur grob, nimm sie als Startpunkt, nicht als Bestellung.",https://abannews.com/prompt-baukasten.html,#KI #KünstlicheIntelligenz #DACH #abannews #Prompt #Promptengineering,entwurf

@@ -255,6 +255,7 @@ footer a{{color:var(--muted)}}
 </html>
 """
 
-with open(os.path.join(ROOT, "ki-glossar.html"), "w", encoding="utf-8") as f:
-    f.write(HTML)
-print(f"✓ ki-glossar.html erzeugt ({len(TERMS)} Begriffe)")
+if __name__ == "__main__":
+    with open(os.path.join(ROOT, "ki-glossar.html"), "w", encoding="utf-8") as f:
+        f.write(HTML)
+    print(f"✓ ki-glossar.html erzeugt ({len(TERMS)} Begriffe)")
