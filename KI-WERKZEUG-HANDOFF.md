@@ -55,6 +55,10 @@ Sitemap, `online-tools.html`, LinkedIn-Queue (`aban-tool-hype-detektor`, postet 
   (5×5, Freifeld, Win-Detection, neue Karte/Reset/Drucken, Teilen-Buttons). Selbst-ironisch zum Claim „kein
   Buzzword-Bingo". Clientseitig, druckbar. Verdrahtet: online-tools, Sitemap, Querlink vom Hype-Detektor.
   Headless getestet (12 Gewinnlinien korrekt, Syntax ok).
+- **Neues Tool (praktisch): `ki-richtlinie.html`** (PR #557) — KI-Richtlinien-Generator: Klicks → fertige
+  „KI-Nutzungsrichtlinie fürs Team" (erlaubte Tools, Tabu-Daten, Prüfpflicht, Ansprechperson) zum Kopieren/Drucken.
+  Clientseitig, keine Rechtsberatung. Echter KMU-Bedarf (DSGVO-Check empfiehlt genau das). Verdrahtet: online-tools,
+  Sitemap, ki-start-Kachel, Querlink aus dem DSGVO-Check-Band. Syntax ok.
 - **Newsletter-Hebel offen (nur User):** beehiiv liefert nur Link, kein Inline-Formular. **beehiiv-Embed-Snippet**
   (`<iframe src="https://embeds.beehiiv.com/…">` aus Settings→Subscribe Forms) → dann baue ich Inline-Signup site-weit
   statt nur Weiterleitung (= direkter Abonnenten-Boost).
