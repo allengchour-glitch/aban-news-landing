@@ -59,6 +59,10 @@ Sitemap, `online-tools.html`, LinkedIn-Queue (`aban-tool-hype-detektor`, postet 
   „KI-Nutzungsrichtlinie fürs Team" (erlaubte Tools, Tabu-Daten, Prüfpflicht, Ansprechperson) zum Kopieren/Drucken.
   Clientseitig, keine Rechtsberatung. Echter KMU-Bedarf (DSGVO-Check empfiehlt genau das). Verdrahtet: online-tools,
   Sitemap, ki-start-Kachel, Querlink aus dem DSGVO-Check-Band. Syntax ok.
+- **2 weitere Tools (PR #558):** `ki-prompt-checker.html` (Prompt-Verbesserer: prüft Rolle/Kontext/Format/
+  Beispiel/Grenzen → Score 0–100 + fehlende Bausteine + Gerüst; headless: vage 25, detailliert 88) und
+  `avv-anfrage.html` (AVV/DPA-Anfrage-Mail an KI-Anbieter + Datenschutz-Fragen, Copy + mailto). Beide clientseitig,
+  verdrahtet (online-tools, Sitemap, ki-start, Querlinks). **Gratis-Tool-Familie jetzt 15+.**
 - **Newsletter-Hebel offen (nur User):** beehiiv liefert nur Link, kein Inline-Formular. **beehiiv-Embed-Snippet**
   (`<iframe src="https://embeds.beehiiv.com/…">` aus Settings→Subscribe Forms) → dann baue ich Inline-Signup site-weit
   statt nur Weiterleitung (= direkter Abonnenten-Boost).
