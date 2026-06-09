@@ -353,8 +353,8 @@
       "url": "https://www.coingecko.com"
     },
     {
-      "titel": "Stooq — Aktien-Kurse",
-      "url": "https://stooq.com"
+      "titel": "Yahoo Finance — Aktien-Kurse",
+      "url": "https://finance.yahoo.com"
     }
   ],
   "fetched_at": "2026-06-09T23:29:30+00:00"
