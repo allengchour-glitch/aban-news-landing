@@ -69,17 +69,25 @@ const hidden = []; const errors = [];
 
 // ---- Facebook ----
 async function moderateFB(){
-  if(!FB_ID || !FB_TOK) return;
-  const posts = await gget(`https://graph.facebook.com/${V}/${FB_ID}/posts?fields=id&limit=${LOOKBACK}&access_token=${encodeURIComponent(FB_TOK)}`);
-  if(!posts.ok){ errors.push(`FB posts: ${posts.status} ${JSON.stringify(posts.j.error||posts.j).slice(0,160)}`); return; }
+  if(!FB_ID) return;
+  // Robust: nimm das Token, das für DIESE Seite funktioniert (FB/IG/META durchprobieren),
+  // damit ein falsch befülltes Einzel-Secret nicht alles blockiert.
+  let fbTok = null;
+  for(const tok of [...new Set([FB_TOK, IG_TOK, process.env.META_ACCESS_TOKEN].filter(Boolean))]){
+    const t = await gget(`https://graph.facebook.com/${V}/${FB_ID}?fields=id&access_token=${encodeURIComponent(tok)}`);
+    if(t.ok){ fbTok = tok; break; }
+  }
+  if(!fbTok){ errors.push(`FB: kein gültiges Token für Seite ${FB_ID} (alle Tokens abgelehnt — Token erneuern oder FB_PAGE_ID prüfen).`); return; }
+  const posts = await gget(`https://graph.facebook.com/${V}/${FB_ID}/feed?fields=id&limit=${LOOKBACK}&access_token=${encodeURIComponent(fbTok)}`);
+  if(!posts.ok){ errors.push(`FB feed: ${posts.status} ${JSON.stringify(posts.j.error||posts.j).slice(0,160)}`); return; }
   for(const p of posts.j.data || []){
-    const cs = await gget(`https://graph.facebook.com/${V}/${p.id}/comments?fields=id,message,from,is_hidden&limit=100&access_token=${encodeURIComponent(FB_TOK)}`);
+    const cs = await gget(`https://graph.facebook.com/${V}/${p.id}/comments?fields=id,message,from,is_hidden&limit=100&access_token=${encodeURIComponent(fbTok)}`);
     if(!cs.ok) continue;
     for(const c of cs.j.data || []){
       if(c.is_hidden) continue;
       if(!isSpam(c.message)) continue;
       if(DRY){ hidden.push(`[FB][DRY] ${(c.message||'').slice(0,60)}`); continue; }
-      const h = await gpost(`https://graph.facebook.com/${V}/${c.id}?access_token=${encodeURIComponent(FB_TOK)}`, {is_hidden:true});
+      const h = await gpost(`https://graph.facebook.com/${V}/${c.id}?access_token=${encodeURIComponent(fbTok)}`, {is_hidden:true});
       if(h.ok) hidden.push(`[FB] ${(c.message||'').slice(0,60)}`);
       else errors.push(`FB hide ${c.id}: ${h.status} ${JSON.stringify(h.j.error||h.j).slice(0,120)}`);
     }

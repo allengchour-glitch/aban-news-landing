@@ -158,3 +158,12 @@ Ich habe das Live-Theme dupliziert und im Entwurf **2 Produktseiten-Fixes fertig
   (Rollback falls nötig: altes Theme „Horizon · LuxeStyle Branded" wieder veröffentlichen.)
 - Obsolet/löschbar: Entwurf „Horizon · LuxeStyle Hero-Polish (Claude)" (vor deinen Hero-Änderungen, veraltet).
 - Damit sind die früheren Produktseiten-TODOs (Versand-Text + Empfehlungstyp) **erledigt** — nur Publish fehlt.
+
+## 🔑 TODO (2026-06-09) — Meta-Token erneuern (blockiert Posten UND Spam-Moderation)
+Trockenlauf der Spam-Moderation ergab: **FB-Token ungültig/abgelaufen** (`OAuthException code 190 — Zugriffstoken deaktiviert`).
+→ Betrifft auch den Auto-Post (FB). **Frisches Long-Lived-Token mit erweiterten Scopes setzen:**
+- Scopes FB: `pages_read_engagement`, `pages_manage_posts`, `pages_manage_engagement`
+- Scopes IG: `instagram_basic`, `instagram_content_publish`, `instagram_manage_comments`
+- Als GitHub-Secrets: `FB_PAGE_ACCESS_TOKEN` (+ `FB_PAGE_ID`), `IG_ACCESS_TOKEN` (+ `IG_USER_ID`) — oder `META_ACCESS_TOKEN`.
+- Danach läuft: ✅ Auto-Post FB/IG + ✅ Spam-Moderation (`social-comment-moderate.yml`, 3×/Tag). Test: Workflow „Social Spam-Moderation" → dry_run=true.
+- Sofort & ohne Token: Metas eingebaute Filter (IG → Kommentare → manueller Filter + „Links ausblenden"; FB → Moderationshilfe/Keyword-Blockliste).
