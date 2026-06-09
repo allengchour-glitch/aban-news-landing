@@ -168,3 +168,37 @@
      Kunden-Design erstellt (noch zu bauen).
 - **Nächster geplanter autonomer Schritt:** Beispiel-Design-Galerie auf der POD-Seite (Gemini-Bilder), war hinter dem
   funktionierenden Gestalten-Button gegated — jetzt möglich.
+
+## 🟢 HANDOFF 2026-06-09 (ZUERST LESEN — POD-Selbstgestalten KOMPLETT live + offener Profit-Schritt)
+
+### Live & autonom (alles auf `main`, gepusht)
+- **POD „Gestalten"-Tool auf ALLEN 26 wunschdesign-Produkten** (`pod/designer.js` via GitHub Pages → abannews.com/pod/designer.js;
+  Snippet je Produktbeschreibung via `automation/pod_inject_designer.mjs` + Workflow `pod-inject-designer.yml`, idempotent).
+  Features: **Vorne/Hinten** (eigene Mockups+Vorschau), **Text** (Schrift/Farbe/Grösse/Platzierung, Live-Vorschau),
+  **Logo/Bild-Upload** (Cloudinary, Tab erscheint sobald `CLOUD`+`PRESET` in designer.js gesetzt), **zweisprachig DE/EN**
+  (auto aus `Shopify.locale`), **locale-sichere Cart-URLs**. Design reist als Bestell-`properties` mit; zusätzlich in
+  versteckte `properties[]`-Formularfelder gespiegelt → **auch der normale Theme-Kaufbutton trägt das Design** (kein Blank-Order).
+- **Shop ist mehrsprachig** (DE primär / EN / FR / IT alle published → Switcher nativ). **POD-Seite EN live**:
+  luxestyle.ch/en/pages/selbst-gestalten via `automation/pod_translate_page.mjs` (`translationsRegister`, Page 698444710273).
+- **Inspirations-Galerie** (6 KI-Beispiel-Designs) live auf DE+EN POD-Seite (nach dem Produktraster).
+- **KI-Bild-Generator** `automation/gen_looks.mjs` + `gen-looks.yml` (Gemini „Nano Banana", funktioniert!). 19 Looks in
+  `social/looks/` (ex-*, ex2-*, hero-*). Eigene Batches via `social/looks/prompts.json`. Bilder via Pages: abannews.com/social/looks/<name>.png.
+- **hero-summer-2.png** in Shopify-Files hochgeladen (MediaImage 69637951193473) → User setzt es im Customizer als Startseiten-Hero
+  (Theme API-gesperrt). Weitere gute Heroes: hero-dark-luxe, hero-street-young (Fremd-Text „NOCTURE"/„FASHION" → durch LuxeStyle ersetzen, falls genutzt).
+- **Werbevideos** (werbevideo.yml) + **Social-Autopilot** Feed (video-meta-autopost.yml) + Stories (story-meta-autopost.yml) laufen.
+- **Gemini-Kritik-Loops**: pod-page-critique.yml, pod-widget-critique.yml (→ dropship/pod/*-critique.md).
+
+### 🚨 KRITISCH OFFEN: PREISE ZU TIEF → kein/negativer Gewinn
+- POD-Preise teils UNTER Printful-Kosten: T-Shirt CHF 8 (Kosten ~10-11), Tasse CHF 7.50 (~7-8), Premium-Hoodie CHF 28.50 (~27-30).
+  **NICHT auf Verkauf bewerben/vermarkten, bis Preise gefixt sind** (sonst Verlust pro Verkauf).
+- **User-Auftrag wörtlich: „schau das ich auch guten win mache".** Ziel-Marge: Retail ≈ Kosten ×2,2–2,5, mind. CHF 12–15/Teil,
+  .90-Preise. Plan-Vorschau: T-Shirt 24.90 (Gewinn ~13), Hoodie 59.90 (~29), Tasse 19.90 (~11), Tote 22.90 (~12), Cap 29.90 (~15),
+  iPhone-Hülle 27.90 (~15), Trinkflasche 39.90 (~21), Bomberjacke 89.90 (~42).
+
+### 🔑 OFFENE USER-SCHRITTE (Reihenfolge)
+1. **Printful-API-Key** (Printful → Settings → Developers → API → Add token, Scopes Products+Orders) → als GitHub-Secret.
+   Dann AUTONOM: echte Kosten ziehen → **alle Preise auf gesunde Marge** setzen → **Fertig-Design-Produkte + viele Kunden-Vorlagen**
+   anlegen (auto-druckbar) in „Fertige Designs"-Kollektion → **Auto-Fulfillment** (Bestellung druckt/versendet sich selbst).
+   **ERST danach** vermarkten (Looks als Ads/Posts). User kommt „am Abend" mit dem Key.
+2. **Cloudinary** (gratis: Cloud Name + Unsigned Preset, beides öffentlich) → in `pod/designer.js` `CLOUD`/`PRESET` → Foto/Logo-Upload live auf allen 26.
+3. **Printful Rückseiten-Druckfläche + Aufpreis** pro Produkt (Widget bietet „Hinten" schon an).
