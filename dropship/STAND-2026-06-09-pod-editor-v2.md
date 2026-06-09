@@ -32,6 +32,26 @@
      cat-cute, dog-cute, butterfly, rainbow, lightning, crown, coffee, peace, moon-stars, mushroom-retro,
      cherry, flame, word-love, word-vibes.
 
+## 🔌 NEU: Printful-Connector gebaut (Editor → Anbieter, Auto-Sync) — `automation/printful_sync.mjs`
+**Wichtige Erkenntnis:** Die 26 POD-Produkte sind **bereits Printful-Sync-Produkte** (Tag
+`printful_personalized_product`, SKU = `<syncId>_<printfulVariantId>`, z.B. `8481330_11576` → Variante `11576`;
+Classic-Tee S/M/L/XL = 11576/11577/11578/11579). Der Connector decodiert die Variante direkt aus der SKU.
+- **Flow (User-Entscheid 2026-06-09):** bezahlte Bestellung mit `wunschdesign`-Item → Printful-Order via API
+  (`POST api.printful.com/orders`), Empfänger aus Lieferadresse, Druckdatei(en) aus Bestell-Property
+  `🖼️ Druckdatei (Vorne/Hinten)`. **Gemini-Kontroll-Gate:** PASS → Auftrag **verbindlich bestätigt**
+  (`?confirm=1`); FAIL (leer/unscharf/unzulässig) → **Entwurf** + Tag `printful-review` + Telegram.
+  Idempotent (Tag `printful-synced` + Metafeld `printful.order_id`).
+- **Workflow:** `.github/workflows/printful-sync.yml` (Cron alle 20 Min + manuell `dry_run`).
+- **🔑 ZUM SCHARFSCHALTEN (User):**
+  1. **`PRINTFUL_API_KEY`** als GitHub-Secret (Printful → Dashboard → Settings → API; ggf. **`PRINTFUL_STORE_ID`**
+     wenn mehrere Stores). Optional `PRINTFUL_AUTO_CONFIRM=0` = nie auto-bestätigen (immer Entwurf).
+  2. **Cloudinary** (s.u.) — ohne Druckdatei-URL kann kein Auftrag entstehen (Connector überspringt + flaggt).
+  3. **⚠️ Printful-App-Auto-Import für diese Produkte AUS** (Printful-Dashboard → Stores → Order import =
+     manuell/aus), sonst legt die App **zusätzlich** einen Auftrag an = **Doppel-Druck**. Unser API-Sync ist
+     der einzige Weg, der das Editor-Design mitschickt.
+  4. Erst mit `dry_run` testen → dann 1–2 echte Test-Bestellungen prüfen (Platzierung front/back vs. default
+     je Produkttyp; Heuristik im Script, bei Bedarf verfeinern).
+
 ## 🟡 OFFEN / USER (für „verkaufen", anbieter-unabhängig vorbereitet)
 - **Cloudinary** (Cloud Name + **unsigned** Upload-Preset, öffentlich) → in `pod/designer.js` `CLOUD`/`PRESET`
   setzen (oben im File). Dann scharf: **eigener Bild/Logo-Upload UND echte Druckdatei-Erzeugung**. Bis dahin
