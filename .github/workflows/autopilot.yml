@@ -8,7 +8,7 @@ name: aban Autopilot
 
 on:
   schedule:
-    - cron: '0 5 * * *'
+    - cron: '0 5 */2 * *'   # jeden 2. Tag, 05:00 UTC (Gemini-Autopilot)
   workflow_dispatch:
 
 permissions:
