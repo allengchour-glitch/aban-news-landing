@@ -124,6 +124,19 @@
     }
     function setSide(k){ state.active=k; if(sideBtns.front){ for(var s in sideBtns){ var on=s===k; sideBtns[s].style.background=on?'#fff':'transparent'; sideBtns[s].style.boxShadow=on?'0 1px 3px rgba(0,0,0,.12)':'none'; } } syncControls(); render(); }
 
+    function buildProps(){
+      var props={};
+      sides.forEach(function(s){ var d=state.d[s.k]; var pre=sides.length>1?(s.label+' · '):'';
+        if(d.text.trim()){ props[pre+'🎨 Text']=d.text.trim(); props[pre+'Schrift']=fontName(d.font); props[pre+'Farbe']=d.color; props[pre+'Text-Platz']=posName(d.pos); }
+        if(d.imgUrl){ props[pre+'🖼️ Bild/Logo']=d.imgUrl; props[pre+'Bild-Platz']=posName(d.imgPos); } });
+      return props;
+    }
+    function syncFormInputs(){
+      var form=findForm(); if(!form) return;
+      Array.prototype.forEach.call(form.querySelectorAll('input[data-lspod="1"]'), function(x){ if(x.parentNode) x.parentNode.removeChild(x); });
+      var props=buildProps();
+      for(var k in props){ var i=document.createElement('input'); i.type='hidden'; i.setAttribute('data-lspod','1'); i.name='properties['+k+']'; i.value=props[k]; form.appendChild(i); }
+    }
     function render(){
       pv.style.backgroundImage="url('"+curImg()+"')";
       var d=cur();
@@ -132,6 +145,7 @@
       txt.style.opacity=d.text?'1':((!IMG_ENABLED||d.mode==='text')?'0.45':'0'); txt.style.top=d.pos;
       txt.style.textShadow=(d.color.toLowerCase()==='#ffffff')?'0 1px 3px rgba(0,0,0,.45)':'none';
       if(d.imgLocal){ imgEl.src=d.imgLocal; imgEl.style.display='block'; imgEl.style.width=d.imgSize+'%'; imgEl.style.maxWidth=d.imgSize+'%'; imgEl.style.top=d.imgPos; } else { imgEl.style.display='none'; }
+      try{ syncFormInputs(); }catch(e){}
     }
 
     ti.addEventListener('input',function(){ cur().text=ti.value; render(); });
@@ -147,10 +161,7 @@
       if(!any){ msg.style.color='#b3122b'; msg.textContent=IMG_ENABLED?'Gib einen Text ein oder lade ein Bild hoch.':'Bitte gib zuerst deinen Text ein.'; return; }
       var form=findForm(), vid=getVariantId(form,fallbackVar);
       if(!vid){ msg.style.color='#b3122b'; msg.textContent='Variante nicht gefunden – bitte oben Grösse/Farbe wählen.'; return; }
-      var props={};
-      sides.forEach(function(s){ var d=state.d[s.k]; var pre=sides.length>1?(s.label+' · '):'';
-        if(d.text.trim()){ props[pre+'🎨 Text']=d.text.trim(); props[pre+'Schrift']=fontName(d.font); props[pre+'Farbe']=d.color; props[pre+'Text-Platz']=posName(d.pos); }
-        if(d.imgUrl){ props[pre+'🖼️ Bild/Logo']=d.imgUrl; props[pre+'Bild-Platz']=posName(d.imgPos); } });
+      var props=buildProps();
       cta.disabled=true; cta.style.opacity='0.7'; msg.style.color='#6b6b73'; msg.textContent='Wird hinzugefügt …';
       fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({id:vid,quantity:1,properties:props})})
         .then(function(r){ if(!r.ok) return r.json().then(function(j){throw new Error(j.description||'Fehler');}); return r.json(); })
