@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KI-Bullshit-Bingo — fürs nächste „KI-Strategie"-Meeting | aban news</title>
-<meta name="description" content="Die spielbare Bingo-Karte voller KI-Buzzwords. Im nächsten Meeting jedes Buzzword antippen, das fällt — volle Reihe = Bingo. Gratis, ohne Login, druckbar. Mit Augenzwinkern von aban news.">
+<title>AI Bullshit Bingo — for your next „AI strategy" meeting | aban news</title>
+<meta name="description" content="The playable bingo card full of AI buzzwords. In your next meeting, tap every buzzword you hear — full row = bingo. Free, no login, printable. With a wink, from aban news.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/ki-bullshit-bingo.html">
+<link rel="canonical" href="https://abannews.com/en/ki-bullshit-bingo.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/ki-bullshit-bingo.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-bullshit-bingo.html">
 <link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-bullshit-bingo.html">
-<meta property="og:title" content="KI-Bullshit-Bingo — fürs nächste „KI-Meeting"">
-<meta property="og:description" content="Bingo-Karte voller KI-Buzzwords. Antippen, was im Meeting fällt — volle Reihe = Bingo. Gratis, druckbar.">
+<meta property="og:title" content="AI Bullshit Bingo — for your next „AI meeting"">
+<meta property="og:description" content="Bingo card full of AI buzzwords. Tap what you hear — full row = bingo. Free, printable.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/ki-bullshit-bingo.html">
+<meta property="og:url" content="https://abannews.com/en/ki-bullshit-bingo.html">
 <meta property="og:image" content="https://abannews.com/og-ki-bullshit-bingo.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="en_US"><meta property="og:site_name" content="aban news">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"KI-Bullshit-Bingo","url":"https://abannews.com/ki-bullshit-bingo.html","applicationCategory":"GameApplication","operatingSystem":"Web","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"AI Bullshit Bingo","url":"https://abannews.com/en/ki-bullshit-bingo.html","applicationCategory":"GameApplication","operatingSystem":"Web","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -64,63 +64,62 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
-<a href="/ki-hype-detektor.html" class="btn ghost">Hype-Detektor</a></div></header>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="/ki-bullshit-bingo.html" class="btn ghost">DE</a></div></header>
 <main><div class="wrap">
 
   <section class="hero">
-    <h1><span class="a">KI-Bullshit</span>-Bingo</h1>
-    <p>Unser Newsletter verspricht „kein Buzzword-Bingo". Hier ist trotzdem eins — zum Mitspielen. Nimm die Karte ins nächste „KI-Strategie"-Meeting und tipp jedes Buzzword an, das fällt. Volle Reihe = Bingo. 🎉</p>
+    <h1><span class="a">AI Bullshit</span> Bingo</h1>
+    <p>Our newsletter promises „no buzzword bingo". Here's one anyway — to play along. Take the card into your next „AI strategy" meeting and tap every buzzword you hear. Full row = bingo. 🎉</p>
   </section>
 
   <div class="toolbar">
-    <button class="btn" id="new" type="button">Neue Karte 🎲</button>
-    <button class="btn ghost" id="reset" type="button">Zurücksetzen</button>
-    <button class="btn ghost" id="print" type="button">Drucken</button>
+    <button class="btn" id="new" type="button">New card 🎲</button>
+    <button class="btn ghost" id="reset" type="button">Reset</button>
+    <button class="btn ghost" id="print" type="button">Print</button>
   </div>
 
-  <div class="grid" id="grid" aria-label="Bingo-Karte"></div>
+  <div class="grid" id="grid" aria-label="Bingo card"></div>
   <div class="win" id="win" aria-live="polite"></div>
 
   <div class="share">
-    <span class="muted">Teilen:</span>
-    <button class="sbtn" id="sh-native" type="button" hidden>Teilen…</button>
+    <span class="muted">Share:</span>
+    <button class="sbtn" id="sh-native" type="button" hidden>Share…</button>
     <a class="sbtn" id="sh-li" target="_blank" rel="noopener">LinkedIn</a>
     <a class="sbtn" id="sh-x" target="_blank" rel="noopener">X</a>
     <a class="sbtn" id="sh-wa" target="_blank" rel="noopener">WhatsApp</a>
-    <button class="sbtn" id="sh-copy" type="button">Link kopieren</button>
+    <button class="sbtn" id="sh-copy" type="button">Copy link</button>
   </div>
 
-  <p class="disc">😄 Mit Augenzwinkern — aber der Punkt ist ernst: Wo viele Buzzwords fliegen, ist oft wenig Konkretes. Den echten Gehalt prüfst du mit dem <a href="/ki-hype-detektor.html">KI-Hype-Detektor</a>.</p>
+  <p class="disc">😄 With a wink — but the point is serious: where lots of buzzwords fly, there's often little substance. Check the real content with the <a href="/en/ki-hype-detektor.html">AI Hype Detector</a>.</p>
 
   <div class="band">
-    <h2>Lieber Klartext als Bingo</h2>
-    <p>aban news erklärt KI Mo–Fr in 5 Minuten — ehrlich, konkret, ohne das Geschwurbel aus diesen Kästchen. Kostenlos.</p>
-    <a class="btn" href="/newsletter.html">Newsletter gratis abonnieren →</a>
+    <h2>Plain talk instead of bingo</h2>
+    <p>aban news explains AI in 5 minutes a day — honest, concrete, without the jargon in these squares. (German newsletter — but the tools are for everyone.)</p>
+    <a class="btn" href="https://abannews.beehiiv.com/subscribe">Subscribe free →</a>
   </div>
 
-  <p class="muted" style="text-align:center;margin:8px 0 0">Mehr: <a href="/ki-hype-detektor.html">Hype-Detektor</a> · <a href="/ki-glossar.html">KI-Glossar</a> · <a href="/online-tools.html">alle Tools</a></p>
+  <p class="muted" style="text-align:center;margin:8px 0 0">More: <a href="/en/ki-hype-detektor.html">AI Hype Detector</a> · <a href="https://tools.abannews.com">AI tools directory</a> · <a href="/ki-bullshit-bingo.html">Deutsche Version</a></p>
 
 </div></main>
 <footer><div class="wrap">&copy; 2026 aban news &middot; Allen Chour &middot; Belp (CH) &middot;
-  <a href="/ki-hype-detektor.html">Hype-Detektor</a> &middot; <a href="/ki-glossar.html">Glossar</a> &middot; <a href="/newsletter.html">Newsletter</a> &middot; <a href="/impressum.html">Impressum</a></div></footer>
+  <a href="/en/ki-hype-detektor.html">AI Hype Detector</a> &middot; <a href="/ki-bullshit-bingo.html">Deutsch</a> &middot; <a href="/impressum.html">Imprint</a></div></footer>
 
 <script>
 (function(){
   "use strict";
   var $=function(id){return document.getElementById(id);};
-  var POOL=["KI-powered","Game-Changer","disruptiv","Synergie","skalierbar","ganzheitlich",
-    "End-to-End","nahtlos","Next-Level","Quantensprung","Paradigmenwechsel","Zukunft der Arbeit",
-    "datengetrieben","agil","Deep Dive","Low-Hanging Fruit","Proof of Concept","Use Case","Roadmap",
-    "Stakeholder","Empowerment","transformativ","innovativ","state-of-the-art","Mehrwert","Effizienz",
+  var POOL=["AI-powered","Game-Changer","disruptive","Synergy","scalable","holistic",
+    "End-to-End","seamless","Next-Level","Quantum Leap","Paradigm Shift","Future of Work",
+    "data-driven","agile","Deep Dive","Low-Hanging Fruit","Proof of Concept","Use Case","Roadmap",
+    "Stakeholder","Empowerment","transformative","innovative","state-of-the-art","Value-Add","Efficiency",
     "ROI","Mindset","Touchpoint","agentic","Hypergrowth","Single Source of Truth","Best Practice",
-    "exponentiell","menschzentriert","Co-Creation","Leuchtturmprojekt","KI-Journey","Skalierung","holistisch"];
+    "exponential","human-centric","Co-Creation","Lighthouse Project","AI Journey","at scale","frictionless"];
   var grid=$("grid"), win=$("win"), marked={}, cells=[];
 
   function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
 
-  // Gewinnlinien für 5x5 (Index 0..24)
-  var LINES=(function(){var L=[],i,j,r,c;
+  var LINES=(function(){var L=[],c,r;
     for(r=0;r<5;r++){L.push([0,1,2,3,4].map(function(c){return r*5+c;}));}
     for(c=0;c<5;c++){L.push([0,1,2,3,4].map(function(r){return r*5+c;}));}
     L.push([0,6,12,18,24]); L.push([4,8,12,16,20]); return L;
@@ -128,12 +127,12 @@ footer a{color:var(--muted)}
 
   function build(){
     var words=shuffle(POOL).slice(0,24);
-    marked={12:true}; // Freifeld immer markiert
+    marked={12:true};
     grid.innerHTML=""; cells=[];
     var idx=0;
     for(var i=0;i<25;i++){
       var div=document.createElement("div");
-      if(i===12){ div.className="cell free on"; div.textContent="FREIFELD: „KI-powered“"; }
+      if(i===12){ div.className="cell free on"; div.textContent="FREE: „AI-powered“"; }
       else { div.className="cell"; div.textContent=words[idx++]; }
       div.setAttribute("data-i", i);
       cells.push(div); grid.appendChild(div);
@@ -141,35 +140,30 @@ footer a{color:var(--muted)}
     win.classList.remove("show"); updateShare(false);
   }
 
-  function checkWin(){
-    for(var k=0;k<LINES.length;k++){
-      if(LINES[k].every(function(i){return marked[i];})) return true;
-    }
-    return false;
-  }
+  function checkWin(){ for(var k=0;k<LINES.length;k++){ if(LINES[k].every(function(i){return marked[i];})) return true; } return false; }
 
   grid.addEventListener("click", function(e){
     var t=e.target.closest(".cell"); if(!t) return;
-    var i=+t.getAttribute("data-i"); if(i===12) return; // Freifeld bleibt
+    var i=+t.getAttribute("data-i"); if(i===12) return;
     if(marked[i]){ delete marked[i]; t.classList.remove("on"); }
     else { marked[i]=true; t.classList.add("on"); }
     if(checkWin()){
       win.classList.add("show");
-      win.innerHTML="🎉 <b>BINGO!</b> Wenn du das in einem echten Meeting voll kriegst, war's ein Hype-Meeting. "+
-        "Den Klartext gibt's werktags bei aban news → <a href=\"/newsletter.html\">gratis abonnieren</a>.";
+      win.innerHTML="🎉 <b>BINGO!</b> If you fill this in a real meeting, it was a hype meeting. "+
+        "Get the plain talk from aban news → <a href=\"https://abannews.beehiiv.com/subscribe\">subscribe free</a>.";
       updateShare(true);
     } else { win.classList.remove("show"); }
   });
 
   function updateShare(bingo){
-    var url="https://abannews.com/ki-bullshit-bingo.html";
-    var msg=bingo? "BINGO! 🎉 Mein „KI-Strategie“-Meeting war voll davon. Spiel mit:"
-                 : "KI-Bullshit-Bingo fürs nächste Meeting 😄 Spiel mit:";
+    var url="https://abannews.com/en/ki-bullshit-bingo.html";
+    var msg=bingo? "BINGO! 🎉 My „AI strategy“ meeting was full of it. Play along:"
+                 : "AI Bullshit Bingo for your next meeting 😄 Play along:";
     $("sh-li").href="https://www.linkedin.com/sharing/share-offsite/?url="+encodeURIComponent(url);
     $("sh-x").href="https://twitter.com/intent/tweet?text="+encodeURIComponent(msg)+"&url="+encodeURIComponent(url);
     $("sh-wa").href="https://wa.me/?text="+encodeURIComponent(msg+" "+url);
     var nat=$("sh-native");
-    if(navigator.share){ nat.hidden=false; nat.onclick=function(){ navigator.share({title:"KI-Bullshit-Bingo",text:msg,url:url}).catch(function(){}); }; }
+    if(navigator.share){ nat.hidden=false; nat.onclick=function(){ navigator.share({title:"AI Bullshit Bingo",text:msg,url:url}).catch(function(){}); }; }
   }
 
   $("new").addEventListener("click", build);
@@ -179,10 +173,10 @@ footer a{color:var(--muted)}
   });
   $("print").addEventListener("click", function(){ window.print(); });
   $("sh-copy").addEventListener("click", function(){
-    var u="https://abannews.com/ki-bullshit-bingo.html"; var b=this;
+    var u="https://abannews.com/en/ki-bullshit-bingo.html"; var b=this;
     (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){
-      b.textContent="Kopiert ✓"; setTimeout(function(){b.textContent="Link kopieren";},1500);
-    }).catch(function(){ window.prompt("Link kopieren:", u); });
+      b.textContent="Copied ✓"; setTimeout(function(){b.textContent="Copy link";},1500);
+    }).catch(function(){ window.prompt("Copy link:", u); });
   });
 
   build();
