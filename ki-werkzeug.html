@@ -104,8 +104,8 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .steps.ov{margin-top:18px}
 .step .ic{font-size:1.5rem;display:block;margin-bottom:6px;line-height:1}
 /* Vergleich Gratis vs Pro */
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:30px 0}
-@media(max-width:560px){.compare{grid-template-columns:1fr}}
+.compare{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0}
+@media(max-width:680px){.compare{grid-template-columns:1fr}}
 .plan{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
 .plan.hl{border-color:var(--amber);box-shadow:0 0 0 1px var(--amber)}
 .plan h3{font-size:1.1rem;margin-bottom:2px}
@@ -315,18 +315,18 @@ footer a{color:var(--muted)}
   </div>
   <p class="disc">Gratis-Version: Entwürfe entstehen aus geprüften Vorlagen direkt in deinem Browser — nichts wird hochgeladen. Die Entwürfe sind Startpunkte; prüfe Preise, Pflichtangaben und Fakten selbst.</p>
 
-  <!-- ÜBERBLICK: GRATIS vs PRO -->
-  <h2 class="ov-h">Gratis testen &mdash; Pro, wenn du mehr brauchst</h2>
-  <p class="ov-sub">Kein Abo-Zwang: Gratis reicht für den Anfang. Pro lohnt sich, wenn du täglich schreibst.</p>
-  <section class="compare" aria-label="Gratis und Pro im Vergleich">
+  <!-- ÜBERBLICK: GRATIS / PRO / PRO+ -->
+  <h2 class="ov-h">Gratis testen &mdash; Pro &amp; Pro+ für mehr</h2>
+  <p class="ov-sub">Kein Abo-Zwang: Gratis reicht zum Start. Pro für Vielschreiber, Pro+ für regulierte &amp; sensible Branchen.</p>
+  <section class="compare" aria-label="Gratis, Pro und Pro+ im Vergleich">
     <div class="plan">
       <h3>Gratis</h3>
       <div class="pp">CHF 0</div>
       <ul>
         <li>5 Texte + 1 Fahrplan pro Tag</li>
         <li>Alle Text-Arten &amp; der KI-Fahrplan</li>
-        <li>Kein Login, kein Upload &mdash; läuft im Browser</li>
-        <li>Sofort startklar, ohne Anmeldung</li>
+        <li>Kein Login, kein Upload</li>
+        <li>Gratis dazu: <a href="/ki-glossar.html">KI-Glossar</a> &amp; <a href="/welche-ki-fuer-was.html">Tool-Finder</a></li>
       </ul>
     </div>
     <div class="plan hl">
@@ -335,9 +335,19 @@ footer a{color:var(--muted)}
       <div class="pp"><span id="pro-price-2">CHF 9.90</span> / Monat</div>
       <ul>
         <li><b>Unbegrenzt</b> Texte &amp; Fahrpläne</li>
-        <li>Echte KI statt Vorlagen &mdash; mehr Qualität</li>
+        <li>Echte KI statt Vorlagen</li>
         <li>4 Sprachen: DE · EN · FR · IT</li>
-        <li>Verlauf speichern &amp; als PDF exportieren</li>
+        <li>Verlauf &amp; PDF-Export</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <h3>Pro+</h3>
+      <div class="pp">CHF 19.90 / Monat</div>
+      <ul>
+        <li><b>Alles aus Pro</b></li>
+        <li>Für regulierte/sensible Branchen</li>
+        <li>Compliance- &amp; DSGVO-Hinweise im Text</li>
+        <li>Längere Texte &amp; Vorrang</li>
       </ul>
     </div>
   </section>
