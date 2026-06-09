@@ -57,6 +57,9 @@ mark{background:var(--cream);color:var(--ink);border-bottom:2px solid var(--ambe
 .hits{list-style:none;margin:10px 0 0;display:grid;gap:8px}
 .hits li{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.95rem}
 .hits b{color:var(--amber-dk)}
+.share{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line);padding-top:14px}
+.sbtn{display:inline-block;background:var(--field);color:var(--amber-dk);border:1px solid var(--amber-lt);border-radius:8px;padding:7px 12px;font-size:.88rem;font-weight:600;text-decoration:none;cursor:pointer}
+.sbtn:hover{background:var(--cream)}
 .tag{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--amber-dk);background:var(--amber-lt);border-radius:5px;padding:1px 6px;margin-left:6px}
 .disc{color:var(--muted);font-size:.84rem;margin:16px 0;background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:12px 14px}
 .band{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:24px;text-align:center}
@@ -95,6 +98,14 @@ footer a{color:var(--muted)}
       <p class="muted" id="summary"></p>
       <div class="preview" id="preview"></div>
       <ul class="hits" id="hits"></ul>
+      <div class="share" id="share">
+        <span class="muted">Teilen:</span>
+        <button class="sbtn" id="sh-native" type="button" hidden>Teilen…</button>
+        <a class="sbtn" id="sh-li" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="sbtn" id="sh-x" target="_blank" rel="noopener">X</a>
+        <a class="sbtn" id="sh-wa" target="_blank" rel="noopener">WhatsApp</a>
+        <button class="sbtn" id="sh-copy" type="button">Link kopieren</button>
+      </div>
     </div>
   </div>
 
@@ -195,7 +206,21 @@ footer a{color:var(--muted)}
         return "<li><b>"+esc(word)+"</b><span class=\"tag\">"+h.cat+"</span>"+(h.n>1?" ×"+h.n:"")+"<br>"+h.klar+"</li>";
       }).join("");
     } else { $("hits").innerHTML=""; }
+    var url="https://abannews.com/ki-hype-detektor.html";
+    var msg="Mein KI-Pitch kommt auf "+r.score+"/100 beim KI-Hype-Detektor. Check deinen — und filter den Hype:";
+    $("sh-li").href="https://www.linkedin.com/sharing/share-offsite/?url="+encodeURIComponent(url);
+    $("sh-x").href="https://twitter.com/intent/tweet?text="+encodeURIComponent(msg)+"&url="+encodeURIComponent(url);
+    $("sh-wa").href="https://wa.me/?text="+encodeURIComponent(msg+" "+url);
+    var nat=$("sh-native");
+    if(navigator.share){ nat.hidden=false; nat.onclick=function(){ navigator.share({title:"KI-Hype-Detektor",text:msg,url:url}).catch(function(){}); }; }
   }
+
+  $("sh-copy").addEventListener("click", function(){
+    var u="https://abannews.com/ki-hype-detektor.html"; var b=this;
+    (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){
+      b.textContent="Kopiert ✓"; setTimeout(function(){b.textContent="Link kopieren";},1500);
+    }).catch(function(){ window.prompt("Link kopieren:", u); });
+  });
 
   function run(){
     var t=$("txt").value||"";
