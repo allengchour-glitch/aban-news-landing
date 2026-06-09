@@ -277,5 +277,80 @@
     "id": "aban-auto-028",
     "status": "ready",
     "text": "Ein Prompt, der wirklich funktioniert — Realistischen Wochenplan bauen:\n\nHier sind meine Aufgaben fuer diese Woche: [Liste]. Ich habe [Anzahl] fokussierte Stunden pro Tag. Sortiere die Aufgaben nach Wirkung auf [mein Ziel], markiere, was ich streichen oder verschieben kann, und schlage einen Wochenplan vor, der nicht ueberladen ist. Plane jeden Tag eine Pufferstunde ein.\n\nTipp aus der Praxis: Sag dem Modell ehrlich, wie viele Stunden du wirklich hast, nicht wie viele du moechtest.\n\nMehr davon → https://abannews.com/prompt-baukasten.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-mythos-job",
+    "status": "ready",
+    "text": "„KI nimmt dir den Job weg.“ — Der ehrlichste Satz dazu, den ich kenne:\n\nNicht die KI nimmt dir den Job. Sondern jemand, der KI sinnvoll einsetzt — und du nicht.\n\nDie gute Nachricht: „sinnvoll einsetzen“ heißt nicht Informatik studieren. Es heißt: zwei, drei Aufgaben finden, die KI dir wirklich abnimmt. Den Rest lässt du.\n\nWo du anfängst, zeigen wir ohne Hype → https://abannews.com\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-mythos-teuer",
+    "status": "ready",
+    "text": "Mythos: „Für KI brauchst du teure Tools.“\n\nStimmt selten. Die meisten kleinen Betriebe holen den Großteil des Nutzens aus den Gratis-Versionen — E-Mails, Texte, Zusammenfassungen, Ideen.\n\nBevor du ein Abo abschließt: probier's kostenlos. Wir haben über 175 Tools ehrlich verglichen, inklusive „lohnt sich der Aufpreis?“ → https://abannews.com/welche-ki-fuer-was.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-halluzination",
+    "status": "ready",
+    "text": "ChatGPT klingt immer überzeugt — auch wenn es Unsinn erzählt.\n\nDas nennt man „halluzinieren“: Die KI erfindet Fakten, Quellen und Zahlen und verkauft sie selbstbewusst.\n\nDeshalb gilt: KI ist ein super Entwurfs-Helfer, aber ein schlechter Faktenchecker. Wichtiges immer gegenprüfen.\n\nMehr KI-Begriffe in Klartext → https://abannews.com/ki-glossar.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-bias",
+    "status": "ready",
+    "text": "„Die KI ist doch objektiv.“ — Leider nein.\n\nKI lernt aus Texten von Menschen. Und übernimmt deren Vorurteile gleich mit. Bei Bewerbungen, Bewertungen oder Empfehlungen kann das richtig schiefgehen.\n\nHeißt nicht: Finger weg. Heißt: bei heiklen Entscheidungen nie blind übernehmen.\n\nKI ohne Hype, jeden Werktag → https://abannews.com\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-hype-tool",
+    "status": "ready",
+    "text": "Jede Woche ein neues „revolutionäres“ KI-Tool. Jede Woche FOMO.\n\nEhrliche Wahrheit: Die wenigsten davon brauchst du. Ein, zwei solide Werkzeuge, die du wirklich benutzt, schlagen zehn, die du nur abonniert hast.\n\nWir testen, du sparst dir das Hinterherrennen → https://abannews.com/welche-ki-fuer-was.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-strategie",
+    "status": "ready",
+    "text": "Du brauchst keine 40-seitige „KI-Strategie“.\n\nDu brauchst eine Antwort auf: Welche eine nervige Aufgabe diese Woche nimmt mir KI ab?\n\nFang da an. Nächste Woche die nächste. Das ist die ganze Strategie.\n\nKonkrete Starthilfe (gratis, ohne Login) → https://abannews.com/ki-werkzeug.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-email-quickwin",
+    "status": "ready",
+    "text": "Der schnellste KI-Zeitgewinn für die meisten: E-Mails.\n\nStichpunkte rein, höflicher Entwurf raus, du feilst nur noch nach. Aus 10 Minuten werden 2.\n\nKein Tool-Studium nötig — einfach mal ausprobieren. So geht's → https://abannews.com/ki-werkzeug.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-prompt-beispiel",
+    "status": "ready",
+    "text": "Der unterschätzteste Prompt-Trick: Beispiele statt Anweisungen.\n\nStatt „schreib professionell“ gib der KI EINEN Beispieltext, der dir gefällt. Sie ahmt Ton und Stil nach — viel besser als jede Beschreibung.\n\nMehr erprobte Prompts → https://abannews.com/prompt-baukasten.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-dsgvo",
+    "status": "ready",
+    "text": "Bevor du Kundendaten in ChatGPT kippst: kurz innehalten.\n\nNamen, Adressen, Gesundheits- oder Vertragsdaten gehören nicht ungefiltert in ein KI-Tool — die DSGVO lässt grüßen. Anonymisieren oder ein Tool mit EU-Serverstandort nutzen.\n\nSchneller Selbstcheck → https://abannews.com/ki-dsgvo-check.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-affiliate",
+    "status": "ready",
+    "text": "Eine Sache, die uns von vielen KI-Seiten unterscheidet: Wir verlinken keine Affiliate-Deals.\n\nHeißt: Wenn wir sagen „das Gratis-Tool reicht“, verdienen wir nichts daran. Genau so soll's sein. Ehrliche Empfehlung schlägt Provision.\n\nÜber 175 Tools so bewertet → https://abannews.com/welche-ki-fuer-was.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-warum-newsletter",
+    "status": "ready",
+    "text": "„Noch ein KI-Newsletter? Echt jetzt?“\n\nVerständlich. Unser Unterschied: 5 Minuten, Klartext, kein Hype, kein Verkaufen um jeden Preis. Wenn ein Hype-Thema heiße Luft ist, schreiben wir das auch.\n\nWenn das dein Ding ist → gratis abonnieren: https://abannews.com\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-frage-engagement",
+    "status": "ready",
+    "text": "Ehrliche Frage in die Runde: Was nervt dich am meisten am ganzen KI-Hype?\n\nDie Buzzwords? Die Heilsversprechen? Das Gefühl, etwas zu verpassen?\n\nSchreib's in die Kommentare — ich lese mit. Die besten Punkte greifen wir im Newsletter auf.\n\nhttps://abannews.com\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-aerzte",
+    "status": "ready",
+    "text": "KI in der Arztpraxis — ohne Datenschutz-Albtraum.\n\nArztbriefe vordiktieren, Befunde zusammenfassen, Termin-Mails formulieren: Da spart KI echt Zeit. Aber Patientendaten brauchen Sorgfalt.\n\nWas konkret geht (und was nicht) → https://abannews.com/ki-fuer-aerzte.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-anwaelte",
+    "status": "ready",
+    "text": "KI für Kanzleien: nützlicher Entwurfs-Helfer, gefährlicher Faktenchecker.\n\nSchriftsätze vorstrukturieren, Mandanten-Mails entwerfen — top. Rechtsprechung „mal eben“ von der KI zitieren lassen — riskant (sie erfindet Urteile).\n\nEhrlicher Leitfaden → https://abannews.com/ki-fuer-anwaelte.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-theme-baeckereien",
+    "status": "ready",
+    "text": "KI fürs Handwerk und kleine Betriebe — ja, auch für die Bäckerei.\n\nSocial-Posts, Angebotstexte, Antworten auf Bewertungen: Genau das nimmt KI dir ab, ohne dass du Technik-Nerd sein musst.\n\nKonkrete Beispiele → https://abannews.com/ki-fuer-baeckereien.html\n\n#KI #DACH #Newsletter #abannews"
   }
 ]
