@@ -1755,3 +1755,13 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **Dead-Link gefixt:** Kategorie „👜 Taschen" zeigte auf nicht-existentes `/collections/damen-taschen` (404)
   → korrigiert auf `taschen-sub` (16 Produkte).
 - **Bestätigt:** Search & Discovery installiert; Judge.me voll verdrahtet; Produktseiten-Rückgabe = 30 Tage.
+
+## 2026-06-09 — Produktseiten-Fix VERÖFFENTLICHT (User-Publish) + verifiziert
+- User hat den vorbereiteten Entwurf „Horizon · LuxeStyle (Produktseite-Fix)" (187457962369) veröffentlicht → jetzt MAIN.
+  Altes „Horizon · LuxeStyle Branded" (187043086721) = UNPUBLISHED (Rollback).
+- **Live verifiziert (Screenshots):** Versand-Text „7–14 Tage / ab CHF 65" korrekt; **„Das passt dazu"** zeigt die
+  kuratierten Cross-Sells (Bali → Capri-Sandalen, Felina-Brille, Sonnenhut, Milano-Tasche); Reviews 4,9★ rendern;
+  Sticky-ATC + Varianten + Rating-Badge ok.
+- **Hero** live: weisser Titel + goldener Button + Premium-Bild (Schema 3).
+- Damit sind ALLE Produktseiten-/Hero-Baustellen erledigt. Offen nur noch: Judge.me-Token (mehr Reviews/Sterne),
+  Cookie-Banner schmaler, Top-Bar-Schrift (alles optionaler Feinschliff).
