@@ -1745,3 +1745,13 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   ⚠️ **Anzeige** braucht die gratis **„Search & Discovery"-App** + „Complementary products"-Block auf der Produktseite
   (1 Customizer-Einstellung) — Daten sind gesetzt.
 - Bestand unverändert 238 cj-real; reine Merchandising-/AOV-Massnahme.
+
+## 2026-06-09 — AOV-Ausbau Runde 2 (autonom)
+- **Cross-Sell „Complete the Look" auf ALLE Look-Mitglieder ausgeweitet:** +18 `complementary_products`-Metafelder
+  → jedes Teil der 3 Looks empfiehlt die anderen Teile (26 Produkte total mit Cross-Sell). Zahlt ein, sobald
+  die Produktseite auf `recommendation_type: complementary` steht (Customizer-Toggle, siehe USER-CHECKLISTE).
+- **„Entdecken"-Seite** (`/pages/entdecken`, per API): prominente **„✨ Looks – fertig kombiniert"**-Sektion mit
+  Strand-/Office-/Abend-Look ergänzt (Einstieg ausserhalb des Menüs).
+- **Dead-Link gefixt:** Kategorie „👜 Taschen" zeigte auf nicht-existentes `/collections/damen-taschen` (404)
+  → korrigiert auf `taschen-sub` (16 Produkte).
+- **Bestätigt:** Search & Discovery installiert; Judge.me voll verdrahtet; Produktseiten-Rückgabe = 30 Tage.
