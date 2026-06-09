@@ -45,18 +45,18 @@ list.forEach((p,i)=>{
   const img=path.join(ENH,`${p.name}.jpg`);
   const parts=p.label.split('·'); const l1=(parts[0]||p.name).trim(); const l2=parts.slice(1).join('·').trim();
   const f1=wtf(`l1_${i}.txt`,l1);
-  let drawTop=`drawbox=x=0:y=64:w=1080:h=${l2?150:104}:color=black@0.42:t=fill,`
-    +`drawtext=textfile=${f1}:fontfile=${FONT}:fontcolor=white:fontsize=54:x=(w-text_w)/2:y=84`;
-  if(l2){ const f2=wtf(`l2_${i}.txt`,l2); drawTop+=`,drawtext=textfile=${f2}:fontfile=${FONT}:fontcolor=0xEAD9B0:fontsize=32:x=(w-text_w)/2:y=152`; }
+  let drawTop=`drawtext=textfile=${f1}:fontfile=${FONT}:fontcolor=white:fontsize=52:x=(w-text_w)/2:y=96:box=1:boxcolor=black@0.45:boxborderw=18`;
+  if(l2){ const f2=wtf(`l2_${i}.txt`,l2); drawTop+=`,drawtext=textfile=${f2}:fontfile=${FONT}:fontcolor=0xEAD9B0:fontsize=32:x=(w-text_w)/2:y=170:box=1:boxcolor=black@0.40:boxborderw=12`; }
   const vf=`[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,scale=2160:3840,`
     +`zoompan=z='min(zoom+0.0009,1.12)':d=${total}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':fps=30:s=1080x1920,`
     +`${drawTop},`
-    +`drawbox=x=0:y=ih-148:w=1080:h=104:color=black@0.40:t=fill,`
-    +`drawtext=textfile=${ctaFile}:fontfile=${FONT}:fontcolor=white:fontsize=40:x=(w-text_w)/2:y=ih-118,`
-    +`fade=t=in:st=0:d=0.25,fade=t=out:st=${(SEG-0.3).toFixed(2)}:d=0.3,format=yuv420p[v]`;
+    +`drawtext=textfile=${ctaFile}:fontfile=${FONT}:fontcolor=white:fontsize=40:x=(w-text_w)/2:y=h-150:box=1:boxcolor=black@0.42:boxborderw=16,`
+    +`format=yuv420p[v]`;
   const out=path.join(TMP,`seg_${i}.mp4`);
-  execFileSync('ffmpeg',['-nostdin','-y','-loop','1','-t',String(SEG),'-i',img,'-filter_complex',vf,'-map','[v]',
-    '-t',String(SEG),'-r','30','-c:v','libx264','-preset','veryfast','-pix_fmt','yuv420p',out],{stdio:['ignore','ignore','inherit'],timeout:120000});
+  try{
+    execFileSync('ffmpeg',['-nostdin','-y','-loop','1','-t',String(SEG),'-i',img,'-filter_complex',vf,'-map','[v]',
+      '-t',String(SEG),'-r','30','-c:v','libx264','-preset','veryfast','-pix_fmt','yuv420p',out],{stdio:['ignore','ignore','pipe'],timeout:120000});
+  }catch(e){ console.error(`✗ Segment ${p.name}: ffmpeg-Fehler\n`+String(e.stderr||e.message).slice(-700)); throw e; }
   segFiles.push(out); console.log(`  ✓ Segment ${i+1}/${list.length} «${l1}»`);
 });
 
