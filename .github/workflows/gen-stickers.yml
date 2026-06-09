@@ -24,6 +24,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Deps
+        run: npm i pngjs --no-save
       - name: Sticker generieren
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
