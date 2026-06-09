@@ -45,8 +45,9 @@ SHOP_TARGETED = ('Schon weiter? Es gibt ein fertiges Kit für deine Branche — 
 
 BLOCK_TMPL = """<aside {marker} style="max-width:760px;margin:2.5rem auto;padding:1.3rem 1.4rem;border:1px solid #ece3d4;border-radius:14px;background:#fffbf5">
   <h2 style="margin:0 0 .5rem;font-size:1.15rem;color:#1f2937">Passende Werkzeuge — gratis, ohne Login</h2>
-  <p style="margin:0 0 .9rem;color:#374151;font-size:.96rem;line-height:1.6">Bevor du Geld für KI ausgibst: nutz die kostenlosen Tools, vergleich die KI-Anbieter ehrlich und prüf, ob KI dich überhaupt nennt. Alles ohne Anmeldung.</p>
+  <p style="margin:0 0 .9rem;color:#374151;font-size:.96rem;line-height:1.6">Bevor du Geld für KI ausgibst: erstell Texte &amp; einen KI-Fahrplan direkt im KI-Werkzeug, vergleich die Anbieter ehrlich und prüf, ob KI dich überhaupt nennt. Alles ohne Anmeldung.</p>
   <p style="margin:0;display:flex;flex-wrap:wrap;gap:.55rem">
+    <a href="/ki-werkzeug.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">KI-Werkzeug: Texte in Minuten →</a>
     <a href="/online-tools.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">Alle Gratis-Tools →</a>
     <a href="https://tools.abannews.com" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">KI-Tools-Verzeichnis →</a>
     <a href="/ki-erwaehnungs-check.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">Werde ich von KI genannt? →</a>
