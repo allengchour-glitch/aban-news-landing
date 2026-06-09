@@ -1,0 +1,41 @@
+name: Printful-Reprice (gesunde POD-Preise)
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Preise wirklich setzen? (sonst nur Vorschau)'
+        type: boolean
+        default: false
+      markup:
+        description: 'Aufschlag-Faktor auf Kosten'
+        type: string
+        default: '2.3'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: printful-reprice
+  cancel-in-progress: false
+
+jobs:
+  reprice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Reprice
+        env:
+          PRINTFUL_API_KEY: ${{ secrets.PRINTFUL_API_KEY }}
+          PRINTFUL_STORE_ID: ${{ secrets.PRINTFUL_STORE_ID }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          MARKUP: ${{ github.event.inputs.markup || '2.3' }}
+          DRY_RUN: ${{ github.event.inputs.apply == 'true' && '' || '1' }}
+        run: node automation/printful_reprice.mjs
