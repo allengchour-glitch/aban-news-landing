@@ -1,0 +1,42 @@
+name: Printful-Sync (POD-Bestellungen → Druckauftrag)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur testen (keine Aufträge anlegen)'
+        type: boolean
+        default: false
+  schedule:
+    - cron: '*/20 * * * *'   # alle 20 Min neue bezahlte Bestellungen prüfen
+
+permissions:
+  contents: read
+
+concurrency:
+  group: printful-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Bestellungen synchronisieren
+        env:
+          PRINTFUL_API_KEY: ${{ secrets.PRINTFUL_API_KEY }}
+          PRINTFUL_STORE_ID: ${{ secrets.PRINTFUL_STORE_ID }}
+          PRINTFUL_AUTO_CONFIRM: ${{ secrets.PRINTFUL_AUTO_CONFIRM }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+        run: node automation/printful_sync.mjs
