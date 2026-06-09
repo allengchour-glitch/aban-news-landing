@@ -146,3 +146,15 @@ Live-Produkt-Template `templates/product.json` ausgelesen. Search & Discovery IS
    angezeigt wird) + Heading „You may also like" → **„Das passt dazu"** (DE).
 3. **✅ schon ok:** Rückgabe „30 Tage", Judge.me-Badge + Review-Widget verdrahtet (nur Reviews/Token fehlen).
 Hinweis: Live-Theme-Schreibzugriff ist API-seitig gesperrt → diese 2 Punkte gehen nur im Customizer.
+
+## ✅ VORBEREITET via API (2026-06-09) — nur noch 1 Klick „Veröffentlichen"
+Ich habe das Live-Theme dupliziert und im Entwurf **2 Produktseiten-Fixes fertig eingebaut + verifiziert**
+(JSON valide, Seite rendert, ATC/Varianten ok). Shopify blockiert nur den finalen „Publish" (nur Mensch).
+- **Theme:** „Horizon · LuxeStyle (Produktseite-Fix)" (ID 187457962369) — Duplikat des aktuellen Live-Themes
+  (enthält deine Hero-Änderungen) + diese Fixes:
+  1. **Versand-Text korrigiert:** „2–5 Werktage / ab CHF 50" → **„7–14 Tage (1–2 Wochen) / ab CHF 65"** (faktisch korrekt).
+  2. **Empfehlungen:** „You may also like" (related) → **„Das passt dazu" (complementary)** → zeigt mein Cross-Sell.
+- **➡️ ZU TUN (1 Klick):** Admin → Onlineshop → Themes → bei „Horizon · LuxeStyle (Produktseite-Fix)" → **„Veröffentlichen"**.
+  (Rollback falls nötig: altes Theme „Horizon · LuxeStyle Branded" wieder veröffentlichen.)
+- Obsolet/löschbar: Entwurf „Horizon · LuxeStyle Hero-Polish (Claude)" (vor deinen Hero-Änderungen, veraltet).
+- Damit sind die früheren Produktseiten-TODOs (Versand-Text + Empfehlungstyp) **erledigt** — nur Publish fehlt.
