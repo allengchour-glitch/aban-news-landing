@@ -142,5 +142,6 @@ footer a{color:var(--muted)}
   document.querySelectorAll(".cp").forEach(function(b){b.addEventListener("click",function(){var el=document.getElementById(b.getAttribute("data-f"));try{navigator.clipboard.writeText(el.value);b.textContent="kopiert ✓";setTimeout(function(){b.textContent="Kopieren";},1500);}catch(e){}});});
 })();
 </script>
+<script defer src="/js/announce.js"></script>
 </body>
 </html>
