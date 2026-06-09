@@ -51,6 +51,10 @@ Sitemap, `online-tools.html`, LinkedIn-Queue (`aban-tool-hype-detektor`, postet 
 - **LinkedIn-Queue Welle 2** (PR #555): +10 Themen-Posts via `automation/seed_theme_posts.py` (bewerben die neuen
   Inhalte: Perplexity-Vergleiche, Vibe Coding, Deepfake, Chain-of-Thought, Hype-Detektor-Challenge, Prompt-Rolle …).
   **Queue jetzt 81 (~16 Wo. Werktags-Vorrat).** Seed-Skript ist idempotent (Präfix `aban-theme-`).
+- **Neues teilbares Tool: `ki-bullshit-bingo.html`** (PR #556) — spielbares Buzzword-Bingo fürs „KI-Meeting"
+  (5×5, Freifeld, Win-Detection, neue Karte/Reset/Drucken, Teilen-Buttons). Selbst-ironisch zum Claim „kein
+  Buzzword-Bingo". Clientseitig, druckbar. Verdrahtet: online-tools, Sitemap, Querlink vom Hype-Detektor.
+  Headless getestet (12 Gewinnlinien korrekt, Syntax ok).
 - **Newsletter-Hebel offen (nur User):** beehiiv liefert nur Link, kein Inline-Formular. **beehiiv-Embed-Snippet**
   (`<iframe src="https://embeds.beehiiv.com/…">` aus Settings→Subscribe Forms) → dann baue ich Inline-Signup site-weit
   statt nur Weiterleitung (= direkter Abonnenten-Boost).
