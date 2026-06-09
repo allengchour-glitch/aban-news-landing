@@ -80,6 +80,31 @@ def spaced(draw, xy, text, fnt, fill, ls=0, anchor_left=True):
     return x
 
 
+def _discover_models(api_key):
+    """Fragt die für DIESEN Key verfügbaren Bild-Modelle ab (ListModels) und liefert
+    eine priorisierte Liste — robust gegen umbenannte/abgeschaltete Modelle."""
+    import json
+    import urllib.request
+    url = f"https://generativelanguage.googleapis.com/v1beta/models?key={api_key}&pageSize=1000"
+    try:
+        with urllib.request.urlopen(url, timeout=30) as r:
+            models = json.loads(r.read().decode("utf-8")).get("models", [])
+    except Exception as e:  # noqa: BLE001
+        print("ListModels fehlgeschlagen:", e)
+        return []
+    imagen, gemini = [], []
+    for m in models:
+        name = m.get("name", "").split("/")[-1]
+        methods = m.get("supportedGenerationMethods", [])
+        low = name.lower()
+        if "predict" in methods and "imagen" in low:
+            imagen.append(name)
+        elif "generateContent" in methods and "image" in low:
+            gemini.append(name)
+    print("Bild-Modelle (Imagen):", imagen or "—", "| (Gemini-Image):", gemini or "—")
+    return imagen + gemini  # Imagen zuerst (höhere Qualität fürs Cover)
+
+
 def gemini_bg(aspect):
     """Textfreies KI-Hintergrundbild; None bei fehlendem Key/Fehler."""
     try:
@@ -87,14 +112,21 @@ def gemini_bg(aspect):
     except Exception as e:
         print("gen_image_gemini nicht ladbar:", e)
         return None
+    api_key = os.environ.get("GEMINI_API_KEY", "").strip()
+    if not api_key:
+        return None
     theme = os.environ.get("COVER_THEME", "").strip() or (
         "Anti-Hype: ehrliches, ruhiges Signal im Lärm — eine schrumpfende, halb geplatzte "
         "Seifenblase über einer ruhigen Kaffeetasse, sehr dunkler Hintergrund mit warmen "
         "Bernstein- und Karamell-Lichtakzenten, edel, kontraststark, minimalistisch, bold editorial")
     out = "/tmp/buch_bg.png"
-    models = [m for m in [os.environ.get("GEMINI_IMAGE_MODEL", "imagen-3.0-generate-002"),
-                          "gemini-2.0-flash-preview-image-generation"] if m]
+    forced = os.environ.get("GEMINI_IMAGE_MODEL", "").strip()
+    models = ([forced] if forced else []) + _discover_models(api_key)
+    seen = set()
     for model in models:
+        if not model or model in seen:
+            continue
+        seen.add(model)
         try:
             g.MODEL = model
             g.set_aspect(aspect)
@@ -102,7 +134,7 @@ def gemini_bg(aspect):
             if r and os.path.exists(out):
                 print(f"✓ KI-Hintergrund via {model}")
                 return Image.open(out).convert("RGB")
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             print(f"Modell {model} fehlgeschlagen: {e}")
     return None
 
