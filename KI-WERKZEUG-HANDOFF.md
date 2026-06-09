@@ -3,6 +3,19 @@
 > Für die separate Tool-Session. Stand 2026-06-09. Enthält die **Antworten/Entscheidungen des Users**
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 
+## 📌 2026-06-09 (Teil 3) — 3 Einnahme-Richtungen + Header-Banner (User: „alle reihenach")
+- **Header-Banner site-weit (#499):** `js/announce.js` — schließbar (7T), de/en, rotiert: KI-Sichtbarkeits-Check ·
+  KI-Werkzeug · Newsletter. Auf 120 Root-Seiten + EN-Tool. (Hubs noch nicht — können nachgezogen werden.)
+- **A) KI-Sichtbarkeits-Abo (#500):** Gratis-Check (`ki-erwaehnungs-check.html`) führt jetzt primär zum
+  **Monitor (9 €/Mon)** als Held. Trichter: Banner → Check → Monitor. **User-TODO:** `MONITOR_ABO_URL` in
+  `js/checkout-config.js` (Stripe-Abo-Link) setzen → Kaufbutton live (sonst Mail-Fallback).
+- **B) Done-for-you-Texte (#501):** neue Seite **`texte-service.html`** (Starter CHF 49 / Monats-Flat CHF 39).
+  Bestellung über `TEXTE_STARTER_URL`/`TEXTE_FLAT_URL` in checkout-config (leer = vorbefüllte Mail-Anfrage).
+  Verlinkt aus KI-Werkzeug DE+EN. **User-TODO:** Preise bestätigen/ändern, Service liefern, optional Stripe-Links.
+- **C) White-Label (#502):** neue Seite **`fuer-verbaende.html`** (Verbände/Kammern/Agenturen), 3 Lizenz-Modelle,
+  Demo = Live-Tool, Lead-Gen per Mail. Footer-verlinkt + Sitemap. **User-TODO:** Konditionen im Sales-Gespräch.
+- **Empfehlung:** A zuerst scharfschalten (nur 1 Stripe-Link nötig, Teile stehen), dann B/C als Sales.
+
 ## 📌 2026-06-09 (Teil 2) — EN-Tool + Phase-2-Worker (8h-Auto-Sprint)
 - **EN-Tool live (PR #492):** `en/ki-werkzeug.html` (gespiegelte Logik, EN-Copy/Templates), Funnel in
   **alle 298 `en/ki-fuer-*.html`**, hreflang DE↔EN, Sitemap. **Pro-Flag teilt sich** (gleiche Origin).
