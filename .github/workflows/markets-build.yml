@@ -1,0 +1,53 @@
+name: Märkte-Daten (Kurse + News + KI-Sentiment)
+
+# Aktualisiert data/markets.json: Aktien-/Krypto-Kurse + Finanz-News (Stooq/CoinGecko/RSS)
+# und ergänzt experimentelles Claude-Sentiment pro Wert. No-op-sicher: ohne ANTHROPIC_API_KEY
+# läuft nur der Kurs-/News-Teil. Commit nur bei Änderung; Cloudflare deployt vom Default-Branch.
+on:
+  schedule:
+    - cron: '0 6 * * 1-5'      # Mo–Fr 06:00 UTC
+    - cron: '0 16 * * 1-5'     # Mo–Fr 16:00 UTC (nach US-Open)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: markets-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Kurse + News holen
+        run: |
+          python automation/markets_fetch.py \
+            || echo "markets_fetch mit Warnung beendet"
+
+      - name: KI-Sentiment (Claude) ergänzen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MARKETS_AI_MODEL: ${{ vars.MARKETS_AI_MODEL }}
+        run: |
+          pip install --quiet anthropic || true
+          python automation/markets_ai.py \
+            || echo "markets_ai mit Warnung beendet (kein Key?)"
+
+      - name: markets.json committen (falls geändert)
+        run: |
+          git add -f data/markets.json
+          if ! git diff --cached --quiet; then
+            git config user.name "aban-news-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git commit -m "chore(markets): frische Kurse, News & KI-Sentiment [skip ci]"
+            git push
+          else
+            echo "Keine Änderung an markets.json."
+          fi
