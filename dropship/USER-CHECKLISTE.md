@@ -1,5 +1,24 @@
 # ✅ USER-CHECKLISTE — LuxeStyle Social-Maschine aktivieren
 
+## 🔴 OFFEN (todo morgen, Stand 2026-06-09) — nach Gemini-Verifikation (Note 4→6/10, Hero jetzt Stärke)
+**Hero ist fertig & live** (heller Text + goldener Button + Premium-Bild, Schema 3 gesetzt). Verbleibende Gemini-Punkte —
+alle NICHT autonom machbar (Gründe dahinter):
+
+1. **🔑 `JUDGEME_PRIVATE_TOKEN` als GitHub-Secret setzen** (+ `JUDGEME_SHOP_DOMAIN=au3j0y-hq.myshopify.com`).
+   → Dann läuft `automation/reviews-import.mjs` autonom und importiert **echte ≥4★-Reviews** (`dropship/reviews_seed.json`,
+   NIE Fake) → **Sterne erscheinen auf den Produktkacheln** (Homepage + Collection). WICHTIGSTER Hebel: „keine Sterne" ist
+   ein **Review-/Inhalts-Problem**, kein Theme-Problem (live verifiziert: Collection-Kacheln haben Preis, aber 0 Sterne, weil
+   die meisten Produkte 0 Reviews haben). Theme-Block bringt ohne Reviews nichts.
+2. **Cookie-Banner** kompakter / als schmale untere Leiste (Consent-App-Einstellung, nicht Theme-Code) — Geminis aktueller #1.
+3. **Top-Bar-Schrift** auf Mobil etwas grösser (Customizer → Header/Ankündigung).
+
+⚠️ **Warum nicht autonom:** Shopify blockiert API-Schreibzugriff aufs **Live-Theme** hart (Customizer = nur Mensch);
+Desktop-Zugriff hilft Claude nicht, da Claude über die API arbeitet, nicht über einen Browser. Sterne hängen an Reviews (Token).
+
+**Schon erledigt (autonom, live):** Rückgabefrist→30 Tage (5 Coll.), Damen-Text gekürzt, Lieferzeit→„1–2 Wochen",
+Top-10 premium-first sortiert, 5 Sub-Collections+SEO, Beleuchtung-Regel gefixt, 2 Hero-Bilder generiert.
+Reports: `reports/site-critique-2026-06-08.md` (4/10) + `…-09.md` (6/10).
+
 ## 🔴 OFFEN (2026-06-08, todo morgen) — Hero-Farbschema fixen [1 Klick]
 **Einziger offener Punkt nach der Gemini-Polish-Session.** Hero-Bild, Button-Label & Overlay sind schon
 gesetzt; Top-10-Bestseller umsortiert; Rückgabefrist/SEO/Sub-Collections live. Es fehlt NUR:
