@@ -68,3 +68,15 @@
   ⚠️ Apparel-`variant.image` ist oft ein **Model-Foto** (Regel „keine asiatischen Models" prüfen! var 10874/recycelter-Hoodie las asiatisch → vermieden) → für Apparel lieber Flat/Ghost.
 - **Tool/Workflow** `automation/pod_blank_mockups.mjs` + `.github/workflows/pod-blank-mockups.yml` (Gemini-Text-Removal,
   liegt bereit für wenn Billing wieder da ist; aktuell no-op wegen 429).
+
+## 🇨🇭 MARKTLÜCKE = „Schweiz Edition" (Strategie: `dropship/MARKTLUECKE-SCHWEIZ-EDITION.md`)
+- **Daten 30T:** 2.888 Sessions, **1.541 CH** (53 %), aber **8 Warenkorb / 7 Checkout / 0 Kauf** → Engpass = **Conversion**,
+  nicht Traffic. Kaltes Social-Publikum sieht austauschbare Dropship-Mode (= Temu/AliExpress) → kein Kaufgrund.
+- **Lücke:** **Mundart- & CH-Kultur-POD** (Hoi zäme, Chuchichäschtli, Kanton-Pride…) — Sprach-/Kulturmauer gegen
+  generische Dropshipper, emotional/Heimat, geschenk-/impuls-tauglich, on-demand (Printful EU / Mister DTF CH).
+  **Held = Mundart-Sticker CHF 4.90** (Produktbild = Motiv, kein Mockup → schnellster Launch + bester Conv-Hebel).
+- **Vorbereitet diese Session:** +39 Mundart/CH-Design-Briefs in `social/designs/prompts.json` (313 total, generieren
+  sobald Gemini-Billing da); Smart-Collection **„🇨🇭 Schweiz Edition"** angelegt (`gid://shopify/Collection/688449749377`,
+  handle `schweiz-edition`, Regel Tag `schweiz-edition`, leer/startklar).
+- **Zum Live-Schalten:** (1) Gemini-Billing → Motive generieren; (2) Printify/Gelato-Key (Karte) → Auto-Fulfill;
+  (3) Pre-made Produkte taggen `schweiz-edition`; (4) Menü/Hero verlinken + Reel + Kampagne. Details im Strategie-Doc.

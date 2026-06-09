@@ -1094,5 +1094,161 @@
 {
 "name": "text-staypositive",
 "prompt": "A die-cut lettering design of the words Stay Positive in upbeat modern letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "ch-hoi-zaeme",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Hoi zäme', modern bold brush hand-lettering, black ink with a small Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-merci-vilmal",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Merci vilmal', modern bold brush hand-lettering, black ink with a small Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-gruezi-mitenand",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Grüezi mitenand', modern bold brush hand-lettering, black ink with a small Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-sali-zaeme",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Sali zäme', modern bold brush hand-lettering, black ink with a small Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-haerzlech",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Härzlech willkomm', modern bold brush hand-lettering, black ink with a small Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-chuchichaeschtli",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Chuchichäschtli', playful bold rounded hand-lettering with a tiny cupboard icon, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-gopfertami",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Gopfertami!', cheeky bold graffiti-style lettering, black with red accent (light Swiss humor), centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-haeee",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Hä?', huge bold condensed lettering, black with red accent (Swiss humor), centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-feierabig",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Feierabig', relaxed bold script, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-apero-time",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Apéro Time', fun bold retro lettering with a small wine glass, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-znueni",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Znüni', cute rounded bold lettering with a small croissant, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-buenzli",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Bünzli', tongue-in-cheek bold stamp lettering, black with red accent (Swiss humor), centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-gaell",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Gäll', minimal bold lettering, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-eidgenoss",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Eidgenoss', strong vintage varsity lettering with a small Swiss cross, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-es-git-nu-eis-zueri",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Es git nu eis Züri', bold city-pride lettering, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-baern",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Bärn', bold city-pride lettering with a tiny bear silhouette, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-basel",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Basel', bold city-pride lettering with a tiny basilisk, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-1-august",
+"prompt": "Typographic streetwear print graphic that reads exactly '1. August', festive bold lettering with small fireworks over a mountain, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-prosit",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Prosit', celebratory bold lettering, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-swiss-army-knife",
+"prompt": "A bold minimalist vector print graphic of a classic Swiss army pocket knife, iconic and clean, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-murmeli",
+"prompt": "A bold minimalist vector print graphic of a cute alpine marmot (Murmeli) sitting, friendly mascot style, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-steinbock",
+"prompt": "A bold minimalist vector print graphic of a proud alpine ibex (Steinbock) with big curved horns on a peak, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-bernese-dog",
+"prompt": "A bold minimalist vector print graphic of a happy Bernese mountain dog head, friendly mascot, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-bernhardiner",
+"prompt": "A bold minimalist vector print graphic of a St. Bernard dog with a small rescue barrel, friendly mascot, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-braunvieh",
+"prompt": "A bold minimalist vector print graphic of a cute Swiss brown cow with a cowbell, friendly mascot, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-chalet",
+"prompt": "A bold minimalist vector print graphic of a cozy Swiss wooden chalet with mountains behind, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-baehnli",
+"prompt": "A bold minimalist vector print graphic of a little red mountain cable car (Bähnli) over peaks, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-raclette",
+"prompt": "A bold minimalist vector print graphic of a melting raclette with potatoes, cozy foodie sticker, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-cervelat",
+"prompt": "A bold minimalist vector print graphic of a cervelat sausage grilled on a stick over a campfire, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-heidi",
+"prompt": "A bold minimalist vector print graphic of a cheerful Heidi-style alpine girl with braids and flowers, wholesome, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-enzian",
+"prompt": "A bold minimalist vector print graphic of a single blue gentian (Enzian) alpine flower, botanical line art, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-swiss-cross-badge",
+"prompt": "A bold minimalist vector print graphic of a rounded Swiss cross emblem in a vintage badge with laurel, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-fasnacht-mask",
+"prompt": "A bold minimalist vector print graphic of a colorful Basler Fasnacht carnival mask, festive, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-fondue-caquelon",
+"prompt": "A bold minimalist vector print graphic of a fondue caquelon pot with crossed forks and a heart of steam, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-schoggi-bar",
+"prompt": "A bold minimalist vector print graphic of a chocolate bar snapped in half, premium Swiss chocolate sticker, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-alpaufzug",
+"prompt": "A bold minimalist vector print graphic of a cow with a flower headdress for the Alpabzug procession, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-matterhorn-sun",
+"prompt": "A bold minimalist vector print graphic of the Matterhorn peak with a rising sun, minimal line art badge, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-edelweiss-line",
+"prompt": "A bold minimalist vector print graphic of a single edelweiss flower, elegant minimal line art, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-postauto-horn",
+"prompt": "A bold minimalist vector print graphic of the three-note Swiss Postbus horn motif, retro graphic, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
 }
 ]
