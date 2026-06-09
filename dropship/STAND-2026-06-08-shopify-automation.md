@@ -141,3 +141,30 @@
 - **Offen/optional (Gemini):** echte Kundenbewertungen (Judge.me, sobald vorhanden) + Beispiel-Design-Galerie (braucht
   Mockup-Assets). Bewusst weggelassen, keine Fake-Inhalte.
 - Storefront-Cache braucht ~Minuten nach pageUpdate (Admin-API ist sofort aktuell). URL: luxestyle.ch/pages/selbst-gestalten
+
+## 🎨 POD „Gestalten"-Tool VOLL AUTONOM (2026-06-09 nachts) — eigenes Widget, kein Drittanbieter
+- **Problem gelöst:** Printful-Produkte hatten KEINE Kunden-Personalisierung (1 Variante, „Dein Design"=Mockup).
+  Eigenes Widget gebaut statt App/Printful-Toggle.
+- **`pod/designer.js`** (via GitHub Pages → abannews.com/pod/designer.js), per Mini-Snippet in jede
+  POD-Produktbeschreibung. Features: **Vorne/Hinten-Umschalter** (eigene Mockups + Vorschau je Seite),
+  **TEXT** (Schrift/Farbe/Grösse/Platzierung, Live-Vorschau), **Logo/Bild-Upload** (Cloudinary unsigned —
+  Tab erscheint sobald `CLOUD`+`PRESET` in designer.js gesetzt), **zweisprachig DE/EN** (auto aus `Shopify.locale`).
+- **Add-to-cart:** liest gewählte Variante aus dem Shopify-Formular, legt sie per `Shopify.routes.cart_add_url`
+  (locale-sicher) mit Design als **properties** ab; spiegelt Design zusätzlich in versteckte `properties[]`-Inputs
+  des Formulars → **auch der normale Theme-Kaufbutton trägt das Design** (kein Blank-Order). LIVE getestet: Text+Vorschau
+  +Warenkorb funktionieren (Screenshots vom User bestätigt).
+- **Rollout:** `automation/pod_inject_designer.mjs` + `.github/workflows/pod-inject-designer.yml` (idempotent,
+  Vorne/Hinten-Erkennung per Bild-Dateiname front/back). **Auf ALLEN 26 wunschdesign-Produkten live.**
+- **Gemini-Kritik-Loop:** `automation/gemini_widget_critique.mjs` + `pod-widget-critique.yml` → `dropship/pod/widget-critique.md`
+  (6/10). Umgesetzt in v5: grössere Swatches+Häkchen, Bild-entfernen-Button, Upload-Sperre, besserer Platzhalter,
+  locale-sichere URLs, Zweisprachigkeit.
+- **Mehrsprachig:** Shop hat DE(primär)/EN/FR/IT **published** → Switcher existiert nativ. POD-Seite EN via
+  `automation/pod_translate_page.mjs` + `pod-translate-page.yml` (`translationsRegister`, Titel/Body/Meta) →
+  **luxestyle.ch/en/pages/selbst-gestalten** komplett englisch (verifiziert).
+- **OFFENE USER-SCHRITTE (für „komplett hands-off"):**
+  1. **Foto/Logo-Upload:** Cloudinary-Gratis-Konto → `CLOUD`+`PRESET` (öffentlich) in `pod/designer.js` setzen → Bild-Tab live auf allen 26.
+  2. **Front+Back-Druck:** in Printful pro Produkt 2. Druckfläche + Aufpreis aktivieren (Widget bietet Hinten schon an).
+  3. **Auto-Fulfillment:** Printful-API-Key als Secret → Workflow, der bei jeder Bestellung den Druckauftrag mit dem
+     Kunden-Design erstellt (noch zu bauen).
+- **Nächster geplanter autonomer Schritt:** Beispiel-Design-Galerie auf der POD-Seite (Gemini-Bilder), war hinter dem
+  funktionierenden Gestalten-Button gegated — jetzt möglich.
