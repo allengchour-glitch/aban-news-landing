@@ -6,16 +6,17 @@ Kanal-Start: 2026-06-03 · Tag 6/30 · letzte Auswertung 2026-06-09 (UTC)
 
 ## Aktuelle Entscheidung
 
-> ⏳ Datensammeln (Tag 6/30, 7 Abos (+0), Views-Trend +529). Kurs halten, weiter posten.
+> ⏳ Datensammeln (Tag 6/30, 7 Abos (+0), Views-Trend +1). Kurs halten, weiter posten.
 
 - **Abonnenten: 7** (Trend seit letztem Lauf: +0)
-- Gesamt-Views: **529** (Trend: +529)
+- Gesamt-Views: **530** (Trend: +1)
 - Top-Folge: **ep6** mit **250** Views
 
 ## Verlauf (letzte 40 Laeufe)
 
 | Zeit (UTC) | Tag | Abos | Views | Top | Entscheidung |
 |---|--:|--:|--:|---|---|
+| 2026-06-09T19:36Z | 6 | 7 | 530 | ep6(250) | ⏳ Datensammeln (Tag 6/30, 7 Abos (+0), Views-Trend +1). Kurs |
 | 2026-06-09T11:45Z | 6 | 7 | 529 | ep6(250) | ⏳ Datensammeln (Tag 6/30, 7 Abos (+0), Views-Trend +529). Ku |
 | 2026-06-08T14:52Z | 5 | 7 | 0 | ?(0) | ⏳ Datensammeln (Tag 5/30, 7 Abos (+0), Views-Trend +0). Kurs |
 | 2026-06-07T16:55Z | 4 | — | 0 | ?(0) | ⚠️ Schwache Fruehphase (best 0). Aktion: Hooks/Themen variie |
