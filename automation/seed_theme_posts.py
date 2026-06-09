@@ -110,6 +110,76 @@ POSTS = [
      "Social-Posts, Angebotstexte, Antworten auf Bewertungen: Genau das nimmt KI dir ab, ohne dass "
      "du Technik-Nerd sein musst.\n\n"
      "Konkrete Beispiele → https://abannews.com/ki-fuer-baeckereien.html", "ki-fuer-baeckereien.html"),
+
+    # --- Welle 2: neue Inhalte bewerben (Vergleiche, Glossar, Tools) ---
+    ("chatgpt-vs-perplexity",
+     "ChatGPT oder Perplexity? Kommt drauf an, was du brauchst.\n\n"
+     "Für Recherche mit Quellen: Perplexity (zeigt, woher die Antwort kommt). Fürs Schreiben und "
+     "Brainstormen: ChatGPT. Kein Tool ist „besser“ — sie sind für Verschiedenes gebaut.\n\n"
+     "Ehrlicher Vergleich (Score, Preis, DSGVO, Urteil) → "
+     "https://abannews.com/vergleich/chatgpt-vs-perplexity.html", "vergleich/chatgpt-vs-perplexity.html"),
+
+    ("gemini-vs-perplexity",
+     "Gemini oder Perplexity für die Suche?\n\n"
+     "Perplexity ist auf Recherche-mit-Quellen spezialisiert. Gemini kann mehr drumherum "
+     "(Google-Integration, Multimodales), ist aber breiter. Für reine Quellen-Recherche meist Perplexity.\n\n"
+     "Voller Vergleich → https://abannews.com/vergleich/gemini-vs-perplexity.html",
+     "vergleich/gemini-vs-perplexity.html"),
+
+    ("vibe-coding",
+     "„Vibe Coding“ — das neue Hype-Wort. Kurz und ehrlich:\n\n"
+     "Du sagst der KI in normaler Sprache, was du willst, und liest den Code kaum noch selbst. "
+     "Super für schnelle Prototypen.\n\n"
+     "Für Produktives riskant: Fehler und Sicherheitslücken merkst du oft erst spät. "
+     "„Jeder kann jetzt programmieren“ stimmt nur halb.\n\n"
+     "Mehr Begriffe ohne Hype → https://abannews.com/ki-glossar.html", "ki-glossar.html"),
+
+    ("deepfake-chef",
+     "Der gefährlichste KI-Betrug gerade: der falsche „Chef-Anruf“.\n\n"
+     "Stimmen lassen sich heute überzeugend nachbauen (Deepfake). Jemand ruft an, klingt wie dein Chef, "
+     "will eine dringende Überweisung.\n\n"
+     "Eine simple Regel schützt: bei Geld-Themen IMMER zurückrufen — über die echte Nummer, nicht die "
+     "im Anruf.\n\nKI-Begriffe in Klartext → https://abannews.com/ki-glossar.html", "ki-glossar.html"),
+
+    ("chain-of-thought",
+     "Warum „Reasoning“-Modelle bei Mathe besser sind — in einem Satz:\n\n"
+     "Sie schreiben den Rechenweg mit (Chain-of-Thought), statt sofort zu raten. Mehr Zwischenschritte "
+     "= höhere Trefferquote.\n\n"
+     "Aber: „die KI denkt nach“ ist ein Bild, keine Tatsache. Sie erzeugt nur mehr Zwischen-Text.\n\n"
+     "KI ehrlich erklärt → https://abannews.com/ki-glossar.html", "ki-glossar.html"),
+
+    ("hype-score-challenge",
+     "Kleines Experiment: Nimm die letzte „KI-Lösung“, die dir jemand verkaufen wollte, und jag den "
+     "Werbetext durch den Hype-Detektor.\n\n"
+     "Über 60/100? Dann steckt meist wenig dahinter.\n\n"
+     "Probier's (kein Login, dein Text bleibt bei dir) → https://abannews.com/ki-hype-detektor.html",
+     "ki-hype-detektor.html"),
+
+    ("prompt-rolle",
+     "Ein Prompt-Trick, der sofort bessere Texte bringt:\n\n"
+     "Gib der KI eine Rolle UND ein Ziel UND die Zielgruppe. Statt „schreib eine Mail“ → "
+     "„Du bist Kundenservice. Schreib eine freundliche Entschuldigungs-Mail an einen verärgerten "
+     "Stammkunden.“\n\nMehr erprobte Prompts → https://abannews.com/prompt-baukasten.html",
+     "prompt-baukasten.html"),
+
+    ("kosten-realitaet",
+     "„KI spart sofort Geld“ — die ehrliche Version:\n\n"
+     "Erst kostet sie dich Zeit (Lernen, Ausprobieren, Prüfen). Der Spareffekt kommt nach ein paar "
+     "Wochen, wenn die Routinen sitzen.\n\n"
+     "Wer das weiß, gibt nicht nach Tag 2 frustriert auf.\n\n"
+     "Was KI realistisch spart → https://abannews.com/ki-spar-rechner.html", "ki-spar-rechner.html"),
+
+    ("readiness",
+     "Bevor du in KI investierst: 7 ehrliche Fragen.\n\n"
+     "Nicht „welches Tool“, sondern „bin ich überhaupt bereit?“ — Datenordnung, klare Aufgaben, "
+     "Team-Buy-in. Da scheitert's öfter als an der Technik.\n\n"
+     "Kostenloser Readiness-Check → https://abannews.com/ki-readiness-check.html", "ki-readiness-check.html"),
+
+    ("tool-zuviel",
+     "Du brauchst nicht 12 KI-Tools. Du brauchst 2, die du wirklich benutzt.\n\n"
+     "Die meisten Abos liegen brach. Lieber eins richtig lernen als zehn halb.\n\n"
+     "Welches für welche Aufgabe? Ehrlich sortiert, kein Affiliate → "
+     "https://abannews.com/welche-ki-fuer-was.html", "welche-ki-fuer-was.html"),
 ]
 
 

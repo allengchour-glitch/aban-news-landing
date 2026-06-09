@@ -48,6 +48,9 @@ Sitemap, `online-tools.html`, LinkedIn-Queue (`aban-tool-hype-detektor`, postet 
   **chatgpt-vs-perplexity / gemini-vs-perplexity / claude-vs-perplexity** (Top-Suchbegriffe). Hub+Zahl-Refs auto/
   manuell auf 197. **Merke:** `vergleich/*` + Hub sind GENERIERT; neue Paare über `alternatives` in tools.json +
   Regenerieren; Sitemap-Zeilen manuell aus `vergleich/_sitemap-fragment.txt` nachziehen.
+- **LinkedIn-Queue Welle 2** (PR #555): +10 Themen-Posts via `automation/seed_theme_posts.py` (bewerben die neuen
+  Inhalte: Perplexity-Vergleiche, Vibe Coding, Deepfake, Chain-of-Thought, Hype-Detektor-Challenge, Prompt-Rolle …).
+  **Queue jetzt 81 (~16 Wo. Werktags-Vorrat).** Seed-Skript ist idempotent (Präfix `aban-theme-`).
 - **Newsletter-Hebel offen (nur User):** beehiiv liefert nur Link, kein Inline-Formular. **beehiiv-Embed-Snippet**
   (`<iframe src="https://embeds.beehiiv.com/…">` aus Settings→Subscribe Forms) → dann baue ich Inline-Signup site-weit
   statt nur Weiterleitung (= direkter Abonnenten-Boost).
