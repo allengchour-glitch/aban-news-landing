@@ -23,3 +23,11 @@ OEKO-TEX®, ab 1 Stück, 3–5 Werktage, Express möglich). Printful kann lose B
 - **Cloudinary** muss in `pod/designer.js` gesetzt sein (CLOUD/PRESET) — sonst trägt die Bestellung **keine
   Druckdatei** (der Editor backt sie, kann sie aber nicht hochladen). Bis dahin **DRAFT lassen**.
 - Danach: ACTIVE schalten, in Kollektion „Selbst gestalten" + Menü aufnehmen, 1 Testbestellung End-to-End prüfen.
+
+---
+## ⚙️ Update 2026-06-09: Printful-App-Import = „manuelle Bestätigung" (User erledigt)
+- User hat in der Printful-App **Auto-Bestätigung AUS** → „Manuelle Bestätigung importierter Aufträge".
+- ⚠️ **Wichtig:** „manuell" ≠ „kein Import". Die App importiert weiter → pro Bestellung evtl. **2 Printful-Entwürfe**:
+  (a) App-Entwurf OHNE Design, (b) unser API-Sync-Entwurf MIT Druckdatei (`printful_sync.mjs`, Gemini-geprüft).
+  → **Den (b) mit Design bestätigen, (a) löschen.** Beide sind Entwürfe → kein Auto-Abbuchen.
+- Beim 1. echten Test (nach `PRINTFUL_API_KEY`) gemeinsam verifizieren; falls störend, App-Order-Import ganz abschalten.
