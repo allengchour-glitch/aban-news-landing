@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prompt-Baukasten — in 30 Sekunden ein starker KI-Prompt | aban news</title>
-<meta name="description" content="Aus Stichworten ein klar strukturierter KI-Prompt: Rolle, Kontext, Aufgabe, Format und Leitplanken. Gratis, ohne Login — funktioniert mit ChatGPT, Claude, Gemini & Co.">
+<title>Prompt Builder — a strong AI prompt in 30 seconds | aban news</title>
+<meta name="description" content="Turn a few keywords into a clearly structured AI prompt: role, context, task, format and guardrails. Free, no login — works with ChatGPT, Claude, Gemini & co.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/prompt-baukasten.html">
+<link rel="canonical" href="https://abannews.com/en/prompt-baukasten.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/prompt-baukasten.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/prompt-baukasten.html">
 <link rel="alternate" hreflang="x-default" href="https://abannews.com/prompt-baukasten.html">
-<meta property="og:title" content="Prompt-Baukasten — in 30 Sekunden ein starker KI-Prompt">
-<meta property="og:description" content="Aus Stichworten ein sauber strukturierter Prompt — für ChatGPT, Claude, Gemini & Co. Gratis, ohne Login.">
+<meta property="og:title" content="Prompt Builder — a strong AI prompt in 30 seconds">
+<meta property="og:description" content="Keywords in, a clean structured prompt out — for ChatGPT, Claude, Gemini & co. Free, no login.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/prompt-baukasten.html">
+<meta property="og:url" content="https://abannews.com/en/prompt-baukasten.html">
 <meta property="og:image" content="https://abannews.com/og-tools.png">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="en_US"><meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Prompt-Baukasten","url":"https://abannews.com/prompt-baukasten.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"de","description":"Baut aus Stichworten einen klar strukturierten KI-Prompt (Rolle, Kontext, Aufgabe, Format, Leitplanken).","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Prompt Builder","url":"https://abannews.com/en/prompt-baukasten.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"en","description":"Builds a clearly structured AI prompt from a few keywords (role, context, task, format, guardrails).","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -66,97 +66,97 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
-<a href="/ki-werkzeug.html" class="btn ghost">KI-Werkzeug</a></div></header>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="/prompt-baukasten.html" class="btn ghost">DE</a></div></header>
 <main><div class="wrap">
 
   <section class="hero">
-    <h1><span class="a">Prompt</span>-Baukasten</h1>
-    <p>Aus ein paar Stichworten ein klar strukturierter Prompt — für ChatGPT, Claude, Gemini &amp; Co. Gratis, ohne Login. Du füllst aus, der Prompt baut sich live.</p>
+    <h1><span class="a">Prompt</span> Builder</h1>
+    <p>Turn a few keywords into a clearly structured prompt — for ChatGPT, Claude, Gemini &amp; co. Free, no login. You fill it in, the prompt builds itself live.</p>
   </section>
 
   <div class="app">
     <div class="field">
-      <label for="aufgabe">Was soll die KI tun? <span class="hint">— die Hauptaufgabe</span></label>
-      <input type="text" id="aufgabe" placeholder="z. B. eine Kunden-E-Mail zu einer Terminverschiebung schreiben">
+      <label for="aufgabe">What should the AI do? <span class="hint">— the main task</span></label>
+      <input type="text" id="aufgabe" placeholder="e.g. write a customer email about a rescheduled appointment">
     </div>
     <div class="row">
       <div class="field">
-        <label for="rolle">Rolle der KI <span class="hint">— optional</span></label>
-        <input type="text" id="rolle" placeholder="z. B. erfahrener Texter für Handwerksbetriebe">
+        <label for="rolle">Role of the AI <span class="hint">— optional</span></label>
+        <input type="text" id="rolle" placeholder="e.g. experienced copywriter for trades businesses">
       </div>
       <div class="field">
-        <label for="format">Antwort als …</label>
+        <label for="format">Answer as …</label>
         <select id="format">
-          <option value="Fließtext">Fließtext</option>
-          <option value="Stichpunkte">Stichpunkte</option>
-          <option value="Tabelle">Tabelle</option>
-          <option value="E-Mail mit Betreff">E-Mail (mit Betreff)</option>
-          <option value="Schritt-für-Schritt-Anleitung">Schritt-für-Schritt</option>
-          <option value="Social-Media-Post">Social-Media-Post</option>
+          <option value="prose">prose</option>
+          <option value="bullet points">bullet points</option>
+          <option value="a table">a table</option>
+          <option value="an email with subject line">an email (with subject)</option>
+          <option value="a step-by-step guide">step-by-step</option>
+          <option value="a social media post">social media post</option>
         </select>
       </div>
     </div>
     <div class="field">
-      <label for="kontext">Kontext &amp; Fakten <span class="hint">— Stichworte mit Komma; gib echte Zahlen/Namen</span></label>
-      <textarea id="kontext" placeholder="z. B. Termin 14.6. fällt aus, Ersatz 21.6., Kunde Herr Meier, freundlich, kurz"></textarea>
+      <label for="kontext">Context &amp; facts <span class="hint">— keywords, comma-separated; give real numbers/names</span></label>
+      <textarea id="kontext" placeholder="e.g. appointment 14 June cancelled, replacement 21 June, Mr Miller, friendly, short"></textarea>
     </div>
     <div class="row">
       <div class="field">
-        <label for="ton">Tonfall</label>
+        <label for="ton">Tone</label>
         <select id="ton">
-          <option value="sachlich und professionell">sachlich &amp; professionell</option>
-          <option value="freundlich und nahbar">freundlich &amp; nahbar</option>
-          <option value="locker und jung">locker &amp; jung</option>
-          <option value="edel und hochwertig">edel &amp; hochwertig</option>
+          <option value="factual and professional">factual &amp; professional</option>
+          <option value="friendly and approachable">friendly &amp; approachable</option>
+          <option value="casual and young">casual &amp; young</option>
+          <option value="elegant and premium">elegant &amp; premium</option>
         </select>
       </div>
       <div class="field">
-        <label for="laenge">Länge</label>
+        <label for="laenge">Length</label>
         <select id="laenge">
-          <option value="kurz (max. 120 Wörter)">kurz</option>
-          <option value="mittel (ca. 200–300 Wörter)" selected>mittel</option>
-          <option value="ausführlich">ausführlich</option>
+          <option value="short (max. 120 words)">short</option>
+          <option value="medium (approx. 200–300 words)" selected>medium</option>
+          <option value="detailed">detailed</option>
         </select>
       </div>
     </div>
     <div class="checks">
-      <label><input type="checkbox" id="nachfragen" checked> Bei fehlenden Infos zuerst nachfragen</label>
-      <label><input type="checkbox" id="keinefakten" checked> Keine Fakten/Zahlen erfinden</label>
+      <label><input type="checkbox" id="nachfragen" checked> Ask first if information is missing</label>
+      <label><input type="checkbox" id="keinefakten" checked> Don't invent facts/numbers</label>
     </div>
 
     <div class="out">
-      <h3>Dein Prompt</h3>
+      <h3>Your prompt</h3>
       <pre id="out"></pre>
       <div class="rowbtns">
-        <button class="btn ghost" id="copy">In Zwischenablage kopieren</button>
-        <a class="btn ghost" href="https://chatgpt.com" target="_blank" rel="noopener">In ChatGPT öffnen ↗</a>
-        <a class="btn ghost" href="https://claude.ai" target="_blank" rel="noopener">In Claude öffnen ↗</a>
+        <button class="btn ghost" id="copy">Copy to clipboard</button>
+        <a class="btn ghost" href="https://chatgpt.com" target="_blank" rel="noopener">Open in ChatGPT ↗</a>
+        <a class="btn ghost" href="https://claude.ai" target="_blank" rel="noopener">Open in Claude ↗</a>
       </div>
     </div>
   </div>
-  <p class="disc">Der Baukasten strukturiert deine Eingaben nach bewährten Regeln — er „denkt" nichts dazu. Prüf das Ergebnis der KI immer selbst.</p>
+  <p class="disc">The builder structures your inputs by proven rules — it doesn't "think" anything up. Always check the AI's result yourself.</p>
 
   <section class="tips">
-    <h2>Die 5 Bausteine eines guten Prompts</h2>
+    <h2>The 5 building blocks of a good prompt</h2>
     <ol>
-      <li><b>Rolle</b> — wer soll die KI sein? („erfahrener Steuerberater")</li>
-      <li><b>Aufgabe</b> — was genau soll rauskommen?</li>
-      <li><b>Kontext &amp; Fakten</b> — echte Zahlen/Namen statt raten lassen.</li>
-      <li><b>Format</b> — Tabelle, Stichpunkte, E-Mail …</li>
-      <li><b>Leitplanken</b> — Ton, Länge, „nichts erfinden", „erst nachfragen".</li>
+      <li><b>Role</b> — who should the AI be? ("experienced tax advisor")</li>
+      <li><b>Task</b> — what exactly should come out?</li>
+      <li><b>Context &amp; facts</b> — real numbers/names instead of guessing.</li>
+      <li><b>Format</b> — table, bullet points, email …</li>
+      <li><b>Guardrails</b> — tone, length, "don't invent", "ask first".</li>
     </ol>
   </section>
 
   <div class="band">
-    <h2>Noch weniger Aufwand?</h2>
-    <p>Das <a href="/ki-werkzeug.html">KI-Werkzeug</a> liefert dir den fertigen Text direkt — und der Newsletter macht dich Mo–Fr KI-fitter, ohne Hype.</p>
-    <a class="btn" href="https://abannews.beehiiv.com/subscribe">Newsletter gratis abonnieren</a>
+    <h2>Even less effort?</h2>
+    <p>The <a href="/en/ki-werkzeug.html">AI Toolkit</a> gives you the finished text directly — and the newsletter keeps you AI-fit Mon–Fri, no hype.</p>
+    <a class="btn" href="https://abannews.beehiiv.com/subscribe">Subscribe free</a>
   </div>
 
 </div></main>
 <footer><div class="wrap">&copy; 2026 aban news &middot; Allen Chour &middot; Belp (CH) &middot;
-  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/ki-glossar.html">Glossar</a> &middot; <a href="/welche-ki-fuer-was.html">Tool-Finder</a> &middot; <a href="/impressum.html">Impressum</a></div></footer>
+  <a href="/en/ki-werkzeug.html">AI Toolkit</a> &middot; <a href="/impressum.html">Imprint</a> &middot; <a href="/datenschutz.html">Privacy</a></div></footer>
 
 <script>
 (function(){
@@ -173,24 +173,24 @@ footer a{color:var(--muted)}
     var nachfragen=$("nachfragen").checked;
     var keine=$("keinefakten").checked;
     var lines=[];
-    lines.push("Du bist " + (rolle || "ein hilfreicher, präziser Assistent") + ".");
+    lines.push("You are " + (rolle || "a helpful, precise assistant") + ".");
     lines.push("");
-    lines.push("Aufgabe: " + (aufgabe || "[was die KI tun soll]") + ".");
+    lines.push("Task: " + (aufgabe || "[what the AI should do]") + ".");
     if(kontext.length){
       lines.push("");
-      lines.push("Kontext & Fakten (nutze genau diese, erfinde nichts dazu):");
+      lines.push("Context & facts (use exactly these, don't add anything):");
       kontext.forEach(function(k){ lines.push("- " + k); });
     }
     lines.push("");
-    lines.push("Format: Antworte als " + format + ".");
-    lines.push("Ton: " + ton + ". Länge: " + laenge + ".");
+    lines.push("Format: Answer as " + format + ".");
+    lines.push("Tone: " + ton + ". Length: " + laenge + ".");
     var rules=[];
-    if(keine) rules.push("Erfinde keine Fakten, Zahlen oder Quellen.");
-    if(nachfragen) rules.push("Wenn dir wichtige Infos fehlen, stelle zuerst gezielte Rückfragen, statt zu raten.");
-    rules.push("Schreibe auf Deutsch, klar und ohne Floskeln.");
+    if(keine) rules.push("Do not invent facts, numbers or sources.");
+    if(nachfragen) rules.push("If important information is missing, ask targeted questions first instead of guessing.");
+    rules.push("Write in clear English, without filler.");
     if(rules.length){
       lines.push("");
-      lines.push("Wichtig:");
+      lines.push("Important:");
       rules.forEach(function(r){ lines.push("- " + r); });
     }
     return lines.join("\n");
@@ -203,7 +203,7 @@ footer a{color:var(--muted)}
   $("copy").addEventListener("click",function(){
     var t=build(); var b=this;
     navigator.clipboard.writeText(t).then(function(){
-      var old=b.textContent; b.textContent="✓ Kopiert"; b.classList.add("copied");
+      var old=b.textContent; b.textContent="✓ Copied"; b.classList.add("copied");
       setTimeout(function(){ b.textContent=old; b.classList.remove("copied"); },1600);
     });
   });
