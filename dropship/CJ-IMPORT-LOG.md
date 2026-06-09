@@ -46,6 +46,12 @@
   **Abgelehnt:** Tiered-Party-Mini CJLY2924170 (sehr kurz/clubby, off-brand premium), Clip-Ohrringe CJLX2924392
   („Gu Xiang Li"-Wasserzeichen), Car-Clock CJYD2923711 (0.69$, off-theme Auto), + 3 Dubletten (Suede-Skirt, Herren-Set,
   «Fleur Noir»-Kleid). cj-real: 206 → **207.**
+- **✅ Charge 26 (Damen 2/2, alter Key):** Tennis-Kleid «Match» Plissee m. Shorts (5 Farben×4=20 Var, 49.90) + Statement-Ohrringe «Onyx» geometrisch (29.90 →premium-schmuck) + Stiletto-Sandalette «Gala» Violett (9 Grössen, 54.90). Live 6 Kanäle, READY, SEO. **Lehre:** manche variantKeys haben Grösse in der MITTE (Color-Size-Style) → numerische Grösse separat suchen. cj-real: 227 → **230.**
+- **✅ Charge 25 (Damen 1/2, alter Key):** Abendkleid «Aurora» Satin m. Schlitz (5 Farben×6=30 Var, 69.90; watermarked Orange-Farbe gedroppt) + Leinen-Set «Lino» Weste+Hose (4 Farben×6=24 Var, 59.90) + Zirkonia-Kette «Stella» Kleeblatt (2 Var, 39.90 →premium-schmuck). Live 6 Kanäle, READY, SEO. cj-real: 224 → **227.**
+- **✅ Charge 24 (Herren letzte, alter Key):** Herren-Slides «Porto» Cross-Strap (2 Farben×11=22 Var, 39.90) + Herren-Set «Costa» Kapuzen-Shirt+Jogger (8 Farben×6=48 Var, 59.90). Live 6 Kanäle, READY, SEO. **Filter-Fix committet:** „women/woman" wird in Herren-Suchen ausgeschlossen (Teilwort „men" matchte sonst „women"). Herren-Sortiment jetzt: Jeans, Henley, Hemd «Lido», Strickhemd «Amalfi», Sneaker «Marco», Slip-on «Sail», Slides «Porto», Set «Costa». cj-real: 222 → **224.** ⚠️ Herren auf CJ damit ausgeschöpft → weiter Damen.
+- **✅ Charge 22 (Herren 1/5, alter Key):** Herren-Strickhemd «Amalfi» Ajour-Knit Camp-Kragen (3 Farben×5=15 Var, 44.90) + Herren-Slip-on «Sail» Canvas (5 Farben×9=40 Var, 49.90). Live 6 Kanäle, READY, SEO. **Lehre:** Canvas-Schuh-variantKey war 3-teilig (Color-Size-StyleCode) → Spezial-Parser (Farbe=Teil 1, Grösse=numerischer Teil). cj-real: 220 → **222.**
+- **✅ Charge 21 (Herren, alter Key):** Herren-Sneaker «Marco» Leder-Optik Retro-Trainer (2 Farben×7=14 Var, 54.90, herren-mode/schuhe). Live in 6 Kanälen, Media READY, SEO. **Abgelehnt:** Herren-Denim-Jacke CJXZ2921540 (Ärmel-Muster ähnelt Goyard-Y-Weave → IP-Risiko §5), Muscle-Athletic-Shorts CJDK2922573 (522px low-res + off-brand Pfoten-Logo + 64 Var), + Dubletten (Herren-Set). Damit Herren-Auswahl: Jeans «Heritage», Henley «Waffle», Hemd «Lido», Sneaker «Marco». cj-real: 219 → **220.**
+- **✅ Charge 20 (Schuhe, alter Key):** Plateau-Sneaker «Cloud» Spitzen-Mesh (2 Farben×6, 39.90) + Mary-Jane-Ballerina «Dolce» Lack (2 Farben×7, 34.90) + Mule-Sandalette «Nodo» drapiert (2 Farben×6, 39.90). Alle Damen-Schuhe, live in 6 Kanälen, Media READY, SEO. **Herren-Schuhe/-Mode:** CJ-Suche lieferte mit Sneaker/Loafer/Polo/Bomber-Keywords kaum Brauchbares → separate Herren-Runde folgt. cj-real: 216 → **219.**
 - **✅ Charge 19 (Mode/Schuhe, alter Key):** Sommer-Playsuit «Marigold» Blüten-Print (5 Grössen, 29.90, damen-mode/
   sommer) + Plateau-Pumps «Wild» Leoparden-Print mit Knöchelriemen (2 Farben×8 Grössen=16 Var, 44.90, schuhe/sommer).
   Beide live in 6 Kanälen, Media READY, SEO. **Abgelehnt:** Washed-Denim-Kleid CJLY2925841 (alle Bilder ~426px, low-res),
@@ -1675,3 +1681,87 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   dokumentiert das ganze System + dass dasselbe Framework für abannews wiederverwendbar ist (Queue-Quelle +
   Creative-Generator tauschen, Rest identisch).
 **Aktivierung:** Secrets setzen + Branch→main (geplante Actions laufen nur vom Default-Branch). Ohne Secrets No-Op.
+
+## 2026-06-08 — Charge 27 (Beauty/Home feiner aufgeteilt) + 2 neue Produkte
+- **Kategorie-Feinschnitt (Discoverability):** Beauty & Home in Sub-Smart-Collections gesplittet, alle
+  in alle 6 Kanäle publiziert + als Menü-Untermenüs verlinkt (Main menu 310224093569 — spiegelt das
+  Geschlechter-Split-Muster von Mode/Schuhe/Schmuck):
+  - 💆 **Beauty & Wellness** → 🧴 *Hautpflege & Skincare* (`hautpflege-skincare`, beauty+hautpflege, 21)
+    · 💆 *Wellness & Beauty-Tools* (`wellness-beauty-tools`, beauty+wellness, 29)
+  - 🏠 **Home & Living** → 🕯️ *Deko & Wohnaccessoires* (`deko-wohnaccessoires`, home+deko, 15)
+    · 💡 *Beleuchtung & Lampen* (`beleuchtung-lampen`, home+beleuchtung, →20) · 🍽️ *Küche & Tisch*
+    (`kueche-tisch`, home+küche, 6).
+  - ⚠️ Lehre: erst Tag "licht" geraten → 0 Treffer; echtes Tag ist **beleuchtung** → ruleSet gefixt.
+- **+2 neue Produkte (productSet, ACTIVE, Media READY, 6 Kanäle):**
+  - **Gua-Sha-Set «Jade»** (CJMB289246601AZ, 34.90, beauty+wellness+hautpflege) → füllt beide Beauty-Subs.
+  - **Strick-Cape «Aria»** (CJMY292646901AZ, 39.90, 12 Farben, damen-mode/oberteil) — Watermark-Bilder
+    (`_water.jpeg`) für Aprikose/Braun entfernt (§5).
+  - **Dedup-Treffer übersprungen:** Vase CJJT292075701AZ (= „Deko-Vase «Antique»" schon live) +
+    LED-Lampe CJYD291551202BY (= „LED-Wandleuchte mit Akku" schon live) + Tennis-Skirt CJDK292568901AZ
+    (= Charge-26-Tennis-Kleid) + Yoga-Fitness-Bag (off-theme).
+- **Bestand: 232 cj-real aktiv (+2).**
+
+## 2026-06-08 — Charge 28 (Feinkategorien nachgeladen)
+- **+3 neue Produkte (productSet, ACTIVE, Media READY, 6 Kanäle):**
+  - **Vitamin-C-Serum «Glow»** (CJMB292291601AZ, 19.90, beauty+hautpflege) → Hautpflege & Skincare.
+  - **Collagen-Masken-Set «Repair»** (CJMB292130001AZ, 24.90, beauty+hautpflege) → Hautpflege & Skincare.
+  - **Smart-Aroma-Diffuser «Aura»** (CJJT291816302BY, 89.90, home+wellness+beauty, Weiss/Schwarz) →
+    Wellness & Beauty-Tools. ⚠️ CJ lieferte US/EU/UK/AU-Stecker-Varianten → **nur EU-Stecker behalten** (CH-Markt).
+  - **Übersprungen:** Kerzenwärmer-Lampe CJHD289470101AZ (= „«Lueur»" schon live) + 1 Kleid das fälschlich
+    auf „light" matchte (Keyword-Mismatch).
+- **Lehre:** Single-Item-Beauty (Serum/Maske) kam mit Pseudo-„Farbe" (30ml / Schwarz) → auf 1 Standard-Variante normalisiert.
+- **Bestand: 235 cj-real aktiv (+3).**
+
+## 2026-06-08 — Charge 29 (Küche/Deko nachgeladen)
+- **+3 neue Produkte (productSet, ACTIVE, Media READY, 6 Kanäle):**
+  - **Titan-Schneidebrett «Chef»** (CJCJ292269801AZ, 24.90, home+küche) → Küche & Tisch.
+  - **Strickblumen-Strauss «Fleur»** (CJJT292249301AZ, 16.90, 5 Farben, home+deko) → Deko & Wohnaccessoires.
+  - **Keramik-Vase «Craquelé»** (CJJT292033401AZ, 54.90, 10 Formen [Fischschwanz/Amphore/…], home+deko+wohnen).
+- **§5-Ablehnungen:** Astronauten-/Skateboard-Lampe (Name vs. Varianten-Mismatch „Skateboard Desk Lamp" →
+  Produkt nicht sauber beschreibbar) · Bad-Spiegelschrank $81 (sperrig/teuer) · Firewood-Shed $120 (sperrig) ·
+  Car-LED-Strips (off-theme) · diverse Keyword-Fehltreffer (Schachspiel, Makeup-Bag, Body-Cream, Sonnenbrille).
+- **Lehre:** generische 1-Token-`must` (board/jar/mirror/lamp) matchen Müll → 2-Token-`must` nötig; CJ-Such-
+  Qualität für Küche/Deko ist schwächer als für Mode/Beauty.
+- **Bestand: 238 cj-real aktiv (+3).**
+
+## 2026-06-09 — Autonome SEO/QA-Runde (kein Import)
+- **SEO-Meta (Title + Description) für die 8 neuesten Produkte gesetzt** (Charges 27–29: Gua-Sha «Jade»,
+  Strick-Cape «Aria», Vitamin-C-Serum «Glow», Collagen-Set «Repair», Smart-Diffuser «Aura», Titan-Schneidebrett
+  «Chef», Strickblumen «Fleur», Keramik-Vase «Craquelé») — waren via productSet ohne SEO angelegt.
+- **Alt-Texte** auf die Hauptbilder derselben 8 Produkte (Accessibility + Bild-SEO).
+- **QA verifiziert:** 30 neueste cj-real = 0 FAILED-Bilder (alle READY); Sommer-Ad-Landing 72 Produkte;
+  WELCOME10-Rabatt ACTIVE. Funnel intakt.
+- **Bestand: 238 cj-real aktiv.** Offen bleibt nur User: Judge.me-Token (Reviews/Sterne) + 2 Customizer-Klicks
+  (Cookie-Banner, Top-Bar-Schrift). Siehe `dropship/USER-CHECKLISTE.md`.
+
+## 2026-06-09 — AOV-Hebel: Looks-Collections + Cross-Sell (autonom)
+- **3 kuratierte „Look"-Collections** (manuell, je in 6 Kanälen, mit SEO):
+  - 🏖️ **Strand-Look** (`strand-look`, 7): Bali-Kleid + Keil-/Strand-Sandalen + Sonnenhut + Cat-Eye-Brille + Schultertasche + UV-Cardigan.
+  - 💼 **Office-Look** (`office-look`, 8): Blazer «Roma» + Spitzen-Bluse + Wide-Leg-Hose + Slingback-Pumps + Loafer + Tasche + Studs + Uhr.
+  - 🌃 **Abend-Look** (`abend-look`, 8): Sirène/Lumea/Fleurette + Plateau-Pumps + Mule + Moissanite-Kette + Studs + Lack-Crossbody.
+  - **Menü:** unter „✨ Entdecken" als Untermenü verlinkt (Inspirations-Shopping → mehr Teile/Bestellung).
+- **Cross-Sell „Passt dazu" eingerichtet** (war komplett leer): `complementary_products`-Metafeld auf 8 Helden gesetzt
+  (Bali→Sandalen/Brille/Hut/Tasche; Sirène→Pumps/Kette/Studs/Clutch; Ibiza, Savanna, Blazer-Roma, Serum↔Gua-Sha↔Collagen, Diffuser→Vase/Strauss).
+  ⚠️ **Anzeige** braucht die gratis **„Search & Discovery"-App** + „Complementary products"-Block auf der Produktseite
+  (1 Customizer-Einstellung) — Daten sind gesetzt.
+- Bestand unverändert 238 cj-real; reine Merchandising-/AOV-Massnahme.
+
+## 2026-06-09 — AOV-Ausbau Runde 2 (autonom)
+- **Cross-Sell „Complete the Look" auf ALLE Look-Mitglieder ausgeweitet:** +18 `complementary_products`-Metafelder
+  → jedes Teil der 3 Looks empfiehlt die anderen Teile (26 Produkte total mit Cross-Sell). Zahlt ein, sobald
+  die Produktseite auf `recommendation_type: complementary` steht (Customizer-Toggle, siehe USER-CHECKLISTE).
+- **„Entdecken"-Seite** (`/pages/entdecken`, per API): prominente **„✨ Looks – fertig kombiniert"**-Sektion mit
+  Strand-/Office-/Abend-Look ergänzt (Einstieg ausserhalb des Menüs).
+- **Dead-Link gefixt:** Kategorie „👜 Taschen" zeigte auf nicht-existentes `/collections/damen-taschen` (404)
+  → korrigiert auf `taschen-sub` (16 Produkte).
+- **Bestätigt:** Search & Discovery installiert; Judge.me voll verdrahtet; Produktseiten-Rückgabe = 30 Tage.
+
+## 2026-06-09 — Produktseiten-Fix VERÖFFENTLICHT (User-Publish) + verifiziert
+- User hat den vorbereiteten Entwurf „Horizon · LuxeStyle (Produktseite-Fix)" (187457962369) veröffentlicht → jetzt MAIN.
+  Altes „Horizon · LuxeStyle Branded" (187043086721) = UNPUBLISHED (Rollback).
+- **Live verifiziert (Screenshots):** Versand-Text „7–14 Tage / ab CHF 65" korrekt; **„Das passt dazu"** zeigt die
+  kuratierten Cross-Sells (Bali → Capri-Sandalen, Felina-Brille, Sonnenhut, Milano-Tasche); Reviews 4,9★ rendern;
+  Sticky-ATC + Varianten + Rating-Badge ok.
+- **Hero** live: weisser Titel + goldener Button + Premium-Bild (Schema 3).
+- Damit sind ALLE Produktseiten-/Hero-Baustellen erledigt. Offen nur noch: Judge.me-Token (mehr Reviews/Sterne),
+  Cookie-Banner schmaler, Top-Bar-Schrift (alles optionaler Feinschliff).
