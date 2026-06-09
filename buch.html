@@ -50,6 +50,7 @@
     .cover .c-emoji{font-size:1.8rem}
     .cover .c-t{font-weight:800;font-size:1.2rem;line-height:1.1}
     .cover .c-s{font-size:.66rem;opacity:.9;line-height:1.2}
+    .bookcover{flex-shrink:0;width:150px;height:200px;border-radius:10px;object-fit:cover;box-shadow:var(--shadow);display:block}
     .buy-body{flex:1;min-width:240px}
     .buy-body h2{font-size:1.2rem;margin-bottom:.3rem}
     .buy-body p{font-size:.92rem;color:var(--muted);margin-bottom:.9rem}
@@ -121,11 +122,8 @@
     <p class="welcome" data-resume data-resume-text="Willkommen zurück — zuletzt warst du am %d hier." hidden></p>
 
     <div class="buy">
-      <div class="cover" aria-hidden="true">
-        <span class="c-emoji">☕</span>
-        <span class="c-t">Anti-Hype</span>
-        <span class="c-s">KI ohne Bullshit<br>für DACH-Solopreneure</span>
-      </div>
+      <img class="bookcover" src="/buch-cover.png" alt="Cover: Anti-Hype — KI ohne Bullshit einsetzen. Für DACH-Solopreneure." width="150" height="200" loading="lazy">
+
       <div class="buy-body">
         <h2>Hol dir das Buch</h2>
         <p>Sauber gesetzt, offline lesbar, auf jedem Gerät. Kein Tracking, keine Anmeldung nötig.</p>

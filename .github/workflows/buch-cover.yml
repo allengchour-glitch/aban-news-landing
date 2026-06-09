@@ -1,0 +1,53 @@
+name: Anti-Hype Cover (Gemini)
+
+# Erzeugt buch-cover.png (Hochformat) + og-buch.png (Share-Karte) mit Gemini-Art
+# + Pillow-Typo und committet sie. Manuell auslösbar. No-op-sicher: ohne KI-Bild
+# entsteht trotzdem ein edles Verlaufs-Cover.
+
+on:
+  workflow_dispatch:
+    inputs:
+      theme:
+        description: 'Bild-Thema fürs KI-Hintergrundbild (optional, textfrei)'
+        type: string
+        default: ''
+      model:
+        description: 'Bild-Modell'
+        type: string
+        default: 'imagen-3.0-generate-002'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: buch-cover
+  cancel-in-progress: false
+
+jobs:
+  cover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet pillow
+      - name: Generate cover
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_IMAGE_MODEL: ${{ inputs.model }}
+          COVER_THEME: ${{ inputs.theme }}
+        run: python3 automation/gen_buch_cover.py
+      - name: Commit
+        run: |
+          git config user.name "abannews-cover-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -f buch-cover.png og-buch.png
+          git commit -m "Anti-Hype: neues Gemini-Cover [skip ci]" || { echo "nichts geändert"; exit 0; }
+          for i in 1 2 3 4 5; do
+            if git push; then echo "gepusht."; exit 0; fi
+            git pull --rebase --autostash origin main || true
+            sleep 3
+          done
+          echo "push nach 5 Versuchen übersprungen."
