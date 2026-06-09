@@ -320,6 +320,12 @@ BRANCHEN = {
     "antiquitaetenhandel": ("Antiquitätenhandel",   ["Beschreibungen & Listings,", "nicht die Echtheitsprüfung"]),
     "pfandhaus":           ("Pfandhäuser",          ["Erklär- & Service-Texte,", "nicht die Wertschätzung"]),
     "gartenpflege":        ("Gartenpflege",         ["Angebote & Saisontipps,", "nicht die Vor-Ort-Arbeit"]),
+    "sportfachhandel":     ("Sportfachhandel",      ["Produkttexte & Service,", "nicht das Fitting"]),
+    "schuhgeschaeft":      ("Schuhgeschäfte",       ["Produkttexte & Social,", "nicht die Passform"]),
+    "eismanufaktur":       ("Eismanufaktur",        ["Sorten- & Social-Texte,", "keine Heilversprechen"]),
+    "kaeserei":            ("Käsereien",            ["Produkttexte & Shop,", "nicht die Kennzeichnung"]),
+    "trachtengeschaeft":   ("Trachtengeschäfte",    ["Produkt- & Anlasstexte,", "nicht die Anprobe"]),
+    "teppichreinigung":    ("Teppichreinigung",     ["Service- & Pflegetexte,", "nicht die Materialprüfung"]),
 }
 
 
