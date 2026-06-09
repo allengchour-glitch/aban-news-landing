@@ -34,16 +34,22 @@ Repo → **Settings → Secrets and variables → Actions → New repository sec
 - `LINKEDIN_AUTHOR_URN`   = **optional/leer lassen.** Nur als Notnagel, falls die Auto-Auflösung scheitert;
   dann exakt `urn:li:person:<deine-id>` (die ID aus `/v2/me`, NICHT die Zahl aus der Profil-URL).
 
-## Schritt 3b — (optional) Auch auf die Unternehmensseite „aban news" posten
-Posten auf die **Company Page** ist ein eigener Pfad und braucht mehr:
-1. App-Produkt **„Community Management API"** beantragen (Reiter **Products**) → gibt den Scope
-   **`w_organization_social`**. ⚠️ Das ist eine **Freigabe durch LinkedIn** und kann dauern/abgelehnt werden.
-2. Du musst **Admin** der Seite sein. Die **Organisations-ID** findest du in der Seiten-URL bzw. unter
-   Seiten-Admin → „Einstellungen". 
-3. Token **neu** mit `w_organization_social` (zusätzlich) erzeugen und Secret aktualisieren.
-4. Neues Secret **`LINKEDIN_ORG_URN`** = `urn:li:organization:<org-id>` (oder nur die Zahl — das Skript
-   ergänzt das Präfix). Ist das Secret gesetzt, postet das Skript **zusätzlich** auf die Seite; fehlt der
-   Org-Scope, wird das sauber übersprungen (Profil-Post läuft trotzdem).
+## Schritt 3b — (optional) Auch/nur auf die Unternehmensseite „aban news" posten
+Posten auf die **Company Page** braucht die **Community Management API** (Scope `w_organization_social`).
+⚠️ **LinkedIn-Regel:** Dieses Produkt muss das **EINZIGE** Produkt der App sein („for legal and security
+reasons"). In der bestehenden App (mit „Share on LinkedIn" + OpenID) ist „Request access" daher ausgegraut.
+**→ Eine zweite, eigene App nur für die Seite anlegen.**
+
+1. **Neue App** anlegen (https://www.linkedin.com/developers/apps/new), mit der aban-news-Seite verknüpfen.
+2. Dort **nur** **„Community Management API"** anfordern (Development-Tier reicht für die eigene Seite).
+3. **Org-ID** holen: Seiten-Admin-URL `…/company/<ID>/admin/` → die Zahl.
+4. Token aus der **neuen** App mit `w_organization_social` erzeugen.
+5. Secrets/Variablen setzen:
+   - **`LINKEDIN_ORG_URN`** = `urn:li:organization:<org-id>` (oder nur die Zahl).
+   - **`LINKEDIN_ORG_ACCESS_TOKEN`** = der Token der **zweiten** App (getrennt vom Profil-Token).
+   - Variable **`LINKEDIN_POST_TARGET`** = `org` (nur Seite) oder `both` (Profil + Seite).
+
+Fehlt eins davon, überspringt das Skript die Seite sauber und postet (sofern erlaubt) nur aufs Profil.
 
 ### Ziel umschalten: Profil, Seite oder beides
 Repository-**Variable** (Settings → Secrets and variables → Actions → **Variables**) **`LINKEDIN_POST_TARGET`**:

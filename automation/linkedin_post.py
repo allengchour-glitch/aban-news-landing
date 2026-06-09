@@ -195,28 +195,12 @@ def main() -> int:
 
     token = os.environ.get("LINKEDIN_ACCESS_TOKEN", "").strip()
     author = os.environ.get("LINKEDIN_AUTHOR_URN", "").strip()
-    if not token:
-        print("LINKEDIN_ACCESS_TOKEN nicht gesetzt → no-op (Exit 0).")
-        return 0
+    # Separater Token NUR für die Unternehmensseite. Community Management API muss in
+    # einer EIGENEN App liegen (LinkedIn-Regel: einziges Produkt) → eigener Token.
+    # Fehlt er, wird der Haupt-Token verwendet (falls dieser ausnahmsweise org-fähig ist).
+    org_token = os.environ.get("LINKEDIN_ORG_ACCESS_TOKEN", "").strip() or token
 
-    # Selbstheilung: die korrekte Member-URN IMMER vom Token holen — das ist die
-    # einzige Quelle der Wahrheit. Eine falsch eingetippte LINKEDIN_AUTHOR_URN
-    # (z. B. die Zahl aus der Profil-URL statt der API-Member-ID) verursacht sonst
-    # genau den 403 "processing fields [/author]". Env-Wert nur als Fallback.
-    resolved = resolve_author_urn(token)
-    if resolved:
-        if author and author != resolved:
-            print(f"ℹ️ LINKEDIN_AUTHOR_URN ({author}) weicht von der echten Token-URN ab "
-                  f"→ nutze die echte: {resolved}")
-        author = resolved
-    elif author and not author.startswith("urn:li:person:"):
-        # Nur eine ID eingetragen → in volle URN packen
-        author = f"urn:li:person:{author}"
-    # Ziele zusammenstellen: persönliches Profil + optional die Unternehmensseite
-    # (LINKEDIN_ORG_URN/LINKEDIN_ORG_ID, Token braucht Scope w_organization_social).
-    # Steuerung über LINKEDIN_POST_TARGET: "person" | "org" | "both" (Default: "both"
-    # wenn eine Org gesetzt ist, sonst "person"). So lässt sich später per Secret auf
-    # "nur Seite" umstellen, ohne Code zu ändern.
+    # Modus + Org-URN bestimmen (LINKEDIN_POST_TARGET: person | org | both).
     org = os.environ.get("LINKEDIN_ORG_URN", "").strip() or os.environ.get("LINKEDIN_ORG_ID", "").strip()
     if org and not org.startswith("urn:li:organization:"):
         org = f"urn:li:organization:{org}"
@@ -224,26 +208,42 @@ def main() -> int:
     if mode not in ("person", "org", "both"):
         mode = "both" if org else "person"
 
-    targets = []  # (label, author_urn)
-    if mode in ("person", "both") and author:
-        targets.append(("Profil", author))
-    if mode in ("org", "both") and org:
-        targets.append(("Unternehmensseite", org))
+    # Profil-URN selbstheilend aus dem Profil-Token holen (nur nötig, wenn wir aufs
+    # Profil posten). Env-Wert nur als Fallback.
+    if mode in ("person", "both"):
+        if not token:
+            print("LINKEDIN_ACCESS_TOKEN nicht gesetzt → kein Profil-Post möglich.")
+        else:
+            resolved = resolve_author_urn(token)
+            if resolved:
+                if author and author != resolved:
+                    print(f"ℹ️ LINKEDIN_AUTHOR_URN ({author}) weicht von der echten Token-URN ab "
+                          f"→ nutze die echte: {resolved}")
+                author = resolved
+            elif author and not author.startswith("urn:li:person:"):
+                author = f"urn:li:person:{author}"
+
+    # Ziele inkl. jeweils passendem Token zusammenstellen.
+    targets = []  # (label, urn, token)
+    if mode in ("person", "both") and author and token:
+        targets.append(("Profil", author, token))
+    if mode in ("org", "both") and org and org_token:
+        targets.append(("Unternehmensseite", org, org_token))
     if mode == "org" and not org:
         print("LINKEDIN_POST_TARGET=org, aber keine LINKEDIN_ORG_URN gesetzt → no-op (Exit 0).")
         return 0
     if not targets:
-        print("Kein Post-Ziel ermittelbar → no-op (Exit 0).")
+        print("Kein Post-Ziel ermittelbar (Token/URN prüfen) → no-op (Exit 0).")
         return 0
-    print(f"Modus: {mode} · Post-Ziele: " + ", ".join(f"{lbl} ({urn})" for lbl, urn in targets))
+    print(f"Modus: {mode} · Post-Ziele: " + ", ".join(f"{lbl} ({urn})" for lbl, urn, _ in targets))
 
     text = item["text"]
     img = build_visual(text, aspect="16:9", channel="linkedin")  # KI-Bild → Karte → None
 
     posted_any = False
     ids = {}
-    for label, target in targets:
-        status, post_id = post_one(token, target, text, img)
+    for label, target, tk in targets:
+        status, post_id = post_one(tk, target, text, img)
         if status in (200, 201):
             posted_any = True
             ids[label] = post_id
