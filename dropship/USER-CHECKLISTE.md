@@ -121,3 +121,16 @@ gesetzt; Top-10-Bestseller umsortiert; Rückgabefrist/SEO/Sub-Collections live. 
 ## 🤖 Läuft automatisch (sobald Secrets gesetzt)
 - IG+FB+Threads-Autopilot · TikTok (nach Audit) · KI-Bilder 04:30 · Veo-Clip 05:00 · Posts 08:00/17:00 ·
   Tages-Digest · Gemini-Kritik Mo · Reel-/Rotations-/Health-Crons.
+
+## 🟡 CONTENT-QA Blog (Befund 2026-06-09) — #3 „Blog→Produkt" war schon erledigt
+**Gute Nachricht:** Die 69 Blog-Artikel (Ratgeber/Magazin) sind **bereits professionell mit Produkten verlinkt**
+(mehrere Produktlinks + Preise + interne Verlinkung pro Artikel). Kein Nachbau nötig.
+**Aber 2 systematische QA-Lücken gefunden (Content-Engine-Fix, am besten gesammelt statt 20× Handarbeit):**
+1. **Tote Links auf DRAFT-Platzhalter-Produkte:** Manche Artikel verlinken Produkte mit KI-Bild, die auf DRAFT
+   stehen (nicht `cj-real`, kein echter Lieferant) → 404-Klick. Beispiel: „Leder-Portemonnaie «Rose»"
+   (`/products/leder-portemonnaie-damen-rose`, DRAFT, KI-Bild) im RFID-Artikel. → Artikel-Links auf solche
+   Produkte durch ECHTE aktive Produkte ersetzen (oder Platzhalter sauber aktivieren mit echtem CJ-Bild/SKU).
+2. **Rückgabefrist „14 Tage / 14-tägig"** in ~12+ Artikeln → widerspricht den überall sonst kommunizierten
+   **30 Tagen** (Ankündigungsleiste + Collection-Texte). → in den Artikeln auf 30 Tage angleichen.
+**Empfehlung:** Beides über die Blog-/Content-Generator-Session als Bulk-Fix (find/replace im Body), nicht
+einzeln von Hand (Artikel-Bodies sind je ~6 KB; Einzel-Edits sind fehleranfällig + ausserhalb des CJ-Auftrags).
