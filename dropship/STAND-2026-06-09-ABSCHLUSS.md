@@ -63,3 +63,10 @@ Fehlt: FB_PAGE_ACCESS_TOKEN. (PRINTFUL_STORE_ID/AUTO_CONFIRM optional, leer = De
   (kein „front") → bei erneutem Inject Unisex-Tee data-img-front manuell prüfen. Bügeltransfer ist inject-unabhängig.
 - **Upload-Button bestätigt live** (Cloudinary): Editor-Knopf „🖼️ Bild" → Kunde lädt eigenes Logo/Sticker/Foto.
 - Bügeltransfer-Galerie-Duplikat (ex-tshirt-paint.png 2×) → 1 entfernt.
+
+## 📋 BACKLOG (User-Wunsch, „später nach allem")
+- **Eigene Aufkleber-/„Kleber"-Produktlinie massiv ausbauen:** viele Sticker/Logos/Bilder **NUR als Aufkleber**
+  (Laptop/Flasche/Handy/Deko), **NICHT** für Shirts → eigenständiges Verkaufsprodukt + eigene Sticker-Kollektion.
+- Pipeline existiert bereits: `automation/gen_designs.mjs` (+ gen_stickers) → Motive; `automation/printful_create_design_products.mjs`
+  + `design-products.yml` → Kiss-Cut-Sticker-Produkte via Printful (Auto-Druck). Also nur: mehr Motive generieren
+  (Themen-Sets), als Kiss-Cut-Produkte anlegen, in Kollektion „Aufkleber/Sticker" bündeln. Gemini macht die Bilder.
