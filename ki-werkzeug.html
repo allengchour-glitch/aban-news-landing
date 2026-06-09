@@ -35,7 +35,8 @@
    "description": "Erstellt Produkttexte, Social-Posts, Bewertungs-Antworten und einen persönlichen KI-Fahrplan für kleine Betriebe. Gratis-Version im Browser, Pro für unbegrenzte Nutzung und echte KI.",
    "offers": [
     {"@type": "Offer", "price": "0", "priceCurrency": "CHF", "name": "Gratis"},
-    {"@type": "Offer", "price": "9", "priceCurrency": "CHF", "name": "Pro (monatlich)"}
+    {"@type": "Offer", "price": "9.90", "priceCurrency": "CHF", "name": "Pro (monatlich)"},
+    {"@type": "Offer", "price": "19.90", "priceCurrency": "CHF", "name": "Pro+ (regulierte Branchen, monatlich)"}
    ],
    "isPartOf": {"@type": "WebSite", "name": "aban news", "url": "https://abannews.com"}
   },
@@ -94,6 +95,23 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .step .n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--amber);color:#fff;font-weight:800;margin-bottom:8px}
 .step b{display:block;margin-bottom:3px}
 .step span{color:var(--muted);font-size:.9rem}
+/* Überblick */
+.ov-h{text-align:center;font-size:1.3rem;margin:34px 0 2px}
+.ov-sub{text-align:center;color:var(--muted);font-size:.95rem;margin-bottom:4px}
+.steps.ov{margin-top:18px}
+.step .ic{font-size:1.5rem;display:block;margin-bottom:6px;line-height:1}
+/* Vergleich Gratis vs Pro */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:30px 0}
+@media(max-width:560px){.compare{grid-template-columns:1fr}}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.plan.hl{border-color:var(--amber);box-shadow:0 0 0 1px var(--amber)}
+.plan h3{font-size:1.1rem;margin-bottom:2px}
+.plan .pp{font-weight:800;color:var(--amber-dk);font-size:1.15rem;margin-bottom:12px}
+.plan ul{list-style:none;display:grid;gap:8px;margin:0}
+.plan li{padding-left:24px;position:relative;font-size:.92rem;color:var(--ink2)}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}
+.plan .tag{display:inline-block;font-size:.72rem;font-weight:700;background:var(--amber);color:#fff;border-radius:999px;padding:2px 9px;margin-bottom:8px}
+.plan .free::before{content:"•";color:var(--muted)}
 /* App */
 .app{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px;margin:8px 0 6px}
 .tabs{display:flex;gap:6px;padding:8px 8px 0}
@@ -115,6 +133,7 @@ textarea{min-height:84px;resize:vertical}
 .result h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:8px}
 .result .out{white-space:pre-wrap;font-size:1rem;line-height:1.65}
 .result .rowbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.reslink{margin-top:12px;font-size:.88rem;color:var(--muted)}.reslink a{font-weight:600}
 .copied{color:var(--ok)!important}
 /* Pro */
 .pro{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:26px}
@@ -156,7 +175,21 @@ footer a{color:var(--muted)}
     </div>
   </section>
 
+  <!-- ÜBERBLICK: WAS DU ERSTELLST -->
+  <section aria-label="Was du erstellen kannst">
+    <h2 class="ov-h">Alles für deinen Betrieb &mdash; in einem Werkzeug</h2>
+    <p class="ov-sub">5 Sachen, die sonst Zeit kosten &mdash; hier in Minuten erledigt:</p>
+    <div class="steps ov">
+      <div class="step"><span class="ic">📝</span><b>Produkt- &amp; Leistungstexte</b><span>Verkaufstexte, die klingen wie du &mdash; nicht wie ein Roboter.</span></div>
+      <div class="step"><span class="ic">📣</span><b>Social-Media-Posts</b><span>Fertige Posts mit Aufhänger und Hashtags für Insta, Facebook &amp; Co.</span></div>
+      <div class="step"><span class="ic">⭐</span><b>Bewertungs-Antworten</b><span>Souverän auf Lob und Kritik reagieren &mdash; in Sekunden.</span></div>
+      <div class="step"><span class="ic">✉️</span><b>Kunden-E-Mails</b><span>Bestätigungen, Aktionen, Rückfragen &mdash; freundlich formuliert.</span></div>
+      <div class="step"><span class="ic">🗺️</span><b>Persönlicher KI-Fahrplan</b><span>Wo KI dir am meisten Zeit spart &mdash; Schritt für Schritt.</span></div>
+    </div>
+  </section>
+
   <!-- ANLEITUNG -->
+  <h2 class="ov-h">So einfach geht's</h2>
   <section class="steps" aria-label="So funktioniert's">
     <div class="step"><span class="n">1</span><b>Branche wählen</b><span>Sag, was du machst — z. B. Friseur, Laden, Werkstatt.</span></div>
     <div class="step"><span class="n">2</span><b>Stichworte eingeben</b><span>Ein paar Worte reichen. Ganze Sätze sind nicht nötig.</span></div>
@@ -228,6 +261,7 @@ footer a{color:var(--muted)}
         <div class="rowbtns">
           <button class="btn ghost" id="t-copy">In Zwischenablage kopieren</button>
         </div>
+        <p class="reslink" id="t-more"></p>
       </div>
       <div class="upsell" id="t-upsell">
         <b>Tageslimit erreicht.</b> Für unbegrenzte Texte und <b>echte KI</b> statt Vorlagen: <a href="#pro">Pro freischalten →</a>
@@ -278,12 +312,40 @@ footer a{color:var(--muted)}
   </div>
   <p class="disc">Gratis-Version: Entwürfe entstehen aus geprüften Vorlagen direkt in deinem Browser — nichts wird hochgeladen. Die Entwürfe sind Startpunkte; prüfe Preise, Pflichtangaben und Fakten selbst.</p>
 
+  <!-- ÜBERBLICK: GRATIS vs PRO -->
+  <h2 class="ov-h">Gratis testen &mdash; Pro, wenn du mehr brauchst</h2>
+  <p class="ov-sub">Kein Abo-Zwang: Gratis reicht für den Anfang. Pro lohnt sich, wenn du täglich schreibst.</p>
+  <section class="compare" aria-label="Gratis und Pro im Vergleich">
+    <div class="plan">
+      <h3>Gratis</h3>
+      <div class="pp">CHF 0</div>
+      <ul>
+        <li>5 Texte + 1 Fahrplan pro Tag</li>
+        <li>Alle Text-Arten &amp; der KI-Fahrplan</li>
+        <li>Kein Login, kein Upload &mdash; läuft im Browser</li>
+        <li>Sofort startklar, ohne Anmeldung</li>
+      </ul>
+    </div>
+    <div class="plan hl">
+      <span class="tag">Empfohlen</span>
+      <h3>Pro</h3>
+      <div class="pp"><span id="pro-price-2">CHF 9.90</span> / Monat</div>
+      <ul>
+        <li><b>Unbegrenzt</b> Texte &amp; Fahrpläne</li>
+        <li>Echte KI statt Vorlagen &mdash; mehr Qualität</li>
+        <li>4 Sprachen: DE · EN · FR · IT</li>
+        <li>Verlauf speichern &amp; als PDF exportieren</li>
+      </ul>
+    </div>
+  </section>
+
   <!-- PRO / KAUFBUTTON -->
   <section class="pro" id="pro">
     <h2>Mehr brauchen? <span style="color:var(--amber-dk)">Pro</span> freischalten</h2>
-    <p class="price"><b id="pro-price">CHF 9</b> / Monat &middot; jederzeit kündbar</p>
+    <p class="price"><b id="pro-price">CHF 9.90</b> / Monat &middot; jederzeit kündbar</p>
+    <p id="pro-tier-note" class="note" style="margin:.1rem 0 .7rem"></p>
     <ul>
-      <li>Unbegrenzt Texte &amp; Fahrpläne</li>
+      <li>Unbegrenzt Texte &amp; Fahrpläne <span style="color:var(--muted)">(faire Nutzung bei echter KI)</span></li>
       <li>Echte KI statt Vorlagen (mehr Qualität)</li>
       <li>Alle 4 Sprachen: DE · EN · FR · IT</li>
       <li>Verlauf speichern &amp; als PDF exportieren</li>
@@ -293,6 +355,14 @@ footer a{color:var(--muted)}
     <a class="btn big" id="pro-buy" href="/shop.html">Pro freischalten →</a>
     <a class="btn ghost big" href="/shop.html" style="margin-left:8px">Erst Branchen-Kit ansehen (CHF 12)</a>
     <p class="note" id="pro-note">Hinweis: Der automatische Kauf wird gerade scharfgeschaltet. Bis dahin führt der Button zum Shop. Die Pro-Version nutzt echte KI — dabei wird dein Text an einen KI-Dienst gesendet (steht dann klar dabei).</p>
+    <div class="unlock" style="margin-top:.9rem;padding-top:.8rem;border-top:1px solid var(--line)">
+      <label for="pro-unlock-code" style="font-size:.85rem;color:var(--muted)">Schon gekauft? Freischalt-Code eingeben:</label>
+      <div style="display:flex;gap:.4rem;max-width:360px;margin-top:.35rem">
+        <input id="pro-unlock-code" type="text" autocomplete="off" placeholder="Code" style="flex:1;min-width:0;border:1px solid var(--line);border-radius:8px;padding:.55rem .65rem">
+        <button id="pro-unlock-go" type="button" class="btn ghost">Freischalten</button>
+      </div>
+      <p id="pro-unlock-msg" class="note" style="margin-top:.4rem"></p>
+    </div>
   </section>
 
   <div class="band">
@@ -301,8 +371,8 @@ footer a{color:var(--muted)}
     <a class="btn" href="https://abannews.beehiiv.com/subscribe">Newsletter gratis abonnieren</a>
   </div>
 
-  <section class="faq">
-    <h2>Häufige Fragen</h2>
+  <section class="faq" id="hilfe">
+    <h2>Häufige Fragen &amp; Hilfe</h2>
     <details><summary>Brauche ich Vorkenntnisse, um das Tool zu nutzen?</summary><p>Nein. Du wählst deine Branche, sagst in Stichworten, worum es geht, und drückst auf Erstellen. Es gibt eine Schritt-für-Schritt-Anleitung direkt auf der Seite, gedacht auch für Anfänger ohne KI-Erfahrung.</p></details>
     <details><summary>Ist das Tool kostenlos?</summary><p>Ja, du kannst gratis starten: pro Tag sind mehrere Texte und ein Fahrplan kostenlos. Wer mehr braucht, schaltet Pro frei — unbegrenzte Nutzung, echte KI statt Vorlagen, Export und mehr.</p></details>
     <details><summary>Werden meine Eingaben hochgeladen?</summary><p>In der Gratis-Version nicht: Die Texte werden direkt in deinem Browser aus geprüften Vorlagen erstellt, nichts verlässt dein Gerät. Die spätere Pro-Version nutzt echte KI; dabei wird dein Text an einen KI-Dienst gesendet — das steht dann klar dabei.</p></details>
@@ -326,10 +396,18 @@ footer a{color:var(--muted)}
   "use strict";
 
   // ---- Phase-2-Schalter (später ausfüllen) --------------------------------
-  const STRIPE_PRO_LINK = "";      // z. B. "https://buy.stripe.com/XXXX" -> aktiviert echten Kauf-Button
+  const STRIPE_PRO_LINK     = "https://buy.stripe.com/6oUdRbfKKcfq03ZbaR5wI05"; // Standard CHF 9.90/Mon
+  const STRIPE_PROPLUS_LINK = "https://buy.stripe.com/6oU00l1TUcfqg2XdiZ5wI06"; // Pro+ CHF 19.90/Mon (regulierte Branchen)
+  // Höherwertige/sensible Branchen → Pro+ (Preis + spätere Compliance-/DSGVO-Extras)
+  const PROPLUS_BRANCHEN = ["Praxis / Therapie","Immobilien / Makler","Beratung / Coaching"];
   const AI_ENDPOINT      = "";      // z. B. "/api/generate" (Cloudflare Worker) -> aktiviert echte KI
   const FREE_TEXT_LIMIT  = 5;       // Gratis-Texte pro Tag
   const FREE_PLAN_LIMIT  = 1;       // Gratis-Fahrpläne pro Tag
+  const PRO_UNLOCK_CODE  = "aban-pro";  // manueller Freischalt-Code (bis Stripe-Webhook steht)
+  // Verlust-Schutz für Phase 2: echte KI kostet Cent je Aufruf. Pro = unbegrenzte VORLAGEN
+  // (Grenzkosten 0). Bei echter KI gilt ein Fair-Use-Cap, der ZWINGEND serverseitig im
+  // Cloudflare-Worker erzwungen wird (Client ist umgehbar) — hier nur als Vertrag/Default:
+  const PRO_AI_DAILY_CAP = 50;          // max. echte-KI-Generierungen/Tag pro Pro-Nutzer
 
   const BRANCHEN = ["Friseur / Barbershop","Restaurant / Café","Bäckerei / Konditorei","Kosmetik / Nagelstudio","Fitness / Yoga","KFZ-Werkstatt","Handwerk (Maler, Elektriker, …)","Einzelhandel / Laden","Online-Shop","Praxis / Therapie","Immobilien / Makler","Hotel / Pension","Floristik","Fotografie","Beratung / Coaching","Reinigung / Gebäudeservice","Garten / GaLaBau","Tierservice","Schmuck / Juwelier","Mein Betrieb (andere)"];
 
@@ -341,8 +419,37 @@ footer a{color:var(--muted)}
   function cap(s){ return s ? s.charAt(0).toUpperCase()+s.slice(1) : s; }
   function today(){ return new Date().toISOString().slice(0,10); }
 
-  // Tages-Kontingent in localStorage (kein Login, kein Server)
+  // Pro-Status (gerätelokal; die echte KI-Kosten-Bremse läuft serverseitig im Worker)
+  function isPro(){ try{ return localStorage.getItem("aban_kw_pro")==="1"; }catch(e){ return false; } }
+  function applyPro(){
+    if(!isPro()) return;
+    var note=$("pro-note"); if(note){ note.textContent="✓ Pro ist auf diesem Gerät freigeschaltet — unbegrenzte Nutzung."; }
+    var buy=$("pro-buy"); if(buy){ buy.textContent="✓ Pro aktiv"; buy.removeAttribute("href"); buy.style.opacity=".7"; buy.style.pointerEvents="none"; }
+    var t=$("t-upsell"); if(t) t.classList.remove("show");
+    var p=$("p-upsell"); if(p) p.classList.remove("show");
+  }
+  function setPro(){ try{ localStorage.setItem("aban_kw_pro","1"); }catch(e){} applyPro(); }
+
+  // 2 Stufen nach Branche: Standard 9.90 / Pro+ 19.90 (regulierte Branchen). Preis +
+  // Kauf-Link aktualisieren sich nach gewählter Branche. (Pro-Status bleibt global.)
+  function isPlusBranche(b){ return PROPLUS_BRANCHEN.indexOf(b) > -1; }
+  function updateProTier(branche){
+    var plus = isPlusBranche(branche);
+    var price = $("pro-price"); if(price) price.textContent = plus ? "CHF 19.90" : "CHF 9.90";
+    var price2 = $("pro-price-2"); if(price2) price2.textContent = plus ? "CHF 19.90" : "CHF 9.90";
+    var tn = $("pro-tier-note");
+    if(tn) tn.textContent = plus
+      ? "Pro+ für regulierte/sensible Branchen (Praxis, Immobilien, Beratung) — inkl. Compliance- & DSGVO-Hinweisen."
+      : "";
+    if(!isPro()){
+      var buy = $("pro-buy"); var link = plus ? STRIPE_PROPLUS_LINK : STRIPE_PRO_LINK;
+      if(buy && link) buy.href = link;
+    }
+  }
+
+  // Tages-Kontingent in localStorage (kein Login, kein Server). Pro = unbegrenzt.
   function quota(key, limit){
+    if(isPro()) return { left: Infinity, use: function(){} };
     var raw; try{ raw = JSON.parse(localStorage.getItem(key)||"{}"); }catch(e){ raw={}; }
     if(raw.d !== today()){ raw = {d:today(), n:0}; }
     return {
@@ -356,6 +463,10 @@ footer a{color:var(--muted)}
     BRANCHEN.forEach(function(b){ var o=document.createElement("option"); o.value=b; o.textContent=b; sel.appendChild(o); });
   });
 
+  // Preis-Stufe folgt der gewählten Branche (im jeweils aktiven Tab)
+  $("t-branche").addEventListener("change", function(){ updateProTier(this.value); });
+  $("p-branche").addEventListener("change", function(){ updateProTier(this.value); });
+
   // ---- Tabs ---------------------------------------------------------------
   function selectTab(which){
     var isText = which==="text";
@@ -363,6 +474,7 @@ footer a{color:var(--muted)}
     $("tab-plan").setAttribute("aria-selected", !isText);
     $("panel-text").hidden = !isText;
     $("panel-plan").hidden = isText;
+    updateProTier((isText ? $("t-branche") : $("p-branche")).value);
   }
   $("tab-text").addEventListener("click", function(){ selectTab("text"); });
   $("tab-plan").addEventListener("click", function(){ selectTab("plan"); });
@@ -478,13 +590,20 @@ footer a{color:var(--muted)}
     out += "3) Im nächsten Monat\n   Einen zweiten Bereich dazunehmen (z. B. Bewertungen oder Newsletter). Immer nur einen Schritt auf einmal.\n\n";
     out += "4) Dauerhaft\n   "+teamLine+"\n\n";
     out += "CHECKLISTE\n   [ ] 5 häufigste "+z.t.toLowerCase()+" aufgeschrieben\n   [ ] Für jede eine KI-Vorlage erstellt\n   [ ] Vorlagen an einem Ort gespeichert\n   [ ] Eine Woche getestet und verbessert\n   [ ] Ergebnis gemessen (gesparte Zeit / mehr Anfragen)\n\n";
-    out += "Mehr für „"+br+"“: abannews.com/ki-fuer-"+slug+".html";
+    var href = slug ? ("abannews.com/ki-fuer-"+slug+".html") : "abannews.com/online-tools.html";
+    out += "Mehr für „"+br+"“: "+href;
     return out;
   }
+  // Branchen-Slug → existierende ki-fuer-<slug>.html (alle Werte verifiziert vorhanden).
+  // Ohne passende Seite: "" → Fallback auf /online-tools.html (statt 404).
   function brancheSlug(b){
-    var m={"Friseur":"friseure","Restaurant":"restaurants","Bäckerei":"baeckereien","Kosmetik":"kosmetikstudios","Fitness":"fitnessstudios","KFZ":"kfz-werkstaetten","Handwerk":"maler","Einzelhandel":"einzelhandel","Online":"online-shop","Praxis":"physiotherapeuten","Immobilien":"immobilienmakler","Hotel":"hotels","Floristik":"floristen","Fotografie":"fotografen","Beratung":"unternehmensberater","Reinigung":"reinigungsfirmen","Garten":"garten-landschaftsbau","Tierservice":"hundesalons","Schmuck":"goldschmiede"};
+    var m={"Friseur":"friseure","Restaurant":"gastronomie","Bäckerei":"baeckereien","Kosmetik":"kosmetikstudios","Fitness":"fitnessstudios","KFZ":"kfz-werkstaetten","Handwerk":"maler","Online":"onlineshops","Praxis":"physiotherapeuten","Immobilien":"immobilienmakler","Hotel":"hotels","Floristik":"floristen","Fotografie":"fotografen","Beratung":"unternehmensberater","Reinigung":"reinigungsfirmen","Garten":"garten-landschaftsbau","Tierservice":"hundesalon","Schmuck":"goldschmiede"};
     for(var key in m){ if(b.indexOf(key)===0) return m[key]; }
-    return "friseure";
+    return "";
+  }
+  function brancheHref(b){
+    var s = brancheSlug(b);
+    return s ? ("/ki-fuer-"+s+".html") : "/online-tools.html";
   }
 
   // ---- Verdrahtung: Texte -------------------------------------------------
@@ -495,6 +614,7 @@ footer a{color:var(--muted)}
             stimmung:$("t-stimmung").value};
   }
   function refreshQuota(){
+    if(isPro()){ $("t-quota").textContent="Pro · unbegrenzt"; $("p-quota").textContent="Pro · unbegrenzt"; return; }
     var q=quota("aban_kw_text", FREE_TEXT_LIMIT);
     $("t-quota").textContent = q.left>0 ? (q.left+" von "+FREE_TEXT_LIMIT+" gratis heute") : "Tageslimit erreicht";
     var qp=quota("aban_kw_plan", FREE_PLAN_LIMIT);
@@ -509,6 +629,13 @@ footer a{color:var(--muted)}
     $("t-out").textContent = lastText;
     $("t-result").classList.add("show");
     $("t-again").style.display="inline-block";
+    var more=$("t-more");
+    if(more){
+      var brName = d.branche.replace(/\s*\(.*\)/,"");
+      more.innerHTML = '📌 Mehr KI-Tipps für '+brName+': '
+        + '<a href="'+brancheHref(d.branche)+'">Branchen-Guide ansehen</a> · '
+        + '<a href="#hilfe">Hilfe &amp; FAQ</a>';
+    }
     q.use(); refreshQuota();
     if(quota("aban_kw_text",FREE_TEXT_LIMIT).left<=0) $("t-upsell").classList.add("show");
   }
@@ -537,11 +664,35 @@ footer a{color:var(--muted)}
     });
   }
 
-  // ---- Pro-Button (Phase 2: echter Stripe-Checkout) -----------------------
+  // ---- Pro-Button: echter Stripe-Checkout (Link je Stufe via updateProTier) ----
   if(STRIPE_PRO_LINK){
-    $("pro-buy").href = STRIPE_PRO_LINK;
-    $("pro-note").textContent = "Sichere Zahlung über Stripe. Jederzeit kündbar.";
+    $("pro-note").textContent = "Sichere Zahlung über Stripe. Jederzeit kündbar. Nach dem Kauf schaltet sich Pro automatisch frei.";
   }
+  updateProTier($("t-branche").value);
+
+  // ---- Pro freischalten: Rückkehr vom Checkout (?pro=ok) ODER Freischalt-Code ----
+  try{
+    var u = new URL(window.location.href);
+    if(u.searchParams.get("pro")==="ok"){
+      setPro();
+      u.searchParams.delete("pro");
+      history.replaceState(null, "", u.pathname + (u.search||"") + (u.hash||""));
+    }
+  }catch(e){}
+  var unlockBtn = $("pro-unlock-go");
+  if(unlockBtn) unlockBtn.addEventListener("click", function(){
+    var v = ($("pro-unlock-code").value||"").trim().toLowerCase();
+    var msg = $("pro-unlock-msg");
+    if(v === PRO_UNLOCK_CODE){
+      setPro(); refreshQuota();
+      if(msg){ msg.textContent = "✓ Freigeschaltet — unbegrenzte Nutzung auf diesem Gerät."; msg.style.color = "var(--ok)"; }
+    } else if(msg){
+      msg.textContent = "Code stimmt nicht. Prüf die Schreibweise.";
+      msg.style.color = "#b91c1c";
+    }
+  });
+  applyPro();
+
   refreshQuota();
 })();
 </script>
