@@ -77,6 +77,14 @@
   → in `social/video_queue.csv` als `mix-20260609` status=ready eingetragen, abannews-Zeilen auf `needs-rehost`.
   **Volle Automation** (reel-render → CDN-Upload → Queue) braucht nur noch die Shopify-Secrets als **Repo-Secrets**
   (aktuell nur in-Session). Bis dahin: manueller Upload via dem Tool + Workflow-Dispatch.
+- **✅ ERSTES REEL LIVE ÜBER DIE NEUE PIPELINE (09.06. 20:54 UTC):** `video-meta-autopost.yml` (dispatch auf Branch)
+  hat das CDN-Reel `mix-20260609` veröffentlicht → **Instagram Reel** `18091803953356065` ✅ + **Threads**
+  `17978311515020703` ✅. Pipeline end-to-end bewiesen. ⚠️ **Facebook fehlgeschlagen: Token abgelaufen**
+  (code 190, „Session has expired 09-Jun-26 13:00 PDT"). **→ USER-TODO: FB-/Meta-Token erneuern** (langlebiges
+  **Page-Token** für `FB_PAGE_ACCESS_TOKEN`/`META_ACCESS_TOKEN`). Derselbe Token speist die FB-Spam-Moderation
+  → die stoppt ebenfalls bis zur Erneuerung. IG_ACCESS_TOKEN + THREADS_ACCESS_TOKEN sind gültig.
+- **🔧 CI-FIX:** `video-meta-autopost.yml` Checkout hing (großer Repo, viele committete .mp4) → auf shallow
+  (`fetch-depth:1`) + Sparse-Checkout (nur Script + Queue) umgestellt → Checkout jetzt ~1s.
 - **TikTok-Autopost** (`tiktok-autopost.yml`) braucht `TT_CLIENT_KEY/TT_CLIENT_SECRET/TT_REFRESH_TOKEN`
   (TikTok-Developer-App + Content-Posting-API, evtl. App-Review). Bis dahin: manuell posten.
 - **🖥️ BROWSER-/CLOUD-BROWSER-FRAGE (User 09.06.):** Diese Session hat nur **Headless-Playwright**
