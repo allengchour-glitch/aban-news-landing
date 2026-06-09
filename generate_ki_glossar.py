@@ -120,6 +120,34 @@ TERMS = [
      "Hypothetische KI, die Menschen über praktisch alle Aufgaben hinweg ebenbürtig ist.",
      "Gibt es nicht. Heutige Modelle sind eng, auch wenn sie breit wirken.",
      "Das größte Hype-Wort. Für deinen Betrieb irrelevant — es zählt, was heute zuverlässig funktioniert."),
+    ("Chain-of-Thought (Gedankenkette)",
+     "Eine Technik, bei der das Modell die Lösung in sichtbaren Zwischenschritten „durchdenkt“, bevor es antwortet.",
+     "Statt sofort zu raten, schreibt es den Rechenweg mit. Das verbessert oft Logik- und Mathe-Aufgaben.",
+     "„Die KI denkt nach“ ist ein Bild, keine Tatsache — sie erzeugt nur mehr Zwischen-Text, der die Trefferquote hebt."),
+    ("Vibe Coding",
+     "Programmieren, indem man der KI in normaler Sprache sagt, was man will, und den erzeugten Code kaum noch selbst liest.",
+     "Schnell für Prototypen, riskant fürs Echte: Fehler und Sicherheitslücken fallen oft erst spät auf.",
+     "„Jeder kann jetzt programmieren“ stimmt halb. Ohne Prüfung entsteht gern Code, den niemand versteht oder wartet."),
+    ("Mixture of Experts (MoE)",
+     "Eine Modell-Bauweise, bei der pro Anfrage nur ein Teil des Netzes („Experten“) aktiv wird, statt das ganze Modell.",
+     "Spart Rechenleistung: viel Wissen, aber günstiger/schneller im Betrieb, weil nicht alles mitrechnet.",
+     "Mehr „Experten“ heißt nicht automatisch klüger — es ist vor allem ein Effizienz-Trick, kein Intelligenz-Sprung."),
+    ("Jailbreak",
+     "Ein Trick, mit dem man die Sicherheitsregeln eines KI-Modells umgeht, damit es Verbotenes ausgibt.",
+     "Meist clever formulierte Prompts („tu so, als ob …“). Anbieter stopfen Lücken, neue tauchen auf.",
+     "Zeigt: „sichere KI“ ist nie absolut. Wer sensible Prozesse darauf baut, braucht eigene Kontrollen."),
+    ("Synthetische Daten",
+     "Künstlich erzeugte Trainingsdaten (oft von einer KI selbst), statt echter Daten aus der Welt.",
+     "Praktisch, wenn echte Daten fehlen oder der Datenschutz drückt — aber sie können Fehler der Quelle erben.",
+     "„Unbegrenzte Daten“ klingt super, kann aber ein Modell erzeugen, das sich selbst bestätigt — Qualität sinkt."),
+    ("Latenz",
+     "Die Zeit zwischen deiner Eingabe und der ersten Antwort des Modells.",
+     "Niedrige Latenz fühlt sich flüssig an. Große „Reasoning“-Modelle sind oft langsamer, weil sie mehr rechnen.",
+     "Im Demo schnell, im Alltag zäh — frag nach echten Antwortzeiten unter Last, nicht nach dem Hochglanz-Video."),
+    ("Deepfake",
+     "Täuschend echte, aber gefälschte Medien (Bild, Audio, Video), mit KI erzeugt.",
+     "Stimme oder Gesicht lassen sich heute überzeugend nachbauen — relevant für Betrug (z. B. der falsche „Chef-Anruf“).",
+     "Nicht jedes KI-Bild ist ein Deepfake. Aber bei Geld-/Identitäts-Themen: Rückkanal prüfen, lieber zurückrufen."),
 ]
 
 
@@ -224,7 +252,7 @@ footer a{{color:var(--muted)}}
 
   <div class="band">
     <h2>Begriffe verstehen ist die halbe Miete</h2>
-    <p>Der aban-news-Newsletter erklärt KI Mo–Fr in 5 Minuten — ehrlich, ohne Buzzword-Bingo. Und das <a href="/ki-werkzeug.html">KI-Werkzeug</a> setzt es direkt in fertige Texte um.</p>
+    <p>Der aban-news-Newsletter erklärt KI Mo–Fr in 5 Minuten — ehrlich, ohne Buzzword-Bingo. Und das <a href="/ki-werkzeug.html">KI-Werkzeug</a> setzt es direkt in fertige Texte um. Buzzwords im Marketing entlarven? → <a href="/ki-hype-detektor.html">KI-Hype-Detektor</a>.</p>
     <a class="btn" href="https://abannews.beehiiv.com/subscribe">Newsletter gratis abonnieren</a>
   </div>
 
