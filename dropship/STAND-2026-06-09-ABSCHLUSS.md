@@ -81,3 +81,14 @@ Fehlt: FB_PAGE_ACCESS_TOKEN. (PRINTFUL_STORE_ID/AUTO_CONFIRM optional, leer = De
 - **Fertig-Sticker-Verkauf Plan B:** Shopify-Produkte selbst per Admin-API anlegen (Design-Mockup via Gemini), Druck
   über Printful-Dashboard (manuell pro Design einmalig) ODER 2. „Manual/API"-Store für reine API-Produkte.
 - Bibliotheks-Aufbau (gen_designs/gen_stickers) ist davon UNBERÜHRT — Motive sammeln läuft weiter.
+
+## 📋 BACKLOG (2026-06-09 spät) — Vollautonome POD-Verkaufslinie (wartet auf User)
+- **Entscheid:** Sticker via **Printify**, Poster/Shirts via **Gelato** (beide volle API → create+auto-fulfill, kein Hand-Mapping).
+- **BLOCKER (User): Kreditkarte geht aktuell nicht** → „später". Ohne Karte kann KEIN Anbieter automatisch drucken.
+- **Bereit für sofortigen Rollout, sobald Karte + Keys da:** 139 Fertig-Designs (`social/designs/`) + 67 Sticker
+  (`social/stickers/`) = 206 Motive. Connector-Scaffold `create_sticker_products_shopify.mjs` (Plan B) existiert;
+  für echte Autonomie: Connectoren für **Printify-API** (`PRINTIFY_API_KEY`) + **Gelato-API** (`GELATO_API_KEY`) bauen.
+- **User-To-do (Anleitung im Chat 2026-06-09):** Konto Printify+Gelato, Shopify verbinden, **Karte hinterlegen**,
+  Auto-Fulfillment an, API-Keys als GitHub-Secrets. Dann „Keys sind da" → ich baue/teste/rolle aus.
+- Geldfluss geklärt: Kunde zahlt Shop (Shopify/Stripe) → Anbieter bucht Produktionskosten autom. von User-Karte →
+  Differenz = Gewinn. Claude steuert nur Logistik, kein Geld.
