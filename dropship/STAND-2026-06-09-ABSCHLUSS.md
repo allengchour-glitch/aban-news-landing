@@ -52,3 +52,14 @@ Fehlt: FB_PAGE_ACCESS_TOKEN. (PRINTFUL_STORE_ID/AUTO_CONFIRM optional, leer = De
 - **Kollektion „Selbst gestalten" SEO** gesetzt (global.title_tag/description_tag, Collection 688427434369).
 - Stand: Shop vollautonom (Katalog, POD-Verkauf, Preise, tägl. Social-Videos). Einziger offener Hebel = 4 User-Klicks
   (FB-Token, TikTok-Kampagne, AGB-Domain, Footer-Links).
+
+## ➕ Fix-Runde (2026-06-09): „Dein Design"-Mockup raus + Blank-Shirt
+- **Lehre:** Das Mockup `unisex-staple-t-shirt-white-front-6a26fe32875df.jpg` hat **„Dein Design" eingebrannt**
+  (User-Upload). Betraf nur 2 Produkte: „Unisex T-Shirt – Selbst gestalten" (15422811439489) + Bügeltransfer.
+- Fix: Gemini-Blank-Tee generiert (`social/looks/blank-tee-white.png` via gen-looks, prompts.json), auf Shopify-CDN
+  hochgeladen → `cdn.shopify.com/.../blank-tee-white.png`. Bei beiden Produkten als **data-img-front (+back)** gesetzt;
+  beim Unisex-Tee auch die 4 „Dein Design"-Galerie-Mockups entfernt + Blank als einziges Bild.
+- ⚠️ pod_inject_designer derivt data-img-front aus Media-Dateinamen „front/back"; Blank heisst `blank-tee-white.png`
+  (kein „front") → bei erneutem Inject Unisex-Tee data-img-front manuell prüfen. Bügeltransfer ist inject-unabhängig.
+- **Upload-Button bestätigt live** (Cloudinary): Editor-Knopf „🖼️ Bild" → Kunde lädt eigenes Logo/Sticker/Foto.
+- Bügeltransfer-Galerie-Duplikat (ex-tshirt-paint.png 2×) → 1 entfernt.
