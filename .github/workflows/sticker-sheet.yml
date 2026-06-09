@@ -1,0 +1,65 @@
+name: Sticker-Sheet + Meta-Post
+
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: 'Wie viele Sticker aufs Sheet'
+        type: string
+        default: '25'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sticker-sheet
+  cancel-in-progress: false
+
+jobs:
+  sheet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: ImageMagick
+        run: sudo apt-get update -q && sudo apt-get install -y imagemagick fonts-dejavu-core
+      - name: Sheet bauen
+        env:
+          N: ${{ github.event.inputs.count || '25' }}
+        run: |
+          set -e
+          mkdir -p social/static
+          FONT=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+          FILES=$(ls social/stickers/*.png | sort -R | head -n "$N")
+          montage $FILES -tile 5x -geometry 200x200+10+10 -background '#faf8f5' /tmp/grid.png
+          convert /tmp/grid.png -resize 1080x1080^ -gravity center -background '#faf8f5' -extent 1080x1080 -flatten /tmp/sq.png
+          convert /tmp/sq.png -gravity south -background '#16151a' -splice 0x120 \
+            -font "$FONT" -fill '#c1922f' -pointsize 30 -gravity south -annotate +0+74 'luxestyle.ch' \
+            -font "$FONT" -fill white -pointsize 44 -gravity south -annotate +0+24 'Selbst gestalten — 60+ Sticker gratis' \
+            -quality 90 social/static/sticker-sheet.jpg
+          echo "sheet: $(du -h social/static/sticker-sheet.jpg | cut -f1)"
+      - name: In Meta-Bild-Queue
+        run: |
+          python3 - <<'PY'
+          import csv,os
+          p='social/posts_image.csv'
+          rows=list(csv.DictReader(open(p))); cols=rows[0].keys()
+          rid='sticker-sheet'
+          rows=[r for r in rows if r['id']!=rid]  # alte Variante raus
+          cap=("60+ Sticker gratis im Designer \U0001F3A8 Herz, Tier, Spruch, vegan & mehr — zieh sie auf dein "
+               "T-Shirt, deinen Bügeltransfer oder Aufkleber. Selbst gestalten ab 1 Stück \U0001F1E8\U0001F1ED "
+               "→ luxestyle.ch/collections/selbst-gestalten-1\n#selbstgestalten #sticker #diy #schweizmode #luxestyle")
+          rows.append({'id':rid,'scheduled_date':'2026-06-09','image_url':'https://abannews.com/social/static/sticker-sheet.jpg',
+                       'caption':cap,'platforms':'instagram,facebook,threads','status':'ready','posted_at':'','post_url':''})
+          with open(p,'w',newline='') as f:
+            w=csv.DictWriter(f,fieldnames=list(cols)); w.writeheader(); w.writerows(rows)
+          print('queued sticker-sheet (ready)')
+          PY
+      - name: Commit
+        run: |
+          if [ -n "$(git status --porcelain social/)" ]; then
+            git config user.name "luxestyle-autopilot"; git config user.email "bot@users.noreply.github.com"
+            git add social/static/sticker-sheet.jpg social/posts_image.csv
+            git commit -m "Sticker-Sheet erzeugt + in Meta-Queue [skip ci]"
+            for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          fi
