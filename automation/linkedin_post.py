@@ -34,6 +34,28 @@ from visuals import build_visual  # gemeinsame KI-Bild/Karten-Logik
 QUEUE = Path(__file__).resolve().parent.parent / "social" / "linkedin_queue.json"
 API = "https://api.linkedin.com/v2/ugcPosts"
 REGISTER = "https://api.linkedin.com/v2/assets?action=registerUpload"
+USERINFO = "https://api.linkedin.com/v2/userinfo"  # OpenID Connect → sub = Member-ID
+ME = "https://api.linkedin.com/v2/me"              # Fallback (r_liteprofile) → id
+
+
+def resolve_author_urn(token):
+    """Holt die KORREKTE Member-URN direkt vom Token (selbstheilend).
+    Erst OpenID `/userinfo` (sub), dann Legacy `/me` (id). Gibt z. B.
+    'urn:li:person:782bXyz' zurück oder None, wenn beides scheitert.
+    So kann eine falsch eingetippte LINKEDIN_AUTHOR_URN nichts mehr kaputt machen."""
+    for url, key in ((USERINFO, "sub"), (ME, "id")):
+        try:
+            req = urllib.request.Request(url, headers={
+                "Authorization": f"Bearer {token}",
+                "X-Restli-Protocol-Version": "2.0.0"})
+            with urllib.request.urlopen(req, timeout=20) as r:
+                data = json.loads(r.read().decode("utf-8"))
+            mid = data.get(key)
+            if mid:
+                return f"urn:li:person:{mid}"
+        except Exception as e:  # noqa: BLE001
+            print(f"  (Author-Resolve über {url.rsplit('/',1)[-1]} ging nicht: {e})")
+    return None
 
 
 def load_queue():
@@ -148,9 +170,27 @@ def main() -> int:
 
     token = os.environ.get("LINKEDIN_ACCESS_TOKEN", "").strip()
     author = os.environ.get("LINKEDIN_AUTHOR_URN", "").strip()
-    if not token or not author:
-        print("LINKEDIN_ACCESS_TOKEN / LINKEDIN_AUTHOR_URN nicht gesetzt → no-op (Exit 0).")
+    if not token:
+        print("LINKEDIN_ACCESS_TOKEN nicht gesetzt → no-op (Exit 0).")
         return 0
+
+    # Selbstheilung: die korrekte Member-URN IMMER vom Token holen — das ist die
+    # einzige Quelle der Wahrheit. Eine falsch eingetippte LINKEDIN_AUTHOR_URN
+    # (z. B. die Zahl aus der Profil-URL statt der API-Member-ID) verursacht sonst
+    # genau den 403 "processing fields [/author]". Env-Wert nur als Fallback.
+    resolved = resolve_author_urn(token)
+    if resolved:
+        if author and author != resolved:
+            print(f"ℹ️ LINKEDIN_AUTHOR_URN ({author}) weicht von der echten Token-URN ab "
+                  f"→ nutze die echte: {resolved}")
+        author = resolved
+    elif author and not author.startswith("urn:li:person:"):
+        # Nur eine ID eingetragen → in volle URN packen
+        author = f"urn:li:person:{author}"
+    if not author:
+        print("Konnte keine Author-URN ermitteln (Token-Scope prüfen) → no-op (Exit 0).")
+        return 0
+    print(f"Author-URN: {author}")
 
     text = item["text"]
     img = build_visual(text, aspect="16:9", channel="linkedin")  # KI-Bild → Karte → None
