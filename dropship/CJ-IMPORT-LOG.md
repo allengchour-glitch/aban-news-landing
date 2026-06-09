@@ -1723,3 +1723,13 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **Lehre:** generische 1-Token-`must` (board/jar/mirror/lamp) matchen Müll → 2-Token-`must` nötig; CJ-Such-
   Qualität für Küche/Deko ist schwächer als für Mode/Beauty.
 - **Bestand: 238 cj-real aktiv (+3).**
+
+## 2026-06-09 — Autonome SEO/QA-Runde (kein Import)
+- **SEO-Meta (Title + Description) für die 8 neuesten Produkte gesetzt** (Charges 27–29: Gua-Sha «Jade»,
+  Strick-Cape «Aria», Vitamin-C-Serum «Glow», Collagen-Set «Repair», Smart-Diffuser «Aura», Titan-Schneidebrett
+  «Chef», Strickblumen «Fleur», Keramik-Vase «Craquelé») — waren via productSet ohne SEO angelegt.
+- **Alt-Texte** auf die Hauptbilder derselben 8 Produkte (Accessibility + Bild-SEO).
+- **QA verifiziert:** 30 neueste cj-real = 0 FAILED-Bilder (alle READY); Sommer-Ad-Landing 72 Produkte;
+  WELCOME10-Rabatt ACTIVE. Funnel intakt.
+- **Bestand: 238 cj-real aktiv.** Offen bleibt nur User: Judge.me-Token (Reviews/Sterne) + 2 Customizer-Klicks
+  (Cookie-Banner, Top-Bar-Schrift). Siehe `dropship/USER-CHECKLISTE.md`.
