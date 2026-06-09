@@ -35,6 +35,8 @@ MATCHERS = [
     ("VORLAGEN_BUY_URL", lambda n: "vorlagen" in n or "klartext" in n),
     ("COMPLIANCE_BUY_URL", lambda n: "compliance" in n),
     ("SCHNELLSTART_BUY_URL", lambda n: "schnellstart" in n or "einfuehrung" in n or "einführung" in n),
+    ("TEXTE_FLAT_URL", lambda n: "texte" in n and ("flat" in n or "abo" in n or "monat" in n or "subscription" in n)),
+    ("TEXTE_STARTER_URL", lambda n: "texte" in n and ("starter" in n or "einmal" in n or "paket" not in n)),
 ]
 
 
