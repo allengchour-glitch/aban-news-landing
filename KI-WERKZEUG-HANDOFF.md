@@ -2,6 +2,51 @@
 
 > Für die separate Tool-Session. Stand 2026-06-09. Enthält die **Antworten/Entscheidungen des Users**
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
+> **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
+
+## 📌 2026-06-09 (Abend/Nacht) — LinkedIn live · Site-Rettung · neues Tool · Autonomie-Taktung
+**🔴 WICHTIGSTES (Site war down!):** `abannews.com` gab **404** — Ursache: Repo war **privat**, GitHub Pages
+veröffentlicht privat nicht (Free-Plan). **Fix:** Repo auf **Public** (User), Pages-Source `main`/root,
+**`.nojekyll` hinzugefügt** (PR #548 — 4.824 Dateien killten den Jekyll-Build). Seite wieder **live** (200).
+- **Merke:** `.nojekyll` NIE löschen. Bots pushen oft → viele Pages-Builds canceln sich; nach erstem Erfolg
+  bleibt die Seite trotzdem auf letzter guter Version. `…github.io/...` 404 ist normal (Custom-Domain übernimmt).
+- **Offen (User, morgen wenn Kreditkarte entsperrt):** optional GitHub **Pro** → Repo wieder **Private** (Pages
+  läuft mit Pro privat weiter). Sonst Public lassen = gratis + unbegrenzte Actions-Minuten (besser für die Bots).
+- **Secret-Scan vor Public:** Tree + ganze Historie sauber (keine Tokens/Keys) — Public ist sicher.
+
+**🔗 LinkedIn-Autopost LIVE (Profil):** Erster Post ging raus (`urn:li:share:7470177626050138112`).
+- `automation/linkedin_post.py`: **Author-URN wird selbstheilend aus dem Token geholt** (`/userinfo`→`/me`),
+  + Ziel-Schalter **`LINKEDIN_POST_TARGET`** (`person`/`org`/`both`) + optionaler **`LINKEDIN_ORG_ACCESS_TOKEN`**
+  (zweite App) + race-sicherer Persist (`pull --rebase`+retry). PRs #535/#537/#538/#544/#546.
+- **Token-Lehre:** Token MUSS `openid profile w_member_social` haben (sonst 403/422). Jedes Neu-Erzeugen im
+  Token-Generator **revoked den alten** → zuletzt erzeugen, sofort ins Secret. Läuft ~2 Monate, dann erneuern.
+- **Cron:** werktags 08:00 UTC, 1 Post/Tag. Queue `social/linkedin_queue.json` = **71** (1 posted).
+- **Firmenseite-Posting per API = SACKGASSE:** Community Management API braucht Verifizierung **und** muss
+  einziges App-Produkt sein → für Einzel-Devs praktisch nicht freischaltbar. **→ Seite via Buffer/Publer**
+  (offizielle Partner). Export gebaut: `automation/export_page_queue.py` → `social/linkedin_page_export.csv` +
+  `…_posts.txt` (User: Publer-Gratis sperrt CSV-Bulk → „Auto Schedule" Post-für-Post, oder Buffer).
+
+**🎨 Marken-Assets (für LinkedIn, im Repo):** `brand/linkedin-banner.png` (1584×396) + `brand/linkedin-avatar.png`
+(400×400) + Generatoren (`brand/gen_linkedin_*.py`). Profil-/Seiten-Texte (Headline/About/Slogan/Specialties)
+im Chat geliefert.
+
+**🆕 Neues Gratis-Tool (PR #549):** **`ki-hype-detektor.html`** (+ **`en/ki-hype-detektor.html`**, hreflang-Paar) —
+Text einfügen → Buzzwords markiert, **Hype-Score 0–100**, Klartext-Übersetzung. Clientseitig, kein API/Datenversand,
+HTML-escaped (kein XSS), kuratiertes Buzzword-Wörterbuch. Headless getestet (ehrlich→0, Hype→100). Verdrahtet:
+Sitemap, `online-tools.html`, LinkedIn-Queue (`aban-tool-hype-detektor`, postet als Nächstes).
+
+**🤖 Autonomie-Taktung (PR #550) — User-Wunsch „1+2, Gemini jeden 2. Tag, 2×/Tag":**
+- **`autopilot.yml`** (Gemini-Autopilot: Content/Queues/Newsletter-Entwurf/Audit) → **jeden 2. Tag** (`0 5 */2 * *`).
+- **`daily-improvement.yml`** (deterministischer Verbesserer: Auto-Fixes+Scan+Report) → **2×/Tag** (`0 6,18 * * *`).
+- **`aban-director.yml`** (Analytics) alle 4h bleibt. Alle no-op-sicher, committen `[skip ci]`.
+- **EHRLICH zur Browser-/Desktop-Autonomie:** Diese Cloud-Session hat **KEIN Browser-/Desktop-Tool** → kann sich
+  NICHT in Dashboards einloggen (LinkedIn/Stripe/TikTok/Publer/GitHub-Web). „Claude für Chrome" ist ein separates
+  Claude im User-Browser (braucht User da). Logins an unbeaufsichtigten Bot delegieren = nicht sicher. Autonom geht:
+  Code/Repo/GitHub + verbundene MCP (Shopify). Dashboard-Schritte bleiben User (ich bereite auf „1 Klick" vor).
+- **TikTok-Pixel: vom User gestrichen** („ohne tiktok pixel").
+
+**🟡 Mini-Aufräum offen (kein Live-Einfluss):** PR #546 (Org-Token-Code, durch Buffer-Pivot überflüssig) +
+PR #547 (Seiten-Export) hingen am GitHub-Rate-Limit — bei Gelegenheit mergen/schließen.
 
 ## 📌 2026-06-09 — Tag-Bilanz (Newsletter-Site, ~43 PRs, alles live auf main)
 **Neue Gratis-Tools/Projekte:** KI-Werkzeug DE+EN (+Phase-2-Worker `workers/ki-werkzeug-ai/`), Welche-KI-Finder
