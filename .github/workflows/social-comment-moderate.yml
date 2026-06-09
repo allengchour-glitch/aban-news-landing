@@ -1,0 +1,42 @@
+name: Social Spam-Moderation (FB + IG)
+
+# Blendet Solicitation/Spam-Kommentare ("grow your page / DM me / cheap followers / Geld /
+# Krypto / Links") auf den letzten FB- & IG-Posts automatisch aus (hide, reversibel).
+# Echte Kundenfragen bleiben unangetastet. No-op ohne Tokens.
+
+on:
+  schedule:
+    - cron: '0 6,12,18 * * *'   # 3×/Tag (≈ 08/14/20 Uhr CH)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur anzeigen, nichts ausblenden'
+        type: boolean
+        default: false
+
+concurrency:
+  group: social-comment-moderate
+  cancel-in-progress: false
+
+jobs:
+  moderate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Moderate comments
+        env:
+          META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          LOOKBACK_POSTS: '15'
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node automation/social-comment-moderate.mjs
