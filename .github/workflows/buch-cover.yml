@@ -12,9 +12,9 @@ on:
         type: string
         default: ''
       model:
-        description: 'Bild-Modell'
+        description: 'Bild-Modell erzwingen (leer = automatisch das beste verfügbare wählen)'
         type: string
-        default: 'imagen-3.0-generate-002'
+        default: ''
 
 permissions:
   contents: write
