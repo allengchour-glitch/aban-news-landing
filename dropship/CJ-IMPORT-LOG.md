@@ -1733,3 +1733,15 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   WELCOME10-Rabatt ACTIVE. Funnel intakt.
 - **Bestand: 238 cj-real aktiv.** Offen bleibt nur User: Judge.me-Token (Reviews/Sterne) + 2 Customizer-Klicks
   (Cookie-Banner, Top-Bar-Schrift). Siehe `dropship/USER-CHECKLISTE.md`.
+
+## 2026-06-09 — AOV-Hebel: Looks-Collections + Cross-Sell (autonom)
+- **3 kuratierte „Look"-Collections** (manuell, je in 6 Kanälen, mit SEO):
+  - 🏖️ **Strand-Look** (`strand-look`, 7): Bali-Kleid + Keil-/Strand-Sandalen + Sonnenhut + Cat-Eye-Brille + Schultertasche + UV-Cardigan.
+  - 💼 **Office-Look** (`office-look`, 8): Blazer «Roma» + Spitzen-Bluse + Wide-Leg-Hose + Slingback-Pumps + Loafer + Tasche + Studs + Uhr.
+  - 🌃 **Abend-Look** (`abend-look`, 8): Sirène/Lumea/Fleurette + Plateau-Pumps + Mule + Moissanite-Kette + Studs + Lack-Crossbody.
+  - **Menü:** unter „✨ Entdecken" als Untermenü verlinkt (Inspirations-Shopping → mehr Teile/Bestellung).
+- **Cross-Sell „Passt dazu" eingerichtet** (war komplett leer): `complementary_products`-Metafeld auf 8 Helden gesetzt
+  (Bali→Sandalen/Brille/Hut/Tasche; Sirène→Pumps/Kette/Studs/Clutch; Ibiza, Savanna, Blazer-Roma, Serum↔Gua-Sha↔Collagen, Diffuser→Vase/Strauss).
+  ⚠️ **Anzeige** braucht die gratis **„Search & Discovery"-App** + „Complementary products"-Block auf der Produktseite
+  (1 Customizer-Einstellung) — Daten sind gesetzt.
+- Bestand unverändert 238 cj-real; reine Merchandising-/AOV-Massnahme.
