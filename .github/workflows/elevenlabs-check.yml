@@ -1,0 +1,34 @@
+name: ElevenLabs-Kontingent prüfen
+
+# Fragt das verbleibende ElevenLabs-Zeichen-Kontingent ab (genutzt / Limit /
+# verbleibend / Reset). Manuell startbar; optional wöchentlich als Frühwarnung.
+# Key bleibt im Secret (von GitHub im Log maskiert), wird nie ausgegeben.
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '0 6 * * 1'   # optional: Montags 06:00 UTC als Guthaben-Check
+
+permissions:
+  contents: read
+
+concurrency:
+  group: elevenlabs-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Kontingent abfragen
+        env:
+          XI: ${{ secrets.XI }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node automation/elevenlabs_check.mjs
