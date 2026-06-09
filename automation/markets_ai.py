@@ -24,7 +24,11 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data" / "markets.json"
-MODEL = os.environ.get("MARKETS_AI_MODEL", "claude-opus-4-8")
+MODEL = os.environ.get("MARKETS_AI_MODEL", "claude-haiku-4-5")
+
+# Modelle mit Adaptive-Thinking + effort-Parameter (Haiku 4.5 kann beides NICHT → 400).
+ADAPTIVE_MODELS = ("claude-opus-4-8", "claude-opus-4-7", "claude-opus-4-6",
+                   "claude-sonnet-4-6", "claude-fable-5")
 
 SYSTEM = (
     "Du bist ein nüchterner Finanz-Markt-Analyst für die deutschsprachige News-Seite "
@@ -104,18 +108,20 @@ def main() -> int:
         return 0
 
     client = anthropic.Anthropic()
+    # effort + adaptive thinking nur bei Modellen, die sie unterstützen (sonst 400).
+    output_config = {"format": {"type": "json_schema", "schema": SCHEMA}}
+    kwargs = dict(
+        model=MODEL,
+        max_tokens=4000,
+        system=SYSTEM,
+        messages=[{"role": "user", "content": build_prompt(data)}],
+    )
+    if any(MODEL.startswith(m) for m in ADAPTIVE_MODELS):
+        kwargs["thinking"] = {"type": "adaptive"}
+        output_config["effort"] = "low"
+    kwargs["output_config"] = output_config
     try:
-        response = client.messages.create(
-            model=MODEL,
-            max_tokens=4000,
-            system=SYSTEM,
-            thinking={"type": "adaptive"},
-            output_config={
-                "effort": "low",
-                "format": {"type": "json_schema", "schema": SCHEMA},
-            },
-            messages=[{"role": "user", "content": build_prompt(data)}],
-        )
+        response = client.messages.create(**kwargs)
     except Exception as ex:
         sys.stderr.write(f"Claude-Aufruf fehlgeschlagen ({ex}) → Daten unverändert.\n")
         return 0
