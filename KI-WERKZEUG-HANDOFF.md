@@ -3,6 +3,24 @@
 > Für die separate Tool-Session. Stand 2026-06-09. Enthält die **Antworten/Entscheidungen des Users**
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 
+## 📌 2026-06-09 — Tag-Bilanz (Newsletter-Site, ~43 PRs, alles live auf main)
+**Neue Gratis-Tools/Projekte:** KI-Werkzeug DE+EN (+Phase-2-Worker `workers/ki-werkzeug-ai/`), Welche-KI-Finder
+(`welche-ki-fuer-was.html`, lädt `data/tools.json`), Prompt-Baukasten (DE+EN), Readiness-Check (DE+EN),
+KI-Glossar (DE+EN, Generator `generate_ki_glossar.py`), Spar-Rechner, DSGVO-Schnellcheck, Start-Hub (`ki-start.html`),
+**194 Tool-Vergleiche** (`generate_tool_vergleiche.py` → `vergleich/`), **Newsletter-LP** (`newsletter.html`).
+**Reichweite/Conversion:** Header-Banner `js/announce.js` auf 745+ Seiten; Funnel in 599 Branchen-Hubs; Lead-Magnet-PDFs
+auf Tool-Seiten verlinkt; **Social-Content-Queue** `automation/gen_social_content.py` → `social/aban-content-queue.csv`
+(62 Vorlagen, NICHT auto-gepostet); Anti-Hype-Cover via Gemini (`automation/gen_buch_cover.py` + Workflow).
+**3 Einnahme-Richtungen:** A) KI-Sichtbarkeits-Monitor 9 €/Mon (Funnel steht), B) Texte-Service (`texte-service.html`),
+C) White-Label (`fuer-verbaende.html`).
+**🟡 OFFEN (User/Infra):**
+- **Stripe-Monitor-Link** (9 €/Mon) → in `js/checkout-config.js` `MONITOR_ABO_URL` (User schickt Link, ich verdrahte).
+  Lemon-API kann KEINE Produkte anlegen; Lemon-Store hat nur „aban news Premium"(2×)+Buch → Stripe gewählt.
+- **CTA-Label A/B/C** site-weit vereinheitlichen (User-Wahl offen).
+- **Worker deployen** für echte KI (README in workers/ki-werkzeug-ai).
+- **Projekt 5 (Sichtbarkeits-Report-PDF)** + **6 (mehr Branchen-Kits)**: brauchen reportlab/CI + Produkt-Entscheidungen → offen.
+- EN-Finder bleibt DE (tools.json-Notes sind deutsch).
+
 ## 📌 2026-06-09 (Teil 3) — 3 Einnahme-Richtungen + Header-Banner (User: „alle reihenach")
 - **Header-Banner site-weit (#499):** `js/announce.js` — schließbar (7T), de/en, rotiert: KI-Sichtbarkeits-Check ·
   KI-Werkzeug · Newsletter. Auf 120 Root-Seiten + EN-Tool. (Hubs noch nicht — können nachgezogen werden.)
