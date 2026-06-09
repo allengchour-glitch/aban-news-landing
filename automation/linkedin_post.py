@@ -150,6 +150,31 @@ def post_to_linkedin_image(token, author, text, asset):
         return resp.status, resp.headers.get("x-restli-id", "")
 
 
+def post_one(token, author, text, img):
+    """Postet einen Beitrag für GENAU EIN Ziel (Person ODER Organisation).
+    Versucht Bild-Post, fällt auf Text-Post zurück. Gibt (status, post_id) zurück
+    oder (None, "") bei Fehler — wirft nicht, damit ein Ziel das andere nicht killt."""
+    try:
+        if img:
+            try:
+                upload_url, asset = register_upload(token, author)
+                upload_image(upload_url, token, img)
+                return post_to_linkedin_image(token, author, text, asset)
+            except Exception as ie:  # noqa: BLE001 — Bild-Pfad scheitert → Text-Post
+                print(f"::warning::[{author}] Bild-Upload fehlgeschlagen ({ie}); poste als Text.")
+                return post_to_linkedin(token, author, text)
+        return post_to_linkedin(token, author, text)
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode("utf-8", "ignore")[:300]
+        print(f"::warning::[{author}] LinkedIn API HTTP {e.code}: {detail}")
+        if e.code == 403 and "organization" in author:
+            print("  → Für die Unternehmensseite fehlt vermutlich der Scope "
+                  "'w_organization_social' (Community Management API). Siehe docs/LINKEDIN-AUTOPOST.md.")
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning::[{author}] LinkedIn-Post fehlgeschlagen: {e}")
+    return None, ""
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--dry-run", action="store_true")
@@ -187,39 +212,46 @@ def main() -> int:
     elif author and not author.startswith("urn:li:person:"):
         # Nur eine ID eingetragen → in volle URN packen
         author = f"urn:li:person:{author}"
-    if not author:
-        print("Konnte keine Author-URN ermitteln (Token-Scope prüfen) → no-op (Exit 0).")
+    # Ziele zusammenstellen: persönliches Profil (immer, wenn ermittelbar) +
+    # optional die Unternehmensseite, wenn LINKEDIN_ORG_URN/LINKEDIN_ORG_ID gesetzt
+    # ist UND der Token den Scope w_organization_social hat (Community Management API).
+    targets = []  # (label, author_urn)
+    if author:
+        targets.append(("Profil", author))
+    org = os.environ.get("LINKEDIN_ORG_URN", "").strip() or os.environ.get("LINKEDIN_ORG_ID", "").strip()
+    if org:
+        if not org.startswith("urn:li:organization:"):
+            org = f"urn:li:organization:{org}"
+        targets.append(("Unternehmensseite", org))
+    if not targets:
+        print("Kein Post-Ziel ermittelbar (weder Person noch Organisation) → no-op (Exit 0).")
         return 0
-    print(f"Author-URN: {author}")
+    print("Post-Ziele: " + ", ".join(f"{lbl} ({urn})" for lbl, urn in targets))
 
     text = item["text"]
     img = build_visual(text, aspect="16:9", channel="linkedin")  # KI-Bild → Karte → None
-    try:
-        if img:
-            try:
-                upload_url, asset = register_upload(token, author)
-                upload_image(upload_url, token, img)
-                status, post_id = post_to_linkedin_image(token, author, text, asset)
-            except Exception as ie:  # noqa: BLE001 — Bild-Pfad scheitert → Text-Post
-                print(f"::warning::Bild-Upload fehlgeschlagen ({ie}); poste als Text.")
-                status, post_id = post_to_linkedin(token, author, text)
-        else:
-            status, post_id = post_to_linkedin(token, author, text)
-    except urllib.error.HTTPError as e:
-        print(f"::warning::LinkedIn API HTTP {e.code}: {e.read().decode('utf-8','ignore')[:300]}")
-        return 0  # nicht den Workflow rot machen
-    except Exception as e:  # noqa: BLE001
-        print(f"::warning::LinkedIn-Post fehlgeschlagen: {e}")
-        return 0
 
-    if status in (200, 201):
+    posted_any = False
+    ids = {}
+    for label, target in targets:
+        status, post_id = post_one(token, target, text, img)
+        if status in (200, 201):
+            posted_any = True
+            ids[label] = post_id
+            print(f"✓ {label} gepostet (id={post_id}).")
+        else:
+            print(f"::warning::{label} nicht gepostet.")
+
+    # Queue nur markieren, wenn MINDESTENS ein Ziel erfolgreich war (so wird ein
+    # Eintrag nicht „verbraucht", wenn alles scheitert).
+    if posted_any:
         item["status"] = "posted"
         item["posted_at"] = dt.datetime.utcnow().isoformat(timespec="seconds") + "Z"
-        item["linkedin_id"] = post_id
+        item["linkedin_id"] = ids
         QUEUE.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        print(f"✓ Gepostet (id={post_id}). Queue aktualisiert.")
+        print(f"✓ Queue aktualisiert ({len(ids)}/{len(targets)} Ziel(e) live).")
     else:
-        print(f"::warning::Unerwarteter Status {status} — Queue unverändert.")
+        print("::warning::Kein Ziel erfolgreich — Queue unverändert (Eintrag bleibt fällig).")
     return 0
 
 
