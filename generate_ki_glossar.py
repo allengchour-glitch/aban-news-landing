@@ -212,6 +212,7 @@ footer a{{color:var(--muted)}}
   <section class="hero">
     <h1><span class="a">KI-Glossar</span> — ehrlich erklärt</h1>
     <p>Die wichtigsten KI-Begriffe auf Deutsch, knapp und ohne Hype. Mit „Klartext“ und — wo nötig — einem ehrlichen Hype-Check.</p>
+    <p style="margin-top:14px"><a class="btn" href="/downloads/anti-hype-glossar.pdf" download>📄 Glossar als PDF (gratis)</a></p>
   </section>
 
   <input class="search" id="q" type="search" placeholder="Begriff suchen … (z. B. Halluzination, RAG, Agent)" aria-label="Begriff suchen">
