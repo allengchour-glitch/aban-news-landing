@@ -36,6 +36,11 @@ HTML-escaped (kein XSS), kuratiertes Buzzword-Wörterbuch. Headless getestet (eh
 Sitemap, `online-tools.html`, LinkedIn-Queue (`aban-tool-hype-detektor`, postet als Nächstes).
   **Nachgezogen:** EN-Version (PR #551, hreflang-Paar) + **Teilen-Buttons** (LinkedIn/X/WhatsApp/Native/Copy, Score
   im Share-Text → viraler Loop) DE+EN + Querverlinkung in `ki-start.html` (Kachel) & `ki-glossar.html` (Band).
+- **Glossar 26 → 33 Begriffe** (PR #553): Chain-of-Thought, Vibe Coding, MoE, Jailbreak, Synthetische Daten,
+  Latenz, Deepfake (korrekt, anti-hype). In `generate_ki_glossar.py` (TERMS) ergänzt → `ki-glossar.html` neu
+  erzeugt (Titel/JSON-LD/Count automatisch). **WICHTIG: ki-glossar.html ist GENERIERT** — Änderungen IMMER im
+  Generator machen, sonst überschreibt der nächste Lauf sie (Hype-Link im Band ist jetzt im Generator). Zahl-Refs
+  in index/online-tools/ki-start auf 33 aktualisiert. Begriffe füttern auch die Social-Posts (gen_social_content).
 - **Newsletter-Hebel offen (nur User):** beehiiv liefert nur Link, kein Inline-Formular. **beehiiv-Embed-Snippet**
   (`<iframe src="https://embeds.beehiiv.com/…">` aus Settings→Subscribe Forms) → dann baue ich Inline-Signup site-weit
   statt nur Weiterleitung (= direkter Abonnenten-Boost).
