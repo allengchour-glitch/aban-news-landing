@@ -1,0 +1,33 @@
+name: POD-Widget – Gemini-Kritik
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pod-widget-critique
+  cancel-in-progress: false
+
+jobs:
+  critique:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Gemini-Kritik holen
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node automation/gemini_widget_critique.mjs
+      - name: Kritik committen
+        run: |
+          if [ -n "$(git status --porcelain dropship/pod/widget-critique.md)" ]; then
+            git config user.name "luxestyle-autopilot"; git config user.email "bot@users.noreply.github.com"
+            git add dropship/pod/widget-critique.md
+            git commit -m "POD-Widget: Gemini-Kritik [skip ci]"
+            for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else echo "keine Kritik-Datei"; fi
