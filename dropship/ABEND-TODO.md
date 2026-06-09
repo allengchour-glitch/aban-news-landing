@@ -54,3 +54,8 @@ ich autonom**: echte Printful-Kosten je Variante holen → Retail = Kosten ×2,3
 
 ---
 > ✅ Schnellster Hebel heute Abend: **Punkt 1** (Printful-Key + Cloudinary). Danach mache ich Preise + Live-Test autonom.
+
+## ✅ ERLEDIGT (autonom, 2026-06-09)
+- **AGB/Policy-Domain:** bereits sauber (kein aban-192); luxestyle.com→luxestyle.ch + Telefon-Tippfehler gefixt (`fix_policies_footer.mjs`).
+- **Footer-Social-Links:** „Abannews"-custom_url entfernt, TikTok→@luxestyle.ch, FB/IG/Threads korrekt (Theme-Write via Admin-API).
+- **Offen bleiben nur:** FB_PAGE_ACCESS_TOKEN + TikTok-Kampagne.
