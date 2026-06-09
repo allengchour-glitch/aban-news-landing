@@ -66,3 +66,13 @@
 <!-- NEUE VERBESSERUNGEN HIER EINTRAGEN, Format: -->
 <!-- - YYYY-MM-DD: „Verbesserung: <O-Ton>" → Regel: <was ich künftig immer mache> -->
 - 2026-06-08: „Verbesserung: Bali-Video löschen und nicht mehr posten (gilt überall), kam zu oft vor, keine asiatischen Frauen." → Regel: **KEINE asiatischen Models** in Bildern/Reels/Posts. Bali («Strand-Maxikleid») komplett aus der Pipeline entfernt (good_products.csv, product_reels.csv, reels_seed.csv, posts_image.csv) + alle Bali-Medien gelöscht (reels/, social/enhanced, social/static). Bei der Produktauswahl für good_products.csv/Reels künftig **immer das Hero-Bild prüfen** → keine asiatischen Models aufnehmen. Zusätzlich: ein Produkt nicht zu oft wiederholen (Abwechslung).
+
+## 2026-06-09 — Regel: Content-Vielfalt, KEINE Damenmode-Wiederholung (User-Wunsch)
+- User-Feedback: TikTok/Meta-Feed war fast nur Damenkleider + **dieselben Produkte wiederholten sich** ständig.
+- **Neue Regel:** `automation/good_products.csv` (Rotations-Quelle für Reels + Bild-Posts) ist breit über ALLE
+  Kategorien gestreut und **interleaved** (jedes nächste Item = andere Kategorie): Herren-Mode, Uhren, Schmuck,
+  Beauty/Wellness, Home/Deko, Gadgets, Accessoires. **Damenkleider nur minimal (max ~4) und nur FRISCHE**
+  (nicht Brise/Bali/Ibiza-Dauerläufer).
+- Beim Auffüllen künftig: Damenmode NICHT dominieren lassen, neue/abwechselnde Produkte nehmen.
+- ⚠️ Crons laufen von `main` → Wirkung erst nach Merge des Branches. Alte `social/posts_image.csv`-Queue
+  enthält noch ältere Damen-Einträge (laufen aus); neue Renders aus der neuen Liste mischen sich rein.
