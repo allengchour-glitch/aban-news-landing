@@ -3,6 +3,19 @@
 > Für die separate Tool-Session. Stand 2026-06-09. Enthält die **Antworten/Entscheidungen des Users**
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 
+## 📌 2026-06-09 (Teil 2) — EN-Tool + Phase-2-Worker (8h-Auto-Sprint)
+- **EN-Tool live (PR #492):** `en/ki-werkzeug.html` (gespiegelte Logik, EN-Copy/Templates), Funnel in
+  **alle 298 `en/ki-fuer-*.html`**, hreflang DE↔EN, Sitemap. **Pro-Flag teilt sich** (gleiche Origin).
+- **Umlaut-Politur site-weit (PR #491):** online-tools (Gerät/Täglich) + stats (Über/täglich/nötig/für/nächste).
+  Sichtbar-Text-Scan jetzt **0 Treffer**.
+- **Hybrid-Nav (PR #490):** „Preise" aus Top-Nav raus, Premium+Shop bleiben (User-Entscheid „mach hybrid").
+- **🔧 Phase-2-Worker GEBAUT (dieser PR): `workers/ki-werkzeug-ai/`** (worker.js + wrangler.toml + README).
+  Cloudflare-Worker hinter `AI_ENDPOINT`: hält den KI-Key serverseitig, **verlustsichere Kosten-Bremse**
+  (harte Tages-Caps pro IP + global in KV, `gemini-2.0-flash`), baut Prompt serverseitig, liefert `{text}`.
+  **Noch inert** (AI_ENDPOINT bleibt "" bis User deployt). Scharfschalten: README (≈10 Min: KV anlegen,
+  `GEMINI_API_KEY`+`PRO_TOKEN` als Secrets, `wrangler deploy`, `AI_ENDPOINT` in beiden Tool-Seiten setzen).
+  → Damit ist „Pro = echte KI" möglich, ohne je minus zu machen (globaler Cap deckelt Kosten).
+
 ## 📌 2026-06-09 — Kunden-Überblick + Funnel + Gemini-Kontrolle (alles live auf `main`)
 - **PR #480 gemergt → live:** Feature-Überblick „Alles für deinen Betrieb" (5 Karten) unter dem Hero,
   „Gratis vs Pro"-Vergleichsblock (Preis folgt Branchen-Stufe, `#pro-price-2`), Branchen-Guide + Hilfe-Link
