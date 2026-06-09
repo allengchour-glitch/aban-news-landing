@@ -329,6 +329,12 @@ BRANCHEN = {
     "gebrauchtwarenhandel": ("Gebrauchtwaren",      ["Beschreibungen & Listings,", "nicht die Zustandsprüfung"]),
     "schokoladenmanufaktur": ("Schokoladen-Manufaktur", ["Produkttexte & Shop,", "keine Heilversprechen"]),
     "spieleladen":         ("Spieleläden",          ["Produkttexte & Events,", "nicht die Spielberatung"]),
+    "fahrschule":          ("Fahrschulen",          ["Info & Termine,", "nicht der Unterricht"]),
+    "tanzschule":          ("Tanzschulen",          ["Kurse & Termine,", "nicht der Unterricht"]),
+    "reitstall":           ("Reitställe",           ["Angebote & Orga,", "nicht der Unterricht"]),
+    "gardinengeschaeft":   ("Gardinengeschäfte",    ["Produkttexte & Service,", "nicht das Aufmaß"]),
+    "skiservice":          ("Skiservice",           ["Service- & Verleihtexte,", "nicht die Bindung"]),
+    "sammelkartenladen":   ("Sammelkartenläden",    ["Listings & Events,", "nicht die Echtheitsprüfung"]),
 }
 
 
