@@ -92,3 +92,19 @@ Fehlt: FB_PAGE_ACCESS_TOKEN. (PRINTFUL_STORE_ID/AUTO_CONFIRM optional, leer = De
   Auto-Fulfillment an, API-Keys als GitHub-Secrets. Dann „Keys sind da" → ich baue/teste/rolle aus.
 - Geldfluss geklärt: Kunde zahlt Shop (Shopify/Stripe) → Anbieter bucht Produktionskosten autom. von User-Karte →
   Differenz = Gewinn. Claude steuert nur Logistik, kein Geld.
+
+## ➕ Designs/Sticker-Library + Galerie-Seite (2026-06-09 nachts)
+- **Library massiv ausgebaut:** ~184→274 Fertig-Designs (`social/designs/`, Gemini, magenta+chroma-key+Alpha-Cleanup)
+  + 67 Sticker = ~340 Motive. Themen: Tiere, Sprüche (DE/EN/Schweiz: Hoi/Grüezi/Merci), Tattoo, Food, Natur/Blumen,
+  Space/Zodiac, Sport, Musik, Gaming, Y2K, Vegan, Logos/Badges, Saison, Self-Care.
+- **gen_designs.mjs**: nur fehlende Motive (skip vorhandene) + MAX/Lauf → mehrere Runs queuen → Library füllt sich.
+  ⚠️ Manche Gemini-Outputs nicht reines Magenta → grauer Kasten; **Pillow-Alpha-Cleanup (T=120)** lokal/Batch fixt das.
+- **Galerie-Seite LIVE:** `luxestyle.ch/pages/designs-galerie` (Page-Handle `designs-galerie`, gid 698504085889).
+  Generator `dropship/designs/page_body.html` (Python-Build, 15 Kategorie-Filter, Hero+Preis, Trust, So-funktionierts,
+  Sticky-CTA), Push via `automation/update_designs_page.mjs` + `designs-page.yml` (Client-Credentials pageUpsert).
+  Neu generieren → page_body.html neu bauen + designs-page.yml laufen.
+- **Menü-Tab** „🖼️ Designs & Sticker (200+)" unter „🎨 Selbst gestalten" → /pages/designs-galerie.
+- **Gemini-Kritik-Loop:** `automation/gemini_page_critique.mjs` via `designs-critique.yml` (POD_BODY_FILE-Override)
+  → `dropship/designs/gemini-critique.md`. Score 5→v2 umgesetzt.
+- **Verkauf der Designs = geparkt auf Karte/Provider** (Printify+Gelato, siehe Backlog). Connectoren-Scaffold:
+  `create_sticker_products_shopify.mjs` (Plan B Shopify) + `printful_create_design_products.mjs` (Printful blockiert).
