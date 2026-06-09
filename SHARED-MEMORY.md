@@ -100,6 +100,17 @@
 - **⚠️ CRON-VON-MAIN:** geplante Auto-Posts (`video-meta-autopost`, `reel-render`) laufen vom **main**-Branch;
   neue CDN-Queue-Zeilen/Produkte liegen auf dem Dropship-Branch → bis Merge per **Workflow-Dispatch auf dem
   Branch** posten (so heute alle 3 gemacht). Für hands-off täglich: PR nach main mergen.
+- **✅ CONVERSION-PASS (09.06. spät, live via MCP — NICHT zurücksortieren!):**
+  - **Social-Proof-First auf den Top-Landing-Pages:** Manuelle Kollektionen umsortiert (sortOrder=MANUAL),
+    sodass die **bewerteten Verkaufsschlager zuerst** stehen:
+    · **Homepage „🔥 Hero-Favoriten" (`bestseller`, 486 Sess/#1):** Slim Wallet 5,0★/15 · Herrenuhr 5,0★/15 ·
+    Jade Roller 5,0★/7 · Mini-Diffuser 4,8★ ganz oben (vorher unbewertete Galaxy/Salzlampe oben).
+    · **„✨ Highlights" (`highlights`, 239 Sess/#2):** +6 Review-Gewinner zugefügt & nach oben (Bali 4,93 ·
+    Plateau-Sandalen 4,71 · Mini-Kleid 4,65 · Resort-Set 4,64 · Ibiza 4,47 · Maxirock 4,35).
+  - **Ad-Funnel `sommer` (72 Prod.) leak-gescannt: sauber** — alle bewerteten ≥4,35★, kein schlechtes Produkt.
+  - **15 frische Reel-Produkte verifiziert:** alle 6 Kanäle, korrekte Kollektionen, SEO+Trust-Text vorhanden.
+  - **3 verstümmelte SEO-Titel gefixt** (FlexHold/Coeur/Serpent — Auto-Generator hatte Compound-Wörter zerlegt).
+  - Engpass bleibt **Reichweite** (3 User-Klicks: TikTok-Conversion-Kampagne + Pixel + Budget), nicht der Shop.
 - **TikTok-Autopost** (`tiktok-autopost.yml`) braucht `TT_CLIENT_KEY/TT_CLIENT_SECRET/TT_REFRESH_TOKEN`
   (TikTok-Developer-App + Content-Posting-API, evtl. App-Review). Bis dahin: manuell posten.
 - **🖥️ BROWSER-/CLOUD-BROWSER-FRAGE (User 09.06.):** Diese Session hat nur **Headless-Playwright**
