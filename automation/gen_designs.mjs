@@ -11,6 +11,8 @@ const KEY=process.env.GEMINI_API_KEY||'';
 const MODEL=process.env.GEMINI_IMAGE_MODEL||'gemini-2.5-flash-image';
 const ONLY=(process.env.ONLY||'').split(',').map(s=>s.trim()).filter(Boolean);
 const NO_KEY=process.env.NO_KEY==='1';
+const MAXRUN=Math.max(1,parseInt(process.env.MAX||'45',10)||45);
+const FORCE=process.env.FORCE==='1';
 const BASE='https://generativelanguage.googleapis.com/v1beta';
 const DIR='social/designs';
 fs.mkdirSync(DIR,{recursive:true});
@@ -54,6 +56,9 @@ function keyMagenta(buf){
 if(KEY){
   let made=0;
   for(const item of list){
+    const outp=`${DIR}/${item.name}.png`;
+    if(!FORCE && fs.existsSync(outp)){ continue; }   // nur fehlende generieren
+    if(made>=MAXRUN){ console.log(`MAX ${MAXRUN} erreicht — Rest beim nächsten Lauf.`); break; }
     try{
       const b64=await genImage(item.prompt);
       let buf=Buffer.from(b64,'base64');
