@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt-Baukasten — in 30 Sekunden ein starker KI-Prompt | aban news</title>
+<meta name="description" content="Aus Stichworten ein klar strukturierter KI-Prompt: Rolle, Kontext, Aufgabe, Format und Leitplanken. Gratis, ohne Login — funktioniert mit ChatGPT, Claude, Gemini & Co.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/prompt-baukasten.html">
+<meta property="og:title" content="Prompt-Baukasten — in 30 Sekunden ein starker KI-Prompt">
+<meta property="og:description" content="Aus Stichworten ein sauber strukturierter Prompt — für ChatGPT, Claude, Gemini & Co. Gratis, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/prompt-baukasten.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Prompt-Baukasten","url":"https://abannews.com/prompt-baukasten.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"de","description":"Baut aus Stichworten einen klar strukturierten KI-Prompt (Rolle, Kontext, Aufgabe, Format, Leitplanken).","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--field:#fffdf9;--ok:#15803d}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15;--ok:#86efac}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:840px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:9px;border:0;cursor:pointer;font-size:.95rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 6px;text-align:center}
+.hero h1{font-size:clamp(26px,5vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,18px);color:var(--ink2);max-width:620px;margin:0 auto}
+.app{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:26px 0 6px}
+.field{margin-bottom:14px}
+.field label{display:block;font-weight:600;font-size:.92rem;margin-bottom:5px}
+.field .hint{color:var(--muted);font-weight:400;font-size:.84rem}
+input[type=text],select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+textarea{min-height:70px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+.checks{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;color:var(--ink2);margin-top:2px}
+.checks label{display:flex;gap:7px;align-items:center;cursor:pointer}
+.out{margin-top:8px;background:var(--field);border:1px solid var(--line);border-radius:12px;padding:16px}
+.out h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:8px}
+.out pre{white-space:pre-wrap;font:inherit;font-size:1rem;line-height:1.6;color:var(--ink)}
+.rowbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.copied{color:var(--ok)!important}
+.tips{margin:26px 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.tips h2{font-size:1.15rem;margin-bottom:8px}
+.tips ol{margin:0 0 0 1.1rem}.tips li{margin-bottom:5px;color:var(--ink2);font-size:.95rem}
+.band{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:24px;text-align:center}
+.band h2{font-size:1.2rem;margin-bottom:8px}.band p{color:var(--ink2);max-width:560px;margin:0 auto 14px}
+.disc{color:var(--muted);font-size:.82rem;margin:14px 0;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="/ki-werkzeug.html" class="btn ghost">KI-Werkzeug</a></div></header>
+<main><div class="wrap">
+
+  <section class="hero">
+    <h1><span class="a">Prompt</span>-Baukasten</h1>
+    <p>Aus ein paar Stichworten ein klar strukturierter Prompt — für ChatGPT, Claude, Gemini &amp; Co. Gratis, ohne Login. Du füllst aus, der Prompt baut sich live.</p>
+  </section>
+
+  <div class="app">
+    <div class="field">
+      <label for="aufgabe">Was soll die KI tun? <span class="hint">— die Hauptaufgabe</span></label>
+      <input type="text" id="aufgabe" placeholder="z. B. eine Kunden-E-Mail zu einer Terminverschiebung schreiben">
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="rolle">Rolle der KI <span class="hint">— optional</span></label>
+        <input type="text" id="rolle" placeholder="z. B. erfahrener Texter für Handwerksbetriebe">
+      </div>
+      <div class="field">
+        <label for="format">Antwort als …</label>
+        <select id="format">
+          <option value="Fließtext">Fließtext</option>
+          <option value="Stichpunkte">Stichpunkte</option>
+          <option value="Tabelle">Tabelle</option>
+          <option value="E-Mail mit Betreff">E-Mail (mit Betreff)</option>
+          <option value="Schritt-für-Schritt-Anleitung">Schritt-für-Schritt</option>
+          <option value="Social-Media-Post">Social-Media-Post</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label for="kontext">Kontext &amp; Fakten <span class="hint">— Stichworte mit Komma; gib echte Zahlen/Namen</span></label>
+      <textarea id="kontext" placeholder="z. B. Termin 14.6. fällt aus, Ersatz 21.6., Kunde Herr Meier, freundlich, kurz"></textarea>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="ton">Tonfall</label>
+        <select id="ton">
+          <option value="sachlich und professionell">sachlich &amp; professionell</option>
+          <option value="freundlich und nahbar">freundlich &amp; nahbar</option>
+          <option value="locker und jung">locker &amp; jung</option>
+          <option value="edel und hochwertig">edel &amp; hochwertig</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="laenge">Länge</label>
+        <select id="laenge">
+          <option value="kurz (max. 120 Wörter)">kurz</option>
+          <option value="mittel (ca. 200–300 Wörter)" selected>mittel</option>
+          <option value="ausführlich">ausführlich</option>
+        </select>
+      </div>
+    </div>
+    <div class="checks">
+      <label><input type="checkbox" id="nachfragen" checked> Bei fehlenden Infos zuerst nachfragen</label>
+      <label><input type="checkbox" id="keinefakten" checked> Keine Fakten/Zahlen erfinden</label>
+    </div>
+
+    <div class="out">
+      <h3>Dein Prompt</h3>
+      <pre id="out"></pre>
+      <div class="rowbtns">
+        <button class="btn ghost" id="copy">In Zwischenablage kopieren</button>
+        <a class="btn ghost" href="https://chatgpt.com" target="_blank" rel="noopener">In ChatGPT öffnen ↗</a>
+        <a class="btn ghost" href="https://claude.ai" target="_blank" rel="noopener">In Claude öffnen ↗</a>
+      </div>
+    </div>
+  </div>
+  <p class="disc">Der Baukasten strukturiert deine Eingaben nach bewährten Regeln — er „denkt" nichts dazu. Prüf das Ergebnis der KI immer selbst.</p>
+
+  <section class="tips">
+    <h2>Die 5 Bausteine eines guten Prompts</h2>
+    <ol>
+      <li><b>Rolle</b> — wer soll die KI sein? („erfahrener Steuerberater")</li>
+      <li><b>Aufgabe</b> — was genau soll rauskommen?</li>
+      <li><b>Kontext &amp; Fakten</b> — echte Zahlen/Namen statt raten lassen.</li>
+      <li><b>Format</b> — Tabelle, Stichpunkte, E-Mail …</li>
+      <li><b>Leitplanken</b> — Ton, Länge, „nichts erfinden", „erst nachfragen".</li>
+    </ol>
+  </section>
+
+  <div class="band">
+    <h2>Noch weniger Aufwand?</h2>
+    <p>Das <a href="/ki-werkzeug.html">KI-Werkzeug</a> liefert dir den fertigen Text direkt — und der Newsletter macht dich Mo–Fr KI-fitter, ohne Hype.</p>
+    <a class="btn" href="https://abannews.beehiiv.com/subscribe">Newsletter gratis abonnieren</a>
+  </div>
+
+</div></main>
+<footer><div class="wrap">&copy; 2026 aban news &middot; Allen Chour &middot; Belp (CH) &middot;
+  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/ki-glossar.html">Glossar</a> &middot; <a href="/welche-ki-fuer-was.html">Tool-Finder</a> &middot; <a href="/impressum.html">Impressum</a></div></footer>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(id){return document.getElementById(id);};
+  function kws(s){return (s||"").split(/[,;\n]+/).map(function(x){return x.trim();}).filter(Boolean);}
+  function build(){
+    var aufgabe=$("aufgabe").value.trim();
+    var rolle=$("rolle").value.trim();
+    var format=$("format").value;
+    var kontext=kws($("kontext").value);
+    var ton=$("ton").value;
+    var laenge=$("laenge").value;
+    var nachfragen=$("nachfragen").checked;
+    var keine=$("keinefakten").checked;
+    var lines=[];
+    lines.push("Du bist " + (rolle || "ein hilfreicher, präziser Assistent") + ".");
+    lines.push("");
+    lines.push("Aufgabe: " + (aufgabe || "[was die KI tun soll]") + ".");
+    if(kontext.length){
+      lines.push("");
+      lines.push("Kontext & Fakten (nutze genau diese, erfinde nichts dazu):");
+      kontext.forEach(function(k){ lines.push("- " + k); });
+    }
+    lines.push("");
+    lines.push("Format: Antworte als " + format + ".");
+    lines.push("Ton: " + ton + ". Länge: " + laenge + ".");
+    var rules=[];
+    if(keine) rules.push("Erfinde keine Fakten, Zahlen oder Quellen.");
+    if(nachfragen) rules.push("Wenn dir wichtige Infos fehlen, stelle zuerst gezielte Rückfragen, statt zu raten.");
+    rules.push("Schreibe auf Deutsch, klar und ohne Floskeln.");
+    if(rules.length){
+      lines.push("");
+      lines.push("Wichtig:");
+      rules.forEach(function(r){ lines.push("- " + r); });
+    }
+    return lines.join("\n");
+  }
+  function render(){ $("out").textContent = build(); }
+  ["aufgabe","rolle","format","kontext","ton","laenge"].forEach(function(id){
+    $(id).addEventListener("input",render); $(id).addEventListener("change",render);
+  });
+  ["nachfragen","keinefakten"].forEach(function(id){ $(id).addEventListener("change",render); });
+  $("copy").addEventListener("click",function(){
+    var t=build(); var b=this;
+    navigator.clipboard.writeText(t).then(function(){
+      var old=b.textContent; b.textContent="✓ Kopiert"; b.classList.add("copied");
+      setTimeout(function(){ b.textContent=old; b.classList.remove("copied"); },1600);
+    });
+  });
+  render();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
