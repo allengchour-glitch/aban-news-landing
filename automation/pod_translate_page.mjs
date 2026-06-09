@@ -63,6 +63,18 @@ ${STYLE}
   </div>
   <p class="lspod-note">Price incl. one-sided print. All options &amp; the final price are shown transparently in the designer – no hidden costs.</p>
 </section>
+<section class="lspod-section">
+  <h3 class="lspod-sech">Inspiration</h3>
+  <p class="lspod-secsub">How yours could look – text, photo, logo or artwork. You design, we print.</p>
+  <div class="lspod-insp">
+    <figure><img loading="lazy" src="https://abannews.com/social/looks/ex-tshirt-mountain.png" alt="Design example: minimalist t-shirt"><figcaption>Minimal line</figcaption></figure>
+    <figure><img loading="lazy" src="https://abannews.com/social/looks/ex-hoodie-sunset.png" alt="Design example: retro hoodie"><figcaption>Retro sunset</figcaption></figure>
+    <figure><img loading="lazy" src="https://abannews.com/social/looks/ex-mug-quote.png" alt="Design example: mug with quote"><figcaption>Your quote</figcaption></figure>
+    <figure><img loading="lazy" src="https://abannews.com/social/looks/ex-tote-cat.png" alt="Design example: tote with artwork"><figcaption>Your artwork</figcaption></figure>
+    <figure><img loading="lazy" src="https://abannews.com/social/looks/ex-tshirt-paint.png" alt="Design example: colourful t-shirt"><figcaption>Colourful</figcaption></figure>
+    <figure><img loading="lazy" src="https://abannews.com/social/looks/ex-case-marble.png" alt="Design example: marble phone case"><figcaption>Your style</figcaption></figure>
+  </div>
+</section>
 <section class="lspod-section" style="background:var(--bg);border-radius:20px;margin:8px 0;">
   <h3 class="lspod-sech">How it works</h3>
   <p class="lspod-secsub">Your one-off in under 2 minutes.</p>
