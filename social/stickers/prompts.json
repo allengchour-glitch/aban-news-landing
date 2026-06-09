@@ -1,20 +1,122 @@
 [
-  {"name":"heart-red","prompt":"A cute die-cut sticker of a single glossy red heart, bold clean modern vector style, thick solid white sticker border around it, the sticker placed on a completely solid flat bright magenta background (#FF00FF) that fills the entire image edge to edge, no checkerboard pattern, no transparency pattern, no drop shadow, no text, high detail"},
-  {"name":"star-gold","prompt":"A cute die-cut sticker of a single gold five-point star, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"smiley-yellow","prompt":"A cute die-cut sticker of a classic yellow smiley face, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"daisy-flower","prompt":"A cute die-cut sticker of a single white daisy flower with yellow center, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"cat-cute","prompt":"A cute die-cut sticker of a kawaii cartoon cat face, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"dog-cute","prompt":"A cute die-cut sticker of a kawaii cartoon dog face, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"butterfly","prompt":"A cute die-cut sticker of a colourful butterfly, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"rainbow","prompt":"A cute die-cut sticker of a rainbow with two small clouds, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"lightning","prompt":"A cute die-cut sticker of a yellow lightning bolt, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"crown","prompt":"A cute die-cut sticker of a small gold crown, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"coffee","prompt":"A cute die-cut sticker of a takeaway coffee cup, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"peace","prompt":"A cute die-cut sticker of a peace sign symbol, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"moon-stars","prompt":"A cute die-cut sticker of a crescent moon with small stars, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"mushroom-retro","prompt":"A cute die-cut sticker of a retro 70s red mushroom, groovy vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"cherry","prompt":"A cute die-cut sticker of a pair of red cherries, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"flame","prompt":"A cute die-cut sticker of an orange flame, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"},
-  {"name":"word-love","prompt":"A die-cut lettering sticker of the word LOVE in bold playful red script, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no other elements"},
-  {"name":"word-vibes","prompt":"A die-cut lettering sticker of the word VIBES in bold colourful retro letters, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no other elements"}
+{
+"name": "heart-red",
+"prompt": "A cute die-cut sticker of a single glossy red heart, bold clean modern vector style, thick solid white sticker border around it, the sticker placed on a completely solid flat bright magenta background (#FF00FF) that fills the entire image edge to edge, no checkerboard pattern, no transparency pattern, no drop shadow, no text, high detail"
+},
+{
+"name": "star-gold",
+"prompt": "A cute die-cut sticker of a single gold five-point star, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "smiley-yellow",
+"prompt": "A cute die-cut sticker of a classic yellow smiley face, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "daisy-flower",
+"prompt": "A cute die-cut sticker of a single white daisy flower with yellow center, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "cat-cute",
+"prompt": "A cute die-cut sticker of a kawaii cartoon cat face, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "dog-cute",
+"prompt": "A cute die-cut sticker of a kawaii cartoon dog face, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "butterfly",
+"prompt": "A cute die-cut sticker of a colourful butterfly, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "rainbow",
+"prompt": "A cute die-cut sticker of a rainbow with two small clouds, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "lightning",
+"prompt": "A cute die-cut sticker of a yellow lightning bolt, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "crown",
+"prompt": "A cute die-cut sticker of a small gold crown, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "coffee",
+"prompt": "A cute die-cut sticker of a takeaway coffee cup, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "peace",
+"prompt": "A cute die-cut sticker of a peace sign symbol, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "moon-stars",
+"prompt": "A cute die-cut sticker of a crescent moon with small stars, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "mushroom-retro",
+"prompt": "A cute die-cut sticker of a retro 70s red mushroom, groovy vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "cherry",
+"prompt": "A cute die-cut sticker of a pair of red cherries, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "flame",
+"prompt": "A cute die-cut sticker of an orange flame, bold clean vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "word-love",
+"prompt": "A die-cut lettering sticker of the word LOVE in bold playful red script, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no other elements"
+},
+{
+"name": "word-vibes",
+"prompt": "A die-cut lettering sticker of the word VIBES in bold colourful retro letters, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no other elements"
+},
+{
+"name": "rose-red",
+"prompt": "A cute die-cut sticker of a single red rose flower, bold clean modern vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "sunflower",
+"prompt": "A cute die-cut sticker of a bright sunflower, bold clean modern vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "panda-cute",
+"prompt": "A cute die-cut sticker of a kawaii cartoon panda face, bold clean modern vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "ghost-cute",
+"prompt": "A cute die-cut sticker of a friendly cute cartoon ghost, bold clean modern vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "planet-saturn",
+"prompt": "A cute die-cut sticker of a planet Saturn with ring, bold clean modern vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "music-note",
+"prompt": "A cute die-cut sticker of a single music note, bold clean modern vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "ice-cream",
+"prompt": "A cute die-cut sticker of an ice cream cone with two scoops, bold clean modern vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "avocado-cute",
+"prompt": "A cute die-cut sticker of a kawaii avocado with a smile, bold clean modern vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "palm-tree",
+"prompt": "A cute die-cut sticker of a small green palm tree, bold clean modern vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "sun-smile",
+"prompt": "A cute die-cut sticker of a smiling yellow sun, bold clean modern vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "clover",
+"prompt": "A cute die-cut sticker of a green four-leaf clover, bold clean modern vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+},
+{
+"name": "strawberry",
+"prompt": "A cute die-cut sticker of a red strawberry, bold clean modern vector style, thick solid white sticker border, on a completely solid flat bright magenta background (#FF00FF) filling the whole image, no checkerboard, no transparency pattern, no shadow, no text"
+}
 ]

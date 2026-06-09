@@ -1,6 +1,8 @@
 name: Montage (alle Produkte in 1 Video)
 
 on:
+  schedule:
+    - cron: '10 6 * * *'   # täglich 1 Montage automatisch
   workflow_dispatch:
     inputs:
       max_seg:
