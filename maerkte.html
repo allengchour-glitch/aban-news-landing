@@ -33,6 +33,7 @@
     :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
     .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
     .skip:focus{left:0}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:0;border-radius:999px;cursor:pointer;
       font-weight:800;font-size:1.02rem;padding:.95rem 1.6rem;background:var(--ink);color:#fff;text-decoration:none;
@@ -139,10 +140,62 @@
     .footbar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;margin-top:1.8rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
     .footbar a{color:var(--muted);text-decoration:none}.footbar-links{display:flex;gap:1rem;flex-wrap:wrap}
 
+    /* Live-Ticker */
+    .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;overflow:hidden;position:relative}
+    .ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:48px;z-index:2;pointer-events:none}
+    .ticker::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
+    .ticker::after{right:0;background:linear-gradient(270deg,#fff,transparent)}
+    .ticker-track{display:inline-flex;gap:2.2rem;padding:.7rem 1rem;white-space:nowrap;will-change:transform;animation:tick 38s linear infinite}
+    .ticker:hover .ticker-track{animation-play-state:paused}
+    @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @media(prefers-reduced-motion:reduce){.ticker-track{animation:none;overflow-x:auto}}
+    .tk{display:inline-flex;align-items:center;gap:.5rem;font-size:.9rem;font-weight:700}
+    .tk .tk-sym{color:var(--ink)}.tk .tk-px{color:var(--muted);font-variant-numeric:tabular-nums}
+    .tk .tk-ch{font-variant-numeric:tabular-nums;font-weight:800}
+    .tk .tk-ch.up{color:var(--ok)}.tk .tk-ch.down{color:var(--bear)}.tk .tk-ch.flat{color:var(--muted)}
+
+    /* Watchlist-Stern */
+    .star{background:none;border:0;cursor:pointer;font-size:1.05rem;line-height:1;padding:.1rem .3rem;color:var(--line);transition:color .12s,transform .12s}
+    .star:hover{transform:scale(1.15)}.star.on{color:var(--amber)}
+    .mtable td.starcell{width:34px;text-align:center}
+    tr.watched td{background:#fffaf0}
+
+    /* Tool-Widgets */
+    .tools{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.8rem}
+    .tool{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.4rem;box-shadow:var(--shadow-sm)}
+    .tool h3{margin:0 0 .3rem;font-size:1.12rem;letter-spacing:-.01em}
+    .tool .thint{margin:0 0 1rem;color:var(--muted);font-size:.88rem}
+    .field{display:flex;flex-direction:column;gap:.3rem;margin:0 0 .8rem}
+    .field label{font-size:.8rem;font-weight:700;color:var(--muted)}
+    .field input,.field select{border:1.5px solid var(--line);border-radius:10px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
+    .field input:focus,.field select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:12px;font-weight:800;font-size:1.05rem}
+    .tout small{display:block;font-weight:600;color:var(--muted);font-size:.78rem;margin-top:.2rem}
+    .tnote{margin:.7rem 0 0;font-size:.74rem;color:var(--muted)}
+
+    /* Netzwerk / Mehr zum Thema */
+    .netgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+    .netcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink);transition:transform .14s,box-shadow .14s}
+    .netcard:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .netcard .ni{font-size:1.4rem}.netcard h3{margin:.4rem 0 .2rem;font-size:1.02rem}
+    .netcard p{margin:0;color:var(--muted);font-size:.88rem}
+    .netcard .nr{margin-top:auto;padding-top:.6rem;font-size:.84rem;color:var(--amber-dk);font-weight:700}
+
+    /* Abo-Block */
+    .abo{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    .abocard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow-sm);text-align:center}
+    .abocard .ico{font-size:2rem;margin-bottom:.5rem}
+    .abocard h3{margin:0 0 .35rem;font-size:1.15rem}
+    .abocard p{margin:0 0 1rem;color:var(--muted);font-size:.92rem}
+
     @media(max-width:860px){
       .cards{grid-template-columns:1fr}
       .footcols{grid-template-columns:1fr 1fr}
       .band .cta{flex-direction:column}.band .cta .btn{width:100%}
+      .tools,.abo{grid-template-columns:1fr}
+      .netgrid{grid-template-columns:1fr}
+      .frow{grid-template-columns:1fr}
     }
   </style>
   <script type="application/ld+json">
@@ -177,6 +230,11 @@
     </div>
   </section>
 
+  <!-- LIVE-TICKER -->
+  <div class="ticker" aria-label="Live-Kursticker">
+    <div class="ticker-track" id="tickerTrack"><span class="tk" style="color:var(--muted)">Lade Ticker …</span></div>
+  </div>
+
   <!-- MARKTÜBERBLICK -->
   <section class="sec" style="padding-top:1rem">
     <div class="wrap">
@@ -188,6 +246,7 @@
         <table class="mtable" aria-label="Marktüberblick Krypto und Aktien">
           <thead>
             <tr>
+              <th scope="col"><span class="sr-only">Merken</span></th>
               <th scope="col">Wert</th>
               <th scope="col" class="num">Preis</th>
               <th scope="col" class="num">24&nbsp;h</th>
@@ -196,11 +255,64 @@
             </tr>
           </thead>
           <tbody id="marketRows">
-            <tr><td colspan="5" style="color:var(--muted)">Lade Marktdaten …</td></tr>
+            <tr><td colspan="6" style="color:var(--muted)">Lade Marktdaten …</td></tr>
           </tbody>
         </table>
       </div>
       <p class="crosslink">Mehr Hintergrund: <a href="/ki-und-krypto-daten.html">KI &amp; Krypto nüchtern in Zahlen →</a> (Energieverbrauch, KI-Trading-Realität, DACH-Steuerregeln).</p>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">Gratis-Tools · ohne Login</span>
+      <h2>Rechner &amp; Umrechner</h2>
+      <p class="sub">Direkt im Browser — der Umrechner nutzt die Live-Krypto-Kurse von oben.</p>
+      <div class="tools">
+        <!-- Live-Umrechner -->
+        <div class="tool">
+          <h3>💱 Krypto-/Aktien-Umrechner</h3>
+          <p class="thint">Menge eines Werts in US-Dollar — und zurück. Live-Kurs, sofort.</p>
+          <div class="field">
+            <label for="convAsset">Wert</label>
+            <select id="convAsset"></select>
+          </div>
+          <div class="frow">
+            <div class="field">
+              <label for="convAmount">Menge</label>
+              <input id="convAmount" type="number" inputmode="decimal" value="1" min="0" step="any">
+            </div>
+            <div class="field">
+              <label for="convUsd">Wert in USD</label>
+              <input id="convUsd" type="number" inputmode="decimal" min="0" step="any">
+            </div>
+          </div>
+          <div class="tout" id="convOut">—</div>
+          <p class="tnote">Kurse rein informativ · keine Anlageberatung.</p>
+        </div>
+        <!-- Sparplan-Rechner -->
+        <div class="tool">
+          <h3>📈 Sparplan-Rechner (Beispiel)</h3>
+          <p class="thint">Wie wächst ein monatlicher Sparbetrag bei angenommener Rendite?</p>
+          <div class="frow">
+            <div class="field">
+              <label for="spMonth">Monatlich (CHF)</label>
+              <input id="spMonth" type="number" inputmode="decimal" value="200" min="0" step="any">
+            </div>
+            <div class="field">
+              <label for="spYears">Jahre</label>
+              <input id="spYears" type="number" inputmode="numeric" value="10" min="1" max="50" step="1">
+            </div>
+          </div>
+          <div class="field">
+            <label for="spRate">Angenommene Rendite p.a. (%)</label>
+            <input id="spRate" type="number" inputmode="decimal" value="6" min="-50" max="100" step="0.5">
+          </div>
+          <div class="tout" id="spOut">—</div>
+          <p class="tnote">Beispielrechnung mit konstanter Rendite — <strong>kein Renditeversprechen</strong>. Echte Märkte schwanken; Verluste möglich.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -226,6 +338,46 @@
         <li>Lade News …</li>
       </ul>
       <p class="sources" id="sources"></p>
+    </div>
+  </section>
+
+  <!-- MEHR ZUM THEMA / NETZWERK -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">Weiterlesen</span>
+      <h2>Mehr zum Thema</h2>
+      <p class="sub">Hintergrund, Rechner und Einordnung aus dem aban-news-Netzwerk.</p>
+      <div class="netgrid">
+        <a class="netcard" href="/ki-und-krypto-daten.html"><span class="ni">🪙</span><h3>KI &amp; Krypto in Zahlen</h3><p>Sektor-Überblick, Energieverbrauch, KI-Trading-Realität, DACH-Steuerregeln.</p><span class="nr">Lesen →</span></a>
+        <a class="netcard" href="/finanz-rechner.html"><span class="ni">🧮</span><h3>Finanz-Rechner</h3><p>Stundensatz, Rücklagen &amp; Co. — ehrlich gerechnet, ohne Login.</p><span class="nr">Öffnen →</span></a>
+        <a class="netcard" href="/ki-spar-rechner.html"><span class="ni">💰</span><h3>KI-Spar-Rechner</h3><p>Wie viel Zeit &amp; Geld spart dir KI im Alltag? Ehrlich gerechnet.</p><span class="nr">Öffnen →</span></a>
+        <a class="netcard" href="/ki-fuer-finanzberater.html"><span class="ni">📊</span><h3>KI für Finanzberater</h3><p>Konkrete KI-Workflows für die Finanz- &amp; Beratungsbranche.</p><span class="nr">Lesen →</span></a>
+        <a class="netcard" href="/ki-glossar.html"><span class="ni">📖</span><h3>KI-Glossar</h3><p>Begriffe ehrlich erklärt — mit Klartext &amp; Hype-Check.</p><span class="nr">Nachschlagen →</span></a>
+        <a class="netcard" href="/dossiers.html"><span class="ni">🗂️</span><h3>Themen-Dossiers</h3><p>Der Newsletter, nach Thema gebündelt — kostenlos, ohne Anmeldung.</p><span class="nr">Stöbern →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABO / FOLGEN -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">Dranbleiben</span>
+      <h2>Märkte abonnieren</h2>
+      <p class="sub">Kein Login, kein Spam — wähle deinen Kanal.</p>
+      <div class="abo">
+        <div class="abocard">
+          <div class="ico">📲</div>
+          <h3>Täglich per Telegram</h3>
+          <p>Markt-Digest mit Kursen, 24h-Bewegung &amp; KI-Sentiment — 1×/Tag, automatisch.</p>
+          <a class="btn btn--amber" href="https://t.me/abannews" target="_blank" rel="noopener">Auf Telegram folgen →</a>
+        </div>
+        <div class="abocard">
+          <div class="ico">📬</div>
+          <h3>5-Minuten-Newsletter</h3>
+          <p>Mo–Fr 7:30 Uhr: KI, Tech &amp; Wirtschaft ehrlich eingeordnet — gratis.</p>
+          <a class="btn btn--ghost" href="#signup">Gratis abonnieren →</a>
+        </div>
+      </div>
     </div>
   </section>
 

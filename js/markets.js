@@ -13,6 +13,14 @@
 
   var state = { assets: [], byId: {} };
 
+  // ---------- Watchlist (localStorage, kein Tracking) ----------
+  var WATCH_KEY = 'aban_markets_watch';
+  function loadWatch() {
+    try { return JSON.parse(localStorage.getItem(WATCH_KEY) || '{}'); } catch (e) { return {}; }
+  }
+  function saveWatch(w) { try { localStorage.setItem(WATCH_KEY, JSON.stringify(w)); } catch (e) {} }
+  var watch = loadWatch();
+
   // ---------- Helfer ----------
   function fmtPrice(v, cur) {
     if (v === null || v === undefined || isNaN(v)) return '—';
@@ -82,8 +90,28 @@
     var tbody = document.getElementById('marketRows');
     if (!tbody) return;
     tbody.innerHTML = '';
-    state.assets.forEach(function (a) {
+    // Gemerkte Werte zuerst, sonst Originalreihenfolge.
+    var ordered = state.assets.slice().sort(function (a, b) {
+      return (watch[b.id] ? 1 : 0) - (watch[a.id] ? 1 : 0);
+    });
+    ordered.forEach(function (a) {
       var tr = document.createElement('tr');
+      if (watch[a.id]) tr.className = 'watched';
+
+      var tdStar = el('td', 'starcell');
+      var star = document.createElement('button');
+      star.type = 'button';
+      star.className = 'star' + (watch[a.id] ? ' on' : '');
+      star.textContent = watch[a.id] ? '★' : '☆';
+      star.setAttribute('aria-pressed', watch[a.id] ? 'true' : 'false');
+      star.setAttribute('aria-label', a.name + ' merken');
+      star.addEventListener('click', function () {
+        if (watch[a.id]) { delete watch[a.id]; } else { watch[a.id] = 1; }
+        saveWatch(watch);
+        renderTable();
+      });
+      tdStar.appendChild(star);
+      tr.appendChild(tdStar);
 
       var tdName = document.createElement('td');
       tdName.appendChild(el('span', 'asset-name', a.name));
@@ -188,6 +216,100 @@
     p.textContent = when ? ('Stand: ' + when + engine + ' · Krypto live') : '';
   }
 
+  // ---------- Live-Ticker ----------
+  function tickerItem(a) {
+    var span = el('span', 'tk');
+    span.appendChild(el('span', 'tk-sym', a.symbol));
+    span.appendChild(el('span', 'tk-px', fmtPrice(a.price, a.currency)));
+    var ch = fmtChange(a.change_24h);
+    span.appendChild(el('span', 'tk-ch ' + ch.cls, ch.txt));
+    return span;
+  }
+  function renderTicker() {
+    var track = document.getElementById('tickerTrack');
+    if (!track) return;
+    track.innerHTML = '';
+    if (!state.assets.length) return;
+    // Inhalt doppelt anhängen → nahtlose Endlosschleife (-50% in CSS).
+    for (var pass = 0; pass < 2; pass++) {
+      state.assets.forEach(function (a) { track.appendChild(tickerItem(a)); });
+    }
+  }
+
+  // ---------- Live-Umrechner ----------
+  function initConverter() {
+    var sel = document.getElementById('convAsset');
+    var amt = document.getElementById('convAmount');
+    var usd = document.getElementById('convUsd');
+    var out = document.getElementById('convOut');
+    if (!sel || !amt || !usd || !out) return;
+
+    sel.innerHTML = '';
+    state.assets.forEach(function (a) {
+      var o = document.createElement('option');
+      o.value = a.id; o.textContent = a.name + ' (' + a.symbol + ')';
+      sel.appendChild(o);
+    });
+
+    function price() {
+      var a = state.byId[sel.value];
+      return a && typeof a.price === 'number' ? a.price : null;
+    }
+    function fromAmount() {
+      var p = price(), n = parseFloat(amt.value);
+      if (p === null || isNaN(n)) { usd.value = ''; out.textContent = '—'; return; }
+      var v = n * p;
+      usd.value = v.toFixed(2);
+      var a = state.byId[sel.value];
+      out.innerHTML = '';
+      out.appendChild(document.createTextNode(
+        n.toLocaleString('de-CH') + ' ' + a.symbol + ' ≈ ' + fmtPrice(v, 'usd')));
+      var s = document.createElement('small');
+      s.textContent = 'Kurs: ' + fmtPrice(p, 'usd') + ' / ' + a.symbol;
+      out.appendChild(s);
+    }
+    function fromUsd() {
+      var p = price(), n = parseFloat(usd.value);
+      if (p === null || isNaN(n) || p === 0) { return; }
+      amt.value = (n / p).toFixed(6);
+      fromAmount();
+    }
+    sel.addEventListener('change', fromAmount);
+    amt.addEventListener('input', fromAmount);
+    usd.addEventListener('input', fromUsd);
+    state.convUpdate = fromAmount; // bei Live-Refresh neu rechnen
+    fromAmount();
+  }
+
+  // ---------- Sparplan-Rechner ----------
+  function initSavingsCalc() {
+    var m = document.getElementById('spMonth');
+    var y = document.getElementById('spYears');
+    var r = document.getElementById('spRate');
+    var out = document.getElementById('spOut');
+    if (!m || !y || !r || !out) return;
+    function calc() {
+      var month = parseFloat(m.value), years = parseFloat(y.value), rate = parseFloat(r.value);
+      if (isNaN(month) || isNaN(years) || isNaN(rate) || years <= 0) { out.textContent = '—'; return; }
+      var n = Math.round(years * 12);
+      var i = (rate / 100) / 12;
+      var fv = i === 0 ? month * n : month * ((Math.pow(1 + i, n) - 1) / i) * (1 + i);
+      var paid = month * n;
+      var gain = fv - paid;
+      var fmt = function (x) {
+        try { return new Intl.NumberFormat('de-CH', { style: 'currency', currency: 'CHF', maximumFractionDigits: 0 }).format(x); }
+        catch (e) { return Math.round(x) + ' CHF'; }
+      };
+      out.innerHTML = '';
+      out.appendChild(document.createTextNode('Endwert ≈ ' + fmt(fv)));
+      var s = document.createElement('small');
+      s.textContent = 'Eingezahlt ' + fmt(paid) + ' · Wertzuwachs ' + fmt(gain);
+      out.appendChild(s);
+    }
+    [m, y, r].forEach(function (inp) { inp.addEventListener('input', calc); });
+    calc();
+  }
+
   // ---------- Live-Krypto via CoinGecko ----------
   function cryptoIds() {
     return state.assets.filter(function (a) { return a.type === 'crypto' && a.coingecko_id; })
@@ -214,7 +336,11 @@
             }
           });
         });
-        if (changed) renderTable();
+        if (changed) {
+          renderTable();
+          renderTicker();
+          if (typeof state.convUpdate === 'function') state.convUpdate();
+        }
       })
       .catch(function () { /* still: Snapshot bleibt stehen */ });
   }
@@ -222,11 +348,16 @@
   // ---------- Init ----------
   function init(data) {
     state.assets = (data.assets || []).slice();
+    state.byId = {};
+    state.assets.forEach(function (a) { state.byId[a.id] = a; });
     renderTable();
+    renderTicker();
     renderCards();
     renderNews(data.news);
     renderSources(data.quellen);
     setUpdated(data);
+    initConverter();
+    initSavingsCalc();
     // Live-Krypto: sofort + periodisch
     fetchCrypto();
     setInterval(fetchCrypto, REFRESH_MS);
@@ -238,11 +369,11 @@
       if (data) init(data);
       else {
         var tbody = document.getElementById('marketRows');
-        if (tbody) tbody.innerHTML = '<tr><td colspan="5" style="color:var(--muted)">Marktdaten zurzeit nicht verfügbar.</td></tr>';
+        if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="color:var(--muted)">Marktdaten zurzeit nicht verfügbar.</td></tr>';
       }
     })
     .catch(function () {
       var tbody = document.getElementById('marketRows');
-      if (tbody) tbody.innerHTML = '<tr><td colspan="5" style="color:var(--muted)">Marktdaten zurzeit nicht verfügbar.</td></tr>';
+      if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="color:var(--muted)">Marktdaten zurzeit nicht verfügbar.</td></tr>';
     });
 })();
