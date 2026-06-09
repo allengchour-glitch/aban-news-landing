@@ -48,4 +48,23 @@
 ## 🟡 OFFENE USER-KLICKS (Reichweite/Setup)
 1. **Kreditkarte** + **PRINTIFY_API_KEY** + **GELATO_API_KEY** → POD-Verkauf vollautonom zünden.
 2. **TikTok-Kampagne** „Complete Payment" (Pixel D8EKVR3C77U6KT5BTBD0, CH/Frauen/18–34, 20 CHF/Tag) — oder TikTok-Marketing-API-Token geben → Claude macht's per API.
-- ERLEDIGT autonom: AGB-Domain, Footer-Links, FB-Token getestet ✓.
+3. **GEMINI-Billing aufladen** (Projekt-Guthaben) — siehe Lehre unten, AKTUELL LEER.
+- ERLEDIGT autonom: AGB-Domain, Footer-Links, FB-Token getestet ✓, **POD-Mockups gesäubert** (s.u.).
+
+## 🆕 2026-06-09 spät — POD-Mockups „Dein Design" entfernt + 2 wichtige Lehren
+- **User-Beschwerde:** auf der „Selbst gestalten"-Collection war der Platzhalter „Dein Design" auf gewölbten
+  Produkten (Taschen/Tasse/Flasche/Body) **abgeschnitten** → wirkte kaputt. FIX: 11 Featured-Bilder auf
+  **saubere Blanko-Echtfotos** getauscht (Taschen×6, Tasse, Flasche, Baby-Body, 2 iPhone-Hüllen). Apparel blieb
+  (Text dort lesbar/zentriert); Sticker blieb (Printful-Blank zeigt „Stickers"-Sample). Per Shopify-MCP
+  `productCreateMedia`+`productDeleteMedia`(+`productReorderMedia` für die Hüllen mit 7/53 Varianten-Bildern).
+- **🔴 LEHRE 1 — GEMINI-GUTHABEN LEER:** Nano-Banana/Veo geben **HTTP 429 „prepayment credits are depleted"**.
+  Die 30 CHF sind aufgebraucht → JEDE Gemini-**Bild**-Generierung (gen_designs/gen_stickers/gemini_enhance_image/
+  pod_blank_mockups/Veo) ist bis zum Aufladen tot. (Gemini-**Text** evtl. via Free-Tier noch ok.) Nicht stundenlang
+  suchen — erst Billing prüfen.
+- **🟢 LEHRE 2 — Printful-Katalog ist GRATIS & ÖFFENTLICH (kein Key!):** `GET https://api.printful.com/products/variant/{catalogVariantId}`
+  → `result.variant.image` = **sauberes Blanko-Produktfoto** (weisser BG, kein „Dein Design"). `catalogVariantId` =
+  Teil nach „_" in der Shopify-SKU (`<sync>_<catalogVariantId>`). So OHNE Gemini/Key saubere Mockups holen.
+  ⚠️ manche Varianten liefern `…/product_temporary_image.jpg` (leer) → andere White-Variante via `/products/{product_id}` nehmen.
+  ⚠️ Apparel-`variant.image` ist oft ein **Model-Foto** (Regel „keine asiatischen Models" prüfen! var 10874/recycelter-Hoodie las asiatisch → vermieden) → für Apparel lieber Flat/Ghost.
+- **Tool/Workflow** `automation/pod_blank_mockups.mjs` + `.github/workflows/pod-blank-mockups.yml` (Gemini-Text-Removal,
+  liegt bereit für wenn Billing wieder da ist; aktuell no-op wegen 429).
