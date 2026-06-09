@@ -26,6 +26,10 @@ const CSV = new URL('../social/video_queue.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
 const DRY = process.env.DRY_RUN === '1';
 const MAX = Math.max(1, parseInt(process.env.MAX_PER_RUN || '1', 10) || 1);
+// Cover-Frame (ms) für IG-Reels: das 3.0s-Marken-Intro ist off-white → ohne Offset nimmt IG einen
+// weissen Frame als Grid-Vorschau. ~3800ms landet sauber im ERSTEN Produktbild (nach Intro-Fade,
+// vor dem nächsten Übergang) = Produkt-Cover statt weisser Kachel. Via THUMB_OFFSET überschreibbar.
+const THUMB_MS = String(parseInt(process.env.THUMB_OFFSET || '3800', 10) || 3800);
 
 const IG_ID = process.env.IG_USER_ID || '';
 const IG_TOK = process.env.IG_ACCESS_TOKEN || process.env.META_ACCESS_TOKEN || '';
@@ -74,7 +78,7 @@ async function waitVideo(statusUrl){
 async function postIG(videoUrl, caption){
   if(!IG_ID || !IG_TOK) return null;
   const base = `https://graph.facebook.com/${V}/${IG_ID}`;
-  const c = await gpost(`${base}/media`, { media_type:'REELS', video_url:videoUrl, caption, share_to_feed:'true', access_token:IG_TOK });
+  const c = await gpost(`${base}/media`, { media_type:'REELS', video_url:videoUrl, caption, share_to_feed:'true', thumb_offset:THUMB_MS, access_token:IG_TOK });
   if(!c.ok || !c.j.id){ console.error('IG container:', c.status, JSON.stringify(c.j.error||c.j)); return false; }
   await waitVideo(`https://graph.facebook.com/${V}/${c.j.id}?fields=status_code,status&access_token=${encodeURIComponent(IG_TOK)}`);
   const p = await gpost(`${base}/media_publish`, { creation_id:c.j.id, access_token:IG_TOK });
