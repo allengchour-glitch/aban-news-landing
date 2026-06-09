@@ -35,6 +35,14 @@ on:
         description: 'Hook EN (leer = Konzept-Default)'
         type: string
         default: ''
+      veo_model:
+        description: 'Veo-Modell (z.B. veo-3.1-generate-preview = Full, oder veo-3.1-lite-generate-preview)'
+        type: string
+        default: 'veo-3.1-lite-generate-preview'
+      veo_csv:
+        description: 'Custom-CSV fuer Veo-Heroes (name,image_url,label,handle) – leer = automation/good_products.csv'
+        type: string
+        default: ''
 
 permissions:
   contents: write
@@ -59,7 +67,8 @@ jobs:
         if: ${{ github.event.inputs.heroes != '' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          VEO_MODEL: veo-3.1-lite-generate-preview
+          VEO_MODEL: ${{ github.event.inputs.veo_model || 'veo-3.1-lite-generate-preview' }}
+          VEO_CSV: ${{ github.event.inputs.veo_csv }}
           VEO_ONLY: ${{ github.event.inputs.heroes }}
           VEO_SECONDS: ${{ github.event.inputs.seconds || '4' }}
         run: node automation/veo-hero-clip.mjs || echo "Veo uebersprungen/fehlgeschlagen -> weiter mit Stills"
@@ -93,7 +102,7 @@ jobs:
             OUTBASE="werbung-luxestyle"
           fi
           echo "Konzept=$CONCEPT  Quelle=$SRC  Out=$OUTBASE"
-          if [ "$CONCEPT" = "fashion" ]; then
+          if [ "$CONCEPT" = "fashion" ] || [ -n "$HEROES_IN" ]; then
             if [ -n "$HEROES_IN" ]; then
               # nur die gewaehlten Heroes, in genau dieser Reihenfolge (kein glob-all -> keine alten/rotierenden Clips)
               IFS=',' read -ra HRS <<< "$HEROES_IN"

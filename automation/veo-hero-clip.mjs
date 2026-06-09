@@ -33,7 +33,7 @@ const BASE = 'https://generativelanguage.googleapis.com/v1beta';
 
 const HERE = path.dirname(new URL(import.meta.url).pathname);
 const ROOT = path.dirname(HERE);
-const CSV = path.join(HERE, 'good_products.csv');
+const CSV = process.env.VEO_CSV ? path.resolve(process.env.VEO_CSV) : path.join(HERE, 'good_products.csv');
 const REELS_CSV = path.join(HERE, 'reels_seed.csv');
 const OUT_DIR = path.join(ROOT, 'reels');
 const POINTER = path.join(HERE, '.veo_pointer');
