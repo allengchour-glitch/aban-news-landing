@@ -45,3 +45,10 @@
 ## 🔑 Secrets-Stand (verifiziert via Logs)
 Gesetzt: SHOPIFY_SHOP/CLIENT_ID/CLIENT_SECRET, GEMINI_API_KEY, PRINTFUL_API_KEY, TELEGRAM_BOT_TOKEN/CHAT_ID, META_*/IG/Threads.
 Fehlt: FB_PAGE_ACCESS_TOKEN. (PRINTFUL_STORE_ID/AUTO_CONFIRM optional, leer = Defaults.)
+
+## ➕ Autonom-Runde (2026-06-09 spät)
+- **Montage täglich** (montage.yml Cron 06:10) zusätzlich zu enhance-clips (05:20). Content-Maschine selbstlaufend.
+- **Sticker-Bibliothek 18→30** (prompts.json erweitert, gen-stickers laufen). Magenta-Chroma-Key-Format beibehalten.
+- **Kollektion „Selbst gestalten" SEO** gesetzt (global.title_tag/description_tag, Collection 688427434369).
+- Stand: Shop vollautonom (Katalog, POD-Verkauf, Preise, tägl. Social-Videos). Einziger offener Hebel = 4 User-Klicks
+  (FB-Token, TikTok-Kampagne, AGB-Domain, Footer-Links).
