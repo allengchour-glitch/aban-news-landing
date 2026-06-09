@@ -70,3 +70,14 @@ Fehlt: FB_PAGE_ACCESS_TOKEN. (PRINTFUL_STORE_ID/AUTO_CONFIRM optional, leer = De
 - Pipeline existiert bereits: `automation/gen_designs.mjs` (+ gen_stickers) → Motive; `automation/printful_create_design_products.mjs`
   + `design-products.yml` → Kiss-Cut-Sticker-Produkte via Printful (Auto-Druck). Also nur: mehr Motive generieren
   (Themen-Sets), als Kiss-Cut-Produkte anlegen, in Kollektion „Aufkleber/Sticker" bündeln. Gemini macht die Bilder.
+
+## ⚠️ LEHRE (Printful-API-Limit): /store/products für Shopify-Stores GESPERRT
+- `POST https://api.printful.com/store/products` → **400 "applies only to Manual Order / API platform"**.
+  Bei **Shopify-verbundenen** Printful-Stores kann man Produkte NICHT per API anlegen (nur über Printful-Dashboard,
+  das dann zu Shopify pusht). `automation/printful_create_design_products.mjs` funktioniert daher hier NICHT.
+- ⚠️ Offen/Risiko: evtl. ist auch `POST /orders` (unser `printful_sync.mjs` Editor-Flow) für Shopify-Stores gesperrt
+  — beim 1. echten Kauf prüfen. Falls ja: Fulfillment läuft über die Printful-App (Order-Import), und das Editor-Design
+  muss anders zur App (Personalisierung) — oder ein 2. Printful-Store vom Typ „Manual/API" anlegen.
+- **Fertig-Sticker-Verkauf Plan B:** Shopify-Produkte selbst per Admin-API anlegen (Design-Mockup via Gemini), Druck
+  über Printful-Dashboard (manuell pro Design einmalig) ODER 2. „Manual/API"-Store für reine API-Produkte.
+- Bibliotheks-Aufbau (gen_designs/gen_stickers) ist davon UNBERÜHRT — Motive sammeln läuft weiter.
