@@ -103,8 +103,8 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .steps.ov{margin-top:18px}
 .step .ic{font-size:1.5rem;display:block;margin-bottom:6px;line-height:1}
 /* Compare Free vs Pro */
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:30px 0}
-@media(max-width:560px){.compare{grid-template-columns:1fr}}
+.compare{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0}
+@media(max-width:680px){.compare{grid-template-columns:1fr}}
 .plan{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
 .plan.hl{border-color:var(--amber);box-shadow:0 0 0 1px var(--amber)}
 .plan h3{font-size:1.1rem;margin-bottom:2px}
@@ -314,17 +314,17 @@ footer a{color:var(--muted)}
   <p class="disc">Free version: drafts are created from checked templates right in your browser — nothing is uploaded. Drafts are starting points; check prices, mandatory info and facts yourself.</p>
 
   <!-- OVERVIEW: FREE vs PRO -->
-  <h2 class="ov-h">Try it free &mdash; go Pro when you need more</h2>
-  <p class="ov-sub">No lock-in: free is enough to start. Pro pays off if you write every day.</p>
-  <section class="compare" aria-label="Free and Pro compared">
+  <h2 class="ov-h">Try it free &mdash; Pro &amp; Pro+ for more</h2>
+  <p class="ov-sub">No lock-in: free is enough to start. Pro for heavy writers, Pro+ for regulated &amp; sensitive industries.</p>
+  <section class="compare" aria-label="Free, Pro and Pro+ compared">
     <div class="plan">
       <h3>Free</h3>
       <div class="pp">CHF 0</div>
       <ul>
         <li>5 texts + 1 roadmap per day</li>
         <li>All text types &amp; the AI roadmap</li>
-        <li>No login, no upload — runs in your browser</li>
-        <li>Ready instantly, no sign-up</li>
+        <li>No login, no upload</li>
+        <li>Free extras: <a href="/ki-glossar.html">AI glossary</a> &amp; <a href="/welche-ki-fuer-was.html">tool finder</a></li>
       </ul>
     </div>
     <div class="plan hl">
@@ -333,9 +333,19 @@ footer a{color:var(--muted)}
       <div class="pp"><span id="pro-price-2">CHF 9.90</span> / month</div>
       <ul>
         <li><b>Unlimited</b> texts &amp; roadmaps</li>
-        <li>Real AI instead of templates — more quality</li>
+        <li>Real AI instead of templates</li>
         <li>4 languages: DE · EN · FR · IT</li>
-        <li>Save history &amp; export as PDF</li>
+        <li>History &amp; PDF export</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <h3>Pro+</h3>
+      <div class="pp">CHF 19.90 / month</div>
+      <ul>
+        <li><b>Everything in Pro</b></li>
+        <li>For regulated/sensitive industries</li>
+        <li>Compliance &amp; GDPR notes in the text</li>
+        <li>Longer texts &amp; priority</li>
       </ul>
     </div>
   </section>
