@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI-Readiness-Check — wie KI-fit ist dein Betrieb? | aban news</title>
+<meta name="description" content="7 kurze Fragen, ehrliches Ergebnis: Wie KI-fit ist dein Betrieb? Mit Score und 3 konkreten nächsten Schritten — gratis, ohne Login, ohne Anmeldung.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/ki-readiness-check.html">
+<meta property="og:title" content="KI-Readiness-Check — wie KI-fit ist dein Betrieb?">
+<meta property="og:description" content="7 Fragen, ehrliches Ergebnis + 3 konkrete nächste Schritte. Gratis, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/ki-readiness-check.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"KI-Readiness-Check","url":"https://abannews.com/ki-readiness-check.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"de","description":"7-Fragen-Selbsttest: Wie KI-fit ist dein Betrieb? Score + 3 konkrete nächste Schritte.","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--field:#fffdf9;--ok:#15803d;--okbg:#ecfdf3}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15;--ok:#86efac;--okbg:#1c2a1e}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:11px 18px;border-radius:9px;border:0;cursor:pointer;font-size:1rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 6px;text-align:center}
+.hero h1{font-size:clamp(26px,5vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,18px);color:var(--ink2);max-width:580px;margin:0 auto}
+.prog{height:8px;background:var(--field);border:1px solid var(--line);border-radius:999px;overflow:hidden;margin:22px 0 18px}
+.prog>i{display:block;height:100%;background:var(--amber);width:0;transition:width .25s}
+.q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.q .step{color:var(--muted);font-size:.85rem;font-weight:600}
+.q h2{font-size:1.25rem;margin:4px 0 14px}
+.opts{display:grid;gap:10px}
+.opt{display:block;text-align:left;background:var(--field);border:1px solid var(--line);border-radius:10px;padding:13px 15px;font:inherit;color:var(--ink);cursor:pointer}
+.opt:hover{border-color:var(--amber)}
+.nav{display:flex;justify-content:space-between;margin-top:16px}
+.result{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;text-align:center;display:none}
+.result.show{display:block}
+.scorebig{font-size:2.6rem;font-weight:800;color:var(--amber-dk);line-height:1}
+.band{font-size:1.3rem;font-weight:800;margin:8px 0 4px}
+.result p.lead{color:var(--ink2);max-width:560px;margin:0 auto 16px}
+.steps{display:grid;gap:12px;text-align:left;margin:18px 0}
+.stepc{background:var(--field);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stepc b{display:block;margin-bottom:2px}.stepc span{color:var(--muted);font-size:.9rem}
+.stepc a{font-weight:700}
+.again{margin-top:8px}
+.bandcta{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:24px;text-align:center}
+.bandcta h2{font-size:1.2rem;margin-bottom:8px}.bandcta p{color:var(--ink2);max-width:560px;margin:0 auto 14px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+.disc{color:var(--muted);font-size:.82rem;margin:14px 0;text-align:center}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="/ki-werkzeug.html" class="btn ghost">Gratis KI-Werkzeug</a></div></header>
+<main><div class="wrap">
+
+  <section class="hero">
+    <h1>Wie <span class="a">KI-fit</span> ist dein Betrieb?</h1>
+    <p>7 kurze Fragen, ehrliches Ergebnis — plus 3 konkrete nächste Schritte. Gratis, ohne Login, in 2 Minuten.</p>
+  </section>
+
+  <div class="prog" aria-hidden="true"><i id="bar"></i></div>
+
+  <section class="q" id="quiz" aria-live="polite">
+    <div class="step" id="qstep"></div>
+    <h2 id="qtext"></h2>
+    <div class="opts" id="opts"></div>
+    <div class="nav"><button class="btn ghost" id="back" type="button" style="visibility:hidden">← Zurück</button><span></span></div>
+  </section>
+
+  <section class="result" id="result" aria-live="polite">
+    <div class="scorebig"><span id="score"></span><span style="font-size:1.2rem;color:var(--muted)">/14</span></div>
+    <div class="band" id="bandtitle"></div>
+    <p class="lead" id="bandtext"></p>
+    <div class="steps" id="reco"></div>
+    <button class="btn ghost again" id="restart" type="button">Nochmal starten</button>
+  </section>
+  <p class="disc">Ehrliche Selbsteinschätzung, kein Daten-Upload — alles läuft in deinem Browser.</p>
+
+  <div class="bandcta">
+    <h2>Bleib dran — ohne Hype</h2>
+    <p>Der aban-news-Newsletter macht dich Mo–Fr in 5 Minuten KI-fitter. Ehrlich, praxisnah, kein Buzzword-Bingo.</p>
+    <a class="btn" href="https://abannews.beehiiv.com/subscribe">Newsletter gratis abonnieren</a>
+  </div>
+
+</div></main>
+<footer><div class="wrap">&copy; 2026 aban news &middot; Allen Chour &middot; Belp (CH) &middot;
+  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/welche-ki-fuer-was.html">Tool-Finder</a> &middot; <a href="/ki-glossar.html">Glossar</a> &middot; <a href="/impressum.html">Impressum</a></div></footer>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(id){return document.getElementById(id);};
+  // Jede Frage: Text + 3 Optionen (Punkte 0/1/2). "weak"-Empfehlung greift bei <=1.
+  var Q=[
+    {t:"Nutzt du KI heute schon in deinem Betrieb?",o:[["Noch gar nicht",0],["Ab und zu",1],["Regelmäßig",2]],rec:"werkzeug"},
+    {t:"Wofür setzt du KI ein?",o:[["Gar nicht",0],["Eine Sache (z. B. Texte)",1],["Mehreres, systematisch",2]],rec:"finder"},
+    {t:"Hast du Vorlagen für wiederkehrende Texte (Mails, Angebote, Posts)?",o:[["Nein, jedes Mal neu",0],["Im Kopf",1],["Dokumentiert & wiederverwendbar",2]],rec:"prompts"},
+    {t:"Weißt du, ob ChatGPT & Co. deinen Betrieb empfehlen?",o:[["Nie geprüft",0],["Mal gegoogelt",1],["Geprüft / überwacht",2]],rec:"sichtbarkeit"},
+    {t:"Achtest du bei KI auf Datenschutz / DSGVO?",o:[["Nein",0],["So grob",1],["Bewusst & geklärt",2]],rec:"glossar"},
+    {t:"Wer kümmert sich bei euch um KI?",o:[["Niemand",0],["Ich nebenbei",1],["Klare Zuständigkeit",2]],rec:"newsletter"},
+    {t:"Wie viel Zeit kostet dich Schreiben & Kommunikation pro Woche?",o:[["Viel — und ungelöst",0],["Mittel",1],["Im Griff",2]],rec:"werkzeug"}
+  ];
+  var RECS={
+    werkzeug:{b:"Spar Zeit beim Schreiben",s:"Erstell Texte & einen KI-Fahrplan in Minuten — gratis.",h:"/ki-werkzeug.html",c:"Zum KI-Werkzeug →"},
+    finder:{b:"Finde die richtige KI",s:"175 Tools ehrlich bewertet — nach Aufgabe, Budget & DSGVO.",h:"/welche-ki-fuer-was.html",c:"Welche KI für was? →"},
+    prompts:{b:"Bau dir Vorlagen",s:"Erprobte deutsche Prompts zum Kopieren & Anpassen.",h:"/ki-werkzeug.html",c:"Vorlagen erstellen →"},
+    sichtbarkeit:{b:"Prüf deine KI-Sichtbarkeit",s:"Wirst du von KI empfohlen? Gratis prüfen — dann dranbleiben.",h:"/ki-erwaehnungs-check.html",c:"Gratis prüfen →"},
+    glossar:{b:"Versteh die Grundlagen",s:"KI-Begriffe ehrlich erklärt — inkl. DSGVO & EU AI Act.",h:"/ki-glossar.html",c:"Zum KI-Glossar →"},
+    newsletter:{b:"Hol dir Orientierung",s:"Mo–Fr 5 Minuten KI ohne Hype — direkt ins Postfach.",h:"https://abannews.beehiiv.com/subscribe",c:"Newsletter abonnieren →"}
+  };
+  var i=0, ans=new Array(Q.length).fill(null);
+
+  function paint(){
+    var q=Q[i];
+    $("qstep").textContent="Frage "+(i+1)+" von "+Q.length;
+    $("qtext").textContent=q.t;
+    $("bar").style.width=Math.round(i/Q.length*100)+"%";
+    $("back").style.visibility = i>0 ? "visible":"hidden";
+    var o=$("opts"); o.innerHTML="";
+    q.o.forEach(function(opt,idx){
+      var b=document.createElement("button"); b.type="button"; b.className="opt"; b.textContent=opt[0];
+      if(ans[i]===idx) b.style.borderColor="var(--amber)";
+      b.addEventListener("click",function(){ ans[i]=idx; next(); });
+      o.appendChild(b);
+    });
+  }
+  function next(){
+    if(i<Q.length-1){ i++; paint(); } else { finish(); }
+  }
+  $("back").addEventListener("click",function(){ if(i>0){i--; $("result").classList.remove("show"); $("quiz").style.display=""; paint();} });
+
+  function finish(){
+    var score=0, weak=[];
+    Q.forEach(function(q,idx){
+      var pts=q.o[ans[idx]!=null?ans[idx]:0][1]; score+=pts;
+      if((ans[idx]!=null?ans[idx]:0)<=1) weak.push(q.rec);
+    });
+    $("bar").style.width="100%";
+    $("quiz").style.display="none";
+    var band, text;
+    if(score<=5){ band="🌱 KI-Einsteiger"; text="Solide Basis zum Loslegen. Fang mit EINER Sache an, die sofort Zeit spart — der Rest folgt."; }
+    else if(score<=10){ band="🚀 Auf dem Weg"; text="Du nutzt KI schon — jetzt geht es um System: Vorlagen, Sichtbarkeit und klare Zuständigkeit."; }
+    else { band="🏆 Fortgeschritten"; text="Stark. Hol das Letzte raus: Sichtbarkeit überwachen, Prozesse schärfen, Team mitnehmen."; }
+    $("score").textContent=score;
+    $("bandtitle").textContent=band;
+    $("bandtext").textContent=text;
+    // Top-3 Empfehlungen aus den Schwächen (Reihenfolge der Fragen), Newsletter als Auffüller
+    var picks=[]; weak.forEach(function(r){ if(picks.indexOf(r)<0) picks.push(r); });
+    ["werkzeug","sichtbarkeit","newsletter"].forEach(function(r){ if(picks.indexOf(r)<0) picks.push(r); });
+    picks=picks.slice(0,3);
+    var html="";
+    picks.forEach(function(r){ var x=RECS[r]; html+='<div class="stepc"><b>'+x.b+'</b><span>'+x.s+'</span><div style="margin-top:6px"><a href="'+x.h+'">'+x.c+'</a></div></div>'; });
+    $("reco").innerHTML=html;
+    $("result").classList.add("show");
+    $("result").scrollIntoView({behavior:"smooth",block:"start"});
+  }
+  $("restart").addEventListener("click",function(){ i=0; ans=new Array(Q.length).fill(null); $("result").classList.remove("show"); $("quiz").style.display=""; paint(); window.scrollTo({top:0,behavior:"smooth"}); });
+
+  paint();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
