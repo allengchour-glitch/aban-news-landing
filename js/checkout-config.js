@@ -17,5 +17,7 @@ window.ABAN_CHECKOUT = {
   VORLAGEN_BUY_URL:  "",   // Klartext-Vorlagen-Set (19 €)
   COMPLIANCE_BUY_URL: "",   // KI-Compliance-Paket regulierte Berufe (39 €)
   SCHNELLSTART_BUY_URL: "", // KI-Schnellstart-Workbook (29 €)
-  AUDIT_BUY_URL:     ""   // KI-Sichtbarkeits-Audit Workbook (29 €, einmalig)
+  AUDIT_BUY_URL:     "",   // KI-Sichtbarkeits-Audit Workbook (29 €, einmalig)
+  TEXTE_STARTER_URL: "",   // Texte-Service Starter (CHF 49, einmalig) — leer = Mail-Anfrage
+  TEXTE_FLAT_URL:    ""    // Texte-Service Monats-Flat (CHF 39/Monat) — leer = Mail-Anfrage
 };
