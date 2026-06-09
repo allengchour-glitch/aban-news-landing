@@ -54,12 +54,14 @@ function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""
 function readGood(){ const lines=fs.readFileSync(GOOD,'utf8').split('\n').filter(Boolean).slice(1);
   return lines.map(l=>{const[name,image_url,label,handle]=l.split(',');return{name:(name||'').trim(),image_url:(image_url||'').trim(),label:(label||'').trim(),handle:(handle||'').trim()};}).filter(p=>p.name&&p.image_url); }
 function loadPointer(n){ try{ return parseInt(fs.readFileSync(POINTER,'utf8').trim(),10)%n; }catch{ return 0; } }
-async function fetchImage(url){ const r=await fetch(url); if(!r.ok) throw new Error('Bild '+url+' HTTP '+r.status);
+async function fetchT(url,opts={},ms=60000){ const c=new AbortController(); const t=setTimeout(()=>c.abort(),ms);
+  try{ return await fetch(url,{...opts,signal:c.signal}); } finally{ clearTimeout(t); } }
+async function fetchImage(url){ const r=await fetchT(url,{},30000); if(!r.ok) throw new Error('Bild '+url+' HTTP '+r.status);
   const ct=(r.headers.get('content-type')||'').split(';')[0]||'image/jpeg'; return {b64:Buffer.from(await r.arrayBuffer()).toString('base64'),mime:ct}; }
 function extractImage(j){ const parts=j?.candidates?.[0]?.content?.parts||[]; for(const p of parts){ const d=p.inline_data||p.inlineData; if(d?.data) return d.data; } return null; }
 async function enhance(img){ const url=`${GBASE}/models/${MODEL}:generateContent?key=${encodeURIComponent(KEY)}`;
   const body={contents:[{role:'user',parts:[{text:PROMPT},{inline_data:{mime_type:img.mime,data:img.b64}}]}],generationConfig:{responseModalities:['IMAGE'],temperature:0.5}};
-  const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const r=await fetchT(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)},120000);
   const j=await r.json().catch(()=>({})); if(!r.ok){ console.error('Gemini:',r.status,JSON.stringify(j.error||j).slice(0,200)); return null; } return extractImage(j); }
 
 function makeClip(imgPath,outPath){
@@ -69,12 +71,12 @@ function makeClip(imgPath,outPath){
     +`drawtext=fontfile=${FONT}:text='luxestyle.ch   ·   WELCOME10 -10%':fontcolor=white:fontsize=44:x=(w-text_w)/2:y=h-160:box=1:boxcolor=black@0.38:boxborderw=16,`
     +`format=yuv420p`;
   const hasMusic=fs.existsSync(MUSIC);
-  const args=['-y','-loop','1','-i',imgPath];
+  const args=['-nostdin','-y','-loop','1','-t',String(SEC),'-i',imgPath];
   if(hasMusic) args.push('-i',MUSIC);
   args.push('-filter_complex',`[0:v]${vf}[v]`,'-map','[v]');
-  if(hasMusic){ args.push('-map','1:a','-af',`afade=t=in:st=0:d=0.4,afade=t=out:st=${(SEC-0.4).toFixed(2)}:d=0.4,volume=0.65`,'-c:a','aac','-b:a','128k'); }
-  args.push('-t',String(SEC),'-r','30','-c:v','libx264','-pix_fmt','yuv420p','-movflags','+faststart',outPath);
-  execFileSync('ffmpeg',args,{stdio:['ignore','ignore','inherit']});
+  if(hasMusic){ args.push('-map','1:a','-af',`afade=t=in:st=0:d=0.4,afade=t=out:st=${(SEC-0.4).toFixed(2)}:d=0.4,volume=0.65`,'-c:a','aac','-b:a','128k','-shortest'); }
+  args.push('-t',String(SEC),'-r','30','-c:v','libx264','-preset','veryfast','-pix_fmt','yuv420p','-movflags','+faststart',outPath);
+  execFileSync('ffmpeg',args,{stdio:['ignore','ignore','inherit'],timeout:120000});
 }
 
 const products=readGood();
