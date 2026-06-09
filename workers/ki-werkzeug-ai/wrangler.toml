@@ -1,0 +1,24 @@
+# aban news — KI-Werkzeug AI Worker
+# Deploy:  cd workers/ki-werkzeug-ai && npx wrangler deploy
+# Vorher:  KV anlegen + Secret setzen (siehe README.md)
+
+name = "ki-werkzeug-ai"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+# --- KV für die Kosten-Bremse (Zähler pro IP + global) ---------------------
+# 1) anlegen:  npx wrangler kv namespace create CAP_KV
+# 2) die ausgegebene id hier eintragen:
+[[kv_namespaces]]
+binding = "CAP_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+[vars]
+GEMINI_MODEL = "gemini-2.0-flash"   # günstiges Modell; bei Bedarf -pro
+ALLOW_ORIGIN = "https://abannews.com"
+GLOBAL_DAILY_CAP = "500"            # harte Gesamt-Obergrenze/Tag (Verlustschutz)
+IP_DAILY_CAP = "30"                 # pro Besucher/Tag; Pro-Token => x5
+
+# Secrets NICHT hier eintragen — per CLI setzen:
+#   npx wrangler secret put GEMINI_API_KEY
+#   npx wrangler secret put PRO_TOKEN     # optional (Pro hebt das IP-Limit)
