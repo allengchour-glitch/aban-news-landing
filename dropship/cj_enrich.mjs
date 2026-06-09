@@ -22,14 +22,14 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
 const KEYWORDS = [
-  { kw: 'ruched bodycon midi dress',    must:['dress'],    take: 1 },
-  { kw: 'cropped linen blazer women',   must:['blazer'],   take: 1 },
-  { kw: 'mens waffle henley shirt',     must:['henley'],   take: 1 },
-  { kw: 'pearl beaded handbag women',   must:['bag'],      take: 1 },
-  { kw: 'chunky chain bracelet gold',   must:['bracelet'], take: 1 },
-  { kw: 'linen button skirt midi women',must:['skirt'],    take: 1 },
-  { kw: 'fisherman sandals women flat', must:['sandal'],   take: 1 },
-  { kw: 'acrylic statement ring set',   must:['ring'],     take: 1 },
+  { kw: 'cutting board bamboo',         must:['cutting','board'], take: 1 },
+  { kw: 'led table lamp bedside',       must:['table','lamp'],    take: 1 },
+  { kw: 'sunset projector night lamp',  must:['night','lamp'],    take: 1 },
+  { kw: 'wall mirror decorative',       must:['wall','mirror'],   take: 1 },
+  { kw: 'artificial flower bouquet',    must:['artificial','flower'], take: 1 },
+  { kw: 'ceramic decorative vase',      must:['ceramic','vase'],  take: 1 },
+  { kw: 'storage jar canister kitchen', must:['storage','jar'],   take: 1 },
+  { kw: 'mushroom ambient table lamp',  must:['lamp'],            take: 1 },
 ];
 
 let _b, _ctx;
@@ -75,7 +75,10 @@ function stockByCountry(variants) {
       console.error(`🔎 ${kw}`);
       const r = await apiGet('/product/list', { pageNum: 1, pageSize: 40, productNameEn: kw });
       const list = (r.data?.list || []).filter(p => {
-        const n = (p.productNameEn || '').toLowerCase(); return must.every(w => n.includes(w));
+        const n = (p.productNameEn || '').toLowerCase();
+        // Herren-Suche: „women/woman" ausschliessen (sonst matcht das Teilwort „men").
+        if (must.includes('men') && /wom[ae]n/.test(n)) return false;
+        return must.every(w => n.includes(w));
       });
       list.sort((a, b) => (Number(b.listedNum) || 0) - (Number(a.listedNum) || 0)); // Popularität
       console.error(`   ${list.length} relevante Treffer`);

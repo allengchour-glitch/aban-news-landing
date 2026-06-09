@@ -1,0 +1,65 @@
+name: LuxeStyle Hero-Bild
+
+# Erzeugt ein premium 16:9 Hero-Bild (person-frei, editorial) via Imagen/Gemini und committet es
+# nach dropship/hero/. Der Merchant lädt es danach im Theme-Customizer als Hero-Bild hoch.
+# No-op ohne GEMINI_API_KEY/Vertex.
+
+on:
+  push:
+    branches: [claude/luxestyle-product-CizQ6]
+    paths: ['.github/workflows/hero-image.yml']
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: 'Bild-Prompt (leer = Default Sommer-Mode-Editorial)'
+        type: string
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hero-image
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/luxestyle-product-CizQ6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Hero-Bild erzeugen
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_IMAGE_MODEL: ${{ vars.GEMINI_IMAGE_MODEL }}
+          GEMINI_IMAGE_ASPECT: "16:9"
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_LOCATION: ${{ vars.GCP_LOCATION }}
+          VERTEX_IMAGE_MODEL: ${{ vars.VERTEX_IMAGE_MODEL }}
+        run: |
+          pip install --quiet google-auth requests || true
+          mkdir -p dropship/hero
+          PROMPT="${{ github.event.inputs.prompt }}"
+          if [ -z "$PROMPT" ]; then
+            PROMPT="Premium Sommer-Mode Editorial fuer eine Schweizer Online-Boutique. Komposition: alle Objekte kompakt am RECHTEN Bildrand gruppiert (helles Leinen-Sommerkleid, Strohhut, Sonnenbrille, feine Sandalen), die LINKE Bildhaelfte bleibt eine ruhige, fast leere helle Sand-/Marmorflaeche als klarer Negativraum fuer Text. Weiches goldenes mediterranes Abendlicht, luftig, minimalistisch, hochwertig, viel Leerraum links"
+          fi
+          python3 automation/gen_image_gemini.py "$PROMPT" dropship/hero/luxestyle-hero-v2.png || true
+          ls -la dropship/hero/ || true
+      - name: Committen
+        run: |
+          if [ ! -f dropship/hero/luxestyle-hero-v2.png ]; then echo "Kein Bild erzeugt (Secrets?)"; exit 0; fi
+          git config user.name "luxestyle-hero-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -f dropship/hero/luxestyle-hero-v2.png
+          git commit -m "Hero-Bild erzeugt (Imagen) [skip ci]" || { echo "nichts zu committen"; exit 0; }
+          for i in 1 2 3 4 5; do
+            git push origin claude/luxestyle-product-CizQ6 && { echo gepusht; exit 0; }
+            git pull --rebase --autostash origin claude/luxestyle-product-CizQ6 || true
+            sleep 3
+          done
