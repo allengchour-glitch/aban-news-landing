@@ -133,5 +133,145 @@
     "id": "dossiers-themen-2026-06",
     "status": "ready",
     "text": "Über 25 Ausgaben aban news — jetzt nach Thema sortiert.\n\nWer neu reinkommt, will nicht 25 alte E-Mails durchwühlen. Also habe ich die Ausgaben zu sechs Themen-Dossiers gebündelt — jeweils mit ehrlicher Analyse, FAQ und einer klaren Leseroute:\n\n🧰 KI-Werkzeugkasten — welche Tools sich wirklich lohnen\n🔒 KI & Datenschutz im DACH-Raum — DSGVO & EU AI Act, praxisnah\n💡 Prompts, die funktionieren — erprobt, zum Kopieren\n🔍 Anti-Hype & Reality-Checks — was die Schlagzeile verschweigt\n🤖 KI-Modelle im Vergleich — Claude, Mistral, Aleph Alpha & Co.\n🚀 KI für Selbstständige — Workflows fürs Ein-Personen-Team\n\nKostenlos, ohne Anmeldung, ohne Tracking.\n\n→ abannews.com/dossiers\n\nWelches Thema fehlt dir noch?\n\n#KI #Newsletter #DACH #Datenschutz #Produktivität"
+  },
+  {
+    "id": "aban-auto-001",
+    "status": "ready",
+    "text": "„LLM (Large Language Model)“ — das Wort fällt ständig. Kurz und ehrlich, was es WIRKLICH heißt:\n\nEin großes Sprachmodell, das aus riesigen Textmengen gelernt hat, das nächste Wort vorherzusagen.\n\nKlartext: Eine sehr gute Autovervollständigung. Es „versteht“ nicht wie ein Mensch — es rechnet Wahrscheinlichkeiten.\n\n⚠️ „Die KI denkt“ ist Marketing. Sie sagt plausible Wörter voraus, mehr nicht.\n\nMehr Begriffe ohne Hype erklärt → https://abannews.com/ki-glossar.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-002",
+    "status": "ready",
+    "text": "„Prompt“ — das Wort fällt ständig. Kurz und ehrlich, was es WIRKLICH heißt:\n\nDie Eingabe/Anweisung, die du dem Modell gibst.\n\nKlartext: Was du in den Chat tippst. Je klarer und konkreter, desto besser das Ergebnis.\n\nMehr Begriffe ohne Hype erklärt → https://abannews.com/ki-glossar.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-003",
+    "status": "ready",
+    "text": "„Token“ — das Wort fällt ständig. Kurz und ehrlich, was es WIRKLICH heißt:\n\nDie kleinste Einheit, in die Text fürs Modell zerlegt wird — oft Wortteile.\n\nKlartext: Abrechnungs- und Längeneinheit. „1000 Tokens“ sind grob 700–750 deutsche Wörter.\n\nMehr Begriffe ohne Hype erklärt → https://abannews.com/ki-glossar.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-004",
+    "status": "ready",
+    "text": "„Kontextfenster“ — das Wort fällt ständig. Kurz und ehrlich, was es WIRKLICH heißt:\n\nWie viel Text (Tokens) ein Modell gleichzeitig „im Blick“ behalten kann.\n\nKlartext: Das Kurzzeitgedächtnis pro Chat. Ist es voll, vergisst das Modell den Anfang.\n\n⚠️ Riesige Kontextfenster klingen toll — die Qualität in der Mitte langer Eingaben lässt aber oft nach.\n\nMehr Begriffe ohne Hype erklärt → https://abannews.com/ki-glossar.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-005",
+    "status": "ready",
+    "text": "„Halluzination“ — das Wort fällt ständig. Kurz und ehrlich, was es WIRKLICH heißt:\n\nWenn das Modell etwas Falsches selbstbewusst als Fakt ausgibt.\n\nKlartext: Es erfindet Quellen, Zahlen oder Namen, die echt klingen. Immer prüfen.\n\n⚠️ Kein seltener Bug, sondern Teil der Funktionsweise. Deshalb: nie ungeprüft übernehmen.\n\nMehr Begriffe ohne Hype erklärt → https://abannews.com/ki-glossar.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-006",
+    "status": "ready",
+    "text": "„RAG (Retrieval-Augmented Generation)“ — das Wort fällt ständig. Kurz und ehrlich, was es WIRKLICH heißt:\n\nDas Modell schlägt vor der Antwort in deinen Dokumenten/Daten nach und nutzt die Funde.\n\nKlartext: KI mit angeschlossenem Aktenschrank — antwortet auf Basis deiner echten Unterlagen.\n\n⚠️ Reduziert Halluzinationen, beseitigt sie aber nicht. Die Quelle muss stimmen.\n\nMehr Begriffe ohne Hype erklärt → https://abannews.com/ki-glossar.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-007",
+    "status": "ready",
+    "text": "„Agent“ — das Wort fällt ständig. Kurz und ehrlich, was es WIRKLICH heißt:\n\nEin KI-System, das mehrschrittig handelt: planen, Werkzeuge nutzen, Ergebnis prüfen.\n\nKlartext: Nicht nur antworten, sondern Aufgaben erledigen (z. B. recherchieren, Mails entwerfen, Tools bedienen).\n\n⚠️ 2026 das Buzzword schlechthin. Vieles „Agentic“ sind in Wahrheit ein paar verkettete Prompts.\n\nMehr Begriffe ohne Hype erklärt → https://abannews.com/ki-glossar.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-008",
+    "status": "ready",
+    "text": "„Fine-Tuning“ — das Wort fällt ständig. Kurz und ehrlich, was es WIRKLICH heißt:\n\nEin vortrainiertes Modell mit eigenen Beispielen auf einen Stil/eine Aufgabe nachjustieren.\n\nKlartext: Dem Modell deinen Ton/Spezialfall antrainieren.\n\n⚠️ Oft unnötig: ein gutes Prompt + RAG bringt für kleine Betriebe meist mehr als teures Fine-Tuning.\n\nMehr Begriffe ohne Hype erklärt → https://abannews.com/ki-glossar.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-009",
+    "status": "ready",
+    "text": "Tool-Check: Claude. Mein ehrliches Urteil — 9.5/10:\n\nBester Conversational-AI für deutsche Texte. Nutze ich täglich für aban news. Sonnet 4.6 ist mein Default, Opus für lange Recherche, Haiku für Bulk.\n\nKein Affiliate-Link, keine PR. 175 Tools so bewertet → https://abannews.com/welche-ki-fuer-was.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-010",
+    "status": "ready",
+    "text": "Tool-Check: OpenRouter. Mein ehrliches Urteil — 9/10:\n\nPragmatischer Multi-Model-Router. Bei API-Kosten-Fragen unschlagbar. Hatte ich monatelang ignoriert — Fehler. Jetzt mein Default für A/B-Tests zwischen Providern.\n\nKein Affiliate-Link, keine PR. 175 Tools so bewertet → https://abannews.com/welche-ki-fuer-was.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-011",
+    "status": "ready",
+    "text": "Tool-Check: n8n. Mein ehrliches Urteil — 9/10:\n\nSelf-hostbar, DSGVO-freundlich, deutsche Firma. Mein Backend für Newsletter-Automation. Make.com ist polierter, n8n ist robuster und kontrollierbarer.\n\nKein Affiliate-Link, keine PR. 175 Tools so bewertet → https://abannews.com/welche-ki-fuer-was.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-012",
+    "status": "ready",
+    "text": "Tool-Check: Cursor. Mein ehrliches Urteil — 9/10:\n\nMein Default-Editor. VSCode-Fork mit Claude/GPT integriert. Composer-Modus ist der Game-Changer für Vibecoding. Wenn du Code schreibst und kein Cursor hast — verlierst du Zeit.\n\nKein Affiliate-Link, keine PR. 175 Tools so bewertet → https://abannews.com/welche-ki-fuer-was.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-013",
+    "status": "ready",
+    "text": "Tool-Check: Claude Code. Mein ehrliches Urteil — 9/10:\n\nTerminal-basierter Coding-Agent. Wenn du Routinen automatisierst (Refactor 50 Files, Test-Coverage hochziehen), ist's stark. CLI > GUI für Power-User.\n\nKein Affiliate-Link, keine PR. 175 Tools so bewertet → https://abannews.com/welche-ki-fuer-was.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-014",
+    "status": "ready",
+    "text": "Tool-Check: Granola. Mein ehrliches Urteil — 9/10:\n\nMein neuer Default. Kein Bot-Im-Meeting — läuft im Hintergrund auf deinem Mac. Notizen-Output für deutsche Meetings ist erstklassig. Hat Otter abgelöst.\n\nKein Affiliate-Link, keine PR. 175 Tools so bewertet → https://abannews.com/welche-ki-fuer-was.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-015",
+    "status": "ready",
+    "text": "Tool-Check: DeepL. Mein ehrliches Urteil — 9/10:\n\nDeutsche Firma (Köln). Beste DE↔EN-Übersetzung, Punkt. Write ist Grammarly-Konkurrent — solider für Deutsch. Pro-Account ist Standard-Ausstattung jedes DACH-Solos.\n\nKein Affiliate-Link, keine PR. 175 Tools so bewertet → https://abannews.com/welche-ki-fuer-was.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-016",
+    "status": "ready",
+    "text": "Tool-Check: Obsidian. Mein ehrliches Urteil — 9/10:\n\nLocal-First, plain Markdown. Mit Plugins (Copilot, Smart Connections) wird's AI-fähig. Mein zweites Brain seit 4 Jahren.\n\nKein Affiliate-Link, keine PR. 175 Tools so bewertet → https://abannews.com/welche-ki-fuer-was.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-017",
+    "status": "ready",
+    "text": "ChatGPT oder Claude? Die ehrliche Kurzfassung:\n\nWorth-it: ChatGPT 8.5/10 · Claude 9.5/10.\nFürs Gros: Claude. Aber ehrlich — es kommt auf deinen Use Case an.\n\nVoller Vergleich (Preis, DSGVO, Urteil) → https://abannews.com/vergleich/chatgpt-vs-claude.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-018",
+    "status": "ready",
+    "text": "Claude Code oder Cursor? Die ehrliche Kurzfassung:\n\nWorth-it: Claude Code 9/10 · Cursor 9/10.\nFürs Gros: Claude Code. Aber ehrlich — es kommt auf deinen Use Case an.\n\nVoller Vergleich (Preis, DSGVO, Urteil) → https://abannews.com/vergleich/claude-code-vs-cursor.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-019",
+    "status": "ready",
+    "text": "Claude oder Mistral Le Chat? Die ehrliche Kurzfassung:\n\nWorth-it: Claude 9.5/10 · Mistral Le Chat 8/10.\nFürs Gros: Claude. Aber ehrlich — es kommt auf deinen Use Case an.\n\nVoller Vergleich (Preis, DSGVO, Urteil) → https://abannews.com/vergleich/claude-vs-mistral.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-020",
+    "status": "ready",
+    "text": "Claude oder Le Chat (Mistral)? Die ehrliche Kurzfassung:\n\nWorth-it: Claude 9.5/10 · Le Chat (Mistral) 8.0/10.\nFürs Gros: Claude. Aber ehrlich — es kommt auf deinen Use Case an.\n\nVoller Vergleich (Preis, DSGVO, Urteil) → https://abannews.com/vergleich/claude-vs-le-chat.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-021",
+    "status": "ready",
+    "text": "Aider oder Claude Code? Die ehrliche Kurzfassung:\n\nWorth-it: Aider 8/10 · Claude Code 9/10.\nFürs Gros: Claude Code. Aber ehrlich — es kommt auf deinen Use Case an.\n\nVoller Vergleich (Preis, DSGVO, Urteil) → https://abannews.com/vergleich/aider-vs-claude-code.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-022",
+    "status": "ready",
+    "text": "Cline oder Cursor? Die ehrliche Kurzfassung:\n\nWorth-it: Cline 8/10 · Cursor 9/10.\nFürs Gros: Cursor. Aber ehrlich — es kommt auf deinen Use Case an.\n\nVoller Vergleich (Preis, DSGVO, Urteil) → https://abannews.com/vergleich/cline-vs-cursor.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-023",
+    "status": "ready",
+    "text": "Groq oder OpenRouter? Die ehrliche Kurzfassung:\n\nWorth-it: Groq 8/10 · OpenRouter 9/10.\nFürs Gros: OpenRouter. Aber ehrlich — es kommt auf deinen Use Case an.\n\nVoller Vergleich (Preis, DSGVO, Urteil) → https://abannews.com/vergleich/groq-vs-openrouter.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-024",
+    "status": "ready",
+    "text": "Claude Code oder Cline? Die ehrliche Kurzfassung:\n\nWorth-it: Claude Code 9/10 · Cline 8/10.\nFürs Gros: Claude Code. Aber ehrlich — es kommt auf deinen Use Case an.\n\nVoller Vergleich (Preis, DSGVO, Urteil) → https://abannews.com/vergleich/claude-code-vs-cline.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-025",
+    "status": "ready",
+    "text": "Ein Prompt, der wirklich funktioniert — Angebotstext fuer ein Erstgespraech schreiben:\n\nDu bist mein Texter. Schreibe ein Angebot fuer [Leistung] an [Kundentyp]. Nenne zuerst das Ziel des Kunden in einem Satz, dann genau drei Pakete (klein, mittel, gross) mit Preis [Preisbereich] und je drei konkreten Leistungen. Schliesse mit einem klaren naechsten Schritt. Ton: sachlich, ohne Werbefloskeln. Maximal 250 Woerter.\n\nTipp aus der Praxis: Gib dem Modell die echten Preise und kuerze danach selbst, statt es raten zu lassen.\n\nMehr davon → https://abannews.com/prompt-baukasten.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-026",
+    "status": "ready",
+    "text": "Ein Prompt, der wirklich funktioniert — Positionierung in einem Satz schaerfen:\n\nHilf mir, meine Positionierung zu schaerfen. Hier ist, was ich mache: [kurze Beschreibung]. Formuliere fuenf Varianten des Satzes 'Ich helfe [Zielgruppe], [Ergebnis] zu erreichen, ohne [typisches Problem]'. Jede Variante maximal 20 Woerter, konkret, ohne Buzzwords. Frage mich danach, welche zwei Varianten ich kombinieren wuerde.\n\nTipp aus der Praxis: Lies die Varianten laut vor: was sich gestelzt anfuehlt, fliegt raus.\n\nMehr davon → https://abannews.com/prompt-baukasten.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-027",
+    "status": "ready",
+    "text": "Ein Prompt, der wirklich funktioniert — Preis ruhig begruenden:\n\nEin Interessent findet meinen Preis von [Preis] zu hoch fuer [Leistung]. Schreibe mir drei kurze Antworten: eine, die den Nutzen in Zahlen zeigt, eine, die ein guenstigeres Paket anbietet, und eine, die freundlich Nein sagt. Jede Antwort hoechstens vier Saetze, du-Form, ohne Druck.\n\nTipp aus der Praxis: Nimm die Antwort, bei der du dich am wohlsten fuehlst, sie wirkt echter.\n\nMehr davon → https://abannews.com/prompt-baukasten.html\n\n#KI #DACH #Newsletter #abannews"
+  },
+  {
+    "id": "aban-auto-028",
+    "status": "ready",
+    "text": "Ein Prompt, der wirklich funktioniert — Realistischen Wochenplan bauen:\n\nHier sind meine Aufgaben fuer diese Woche: [Liste]. Ich habe [Anzahl] fokussierte Stunden pro Tag. Sortiere die Aufgaben nach Wirkung auf [mein Ziel], markiere, was ich streichen oder verschieben kann, und schlage einen Wochenplan vor, der nicht ueberladen ist. Plane jeden Tag eine Pufferstunde ein.\n\nTipp aus der Praxis: Sag dem Modell ehrlich, wie viele Stunden du wirklich hast, nicht wie viele du moechtest.\n\nMehr davon → https://abannews.com/prompt-baukasten.html\n\n#KI #DACH #Newsletter #abannews"
   }
 ]
