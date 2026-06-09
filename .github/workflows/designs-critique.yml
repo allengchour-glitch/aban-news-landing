@@ -1,0 +1,24 @@
+name: Designs-Seite – Gemini-Kritik
+on: { workflow_dispatch: {} }
+permissions: { contents: write }
+jobs:
+  crit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - name: Gemini-Kritik
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          POD_BODY_FILE: dropship/designs/page_body.html
+          CRITIQUE_FILE: dropship/designs/gemini-critique.md
+        run: node automation/gemini_page_critique.mjs
+      - name: Commit
+        run: |
+          if [ -n "$(git status --porcelain dropship/designs/gemini-critique.md)" ]; then
+            git config user.name "luxestyle-autopilot"; git config user.email "bot@users.noreply.github.com"
+            git add dropship/designs/gemini-critique.md
+            git commit -m "Gemini-Kritik Designs-Seite [skip ci]"
+            for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          fi
