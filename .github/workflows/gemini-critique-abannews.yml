@@ -10,7 +10,7 @@ on:
       paths:
         description: 'Pfade (Komma-Liste)'
         type: string
-        default: '/,/dossiers.html,/dossier/ki-werkzeugkasten.html,/archive/'
+        default: '/,/dossiers.html,/ki-werkzeug.html,/online-tools.html,/archive/'
   schedule:
     - cron: '0 7 1 * *'   # 1. des Monats, 07:00 UTC
 
