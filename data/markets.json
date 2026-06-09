@@ -12,13 +12,39 @@
       "name": "Bitcoin",
       "type": "crypto",
       "coingecko_id": "bitcoin",
-      "price": 61680,
-      "change_24h": -2.73,
+      "price": 61754,
+      "change_24h": -2.2,
       "currency": "usd",
       "sentiment": "neutral",
       "confidence": 0,
       "rationale": "Sentiment wird beim nächsten automatischen Lauf aktualisiert.",
-      "signal": "Daten werden geladen …"
+      "signal": "Daten werden geladen …",
+      "spark": [
+        67237.4969,
+        66837.4817,
+        66933.361,
+        66021.9486,
+        64813.3829,
+        63877.1004,
+        63671.585,
+        63570.9773,
+        62563.1063,
+        62783.2742,
+        61400.834,
+        60921.7944,
+        60742.469,
+        60783.6069,
+        60702.2807,
+        61664.738,
+        62356.8994,
+        62139.1046,
+        63591.5517,
+        63263.6372,
+        63975.1506,
+        63758.1684,
+        63231.2966,
+        62681.147
+      ]
     },
     {
       "id": "ethereum",
@@ -26,13 +52,39 @@
       "name": "Ethereum",
       "type": "crypto",
       "coingecko_id": "ethereum",
-      "price": 1639.16,
-      "change_24h": -3.86,
+      "price": 1637.39,
+      "change_24h": -3.52,
       "currency": "usd",
       "sentiment": "neutral",
       "confidence": 0,
       "rationale": "Sentiment wird beim nächsten automatischen Lauf aktualisiert.",
-      "signal": "Daten werden geladen …"
+      "signal": "Daten werden geladen …",
+      "spark": [
+        1909.5696,
+        1861.7961,
+        1877.4933,
+        1834.8341,
+        1825.2145,
+        1781.2436,
+        1775.7386,
+        1775.1821,
+        1730.5471,
+        1679.9415,
+        1608.8765,
+        1580.6198,
+        1557.921,
+        1556.8522,
+        1557.2176,
+        1594.1263,
+        1626.0306,
+        1631.1376,
+        1695.7984,
+        1671.2764,
+        1691.0992,
+        1706.3844,
+        1686.3345,
+        1672.1497
+      ]
     },
     {
       "id": "solana",
@@ -40,13 +92,39 @@
       "name": "Solana",
       "type": "crypto",
       "coingecko_id": "solana",
-      "price": 64.86,
-      "change_24h": -3.45,
+      "price": 65.01,
+      "change_24h": -2.71,
       "currency": "usd",
       "sentiment": "neutral",
       "confidence": 0,
       "rationale": "Sentiment wird beim nächsten automatischen Lauf aktualisiert.",
-      "signal": "Daten werden geladen …"
+      "signal": "Daten werden geladen …",
+      "spark": [
+        75.9489,
+        74.7266,
+        74.908,
+        73.3506,
+        72.0766,
+        70.2586,
+        70.0368,
+        69.0476,
+        67.2445,
+        66.3635,
+        65.4841,
+        63.4369,
+        62.3541,
+        62.353,
+        61.7871,
+        63.7189,
+        64.5738,
+        65.2776,
+        66.8273,
+        66.0566,
+        66.9731,
+        67.7021,
+        67.0993,
+        66.0337
+      ]
     },
     {
       "id": "nvidia",
@@ -60,7 +138,30 @@
       "confidence": 0,
       "rationale": "Sentiment wird beim nächsten automatischen Lauf aktualisiert.",
       "signal": "Daten werden geladen …",
-      "yahoo_symbol": "NVDA"
+      "yahoo_symbol": "NVDA",
+      "spark": [
+        219.44,
+        220.78,
+        225.83,
+        235.74,
+        225.32,
+        222.32,
+        220.61,
+        223.47,
+        219.51,
+        215.33,
+        214.86,
+        212.6,
+        214.25,
+        211.14,
+        224.36,
+        222.82,
+        214.75,
+        218.66,
+        205.1,
+        208.64,
+        208.19
+      ]
     },
     {
       "id": "apple",
@@ -74,7 +175,30 @@
       "confidence": 0,
       "rationale": "Sentiment wird beim nächsten automatischen Lauf aktualisiert.",
       "signal": "Daten werden geladen …",
-      "yahoo_symbol": "AAPL"
+      "yahoo_symbol": "AAPL",
+      "spark": [
+        292.68,
+        294.8,
+        298.87,
+        298.21,
+        300.23,
+        297.84,
+        298.97,
+        302.25,
+        304.99,
+        308.82,
+        308.33,
+        310.85,
+        312.51,
+        312.06,
+        306.31,
+        315.2,
+        310.26,
+        311.23,
+        307.34,
+        301.54,
+        290.55
+      ]
     },
     {
       "id": "microsoft",
@@ -88,7 +212,30 @@
       "confidence": 0,
       "rationale": "Sentiment wird beim nächsten automatischen Lauf aktualisiert.",
       "signal": "Daten werden geladen …",
-      "yahoo_symbol": "MSFT"
+      "yahoo_symbol": "MSFT",
+      "spark": [
+        412.66,
+        407.77,
+        405.21,
+        409.43,
+        421.92,
+        423.54,
+        417.42,
+        421.06,
+        419.09,
+        418.57,
+        416.03,
+        412.67,
+        426.99,
+        450.24,
+        460.52,
+        441.31,
+        427.34,
+        428.05,
+        416.67,
+        411.74,
+        403.41
+      ]
     },
     {
       "id": "tesla",
@@ -102,7 +249,30 @@
       "confidence": 0,
       "rationale": "Sentiment wird beim nächsten automatischen Lauf aktualisiert.",
       "signal": "Daten werden geladen …",
-      "yahoo_symbol": "TSLA"
+      "yahoo_symbol": "TSLA",
+      "spark": [
+        445.0,
+        433.45,
+        445.27,
+        443.3,
+        422.24,
+        409.99,
+        404.11,
+        417.26,
+        417.85,
+        426.01,
+        433.59,
+        440.36,
+        442.1,
+        435.79,
+        415.88,
+        423.74,
+        423.7,
+        418.45,
+        391.0,
+        408.95,
+        396.68
+      ]
     }
   ],
   "news": [
@@ -135,6 +305,20 @@
       "sentiment": "neutral"
     },
     {
+      "title": "Peru election remains on knife edge between Fujimori and Sanchez",
+      "source": "Investing.com",
+      "url": "https://www.investing.com/news/stock-market-news/peru-race-tightens-again-and-markets-rise-as-overseas-ballots-pour-in-4733649",
+      "datum": "2026-06-09",
+      "sentiment": "neutral"
+    },
+    {
+      "title": "Brazil regulator expects MAX 10 certification this year",
+      "source": "Investing.com",
+      "url": "https://www.investing.com/news/stock-market-news/brazil-regulator-expects-max-10-certification-this-year-4734184",
+      "datum": "2026-06-09",
+      "sentiment": "neutral"
+    },
+    {
       "title": "SpaceX aims to launch orbital AI computing tests by end of next year, sources say",
       "source": "Investing.com",
       "url": "https://www.investing.com/news/stock-market-news/spacex-aims-to-launch-orbital-ai-computing-tests-by-end-of-next-year-sources-say-4734156",
@@ -149,20 +333,6 @@
       "sentiment": "neutral"
     },
     {
-      "title": "Qantas, low-cost arm Jetstar to launch services from new Western Sydney Airport",
-      "source": "Investing.com",
-      "url": "https://www.investing.com/news/stock-market-news/qantas-lowcost-arm-jetstar-to-launch-services-from-new-western-sydney-airport-4734138",
-      "datum": "2026-06-09",
-      "sentiment": "neutral"
-    },
-    {
-      "title": "RMG ML Sports Holdings prices $200 million IPO at $10 per unit",
-      "source": "Investing.com",
-      "url": "https://www.investing.com/news/stock-market-news/rmg-ml-sports-holdings-prices-200-million-ipo-at-10-per-unit-432SI-4734137",
-      "datum": "2026-06-09",
-      "sentiment": "neutral"
-    },
-    {
       "title": "56-year-old beloved fast-food chain closes over 700 locations",
       "source": "Yahoo Finance",
       "url": "https://finance.yahoo.com/economy/articles/56-old-beloved-fast-food-005500959.html",
@@ -170,9 +340,9 @@
       "sentiment": "neutral"
     },
     {
-      "title": "A Strong U.S. Jobs Report Means You Should Sell the Aussie Dollar Here",
+      "title": "Suddenly, SpaceX's $1.75 Trillion IPO Seems Like It's Undervalued",
       "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/currencies/articles/strong-u-jobs-report-means-144203430.html",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/suddenly-spacexs-1-75-trillion-151652244.html",
       "datum": "2026-06-08",
       "sentiment": "neutral"
     }
@@ -187,5 +357,5 @@
       "url": "https://stooq.com"
     }
   ],
-  "fetched_at": "2026-06-09T23:01:57+00:00"
+  "fetched_at": "2026-06-09T23:29:30+00:00"
 }

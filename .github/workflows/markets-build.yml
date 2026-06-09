@@ -40,6 +40,15 @@ jobs:
           python automation/markets_ai.py \
             || echo "markets_ai mit Warnung beendet (kein Key?)"
 
+      - name: Telegram-Markt-Digest (1×/Tag, no-op ohne Secrets)
+        if: github.event.schedule == '0 16 * * 1-5' || github.event_name == 'workflow_dispatch'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
+        run: |
+          python automation/markets_telegram.py \
+            || echo "markets_telegram mit Warnung beendet"
+
       - name: markets.json committen (falls geändert)
         run: |
           git add -f data/markets.json

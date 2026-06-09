@@ -61,9 +61,21 @@ SCHEMA = {
                 "required": ["id", "sentiment", "confidence", "rationale", "signal"],
                 "additionalProperties": False,
             },
-        }
+        },
+        "news": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "index": {"type": "integer"},
+                    "sentiment": {"type": "string", "enum": ["bullish", "neutral", "bearish"]},
+                },
+                "required": ["index", "sentiment"],
+                "additionalProperties": False,
+            },
+        },
     },
-    "required": ["assets"],
+    "required": ["assets", "news"],
     "additionalProperties": False,
 }
 
@@ -78,12 +90,15 @@ def build_prompt(data: dict) -> str:
             f"{price if price is not None else 'n/a'} {a.get('currency','usd').upper()} · "
             f"{chg if chg is not None else 'n/a'}%"
         )
-    lines.append("\nAktuelle Finanz-News-Schlagzeilen:")
-    for n in data.get("news", [])[:10]:
-        lines.append(f"- [{n.get('source')}] {n.get('title')}")
+    lines.append("\nAktuelle Finanz-News-Schlagzeilen (mit Index):")
+    for i, n in enumerate(data.get("news", [])[:10]):
+        lines.append(f"{i}. [{n.get('source')}] {n.get('title')}")
     lines.append(
-        "\nGib für JEDEN Wert (gleiche id) ein Objekt im vorgegebenen Schema zurück. "
-        "Ordne die News den passenden Werten zu; News ohne klaren Bezug ignorieren."
+        "\nAufgabe:\n"
+        "1) 'assets': für JEDEN Wert (gleiche id) ein Objekt mit Sentiment im Schema.\n"
+        "2) 'news': pro Schlagzeile (gleicher index) ein Sentiment für den Gesamtmarkt "
+        "(bullish/neutral/bearish). Ordne die News den passenden Werten zu; "
+        "News ohne klaren Markt-Bezug als 'neutral'."
     )
     return "\n".join(lines)
 
@@ -155,8 +170,14 @@ def main() -> int:
             a["signal"] = r["signal"].strip()
         updated += 1
 
-    # News-Sentiment grob aus Asset-Stimmungen ableiten? Nein — News bleibt neutral,
-    # ausser Claude liefert später explizit etwas. Wir markieren nur die Engine.
+    # News-Sentiment übernehmen (per Index).
+    news = data.get("news", [])
+    for item in parsed.get("news", []):
+        idx = item.get("index")
+        sent = item.get("sentiment")
+        if isinstance(idx, int) and 0 <= idx < len(news) and sent in ("bullish", "neutral", "bearish"):
+            news[idx]["sentiment"] = sent
+
     data["ai_engine"] = MODEL
     data["last_updated"] = date.today().isoformat()
     DATA.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

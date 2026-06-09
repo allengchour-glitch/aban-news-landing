@@ -90,6 +90,7 @@
     .tag-type{display:inline-block;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:.12rem .45rem;border-radius:999px;background:var(--neutral-lt);color:var(--muted);margin-left:.5rem;vertical-align:middle}
     .chg{font-weight:800;font-variant-numeric:tabular-nums}
     .chg.up{color:var(--ok)}.chg.down{color:var(--bear)}.chg.flat{color:var(--muted)}
+    .mtable td.spark{width:96px}.mtable td.spark svg{opacity:.92}
 
     /* sentiment badge */
     .badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:.2rem .55rem;border-radius:999px}
@@ -190,11 +191,12 @@
               <th scope="col">Wert</th>
               <th scope="col" class="num">Preis</th>
               <th scope="col" class="num">24&nbsp;h</th>
+              <th scope="col">Trend&nbsp;(30&nbsp;T)</th>
               <th scope="col">KI-Sentiment</th>
             </tr>
           </thead>
           <tbody id="marketRows">
-            <tr><td colspan="4" style="color:var(--muted)">Lade Marktdaten …</td></tr>
+            <tr><td colspan="5" style="color:var(--muted)">Lade Marktdaten …</td></tr>
           </tbody>
         </table>
       </div>

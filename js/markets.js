@@ -40,6 +40,36 @@
     return 'Neutral';
   }
 
+  // Mini-Sparkline als Inline-SVG (CSP-safe, kein externes Lib).
+  function buildSpark(values) {
+    var W = 84, H = 26, pad = 2;
+    if (!values || values.length < 2) return null;
+    var min = Math.min.apply(null, values), max = Math.max.apply(null, values);
+    var span = (max - min) || 1;
+    var n = values.length;
+    var pts = values.map(function (v, i) {
+      var x = pad + (i / (n - 1)) * (W - 2 * pad);
+      var y = pad + (1 - (v - min) / span) * (H - 2 * pad);
+      return x.toFixed(1) + ',' + y.toFixed(1);
+    }).join(' ');
+    var up = values[values.length - 1] >= values[0];
+    var color = up ? 'var(--ok)' : 'var(--bear)';
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.setAttribute('width', W); svg.setAttribute('height', H);
+    svg.setAttribute('aria-hidden', 'true');
+    svg.style.display = 'block';
+    var poly = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+    poly.setAttribute('points', pts);
+    poly.setAttribute('fill', 'none');
+    poly.setAttribute('stroke', color);
+    poly.setAttribute('stroke-width', '1.6');
+    poly.setAttribute('stroke-linecap', 'round');
+    poly.setAttribute('stroke-linejoin', 'round');
+    svg.appendChild(poly);
+    return svg;
+  }
+
   function el(tag, cls, text) {
     var n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -69,6 +99,12 @@
       var tdCh = el('td', 'num');
       tdCh.appendChild(el('span', 'chg ' + ch.cls, ch.txt));
       tr.appendChild(tdCh);
+
+      var tdSpark = el('td', 'spark');
+      var spark = buildSpark(a.spark);
+      if (spark) tdSpark.appendChild(spark);
+      else tdSpark.textContent = '—';
+      tr.appendChild(tdSpark);
 
       var tdSent = document.createElement('td');
       var sent = a.sentiment || 'neutral';
@@ -202,11 +238,11 @@
       if (data) init(data);
       else {
         var tbody = document.getElementById('marketRows');
-        if (tbody) tbody.innerHTML = '<tr><td colspan="4" style="color:var(--muted)">Marktdaten zurzeit nicht verfügbar.</td></tr>';
+        if (tbody) tbody.innerHTML = '<tr><td colspan="5" style="color:var(--muted)">Marktdaten zurzeit nicht verfügbar.</td></tr>';
       }
     })
     .catch(function () {
       var tbody = document.getElementById('marketRows');
-      if (tbody) tbody.innerHTML = '<tr><td colspan="4" style="color:var(--muted)">Marktdaten zurzeit nicht verfügbar.</td></tr>';
+      if (tbody) tbody.innerHTML = '<tr><td colspan="5" style="color:var(--muted)">Marktdaten zurzeit nicht verfügbar.</td></tr>';
     });
 })();

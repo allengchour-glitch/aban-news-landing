@@ -26,9 +26,9 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data" / "markets.json"
 
-YAHOO_CHART = "https://query1.finance.yahoo.com/v8/finance/chart/{sym}?interval=1d&range=5d"
+YAHOO_CHART = "https://query1.finance.yahoo.com/v8/finance/chart/{sym}?interval=1d&range=1mo"
 COINGECKO = ("https://api.coingecko.com/api/v3/coins/markets"
-             "?vs_currency=usd&ids={ids}&price_change_percentage=24h")
+             "?vs_currency=usd&ids={ids}&price_change_percentage=24h&sparkline=true")
 
 FINANCE_FEEDS = {
     "CNBC Markets": "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=20910258",
@@ -49,8 +49,13 @@ def fetch(url: str, timeout: int = 20) -> str:
         return r.read().decode("utf-8", "ignore")
 
 
-def fetch_bytes(url: str, timeout: int = 20) -> str:
-    return fetch(url, timeout)
+def downsample(values, n=24):
+    """Reduziert eine Zahlenreihe gleichmässig auf max. n Punkte (für Sparklines)."""
+    vals = [round(float(v), 4) for v in values if v is not None]
+    if len(vals) <= n:
+        return vals
+    step = len(vals) / float(n)
+    return [vals[min(len(vals) - 1, int(i * step))] for i in range(n)]
 
 
 # ---------- Aktien (Yahoo Finance, keyless) ----------
@@ -74,7 +79,8 @@ def yahoo_quote(symbol: str):
         return None
     change = ((price - prev) / prev * 100.0) if prev else None
     return {"price": round(float(price), 2),
-            "change_24h": round(change, 2) if change is not None else None}
+            "change_24h": round(change, 2) if change is not None else None,
+            "spark": downsample(closes, 24)}
 
 
 # ---------- Krypto (CoinGecko, Fallback) ----------
@@ -89,10 +95,12 @@ def coingecko_quotes(ids):
         return {}
     out = {}
     for row in data:
+        spark = (row.get("sparkline_in_7d") or {}).get("price") or []
         out[row.get("id")] = {
             "price": row.get("current_price"),
             "change_24h": (round(row["price_change_percentage_24h"], 2)
                            if row.get("price_change_percentage_24h") is not None else None),
+            "spark": downsample(spark, 24),
         }
     return out
 
@@ -164,12 +172,16 @@ def main() -> int:
             if q and q.get("price") is not None:
                 a["price"] = q["price"]
                 a["change_24h"] = q["change_24h"]
+                if q.get("spark"):
+                    a["spark"] = q["spark"]
                 updated += 1
         elif a.get("type") == "stock" and a.get("yahoo_symbol"):
             q = yahoo_quote(a["yahoo_symbol"])
             if q:
                 a["price"] = q["price"]
                 a["change_24h"] = q["change_24h"]
+                if q.get("spark"):
+                    a["spark"] = q["spark"]
                 updated += 1
 
     # News
