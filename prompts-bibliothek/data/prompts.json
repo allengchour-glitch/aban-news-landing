@@ -660,6 +660,114 @@
       "prompt_text": "Du bist mein Analyst im Support. Hier sind die letzten Kundenanfragen: [Liste]. Gruppiere sie in maximal sechs Themen. Pro Thema: kurze Bezeichnung, Anzahl, ein typisches Beispiel, ein Vorschlag, wie sich diese Anfrage kuenftig vermeiden laesst (z.B. FAQ, klarere Produktseite). Sortiere nach Haeufigkeit.",
       "erklaerung": "Zeigt, welche wiederkehrenden Probleme du an der Wurzel loesen kannst.",
       "tipp": "Das haeufigste Thema zuerst angehen - eine FAQ-Seite spart oft die meisten Tickets."
+    },
+    {
+      "id": "ks-reklamation-antwort",
+      "titel": "Auf eine Reklamation souverän antworten",
+      "aufgabe": "Kundenservice",
+      "kategorie": "Kundenservice",
+      "erklaerung": "Für eine ruhige, lösungsorientierte Antwort auf eine Beschwerde — ohne dich kleinzumachen.",
+      "prompt_text": "Du bist mein Kundenservice. Eine Kundin beschwert sich über [Problem]. Schreibe eine Antwort: 1) kurz und ehrlich Verständnis zeigen, 2) in einem Satz sagen, was passiert ist (ohne Ausreden), 3) eine konkrete Lösung mit Termin anbieten, 4) einen klaren nächsten Schritt. Ton: respektvoll, sachlich, keine Floskeln. Maximal 150 Wörter.",
+      "tipp": "Nenne die echte Ursache in Stichworten — sonst erfindet das Modell eine."
+    },
+    {
+      "id": "mkt-bewertung-antwort",
+      "titel": "Auf Online-Bewertungen antworten (Lob & Kritik)",
+      "aufgabe": "Marketing",
+      "kategorie": "Marketing",
+      "erklaerung": "Für schnelle, glaubwürdige Antworten auf Google-/Bewertungsportale.",
+      "prompt_text": "Schreibe zwei kurze Antworten auf eine [positive/kritische] Bewertung über [Thema] für meinen Betrieb [Name, Branche]. Bei Lob: danken, ein konkretes Detail aufgreifen, einladen wiederzukommen. Bei Kritik: danken, ernst nehmen, Lösung anbieten, offline weiterführen. Ton: menschlich, kurz, kein Marketing-Sprech. Je maximal 60 Wörter.",
+      "tipp": "Verwende echte Namen/Details aus der Bewertung — generische Antworten wirken automatisiert."
+    },
+    {
+      "id": "vt-angebot-nachfassen",
+      "titel": "Ein Angebot freundlich nachfassen",
+      "aufgabe": "Vertrieb",
+      "kategorie": "Vertrieb",
+      "erklaerung": "Die Follow-up-Mail, die viele vergessen — und die am meisten Aufträge bringt.",
+      "prompt_text": "Schreibe eine kurze Nachfass-Mail zu meinem Angebot über [Leistung] an [Kundentyp], gesendet vor [Zeitraum]. Erinnere unaufdringlich, biete an, offene Fragen zu klären, und schlage einen konkreten nächsten Schritt vor (z. B. 15-Min-Call). Kein Druck, keine Rabatt-Panik. Ton: freundlich, selbstbewusst. Maximal 110 Wörter.",
+      "tipp": "Eine konkrete Frage am Ende bringt mehr Antworten als ein blosses „Melden Sie sich gern“."
+    },
+    {
+      "id": "ks-preiserhoehung",
+      "titel": "Eine Preiserhöhung ankündigen",
+      "aufgabe": "E-Mail",
+      "kategorie": "Kundenservice",
+      "erklaerung": "Klar, fair und ohne Entschuldigungston — so bleiben Kunden trotzdem.",
+      "prompt_text": "Schreibe eine E-Mail, die eine Preiserhöhung für [Leistung] von [alt] auf [neu] ab [Datum] ankündigt. Struktur: kurz danken, Erhöhung klar nennen, in ein bis zwei Sätzen ehrlich begründen, Mehrwert/Verlässlichkeit betonen, Stichtag und Kontakt für Fragen. Nicht übermässig entschuldigen. Ton: wertschätzend, klar. Maximal 160 Wörter.",
+      "tipp": "Eine ehrliche, kurze Begründung schlägt jede Ausrede — und reduziert Rückfragen."
+    },
+    {
+      "id": "prod-meeting-todos",
+      "titel": "Meeting-Notizen in klare To-dos verwandeln",
+      "aufgabe": "Zusammenfassung",
+      "kategorie": "Produktivitaet",
+      "erklaerung": "Aus chaotischen Notizen wird eine Liste mit Verantwortlichen und Terminen.",
+      "prompt_text": "Hier sind meine Meeting-Notizen: [Notizen einfügen]. Erstelle daraus: 1) eine 3-Sätze-Zusammenfassung, 2) eine To-do-Liste mit Format „[ ] Aufgabe — Wer — Bis wann“, 3) offene Entscheidungen, die noch fehlen. Erfinde nichts dazu; markiere Unklares mit „(unklar)“. Knapp und sachlich.",
+      "tipp": "Lieber „(unklar)“ als geraten — so siehst du sofort, was du nachhaken musst."
+    },
+    {
+      "id": "mkt-linkedin-post",
+      "titel": "Einen LinkedIn-Post aus einer echten Erfahrung",
+      "aufgabe": "Social Media",
+      "kategorie": "Marketing",
+      "erklaerung": "Für einen Post, der nach dir klingt — nicht nach Buzzword-Bingo.",
+      "prompt_text": "Mach aus dieser Erfahrung einen LinkedIn-Post: [Was ist passiert / was habe ich gelernt]. Start mit einem konkreten Aufhänger (kein „Ich freue mich…“), dann die Geschichte in kurzen Zeilen, am Ende eine ehrliche Erkenntnis und eine echte Frage an die Leser. Keine Hashtag-Wand (max. 3), keine Emojis-Flut. Ton: persönlich, klar. Maximal 130 Wörter.",
+      "tipp": "Ein konkreter Moment schlägt jede allgemeine Weisheit. Nenne Zahlen oder Details."
+    },
+    {
+      "id": "tc-blog-gliederung",
+      "titel": "Eine Blog-Gliederung aus Stichworten",
+      "aufgabe": "Content",
+      "kategorie": "Texte & Content",
+      "erklaerung": "Bevor du schreibst: eine saubere Struktur, die wirklich trägt.",
+      "prompt_text": "Erstelle eine Gliederung für einen Blogartikel zum Thema [Thema] für [Zielgruppe]. Liefere: eine H1-Variante, 4–6 H2-Abschnitte mit je einem Satz, was reingehört, eine konkrete Einleitung-Idee und einen klaren Schluss mit Handlungsaufruf. Fokus auf echten Nutzen, kein Keyword-Stuffing. Stichpunkte, nicht ausformuliert.",
+      "tipp": "Schreib zuerst den Abschnitt, bei dem du am meisten zu sagen hast — der Rest folgt leichter."
+    },
+    {
+      "id": "vt-mahnung-freundlich",
+      "titel": "Eine Zahlungserinnerung freundlich, aber klar",
+      "aufgabe": "E-Mail",
+      "kategorie": "Vertrieb",
+      "erklaerung": "Erinnern ohne die Beziehung zu beschädigen — mit klarer Frist.",
+      "prompt_text": "Schreibe eine erste, freundliche Zahlungserinnerung für Rechnung [Nr.] über [Betrag], fällig seit [Datum], an [Kunde]. Höflich annehmen, dass es untergegangen ist, Betrag und neue Frist klar nennen, Zahlungsweg angeben, Kontakt bei Fragen. Kein Drohton in Stufe 1. Maximal 110 Wörter.",
+      "tipp": "Stufe 1 bleibt freundlich. Halte den Ton für eine mögliche zweite, bestimmtere Mail in Reserve."
+    },
+    {
+      "id": "tc-ueber-uns",
+      "titel": "Einen „Über uns“-Text schreiben",
+      "aufgabe": "Content",
+      "kategorie": "Texte & Content",
+      "erklaerung": "Eine ehrliche Seite, die Vertrauen schafft — statt Floskeln aneinanderzureihen.",
+      "prompt_text": "Schreibe einen „Über uns“-Text für [Betrieb, Branche, Ort]. Inhalt: was ihr macht und für wen, warum ihr es macht (echter Grund), was euch von anderen unterscheidet (konkret, keine Superlative), seit wann es euch gibt. Schliesse mit einer Einladung zum Kontakt. Ton: nahbar, ehrlich, kein Werbedeutsch. Maximal 200 Wörter.",
+      "tipp": "Ein konkreter Satz „Wir sagen auch mal Nein, wenn …“ wirkt glaubwürdiger als zehn Superlative."
+    },
+    {
+      "id": "prod-wochenplan",
+      "titel": "Die Woche nach Wirkung priorisieren",
+      "aufgabe": "Produktivitaet",
+      "kategorie": "Produktivitaet",
+      "erklaerung": "Aus einer langen Liste die wenigen Dinge ziehen, die wirklich zählen.",
+      "prompt_text": "Hier sind meine Aufgaben für die Woche: [Liste]. Sortiere sie in: 1) „Bringt Umsatz/Kunden“ (max. 3, zuerst), 2) „Muss erledigt werden“, 3) „Kann warten/delegieren“. Schlage für die Top 3 je einen konkreten ersten Schritt und einen realistischen Zeitblock vor. Sei ehrlich, wenn etwas eigentlich in Kategorie 3 gehört.",
+      "tipp": "Plane die Top-3-Blöcke fest in den Kalender — sonst frisst der Alltag sie auf."
+    },
+    {
+      "id": "solo-verhandlung-vorbereiten",
+      "titel": "Ein Preisgespräch vorbereiten",
+      "aufgabe": "Strategie",
+      "kategorie": "Solopreneure",
+      "erklaerung": "Mit klaren Grenzen ins Gespräch — statt im Moment einzuknicken.",
+      "prompt_text": "Bereite mich auf ein Preisgespräch für [Leistung] mit [Kunde] vor. Liefere: meinen Wunschpreis und meine absolute Untergrenze (ich gebe [Zahlen]), 3 Argumente für meinen Wert (nutzenbasiert), 2 mögliche Einwände mit je einer ruhigen Antwort, und einen Satz, mit dem ich höflich Nein sagen kann. Knapp, als Spickzettel.",
+      "tipp": "Schreib deine Untergrenze vorher auf und halte dich dran — im Gespräch verschiebt sie sich sonst nach unten."
+    },
+    {
+      "id": "vt-kaltmail-ehrlich",
+      "titel": "Eine ehrliche Kalt-E-Mail (die nicht nervt)",
+      "aufgabe": "Vertrieb",
+      "kategorie": "Vertrieb",
+      "erklaerung": "Kurz, relevant, ohne Floskeln — die einzige Art Kaltakquise, die noch funktioniert.",
+      "prompt_text": "Schreibe eine kurze Kalt-E-Mail an [Zielperson/Branche]. Start mit einem konkreten, ehrlichen Bezug zu ihrem Geschäft (kein „Ich hoffe, es geht Ihnen gut“). Dann in einem Satz, welches Problem ich löse und ein glaubhafter Beleg. Ende mit einer einzigen, kleinen Bitte (z. B. „Lohnt sich ein kurzer Austausch?“). Keine Anhänge, kein Verkaufsdruck. Maximal 90 Wörter.",
+      "tipp": "Eine winzige Bitte (5 Minuten) bekommt mehr Ja als ein Verkaufstermin."
     }
   ]
 }
