@@ -612,12 +612,20 @@ footer a{color:var(--muted)}
     var qp=quota("aban_kw_plan", FREE_PLAN_LIMIT);
     $("p-quota").textContent = qp.left>0 ? (qp.left+" free today") : "Daily limit reached";
   }
-  function runText(isVariant){
-    var q=quota("aban_kw_text", FREE_TEXT_LIMIT);
-    if(q.left<=0){ $("t-upsell").classList.add("show"); return; }
-    var d=readText();
-    lastText = generateText(d);
-    $("t-out").textContent = lastText;
+  // PHASE 2: real AI via the Worker (AI_ENDPOINT). Returns {text}; fallback = template.
+  function genWithAI(d){
+    return fetch(AI_ENDPOINT, {
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({type:d.typ, branche:d.branche, thema:d.thema, kw:d.kw, ton:d.ton, name:d.name, stimmung:d.stimmung, lang:"en"})
+    }).then(function(r){
+      if(r.status===429) return r.json().then(function(j){ var e=new Error((j&&j.message)||"Limit"); e.rate=true; throw e; });
+      if(!r.ok) throw new Error("AI "+r.status);
+      return r.json();
+    }).then(function(j){ if(!j||!j.text) throw new Error("empty"); return j.text; });
+  }
+  function showText(text, d){
+    lastText = text;
+    $("t-out").textContent = text;
     $("t-result").classList.add("show");
     $("t-again").style.display="inline-block";
     var more=$("t-more");
@@ -627,8 +635,28 @@ footer a{color:var(--muted)}
         + '<a href="'+brancheHref(d.branche)+'">see the industry guide</a> · '
         + '<a href="#hilfe">FAQ &amp; help</a>';
     }
-    q.use(); refreshQuota();
+  }
+  function afterText(){
+    refreshQuota();
     if(quota("aban_kw_text",FREE_TEXT_LIMIT).left<=0) $("t-upsell").classList.add("show");
+  }
+  function runText(isVariant){
+    var q=quota("aban_kw_text", FREE_TEXT_LIMIT);
+    if(q.left<=0){ $("t-upsell").classList.add("show"); return; }
+    var d=readText();
+    if(AI_ENDPOINT){
+      var btn=$("t-go"), old=btn.textContent; btn.disabled=true; btn.textContent="creating …";
+      genWithAI(d).then(function(text){
+        showText(text, d); q.use(); afterText();
+      }).catch(function(err){
+        if(err && err.rate) $("t-upsell").classList.add("show");
+        showText(generateText(d) + "\n\n(Note: AI unavailable right now — used a template.)", d);
+        q.use(); afterText();
+      }).then(function(){ btn.disabled=false; btn.textContent=old; });
+      return;
+    }
+    showText(generateText(d), d);
+    q.use(); afterText();
   }
   $("t-go").addEventListener("click", function(){ runText(false); });
   $("t-again").addEventListener("click", function(){ runText(true); });
