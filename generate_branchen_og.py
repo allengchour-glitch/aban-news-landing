@@ -326,6 +326,9 @@ BRANCHEN = {
     "kaeserei":            ("Käsereien",            ["Produkttexte & Shop,", "nicht die Kennzeichnung"]),
     "trachtengeschaeft":   ("Trachtengeschäfte",    ["Produkt- & Anlasstexte,", "nicht die Anprobe"]),
     "teppichreinigung":    ("Teppichreinigung",     ["Service- & Pflegetexte,", "nicht die Materialprüfung"]),
+    "gebrauchtwarenhandel": ("Gebrauchtwaren",      ["Beschreibungen & Listings,", "nicht die Zustandsprüfung"]),
+    "schokoladenmanufaktur": ("Schokoladen-Manufaktur", ["Produkttexte & Shop,", "keine Heilversprechen"]),
+    "spieleladen":         ("Spieleläden",          ["Produkttexte & Events,", "nicht die Spielberatung"]),
 }
 
 
