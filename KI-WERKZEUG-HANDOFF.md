@@ -63,6 +63,10 @@ Sitemap, `online-tools.html`, LinkedIn-Queue (`aban-tool-hype-detektor`, postet 
   Beispiel/Grenzen → Score 0–100 + fehlende Bausteine + Gerüst; headless: vage 25, detailliert 88) und
   `avv-anfrage.html` (AVV/DPA-Anfrage-Mail an KI-Anbieter + Datenschutz-Fragen, Copy + mailto). Beide clientseitig,
   verdrahtet (online-tools, Sitemap, ki-start, Querlinks). **Gratis-Tool-Familie jetzt 15+.**
+- **OG-Bilder für 4 neue Tools** (PR #559): `brand/gen_og_tool.py` (parametrisiert, auto-fit Titel + Umbruch) →
+  og-ki-bullshit-bingo / og-ki-richtlinie / og-ki-prompt-checker / og-avv-anfrage.png; `og:image` je Seite gesetzt
+  (besseres Teilen). **Hinweis: Gemini lt. User aufgebraucht** → Gemini-Bots (autopilot/cover/Bild-Gen) pausieren
+  no-op-sicher; Autopost fällt auf Text/Pexels zurück; deterministischer Verbesserer + Tools + Build laufen weiter.
 - **Newsletter-Hebel offen (nur User):** beehiiv liefert nur Link, kein Inline-Formular. **beehiiv-Embed-Snippet**
   (`<iframe src="https://embeds.beehiiv.com/…">` aus Settings→Subscribe Forms) → dann baue ich Inline-Signup site-weit
   statt nur Weiterleitung (= direkter Abonnenten-Boost).
