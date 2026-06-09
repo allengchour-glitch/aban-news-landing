@@ -45,6 +45,15 @@ Posten auf die **Company Page** ist ein eigener Pfad und braucht mehr:
    ergänzt das Präfix). Ist das Secret gesetzt, postet das Skript **zusätzlich** auf die Seite; fehlt der
    Org-Scope, wird das sauber übersprungen (Profil-Post läuft trotzdem).
 
+### Ziel umschalten: Profil, Seite oder beides
+Repository-**Variable** (Settings → Secrets and variables → Actions → **Variables**) **`LINKEDIN_POST_TARGET`**:
+- *(leer)* → „both" wenn `LINKEDIN_ORG_URN` gesetzt ist, sonst „person" (Default).
+- `person` → nur persönliches Profil.
+- `org` → **nur die Unternehmensseite** (braucht `w_organization_social` + `LINKEDIN_ORG_URN`).
+- `both` → Profil **und** Seite.
+
+⚠️ Erst auf `org` umstellen, wenn die Seite nachweislich postet — sonst geht nichts mehr raus.
+
 > Tipp: Die Queue-Texte sind in **Ich-Stimme** geschrieben („Ich habe keine Lust mehr auf KI-Hype…") —
 > das wirkt auf einem **persönlichen Profil** am stärksten und hat dort organisch die meiste Reichweite.
 > Die Unternehmensseite ist eher Zweitkanal.

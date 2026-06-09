@@ -212,21 +212,30 @@ def main() -> int:
     elif author and not author.startswith("urn:li:person:"):
         # Nur eine ID eingetragen → in volle URN packen
         author = f"urn:li:person:{author}"
-    # Ziele zusammenstellen: persönliches Profil (immer, wenn ermittelbar) +
-    # optional die Unternehmensseite, wenn LINKEDIN_ORG_URN/LINKEDIN_ORG_ID gesetzt
-    # ist UND der Token den Scope w_organization_social hat (Community Management API).
-    targets = []  # (label, author_urn)
-    if author:
-        targets.append(("Profil", author))
+    # Ziele zusammenstellen: persönliches Profil + optional die Unternehmensseite
+    # (LINKEDIN_ORG_URN/LINKEDIN_ORG_ID, Token braucht Scope w_organization_social).
+    # Steuerung über LINKEDIN_POST_TARGET: "person" | "org" | "both" (Default: "both"
+    # wenn eine Org gesetzt ist, sonst "person"). So lässt sich später per Secret auf
+    # "nur Seite" umstellen, ohne Code zu ändern.
     org = os.environ.get("LINKEDIN_ORG_URN", "").strip() or os.environ.get("LINKEDIN_ORG_ID", "").strip()
-    if org:
-        if not org.startswith("urn:li:organization:"):
-            org = f"urn:li:organization:{org}"
+    if org and not org.startswith("urn:li:organization:"):
+        org = f"urn:li:organization:{org}"
+    mode = os.environ.get("LINKEDIN_POST_TARGET", "").strip().lower()
+    if mode not in ("person", "org", "both"):
+        mode = "both" if org else "person"
+
+    targets = []  # (label, author_urn)
+    if mode in ("person", "both") and author:
+        targets.append(("Profil", author))
+    if mode in ("org", "both") and org:
         targets.append(("Unternehmensseite", org))
-    if not targets:
-        print("Kein Post-Ziel ermittelbar (weder Person noch Organisation) → no-op (Exit 0).")
+    if mode == "org" and not org:
+        print("LINKEDIN_POST_TARGET=org, aber keine LINKEDIN_ORG_URN gesetzt → no-op (Exit 0).")
         return 0
-    print("Post-Ziele: " + ", ".join(f"{lbl} ({urn})" for lbl, urn in targets))
+    if not targets:
+        print("Kein Post-Ziel ermittelbar → no-op (Exit 0).")
+        return 0
+    print(f"Modus: {mode} · Post-Ziele: " + ", ".join(f"{lbl} ({urn})" for lbl, urn in targets))
 
     text = item["text"]
     img = build_visual(text, aspect="16:9", channel="linkedin")  # KI-Bild → Karte → None
