@@ -1,14 +1,143 @@
 [
-  {"slug":"aerzte","title":"KI-Starter-Kit für Ärzte & Praxen","desc":"Spickzettel + erprobte Prompts + Datenschutz-Checkliste.","price_cents":1200,"currency":"chf"},
-  {"slug":"handwerker","title":"KI-Starter-Kit für Handwerk","desc":"Angebote, Mails, Bewertungen schneller schreiben.","price_cents":1200,"currency":"chf"},
-  {"slug":"steuerberater","title":"KI-Starter-Kit für Steuerberatung","desc":"Mandanten-Kommunikation, Standardschreiben, Recherche.","price_cents":1200,"currency":"chf"},
-  {"slug":"anwaelte","title":"KI-Starter-Kit für Kanzleien","desc":"Entwürfe, lange Dokumente, Mandantentexte — mit Grenzen.","price_cents":1200,"currency":"chf"},
-  {"slug":"gastronomie","title":"KI-Starter-Kit für Gastronomie","desc":"Bewertungen, Social, Speisekarten-Texte.","price_cents":1200,"currency":"chf"},
-  {"slug":"coaches","title":"KI-Starter-Kit für Coaches & Berater","desc":"Angebote, Posts, Session-Vorbereitung — ohne Hype.","price_cents":1200,"currency":"chf"},
-  {"slug":"immobilienmakler","title":"KI-Starter-Kit für Immobilienmakler","desc":"Exposés, Anfragen-Antworten, Inserate schneller.","price_cents":1200,"currency":"chf"},
-  {"slug":"friseure","title":"KI-Starter-Kit für Friseure & Salons","desc":"Social-Posts, Bewertungen, Terminmails.","price_cents":1200,"currency":"chf"},
-  {"slug":"fotografen","title":"KI-Starter-Kit für Fotografen","desc":"Angebote, Bildtexte, Kundenkommunikation.","price_cents":1200,"currency":"chf"},
-  {"slug":"architekten","title":"KI-Starter-Kit für Architekturbüros","desc":"Texte, Ausschreibungen, Recherche — mit Grenzen.","price_cents":1200,"currency":"chf"},
-  {"slug":"fitnessstudios","title":"KI-Starter-Kit für Fitnessstudios","desc":"Social, Mitglieder-Mails, Kurs-Beschreibungen.","price_cents":1200,"currency":"chf"},
-  {"slug":"alle-kits","title":"Alle KI-Starter-Kits (Bundle)","desc":"Alle Branchen-Kits zusammen — deutlich günstiger als einzeln. Spickzettel, Prompts & Checklisten für jede Branche.","price_cents":7900,"currency":"chf","bundle":true}
+  {
+    "slug": "aerzte",
+    "title": "KI-Starter-Kit für Ärzte & Praxen",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "handwerker",
+    "title": "KI-Starter-Kit für Handwerk",
+    "desc": "Angebote, Mails, Bewertungen schneller schreiben.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "steuerberater",
+    "title": "KI-Starter-Kit für Steuerberatung",
+    "desc": "Mandanten-Kommunikation, Standardschreiben, Recherche.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "anwaelte",
+    "title": "KI-Starter-Kit für Kanzleien",
+    "desc": "Entwürfe, lange Dokumente, Mandantentexte — mit Grenzen.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "gastronomie",
+    "title": "KI-Starter-Kit für Gastronomie",
+    "desc": "Bewertungen, Social, Speisekarten-Texte.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "coaches",
+    "title": "KI-Starter-Kit für Coaches & Berater",
+    "desc": "Angebote, Posts, Session-Vorbereitung — ohne Hype.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "immobilienmakler",
+    "title": "KI-Starter-Kit für Immobilienmakler",
+    "desc": "Exposés, Anfragen-Antworten, Inserate schneller.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "friseure",
+    "title": "KI-Starter-Kit für Friseure & Salons",
+    "desc": "Social-Posts, Bewertungen, Terminmails.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "fotografen",
+    "title": "KI-Starter-Kit für Fotografen",
+    "desc": "Angebote, Bildtexte, Kundenkommunikation.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "architekten",
+    "title": "KI-Starter-Kit für Architekturbüros",
+    "desc": "Texte, Ausschreibungen, Recherche — mit Grenzen.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "fitnessstudios",
+    "title": "KI-Starter-Kit für Fitnessstudios",
+    "desc": "Social, Mitglieder-Mails, Kurs-Beschreibungen.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "kosmetikstudios",
+    "title": "KI-Starter-Kit für Kosmetik- & Nagelstudios",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "kfz-werkstaetten",
+    "title": "KI-Starter-Kit für KFZ-Werkstätten",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "maler",
+    "title": "KI-Starter-Kit für Maler & Lackierer",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "hotels",
+    "title": "KI-Starter-Kit für Hotels & Pensionen",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "physiotherapeuten",
+    "title": "KI-Starter-Kit für Physiotherapie-Praxen",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "reinigungsfirmen",
+    "title": "KI-Starter-Kit für Reinigungsfirmen",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "garten-landschaftsbau",
+    "title": "KI-Starter-Kit für Garten- & Landschaftsbau",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "goldschmiede",
+    "title": "KI-Starter-Kit für Goldschmiede & Juweliere",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price_cents": 1200,
+    "currency": "chf"
+  },
+  {
+    "slug": "alle-kits",
+    "title": "Alle KI-Starter-Kits (Bundle)",
+    "desc": "Alle Branchen-Kits zusammen — deutlich günstiger als einzeln. Spickzettel, Prompts & Checklisten für jede Branche.",
+    "price_cents": 7900,
+    "currency": "chf",
+    "bundle": true
+  }
 ]
