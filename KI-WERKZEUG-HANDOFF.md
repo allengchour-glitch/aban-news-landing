@@ -34,6 +34,11 @@ im Chat geliefert.
 Text einfügen → Buzzwords markiert, **Hype-Score 0–100**, Klartext-Übersetzung. Clientseitig, kein API/Datenversand,
 HTML-escaped (kein XSS), kuratiertes Buzzword-Wörterbuch. Headless getestet (ehrlich→0, Hype→100). Verdrahtet:
 Sitemap, `online-tools.html`, LinkedIn-Queue (`aban-tool-hype-detektor`, postet als Nächstes).
+  **Nachgezogen:** EN-Version (PR #551, hreflang-Paar) + **Teilen-Buttons** (LinkedIn/X/WhatsApp/Native/Copy, Score
+  im Share-Text → viraler Loop) DE+EN + Querverlinkung in `ki-start.html` (Kachel) & `ki-glossar.html` (Band).
+- **Newsletter-Hebel offen (nur User):** beehiiv liefert nur Link, kein Inline-Formular. **beehiiv-Embed-Snippet**
+  (`<iframe src="https://embeds.beehiiv.com/…">` aus Settings→Subscribe Forms) → dann baue ich Inline-Signup site-weit
+  statt nur Weiterleitung (= direkter Abonnenten-Boost).
 
 **🤖 Autonomie-Taktung (PR #550) — User-Wunsch „1+2, Gemini jeden 2. Tag, 2×/Tag":**
 - **`autopilot.yml`** (Gemini-Autopilot: Content/Queues/Newsletter-Entwurf/Audit) → **jeden 2. Tag** (`0 5 */2 * *`).
