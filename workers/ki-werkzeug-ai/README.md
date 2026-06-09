@@ -36,12 +36,13 @@ von **Vorlagen** auf **echte KI** umstellt — **ohne** dass du je drauflegst.
    Du bekommst eine URL wie `https://ki-werkzeug-ai.<dein-subdomain>.workers.dev`.
    (Optional: eigene Route `https://abannews.com/api/generate` via Cloudflare-Dashboard → Workers Routes.)
 
-5. **Frontend verbinden** — in `ki-werkzeug.html` **und** `en/ki-werkzeug.html` die Konstante setzen:
+5. **Frontend verbinden** — in `ki-werkzeug.html` **und** `en/ki-werkzeug.html` nur die Konstante setzen:
    ```js
    const AI_ENDPOINT = "https://abannews.com/api/generate"; // bzw. die workers.dev-URL
    ```
-   und in `runText()` den vorbereiteten Phase-2-Zweig aktivieren (Kommentar
-   `// PHASE 2: if(AI_ENDPOINT){ genWithAI(...) }`). Der Worker liefert `{ text }`.
+   Mehr ist **nicht** nötig: `genWithAI()` ist im Frontend bereits verdrahtet. Ist `AI_ENDPOINT`
+   gesetzt, nutzt der „Text erstellen"-Button echte KI (mit Lade-Status); bei Fehler/Limit fällt er
+   automatisch auf die Vorlage zurück. Bei leerem `AI_ENDPOINT` bleibt alles wie bisher (nur Vorlagen).
 
 ## Test
 ```bash

@@ -623,13 +623,20 @@ footer a{color:var(--muted)}
     var qp=quota("aban_kw_plan", FREE_PLAN_LIMIT);
     $("p-quota").textContent = qp.left>0 ? (qp.left+" gratis heute") : "Tageslimit erreicht";
   }
-  function runText(isVariant){
-    var q=quota("aban_kw_text", FREE_TEXT_LIMIT);
-    if(q.left<=0){ $("t-upsell").classList.add("show"); return; }
-    var d=readText();
-    // PHASE 2: if(AI_ENDPOINT){ genWithAI(...) } else { ...Vorlage... }
-    lastText = generateText(d);
-    $("t-out").textContent = lastText;
+  // PHASE 2: echte KI über den Worker (AI_ENDPOINT). Liefert {text}; Fallback = Vorlage.
+  function genWithAI(d){
+    return fetch(AI_ENDPOINT, {
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({type:d.typ, branche:d.branche, thema:d.thema, kw:d.kw, ton:d.ton, name:d.name, stimmung:d.stimmung, lang:"de"})
+    }).then(function(r){
+      if(r.status===429) return r.json().then(function(j){ var e=new Error((j&&j.message)||"Limit"); e.rate=true; throw e; });
+      if(!r.ok) throw new Error("AI "+r.status);
+      return r.json();
+    }).then(function(j){ if(!j||!j.text) throw new Error("empty"); return j.text; });
+  }
+  function showText(text, d){
+    lastText = text;
+    $("t-out").textContent = text;
     $("t-result").classList.add("show");
     $("t-again").style.display="inline-block";
     var more=$("t-more");
@@ -639,8 +646,28 @@ footer a{color:var(--muted)}
         + '<a href="'+brancheHref(d.branche)+'">Branchen-Guide ansehen</a> · '
         + '<a href="#hilfe">Hilfe &amp; FAQ</a>';
     }
-    q.use(); refreshQuota();
+  }
+  function afterText(){
+    refreshQuota();
     if(quota("aban_kw_text",FREE_TEXT_LIMIT).left<=0) $("t-upsell").classList.add("show");
+  }
+  function runText(isVariant){
+    var q=quota("aban_kw_text", FREE_TEXT_LIMIT);
+    if(q.left<=0){ $("t-upsell").classList.add("show"); return; }
+    var d=readText();
+    if(AI_ENDPOINT){
+      var btn=$("t-go"), old=btn.textContent; btn.disabled=true; btn.textContent="wird erstellt …";
+      genWithAI(d).then(function(text){
+        showText(text, d); q.use(); afterText();
+      }).catch(function(err){
+        if(err && err.rate) $("t-upsell").classList.add("show");
+        showText(generateText(d) + "\n\n(Hinweis: KI gerade nicht verfügbar — Vorlage genutzt.)", d);
+        q.use(); afterText();
+      }).then(function(){ btn.disabled=false; btn.textContent=old; });
+      return;
+    }
+    showText(generateText(d), d);
+    q.use(); afterText();
   }
   $("t-go").addEventListener("click", function(){ runText(false); });
   $("t-again").addEventListener("click", function(){ runText(true); });
