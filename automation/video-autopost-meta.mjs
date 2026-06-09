@@ -74,7 +74,7 @@ async function waitVideo(statusUrl){
 async function postIG(videoUrl, caption){
   if(!IG_ID || !IG_TOK) return null;
   const base = `https://graph.facebook.com/${V}/${IG_ID}`;
-  const c = await gpost(`${base}/media`, { media_type:'REELS', video_url:videoUrl, caption, share_to_feed:'true', access_token:IG_TOK });
+  const c = await gpost(`${base}/media`, { media_type:'REELS', video_url:videoUrl, caption, share_to_feed:'true', thumb_offset:(process.env.IG_THUMB_OFFSET||'1500'), access_token:IG_TOK });
   if(!c.ok || !c.j.id){ console.error('IG container:', c.status, JSON.stringify(c.j.error||c.j)); return false; }
   await waitVideo(`https://graph.facebook.com/${V}/${c.j.id}?fields=status_code,status&access_token=${encodeURIComponent(IG_TOK)}`);
   const p = await gpost(`${base}/media_publish`, { creation_id:c.j.id, access_token:IG_TOK });
