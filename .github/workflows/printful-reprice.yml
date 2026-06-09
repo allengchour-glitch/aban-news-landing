@@ -11,6 +11,10 @@ on:
         description: 'Aufschlag-Faktor auf Kosten'
         type: string
         default: '2.3'
+      tag:
+        description: 'Welche Produkte (Tag)'
+        type: string
+        default: 'wunschdesign'
 
 permissions:
   contents: read
@@ -37,5 +41,6 @@ jobs:
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
           SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
           MARKUP: ${{ github.event.inputs.markup || '2.3' }}
-          DRY_RUN: ${{ github.event.inputs.apply == 'true' && '' || '1' }}
+          DRY_RUN: ${{ github.event.inputs.apply == 'true' && '0' || '1' }}
+          TAG: ${{ github.event.inputs.tag || 'printful_personalized_product' }}
         run: node automation/printful_reprice.mjs
