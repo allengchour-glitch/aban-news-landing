@@ -1,0 +1,45 @@
+name: Montage (alle Produkte in 1 Video)
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_seg:
+        description: 'Wie viele Produkte ins Video'
+        type: string
+        default: '8'
+      only:
+        description: 'Nur diese Namen (Komma), leer = auto'
+        type: string
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: montage
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: ffmpeg
+        run: sudo apt-get update -q && sudo apt-get install -y ffmpeg fonts-dejavu-core
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Montage bauen
+        env:
+          MAX_SEG: ${{ github.event.inputs.max_seg || '8' }}
+          MONTAGE_ONLY: ${{ github.event.inputs.only }}
+        run: node automation/make_montage.mjs
+      - name: Commit
+        run: |
+          if [ -n "$(git status --porcelain reels/ social/video_queue.csv)" ]; then
+            git config user.name "luxestyle-autopilot"; git config user.email "bot@users.noreply.github.com"
+            git add reels/ social/video_queue.csv
+            git commit -m "Montage-Video (alle Produkte in 1) erzeugt [skip ci]"
+            for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else echo "nichts"; fi
