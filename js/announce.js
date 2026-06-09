@@ -26,8 +26,9 @@
     "#aban-ann{position:relative;z-index:40;background:#b45309;color:#fff;" +
     "font:600 .9rem/1.35 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;" +
     "text-align:center;padding:9px 42px 9px 16px}" +
-    "#aban-ann a{color:#fff;text-decoration:none;display:inline-block;max-width:100%}" +
-    "#aban-ann a:hover{text-decoration:underline}" +
+    "#aban-ann a{color:#fff;text-decoration:none;display:inline-block;max-width:100%;" +
+    "border:1px solid rgba(255,255,255,.65);border-radius:999px;padding:3px 13px;font-weight:700}" +
+    "#aban-ann a:hover{background:rgba(255,255,255,.18);text-decoration:none}" +
     "#aban-ann .m{transition:opacity .4s ease}" +
     "#aban-ann .x{position:absolute;right:6px;top:50%;transform:translateY(-50%);" +
     "background:transparent;border:0;color:#fff;font-size:1.15rem;line-height:1;cursor:pointer;" +
