@@ -67,10 +67,16 @@
 - **Content-Vielfalt:** `automation/good_products.csv` neu = breit gestreut (Herren/Gadgets/Home/Schmuck/Beauty/
   Accessoires + nur ~4 frische Kleider, interleaved) → keine Damenkleider-Wiederholung mehr. **Augenmassagegerät
   rausgenommen** (User will es nicht posten). Frische Einzel-Clips gerendert: `reels/clip-*.mp4` + `montage-2026-06-09.mp4`.
-- **⚠️ REEL-HOSTING-PROBLEM:** Meta/TikTok ziehen Videos per **öffentlicher URL**. Repo ist **privat**
-  (raw.githubusercontent = 404) und **abannews.com/social|reels = 404** → aktuell **kein** Video öffentlich gehostet
-  → **Meta-Auto-Reel-Posting blockiert**. Manuelles Hochladen (Clips an User schicken) funktioniert. Bild-Auto-Post
-  hängt am selben Hosting. TODO: Reels an einen öffentlichen Pages-Pfad publizieren.
+- **✅ REEL-HOSTING-PROBLEM GELÖST (09.06. nachmittags):** Meta/TikTok ziehen Videos per **öffentlicher URL**.
+  Repo ist privat (raw=404) + abannews.com/reels=404 → früher blockiert. **Lösung: Shopify-Files-CDN.**
+  Neues Tool `automation/upload_to_shopify_cdn.mjs` lädt eine lokale Datei (Reel/Bild) per
+  `stagedUploadsCreate → GCS-POST → fileCreate(FILE) → poll READY` hoch und gibt eine **öffentliche
+  `https://cdn.shopify.com/...mp4`-URL** aus (range-fähig, HTTP 206, von Meta abrufbar). Auth = dieselben
+  Client-Credentials wie reel-analytics.mjs (SHOPIFY_SHOP/CLIENT_ID/SECRET). **Erstes Reel live gehostet:**
+  `cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-reel-20260609.mp4` (diverser Mix, kein Kleider-Spam)
+  → in `social/video_queue.csv` als `mix-20260609` status=ready eingetragen, abannews-Zeilen auf `needs-rehost`.
+  **Volle Automation** (reel-render → CDN-Upload → Queue) braucht nur noch die Shopify-Secrets als **Repo-Secrets**
+  (aktuell nur in-Session). Bis dahin: manueller Upload via dem Tool + Workflow-Dispatch.
 - **TikTok-Autopost** (`tiktok-autopost.yml`) braucht `TT_CLIENT_KEY/TT_CLIENT_SECRET/TT_REFRESH_TOKEN`
   (TikTok-Developer-App + Content-Posting-API, evtl. App-Review). Bis dahin: manuell posten.
 - **🖥️ BROWSER-/CLOUD-BROWSER-FRAGE (User 09.06.):** Diese Session hat nur **Headless-Playwright**
