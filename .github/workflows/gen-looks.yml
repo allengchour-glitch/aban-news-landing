@@ -1,0 +1,39 @@
+name: Coole Looks generieren (Gemini)
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 'Nur diese Namen (Komma) – leer = alle'
+        type: string
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gen-looks
+  cancel-in-progress: false
+
+jobs:
+  gen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Bilder generieren
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ONLY: ${{ github.event.inputs.only }}
+        run: node automation/gen_looks.mjs
+      - name: Commit
+        run: |
+          if [ -n "$(git status --porcelain social/looks/)" ]; then
+            git config user.name "luxestyle-autopilot"; git config user.email "bot@users.noreply.github.com"
+            git add social/looks/
+            git commit -m "Coole Looks: Gemini-Bilder generiert [skip ci]"
+            for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else echo "keine neuen Bilder"; fi
