@@ -1,7 +1,27 @@
 # 🛠️ Session-Handoff — KI-Werkzeug (`ki-werkzeug.html`)
 
-> Für die separate Tool-Session. Stand 2026-06-08. Enthält die **Antworten/Entscheidungen des Users**
+> Für die separate Tool-Session. Stand 2026-06-09. Enthält die **Antworten/Entscheidungen des Users**
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
+
+## 📌 2026-06-09 — Kunden-Überblick + Funnel + Gemini-Kontrolle (alles live auf `main`)
+- **PR #480 gemergt → live:** Feature-Überblick „Alles für deinen Betrieb" (5 Karten) unter dem Hero,
+  „Gratis vs Pro"-Vergleichsblock (Preis folgt Branchen-Stufe, `#pro-price-2`), Branchen-Guide + Hilfe-Link
+  in jedem Text-Ergebnis (`#t-more`, Anker `#hilfe`), 4 kaputte Fahrplan-Slugs gefixt (alle 20 Branchen →
+  echte Seite, sonst `/online-tools.html`), JSON-LD-Preise 9.90/19.90.
+- **PR #480 (Teil 2) — Funnel:** `tools/add_branchen_funnel.py` um KI-Werkzeug-Hauptbutton erweitert +
+  idempotent in **alle 289 `ki-fuer-*.html`** eingespielt (Branchen-Traffic → Tool).
+- **PR #487:** Gemini-Kritik-Workflow-Default zeigte auf tote `/dossier/ki-werkzeugkasten.html` → jetzt
+  `/ki-werkzeug.html` + `/online-tools.html`.
+- **Gemini-Kontrolle gelaufen (7/10), Report `reports/site-critique-abannews-2026-06-09.md`.** Behoben:
+  **PR #488** — `online-tools.html` Umlaut-/Grammatik-Fix (war durchgängig „fuer Selbststaendige", URLs geschont).
+- **🟡 OFFENE USER-ENTSCHEIDUNGEN aus der Gemini-Kritik (bewusst NICHT autonom umgesetzt):**
+  1. **Shop/Premium/Preise aus der Startseiten-Nav entfernen** — Gemini empfiehlt es fürs Abo-Ziel,
+     widerspricht aber der Monetarisierung (Shop/Founding/Pro) + dem neuen Funnel → **User-Call.**
+  2. **CTA-Beschriftung vereinheitlichen** („Gratis abonnieren" / „5-Min-Briefing gratis →" / „Newsletter gratis")
+     → Marken-/Copy-Entscheidung.
+  3. Mobile-Sticky-CTA **existiert bereits** (`.sticky-sub`/`.mcta`, nach Scroll) — kein Handlungsbedarf.
+  4. „Frag aban"-FAB (`js/assistant.js`, fixed unten-rechts) überlappt evtl. Newsletter-Vorschau — FAB-typisch,
+     ohne Render schwer prüfbar → offen gelassen.
 
 ## Stand (live-bereit, Demo-Modus)
 - Seite: `ki-werkzeug.html` → live unter `abannews.com/ki-werkzeug.html` (PR #477 gemergt).
