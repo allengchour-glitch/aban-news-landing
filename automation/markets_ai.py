@@ -73,7 +73,7 @@ def build_prompt(data: dict) -> str:
         lines.append(f"{i}. [{n.get('source')}] {n.get('title')}")
     lines.append(
         "\nAufgabe:\n"
-        "1) 'assets': für JEDEN Wert (gleiche id) ein Objekt. Stütze dich PRIMÄR auf die "
+        "1) 'assets': für JEDEN Wert (gleiche id) ein Objekt. Jedes Objekt MUSS das Feld 'analysis' mit GENAU 3 Stichpunkten (Treiber/Risiko/Einordnung) enthalten — das ist PFLICHT, nicht weglassen. Stütze dich PRIMÄR auf die "
         "wert-spezifischen News, ergänzend auf 24h-Bewegung. rationale konkret auf diese News beziehen.\n"
         "2) 'news': pro allgemeiner Schlagzeile (gleicher index) ein Sentiment für den Gesamtmarkt; "
         "ohne klaren Bezug 'neutral'."
@@ -118,7 +118,7 @@ def main() -> int:
         return 0
 
     # thinking_budget=0 → volles Output-Budget, günstig/schnell für diese Batch-Aufgabe.
-    text = generate(build_prompt(data), max_tokens=4000, temperature=0.3, thinking_budget=0)
+    text = generate(build_prompt(data), max_tokens=16000, temperature=0.3, thinking_budget=0)
     if not text:
         sys.stderr.write("Gemini lieferte keinen Text → Daten unverändert.\n")
         return 0
