@@ -58,40 +58,6 @@ STR = {
         "mail": "you@mail.com", "btn": "Subscribe free →", "fine": "GDPR-compliant · 1-click unsubscribe · no spam.",
         "foot_markets": "Markets", "imp": "Imprint", "dat": "Privacy",
     },
-    "fr": {
-        "out": ROOT / "fr" / "maerkte", "base": "/fr/maerkte/", "site": "/fr/", "markets": "/fr/maerkte.html",
-        "loc": "fr", "numloc": "fr-CH",
-        "type": {"crypto": "Crypto", "stock": "Action", "index": "Indice", "commodity": "Matière première"},
-        "title": "{name} ({sym}) — cours, graphique 30 jours & sentiment IA | aban news",
-        "desc": "{name} ({sym}) : cours actuel, graphique 30 jours, sentiment IA et actualités spécifiques. Anti-hype, pas un conseil en investissement.",
-        "skip": "Aller au contenu", "nav": "Navigation principale", "subscribe": "S'abonner",
-        "back": "← Tous les marchés", "disc": "⚠️ Pas un conseil en investissement. {typ} est très volatil — vous pouvez perdre tout l'argent investi. Le sentiment IA est expérimental.",
-        "eb_chart": "Historique 30 jours", "h_chart": "Évolution du cours", "no_chart": "Aucun graphique disponible.",
-        "updated": "Au : {u} · crypto en direct.",
-        "eb_ai": "Expérimental · analyse IA", "h_ai": "Sentiment IA",
-        "eb_news": "Actus sur {sym}", "h_news": "Derniers titres", "no_news": "Pas d'actus spécifiques pour le moment.",
-        "cross": '<a href="/fr/maerkte.html">← Retour à l\'aperçu des marchés</a> · <a href="/ki-und-krypto-daten.html">IA &amp; crypto en chiffres →</a>',
-        "band_h": "Comprendre les marchés au quotidien", "band_p": "Du lundi au vendredi à 7h30 — le briefing de 5 minutes, sans hype.",
-        "mail": "vous@mail.com", "btn": "S'abonner →", "fine": "Conforme RGPD · désinscription en 1 clic · pas de spam.",
-        "foot_markets": "Marchés", "imp": "Mentions légales", "dat": "Confidentialité",
-    },
-    "it": {
-        "out": ROOT / "it" / "maerkte", "base": "/it/maerkte/", "site": "/it/", "markets": "/it/maerkte.html",
-        "loc": "it", "numloc": "it-CH",
-        "type": {"crypto": "Cripto", "stock": "Azione", "index": "Indice", "commodity": "Materia prima"},
-        "title": "{name} ({sym}) — prezzo, grafico 30 giorni & sentiment IA | aban news",
-        "desc": "{name} ({sym}): prezzo attuale, grafico 30 giorni, sentiment IA e notizie specifiche. Anti-hype, non è consulenza finanziaria.",
-        "skip": "Vai al contenuto", "nav": "Navigazione principale", "subscribe": "Iscriviti",
-        "back": "← Tutti i mercati", "disc": "⚠️ Non è consulenza finanziaria. {typ} è molto volatile — puoi perdere tutto il capitale investito. Il sentiment IA è sperimentale.",
-        "eb_chart": "Storico 30 giorni", "h_chart": "Andamento del prezzo", "no_chart": "Nessun grafico disponibile.",
-        "updated": "Al: {u} · cripto in tempo reale.",
-        "eb_ai": "Sperimentale · analisi IA", "h_ai": "Sentiment IA",
-        "eb_news": "Notizie su {sym}", "h_news": "Ultimi titoli", "no_news": "Nessuna notizia specifica al momento.",
-        "cross": '<a href="/it/maerkte.html">← Torna alla panoramica mercati</a> · <a href="/ki-und-krypto-daten.html">IA &amp; cripto in numeri →</a>',
-        "band_h": "Capire i mercati ogni giorno", "band_p": "Da lunedì a venerdì alle 7:30 — il briefing di 5 minuti, senza hype.",
-        "mail": "tu@mail.com", "btn": "Iscriviti →", "fine": "Conforme GDPR · disiscrizione in 1 clic · niente spam.",
-        "foot_markets": "Mercati", "imp": "Note legali", "dat": "Privacy",
-    },
 }
 
 
@@ -105,14 +71,6 @@ LBL = {
            "eb_related": "More in this category", "h_related": "Related assets",
            "c24": "24 h", "c7": "7 days", "c30": "30 days", "hi": "30d high", "lo": "30d low",
            "mcap": "Market cap", "vol": "Volume", "ath": "All-time high", "w52h": "52w high", "w52l": "52w low"},
-    "fr": {"eb_stats": "Indicateurs", "h_stats": "En bref", "h_analysis": "Analyse détaillée",
-           "eb_related": "Plus dans cette catégorie", "h_related": "Valeurs liées",
-           "c24": "24 h", "c7": "7 jours", "c30": "30 jours", "hi": "Plus haut 30j", "lo": "Plus bas 30j",
-           "mcap": "Capitalisation", "vol": "Volume", "ath": "Plus haut historique", "w52h": "Plus haut 52s", "w52l": "Plus bas 52s"},
-    "it": {"eb_stats": "Indicatori", "h_stats": "In sintesi", "h_analysis": "Analisi dettagliata",
-           "eb_related": "Altro in questa categoria", "h_related": "Valori correlati",
-           "c24": "24 h", "c7": "7 giorni", "c30": "30 giorni", "hi": "Max 30g", "lo": "Min 30g",
-           "mcap": "Capitalizzazione", "vol": "Volume", "ath": "Massimo storico", "w52h": "Max 52sett", "w52l": "Min 52sett"},
 }
 
 
@@ -236,7 +194,7 @@ def news_html(items):
 def page(asset, css, updated, lang, all_assets):
     t = STR[lang]
     lbl = LBL[lang]
-    langs = ["de", "en", "fr", "it"]
+    langs = ["de", "en"]
     aid, name, sym = asset["id"], asset.get("name", ""), asset.get("symbol", "")
     typ = t["type"].get(asset.get("type"), "")
     chg = asset.get("change_24h")
@@ -411,7 +369,7 @@ def main() -> int:
     css = m.group(0) if m else "<style></style>"
     updated = data.get("last_updated", "")
     total = 0
-    for lang in ("de", "en", "fr", "it"):
+    for lang in ("de", "en"):
         outdir = STR[lang]["out"]
         outdir.mkdir(parents=True, exist_ok=True)
         for a in data.get("assets", []):
