@@ -18,7 +18,7 @@ const SHOP=(process.env.SHOPIFY_SHOP||'').trim();
 const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim();
 const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
 const API='2025-01';
-const IMG=(process.env.HERO_IMAGE_URL||'https://abannews.com/social/hero/schweiz-wall.png').trim();
+const IMG=(process.env.HERO_IMAGE_URL||'shopify://shop_images/schweiz-edition-hero.png').trim();
 const GAL=(process.env.GALLERY_URL||'/pages/designs-galerie?cat=Schweiz').trim();
 const DRY=process.env.DRY_RUN==='1';
 const REMOVE=process.env.REMOVE==='1';
