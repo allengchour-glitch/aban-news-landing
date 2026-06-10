@@ -13,6 +13,12 @@
 
   var state = { assets: [], byId: {} };
 
+  // ---------- Kategorie-Filter + „mehr anzeigen" ----------
+  var TYPES = ['crypto', 'stock', 'etf', 'index', 'commodity'];
+  var CAP = 5;                 // pro Gruppe initial sichtbar
+  var filter = 'all';          // aktive Tab-Kategorie
+  var expanded = {};           // pro Typ aufgeklappt?
+
   // ---------- Watchlist (localStorage, kein Tracking) ----------
   var WATCH_KEY = 'aban_markets_watch';
   function loadWatch() {
@@ -32,6 +38,7 @@
           sources: 'Quellen: ', asof: 'Stand: ', cryptoLive: ' · Krypto live', ai: ' · KI: ',
           rate: 'Kurs: ', endval: 'Endwert ≈ ', paid: 'Eingezahlt', gain: 'Wertzuwachs', valueIn: 'Wert in ',
           unavailable: 'Marktdaten zurzeit nicht verfügbar.',
+          all: 'Alle', more: 'mehr anzeigen', less: 'weniger',
           stale: '⚠️ Daten evtl. veraltet (letzter Lauf vor über {h} h).' },
     en: { krypto: 'Crypto', aktie: 'Stock', etf: 'ETF', index: 'Index', rohstoff: 'Commodity',
           gainer: 'Top gainer', loser: 'Top loser', mood: 'Market mood',
@@ -39,6 +46,7 @@
           sources: 'Sources: ', asof: 'As of: ', cryptoLive: ' · crypto live', ai: ' · AI: ',
           rate: 'Rate: ', endval: 'Final value ≈ ', paid: 'Paid in', gain: 'Gain', valueIn: 'Value in ',
           unavailable: 'Market data currently unavailable.',
+          all: 'All', more: 'show more', less: 'less',
           stale: '⚠️ Data may be stale (last run over {h} h ago).' }
   }[LANG];
 
@@ -193,20 +201,70 @@
     return tr;
   }
 
+  function moreRow(t, hidden) {
+    var tr = document.createElement('tr');
+    tr.className = 'morerow';
+    var td = document.createElement('td');
+    td.colSpan = 6;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = expanded[t]
+      ? ('▲ ' + T.less)
+      : ('▼ ' + T.more + ' (+' + hidden + ')');
+    btn.addEventListener('click', function () {
+      expanded[t] = !expanded[t];
+      renderTable();
+    });
+    td.appendChild(btn);
+    tr.appendChild(td);
+    return tr;
+  }
+
   function renderTable() {
     var tbody = document.getElementById('marketRows');
     if (!tbody) return;
     tbody.innerHTML = '';
+    // Merkliste immer komplett, unabhängig vom Filter
     var watched = state.assets.filter(function (a) { return watch[a.id]; });
     if (watched.length) {
       tbody.appendChild(subheader('★ ' + (LANG === 'en' ? 'Watchlist' : 'Merkliste')));
       watched.forEach(function (a) { tbody.appendChild(buildRow(a)); });
     }
-    ['crypto', 'stock', 'etf', 'index', 'commodity'].forEach(function (t) {
+    TYPES.forEach(function (t) {
+      if (filter !== 'all' && filter !== t) return;
       var grp = state.assets.filter(function (a) { return a.type === t && !watch[a.id]; });
       if (!grp.length) return;
       tbody.appendChild(subheader(typeLabel(t)));
-      grp.forEach(function (a) { tbody.appendChild(buildRow(a)); });
+      var show = expanded[t] ? grp : grp.slice(0, CAP);
+      show.forEach(function (a) { tbody.appendChild(buildRow(a)); });
+      if (grp.length > CAP) tbody.appendChild(moreRow(t, grp.length - CAP));
+    });
+  }
+
+  function renderTabs() {
+    var box = document.getElementById('marketTabs');
+    if (!box) return;
+    box.innerHTML = '';
+    var tabs = [['all', T.all, state.assets.length]];
+    TYPES.forEach(function (t) {
+      var c = state.assets.filter(function (a) { return a.type === t; }).length;
+      if (c) tabs.push([t, typeLabel(t), c]);
+    });
+    if (tabs.length <= 2) return; // nur 1 Kategorie → keine Tabs nötig
+    tabs.forEach(function (tab) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = (filter === tab[0]) ? 'on' : '';
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-selected', filter === tab[0] ? 'true' : 'false');
+      btn.appendChild(el('span', null, tab[1]));
+      btn.appendChild(el('span', 'cnt', String(tab[2])));
+      btn.addEventListener('click', function () {
+        filter = tab[0];
+        renderTabs();
+        renderTable();
+      });
+      box.appendChild(btn);
     });
   }
 
@@ -542,6 +600,7 @@
     state.byId = {};
     state.assets.forEach(function (a) { state.byId[a.id] = a; });
     initCurrency();
+    renderTabs();
     renderTable();
     renderTicker();
     renderMood();
