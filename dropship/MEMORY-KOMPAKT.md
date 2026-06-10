@@ -9,7 +9,11 @@
   `GLOBAL-FAP-A4/A3/A2` (Enhanced Matte 200g, Druckbereich `default`). `prodigi-products` (dry=false) lief → 10 Schweiz-Poster
   ACTIVE (Handle `prodigi-poster-*`, Tag `schweiz-edition`). `prodigi-sync` (cron 6h) druckt bezahlte Orders autom.
 - **12 Schweiz-Sticker LIVE:** `schweiz-sticker.yml` (dry=false) → `schweiz-sticker-*` ACTIVE (Printful Kiss-Cut SKU
-  `9000001_10163/10164/10165`, Metafeld print_file, Tag `schweiz-edition`). Füllt die `schweiz-edition`-Collection.
+  `9000001_10163/10164/10165`, Metafeld print_file, Tag `schweiz-edition`).
+- **`schweiz-edition`-Collection VOLL = 29 Produkte** (10 Prodigi-Poster + 12 Sticker + 6 Magnete + 1 Gelato-Poster).
+  Regel `TAG EQUALS schweiz-edition` (disjunktiv). ⚠️ `productsCount` ist gecacht/lagt — echte Mitgliedschaft via `products{}` prüfen.
+- **Übersetzung neuer Produkte:** translate-Lauf #2 lief VOR den neuen Schweiz-Produkten → die 22 neuen sind noch DE.
+  2. translate-Lauf (dry=false) nachgeschoben (Concurrency-Queue) → Ledger skippt Altes, übersetzt nur die neuen ~22.
 - **Spocket = WEGLASSEN** (User: „kostet"). Abo ~25–40$/Mt, nicht nötig — CJ(gratis)+Printful+Prodigi decken alles. Kein Spocket.
 - **Theme = „Horizon"** (block-basiert, JSON-Template `templates/product.json`, Section-Typ `product-information`):
   **KEIN `sections/main-product.liquid`** → `inject_delivery_snippet.mjs` greift NICHT. Lieferzeit Phase 2 = Customizer
