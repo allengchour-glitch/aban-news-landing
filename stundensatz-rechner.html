@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stundensatz-Rechner für Freelancer &amp; Selbstständige (2026) — kostenlos | DACH</title>
+  <meta name="description" content="Kostenloser Stundensatz-Rechner für Freelancer und Selbstständige in DE, AT &amp; CH. Berechne fairen Stundensatz und Tagessatz aus Wunschgehalt, Urlaub, Betriebskosten und abrechenbaren Stunden. Ohne Anmeldung, rechnet im Browser.">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://abannews.com/stundensatz-rechner.html">
+
+  <meta property="og:title" content="Stundensatz-Rechner für Freelancer &amp; Selbstständige (2026)">
+  <meta property="og:description" content="Berechne kostenlos deinen fairen Stundensatz und Tagessatz — aus Wunschgehalt, Urlaub, Betriebskosten und abrechenbaren Stunden. Für DE, AT &amp; CH.">
+  <meta property="og:image" content="https://abannews.com/img/og/page-stundensatz.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://abannews.com/stundensatz-rechner.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Stundensatz-Rechner für Freelancer (2026)">
+  <meta name="twitter:description" content="Berechne kostenlos deinen fairen Stundensatz und Tagessatz. Für DE, AT &amp; CH.">
+  <meta name="twitter:image" content="https://abannews.com/img/og/page-stundensatz.png">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Stundensatz-Rechner für Freelancer & Selbstständige",
+    "url": "https://abannews.com/stundensatz-rechner.html",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "description": "Kostenloser Rechner für den fairen Stundensatz und Tagessatz von Freelancern und Selbstständigen in DE, AT und CH."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Wie berechne ich meinen Stundensatz als Freelancer?","acceptedAnswer":{"@type":"Answer","text":"Teile deinen jährlichen Zielumsatz (Wunschgehalt + Betriebskosten + Gewinnpuffer) durch die Zahl der tatsächlich abrechenbaren Stunden im Jahr. Nicht alle Arbeitsstunden sind fakturierbar — Akquise, Buchhaltung und Pausen zählen nicht."}},
+      {"@type":"Question","name":"Wie viele Stunden im Jahr sind wirklich abrechenbar?","acceptedAnswer":{"@type":"Answer","text":"Von rund 1.600–1.800 Arbeitsstunden pro Jahr sind bei den meisten Selbstständigen nur 50–70 Prozent direkt abrechenbar. Der Rest geht für Akquise, Administration, Weiterbildung und Leerlauf drauf."}},
+      {"@type":"Question","name":"Ist der Stundensatz brutto oder netto?","acceptedAnswer":{"@type":"Answer","text":"Dieser Rechner ermittelt den Netto-Stundensatz ohne Umsatzsteuer. Auf der Rechnung kommt — sofern du nicht Kleinunternehmer bist — noch die Mehrwertsteuer obendrauf. Einkommensteuer und Sozialabgaben musst du aus deinem Zielumsatz selbst tragen, plane sie im Wunschgehalt ein."}}
+    ]
+  }
+  </script>
+
+  <style>
+    :root{
+      --teal:#0f766e; --teal-dk:#115e59; --teal-lt:#ccfbf1;
+      --ink:#1c2530; --muted:#5b6772; --line:#e3e8ee; --bg:#f6f9fa; --card:#fff;
+      --ok:#059669; --warn:#b45309; --amber:#d97706;
+      --r:14px; --shadow:0 1px 3px rgba(16,40,40,.06),0 8px 24px rgba(16,40,40,.05);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      color:var(--ink);background:var(--bg);line-height:1.55;-webkit-text-size-adjust:100%}
+    .wrap{max-width:980px;margin:0 auto;padding:0 1.1rem}
+    a{color:var(--teal-dk)}
+    .skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:#fff;padding:.5rem;z-index:10}
+
+    header.top{background:var(--card);border-bottom:1px solid var(--line)}
+    header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 1.1rem}
+    .brand{display:flex;align-items:center;gap:.5rem;font-weight:800;text-decoration:none;color:var(--ink);font-size:1.05rem}
+    .brand .dot{width:14px;height:14px;border-radius:4px;background:var(--teal)}
+    .top nav a{margin-left:1rem;text-decoration:none;color:var(--muted);font-size:.9rem}
+    .top nav a:hover{color:var(--ink)}
+
+    .hero{padding:2.4rem 0 1.4rem;text-align:center}
+    .hero h1{font-size:2rem;line-height:1.2;margin:.2rem 0 .5rem}
+    .hero p.lead{font-size:1.05rem;color:var(--muted);max-width:640px;margin:0 auto}
+    .chip{display:inline-block;background:var(--teal-lt);color:var(--teal-dk);font-weight:700;
+      font-size:.78rem;padding:.25rem .7rem;border-radius:999px;margin-bottom:.4rem}
+
+    .app{display:grid;grid-template-columns:1.1fr .9fr;gap:1.2rem;margin:1rem 0 2rem}
+    .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:1.3rem}
+    .panel h2{margin:.1rem 0 1rem;font-size:1.15rem}
+
+    .field{margin-bottom:1.05rem}
+    .field label{display:block;font-weight:600;font-size:.92rem;margin-bottom:.3rem}
+    .field .hint{font-weight:400;color:var(--muted);font-size:.82rem}
+    .inrow{display:flex;align-items:center;gap:.5rem}
+    .inrow input[type=number]{flex:1;width:100%;padding:.6rem .7rem;border:1px solid var(--line);border-radius:9px;
+      font-size:1rem;font-family:inherit;background:#fcfdfd}
+    .inrow input:focus{outline:2px solid var(--teal);border-color:var(--teal)}
+    .inrow .unit{color:var(--muted);font-size:.9rem;min-width:2.2rem;text-align:left}
+    input[type=range]{width:100%;accent-color:var(--teal)}
+    .rangeval{float:right;color:var(--teal-dk);font-weight:700}
+    select{width:100%;padding:.55rem .6rem;border:1px solid var(--line);border-radius:9px;font-size:1rem;font-family:inherit;background:#fcfdfd}
+
+    .result{position:sticky;top:1rem;align-self:start}
+    .big{background:linear-gradient(160deg,var(--teal),var(--teal-dk));color:#fff;border-radius:var(--r);padding:1.4rem;text-align:center;margin-bottom:1rem}
+    .big .lbl{font-size:.85rem;opacity:.85;margin:0}
+    .big .num{font-size:2.8rem;font-weight:800;line-height:1.1;margin:.1rem 0}
+    .big .sub{font-size:.85rem;opacity:.9}
+    .stats{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+    .stat{background:#f1f6f6;border-radius:10px;padding:.7rem .8rem}
+    .stat .k{font-size:.75rem;color:var(--muted);display:block}
+    .stat .v{font-size:1.15rem;font-weight:800}
+    .bar{height:10px;border-radius:6px;background:#e8eef0;overflow:hidden;margin:.9rem 0 .3rem}
+    .bar > span{display:block;height:100%;background:var(--teal)}
+    .barnote{font-size:.78rem;color:var(--muted)}
+    .warnote{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:10px;padding:.6rem .8rem;font-size:.83rem;margin-top:.9rem;display:none}
+    .warnote.show{display:block}
+
+    section.block{padding:1.6rem 0;border-top:1px solid var(--line)}
+    section.block h2{font-size:1.4rem;margin:.2rem 0 .8rem}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem}
+    .card h3{margin:.1rem 0 .4rem;font-size:1.05rem}
+    .card p{margin:.2rem 0;color:#3b4654;font-size:.93rem}
+    details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:.6rem;padding:0 .2rem}
+    details summary{cursor:pointer;padding:.85rem 1rem;font-weight:600;list-style:none}
+    details summary::-webkit-details-marker{display:none}
+    details[open] summary{border-bottom:1px solid var(--line)}
+    details .a{padding:.85rem 1rem;color:#3b4654;font-size:.93rem}
+    .cta{background:var(--ink);color:#fff;border-radius:var(--r);padding:1.4rem;text-align:center;margin:1.4rem 0}
+    .cta h2{margin:.1rem 0 .4rem;color:#fff}
+    .cta p{color:#cdd6df;margin:.2rem 0 .9rem;font-size:.95rem}
+    .btn{display:inline-block;background:var(--amber);color:#fff;text-decoration:none;font-weight:700;
+      padding:.7rem 1.3rem;border-radius:10px;font-size:1rem}
+    .btn:hover{filter:brightness(1.07)}
+    .disc{font-size:.8rem;color:var(--muted)}
+    footer{border-top:1px solid var(--line);background:var(--card);margin-top:1rem}
+    footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;justify-content:center;padding:1.1rem;font-size:.83rem;color:var(--muted)}
+    footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--ink)}
+
+    @media(max-width:780px){
+      .app{grid-template-columns:1fr}
+      .result{position:static}
+      .hero h1{font-size:1.6rem}
+      .grid2{grid-template-columns:1fr}
+      .top nav{display:none}
+    }
+    @media print{header.top,.cta,footer,.top nav{display:none}}
+  </style>
+</head>
+<body>
+<a href="#rechner" class="skip">Zum Rechner springen</a>
+
+<header class="top">
+  <div class="wrap">
+    <a href="/stundensatz-rechner.html" class="brand"><span class="dot" aria-hidden="true"></span> Stundensatz-Rechner</a>
+    <nav aria-label="Sprungmarken">
+      <a href="#rechner">Rechner</a>
+      <a href="#so-gehts">So funktioniert's</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="hero">
+      <span class="chip">Kostenlos · ohne Anmeldung · DE · AT · CH</span>
+      <h1>Stundensatz-Rechner für Freelancer &amp; Selbstständige</h1>
+      <p class="lead">Was musst du pro Stunde verlangen, um von deiner Selbstständigkeit wirklich leben zu können? Trag deine Eckdaten ein — der Rechner zeigt dir einen fairen Stundensatz und Tagessatz. Alles rechnet im Browser, nichts wird gespeichert.</p>
+    </div>
+
+    <div class="app" id="rechner">
+      <!-- EINGABE -->
+      <div class="panel">
+        <h2>Deine Eckdaten</h2>
+
+        <div class="field">
+          <label for="i-region">Region <span class="hint">— Währung &amp; Vorbelegung</span></label>
+          <select id="i-region">
+            <option value="de" data-cur="€" data-days="251">🇩🇪 Deutschland (€)</option>
+            <option value="at" data-cur="€" data-days="252">🇦🇹 Österreich (€)</option>
+            <option value="ch" data-cur="CHF" data-days="251">🇨🇭 Schweiz (CHF)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="i-salary">Wunsch-Jahresgehalt (vor Steuern) <span class="hint">— was du verdienen willst, inkl. Sozialabgaben-Puffer</span></label>
+          <div class="inrow">
+            <input type="number" id="i-salary" min="0" step="1000" value="60000" inputmode="numeric">
+            <span class="unit" id="u-salary">€/Jahr</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="i-costs">Betriebskosten <span class="hint">— Büro, Software, Versicherungen, Geräte, Steuerberater …</span></label>
+          <div class="inrow">
+            <input type="number" id="i-costs" min="0" step="500" value="9000" inputmode="numeric">
+            <span class="unit" id="u-costs">€/Jahr</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="i-profit">Gewinn-/Risikopuffer: <span class="rangeval"><span id="v-profit">15</span> %</span></label>
+          <input type="range" id="i-profit" min="0" max="40" step="1" value="15">
+          <span class="hint">Rücklage für Auftragsflauten, Investitionen, Altersvorsorge.</span>
+        </div>
+
+        <div class="field">
+          <label for="i-hours">Arbeitsstunden pro Woche: <span class="rangeval"><span id="v-hours">40</span> h</span></label>
+          <input type="range" id="i-hours" min="10" max="60" step="1" value="40">
+        </div>
+
+        <div class="field">
+          <label for="i-vacation">Urlaub + Feiertage + Krankheit: <span class="rangeval"><span id="v-vacation">38</span> Tage</span></label>
+          <input type="range" id="i-vacation" min="0" max="80" step="1" value="38">
+          <span class="hint">Tage im Jahr, an denen du nicht arbeitest.</span>
+        </div>
+
+        <div class="field">
+          <label for="i-billable">Abrechenbarer Anteil: <span class="rangeval"><span id="v-billable">65</span> %</span></label>
+          <input type="range" id="i-billable" min="20" max="100" step="5" value="65">
+          <span class="hint">Wie viel deiner Arbeitszeit kannst du Kunden in Rechnung stellen? Der Rest: Akquise, Buchhaltung, Weiterbildung.</span>
+        </div>
+      </div>
+
+      <!-- ERGEBNIS -->
+      <div class="panel result" aria-live="polite">
+        <div class="big">
+          <p class="lbl">Dein empfohlener Stundensatz</p>
+          <p class="num"><span id="r-rate">—</span></p>
+          <p class="sub">netto, ohne USt./MwSt.</p>
+        </div>
+        <div class="stats">
+          <div class="stat"><span class="k">Tagessatz (8 h)</span><span class="v" id="r-day">—</span></div>
+          <div class="stat"><span class="k">Nötiger Jahresumsatz</span><span class="v" id="r-year">—</span></div>
+          <div class="stat"><span class="k">Abrechenbare Std./Jahr</span><span class="v" id="r-bhours">—</span></div>
+          <div class="stat"><span class="k">Abrechenbare Std./Woche</span><span class="v" id="r-bweek">—</span></div>
+        </div>
+        <div class="bar" aria-hidden="true"><span id="r-bar" style="width:65%"></span></div>
+        <p class="barnote"><span id="r-billnote">65 % deiner Zeit ist abrechenbar</span></p>
+        <div class="warnote" id="r-warn"></div>
+        <p class="disc" style="margin-top:.9rem">Orientierungswert, keine Steuer- oder Rechtsberatung. Steuern und Sozialabgaben sind im Wunschgehalt einzuplanen.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="block" id="so-gehts">
+      <h2>So funktioniert die Berechnung</h2>
+      <div class="grid2">
+        <div class="card">
+          <h3>1. Dein Zielumsatz</h3>
+          <p>Wunschgehalt + Betriebskosten + Gewinnpuffer = was dein Geschäft im Jahr einbringen muss. Viele rechnen nur mit dem Gehalt und vergessen Kosten und Rücklagen — und arbeiten dann unter Wert.</p>
+        </div>
+        <div class="card">
+          <h3>2. Deine echten Arbeitstage</h3>
+          <p>365 Tage minus Wochenenden, Urlaub, Feiertage und Krankheit. Übrig bleiben deine tatsächlichen Arbeitstage — meist deutlich weniger, als man denkt.</p>
+        </div>
+        <div class="card">
+          <h3>3. Nur abrechenbare Stunden zählen</h3>
+          <p>Akquise, Angebote, Buchhaltung, Weiterbildung: nicht jede Arbeitsstunde landet auf einer Rechnung. Realistisch sind 50–70 %. Genau hier verkalkulieren sich die meisten.</p>
+        </div>
+        <div class="card">
+          <h3>4. Der faire Stundensatz</h3>
+          <p>Zielumsatz geteilt durch die wirklich abrechenbaren Stunden = dein Mindest-Stundensatz. Alles darunter heißt: draufzahlen. Dieser Rechner macht die Rechnung in Echtzeit.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta">
+      <h2>Mehr Tools &amp; ehrliche KI-Tipps für Selbstständige</h2>
+      <p>Dieser Rechner ist ein kostenloses Tool von aban news — dem täglichen KI-Newsletter für DACH-Solos und kleine Teams. 5 Minuten, kein Hype.</p>
+      <a href="/" class="btn">aban news kostenlos abonnieren →</a>
+    </div>
+
+    <section class="block" id="faq">
+      <h2>Häufige Fragen</h2>
+      <details>
+        <summary>Ist der berechnete Stundensatz brutto oder netto?</summary>
+        <div class="a">Es ist dein <strong>Netto-Stundensatz ohne Umsatzsteuer</strong>. Auf der Rechnung kommt — sofern du kein Kleinunternehmer bist — noch die MwSt./USt. obendrauf (die du ans Finanzamt abführst). Einkommensteuer und Sozialabgaben trägst du aus deinem Zielumsatz selbst — plane sie also schon im Wunschgehalt ein.</div>
+      </details>
+      <details>
+        <summary>Warum ist mein Stundensatz höher als ein Angestellten-Stundenlohn?</summary>
+        <div class="a">Weil du als Selbstständige:r alles selbst trägst: keine bezahlten Urlaubs- und Krankheitstage, keine Arbeitgeber-Sozialabgaben, eigene Versicherungen, eigene Geräte, Auftragsflauten und unbezahlte Akquise. Ein scheinbar „hoher" Stundensatz ist oft nur kostendeckend.</div>
+      </details>
+      <details>
+        <summary>Wie viele abrechenbare Stunden sind realistisch?</summary>
+        <div class="a">Bei 40 Wochenstunden arbeitest du theoretisch ~1.700 Std./Jahr. Abrechenbar sind davon meist nur 50–70 %. Wer Vollzeit-Auslastung mit 100 % abrechenbaren Stunden annimmt, setzt seinen Stundensatz fast immer zu niedrig an.</div>
+      </details>
+      <details>
+        <summary>Werden meine Eingaben gespeichert?</summary>
+        <div class="a">Nein. Der Rechner läuft vollständig in deinem Browser (JavaScript). Es werden keine Daten an einen Server gesendet, nichts gespeichert, kein Tracking. Du kannst die Seite auch offline nutzen, sobald sie geladen ist.</div>
+      </details>
+      <details>
+        <summary>Gilt das auch für Österreich und die Schweiz?</summary>
+        <div class="a">Ja. Die Rechenlogik ist überall gleich; über die Region stellst du Währung (€ bzw. CHF) und die ungefähre Zahl der Werktage ein. Steuer- und Sozialversicherungssysteme unterscheiden sich — die plane individuell in deinem Wunschgehalt ein.</div>
+      </details>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 · Ein kostenloses Tool von <a href="/">aban news</a></span>
+    <a href="/tools.html">KI-Tool-Database</a>
+    <a href="/geld-verdienen-mit-ki.html">Geld verdienen mit KI</a>
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  var ids = ["i-region","i-salary","i-costs","i-profit","i-hours","i-vacation","i-billable"];
+
+  function fmt(n, cur){
+    n = Math.round(n);
+    return cur + " " + n.toLocaleString("de-DE");
+  }
+
+  function calc(){
+    var regionEl = $("i-region");
+    var opt = regionEl.options[regionEl.selectedIndex];
+    var cur = opt.getAttribute("data-cur");
+    var workdaysFull = parseInt(opt.getAttribute("data-days"), 10); // Werktage/Jahr (ohne WE/Feiertage grob)
+
+    var salary = Math.max(0, +$("i-salary").value || 0);
+    var costs  = Math.max(0, +$("i-costs").value || 0);
+    var profit = (+$("i-profit").value || 0) / 100;
+    var hoursWk = Math.max(1, +$("i-hours").value || 1);
+    var vacation = Math.max(0, +$("i-vacation").value || 0);
+    var billable = Math.min(1, Math.max(0.01, (+$("i-billable").value || 0) / 100));
+
+    // Einheiten-Labels
+    $("u-salary").textContent = cur + "/Jahr";
+    $("u-costs").textContent  = cur + "/Jahr";
+    $("v-profit").textContent = Math.round(profit*100);
+    $("v-hours").textContent  = hoursWk;
+    $("v-vacation").textContent = vacation;
+    $("v-billable").textContent = Math.round(billable*100);
+
+    // Zielumsatz
+    var target = (salary + costs) * (1 + profit);
+
+    // Arbeitstage: grobe Werktage/Jahr minus Urlaub/Krankheit/Feiertage (vacation deckt das ab)
+    // workdaysFull ist ~Werktage ohne Wochenenden; Feiertage+Urlaub+Krankheit = vacation abziehen
+    var workdays = Math.max(1, workdaysFull - vacation);
+    var hoursPerDay = hoursWk / 5; // 5-Tage-Woche
+    var totalHours = workdays * hoursPerDay;
+    var billableHours = totalHours * billable;
+    var billableWeek = (hoursWk * billable);
+
+    var rate = target / billableHours;
+    var dayRate = rate * 8;
+
+    $("r-rate").textContent = fmt(rate, cur);
+    $("r-day").textContent  = fmt(dayRate, cur);
+    $("r-year").textContent = fmt(target, cur);
+    $("r-bhours").textContent = Math.round(billableHours).toLocaleString("de-DE");
+    $("r-bweek").textContent = Math.round(billableWeek) + " h";
+
+    $("r-bar").style.width = Math.round(billable*100) + "%";
+    $("r-billnote").textContent = Math.round(billable*100) + " % deiner Zeit ist abrechenbar (" +
+      Math.round(billableHours).toLocaleString("de-DE") + " von " +
+      Math.round(totalHours).toLocaleString("de-DE") + " Std./Jahr)";
+
+    // Warnhinweise
+    var warn = $("r-warn"); var msg = "";
+    if (billable >= 0.9) msg = "⚠️ Über 90 % abrechenbare Zeit ist sehr optimistisch — Akquise, Buchhaltung und Weiterbildung kosten real Zeit. Rechne lieber konservativer.";
+    else if (hoursWk > 50) msg = "⚠️ Über 50 Wochenstunden ist auf Dauer schwer durchzuhalten. Prüfe, ob der Stundensatz auch bei weniger Stunden trägt.";
+    else if (rate < 20) msg = "⚠️ Der errechnete Satz ist sehr niedrig — prüfe, ob Betriebskosten und Puffer realistisch sind.";
+    if (msg){ warn.textContent = msg; warn.classList.add("show"); }
+    else warn.classList.remove("show");
+  }
+
+  ids.forEach(function(id){
+    var el = $(id);
+    el.addEventListener("input", calc);
+    el.addEventListener("change", calc);
+  });
+  calc();
+})();
+</script>
+</body>
+</html>
