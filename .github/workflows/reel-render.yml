@@ -29,8 +29,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: ffmpeg + Fonts installieren
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+      - name: ffmpeg + Fonts + Pillow installieren
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core python3-pil
 
       - name: Reel rendern + enqueuen
         env:

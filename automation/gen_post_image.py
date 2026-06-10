@@ -168,8 +168,33 @@ def scrims(width, height):
     return ov
 
 
+def place_hero(product_img, W, H):
+    """Adaptive Produkt-Platzierung gegen Unschärfe:
+    - Hochauflösende Quelle (kurze Seite ≥ ~1.18× der Zielkante) → immersives Full-Bleed.
+    - Niedrig aufgelöste Quelle (typische CJ-Fotos ~750–800px) → Produkt in NAHEZU nativer,
+      scharfer Grösse zentriert auf einen unscharfen, abgedunkelten Marken-Hintergrund
+      (kein 2–2.5× Hochskalieren mehr → bleibt scharf, Produkt vollständig sichtbar)."""
+    src = product_img.convert("RGB")
+    iw, ih = src.size
+    # Tatsächlicher Hochskalier-Faktor beim Full-Bleed-Cover. ≤1.4 = noch scharf → immersiv;
+    # darüber (kleine ~750–800px-Quadrate skalieren 2–2.5×) → scharf-gerahmt.
+    cover_scale = max(W / iw, H / ih)
+    if cover_scale <= 1.4:
+        return enhance(cover_crop(src, W, H))
+    bg = cover_crop(src, W, H).filter(ImageFilter.GaussianBlur(46))
+    bg = ImageEnhance.Brightness(bg).enhance(0.5).convert("RGB")
+    target_long = min(int(max(W, H) * 0.62), int(max(iw, ih) * 1.30))
+    s = target_long / max(iw, ih)
+    fg = src.resize((max(1, int(iw * s)), max(1, int(ih * s))), Image.LANCZOS)
+    fg = ImageEnhance.Sharpness(fg).enhance(1.15)
+    fx = (W - fg.width) // 2
+    fy = int(H * 0.30) - fg.height // 2 + 70
+    bg.paste(fg, (fx, fy))
+    return bg
+
+
 def render_card(product_img, label, width, height):
-    hero = enhance(cover_crop(product_img, width, height))
+    hero = place_hero(product_img, width, height)
     canvas = hero.convert("RGBA")
     canvas.alpha_composite(scrims(width, height))
     draw = ImageDraw.Draw(canvas)
@@ -225,9 +250,9 @@ def render_story(product_img, label, width=1080, height=1920):
     """Echtes 1080×1920 Instagram-/Facebook-Story-Format mit Safe-Zones:
     Wortmarke unter dem IG-Story-Header (oben ~200px frei), Produktname + Pill
     ÜBER der Antwortleiste (unten ~300px frei) → Text wird NIE abgeschnitten,
-    wenn die Story 9:16 gepostet wird (kein Hochskalieren/Seiten-Crop mehr)."""
-    hero = enhance(cover_crop(product_img, width, height))
-    canvas = hero.convert("RGBA")
+    wenn die Story 9:16 gepostet wird (kein Hochskalieren/Seiten-Crop mehr).
+    Bei niedrig aufgelösten Produktfotos → scharf-gerahmt (place_hero) statt unscharf."""
+    canvas = place_hero(product_img, width, height).convert("RGBA")
     canvas.alpha_composite(scrims(width, height))
     draw = ImageDraw.Draw(canvas)
     pad = int(width * 0.066)

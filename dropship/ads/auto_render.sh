@@ -55,6 +55,9 @@ for ((j=0;j<N && j<TOTAL;j++)); do
   label=$(printf '%s' "$line" | cut -d, -f3-)
   nk=$((k+1))
   if curl -sL --fail "$url" -o "$IMGDIR/$nk.jpg"; then
+    # Schärfe-Fix: niedrig aufgelöste CJ-Fotos vor dem Render auf scharfes 1080x1920-Frame
+    # bringen (adaptiv: hochauflösend=Full-Bleed, klein=scharf-gerahmt). No-op ohne Pillow.
+    W=1080 H=1920 python3 "$ROOT/automation/frame_for_reel.py" "$IMGDIR/$nk.jpg" "$IMGDIR/$nk.jpg" >&2 || true
     echo "$label" >> "$IMGDIR/names.txt"; k=$nk
   else
     echo "WARN: Bild-Download fehlgeschlagen: $url" >&2
