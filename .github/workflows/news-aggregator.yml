@@ -37,7 +37,7 @@ jobs:
             git config user.name "aban-news-bot"
             git config user.email "bot@users.noreply.github.com"
             git commit -m "chore(news): frisches KI-News-Rohmaterial [skip ci]"
-            git push
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
           else
             echo "Kein neues Rohmaterial."
           fi

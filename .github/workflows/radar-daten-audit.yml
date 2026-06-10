@@ -32,7 +32,7 @@ jobs:
           if ! git diff --quiet -- reports/RADAR-DATEN-AUDIT.md; then
             git add reports/RADAR-DATEN-AUDIT.md
             git commit -m "chore(audit): Radar-Daten-Audit aktualisiert [skip ci]"
-            git push
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
           else
             echo "Keine Änderung am Audit-Report."
           fi

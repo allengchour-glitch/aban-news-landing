@@ -53,7 +53,7 @@ jobs:
             git config user.email "bot@users.noreply.github.com"
             git add social/posts_image.csv
             git commit -m "chore(social): neue Produkte in Post-Queue eingereiht [skip ci]"
-            git push
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
           else
             echo "Keine neuen Produkte — nichts zu committen."
           fi
