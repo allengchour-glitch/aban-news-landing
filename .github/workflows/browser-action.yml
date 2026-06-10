@@ -13,11 +13,12 @@ on:
         description: 'Aktion'
         type: choice
         default: 'check'
-        options: [check, ig-delete, tiktok-delete]
-      url:
-        description: 'Ziel-URL (Profil zum Prüfen oder Post/Video zum Löschen)'
+        options: [context-create, login-start, login-release, check, ig-delete, tiktok-delete]
+      arg:
+        description: 'URL (check/login-start/*-delete) ODER Session-ID (login-release) — bei context-create leer'
         type: string
-        required: true
+        required: false
+        default: ''
       confirm:
         description: 'Wirklich löschen? (sonst Dry-Run mit Screenshot)'
         type: boolean
@@ -57,7 +58,7 @@ jobs:
         run: |
           cd tools/browser
           FLAG=""; [ "${{ github.event.inputs.confirm }}" = "true" ] && FLAG="--confirm"
-          node agent_cloud.mjs "${{ github.event.inputs.action }}" "${{ github.event.inputs.url }}" $FLAG
+          node agent_cloud.mjs "${{ github.event.inputs.action }}" "${{ github.event.inputs.arg }}" $FLAG
 
       - name: Screenshots als Artefakt hochladen
         if: always()
