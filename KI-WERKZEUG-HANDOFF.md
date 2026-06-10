@@ -12,7 +12,9 @@
   Block-Skalar (PR #568). Audit: alle 100+ Workflows jetzt YAML-valide.
 - **Voice-Linter Dauer-Rot:** lief über interne Memory-Docs (`SHARED-MEMORY.md`) → Ausschluss erweitert
   (`*-HANDOFF/-MEMORY/-TODO/-CHECKLISTE.md`) (PR #567).
-- **Push-Race (systemisch!):** ~40 Bots pushen auf `main` → naives `git push` scheitert oft
+- **Push-Race VOLLSTÄNDIG abgesichert (PR #569/#571/#573):** 30 Bots (22 hart-rot + 8 weich/Datenverlust,
+  inkl. Autopilot) auf `pull --rebase + retry`. Gegencheck: keine aktive race-anfällige `git push` mehr.
+- **Push-Race (Ausgangslage):** ~40 Bots pushen auf `main` → naives `git push` scheitert oft
   (`! [rejected] … fetch first`). **31 Workflows race-anfällig.** Bestätigt rot: `daily-improvement` (2×/Tag),
   `image-render` → beide auf `pull --rebase + 5× retry` umgestellt (PR #569). **Muster** (wie LinkedIn-Autopost)
   für die übrigen 29 bei Bedarf nachziehen. Alternative: Bot-Frequenz drosseln (weniger Kollisionen + spart
