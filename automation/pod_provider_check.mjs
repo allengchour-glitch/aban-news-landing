@@ -46,15 +46,27 @@ if (!PF) {
 if (!GL) {
   console.log('GELATO: kein GELATO_API_KEY gesetzt → übersprungen.');
 } else {
-  console.log(`GELATO: Key gesetzt (Länge ${GL.length}). Teste Catalog-API …`);
+  console.log(`GELATO: Key gesetzt (Länge ${GL.length}). Teste verbundene Stores + Catalog …`);
   const H = { 'X-API-KEY': GL, 'Content-Type': 'application/json' };
-  const c = await jget('https://product.gelato.com/v3/catalogs', H);
-  if (!c.ok) {
-    console.error(`  ❌ Gelato-Auth fehlgeschlagen: HTTP ${c.status} ${JSON.stringify(c.j).slice(0,200)}`);
-  } else {
-    const cats = c.j?.data || c.j || [];
-    console.log(`  ✅ Gelato-Key gültig. Catalogs: ${Array.isArray(cats)?cats.length:'?'}`);
-    if (Array.isArray(cats)) for (const ct of cats.slice(0,12)) console.log(`     • ${ct.catalogUid || ct.title || JSON.stringify(ct).slice(0,60)}`);
-  }
+  // 1) verbundene E-Commerce-Stores (zeigt, ob Shopify in Gelato verbunden ist)
+  try {
+    const st = await jget('https://ecommerce.gelato.com/v1/stores', H);
+    if (st.ok) {
+      const stores = st.j?.stores || st.j?.data || (Array.isArray(st.j)?st.j:[]);
+      console.log(`  ✅ Gelato-Key gültig. Verbundene Stores: ${Array.isArray(stores)?stores.length:'?'}`);
+      if (Array.isArray(stores)) for (const s of stores) console.log(`     • ${s.id||s.storeId} | "${s.name||s.title||'?'}" | ${s.type||s.salesChannel||''}`);
+      if (Array.isArray(stores) && !stores.length) console.log('  🟡 KEIN Store in Gelato verbunden → Shopify-Store in Gelato verbinden (Dashboard → Stores).');
+    } else {
+      console.error(`  ⚠️ Gelato /stores: HTTP ${st.status} ${JSON.stringify(st.j).slice(0,160)}`);
+    }
+  } catch (e) { console.error('  ⚠️ Gelato /stores Fehler:', e.message); }
+  // 2) Catalog-Gegencheck (Auth-Beweis), tolerant
+  try {
+    const c = await jget('https://product.gelato.com/v3/catalogs', H);
+    if (c.ok) {
+      const cats = c.j?.data || (Array.isArray(c.j)?c.j:[]);
+      console.log(`  Gelato-Catalogs erreichbar: ${Array.isArray(cats)?cats.length:'?'}`);
+    } else console.error(`  ⚠️ Gelato /catalogs: HTTP ${c.status}`);
+  } catch (e) { console.error('  ⚠️ Gelato /catalogs Fehler:', e.message); }
 }
 console.log('=== Ende ===');
