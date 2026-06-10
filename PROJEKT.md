@@ -91,6 +91,9 @@ gemerged (zuletzt PR #599, FR/IT-Revert). **Komplett live & autonom — diese (a
   Startseiten-Vorschau (nutzt `markets.json`-`fx`). (b) **Sprach-Hinweis** `js/lang-suggest.js` — dezenter,
   dismissbarer Banner DE↔EN wenn Browsersprache ≠ Seitensprache (liest vorhandene `hreflang`-Alternates;
   **kein** Auto-Redirect, SEO-konform). Eingebunden auf `maerkte.html`/`en/maerkte.html`/`index.html`.
+- **Sprach-Banner site-weit ausgerollt (User „entscheide du"):** `tools`-loser Injektor hat `lang-suggest.js`
+  nach `announce.js` in **787 DE+EN-Seiten** mit `hreflang`-Alternates eingehängt (idempotent; 289 ohne
+  Alternate übersprungen; dropship unberührt). Banner ist no-op-sicher → einmal ausrollen reicht für alle.
 
 ## 📌 Stand 2026-06-08 (Teil 16) — Volle 4-Sprachen-Hub-Parität + Schema + Abend-TODO
 User: „alles weiter wo du kannst und das wo ich mache in todo abend". Erledigt & gemerged:
