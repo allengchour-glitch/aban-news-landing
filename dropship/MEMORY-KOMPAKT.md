@@ -204,3 +204,18 @@
 - Preise 25.90/32.90/46.90/28.90 (≈×2,3, reprice nicht nötig). Druck-Fulfillment läuft beim echten Kauf automatisch
   über `printful_sync` (placement POSTER→default, SKU→variant_id, Cloudinary-Druckdatei).
 - OFFEN/optional: Poster-Karte in die `/pages/selbst-gestalten`-Grid aufnehmen (Collection deckt Discovery schon ab).
+
+## 2026-06-10 — Header umgestaltet: LuxeStyle.ch-Logo + alle Menüpunkte sichtbar ✅
+- **Logo (Titelbild):** „titelbild" = das LuxeStyle-Logo soll die Domain zeigen. Header hatte KEIN Logo-Bild → nur Shop-Name-Text.
+  → Wortmarke **`pod/luxestyle-ch-logo.png`** (Serif, „.ch" in Marken-Gold #8b7355) erstellt, in Shopify-Files hochgeladen
+  (`MediaImage/69652492353921` → `shopify://shop_images/luxestyle-ch-logo.png`), und als Header-Logo gesetzt.
+  Tool `automation/set_header_logo.mjs` + `set-header-logo.yml` schreibt `current.logo` in `config/settings_data.json`
+  (LIVE-Theme via raw-API, Backup `dropship/theme-backups/settings_data.json.bak`, JSON-Validierung, REMOVE=1=Rollback).
+  LEHRE: Logo ist GLOBALES Theme-Setting `current.logo` (nicht in der header-Section); leer = Shop-Name-Text.
+- **Menü „man sieht nicht alles" (Desktop):** 11 Top-Items mit langen Labels (Emojis + „& …") → Theme klappte Überlauf
+  in „Mehr". → Top-Labels gekürzt (Entdecken, 🇨🇭 Schweiz, Mode, Gestalten, Schuhe, Schmuck, Beauty, Wohnen, Tech,
+  Geschenke, Sale) via `menuUpdate`. Ergebnis verifiziert: **ALLE 11 sichtbar, kein „Mehr" mehr.**
+  ⚠️ Storefront cached Header/Theme ~paar Min → nach Änderung kurz warten + Cache-Bust-URL zum Screenshoten.
+- **Energieklasse A–F (offen):** User „nur wo Label vorhanden" → echte EU-Energielabels nur bei wenigen Elektro-Produkten
+  (CJ liefert i.d.R. keine). Nächster Schritt: Tech/Gadgets-Katalog auf Produkte mit echtem Label prüfen, dann Klasse +
+  Label-Bild ergänzen. Keine Klassen erfinden (gesetzlich).
