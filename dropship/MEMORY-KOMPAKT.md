@@ -167,3 +167,15 @@
   lassen** (CI-API zwar offen, aber Store nie verbunden → kein Nutzen). Gelato-API aus CI weiterhin blockiert → Anlegen im UI.
 - **Noch KEIN Gelato-Produkt in Shopify** (neuestes Produkt 06-09) → User muss in Gelato „Publish to store" abschließen.
   Sobald da: Claude taggt `schweiz-edition`, Preis ×2,3, Collection+Menü.
+
+## 2026-06-10 — ERSTES Gelato-Produkt LIVE + per API veredelt ✅
+- **Gelato→Shopify-Sync FUNKTIONIERT.** User hat in Gelato ein Poster veröffentlicht → kam als
+  „Premium Semi-Glossy Paper Poster 13x18 cm" (vendor LuxeStyle, type „Print Material", SKU=UUID) in den Shop.
+  Motiv = **GRÜEZI** (ch-poster-gruezi).
+- **Claude-Veredelung per Shopify-API (productUpdate + productVariantsBulkUpdate):**
+  Titel „Schweiz-Poster «Grüezi» – Mundart-Kunstdruck", Typ Poster, Tags `schweiz-edition,poster,kunstdruck,mundart,geschenk,gelato`,
+  Mundart-Beschreibung, Preis 15.08→**14.90**, Handle→`schweiz-poster-gruezi` (URL luxestyle.ch/products/schweiz-poster-gruezi).
+  Produkt ACTIVE/Onlineshop, in Geschenk-Smart-Collections; `schweiz-edition`-Smartcollection indexiert async (paar Min).
+- **WORKFLOW etabliert:** User legt in Gelato an + „Publish to store" (einziger manueller Schritt) → Claude macht
+  Titel/Text/Preis/Tags/Collection/URL per API. Gelato-Produkte erkennbar an type „Print Material"/Gelato-Titel + UUID-SKU.
+- Printify weiter ungenutzt (disconnected) — Gelato deckt alles ab.
