@@ -11,3 +11,5 @@ Quellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).
 - luxe-hype1.wav  (dark/drive, ~150 BPM)
 - luxe-hype2.wav  (bouncy, ~146 BPM)
 - luxe-hype3.wav  (energetic, ~152 BPM)
+- luxe-house1.wav  (House, 124 BPM, A-Moll)
+- luxe-house2.wav  (House, 126 BPM, treibend)
