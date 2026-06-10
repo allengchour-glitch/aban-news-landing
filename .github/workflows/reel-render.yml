@@ -35,6 +35,10 @@ jobs:
       - name: Reel rendern + enqueuen
         env:
           N: ${{ github.event.inputs.n || '5' }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
         run: bash dropship/ads/auto_render.sh
 
       - name: Commit (Reel + Queue + Pointer)
@@ -42,8 +46,8 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name  "reel-render-bot"
             git config user.email "actions@users.noreply.github.com"
-            git add reels/ automation/reels_seed.csv automation/.render_pointer
-            git commit -m "reel-render: neues Auto-Reel + Queue ready [skip ci]"
+            git add reels/ automation/reels_seed.csv automation/.render_pointer social/video_queue.csv
+            git commit -m "reel-render: neues Auto-Reel + CDN-Host + Meta-Queue ready [skip ci]"
             git pull --rebase origin "${GITHUB_REF_NAME}" || true
             git push
           else

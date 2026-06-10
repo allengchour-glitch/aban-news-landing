@@ -93,5 +93,20 @@ CAP="$CAP"$'\n'"$MUSIC_CREDIT"          # CC-BY-Quellenangabe an die Caption anh
 TAGS="${TAGSETS[$(( start % ${#TAGSETS[@]} ))]}"
 printf '%s,%s,%s,%s,%s,%s,ready,,\n' "$ID" "$(date +%F)" "$(csv "$BASEURL/$SLUG.mp4")" "$(csv "$CAP")" "$(csv "$TAGS")" "$(csv "tiktok,instagram")" >> "$QUEUE"
 
+# 🌐 AUTO-HOST fürs Meta-Posten: Reel auf die öffentliche Shopify-CDN laden + in die Meta-Queue
+# (social/video_queue.csv, status=ready) eintragen. So postet video-meta-autopost es automatisch —
+# vollständig hands-off. No-op ohne SHOPIFY_SHOP (z.B. lokal) → dann nur reels_seed (Alt-Pfad).
+VQ="$ROOT/social/video_queue.csv"
+if [ -n "${SHOPIFY_SHOP:-}" ] && command -v node >/dev/null 2>&1; then
+  CDNURL=$(node "$ROOT/automation/upload_to_shopify_cdn.mjs" "$ROOT/reels/$SLUG.mp4" "LuxeStyle Reel $SLUG" 2>/dev/null | tail -1)
+  if printf '%s' "$CDNURL" | grep -q '^https://cdn.shopify.com/'; then
+    [ -f "$VQ" ] || printf 'id,scheduled_date,video_url,caption,platforms,status,posted_at,post_url\n' > "$VQ"
+    printf '%s,%s,%s,%s,,ready,,\n' "meta-$SLUG" "$(date +%F)" "$(csv "$CDNURL")" "$(csv "$CAP"$'\n'"$TAGS")" >> "$VQ"
+    echo ">> Meta-Queue: $SLUG → $CDNURL"
+  else
+    echo "CDN-Upload übersprungen/fehlgeschlagen: $CDNURL" >&2
+  fi
+fi
+
 echo ">> Auto-Reel: reels/$SLUG.mp4 ($k Produkte, Hook: \"$HOOK\") + Queue-Zeile ready. Pointer→$(cat "$PTR")"
 rm -rf "$WORK"
