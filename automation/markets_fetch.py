@@ -2,8 +2,10 @@
 """Aban News — Märkte-Datensammler (Preise + Finanz-News).
 
 Aktualisiert data/markets.json mit echten, öffentlich verfügbaren Daten:
-  • Aktien-Kurse + 24h-Änderung via Stooq (keyless CSV-Endpoint)
-  • Krypto-Kurse als statischer Fallback via CoinGecko (Browser aktualisiert live)
+  • Aktien-Kurse + Vortagesänderung via Yahoo Finance (Fallback: Stooq-CSV)
+  • Krypto-Kurse via CoinGecko (Browser aktualisiert sie zusätzlich live)
+  • 30-Tage-Sparklines (Yahoo 1mo / CoinGecko market_chart) — konsistenter Zeitraum
+  • FX-Kurse USD→CHF/EUR (EZB-Referenz via Frankfurter) für Mehrwährungs-Anzeige
   • Finanz-News-Schlagzeilen aus seriösen RSS-Feeds (echte Quellen, nichts erfunden)
 
 Pure stdlib (urllib + Regex). KEINE KI hier — Sentiment macht markets_ai.py.
@@ -27,8 +29,13 @@ HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data" / "markets.json"
 
 YAHOO_CHART = "https://query1.finance.yahoo.com/v8/finance/chart/{sym}?interval=1d&range=1mo"
+STOOQ_HIST = "https://stooq.com/q/d/l/?s={sym}&i=d"  # Fallback (CSV), falls Yahoo blockt
 COINGECKO = ("https://api.coingecko.com/api/v3/coins/markets"
-             "?vs_currency=usd&ids={ids}&price_change_percentage=24h&sparkline=true")
+             "?vs_currency=usd&ids={ids}&price_change_percentage=24h")
+COINGECKO_CHART = ("https://api.coingecko.com/api/v3/coins/{id}/market_chart"
+                   "?vs_currency=usd&days=30&interval=daily")
+# FX (USD→…) via Frankfurter (offizielle EZB-Referenzkurse, keyless, kein Tracking).
+FX_URL = "https://api.frankfurter.app/latest?from=USD&to=CHF,EUR"
 
 FINANCE_FEEDS = {
     "CNBC Markets": "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=20910258",
@@ -83,7 +90,30 @@ def yahoo_quote(symbol: str):
             "spark": downsample(closes, 24)}
 
 
-# ---------- Krypto (CoinGecko, Fallback) ----------
+def stooq_quote(symbol: str):
+    """Fallback: letzter + vorletzter Tagesschluss aus der Stooq-Tageshistorie (CSV)."""
+    try:
+        csv = fetch(STOOQ_HIST.format(sym=symbol))
+    except Exception as ex:
+        sys.stderr.write(f"  Stooq {symbol}: {ex}\n")
+        return None
+    if "<html" in csv[:200].lower():  # JS-Wall statt CSV
+        return None
+    rows = [ln.split(",") for ln in csv.strip().splitlines() if ln[:1].isdigit()]
+    if len(rows) < 2:
+        return None
+    try:
+        closes = [float(r[4]) for r in rows]
+    except (ValueError, IndexError):
+        return None
+    price, prev = closes[-1], closes[-2]
+    change = ((price - prev) / prev * 100.0) if prev else None
+    return {"price": round(price, 2),
+            "change_24h": round(change, 2) if change is not None else None,
+            "spark": downsample(closes, 24)}
+
+
+# ---------- Krypto (CoinGecko) ----------
 def coingecko_quotes(ids):
     if not ids:
         return {}
@@ -95,13 +125,36 @@ def coingecko_quotes(ids):
         return {}
     out = {}
     for row in data:
-        spark = (row.get("sparkline_in_7d") or {}).get("price") or []
         out[row.get("id")] = {
             "price": row.get("current_price"),
             "change_24h": (round(row["price_change_percentage_24h"], 2)
                            if row.get("price_change_percentage_24h") is not None else None),
-            "spark": downsample(spark, 24),
         }
+    return out
+
+
+def coingecko_spark30(coin_id):
+    """30-Tage-Tagespreise (für die Sparkline, konsistent mit Aktien)."""
+    try:
+        raw = fetch(COINGECKO_CHART.format(id=coin_id))
+        prices = [p[1] for p in json.loads(raw).get("prices", [])]
+    except Exception as ex:
+        sys.stderr.write(f"  CoinGecko-Chart {coin_id}: {ex}\n")
+        return []
+    return downsample(prices, 24)
+
+
+def fetch_fx():
+    """USD→CHF/EUR (EZB-Referenz). Rückgabe inkl. usd:1.0, no-op-sicher → {}."""
+    try:
+        rates = json.loads(fetch(FX_URL)).get("rates", {})
+    except Exception as ex:
+        sys.stderr.write(f"  FX: {ex}\n")
+        return {}
+    out = {"usd": 1.0}
+    for k in ("CHF", "EUR"):
+        if k in rates:
+            out[k.lower()] = round(float(rates[k]), 4)
     return out
 
 
@@ -172,17 +225,25 @@ def main() -> int:
             if q and q.get("price") is not None:
                 a["price"] = q["price"]
                 a["change_24h"] = q["change_24h"]
-                if q.get("spark"):
-                    a["spark"] = q["spark"]
+                spark = coingecko_spark30(a["coingecko_id"])
+                if spark:
+                    a["spark"] = spark
                 updated += 1
         elif a.get("type") == "stock" and a.get("yahoo_symbol"):
             q = yahoo_quote(a["yahoo_symbol"])
+            if not q and a.get("stooq_symbol"):
+                q = stooq_quote(a["stooq_symbol"])  # Fallback
             if q:
                 a["price"] = q["price"]
                 a["change_24h"] = q["change_24h"]
                 if q.get("spark"):
                     a["spark"] = q["spark"]
                 updated += 1
+
+    # FX-Kurse (CHF/EUR)
+    fx = fetch_fx()
+    if fx:
+        data["fx"] = fx
 
     # News
     news = fetch_news()

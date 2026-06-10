@@ -21,6 +21,31 @@
   function saveWatch(w) { try { localStorage.setItem(WATCH_KEY, JSON.stringify(w)); } catch (e) {} }
   var watch = loadWatch();
 
+  // ---------- i18n (DE/EN je nach <html lang>) ----------
+  var LANG = (document.documentElement.lang || 'de').slice(0, 2) === 'en' ? 'en' : 'de';
+  var T = {
+    de: { krypto: 'Krypto', aktie: 'Aktie', conf: 'KI-Konfidenz', noNews: 'Aktuell keine News.',
+          sources: 'Quellen: ', asof: 'Stand: ', cryptoLive: ' · Krypto live', ai: ' · KI: ',
+          rate: 'Kurs: ', endval: 'Endwert ≈ ', paid: 'Eingezahlt', gain: 'Wertzuwachs', valueIn: 'Wert in ',
+          unavailable: 'Marktdaten zurzeit nicht verfügbar.',
+          stale: '⚠️ Daten evtl. veraltet (letzter Lauf vor über {h} h).' },
+    en: { krypto: 'Crypto', aktie: 'Stock', conf: 'AI confidence', noNews: 'No news right now.',
+          sources: 'Sources: ', asof: 'As of: ', cryptoLive: ' · crypto live', ai: ' · AI: ',
+          rate: 'Rate: ', endval: 'Final value ≈ ', paid: 'Paid in', gain: 'Gain', valueIn: 'Value in ',
+          unavailable: 'Market data currently unavailable.',
+          stale: '⚠️ Data may be stale (last run over {h} h ago).' }
+  }[LANG];
+
+  // ---------- Währung (USD/CHF/EUR, localStorage) ----------
+  var CUR_KEY = 'aban_markets_cur';
+  var cur = (function () { try { return localStorage.getItem(CUR_KEY) || 'usd'; } catch (e) { return 'usd'; } })();
+  function setCur(c) { cur = c; try { localStorage.setItem(CUR_KEY, c); } catch (e) {} }
+  function rate() { return (state.fx && state.fx[cur]) || 1; }
+  function fmtMoney(usdVal) {
+    if (usdVal === null || usdVal === undefined || isNaN(usdVal)) return '—';
+    return fmtPrice(usdVal * rate(), cur);
+  }
+
   // ---------- Helfer ----------
   function fmtPrice(v, cur) {
     if (v === null || v === undefined || isNaN(v)) return '—';
@@ -116,11 +141,11 @@
       var tdName = document.createElement('td');
       tdName.appendChild(el('span', 'asset-name', a.name));
       tdName.appendChild(el('span', 'asset-sym', a.symbol));
-      tdName.appendChild(el('span', 'tag-type', a.type === 'crypto' ? 'Krypto' : 'Aktie'));
+      tdName.appendChild(el('span', 'tag-type', a.type === 'crypto' ? T.krypto : T.aktie));
       tr.appendChild(tdName);
 
       var tdPrice = el('td', 'num');
-      tdPrice.textContent = fmtPrice(a.price, a.currency);
+      tdPrice.textContent = fmtMoney(a.price);
       tr.appendChild(tdPrice);
 
       var ch = fmtChange(a.change_24h);
@@ -161,7 +186,7 @@
       card.appendChild(el('p', 'crat', a.rationale || ''));
 
       if (typeof a.confidence === 'number' && a.confidence > 0) {
-        card.appendChild(el('p', 'cconf', 'KI-Konfidenz: ' + Math.round(a.confidence * 100) + ' %'));
+        card.appendChild(el('p', 'cconf', T.conf + ': ' + Math.round(a.confidence * 100) + ' %'));
       }
       wrap.appendChild(card);
     });
@@ -173,7 +198,7 @@
     if (!ul) return;
     ul.innerHTML = '';
     if (!news || !news.length) {
-      ul.appendChild(el('li', null, 'Aktuell keine News.'));
+      ul.appendChild(el('li', null, T.noNews));
       return;
     }
     news.forEach(function (n) {
@@ -199,7 +224,7 @@
     if (!p) return;
     p.innerHTML = '';
     if (!quellen || !quellen.length) return;
-    p.appendChild(document.createTextNode('Quellen: '));
+    p.appendChild(document.createTextNode(T.sources));
     quellen.forEach(function (q, i) {
       var a = document.createElement('a');
       a.href = q.url; a.textContent = q.titel; a.target = '_blank'; a.rel = 'noopener';
@@ -212,15 +237,24 @@
     var p = document.getElementById('lastUpdated');
     if (!p) return;
     var when = data.last_updated || '';
-    var engine = data.ai_engine && data.ai_engine !== 'seed' ? ' · KI: ' + data.ai_engine : '';
-    p.textContent = when ? ('Stand: ' + when + engine + ' · Krypto live') : '';
+    var engine = data.ai_engine && data.ai_engine !== 'seed' ? T.ai + data.ai_engine : '';
+    p.textContent = when ? (T.asof + when + engine + T.cryptoLive) : '';
+    // Stale-Warnung: wenn der letzte Daten-Lauf > 26 h her ist.
+    var warn = document.getElementById('staleWarn');
+    if (warn && data.fetched_at) {
+      var ageH = (Date.now() - new Date(data.fetched_at).getTime()) / 3.6e6;
+      if (ageH > 26) {
+        warn.textContent = T.stale.replace('{h}', Math.round(ageH));
+        warn.style.display = 'block';
+      } else { warn.style.display = 'none'; }
+    }
   }
 
   // ---------- Live-Ticker ----------
   function tickerItem(a) {
     var span = el('span', 'tk');
     span.appendChild(el('span', 'tk-sym', a.symbol));
-    span.appendChild(el('span', 'tk-px', fmtPrice(a.price, a.currency)));
+    span.appendChild(el('span', 'tk-px', fmtMoney(a.price)));
     var ch = fmtChange(a.change_24h);
     span.appendChild(el('span', 'tk-ch ' + ch.cls, ch.txt));
     return span;
@@ -255,29 +289,35 @@
       var a = state.byId[sel.value];
       return a && typeof a.price === 'number' ? a.price : null;
     }
+    function syncLabel() {
+      var lab = document.getElementById('convCurLabel');
+      if (lab) lab.textContent = T.valueIn + cur.toUpperCase();
+    }
     function fromAmount() {
+      syncLabel();
       var p = price(), n = parseFloat(amt.value);
       if (p === null || isNaN(n)) { usd.value = ''; out.textContent = '—'; return; }
-      var v = n * p;
-      usd.value = v.toFixed(2);
+      var v = n * p;                 // USD
+      usd.value = (v * rate()).toFixed(2);
       var a = state.byId[sel.value];
       out.innerHTML = '';
       out.appendChild(document.createTextNode(
-        n.toLocaleString('de-CH') + ' ' + a.symbol + ' ≈ ' + fmtPrice(v, 'usd')));
+        n.toLocaleString(LANG === 'en' ? 'en' : 'de-CH') + ' ' + a.symbol + ' ≈ ' + fmtMoney(v)));
       var s = document.createElement('small');
-      s.textContent = 'Kurs: ' + fmtPrice(p, 'usd') + ' / ' + a.symbol;
+      s.textContent = T.rate + fmtMoney(p) + ' / ' + a.symbol;
       out.appendChild(s);
     }
-    function fromUsd() {
+    function fromMoney() {
       var p = price(), n = parseFloat(usd.value);
       if (p === null || isNaN(n) || p === 0) { return; }
-      amt.value = (n / p).toFixed(6);
+      var usdVal = n / rate();
+      amt.value = (usdVal / p).toFixed(6);
       fromAmount();
     }
     sel.addEventListener('change', fromAmount);
     amt.addEventListener('input', fromAmount);
-    usd.addEventListener('input', fromUsd);
-    state.convUpdate = fromAmount; // bei Live-Refresh neu rechnen
+    usd.addEventListener('input', fromMoney);
+    state.convUpdate = fromAmount; // bei Live-Refresh / Währungswechsel neu rechnen
     fromAmount();
   }
 
@@ -301,9 +341,9 @@
         catch (e) { return Math.round(x) + ' CHF'; }
       };
       out.innerHTML = '';
-      out.appendChild(document.createTextNode('Endwert ≈ ' + fmt(fv)));
+      out.appendChild(document.createTextNode(T.endval + fmt(fv)));
       var s = document.createElement('small');
-      s.textContent = 'Eingezahlt ' + fmt(paid) + ' · Wertzuwachs ' + fmt(gain);
+      s.textContent = T.paid + ' ' + fmt(paid) + ' · ' + T.gain + ' ' + fmt(gain);
       out.appendChild(s);
     }
     [m, y, r].forEach(function (inp) { inp.addEventListener('input', calc); });
@@ -345,11 +385,38 @@
       .catch(function () { /* still: Snapshot bleibt stehen */ });
   }
 
+  // ---------- Währungs-Umschalter ----------
+  function initCurrency() {
+    var box = document.getElementById('curSel');
+    if (!box) return;
+    var avail = state.fx || { usd: 1 };
+    var btns = box.querySelectorAll('button[data-cur]');
+    Array.prototype.forEach.call(btns, function (b) {
+      var c = b.getAttribute('data-cur');
+      if (!avail[c]) { b.disabled = true; return; }     // ohne FX-Rate ausgrauen
+      b.classList.toggle('on', c === cur);
+      b.setAttribute('aria-pressed', c === cur ? 'true' : 'false');
+      b.addEventListener('click', function () {
+        if (!avail[c]) return;
+        setCur(c);
+        Array.prototype.forEach.call(btns, function (x) {
+          var on = x.getAttribute('data-cur') === cur;
+          x.classList.toggle('on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        renderTable(); renderTicker();
+        if (typeof state.convUpdate === 'function') state.convUpdate();
+      });
+    });
+  }
+
   // ---------- Init ----------
   function init(data) {
     state.assets = (data.assets || []).slice();
+    state.fx = data.fx || { usd: 1 };
+    if (!state.fx[cur]) cur = 'usd';                    // gewählte Währung ohne Rate → USD
     state.byId = {};
     state.assets.forEach(function (a) { state.byId[a.id] = a; });
+    initCurrency();
     renderTable();
     renderTicker();
     renderCards();
@@ -369,11 +436,11 @@
       if (data) init(data);
       else {
         var tbody = document.getElementById('marketRows');
-        if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="color:var(--muted)">Marktdaten zurzeit nicht verfügbar.</td></tr>';
+        if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="color:var(--muted)">' + T.unavailable + '</td></tr>';
       }
     })
     .catch(function () {
       var tbody = document.getElementById('marketRows');
-      if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="color:var(--muted)">Marktdaten zurzeit nicht verfügbar.</td></tr>';
+      if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="color:var(--muted)">' + T.unavailable + '</td></tr>';
     });
 })();

@@ -21,6 +21,10 @@
 /data/*
   Cache-Control: public, max-age=86400
 
+# Markt-Daten ändern sich mehrmals täglich → kurz cachen (spätere Regel hat Vorrang)
+/data/markets.json
+  Cache-Control: public, max-age=300, must-revalidate
+
 # HTML: kürzer cachen (Inhalt kann sich ändern)
 /*.html
   Cache-Control: public, max-age=3600, must-revalidate
