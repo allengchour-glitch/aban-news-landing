@@ -4,6 +4,21 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 📌 2026-06-10 — Automation-Health-Sweep (mehrere tote/rote Bots gefixt)
+- **Vorgehen (User: „alles todo, weiter mit automation"):** alle Bots auf Fehlerklassen geprüft.
+- **`int(os.environ.get())`-Bug** (leere GitHub-Var = `''` → Crash): nur `autopilot.py` betroffen (PR #564/#565,
+  verifiziert SUCCESS). `gen_post_image` durch `|| '5'` im Workflow geschützt. Sonst keine.
+- **Invalides Workflow-YAML:** `sichtbarkeit-monitor.yml` startete NIE (`: ` im run-String → ScannerError) →
+  Block-Skalar (PR #568). Audit: alle 100+ Workflows jetzt YAML-valide.
+- **Voice-Linter Dauer-Rot:** lief über interne Memory-Docs (`SHARED-MEMORY.md`) → Ausschluss erweitert
+  (`*-HANDOFF/-MEMORY/-TODO/-CHECKLISTE.md`) (PR #567).
+- **Push-Race (systemisch!):** ~40 Bots pushen auf `main` → naives `git push` scheitert oft
+  (`! [rejected] … fetch first`). **31 Workflows race-anfällig.** Bestätigt rot: `daily-improvement` (2×/Tag),
+  `image-render` → beide auf `pull --rebase + 5× retry` umgestellt (PR #569). **Muster** (wie LinkedIn-Autopost)
+  für die übrigen 29 bei Bedarf nachziehen. Alternative: Bot-Frequenz drosseln (weniger Kollisionen + spart
+  Actions-Minuten, relevant falls Repo wieder privat mit Pro).
+- **TikTok-Autopost** rot = kein TT_ACCESS_TOKEN (No-Op-gedacht, TikTok-API nicht aktiv) → kein Bug, niedrige Prio.
+
 ## 📌 2026-06-10 — Autopilot-Bug gefunden & gefixt (war faktisch tot!)
 - **`automation/autopilot.py` crashte bei JEDEM Lauf:** gesetzte-aber-leere GitHub-Variable liefert `''` →
   `int(os.environ.get("ABAN_QUEUE_MIN","5"))` = `int("")` → ValueError, Abbruch vor jeder Arbeit. **Der
