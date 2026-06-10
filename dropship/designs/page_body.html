@@ -33,7 +33,10 @@
 <p class="dg-foot">Über 335 Motive · ständig neue dazu · bald auch als fertige Aufkleber &amp; Poster</p>
 <div class="dg-stick"><a href="/pages/selbst-gestalten">🎨 Jetzt selbst gestalten</a></div>
 <script>
-(function(){var g=document.getElementById('dgrid');document.querySelectorAll('.dc').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.dc').forEach(function(x){x.classList.remove('active')});b.classList.add('active');var f=b.getAttribute('data-f');g.querySelectorAll('.dt').forEach(function(t){t.style.display=(f==='all'||t.getAttribute('data-c')===f)?'flex':'none'});});});
-g.querySelectorAll('.dt').forEach(function(t){t.addEventListener('click',function(){window.location.href='/pages/selbst-gestalten'});});})();
+(function(){var g=document.getElementById('dgrid');function apply(f){document.querySelectorAll('.dc').forEach(function(x){x.classList.toggle('active',x.getAttribute('data-f')===f)});g.querySelectorAll('.dt').forEach(function(t){t.style.display=(f==='all'||t.getAttribute('data-c')===f)?'flex':'none'});}
+document.querySelectorAll('.dc').forEach(function(b){b.addEventListener('click',function(){apply(b.getAttribute('data-f'));});});
+g.querySelectorAll('.dt').forEach(function(t){t.addEventListener('click',function(){window.location.href='/pages/selbst-gestalten'});});
+var q=(decodeURIComponent(location.hash.replace('#',''))||new URLSearchParams(location.search).get('cat')||'').trim();
+if(q){var m=Array.prototype.slice.call(document.querySelectorAll('.dc')).filter(function(x){return x.getAttribute('data-f').toLowerCase()===q.toLowerCase();})[0];if(m){apply(m.getAttribute('data-f'));m.scrollIntoView({inline:'center',block:'nearest'});}}})();
 </script>
 </div>
