@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ETFs for beginners — the honest, boring way | aban news</title>
-<meta name="description" content="ETFs explained for beginners: what an ETF is, why it's the honest default choice, how it works, and the rules that protect you. Anti-hype, not investment advice.">
+<meta name="description" content="ETFs explained for beginners: what an ETF is, why it's the honest default choice, how it works, and the rules that protect you. With a free ETF cost calculator (TER impact). Anti-hype, not investment advice.">
 <link rel="canonical" href="https://abannews.com/en/etf-fuer-einsteiger.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/etf-fuer-einsteiger.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/etf-fuer-einsteiger.html">
@@ -89,6 +89,41 @@
   <div class="tip"><h3><span class="n">4.</span> Don't panic-sell</h3><p>Crashes are part of it. Selling in a crash turns a paper loss into a real one. The plan only works if you stay in.</p></div>
   <div class="tip"><h3><span class="n">5.</span> Beware theme &amp; hype ETFs</h3><p>"AI ETF", "crypto ETF", "cannabis ETF": narrow trend baskets are often expensive and arrive after the hype has already run. The word in the name is no return promise.</p></div>
   <div class="tip"><h3><span class="n">6.</span> Know the tax basics</h3><p>Depending on your country (DE/AT/CH) different rules apply to income and sales. Clarify the details with a professional — this is not tax advice.</p></div>
+
+  <section aria-label="ETF cost calculator" style="border:1px solid var(--line);border-radius:14px;padding:20px;margin:26px 0;background:#fff">
+    <h2 style="margin-top:0">Run the numbers: what does the fee cost you?</h2>
+    <p style="margin:.2rem 0 1rem">0.5% more in fees sounds harmless — over decades it eats a fortune. Compare two ETFs with different cost ratios (TER). Runs in your browser, nothing is stored or sent.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px">
+      <label style="font-size:.88rem;color:var(--ink2)">Amount invested (€)<input id="te-amt" type="number" min="0" step="500" value="10000" inputmode="numeric" style="display:block;width:100%;margin-top:4px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:1rem"></label>
+      <label style="font-size:.88rem;color:var(--ink2)">Years<input id="te-years" type="number" min="1" max="60" step="1" value="25" inputmode="numeric" style="display:block;width:100%;margin-top:4px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:1rem"></label>
+      <label style="font-size:.88rem;color:var(--ink2)">Gross return p.a. (%)<input id="te-gross" type="number" min="0" max="20" step="0.5" value="6" inputmode="decimal" style="display:block;width:100%;margin-top:4px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:1rem"></label>
+      <label style="font-size:.88rem;color:var(--ink2)">Cheaper ETF — TER (%)<input id="te-low" type="number" min="0" max="5" step="0.05" value="0.20" inputmode="decimal" style="display:block;width:100%;margin-top:4px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:1rem"></label>
+      <label style="font-size:.88rem;color:var(--ink2)">Pricier ETF — TER (%)<input id="te-high" type="number" min="0" max="5" step="0.05" value="0.80" inputmode="decimal" style="display:block;width:100%;margin-top:4px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:1rem"></label>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:16px">
+      <div style="background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px 14px"><span style="font-size:.85rem;color:var(--muted);display:block">Final value — cheaper ETF</span><b id="te-rlow" style="font-size:1.3rem;color:var(--amber-dk)">–</b></div>
+      <div style="background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px 14px"><span style="font-size:.85rem;color:var(--muted);display:block">Final value — pricier ETF</span><b id="te-rhigh" style="font-size:1.3rem">–</b></div>
+      <div style="background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px 14px"><span style="font-size:.85rem;color:var(--muted);display:block">The pricier TER costs you</span><b id="te-diff" style="font-size:1.3rem;color:#b91c1c">–</b></div>
+    </div>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:12px">Simplified calculation (lump sum, constant return). Real prices swing, and other costs/taxes are not included. <strong>Not investment advice, not a guarantee.</strong></p>
+    <script>
+    (function(){
+      var ids=['te-amt','te-years','te-gross','te-low','te-high'];
+      var fmt=new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR',maximumFractionDigits:0});
+      function val(id,max){var v=parseFloat(document.getElementById(id).value);if(isNaN(v)||v<0)v=0;if(max!=null&&v>max)v=max;return v;}
+      function fv(a,net,y){return a*Math.pow(1+net/100,y);}
+      function calc(){
+        var a=val('te-amt'),y=val('te-years',60),g=val('te-gross',50),lo=val('te-low',5),hi=val('te-high',5);
+        var rl=fv(a,g-lo,y),rh=fv(a,g-hi,y);
+        document.getElementById('te-rlow').textContent=fmt.format(rl);
+        document.getElementById('te-rhigh').textContent=fmt.format(rh);
+        document.getElementById('te-diff').textContent=fmt.format(Math.max(0,rl-rh));
+      }
+      ids.forEach(function(id){document.getElementById(id).addEventListener('input',calc);});
+      calc();
+    })();
+    </script>
+  </section>
 
   <div class="cta">
     <h2 style="margin-top:0">aban news makes sense of the AI wave — in markets too</h2>
