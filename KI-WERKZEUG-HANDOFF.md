@@ -4,6 +4,12 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-10 - Tiefe Verlinkung (User-Wunsch: alles verlinken, tiefgruendiger)
+- Hype-Detektor in ALLE Branchen-Hubs ueber tools/add_branchen_funnel.py (DE+EN-Block): 316 DE + 313 EN = 629
+  Hubs verlinken ihn. + Homepage-Footer (5 neue Tools + Alle Tools) + maerkte.html (PR #590).
+- Merke: Tool-Familie ueber den FUNNEL-GENERATOR verlinken (skaliert auf alle Hubs), nicht per Hand editieren.
+- maerkte.html ist gut vernetzt (Top-Nav + Footer + von 139 Seiten verlinkt).
+
 ## 📌 2026-06-10 — Großes Link-Leck gefixt (1.259 tote CTAs)
 - **Link-Checker-Fund:** mehrere `*.abannews.com`-Subdomains lösen per DNS NICHT auf (nicht deployt), aber
   massiv verlinkt: **`tools.abannews.com`** (KI-Tools-Verzeichnis) auf **1.259 Seiten** als amber-CTA — tot!
