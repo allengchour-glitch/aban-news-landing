@@ -30,7 +30,7 @@
 |---|---|
 | `GEMINI_API_KEY` | ✅ gesetzt (Billing aktiv) — KI-Bilder via Action |
 | Meta (IG/FB/Threads) | ✅ gesetzt — Social-Posten läuft |
-| `SHOPIFY_SHOP` + `SHOPIFY_CLIENT_ID/SECRET` | ❌ offen → für Autopilot/Auto-Queue (User, ABEND-TODO §1) |
+| `SHOPIFY_SHOP` + `SHOPIFY_CLIENT_ID/SECRET` | ✅ GESETZT (10.06.) — Autopilot/edited-product-images laufen |
 | `CJ_EMAIL` + `CJ_API_KEY` | ❌ als Repo-Secret offen (in-Session vorhanden) |
 | TikTok | ⏳ Reel-Autopost GEBAUT (FILE_UPLOAD, kein Domain-Verify) — fehlen nur 4 Secrets: TT_CLIENT_KEY/SECRET/ACCESS_TOKEN/REFRESH_TOKEN. Anleitung: `dropship/TIKTOK-AUTOPOST-AKTIVIEREN.md` |
 | `YT_API_KEY` | ❌ offen (Video-Session) |
@@ -111,6 +111,30 @@
   - **15 frische Reel-Produkte verifiziert:** alle 6 Kanäle, korrekte Kollektionen, SEO+Trust-Text vorhanden.
   - **3 verstümmelte SEO-Titel gefixt** (FlexHold/Coeur/Serpent — Auto-Generator hatte Compound-Wörter zerlegt).
   - Engpass bleibt **Reichweite** (3 User-Klicks: TikTok-Conversion-Kampagne + Pixel + Budget), nicht der Shop.
+
+**2026-06-10 — Luxestyle product session (Branch nach `main` gemergt — alles live & automatisch):**
+- **✅ 3 PRs nach `main` gemergt** (#586, #597, #603) → ALLE Workflows laufen jetzt vom **main**-Cron
+  (Meta-Posts, Reels, Moderation, Bild-Gen) = hands-off. Branch bleibt `claude/luxestyle-product-CizQ6`.
+- **✅ SHOPIFY-SECRET vom User gesetzt** (`SHOPIFY_SHOP`/`CLIENT_ID`/`SECRET`) → Admin-API-Workflows aktiv.
+- **✅ 235 SCHRIFTLOSE EDIT-BILDER in die Produkt-Galerien** (alle cj-real außer Bali) via neuem
+  `automation/upload_edited_product_images.py` + `edited-product-images.yml` (workflow_dispatch, **idempotent**
+  via alt-Prefix „LuxeStyle-Edit", Bali ausgeschlossen, Throttle). `render_product_clean()` = ganzes Produkt
+  scharf+veredelt auf unscharfem Marken-BG, **kein Text**. Lauf: 235 hochgeladen, 0 Fehler. Jederzeit per Klick
+  wiederholbar (auch neue Produkte).
+- **🖼️ SCHÄRFE/FORMAT-FIXES (gen_post_image):** `place_hero()` adaptiv (cover-scale ≤1.4 → Full-Bleed, sonst
+  scharf-gerahmt) gegen unscharfe 750–800px-CJ-Fotos; echtes **1080×1920-Story-Format** mit Safe-Zones +
+  optionalem **★-Rating-Badge**; **IG-Reel-Cover** via `thumb_offset` (kein weisses Intro mehr).
+  **LEHRE:** `featuredImage` ist oft winziges Thumbnail (Bali 361px) — grösstes Produktbild nehmen.
+- **🎵 Techno-Musik-Pool** `automation/music/` (Voltaic/Electrodoodle/Digital-Lemonade, Kevin MacLeod CC-BY),
+  `auto_render.sh` rotiert + hängt CC-BY-Credit an Caption. **🚫 DO-NOT-POST.txt** (Bali, Augenmassage).
+- **📣 SOCIAL-AUFTEILUNG (Best Practice, umgesetzt):** **Produktseiten = schriftlos**, **Social-Posts = MIT Text**
+  (Marke+Titel+−10%-Pill → Angebot ohne Caption sichtbar = mehr Klicks). Heute live gepostet (IG+FB+Threads):
+  Aurora (mit Text) · Ibiza-Edit (schriftlos) · Plateau-Sandalen (mit Text). 6 weitere mit-Text in `posts_image.csv`
+  ready → Cron drippt 2×/Tag. Bild-Hosting für Social = **Shopify-CDN** (abannews.com war 404).
+- **🎵 TikTok-Reel-Autopost GEBAUT** (`tiktok-autopost.mjs`, FILE_UPLOAD, kein Domain-Verify) → fehlen nur
+  4 Secrets `TT_CLIENT_KEY/SECRET/ACCESS_TOKEN/REFRESH_TOKEN` (User-OAuth, `dropship/TIKTOK-AUTOPOST-AKTIVIEREN.md`).
+  Es gibt **kein** TikTok-API-Tool in der Session — Posten geht nur über diese Action.
+- **✅ Pixel `D8EKVR3C77U6KT5BTBD0` geht** (Conversion-Tracking live). Offen für Käufe: TikTok-Kampagne Ziel „Kauf" + Budget.
 - **🎨 VISUAL-FIXES (09.06. spät):** (1) **Story-Format 1080×1920** mit Safe-Zones in `gen_post_image.py`
   (`render_story`) — Feed-Bild als Story war seitlich abgeschnitten. (2) **IG-Reel-Cover** = Produkt-Frame
   statt weisses Intro (`thumb_offset` in video-autopost-meta). (3) **Schärfe-Fix `place_hero()`**: CJ-Fotos
