@@ -99,16 +99,43 @@ def parse_json(txt: str):
     # Markdown-Code-Fences entfernen, JSON-Objekt extrahieren, tolerant parsen
     # (strict=False erlaubt echte Zeilenumbrueche in Strings — Gemini liefert die oft so).
     t = re.sub(r"^```(?:json)?|```$", "", txt.strip(), flags=re.M).strip()
-    m = re.search(r"\{.*\}", t, re.S)
-    if not m:
+    start = t.find("{")
+    if start == -1:
         return None
-    raw = m.group(0)
-    for cand in (raw, raw.replace("\n", " ")):
+    # Vom ersten '{' bis zum LETZTEN '}' (gierig) — robust gegen Vor-/Nachtext.
+    end = t.rfind("}")
+    raw = t[start:end + 1] if end > start else t[start:]
+    cands = [raw, raw.replace("\n", " ")]
+    # Notfall: bei abgeschnittener Antwort (Thinking-Budget) wenigstens intro + faq retten.
+    obj = _salvage(t)
+    if obj:
+        cands.append(json.dumps(obj))
+    for cand in cands:
         try:
             return json.loads(cand, strict=False)
         except Exception:  # noqa: BLE001
             continue
-    return None
+    return obj or None
+
+
+def _salvage(t: str):
+    """Aus evtl. unvollstaendigem JSON intro + komplette faq-Eintraege herausziehen."""
+    intro_m = re.search(r'"intro"\s*:\s*"((?:[^"\\]|\\.)*)"', t, re.S)
+    intro = intro_m.group(1) if intro_m else ""
+    faq = []
+    for q, a in re.findall(r'"q"\s*:\s*"((?:[^"\\]|\\.)*)"\s*,\s*"a"\s*:\s*"((?:[^"\\]|\\.)*)"', t, re.S):
+        faq.append({"q": q, "a": a})
+    if not intro or not faq:
+        return None
+
+    def _dec(s):
+        return json.loads(f'"{s}"', strict=False)
+    try:
+        intro = _dec(intro)
+        faq = [{"q": _dec(x["q"]), "a": _dec(x["a"])} for x in faq]
+    except Exception:  # noqa: BLE001
+        return None
+    return {"intro": intro, "faq": faq}
 
 
 def insert(src: str, section: str, jsonld: str) -> str | None:
@@ -148,7 +175,10 @@ def main():
         print(f"gemini_text nicht ladbar: {ex} → no-op"); return 0
     done = 0
     for f, b in batch:
-        txt = generate(PROMPT.format(branche=b), max_tokens=1400, temperature=0.5)
+        # thinking_budget=0: volles Output-Budget fuer die JSON-Antwort (2.5-Flash denkt
+        # sonst die Tokens leer → abgeschnittenes JSON). response_json: natives JSON.
+        txt = generate(PROMPT.format(branche=b), max_tokens=2048, temperature=0.5,
+                       thinking_budget=0, response_json=True)
         if not txt:
             print(f"  (keine Gemini-Antwort für {b} — übersprungen)"); continue
         data = parse_json(txt)
