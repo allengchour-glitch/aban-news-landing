@@ -80,3 +80,13 @@
   handle `schweiz-edition`, Regel Tag `schweiz-edition`, leer/startklar).
 - **Zum Live-Schalten:** (1) Gemini-Billing → Motive generieren; (2) Printify/Gelato-Key (Karte) → Auto-Fulfill;
   (3) Pre-made Produkte taggen `schweiz-edition`; (4) Menü/Hero verlinken + Reel + Kampagne. Details im Strategie-Doc.
+
+### Update 2026-06-10 — Gemini-Guthaben WIEDER DA ✅
+- User: „geht" → `gen-designs.yml` 2× dispatcht: erst die ~45 alten Lücken, dann gezielt (`only=`) die **39 CH-Motive**.
+  **Alle 39 generiert, Mundart-Rechtschreibung korrekt** (Chuchichäschtli, Grüezi mitenand, Härzlech, Gopfertami,
+  Feierabig, Znüni, Bünzli, Gäll, es git nu eis ZÜRI, BÄRN, BASEL, 1. August…). Bibliothek **268 designs + 67 sticker**.
+- **Designs-Galerie neu gebaut → 335 Motive (51 Schweiz), CH zuerst.** `page_body.html` regeneriert (Shell/v3.1 erhalten,
+  Kategorien gemappt: ch-*→Schweiz, flower→Natur, zodiac/space→Space, sport, food), via `designs-page.yml` publiziert.
+  ⚠️ **Pages-Deploy-Lag ~15–20 Min** für neue PNGs → vor dem Publizieren auf `abannews.com/...png`=200 warten (sonst broken tiles).
+- **Kund:innen können die CH-Motive JETZT schon kaufen** über „Selbst gestalten" (Editor → Printful-Fulfillment LÄUFT).
+  Offen für Fertig-Produkte (ohne Gestalten): Printify/Gelato-Key (Karte).
