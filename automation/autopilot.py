@@ -91,6 +91,9 @@ def main() -> int:
         else:
             print(f"  Queues ausreichend ({low} ≥ {QUEUE_MIN}) → kein Top-up.")
         run([py, "automation/draft_with_gemini.py"], "Newsletter-Entwurf")
+        # Branchen-Hubs nach und nach mit substanziellem Text + FAQ vertiefen
+        # (kleine Charge pro Lauf, no-op ohne Gemini-Key, idempotent über Marker).
+        run([py, "automation/deepen_hubs_gemini.py"], "Hubs vertiefen (Gemini)")
     elif args.dry_run and low < QUEUE_MIN:
         print(f"  [dry-run] würde auffüllen (Queue {low} < {QUEUE_MIN}).")
 
