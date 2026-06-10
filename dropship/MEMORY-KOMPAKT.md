@@ -134,3 +134,16 @@
 - **NÄCHSTER SCHRITT (Claude, sobald Shopify in Printify verbunden):** Connector bauen (Design-Upload → product create
   auf shopify-shop_id → publish) + Schweiz-Sticker/Magnete (Mundart/Matterhorn/Edelweiss) anlegen, Preis ×2,3, Tag
   `schweiz-edition`. Bis dahin: Keys da, aber **Store-Verbindung im Anbieter fehlt** = Blocker.
+
+## 2026-06-10 spätabend — Anbieter-Realität: Gelato verbunden, aber CI-API blockiert
+- **GELATO:** Store **„LuxeStyle" verbunden & Active** (CHF, Region North America) — User-Screenshot bestätigt
+  (dashboard.gelato.com/stores/list). ABER **Gelato-API ist aus GitHub-Actions NICHT erreichbar** (`fetch failed`,
+  auch mit User-Agent/Accept; Sandbox bekommt 503). → **Vollautonomer Gelato-Connector via CI NICHT möglich** (Netz/WAF-Sperre).
+  Gelato-Weg = **manuell im Gelato-UI** („Add product" / Mockup Studio → Design hochladen → publish → Auto-Sync+Fulfill zu Shopify).
+  Gelato-Stärken: **Poster, Karten, Tassen, Apparel, Tote** (CH-naher Druck) — ideal für Schweiz-Souvenir/Geschenk.
+- **PRINTIFY:** API **funktioniert aus CI** (Shops/Katalog abrufbar), Magnete `851 Die-Cut`, Sticker `400 Kiss-Cut`.
+  ABER Shopify-Store dort **NICHT verbunden** (nur „My new store / disconnected"). → Für CI-Autonomie müsste der
+  User in Printify den Shopify-Store verbinden (Add store → Shopify → App in Shopify installieren/genehmigen).
+- **ENTSCHEID/Strategie:** Gelato (verbunden) = Poster/Karten/Tassen **manuell** anlegen (Claude prept Designs+Specs);
+  Printify (CI-fähig) = Sticker/Magnete **vollautonom**, sobald Shopify in Printify verbunden. Beide ergänzen sich.
+- Tool `automation/pod_provider_check.mjs` + `pod-provider-check.yml` bleibt für Status-Checks.
