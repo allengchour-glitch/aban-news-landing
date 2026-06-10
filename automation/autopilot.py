@@ -96,6 +96,8 @@ def main() -> int:
         run([py, "automation/deepen_hubs_gemini.py"], "Hubs vertiefen (Gemini)")
         # Themen-Seiten (themen/*.html) genauso nach und nach vertiefen (no-op wenn fertig).
         run([py, "automation/deepen_themen_gemini.py"], "Themen vertiefen (Gemini)")
+        # Tool-Vergleichsseiten (vergleich/*.html) Charge für Charge vertiefen (no-op wenn fertig).
+        run([py, "automation/deepen_vergleiche_gemini.py"], "Vergleiche vertiefen (Gemini)")
     elif args.dry_run and low < QUEUE_MIN:
         print(f"  [dry-run] würde auffüllen (Queue {low} < {QUEUE_MIN}).")
 

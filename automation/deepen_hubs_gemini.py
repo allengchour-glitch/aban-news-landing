@@ -45,6 +45,8 @@ Schreibe für die Branche/Zielgruppe: „{branche}".
 
 Ton: sachlich, konkret, du-Form, ohne Buzzwords, ohne Übertreibung. KEINE erfundenen Zahlen, Prozentwerte
 oder Studien. Keine Heilsversprechen. Wenn KI bei etwas nicht hilft, darfst du das sagen.
+WICHTIG: Erkläre alles so einfach und klar, dass es auch jemand ohne jede KI-Vorkenntnis sofort versteht —
+vermeide Fachbegriffe oder erkläre sie in einem kurzen Halbsatz. Nimm konkrete Alltagsbeispiele aus der Branche.
 
 Gib AUSSCHLIESSLICH gültiges JSON in genau diesem Format zurück (kein Markdown, keine Erklärung drumherum):
 {{
