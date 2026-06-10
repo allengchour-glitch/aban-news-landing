@@ -34,6 +34,12 @@ jobs:
     timeout-minutes: 6
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            automation/social-autopost-meta.mjs
+            social/posts_image.csv
+          sparse-checkout-cone-mode: false
 
       - name: Post next image (Meta Graph API)
         env:
