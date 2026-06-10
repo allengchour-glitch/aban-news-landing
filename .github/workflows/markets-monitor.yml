@@ -26,6 +26,7 @@ jobs:
       - name: Daten-Frische prüfen
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_ID: ${{ secrets.TELEGRAM_OWNER_ID }}
           TELEGRAM_ALERT_CHAT: ${{ secrets.TELEGRAM_ALERT_CHAT }}
           TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
         run: python automation/markets_monitor.py

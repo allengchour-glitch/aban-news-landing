@@ -6,8 +6,9 @@ Alarm, wenn der Daten-Job offenbar hängt:
   • letzter Lauf (fetched_at) älter als MAX_AGE_H Stunden, ODER
   • mehr als die Hälfte der Werte ohne Preis.
 
-Alarm geht an TELEGRAM_ALERT_CHAT (Fallback: TELEGRAM_CHANNEL). Ohne Token/Chat:
-Exit 0, no-op. Gedacht für einen eigenen, häufigeren Cron-Workflow.
+Alarm geht bevorzugt privat an TELEGRAM_OWNER_ID (vorhandenes abannews-Secret),
+sonst TELEGRAM_ALERT_CHAT, sonst den öffentlichen TELEGRAM_CHANNEL. Ohne Token/Chat:
+Exit 0, no-op. Nutzt also dieselben Telegram-Secrets wie der Rest von abannews.
 
 Aufrufe:
   python3 automation/markets_monitor.py --dry-run
@@ -74,7 +75,11 @@ def main() -> int:
 
     print(msg, file=sys.stderr)
     token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
-    chat = (os.environ.get("TELEGRAM_ALERT_CHAT") or os.environ.get("TELEGRAM_CHANNEL") or "").strip()
+    # Alarm bevorzugt privat an den Owner (abannews-Secret TELEGRAM_OWNER_ID),
+    # sonst Override TELEGRAM_ALERT_CHAT, sonst der öffentliche Kanal.
+    chat = (os.environ.get("TELEGRAM_ALERT_CHAT")
+            or os.environ.get("TELEGRAM_OWNER_ID")
+            or os.environ.get("TELEGRAM_CHANNEL") or "").strip()
     if not token or not chat:
         print("Kein Telegram-Token/Chat → Alarm nur im Log (no-op).")
         return 0
