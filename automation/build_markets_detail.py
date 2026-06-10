@@ -58,6 +58,40 @@ STR = {
         "mail": "you@mail.com", "btn": "Subscribe free →", "fine": "GDPR-compliant · 1-click unsubscribe · no spam.",
         "foot_markets": "Markets", "imp": "Imprint", "dat": "Privacy",
     },
+    "fr": {
+        "out": ROOT / "fr" / "maerkte", "base": "/fr/maerkte/", "site": "/fr/", "markets": "/fr/maerkte.html",
+        "loc": "fr", "numloc": "fr-CH",
+        "type": {"crypto": "Crypto", "stock": "Action", "index": "Indice", "commodity": "Matière première"},
+        "title": "{name} ({sym}) — cours, graphique 30 jours & sentiment IA | aban news",
+        "desc": "{name} ({sym}) : cours actuel, graphique 30 jours, sentiment IA et actualités spécifiques. Anti-hype, pas un conseil en investissement.",
+        "skip": "Aller au contenu", "nav": "Navigation principale", "subscribe": "S'abonner",
+        "back": "← Tous les marchés", "disc": "⚠️ Pas un conseil en investissement. {typ} est très volatil — vous pouvez perdre tout l'argent investi. Le sentiment IA est expérimental.",
+        "eb_chart": "Historique 30 jours", "h_chart": "Évolution du cours", "no_chart": "Aucun graphique disponible.",
+        "updated": "Au : {u} · crypto en direct.",
+        "eb_ai": "Expérimental · analyse IA", "h_ai": "Sentiment IA",
+        "eb_news": "Actus sur {sym}", "h_news": "Derniers titres", "no_news": "Pas d'actus spécifiques pour le moment.",
+        "cross": '<a href="/fr/maerkte.html">← Retour à l\'aperçu des marchés</a> · <a href="/ki-und-krypto-daten.html">IA &amp; crypto en chiffres →</a>',
+        "band_h": "Comprendre les marchés au quotidien", "band_p": "Du lundi au vendredi à 7h30 — le briefing de 5 minutes, sans hype.",
+        "mail": "vous@mail.com", "btn": "S'abonner →", "fine": "Conforme RGPD · désinscription en 1 clic · pas de spam.",
+        "foot_markets": "Marchés", "imp": "Mentions légales", "dat": "Confidentialité",
+    },
+    "it": {
+        "out": ROOT / "it" / "maerkte", "base": "/it/maerkte/", "site": "/it/", "markets": "/it/maerkte.html",
+        "loc": "it", "numloc": "it-CH",
+        "type": {"crypto": "Cripto", "stock": "Azione", "index": "Indice", "commodity": "Materia prima"},
+        "title": "{name} ({sym}) — prezzo, grafico 30 giorni & sentiment IA | aban news",
+        "desc": "{name} ({sym}): prezzo attuale, grafico 30 giorni, sentiment IA e notizie specifiche. Anti-hype, non è consulenza finanziaria.",
+        "skip": "Vai al contenuto", "nav": "Navigazione principale", "subscribe": "Iscriviti",
+        "back": "← Tutti i mercati", "disc": "⚠️ Non è consulenza finanziaria. {typ} è molto volatile — puoi perdere tutto il capitale investito. Il sentiment IA è sperimentale.",
+        "eb_chart": "Storico 30 giorni", "h_chart": "Andamento del prezzo", "no_chart": "Nessun grafico disponibile.",
+        "updated": "Al: {u} · cripto in tempo reale.",
+        "eb_ai": "Sperimentale · analisi IA", "h_ai": "Sentiment IA",
+        "eb_news": "Notizie su {sym}", "h_news": "Ultimi titoli", "no_news": "Nessuna notizia specifica al momento.",
+        "cross": '<a href="/it/maerkte.html">← Torna alla panoramica mercati</a> · <a href="/ki-und-krypto-daten.html">IA &amp; cripto in numeri →</a>',
+        "band_h": "Capire i mercati ogni giorno", "band_p": "Da lunedì a venerdì alle 7:30 — il briefing di 5 minuti, senza hype.",
+        "mail": "tu@mail.com", "btn": "Iscriviti →", "fine": "Conforme GDPR · disiscrizione in 1 clic · niente spam.",
+        "foot_markets": "Mercati", "imp": "Note legali", "dat": "Privacy",
+    },
 }
 
 
@@ -116,7 +150,7 @@ def news_html(items):
 
 def page(asset, css, updated, lang):
     t = STR[lang]
-    other = "en" if lang == "de" else "de"
+    langs = ["de", "en", "fr", "it"]
     aid, name, sym = asset["id"], asset.get("name", ""), asset.get("symbol", "")
     typ = t["type"].get(asset.get("type"), "")
     chg = asset.get("change_24h")
@@ -127,7 +161,14 @@ def page(asset, css, updated, lang):
     title = t["title"].format(name=name, sym=sym)
     desc = t["desc"].format(name=name, sym=sym)
     canon = f"https://abannews.com{t['base']}{aid}.html"
-    alt = f"https://abannews.com{STR[other]['base']}{aid}.html"
+    hreflangs = "\n".join(
+        f'  <link rel="alternate" hreflang="{l}" href="https://abannews.com{STR[l]["base"]}{aid}.html">'
+        for l in langs)
+    hreflangs += f'\n  <link rel="alternate" hreflang="x-default" href="https://abannews.com/maerkte/{aid}.html">'
+    switcher = "".join(
+        (f'<a href="{STR[l]["base"]}{aid}.html" class="on" aria-current="page">{l.upper()}</a>'
+         if l == lang else f'<a href="{STR[l]["base"]}{aid}.html">{l.upper()}</a>')
+        for l in langs)
     return f"""<!DOCTYPE html>
 <html lang="{lang}">
 <head>
@@ -137,8 +178,7 @@ def page(asset, css, updated, lang):
   <meta name="description" content="{esc(desc)}">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="{canon}">
-  <link rel="alternate" hreflang="{lang}" href="{canon}">
-  <link rel="alternate" hreflang="{other}" href="{alt}">
+{hreflangs}
   <meta name="theme-color" content="#d97706">
   <meta property="og:title" content="{esc(title)}">
   <meta property="og:description" content="{esc(desc)}">
@@ -163,7 +203,7 @@ def page(asset, css, updated, lang):
     <a href="{t['site']}" class="brand"><span class="dot"></span> aban news</a>
     <nav class="hnav" aria-label="{t['nav']}">
       <a href="{t['markets']}" class="lk lk--keep">{t['foot_markets']}</a>
-      <span class="lang" role="group" aria-label="Language"><a href="{t['base']}{aid}.html" class="on" aria-current="page">{lang.upper()}</a><a href="{STR[other]['base']}{aid}.html">{other.upper()}</a></span>
+      <span class="lang" role="group" aria-label="Language">{switcher}</span>
       <a href="#signup" class="btn btn--amber btn--sm">{t['subscribe']}</a>
     </nav>
   </div>
@@ -269,7 +309,7 @@ def main() -> int:
     css = m.group(0) if m else "<style></style>"
     updated = data.get("last_updated", "")
     total = 0
-    for lang in ("de", "en"):
+    for lang in ("de", "en", "fr", "it"):
         outdir = STR[lang]["out"]
         outdir.mkdir(parents=True, exist_ok=True)
         for a in data.get("assets", []):
