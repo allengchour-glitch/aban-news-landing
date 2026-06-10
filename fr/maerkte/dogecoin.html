@@ -240,6 +240,16 @@
     .chartbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;box-shadow:var(--shadow-sm);margin-top:1.4rem}
     .muted{color:var(--muted)}
     .backlink{display:inline-block;margin:.4rem 0 0;color:var(--amber-dk);font-weight:700;text-decoration:none}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem;margin-top:1.4rem}
+    .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.2rem}
+    .kpi .kl{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
+    .kpi .kv{font-weight:800;font-variant-numeric:tabular-nums}
+    .analysis{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.6rem;max-width:680px}
+    .analysis li{background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:10px;padding:.7rem .9rem;font-size:.95rem;color:var(--ink)}
+    .relgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-top:1.4rem}
+    .relcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink)}
+    .relcard:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .relcard .rn{font-weight:800}.relcard .rs{color:var(--muted);font-size:.85rem}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"Dogecoin (DOGE) \u2014 cours, graphique 30 jours & sentiment IA | aban news","url":"https://abannews.com/fr/maerkte/dogecoin.html","inLanguage":"fr","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}
@@ -264,8 +274,8 @@
       <a class="backlink" href="/fr/maerkte.html">← Tous les marchés</a>
       <h1>Dogecoin <span class="hl">DOGE</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="dogecoin" data-type="crypto">0.0840 USD</span>
-        <span class="chg down">-1.64 %</span>
+        <span class="px" id="livePrice" data-id="dogecoin" data-type="crypto">0.0845 USD</span>
+        <span class="chg down">-1.04 %</span>
         <span class="tag-type">Crypto</span>
         <span class="badge neutral">Neutral</span>
       </div>
@@ -279,6 +289,9 @@
       <h2>Évolution du cours</h2>
       <div class="chartbox"><p class="muted">Aucun graphique disponible.</p></div>
       <p class="updated" style="margin-top:.7rem">Au : 2026-06-10 · crypto en direct.</p>
+      <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Indicateurs</span>
+      <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">En bref</h2>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.04 %</span></span></div><div class="kpi"><span class="kl">7 jours</span><span class="kv"><span class="chg down">-9.90 %</span></span></div><div class="kpi"><span class="kl">30 jours</span><span class="kv"><span class="chg down">-23.21 %</span></span></div><div class="kpi"><span class="kl">Plus haut 30j</span><span class="kv">—</span></div><div class="kpi"><span class="kl">Plus bas 30j</span><span class="kv">—</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">668.11 Mio</span></div><div class="kpi"><span class="kl">Capitalisation</span><span class="kv">13.06 Mrd USD</span></div><div class="kpi"><span class="kl">Plus haut historique</span><span class="kv">0.7316 USD</span></div></div>
     </div>
   </section>
 
@@ -291,6 +304,7 @@
         <p class="csignal">Kursrückgang, aber neue Zahlungsoptionen.</p>
         <p class="crat">Dogecoin fällt zusammen mit anderen Kryptowährungen, aber neue Partnerschaften ermöglichen Dogecoin-Zahlungen bei über 6.000 Händlern.</p>
       </div>
+      
     </div>
   </section>
 
@@ -298,10 +312,12 @@
     <div class="wrap">
       <span class="eyebrow">Actus sur DOGE</span>
       <h2>Derniers titres</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNN3Z1VXBPeF9LdVVXMlNsX3Y0aGJqSGNhQXAxRU9RVW9uS3ZyUEhHM253RTNqRUIzZHVtQUNQZUdEMVprX3R3cU1kV3kyUUZlZWM0ZXNSU29lWDhmQ3R5TkRJSXdJQ3hZU2pJVGtrVnZ5b0xzMFhWTlRKeFNWb05KZ0F0Q0ppblJ3Q2JRczJpVmFFT1Q0TUNBNU01a2tPWjBIVnc?oc=5" target="_blank" rel="noopener">Bitcoin, Ethereum, XRP, Dogecoin Slide Even As Michael Saylor&#x27;s Strategy Inc Resumes Buying BTC: Analyst Says &#x27;Buy&#x27; The ETH Dip</a><div class="meta"><span>Yahoo Finance</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxPYnRVRWVYUXNuZ0VvZW9PRDBwYkdzRnZubk0xQlZHZF9NWHZ3dlJ0WkhvcHloV0RLU0dZWmlHdnEzNzM3RzM3Y3FIMjEwbzQ2MjFpcXhXWkJyRU8wb2xmYnBwLU1hM29pb2ZUZDR6dkdDSGpveVRwMURpX2dlTGhYN2loNGI2QVhCR1hINEtXbmlzRVJaMHJmekNta3VnUlhhbHZPajU5V2VDTVVIWE1ESVRoRW5UaUdJZGQwaEplWmUwUVRCZ1lJakxZb25pNmlmdVktSy1iSXc4YU93UkdrcGg3MTVMZw?oc=5" target="_blank" rel="noopener">House of Doge and MoonPay Enable Dogecoin Payments Across 6,000+ Merchants and Launch “ÐOGE Pay”</a><div class="meta"><span>markets.businessinsider.com</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxPTEVCbnBlN3BmLWdOb0xnSlB4RFo3WTVRR2V1a2hPc3FlOXEzd1FNUGlyeFN0NVRiaE11OGZQaldGa2Z3U1RnM0dIUEN3cVJkalNYbWhMcU1BcVNoR0xZV3k2SGRvaTRTUUlNcUN5NXo2dWZjQkJBRUhYNGIxX3NKZV95RnYwbENTOUVCSDZjR05URFYtYXVHVFZkajVPZ9IBowFBVV95cUxPd0FSSkVuTVpKdGxRbjdtMkJvR1J0NUsxdjhhQ013YV9HUmhhNnRua1NUeHZzWnR2cmxsLWtTbmhBbjF3bjl5NlN4aUREM25DRHAyM3I2dEdyVXVTNVhibjh3Vk4wbUVuMEJydzRNRVJNbFBqS3Q5V3ltaWtwOG50aHJEc0xhbXdmOG8yYUV5YTNDbzB1R1Ria3ZpLXBUNFBZdVdr?oc=5" target="_blank" rel="noopener">Japan&#x27;s Largest Marketplace Lists Shiba Inu (SHIB) and Dogecoin for 23 Million Users</a><div class="meta"><span>U.Today</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNN3Z1VXBPeF9LdVVXMlNsX3Y0aGJqSGNhQXAxRU9RVW9uS3ZyUEhHM253RTNqRUIzZHVtQUNQZUdEMVprX3R3cU1kV3kyUUZlZWM0ZXNSU29lWDhmQ3R5TkRJSXdJQ3hZU2pJVGtrVnZ5b0xzMFhWTlRKeFNWb05KZ0F0Q0ppblJ3Q2JRczJpVmFFT1Q0TUNBNU01a2tPWjBIVnc?oc=5" target="_blank" rel="noopener">Bitcoin, Ethereum, XRP, Dogecoin Slide Even As Michael Saylor&#x27;s Strategy Inc Resumes Buying BTC: Analyst Says &#x27;Buy&#x27; The ETH Dip</a><div class="meta"><span>Yahoo Finance</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxPYnRVRWVYUXNuZ0VvZW9PRDBwYkdzRnZubk0xQlZHZF9NWHZ3dlJ0WkhvcHloV0RLU0dZWmlHdnEzNzM3RzM3Y3FIMjEwbzQ2MjFpcXhXWkJyRU8wb2xmYnBwLU1hM29pb2ZUZDR6dkdDSGpveVRwMURpX2dlTGhYN2loNGI2QVhCR1hINEtXbmlzRVJaMHJmekNta3VnUlhhbHZPajU5V2VDTVVIWE1ESVRoRW5UaUdJZGQwaEplWmUwUVRCZ1lJakxZb25pNmlmdVktSy1iSXc4YU93UkdrcGg3MTVMZw?oc=5" target="_blank" rel="noopener">House of Doge and MoonPay Enable Dogecoin Payments Across 6,000+ Merchants and Launch “ÐOGE Pay”</a><div class="meta"><span>markets.businessinsider.com</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxPVkd6d1JhSndZT2hyZVlsaERJUUFOejc1cjB2QlBqZ0VVTWJ4ejczY19hYlNCOVRVd09EX2FEYU00ZzZpN1J1X29ZQnNHZERST3g1ZU1DYVVTTmVNTGRRYnBBbm51TllvRjllSldKNWdBdWg2Yzg2S0VDY0dHTVU4X28wcGZPZkFsdjdYX2ptakhsSk1vUmxHVlpnc1kzMWtsQkVGZ0UxTzZCT1JEQjRKQU5TR2E4VnVPSlJqSGxCa1RGN0JOVGVCMFl3dmxXdFk?oc=5" target="_blank" rel="noopener">Dogecoin Will ‘Pump Hard’ After This Happens, Analyst Clocks Generational Entry</a><div class="meta"><span>TradingView</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxPTEVCbnBlN3BmLWdOb0xnSlB4RFo3WTVRR2V1a2hPc3FlOXEzd1FNUGlyeFN0NVRiaE11OGZQaldGa2Z3U1RnM0dIUEN3cVJkalNYbWhMcU1BcVNoR0xZV3k2SGRvaTRTUUlNcUN5NXo2dWZjQkJBRUhYNGIxX3NKZV95RnYwbENTOUVCSDZjR05URFYtYXVHVFZkajVPZ9IBowFBVV95cUxPd0FSSkVuTVpKdGxRbjdtMkJvR1J0NUsxdjhhQ013YV9HUmhhNnRua1NUeHZzWnR2cmxsLWtTbmhBbjF3bjl5NlN4aUREM25DRHAyM3I2dEdyVXVTNVhibjh3Vk4wbUVuMEJydzRNRVJNbFBqS3Q5V3ltaWtwOG50aHJEc0xhbXdmOG8yYUV5YTNDbzB1R1Ria3ZpLXBUNFBZdVdr?oc=5" target="_blank" rel="noopener">Japan&#x27;s Largest Marketplace Lists Shiba Inu (SHIB) and Dogecoin for 23 Million Users</a><div class="meta"><span>U.Today</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOd2xZa1F1eERWa3duYm9CbmQyX2k3SVhoeVYxaXZxNGV2cGZ4c2hCUjNiSWZ1SGN5dTdDWEVqc1Z1VV95cGh0NlBBb2xXWk1femhpa0RGZmUyNEg1OERKNlFSam9HTGh0UE1zakhwVkhjTDUwSVJTaTJGaFE4UU5LcHZkanV5dm5N?oc=5" target="_blank" rel="noopener">Is Dogecoin Really a Millionaire Maker?</a><div class="meta"><span>The Motley Fool</span><span>· 07 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/fr/maerkte.html">← Retour à l'aperçu des marchés</a> · <a href="/ki-und-krypto-daten.html">IA &amp; crypto en chiffres →</a></p>
     </div>
   </section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap"><span class="eyebrow">Plus dans cette catégorie</span><h2>Valeurs liées</h2><div class="relgrid"><a class="relcard" href="/fr/maerkte/bitcoin.html"><span class="rn">Bitcoin</span><span class="rs">BTC</span></a><a class="relcard" href="/fr/maerkte/ethereum.html"><span class="rn">Ethereum</span><span class="rs">ETH</span></a><a class="relcard" href="/fr/maerkte/solana.html"><span class="rn">Solana</span><span class="rs">SOL</span></a><a class="relcard" href="/fr/maerkte/ripple.html"><span class="rn">XRP</span><span class="rs">XRP</span></a></div></div></section>
 
   <section class="sec" style="padding-top:0">
     <div class="wrap">

@@ -240,6 +240,16 @@
     .chartbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;box-shadow:var(--shadow-sm);margin-top:1.4rem}
     .muted{color:var(--muted)}
     .backlink{display:inline-block;margin:.4rem 0 0;color:var(--amber-dk);font-weight:700;text-decoration:none}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem;margin-top:1.4rem}
+    .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.2rem}
+    .kpi .kl{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
+    .kpi .kv{font-weight:800;font-variant-numeric:tabular-nums}
+    .analysis{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.6rem;max-width:680px}
+    .analysis li{background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:10px;padding:.7rem .9rem;font-size:.95rem;color:var(--ink)}
+    .relgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-top:1.4rem}
+    .relcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink)}
+    .relcard:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .relcard .rn{font-weight:800}.relcard .rs{color:var(--muted);font-size:.85rem}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"Roh\u00f6l WTI (\u00d6l (WTI)) \u2014 prezzo, grafico 30 giorni & sentiment IA | aban news","url":"https://abannews.com/it/maerkte/oel.html","inLanguage":"it","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}
@@ -264,8 +274,8 @@
       <a class="backlink" href="/it/maerkte.html">← Tutti i mercati</a>
       <h1>Rohöl WTI <span class="hl">Öl (WTI)</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="oel" data-type="commodity">89.46 USD</span>
-        <span class="chg up">+1.43 %</span>
+        <span class="px" id="livePrice" data-id="oel" data-type="commodity">89.43 USD</span>
+        <span class="chg up">+1.39 %</span>
         <span class="tag-type">Materia prima</span>
         <span class="badge neutral">Neutral</span>
       </div>
@@ -277,8 +287,11 @@
     <div class="wrap">
       <span class="eyebrow">Storico 30 giorni</span>
       <h2>Andamento del prezzo</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,99.5 L37.7,64.0 L67.4,74.0 L97.1,72.7 L126.9,36.0 L156.6,8.0 L186.3,15.7 L216.0,97.8 L245.7,114.3 L275.4,112.2 L305.1,135.6 L334.9,180.6 L364.6,178.7 L394.3,192.0 L424.0,150.5 L453.7,136.7 L483.4,117.2 L513.1,142.9 L542.9,164.5 L572.6,158.0 L602.3,184.7 L632.0,173.9 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,99.5 37.7,64.0 67.4,74.0 97.1,72.7 126.9,36.0 156.6,8.0 186.3,15.7 216.0,97.8 245.7,114.3 275.4,112.2 305.1,135.6 334.9,180.6 364.6,178.7 394.3,192.0 424.0,150.5 453.7,136.7 483.4,117.2 513.1,142.9 542.9,164.5 572.6,158.0 602.3,184.7 632.0,173.9" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,99.5 L37.7,64.0 L67.4,74.0 L97.1,72.7 L126.9,36.0 L156.6,8.0 L186.3,15.7 L216.0,97.8 L245.7,114.3 L275.4,112.2 L305.1,135.6 L334.9,180.6 L364.6,178.7 L394.3,192.0 L424.0,150.5 L453.7,136.7 L483.4,117.2 L513.1,142.9 L542.9,164.5 L572.6,158.0 L602.3,184.7 L632.0,174.1 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,99.5 37.7,64.0 67.4,74.0 97.1,72.7 126.9,36.0 156.6,8.0 186.3,15.7 216.0,97.8 245.7,114.3 275.4,112.2 305.1,135.6 334.9,180.6 364.6,178.7 394.3,192.0 424.0,150.5 453.7,136.7 483.4,117.2 513.1,142.9 542.9,164.5 572.6,158.0 602.3,184.7 632.0,174.1" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
       <p class="updated" style="margin-top:.7rem">Al: 2026-06-10 · cripto in tempo reale.</p>
+      <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Indicatori</span>
+      <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">In sintesi</h2>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+1.39 %</span></span></div><div class="kpi"><span class="kl">7 giorni</span><span class="kv"><span class="chg down">-6.86 %</span></span></div><div class="kpi"><span class="kl">30 giorni</span><span class="kv"><span class="chg down">-8.81 %</span></span></div><div class="kpi"><span class="kl">Max 30g</span><span class="kv">108.66 USD</span></div><div class="kpi"><span class="kl">Min 30g</span><span class="kv">87.36 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">98’490</span></div></div>
     </div>
   </section>
 
@@ -291,6 +304,7 @@
         <p class="csignal">Zunehmende Bestände, aber auch Warnungen vor Preisverfall.</p>
         <p class="crat">Die USA sehen große Zuwächse bei Rohölbeständen, während eine Bank vor einem möglichen Rückgang unter 50 Dollar warnt.</p>
       </div>
+      
     </div>
   </section>
 
@@ -298,10 +312,12 @@
     <div class="wrap">
       <span class="eyebrow">Notizie su Öl (WTI)</span>
       <h2>Ultimi titoli</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQUkZueEVqblVxaGRqelREd1VCU3BtZWc0SG5QYjY4WXEyMnFhUjByUVJ6dDhZN3Y5dkxlQk1jZkhKYnA5NWFnUUYtODJqYWk0UFQxNGdvLXpsUnhLem1OSW9UcUlkOW1QSjVMZFh6OFNhdl85ci1EV3JKOEVXWjBNOWVMTTFQUXJ4ejI2bU5uNjVuZW9paUpBR0h0aE5mQXlLWC0zQVFXTUJOd9IBrwFBVV95cUxNQ0Y4eFdjT0JOdTJJUzdmVUhxcDZlbmlEV1NXMlZKWmZ2SmZBamVRVU5lTVRwelo0cURJRkdVenFzZ245cWw1b0Vsd3FpeEY3UlFrTmpyT1pabkRhODBPQkdWVzRib1lXZEJ4NnhNSEFBbUV6MHdGdDdLXzQwa1RnRnhnMmt0N1hzdGZLdnR6QmstTEIyTHItMnRSaTFuOUU3dXo2eExwc29GeGh6bzUw?oc=5" target="_blank" rel="noopener">US Sees Big Gains in Crude Oil, Product Inventories</a><div class="meta"><span>Crude Oil Prices Today | OilPrice.com</span><span>· 21 Jan 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNeEpDYkE3bl9VYUpVZ204Rm1WdGZmU205RU93cHBUZ0s1NDhEMlllcGF5M3NGTU5RaG1iVEsxTU9qSkFVT2lRVWcxY0t1RmhabzNKc2VGZXJnMGt0U3pmSS0tN2VhWlo5akhaMjd0dmx1TUpMZkVsMXFrVW9QcXFURUFlcHFnZFB3dHp30gGQAUFVX3lxTE9VLTFCb0RvQmQtdl9XZG4xSG40Mnd2dHJzeGhDWU8zNFd5U3VzUFd3dHBHWFhMLTNWNFl3VjRWUzViRDlFaks4dHhZSGN0WXVUNGZJNTNZb0s4QlJ4dGlDQ09KcjFObnI5Y0JxVTVaSUw2UGlKMkxnNXV1ZjZ2ZVZ1a0Zsd1ZncUtkbUhHZlRuQg?oc=5" target="_blank" rel="noopener">Crude Oil Could Fall Below $50, BofA Warns</a><div class="meta"><span>Crude Oil Prices Today | OilPrice.com</span><span>· 15 Oct 2025</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTFBRQ0JiejB1OWUzR2NzRFdWdEptejhPUkZhOGdmN2tGblpzdU5XTDN5VXczTmRTZUpOV0tHOTFBZW9rQld4MHNKazdnUmxQMjRtUW5wM1RELWlsa1VRQTN2ZExZQQ?oc=5" target="_blank" rel="noopener">A look back at our forecast for global crude oil prices in 2024</a><div class="meta"><span>U.S. Energy Information Administration (EIA) (.gov)</span><span>· 17 Jan 2025</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQUkZueEVqblVxaGRqelREd1VCU3BtZWc0SG5QYjY4WXEyMnFhUjByUVJ6dDhZN3Y5dkxlQk1jZkhKYnA5NWFnUUYtODJqYWk0UFQxNGdvLXpsUnhLem1OSW9UcUlkOW1QSjVMZFh6OFNhdl85ci1EV3JKOEVXWjBNOWVMTTFQUXJ4ejI2bU5uNjVuZW9paUpBR0h0aE5mQXlLWC0zQVFXTUJOd9IBrwFBVV95cUxNQ0Y4eFdjT0JOdTJJUzdmVUhxcDZlbmlEV1NXMlZKWmZ2SmZBamVRVU5lTVRwelo0cURJRkdVenFzZ245cWw1b0Vsd3FpeEY3UlFrTmpyT1pabkRhODBPQkdWVzRib1lXZEJ4NnhNSEFBbUV6MHdGdDdLXzQwa1RnRnhnMmt0N1hzdGZLdnR6QmstTEIyTHItMnRSaTFuOUU3dXo2eExwc29GeGh6bzUw?oc=5" target="_blank" rel="noopener">US Sees Big Gains in Crude Oil, Product Inventories</a><div class="meta"><span>Crude Oil Prices Today | OilPrice.com</span><span>· 21 Jan 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNeEpDYkE3bl9VYUpVZ204Rm1WdGZmU205RU93cHBUZ0s1NDhEMlllcGF5M3NGTU5RaG1iVEsxTU9qSkFVT2lRVWcxY0t1RmhabzNKc2VGZXJnMGt0U3pmSS0tN2VhWlo5akhaMjd0dmx1TUpMZkVsMXFrVW9QcXFURUFlcHFnZFB3dHp30gGQAUFVX3lxTE9VLTFCb0RvQmQtdl9XZG4xSG40Mnd2dHJzeGhDWU8zNFd5U3VzUFd3dHBHWFhMLTNWNFl3VjRWUzViRDlFaks4dHhZSGN0WXVUNGZJNTNZb0s4QlJ4dGlDQ09KcjFObnI5Y0JxVTVaSUw2UGlKMkxnNXV1ZjZ2ZVZ1a0Zsd1ZncUtkbUhHZlRuQg?oc=5" target="_blank" rel="noopener">Crude Oil Could Fall Below $50, BofA Warns</a><div class="meta"><span>Crude Oil Prices Today | OilPrice.com</span><span>· 15 Oct 2025</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTFBRQ0JiejB1OWUzR2NzRFdWdEptejhPUkZhOGdmN2tGblpzdU5XTDN5VXczTmRTZUpOV0tHOTFBZW9rQld4MHNKazdnUmxQMjRtUW5wM1RELWlsa1VRQTN2ZExZQQ?oc=5" target="_blank" rel="noopener">A look back at our forecast for global crude oil prices in 2024</a><div class="meta"><span>U.S. Energy Information Administration (EIA) (.gov)</span><span>· 17 Jan 2025</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxOMFlxVGRvVDhHRzJvZ3hxYV91dEhPQWc1UXVtZlpSdENNdENpY19kdWVNbUQxcFlRM09tUHpWRVptOWdwVnUzeFZ3TUFjVVd6REQtekJ0bms3X3hack1MUmtmSm9GT28zaVNsVVN0Q0d1Mi1OajFVZVdpSW9neFVOVFN2aU5OZFdiLUxHMTdUT2swVExDNEdIUXZ6REQ3Tlc4TEphaTMzUE9abGhpMFRvbVFiaTlyU3VpX3NmTnFVMEUySHpKSEJRNXczNUNUTFJZZ0xfeXBIaUJOSjc4MFE?oc=5" target="_blank" rel="noopener">FACTBOX: Venezuela&#x27;s oil industry is operating after US seizes Maduro</a><div class="meta"><span>S&amp;P Global</span><span>· 03 Jan 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE1OVHltWktpaTJQRXlsS281OXVOT19HMDFWWUtxa3hmRkQzT0VLZHMtazhvX0VOQkJwM0ZsVGZ2R1YtZnB2YmI3VHhvbjdPdjlfQ3g5Z0xiNVkzMnhYMmRxMGpNNFFIeXM2eEZDVnVnLUhYcEVBX09PZlhxTng?oc=5" target="_blank" rel="noopener">Crude Oil Futures Overview</a><div class="meta"><span>CME Group</span><span>· 25 Jun 2021</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/it/maerkte.html">← Torna alla panoramica mercati</a> · <a href="/ki-und-krypto-daten.html">IA &amp; cripto in numeri →</a></p>
     </div>
   </section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap"><span class="eyebrow">Altro in questa categoria</span><h2>Valori correlati</h2><div class="relgrid"><a class="relcard" href="/it/maerkte/gold.html"><span class="rn">Gold</span><span class="rs">Gold</span></a><a class="relcard" href="/it/maerkte/silber.html"><span class="rn">Silber</span><span class="rs">Silber</span></a><a class="relcard" href="/it/maerkte/erdgas.html"><span class="rn">Erdgas</span><span class="rs">Erdgas</span></a><a class="relcard" href="/it/maerkte/kupfer.html"><span class="rn">Kupfer</span><span class="rs">Kupfer</span></a></div></div></section>
 
   <section class="sec" style="padding-top:0">
     <div class="wrap">

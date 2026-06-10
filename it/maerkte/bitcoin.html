@@ -240,6 +240,16 @@
     .chartbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;box-shadow:var(--shadow-sm);margin-top:1.4rem}
     .muted{color:var(--muted)}
     .backlink{display:inline-block;margin:.4rem 0 0;color:var(--amber-dk);font-weight:700;text-decoration:none}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem;margin-top:1.4rem}
+    .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.2rem}
+    .kpi .kl{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
+    .kpi .kv{font-weight:800;font-variant-numeric:tabular-nums}
+    .analysis{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.6rem;max-width:680px}
+    .analysis li{background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:10px;padding:.7rem .9rem;font-size:.95rem;color:var(--ink)}
+    .relgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-top:1.4rem}
+    .relcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink)}
+    .relcard:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .relcard .rn{font-weight:800}.relcard .rs{color:var(--muted);font-size:.85rem}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"Bitcoin (BTC) \u2014 prezzo, grafico 30 giorni & sentiment IA | aban news","url":"https://abannews.com/it/maerkte/bitcoin.html","inLanguage":"it","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}
@@ -264,8 +274,8 @@
       <a class="backlink" href="/it/maerkte.html">← Tutti i mercati</a>
       <h1>Bitcoin <span class="hl">BTC</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="bitcoin" data-type="crypto">61’434 USD</span>
-        <span class="chg down">-1.40 %</span>
+        <span class="px" id="livePrice" data-id="bitcoin" data-type="crypto">62’011 USD</span>
+        <span class="chg down">-0.31 %</span>
         <span class="tag-type">Cripto</span>
         <span class="badge bearish">Bearish</span>
       </div>
@@ -279,6 +289,9 @@
       <h2>Andamento del prezzo</h2>
       <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,8.0 L35.1,19.0 L62.3,29.6 L89.4,14.0 L116.5,39.8 L143.7,46.0 L170.8,50.2 L197.9,45.7 L225.0,45.0 L252.2,63.2 L279.3,52.7 L306.4,47.4 L333.6,60.2 L360.7,73.2 L387.8,81.8 L415.0,78.5 L442.1,79.9 L469.2,99.7 L496.3,164.6 L523.5,166.6 L550.6,192.0 L577.7,171.4 L604.9,172.9 L632.0,185.5 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,8.0 35.1,19.0 62.3,29.6 89.4,14.0 116.5,39.8 143.7,46.0 170.8,50.2 197.9,45.7 225.0,45.0 252.2,63.2 279.3,52.7 306.4,47.4 333.6,60.2 360.7,73.2 387.8,81.8 415.0,78.5 442.1,79.9 469.2,99.7 496.3,164.6 523.5,166.6 550.6,192.0 577.7,171.4 604.9,172.9 632.0,185.5" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
       <p class="updated" style="margin-top:.7rem">Al: 2026-06-10 · cripto in tempo reale.</p>
+      <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Indicatori</span>
+      <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">In sintesi</h2>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-0.31 %</span></span></div><div class="kpi"><span class="kl">7 giorni</span><span class="kv"><span class="chg down">-3.69 %</span></span></div><div class="kpi"><span class="kl">30 giorni</span><span class="kv"><span class="chg down">-24.55 %</span></span></div><div class="kpi"><span class="kl">Max 30g</span><span class="kv">81’725 USD</span></div><div class="kpi"><span class="kl">Min 30g</span><span class="kv">60’922 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">38.05 Mrd</span></div><div class="kpi"><span class="kl">Capitalizzazione</span><span class="kv">1.24 T USD</span></div><div class="kpi"><span class="kl">Massimo storico</span><span class="kv">126’080 USD</span></div></div>
     </div>
   </section>
 
@@ -291,6 +304,7 @@
         <p class="csignal">Schlechteste Woche seit FTX-Crash, KI-Ausverkauf.</p>
         <p class="crat">Bitcoin verzeichnete die schlechteste Woche seit dem FTX-Crash und fällt zusammen mit anderen Kryptowährungen aufgrund eines KI-Ausverkaufs, trotz Saylors Käufen.</p>
       </div>
+      
     </div>
   </section>
 
@@ -298,10 +312,12 @@
     <div class="wrap">
       <span class="eyebrow">Notizie su BTC</span>
       <h2>Ultimi titoli</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQRFBJZEpNQUxVYTJneUc0ZFV2eEtqNTlMT0dYd0hoMDFJUGpUT3RQMDd0dHFuNUh3VHBCRm1neHd1WHRrWDhZZUF1Mk5idGhjUnZ6LW9za2ZoSzFJWll0QV9sNVZBQW1fcDdBTXhHYUJka05iNl9YcXlSaXh1M01GWXBIMnR0X0w0ZlB5Wk5tM0M1TzRad3pRbA?oc=5" target="_blank" rel="noopener">Bitcoin’s Worst Week Since FTX Crash Signals More Pain Ahead</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxQM1Vxa0VpYnVHV0RaTFZLbUVkVWh0blhHakdKbGwzMUN3RWFWZ3MyNnpQV0tsZ0JYZHZ1Y19CTFZwZ1hUVktfZ0RBNzVFUTJGaXg1cXFxTmFCTGlGVGFFWTNxbktWNkZDcl9RY1NDX2JwVWNUNWViWDBPNVAtM3hvRDBIaWw?oc=5" target="_blank" rel="noopener">Bitcoin, XRP, Ethereum Slump as AI Selloff Hits Cryptos</a><div class="meta"><span>Barron&#x27;s</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNN3Z1VXBPeF9LdVVXMlNsX3Y0aGJqSGNhQXAxRU9RVW9uS3ZyUEhHM253RTNqRUIzZHVtQUNQZUdEMVprX3R3cU1kV3kyUUZlZWM0ZXNSU29lWDhmQ3R5TkRJSXdJQ3hZU2pJVGtrVnZ5b0xzMFhWTlRKeFNWb05KZ0F0Q0ppblJ3Q2JRczJpVmFFT1Q0TUNBNU01a2tPWjBIVnc?oc=5" target="_blank" rel="noopener">Bitcoin, Ethereum, XRP, Dogecoin Slide Even As Michael Saylor&#x27;s Strategy Inc Resumes Buying BTC: Analyst Says &#x27;Buy&#x27; The ETH Dip</a><div class="meta"><span>Yahoo Finance</span><span>· 09 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQRFBJZEpNQUxVYTJneUc0ZFV2eEtqNTlMT0dYd0hoMDFJUGpUT3RQMDd0dHFuNUh3VHBCRm1neHd1WHRrWDhZZUF1Mk5idGhjUnZ6LW9za2ZoSzFJWll0QV9sNVZBQW1fcDdBTXhHYUJka05iNl9YcXlSaXh1M01GWXBIMnR0X0w0ZlB5Wk5tM0M1TzRad3pRbA?oc=5" target="_blank" rel="noopener">Bitcoin’s Worst Week Since FTX Crash Signals More Pain Ahead</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxQM1Vxa0VpYnVHV0RaTFZLbUVkVWh0blhHakdKbGwzMUN3RWFWZ3MyNnpQV0tsZ0JYZHZ1Y19CTFZwZ1hUVktfZ0RBNzVFUTJGaXg1cXFxTmFCTGlGVGFFWTNxbktWNkZDcl9RY1NDX2JwVWNUNWViWDBPNVAtM3hvRDBIaWw?oc=5" target="_blank" rel="noopener">Bitcoin, XRP, Ethereum Slump as AI Selloff Hits Cryptos</a><div class="meta"><span>Barron&#x27;s</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNN3Z1VXBPeF9LdVVXMlNsX3Y0aGJqSGNhQXAxRU9RVW9uS3ZyUEhHM253RTNqRUIzZHVtQUNQZUdEMVprX3R3cU1kV3kyUUZlZWM0ZXNSU29lWDhmQ3R5TkRJSXdJQ3hZU2pJVGtrVnZ5b0xzMFhWTlRKeFNWb05KZ0F0Q0ppblJ3Q2JRczJpVmFFT1Q0TUNBNU01a2tPWjBIVnc?oc=5" target="_blank" rel="noopener">Bitcoin, Ethereum, XRP, Dogecoin Slide Even As Michael Saylor&#x27;s Strategy Inc Resumes Buying BTC: Analyst Says &#x27;Buy&#x27; The ETH Dip</a><div class="meta"><span>Yahoo Finance</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxQMG0za3ppLVhCekRESHdPVmR4Njd1M20zT0lFbHV0T1I1NXlpRnRJMEZfOWltaGJlSmVUZExJUERmVGU3WnhjWTFjWGdBTktxRWh3Z1FreFhKU2FmNzRCdWJySkdhSjhoWVRXRXpOa1I2VFFIcS1XRlNDalhsNEJSZWtEM3hlR29jNTVOMERKSWozOHF6ZEdDSFNoZHZJTDBKYnlUVjBvdnNKam5QSnZZdFZmQlVLWER1YzlwNVBKaFRxYnZjVXFSZg?oc=5" target="_blank" rel="noopener">Circle debuts cirBTC on Ethereum to challenge Coinbase in the wrapped bitcoin market</a><div class="meta"><span>CoinDesk</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxNODJiRW82bmt2R0xmVGo3cGhCZWdaRy1HZTBpbTRVTXYxUVBuX2RtNzZWTXBndEtvYUMtOUJ0T28wVjAtSlg1VFdVQ1k3dXBKZGpnQ1RvRjJLOGVJQXpzSk1Pa2lQRU9PT0F3X3BRRzByQ3g5S0s2LVp2V2pkQXhCeGN4dC1UZmg0LUVtT2dVTmx0c0hMZHV6MkZWSGxfQ0hmRjhDemdER21ieUhuU3Br?oc=5" target="_blank" rel="noopener">Bitcoin Selloff Leaves Half of All Supply Trading at a Loss</a><div class="meta"><span>Bloomberg.com</span><span>· 10 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/it/maerkte.html">← Torna alla panoramica mercati</a> · <a href="/ki-und-krypto-daten.html">IA &amp; cripto in numeri →</a></p>
     </div>
   </section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap"><span class="eyebrow">Altro in questa categoria</span><h2>Valori correlati</h2><div class="relgrid"><a class="relcard" href="/it/maerkte/ethereum.html"><span class="rn">Ethereum</span><span class="rs">ETH</span></a><a class="relcard" href="/it/maerkte/solana.html"><span class="rn">Solana</span><span class="rs">SOL</span></a><a class="relcard" href="/it/maerkte/ripple.html"><span class="rn">XRP</span><span class="rs">XRP</span></a><a class="relcard" href="/it/maerkte/bnb.html"><span class="rn">BNB</span><span class="rs">BNB</span></a></div></div></section>
 
   <section class="sec" style="padding-top:0">
     <div class="wrap">

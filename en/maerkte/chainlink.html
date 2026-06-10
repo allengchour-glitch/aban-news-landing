@@ -240,6 +240,16 @@
     .chartbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;box-shadow:var(--shadow-sm);margin-top:1.4rem}
     .muted{color:var(--muted)}
     .backlink{display:inline-block;margin:.4rem 0 0;color:var(--amber-dk);font-weight:700;text-decoration:none}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem;margin-top:1.4rem}
+    .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.2rem}
+    .kpi .kl{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
+    .kpi .kv{font-weight:800;font-variant-numeric:tabular-nums}
+    .analysis{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.6rem;max-width:680px}
+    .analysis li{background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:10px;padding:.7rem .9rem;font-size:.95rem;color:var(--ink)}
+    .relgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-top:1.4rem}
+    .relcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink)}
+    .relcard:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .relcard .rn{font-weight:800}.relcard .rs{color:var(--muted);font-size:.85rem}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"Chainlink (LINK) \u2014 price, 30-day chart & AI sentiment | aban news","url":"https://abannews.com/en/maerkte/chainlink.html","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}
@@ -264,8 +274,8 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Chainlink <span class="hl">LINK</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="chainlink" data-type="crypto">7.74 USD</span>
-        <span class="chg down">-1.82 %</span>
+        <span class="px" id="livePrice" data-id="chainlink" data-type="crypto">7.81 USD</span>
+        <span class="chg down">-1.09 %</span>
         <span class="tag-type">Crypto</span>
         <span class="badge neutral">Neutral</span>
       </div>
@@ -279,6 +289,9 @@
       <h2>Price history</h2>
       <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,8.0 L35.1,25.3 L62.3,29.7 L89.4,14.6 L116.5,57.7 L143.7,69.1 L170.8,65.1 L197.9,63.2 L225.0,55.7 L252.2,75.3 L279.3,66.9 L306.4,70.2 L333.6,76.9 L360.7,91.2 L387.8,97.6 L415.0,89.0 L442.1,91.6 L469.2,95.9 L496.3,135.7 L523.5,154.9 L550.6,192.0 L577.7,161.2 L604.9,155.7 L632.0,164.5 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,8.0 35.1,25.3 62.3,29.7 89.4,14.6 116.5,57.7 143.7,69.1 170.8,65.1 197.9,63.2 225.0,55.7 252.2,75.3 279.3,66.9 306.4,70.2 333.6,76.9 360.7,91.2 387.8,97.6 415.0,89.0 442.1,91.6 469.2,95.9 496.3,135.7 523.5,154.9 550.6,192.0 577.7,161.2 604.9,155.7 632.0,164.5" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
       <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
+      <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.09 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-6.10 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-26.08 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">10.59 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">7.34 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">246.32 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">5.67 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">52.70 USD</span></div></div>
     </div>
   </section>
 
@@ -291,6 +304,7 @@
         <p class="csignal">Neue Nutzung, Personalwechsel, Akkumulation.</p>
         <p class="crat">Chainlink wird von Myriad für FIFA World Cup Prediction Markets genutzt, und ein Exec wechselt zur SEC Crypto Task Force, während LINK-Halter akkumulieren.</p>
       </div>
+      
     </div>
   </section>
 
@@ -298,10 +312,12 @@
     <div class="wrap">
       <span class="eyebrow">News on LINK</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxQQk5iMUNOY2F4R3FjTWNuWlYySk0xYXVnR0hTcjA1U19vNTV6M1ZILS1pby14RmQzWFhFbW5KakFlOEZDZEl3REtqdGwwVy1QUHdqUTZ0MmljTGJWZUxkVFVYUE9wajZhTUtwRHltak84NUhVXzNKalpBZThKNlhPR0hxd2Y0ZVV3VEEwNkNKMkR0ME1nX3EzNkxmeWxqZw?oc=5" target="_blank" rel="noopener">Myriad Taps Chainlink to Power FIFA World Cup Prediction Markets</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxQMHhNb3FJTWVlTWdYWU5UbUxuNW8tX0RvZkR0X1ZkQmZqUWtEOGFtZHZudHVEMnc1Y1NUV2duZTdLS3FXZkpZX3NxalVKZUxfVmNtejB1V21xTS1TYjc0anJCR1ZHUmpmZmMxbnFQczZhSm5NUUlXS29iYkw1VHgxSkN0X0haQXB3MTdtSVBkdi1SUGl5ekFZWDh0SmJjdF8y?oc=5" target="_blank" rel="noopener">Chainlink Exec Taylor Lindman Joins SEC Crypto Task Force</a><div class="meta"><span>CoinMarketCap</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOTDRVVDY4YUVwSmpmSy1fWXQtbHZFcXpHMmVvWDBKM0FzWjlDeWRVVTU3cVJpeWhxOEtQV20wa01MS0tscEQzZjdNeFgyeDdCYUEtTVJBeXp1cWhYTDA5T2pvM1JQWW5CeUNVRVBnUE5CZjRnZm1hcEsyMDIwVEx0RlZkU0JuemV6VE9QUmtkMzFwMXlOUFZaeUpzYlF3UjdZYmJ3VTR6cU1FWGEzWXpZ?oc=5" target="_blank" rel="noopener">Over 535,000 LINK Holders Signal Quiet Chainlink Accumulation Amid Market Uncertainty</a><div class="meta"><span>CryptoPotato</span><span>· 09 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxQQk5iMUNOY2F4R3FjTWNuWlYySk0xYXVnR0hTcjA1U19vNTV6M1ZILS1pby14RmQzWFhFbW5KakFlOEZDZEl3REtqdGwwVy1QUHdqUTZ0MmljTGJWZUxkVFVYUE9wajZhTUtwRHltak84NUhVXzNKalpBZThKNlhPR0hxd2Y0ZVV3VEEwNkNKMkR0ME1nX3EzNkxmeWxqZw?oc=5" target="_blank" rel="noopener">Myriad Taps Chainlink to Power FIFA World Cup Prediction Markets</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxQMHhNb3FJTWVlTWdYWU5UbUxuNW8tX0RvZkR0X1ZkQmZqUWtEOGFtZHZudHVEMnc1Y1NUV2duZTdLS3FXZkpZX3NxalVKZUxfVmNtejB1V21xTS1TYjc0anJCR1ZHUmpmZmMxbnFQczZhSm5NUUlXS29iYkw1VHgxSkN0X0haQXB3MTdtSVBkdi1SUGl5ekFZWDh0SmJjdF8y?oc=5" target="_blank" rel="noopener">Chainlink Exec Taylor Lindman Joins SEC Crypto Task Force</a><div class="meta"><span>CoinMarketCap</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE8wRHpzNXU0WHR0UGwxWHl5eXFhS2twZERGZ0VoSUNqMUx5ZmhhVU9DY29QVUxiN0tIQVRQTXRxUjNLTFgxb2R4V2VjUEZuUm9WOVNVdGtQVnBYcElvS2h3MkpLdlBoQQ?oc=5" target="_blank" rel="noopener">The DeFi Moment for Prediction Markets</a><div class="meta"><span>Chainlink Blog</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOTDRVVDY4YUVwSmpmSy1fWXQtbHZFcXpHMmVvWDBKM0FzWjlDeWRVVTU3cVJpeWhxOEtQV20wa01MS0tscEQzZjdNeFgyeDdCYUEtTVJBeXp1cWhYTDA5T2pvM1JQWW5CeUNVRVBnUE5CZjRnZm1hcEsyMDIwVEx0RlZkU0JuemV6VE9QUmtkMzFwMXlOUFZaeUpzYlF3UjdZYmJ3VTR6cU1FWGEzWXpZ?oc=5" target="_blank" rel="noopener">Over 535,000 LINK Holders Signal Quiet Chainlink Accumulation Amid Market Uncertainty</a><div class="meta"><span>CryptoPotato</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxQODlBTUF0Nk9qV0lxVUxVMVcxemhPWktDcC1EMW5wY0FQbmRPWE5XQ2EzdFhzVkJLMkxkNDNxenFjMkxzaXcwZWpZZkJnbnM0dTlNckxMcTFlSHpWcVlsUlFodlNGdUpCc2V3OUlOcjhjOFlHZHNNcHVkX0xQYVliRU1KcGUxN0E?oc=5" target="_blank" rel="noopener">Chainlink in Plain English</a><div class="meta"><span>Bitwise Investments</span><span>· 30 Apr 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap"><span class="eyebrow">More in this category</span><h2>Related assets</h2><div class="relgrid"><a class="relcard" href="/en/maerkte/bitcoin.html"><span class="rn">Bitcoin</span><span class="rs">BTC</span></a><a class="relcard" href="/en/maerkte/ethereum.html"><span class="rn">Ethereum</span><span class="rs">ETH</span></a><a class="relcard" href="/en/maerkte/solana.html"><span class="rn">Solana</span><span class="rs">SOL</span></a><a class="relcard" href="/en/maerkte/ripple.html"><span class="rn">XRP</span><span class="rs">XRP</span></a></div></div></section>
 
   <section class="sec" style="padding-top:0">
     <div class="wrap">
