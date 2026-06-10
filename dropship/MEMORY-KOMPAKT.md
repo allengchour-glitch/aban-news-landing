@@ -4,7 +4,15 @@
 > MISTER-DTF-FULFILLMENT.md (Bügeltransfer). Stand: **2026-06-10 nachts** (Details als dated Einträge unten).
 
 ## 📌 STAND 2026-06-11 (Prodigi-Connector + Lieferzeit + Sprache je Land — NEU, ZUERST LESEN)
-**Gebaut & committet (alles no-op-safe, idempotent, DRY_RUN-fähig; Branch `_mp_*` → `main`):**
+**🟢 SCHON LIVE & VERIFIZIERT (diese Session live geschaltet):**
+- **Sprache je Land LIVE:** `shopLocales` = DE(primär)/EN/FR/IT **alle published** → Shopify schaltet je Land autom. um.
+- **Übersetzungen LIVE:** `translate.yml` (dry=false) lief — **Hero verifiziert** (echte FR/IT Titel+Body+Meta, HTML/Emoji intakt),
+  **Katalog-Lauf** (alle ~517 Produkte) + Theme laufen autonom weiter; Ledger `dropship/_translated.txt` committet je Scope.
+  Bei Abbruch: `translate.yml` erneut dry=false starten → setzt via Ledger fort (idempotent). **Bali NICHT übersetzt** (nicht in Hero-CSV, DO-NOT-POST ok).
+- **Lieferzeit Phase 1 LIVE:** `delivery-block.yml` (dry=false) lief → alle aktiven Produkte haben `class="ls-liefer"`-Block +
+  Metafeld `custom.lieferzeit`. (Viele Altprodukte = Tier „standard" 6–12/9–16, weil ohne cj-real-Tag — ok, plausibel.)
+
+**Gebaut & committet (alles no-op-safe, idempotent, DRY_RUN-fähig; auf `main`):**
 - **Prodigi-Connector (POD #3, EU-Labs)** — `automation/prodigi_check.mjs` (Key/Katalog), `create_prodigi_products.mjs`
   (10 Schweiz-Poster aus `social/posters/hoch/`, Fine-Art A4/A3/A2, **Shopify-Variant-SKU = DIREKT Prodigi-SKU** z.B.
   `GLOBAL-FAP-A3`, Metafeld `custom.print_file`, Tags `prodigi_personalized_product`+`schweiz-edition`, ACTIVE+publish),
@@ -21,8 +29,9 @@
   Workflow `translate.yml` fährt **hero→catalog→theme sequenziell** in 1 Lauf (committet Ledger zurück). Braucht `GEMINI_API_KEY`+Shopify-Creds.
 - **Spocket:** KEIN Merchant-API (bestätigt) → später per App-Import + Veredelung. **autopilot2** „Markets inkompatibel" = harmlos, User-Entscheid: drin lassen.
 - **Reprice-Falle:** `printful_reprice.mjs` NICHT mit Default `MIN_MARGE=12` auf Sticker/kleine POD (überteuert) — nur mit `MIN_MARGE=2`.
-- **Offen (User):** `PRODIGI_API_KEY`-Secret setzen → schaltet Connector scharf. Danach: `prodigi-check` → `prodigi-products` (dry=false)
-  → `delivery-block` (dry=false) → `markets-languages` (dry=false) → `translate` (dry=false). Snippet `delivery-snippet` braucht ggf. richtige `SECTION`.
+- **Offen (User):** siehe `dropship/TODO-AKTUELL.md`. Kurz: (1) `PRODIGI_API_KEY`-Secret → dann `prodigi-check`→`prodigi-products`;
+  (2) Lieferzeit Phase 2 `delivery-snippet.yml` (richtige `SECTION` prüfen); (3) Spocket-App-Import; (4) Markt-Web-Presence
+  je Markt: FR/IT/EN ggf. im Admin → Märkte ergänzen, falls Sprache dort nicht auto erscheint.
 
 ## 📌 STAND 2026-06-10 (Session-Ende — ZUERST LESEN, dann Details unten)
 **Heute live geschaltet (alles auf `main`, mit Backups/Rollback):**
