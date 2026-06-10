@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prompt-Verbesserer — deinen KI-Prompt prüfen &amp; aufwerten | aban news</title>
-<meta name="description" content="Füg deinen Prompt ein und sieh sofort, was fehlt: Rolle, Kontext, Format, Beispiel, Einschränkungen. Mit Prompt-Score und konkreten Verbesserungen. Gratis, ohne Login, kein Datenversand.">
+<title>Prompt Improver — check &amp; upgrade your AI prompt | aban news</title>
+<meta name="description" content="Paste your prompt and instantly see what's missing: role, context, format, example, constraints. With a prompt score and concrete fixes. Free, no login, no data sent.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/ki-prompt-checker.html">
+<link rel="canonical" href="https://abannews.com/en/ki-prompt-checker.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/ki-prompt-checker.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-prompt-checker.html">
 <link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-prompt-checker.html">
-<meta property="og:title" content="Prompt-Verbesserer — deinen KI-Prompt aufwerten">
-<meta property="og:description" content="Prompt einfügen → Score + konkrete Verbesserungen (Rolle, Kontext, Format, Beispiel). Gratis, ohne Login.">
+<meta property="og:title" content="Prompt Improver — upgrade your AI prompt">
+<meta property="og:description" content="Paste a prompt → score + what's missing (role, format, example) + a better skeleton. Free, no login.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/ki-prompt-checker.html">
+<meta property="og:url" content="https://abannews.com/en/ki-prompt-checker.html">
 <meta property="og:image" content="https://abannews.com/og-ki-prompt-checker.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="en_US"><meta property="og:site_name" content="aban news">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Prompt-Verbesserer","url":"https://abannews.com/ki-prompt-checker.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Prompt Improver","url":"https://abannews.com/en/ki-prompt-checker.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -65,21 +65,21 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
-<a href="/prompt-baukasten.html" class="btn ghost">Prompt-Baukasten</a></div></header>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="/ki-prompt-checker.html" class="btn ghost">DE</a></div></header>
 <main><div class="wrap">
 
   <section class="hero">
-    <h1><span class="a">Prompt</span>-Verbesserer</h1>
-    <p>Füg deinen Prompt ein. Das Tool prüft, was fehlt (Rolle, Kontext, Format, Beispiel, Grenzen), gibt einen Score und konkrete Verbesserungen — plus ein besseres Gerüst zum Übernehmen. Läuft im Browser, kein Datenversand.</p>
+    <h1><span class="a">Prompt</span> Improver</h1>
+    <p>Paste your prompt. The tool checks what's missing (role, context, format, example, limits), gives a score and concrete fixes — plus a better skeleton to reuse. Runs in your browser, no data sent.</p>
   </section>
 
   <div class="app">
-    <label for="txt" style="font-weight:600;display:block;margin-bottom:8px">Dein Prompt:</label>
-    <textarea id="txt" placeholder="z. B. Schreib mir einen Text über unser neues Produkt."></textarea>
+    <label for="txt" style="font-weight:600;display:block;margin-bottom:8px">Your prompt:</label>
+    <textarea id="txt" placeholder="e.g. Write me a text about our new product."></textarea>
     <div class="row">
-      <button class="btn" id="go" type="button">Prompt prüfen →</button>
-      <button class="btn ghost" id="demo" type="button">Beispiel laden</button>
+      <button class="btn" id="go" type="button">Check prompt →</button>
+      <button class="btn ghost" id="demo" type="button">Load example</button>
       <span class="muted" id="wc"></span>
     </div>
 
@@ -97,59 +97,57 @@ footer a{color:var(--muted)}
     </div>
   </div>
 
-  <p class="disc">💡 Faustregel: Ein guter Prompt sagt <b>wer</b> (Rolle), <b>was</b> (Aufgabe), <b>für wen</b> (Zielgruppe), <b>wie</b> (Format/Ton) — und gibt am besten ein <b>Beispiel</b>. Je konkreter, desto weniger Raterei.</p>
+  <p class="disc">💡 Rule of thumb: a good prompt says <b>who</b> (role), <b>what</b> (task), <b>for whom</b> (audience), <b>how</b> (format/tone) — and ideally gives an <b>example</b>. The more concrete, the less guessing.</p>
 
   <div class="band">
-    <h2>Noch keine Idee für den Prompt?</h2>
-    <p>Der <a href="/prompt-baukasten.html">Prompt-Baukasten</a> baut dir aus Stichworten einen fertigen Prompt. Und aban news zeigt werktags in 5 Minuten, wie KI in der Praxis wirklich hilft — gratis.</p>
-    <a class="btn" href="/newsletter.html">Newsletter gratis abonnieren →</a>
+    <h2>No idea for the prompt yet?</h2>
+    <p>aban news shows in 5 minutes a day how AI actually helps in practice — honest, no hype. (German newsletter — but the tools are for everyone.)</p>
+    <a class="btn" href="https://abannews.beehiiv.com/subscribe">Subscribe free →</a>
   </div>
 
-  <p class="muted" style="text-align:center;margin:8px 0 0">Mehr: <a href="/prompt-baukasten.html">Prompt-Baukasten</a> · <a href="/ki-werkzeug.html">KI-Werkzeug</a> · <a href="/online-tools.html">alle Tools</a></p>
+  <p class="muted" style="text-align:center;margin:8px 0 0">More: <a href="/en/ki-werkzeug.html">AI Toolkit</a> · <a href="https://tools.abannews.com">AI tools directory</a> · <a href="/ki-prompt-checker.html">Deutsche Version</a></p>
 
 </div></main>
 <footer><div class="wrap">&copy; 2026 aban news &middot; Allen Chour &middot; Belp (CH) &middot;
-  <a href="/prompt-baukasten.html">Prompt-Baukasten</a> &middot; <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/newsletter.html">Newsletter</a> &middot; <a href="/impressum.html">Impressum</a></div></footer>
+  <a href="/en/ki-werkzeug.html">AI Toolkit</a> &middot; <a href="/ki-prompt-checker.html">Deutsch</a> &middot; <a href="/impressum.html">Imprint</a> &middot; <a href="/datenschutz.html">Privacy</a></div></footer>
 
 <script>
 (function(){
   "use strict";
   var $=function(id){return document.getElementById(id);};
-  // Dimension: [name, Regex-Test, Tipp wenn fehlt, Platzhalter fürs Gerüst]
   var DIMS=[
-    ["Rolle", /\b(du bist|agier(e|st) als|als (ein|eine)\b|in der rolle|handle als|you are)\b/i,
-     "Gib der KI eine Rolle: „Du bist erfahrene:r [Beruf]…“. Das setzt Ton und Tiefe.",
-     "Du bist [Rolle/Experte]."],
-    ["Aufgabe klar", /\b(schreib|erstell|formulier|fass|analysier|übersetz|plan|entwirf|liste|vergleich|berechne|korrigier)\w*/i,
-     "Sag mit einem klaren Verb, was du willst: schreib / fasse zusammen / analysiere …",
-     "Aufgabe: [was genau soll entstehen]."],
-    ["Kontext/Hintergrund", null,  // length-basiert, siehe unten
-     "Gib Hintergrund: worum geht's, was ist das Ziel, was ist schon bekannt?",
-     "Kontext: [Produkt/Situation/Ziel, relevante Fakten]."],
-    ["Zielgruppe", /\b(für (anfänger|einsteiger|kund|leser|chefs|kinder|profis|[A-ZÄÖÜ])|zielgruppe|publikum|leser:?innen|für unsere)\b/i,
-     "Für wen ist das Ergebnis? „für Einsteiger“, „für Geschäftskunden“ — ändert alles.",
-     "Zielgruppe: [für wen]."],
-    ["Format/Länge", /\b(format|liste|tabelle|stichpunkt|absätz|absatz|json|markdown|\d+\s*(wörter|sätze|zeichen|punkte)|kurz|in \d)\b/i,
-     "Sag das Format: Liste? Tabelle? 5 Stichpunkte? max. 120 Wörter? Spart Nacharbeit.",
-     "Format: [z. B. 5 Stichpunkte, max. 120 Wörter]."],
-    ["Ton/Stil", /\b(ton|stil|freundlich|locker|formell|sachlich|humorvoll|professionell|seriös|einfach|klar)\b/i,
-     "Leg den Ton fest: sachlich, locker, professionell …",
-     "Ton: [z. B. sachlich, freundlich]."],
-    ["Beispiel", /\b(beispiel|z\.?\s?b\.|etwa:|so wie|wie folgt|zum beispiel|orientier dich an)\b/i,
-     "Gib EIN Beispiel, das dir gefällt — die KI ahmt Stil & Aufbau viel besser nach als bei reiner Beschreibung.",
-     "Beispiel/Orientierung: [füge ein Muster ein]."],
-    ["Grenzen/Don'ts", /\b(nicht|vermeide|ohne|kein(e|en)?|verzichte|maximal|höchstens|keinesfalls)\b/i,
-     "Sag, was NICHT sein soll: keine Floskeln, kein Fachjargon, keine erfundenen Zahlen.",
-     "Bitte vermeiden: [z. B. Buzzwords, erfundene Zahlen]."]
+    ["Role", /\b(you are|act as|as an? |in the role of|imagine you)\b/i,
+     "Give the AI a role: „You are an experienced [job]…“. It sets tone and depth.",
+     "You are [role/expert]."],
+    ["Clear task", /\b(write|create|draft|summari[sz]e|analy[sz]e|translate|plan|design|list|compare|calculate|fix|rewrite|outline)\w*/i,
+     "State what you want with a clear verb: write / summarise / analyse …",
+     "Task: [what exactly should be produced]."],
+    ["Context", null,
+     "Give background: what's it about, what's the goal, what's already known?",
+     "Context: [product/situation/goal, relevant facts]."],
+    ["Audience", /\b(for (beginners|customers|readers|executives|kids|experts|managers)|audience|target group|readers?)\b/i,
+     "Who is it for? „for beginners“, „for enterprise buyers“ — changes everything.",
+     "Audience: [who it's for]."],
+    ["Format/Length", /\b(format|list|table|bullet|paragraph|json|markdown|\d+\s*(words|sentences|characters|points)|in \d|max(imum)?)\b/i,
+     "Set the format: list? table? 5 bullets? max 120 words? Saves rework.",
+     "Format: [e.g. 5 bullets, max 120 words]."],
+    ["Tone/Style", /\b(tone|style|friendly|casual|formal|professional|serious|simple|clear|humorous|concise)\b/i,
+     "Define the tone: factual, casual, professional …",
+     "Tone: [e.g. factual, friendly]."],
+    ["Example", /\b(example|e\.g\.|for instance|like this|as follows|model it on|such as)\b/i,
+     "Give ONE example you like — the AI mimics style & structure far better than from a description.",
+     "Example/reference: [paste a sample]."],
+    ["Constraints", /\b(do ?n'?t|avoid|without|no |never|at most|maximum|refrain)\b/i,
+     "Say what NOT to do: no clichés, no jargon, no made-up numbers.",
+     "Please avoid: [e.g. buzzwords, made-up numbers]."]
   ];
-
   function esc(s){return String(s).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
 
   function analyze(text){
     var words=(text.trim().match(/\S+/g)||[]).length;
     var res=DIMS.map(function(dn){
       var ok;
-      if(dn[0]==="Kontext/Hintergrund"){ ok = words>=18 || /\b(kontext|hintergrund|worum es geht|ziel ist|wir sind|unser)\b/i.test(text); }
+      if(dn[0]==="Context"){ ok = words>=18 || /\b(context|background|the goal is|we are|our company|the situation)\b/i.test(text); }
       else { ok = dn[1].test(text); }
       return {name:dn[0], ok:ok, tip:dn[2], ph:dn[3]};
     });
@@ -164,31 +162,27 @@ footer a{color:var(--muted)}
     $("score").textContent=r.score;
     $("bar").style.setProperty("--empty",(100-r.score)+"%");
     var v=$("verdict");
-    if(r.score>=75){ v.textContent="🟢 Starker Prompt"; v.style.color="var(--ok)"; }
-    else if(r.score>=45){ v.textContent="🟡 Solide — mit Luft nach oben"; v.style.color="var(--amber-dk)"; }
-    else { v.textContent="🔴 Zu vage — die KI muss raten"; v.style.color="var(--bad)"; }
-    $("summary").textContent=r.hit+" von "+DIMS.length+" Bausteinen vorhanden. Je mehr, desto präziser die Antwort.";
+    if(r.score>=75){ v.textContent="🟢 Strong prompt"; v.style.color="var(--ok)"; }
+    else if(r.score>=45){ v.textContent="🟡 Solid — room to improve"; v.style.color="var(--amber-dk)"; }
+    else { v.textContent="🔴 Too vague — the AI has to guess"; v.style.color="var(--bad)"; }
+    $("summary").textContent=r.hit+" of "+DIMS.length+" building blocks present. More = more precise answers.";
     $("checks").innerHTML=r.res.map(function(d){
       return '<li><span class="ic">'+(d.ok?"✅":"⬜")+'</span><span><b>'+esc(d.name)+'</b>'+(d.ok?'':' — '+esc(d.tip))+'</span></li>';
     }).join("");
-    var missing=r.res.filter(function(d){return !d.ok;});
-    if(missing.length){
-      $("tmpl").style.display="block";
-      $("tmpl").textContent="Verbessertes Gerüst (fehlende Bausteine ergänzt — Platzhalter ausfüllen):\n\n"+
-        r.res.map(function(d){ return d.ph; }).join("\n");
-    } else {
-      $("tmpl").style.display="block";
-      $("tmpl").textContent="Top — alle Bausteine drin. Letzter Schliff: prüf, ob jedes Detail wirklich konkret ist (echte Zahlen, echtes Beispiel).";
-    }
+    $("tmpl").style.display="block";
+    var allOk=r.res.every(function(d){return d.ok;});
+    $("tmpl").textContent=allOk
+      ? "Nice — all blocks present. Final polish: check every detail is truly concrete (real numbers, a real example)."
+      : "Improved skeleton (missing blocks added — fill in the placeholders):\n\n"+r.res.map(function(d){return d.ph;}).join("\n");
   }
 
   function run(){ render(analyze($("txt").value||"")); }
   $("go").addEventListener("click", run);
   $("txt").addEventListener("input", function(){
-    var n=(this.value.trim().match(/\S+/g)||[]).length; $("wc").textContent=n?n+" Wörter":"";
+    var n=(this.value.trim().match(/\S+/g)||[]).length; $("wc").textContent=n?n+" words":"";
   });
   $("demo").addEventListener("click", function(){
-    $("txt").value="Schreib mir einen Text über unser neues Produkt.";
+    $("txt").value="Write me a text about our new product.";
     $("txt").dispatchEvent(new Event("input")); run();
   });
 })();
