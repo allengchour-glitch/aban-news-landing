@@ -31,7 +31,7 @@ DATA = HERE.parent / "data" / "markets.json"
 YAHOO_CHART = "https://query1.finance.yahoo.com/v8/finance/chart/{sym}?interval=1d&range=1mo"
 STOOQ_HIST = "https://stooq.com/q/d/l/?s={sym}&i=d"  # Fallback (CSV), falls Yahoo blockt
 COINGECKO = ("https://api.coingecko.com/api/v3/coins/markets"
-             "?vs_currency=usd&ids={ids}&price_change_percentage=24h")
+             "?vs_currency=usd&ids={ids}&price_change_percentage=24h,7d,30d")
 COINGECKO_CHART = ("https://api.coingecko.com/api/v3/coins/{id}/market_chart"
                    "?vs_currency=usd&days=30&interval=daily")
 # FX (USD→…) via Frankfurter (offizielle EZB-Referenzkurse, keyless, kein Tracking).
@@ -49,7 +49,7 @@ FINANCE_FEEDS = {
 MAX_NEWS = 10
 # Pro-Wert-News (Google-News-RSS-Suche, keyless) → bessere, gezieltere KI-Einordnung.
 GNEWS = "https://news.google.com/rss/search?q={q}&hl=en-US&gl=US&ceid=US:en"
-MAX_ASSET_NEWS = 3
+MAX_ASSET_NEWS = 5
 
 
 def fetch(url: str, timeout: int = 20) -> str:
@@ -66,6 +66,22 @@ def downsample(values, n=24):
         return vals
     step = len(vals) / float(n)
     return [vals[min(len(vals) - 1, int(i * step))] for i in range(n)]
+
+
+def spark_stats(spark):
+    """Aus der 30T-Sparkline: 30T-Hoch/Tief, 7d- und 30d-Veränderung (%)."""
+    s = [v for v in (spark or []) if isinstance(v, (int, float))]
+    if len(s) < 2:
+        return {}
+    last = s[-1]
+    chg30 = (last - s[0]) / s[0] * 100.0 if s[0] else None
+    i7 = max(0, len(s) - 6)  # ~7 Tage zurück (24 Punkte über 30 Tage)
+    chg7 = (last - s[i7]) / s[i7] * 100.0 if s[i7] else None
+    return {
+        "high_30d": round(max(s), 4), "low_30d": round(min(s), 4),
+        "change_7d": round(chg7, 2) if chg7 is not None else None,
+        "change_30d": round(chg30, 2) if chg30 is not None else None,
+    }
 
 
 # ---------- Aktien (Yahoo Finance, keyless) ----------
@@ -90,7 +106,12 @@ def yahoo_quote(symbol: str):
     change = ((price - prev) / prev * 100.0) if prev else None
     return {"price": round(float(price), 2),
             "change_24h": round(change, 2) if change is not None else None,
-            "spark": downsample(closes, 24)}
+            "spark": downsample(closes, 24),
+            "stats": {
+                "week52_high": meta.get("fiftyTwoWeekHigh"),
+                "week52_low": meta.get("fiftyTwoWeekLow"),
+                "volume": meta.get("regularMarketVolume"),
+            }}
 
 
 def stooq_quote(symbol: str):
@@ -128,10 +149,20 @@ def coingecko_quotes(ids):
         return {}
     out = {}
     for row in data:
+        def pc(k):
+            v = row.get(k)
+            return round(v, 2) if isinstance(v, (int, float)) else None
         out[row.get("id")] = {
             "price": row.get("current_price"),
-            "change_24h": (round(row["price_change_percentage_24h"], 2)
-                           if row.get("price_change_percentage_24h") is not None else None),
+            "change_24h": pc("price_change_percentage_24h"),
+            "stats": {
+                "market_cap": row.get("market_cap"),
+                "volume": row.get("total_volume"),
+                "high_24h": row.get("high_24h"), "low_24h": row.get("low_24h"),
+                "ath": row.get("ath"), "ath_change": pc("ath_change_percentage"),
+                "change_7d": pc("price_change_percentage_7d_in_currency"),
+                "change_30d": pc("price_change_percentage_30d_in_currency"),
+            },
         }
     return out
 
@@ -263,6 +294,7 @@ def main() -> int:
                 spark = coingecko_spark30(a["coingecko_id"])
                 if spark:
                     a["spark"] = spark
+                a["stats"] = {**q.get("stats", {}), **spark_stats(a.get("spark"))}
                 updated += 1
         elif a.get("type") in ("stock", "index", "commodity") and a.get("yahoo_symbol"):
             q = yahoo_quote(a["yahoo_symbol"])
@@ -273,6 +305,7 @@ def main() -> int:
                 a["change_24h"] = q["change_24h"]
                 if q.get("spark"):
                     a["spark"] = q["spark"]
+                a["stats"] = {**q.get("stats", {}), **spark_stats(a.get("spark"))}
                 updated += 1
         # Pro-Wert-News (für KI-Sentiment + Detailseiten)
         qkind = {"crypto": "crypto", "stock": "stock",

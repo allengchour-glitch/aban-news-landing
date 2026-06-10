@@ -101,3 +101,49 @@
   Ergebnis: mobil gut (Headline+Button über Motiv-Wallpaper), **Desktop schlecht** (Hero zu hoch, Text/Button unsichtbar)
   → entfernt, Startseite wieder sauber/original. Hero-Feintuning = visueller Customizer-Job. Schweiz-Discovery läuft
   weiter über den Menü-Link (solider Live-Gewinn).
+
+## 2026-06-10 nachm — Print-Video + KRITISCHER 404-Fix (Selbst-gestalten-Link)
+- **Print-Werbevideo für TikTok geliefert:** `reels/werbung-selbst-gestalten-de.mp4` (9:16, DE, Voiceover+Musik;
+  +`-clean` ohne Ton für Trend-Sound; +EN). Schon auf IG/FB/Threads gepostet (video_queue `print-de`=posted).
+  **TikTok-Direktposting geht NICHT** (kein App-Audit) -> User postet selbst. TikTok-Caption (Mundart) im Chat geliefert.
+- **App-Download-Hänger (NICHT Handy):** Chat-Anhang grosse MP4 bleibt bei "Wird heruntergeladen" haengen.
+  LOESUNG: **Browser-Link** statt Anhang -> `https://abannews.com/reels/<datei>.mp4` (oeffnet/spielt/speichert zuverlaessig).
+- **KRITISCH — `/collections/selbst-gestalten`-404 (User-Report):** Root-Cause via curl+API gefunden:
+  - Es gibt ZWEI POD-Collections: `selbst-gestalten` (id 688385524097, 18 Prod., **publiziert -> HTTP 200 ueberall**)
+    und `selbst-gestalten-1` (id 688427434369, 27 Prod., **resourcePublications LEER -> 404 ueberall, unpubliziert**).
+  - Das Menue-Sub-Item "Alle zum Gestalten" zeigte auf `/collections/selbst-gestalten-1` (404) -> DAS war der 404.
+  - **FIX:** Menue-Item (786839306625) auf `/collections/selbst-gestalten` (200) umgebogen (menuUpdate, ganze Liste).
+    + Redirect `/collections/selbst-gestalten-1` -> `/collections/selbst-gestalten` (faengt Altreferenzen).
+  - ⚠️ FALSCHE Annahme korrigiert: hatte zuerst Redirect `selbst-gestalten`->`-1` gesetzt (= funktionierend auf kaputt!)
+    -> wieder geloescht. **LEHRE: vor URL-Annahmen IMMER `curl -o /dev/null -w "%{http_code}"` testen** + `resourcePublications`
+    pruefen; URL-Redirects feuern nur bei echtem 404; ein "existierendes" Resource-Handle != erreichbar.
+- **Link-Audit (alle 28 Menue-/Werbe-Collections):** ALLE existieren mit Produkten (sommer 72, damen-mode 337, schuhe 97,
+  selbst-gestalten 18, gadgets 124, sale 367 …). Beide Menue-Seiten publiziert. Keine weiteren toten Links.
+- **Maerkte:** DACH (`luxestyle.ch/de-de/`), Switzerland(ch), Global, FR, IT, EU-rest, UK, US — alle enabled.
+  Collections-Erreichbarkeit pro Markt kann abweichen -> im Zweifel beide Markt-Pfade testen (`/de-de/` und root).
+
+## 2026-06-10 abend — POD-Anbieter-Keys gesetzt (Printify + Gelato), Check gebaut
+- User hat **PRINTIFY_API_KEY (gültig, Länge 1301) + GELATO_API_KEY (gültig, Länge 110)** als GitHub-Secrets gesetzt.
+- Tool `automation/pod_provider_check.mjs` + Workflow `pod-provider-check.yml` (testet Keys + verbundene Shops, legt nichts an).
+- **PRINTIFY:** Key gültig, Katalog erreichbar (1415 Blueprints). **Magnete:** `851 Die-Cut Magnets`, 428 Magnets, 789 Square,
+  771/857 Button. **Sticker:** `400 Kiss-Cut Stickers`, 384 Square, 476/564 Vinyl. **🟡 ABER:** der einzige Printify-Shop
+  ist `id 27875158 "My new store" | sales_channel=disconnected` → **LuxeStyle-Shopify-Store ist in Printify NICHT verbunden.**
+  → Produkte per API würden NICHT im Shop landen. **USER-SCHRITT:** Printify → „Manage my stores" → Add store → Shopify →
+  LuxeStyle (au3j0y-hq) verbinden. Dann erscheint ein neuer Shop mit sales_channel=shopify → dessen shop_id für create.
+- **GELATO:** Key gesetzt/gültig. Store-Verbindung analog im Gelato-Dashboard prüfen/verbinden (Dashboard → Stores).
+- **NÄCHSTER SCHRITT (Claude, sobald Shopify in Printify verbunden):** Connector bauen (Design-Upload → product create
+  auf shopify-shop_id → publish) + Schweiz-Sticker/Magnete (Mundart/Matterhorn/Edelweiss) anlegen, Preis ×2,3, Tag
+  `schweiz-edition`. Bis dahin: Keys da, aber **Store-Verbindung im Anbieter fehlt** = Blocker.
+
+## 2026-06-10 spätabend — Anbieter-Realität: Gelato verbunden, aber CI-API blockiert
+- **GELATO:** Store **„LuxeStyle" verbunden & Active** (CHF, Region North America) — User-Screenshot bestätigt
+  (dashboard.gelato.com/stores/list). ABER **Gelato-API ist aus GitHub-Actions NICHT erreichbar** (`fetch failed`,
+  auch mit User-Agent/Accept; Sandbox bekommt 503). → **Vollautonomer Gelato-Connector via CI NICHT möglich** (Netz/WAF-Sperre).
+  Gelato-Weg = **manuell im Gelato-UI** („Add product" / Mockup Studio → Design hochladen → publish → Auto-Sync+Fulfill zu Shopify).
+  Gelato-Stärken: **Poster, Karten, Tassen, Apparel, Tote** (CH-naher Druck) — ideal für Schweiz-Souvenir/Geschenk.
+- **PRINTIFY:** API **funktioniert aus CI** (Shops/Katalog abrufbar), Magnete `851 Die-Cut`, Sticker `400 Kiss-Cut`.
+  ABER Shopify-Store dort **NICHT verbunden** (nur „My new store / disconnected"). → Für CI-Autonomie müsste der
+  User in Printify den Shopify-Store verbinden (Add store → Shopify → App in Shopify installieren/genehmigen).
+- **ENTSCHEID/Strategie:** Gelato (verbunden) = Poster/Karten/Tassen **manuell** anlegen (Claude prept Designs+Specs);
+  Printify (CI-fähig) = Sticker/Magnete **vollautonom**, sobald Shopify in Printify verbunden. Beide ergänzen sich.
+- Tool `automation/pod_provider_check.mjs` + `pod-provider-check.yml` bleibt für Status-Checks.

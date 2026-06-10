@@ -4,6 +4,28 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-10 - 'gemini breit': Hubs automatisch vertiefen
+- automation/deepen_hubs_gemini.py: vertieft Branchen-Hubs (ki-fuer-*) mit Gemini -> ehrlicher Abschnitt
+  'KI in der Praxis: <Branche>' (2 Absaetze) + 3-4 FAQ + FAQPage-Schema, vor dem Funnel-Block. Idempotent
+  (Marker data-aban-deep), no-op ohne Key, Prompt verbietet erfundene Zahlen. Nutzt automation/gemini_text.py.
+- In autopilot.py eingehaengt (Charge 8/Lauf, jeden 2. Tag) + manueller Workflow deepen-hubs.yml
+  (workflow_dispatch, Input batch) fuer groessere Laeufe auf Wunsch. 316 Hubs offen.
+- Per Hand schon vertieft (PRs #596/#598/#600): alle 5 neuen Tools (Erklaer-Text + FAQ + Schema).
+
+## 2026-06-10 - Tiefe Verlinkung Teil 2 (alle 3 Lever + Kern-Tools)
+- Glossar-Begriffe -> Tools: TOOLLINKS-dict in generate_ki_glossar.py (7 Begriffe, je '-> Passendes Werkzeug').
+- 'Verwandte Werkzeuge'-Grid-Block auf 9 Tool-Seiten (5 neue + Prompt-Baukasten/DSGVO/Spar-Rechner/Readiness),
+  je 6 verwandte Tools, eigene Seite ausgeschlossen, inline-Styles. welche-ki-fuer-was.html ausgelassen
+  (JS-Template-Tags brechen die Tag-Balance-Heuristik). PRs #593/#594.
+- maerkte.html: thematischer Block (Glossar/Hype-Detektor/Vergleiche/Finder).
+- Prinzip: jede neue Seite SOFORT ueberall verlinken (Generator+Footer+Hubs+Verwandte-Block), nie isoliert.
+
+## 2026-06-10 - Tiefe Verlinkung (User-Wunsch: alles verlinken, tiefgruendiger)
+- Hype-Detektor in ALLE Branchen-Hubs ueber tools/add_branchen_funnel.py (DE+EN-Block): 316 DE + 313 EN = 629
+  Hubs verlinken ihn. + Homepage-Footer (5 neue Tools + Alle Tools) + maerkte.html (PR #590).
+- Merke: Tool-Familie ueber den FUNNEL-GENERATOR verlinken (skaliert auf alle Hubs), nicht per Hand editieren.
+- maerkte.html ist gut vernetzt (Top-Nav + Footer + von 139 Seiten verlinkt).
+
 ## 📌 2026-06-10 — Großes Link-Leck gefixt (1.259 tote CTAs)
 - **Link-Checker-Fund:** mehrere `*.abannews.com`-Subdomains lösen per DNS NICHT auf (nicht deployt), aber
   massiv verlinkt: **`tools.abannews.com`** (KI-Tools-Verzeichnis) auf **1.259 Seiten** als amber-CTA — tot!

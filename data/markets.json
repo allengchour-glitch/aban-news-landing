@@ -12,13 +12,13 @@
       "name": "Bitcoin",
       "type": "crypto",
       "coingecko_id": "bitcoin",
-      "price": 61681,
-      "change_24h": -2.35,
+      "price": 62221,
+      "change_24h": -0.36,
       "currency": "usd",
       "sentiment": "bearish",
-      "confidence": 0.8,
-      "rationale": "Bitcoin verzeichnete die schlechteste Woche seit dem FTX-Crash, und Analysten sehen weitere Rückgänge aufgrund von Fed-Zinsen und anderen Faktoren.",
-      "signal": "Schlechteste Woche seit FTX-Crash, weitere Rückgänge erwartet.",
+      "confidence": 0.7,
+      "rationale": "Bitcoin verzeichnete die schlechteste Woche seit dem FTX-Crash und verlor über 1 Billion USD an Wert in 8 Monaten, was auf anhaltenden Druck hindeutet.",
+      "signal": "Deutlicher Wertverlust, anhaltender Abwärtstrend.",
       "spark": [
         81725.2077,
         80480.886,
@@ -53,17 +53,46 @@
           "datum": "10 Jun 2026"
         },
         {
-          "title": "A Quantum Clock Is Ticking for Bitcoin and Crypto—Here's How Stellar Is Preparing",
-          "source": "Decrypt",
-          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOeDloZkJWTHBxYnNBcy1NWjBUb3FWODg1eTZ5R0V5SFVVMWUtUDV2aURSMW5rU185ZVZIeml2TlRRMVRSNURTUXZDd1hOc1Bzd0p1YVFGaXVnalJfNUJUZ1BpcllUZERoVjg2emRhWHNDMlV2cjlxQWtzNW1ETUFMZkJzV19YcTExWURkZ9IBlAFBVV95cUxQWjE5TlJ3NXBTWFBWSkxQZUZ5OUtmNHZhYUs1MnpDV01CVFBkVEowRGdIWXpxUUhIMkxHZDF1SWpUalBFMFc4aHVycVhNZ0wwZHFLbHN2S1dCUG01Z1BjWDNCbTJhYVVtbkkyRWpUMWFLSEhIN3NpRUdXendTQkVZcUZrX0lBVzFaVVcyUXVWRDVfWk16?oc=5",
+          "title": "Circle debuts cirBTC on Ethereum to challenge Coinbase in the wrapped bitcoin market",
+          "source": "CoinDesk",
+          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQMG0za3ppLVhCekRESHdPVmR4Njd1M20zT0lFbHV0T1I1NXlpRnRJMEZfOWltaGJlSmVUZExJUERmVGU3WnhjWTFjWGdBTktxRWh3Z1FreFhKU2FmNzRCdWJySkdhSjhoWVRXRXpOa1I2VFFIcS1XRlNDalhsNEJSZWtEM3hlR29jNTVOMERKSWozOHF6ZEdDSFNoZHZJTDBKYnlUVjBvdnNKam5QSnZZdFZmQlVLWER1YzlwNVBKaFRxYnZjVXFSZg?oc=5",
           "datum": "09 Jun 2026"
         },
         {
-          "title": "Live updates: What next for bitcoin as it faces headwinds from Fed rates to Claude's Mythos",
-          "source": "CoinDesk",
-          "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOcGcwT1RNT2hSS2hVZGdFTGtQZXJFTXhMYlNYaHhPYVZsczlWbUlZUXVRSmZVcUNJRldVSU1jTzlYaUtUeVIxa1FYUXFkRDh0ZjRaWEZNYXdXQ3dtN1VLbml4SjIzSGhMdEVtRWc3c2Y1ZF9MUEV5X1RTMjVGdUtLWGxSMUUxcnQwQmZjZmRZNnpubF9ocFlFdHRsSF9NMzNYU2ZxUGRSZnYyQnN3MGlVYVlHWHV4SWJxTXd3OTRWX2FKUW1idEZ6QW4tRHJSOWM?oc=5",
-          "datum": "10 Jun 2026"
+          "title": "More than $1 trillion in value gone in 8 months. What’s going on with bitcoin?",
+          "source": "CNN",
+          "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1XdWhGRWcxaXZvYTFPa3NkN3RLYlZkVUJ1dDZMNVdQZXdxOWQzM0pLLVVOMzZvWTYtOV9DSm5BSHJmcmNMMjRXamVIY0E0N01LNWF6N0NSbVEyMFk2Y0RYZnM2WlRyQUl4d2xmdlBvaGk?oc=5",
+          "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Bitcoin’s $235 Billion Crash Masks a Bigger Shift Across Crypto",
+          "source": "Bloomberg.com",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNMkhxNmRBc0kteVFldmZqbWRrN0VYbkUyY0dhRDRQai1BNEFjbmZIUzhEM184VmppNXdmOU5TTkxEa2UxWDdwN3lxT2hYUXdCU0ZkcmR0VUdNZlRVOFpVcTBwbTROWlVlaDEtREVOamctS0xCSDQtWTVoVzZpb2R5TTVFWm9kYVJvanQ3ODZxNDNoZUwyclZfaTUybTBzUzBMTjJTUnB1bnBMamp1aUVrdmNZVQ?oc=5",
+          "datum": "08 Jun 2026"
+        },
+        {
+          "title": "Exclusive: Wall Street embraces crypto it once feared",
+          "source": "Axios",
+          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxORE5idmNPcHJRd3hoSm9fNUtpZlFCbXNib2Q4NWJfaXlCTEdKX05oNk1xVEtLbkZTMDFBTjFyMnNxYVd2U0Q0eHEwWWk3bnplNkdrNHRGWWpoT3BhcDloOG90c2Q4a1RiSHd4ZzBQcHlvTVJVbHdfU0swSUhLd3RwczBPRXV6QlBPVjF2YQ?oc=5",
+          "datum": "09 Jun 2026"
         }
+      ],
+      "stats": {
+        "market_cap": 1246885673842,
+        "volume": 38197472554,
+        "high_24h": 62448,
+        "low_24h": 60882,
+        "ath": 126080,
+        "ath_change": -50.65,
+        "change_7d": -3.69,
+        "change_30d": -24.55,
+        "high_30d": 81725.2077,
+        "low_30d": 60921.7944
+      },
+      "analysis": [
+        "Treiber: Wall Street zeigt zunehmendes Interesse an Krypto, was langfristig positiv sein könnte.",
+        "Risiko: Der jüngste Wertverlust und die schlechteste Woche seit dem FTX-Crash deuten auf weiteren Schmerz hin.",
+        "Einordnung: Trotz institutionellem Interesse überwiegen kurzfristig die negativen Nachrichten über starke Wertverluste."
       ]
     },
     {
@@ -72,13 +101,13 @@
       "name": "Ethereum",
       "type": "crypto",
       "coingecko_id": "ethereum",
-      "price": 1639.21,
-      "change_24h": -2.43,
+      "price": 1662.35,
+      "change_24h": -0.75,
       "currency": "usd",
-      "sentiment": "bullish",
-      "confidence": 0.7,
-      "rationale": "Ein Analyst bezeichnet Ethereum als 'historische Chance', und Tom Lees BitMine kaufte 214 Millionen Dollar in Ethereum nach einem 'oberflächlichen' Ausverkauf.",
-      "signal": "Analyst sieht 'historische Chance', BitMine kauft Dip.",
+      "sentiment": "bearish",
+      "confidence": 0.6,
+      "rationale": "Ethereum verzeichnete einen Rückgang, da der KI-Ausverkauf Kryptowährungen trifft, obwohl BlackRock ETH kauft.",
+      "signal": "Rückgang im Zuge des breiteren Krypto-Marktes.",
       "spark": [
         2339.6034,
         2274.6432,
@@ -113,17 +142,46 @@
           "datum": "09 Jun 2026"
         },
         {
-          "title": "Ethereum Flashes 'Historic Opportunity,' Says Analyst, as Tom Lee's Bitmine Buys $218M",
+          "title": "BlackRock Sells $230 Million in Bitcoin and Buys Ethereum: What Is Really Going On?",
           "source": "Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQRlhyQ1hMN3RDQ3RBRUgzeUhOOXRFajZyYUN5a01pcWdHZ0RDbXduLWVqNTFBOUJmM2plWjNzV1ROX1RWX25aMjctNE82M1d4NGpFbk9qeFdUaXc3c2dzaDg1S01mQk5oLUJLUDcxMjZ2MmFKempOeGJZLURoRkNEX0V6OEdxU0tYYUZsem5OektQMHNhczlSbXBES3p4VUNmd2xSa1FDY05mc2M?oc=5",
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOVEZZMk1DQ3VjUFBTT3hHc0Z2Zi1rMUFlWFROTkFEbFF5OFdMaXU3VVQ1cWpYUDNac242NXpMWVl6VTA4VkxyR285cWxUdVJ3ZF80QWpjMXItNXJSUjRMYmg4a25TSThvbnpDOEZ2WU80b1ZNUEdrdHh5S0JEX2xneVUyMkNFdTRJcGZGWnhYQVhmUnAzQTdDbzFjX3QtN3JCTWc?oc=5",
           "datum": "09 Jun 2026"
         },
         {
-          "title": "Tom Lee's BitMine Buys the Dip Amid 'Superficial' Crypto Selloff, Adding $214M in Ethereum",
-          "source": "Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNMEdvOGN0eU83cTFhR29SVUc3eWh2Zl8ybU1yUXRPclRoTkttU21oZ19POEF4SjdQUEtJVkhkYkNqQmNBX3A4TVo1V293MkxfTUZ2cnpfM0lRVnowNkJXYzBpTmU4MWtlclpPdUt3NnNqN0VLdXcxZGpRMk1yaXg1VkR6bW9xNXl6T0ZsN1BRV2tDamRG?oc=5",
+          "title": "Current price of Ethereum for June 9, 2026",
+          "source": "Fortune",
+          "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBibzl0MEJ5M0IwQTVheDRabUVGSGJHX0M1V1EyTHlJbHpnSEpRSzl4Q1FJVUlHYm45Rmc1TWVMS05pZHJiU2l0LTJCMWNOTzBGUzlESlJCa3RRak5kd3ZWYUxxci1yZmpO?oc=5",
+          "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Bitcoin, XRP, Ethereum Slump as AI Selloff Hits Cryptos",
+          "source": "Barron's",
+          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQM1Vxa0VpYnVHV0RaTFZLbUVkVWh0blhHakdKbGwzMUN3RWFWZ3MyNnpQV0tsZ0JYZHZ1Y19CTFZwZ1hUVktfZ0RBNzVFUTJGaXg1cXFxTmFCTGlGVGFFWTNxbktWNkZDcl9RY1NDX2JwVWNUNWViWDBPNVAtM3hvRDBIaWw?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Bitmine Immersion Technologies (BMNR) Announces ETH Holdings Reach 5.54 Million Tokens, and Total Crypto and Total Cash Holdings of $9.6 Billion",
+          "source": "PR Newswire",
+          "url": "https://news.google.com/rss/articles/CBMiogJBVV95cUxNc3dNcmlXQWs5b09wODlZUHlqUlZOaTRhTHJSYTVCNUh3REQ1OWl2YnpKYmZZNjJKRTR2R0ZnRjRFLXBSUVp2R0xncXZIQ2lncklJMVJKOFJxWE10aTJrNUs5RTgwNGNPSzlQTUQyLXExdkZZWnBPWmJrY2hjYWU4d0NnamRwNDEydWVJUTVEa0FfSVlWbVVJOUhfaXp5NUdNTmc3Ul94VnNzcjNoR2JtWmRZNEVSSm5hRjlCOV9ad244UlNkazRoQUNuVGYtTHFWTzNaR2NGTnk3YVg5czFQdVp1X1BLbVZ6RnZLSnAtQ09SNE1vQXJZUTh5bDBhei1DZUlCakpJNHFpNWwta0tvYzgzWnh1MzVNQ1ZZUHNDeXhjdw?oc=5",
           "datum": "08 Jun 2026"
         }
+      ],
+      "stats": {
+        "market_cap": 200622330403,
+        "volume": 13700688697,
+        "high_24h": 1674.86,
+        "low_24h": 1610.33,
+        "ath": 4946.05,
+        "ath_change": -66.39,
+        "change_7d": -9.58,
+        "change_30d": -30.0,
+        "high_30d": 2339.6034,
+        "low_30d": 1580.6198
+      },
+      "analysis": [
+        "Treiber: BlackRock kauft Ethereum im Wert von 230 Millionen USD, was auf institutionelles Interesse hindeutet.",
+        "Risiko: Der KI-Ausverkauf und der allgemeine Krypto-Rückgang belasten den Kurs.",
+        "Einordnung: Trotz positiver institutioneller Nachrichten wird Ethereum durch den breiteren Markttrend nach unten gezogen."
       ]
     },
     {
@@ -132,13 +190,13 @@
       "name": "Solana",
       "type": "crypto",
       "coingecko_id": "solana",
-      "price": 64.6,
-      "change_24h": -3.28,
+      "price": 65.21,
+      "change_24h": -1.16,
       "currency": "usd",
       "sentiment": "bearish",
-      "confidence": 0.6,
-      "rationale": "Solana verzeichnete einen starken Rückgang von 74%, und große Kryptowährungen fallen auf der Solana-Blockchain.",
-      "signal": "Starker Rückgang nach 74% Plunge, große Kryptos fallen.",
+      "confidence": 0.7,
+      "rationale": "Solana verzeichnete einen starken Rückgang und die Nachrichtenlage deutet auf eine mögliche Fortsetzung des Abwärtstrends hin.",
+      "signal": "Starker Rückgang, Unsicherheit über zukünftige Entwicklung.",
       "spark": [
         97.3228,
         94.3087,
@@ -173,17 +231,46 @@
           "datum": "08 Jun 2026"
         },
         {
-          "title": "Loopscale launches Loopscale Earn on Solana with $10M USDC vault",
-          "source": "Crypto Briefing",
-          "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFByT0JuS1lIX3RQQ09GRmpEdi1OM3Q2QlhOdkxSbl9GRmhMWmxTVVk2NzBQeFdudU9VclpJaWxyc3dzUVdEaXNwdm5ZaVBISm1MTEFmbW05TWJiUXNCOUhnbWxsR1VRYU1RQTNtNA?oc=5",
-          "datum": "09 Jun 2026"
+          "title": "Solana Sponsors the World Series of Poker, Enabling Crypto Entry Fees and Payouts",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOelQ1dXQyQ0lndE1LdXZZRkQ4bkZVT3I4cXlHaDg0d3hBbzJmSnVPUlVscEY5bmdXOXRWVUNpOVRudVY1N29ZRWRreFMxMTJVU3VKRnlLUTFkY1NxTW8zSm9RNFZCOVVsbEZGeWtzZUpRSXdDeVlMakMwSkp3U3I0TkNSRzc0b0ttQ054b3lDN3l2dEpUVjBrQk0zLVZOU0Iw?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Solana Institute CEO Pushes Senate to Pass CLARITY Act With Open-Source Protections",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNVVp0dDZ4TWFrUlFuSzktY1RpTDNVcndmQ0FDNmFSUVRONlFJNVdXNElnQ1NTYlpBX0prSk01OE1OUDFVNkkwQVdjblVnV1k0VWFYV0M0ekIyWnhfZk9fa3U4c0ozY3BxVGx1V0VZTERSbGpRNW05WXRTNE1iSExoQ3BsT0l5YmpYTlJEUUROMHptbmhiVy1PR0xaT1dCVXot?oc=5",
+          "datum": "10 Jun 2026"
         },
         {
           "title": "Large cryptocurrencies drop on Solana, Bitcoin declines",
           "source": "MarketWatch",
           "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQZjhpc2dyVXJkZlJYRjl6SklVc21xajZ6VVFoazFha1UtREw1eVduX2hVRlhGaklQNTNDdjdudWRTb0kwLVVqakZDZ1RJSXpIdUFOV1JRaFVFZXRaOHJSUXVZUUZnNWR3Ul9yX2lWTWF6cHF4VjhhTm9sa1N4RkFSdnVuUENvRkRjR2ZlbURPdmc1OWR1Wk1pVm1IRGtxQlRwSmt6SVkzSmd6YlY4dEJZRGpLdUg?oc=5",
           "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Solana Wave 4 In Progress: Relief Bounce Or Setup For A Fresh Decline?",
+          "source": "TradingView",
+          "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQZkI4b0RaSVhrS095OThESDM2M045Q014NVJYSFItTGdqMi1hX2EzVWNldF9HcjlHLTlFNjZQOU8tM0NuY1N6Wm9pcFcyLTdaMnNXdS1SRExkOGloSjUySjZ3Z2FUWGFaTEM2U0JEdUE5blhMd1NFNW4zWUJWc0dvYzdsMDRGcmN5VVozajVFRHhzZXN5aXJfOHpyZXZEdmxHMTAwQXAzd0VrTHBzQ2tuR0FCaGxRVDhLUERLcVQtT2oyN0hf?oc=5",
+          "datum": "08 Jun 2026"
         }
+      ],
+      "stats": {
+        "market_cap": 37742858613,
+        "volume": 3007159349,
+        "high_24h": 66.05,
+        "low_24h": 63.19,
+        "ath": 293.31,
+        "ath_change": -77.77,
+        "change_7d": -9.37,
+        "change_30d": -33.25,
+        "high_30d": 97.3228,
+        "low_30d": 63.4369
+      },
+      "analysis": [
+        "Treiber: Solana sponsert die World Series of Poker, was die Akzeptanz fördern könnte.",
+        "Risiko: Ein Rückgang von 74% und die Frage, ob es sich um einen 'Relief Bounce' oder einen weiteren Rückgang handelt.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit starken Kursverlusten und Unsicherheit über die Erholung."
       ]
     },
     {
@@ -191,13 +278,13 @@
       "symbol": "NVDA",
       "name": "NVIDIA",
       "type": "stock",
-      "price": 208.19,
-      "change_24h": 1.51,
+      "price": 205.63,
+      "change_24h": -1.23,
       "currency": "usd",
-      "sentiment": "bullish",
-      "confidence": 0.7,
-      "rationale": "Analysten geben positive Einschätzungen ab, und es gibt Hoffnungen auf Chipmaking-Deals mit Google, was die Aktie stützt.",
-      "signal": "Positive Analysten-Calls, Hoffnung auf Google-Deals.",
+      "sentiment": "neutral",
+      "confidence": 0.5,
+      "rationale": "Nvidia verzeichnet einen Rückgang, obwohl der CEO den Ausverkauf als Kaufgelegenheit sieht und Apple als Kunden gewonnen wurde.",
+      "signal": "Kursrückgang trotz positiver Nachrichten.",
       "yahoo_symbol": "NVDA",
       "spark": [
         219.44,
@@ -219,28 +306,56 @@
         214.75,
         218.66,
         205.1,
-        208.64
+        208.64,
+        208.19,
+        205.63
       ],
       "stooq_symbol": "nvda.us",
       "asset_news": [
         {
-          "title": "If You'd Invested $10,000 in Nvidia Stock 10 Years Ago, Here's How Much You'd Have Today",
-          "source": "Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNcEhIdUNSclVBRF9NR1Zza2VBM3V4bmFDdmxBdk0xSUhYZkdUczd6bDRJS08tUHI2ZlNUcFhMOFRZak9adGJNd0tHdGhpdnh6UHAzSnhBeUdKX1pZTW5xUUhHQjRKa3ViMVJHVmo4ZHJ2enRvel9IVmNMYVVWbmE0bnQxVW8xU0lreEZfMUVQRU5CV2NpTkNR?oc=5",
-          "datum": "07 Jun 2026"
-        },
-        {
-          "title": "Here are Tuesday's biggest analyst calls: Nvidia, Apple, Tesla, Oracle, Birkenstock, Micron, Toll, Alphabet & more",
-          "source": "CNBC",
-          "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPZ3FJOWZEd0pnUE9RNmNHWHVvbEFobUUyU1VNX2ZoMFRqeXZhYXp4b0lqb21HdHI1bmFhVk9ZYWoyVHV4RGp5TjRBZ3JSSDNPb1JiQ0t6WGxxQVhuWGJtNEZKRWJHRTF0TFdFaHRlV0NaSEtQSVA1cUxXTXlsOEhZVWZ6NjNLNFdY?oc=5",
+          "title": "Nvidia Finally Lands Apple as an AI Customer. Why the Stock Is Dropping.",
+          "source": "Barron's",
+          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE50WXROZXJCOTBWM19vRFdlTThfU3FnZmQzdzZxX2xLYXZreU95cl9UeTVjY3g0UjdkMVJfX0dfVVVRbE5CU05rc1hEVmdSLUJaclFMeU5POXU4UDVIdVRZNWlKM3pHZGlOMUhwVkhxN0kxd1FldWZnbQ?oc=5",
           "datum": "09 Jun 2026"
         },
         {
-          "title": "Intel's Stock Is Soaring. Hopes of Chipmaking Deals With Google and Nvidia Are Lifting the Shares.",
-          "source": "Investopedia",
-          "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPMmlTTW5hVUdUMEZDeWdSTlE3TGhEUzhFNm40RC16R2Znd2szS2dOZkJNVzg0UjA2UG9Ecl9MUzRYNl9fV2VjSU41S2NZUXBGZnV0THQ0Qko4QTNGVVVNckNudFFrQWU0OFFCX01YYWVmaUZUZGFTb0pBZnc5cV9VS2pDcjNwbjdOQW4wZ1h5V2ZBUXFUMFV4cTZvWVRmdVlKTVhFZzNiM2VUSkJ3RXNtZmJ4LTZqVU93LW4tSkFkUUxDVlMwelNaX0lDWkdMcXVUc0hSRTUtMnJrSG9ELWcyNTZXcw?oc=5",
+          "title": "Dear Nvidia Stock Fans, Mark Your Calendars for June 11",
+          "source": "Barchart",
+          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQQnlIQ2NBcVJJeFkxSmxkaFNLdUpZZUNnRzUxb0JHbGlBVkhmbHVsMXRSYWZGOVhhbjhYTW1fVWF0bGJvMlRLUkdDRklreTdxM2JBNjVtNTdzQVNlR2ZEaDNLU3J1RmVoY3FjNW0xUVpJbVF1bUtEZExBR29lc2ptM2tKZVg3OFBtSXJXQzR3Q0EtSnczeFRhUS1OZFNwX0k?oc=5",
+          "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Nvidia CEO Says Selloff in Tech Stocks Is a Buying Opportunity",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNcWg3NVd5UmFYUzM4UHViamVyZGpwb3owZkNCNFNueWg2Z0hkcFJhd1lUWHZzeW92RVMxSXRfUkE1THUwM2JlQUdNY0d5N3ZjcHlGakVBbUNlcTgza3JucUpuUUlXOTFRVzJrdU9JQjRtTXV4VUtFX3E5c2M1M1FNQ3BLMzFlLU1CSTZSby1uRVJoajA1SFFnSUh1b2o0dw?oc=5",
           "datum": "08 Jun 2026"
+        },
+        {
+          "title": "Should You Buy AI Chip Stocks on the Dip? Words from Nvidia's Jensen Huang Offer an Answer That's Crystal Clear (and Echoes Warren Buffett's Wisdom).",
+          "source": "The Motley Fool",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPeGpyc0p2X0xzLURVZDZIN2t1RzZUZlJSSnR0eVJuTHc5b0dTaHZPeEJLd1JHQW4zdHM0Q0IyR1lQZjlPaDV4OENGczFISWZJazhWUEVuM1FnRlhUSWQ3b0w5ZktRbk9rSVVyMHJhdEdnc1ZIQzdtdy0wZFlPUVBJSDEzV1NaUEZMMVlDbXNra3pGeUNwZlB3RA?oc=5",
+          "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Here are Wednesday's biggest analyst calls: Nvidia, Tesla, Cava, Netflix, Chipotle, Pfizer, Nike, SharkNinja & more",
+          "source": "CNBC",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNalFlMTB2RGhkV2E3bDQtT2I2QWZ0ZzRfV281OTg5Ul93WEljWVNna3VXX1c3NThfOVVhbkl6cmRTT3l5cnEtWUdJUXpsY3ZuNUMtWjNBcm9VbDlRUm9FOXpyamUxaTQxOFV0anhaUWZtVFFBMUFqZjRiRVdOYW51ZFFiamtDU05IR05XUkVVRXd5d19T?oc=5",
+          "datum": "10 Jun 2026"
         }
+      ],
+      "stats": {
+        "week52_high": 236.54,
+        "week52_low": 140.85,
+        "volume": 20499122,
+        "high_30d": 235.74,
+        "low_30d": 205.1,
+        "change_7d": -4.25,
+        "change_30d": -6.29
+      },
+      "analysis": [
+        "Treiber: Nvidia gewinnt Apple als KI-Kunden, was ein starkes Signal ist.",
+        "Risiko: Der Aktienkurs fällt trotz positiver Nachrichten, was auf breitere Marktängste hindeutet.",
+        "Einordnung: Die Nachrichtenlage ist gemischt; positive Unternehmensnachrichten stehen einem fallenden Kurs gegenüber."
       ]
     },
     {
@@ -248,13 +363,13 @@
       "symbol": "AAPL",
       "name": "Apple",
       "type": "stock",
-      "price": 290.55,
-      "change_24h": -5.46,
+      "price": 289.18,
+      "change_24h": -0.47,
       "currency": "usd",
       "sentiment": "bearish",
-      "confidence": 0.8,
-      "rationale": "Apple-Aktien fielen nach der Siri AI-Enthüllung, und es gibt Berichte über sinkende Kurse.",
-      "signal": "Aktien fallen nach Siri AI-Enthüllung.",
+      "confidence": 0.7,
+      "rationale": "Apple-Aktien fallen nach der Siri AI-Enthüllung und der Verzögerung der EU-KI-Funktionen, was die Wachstumserwartungen dämpft.",
+      "signal": "Kursrückgang nach KI-Ankündigungen.",
       "yahoo_symbol": "AAPL",
       "spark": [
         292.68,
@@ -276,7 +391,9 @@
         310.26,
         311.23,
         307.34,
-        301.54
+        301.54,
+        290.55,
+        289.1799
       ],
       "stooq_symbol": "aapl.us",
       "asset_news": [
@@ -287,17 +404,43 @@
           "datum": "09 Jun 2026"
         },
         {
-          "title": "New Buy Rating for Apple (AAPL), the Technology Giant",
-          "source": "The Globe and Mail",
-          "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNTnQzMDlTS2xiN2QxOWVhXzVORGhuYzQ0S3ZzLUR6QzZvckFDa01RVDhLbnZwdUFXdHZRMGhtQWhETUZaaGVvTnMtQkZwMmp4YWR2d3o3YUJGLXdDa0ZyMThZcWhVa3RFTF9BSWpsZDRVZWU1alJwbUpDX1FkNzd3b0dQRjdmanhOUk9SVW5mWG5sTHFLZnlNNjBYSzlWM2w3TElpYy1LMEtXWDEyUjBtMUZ4MktEOFJxZUVKbDlpUUFpSWZibXY0bmg4XzFjZFYz?oc=5",
+          "title": "Apple EU AI Delay Puts Spotlight On Valuation And Growth Expectations",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPdm5odjM1c1NpbjJuQVJpRTZsTjJMWlFyTzh3QlVXNG81QkpWa2RIcG90N2FXU1NFMUE3SzRtQVhhdFBITmIyTG5wY055UWpIaEtvRGJrWmV6bnU1NjJpTTM1V2V0LVU4ZUstcTRLNGRtRnlzeUZhUFhSNXdGRUJiZ2Q3Y3ExeGJyeWhOVzQtTHQ?oc=5",
           "datum": "10 Jun 2026"
         },
         {
-          "title": "Why Apple Stock Is Sinking Today",
-          "source": "Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxONzkwc3FDWndCa045TmtLQXN1SThQODREWVhPRlp0LVNtSUpBajc3RFdlZmZZMjkyV28tM0RuRW9BQlpaMXZuNHpvUElhbXJUX0NkLXg0ZHFENzFnUUhqbWpiNnNoZlZiNXM2UllNVjRfTkhYN2VJNUxteTFualhvU2dvcmIyM3NGY2RIRWF5U28tUk5veTFCeldn?oc=5",
+          "title": "Apple: What Will It Take To Win (NASDAQ:AAPL)",
+          "source": "Seeking Alpha",
+          "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1LaWpfOGpUa2t3bjVXM2NBbndydWY3NEs5QmdlRTVtYlM5WUs1MjFJVlZtOEJnaWVzWW1DOXFRdDRKT2dXRGtqbkEyVFhGbWFHY0FIeXZsRmVHT1ZBN1U1UHJrRHRDVTk0cFB4OHJPczBTdUVLSC1mWlQxOA?oc=5",
+          "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Bank of America sends clear message on Apple stock after key event",
+          "source": "thestreet.com",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPUW9XUlFtcjYxT1BfSkE2elhrRkdZT2E1Rkw3YUd3czc4ZTQyZlZ6RW9GTkh4WUJBMW1aTkZ2TzZDUWZYVDlqdnJYMXh5cU1YTDdWY3JLUTVnS2V2SXpuOFFoZjhoM0RjVGJhLUVBc0xvZHRnaE5zbzBpOEh2akpBVEhZUUhnWmZRNTcyMTlWQkhkTTRMNU9oSzV4WFhtM2xCZGZLUlFTZHVIdkJlVkZNclAyNmw?oc=5",
+          "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Morgan Stanley Revises Apple Stock Price Target on WWDC Catalyst",
+          "source": "TradingView",
+          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNeUUycFdKT3Y0SHFhYVJoejJoTjRfNU9NcFQtYkNFYXM1R0RSTFJreHZmT3UtdWRSVjdlVzNBNUFQdmRhdEN5UVpDVDNRMlZBbnlfNmNPNDBLeFdQSUV1aW44X1dkenR3Qkp1Zi1HRU9TS1hxcHVsYjRkdXlQSWhrTHBLcXVlVVZjRWVPOEp6WHpMdlJISnluMFdOaEV5OUN0YkkzMFQybXlxVGY2TUhRNDUxTHhmSnkzbm00WUxKZVA3Zw?oc=5",
           "datum": "09 Jun 2026"
         }
+      ],
+      "stats": {
+        "week52_high": 317.4,
+        "week52_low": 195.07,
+        "volume": 5127462,
+        "high_30d": 315.2,
+        "low_30d": 289.1799,
+        "change_7d": -6.79,
+        "change_30d": -1.2
+      },
+      "analysis": [
+        "Treiber: Morgan Stanley revidiert das Kursziel nach der WWDC, was auf eine Neubewertung hindeutet.",
+        "Risiko: Der Rückgang nach der Siri AI-Enthüllung und die Verzögerung der EU-KI-Funktionen belasten die Aktie.",
+        "Einordnung: Die jüngsten KI-Ankündigungen und Verzögerungen wirken sich negativ auf die Stimmung aus."
       ]
     },
     {
@@ -305,13 +448,13 @@
       "symbol": "MSFT",
       "name": "Microsoft",
       "type": "stock",
-      "price": 403.41,
-      "change_24h": -3.18,
+      "price": 402.8,
+      "change_24h": -0.15,
       "currency": "usd",
       "sentiment": "bearish",
-      "confidence": 0.7,
-      "rationale": "Microsoft-Aktien sinken, und es gibt Bedenken hinsichtlich der 'Peak Profitability'.",
-      "signal": "Aktien sinken, Bedenken wegen Peak Profitability.",
+      "confidence": 0.6,
+      "rationale": "Microsoft-Aktien sinken trotz eines großen Erfolgs im Gesundheitswesen und der Investition von Oracle in OpenAI.",
+      "signal": "Kursrückgang trotz positiver Entwicklungen.",
       "yahoo_symbol": "MSFT",
       "spark": [
         412.66,
@@ -333,10 +476,18 @@
         427.34,
         428.05,
         416.67,
-        411.74
+        411.74,
+        403.41,
+        402.8
       ],
       "stooq_symbol": "msft.us",
       "asset_news": [
+        {
+          "title": "Oracle Bet $300 Billion on OpenAI. What the IPO Means for Larry Ellison’s AI Pivot.",
+          "source": "Barron's",
+          "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPdXFJWFpmVDlqUmpMWTVaU21oVnRoWXd0dXBPWGJ4V2l2X3FFVlJUdXNyS3QwRGh6WWZkTl9OZTRJRVFFaFA5d3VwYmRUdEVHS0t4eVR0MXZEdWhCTm4yM2VjWTJhWW9IaTc4dnQ0NmRJbm5PTk5Lc1FJSzA3YVJFZTJ2Zw?oc=5",
+          "datum": "09 Jun 2026"
+        },
         {
           "title": "Why Microsoft Stock Is Sinking Today",
           "source": "Yahoo Finance",
@@ -354,7 +505,27 @@
           "source": "The Motley Fool",
           "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPU1ktNDBYcEhHNUtnWE9QaTYyWnVXYW00d18wZ2FyeUtaS1dNZTNfeTF0MGpLSFhvdVBPZXpUeVB0aV93aGd4enM0aUxrRDRIRDgxdUxyV2RDSV9KTkNwSW12MkxlOU5KeDJlY3FIWHF0UWZUeUZFOFRDZ3FiejJ6TjBZQ0VuemotdlVFTFp3d3BGTEI0MDducw?oc=5",
           "datum": "08 Jun 2026"
+        },
+        {
+          "title": "Microsoft Stock (NASDAQ:MSFT) Sinks Despite Huge Healthcare Win",
+          "source": "TipRanks",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOTFBCV1llOUtxRGprSEgxU0VzQ2RnSDBiTW1PVFNqeHFMeXZPTU84aGJ0NlJ1bUtrdDQ3UGJxRGNpUUt0NW51VmVYZTd2S0FCMV96aVZ4aU5QTEdIQ0haN0lvOU5NMmhxM0JwUDVYek82MXdMYTQyaDZKWE1ra3NBc05DUjF0S1M1UGdZZi1ETWtCVlYz?oc=5",
+          "datum": "08 Jun 2026"
         }
+      ],
+      "stats": {
+        "week52_high": 555.45,
+        "week52_low": 356.28,
+        "volume": 4040093,
+        "high_30d": 460.52,
+        "low_30d": 402.8,
+        "change_7d": -5.74,
+        "change_30d": -2.39
+      },
+      "analysis": [
+        "Treiber: Microsoft verzeichnet einen großen Erfolg im Gesundheitswesen, was potenziell positiv ist.",
+        "Risiko: Die Aktie sinkt, und es gibt Bedenken hinsichtlich der 'Peak Profitability'.",
+        "Einordnung: Trotz einiger positiver Nachrichten überwiegen die Gründe für den Kursrückgang."
       ]
     },
     {
@@ -362,13 +533,13 @@
       "symbol": "TSLA",
       "name": "Tesla",
       "type": "stock",
-      "price": 396.68,
-      "change_24h": 1.45,
+      "price": 394.25,
+      "change_24h": -0.61,
       "currency": "usd",
       "sentiment": "bullish",
-      "confidence": 0.7,
-      "rationale": "Tesla-Aktien steigen vor dem SpaceX-IPO und nach einem Anstieg der China-Einzelhandelsumsätze.",
-      "signal": "Aktien steigen vor SpaceX-IPO, China-Umsatz steigt.",
+      "confidence": 0.6,
+      "rationale": "Tesla-Aktien steigen im Vorfeld des SpaceX-Börsengangs und aufgrund von Fortschritten bei FSD und KI-Potenzial.",
+      "signal": "Kursanstieg im Vorfeld wichtiger Ereignisse.",
       "yahoo_symbol": "TSLA",
       "spark": [
         445.0,
@@ -390,10 +561,18 @@
         423.7,
         418.45,
         391.0,
-        408.95
+        408.95,
+        396.68,
+        394.25
       ],
       "stooq_symbol": "tsla.us",
       "asset_news": [
+        {
+          "title": "What Happens If Tesla and SpaceX Merge?",
+          "source": "Morningstar",
+          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBiY0NnbDdVQ3JlLS1vR1pud3EyQl9fV3Y5NkEybF9JNnNkNHhab1V2RlI5Wl9KRWRPdTh3VE9GUHBoOWNwTGZ1Rm9TTVgyNnF2dGlkY1NfZkY4N0VmeXctcmRUSTA5S0lKSVRrOEN4QU9ZdHpPbDlFSQ?oc=5",
+          "datum": "09 Jun 2026"
+        },
         {
           "title": "Tesla Stock Rises Ahead of SpaceX’s Friday IPO",
           "source": "Barron's",
@@ -401,27 +580,47 @@
           "datum": "08 Jun 2026"
         },
         {
-          "title": "Tesla China Retail Sales Jump 22%. The Stock Is Bouncing.",
-          "source": "Investor's Business Daily",
-          "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE93TnZBVEU3alBaQi1lb2RVU20ybGhUb1NVWVFMVHdhLWd6QldZbGhydGZQUG5IZUlRXzJQdnpVdnFtaGtNZE1oa29XUzR4ODVieU82RURqNjdYRzR4Y05pMTFWR2loSndmTllJbnJIS3FSczdpbmFj?oc=5",
-          "datum": "08 Jun 2026"
+          "title": "Piper Sandler reiterates Tesla stock rating on FSD progress",
+          "source": "Investing.com",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNejd2WnVfTlQxMHlmNHgzZjhXb3ZycUJMUXhGMEp2VG5NczZzSHV5SWxWUnBuSkxwQTcyemNRZ1UzQ2JwaEotdl9uNnkwTk9jbGR6Z21uSVJPX1YtYTB3YUY3SmQzaUFpQW9IUm42Ukx5ajRBZHdIVkx6RG9YUUR3ZVNUTXRBWmNQTUJIeTV6Y0RKRHBSNlpHaEZkV1RWN2xqaVlIV3dSdFB0X2EtbkZlbVp4WGlfY3c1cnR3?oc=5",
+          "datum": "10 Jun 2026"
         },
         {
-          "title": "What Happens If Tesla and SpaceX Merge?",
-          "source": "Morningstar",
-          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBiY0NnbDdVQ3JlLS1vR1pud3EyQl9fV3Y5NkEybF9JNnNkNHhab1V2RlI5Wl9KRWRPdTh3VE9GUHBoOWNwTGZ1Rm9TTVgyNnF2dGlkY1NfZkY4N0VmeXctcmRUSTA5S0lKSVRrOEN4QU9ZdHpPbDlFSQ?oc=5",
+          "title": "Elon Musk Reveals Details For SpaceX-Tesla Orbiting Data Center",
+          "source": "Investor's Business Daily",
+          "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPU0JBTXJFbm5WSjFEay1hQk1ZSFgwb0lmS3VPcVFJdmVTeEdWLTNNRUFhRnV3b1ZXVGtPRzdkanJzdV9ucVRuWi0tbmRXTThqSUhJOTZQWFFFSl9yV2xuTmNSdWlMQVNVeWc2cV83aWtGb1czSWJFS3dEblNjQWZfSnFVd24yb2hvRFl1bWplRktVY1M5WTNHOG5Fcw?oc=5",
           "datum": "09 Jun 2026"
+        },
+        {
+          "title": "JPMorgan Just Dramatically Reversed Course on Tesla Because TSLA Stock Has Massive Physical AI Potential",
+          "source": "Barchart",
+          "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPS2ZJVzhNOHlkaTJCQ2lzY2FuUDJJSUlDbVFydHlTbFhxcURDNWgzNGo2UWxmUVlnRm1aLUo1TkJRdHZEbXFIanBzTi1rLWU1ckFzcndKZ1k3QnFIUTNuM1UtZ0MzY1pQcW1tVGktMHBEc25BYlFoaDRCMThiRTdjV1lTcWpHeXNBUnV6Z2NoNnBobHV1S0tNeXlOZG9JYldXd2l0U0loLUtDYXFyU2NEdG5haHc4cHI3OC1vTWNwLVd2a2JNcm1wbHFPVjJmYjBVeldzU0tMN3BCakNUMkpXdm9n?oc=5",
+          "datum": "08 Jun 2026"
         }
+      ],
+      "stats": {
+        "week52_high": 498.83,
+        "week52_low": 288.77,
+        "volume": 5261949,
+        "high_30d": 445.27,
+        "low_30d": 391.0,
+        "change_7d": -6.95,
+        "change_30d": -11.4
+      },
+      "analysis": [
+        "Treiber: SpaceX-Börsengang und Fortschritte bei FSD sowie das physische KI-Potenzial treiben den Kurs an.",
+        "Risiko: Die Nachrichten über eine mögliche Fusion mit SpaceX könnten Unsicherheit schaffen.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit Fokus auf zukünftige Wachstumstreiber."
       ]
     },
     {
-      "price": 1.12,
-      "change_24h": -4.37,
+      "price": 1.13,
+      "change_24h": -2.44,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "Der XRP Ledger steht vor Änderungen, und es gibt KI-Preisprognosen, aber keine klaren bullischen oder bearischen Nachrichten.",
-      "signal": "XRP Ledger vor Änderungen, KI-Prognosen vorhanden.",
+      "sentiment": "bearish",
+      "confidence": 0.7,
+      "rationale": "XRP verzeichnet einen Rückgang, da der breitere Krypto-Markt fällt und sich in einer historischen Kaufzone befindet.",
+      "signal": "Starker Rückgang im breiteren Krypto-Markt.",
       "id": "ripple",
       "symbol": "XRP",
       "name": "XRP",
@@ -455,16 +654,28 @@
       ],
       "asset_news": [
         {
+          "title": "Better Crypto Buy Right Now: XRP vs. Cardano",
+          "source": "The Motley Fool",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxObVRPQzBpYlU2ZkhxQjMzcmV0TjJNUTZGTjJZbkVVVXhiS3FjZ3BaSEoxQjhQSmFZX0xEVDVyM2lNSGFsN2k0Vm9DeF9kdVlpUm5mUFUySVZZVXlnZFlvX0JXUjZnY0N0V3UyeFdmRUdkRkEyN3lnU25GVlZ3dHd3YmhBelFrUVQxQ2FYYndB?oc=5",
+          "datum": "07 Jun 2026"
+        },
+        {
           "title": "Ripple’s XRP Ledger Is About to Change: What Happens Next Week?",
           "source": "CryptoPotato",
           "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNUlBrRl92VldqZ3d4WmdvMzh1ZkdQRkx4UE8tbU1tTUFwcndQNGJhelYwdUI0SjQ1UjB1ZlpPS1BNWmdiS0dPTzRWR0JheTBNTVUxbDMxenUzNzM1cWdwVEtVYTVhdm12YXZkSzEwSUxWQkJrWEVXZWVXcW9XQVd6bDRUdU5MOGJuNmNMYkEzRQ?oc=5",
           "datum": "09 Jun 2026"
         },
         {
-          "title": "AI XRP Price Prediction: ChatGPT Forecasts XRP Price After 19% Slide",
+          "title": "Tokenized Treasuries Are Moving Onto the XRP Ledger: Does the Growth Reach the XRP Price?",
           "source": "Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPNUs1b05fRVU5NHFhX3pIZGZERGducXBTX0QtT0hiVmJic2s4QV94Rmt3NW5aUzd6Z3lPSmcxRzVZTGpKQUFBNWlhMlJXMkpJSVVic3BEWTlkSmlTUzR5TXVMYWF3NURqSW0zUFFBRGtEeW9XR1k3ajZpdnhCaGxSNnNyempTSWVEMGJCLW5VMUQzYUE0TE16ek9UcGs?oc=5",
-          "datum": "08 Jun 2026"
+          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPZE11X0xOU2lRQXlSY2trdmVTYlZVdnpqWGlNZWE2NGE1TzJPSE1fNXpFM2JyZ0hSSDdSdml0djVVYnkyRmMyVW5DdmFsUDFTclpWQWNoVFhrMHlJaER1MGpvUDJuYXZUdjRuUEs2amVMdFpaSVRXQTlEUTM4b1M4MTRaMG5MZElzaEhYSHNzRmZOVzNHT0RWZWYzT1BTTWRZMTFN?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Crypto News: Bitcoin, Ethereum, XRP and Cardano Enter Historical Buy Zones as MVRV Turns Negative",
+          "source": "Binance",
+          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBRNTktVllNbllpbnA5STNWRWVueGRLYjE5MEhEdmd0YzZrbVUtcUMyQWYxU2h2WE43VUJObWFpR3RjUmpjdWRLX2dibUlLZHBMZE5KSjRzcnQ4eHhnQU42aDYxYXM?oc=5",
+          "datum": "09 Jun 2026"
         },
         {
           "title": "XRP’s Face-Melting Phase: The Numbers Say Price Is Headed Above $10",
@@ -472,16 +683,33 @@
           "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQYnpPRlFWTEtVYTR3YU1FZ1BMX1BNZFFRMGkwYjBmdlRGYWtia0RRZll3TTd0Y2NzNlYwVmhPUlU5OHZKZHQyWTRDNkdWVDhRdmZKdFNBRDVRVmpNSEwyYmxIeVBRVGZ2YndGZ2djT3V3c0hBbUFUZlRvTjVSM2F1VDBFbjNEZWpJckxTOVpOdUN5bHdndG45NkVWX3E0V3FnRDNiYTZqb1hnemxpWDI3M3E0OEtrNFpjdVU3d0NGM0M?oc=5",
           "datum": "08 Jun 2026"
         }
+      ],
+      "stats": {
+        "market_cap": 70236599482,
+        "volume": 2042305825,
+        "high_24h": 1.16,
+        "low_24h": 1.1,
+        "ath": 3.65,
+        "ath_change": -68.96,
+        "change_7d": -5.28,
+        "change_30d": -22.97,
+        "high_30d": 1.4845,
+        "low_30d": 1.0962
+      },
+      "analysis": [
+        "Treiber: Tokenisierte Treasuries bewegen sich auf den XRP Ledger, was die Nutzung erhöhen könnte.",
+        "Risiko: XRP fällt im Zuge des breiteren Krypto-Marktes und befindet sich in einer historischen Kaufzone, was auf Überverkauf hindeutet.",
+        "Einordnung: Trotz potenzieller Anwendungsfälle wird XRP durch den allgemeinen Marktabschwung belastet."
       ]
     },
     {
-      "price": 588.28,
-      "change_24h": -2.5,
+      "price": 595.1,
+      "change_24h": -0.17,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "CoinZoom unterstützt USDT auf der BNB Smart Chain, und BNB Chain erhöht Staking-Belohnungen, aber es gibt auch Prognosen für tiefere Verluste.",
-      "signal": "USDT-Unterstützung, höhere Staking-Belohnungen, Verlustprognosen.",
+      "sentiment": "bearish",
+      "confidence": 0.6,
+      "rationale": "BNB verzeichnet einen Rückgang, da die laufende Korrektur tiefere Verluste unterhalb wichtiger Unterstützungsmarken droht.",
+      "signal": "Laufende Korrektur, drohende weitere Verluste.",
       "id": "bnb",
       "symbol": "BNB",
       "name": "BNB",
@@ -489,10 +717,22 @@
       "coingecko_id": "binancecoin",
       "asset_news": [
         {
-          "title": "CoinZoom Becomes First U.S.-Regulated Exchange to Support USDT on Ethereum, Tron, and BNB Smart Chain",
-          "source": "Investing.com",
-          "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxOZi1vbE4wSFkxa3hjaE5OZWtMRFFFZjNXenUxOUd1NEV5ZS1XZ0ExSVgtX1RZR0hzeXVMc2ttMXN2MGwyQmpaTndBakNiR25UTjgwVU55OWtTVHNwTWR5WW1FZFo5b2xPR25xSkNvWkp4LWY2MDZsdEhCdkZUUTduWGd6MUtURWw1eUtxZzVHaDliWDZreWo1YzBWeGpBX3NvMGI1WV9LUUNTRThHUDFhZlh4cUZqZFZUTWYzR0YtOTJ4TFZSYk9pcTB2LWU3N0NqRVBvNmdJWmVyR0x0Um93cURCU3pPNFFwU3JZ?oc=5",
+          "title": "What Is Binance Smart Chain (BNB Chain)? Complete Guide 2026",
+          "source": "StealthEX",
+          "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOT3VfMnJ6M0VreENHRS02ZFVGeHpZQmhRZzBQSDZKM3prQXp1aUdnRHZfaWJsMVhWZGFSVzF4cDZXdnowQlRuZTI3ZFRyWnVUdHN1NmI3LVpFRHpiVjFYZmRobEs0eC1tV3BOUmJULWI1eExnZlFoQlUxSFlFeml0YQ?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Binance Coin (BNB) Price Prediction 2026–2030: Can BNB Realistically Reach $2,000?",
+          "source": "CryptoRank",
+          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxONGlZMzRfZlhwM0VVVUFQRmlHeHpuWWNnY2UydHdQN2RYa0JHQ2FmRGZyUDMyb195TDN2eHRaZlg0bTN6UlJJTFZrT0tpTHBfSTlXaHVUWWZudVVuOGRhOXJfdkljbWtZN3FGY2s2YmNnSXhjdjNVWWt3UWdmQ1QyeGFPNXlseDdqbVhR?oc=5",
           "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Changpeng Zhao Says Bitcoin Won't Be 'Dead' For Long",
+          "source": "Benzinga",
+          "url": "https://news.google.com/rss/articles/CBMiigJBVV95cUxPb0J2SVppLXM3VEdtdVo4SW1rc1MtcU94ZGtYQ2FqWFJnZTdVWVF5eFVwQllJaUQ0ajdYVEhFanlJd0J2N2R1bVVSUVZSbHR1dzQ3bjJjellqOHZ0MnZNNy1WSkhsWTl1WjRSSEprRjVnemJnTUJPQ2lzZkFjd2E1QVdhX1V3b1ltNGFLUHNYUGJtdkhKLVBnY056cTJ0Y2dmOFFVVFR0T1Y0NWw4anUwYUxmaGlmRjh3NHA1bnpHaHdOWDdXcmRWUHR1bEY1LUFkWkhnQUVIOXdxTEJkV2htUUtFelZoVTcxQXpUS2RUaXhBVV8zZDlRd04wTEhXN1czREtSMUw0MVo5dw?oc=5",
+          "datum": "10 Jun 2026"
         },
         {
           "title": "Cardano's staked value drops sharply while BNB Chain boosts staking rewards and real yield.",
@@ -506,16 +746,59 @@
           "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQOXVpcnRhdF9sM3J3dVItaF9tR2p0X3F5eWlZSE5FMm1xYXMyRy1FRDMwMzlGRjlNRTFoYmdCTTdVSDh6blFDYlJUOXBCeDVZdG02T21BQ2k5UkhMRFRqM1JPZnowdzQ4SjBsWFRUNXBfREpiSDJXS0NEdkJFUEtBTWR3Q0Z6R2V3bHZjYzd6LUpqRmR6cVhnYXlmSk1zcXdpQy1TYnNwZ0IyRTloUnNNVkQ1VXRKTDlCU041dDdDTnNKam5vb3o1OThENFlKQ1R2cm1PZmhn?oc=5",
           "datum": "10 Jun 2026"
         }
+      ],
+      "spark": [
+        670.0372,
+        664.7788,
+        671.319,
+        677.9711,
+        655.9815,
+        647.6256,
+        642.9337,
+        648.827,
+        657.3443,
+        649.8737,
+        655.6686,
+        662.4749,
+        655.7691,
+        648.1937,
+        642.4708,
+        718.1953,
+        708.4875,
+        692.4722,
+        619.9729,
+        604.1287,
+        571.8761,
+        603.9501,
+        601.5777,
+        592.9772
+      ],
+      "stats": {
+        "market_cap": 80212117071,
+        "volume": 704918701,
+        "high_24h": 597.46,
+        "low_24h": 580.96,
+        "ath": 1369.99,
+        "ath_change": -56.56,
+        "change_7d": -4.35,
+        "change_30d": -11.5,
+        "high_30d": 718.1953,
+        "low_30d": 571.8761
+      },
+      "analysis": [
+        "Treiber: BNB Chain erhöht die Staking-Belohnungen und den Real Yield, was die Attraktivität steigern könnte.",
+        "Risiko: Die laufende Korrektur droht tiefere Verluste unterhalb wichtiger Unterstützungsmarken.",
+        "Einordnung: Trotz Bemühungen zur Steigerung der Attraktivität überwiegen die negativen Kursprognosen."
       ]
     },
     {
-      "price": 0.161852,
-      "change_24h": -4.81,
+      "price": 0.165097,
+      "change_24h": -1.68,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.4,
-      "rationale": "Cardanos gestakter Wert fällt, aber einige sehen es als historische Kaufzone, was ein gemischtes Bild ergibt.",
-      "signal": "Gestakter Wert fällt, aber als Kaufzone betrachtet.",
+      "sentiment": "bearish",
+      "confidence": 0.8,
+      "rationale": "Cardano ist in den letzten Monaten stark gefallen und befindet sich in einer historischen Kaufzone, was auf anhaltenden Verkaufsdruck hindeutet.",
+      "signal": "Starker Wertverlust, historische Kaufzone erreicht.",
       "id": "cardano",
       "symbol": "ADA",
       "name": "Cardano",
@@ -555,27 +838,56 @@
           "datum": "07 Jun 2026"
         },
         {
-          "title": "Investor Hires Crypto Forensics Firm to Probe Cardano’s Early Finances",
+          "title": "Is It All Over For Cardano? ADA Down -42% in the Past Month",
           "source": "Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNdnpycFNlTU9TVTVKdmpYZTNwd3YxeEVRT2l2MmdfQjRrSWllNXNNZjJFay1LOFNoUTA2UTBNQ3kzTUN2czlCM254ZEExRkVQMVZIaUFEOVFTMUFQZ2pQWF9IUHNDR05tNGNpS0pzMDZXU0tYdWltcHlhekVGNWJWLTRyaDc4eVpLVzU1WmlmRkJtNW9BUWN1ellnX1pLQU5ibGJZ?oc=5",
-          "datum": "08 Jun 2026"
+          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPM2RJRXUteG82bkQ5bVlqcURzcE0wZnoweXNOZjhMbm5HazR2SEprLTlXblk2eHRvQWRzTzVvOVNaQWJiS0txZDQxQV95eE96aU84NklNcDdySnNaTkRiS3dVZjNPTEwwOWJxZ3JvMC1rM3ZFOVgwZGdIWmdMbkZEa0F0elBLRVdRSTZabzA0UldkVFE?oc=5",
+          "datum": "10 Jun 2026"
         },
         {
           "title": "Crypto News: Bitcoin, Ethereum, XRP and Cardano Enter Historical Buy Zones as MVRV Turns Negative",
           "source": "Binance",
           "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBRNTktVllNbllpbnA5STNWRWVueGRLYjE5MEhEdmd0YzZrbVUtcUMyQWYxU2h2WE43VUJObWFpR3RjUmpjdWRLX2dibUlLZHBMZE5KSjRzcnQ4eHhnQU42aDYxYXM?oc=5",
           "datum": "09 Jun 2026"
+        },
+        {
+          "title": "UNDP Brings Ethereum, Cardano, and Stellar Together to Explore Blockchain for Public Good",
+          "source": "Coinpedia",
+          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNUU10LWNMT0NaWUNxYVBaOXE0dHZfVXlZQ2I3TXdOSjJ6U204M181UE13a0ZFRDlRU1VmYWVuSHVtWk1iT3VXRzRLSmFVdG9QWmQ2UzM5REJsQzl3c3hSZjlBT3ctRkV1VnpKek9Mcm9DNXlCRXdCckNCOW9tcDZvbEtaSmdhRjdHZF96V003b3Bvbk9OYUh4N1FIbTVsMnVZOExRbmthQ2VXS194NjhVcVdzeGJJQdIBuwFBVV95cUxOak1JTExuSFRVQUZ6QjU0WDFRNGZOaDVsQl9ZR2tCbFJwRUwwbHpPaEpRSkE4VjBoX0g1QUxUdlJId3MtbEdtRjRkX01UUEtRNlZfdk83SUtiV3FsaXFQRXJsVkdHOEtsZGRXRUc2ZkNWLWtBSFdiaTRrd0VwRkg2R0hJekZDNmVpNEVwYzFkMmdiM00zaGJqLUV0ejVycmZxdlZLYUNDN0c5UWFSTElMcDUxNTE4UTFDTzBv?oc=5",
+          "datum": "08 Jun 2026"
+        },
+        {
+          "title": "Cahrles Hoskinson Returns, Says Cardano Will Beat Bitcoin: Why Is ADA Going Down?",
+          "source": "Benzinga",
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPb3pFNi01ODl1X3BfQlJqS0J4U1R0SXVDaEdSaHBxRVVOSTB4MnJ4Z21XNHhtbFppYnljZkYzMmFKcHBwYmdfVkxLU01SS2RFbHEtUHRMVldWNmhHMEFkWTBKZVl4Rzh0M0lISldiOVpfWmNiNGtCQzdpdXZtM2VTZklMRFIwakhYTWVmeEJpQlNBdGE3OGh6alBhT2tKOGNMY1JZMDZIT1I4bjVHc0Z5WnJCLUVSYzNaMGsxOTk2Wk9GSUlNVFFVUFNwdzlxaGc4UW5tZHFDaw?oc=5",
+          "datum": "10 Jun 2026"
         }
+      ],
+      "stats": {
+        "market_cap": 6136175916,
+        "volume": 471412543,
+        "high_24h": 0.169278,
+        "low_24h": 0.158982,
+        "ath": 3.09,
+        "ath_change": -94.65,
+        "change_7d": -17.69,
+        "change_30d": -41.11,
+        "high_30d": 0.2805,
+        "low_30d": 0.1567
+      },
+      "analysis": [
+        "Treiber: UNDP bringt Ethereum, Cardano und Stellar zusammen, um Blockchain für das Gemeinwohl zu erforschen.",
+        "Risiko: ADA ist in den letzten Monaten um 42% gefallen und befindet sich in einer historischen Kaufzone, was auf starken Verkaufsdruck hindeutet.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit starken Kursverlusten und der Frage nach einer Erholung."
       ]
     },
     {
-      "price": 0.084202,
-      "change_24h": -2.26,
+      "price": 0.084915,
+      "change_24h": -0.67,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "Dogecoin ist im Allgemeinen gefallen, aber es gibt Nachrichten über die Einführung von 'ÐOGE Pay' und Analysten, die einen 'Pump' erwarten.",
-      "signal": "Fällt, aber neue Zahlungsoptionen und Pump-Erwartungen.",
+      "sentiment": "bearish",
+      "confidence": 0.6,
+      "rationale": "Dogecoin verzeichnet einen Rückgang im Zuge des breiteren Krypto-Marktes, obwohl Zahlungen über MoonPay ermöglicht werden.",
+      "signal": "Rückgang im breiteren Krypto-Markt.",
       "id": "dogecoin",
       "symbol": "DOGE",
       "name": "Dogecoin",
@@ -595,21 +907,48 @@
           "datum": "09 Jun 2026"
         },
         {
-          "title": "Dogecoin Will ‘Pump Hard’ After This Happens, Analyst Clocks Generational Entry",
-          "source": "TradingView",
-          "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPVkd6d1JhSndZT2hyZVlsaERJUUFOejc1cjB2QlBqZ0VVTWJ4ejczY19hYlNCOVRVd09EX2FEYU00ZzZpN1J1X29ZQnNHZERST3g1ZU1DYVVTTmVNTGRRYnBBbm51TllvRjllSldKNWdBdWg2Yzg2S0VDY0dHTVU4X28wcGZPZkFsdjdYX2ptakhsSk1vUmxHVlpnc1kzMWtsQkVGZ0UxTzZCT1JEQjRKQU5TR2E4VnVPSlJqSGxCa1RGN0JOVGVCMFl3dmxXdFk?oc=5",
+          "title": "Japan's Largest Marketplace Lists Shiba Inu (SHIB) and Dogecoin for 23 Million Users",
+          "source": "U.Today",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPTEVCbnBlN3BmLWdOb0xnSlB4RFo3WTVRR2V1a2hPc3FlOXEzd1FNUGlyeFN0NVRiaE11OGZQaldGa2Z3U1RnM0dIUEN3cVJkalNYbWhMcU1BcVNoR0xZV3k2SGRvaTRTUUlNcUN5NXo2dWZjQkJBRUhYNGIxX3NKZV95RnYwbENTOUVCSDZjR05URFYtYXVHVFZkajVPZ9IBowFBVV95cUxPd0FSSkVuTVpKdGxRbjdtMkJvR1J0NUsxdjhhQ013YV9HUmhhNnRua1NUeHZzWnR2cmxsLWtTbmhBbjF3bjl5NlN4aUREM25DRHAyM3I2dEdyVXVTNVhibjh3Vk4wbUVuMEJydzRNRVJNbFBqS3Q5V3ltaWtwOG50aHJEc0xhbXdmOG8yYUV5YTNDbzB1R1Ria3ZpLXBUNFBZdVdr?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Crypto Traders Demolish Dogecoin’s $1 Fantasy",
+          "source": "FinanceFeeds",
+          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8wU1FOY3Z3dmI1bjFNSXBNekQzSnRsVGN2eGc5TlVDdDZrX0E5dEg4TFMxelQ5NUpUM29qOS1aZHIxcHh2aVYwaFlwcXlEM3c3bndWZ29oT3ZOV2VzbVlTREJwa2FMNDRQWE9rSjVYeDEzVXQ3dzlTaQ?oc=5",
           "datum": "08 Jun 2026"
+        },
+        {
+          "title": "Is Dogecoin Really a Millionaire Maker?",
+          "source": "The Motley Fool",
+          "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOd2xZa1F1eERWa3duYm9CbmQyX2k3SVhoeVYxaXZxNGV2cGZ4c2hCUjNiSWZ1SGN5dTdDWEVqc1Z1VV95cGh0NlBBb2xXWk1femhpa0RGZmUyNEg1OERKNlFSam9HTGh0UE1zakhwVkhjTDUwSVJTaTJGaFE4UU5LcHZkanV5dm5N?oc=5",
+          "datum": "07 Jun 2026"
         }
+      ],
+      "stats": {
+        "market_cap": 13128087027,
+        "volume": 680634521,
+        "high_24h": 0.085752,
+        "low_24h": 0.083009,
+        "ath": 0.731578,
+        "ath_change": -88.39,
+        "change_7d": -9.49,
+        "change_30d": -22.86
+      },
+      "analysis": [
+        "Treiber: Dogecoin-Zahlungen werden über MoonPay bei über 6.000 Händlern ermöglicht, was die Akzeptanz erhöht.",
+        "Risiko: Dogecoin fällt im Zuge des breiteren Krypto-Marktes, und die '1$-Fantasie' wird von Händlern demontiert.",
+        "Einordnung: Trotz erhöhter Akzeptanz wird Dogecoin durch den allgemeinen Marktabschwung belastet."
       ]
     },
     {
-      "price": 364.26,
-      "change_24h": -1.16,
+      "price": 364.08,
+      "change_24h": -0.05,
       "currency": "usd",
-      "sentiment": "bullish",
-      "confidence": 0.6,
-      "rationale": "Ein Top-Investor bezeichnet Alphabet als 'Four-Headed Monster', und das Unternehmen investiert stark in KI-Infrastruktur.",
-      "signal": "Top-Investor lobt, hohe Investitionen in KI.",
+      "sentiment": "neutral",
+      "confidence": 0.5,
+      "rationale": "Alphabet zeigt eine stabile Performance, wobei einige Analysten das Unternehmen als 'Vierköpfiges Monster' bezeichnen.",
+      "signal": "Stabile Performance, gemischte Analystenmeinungen.",
       "id": "alphabet",
       "symbol": "GOOGL",
       "name": "Alphabet",
@@ -636,9 +975,17 @@
         358.99,
         372.19,
         368.53,
-        363.31
+        363.31,
+        364.26,
+        364.08
       ],
       "asset_news": [
+        {
+          "title": "Alphabet Convertible Preferred Offers 6% Yield and Upside With Common Stock",
+          "source": "Barron's",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOaG1uZVpsbDJfZmpCakZQbkZTd3J5bk5IOEhZOEVYUEV3ZDJHSzJ1elVHeF85aklrTUR1LVlLMFlVT0ktNDJ0MXdmS2RTbGlTWWU0Q2FTUGt6SGRPR1FBYXpsS3RZdGJtYUtjdEdQR24ybWJySElaSDFQRktxdTNMQ0pUREJ4el9ZMTFiLXR2NTBfdVlnUFlVak9TOGNraVlMMGdXcXZ0ai1yNU5CemlEQmstMDNXSTA?oc=5",
+          "datum": "09 Jun 2026"
+        },
         {
           "title": "‘A Four-Headed Monster,’ Says Top Investor About Alphabet Stock",
           "source": "TipRanks",
@@ -646,27 +993,47 @@
           "datum": "09 Jun 2026"
         },
         {
-          "title": "Alphabet Is Raising $80 Billion for AI Infrastructure. These 4 Semiconductor Stocks Win the Most.",
-          "source": "Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxON0xYSGFJaFllaFFveDNvdEI1U0xwaC1VMGdodHptS212QUJNQk9ZeHp3NXNiOTkzenlLekZfT0ttQjJfVms3RTZBb1JyUV91STgxMTFRaWw5TVFLdjhMLTBhdGFnRGNRMk42dUdLZW5Pd1JaMnVqMzFoQUlVSktpRS1wNFJTUm85Y0o2VmtBUXoyemhfNUNYTmZEZVEzX0Y3?oc=5",
-          "datum": "10 Jun 2026"
+          "title": "Alphabet And Microsoft: Holding The Winner, Buying The Laggard (NASDAQ:GOOG)",
+          "source": "Seeking Alpha",
+          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOQko3Z2lMM2sxUWs0UldPcmV3Vnl6aUktNWs3LS1VY2k0SWVEV0RxS20ybFlDUmZ2WWZtVUZKZE0ycjZQQ09sa19Hb29mazByVjViUTFMOGVOeGJMTGhYRWxjODgyR3FjYVJMMXdUbDZhT1FwVmh0TV9SdmVIZGhJeGZ4QTdULTFBNzlFbHU4Vzg0bDBDYk50SFZEZnQ3ZExUMHhN?oc=5",
+          "datum": "09 Jun 2026"
         },
         {
-          "title": "Alphabet Convertible Preferred Offers 6% Yield and Upside With Common Stock",
-          "source": "Barron's",
-          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOaG1uZVpsbDJfZmpCakZQbkZTd3J5bk5IOEhZOEVYUEV3ZDJHSzJ1elVHeF85aklrTUR1LVlLMFlVT0ktNDJ0MXdmS2RTbGlTWWU0Q2FTUGt6SGRPR1FBYXpsS3RZdGJtYUtjdEdQR24ybWJySElaSDFQRktxdTNMQ0pUREJ4el9ZMTFiLXR2NTBfdVlnUFlVak9TOGNraVlMMGdXcXZ0ai1yNU5CemlEQmstMDNXSTA?oc=5",
+          "title": "What You Missed About Google Stock Right Before It Went 2x",
+          "source": "Trefis",
+          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOU2pCb1dhVnNiWkZrTmNCNHJYa1I4N3dtR05iWWNyN0dhVGszd0R2MFBRUmVYemJvZ3NLMGpqTzQ5NEFLQkVXSjdpaHFCT1hXYjNjTkZMcDlCWUk2NjQxRmJHelZITTdLdF94SzZOeV9CZzU0VzdzWm04WnhEY3YzMVdJaFlNeXZ1MnVlMXJxQXNjYmxxc2NJVGlCR0hWdWc0bjBYN0F1Ump3dlJndXg3M2tmY3JlcTJQQUZSZg?oc=5",
+          "datum": "08 Jun 2026"
+        },
+        {
+          "title": "Prediction: Google Stock Will Hit $500 on This Date",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQSUVkY0t2VWZlOTNsQTR4bU9kOXBaQVFpYU9rMzlvVS0zVnVEX2lQQ1Qxdm5kRk1abWVOWmJVY0dnV1BYd1JhOEl1YzNmZ3RmR0FFdkVRSWxkY215V0JoZEdxVW40SVZaYWtnVkdXUHotYVFhUEZEU1VaUmFLRmxkdUNsZGdVdFBHQUFXc2EwWjRadG9ldUFmekNUTS0?oc=5",
           "datum": "09 Jun 2026"
         }
+      ],
+      "stats": {
+        "week52_high": 408.61,
+        "week52_low": 162.0,
+        "volume": 4089458,
+        "high_30d": 402.62,
+        "low_30d": 358.99,
+        "change_7d": 1.42,
+        "change_30d": -6.32
+      },
+      "analysis": [
+        "Treiber: Ein Top-Investor bezeichnet Alphabet als 'Vierköpfiges Monster', was auf starkes Potenzial hindeutet.",
+        "Risiko: Es gibt keine spezifischen negativen Nachrichten, aber auch keine starken positiven Katalysatoren.",
+        "Einordnung: Die Nachrichtenlage ist neutral, mit stabilen Aussichten und ohne starke kurzfristige Impulse."
       ]
     },
     {
-      "price": 244.19,
-      "change_24h": -0.75,
+      "price": 241.44,
+      "change_24h": -1.12,
       "currency": "usd",
-      "sentiment": "bullish",
-      "confidence": 0.6,
-      "rationale": "Corning schließt einen milliardenschweren Deal mit Amazon ab, und ein Analyst sieht Amazon als starken Wettbewerber.",
-      "signal": "Milliardenschwerer Deal mit Corning, starker Wettbewerber.",
+      "sentiment": "neutral",
+      "confidence": 0.5,
+      "rationale": "Amazon schließt einen milliardenschweren Deal mit Corning ab, aber der Aktienkurs fällt, was auf breitere Marktängste hindeutet.",
+      "signal": "Kursrückgang trotz positiver Unternehmensnachrichten.",
       "id": "amazon",
       "symbol": "AMZN",
       "name": "Amazon",
@@ -693,7 +1060,9 @@
         250.02,
         253.79,
         246.03,
-        245.22
+        245.22,
+        244.19,
+        241.445
       ],
       "asset_news": [
         {
@@ -709,21 +1078,47 @@
           "datum": "09 Jun 2026"
         },
         {
+          "title": "Amazon’s Trucking Push Sparks Fresh Selloff in Transport Stocks",
+          "source": "Bloomberg.com",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNOE9LLXVnYWZ0bE83QnI0SGRjWjRqWFg1Tm1qb2tDLWE4WHRTSm5vVDNOTDNQQm5uNl9tcGZwOGEtS194TE0tWVN1RWpSZ0VDTHBZdU1TcGhlaXV0UnhaQkY1TjRfNjFUQndhSi1rVlJ4d3NHVWJpYkQzQlVMVHQ5UEw5ZTZSVHdUWHdoa3Fzd09od2p0RDJLcnhBaEVlUzhqT1doWnFCa2JJZVVwdUlrc2ItY24?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
           "title": "Amazon.com, Inc. (AMZN): Top 10 Stocks That Members of Congress Own",
           "source": "Yahoo Finance",
           "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOV1lZNy1ZZE9BaDA0OVA0WC1jRHNKRE9KVjlrYW9MOFZyYzV4VmlpWWpiY1FSdTRMY0N6cEU2MzRjSUc1bkticm96Z09nc0hTb2pwcWVPcE9US1JIMkVHOWJhaGg5cGJEZVU0VmdkUlNhcXkzSW1hSmRUU3NFb0tPcWl2dG82cG9MckpqYlBacUlzdw?oc=5",
           "datum": "07 Jun 2026"
+        },
+        {
+          "title": "Corning strikes another multibillion-dollar AI deal. What the new Amazon pact means for the stock",
+          "source": "CNBC",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNUkJMWjA5R1dMUTVKWU9FcEVNaVBXM0tZVEk0S3dNZWtFRlFIdUgzTGlVbnVNclFZbTIyVC0tT2o3bDQ4UHpfNGJDNXEyVnJfNGN6V2V4b1NKX0ZzdnZma3JNbnM1dUh1Qlp1cEg4aElzYmRUSDloY0JzVE5hU2tEZmROUUx2bHpqX2dGeVJkQmpHQnNGc0RTYmJGc3F3UF84SFVzLUxMOHJ6LUNpTDJWbEdmUUIxQXBx?oc=5",
+          "datum": "08 Jun 2026"
         }
+      ],
+      "stats": {
+        "week52_high": 278.56,
+        "week52_low": 196.0,
+        "volume": 3385409,
+        "high_30d": 274.0,
+        "low_30d": 241.445,
+        "change_7d": -3.43,
+        "change_30d": -10.24
+      },
+      "analysis": [
+        "Treiber: Amazon schließt einen milliardenschweren KI-Deal mit Corning ab, was positiv für das Geschäft ist.",
+        "Risiko: Der Aktienkurs fällt, und Amazons LKW-Vorstoß löst einen Ausverkauf bei Transportaktien aus.",
+        "Einordnung: Die Nachrichtenlage ist gemischt; positive Unternehmensnachrichten stehen einem fallenden Kurs und externen Effekten gegenüber."
       ]
     },
     {
-      "price": 584.59,
-      "change_24h": -1.42,
+      "price": 589.08,
+      "change_24h": 0.77,
       "currency": "usd",
       "sentiment": "bullish",
       "confidence": 0.7,
-      "rationale": "Truist sieht Metas KI-Potenzial als 20-Milliarden-Dollar-Geschäft, und die Aktie soll über 40% zulegen.",
-      "signal": "KI-Potenzial von 20 Milliarden, Aktie soll steigen.",
+      "rationale": "Meta zeigt frühe Anzeichen der GenAI-Monetarisierung und Analysten sehen ein hohes Potenzial für neue Umsatzsegmente.",
+      "signal": "Positive Anzeichen für KI-Monetarisierung.",
       "id": "meta",
       "symbol": "META",
       "name": "Meta",
@@ -750,7 +1145,9 @@
         622.98,
         627.57,
         593.0,
-        585.39
+        585.39,
+        584.59,
+        589.08
       ],
       "asset_news": [
         {
@@ -766,21 +1163,47 @@
           "datum": "09 Jun 2026"
         },
         {
-          "title": "Meta Platforms, Inc. $META Shares Purchased by PARUS FINANCE UK Ltd",
+          "title": "Black Swift Group LLC Sells 9,355 Shares of Meta Platforms, Inc. $META",
           "source": "MarketBeat",
-          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNMTcxSzVZajZiUlFZWTVTbzBqa21BSWt3bU5pZlItTUNYazlnUU1RMFhjQ3c1bDVfUGZtZVozaGZpSllpUGVEUmdob1JCYXhUZWk4VWVGa3R6dFRpdHFoeDJsZE1rVDZ4dTIwWmRVX19ObDhsLTMzN2s2UXdSb2dEeVNpSUJDUEVtTXpRZUYwbFJBZlZTSGJvbjRqeGhEanFPTUFhQzRibm9jZE9pTUVCQUxmMzFKRjBzTk9HYVNncTBJWDA?oc=5",
+          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPUnh2eHYySXdpRGg3anNOOGR3cTQtOUNzMW56ZnN3Zzdqc25YNXZLY2o4ckpYOVZHY3BhS3U4cVhmVm9BeUxDZHpvUDBtQ3hwQWF0RjBwUDdSdDg4em83WjZkZDlMWDBPa21xX1ZIX0JEeWNXYVcxMUJIcDdFVWN4b1JjY2t5NkZKakxYYXM2RHhGWTEyWGtvU0ZNTkVPUXdZLW03TmlnaVVQZTJIYzhlRUc4S1MxQkZSell0b1Yta1Z6NEYzX0E?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Truist Says Buy Meta Platforms Stock, Cites Its ‘Next $20B+ High-Margin Revenue Segment’",
+          "source": "TipRanks",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOWEFvUzlueVpPRUNhekp3dkcwMXRaRzZqLU03Wk42STRkaTZpMUQ1QXByZGNJR3BXZ1psZGxWNkFSaWZqcXZUMXBGRjJMTFlPOXZfNjFDU2tOMkZ3VzY1WDZUZUJSY3VvdEI4UzJkOXczc1BUbW1jVE54YmY2VDRBMThIY2VtZXNaNnRfUVFJYWxiNUJ5WU10ZWtqN3BiaEVzTkVYb0VXMU0xa19XTkZKOWZDNA?oc=5",
           "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Meta (META) Shows Early Signs of GenAI Monetization, UBS Says",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOVWlDWnBNbGhMNm8yNkhocFVWMzNIeWtaV1BOT1BFMG5neUo3T3pWdW94cXdoV3BQVTQ4Wjl4d3FYaVp2Mm9ZV2dfX3h3Wm44WnZFNmUtRTFpamNreE0xeHdHY09kWFoxNEUxRGo0b0hFWGt6am1id1UwUTFyMjJHa2M1NkxlbHJVUDYxZkxXNHBCd1ZJb1hj?oc=5",
+          "datum": "08 Jun 2026"
         }
+      ],
+      "stats": {
+        "week52_high": 796.25,
+        "week52_low": 520.26,
+        "volume": 1580411,
+        "high_30d": 635.29,
+        "low_30d": 584.59,
+        "change_7d": -5.44,
+        "change_30d": -1.63
+      },
+      "analysis": [
+        "Treiber: Meta zeigt frühe Anzeichen der GenAI-Monetarisierung, und Analysten sehen ein neues 20 Mrd. USD Umsatzsegment.",
+        "Risiko: Ein Investor verkauft 9.355 Aktien, was auf Gewinnmitnahmen hindeuten könnte.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit Fokus auf das KI-Potenzial und neue Umsatzquellen."
       ]
     },
     {
-      "price": 475.5,
-      "change_24h": 1.96,
+      "price": 474.39,
+      "change_24h": -0.24,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "Es gibt Preisprognosen für 2027, aber auch Berichte über den Verkauf von Aktien durch X Square Capital LLC.",
-      "signal": "Preisprognosen für 2027, aber auch Aktienverkäufe.",
+      "sentiment": "bearish",
+      "confidence": 0.6,
+      "rationale": "AMD wird von Cathie Wood verkauft und es gibt Warnungen vor einem Downgrade aufgrund des Inventars.",
+      "signal": "Verkauf durch bekannte Investoren, Downgrade-Warnungen.",
       "id": "amd",
       "symbol": "AMD",
       "name": "AMD",
@@ -807,9 +1230,23 @@
         542.52,
         523.2,
         466.38,
-        490.33
+        490.33,
+        475.51,
+        474.39
       ],
       "asset_news": [
+        {
+          "title": "Super Micro, AMD, Intel, Oracle, and More Stocks That Explain Today’s Market",
+          "source": "Barron's",
+          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1fY1lETVYzUGtETmVjOU56NUpsRHFJUzBpb2lOM3NLdFMxZ1o1cXJTZU51bDBSd0ttOTlsQzNqdVpIazJQV3g2aFFJdlJxYUZyVllJTmtyejVyb2JiQnY3WGw3a1Y?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Ark Investment's Cathie Wood Just Sold AMD Shares and Bought Nvidia. Is That the Right Move for Investors?",
+          "source": "The Globe and Mail",
+          "url": "https://news.google.com/rss/articles/CBMilgJBVV95cUxNWjI4N2RTa3RLN0RHRzAxTGlaeUVsWFdFMjBxaFdoZGVoVjF3UmlhZnhWM1RSVGhjZnVKYlNYRmNFaHVlVzI2eXEzUWtFMzA2QjVjS19IS2l5Nng0ZmhsbmQ3T0VoemJsWmJWd3R2UUIycXhEei1KUVlGdDl6ZDltRU9NYmpGem1LZmJEc2h2RkcwNThwOTEzcF95WW9SR29UdFpBSEtobGJUaGd1cFR6Mnk5YXRiNGpKNW92eUR2NDRPdENUQ0piLVhQdlY4eFo0enloMVJSQ1JVWi1aUXUyOFBBXzJab2RCaDgzLTVCOGd2R3k5ZXUyck0wM2ZtaHQ5WUp2NWQxMWxRYTVvX1hwT3hoOGdoZw?oc=5",
+          "datum": "10 Jun 2026"
+        },
         {
           "title": "Prediction: AMD Stock Will Trade at This Price in 2027",
           "source": "Yahoo Finance",
@@ -817,27 +1254,41 @@
           "datum": "08 Jun 2026"
         },
         {
-          "title": "AMD Still Trades at a Significant Premium to Nvidia Stock: Don’t Miss Your Chance to Snag AMD Shares Here",
-          "source": "Barchart",
-          "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQSGtWVXZ2Y3BWNWNuV3BBV2tYQzdYM1A4Z1BseHV5V1B0TVQyaW8xLVU0Szc4Zkpaak5SQm5PYkFQZ1pQYjZwRjJyc21Bd0Y5aGYzTHJTdlhDVEtPRDJrT1NreTFiNmJDS2lNQzBGOHBXVm5hTkFFejRTeTFRcTZBbjVRV0ZNYmpYczJnMGhfc25UQkJoNlFTQUt5NUVTenhfcERaM3RhTGFyV1hFYnNpUGgwT3diZjhRY3lOMExkYzAzalV2aktwS3l6cE5KOUd1ak5TWV9pQnJsQ2tRVGhKbQ?oc=5",
+          "title": "AMD: Inventory Doesn’t Lie And Says Downgrade (NASDAQ:AMD)",
+          "source": "Seeking Alpha",
+          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOVW9YbEZyTFRjc0VPQUFxUjZ3SVQ2Z3Z2Z1pkSlBnWTBIWEJCRmZMVVRDRC1kNXVNWVFNem4yQWlBWTJ5d09LRTZPd1lQLTlTNV9ZTmpLTlkzNkdiWmVtME9SQkZXWTJRUS12VktkdldzM3NRNTJiVVBmMDBnWFhBYS1DeE80aVNjSENMUw?oc=5",
           "datum": "09 Jun 2026"
         },
         {
-          "title": "X Square Capital LLC Sells 17,259 Shares of Advanced Micro Devices, Inc. $AMD",
-          "source": "MarketBeat",
-          "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNZkw3amJKSDZmdTdCNFJnemp3eTlGUmNVVGRGXzdrakJwUmdnMjl5c0F2Y05DYjhfY3NESWxmd09vYmcyQzZzck5JeDhHQzR0RTRPZnNmR0JzWVlfU21HVW42eHV5TlBjYUxVRDNzcEVGUlplZ01wZFVxWGk2RW5tdC00MFZBT3NoellSR1N3ZVhzSGVpYk5BOGtleC1XeUo2RkYzTktIN0tpV3o0RlRnV2JXUmRGVEhfUUFqalY3UmFMbWtPOE9EOUpxMzRrVk0?oc=5",
-          "datum": "09 Jun 2026"
+          "title": "Intel Comeback or AMD Takeover? Which Chip Stock Will Win the AI CPU War?",
+          "source": "The Motley Fool",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNMWc2LWQwUVUyOFdCMXZPQkxFcXFQOWxsRVZpdmpQRFJGX21MX3hMWnVtc3ctdFNUeEJ1VE1GREw4MzNOTFV3T0l1NTBDd2VnS285eTgwZGVQak56a2pORVVGTndWS2xVMHZoa1pGSFZ1MUlTRkI0VHg4NUxhcDFFcEp3RjRfVGRJbkFSQi1COFVCS1lIMmt3RQ?oc=5",
+          "datum": "08 Jun 2026"
         }
+      ],
+      "stats": {
+        "week52_high": 546.44,
+        "week52_low": 115.06,
+        "volume": 3393492,
+        "high_30d": 542.52,
+        "low_30d": 414.05,
+        "change_7d": -12.56,
+        "change_30d": 3.4
+      },
+      "analysis": [
+        "Treiber: AMD ist ein wichtiger Akteur im KI-Chip-Markt, was langfristig positiv sein könnte.",
+        "Risiko: Cathie Wood verkauft AMD-Aktien, und es gibt Warnungen vor einem Downgrade aufgrund des Inventars.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit Verkäufen durch Investoren und Downgrade-Warnungen."
       ]
     },
     {
-      "price": 7386.65,
-      "change_24h": 0.04,
+      "price": 7373.33,
+      "change_24h": -0.18,
       "currency": "usd",
       "sentiment": "bearish",
       "confidence": 0.7,
-      "rationale": "Der S&P 500 fällt aufgrund von Tech-Verkäufen und geopolitischen Spannungen.",
-      "signal": "Fällt durch Tech-Verkäufe und geopolitische Spannungen.",
+      "rationale": "Der S&P 500 fällt, da der CPI den höchsten Stand seit 3 Jahren erreicht und Tech-Aktien sinken.",
+      "signal": "Rückgang aufgrund von Inflation und Tech-Verkäufen.",
       "id": "sp500",
       "symbol": "S&P 500",
       "name": "S&P 500",
@@ -863,37 +1314,65 @@
         7553.6802,
         7584.3101,
         7383.7402,
-        7405.73
+        7405.73,
+        7386.6499,
+        7373.3301
       ],
       "asset_news": [
         {
-          "title": "S&P 500, Nasdaq fall as tech selling resumes, Trump vows to respond to downed US helicopter",
-          "source": "Reuters",
-          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQWGJ1bl83a1ZCa082M2NZNkdvamdjX2pNODlzalRUN0NiaEMtbXl4QTdlNkhGZTE0T3QzVmxHcjJ4OE9YZnFPbm0xWDdIckNobWVFN0oyZUoxTXNUeUhrdUtWQnFNQ1NCcjJ0MGprRm80eG9lM2NzMUpPcWdKNlJDNmNqLU5jZlBrVjdsUEtSeWhqVEdzdTRnSmtFWFBhb3RTemVV?oc=5",
+          "title": "Stock market today: S&P 500, Nasdaq rise on chip stock rebound, Dow slips",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPOU9adzRULTh4UFlYNi1EM3pyamI4ZFpzaWFtdXZtSWNKcDg4bnp2dDV2Z0tBbTVsdmhsdFZZQUdYcUZLbUtPZTRJWWphbzd4WjBBeDMtZEVwZDJ4XzVaVklqNWdhTFQ5TEZTSEM2SWpHVEQ0Wmc5S2tFd2VySWV0Y01JWHp4UVFfRmh0R2xVNFp3WmYxWHNCYjliTDZtYVlPX19Hel9MV3F1SU5NRnc?oc=5",
+          "datum": "08 Jun 2026"
+        },
+        {
+          "title": "Stock Market Today: Major Indexes Pull Back in Early Trading After CPI Hits Highest Level in 3 Years, Matching Expectations; Tech Stocks Lead Declines",
+          "source": "Investopedia",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPVzBNOTVId19zWnZLYUJCdzhqblpoMWlEZzFYWWdiWFlhMlpPbnFraUxvOF81OFk0WXhnYklIOUY3RlI5aVFBMktCcWxUS3dtWHR2T2R5MG0zTEU1TWMwUHNmWkRQWU43UjhJWXFReWFOdW1oRHB4WmFldmVGd2I2bWNHdm1INE1BSWpiaklYeXU?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "S&P 500 and Nasdaq close lower as chip stock rebound fails",
+          "source": "CNBC",
+          "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1DYWhpY084Zkc0LS1aVXdWaDdidWFrVHpoUHNmdHdoYUZpVUpQLUdBOVcxMEV0akJ6c3lmek5kQ1NUdjg4TExxSXNIVU1Fc2hJYnpFZmNpRFRhVDhmMTZRandjdmR2TU55Um02NnFWRWk5X29oSldz0gF8QVVfeXFMTl9pa0lRbnZ6N2M3NF83QTFNTUsyQWdhdmJzM1Q2VDRQbnREeDJndGZUbG1Yd2o2NHAwZlNMRHlJN0FybUkzckVmZzUtSUFjNm01WG1hMlVVQ29uMHhvTkVub3Mzd0NKdlBGRnhaaGZQLWFDbnpjeGs4VkRONQ?oc=5",
           "datum": "09 Jun 2026"
         },
         {
-          "title": "Stock futures slip after U.S. launches ‘self-defense strikes’ against Iran: Live updates",
-          "source": "CNBC",
-          "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9LRDZ2dHY0cGF3dUlHVC12RU04NVBYWTZhUGxjUkhZTHF2T0xLUU96NVVCMG5GZHpZZ0h4R0tKdUtxZWFMMWpEWjlqWkdCVjFrNWhMRDBHbUNVTWJzYVZQRE10cUZsSWlxdVQySFdRNXJzRmZFSlBF0gF8QVVfeXFMT3YycTlFVk85SHZtSlVheXlsWUVRLU1hWXFJSWI2dkxseGN3UVVqVkM2WW9vZ1A0X2RsNmo3QTY2OHdWVHNUeUNRYXlLb2kwS3ZuUjFySnNNc0RHamhUNHotak5YYUtTWE5oQzNDSjQzR0FRLWlWYzRhOEdWWg?oc=5",
-          "datum": "10 Jun 2026"
+          "title": "Bloom Energy, Astera Labs, Alnylam, Reddit Could Be Among Next Adds to S&P 500",
+          "source": "Barron's",
+          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9kbWJHU20xWUhPbnNhc0NFTDhHSUdMVmg5VWFkU09IVFZJN0NieTUyUFFnbVMyWkk4dWRzcV90dlJiMzBNNlF5LTRLd2g2RDVLaGlCcTZmYTB5Vi1SbWZLRXZEUGVFc1ZNSHBVOEs3SlAwazdqRTZOTTRlYWQ?oc=5",
+          "datum": "08 Jun 2026"
         },
         {
-          "title": "Stock Market News From June 9, 2026: Nasdaq Slides 1%",
-          "source": "Barron's",
-          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5pUm9UM0hnbDZKQmY2LVJQVk1XSXRRQmVoQnhnR3ZMaDZlNFBaZW5hX1NoY0dpaklUaGxHU2twbGhmSW9iQmtsaGZuT1hVUGFXeW55dFQzWXczT0tZbXdmQW5pd2t2bXBrbGx5cmNwbEVySjdyY1E?oc=5",
+          "title": "US Premarket Movers for June 10, 2026",
+          "source": "Bloomberg.com",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOcURBWktVYjBiNlBlRlo1eTl5WXpjcDlRMS1iLXdJUWlha0w4Qm1JRm1VNFppT1BYUHdDeEJEcTlYUTVER2I3Z1pXVlFLaElUdlc1cmRwY1NpcDNSajZOTmRpbEFTdE04aHROR2ZMeXhxYnVUMWdCUkFsbXZVN3ZXcXRGSmI1aktKQ3NuN3Y2M2hkNkZCdm5teUszMzZTREpXVEYzemgxVml3NU1BVzl5YWlGUQ?oc=5",
           "datum": "10 Jun 2026"
         }
+      ],
+      "stats": {
+        "week52_high": 7620.9,
+        "week52_low": 5943.23,
+        "volume": 281302538,
+        "high_30d": 7609.7798,
+        "low_30d": 7353.6099,
+        "change_7d": -2.39,
+        "change_30d": -0.53
+      },
+      "analysis": [
+        "Treiber: Ein Rebound bei Chip-Aktien könnte kurzfristig für Auftrieb sorgen.",
+        "Risiko: Der CPI erreicht den höchsten Stand seit 3 Jahren, und Tech-Aktien führen die Rückgänge an.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit Inflationssorgen und Tech-Verkäufen."
       ]
     },
     {
-      "price": 25678.82,
-      "change_24h": -0.12,
+      "price": 25640.3,
+      "change_24h": -0.15,
       "currency": "usd",
       "sentiment": "bearish",
       "confidence": 0.7,
-      "rationale": "Der Nasdaq Composite fällt, da Tech-Aktien und Chips den Markt belasten.",
-      "signal": "Fällt durch Tech-Aktien und Chip-Schwäche.",
+      "rationale": "Der Nasdaq Composite fällt, da der Tech-Verkauf wieder einsetzt und Chip-Aktien sinken.",
+      "signal": "Rückgang aufgrund von Tech-Verkäufen.",
       "id": "nasdaq",
       "symbol": "Nasdaq",
       "name": "Nasdaq Composite",
@@ -919,9 +1398,23 @@
         26853.9805,
         26830.9609,
         25709.4297,
-        25929.6602
+        25929.6602,
+        25678.8203,
+        25640.2969
       ],
       "asset_news": [
+        {
+          "title": "Stock Market News for Jun 10, 2026",
+          "source": "The Globe and Mail",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPemRULU81Z1VNSTdEVjZaTHVhYTVrcTMyblZFZ056RG9qM0dyM1ZVcjhlelljd183ZE1uTDZSUEt2UC0xUUxleXJ4b2VnVEI2ZktNSHNJR0YzT1EwbXRvQmtKT2hYSnpGRU9MOTVEcnByY0V0LVB1YXhSNVNiOFl2Z0lkbHZ5dWJ3bHAzV0F4aTJkZVYyVzB5QkN6OUZNdHBGQTBjVHRLWUx6eWlta1NpWGduVkRoVmM?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Nasdaq Composite Index (.IXIC)",
+          "source": "Moomoo",
+          "url": "https://news.google.com/rss/articles/CBMi4wJBVV95cUxQUFNOSm9mTTkwVW8zZzdJblJpYy13RTJma2dXRE1JNmFPRTJCcTdqU2lfM2ZoTnhBSjg3TFYxbkRqWUxVTlA0ejZWRHcwZlF3NGE1SzFIbzZKazZqZGlZdlY1ZjBlTEpYUzVjRWZXa2dpQXBkaF9kUXRDdmVuOWtSdkloLTBLcE9UcjdNV2pIX0taZnl2SjRfVHp4S3FqbTFoUWtBanRWU0NOSzFYTXpFa25oMF9qNFc0aEpkdTdWbUIwUW05bU1oMGR1dTE3LVdnOTlRcGN5QWV3dDRVVGx4TnQ1T3dkQV9xUGpTQXl4bU5wVnNRSEVJWmdkNjAtRFg2ZEpwT0ZKM1NXX2tTU0ZRS0p5Wkk2TERoNjR1UU9KbXBSTWY1aV90YmdieWI3Yl8tSnFxZXZPQnIwWm1IbTRFbHE4Y0lzNGxUNWtuRVZaRnRvM0N4dklCNXhSWFJvQ19BMkNr?oc=5",
+          "datum": "09 Jun 2026"
+        },
         {
           "title": "S&P 500, Nasdaq fall as tech selling resumes, Trump vows to respond to downed US helicopter",
           "source": "Reuters",
@@ -929,27 +1422,41 @@
           "datum": "09 Jun 2026"
         },
         {
-          "title": "S&P 500, Nasdaq fall, Trump says US must react to downed helicopter",
-          "source": "The Detroit News",
-          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNUnhleVRTdmRCN041allJdzVaWmJpR1RjRGxYMGNDYnY2MmtnZ0JWb1lma09GRDY4QmJfWHJtSjRWZGJBRUM3OTNwZEJHSm91VUZ0LWxQclQ3ZEdab0VmSm41Smx3VXRGblZxVGtscnQzVml6OWI2UFJlNFU5cUl3blEtekdsLVFUZGVlUkotQjR4dTc5VE5EZ0VjZjVKU3VVeDg5UA?oc=5",
-          "datum": "09 Jun 2026"
-        },
-        {
           "title": "Nasdaq Index: Tech Stocks Trigger Stock Market Reversal Today as Chips Sink",
           "source": "FXEmpire",
           "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQdWE2VUd6WEVuX1dhdG1SaG9BNlVWWVFIVGowOEM0aEMxbWVHckVDMWk5OXk0Q0J6X1A0Z3F0eEk1SkdFVm1PeF9yOXVtSVQyXzV4b05jbTVEVmx0bndIenpXcmZPYWRFLTJIRVNheHRUa0Z2SjZqNS1kUlhuU0x0aHJ5aDkzWWtySHR3emZqSnRmbmRvNktycjhZSi1LYVpqN29vOWI5MzRORHdOOXl3MjRlVTh2WjZ0aVB0OHZFaGdZZTg?oc=5",
           "datum": "09 Jun 2026"
+        },
+        {
+          "title": "2 Glorious Growth Stocks to Buy During the Latest Tech Sell-Off",
+          "source": "The Motley Fool",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxON0pGZjVKNTFETDlvSy1qRjYtcTlDRm1sQ2lyU3lwQlJvYW1EVklRVGRFRk9GaHYtZUdXYWQtdTBMSDh5a1RmWVd6cGxITmxRZmVMYzczM2U2MVFDQV9JZXN5Vkt6RkFzbGt5aGxDMGFOc3BQc1VycnZ6OXRCRUsya0l3a2t5V3VCTXF1MmRDSy0zZVFzRG9N?oc=5",
+          "datum": "10 Jun 2026"
         }
+      ],
+      "stats": {
+        "week52_high": 27190.21,
+        "week52_low": 19334.98,
+        "volume": 1707693000,
+        "high_30d": 27093.9004,
+        "low_30d": 25640.2969,
+        "change_7d": -4.52,
+        "change_30d": -2.41
+      },
+      "analysis": [
+        "Treiber: Es gibt zwei 'Glorious Growth Stocks' zum Kauf während des Tech-Ausverkaufs, was auf Chancen hindeutet.",
+        "Risiko: Der Tech-Verkauf setzt wieder ein, und Chip-Aktien sinken, was den Index belastet.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit anhaltendem Druck auf Tech-Aktien."
       ]
     },
     {
-      "price": 24424.95,
-      "change_24h": -0.78,
+      "price": 24263.21,
+      "change_24h": -0.7,
       "currency": "eur",
       "sentiment": "bearish",
       "confidence": 0.6,
-      "rationale": "Der DAX schloss niedriger, obwohl die deutsche Industrieproduktion stieg, was auf eine allgemeine Schwäche hindeutet.",
-      "signal": "Schloss niedriger trotz steigender Industrieproduktion.",
+      "rationale": "Der DAX fällt, da die deutschen Industrieproduktion steigt, aber die europäischen Indizes vor der EZB-Zinsentscheidung träge sind.",
+      "signal": "Rückgang, träge Entwicklung vor EZB-Entscheidung.",
       "id": "dax",
       "symbol": "DAX",
       "name": "DAX",
@@ -977,7 +1484,8 @@
         24944.9492,
         24759.0508,
         24616.2207,
-        24424.9492
+        24433.0605,
+        24263.2109
       ],
       "asset_news": [
         {
@@ -987,27 +1495,53 @@
           "datum": "07 Jun 2026"
         },
         {
-          "title": "The DAX Index Closes 0.74% Lower",
+          "title": "The DAX Index Opens 0.27% Lower",
           "source": "TradingView",
-          "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOT0pRWW9adXlkNGl0cWczT2J4NDZ4ZWlzU3h6VUJkdmx4eDhPcHExblMwNTU4OUVCSTJ5STF2NnFVcy1HWU5HVmdLX1c4SzVsTUxLM2g0NkVBVGgtUVA5Y0kyQ2VQMlVxQ2lnVmVLcWRjY2NOekZiWlVfQzNJYlNPWTZDWWNkMTQ0clE?oc=5",
-          "datum": "09 Jun 2026"
+          "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPNEFmNTEybVFlaGpXRV90RHlpdF9NNGl6SjJNTHZ5TXlucmVucmhPQUtoQzA0Q2YxdGdjWnFyNXdLeC1mZFZ4cm1jN0tLZkE4dGFVaVFUUV9xekdVT2xGaS15SFNHdUZ5MzZUTVVjRXJMeFY4UGZhclg4TjBtYkpFNGlCcmhqajRk?oc=5",
+          "datum": "10 Jun 2026"
         },
         {
           "title": "DAX Index Declines; German Industrial Output Climbs",
           "source": "marketscreener.com",
           "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPQ0xwLXhkY193OFpiallMX0o0TTlMMGVSMFhnNVZnSFZaVUt4bkhjUlJsSzRWOFVVNHQwVnd3R2lBcDZlQnhRVEs3cWx4dVZWUnJSSlQ4dVN6V1BxLVRCRGdiUVctTVBrR3FEWVNkbDFWbTRXXzRUelA1Y0ptcXJ0UlA0a0dsZFVjZC1rU2NCejUwREtudG1tZGlLOVlldEdkRWRkRzBn?oc=5",
           "datum": "09 Jun 2026"
+        },
+        {
+          "title": "European Stocks - 09-06-26",
+          "source": "Armenpress",
+          "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE0tVHZTaVU2N0JXcDNVbHRJdEhUOEs5T1h5VmpYN2syUUc3N1FsVC0wRHdLWk5xakF3bFNTVFVHMW9IbjJvbzNmeXJ4N1hjMTJ0S0HSAVdBVV95cUxPS0p6SXdnWVJSak5XWnlxT0tURFFxWldHNmFLakdtemZxUWM4b0VLMzkxTE1xU3RFVGl3Qjd4ckpIbFdmSEU3dnBPeEFGVHFJczJpdzNja0k?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "DAX, CAC and MIB Forecasts – EU Indices Sluggish Day Before ECB Rate Decision",
+          "source": "FXEmpire",
+          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNNmJ0eS1HdGJMMTFJb29GWElhbExlSDIzNXJyX3E2Ry05NGdLS2EzVEZQelhkd2o1aklNcFkyTGc3N3lxR1dBaC1GcU1mY1BDVlp1TmhnWUIzWEx3dER6RTVoSXhsZ3VYNGhEaVRsZzhYdnc5WDRMd19DbGNYQkZib0s5LUhNMGgtR0NQVy1aZEw1UHF4UXZ6NWJXZ3hjYUFSSkdpMTNWanRJeFJTUkhxSkZlMXZvRXJBam5qRVQwdXFQY1k?oc=5",
+          "datum": "10 Jun 2026"
         }
+      ],
+      "stats": {
+        "week52_high": 25507.79,
+        "week52_low": 21863.81,
+        "volume": 0,
+        "high_30d": 25389.0996,
+        "low_30d": 23950.5703,
+        "change_7d": -2.15,
+        "change_30d": -0.36
+      },
+      "analysis": [
+        "Treiber: Die deutsche Industrieproduktion steigt, was ein positives Signal für die Wirtschaft ist.",
+        "Risiko: Der DAX fällt, und die europäischen Indizes zeigen sich träge vor der EZB-Zinsentscheidung.",
+        "Einordnung: Die Nachrichtenlage ist gemischt, mit positiven Wirtschaftsdaten, aber einem fallenden Index und Unsicherheit."
       ]
     },
     {
-      "price": 13427.04,
-      "change_24h": 0.8,
+      "price": 13409.68,
+      "change_24h": 0.4,
       "currency": "chf",
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Der SMI zeigt sich widerstandsfähig in einem risikoreichen Umfeld, aber es gibt auch Berichte über einen Rückgang.",
-      "signal": "Widerstandsfähig in Risikoumgebung, aber auch Rückgang.",
+      "rationale": "Der SMI zeigt sich widerstandsfähig in einem risikoreichen Umfeld, obwohl er kurzzeitig unter Druck gerät.",
+      "signal": "Widerstandsfähigkeit in turbulentem Umfeld.",
       "id": "smi",
       "symbol": "SMI",
       "name": "SMI",
@@ -1033,7 +1567,8 @@
         13341.2695,
         13388.2305,
         13320.9902,
-        13427.04
+        13356.3096,
+        13409.6797
       ],
       "asset_news": [
         {
@@ -1049,21 +1584,47 @@
           "datum": "03 Jun 2026"
         },
         {
+          "title": "Swiss SMI breaks through 14,000 points for first time",
+          "source": "SWI swissinfo.ch",
+          "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNQXd6anlJRDJ5NkdOTDZLMkd2bEdUb1ZvU0ozUjE1VUpIb0Z1d0ZiZHFPdk1WVUFsWjZ6NDZmUFVhazFMNmJ2cF9ybnB3TGJITjVGRjZsQWptbU5PWlZSNkFJQVhja2JNLWhlTFhoVDNZLVRMaTdSNmRCNHlQUldNTVEwemR0N25lMkk4cnJQTEtDNEVBNUVxRU5aQ0I5RlpwczNSZm83WUNianhfTDNidmlybE1fWTRtVFE?oc=5",
+          "datum": "24 Feb 2026"
+        },
+        {
           "title": "Swiss Market Index: SMI Demonstrates Safe-Haven Resilience Near 13,200 as Iran Missiles and Asian Rout Test Global Markets",
           "source": "BBN Times",
           "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOamxfZDc2OFFPRXNaNm1hVnBxR21MWUJqdHhDT08zTE9mdWp5RGRocWxPZzFVZmIyWG15VVBDZVcwc2tRM2F2U09qMDBuaVFSQVoxdWVvR2RVU1RVRl9tTjVyY2lXRzIyeVZTdnFFeFNpLV9XejJOWWZ6anNOa2RFQnNfVkd2YjhpbmNiRmIwNlRTaV9Rd0xtcS14NERTSkRtYXFQaHJmMlR6emc4bWFmNEZ0TU5LQXR4QTRtb3F1MFItWnhqNnlyOTBUeUhWcWRIT2d5QndBN3J6SU0tMktDbXhMbzZwUHk2dWRiOA?oc=5",
           "datum": "08 Jun 2026"
+        },
+        {
+          "title": "Escalation in the Middle East sends stock markets plummeting",
+          "source": "blue News",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNWGFxU3pNZ240bUc1em5tRkg5V1I3Skl1ekxIQkFPYVN0RFFGenp6elZzbGczdkFPSUVzNG1KdFNJd2pUVzM4Q1JSbHcwVHlZZ1NOT3FxVDF0azVMenpWX0hBak1paDdsSTVsM2twTkNYbkhtNklOT3VnZ1FGb3pSekxmZUdCLTd6bTBoWmlTdDR4a0sxVWVHczlFVlczdw?oc=5",
+          "datum": "08 Jun 2026"
         }
+      ],
+      "stats": {
+        "week52_high": 14063.53,
+        "week52_low": 11612.0,
+        "volume": 0,
+        "high_30d": 13627.4102,
+        "low_30d": 13101.3301,
+        "change_7d": 1.45,
+        "change_30d": 2.35
+      },
+      "analysis": [
+        "Treiber: Der SMI zeigt sich widerstandsfähig als 'Safe-Haven' in einem risikoreichen Umfeld.",
+        "Risiko: Der Index gerät unter milden Druck in einem 'Risk-Off'-Umfeld und fällt bei schwindenden Waffenstillstandshoffnungen.",
+        "Einordnung: Die Nachrichtenlage ist neutral, mit einer Mischung aus Widerstandsfähigkeit und kurzfristigem Druck."
       ]
     },
     {
-      "price": 4217.2,
-      "change_24h": -1.0,
+      "price": 4184.8,
+      "change_24h": -1.77,
       "currency": "usd",
       "sentiment": "bearish",
-      "confidence": 0.7,
-      "rationale": "Goldpreise erreichten ein 2-Monats-Tief aufgrund von Iran-Spannungen und Zinserhöhungsängsten, und Citi senkt das Kursziel.",
-      "signal": "2-Monats-Tief, Citi senkt Kursziel.",
+      "confidence": 0.8,
+      "rationale": "Gold fällt auf ein 2-Monats-Tief aufgrund von Spannungen im Iran und Ängsten vor Zinserhöhungen, wobei Citi das Kursziel senkt.",
+      "signal": "Starker Rückgang, Kurszielsenkung.",
       "id": "gold",
       "symbol": "Gold",
       "name": "Gold",
@@ -1091,7 +1652,7 @@
         4337.1001,
         4335.8999,
         4260.0,
-        4217.2002
+        4184.7998
       ],
       "asset_news": [
         {
@@ -1101,27 +1662,53 @@
           "datum": "09 Jun 2026"
         },
         {
+          "title": "Citi cuts near-term gold price target from $4,300 to $4,000, warns of limited upside",
+          "source": "KITCO",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNbHFmdUxUcmlyQmVELU5yVG1hLVllUUJUUGsxWGdyWlV4S08yR280WTFXZkN1SkFMYnFsRk1qMk9BcGJ0OC1heElocm9nN29oalFxMHg0cU43Y011WWZNV0xaUnVIMGZYMkhTWDRyUmtrNHlmemkzb2lxMWxXeGhJTmR4X3hwZGxOTjRyS1NpVjlHekNJN0JMcWlUWXA0bVdxQXFkc2hha09YUHRJcTV1VlRhRlg?oc=5",
+          "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Gold Price Today: Gold Falls 3.94% on June 10, 2026",
+          "source": "USA Today",
+          "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOUk5xM0VVR1dVLV9YRUZnaHd4c1J1SWlqQjFVRVRlT05sbnFBdzVjMlZUOS1aS1hwWlBtM290MGhBbm00Y3lVQUVRbVpUN2JlZm1salV6aWJIeGhrVURQVFlNSzJLZ0llZVdDd0Z0N1EySzd6OTgzekktT1FkVWFfc1lVcVg1V2JrSUd6akJXYXVRbnMzVTlQOXRnNlo0Ty1MNkV6a1N3?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
           "title": "Current price of gold as of June 9, 2026",
           "source": "Fortune",
           "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBwSzNBV2JlR1pYOXFIQm1BS0gwaFpMdFhmUFZzMUVmM1BNN0Rmd21MaGRqS05yNGRtUFhzbDVuWW16NWF4eGRMNURUUnh3TjRWLTBHYmc0VUxoOVJFTk9CWnJPaUpYejQ5bXJxQzVR?oc=5",
           "datum": "09 Jun 2026"
         },
         {
-          "title": "Citi cuts near-term gold price target from $4,300 to $4,000, warns of limited upside",
-          "source": "KITCO",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNbHFmdUxUcmlyQmVELU5yVG1hLVllUUJUUGsxWGdyWlV4S08yR280WTFXZkN1SkFMYnFsRk1qMk9BcGJ0OC1heElocm9nN29oalFxMHg0cU43Y011WWZNV0xaUnVIMGZYMkhTWDRyUmtrNHlmemkzb2lxMWxXeGhJTmR4X3hwZGxOTjRyS1NpVjlHekNJN0JMcWlUWXA0bVdxQXFkc2hha09YUHRJcTV1VlRhRlg?oc=5",
+          "title": "Debt cycle points to stronger case for gold price: Sprott",
+          "source": "Mining.com",
+          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPUGFseW1aNnBxeUUwTlNieWkzVDJLS1luQkNhYjZRVFBqOXNYVjlEQUhsZ2RkZnhZUlQ4LV83TTlGdGRZek0xZEdCWmFsY0RFRXZ0QWxlX3dzY3ZDcnRjbXk4ZHJsSzczcFRNTXNGREJnNTU2X3JlaURCQlFrekVUeEFVU3czVjQ?oc=5",
           "datum": "09 Jun 2026"
         }
+      ],
+      "stats": {
+        "week52_high": 5586.2,
+        "week52_low": 3253.8,
+        "volume": 117122,
+        "high_30d": 4718.7002,
+        "low_30d": 4184.7998,
+        "change_7d": -5.68,
+        "change_30d": -11.31
+      },
+      "analysis": [
+        "Treiber: Der Schuldenzyklus spricht für einen stärkeren Fall des Goldpreises, so Sprott.",
+        "Risiko: Gold fällt auf ein 2-Monats-Tief, und Citi senkt das kurzfristige Kursziel auf 4.000 USD.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit starken Kursverlusten und negativen Prognosen."
       ]
     },
     {
-      "price": 64.62,
-      "change_24h": -0.72,
+      "price": 65.11,
+      "change_24h": 0.02,
       "currency": "usd",
       "sentiment": "bearish",
       "confidence": 0.7,
-      "rationale": "Silberpreise erreichten ein 2-Monats-Tief aufgrund von Iran-Spannungen und Zinserhöhungsängsten.",
-      "signal": "2-Monats-Tief durch Iran-Spannungen und Zinsängste.",
+      "rationale": "Silber fällt auf ein 2-Monats-Tief aufgrund von Spannungen im Iran und Ängsten vor Zinserhöhungen.",
+      "signal": "Starker Rückgang, Ängste vor Zinserhöhungen.",
       "id": "silber",
       "symbol": "Silber",
       "name": "Silber",
@@ -1149,13 +1736,13 @@
         68.943,
         68.425,
         65.094,
-        64.625
+        65.11
       ],
       "asset_news": [
         {
-          "title": "Silver Price Today | Silver Spot Price Charts",
-          "source": "SD Bullion",
-          "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5hT3hFTEstRXBaRUNWQ0NITm80Q0pVS0tOaXhEZXVCWF93MGhBaFNVOVRLamxfZElqVEx0S1hKaUhkbGx6aWY0R2Ywaw?oc=5",
+          "title": "Gold And Silver Price Hit 2-Month Lows Following Iran Tensions, Interest Rate Hike Fears",
+          "source": "Forbes",
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOQ1pnbGJHaWxPNmtsbk1WOFA5N3hZcWprQnlMQTA3NDdiOGVobFh4MC1DdkhwNDZtdG5TcWpnelFhbTJVSWpaLUV5aWFCamF3UHdlWExWMnUzQ1hMcUJmRUt0clZlN29wcV9WeHoxMGNYczh4R0sza0MxX3hHRmRsYmRXYUtZQVpCNXZkczFrNC1OTlBNRThocHhTRXhnTmlGUmZRQVVwMmZ5V0swU0l3dnpBdUJVQURfUjZIZGhxZE9JTmFYeWRlcDl5RFVKZ29mRl85RnJHMA?oc=5",
           "datum": "09 Jun 2026"
         },
         {
@@ -1165,21 +1752,47 @@
           "datum": "09 Jun 2026"
         },
         {
-          "title": "Gold And Silver Price Hit 2-Month Lows Following Iran Tensions, Interest Rate Hike Fears",
-          "source": "Forbes",
-          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOQ1pnbGJHaWxPNmtsbk1WOFA5N3hZcWprQnlMQTA3NDdiOGVobFh4MC1DdkhwNDZtdG5TcWpnelFhbTJVSWpaLUV5aWFCamF3UHdlWExWMnUzQ1hMcUJmRUt0clZlN29wcV9WeHoxMGNYczh4R0sza0MxX3hHRmRsYmRXYUtZQVpCNXZkczFrNC1OTlBNRThocHhTRXhnTmlGUmZRQVVwMmZ5V0swU0l3dnpBdUJVQURfUjZIZGhxZE9JTmFYeWRlcDl5RFVKZ29mRl85RnJHMA?oc=5",
+          "title": "Silver Price Today | Silver Spot Price Charts",
+          "source": "SD Bullion",
+          "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5hT3hFTEstRXBaRUNWQ0NITm80Q0pVS0tOaXhEZXVCWF93MGhBaFNVOVRLamxfZElqVEx0S1hKaUhkbGx6aWY0R2Ywaw?oc=5",
+          "datum": "07 Jun 2026"
+        },
+        {
+          "title": "Why Is Silver Going Down? Price Breaks 200 EMA - Here's How Low It Can Go",
+          "source": "Finance Magnates",
+          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOQXhNTTU0d29XS2tsTWlvSU1vZ19WZEU2cjVoekRmcTFBUjhJUEIwRGlxaVlCR2xVQTU1MTJJaGhhenpHYjBFTzlJZzEzZVQ3WE5jWHpsZG02V1RrN0xUWlJjcTFmU3MyajZuLXdFZ21xSzY1bTlVYWFOUE83Yy1ScGxjTDlUZVFZYkYxSnhDamhUTlI2N2MwQlRHSnZpcXl0OWRSay1sNmpKVUlzTEI3bQ?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Current price of silver as of Tuesday, June 9, 2026",
+          "source": "Fortune",
+          "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1lQVJPeXBRNEZQbzh2czhqX1k4djVlMFVvY05HTnIxZF9oUFRRUW95MnRwYUxKU1M5c196d1U3VUNXUS14UGM0U2pHTDNrY0R3YmFzNFU4YVJCWXZsU0hYWkNKV2VPaWJHRFJENW9n?oc=5",
           "datum": "09 Jun 2026"
         }
+      ],
+      "stats": {
+        "week52_high": 121.3,
+        "week52_low": 35.27,
+        "volume": 31700,
+        "high_30d": 88.888,
+        "low_30d": 65.094,
+        "change_7d": -11.39,
+        "change_30d": -23.83
+      },
+      "analysis": [
+        "Treiber: Es gibt langfristige Preisprognosen für Silber, die Potenzial andeuten.",
+        "Risiko: Silber fällt auf ein 2-Monats-Tief und bricht unter den 200 EMA, was auf weitere Rückgänge hindeutet.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit starken Kursverlusten und externen Belastungen."
       ]
     },
     {
-      "price": 88.37,
-      "change_24h": 0.19,
+      "price": 89.19,
+      "change_24h": 1.12,
       "currency": "usd",
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Die USA verzeichnen Zuwächse bei Rohölbeständen, aber BofA warnt vor einem möglichen Rückgang unter 50 Dollar.",
-      "signal": "Bestandszuwächse, aber Warnung vor Preisrückgang.",
+      "rationale": "Rohöl WTI verzeichnet Gewinne bei den Lagerbeständen, aber BofA warnt vor einem möglichen Rückgang unter 50 USD.",
+      "signal": "Gemischte Signale, Unsicherheit über zukünftige Entwicklung.",
       "id": "oel",
       "symbol": "Öl (WTI)",
       "name": "Rohöl WTI",
@@ -1207,7 +1820,7 @@
         90.54,
         91.3,
         88.2,
-        88.37
+        89.19
       ],
       "asset_news": [
         {
@@ -1227,11 +1840,855 @@
           "source": "U.S. Energy Information Administration (EIA) (.gov)",
           "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBRQ0JiejB1OWUzR2NzRFdWdEptejhPUkZhOGdmN2tGblpzdU5XTDN5VXczTmRTZUpOV0tHOTFBZW9rQld4MHNKazdnUmxQMjRtUW5wM1RELWlsa1VRQTN2ZExZQQ?oc=5",
           "datum": "17 Jan 2025"
+        },
+        {
+          "title": "FACTBOX: Venezuela's oil industry is operating after US seizes Maduro",
+          "source": "S&P Global",
+          "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOMFlxVGRvVDhHRzJvZ3hxYV91dEhPQWc1UXVtZlpSdENNdENpY19kdWVNbUQxcFlRM09tUHpWRVptOWdwVnUzeFZ3TUFjVVd6REQtekJ0bms3X3hack1MUmtmSm9GT28zaVNsVVN0Q0d1Mi1OajFVZVdpSW9neFVOVFN2aU5OZFdiLUxHMTdUT2swVExDNEdIUXZ6REQ3Tlc4TEphaTMzUE9abGhpMFRvbVFiaTlyU3VpX3NmTnFVMEUySHpKSEJRNXczNUNUTFJZZ0xfeXBIaUJOSjc4MFE?oc=5",
+          "datum": "03 Jan 2026"
+        },
+        {
+          "title": "Crude Oil Futures Overview",
+          "source": "CME Group",
+          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1OVHltWktpaTJQRXlsS281OXVOT19HMDFWWUtxa3hmRkQzT0VLZHMtazhvX0VOQkJwM0ZsVGZ2R1YtZnB2YmI3VHhvbjdPdjlfQ3g5Z0xiNVkzMnhYMmRxMGpNNFFIeXM2eEZDVnVnLUhYcEVBX09PZlhxTng?oc=5",
+          "datum": "25 Jun 2021"
         }
+      ],
+      "stats": {
+        "week52_high": 119.48,
+        "week52_low": 54.98,
+        "volume": 100752,
+        "high_30d": 108.66,
+        "low_30d": 87.36,
+        "change_7d": -7.11,
+        "change_30d": -9.05
+      },
+      "analysis": [
+        "Treiber: Die USA verzeichnen große Gewinne bei den Rohöl- und Produktbeständen.",
+        "Risiko: BofA warnt vor einem möglichen Rückgang des Rohölpreises unter 50 USD.",
+        "Einordnung: Die Nachrichtenlage ist gemischt, mit kurzfristigen Gewinnen, aber langfristigen Abwärtsrisiken."
+      ]
+    },
+    {
+      "price": 7.86,
+      "change_24h": -0.85,
+      "currency": "usd",
+      "sentiment": "bullish",
+      "confidence": 0.6,
+      "rationale": "Chainlink wird von Myriad für FIFA World Cup Prediction Markets genutzt und verzeichnet eine Zunahme der LINK-Halter.",
+      "signal": "Zunehmende Nutzung und Akkumulation.",
+      "id": "chainlink",
+      "symbol": "LINK",
+      "name": "Chainlink",
+      "type": "crypto",
+      "coingecko_id": "chainlink",
+      "spark": [
+        10.5916,
+        10.2864,
+        10.2091,
+        10.4751,
+        9.7152,
+        9.5127,
+        9.584,
+        9.6172,
+        9.7493,
+        9.4041,
+        9.5517,
+        9.4943,
+        9.3758,
+        9.1231,
+        9.011,
+        9.1621,
+        9.1159,
+        9.0411,
+        8.3385,
+        8.0,
+        7.3449,
+        7.8891,
+        7.9849,
+        7.8297
+      ],
+      "asset_news": [
+        {
+          "title": "Myriad Taps Chainlink to Power FIFA World Cup Prediction Markets",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQQk5iMUNOY2F4R3FjTWNuWlYySk0xYXVnR0hTcjA1U19vNTV6M1ZILS1pby14RmQzWFhFbW5KakFlOEZDZEl3REtqdGwwVy1QUHdqUTZ0MmljTGJWZUxkVFVYUE9wajZhTUtwRHltak84NUhVXzNKalpBZThKNlhPR0hxd2Y0ZVV3VEEwNkNKMkR0ME1nX3EzNkxmeWxqZw?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "The DeFi Moment for Prediction Markets",
+          "source": "Chainlink Blog",
+          "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE8wRHpzNXU0WHR0UGwxWHl5eXFhS2twZERGZ0VoSUNqMUx5ZmhhVU9DY29QVUxiN0tIQVRQTXRxUjNLTFgxb2R4V2VjUEZuUm9WOVNVdGtQVnBYcElvS2h3MkpLdlBoQQ?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Over 535,000 LINK Holders Signal Quiet Chainlink Accumulation Amid Market Uncertainty",
+          "source": "CryptoPotato",
+          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOTDRVVDY4YUVwSmpmSy1fWXQtbHZFcXpHMmVvWDBKM0FzWjlDeWRVVTU3cVJpeWhxOEtQV20wa01MS0tscEQzZjdNeFgyeDdCYUEtTVJBeXp1cWhYTDA5T2pvM1JQWW5CeUNVRVBnUE5CZjRnZm1hcEsyMDIwVEx0RlZkU0JuemV6VE9QUmtkMzFwMXlOUFZaeUpzYlF3UjdZYmJ3VTR6cU1FWGEzWXpZ?oc=5",
+          "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Chainlink eyes a breakout as non‑micro wallets reach 535K – Will LINK surge?",
+          "source": "Cryptonews.net",
+          "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9nYlI0Ry1MZHBDSlNtT01qQ3dYX3ZqRVNjVjA0UUJsVTdJUFNjUjE1RVZSTXF2V3hreGdZaXpENTN0dE9aREdRWE9lS2NRaVNSM0J3NGhBdUh1MjA?oc=5",
+          "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Prediction: Chainlink (LINK) Will Be Worth $20 Billion in 5 Years",
+          "source": "The Motley Fool",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQb0FHTFFOd2FYT3JDRWEyZkpjVmRvSFZldnZmbXFCTndiSkdia3I2ZTJ6djBobjFSSjUtR1RBVmgwN2RkTG1JQlpMNUJsUFdwNXF5VzFmalAwNjZvM0tIMHp5dU9CNkg2dUhRRi1aZVNac0cxMzNYeXlHa2lTbFgzQldJdzZITDFjaGw1ZXBxUVQ?oc=5",
+          "datum": "22 May 2026"
+        }
+      ],
+      "stats": {
+        "market_cap": 5716539714,
+        "volume": 248035551,
+        "high_24h": 7.93,
+        "low_24h": 7.62,
+        "ath": 52.7,
+        "ath_change": -85.08,
+        "change_7d": -6.1,
+        "change_30d": -26.08,
+        "high_30d": 10.5916,
+        "low_30d": 7.3449
+      },
+      "analysis": [
+        "Treiber: Myriad nutzt Chainlink für FIFA World Cup Prediction Markets, was die Anwendungsfälle erweitert.",
+        "Risiko: Der Markt ist unsicher, was sich auf den Kurs auswirken könnte.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit zunehmender Nutzung und Akkumulation."
+      ]
+    },
+    {
+      "price": 0.956026,
+      "change_24h": -1.45,
+      "currency": "usd",
+      "sentiment": "bearish",
+      "confidence": 0.7,
+      "rationale": "Polkadot fällt im Zuge der breiten Krypto-Liquidierung, obwohl ein ETF an der Nasdaq startet.",
+      "signal": "Rückgang im breiten Krypto-Markt.",
+      "id": "polkadot",
+      "symbol": "DOT",
+      "name": "Polkadot",
+      "type": "crypto",
+      "coingecko_id": "polkadot",
+      "asset_news": [
+        {
+          "title": "Polkadot (DOT) Price Prediction 2026, 2027 – 2030: Can DOT Price Reach $60?",
+          "source": "Coinpedia",
+          "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBsMl9JWGVUSlluYTA4UDdxemN4WVB5WE14ajVSdVM0eGw0TnNQd0tIMENmTGYtQmFPbXdIYTJVendQMXUxVm96Sm5tcFd3SEV3WV9Ca3JPTHJTelVWeGFtdGt1M3BZUHhyek54YTJ2a0JDOVHSAXhBVV95cUxOZ1hmN2lrMkNvRFAxVmVURTM4S0M3RFNncWl6ZUIzbzU1U2J2MkxrZFdUNVprUEhZUVRkSkhfZ0Jfc1R6c1dGN2hSZFpNaTJTMVlrUmFUZzJBREE4WGV0bkc3dHFSdjlMTzVDeVdJcEZOczl1ejJWRzI?oc=5",
+          "datum": "04 Jun 2026"
+        },
+        {
+          "title": "What Is Polkadot Actually Used For -- and Does It Justify the Investment?",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPaXFNYnJnMGM1QmtSSERxYzB2ci1md0Q1RFd3Tk8zbDBWRXg2QXhaZ21HbkVKc0NGcmZaR0thNDh3SFZ2VVA3LWFneU4xSTYtUWgybU1ELTh6OE9vVzR4LXdYUC1qMzEteWhLaWtDLWd3bzlSMFY4YzBkLVpqZTlhTUlKOXFaUU1BcUpWODRLcUlab04wWGduczBaQXNmbV9HLVE?oc=5",
+          "datum": "25 Apr 2026"
+        },
+        {
+          "title": "Polkadot (DOT) Falls 3.09% Amid Broad Crypto Liquidation",
+          "source": "CoinMarketCap",
+          "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB3ZDkta2hMUFJGeHhZTzkzN3Fkam10QUpxNDJpbnp0bkdBZ0J4eVlPVzlXQUZIVHhPWmtrclJPRDZXMkpGbER5dHQ1MEJIMjBnZF9wYTR6U3l0Ujh4VG1wZF84dVpFd1R5anNlaUhsRmc?oc=5",
+          "datum": "06 Jun 2026"
+        },
+        {
+          "title": "Polkadot ETF TDOT Launches on Nasdaq with $11M Seed Capital",
+          "source": "KuCoin",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOZzRJa1dYTDdzc0hkOVpyM2hrZVJwbUpUWmxibDVfSWVSNUtsUEItYzdsN2dONl84QU1KREJNdUtIcjhuNWJPRjdNbzJxOFJQVHVSQTktMWhadHFfMUwtdDYxYVYtdnpWV2lGVlR3M19UV25LR21md2E0TFlyZHpXQ21GaktjVFROYXprNnoyNU9YZmk1UndV?oc=5",
+          "datum": "06 Jun 2026"
+        },
+        {
+          "title": "Polkadot (DOT) Price Prediction 2026–2030: Can the Network Drive DOT to $60?",
+          "source": "CryptoRank",
+          "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQU255cURIQzJUZWVJWlBKelBuTG9MQVhucm1lUk1qN2F2ZktiWEUySk03dlFMcUFhcGZIMlVKa3JoSGR6WHBwdUlDU2FSWlVxWUVhMEtWSDNMTDBVMnlTNWhKMnZLMWFSNEYybUwySDUtd2Z1TWl2SnJBTlNqSzlTMVBnRng0Zw?oc=5",
+          "datum": "04 Jun 2026"
+        }
+      ],
+      "stats": {
+        "market_cap": 1613316554,
+        "volume": 84873108,
+        "high_24h": 0.971188,
+        "low_24h": 0.926242,
+        "ath": 54.98,
+        "ath_change": -98.27,
+        "change_7d": -14.31,
+        "change_30d": -29.59
+      },
+      "analysis": [
+        "Treiber: Ein Polkadot ETF (TDOT) startet an der Nasdaq mit 11 Mio. USD Startkapital.",
+        "Risiko: Polkadot fällt um 3,09% im Zuge der breiten Krypto-Liquidierung.",
+        "Einordnung: Trotz des Starts eines ETFs wird Polkadot durch den allgemeinen Marktabschwung belastet."
+      ]
+    },
+    {
+      "price": 6.64,
+      "change_24h": -0.79,
+      "currency": "usd",
+      "sentiment": "bullish",
+      "confidence": 0.6,
+      "rationale": "Avalanche ernennt eine neue COO, um das institutionelle Wachstum voranzutreiben, und wird als eine der schnellsten Blockchains bezeichnet.",
+      "signal": "Fokus auf institutionelles Wachstum, hohe Geschwindigkeit.",
+      "id": "avalanche",
+      "symbol": "AVAX",
+      "name": "Avalanche",
+      "type": "crypto",
+      "coingecko_id": "avalanche-2",
+      "asset_news": [
+        {
+          "title": "Avalanche Is One of the Fastest Blockchains in Crypto -- Is It Worth Buying?",
+          "source": "The Motley Fool",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNU3RPdTFyeFdiTE40OTRkY2xCWnRqUG9TWXcwZDVCSF9LMlctYWt5NFQ5MGJwcXhnLWZQQnNidThRYzlCdDVDMEpXZEZSdDVJQzVaOHM3dThYZTFzZUZKcFpNXzh6RXE2ZGtRbXpfMTA2bzdBbWZSVXFMdzhYM25kVkVrY2dWejdqdWc3TV9ULTBhYUpVZldoUw?oc=5",
+          "datum": "27 May 2026"
+        },
+        {
+          "title": "Avalanche Foundation appoints Marta Szluinska as COO to drive institutional growth",
+          "source": "Crypto Briefing",
+          "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOdXVQQWp3NEhQdkxlMmxqXzV1REhPZC1KS0otOUs5RktYTFdaWlFKNk9VY3JVZUczd1RrdDYtcmZid0Y0LWlGVVpiSERCTDlmVV93bDlXTHZqSDlNbGtrNXpEcTF6NG5iWm51alA2cUhnMDJZYmhuczcyZHJ4TmtLb25Cdw?oc=5",
+          "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Avalanche (AVAX) Price Prediction 2026, 2027 – 2030: Will AVAX Price Hit $100?",
+          "source": "Coinpedia",
+          "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFAtaENwZXM5eVJkNS1TTFVqWUNJXzhiZEZENm5mQWZqNloydXI4cWxjS2dDX1FZSXBKd0xDb0h0WVh1U1ZNUy14SGlTaHh2TVJ1aF9YS01nazlsWEN6MDkxd1ZMVjdnSFQ4Z251cGhFYS11UDVjcy1nbEg2a9IBgAFBVV95cUxNanVVblZSa00zRlN2N3BRbkRuTWdubWZWcGROTlRPRFFybUhpbmZwRmw2bm9ISTZLYWlGTDRRa2t3UzRXTklVWEFpd3FmX20yS3ByemZBTE1xdnhBME5IOHRzaHdxOWQ0RHFvSlN5WWFIcXJfNWVmeDhlVkdUZm4xUA?oc=5",
+          "datum": "05 Jun 2026"
+        },
+        {
+          "title": "Introducing Avalanche and Sui Futures",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQSDByQTJNN1VIc1B3MHQtRWwwWURKSlRiZUJLUkdVVHg0YlBDa2lrdHVEZkc1TVYzSTFxbnBfcnZkUFZUd0YwdmVpNVVoRjhvcXlabXBKM2VsdDF3eWJ3enpGeUhXTnVUdTVFOEl1dmc4YjdHYi05a2FUdGJFU3l4LWRfYlFLck15aHpYLVE4RmlnMXBNalJHNTMtelBrckk?oc=5",
+          "datum": "22 May 2026"
+        },
+        {
+          "title": "Avalanche Foundation appoints Marta Szluinska as COO to boost institutional blockchain adoption",
+          "source": "Pluang",
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcEpOaU5XUFlwNG5OMFRNV1JfZk10akZiYlo1Yl9tN2hfcVN5cHF1SWFQcm9UWGFQWlVpbi01TEtzZUNZNEhYWTc2MU14QjRuTDhhSnJnS2VIRXZxSll0N2hILUR6YnhmVHJkcUwzS3NOTi16RW4wY3lOOWRKMmh2cEhCQzF6NXV6cERGSDNRMklNSEFFUjZOaENoQl9QWi1TTmc?oc=5",
+          "datum": "10 Jun 2026"
+        }
+      ],
+      "stats": {
+        "market_cap": 2862889503,
+        "volume": 194186794,
+        "high_24h": 6.7,
+        "low_24h": 6.43,
+        "ath": 144.96,
+        "ath_change": -95.45,
+        "change_7d": -19.89,
+        "change_30d": -34.36
+      },
+      "analysis": [
+        "Treiber: Die Avalanche Foundation ernennt eine neue COO, um das institutionelle Wachstum voranzutreiben.",
+        "Risiko: Es gibt keine spezifischen negativen Nachrichten, aber der allgemeine Krypto-Markt ist volatil.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit Fokus auf institutionelles Wachstum und technische Stärken."
+      ]
+    },
+    {
+      "price": 0.322905,
+      "change_24h": 0.19,
+      "currency": "usd",
+      "sentiment": "bullish",
+      "confidence": 0.6,
+      "rationale": "TRON wird an Bitnomial gelistet, was den regulierten US-Zugang verbessert, und CoinZoom unterstützt USDT auf TRON.",
+      "signal": "Verbesserter regulierter Zugang und Unterstützung.",
+      "id": "tron",
+      "symbol": "TRX",
+      "name": "Tron",
+      "type": "crypto",
+      "coingecko_id": "tron",
+      "asset_news": [
+        {
+          "title": "CoinZoom Becomes First U.S.-Regulated Exchange to Support USDT on Ethereum, Tron, and BNB Smart Chain",
+          "source": "Investing.com",
+          "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxOZi1vbE4wSFkxa3hjaE5OZWtMRFFFZjNXenUxOUd1NEV5ZS1XZ0ExSVgtX1RZR0hzeXVMc2ttMXN2MGwyQmpaTndBakNiR25UTjgwVU55OWtTVHNwTWR5WW1FZFo5b2xPR25xSkNvWkp4LWY2MDZsdEhCdkZUUTduWGd6MUtURWw1eUtxZzVHaDliWDZreWo1YzBWeGpBX3NvMGI1WV9LUUNTRThHUDFhZlh4cUZqZFZUTWYzR0YtOTJ4TFZSYk9pcTB2LWU3N0NqRVBvNmdJWmVyR0x0Um93cURCU3pPNFFwU3JZ?oc=5",
+          "datum": "09 Jun 2026"
+        },
+        {
+          "title": "TRX Spot Listing Launches on Bitnomial, Supporting Regulated U.S. Access to TRON",
+          "source": "markets.businessinsider.com",
+          "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQOG1WLUdpYjhOUTNJTDI5aFdxbjB3NTI0NDlZOXRfVVZ5NzlhU3gzdXo5WERPejBMSFlFNXR5Z0trVklHa3NOUThJVTRVNEdOOXEtRmRhVFhITzNLMzdIMDYzeVY2VVhRbWpDQWZWdjdCeFctQTNJcExWRnlxNDV5SGhWd0pKX0d5Q3A5OHppTjlxNjhyZUthNm84RVN2dEFlZHh1N1NTTXVwanU5NWxfZWotQ0g2WTNfaUktV0Z0bnlOR2FNRmpmczIzcWM4UGFYNUFF?oc=5",
+          "datum": "05 Jun 2026"
+        },
+        {
+          "title": "Tron's Premium On Underlying Crypto Widens To 3x Plus (NASDAQ:TRON)",
+          "source": "Seeking Alpha",
+          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPR0Fwelc3Y1hoMjRoUlVwc0RDZHpkMzZBbWVGYnY0YWxDcnB1WERYVjVMVUN1MWdqeUVsQ1B2NFBHa1lXT2NXdkl5ajVVRS1vdWdSR2xwZVQ5eFBoZEo0dm5FOXhPOU5ZZlU4dEF4bkF4ZWVhN3hrV3VKblJnSlJFeXJ5dnNXMHotZko1UVhmV1pGZ1RNMnFwa0JB?oc=5",
+          "datum": "04 Jun 2026"
+        },
+        {
+          "title": "Sell in May and Go Away: 3 Cryptocurrencies to Unload Before Summer",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQXy11cUR5eUkwdWZHTGdNU1JGUTJMYTRqeEY0TWNWM0lONlJzT0x6Q3hyUkN0V0hJT2xyX3JDSjh3U3Z0dlFUWXJZeVdlTS1vblZvMnFGdGtIbkdBeXdXUE5sVnRZcDJWQ1NUUlZmeFFlbGJIMkJCa2J5bDdyWmswc2QxcHhEb0pIZHFQMUVzNkJoRG1qX290dlVnZzdoUQ?oc=5",
+          "datum": "24 May 2026"
+        },
+        {
+          "title": "TRON lists TRX on Bitnomial to enhance regulated US access",
+          "source": "TradingView",
+          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQU3luRWVEXzRBb3hCUzdIN1dhYXlvOHZlVllOdHpFdTBfYk83UkdTUlI5WW1HeUdISlVNOXRNNFFQc0x0cVcxeWd6MUtib0RsTUdFaU1pWjVGcWUxTTdKRlZCS1RlZ0xzaGJXR2JnakFyQ2RzZTBkM3Qwc1FmM3JGWVE0d2VtNFc1UWhmbkk1RllodW1JZjlyV08zV2trV2FROGJyVTIxZlJGMUlFVmZvTU5DdGxFM2E1N1VWVUx3Qzk?oc=5",
+          "datum": "07 Jun 2026"
+        }
+      ],
+      "spark": [
+        0.351,
+        0.3489,
+        0.3496,
+        0.3536,
+        0.3552,
+        0.3553,
+        0.3554,
+        0.3589,
+        0.365,
+        0.362,
+        0.3625,
+        0.3717,
+        0.3755,
+        0.368,
+        0.3439,
+        0.3476,
+        0.3508,
+        0.3433,
+        0.3329,
+        0.3321,
+        0.3199,
+        0.3265,
+        0.3265,
+        0.3225
+      ],
+      "stats": {
+        "market_cap": 30617959007,
+        "volume": 454536095,
+        "high_24h": 0.323637,
+        "low_24h": 0.320996,
+        "ath": 0.431288,
+        "ath_change": -25.13,
+        "change_7d": -3.12,
+        "change_30d": -8.12,
+        "high_30d": 0.3755,
+        "low_30d": 0.3199
+      },
+      "analysis": [
+        "Treiber: TRON wird an Bitnomial gelistet, was den regulierten US-Zugang verbessert, und CoinZoom unterstützt USDT auf TRON.",
+        "Risiko: Es gibt eine Empfehlung, im Mai zu verkaufen, was auf saisonale Schwächen hindeuten könnte.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit Fokus auf verbesserte Zugänglichkeit und Unterstützung."
+      ]
+    },
+    {
+      "price": 50682.42,
+      "change_24h": -0.37,
+      "currency": "usd",
+      "sentiment": "bearish",
+      "confidence": 0.7,
+      "rationale": "Der Dow Jones fällt aufgrund des Chip-Ausverkaufs, der Iran-Drohung und des 3-Jahres-Inflationshochs.",
+      "signal": "Rückgang aufgrund geopolitischer und wirtschaftlicher Faktoren.",
+      "id": "dowjones",
+      "symbol": "Dow Jones",
+      "name": "Dow Jones",
+      "type": "index",
+      "yahoo_symbol": "^DJI",
+      "spark": [
+        49704.4688,
+        49760.5586,
+        49693.1992,
+        50063.4609,
+        49526.1719,
+        49686.1211,
+        49363.8789,
+        50009.3516,
+        50285.6602,
+        50579.6992,
+        50461.6797,
+        50644.2812,
+        50668.9688,
+        51032.4609,
+        51078.8789,
+        51307.7891,
+        50687.0703,
+        51561.9297,
+        50866.7812,
+        50786.0117,
+        50872.1094,
+        50682.4219
+      ],
+      "asset_news": [
+        {
+          "title": "Stock Market News, June 9, 2026: Nasdaq Rebounds Off Session Lows",
+          "source": "WSJ",
+          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHZpVFFsZldxc1ZXSE1NYXlzbzdUWWs1SEZpamNVVVcyN1JJRms5MlBIMWR5S3RxdWdLQVNWdXE2d3VwZ1c1b19DYVhvbmQ0MkRmcUFPanVOUlAtalI1RmlDeTZEelh0YWkwZC1salBmeURJOEMyeHVJbm5ZTzZ6ZU9oeVRQTHM?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Dow falls 250 points on chip sell-off, Trump Iran threat and 3-year inflation high: Live updates",
+          "source": "CNBC",
+          "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9LRDZ2dHY0cGF3dUlHVC12RU04NVBYWTZhUGxjUkhZTHF2T0xLUU96NVVCMG5GZHpZZ0h4R0tKdUtxZWFMMWpEWjlqWkdCVjFrNWhMRDBHbUNVTWJzYVZQRE10cUZsSWlxdVQySFdRNXJzRmZFSlBF0gF8QVVfeXFMT3YycTlFVk85SHZtSlVheXlsWUVRLU1hWXFJSWI2dkxseGN3UVVqVkM2WW9vZ1A0X2RsNmo3QTY2OHdWVHNUeUNRYXlLb2kwS3ZuUjFySnNNc0RHamhUNHotak5YYUtTWE5oQzNDSjQzR0FRLWlWYzRhOEdWWg?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Stock Market Today: Major Indexes Pull Back in Early Trading After CPI Hits Highest Level in 3 Years, Matching Expectations; Tech Stocks Lead Declines",
+          "source": "Investopedia",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPVzBNOTVId19zWnZLYUJCdzhqblpoMWlEZzFYWWdiWFlhMlpPbnFraUxvOF81OFk0WXhnYklIOUY3RlI5aVFBMktCcWxUS3dtWHR2T2R5MG0zTEU1TWMwUHNmWkRQWU43UjhJWXFReWFOdW1oRHB4WmFldmVGd2I2bWNHdm1INE1BSWpiaklYeXU?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Dow Jones Futures Tumble As Trump Says Iran Will 'Have To Pay The Price'; CPI Inflation On Tap",
+          "source": "Investor's Business Daily",
+          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNOE1hZWZSRXpOWWZLRnBmbEZFMTdKV040X25JbUxvVVU4X2JWQ2ZPbUpJaERPTnJZRlVsMF9Rb1o1NnUweHVxc1NYVVBoU1ZPakhKMDZ6WmlOSXVoWE1Vd3lhMWxkUW5fZ0E5TjVsRW93cU9aMXRtcWpQT2ptVU5yQ3NwRU1TTXZDMGhCbUdxdnNwRF8yMy1LWTBJdG9xeFR5NS1rQWxhcTJydmNvWFh2MFdMNmd4aFgwN0VQZjJFaDkyMjd6clln?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Stock Market News, June 9, 2026: Dow ends the day higher, while S&P 500 and Nasdaq close lower due to tech selloff; oil prices fall after Trump says Iran deal could be reached in 'two or three days'",
+          "source": "MarketWatch",
+          "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNa2xGTEE5YnpUdWtwODJLUFBva0kwTzdwZUptU25YUXRFUUp4UWlxNmlPRjBrQm5oekIzRXJ6MDdKdVlKQWFfMmxUS2JURmczNXREY2JiSGJoRk12em1sckV6LXRkU1g0SmNENXNNZzlGZkZzMVpCbHFWODJlVjA4c0hPazFDQWR2WHVzR3pjQXoxUXFfUmU0bS0xMHhMVUlQWmNEQ1duNVc0dU9VQWxHdV93SEY3aF9iczM2b0ZqQVJUaldJeVI2TnBPSnEzRWpVazQwLXd3?oc=5",
+          "datum": "09 Jun 2026"
+        }
+      ],
+      "stats": {
+        "week52_high": 51660.4,
+        "week52_low": 41981.14,
+        "volume": 53402051,
+        "high_30d": 51561.9297,
+        "low_30d": 49363.8789,
+        "change_7d": -0.01,
+        "change_30d": 1.97
+      },
+      "analysis": [
+        "Treiber: Der Dow Jones erholte sich am 9. Juni, was auf kurzfristige Stärke hindeuten könnte.",
+        "Risiko: Der Index fällt aufgrund des Chip-Ausverkaufs, der Iran-Drohung und des 3-Jahres-Inflationshochs.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit geopolitischen Spannungen und Inflationssorgen."
+      ]
+    },
+    {
+      "price": 10219.91,
+      "change_24h": -0.07,
+      "currency": "gbp",
+      "sentiment": "neutral",
+      "confidence": 0.5,
+      "rationale": "Der FTSE 100 bewegt sich auf Dreiwochen-Tiefs, während er sich leicht erholt, aber das Risiko eines überhitzten US-Marktes besteht.",
+      "signal": "Bewegung auf Dreiwochen-Tiefs, gemischte Signale.",
+      "id": "ftse100",
+      "symbol": "FTSE 100",
+      "name": "FTSE 100",
+      "type": "index",
+      "yahoo_symbol": "^FTSE",
+      "spark": [
+        10269.4004,
+        10265.2998,
+        10325.4004,
+        10372.9004,
+        10195.4004,
+        10323.7998,
+        10330.5996,
+        10432.2998,
+        10443.5,
+        10466.2998,
+        10491.4004,
+        10505.0,
+        10426.0,
+        10409.2998,
+        10339.0,
+        10373.5,
+        10332.2998,
+        10360.2998,
+        10368.0996,
+        10373.2002,
+        10227.2998,
+        10219.9102
+      ],
+      "asset_news": [
+        {
+          "title": "UK FTSE indexes hover at three-week lows; WH Smith dives",
+          "source": "Reuters",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNUHVyRTZGbWdTRG5pNGJzMHdFdGdEODRHclpObXl3RS1uQ1pJOEw3VmlWeEVVWkQxU3dMQ0NZYW9GVFFlS0VvLWtVLXVrRGNHc0EwUkNsUnpQSGp4MXI0eDJOS0Z4Q1BJUnVlU2YzMW4zb2JSOVdmQXdkWDVod1c2VnEyeDRtRnZMUEhVNUZZenNlaUVtYzVoXzZJMU5hUQ?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "The FTSE 100 Index Opens 0.16% Higher",
+          "source": "TradingView",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQeC1JVjlYTnpUSjVxV29zeDNsSWdldm9GMVUzQlJGM2ozWUhWc0twWVJOSlBmbmhicHhzUUZMc0dhQW82ZXlFaE9hV25QRTRlam9acERBeUNEa2VwbE9vZ3RTNnhwWDNVLUFCck5tN3FxT2VlOEFZUTZ4Y2NTMkp0TlVabDNnUUR4dHBmZVY3aGU?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Is the FTSE 100 at risk from an overheated US stock market?",
+          "source": "Yahoo Finance UK",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNekp1ZWEyMVdHeFZHYkNhMmtmVmF2aDNjNGE5MGV3Wjd4d0dGZUlyd1FnU1d5MXdrXzU1d0dDY0Iza0hPLW14ZFJsbnFsLWxUU0tjYlpPVnl4WnF4dk91amNCSzZtcFVTWjNmRDNHZVNjQmFkM0hiOHVENFJ5TzhSQ093?oc=5",
+          "datum": "05 Jun 2026"
+        },
+        {
+          "title": "FTSE 100 Reshuffle: Aberdeen Returns as Berkeley and Rightmove Drop Out",
+          "source": "Morningstar",
+          "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNMU9Ick04eFE5enVBVm9QY2NHZnM4bXo4Q0FpNTBzV2JtNHRUMFVHSHZ3UEF1R3RpN2ZIQ2F5Ymw3VjNsUWtEekp6ZE5XamtzaFVmRGtmQVB0LVpNSnVyS0VUMlV1cGFndHF0U3RCMFJjQ0RhbFhCZXplTVNGYkFnNVBsOXdUdFdWVmloaG1EWG5nTTdiSnViTlNGbS0tbGM2UWV2V3lTUVRaUHM?oc=5",
+          "datum": "04 Jun 2026"
+        },
+        {
+          "title": "FTSE 100 edges up as US, Iran trade blows",
+          "source": "marketscreener.com",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNV0VJNlo0UHltVl9pTzhjdmtVaVZlVzZMQVM1bk1yQ053NFV4UTRHOW1LUEtKU1V5WHRrWHRSWjhWVWgxTTVCWkIxVEptMjAzWUhLSmRxNEJOSzNEMERRTGhkWmtSUXBWUDVqUDRVX09HTl9ScXktblN3VUQwSXlScmJLX3ZXX2s0UWdXVy04NkswM216eHl3Yw?oc=5",
+          "datum": "10 Jun 2026"
+        }
+      ],
+      "stats": {
+        "week52_high": 10934.9,
+        "week52_low": 8707.7,
+        "volume": 0,
+        "high_30d": 10505.0,
+        "low_30d": 10195.4004,
+        "change_7d": -1.09,
+        "change_30d": -0.48
+      },
+      "analysis": [
+        "Treiber: Der FTSE 100 erholt sich leicht, während die USA und der Iran Schläge austauschen.",
+        "Risiko: Der Index bewegt sich auf Dreiwochen-Tiefs, und es besteht das Risiko eines überhitzten US-Marktes.",
+        "Einordnung: Die Nachrichtenlage ist neutral, mit einer Mischung aus kurzfristiger Erholung und externen Risiken."
+      ]
+    },
+    {
+      "price": 64179.27,
+      "change_24h": -1.89,
+      "currency": "jpy",
+      "sentiment": "bearish",
+      "confidence": 0.7,
+      "rationale": "Der Nikkei 225 fällt aufgrund von Spannungen am Golf und einer Verschiebung weg von hochfliegenden Tech-Aktien.",
+      "signal": "Starker Rückgang aufgrund geopolitischer Spannungen.",
+      "id": "nikkei",
+      "symbol": "Nikkei 225",
+      "name": "Nikkei 225",
+      "type": "index",
+      "yahoo_symbol": "^N225",
+      "spark": [
+        62417.8789,
+        62742.5703,
+        63272.1094,
+        62654.0508,
+        61409.2891,
+        60815.9492,
+        60550.5898,
+        59804.4102,
+        61684.1406,
+        63339.0703,
+        65158.1914,
+        64996.0898,
+        64999.4102,
+        64693.1211,
+        66329.5,
+        66934.3281,
+        66734.2422,
+        68402.1328,
+        67470.6875,
+        66588.1172,
+        64024.6016,
+        65416.6289,
+        64179.2695
+      ],
+      "asset_news": [
+        {
+          "title": "The Nikkei 225 Index Closes 1.95% Lower",
+          "source": "TradingView",
+          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPZ0l4bjcxMzQwUTNzdWVPa2V5OFdia2R1U0NtRm5pUGs3aGpLbVQ2NzFIZ3FRV1NPZHlzaklWWHVyVnAyczh2S2ZIalRaWGlzZ1ZVNm11cFlhU1dWbF9IV1QtVnVzSEtTRmwxMVFFWW1Dek5RTjZKVXhOTWd2cHBYVUU1YkM3aHZZUWpMRkh1TXBiQUE?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Top 3 reasons Japan’s Nikkei 225 Index is falling today",
+          "source": "CryptoRank",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPZ0tYUjlRVVNnZlEteVJGSTl5RUlnUkZkYmc2UGRKYVBTUXVMc2pOSzktT054R2c2LVU3STJGdnlaYkV0eW9PS1A0azJSSlJLM0JzQi12VXZ1R0N0RUtub3pLeWtCc0IwOTQzS3lkNkRTd1hrdXF1WG1lTmZNdlZ4Z0pIQlFVRWFCcmszNXpRSzZzSFZ1TWxF?oc=5",
+          "datum": "08 Jun 2026"
+        },
+        {
+          "title": "Japan’s Nikkei slides as Gulf tensions prompt shift out of high-flying tech stocks",
+          "source": "arabnews.jp",
+          "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9WYWhGRWFtTzVfekF3YW5iVE44YWQxZ1J6eUtWSnlrMzJ1RVBLXzJOX3gzR25TdzAycXpKbzZGSDZycTg5bG01ZDJ6dEFib3RnQzl4bnAwWGJuUlNmb1l4Zw?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Nikkei 225: Tokyo Index Surges 0.91% to 66,934 as SoftBank AI Announcement and Semiconductor Demand Drive Japan Equities Higher",
+          "source": "BBN Times",
+          "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNb2I0Q1J3NjlkUzRDU0JZMnluTjlBQ1FEZFVjdzRSaUtOdVMxSjVnckhmbHQ4RzNxTGZtVElqVmdPa3RGMTkxcWVVMnNTb2xDSWhCcWRsdW1lODVVaFFvamMta2w4ZlBYMm00cWJiQXB2WVdTMzZMdlo4bTVVbnF4MkdpVUU5U3BZVVcwNlBCbU1zd0NwOHpha2hYRzk5OTFJTm9fSktvdl9CUTd3OHN4U21Uek9kRWh4UTMtek5mSENoQW5oZUtweFEtZG01SUttT3htX0hBVkJxeW5vLXdsMU1BalpLa245NmE5bGppM1Rndw?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Related Futures Contracts for Nikkei 225 Index OCT6",
+          "source": "Moomoo",
+          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9fMnU0S0kzTjBIUW9rV2ptVC1sVk9seDROb3VYSTVuSFdoVllFMW5vcXpTcVhZS2RUYW5PSTFPZ2hqXzRXdzF1NHFYTjZreXdPOFJzeHFDejh3dko0aTJoYTRCVmtQNFE?oc=5",
+          "datum": "07 Jun 2026"
+        }
+      ],
+      "stats": {
+        "week52_high": 68786.49,
+        "week52_low": 37540.2,
+        "volume": 0,
+        "high_30d": 68402.1328,
+        "low_30d": 59804.4102,
+        "change_7d": -6.17,
+        "change_30d": 2.82
+      },
+      "analysis": [
+        "Treiber: Eine SoftBank AI-Ankündigung und die Nachfrage nach Halbleitern könnten den Index antreiben.",
+        "Risiko: Der Nikkei fällt aufgrund von Spannungen am Golf und einer Verschiebung weg von Tech-Aktien.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit geopolitischen Spannungen und einem Rückgang bei Tech-Aktien."
+      ]
+    },
+    {
+      "price": 6033.08,
+      "change_24h": -0.28,
+      "currency": "eur",
+      "sentiment": "bearish",
+      "confidence": 0.6,
+      "rationale": "Der Euro Stoxx 50 fällt, da die globalen Aktienmärkte bärisch sind und europäische Aktien ihren Vorteil verlieren.",
+      "signal": "Rückgang im Zuge des globalen Markttrends.",
+      "id": "eurostoxx50",
+      "symbol": "Euro Stoxx 50",
+      "name": "Euro Stoxx 50",
+      "type": "index",
+      "yahoo_symbol": "^STOXX50E",
+      "spark": [
+        5895.4502,
+        5808.4502,
+        5861.0698,
+        5827.7598,
+        5849.0,
+        5851.1602,
+        5976.0698,
+        5960.3198,
+        6019.4502,
+        6064.1499,
+        6070.54,
+        6055.1099,
+        6050.54,
+        6034.9502,
+        6107.8501,
+        6053.5698,
+        6103.3301,
+        6062.0698,
+        6062.29,
+        6049.7402,
+        6033.0801
+      ],
+      "asset_news": [
+        {
+          "title": "STOXX Europe 50 Index Chart & Price",
+          "source": "FOREX.com",
+          "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5mZVQ5algxcEYwbFRuNEg2LVczYk1pZG5ZZG93RkIyelFPdUpFS3Jzc091U3hsLXo0NFB4a3BTSHZKN3o0X3ozblAxcnZfbThHTzcwZ20tTHpvNWRQU0p0SjBR?oc=5",
+          "datum": "05 Jun 2026"
+        },
+        {
+          "title": "Global Equities Markets Bearish, Wall St, Euro Stoxx 50 Slip",
+          "source": "MarketForces Africa",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQWEFoZjVkMHlnSmVmRW9qcGhpT0NGN2QyM0I4R3I1d1BQSVlEMkR2bXdpVnRCSlFUSi1ackNjMUlzTkxnMjhUMzRseVRJaDJGRDVJblVTaWpzanVZZklDQlVKQlBCTDJPMl9IbVBWdlM5YTVNSTVkY1luaEZoN05fRGFkLU84Z3BpZ2pNZWZB?oc=5",
+          "datum": "08 Jun 2026"
+        },
+        {
+          "title": "Morgan Stanley (MS) offers capped EURO STOXX 50® notes due Aug 9, 2027",
+          "source": "Stock Titan",
+          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOeURNekdvcFFQdnFFdUY2YnZRUVBTRkJOVzc2SUNXUnZ4cGtRd1B2ZEhsWFBjc1RRVWhJWEhqQkNtZVc2eDZxMHhGa3prbmU4TGpOQWViQ2ZUbXlSbnZ6dy13UzhQd01LOW9HdUM1YW5wYkpzQ1RCSjlvQ082YzFiLXphdlNsZS1aTmRYamY1SXQtSDVTeHFaXzNOLUIzVjJYNzcwMw?oc=5",
+          "datum": "04 Jun 2026"
+        },
+        {
+          "title": "European Stocks Are Losing an Edge That Took Them Years to Gain",
+          "source": "Bloomberg.com",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNZy1SZm1ON0pwZEhqR0dVajFKN0owZkZ4elhZNFVCcDN1c0xQSEdkTDEwQVNhY0tDNGFjQUN0VV9rSVB3VkRjNnNFcWYwMWtqWDNwdjFjUW1XZjlzeHRpVkNaYXdNRHEtX05QUzBoalBDVWdLZkthdlY4RWpiUlN5QTdwelg2ZHVDT1dnVjk2VlVEaE9SejE3SlAwMjJQcVBhQlhkQmx1MUl6NFhPU293ZTVYUkU?oc=5",
+          "datum": "07 Apr 2026"
+        },
+        {
+          "title": "Annual development of the Euro Stoxx 50 Index from 1995 to 2024",
+          "source": "Statista",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQMmR1RFM2LTNyRjdvQUVvSTdwQkRySWFUUTlSWm02RVg4U0NFaFdKaTVNZHA3cUNCcGNEbFBiZmVKa0dIMTQwVkRpSy0xNVA1QkhtUGV5XzNJOXVRTVJjU2hqa1dZTGp5QjE3VDR6bzZHYUJSc1NfZHY1OFZUbGk4WkJ4YjNjOFRPcmZNSjJwaHlSRTJpREs4?oc=5",
+          "datum": "03 Mar 2026"
+        }
+      ],
+      "stats": {
+        "week52_high": 6199.78,
+        "week52_low": 5154.83,
+        "volume": 0,
+        "high_30d": 6107.8501,
+        "low_30d": 5808.4502,
+        "change_7d": -0.34,
+        "change_30d": 2.33
+      },
+      "analysis": [
+        "Treiber: Es gibt keine spezifischen positiven Nachrichten für den Euro Stoxx 50.",
+        "Risiko: Globale Aktienmärkte sind bärisch, und europäische Aktien verlieren ihren Vorteil.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit einem Rückgang im Zuge des globalen Markttrends."
+      ]
+    },
+    {
+      "price": 3.21,
+      "change_24h": 2.32,
+      "currency": "usd",
+      "sentiment": "bullish",
+      "confidence": 0.6,
+      "rationale": "Die Erdgaspreise steigen in Europa aufgrund der Auswirkungen der Nahost-Krise, und die meisten erwarten weitere Anstiege.",
+      "signal": "Steigende Preise, Erwartung weiterer Anstiege.",
+      "id": "erdgas",
+      "symbol": "Erdgas",
+      "name": "Erdgas",
+      "type": "commodity",
+      "yahoo_symbol": "NG=F",
+      "spark": [
+        2.91,
+        2.843,
+        2.864,
+        2.894,
+        2.96,
+        3.024,
+        3.114,
+        3.004,
+        3.018,
+        2.907,
+        2.894,
+        3.04,
+        3.285,
+        3.29,
+        3.179,
+        3.167,
+        3.214,
+        3.336,
+        3.229,
+        3.147,
+        3.14,
+        3.213
+      ],
+      "asset_news": [
+        {
+          "title": "Data: Track county, state and national gas prices",
+          "source": "NBC News",
+          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPMWgwSVltbkxJVmRPeHZtbUNLb0wwcEFVUnpnc0MzdEsxSTVTd3NnVGI3TGQ5Y2t2RHVad05VZmF2UmlIZFhFSS00Q05xTEpJSW9nbnJXMndOLVU1bmFLUkJCeGtnSE9uODE0NnFWUmU2YS1rM2FfbjgzNDRObmZpYk9DMWoyUTlUMkZBMU04THAxTFFLdEJockxn?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Most in new poll expect gas prices to keep rising",
+          "source": "The Hill",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQVVZQaHRRWjRmbU5UNXVYWnlhTktIdVZPTnYwajVaT0o3UVJTM1d5UEdDMHJJbWhrX01vVXJocUxMZmp0RGpycGYxajl5WGdwWk9UY1JfLVRtZ1hpRndxWWtzLWlLSk9mQzJYclNpOFRQWlM4QlJuOVRTZGdQSnlUVDJCMWlHRUlwM01IeGNOV3NRXzM1SGVZetIBngFBVV95cUxPLTd5em1SSEhKa2dvMmZBVVJtWjh4Y281ck5RdkQ5bmREV2pEQlROcXU3Mzd3T2tBcDZ1Z0s4VnF1bVFFTE05SkdOd1U4c21sdFlfcmhMcjkwd1E0dHBET04waHF6Zk1kMFVvZHc5SXA4WllyZTV5T0RFcTVCQVBBaDE5X2dCOWNRVDNxOGFaQ1RNaW1UYzNLUnpJejEzUQ?oc=5",
+          "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Chicago cheap gas price: Shell station at Kostner, Belmont selling gas at $1.99 a gallon Tuesday",
+          "source": "ABC7 Chicago",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOR1M5R3YyMG9wZW43UWlabjI1Q1hjQ01VXzZVU0Z5a2JfVzVtdzVVel9mbnB5YktxRXg4THpUOTZsbjI3aTlBTTVnckVYdkd3T0FaSW9ySlF0ZVd6SHdiV0NpWEZyNnN6SWJyX0FhYWtfQjVrOHd6azVUbnlRV3JPcGdDV193NEZZdGVFcG8tUFk2NDVDR3M3ZjBKSGs0cGpRWUR4VkRkMW51VUlOY0dlZHA2cUpIaGJKVVJ30gHAAUFVX3lxTE5jak80VjREX2JpV2Fyam9iOFVFaFJiSVJ1azdfMVhmMGlZVG94VlNsbGdCSGZfSmt4aUg3ZVZVQ080RlJmczhuRTR1LTNrenBoTnY2UnJCT1NrbFhxQjBWaEdkQmZxUFBQRmJqV01yRGtSSkNmT015bk9PVk92Z1BTenhLTVpjRjJDRW9YcWtkOURMR0c5MmJVWHBHYzAxdDlJaGdBYmtNYWk0UG1NZFJTbzFMYXZqb0h4QlVCVXBjZg?oc=5",
+          "datum": "09 Jun 2026"
+        },
+        {
+          "title": "European gas prices edge up amid Middle-East fallout",
+          "source": "Investing.com",
+          "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQWi1NeXFsZWZKcm5BRHBTOFNmNjY4cnRrMC1kYUpWUGtjaHhNUVdocUM2cWtfOUNRYk1qNDZyX0JNRGh1SWFaV3JEV3pyREhzdDRyenJwNU9Rc085R2dWbnllcTFRSWxBMXR3dzdRSzREaEJFMHFnaHd3QnNKanRiZ1B3VUNoS0tHQTlhQnZPT1A4U19OR01RbGkwcFl3ckNkdzFteHV4TmJKd1k?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Higher Gas Costs May Be Ahead for California Drivers This Summer",
+          "source": "ABC10",
+          "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQXzgtWklTRU1CaXhmRVBYUWF0S3ZuS0hMSTJYUVRwVWR1SFNNOWdLekR2WFVrdTVmYWp5aW9DQWU2eHlvLUVSMkZHT3c0SXRDWVNLNEYzVVY5MXZkNnpaSFRVWTVSVmRrY29YZVpjb1RKLUd1cHNJbjRpQTNpbnp2RzFucndGRDVZeU50NE4zdHBhSzVqVjZ3Rk9ycVNNWlZWWUxPN0xjNXJHVlpjMjNwWjFEbVhtMDBFSW1fRzVxeHJhOGFiMVpzTWhtZER3QmZKanJqeVdBU25vTms2c2dWNGpocw?oc=5",
+          "datum": "09 Jun 2026"
+        }
+      ],
+      "stats": {
+        "week52_high": 7.827,
+        "week52_low": 2.483,
+        "volume": 69176,
+        "high_30d": 3.336,
+        "low_30d": 2.843,
+        "change_7d": -0.03,
+        "change_30d": 10.41
+      },
+      "analysis": [
+        "Treiber: Die europäischen Gaspreise steigen aufgrund der Auswirkungen der Nahost-Krise.",
+        "Risiko: Es gibt keine spezifischen negativen Nachrichten, aber die Preise können volatil sein.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit steigenden Preisen und der Erwartung weiterer Anstiege."
+      ]
+    },
+    {
+      "price": 6.31,
+      "change_24h": 0.07,
+      "currency": "usd",
+      "sentiment": "bearish",
+      "confidence": 0.6,
+      "rationale": "Kupfer fällt unter 13.000 USD, da die Lagerbestände und die Nachfrage in China im Fokus stehen.",
+      "signal": "Rückgang aufgrund von Lagerbeständen und Nachfrage.",
+      "id": "kupfer",
+      "symbol": "Kupfer",
+      "name": "Kupfer",
+      "type": "commodity",
+      "yahoo_symbol": "HG=F",
+      "spark": [
+        6.4135,
+        6.485,
+        6.6355,
+        6.5675,
+        6.2515,
+        6.272,
+        6.165,
+        6.2905,
+        6.257,
+        6.342,
+        6.361,
+        6.305,
+        6.396,
+        6.3595,
+        6.524,
+        6.6495,
+        6.481,
+        6.511,
+        6.2635,
+        6.3295,
+        6.3025,
+        6.307
+      ],
+      "asset_news": [
+        {
+          "title": "Copper Futures Overview",
+          "source": "CME Group",
+          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9hUDlTUEo4Y21yeC1JTl9FMGlwU1AtemRWNWhTVHdrZEVITDExbFRrOXEtUmxtcUNoRFp3a0VRX0wyZFc1RmtuM1VuMHJUdm1EX2ZnUWR2MlEwTm1CQXFuTk51emJKMUE?oc=5",
+          "datum": "08 Jun 2026"
+        },
+        {
+          "title": "Minerva Neurosciences (NERV) director receives stock options for 50,000 shares",
+          "source": "Stock Titan",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNVUpvM1JFYkZPd3ZpSGRBdW1TUklEem1aOTI2LUZqcVMxRkcxSDVubk1xVG00dmNpY3JjaWlpVXFCT0QyZHc3N0IzUHdyeHZ0RXBKWllCckF6OWEtV3lhbnRTU2ZvNVRkMXJ6REE5d0NUS3hpTDItVEFNR05iUEFNbXNXNkZ1TFY4TVBTWEpWRlB1aFB6R3Z0eGg1OEJ5dUlqamxlNGp0eHY0ZVdSZUtYY1NvM0JROHlXaUNN?oc=5",
+          "datum": "05 Jun 2026"
+        },
+        {
+          "title": "Why are more people under 50 getting colorectal cancer?",
+          "source": "UChicago Medicine",
+          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNcmJldjJhYmJpV3hnTm9HLVRyMmdpTU9XZGxWZDNObVRyMXpRSVNZV3FyeTU1OXVfeEVybUUwUUdidmZMVHdaMk5paGs0M2p2UmRxYlN2NWNkYnQ1M05jLUxfQ0hLMU9UVWxxRmdSUVhVYWJuVXRhVUVzUkJ6bGJ0MWdpWVVQMjBkU1E2Y2VCVG9JckpzZGw3SHY1U1JJRXdEQTZqZHdSMXVDZl80d2hjRXJUY193T1JhWXZpb2hjSVZqZw?oc=5",
+          "datum": "13 Mar 2026"
+        },
+        {
+          "title": "Copper Dips Below $13,000 With Stockpiles, China Demand in Focus",
+          "source": "Bloomberg.com",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPLVNNcWlwQ3JoZjZzY0czU2F3enJ0bVg2UERkazdvOXo2QXZvZXlZWDJMYWVnb1lSOVJINGZ3QkNpLWtIM1hDWW1oSTJfeVVkcjBONmJGTko4eU05d3ItTmVsamE2N3YwSFN3ZC1yd2FEZ1AzWXBiTWp3NHVKakFIQTRjWTFEa1lUb0t6ZHVkYXFWWlItTkM3TVAxOGVsRHgzc2N0a0d3TzFCUFNkVkp6V1VVUQ?oc=5",
+          "datum": "05 Feb 2026"
+        },
+        {
+          "title": "Why copper is on pace for its best year since 2009",
+          "source": "Business Insider",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNMlU4N0liXzBCNHl4bFcweHhwLXM4MWhPS2h2VHdBNXNlWWZYb1pVemZodmM1aDRtcXEwcnZhcU1DcVU5aThMZnoyXzZjLUlFOUsyS0ZITGk2TGFLdGlPWldtQTZET0xTbWs0aTB5R21CcVpuMUt3LUpmczN2Zkk2Y0hnbmpOTUc3UGNRNnQ2MXpwbVU3WlRVUFM3cy0?oc=5",
+          "datum": "30 Dec 2025"
+        }
+      ],
+      "stats": {
+        "week52_high": 6.653,
+        "week52_low": 4.324,
+        "volume": 23719,
+        "high_30d": 6.6495,
+        "low_30d": 6.165,
+        "change_7d": -2.68,
+        "change_30d": -1.66
+      },
+      "analysis": [
+        "Treiber: Kupfer ist auf dem besten Weg für sein bestes Jahr seit 2009, was langfristig positiv sein könnte.",
+        "Risiko: Kupfer fällt unter 13.000 USD, da die Lagerbestände und die Nachfrage in China im Fokus stehen.",
+        "Einordnung: Die Nachrichtenlage ist gemischt, mit kurzfristigem Rückgang, aber langfristigem Potenzial."
       ]
     }
   ],
   "news": [
+    {
+      "title": "Consumer prices rose 4.2% annually in May, highest in three years",
+      "source": "CNBC Markets",
+      "url": "https://www.cnbc.com/2026/06/10/cpi-inflation-report-may-2026.html",
+      "datum": "Wed, 10 Jun 2026 13:25:25 GMT",
+      "sentiment": "bearish"
+    },
+    {
+      "title": "Energy prices take center stage as the ECB prepares to decide on rates",
+      "source": "CNBC Markets",
+      "url": "https://www.cnbc.com/2026/06/10/ecb-rate-hike-energy-prices-inflation.html",
+      "datum": "Wed, 10 Jun 2026 08:25:22 GMT",
+      "sentiment": "neutral"
+    },
     {
       "title": "The May inflation numbers are due out Wednesday morning. Here's what to expect",
       "source": "CNBC Markets",
@@ -1247,60 +2704,46 @@
       "sentiment": "bearish"
     },
     {
-      "title": "The May jobs report will be released Friday. Here's what to expect",
-      "source": "CNBC Markets",
-      "url": "https://www.cnbc.com/2026/06/04/the-may-jobs-report-will-be-released-friday-heres-what-to-expect.html",
-      "datum": "Thu, 04 Jun 2026 22:12:06 GMT",
-      "sentiment": "neutral"
-    },
-    {
-      "title": "Long-term unemployment is surging in the U.S. There are hidden costs for workers and the economy",
-      "source": "CNBC Markets",
-      "url": "https://www.cnbc.com/2026/06/04/long-term-unemployment-economy-jobs.html",
-      "datum": "Thu, 04 Jun 2026 18:55:32 GMT",
-      "sentiment": "bearish"
-    },
-    {
-      "title": "Why is WH Smith stock plunging today?",
+      "title": "Aduro Clean Technologies stock falls on $15.6M offering",
       "source": "Investing.com",
-      "url": "https://www.investing.com/news/stock-market-news/why-is-wh-smith-stock-plunging-today-93CH-4734433",
+      "url": "https://www.investing.com/news/stock-market-news/aduro-clean-technologies-stock-falls-on-156m-offering-93CH-4735473",
       "datum": "2026-06-10",
       "sentiment": "bearish"
     },
     {
-      "title": "European stocks post slim gains as markets assess US-Iran fallout; WH Smith slumps",
+      "title": "Lilly stays ahead of the pack as rivals jump on obesity drug bandwagon",
       "source": "Investing.com",
-      "url": "https://www.investing.com/news/stock-market-news/european-stocks-post-slim-gains-as-markets-assess-usiran-fallout-4734364",
+      "url": "https://www.investing.com/news/stock-market-news/lilly-stays-ahead-of-the-pack-as-rivals-jump-on-obesity-drug-bandwagon-4734670",
       "datum": "2026-06-10",
       "sentiment": "neutral"
     },
     {
-      "title": "Japan’s Asics to spin off popular Onitsuka Tiger sneaker business",
+      "title": "Wall St opens lower on tech losses, Middle East tensions",
       "source": "Investing.com",
-      "url": "https://www.investing.com/news/stock-market-news/japans-asics-to-spin-off-onitsuka-tiger-business-4734299",
+      "url": "https://www.investing.com/news/stock-market-news/wall-st-opens-lower-on-tech-losses-middle-east-tensions-4735471",
       "datum": "2026-06-10",
-      "sentiment": "neutral"
+      "sentiment": "bearish"
     },
     {
-      "title": "South Korea’s SK Hynix eyes US listing as soon as August, sources say",
+      "title": "Stocks open in the red as U.S.-Iran tensions escalate; May CPI largely in-line",
       "source": "Investing.com",
-      "url": "https://www.investing.com/news/stock-market-news/south-koreas-sk-hynix-eyes-us-listing-as-soon-as-august-sources-say-4734422",
+      "url": "https://www.investing.com/news/stock-market-news/us-stock-futures-fall-amid-more-iran-strikes-tech-weakness-cpi-data-awaited-4734248",
       "datum": "2026-06-10",
-      "sentiment": "neutral"
+      "sentiment": "bearish"
     },
     {
-      "title": "56-year-old beloved fast-food chain closes over 700 locations",
+      "title": "The SpaceX–OpenAI IPO wave: What investors must do now",
       "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/economy/articles/56-old-beloved-fast-food-005500959.html",
+      "url": "https://finance.yahoo.com/video/spacex-openai-ipo-wave-investors-175555019.html",
+      "datum": "2026-06-09",
+      "sentiment": "neutral"
+    },
+    {
+      "title": "Stock market today: Dow, S&P 500, Nasdaq slide as CPI report lands, US-Iran truce teeters",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-dow-sp-500-nasdaq-slide-as-cpi-report-lands-us-iran-truce-teeters-215056930.html",
       "datum": "2026-06-09",
       "sentiment": "bearish"
-    },
-    {
-      "title": "Big Pharma Stock Eli Lilly Concocts New Buy Zone",
-      "source": "Yahoo Finance",
-      "url": "https://www.investors.com/research/how-to-find-the-best-stocks-to-buy/eli-lilly-stock-big-pharma-giant-buy-zone/?src=A00220&yptr=yahoo",
-      "datum": "2026-06-08",
-      "sentiment": "bullish"
     }
   ],
   "quellen": [
@@ -1313,7 +2756,7 @@
       "url": "https://finance.yahoo.com"
     }
   ],
-  "fetched_at": "2026-06-10T07:43:24+00:00",
+  "fetched_at": "2026-06-10T13:48:09+00:00",
   "fx": {
     "usd": 1.0,
     "chf": 0.7955,

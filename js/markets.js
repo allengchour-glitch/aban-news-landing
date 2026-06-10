@@ -22,8 +22,10 @@
   var watch = loadWatch();
 
   // ---------- i18n (DE/EN je nach <html lang>) ----------
-  var LANG = (document.documentElement.lang || 'de').slice(0, 2) === 'en' ? 'en' : 'de';
-  var detailBase = LANG === 'en' ? '/en/maerkte/' : '/maerkte/';
+  var _lc = (document.documentElement.lang || 'de').slice(0, 2);
+  var LANG = ['en', 'fr', 'it'].indexOf(_lc) >= 0 ? _lc : 'de';
+  var detailBase = LANG === 'de' ? '/maerkte/' : '/' + LANG + '/maerkte/';
+  var NUMLOC = { de: 'de-CH', en: 'en', fr: 'fr-CH', it: 'it-CH' }[LANG];
   var T = {
     de: { krypto: 'Krypto', aktie: 'Aktie', index: 'Index', rohstoff: 'Rohstoff',
           gainer: 'Top-Gewinner', loser: 'Top-Verlierer', mood: 'Marktstimmung',
@@ -38,7 +40,21 @@
           sources: 'Sources: ', asof: 'As of: ', cryptoLive: ' · crypto live', ai: ' · AI: ',
           rate: 'Rate: ', endval: 'Final value ≈ ', paid: 'Paid in', gain: 'Gain', valueIn: 'Value in ',
           unavailable: 'Market data currently unavailable.',
-          stale: '⚠️ Data may be stale (last run over {h} h ago).' }
+          stale: '⚠️ Data may be stale (last run over {h} h ago).' },
+    fr: { krypto: 'Crypto', aktie: 'Action', index: 'Indice', rohstoff: 'Matière première',
+          gainer: 'Top hausse', loser: 'Top baisse', mood: 'Climat du marché',
+          conf: 'Confiance IA', noNews: "Pas d'actus pour le moment.",
+          sources: 'Sources : ', asof: 'Au : ', cryptoLive: ' · crypto en direct', ai: ' · IA : ',
+          rate: 'Cours : ', endval: 'Valeur finale ≈ ', paid: 'Versé', gain: 'Gain', valueIn: 'Valeur en ',
+          unavailable: 'Données de marché indisponibles.',
+          stale: '⚠️ Données peut-être obsolètes (dernière maj il y a plus de {h} h).' },
+    it: { krypto: 'Cripto', aktie: 'Azione', index: 'Indice', rohstoff: 'Materia prima',
+          gainer: 'Top rialzo', loser: 'Top ribasso', mood: 'Umore del mercato',
+          conf: 'Affidabilità IA', noNews: 'Nessuna notizia al momento.',
+          sources: 'Fonti: ', asof: 'Al: ', cryptoLive: ' · cripto in tempo reale', ai: ' · IA: ',
+          rate: 'Prezzo: ', endval: 'Valore finale ≈ ', paid: 'Versato', gain: 'Guadagno', valueIn: 'Valore in ',
+          unavailable: 'Dati di mercato non disponibili.',
+          stale: '⚠️ Dati forse obsoleti (ultimo aggiornamento oltre {h} h fa).' }
   }[LANG];
 
   // ---------- Währung (USD/CHF/EUR, localStorage) ----------
@@ -60,7 +76,7 @@
     if (a.type === 'index') {
       var d = a.price >= 1000 ? 0 : 2;
       try {
-        return new Intl.NumberFormat(LANG === 'en' ? 'en' : 'de-CH',
+        return new Intl.NumberFormat(NUMLOC,
           { maximumFractionDigits: d, minimumFractionDigits: d }).format(a.price) + ' Pkt';
       } catch (e) { return a.price.toFixed(d) + ' Pkt'; }
     }
@@ -259,7 +275,11 @@
       var card = el('div', 'card');
 
       var head = el('div', 'chead');
-      head.appendChild(el('span', 'cname', a.name + ' · ' + a.symbol));
+      var cl = document.createElement('a');
+      cl.href = detailBase + a.id + '.html';
+      cl.className = 'asset-link';
+      cl.appendChild(el('span', 'asset-name cname', a.name + ' · ' + a.symbol));
+      head.appendChild(cl);
       var sent = a.sentiment || 'neutral';
       head.appendChild(el('span', 'badge ' + sent, sentimentLabel(sent)));
       card.appendChild(head);
@@ -385,7 +405,7 @@
       var a = state.byId[sel.value];
       out.innerHTML = '';
       out.appendChild(document.createTextNode(
-        n.toLocaleString(LANG === 'en' ? 'en' : 'de-CH') + ' ' + a.symbol + ' ≈ ' + fmtMoney(v)));
+        n.toLocaleString(NUMLOC) + ' ' + a.symbol + ' ≈ ' + fmtMoney(v)));
       var s = document.createElement('small');
       s.textContent = T.rate + fmtMoney(p) + ' / ' + a.symbol;
       out.appendChild(s);

@@ -38,16 +38,20 @@ SYSTEM = (
     "STRIKTE REGELN:\n"
     "- KEINE Anlageberatung. Niemals 'kaufen', 'verkaufen', 'einsteigen' o.ä. empfehlen.\n"
     "- 'signal' = kurze, neutrale Lage-Einordnung (max. 12 Wörter), KEIN Handelsbefehl.\n"
-    "- 'rationale' = 1-2 Sätze, konkret auf die wert-spezifischen News bezogen.\n"
+    "- 'rationale' = 1-2 Sätze, konkret auf die wert-spezifischen News bezogen (für die Übersichtskarte).\n"
+    "- 'analysis' = 3 KURZE, tiefere Stichpunkte für die Detailseite, jeweils mit Präfix: "
+    "'Treiber: …' (was die Lage gerade bewegt), 'Risiko: …' (was dagegen spricht/Unsicherheit), "
+    "'Einordnung: …' (nüchterne Gesamtsicht, keine Empfehlung). Konkret auf die News bezogen.\n"
     "- 'confidence' (0-1) = wie klar die Nachrichtenlage ist (nicht: wie sicher ein Kurs steigt).\n"
-    "- Bleib bei den gelieferten News; erfinde nichts. Bei dünner Lage: 'neutral', niedrige confidence."
+    "- Bleib bei den gelieferten News; erfinde nichts. Bei dünner Lage: 'neutral', niedrige confidence, "
+    "und in 'analysis' ehrlich vermerken, dass die Nachrichtenlage dünn ist."
 )
 
 JSON_HINT = (
     "\n\nAntworte AUSSCHLIESSLICH mit gültigem JSON in GENAU dieser Form "
     "(keine Markdown-Codeblöcke, kein Text drumherum):\n"
     '{"assets":[{"id":"<id>","sentiment":"bullish|neutral|bearish","confidence":0.0,'
-    '"rationale":"...","signal":"..."}],'
+    '"rationale":"...","signal":"...","analysis":["Treiber: …","Risiko: …","Einordnung: …"]}],'
     '"news":[{"index":0,"sentiment":"bullish|neutral|bearish"}]}'
 )
 
@@ -62,14 +66,14 @@ def build_prompt(data: dict) -> str:
             f"{price if price is not None else 'n/a'} {a.get('currency', 'usd').upper()} · "
             f"{chg if chg is not None else 'n/a'}%"
         )
-        for n in a.get("asset_news", [])[:3]:
+        for n in a.get("asset_news", [])[:5]:
             lines.append(f"   - {n.get('title')}")
     lines.append("\nAllgemeine Finanz-News-Schlagzeilen (mit Index):")
     for i, n in enumerate(data.get("news", [])[:10]):
         lines.append(f"{i}. [{n.get('source')}] {n.get('title')}")
     lines.append(
         "\nAufgabe:\n"
-        "1) 'assets': für JEDEN Wert (gleiche id) ein Objekt. Stütze dich PRIMÄR auf die "
+        "1) 'assets': für JEDEN Wert (gleiche id) ein Objekt. Jedes Objekt MUSS das Feld 'analysis' mit GENAU 3 Stichpunkten (Treiber/Risiko/Einordnung) enthalten — das ist PFLICHT, nicht weglassen. Stütze dich PRIMÄR auf die "
         "wert-spezifischen News, ergänzend auf 24h-Bewegung. rationale konkret auf diese News beziehen.\n"
         "2) 'news': pro allgemeiner Schlagzeile (gleicher index) ein Sentiment für den Gesamtmarkt; "
         "ohne klaren Bezug 'neutral'."
@@ -114,7 +118,7 @@ def main() -> int:
         return 0
 
     # thinking_budget=0 → volles Output-Budget, günstig/schnell für diese Batch-Aufgabe.
-    text = generate(build_prompt(data), max_tokens=4000, temperature=0.3, thinking_budget=0)
+    text = generate(build_prompt(data), max_tokens=16000, temperature=0.3, thinking_budget=0)
     if not text:
         sys.stderr.write("Gemini lieferte keinen Text → Daten unverändert.\n")
         return 0
@@ -139,6 +143,8 @@ def main() -> int:
             a["rationale"] = str(r["rationale"]).strip()
         if r.get("signal"):
             a["signal"] = str(r["signal"]).strip()
+        if isinstance(r.get("analysis"), list):
+            a["analysis"] = [str(x).strip() for x in r["analysis"] if str(x).strip()][:4]
         updated += 1
 
     news = data.get("news", [])

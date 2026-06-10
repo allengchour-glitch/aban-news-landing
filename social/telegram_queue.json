@@ -127,8 +127,10 @@
   },
   {
     "id": "tg-gen-20260607-2",
-    "status": "ready",
-    "text": "Oft sind die besten KI-Ergebnisse keine Magie, sondern das Resultat klarer Anweisungen. Ein einfacher Prompt-Aufbau hilft dir dabei: Definiere die Rolle der KI, das Thema, die gewünschte Tonalität und das Ausgabeformat.\n\nEin Beispiel: `Du bist ein erfahrener Projektmanager. Erläutere die fünf wichtigsten Schritte zur Risikobewertung in einem Projekt, prägnant und praxisnah, als Stichpunktliste.`\n\nDu gibst der KI damit die nötige Struktur, um präzise und nützlich zu antworten. Probiere es aus, um deinen Workflow zu optimieren und fundierte Entscheidungsgrundlagen zu schaffen.\n\nhttps://abannews.com\n#KIFürProfis #Prompting #Effizienz"
+    "status": "posted",
+    "text": "Oft sind die besten KI-Ergebnisse keine Magie, sondern das Resultat klarer Anweisungen. Ein einfacher Prompt-Aufbau hilft dir dabei: Definiere die Rolle der KI, das Thema, die gewünschte Tonalität und das Ausgabeformat.\n\nEin Beispiel: `Du bist ein erfahrener Projektmanager. Erläutere die fünf wichtigsten Schritte zur Risikobewertung in einem Projekt, prägnant und praxisnah, als Stichpunktliste.`\n\nDu gibst der KI damit die nötige Struktur, um präzise und nützlich zu antworten. Probiere es aus, um deinen Workflow zu optimieren und fundierte Entscheidungsgrundlagen zu schaffen.\n\nhttps://abannews.com\n#KIFürProfis #Prompting #Effizienz",
+    "posted_at": "2026-06-10T17:47:48Z",
+    "telegram_message_id": 43
   },
   {
     "id": "tg-gen-20260607-3",
@@ -164,5 +166,10 @@
     "id": "tg-gen-20260608-3",
     "status": "ready",
     "text": "Du möchtest bei KI auf dem Laufenden bleiben, ohne ständig Hype-Botschaften zu lesen? Verstehe ich gut. aban news liefert dir täglich die relevanten Entwicklungen aus der KI-Welt, sauber aufbereitet und ohne übertriebene Versprechungen. Hier geht es um Fakten und konkrete Anwendungsfälle, die für deinen Arbeitsalltag in DACH-Unternehmen tatsächlich relevant sind. Kein Bullshit, nur Substanz. Wenn du seriöse Einblicke schätzt, ohne dich durch Marketing-Blabla zu wühlen, dann ist dieser Newsletter für dich.\n\nhttps://abannews.com\n#KI #Newsletter #DACH"
+  },
+  {
+    "id": "tg-gen-20260610-1",
+    "status": "ready",
+    "text": "Du interessierst dich für Künstliche Intelligenz, aber bist müde von überzogenen Versprechungen? Bei aban news bekommst du täglich einen Überblick über KI-Entwicklungen, die wirklich relevant sind – ohne den üblichen Hype. Wir filtern für dich die Fakten und ordnen sie ein. Unser Fokus liegt auf praktischen Anwendungen und strategischen Implikationen für den DACH-Raum. Kein Marketing-Geschwafel, sondern fundierte Informationen, die du beruflich nutzen kannst. Wenn du lieber verstehst als staunst, bist du bei uns richtig.\n\nhttps://abannews.com\n#KInews #DACH #Profis"
   }
 ]
