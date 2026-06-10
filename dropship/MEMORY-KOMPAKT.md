@@ -147,3 +147,12 @@
 - **ENTSCHEID/Strategie:** Gelato (verbunden) = Poster/Karten/Tassen **manuell** anlegen (Claude prept Designs+Specs);
   Printify (CI-fähig) = Sticker/Magnete **vollautonom**, sobald Shopify in Printify verbunden. Beide ergänzen sich.
 - Tool `automation/pod_provider_check.mjs` + `pod-provider-check.yml` bleibt für Status-Checks.
+
+## 2026-06-10 — Schweiz-Poster generiert (für Gelato)
+- `automation/gen_posters.mjs` + `gen-posters.yml`: **vollflächige** Poster-Artworks (kein Magenta-Chroma wie Sticker),
+  Gemini 2.5 Flash Image. **10 Motive in `social/posters/`**: matterhorn, alps-panorama, lake, chalet, gondola, cow,
+  edelweiss, edelweiss-pattern, fondue, gruezi (Typo „GRÜEZI" korrekt). Optisch top, „GRÜEZI" stimmt.
+  ⚠️ Gemini liefert **1024×1024 quadratisch** (ignoriert 2:3-Prompt) → gut für quadratische Art-Prints/Poster bis ~A4;
+  für grosse Hochformat-Poster im Gelato-Editor positionieren oder gezielt Hochformat-Varianten generieren.
+- Öffentlich via Pages: `https://abannews.com/social/posters/<name>.jpg` (Deploy-Lag ~15 Min beachten).
+- Geliefert an User (Vorschau-Sheet + Links). Gelato: Create product → Poster → Datei hoch → Publish.
