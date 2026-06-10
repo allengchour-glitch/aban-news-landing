@@ -22,7 +22,15 @@ concurrency:
 jobs:
   translate:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 330
+    env:
+      SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+      SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+      SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+      SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      TARGETS: ${{ github.event.inputs.targets }}
+      DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && '0' || '1' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,49 +38,22 @@ jobs:
           node-version: '20'
       - name: 1) Hero + Collections
         env:
-          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
-          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
-          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
-          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SCOPE: hero
-          TARGETS: ${{ github.event.inputs.targets }}
-          DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && '0' || '1' }}
         run: node automation/translate_content.mjs
+      - name: Ledger committen (nach Hero)
+        if: ${{ always() && github.event.inputs.dry_run == 'false' }}
+        run: bash automation/commit_translation_ledger.sh "${{ github.ref_name }}"
       - name: 2) Ganzer Katalog
         env:
-          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
-          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
-          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
-          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SCOPE: catalog
-          TARGETS: ${{ github.event.inputs.targets }}
-          DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && '0' || '1' }}
         run: node automation/translate_content.mjs
+      - name: Ledger committen (nach Katalog)
+        if: ${{ always() && github.event.inputs.dry_run == 'false' }}
+        run: bash automation/commit_translation_ledger.sh "${{ github.ref_name }}"
       - name: 3) Theme + Menü
         env:
-          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
-          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
-          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
-          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SCOPE: theme
-          TARGETS: ${{ github.event.inputs.targets }}
-          DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && '0' || '1' }}
         run: node automation/translate_content.mjs
-      - name: Ledger committen
-        if: ${{ github.event.inputs.dry_run == 'false' }}
-        run: |
-          git config user.name "luxestyle-bot"
-          git config user.email "bot@users.noreply.github.com"
-          if [ -n "$(git status --porcelain dropship/_translated.txt)" ]; then
-            git add dropship/_translated.txt
-            git commit -m "Übersetzungs-Ledger aktualisiert [skip ci]"
-            for i in 1 2 3 4; do
-              git fetch origin ${{ github.ref_name }} && git rebase origin/${{ github.ref_name }} || git rebase --abort
-              git push origin HEAD:${{ github.ref_name }} && break || sleep $((2**i))
-            done
-          else
-            echo "Kein Ledger-Diff."
-          fi
+      - name: Ledger committen (nach Theme)
+        if: ${{ always() && github.event.inputs.dry_run == 'false' }}
+        run: bash automation/commit_translation_ledger.sh "${{ github.ref_name }}"
