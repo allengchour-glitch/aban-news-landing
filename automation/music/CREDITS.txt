@@ -6,3 +6,8 @@ Quellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).
 - voltaic.mp3          → "Voltaic" by Kevin MacLeod
 - electrodoodle.mp3    → "Electrodoodle" by Kevin MacLeod
 - digital-lemonade.mp3 → "Digital Lemonade" by Kevin MacLeod
+
+— ORIGINAL (selbst synthetisiert, automation/make_hype_music.py) — 100% royalty-free, keine Attribution nötig:
+- luxe-hype1.wav  (dark/drive, ~150 BPM)
+- luxe-hype2.wav  (bouncy, ~146 BPM)
+- luxe-hype3.wav  (energetic, ~152 BPM)

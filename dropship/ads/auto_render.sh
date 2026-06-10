@@ -76,9 +76,13 @@ SLUG="auto-$(date +%Y%m%d-%H%M)"
 mkdir -p "$ROOT/reels"
 # Techno-Track rotierend wählen (mit dem Produkt-Pointer) → nicht immer derselbe Sound.
 MUSIC="${TRACKS[$(( start % ${#TRACKS[@]} ))]}"
-# CC-BY-Quellenangabe automatisch aus dem Dateinamen (Kevin MacLeod / incompetech.com, CC BY 4.0).
+# Quellenangabe automatisch aus dem Dateinamen. luxe-* = selbst synthetisierte Original-Sounds
+# (royalty-free, keine Attribution nötig); sonst Kevin MacLeod / incompetech.com (CC BY 4.0).
 _tname=$(basename "$MUSIC"); _tname="${_tname%.*}"
-MUSIC_CREDIT="🎵 ${_tname//-/ } – Kevin MacLeod (incompetech.com) · CC BY 4.0"
+case "$_tname" in
+  luxe-*) MUSIC_CREDIT="🎵 Original-Sound · LuxeStyle" ;;
+  *)      MUSIC_CREDIT="🎵 ${_tname//-/ } – Kevin MacLeod (incompetech.com) · CC BY 4.0" ;;
+esac
 echo "Musik: $(basename "$MUSIC")"
 # Schnelleres, TikTok-natives Pacing (kurze Segmente + knappe Fades) — via Env überschreibbar.
 HOOK="$HOOK" SEG="${SEG_DUR:-1.7}" T="${FADE_DUR:-0.35}" bash "$ROOT/dropship/ads/render_premium_reel.sh" "$ROOT/reels/$SLUG.mp4" "$MUSIC" "$IMGDIR"
