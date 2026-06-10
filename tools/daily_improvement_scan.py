@@ -24,7 +24,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 EXCLUDE_PARTS = ("/dist/", "/node_modules/", "/ki-schriftsteller/", "/reports/",
                  "/.git/", "/automatisierung-radar/", "/data/", "/ausgabe/",
-                 "/video-prototypes/", "/video-pipeline/")  # Generate-Output & Entwürfe aus
+                 "/video-prototypes/", "/video-pipeline/", "/dropship/")  # Generate-Output, Entwürfe & Shop-Projekt aus
+
+# Partial-/Fragment-Dateien (Body-Schnipsel ohne <head>) — werden in andere Seiten
+# injiziert und haben absichtlich kein title/canonical/viewport → nicht als SEO-Mangel werten.
+EXCLUDE_SUFFIXES = ("page_body.html", "_body.html", ".partial.html", "_fragment.html")
 
 # Spiegel der Aban-Sperrliste (Quelle: automation/brand-voice-validator-api.py).
 HYPE = [
@@ -46,6 +50,8 @@ def html_files():
     for p in ROOT.rglob("*.html"):
         rel = "/" + str(p.relative_to(ROOT))
         if any(x in rel for x in EXCLUDE_PARTS):
+            continue
+        if rel.endswith(EXCLUDE_SUFFIXES):
             continue
         yield p
 
