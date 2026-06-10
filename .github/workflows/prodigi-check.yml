@@ -1,0 +1,31 @@
+name: Prodigi-Check (Key/Katalog)
+
+on:
+  workflow_dispatch:
+    inputs:
+      sandbox:
+        description: 'Sandbox-Endpoint nutzen'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: prodigi-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Prodigi testen
+        env:
+          PRODIGI_API_KEY: ${{ secrets.PRODIGI_API_KEY }}
+          PRODIGI_SANDBOX: ${{ github.event.inputs.sandbox == 'true' && '1' || '0' }}
+        run: node automation/prodigi_check.mjs

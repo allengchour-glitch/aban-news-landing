@@ -95,6 +95,12 @@
 
 **2026-06-08 — abannews / video sessions:** (bitte hier eintragen, was ihr am Shop/Repo ändert)
 
+**2026-06-10 — abannews session (neue „Märkte"-Sektion):** `/maerkte.html` + `/en/maerkte.html` (Krypto+Aktien+
+ETFs+Indizes+Rohstoffe, 42 Assets + Detailseiten, Live-Kurse CoinGecko/Yahoo, **Gemini-KI-Sentiment**, News, Rechner,
+Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELEGRAM_BOT_TOKEN`/`TELEGRAM_CHANNEL`/
+`TELEGRAM_OWNER_ID`. Cron `markets-build.yml` Mo–Fr 06/16 UTC, commit `[skip ci]`. **Gehört der abannews-Session**
+(PROJEKT.md Teil 17). Berührt KEINEN Shop/Katalog/Social. Branch `claude/abannews-growth-monetization-hm6wod` → PR.
+
 **2026-06-09 — Luxestyle product session (Social-Maschine + Browser-Frage):**
 - **Spam-Moderation LIVE (FB + IG):** `automation/social-comment-moderate.mjs` + `social-comment-moderate.yml`
   (3×/Tag, blendet Solicitation-/„zahl-mir-Geld"-Spam aus, echte Fragen bleiben; hide=reversibel). Workflow nutzt

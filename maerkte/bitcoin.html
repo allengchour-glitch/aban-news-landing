@@ -227,9 +227,24 @@
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
     }
-    @media(max-width:520px){
-      /* Trend-Spalte auf sehr kleinen Screens ausblenden (Platz für Kurs+Sentiment) */
-      .mtable td.spark,.mtable thead th:nth-child(5){display:none}
+    @media(max-width:560px){
+      /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
+      .mtable-wrap{overflow:visible;background:transparent;border:0;box-shadow:none}
+      table.mtable{min-width:0;font-size:1rem}
+      .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+      .mtable tbody,.mtable tr,.mtable td{display:block}
+      .mtable tr.catrow{margin:1.2rem 0 .6rem}
+      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
+      .mtable tr:not(.catrow) td{border:0;padding:0}
+      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
   <style>
@@ -272,8 +287,8 @@
       <a class="backlink" href="/maerkte.html">← Alle Märkte</a>
       <h1>Bitcoin <span class="hl">BTC</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="bitcoin" data-type="crypto">62’221 USD</span>
-        <span class="chg down">-0.36 %</span>
+        <span class="px" id="livePrice" data-id="bitcoin" data-type="crypto">61’332 USD</span>
+        <span class="chg down">-0.86 %</span>
         <span class="tag-type">Krypto</span>
         <span class="badge bearish">Bearish</span>
       </div>
@@ -285,11 +300,11 @@
     <div class="wrap">
       <span class="eyebrow">30-Tage-Verlauf</span>
       <h2>Kursverlauf</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,8.0 L35.1,19.0 L62.3,29.6 L89.4,14.0 L116.5,39.8 L143.7,46.0 L170.8,50.2 L197.9,45.7 L225.0,45.0 L252.2,63.2 L279.3,52.7 L306.4,47.4 L333.6,60.2 L360.7,73.2 L387.8,81.8 L415.0,78.5 L442.1,79.9 L469.2,99.7 L496.3,164.6 L523.5,166.6 L550.6,192.0 L577.7,171.4 L604.9,172.9 L632.0,185.5 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,8.0 35.1,19.0 62.3,29.6 89.4,14.0 116.5,39.8 143.7,46.0 170.8,50.2 197.9,45.7 225.0,45.0 252.2,63.2 279.3,52.7 306.4,47.4 333.6,60.2 360.7,73.2 387.8,81.8 415.0,78.5 442.1,79.9 469.2,99.7 496.3,164.6 523.5,166.6 550.6,192.0 577.7,171.4 604.9,172.9 632.0,185.5" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">81’725</text><text x="586" y="204" font-size="12" fill="#64748b">60’922</text><path d="M10.0,200 L10.0,10.0 L34.8,21.4 L59.6,32.4 L84.3,16.1 L109.1,42.8 L133.9,49.3 L158.7,53.6 L183.5,49.0 L208.3,48.2 L233.0,67.0 L257.8,56.1 L282.6,50.6 L307.4,63.9 L332.2,77.3 L357.0,86.2 L381.7,82.8 L406.5,84.3 L431.3,104.7 L456.1,171.7 L480.9,173.7 L505.7,200.0 L530.4,178.7 L555.2,180.3 L580.0,193.3 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,10.0 34.8,21.4 59.6,32.4 84.3,16.1 109.1,42.8 133.9,49.3 158.7,53.6 183.5,49.0 208.3,48.2 233.0,67.0 257.8,56.1 282.6,50.6 307.4,63.9 332.2,77.3 357.0,86.2 381.7,82.8 406.5,84.3 431.3,104.7 456.1,171.7 480.9,173.7 505.7,200.0 530.4,178.7 555.2,180.3 580.0,193.3" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="193.3" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="193.3" r="3.4" fill="#dc2626"/></svg></div>
       <p class="updated" style="margin-top:.7rem">Stand: 2026-06-10 · Krypto aktualisiert live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Kennzahlen</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">Im Überblick</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-0.36 %</span></span></div><div class="kpi"><span class="kl">7 Tage</span><span class="kv"><span class="chg down">-3.69 %</span></span></div><div class="kpi"><span class="kl">30 Tage</span><span class="kv"><span class="chg down">-24.55 %</span></span></div><div class="kpi"><span class="kl">30T-Hoch</span><span class="kv">81’725 USD</span></div><div class="kpi"><span class="kl">30T-Tief</span><span class="kv">60’922 USD</span></div><div class="kpi"><span class="kl">Volumen</span><span class="kv">38.20 Mrd</span></div><div class="kpi"><span class="kl">Marktkap.</span><span class="kv">1.25 T USD</span></div><div class="kpi"><span class="kl">Allzeithoch</span><span class="kv">126’080 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-0.86 %</span></span></div><div class="kpi"><span class="kl">7 Tage</span><span class="kv"><span class="chg down">-3.69 %</span></span></div><div class="kpi"><span class="kl">30 Tage</span><span class="kv"><span class="chg down">-24.55 %</span></span></div><div class="kpi"><span class="kl">30T-Hoch</span><span class="kv">81’725 USD</span></div><div class="kpi"><span class="kl">30T-Tief</span><span class="kv">60’922 USD</span></div><div class="kpi"><span class="kl">Volumen</span><span class="kv">27.85 Mrd</span></div><div class="kpi"><span class="kl">Marktkap.</span><span class="kv">1.23 T USD</span></div><div class="kpi"><span class="kl">Allzeithoch</span><span class="kv">126’080 USD</span></div></div>
     </div>
   </section>
 
@@ -299,10 +314,10 @@
       <h2>KI-Sentiment</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">Bitcoin · BTC</span><span class="badge bearish">Bearish</span></div>
-        <p class="csignal">Deutlicher Wertverlust, anhaltender Abwärtstrend.</p>
-        <p class="crat">Bitcoin verzeichnete die schlechteste Woche seit dem FTX-Crash und verlor über 1 Billion USD an Wert in 8 Monaten, was auf anhaltenden Druck hindeutet.</p>
+        <p class="csignal">Druck durch externe Faktoren und jüngste Schwäche.</p>
+        <p class="crat">Bitcoin verzeichnete die schlechteste Woche seit dem FTX-Crash und steht unter Druck durch verschiedene externe Faktoren.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">Ausführliche Analyse</h3><ul class="analysis"><li>Treiber: Wall Street zeigt zunehmendes Interesse an Krypto, was langfristig positiv sein könnte.</li><li>Risiko: Der jüngste Wertverlust und die schlechteste Woche seit dem FTX-Crash deuten auf weiteren Schmerz hin.</li><li>Einordnung: Trotz institutionellem Interesse überwiegen kurzfristig die negativen Nachrichten über starke Wertverluste.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">Ausführliche Analyse</h3><ul class="analysis"><li>Treiber: Analysten sehen Potenzial für einen starken Rebound auf 74.000 USD trotz aktueller Schwäche.</li><li>Risiko: Die schlechteste Woche seit dem FTX-Crash, verbunden mit externen Headwinds wie SpaceX, Fed-Zinsen und geopolitischen Spannungen.</li><li>Einordnung: Die Nachrichtenlage zeigt eine Mischung aus kurzfristigem Abwärtsdruck und langfristigen Rebound-Erwartungen, die durch makroökonomische Faktoren beeinflusst werden.</li></ul>
     </div>
   </section>
 
@@ -310,7 +325,7 @@
     <div class="wrap">
       <span class="eyebrow">News zu BTC</span>
       <h2>Aktuelle Schlagzeilen</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQRFBJZEpNQUxVYTJneUc0ZFV2eEtqNTlMT0dYd0hoMDFJUGpUT3RQMDd0dHFuNUh3VHBCRm1neHd1WHRrWDhZZUF1Mk5idGhjUnZ6LW9za2ZoSzFJWll0QV9sNVZBQW1fcDdBTXhHYUJka05iNl9YcXlSaXh1M01GWXBIMnR0X0w0ZlB5Wk5tM0M1TzRad3pRbA?oc=5" target="_blank" rel="noopener">Bitcoin’s Worst Week Since FTX Crash Signals More Pain Ahead</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxQMG0za3ppLVhCekRESHdPVmR4Njd1M20zT0lFbHV0T1I1NXlpRnRJMEZfOWltaGJlSmVUZExJUERmVGU3WnhjWTFjWGdBTktxRWh3Z1FreFhKU2FmNzRCdWJySkdhSjhoWVRXRXpOa1I2VFFIcS1XRlNDalhsNEJSZWtEM3hlR29jNTVOMERKSWozOHF6ZEdDSFNoZHZJTDBKYnlUVjBvdnNKam5QSnZZdFZmQlVLWER1YzlwNVBKaFRxYnZjVXFSZg?oc=5" target="_blank" rel="noopener">Circle debuts cirBTC on Ethereum to challenge Coinbase in the wrapped bitcoin market</a><div class="meta"><span>CoinDesk</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE1XdWhGRWcxaXZvYTFPa3NkN3RLYlZkVUJ1dDZMNVdQZXdxOWQzM0pLLVVOMzZvWTYtOV9DSm5BSHJmcmNMMjRXamVIY0E0N01LNWF6N0NSbVEyMFk2Y0RYZnM2WlRyQUl4d2xmdlBvaGk?oc=5" target="_blank" rel="noopener">More than $1 trillion in value gone in 8 months. What’s going on with bitcoin?</a><div class="meta"><span>CNN</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNMkhxNmRBc0kteVFldmZqbWRrN0VYbkUyY0dhRDRQai1BNEFjbmZIUzhEM184VmppNXdmOU5TTkxEa2UxWDdwN3lxT2hYUXdCU0ZkcmR0VUdNZlRVOFpVcTBwbTROWlVlaDEtREVOamctS0xCSDQtWTVoVzZpb2R5TTVFWm9kYVJvanQ3ODZxNDNoZUwyclZfaTUybTBzUzBMTjJTUnB1bnBMamp1aUVrdmNZVQ?oc=5" target="_blank" rel="noopener">Bitcoin’s $235 Billion Crash Masks a Bigger Shift Across Crypto</a><div class="meta"><span>Bloomberg.com</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxORE5idmNPcHJRd3hoSm9fNUtpZlFCbXNib2Q4NWJfaXlCTEdKX05oNk1xVEtLbkZTMDFBTjFyMnNxYVd2U0Q0eHEwWWk3bnplNkdrNHRGWWpoT3BhcDloOG90c2Q4a1RiSHd4ZzBQcHlvTVJVbHdfU0swSUhLd3RwczBPRXV6QlBPVjF2YQ?oc=5" target="_blank" rel="noopener">Exclusive: Wall Street embraces crypto it once feared</a><div class="meta"><span>Axios</span><span>· 09 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQRFBJZEpNQUxVYTJneUc0ZFV2eEtqNTlMT0dYd0hoMDFJUGpUT3RQMDd0dHFuNUh3VHBCRm1neHd1WHRrWDhZZUF1Mk5idGhjUnZ6LW9za2ZoSzFJWll0QV9sNVZBQW1fcDdBTXhHYUJka05iNl9YcXlSaXh1M01GWXBIMnR0X0w0ZlB5Wk5tM0M1TzRad3pRbA?oc=5" target="_blank" rel="noopener">Bitcoin’s Worst Week Since FTX Crash Signals More Pain Ahead</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNRFFYM205amdWNlZPRlI2WVhLQW10ZW01Wk9XbVVnbkVzZ21pdU1kUGZ2MUVETWM3N1lsYU95Uk0xa0JxR21jZ1ctZXVnVXJzd2t6NkJIV19Wa2g2T1h2ZHQ4Wmhfa2Rtc2U3N0VWSk9pb2FKOEVBbkM4YWllREFOWGpDdk9FT3RxemdiZTF3SlVtWXotNlNTUXVHUXhtU05CckE?oc=5" target="_blank" rel="noopener">Bitcoin, Ethereum, XRP Slide, Dogecoin Flat As US Launches &#x27;Proportional&#x27; Strikes Against Iran: Analyst Sees BTC&#x27;s Strong Rebound To $74,000 Soon</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOUGRXeEEzN3BLM1JSUnQyOXl4S2JpWm9LcjRqM1gzQk90VTRKbXRlaEJNa1g1OTlSZENLR2wwWlJSVWxxcWk3WjZjM1o1YVVGWDBxUUN6cFRQbzI0QVZwRTlvM3NIRzBLeE5OSFQwbi1YdXZ3eENQMENSVXpRQnNjdHpGNDRXUWY3THd3atIBlAFBVV95cUxQNXFIVmVhU2xWNThmWlV6aThLRWZURkJoZlR3RlQ1UUkybGF6S2lQZk5mMWhaSFpEMFZhWG92bGNrdG5jZ3p6ZktaUTRKaWI0X0hLZWZKRnhUZjA2V0ZLT3lLdzkzZk9tT2h6bWQ0cGtBZWpyanZIRG1ha05FT3RkUVZoTkR3bzhtWHdOOHlVM3hJMnNM?oc=5" target="_blank" rel="noopener">Bitcoin, Ethereum Resume Rebound as Inflation Hits 3-Year High</a><div class="meta"><span>Decrypt</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOcl9rRUpsaG9vam9yTTk3LXNwT1FhRm5DbzNCSjU3ZWVMM05idkN5dTdwVW9vOEUta2NXTmNUMjBiNm90UW1GM1V1THFSdjdmUkRIdldfeDdaaVhGaU9Ob3BkZmt1V3EzQjFzbWduVXFPRm1SR3pnX0VzUHFrS3ZfQ0R2dDRmek5jQzQ1Z19RdndCMzZaaXZlUDFrOGVtZHlEd3Q2amgtRldIMWxqQk1r?oc=5" target="_blank" rel="noopener">The quantum clock is ticking: it&#x27;s Bitcoin&#x27;s problem, not Ethereum&#x27;s</a><div class="meta"><span>CoinDesk</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOcGcwT1RNT2hSS2hVZGdFTGtQZXJFTXhMYlNYaHhPYVZsczlWbUlZUXVRSmZVcUNJRldVSU1jTzlYaUtUeVIxa1FYUXFkRDh0ZjRaWEZNYXdXQ3dtN1VLbml4SjIzSGhMdEVtRWc3c2Y1ZF9MUEV5X1RTMjVGdUtLWGxSMUUxcnQwQmZjZmRZNnpubF9ocFlFdHRsSF9NMzNYU2ZxUGRSZnYyQnN3MGlVYVlHWHV4SWJxTXd3OTRWX2FKUW1idEZ6QW4tRHJSOWM?oc=5" target="_blank" rel="noopener">Live bitcoin updates: What&#x27;s next for bitcoin as it faces headwinds from SpaceX, Fed rates, and Mythos</a><div class="meta"><span>CoinDesk</span><span>· 10 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/maerkte.html">← Zur Märkte-Übersicht</a> · <a href="/ki-und-krypto-daten.html">KI &amp; Krypto in Zahlen →</a></p>
     </div>
   </section>

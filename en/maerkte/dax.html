@@ -227,9 +227,24 @@
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
     }
-    @media(max-width:520px){
-      /* Trend-Spalte auf sehr kleinen Screens ausblenden (Platz für Kurs+Sentiment) */
-      .mtable td.spark,.mtable thead th:nth-child(5){display:none}
+    @media(max-width:560px){
+      /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
+      .mtable-wrap{overflow:visible;background:transparent;border:0;box-shadow:none}
+      table.mtable{min-width:0;font-size:1rem}
+      .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+      .mtable tbody,.mtable tr,.mtable td{display:block}
+      .mtable tr.catrow{margin:1.2rem 0 .6rem}
+      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
+      .mtable tr:not(.catrow) td{border:0;padding:0}
+      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
   <style>
@@ -272,8 +287,8 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>DAX <span class="hl">DAX</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="dax" data-type="index">24’263 Pkt</span>
-        <span class="chg down">-0.70 %</span>
+        <span class="px" id="livePrice" data-id="dax" data-type="index">24’195 Pkt</span>
+        <span class="chg down">-1.71 %</span>
         <span class="tag-type">Index</span>
         <span class="badge bearish">Bearish</span>
       </div>
@@ -285,11 +300,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,140.9 L36.4,191.4 L64.7,168.2 L93.1,127.3 L121.5,192.0 L149.8,146.3 L178.2,134.4 L206.5,91.4 L234.9,108.1 L263.3,72.0 L291.6,8.0 L320.0,34.1 L348.4,35.0 L376.7,46.0 L405.1,44.4 L433.5,57.4 L461.8,41.9 L490.2,83.9 L518.5,64.8 L546.9,88.6 L575.3,106.9 L603.6,130.3 L632.0,152.0 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,140.9 36.4,191.4 64.7,168.2 93.1,127.3 121.5,192.0 149.8,146.3 178.2,134.4 206.5,91.4 234.9,108.1 263.3,72.0 291.6,8.0 320.0,34.1 348.4,35.0 376.7,46.0 405.1,44.4 433.5,57.4 461.8,41.9 490.2,83.9 518.5,64.8 546.9,88.6 575.3,106.9 603.6,130.3 632.0,152.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">25’389</text><text x="586" y="204" font-size="12" fill="#64748b">23’951</text><path d="M10.0,200 L10.0,147.2 L37.1,199.4 L64.3,175.4 L91.4,133.2 L118.6,200.0 L145.7,152.8 L172.9,140.6 L200.0,96.1 L227.1,113.3 L254.3,76.1 L281.4,10.0 L308.6,37.0 L335.7,37.9 L362.9,49.2 L390.0,47.6 L417.1,61.0 L444.3,45.0 L471.4,88.3 L498.6,68.7 L525.7,93.2 L552.9,112.1 L580.0,136.3 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,147.2 37.1,199.4 64.3,175.4 91.4,133.2 118.6,200.0 145.7,152.8 172.9,140.6 200.0,96.1 227.1,113.3 254.3,76.1 281.4,10.0 308.6,37.0 335.7,37.9 362.9,49.2 390.0,47.6 417.1,61.0 444.3,45.0 471.4,88.3 498.6,68.7 525.7,93.2 552.9,112.1 580.0,136.3" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="136.3" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="136.3" r="3.4" fill="#0f9d6b"/></svg></div>
       <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-0.70 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-2.15 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-0.36 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">25’389 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">23’951 Pkt</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.71 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-2.75 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+0.34 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">25’389 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">23’951 Pkt</span></div></div>
     </div>
   </section>
 
@@ -299,10 +314,10 @@
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">DAX · DAX</span><span class="badge bearish">Bearish</span></div>
-        <p class="csignal">Rückgang, träge Entwicklung vor EZB-Entscheidung.</p>
-        <p class="crat">Der DAX fällt, da die deutschen Industrieproduktion steigt, aber die europäischen Indizes vor der EZB-Zinsentscheidung träge sind.</p>
+        <p class="csignal">Rückgang durch geopolitische Spannungen.</p>
+        <p class="crat">Der DAX schließt niedriger, beeinflusst von erneuten Spannungen im Nahen Osten und einer nervösen Marktstimmung.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Die deutsche Industrieproduktion steigt, was ein positives Signal für die Wirtschaft ist.</li><li>Risiko: Der DAX fällt, und die europäischen Indizes zeigen sich träge vor der EZB-Zinsentscheidung.</li><li>Einordnung: Die Nachrichtenlage ist gemischt, mit positiven Wirtschaftsdaten, aber einem fallenden Index und Unsicherheit.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Keine spezifischen positiven Treiber in den vorliegenden Nachrichten.</li><li>Risiko: Der Index fällt, beeinflusst von erneuten Spannungen im Nahen Osten und einer allgemein nervösen Marktstimmung.</li><li>Einordnung: Die Nachrichtenlage ist negativ, geprägt von einem Rückgang und geopolitischen Unsicherheiten.</li></ul>
     </div>
   </section>
 
@@ -310,7 +325,7 @@
     <div class="wrap">
       <span class="eyebrow">News on DAX</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiS0FVX3lxTE9YcEhGeXZVeExwczNZZE5YcU54aWlVSE9WYWVMU3RrVVc3VXg2c2xZeW1NZm9OYktkNnltRVRad0NJMjZldWlhbUNRZw?oc=5" target="_blank" rel="noopener">Real-Time Prices, Charts &amp; News | Deutsche Börse: Xetra &amp; Frankfurt</a><div class="meta"><span>Deutsche Börse Frankfurt</span><span>· 07 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPNEFmNTEybVFlaGpXRV90RHlpdF9NNGl6SjJNTHZ5TXlucmVucmhPQUtoQzA0Q2YxdGdjWnFyNXdLeC1mZFZ4cm1jN0tLZkE4dGFVaVFUUV9xekdVT2xGaS15SFNHdUZ5MzZUTVVjRXJMeFY4UGZhclg4TjBtYkpFNGlCcmhqajRk?oc=5" target="_blank" rel="noopener">The DAX Index Opens 0.27% Lower</a><div class="meta"><span>TradingView</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxPQ0xwLXhkY193OFpiallMX0o0TTlMMGVSMFhnNVZnSFZaVUt4bkhjUlJsSzRWOFVVNHQwVnd3R2lBcDZlQnhRVEs3cWx4dVZWUnJSSlQ4dVN6V1BxLVRCRGdiUVctTVBrR3FEWVNkbDFWbTRXXzRUelA1Y0ptcXJ0UlA0a0dsZFVjZC1rU2NCejUwREtudG1tZGlLOVlldEdkRWRkRzBn?oc=5" target="_blank" rel="noopener">DAX Index Declines; German Industrial Output Climbs</a><div class="meta"><span>marketscreener.com</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE0tVHZTaVU2N0JXcDNVbHRJdEhUOEs5T1h5VmpYN2syUUc3N1FsVC0wRHdLWk5xakF3bFNTVFVHMW9IbjJvbzNmeXJ4N1hjMTJ0S0HSAVdBVV95cUxPS0p6SXdnWVJSak5XWnlxT0tURFFxWldHNmFLakdtemZxUWM4b0VLMzkxTE1xU3RFVGl3Qjd4ckpIbFdmSEU3dnBPeEFGVHFJczJpdzNja0k?oc=5" target="_blank" rel="noopener">European Stocks - 09-06-26</a><div class="meta"><span>Armenpress</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNNmJ0eS1HdGJMMTFJb29GWElhbExlSDIzNXJyX3E2Ry05NGdLS2EzVEZQelhkd2o1aklNcFkyTGc3N3lxR1dBaC1GcU1mY1BDVlp1TmhnWUIzWEx3dER6RTVoSXhsZ3VYNGhEaVRsZzhYdnc5WDRMd19DbGNYQkZib0s5LUhNMGgtR0NQVy1aZEw1UHF4UXZ6NWJXZ3hjYUFSSkdpMTNWanRJeFJTUkhxSkZlMXZvRXJBam5qRVQwdXFQY1k?oc=5" target="_blank" rel="noopener">DAX, CAC and MIB Forecasts – EU Indices Sluggish Day Before ECB Rate Decision</a><div class="meta"><span>FXEmpire</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxOX1p3SkI2ZWRWZGFuVEdZOWxmaWZSN1JRRHRZV0FBOGRldnNWMGNvUGwxS1N5NHB5b3h4WGJPQVhtMGxSTDg1RUo1QUZaZGtieENhd1RaTXZ0U1daclluaFh6bW5JQ3I0bXFsWVEwUy1Xek43NTJCMlZ3ZWViaGNROUNUeWZ2WTcySEE?oc=5" target="_blank" rel="noopener">The DAX Index Closes 0.97% Lower</a><div class="meta"><span>TradingView</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxQNkVxY01LaVFWU3ZUUktYR0J6eGI5OU9MUXB4cDFud2hXSTE1THZxcWR2cmNSM19kNmNneGpuMmhuQnNjak1ETHZJRzlkTm9rb25fSFlPQlphRW8yRlVxZ0w3QnN1aEtSQ2dpeFN4ZVdnT29BNmYyV1A2UEcwR0RiM3NpbWlCY20zWnJFYk1IM0pEZmcwVjYxeWQ3WEI5SFVlbHRKUnJyT0RPV3d5U1F5bDhn?oc=5" target="_blank" rel="noopener">Germany&#x27;s DAX Index Falls Amid Renewed Middle East Tensions</a><div class="meta"><span>marketscreener.com</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE5RTmp0cTg4VDY0QkhtVUhhZTd4MktzbHg4UXdVSzNvSklxLVEzSUozWEtnQkROcWpyTmJkRE9XbmxVRnVIR040UnVITTE1RUlPOVduLVVRRlRFRE8yWS1HbVZPeXJkNFhXVXZCY0NEWnlaTTBMU0FYakRWV0RxLUU?oc=5" target="_blank" rel="noopener">Morning Bid: Nervous but not yet panicking</a><div class="meta"><span>Reuters</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE0tVHZTaVU2N0JXcDNVbHRJdEhUOEs5T1h5VmpYN2syUUc3N1FsVC0wRHdLWk5xakF3bFNTVFVHMW9IbjJvbzNmeXJ4N1hjMTJ0S0HSAVdBVV95cUxPS0p6SXdnWVJSak5XWnlxT0tURFFxWldHNmFLakdtemZxUWM4b0VLMzkxTE1xU3RFVGl3Qjd4ckpIbFdmSEU3dnBPeEFGVHFJczJpdzNja0k?oc=5" target="_blank" rel="noopener">European Stocks - 09-06-26</a><div class="meta"><span>Armenpress</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNaFV3ei1ibFlpMjFOaFFWZ3BBQ3ZvZXR5MTQzSWFicDlpRmtZdXFyTjhxbTRhemx2MEtydWtqYjNJQ1cxUXQzZjQ2eUF3VGlsQVRCZWdBcnpkRjg0UXdKSk5PTDladEswRjJlQy1UbEFnazhmWmxQN0I1djJlV1NNX2NsS0hLMGtBVW5sUDM0VVFjZjliY0lsWTNFS2I?oc=5" target="_blank" rel="noopener">Benchmark Indices: Rebalancing of the DAX Blue-Chip Indices</a><div class="meta"><span>Deutsche Börse Frankfurt</span><span>· 05 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>

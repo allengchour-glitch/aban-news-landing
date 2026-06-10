@@ -227,9 +227,24 @@
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
     }
-    @media(max-width:520px){
-      /* Trend-Spalte auf sehr kleinen Screens ausblenden (Platz für Kurs+Sentiment) */
-      .mtable td.spark,.mtable thead th:nth-child(5){display:none}
+    @media(max-width:560px){
+      /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
+      .mtable-wrap{overflow:visible;background:transparent;border:0;box-shadow:none}
+      table.mtable{min-width:0;font-size:1rem}
+      .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+      .mtable tbody,.mtable tr,.mtable td{display:block}
+      .mtable tr.catrow{margin:1.2rem 0 .6rem}
+      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
+      .mtable tr:not(.catrow) td{border:0;padding:0}
+      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
   <style>
@@ -272,10 +287,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Meta <span class="hl">META</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="meta" data-type="stock">589.08 USD</span>
-        <span class="chg up">+0.77 %</span>
+        <span class="px" id="livePrice" data-id="meta" data-type="stock">570.98 USD</span>
+        <span class="chg down">-2.33 %</span>
         <span class="tag-type">Stock</span>
-        <span class="badge bullish">Bullish</span>
+        <span class="badge neutral">Neutral</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Stock is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -285,11 +300,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,140.2 L37.7,125.2 L67.4,75.7 L97.1,69.2 L126.9,84.4 L156.6,95.4 L186.3,126.6 L216.0,117.7 L245.7,109.3 L275.4,98.8 L305.1,91.3 L334.9,8.1 L364.6,8.0 L394.3,18.1 L424.0,134.4 L453.7,144.7 L483.4,52.7 L513.1,36.0 L542.9,161.5 L572.6,189.1 L602.3,192.0 L632.0,175.7 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,140.2 37.7,125.2 67.4,75.7 97.1,69.2 126.9,84.4 156.6,95.4 186.3,126.6 216.0,117.7 245.7,109.3 275.4,98.8 305.1,91.3 334.9,8.1 364.6,8.0 394.3,18.1 424.0,134.4 453.7,144.7 483.4,52.7 513.1,36.0 542.9,161.5 572.6,189.1 602.3,192.0 632.0,175.7" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">635.29</text><text x="586" y="204" font-size="12" fill="#64748b">570.98</text><path d="M10.0,200 L10.0,117.6 L37.1,105.4 L64.3,65.1 L91.4,59.8 L118.6,72.2 L145.7,81.1 L172.9,106.6 L200.0,99.3 L227.1,92.5 L254.3,83.9 L281.4,77.8 L308.6,10.1 L335.7,10.0 L362.9,18.2 L390.0,112.9 L417.1,121.3 L444.3,46.4 L471.4,32.8 L498.6,134.9 L525.7,157.4 L552.9,159.8 L580.0,200.0 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,117.6 37.1,105.4 64.3,65.1 91.4,59.8 118.6,72.2 145.7,81.1 172.9,106.6 200.0,99.3 227.1,92.5 254.3,83.9 281.4,77.8 308.6,10.1 335.7,10.0 362.9,18.2 390.0,112.9 417.1,121.3 444.3,46.4 471.4,32.8 498.6,134.9 525.7,157.4 552.9,159.8 580.0,200.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="200.0" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="200.0" r="3.4" fill="#dc2626"/></svg></div>
       <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+0.77 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-5.44 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-1.63 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">635.29 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">584.59 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">1.58 Mio</span></div><div class="kpi"><span class="kl">52w high</span><span class="kv">796.25 USD</span></div><div class="kpi"><span class="kl">52w low</span><span class="kv">520.26 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-2.33 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-8.35 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-4.66 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">635.29 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">570.98 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">16.74 Mio</span></div><div class="kpi"><span class="kl">52w high</span><span class="kv">796.25 USD</span></div><div class="kpi"><span class="kl">52w low</span><span class="kv">520.26 USD</span></div></div>
     </div>
   </section>
 
@@ -298,11 +313,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Meta · META</span><span class="badge bullish">Bullish</span></div>
-        <p class="csignal">Positive Anzeichen für KI-Monetarisierung.</p>
-        <p class="crat">Meta zeigt frühe Anzeichen der GenAI-Monetarisierung und Analysten sehen ein hohes Potenzial für neue Umsatzsegmente.</p>
+        <div class="chead"><span class="cname">Meta · META</span><span class="badge neutral">Neutral</span></div>
+        <p class="csignal">Erholung, aber Finanzierungsfragen für KI.</p>
+        <p class="crat">Meta-Aktien erholen sich, da Analysten ein großes Potenzial in Abonnements sehen, während über einen Aktienverkauf zur Finanzierung von KI-Investitionen spekuliert wird.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Meta zeigt frühe Anzeichen der GenAI-Monetarisierung, und Analysten sehen ein neues 20 Mrd. USD Umsatzsegment.</li><li>Risiko: Ein Investor verkauft 9.355 Aktien, was auf Gewinnmitnahmen hindeuten könnte.</li><li>Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit Fokus auf das KI-Potenzial und neue Umsatzquellen.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Analysten sehen ein potenzielles 20-Milliarden-Dollar-Abonnementgeschäft bis 2030, was den Kurs stützen könnte.</li><li>Risiko: Spekulationen über einen milliardenschweren Aktienverkauf zur Finanzierung von KI-Investitionen könnten den Kurs belasten.</li><li>Einordnung: Die Nachrichtenlage ist gemischt, mit positiven Geschäftsaussichten, aber auch Unsicherheiten bezüglich der Finanzierung von KI-Initiativen.</li></ul>
     </div>
   </section>
 
@@ -310,7 +325,7 @@
     <div class="wrap">
       <span class="eyebrow">News on META</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQVEVkdWF4TFBxcDVGeWFJSW95U2F2bDZoU0U0ZGkyc2x5R2h6dHBxVUNsV2lpZkVuRHhUUWxyVDVOZEZyZnlmUTN2b0MzQjdoU0xoSnU3QXpDV1lwR0diV0p0VGJZZVVaNnctWkdHRktpMTRZNVBUc3FoRk95ZDlvRHlLY3E2UFpGYTBZbHBXejZjN09zVW12NUxXNzhfTmc3VzlR?oc=5" target="_blank" rel="noopener">Is the Market Underestimating Meta Stock’s AI Payoff</a><div class="meta"><span>Yahoo Finance</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxOZngwUy1oVG1wRlRFWVdTVWRCQWhjczVqajVjZjFTa3VjLWJxT3kyTkY2WVRqdTdMV1p3ZjE5eElUcko0cm82bEoyb1FIbnNtYWc1cXA5eWRUcEtVeHpSNWJpNXZGY0dtTzJJUnFRdU9PM2ZVRm5LaXRNcVZjREtsenFUNldoam5DVDQyNTdXVjJhdGp1aHNF?oc=5" target="_blank" rel="noopener">Truist says Meta has found its next $20 billion business, stock set to gain more than 40%</a><div class="meta"><span>CNBC</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxPUnh2eHYySXdpRGg3anNOOGR3cTQtOUNzMW56ZnN3Zzdqc25YNXZLY2o4ckpYOVZHY3BhS3U4cVhmVm9BeUxDZHpvUDBtQ3hwQWF0RjBwUDdSdDg4em83WjZkZDlMWDBPa21xX1ZIX0JEeWNXYVcxMUJIcDdFVWN4b1JjY2t5NkZKakxYYXM2RHhGWTEyWGtvU0ZNTkVPUXdZLW03TmlnaVVQZTJIYzhlRUc4S1MxQkZSell0b1Yta1Z6NEYzX0E?oc=5" target="_blank" rel="noopener">Black Swift Group LLC Sells 9,355 Shares of Meta Platforms, Inc. $META</a><div class="meta"><span>MarketBeat</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOWEFvUzlueVpPRUNhekp3dkcwMXRaRzZqLU03Wk42STRkaTZpMUQ1QXByZGNJR3BXZ1psZGxWNkFSaWZqcXZUMXBGRjJMTFlPOXZfNjFDU2tOMkZ3VzY1WDZUZUJSY3VvdEI4UzJkOXczc1BUbW1jVE54YmY2VDRBMThIY2VtZXNaNnRfUVFJYWxiNUJ5WU10ZWtqN3BiaEVzTkVYb0VXMU0xa19XTkZKOWZDNA?oc=5" target="_blank" rel="noopener">Truist Says Buy Meta Platforms Stock, Cites Its ‘Next $20B+ High-Margin Revenue Segment’</a><div class="meta"><span>TipRanks</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxOVWlDWnBNbGhMNm8yNkhocFVWMzNIeWtaV1BOT1BFMG5neUo3T3pWdW94cXdoV3BQVTQ4Wjl4d3FYaVp2Mm9ZV2dfX3h3Wm44WnZFNmUtRTFpamNreE0xeHdHY09kWFoxNEUxRGo0b0hFWGt6am1id1UwUTFyMjJHa2M1NkxlbHJVUDYxZkxXNHBCd1ZJb1hj?oc=5" target="_blank" rel="noopener">Meta (META) Shows Early Signs of GenAI Monetization, UBS Says</a><div class="meta"><span>Yahoo Finance</span><span>· 08 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMi2AFBVV95cUxON0ctczFpWXQxSmxmWGdpbm9WemRBZFRHalBic1FGUFNMUlZxYl84cG5mU1dHOVNScmQ1Sl9vS3JRWVlqNzVUU3NpdFBla1p3VEVSbVRCVUY0U2dsZ1I3bVZocU5xWjFNX0MxcWVWbzdCRTdFQ0JvWkxrd3lWNld1cVJaTnlvNi1WWEN5SXRESUNlUzhvUW0xdmFUS2twbHVTRDdDWWtfRU16U3hSeFNCV21nTVJwZjlBQV9QSVlTMU9mQ2l6TnFZcmVabFViTE9qT3lObjUzb1o?oc=5" target="_blank" rel="noopener">Meta Platforms Stock Edges Lower Monday While The Nasdaq Rebounds: What&#x27;s Going On?</a><div class="meta"><span>Benzinga</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxOZngwUy1oVG1wRlRFWVdTVWRCQWhjczVqajVjZjFTa3VjLWJxT3kyTkY2WVRqdTdMV1p3ZjE5eElUcko0cm82bEoyb1FIbnNtYWc1cXA5eWRUcEtVeHpSNWJpNXZGY0dtTzJJUnFRdU9PM2ZVRm5LaXRNcVZjREtsenFUNldoam5DVDQyNTdXVjJhdGp1aHNF?oc=5" target="_blank" rel="noopener">Truist says Meta has found its next $20 billion business, stock set to gain more than 40%</a><div class="meta"><span>CNBC</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxPZlNzYi11bVVNM0JvaFN3S3QtTm9QeUNORW1xT2MzemM5a042U0pMaXVkQ0xOMjI3MW5pdVhUZnFkOXIyZWpuc1EwLVNOYnZxbEtCbnJfNml0SWhkVmI2dkxORGc5eF9PeDVRNHVydDc1a1B0QjVCLUhvQVY1NGlqbHNnZGhEaDZ0c05DM0YyUU56cWozajRuZG1IX3VuWHE5NzdzdQ?oc=5" target="_blank" rel="noopener">META Stock Rebounds Overnight: Analyst Says Subscriptions Could Be $20B Business By 2030</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxQbXlPbVVreXhFZFplSTV6cy1HWG9temZuQmVxcUtGcG9QdEZDUm8yR3V0bXd4T01namRVUGc3bmhxQzRDNXBoQlVWR3k4TWR5UVltMkRpY3NCVVZ2bnE4OXV5OHFKZGpEZ2FoYVJMODQ2cE9yaVZkTDlEeVpzMVhvOE9zd2pPc1NTQ2EtTXZyT281TERCOFBB?oc=5" target="_blank" rel="noopener">Meta Is Reportedly Weighing a Multibillion-Dollar Stock Sale to Fund Its AI Build-Out. Here&#x27;s What It Could Mean for Shareholders.</a><div class="meta"><span>The Motley Fool</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNcGN5VFYwZVNiMG5idTFHT3Y4LXJNMVJoYVdBN3g3bFo2bjNOLXhTOFpCVGVHbnRnZm1lOUhRcEtxWXk1dE1lWTVpckdxczBHeUJXZUJXM0ptZVR1VGo5RXNkaGI1ZHRVRG9EVUdoaW5fNV9SRFp6TFZ1UmZXaVA1cVI0a3IxV2tiamhTRGhlUmN3S2FaNVFJ?oc=5" target="_blank" rel="noopener">Meta: The Market&#x27;s Perception On AI CapEx Seems Misplaced (NASDAQ:META)</a><div class="meta"><span>Seeking Alpha</span><span>· 10 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>

@@ -13,6 +13,12 @@
 
   var state = { assets: [], byId: {} };
 
+  // ---------- Kategorie-Filter + „mehr anzeigen" ----------
+  var TYPES = ['crypto', 'stock', 'etf', 'index', 'commodity'];
+  var CAP = 5;                 // pro Gruppe initial sichtbar
+  var filter = 'all';          // aktive Tab-Kategorie
+  var expanded = {};           // pro Typ aufgeklappt?
+
   // ---------- Watchlist (localStorage, kein Tracking) ----------
   var WATCH_KEY = 'aban_markets_watch';
   function loadWatch() {
@@ -26,25 +32,31 @@
   var detailBase = LANG === 'en' ? '/en/maerkte/' : '/maerkte/';
   var NUMLOC = LANG === 'en' ? 'en' : 'de-CH';
   var T = {
-    de: { krypto: 'Krypto', aktie: 'Aktie', index: 'Index', rohstoff: 'Rohstoff',
+    de: { krypto: 'Krypto', aktie: 'Aktie', etf: 'ETF', index: 'Index', rohstoff: 'Rohstoff',
           gainer: 'Top-Gewinner', loser: 'Top-Verlierer', mood: 'Marktstimmung',
           conf: 'KI-Konfidenz', noNews: 'Aktuell keine News.',
           sources: 'Quellen: ', asof: 'Stand: ', cryptoLive: ' · Krypto live', ai: ' · KI: ',
           rate: 'Kurs: ', endval: 'Endwert ≈ ', paid: 'Eingezahlt', gain: 'Wertzuwachs', valueIn: 'Wert in ',
           unavailable: 'Marktdaten zurzeit nicht verfügbar.',
+          all: 'Alle', more: 'mehr anzeigen', less: 'weniger',
           stale: '⚠️ Daten evtl. veraltet (letzter Lauf vor über {h} h).' },
-    en: { krypto: 'Crypto', aktie: 'Stock', index: 'Index', rohstoff: 'Commodity',
+    en: { krypto: 'Crypto', aktie: 'Stock', etf: 'ETF', index: 'Index', rohstoff: 'Commodity',
           gainer: 'Top gainer', loser: 'Top loser', mood: 'Market mood',
           conf: 'AI confidence', noNews: 'No news right now.',
           sources: 'Sources: ', asof: 'As of: ', cryptoLive: ' · crypto live', ai: ' · AI: ',
           rate: 'Rate: ', endval: 'Final value ≈ ', paid: 'Paid in', gain: 'Gain', valueIn: 'Value in ',
           unavailable: 'Market data currently unavailable.',
+          all: 'All', more: 'show more', less: 'less',
           stale: '⚠️ Data may be stale (last run over {h} h ago).' }
   }[LANG];
 
   // ---------- Währung (USD/CHF/EUR, localStorage) ----------
   var CUR_KEY = 'aban_markets_cur';
-  var cur = (function () { try { return localStorage.getItem(CUR_KEY) || 'usd'; } catch (e) { return 'usd'; } })();
+  var hadStoredCur = false;
+  var cur = (function () {
+    try { var s = localStorage.getItem(CUR_KEY); if (s) { hadStoredCur = true; return s; } } catch (e) {}
+    return 'usd';
+  })();
   function setCur(c) { cur = c; try { localStorage.setItem(CUR_KEY, c); } catch (e) {} }
   function rate() { return (state.fx && state.fx[cur]) || 1; }
   function fmtMoney(usdVal) {
@@ -52,7 +64,7 @@
     return fmtPrice(usdVal * rate(), cur);
   }
   function typeLabel(t) {
-    return t === 'crypto' ? T.krypto : t === 'stock' ? T.aktie
+    return t === 'crypto' ? T.krypto : t === 'stock' ? T.aktie : t === 'etf' ? T.etf
       : t === 'index' ? T.index : t === 'commodity' ? T.rohstoff : t;
   }
   // Indizes werden als Punkte (native, ohne Umrechnung) angezeigt; sonst Währung.
@@ -193,20 +205,70 @@
     return tr;
   }
 
+  function moreRow(t, hidden) {
+    var tr = document.createElement('tr');
+    tr.className = 'morerow';
+    var td = document.createElement('td');
+    td.colSpan = 6;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = expanded[t]
+      ? ('▲ ' + T.less)
+      : ('▼ ' + T.more + ' (+' + hidden + ')');
+    btn.addEventListener('click', function () {
+      expanded[t] = !expanded[t];
+      renderTable();
+    });
+    td.appendChild(btn);
+    tr.appendChild(td);
+    return tr;
+  }
+
   function renderTable() {
     var tbody = document.getElementById('marketRows');
     if (!tbody) return;
     tbody.innerHTML = '';
+    // Merkliste immer komplett, unabhängig vom Filter
     var watched = state.assets.filter(function (a) { return watch[a.id]; });
     if (watched.length) {
       tbody.appendChild(subheader('★ ' + (LANG === 'en' ? 'Watchlist' : 'Merkliste')));
       watched.forEach(function (a) { tbody.appendChild(buildRow(a)); });
     }
-    ['crypto', 'stock', 'index', 'commodity'].forEach(function (t) {
+    TYPES.forEach(function (t) {
+      if (filter !== 'all' && filter !== t) return;
       var grp = state.assets.filter(function (a) { return a.type === t && !watch[a.id]; });
       if (!grp.length) return;
       tbody.appendChild(subheader(typeLabel(t)));
-      grp.forEach(function (a) { tbody.appendChild(buildRow(a)); });
+      var show = expanded[t] ? grp : grp.slice(0, CAP);
+      show.forEach(function (a) { tbody.appendChild(buildRow(a)); });
+      if (grp.length > CAP) tbody.appendChild(moreRow(t, grp.length - CAP));
+    });
+  }
+
+  function renderTabs() {
+    var box = document.getElementById('marketTabs');
+    if (!box) return;
+    box.innerHTML = '';
+    var tabs = [['all', T.all, state.assets.length]];
+    TYPES.forEach(function (t) {
+      var c = state.assets.filter(function (a) { return a.type === t; }).length;
+      if (c) tabs.push([t, typeLabel(t), c]);
+    });
+    if (tabs.length <= 2) return; // nur 1 Kategorie → keine Tabs nötig
+    tabs.forEach(function (tab) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = (filter === tab[0]) ? 'on' : '';
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-selected', filter === tab[0] ? 'true' : 'false');
+      btn.appendChild(el('span', null, tab[1]));
+      btn.appendChild(el('span', 'cnt', String(tab[2])));
+      btn.addEventListener('click', function () {
+        filter = tab[0];
+        renderTabs();
+        renderTable();
+      });
+      box.appendChild(btn);
     });
   }
 
@@ -510,6 +572,39 @@
   }
 
   // ---------- Währungs-Umschalter ----------
+  function refreshCurUI() {
+    var box = document.getElementById('curSel'); if (!box) return;
+    Array.prototype.forEach.call(box.querySelectorAll('button[data-cur]'), function (x) {
+      var on = x.getAttribute('data-cur') === cur;
+      x.classList.toggle('on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  // Währung anwenden. persist=true bei manuellem Klick, false bei Auto-Erkennung.
+  function applyCur(c, persist) {
+    if (!(state.fx && state.fx[c])) return;            // ohne FX-Rate ignorieren
+    if (persist) setCur(c); else cur = c;
+    refreshCurUI();
+    renderTable(); renderTicker();
+    if (typeof state.convUpdate === 'function') state.convUpdate();
+    if (typeof state.plUpdate === 'function') state.plUpdate();
+  }
+
+  // Eurozone (+ de-facto-EUR) → EUR; CH/LI → CHF; sonst USD.
+  var EURO_CC = { AT:1,BE:1,HR:1,CY:1,EE:1,FI:1,FR:1,DE:1,GR:1,IE:1,IT:1,LV:1,LT:1,LU:1,MT:1,NL:1,PT:1,SK:1,SI:1,ES:1,
+                  MC:1,SM:1,VA:1,AD:1,ME:1,XK:1 };
+  function geoCurrency() {
+    if (hadStoredCur) return;                          // manuelle Wahl respektieren
+    fetch('/cdn-cgi/trace', { cache: 'no-store' })
+      .then(function (r) { return r.text(); })
+      .then(function (t) {
+        var m = /(?:^|\n)loc=([A-Z]{2})/.exec(t);
+        var cc = m ? m[1] : '';
+        var c = (cc === 'CH' || cc === 'LI') ? 'chf' : (EURO_CC[cc] ? 'eur' : 'usd');
+        if (c !== cur) applyCur(c, false);
+      })
+      .catch(function () {});
+  }
+
   function initCurrency() {
     var box = document.getElementById('curSel');
     if (!box) return;
@@ -521,15 +616,7 @@
       b.classList.toggle('on', c === cur);
       b.setAttribute('aria-pressed', c === cur ? 'true' : 'false');
       b.addEventListener('click', function () {
-        if (!avail[c]) return;
-        setCur(c);
-        Array.prototype.forEach.call(btns, function (x) {
-          var on = x.getAttribute('data-cur') === cur;
-          x.classList.toggle('on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false');
-        });
-        renderTable(); renderTicker();
-        if (typeof state.convUpdate === 'function') state.convUpdate();
-        if (typeof state.plUpdate === 'function') state.plUpdate();
+        applyCur(c, true);
       });
     });
   }
@@ -542,6 +629,8 @@
     state.byId = {};
     state.assets.forEach(function (a) { state.byId[a.id] = a; });
     initCurrency();
+    geoCurrency();          // Land erkennen → CHF/EUR/USD vorwählen (nur ohne manuelle Wahl)
+    renderTabs();
     renderTable();
     renderTicker();
     renderMood();

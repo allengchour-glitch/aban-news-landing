@@ -337,6 +337,57 @@
     </div>
   </section>
 
+  <!-- MÄRKTE-VORSCHAU -->
+  <section class="sec" style="padding-top:0" id="marketsPreview" hidden>
+    <div class="wrap center">
+      <span class="eyebrow">Live · Märkte</span>
+      <h2>Krypto, Aktien &amp; Finanz-News</h2>
+      <p class="sub">Live-Kurse, Top-Bewegungen und KI-Sentiment auf einen Blick — anti-hype, mit Quellen. Keine Anlageberatung.</p>
+      <div class="cards" style="text-align:left">
+        <div class="card"><h3 style="margin:0 0 .4rem">🪙 Krypto</h3><div id="hmKrypto"></div></div>
+        <div class="card"><h3 style="margin:0 0 .4rem">📈 Aktien &amp; ETFs</h3><div id="hmAktien"></div></div>
+        <div class="card"><h3 style="margin:0 0 .4rem">📰 Finanz-News</h3><ul id="hmNews" style="list-style:none;margin:0;padding:0"></ul></div>
+      </div>
+      <p style="margin-top:1.4rem"><a class="btn btn--amber" href="/maerkte.html">Alle 42 Märkte &amp; KI-Sentiment →</a></p>
+    </div>
+  </section>
+  <script>
+  (function(){
+    var sec=document.getElementById('marketsPreview'); if(!sec) return;
+    var EURO={AT:1,BE:1,HR:1,CY:1,EE:1,FI:1,FR:1,DE:1,GR:1,IE:1,IT:1,LV:1,LT:1,LU:1,MT:1,NL:1,PT:1,SK:1,SI:1,ES:1,MC:1,SM:1,VA:1,AD:1,ME:1,XK:1};
+    var fx={usd:1}, curC='usd';
+    function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+    function fmtPrice(v){ if(typeof v!=='number') return '—'; var x=v*(fx[curC]||1); var d=x>=1000?0:x>=1?2:4; try{return new Intl.NumberFormat('de-CH',{style:'currency',currency:curC.toUpperCase(),maximumFractionDigits:d,minimumFractionDigits:d}).format(x);}catch(e){return x.toFixed(d)+' '+curC.toUpperCase();} }
+    function row(a){
+      var ch=(typeof a.change_24h==='number')?a.change_24h:null;
+      var col=ch===null?'#5c6773':(ch>=0?'#0f9d6b':'#dc2626');
+      var chTxt=ch===null?'—':((ch>=0?'+':'')+ch.toFixed(2)+' %');
+      return '<a href="/maerkte/'+esc(a.id)+'.html" style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.5rem 0;border-bottom:1px solid var(--line,#ece6db);text-decoration:none;color:inherit">'
+        +'<span style="font-weight:700">'+esc(a.name)+' <span style="color:#5c6773;font-weight:600;font-size:.85em">'+esc(a.symbol)+'</span></span>'
+        +'<span style="text-align:right;white-space:nowrap"><b>'+fmtPrice(a.price)+'</b> <span style="color:'+col+';font-weight:700">'+chTxt+'</span></span></a>';
+    }
+    function render(d){
+      var as=d.assets||[]; if(!as.length) return;
+      var ck=document.getElementById('hmKrypto'), ak=document.getElementById('hmAktien'), nw=document.getElementById('hmNews');
+      if(ck) ck.innerHTML=as.filter(function(a){return a.type==='crypto';}).slice(0,4).map(row).join('');
+      if(ak) ak.innerHTML=as.filter(function(a){return a.type==='stock'||a.type==='etf';}).slice(0,4).map(row).join('');
+      var news=(d.news||[]).slice(0,3);
+      if(nw&&news.length) nw.innerHTML=news.map(function(n){return '<li style="padding:.45rem 0;border-bottom:1px solid var(--line,#ece6db)"><a href="'+esc(n.url||'#')+'" target="_blank" rel="noopener" style="text-decoration:none;font-weight:600">'+esc(n.title||'')+'</a><div style="color:#5c6773;font-size:.82em;margin-top:.2rem">'+esc(n.source||'')+'</div></li>';}).join('');
+      sec.hidden=false;
+    }
+    fetch('/data/markets.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
+      fx=d.fx||{usd:1};
+      render(d); // sofort in USD zeigen …
+      // … dann Land erkennen und ggf. auf CHF/EUR umstellen
+      fetch('/cdn-cgi/trace',{cache:'no-store'}).then(function(r){return r.text();}).then(function(t){
+        var m=/(?:^|\n)loc=([A-Z]{2})/.exec(t); var cc=m?m[1]:'';
+        var c=(cc==='CH'||cc==='LI')?'chf':(EURO[cc]?'eur':'usd');
+        if(c!==curC && fx[c]){ curC=c; render(d); }
+      }).catch(function(){});
+    }).catch(function(){});
+  })();
+  </script>
+
   <!-- DOSSIERS -->
   <section class="sec" style="padding-top:0">
     <div class="wrap center">
@@ -546,7 +597,7 @@
       </div>
       <div><h4>Newsletter</h4><a href="#signup">Abonnieren</a><a href="/newsletter.html">Newsletter-Seite</a><a href="/preview.html">Beispiel-Ausgabe</a><a href="/archive/">Archiv</a><a href="/dossiers.html">Themen-Dossiers</a><a href="/founding.html">Premium</a><a href="https://abannews.beehiiv.com" target="_blank" rel="noopener">Pro-Login (Abo verwalten)</a></div>
       <div><h4>Alles &amp; Angebote</h4><a href="/angebote.html">Angebote &amp; Preise</a><a href="/texte-service.html">Texte-Service</a><a href="/fuer-verbaende.html">Für Verbände (White-Label)</a><a href="/reels">KI-Reels</a><a href="/ki-sichtbarkeit.html">Von KI gefunden werden</a><a href="/ki-compliance.html">KI-Compliance</a><a href="/produkte.html">Produkte &amp; Vorlagen</a><a href="/beratung.html">Beratung &amp; KI-Setup</a><a href="/deals.html">KI-Deals</a><a href="/foerder.html">Förder-Radar</a><a href="/experten.html">KI-Experten</a><a href="/kurse.html">Kurse</a><a href="/workshops.html">Workshops</a><a href="/vorlagen.html">Vorlagen</a></div>
-      <div><h4>Mehr</h4><a href="/maerkte.html">Märkte (Krypto &amp; Aktien)</a><a href="/trading-tipps.html">Trading-Tipps (ehrlich)</a><a href="/krypto-fuer-einsteiger.html">Krypto für Einsteiger</a><a href="/etf-fuer-einsteiger.html">ETF für Einsteiger</a><a href="/sparplan-statt-trading.html">Sparplan statt Trading</a><a href="/ki-werkzeug.html">KI-Werkzeug</a><a href="/welche-ki-fuer-was.html">Welche KI für was?</a><a href="/ki-tool-vergleich.html">Tool-Vergleiche</a><a href="/ki-glossar.html">KI-Glossar</a><a href="/ki-readiness-check.html">KI-Readiness-Check</a><a href="/prompt-baukasten.html">Prompt-Baukasten</a><a href="/ki-spar-rechner.html">KI-Spar-Rechner</a><a href="/ki-dsgvo-check.html">DSGVO-Check</a><a href="/ki-hype-detektor.html">KI-Hype-Detektor</a><a href="/ki-prompt-checker.html">Prompt-Verbesserer</a><a href="/ki-richtlinie.html">KI-Richtlinie</a><a href="/avv-anfrage.html">AVV-Anfrage</a><a href="/ki-bullshit-bingo.html">Bullshit-Bingo</a><a href="/online-tools.html">Alle Tools</a><a href="/ki-start.html">Start hier</a><a href="/gratis-ki-tools.html">Gratis KI-Tools</a><a href="/stundensatz-rechner.html">Stundensatz-Rechner</a><a href="/radar.html">KI-Radar</a><a href="/jobs.html">KI-Jobs</a><a href="/netzwerk.html">Netzwerk</a><a href="/transparenz.html">Transparenz</a><a href="/shop.html">Shop</a><a href="/ki-ratgeber.html">Ratgeber</a><a href="/ueber-aban.html">Über aban</a></div>
+      <div><h4>Mehr</h4><a href="/maerkte.html">Märkte (Krypto &amp; Aktien)</a><a href="/trading-tipps.html">Trading-Tipps (ehrlich)</a><a href="/krypto-fuer-einsteiger.html">Krypto für Einsteiger</a><a href="/etf-fuer-einsteiger.html">ETF für Einsteiger</a><a href="/sparplan-statt-trading.html">Sparplan statt Trading</a><a href="/ki-aktien-hype-check.html">KI-Aktien: Hype-Check</a><a href="/steuer-basics-selbststaendige.html">Steuer-Basics (Selbstständige)</a><a href="/ki-betrug-scam-check.html">KI-Betrug & Scams erkennen</a><a href="/altersvorsorge-selbststaendige.html">Altersvorsorge (Selbstständige)</a><a href="/ki-werkzeug.html">KI-Werkzeug</a><a href="/welche-ki-fuer-was.html">Welche KI für was?</a><a href="/ki-tool-vergleich.html">Tool-Vergleiche</a><a href="/ki-glossar.html">KI-Glossar</a><a href="/ki-readiness-check.html">KI-Readiness-Check</a><a href="/prompt-baukasten.html">Prompt-Baukasten</a><a href="/ki-spar-rechner.html">KI-Spar-Rechner</a><a href="/ki-dsgvo-check.html">DSGVO-Check</a><a href="/ki-hype-detektor.html">KI-Hype-Detektor</a><a href="/ki-prompt-checker.html">Prompt-Verbesserer</a><a href="/ki-richtlinie.html">KI-Richtlinie</a><a href="/avv-anfrage.html">AVV-Anfrage</a><a href="/ki-bullshit-bingo.html">Bullshit-Bingo</a><a href="/online-tools.html">Alle Tools</a><a href="/ki-start.html">Start hier</a><a href="/gratis-ki-tools.html">Gratis KI-Tools</a><a href="/stundensatz-rechner.html">Stundensatz-Rechner</a><a href="/radar.html">KI-Radar</a><a href="/jobs.html">KI-Jobs</a><a href="/netzwerk.html">Netzwerk</a><a href="/transparenz.html">Transparenz</a><a href="/shop.html">Shop</a><a href="/ki-ratgeber.html">Ratgeber</a><a href="/ueber-aban.html">Über aban</a></div>
       <div><h4>Rechtliches</h4><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div>
     </div>
     <div class="footbar">
@@ -658,5 +709,6 @@ if(x)x.addEventListener('click',function(){b.classList.remove('show');try{sessio
 })();
 </script>
 <script defer src="/js/announce.js"></script>
+<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

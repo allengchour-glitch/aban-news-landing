@@ -227,9 +227,24 @@
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
     }
-    @media(max-width:520px){
-      /* Trend-Spalte auf sehr kleinen Screens ausblenden (Platz für Kurs+Sentiment) */
-      .mtable td.spark,.mtable thead th:nth-child(5){display:none}
+    @media(max-width:560px){
+      /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
+      .mtable-wrap{overflow:visible;background:transparent;border:0;box-shadow:none}
+      table.mtable{min-width:0;font-size:1rem}
+      .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+      .mtable tbody,.mtable tr,.mtable td{display:block}
+      .mtable tr.catrow{margin:1.2rem 0 .6rem}
+      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
+      .mtable tr:not(.catrow) td{border:0;padding:0}
+      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
   <style>
@@ -272,8 +287,8 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>BNB <span class="hl">BNB</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="bnb" data-type="crypto">595.10 USD</span>
-        <span class="chg down">-0.17 %</span>
+        <span class="px" id="livePrice" data-id="bnb" data-type="crypto">584.10 USD</span>
+        <span class="chg down">-1.72 %</span>
         <span class="tag-type">Crypto</span>
         <span class="badge bearish">Bearish</span>
       </div>
@@ -285,11 +300,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,68.6 L35.1,75.2 L62.3,66.9 L89.4,58.6 L116.5,86.2 L143.7,96.7 L170.8,102.6 L197.9,95.2 L225.0,84.5 L252.2,93.9 L279.3,86.6 L306.4,78.1 L333.6,86.5 L360.7,96.0 L387.8,103.2 L415.0,8.0 L442.1,20.2 L469.2,40.3 L496.3,131.5 L523.5,151.4 L550.6,192.0 L577.7,151.7 L604.9,154.6 L632.0,165.5 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,68.6 35.1,75.2 62.3,66.9 89.4,58.6 116.5,86.2 143.7,96.7 170.8,102.6 197.9,95.2 225.0,84.5 252.2,93.9 279.3,86.6 306.4,78.1 333.6,86.5 360.7,96.0 387.8,103.2 415.0,8.0 442.1,20.2 469.2,40.3 496.3,131.5 523.5,151.4 550.6,192.0 577.7,151.7 604.9,154.6 632.0,165.5" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">718.20</text><text x="586" y="204" font-size="12" fill="#64748b">571.88</text><path d="M10.0,200 L10.0,72.5 L34.8,79.4 L59.6,70.9 L84.3,62.2 L109.1,90.8 L133.9,101.6 L158.7,107.7 L183.5,100.1 L208.3,89.0 L233.0,98.7 L257.8,91.2 L282.6,82.4 L307.4,91.1 L332.2,100.9 L357.0,108.3 L381.7,10.0 L406.5,22.6 L431.3,43.4 L456.1,137.5 L480.9,158.1 L505.7,200.0 L530.4,158.4 L555.2,161.4 L580.0,172.6 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,72.5 34.8,79.4 59.6,70.9 84.3,62.2 109.1,90.8 133.9,101.6 158.7,107.7 183.5,100.1 208.3,89.0 233.0,98.7 257.8,91.2 282.6,82.4 307.4,91.1 332.2,100.9 357.0,108.3 381.7,10.0 406.5,22.6 431.3,43.4 456.1,137.5 480.9,158.1 505.7,200.0 530.4,158.4 555.2,161.4 580.0,172.6" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="172.6" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="172.6" r="3.4" fill="#dc2626"/></svg></div>
       <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-0.17 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-4.35 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-11.50 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">718.20 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">571.88 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">704.92 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">80.21 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">1’370 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.72 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-4.35 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-11.50 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">718.20 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">571.88 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">658.33 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">78.68 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">1’370 USD</span></div></div>
     </div>
   </section>
 
@@ -299,10 +314,10 @@
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">BNB · BNB</span><span class="badge bearish">Bearish</span></div>
-        <p class="csignal">Laufende Korrektur, drohende weitere Verluste.</p>
-        <p class="crat">BNB verzeichnet einen Rückgang, da die laufende Korrektur tiefere Verluste unterhalb wichtiger Unterstützungsmarken droht.</p>
+        <p class="csignal">Kursrückgang trotz positiver Ökosystem-Entwicklung.</p>
+        <p class="crat">BNB fällt inmitten eines breiteren Krypto-Risk-Off-Umfelds, obwohl die BNB Chain boomt.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: BNB Chain erhöht die Staking-Belohnungen und den Real Yield, was die Attraktivität steigern könnte.</li><li>Risiko: Die laufende Korrektur droht tiefere Verluste unterhalb wichtiger Unterstützungsmarken.</li><li>Einordnung: Trotz Bemühungen zur Steigerung der Attraktivität überwiegen die negativen Kursprognosen.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Die BNB Chain boomt, was auf eine starke zugrunde liegende Aktivität hindeutet.</li><li>Risiko: BNB fällt inmitten eines breiteren Krypto-Risk-Off-Umfelds und makroökonomischer Schocks.</li><li>Einordnung: Die Nachrichtenlage ist gemischt, mit einem starken Ökosystem, aber einem negativen Kursverlauf, der durch externe Faktoren beeinflusst wird.</li></ul>
     </div>
   </section>
 
@@ -310,7 +325,7 @@
     <div class="wrap">
       <span class="eyebrow">News on BNB</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxOT3VfMnJ6M0VreENHRS02ZFVGeHpZQmhRZzBQSDZKM3prQXp1aUdnRHZfaWJsMVhWZGFSVzF4cDZXdnowQlRuZTI3ZFRyWnVUdHN1NmI3LVpFRHpiVjFYZmRobEs0eC1tV3BOUmJULWI1eExnZlFoQlUxSFlFeml0YQ?oc=5" target="_blank" rel="noopener">What Is Binance Smart Chain (BNB Chain)? Complete Guide 2026</a><div class="meta"><span>StealthEX</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxONGlZMzRfZlhwM0VVVUFQRmlHeHpuWWNnY2UydHdQN2RYa0JHQ2FmRGZyUDMyb195TDN2eHRaZlg0bTN6UlJJTFZrT0tpTHBfSTlXaHVUWWZudVVuOGRhOXJfdkljbWtZN3FGY2s2YmNnSXhjdjNVWWt3UWdmQ1QyeGFPNXlseDdqbVhR?oc=5" target="_blank" rel="noopener">Binance Coin (BNB) Price Prediction 2026–2030: Can BNB Realistically Reach $2,000?</a><div class="meta"><span>CryptoRank</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiigJBVV95cUxPb0J2SVppLXM3VEdtdVo4SW1rc1MtcU94ZGtYQ2FqWFJnZTdVWVF5eFVwQllJaUQ0ajdYVEhFanlJd0J2N2R1bVVSUVZSbHR1dzQ3bjJjellqOHZ0MnZNNy1WSkhsWTl1WjRSSEprRjVnemJnTUJPQ2lzZkFjd2E1QVdhX1V3b1ltNGFLUHNYUGJtdkhKLVBnY056cTJ0Y2dmOFFVVFR0T1Y0NWw4anUwYUxmaGlmRjh3NHA1bnpHaHdOWDdXcmRWUHR1bEY1LUFkWkhnQUVIOXdxTEJkV2htUUtFelZoVTcxQXpUS2RUaXhBVV8zZDlRd04wTEhXN1czREtSMUw0MVo5dw?oc=5" target="_blank" rel="noopener">Changpeng Zhao Says Bitcoin Won&#x27;t Be &#x27;Dead&#x27; For Long</a><div class="meta"><span>Benzinga</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxQSWx3Y05XYmc1Rm9LNHY1djE1bHdXcmh1QXVCN0NXNmR4bzgwRkxacDgxcXFTWHRDY2VoWktOV3NrZEVqaXlKZnVrLVphQzRVZE1FaFBIRVpSQWVkQnU4aVMzRk1LRHBJb0Q5ZzJpdUJqNlpKaV9QQW5aS21fLVA2Q3NQV3NvUnZEVmJJUk9xWXZrNGFUc1lFM3ZiMkk0VVlFb0VxMQ?oc=5" target="_blank" rel="noopener">Cardano&#x27;s staked value drops sharply while BNB Chain boosts staking rewards and real yield.</a><div class="meta"><span>Pluang</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxQOXVpcnRhdF9sM3J3dVItaF9tR2p0X3F5eWlZSE5FMm1xYXMyRy1FRDMwMzlGRjlNRTFoYmdCTTdVSDh6blFDYlJUOXBCeDVZdG02T21BQ2k5UkhMRFRqM1JPZnowdzQ4SjBsWFRUNXBfREpiSDJXS0NEdkJFUEtBTWR3Q0Z6R2V3bHZjYzd6LUpqRmR6cVhnYXlmSk1zcXdpQy1TYnNwZ0IyRTloUnNNVkQ1VXRKTDlCU041dDdDTnNKam5vb3o1OThENFlKQ1R2cm1PZmhn?oc=5" target="_blank" rel="noopener">BNB Price Forecast: Ongoing correction threatens deeper losses below key support</a><div class="meta"><span>FXStreet</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE1KaWx4MVNONnE0bWZaMEU4a25KOTZCdzlhWC1Qd1RDTkpVWEhkaTJyM2pvOXlFYWdibnlwMHphdGRWNVVXZ0lIMHZLQ2FyQVEwN1RhbXdVd1FsZ2FMVlpmU2l4T1pnZnU4NUQ3VzBkeEs?oc=5" target="_blank" rel="noopener">BNB Drops 3.2% Amid Broad Crypto Risk-Off, Macro Shocks</a><div class="meta"><span>CoinMarketCap</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxOT3VfMnJ6M0VreENHRS02ZFVGeHpZQmhRZzBQSDZKM3prQXp1aUdnRHZfaWJsMVhWZGFSVzF4cDZXdnowQlRuZTI3ZFRyWnVUdHN1NmI3LVpFRHpiVjFYZmRobEs0eC1tV3BOUmJULWI1eExnZlFoQlUxSFlFeml0YQ?oc=5" target="_blank" rel="noopener">What Is Binance Smart Chain (BNB Chain)? Complete Guide 2026</a><div class="meta"><span>StealthEX</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxOQnFoRE1hQmpqQWJHd3E3aXRHZjB2cmJNLXZMNHJqdk80aGFmSVdJQVUxNkRhVlRQSkxZLUkybFVkYVkydi1EaHp6WUZiX1RhaU9uN282dnBQeklSWGhta0V5MW5ObU53ZGwxM3FVOC03UUhlbnpyeElRUUZYYmNjVHBOVFktWUdySlZNSW9KNk9OcGx2R2VUQXg5cGtTeTNhbXVtVlNZMkM2b09CaGNZWnNqdzAxaXM?oc=5" target="_blank" rel="noopener">BNB Chain Is Booming Again — So Why Isn’t BNB Price Moving?</a><div class="meta"><span>TradingView</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPZE91SFU2WlZudjM0bkk1cUlpeUJ5RDFUdFRNcnRQX1ZUZGlDX2ZmMThhRUtCTmFzanBmcmZrWmlfcklwOVgycS1DNGRzemItVVNONU4tLVJMcjN6VlJEbFV5bjFrOENZX3h6WTlTWGVWcHFTTkRjUndRdlRrS0tTVjBIQUVjTlhrc3VTMNIBkgFBVV95cUxOX29waE5iZGlseTVaQmJTU2t5Z3BuTjdyUUUxYk4ydlpYRnRtWkpMU0xFNWYyYWhRTTZaNEV0R3ZlbWdnYXpXRGFPVGl1MERJUEZaTHlBajE5OC1lX2taMmZFR0FuN0NPeVM0T1h0N3lXcTJGRlZMSjZtVDdQeS1FVVVqaEc2MVZvZkpqUU5xcnJlZw?oc=5" target="_blank" rel="noopener">BNB: Why a breakdown below THIS 4-month range could be crucial</a><div class="meta"><span>AMBCrypto</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiigJBVV95cUxPb0J2SVppLXM3VEdtdVo4SW1rc1MtcU94ZGtYQ2FqWFJnZTdVWVF5eFVwQllJaUQ0ajdYVEhFanlJd0J2N2R1bVVSUVZSbHR1dzQ3bjJjellqOHZ0MnZNNy1WSkhsWTl1WjRSSEprRjVnemJnTUJPQ2lzZkFjd2E1QVdhX1V3b1ltNGFLUHNYUGJtdkhKLVBnY056cTJ0Y2dmOFFVVFR0T1Y0NWw4anUwYUxmaGlmRjh3NHA1bnpHaHdOWDdXcmRWUHR1bEY1LUFkWkhnQUVIOXdxTEJkV2htUUtFelZoVTcxQXpUS2RUaXhBVV8zZDlRd04wTEhXN1czREtSMUw0MVo5dw?oc=5" target="_blank" rel="noopener">Changpeng Zhao Says Bitcoin Won&#x27;t Be &#x27;Dead&#x27; For Long</a><div class="meta"><span>Benzinga</span><span>· 10 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>

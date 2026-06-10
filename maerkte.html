@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -227,9 +236,25 @@
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
     }
-    @media(max-width:520px){
-      /* Trend-Spalte auf sehr kleinen Screens ausblenden (Platz für Kurs+Sentiment) */
-      .mtable td.spark,.mtable thead th:nth-child(5){display:none}
+    @media(max-width:560px){
+      /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
+      .mtable-wrap{overflow:visible;background:transparent;border:0;box-shadow:none}
+      table.mtable{min-width:0;font-size:1rem}
+      .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+      .mtable tbody,.mtable tr,.mtable td{display:block}
+      .mtable tr.catrow{margin:1.2rem 0 .6rem}
+      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
+      .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
   <script type="application/ld+json">
@@ -278,7 +303,7 @@
     <div class="wrap">
       <span class="eyebrow">Live-Überblick</span>
       <h2>Marktüberblick</h2>
-      <p class="sub">22 Werte aus Krypto, Aktien, Indizes &amp; Rohstoffen. Krypto aktualisiert live im Browser; Rest vom letzten automatischen Lauf (Änderung ggü. Vortagesschluss).</p>
+      <p class="sub">42 Werte aus Krypto, Aktien, ETFs, Indizes &amp; Rohstoffen. Krypto aktualisiert live im Browser; Rest vom letzten automatischen Lauf (Änderung ggü. Vortagesschluss).</p>
       <div class="ovbar">
         <p class="updated" id="lastUpdated">Lade Daten …</p>
         <div class="curswitch" id="curSel" role="group" aria-label="Währung wählen">
@@ -288,6 +313,7 @@
         </div>
       </div>
       <p class="disclaimer" id="staleWarn" style="display:none"></p>
+      <div class="mtabs" id="marketTabs" role="tablist" aria-label="Kategorie filtern"></div>
       <div class="mtable-wrap">
         <table class="mtable" aria-label="Marktüberblick Krypto und Aktien">
           <thead>
@@ -518,7 +544,7 @@
 </main>
 
 
-<section style="max-width:760px;margin:26px auto 0;padding:0 20px"><h2 style="font-size:1.15rem;text-align:center;margin-bottom:12px">Mehr rund um KI &amp; Märkte</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px"><a href="/trading-tipps.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Trading-Tipps →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Die 10 ehrlichen Regeln, die dich vor teuren Fehlern schützen</span></a><a href="/krypto-fuer-einsteiger.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Krypto für Einsteiger →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Bitcoin &amp; Co. ehrlich erklärt — Kauf, Risiken, Schutz</span></a><a href="/etf-fuer-einsteiger.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">ETF für Einsteiger →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Der ehrliche, langweilige Weg — breit, günstig, ohne Stock-Picking</span></a><a href="/sparplan-statt-trading.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Sparplan statt Trading →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Warum langweilig gewinnt: Zinseszins, Cost-Average, Disziplin</span></a><a href="/ki-glossar.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">KI-Glossar →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">KI-Sentiment, LLM, Halluzination &amp; Co. ehrlich erklärt</span></a><a href="/ki-hype-detektor.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">KI-Hype-Detektor →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Markt-/Tech-Hype im Text entlarven</span></a><a href="/ki-tool-vergleich.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">KI-Tool-Vergleiche →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">197 ehrliche X-vs-Y-Duelle</span></a><a href="/welche-ki-fuer-was.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">KI-Tool-Finder →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">175 Tools nach Aufgabe &amp; Budget</span></a></div></section>
+<section style="max-width:760px;margin:26px auto 0;padding:0 20px"><h2 style="font-size:1.15rem;text-align:center;margin-bottom:12px">Mehr rund um KI &amp; Märkte</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px"><a href="/trading-tipps.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Trading-Tipps →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Die 10 ehrlichen Regeln, die dich vor teuren Fehlern schützen</span></a><a href="/krypto-fuer-einsteiger.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Krypto für Einsteiger →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Bitcoin &amp; Co. ehrlich erklärt — Kauf, Risiken, Schutz</span></a><a href="/etf-fuer-einsteiger.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">ETF für Einsteiger →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Der ehrliche, langweilige Weg — breit, günstig, ohne Stock-Picking</span></a><a href="/sparplan-statt-trading.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Sparplan statt Trading →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Warum langweilig gewinnt: Zinseszins, Cost-Average, Disziplin</span></a><a href="/ki-aktien-hype-check.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">KI-Aktien: Hype-Check →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">7 Fragen: echte KI von „KI"-Aufkleber trennen</span></a><a href="/ki-betrug-scam-check.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">KI-Betrug & Scam-Check →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Deepfake-Investments & Fake-Trading-Bots erkennen</span></a><a href="/ki-glossar.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">KI-Glossar →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">KI-Sentiment, LLM, Halluzination &amp; Co. ehrlich erklärt</span></a><a href="/ki-hype-detektor.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">KI-Hype-Detektor →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Markt-/Tech-Hype im Text entlarven</span></a><a href="/ki-tool-vergleich.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">KI-Tool-Vergleiche →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">197 ehrliche X-vs-Y-Duelle</span></a><a href="/welche-ki-fuer-was.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">KI-Tool-Finder →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">175 Tools nach Aufgabe &amp; Budget</span></a></div></section>
 <footer>
   <div class="wrap">
     <div class="footcols">
@@ -542,5 +568,6 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
+<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

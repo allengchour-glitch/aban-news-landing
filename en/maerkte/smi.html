@@ -227,9 +227,24 @@
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
     }
-    @media(max-width:520px){
-      /* Trend-Spalte auf sehr kleinen Screens ausblenden (Platz für Kurs+Sentiment) */
-      .mtable td.spark,.mtable thead th:nth-child(5){display:none}
+    @media(max-width:560px){
+      /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
+      .mtable-wrap{overflow:visible;background:transparent;border:0;box-shadow:none}
+      table.mtable{min-width:0;font-size:1rem}
+      .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+      .mtable tbody,.mtable tr,.mtable td{display:block}
+      .mtable tr.catrow{margin:1.2rem 0 .6rem}
+      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
+      .mtable tr:not(.catrow) td{border:0;padding:0}
+      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
   <style>
@@ -272,8 +287,8 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>SMI <span class="hl">SMI</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="smi" data-type="index">13’410 Pkt</span>
-        <span class="chg up">+0.40 %</span>
+        <span class="px" id="livePrice" data-id="smi" data-type="index">13’463 Pkt</span>
+        <span class="chg up">+1.07 %</span>
         <span class="tag-type">Index</span>
         <span class="badge neutral">Neutral</span>
       </div>
@@ -285,11 +300,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,192.0 L39.2,185.6 L70.4,153.0 L101.6,150.4 L132.8,143.3 L164.0,99.8 L195.2,87.8 L226.4,71.3 L257.6,51.4 L288.8,43.6 L320.0,8.0 L351.2,50.9 L382.4,37.6 L413.6,120.6 L444.8,120.5 L476.0,151.1 L507.2,108.1 L538.4,91.7 L569.6,115.2 L600.8,102.8 L632.0,84.2 L632.0,192 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="8.0,192.0 39.2,185.6 70.4,153.0 101.6,150.4 132.8,143.3 164.0,99.8 195.2,87.8 226.4,71.3 257.6,51.4 288.8,43.6 320.0,8.0 351.2,50.9 382.4,37.6 413.6,120.6 444.8,120.5 476.0,151.1 507.2,108.1 538.4,91.7 569.6,115.2 600.8,102.8 632.0,84.2" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">13’627</text><text x="586" y="204" font-size="12" fill="#64748b">13’101</text><path d="M10.0,200 L10.0,200.0 L40.0,193.4 L70.0,159.7 L100.0,157.1 L130.0,149.7 L160.0,104.8 L190.0,92.4 L220.0,75.4 L250.0,54.9 L280.0,46.7 L310.0,10.0 L340.0,54.3 L370.0,40.6 L400.0,126.3 L430.0,126.2 L460.0,157.7 L490.0,113.3 L520.0,96.4 L550.0,120.7 L580.0,107.9 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,200.0 40.0,193.4 70.0,159.7 100.0,157.1 130.0,149.7 160.0,104.8 190.0,92.4 220.0,75.4 250.0,54.9 280.0,46.7 310.0,10.0 340.0,54.3 370.0,40.6 400.0,126.3 430.0,126.2 460.0,157.7 490.0,113.3 520.0,96.4 550.0,120.7 580.0,107.9" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="107.9" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="107.9" r="3.4" fill="#0f9d6b"/></svg></div>
       <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+0.40 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg up">+1.45 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+2.35 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">13’627 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">13’101 Pkt</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+1.07 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg up">+0.38 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+1.95 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">13’627 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">13’101 Pkt</span></div></div>
     </div>
   </section>
 
@@ -299,10 +314,10 @@
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">SMI · SMI</span><span class="badge neutral">Neutral</span></div>
-        <p class="csignal">Widerstandsfähigkeit in turbulentem Umfeld.</p>
-        <p class="crat">Der SMI zeigt sich widerstandsfähig in einem risikoreichen Umfeld, obwohl er kurzzeitig unter Druck gerät.</p>
+        <p class="csignal">Steigt trotz geopolitischer Spannungen.</p>
+        <p class="crat">Der SMI steigt trotz neuer US-Iran-Angriffe, zeigt aber auch eine &#x27;Safe-Haven&#x27;-Resilienz in einem risikoreichen Umfeld.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Der SMI zeigt sich widerstandsfähig als &#x27;Safe-Haven&#x27; in einem risikoreichen Umfeld.</li><li>Risiko: Der Index gerät unter milden Druck in einem &#x27;Risk-Off&#x27;-Umfeld und fällt bei schwindenden Waffenstillstandshoffnungen.</li><li>Einordnung: Die Nachrichtenlage ist neutral, mit einer Mischung aus Widerstandsfähigkeit und kurzfristigem Druck.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Der SMI steigt inmitten geopolitischer Spannungen, was auf eine &#x27;Safe-Haven&#x27;-Resilienz hindeutet.</li><li>Risiko: Die Eskalation im Nahen Osten und eine asienweite &#x27;Risk Aversion&#x27; stellen Belastungen dar.</li><li>Einordnung: Die Nachrichtenlage ist gemischt, mit einem Anstieg trotz externer Belastungen, was auf eine relative Stärke hindeutet.</li></ul>
     </div>
   </section>
 
@@ -310,7 +325,7 @@
     <div class="wrap">
       <span class="eyebrow">News on SMI</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxOZF9tWUtndGhkQUIzRGFzZjNlaXFDNEtVbVBKb3YyZEdMVmt4djcwZjdKT2Zyby1QOXF3elBHVlpiSHFqSG9aVUUxQkNNcDdWS19RaE90WGJxdGZxZEhTaDV4bVNBZ0FfS2dyalk4b2s0RzNLcWpWVzZqdkNQeDVIUmdJeHVuR01ZRUR6OElBUXB2OFpDNEtIb1JZN053SUpubUlfbzVxTkNnckMyc2c3ZmhndVBlc3lSS0NzLXd6Uk5pQ2x1Sm1wX0k3UE5YeWMyZUU3NklTR0VaQ18wd3FZ?oc=5" target="_blank" rel="noopener">The Swiss Market Index (SMI) Today: Switzerland&#x27;s Blue-Chip Gauge Faces Mild Pressure in Risk-Off Environment</a><div class="meta"><span>BBN Times</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOOUNSWUZwZFBJS19EcWJyY1k5WXlOT2FoNmYyVE1hOF94SWxxTDl6Ylc4S1pMdWdTSlhLOUcxeEY4NnN2bkxHVnM3U2l2NF9YU0s2amdfbkFCZUhwSjc1bi1udWg5TnhqMXFNMUJ2QXlUREZodTFMUGpXTnphVnZ0R2M1YXRfWHlXTldCNHBNYm5jVjdOV0Y2TWs2T1ZYZHRKMHIwaDJmcl9SQmJ1TkE?oc=5" target="_blank" rel="noopener">Swiss Market Index Drops as US-Iran Ceasefire Hopes Fade</a><div class="meta"><span>marketscreener.com</span><span>· 03 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNQXd6anlJRDJ5NkdOTDZLMkd2bEdUb1ZvU0ozUjE1VUpIb0Z1d0ZiZHFPdk1WVUFsWjZ6NDZmUFVhazFMNmJ2cF9ybnB3TGJITjVGRjZsQWptbU5PWlZSNkFJQVhja2JNLWhlTFhoVDNZLVRMaTdSNmRCNHlQUldNTVEwemR0N25lMkk4cnJQTEtDNEVBNUVxRU5aQ0I5RlpwczNSZm83WUNianhfTDNidmlybE1fWTRtVFE?oc=5" target="_blank" rel="noopener">Swiss SMI breaks through 14,000 points for first time</a><div class="meta"><span>SWI swissinfo.ch</span><span>· 24 Feb 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi7AFBVV95cUxOamxfZDc2OFFPRXNaNm1hVnBxR21MWUJqdHhDT08zTE9mdWp5RGRocWxPZzFVZmIyWG15VVBDZVcwc2tRM2F2U09qMDBuaVFSQVoxdWVvR2RVU1RVRl9tTjVyY2lXRzIyeVZTdnFFeFNpLV9XejJOWWZ6anNOa2RFQnNfVkd2YjhpbmNiRmIwNlRTaV9Rd0xtcS14NERTSkRtYXFQaHJmMlR6emc4bWFmNEZ0TU5LQXR4QTRtb3F1MFItWnhqNnlyOTBUeUhWcWRIT2d5QndBN3J6SU0tMktDbXhMbzZwUHk2dWRiOA?oc=5" target="_blank" rel="noopener">Swiss Market Index: SMI Demonstrates Safe-Haven Resilience Near 13,200 as Iran Missiles and Asian Rout Test Global Markets</a><div class="meta"><span>BBN Times</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxNWGFxU3pNZ240bUc1em5tRkg5V1I3Skl1ekxIQkFPYVN0RFFGenp6elZzbGczdkFPSUVzNG1KdFNJd2pUVzM4Q1JSbHcwVHlZZ1NOT3FxVDF0azVMenpWX0hBak1paDdsSTVsM2twTkNYbkhtNklOT3VnZ1FGb3pSekxmZUdCLTd6bTBoWmlTdDR4a0sxVWVHczlFVlczdw?oc=5" target="_blank" rel="noopener">Escalation in the Middle East sends stock markets plummeting</a><div class="meta"><span>blue News</span><span>· 08 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxPNm1qWmxZRGd6VjF3RUc2MVBRdWhQalh0dFZpWGRfRTZXQkVDZEtyV2lMZkh6TnRZVlRJUmtxY1Y3MVE4RGhhbGxDcGFaTHVZOUJMQWQ4ZTdqLVlzMVVrMnFaWVFVc19VbDYxZHlKbG4zdWhNeVVTSlc0bW84Z2RBSTE5Q1VDWnZqZ0VfTnVQcEJrdUhLdHltVVg2YlBldmVNVnR5Qy15ZG16bHpWMHRSNzY5TWJ4Y0xfM09udjJrUUhXX0c5WGZxRDR3?oc=5" target="_blank" rel="noopener">Swiss Market Index Rises Amid New US-Iran Strikes; Switzerland Issues New Bond</a><div class="meta"><span>marketscreener.com</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNTGVXWXpnQ2l0a1BTTi1iUWh0ZHdXZ1QyVXlvV0k5MjdCQmlvbHlBdXRqOTUxMmhpVG9EWnkxNVBnX3lzMC1mc2VnYUR2UzNhZkZFODlHYXJMUmNYSEpkNDZNeHotUk1kNjYtOHg3bGh3QTB1VGx0Szc5aUdzd3hvbDRabEE5YVU?oc=5" target="_blank" rel="noopener">Swiss Stocks Rose As US-Iran Talks Took A Hard Turn</a><div class="meta"><span>Finimize</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxOZF9tWUtndGhkQUIzRGFzZjNlaXFDNEtVbVBKb3YyZEdMVmt4djcwZjdKT2Zyby1QOXF3elBHVlpiSHFqSG9aVUUxQkNNcDdWS19RaE90WGJxdGZxZEhTaDV4bVNBZ0FfS2dyalk4b2s0RzNLcWpWVzZqdkNQeDVIUmdJeHVuR01ZRUR6OElBUXB2OFpDNEtIb1JZN053SUpubUlfbzVxTkNnckMyc2c3ZmhndVBlc3lSS0NzLXd6Uk5pQ2x1Sm1wX0k3UE5YeWMyZUU3NklTR0VaQ18wd3FZ?oc=5" target="_blank" rel="noopener">The Swiss Market Index (SMI) Today: Switzerland&#x27;s Blue-Chip Gauge Faces Mild Pressure in Risk-Off Environment</a><div class="meta"><span>BBN Times</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi7AFBVV95cUxOamxfZDc2OFFPRXNaNm1hVnBxR21MWUJqdHhDT08zTE9mdWp5RGRocWxPZzFVZmIyWG15VVBDZVcwc2tRM2F2U09qMDBuaVFSQVoxdWVvR2RVU1RVRl9tTjVyY2lXRzIyeVZTdnFFeFNpLV9XejJOWWZ6anNOa2RFQnNfVkd2YjhpbmNiRmIwNlRTaV9Rd0xtcS14NERTSkRtYXFQaHJmMlR6emc4bWFmNEZ0TU5LQXR4QTRtb3F1MFItWnhqNnlyOTBUeUhWcWRIT2d5QndBN3J6SU0tMktDbXhMbzZwUHk2dWRiOA?oc=5" target="_blank" rel="noopener">Swiss Market Index: SMI Demonstrates Safe-Haven Resilience Near 13,200 as Iran Missiles and Asian Rout Test Global Markets</a><div class="meta"><span>BBN Times</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxNWGFxU3pNZ240bUc1em5tRkg5V1I3Skl1ekxIQkFPYVN0RFFGenp6elZzbGczdkFPSUVzNG1KdFNJd2pUVzM4Q1JSbHcwVHlZZ1NOT3FxVDF0azVMenpWX0hBak1paDdsSTVsM2twTkNYbkhtNklOT3VnZ1FGb3pSekxmZUdCLTd6bTBoWmlTdDR4a0sxVWVHczlFVlczdw?oc=5" target="_blank" rel="noopener">Escalation in the Middle East sends stock markets plummeting</a><div class="meta"><span>blue News</span><span>· 08 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>

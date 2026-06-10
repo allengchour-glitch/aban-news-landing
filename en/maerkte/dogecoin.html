@@ -227,9 +227,24 @@
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
     }
-    @media(max-width:520px){
-      /* Trend-Spalte auf sehr kleinen Screens ausblenden (Platz für Kurs+Sentiment) */
-      .mtable td.spark,.mtable thead th:nth-child(5){display:none}
+    @media(max-width:560px){
+      /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
+      .mtable-wrap{overflow:visible;background:transparent;border:0;box-shadow:none}
+      table.mtable{min-width:0;font-size:1rem}
+      .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+      .mtable tbody,.mtable tr,.mtable td{display:block}
+      .mtable tr.catrow{margin:1.2rem 0 .6rem}
+      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
+      .mtable tr:not(.catrow) td{border:0;padding:0}
+      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
   <style>
@@ -272,10 +287,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Dogecoin <span class="hl">DOGE</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="dogecoin" data-type="crypto">0.0849 USD</span>
-        <span class="chg down">-0.67 %</span>
+        <span class="px" id="livePrice" data-id="dogecoin" data-type="crypto">0.0821 USD</span>
+        <span class="chg down">-3.35 %</span>
         <span class="tag-type">Crypto</span>
-        <span class="badge bearish">Bearish</span>
+        <span class="badge neutral">Neutral</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Crypto is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -289,7 +304,7 @@
       <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-0.67 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-9.49 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-22.86 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">—</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">—</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">680.63 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">13.13 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">0.7316 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-3.35 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-9.93 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-26.10 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">—</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">—</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">589.75 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">12.69 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">0.7316 USD</span></div></div>
     </div>
   </section>
 
@@ -298,11 +313,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Dogecoin · DOGE</span><span class="badge bearish">Bearish</span></div>
-        <p class="csignal">Rückgang im breiteren Krypto-Markt.</p>
-        <p class="crat">Dogecoin verzeichnet einen Rückgang im Zuge des breiteren Krypto-Marktes, obwohl Zahlungen über MoonPay ermöglicht werden.</p>
+        <div class="chead"><span class="cname">Dogecoin · DOGE</span><span class="badge neutral">Neutral</span></div>
+        <p class="csignal">Relative Stabilität und neue Anwendungsfälle.</p>
+        <p class="crat">Dogecoin ist stabil, während andere Kryptowährungen fallen, und es gibt neue Zahlungsintegrationen.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Dogecoin-Zahlungen werden über MoonPay bei über 6.000 Händlern ermöglicht, was die Akzeptanz erhöht.</li><li>Risiko: Dogecoin fällt im Zuge des breiteren Krypto-Marktes, und die &#x27;1$-Fantasie&#x27; wird von Händlern demontiert.</li><li>Einordnung: Trotz erhöhter Akzeptanz wird Dogecoin durch den allgemeinen Marktabschwung belastet.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Dogecoin bleibt stabil, während andere Kryptowährungen fallen, und neue Zahlungsintegrationen erweitern die Nutzung.</li><li>Risiko: Die Frage, ob Dogecoin der &#x27;smarteste Krypto-Kauf unter 1 USD&#x27; ist, bleibt offen und birgt Spekulationsrisiken.</li><li>Einordnung: Die Nachrichtenlage ist gemischt, mit relativer Stabilität und wachsender Akzeptanz, aber auch spekulativen Elementen.</li></ul>
     </div>
   </section>
 
@@ -310,7 +325,7 @@
     <div class="wrap">
       <span class="eyebrow">News on DOGE</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNN3Z1VXBPeF9LdVVXMlNsX3Y0aGJqSGNhQXAxRU9RVW9uS3ZyUEhHM253RTNqRUIzZHVtQUNQZUdEMVprX3R3cU1kV3kyUUZlZWM0ZXNSU29lWDhmQ3R5TkRJSXdJQ3hZU2pJVGtrVnZ5b0xzMFhWTlRKeFNWb05KZ0F0Q0ppblJ3Q2JRczJpVmFFT1Q0TUNBNU01a2tPWjBIVnc?oc=5" target="_blank" rel="noopener">Bitcoin, Ethereum, XRP, Dogecoin Slide Even As Michael Saylor&#x27;s Strategy Inc Resumes Buying BTC: Analyst Says &#x27;Buy&#x27; The ETH Dip</a><div class="meta"><span>Yahoo Finance</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxPYnRVRWVYUXNuZ0VvZW9PRDBwYkdzRnZubk0xQlZHZF9NWHZ3dlJ0WkhvcHloV0RLU0dZWmlHdnEzNzM3RzM3Y3FIMjEwbzQ2MjFpcXhXWkJyRU8wb2xmYnBwLU1hM29pb2ZUZDR6dkdDSGpveVRwMURpX2dlTGhYN2loNGI2QVhCR1hINEtXbmlzRVJaMHJmekNta3VnUlhhbHZPajU5V2VDTVVIWE1ESVRoRW5UaUdJZGQwaEplWmUwUVRCZ1lJakxZb25pNmlmdVktSy1iSXc4YU93UkdrcGg3MTVMZw?oc=5" target="_blank" rel="noopener">House of Doge and MoonPay Enable Dogecoin Payments Across 6,000+ Merchants and Launch “ÐOGE Pay”</a><div class="meta"><span>markets.businessinsider.com</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxPTEVCbnBlN3BmLWdOb0xnSlB4RFo3WTVRR2V1a2hPc3FlOXEzd1FNUGlyeFN0NVRiaE11OGZQaldGa2Z3U1RnM0dIUEN3cVJkalNYbWhMcU1BcVNoR0xZV3k2SGRvaTRTUUlNcUN5NXo2dWZjQkJBRUhYNGIxX3NKZV95RnYwbENTOUVCSDZjR05URFYtYXVHVFZkajVPZ9IBowFBVV95cUxPd0FSSkVuTVpKdGxRbjdtMkJvR1J0NUsxdjhhQ013YV9HUmhhNnRua1NUeHZzWnR2cmxsLWtTbmhBbjF3bjl5NlN4aUREM25DRHAyM3I2dEdyVXVTNVhibjh3Vk4wbUVuMEJydzRNRVJNbFBqS3Q5V3ltaWtwOG50aHJEc0xhbXdmOG8yYUV5YTNDbzB1R1Ria3ZpLXBUNFBZdVdr?oc=5" target="_blank" rel="noopener">Japan&#x27;s Largest Marketplace Lists Shiba Inu (SHIB) and Dogecoin for 23 Million Users</a><div class="meta"><span>U.Today</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE8wU1FOY3Z3dmI1bjFNSXBNekQzSnRsVGN2eGc5TlVDdDZrX0E5dEg4TFMxelQ5NUpUM29qOS1aZHIxcHh2aVYwaFlwcXlEM3c3bndWZ29oT3ZOV2VzbVlTREJwa2FMNDRQWE9rSjVYeDEzVXQ3dzlTaQ?oc=5" target="_blank" rel="noopener">Crypto Traders Demolish Dogecoin’s $1 Fantasy</a><div class="meta"><span>FinanceFeeds</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOd2xZa1F1eERWa3duYm9CbmQyX2k3SVhoeVYxaXZxNGV2cGZ4c2hCUjNiSWZ1SGN5dTdDWEVqc1Z1VV95cGh0NlBBb2xXWk1femhpa0RGZmUyNEg1OERKNlFSam9HTGh0UE1zakhwVkhjTDUwSVJTaTJGaFE4UU5LcHZkanV5dm5N?oc=5" target="_blank" rel="noopener">Is Dogecoin Really a Millionaire Maker?</a><div class="meta"><span>The Motley Fool</span><span>· 07 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOLWQzeG1SVkd0RWs0clpRQkdJLWlMcHVWcHp1cVp4SnlJYm1rZkkzN3VwRE01LThpbWJoOU5LTUhuNHJUdzRTUC1jdWxjWGI0YkNGYk1fbzFYOUF2cC1iODROVUNzRG95TUdtdjNrWWdVaEhuOEdVYTZqOHNUbEd2bm9NU3lTSXFHYl8yMm93bGhfZ196SzZMTkFQMkZkWkFsM29sR1BKdXN3ZEplOGU5bG9QTk1iQdIBuwFBVV95cUxPOS1RSUNETGljdVVNNm1tWDNGaFNmZW1tQlZWYnh1MHN4czNzSnBvX1QtN3IyVk9KcXROUmNIU3ZiTG16a2FJZnJTeGx2UDZEc3RXMml6aEJHa0hJUTAxTTltUUQwcy1YSnhfOUcxOFRlZnRnVnFaYTZqLVR1MGVPUGNhbm1SaUtUMnhqY1FqRF9JaHlTOHJDMGNZeC1pcHdURFRNdjZwWnAxOUNKOFVWaWhURDZSbkozaUc0?oc=5" target="_blank" rel="noopener">Shiba Inu (SHIB), XRP, Dogecoin (DOGE) and Bitcoin Price Analysis for June 9: What Can Heal Cryptocurrency Market?</a><div class="meta"><span>U.Today</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNRFFYM205amdWNlZPRlI2WVhLQW10ZW01Wk9XbVVnbkVzZ21pdU1kUGZ2MUVETWM3N1lsYU95Uk0xa0JxR21jZ1ctZXVnVXJzd2t6NkJIV19Wa2g2T1h2ZHQ4Wmhfa2Rtc2U3N0VWSk9pb2FKOEVBbkM4YWllREFOWGpDdk9FT3RxemdiZTF3SlVtWXotNlNTUXVHUXhtU05CckE?oc=5" target="_blank" rel="noopener">Bitcoin, Ethereum, XRP Slide, Dogecoin Flat As US Launches &#x27;Proportional&#x27; Strikes Against Iran: Analyst Sees BTC&#x27;s Strong Rebound To $74,000 Soon</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNZ2VaUS1UejIyT0xPZ2lnZ0R3RVRUeDJrbFM0RWYtNW5NNjRyS1pVcjl2VVRQSTRoR3dyWndYcUhVYjhrNGFkTm5uY1JaS2hDUWZKejRZUXYzR3FvM3ZLNU1TZ3lwX2FnTUJldGoyUS1vTWdYNTVueFV6MnlKRHlIY01UYmNUeGJPVHBxdFlETQ?oc=5" target="_blank" rel="noopener">Is Dogecoin the Smartest Crypto Buy Under $1?</a><div class="meta"><span>The Motley Fool</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxPYnRVRWVYUXNuZ0VvZW9PRDBwYkdzRnZubk0xQlZHZF9NWHZ3dlJ0WkhvcHloV0RLU0dZWmlHdnEzNzM3RzM3Y3FIMjEwbzQ2MjFpcXhXWkJyRU8wb2xmYnBwLU1hM29pb2ZUZDR6dkdDSGpveVRwMURpX2dlTGhYN2loNGI2QVhCR1hINEtXbmlzRVJaMHJmekNta3VnUlhhbHZPajU5V2VDTVVIWE1ESVRoRW5UaUdJZGQwaEplWmUwUVRCZ1lJakxZb25pNmlmdVktSy1iSXc4YU93UkdrcGg3MTVMZw?oc=5" target="_blank" rel="noopener">House of Doge and MoonPay Enable Dogecoin Payments Across 6,000+ Merchants and Launch “ÐOGE Pay”</a><div class="meta"><span>markets.businessinsider.com</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxPakdrXzBBYm5ZOEdBY1BKWGcwcHp1cm80Q3ZlcWxHZC1FNHBRMXFpdXNFZU1wUWhscnkybFhtVGxEcG9pU2pfc0Fyd1Vfc3FqMDVYV2pUX0UxSS11NkVFWU9oNFpCaGJwR083S3FBbTRfWGMxT0NRNUN5Vm5zcmc1Zjd0bVRBdnV4eks3U2dMYVI2V2Vq0gGaAUFVX3lxTFBNOTNsWDF3SGloS0pMdWhEZWc5WjBiRWFtdU1tV2tVem9QeUVVTmVPYmVDcTB5STRiaE91ekhBMXl5M0MzQUpZb1QyTjlDUHZtX3dFWTNtNmxmMnJmU2NjampwS0NPTnpNa2Z0VENkSS0zUThYMG9BVUxyWFJMSjk5ZnVBcUs0bVhlcHdCaHlrdFh2MF9tc2dyZWc?oc=5" target="_blank" rel="noopener">Dogecoin whales buy 240mln DOGE in a week – Has bottom finally formed?</a><div class="meta"><span>AMBCrypto</span><span>· 10 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>

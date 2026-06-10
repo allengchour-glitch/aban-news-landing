@@ -1,0 +1,36 @@
+name: Lieferzeit-Block (Phase 1)
+
+on:
+  schedule:
+    - cron: '40 4 * * 1'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur Vorschau'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: delivery-block
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Lieferzeit-Block setzen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          DRY_RUN: ${{ github.event_name == 'schedule' && '0' || (github.event.inputs.dry_run == 'false' && '0' || '1') }}
+        run: node automation/delivery_block.mjs

@@ -1,0 +1,59 @@
+name: Übersetzungen (DE → FR/IT/EN, hero→catalog→theme)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur Vorschau (keine Registrierung, keine Gemini-Kosten)'
+        type: boolean
+        default: true
+      targets:
+        description: 'Zielsprachen (komma-getrennt)'
+        type: string
+        default: 'fr,it,en'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: translate
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    env:
+      SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+      SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+      SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+      SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      TARGETS: ${{ github.event.inputs.targets }}
+      DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && '0' || '1' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 1) Hero + Collections
+        env:
+          SCOPE: hero
+        run: node automation/translate_content.mjs
+      - name: Ledger committen (nach Hero)
+        if: ${{ always() && github.event.inputs.dry_run == 'false' }}
+        run: bash automation/commit_translation_ledger.sh "${{ github.ref_name }}"
+      - name: 2) Ganzer Katalog
+        env:
+          SCOPE: catalog
+        run: node automation/translate_content.mjs
+      - name: Ledger committen (nach Katalog)
+        if: ${{ always() && github.event.inputs.dry_run == 'false' }}
+        run: bash automation/commit_translation_ledger.sh "${{ github.ref_name }}"
+      - name: 3) Theme + Menü
+        env:
+          SCOPE: theme
+        run: node automation/translate_content.mjs
+      - name: Ledger committen (nach Theme)
+        if: ${{ always() && github.event.inputs.dry_run == 'false' }}
+        run: bash automation/commit_translation_ledger.sh "${{ github.ref_name }}"
