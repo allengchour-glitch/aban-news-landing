@@ -71,7 +71,11 @@
   **Sicher:** keine Passwörter — User loggt EINMAL von Hand ein (`agent.py login instagram <url>`), Session-Cookies
   liegen unter `~/.luxe-browser/<profil>.json` (gitignored, NIE committen). Dann `ig-delete`/`tiktok-delete --confirm`
   (mit before/after-Screenshots). **Läuft auf USER-Rechner** (Login braucht Bildschirm; Cloud-Session kann sich nicht
-  selbst einloggen). Für „Cloud-Claude klickt selbst" → Browserbase-Variante (CDP + API-Key) offen, auf Wunsch.
+  selbst einloggen). **Für „Cloud-Claude klickt selbst" → Browserbase-Variante GEBAUT (User wählte B, 10.06.):**
+  `tools/browser/agent_cloud.mjs` (CDP→Browserbase-Context) + Workflow `.github/workflows/browser-action.yml`
+  (Dispatch: check/ig-delete/tiktok-delete, Screenshots als Artefakt). Setup `BROWSERBASE-SETUP.md`. **Offen (User):**
+  3 Secrets `BROWSERBASE_API_KEY/PROJECT_ID/CONTEXT_ID` + Context **einmal einloggen** (Live-URL). Dann triggere ich
+  Aktionen direkt. PR #615 → main gemergt (Workflow dispatch-bar).
   **🔴 DO-NOT-POST.txt war lokal stale (nicht weg)** — bali/augenmassage durchgehend geschützt; jetzt + Sommerkleid-Handle.
 
 **2026-06-08 — Luxestyle product session:**
