@@ -34,3 +34,12 @@ dist-template/
 downloads/packs/
 data/geo-clients.json
 reports/geo/
+.luxe-browser/
+*storage_state*.json
+ig-before.png
+ig-after.png
+ig-fail.png
+tt-before.png
+tt-after.png
+tt-fail.png
+session-check.png

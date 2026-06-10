@@ -66,6 +66,13 @@
   **TikTok-Shopping-Tags live** (Preis + „JETZT SHOPPEN") = echter Kaufpfad. ABER nur ~6 Follower (Views
   konvertieren nicht zu Follows). **🔴 Leak:** „Sommerkleid ärmellos CHF 32.90" (3,54★, `niedrig-bewertet-nicht-
   bewerben`) wird auf TikTok mit Shopping-Tag beworben → User muss den Post in der App löschen (kein API-Zugriff).
+- **🤖 EINGELOGGTER BROWSER-AGENT gebaut** (`tools/browser/agent.py` + `BROWSER-AGENT-SETUP.md`): erweitert das
+  öffentliche `browser.py` um eingeloggte Aktionen, die die offiziellen APIs NICHT können (IG/TikTok-Post löschen).
+  **Sicher:** keine Passwörter — User loggt EINMAL von Hand ein (`agent.py login instagram <url>`), Session-Cookies
+  liegen unter `~/.luxe-browser/<profil>.json` (gitignored, NIE committen). Dann `ig-delete`/`tiktok-delete --confirm`
+  (mit before/after-Screenshots). **Läuft auf USER-Rechner** (Login braucht Bildschirm; Cloud-Session kann sich nicht
+  selbst einloggen). Für „Cloud-Claude klickt selbst" → Browserbase-Variante (CDP + API-Key) offen, auf Wunsch.
+  **🔴 DO-NOT-POST.txt war lokal stale (nicht weg)** — bali/augenmassage durchgehend geschützt; jetzt + Sommerkleid-Handle.
 
 **2026-06-08 — Luxestyle product session:**
 - **Polish-Session (Gemini 4/10):** Rückgabefrist→30 Tage (5 Coll.), Damen-Text gekürzt, Top-10-Bestseller premium-mode-first sortiert, SEO für 5 neue Sub-Collections, 2 Hero-Bilder generiert (dropship/hero/), Draft-Theme "Hero-Polish" angelegt. Hero-Kontrast-Bug-Ursache: scheme-6 existiert nicht → Customizer-Fix nötig (Live-Theme-API blockiert). Report: reports/site-critique-2026-06-08.md.
