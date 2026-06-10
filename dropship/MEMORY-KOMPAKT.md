@@ -156,3 +156,14 @@
   für grosse Hochformat-Poster im Gelato-Editor positionieren oder gezielt Hochformat-Varianten generieren.
 - Öffentlich via Pages: `https://abannews.com/social/posters/<name>.jpg` (Deploy-Lag ~15 Min beachten).
 - Geliefert an User (Vorschau-Sheet + Links). Gelato: Create product → Poster → Datei hoch → Publish.
+
+## 2026-06-10 — Hochformat-Poster + Printify weiter disconnected → Empfehlung: alles über Gelato
+- **Hochformat-Poster gebaut:** `social/posters/hoch/*-hoch.jpg` (10) = Pillow-Komposition (Quadrat-Art + Titel-Band,
+  Serif), echtes 2:3-Art-Print-Layout, Marke-Footer. An User als Dateien geliefert. (Quadrat-Originale in `social/posters/`.)
+- **Printify: 4× geprüft, IMMER „My new store / disconnected"** — User sagt „verbunden", aber Printify-API sieht keinen
+  Shopify-Store. Wahrscheinlich **anderes Printify-Konto als der API-Key** ODER Shopify-Genehmigen-Schritt nie zu Ende.
+- **Gelato = der verbundene Anbieter** (Store „LuxeStyle" Active). Gelato kann **Poster, Sticker, Tassen, Tote, Karten,
+  Apparel** → deckt die ganze Schweiz-Linie ab. **EMPFEHLUNG: alles über Gelato (manuell anlegen), Printify vorerst fallen
+  lassen** (CI-API zwar offen, aber Store nie verbunden → kein Nutzen). Gelato-API aus CI weiterhin blockiert → Anlegen im UI.
+- **Noch KEIN Gelato-Produkt in Shopify** (neuestes Produkt 06-09) → User muss in Gelato „Publish to store" abschließen.
+  Sobald da: Claude taggt `schweiz-edition`, Preis ×2,3, Collection+Menü.
