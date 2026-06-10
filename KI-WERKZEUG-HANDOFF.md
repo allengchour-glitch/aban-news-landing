@@ -4,6 +4,18 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 📌 2026-06-10 — Autopilot-Bug gefunden & gefixt (war faktisch tot!)
+- **`automation/autopilot.py` crashte bei JEDEM Lauf:** gesetzte-aber-leere GitHub-Variable liefert `''` →
+  `int(os.environ.get("ABAN_QUEUE_MIN","5"))` = `int("")` → ValueError, Abbruch vor jeder Arbeit. **Der
+  Gemini-Autopilot lief also nie durch** (Gemini war NICHT die Ursache). Fix: robustes `_int_env()` (PR #564)
+  + leeres `--batch` an `gen_site_images.py` auf Default (PR #565). **Verifiziert: Lauf jetzt SUCCESS**, hat
+  222 Dateien aktualisiert (Queues/Audit/Verlinkung/Share-Kit/Bilder/Branchen) + gepusht.
+- **Lehre:** Bei `vars.X`-Durchreichung in Workflows NIE `int(os.environ.get(X, default))` — leere Var = `''`,
+  nicht Default. Immer `(os.environ.get(X) or default)` bzw. try/except.
+- **GitHub Pro:** User upgradet (Link gegeben) → Repo wieder Private; Pages läuft mit Pro privat weiter
+  (`.nojekyll` behalten). ⚠️ Privat = 3.000 Actions-Min/Mon → ggf. Bot-Frequenz drosseln.
+- **Gemini wieder verfügbar** (User: „gimini ok").
+
 ## 📌 2026-06-09 (Abend/Nacht) — LinkedIn live · Site-Rettung · neues Tool · Autonomie-Taktung
 **🔴 WICHTIGSTES (Site war down!):** `abannews.com` gab **404** — Ursache: Repo war **privat**, GitHub Pages
 veröffentlicht privat nicht (Free-Plan). **Fix:** Repo auf **Public** (User), Pages-Source `main`/root,
