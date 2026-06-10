@@ -19,8 +19,11 @@
     },
     {
       "id": "p3-gratis",
-      "sent": false,
-      "text": "💸 Du musst für KI nicht viel zahlen.\n\nVon den 177 Tools in meinem Radar haben 142 ein kostenloses Angebot — viele reichen für den Alltag völlig.\n\nKostenlose KI-Tools, sortiert 👉 https://radar.abannews.com/preis/kostenlos.html"
+      "sent": true,
+      "text": "💸 Du musst für KI nicht viel zahlen.\n\nVon den 177 Tools in meinem Radar haben 142 ein kostenloses Angebot — viele reichen für den Alltag völlig.\n\nKostenlose KI-Tools, sortiert 👉 https://radar.abannews.com/preis/kostenlos.html",
+      "sent_channels": [
+        "telegram"
+      ]
     },
     {
       "id": "p4-foerder",
