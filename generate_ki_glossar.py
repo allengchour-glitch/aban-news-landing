@@ -155,16 +155,31 @@ def e(s):
     return html.escape(s, quote=True)
 
 
+# Begriff → passendes Gratis-Werkzeug (tiefe Verlinkung Glossar ↔ Tools)
+TOOLLINKS = {
+    "Prompt": ('/prompt-baukasten.html', 'Prompt-Baukasten'),
+    "System-Prompt": ('/ki-prompt-checker.html', 'Prompt-Verbesserer'),
+    "Datenresidenz / DSGVO": ('/ki-dsgvo-check.html', 'DSGVO-Schnellcheck'),
+    "EU AI Act": ('/ki-richtlinie.html', 'KI-Richtlinie fürs Team'),
+    "Prompt Injection": ('/ki-dsgvo-check.html', 'DSGVO-Schnellcheck'),
+    "Halluzination": ('/ki-hype-detektor.html', 'KI-Hype-Detektor'),
+    "Benchmark": ('/welche-ki-fuer-was.html', 'KI-Tool-Finder'),
+}
+
+
 def build():
     cards = []
     for term, defi, klar, hype in TERMS:
         hype_html = f'<p class="hype"><b>Hype-Check:</b> {e(hype)}</p>' if hype else ""
+        tl = TOOLLINKS.get(term)
+        tool_html = (f'<p class="toollink">→ Passendes Werkzeug: <a href="{tl[0]}">{e(tl[1])}</a></p>'
+                     if tl else "")
         cards.append(
             f'<article class="term" data-t="{e((term+" "+defi+" "+klar).lower())}">'
             f'<h2>{e(term)}</h2>'
             f'<p class="def">{e(defi)}</p>'
             f'<p class="klar"><b>Klartext:</b> {e(klar)}</p>'
-            f'{hype_html}</article>'
+            f'{hype_html}{tool_html}</article>'
         )
     ld = {
         "@context": "https://schema.org",
@@ -225,6 +240,7 @@ header.site .wrap{{display:flex;align-items:center;justify-content:space-between
 .term .def{{color:var(--ink);margin-bottom:6px}}
 .term .klar{{color:var(--ink2);font-size:.95rem;margin-bottom:6px}}
 .term .hype{{color:var(--ink2);font-size:.92rem;background:var(--cream);border:1px solid var(--amber-lt);border-radius:9px;padding:8px 11px;margin-top:8px}}
+.term .toollink{{font-size:.88rem;margin-top:8px;color:var(--muted)}}.term .toollink a{{color:var(--amber-dk);font-weight:600;text-decoration:none}}
 .empty{{text-align:center;color:var(--muted);padding:24px}}
 .band{{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:24px;text-align:center}}
 .band h2{{font-size:1.25rem;margin-bottom:8px}}.band p{{color:var(--ink2);max-width:560px;margin:0 auto 14px}}
