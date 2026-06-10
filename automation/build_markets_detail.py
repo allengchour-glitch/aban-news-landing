@@ -27,7 +27,7 @@ STR = {
     "de": {
         "out": ROOT / "maerkte", "base": "/maerkte/", "site": "/", "markets": "/maerkte.html",
         "loc": "de-DE", "numloc": "de-CH",
-        "type": {"crypto": "Krypto", "stock": "Aktie", "index": "Index", "commodity": "Rohstoff"},
+        "type": {"crypto": "Krypto", "stock": "Aktie", "etf": "ETF", "index": "Index", "commodity": "Rohstoff"},
         "title": "{name} ({sym}) — Kurs, 30-Tage-Chart & KI-Sentiment | aban news",
         "desc": "{name} ({sym}): aktueller Kurs, 30-Tage-Chart, KI-Sentiment und wert-spezifische News. Anti-Hype, keine Anlageberatung.",
         "skip": "Zum Inhalt springen", "nav": "Hauptnavigation", "subscribe": "Gratis abonnieren",
@@ -44,7 +44,7 @@ STR = {
     "en": {
         "out": ROOT / "en" / "maerkte", "base": "/en/maerkte/", "site": "/en/", "markets": "/en/maerkte.html",
         "loc": "en", "numloc": "en",
-        "type": {"crypto": "Crypto", "stock": "Stock", "index": "Index", "commodity": "Commodity"},
+        "type": {"crypto": "Crypto", "stock": "Stock", "etf": "ETF", "index": "Index", "commodity": "Commodity"},
         "title": "{name} ({sym}) — price, 30-day chart & AI sentiment | aban news",
         "desc": "{name} ({sym}): current price, 30-day chart, AI sentiment and asset-specific news. Anti-hype, not investment advice.",
         "skip": "Skip to content", "nav": "Main navigation", "subscribe": "Subscribe free",
@@ -154,27 +154,51 @@ def fmt_asset_price(a):
     return f"{v:.4f} " + unit
 
 
+def _axislabel(v):
+    a = abs(v)
+    if a >= 1000:
+        return f"{v:,.0f}".replace(",", "’")
+    if a >= 1:
+        return f"{v:,.2f}".replace(",", "’")
+    return f"{v:.4f}"
+
+
 def chart_svg(spark, up, no_chart):
     if not spark or len(spark) < 2:
         return f'<p class="muted">{no_chart}</p>'
-    W, H, pad = 640, 200, 8
+    W, H, pad = 640, 210, 10
+    rpad = 60  # Platz für Hoch/Tief-Beschriftung rechts
     lo, hi = min(spark), max(spark)
     span = (hi - lo) or 1
     n = len(spark)
+    inner_w = W - pad - rpad
     pts = []
     for i, v in enumerate(spark):
-        x = pad + i / (n - 1) * (W - 2 * pad)
+        x = pad + i / (n - 1) * inner_w
         y = pad + (1 - (v - lo) / span) * (H - 2 * pad)
         pts.append((round(x, 1), round(y, 1)))
     line = " ".join(f"{x},{y}" for x, y in pts)
     area = f"M{pts[0][0]},{H-pad} " + " ".join(f"L{x},{y}" for x, y in pts) + f" L{pts[-1][0]},{H-pad} Z"
     color = "#0f9d6b" if up else "#dc2626"
     fill = "rgba(15,157,107,.12)" if up else "rgba(220,38,38,.10)"
+    y_hi = pad
+    y_lo = H - pad
+    lx = W - rpad + 6
+    ex, ey = pts[-1]
     return (
         f'<svg viewBox="0 0 {W} {H}" width="100%" role="img" aria-label="30-day price history" style="display:block">'
+        # Hoch/Tief-Hilfslinien + Beschriftung
+        f'<line x1="{pad}" y1="{y_hi}" x2="{W-rpad}" y2="{y_hi}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/>'
+        f'<line x1="{pad}" y1="{y_lo}" x2="{W-rpad}" y2="{y_lo}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/>'
+        f'<text x="{lx}" y="{y_hi+4}" font-size="12" fill="#64748b">{_axislabel(hi)}</text>'
+        f'<text x="{lx}" y="{y_lo+4}" font-size="12" fill="#64748b">{_axislabel(lo)}</text>'
+        # Fläche + Linie
         f'<path d="{area}" fill="{fill}" stroke="none"/>'
         f'<polyline points="{line}" fill="none" stroke="{color}" stroke-width="2.2" '
-        f'stroke-linejoin="round" stroke-linecap="round"/></svg>'
+        f'stroke-linejoin="round" stroke-linecap="round"/>'
+        # Endpunkt-Markierung
+        f'<circle cx="{ex}" cy="{ey}" r="6" fill="{color}" opacity="0.18"/>'
+        f'<circle cx="{ex}" cy="{ey}" r="3.4" fill="{color}"/></svg>'
     )
 
 
