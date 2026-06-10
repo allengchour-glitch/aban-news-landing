@@ -32,7 +32,7 @@
 | Meta (IG/FB/Threads) | ✅ gesetzt — Social-Posten läuft |
 | `SHOPIFY_SHOP` + `SHOPIFY_CLIENT_ID/SECRET` | ❌ offen → für Autopilot/Auto-Queue (User, ABEND-TODO §1) |
 | `CJ_EMAIL` + `CJ_API_KEY` | ❌ als Repo-Secret offen (in-Session vorhanden) |
-| TikTok | ⏳ Audit nötig |
+| TikTok | ⏳ Reel-Autopost GEBAUT (FILE_UPLOAD, kein Domain-Verify) — fehlen nur 4 Secrets: TT_CLIENT_KEY/SECRET/ACCESS_TOKEN/REFRESH_TOKEN. Anleitung: `dropship/TIKTOK-AUTOPOST-AKTIVIEREN.md` |
 | `YT_API_KEY` | ❌ offen (Video-Session) |
 > Hinweis: Für Shopify-Arbeit **braucht keine Session einen Key** — das geht über die MCP. Keys nur für die Cron-Actions.
 
@@ -55,3 +55,85 @@
 - **Branch:** alles auf `claude/luxestyle-product-CizQ6` → Draft-PRs nach `main`. ⚠️ Dort steht `MAX_PER_RUN=8` (nur Branch, nicht mergen!).
 
 **2026-06-08 — abannews / video sessions:** (bitte hier eintragen, was ihr am Shop/Repo ändert)
+
+**2026-06-09 — Luxestyle product session (Social-Maschine + Browser-Frage):**
+- **Spam-Moderation LIVE (FB + IG):** `automation/social-comment-moderate.mjs` + `social-comment-moderate.yml`
+  (3×/Tag, blendet Solicitation-/„zahl-mir-Geld"-Spam aus, echte Fragen bleiben; hide=reversibel). Workflow nutzt
+  Sparse-Checkout (Repo ist riesig → sonst hängt der Checkout) + robuste Token-Wahl (FB/IG/META).
+- **🔑 META-TOKEN-LEHRE (teuer gelernt):** FB-Seiten-Moderation/Posten braucht ein **Page-Token** (Typ „Page"
+  aus `me/accounts` → access_token der Seite LuxeStyle CH `1049840534888592`). Ein **User-Token** (auch langlebig,
+  alle Scopes) gibt für FB **code 190**. IG funktioniert mit User-Token. `FB_PAGE_ID=1049840534888592`,
+  `IG_USER_ID=17841480560863361`. Page-Token in FB_PAGE_ACCESS_TOKEN **und** IG_ACCESS_TOKEN.
+- **Content-Vielfalt:** `automation/good_products.csv` neu = breit gestreut (Herren/Gadgets/Home/Schmuck/Beauty/
+  Accessoires + nur ~4 frische Kleider, interleaved) → keine Damenkleider-Wiederholung mehr. **Augenmassagegerät
+  rausgenommen** (User will es nicht posten). Frische Einzel-Clips gerendert: `reels/clip-*.mp4` + `montage-2026-06-09.mp4`.
+- **✅ REEL-HOSTING-PROBLEM GELÖST (09.06. nachmittags):** Meta/TikTok ziehen Videos per **öffentlicher URL**.
+  Repo ist privat (raw=404) + abannews.com/reels=404 → früher blockiert. **Lösung: Shopify-Files-CDN.**
+  Neues Tool `automation/upload_to_shopify_cdn.mjs` lädt eine lokale Datei (Reel/Bild) per
+  `stagedUploadsCreate → GCS-POST → fileCreate(FILE) → poll READY` hoch und gibt eine **öffentliche
+  `https://cdn.shopify.com/...mp4`-URL** aus (range-fähig, HTTP 206, von Meta abrufbar). Auth = dieselben
+  Client-Credentials wie reel-analytics.mjs (SHOPIFY_SHOP/CLIENT_ID/SECRET). **Erstes Reel live gehostet:**
+  `cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-reel-20260609.mp4` (diverser Mix, kein Kleider-Spam)
+  → in `social/video_queue.csv` als `mix-20260609` status=ready eingetragen, abannews-Zeilen auf `needs-rehost`.
+  **Volle Automation** (reel-render → CDN-Upload → Queue) braucht nur noch die Shopify-Secrets als **Repo-Secrets**
+  (aktuell nur in-Session). Bis dahin: manueller Upload via dem Tool + Workflow-Dispatch.
+- **✅ ERSTES REEL LIVE ÜBER DIE NEUE PIPELINE (09.06. 20:54 UTC):** `video-meta-autopost.yml` (dispatch auf Branch)
+  hat das CDN-Reel `mix-20260609` veröffentlicht → **Instagram Reel** `18091803953356065` ✅ + **Threads**
+  `17978311515020703` ✅. Pipeline end-to-end bewiesen.
+- **✅ FB-TOKEN ERNEUERT + REEL AUF ALLEN 3 META-KANÄLEN LIVE (09.06. 22:29 UTC):** User hat ein langlebiges
+  **Page-Token** gesetzt → `mix-20260609-fb` gepostet → **Facebook Video** `27101737179520083` ✅. Damit ist das
+  Reel auf **Instagram + Threads + Facebook** live. **FB-Spam-Moderation** mit demselben Token per Dry-Run
+  verifiziert: „Spam (DRY) ausgeblendet: 0", **keine code-190-Fehler mehr** → Moderation FB+IG wieder voll funktionsfähig.
+  IG_ACCESS_TOKEN + THREADS_ACCESS_TOKEN gültig. **Meta-Stack komplett grün.**
+- **🔧 CI-FIX:** `video-meta-autopost.yml` Checkout hing (großer Repo, viele committete .mp4) → auf shallow
+  (`fetch-depth:1`) + Sparse-Checkout (nur Script + Queue) umgestellt → Checkout jetzt ~1s.
+- **✅ 3 FRISCHE REELS (15 NEUE PRODUKTE) LIVE auf IG+FB+Threads (09.06. abends):** Auf User-Wunsch „nicht
+  mehr die gleichen Produkte". Zuerst Post-Verlauf geprüft (good_products.csv 32 + posts_image.csv 35) → 15
+  noch nie gepostete Produkte gewählt (Beauty: Gua-Sha/Vitamin-C; Herren: Marco-Sneaker/Costa-Set/Porto-Slides/
+  Amalfi; Schuhe: Gala/Cloud; Schmuck: Onyx/Stella/Serpent/Coeur; Gadget: FlexHold; Damen: Lino/Roma). 3 Reels
+  via `reel-render.yml`-Dispatch gerendert → je per Shopify-CDN hochgeladen → in `video_queue.csv` →
+  alle 3 gepostet (fresh1 IG 18323863495286045, fresh2 17924169777356896, fresh3 18205019272347534).
+- **🆕 `good_products.csv` ersetzt:** jetzt 15 frische Produkte im **sauberen 3-Spalten-Format** (name,url,label).
+  Behebt Alt-Bug: 4-Spalten + `cut -f3-` zog den **Handle-Slug** mit ins on-Video-Label → jetzt sauberes Label.
+  Pointer auf 0 zurückgesetzt. (⚠️ Reel-Render-Cron läuft von `main` mit ALTER good_products.csv — Branch-Stand
+  wirkt nur bei Dispatch/Merge.)
+- **⚠️ CRON-VON-MAIN:** geplante Auto-Posts (`video-meta-autopost`, `reel-render`) laufen vom **main**-Branch;
+  neue CDN-Queue-Zeilen/Produkte liegen auf dem Dropship-Branch → bis Merge per **Workflow-Dispatch auf dem
+  Branch** posten (so heute alle 3 gemacht). Für hands-off täglich: PR nach main mergen.
+- **✅ CONVERSION-PASS (09.06. spät, live via MCP — NICHT zurücksortieren!):**
+  - **Social-Proof-First auf den Top-Landing-Pages:** Manuelle Kollektionen umsortiert (sortOrder=MANUAL),
+    sodass die **bewerteten Verkaufsschlager zuerst** stehen:
+    · **Homepage „🔥 Hero-Favoriten" (`bestseller`, 486 Sess/#1):** Slim Wallet 5,0★/15 · Herrenuhr 5,0★/15 ·
+    Jade Roller 5,0★/7 · Mini-Diffuser 4,8★ ganz oben (vorher unbewertete Galaxy/Salzlampe oben).
+    · **„✨ Highlights" (`highlights`, 239 Sess/#2):** +6 Review-Gewinner zugefügt & nach oben (Bali 4,93 ·
+    Plateau-Sandalen 4,71 · Mini-Kleid 4,65 · Resort-Set 4,64 · Ibiza 4,47 · Maxirock 4,35).
+  - **Ad-Funnel `sommer` (72 Prod.) leak-gescannt: sauber** — alle bewerteten ≥4,35★, kein schlechtes Produkt.
+  - **15 frische Reel-Produkte verifiziert:** alle 6 Kanäle, korrekte Kollektionen, SEO+Trust-Text vorhanden.
+  - **3 verstümmelte SEO-Titel gefixt** (FlexHold/Coeur/Serpent — Auto-Generator hatte Compound-Wörter zerlegt).
+  - Engpass bleibt **Reichweite** (3 User-Klicks: TikTok-Conversion-Kampagne + Pixel + Budget), nicht der Shop.
+- **🎨 VISUAL-FIXES (09.06. spät):** (1) **Story-Format 1080×1920** mit Safe-Zones in `gen_post_image.py`
+  (`render_story`) — Feed-Bild als Story war seitlich abgeschnitten. (2) **IG-Reel-Cover** = Produkt-Frame
+  statt weisses Intro (`thumb_offset` in video-autopost-meta). (3) **Schärfe-Fix `place_hero()`**: CJ-Fotos
+  sind oft 750–800px → Full-Bleed = 2–2.5× Upscale = unscharf. Neu adaptiv: hochauflösend (cover-scale ≤1.4)
+  bleibt immersiv Full-Bleed, niedrig aufgelöst → scharfes Produkt auf unscharfem BG. Reels nutzen
+  `automation/frame_for_reel.py` vor dem ffmpeg-Render (reel-render.yml installiert `python3-pil`).
+  (4) **Story-Rating-Badge** (★ 4,9 · N Bewertungen) für Social Proof. **LEHRE:** Das `featuredImage` ist oft
+  ein winziges Thumbnail (Bali 361×448), grössere Bilder (1066px) existieren → für Top-Schärfe das grösste
+  Produktbild nehmen.
+- **🎵 TECHNO-MUSIK:** `automation/music/` = 3 royalty-free Tracks (Kevin MacLeod, CC-BY): Voltaic/Electrodoodle/
+  Digital-Lemonade. `auto_render.sh` rotiert pro Reel + hängt CC-BY-Credit an die Caption. (Eingebackene Musik:
+  nur royalty-free; echte Trend-Sounds nur in-app über die `-clean.mp4`.)
+- **🚫 DO-NOT-POST-Liste:** `automation/DO-NOT-POST.txt` (case-insensitive Substring) — **bali**, **augenmassage**
+  nie in Creatives. Respektiert von `gen_post_image` (Stories/Posts) + `auto_render.sh` (Reels). Bali bleibt als
+  Produkt/Bestseller im Shop, nur **keine Bali-Marketing-Bilder** (User 10.06.).
+- **✅ PIXEL GEHT (User 10.06.):** TikTok-Pixel funktioniert → Conversion-Tracking live. Damit kann die Kampagne
+  endlich auf **Käufe** optimieren. Von den 3 Reichweiten-Blockern ist Pixel ✅; offen bleiben **Conversion-
+  Kampagne mit Ziel „Kauf" + Budget**.
+- **TikTok-Autopost** (`tiktok-autopost.yml`) braucht `TT_CLIENT_KEY/TT_CLIENT_SECRET/TT_REFRESH_TOKEN`
+  (TikTok-Developer-App + Content-Posting-API, evtl. App-Review). Bis dahin: manuell posten.
+- **🖥️ BROWSER-/CLOUD-BROWSER-FRAGE (User 09.06.):** Diese Session hat nur **Headless-Playwright**
+  (Screenshots/Lesen öffentlicher Seiten). **KANN NICHT** in eingeloggte Konten klicken (TikTok-App, Shopify-Admin,
+  Meta Business Suite) — kein authentifiziertes Browser-/Computer-Use-Tool angeschlossen, Logins sind sensibel.
+  **Option für die Zukunft:** Ein **Cloud-Browser-/Browser-MCP-Tool** mit eingeloggten Sessions verbinden → dann
+  könnte eine Session auch klickende Aktionen übernehmen (TikTok-Upload, Customizer-Klicks, Token holen). Aktuell
+  Arbeitsteilung: Claude = API/Render/Posten, User = App-/Login-Klicks.

@@ -34,7 +34,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
+      # Repo enthält viele committete .mp4 → voller Checkout hängt. Shallow + Sparse-Checkout
+      # holt nur die fürs Posten nötigen Pfade (Script + Queue) und bleibt schnell.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            automation/video-autopost-meta.mjs
+            social/video_queue.csv
+          sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:
           node-version: '20'

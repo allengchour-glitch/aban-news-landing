@@ -1,0 +1,51 @@
+name: Bearbeitete Produktbilder (schriftlos) hochladen
+
+# Lädt für jedes aktive cj-real-Produkt EIN bearbeitetes, schriftloses Produktbild in die
+# Shopify-Galerie (grösstes Foto → render_product_clean → upload). Idempotent (alt-Prefix),
+# Bali/DO-NOT-POST ausgeschlossen. Manuell auslösbar; No-op ohne Shopify-Secrets.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur testen (nichts hochladen)'
+        type: boolean
+        default: false
+      max_per_run:
+        description: 'Max. Uploads pro Lauf (0 = alle)'
+        type: string
+        default: '0'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: edited-product-images
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            automation/upload_edited_product_images.py
+            automation/gen_post_image.py
+            automation/DO-NOT-POST.txt
+          sparse-checkout-cone-mode: false
+
+      - name: Pillow + requests installieren
+        run: sudo apt-get update && sudo apt-get install -y python3-pil python3-requests
+
+      - name: Bearbeitete Produktbilder hochladen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '0' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+        run: python3 automation/upload_edited_product_images.py

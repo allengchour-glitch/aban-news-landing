@@ -9,7 +9,8 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 LIST="$ROOT/automation/good_products.csv"
-MUSIC="$ROOT/automation/reel_music.m4a"
+MUSIC_DIR="$ROOT/automation/music"               # Techno-/Electronic-Pool (royalty-free, CC-BY) – rotiert pro Reel
+FALLBACK_MUSIC="$ROOT/automation/reel_music.m4a" # falls Pool leer
 QUEUE="$ROOT/automation/reels_seed.csv"
 PTR="$ROOT/automation/.render_pointer"
 N="${N:-5}"                          # Produkte pro Reel (max 9)
@@ -36,8 +37,16 @@ LEARNED="$ROOT/automation/learned_pools.sh"
 [ -f "$LEARNED" ] && source "$LEARNED" && echo "(learned_pools.sh aktiv)" || true
 
 [ -f "$LIST" ] || { echo "good_products.csv fehlt"; exit 0; }
-[ -f "$MUSIC" ] || { echo "reel_music.m4a fehlt"; exit 0; }
+# Musik-Pool (Techno) einlesen; Fallback auf den Alt-Track. Mind. 1 Quelle nötig.
+mapfile -t TRACKS < <(find "$MUSIC_DIR" -maxdepth 1 -type f \( -iname '*.mp3' -o -iname '*.m4a' -o -iname '*.wav' \) 2>/dev/null | sort)
+[ "${#TRACKS[@]}" -ge 1 ] || { [ -f "$FALLBACK_MUSIC" ] && TRACKS=("$FALLBACK_MUSIC"); }
+[ "${#TRACKS[@]}" -ge 1 ] || { echo "keine Musik (Pool leer + kein Fallback)"; exit 0; }
 mapfile -t LINES < <(tail -n +2 "$LIST" | sed '/^$/d')
+# Ausschlussliste (vom User gesperrte Produkte, z.B. Bali) — nie in Reels rendern.
+EXCL="$ROOT/automation/DO-NOT-POST.txt"
+if [ -s "$EXCL" ]; then
+  mapfile -t LINES < <(printf '%s\n' "${LINES[@]}" | grep -ivFf <(grep -vE '^[[:space:]]*#|^[[:space:]]*$' "$EXCL") || true)
+fi
 TOTAL=${#LINES[@]}
 [ "$TOTAL" -ge 1 ] || { echo "Allow-Liste leer"; exit 0; }
 
@@ -51,6 +60,9 @@ for ((j=0;j<N && j<TOTAL;j++)); do
   label=$(printf '%s' "$line" | cut -d, -f3-)
   nk=$((k+1))
   if curl -sL --fail "$url" -o "$IMGDIR/$nk.jpg"; then
+    # Schärfe-Fix: niedrig aufgelöste CJ-Fotos vor dem Render auf scharfes 1080x1920-Frame
+    # bringen (adaptiv: hochauflösend=Full-Bleed, klein=scharf-gerahmt). No-op ohne Pillow.
+    W=1080 H=1920 python3 "$ROOT/automation/frame_for_reel.py" "$IMGDIR/$nk.jpg" "$IMGDIR/$nk.jpg" >&2 || true
     echo "$label" >> "$IMGDIR/names.txt"; k=$nk
   else
     echo "WARN: Bild-Download fehlgeschlagen: $url" >&2
@@ -62,6 +74,12 @@ echo "$(( (start + N) % TOTAL ))" > "$PTR"
 HOOK="${HOOKS[$(( start % ${#HOOKS[@]} ))]}"
 SLUG="auto-$(date +%Y%m%d-%H%M)"
 mkdir -p "$ROOT/reels"
+# Techno-Track rotierend wählen (mit dem Produkt-Pointer) → nicht immer derselbe Sound.
+MUSIC="${TRACKS[$(( start % ${#TRACKS[@]} ))]}"
+# CC-BY-Quellenangabe automatisch aus dem Dateinamen (Kevin MacLeod / incompetech.com, CC BY 4.0).
+_tname=$(basename "$MUSIC"); _tname="${_tname%.*}"
+MUSIC_CREDIT="🎵 ${_tname//-/ } – Kevin MacLeod (incompetech.com) · CC BY 4.0"
+echo "Musik: $(basename "$MUSIC")"
 # Schnelleres, TikTok-natives Pacing (kurze Segmente + knappe Fades) — via Env überschreibbar.
 HOOK="$HOOK" SEG="${SEG_DUR:-1.7}" T="${FADE_DUR:-0.35}" bash "$ROOT/dropship/ads/render_premium_reel.sh" "$ROOT/reels/$SLUG.mp4" "$MUSIC" "$IMGDIR"
 
@@ -71,6 +89,7 @@ ID=$(date +%s)
 FEATURED=$(head -1 "$IMGDIR/names.txt")
 # shellcheck disable=SC2059
 CAP=$(printf "${CAPS[$(( start % ${#CAPS[@]} ))]}" "$FEATURED")
+CAP="$CAP"$'\n'"$MUSIC_CREDIT"          # CC-BY-Quellenangabe an die Caption anhängen (Pflicht)
 TAGS="${TAGSETS[$(( start % ${#TAGSETS[@]} ))]}"
 printf '%s,%s,%s,%s,%s,%s,ready,,\n' "$ID" "$(date +%F)" "$(csv "$BASEURL/$SLUG.mp4")" "$(csv "$CAP")" "$(csv "$TAGS")" "$(csv "tiktok,instagram")" >> "$QUEUE"
 
