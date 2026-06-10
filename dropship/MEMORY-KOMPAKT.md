@@ -94,3 +94,10 @@
   `/pages/designs-galerie?cat=Schweiz`. Galerie-JS kann jetzt **Deep-Link-Filter** (`?cat=` oder `#Kategorie`).
   Sub-Item „Designs & Sticker" auf (335) aktualisiert. `menuUpdate` ersetzt ALLE Items → immer komplette
   Item-Liste (mit ids) mitsenden, sonst Verlust.
+- **Startseiten-Hero „Schweiz Edition" — VERSUCHT, zurückgerollt (2026-06-10):** Tool `automation/add_hero_schweiz.mjs`
+  + Workflow `hero-schweiz.yml` (klont bestehenden Hero, Backup `dropship/theme-backups/index.json.bak`, REMOVE=1=Rollback).
+  LEHRE: Hero-`image_1` akzeptiert NUR `shopify://shop_images/<file>` (externe/CDN-URL → „does not point to an applicable
+  resource"); Bild via stagedUploadsCreate+fileCreate hochgeladen (`schweiz-edition-hero.png`, liegt in Shopify-Files bereit).
+  Ergebnis: mobil gut (Headline+Button über Motiv-Wallpaper), **Desktop schlecht** (Hero zu hoch, Text/Button unsichtbar)
+  → entfernt, Startseite wieder sauber/original. Hero-Feintuning = visueller Customizer-Job. Schweiz-Discovery läuft
+  weiter über den Menü-Link (solider Live-Gewinn).
