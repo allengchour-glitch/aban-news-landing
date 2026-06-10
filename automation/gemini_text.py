@@ -35,15 +35,17 @@ def _parse(data: dict) -> str | None:
         return None
 
 
-def _gencfg(max_tokens: int, temperature: float, thinking_budget):
+def _gencfg(max_tokens: int, temperature: float, thinking_budget, response_json=False):
     cfg = {"temperature": temperature, "maxOutputTokens": max_tokens}
     if thinking_budget is not None:
         cfg["thinkingConfig"] = {"thinkingBudget": thinking_budget}
+    if response_json:
+        cfg["responseMimeType"] = "application/json"
     return cfg
 
 
 def _vertex(prompt: str, model: str, max_tokens: int, temperature: float,
-            thinking_budget=None) -> str | None:
+            thinking_budget=None, response_json=False) -> str | None:
     info = os.environ.get("GCP_SA_KEY", "").strip()
     project = os.environ.get("GCP_PROJECT", "").strip()
     if not info or not project:
@@ -65,7 +67,7 @@ def _vertex(prompt: str, model: str, max_tokens: int, temperature: float,
     url = (f"https://{location}-aiplatform.googleapis.com/v1/projects/{project}"
            f"/locations/{location}/publishers/google/models/{model}:generateContent")
     body = {"contents": [{"role": "user", "parts": [{"text": prompt}]}],
-            "generationConfig": _gencfg(max_tokens, temperature, thinking_budget)}
+            "generationConfig": _gencfg(max_tokens, temperature, thinking_budget, response_json)}
     req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
                                  headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"})
     try:
@@ -83,13 +85,13 @@ def _vertex(prompt: str, model: str, max_tokens: int, temperature: float,
 
 
 def _dev(prompt: str, model: str, max_tokens: int, temperature: float,
-         thinking_budget=None) -> str | None:
+         thinking_budget=None, response_json=False) -> str | None:
     key = os.environ.get("GEMINI_API_KEY", "").strip()
     if not key:
         return None
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
     body = {"contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": _gencfg(max_tokens, temperature, thinking_budget)}
+            "generationConfig": _gencfg(max_tokens, temperature, thinking_budget, response_json)}
     req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
                                  headers={"Content-Type": "application/json"})
     try:
@@ -107,14 +109,15 @@ def _dev(prompt: str, model: str, max_tokens: int, temperature: float,
 
 
 def generate(prompt: str, max_tokens: int = 4000, temperature: float = 0.4,
-             thinking_budget=None) -> str | None:
+             thinking_budget=None, response_json=False) -> str | None:
     """Text erzeugen: je Kandidaten-Modell Vertex → Developer-API. Erstes Ergebnis gewinnt.
-    thinking_budget=0 schaltet das interne 'Thinking' der 2.5-Modelle ab (volles Output-Budget)."""
+    thinking_budget=0 schaltet das interne 'Thinking' der 2.5-Modelle ab (volles Output-Budget).
+    response_json=True erzwingt natives JSON (responseMimeType) — robuster zu parsen."""
     for model in _candidates():
-        out = _vertex(prompt, model, max_tokens, temperature, thinking_budget)
+        out = _vertex(prompt, model, max_tokens, temperature, thinking_budget, response_json)
         if out:
             return out
-        out = _dev(prompt, model, max_tokens, temperature, thinking_budget)
+        out = _dev(prompt, model, max_tokens, temperature, thinking_budget, response_json)
         if out:
             return out
     print("::warning::Kein Modell lieferte Text (alle Kandidaten 404/Fehler).")
