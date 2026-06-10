@@ -1,0 +1,43 @@
+name: Lieferzeit-Snippet (Phase 2, Theme)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur Vorschau'
+        type: boolean
+        default: true
+      remove:
+        description: 'Einbindung wieder entfernen'
+        type: boolean
+        default: false
+      section:
+        description: 'Produkt-Sektion (Default sections/main-product.liquid)'
+        type: string
+        default: 'sections/main-product.liquid'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: delivery-snippet
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Snippet einbinden
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SECTION: ${{ github.event.inputs.section }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && '0' || '1' }}
+          REMOVE: ${{ github.event.inputs.remove == 'true' && '1' || '0' }}
+        run: node automation/inject_delivery_snippet.mjs

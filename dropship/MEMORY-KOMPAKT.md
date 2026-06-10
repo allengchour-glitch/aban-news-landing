@@ -3,6 +3,27 @@
 > STAND-2026-06-08 (Shopify-Auth), CJ-IMPORT-LOG.md (Katalog-Historie), ABEND-TODO.md (User-Klicks),
 > MISTER-DTF-FULFILLMENT.md (Bügeltransfer). Stand: **2026-06-10 nachts** (Details als dated Einträge unten).
 
+## 📌 STAND 2026-06-11 (Prodigi-Connector + Lieferzeit + Sprache je Land — NEU, ZUERST LESEN)
+**Gebaut & committet (alles no-op-safe, idempotent, DRY_RUN-fähig; Branch `_mp_*` → `main`):**
+- **Prodigi-Connector (POD #3, EU-Labs)** — `automation/prodigi_check.mjs` (Key/Katalog), `create_prodigi_products.mjs`
+  (10 Schweiz-Poster aus `social/posters/hoch/`, Fine-Art A4/A3/A2, **Shopify-Variant-SKU = DIREKT Prodigi-SKU** z.B.
+  `GLOBAL-FAP-A3`, Metafeld `custom.print_file`, Tags `prodigi_personalized_product`+`schweiz-edition`, ACTIVE+publish),
+  `prodigi_sync.mjs` (bezahlte Order → `POST /v4.0/orders`, Quote für Lieferzeit, Gemini-QA-Gate). Workflows
+  `prodigi-check/products/sync.yml`. **No-op bis User `PRODIGI_API_KEY`-Secret setzt** (gratis Prodigi-Konto). Endpoint
+  `https://api.prodigi.com/v4.0`, Header `X-API-Key`; Sandbox via `PRODIGI_SANDBOX=1`.
+- **Lieferzeit je Bestellort** — Phase 1 `automation/delivery_block.mjs` (Regions-Block in Beschreibung + Metafeld
+  `custom.lieferzeit` json; Herkunft aus Tags: EU-Druck 3–7 T · eu-lager 5–10 · cj-real 8–14/US 10–20). Phase 2
+  `snippets/ls-lieferzeit.liquid` + `automation/inject_delivery_snippet.mjs` (zeigt nur Zeile fürs Kundenland, 4 Sprachen
+  inline, raw-API-Theme-Write + Backup + REMOVE=1). Workflows `delivery-block.yml`, `delivery-snippet.yml`.
+- **Sprache je Land** — `automation/markets_languages.mjs` (aktiviert+publiziert Shop-Locales FR/IT/EN **additiv**,
+  fasst Markt-Web-Presence NICHT an = Parallel-Session-Schutz; nur Report), `automation/translate_content.mjs`
+  (Gemini DE→FR/IT/EN → `translationsRegister`, digest-idempotent via Ledger `dropship/_translated.txt`, **SCOPE=hero|catalog|theme**).
+  Workflow `translate.yml` fährt **hero→catalog→theme sequenziell** in 1 Lauf (committet Ledger zurück). Braucht `GEMINI_API_KEY`+Shopify-Creds.
+- **Spocket:** KEIN Merchant-API (bestätigt) → später per App-Import + Veredelung. **autopilot2** „Markets inkompatibel" = harmlos, User-Entscheid: drin lassen.
+- **Reprice-Falle:** `printful_reprice.mjs` NICHT mit Default `MIN_MARGE=12` auf Sticker/kleine POD (überteuert) — nur mit `MIN_MARGE=2`.
+- **Offen (User):** `PRODIGI_API_KEY`-Secret setzen → schaltet Connector scharf. Danach: `prodigi-check` → `prodigi-products` (dry=false)
+  → `delivery-block` (dry=false) → `markets-languages` (dry=false) → `translate` (dry=false). Snippet `delivery-snippet` braucht ggf. richtige `SECTION`.
+
 ## 📌 STAND 2026-06-10 (Session-Ende — ZUERST LESEN, dann Details unten)
 **Heute live geschaltet (alles auf `main`, mit Backups/Rollback):**
 1. **POD-Mockups gesäubert** (kein „Dein Design" mehr; Printful-Gratis-Katalog `/products/variant/{id}` = saubere Blanks).

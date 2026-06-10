@@ -1,0 +1,41 @@
+name: Prodigi-Sync (Bestellungen → Druckauftrag)
+
+on:
+  schedule:
+    - cron: '20 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur Vorschau'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: prodigi-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Bezahlte Prodigi-Bestellungen synchronisieren
+        env:
+          PRODIGI_API_KEY: ${{ secrets.PRODIGI_API_KEY }}
+          PRODIGI_SANDBOX: ${{ secrets.PRODIGI_SANDBOX }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run == 'true' && '1' || '0' }}
+        run: node automation/prodigi_sync.mjs
