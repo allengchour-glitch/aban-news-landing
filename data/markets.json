@@ -4,7 +4,7 @@
   "titel": "Märkte — Krypto & Aktien",
   "untertitel": "Live-Kurse, Finanz-News und KI-Sentiment auf einen Blick. Anti-Hype, mit Quellen.",
   "hinweis": "Keine Anlageberatung. Krypto-Kurse aktualisieren live im Browser (CoinGecko); Aktien, News und KI-Sentiment werden von aban news regelmäßig automatisch aktualisiert. KI-Einordnung ist experimentell und ersetzt keine eigene Recherche.",
-  "ai_engine": "seed",
+  "ai_engine": "gemini-2.5-flash",
   "assets": [
     {
       "id": "bitcoin",
@@ -12,13 +12,13 @@
       "name": "Bitcoin",
       "type": "crypto",
       "coingecko_id": "bitcoin",
-      "price": 61181,
-      "change_24h": -3.32,
+      "price": 61631,
+      "change_24h": -2.61,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0,
-      "rationale": "Sentiment wird beim nächsten automatischen Lauf aktualisiert.",
-      "signal": "Daten werden geladen …",
+      "sentiment": "bearish",
+      "confidence": 0.8,
+      "rationale": "Die Nachrichtenlage deutet auf eine schwierige Phase hin, mit Berichten über die schlechteste Woche seit dem FTX-Crash und anhaltenden Gegenwind durch Fed-Zinsen.",
+      "signal": "Schlechteste Woche seit FTX-Crash, Gegenwind.",
       "spark": [
         81725.2077,
         80480.886,
@@ -53,16 +53,16 @@
           "datum": "10 Jun 2026"
         },
         {
-          "title": "Strategy Buys $101 Million Worth of Bitcoin. It’s a Good Sign for Crypto.",
-          "source": "Barron's",
-          "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBEb1R1UXdEZFJtYV95QXBKR3ZKTTJVUXBRRG5GUnZzNEhkc2dKY3N4UnI5M0RpYzlmNzB3cWVhcDduek1McWNTXzJlcGZXa29OdFlJd3RwbkNnakQwbEszckZfNzlVdi1KOWpVXzRScTNYTnFBbGFMUFZ5QQ?oc=5",
-          "datum": "08 Jun 2026"
+          "title": "A Quantum Clock Is Ticking for Bitcoin and Crypto—Here's How Stellar Is Preparing",
+          "source": "Decrypt",
+          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOeDloZkJWTHBxYnNBcy1NWjBUb3FWODg1eTZ5R0V5SFVVMWUtUDV2aURSMW5rU185ZVZIeml2TlRRMVRSNURTUXZDd1hOc1Bzd0p1YVFGaXVnalJfNUJUZ1BpcllUZERoVjg2emRhWHNDMlV2cjlxQWtzNW1ETUFMZkJzV19YcTExWURkZ9IBlAFBVV95cUxQWjE5TlJ3NXBTWFBWSkxQZUZ5OUtmNHZhYUs1MnpDV01CVFBkVEowRGdIWXpxUUhIMkxHZDF1SWpUalBFMFc4aHVycVhNZ0wwZHFLbHN2S1dCUG01Z1BjWDNCbTJhYVVtbkkyRWpUMWFLSEhIN3NpRUdXendTQkVZcUZrX0lBVzFaVVcyUXVWRDVfWk16?oc=5",
+          "datum": "09 Jun 2026"
         },
         {
-          "title": "Bitcoin's brutal sell-off sparks a flurry of trading in related stocks, including one big bullish bet",
-          "source": "CNBC",
-          "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOeDRtSDRWUTJYcG1FVVpXc0w5ZVp6clNUQ0xxaFhVVWgzaWRIU1QzTkxpTXZBVTRaUE5vWUtJaDRNZzRxOHpqOXJPelBaUTJYYVBabklmOE5Jc1BLTEJxTmxLbU1XaGdvTTBuSno1dGZURVd3cjZuYUktcHo4MFVwX2V1bGxULVFINXRxbkoydG1rUHJ3cnYwWno1djk0OUtKYUIxZXhncTBzUkZubVdHb1RRcUZyYlpDLXp2UkpBcGUxRzZlbHRzQ2F0X3pUZHZlOGfSAdcBQVVfeXFMTl8xLTJhdzJLX2oyTW0wOHdfdk5YN0NzRGxDNGs1NjYxNXkzbkVWOTlQUUp3VUQ2T3R6bU9NQTVrTl9hUHM3ZE56N0d0blpYMXp3c0NtNENUcWZqcXhhWjRnWHBOUXpCSXJGZXBuV3k4WUlxQm1fQUloZ2dOc21vVjFuc3loYnYwRXFzN01pb1MzaGw5eDE2ZmE2cE04Um1ILXhYQUJ2U0hwN1ZvT01LbkJPeXY3bjNlVERsbUJCeUJZanhuMmUtc0I0Und2S3YzSnJqWlY3NkE?oc=5",
-          "datum": "09 Jun 2026"
+          "title": "Live updates: What next for bitcoin as it faces headwinds from Fed rates to Claude's Mythos",
+          "source": "CoinDesk",
+          "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOcGcwT1RNT2hSS2hVZGdFTGtQZXJFTXhMYlNYaHhPYVZsczlWbUlZUXVRSmZVcUNJRldVSU1jTzlYaUtUeVIxa1FYUXFkRDh0ZjRaWEZNYXdXQ3dtN1VLbml4SjIzSGhMdEVtRWc3c2Y1ZF9MUEV5X1RTMjVGdUtLWGxSMUUxcnQwQmZjZmRZNnpubF9ocFlFdHRsSF9NMzNYU2ZxUGRSZnYyQnN3MGlVYVlHWHV4SWJxTXd3OTRWX2FKUW1idEZ6QW4tRHJSOWM?oc=5",
+          "datum": "10 Jun 2026"
         }
       ]
     },
@@ -72,13 +72,13 @@
       "name": "Ethereum",
       "type": "crypto",
       "coingecko_id": "ethereum",
-      "price": 1623.89,
-      "change_24h": -3.76,
+      "price": 1635.81,
+      "change_24h": -3.05,
       "currency": "usd",
       "sentiment": "neutral",
-      "confidence": 0,
-      "rationale": "Sentiment wird beim nächsten automatischen Lauf aktualisiert.",
-      "signal": "Daten werden geladen …",
+      "confidence": 0.6,
+      "rationale": "Während Circle einen neuen Wrapped Bitcoin auf Ethereum einführt und BitMine Ethereum kauft, stabilisieren sich die Preise, was auf eine gemischte Lage hindeutet.",
+      "signal": "Neue Produkte, Käufe, aber stabile Preise.",
       "spark": [
         2339.6034,
         2274.6432,
@@ -132,13 +132,13 @@
       "name": "Solana",
       "type": "crypto",
       "coingecko_id": "solana",
-      "price": 64.08,
-      "change_24h": -4.46,
+      "price": 64.47,
+      "change_24h": -3.88,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0,
-      "rationale": "Sentiment wird beim nächsten automatischen Lauf aktualisiert.",
-      "signal": "Daten werden geladen …",
+      "sentiment": "bearish",
+      "confidence": 0.7,
+      "rationale": "Solana verzeichnete einen starken Rückgang von 74% und große Kryptowährungen fallen, was auf eine negative Entwicklung hindeutet.",
+      "signal": "Starker Kursrückgang, große Kryptos fallen.",
       "spark": [
         97.3228,
         94.3087,
@@ -194,10 +194,10 @@
       "price": 208.19,
       "change_24h": 1.51,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0,
-      "rationale": "Sentiment wird beim nächsten automatischen Lauf aktualisiert.",
-      "signal": "Daten werden geladen …",
+      "sentiment": "bullish",
+      "confidence": 0.8,
+      "rationale": "KI-Chip-Aktien, einschließlich Nvidia, steigen und Analysten geben positive Einschätzungen ab.",
+      "signal": "KI-Chip-Aktien steigen, positive Analysten.",
       "yahoo_symbol": "NVDA",
       "spark": [
         219.44,
@@ -224,22 +224,22 @@
       "stooq_symbol": "nvda.us",
       "asset_news": [
         {
-          "title": "Nvidia Finally Lands Apple as an AI Customer. Why the Stock Is Dropping.",
-          "source": "Barron's",
-          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE50WXROZXJCOTBWM19vRFdlTThfU3FnZmQzdzZxX2xLYXZreU95cl9UeTVjY3g0UjdkMVJfX0dfVVVRbE5CU05rc1hEVmdSLUJaclFMeU5POXU4UDVIdVRZNWlKM3pHZGlOMUhwVkhxN0kxd1FldWZnbQ?oc=5",
+          "title": "If You'd Invested $10,000 in Nvidia Stock 10 Years Ago, Here's How Much You'd Have Today",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNcEhIdUNSclVBRF9NR1Zza2VBM3V4bmFDdmxBdk0xSUhYZkdUczd6bDRJS08tUHI2ZlNUcFhMOFRZak9adGJNd0tHdGhpdnh6UHAzSnhBeUdKX1pZTW5xUUhHQjRKa3ViMVJHVmo4ZHJ2enRvel9IVmNMYVVWbmE0bnQxVW8xU0lreEZfMUVQRU5CV2NpTkNR?oc=5",
+          "datum": "07 Jun 2026"
+        },
+        {
+          "title": "AI Chip Stocks Rally: Nvidia, Broadcom, Marvell Climb",
+          "source": "Gotrade",
+          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOR0pHN25ZZHE3LXFMc1NtLTJzbHN3blJhUVh1RVpNZTJ3a3dkOFFITi16QzJ5VDMwVlliVjVJaDFtMVdLeEplZzRsZThqdUloUm05YkNSSzd2TFI0UzFoc25OMkY1MmM4aTVKdEFzOWpiMGNCM04ybGJMYjdVMnRqTFlCa0ViTEE?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Here are Tuesday's biggest analyst calls: Nvidia, Apple, Tesla, Oracle, Birkenstock, Micron, Toll, Alphabet & more",
+          "source": "CNBC",
+          "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPZ3FJOWZEd0pnUE9RNmNHWHVvbEFobUUyU1VNX2ZoMFRqeXZhYXp4b0lqb21HdHI1bmFhVk9ZYWoyVHV4RGp5TjRBZ3JSSDNPb1JiQ0t6WGxxQVhuWGJtNEZKRWJHRTF0TFdFaHRlV0NaSEtQSVA1cUxXTXlsOEhZVWZ6NjNLNFdY?oc=5",
           "datum": "09 Jun 2026"
-        },
-        {
-          "title": "Nvidia CEO Shrugs Off Tech Stock Rout With AI Just ‘Beginning’",
-          "source": "Bloomberg.com",
-          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQTTRtOTZ0Zm1GaExWdUI2VGVqUFFGQ1BnU1dDWTBlRUpPR2NvLWVMclJnMGVYWGM5UVB6N0h3M1c2RjRIYjJRazRmUlBBdlVHYnZZdVJ5VElnTDBJYlNqSGNZc3A0MmpYVmt5bHdSTEgtQkJPWlkyQU5zS1puZE5tRWczMzNtLUhZcTduc2FaZzg4QzF2OG42TTJKdU5xU0o4V29NaUtkaHRBNmFJbkFENg?oc=5",
-          "datum": "08 Jun 2026"
-        },
-        {
-          "title": "Nvidia Stock Pops. Its CEO Thinks the Chips Selloff Is a Good Thing.",
-          "source": "Barron's",
-          "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQMi1Jem80T0h2WnBPNGI1MmlkSEVzUWM3V2wxVmJQYnpXTXZmekd2WWN1UlFwanh1OXpFM0JBUlVpUG55dlZVYWtoWWxwYmNRUWJ4MU1nb0NpMUhBcGxMUWNuRXpvcFdDS0cwYS1YYTR0OVZNODFqcVYyYmctT20wZ2JSNA?oc=5",
-          "datum": "08 Jun 2026"
         }
       ]
     },
@@ -251,10 +251,10 @@
       "price": 290.55,
       "change_24h": -5.46,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0,
-      "rationale": "Sentiment wird beim nächsten automatischen Lauf aktualisiert.",
-      "signal": "Daten werden geladen …",
+      "sentiment": "bearish",
+      "confidence": 0.7,
+      "rationale": "Apple-Aktien fallen nach der Siri AI-Enthüllung, obwohl es eine neue Kaufempfehlung gibt.",
+      "signal": "Aktien fallen nach AI-Enthüllung.",
       "yahoo_symbol": "AAPL",
       "spark": [
         292.68,
@@ -308,10 +308,10 @@
       "price": 403.41,
       "change_24h": -3.18,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0,
-      "rationale": "Sentiment wird beim nächsten automatischen Lauf aktualisiert.",
-      "signal": "Daten werden geladen …",
+      "sentiment": "bearish",
+      "confidence": 0.7,
+      "rationale": "Microsoft-Aktien sinken im Juni, und es gibt Bedenken hinsichtlich der 'Peak Profitability'.",
+      "signal": "Aktien sinken, Bedenken 'Peak Profitability'.",
       "yahoo_symbol": "MSFT",
       "spark": [
         412.66,
@@ -365,10 +365,10 @@
       "price": 396.68,
       "change_24h": 1.45,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0,
-      "rationale": "Sentiment wird beim nächsten automatischen Lauf aktualisiert.",
-      "signal": "Daten werden geladen …",
+      "sentiment": "bullish",
+      "confidence": 0.8,
+      "rationale": "Tesla-Aktien steigen vor dem SpaceX IPO und die Einzelhandelsumsätze in China sind gestiegen.",
+      "signal": "Aktien steigen, SpaceX IPO, China-Umsätze.",
       "yahoo_symbol": "TSLA",
       "spark": [
         445.0,
@@ -395,15 +395,15 @@
       "stooq_symbol": "tsla.us",
       "asset_news": [
         {
-          "title": "Tesla China Retail Sales Jump 22%. The Stock Is Bouncing.",
-          "source": "Investor's Business Daily",
-          "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE93TnZBVEU3alBaQi1lb2RVU20ybGhUb1NVWVFMVHdhLWd6QldZbGhydGZQUG5IZUlRXzJQdnpVdnFtaGtNZE1oa29XUzR4ODVieU82RURqNjdYRzR4Y05pMTFWR2loSndmTllJbnJIS3FSczdpbmFj?oc=5",
-          "datum": "08 Jun 2026"
-        },
-        {
           "title": "Tesla Stock Rises Ahead of SpaceX’s Friday IPO",
           "source": "Barron's",
           "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9IX1dfdURLSFI5X1o5TGRjS0hvN1ZYUFRHZ2tSb3FBZVdtTHgtSUp3RzRTR3VIUjJ6cWozNmFTS0F3QW1KNnZySHZXM3VCUlZ1SkhfeFVFZFd0TENUQWRnN1ZBdS1kWnVvSnJOaDd5anZfQVhSUHVPNzF3?oc=5",
+          "datum": "08 Jun 2026"
+        },
+        {
+          "title": "Tesla China Retail Sales Jump 22%. The Stock Is Bouncing.",
+          "source": "Investor's Business Daily",
+          "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE93TnZBVEU3alBaQi1lb2RVU20ybGhUb1NVWVFMVHdhLWd6QldZbGhydGZQUG5IZUlRXzJQdnpVdnFtaGtNZE1oa29XUzR4ODVieU82RURqNjdYRzR4Y05pMTFWR2loSndmTllJbnJIS3FSczdpbmFj?oc=5",
           "datum": "08 Jun 2026"
         },
         {
@@ -428,7 +428,7 @@
       "source": "CNBC Markets",
       "url": "https://www.cnbc.com/2026/06/08/household-financial-worries-at-highest-level-since-2022-new-york-fed-says.html",
       "datum": "Mon, 08 Jun 2026 16:13:12 GMT",
-      "sentiment": "neutral"
+      "sentiment": "bearish"
     },
     {
       "title": "The May jobs report will be released Friday. Here's what to expect",
@@ -442,33 +442,33 @@
       "source": "CNBC Markets",
       "url": "https://www.cnbc.com/2026/06/04/long-term-unemployment-economy-jobs.html",
       "datum": "Thu, 04 Jun 2026 18:55:32 GMT",
-      "sentiment": "neutral"
+      "sentiment": "bearish"
     },
     {
-      "title": "Japan’s Asics to spin off popular Onitsuka Tiger sneaker business; shares rise",
+      "title": "Japan stocks lower at close of trade; Nikkei 225 down 1.66%",
       "source": "Investing.com",
-      "url": "https://www.investing.com/news/stock-market-news/japans-asics-to-spin-off-onitsuka-tiger-business-4734299",
+      "url": "https://www.investing.com/news/stock-market-news/japan-stocks-lower-at-close-of-trade-nikkei-225-down-166-4734393",
       "datum": "2026-06-10",
-      "sentiment": "neutral"
+      "sentiment": "bearish"
     },
     {
-      "title": "SoftBank shares fall after report of hurdles in $6 bln OpenAI-backed loan",
+      "title": "Why is Tencent stock rallying today?",
       "source": "Investing.com",
-      "url": "https://www.investing.com/news/stock-market-news/softbank-shares-fall-after-report-of-hurdles-in-6-bln-openaibacked-loan-4734325",
+      "url": "https://www.investing.com/news/stock-market-news/why-is-tencent-stock-rallying-today-93CH-4734386",
       "datum": "2026-06-10",
-      "sentiment": "neutral"
+      "sentiment": "bullish"
     },
     {
-      "title": "OpenAI in talks to lease 10 gigawatt Ohio data center with Nvidia backing- The Information",
+      "title": "Why is WuXi AppTec stock rallying today?",
       "source": "Investing.com",
-      "url": "https://www.investing.com/news/stock-market-news/openai-in-talks-to-lease-10-gigawatt-ohio-data-center-with-nvidia-backing-the-information-93CH-4734321",
+      "url": "https://www.investing.com/news/stock-market-news/why-is-wuxi-apptec-stock-rallying-today-93CH-4734383",
       "datum": "2026-06-10",
-      "sentiment": "neutral"
+      "sentiment": "bullish"
     },
     {
-      "title": "Lenovo slides nearly 10% amid reports of price hikes due to memory costs",
+      "title": "Barclays says ECB rate hike unlikely to derail European stocks",
       "source": "Investing.com",
-      "url": "https://www.investing.com/news/stock-market-news/lenovo-slides-nearly-10-amid-reports-of-price-hikes-due-to-memory-costs-4734320",
+      "url": "https://www.investing.com/news/stock-market-news/barclays-says-ecb-rate-hike-unlikely-to-derail-european-stocks-4734381",
       "datum": "2026-06-10",
       "sentiment": "neutral"
     },
@@ -477,12 +477,12 @@
       "source": "Yahoo Finance",
       "url": "https://finance.yahoo.com/economy/articles/56-old-beloved-fast-food-005500959.html",
       "datum": "2026-06-09",
-      "sentiment": "neutral"
+      "sentiment": "bearish"
     },
     {
-      "title": "Strategy Just Backflipped On Key Goal To Defend Bitcoin",
+      "title": "Tesla China Retail Sales Jump 22%. The Stock Is Bouncing.",
       "source": "Yahoo Finance",
-      "url": "https://www.investors.com/news/mstr-stock-strategy-bitcoin-per-share-dilutive-purchase/?src=A00220&yptr=yahoo",
+      "url": "https://www.investors.com/news/tesla-china-retail-sales-tesla-stock/?src=A00220&yptr=yahoo",
       "datum": "2026-06-08",
       "sentiment": "neutral"
     }
@@ -497,7 +497,7 @@
       "url": "https://finance.yahoo.com"
     }
   ],
-  "fetched_at": "2026-06-10T05:49:02+00:00",
+  "fetched_at": "2026-06-10T07:21:17+00:00",
   "fx": {
     "usd": 1.0,
     "chf": 0.7955,
