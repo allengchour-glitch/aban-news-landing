@@ -1,28 +1,31 @@
-# KI-News-Rohmaterial — 2026-06-05
+# KI-News-Rohmaterial — 2026-06-10
 
 > **Kuratier-Vorlage, KEINE fertige Ausgabe.** Echte Quellen, aggregiert. Wähle 3–5 relevante Meldungen, prüfe sie an der Quelle und schreibe sie in deiner Stimme (kein Hype). Dann via Werkbank/beehiiv versenden.
 
 ## OpenAI
-- [ ] **[How Endava is redesigning software delivery around AI agents](https://openai.com/index/endava-frontiers)**  
-  _Thu, 04 Jun 2026 12:00:00 GMT_
-  Learn how Endava is using AI agents, ChatGPT Enterprise, and Codex to accelerate software delivery, automate workflows, and build an AI-native culture across the enterprise.
-- [ ] **[Dreaming: Better memory for a more helpful ChatGPT](https://openai.com/index/chatgpt-memory-dreaming)**  
-  _Thu, 04 Jun 2026 09:00:00 GMT_
-  ChatGPT introduces a new memory system to better remember preferences, keeping context fresh and relevant across conversations.
-- [ ] **[Biodefense in the Intelligence Age](https://openai.com/index/biodefense-in-the-intelligence-age)**  
-  _Thu, 04 Jun 2026 00:00:00 GMT_
-  An action plan for AI-powered biological resilience
-- [ ] **[Introducing new capabilities to GPT-Rosalind](https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind)**  
-  _Wed, 03 Jun 2026 13:15:00 GMT_
-  GPT-Rosalind advances life sciences research with enhanced biological reasoning, medicinal chemistry expertise, genomics analysis, and experimental workflow capabilities.
-- [ ] **[How Wasmer used Codex to build a Node.js runtime for the edge](https://openai.com/index/wasmer)**  
-  _Wed, 03 Jun 2026 12:00:00 GMT_
-  See how Wasmer used Codex with GPT-5.5 to build a Node.js runtime for the edge, accelerating development 10x to 20x and shipping in weeks instead of months.
-- [ ] **[A blueprint for democratic governance of frontier AI](https://openai.com/index/frontier-safety-blueprint)**  
-  _Wed, 03 Jun 2026 10:00:00 GMT_
-  OpenAI outlines a blueprint for U.S. governance of frontier AI, proposing a federal framework for safety, resilience, and national security.
+- [ ] **[How engineers at Nextdoor use Codex to build without limits](https://openai.com/index/nextdoor)**  
+  _Tue, 09 Jun 2026 12:00:00 GMT_
+  How engineers at Nextdoor use Codex with GPT-5.5 to investigate hard-to-reproduce issues, build across platforms, and focus on product outcomes.
+- [ ] **[What Codex unlocks for Notion](https://openai.com/index/notion)**  
+  _Tue, 09 Jun 2026 10:00:00 GMT_
+  How Notion uses Codex to one-shot specs, build AI Voice Input for the web, and multiply engineering power across small teams.
+- [ ] **[Industrial policy for the Intelligence Age](https://openai.com/index/industrial-policy-for-the-intelligence-age)**  
+  _Tue, 09 Jun 2026 00:00:00 GMT_
+  Explore our ambitious, people-first industrial policy ideas for the AI era—focused on expanding opportunity, sharing prosperity, and building resilient institutions as advanced intelligence evolves.
+- [ ] **[Confidential submission of draft S-1 to the SEC](https://openai.com/index/openai-submits-confidential-s-1)**  
+  _Mon, 08 Jun 2026 14:00:00 GMT_
+  OpenAI confirms a confidential S-1 submission to the SEC and has not yet determined timing for further action.
+- [ ] **[Built to benefit everyone: our plan](https://openai.com/index/built-to-benefit-everyone-our-plan)**  
+  _Mon, 08 Jun 2026 01:30:00 GMT_
+  A vision for the future of AI, focusing on access, safety, and shared prosperity as OpenAI works to ensure AGI benefits everyone.
+- [ ] **[Introducing the OpenAI Economic Research Exchange](https://openai.com/index/economic-research-exchange)**  
+  _Mon, 08 Jun 2026 00:00:00 GMT_
+  OpenAI launches the Economic Research Exchange to study AI’s impact on jobs, productivity, and the economy. Applications are now open for selected research projects.
 
 ## Google AI
+- [ ] **[The latest AI news we announced in May 2026](https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/)**  
+  _Fri, 05 Jun 2026 14:45:00 +0000_
+  <img src=" are Google’s latest AI updates from May 2026
 - [ ] **[5 ways Google Search can level up your thrift and vintage shopping](https://blog.google/products-and-platforms/products/search/thrifting-tips/)**  
   _Wed, 03 Jun 2026 13:00:00 +0000_
   <img src=" second-hand scores with AI tools in Google Search and Shopping.
@@ -38,43 +41,40 @@
 - [ ] **[Check out real-life AI prototypes from the Futures Lab.](https://blog.google/innovation-and-ai/technology/ai/university-waterloo-labs/)**  
   _Fri, 29 May 2026 12:00:00 +0000_
   <img src=" of Waterloo students develop AI prototypes like sign language tutors to reshape the future of education and work.
-- [ ] **[Catch up on 12 major I/O 2026 moments](https://blog.google/innovation-and-ai/technology/ai/io-2026-keynote-moment-videos/)**  
-  _Thu, 28 May 2026 15:00:00 +0000_
-  <img src=" are 12 of the biggest Google I/O 2026 keynote moments, including news about Gemini Omni, Gemini 3.5 Flash and more.
 
 ## Hugging Face
+- [ ] **[Can Voice Agents Handle Bilingual Customers? Benchmarking Frontier ASR on Code-Switched Speech](https://huggingface.co/blog/ServiceNow-AI/code-switching)**  
+  _Tue, 09 Jun 2026 19:38:28 GMT_
+- [ ] **[Introducing North Mini Code: Cohere’s First Model For Developers](https://huggingface.co/blog/CohereLabs/introducing-north-mini-code)**  
+  _Tue, 09 Jun 2026 15:56:23 GMT_
+- [ ] **[How an Agent Built a 3D Paris Gallery by Chaining Two Hugging Face Spaces](https://huggingface.co/blog/mishig/spaces-agents-md)**  
+  _Tue, 09 Jun 2026 10:46:19 GMT_
+- [ ] **[Migrating Your GitHub CI to Hugging Face Jobs](https://huggingface.co/blog/github-ci-hf-jobs)**  
+  _Tue, 09 Jun 2026 00:00:00 GMT_
+- [ ] **[The Open Source Community is backing OpenEnv for Agentic RL](https://huggingface.co/blog/openenv-agentic-rl)**  
+  _Mon, 08 Jun 2026 00:00:00 GMT_
 - [ ] **[Nemotron 3.5 Content Safety: Customizable Multimodal Safety for Global Enterprise AI](https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety)**  
   _Thu, 04 Jun 2026 18:57:45 GMT_
-- [ ] **[EVA-Bench Data 2.0: 3 Domains, 121 Tools, 213 Scenarios](https://huggingface.co/blog/ServiceNow-AI/eva-bench-data)**  
-  _Thu, 04 Jun 2026 12:24:58 GMT_
-- [ ] **[Designing the hf CLI as an agent-optimized way to work with the Hub](https://huggingface.co/blog/hf-cli-for-agents)**  
-  _Thu, 04 Jun 2026 00:00:00 GMT_
-- [ ] **[Direct Preference Optimization Beyond Chatbots](https://huggingface.co/blog/Dharma-AI/direct-preference-optimization-beyond-chatbots)**  
-  _Wed, 03 Jun 2026 12:55:11 GMT_
-- [ ] **[Adding MCP Tools to Reachy Mini](https://huggingface.co/blog/adding-mcp-tools-to-reachy-mini)**  
-  _Wed, 03 Jun 2026 00:00:00 GMT_
-- [ ] **[Holo3.1: Fast & Local Computer Use Agents](https://huggingface.co/blog/Hcompany/holo31)**  
-  _Tue, 02 Jun 2026 14:13:23 GMT_
 
 ## TechCrunch AI
-- [ ] **[AirTrunk commits $30B to build 5GW of AI data centers in India](https://techcrunch.com/2026/06/05/airtrunk-commits-30b-to-build-5gw-of-ai-data-centers-in-india/)**  
-  _Fri, 05 Jun 2026 13:03:10 +0000_
-  The Australian data center operator plans to set up 5GW of capacity in India.
-- [ ] **[Mira Murati steps back into the spotlight, carefully](https://techcrunch.com/2026/06/04/mira-murati-steps-back-into-the-spotlight-carefully/)**  
-  _Fri, 05 Jun 2026 05:06:37 +0000_
-  In the current environment, remaining heads down has diminishing returns; at some point, you have to make some noise just to remind the market you exist.
-- [ ] **[Ahead of its IPO, Anthropic’s Daniela Amodei shrugs off doubts about AI’s returns](https://techcrunch.com/2026/06/04/ahead-of-its-ipo-anthropics-daniela-amodei-shrugs-off-doubts-about-ais-returns/)**  
-  _Thu, 04 Jun 2026 22:43:26 +0000_
-  Anthropic has been growing at a breakneck pace. The company announced that annualized revenue crossed $47 billion in May, up dramatically from roughly $9 billion at the end of 2025. That trajectory fa…
-- [ ] **[Airbnb’s Brian Chesky plans to launch a new AI lab](https://techcrunch.com/2026/06/04/airbnbs-brian-chesky-plans-to-launch-a-new-ai-lab/)**  
-  _Thu, 04 Jun 2026 22:29:50 +0000_
-  The Airbnb CEO said last year it hasn't struck an LLM partnership because existing products weren't quite ready.
-- [ ] **[Defense tech, AI, and fundraising take center stage at StrictlyVC Los Angeles on June 18](https://techcrunch.com/2026/06/04/defense-tech-ai-and-fundraising-take-center-stage-at-strictlyvc-los-angeles-on-june-18/)**  
-  _Thu, 04 Jun 2026 21:30:00 +0000_
-  On Thursday, June 18, at The Aerospace Corporation Campus, investors, founders, and tech leaders will gather for an evening of conversation exploring some of the most consequential shifts taking place…
-- [ ] **[Meta steals a tactic from Tesla and builds data centers in tents](https://techcrunch.com/2026/06/04/meta-steals-a-tactic-from-tesla-and-builds-data-centers-in-tents/)**  
-  _Thu, 04 Jun 2026 19:33:09 +0000_
-  Meta may have found one way to slash its massive data center bill: tents.
+- [ ] **[Google just fired a warning shot in the AI subscription price wars](https://techcrunch.com/2026/06/09/google-just-fired-a-warning-shot-in-the-ai-subscription-price-wars/)**  
+  _Wed, 10 Jun 2026 00:26:10 +0000_
+  Google just made it significantly cheaper to enjoy its budget AI subscription tier.
+- [ ] **[How Justin Ernest invested nearly $500M into hot startups without a traditional VC fund](https://techcrunch.com/2026/06/09/how-justin-ernest-invested-nearly-500m-into-hot-startups-without-a-traditional-vc-fund/)**  
+  _Tue, 09 Jun 2026 23:17:51 +0000_
+  Instead of spending a year raising a formal venture fund, the Sabertooth VC founder used a captive network of LPs to invest in startups like Anthropic, Anduril, and SpaceX.
+- [ ] **[Hey, Siri, here’s what I actually want from AI](https://techcrunch.com/2026/06/09/hey-siri-heres-what-i-actually-want-from-ai/)**  
+  _Tue, 09 Jun 2026 20:50:17 +0000_
+  I'm desperate for a personal AI assistant, but do I really want to become the kind of person who can't function without the friendly robot voice in my phone?
+- [ ] **[Anthropic’s Fable 5 can make weirdly fun video games with the click of a button](https://techcrunch.com/2026/06/09/anthropics-fable-5-can-make-weirdly-fun-video-games-with-the-click-of-a-button/)**  
+  _Tue, 09 Jun 2026 20:37:49 +0000_
+  Anthropic's Claude Fable 5 is going to be a big hit with the web's vibe coders.
+- [ ] **[Can tech companies learn to love cheaper AI models?](https://techcrunch.com/2026/06/09/can-tech-companies-learn-to-love-cheaper-models/)**  
+  _Tue, 09 Jun 2026 18:56:09 +0000_
+  If those same AI workloads can be handled by cheaper models without affecting quality, it would mean a massive shift in the economics of AI.
+- [ ] **[WWDC 2026: Everything announced on Siri AI, iOS 27, Apple Intelligence, and more](https://techcrunch.com/2026/06/09/wwdc-2026-everything-announced-on-siri-ai-os-27-apple-intelligence-and-more/)**  
+  _Tue, 09 Jun 2026 18:04:24 +0000_
+  Apple primarily made the case for an improved experience with its long-standing Siri assistant, which like most other announcements had a hefty helping of AI.
 
 ## VentureBeat AI
 - [ ] **[Google just redesigned the search box for the first time in 25 years — here’s why it matters more than you think.](https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think)**  
@@ -97,87 +97,90 @@
   Anthropic released Cowork on Monday, a new AI agent capability that extends the power of its wildly successful Claude Code tool to non-technical users — and according to company insiders, the team bui…
 
 ## MIT Tech Review
+- [ ] **[The Download: whole-body rejuvenation drugs and five things to know about AI](https://www.technologyreview.com/2026/06/09/1138604/the-download-anti-aging-drugs-ai-five-things-to-know/)**  
+  _Tue, 09 Jun 2026 12:10:00 +0000_
+  This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. David Sinclair plans to test whole-body rejuvenation drugs in …
+- [ ] **[Learning to lead in a hybrid human-AI enterprise](https://www.technologyreview.com/2026/06/09/1137830/learning-to-lead-in-a-hybrid-human-ai-enterprise/)**  
+  _Tue, 09 Jun 2026 10:20:06 +0000_
+  As adoption of AI agents looks set to surge by as much as 300% in the next two years, leadership teams are carefully considering the implications of a hybrid human-AI workforce.  Unlike existing enter…
+- [ ] **[Five things you need to know about AI](https://www.technologyreview.com/2026/06/09/1138582/five-things-you-need-to-know-about-ai/)**  
+  _Tue, 09 Jun 2026 09:16:45 +0000_
+  At SXSW London last week I gave a talk called “Five things you need to know about AI,” in which I shared what I think are the biggest themes in AI right now. I pulled a few things from our first AI10 …
+- [ ] **[The Download: how the World Cup ball will fly and OpenAI’s “super app”](https://www.technologyreview.com/2026/06/08/1138485/the-download-world-cup-ball-openai-super-app/)**  
+  _Mon, 08 Jun 2026 12:10:00 +0000_
+  This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Why this year’s World Cup ball may not fly as far Much is new …
 - [ ] **[The Download: AI hacking beyond Mythos, and chatbots’ impact on our brains](https://www.technologyreview.com/2026/06/05/1138452/the-download-ai-hacking-mythos-chatbots-brain-impacts/)**  
   _Fri, 05 Jun 2026 12:10:00 +0000_
   This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The Meta hack shows there’s more to AI security than Mythos On…
 - [ ] **[Are AI chatbots making us lose control of our brains?](https://www.technologyreview.com/2026/06/05/1138427/are-ai-chatbots-making-us-lose-control-of-our-brains/)**  
   _Fri, 05 Jun 2026 09:00:00 +0000_
   This week I’ve been at SXSW London. There’s been music, film, and a lot—and I mean a lot—of talk about AI. I also had the opportunity to sit down with Gloria Mark, a psychologist at the University of …
-- [ ] **[The Meta hack shows there’s more to AI security than Mythos](https://www.technologyreview.com/2026/06/05/1138437/the-meta-hack-shows-theres-more-to-ai-security-than-mythos/)**  
-  _Fri, 05 Jun 2026 09:00:00 +0000_
-  On June 5, 404 Media reported that attackers had been using Meta’s AI customer support agent to steal Instagram accounts. Their approach was simple: They asked the agent to link the accounts to email …
-- [ ] **[The Download: AI-generated lawsuits and virtual power plants for data centers](https://www.technologyreview.com/2026/06/04/1138408/the-download-ai-lawsuits-virtual-power-plants-data-centers/)**  
-  _Thu, 04 Jun 2026 12:10:00 +0000_
-  This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. How courts are coping with a flood of AI-generated lawsuits Mo…
-- [ ] **[How courts are coping with a flood of AI-generated lawsuits](https://www.technologyreview.com/2026/06/04/1138391/courts-coping-ai-lawsuits/)**  
-  _Thu, 04 Jun 2026 10:50:18 +0000_
-  Most days in her chambers, Judge Maritza Braswell, a federal magistrate judge in Colorado, sifts through stacks of documents written by people without a lawyer. Many of them can’t afford to hire a law…
-- [ ] **[The Download: Trump’s new AI order, and smart glasses for warfare](https://www.technologyreview.com/2026/06/03/1138322/the-download-trump-ai-order-smart-glasses-warfare/)**  
-  _Wed, 03 Jun 2026 12:10:00 +0000_
-  This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. 5 key points in Trump’s new AI order Less than two weeks after…
 
 ## heise
-- [ ] **[KI-Update: Claude Mythos und die NSA, Umfrage: Was bringt KI? Meta-KI-Agenten](https://www.heise.de/news/KI-Update-Claude-Mythos-und-die-NSA-Umfrage-Was-bringt-KI-Meta-KI-Agenten-11318805.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
-  _2026-06-05T15:00:00+02:00_
-  Das "KI-Update" liefert werktäglich eine Zusammenfassung der wichtigsten KI-Entwicklungen.
-- [ ] **[Staatspräsident Milei will Argentinien zum Zentrum der KI-Branche machen](https://www.heise.de/news/Milei-will-Argentinien-zum-Zentrum-der-KI-Branche-machen-11319916.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
-  _2026-06-05T13:45:00+02:00_
-  Mit einem attraktiven Rechtsrahmen und niedrigen Steuern will der ultraliberale Präsident die KI-Industrie nach Südamerika locken.
-- [ ] **[Ifo: Über die Hälfte der deutschen Unternehmen nutzt KI](https://www.heise.de/news/Ifo-Ueber-die-Haelfte-der-deutschen-Unternehmen-nutzt-KI-11319898.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
-  _2026-06-05T13:38:00+02:00_
-  KIkann menschliche Arbeitnehmer bei Routineaufgaben ersetzen. Deutschlands Firmen nutzen die Technologie in immer größerem Umfang.
-- [ ] **[Skynet-Szenario: Anthropic warnt vor KI, die sich selbst entwickelt](https://www.heise.de/news/Skynet-Szenario-Anthropic-warnt-vor-KI-die-sich-selbst-entwickelt-11319846.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
-  _2026-06-05T13:36:00+02:00_
-  Die KI-Schmiede Anthropic warnt vor einer „rekursiven Selbstoptimierung“ von KI-Modellen und fordert eine globale Verlangsamung der Entwicklung.
-- [ ] **[heise+ |  Warum Softwarequalität im Zeitalter generativer KI trotzdem ein Handwerk bleibt](https://www.heise.de/hintergrund/Warum-Softwarequalitaet-im-Zeitalter-generativer-KI-trotzdem-ein-Handwerk-bleibt-11310290.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus)**  
-  _2026-06-05T13:30:00+02:00_
-  Unit Testing ist ein zentraler Baustein für Softwarequalität. Eine Küchenmetapher hilft dabei, Teststrategien und Einfluss generativer KI besser einzuordnen.
-- [ ] **[Gemini Go: Google ersetzt Assistant auf günstigen Android-Go-Geräten](https://www.heise.de/news/KI-Update-fuer-Einsteiger-Android-Smartphones-Gemini-Go-ersetzt-Assistant-Go-11319758.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
-  _2026-06-05T12:44:00+02:00_
-  Günstige Android-Smartphones mit wenig Rechenleistung und RAM erhalten ein KI-Update: Der Google Assistant wird durch Gemini Go ersetzt.
+- [ ] **[heise-Angebot: data2day: Bauen wir auch 2026 noch ein Sternschema?](https://www.heise.de/news/data2day-Bauen-wir-auch-2026-noch-ein-Sternschema-11322065.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-10T08:00:00+02:00_
+  Bei der data2day diskutieren Data Scientists, Data Engineers und Datenteams über geeignete Datenarchitekturen, den Einsatz von KI-Agenten und rechtliche Hürden.
+- [ ] **[Mittwoch: NASA-Mondlandung weiter verschoben, EU droht WhatsApp mit Geldstrafen](https://www.heise.de/news/Mittwoch-NASA-Mondlandung-weiter-verschoben-EU-droht-WhatsApp-mit-Geldstrafen-11326677.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-10T06:15:00+02:00_
+  Tests im Erdorbit statt Mondreise + EU gegen WhatsApps KI-Gebühr + Anthropics neue KI-Modelle + Euro-Office als quelloffenes Web-Office + US-Visumgebühr nichtig
+- [ ] **[EU: WhatsApp muss andere KI-Chatbots kostenfrei zulassen, sonst droht Zwangsgeld](https://www.heise.de/news/EU-WhatsApp-muss-andere-KI-Chatbots-kostenfrei-zulassen-sonst-droht-Zwangsgeld-11326667.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-10T05:04:00+02:00_
+  WhatsApp soll rivalisierende KI-Chatbots innerhalb von fünf Tagen kostenfrei erlauben. Es ist eine bislang selten genutzte EU-Zwangsmaßnahme. Meta protestiert.
+- [ ] **[Das wird teuer: Anthropics Claude Mythos 5 erscheint als Fable 5 mit Schranken](https://www.heise.de/news/Anthropic-veroeffentlicht-Claude-Mythos-5-als-Fable-5-mit-Einschraenkungen-11326637.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-09T22:51:00+02:00_
+  Claude Mythos 5 gibt es für die NSA und ausgewählte Partner. Die veröffentlichte, eingeschränkte Version heißt Claude Fable 5. Abonnement gibt’s keines.
+- [ ] **[Reaktion auf Claude Mythos? Bundesregierung gründet KI-Sicherheitsinstitut](https://www.heise.de/news/Bundesregierung-will-KI-Sicherheitsinstitut-gruenden-11326247.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-09T18:01:00+02:00_
+  Mit einer neuen Einrichtung will die Bundesregierung ihre Analysefähigkeiten bei KI-Modellen stärken. Minister Wildberger verspricht „Experten auf Weltniveau“.
+- [ ] **[KI-Kettenbrief ist fake - aber es gibt trotzdem ein WhatsApp-Problem](https://www.heise.de/news/WhatsApp-Kettenbrief-ist-fake-und-trotzdem-besteht-Grund-zur-Sorge-11326096.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-09T17:49:00+02:00_
+  Ein Kettenbrief warnt vor KI-Zugriff auf WhatsApp-Chats. Die Behauptung ist falsch – und trotzdem gibt es ein großes Problem bei WhatsApps Datenschutz.
 
 ## Golem
-- [ ] **[Microsoft Scout: Satya Nadella will Verfasser von Abhngigkeits-Memo nicht kennen](https://www.golem.de/news/microsoft-scout-satya-nadella-will-verfasser-von-abhaengigkeits-memo-nicht-kennen-2606-209459.html)**  
-  _Fri, 05 Jun 2026 16:00:01 +0200_
-  Der Chef von Microsofts neuem KI-Tool hat erklrt, Nutzer abhngig machen zu wollen. Satya Nadella tut so, als sei der Autor nicht bekannt. (<a href=" <a href=" <img src=" alt="" width="1" height="1" />
-- [ ] **[(g+) Opinion: How much value is AI really creating?](https://www.golem.de/news/opinion-how-much-value-is-ai-really-creating-2606-209456.html)**  
-  _Fri, 05 Jun 2026 15:30:01 +0200_
-  Eye-opening changes to the speed and volume of work are not always translating into genuine productivity (<a href=" <a href=" <img src=" alt="" width="1" height="1" />
-- [ ] **[Smart Glasses: Meta hinterlegt Code fr Gesichtserkennung in App](https://www.golem.de/news/smart-glasses-meta-hinterlegt-code-fuer-gesichtserkennung-in-app-2606-209452.html)**  
-  _Fri, 05 Jun 2026 14:45:01 +0200_
-  In der Meta-AI-App findet sich inaktiver Code, mit dem Smart Glasses Gesichter wiedererkennen knnen. Brgerrechtler haben bereits gewarnt. (<a href=" <a href=" <img src=" alt="" width="1" height="1" />
-- [ ] **[(g+) KI-Programmierung: Claude Code, Codex und Cursor im Realittscheck](https://www.golem.de/news/ki-programmierung-claude-code-codex-und-cursor-im-realitaetscheck-2606-209437.html)**  
-  _Fri, 05 Jun 2026 13:30:02 +0200_
-  Drei Coding-Agenten lsen dieselben Aufgaben in einem echten Repository. Der Test zeigt, warum grne Checks noch keinen fertigen Pull Request ergeben. Ein Praxistest von Bastian Gruber (<a href=" <a hre…
-- [ ] **[vibeos: Microsoft-Entwickler zeigt halluziniertes Betriebssystem](https://www.golem.de/news/vibeos-microsoft-entwickler-zeigt-halluziniertes-betriebssystem-2606-209443.html)**  
-  _Fri, 05 Jun 2026 12:33:08 +0200_
-  VibeOS bringt jedes Programm mit, das Nutzer sich wnschen. Code steckt nicht dahinter, alles ist KI-generiert. Sinnlos, aber beeindruckend. (<a href=" <a href=" <img src=" alt="" width="1" height="1" …
-- [ ] **[KI: Anthropic schlgt weltweite Pause in KI-Entwicklung vor](https://www.golem.de/news/ki-anthropic-schlaegt-weltweite-pause-in-ki-entwicklung-vor-2606-209441.html)**  
-  _Fri, 05 Jun 2026 11:43:02 +0200_
-  Anthropic steht kurz vor einem milliardenschweren Brsengang - und warnt nun erneut vor zu schneller KI-Entwicklung. (<a href=" <a href=" <img src=" alt="" width="1" height="1" />
+- [ ] **[Strafzahlungen durch EU drohen: Whatsapp muss andere KI-Anbieter zulassen](https://www.golem.de/news/strafzahlungen-durch-eu-drohen-whatsapp-muss-andere-ki-anbieter-zulassen-2606-209588.html)**  
+  _Wed, 10 Jun 2026 07:35:02 +0200_
+  Meta muss sptestens in der nchsten Woche anderen KI-Chatbots den Zugang zu Whatsapp gewhren. Ansonsten drohen hohe Strafen. (<a href=" <a href=" Messenger</a>) <img src=" alt="" width="1" height="1" /…
+- [ ] **[Claude Fable 5: Anthropic verffentlicht sein bisher strkstes Modell](https://www.golem.de/news/claude-fable-5-anthropic-veroeffentlicht-sein-bisher-staerkstes-modell-2606-209587.html)**  
+  _Wed, 10 Jun 2026 07:22:01 +0200_
+  Anthropic bringt mit Claude Fable 5 sein leistungsfhigstes Modell auf den Markt, inklusive eingebautem Fallback-System fr heikle Anfragen. (<a href=" <a href=" <img src=" alt="" width="1" height="1" /…
+- [ ] **[Neues Design gezeigt: SpaceX' KI-Satellit angeblich einfacher als Starlink V3](https://www.golem.de/news/neues-design-gezeigt-spacex-ki-satellit-angeblich-einfacher-als-starlink-v3-2606-209569.html)**  
+  _Tue, 09 Jun 2026 15:35:02 +0200_
+  Vor dem SpaceX-Brsengang soll ein neues KI-Satelliten-Design fr Kauflaune sorgen. Elon Musk will damit auerdem den Respekt von Aliens gewinnen. Eine Analyse von Johannes Hiltscher (<a href=" <a href="…
+- [ ] **[Anzeige: Mhroboterohne BegrenzungskabelzumTiefstpreisbei Amazon](https://www.golem.de/news/anzeige-maehroboter-ohne-begrenzungskabel-zum-tiefstpreis-bei-amazon-2606-209570.html)**  
+  _Tue, 09 Jun 2026 14:37:01 +0200_
+  Amazon hat einen Mhroboter ohne Begrenzungskabel im Angebot, der eine HDR-Kamera und KI-gesttzte Kartierung zur Orientierung nutzt. (<a href=" <a href=" <img src=" alt="" width="1" height="1" />
 
 ## t3n
-- [ ] **[Trotz KI-Slop und Werbe-Reels: So bekommst du deinen Instagram-Feed unter Kontrolle](https://t3n.de/news/trotz-ki-slop-und-werbe-reels-so-bekommst-du-deinen-instagram-feed-unter-kontrolle-1746055/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Fri, 5 Jun 2026 15:00:26 +0200_
-  Social Media ist voll von uninspirierten Inhalten und KI-Content, gerade auf Plattformen wie Instagram. Dabei lässt sich dessen Algorithmus ein Stück weit selbst zähmen. Welche drei Maßnahmen am schne…
-- [ ] **[Deutsches KI-Startup gewinnt Hollywood-Legende: Martin Scorsese berät Black Forest Labs](https://t3n.de/news/ki-startup-black-forest-labs-martin-scorsese-1746052/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Fri, 5 Jun 2026 14:30:37 +0200_
-  Ein deutsches KI-Startup schnappt sich den berühmten Regisseur Martin Scorsese als Berater. In seiner Funktion soll er dem Unternehmen dabei helfen, die Tools für Filmschaffende interessanter zu mache…
-- [ ] **[US-Geheimdienst NSA: Anthropic-Modell Mythos soll für Spionagezwecke verwendet werden](https://t3n.de/news/us-geheimdienst-nsa-anthropic-modell-mythos-soll-fuer-spionagezwecke-verwendet-werden-1745997/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Fri, 5 Jun 2026 14:00:10 +0200_
-  Mehrere Mitarbeiter von Anthropic unterstützen den US-Geheimdienst NSA dabei, das KI-Modell Claude Mythos Preview für offensive Cyberangriffe zu nutzen. Das geht aus einem Pressebericht hervor.
-weiter…
-- [ ] **[Fake-Recruiter auf LinkedIn: Wie chinesische Geheimdienste Fachkräfte ausspionieren](https://t3n.de/news/fake-recruiter-auf-linkedin-wie-chinesische-geheimdienste-fachkraefte-ausspionieren-1746056/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Fri, 5 Jun 2026 13:30:13 +0200_
-  Ein Geheimdienstbündnis aus fünf Ländern warnt vor Agent:innen aus China, die sich als Personalvermittler:innen ausgeben. Ziel sei es, Daten aus den Bereichen Politik, Wirtschaft und Militär abzugreif…
-- [ ] **[Seit 40 Jahren: Diese alten Windows-Programme kannst du heute noch nutzen](https://t3n.de/news/windows-programme-nutzen-40-jahre-1716909/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Fri, 5 Jun 2026 13:15:00 +0200_
-  Windows existiert schon seit über 40 Jahren und dominiert immer noch den PC-Markt. Während sich technisch seitdem einiges getan hat, trotzen diese fünf Apps dem KI-Hype – und erinnern an einfachere Ze…
-- [ ] **[Deutschland: 54 Prozent der Firmen nutzen KI – doch kleine Betriebe hinken hinterher](https://t3n.de/news/deutschland-54-prozent-der-firmen-nutzen-ki-doch-kleine-betriebe-hinken-hinterher-1746120/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Fri, 5 Jun 2026 12:45:08 +0200_
-  Künstliche Intelligenz kann menschliche Arbeitnehmer bei Routineaufgaben ersetzen. Deutschlands Firmen nutzen die Technologie in immer größerem Umfang.weiterlesen auf t3n.de
+- [ ] **[Meta wollte nur eigene KI auf Whatsapp zulassen - jetzt zwingt die EU den Konzern zum Rückzieher](https://t3n.de/news/meta-wollte-nur-eigene-ki-auf-whatsapp-zulassen-jetzt-zwingt-die-eu-den-konzern-zum-rueckzieher-1746807/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Wed, 10 Jun 2026 08:30:42 +0200_
+  Meta wollte auf Whatsapp nur die eigene KI anbieten und sperrte Konkurrenten einfach aus. Jetzt hat die EU-Kommission eingegriffen, und Meta bleiben nur noch fünf Tage, um die EU-Vorgaben umzusetzen.
+…
+- [ ] **[Claude im Alltag: 5 Tipps für effizienteres Arbeiten mit der KI](https://t3n.de/news/claude-ki-tipps-1746715/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Wed, 10 Jun 2026 06:30:07 +0200_
+  Claude produziert ganz ohne Anpassungen oft schon gute Resultate. Mit unseren 5 Tipps könnt ihr im Alltag aber noch mehr aus Anthropics KI-Tool herausholen.Nacweiterlesen auf t3n.de
+- [ ] **[Mythos-Modell Claude Fable 5: Anthropic veröffentlicht bisher mächtigstes KI-Tool](https://t3n.de/news/mythos-claude-fable-5-anthropic-1746783/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Tue, 9 Jun 2026 21:53:25 +0200_
+  Unter dem Namen Claude Fable 5 macht Anthropic sein bisher mächtigstes KI-Modell Mythos jetzt einer breiteren Öffentlichkeit zugänglich. Das Tool hatte im Vorfeld für Besorgnis bei Regierungen, Tech-F…
+- [ ] **[Laborwerte in Echtzeit überwachen: Diese Klinik-KI schlägt Alarm, wenn es Patienten schlechter geht](https://t3n.de/news/laborwerte-in-echtzeit-ueberwachen-diese-klinik-ki-schlaegt-alarm-wenn-es-patienten-schlechter-geht-1746375/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Tue, 9 Jun 2026 16:30:40 +0200_
+  Am Universitätsklinikum Leipzig überwacht das KI-gestützte AMPEL-System Labordaten von Patienten in Echtzeit. Es warnt frühzeitig zum Beispiel vor Nierenverweiterlesen auf t3n.de
+- [ ] **[Schon wieder ein neues iPhone kaufen? Apples KI-Strategie ist Kunden gegenüber unfair](https://t3n.de/news/schon-wieder-ein-neues-iphone-kaufen-apples-ki-strategie-ist-kunden-gegenueber-unfair-1746562/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Tue, 9 Jun 2026 15:30:08 +0200_
+  Mit Fokus auf Apple Intelligence sei das iPhone 16 entwickelt worden. Aber keine zwei Jahre später bekommt es gar nicht alle neuen vorgestellten KI-Funktionen von iOS 27. Wer die will, braucht schon w…
+- [ ] **[„Chat ist tot“: OpenAI entwickelt ChatGPT am Großteil der User vorbei](https://t3n.de/news/chat-ist-tot-openai-entwickelt-chatgpt-am-grossteil-der-user-vorbei-1746597/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Tue, 9 Jun 2026 14:30:41 +0200_
+  Das KI-Startup von Sam Altman sieht keine große Zukunft in Frage-Antwort-Chats. Unser Autor meint: Damit bricht es eines seiner größten Versprechen – und kweiterlesen auf t3n.de
 
 ## netzpolitik.org
+- [ ] **[Demo gegen Überwachung: „Wir können die Welle brechen“](https://netzpolitik.org/2026/demo-gegen-ueberwachung-wir-koennen-die-welle-brechen/)**  
+  _Tue, 09 Jun 2026 19:00:06 +0000_
+  Kämpfen gegen KI-gestützte Überwachung: Sebastian Marg und Tom Jennissen von der Digitalen Gesellschaft.    –   CC-BY 4.0: Jan FelsGerade werden deutschlandweit Polizeigesetze hart verschärft. Kollege…
+- [ ] **[UN-Report zu KI-Umweltkosten: Gut gemeint, schlecht gerechnet](https://netzpolitik.org/2026/un-report-zu-ki-umweltkosten-gut-gemeint-schlecht-gerechnet/)**  
+  _Mon, 08 Jun 2026 11:07:11 +0000_
+  Ein KI-Rechenzentrum entsteht aktuell in Lübbenau, Brandenburg - für 11 Milliarden Euro (Symbolbild).    –   Alle Rechte vorbehalten: IMAGO / Jochen Eckel; Bearbeitung: netzpolitik.orgEin neuer UN-Rep…
+- [ ] **[Trugbild: Schöne (un-)heile Welt](https://netzpolitik.org/2026/trugbild-schoene-un-heile-welt/)**  
+  _Sun, 07 Jun 2026 08:27:57 +0000_
+  Die Originaltasse ist längst verschenkt – Symbolbild von ChatGPT.    –   Gemeinfrei: ChatGPTDer Online-Einkauf ist in jeder Hinsicht billig geworden. Schwindeleien gehören zum Geschäft und machen das …
 - [ ] **[Rechenzentren in der EU: Stromfresser sollen uns souverän machen](https://netzpolitik.org/2026/rechenzentren-in-der-eu-stromfresser-sollen-uns-souveraen-machen/)**  
   _Fri, 05 Jun 2026 12:31:17 +0000_
   Generative KI braucht viel Energie und Rechenzentren. (Symbolbild)    –   CC-BY 4.0: Deborah LuptonMit einem Paket an Gesetzen will die EU-Kommission digital souveräner werden. Aber das positiv besetz…
@@ -187,12 +190,6 @@ weiter…
 - [ ] **[Peinliche Lücke: Hacker bringen Meta-KI dazu, fremde Instagram-Accounts herauszugeben](https://netzpolitik.org/2026/peinliche-luecke-hacker-ueberreden-meta-ki-fremde-instagram-accounts-herauszugeben/)**  
   _Tue, 02 Jun 2026 11:16:42 +0000_
   Intelligent geht anders: Meta AI hat die Sicherheit sträflich vernachlässigt.    –   Alle Rechte vorbehalten: IMAGO / SOPA ImagesDer Meta-Konzern hat mit seinem KI-Support eine deftige Sicherheitslück…
-- [ ] **[KI-Klimaschwindel und Greenwashing: Big-Tech erklärt das Problem zur Lösung](https://netzpolitik.org/2026/ki-klimaschwindel-und-greenwashing-big-tech-erklaert-das-problem-zur-loesung/)**  
-  _Mon, 01 Jun 2026 16:06:40 +0000_
-  KI-Unternehmen setzen beim Klimawandel die KI-Schwindel-Brille auf.    –   Alle Rechte vorbehalten: Victoria O’MayDie Beweise für positive Klimaauswirkungen durch sogenannte „KI“ sind schwach, während…
-- [ ] **[Netzpolitische Enzyklika: Wie Papst Leo gegen die Verzweckung des Menschen argumentiert](https://netzpolitik.org/2026/netzpolitische-enzyklika-wie-papst-leo-gegen-die-verzweckung-des-menschen-argumentiert/)**  
-  _Sun, 31 May 2026 07:16:42 +0000_
-  Papst Leo XIV. und Chris Olah, Mitbegründer von Anthropic.    –   Alle Rechte vorbehalten: IMAGO / ABACAPRESS; Gemeinfrei-ähnlich freigegeben durch unsplash.com: Manuel, Cash Macanaya, Bearbeitung: ne…
 
 ---
-Gesammelt: 59 Meldungen aus 10 Quellen. Quellen immer gegenprüfen — Aggregation ersetzt keine Recherche.
+Gesammelt: 58 Meldungen aus 10 Quellen. Quellen immer gegenprüfen — Aggregation ersetzt keine Recherche.
