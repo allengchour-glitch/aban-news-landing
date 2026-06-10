@@ -219,3 +219,12 @@
 - **Energieklasse A–F (offen):** User „nur wo Label vorhanden" → echte EU-Energielabels nur bei wenigen Elektro-Produkten
   (CJ liefert i.d.R. keine). Nächster Schritt: Tech/Gadgets-Katalog auf Produkte mit echtem Label prüfen, dann Klasse +
   Label-Bild ergänzen. Keine Klassen erfinden (gesetzlich).
+
+## 2026-06-10 — Energieklasse geprüft → KEINE qualifiziert; stattdessen Effizienz-Badges (rechtssicher)
+- **Befund:** KEIN Produkt im Shop fällt unter die EU-Energielabel-Pflicht A–F: Lampen sind alle Solar/USB/Akku
+  (Label gilt nur für netzbetriebene Wechsel-Leuchtmittel), Beamer sind ausgenommen, keine TVs/Kühlschränke/Netz-Birnen.
+  → Keine Klasse erfunden (gesetzlich). Geprüft: beleuchtung-lampen (7) + gadgets (124).
+- **Stattdessen rechtssichere Effizienz-Hinweise gesetzt** (`automation/add_efficiency_badge.mjs` + `efficiency-badge.yml`):
+  grünes Badge vorangestellt, idempotent (Marker `class="ls-eff"`): Solar-Produkte → „☀️ Solarbetrieben · keine Stromkosten",
+  USB/Akku-LED-Lampen → „🔌 USB/Akku-LED · energieeffizient". **53 Produkte** bekamen ein Badge (alle Solar shop-weit via
+  `title:Solar*` + USB-Lampen), 1 übersprungen (Wellness-Bundle). Verifiziert an 2 Produkten. Kein Energielabel = legal sauber.
