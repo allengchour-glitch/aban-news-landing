@@ -26,14 +26,14 @@
   var detailBase = LANG === 'en' ? '/en/maerkte/' : '/maerkte/';
   var NUMLOC = LANG === 'en' ? 'en' : 'de-CH';
   var T = {
-    de: { krypto: 'Krypto', aktie: 'Aktie', index: 'Index', rohstoff: 'Rohstoff',
+    de: { krypto: 'Krypto', aktie: 'Aktie', etf: 'ETF', index: 'Index', rohstoff: 'Rohstoff',
           gainer: 'Top-Gewinner', loser: 'Top-Verlierer', mood: 'Marktstimmung',
           conf: 'KI-Konfidenz', noNews: 'Aktuell keine News.',
           sources: 'Quellen: ', asof: 'Stand: ', cryptoLive: ' · Krypto live', ai: ' · KI: ',
           rate: 'Kurs: ', endval: 'Endwert ≈ ', paid: 'Eingezahlt', gain: 'Wertzuwachs', valueIn: 'Wert in ',
           unavailable: 'Marktdaten zurzeit nicht verfügbar.',
           stale: '⚠️ Daten evtl. veraltet (letzter Lauf vor über {h} h).' },
-    en: { krypto: 'Crypto', aktie: 'Stock', index: 'Index', rohstoff: 'Commodity',
+    en: { krypto: 'Crypto', aktie: 'Stock', etf: 'ETF', index: 'Index', rohstoff: 'Commodity',
           gainer: 'Top gainer', loser: 'Top loser', mood: 'Market mood',
           conf: 'AI confidence', noNews: 'No news right now.',
           sources: 'Sources: ', asof: 'As of: ', cryptoLive: ' · crypto live', ai: ' · AI: ',
@@ -52,7 +52,7 @@
     return fmtPrice(usdVal * rate(), cur);
   }
   function typeLabel(t) {
-    return t === 'crypto' ? T.krypto : t === 'stock' ? T.aktie
+    return t === 'crypto' ? T.krypto : t === 'stock' ? T.aktie : t === 'etf' ? T.etf
       : t === 'index' ? T.index : t === 'commodity' ? T.rohstoff : t;
   }
   // Indizes werden als Punkte (native, ohne Umrechnung) angezeigt; sonst Währung.
@@ -202,7 +202,7 @@
       tbody.appendChild(subheader('★ ' + (LANG === 'en' ? 'Watchlist' : 'Merkliste')));
       watched.forEach(function (a) { tbody.appendChild(buildRow(a)); });
     }
-    ['crypto', 'stock', 'index', 'commodity'].forEach(function (t) {
+    ['crypto', 'stock', 'etf', 'index', 'commodity'].forEach(function (t) {
       var grp = state.assets.filter(function (a) { return a.type === t && !watch[a.id]; });
       if (!grp.length) return;
       tbody.appendChild(subheader(typeLabel(t)));

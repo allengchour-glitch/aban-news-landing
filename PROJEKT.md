@@ -43,6 +43,44 @@ Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe s
 (Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
 
 
+## 📌 Stand 2026-06-10 (Teil 17) — NEUE „Märkte"-Sektion live (Krypto+Aktien+News+KI, DE/EN)
+User-Bogen: „coole projekt / traiding" → „alles, neue seite bei abannews.com" → „mach autonom" →
+„erweitere mit allem" → „wechsle aufs Gemini-Model" → „mergen / telegram vom abannews nehmen" →
+„baue fertig / tiefgründiger / sauber + erweitern" → **„nur de und en"** (FR/IT wieder raus). Alles
+gemerged (zuletzt PR #599, FR/IT-Revert). **Komplett live & autonom — diese (abannews-)Session besitzt das.**
+- **Seite `/maerkte.html` + `/en/maerkte.html`** (Pretty-URLs `/maerkte`,`/markets`,`/trading` via `_redirects`):
+  Ticker, kategorie-gruppierte Kurstabelle (Krypto/Aktien/Indizes/Rohstoffe), Markt-Stimmungs-Gauge,
+  Top-Mover, 3 Rechner-Widgets (Umrechner/Spar/G+V), Watchlist (localStorage), Währungs-Switch (USD/CHF/EUR),
+  KI-Sentiment-Karten, Per-Asset-News, FAQ/Schema. **Überall „keine Anlageberatung"-Disclaimer.**
+- **42 Assets** (14 Krypto, 10 Aktien, **4 ETFs** als eigene Kategorie, 8 Indizes, 6 Rohstoffe) mit
+  Detailseiten `maerkte/<id>.html` + `en/maerkte/<id>.html` (je 42) — Kennzahlen-Tabelle, strukturierte
+  KI-Analyse (Treiber/Risiko/Einordnung), verwandte Assets, News, 30-Tage-Chart. Asset-Namen in Karten/
+  Tabelle verlinken auf Detailseite. ETF-Typ: `js/markets.js` (Label/Order) + `build_markets_detail.py`.
+- **Daten keyless:** Krypto live im Browser via **CoinGecko** (CSP `connect-src` in `_headers` erweitert);
+  Aktien/Indizes/Rohstoffe via **Yahoo-Finance-Chart-Endpoint** (Stooq-Fallback), FX via Frankfurter/ECB,
+  News via Google-News-RSS. Fetcher: `automation/markets_fetch.py` (+ `spark_stats`, 52W-Hoch/Tief, Volumen,
+  Market-Cap, 7d/30d). Indizes als „Pkt" (keine Währungsumrechnung).
+- **KI = Gemini** (nicht Claude — User-Wunsch, Gratis-Tier): `automation/markets_ai.py` nutzt
+  `automation/gemini_text.py` (gemini-2.5-flash, `thinking_budget=0`, JSON-Output sentiment/confidence/
+  rationale/signal/analysis), no-op ohne `GEMINI_API_KEY`. KI gibt **nie** Kauf/Verkauf-Empfehlung.
+- **Automatik:** `.github/workflows/markets-build.yml` (Mo–Fr 06:00 & 16:00 UTC): fetch → Gemini →
+  `build_markets_detail.py` (Detailseiten) → Telegram-Digest → commit `[skip ci]`. `markets-monitor.yml`
+  wacht über Daten-Frische (Alert via `TELEGRAM_OWNER_ID`). Telegram-Digest reuse: `TELEGRAM_BOT_TOKEN`/
+  `TELEGRAM_CHANNEL` (vom abannews-Bot). Alle Secrets bestätigt aktiv.
+- **Vernetzung:** in Top-Nav + Footer; von online-tools.html + ki-und-krypto-daten.html + Rechner-Seiten +
+  629 Branchen-Hubs verlinkt (siehe KI-WERKZEUG-HANDOFF.md). i18n nur DE/EN (`<html lang>`-getrieben).
+- **Nebenbei gefixt:** 60 fehlende Branchen-PDFs (`generate_branchen_pdfs.py`-Parserfix) + 21 Hub-Bilder
+  generiert; 3 tote related-Links. **Out-of-scope (andere Session):** tote `/products/`-Links in `dropship/`.
+- **i18n-Stand FINAL: nur DE + EN.** FR/IT wurden auf User-Wunsch komplett zurückgebaut (hreflang/Switcher/
+  Detailseiten). Lehre: globaler String-Replace für Übersetzungen zerstörte `id`/`for`-Attribute → kanonische
+  DE-IDs als Referenz. Push-Lehre: 413-„request too large" kam von stalem `origin/main` → `git fetch` +
+  `rebase origin/main`, dann packt git nur den eigenen Commit. Force-Push auf den Feature-Branch war freigegeben.
+- **🟢 Offen: nichts Blockierendes.** Sektion läuft vollautonom. Kür erledigt: (1) **Mobile-Card-Layout**
+  der Kurstabelle (≤560px → gestapelte Karten, CSS-only, DE+EN); (2) **vertiefte Detail-Charts** (30-Tage-SVG
+  mit Hoch/Tief-Hilfslinien + Beschriftung + Endpunkt-Marker); (3) **mehr Assets** 32→42 inkl. neuer
+  ETF-Kategorie. Neue Werte: Daten via Yahoo/CoinGecko gefüllt; KI-Sentiment ergänzt der nächste Gemini-CI-Lauf
+  (bis dahin neutral). Sitemap (DE+EN) ergänzt + valide.
+
 ## 📌 Stand 2026-06-08 (Teil 16) — Volle 4-Sprachen-Hub-Parität + Schema + Abend-TODO
 User: „alles weiter wo du kannst und das wo ich mache in todo abend". Erledigt & gemerged:
 - **BreadcrumbList-Schema in ALLEN Hubs** (PR #442 EN, #444 FR+IT): `tools/add_en_hub_breadcrumbs.py`

@@ -227,9 +227,24 @@
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
     }
-    @media(max-width:520px){
-      /* Trend-Spalte auf sehr kleinen Screens ausblenden (Platz für Kurs+Sentiment) */
-      .mtable td.spark,.mtable thead th:nth-child(5){display:none}
+    @media(max-width:560px){
+      /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
+      .mtable-wrap{overflow:visible;background:transparent;border:0;box-shadow:none}
+      table.mtable{min-width:0;font-size:1rem}
+      .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+      .mtable tbody,.mtable tr,.mtable td{display:block}
+      .mtable tr.catrow{margin:1.2rem 0 .6rem}
+      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
+      .mtable tr:not(.catrow) td{border:0;padding:0}
+      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
   <style>
@@ -285,7 +300,7 @@
     <div class="wrap">
       <span class="eyebrow">30-Tage-Verlauf</span>
       <h2>Kursverlauf</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,8.0 L35.1,22.1 L62.3,31.6 L89.4,23.2 L116.5,45.9 L143.7,52.1 L170.8,51.5 L197.9,55.0 L225.0,52.6 L252.2,64.8 L279.3,59.7 L306.4,63.0 L333.6,68.5 L360.7,72.8 L387.8,79.2 L415.0,75.0 L442.1,75.5 L469.2,82.0 L496.3,126.6 L523.5,157.8 L550.6,192.0 L577.7,179.5 L604.9,171.6 L632.0,179.4 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,8.0 35.1,22.1 62.3,31.6 89.4,23.2 116.5,45.9 143.7,52.1 170.8,51.5 197.9,55.0 225.0,52.6 252.2,64.8 279.3,59.7 306.4,63.0 333.6,68.5 360.7,72.8 387.8,79.2 415.0,75.0 442.1,75.5 469.2,82.0 496.3,126.6 523.5,157.8 550.6,192.0 577.7,179.5 604.9,171.6 632.0,179.4" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">0.2805</text><text x="586" y="204" font-size="12" fill="#64748b">0.1567</text><path d="M10.0,200 L10.0,10.0 L34.8,24.6 L59.6,34.4 L84.3,25.7 L109.1,49.1 L133.9,55.6 L158.7,55.0 L183.5,58.5 L208.3,56.0 L233.0,68.6 L257.8,63.4 L282.6,66.8 L307.4,72.5 L332.2,76.9 L357.0,83.5 L381.7,79.2 L406.5,79.7 L431.3,86.4 L456.1,132.5 L480.9,164.7 L505.7,200.0 L530.4,187.1 L555.2,179.0 L580.0,187.0 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,10.0 34.8,24.6 59.6,34.4 84.3,25.7 109.1,49.1 133.9,55.6 158.7,55.0 183.5,58.5 208.3,56.0 233.0,68.6 257.8,63.4 282.6,66.8 307.4,72.5 332.2,76.9 357.0,83.5 381.7,79.2 406.5,79.7 431.3,86.4 456.1,132.5 480.9,164.7 505.7,200.0 530.4,187.1 555.2,179.0 580.0,187.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="187.0" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="187.0" r="3.4" fill="#dc2626"/></svg></div>
       <p class="updated" style="margin-top:.7rem">Stand: 2026-06-10 · Krypto aktualisiert live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Kennzahlen</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">Im Überblick</h2>
