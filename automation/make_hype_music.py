@@ -99,3 +99,29 @@ def save(name,data):
 save("/tmp/luxe-hype1.wav", build(150,'Fmin',8,[0,0,2,4],seed=1))           # dark drive
 save("/tmp/luxe-hype2.wav", build(146,'Cmin',8,[0,None,5,3],seed=7))         # bouncy
 save("/tmp/luxe-hype3.wav", build(152,'Gmin',8,[0,4,2,5],lead=True,seed=13)) # energetic
+
+# ---- HOUSE (4-on-the-floor, ~124 BPM): Offbeat-Bass, Clap 2&4, Open-Hat-Offbeats, Akkord-Stabs ----
+def build_house(bpm=124, root=110.0, bars=8, seed=0):
+    np.random.seed(seed)
+    beat=60.0/bpm; step_dur=beat/4.0
+    n=int(bars*16*step_dur*SR)+SR
+    buf=np.zeros(n)
+    am7=[root, root*1.20, root*1.50, root*1.78]   # ~Root, m3, 5, m7
+    bassline=[0,0,3,5,0,-2,3,0]                    # Halbton-Offsets je Takt
+    for bar in range(bars):
+        b0=bar*16; semi=bassline[bar%len(bassline)]; bf=root*2**(semi/12.0)
+        for s in (0,4,8,12): place(buf,kick(0.4,140,52),b0+s,step_dur,1.0)    # 4-on-the-floor
+        place(buf,clap(),b0+4,step_dur,0.8); place(buf,clap(),b0+12,step_dur,0.8)
+        for s in (2,6,10,14): place(buf,hat(0.12,op=True),b0+s,step_dur,0.40) # Open-Hat Offbeat
+        for s in range(16):
+            if s%2==1: place(buf,hat(0.05),b0+s,step_dur,0.16)                # Closed-Hat 16tel
+        for s in (2,6,10,14): place(buf,b808(beat*0.42,bf),b0+s,step_dur,0.70)# Offbeat-Pluck-Bass
+        if bar>=2:
+            stab=sum(supersaw(f*2*2**(semi/12.0),beat*0.42) for f in am7)/len(am7)
+            for s in (6,14): place(buf,stab,b0+s,step_dur,0.55)               # Akkord-Stab
+    buf=np.tanh(buf*0.8); buf/=np.max(np.abs(buf))+1e-9; buf*=0.95
+    fade=int(0.02*SR); buf[:fade]*=np.linspace(0,1,fade); buf[-fade:]*=np.linspace(1,0,fade)
+    return (buf*32767).astype(np.int16)
+
+save("/tmp/luxe-house1.wav", build_house(124,110.0,8,seed=3))   # A-Moll, klassisch
+save("/tmp/luxe-house2.wav", build_house(126,116.5,8,seed=21))  # höher, treibend
