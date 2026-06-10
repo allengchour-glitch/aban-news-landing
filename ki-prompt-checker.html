@@ -24,6 +24,9 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Prompt-Verbesserer","url":"https://abannews.com/ki-prompt-checker.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com"}}
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Funktioniert der Prüfer für jede KI?","acceptedAnswer":{"@type":"Answer","text":"Ja. Die geprüften Bausteine sind universell und helfen bei ChatGPT, Claude, Gemini und praktisch jedem Sprachmodell gleichermaßen."}},{"@type":"Question","name":"Braucht ein guter Prompt immer alle acht Bausteine?","acceptedAnswer":{"@type":"Answer","text":"Nein. Für eine kurze Frage reichen oft Rolle, Aufgabe und Format. Je wichtiger das Ergebnis, desto mehr Bausteine lohnen sich."}},{"@type":"Question","name":"Werden meine Prompts gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein, die Analyse passiert vollständig lokal im Browser. Es gibt keinen Upload und kein Konto."}},{"@type":"Question","name":"Was, wenn ich noch gar keinen Prompt habe?","acceptedAnswer":{"@type":"Answer","text":"Dann hilft der Prompt-Baukasten: Er baut aus ein paar Stichworten einen sauberen Prompt, den man anschließend hier feinschleift."}}]}
+</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--field:#fffdf9;--ok:#15803d;--okbg:#ecfdf3;--bad:#b91c1c}
@@ -98,6 +101,20 @@ footer a{color:var(--muted)}
   </div>
 
   <p class="disc">💡 Faustregel: Ein guter Prompt sagt <b>wer</b> (Rolle), <b>was</b> (Aufgabe), <b>für wen</b> (Zielgruppe), <b>wie</b> (Format/Ton) — und gibt am besten ein <b>Beispiel</b>. Je konkreter, desto weniger Raterei.</p>
+
+  <section style="margin:30px 0;line-height:1.75">
+    <h2 style="font-size:1.35rem;margin-bottom:10px;letter-spacing:-.01em">Was einen guten Prompt ausmacht</h2>
+    <p style="color:var(--ink2);margin-bottom:14px">Eine KI kann nur so gut antworten, wie deine Anweisung es zulässt. Die meisten enttäuschenden Ergebnisse liegen nicht am Modell, sondern an einem zu vagen Prompt: Wenn die KI raten muss, wer sie sein soll, für wen der Text ist und in welcher Form er gebraucht wird, dann rät sie — und oft daneben. Ein guter Prompt nimmt ihr dieses Raten ab. Er nennt eine Rolle, beschreibt die Aufgabe mit einem klaren Verb, gibt genug Kontext, benennt die Zielgruppe, legt Format und Ton fest und liefert idealerweise ein Beispiel, an dem sich die KI orientieren kann.</p>
+    <h2 style="font-size:1.35rem;margin:22px 0 10px;letter-spacing:-.01em">So liest du das Ergebnis</h2>
+    <p style="color:var(--ink2);margin-bottom:14px">Der Prüfer zerlegt deinen Prompt in acht Bausteine und zeigt dir, welche schon vorhanden sind und welche fehlen. Jeder fehlende Baustein kommt mit einem konkreten Tipp und einer Formulierungshilfe, die du direkt übernehmen kannst. Der Score von 0 bis 100 spiegelt einfach wider, wie viele Bausteine enthalten sind — er ist kein Qualitätsurteil über deinen Inhalt, sondern ein schneller Vollständigkeits-Check. Alles läuft im Browser, dein Text wird nicht gespeichert.</p>
+    <p style="color:var(--ink2);margin-bottom:14px">Der wirksamste einzelne Tipp aus der Praxis: Gib statt einer langen Beschreibung ein <b>Beispiel</b>. Ein Mustertext, der dir gefällt, sagt der KI mehr über Ton und Aufbau als drei Sätze Erklärung — und spart dir die Nacharbeit.</p>
+
+    <h2 style="font-size:1.35rem;margin:22px 0 12px;letter-spacing:-.01em">Häufige Fragen</h2>
+    <details style="border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Funktioniert der Prüfer für jede KI?</summary><p style="color:var(--ink2);margin-top:8px">Ja. Die geprüften Bausteine sind universell — sie helfen bei ChatGPT, Claude, Gemini und praktisch jedem Sprachmodell gleichermaßen, weil sie der KI schlicht weniger Spielraum zum Raten lassen.</p></details>
+    <details style="border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Braucht ein guter Prompt immer alle acht Bausteine?</summary><p style="color:var(--ink2);margin-top:8px">Nein. Für eine kurze Frage reichen oft Rolle, Aufgabe und Format. Je wichtiger oder komplexer das Ergebnis, desto mehr Bausteine lohnen sich. Der Prüfer zeigt dir, wo noch Luft ist — du entscheidest, was du brauchst.</p></details>
+    <details style="border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Werden meine Prompts gespeichert?</summary><p style="color:var(--ink2);margin-top:8px">Nein, die Analyse passiert vollständig lokal in deinem Browser. Es gibt keinen Upload und kein Konto.</p></details>
+    <details style="border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Was, wenn ich noch gar keinen Prompt habe?</summary><p style="color:var(--ink2);margin-top:8px">Dann fang mit dem <a href="/prompt-baukasten.html">Prompt-Baukasten</a> an — der baut dir aus ein paar Stichworten einen sauberen Prompt, den du hier anschließend feinschleifen kannst.</p></details>
+  </section>
 
   <div class="band">
     <h2>Noch keine Idee für den Prompt?</h2>
