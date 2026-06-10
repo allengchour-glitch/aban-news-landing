@@ -4,6 +4,14 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-10 - Tiefe Verlinkung Teil 2 (alle 3 Lever + Kern-Tools)
+- Glossar-Begriffe -> Tools: TOOLLINKS-dict in generate_ki_glossar.py (7 Begriffe, je '-> Passendes Werkzeug').
+- 'Verwandte Werkzeuge'-Grid-Block auf 9 Tool-Seiten (5 neue + Prompt-Baukasten/DSGVO/Spar-Rechner/Readiness),
+  je 6 verwandte Tools, eigene Seite ausgeschlossen, inline-Styles. welche-ki-fuer-was.html ausgelassen
+  (JS-Template-Tags brechen die Tag-Balance-Heuristik). PRs #593/#594.
+- maerkte.html: thematischer Block (Glossar/Hype-Detektor/Vergleiche/Finder).
+- Prinzip: jede neue Seite SOFORT ueberall verlinken (Generator+Footer+Hubs+Verwandte-Block), nie isoliert.
+
 ## 2026-06-10 - Tiefe Verlinkung (User-Wunsch: alles verlinken, tiefgruendiger)
 - Hype-Detektor in ALLE Branchen-Hubs ueber tools/add_branchen_funnel.py (DE+EN-Block): 316 DE + 313 EN = 629
   Hubs verlinken ihn. + Homepage-Footer (5 neue Tools + Alle Tools) + maerkte.html (PR #590).
