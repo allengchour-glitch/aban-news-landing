@@ -354,8 +354,10 @@
   <script>
   (function(){
     var sec=document.getElementById('marketsPreview'); if(!sec) return;
+    var EURO={AT:1,BE:1,HR:1,CY:1,EE:1,FI:1,FR:1,DE:1,GR:1,IE:1,IT:1,LV:1,LT:1,LU:1,MT:1,NL:1,PT:1,SK:1,SI:1,ES:1,MC:1,SM:1,VA:1,AD:1,ME:1,XK:1};
+    var fx={usd:1}, curC='usd';
     function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-    function fmtPrice(v){ if(typeof v!=='number') return '—'; var d=v>=1000?0:v>=1?2:4; try{return new Intl.NumberFormat('de-CH',{style:'currency',currency:'USD',maximumFractionDigits:d,minimumFractionDigits:d}).format(v);}catch(e){return '$'+v.toFixed(d);} }
+    function fmtPrice(v){ if(typeof v!=='number') return '—'; var x=v*(fx[curC]||1); var d=x>=1000?0:x>=1?2:4; try{return new Intl.NumberFormat('de-CH',{style:'currency',currency:curC.toUpperCase(),maximumFractionDigits:d,minimumFractionDigits:d}).format(x);}catch(e){return x.toFixed(d)+' '+curC.toUpperCase();} }
     function row(a){
       var ch=(typeof a.change_24h==='number')?a.change_24h:null;
       var col=ch===null?'#5c6773':(ch>=0?'#0f9d6b':'#dc2626');
@@ -364,7 +366,7 @@
         +'<span style="font-weight:700">'+esc(a.name)+' <span style="color:#5c6773;font-weight:600;font-size:.85em">'+esc(a.symbol)+'</span></span>'
         +'<span style="text-align:right;white-space:nowrap"><b>'+fmtPrice(a.price)+'</b> <span style="color:'+col+';font-weight:700">'+chTxt+'</span></span></a>';
     }
-    fetch('/data/markets.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
+    function render(d){
       var as=d.assets||[]; if(!as.length) return;
       var ck=document.getElementById('hmKrypto'), ak=document.getElementById('hmAktien'), nw=document.getElementById('hmNews');
       if(ck) ck.innerHTML=as.filter(function(a){return a.type==='crypto';}).slice(0,4).map(row).join('');
@@ -372,6 +374,16 @@
       var news=(d.news||[]).slice(0,3);
       if(nw&&news.length) nw.innerHTML=news.map(function(n){return '<li style="padding:.45rem 0;border-bottom:1px solid var(--line,#ece6db)"><a href="'+esc(n.url||'#')+'" target="_blank" rel="noopener" style="text-decoration:none;font-weight:600">'+esc(n.title||'')+'</a><div style="color:#5c6773;font-size:.82em;margin-top:.2rem">'+esc(n.source||'')+'</div></li>';}).join('');
       sec.hidden=false;
+    }
+    fetch('/data/markets.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
+      fx=d.fx||{usd:1};
+      render(d); // sofort in USD zeigen …
+      // … dann Land erkennen und ggf. auf CHF/EUR umstellen
+      fetch('/cdn-cgi/trace',{cache:'no-store'}).then(function(r){return r.text();}).then(function(t){
+        var m=/(?:^|\n)loc=([A-Z]{2})/.exec(t); var cc=m?m[1]:'';
+        var c=(cc==='CH'||cc==='LI')?'chf':(EURO[cc]?'eur':'usd');
+        if(c!==curC && fx[c]){ curC=c; render(d); }
+      }).catch(function(){});
     }).catch(function(){});
   })();
   </script>
@@ -697,5 +709,6 @@ if(x)x.addEventListener('click',function(){b.classList.remove('show');try{sessio
 })();
 </script>
 <script defer src="/js/announce.js"></script>
+<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>
