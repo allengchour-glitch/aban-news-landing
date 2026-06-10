@@ -44,6 +44,31 @@ import time
 STATE_DIR = os.path.expanduser("~/.luxe-browser")
 
 
+def _brave_path():
+    """Findet Brave (oder BROWSER_EXE). Brave = Chromium → läuft über deine Heim-IP (IG blockt nicht)."""
+    if os.environ.get("BROWSER_EXE"):
+        return os.environ["BROWSER_EXE"]
+    for c in (
+        r"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe",
+        r"C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe",
+        "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
+        "/usr/bin/brave-browser", "/usr/bin/brave",
+    ):
+        if os.path.exists(c):
+            return c
+    return None
+
+
+def _launch(p, headless=True):
+    """Startet Chromium — bevorzugt Brave, falls vorhanden (sonst Playwright-Chromium)."""
+    exe = _brave_path()
+    kw = {"headless": headless}
+    if exe:
+        kw["executable_path"] = exe
+        print("(nutze Brave: %s)" % exe)
+    return p.chromium.launch(**kw)
+
+
 def _pw():
     try:
         from playwright.sync_api import sync_playwright
@@ -70,7 +95,7 @@ def cmd_login(args):
     """Sichtbaren Browser öffnen, User loggt sich von Hand ein, Session speichern."""
     os.makedirs(STATE_DIR, exist_ok=True)
     with _pw()() as p:
-        b = p.chromium.launch(headless=False)
+        b = _launch(p, headless=False)
         ctx = b.new_context()
         page = ctx.new_page()
         page.goto(args.url, wait_until="domcontentloaded", timeout=60000)
@@ -88,7 +113,7 @@ def cmd_login(args):
 
 # ------------------------------------------------------------------
 def _ctx(p, profile, headless=True):
-    b = p.chromium.launch(headless=headless)
+    b = _launch(p, headless=headless)
     ctx = b.new_context(storage_state=_need_state(profile),
                         viewport={"width": 1280, "height": 1000},
                         user_agent=("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "

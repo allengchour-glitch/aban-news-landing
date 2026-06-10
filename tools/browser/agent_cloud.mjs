@@ -56,7 +56,7 @@ async function startSession({ keepAlive=false } = {}){
   if (process.env.BB_ADVANCED_STEALTH === '1') bs.advancedStealth = true;
   bs.solveCaptchas = true;
   if (Object.keys(bs).length) body.browserSettings = bs;
-  if (process.env.BB_PROXY !== '0') {
+  if (process.env.BB_PROXY === '1') {  // opt-in: Residential-Proxy nur mit bezahltem Plan (sonst 402)
     body.proxies = [{ type: 'browserbase', geolocation: { country: process.env.BB_COUNTRY || 'CH' } }];
   }
   const s = await bb('/sessions', { method:'POST', body: JSON.stringify(body) });
