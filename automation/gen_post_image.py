@@ -247,6 +247,23 @@ def render_card(product_img, label, width, height):
     return canvas.convert("RGB")
 
 
+def render_product_clean(product_img, W=1080, H=1080):
+    """Bearbeitetes Produktbild OHNE jegliche Schrift — fürs Hochladen in die Shopify-
+    Produkt-Galerie. Ganzes Produkt scharf & veredelt (fit, KEIN Crop) auf editorialem,
+    unscharf-abgedunkeltem Marken-Hintergrund. Keine Wortmarke, kein Pill, kein Text."""
+    src = product_img.convert("RGB")
+    iw, ih = src.size
+    bg = cover_crop(src, W, H).filter(ImageFilter.GaussianBlur(52))
+    bg = ImageEnhance.Brightness(bg).enhance(0.58).convert("RGB")
+    target_long = min(int(min(W, H) * 0.90), int(max(iw, ih) * 1.4))
+    s = target_long / max(iw, ih)
+    fg = enhance(src.resize((max(1, int(iw * s)), max(1, int(ih * s))), Image.LANCZOS))
+    fx = (W - fg.width) // 2
+    fy = (H - fg.height) // 2
+    bg.paste(fg, (fx, fy))
+    return bg
+
+
 def render_story(product_img, label, width=1080, height=1920, rating=None, rating_count=None):
     """Echtes 1080×1920 Instagram-/Facebook-Story-Format mit Safe-Zones:
     Wortmarke unter dem IG-Story-Header (oben ~200px frei), Produktname + Pill
