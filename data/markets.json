@@ -12,13 +12,13 @@
       "name": "Bitcoin",
       "type": "crypto",
       "coingecko_id": "bitcoin",
-      "price": 62090,
-      "change_24h": -0.44,
+      "price": 62221,
+      "change_24h": -0.36,
       "currency": "usd",
       "sentiment": "bearish",
-      "confidence": 0.8,
-      "rationale": "Bitcoin verzeichnete die schlechteste Woche seit dem FTX-Crash und fällt zusammen mit anderen Kryptowährungen aufgrund eines KI-Ausverkaufs, trotz Saylors Käufen.",
-      "signal": "Schlechteste Woche seit FTX-Crash, KI-Ausverkauf.",
+      "confidence": 0.7,
+      "rationale": "Bitcoin verzeichnete die schlechteste Woche seit dem FTX-Crash und verlor über 1 Billion USD an Wert in 8 Monaten, was auf anhaltenden Druck hindeutet.",
+      "signal": "Deutlicher Wertverlust, anhaltender Abwärtstrend.",
       "spark": [
         81725.2077,
         80480.886,
@@ -78,17 +78,22 @@
         }
       ],
       "stats": {
-        "market_cap": 1244347406824,
-        "volume": 38094866413,
+        "market_cap": 1246885673842,
+        "volume": 38197472554,
         "high_24h": 62448,
         "low_24h": 60882,
         "ath": 126080,
-        "ath_change": -50.75,
+        "ath_change": -50.65,
         "change_7d": -3.69,
         "change_30d": -24.55,
         "high_30d": 81725.2077,
         "low_30d": 60921.7944
-      }
+      },
+      "analysis": [
+        "Treiber: Wall Street zeigt zunehmendes Interesse an Krypto, was langfristig positiv sein könnte.",
+        "Risiko: Der jüngste Wertverlust und die schlechteste Woche seit dem FTX-Crash deuten auf weiteren Schmerz hin.",
+        "Einordnung: Trotz institutionellem Interesse überwiegen kurzfristig die negativen Nachrichten über starke Wertverluste."
+      ]
     },
     {
       "id": "ethereum",
@@ -96,13 +101,13 @@
       "name": "Ethereum",
       "type": "crypto",
       "coingecko_id": "ethereum",
-      "price": 1658.14,
-      "change_24h": -0.79,
+      "price": 1662.35,
+      "change_24h": -0.75,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "Es gibt Nachrichten über cirBTC auf Ethereum und BlackRocks Kauf von Ethereum, aber auch einen allgemeinen Rückgang im Kryptomarkt.",
-      "signal": "Neue Produkte, BlackRock-Käufe, aber allgemeiner Rückgang.",
+      "sentiment": "bearish",
+      "confidence": 0.6,
+      "rationale": "Ethereum verzeichnete einen Rückgang, da der KI-Ausverkauf Kryptowährungen trifft, obwohl BlackRock ETH kauft.",
+      "signal": "Rückgang im Zuge des breiteren Krypto-Marktes.",
       "spark": [
         2339.6034,
         2274.6432,
@@ -162,17 +167,22 @@
         }
       ],
       "stats": {
-        "market_cap": 200187869607,
-        "volume": 13742166173,
+        "market_cap": 200622330403,
+        "volume": 13700688697,
         "high_24h": 1674.86,
         "low_24h": 1610.33,
         "ath": 4946.05,
-        "ath_change": -66.48,
+        "ath_change": -66.39,
         "change_7d": -9.58,
         "change_30d": -30.0,
         "high_30d": 2339.6034,
         "low_30d": 1580.6198
-      }
+      },
+      "analysis": [
+        "Treiber: BlackRock kauft Ethereum im Wert von 230 Millionen USD, was auf institutionelles Interesse hindeutet.",
+        "Risiko: Der KI-Ausverkauf und der allgemeine Krypto-Rückgang belasten den Kurs.",
+        "Einordnung: Trotz positiver institutioneller Nachrichten wird Ethereum durch den breiteren Markttrend nach unten gezogen."
+      ]
     },
     {
       "id": "solana",
@@ -180,13 +190,13 @@
       "name": "Solana",
       "type": "crypto",
       "coingecko_id": "solana",
-      "price": 65.0,
-      "change_24h": -1.06,
+      "price": 65.21,
+      "change_24h": -1.16,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.4,
-      "rationale": "Trotz eines starken Kursrückgangs und der Frage nach einem Kauf, sponsert Solana die World Series of Poker und der CEO setzt sich für Gesetzgebung ein.",
-      "signal": "Kursrückgang, aber Sponsoring und politische Bemühungen.",
+      "sentiment": "bearish",
+      "confidence": 0.7,
+      "rationale": "Solana verzeichnete einen starken Rückgang und die Nachrichtenlage deutet auf eine mögliche Fortsetzung des Abwärtstrends hin.",
+      "signal": "Starker Rückgang, Unsicherheit über zukünftige Entwicklung.",
       "spark": [
         97.3228,
         94.3087,
@@ -246,30 +256,35 @@
         }
       ],
       "stats": {
-        "market_cap": 37574685444,
-        "volume": 2955289362,
+        "market_cap": 37742858613,
+        "volume": 3007159349,
         "high_24h": 66.05,
         "low_24h": 63.19,
         "ath": 293.31,
-        "ath_change": -77.84,
+        "ath_change": -77.77,
         "change_7d": -9.37,
         "change_30d": -33.25,
         "high_30d": 97.3228,
         "low_30d": 63.4369
-      }
+      },
+      "analysis": [
+        "Treiber: Solana sponsert die World Series of Poker, was die Akzeptanz fördern könnte.",
+        "Risiko: Ein Rückgang von 74% und die Frage, ob es sich um einen 'Relief Bounce' oder einen weiteren Rückgang handelt.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit starken Kursverlusten und Unsicherheit über die Erholung."
+      ]
     },
     {
       "id": "nvidia",
       "symbol": "NVDA",
       "name": "NVIDIA",
       "type": "stock",
-      "price": 206.02,
-      "change_24h": -1.04,
+      "price": 205.63,
+      "change_24h": -1.23,
       "currency": "usd",
       "sentiment": "neutral",
-      "confidence": 0.6,
-      "rationale": "Nvidia gewinnt Apple als KI-Kunden, der Kurs fällt jedoch. Der CEO sieht den Ausverkauf als Kaufgelegenheit.",
-      "signal": "Apple als Kunde, aber Kursrückgang. CEO sieht Kaufgelegenheit.",
+      "confidence": 0.5,
+      "rationale": "Nvidia verzeichnet einen Rückgang, obwohl der CEO den Ausverkauf als Kaufgelegenheit sieht und Apple als Kunden gewonnen wurde.",
+      "signal": "Kursrückgang trotz positiver Nachrichten.",
       "yahoo_symbol": "NVDA",
       "spark": [
         219.44,
@@ -293,7 +308,7 @@
         205.1,
         208.64,
         208.19,
-        206.02
+        205.63
       ],
       "stooq_symbol": "nvda.us",
       "asset_news": [
@@ -331,25 +346,30 @@
       "stats": {
         "week52_high": 236.54,
         "week52_low": 140.85,
-        "volume": 17524761,
+        "volume": 20499122,
         "high_30d": 235.74,
         "low_30d": 205.1,
-        "change_7d": -4.07,
-        "change_30d": -6.12
-      }
+        "change_7d": -4.25,
+        "change_30d": -6.29
+      },
+      "analysis": [
+        "Treiber: Nvidia gewinnt Apple als KI-Kunden, was ein starkes Signal ist.",
+        "Risiko: Der Aktienkurs fällt trotz positiver Nachrichten, was auf breitere Marktängste hindeutet.",
+        "Einordnung: Die Nachrichtenlage ist gemischt; positive Unternehmensnachrichten stehen einem fallenden Kurs gegenüber."
+      ]
     },
     {
       "id": "apple",
       "symbol": "AAPL",
       "name": "Apple",
       "type": "stock",
-      "price": 288.52,
-      "change_24h": -0.7,
+      "price": 289.18,
+      "change_24h": -0.47,
       "currency": "usd",
       "sentiment": "bearish",
       "confidence": 0.7,
-      "rationale": "Die WWDC und Siri AI-Hype enttäuschten Investoren, und die EU-KI-Verzögerung rückt die Bewertung und Wachstumserwartungen in den Fokus.",
-      "signal": "WWDC-Enttäuschung, EU-KI-Verzögerung, Bewertungsbedenken.",
+      "rationale": "Apple-Aktien fallen nach der Siri AI-Enthüllung und der Verzögerung der EU-KI-Funktionen, was die Wachstumserwartungen dämpft.",
+      "signal": "Kursrückgang nach KI-Ankündigungen.",
       "yahoo_symbol": "AAPL",
       "spark": [
         292.68,
@@ -373,7 +393,7 @@
         307.34,
         301.54,
         290.55,
-        288.525
+        289.1799
       ],
       "stooq_symbol": "aapl.us",
       "asset_news": [
@@ -411,25 +431,30 @@
       "stats": {
         "week52_high": 317.4,
         "week52_low": 195.07,
-        "volume": 4196203,
+        "volume": 5127462,
         "high_30d": 315.2,
-        "low_30d": 288.525,
-        "change_7d": -7.01,
-        "change_30d": -1.42
-      }
+        "low_30d": 289.1799,
+        "change_7d": -6.79,
+        "change_30d": -1.2
+      },
+      "analysis": [
+        "Treiber: Morgan Stanley revidiert das Kursziel nach der WWDC, was auf eine Neubewertung hindeutet.",
+        "Risiko: Der Rückgang nach der Siri AI-Enthüllung und die Verzögerung der EU-KI-Funktionen belasten die Aktie.",
+        "Einordnung: Die jüngsten KI-Ankündigungen und Verzögerungen wirken sich negativ auf die Stimmung aus."
+      ]
     },
     {
       "id": "microsoft",
       "symbol": "MSFT",
       "name": "Microsoft",
       "type": "stock",
-      "price": 402.15,
-      "change_24h": -0.31,
+      "price": 402.8,
+      "change_24h": -0.15,
       "currency": "usd",
       "sentiment": "bearish",
       "confidence": 0.6,
-      "rationale": "Der Kurs von Microsoft sinkt, und es gibt Bedenken hinsichtlich der 'Peak Profitability' und Oracles OpenAI-Investition.",
-      "signal": "Kursrückgang, Bedenken wegen Profitabilität.",
+      "rationale": "Microsoft-Aktien sinken trotz eines großen Erfolgs im Gesundheitswesen und der Investition von Oracle in OpenAI.",
+      "signal": "Kursrückgang trotz positiver Entwicklungen.",
       "yahoo_symbol": "MSFT",
       "spark": [
         412.66,
@@ -453,7 +478,7 @@
         416.67,
         411.74,
         403.41,
-        402.15
+        402.8
       ],
       "stooq_symbol": "msft.us",
       "asset_news": [
@@ -491,25 +516,30 @@
       "stats": {
         "week52_high": 555.45,
         "week52_low": 356.28,
-        "volume": 3456668,
+        "volume": 4040093,
         "high_30d": 460.52,
-        "low_30d": 402.15,
-        "change_7d": -5.89,
-        "change_30d": -2.55
-      }
+        "low_30d": 402.8,
+        "change_7d": -5.74,
+        "change_30d": -2.39
+      },
+      "analysis": [
+        "Treiber: Microsoft verzeichnet einen großen Erfolg im Gesundheitswesen, was potenziell positiv ist.",
+        "Risiko: Die Aktie sinkt, und es gibt Bedenken hinsichtlich der 'Peak Profitability'.",
+        "Einordnung: Trotz einiger positiver Nachrichten überwiegen die Gründe für den Kursrückgang."
+      ]
     },
     {
       "id": "tesla",
       "symbol": "TSLA",
       "name": "Tesla",
       "type": "stock",
-      "price": 394.88,
-      "change_24h": -0.46,
+      "price": 394.25,
+      "change_24h": -0.61,
       "currency": "usd",
       "sentiment": "bullish",
       "confidence": 0.6,
-      "rationale": "Der Tesla-Kurs steigt vor dem SpaceX-IPO und aufgrund eines Anstiegs der China-Verkäufe, während Piper Sandler das Rating beibehält.",
-      "signal": "Kursanstieg vor SpaceX-IPO, China-Verkäufe steigen.",
+      "rationale": "Tesla-Aktien steigen im Vorfeld des SpaceX-Börsengangs und aufgrund von Fortschritten bei FSD und KI-Potenzial.",
+      "signal": "Kursanstieg im Vorfeld wichtiger Ereignisse.",
       "yahoo_symbol": "TSLA",
       "spark": [
         445.0,
@@ -533,7 +563,7 @@
         391.0,
         408.95,
         396.68,
-        394.875
+        394.25
       ],
       "stooq_symbol": "tsla.us",
       "asset_news": [
@@ -556,10 +586,10 @@
           "datum": "10 Jun 2026"
         },
         {
-          "title": "With SpaceX IPO Imminent, This Strategy In Options Trading Bets On Rotation Out Of Tesla Stock",
+          "title": "Elon Musk Reveals Details For SpaceX-Tesla Orbiting Data Center",
           "source": "Investor's Business Daily",
-          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNZ1ZORFRLMHhfT0h4UU80X21mbG9sZDdIbEJHZlViTURfcDVjNm9kZlVac01RN19paTBJQzhVX251ODNYcEtGYmZFeDdMbnJ3QThnRWtqYnJoMnFyQlp2Y1FSdHpSSnRuenZMODFIV0hETlp2ODNPSkF4aWRaRjZoWkI4RElZS3J2alZ5TXpMa1Z5UWFscHpxeg?oc=5",
-          "datum": "08 Jun 2026"
+          "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPU0JBTXJFbm5WSjFEay1hQk1ZSFgwb0lmS3VPcVFJdmVTeEdWLTNNRUFhRnV3b1ZXVGtPRzdkanJzdV9ucVRuWi0tbmRXTThqSUhJOTZQWFFFSl9yV2xuTmNSdWlMQVNVeWc2cV83aWtGb1czSWJFS3dEblNjQWZfSnFVd24yb2hvRFl1bWplRktVY1M5WTNHOG5Fcw?oc=5",
+          "datum": "09 Jun 2026"
         },
         {
           "title": "JPMorgan Just Dramatically Reversed Course on Tesla Because TSLA Stock Has Massive Physical AI Potential",
@@ -571,21 +601,26 @@
       "stats": {
         "week52_high": 498.83,
         "week52_low": 288.77,
-        "volume": 4373707,
+        "volume": 5261949,
         "high_30d": 445.27,
         "low_30d": 391.0,
-        "change_7d": -6.8,
-        "change_30d": -11.26
-      }
+        "change_7d": -6.95,
+        "change_30d": -11.4
+      },
+      "analysis": [
+        "Treiber: SpaceX-Börsengang und Fortschritte bei FSD sowie das physische KI-Potenzial treiben den Kurs an.",
+        "Risiko: Die Nachrichten über eine mögliche Fusion mit SpaceX könnten Unsicherheit schaffen.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit Fokus auf zukünftige Wachstumstreiber."
+      ]
     },
     {
       "price": 1.13,
-      "change_24h": -2.46,
+      "change_24h": -2.44,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "XRP fällt, aber der XRP Ledger steht vor Änderungen und Tokenized Treasuries bewegen sich darauf, was potenziell Wachstum signalisiert.",
-      "signal": "Kursrückgang, aber bevorstehende Änderungen am Ledger.",
+      "sentiment": "bearish",
+      "confidence": 0.7,
+      "rationale": "XRP verzeichnet einen Rückgang, da der breitere Krypto-Markt fällt und sich in einer historischen Kaufzone befindet.",
+      "signal": "Starker Rückgang im breiteren Krypto-Markt.",
       "id": "ripple",
       "symbol": "XRP",
       "name": "XRP",
@@ -650,26 +685,31 @@
         }
       ],
       "stats": {
-        "market_cap": 69919022449,
-        "volume": 2027103135,
+        "market_cap": 70236599482,
+        "volume": 2042305825,
         "high_24h": 1.16,
         "low_24h": 1.1,
         "ath": 3.65,
-        "ath_change": -69.07,
+        "ath_change": -68.96,
         "change_7d": -5.28,
         "change_30d": -22.97,
         "high_30d": 1.4845,
         "low_30d": 1.0962
-      }
+      },
+      "analysis": [
+        "Treiber: Tokenisierte Treasuries bewegen sich auf den XRP Ledger, was die Nutzung erhöhen könnte.",
+        "Risiko: XRP fällt im Zuge des breiteren Krypto-Marktes und befindet sich in einer historischen Kaufzone, was auf Überverkauf hindeutet.",
+        "Einordnung: Trotz potenzieller Anwendungsfälle wird XRP durch den allgemeinen Marktabschwung belastet."
+      ]
     },
     {
-      "price": 594.01,
-      "change_24h": -0.23,
+      "price": 595.1,
+      "change_24h": -0.17,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.3,
-      "rationale": "Die Nachrichten konzentrieren sich auf Erklärungen zur BNB Chain und Preisprognosen für 2026-2030, ohne konkrete aktuelle Kursimpulse.",
-      "signal": "Informationen zur BNB Chain, Preisprognosen.",
+      "sentiment": "bearish",
+      "confidence": 0.6,
+      "rationale": "BNB verzeichnet einen Rückgang, da die laufende Korrektur tiefere Verluste unterhalb wichtiger Unterstützungsmarken droht.",
+      "signal": "Laufende Korrektur, drohende weitere Verluste.",
       "id": "bnb",
       "symbol": "BNB",
       "name": "BNB",
@@ -734,26 +774,31 @@
         592.9772
       ],
       "stats": {
-        "market_cap": 80052068163,
-        "volume": 702349858,
+        "market_cap": 80212117071,
+        "volume": 704918701,
         "high_24h": 597.46,
         "low_24h": 580.96,
         "ath": 1369.99,
-        "ath_change": -56.64,
+        "ath_change": -56.56,
         "change_7d": -4.35,
         "change_30d": -11.5,
         "high_30d": 718.1953,
         "low_30d": 571.8761
-      }
+      },
+      "analysis": [
+        "Treiber: BNB Chain erhöht die Staking-Belohnungen und den Real Yield, was die Attraktivität steigern könnte.",
+        "Risiko: Die laufende Korrektur droht tiefere Verluste unterhalb wichtiger Unterstützungsmarken.",
+        "Einordnung: Trotz Bemühungen zur Steigerung der Attraktivität überwiegen die negativen Kursprognosen."
+      ]
     },
     {
-      "price": 0.164244,
-      "change_24h": -1.96,
+      "price": 0.165097,
+      "change_24h": -1.68,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.4,
-      "rationale": "Cardano ist in den letzten Monaten stark gefallen, wird aber von Analysten als 'historische Kaufzone' betrachtet.",
-      "signal": "Starker Kursrückgang, aber als Kaufzone eingestuft.",
+      "sentiment": "bearish",
+      "confidence": 0.8,
+      "rationale": "Cardano ist in den letzten Monaten stark gefallen und befindet sich in einer historischen Kaufzone, was auf anhaltenden Verkaufsdruck hindeutet.",
+      "signal": "Starker Wertverlust, historische Kaufzone erreicht.",
       "id": "cardano",
       "symbol": "ADA",
       "name": "Cardano",
@@ -818,26 +863,31 @@
         }
       ],
       "stats": {
-        "market_cap": 6095324818,
-        "volume": 466407213,
+        "market_cap": 6136175916,
+        "volume": 471412543,
         "high_24h": 0.169278,
         "low_24h": 0.158982,
         "ath": 3.09,
-        "ath_change": -94.68,
+        "ath_change": -94.65,
         "change_7d": -17.69,
         "change_30d": -41.11,
         "high_30d": 0.2805,
         "low_30d": 0.1567
-      }
+      },
+      "analysis": [
+        "Treiber: UNDP bringt Ethereum, Cardano und Stellar zusammen, um Blockchain für das Gemeinwohl zu erforschen.",
+        "Risiko: ADA ist in den letzten Monaten um 42% gefallen und befindet sich in einer historischen Kaufzone, was auf starken Verkaufsdruck hindeutet.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit starken Kursverlusten und der Frage nach einer Erholung."
+      ]
     },
     {
-      "price": 0.08472,
-      "change_24h": -0.9,
+      "price": 0.084915,
+      "change_24h": -0.67,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "Dogecoin fällt zusammen mit anderen Kryptowährungen, aber neue Partnerschaften ermöglichen Dogecoin-Zahlungen bei über 6.000 Händlern.",
-      "signal": "Kursrückgang, aber neue Zahlungsoptionen.",
+      "sentiment": "bearish",
+      "confidence": 0.6,
+      "rationale": "Dogecoin verzeichnet einen Rückgang im Zuge des breiteren Krypto-Marktes, obwohl Zahlungen über MoonPay ermöglicht werden.",
+      "signal": "Rückgang im breiteren Krypto-Markt.",
       "id": "dogecoin",
       "symbol": "DOGE",
       "name": "Dogecoin",
@@ -857,16 +907,16 @@
           "datum": "09 Jun 2026"
         },
         {
-          "title": "Dogecoin Will ‘Pump Hard’ After This Happens, Analyst Clocks Generational Entry",
-          "source": "TradingView",
-          "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPVkd6d1JhSndZT2hyZVlsaERJUUFOejc1cjB2QlBqZ0VVTWJ4ejczY19hYlNCOVRVd09EX2FEYU00ZzZpN1J1X29ZQnNHZERST3g1ZU1DYVVTTmVNTGRRYnBBbm51TllvRjllSldKNWdBdWg2Yzg2S0VDY0dHTVU4X28wcGZPZkFsdjdYX2ptakhsSk1vUmxHVlpnc1kzMWtsQkVGZ0UxTzZCT1JEQjRKQU5TR2E4VnVPSlJqSGxCa1RGN0JOVGVCMFl3dmxXdFk?oc=5",
-          "datum": "08 Jun 2026"
-        },
-        {
           "title": "Japan's Largest Marketplace Lists Shiba Inu (SHIB) and Dogecoin for 23 Million Users",
           "source": "U.Today",
           "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPTEVCbnBlN3BmLWdOb0xnSlB4RFo3WTVRR2V1a2hPc3FlOXEzd1FNUGlyeFN0NVRiaE11OGZQaldGa2Z3U1RnM0dIUEN3cVJkalNYbWhMcU1BcVNoR0xZV3k2SGRvaTRTUUlNcUN5NXo2dWZjQkJBRUhYNGIxX3NKZV95RnYwbENTOUVCSDZjR05URFYtYXVHVFZkajVPZ9IBowFBVV95cUxPd0FSSkVuTVpKdGxRbjdtMkJvR1J0NUsxdjhhQ013YV9HUmhhNnRua1NUeHZzWnR2cmxsLWtTbmhBbjF3bjl5NlN4aUREM25DRHAyM3I2dEdyVXVTNVhibjh3Vk4wbUVuMEJydzRNRVJNbFBqS3Q5V3ltaWtwOG50aHJEc0xhbXdmOG8yYUV5YTNDbzB1R1Ria3ZpLXBUNFBZdVdr?oc=5",
           "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Crypto Traders Demolish Dogecoin’s $1 Fantasy",
+          "source": "FinanceFeeds",
+          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8wU1FOY3Z3dmI1bjFNSXBNekQzSnRsVGN2eGc5TlVDdDZrX0E5dEg4TFMxelQ5NUpUM29qOS1aZHIxcHh2aVYwaFlwcXlEM3c3bndWZ29oT3ZOV2VzbVlTREJwa2FMNDRQWE9rSjVYeDEzVXQ3dzlTaQ?oc=5",
+          "datum": "08 Jun 2026"
         },
         {
           "title": "Is Dogecoin Really a Millionaire Maker?",
@@ -876,24 +926,29 @@
         }
       ],
       "stats": {
-        "market_cap": 13083968803,
-        "volume": 670558628,
+        "market_cap": 13128087027,
+        "volume": 680634521,
         "high_24h": 0.085752,
         "low_24h": 0.083009,
         "ath": 0.731578,
-        "ath_change": -88.42,
-        "change_7d": -9.7,
-        "change_30d": -23.04
-      }
+        "ath_change": -88.39,
+        "change_7d": -9.49,
+        "change_30d": -22.86
+      },
+      "analysis": [
+        "Treiber: Dogecoin-Zahlungen werden über MoonPay bei über 6.000 Händlern ermöglicht, was die Akzeptanz erhöht.",
+        "Risiko: Dogecoin fällt im Zuge des breiteren Krypto-Marktes, und die '1$-Fantasie' wird von Händlern demontiert.",
+        "Einordnung: Trotz erhöhter Akzeptanz wird Dogecoin durch den allgemeinen Marktabschwung belastet."
+      ]
     },
     {
-      "price": 365.36,
-      "change_24h": 0.3,
+      "price": 364.08,
+      "change_24h": -0.05,
       "currency": "usd",
-      "sentiment": "bullish",
-      "confidence": 0.6,
-      "rationale": "Alphabet bietet eine Convertible Preferred mit 6% Rendite und Upside, und ein Top-Investor bezeichnet es als 'Four-Headed Monster'.",
-      "signal": "Attraktives Angebot, positive Investorenmeinung.",
+      "sentiment": "neutral",
+      "confidence": 0.5,
+      "rationale": "Alphabet zeigt eine stabile Performance, wobei einige Analysten das Unternehmen als 'Vierköpfiges Monster' bezeichnen.",
+      "signal": "Stabile Performance, gemischte Analystenmeinungen.",
       "id": "alphabet",
       "symbol": "GOOGL",
       "name": "Alphabet",
@@ -922,7 +977,7 @@
         368.53,
         363.31,
         364.26,
-        365.36
+        364.08
       ],
       "asset_news": [
         {
@@ -959,21 +1014,26 @@
       "stats": {
         "week52_high": 408.61,
         "week52_low": 162.0,
-        "volume": 3344502,
+        "volume": 4089458,
         "high_30d": 402.62,
         "low_30d": 358.99,
-        "change_7d": 1.77,
-        "change_30d": -5.99
-      }
+        "change_7d": 1.42,
+        "change_30d": -6.32
+      },
+      "analysis": [
+        "Treiber: Ein Top-Investor bezeichnet Alphabet als 'Vierköpfiges Monster', was auf starkes Potenzial hindeutet.",
+        "Risiko: Es gibt keine spezifischen negativen Nachrichten, aber auch keine starken positiven Katalysatoren.",
+        "Einordnung: Die Nachrichtenlage ist neutral, mit stabilen Aussichten und ohne starke kurzfristige Impulse."
+      ]
     },
     {
-      "price": 242.56,
-      "change_24h": -0.67,
+      "price": 241.44,
+      "change_24h": -1.12,
       "currency": "usd",
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Amazon sichert sich ein milliardenschweres Darlehen für KI-Investitionen und schließt einen Deal mit Corning ab, während ein Analyst Amazon als 'No. 2' sieht.",
-      "signal": "Milliardendarlehen, Deal mit Corning, Analystenmeinung.",
+      "rationale": "Amazon schließt einen milliardenschweren Deal mit Corning ab, aber der Aktienkurs fällt, was auf breitere Marktängste hindeutet.",
+      "signal": "Kursrückgang trotz positiver Unternehmensnachrichten.",
       "id": "amazon",
       "symbol": "AMZN",
       "name": "Amazon",
@@ -1002,7 +1062,7 @@
         246.03,
         245.22,
         244.19,
-        242.56
+        241.445
       ],
       "asset_news": [
         {
@@ -1039,21 +1099,26 @@
       "stats": {
         "week52_high": 278.56,
         "week52_low": 196.0,
-        "volume": 2721891,
+        "volume": 3385409,
         "high_30d": 274.0,
-        "low_30d": 242.56,
-        "change_7d": -2.98,
-        "change_30d": -9.83
-      }
+        "low_30d": 241.445,
+        "change_7d": -3.43,
+        "change_30d": -10.24
+      },
+      "analysis": [
+        "Treiber: Amazon schließt einen milliardenschweren KI-Deal mit Corning ab, was positiv für das Geschäft ist.",
+        "Risiko: Der Aktienkurs fällt, und Amazons LKW-Vorstoß löst einen Ausverkauf bei Transportaktien aus.",
+        "Einordnung: Die Nachrichtenlage ist gemischt; positive Unternehmensnachrichten stehen einem fallenden Kurs und externen Effekten gegenüber."
+      ]
     },
     {
-      "price": 589.22,
-      "change_24h": 0.79,
+      "price": 589.08,
+      "change_24h": 0.77,
       "currency": "usd",
       "sentiment": "bullish",
       "confidence": 0.7,
-      "rationale": "Meta Platforms wird von Truist als nächstes 20-Milliarden-Dollar-Geschäft eingestuft, mit Potenzial für über 40% Kursgewinn durch KI.",
-      "signal": "Truist sieht hohes Potenzial durch KI.",
+      "rationale": "Meta zeigt frühe Anzeichen der GenAI-Monetarisierung und Analysten sehen ein hohes Potenzial für neue Umsatzsegmente.",
+      "signal": "Positive Anzeichen für KI-Monetarisierung.",
       "id": "meta",
       "symbol": "META",
       "name": "Meta",
@@ -1082,13 +1147,13 @@
         593.0,
         585.39,
         584.59,
-        589.215
+        589.08
       ],
       "asset_news": [
         {
-          "title": "Meta Platforms Stock Edges Lower Monday While The Nasdaq Rebounds: What's Going On?",
-          "source": "Benzinga",
-          "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxON0ctczFpWXQxSmxmWGdpbm9WemRBZFRHalBic1FGUFNMUlZxYl84cG5mU1dHOVNScmQ1Sl9vS3JRWVlqNzVUU3NpdFBla1p3VEVSbVRCVUY0U2dsZ1I3bVZocU5xWjFNX0MxcWVWbzdCRTdFQ0JvWkxrd3lWNld1cVJaTnlvNi1WWEN5SXRESUNlUzhvUW0xdmFUS2twbHVTRDdDWWtfRU16U3hSeFNCV21nTVJwZjlBQV9QSVlTMU9mQ2l6TnFZcmVabFViTE9qT3lObjUzb1o?oc=5",
+          "title": "Is the Market Underestimating Meta Stock’s AI Payoff",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQVEVkdWF4TFBxcDVGeWFJSW95U2F2bDZoU0U0ZGkyc2x5R2h6dHBxVUNsV2lpZkVuRHhUUWxyVDVOZEZyZnlmUTN2b0MzQjdoU0xoSnU3QXpDV1lwR0diV0p0VGJZZVVaNnctWkdHRktpMTRZNVBUc3FoRk95ZDlvRHlLY3E2UFpGYTBZbHBXejZjN09zVW12NUxXNzhfTmc3VzlR?oc=5",
           "datum": "08 Jun 2026"
         },
         {
@@ -1096,12 +1161,6 @@
           "source": "CNBC",
           "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOZngwUy1oVG1wRlRFWVdTVWRCQWhjczVqajVjZjFTa3VjLWJxT3kyTkY2WVRqdTdMV1p3ZjE5eElUcko0cm82bEoyb1FIbnNtYWc1cXA5eWRUcEtVeHpSNWJpNXZGY0dtTzJJUnFRdU9PM2ZVRm5LaXRNcVZjREtsenFUNldoam5DVDQyNTdXVjJhdGp1aHNF?oc=5",
           "datum": "09 Jun 2026"
-        },
-        {
-          "title": "Is the Market Underestimating Meta Stock’s AI Payoff",
-          "source": "Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQVEVkdWF4TFBxcDVGeWFJSW95U2F2bDZoU0U0ZGkyc2x5R2h6dHBxVUNsV2lpZkVuRHhUUWxyVDVOZEZyZnlmUTN2b0MzQjdoU0xoSnU3QXpDV1lwR0diV0p0VGJZZVVaNnctWkdHRktpMTRZNVBUc3FoRk95ZDlvRHlLY3E2UFpGYTBZbHBXejZjN09zVW12NUxXNzhfTmc3VzlR?oc=5",
-          "datum": "08 Jun 2026"
         },
         {
           "title": "Black Swift Group LLC Sells 9,355 Shares of Meta Platforms, Inc. $META",
@@ -1114,26 +1173,37 @@
           "source": "TipRanks",
           "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOWEFvUzlueVpPRUNhekp3dkcwMXRaRzZqLU03Wk42STRkaTZpMUQ1QXByZGNJR3BXZ1psZGxWNkFSaWZqcXZUMXBGRjJMTFlPOXZfNjFDU2tOMkZ3VzY1WDZUZUJSY3VvdEI4UzJkOXczc1BUbW1jVE54YmY2VDRBMThIY2VtZXNaNnRfUVFJYWxiNUJ5WU10ZWtqN3BiaEVzTkVYb0VXMU0xa19XTkZKOWZDNA?oc=5",
           "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Meta (META) Shows Early Signs of GenAI Monetization, UBS Says",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOVWlDWnBNbGhMNm8yNkhocFVWMzNIeWtaV1BOT1BFMG5neUo3T3pWdW94cXdoV3BQVTQ4Wjl4d3FYaVp2Mm9ZV2dfX3h3Wm44WnZFNmUtRTFpamNreE0xeHdHY09kWFoxNEUxRGo0b0hFWGt6am1id1UwUTFyMjJHa2M1NkxlbHJVUDYxZkxXNHBCd1ZJb1hj?oc=5",
+          "datum": "08 Jun 2026"
         }
       ],
       "stats": {
         "week52_high": 796.25,
         "week52_low": 520.26,
-        "volume": 1269561,
+        "volume": 1580411,
         "high_30d": 635.29,
         "low_30d": 584.59,
-        "change_7d": -5.42,
-        "change_30d": -1.61
-      }
+        "change_7d": -5.44,
+        "change_30d": -1.63
+      },
+      "analysis": [
+        "Treiber: Meta zeigt frühe Anzeichen der GenAI-Monetarisierung, und Analysten sehen ein neues 20 Mrd. USD Umsatzsegment.",
+        "Risiko: Ein Investor verkauft 9.355 Aktien, was auf Gewinnmitnahmen hindeuten könnte.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit Fokus auf das KI-Potenzial und neue Umsatzquellen."
+      ]
     },
     {
-      "price": 467.23,
-      "change_24h": -1.74,
+      "price": 474.39,
+      "change_24h": -0.24,
       "currency": "usd",
       "sentiment": "bearish",
       "confidence": 0.6,
-      "rationale": "Cathie Wood hat AMD-Aktien verkauft und Nvidia gekauft, was auf eine Verschiebung der Investorenpräferenzen hindeutet.",
-      "signal": "Cathie Wood verkauft AMD, kauft Nvidia.",
+      "rationale": "AMD wird von Cathie Wood verkauft und es gibt Warnungen vor einem Downgrade aufgrund des Inventars.",
+      "signal": "Verkauf durch bekannte Investoren, Downgrade-Warnungen.",
       "id": "amd",
       "symbol": "AMD",
       "name": "AMD",
@@ -1162,7 +1232,7 @@
         466.38,
         490.33,
         475.51,
-        467.225
+        474.39
       ],
       "asset_news": [
         {
@@ -1199,21 +1269,26 @@
       "stats": {
         "week52_high": 546.44,
         "week52_low": 115.06,
-        "volume": 2733739,
+        "volume": 3393492,
         "high_30d": 542.52,
         "low_30d": 414.05,
-        "change_7d": -13.88,
-        "change_30d": 1.84
-      }
+        "change_7d": -12.56,
+        "change_30d": 3.4
+      },
+      "analysis": [
+        "Treiber: AMD ist ein wichtiger Akteur im KI-Chip-Markt, was langfristig positiv sein könnte.",
+        "Risiko: Cathie Wood verkauft AMD-Aktien, und es gibt Warnungen vor einem Downgrade aufgrund des Inventars.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit Verkäufen durch Investoren und Downgrade-Warnungen."
+      ]
     },
     {
-      "price": 7359.17,
-      "change_24h": -0.37,
+      "price": 7373.33,
+      "change_24h": -0.18,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "Der S&P 500 schloss höher, da Chips ein Comeback feierten, aber es gab auch Rückgänge bei Tech-Aktien und Unsicherheiten durch Inflationsdaten.",
-      "signal": "Gemischte Signale, Tech-Comeback, Inflationsunsicherheit.",
+      "sentiment": "bearish",
+      "confidence": 0.7,
+      "rationale": "Der S&P 500 fällt, da der CPI den höchsten Stand seit 3 Jahren erreicht und Tech-Aktien sinken.",
+      "signal": "Rückgang aufgrund von Inflation und Tech-Verkäufen.",
       "id": "sp500",
       "symbol": "S&P 500",
       "name": "S&P 500",
@@ -1241,7 +1316,7 @@
         7383.7402,
         7405.73,
         7386.6499,
-        7359.1699
+        7373.3301
       ],
       "asset_news": [
         {
@@ -1251,7 +1326,7 @@
           "datum": "08 Jun 2026"
         },
         {
-          "title": "Stock Market Today: Futures Sink Ahead of Inflation Data as Tech Stocks Lead Declines; Oil Wavers as US Launches 'Self-Defense' Strikes Against Iran",
+          "title": "Stock Market Today: Major Indexes Pull Back in Early Trading After CPI Hits Highest Level in 3 Years, Matching Expectations; Tech Stocks Lead Declines",
           "source": "Investopedia",
           "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPVzBNOTVId19zWnZLYUJCdzhqblpoMWlEZzFYWWdiWFlhMlpPbnFraUxvOF81OFk0WXhnYklIOUY3RlI5aVFBMktCcWxUS3dtWHR2T2R5MG0zTEU1TWMwUHNmWkRQWU43UjhJWXFReWFOdW1oRHB4WmFldmVGd2I2bWNHdm1INE1BSWpiaklYeXU?oc=5",
           "datum": "10 Jun 2026"
@@ -1278,21 +1353,26 @@
       "stats": {
         "week52_high": 7620.9,
         "week52_low": 5943.23,
-        "volume": 227929756,
+        "volume": 281302538,
         "high_30d": 7609.7798,
         "low_30d": 7353.6099,
-        "change_7d": -2.58,
-        "change_30d": -0.72
-      }
+        "change_7d": -2.39,
+        "change_30d": -0.53
+      },
+      "analysis": [
+        "Treiber: Ein Rebound bei Chip-Aktien könnte kurzfristig für Auftrieb sorgen.",
+        "Risiko: Der CPI erreicht den höchsten Stand seit 3 Jahren, und Tech-Aktien führen die Rückgänge an.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit Inflationssorgen und Tech-Verkäufen."
+      ]
     },
     {
-      "price": 25554.92,
-      "change_24h": -0.48,
+      "price": 25640.3,
+      "change_24h": -0.15,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "Der Nasdaq verzeichnete einen Rückgang, da der Tech-Ausverkauf wieder einsetzte, aber es gab auch Phasen des Rebounds.",
-      "signal": "Tech-Ausverkauf, aber auch Rebounds.",
+      "sentiment": "bearish",
+      "confidence": 0.7,
+      "rationale": "Der Nasdaq Composite fällt, da der Tech-Verkauf wieder einsetzt und Chip-Aktien sinken.",
+      "signal": "Rückgang aufgrund von Tech-Verkäufen.",
       "id": "nasdaq",
       "symbol": "Nasdaq",
       "name": "Nasdaq Composite",
@@ -1320,7 +1400,7 @@
         25709.4297,
         25929.6602,
         25678.8203,
-        25554.9219
+        25640.2969
       ],
       "asset_news": [
         {
@@ -1330,16 +1410,16 @@
           "datum": "10 Jun 2026"
         },
         {
+          "title": "Nasdaq Composite Index (.IXIC)",
+          "source": "Moomoo",
+          "url": "https://news.google.com/rss/articles/CBMi4wJBVV95cUxQUFNOSm9mTTkwVW8zZzdJblJpYy13RTJma2dXRE1JNmFPRTJCcTdqU2lfM2ZoTnhBSjg3TFYxbkRqWUxVTlA0ejZWRHcwZlF3NGE1SzFIbzZKazZqZGlZdlY1ZjBlTEpYUzVjRWZXa2dpQXBkaF9kUXRDdmVuOWtSdkloLTBLcE9UcjdNV2pIX0taZnl2SjRfVHp4S3FqbTFoUWtBanRWU0NOSzFYTXpFa25oMF9qNFc0aEpkdTdWbUIwUW05bU1oMGR1dTE3LVdnOTlRcGN5QWV3dDRVVGx4TnQ1T3dkQV9xUGpTQXl4bU5wVnNRSEVJWmdkNjAtRFg2ZEpwT0ZKM1NXX2tTU0ZRS0p5Wkk2TERoNjR1UU9KbXBSTWY1aV90YmdieWI3Yl8tSnFxZXZPQnIwWm1IbTRFbHE4Y0lzNGxUNWtuRVZaRnRvM0N4dklCNXhSWFJvQ19BMkNr?oc=5",
+          "datum": "09 Jun 2026"
+        },
+        {
           "title": "S&P 500, Nasdaq fall as tech selling resumes, Trump vows to respond to downed US helicopter",
           "source": "Reuters",
           "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQWGJ1bl83a1ZCa082M2NZNkdvamdjX2pNODlzalRUN0NiaEMtbXl4QTdlNkhGZTE0T3QzVmxHcjJ4OE9YZnFPbm0xWDdIckNobWVFN0oyZUoxTXNUeUhrdUtWQnFNQ1NCcjJ0MGprRm80eG9lM2NzMUpPcWdKNlJDNmNqLU5jZlBrVjdsUEtSeWhqVEdzdTRnSmtFWFBhb3RTemVV?oc=5",
           "datum": "09 Jun 2026"
-        },
-        {
-          "title": "Nasdaq Composite Index (.IXIC)",
-          "source": "Moomoo",
-          "url": "https://news.google.com/rss/articles/CBMiugJBVV95cUxNZVdqaGtVRzIwX3JvbFZRT0dwRFBqVlA2TXFzNUFjckdvT1NlWWtwc0xNZWdzSzRzdEFIMjNYUkhMVW1hZzU0U096clFTUDgtaEFFYjM3MHJBZ3RBelcySFBEUklDbkV5MUFjRldINE9xR29ZVTlrUUc5N1EtZzExc292bk1SOWtkeTU4OHlhY0NIU0dnRG9zc21Xc09adXR6N08zdERFeVRySjRaOUN1aUpXMmhnV1VUaHJoN09mbUY1WmxOQjhLTGhkd0ZVVHg4N2t5N0pPTXZzYXQzbUt6S2twNXNOOFZURUtqUklJZHpFRndUcWRXemVqeHF6S3lTb2dPYnkyQlkybWRiYW1mN25rc2RkOUV6ZkpqZXJIRGszZW1ESUU3Xy1Ya1ZUR3pWT3M1QXJFb29sdw?oc=5",
-          "datum": "08 Jun 2026"
         },
         {
           "title": "Nasdaq Index: Tech Stocks Trigger Stock Market Reversal Today as Chips Sink",
@@ -1348,30 +1428,35 @@
           "datum": "09 Jun 2026"
         },
         {
-          "title": "Dow Jones, S&P 500 & Nasdaq 100 forecasts | Payrolls, Oil and Fed",
-          "source": "Capital.com",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBURWVNN1Vzak1uRUZlZ2Y3dFdBOXplekJ6TXFoaGFOODdvX0dKWGJlS2dyMEFNeXN4WkFpTVpyamwxSTFzRlFpZ3ZTckxWMUlMZV9RdVJCZ2ZCeEFvcGg0NXl4TDVQWS14VmVMQ05vQkR5MDBOYVBQYzVR?oc=5",
+          "title": "2 Glorious Growth Stocks to Buy During the Latest Tech Sell-Off",
+          "source": "The Motley Fool",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxON0pGZjVKNTFETDlvSy1qRjYtcTlDRm1sQ2lyU3lwQlJvYW1EVklRVGRFRk9GaHYtZUdXYWQtdTBMSDh5a1RmWVd6cGxITmxRZmVMYzczM2U2MVFDQV9JZXN5Vkt6RkFzbGt5aGxDMGFOc3BQc1VycnZ6OXRCRUsya0l3a2t5V3VCTXF1MmRDSy0zZVFzRG9N?oc=5",
           "datum": "10 Jun 2026"
         }
       ],
       "stats": {
         "week52_high": 27190.21,
         "week52_low": 19334.98,
-        "volume": 1570276000,
+        "volume": 1707693000,
         "high_30d": 27093.9004,
-        "low_30d": 25554.9219,
-        "change_7d": -4.84,
-        "change_30d": -2.74
-      }
+        "low_30d": 25640.2969,
+        "change_7d": -4.52,
+        "change_30d": -2.41
+      },
+      "analysis": [
+        "Treiber: Es gibt zwei 'Glorious Growth Stocks' zum Kauf während des Tech-Ausverkaufs, was auf Chancen hindeutet.",
+        "Risiko: Der Tech-Verkauf setzt wieder ein, und Chip-Aktien sinken, was den Index belastet.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit anhaltendem Druck auf Tech-Aktien."
+      ]
     },
     {
-      "price": 24270.72,
-      "change_24h": -0.66,
+      "price": 24263.21,
+      "change_24h": -0.7,
       "currency": "eur",
-      "sentiment": "neutral",
-      "confidence": 0.4,
-      "rationale": "Der DAX eröffnete leicht niedriger, die Nachrichtenlage ist allgemein und ohne spezifische, starke Impulse.",
-      "signal": "Leichte Eröffnungsschwäche, keine starken Impulse.",
+      "sentiment": "bearish",
+      "confidence": 0.6,
+      "rationale": "Der DAX fällt, da die deutschen Industrieproduktion steigt, aber die europäischen Indizes vor der EZB-Zinsentscheidung träge sind.",
+      "signal": "Rückgang, träge Entwicklung vor EZB-Entscheidung.",
       "id": "dax",
       "symbol": "DAX",
       "name": "DAX",
@@ -1400,7 +1485,7 @@
         24759.0508,
         24616.2207,
         24433.0605,
-        24270.7207
+        24263.2109
       ],
       "asset_news": [
         {
@@ -1416,16 +1501,16 @@
           "datum": "10 Jun 2026"
         },
         {
-          "title": "European Stocks - 09-06-26",
-          "source": "Armenpress",
-          "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE0tVHZTaVU2N0JXcDNVbHRJdEhUOEs5T1h5VmpYN2syUUc3N1FsVC0wRHdLWk5xakF3bFNTVFVHMW9IbjJvbzNmeXJ4N1hjMTJ0S0HSAVdBVV95cUxPS0p6SXdnWVJSak5XWnlxT0tURFFxWldHNmFLakdtemZxUWM4b0VLMzkxTE1xU3RFVGl3Qjd4ckpIbFdmSEU3dnBPeEFGVHFJczJpdzNja0k?oc=5",
-          "datum": "10 Jun 2026"
-        },
-        {
           "title": "DAX Index Declines; German Industrial Output Climbs",
           "source": "marketscreener.com",
           "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPQ0xwLXhkY193OFpiallMX0o0TTlMMGVSMFhnNVZnSFZaVUt4bkhjUlJsSzRWOFVVNHQwVnd3R2lBcDZlQnhRVEs3cWx4dVZWUnJSSlQ4dVN6V1BxLVRCRGdiUVctTVBrR3FEWVNkbDFWbTRXXzRUelA1Y0ptcXJ0UlA0a0dsZFVjZC1rU2NCejUwREtudG1tZGlLOVlldEdkRWRkRzBn?oc=5",
           "datum": "09 Jun 2026"
+        },
+        {
+          "title": "European Stocks - 09-06-26",
+          "source": "Armenpress",
+          "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE0tVHZTaVU2N0JXcDNVbHRJdEhUOEs5T1h5VmpYN2syUUc3N1FsVC0wRHdLWk5xakF3bFNTVFVHMW9IbjJvbzNmeXJ4N1hjMTJ0S0HSAVdBVV95cUxPS0p6SXdnWVJSak5XWnlxT0tURFFxWldHNmFLakdtemZxUWM4b0VLMzkxTE1xU3RFVGl3Qjd4ckpIbFdmSEU3dnBPeEFGVHFJczJpdzNja0k?oc=5",
+          "datum": "10 Jun 2026"
         },
         {
           "title": "DAX, CAC and MIB Forecasts – EU Indices Sluggish Day Before ECB Rate Decision",
@@ -1440,18 +1525,23 @@
         "volume": 0,
         "high_30d": 25389.0996,
         "low_30d": 23950.5703,
-        "change_7d": -2.12,
-        "change_30d": -0.33
-      }
+        "change_7d": -2.15,
+        "change_30d": -0.36
+      },
+      "analysis": [
+        "Treiber: Die deutsche Industrieproduktion steigt, was ein positives Signal für die Wirtschaft ist.",
+        "Risiko: Der DAX fällt, und die europäischen Indizes zeigen sich träge vor der EZB-Zinsentscheidung.",
+        "Einordnung: Die Nachrichtenlage ist gemischt, mit positiven Wirtschaftsdaten, aber einem fallenden Index und Unsicherheit."
+      ]
     },
     {
-      "price": 13411.09,
-      "change_24h": 0.41,
+      "price": 13409.68,
+      "change_24h": 0.4,
       "currency": "chf",
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Der SMI zeigt eine gewisse Widerstandsfähigkeit als sicherer Hafen, ist aber auch leichtem Druck in einem risikoreichen Umfeld ausgesetzt.",
-      "signal": "Sicherer Hafen, aber leichtem Druck ausgesetzt.",
+      "rationale": "Der SMI zeigt sich widerstandsfähig in einem risikoreichen Umfeld, obwohl er kurzzeitig unter Druck gerät.",
+      "signal": "Widerstandsfähigkeit in turbulentem Umfeld.",
       "id": "smi",
       "symbol": "SMI",
       "name": "SMI",
@@ -1478,7 +1568,7 @@
         13388.2305,
         13320.9902,
         13356.3096,
-        13411.0898
+        13409.6797
       ],
       "asset_news": [
         {
@@ -1494,16 +1584,16 @@
           "datum": "03 Jun 2026"
         },
         {
-          "title": "Swiss Market Index: SMI Demonstrates Safe-Haven Resilience Near 13,200 as Iran Missiles and Asian Rout Test Global Markets",
-          "source": "BBN Times",
-          "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOamxfZDc2OFFPRXNaNm1hVnBxR21MWUJqdHhDT08zTE9mdWp5RGRocWxPZzFVZmIyWG15VVBDZVcwc2tRM2F2U09qMDBuaVFSQVoxdWVvR2RVU1RVRl9tTjVyY2lXRzIyeVZTdnFFeFNpLV9XejJOWWZ6anNOa2RFQnNfVkd2YjhpbmNiRmIwNlRTaV9Rd0xtcS14NERTSkRtYXFQaHJmMlR6emc4bWFmNEZ0TU5LQXR4QTRtb3F1MFItWnhqNnlyOTBUeUhWcWRIT2d5QndBN3J6SU0tMktDbXhMbzZwUHk2dWRiOA?oc=5",
-          "datum": "08 Jun 2026"
-        },
-        {
           "title": "Swiss SMI breaks through 14,000 points for first time",
           "source": "SWI swissinfo.ch",
           "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNQXd6anlJRDJ5NkdOTDZLMkd2bEdUb1ZvU0ozUjE1VUpIb0Z1d0ZiZHFPdk1WVUFsWjZ6NDZmUFVhazFMNmJ2cF9ybnB3TGJITjVGRjZsQWptbU5PWlZSNkFJQVhja2JNLWhlTFhoVDNZLVRMaTdSNmRCNHlQUldNTVEwemR0N25lMkk4cnJQTEtDNEVBNUVxRU5aQ0I5RlpwczNSZm83WUNianhfTDNidmlybE1fWTRtVFE?oc=5",
           "datum": "24 Feb 2026"
+        },
+        {
+          "title": "Swiss Market Index: SMI Demonstrates Safe-Haven Resilience Near 13,200 as Iran Missiles and Asian Rout Test Global Markets",
+          "source": "BBN Times",
+          "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOamxfZDc2OFFPRXNaNm1hVnBxR21MWUJqdHhDT08zTE9mdWp5RGRocWxPZzFVZmIyWG15VVBDZVcwc2tRM2F2U09qMDBuaVFSQVoxdWVvR2RVU1RVRl9tTjVyY2lXRzIyeVZTdnFFeFNpLV9XejJOWWZ6anNOa2RFQnNfVkd2YjhpbmNiRmIwNlRTaV9Rd0xtcS14NERTSkRtYXFQaHJmMlR6emc4bWFmNEZ0TU5LQXR4QTRtb3F1MFItWnhqNnlyOTBUeUhWcWRIT2d5QndBN3J6SU0tMktDbXhMbzZwUHk2dWRiOA?oc=5",
+          "datum": "08 Jun 2026"
         },
         {
           "title": "Escalation in the Middle East sends stock markets plummeting",
@@ -1518,18 +1608,23 @@
         "volume": 0,
         "high_30d": 13627.4102,
         "low_30d": 13101.3301,
-        "change_7d": 1.46,
-        "change_30d": 2.36
-      }
+        "change_7d": 1.45,
+        "change_30d": 2.35
+      },
+      "analysis": [
+        "Treiber: Der SMI zeigt sich widerstandsfähig als 'Safe-Haven' in einem risikoreichen Umfeld.",
+        "Risiko: Der Index gerät unter milden Druck in einem 'Risk-Off'-Umfeld und fällt bei schwindenden Waffenstillstandshoffnungen.",
+        "Einordnung: Die Nachrichtenlage ist neutral, mit einer Mischung aus Widerstandsfähigkeit und kurzfristigem Druck."
+      ]
     },
     {
-      "price": 4170.0,
-      "change_24h": -2.11,
+      "price": 4184.8,
+      "change_24h": -1.77,
       "currency": "usd",
       "sentiment": "bearish",
       "confidence": 0.8,
-      "rationale": "Gold und Silber erreichen 2-Monats-Tiefs aufgrund von Iran-Spannungen und Zinserhöhungsängsten, Citi senkt das Kursziel.",
-      "signal": "2-Monats-Tief, Citi senkt Kursziel.",
+      "rationale": "Gold fällt auf ein 2-Monats-Tief aufgrund von Spannungen im Iran und Ängsten vor Zinserhöhungen, wobei Citi das Kursziel senkt.",
+      "signal": "Starker Rückgang, Kurszielsenkung.",
       "id": "gold",
       "symbol": "Gold",
       "name": "Gold",
@@ -1557,7 +1652,7 @@
         4337.1001,
         4335.8999,
         4260.0,
-        4170.0
+        4184.7998
       ],
       "asset_news": [
         {
@@ -1594,21 +1689,26 @@
       "stats": {
         "week52_high": 5586.2,
         "week52_low": 3253.8,
-        "volume": 114720,
+        "volume": 117122,
         "high_30d": 4718.7002,
-        "low_30d": 4170.0,
-        "change_7d": -6.01,
-        "change_30d": -11.63
-      }
+        "low_30d": 4184.7998,
+        "change_7d": -5.68,
+        "change_30d": -11.31
+      },
+      "analysis": [
+        "Treiber: Der Schuldenzyklus spricht für einen stärkeren Fall des Goldpreises, so Sprott.",
+        "Risiko: Gold fällt auf ein 2-Monats-Tief, und Citi senkt das kurzfristige Kursziel auf 4.000 USD.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit starken Kursverlusten und negativen Prognosen."
+      ]
     },
     {
-      "price": 64.59,
-      "change_24h": -0.77,
+      "price": 65.11,
+      "change_24h": 0.02,
       "currency": "usd",
       "sentiment": "bearish",
       "confidence": 0.7,
-      "rationale": "Silber fällt zusammen mit Gold auf 2-Monats-Tiefs aufgrund von Iran-Spannungen und Zinserhöhungsängsten.",
-      "signal": "2-Monats-Tief, Zinserhöhungsängste.",
+      "rationale": "Silber fällt auf ein 2-Monats-Tief aufgrund von Spannungen im Iran und Ängsten vor Zinserhöhungen.",
+      "signal": "Starker Rückgang, Ängste vor Zinserhöhungen.",
       "id": "silber",
       "symbol": "Silber",
       "name": "Silber",
@@ -1636,7 +1736,7 @@
         68.943,
         68.425,
         65.094,
-        64.595
+        65.11
       ],
       "asset_news": [
         {
@@ -1673,21 +1773,26 @@
       "stats": {
         "week52_high": 121.3,
         "week52_low": 35.27,
-        "volume": 30948,
+        "volume": 31700,
         "high_30d": 88.888,
-        "low_30d": 64.595,
-        "change_7d": -12.09,
-        "change_30d": -24.44
-      }
+        "low_30d": 65.094,
+        "change_7d": -11.39,
+        "change_30d": -23.83
+      },
+      "analysis": [
+        "Treiber: Es gibt langfristige Preisprognosen für Silber, die Potenzial andeuten.",
+        "Risiko: Silber fällt auf ein 2-Monats-Tief und bricht unter den 200 EMA, was auf weitere Rückgänge hindeutet.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit starken Kursverlusten und externen Belastungen."
+      ]
     },
     {
-      "price": 89.48,
-      "change_24h": 1.45,
+      "price": 89.19,
+      "change_24h": 1.12,
       "currency": "usd",
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Die USA sehen große Zuwächse bei Rohölbeständen, während eine Bank vor einem möglichen Rückgang unter 50 Dollar warnt.",
-      "signal": "Zunehmende Bestände, aber auch Warnungen vor Preisverfall.",
+      "rationale": "Rohöl WTI verzeichnet Gewinne bei den Lagerbeständen, aber BofA warnt vor einem möglichen Rückgang unter 50 USD.",
+      "signal": "Gemischte Signale, Unsicherheit über zukünftige Entwicklung.",
       "id": "oel",
       "symbol": "Öl (WTI)",
       "name": "Rohöl WTI",
@@ -1715,7 +1820,7 @@
         90.54,
         91.3,
         88.2,
-        89.48
+        89.19
       ],
       "asset_news": [
         {
@@ -1752,21 +1857,26 @@
       "stats": {
         "week52_high": 119.48,
         "week52_low": 54.98,
-        "volume": 99243,
+        "volume": 100752,
         "high_30d": 108.66,
         "low_30d": 87.36,
-        "change_7d": -6.81,
-        "change_30d": -8.76
-      }
+        "change_7d": -7.11,
+        "change_30d": -9.05
+      },
+      "analysis": [
+        "Treiber: Die USA verzeichnen große Gewinne bei den Rohöl- und Produktbeständen.",
+        "Risiko: BofA warnt vor einem möglichen Rückgang des Rohölpreises unter 50 USD.",
+        "Einordnung: Die Nachrichtenlage ist gemischt, mit kurzfristigen Gewinnen, aber langfristigen Abwärtsrisiken."
+      ]
     },
     {
-      "price": 7.84,
-      "change_24h": -0.83,
+      "price": 7.86,
+      "change_24h": -0.85,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "Chainlink wird von Myriad für FIFA World Cup Prediction Markets genutzt, und ein Exec wechselt zur SEC Crypto Task Force, während LINK-Halter akkumulieren.",
-      "signal": "Neue Nutzung, Personalwechsel, Akkumulation.",
+      "sentiment": "bullish",
+      "confidence": 0.6,
+      "rationale": "Chainlink wird von Myriad für FIFA World Cup Prediction Markets genutzt und verzeichnet eine Zunahme der LINK-Halter.",
+      "signal": "Zunehmende Nutzung und Akkumulation.",
       "id": "chainlink",
       "symbol": "LINK",
       "name": "Chainlink",
@@ -1806,12 +1916,6 @@
           "datum": "10 Jun 2026"
         },
         {
-          "title": "Chainlink Exec Taylor Lindman Joins SEC Crypto Task Force",
-          "source": "CoinMarketCap",
-          "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQMHhNb3FJTWVlTWdYWU5UbUxuNW8tX0RvZkR0X1ZkQmZqUWtEOGFtZHZudHVEMnc1Y1NUV2duZTdLS3FXZkpZX3NxalVKZUxfVmNtejB1V21xTS1TYjc0anJCR1ZHUmpmZmMxbnFQczZhSm5NUUlXS29iYkw1VHgxSkN0X0haQXB3MTdtSVBkdi1SUGl5ekFZWDh0SmJjdF8y?oc=5",
-          "datum": "10 Jun 2026"
-        },
-        {
           "title": "The DeFi Moment for Prediction Markets",
           "source": "Chainlink Blog",
           "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE8wRHpzNXU0WHR0UGwxWHl5eXFhS2twZERGZ0VoSUNqMUx5ZmhhVU9DY29QVUxiN0tIQVRQTXRxUjNLTFgxb2R4V2VjUEZuUm9WOVNVdGtQVnBYcElvS2h3MkpLdlBoQQ?oc=5",
@@ -1824,33 +1928,44 @@
           "datum": "09 Jun 2026"
         },
         {
-          "title": "Chainlink Leads AI Crypto Development as NEAR and ICP Stay Active",
-          "source": "CryptoRank",
-          "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPb3Y2eW9yWkRDcnhKQXh0M3BZRUprNGtpV0hCeEtrOUUxYl9WdXI1bEhYVDhGdGl0eUxCbkFNMmtkTmk1TXRrYldORUxkLUNKZEY0QV9vUHNuTTZhcm9razJqNVY1YVlaYXlaZnJkVUJFVHhNcWQxNmp2a2FoUzdBZzBRZzJubnhKUUJkdE9qaUkyekJza09Rd29SVktKY0toaWlxWFZ3?oc=5",
+          "title": "Chainlink eyes a breakout as non‑micro wallets reach 535K – Will LINK surge?",
+          "source": "Cryptonews.net",
+          "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9nYlI0Ry1MZHBDSlNtT01qQ3dYX3ZqRVNjVjA0UUJsVTdJUFNjUjE1RVZSTXF2V3hreGdZaXpENTN0dE9aREdRWE9lS2NRaVNSM0J3NGhBdUh1MjA?oc=5",
           "datum": "09 Jun 2026"
+        },
+        {
+          "title": "Prediction: Chainlink (LINK) Will Be Worth $20 Billion in 5 Years",
+          "source": "The Motley Fool",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQb0FHTFFOd2FYT3JDRWEyZkpjVmRvSFZldnZmbXFCTndiSkdia3I2ZTJ6djBobjFSSjUtR1RBVmgwN2RkTG1JQlpMNUJsUFdwNXF5VzFmalAwNjZvM0tIMHp5dU9CNkg2dUhRRi1aZVNac0cxMzNYeXlHa2lTbFgzQldJdzZITDFjaGw1ZXBxUVQ?oc=5",
+          "datum": "22 May 2026"
         }
       ],
       "stats": {
-        "market_cap": 5691180162,
-        "volume": 246780150,
+        "market_cap": 5716539714,
+        "volume": 248035551,
         "high_24h": 7.93,
         "low_24h": 7.62,
         "ath": 52.7,
-        "ath_change": -85.13,
+        "ath_change": -85.08,
         "change_7d": -6.1,
         "change_30d": -26.08,
         "high_30d": 10.5916,
         "low_30d": 7.3449
-      }
+      },
+      "analysis": [
+        "Treiber: Myriad nutzt Chainlink für FIFA World Cup Prediction Markets, was die Anwendungsfälle erweitert.",
+        "Risiko: Der Markt ist unsicher, was sich auf den Kurs auswirken könnte.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit zunehmender Nutzung und Akkumulation."
+      ]
     },
     {
-      "price": 0.954146,
-      "change_24h": -1.35,
+      "price": 0.956026,
+      "change_24h": -1.45,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.4,
-      "rationale": "Polkadot fällt inmitten einer breiten Krypto-Liquidation, aber es gibt auch Diskussionen über seine Nutzung und Preisprognosen.",
-      "signal": "Kursrückgang, aber Diskussion über Nutzung und Prognosen.",
+      "sentiment": "bearish",
+      "confidence": 0.7,
+      "rationale": "Polkadot fällt im Zuge der breiten Krypto-Liquidierung, obwohl ein ETF an der Nasdaq startet.",
+      "signal": "Rückgang im breiten Krypto-Markt.",
       "id": "polkadot",
       "symbol": "DOT",
       "name": "Polkadot",
@@ -1858,10 +1973,10 @@
       "coingecko_id": "polkadot",
       "asset_news": [
         {
-          "title": "Polkadot (DOT) Falls 3.09% Amid Broad Crypto Liquidation",
-          "source": "CoinMarketCap",
-          "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB3ZDkta2hMUFJGeHhZTzkzN3Fkam10QUpxNDJpbnp0bkdBZ0J4eVlPVzlXQUZIVHhPWmtrclJPRDZXMkpGbER5dHQ1MEJIMjBnZF9wYTR6U3l0Ujh4VG1wZF84dVpFd1R5anNlaUhsRmc?oc=5",
-          "datum": "06 Jun 2026"
+          "title": "Polkadot (DOT) Price Prediction 2026, 2027 – 2030: Can DOT Price Reach $60?",
+          "source": "Coinpedia",
+          "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBsMl9JWGVUSlluYTA4UDdxemN4WVB5WE14ajVSdVM0eGw0TnNQd0tIMENmTGYtQmFPbXdIYTJVendQMXUxVm96Sm5tcFd3SEV3WV9Ca3JPTHJTelVWeGFtdGt1M3BZUHhyek54YTJ2a0JDOVHSAXhBVV95cUxOZ1hmN2lrMkNvRFAxVmVURTM4S0M3RFNncWl6ZUIzbzU1U2J2MkxrZFdUNVprUEhZUVRkSkhfZ0Jfc1R6c1dGN2hSZFpNaTJTMVlrUmFUZzJBREE4WGV0bkc3dHFSdjlMTzVDeVdJcEZOczl1ejJWRzI?oc=5",
+          "datum": "04 Jun 2026"
         },
         {
           "title": "What Is Polkadot Actually Used For -- and Does It Justify the Investment?",
@@ -1870,43 +1985,48 @@
           "datum": "25 Apr 2026"
         },
         {
+          "title": "Polkadot (DOT) Falls 3.09% Amid Broad Crypto Liquidation",
+          "source": "CoinMarketCap",
+          "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB3ZDkta2hMUFJGeHhZTzkzN3Fkam10QUpxNDJpbnp0bkdBZ0J4eVlPVzlXQUZIVHhPWmtrclJPRDZXMkpGbER5dHQ1MEJIMjBnZF9wYTR6U3l0Ujh4VG1wZF84dVpFd1R5anNlaUhsRmc?oc=5",
+          "datum": "06 Jun 2026"
+        },
+        {
+          "title": "Polkadot ETF TDOT Launches on Nasdaq with $11M Seed Capital",
+          "source": "KuCoin",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOZzRJa1dYTDdzc0hkOVpyM2hrZVJwbUpUWmxibDVfSWVSNUtsUEItYzdsN2dONl84QU1KREJNdUtIcjhuNWJPRjdNbzJxOFJQVHVSQTktMWhadHFfMUwtdDYxYVYtdnpWV2lGVlR3M19UV25LR21md2E0TFlyZHpXQ21GaktjVFROYXprNnoyNU9YZmk1UndV?oc=5",
+          "datum": "06 Jun 2026"
+        },
+        {
           "title": "Polkadot (DOT) Price Prediction 2026–2030: Can the Network Drive DOT to $60?",
           "source": "CryptoRank",
           "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQU255cURIQzJUZWVJWlBKelBuTG9MQVhucm1lUk1qN2F2ZktiWEUySk03dlFMcUFhcGZIMlVKa3JoSGR6WHBwdUlDU2FSWlVxWUVhMEtWSDNMTDBVMnlTNWhKMnZLMWFSNEYybUwySDUtd2Z1TWl2SnJBTlNqSzlTMVBnRng0Zw?oc=5",
           "datum": "04 Jun 2026"
-        },
-        {
-          "title": "Polkadot secures first quarterly profit in 3 years amid 2026 tokenomics overhaul",
-          "source": "Indiana Daily Student",
-          "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE15el9WOEt1ZDVTU01lZnNSZF96OVN3TzhOZ2dYNWw0VG51QWIwTHRzcVpkZlZ4cEVfSXpiLWxkdmRNNl9XNU9yRTdURjdwRUxkZHdDdkNmS1dsd1pTaTdwai1qT3hVZnJLRUpZNG1YNEdYbjVt?oc=5",
-          "datum": "28 Apr 2026"
-        },
-        {
-          "title": "syed ali ahmed(@Square-Creator-b1c69164f16b) meglátásai",
-          "source": "Binance",
-          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5neWw5R2RiaWtmd185cHVUaTdPejhNSnlIRXhwNmhwdFhzcmVGcWwxSDM4QnhoTTFCTGpjNnZodkJEeTEzZUNfNXgxRG1DOUwzSnROb3RBaWRmb25GNm50S2xJZk8?oc=5",
-          "datum": "09 Jun 2026"
         }
       ],
       "stats": {
-        "market_cap": 1606306955,
-        "volume": 84749570,
+        "market_cap": 1613316554,
+        "volume": 84873108,
         "high_24h": 0.971188,
         "low_24h": 0.926242,
         "ath": 54.98,
         "ath_change": -98.27,
-        "change_7d": -14.48,
-        "change_30d": -29.73
-      }
+        "change_7d": -14.31,
+        "change_30d": -29.59
+      },
+      "analysis": [
+        "Treiber: Ein Polkadot ETF (TDOT) startet an der Nasdaq mit 11 Mio. USD Startkapital.",
+        "Risiko: Polkadot fällt um 3,09% im Zuge der breiten Krypto-Liquidierung.",
+        "Einordnung: Trotz des Starts eines ETFs wird Polkadot durch den allgemeinen Marktabschwung belastet."
+      ]
     },
     {
-      "price": 6.62,
-      "change_24h": -0.94,
+      "price": 6.64,
+      "change_24h": -0.79,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "Avalanche wird als eine der schnellsten Blockchains beworben, und die Avalanche Foundation ernennt eine neue COO zur Förderung des institutionellen Wachstums.",
-      "signal": "Schnelle Blockchain, neue COO für Wachstum.",
+      "sentiment": "bullish",
+      "confidence": 0.6,
+      "rationale": "Avalanche ernennt eine neue COO, um das institutionelle Wachstum voranzutreiben, und wird als eine der schnellsten Blockchains bezeichnet.",
+      "signal": "Fokus auf institutionelles Wachstum, hohe Geschwindigkeit.",
       "id": "avalanche",
       "symbol": "AVAX",
       "name": "Avalanche",
@@ -1926,43 +2046,48 @@
           "datum": "09 Jun 2026"
         },
         {
+          "title": "Avalanche (AVAX) Price Prediction 2026, 2027 – 2030: Will AVAX Price Hit $100?",
+          "source": "Coinpedia",
+          "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFAtaENwZXM5eVJkNS1TTFVqWUNJXzhiZEZENm5mQWZqNloydXI4cWxjS2dDX1FZSXBKd0xDb0h0WVh1U1ZNUy14SGlTaHh2TVJ1aF9YS01nazlsWEN6MDkxd1ZMVjdnSFQ4Z251cGhFYS11UDVjcy1nbEg2a9IBgAFBVV95cUxNanVVblZSa00zRlN2N3BRbkRuTWdubWZWcGROTlRPRFFybUhpbmZwRmw2bm9ISTZLYWlGTDRRa2t3UzRXTklVWEFpd3FmX20yS3ByemZBTE1xdnhBME5IOHRzaHdxOWQ0RHFvSlN5WWFIcXJfNWVmeDhlVkdUZm4xUA?oc=5",
+          "datum": "05 Jun 2026"
+        },
+        {
+          "title": "Introducing Avalanche and Sui Futures",
+          "source": "Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQSDByQTJNN1VIc1B3MHQtRWwwWURKSlRiZUJLUkdVVHg0YlBDa2lrdHVEZkc1TVYzSTFxbnBfcnZkUFZUd0YwdmVpNVVoRjhvcXlabXBKM2VsdDF3eWJ3enpGeUhXTnVUdTVFOEl1dmc4YjdHYi05a2FUdGJFU3l4LWRfYlFLck15aHpYLVE4RmlnMXBNalJHNTMtelBrckk?oc=5",
+          "datum": "22 May 2026"
+        },
+        {
           "title": "Avalanche Foundation appoints Marta Szluinska as COO to boost institutional blockchain adoption",
           "source": "Pluang",
           "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcEpOaU5XUFlwNG5OMFRNV1JfZk10akZiYlo1Yl9tN2hfcVN5cHF1SWFQcm9UWGFQWlVpbi01TEtzZUNZNEhYWTc2MU14QjRuTDhhSnJnS2VIRXZxSll0N2hILUR6YnhmVHJkcUwzS3NOTi16RW4wY3lOOWRKMmh2cEhCQzF6NXV6cERGSDNRMklNSEFFUjZOaENoQl9QWi1TTmc?oc=5",
           "datum": "10 Jun 2026"
-        },
-        {
-          "title": "Avalanche (AVAX) Price Outlook 2026–2030: Can the Network Support a $100 Target?",
-          "source": "CryptoRank",
-          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNN3BFZjVQUExpRHYyM3N3S0JuTXptMnFJUlA1a195eUlOczVWYXFNS0tjMXA4LWNoNkxhZUpZTnZFQW9OZlN0cXRzS2VZYXVUeERwaWRxS0JMQmJUcWdrY0djdmdNTFNzcGNlb1ZyNDZ0UXFFYkRhS0dxY2FCeW1PV2xjSjI?oc=5",
-          "datum": "05 Jun 2026"
-        },
-        {
-          "title": "CME Adds Avalanche and Sui Futures as Regulated Crypto Derivatives Expand",
-          "source": "Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNdFRxVlhLSFNXa2R6RVZZV2xLNXJhbThhNjNZVnVKWU9NazZyc2JqYlZ5UEV3ZmR3aXVEY0xLTFZEeG0yc29jMmZrYUZrR1NYQ0dOYmpTd2hYMmtFVS1sd18ySzFnNlFpZ2Q3aDRoaFdVVzNtcmpHYkVzd1R6ejA4Zk9DdS16dDQ4Q3E2LWlZb0dCdFRVTFAtamRYNA?oc=5",
-          "datum": "06 May 2026"
         }
       ],
       "stats": {
-        "market_cap": 2847015687,
-        "volume": 193848835,
+        "market_cap": 2862889503,
+        "volume": 194186794,
         "high_24h": 6.7,
         "low_24h": 6.43,
         "ath": 144.96,
         "ath_change": -95.45,
-        "change_7d": -20.12,
-        "change_30d": -34.55
-      }
+        "change_7d": -19.89,
+        "change_30d": -34.36
+      },
+      "analysis": [
+        "Treiber: Die Avalanche Foundation ernennt eine neue COO, um das institutionelle Wachstum voranzutreiben.",
+        "Risiko: Es gibt keine spezifischen negativen Nachrichten, aber der allgemeine Krypto-Markt ist volatil.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit Fokus auf institutionelles Wachstum und technische Stärken."
+      ]
     },
     {
-      "price": 0.322788,
-      "change_24h": 0.24,
+      "price": 0.322905,
+      "change_24h": 0.19,
       "currency": "usd",
       "sentiment": "bullish",
       "confidence": 0.6,
-      "rationale": "CoinZoom unterstützt USDT auf Tron, und Hamilton Lane testet tokenisierten Private Credit mit TRON HLSCOPE, was die Akzeptanz erhöht.",
-      "signal": "Erhöhte Akzeptanz und neue Anwendungsfälle.",
+      "rationale": "TRON wird an Bitnomial gelistet, was den regulierten US-Zugang verbessert, und CoinZoom unterstützt USDT auf TRON.",
+      "signal": "Verbesserter regulierter Zugang und Unterstützung.",
       "id": "tron",
       "symbol": "TRX",
       "name": "Tron",
@@ -2027,26 +2152,31 @@
         0.3225
       ],
       "stats": {
-        "market_cap": 30606213083,
-        "volume": 456631314,
+        "market_cap": 30617959007,
+        "volume": 454536095,
         "high_24h": 0.323637,
         "low_24h": 0.320996,
         "ath": 0.431288,
-        "ath_change": -25.16,
+        "ath_change": -25.13,
         "change_7d": -3.12,
         "change_30d": -8.12,
         "high_30d": 0.3755,
         "low_30d": 0.3199
-      }
+      },
+      "analysis": [
+        "Treiber: TRON wird an Bitnomial gelistet, was den regulierten US-Zugang verbessert, und CoinZoom unterstützt USDT auf TRON.",
+        "Risiko: Es gibt eine Empfehlung, im Mai zu verkaufen, was auf saisonale Schwächen hindeuten könnte.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit Fokus auf verbesserte Zugänglichkeit und Unterstützung."
+      ]
     },
     {
-      "price": 50647.55,
-      "change_24h": -0.44,
+      "price": 50682.42,
+      "change_24h": -0.37,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "Der Dow Jones verzeichnete einen Rückgang nach einem US-Arbeitsmarktbericht, aber auch Rebounds und gemischte Nachrichten.",
-      "signal": "Rückgang nach Arbeitsmarktbericht, aber auch Rebounds.",
+      "sentiment": "bearish",
+      "confidence": 0.7,
+      "rationale": "Der Dow Jones fällt aufgrund des Chip-Ausverkaufs, der Iran-Drohung und des 3-Jahres-Inflationshochs.",
+      "signal": "Rückgang aufgrund geopolitischer und wirtschaftlicher Faktoren.",
       "id": "dowjones",
       "symbol": "Dow Jones",
       "name": "Dow Jones",
@@ -2074,15 +2204,9 @@
         50866.7812,
         50786.0117,
         50872.1094,
-        50647.5508
+        50682.4219
       ],
       "asset_news": [
-        {
-          "title": "Dow falls 250 points on chip sell-off, Trump Iran threat and 3-year inflation high: Live updates",
-          "source": "CNBC",
-          "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9LRDZ2dHY0cGF3dUlHVC12RU04NVBYWTZhUGxjUkhZTHF2T0xLUU96NVVCMG5GZHpZZ0h4R0tKdUtxZWFMMWpEWjlqWkdCVjFrNWhMRDBHbUNVTWJzYVZQRE10cUZsSWlxdVQySFdRNXJzRmZFSlBF0gF8QVVfeXFMT3YycTlFVk85SHZtSlVheXlsWUVRLU1hWXFJSWI2dkxseGN3UVVqVkM2WW9vZ1A0X2RsNmo3QTY2OHdWVHNUeUNRYXlLb2kwS3ZuUjFySnNNc0RHamhUNHotak5YYUtTWE5oQzNDSjQzR0FRLWlWYzRhOEdWWg?oc=5",
-          "datum": "10 Jun 2026"
-        },
         {
           "title": "Stock Market News, June 9, 2026: Nasdaq Rebounds Off Session Lows",
           "source": "WSJ",
@@ -2090,7 +2214,13 @@
           "datum": "10 Jun 2026"
         },
         {
-          "title": "Stock Market Today: Futures Sink Ahead of Inflation Data as Tech Stocks Lead Declines; Oil Wavers as US Launches 'Self-Defense' Strikes Against Iran",
+          "title": "Dow falls 250 points on chip sell-off, Trump Iran threat and 3-year inflation high: Live updates",
+          "source": "CNBC",
+          "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9LRDZ2dHY0cGF3dUlHVC12RU04NVBYWTZhUGxjUkhZTHF2T0xLUU96NVVCMG5GZHpZZ0h4R0tKdUtxZWFMMWpEWjlqWkdCVjFrNWhMRDBHbUNVTWJzYVZQRE10cUZsSWlxdVQySFdRNXJzRmZFSlBF0gF8QVVfeXFMT3YycTlFVk85SHZtSlVheXlsWUVRLU1hWXFJSWI2dkxseGN3UVVqVkM2WW9vZ1A0X2RsNmo3QTY2OHdWVHNUeUNRYXlLb2kwS3ZuUjFySnNNc0RHamhUNHotak5YYUtTWE5oQzNDSjQzR0FRLWlWYzRhOEdWWg?oc=5",
+          "datum": "10 Jun 2026"
+        },
+        {
+          "title": "Stock Market Today: Major Indexes Pull Back in Early Trading After CPI Hits Highest Level in 3 Years, Matching Expectations; Tech Stocks Lead Declines",
           "source": "Investopedia",
           "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPVzBNOTVId19zWnZLYUJCdzhqblpoMWlEZzFYWWdiWFlhMlpPbnFraUxvOF81OFk0WXhnYklIOUY3RlI5aVFBMktCcWxUS3dtWHR2T2R5MG0zTEU1TWMwUHNmWkRQWU43UjhJWXFReWFOdW1oRHB4WmFldmVGd2I2bWNHdm1INE1BSWpiaklYeXU?oc=5",
           "datum": "10 Jun 2026"
@@ -2111,21 +2241,26 @@
       "stats": {
         "week52_high": 51660.4,
         "week52_low": 41981.14,
-        "volume": 44771589,
+        "volume": 53402051,
         "high_30d": 51561.9297,
         "low_30d": 49363.8789,
-        "change_7d": -0.08,
-        "change_30d": 1.9
-      }
+        "change_7d": -0.01,
+        "change_30d": 1.97
+      },
+      "analysis": [
+        "Treiber: Der Dow Jones erholte sich am 9. Juni, was auf kurzfristige Stärke hindeuten könnte.",
+        "Risiko: Der Index fällt aufgrund des Chip-Ausverkaufs, der Iran-Drohung und des 3-Jahres-Inflationshochs.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit geopolitischen Spannungen und Inflationssorgen."
+      ]
     },
     {
-      "price": 10218.46,
-      "change_24h": -0.09,
+      "price": 10219.91,
+      "change_24h": -0.07,
       "currency": "gbp",
       "sentiment": "neutral",
-      "confidence": 0.4,
-      "rationale": "Der FTSE 100 bewegt sich auf Dreiwochen-Tiefs, eröffnete aber auch leicht höher, die Nachrichtenlage ist gemischt.",
-      "signal": "Dreiwochen-Tiefs, aber auch leichte Erholung.",
+      "confidence": 0.5,
+      "rationale": "Der FTSE 100 bewegt sich auf Dreiwochen-Tiefs, während er sich leicht erholt, aber das Risiko eines überhitzten US-Marktes besteht.",
+      "signal": "Bewegung auf Dreiwochen-Tiefs, gemischte Signale.",
       "id": "ftse100",
       "symbol": "FTSE 100",
       "name": "FTSE 100",
@@ -2153,7 +2288,7 @@
         10368.0996,
         10373.2002,
         10227.2998,
-        10218.46
+        10219.9102
       ],
       "asset_news": [
         {
@@ -2193,9 +2328,14 @@
         "volume": 0,
         "high_30d": 10505.0,
         "low_30d": 10195.4004,
-        "change_7d": -1.1,
-        "change_30d": -0.5
-      }
+        "change_7d": -1.09,
+        "change_30d": -0.48
+      },
+      "analysis": [
+        "Treiber: Der FTSE 100 erholt sich leicht, während die USA und der Iran Schläge austauschen.",
+        "Risiko: Der Index bewegt sich auf Dreiwochen-Tiefs, und es besteht das Risiko eines überhitzten US-Marktes.",
+        "Einordnung: Die Nachrichtenlage ist neutral, mit einer Mischung aus kurzfristiger Erholung und externen Risiken."
+      ]
     },
     {
       "price": 64179.27,
@@ -2203,8 +2343,8 @@
       "currency": "jpy",
       "sentiment": "bearish",
       "confidence": 0.7,
-      "rationale": "Der Nikkei 225 schloss niedriger, da Golf-Spannungen eine Verschiebung aus Tech-Aktien auslösten.",
-      "signal": "Schloss niedriger, Golf-Spannungen beeinflussen Tech.",
+      "rationale": "Der Nikkei 225 fällt aufgrund von Spannungen am Golf und einer Verschiebung weg von hochfliegenden Tech-Aktien.",
+      "signal": "Starker Rückgang aufgrund geopolitischer Spannungen.",
       "id": "nikkei",
       "symbol": "Nikkei 225",
       "name": "Nikkei 225",
@@ -2261,10 +2401,10 @@
           "datum": "10 Jun 2026"
         },
         {
-          "title": "Tokyo's Nikkei 225 index tops 68,000 for the 1st time as Wall Street logs more records",
-          "source": "Daily Sitka Sentinel",
-          "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNcWJ4MDhsSURqMVFrZXdqVHRfeEY0cUFLTnh3dDQyUGNGSzZQX2JFZUtFaEZqLVpOWFJkWDhlQklPYTd5dF9YeTRKek5FVk1FVXAzd2s1N2NVZ0Z6QzRrbXBCWkJ6N3dxUTdTcXlqM1lPU2RsRFUtY1lDbGM2OW1aZ2k5T1dtVDlFNzhmQ09zc0ZxWDVxRVVtRzdxRlFocE43dnh4R3RicWkzb3FkUmt1R2s4X2ZnbWd0MGxaNGtwamJsRF9C?oc=5",
-          "datum": "03 Jun 2026"
+          "title": "Related Futures Contracts for Nikkei 225 Index OCT6",
+          "source": "Moomoo",
+          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9fMnU0S0kzTjBIUW9rV2ptVC1sVk9seDROb3VYSTVuSFdoVllFMW5vcXpTcVhZS2RUYW5PSTFPZ2hqXzRXdzF1NHFYTjZreXdPOFJzeHFDejh3dko0aTJoYTRCVmtQNFE?oc=5",
+          "datum": "07 Jun 2026"
         }
       ],
       "stats": {
@@ -2275,16 +2415,21 @@
         "low_30d": 59804.4102,
         "change_7d": -6.17,
         "change_30d": 2.82
-      }
+      },
+      "analysis": [
+        "Treiber: Eine SoftBank AI-Ankündigung und die Nachfrage nach Halbleitern könnten den Index antreiben.",
+        "Risiko: Der Nikkei fällt aufgrund von Spannungen am Golf und einer Verschiebung weg von Tech-Aktien.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit geopolitischen Spannungen und einem Rückgang bei Tech-Aktien."
+      ]
     },
     {
-      "price": 6023.59,
-      "change_24h": -0.43,
+      "price": 6033.08,
+      "change_24h": -0.28,
       "currency": "eur",
-      "sentiment": "neutral",
-      "confidence": 0.4,
-      "rationale": "Der Euro Stoxx 50 verzeichnete Verluste, da der Markt die US-Inflation verarbeitete und Kriegsrisiken im Iran bestehen bleiben.",
-      "signal": "Verluste durch US-Inflation und Iran-Risiken.",
+      "sentiment": "bearish",
+      "confidence": 0.6,
+      "rationale": "Der Euro Stoxx 50 fällt, da die globalen Aktienmärkte bärisch sind und europäische Aktien ihren Vorteil verlieren.",
+      "signal": "Rückgang im Zuge des globalen Markttrends.",
       "id": "eurostoxx50",
       "symbol": "Euro Stoxx 50",
       "name": "Euro Stoxx 50",
@@ -2311,14 +2456,26 @@
         6062.0698,
         6062.29,
         6049.7402,
-        6023.5898
+        6033.0801
       ],
       "asset_news": [
+        {
+          "title": "STOXX Europe 50 Index Chart & Price",
+          "source": "FOREX.com",
+          "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5mZVQ5algxcEYwbFRuNEg2LVczYk1pZG5ZZG93RkIyelFPdUpFS3Jzc091U3hsLXo0NFB4a3BTSHZKN3o0X3ozblAxcnZfbThHTzcwZ20tTHpvNWRQU0p0SjBR?oc=5",
+          "datum": "05 Jun 2026"
+        },
         {
           "title": "Global Equities Markets Bearish, Wall St, Euro Stoxx 50 Slip",
           "source": "MarketForces Africa",
           "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQWEFoZjVkMHlnSmVmRW9qcGhpT0NGN2QyM0I4R3I1d1BQSVlEMkR2bXdpVnRCSlFUSi1ackNjMUlzTkxnMjhUMzRseVRJaDJGRDVJblVTaWpzanVZZklDQlVKQlBCTDJPMl9IbVBWdlM5YTVNSTVkY1luaEZoN05fRGFkLU84Z3BpZ2pNZWZB?oc=5",
           "datum": "08 Jun 2026"
+        },
+        {
+          "title": "Morgan Stanley (MS) offers capped EURO STOXX 50® notes due Aug 9, 2027",
+          "source": "Stock Titan",
+          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOeURNekdvcFFQdnFFdUY2YnZRUVBTRkJOVzc2SUNXUnZ4cGtRd1B2ZEhsWFBjc1RRVWhJWEhqQkNtZVc2eDZxMHhGa3prbmU4TGpOQWViQ2ZUbXlSbnZ6dy13UzhQd01LOW9HdUM1YW5wYkpzQ1RCSjlvQ082YzFiLXphdlNsZS1aTmRYamY1SXQtSDVTeHFaXzNOLUIzVjJYNzcwMw?oc=5",
+          "datum": "04 Jun 2026"
         },
         {
           "title": "European Stocks Are Losing an Edge That Took Them Years to Gain",
@@ -2327,22 +2484,10 @@
           "datum": "07 Apr 2026"
         },
         {
-          "title": "BBVA now listed on the Stoxx Europe 50, the stock market index of Europe’s largest companies",
-          "source": "BBVA",
-          "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNMFREeTd1UjFHMUFXaHR3eDlDXzAybVFHb25wZXdXd2pZUE8xeTRSTGpmUXpRR1NEQ21VRFlXTzFSMEJLclBMTkZ2aVhwQS1MMGk3RGZLazJSMVJXeEpHaUdxT0dUN2tRS0FEXzV4di1jRXctRzVSQkRtdXVDbzR1aUZIMnBrQzhValZZejVKTEJWa083UUNTWG9pVGxTS2pDUEpVS1ltS25rUUVXek1pU2tMVzRQRXBLUlBrY0J6VjhsdkhhY1ljRFUxX2VtRVpf?oc=5",
-          "datum": "03 Sep 2025"
-        },
-        {
-          "title": "European stock index futures generally fell, with the Euro Stoxx 50 index futures down 1.2%",
-          "source": "WEEX",
-          "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxObkhaVkZyY3F3MjJzN09NNDYtQUJxMHh3SlFpUjhla25yS0U1T1c4alp2U0FxcjJKSXU4LTNkU3A5Q2xIN3Q0T0dBOXhyZ05FTE10UXZ2WmcyZ24zYWdiMDlqWXdSOFRlRk5MNzBhYmcwZGlLMFNHbjY2S3dNWV9XUk1zS0w2Z3hHYm9rZjNjZk1VN2lPQTJwOHhEbWlpNGdmUHBHZ2RCSkhEVzIxUUw0YU1iU2ZmWnJxMERhRldGUndleXdhcXBKS2V0c0xVVkhWYWRUcTJiWXlQTlN2aXB3?oc=5",
-          "datum": "08 Jun 2026"
-        },
-        {
-          "title": "Monthly development Euro Stoxx 50 Index 2015-2026",
+          "title": "Annual development of the Euro Stoxx 50 Index from 1995 to 2024",
           "source": "Statista",
-          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQRUpXWkhFTUlseGxBVDNLNkVMOGRaY2RJd090dGp1RnFJdkFFd29KWHFMUTJhTmI3S3FWS3R5LThrRE1oYTlxbjBxWGp3WEJjeWhjMUh6b1RjMjAtQ0NJbHVDVTRhekEzTmtQYWs5WkdsenZaRGlMTWlsTUtpcFFGTWZtd0w?oc=5",
-          "datum": "04 May 2026"
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQMmR1RFM2LTNyRjdvQUVvSTdwQkRySWFUUTlSWm02RVg4U0NFaFdKaTVNZHA3cUNCcGNEbFBiZmVKa0dIMTQwVkRpSy0xNVA1QkhtUGV5XzNJOXVRTVJjU2hqa1dZTGp5QjE3VDR6bzZHYUJSc1NfZHY1OFZUbGk4WkJ4YjNjOFRPcmZNSjJwaHlSRTJpREs4?oc=5",
+          "datum": "03 Mar 2026"
         }
       ],
       "stats": {
@@ -2351,18 +2496,23 @@
         "volume": 0,
         "high_30d": 6107.8501,
         "low_30d": 5808.4502,
-        "change_7d": -0.5,
-        "change_30d": 2.17
-      }
+        "change_7d": -0.34,
+        "change_30d": 2.33
+      },
+      "analysis": [
+        "Treiber: Es gibt keine spezifischen positiven Nachrichten für den Euro Stoxx 50.",
+        "Risiko: Globale Aktienmärkte sind bärisch, und europäische Aktien verlieren ihren Vorteil.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit einem Rückgang im Zuge des globalen Markttrends."
+      ]
     },
     {
       "price": 3.21,
-      "change_24h": 2.29,
+      "change_24h": 2.32,
       "currency": "usd",
       "sentiment": "bullish",
       "confidence": 0.6,
-      "rationale": "Eine neue Umfrage zeigt, dass die meisten mit weiter steigenden Gaspreisen rechnen, obwohl es auch lokale Tiefpreise gibt.",
-      "signal": "Erwartung steigender Gaspreise.",
+      "rationale": "Die Erdgaspreise steigen in Europa aufgrund der Auswirkungen der Nahost-Krise, und die meisten erwarten weitere Anstiege.",
+      "signal": "Steigende Preise, Erwartung weiterer Anstiege.",
       "id": "erdgas",
       "symbol": "Erdgas",
       "name": "Erdgas",
@@ -2390,7 +2540,7 @@
         3.229,
         3.147,
         3.14,
-        3.212
+        3.213
       ],
       "asset_news": [
         {
@@ -2427,21 +2577,26 @@
       "stats": {
         "week52_high": 7.827,
         "week52_low": 2.483,
-        "volume": 68399,
+        "volume": 69176,
         "high_30d": 3.336,
         "low_30d": 2.843,
-        "change_7d": -0.06,
-        "change_30d": 10.38
-      }
+        "change_7d": -0.03,
+        "change_30d": 10.41
+      },
+      "analysis": [
+        "Treiber: Die europäischen Gaspreise steigen aufgrund der Auswirkungen der Nahost-Krise.",
+        "Risiko: Es gibt keine spezifischen negativen Nachrichten, aber die Preise können volatil sein.",
+        "Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit steigenden Preisen und der Erwartung weiterer Anstiege."
+      ]
     },
     {
-      "price": 6.29,
-      "change_24h": -0.17,
+      "price": 6.31,
+      "change_24h": 0.07,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.3,
-      "rationale": "Die Nachrichtenlage zu Kupfer ist sehr dünn und bietet keine klaren Impulse für eine Stimmungseinschätzung.",
-      "signal": "Dünne Nachrichtenlage, keine klaren Impulse.",
+      "sentiment": "bearish",
+      "confidence": 0.6,
+      "rationale": "Kupfer fällt unter 13.000 USD, da die Lagerbestände und die Nachfrage in China im Fokus stehen.",
+      "signal": "Rückgang aufgrund von Lagerbeständen und Nachfrage.",
       "id": "kupfer",
       "symbol": "Kupfer",
       "name": "Kupfer",
@@ -2469,7 +2624,7 @@
         6.2635,
         6.3295,
         6.3025,
-        6.2915
+        6.307
       ],
       "asset_news": [
         {
@@ -2506,12 +2661,17 @@
       "stats": {
         "week52_high": 6.653,
         "week52_low": 4.324,
-        "volume": 23271,
+        "volume": 23719,
         "high_30d": 6.6495,
         "low_30d": 6.165,
-        "change_7d": -2.92,
-        "change_30d": -1.9
-      }
+        "change_7d": -2.68,
+        "change_30d": -1.66
+      },
+      "analysis": [
+        "Treiber: Kupfer ist auf dem besten Weg für sein bestes Jahr seit 2009, was langfristig positiv sein könnte.",
+        "Risiko: Kupfer fällt unter 13.000 USD, da die Lagerbestände und die Nachfrage in China im Fokus stehen.",
+        "Einordnung: Die Nachrichtenlage ist gemischt, mit kurzfristigem Rückgang, aber langfristigem Potenzial."
+      ]
     }
   ],
   "news": [
@@ -2520,7 +2680,7 @@
       "source": "CNBC Markets",
       "url": "https://www.cnbc.com/2026/06/10/cpi-inflation-report-may-2026.html",
       "datum": "Wed, 10 Jun 2026 13:25:25 GMT",
-      "sentiment": "neutral"
+      "sentiment": "bearish"
     },
     {
       "title": "Energy prices take center stage as the ECB prepares to decide on rates",
@@ -2541,14 +2701,14 @@
       "source": "CNBC Markets",
       "url": "https://www.cnbc.com/2026/06/08/household-financial-worries-at-highest-level-since-2022-new-york-fed-says.html",
       "datum": "Mon, 08 Jun 2026 16:13:12 GMT",
-      "sentiment": "neutral"
+      "sentiment": "bearish"
     },
     {
       "title": "Aduro Clean Technologies stock falls on $15.6M offering",
       "source": "Investing.com",
       "url": "https://www.investing.com/news/stock-market-news/aduro-clean-technologies-stock-falls-on-156m-offering-93CH-4735473",
       "datum": "2026-06-10",
-      "sentiment": "neutral"
+      "sentiment": "bearish"
     },
     {
       "title": "Lilly stays ahead of the pack as rivals jump on obesity drug bandwagon",
@@ -2562,14 +2722,14 @@
       "source": "Investing.com",
       "url": "https://www.investing.com/news/stock-market-news/wall-st-opens-lower-on-tech-losses-middle-east-tensions-4735471",
       "datum": "2026-06-10",
-      "sentiment": "neutral"
+      "sentiment": "bearish"
     },
     {
       "title": "Stocks open in the red as U.S.-Iran tensions escalate; May CPI largely in-line",
       "source": "Investing.com",
       "url": "https://www.investing.com/news/stock-market-news/us-stock-futures-fall-amid-more-iran-strikes-tech-weakness-cpi-data-awaited-4734248",
       "datum": "2026-06-10",
-      "sentiment": "neutral"
+      "sentiment": "bearish"
     },
     {
       "title": "The SpaceX–OpenAI IPO wave: What investors must do now",
@@ -2579,11 +2739,11 @@
       "sentiment": "neutral"
     },
     {
-      "title": "Elon Musk's SpaceX looks for 3 vital traits in its potential employees",
+      "title": "Stock market today: Dow, S&P 500, Nasdaq slide as CPI report lands, US-Iran truce teeters",
       "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/article/elon-musks-spacex-looks-for-3-vital-traits-in-its-potential-employees-132227864.html",
-      "datum": "2026-06-10",
-      "sentiment": "neutral"
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-dow-sp-500-nasdaq-slide-as-cpi-report-lands-us-iran-truce-teeters-215056930.html",
+      "datum": "2026-06-09",
+      "sentiment": "bearish"
     }
   ],
   "quellen": [
@@ -2596,7 +2756,7 @@
       "url": "https://finance.yahoo.com"
     }
   ],
-  "fetched_at": "2026-06-10T13:43:01+00:00",
+  "fetched_at": "2026-06-10T13:48:09+00:00",
   "fx": {
     "usd": 1.0,
     "chf": 0.7955,
