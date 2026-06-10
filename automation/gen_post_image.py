@@ -183,7 +183,8 @@ def place_hero(product_img, W, H):
         return enhance(cover_crop(src, W, H))
     bg = cover_crop(src, W, H).filter(ImageFilter.GaussianBlur(46))
     bg = ImageEnhance.Brightness(bg).enhance(0.5).convert("RGB")
-    target_long = min(int(max(W, H) * 0.62), int(max(iw, ih) * 1.30))
+    # Produkt soll Breite gut füllen, aber NICHT überlaufen und max ~1.35× hochskaliert werden.
+    target_long = min(int(W * 0.92), int(H * 0.50), int(max(iw, ih) * 1.35))
     s = target_long / max(iw, ih)
     fg = src.resize((max(1, int(iw * s)), max(1, int(ih * s))), Image.LANCZOS)
     fg = ImageEnhance.Sharpness(fg).enhance(1.15)
@@ -246,7 +247,7 @@ def render_card(product_img, label, width, height):
     return canvas.convert("RGB")
 
 
-def render_story(product_img, label, width=1080, height=1920):
+def render_story(product_img, label, width=1080, height=1920, rating=None, rating_count=None):
     """Echtes 1080×1920 Instagram-/Facebook-Story-Format mit Safe-Zones:
     Wortmarke unter dem IG-Story-Header (oben ~200px frei), Produktname + Pill
     ÜBER der Antwortleiste (unten ~300px frei) → Text wird NIE abgeschnitten,
@@ -282,6 +283,21 @@ def render_story(product_img, label, width=1080, height=1920):
     py = height - bottom_safe - pill_h        # Pill-Oberkante
     ly = py - 24                              # Goldlinie über der Pill
     base_y = ly - 16 - block_h                # Titel-Block über der Goldlinie
+
+    # — Social-Proof-Badge über dem Titel (nur wenn bewertet) —
+    if rating:
+        rb_f = font(int(width * 0.026), "sans-bold")
+        cnt = f"   {rating_count} Bewertungen" if rating_count else ""
+        bh = int(rb_f.size * 1.75)
+        sx0 = pad + int(width * 0.024)
+        bw = int(width * 0.024) + tw(draw, f"★ {rating}{cnt}", rb_f) + int(width * 0.024)
+        by = base_y - bh - 18
+        draw.rounded_rectangle([(pad, by), (pad + bw, by + bh)], radius=bh // 2,
+                               fill=(0, 0, 0, 150))
+        ty = by + (bh - th(draw, "4", rb_f)) // 2 - 3
+        draw.text((sx0, ty), "★", font=rb_f, fill=GOLD)          # Stern (DejaVuSans hat ★)
+        draw.text((sx0 + tw(draw, "★ ", rb_f), ty), f"{rating}{cnt}", font=rb_f, fill=WHITE)
+
     ny = base_y
     for ln in lines:
         draw.text((pad + 2, ny + 2), ln, font=name_f, fill=(0, 0, 0))   # Schatten = lesbar
