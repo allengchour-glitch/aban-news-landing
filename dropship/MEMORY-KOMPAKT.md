@@ -179,3 +179,18 @@
 - **WORKFLOW etabliert:** User legt in Gelato an + „Publish to store" (einziger manueller Schritt) → Claude macht
   Titel/Text/Preis/Tags/Collection/URL per API. Gelato-Produkte erkennbar an type „Print Material"/Gelato-Titel + UUID-SKU.
 - Printify weiter ungenutzt (disconnected) — Gelato deckt alles ab.
+
+## 2026-06-10 — „Poster zum Selbstgestalten" (Printful) gebaut (Plan umgesetzt)
+- **Widget `pod/designer.js`** jetzt aspect/auflösungs-konfigurierbar: `data-ratio` (Default 1=quadratisch) + `data-ref`
+  (Default 1200). Bestehende 26 Produkte unverändert. Poster bekommt `data-ratio=1.414 data-ref=2400` (Hochformat 1:√2).
+- **`pod_inject_designer.mjs`** poster-aware: productType „Poster" ODER Tag `pod-poster` → injiziert data-ratio/data-ref,
+  erzwingt Einseitig (kein back). Query um productType+tags erweitert.
+- **`printful_sync.mjs`** `placementFor`: POSTER/CANVAS → `default` (Einzelplatzierung).
+- **NEU `automation/create_poster_pod.mjs` + `create-poster-pod.yml`**: legt per `productSet` 1 Produkt
+  „Poster zum Selbstgestalten" an (Handle `poster-zum-selbstgestalten`, Typ Poster, Tags wunschdesign+pod-poster+…,
+  4 Grössen, SKU `9000001_<printfulVariantId>` aus Printful-Produkt **268** „Enhanced Matte Paper Poster (cm)":
+  30×40=8948/25.90, 50×70=8952/32.90, 70×100=8954/46.90, A2=19516/28.90). Status DRAFT. Featured/Editor-Bild
+  `pod/poster-blank.png` (sauberes Hochformat-Blanko mit „Dein Motiv hier"-Hinweis; via Pages).
+- **Reihenfolge zum Scharfschalten:** create-poster-pod (DRY→echt) → pod-inject-designer → printful_reprice (Tag
+  printful_personalized_product, ×2,3) → Status ACTIVE/publizieren. Druck läuft dann automatisch über Printful (printful_sync).
+- **Fertig-Schweiz-Poster bleiben getrennt** (Gelato, schweiz-edition).

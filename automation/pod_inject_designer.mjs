@@ -13,7 +13,7 @@ async function token(){ const r=await fetch(`https://${SHOP}/admin/oauth/access_
 async function gql(tok,query,variables){ const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':tok},body:JSON.stringify({query,variables})}); return r.json(); }
 
 const Q=`query($after:String){ products(first:30, query:"tag:wunschdesign", after:$after){ pageInfo{hasNextPage endCursor}
-  edges{ node{ id title descriptionHtml
+  edges{ node{ id title descriptionHtml productType tags
     variants(first:1){ edges{ node{ id } } }
     media(first:15){ edges{ node{ ... on MediaImage{ image{ url } } } } } } } } }`;
 const M=`mutation($p:ProductUpdateInput!){ productUpdate(product:$p){ product{ id } userErrors{ field message } } }`;
@@ -26,10 +26,11 @@ function pickImgs(urls){
   return {front,back};
 }
 function stripOld(desc){ return desc.replace(/^\s*<div class="lspod-designer"[\s\S]*?<\/script>\s*(?:<hr\s*\/?>)?\s*/i,''); }
-function snippet(front,back,vid){
+function snippet(front,back,vid,poster){
   var attrs=`data-img-front="${esc(front)}"`;
   if(back) attrs+=` data-img-back="${esc(back)}"`;
   if(vid) attrs+=` data-variant="${vid.split('/').pop()}"`;
+  if(poster) attrs+=` data-ratio="1.414" data-ref="2400"`;   // Poster: Hochformat 1:√2, höhere Druckauflösung
   return `<div class="lspod-designer" ${attrs}></div>\n<script src="${JS}" defer></script>\n<hr>\n`;
 }
 
@@ -45,8 +46,9 @@ do{
     const {front,back}=pickImgs(urls);
     const vid=(p.variants.edges[0]&&p.variants.edges[0].node.id)||'';
     if(!front){ console.log(`– ${p.title}: kein Bild, übersprungen`); continue; }
+    const isPoster=(p.productType||'').toLowerCase()==='poster' || (p.tags||[]).map(t=>String(t).toLowerCase()).includes('pod-poster');
     const clean=stripOld(p.descriptionHtml||'');
-    const newDesc=snippet(front,back,vid)+clean;
+    const newDesc=snippet(front, isPoster?'':back, vid, isPoster)+clean;
     if(newDesc===p.descriptionHtml){ console.log(`= ${p.title}: unverändert`); continue; }
     if(DRY){ console.log(`DRY ${p.title}: front=${front.split('/').pop()} back=${back?back.split('/').pop():'–'}`); changed++; continue; }
     const r=await gql(tok,M,{p:{id:p.id,descriptionHtml:newDesc}});

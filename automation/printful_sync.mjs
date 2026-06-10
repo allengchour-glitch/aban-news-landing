@@ -64,8 +64,8 @@ async function controlDesign(url){ if(!GEMINI) return {pass:true,reason:'(keine 
 // ---------- SKU → Printful-Variante ----------
 function variantFromSku(sku){ const m=String(sku||'').match(/_(\d+)\s*$/); return m?parseInt(m[1],10):null; }
 function placementFor(productType,sideKey){ const t=String(productType||'').toUpperCase();
-  // Mehrlagen-Textil → front/back; Einzelplatzierung (Tasse/Hülle/Sticker/Flasche) → default
-  if(['MUG','PHONE-CASE','STICKER'].includes(t)) return 'default';
+  // Mehrlagen-Textil → front/back; Einzelplatzierung (Tasse/Hülle/Sticker/Flasche/Poster) → default
+  if(['MUG','PHONE-CASE','STICKER','POSTER','CANVAS'].includes(t)) return 'default';
   return sideKey==='back'?'back':'front'; }
 
 const ORDERS_Q=`query($q:String!,$n:Int!){ orders(first:$n, query:$q, sortKey:CREATED_AT){ edges{ node{
