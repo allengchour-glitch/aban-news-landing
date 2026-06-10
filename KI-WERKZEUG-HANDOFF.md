@@ -13,6 +13,10 @@
   (KI-Tool-Finder, 175 Tools, live) — im Generator `tools/add_branchen_funnel.py` (DE+EN) UND in allen 1.259
   bestehenden HTML. `ki-verzeichnis/` (= die tools.*-Seite selbst) + `newsletter-radar/` Selbst-Referenzen
   ausgenommen. newsletter.* waren nur Radar-interne Deep-Links → unangetastet. Absolute URLs (von jeder Origin ok).
+- **Radar-Links (erledigt, autonom):** Hauptseiten-Links auf tote Radar-Subdomains (automatisierung/kurse/
+  chatbot/voice/buchhaltung/webbaukasten/video/lifestyle/dropshipping) → live `radar.abannews.com` umgebogen
+  (12 Dateien, 0 verbleibend). **WICHTIG:** Die *-radar/-Dist-Verzeichnisse haben legitime Selbst-Referenzen auf
+  ihre eigene Subdomain (korrekt SOBALD deployt) — die NICHT angefasst. Deployt der User die Subdomains, passt alles.
 - **OFFEN (User):** die übrigen toten Radar-Subdomains (automatisierung/kurse/chatbot/…) entweder via Cloudflare
   deployen ODER ebenfalls umbiegen — kam noch keine Entscheidung. Tools+newsletter sind erledigt.
 
