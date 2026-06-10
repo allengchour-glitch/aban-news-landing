@@ -139,8 +139,12 @@
       tr.appendChild(tdStar);
 
       var tdName = document.createElement('td');
-      tdName.appendChild(el('span', 'asset-name', a.name));
-      tdName.appendChild(el('span', 'asset-sym', a.symbol));
+      var nameLink = document.createElement('a');
+      nameLink.href = '/maerkte/' + a.id + '.html';
+      nameLink.className = 'asset-link';
+      nameLink.appendChild(el('span', 'asset-name', a.name));
+      nameLink.appendChild(el('span', 'asset-sym', a.symbol));
+      tdName.appendChild(nameLink);
       tdName.appendChild(el('span', 'tag-type', a.type === 'crypto' ? T.krypto : T.aktie));
       tr.appendChild(tdName);
 

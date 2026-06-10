@@ -47,6 +47,9 @@ FINANCE_FEEDS = {
 }
 
 MAX_NEWS = 10
+# Pro-Wert-News (Google-News-RSS-Suche, keyless) → bessere, gezieltere KI-Einordnung.
+GNEWS = "https://news.google.com/rss/search?q={q}&hl=en-US&gl=US&ceid=US:en"
+MAX_ASSET_NEWS = 3
 
 
 def fetch(url: str, timeout: int = 20) -> str:
@@ -206,6 +209,38 @@ def fetch_news():
     return items[:MAX_NEWS]
 
 
+def fetch_asset_news(query: str):
+    """Top-Schlagzeilen zu EINEM Wert via Google-News-RSS-Suche."""
+    import urllib.parse
+    url = GNEWS.format(q=urllib.parse.quote(query))
+    try:
+        xml = fetch(url, timeout=15)
+    except Exception as ex:
+        sys.stderr.write(f"  GNews {query}: {ex}\n")
+        return []
+    out, seen = [], set()
+    for b in re.findall(r"<item\b.*?</item>", xml, re.S | re.I)[:8]:
+        title = _tag(b, "title")
+        if not title:
+            continue
+        # Google hängt oft " - Quelle" an → Quelle separat.
+        src = ""
+        m = re.search(r"\s-\s([^-]+)$", title)
+        if m:
+            src = m.group(1).strip(); title = title[:m.start()].strip()
+        key = re.sub(r"\W+", "", title.lower())[:50]
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        pub = _tag(b, "pubDate")
+        m = re.search(r"(\d{1,2}\s+\w{3}\s+\d{4})", pub)
+        out.append({"title": title, "source": src or "Google News",
+                    "url": _link(b), "datum": m.group(1) if m else date.today().isoformat()})
+        if len(out) >= MAX_ASSET_NEWS:
+            break
+    return out
+
+
 def main() -> int:
     if not DATA.exists():
         sys.stderr.write(f"Fehlt: {DATA}\n")
@@ -239,6 +274,11 @@ def main() -> int:
                 if q.get("spark"):
                     a["spark"] = q["spark"]
                 updated += 1
+        # Pro-Wert-News (für KI-Sentiment + Detailseiten)
+        qkind = "crypto" if a.get("type") == "crypto" else "stock"
+        an = fetch_asset_news(f"{a.get('name')} {qkind}")
+        if an:
+            a["asset_news"] = an
 
     # FX-Kurse (CHF/EUR)
     fx = fetch_fx()

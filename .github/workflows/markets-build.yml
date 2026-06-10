@@ -40,6 +40,11 @@ jobs:
           python automation/markets_ai.py \
             || echo "markets_ai mit Warnung beendet (kein Key?)"
 
+      - name: Detailseiten pro Wert bauen (Charts)
+        run: |
+          python automation/build_markets_detail.py \
+            || echo "build_markets_detail mit Warnung beendet"
+
       - name: Telegram-Markt-Digest (1×/Tag, no-op ohne Secrets)
         if: github.event.schedule == '0 16 * * 1-5' || github.event_name == 'workflow_dispatch'
         env:
@@ -49,14 +54,14 @@ jobs:
           python automation/markets_telegram.py \
             || echo "markets_telegram mit Warnung beendet"
 
-      - name: markets.json committen (falls geändert)
+      - name: Daten + Detailseiten committen (falls geändert)
         run: |
-          git add -f data/markets.json
+          git add -f data/markets.json maerkte/*.html
           if ! git diff --cached --quiet; then
             git config user.name "aban-news-bot"
             git config user.email "bot@users.noreply.github.com"
-            git commit -m "chore(markets): frische Kurse, News & KI-Sentiment [skip ci]"
+            git commit -m "chore(markets): frische Kurse, News, KI-Sentiment & Charts [skip ci]"
             git push
           else
-            echo "Keine Änderung an markets.json."
+            echo "Keine Änderung."
           fi

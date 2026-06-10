@@ -81,24 +81,27 @@ SCHEMA = {
 
 
 def build_prompt(data: dict) -> str:
-    lines = ["Werte (id · Name · Typ · Preis · 24h%):"]
+    lines = ["Werte (id · Name · Typ · Preis · 24h%) — je mit wert-spezifischen News:"]
     for a in data.get("assets", []):
         price = a.get("price")
         chg = a.get("change_24h")
         lines.append(
-            f"- {a['id']} · {a.get('name')} ({a.get('symbol')}) · {a.get('type')} · "
+            f"\n● {a['id']} · {a.get('name')} ({a.get('symbol')}) · {a.get('type')} · "
             f"{price if price is not None else 'n/a'} {a.get('currency','usd').upper()} · "
             f"{chg if chg is not None else 'n/a'}%"
         )
-    lines.append("\nAktuelle Finanz-News-Schlagzeilen (mit Index):")
+        for n in a.get("asset_news", [])[:3]:
+            lines.append(f"   - {n.get('title')}")
+    lines.append("\nAllgemeine Finanz-News-Schlagzeilen (mit Index):")
     for i, n in enumerate(data.get("news", [])[:10]):
         lines.append(f"{i}. [{n.get('source')}] {n.get('title')}")
     lines.append(
         "\nAufgabe:\n"
-        "1) 'assets': für JEDEN Wert (gleiche id) ein Objekt mit Sentiment im Schema.\n"
-        "2) 'news': pro Schlagzeile (gleicher index) ein Sentiment für den Gesamtmarkt "
-        "(bullish/neutral/bearish). Ordne die News den passenden Werten zu; "
-        "News ohne klaren Markt-Bezug als 'neutral'."
+        "1) 'assets': für JEDEN Wert (gleiche id) ein Objekt mit Sentiment. Stütze dich "
+        "PRIMÄR auf die wert-spezifischen News des jeweiligen Werts, ergänzend auf 24h-Bewegung "
+        "und allgemeine Marktlage. Begründung (rationale) soll konkret auf diese News Bezug nehmen.\n"
+        "2) 'news': pro allgemeiner Schlagzeile (gleicher index) ein Sentiment für den Gesamtmarkt "
+        "(bullish/neutral/bearish); ohne klaren Markt-Bezug 'neutral'."
     )
     return "\n".join(lines)
 
