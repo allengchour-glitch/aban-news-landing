@@ -8,7 +8,7 @@ on:
   # schedule:  # PAUSIERT 2026-06-09 — ElevenLabs-Guthaben schonen (User: „nicht mehr viel Filme").
   #            # Dieser Lauf rendert 2 Reels/Tag MIT ElevenLabs-Stimme (Secret XI) → Hauptverbraucher.
   #            # Manuell weiter via „Run workflow"; Cron wieder einkommentieren, wenn Guthaben da ist.
-  #   - cron: '0 5 * * *'   # täglich 05:00 UTC
+  #   - cron: '0 5 */2 * *'   # täglich 05:00 UTC
   workflow_dispatch:
     inputs:
       tool_id:

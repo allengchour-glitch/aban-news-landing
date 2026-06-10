@@ -4,7 +4,7 @@ name: Märkte-Monitor (Daten-Wächter)
 # Telegram Alarm, wenn der Daten-Job hängt. Nur lesend (kein Commit). No-op ohne Secrets.
 on:
   schedule:
-    - cron: '17 */6 * * *'   # alle 6 Stunden
+    - cron: '17 */12 * * *'   # alle 6 Stunden
   workflow_dispatch:
 
 permissions:

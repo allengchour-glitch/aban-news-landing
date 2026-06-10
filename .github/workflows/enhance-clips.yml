@@ -16,7 +16,7 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: '20 5 * * *'   # täglich 1 Charge veredelte Clips erzeugen
+    - cron: '20 5 */2 * *'   # täglich 1 Charge veredelte Clips erzeugen
 
 permissions:
   contents: write

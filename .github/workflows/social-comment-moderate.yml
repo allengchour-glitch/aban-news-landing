@@ -6,7 +6,7 @@ name: Social Spam-Moderation (FB + IG)
 
 on:
   schedule:
-    - cron: '0 6,12,18 * * *'   # 3×/Tag (≈ 08/14/20 Uhr CH)
+    - cron: '0 12 * * *'   # 3×/Tag (≈ 08/14/20 Uhr CH)
   workflow_dispatch:
     inputs:
       dry_run:
