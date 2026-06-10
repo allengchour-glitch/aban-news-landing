@@ -32,7 +32,7 @@
 | Meta (IG/FB/Threads) | ✅ gesetzt — Social-Posten läuft |
 | `SHOPIFY_SHOP` + `SHOPIFY_CLIENT_ID/SECRET` | ❌ offen → für Autopilot/Auto-Queue (User, ABEND-TODO §1) |
 | `CJ_EMAIL` + `CJ_API_KEY` | ❌ als Repo-Secret offen (in-Session vorhanden) |
-| TikTok | ⏳ Audit nötig |
+| TikTok | ⏳ Reel-Autopost GEBAUT (FILE_UPLOAD, kein Domain-Verify) — fehlen nur 4 Secrets: TT_CLIENT_KEY/SECRET/ACCESS_TOKEN/REFRESH_TOKEN. Anleitung: `dropship/TIKTOK-AUTOPOST-AKTIVIEREN.md` |
 | `YT_API_KEY` | ❌ offen (Video-Session) |
 > Hinweis: Für Shopify-Arbeit **braucht keine Session einen Key** — das geht über die MCP. Keys nur für die Cron-Actions.
 
