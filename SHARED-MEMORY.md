@@ -135,6 +135,17 @@
   4 Secrets `TT_CLIENT_KEY/SECRET/ACCESS_TOKEN/REFRESH_TOKEN` (User-OAuth, `dropship/TIKTOK-AUTOPOST-AKTIVIEREN.md`).
   Es gibt **kein** TikTok-API-Tool in der Session — Posten geht nur über diese Action.
 - **✅ Pixel `D8EKVR3C77U6KT5BTBD0` geht** (Conversion-Tracking live). Offen für Käufe: TikTok-Kampagne Ziel „Kauf" + Budget.
+- **✅ SOCIAL HEUTE LIVE (10.06.):** Bild-Posts MIT Text auf IG+FB+Threads (Aurora · Plateau 4,7★ · Marco · Gua-Sha ·
+  Onyx · Costa), Ibiza schriftlos; + 3 frische **Techno-Reels gestaffelt** (Reel 1 live, Reel 2/3 = 11./12.06.
+  per Cron). Rest der mit-Text-Posts ready → Cron drippt 2×/Tag.
+- **✅ AUTO-HOST REELS (hands-off):** `reel-render` (alle 4 h) lädt das Reel jetzt automatisch auf Shopify-CDN
+  (`upload_to_shopify_cdn.mjs`) + reiht es in `social/video_queue.csv` (ready) ein → `video-meta-autopost`
+  postet es. Kein manueller Upload mehr. (auto_render.sh + reel-render.yml mit SHOPIFY-Secrets.)
+- **🧩 SOCIAL/SHOP-BILD-AUFTEILUNG:** Produktseiten = **schriftlos** (`render_product_clean`, 235 live),
+  Social-Posts = **mit Text** (`render_card`/`render_story`). „verzogen"-Beschwerde geklärt: `render_story` ist
+  echtes 1080×1920 (kein Strecken) + adaptives `place_hero`. **gen_post_image.py auf main verifiziert** —
+  place_hero/render_story/render_product_clean/_excludes alle vorhanden (frühere „weg"-Anzeige war transient).
+- **Reel-Vorrat:** 64 .mp4 gerendert (meist ältere); frische Techno-Reels gehen jetzt automatisch in die Queue.
 - **🎨 VISUAL-FIXES (09.06. spät):** (1) **Story-Format 1080×1920** mit Safe-Zones in `gen_post_image.py`
   (`render_story`) — Feed-Bild als Story war seitlich abgeschnitten. (2) **IG-Reel-Cover** = Produkt-Frame
   statt weisses Intro (`thumb_offset` in video-autopost-meta). (3) **Schärfe-Fix `place_hero()`**: CJ-Fotos
