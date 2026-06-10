@@ -275,7 +275,11 @@
       var card = el('div', 'card');
 
       var head = el('div', 'chead');
-      head.appendChild(el('span', 'cname', a.name + ' · ' + a.symbol));
+      var cl = document.createElement('a');
+      cl.href = detailBase + a.id + '.html';
+      cl.className = 'asset-link';
+      cl.appendChild(el('span', 'asset-name cname', a.name + ' · ' + a.symbol));
+      head.appendChild(cl);
       var sent = a.sentiment || 'neutral';
       head.appendChild(el('span', 'badge ' + sent, sentimentLabel(sent)));
       card.appendChild(head);
