@@ -60,7 +60,7 @@ jobs:
 
       - name: Daten + Detailseiten committen (falls geändert)
         run: |
-          git add -f data/markets.json maerkte/*.html en/maerkte/*.html fr/maerkte/*.html it/maerkte/*.html
+          git add -f data/markets.json maerkte/*.html en/maerkte/*.html
           if ! git diff --cached --quiet; then
             git config user.name "aban-news-bot"
             git config user.email "bot@users.noreply.github.com"

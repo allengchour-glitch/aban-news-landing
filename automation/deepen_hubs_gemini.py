@@ -45,6 +45,8 @@ Schreibe für die Branche/Zielgruppe: „{branche}".
 
 Ton: sachlich, konkret, du-Form, ohne Buzzwords, ohne Übertreibung. KEINE erfundenen Zahlen, Prozentwerte
 oder Studien. Keine Heilsversprechen. Wenn KI bei etwas nicht hilft, darfst du das sagen.
+WICHTIG: Erkläre alles so einfach und klar, dass es auch jemand ohne jede KI-Vorkenntnis sofort versteht —
+vermeide Fachbegriffe oder erkläre sie in einem kurzen Halbsatz. Nimm konkrete Alltagsbeispiele aus der Branche.
 
 Gib AUSSCHLIESSLICH gültiges JSON in genau diesem Format zurück (kein Markdown, keine Erklärung drumherum):
 {{
@@ -61,7 +63,7 @@ def e(s):
     return html.escape(str(s), quote=True)
 
 
-def render(branche_name, data) -> str:
+def render(branche_name, data, heading=None) -> str:
     intro = (data.get("intro") or "").strip()
     paras = "".join(
         f'<p style="color:var(--ink2,#374151);margin-bottom:14px">{e(p.strip())}</p>'
@@ -77,8 +79,9 @@ def render(branche_name, data) -> str:
                  f'<p style="color:var(--ink2,#374151);margin-top:8px">{e(a)}</p></details>')
     if not paras or not faqs:
         return ""
+    head = heading if heading else f"KI in der Praxis: {branche_name}"
     return (f'\n<section {MARKER} style="max-width:760px;margin:30px auto;padding:0 20px;line-height:1.75">'
-            f'<h2 style="font-size:1.3rem;margin-bottom:10px">KI in der Praxis: {e(branche_name)}</h2>'
+            f'<h2 style="font-size:1.3rem;margin-bottom:10px">{e(head)}</h2>'
             f'{paras}<h2 style="font-size:1.3rem;margin:22px 0 12px">Häufige Fragen</h2>{faqs}</section>\n')
 
 
@@ -99,16 +102,43 @@ def parse_json(txt: str):
     # Markdown-Code-Fences entfernen, JSON-Objekt extrahieren, tolerant parsen
     # (strict=False erlaubt echte Zeilenumbrueche in Strings — Gemini liefert die oft so).
     t = re.sub(r"^```(?:json)?|```$", "", txt.strip(), flags=re.M).strip()
-    m = re.search(r"\{.*\}", t, re.S)
-    if not m:
+    start = t.find("{")
+    if start == -1:
         return None
-    raw = m.group(0)
-    for cand in (raw, raw.replace("\n", " ")):
+    # Vom ersten '{' bis zum LETZTEN '}' (gierig) — robust gegen Vor-/Nachtext.
+    end = t.rfind("}")
+    raw = t[start:end + 1] if end > start else t[start:]
+    cands = [raw, raw.replace("\n", " ")]
+    # Notfall: bei abgeschnittener Antwort (Thinking-Budget) wenigstens intro + faq retten.
+    obj = _salvage(t)
+    if obj:
+        cands.append(json.dumps(obj))
+    for cand in cands:
         try:
             return json.loads(cand, strict=False)
         except Exception:  # noqa: BLE001
             continue
-    return None
+    return obj or None
+
+
+def _salvage(t: str):
+    """Aus evtl. unvollstaendigem JSON intro + komplette faq-Eintraege herausziehen."""
+    intro_m = re.search(r'"intro"\s*:\s*"((?:[^"\\]|\\.)*)"', t, re.S)
+    intro = intro_m.group(1) if intro_m else ""
+    faq = []
+    for q, a in re.findall(r'"q"\s*:\s*"((?:[^"\\]|\\.)*)"\s*,\s*"a"\s*:\s*"((?:[^"\\]|\\.)*)"', t, re.S):
+        faq.append({"q": q, "a": a})
+    if not intro or not faq:
+        return None
+
+    def _dec(s):
+        return json.loads(f'"{s}"', strict=False)
+    try:
+        intro = _dec(intro)
+        faq = [{"q": _dec(x["q"]), "a": _dec(x["a"])} for x in faq]
+    except Exception:  # noqa: BLE001
+        return None
+    return {"intro": intro, "faq": faq}
 
 
 def insert(src: str, section: str, jsonld: str) -> str | None:
@@ -148,7 +178,10 @@ def main():
         print(f"gemini_text nicht ladbar: {ex} → no-op"); return 0
     done = 0
     for f, b in batch:
-        txt = generate(PROMPT.format(branche=b), max_tokens=1400, temperature=0.5)
+        # thinking_budget=0: volles Output-Budget fuer die JSON-Antwort (2.5-Flash denkt
+        # sonst die Tokens leer → abgeschnittenes JSON). response_json: natives JSON.
+        txt = generate(PROMPT.format(branche=b), max_tokens=2048, temperature=0.5,
+                       thinking_budget=0, response_json=True)
         if not txt:
             print(f"  (keine Gemini-Antwort für {b} — übersprungen)"); continue
         data = parse_json(txt)

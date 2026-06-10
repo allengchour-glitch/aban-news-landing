@@ -1,0 +1,106 @@
+/* aban news — Conversion components (shared)
+   Used by archive issue pages, the archive list, and content pages.
+   index.html has its own inline style system and styles these inline instead.
+   Palette: global tokens from css/styles.css (--c-accent etc.). */
+
+/* visually-hidden label, still read by screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* ---- Inline subscribe box (after an article / on content pages) ---- */
+.sub-cta {
+  margin: 2.5rem 0;
+  padding: 1.75rem;
+  background: var(--c-accent-soft, #fdf1e1);
+  border: 1px solid var(--c-accent, #d97706);
+  border-radius: var(--r-lg, 14px);
+}
+.sub-cta-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-accent-hi, #b45309);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.sub-cta-title {
+  margin: 0 0 1rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+  line-height: 1.3;
+  color: var(--c-text, #1f2937);
+}
+.sub-cta-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.sub-cta-form input[type="email"] {
+  flex: 1 1 14rem;
+  min-width: 0;
+  padding: 0.7rem 0.9rem;
+  font-size: 1rem;
+  border: 1px solid var(--c-border, #e5e7eb);
+  border-radius: var(--r-sm, 6px);
+  background: #fff;
+  color: var(--c-text, #1f2937);
+}
+.sub-cta-form input[type="email"]:focus-visible {
+  outline: 2px solid var(--c-accent, #d97706);
+  outline-offset: 1px;
+}
+.sub-cta-form .btn { flex: 0 0 auto; }
+.sub-cta-trust {
+  margin: 0.85rem 0 0;
+  font-size: 0.78rem;
+  color: var(--c-muted, #6b7280);
+}
+
+/* ---- Share row ---- */
+.share-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.75rem 0 0;
+}
+.share-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-muted, #6b7280);
+  margin-right: 0.15rem;
+}
+.share-btn {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--c-text, #1f2937);
+  background: var(--c-card, #fff);
+  border: 1px solid var(--c-border, #e5e7eb);
+  border-radius: 999px;
+  transition: border-color var(--t, .2s), color var(--t, .2s), transform var(--t, .2s);
+}
+.share-btn:hover {
+  color: var(--c-accent, #d97706);
+  border-color: var(--c-accent, #d97706);
+  transform: translateY(-1px);
+}
+
+/* ---- Archive-list / content-page banner CTA ---- */
+.archive-cta,
+.content-cta {
+  margin: 2rem 0;
+  padding: 1.75rem;
+  background: var(--c-card, #fff);
+  border: 1px solid var(--c-border, #e5e7eb);
+  border-left: 4px solid var(--c-accent, #d97706);
+  border-radius: var(--r-lg, 14px);
+}
+.archive-cta .sub-cta-title,
+.content-cta .sub-cta-title { margin-bottom: 0.85rem; }

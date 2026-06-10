@@ -1,0 +1,46 @@
+name: Header-Logo „LuxeStyle.ch" setzen
+
+on:
+  workflow_dispatch:
+    inputs:
+      remove:
+        description: 'Logo wieder entfernen (Rollback → Text)'
+        type: boolean
+        default: false
+      dry_run:
+        description: 'Nur testen'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: set-header-logo
+  cancel-in-progress: false
+
+jobs:
+  logo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Logo setzen/entfernen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          REMOVE: ${{ github.event.inputs.remove == 'true' && '1' || '0' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '0' }}
+        run: node automation/set_header_logo.mjs
+      - name: Backup committen
+        run: |
+          if [ -n "$(git status --porcelain dropship/theme-backups/)" ]; then
+            git config user.name "luxestyle-autopilot"; git config user.email "bot@users.noreply.github.com"
+            git add dropship/theme-backups/
+            git commit -m "Theme-Backup: settings_data.json vor Logo [skip ci]"
+            for i in 1 2 3 4 5; do git push origin HEAD:${{ github.ref_name }} && break; git pull --rebase --autostash origin ${{ github.ref_name }} || true; sleep 3; done
+          else echo "kein Backup-Diff"; fi

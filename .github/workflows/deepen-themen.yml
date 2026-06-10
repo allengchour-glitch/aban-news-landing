@@ -1,0 +1,48 @@
+name: Themen vertiefen (Gemini)
+
+# Vertieft Themen-Seiten (themen/*.html) mit substanziellem Text + FAQ (Gemini).
+# NUR manuell auslösbar (kein Cron) — du steuerst Tempo/Charge selbst. No-op ohne GEMINI_API_KEY.
+on:
+  workflow_dispatch:
+    inputs:
+      batch:
+        description: 'Wie viele Themen-Seiten pro Lauf vertiefen'
+        default: '21'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deepen-themen
+  cancel-in-progress: false
+
+jobs:
+  deepen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Themen vertiefen
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_LOCATION: ${{ vars.GCP_LOCATION }}
+          VERTEX_TEXT_MODEL: ${{ vars.VERTEX_TEXT_MODEL }}
+          ABAN_DEEP_BATCH: ${{ inputs.batch }}
+        run: python3 automation/deepen_themen_gemini.py
+      - name: Sichern (race-sicher)
+        run: |
+          if ! git diff --quiet -- 'themen/*.html'; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add themen/*.html
+            git commit -m "Themen vertieft (Gemini) [skip ci]"
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else
+            echo "Keine Aenderung."
+          fi

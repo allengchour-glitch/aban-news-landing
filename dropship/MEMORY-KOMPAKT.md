@@ -1,7 +1,31 @@
 # 🧠 MEMORY-KOMPAKT — LuxeStyle (ZUERST LESEN, komprimiert aus allen Sessions)
 > Verdichtung aller STAND-/Log-Dateien. Details bei Bedarf: STAND-2026-06-09-ABSCHLUSS.md (POD/Designs),
 > STAND-2026-06-08 (Shopify-Auth), CJ-IMPORT-LOG.md (Katalog-Historie), ABEND-TODO.md (User-Klicks),
-> MISTER-DTF-FULFILLMENT.md (Bügeltransfer). Stand: 2026-06-09 nachts.
+> MISTER-DTF-FULFILLMENT.md (Bügeltransfer). Stand: **2026-06-10 nachts** (Details als dated Einträge unten).
+
+## 📌 STAND 2026-06-10 (Session-Ende — ZUERST LESEN, dann Details unten)
+**Heute live geschaltet (alles auf `main`, mit Backups/Rollback):**
+1. **POD-Mockups gesäubert** (kein „Dein Design" mehr; Printful-Gratis-Katalog `/products/variant/{id}` = saubere Blanks).
+2. **🇨🇭 Schweiz Edition:** 39 Mundart/CH-Designs generiert (Gemini wieder da), **Designs-Galerie 335 Motive** (Schweiz zuerst,
+   `/pages/designs-galerie?cat=Schweiz`), Smart-Collection `schweiz-edition`, Menü-Top-Link „🇨🇭 Schweiz".
+3. **Gelato verbunden** (Store „LuxeStyle" Active) → **1. Fertig-Poster live** `schweiz-poster-gruezi` (per API veredelt).
+   10 Poster-Motive in `social/posters/` (+ `…/hoch/` Hochformat). **Gelato = manuell anlegen, Claude veredelt per API.**
+4. **„Poster zum Selbstgestalten" (Printful) LIVE** `/products/poster-zum-selbstgestalten`: Editor-Widget hochformat-fähig
+   (`pod/designer.js` data-ratio/data-ref, rückwärtskompatibel), 4 Grössen, SKU `9000001_<printfulVar>`, Auto-Druck Printful.
+5. **Header umgestaltet:** Logo-Bild **„LuxeStyle.ch"** gesetzt (`current.logo` in settings_data.json), Menü-Labels gekürzt →
+   **alle 11 Punkte sichtbar (kein „Mehr")**.
+6. **53 Effizienz-Badges** (Solar/USB-LED, rechtssicher, KEIN erfundenes Energielabel A–F — keins qualifiziert).
+7. Früher heute: 404-Menüfix (selbst-gestalten-1 unpubliziert → Menü auf `selbst-gestalten`), AGB/Footer, FB-Token ✓, Memory komprimiert.
+
+**Anbieter-Realität:** Gelato=verbunden (UI-anlegen, API CI-blockiert) · Printful=Selbstgestalt-Linie (läuft, Auto-Druck) ·
+Printify=NICHT verbunden (Shopify-Store dort nie verbunden → ignorieren) · Gemini-Billing=OK.
+
+**Offene User-Schritte (optional):** mehr Gelato-Produkte anlegen → „alle einrichten" sagen (Claude veredelt) · TikTok manuell
+posten · (falls Sticker/Magnete autonom gewünscht: Shopify-Store in Printify verbinden).
+
+**Workflows (workflow_dispatch):** gen-designs · gen-posters · designs-page · pod-blank-mockups · create-poster-pod ·
+pod-inject-designer · printful-reprice · printful-sync(cron) · set-header-logo(+REMOVE=Rollback) · efficiency-badge ·
+hero-schweiz(zurückgerollt) · pod-provider-check. **Theme-Edits via raw-API (MCP blockt Live-Theme); Backups in `dropship/theme-backups/`.**
 
 ## 🔑 FAKTEN & AUTH
 - Shop **LuxeStyle** (luxestyle.ch), myshopify `au3j0y-hq.myshopify.com`. Zugriff: Shopify-MCP `mcp__…__*` ODER
@@ -147,3 +171,84 @@
 - **ENTSCHEID/Strategie:** Gelato (verbunden) = Poster/Karten/Tassen **manuell** anlegen (Claude prept Designs+Specs);
   Printify (CI-fähig) = Sticker/Magnete **vollautonom**, sobald Shopify in Printify verbunden. Beide ergänzen sich.
 - Tool `automation/pod_provider_check.mjs` + `pod-provider-check.yml` bleibt für Status-Checks.
+
+## 2026-06-10 — Schweiz-Poster generiert (für Gelato)
+- `automation/gen_posters.mjs` + `gen-posters.yml`: **vollflächige** Poster-Artworks (kein Magenta-Chroma wie Sticker),
+  Gemini 2.5 Flash Image. **10 Motive in `social/posters/`**: matterhorn, alps-panorama, lake, chalet, gondola, cow,
+  edelweiss, edelweiss-pattern, fondue, gruezi (Typo „GRÜEZI" korrekt). Optisch top, „GRÜEZI" stimmt.
+  ⚠️ Gemini liefert **1024×1024 quadratisch** (ignoriert 2:3-Prompt) → gut für quadratische Art-Prints/Poster bis ~A4;
+  für grosse Hochformat-Poster im Gelato-Editor positionieren oder gezielt Hochformat-Varianten generieren.
+- Öffentlich via Pages: `https://abannews.com/social/posters/<name>.jpg` (Deploy-Lag ~15 Min beachten).
+- Geliefert an User (Vorschau-Sheet + Links). Gelato: Create product → Poster → Datei hoch → Publish.
+
+## 2026-06-10 — Hochformat-Poster + Printify weiter disconnected → Empfehlung: alles über Gelato
+- **Hochformat-Poster gebaut:** `social/posters/hoch/*-hoch.jpg` (10) = Pillow-Komposition (Quadrat-Art + Titel-Band,
+  Serif), echtes 2:3-Art-Print-Layout, Marke-Footer. An User als Dateien geliefert. (Quadrat-Originale in `social/posters/`.)
+- **Printify: 4× geprüft, IMMER „My new store / disconnected"** — User sagt „verbunden", aber Printify-API sieht keinen
+  Shopify-Store. Wahrscheinlich **anderes Printify-Konto als der API-Key** ODER Shopify-Genehmigen-Schritt nie zu Ende.
+- **Gelato = der verbundene Anbieter** (Store „LuxeStyle" Active). Gelato kann **Poster, Sticker, Tassen, Tote, Karten,
+  Apparel** → deckt die ganze Schweiz-Linie ab. **EMPFEHLUNG: alles über Gelato (manuell anlegen), Printify vorerst fallen
+  lassen** (CI-API zwar offen, aber Store nie verbunden → kein Nutzen). Gelato-API aus CI weiterhin blockiert → Anlegen im UI.
+- **Noch KEIN Gelato-Produkt in Shopify** (neuestes Produkt 06-09) → User muss in Gelato „Publish to store" abschließen.
+  Sobald da: Claude taggt `schweiz-edition`, Preis ×2,3, Collection+Menü.
+
+## 2026-06-10 — ERSTES Gelato-Produkt LIVE + per API veredelt ✅
+- **Gelato→Shopify-Sync FUNKTIONIERT.** User hat in Gelato ein Poster veröffentlicht → kam als
+  „Premium Semi-Glossy Paper Poster 13x18 cm" (vendor LuxeStyle, type „Print Material", SKU=UUID) in den Shop.
+  Motiv = **GRÜEZI** (ch-poster-gruezi).
+- **Claude-Veredelung per Shopify-API (productUpdate + productVariantsBulkUpdate):**
+  Titel „Schweiz-Poster «Grüezi» – Mundart-Kunstdruck", Typ Poster, Tags `schweiz-edition,poster,kunstdruck,mundart,geschenk,gelato`,
+  Mundart-Beschreibung, Preis 15.08→**14.90**, Handle→`schweiz-poster-gruezi` (URL luxestyle.ch/products/schweiz-poster-gruezi).
+  Produkt ACTIVE/Onlineshop, in Geschenk-Smart-Collections; `schweiz-edition`-Smartcollection indexiert async (paar Min).
+- **WORKFLOW etabliert:** User legt in Gelato an + „Publish to store" (einziger manueller Schritt) → Claude macht
+  Titel/Text/Preis/Tags/Collection/URL per API. Gelato-Produkte erkennbar an type „Print Material"/Gelato-Titel + UUID-SKU.
+- Printify weiter ungenutzt (disconnected) — Gelato deckt alles ab.
+
+## 2026-06-10 — „Poster zum Selbstgestalten" (Printful) gebaut (Plan umgesetzt)
+- **Widget `pod/designer.js`** jetzt aspect/auflösungs-konfigurierbar: `data-ratio` (Default 1=quadratisch) + `data-ref`
+  (Default 1200). Bestehende 26 Produkte unverändert. Poster bekommt `data-ratio=1.414 data-ref=2400` (Hochformat 1:√2).
+- **`pod_inject_designer.mjs`** poster-aware: productType „Poster" ODER Tag `pod-poster` → injiziert data-ratio/data-ref,
+  erzwingt Einseitig (kein back). Query um productType+tags erweitert.
+- **`printful_sync.mjs`** `placementFor`: POSTER/CANVAS → `default` (Einzelplatzierung).
+- **NEU `automation/create_poster_pod.mjs` + `create-poster-pod.yml`**: legt per `productSet` 1 Produkt
+  „Poster zum Selbstgestalten" an (Handle `poster-zum-selbstgestalten`, Typ Poster, Tags wunschdesign+pod-poster+…,
+  4 Grössen, SKU `9000001_<printfulVariantId>` aus Printful-Produkt **268** „Enhanced Matte Paper Poster (cm)":
+  30×40=8948/25.90, 50×70=8952/32.90, 70×100=8954/46.90, A2=19516/28.90). Status DRAFT. Featured/Editor-Bild
+  `pod/poster-blank.png` (sauberes Hochformat-Blanko mit „Dein Motiv hier"-Hinweis; via Pages).
+- **Reihenfolge zum Scharfschalten:** create-poster-pod (DRY→echt) → pod-inject-designer → printful_reprice (Tag
+  printful_personalized_product, ×2,3) → Status ACTIVE/publizieren. Druck läuft dann automatisch über Printful (printful_sync).
+- **Fertig-Schweiz-Poster bleiben getrennt** (Gelato, schweiz-edition).
+
+### ✅ VERIFIZIERT LIVE (2026-06-10): „Poster zum Selbstgestalten"
+- Produkt `gid://shopify/Product/15427182330241`, Handle `poster-zum-selbstgestalten`, **ACTIVE**, in 6 Publications.
+  URL `luxestyle.ch/products/poster-zum-selbstgestalten` (HTTP 200, auch /de-de/). 4 Grössen, SKUs `9000001_8948/8952/8954/19516`.
+- **Editor rendert HOCHFORMAT** (Storefront-Screenshot bestätigt: „Dein Motiv hier"-Canvas portrait, Tools, Warenkorb-Button).
+  Injektion mit `data-ratio="1.414" data-ref="2400"`. **Keine Regression:** Bestandsprodukt (T-Shirt) hat kein data-ratio → quadratisch.
+- In Collection `selbst-gestalten` (18→19) → erscheint im Menü „🎨 Selbst gestalten → Alle zum Gestalten".
+- Preise 25.90/32.90/46.90/28.90 (≈×2,3, reprice nicht nötig). Druck-Fulfillment läuft beim echten Kauf automatisch
+  über `printful_sync` (placement POSTER→default, SKU→variant_id, Cloudinary-Druckdatei).
+- OFFEN/optional: Poster-Karte in die `/pages/selbst-gestalten`-Grid aufnehmen (Collection deckt Discovery schon ab).
+
+## 2026-06-10 — Header umgestaltet: LuxeStyle.ch-Logo + alle Menüpunkte sichtbar ✅
+- **Logo (Titelbild):** „titelbild" = das LuxeStyle-Logo soll die Domain zeigen. Header hatte KEIN Logo-Bild → nur Shop-Name-Text.
+  → Wortmarke **`pod/luxestyle-ch-logo.png`** (Serif, „.ch" in Marken-Gold #8b7355) erstellt, in Shopify-Files hochgeladen
+  (`MediaImage/69652492353921` → `shopify://shop_images/luxestyle-ch-logo.png`), und als Header-Logo gesetzt.
+  Tool `automation/set_header_logo.mjs` + `set-header-logo.yml` schreibt `current.logo` in `config/settings_data.json`
+  (LIVE-Theme via raw-API, Backup `dropship/theme-backups/settings_data.json.bak`, JSON-Validierung, REMOVE=1=Rollback).
+  LEHRE: Logo ist GLOBALES Theme-Setting `current.logo` (nicht in der header-Section); leer = Shop-Name-Text.
+- **Menü „man sieht nicht alles" (Desktop):** 11 Top-Items mit langen Labels (Emojis + „& …") → Theme klappte Überlauf
+  in „Mehr". → Top-Labels gekürzt (Entdecken, 🇨🇭 Schweiz, Mode, Gestalten, Schuhe, Schmuck, Beauty, Wohnen, Tech,
+  Geschenke, Sale) via `menuUpdate`. Ergebnis verifiziert: **ALLE 11 sichtbar, kein „Mehr" mehr.**
+  ⚠️ Storefront cached Header/Theme ~paar Min → nach Änderung kurz warten + Cache-Bust-URL zum Screenshoten.
+- **Energieklasse A–F (offen):** User „nur wo Label vorhanden" → echte EU-Energielabels nur bei wenigen Elektro-Produkten
+  (CJ liefert i.d.R. keine). Nächster Schritt: Tech/Gadgets-Katalog auf Produkte mit echtem Label prüfen, dann Klasse +
+  Label-Bild ergänzen. Keine Klassen erfinden (gesetzlich).
+
+## 2026-06-10 — Energieklasse geprüft → KEINE qualifiziert; stattdessen Effizienz-Badges (rechtssicher)
+- **Befund:** KEIN Produkt im Shop fällt unter die EU-Energielabel-Pflicht A–F: Lampen sind alle Solar/USB/Akku
+  (Label gilt nur für netzbetriebene Wechsel-Leuchtmittel), Beamer sind ausgenommen, keine TVs/Kühlschränke/Netz-Birnen.
+  → Keine Klasse erfunden (gesetzlich). Geprüft: beleuchtung-lampen (7) + gadgets (124).
+- **Stattdessen rechtssichere Effizienz-Hinweise gesetzt** (`automation/add_efficiency_badge.mjs` + `efficiency-badge.yml`):
+  grünes Badge vorangestellt, idempotent (Marker `class="ls-eff"`): Solar-Produkte → „☀️ Solarbetrieben · keine Stromkosten",
+  USB/Akku-LED-Lampen → „🔌 USB/Akku-LED · energieeffizient". **53 Produkte** bekamen ein Badge (alle Solar shop-weit via
+  `title:Solar*` + USB-Lampen), 1 übersprungen (Wellness-Bundle). Verifiziert an 2 Produkten. Kein Energielabel = legal sauber.

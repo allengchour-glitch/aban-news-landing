@@ -59,8 +59,31 @@
 /krypto-daten     /ki-und-krypto-daten.html 301
 /maerkte          /maerkte.html             301
 /markets          /maerkte.html             301
-/trading          /maerkte.html             301
+/trading          /trading-tipps.html       301
+/trading-tipps    /trading-tipps.html       301
+/trading-tipp     /trading-tipps.html       301
+/en/trading       /en/trading-tipps.html    301
+/en/trading-tipps /en/trading-tipps.html    301
 /maerkte-live     /maerkte.html             301
+/krypto-kaufen    /krypto-fuer-einsteiger.html   301
+/bitcoin-kaufen   /krypto-fuer-einsteiger.html   301
+/krypto-einsteiger /krypto-fuer-einsteiger.html  301
+/bitcoin          /krypto-fuer-einsteiger.html   301
+/en/krypto-kaufen /en/krypto-fuer-einsteiger.html 301
+/en/bitcoin       /en/krypto-fuer-einsteiger.html 301
+/etf              /etf-fuer-einsteiger.html      301
+/etf-einsteiger   /etf-fuer-einsteiger.html      301
+/etf-fuer-einsteiger /etf-fuer-einsteiger.html   301
+/sparplan         /sparplan-statt-trading.html   301
+/sparplan-statt-trading /sparplan-statt-trading.html 301
+/en/etf           /en/etf-fuer-einsteiger.html   301
+/en/sparplan      /en/sparplan-statt-trading.html 301
+/sparplan-rechner  /sparplan-statt-trading.html  301
+/zinseszins-rechner /sparplan-statt-trading.html 301
+/zinseszins       /sparplan-statt-trading.html   301
+
+
+
 /ebook            /ebook.html           301
 /buch             /buch.html            301
 /book             /buch.html            301

@@ -335,6 +335,18 @@ BRANCHEN = {
     "gardinengeschaeft":   ("Gardinengeschäfte",    ["Produkttexte & Service,", "nicht das Aufmaß"]),
     "skiservice":          ("Skiservice",           ["Service- & Verleihtexte,", "nicht die Bindung"]),
     "sammelkartenladen":   ("Sammelkartenläden",    ["Listings & Events,", "nicht die Echtheitsprüfung"]),
+    "sprachschule":        ("Sprachschulen",        ["Kurse & Orga,", "nicht der Unterricht"]),
+    "musikschule":         ("Musikschulen",         ["Kurse & Orga,", "nicht der Unterricht"]),
+    "bootsverleih":        ("Bootsverleih",         ["Angebote & Texte,", "nicht die Einweisung"]),
+    "campingplatz":        ("Campingplätze",        ["Gäste-Texte & Orga,", "nicht der Betrieb"]),
+    "ferienwohnung":       ("Ferienwohnungen",      ["Inserate & Gäste-Mails,", "nicht die Pflichten"]),
+    "obsthof":             ("Obsthöfe",             ["Produkt- & Saisontexte,", "nicht die Kennzeichnung"]),
+    "metzgerei":           ("Metzgereien",          ["Theke & Party-Service,", "nicht die Hygiene"]),
+    "eventlocation":       ("Eventlocations",       ["Texte & Anfragen,", "nicht die Sicherheit"]),
+    "jugendherberge":      ("Jugendherbergen",      ["Gäste-Texte & Orga,", "nicht die Aufsicht"]),
+    "reiseveranstalter":   ("Reiseveranstalter",    ["Reise-Texte & Anfragen,", "nicht die Reisefakten"]),
+    "kletterwald":         ("Kletterwälder",        ["Angebote & Texte,", "nicht die Sicherung"]),
+    "pizzeria":            ("Pizzerien",            ["Speisekarte & Social,", "nicht die Hygiene"]),
 }
 
 

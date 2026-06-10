@@ -1,0 +1,111 @@
+/* aban news — "Warm & modern" Layer
+   Ergänzt css/styles.css (und die index.html-Inline-Styles), ohne sie zu ersetzen.
+   Mehr Schwung: Verlaufs-Akzente, weichere Schatten, Scroll-Reveal, sticky/kondensierte
+   Kopfzeile, sanfte Hover/Links. Bewegung strikt hinter prefers-reduced-motion. */
+
+:root {
+  --grad-warm: linear-gradient(135deg, #f59e0b 0%, #d97706 45%, #c2410c 100%);
+  --grad-soft: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+  --shadow-soft: 0 1px 2px rgba(31,23,8,.04), 0 8px 24px rgba(31,23,8,.06);
+  --shadow-lift: 0 6px 16px rgba(31,23,8,.08), 0 18px 48px rgba(31,23,8,.12);
+}
+
+/* ---------- Verlaufs-Akzent (Headlines/Brand) ---------- */
+.grad-text {
+  background: var(--grad-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Karten: weicher, mit Lift ---------- */
+.card, .arc-card, .method, .sub-cta, .content-cta {
+  box-shadow: var(--shadow-soft);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.card:hover, .arc-card:hover, .method:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+}
+
+/* ---------- Animierte Link-Unterstreichung (Fließtext) ---------- */
+.issue-body a:not(.btn), main p a:not(.btn):not(.brand) {
+  background-image: linear-gradient(var(--c-accent, #d97706), var(--c-accent, #d97706));
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size .25s ease;
+}
+.issue-body a:not(.btn):hover, main p a:not(.btn):not(.brand):hover {
+  background-size: 100% 2px;
+}
+
+/* ---------- Buttons: warmer Verlauf + Lift ---------- */
+.btn, .nav-cta, .sub-cta-form button, .aban-sp-form button {
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.btn:hover, .nav-cta:hover, .sub-cta-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(217,119,6,.28);
+  filter: saturate(1.05);
+}
+
+/* ---------- Sticky, kondensierte Kopfzeile ---------- */
+header.site-header { transition: padding .2s ease, box-shadow .2s ease, background .2s ease; }
+header.site-header.is-stuck {
+  position: sticky; top: 0; z-index: 60;
+  box-shadow: 0 2px 14px rgba(31,23,8,.10);
+  backdrop-filter: saturate(1.1) blur(6px);
+  background: rgba(255,251,245,.9);
+}
+
+/* ---------- Hero: warmer Verlaufs-Hintergrund ---------- */
+.hero.hero--warm {
+  background: var(--grad-soft);
+  border-bottom: 1px solid var(--c-border, #e5e7eb);
+}
+
+/* ================= Motion (nur wenn erwünscht) =================
+   Fail-safe: Der "versteckt"-Zustand greift NUR, wenn reveal.js läuft und
+   .reveal-ready am <html> gesetzt hat. Ohne JS bleiben Inhalte sichtbar. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .6s cubic-bezier(.16,.84,.44,1), transform .6s cubic-bezier(.16,.84,.44,1);
+    will-change: opacity, transform;
+  }
+  .reveal-ready [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  /* gestaffeltes Erscheinen in Grids */
+  .reveal-ready [data-reveal][data-reveal-delay="1"] { transition-delay: .08s; }
+  .reveal-ready [data-reveal][data-reveal-delay="2"] { transition-delay: .16s; }
+  .reveal-ready [data-reveal][data-reveal-delay="3"] { transition-delay: .24s; }
+}
+/* Bei reduzierter Bewegung: sofort sichtbar, keine Animation */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+}
+
+/* ---------- "Geld verdienen mit KI": 11 Methoden 2-spaltig (weniger Scrollen) ---------- */
+@media (min-width: 760px) {
+  .methods { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; }
+  .methods .method { margin-bottom: 0; }
+}
+
+/* ---------- resources.html: Prompt-Karten als Akkordeon, kompakter ---------- */
+details.res-acc { border: 1px solid var(--c-border, #e5e7eb); border-radius: var(--r-lg, 14px); background: var(--c-card,#fff); margin: 0 0 .9rem; box-shadow: var(--shadow-soft); overflow: hidden; }
+details.res-acc > summary { cursor: pointer; list-style: none; padding: 1rem 1.25rem; font-weight: 700; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; }
+details.res-acc > summary::-webkit-details-marker { display: none; }
+details.res-acc > summary::after { content: "+"; color: var(--c-accent,#d97706); font-size: 1.4rem; line-height: 1; }
+details.res-acc[open] > summary::after { content: "–"; }
+details.res-acc > .res-acc-body { padding: 0 1.25rem 1rem; }
+
+/* ---------- resources.html: sticky Sprung-Navigation (Übersicht statt Endlos-Scroll) ---------- */
+.res-jump { position: sticky; top: 0; z-index: 40; background: rgba(255,251,245,.92); backdrop-filter: saturate(1.1) blur(6px); border-bottom: 1px solid var(--c-border,#e5e7eb); }
+.res-jump .wrap { display: flex; flex-wrap: wrap; gap: .4rem .6rem; padding: .6rem 1.25rem; align-items: center; }
+.res-jump strong { font-size: .8rem; color: var(--c-muted,#6b7280); margin-right: .2rem; }
+.res-jump a { font-size: .85rem; text-decoration: none; color: var(--c-text,#1f2937); background: var(--c-card,#fff); border: 1px solid var(--c-border,#e5e7eb); border-radius: 999px; padding: .25rem .7rem; transition: border-color .2s, color .2s; }
+.res-jump a:hover { color: var(--c-accent,#d97706); border-color: var(--c-accent,#d97706); }

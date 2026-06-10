@@ -72,6 +72,9 @@
     var imgFront=container.getAttribute('data-img-front')||container.getAttribute('data-img')||'';
     var imgBack=container.getAttribute('data-img-back')||'';
     var fallbackVar=container.getAttribute('data-variant')||'';
+    // Seitenverhältnis + Druckauflösung pro Produkt (Default: quadratisch 1200px → unverändert für bestehende Produkte)
+    var RATIO=parseFloat(container.getAttribute('data-ratio')); if(!(RATIO>0)) RATIO=1;        // Höhe/Breite
+    var REF=parseInt(container.getAttribute('data-ref'),10); if(!(REF>=600)) REF=1200;          // Basis-/Druckbreite px
     var sides=[{k:'front',label:T.front,img:imgFront}];
     if(imgBack&&imgBack!==imgFront) sides.push({k:'back',label:T.back,img:imgBack});
     // state.layers[side] = [ {id,type,text,font,color, src,printUrl,uploading, cx,cy,scale,rot} ]
@@ -85,7 +88,7 @@
     wrap.appendChild(el('div',{style:"background:#16151a;color:#fff;padding:12px 16px;font-weight:800;font-size:15px;"},'🎨 '+T.head));
 
     // ---- Vorschau / Leinwand ----
-    var stage=el('div',{style:"position:relative;width:100%;aspect-ratio:1/1;background:#f4f1ec center/cover no-repeat;touch-action:none;user-select:none;overflow:hidden;"});
+    var stage=el('div',{style:"position:relative;width:100%;aspect-ratio:1/"+RATIO+";background:#f4f1ec center/cover no-repeat;touch-action:none;user-select:none;overflow:hidden;"});
     wrap.appendChild(stage);
     wrap.appendChild(el('div',{style:"font-size:11.5px;color:#8a8a90;padding:6px 16px 0;text-align:center;"},T.tapHint));
 
@@ -282,10 +285,10 @@
     // ---------- Druckdatei backen (Canvas) ----------
     function loadImg(src){ return new Promise(function(res,rej){ var im=new Image(); im.crossOrigin='anonymous'; im.onload=function(){ res(im); }; im.onerror=function(){ rej(new Error('img')); }; im.src=src; }); }
     function bakeSide(sideKey){ var arr=state.layers[sideKey]||[]; if(!arr.length) return Promise.resolve(null);
-      var cv=document.createElement('canvas'); cv.width=REF; cv.height=REF; var cxn=cv.getContext('2d');
+      var cv=document.createElement('canvas'); cv.width=REF; cv.height=Math.round(REF*RATIO); var cxn=cv.getContext('2d');
       var seq=Promise.resolve();
       arr.forEach(function(l){ seq=seq.then(function(){
-        var x=l.cx*REF, y=l.cy*REF;
+        var x=l.cx*REF, y=l.cy*cv.height;
         if(l.type==='text'){ if(!l.text) return; cxn.save(); cxn.translate(x,y); cxn.rotate(l.rot*Math.PI/180);
           var f=fontByVal(l.font); var px=l.scale*REF*0.12; cxn.font=f.c.replace('{S}',Math.round(px)); cxn.fillStyle=l.color; cxn.textAlign='center'; cxn.textBaseline='middle';
           if(l.color.toLowerCase()==='#ffffff'){ cxn.shadowColor='rgba(0,0,0,.4)'; cxn.shadowBlur=px*0.12; }
