@@ -194,3 +194,13 @@
 - **Reihenfolge zum Scharfschalten:** create-poster-pod (DRY→echt) → pod-inject-designer → printful_reprice (Tag
   printful_personalized_product, ×2,3) → Status ACTIVE/publizieren. Druck läuft dann automatisch über Printful (printful_sync).
 - **Fertig-Schweiz-Poster bleiben getrennt** (Gelato, schweiz-edition).
+
+### ✅ VERIFIZIERT LIVE (2026-06-10): „Poster zum Selbstgestalten"
+- Produkt `gid://shopify/Product/15427182330241`, Handle `poster-zum-selbstgestalten`, **ACTIVE**, in 6 Publications.
+  URL `luxestyle.ch/products/poster-zum-selbstgestalten` (HTTP 200, auch /de-de/). 4 Grössen, SKUs `9000001_8948/8952/8954/19516`.
+- **Editor rendert HOCHFORMAT** (Storefront-Screenshot bestätigt: „Dein Motiv hier"-Canvas portrait, Tools, Warenkorb-Button).
+  Injektion mit `data-ratio="1.414" data-ref="2400"`. **Keine Regression:** Bestandsprodukt (T-Shirt) hat kein data-ratio → quadratisch.
+- In Collection `selbst-gestalten` (18→19) → erscheint im Menü „🎨 Selbst gestalten → Alle zum Gestalten".
+- Preise 25.90/32.90/46.90/28.90 (≈×2,3, reprice nicht nötig). Druck-Fulfillment läuft beim echten Kauf automatisch
+  über `printful_sync` (placement POSTER→default, SKU→variant_id, Cloudinary-Druckdatei).
+- OFFEN/optional: Poster-Karte in die `/pages/selbst-gestalten`-Grid aufnehmen (Collection deckt Discovery schon ab).
