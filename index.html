@@ -337,6 +337,45 @@
     </div>
   </section>
 
+  <!-- MÄRKTE-VORSCHAU -->
+  <section class="sec" style="padding-top:0" id="marketsPreview" hidden>
+    <div class="wrap center">
+      <span class="eyebrow">Live · Märkte</span>
+      <h2>Krypto, Aktien &amp; Finanz-News</h2>
+      <p class="sub">Live-Kurse, Top-Bewegungen und KI-Sentiment auf einen Blick — anti-hype, mit Quellen. Keine Anlageberatung.</p>
+      <div class="cards" style="text-align:left">
+        <div class="card"><h3 style="margin:0 0 .4rem">🪙 Krypto</h3><div id="hmKrypto"></div></div>
+        <div class="card"><h3 style="margin:0 0 .4rem">📈 Aktien &amp; ETFs</h3><div id="hmAktien"></div></div>
+        <div class="card"><h3 style="margin:0 0 .4rem">📰 Finanz-News</h3><ul id="hmNews" style="list-style:none;margin:0;padding:0"></ul></div>
+      </div>
+      <p style="margin-top:1.4rem"><a class="btn btn--amber" href="/maerkte.html">Alle 42 Märkte &amp; KI-Sentiment →</a></p>
+    </div>
+  </section>
+  <script>
+  (function(){
+    var sec=document.getElementById('marketsPreview'); if(!sec) return;
+    function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+    function fmtPrice(v){ if(typeof v!=='number') return '—'; var d=v>=1000?0:v>=1?2:4; try{return new Intl.NumberFormat('de-CH',{style:'currency',currency:'USD',maximumFractionDigits:d,minimumFractionDigits:d}).format(v);}catch(e){return '$'+v.toFixed(d);} }
+    function row(a){
+      var ch=(typeof a.change_24h==='number')?a.change_24h:null;
+      var col=ch===null?'#5c6773':(ch>=0?'#0f9d6b':'#dc2626');
+      var chTxt=ch===null?'—':((ch>=0?'+':'')+ch.toFixed(2)+' %');
+      return '<a href="/maerkte/'+esc(a.id)+'.html" style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.5rem 0;border-bottom:1px solid var(--line,#ece6db);text-decoration:none;color:inherit">'
+        +'<span style="font-weight:700">'+esc(a.name)+' <span style="color:#5c6773;font-weight:600;font-size:.85em">'+esc(a.symbol)+'</span></span>'
+        +'<span style="text-align:right;white-space:nowrap"><b>'+fmtPrice(a.price)+'</b> <span style="color:'+col+';font-weight:700">'+chTxt+'</span></span></a>';
+    }
+    fetch('/data/markets.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
+      var as=d.assets||[]; if(!as.length) return;
+      var ck=document.getElementById('hmKrypto'), ak=document.getElementById('hmAktien'), nw=document.getElementById('hmNews');
+      if(ck) ck.innerHTML=as.filter(function(a){return a.type==='crypto';}).slice(0,4).map(row).join('');
+      if(ak) ak.innerHTML=as.filter(function(a){return a.type==='stock'||a.type==='etf';}).slice(0,4).map(row).join('');
+      var news=(d.news||[]).slice(0,3);
+      if(nw&&news.length) nw.innerHTML=news.map(function(n){return '<li style="padding:.45rem 0;border-bottom:1px solid var(--line,#ece6db)"><a href="'+esc(n.url||'#')+'" target="_blank" rel="noopener" style="text-decoration:none;font-weight:600">'+esc(n.title||'')+'</a><div style="color:#5c6773;font-size:.82em;margin-top:.2rem">'+esc(n.source||'')+'</div></li>';}).join('');
+      sec.hidden=false;
+    }).catch(function(){});
+  })();
+  </script>
+
   <!-- DOSSIERS -->
   <section class="sec" style="padding-top:0">
     <div class="wrap center">

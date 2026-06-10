@@ -80,6 +80,11 @@ gemerged (zuletzt PR #599, FR/IT-Revert). **Komplett live & autonom — diese (a
   mit Hoch/Tief-Hilfslinien + Beschriftung + Endpunkt-Marker); (3) **mehr Assets** 32→42 inkl. neuer
   ETF-Kategorie. Neue Werte: Daten via Yahoo/CoinGecko gefüllt; KI-Sentiment ergänzt der nächste Gemini-CI-Lauf
   (bis dahin neutral). Sitemap (DE+EN) ergänzt + valide.
+- **UX-Runde (User „mehr tabs, Liste kürzen, Startseite"):** (a) **Kategorie-Filter-Tabs** über der Tabelle
+  (Alle/Krypto/Aktien/ETF/Indizes/Rohstoffe, mit Count) in `js/markets.js`; (b) **pro Gruppe nur 5 Zeilen +
+  „mehr anzeigen (+N)"/„weniger"** (kein endloses Scrollen), `CAP=5`, `expanded`-State; (c) **Markt-Vorschau
+  auf der Startseite** (`index.html`): Krypto-/Aktien-&-ETF-/Finanz-News-Block aus `/data/markets.json`
+  (inline, CSP-safe, XSS-escaped, `hidden` bis Daten da) + CTA „Alle 42 Märkte". Sub-Text 22→42 korrigiert.
 
 ## 📌 Stand 2026-06-08 (Teil 16) — Volle 4-Sprachen-Hub-Parität + Schema + Abend-TODO
 User: „alles weiter wo du kannst und das wo ich mache in todo abend". Erledigt & gemerged:
