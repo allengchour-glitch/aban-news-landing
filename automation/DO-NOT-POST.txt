@@ -1,5 +1,8 @@
 # Produkte/Begriffe, die NIE in Social-Creatives (Reels / Stories / Bild-Posts) auftauchen dürfen.
 # Substring-Abgleich, case-insensitive, gegen name + label-Zeile in good_products.csv.
-# Vom User ausdrücklich ausgeschlossen — bitte respektieren (auch andere Sessions).
+# Greift in dropship/ads/auto_render.sh (Reels) UND automation/gen_post_image.py (Bilder/Stories).
+# Vom User ausdrücklich ausgeschlossen — bitte respektieren (auch andere Sessions). NIE entfernen ohne Rückfrage.
 augenmassage
 bali
+# Schwach bewertet (3,54★/26 Rev.) — Shop-Tag niedrig-bewertet-nicht-bewerben. Nie bewerben:
+sommerkleid-armellos-damen-tailliert
