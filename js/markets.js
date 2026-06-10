@@ -23,6 +23,7 @@
 
   // ---------- i18n (DE/EN je nach <html lang>) ----------
   var LANG = (document.documentElement.lang || 'de').slice(0, 2) === 'en' ? 'en' : 'de';
+  var detailBase = LANG === 'en' ? '/en/maerkte/' : '/maerkte/';
   var T = {
     de: { krypto: 'Krypto', aktie: 'Aktie', index: 'Index', rohstoff: 'Rohstoff',
           gainer: 'Top-Gewinner', loser: 'Top-Verlierer', mood: 'Marktstimmung',
@@ -152,7 +153,7 @@
 
     var tdName = document.createElement('td');
     var nameLink = document.createElement('a');
-    nameLink.href = '/maerkte/' + a.id + '.html';
+    nameLink.href = detailBase + a.id + '.html';
     nameLink.className = 'asset-link';
     nameLink.appendChild(el('span', 'asset-name', a.name));
     if (a.symbol !== a.name) nameLink.appendChild(el('span', 'asset-sym', a.symbol));
@@ -236,7 +237,7 @@
       box.innerHTML = '';
       if (!a) { box.textContent = '—'; return; }
       var link = document.createElement('a');
-      link.href = '/maerkte/' + a.id + '.html'; link.className = 'asset-link';
+      link.href = detailBase + a.id + '.html'; link.className = 'asset-link';
       link.appendChild(el('span', 'asset-name', a.symbol));
       box.appendChild(link);
       box.appendChild(document.createTextNode(' '));
