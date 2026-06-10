@@ -64,15 +64,15 @@ async function controlDesign(url){ if(!GEMINI) return {pass:true,reason:'(keine 
 // ---------- SKU → Printful-Variante ----------
 function variantFromSku(sku){ const m=String(sku||'').match(/_(\d+)\s*$/); return m?parseInt(m[1],10):null; }
 function placementFor(productType,sideKey){ const t=String(productType||'').toUpperCase();
-  // Mehrlagen-Textil → front/back; Einzelplatzierung (Tasse/Hülle/Sticker/Flasche/Poster) → default
-  if(['MUG','PHONE-CASE','STICKER','POSTER','CANVAS'].includes(t)) return 'default';
+  // Mehrlagen-Textil → front/back; Einzelplatzierung (Tasse/Hülle/Sticker/Flasche/Poster/Magnet) → default
+  if(['MUG','PHONE-CASE','STICKER','POSTER','CANVAS','MAGNET'].includes(t)) return 'default';
   return sideKey==='back'?'back':'front'; }
 
 const ORDERS_Q=`query($q:String!,$n:Int!){ orders(first:$n, query:$q, sortKey:CREATED_AT){ edges{ node{
   id name email tags
   shippingAddress{ name firstName lastName address1 address2 city provinceCode countryCodeV2 zip phone }
   lineItems(first:50){ edges{ node{ quantity sku title
-    product{ productType tags }
+    product{ productType tags metafield(namespace:"custom", key:"print_file"){ value } }
     variant{ sku }
     customAttributes{ key value } } } }
 }}}}`;
@@ -100,9 +100,11 @@ async function tagOrder(tok,id,tags,pfId){ if(DRY) return;
       if(!isPod(li)) continue;
       const sku=(li.variant&&li.variant.sku)||li.sku;
       const vid=variantFromSku(sku);
-      const files=pickFiles(li.customAttributes);
+      let files=pickFiles(li.customAttributes);
+      // Fertig-Produkte (ohne Editor-Upload): festes Motiv aus Produkt-Metafeld custom.print_file
+      if(!files.length){ const mf=li.product&&li.product.metafield&&li.product.metafield.value; if(mf && /^https?:\/\//.test(mf)) files=[{side:'front',url:mf}]; }
       if(!vid){ skipped++; reviewMsg.push(`${li.title}: SKU ohne Printful-Variante`); needReview=true; continue; }
-      if(!files.length){ skipped++; reviewMsg.push(`${li.title}: keine Druckdatei (Cloudinary?)`); needReview=true; continue; }
+      if(!files.length){ skipped++; reviewMsg.push(`${li.title}: keine Druckdatei (Cloudinary/Metafeld?)`); needReview=true; continue; }
       const pfFiles=[];
       for(const f of files){ const ctrl=await controlDesign(f.url); if(!ctrl.pass){ needReview=true; reviewMsg.push(`${li.title}: Kontrolle FAIL – ${ctrl.reason}`); }
         pfFiles.push({type:placementFor(li.product&&li.product.productType,f.side),url:f.url}); }
