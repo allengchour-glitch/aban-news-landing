@@ -82,5 +82,5 @@ jobs:
             echo "No asset changes — nothing to commit."
           else
             git commit -m "chore: regenerate assets (PDF/ePub/OG) [skip ci]"
-            git push
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
           fi

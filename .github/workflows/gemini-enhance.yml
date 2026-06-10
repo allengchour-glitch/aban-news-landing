@@ -10,7 +10,7 @@ name: KI-Bild-Veredelung (Gemini)
 
 on:
   schedule:
-    - cron: '30 4 * * *'   # 04:30 UTC — vor dem 08:00-Post-Slot
+    - cron: '30 4 */2 * *'   # 04:30 UTC — vor dem 08:00-Post-Slot
   workflow_dispatch:
     inputs:
       only:

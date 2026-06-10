@@ -34,6 +34,28 @@ from visuals import build_visual  # gemeinsame KI-Bild/Karten-Logik
 QUEUE = Path(__file__).resolve().parent.parent / "social" / "linkedin_queue.json"
 API = "https://api.linkedin.com/v2/ugcPosts"
 REGISTER = "https://api.linkedin.com/v2/assets?action=registerUpload"
+USERINFO = "https://api.linkedin.com/v2/userinfo"  # OpenID Connect → sub = Member-ID
+ME = "https://api.linkedin.com/v2/me"              # Fallback (r_liteprofile) → id
+
+
+def resolve_author_urn(token):
+    """Holt die KORREKTE Member-URN direkt vom Token (selbstheilend).
+    Erst OpenID `/userinfo` (sub), dann Legacy `/me` (id). Gibt z. B.
+    'urn:li:person:782bXyz' zurück oder None, wenn beides scheitert.
+    So kann eine falsch eingetippte LINKEDIN_AUTHOR_URN nichts mehr kaputt machen."""
+    for url, key in ((USERINFO, "sub"), (ME, "id")):
+        try:
+            req = urllib.request.Request(url, headers={
+                "Authorization": f"Bearer {token}",
+                "X-Restli-Protocol-Version": "2.0.0"})
+            with urllib.request.urlopen(req, timeout=20) as r:
+                data = json.loads(r.read().decode("utf-8"))
+            mid = data.get(key)
+            if mid:
+                return f"urn:li:person:{mid}"
+        except Exception as e:  # noqa: BLE001
+            print(f"  (Author-Resolve über {url.rsplit('/',1)[-1]} ging nicht: {e})")
+    return None
 
 
 def load_queue():
@@ -128,6 +150,31 @@ def post_to_linkedin_image(token, author, text, asset):
         return resp.status, resp.headers.get("x-restli-id", "")
 
 
+def post_one(token, author, text, img):
+    """Postet einen Beitrag für GENAU EIN Ziel (Person ODER Organisation).
+    Versucht Bild-Post, fällt auf Text-Post zurück. Gibt (status, post_id) zurück
+    oder (None, "") bei Fehler — wirft nicht, damit ein Ziel das andere nicht killt."""
+    try:
+        if img:
+            try:
+                upload_url, asset = register_upload(token, author)
+                upload_image(upload_url, token, img)
+                return post_to_linkedin_image(token, author, text, asset)
+            except Exception as ie:  # noqa: BLE001 — Bild-Pfad scheitert → Text-Post
+                print(f"::warning::[{author}] Bild-Upload fehlgeschlagen ({ie}); poste als Text.")
+                return post_to_linkedin(token, author, text)
+        return post_to_linkedin(token, author, text)
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode("utf-8", "ignore")[:300]
+        print(f"::warning::[{author}] LinkedIn API HTTP {e.code}: {detail}")
+        if e.code == 403 and "organization" in author:
+            print("  → Für die Unternehmensseite fehlt vermutlich der Scope "
+                  "'w_organization_social' (Community Management API). Siehe docs/LINKEDIN-AUTOPOST.md.")
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning::[{author}] LinkedIn-Post fehlgeschlagen: {e}")
+    return None, ""
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--dry-run", action="store_true")
@@ -148,38 +195,72 @@ def main() -> int:
 
     token = os.environ.get("LINKEDIN_ACCESS_TOKEN", "").strip()
     author = os.environ.get("LINKEDIN_AUTHOR_URN", "").strip()
-    if not token or not author:
-        print("LINKEDIN_ACCESS_TOKEN / LINKEDIN_AUTHOR_URN nicht gesetzt → no-op (Exit 0).")
+    if not token:
+        print("LINKEDIN_ACCESS_TOKEN nicht gesetzt → no-op (Exit 0).")
         return 0
+
+    # Selbstheilung: die korrekte Member-URN IMMER vom Token holen — das ist die
+    # einzige Quelle der Wahrheit. Eine falsch eingetippte LINKEDIN_AUTHOR_URN
+    # (z. B. die Zahl aus der Profil-URL statt der API-Member-ID) verursacht sonst
+    # genau den 403 "processing fields [/author]". Env-Wert nur als Fallback.
+    resolved = resolve_author_urn(token)
+    if resolved:
+        if author and author != resolved:
+            print(f"ℹ️ LINKEDIN_AUTHOR_URN ({author}) weicht von der echten Token-URN ab "
+                  f"→ nutze die echte: {resolved}")
+        author = resolved
+    elif author and not author.startswith("urn:li:person:"):
+        # Nur eine ID eingetragen → in volle URN packen
+        author = f"urn:li:person:{author}"
+    # Ziele zusammenstellen: persönliches Profil + optional die Unternehmensseite
+    # (LINKEDIN_ORG_URN/LINKEDIN_ORG_ID, Token braucht Scope w_organization_social).
+    # Steuerung über LINKEDIN_POST_TARGET: "person" | "org" | "both" (Default: "both"
+    # wenn eine Org gesetzt ist, sonst "person"). So lässt sich später per Secret auf
+    # "nur Seite" umstellen, ohne Code zu ändern.
+    org = os.environ.get("LINKEDIN_ORG_URN", "").strip() or os.environ.get("LINKEDIN_ORG_ID", "").strip()
+    if org and not org.startswith("urn:li:organization:"):
+        org = f"urn:li:organization:{org}"
+    mode = os.environ.get("LINKEDIN_POST_TARGET", "").strip().lower()
+    if mode not in ("person", "org", "both"):
+        mode = "both" if org else "person"
+
+    targets = []  # (label, author_urn)
+    if mode in ("person", "both") and author:
+        targets.append(("Profil", author))
+    if mode in ("org", "both") and org:
+        targets.append(("Unternehmensseite", org))
+    if mode == "org" and not org:
+        print("LINKEDIN_POST_TARGET=org, aber keine LINKEDIN_ORG_URN gesetzt → no-op (Exit 0).")
+        return 0
+    if not targets:
+        print("Kein Post-Ziel ermittelbar → no-op (Exit 0).")
+        return 0
+    print(f"Modus: {mode} · Post-Ziele: " + ", ".join(f"{lbl} ({urn})" for lbl, urn in targets))
 
     text = item["text"]
     img = build_visual(text, aspect="16:9", channel="linkedin")  # KI-Bild → Karte → None
-    try:
-        if img:
-            try:
-                upload_url, asset = register_upload(token, author)
-                upload_image(upload_url, token, img)
-                status, post_id = post_to_linkedin_image(token, author, text, asset)
-            except Exception as ie:  # noqa: BLE001 — Bild-Pfad scheitert → Text-Post
-                print(f"::warning::Bild-Upload fehlgeschlagen ({ie}); poste als Text.")
-                status, post_id = post_to_linkedin(token, author, text)
-        else:
-            status, post_id = post_to_linkedin(token, author, text)
-    except urllib.error.HTTPError as e:
-        print(f"::warning::LinkedIn API HTTP {e.code}: {e.read().decode('utf-8','ignore')[:300]}")
-        return 0  # nicht den Workflow rot machen
-    except Exception as e:  # noqa: BLE001
-        print(f"::warning::LinkedIn-Post fehlgeschlagen: {e}")
-        return 0
 
-    if status in (200, 201):
+    posted_any = False
+    ids = {}
+    for label, target in targets:
+        status, post_id = post_one(token, target, text, img)
+        if status in (200, 201):
+            posted_any = True
+            ids[label] = post_id
+            print(f"✓ {label} gepostet (id={post_id}).")
+        else:
+            print(f"::warning::{label} nicht gepostet.")
+
+    # Queue nur markieren, wenn MINDESTENS ein Ziel erfolgreich war (so wird ein
+    # Eintrag nicht „verbraucht", wenn alles scheitert).
+    if posted_any:
         item["status"] = "posted"
         item["posted_at"] = dt.datetime.utcnow().isoformat(timespec="seconds") + "Z"
-        item["linkedin_id"] = post_id
+        item["linkedin_id"] = ids
         QUEUE.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        print(f"✓ Gepostet (id={post_id}). Queue aktualisiert.")
+        print(f"✓ Queue aktualisiert ({len(ids)}/{len(targets)} Ziel(e) live).")
     else:
-        print(f"::warning::Unerwarteter Status {status} — Queue unverändert.")
+        print("::warning::Kein Ziel erfolgreich — Queue unverändert (Eintrag bleibt fällig).")
     return 0
 
 

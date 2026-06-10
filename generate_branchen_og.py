@@ -320,6 +320,21 @@ BRANCHEN = {
     "antiquitaetenhandel": ("Antiquitätenhandel",   ["Beschreibungen & Listings,", "nicht die Echtheitsprüfung"]),
     "pfandhaus":           ("Pfandhäuser",          ["Erklär- & Service-Texte,", "nicht die Wertschätzung"]),
     "gartenpflege":        ("Gartenpflege",         ["Angebote & Saisontipps,", "nicht die Vor-Ort-Arbeit"]),
+    "sportfachhandel":     ("Sportfachhandel",      ["Produkttexte & Service,", "nicht das Fitting"]),
+    "schuhgeschaeft":      ("Schuhgeschäfte",       ["Produkttexte & Social,", "nicht die Passform"]),
+    "eismanufaktur":       ("Eismanufaktur",        ["Sorten- & Social-Texte,", "keine Heilversprechen"]),
+    "kaeserei":            ("Käsereien",            ["Produkttexte & Shop,", "nicht die Kennzeichnung"]),
+    "trachtengeschaeft":   ("Trachtengeschäfte",    ["Produkt- & Anlasstexte,", "nicht die Anprobe"]),
+    "teppichreinigung":    ("Teppichreinigung",     ["Service- & Pflegetexte,", "nicht die Materialprüfung"]),
+    "gebrauchtwarenhandel": ("Gebrauchtwaren",      ["Beschreibungen & Listings,", "nicht die Zustandsprüfung"]),
+    "schokoladenmanufaktur": ("Schokoladen-Manufaktur", ["Produkttexte & Shop,", "keine Heilversprechen"]),
+    "spieleladen":         ("Spieleläden",          ["Produkttexte & Events,", "nicht die Spielberatung"]),
+    "fahrschule":          ("Fahrschulen",          ["Info & Termine,", "nicht der Unterricht"]),
+    "tanzschule":          ("Tanzschulen",          ["Kurse & Termine,", "nicht der Unterricht"]),
+    "reitstall":           ("Reitställe",           ["Angebote & Orga,", "nicht der Unterricht"]),
+    "gardinengeschaeft":   ("Gardinengeschäfte",    ["Produkttexte & Service,", "nicht das Aufmaß"]),
+    "skiservice":          ("Skiservice",           ["Service- & Verleihtexte,", "nicht die Bindung"]),
+    "sammelkartenladen":   ("Sammelkartenläden",    ["Listings & Events,", "nicht die Echtheitsprüfung"]),
 }
 
 

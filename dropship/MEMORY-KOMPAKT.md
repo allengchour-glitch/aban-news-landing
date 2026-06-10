@@ -1,0 +1,103 @@
+# 🧠 MEMORY-KOMPAKT — LuxeStyle (ZUERST LESEN, komprimiert aus allen Sessions)
+> Verdichtung aller STAND-/Log-Dateien. Details bei Bedarf: STAND-2026-06-09-ABSCHLUSS.md (POD/Designs),
+> STAND-2026-06-08 (Shopify-Auth), CJ-IMPORT-LOG.md (Katalog-Historie), ABEND-TODO.md (User-Klicks),
+> MISTER-DTF-FULFILLMENT.md (Bügeltransfer). Stand: 2026-06-09 nachts.
+
+## 🔑 FAKTEN & AUTH
+- Shop **LuxeStyle** (luxestyle.ch), myshopify `au3j0y-hq.myshopify.com`. Zugriff: Shopify-MCP `mcp__…__*` ODER
+  GitHub-Actions via **Client-Credentials** (Secrets `SHOPIFY_SHOP/CLIENT_ID/CLIENT_SECRET` gesetzt & funktionierend).
+  ⚠️ `atkn_`/`shpat_`-Token werden abgelehnt → IMMER Client-Credentials (`POST /admin/oauth/access_token`).
+- **Git-Workflow:** alles auf `main` via `_mp_*`-Branch → `git push origin _mp_x:main`. Dev-Branch `claude/dropshipping-session-LehDs` ist STALE. Pages liefert Repo unter **abannews.com** (reels/, social/, pod/) — Deploy-Backlog möglich.
+- **Secrets gesetzt (verifiziert):** SHOPIFY_*, GEMINI_API_KEY, PRINTFUL_API_KEY, CLOUDINARY (im Code: CLOUD `dwyi6kkrl`/PRESET `pigto8ba`),
+  TELEGRAM_*, META_*/IG/Threads, **FB_PAGE_ACCESS_TOKEN + FB_PAGE_ID** (2026-06-09 getestet ✓ Page-Token LuxeStyle CH, pages_manage_posts).
+  **Fehlt/parkt:** PRINTIFY_API_KEY, GELATO_API_KEY (User: Kreditkarte geht erst später).
+
+## ✅ LÄUFT AUTONOM (Dauerbetrieb, ohne User)
+- **Shop-Katalog:** ~200 CJ-Dropship-Produkte (Fashion), SEO/Beschreibungen/Kollektionen optimiert.
+- **„Selbst gestalten" (POD):** Editor v2 `pod/designer.js` (frei platzieren, Bild/Logo-Upload, 67-Sticker-Bibliothek,
+  Druckdatei-Bake via Cloudinary) auf 26 Printful-Sync-Produkten. **Preise gesund** (printful_reprice.mjs, ×2,3).
+  Bestellung→Druck: `printful_sync.mjs` (Cron 20 Min, Gemini-Kontroll-Gate, Auto-confirm bei PASS).
+- **Bügeltransfer-Linie** (Mister DTF, manuell): Produkt live, Editor dran.
+- **Social-Maschine (täglich):** veredelte 2,6-Sek-Clips (`enhance_clips.mjs`, Cron 05:20) + Montage (`make_montage.mjs`,
+  Cron 06:10) → Video-Queue → **Meta-Autopilot postet IG+FB+Threads** (FB jetzt aktiv). Rohe Lieferanten-Bilder gestoppt.
+- **Designs-Galerie-Seite** live (`/pages/designs-galerie`, Menü-Tab), zeigt alle Motive mit Kategorie-Filter.
+
+## 🖼️ PRINT/POD-STATUS (Kernprojekt)
+- **Motiv-Bibliothek: ~274 Fertig-Designs (`social/designs/`) + 67 Sticker (`social/stickers/`) = ~340.** Themen: Tiere,
+  Sprüche (DE/EN/Schweiz Hoi/Grüezi/Merci), Tattoo, Food, Natur/Blumen, Space/Zodiac, Sport, Musik, Gaming, Y2K, Vegan,
+  Logos/Badges, Saison, Self-Care. Generator `gen_designs.mjs`/`gen_stickers.mjs` (Gemini Nano-Banana, Magenta-BG +
+  pngjs/Pillow-Chroma-Key, skip vorhandene, max/Lauf). ⚠️ manche Outputs grau → Alpha-Cleanup T=120.
+- **VERKAUF = geparkt auf Kreditkarte + Provider-Keys.** Entscheid: **Sticker via Printify**, **Poster/Shirts via Gelato**
+  (beide volle API → create+auto-fulfill, vollautonom). Geldfluss: Kunde→Shopify/Stripe→User-Bank; Anbieter bucht
+  Produktionskosten autom. von User-Karte; Differenz=Gewinn. Claude steuert nur Logistik, kein Geld.
+- **Connector-Scaffolds da:** `create_sticker_products_shopify.mjs` (Plan B Shopify, productSet) +
+  `printful_create_design_products.mjs` (Printful /store/products — für Shopify-Stores GESPERRT, nur API-Store-Typ).
+  → Sobald PRINTIFY/GELATO-Key: echte Connectoren bauen, je 1 Test, dann Voll-Rollout der 340 Motive + Kollektionen.
+
+## ⚠️ TEUER GELERNTE LEHREN
+- **GitHub-Expression-Bug:** `cond && '' || '1'` ergibt IMMER '1' (leerer String=falsy) → nutze `… && '0' || '1'`.
+- **Gemini „transparent" = Schachbrett/grau**, nicht echtes Alpha → auf Magenta generieren + Chroma-Key + Alpha-Cleanup.
+- **ffmpeg-Hänger:** `-nostdin` + Input `-t` + fetch-Timeouts. Stills brauchen `-framerate`.
+- **Pages-Backlog:** neue URLs erst 404, dann 200 (Minuten). Für sofort: Shopify-CDN oder raw.githubusercontent (PNG ok, MP4=octet-stream → IG mag's nicht).
+- **Live-Theme-Write:** über MCP gesperrt, ABER über echte Admin-API (Script, Client-Credentials) erlaubt → Footer/Policies autonom fixbar.
+- **Printful-App-Import** auf „manuell" → evtl. 2 Entwürfe (App ohne Design + unser API-Sync mit Design) → den MIT Design bestätigen.
+- **Headless-Chromium** im Container (`/opt/pw-browsers`) → QA-Screenshots mit `--ignore-certificate-errors` (Sandbox-TLS).
+  Aber: kein Login in User-Accounts → FB-Token/TikTok-Kampagne = User/sein Browser-Claude oder API-Token.
+- **KEINE asiatischen Models** in Content. KEINE Fake-Reviews. Bali kein Content (Model asiatisch).
+
+## 🟡 OFFENE USER-KLICKS (Reichweite/Setup)
+1. **Kreditkarte** + **PRINTIFY_API_KEY** + **GELATO_API_KEY** → POD-Verkauf vollautonom zünden.
+2. **TikTok-Kampagne** „Complete Payment" (Pixel D8EKVR3C77U6KT5BTBD0, CH/Frauen/18–34, 20 CHF/Tag) — oder TikTok-Marketing-API-Token geben → Claude macht's per API.
+3. **GEMINI-Billing aufladen** (Projekt-Guthaben) — siehe Lehre unten, AKTUELL LEER.
+- ERLEDIGT autonom: AGB-Domain, Footer-Links, FB-Token getestet ✓, **POD-Mockups gesäubert** (s.u.).
+
+## 🆕 2026-06-09 spät — POD-Mockups „Dein Design" entfernt + 2 wichtige Lehren
+- **User-Beschwerde:** auf der „Selbst gestalten"-Collection war der Platzhalter „Dein Design" auf gewölbten
+  Produkten (Taschen/Tasse/Flasche/Body) **abgeschnitten** → wirkte kaputt. FIX: 11 Featured-Bilder auf
+  **saubere Blanko-Echtfotos** getauscht (Taschen×6, Tasse, Flasche, Baby-Body, 2 iPhone-Hüllen). Apparel blieb
+  (Text dort lesbar/zentriert); Sticker blieb (Printful-Blank zeigt „Stickers"-Sample). Per Shopify-MCP
+  `productCreateMedia`+`productDeleteMedia`(+`productReorderMedia` für die Hüllen mit 7/53 Varianten-Bildern).
+- **🔴 LEHRE 1 — GEMINI-GUTHABEN LEER:** Nano-Banana/Veo geben **HTTP 429 „prepayment credits are depleted"**.
+  Die 30 CHF sind aufgebraucht → JEDE Gemini-**Bild**-Generierung (gen_designs/gen_stickers/gemini_enhance_image/
+  pod_blank_mockups/Veo) ist bis zum Aufladen tot. (Gemini-**Text** evtl. via Free-Tier noch ok.) Nicht stundenlang
+  suchen — erst Billing prüfen.
+- **🟢 LEHRE 2 — Printful-Katalog ist GRATIS & ÖFFENTLICH (kein Key!):** `GET https://api.printful.com/products/variant/{catalogVariantId}`
+  → `result.variant.image` = **sauberes Blanko-Produktfoto** (weisser BG, kein „Dein Design"). `catalogVariantId` =
+  Teil nach „_" in der Shopify-SKU (`<sync>_<catalogVariantId>`). So OHNE Gemini/Key saubere Mockups holen.
+  ⚠️ manche Varianten liefern `…/product_temporary_image.jpg` (leer) → andere White-Variante via `/products/{product_id}` nehmen.
+  ⚠️ Apparel-`variant.image` ist oft ein **Model-Foto** (Regel „keine asiatischen Models" prüfen! var 10874/recycelter-Hoodie las asiatisch → vermieden) → für Apparel lieber Flat/Ghost.
+- **Tool/Workflow** `automation/pod_blank_mockups.mjs` + `.github/workflows/pod-blank-mockups.yml` (Gemini-Text-Removal,
+  liegt bereit für wenn Billing wieder da ist; aktuell no-op wegen 429).
+
+## 🇨🇭 MARKTLÜCKE = „Schweiz Edition" (Strategie: `dropship/MARKTLUECKE-SCHWEIZ-EDITION.md`)
+- **Daten 30T:** 2.888 Sessions, **1.541 CH** (53 %), aber **8 Warenkorb / 7 Checkout / 0 Kauf** → Engpass = **Conversion**,
+  nicht Traffic. Kaltes Social-Publikum sieht austauschbare Dropship-Mode (= Temu/AliExpress) → kein Kaufgrund.
+- **Lücke:** **Mundart- & CH-Kultur-POD** (Hoi zäme, Chuchichäschtli, Kanton-Pride…) — Sprach-/Kulturmauer gegen
+  generische Dropshipper, emotional/Heimat, geschenk-/impuls-tauglich, on-demand (Printful EU / Mister DTF CH).
+  **Held = Mundart-Sticker CHF 4.90** (Produktbild = Motiv, kein Mockup → schnellster Launch + bester Conv-Hebel).
+- **Vorbereitet diese Session:** +39 Mundart/CH-Design-Briefs in `social/designs/prompts.json` (313 total, generieren
+  sobald Gemini-Billing da); Smart-Collection **„🇨🇭 Schweiz Edition"** angelegt (`gid://shopify/Collection/688449749377`,
+  handle `schweiz-edition`, Regel Tag `schweiz-edition`, leer/startklar).
+- **Zum Live-Schalten:** (1) Gemini-Billing → Motive generieren; (2) Printify/Gelato-Key (Karte) → Auto-Fulfill;
+  (3) Pre-made Produkte taggen `schweiz-edition`; (4) Menü/Hero verlinken + Reel + Kampagne. Details im Strategie-Doc.
+
+### Update 2026-06-10 — Gemini-Guthaben WIEDER DA ✅
+- User: „geht" → `gen-designs.yml` 2× dispatcht: erst die ~45 alten Lücken, dann gezielt (`only=`) die **39 CH-Motive**.
+  **Alle 39 generiert, Mundart-Rechtschreibung korrekt** (Chuchichäschtli, Grüezi mitenand, Härzlech, Gopfertami,
+  Feierabig, Znüni, Bünzli, Gäll, es git nu eis ZÜRI, BÄRN, BASEL, 1. August…). Bibliothek **268 designs + 67 sticker**.
+- **Designs-Galerie neu gebaut → 335 Motive (51 Schweiz), CH zuerst.** `page_body.html` regeneriert (Shell/v3.1 erhalten,
+  Kategorien gemappt: ch-*→Schweiz, flower→Natur, zodiac/space→Space, sport, food), via `designs-page.yml` publiziert.
+  ⚠️ **Pages-Deploy-Lag ~15–20 Min** für neue PNGs → vor dem Publizieren auf `abannews.com/...png`=200 warten (sonst broken tiles).
+- **Kund:innen können die CH-Motive JETZT schon kaufen** über „Selbst gestalten" (Editor → Printful-Fulfillment LÄUFT).
+  Offen für Fertig-Produkte (ohne Gestalten): Printify/Gelato-Key (Karte).
+- **Menü-Verlinkung (2026-06-10):** Top-Level **„🇨🇭 Schweiz Edition"** (Pos. 2, MenuItem `787008815489`) →
+  `/pages/designs-galerie?cat=Schweiz`. Galerie-JS kann jetzt **Deep-Link-Filter** (`?cat=` oder `#Kategorie`).
+  Sub-Item „Designs & Sticker" auf (335) aktualisiert. `menuUpdate` ersetzt ALLE Items → immer komplette
+  Item-Liste (mit ids) mitsenden, sonst Verlust.
+- **Startseiten-Hero „Schweiz Edition" — VERSUCHT, zurückgerollt (2026-06-10):** Tool `automation/add_hero_schweiz.mjs`
+  + Workflow `hero-schweiz.yml` (klont bestehenden Hero, Backup `dropship/theme-backups/index.json.bak`, REMOVE=1=Rollback).
+  LEHRE: Hero-`image_1` akzeptiert NUR `shopify://shop_images/<file>` (externe/CDN-URL → „does not point to an applicable
+  resource"); Bild via stagedUploadsCreate+fileCreate hochgeladen (`schweiz-edition-hero.png`, liegt in Shopify-Files bereit).
+  Ergebnis: mobil gut (Headline+Button über Motiv-Wallpaper), **Desktop schlecht** (Hero zu hoch, Text/Button unsichtbar)
+  → entfernt, Startseite wieder sauber/original. Hero-Feintuning = visueller Customizer-Job. Schweiz-Discovery läuft
+  weiter über den Menü-Link (solider Live-Gewinn).

@@ -1,0 +1,71 @@
+name: Märkte-Daten (Kurse + News + KI-Sentiment)
+
+# Aktualisiert data/markets.json: Aktien-/Krypto-Kurse + Finanz-News (Stooq/CoinGecko/RSS)
+# und ergänzt experimentelles Claude-Sentiment pro Wert. No-op-sicher: ohne ANTHROPIC_API_KEY
+# läuft nur der Kurs-/News-Teil. Commit nur bei Änderung; Cloudflare deployt vom Default-Branch.
+on:
+  schedule:
+    - cron: '0 6 * * 1-5'      # Mo–Fr 06:00 UTC
+    - cron: '0 16 * * 1-5'     # Mo–Fr 16:00 UTC (nach US-Open)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: markets-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Kurse + News holen
+        run: |
+          python automation/markets_fetch.py \
+            || echo "markets_fetch mit Warnung beendet"
+
+      - name: KI-Sentiment (Gemini) ergänzen
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_LOCATION: ${{ vars.GCP_LOCATION }}
+          VERTEX_TEXT_MODEL: ${{ vars.VERTEX_TEXT_MODEL }}
+        run: |
+          pip install --quiet google-auth requests || true
+          python automation/markets_ai.py \
+            || echo "markets_ai mit Warnung beendet (kein Key?)"
+
+      - name: Detailseiten pro Wert bauen (Charts)
+        run: |
+          python automation/build_markets_detail.py \
+            || echo "build_markets_detail mit Warnung beendet"
+
+      - name: Telegram-Markt-Digest (1×/Tag, no-op ohne Secrets)
+        if: github.event.schedule == '0 16 * * 1-5' || github.event_name == 'workflow_dispatch'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
+        run: |
+          python automation/markets_telegram.py \
+            || echo "markets_telegram mit Warnung beendet"
+
+      - name: Daten + Detailseiten committen (falls geändert)
+        run: |
+          git add -f data/markets.json maerkte/*.html en/maerkte/*.html
+          if ! git diff --cached --quiet; then
+            git config user.name "aban-news-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git commit -m "chore(markets): frische Kurse, News, KI-Sentiment & Charts [skip ci]"
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else
+            echo "Keine Änderung."
+          fi

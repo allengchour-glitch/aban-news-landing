@@ -26,6 +26,8 @@ jobs:
         env:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
+          LINKEDIN_ORG_URN: ${{ secrets.LINKEDIN_ORG_URN }}
+          LINKEDIN_POST_TARGET: ${{ vars.LINKEDIN_POST_TARGET }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_IMAGE_MODEL: ${{ vars.GEMINI_IMAGE_MODEL }}
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
@@ -46,7 +48,17 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add social/linkedin_queue.json
             git commit -m "LinkedIn-Autopost: Queue-Status aktualisiert [skip ci]"
-            git push
+            # Race-sicher: andere Bots pushen staendig auf main → vor dem Push
+            # rebasen und bei Ablehnung mehrfach erneut versuchen. WICHTIG, damit
+            # der "posted"-Status sicher landet und kein Eintrag doppelt gepostet wird.
+            for i in 1 2 3 4 5; do
+              if git push; then echo "Push ok (Versuch $i)"; exit 0; fi
+              echo "Push abgelehnt — rebase + retry ($i/5)"
+              git pull --rebase --autostash origin main || true
+              sleep 3
+            done
+            echo "::error::Queue-Status konnte nach 5 Versuchen nicht gepusht werden."
+            exit 1
           else
             echo "Queue unveraendert — kein Commit."
           fi

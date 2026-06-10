@@ -15,7 +15,7 @@ name: Reel Auto-Post (alle 4 Stunden 1 Reel)
 
 on:
   schedule:
-    - cron: '0 */4 * * *'   # alle 4 Stunden
+    - cron: '0 9 * * *'   # alle 4 Stunden
   workflow_dispatch: {}
 
 permissions:
@@ -54,7 +54,7 @@ jobs:
             git config user.email "actions@users.noreply.github.com"
             git add automation/reels_seed.csv
             git commit -m "reel-autopost: Reel als posted markiert [skip ci]"
-            git push
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
           else
             echo "Keine Änderung an der Queue — nichts zu committen."
           fi

@@ -31,8 +31,18 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent          # automation/
 REPO = ROOT.parent
-QUEUE_MIN = int(os.environ.get("ABAN_QUEUE_MIN", "5"))
-GEN_N = int(os.environ.get("ABAN_GEN_N", "3"))
+def _int_env(name: str, default: int) -> int:
+    """Robust: gesetzte-aber-leere GitHub-Variablen liefern '' (nicht den Default)
+    → int('') crasht. Daher leeren String ausdrücklich auf den Default fallen lassen."""
+    v = (os.environ.get(name) or "").strip()
+    try:
+        return int(v) if v else default
+    except ValueError:
+        return default
+
+
+QUEUE_MIN = _int_env("ABAN_QUEUE_MIN", 5)
+GEN_N = _int_env("ABAN_GEN_N", 3)
 QUEUES = {"Telegram": REPO / "social" / "telegram_queue.json",
           "LinkedIn": REPO / "social" / "linkedin_queue.json"}
 
@@ -98,7 +108,7 @@ def main() -> int:
             # Hub-Header-Bilder Stück für Stück nachfüllen (gratis Pexels, idempotent →
             # überspringt fertige). Füllt die 262 Hubs über mehrere Tage von selbst.
             run([py, "automation/gen_site_images.py", "--kind", "hub", "--batch",
-                 os.environ.get("ABAN_IMG_BATCH", "25")], "Hub-Bilder nachfüllen (Pexels)")
+                 (os.environ.get("ABAN_IMG_BATCH") or "25")], "Hub-Bilder nachfüllen (Pexels)")
             run([py, "tools/share_kit.py"], "Share-Kit aktualisieren")
 
     print("\n✅ Autopilot fertig. (Posten erledigen die Autopost-Workflows; "

@@ -30,6 +30,16 @@ ich autonom**: echte Printful-Kosten je Variante holen → Retail = Kosten ×2,3
 1. **EINE** saubere TikTok-Kampagne: Ziel **„Complete Payment"**, Pixel `D8EKVR3C77U6KT5BTBD0`, CH / Frauen /
    18–34 / DE+FR, **20 CHF/Tag** Test, nur TikTok-Placement. **Alle Auto-/Smart-Kampagnen AUS.**
 2. **AGB-/Policy-Domain:** Shopify → Einstellungen → **Richtlinien** → `aban-192.myshopify.com` → `luxestyle.ch` ersetzen.
+3. **`FB_PAGE_ACCESS_TOKEN` setzen → Facebook-Posting reparieren.** Aktuell posten IG + Threads ✅, **Facebook
+   scheitert** (`403 (#200) … deprecated`), weil kein echter Page-Token gesetzt ist (Code fällt auf den User-Token
+   `META_ACCESS_TOKEN` zurück, den FB ablehnt). **So holen:**
+   1. https://developers.facebook.com/tools/explorer → eigene App wählen.
+   2. **Permissions** hinzufügen: `pages_manage_posts`, `pages_read_engagement` → **Generate Access Token**.
+   3. „Get **Page** Access Token" → Seite **„LuxeStyle CH" (`1049840534888592`)** wählen → den Page-Token kopieren.
+   4. *(Empfohlen: unter Token-Debugger „Extend / Long-lived" → Langzeit-Token, sonst läuft er in ~1 h ab.)*
+   5. Als GitHub-Secret **`FB_PAGE_ACCESS_TOKEN`** speichern:
+      https://github.com/allengchour-glitch/aban-news-landing/settings/secrets/actions
+   → Danach posten alle 3 Kanäle (IG/FB/Threads). 13 Bild-Posts + 7 Stories + 3 Reels stehen schon bereit.
 
 ## 🛠️ 3. CUSTOMIZER-FEINSCHLIFF (Theme → „Anpassen")
 1. **Footer-Social-Links** zeigen noch auf „Abannews" → fixen:
@@ -44,3 +54,8 @@ ich autonom**: echte Printful-Kosten je Variante holen → Retail = Kosten ×2,3
 
 ---
 > ✅ Schnellster Hebel heute Abend: **Punkt 1** (Printful-Key + Cloudinary). Danach mache ich Preise + Live-Test autonom.
+
+## ✅ ERLEDIGT (autonom, 2026-06-09)
+- **AGB/Policy-Domain:** bereits sauber (kein aban-192); luxestyle.com→luxestyle.ch + Telefon-Tippfehler gefixt (`fix_policies_footer.mjs`).
+- **Footer-Social-Links:** „Abannews"-custom_url entfernt, TikTok→@luxestyle.ch, FB/IG/Threads korrekt (Theme-Write via Admin-API).
+- **Offen bleiben nur:** FB_PAGE_ACCESS_TOKEN + TikTok-Kampagne.

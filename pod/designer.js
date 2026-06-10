@@ -15,7 +15,7 @@
 (function(){
   if (window.__lspodDesignerLoaded) return; window.__lspodDesignerLoaded = true;
 
-  var CLOUD='', PRESET='', IMG_ENABLED=!!(CLOUD&&PRESET);
+  var CLOUD='dwyi6kkrl', PRESET='pigto8ba', IMG_ENABLED=!!(CLOUD&&PRESET);
   var STICKER_BASE='https://abannews.com/social/stickers/';
   var STICKER_INDEX=STICKER_BASE+'index.json';
   var REF=1200; // Referenz-/Druckauflösung (px) der quadratischen Designfläche

@@ -13,7 +13,7 @@
 window.ABAN_CHECKOUT = {
   PAKET_BUY_URL:     "",   // KI-Sichtbarkeit Komplett-Paket (29 €, einmalig)
   DATENSATZ_ABO_URL: "",   // KI-Tools-Datensatz Abo (9 €/Monat)
-  MONITOR_ABO_URL:   "",   // KI-Sichtbarkeits-Monitor (9 €/Monat, Subscription)
+  MONITOR_ABO_URL:   "https://buy.stripe.com/7sY3cx0PQ3IUdUP0wd5wI07",   // KI-Sichtbarkeits-Monitor (9 €/Monat, Subscription)
   VORLAGEN_BUY_URL:  "",   // Klartext-Vorlagen-Set (19 €)
   COMPLIANCE_BUY_URL: "",   // KI-Compliance-Paket regulierte Berufe (39 €)
   SCHNELLSTART_BUY_URL: "", // KI-Schnellstart-Workbook (29 €)

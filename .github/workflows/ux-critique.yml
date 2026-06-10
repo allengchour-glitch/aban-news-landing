@@ -1,0 +1,20 @@
+name: UX-Kritik (Designs-Seite)
+on: { workflow_dispatch: {} }
+permissions: { contents: write }
+jobs:
+  crit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - name: Gemini-UX-Kritik
+        env: { GEMINI_API_KEY: "${{ secrets.GEMINI_API_KEY }}" }
+        run: node automation/gemini_ux_critique.mjs
+      - name: Commit
+        run: |
+          if [ -n "$(git status --porcelain dropship/designs/ux-critique.md)" ]; then
+            git config user.name "luxestyle-autopilot"; git config user.email "bot@users.noreply.github.com"
+            git add dropship/designs/ux-critique.md; git commit -m "Gemini-UX-Kritik [skip ci]"
+            for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          fi

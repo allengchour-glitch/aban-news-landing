@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Hype Detector — spot the buzzwords, get plain English | aban news</title>
+<meta name="description" content="Paste any AI marketing or pitch text and instantly see how much hype is in it. Highlights buzzwords, gives a hype score and translates the jargon into plain English. Free, no login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/en/ki-hype-detektor.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/ki-hype-detektor.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-hype-detektor.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-hype-detektor.html">
+<meta property="og:title" content="AI Hype Detector — spot the buzzwords">
+<meta property="og:description" content="Paste text → hype score + plain-English translation of the buzzwords. Maximally honest, free, no login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/en/ki-hype-detektor.html">
+<meta property="og:image" content="https://abannews.com/og-ki-hype-detektor.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="en_US"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"AI Hype Detector","url":"https://abannews.com/en/ki-hype-detektor.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"en","description":"Analyses AI marketing copy for buzzwords, gives a hype score and translates jargon into plain English.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--field:#fffdf9;--ok:#15803d;--okbg:#ecfdf3;--warn:#b45309;--bad:#b91c1c}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15;--ok:#86efac;--okbg:#1c2a1e;--bad:#fca5a5}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:11px 18px;border-radius:9px;border:0;cursor:pointer;font-size:1rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 6px;text-align:center}
+.hero h1{font-size:clamp(25px,5vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,18px);color:var(--ink2);max-width:600px;margin:0 auto}
+.app{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:24px 0 6px}
+textarea{width:100%;min-height:160px;background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font:inherit;color:var(--ink);resize:vertical}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.muted{color:var(--muted);font-size:.88rem}
+.result{margin-top:18px;display:none}
+.result.show{display:block}
+.gauge{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.score{font-size:2.4rem;font-weight:800;line-height:1;min-width:96px;text-align:center}
+.bar{flex:1;height:14px;border-radius:8px;background:linear-gradient(90deg,#15803d,#d97706 55%,#b91c1c);position:relative;overflow:hidden}
+.bar::after{content:"";position:absolute;top:0;bottom:0;right:0;background:var(--card);width:var(--empty,100%);transition:width .5s ease}
+.verdict{font-weight:800;font-size:1.15rem;margin-bottom:4px}
+.verdict.g{color:var(--ok)}.verdict.y{color:var(--warn)}.verdict.r{color:var(--bad)}
+.preview{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:14px;margin:12px 0;white-space:pre-wrap;word-break:break-word}
+mark{background:var(--cream);color:var(--ink);border-bottom:2px solid var(--amber);border-radius:3px;padding:0 2px}
+.hits{list-style:none;margin:10px 0 0;display:grid;gap:8px}
+.hits li{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.95rem}
+.hits b{color:var(--amber-dk)}
+.share{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line);padding-top:14px}
+.sbtn{display:inline-block;background:var(--field);color:var(--amber-dk);border:1px solid var(--amber-lt);border-radius:8px;padding:7px 12px;font-size:.88rem;font-weight:600;text-decoration:none;cursor:pointer}
+.sbtn:hover{background:var(--cream)}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--amber-dk);background:var(--amber-lt);border-radius:5px;padding:1px 6px;margin-left:6px}
+.disc{color:var(--muted);font-size:.84rem;margin:16px 0;background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:12px 14px}
+.band{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:24px;text-align:center}
+.band h2{font-size:1.2rem;margin-bottom:8px}.band p{color:var(--ink2);max-width:560px;margin:0 auto 14px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="/ki-hype-detektor.html" class="btn ghost">DE</a></div></header>
+<main><div class="wrap">
+
+  <section class="hero">
+    <h1><span class="a">AI Hype</span> Detector</h1>
+    <p>Paste any marketing, pitch or LinkedIn text. The detector highlights the buzzwords, gives a hype score and translates the jargon into plain English. Runs entirely in your browser — your text never leaves your device.</p>
+  </section>
+
+  <div class="app">
+    <label for="txt" style="font-weight:600;display:block;margin-bottom:8px">Paste your text:</label>
+    <textarea id="txt" placeholder="e.g. &quot;Our revolutionary, AI-powered platform effortlessly scales and disrupts the entire industry – a true game-changer for the future of work.&quot;"></textarea>
+    <div class="row">
+      <button class="btn" id="go" type="button">Check the hype →</button>
+      <button class="btn ghost" id="demo" type="button">Load example</button>
+      <span class="muted" id="wc"></span>
+    </div>
+
+    <div class="result" id="result" aria-live="polite">
+      <div class="gauge">
+        <div class="score" id="score">0</div>
+        <div style="flex:1">
+          <div class="verdict" id="verdict"></div>
+          <div class="bar" id="bar"></div>
+        </div>
+      </div>
+      <p class="muted" id="summary"></p>
+      <div class="preview" id="preview"></div>
+      <ul class="hits" id="hits"></ul>
+      <div class="share" id="share">
+        <span class="muted">Share:</span>
+        <button class="sbtn" id="sh-native" type="button" hidden>Share…</button>
+        <a class="sbtn" id="sh-li" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="sbtn" id="sh-x" target="_blank" rel="noopener">X</a>
+        <a class="sbtn" id="sh-wa" target="_blank" rel="noopener">WhatsApp</a>
+        <button class="sbtn" id="sh-copy" type="button">Copy link</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="disc">😅 Fun with a point: buzzwords aren't automatically evil — sometimes "scalable" is the right word. But anyone saying "revolutionary" five times in three sentences is usually thin on specifics. The score is a guide, not a verdict.</p>
+
+  <div class="band">
+    <h2>That's exactly what aban news is for</h2>
+    <p>We read the AI hype so you don't have to. Honest, no-nonsense takes on what's actually new, what's just marketing, and what you can use today. (German newsletter — but the tools are for everyone.)</p>
+    <a class="btn" href="https://abannews.beehiiv.com/subscribe">Subscribe free →</a>
+  </div>
+
+  <p class="muted" style="text-align:center;margin:8px 0 0">More free tools: <a href="/en/ki-werkzeug.html">AI Toolkit</a> · <a href="https://abannews.com/welche-ki-fuer-was.html">AI tools directory</a> · <a href="/ki-hype-detektor.html">Deutsche Version</a></p>
+
+</div></main>
+<footer><div class="wrap">&copy; 2026 aban news &middot; Allen Chour &middot; Belp (CH) &middot;
+  <a href="/en/ki-werkzeug.html">AI Toolkit</a> &middot; <a href="/ki-hype-detektor.html">Deutsch</a> &middot; <a href="/impressum.html">Imprint</a> &middot; <a href="/datenschutz.html">Privacy</a></div></footer>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(id){return document.getElementById(id);};
+  // [pattern, category, plain-English translation]
+  var DICT=[
+    ["revolution(ary|ise|ize|ising|izing)","Overstatement","Usually means ‘it's new’. Real revolutions are obvious in hindsight, not in an ad."],
+    ["groundbreaking|game[- ]?chang(er|ing)","Overstatement","The ground rarely breaks. Ask: what changes for YOU, specifically?"],
+    ["disrupt(ive|ion|ing|s)?","Buzzword","Sounds like an uprising, usually means ‘a bit different’. Demand the concrete benefit."],
+    ["quantum leap","Overstatement","Ironically, a real quantum leap is tiny. Usually just ‘a little better’."],
+    ["paradigm shift","Buzzword","Big phrase for ‘we do it differently’. Ask for an example."],
+    ["next[- ]?level","Buzzword","Which level? Without a number or example it's just mood music."],
+    ["future of work","Buzzword","Favourite filler. Says nothing about the actual product."],
+    ["(ai|ml)[- ]?powered|powered by (ai|ml)","Pseudo-tech","‘Has AI in it’ — doesn't say it helps. Which task does it actually solve?"],
+    ["seamless(ly)?|frictionless","Buzzword","A promise with no proof. Integrations fail exactly here."],
+    ["effortless(ly)?|with (a|one) click|automagically","Savior-promise","Nothing good is truly effortless. What do you ACTUALLY have to do?"],
+    ["in seconds|instantly","Savior-promise","Speed with no word on quality. Fast and wrong is still wrong."],
+    ["holistic|end[- ]?to[- ]?end|all[- ]?in[- ]?one","Buzzword","Means ‘everything’ — often ‘nothing done well’. Find the core benefit."],
+    ["synerg(y|ies|istic)","Buzzword","A classic of empty talk. Concretely: what saves time or money?"],
+    ["10x|100x|exponential(ly)?","Overstatement","Numbers with no source. Ask how it was measured, and versus what."],
+    ["magic(al)?|like magic","Savior-promise","It's not magic, it's software. ‘Magic’ = ‘we won't explain it’."],
+    ["state[- ]?of[- ]?the[- ]?art|cutting[- ]?edge|bleeding[- ]?edge","Buzzword","Standard today, old tomorrow. Says nothing about your benefit."],
+    ["(world|market|industry)[- ]?(leading|leader)|best[- ]?in[- ]?class|number one|#1","Overstatement","Leading according to whom? Without an independent source it's just a claim."],
+    ["unique|one[- ]?of[- ]?a[- ]?kind|unparalleled","Overstatement","Almost never truly unique. A direct comparison exposes it."],
+    ["innovati(ve|on)","Buzzword","The most-used word for ‘we think we're great’. Demand an example."],
+    ["transformati(ve|on)|transform(s|ing)?","Buzzword","Big promise. What measurably changes in your day-to-day?"],
+    ["empower(s|ment|ing)?","Buzzword","Pretty word for ‘helps’. Helps with what, exactly?"],
+    ["intelligent|smart(er)?","Pseudo-tech","‘Smart’ is decoration. What matters: does it produce better results?"],
+    ["self[- ]?learning|learns over time|neural power","Pseudo-tech","Sounds like a magic brain. Ask what it concretely does better over time."],
+    ["scalable|scales (effortlessly|seamlessly)?","Pseudo-tech","Often fine — but a filler too. Scales what, up to where, at what cost?"],
+    ["solves (all|every)|for everything|any problem","Savior-promise","One tool for everything rarely does anything well. Stay sceptical."],
+    ["replaces (humans|your team|people)|fully replace","Savior-promise","Almost never. It usually replaces sub-tasks — which is plenty, honestly."],
+    ["\\bagi\\b|artificial general intelligence|human[- ]?like|thinks like a human|truly understands","Pseudo-tech","Today's AI ‘understands’ nothing, it computes probabilities. A big red flag."],
+    ["limitless|unlimited|infinite","Overstatement","There are always limits (price, quota, quality). Read the fine print."],
+    ["guaranteed (roi|results|success)|effortless roi","Savior-promise","Guarantees in AI marketing are a warning sign, not a selling point."],
+    ["deep tech|hypergrowth|moonshot|unicorn","Buzzword","Investor vocabulary. Usually irrelevant for your business."],
+    ["never again|forever|once and for all","Overstatement","Absolute words are almost always false. Reality is greyer."]
+  ];
+
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
+
+  function analyze(text){
+    var safe=esc(text);
+    var words=(text.trim().match(/\S+/g)||[]).length;
+    var found={}, totalHits=0;
+    DICT.forEach(function(e){
+      var re=new RegExp("("+e[0]+")","gi");
+      var m, n=0;
+      while((m=re.exec(text))!==null){ n++; if(m.index===re.lastIndex) re.lastIndex++; }
+      if(n>0){ found[e[0]]={cat:e[1],klar:e[2],n:n}; totalHits+=n; }
+      safe=safe.replace(new RegExp("("+e[0]+")","gi"),"<mark>$1</mark>");
+    });
+    var density = words? (totalHits/words*100):0;
+    var score = Math.max(0, Math.min(100, Math.round(totalHits*6 + density*4)));
+    return {safe:safe, words:words, hits:found, totalHits:totalHits, density:density, score:score};
+  }
+
+  function render(r){
+    var res=$("result"); res.classList.add("show");
+    $("score").textContent=r.score;
+    $("bar").style.setProperty("--empty",(100-r.score)+"%");
+    var v=$("verdict"), cls, label, sum;
+    if(r.words===0){ res.classList.remove("show"); return; }
+    if(r.totalHits===0){ cls="g"; label="🟢 Surprisingly honest"; sum="Not a single buzzword found. Either genuinely concrete — or you picked the good bits."; }
+    else if(r.score<=25){ cls="g"; label="🟢 Low hype"; sum="A few clichés, but within reason. Check whether something concrete sits behind the highlights."; }
+    else if(r.score<=55){ cls="y"; label="🟡 Noticeable hype"; sum="Clearly marketing-speak. For every highlight: demand a concrete example or number."; }
+    else { cls="r"; label="🔴 Hype alert"; sum="A dense buzzword storm. High chance there's little substance behind it."; }
+    v.className="verdict "+cls; v.textContent=label;
+    $("summary").textContent=sum+" ("+r.totalHits+" hits across "+r.words+" words)";
+    $("preview").innerHTML=r.safe;
+    var keys=Object.keys(r.hits);
+    if(keys.length){
+      $("hits").innerHTML=keys.map(function(k){
+        var h=r.hits[k];
+        var word=k.split("|")[0].replace(/[()?]/g,"").replace(/\[.*?\]/g,"").replace(/\\b/g,"").replace(/\\/g,"");
+        return "<li><b>"+esc(word)+"</b><span class=\"tag\">"+h.cat+"</span>"+(h.n>1?" ×"+h.n:"")+"<br>"+h.klar+"</li>";
+      }).join("");
+    } else { $("hits").innerHTML=""; }
+    var url="https://abannews.com/en/ki-hype-detektor.html";
+    var msg="My AI pitch scores "+r.score+"/100 on the AI Hype Detector. Check yours — and cut through the hype:";
+    $("sh-li").href="https://www.linkedin.com/sharing/share-offsite/?url="+encodeURIComponent(url);
+    $("sh-x").href="https://twitter.com/intent/tweet?text="+encodeURIComponent(msg)+"&url="+encodeURIComponent(url);
+    $("sh-wa").href="https://wa.me/?text="+encodeURIComponent(msg+" "+url);
+    var nat=$("sh-native");
+    if(navigator.share){ nat.hidden=false; nat.onclick=function(){ navigator.share({title:"AI Hype Detector",text:msg,url:url}).catch(function(){}); }; }
+  }
+
+  $("sh-copy").addEventListener("click", function(){
+    var u="https://abannews.com/en/ki-hype-detektor.html"; var b=this;
+    (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){
+      b.textContent="Copied ✓"; setTimeout(function(){b.textContent="Copy link";},1500);
+    }).catch(function(){ window.prompt("Copy link:", u); });
+  });
+
+  function run(){ render(analyze($("txt").value||"")); }
+  $("go").addEventListener("click", run);
+  $("txt").addEventListener("input", function(){
+    var n=(this.value.trim().match(/\S+/g)||[]).length;
+    $("wc").textContent=n?n+" words":"";
+  });
+  $("demo").addEventListener("click", function(){
+    $("txt").value="Our revolutionary, AI-powered platform leverages self-learning neural power to effortlessly disrupt the future of work in seconds. A holistic, seamless end-to-end solution that solves every problem – the unique game-changer that catapults your team into an exponential quantum leap. Groundbreaking, intelligent, limitless.";
+    $("txt").dispatchEvent(new Event("input"));
+    run();
+  });
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>

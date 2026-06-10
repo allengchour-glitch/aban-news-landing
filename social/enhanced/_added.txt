@@ -8,3 +8,8 @@ cateye
 sirene
 brise
 dosnu
+sonnenbrille-chrome
+aurora-kleid
+monsieur-hemd
+nackenventilator
+lueur-lampe

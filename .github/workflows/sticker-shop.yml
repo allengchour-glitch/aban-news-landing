@@ -1,0 +1,36 @@
+name: Fertig-Sticker → Shopify-Produkte
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run: { description: 'Nur Vorschau', type: boolean, default: true }
+      limit: { description: 'Wie viele', type: string, default: '20' }
+      only: { description: 'Nur diese (Komma)', type: string, default: '' }
+permissions: { contents: write }
+concurrency: { group: sticker-shop, cancel-in-progress: false }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - name: Produkte anlegen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          LIMIT: ${{ github.event.inputs.limit || '20' }}
+          ONLY: ${{ github.event.inputs.only }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && '0' || '1' }}
+        run: node automation/create_sticker_products_shopify.mjs
+      - name: Ledger
+        if: ${{ github.event.inputs.dry_run == 'false' }}
+        run: |
+          if [ -n "$(git status --porcelain social/designs/_shop_created.txt)" ]; then
+            git config user.name "luxestyle-autopilot"; git config user.email "bot@users.noreply.github.com"
+            git add social/designs/_shop_created.txt
+            git commit -m "Fertig-Sticker Shopify-Ledger [skip ci]"
+            for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          fi

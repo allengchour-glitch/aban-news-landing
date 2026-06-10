@@ -2,6 +2,162 @@
 
 > Für die separate Tool-Session. Stand 2026-06-09. Enthält die **Antworten/Entscheidungen des Users**
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
+> **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
+
+## 📌 2026-06-10 — Großes Link-Leck gefixt (1.259 tote CTAs)
+- **Link-Checker-Fund:** mehrere `*.abannews.com`-Subdomains lösen per DNS NICHT auf (nicht deployt), aber
+  massiv verlinkt: **`tools.abannews.com`** (KI-Tools-Verzeichnis) auf **1.259 Seiten** als amber-CTA — tot!
+  Weitere tote: automatisierung(377)/kurse/chatbot/dropshipping/voice/buchhaltung/webbaukasten/video/lifestyle.
+  Live: radar/foerder/jobs/prompts/agenturen.
+- **User-Entscheid „On-Site umbiegen":** `https://tools.abannews.com` → **`https://abannews.com/welche-ki-fuer-was.html`**
+  (KI-Tool-Finder, 175 Tools, live) — im Generator `tools/add_branchen_funnel.py` (DE+EN) UND in allen 1.259
+  bestehenden HTML. `ki-verzeichnis/` (= die tools.*-Seite selbst) + `newsletter-radar/` Selbst-Referenzen
+  ausgenommen. newsletter.* waren nur Radar-interne Deep-Links → unangetastet. Absolute URLs (von jeder Origin ok).
+- **Radar-Links (erledigt, autonom):** Hauptseiten-Links auf tote Radar-Subdomains (automatisierung/kurse/
+  chatbot/voice/buchhaltung/webbaukasten/video/lifestyle/dropshipping) → live `radar.abannews.com` umgebogen
+  (12 Dateien, 0 verbleibend). **WICHTIG:** Die *-radar/-Dist-Verzeichnisse haben legitime Selbst-Referenzen auf
+  ihre eigene Subdomain (korrekt SOBALD deployt) — die NICHT angefasst. Deployt der User die Subdomains, passt alles.
+- **OFFEN (User):** die übrigen toten Radar-Subdomains (automatisierung/kurse/chatbot/…) entweder via Cloudflare
+  deployen ODER ebenfalls umbiegen — kam noch keine Entscheidung. Tools+newsletter sind erledigt.
+
+## 📌 2026-06-10 — Repo PRIVAT (GitHub Pro) + Bot-Drosselung
+- **User hat GitHub Pro geholt + Repo auf Private gestellt.** abannews.com **verifiziert HTTP 200** (Pages läuft
+  mit Pro auch privat; `.nojekyll` MUSS bleiben). Privat = nur **3.000 Actions-Min/Mon** (Pages-Builds zählen mit!).
+- **14 Bots gedrosselt (PR #581):** telegram-control 10→30 Min, printful-sync 20 Min→6 h, aban-director/
+  -youtube/site-health */2–4h→*/12h, reel-autopost→1×/Tag, rotate-collections/markets-monitor→*/12h,
+  social-comment-moderate 3→1×/Tag, Video-Bots (reel-render/daily-tool-reel/enhance-clips/montage/gemini-enhance)
+  täglich→jeden 2. Tag. Autopost/Verbesserer/Autopilot behalten Rhythmus.
+- **Falls Minuten trotzdem knapp:** Verbrauch unter github.com/settings/billing → Actions; weitere Hebel:
+  Radars wöchentlich→2-wöchentlich, oder Pages-Build seltener (deploy-from-branch baut bei JEDEM Push).
+- ⚠️ **Lehre (Infra):** lokaler Checkout war zwischenzeitlich auf altem Commit (#452) → Arbeit schien weg.
+  IMMER `git fetch origin main && git reset --hard origin/main` vor neuer Arbeit; Stale-Checkout-Falle.
+
+## 📌 2026-06-10 — Automation-Health-Sweep (mehrere tote/rote Bots gefixt)
+- **Vorgehen (User: „alles todo, weiter mit automation"):** alle Bots auf Fehlerklassen geprüft.
+- **`int(os.environ.get())`-Bug** (leere GitHub-Var = `''` → Crash): nur `autopilot.py` betroffen (PR #564/#565,
+  verifiziert SUCCESS). `gen_post_image` durch `|| '5'` im Workflow geschützt. Sonst keine.
+- **Invalides Workflow-YAML:** `sichtbarkeit-monitor.yml` startete NIE (`: ` im run-String → ScannerError) →
+  Block-Skalar (PR #568). Audit: alle 100+ Workflows jetzt YAML-valide.
+- **Voice-Linter Dauer-Rot:** lief über interne Memory-Docs (`SHARED-MEMORY.md`) → Ausschluss erweitert
+  (`*-HANDOFF/-MEMORY/-TODO/-CHECKLISTE.md`) (PR #567).
+- **Push-Race VOLLSTÄNDIG abgesichert (PR #569/#571/#573):** 30 Bots (22 hart-rot + 8 weich/Datenverlust,
+  inkl. Autopilot) auf `pull --rebase + retry`. Gegencheck: keine aktive race-anfällige `git push` mehr.
+- **Push-Race (Ausgangslage):** ~40 Bots pushen auf `main` → naives `git push` scheitert oft
+  (`! [rejected] … fetch first`). **31 Workflows race-anfällig.** Bestätigt rot: `daily-improvement` (2×/Tag),
+  `image-render` → beide auf `pull --rebase + 5× retry` umgestellt (PR #569). **Muster** (wie LinkedIn-Autopost)
+  für die übrigen 29 bei Bedarf nachziehen. Alternative: Bot-Frequenz drosseln (weniger Kollisionen + spart
+  Actions-Minuten, relevant falls Repo wieder privat mit Pro).
+- **TikTok-Autopost** rot = kein TT_ACCESS_TOKEN (No-Op-gedacht, TikTok-API nicht aktiv) → kein Bug, niedrige Prio.
+
+## 📌 2026-06-10 — Autopilot-Bug gefunden & gefixt (war faktisch tot!)
+- **`automation/autopilot.py` crashte bei JEDEM Lauf:** gesetzte-aber-leere GitHub-Variable liefert `''` →
+  `int(os.environ.get("ABAN_QUEUE_MIN","5"))` = `int("")` → ValueError, Abbruch vor jeder Arbeit. **Der
+  Gemini-Autopilot lief also nie durch** (Gemini war NICHT die Ursache). Fix: robustes `_int_env()` (PR #564)
+  + leeres `--batch` an `gen_site_images.py` auf Default (PR #565). **Verifiziert: Lauf jetzt SUCCESS**, hat
+  222 Dateien aktualisiert (Queues/Audit/Verlinkung/Share-Kit/Bilder/Branchen) + gepusht.
+- **Lehre:** Bei `vars.X`-Durchreichung in Workflows NIE `int(os.environ.get(X, default))` — leere Var = `''`,
+  nicht Default. Immer `(os.environ.get(X) or default)` bzw. try/except.
+- **GitHub Pro:** User upgradet (Link gegeben) → Repo wieder Private; Pages läuft mit Pro privat weiter
+  (`.nojekyll` behalten). ⚠️ Privat = 3.000 Actions-Min/Mon → ggf. Bot-Frequenz drosseln.
+- **Gemini wieder verfügbar** (User: „gimini ok").
+
+## 📌 2026-06-09 (Abend/Nacht) — LinkedIn live · Site-Rettung · neues Tool · Autonomie-Taktung
+**🔴 WICHTIGSTES (Site war down!):** `abannews.com` gab **404** — Ursache: Repo war **privat**, GitHub Pages
+veröffentlicht privat nicht (Free-Plan). **Fix:** Repo auf **Public** (User), Pages-Source `main`/root,
+**`.nojekyll` hinzugefügt** (PR #548 — 4.824 Dateien killten den Jekyll-Build). Seite wieder **live** (200).
+- **Merke:** `.nojekyll` NIE löschen. Bots pushen oft → viele Pages-Builds canceln sich; nach erstem Erfolg
+  bleibt die Seite trotzdem auf letzter guter Version. `…github.io/...` 404 ist normal (Custom-Domain übernimmt).
+- **Offen (User, morgen wenn Kreditkarte entsperrt):** optional GitHub **Pro** → Repo wieder **Private** (Pages
+  läuft mit Pro privat weiter). Sonst Public lassen = gratis + unbegrenzte Actions-Minuten (besser für die Bots).
+- **Secret-Scan vor Public:** Tree + ganze Historie sauber (keine Tokens/Keys) — Public ist sicher.
+
+**🔗 LinkedIn-Autopost LIVE (Profil):** Erster Post ging raus (`urn:li:share:7470177626050138112`).
+- `automation/linkedin_post.py`: **Author-URN wird selbstheilend aus dem Token geholt** (`/userinfo`→`/me`),
+  + Ziel-Schalter **`LINKEDIN_POST_TARGET`** (`person`/`org`/`both`) + optionaler **`LINKEDIN_ORG_ACCESS_TOKEN`**
+  (zweite App) + race-sicherer Persist (`pull --rebase`+retry). PRs #535/#537/#538/#544/#546.
+- **Token-Lehre:** Token MUSS `openid profile w_member_social` haben (sonst 403/422). Jedes Neu-Erzeugen im
+  Token-Generator **revoked den alten** → zuletzt erzeugen, sofort ins Secret. Läuft ~2 Monate, dann erneuern.
+- **Cron:** werktags 08:00 UTC, 1 Post/Tag. Queue `social/linkedin_queue.json` = **71** (1 posted).
+- **Firmenseite-Posting per API = SACKGASSE:** Community Management API braucht Verifizierung **und** muss
+  einziges App-Produkt sein → für Einzel-Devs praktisch nicht freischaltbar. **→ Seite via Buffer/Publer**
+  (offizielle Partner). Export gebaut: `automation/export_page_queue.py` → `social/linkedin_page_export.csv` +
+  `…_posts.txt` (User: Publer-Gratis sperrt CSV-Bulk → „Auto Schedule" Post-für-Post, oder Buffer).
+
+**🎨 Marken-Assets (für LinkedIn, im Repo):** `brand/linkedin-banner.png` (1584×396) + `brand/linkedin-avatar.png`
+(400×400) + Generatoren (`brand/gen_linkedin_*.py`). Profil-/Seiten-Texte (Headline/About/Slogan/Specialties)
+im Chat geliefert.
+
+**🆕 Neues Gratis-Tool (PR #549):** **`ki-hype-detektor.html`** (+ **`en/ki-hype-detektor.html`**, hreflang-Paar) —
+Text einfügen → Buzzwords markiert, **Hype-Score 0–100**, Klartext-Übersetzung. Clientseitig, kein API/Datenversand,
+HTML-escaped (kein XSS), kuratiertes Buzzword-Wörterbuch. Headless getestet (ehrlich→0, Hype→100). Verdrahtet:
+Sitemap, `online-tools.html`, LinkedIn-Queue (`aban-tool-hype-detektor`, postet als Nächstes).
+  **Nachgezogen:** EN-Version (PR #551, hreflang-Paar) + **Teilen-Buttons** (LinkedIn/X/WhatsApp/Native/Copy, Score
+  im Share-Text → viraler Loop) DE+EN + Querverlinkung in `ki-start.html` (Kachel) & `ki-glossar.html` (Band).
+- **Glossar 26 → 33 Begriffe** (PR #553): Chain-of-Thought, Vibe Coding, MoE, Jailbreak, Synthetische Daten,
+  Latenz, Deepfake (korrekt, anti-hype). In `generate_ki_glossar.py` (TERMS) ergänzt → `ki-glossar.html` neu
+  erzeugt (Titel/JSON-LD/Count automatisch). **WICHTIG: ki-glossar.html ist GENERIERT** — Änderungen IMMER im
+  Generator machen, sonst überschreibt der nächste Lauf sie (Hype-Link im Band ist jetzt im Generator). Zahl-Refs
+  in index/online-tools/ki-start auf 33 aktualisiert. Begriffe füttern auch die Social-Posts (gen_social_content).
+- **OG-Bild für Hype-Detektor** (PR #554): `brand/gen_og_hype.py` → `og-ki-hype-detektor.png` (1200×630, Marke
+  + ehrlich→Hype-Balken); `og:image` + `twitter:card` auf beiden Hype-Seiten → bessere Teil-Klickrate.
+- **Vergleiche 194 → 197** (PR #554): Perplexity hatte keinen Vergleich mit den großen Chatbots → in
+  `data/tools.json` `perplexity.alternatives += chatgpt/gemini/claude` → `generate_tool_vergleiche.py` erzeugt
+  **chatgpt-vs-perplexity / gemini-vs-perplexity / claude-vs-perplexity** (Top-Suchbegriffe). Hub+Zahl-Refs auto/
+  manuell auf 197. **Merke:** `vergleich/*` + Hub sind GENERIERT; neue Paare über `alternatives` in tools.json +
+  Regenerieren; Sitemap-Zeilen manuell aus `vergleich/_sitemap-fragment.txt` nachziehen.
+- **LinkedIn-Queue Welle 2** (PR #555): +10 Themen-Posts via `automation/seed_theme_posts.py` (bewerben die neuen
+  Inhalte: Perplexity-Vergleiche, Vibe Coding, Deepfake, Chain-of-Thought, Hype-Detektor-Challenge, Prompt-Rolle …).
+  **Queue jetzt 81 (~16 Wo. Werktags-Vorrat).** Seed-Skript ist idempotent (Präfix `aban-theme-`).
+- **Neues teilbares Tool: `ki-bullshit-bingo.html`** (PR #556) — spielbares Buzzword-Bingo fürs „KI-Meeting"
+  (5×5, Freifeld, Win-Detection, neue Karte/Reset/Drucken, Teilen-Buttons). Selbst-ironisch zum Claim „kein
+  Buzzword-Bingo". Clientseitig, druckbar. Verdrahtet: online-tools, Sitemap, Querlink vom Hype-Detektor.
+  Headless getestet (12 Gewinnlinien korrekt, Syntax ok).
+- **Neues Tool (praktisch): `ki-richtlinie.html`** (PR #557) — KI-Richtlinien-Generator: Klicks → fertige
+  „KI-Nutzungsrichtlinie fürs Team" (erlaubte Tools, Tabu-Daten, Prüfpflicht, Ansprechperson) zum Kopieren/Drucken.
+  Clientseitig, keine Rechtsberatung. Echter KMU-Bedarf (DSGVO-Check empfiehlt genau das). Verdrahtet: online-tools,
+  Sitemap, ki-start-Kachel, Querlink aus dem DSGVO-Check-Band. Syntax ok.
+- **2 weitere Tools (PR #558):** `ki-prompt-checker.html` (Prompt-Verbesserer: prüft Rolle/Kontext/Format/
+  Beispiel/Grenzen → Score 0–100 + fehlende Bausteine + Gerüst; headless: vage 25, detailliert 88) und
+  `avv-anfrage.html` (AVV/DPA-Anfrage-Mail an KI-Anbieter + Datenschutz-Fragen, Copy + mailto). Beide clientseitig,
+  verdrahtet (online-tools, Sitemap, ki-start, Querlinks). **Gratis-Tool-Familie jetzt 15+.**
+- **OG-Bilder für 4 neue Tools** (PR #559): `brand/gen_og_tool.py` (parametrisiert, auto-fit Titel + Umbruch) →
+  og-ki-bullshit-bingo / og-ki-richtlinie / og-ki-prompt-checker / og-avv-anfrage.png; `og:image` je Seite gesetzt
+  (besseres Teilen). **Hinweis: Gemini lt. User aufgebraucht** → Gemini-Bots (autopilot/cover/Bild-Gen) pausieren
+  no-op-sicher; Autopost fällt auf Text/Pexels zurück; deterministischer Verbesserer + Tools + Build laufen weiter.
+- **Newsletter-Hebel offen (nur User):** beehiiv liefert nur Link, kein Inline-Formular. **beehiiv-Embed-Snippet**
+  (`<iframe src="https://embeds.beehiiv.com/…">` aus Settings→Subscribe Forms) → dann baue ich Inline-Signup site-weit
+  statt nur Weiterleitung (= direkter Abonnenten-Boost).
+
+**🤖 Autonomie-Taktung (PR #550) — User-Wunsch „1+2, Gemini jeden 2. Tag, 2×/Tag":**
+- **`autopilot.yml`** (Gemini-Autopilot: Content/Queues/Newsletter-Entwurf/Audit) → **jeden 2. Tag** (`0 5 */2 * *`).
+- **`daily-improvement.yml`** (deterministischer Verbesserer: Auto-Fixes+Scan+Report) → **2×/Tag** (`0 6,18 * * *`).
+- **`aban-director.yml`** (Analytics) alle 4h bleibt. Alle no-op-sicher, committen `[skip ci]`.
+- **EHRLICH zur Browser-/Desktop-Autonomie:** Diese Cloud-Session hat **KEIN Browser-/Desktop-Tool** → kann sich
+  NICHT in Dashboards einloggen (LinkedIn/Stripe/TikTok/Publer/GitHub-Web). „Claude für Chrome" ist ein separates
+  Claude im User-Browser (braucht User da). Logins an unbeaufsichtigten Bot delegieren = nicht sicher. Autonom geht:
+  Code/Repo/GitHub + verbundene MCP (Shopify). Dashboard-Schritte bleiben User (ich bereite auf „1 Klick" vor).
+- **TikTok-Pixel: vom User gestrichen** („ohne tiktok pixel").
+
+**🟡 Mini-Aufräum offen (kein Live-Einfluss):** PR #546 (Org-Token-Code, durch Buffer-Pivot überflüssig) +
+PR #547 (Seiten-Export) hingen am GitHub-Rate-Limit — bei Gelegenheit mergen/schließen.
+
+## 📌 2026-06-09 — Tag-Bilanz (Newsletter-Site, ~43 PRs, alles live auf main)
+**Neue Gratis-Tools/Projekte:** KI-Werkzeug DE+EN (+Phase-2-Worker `workers/ki-werkzeug-ai/`), Welche-KI-Finder
+(`welche-ki-fuer-was.html`, lädt `data/tools.json`), Prompt-Baukasten (DE+EN), Readiness-Check (DE+EN),
+KI-Glossar (DE+EN, Generator `generate_ki_glossar.py`), Spar-Rechner, DSGVO-Schnellcheck, Start-Hub (`ki-start.html`),
+**194 Tool-Vergleiche** (`generate_tool_vergleiche.py` → `vergleich/`), **Newsletter-LP** (`newsletter.html`).
+**Reichweite/Conversion:** Header-Banner `js/announce.js` auf 745+ Seiten; Funnel in 599 Branchen-Hubs; Lead-Magnet-PDFs
+auf Tool-Seiten verlinkt; **Social-Content-Queue** `automation/gen_social_content.py` → `social/aban-content-queue.csv`
+(62 Vorlagen, NICHT auto-gepostet); Anti-Hype-Cover via Gemini (`automation/gen_buch_cover.py` + Workflow).
+**3 Einnahme-Richtungen:** A) KI-Sichtbarkeits-Monitor 9 €/Mon (Funnel steht), B) Texte-Service (`texte-service.html`),
+C) White-Label (`fuer-verbaende.html`).
+**🟡 OFFEN (User/Infra):**
+- **Stripe-Monitor-Link** (9 €/Mon) → in `js/checkout-config.js` `MONITOR_ABO_URL` (User schickt Link, ich verdrahte).
+  Lemon-API kann KEINE Produkte anlegen; Lemon-Store hat nur „aban news Premium"(2×)+Buch → Stripe gewählt.
+- **CTA-Label A/B/C** site-weit vereinheitlichen (User-Wahl offen).
+- **Worker deployen** für echte KI (README in workers/ki-werkzeug-ai).
+- **Projekt 5 (Sichtbarkeits-Report-PDF)** + **6 (mehr Branchen-Kits)**: brauchen reportlab/CI + Produkt-Entscheidungen → offen.
+- EN-Finder bleibt DE (tools.json-Notes sind deutsch).
 
 ## 📌 2026-06-09 (Teil 3) — 3 Einnahme-Richtungen + Header-Banner (User: „alle reihenach")
 - **Header-Banner site-weit (#499):** `js/announce.js` — schließbar (7T), de/en, rotiert: KI-Sichtbarkeits-Check ·

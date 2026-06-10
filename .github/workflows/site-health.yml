@@ -6,7 +6,7 @@ name: Site Health (alle 4h Live-Check + Auto-Fix)
 
 on:
   schedule:
-    - cron: '0 */4 * * *'
+    - cron: '0 */12 * * *'
   workflow_dispatch: {}
 
 permissions:

@@ -50,7 +50,7 @@ jobs:
           # die KI-Schriftsteller-Romane (ki-schriftsteller/: literarische Prosa
           # in dritter Person mit formellem 'Sie' im Dialog) nicht gelten.
           # Marketing-/Content-.md bleiben voll streng.
-          FILES=$(echo "$FILES" | grep -Ev '^(CLAUDE\.md|docs/|ki-schriftsteller/|.*/README\.md|README\.md)' || true)
+          FILES=$(echo "$FILES" | grep -Ev '^(CLAUDE\.md|SHARED-MEMORY\.md|KI-WERKZEUG-HANDOFF\.md|.*-HANDOFF\.md|.*-MEMORY\.md|.*-TODO\.md|.*-CHECKLISTE\.md|docs/|ki-schriftsteller/|.*/README\.md|README\.md)' || true)
           echo "Zu pruefende .md-Dateien (ohne Infra-Doku):"
           echo "$FILES"
           echo "files<<EOF" >> "$GITHUB_OUTPUT"

@@ -1,0 +1,1254 @@
+[
+{
+"name": "art-mountains",
+"prompt": "A bold minimalist single-line-art design of a mountain range with a sun, premium streetwear print graphic, clean vector, black with warm accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "retro-sunset",
+"prompt": "A retro 1970s sunset with palm tree silhouettes and warm gradient stripes, groovy vintage print graphic in a circular badge, centered on a completely solid flat bright magenta (#FF00FF) background, just the artwork only, no mockup, no checkerboard, high detail"
+},
+{
+"name": "y2k-butterfly",
+"prompt": "A Y2K chrome metallic butterfly, glossy early-2000s aesthetic print graphic, centered on a completely solid flat bright magenta (#FF00FF) background, just the artwork only, no mockup, no checkerboard, high detail"
+},
+{
+"name": "cat-astronaut",
+"prompt": "A cute cartoon cat astronaut floating in space with little stars, fun colourful print graphic, centered on a completely solid flat bright magenta (#FF00FF) background, just the artwork only, no mockup, no checkerboard, high detail"
+},
+{
+"name": "floral-line",
+"prompt": "An elegant wildflower bouquet in fine continuous single-line art, minimalist botanical print graphic in black, centered on a completely solid flat bright magenta (#FF00FF) background, just the artwork only, no mockup, no checkerboard, high detail"
+},
+{
+"name": "text-goodvibes",
+"prompt": "A bold typographic print design of the phrase GOOD VIBES ONLY in retro groovy 1970s lettering with warm colours, centered on a completely solid flat bright magenta (#FF00FF) background, just the lettering artwork only, no mockup, no border, no checkerboard"
+},
+{
+"name": "text-hoi",
+"prompt": "A bold playful hand-lettered design of the Swiss-German word Hoi with a small red heart, modern fun typography in black, centered on a completely solid flat bright magenta (#FF00FF) background, just the lettering only, no mockup, no checkerboard"
+},
+{
+"name": "text-gruezi",
+"prompt": "An elegant hand-lettered script design of the Swiss greeting Gruezi, classy modern calligraphy in dark ink, centered on a completely solid flat bright magenta (#FF00FF) background, just the lettering only, no mockup, no checkerboard"
+},
+{
+"name": "text-staywild",
+"prompt": "A bold clean typographic print design of the phrase STAY WILD with a small mountain icon between the words, earthy green outdoor streetwear lettering, NO watermark, NO extra text, NO signature, centered on a completely solid flat bright magenta (#FF00FF) background, just the lettering only, no mockup, no checkerboard, high detail"
+},
+{
+"name": "text-kaffee",
+"prompt": "A cute hand-lettered design of the German phrase Kaffee zuerst with a small coffee cup, cozy warm modern typography, centered on a completely solid flat bright magenta (#FF00FF) background, just the artwork only, no mockup, no checkerboard"
+},
+{
+"name": "text-vegan",
+"prompt": "A bold leafy typographic print design of the word VEGAN with small green leaves growing from the letters, fresh modern lettering in green, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "text-plantpowered",
+"prompt": "A bold athletic typographic design of the phrase PLANT POWERED, green and earthy streetwear style, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "art-veggies",
+"prompt": "A cute friendly group of smiling vegetables (carrot, broccoli, tomato, avocado) cartoon print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "text-bekind",
+"prompt": "A warm hand-lettered design of the phrase BE KIND with a small heart and leaf, soft pastel typography, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "art-cow-save",
+"prompt": "A cute kawaii cartoon cow face surrounded by a small delicate floral wreath, gentle soft colours, NO text, NO words, NO letters, print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the image, just the artwork only, no mockup, no checkerboard, high detail"
+},
+{
+"name": "lion-cute",
+"prompt": "A cute kawaii cartoon lion face, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "tiger-cute",
+"prompt": "A cute kawaii cartoon tiger face, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "elephant-cute",
+"prompt": "A cute kawaii cartoon elephant, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "giraffe-cute",
+"prompt": "A cute kawaii cartoon giraffe, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "owl-cute",
+"prompt": "A cute kawaii cartoon owl, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "hedgehog-cute",
+"prompt": "A cute kawaii cartoon hedgehog, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "raccoon-cute",
+"prompt": "A cute kawaii cartoon raccoon, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "sloth-cute",
+"prompt": "A cute kawaii cartoon sloth hanging, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "llama-cute",
+"prompt": "A cute kawaii cartoon llama, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "octopus-cute",
+"prompt": "A cute kawaii cartoon octopus, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "shark-cute",
+"prompt": "A cute kawaii cartoon shark, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "flamingo-cute",
+"prompt": "A cute kawaii cartoon flamingo, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "badge-coffee",
+"prompt": "A vintage circular emblem badge logo for a coffee brand with a coffee cup and laurel, retro monochrome, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "badge-surf",
+"prompt": "A retro surf club circular badge logo with a wave and sun, vintage 70s colours, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "badge-explorer",
+"prompt": "A vintage mountain explorer circular emblem badge with pine trees, outdoor adventure style, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "badge-skate",
+"prompt": "A bold skate crew emblem logo with a lightning bolt, streetwear style, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "badge-camera",
+"prompt": "A vintage photography badge logo with a retro camera and film strip, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "badge-music",
+"prompt": "A retro music club emblem badge with a vinyl record and stars, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "logo-wave-sun",
+"prompt": "A minimalist line logo of a wave under a rising sun in a circle, clean modern, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "burger-cute",
+"prompt": "A cute kawaii cartoon hamburger, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "taco-cute",
+"prompt": "A cute kawaii cartoon taco, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "ramen-bowl",
+"prompt": "A cute kawaii cartoon ramen noodle bowl, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "matcha-cute",
+"prompt": "A cute kawaii cartoon matcha latte cup, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "cocktail",
+"prompt": "A colourful tropical cocktail with umbrella, fun print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "planet-earth",
+"prompt": "A cute cartoon planet Earth with a smile, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "rocket-cute",
+"prompt": "A cute cartoon rocket ship flying with stars, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "moon-face",
+"prompt": "A cute crescent moon with a sleepy face and stars, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "rainbow-cloud",
+"prompt": "A cute rainbow with happy clouds, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "palm-island",
+"prompt": "A small tropical island with a palm tree, minimalist print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "cactus-sunset",
+"prompt": "A cactus in front of a retro desert sunset, vintage print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "smiley-star-y2k",
+"prompt": "A Y2K glossy smiley face inside a sparkle star, 2000s aesthetic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "vinyl-record",
+"prompt": "A retro vinyl record with musical notes, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "lightning-y2k",
+"prompt": "A Y2K chrome lightning bolt, glossy metallic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "checker-heart",
+"prompt": "A red heart with a black and white checkerboard pattern, Y2K style, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-merci",
+"prompt": "A die-cut lettering design of the word Merci in elegant warm hand-lettered script, Swiss thank-you vibe, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the lettering only, no mockup, no checkerboard, no border"
+},
+{
+"name": "text-hallo",
+"prompt": "A die-cut lettering design of the word Hallo in bold friendly rounded letters with a small wave hand, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the lettering only, no mockup, no checkerboard, no border"
+},
+{
+"name": "text-nostress",
+"prompt": "A die-cut lettering design of the word No Stress in relaxed bold modern letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the lettering only, no mockup, no checkerboard, no border"
+},
+{
+"name": "text-sunshine",
+"prompt": "A die-cut lettering design of the word Sunshine in cheerful retro 70s letters with a small sun, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the lettering only, no mockup, no checkerboard, no border"
+},
+{
+"name": "text-wildfree",
+"prompt": "A die-cut lettering design of the word Wild & Free in bold adventurous letters with a small leaf, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the lettering only, no mockup, no checkerboard, no border"
+},
+{
+"name": "game-controller",
+"prompt": "a modern video game controller, cool neon gaming graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "retro-arcade",
+"prompt": "a retro pixel-art arcade cabinet machine, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "pixel-heart",
+"prompt": "a pixel-art 8-bit red heart, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "dice-d20",
+"prompt": "a d20 twenty-sided tabletop gaming dice, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "gamer-headset",
+"prompt": "a gaming headset with neon glow, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "pixel-mushroom",
+"prompt": "a pixel-art 8-bit mushroom power-up, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-gameover",
+"prompt": "A die-cut lettering design of the words GAME OVER in arcade pixel 8-bit style, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "basketball",
+"prompt": "a basketball, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "soccer-ball",
+"prompt": "a soccer football, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "skateboard",
+"prompt": "a cool skateboard, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "dumbbell",
+"prompt": "a fitness dumbbell, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "running-shoe",
+"prompt": "a sporty running sneaker, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "bicycle-line",
+"prompt": "a road bicycle, clean minimalist line graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-nopain",
+"prompt": "A die-cut lettering design of the words NO PAIN NO GAIN in bold athletic gym letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "headphones",
+"prompt": "retro over-ear headphones, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "electric-guitar",
+"prompt": "an electric guitar, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "cassette-tape",
+"prompt": "a retro cassette tape, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "microphone-vtg",
+"prompt": "a vintage stage microphone, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "boombox",
+"prompt": "a retro 80s boombox, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "badge-festival",
+"prompt": "a music festival emblem badge with stars and a guitar, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-musiclife",
+"prompt": "A die-cut lettering design of the words MUSIC IS LIFE in bold modern letters with a small note, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "tattoo-rose",
+"prompt": "An old-school traditional American tattoo flash design of a red rose, bold black outlines with red and teal accents, classic tattoo style, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "tattoo-snake",
+"prompt": "An old-school traditional American tattoo flash design of a coiled snake, bold black outlines with red and teal accents, classic tattoo style, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "tattoo-dagger",
+"prompt": "An old-school traditional American tattoo flash design of a dagger, bold black outlines with red and teal accents, classic tattoo style, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "tattoo-swallow",
+"prompt": "An old-school traditional American tattoo flash design of a swallow bird, bold black outlines with red and teal accents, classic tattoo style, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "tattoo-skull-rose",
+"prompt": "An old-school traditional American tattoo flash design of a skull with roses, bold black outlines with red and teal accents, classic tattoo style, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "tattoo-anchor",
+"prompt": "An old-school traditional American tattoo flash design of an anchor with rope, bold black outlines with red and teal accents, classic tattoo style, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "tattoo-moth",
+"prompt": "An old-school traditional American tattoo flash design of a symmetrical moth, bold black outlines with red and teal accents, classic tattoo style, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "matterhorn",
+"prompt": "the Matterhorn mountain peak, minimalist print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "swiss-cowbell",
+"prompt": "a Swiss decorated cow bell with strap, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "fondue",
+"prompt": "a cute Swiss cheese fondue pot with two forks, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "swiss-chocolate",
+"prompt": "a cute bar of Swiss chocolate, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "swiss-flag-heart",
+"prompt": "a heart shaped like the Swiss flag, red with a white cross, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "alphorn",
+"prompt": "a Swiss alphorn, minimalist graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-hoppschwiiz",
+"prompt": "A die-cut lettering design of the words Hopp Schwiiz in bold sporty red Swiss fan letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "wolf-cute",
+"prompt": "a cute cartoon wolf face, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "koala-cute",
+"prompt": "a cute kawaii cartoon koala, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "monkey-cute",
+"prompt": "a cute kawaii cartoon monkey, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "deer-cute",
+"prompt": "a cute kawaii cartoon deer, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "dolphin-cute",
+"prompt": "a cute kawaii cartoon dolphin, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "parrot-cute",
+"prompt": "a cute kawaii cartoon parrot, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "snake-cute",
+"prompt": "a cute kawaii cartoon snake, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "croc-cute",
+"prompt": "a cute kawaii cartoon crocodile, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "anime-eyes",
+"prompt": "a pair of sparkly kawaii anime eyes, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "kawaii-cloud",
+"prompt": "a kawaii smiling cloud with rosy cheeks, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "anime-cat-wink",
+"prompt": "a cute anime style winking cat face, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "magical-wand",
+"prompt": "a kawaii magical girl star wand with ribbons, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "sparkle-cluster",
+"prompt": "a cluster of aesthetic sparkles and twinkle stars, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "pastel-mushroom",
+"prompt": "a pastel kawaii smiling mushroom, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "ufo",
+"prompt": "a cute cartoon flying saucer UFO with a beam, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "alien-green",
+"prompt": "a cute friendly green cartoon alien, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "saturn-face",
+"prompt": "a cute smiling planet Saturn with rings, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "shooting-star",
+"prompt": "a shooting star with a sparkle trail, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "telescope",
+"prompt": "a cute telescope on a stand with stars, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "galaxy-heart",
+"prompt": "a heart filled with a colourful galaxy nebula, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "ocean-wave",
+"prompt": "a Japanese great wave, minimalist print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "seashell",
+"prompt": "a pretty spiral seashell, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "pine-forest",
+"prompt": "a row of pine trees, minimalist line graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "succulent",
+"prompt": "a cute potted succulent plant, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "hummingbird",
+"prompt": "a colourful hummingbird in flight, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "jellyfish",
+"prompt": "a cute glowing jellyfish, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "pumpkin-jack",
+"prompt": "a cute Halloween jack-o-lantern pumpkin, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "ghost-spooky",
+"prompt": "a cute friendly spooky Halloween ghost, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "christmas-tree",
+"prompt": "a cute decorated Christmas tree, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "santa-face",
+"prompt": "a cute kawaii Santa Claus face, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "snowman",
+"prompt": "a cute happy snowman, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "gift-box",
+"prompt": "a festive wrapped gift box with a bow, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-traumschoen",
+"prompt": "A die-cut lettering design of the words Träum schön in soft dreamy pastel script with a moon, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-machdeinding",
+"prompt": "A die-cut lettering design of the words Mach dein Ding in bold confident modern letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-duschaffst",
+"prompt": "A die-cut lettering design of the words Du schaffst das in motivational bold letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-alleswirdgut",
+"prompt": "A die-cut lettering design of the words Alles wird gut in warm calm calligraphy, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-bleibdselbst",
+"prompt": "A die-cut lettering design of the words Bleib du selbst in friendly handwritten letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-einfachmachen",
+"prompt": "A die-cut lettering design of the words Einfach machen in bold punchy letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "spray-can",
+"prompt": "a graffiti spray paint can, streetwear style, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "smiley-melt",
+"prompt": "a melting drippy smiley face, Y2K aesthetic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "star-burst-y2k",
+"prompt": "a glossy Y2K sparkle starburst, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "flame-graffiti",
+"prompt": "bold graffiti style flames, streetwear, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "peace-groovy",
+"prompt": "a groovy 1970s peace sign with flowers, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "boombox-graffiti",
+"prompt": "a graffiti style boombox, urban street art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-selfcare",
+"prompt": "A die-cut lettering design of the words Self Care in soft rounded pastel letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-breathe",
+"prompt": "A die-cut lettering design of the words Breathe in calm minimal letters with a leaf, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "lotus-zen",
+"prompt": "a zen lotus flower, minimalist line art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-youmatter",
+"prompt": "A die-cut lettering design of the words You Matter in warm friendly letters with a heart, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "moon-phases",
+"prompt": "moon phases in a row, celestial line art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-goodday",
+"prompt": "A die-cut lettering design of the words Today is a good day in cheerful retro letters with a sun, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "hamster",
+"prompt": "a cute kawaii cartoon hamster, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "squirrel",
+"prompt": "a cute kawaii cartoon squirrel, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "duck",
+"prompt": "a cute kawaii cartoon duck, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "pig",
+"prompt": "a cute kawaii cartoon pig, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "horse",
+"prompt": "a cute kawaii cartoon horse, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "zebra",
+"prompt": "a cute kawaii cartoon zebra, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "hippo",
+"prompt": "a cute kawaii cartoon hippo, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "kangaroo",
+"prompt": "a cute kawaii cartoon kangaroo, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "seal",
+"prompt": "a cute kawaii cartoon seal, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "otter",
+"prompt": "a cute kawaii cartoon otter, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "swan",
+"prompt": "a cute kawaii cartoon swan, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "peacock",
+"prompt": "a cute kawaii cartoon peacock, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "toucan",
+"prompt": "a cute kawaii cartoon toucan, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "chameleon",
+"prompt": "a cute kawaii cartoon chameleon, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "gecko",
+"prompt": "a cute kawaii cartoon gecko, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "snail",
+"prompt": "a cute kawaii cartoon snail, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "bat",
+"prompt": "a cute kawaii cartoon bat, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "red-panda",
+"prompt": "a cute kawaii cartoon red panda, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "narwhal",
+"prompt": "a cute kawaii cartoon narwhal, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "axolotl",
+"prompt": "a cute kawaii cartoon axolotl, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "capybara",
+"prompt": "a cute kawaii cartoon capybara, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "alpaca",
+"prompt": "a cute kawaii cartoon alpaca, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "goat",
+"prompt": "a cute kawaii cartoon goat, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "sheep",
+"prompt": "a cute kawaii cartoon sheep, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "mouse",
+"prompt": "a cute kawaii cartoon mouse, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "frog2",
+"prompt": "a cute kawaii cartoon frog, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "rabbit2",
+"prompt": "a cute kawaii cartoon rabbit, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "chick",
+"prompt": "a cute kawaii cartoon chick, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "ladybug2",
+"prompt": "a cute kawaii cartoon ladybug, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "pretzel",
+"prompt": "a cute kawaii cartoon pretzel, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "croissant",
+"prompt": "a cute kawaii cartoon croissant, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "bagel",
+"prompt": "a cute kawaii cartoon bagel, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "hotdog",
+"prompt": "a cute kawaii cartoon hotdog, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "fries",
+"prompt": "a cute kawaii cartoon fries, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "popcorn",
+"prompt": "a cute kawaii cartoon popcorn, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "cookie",
+"prompt": "a cute kawaii cartoon cookie, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "lollipop",
+"prompt": "a cute kawaii cartoon lollipop, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "grapes",
+"prompt": "a cute kawaii cartoon grapes, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "peach",
+"prompt": "a cute kawaii cartoon peach, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "kiwi",
+"prompt": "a cute kawaii cartoon kiwi, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "coconut",
+"prompt": "a cute kawaii cartoon coconut, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "pancakes",
+"prompt": "a cute kawaii cartoon pancakes, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "smoothie",
+"prompt": "a cute kawaii cartoon smoothie, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "cheese",
+"prompt": "a cute kawaii cartoon cheese, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "cherry-pie",
+"prompt": "a cute kawaii cartoon cherry-pie, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "cupcake2",
+"prompt": "a cute kawaii cartoon cupcake, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "macaron",
+"prompt": "a cute kawaii cartoon macaron, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "zodiac-aries",
+"prompt": "a celestial aries zodiac symbol with stars, gold line art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "zodiac-taurus",
+"prompt": "a celestial taurus zodiac symbol with stars, gold line art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "zodiac-gemini",
+"prompt": "a celestial gemini zodiac symbol with stars, gold line art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "zodiac-cancer",
+"prompt": "a celestial cancer zodiac symbol with stars, gold line art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "zodiac-leo",
+"prompt": "a celestial leo zodiac symbol with stars, gold line art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "zodiac-virgo",
+"prompt": "a celestial virgo zodiac symbol with stars, gold line art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "zodiac-libra",
+"prompt": "a celestial libra zodiac symbol with stars, gold line art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "zodiac-scorpio",
+"prompt": "a celestial scorpio zodiac symbol with stars, gold line art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "zodiac-sagittarius",
+"prompt": "a celestial sagittarius zodiac symbol with stars, gold line art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "zodiac-capricorn",
+"prompt": "a celestial capricorn zodiac symbol with stars, gold line art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "zodiac-aquarius",
+"prompt": "a celestial aquarius zodiac symbol with stars, gold line art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "zodiac-pisces",
+"prompt": "a celestial pisces zodiac symbol with stars, gold line art, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "flower-tulip",
+"prompt": "a single tulip flower, elegant botanical print, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "flower-lavender",
+"prompt": "a single lavender flower, elegant botanical print, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "flower-cherry-blossom",
+"prompt": "a single cherry blossom flower, elegant botanical print, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "flower-poppy",
+"prompt": "a single poppy flower, elegant botanical print, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "flower-hibiscus",
+"prompt": "a single hibiscus flower, elegant botanical print, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "flower-orchid",
+"prompt": "a single orchid flower, elegant botanical print, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "flower-peony",
+"prompt": "a single peony flower, elegant botanical print, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "flower-dandelion",
+"prompt": "a single dandelion flower, elegant botanical print, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "flower-lily",
+"prompt": "a single lily flower, elegant botanical print, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "flower-daffodil",
+"prompt": "a single daffodil flower, elegant botanical print, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "comet",
+"prompt": "a comet, celestial print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "star-cluster",
+"prompt": "a star cluster, celestial print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "milky-way",
+"prompt": "a milky way, celestial print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "planet-mars",
+"prompt": "a planet mars, celestial print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "satellite",
+"prompt": "a satellite, celestial print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "constellation",
+"prompt": "a constellation, celestial print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "nebula-swirl",
+"prompt": "a nebula swirl, celestial print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "rocket2",
+"prompt": "a rocket, celestial print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "tennis-ball",
+"prompt": "a tennis ball, clean sport print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "baseball",
+"prompt": "a baseball, clean sport print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "golf",
+"prompt": "a golf, clean sport print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "surfboard",
+"prompt": "a surfboard, clean sport print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "ski",
+"prompt": "a ski, clean sport print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "ice-hockey",
+"prompt": "a ice hockey, clean sport print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "boxing-glove",
+"prompt": "a boxing glove, clean sport print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "yoga-pose",
+"prompt": "a yoga pose, clean sport print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "volleyball",
+"prompt": "a volleyball, clean sport print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "ping-pong",
+"prompt": "a ping pong, clean sport print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "book-stack",
+"prompt": "a cute book stack print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "paint-palette",
+"prompt": "a cute paint palette print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "plant-pot",
+"prompt": "a cute plant pot print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "camping-tent",
+"prompt": "a cute camping tent print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "fishing-rod",
+"prompt": "a cute fishing rod print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "chess-knight",
+"prompt": "a cute chess knight print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "movie-clapper",
+"prompt": "a cute movie clapper print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "knitting",
+"prompt": "a cute knitting print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "dice-pair",
+"prompt": "a cute dice pair print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "film-camera",
+"prompt": "a cute film camera print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "easter-egg",
+"prompt": "a cute easter egg print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "easter-bunny",
+"prompt": "a cute easter bunny print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "valentine-heart",
+"prompt": "a cute valentine heart print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "fireworks",
+"prompt": "a cute fireworks print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "beach-ball",
+"prompt": "a cute beach ball print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "candy-cane",
+"prompt": "a cute candy cane print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "gingerbread",
+"prompt": "a cute gingerbread print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "snowflake2",
+"prompt": "a cute snowflake print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "four-leaf",
+"prompt": "a cute four leaf print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "autumn-leaf",
+"prompt": "a cute autumn leaf print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "sun-summer",
+"prompt": "a cute sun summer print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "heart-banner",
+"prompt": "a cute heart banner print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "star-eyes",
+"prompt": "a star eyes, Y2K aesthetic print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "daisy-y2k",
+"prompt": "a daisy y2k, Y2K aesthetic print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "mushroom-trippy",
+"prompt": "a mushroom trippy, Y2K aesthetic print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "evil-eye",
+"prompt": "a evil eye, Y2K aesthetic print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "disco-ball",
+"prompt": "a disco ball, Y2K aesthetic print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "cherry-y2k",
+"prompt": "a cherry y2k, Y2K aesthetic print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "smiley-flower",
+"prompt": "a smiley flower, Y2K aesthetic print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "groovy-wave",
+"prompt": "a groovy wave, Y2K aesthetic print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "retro-flower",
+"prompt": "a retro flower, Y2K aesthetic print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "chrome-star",
+"prompt": "a chrome star, Y2K aesthetic print graphic, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-danke",
+"prompt": "A die-cut lettering design of the words Danke in warm hand-lettered script, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-kopfhoch",
+"prompt": "A die-cut lettering design of the words Kopf hoch in encouraging bold letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-habdichlieb",
+"prompt": "A die-cut lettering design of the words Hab dich lieb in cute heart lettering, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-traumegross",
+"prompt": "A die-cut lettering design of the words Träume gross in bold dreamy letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-seimutig",
+"prompt": "A die-cut lettering design of the words Sei mutig in strong modern letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-pause",
+"prompt": "A die-cut lettering design of the words Pause in relaxed minimal letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-machseinfach",
+"prompt": "A die-cut lettering design of the words Mach's einfach in punchy bold letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-bleibgesund",
+"prompt": "A die-cut lettering design of the words Bleib gesund in friendly rounded letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-staycozy",
+"prompt": "A die-cut lettering design of the words Stay Cozy in soft warm letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-dreambig",
+"prompt": "A die-cut lettering design of the words Dream Big in bold inspirational letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-behappy",
+"prompt": "A die-cut lettering design of the words Be Happy in cheerful bubbly letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-hellosunshine",
+"prompt": "A die-cut lettering design of the words Hello Sunshine in retro 70s letters with sun, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-adventure",
+"prompt": "A die-cut lettering design of the words Adventure Awaits in outdoor bold letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-coffeefirst",
+"prompt": "A die-cut lettering design of the words Coffee First in cute letters with a coffee cup, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-wanderlust",
+"prompt": "A die-cut lettering design of the words Wanderlust in travel script letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "text-staypositive",
+"prompt": "A die-cut lettering design of the words Stay Positive in upbeat modern letters, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, no t-shirt, no mockup, no checkerboard, no transparency pattern, high detail, sticker style"
+},
+{
+"name": "ch-hoi-zaeme",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Hoi zäme', modern bold brush hand-lettering, black ink with a small Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-merci-vilmal",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Merci vilmal', modern bold brush hand-lettering, black ink with a small Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-gruezi-mitenand",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Grüezi mitenand', modern bold brush hand-lettering, black ink with a small Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-sali-zaeme",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Sali zäme', modern bold brush hand-lettering, black ink with a small Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-haerzlech",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Härzlech willkomm', modern bold brush hand-lettering, black ink with a small Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-chuchichaeschtli",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Chuchichäschtli', playful bold rounded hand-lettering with a tiny cupboard icon, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-gopfertami",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Gopfertami!', cheeky bold graffiti-style lettering, black with red accent (light Swiss humor), centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-haeee",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Hä?', huge bold condensed lettering, black with red accent (Swiss humor), centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-feierabig",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Feierabig', relaxed bold script, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-apero-time",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Apéro Time', fun bold retro lettering with a small wine glass, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-znueni",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Znüni', cute rounded bold lettering with a small croissant, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-buenzli",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Bünzli', tongue-in-cheek bold stamp lettering, black with red accent (Swiss humor), centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-gaell",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Gäll', minimal bold lettering, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-eidgenoss",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Eidgenoss', strong vintage varsity lettering with a small Swiss cross, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-es-git-nu-eis-zueri",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Es git nu eis Züri', bold city-pride lettering, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-baern",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Bärn', bold city-pride lettering with a tiny bear silhouette, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-basel",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Basel', bold city-pride lettering with a tiny basilisk, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-1-august",
+"prompt": "Typographic streetwear print graphic that reads exactly '1. August', festive bold lettering with small fireworks over a mountain, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-prosit",
+"prompt": "Typographic streetwear print graphic that reads exactly 'Prosit', celebratory bold lettering, black with red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-swiss-army-knife",
+"prompt": "A bold minimalist vector print graphic of a classic Swiss army pocket knife, iconic and clean, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-murmeli",
+"prompt": "A bold minimalist vector print graphic of a cute alpine marmot (Murmeli) sitting, friendly mascot style, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-steinbock",
+"prompt": "A bold minimalist vector print graphic of a proud alpine ibex (Steinbock) with big curved horns on a peak, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-bernese-dog",
+"prompt": "A bold minimalist vector print graphic of a happy Bernese mountain dog head, friendly mascot, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-bernhardiner",
+"prompt": "A bold minimalist vector print graphic of a St. Bernard dog with a small rescue barrel, friendly mascot, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-braunvieh",
+"prompt": "A bold minimalist vector print graphic of a cute Swiss brown cow with a cowbell, friendly mascot, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-chalet",
+"prompt": "A bold minimalist vector print graphic of a cozy Swiss wooden chalet with mountains behind, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-baehnli",
+"prompt": "A bold minimalist vector print graphic of a little red mountain cable car (Bähnli) over peaks, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-raclette",
+"prompt": "A bold minimalist vector print graphic of a melting raclette with potatoes, cozy foodie sticker, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-cervelat",
+"prompt": "A bold minimalist vector print graphic of a cervelat sausage grilled on a stick over a campfire, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-heidi",
+"prompt": "A bold minimalist vector print graphic of a cheerful Heidi-style alpine girl with braids and flowers, wholesome, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-enzian",
+"prompt": "A bold minimalist vector print graphic of a single blue gentian (Enzian) alpine flower, botanical line art, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-swiss-cross-badge",
+"prompt": "A bold minimalist vector print graphic of a rounded Swiss cross emblem in a vintage badge with laurel, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-fasnacht-mask",
+"prompt": "A bold minimalist vector print graphic of a colorful Basler Fasnacht carnival mask, festive, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-fondue-caquelon",
+"prompt": "A bold minimalist vector print graphic of a fondue caquelon pot with crossed forks and a heart of steam, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-schoggi-bar",
+"prompt": "A bold minimalist vector print graphic of a chocolate bar snapped in half, premium Swiss chocolate sticker, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-alpaufzug",
+"prompt": "A bold minimalist vector print graphic of a cow with a flower headdress for the Alpabzug procession, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-matterhorn-sun",
+"prompt": "A bold minimalist vector print graphic of the Matterhorn peak with a rising sun, minimal line art badge, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-edelweiss-line",
+"prompt": "A bold minimalist vector print graphic of a single edelweiss flower, elegant minimal line art, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+},
+{
+"name": "ch-postauto-horn",
+"prompt": "A bold minimalist vector print graphic of the three-note Swiss Postbus horn motif, retro graphic, clean premium sticker illustration, black with warm Swiss-red accent, centered on a completely solid flat bright magenta (#FF00FF) background filling the whole image, just the artwork only, NO t-shirt, NO mockup, no checkerboard, no transparency pattern, high detail"
+}
+]

@@ -40,7 +40,7 @@ EXISTING = re.compile(r'<aside ' + re.escape(MARKER) + r'.*?</aside>\n?', re.S)
 
 
 SEKTION_RE = re.compile(
-    r'<h2[^>]*>\s*(?:Sinnvolle Anwendungsf[äa]lle|[A-Za-z ]*use cases)\s*</h2>(.*?)(?=<h2)',
+    r'<h2[^>]*>\s*(?:Sinnvolle Anwendungsf[äa]lle|[^<]*use cases[^<]*)\s*</h2>(.*?)(?=<h2)',
     re.S | re.I)
 H3_RE = re.compile(r'<h3[^>]*>(.*?)</h3>', re.S | re.I)
 
@@ -56,7 +56,13 @@ def extract_cases(html: str) -> list[str]:
         cases = [_txt(x) for x in H3_RE.findall(m.group(1)) if _txt(x)]
         if cases:
             return cases[:8]
-    return [_txt(c) for c in USECASE_RE.findall(html)][:8]  # Variante B: nummerierte h2
+    h2cases = [_txt(c) for c in USECASE_RE.findall(html)]   # Variante B: nummerierte h2
+    if h2cases:
+        return h2cases[:8]
+    # Variante C: nummerierte h3 (1., 2., …) irgendwo — fängt branchenspezifische
+    # Sonder-Überschriften ab (z.B. „Wo KI ruhig zur Hand gehen kann").
+    h3num = re.findall(r'<h3[^>]*>\s*(\d+\.\s*[^<]+?)\s*</h3>', html, re.I)
+    return [_txt(c) for c in h3num][:8]
 
 
 def branche(html: str, slug: str) -> str:
