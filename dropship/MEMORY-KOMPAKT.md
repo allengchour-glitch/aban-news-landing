@@ -1,7 +1,31 @@
 # 🧠 MEMORY-KOMPAKT — LuxeStyle (ZUERST LESEN, komprimiert aus allen Sessions)
 > Verdichtung aller STAND-/Log-Dateien. Details bei Bedarf: STAND-2026-06-09-ABSCHLUSS.md (POD/Designs),
 > STAND-2026-06-08 (Shopify-Auth), CJ-IMPORT-LOG.md (Katalog-Historie), ABEND-TODO.md (User-Klicks),
-> MISTER-DTF-FULFILLMENT.md (Bügeltransfer). Stand: 2026-06-09 nachts.
+> MISTER-DTF-FULFILLMENT.md (Bügeltransfer). Stand: **2026-06-10 nachts** (Details als dated Einträge unten).
+
+## 📌 STAND 2026-06-10 (Session-Ende — ZUERST LESEN, dann Details unten)
+**Heute live geschaltet (alles auf `main`, mit Backups/Rollback):**
+1. **POD-Mockups gesäubert** (kein „Dein Design" mehr; Printful-Gratis-Katalog `/products/variant/{id}` = saubere Blanks).
+2. **🇨🇭 Schweiz Edition:** 39 Mundart/CH-Designs generiert (Gemini wieder da), **Designs-Galerie 335 Motive** (Schweiz zuerst,
+   `/pages/designs-galerie?cat=Schweiz`), Smart-Collection `schweiz-edition`, Menü-Top-Link „🇨🇭 Schweiz".
+3. **Gelato verbunden** (Store „LuxeStyle" Active) → **1. Fertig-Poster live** `schweiz-poster-gruezi` (per API veredelt).
+   10 Poster-Motive in `social/posters/` (+ `…/hoch/` Hochformat). **Gelato = manuell anlegen, Claude veredelt per API.**
+4. **„Poster zum Selbstgestalten" (Printful) LIVE** `/products/poster-zum-selbstgestalten`: Editor-Widget hochformat-fähig
+   (`pod/designer.js` data-ratio/data-ref, rückwärtskompatibel), 4 Grössen, SKU `9000001_<printfulVar>`, Auto-Druck Printful.
+5. **Header umgestaltet:** Logo-Bild **„LuxeStyle.ch"** gesetzt (`current.logo` in settings_data.json), Menü-Labels gekürzt →
+   **alle 11 Punkte sichtbar (kein „Mehr")**.
+6. **53 Effizienz-Badges** (Solar/USB-LED, rechtssicher, KEIN erfundenes Energielabel A–F — keins qualifiziert).
+7. Früher heute: 404-Menüfix (selbst-gestalten-1 unpubliziert → Menü auf `selbst-gestalten`), AGB/Footer, FB-Token ✓, Memory komprimiert.
+
+**Anbieter-Realität:** Gelato=verbunden (UI-anlegen, API CI-blockiert) · Printful=Selbstgestalt-Linie (läuft, Auto-Druck) ·
+Printify=NICHT verbunden (Shopify-Store dort nie verbunden → ignorieren) · Gemini-Billing=OK.
+
+**Offene User-Schritte (optional):** mehr Gelato-Produkte anlegen → „alle einrichten" sagen (Claude veredelt) · TikTok manuell
+posten · (falls Sticker/Magnete autonom gewünscht: Shopify-Store in Printify verbinden).
+
+**Workflows (workflow_dispatch):** gen-designs · gen-posters · designs-page · pod-blank-mockups · create-poster-pod ·
+pod-inject-designer · printful-reprice · printful-sync(cron) · set-header-logo(+REMOVE=Rollback) · efficiency-badge ·
+hero-schweiz(zurückgerollt) · pod-provider-check. **Theme-Edits via raw-API (MCP blockt Live-Theme); Backups in `dropship/theme-backups/`.**
 
 ## 🔑 FAKTEN & AUTH
 - Shop **LuxeStyle** (luxestyle.ch), myshopify `au3j0y-hq.myshopify.com`. Zugriff: Shopify-MCP `mcp__…__*` ODER
