@@ -25,20 +25,23 @@ OUTDIR = ROOT / "maerkte"
 SRC = ROOT / "maerkte.html"
 
 SENT_LABEL = {"bullish": "Bullish", "neutral": "Neutral", "bearish": "Bearish"}
+TYPE_LABEL = {"crypto": "Krypto", "stock": "Aktie", "index": "Index", "commodity": "Rohstoff"}
 
 
 def esc(s):
     return html.escape(str(s or ""), quote=True)
 
 
-def fmt_price(v):
+def fmt_asset_price(a):
+    v = a.get("price")
     if v is None:
         return "—"
+    unit = "Pkt" if a.get("type") == "index" else "USD"
     if v >= 1000:
-        return f"{v:,.0f}".replace(",", "’") + " USD"
+        return f"{v:,.0f}".replace(",", "’") + " " + unit
     if v >= 1:
-        return f"{v:,.2f}".replace(",", "’") + " USD"
-    return f"{v:.4f} USD"
+        return f"{v:,.2f}".replace(",", "’") + " " + unit
+    return f"{v:.4f} " + unit
 
 
 def chart_svg(spark, up):
@@ -83,7 +86,7 @@ def news_html(items):
 
 def page(asset, css, updated):
     aid, name, sym = asset["id"], asset.get("name", ""), asset.get("symbol", "")
-    typ = "Krypto" if asset.get("type") == "crypto" else "Aktie"
+    typ = TYPE_LABEL.get(asset.get("type"), "Wert")
     price = asset.get("price")
     chg = asset.get("change_24h")
     chg_cls = "up" if (chg or 0) > 0.04 else ("down" if (chg or 0) < -0.04 else "flat")
@@ -138,7 +141,7 @@ def page(asset, css, updated):
       <a class="backlink" href="/maerkte.html">← Alle Märkte</a>
       <h1>{esc(name)} <span class="hl">{esc(sym)}</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="{aid}">{fmt_price(price)}</span>
+        <span class="px" id="livePrice" data-id="{aid}" data-type="{asset.get('type','')}">{fmt_asset_price(asset)}</span>
         <span class="chg {chg_cls}">{chg_txt}</span>
         <span class="tag-type">{typ}</span>
         <span class="badge {sent}">{SENT_LABEL.get(sent, "Neutral")}</span>
@@ -205,8 +208,9 @@ def page(asset, css, updated):
 // Live-Kurs aus markets.json nachladen (CSP-safe, no-op bei Fehler).
 (function(){{
   var el=document.getElementById('livePrice'); if(!el) return;
-  var id=el.getAttribute('data-id');
+  var id=el.getAttribute('data-id'); var typ=el.getAttribute('data-type');
   function fmt(v){{ if(v==null)return null; var d=v>=1000?0:(v>=1?2:4);
+    if(typ==='index'){{ try{{return new Intl.NumberFormat('de-CH',{{maximumFractionDigits:d,minimumFractionDigits:d}}).format(v)+' Pkt';}}catch(e){{return v.toFixed(d)+' Pkt';}} }}
     try{{return new Intl.NumberFormat('de-CH',{{style:'currency',currency:'USD',maximumFractionDigits:d,minimumFractionDigits:d}}).format(v);}}catch(e){{return v.toFixed(d)+' USD';}} }}
   function upd(){{ fetch('/data/markets.json',{{cache:'no-store'}}).then(function(r){{return r.ok?r.json():null;}}).then(function(d){{
     if(!d)return; var a=(d.assets||[]).filter(function(x){{return x.id===id;}})[0];
