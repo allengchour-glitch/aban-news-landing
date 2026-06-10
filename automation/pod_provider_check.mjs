@@ -47,7 +47,7 @@ if (!GL) {
   console.log('GELATO: kein GELATO_API_KEY gesetzt → übersprungen.');
 } else {
   console.log(`GELATO: Key gesetzt (Länge ${GL.length}). Teste verbundene Stores + Catalog …`);
-  const H = { 'X-API-KEY': GL, 'Content-Type': 'application/json' };
+  const H = { 'X-API-KEY': GL, 'Content-Type': 'application/json', 'Accept': 'application/json', 'User-Agent': 'LuxeStyle-POD/1.0' };
   // 1) verbundene E-Commerce-Stores (zeigt, ob Shopify in Gelato verbunden ist)
   try {
     const st = await jget('https://ecommerce.gelato.com/v1/stores', H);
