@@ -42,6 +42,11 @@ mapfile -t TRACKS < <(find "$MUSIC_DIR" -maxdepth 1 -type f \( -iname '*.mp3' -o
 [ "${#TRACKS[@]}" -ge 1 ] || { [ -f "$FALLBACK_MUSIC" ] && TRACKS=("$FALLBACK_MUSIC"); }
 [ "${#TRACKS[@]}" -ge 1 ] || { echo "keine Musik (Pool leer + kein Fallback)"; exit 0; }
 mapfile -t LINES < <(tail -n +2 "$LIST" | sed '/^$/d')
+# Ausschlussliste (vom User gesperrte Produkte, z.B. Bali) — nie in Reels rendern.
+EXCL="$ROOT/automation/DO-NOT-POST.txt"
+if [ -s "$EXCL" ]; then
+  mapfile -t LINES < <(printf '%s\n' "${LINES[@]}" | grep -ivFf <(grep -vE '^[[:space:]]*#|^[[:space:]]*$' "$EXCL") || true)
+fi
 TOTAL=${#LINES[@]}
 [ "$TOTAL" -ge 1 ] || { echo "Allow-Liste leer"; exit 0; }
 

@@ -1,0 +1,5 @@
+# Produkte/Begriffe, die NIE in Social-Creatives (Reels / Stories / Bild-Posts) auftauchen dürfen.
+# Substring-Abgleich, case-insensitive, gegen name + label-Zeile in good_products.csv.
+# Vom User ausdrücklich ausgeschlossen — bitte respektieren (auch andere Sessions).
+augenmassage
+bali

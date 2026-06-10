@@ -328,11 +328,30 @@ RATIOS = (("portrait", (1080, 1350)), ("square", (1080, 1080)), ("story", (1080,
 def render_variant(src, label, ratio, w, h):
     return render_story(src, label, w, h) if ratio == "story" else render_card(src, label, w, h)
 
+
+def _excludes():
+    """Begriffe aus DO-NOT-POST.txt (vom User ausgeschlossene Produkte) — case-insensitive."""
+    p = os.path.join(HERE, "DO-NOT-POST.txt")
+    terms = []
+    if os.path.exists(p):
+        for ln in open(p, encoding="utf-8"):
+            ln = ln.strip()
+            if ln and not ln.startswith("#"):
+                terms.append(ln.lower())
+    return terms
+
+
+def read_good():
     out = []
+    ex = _excludes()
     with open(GOOD, newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             if row.get("image_url") and row.get("label"):
-                out.append((row["name"].strip(), row["image_url"].strip(), row["label"].strip()))
+                name, label = row["name"].strip(), row["label"].strip()
+                if any(t in (name + " " + label).lower() for t in ex):
+                    print(f"⏭️  ausgeschlossen (DO-NOT-POST): {name}")
+                    continue
+                out.append((name, row["image_url"].strip(), label))
     return out
 
 
