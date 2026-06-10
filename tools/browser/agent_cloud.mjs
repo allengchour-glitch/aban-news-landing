@@ -147,9 +147,20 @@ const args = rest.filter(a=>!a.startsWith('--'));
     const url = args[0]; const out = args[1] || 'cloud-check.png';
     await withPage(async (page)=>{
       await page.goto(url, { waitUntil:'networkidle', timeout:45000 });
-      await page.waitForTimeout(2000);
+      await page.waitForTimeout(2500);
       await page.screenshot({ path: out });
-      console.log('✓ Screenshot: '+out+' — prüfe, ob EINGELOGGT.');
+      // Text-Beweis fürs Log (Cloud-Session kann das Bild nicht sehen):
+      const u = page.url();
+      const hasPw = await page.locator('input[name="password"]').count().catch(()=>0);
+      const loggedInHints = await page.locator(
+        'a[href*="/direct/"], svg[aria-label="New post"], svg[aria-label="Neuer Beitrag"], a[href*="/accounts/edit"], img[alt*="profile photo"], a[href$="/luxestyle.ch/"]'
+      ).count().catch(()=>0);
+      const onLoginPage = /\/accounts\/login|\/login/.test(u) || hasPw > 0;
+      const status = (!onLoginPage && loggedInHints > 0) ? 'yes' : (onLoginPage ? 'no' : 'unklar');
+      console.log('LOGIN_STATUS=' + status);
+      console.log('PAGE_URL=' + u);
+      console.log('hints=' + loggedInHints + ' pwfield=' + hasPw);
+      console.log('✓ Screenshot: '+out+' (Artefakt).');
     });
     return;
   }
