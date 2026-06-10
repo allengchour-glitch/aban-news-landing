@@ -61,7 +61,7 @@ def e(s):
     return html.escape(str(s), quote=True)
 
 
-def render(branche_name, data) -> str:
+def render(branche_name, data, heading=None) -> str:
     intro = (data.get("intro") or "").strip()
     paras = "".join(
         f'<p style="color:var(--ink2,#374151);margin-bottom:14px">{e(p.strip())}</p>'
@@ -77,8 +77,9 @@ def render(branche_name, data) -> str:
                  f'<p style="color:var(--ink2,#374151);margin-top:8px">{e(a)}</p></details>')
     if not paras or not faqs:
         return ""
+    head = heading if heading else f"KI in der Praxis: {branche_name}"
     return (f'\n<section {MARKER} style="max-width:760px;margin:30px auto;padding:0 20px;line-height:1.75">'
-            f'<h2 style="font-size:1.3rem;margin-bottom:10px">KI in der Praxis: {e(branche_name)}</h2>'
+            f'<h2 style="font-size:1.3rem;margin-bottom:10px">{e(head)}</h2>'
             f'{paras}<h2 style="font-size:1.3rem;margin:22px 0 12px">Häufige Fragen</h2>{faqs}</section>\n')
 
 
