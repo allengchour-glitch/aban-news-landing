@@ -5,6 +5,15 @@
 
 ## 📌 STAND 2026-06-11 (Prodigi-Connector + Lieferzeit + Sprache je Land — NEU, ZUERST LESEN)
 **🟢 SCHON LIVE & VERIFIZIERT (diese Session live geschaltet):**
+- **Prodigi LIVE:** User hat `PRODIGI_API_KEY` gesetzt (Länge 36, gültig). `prodigi-check` bestätigt SKUs
+  `GLOBAL-FAP-A4/A3/A2` (Enhanced Matte 200g, Druckbereich `default`). `prodigi-products` (dry=false) lief → 10 Schweiz-Poster
+  ACTIVE (Handle `prodigi-poster-*`, Tag `schweiz-edition`). `prodigi-sync` (cron 6h) druckt bezahlte Orders autom.
+- **12 Schweiz-Sticker LIVE:** `schweiz-sticker.yml` (dry=false) → `schweiz-sticker-*` ACTIVE (Printful Kiss-Cut SKU
+  `9000001_10163/10164/10165`, Metafeld print_file, Tag `schweiz-edition`). Füllt die `schweiz-edition`-Collection.
+- **Spocket = WEGLASSEN** (User: „kostet"). Abo ~25–40$/Mt, nicht nötig — CJ(gratis)+Printful+Prodigi decken alles. Kein Spocket.
+- **Theme = „Horizon"** (block-basiert, JSON-Template `templates/product.json`, Section-Typ `product-information`):
+  **KEIN `sections/main-product.liquid`** → `inject_delivery_snippet.mjs` greift NICHT. Lieferzeit Phase 2 = Customizer
+  „Custom Liquid"-Block im PDP nötig (sicherer User-Schritt), NICHT per API erzwingen (Theme-Bruch-Gefahr). Phase 1 reicht.
 - **Sprache je Land LIVE:** `shopLocales` = DE(primär)/EN/FR/IT **alle published** → Shopify schaltet je Land autom. um.
 - **Übersetzungen LIVE:** `translate.yml` (dry=false) lief — **Hero verifiziert** (echte FR/IT Titel+Body+Meta, HTML/Emoji intakt),
   **Katalog-Lauf** (alle ~517 Produkte) + Theme laufen autonom weiter; Ledger `dropship/_translated.txt` committet je Scope.

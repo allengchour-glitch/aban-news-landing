@@ -9,12 +9,12 @@
 - [x] **Lieferzeit-Anzeige Phase 1** — Block + Metafeld `custom.lieferzeit` auf allen aktiven Produkten.
 - [x] **Prodigi-Connector + 5 weitere Workflows** gebaut, getestet (no-op-safe), auf `main`.
 
-## 🔵 Nur DU (1-Klick, schaltet Gebautes scharf)
-- [ ] **`PRODIGI_API_KEY` als GitHub-Secret setzen** (gratis Konto auf prodigi.com → Dashboard → API-Key).
-      Repo → Settings → Secrets and variables → Actions → New secret: `PRODIGI_API_KEY`.
-      Danach ICH/Workflow: `prodigi-check.yml` → `prodigi-products.yml` (dry_run=false) = 10 Schweiz-Poster live.
-- [ ] **Spocket** (kein API): App installieren + gute EU/US-Produkte importieren → ich veredle sie automatisch
-      (SEO, Collections, Lieferzeit-Block, Übersetzung, Social-Posts).
+## 🔵 Nur DU (1-Klick)
+- [x] **`PRODIGI_API_KEY` gesetzt** ✅ → Prodigi scharf, 10 Schweiz-Poster live.
+- [~] **Spocket = WEGLASSEN** (kostet Abo, nicht nötig — CJ+Printful+Prodigi reichen). Erledigt = kein Spocket.
+- [ ] **Lieferzeit Phase 2 (Customizer, optional):** Theme „Horizon" → PDP → Block hinzufügen „Custom Liquid" →
+      Inhalt `{% render 'ls-lieferzeit', product: closest.product %}`. (Snippet liegt im Theme/Repo bereit.)
+      Phase 1 (Block in jeder Beschreibung, mehrsprachig) ist schon live — Phase 2 ist nur die „nur-1-Zeile-je-Land"-Optik.
 
 ## 🟡 Nächste Ausbaustufen (ICH autonom, auf Zuruf / nächste Session)
 - [ ] **Lieferzeit Phase 2** (dynamisches Theme-Snippet, zeigt NUR die Zeile fürs Kundenland, 4-sprachig):
