@@ -46,10 +46,19 @@ async function createContext(){
 }
 
 // Startet eine Session, die den (eingeloggten) Context wiederverwendet + persistiert.
+// Residential-Proxy + Stealth (Default an) — sonst blockt IG/TikTok die Rechenzentrums-IP.
+// Toggle: BB_PROXY=0 aus · BB_COUNTRY=CH Geo · BB_ADVANCED_STEALTH=1 (nur Scale-Plan).
 async function startSession({ keepAlive=false } = {}){
   need(KEY,'BROWSERBASE_API_KEY'); need(PROJ,'BROWSERBASE_PROJECT_ID');
   const body = { projectId: PROJ, keepAlive };
-  if (CTX) body.browserSettings = { context: { id: CTX, persist: true } };
+  const bs = {};
+  if (CTX) bs.context = { id: CTX, persist: true };
+  if (process.env.BB_ADVANCED_STEALTH === '1') bs.advancedStealth = true;
+  bs.solveCaptchas = true;
+  if (Object.keys(bs).length) body.browserSettings = bs;
+  if (process.env.BB_PROXY !== '0') {
+    body.proxies = [{ type: 'browserbase', geolocation: { country: process.env.BB_COUNTRY || 'CH' } }];
+  }
   const s = await bb('/sessions', { method:'POST', body: JSON.stringify(body) });
   return s; // { id, connectUrl, ... }
 }
