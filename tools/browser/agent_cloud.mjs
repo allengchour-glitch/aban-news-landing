@@ -101,17 +101,45 @@ const args = rest.filter(a=>!a.startsWith('--'));
     return;
   }
   if (cmd === 'login'){
+    // Lokal-interaktiv (Terminal): öffnet Session, wartet auf ENTER.
     const url = args[0] || 'about:blank';
     need(CTX,'BROWSERBASE_CONTEXT_ID');
     const s = await startSession({ keepAlive:true });
     const d = await debugUrls(s.id);
-    // In der Live-URL die Login-Seite öffnen + einloggen:
     console.log('\n>>> 1) Öffne diese LIVE-URL im Browser:\n   ' + (d.debuggerFullscreenUrl||d.debuggerUrl));
     console.log('>>> 2) Gehe dort auf:  ' + url);
     console.log('>>> 3) Logge dich ein (inkl. 2FA). Dann hier ENTER drücken …');
     await ask('');
     await endSession(s.id);
     console.log('✓ Login fertig — der Context ist jetzt angemeldet. Aktionen können laufen.');
+    return;
+  }
+  if (cmd === 'login-start'){
+    // Workflow-tauglich (nicht-interaktiv): startet eine keepAlive-Session auf dem Context,
+    // öffnet die Login-Seite darin und DRUCKT die Live-URL. User loggt sich dort ein.
+    // Danach `login-release <sessionId>` aufrufen, damit der Context die Cookies speichert.
+    const url = args[0] || 'about:blank';
+    need(CTX,'BROWSERBASE_CONTEXT_ID');
+    const s = await startSession({ keepAlive:true });
+    const d = await debugUrls(s.id);
+    try{
+      const { chromium } = await import('playwright-core');
+      const br = await chromium.connectOverCDP(connectUrlFor(s));
+      const pg = (br.contexts()[0]?.pages()[0]) || await (br.contexts()[0]||await br.newContext()).newPage();
+      await pg.goto(url, { waitUntil:'domcontentloaded', timeout:45000 }).catch(()=>{});
+      await br.close().catch(()=>{});
+    }catch{}
+    console.log('\n=== BROWSERBASE LOGIN ===');
+    console.log('SESSION_ID=' + s.id);
+    console.log('LIVE_URL=' + (d.debuggerFullscreenUrl || d.debuggerUrl));
+    console.log('→ Diese LIVE_URL im Browser öffnen, einloggen (inkl. 2FA).');
+    console.log('→ Danach `login-release ' + s.id + '` laufen lassen (Context speichert die Anmeldung).');
+    return;
+  }
+  if (cmd === 'login-release'){
+    const sid = args[0]; if(!sid){ console.error('! Session-ID fehlt: login-release <sessionId>'); process.exit(1); }
+    await endSession(sid);
+    console.log('✓ Session ' + sid + ' beendet — Context-Cookies gespeichert. Aktionen können laufen.');
     return;
   }
   if (cmd === 'check'){
