@@ -264,10 +264,10 @@ def main() -> int:
                 if spark:
                     a["spark"] = spark
                 updated += 1
-        elif a.get("type") == "stock" and a.get("yahoo_symbol"):
+        elif a.get("type") in ("stock", "index", "commodity") and a.get("yahoo_symbol"):
             q = yahoo_quote(a["yahoo_symbol"])
             if not q and a.get("stooq_symbol"):
-                q = stooq_quote(a["stooq_symbol"])  # Fallback
+                q = stooq_quote(a["stooq_symbol"])  # Fallback (nur Aktien)
             if q:
                 a["price"] = q["price"]
                 a["change_24h"] = q["change_24h"]
@@ -275,8 +275,9 @@ def main() -> int:
                     a["spark"] = q["spark"]
                 updated += 1
         # Pro-Wert-News (für KI-Sentiment + Detailseiten)
-        qkind = "crypto" if a.get("type") == "crypto" else "stock"
-        an = fetch_asset_news(f"{a.get('name')} {qkind}")
+        qkind = {"crypto": "crypto", "stock": "stock",
+                 "index": "index", "commodity": "price"}.get(a.get("type"), "")
+        an = fetch_asset_news(f"{a.get('name')} {qkind}".strip())
         if an:
             a["asset_news"] = an
 

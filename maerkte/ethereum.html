@@ -97,6 +97,19 @@
     .chg{font-weight:800;font-variant-numeric:tabular-nums}
     .chg.up{color:var(--ok)}.chg.down{color:var(--bear)}.chg.flat{color:var(--muted)}
     .mtable td.spark{width:96px}.mtable td.spark svg{opacity:.92}
+    .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
+
+    /* Marktstimmung + Top-Mover */
+    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
+    .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
+    .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
+    .moodseg{display:block;height:100%}
+    .moodseg.bullish{background:var(--ok)}.moodseg.neutral{background:#cbd5e1}.moodseg.bearish{background:var(--bear)}
+    .moodsum{margin:.7rem 0 0;font-size:.9rem;color:var(--muted);font-weight:700}
+    .movers{display:grid;gap:.7rem}
+    .mover{display:flex;justify-content:space-between;align-items:center;gap:.6rem;font-size:.95rem}
+    .mover .ml{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
 
     /* sentiment badge */
     .badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:.2rem .55rem;border-radius:999px}
@@ -166,7 +179,7 @@
     tr.watched td{background:#fffaf0}
 
     /* Tool-Widgets */
-    .tools{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.8rem}
+    .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.1rem;margin-top:1.8rem}
     .tool{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.4rem;box-shadow:var(--shadow-sm)}
     .tool h3{margin:0 0 .3rem;font-size:1.12rem;letter-spacing:-.01em}
     .tool .thint{margin:0 0 1rem;color:var(--muted);font-size:.88rem}
@@ -246,8 +259,8 @@
       <a class="backlink" href="/maerkte.html">← Alle Märkte</a>
       <h1>Ethereum <span class="hl">ETH</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="ethereum">1’636 USD</span>
-        <span class="chg down">-3.05 %</span>
+        <span class="px" id="livePrice" data-id="ethereum" data-type="crypto">1’641 USD</span>
+        <span class="chg down">-2.29 %</span>
         <span class="tag-type">Krypto</span>
         <span class="badge neutral">Neutral</span>
       </div>
@@ -280,7 +293,7 @@
     <div class="wrap">
       <span class="eyebrow">News zu ETH</span>
       <h2>Aktuelle Schlagzeilen</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxQMG0za3ppLVhCekRESHdPVmR4Njd1M20zT0lFbHV0T1I1NXlpRnRJMEZfOWltaGJlSmVUZExJUERmVGU3WnhjWTFjWGdBTktxRWh3Z1FreFhKU2FmNzRCdWJySkdhSjhoWVRXRXpOa1I2VFFIcS1XRlNDalhsNEJSZWtEM3hlR29jNTVOMERKSWozOHF6ZEdDSFNoZHZJTDBKYnlUVjBvdnNKam5QSnZZdFZmQlVLWER1YzlwNVBKaFRxYnZjVXFSZg?oc=5" target="_blank" rel="noopener">Circle debuts cirBTC on Ethereum to challenge Coinbase in the wrapped bitcoin market</a><div class="meta"><span>CoinDesk</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNWDQ0RHhiUDBOZVozTHlmaGczS3ozOFhmY214aVEwb1JzemlfVDFucThJX1poVVpobHoxWDkwRlRYUXpTem1MQlhVbGhNUU1DS25ZeXJ0VExBRmFFQWVtc2RRRXV5YXNsR0pQOFZISm13eXhlY0s0bEpvclBIZHlMQ0JCODhFZ21VRHhsSElud2M1VG1JWHBz?oc=5" target="_blank" rel="noopener">BitMine buys the dip, makes largest ethereum purchase this year</a><div class="meta"><span>Sherwood News</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMijgJBVV95cUxPd1Jidk9iQUpGa2hhNFVjaXJzbDlVVlp4Vm5wMlV5RTliNGNYQXVzOEVoeUYzeExPSjNleEkxQVZ3ZnVMbEJjbEpvRHc3cXo4c2ttQTVEZ3otdjdBRlhvU254dE9lc25JT2l4Q2FqeTVLYnBBekFlMFRHaTVPS0NsY3p1REozLXI4RWpTVk80bWE2R2dRdTl4ZHFlamNkai1FWFdJVG5yV0xoMUk1c2lQYkFzMkUtamlJcjBxR2ZfWFptdXRqVW9FTUdFdzNsWllJTURxMFViS05TTWRIWjlsZmtlU2hRNFVGbVhIRVY2ZW9wOHliQkVnRmU4cllEQXpSSzI3Wl9oSGZLbjloTGc?oc=5" target="_blank" rel="noopener">Bitcoin and ethereum prices today, Tuesday, June 9, 2026: Values stabilize as investors may seek alternatives</a><div class="meta"><span>Yahoo Finance</span><span>· 09 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxQMG0za3ppLVhCekRESHdPVmR4Njd1M20zT0lFbHV0T1I1NXlpRnRJMEZfOWltaGJlSmVUZExJUERmVGU3WnhjWTFjWGdBTktxRWh3Z1FreFhKU2FmNzRCdWJySkdhSjhoWVRXRXpOa1I2VFFIcS1XRlNDalhsNEJSZWtEM3hlR29jNTVOMERKSWozOHF6ZEdDSFNoZHZJTDBKYnlUVjBvdnNKam5QSnZZdFZmQlVLWER1YzlwNVBKaFRxYnZjVXFSZg?oc=5" target="_blank" rel="noopener">Circle debuts cirBTC on Ethereum to challenge Coinbase in the wrapped bitcoin market</a><div class="meta"><span>CoinDesk</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQRlhyQ1hMN3RDQ3RBRUgzeUhOOXRFajZyYUN5a01pcWdHZ0RDbXduLWVqNTFBOUJmM2plWjNzV1ROX1RWX25aMjctNE82M1d4NGpFbk9qeFdUaXc3c2dzaDg1S01mQk5oLUJLUDcxMjZ2MmFKempOeGJZLURoRkNEX0V6OEdxU0tYYUZsem5OektQMHNhczlSbXBES3p4VUNmd2xSa1FDY05mc2M?oc=5" target="_blank" rel="noopener">Ethereum Flashes &#x27;Historic Opportunity,&#x27; Says Analyst, as Tom Lee&#x27;s Bitmine Buys $218M</a><div class="meta"><span>Yahoo Finance</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxNMEdvOGN0eU83cTFhR29SVUc3eWh2Zl8ybU1yUXRPclRoTkttU21oZ19POEF4SjdQUEtJVkhkYkNqQmNBX3A4TVo1V293MkxfTUZ2cnpfM0lRVnowNkJXYzBpTmU4MWtlclpPdUt3NnNqN0VLdXcxZGpRMk1yaXg1VkR6bW9xNXl6T0ZsN1BRV2tDamRG?oc=5" target="_blank" rel="noopener">Tom Lee&#x27;s BitMine Buys the Dip Amid &#x27;Superficial&#x27; Crypto Selloff, Adding $214M in Ethereum</a><div class="meta"><span>Yahoo Finance</span><span>· 08 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/maerkte.html">← Zur Märkte-Übersicht</a> · <a href="/ki-und-krypto-daten.html">KI &amp; Krypto in Zahlen →</a></p>
     </div>
   </section>
@@ -313,8 +326,9 @@
 // Live-Kurs aus markets.json nachladen (CSP-safe, no-op bei Fehler).
 (function(){
   var el=document.getElementById('livePrice'); if(!el) return;
-  var id=el.getAttribute('data-id');
+  var id=el.getAttribute('data-id'); var typ=el.getAttribute('data-type');
   function fmt(v){ if(v==null)return null; var d=v>=1000?0:(v>=1?2:4);
+    if(typ==='index'){ try{return new Intl.NumberFormat('de-CH',{maximumFractionDigits:d,minimumFractionDigits:d}).format(v)+' Pkt';}catch(e){return v.toFixed(d)+' Pkt';} }
     try{return new Intl.NumberFormat('de-CH',{style:'currency',currency:'USD',maximumFractionDigits:d,minimumFractionDigits:d}).format(v);}catch(e){return v.toFixed(d)+' USD';} }
   function upd(){ fetch('/data/markets.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
     if(!d)return; var a=(d.assets||[]).filter(function(x){return x.id===id;})[0];

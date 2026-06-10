@@ -100,6 +100,19 @@
     .chg{font-weight:800;font-variant-numeric:tabular-nums}
     .chg.up{color:var(--ok)}.chg.down{color:var(--bear)}.chg.flat{color:var(--muted)}
     .mtable td.spark{width:96px}.mtable td.spark svg{opacity:.92}
+    .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
+
+    /* Marktstimmung + Top-Mover */
+    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
+    .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
+    .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
+    .moodseg{display:block;height:100%}
+    .moodseg.bullish{background:var(--ok)}.moodseg.neutral{background:#cbd5e1}.moodseg.bearish{background:var(--bear)}
+    .moodsum{margin:.7rem 0 0;font-size:.9rem;color:var(--muted);font-weight:700}
+    .movers{display:grid;gap:.7rem}
+    .mover{display:flex;justify-content:space-between;align-items:center;gap:.6rem;font-size:.95rem}
+    .mover .ml{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
 
     /* sentiment badge */
     .badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:.2rem .55rem;border-radius:999px}
@@ -169,7 +182,7 @@
     tr.watched td{background:#fffaf0}
 
     /* Tool-Widgets */
-    .tools{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.8rem}
+    .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.1rem;margin-top:1.8rem}
     .tool{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.4rem;box-shadow:var(--shadow-sm)}
     .tool h3{margin:0 0 .3rem;font-size:1.12rem;letter-spacing:-.01em}
     .tool .thint{margin:0 0 1rem;color:var(--muted);font-size:.88rem}
@@ -223,7 +236,7 @@
   {"@context":"https://schema.org","@type":"CollectionPage","name":"Märkte — Krypto & Aktien","url":"https://abannews.com/maerkte.html","description":"Live-Kurse für Krypto & Aktien, Finanz-News und experimentelles KI-Sentiment. Keine Anlageberatung.","inLanguage":"de-DE","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Sind die Kurse echt und aktuell?","acceptedAnswer":{"@type":"Answer","text":"Ja. Krypto-Kurse aktualisieren live im Browser über CoinGecko. Aktienkurse, Finanz-News und KI-Sentiment werden mehrmals täglich automatisch aus öffentlichen Quellen aktualisiert (Yahoo Finance, CoinGecko, seriöse RSS-Feeds). Alle Quellen sind verlinkt."}},{"@type":"Question","name":"Ist das eine Anlageberatung?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Seite ordnet öffentlich verfügbare Daten ein und ist keine Anlage-, Steuer- oder Finanzberatung. Märkte sind hochvolatil; du kannst eingesetztes Geld komplett verlieren."}},{"@type":"Question","name":"Was bedeutet das KI-Sentiment?","acceptedAnswer":{"@type":"Answer","text":"Eine KI fasst die aktuelle Nachrichtenlage je Wert zu einer Stimmung zusammen (bullish, neutral, bearish) mit kurzer Begründung. Es ist eine experimentelle Einordnung, keine Kauf- oder Verkaufsempfehlung."}},{"@type":"Question","name":"Welche Werte und Währungen werden gezeigt?","acceptedAnswer":{"@type":"Answer","text":"Bitcoin, Ethereum, Solana sowie NVIDIA, Apple, Microsoft und Tesla. Die Anzeige ist zwischen USD, CHF und EUR umschaltbar (EZB-Referenzkurse)."}},{"@type":"Question","name":"Kostet die Nutzung etwas?","acceptedAnswer":{"@type":"Answer","text":"Nein. Märkte-Seite, Umrechner und Sparplan-Rechner sind kostenlos und ohne Login nutzbar, ohne Tracking-Pixel."}}]}
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Sind die Kurse echt und aktuell?","acceptedAnswer":{"@type":"Answer","text":"Ja. Krypto-Kurse aktualisieren live im Browser über CoinGecko. Aktienkurse, Finanz-News und KI-Sentiment werden mehrmals täglich automatisch aus öffentlichen Quellen aktualisiert (Yahoo Finance, CoinGecko, seriöse RSS-Feeds). Alle Quellen sind verlinkt."}},{"@type":"Question","name":"Ist das eine Anlageberatung?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Seite ordnet öffentlich verfügbare Daten ein und ist keine Anlage-, Steuer- oder Finanzberatung. Märkte sind hochvolatil; du kannst eingesetztes Geld komplett verlieren."}},{"@type":"Question","name":"Was bedeutet das KI-Sentiment?","acceptedAnswer":{"@type":"Answer","text":"Eine KI fasst die aktuelle Nachrichtenlage je Wert zu einer Stimmung zusammen (bullish, neutral, bearish) mit kurzer Begründung. Es ist eine experimentelle Einordnung, keine Kauf- oder Verkaufsempfehlung."}},{"@type":"Question","name":"Welche Werte und Währungen werden gezeigt?","acceptedAnswer":{"@type":"Answer","text":"22 Werte in vier Kategorien: Krypto (Bitcoin, Ethereum, Solana, XRP, BNB, Cardano, Dogecoin), Aktien (NVIDIA, Apple, Microsoft, Tesla, Alphabet, Amazon, Meta, AMD), Indizes (S&P 500, Nasdaq, DAX, SMI) und Rohstoffe (Gold, Silber, Öl). Anzeige in USD, CHF oder EUR; Indizes als Punkte."}},{"@type":"Question","name":"Kostet die Nutzung etwas?","acceptedAnswer":{"@type":"Answer","text":"Nein. Märkte-Seite, Umrechner und Sparplan-Rechner sind kostenlos und ohne Login nutzbar, ohne Tracking-Pixel."}}]}
   </script>
 </head>
 <body>
@@ -264,7 +277,7 @@
     <div class="wrap">
       <span class="eyebrow">Live-Überblick</span>
       <h2>Marktüberblick</h2>
-      <p class="sub">Krypto-Kurse aktualisieren live im Browser. Aktien stammen vom letzten automatischen Lauf (Änderung ggü. Vortagesschluss).</p>
+      <p class="sub">22 Werte aus Krypto, Aktien, Indizes &amp; Rohstoffen. Krypto aktualisiert live im Browser; Rest vom letzten automatischen Lauf (Änderung ggü. Vortagesschluss).</p>
       <div class="ovbar">
         <p class="updated" id="lastUpdated">Lade Daten …</p>
         <div class="curswitch" id="curSel" role="group" aria-label="Währung wählen">
@@ -292,6 +305,29 @@
         </table>
       </div>
       <p class="crosslink">Mehr Hintergrund: <a href="/ki-und-krypto-daten.html">KI &amp; Krypto nüchtern in Zahlen →</a> (Energieverbrauch, KI-Trading-Realität, DACH-Steuerregeln).</p>
+    </div>
+  </section>
+
+  <!-- MARKTSTIMMUNG -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">Auf einen Blick</span>
+      <h2>Marktstimmung</h2>
+      <p class="sub">Aggregiertes KI-Sentiment über alle Werte und die größten Tagesbewegungen.</p>
+      <div class="mood">
+        <div class="moodcard">
+          <h3>Stimmungs-Verteilung</h3>
+          <div class="moodbar" id="moodMeter" aria-hidden="true"></div>
+          <p class="moodsum" id="moodSummary">—</p>
+        </div>
+        <div class="moodcard">
+          <h3>Top-Bewegungen (24 h)</h3>
+          <div class="movers">
+            <div class="mover"><span class="ml">📈 Gewinner</span><span id="topGainer">—</span></div>
+            <div class="mover"><span class="ml">📉 Verlierer</span><span id="topLoser">—</span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -343,6 +379,27 @@
           </div>
           <div class="tout" id="spOut">—</div>
           <p class="tnote">Beispielrechnung mit konstanter Rendite — <strong>kein Renditeversprechen</strong>. Echte Märkte schwanken; Verluste möglich.</p>
+        </div>
+        <!-- Gewinn/Verlust-Rechner -->
+        <div class="tool">
+          <h3>🧾 Gewinn/Verlust-Rechner</h3>
+          <p class="thint">Was wäre dein Einstieg heute wert? Live-Kurs gegen deinen Kaufpreis.</p>
+          <div class="field">
+            <label for="plAsset">Wert</label>
+            <select id="plAsset"></select>
+          </div>
+          <div class="frow">
+            <div class="field">
+              <label for="plUnits">Menge</label>
+              <input id="plUnits" type="number" inputmode="decimal" value="1" min="0" step="any">
+            </div>
+            <div class="field">
+              <label for="plBuy" id="plBuyLabel">Kaufpreis je Stück (USD)</label>
+              <input id="plBuy" type="number" inputmode="decimal" min="0" step="any">
+            </div>
+          </div>
+          <div class="tout" id="plOut">—</div>
+          <p class="tnote">Nur informativ · keine Anlageberatung.</p>
         </div>
       </div>
     </div>
@@ -410,7 +467,7 @@
         </details>
         <details>
           <summary>Welche Werte und Währungen werden gezeigt?</summary>
-          <p>Aktuell Bitcoin, Ethereum und Solana sowie die Aktien NVIDIA, Apple, Microsoft und Tesla. Die Anzeige kannst du zwischen <strong>USD, CHF und EUR</strong> umschalten (Umrechnung über EZB-Referenzkurse).</p>
+          <p>Aktuell <strong>22 Werte</strong> in vier Kategorien: Krypto (u.a. Bitcoin, Ethereum, Solana, XRP), Aktien (u.a. NVIDIA, Apple, Microsoft, Tesla, Amazon), Indizes (S&amp;P 500, Nasdaq, DAX, SMI) und Rohstoffe (Gold, Silber, Öl). Die Anzeige kannst du zwischen <strong>USD, CHF und EUR</strong> umschalten (EZB-Referenzkurse); Indizes werden als Punkte gezeigt.</p>
         </details>
         <details>
           <summary>Kostet die Nutzung etwas?</summary>

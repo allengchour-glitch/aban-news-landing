@@ -100,6 +100,17 @@
     .chg{font-weight:800;font-variant-numeric:tabular-nums}
     .chg.up{color:var(--ok)}.chg.down{color:var(--bear)}.chg.flat{color:var(--muted)}
     .mtable td.spark{width:96px}.mtable td.spark svg{opacity:.92}
+    .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
+    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
+    .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
+    .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
+    .moodseg{display:block;height:100%}
+    .moodseg.bullish{background:var(--ok)}.moodseg.neutral{background:#cbd5e1}.moodseg.bearish{background:var(--bear)}
+    .moodsum{margin:.7rem 0 0;font-size:.9rem;color:var(--muted);font-weight:700}
+    .movers{display:grid;gap:.7rem}
+    .mover{display:flex;justify-content:space-between;align-items:center;gap:.6rem;font-size:.95rem}
+    .mover .ml{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
 
     /* sentiment badge */
     .badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:.2rem .55rem;border-radius:999px}
@@ -169,7 +180,7 @@
     tr.watched td{background:#fffaf0}
 
     /* Tool-Widgets */
-    .tools{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.8rem}
+    .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.1rem;margin-top:1.8rem}
     .tool{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.4rem;box-shadow:var(--shadow-sm)}
     .tool h3{margin:0 0 .3rem;font-size:1.12rem;letter-spacing:-.01em}
     .tool .thint{margin:0 0 1rem;color:var(--muted);font-size:.88rem}
@@ -223,7 +234,7 @@
   {"@context":"https://schema.org","@type":"CollectionPage","name":"Markets — Crypto & Stocks","url":"https://abannews.com/en/maerkte.html","description":"Live prices for crypto & stocks, financial news and experimental AI sentiment. Not investment advice.","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are the prices real and up to date?","acceptedAnswer":{"@type":"Answer","text":"Yes. Crypto prices update live in your browser via CoinGecko. Stock prices, financial news and AI sentiment are refreshed automatically several times a day from public sources (Yahoo Finance, CoinGecko, reputable RSS feeds). All sources are linked."}},{"@type":"Question","name":"Is this investment advice?","acceptedAnswer":{"@type":"Answer","text":"No. This page contextualises publicly available data and is not investment, tax or financial advice. Markets are highly volatile; you can lose all of the money you invest."}},{"@type":"Question","name":"What does the AI sentiment mean?","acceptedAnswer":{"@type":"Answer","text":"An AI summarises the current news situation per asset into a sentiment (bullish, neutral, bearish) with a short rationale. It is an experimental assessment, not a buy or sell recommendation."}},{"@type":"Question","name":"Which assets and currencies are shown?","acceptedAnswer":{"@type":"Answer","text":"Bitcoin, Ethereum, Solana plus NVIDIA, Apple, Microsoft and Tesla. The display can be switched between USD, CHF and EUR (ECB reference rates)."}},{"@type":"Question","name":"Does it cost anything?","acceptedAnswer":{"@type":"Answer","text":"No. The markets page, converter and savings calculator are free to use without login, with no tracking pixel."}}]}
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are the prices real and up to date?","acceptedAnswer":{"@type":"Answer","text":"Yes. Crypto prices update live in your browser via CoinGecko. Stock prices, financial news and AI sentiment are refreshed automatically several times a day from public sources (Yahoo Finance, CoinGecko, reputable RSS feeds). All sources are linked."}},{"@type":"Question","name":"Is this investment advice?","acceptedAnswer":{"@type":"Answer","text":"No. This page contextualises publicly available data and is not investment, tax or financial advice. Markets are highly volatile; you can lose all of the money you invest."}},{"@type":"Question","name":"What does the AI sentiment mean?","acceptedAnswer":{"@type":"Answer","text":"An AI summarises the current news situation per asset into a sentiment (bullish, neutral, bearish) with a short rationale. It is an experimental assessment, not a buy or sell recommendation."}},{"@type":"Question","name":"Which assets and currencies are shown?","acceptedAnswer":{"@type":"Answer","text":"22 assets across four categories: crypto (Bitcoin, Ethereum, Solana, XRP, BNB, Cardano, Dogecoin), stocks (NVIDIA, Apple, Microsoft, Tesla, Alphabet, Amazon, Meta, AMD), indices (S&P 500, Nasdaq, DAX, SMI) and commodities (gold, silver, oil). Display in USD, CHF or EUR; indices as points."}},{"@type":"Question","name":"Does it cost anything?","acceptedAnswer":{"@type":"Answer","text":"No. The markets page, converter and savings calculator are free to use without login, with no tracking pixel."}}]}
   </script>
 </head>
 <body>
@@ -261,7 +272,7 @@
     <div class="wrap">
       <span class="eyebrow">Live overview</span>
       <h2>Market overview</h2>
-      <p class="sub">Crypto prices update live in your browser. Stocks are from the last automated run (change vs. previous close).</p>
+      <p class="sub">22 assets across crypto, stocks, indices &amp; commodities. Crypto updates live in your browser; the rest from the last automated run (change vs. previous close).</p>
       <div class="ovbar">
         <p class="updated" id="lastUpdated">Loading data …</p>
         <div class="curswitch" id="curSel" role="group" aria-label="Choose currency">
@@ -289,6 +300,29 @@
         </table>
       </div>
       <p class="crosslink">More background: <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a> (energy use, AI-trading reality, DACH tax rules).</p>
+    </div>
+  </section>
+
+  <!-- MARKET MOOD -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">At a glance</span>
+      <h2>Market mood</h2>
+      <p class="sub">Aggregated AI sentiment across all assets and the biggest daily movers.</p>
+      <div class="mood">
+        <div class="moodcard">
+          <h3>Sentiment distribution</h3>
+          <div class="moodbar" id="moodMeter" aria-hidden="true"></div>
+          <p class="moodsum" id="moodSummary">—</p>
+        </div>
+        <div class="moodcard">
+          <h3>Top moves (24 h)</h3>
+          <div class="movers">
+            <div class="mover"><span class="ml">📈 Gainer</span><span id="topGainer">—</span></div>
+            <div class="mover"><span class="ml">📉 Loser</span><span id="topLoser">—</span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -339,6 +373,26 @@
           <div class="tout" id="spOut">—</div>
           <p class="tnote">Example with constant return — <strong>not a return promise</strong>. Real markets fluctuate; losses are possible.</p>
         </div>
+        <div class="tool">
+          <h3>🧾 Profit/loss calculator</h3>
+          <p class="thint">What would your entry be worth today? Live price vs. your buy price.</p>
+          <div class="field">
+            <label for="plAsset">Asset</label>
+            <select id="plAsset"></select>
+          </div>
+          <div class="frow">
+            <div class="field">
+              <label for="plUnits">Amount</label>
+              <input id="plUnits" type="number" inputmode="decimal" value="1" min="0" step="any">
+            </div>
+            <div class="field">
+              <label for="plBuy" id="plBuyLabel">Buy price per unit (USD)</label>
+              <input id="plBuy" type="number" inputmode="decimal" min="0" step="any">
+            </div>
+          </div>
+          <div class="tout" id="plOut">—</div>
+          <p class="tnote">For information only · not investment advice.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -377,7 +431,7 @@
         <details><summary>Are the prices real and up to date?</summary><p>Yes. Crypto prices update live in your browser via CoinGecko. Stock prices, financial news and AI sentiment are refreshed automatically several times a day from public sources (Yahoo Finance, CoinGecko, reputable RSS feeds). All sources are linked.</p></details>
         <details><summary>Is this investment advice?</summary><p>No. This page contextualises publicly available data and is expressly <strong>not investment, tax or financial advice</strong>. Markets — especially crypto — are highly volatile; you can lose all of the money you invest. You make decisions at your own responsibility.</p></details>
         <details><summary>What does the &bdquo;AI sentiment&ldquo; mean?</summary><p>An AI summarises the current news situation per asset into a sentiment — bullish, neutral or bearish — with a short rationale. This is an <strong>experimental assessment, not a buy or sell recommendation</strong>, and can be wrong.</p></details>
-        <details><summary>Which assets and currencies are shown?</summary><p>Currently Bitcoin, Ethereum and Solana plus the stocks NVIDIA, Apple, Microsoft and Tesla. You can switch the display between <strong>USD, CHF and EUR</strong> (converted via ECB reference rates).</p></details>
+        <details><summary>Which assets and currencies are shown?</summary><p>Currently <strong>22 assets</strong> across four categories: crypto (e.g. Bitcoin, Ethereum, Solana, XRP), stocks (e.g. NVIDIA, Apple, Microsoft, Tesla, Amazon), indices (S&amp;P 500, Nasdaq, DAX, SMI) and commodities (gold, silver, oil). Switch the display between <strong>USD, CHF and EUR</strong> (ECB reference rates); indices are shown as points.</p></details>
         <details><summary>Does it cost anything?</summary><p>No. The markets page, the converter and the savings calculator are free to use without login — right in your browser, with no tracking pixel.</p></details>
       </div>
     </div>
