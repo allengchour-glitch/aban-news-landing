@@ -121,3 +121,16 @@
   selbst-gestalten 18, gadgets 124, sale 367 …). Beide Menue-Seiten publiziert. Keine weiteren toten Links.
 - **Maerkte:** DACH (`luxestyle.ch/de-de/`), Switzerland(ch), Global, FR, IT, EU-rest, UK, US — alle enabled.
   Collections-Erreichbarkeit pro Markt kann abweichen -> im Zweifel beide Markt-Pfade testen (`/de-de/` und root).
+
+## 2026-06-10 abend — POD-Anbieter-Keys gesetzt (Printify + Gelato), Check gebaut
+- User hat **PRINTIFY_API_KEY (gültig, Länge 1301) + GELATO_API_KEY (gültig, Länge 110)** als GitHub-Secrets gesetzt.
+- Tool `automation/pod_provider_check.mjs` + Workflow `pod-provider-check.yml` (testet Keys + verbundene Shops, legt nichts an).
+- **PRINTIFY:** Key gültig, Katalog erreichbar (1415 Blueprints). **Magnete:** `851 Die-Cut Magnets`, 428 Magnets, 789 Square,
+  771/857 Button. **Sticker:** `400 Kiss-Cut Stickers`, 384 Square, 476/564 Vinyl. **🟡 ABER:** der einzige Printify-Shop
+  ist `id 27875158 "My new store" | sales_channel=disconnected` → **LuxeStyle-Shopify-Store ist in Printify NICHT verbunden.**
+  → Produkte per API würden NICHT im Shop landen. **USER-SCHRITT:** Printify → „Manage my stores" → Add store → Shopify →
+  LuxeStyle (au3j0y-hq) verbinden. Dann erscheint ein neuer Shop mit sales_channel=shopify → dessen shop_id für create.
+- **GELATO:** Key gesetzt/gültig. Store-Verbindung analog im Gelato-Dashboard prüfen/verbinden (Dashboard → Stores).
+- **NÄCHSTER SCHRITT (Claude, sobald Shopify in Printify verbunden):** Connector bauen (Design-Upload → product create
+  auf shopify-shop_id → publish) + Schweiz-Sticker/Magnete (Mundart/Matterhorn/Edelweiss) anlegen, Preis ×2,3, Tag
+  `schweiz-edition`. Bis dahin: Keys da, aber **Store-Verbindung im Anbieter fehlt** = Blocker.
