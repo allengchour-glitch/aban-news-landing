@@ -90,3 +90,7 @@
   ⚠️ **Pages-Deploy-Lag ~15–20 Min** für neue PNGs → vor dem Publizieren auf `abannews.com/...png`=200 warten (sonst broken tiles).
 - **Kund:innen können die CH-Motive JETZT schon kaufen** über „Selbst gestalten" (Editor → Printful-Fulfillment LÄUFT).
   Offen für Fertig-Produkte (ohne Gestalten): Printify/Gelato-Key (Karte).
+- **Menü-Verlinkung (2026-06-10):** Top-Level **„🇨🇭 Schweiz Edition"** (Pos. 2, MenuItem `787008815489`) →
+  `/pages/designs-galerie?cat=Schweiz`. Galerie-JS kann jetzt **Deep-Link-Filter** (`?cat=` oder `#Kategorie`).
+  Sub-Item „Designs & Sticker" auf (335) aktualisiert. `menuUpdate` ersetzt ALLE Items → immer komplette
+  Item-Liste (mit ids) mitsenden, sonst Verlust.
