@@ -29,4 +29,5 @@ jobs:
           path: monitor/ausgabe
           retention-days: 14
       - name: Hinweis Versand
-        run: echo "Reports gebaut. Versand an Abonnent:innen: siehe monitor/README.md (Stripe-Abo + Mail-Weg)."
+        run: |
+          echo "Reports gebaut. Versand an Abonnent:innen: siehe monitor/README.md (Stripe-Abo + Mail-Weg)."
