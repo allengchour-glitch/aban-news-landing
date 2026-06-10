@@ -18,7 +18,12 @@
 7. Früher heute: 404-Menüfix (selbst-gestalten-1 unpubliziert → Menü auf `selbst-gestalten`), AGB/Footer, FB-Token ✓, Memory komprimiert.
 
 **Anbieter-Realität:** Gelato=verbunden (UI-anlegen, API CI-blockiert) · Printful=Selbstgestalt-Linie (läuft, Auto-Druck) ·
-Printify=NICHT verbunden (Shopify-Store dort nie verbunden → ignorieren) · Gemini-Billing=OK.
+Printify=NICHT verbunden — **Recheck 10.06. abends bestätigt**: Key gültig, Katalog ok, aber einziger Shop = `"My new store"`
+(id 27875158, Kanal `disconnected`) → User muss in Printify den LuxeStyle-Shopify-Store als Sales-Channel verbinden (sonst
+ignorieren, Printful reicht). · Gemini-Billing=OK.
+
+**App `autopilot2` (Badge „Markets inkompatibel"):** Warnung = App nicht kompatibel mit Multi-Market-Setup (8 Märkte),
+bricht aber nichts. **User-Entscheid 10.06.: DRIN LASSEN / nicht anfassen** (evtl. Parallel-Session). NICHT deinstallieren.
 
 **Offene User-Schritte (optional):** mehr Gelato-Produkte anlegen → „alle einrichten" sagen (Claude veredelt) · TikTok manuell
 posten · (falls Sticker/Magnete autonom gewünscht: Shopify-Store in Printify verbinden).
