@@ -96,13 +96,19 @@ def faq_jsonld(data) -> str:
 
 
 def parse_json(txt: str):
-    m = re.search(r"\{.*\}", txt, re.S)
+    # Markdown-Code-Fences entfernen, JSON-Objekt extrahieren, tolerant parsen
+    # (strict=False erlaubt echte Zeilenumbrueche in Strings — Gemini liefert die oft so).
+    t = re.sub(r"^```(?:json)?|```$", "", txt.strip(), flags=re.M).strip()
+    m = re.search(r"\{.*\}", t, re.S)
     if not m:
         return None
-    try:
-        return json.loads(m.group(0))
-    except Exception:  # noqa: BLE001
-        return None
+    raw = m.group(0)
+    for cand in (raw, raw.replace("\n", " ")):
+        try:
+            return json.loads(cand, strict=False)
+        except Exception:  # noqa: BLE001
+            continue
+    return None
 
 
 def insert(src: str, section: str, jsonld: str) -> str | None:
