@@ -1,0 +1,8 @@
+Techno-/Electronic-Tracks für LuxeStyle-Reels — royalty-free, lizenzkonform.
+Quelle: Kevin MacLeod (incompetech.com) · Lizenz: Creative Commons BY 4.0
+(https://creativecommons.org/licenses/by/4.0/). Bei Verwendung wird die
+Quellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).
+
+- voltaic.mp3          → "Voltaic" by Kevin MacLeod
+- electrodoodle.mp3    → "Electrodoodle" by Kevin MacLeod
+- digital-lemonade.mp3 → "Digital Lemonade" by Kevin MacLeod
