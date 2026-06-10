@@ -85,6 +85,12 @@ gemerged (zuletzt PR #599, FR/IT-Revert). **Komplett live & autonom — diese (a
   „mehr anzeigen (+N)"/„weniger"** (kein endloses Scrollen), `CAP=5`, `expanded`-State; (c) **Markt-Vorschau
   auf der Startseite** (`index.html`): Krypto-/Aktien-&-ETF-/Finanz-News-Block aus `/data/markets.json`
   (inline, CSP-safe, XSS-escaped, `hidden` bis Daten da) + CTA „Alle 42 Märkte". Sub-Text 22→42 korrigiert.
+- **Geo-Anpassung (User „CHF in CH, EUR andere Länder + Sprache?"):** (a) **Währung nach Land** — Besucherland
+  keyless via Cloudflare `/cdn-cgi/trace` (`loc=`): CH/LI→CHF, Eurozone→EUR, sonst USD; greift nur als Vorwahl,
+  manuelle USD/CHF/EUR-Wahl (localStorage) gewinnt. In `js/markets.js` (`geoCurrency`/`applyCur`) **und** in der
+  Startseiten-Vorschau (nutzt `markets.json`-`fx`). (b) **Sprach-Hinweis** `js/lang-suggest.js` — dezenter,
+  dismissbarer Banner DE↔EN wenn Browsersprache ≠ Seitensprache (liest vorhandene `hreflang`-Alternates;
+  **kein** Auto-Redirect, SEO-konform). Eingebunden auf `maerkte.html`/`en/maerkte.html`/`index.html`.
 
 ## 📌 Stand 2026-06-08 (Teil 16) — Volle 4-Sprachen-Hub-Parität + Schema + Abend-TODO
 User: „alles weiter wo du kannst und das wo ich mache in todo abend". Erledigt & gemerged:

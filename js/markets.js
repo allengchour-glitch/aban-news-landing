@@ -52,7 +52,11 @@
 
   // ---------- Währung (USD/CHF/EUR, localStorage) ----------
   var CUR_KEY = 'aban_markets_cur';
-  var cur = (function () { try { return localStorage.getItem(CUR_KEY) || 'usd'; } catch (e) { return 'usd'; } })();
+  var hadStoredCur = false;
+  var cur = (function () {
+    try { var s = localStorage.getItem(CUR_KEY); if (s) { hadStoredCur = true; return s; } } catch (e) {}
+    return 'usd';
+  })();
   function setCur(c) { cur = c; try { localStorage.setItem(CUR_KEY, c); } catch (e) {} }
   function rate() { return (state.fx && state.fx[cur]) || 1; }
   function fmtMoney(usdVal) {
@@ -568,6 +572,39 @@
   }
 
   // ---------- Währungs-Umschalter ----------
+  function refreshCurUI() {
+    var box = document.getElementById('curSel'); if (!box) return;
+    Array.prototype.forEach.call(box.querySelectorAll('button[data-cur]'), function (x) {
+      var on = x.getAttribute('data-cur') === cur;
+      x.classList.toggle('on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  // Währung anwenden. persist=true bei manuellem Klick, false bei Auto-Erkennung.
+  function applyCur(c, persist) {
+    if (!(state.fx && state.fx[c])) return;            // ohne FX-Rate ignorieren
+    if (persist) setCur(c); else cur = c;
+    refreshCurUI();
+    renderTable(); renderTicker();
+    if (typeof state.convUpdate === 'function') state.convUpdate();
+    if (typeof state.plUpdate === 'function') state.plUpdate();
+  }
+
+  // Eurozone (+ de-facto-EUR) → EUR; CH/LI → CHF; sonst USD.
+  var EURO_CC = { AT:1,BE:1,HR:1,CY:1,EE:1,FI:1,FR:1,DE:1,GR:1,IE:1,IT:1,LV:1,LT:1,LU:1,MT:1,NL:1,PT:1,SK:1,SI:1,ES:1,
+                  MC:1,SM:1,VA:1,AD:1,ME:1,XK:1 };
+  function geoCurrency() {
+    if (hadStoredCur) return;                          // manuelle Wahl respektieren
+    fetch('/cdn-cgi/trace', { cache: 'no-store' })
+      .then(function (r) { return r.text(); })
+      .then(function (t) {
+        var m = /(?:^|\n)loc=([A-Z]{2})/.exec(t);
+        var cc = m ? m[1] : '';
+        var c = (cc === 'CH' || cc === 'LI') ? 'chf' : (EURO_CC[cc] ? 'eur' : 'usd');
+        if (c !== cur) applyCur(c, false);
+      })
+      .catch(function () {});
+  }
+
   function initCurrency() {
     var box = document.getElementById('curSel');
     if (!box) return;
@@ -579,15 +616,7 @@
       b.classList.toggle('on', c === cur);
       b.setAttribute('aria-pressed', c === cur ? 'true' : 'false');
       b.addEventListener('click', function () {
-        if (!avail[c]) return;
-        setCur(c);
-        Array.prototype.forEach.call(btns, function (x) {
-          var on = x.getAttribute('data-cur') === cur;
-          x.classList.toggle('on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false');
-        });
-        renderTable(); renderTicker();
-        if (typeof state.convUpdate === 'function') state.convUpdate();
-        if (typeof state.plUpdate === 'function') state.plUpdate();
+        applyCur(c, true);
       });
     });
   }
@@ -600,6 +629,7 @@
     state.byId = {};
     state.assets.forEach(function (a) { state.byId[a.id] = a; });
     initCurrency();
+    geoCurrency();          // Land erkennen → CHF/EUR/USD vorwählen (nur ohne manuelle Wahl)
     renderTabs();
     renderTable();
     renderTicker();
