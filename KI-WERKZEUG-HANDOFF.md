@@ -4,6 +4,18 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 📌 2026-06-10 — Repo PRIVAT (GitHub Pro) + Bot-Drosselung
+- **User hat GitHub Pro geholt + Repo auf Private gestellt.** abannews.com **verifiziert HTTP 200** (Pages läuft
+  mit Pro auch privat; `.nojekyll` MUSS bleiben). Privat = nur **3.000 Actions-Min/Mon** (Pages-Builds zählen mit!).
+- **14 Bots gedrosselt (PR #581):** telegram-control 10→30 Min, printful-sync 20 Min→6 h, aban-director/
+  -youtube/site-health */2–4h→*/12h, reel-autopost→1×/Tag, rotate-collections/markets-monitor→*/12h,
+  social-comment-moderate 3→1×/Tag, Video-Bots (reel-render/daily-tool-reel/enhance-clips/montage/gemini-enhance)
+  täglich→jeden 2. Tag. Autopost/Verbesserer/Autopilot behalten Rhythmus.
+- **Falls Minuten trotzdem knapp:** Verbrauch unter github.com/settings/billing → Actions; weitere Hebel:
+  Radars wöchentlich→2-wöchentlich, oder Pages-Build seltener (deploy-from-branch baut bei JEDEM Push).
+- ⚠️ **Lehre (Infra):** lokaler Checkout war zwischenzeitlich auf altem Commit (#452) → Arbeit schien weg.
+  IMMER `git fetch origin main && git reset --hard origin/main` vor neuer Arbeit; Stale-Checkout-Falle.
+
 ## 📌 2026-06-10 — Automation-Health-Sweep (mehrere tote/rote Bots gefixt)
 - **Vorgehen (User: „alles todo, weiter mit automation"):** alle Bots auf Fehlerklassen geprüft.
 - **`int(os.environ.get())`-Bug** (leere GitHub-Var = `''` → Crash): nur `autopilot.py` betroffen (PR #564/#565,
