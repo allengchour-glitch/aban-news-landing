@@ -60,7 +60,7 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add automation/news-roh-*.md automation/entwurf-gemini-*.md data/issue-*-draft.html img/issues/ 2>/dev/null || true
             git commit -m "Gemini-Entwurf + bild-reiche Ausgabe (ENTWURF, nicht gesendet) [skip ci]" || echo "nichts zu committen"
-            git push || echo "::warning::push fehlgeschlagen"
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
           else
             echo "Keine Aenderung."
           fi

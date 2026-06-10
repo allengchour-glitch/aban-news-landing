@@ -47,7 +47,7 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add automation/tg_state.json social/ automation/entwurf-gemini-*.md 2>/dev/null || true
             git commit -m "Telegram-Steuerbot: Zustand/Queues aktualisiert [skip ci]" || echo "nichts"
-            git push || echo "::warning::push fehlgeschlagen"
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
           else
             echo "Keine Aenderung."
           fi

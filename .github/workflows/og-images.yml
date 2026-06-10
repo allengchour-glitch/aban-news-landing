@@ -38,7 +38,7 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add og-*.png
             git commit -m "OG-Bilder neu gerendert (Imagen-Hintergrund) [skip ci]" || echo "nichts"
-            git push || echo "::warning::push fehlgeschlagen"
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
           else
             echo "Keine Änderung."
           fi
