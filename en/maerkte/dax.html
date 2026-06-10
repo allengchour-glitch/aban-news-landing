@@ -240,6 +240,16 @@
     .chartbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;box-shadow:var(--shadow-sm);margin-top:1.4rem}
     .muted{color:var(--muted)}
     .backlink{display:inline-block;margin:.4rem 0 0;color:var(--amber-dk);font-weight:700;text-decoration:none}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem;margin-top:1.4rem}
+    .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.2rem}
+    .kpi .kl{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
+    .kpi .kv{font-weight:800;font-variant-numeric:tabular-nums}
+    .analysis{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.6rem;max-width:680px}
+    .analysis li{background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:10px;padding:.7rem .9rem;font-size:.95rem;color:var(--ink)}
+    .relgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-top:1.4rem}
+    .relcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink)}
+    .relcard:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .relcard .rn{font-weight:800}.relcard .rs{color:var(--muted);font-size:.85rem}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"DAX (DAX) \u2014 price, 30-day chart & AI sentiment | aban news","url":"https://abannews.com/en/maerkte/dax.html","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}
@@ -264,8 +274,8 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>DAX <span class="hl">DAX</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="dax" data-type="index">24’272 Pkt</span>
-        <span class="chg down">-0.66 %</span>
+        <span class="px" id="livePrice" data-id="dax" data-type="index">24’275 Pkt</span>
+        <span class="chg down">-0.65 %</span>
         <span class="tag-type">Index</span>
         <span class="badge neutral">Neutral</span>
       </div>
@@ -277,8 +287,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,140.9 L36.4,191.4 L64.7,168.2 L93.1,127.3 L121.5,192.0 L149.8,146.3 L178.2,134.4 L206.5,91.4 L234.9,108.1 L263.3,72.0 L291.6,8.0 L320.0,34.1 L348.4,35.0 L376.7,46.0 L405.1,44.4 L433.5,57.4 L461.8,41.9 L490.2,83.9 L518.5,64.8 L546.9,88.6 L575.3,106.9 L603.6,130.3 L632.0,150.8 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,140.9 36.4,191.4 64.7,168.2 93.1,127.3 121.5,192.0 149.8,146.3 178.2,134.4 206.5,91.4 234.9,108.1 263.3,72.0 291.6,8.0 320.0,34.1 348.4,35.0 376.7,46.0 405.1,44.4 433.5,57.4 461.8,41.9 490.2,83.9 518.5,64.8 546.9,88.6 575.3,106.9 603.6,130.3 632.0,150.8" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,140.9 L36.4,191.4 L64.7,168.2 L93.1,127.3 L121.5,192.0 L149.8,146.3 L178.2,134.4 L206.5,91.4 L234.9,108.1 L263.3,72.0 L291.6,8.0 L320.0,34.1 L348.4,35.0 L376.7,46.0 L405.1,44.4 L433.5,57.4 L461.8,41.9 L490.2,83.9 L518.5,64.8 L546.9,88.6 L575.3,106.9 L603.6,130.3 L632.0,150.6 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,140.9 36.4,191.4 64.7,168.2 93.1,127.3 121.5,192.0 149.8,146.3 178.2,134.4 206.5,91.4 234.9,108.1 263.3,72.0 291.6,8.0 320.0,34.1 348.4,35.0 376.7,46.0 405.1,44.4 433.5,57.4 461.8,41.9 490.2,83.9 518.5,64.8 546.9,88.6 575.3,106.9 603.6,130.3 632.0,150.6" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
       <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
+      <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-0.65 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-2.10 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-0.31 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">25’389 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">23’951 Pkt</span></div></div>
     </div>
   </section>
 
@@ -291,6 +304,7 @@
         <p class="csignal">Leichte Eröffnungsschwäche, keine starken Impulse.</p>
         <p class="crat">Der DAX eröffnete leicht niedriger, die Nachrichtenlage ist allgemein und ohne spezifische, starke Impulse.</p>
       </div>
+      
     </div>
   </section>
 
@@ -298,10 +312,12 @@
     <div class="wrap">
       <span class="eyebrow">News on DAX</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiS0FVX3lxTE9YcEhGeXZVeExwczNZZE5YcU54aWlVSE9WYWVMU3RrVVc3VXg2c2xZeW1NZm9OYktkNnltRVRad0NJMjZldWlhbUNRZw?oc=5" target="_blank" rel="noopener">Real-Time Prices, Charts &amp; News | Deutsche Börse: Xetra &amp; Frankfurt</a><div class="meta"><span>Deutsche Börse Frankfurt</span><span>· 07 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPNEFmNTEybVFlaGpXRV90RHlpdF9NNGl6SjJNTHZ5TXlucmVucmhPQUtoQzA0Q2YxdGdjWnFyNXdLeC1mZFZ4cm1jN0tLZkE4dGFVaVFUUV9xekdVT2xGaS15SFNHdUZ5MzZUTVVjRXJMeFY4UGZhclg4TjBtYkpFNGlCcmhqajRk?oc=5" target="_blank" rel="noopener">The DAX Index Opens 0.27% Lower</a><div class="meta"><span>TradingView</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE0tVHZTaVU2N0JXcDNVbHRJdEhUOEs5T1h5VmpYN2syUUc3N1FsVC0wRHdLWk5xakF3bFNTVFVHMW9IbjJvbzNmeXJ4N1hjMTJ0S0HSAVdBVV95cUxPS0p6SXdnWVJSak5XWnlxT0tURFFxWldHNmFLakdtemZxUWM4b0VLMzkxTE1xU3RFVGl3Qjd4ckpIbFdmSEU3dnBPeEFGVHFJczJpdzNja0k?oc=5" target="_blank" rel="noopener">European Stocks - 09-06-26</a><div class="meta"><span>Armenpress</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPNEFmNTEybVFlaGpXRV90RHlpdF9NNGl6SjJNTHZ5TXlucmVucmhPQUtoQzA0Q2YxdGdjWnFyNXdLeC1mZFZ4cm1jN0tLZkE4dGFVaVFUUV9xekdVT2xGaS15SFNHdUZ5MzZUTVVjRXJMeFY4UGZhclg4TjBtYkpFNGlCcmhqajRk?oc=5" target="_blank" rel="noopener">The DAX Index Opens 0.27% Lower</a><div class="meta"><span>TradingView</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxPQ0xwLXhkY193OFpiallMX0o0TTlMMGVSMFhnNVZnSFZaVUt4bkhjUlJsSzRWOFVVNHQwVnd3R2lBcDZlQnhRVEs3cWx4dVZWUnJSSlQ4dVN6V1BxLVRCRGdiUVctTVBrR3FEWVNkbDFWbTRXXzRUelA1Y0ptcXJ0UlA0a0dsZFVjZC1rU2NCejUwREtudG1tZGlLOVlldEdkRWRkRzBn?oc=5" target="_blank" rel="noopener">DAX Index Declines; German Industrial Output Climbs</a><div class="meta"><span>marketscreener.com</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE0tVHZTaVU2N0JXcDNVbHRJdEhUOEs5T1h5VmpYN2syUUc3N1FsVC0wRHdLWk5xakF3bFNTVFVHMW9IbjJvbzNmeXJ4N1hjMTJ0S0HSAVdBVV95cUxPS0p6SXdnWVJSak5XWnlxT0tURFFxWldHNmFLakdtemZxUWM4b0VLMzkxTE1xU3RFVGl3Qjd4ckpIbFdmSEU3dnBPeEFGVHFJczJpdzNja0k?oc=5" target="_blank" rel="noopener">European Stocks - 09-06-26</a><div class="meta"><span>Armenpress</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNNmJ0eS1HdGJMMTFJb29GWElhbExlSDIzNXJyX3E2Ry05NGdLS2EzVEZQelhkd2o1aklNcFkyTGc3N3lxR1dBaC1GcU1mY1BDVlp1TmhnWUIzWEx3dER6RTVoSXhsZ3VYNGhEaVRsZzhYdnc5WDRMd19DbGNYQkZib0s5LUhNMGgtR0NQVy1aZEw1UHF4UXZ6NWJXZ3hjYUFSSkdpMTNWanRJeFJTUkhxSkZlMXZvRXJBam5qRVQwdXFQY1k?oc=5" target="_blank" rel="noopener">DAX, CAC and MIB Forecasts – EU Indices Sluggish Day Before ECB Rate Decision</a><div class="meta"><span>FXEmpire</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxOM0hmN3ZNekJUZTVwa3pzNEVKSEtXYkFkUlFvTE5hZzZTNlJhc0l1X1lpUmxxZzFVdTljU1lxdU5rN0k2OWZHRWlyWGNQVXhmZTl0ZmEzX2lnSWtZV0N4bFctNXpNUkstWVQycUFyM2NnVUdZZlNMblhTRnJjMV9Bbmx2QWY0UkZ3cFVGWjFUOHkzQdIBngFBVV95cUxNQkloN0ZfUnA0VUU3YWlQaXFPbHI5NE9EWmNZYVNwSHlLVmtkT0NRUmhSSEliazNLSXBLLW5HTTVacmc5djhvUnlmcFY3SEJnYmlPVGJfUThZTlNVTFRYakhsalNVaC0wbkZWZjVIQzl0WGpOMWhld29yLUpsRGxlSE1SLUUzZlBZR3F6cDNoUUJiZTd0V0hoZ2NMX3RSdw?oc=5" target="_blank" rel="noopener">Gold, DAX Forecast: Two trades to watch</a><div class="meta"><span>City Index UK</span><span>· 09 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap"><span class="eyebrow">More in this category</span><h2>Related assets</h2><div class="relgrid"><a class="relcard" href="/en/maerkte/sp500.html"><span class="rn">S&amp;P 500</span><span class="rs">S&amp;P 500</span></a><a class="relcard" href="/en/maerkte/nasdaq.html"><span class="rn">Nasdaq Composite</span><span class="rs">Nasdaq</span></a><a class="relcard" href="/en/maerkte/smi.html"><span class="rn">SMI</span><span class="rs">SMI</span></a><a class="relcard" href="/en/maerkte/dowjones.html"><span class="rn">Dow Jones</span><span class="rs">Dow Jones</span></a></div></div></section>
 
   <section class="sec" style="padding-top:0">
     <div class="wrap">

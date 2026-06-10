@@ -240,6 +240,16 @@
     .chartbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;box-shadow:var(--shadow-sm);margin-top:1.4rem}
     .muted{color:var(--muted)}
     .backlink{display:inline-block;margin:.4rem 0 0;color:var(--amber-dk);font-weight:700;text-decoration:none}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem;margin-top:1.4rem}
+    .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.2rem}
+    .kpi .kl{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
+    .kpi .kv{font-weight:800;font-variant-numeric:tabular-nums}
+    .analysis{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.6rem;max-width:680px}
+    .analysis li{background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:10px;padding:.7rem .9rem;font-size:.95rem;color:var(--ink)}
+    .relgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-top:1.4rem}
+    .relcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink)}
+    .relcard:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .relcard .rn{font-weight:800}.relcard .rs{color:var(--muted);font-size:.85rem}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"Dow Jones (Dow Jones) \u2014 price, 30-day chart & AI sentiment | aban news","url":"https://abannews.com/en/maerkte/dowjones.html","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}
@@ -264,8 +274,8 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Dow Jones <span class="hl">Dow Jones</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="dowjones" data-type="index">50’872 Pkt</span>
-        <span class="chg up">+0.17 %</span>
+        <span class="px" id="livePrice" data-id="dowjones" data-type="index">50’577 Pkt</span>
+        <span class="chg down">-0.58 %</span>
         <span class="tag-type">Index</span>
         <span class="badge neutral">Neutral</span>
       </div>
@@ -277,8 +287,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,163.5 L39.2,158.8 L70.4,164.4 L101.6,133.4 L132.8,178.4 L164.0,165.0 L195.2,192.0 L226.4,138.0 L257.6,114.8 L288.8,90.2 L320.0,100.1 L351.2,84.8 L382.4,82.8 L413.6,52.3 L444.8,48.4 L476.0,29.3 L507.2,81.2 L538.4,8.0 L569.6,66.2 L600.8,73.0 L632.0,65.7 L632.0,192 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="8.0,163.5 39.2,158.8 70.4,164.4 101.6,133.4 132.8,178.4 164.0,165.0 195.2,192.0 226.4,138.0 257.6,114.8 288.8,90.2 320.0,100.1 351.2,84.8 382.4,82.8 413.6,52.3 444.8,48.4 476.0,29.3 507.2,81.2 538.4,8.0 569.6,66.2 600.8,73.0 632.0,65.7" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,163.5 L37.7,158.8 L67.4,164.4 L97.1,133.4 L126.9,178.4 L156.6,165.0 L186.3,192.0 L216.0,138.0 L245.7,114.8 L275.4,90.2 L305.1,100.1 L334.9,84.8 L364.6,82.8 L394.3,52.3 L424.0,48.4 L453.7,29.3 L483.4,81.2 L513.1,8.0 L542.9,66.2 L572.6,73.0 L602.3,65.7 L632.0,90.4 L632.0,192 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="8.0,163.5 37.7,158.8 67.4,164.4 97.1,133.4 126.9,178.4 156.6,165.0 186.3,192.0 216.0,138.0 245.7,114.8 275.4,90.2 305.1,100.1 334.9,84.8 364.6,82.8 394.3,52.3 424.0,48.4 453.7,29.3 483.4,81.2 513.1,8.0 542.9,66.2 572.6,73.0 602.3,65.7 632.0,90.4" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
       <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
+      <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-0.58 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-0.22 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+1.76 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">51’562 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">49’364 Pkt</span></div></div>
     </div>
   </section>
 
@@ -291,6 +304,7 @@
         <p class="csignal">Rückgang nach Arbeitsmarktbericht, aber auch Rebounds.</p>
         <p class="crat">Der Dow Jones verzeichnete einen Rückgang nach einem US-Arbeitsmarktbericht, aber auch Rebounds und gemischte Nachrichten.</p>
       </div>
+      
     </div>
   </section>
 
@@ -298,10 +312,12 @@
     <div class="wrap">
       <span class="eyebrow">News on Dow Jones</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHZpVFFsZldxc1ZXSE1NYXlzbzdUWWs1SEZpamNVVVcyN1JJRms5MlBIMWR5S3RxdWdLQVNWdXE2d3VwZ1c1b19DYVhvbmQ0MkRmcUFPanVOUlAtalI1RmlDeTZEelh0YWkwZC1salBmeURJOEMyeHVJbm5ZTzZ6ZU9oeVRQTHM?oc=5" target="_blank" rel="noopener">Stock Market News, June 9, 2026: Nasdaq Rebounds Off Session Lows</a><div class="meta"><span>WSJ</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxOcFFCd2s3eWh0N3FKT1kxT1Vlblphc1JIZk5JTXNMMlFsb1IwSTMwRDlpLS1KUXhTb0ZweHBIZ2tSZ2FmMGhjRWV6YjNTN19rNDh2M0M3Q21ibTZsV2Uza3Zuc1ZzUE5EUkpQNlNqYmM1Q1lKTzdieDdGMnM5VndVdTd2ekUtTXVCLWE2b0ZINWRsUTFxcFd4c01WTGxaYU1OU0dPX1ZlbGd1cGtSbTIzRkp5cEJsc01QanRib2ZrSHltWkFkV000c01fY1hNM2VnV3E4ZHEyNA?oc=5" target="_blank" rel="noopener">Stock Market on June 5, 2026: Dow falls 695 points after U.S. jobs report; S&amp;P 500 and Nasdaq end sharply lower to book biggest percentage drops since 2025 after big losses in tech sector; Treasury yields jump</a><div class="meta"><span>MarketWatch</span><span>· 05 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE9LRDZ2dHY0cGF3dUlHVC12RU04NVBYWTZhUGxjUkhZTHF2T0xLUU96NVVCMG5GZHpZZ0h4R0tKdUtxZWFMMWpEWjlqWkdCVjFrNWhMRDBHbUNVTWJzYVZQRE10cUZsSWlxdVQySFdRNXJzRmZFSlBF0gF8QVVfeXFMT3YycTlFVk85SHZtSlVheXlsWUVRLU1hWXFJSWI2dkxseGN3UVVqVkM2WW9vZ1A0X2RsNmo3QTY2OHdWVHNUeUNRYXlLb2kwS3ZuUjFySnNNc0RHamhUNHotak5YYUtTWE5oQzNDSjQzR0FRLWlWYzRhOEdWWg?oc=5" target="_blank" rel="noopener">Dow futures slide 250 points as Trump says Iran is taking too long to negotiate: Live updates</a><div class="meta"><span>CNBC</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE9LRDZ2dHY0cGF3dUlHVC12RU04NVBYWTZhUGxjUkhZTHF2T0xLUU96NVVCMG5GZHpZZ0h4R0tKdUtxZWFMMWpEWjlqWkdCVjFrNWhMRDBHbUNVTWJzYVZQRE10cUZsSWlxdVQySFdRNXJzRmZFSlBF?oc=5" target="_blank" rel="noopener">Dow falls 250 points on chip sell-off, Trump Iran threat and 3-year inflation high: Live updates</a><div class="meta"><span>CNBC</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHZpVFFsZldxc1ZXSE1NYXlzbzdUWWs1SEZpamNVVVcyN1JJRms5MlBIMWR5S3RxdWdLQVNWdXE2d3VwZ1c1b19DYVhvbmQ0MkRmcUFPanVOUlAtalI1RmlDeTZEelh0YWkwZC1salBmeURJOEMyeHVJbm5ZTzZ6ZU9oeVRQTHM?oc=5" target="_blank" rel="noopener">Stock Market News, June 9, 2026: Nasdaq Rebounds Off Session Lows</a><div class="meta"><span>WSJ</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxPVzBNOTVId19zWnZLYUJCdzhqblpoMWlEZzFYWWdiWFlhMlpPbnFraUxvOF81OFk0WXhnYklIOUY3RlI5aVFBMktCcWxUS3dtWHR2T2R5MG0zTEU1TWMwUHNmWkRQWU43UjhJWXFReWFOdW1oRHB4WmFldmVGd2I2bWNHdm1INE1BSWpiaklYeXU?oc=5" target="_blank" rel="noopener">Stock Market Today: Futures Sink Ahead of Inflation Data as Tech Stocks Lead Declines; Oil Wavers as US Launches &#x27;Self-Defense&#x27; Strikes Against Iran</a><div class="meta"><span>Investopedia</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxNOE1hZWZSRXpOWWZLRnBmbEZFMTdKV040X25JbUxvVVU4X2JWQ2ZPbUpJaERPTnJZRlVsMF9Rb1o1NnUweHVxc1NYVVBoU1ZPakhKMDZ6WmlOSXVoWE1Vd3lhMWxkUW5fZ0E5TjVsRW93cU9aMXRtcWpQT2ptVU5yQ3NwRU1TTXZDMGhCbUdxdnNwRF8yMy1LWTBJdG9xeFR5NS1rQWxhcTJydmNvWFh2MFdMNmd4aFgwN0VQZjJFaDkyMjd6clln?oc=5" target="_blank" rel="noopener">Dow Jones Futures Tumble As Trump Says Iran Will &#x27;Have To Pay The Price&#x27;; CPI Inflation On Tap</a><div class="meta"><span>Investor&#x27;s Business Daily</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxNa2xGTEE5YnpUdWtwODJLUFBva0kwTzdwZUptU25YUXRFUUp4UWlxNmlPRjBrQm5oekIzRXJ6MDdKdVlKQWFfMmxUS2JURmczNXREY2JiSGJoRk12em1sckV6LXRkU1g0SmNENXNNZzlGZkZzMVpCbHFWODJlVjA4c0hPazFDQWR2WHVzR3pjQXoxUXFfUmU0bS0xMHhMVUlQWmNEQ1duNVc0dU9VQWxHdV93SEY3aF9iczM2b0ZqQVJUaldJeVI2TnBPSnEzRWpVazQwLXd3?oc=5" target="_blank" rel="noopener">Stock Market News, June 9, 2026: Dow ends the day higher, while S&amp;P 500 and Nasdaq close lower due to tech selloff; oil prices fall after Trump says Iran deal could be reached in &#x27;two or three days&#x27;</a><div class="meta"><span>MarketWatch</span><span>· 09 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap"><span class="eyebrow">More in this category</span><h2>Related assets</h2><div class="relgrid"><a class="relcard" href="/en/maerkte/sp500.html"><span class="rn">S&amp;P 500</span><span class="rs">S&amp;P 500</span></a><a class="relcard" href="/en/maerkte/nasdaq.html"><span class="rn">Nasdaq Composite</span><span class="rs">Nasdaq</span></a><a class="relcard" href="/en/maerkte/dax.html"><span class="rn">DAX</span><span class="rs">DAX</span></a><a class="relcard" href="/en/maerkte/smi.html"><span class="rn">SMI</span><span class="rs">SMI</span></a></div></div></section>
 
   <section class="sec" style="padding-top:0">
     <div class="wrap">

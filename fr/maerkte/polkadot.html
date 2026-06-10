@@ -240,6 +240,16 @@
     .chartbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;box-shadow:var(--shadow-sm);margin-top:1.4rem}
     .muted{color:var(--muted)}
     .backlink{display:inline-block;margin:.4rem 0 0;color:var(--amber-dk);font-weight:700;text-decoration:none}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem;margin-top:1.4rem}
+    .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.2rem}
+    .kpi .kl{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
+    .kpi .kv{font-weight:800;font-variant-numeric:tabular-nums}
+    .analysis{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.6rem;max-width:680px}
+    .analysis li{background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:10px;padding:.7rem .9rem;font-size:.95rem;color:var(--ink)}
+    .relgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-top:1.4rem}
+    .relcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink)}
+    .relcard:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .relcard .rn{font-weight:800}.relcard .rs{color:var(--muted);font-size:.85rem}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"Polkadot (DOT) \u2014 cours, graphique 30 jours & sentiment IA | aban news","url":"https://abannews.com/fr/maerkte/polkadot.html","inLanguage":"fr","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}
@@ -264,8 +274,8 @@
       <a class="backlink" href="/fr/maerkte.html">← Tous les marchés</a>
       <h1>Polkadot <span class="hl">DOT</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="polkadot" data-type="crypto">0.9417 USD</span>
-        <span class="chg down">-2.51 %</span>
+        <span class="px" id="livePrice" data-id="polkadot" data-type="crypto">0.9516 USD</span>
+        <span class="chg down">-1.53 %</span>
         <span class="tag-type">Crypto</span>
         <span class="badge neutral">Neutral</span>
       </div>
@@ -279,6 +289,9 @@
       <h2>Évolution du cours</h2>
       <div class="chartbox"><p class="muted">Aucun graphique disponible.</p></div>
       <p class="updated" style="margin-top:.7rem">Au : 2026-06-10 · crypto en direct.</p>
+      <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Indicateurs</span>
+      <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">En bref</h2>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.53 %</span></span></div><div class="kpi"><span class="kl">7 jours</span><span class="kv"><span class="chg down">-14.70 %</span></span></div><div class="kpi"><span class="kl">30 jours</span><span class="kv"><span class="chg down">-29.92 %</span></span></div><div class="kpi"><span class="kl">Plus haut 30j</span><span class="kv">—</span></div><div class="kpi"><span class="kl">Plus bas 30j</span><span class="kv">—</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">84.39 Mio</span></div><div class="kpi"><span class="kl">Capitalisation</span><span class="kv">1.60 Mrd USD</span></div><div class="kpi"><span class="kl">Plus haut historique</span><span class="kv">54.98 USD</span></div></div>
     </div>
   </section>
 
@@ -291,6 +304,7 @@
         <p class="csignal">Kursrückgang, aber Diskussion über Nutzung und Prognosen.</p>
         <p class="crat">Polkadot fällt inmitten einer breiten Krypto-Liquidation, aber es gibt auch Diskussionen über seine Nutzung und Preisprognosen.</p>
       </div>
+      
     </div>
   </section>
 
@@ -298,10 +312,12 @@
     <div class="wrap">
       <span class="eyebrow">Actus sur DOT</span>
       <h2>Derniers titres</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFB3ZDkta2hMUFJGeHhZTzkzN3Fkam10QUpxNDJpbnp0bkdBZ0J4eVlPVzlXQUZIVHhPWmtrclJPRDZXMkpGbER5dHQ1MEJIMjBnZF9wYTR6U3l0Ujh4VG1wZF84dVpFd1R5anNlaUhsRmc?oc=5" target="_blank" rel="noopener">Polkadot (DOT) Falls 3.09% Amid Broad Crypto Liquidation</a><div class="meta"><span>CoinMarketCap</span><span>· 06 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxPaXFNYnJnMGM1QmtSSERxYzB2ci1md0Q1RFd3Tk8zbDBWRXg2QXhaZ21HbkVKc0NGcmZaR0thNDh3SFZ2VVA3LWFneU4xSTYtUWgybU1ELTh6OE9vVzR4LXdYUC1qMzEteWhLaWtDLWd3bzlSMFY4YzBkLVpqZTlhTUlKOXFaUU1BcUpWODRLcUlab04wWGduczBaQXNmbV9HLVE?oc=5" target="_blank" rel="noopener">What Is Polkadot Actually Used For -- and Does It Justify the Investment?</a><div class="meta"><span>Yahoo Finance</span><span>· 25 Apr 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxQU255cURIQzJUZWVJWlBKelBuTG9MQVhucm1lUk1qN2F2ZktiWEUySk03dlFMcUFhcGZIMlVKa3JoSGR6WHBwdUlDU2FSWlVxWUVhMEtWSDNMTDBVMnlTNWhKMnZLMWFSNEYybUwySDUtd2Z1TWl2SnJBTlNqSzlTMVBnRng0Zw?oc=5" target="_blank" rel="noopener">Polkadot (DOT) Price Prediction 2026–2030: Can the Network Drive DOT to $60?</a><div class="meta"><span>CryptoRank</span><span>· 04 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFB3ZDkta2hMUFJGeHhZTzkzN3Fkam10QUpxNDJpbnp0bkdBZ0J4eVlPVzlXQUZIVHhPWmtrclJPRDZXMkpGbER5dHQ1MEJIMjBnZF9wYTR6U3l0Ujh4VG1wZF84dVpFd1R5anNlaUhsRmc?oc=5" target="_blank" rel="noopener">Polkadot (DOT) Falls 3.09% Amid Broad Crypto Liquidation</a><div class="meta"><span>CoinMarketCap</span><span>· 06 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxPaXFNYnJnMGM1QmtSSERxYzB2ci1md0Q1RFd3Tk8zbDBWRXg2QXhaZ21HbkVKc0NGcmZaR0thNDh3SFZ2VVA3LWFneU4xSTYtUWgybU1ELTh6OE9vVzR4LXdYUC1qMzEteWhLaWtDLWd3bzlSMFY4YzBkLVpqZTlhTUlKOXFaUU1BcUpWODRLcUlab04wWGduczBaQXNmbV9HLVE?oc=5" target="_blank" rel="noopener">What Is Polkadot Actually Used For -- and Does It Justify the Investment?</a><div class="meta"><span>Yahoo Finance</span><span>· 25 Apr 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxQU255cURIQzJUZWVJWlBKelBuTG9MQVhucm1lUk1qN2F2ZktiWEUySk03dlFMcUFhcGZIMlVKa3JoSGR6WHBwdUlDU2FSWlVxWUVhMEtWSDNMTDBVMnlTNWhKMnZLMWFSNEYybUwySDUtd2Z1TWl2SnJBTlNqSzlTMVBnRng0Zw?oc=5" target="_blank" rel="noopener">Polkadot (DOT) Price Prediction 2026–2030: Can the Network Drive DOT to $60?</a><div class="meta"><span>CryptoRank</span><span>· 04 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE5neWw5R2RiaWtmd185cHVUaTdPejhNSnlIRXhwNmhwdFhzcmVGcWwxSDM4QnhoTTFCTGpjNnZodkJEeTEzZUNfNXgxRG1DOUwzSnROb3RBaWRmb25GNm50S2xJZk8?oc=5" target="_blank" rel="noopener">syed ali ahmed(@Square-Creator-b1c69164f16b) meglátásai</a><div class="meta"><span>Binance</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiV0FVX3lxTE1pa1lGVFFKYXBLVUp4a05waFl0bTBXT0QzQkE4VG1Cem12alIxRFNrUHo0MjZkUDk0LTZFUExhcFZOQ05SbkFxQ1hycDZUYUZDNXBYb3Z6QQ?oc=5" target="_blank" rel="noopener">Polkadot Bridge Exploit Lets Attacker Mint 1B DOT Tokens On Ethereum</a><div class="meta"><span>Yellow.com</span><span>· 04 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/fr/maerkte.html">← Retour à l'aperçu des marchés</a> · <a href="/ki-und-krypto-daten.html">IA &amp; crypto en chiffres →</a></p>
     </div>
   </section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap"><span class="eyebrow">Plus dans cette catégorie</span><h2>Valeurs liées</h2><div class="relgrid"><a class="relcard" href="/fr/maerkte/bitcoin.html"><span class="rn">Bitcoin</span><span class="rs">BTC</span></a><a class="relcard" href="/fr/maerkte/ethereum.html"><span class="rn">Ethereum</span><span class="rs">ETH</span></a><a class="relcard" href="/fr/maerkte/solana.html"><span class="rn">Solana</span><span class="rs">SOL</span></a><a class="relcard" href="/fr/maerkte/ripple.html"><span class="rn">XRP</span><span class="rs">XRP</span></a></div></div></section>
 
   <section class="sec" style="padding-top:0">
     <div class="wrap">

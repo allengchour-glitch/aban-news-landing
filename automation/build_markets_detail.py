@@ -95,8 +95,93 @@ STR = {
 }
 
 
+# Labels für Kennzahlen, Analyse & verwandte Werte (4 Sprachen).
+LBL = {
+    "de": {"eb_stats": "Kennzahlen", "h_stats": "Im Überblick", "h_analysis": "Ausführliche Analyse",
+           "eb_related": "Mehr aus der Kategorie", "h_related": "Verwandte Werte",
+           "c24": "24 h", "c7": "7 Tage", "c30": "30 Tage", "hi": "30T-Hoch", "lo": "30T-Tief",
+           "mcap": "Marktkap.", "vol": "Volumen", "ath": "Allzeithoch", "w52h": "52W-Hoch", "w52l": "52W-Tief"},
+    "en": {"eb_stats": "Key figures", "h_stats": "At a glance", "h_analysis": "In-depth analysis",
+           "eb_related": "More in this category", "h_related": "Related assets",
+           "c24": "24 h", "c7": "7 days", "c30": "30 days", "hi": "30d high", "lo": "30d low",
+           "mcap": "Market cap", "vol": "Volume", "ath": "All-time high", "w52h": "52w high", "w52l": "52w low"},
+    "fr": {"eb_stats": "Indicateurs", "h_stats": "En bref", "h_analysis": "Analyse détaillée",
+           "eb_related": "Plus dans cette catégorie", "h_related": "Valeurs liées",
+           "c24": "24 h", "c7": "7 jours", "c30": "30 jours", "hi": "Plus haut 30j", "lo": "Plus bas 30j",
+           "mcap": "Capitalisation", "vol": "Volume", "ath": "Plus haut historique", "w52h": "Plus haut 52s", "w52l": "Plus bas 52s"},
+    "it": {"eb_stats": "Indicatori", "h_stats": "In sintesi", "h_analysis": "Analisi dettagliata",
+           "eb_related": "Altro in questa categoria", "h_related": "Valori correlati",
+           "c24": "24 h", "c7": "7 giorni", "c30": "30 giorni", "hi": "Max 30g", "lo": "Min 30g",
+           "mcap": "Capitalizzazione", "vol": "Volume", "ath": "Massimo storico", "w52h": "Max 52sett", "w52l": "Min 52sett"},
+}
+
+
 def esc(s):
     return html.escape(str(s or ""), quote=True)
+
+
+def fmt_num(v, unit=""):
+    if v is None or not isinstance(v, (int, float)):
+        return "—"
+    a = abs(v)
+    if a >= 1e12: s = f"{v/1e12:.2f} T"
+    elif a >= 1e9: s = f"{v/1e9:.2f} Mrd"
+    elif a >= 1e6: s = f"{v/1e6:.2f} Mio"
+    elif a >= 1000: s = f"{v:,.0f}".replace(",", "’")
+    elif a >= 1: s = f"{v:,.2f}".replace(",", "’")
+    else: s = f"{v:.4f}"
+    return (s + (" " + unit if unit else "")).strip()
+
+
+def chg_cell(v):
+    if v is None or not isinstance(v, (int, float)):
+        return '<span class="chg flat">—</span>'
+    cls = "up" if v > 0.04 else ("down" if v < -0.04 else "flat")
+    return f'<span class="chg {cls}">{v:+.2f} %</span>'
+
+
+def stats_html(asset, lbl):
+    """Kennzahlen-Tabelle aus asset['stats'] + 24h-Change."""
+    st = asset.get("stats") or {}
+    idx = asset.get("type") == "index"
+    unit = "Pkt" if idx else "USD"
+    rows = [(lbl["c24"], chg_cell(asset.get("change_24h"))),
+            (lbl["c7"], chg_cell(st.get("change_7d"))),
+            (lbl["c30"], chg_cell(st.get("change_30d"))),
+            (lbl["hi"], fmt_num(st.get("high_30d"), unit)),
+            (lbl["lo"], fmt_num(st.get("low_30d"), unit))]
+    if not idx and st.get("volume"):
+        rows.append((lbl["vol"], fmt_num(st.get("volume"))))
+    if asset.get("type") == "crypto":
+        if st.get("market_cap"): rows.append((lbl["mcap"], fmt_num(st.get("market_cap"), "USD")))
+        if st.get("ath"): rows.append((lbl["ath"], fmt_num(st.get("ath"), "USD")))
+    if asset.get("type") in ("stock",):
+        if st.get("week52_high"): rows.append((lbl["w52h"], fmt_num(st.get("week52_high"), "USD")))
+        if st.get("week52_low"): rows.append((lbl["w52l"], fmt_num(st.get("week52_low"), "USD")))
+    cells = "".join(f'<div class="kpi"><span class="kl">{esc(k)}</span>'
+                    f'<span class="kv">{v}</span></div>' for k, v in rows)
+    return f'<div class="kpis">{cells}</div>'
+
+
+def analysis_html(asset):
+    items = asset.get("analysis") or []
+    if not items:
+        return ""
+    li = "".join(f"<li>{esc(x)}</li>" for x in items[:4])
+    return f'<ul class="analysis">{li}</ul>'
+
+
+def related_html(asset, all_assets, t, lbl):
+    same = [x for x in all_assets if x.get("type") == asset.get("type") and x["id"] != asset["id"]][:4]
+    if not same:
+        return ""
+    cards = "".join(
+        f'<a class="relcard" href="{t["base"]}{x["id"]}.html">'
+        f'<span class="rn">{esc(x.get("name"))}</span>'
+        f'<span class="rs">{esc(x.get("symbol"))}</span></a>' for x in same)
+    return (f'<section class="sec" style="padding-top:0"><div class="wrap">'
+            f'<span class="eyebrow">{lbl["eb_related"]}</span><h2>{lbl["h_related"]}</h2>'
+            f'<div class="relgrid">{cards}</div></div></section>')
 
 
 def fmt_asset_price(a):
@@ -148,8 +233,9 @@ def news_html(items):
     return '<ul class="news">' + "".join(li) + "</ul>"
 
 
-def page(asset, css, updated, lang):
+def page(asset, css, updated, lang, all_assets):
     t = STR[lang]
+    lbl = LBL[lang]
     langs = ["de", "en", "fr", "it"]
     aid, name, sym = asset["id"], asset.get("name", ""), asset.get("symbol", "")
     typ = t["type"].get(asset.get("type"), "")
@@ -191,6 +277,16 @@ def page(asset, css, updated, lang):
     .chartbox{{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;box-shadow:var(--shadow-sm);margin-top:1.4rem}}
     .muted{{color:var(--muted)}}
     .backlink{{display:inline-block;margin:.4rem 0 0;color:var(--amber-dk);font-weight:700;text-decoration:none}}
+    .kpis{{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem;margin-top:1.4rem}}
+    .kpi{{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.2rem}}
+    .kpi .kl{{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}}
+    .kpi .kv{{font-weight:800;font-variant-numeric:tabular-nums}}
+    .analysis{{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.6rem;max-width:680px}}
+    .analysis li{{background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:10px;padding:.7rem .9rem;font-size:.95rem;color:var(--ink)}}
+    .relgrid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-top:1.4rem}}
+    .relcard{{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink)}}
+    .relcard:hover{{border-color:var(--amber);color:var(--amber-dk)}}
+    .relcard .rn{{font-weight:800}}.relcard .rs{{color:var(--muted);font-size:.85rem}}
   </style>
   <script type="application/ld+json">
   {{"@context":"https://schema.org","@type":"WebPage","name":{json.dumps(title)},"url":"{canon}","inLanguage":"{t['loc']}","isPartOf":{{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}}}
@@ -230,6 +326,9 @@ def page(asset, css, updated, lang):
       <h2>{t['h_chart']}</h2>
       <div class="chartbox">{chart_svg(asset.get("spark"), up, t['no_chart'])}</div>
       <p class="updated" style="margin-top:.7rem">{t['updated'].format(u=esc(updated))}</p>
+      <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">{lbl['eb_stats']}</span>
+      <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">{lbl['h_stats']}</h2>
+      {stats_html(asset, lbl)}
     </div>
   </section>
 
@@ -242,6 +341,7 @@ def page(asset, css, updated, lang):
         {('<p class="csignal">' + esc(asset.get("signal")) + '</p>') if asset.get("signal") else ''}
         <p class="crat">{esc(asset.get("rationale"))}</p>
       </div>
+      {('<h3 style="margin:1.6rem 0 0;font-size:1.05rem">' + lbl['h_analysis'] + '</h3>' + analysis_html(asset)) if asset.get("analysis") else ''}
     </div>
   </section>
 
@@ -253,6 +353,8 @@ def page(asset, css, updated, lang):
       <p class="crosslink" style="margin-top:1.4rem">{t['cross']}</p>
     </div>
   </section>
+
+  {related_html(asset, all_assets, t, lbl)}
 
   <section class="sec" style="padding-top:0">
     <div class="wrap">
@@ -313,7 +415,8 @@ def main() -> int:
         outdir = STR[lang]["out"]
         outdir.mkdir(parents=True, exist_ok=True)
         for a in data.get("assets", []):
-            (outdir / f"{a['id']}.html").write_text(page(a, css, updated, lang), encoding="utf-8")
+            (outdir / f"{a['id']}.html").write_text(
+                page(a, css, updated, lang, data.get("assets", [])), encoding="utf-8")
             total += 1
         print(f"[{lang}] {len(data.get('assets', []))} Detailseiten → {outdir}/")
     print(f"Gesamt {total} Detailseiten erzeugt.")

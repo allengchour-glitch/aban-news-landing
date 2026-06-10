@@ -240,6 +240,16 @@
     .chartbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;box-shadow:var(--shadow-sm);margin-top:1.4rem}
     .muted{color:var(--muted)}
     .backlink{display:inline-block;margin:.4rem 0 0;color:var(--amber-dk);font-weight:700;text-decoration:none}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem;margin-top:1.4rem}
+    .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.2rem}
+    .kpi .kl{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
+    .kpi .kv{font-weight:800;font-variant-numeric:tabular-nums}
+    .analysis{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.6rem;max-width:680px}
+    .analysis li{background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:10px;padding:.7rem .9rem;font-size:.95rem;color:var(--ink)}
+    .relgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-top:1.4rem}
+    .relcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink)}
+    .relcard:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .relcard .rn{font-weight:800}.relcard .rs{color:var(--muted);font-size:.85rem}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"Kupfer (Kupfer) \u2014 Kurs, 30-Tage-Chart & KI-Sentiment | aban news","url":"https://abannews.com/maerkte/kupfer.html","inLanguage":"de-DE","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}
@@ -264,8 +274,8 @@
       <a class="backlink" href="/maerkte.html">← Alle Märkte</a>
       <h1>Kupfer <span class="hl">Kupfer</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="kupfer" data-type="commodity">6.30 USD</span>
-        <span class="chg flat">-0.01 %</span>
+        <span class="px" id="livePrice" data-id="kupfer" data-type="commodity">6.29 USD</span>
+        <span class="chg down">-0.12 %</span>
         <span class="tag-type">Rohstoff</span>
         <span class="badge neutral">Neutral</span>
       </div>
@@ -277,8 +287,11 @@
     <div class="wrap">
       <span class="eyebrow">30-Tage-Verlauf</span>
       <h2>Kursverlauf</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,97.6 L37.7,70.5 L67.4,13.3 L97.1,39.1 L126.9,159.1 L156.6,151.4 L186.3,192.0 L216.0,144.3 L245.7,157.1 L275.4,124.8 L305.1,117.6 L334.9,138.8 L364.6,104.3 L394.3,118.1 L424.0,55.7 L453.7,8.0 L483.4,72.0 L513.1,60.6 L542.9,154.6 L572.6,129.5 L602.3,139.8 L632.0,140.0 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,97.6 37.7,70.5 67.4,13.3 97.1,39.1 126.9,159.1 156.6,151.4 186.3,192.0 216.0,144.3 245.7,157.1 275.4,124.8 305.1,117.6 334.9,138.8 364.6,104.3 394.3,118.1 424.0,55.7 453.7,8.0 483.4,72.0 513.1,60.6 542.9,154.6 572.6,129.5 602.3,139.8 632.0,140.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,97.6 L37.7,70.5 L67.4,13.3 L97.1,39.1 L126.9,159.1 L156.6,151.4 L186.3,192.0 L216.0,144.3 L245.7,157.1 L275.4,124.8 L305.1,117.6 L334.9,138.8 L364.6,104.3 L394.3,118.1 L424.0,55.7 L453.7,8.0 L483.4,72.0 L513.1,60.6 L542.9,154.6 L572.6,129.5 L602.3,139.8 L632.0,142.4 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,97.6 37.7,70.5 67.4,13.3 97.1,39.1 126.9,159.1 156.6,151.4 186.3,192.0 216.0,144.3 245.7,157.1 275.4,124.8 305.1,117.6 334.9,138.8 364.6,104.3 394.3,118.1 424.0,55.7 453.7,8.0 483.4,72.0 513.1,60.6 542.9,154.6 572.6,129.5 602.3,139.8 632.0,142.4" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
       <p class="updated" style="margin-top:.7rem">Stand: 2026-06-10 · Krypto aktualisiert live.</p>
+      <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Kennzahlen</span>
+      <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">Im Überblick</h2>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-0.12 %</span></span></div><div class="kpi"><span class="kl">7 Tage</span><span class="kv"><span class="chg down">-2.86 %</span></span></div><div class="kpi"><span class="kl">30 Tage</span><span class="kv"><span class="chg down">-1.84 %</span></span></div><div class="kpi"><span class="kl">30T-Hoch</span><span class="kv">6.65 USD</span></div><div class="kpi"><span class="kl">30T-Tief</span><span class="kv">6.17 USD</span></div><div class="kpi"><span class="kl">Volumen</span><span class="kv">22’972</span></div></div>
     </div>
   </section>
 
@@ -291,6 +304,7 @@
         <p class="csignal">Dünne Nachrichtenlage, keine klaren Impulse.</p>
         <p class="crat">Die Nachrichtenlage zu Kupfer ist sehr dünn und bietet keine klaren Impulse für eine Stimmungseinschätzung.</p>
       </div>
+      
     </div>
   </section>
 
@@ -298,10 +312,12 @@
     <div class="wrap">
       <span class="eyebrow">News zu Kupfer</span>
       <h2>Aktuelle Schlagzeilen</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9hUDlTUEo4Y21yeC1JTl9FMGlwU1AtemRWNWhTVHdrZEVITDExbFRrOXEtUmxtcUNoRFp3a0VRX0wyZFc1RmtuM1VuMHJUdm1EX2ZnUWR2MlEwTm1CQXFuTk51emJKMUE?oc=5" target="_blank" rel="noopener">Copper Futures Overview</a><div class="meta"><span>CME Group</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNVUpvM1JFYkZPd3ZpSGRBdW1TUklEem1aOTI2LUZqcVMxRkcxSDVubk1xVG00dmNpY3JjaWlpVXFCT0QyZHc3N0IzUHdyeHZ0RXBKWllCckF6OWEtV3lhbnRTU2ZvNVRkMXJ6REE5d0NUS3hpTDItVEFNR05iUEFNbXNXNkZ1TFY4TVBTWEpWRlB1aFB6R3Z0eGg1OEJ5dUlqamxlNGp0eHY0ZVdSZUtYY1NvM0JROHlXaUNN?oc=5" target="_blank" rel="noopener">Minerva Neurosciences (NERV) director receives stock options for 50,000 shares</a><div class="meta"><span>Stock Titan</span><span>· 05 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxNcmJldjJhYmJpV3hnTm9HLVRyMmdpTU9XZGxWZDNObVRyMXpRSVNZV3FyeTU1OXVfeEVybUUwUUdidmZMVHdaMk5paGs0M2p2UmRxYlN2NWNkYnQ1M05jLUxfQ0hLMU9UVWxxRmdSUVhVYWJuVXRhVUVzUkJ6bGJ0MWdpWVVQMjBkU1E2Y2VCVG9JckpzZGw3SHY1U1JJRXdEQTZqZHdSMXVDZl80d2hjRXJUY193T1JhWXZpb2hjSVZqZw?oc=5" target="_blank" rel="noopener">Why are more people under 50 getting colorectal cancer?</a><div class="meta"><span>UChicago Medicine</span><span>· 13 Mar 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9hUDlTUEo4Y21yeC1JTl9FMGlwU1AtemRWNWhTVHdrZEVITDExbFRrOXEtUmxtcUNoRFp3a0VRX0wyZFc1RmtuM1VuMHJUdm1EX2ZnUWR2MlEwTm1CQXFuTk51emJKMUE?oc=5" target="_blank" rel="noopener">Copper Futures Overview</a><div class="meta"><span>CME Group</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNVUpvM1JFYkZPd3ZpSGRBdW1TUklEem1aOTI2LUZqcVMxRkcxSDVubk1xVG00dmNpY3JjaWlpVXFCT0QyZHc3N0IzUHdyeHZ0RXBKWllCckF6OWEtV3lhbnRTU2ZvNVRkMXJ6REE5d0NUS3hpTDItVEFNR05iUEFNbXNXNkZ1TFY4TVBTWEpWRlB1aFB6R3Z0eGg1OEJ5dUlqamxlNGp0eHY0ZVdSZUtYY1NvM0JROHlXaUNN?oc=5" target="_blank" rel="noopener">Minerva Neurosciences (NERV) director receives stock options for 50,000 shares</a><div class="meta"><span>Stock Titan</span><span>· 05 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxNcmJldjJhYmJpV3hnTm9HLVRyMmdpTU9XZGxWZDNObVRyMXpRSVNZV3FyeTU1OXVfeEVybUUwUUdidmZMVHdaMk5paGs0M2p2UmRxYlN2NWNkYnQ1M05jLUxfQ0hLMU9UVWxxRmdSUVhVYWJuVXRhVUVzUkJ6bGJ0MWdpWVVQMjBkU1E2Y2VCVG9JckpzZGw3SHY1U1JJRXdEQTZqZHdSMXVDZl80d2hjRXJUY193T1JhWXZpb2hjSVZqZw?oc=5" target="_blank" rel="noopener">Why are more people under 50 getting colorectal cancer?</a><div class="meta"><span>UChicago Medicine</span><span>· 13 Mar 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPLVNNcWlwQ3JoZjZzY0czU2F3enJ0bVg2UERkazdvOXo2QXZvZXlZWDJMYWVnb1lSOVJINGZ3QkNpLWtIM1hDWW1oSTJfeVVkcjBONmJGTko4eU05d3ItTmVsamE2N3YwSFN3ZC1yd2FEZ1AzWXBiTWp3NHVKakFIQTRjWTFEa1lUb0t6ZHVkYXFWWlItTkM3TVAxOGVsRHgzc2N0a0d3TzFCUFNkVkp6V1VVUQ?oc=5" target="_blank" rel="noopener">Copper Dips Below $13,000 With Stockpiles, China Demand in Focus</a><div class="meta"><span>Bloomberg.com</span><span>· 05 Feb 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPY1FGc1FqZ3FXVGxlTXFkTnJkakdjSThyRmRKUUQ1LVVGZmVYSHMwdUVBTnZZdGprQW1MOUJaOC1VWGFOTmxDS3d0cUJ1ODg5TzR6amt1T2JuZllWakRXTGd5WTk3LUhsS251UWpMQl9lRVh1U2hrNFc2d3lXNzFmNUNyenh4QzN2ODY2YXRTS2tNdXhNTmtIaVVuT0ZES0FfLW5pMDh4WVJYdkZVV3JEQjNvRXBYYjVGZXRnM1JIR3F3VjBoVlBZ?oc=5" target="_blank" rel="noopener">Copper forecasts jump above $11,000 for first time, but analysts wary on demand worries: Reuters poll</a><div class="meta"><span>Reuters</span><span>· 29 Jan 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/maerkte.html">← Zur Märkte-Übersicht</a> · <a href="/ki-und-krypto-daten.html">KI &amp; Krypto in Zahlen →</a></p>
     </div>
   </section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap"><span class="eyebrow">Mehr aus der Kategorie</span><h2>Verwandte Werte</h2><div class="relgrid"><a class="relcard" href="/maerkte/gold.html"><span class="rn">Gold</span><span class="rs">Gold</span></a><a class="relcard" href="/maerkte/silber.html"><span class="rn">Silber</span><span class="rs">Silber</span></a><a class="relcard" href="/maerkte/oel.html"><span class="rn">Rohöl WTI</span><span class="rs">Öl (WTI)</span></a><a class="relcard" href="/maerkte/erdgas.html"><span class="rn">Erdgas</span><span class="rs">Erdgas</span></a></div></div></section>
 
   <section class="sec" style="padding-top:0">
     <div class="wrap">

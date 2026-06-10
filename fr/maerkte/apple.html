@@ -240,6 +240,16 @@
     .chartbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;box-shadow:var(--shadow-sm);margin-top:1.4rem}
     .muted{color:var(--muted)}
     .backlink{display:inline-block;margin:.4rem 0 0;color:var(--amber-dk);font-weight:700;text-decoration:none}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem;margin-top:1.4rem}
+    .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.2rem}
+    .kpi .kl{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
+    .kpi .kv{font-weight:800;font-variant-numeric:tabular-nums}
+    .analysis{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.6rem;max-width:680px}
+    .analysis li{background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:10px;padding:.7rem .9rem;font-size:.95rem;color:var(--ink)}
+    .relgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-top:1.4rem}
+    .relcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink)}
+    .relcard:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .relcard .rn{font-weight:800}.relcard .rs{color:var(--muted);font-size:.85rem}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"Apple (AAPL) \u2014 cours, graphique 30 jours & sentiment IA | aban news","url":"https://abannews.com/fr/maerkte/apple.html","inLanguage":"fr","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}
@@ -264,8 +274,8 @@
       <a class="backlink" href="/fr/maerkte.html">← Tous les marchés</a>
       <h1>Apple <span class="hl">AAPL</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="apple" data-type="stock">290.55 USD</span>
-        <span class="chg down">-3.64 %</span>
+        <span class="px" id="livePrice" data-id="apple" data-type="stock">288.79 USD</span>
+        <span class="chg down">-0.61 %</span>
         <span class="tag-type">Action</span>
         <span class="badge bearish">Bearish</span>
       </div>
@@ -277,8 +287,11 @@
     <div class="wrap">
       <span class="eyebrow">Historique 30 jours</span>
       <h2>Évolution du cours</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,176.1 L39.2,160.3 L70.4,129.9 L101.6,134.8 L132.8,119.7 L164.0,137.6 L195.2,129.1 L226.4,104.7 L257.6,84.2 L288.8,55.6 L320.0,59.3 L351.2,40.5 L382.4,28.1 L413.6,31.4 L444.8,74.4 L476.0,8.0 L507.2,44.9 L538.4,37.6 L569.6,66.7 L600.8,110.0 L632.0,192.0 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,176.1 39.2,160.3 70.4,129.9 101.6,134.8 132.8,119.7 164.0,137.6 195.2,129.1 226.4,104.7 257.6,84.2 288.8,55.6 320.0,59.3 351.2,40.5 382.4,28.1 413.6,31.4 444.8,74.4 476.0,8.0 507.2,44.9 538.4,37.6 569.6,66.7 600.8,110.0 632.0,192.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,164.9 L37.7,150.1 L67.4,121.8 L97.1,126.3 L126.9,112.3 L156.6,128.9 L186.3,121.1 L216.0,98.2 L245.7,79.1 L275.4,52.4 L305.1,55.9 L334.9,38.3 L364.6,26.7 L394.3,29.9 L424.0,69.9 L453.7,8.0 L483.4,42.4 L513.1,35.7 L542.9,62.8 L572.6,103.2 L602.3,179.7 L632.0,192.0 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,164.9 37.7,150.1 67.4,121.8 97.1,126.3 126.9,112.3 156.6,128.9 186.3,121.1 216.0,98.2 245.7,79.1 275.4,52.4 305.1,55.9 334.9,38.3 364.6,26.7 394.3,29.9 424.0,69.9 453.7,8.0 483.4,42.4 513.1,35.7 542.9,62.8 572.6,103.2 602.3,179.7 632.0,192.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
       <p class="updated" style="margin-top:.7rem">Au : 2026-06-10 · crypto en direct.</p>
+      <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Indicateurs</span>
+      <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">En bref</h2>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-0.61 %</span></span></div><div class="kpi"><span class="kl">7 jours</span><span class="kv"><span class="chg down">-6.92 %</span></span></div><div class="kpi"><span class="kl">30 jours</span><span class="kv"><span class="chg down">-1.33 %</span></span></div><div class="kpi"><span class="kl">Plus haut 30j</span><span class="kv">315.20 USD</span></div><div class="kpi"><span class="kl">Plus bas 30j</span><span class="kv">288.79 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">3.23 Mio</span></div><div class="kpi"><span class="kl">Plus haut 52s</span><span class="kv">317.40 USD</span></div><div class="kpi"><span class="kl">Plus bas 52s</span><span class="kv">195.07 USD</span></div></div>
     </div>
   </section>
 
@@ -291,6 +304,7 @@
         <p class="csignal">WWDC-Enttäuschung, EU-KI-Verzögerung, Bewertungsbedenken.</p>
         <p class="crat">Die WWDC und Siri AI-Hype enttäuschten Investoren, und die EU-KI-Verzögerung rückt die Bewertung und Wachstumserwartungen in den Fokus.</p>
       </div>
+      
     </div>
   </section>
 
@@ -298,10 +312,12 @@
     <div class="wrap">
       <span class="eyebrow">Actus sur AAPL</span>
       <h2>Derniers titres</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPRFBSbkNPUWtCLUxHVG1QckVnTFN6eGl2TlhyZ3JfdUMxU0dCVHU0UWRMblNYU0ZNZFdVZmwxLXJNR3kyUk5nbzVjMFhsX25QaXVRZzY5LS1obm1IdFFOLWxhN0QtMFliVXZqYk9vYzRmX2lFT3Y2LXRxQW0yelpSWm4tVWJUS1NOUUgySHRMR1lMLU84NGVoZWRjUnVVU3RGckNLQ1RXQU5fRHoySG1yLUdWTnQ0Qm53Z0JB?oc=5" target="_blank" rel="noopener">Why Apple&#x27;s WWDC and Siri AI hype left investors sad</a><div class="meta"><span>Yahoo Finance</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxPdm5odjM1c1NpbjJuQVJpRTZsTjJMWlFyTzh3QlVXNG81QkpWa2RIcG90N2FXU1NFMUE3SzRtQVhhdFBITmIyTG5wY055UWpIaEtvRGJrWmV6bnU1NjJpTTM1V2V0LVU4ZUstcTRLNGRtRnlzeUZhUFhSNXdGRUJiZ2Q3Y3ExeGJyeWhOVzQtTHQ?oc=5" target="_blank" rel="noopener">Apple EU AI Delay Puts Spotlight On Valuation And Growth Expectations</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQbnZZVGxOV1BKN3R0dzZETjhEUnhTeDBrbjNYRk90UGowZUZtRzBrZnQzS2EtU3dOMGJ6MTg4RW90ZEwxN2hPckdUUDhjd0xzZGZ5bm82Z1NFaE9wTnpyWEtoRlNiekJLN001VW5GVzhlTEhHSWJMMy1Vdks4dUxHWWJxOFJMeWVIOHJ5ZFZOM1ZLUEZlSlZaXw?oc=5" target="_blank" rel="noopener">The Real Risk Inside Apple Stock</a><div class="meta"><span>Trefis</span><span>· 09 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMic0FVX3lxTE1mVkZFeFNmb19QUDBiblhSbFZhMzN4V1U1REV2ZV92c3dkQ19VX1lXaXJkTmtGN3h5N0gxNXdwSEpqemhnM2ZmRURlbVZtOUVwQ0JydTVfak51MWhzLTVJYVZYd3I5RjI2ZGdFYjVEXzgzbHPSAXhBVV95cUxNVmctVWQzdjBCNGZqUGFKM0tWMHVWT1dMTmNzZDFfY1o0cWdnWGhsMjZiNVFLb21OMFhOSWc2Wi1Ra2JRYnVzMXNGRDFHVjZ3SDV0OVhsNHpDdXFFUUtaVGpTOE9wdGUyS1ZxcHlqemhyNzhUTU8xX3M?oc=5" target="_blank" rel="noopener">Apple shares slide after big Siri AI reveal</a><div class="meta"><span>CNBC</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxPdm5odjM1c1NpbjJuQVJpRTZsTjJMWlFyTzh3QlVXNG81QkpWa2RIcG90N2FXU1NFMUE3SzRtQVhhdFBITmIyTG5wY055UWpIaEtvRGJrWmV6bnU1NjJpTTM1V2V0LVU4ZUstcTRLNGRtRnlzeUZhUFhSNXdGRUJiZ2Q3Y3ExeGJyeWhOVzQtTHQ?oc=5" target="_blank" rel="noopener">Apple EU AI Delay Puts Spotlight On Valuation And Growth Expectations</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQbnZZVGxOV1BKN3R0dzZETjhEUnhTeDBrbjNYRk90UGowZUZtRzBrZnQzS2EtU3dOMGJ6MTg4RW90ZEwxN2hPckdUUDhjd0xzZGZ5bm82Z1NFaE9wTnpyWEtoRlNiekJLN001VW5GVzhlTEhHSWJMMy1Vdks4dUxHWWJxOFJMeWVIOHJ5ZFZOM1ZLUEZlSlZaXw?oc=5" target="_blank" rel="noopener">The Real Risk Inside Apple Stock</a><div class="meta"><span>Trefis</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE1LaWpfOGpUa2t3bjVXM2NBbndydWY3NEs5QmdlRTVtYlM5WUs1MjFJVlZtOEJnaWVzWW1DOXFRdDRKT2dXRGtqbkEyVFhGbWFHY0FIeXZsRmVHT1ZBN1U1UHJrRHRDVTk0cFB4OHJPczBTdUVLSC1mWlQxOA?oc=5" target="_blank" rel="noopener">Apple: What Will It Take To Win (NASDAQ:AAPL)</a><div class="meta"><span>Seeking Alpha</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPUW9XUlFtcjYxT1BfSkE2elhrRkdZT2E1Rkw3YUd3czc4ZTQyZlZ6RW9GTkh4WUJBMW1aTkZ2TzZDUWZYVDlqdnJYMXh5cU1YTDdWY3JLUTVnS2V2SXpuOFFoZjhoM0RjVGJhLUVBc0xvZHRnaE5zbzBpOEh2akpBVEhZUUhnWmZRNTcyMTlWQkhkTTRMNU9oSzV4WFhtM2xCZGZLUlFTZHVIdkJlVkZNclAyNmw?oc=5" target="_blank" rel="noopener">Bank of America sends clear message on Apple stock after key event</a><div class="meta"><span>thestreet.com</span><span>· 09 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/fr/maerkte.html">← Retour à l'aperçu des marchés</a> · <a href="/ki-und-krypto-daten.html">IA &amp; crypto en chiffres →</a></p>
     </div>
   </section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap"><span class="eyebrow">Plus dans cette catégorie</span><h2>Valeurs liées</h2><div class="relgrid"><a class="relcard" href="/fr/maerkte/nvidia.html"><span class="rn">NVIDIA</span><span class="rs">NVDA</span></a><a class="relcard" href="/fr/maerkte/microsoft.html"><span class="rn">Microsoft</span><span class="rs">MSFT</span></a><a class="relcard" href="/fr/maerkte/tesla.html"><span class="rn">Tesla</span><span class="rs">TSLA</span></a><a class="relcard" href="/fr/maerkte/alphabet.html"><span class="rn">Alphabet</span><span class="rs">GOOGL</span></a></div></div></section>
 
   <section class="sec" style="padding-top:0">
     <div class="wrap">
