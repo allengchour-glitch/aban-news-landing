@@ -7,6 +7,8 @@
   <meta name="description" content="Ethereum (ETH): aktueller Kurs, 30-Tage-Chart, KI-Sentiment und wert-spezifische News. Anti-Hype, keine Anlageberatung.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://abannews.com/maerkte/ethereum.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/maerkte/ethereum.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/maerkte/ethereum.html">
   <meta name="theme-color" content="#d97706">
   <meta property="og:title" content="Ethereum (ETH) — Kurs, 30-Tage-Chart &amp; KI-Sentiment | aban news">
   <meta property="og:description" content="Ethereum (ETH): aktueller Kurs, 30-Tage-Chart, KI-Sentiment und wert-spezifische News. Anti-Hype, keine Anlageberatung.">
@@ -247,7 +249,7 @@
     <a href="/" class="brand"><span class="dot"></span> aban news</a>
     <nav class="hnav" aria-label="Hauptnavigation">
       <a href="/maerkte.html" class="lk lk--keep">Märkte</a>
-      <span class="lang" role="group" aria-label="Sprache"><a href="/maerkte/ethereum.html" class="on" aria-current="page">DE</a></span>
+      <span class="lang" role="group" aria-label="Language"><a href="/maerkte/ethereum.html" class="on" aria-current="page">DE</a><a href="/en/maerkte/ethereum.html">EN</a></span>
       <a href="#signup" class="btn btn--amber btn--sm">Gratis abonnieren</a>
     </nav>
   </div>
@@ -272,7 +274,7 @@
     <div class="wrap">
       <span class="eyebrow">30-Tage-Verlauf</span>
       <h2>Kursverlauf</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-Tage-Kursverlauf" style="display:block"><path d="M8.0,192 L8.0,8.0 L35.1,23.7 L62.3,27.9 L89.4,22.1 L116.5,46.7 L143.7,59.3 L170.8,59.2 L197.9,59.5 L225.0,58.4 L252.2,74.7 L279.3,62.3 L306.4,63.4 L333.6,73.2 L360.7,84.9 L387.8,87.4 L415.0,85.7 L442.1,89.4 L469.2,89.5 L496.3,136.1 L523.5,146.3 L550.6,192.0 L577.7,166.2 L604.9,165.5 L632.0,178.1 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,8.0 35.1,23.7 62.3,27.9 89.4,22.1 116.5,46.7 143.7,59.3 170.8,59.2 197.9,59.5 225.0,58.4 252.2,74.7 279.3,62.3 306.4,63.4 333.6,73.2 360.7,84.9 387.8,87.4 415.0,85.7 442.1,89.4 469.2,89.5 496.3,136.1 523.5,146.3 550.6,192.0 577.7,166.2 604.9,165.5 632.0,178.1" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,8.0 L35.1,23.7 L62.3,27.9 L89.4,22.1 L116.5,46.7 L143.7,59.3 L170.8,59.2 L197.9,59.5 L225.0,58.4 L252.2,74.7 L279.3,62.3 L306.4,63.4 L333.6,73.2 L360.7,84.9 L387.8,87.4 L415.0,85.7 L442.1,89.4 L469.2,89.5 L496.3,136.1 L523.5,146.3 L550.6,192.0 L577.7,166.2 L604.9,165.5 L632.0,178.1 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,8.0 35.1,23.7 62.3,27.9 89.4,22.1 116.5,46.7 143.7,59.3 170.8,59.2 197.9,59.5 225.0,58.4 252.2,74.7 279.3,62.3 306.4,63.4 333.6,73.2 360.7,84.9 387.8,87.4 415.0,85.7 442.1,89.4 469.2,89.5 496.3,136.1 523.5,146.3 550.6,192.0 577.7,166.2 604.9,165.5 632.0,178.1" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
       <p class="updated" style="margin-top:.7rem">Stand: 2026-06-10 · Krypto aktualisiert live.</p>
     </div>
   </section>
@@ -304,7 +306,7 @@
         <h2>Märkte täglich verstehen</h2>
         <p>Mo–Fr 7:30 Uhr das 5-Minuten-Briefing — ehrlich eingeordnet.</p>
         <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
-          <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">
+          <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="Email">
           <button type="submit" class="btn btn--amber">Gratis abonnieren →</button>
         </form>
         <p class="fine">DSGVO-konform · 1-Klick-Abmeldung · kein Spam.</p>
@@ -323,7 +325,6 @@
 </footer>
 
 <script>
-// Live-Kurs aus markets.json nachladen (CSP-safe, no-op bei Fehler).
 (function(){
   var el=document.getElementById('livePrice'); if(!el) return;
   var id=el.getAttribute('data-id'); var typ=el.getAttribute('data-type');

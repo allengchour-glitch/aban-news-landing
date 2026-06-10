@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
-"""Aban News — Detailseiten pro Markt-Wert (statisch, mit Chart).
+"""Aban News — Detailseiten pro Markt-Wert (statisch, mit Chart), DE + EN.
 
-Erzeugt aus data/markets.json je Wert eine Seite maerkte/<id>.html:
-  • großer 30-Tage-SVG-Chart (serverseitig gerendert → SEO + kein JS nötig)
-  • aktueller Kurs (live nachladbar), 24h-Änderung, KI-Sentiment + Begründung
-  • wert-spezifische News, Disclaimer, Zurück-Link
+Erzeugt aus data/markets.json je Wert zwei Seiten:
+  • maerkte/<id>.html      (Deutsch)
+  • en/maerkte/<id>.html   (Englisch)
+mit 30-Tage-SVG-Chart, Live-Kurs, KI-Sentiment + Begründung, wert-spezifischen
+News, Disclaimer und gegenseitigem hreflang. CSS wird aus maerkte.html übernommen.
 
-Das CSS wird aus maerkte.html übernommen (identischer Look). Reine stdlib.
-No-op-sicher: fehlt markets.json, passiert nichts.
-
-Nutzung: python automation/build_markets_detail.py
+Reine stdlib, no-op-sicher. Nutzung: python automation/build_markets_detail.py
 """
 from __future__ import annotations
 
@@ -21,11 +19,46 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "markets.json"
-OUTDIR = ROOT / "maerkte"
 SRC = ROOT / "maerkte.html"
 
 SENT_LABEL = {"bullish": "Bullish", "neutral": "Neutral", "bearish": "Bearish"}
-TYPE_LABEL = {"crypto": "Krypto", "stock": "Aktie", "index": "Index", "commodity": "Rohstoff"}
+
+STR = {
+    "de": {
+        "out": ROOT / "maerkte", "base": "/maerkte/", "site": "/", "markets": "/maerkte.html",
+        "loc": "de-DE", "numloc": "de-CH",
+        "type": {"crypto": "Krypto", "stock": "Aktie", "index": "Index", "commodity": "Rohstoff"},
+        "title": "{name} ({sym}) — Kurs, 30-Tage-Chart & KI-Sentiment | aban news",
+        "desc": "{name} ({sym}): aktueller Kurs, 30-Tage-Chart, KI-Sentiment und wert-spezifische News. Anti-Hype, keine Anlageberatung.",
+        "skip": "Zum Inhalt springen", "nav": "Hauptnavigation", "subscribe": "Gratis abonnieren",
+        "back": "← Alle Märkte", "disc": "⚠️ Keine Anlageberatung. {typ} ist hochvolatil — du kannst eingesetztes Geld komplett verlieren. KI-Sentiment ist experimentell.",
+        "eb_chart": "30-Tage-Verlauf", "h_chart": "Kursverlauf", "no_chart": "Kein Chart verfügbar.",
+        "updated": "Stand: {u} · Krypto aktualisiert live.",
+        "eb_ai": "Experimentell · KI-Einordnung", "h_ai": "KI-Sentiment",
+        "eb_news": "News zu {sym}", "h_news": "Aktuelle Schlagzeilen", "no_news": "Aktuell keine wert-spezifischen News.",
+        "cross": '<a href="/maerkte.html">← Zur Märkte-Übersicht</a> · <a href="/ki-und-krypto-daten.html">KI &amp; Krypto in Zahlen →</a>',
+        "band_h": "Märkte täglich verstehen", "band_p": "Mo–Fr 7:30 Uhr das 5-Minuten-Briefing — ehrlich eingeordnet.",
+        "mail": "deine@mail.de", "btn": "Gratis abonnieren →", "fine": "DSGVO-konform · 1-Klick-Abmeldung · kein Spam.",
+        "foot_markets": "Märkte", "imp": "Impressum", "dat": "Datenschutz",
+    },
+    "en": {
+        "out": ROOT / "en" / "maerkte", "base": "/en/maerkte/", "site": "/en/", "markets": "/en/maerkte.html",
+        "loc": "en", "numloc": "en",
+        "type": {"crypto": "Crypto", "stock": "Stock", "index": "Index", "commodity": "Commodity"},
+        "title": "{name} ({sym}) — price, 30-day chart & AI sentiment | aban news",
+        "desc": "{name} ({sym}): current price, 30-day chart, AI sentiment and asset-specific news. Anti-hype, not investment advice.",
+        "skip": "Skip to content", "nav": "Main navigation", "subscribe": "Subscribe free",
+        "back": "← All markets", "disc": "⚠️ Not investment advice. {typ} is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.",
+        "eb_chart": "30-day history", "h_chart": "Price history", "no_chart": "No chart available.",
+        "updated": "As of: {u} · crypto updates live.",
+        "eb_ai": "Experimental · AI assessment", "h_ai": "AI sentiment",
+        "eb_news": "News on {sym}", "h_news": "Latest headlines", "no_news": "No asset-specific news right now.",
+        "cross": '<a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a>',
+        "band_h": "Understand markets daily", "band_p": "Every weekday at 7:30 — the 5-minute briefing, honestly explained.",
+        "mail": "you@mail.com", "btn": "Subscribe free →", "fine": "GDPR-compliant · 1-click unsubscribe · no spam.",
+        "foot_markets": "Markets", "imp": "Imprint", "dat": "Privacy",
+    },
+}
 
 
 def esc(s):
@@ -44,10 +77,9 @@ def fmt_asset_price(a):
     return f"{v:.4f} " + unit
 
 
-def chart_svg(spark, up):
-    """Großer Linien-/Flächen-Chart als Inline-SVG aus den 30T-Punkten."""
+def chart_svg(spark, up, no_chart):
     if not spark or len(spark) < 2:
-        return '<p class="muted">Kein Chart verfügbar.</p>'
+        return f'<p class="muted">{no_chart}</p>'
     W, H, pad = 640, 200, 8
     lo, hi = min(spark), max(spark)
     span = (hi - lo) or 1
@@ -62,12 +94,10 @@ def chart_svg(spark, up):
     color = "#0f9d6b" if up else "#dc2626"
     fill = "rgba(15,157,107,.12)" if up else "rgba(220,38,38,.10)"
     return (
-        f'<svg viewBox="0 0 {W} {H}" width="100%" role="img" '
-        f'aria-label="30-Tage-Kursverlauf" style="display:block">'
+        f'<svg viewBox="0 0 {W} {H}" width="100%" role="img" aria-label="30-day price history" style="display:block">'
         f'<path d="{area}" fill="{fill}" stroke="none"/>'
         f'<polyline points="{line}" fill="none" stroke="{color}" stroke-width="2.2" '
-        f'stroke-linejoin="round" stroke-linecap="round"/>'
-        f'</svg>'
+        f'stroke-linejoin="round" stroke-linecap="round"/></svg>'
     )
 
 
@@ -84,27 +114,31 @@ def news_html(items):
     return '<ul class="news">' + "".join(li) + "</ul>"
 
 
-def page(asset, css, updated):
+def page(asset, css, updated, lang):
+    t = STR[lang]
+    other = "en" if lang == "de" else "de"
     aid, name, sym = asset["id"], asset.get("name", ""), asset.get("symbol", "")
-    typ = TYPE_LABEL.get(asset.get("type"), "Wert")
-    price = asset.get("price")
+    typ = t["type"].get(asset.get("type"), "")
     chg = asset.get("change_24h")
     chg_cls = "up" if (chg or 0) > 0.04 else ("down" if (chg or 0) < -0.04 else "flat")
     chg_txt = (f"{chg:+.2f} %" if chg is not None else "—")
     sent = asset.get("sentiment", "neutral")
     up = bool(asset.get("spark") and asset["spark"][-1] >= asset["spark"][0])
-    title = f"{name} ({sym}) — Kurs, 30-Tage-Chart & KI-Sentiment | aban news"
-    desc = (f"{name} ({sym}): aktueller Kurs, 30-Tage-Chart, KI-Sentiment und "
-            f"wert-spezifische News. Anti-Hype, keine Anlageberatung.")
+    title = t["title"].format(name=name, sym=sym)
+    desc = t["desc"].format(name=name, sym=sym)
+    canon = f"https://abannews.com{t['base']}{aid}.html"
+    alt = f"https://abannews.com{STR[other]['base']}{aid}.html"
     return f"""<!DOCTYPE html>
-<html lang="de">
+<html lang="{lang}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(desc)}">
   <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://abannews.com/maerkte/{aid}.html">
+  <link rel="canonical" href="{canon}">
+  <link rel="alternate" hreflang="{lang}" href="{canon}">
+  <link rel="alternate" hreflang="{other}" href="{alt}">
   <meta name="theme-color" content="#d97706">
   <meta property="og:title" content="{esc(title)}">
   <meta property="og:description" content="{esc(desc)}">
@@ -119,18 +153,18 @@ def page(asset, css, updated):
     .backlink{{display:inline-block;margin:.4rem 0 0;color:var(--amber-dk);font-weight:700;text-decoration:none}}
   </style>
   <script type="application/ld+json">
-  {{"@context":"https://schema.org","@type":"WebPage","name":{json.dumps(title)},"url":"https://abannews.com/maerkte/{aid}.html","inLanguage":"de-DE","isPartOf":{{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}}}
+  {{"@context":"https://schema.org","@type":"WebPage","name":{json.dumps(title)},"url":"{canon}","inLanguage":"{t['loc']}","isPartOf":{{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}}}
   </script>
 </head>
 <body>
-<a class="skip" href="#main">Zum Inhalt springen</a>
+<a class="skip" href="#main">{t['skip']}</a>
 <header>
   <div class="wrap">
-    <a href="/" class="brand"><span class="dot"></span> aban news</a>
-    <nav class="hnav" aria-label="Hauptnavigation">
-      <a href="/maerkte.html" class="lk lk--keep">Märkte</a>
-      <span class="lang" role="group" aria-label="Sprache"><a href="/maerkte/{aid}.html" class="on" aria-current="page">DE</a></span>
-      <a href="#signup" class="btn btn--amber btn--sm">Gratis abonnieren</a>
+    <a href="{t['site']}" class="brand"><span class="dot"></span> aban news</a>
+    <nav class="hnav" aria-label="{t['nav']}">
+      <a href="{t['markets']}" class="lk lk--keep">{t['foot_markets']}</a>
+      <span class="lang" role="group" aria-label="Language"><a href="{t['base']}{aid}.html" class="on" aria-current="page">{lang.upper()}</a><a href="{STR[other]['base']}{aid}.html">{other.upper()}</a></span>
+      <a href="#signup" class="btn btn--amber btn--sm">{t['subscribe']}</a>
     </nav>
   </div>
 </header>
@@ -138,7 +172,7 @@ def page(asset, css, updated):
 <main id="main" tabindex="-1">
   <section class="hero">
     <div class="wrap">
-      <a class="backlink" href="/maerkte.html">← Alle Märkte</a>
+      <a class="backlink" href="{t['markets']}">{t['back']}</a>
       <h1>{esc(name)} <span class="hl">{esc(sym)}</span></h1>
       <div class="detail-hero">
         <span class="px" id="livePrice" data-id="{aid}" data-type="{asset.get('type','')}">{fmt_asset_price(asset)}</span>
@@ -146,23 +180,23 @@ def page(asset, css, updated):
         <span class="tag-type">{typ}</span>
         <span class="badge {sent}">{SENT_LABEL.get(sent, "Neutral")}</span>
       </div>
-      <p class="disclaimer">⚠️ Keine Anlageberatung. {esc(typ)} ist hochvolatil — du kannst eingesetztes Geld komplett verlieren. KI-Sentiment ist experimentell.</p>
+      <p class="disclaimer">{t['disc'].format(typ=typ)}</p>
     </div>
   </section>
 
   <section class="sec" style="padding-top:1.2rem">
     <div class="wrap">
-      <span class="eyebrow">30-Tage-Verlauf</span>
-      <h2>Kursverlauf</h2>
-      <div class="chartbox">{chart_svg(asset.get("spark"), up)}</div>
-      <p class="updated" style="margin-top:.7rem">Stand: {esc(updated)} · Krypto aktualisiert live.</p>
+      <span class="eyebrow">{t['eb_chart']}</span>
+      <h2>{t['h_chart']}</h2>
+      <div class="chartbox">{chart_svg(asset.get("spark"), up, t['no_chart'])}</div>
+      <p class="updated" style="margin-top:.7rem">{t['updated'].format(u=esc(updated))}</p>
     </div>
   </section>
 
   <section class="sec" style="padding-top:0">
     <div class="wrap">
-      <span class="eyebrow">Experimentell · KI-Einordnung</span>
-      <h2>KI-Sentiment</h2>
+      <span class="eyebrow">{t['eb_ai']}</span>
+      <h2>{t['h_ai']}</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">{esc(name)} · {esc(sym)}</span><span class="badge {sent}">{SENT_LABEL.get(sent, "Neutral")}</span></div>
         {('<p class="csignal">' + esc(asset.get("signal")) + '</p>') if asset.get("signal") else ''}
@@ -173,23 +207,23 @@ def page(asset, css, updated):
 
   <section class="sec" style="padding-top:0">
     <div class="wrap">
-      <span class="eyebrow">News zu {esc(sym)}</span>
-      <h2>Aktuelle Schlagzeilen</h2>
-      {news_html(asset.get("asset_news")) or '<p class="muted">Aktuell keine wert-spezifischen News.</p>'}
-      <p class="crosslink" style="margin-top:1.4rem"><a href="/maerkte.html">← Zur Märkte-Übersicht</a> · <a href="/ki-und-krypto-daten.html">KI &amp; Krypto in Zahlen →</a></p>
+      <span class="eyebrow">{t['eb_news'].format(sym=esc(sym))}</span>
+      <h2>{t['h_news']}</h2>
+      {news_html(asset.get("asset_news")) or f'<p class="muted">{t["no_news"]}</p>'}
+      <p class="crosslink" style="margin-top:1.4rem">{t['cross']}</p>
     </div>
   </section>
 
   <section class="sec" style="padding-top:0">
     <div class="wrap">
       <div class="band">
-        <h2>Märkte täglich verstehen</h2>
-        <p>Mo–Fr 7:30 Uhr das 5-Minuten-Briefing — ehrlich eingeordnet.</p>
+        <h2>{t['band_h']}</h2>
+        <p>{t['band_p']}</p>
         <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
-          <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">
-          <button type="submit" class="btn btn--amber">Gratis abonnieren →</button>
+          <input type="email" name="email" placeholder="{t['mail']}" required autocomplete="email" inputmode="email" aria-label="Email">
+          <button type="submit" class="btn btn--amber">{t['btn']}</button>
         </form>
-        <p class="fine">DSGVO-konform · 1-Klick-Abmeldung · kein Spam.</p>
+        <p class="fine">{t['fine']}</p>
       </div>
     </div>
   </section>
@@ -199,19 +233,18 @@ def page(asset, css, updated):
   <div class="wrap">
     <div class="footbar">
       <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
-      <span class="footbar-links"><a href="/maerkte.html">Märkte</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></span>
+      <span class="footbar-links"><a href="{t['markets']}">{t['foot_markets']}</a><a href="/impressum.html">{t['imp']}</a><a href="/datenschutz.html">{t['dat']}</a></span>
     </div>
   </div>
 </footer>
 
 <script>
-// Live-Kurs aus markets.json nachladen (CSP-safe, no-op bei Fehler).
 (function(){{
   var el=document.getElementById('livePrice'); if(!el) return;
   var id=el.getAttribute('data-id'); var typ=el.getAttribute('data-type');
   function fmt(v){{ if(v==null)return null; var d=v>=1000?0:(v>=1?2:4);
-    if(typ==='index'){{ try{{return new Intl.NumberFormat('de-CH',{{maximumFractionDigits:d,minimumFractionDigits:d}}).format(v)+' Pkt';}}catch(e){{return v.toFixed(d)+' Pkt';}} }}
-    try{{return new Intl.NumberFormat('de-CH',{{style:'currency',currency:'USD',maximumFractionDigits:d,minimumFractionDigits:d}}).format(v);}}catch(e){{return v.toFixed(d)+' USD';}} }}
+    if(typ==='index'){{ try{{return new Intl.NumberFormat('{t['numloc']}',{{maximumFractionDigits:d,minimumFractionDigits:d}}).format(v)+' Pkt';}}catch(e){{return v.toFixed(d)+' Pkt';}} }}
+    try{{return new Intl.NumberFormat('{t['numloc']}',{{style:'currency',currency:'USD',maximumFractionDigits:d,minimumFractionDigits:d}}).format(v);}}catch(e){{return v.toFixed(d)+' USD';}} }}
   function upd(){{ fetch('/data/markets.json',{{cache:'no-store'}}).then(function(r){{return r.ok?r.json():null;}}).then(function(d){{
     if(!d)return; var a=(d.assets||[]).filter(function(x){{return x.id===id;}})[0];
     if(a&&typeof a.price==='number'){{ var s=fmt(a.price); if(s)el.textContent=s; }}
@@ -235,12 +268,15 @@ def main() -> int:
     m = re.search(r"<style>.*?</style>", SRC.read_text(encoding="utf-8"), re.S)
     css = m.group(0) if m else "<style></style>"
     updated = data.get("last_updated", "")
-    OUTDIR.mkdir(exist_ok=True)
-    count = 0
-    for a in data.get("assets", []):
-        (OUTDIR / f"{a['id']}.html").write_text(page(a, css, updated), encoding="utf-8")
-        count += 1
-    print(f"{count} Detailseiten erzeugt → {OUTDIR}/")
+    total = 0
+    for lang in ("de", "en"):
+        outdir = STR[lang]["out"]
+        outdir.mkdir(parents=True, exist_ok=True)
+        for a in data.get("assets", []):
+            (outdir / f"{a['id']}.html").write_text(page(a, css, updated, lang), encoding="utf-8")
+            total += 1
+        print(f"[{lang}] {len(data.get('assets', []))} Detailseiten → {outdir}/")
+    print(f"Gesamt {total} Detailseiten erzeugt.")
     return 0
 
 

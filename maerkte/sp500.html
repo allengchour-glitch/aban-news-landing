@@ -7,6 +7,8 @@
   <meta name="description" content="S&amp;P 500 (S&amp;P 500): aktueller Kurs, 30-Tage-Chart, KI-Sentiment und wert-spezifische News. Anti-Hype, keine Anlageberatung.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://abannews.com/maerkte/sp500.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/maerkte/sp500.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/maerkte/sp500.html">
   <meta name="theme-color" content="#d97706">
   <meta property="og:title" content="S&amp;P 500 (S&amp;P 500) — Kurs, 30-Tage-Chart &amp; KI-Sentiment | aban news">
   <meta property="og:description" content="S&amp;P 500 (S&amp;P 500): aktueller Kurs, 30-Tage-Chart, KI-Sentiment und wert-spezifische News. Anti-Hype, keine Anlageberatung.">
@@ -247,7 +249,7 @@
     <a href="/" class="brand"><span class="dot"></span> aban news</a>
     <nav class="hnav" aria-label="Hauptnavigation">
       <a href="/maerkte.html" class="lk lk--keep">Märkte</a>
-      <span class="lang" role="group" aria-label="Sprache"><a href="/maerkte/sp500.html" class="on" aria-current="page">DE</a></span>
+      <span class="lang" role="group" aria-label="Language"><a href="/maerkte/sp500.html" class="on" aria-current="page">DE</a><a href="/en/maerkte/sp500.html">EN</a></span>
       <a href="#signup" class="btn btn--amber btn--sm">Gratis abonnieren</a>
     </nav>
   </div>
@@ -272,7 +274,7 @@
     <div class="wrap">
       <span class="eyebrow">30-Tage-Verlauf</span>
       <h2>Kursverlauf</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-Tage-Kursverlauf" style="display:block"><path d="M8.0,192 L8.0,149.5 L40.8,158.0 L73.7,126.9 L106.5,86.0 L139.4,152.6 L172.2,156.5 L205.1,192.0 L237.9,135.0 L270.7,125.8 L303.6,105.9 L336.4,73.1 L369.3,72.2 L402.1,41.1 L434.9,29.3 L467.8,15.1 L500.6,8.0 L533.5,48.3 L566.3,26.3 L599.2,170.4 L632.0,154.6 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,149.5 40.8,158.0 73.7,126.9 106.5,86.0 139.4,152.6 172.2,156.5 205.1,192.0 237.9,135.0 270.7,125.8 303.6,105.9 336.4,73.1 369.3,72.2 402.1,41.1 434.9,29.3 467.8,15.1 500.6,8.0 533.5,48.3 566.3,26.3 599.2,170.4 632.0,154.6" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,149.5 L40.8,158.0 L73.7,126.9 L106.5,86.0 L139.4,152.6 L172.2,156.5 L205.1,192.0 L237.9,135.0 L270.7,125.8 L303.6,105.9 L336.4,73.1 L369.3,72.2 L402.1,41.1 L434.9,29.3 L467.8,15.1 L500.6,8.0 L533.5,48.3 L566.3,26.3 L599.2,170.4 L632.0,154.6 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,149.5 40.8,158.0 73.7,126.9 106.5,86.0 139.4,152.6 172.2,156.5 205.1,192.0 237.9,135.0 270.7,125.8 303.6,105.9 336.4,73.1 369.3,72.2 402.1,41.1 434.9,29.3 467.8,15.1 500.6,8.0 533.5,48.3 566.3,26.3 599.2,170.4 632.0,154.6" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
       <p class="updated" style="margin-top:.7rem">Stand: 2026-06-10 · Krypto aktualisiert live.</p>
     </div>
   </section>
@@ -304,7 +306,7 @@
         <h2>Märkte täglich verstehen</h2>
         <p>Mo–Fr 7:30 Uhr das 5-Minuten-Briefing — ehrlich eingeordnet.</p>
         <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
-          <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">
+          <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="Email">
           <button type="submit" class="btn btn--amber">Gratis abonnieren →</button>
         </form>
         <p class="fine">DSGVO-konform · 1-Klick-Abmeldung · kein Spam.</p>
@@ -323,7 +325,6 @@
 </footer>
 
 <script>
-// Live-Kurs aus markets.json nachladen (CSP-safe, no-op bei Fehler).
 (function(){
   var el=document.getElementById('livePrice'); if(!el) return;
   var id=el.getAttribute('data-id'); var typ=el.getAttribute('data-type');

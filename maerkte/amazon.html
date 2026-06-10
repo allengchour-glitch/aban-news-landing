@@ -7,6 +7,8 @@
   <meta name="description" content="Amazon (AMZN): aktueller Kurs, 30-Tage-Chart, KI-Sentiment und wert-spezifische News. Anti-Hype, keine Anlageberatung.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://abannews.com/maerkte/amazon.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/maerkte/amazon.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/maerkte/amazon.html">
   <meta name="theme-color" content="#d97706">
   <meta property="og:title" content="Amazon (AMZN) — Kurs, 30-Tage-Chart &amp; KI-Sentiment | aban news">
   <meta property="og:description" content="Amazon (AMZN): aktueller Kurs, 30-Tage-Chart, KI-Sentiment und wert-spezifische News. Anti-Hype, keine Anlageberatung.">
@@ -247,7 +249,7 @@
     <a href="/" class="brand"><span class="dot"></span> aban news</a>
     <nav class="hnav" aria-label="Hauptnavigation">
       <a href="/maerkte.html" class="lk lk--keep">Märkte</a>
-      <span class="lang" role="group" aria-label="Sprache"><a href="/maerkte/amazon.html" class="on" aria-current="page">DE</a></span>
+      <span class="lang" role="group" aria-label="Language"><a href="/maerkte/amazon.html" class="on" aria-current="page">DE</a><a href="/en/maerkte/amazon.html">EN</a></span>
       <a href="#signup" class="btn btn--amber btn--sm">Gratis abonnieren</a>
     </nav>
   </div>
@@ -272,7 +274,7 @@
     <div class="wrap">
       <span class="eyebrow">30-Tage-Verlauf</span>
       <h2>Kursverlauf</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-Tage-Kursverlauf" style="display:block"><path d="M8.0,192 L8.0,40.0 L40.8,60.3 L73.7,32.7 L106.5,51.3 L139.4,71.0 L172.2,66.4 L205.1,101.7 L237.9,65.5 L270.7,43.4 L303.6,57.1 L336.4,63.7 L369.3,21.7 L402.1,8.0 L434.9,29.5 L467.8,89.5 L500.6,119.8 L533.5,161.3 L566.3,137.2 L599.2,186.8 L632.0,192.0 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,40.0 40.8,60.3 73.7,32.7 106.5,51.3 139.4,71.0 172.2,66.4 205.1,101.7 237.9,65.5 270.7,43.4 303.6,57.1 336.4,63.7 369.3,21.7 402.1,8.0 434.9,29.5 467.8,89.5 500.6,119.8 533.5,161.3 566.3,137.2 599.2,186.8 632.0,192.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div class="chartbox"><svg viewBox="0 0 640 200" width="100%" role="img" aria-label="30-day price history" style="display:block"><path d="M8.0,192 L8.0,40.0 L40.8,60.3 L73.7,32.7 L106.5,51.3 L139.4,71.0 L172.2,66.4 L205.1,101.7 L237.9,65.5 L270.7,43.4 L303.6,57.1 L336.4,63.7 L369.3,21.7 L402.1,8.0 L434.9,29.5 L467.8,89.5 L500.6,119.8 L533.5,161.3 L566.3,137.2 L599.2,186.8 L632.0,192.0 L632.0,192 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="8.0,40.0 40.8,60.3 73.7,32.7 106.5,51.3 139.4,71.0 172.2,66.4 205.1,101.7 237.9,65.5 270.7,43.4 303.6,57.1 336.4,63.7 369.3,21.7 402.1,8.0 434.9,29.5 467.8,89.5 500.6,119.8 533.5,161.3 566.3,137.2 599.2,186.8 632.0,192.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
       <p class="updated" style="margin-top:.7rem">Stand: 2026-06-10 · Krypto aktualisiert live.</p>
     </div>
   </section>
@@ -304,7 +306,7 @@
         <h2>Märkte täglich verstehen</h2>
         <p>Mo–Fr 7:30 Uhr das 5-Minuten-Briefing — ehrlich eingeordnet.</p>
         <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
-          <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">
+          <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="Email">
           <button type="submit" class="btn btn--amber">Gratis abonnieren →</button>
         </form>
         <p class="fine">DSGVO-konform · 1-Klick-Abmeldung · kein Spam.</p>
@@ -323,7 +325,6 @@
 </footer>
 
 <script>
-// Live-Kurs aus markets.json nachladen (CSP-safe, no-op bei Fehler).
 (function(){
   var el=document.getElementById('livePrice'); if(!el) return;
   var id=el.getAttribute('data-id'); var typ=el.getAttribute('data-type');
