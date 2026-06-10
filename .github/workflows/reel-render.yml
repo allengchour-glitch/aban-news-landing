@@ -7,7 +7,7 @@ name: Reel Auto-Render (Nachschub für die Queue)
 
 on:
   schedule:
-    - cron: '0 1-23/4 * * *'   # alle 4h, um 01/05/09/13/17/21 Uhr UTC
+    - cron: '0 1 */2 * *'   # alle 4h, um 01/05/09/13/17/21 Uhr UTC
   workflow_dispatch:
     inputs:
       n:

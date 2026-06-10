@@ -15,7 +15,7 @@ name: Reel Auto-Post (alle 4 Stunden 1 Reel)
 
 on:
   schedule:
-    - cron: '0 */4 * * *'   # alle 4 Stunden
+    - cron: '0 9 * * *'   # alle 4 Stunden
   workflow_dispatch: {}
 
 permissions:

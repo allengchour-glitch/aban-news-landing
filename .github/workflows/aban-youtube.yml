@@ -25,7 +25,7 @@ on:
   #            # echte-Menschen-Footage gewinnt (1527/605). Kein Auto-Posten von Flops mehr.
   #            # Siehe video-prototypes/aban-files/WINNER-ANALYSE.md. Manuell weiter via "Run workflow".
   #            # Wieder einkommentieren, wenn das Format auf den Gewinner-Stil umgestellt ist.
-  #   - cron: "0 */2 * * *"
+  #   - cron: "0 */12 * * *"
 
 permissions:
   contents: write

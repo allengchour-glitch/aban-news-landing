@@ -9,7 +9,7 @@ name: ABAN Files director (autonom, alle 4h)
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */4 * * *"   # alle 4 Stunden
+    - cron: "0 */12 * * *"   # alle 4 Stunden
 
 permissions:
   contents: write
