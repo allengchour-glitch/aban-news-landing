@@ -62,7 +62,7 @@ jobs:
             git config user.email "actions@users.noreply.github.com"
             git add media/reels
             git commit -m "reels: neue KI-Reels (Tool + Hype-Watch) auf /reels [skip ci]"
-            git push
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
           else
             echo "Keine Änderung an media/reels."
           fi

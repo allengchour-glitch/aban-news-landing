@@ -45,7 +45,7 @@ jobs:
             git config user.email "actions@users.noreply.github.com"
             git add downloads/ki-tools-dach-sample.csv
             git commit -m "datensatz: Gratis-Probe aktualisiert [skip ci]"
-            git push
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
           else
             echo "Keine Änderung an der Probe."
           fi
