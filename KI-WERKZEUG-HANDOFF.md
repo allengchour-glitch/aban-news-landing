@@ -4,6 +4,18 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 📌 2026-06-10 — Großes Link-Leck gefixt (1.259 tote CTAs)
+- **Link-Checker-Fund:** mehrere `*.abannews.com`-Subdomains lösen per DNS NICHT auf (nicht deployt), aber
+  massiv verlinkt: **`tools.abannews.com`** (KI-Tools-Verzeichnis) auf **1.259 Seiten** als amber-CTA — tot!
+  Weitere tote: automatisierung(377)/kurse/chatbot/dropshipping/voice/buchhaltung/webbaukasten/video/lifestyle.
+  Live: radar/foerder/jobs/prompts/agenturen.
+- **User-Entscheid „On-Site umbiegen":** `https://tools.abannews.com` → **`https://abannews.com/welche-ki-fuer-was.html`**
+  (KI-Tool-Finder, 175 Tools, live) — im Generator `tools/add_branchen_funnel.py` (DE+EN) UND in allen 1.259
+  bestehenden HTML. `ki-verzeichnis/` (= die tools.*-Seite selbst) + `newsletter-radar/` Selbst-Referenzen
+  ausgenommen. newsletter.* waren nur Radar-interne Deep-Links → unangetastet. Absolute URLs (von jeder Origin ok).
+- **OFFEN (User):** die übrigen toten Radar-Subdomains (automatisierung/kurse/chatbot/…) entweder via Cloudflare
+  deployen ODER ebenfalls umbiegen — kam noch keine Entscheidung. Tools+newsletter sind erledigt.
+
 ## 📌 2026-06-10 — Repo PRIVAT (GitHub Pro) + Bot-Drosselung
 - **User hat GitHub Pro geholt + Repo auf Private gestellt.** abannews.com **verifiziert HTTP 200** (Pages läuft
   mit Pro auch privat; `.nojekyll` MUSS bleiben). Privat = nur **3.000 Actions-Min/Mon** (Pages-Builds zählen mit!).

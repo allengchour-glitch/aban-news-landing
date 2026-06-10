@@ -49,7 +49,7 @@ BLOCK_TMPL = """<aside {marker} style="max-width:760px;margin:2.5rem auto;paddin
   <p style="margin:0;display:flex;flex-wrap:wrap;gap:.55rem">
     <a href="/ki-werkzeug.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">KI-Werkzeug: Texte in Minuten →</a>
     <a href="/online-tools.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">Alle Gratis-Tools →</a>
-    <a href="https://tools.abannews.com" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">KI-Tools-Verzeichnis →</a>
+    <a href="https://abannews.com/welche-ki-fuer-was.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">KI-Tools-Verzeichnis →</a>
     <a href="/ki-erwaehnungs-check.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">Werde ich von KI genannt? →</a>
     <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:transparent;color:#b45309;border:1px solid #fde9c8;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">Newsletter gratis →</a>
   </p>
@@ -72,7 +72,7 @@ BLOCK_EN = """<aside {marker} style="max-width:760px;margin:2.5rem auto;padding:
   <p style="margin:0 0 .9rem;color:#374151;font-size:.96rem;line-height:1.6">Before you spend money on AI: create texts &amp; an AI roadmap with the free AI Toolkit, and check whether AI even mentions you. No sign-up.</p>
   <p style="margin:0;display:flex;flex-wrap:wrap;gap:.55rem">
     <a href="/en/ki-werkzeug.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">AI Toolkit: texts in minutes →</a>
-    <a href="https://tools.abannews.com" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">AI tools directory →</a>
+    <a href="https://abannews.com/welche-ki-fuer-was.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">AI tools directory →</a>
     <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:transparent;color:#b45309;border:1px solid #fde9c8;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:8px;font-size:.92rem">Free newsletter →</a>
   </p>
   <p style="margin:.9rem 0 0;color:#374151;font-size:.9rem;line-height:1.55">{shop_line}</p>
