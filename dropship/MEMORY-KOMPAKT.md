@@ -252,3 +252,16 @@ hero-schweiz(zurückgerollt) · pod-provider-check. **Theme-Edits via raw-API (M
   grünes Badge vorangestellt, idempotent (Marker `class="ls-eff"`): Solar-Produkte → „☀️ Solarbetrieben · keine Stromkosten",
   USB/Akku-LED-Lampen → „🔌 USB/Akku-LED · energieeffizient". **53 Produkte** bekamen ein Badge (alle Solar shop-weit via
   `title:Solar*` + USB-Lampen), 1 übersprungen (Wellness-Bundle). Verifiziert an 2 Produkten. Kein Energielabel = legal sauber.
+
+## 2026-06-10 — Magnete (beides) LIVE über Printful ✅
+- **Drucker:** Printful **Die-Cut Magnets (656)**, 3 Grössen: 7,6cm=16366/CHF7.90 · 10cm=16367/9.90 · 15cm=16465/13.90.
+- **A) „Magnet zum Selbstgestalten"** `/products/magnet-zum-selbstgestalten` (ACTIVE) — Editor-Widget **quadratisch**
+  (kein data-ratio = Default), Kunde lädt Bild hoch, Printful druckt auto (printful_sync, placement MAGNET→default).
+  Tools `automation/create_magnet_pod.mjs` + `magnete-anlegen.yml`. Blanko-Bild `pod/magnet-blank.png`.
+- **B) 6 fertige Schweiz-Magnete** (Matterhorn, Grüezi mitenand, Merci vilmal, Schweizer Herz, Kuhglocke, Fondue),
+  Handles `schweiz-magnet-*`, ACTIVE, Tag `schweiz-edition`+`fertig-magnet` (KEIN wunschdesign → kein Widget).
+  **Auto-Fulfillment via Produkt-Metafeld `custom.print_file` = Motiv-URL.** Tool `automation/create_schweiz_magnets.mjs`.
+- **printful_sync erweitert (wiederverwendbar für ALLE Fertig-Produkte):** wenn keine Editor-Druckdatei in den
+  Order-Properties → Fallback auf Produkt-Metafeld `custom.print_file`. + `MAGNET` in placementFor (single „default").
+- **Muster für künftige Fertig-Produkte:** Tag `printful_personalized_product` (für sync) OHNE `wunschdesign` (kein Widget) +
+  Metafeld `custom.print_file` + SKU `9000001_<printfulVariantId>`. → vollautonom verkaufbar+druckbar.
