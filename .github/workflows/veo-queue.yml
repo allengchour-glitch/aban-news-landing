@@ -1,0 +1,60 @@
+name: Veo-Clips in Meta-Queue
+
+# Lädt die fertigen Veo-Hero-Clips (reels/veo-hero-*.mp4) auf die Shopify-CDN und reiht sie
+# gestaffelt in social/video_queue.csv (status=ready) ein → video-meta-autopost postet sie
+# tropfenweise auf IG/FB/Threads. Idempotent (überspringt schon eingereihte ids).
+# Manuell auslösbar; kein Cron (einmaliger/seltener Lauf).
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: veo-queue
+  cancel-in-progress: false
+
+jobs:
+  queue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout (sparse — Script, Queue + Veo-Clips)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            automation
+            social
+            reels/veo-hero-brise-2026-06-08.mp4
+            reels/veo-hero-daisy-2026-06-08.mp4
+            reels/veo-hero-sirene-2026-06-08.mp4
+            reels/veo-hero-cosy-2026-06-08.mp4
+            reels/veo-hero-nuit-2026-06-08.mp4
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Veo-Clips hochladen + einreihen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+        run: node automation/queue_veo_clips.mjs
+
+      - name: Commit Queue
+        run: |
+          if [ -n "$(git status --porcelain social/video_queue.csv)" ]; then
+            git config user.name  "veo-queue-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add social/video_queue.csv
+            git commit -m "veo-queue: 5 animierte Mode-Clips auf CDN + Meta-Queue (gestaffelt) [skip ci]"
+            git pull --rebase origin "${GITHUB_REF_NAME}" || true
+            git push
+          else
+            echo "Nichts eingereiht (alle schon in Queue?)."
+          fi
