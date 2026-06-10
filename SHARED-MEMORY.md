@@ -57,6 +57,11 @@
   Meta-Analytics ziehen (Reach/Engagement/Saves/Profil-Besuche/Follows je Post) → auswerten welche Clips/Captions
   ziehen → Profil-Optimierung + bessere Hooks/CTAs für Follower. **Tools dafür da:** `automation/reel-analytics.mjs`,
   Meta-Graph-Insights. Diese Session hat KEINEN Selbst-Wecker → neue Session macht den Analytics-Pass.
+- **💸 DATAHASH GEKÜNDIGT (User 10.06.):** Server-Side-Tracking-Tool DataHash war **redundant** zum nativen
+  Setup → gekündigt. **Tracking läuft jetzt NUR nativ:** TikTok-Shopify-App (Datenfreigabe MAX → CompletePayment,
+  Pixel D8EKVR) + Meta-Verkaufskanal-CAPI (beide gratis). **⚠️ Check beim ersten Kauf / Kampagnenstart:** im
+  TikTok Events Manager prüfen, dass CompletePayment-Events weiter ankommen. Falls Events ausbleiben → DataHash
+  war doch die Quelle → native Anbindung nachschärfen.
 - **👀 TIKTOK-PROFIL gesichtet (Screenshots 10.06.):** @luxestyle.ch aktiv, viele Reels (Top-Views 1107/796/778),
   **TikTok-Shopping-Tags live** (Preis + „JETZT SHOPPEN") = echter Kaufpfad. ABER nur ~6 Follower (Views
   konvertieren nicht zu Follows). **🔴 Leak:** „Sommerkleid ärmellos CHF 32.90" (3,54★, `niedrig-bewertet-nicht-
