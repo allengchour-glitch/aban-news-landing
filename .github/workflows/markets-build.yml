@@ -31,12 +31,16 @@ jobs:
           python automation/markets_fetch.py \
             || echo "markets_fetch mit Warnung beendet"
 
-      - name: KI-Sentiment (Claude) ergänzen
+      - name: KI-Sentiment (Gemini) ergänzen
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          MARKETS_AI_MODEL: ${{ vars.MARKETS_AI_MODEL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_LOCATION: ${{ vars.GCP_LOCATION }}
+          VERTEX_TEXT_MODEL: ${{ vars.VERTEX_TEXT_MODEL }}
         run: |
-          pip install --quiet anthropic || true
+          pip install --quiet google-auth requests || true
           python automation/markets_ai.py \
             || echo "markets_ai mit Warnung beendet (kein Key?)"
 
