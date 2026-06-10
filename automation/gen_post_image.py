@@ -221,7 +221,72 @@ def render_card(product_img, label, width, height):
     return canvas.convert("RGB")
 
 
-def read_good():
+def render_story(product_img, label, width=1080, height=1920):
+    """Echtes 1080×1920 Instagram-/Facebook-Story-Format mit Safe-Zones:
+    Wortmarke unter dem IG-Story-Header (oben ~200px frei), Produktname + Pill
+    ÜBER der Antwortleiste (unten ~300px frei) → Text wird NIE abgeschnitten,
+    wenn die Story 9:16 gepostet wird (kein Hochskalieren/Seiten-Crop mehr)."""
+    hero = enhance(cover_crop(product_img, width, height))
+    canvas = hero.convert("RGBA")
+    canvas.alpha_composite(scrims(width, height))
+    draw = ImageDraw.Draw(canvas)
+    pad = int(width * 0.066)
+    shadow = ((0, 0, 0, 185), 2)
+
+    # — Kopf: Wortmarke unterhalb der IG-Header-Safe-Zone (Profil/Zeit/Schliessen) —
+    top_y = 208
+    wm = font(int(width * 0.032), "serif")
+    draw_spaced(draw, (width / 2, top_y), "LUXESTYLE", wm, WHITE,
+                tracking=int(width * 0.013), anchor="ma", shadow=shadow)
+    gw = int(width * 0.13)
+    gy = top_y + int(width * 0.032) + 20
+    draw.rectangle([(width / 2 - gw / 2, gy), (width / 2 + gw / 2, gy + 2)], fill=GOLD)
+    tag = font(int(width * 0.021), "sans-bold")
+    draw_spaced(draw, (width / 2, gy + 16), "SOMMER 2026", tag, GOLD_SOFT,
+                tracking=int(width * 0.006), anchor="ma", shadow=((0, 0, 0, 150), 1))
+
+    # — Fuss: Produktname + Goldlinie + Pill, ANKER über der Antwortleiste —
+    bottom_safe = 300                 # untere Story-UI (Antwortleiste/Swipe) frei lassen
+    pill_h = 88
+    disp = re.sub(r"\s*\(\s*\d[.,]\d+\s*★?\s*\)", "", label).replace("★", "").strip()
+    name_f = fit_font(draw, disp, width - 2 * pad, int(width * 0.072), "serif-bold", floor=40)
+    lines = wrap(draw, disp, name_f, width - 2 * pad, maxlines=2)
+    line_h = int(name_f.size * 1.16)
+    block_h = line_h * len(lines)
+
+    py = height - bottom_safe - pill_h        # Pill-Oberkante
+    ly = py - 24                              # Goldlinie über der Pill
+    base_y = ly - 16 - block_h                # Titel-Block über der Goldlinie
+    ny = base_y
+    for ln in lines:
+        draw.text((pad + 2, ny + 2), ln, font=name_f, fill=(0, 0, 0))   # Schatten = lesbar
+        draw.text((pad, ny), ln, font=name_f, fill=WHITE)
+        ny += line_h
+    draw.rectangle([(pad, ly), (pad + int(width * 0.16), ly + 3)], fill=GOLD)
+
+    pill_text = "−10 %   CODE  WELCOME10"
+    pf = font(int(width * 0.032), "sans-bold")
+    ptw = spaced_width(draw, pill_text, pf, 1)
+    pill_w = ptw + int(width * 0.07)
+    draw.rounded_rectangle([(pad, py), (pad + pill_w, py + pill_h)],
+                           radius=pill_h // 2, fill=GOLD)
+    draw_spaced(draw, (pad + int(width * 0.035), py + (pill_h - th(draw, "W", pf)) / 2 - 2),
+                pill_text, pf, (26, 22, 16), tracking=1, anchor="la")
+    site_f = font(int(width * 0.030), "sans")
+    draw_spaced(draw, (width - pad, py + (pill_h - th(draw, "l", site_f)) / 2 - 2),
+                "luxestyle.ch", site_f, WHITE, tracking=int(width * 0.004),
+                anchor="ra", shadow=shadow)
+
+    return canvas.convert("RGB")
+
+
+# Format-Liste: portrait+square = Feed, story = 9:16 (manuell als Story posten).
+RATIOS = (("portrait", (1080, 1350)), ("square", (1080, 1080)), ("story", (1080, 1920)))
+
+
+def render_variant(src, label, ratio, w, h):
+    return render_story(src, label, w, h) if ratio == "story" else render_card(src, label, w, h)
+
     out = []
     with open(GOOD, newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
@@ -241,9 +306,9 @@ def download(url):
 
 def render_for(name, url, label):
     src = download(url)
-    for ratio, (w, h) in (("portrait", (1080, 1350)), ("square", (1080, 1080))):
+    for ratio, (w, h) in RATIOS:
         out = os.path.join(OUT_DIR, f"{name}-{ratio}.jpg")
-        render_card(src, label, w, h).save(out, "JPEG", quality=90, optimize=True)
+        render_variant(src, label, ratio, w, h).save(out, "JPEG", quality=90, optimize=True)
         print(f"[{ratio}] {out}")
 
 
@@ -283,9 +348,9 @@ def main():
             src = download(url)
         except Exception as e:
             print(f"⚠️  Download fehlgeschlagen {name}: {e}"); continue
-        for ratio, (w, h) in (("portrait", (1080, 1350)), ("square", (1080, 1080))):
+        for ratio, (w, h) in RATIOS:
             out = os.path.join(OUT_DIR, f"{name}-{ratio}.jpg")
-            render_card(src, label, w, h).save(out, "JPEG", quality=90, optimize=True)
+            render_variant(src, label, ratio, w, h).save(out, "JPEG", quality=90, optimize=True)
             print(f"[{ratio}] {out}")
         cap = CAPTIONS[(start + k) % len(CAPTIONS)].format(label=label)
         tags = HASHTAGS[(start + k) % len(HASHTAGS)]
