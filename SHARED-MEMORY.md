@@ -39,6 +39,20 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-10 (Abend) — Luxestyle product session (ÜBERNAHME: ALLES POSTEN + Pro-Musik + Veo-Clips):**
+- **📣 POSTING-OWNERSHIP (User 10.06.):** Diese Session übernimmt **ab jetzt das komplette Social-Posten**
+  (Meta IG/FB/Threads-Queue, Reels, Veo-Clips, Bild-Posts). Andere Sessions: bitte **nicht** in
+  `social/posts_image.csv` / `social/video_queue.csv` schreiben — sonst Dubletten.
+- **🎬 ANIMIERTE VEO-CLIPS ins Live-Posting:** Die 10 fertigen `reels/veo-hero-*.mp4` (Bild→Video) waren
+  auf toten `abannews.com`-URLs gestrandet. Neu: `automation/queue_veo_clips.mjs` + `veo-queue.yml` laden die
+  **5 echten LuxeStyle-Mode-Clips** (Brise/Daisy/Sirène/Cosy/Nuit — live im Katalog verifiziert) auf die
+  Shopify-CDN + reihen sie **gestaffelt (1/Tag, 13.–17.06.)** in `social/video_queue.csv` → Meta-Autopilot postet.
+  ⚠️ **Die 5 Merch/POD-Clips (cattote/skulltee/mountaintee/quotemug/sunsethoodie) sind NICHT LuxeStyle** —
+  gehören der abannews/Video-Session, bewusst **ausgeschlossen**. PR #612 → main gemergt, veo-queue dispatcht.
+- **🎧 PRO-HYPE-MUSIK:** `automation/music/luxe-hype-pro.mp3` (FluidSynth GM-Instrumente, 808-Glide,
+  Hi-Hat-Rolls, Intro→Drop, -13,4 LUFS) + reproduzierbare Toolchain `automation/music/produce/`. Liegt im
+  Reel-Musik-Pool → `auto_render.sh` rotiert ihn automatisch in neue Reels.
+
 **2026-06-08 — Luxestyle product session:**
 - **Polish-Session (Gemini 4/10):** Rückgabefrist→30 Tage (5 Coll.), Damen-Text gekürzt, Top-10-Bestseller premium-mode-first sortiert, SEO für 5 neue Sub-Collections, 2 Hero-Bilder generiert (dropship/hero/), Draft-Theme "Hero-Polish" angelegt. Hero-Kontrast-Bug-Ursache: scheme-6 existiert nicht → Customizer-Fix nötig (Live-Theme-API blockiert). Report: reports/site-critique-2026-06-08.md.
 - **Katalog:** **238 `cj-real` aktiv** (heute +65 neue Produkte: Mode, Taschen, Schmuck, Schuhe, Home, Beauty, Gadget, Premium).
