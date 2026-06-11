@@ -1,0 +1,50 @@
+name: IG-DM-Auto-Antwort
+
+on:
+  schedule:
+    - cron: '5 8,14,20 * * *'   # 3×/Tag (nur LIVE, wenn Scope da)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur testen/lesen (nicht senden)'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ig-dm-reply
+  cancel-in-progress: false
+
+jobs:
+  dm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            automation/ig-dm-reply.mjs
+            social
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: DM-Antwort
+        env:
+          META_GRAPH_VERSION: ${{ secrets.META_GRAPH_VERSION }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          DRY_RUN: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run == 'false') && '' || (github.event_name == 'schedule' && '' || '1') }}
+        run: node automation/ig-dm-reply.mjs
+      - name: State committen
+        run: |
+          if [ -n "$(git status --porcelain social/replied-dms.json)" ]; then
+            git config user.name  "ig-dm-bot"; git config user.email "actions@users.noreply.github.com"
+            git add social/replied-dms.json
+            git commit -m "ig-dm: State [skip ci]"; git pull --rebase origin "${GITHUB_REF_NAME}" || true; git push
+          else echo "nichts"; fi
