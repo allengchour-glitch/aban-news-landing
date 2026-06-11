@@ -76,6 +76,33 @@ function buildPrompt(b) {
       `KEINE Anlageberatung). Nutze NUR die gegebenen Zahlen, erfinde nichts. Nenne die größten Bewegungen ` +
       `und ordne kurz ein.\n\n"""${text}"""`;
   }
+  if (kind === "social") {
+    return `Schreibe 3 Varianten eines Social-Media-Posts (Instagram/Facebook/LinkedIn) für „${branche}". ` +
+      `Thema/Ziel: „${ziel}". Je 2–4 Sätze, starker Hook in Zeile 1, klarer CTA, 3–5 passende Hashtags, kein Hype.`;
+  }
+  if (kind === "product") {
+    return `Schreibe eine ehrliche Produkt-/Leistungsbeschreibung für „${ziel || text}" (Branche: ${branche}). ` +
+      `Nutzen statt Floskeln: 2 kurze Absätze + 3 Stichpunkte (konkrete Merkmale). Keine Superlativ-Schlacht.`;
+  }
+  if (kind === "blog") {
+    return `Erstelle ein Blog-Artikel-Gerüst zum Thema „${ziel}" (Branche: ${branche}). Liefere: 2 Titel-Vorschläge, ` +
+      `1-Satz-Teaser, 5–7 Gliederungspunkte mit je 1 Stichwort, und eine Schluss-CTA. Anti-hype, konkret.`;
+  }
+  if (kind === "faq") {
+    return `Schreibe 6 ehrliche FAQ (Frage + kurze, klare Antwort) zum Thema „${ziel}" für „${branche}". ` +
+      `Echte Kundenfragen, keine Marketing-Floskeln, sachlich.`;
+  }
+  if (kind === "jobad") {
+    return `Schreibe eine ehrliche Stellenanzeige für „${ziel}" bei einem ${branche || "kleinen Unternehmen"}. ` +
+      `Abschnitte: Aufgaben, Das bringst du mit, Das bieten wir — konkret, ohne „Rockstar/Ninja"-Floskeln, mit klarem Bewerbungs-CTA.`;
+  }
+  if (kind === "summary") {
+    return `Fasse den folgenden Text sachlich zusammen: 3–5 Stichpunkte + ein Fazit-Satz (gleiche Sprache, nichts erfinden):\n\n"""${text || ziel}"""`;
+  }
+  if (kind === "slogan") {
+    return `Entwickle 8 kurze, ehrliche Slogan-/Claim-Vorschläge für „${branche}" (Ziel: „${ziel}"). ` +
+      `Klar, merkfähig, ohne leere Superlative. Als nummerierte Liste.`;
+  }
   // default: text
   return `Schreibe einen ${ton} Text. Zweck/Ziel: „${ziel || "Kurztext"}". Branche/Kontext: „${branche}". ` +
     `${text ? "Ausgangsmaterial:\n\"\"\"" + text + "\"\"\"\n" : ""}Max 220 Wörter, klar gegliedert, sofort verwendbar.`;
@@ -99,6 +126,8 @@ export async function onRequestPost({ request, env }) {
     const lic = readProKey(request, b) || (request.headers.get("CF-Connecting-IP") || "");
     if (rateLimited(lic, cap)) return json({ error: "rate_limited", tier: pro.tier }, 429);
 
+    // Jahres-Abo bekommt längere Outputs.
+    const maxTok = pro.tier === "yearly" ? 1600 : 900;
     const prompt = buildPrompt(b);
     const model = env.GENERATE_MODEL || "claude-sonnet-4-6";
     const ctl = new AbortController();
@@ -109,7 +138,7 @@ export async function onRequestPost({ request, env }) {
         method: "POST",
         signal: ctl.signal,
         headers: { "x-api-key": env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json" },
-        body: JSON.stringify({ model, max_tokens: 900, system: SYSTEM, messages: [{ role: "user", content: prompt }] }),
+        body: JSON.stringify({ model, max_tokens: maxTok, system: SYSTEM, messages: [{ role: "user", content: prompt }] }),
       });
     } finally { clearTimeout(t); }
 
