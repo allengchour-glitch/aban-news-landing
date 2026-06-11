@@ -129,8 +129,10 @@
       });
     } else if (tool === 'generate') {
       run('toolGen', btn, 'outGen', function () {
-        return post('/api/generate', { kind: val('genKind') || 'text', branche: val('genBranche'), ziel: val('genZiel') })
-          .then(function (r) { return { status: r.status, d: r.d, text: r.d && r.d.text }; });
+        return post('/api/generate', {
+          kind: val('genKind') || 'text', branche: val('genBranche'), ziel: val('genZiel'),
+          ton: val('genTon'), zielgruppe: val('genZg'), laenge: ($('genLen') ? $('genLen').value : '')
+        }).then(function (r) { return { status: r.status, d: r.d, text: r.d && r.d.text }; });
       });
     } else if (tool === 'hype') {
       run('toolHype', btn, 'outHype', function () {
@@ -186,6 +188,43 @@
         return 'Stand: ' + (d.fetched_at || d.last_updated || '') + '\nGrößte Gewinner:\n' + top.join('\n') + '\nGrößte Verlierer:\n' + bottom.join('\n');
       }).catch(function () { return ''; });
   }
+
+  // „Beispiel"-Button (Anfänger): füllt Branche + Ziel je nach Art mit einem Muster.
+  var EX_DE = {
+    text: ['Handwerksbetrieb', 'Begrüßungstext für unsere neue Website-Startseite'],
+    email: ['Steuerberatung', 'Mandanten freundlich an fehlende Belege für 2025 erinnern'],
+    social: ['Fotograf', 'Herbst-Familienshootings, Termine ab Oktober'],
+    product: ['Onlineshop Haushalt', 'wiederverwendbare Bienenwachstücher, 3er-Set'],
+    blog: ['Physiotherapie', 'Rückenschmerzen im Homeoffice vermeiden'],
+    faq: ['Hundeschule', 'Welpen-Gruppenkurs für Anfänger'],
+    jobad: ['Bäckerei', 'Verkäufer:in in Teilzeit (m/w/d)'],
+    slogan: ['Bio-Café', 'regionaler Kaffee, fair und frisch'],
+    summary: ['', '[Hier deinen langen Text zum Zusammenfassen einfügen]'],
+    plan: ['Immobilienmakler', 'mehr Zeit für Kundengespräche gewinnen'],
+    contentplan: ['Yoga-Studio', 'neue Einsteiger:innen gewinnen'],
+    emailserie: ['Coaching', 'neue Newsletter-Abonnenten herzlich begrüßen']
+  };
+  var EX_EN = {
+    text: ['Trade business', 'Welcome text for our new website homepage'],
+    email: ['Tax advisory', 'Kindly remind a client about missing receipts for 2025'],
+    social: ['Photographer', 'Autumn family shoots, dates from October'],
+    product: ['Home goods shop', 'reusable beeswax wraps, set of 3'],
+    blog: ['Physiotherapy', 'Avoiding back pain while working from home'],
+    faq: ['Dog school', 'Puppy group class for beginners'],
+    jobad: ['Bakery', 'Part-time sales assistant'],
+    slogan: ['Organic café', 'regional coffee, fair and fresh'],
+    summary: ['', '[Paste the long text you want summarized here]'],
+    plan: ['Real estate agent', 'free up more time for client conversations'],
+    contentplan: ['Yoga studio', 'attract new beginners'],
+    emailserie: ['Coaching', 'warmly welcome new newsletter subscribers']
+  };
+  var geBtn = $('genExample');
+  if (geBtn) geBtn.addEventListener('click', function () {
+    var k = val('genKind') || 'text';
+    var ex = (EN ? EX_EN : EX_DE)[k] || (EN ? EX_EN : EX_DE).text;
+    if ($('genBranche')) $('genBranche').value = ex[0];
+    if ($('genZiel')) $('genZiel').value = ex[1];
+  });
 
   // Jahres-Bonus: Vorlagen kopieren
   document.addEventListener('click', function (ev) {

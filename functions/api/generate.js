@@ -128,7 +128,16 @@ export async function onRequestPost({ request, env }) {
 
     // Jahres-Abo bekommt längere Outputs.
     const maxTok = pro.tier === "yearly" ? 1600 : 900;
-    const prompt = buildPrompt(b);
+    // Profi-Vorgaben (optional): Zielgruppe, Ton/Stil, Länge — gelten für jede Art.
+    const vorgaben = [];
+    if (b.zielgruppe || b.audience) vorgaben.push("Zielgruppe: " + clamp(b.zielgruppe || b.audience, 120));
+    if (b.ton || b.tone) vorgaben.push("Ton/Stil: " + clamp(b.ton || b.tone, 80));
+    if (b.laenge || b.length) {
+      const lv = String(b.laenge || b.length);
+      const lmap = { kurz: "kurz & knapp", mittel: "mittlere Länge", lang: "ausführlich", short: "kurz & knapp", medium: "mittlere Länge", long: "ausführlich" };
+      vorgaben.push("Länge: " + (lmap[lv] || clamp(lv, 30)));
+    }
+    const prompt = buildPrompt(b) + (vorgaben.length ? "\n\nVorgaben — " + vorgaben.join(" · ") + "." : "");
     const model = env.GENERATE_MODEL || "claude-sonnet-4-6";
     const ctl = new AbortController();
     const t = setTimeout(() => ctl.abort(), TIMEOUT_MS);
