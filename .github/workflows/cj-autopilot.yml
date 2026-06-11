@@ -26,6 +26,18 @@ on:
         description: 'Ziel-Status bei QA-PASS (ACTIVE oder DRAFT)'
         required: false
         default: 'ACTIVE'
+      pool:
+        description: 'Themen-Pool: men-tech | gadgets | (leer = Damen-Mode-Rotation)'
+        required: false
+        default: ''
+      keywords:
+        description: 'Eigene Suchbegriffe, komma-getrennt (überschreibt pool). Format kw|mustword'
+        required: false
+        default: ''
+      extra_tags:
+        description: 'Zusätzliche Tags, komma-getrennt (z.B. gadgets,tech oder herren,herren-mode)'
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -55,4 +67,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           AUTOPILOT_MAX: ${{ github.event.inputs.max || '6' }}
           AUTOPILOT_STATUS: ${{ github.event.inputs.status || vars.AUTOPILOT_STATUS || 'ACTIVE' }}
+          AUTOPILOT_POOL: ${{ github.event.inputs.pool }}
+          AUTOPILOT_KEYWORDS: ${{ github.event.inputs.keywords }}
+          AUTOPILOT_TAGS: ${{ github.event.inputs.extra_tags }}
         run: node dropship/cj_autopilot.mjs
