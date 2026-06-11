@@ -3,11 +3,12 @@
 // Optionale KI-Umschreibung via Claude, wenn das Secret ANTHROPIC_API_KEY
 // im Pages-Projekt gesetzt ist — sonst regelbasierter Fallback.
 import { analyze } from "../_engine.mjs";
+import { requirePro } from "../_pro.mjs";
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Headers": "Content-Type, X-Pro-Key",
 };
 // Sicherheits-/Cache-Header auf allen Antworten.
 const SECURITY = {
@@ -136,9 +137,11 @@ export async function onRequestPost(context) {
 
   const result = analyze(text);
 
-  // KI-Umschreibung nur auf Anfrage und nur, wenn ein Key vorhanden ist.
+  // KI-Umschreibung: Claude nur für „aban Pro" (gültige Lizenz) + gesetzten Key.
+  // Ohne Pro/Key → regelbasierter Fallback (free), mit Hinweis proRequired.
   if (action === "rewrite") {
-    if (env && env.ANTHROPIC_API_KEY) {
+    const pro = (env && env.ANTHROPIC_API_KEY) ? await requirePro(request, body, env) : { ok: false, reason: "ai_off" };
+    if (env && env.ANTHROPIC_API_KEY && pro.ok) {
       try {
         result.aiRewrite = await claudeRewrite(text, env);
         result.aiRewriteSource = "claude";
@@ -151,6 +154,7 @@ export async function onRequestPost(context) {
     } else {
       result.aiRewrite = result.ruleRewrite;
       result.aiRewriteSource = "fallback";
+      if (env && env.ANTHROPIC_API_KEY && !pro.ok) result.proRequired = true;
     }
   }
 
