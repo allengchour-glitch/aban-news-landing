@@ -69,6 +69,29 @@ if(DRY){ names.forEach(n=>console.log(`  PLAN: ${CFG.pt} «${pretty(n)}» → ${
 
 const tok=await token();
 const pubs=((await gql(tok,PUBQ))?.data?.publications?.edges||[]).map(e=>({publicationId:e.node.id}));
+
+// ── PERSONALISIERT-Modus: EIN „zum Selbstgestalten"-Produkt für diesen TYPE (Kunde lädt Foto hoch, Editor-Widget) ──
+if(process.env.PERSONALIZED==='1'){
+  const handle=`${CFG.prefix}-zum-selbstgestalten`;
+  const title=`${CFG.pt} zum Selbstgestalten`;
+  // generisches „Dein Motiv hier"-Platzhalterbild (vorhanden); Editor ersetzt es beim Gestalten
+  const IMG=`https://abannews.com/pod/magnet-blank.png`;
+  const input={ title, handle, productType:CFG.pt, vendor:'LuxeStyle', status:'ACTIVE',
+    descriptionHtml:`<p>Dein eigenes Foto oder Motiv auf ${CFG.pt==='T-Shirt'?'einem':CFG.pt==='Mauspad'?'einem':'einer'} <strong>${CFG.pt}</strong> – gestalte direkt hier im Editor (Bild hochladen, Text &amp; Sticker frei platzieren). On-demand in Europa gedruckt.</p><ul><li>Lade dein Bild hoch &amp; gestalte selbst</li>${CFG.bullets.slice(0,2).map(b=>`<li>${b}</li>`).join('')}<li>Tolles persönliches Geschenk</li></ul><p>🇨🇭 LuxeStyle</p>`,
+    seo:{ title:`${CFG.pt} selbst gestalten – dein Foto | LuxeStyle`, description:`${CFG.pt} mit deinem eigenen Foto/Motiv gestalten. Editor inklusive, in Europa gedruckt.` },
+    tags:['wunschdesign','printful_personalized_product',`pod-${TYPE}`,'selbst-gestalten',...CFG.tags],
+    productOptions:[{name:CFG.opt, values:CFG.sizes.map(s=>({name:s[0]}))}],
+    variants:CFG.sizes.map(s=>({ optionValues:[{optionName:CFG.opt,name:s[0]}], price:(parseFloat(s[2])+3).toFixed(2), sku:`${PREFIX}_${s[1]}`, inventoryPolicy:'CONTINUE' })),
+    files:[{originalSource:IMG, contentType:'IMAGE', alt:title}] };
+  if(DRY){ console.log(`[DRY] PERSONALISIERT: ${title} → ${handle}`); process.exit(0); }
+  const r=await gql(tok,SET,{input}); const e=r?.data?.productSet?.userErrors||[];
+  if(e.length||!r?.data?.productSet?.product){ console.error('✗', JSON.stringify(e.length?e:r).slice(0,300)); process.exit(1); }
+  const pid=r.data.productSet.product.id;
+  if(pubs.length) await gql(tok,PUB,{id:pid,pubs});
+  console.log(`✅ ${title} (${handle}) ACTIVE — Editor-Widget via pod-inject-designer nachziehen.`);
+  process.exit(0);
+}
+
 let made=0, fails=[];
 for(const n of names){
   const url=BASE+n+'.png'; const name=pretty(n); const th=theme(n);
