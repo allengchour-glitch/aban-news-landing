@@ -65,6 +65,12 @@ und mehr Themen". Gebaut auf den vorhandenen Cloudflare-Pages-Functions.
   Pages-Var zum Vorab-Testen. Bis dahin: Seite live, Tools sagen ehrlich „noch nicht aktiv". Kosten: Claude nur
   bei Pro-Nutzung → durch das Abo gedeckt. Offene Kür: ki-werkzeug.html live an `/api/generate` hängen; weitere
   Tools (Content-Planer, E-Mail-Serien, Prompt-Veredler Pro, Markt-Briefing, Übersetzen) als „mehr Themen" geplant.
+- **Ausbau (User „alles autonome und weiter"):** (a) **`ki-werkzeug.html` an Live-KI gehängt** — `AI_ENDPOINT=/api/generate`,
+  schickt `X-Pro-Key` aus localStorage `aban_pro_key`; echte KI nur mit gültiger Pro-Lizenz, sonst Vorlagen-Fallback
+  (free unverändert). (b) **Mehr Pro-Tools** in `generate.js`: neue `kind`s `contentplan`, `emailserie`, `translate`,
+  `prompt` — Content-Plan + E-Mail-Serie sind im Studio-Dropdown „KI-Texte" live (✓), translate/prompt API-fertig
+  (Panel folgt). (c) **Aktivierungs-Anleitung `docs/ABAN-PRO-AKTIVIEREN.md`** (Cloudflare-Key → LS-Pro-Produkt mit
+  license keys → `pay-config.js` → optional `PRO_TEST_KEY` → Kundenablauf + Troubleshooting).
 
 ## 📌 Stand 2026-06-10 (Teil 17) — NEUE „Märkte"-Sektion live (Krypto+Aktien+News+KI, DE/EN)
 User-Bogen: „coole projekt / traiding" → „alles, neue seite bei abannews.com" → „mach autonom" →
