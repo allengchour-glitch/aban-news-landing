@@ -45,11 +45,20 @@ const CAPTIONS = [
   '{label} — premium & bezahlbar. Jetzt mit Code WELCOME10 · 🔗 Link in Bio',
   'Editorial-Look: {label} 👀 Designer-Vibe, fairer Preis · 🔗 Link in Bio',
 ];
-const HASHTAGS = [
-  '#schweizmode #ootdschweiz #sommerkleid #fashionschweiz #luxestyle',
-  '#swissfashion #sommeroutfit #ootd #fashionschweiz #luxestylech',
-  '#sommermode2026 #ootdschweiz #schweizmode #fashiontiktok #luxestyle',
-];
+const _reach='#schweiz #foryou #luxestyle';
+function pickTags(s){
+  s=(s||'').toLowerCase();
+  if(/herren|m\u00e4nner|menswear|\bmen\b/.test(s)) return _reach+' #herrenmode #menstyle';
+  if(/sneaker|slides|sandal|schuh|stiefel|boot|loafer/.test(s)) return _reach+' #sneaker #shoes';
+  if(/kette|ohrring|armreif|armband|\bring\b|schmuck|halskette|anh\u00e4nger|moissanite|zirkonia/.test(s)) return _reach+' #schmuck #jewelry';
+  if(/serum|gua-?sha|creme|roller|beauty|pflege|skincare|maske/.test(s)) return _reach+' #skincare #selfcare';
+  if(/st\u00e4nder|stander|halter|gadget|tech|lampe|deko|vase|kerze|organizer|\bhome\b/.test(s)) return _reach+' #gadget #lifestyle';
+  if(/tasche|\bbag\b|handtasche|crossbody|clutch|rucksack/.test(s)) return _reach+' #handtasche #bag';
+  if(/kleid|\brock\b|dress|skirt|bluse/.test(s)) return _reach+' #sommerkleid #damenmode';
+  if(/blazer|cardigan|hemd|shirt|jacke|mantel|\btop\b|weste|strick|\bset\b|mode/.test(s)) return _reach+' #fashionschweiz #ootdschweiz';
+  if(/sonnenbrille|brille|\bhut\b|\bcap\b|g\u00fcrtel|schal|accessoire/.test(s)) return _reach+' #accessoires #ootdschweiz';
+  return _reach+' #neu #ootdschweiz';
+}
 
 if(!KEY && !DRY){ console.log('Kein GEMINI_API_KEY → No-op. Setze GEMINI_API_KEY (Projekt mit Billing).'); process.exit(0); }
 if(!fs.existsSync(GOOD)){ console.log('good_products.csv fehlt → No-op.'); process.exit(0); }
@@ -111,7 +120,7 @@ for(let k=0;k<queue.length;k++){
     const sizeKb = (fs.statSync(outFile).size/1024)|0;
     console.log(`   ✅ ${outFile} (${sizeKb}kB)`);
     const cap = CAPTIONS[(made)%CAPTIONS.length].replace('{label}', p.label||p.name).replace('{url}', url);
-    const tags = HASHTAGS[(made)%HASHTAGS.length];
+    const tags = pickTags(`${p.name} ${p.label||''}`);
     const pub = `${OUT_BASE}/social/enhanced/${p.name}.jpg`;
     newRows.push([`ki-${p.name}-${today}`, today, pub, `${cap}\n${tags}`, 'instagram,facebook,threads', 'ready', '', '']);
     manifestRows.push([p.name, p.handle, p.label, today]);

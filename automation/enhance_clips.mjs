@@ -43,11 +43,20 @@ const CAPTIONS=[
   'Dein Sommer-Liebling? {label} 🌿 -10% mit WELCOME10 · 30 Tage Rückgabe · 🔗 Link in Bio',
   '{label} — premium & bezahlbar. Jetzt mit Code WELCOME10 · 🔗 Link in Bio',
 ];
-const HASHTAGS=[
-  '#schweizmode #ootdschweiz #sommermode2026 #fashionschweiz #luxestyle',
-  '#swissfashion #sommeroutfit #ootd #fashionschweiz #luxestylech',
-  '#sommermode2026 #ootdschweiz #schweizmode #fashionreels #luxestyle',
-];
+const _reach='#schweiz #foryou #luxestyle';
+function pickTags(s){
+  s=(s||'').toLowerCase();
+  if(/herren|m\u00e4nner|menswear|\bmen\b/.test(s)) return _reach+' #herrenmode #menstyle';
+  if(/sneaker|slides|sandal|schuh|stiefel|boot|loafer/.test(s)) return _reach+' #sneaker #shoes';
+  if(/kette|ohrring|armreif|armband|\bring\b|schmuck|halskette|anh\u00e4nger|moissanite|zirkonia/.test(s)) return _reach+' #schmuck #jewelry';
+  if(/serum|gua-?sha|creme|roller|beauty|pflege|skincare|maske/.test(s)) return _reach+' #skincare #selfcare';
+  if(/st\u00e4nder|stander|halter|gadget|tech|lampe|deko|vase|kerze|organizer|\bhome\b/.test(s)) return _reach+' #gadget #lifestyle';
+  if(/tasche|\bbag\b|handtasche|crossbody|clutch|rucksack/.test(s)) return _reach+' #handtasche #bag';
+  if(/kleid|\brock\b|dress|skirt|bluse/.test(s)) return _reach+' #sommerkleid #damenmode';
+  if(/blazer|cardigan|hemd|shirt|jacke|mantel|\btop\b|weste|strick|\bset\b|mode/.test(s)) return _reach+' #fashionschweiz #ootdschweiz';
+  if(/sonnenbrille|brille|\bhut\b|\bcap\b|g\u00fcrtel|schal|accessoire/.test(s)) return _reach+' #accessoires #ootdschweiz';
+  return _reach+' #neu #ootdschweiz';
+}
 const PROMPT=`Premium editorial fashion photograph for a Swiss boutique. Use the provided product image as the EXACT reference: keep the product 100% identical — same garment/accessory, same colours, same pattern, same cut and details. Do NOT redesign or alter the product in any way. Improve ONLY the lighting, background and mood: soft natural daylight, elegant minimal premium setting, gentle shadows, shallow depth of field, refined luxury-boutique aesthetic, true-to-life colours. IMPORTANT: completely REMOVE any text, watermarks, variant labels or graphic overlays that are on the original image. COMPOSITION: show the full product a little smaller in frame with elegant negative space, well-centred, vertical 9:16, high quality, photorealistic, no added text or logos.`;
 
 function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
@@ -108,7 +117,7 @@ for(let k=0;k<queue.length;k++){
     const kb=(fs.statSync(outPath).size/1024)|0; console.log(`   🎬 ${outPath} (${kb}kB)`);
     const url=p.handle?`${SITE}/products/${p.handle}`:SITE;
     const cap=CAPTIONS[made%CAPTIONS.length].replace('{label}',p.label||p.name).replace('{url}',url);
-    const tags=HASHTAGS[made%HASHTAGS.length];
+    const tags=pickTags(`${p.name} ${p.label||''}`);
     newRows.push([id,today,`${OUT_BASE}/reels/clip-${p.name}.mp4`,`${cap}\n${tags}`,'instagram,facebook,threads','ready','','']);
     made++;
   }catch(e){ console.error('   Fehler:',e.message); }

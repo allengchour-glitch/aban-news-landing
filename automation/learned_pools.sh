@@ -8,8 +8,8 @@
 #  · PREIS in der Caption = Top-Tier (Boho-Midi 796/774, Cardigan 778, Blazer 749, Preis-Anker 793).
 #  · Schwäche: Engagement <1% auf Top-Videos → JEDE Caption braucht Frage-CTA („Welche Farbe? 👇").
 TAGSETS=(
-  "#schweiz #foryou #luxestyle #sommerkleid #fyp"
-  "#ootdschweiz #schweizmode #fashionschweiz #sommerkleid #luxestyle"
+  "#schweiz #foryou #luxestyle #fashionschweiz #fyp"
+  "#ootdschweiz #schweizmode #herrenmode #damenmode #luxestyle"
   "#aestheticroom #premiumlifestyle #swisspremium #schweiz #fyp"
 )
 # Caption-Formel (Update 11.06., IG-Reel-Diagnose): Views kommen (100–174/Reel), aber 0 Engagement →
