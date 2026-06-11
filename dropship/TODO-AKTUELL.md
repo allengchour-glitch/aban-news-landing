@@ -10,9 +10,13 @@
 - [x] **Prodigi-Connector + 5 weitere Workflows** gebaut, getestet (no-op-safe), auf `main`.
 
 ## 🔵 Nur DU (1-Klick)
-- [ ] **🔴 CJ-API-Key ROTIEREN** — `CJ_EMAIL`/`CJ_API_KEY` sind gesetzt, aber der Key ist **ungültig/abgelaufen**
-      (Lauf meldet „CJ Auth fehlgeschlagen"). CJ-Dashboard → Account → API → neuen Key generieren → Secret `CJ_API_KEY`
-      aktualisieren. Danach importiert **`cj-autopilot`** automatisch ~12 echte Produkte/Tag (DE-Copy + QA + ACTIVE).
+- [ ] **🔴 CJ-API-Key ROTIEREN (Blocker für Gadgets/Tech/Männer!)** — `CJ_EMAIL`/`CJ_API_KEY` sind gesetzt, aber der Key ist
+      **ungültig/abgelaufen** (2× bestätigt „CJ Auth fehlgeschlagen"). CJ-Dashboard → Account → Developer/API → neuen Key
+      generieren → GitHub-Secret `CJ_API_KEY` aktualisieren. **Echte Gadgets/Tech/Männer-Produkte gehen NUR über CJ** (POD kann
+      nur Bedrucktes). **Sobald der Key gültig ist, sofort dispatchen** (alles gebaut):
+      - `cj-autopilot` mit `pool=men-tech`, `extra_tags=herren,herren-mode,gadgets`, `max=20` → Männer + Tech
+      - `cj-autopilot` mit `pool=gadgets`, `extra_tags=gadgets,tech`, `max=20` → Gadgets/Elektronik
+      - oder eigene Begriffe via `keywords=` (Format `kw|mustword`). Crons (2×/Tag) laufen dann ebenfalls.
 - [x] **`PRODIGI_API_KEY` gesetzt** ✅ → Prodigi scharf, 10 Schweiz-Poster live.
 - [~] **Spocket = WEGLASSEN** (kostet Abo, nicht nötig — CJ+Printful+Prodigi reichen). Erledigt = kein Spocket.
 - [ ] **Lieferzeit Phase 2 (Customizer, optional):** Theme „Horizon" → PDP → Block hinzufügen „Custom Liquid" →

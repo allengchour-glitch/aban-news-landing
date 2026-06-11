@@ -37,6 +37,12 @@ PAGES = [
                  "RETIREMENT", "Self-employed", "Plan honestly + calculator", "Not investment advice"),
  ("scheinselbststaendigkeit-vermeiden", "SCHEINSELBSTSTAENDIG", "Vermeiden", "Merkmale, Folgen, Schnellcheck", "Keine Rechtsberatung",
                  "BOGUS SELF-EMPLOYMENT", "Avoid it", "Signs, consequences, quick check", "Not legal advice"),
+ ("ki-abo-lohnt-sich", "KI-ABO", "Lohnt sich?", "ChatGPT Plus & Co. ehrlich", "Kosten-Nutzen + Lohnt-sich-Check",
+                 "AI PLAN", "Worth it?", "ChatGPT Plus & co. honestly", "Cost-benefit + worth-it check"),
+ ("notgroschen-aufbauen", "NOTGROSCHEN", "Aufbauen", "Wie viel Puffer, wie schnell", "Mit Rechner - keine Beratung",
+                 "EMERGENCY FUND", "Build it", "How much buffer, how fast", "With calculator - not advice"),
+ ("inflation-einfach-erklaert", "INFLATION", "Einfach erklaert", "Was sie fuers Geld bedeutet", "Kaufkraft-Rechner inklusive",
+                 "INFLATION", "Explained", "What it means for your money", "Purchasing-power calculator"),
 ]
 
 FOOT_DE = "abannews.com  ·  ehrlich, anti-hype, keine Beratung"

@@ -165,8 +165,41 @@ async function geminiEnrich(name, rawDesc) {
   await ensureShopToken();
   if (!SHOP_TOKEN) { console.log('Shopify-Auth fehlgeschlagen (SHOPIFY_ADMIN_TOKEN oder CLIENT_ID/SECRET prüfen).'); process.exit(0); }
 
-  const doy = Math.floor((Date.now() - Date.UTC(new Date().getUTCFullYear(), 0, 0)) / 864e5);
-  const picks = []; for (let i = 0; i < 14; i++) picks.push(POOL[(doy * 3 + i) % POOL.length]);
+  // Eingebaute Themen-Pools (für gezieltes Sourcing via AUTOPILOT_POOL=men-tech | gadgets | …)
+  const POOLS = {
+    'men-tech': [
+      ['mens watch steel', ['watch']], ['mens leather wallet rfid', ['wallet']], ['mens sunglasses polarized', ['sunglasses']],
+      ['mens leather belt', ['belt']], ['mens backpack laptop', ['backpack']], ['mens bracelet steel', ['bracelet']],
+      ['mens necklace steel', ['necklace']], ['beard grooming kit', ['beard']], ['mens beanie hat', ['beanie']],
+      ['wireless earbuds bluetooth', ['earbud']], ['bluetooth speaker portable', ['speaker']], ['power bank fast charging', ['power']],
+      ['wireless charger stand', ['charg']], ['gaming mouse rgb', ['mouse']], ['mechanical keyboard', ['keyboard']],
+      ['led strip lights rgb', ['led']], ['car phone holder', ['holder']], ['smart watch fitness', ['watch']],
+      ['laptop stand aluminum', ['stand']], ['cable organizer desk', ['cable']], ['tactical flashlight led', ['flashlight']],
+      ['massage gun muscle', ['massage']], ['multitool pocket', ['tool']], ['desk organizer wood', ['organizer']],
+    ],
+    'gadgets': [
+      ['wireless earbuds bluetooth', ['earbud']], ['bluetooth speaker', ['speaker']], ['power bank', ['power']],
+      ['wireless charger', ['charg']], ['led strip lights', ['led']], ['smart watch', ['watch']], ['mini drone', ['drone']],
+      ['phone holder car', ['holder']], ['ring light phone', ['light']], ['usb hub', ['usb']], ['portable fan mini', ['fan']],
+      ['projector mini', ['projector']], ['action camera accessory', ['camera']], ['humidifier desk', ['humidifier']],
+    ],
+  };
+  const ENV_KW = (process.env.AUTOPILOT_KEYWORDS || '').split(',').map(s => s.trim()).filter(Boolean);
+  const POOL_NAME = (process.env.AUTOPILOT_POOL || '').trim().toLowerCase();
+  let picks;
+  if (ENV_KW.length) {
+    // "kw|mustword1|mustword2" — must-Wörter optional
+    picks = ENV_KW.map(s => { const [kw, ...m] = s.split('|').map(x => x.trim()); return [kw, m.filter(Boolean)]; });
+    console.log(`Keyword-Override: ${picks.length} eigene Suchbegriffe.`);
+  } else if (POOLS[POOL_NAME]) {
+    picks = POOLS[POOL_NAME].slice();
+    console.log(`Themen-Pool: ${POOL_NAME} (${picks.length} Begriffe).`);
+  } else {
+    const doy = Math.floor((Date.now() - Date.UTC(new Date().getUTCFullYear(), 0, 0)) / 864e5);
+    picks = []; for (let i = 0; i < 14; i++) picks.push(POOL[(doy * 3 + i) % POOL.length]);
+  }
+  // Zusätzliche Tags (z.B. gadgets,tech oder herren) → Produkte landen in den passenden Collections
+  const EXTRA_TAGS = (process.env.AUTOPILOT_TAGS || '').split(',').map(s => s.trim()).filter(Boolean);
 
   const done = [];
   for (const [kw, must] of picks) {
@@ -235,7 +268,7 @@ async function geminiEnrich(name, rawDesc) {
       const html = (g?.html_de
         || `<p><strong>${name.slice(0, 90)}</strong></p><ul><li>✨ Premium-Qualität</li><li>🎨 Mehrere Varianten</li><li>💝 Tolles Geschenk</li><li>🚚 Schneller CH-Versand</li></ul>`)
         + `<p><em>${sizeHint}Versand: ca. 7–14 Tage. 🇨🇭 Gratis-Versand ab CHF 65 · WELCOME10 –10%.</em></p>`;
-      const tags = ['cj-real', 'neu', 'dropship', 'autopilot'].concat(status === 'DRAFT' ? ['autopilot-needs-copy'] : []);
+      const tags = ['cj-real', 'neu', 'dropship', 'autopilot'].concat(EXTRA_TAGS).concat(status === 'DRAFT' ? ['autopilot-needs-copy'] : []);
 
       const variants = vars.map(v => {
         const o = { optionValues: mkOV(v), price: priceCHF(v.cost || d.sellPrice), inventoryItem: { sku: v.sku, tracked: false } };
