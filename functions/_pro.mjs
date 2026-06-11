@@ -18,8 +18,6 @@ export function readProKey(request, body) {
 export async function validateLicense(key, env) {
   key = (key || "").trim();
   if (!key || key.length < 8) return { ok: false, reason: "missing" };
-  // Optionaler Test-/Beta-Schlüssel (Pages-Env PRO_TEST_KEY) — fürs Vorab-Testen.
-  if (env && env.PRO_TEST_KEY && key === env.PRO_TEST_KEY) return { ok: true, reason: "test", status: "active" };
 
   const now = Date.now();
   const c = CACHE.get(key);
