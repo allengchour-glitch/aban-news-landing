@@ -1,0 +1,34 @@
+name: Instagram-Analyse
+
+on:
+  workflow_dispatch:
+    inputs:
+      max:
+        description: 'Wie viele Posts analysieren'
+        type: string
+        default: '40'
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: automation/ig-analyze.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Analyse
+        env:
+          META_GRAPH_VERSION: ${{ secrets.META_GRAPH_VERSION }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          MAX: ${{ github.event.inputs.max || '40' }}
+        run: node automation/ig-analyze.mjs
