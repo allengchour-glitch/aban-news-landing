@@ -202,7 +202,18 @@
     summary: ['', '[Hier deinen langen Text zum Zusammenfassen einfügen]'],
     plan: ['Immobilienmakler', 'mehr Zeit für Kundengespräche gewinnen'],
     contentplan: ['Yoga-Studio', 'neue Einsteiger:innen gewinnen'],
-    emailserie: ['Coaching', 'neue Newsletter-Abonnenten herzlich begrüßen']
+    emailserie: ['Coaching', 'neue Newsletter-Abonnenten herzlich begrüßen'],
+    newsletter: ['Webdesign-Agentur', 'Tipp: schnellere Website ohne Technik-Kauderwelsch'],
+    ad: ['Zahnarztpraxis', 'neue Patient:innen für professionelle Zahnreinigung'],
+    seo: ['Reinigungsfirma', 'Büroreinigung in Bern — Seite soll besser gefunden werden'],
+    slogan: ['Bio-Café', 'regionaler Kaffee, fair und frisch'],
+    landing: ['Online-Kurs', 'Excel-Grundkurs für kleine Betriebe'],
+    script: ['Friseursalon', 'vorher/nachher einer Typveränderung'],
+    press: ['Handwerksbäckerei', 'Eröffnung der zweiten Filiale'],
+    angebot: ['Maler-Betrieb', 'Innenanstrich 3-Zimmer-Wohnung'],
+    review: ['Restaurant', '[Bewertung des Gasts hier einfügen, z. B. „Essen super, Service langsam"]'],
+    anleitung: ['Onlineshop', 'Retoure korrekt bearbeiten'],
+    ideas: ['Fitnessstudio', 'Mitglieder im Winter halten']
   };
   var EX_EN = {
     text: ['Trade business', 'Welcome text for our new website homepage'],
@@ -216,7 +227,18 @@
     summary: ['', '[Paste the long text you want summarized here]'],
     plan: ['Real estate agent', 'free up more time for client conversations'],
     contentplan: ['Yoga studio', 'attract new beginners'],
-    emailserie: ['Coaching', 'warmly welcome new newsletter subscribers']
+    emailserie: ['Coaching', 'warmly welcome new newsletter subscribers'],
+    newsletter: ['Web design agency', 'Tip: a faster website without the tech jargon'],
+    ad: ['Dental practice', 'attract new patients for professional teeth cleaning'],
+    seo: ['Cleaning company', 'office cleaning in Bern — page should rank better'],
+    slogan: ['Organic café', 'regional coffee, fair and fresh'],
+    landing: ['Online course', 'Excel basics course for small businesses'],
+    script: ['Hair salon', 'before/after of a restyle'],
+    press: ['Craft bakery', 'opening of the second location'],
+    angebot: ['Painting business', 'interior painting of a 3-room flat'],
+    review: ['Restaurant', '[Paste the customer review here, e.g. "Great food, slow service"]'],
+    anleitung: ['Online shop', 'process a return correctly'],
+    ideas: ['Gym', 'keep members engaged through winter']
   };
   var geBtn = $('genExample');
   if (geBtn) geBtn.addEventListener('click', function () {
