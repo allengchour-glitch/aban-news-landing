@@ -4,6 +4,25 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-11 (Teil 5) — 3D-Engine + Blender + neue Funnel-Seiten
+- **`js/aban3d.js`** — selbst-gehostete 3D-Engine (Canvas, Vanilla, ~6 KB, KEINE Lib/CDN/Actions).
+  7 Formen via `data-shape`: sphere, torus, helix, wave, galaxy, swarm, **bars** (datengetriebenes
+  3D-Balkendiagramm via `data-values`). Performant: pausiert offscreen + verstecktem Tab,
+  prefers-reduced-motion=Standbild. Einbinden: `<canvas data-aban3d data-shape="...">` + Script.
+  Einzel-Neustart fuer Steuerung: `window.abanBoot3d(canvas)`.
+- **Showcase:** `3d-animation.html` (Galerie aller Formen + Live-Regler). Akzent auf
+  `geld-verdienen-mit-3d-druck.html` (Hero-Torus). **3D-Diagramm thematisch:**
+  `sparplan-statt-trading.html` zeigt die Wertentwicklung als live 3D-Balken aus EIGENEN
+  Eingaben (keine erfundenen Zahlen!). So sollte `bars` immer genutzt werden: nur echte/Nutzer-Daten.
+- **Blender (opt-in):** `blender/render_scene.py` (Cycles CPU, Modi intro/mug) +
+  `.github/workflows/blender-render.yml` (workflow_dispatch, KEIN Cron). Output media/3d/<mode>.mp4/webm,
+  wird auf 3d-animation.html progressiv eingebettet. README in blender/.
+- **Neue Funnel-Seiten (DE+EN):** `angebot-schreiben` (Generator, komplettiert Angebot->Rechnung->Mahnung),
+  `wie-nutze-ich-ki-richtig` (Einsteiger-Guide, breite Suche). Aus Google-Autocomplete (Semrush-Plan fehlt).
+- **⛔ LOOP-LEHRE (wieder passiert!):** Beim Anlegen neuer Pretty-URLs ZWEIMAL `/X -> /X.html` gebaut
+  (Endlosschleife mit Host-Auto-`.html->clean`). NIE `/X -> /X.html`! Aliasse nur mit ANDEREM Basename
+  (/3d-render, /angebot). Pruefung: `python3` über _redirects, `p[0]+'.html'==p[1]` => raus.
+
 ## 2026-06-11 (Teil 4) — SEO/Indexierung + KRITISCHER Redirect-Loop-Fix
 - **🔴 KRITISCH (Hauptursache für „0 Traffic / nicht indexiert"):** `_redirects` enthielt **67 selbst-
   referenzielle Zeilen** `/X → /X.html` (z. B. `/founding → /founding.html`, `/online-tools`, alle Tools,
