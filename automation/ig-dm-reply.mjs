@@ -12,7 +12,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
 const IG_ID = process.env.IG_USER_ID || '';
-const TOK = process.env.IG_ACCESS_TOKEN || process.env.FB_PAGE_ACCESS_TOKEN || process.env.META_ACCESS_TOKEN || '';
+const TOK = process.env.FB_PAGE_ACCESS_TOKEN || process.env.IG_ACCESS_TOKEN || process.env.META_ACCESS_TOKEN || '';
 const DRY = process.env.DRY_RUN === '1';
 const MAXR = Math.max(1, parseInt(process.env.MAX_REPLIES || '10',10)||10);
 if (!IG_ID || !TOK) { console.log('Kein IG-Token → No-op.'); process.exit(0); }
