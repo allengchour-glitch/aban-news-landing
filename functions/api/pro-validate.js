@@ -21,7 +21,7 @@ export async function onRequestPost({ request, env }) {
     if (raw.length > 2048) return json({ valid: false, error: "too_large" }, 413);
     let b; try { b = JSON.parse(raw); } catch { return json({ valid: false, error: "bad_json" }, 400); }
     const res = await validateLicense(b && b.license_key, env);
-    return json({ valid: res.ok, status: res.status || res.reason });
+    return json({ valid: res.ok, status: res.status || res.reason, tier: res.tier || null });
   } catch (e) {
     return json({ valid: false, error: "server" }, 500);
   }

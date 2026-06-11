@@ -45,6 +45,17 @@
       var lock = t.querySelector('[data-lock]'); if (lock) lock.style.display = on ? 'none' : 'block';
     });
     if (on && titleEl) { titleEl.textContent = '✓ ' + T.active; if (subEl) subEl.textContent = T.saved; }
+    if (!on) { var b = $('yearlyBonus'); if (b) b.hidden = true; }
+  }
+
+  // Jahres-Abo schaltet Extras frei (Bonus-Bibliothek + Tier-Anzeige).
+  function applyTier(tier) {
+    var bonus = $('yearlyBonus');
+    if (bonus) bonus.hidden = (tier !== 'yearly');
+    if (tier && statusEl) {
+      var lbl = tier === 'yearly' ? (EN ? 'Yearly ★' : 'Jahr ★') : (EN ? 'Monthly' : 'Monat');
+      statusEl.textContent = '✓ ' + T.active + ' · ' + lbl;
+    }
   }
 
   function validate(k, quiet) {
@@ -58,6 +69,7 @@
       if (d && d.valid) {
         key = k; try { localStorage.setItem(KEY, k); } catch (e) {}
         setUnlocked(true);
+        applyTier(d.tier);
       } else {
         setUnlocked(false);
         if (!quiet && subEl) subEl.textContent = T.invalid;
@@ -174,6 +186,18 @@
         return 'Stand: ' + (d.fetched_at || d.last_updated || '') + '\nGrößte Gewinner:\n' + top.join('\n') + '\nGrößte Verlierer:\n' + bottom.join('\n');
       }).catch(function () { return ''; });
   }
+
+  // Jahres-Bonus: Vorlagen kopieren
+  document.addEventListener('click', function (ev) {
+    var c = ev.target.closest ? ev.target.closest('.tplcopy') : null;
+    if (!c) return;
+    var box = c.parentNode.querySelector('[data-tpl]');
+    var txt = box ? box.textContent : '';
+    if (txt && navigator.clipboard) navigator.clipboard.writeText(txt).then(function () {
+      var o = c.textContent; c.textContent = EN ? 'Copied ✓' : 'Kopiert ✓';
+      setTimeout(function () { c.textContent = o; }, 1500);
+    });
+  });
 
   // Start: gesperrt anzeigen, bis validiert
   setUnlocked(false);

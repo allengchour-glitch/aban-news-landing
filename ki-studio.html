@@ -264,11 +264,30 @@
       <span class="eyebrow">Preis</span>
       <h2>aban Pro — €19/Monat</h2>
       <p class="sub">Enthält alle KI-Studio-Tools, dazu alles aus Premium (werbefreier Newsletter, Archiv, Premium-Briefing). Jederzeit kündbar, faire Nutzung.</p>
+      <p class="sub" style="margin-top:.5rem"><b>Jahres-Abo bekommt mehr:</b> ⭐ 2 Monate gratis · 🚀 höheres Tempo-Limit (mehr KI-Läufe/Minute) · 🎁 Bonus: Prompt-Vorlagen-Bibliothek.</p>
       <div class="pricerow" style="margin-top:1rem">
         <a id="proBuyMonthly2" href="https://abannews.lemonsqueezy.com" class="btn btn--amber">€19 / Monat — jetzt starten</a>
-        <a id="proBuyYearly" href="https://abannews.lemonsqueezy.com" class="btn btn--ghost">€190 / Jahr (2 Monate gratis)</a>
+        <span style="position:relative;display:inline-flex">
+          <a id="proBuyYearly" href="https://abannews.lemonsqueezy.com" class="btn btn--ghost">€190 / Jahr</a>
+          <span style="position:absolute;top:-9px;right:-10px;background:var(--amber);color:#fff;font-size:.64rem;font-weight:800;padding:.12rem .5rem;border-radius:999px;white-space:nowrap;box-shadow:var(--shadow-sm)">★ Bester Wert</span>
+        </span>
       </div>
       <p class="hint" id="proSetupNote" style="margin-top:.8rem">Nach dem Kauf bekommst du deinen Lizenzschlüssel per E-Mail — oben einfügen, fertig.</p>
+    </section>
+
+    <!-- Jahres-Bonus: nur für Jahres-Abo sichtbar (per JS freigeschaltet) -->
+    <section class="sec" id="yearlyBonus" hidden style="padding-top:0">
+      <span class="eyebrow">🎁 Jahres-Bonus · für dich freigeschaltet</span>
+      <h2>Prompt-Vorlagen-Bibliothek</h2>
+      <p class="sub">Erprobte Prompts zum Kopieren — füg sie ins Tool deiner Wahl ein und ersetze die [Platzhalter].</p>
+      <div class="grid3" style="margin-top:1rem">
+        <div class="mini"><b>📧 Kalt-Akquise-Mail</b><p data-tpl style="font-size:.82rem;color:var(--ink2)">Schreibe eine kurze, ehrliche Kalt-E-Mail an [Zielkunde] in der Branche [Branche]. Genau ein konkreter Nutzen, kein Hype, klare Handlungsaufforderung, max. 90 Wörter, mit Betreffzeile.</p><button type="button" class="btn btn--ghost btn--sm tplcopy">Kopieren</button></div>
+        <div class="mini"><b>📝 LinkedIn-Experten-Tipp</b><p data-tpl style="font-size:.82rem;color:var(--ink2)">Schreibe einen LinkedIn-Post als [Beruf]: ein praktischer Tipp zu [Thema], den die meisten falsch machen. Hook in Zeile 1, 3 kurze Absätze, ehrlich, kein Buzzword, eine Frage am Ende.</p><button type="button" class="btn btn--ghost btn--sm tplcopy">Kopieren</button></div>
+        <div class="mini"><b>🗓️ Wochen-Content-Plan</b><p data-tpl style="font-size:.82rem;color:var(--ink2)">Erstelle einen 5-Tage-Content-Plan für [Branche], Zielgruppe [Zielgruppe]. Pro Tag: Plattform, Hook, Kernaussage in einem Satz. Abwechslungsreich, anti-hype, ohne erfundene Zahlen.</p><button type="button" class="btn btn--ghost btn--sm tplcopy">Kopieren</button></div>
+        <div class="mini"><b>💬 Angebot nachfassen</b><p data-tpl style="font-size:.82rem;color:var(--ink2)">Schreibe eine freundliche Nachfass-E-Mail zu meinem Angebot an [Kunde] über [Leistung]. Kein Druck, ein klarer nächster Schritt, max. 80 Wörter, mit Betreff.</p><button type="button" class="btn btn--ghost btn--sm tplcopy">Kopieren</button></div>
+        <div class="mini"><b>⭐ Bewertung beantworten</b><p data-tpl style="font-size:.82rem;color:var(--ink2)">Formuliere eine professionelle, warme Antwort auf diese Google-Bewertung: „[Bewertungstext]". Bei Kritik: ernst nehmen, Lösung anbieten, ohne defensiv zu wirken. Max. 70 Wörter.</p><button type="button" class="btn btn--ghost btn--sm tplcopy">Kopieren</button></div>
+        <div class="mini"><b>🧭 KI-Fahrplan</b><p data-tpl style="font-size:.82rem;color:var(--ink2)">Erstelle einen ehrlichen 4-Wochen-KI-Fahrplan für [Branche], Team [Größe], [Stunden]/Woche Zeit. 3 schnelle Hebel mit erstem Schritt + 1 Sache, die man NICHT automatisieren sollte.</p><button type="button" class="btn btn--ghost btn--sm tplcopy">Kopieren</button></div>
+      </div>
     </section>
 
     <!-- FAQ -->
