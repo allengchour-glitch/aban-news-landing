@@ -60,7 +60,6 @@ jobs:
           BROWSERBASE_API_KEY: ${{ secrets.BROWSERBASE_API_KEY }}
           BROWSERBASE_PROJECT_ID: ${{ secrets.BROWSERBASE_PROJECT_ID }}
           BROWSERBASE_CONTEXT_ID: ${{ secrets.BROWSERBASE_CONTEXT_ID }}
-        env:
           ARG2: ${{ github.event.inputs.arg2 }}
         run: |
           cd tools/browser
