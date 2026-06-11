@@ -1,10 +1,9 @@
 # aban Pro / KI-Studio scharfschalten — Schritt für Schritt
 
 Das **KI-Studio** (`/ki-studio.html`) ist gebaut und live, aber die Live-KI-Tools sind erst aktiv,
-wenn **du** 2 Dinge einrichtest (Schritt 3 ist optional fürs Vorab-Testen). Bis dahin zeigt die Seite
-ehrlich „Pro-KI noch nicht aktiv".
+wenn **du** 2 Dinge einrichtest (Schritt 1 + 2). Bis dahin zeigt die Seite ehrlich „Pro-KI noch nicht aktiv".
 
-Reihenfolge: **1 → 2 → (3) → 4**. Dauer ~20–30 Min.
+Reihenfolge: **1 → 2** (Schritt 3 = wie es für Kunden läuft). Dauer ~20–30 Min.
 
 ---
 
@@ -49,30 +48,23 @@ Die Tools werden per **Lizenzschlüssel** freigeschaltet (kein Login nötig).
 
 ---
 
-## 3) (Optional) Selbst testen, bevor das Produkt online ist
-
-Damit du die Tools vorab ausprobieren kannst, ohne zu kaufen:
-
-1. Cloudflare → Pages-Variables → **`PRO_TEST_KEY`** (Plaintext) = ein beliebiges Geheimwort, z. B. `aban-test-2026`.
-2. Auf `/ki-studio.html` oben dieses Wort als „Pro-Schlüssel" einfügen → Tools schalten frei.
-3. Vor dem echten Launch `PRO_TEST_KEY` wieder löschen.
-
----
-
-## 4) Kunden-Ablauf (so funktioniert's dann)
+## 3) Kunden-Ablauf (so funktioniert's dann)
 
 1. Kunde kauft auf `/ki-studio.html` → Lemon-Squeezy-Checkout.
 2. Erhält den **Lizenzschlüssel** per E-Mail (LS schickt ihn automatisch).
 3. Fügt ihn im KI-Studio oben ein → **freigeschaltet** (Schlüssel bleibt nur in seinem Browser).
-4. Nutzt die 4 Tools (Frag-aban Pro, KI-Texte & Fahrpläne, Hype-Umschreiber unbegrenzt, KI-Sichtbarkeits-Check)
-   und das aktivierte `ki-werkzeug.html` (Texte mit echter KI).
+4. Nutzt die 7 Tools (Frag-aban Pro, KI-Texte & Fahrpläne, Hype-Umschreiber unbegrenzt, KI-Sichtbarkeits-Check,
+   Übersetzen, Prompt-Veredler, Markt-Briefing) und das aktivierte `ki-werkzeug.html` (Texte mit echter KI).
+
+> Zum Selbst-Prüfen vor dem Launch: einfach einen echten Lizenzschlüssel aus deinem eigenen (Test-)Kauf
+> in Lemon Squeezy nehmen — ein separater Test-Schlüssel/Backdoor existiert bewusst **nicht**.
 
 ---
 
 ## Was schon erledigt ist (Code, im Repo)
 
 - Seiten `ki-studio.html` + `en/ki-studio.html`, Frontend `js/ki-studio.js`.
-- Edge: `functions/_pro.mjs` (Lizenz-Validierung, Cache, `PRO_TEST_KEY`), `api/pro-validate.js`,
+- Edge: `functions/_pro.mjs` (Lizenz-Validierung, Cache), `api/pro-validate.js`,
   `api/generate.js` (Texte/E-Mail/Fahrplan/Content-Plan/E-Mail-Serie/Übersetzen/Prompt).
 - Pro-Gating in `api/hype-check.js` (Claude-Umschreibung) + `api/ki-erwaehnung.js` (KI-Check).
   Die **kostenlosen** Tools bleiben unverändert.

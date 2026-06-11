@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing better AI prompts — 7 basics for beginners (+ check) | aban news</title>
+<meta name="description" content="Better prompts for ChatGPT, Claude & co.: the 7 basics that instantly get you better answers — beginner-friendly, with a prompt quality check. No prompt-magic promises.">
+<link rel="canonical" href="https://abannews.com/en/bessere-prompts.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/bessere-prompts.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/bessere-prompts.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Writing better AI prompts — 7 basics for beginners">
+<meta property="og:description" content="The 7 basics for better AI answers + a prompt quality check. No prompt-magic promises.">
+<meta property="og:url" content="https://abannews.com/en/bessere-prompts.html">
+<meta property="og:image" content="https://abannews.com/img/og/bessere-prompts-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://abannews.com/img/og/bessere-prompts-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I write a good AI prompt?","acceptedAnswer":{"@type":"Answer","text":"Give the AI a role, clear context, a concrete goal and the desired format. An example and clear limits help too. The more precise your instruction, the better the answer — prompting is a craft, not magic."}},
+{"@type":"Question","name":"What's the most common prompting mistake?","acceptedAnswer":{"@type":"Answer","text":"Being too vague. 'Write something about marketing' gives mediocrity. Instead say for whom, in what format, how long and with what goal. Context beats magic words."}},
+{"@type":"Question","name":"Are there secret prompts that make everything better?","acceptedAnswer":{"@type":"Answer","text":"No. Anyone selling expensive 'magic' prompt packs is mostly selling hype. The basics are public and free — the rest is trying and adjusting."}}
+]}
+</script>
+<style>
+  :root{--amber-dk:#b45309;--accent:#d97706;--bg:#fffbf5;--field:#fffdf9;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+  a{color:var(--amber-dk)}
+  header{border-bottom:1px solid var(--line);background:#fff}
+  header .wrap{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:14px 20px}
+  .brand{display:flex;align-items:center;gap:.5rem;font-weight:800;text-decoration:none;color:var(--ink)}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
+  .hnav{margin-left:auto;display:flex;align-items:center;gap:1.1rem;font-size:.92rem;flex-wrap:wrap}
+  .hnav a{color:var(--muted);text-decoration:none}
+  .btn{background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;border-radius:8px;font-size:.9rem}
+  main{max-width:760px;margin:0 auto;padding:0 20px}
+  h1{font-size:2rem;line-height:1.2;margin:34px 0 10px}
+  .lead{font-size:1.12rem;color:var(--ink2)}
+  .note{background:var(--field);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:14px 16px;margin:22px 0;color:var(--ink2);font-size:.96rem}
+  h2{font-size:1.35rem;margin:34px 0 6px}
+  p{color:var(--ink2)}
+  .tip{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0;background:#fff}
+  .tip h3{margin:0 0 6px;font-size:1.12rem}
+  .n{display:inline-block;min-width:1.6rem;color:var(--amber-dk);font-weight:800}
+  .tip p{margin:.3rem 0 0}
+  details{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:#fff}
+  summary{font-weight:700;cursor:pointer}
+  .premium{background:linear-gradient(180deg,#fff7ed,#fffbf5);border:1px solid #f6d9ad;border-radius:14px;padding:22px;margin:30px 0}
+  footer{border-top:1px solid var(--line);margin-top:40px;background:#fff}
+  footer .wrap{max-width:980px;margin:0 auto;padding:18px 20px;color:var(--muted);font-size:.88rem;display:flex;gap:14px;flex-wrap:wrap}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a href="/en/" class="brand"><span class="dot"></span> aban news</a>
+    <nav class="hnav" aria-label="Navigation">
+      <a href="/online-tools.html">Tools</a>
+      <a href="/en/founding.html">Premium</a>
+      <a href="https://abannews.beehiiv.com" target="_blank" rel="noopener" title="Already premium? Sign in via magic link">Pro login</a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Subscribe free</a>
+      <span style="font-size:.85rem"><a href="/bessere-prompts.html" hreflang="de">DE</a></span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <h1>Writing better AI prompts</h1>
+  <p class="lead">The same AI delivers gold one minute, mediocrity the next — the difference is almost always the prompt. Here are the 7 basics that instantly get better answers out of ChatGPT, Claude &amp; co. Beginner-friendly, no "magic" words.</p>
+
+  <div class="note">💡 <strong>Up front:</strong> prompting is a craft, not magic. Nobody needs expensive "secret prompt packs" — the basics are free, the rest is trying things out.</div>
+
+  <h2>The 7 basics</h2>
+  <div class="tip"><h3><span class="n">1.</span> Give the AI a role</h3><p>"You are an experienced tax advisor …" sets the answer to the right level. The role steers tone, depth and perspective.</p></div>
+  <div class="tip"><h3><span class="n">2.</span> Provide context &amp; goal</h3><p>For whom? Why? What happens next? "Write something about marketing" stays mediocre; "Write 3 subject lines for my newsletter to solo freelancers, goal: more opens" gets concrete.</p></div>
+  <div class="tip"><h3><span class="n">3.</span> State the format</h3><p>List, table, 5 sentences, bullet points, JSON? If you don't specify the format, the AI guesses — usually wrong.</p></div>
+  <div class="tip"><h3><span class="n">4.</span> Give an example</h3><p>A short example of the desired output works wonders. "Roughly like this: …" is the fastest shortcut to good results.</p></div>
+  <div class="tip"><h3><span class="n">5.</span> Set limits</h3><p>What should NOT happen? "No emojis, no marketing speak, max 120 words." Limits are often more important than wishes.</p></div>
+  <div class="tip"><h3><span class="n">6.</span> Work in steps</h3><p>Instead of all at once: outline first, then draft, then polish. You can steer at any point — prompting is a conversation, not a button press.</p></div>
+  <div class="tip"><h3><span class="n">7.</span> Check &amp; improve</h3><p>Don't like the answer? Say exactly what's missing ("too general, make it concrete with an example"). The second attempt is almost always better.</p></div>
+
+  <section aria-label="Prompt check" style="border:1px solid var(--line);border-radius:14px;padding:20px;margin:26px 0;background:#fff">
+    <h2 style="margin-top:0">Prompt quality check</h2>
+    <p style="margin:.2rem 0 1rem">Tick what your prompt already includes. Runs in your browser, nothing is stored.</p>
+    <div id="pq-list" style="font-size:.96rem">
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="1" style="margin-top:5px"><span>A <strong>role</strong> for the AI</span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="2" style="margin-top:5px"><span><strong>Context &amp; goal</strong> (for whom, why)</span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="2" style="margin-top:5px"><span>The desired <strong>format</strong></span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="1" style="margin-top:5px"><span>An <strong>example</strong> of the output</span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="2" style="margin-top:5px"><span><strong>Limits</strong> (length, tone, what not)</span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="1" style="margin-top:5px"><span>Concrete <strong>wording</strong> instead of "write something"</span></label>
+    </div>
+    <div id="pq-out" style="margin-top:14px;border-radius:10px;padding:14px 16px;font-weight:600;background:#f1f5f9;color:#475569">Nothing ticked yet.</div>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:10px">More checks = a more precise prompt = a better answer. Ready-made scaffolds: <a href="/prompt-baukasten.html">Prompt builder</a> · <a href="/ki-prompt-checker.html">Prompt improver</a>.</p>
+    <script>
+    (function(){
+      var root=document.getElementById('pq-list'),out=document.getElementById('pq-out');
+      function calc(){
+        var s=0,max=0;root.querySelectorAll('input[type=checkbox]').forEach(function(c){var w=+c.dataset.w||1;max+=w;if(c.checked)s+=w;});
+        var pct=max?s/max:0,bg,fg,msg;
+        if(s===0){bg='#f1f5f9';fg='#475569';msg='Nothing ticked yet — tick what your prompt includes.';}
+        else if(pct<0.4){bg='#fee2e2';fg='#991b1b';msg='Still vague — add context, goal and format, and the answer gets much better.';}
+        else if(pct<0.75){bg='#fef9c3';fg='#854d0e';msg='Solid — an example and clear limits take it to the next level.';}
+        else{bg='#dcfce7';fg='#166534';msg='Strong prompt — precise and complete. This reliably gets good answers.';}
+        out.style.background=bg;out.style.color=fg;out.textContent=msg;
+      }
+      root.addEventListener('change',calc);calc();
+    })();
+    </script>
+  </section>
+
+  <section data-aban-signup style="max-width:760px;margin:30px auto;padding:20px;border:1px solid #ece3d4;border-radius:14px;background:#fff;text-align:center">
+    <h2 style="margin:0 0 6px;font-size:1.25rem">One AI tip a day, in 5 minutes</h2>
+    <p style="margin:0 0 12px;color:#374151">Honest, anti-hype, free. Mon&ndash;Fri, unsubscribe anytime. (Newsletter in German.)</p>
+    <form action="https://abannews.beehiiv.com/subscribe" method="get" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:460px;margin:0 auto">
+      <input type="email" name="email" required placeholder="you@email.com" autocomplete="email" inputmode="email" aria-label="Email address" style="flex:1;min-width:200px;padding:11px 14px;border:1px solid #ece3d4;border-radius:10px;font-size:1rem">
+      <button type="submit" style="background:#b45309;color:#fff;border:0;border-radius:10px;padding:11px 20px;font-weight:700;font-size:1rem;cursor:pointer">Subscribe free</button>
+    </form>
+  </section>
+
+  <div class="premium">
+    <h2 style="margin-top:0">Tested prompts &amp; tools — daily</h2>
+    <p style="margin:.3rem 0 1rem"><strong>aban news</strong> delivers copy-ready prompts and honest tool tests — no hype. In 5 minutes a day. (The daily newsletter is in German.)</p>
+    <p style="margin:0 0 1rem"><strong>Founding member</strong> (€69 once, lifetime) or try premium free — ad-free, full archive, a direct line.</p>
+    <a href="/en/founding.html" class="btn">See premium — €69 lifetime →</a>
+    &nbsp; <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="font-weight:600">Try it free first →</a>
+  </div>
+
+  <h2>Common questions</h2>
+  <details><summary>How do I write a good AI prompt?</summary><p>Give the AI a role, clear context, a concrete goal and the desired format. An example and clear limits help too. The more precise your instruction, the better the answer — prompting is a craft, not magic.</p></details>
+  <details><summary>What's the most common prompting mistake?</summary><p>Being too vague. "Write something about marketing" gives mediocrity. Instead say for whom, in what format, how long and with what goal. Context beats magic words.</p></details>
+  <details><summary>Are there secret prompts that make everything better?</summary><p>No. Anyone selling expensive "magic" prompt packs is mostly selling hype. The basics are public and free — the rest is trying and adjusting.</p></details>
+
+  <p style="margin:24px 0 0">Related: <a href="/prompt-baukasten.html">Prompt builder</a> · <a href="/ki-prompt-checker.html">Prompt improver</a> · <a href="/welche-ki-fuer-was.html">Which AI for what?</a></p>
+
+  <p style="color:var(--muted);font-size:.85rem;margin:24px 0 0">aban news is independent and uses no affiliate tracking. All content is for general information.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour · Belp (CH)</span>
+    <a href="/online-tools.html">Tools</a>
+    <a href="/en/founding.html">Premium</a>
+    <a href="/impressum.html">Imprint</a>
+    <a href="/datenschutz.html">Privacy</a>
+  </div>
+</footer>
+</body>
+</html>

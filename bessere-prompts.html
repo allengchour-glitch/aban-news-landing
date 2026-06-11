@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bessere KI-Prompts schreiben — 7 Grundregeln für Einsteiger (+ Check) | aban news</title>
+<meta name="description" content="Bessere Prompts für ChatGPT, Claude & Co.: die 7 Grundregeln, mit denen du sofort bessere Antworten bekommst — anfängerfreundlich erklärt, mit Prompt-Qualitäts-Check. Ohne Prompt-Magie-Versprechen.">
+<link rel="canonical" href="https://abannews.com/bessere-prompts.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/bessere-prompts.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/bessere-prompts.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bessere KI-Prompts schreiben — 7 Grundregeln für Einsteiger">
+<meta property="og:description" content="Die 7 Grundregeln für bessere KI-Antworten + Prompt-Qualitäts-Check. Ohne Prompt-Magie-Versprechen.">
+<meta property="og:url" content="https://abannews.com/bessere-prompts.html">
+<meta property="og:image" content="https://abannews.com/img/og/bessere-prompts.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://abannews.com/img/og/bessere-prompts.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie schreibe ich einen guten KI-Prompt?","acceptedAnswer":{"@type":"Answer","text":"Gib der KI eine Rolle, klaren Kontext, ein konkretes Ziel und das gewuenschte Format. Ein Beispiel und klare Grenzen helfen zusaetzlich. Je praeziser deine Anweisung, desto besser die Antwort — Prompten ist Handwerk, keine Magie."}},
+{"@type":"Question","name":"Was ist der haeufigste Fehler beim Prompten?","acceptedAnswer":{"@type":"Answer","text":"Zu vage zu sein. 'Schreib mir was ueber Marketing' liefert Mittelmass. Sag stattdessen, fuer wen, in welchem Format, wie lang und mit welchem Ziel. Kontext schlaegt Zauberwort."}},
+{"@type":"Question","name":"Gibt es Geheim-Prompts, die alles besser machen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Wer 'magische' Prompt-Pakete fuer viel Geld verkauft, verkauft meist Hype. Die Grundregeln sind oeffentlich und kostenlos — der Rest ist Ausprobieren und Anpassen."}}
+]}
+</script>
+<style>
+  :root{--amber-dk:#b45309;--accent:#d97706;--bg:#fffbf5;--field:#fffdf9;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+  a{color:var(--amber-dk)}
+  header{border-bottom:1px solid var(--line);background:#fff}
+  header .wrap{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:14px 20px}
+  .brand{display:flex;align-items:center;gap:.5rem;font-weight:800;text-decoration:none;color:var(--ink)}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
+  .hnav{margin-left:auto;display:flex;align-items:center;gap:1.1rem;font-size:.92rem;flex-wrap:wrap}
+  .hnav a{color:var(--muted);text-decoration:none}
+  .btn{background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;border-radius:8px;font-size:.9rem}
+  main{max-width:760px;margin:0 auto;padding:0 20px}
+  h1{font-size:2rem;line-height:1.2;margin:34px 0 10px}
+  .lead{font-size:1.12rem;color:var(--ink2)}
+  .note{background:var(--field);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:14px 16px;margin:22px 0;color:var(--ink2);font-size:.96rem}
+  h2{font-size:1.35rem;margin:34px 0 6px}
+  p{color:var(--ink2)}
+  .tip{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0;background:#fff}
+  .tip h3{margin:0 0 6px;font-size:1.12rem}
+  .n{display:inline-block;min-width:1.6rem;color:var(--amber-dk);font-weight:800}
+  .tip p{margin:.3rem 0 0}
+  details{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:#fff}
+  summary{font-weight:700;cursor:pointer}
+  .premium{background:linear-gradient(180deg,#fff7ed,#fffbf5);border:1px solid #f6d9ad;border-radius:14px;padding:22px;margin:30px 0}
+  footer{border-top:1px solid var(--line);margin-top:40px;background:#fff}
+  footer .wrap{max-width:980px;margin:0 auto;padding:18px 20px;color:var(--muted);font-size:.88rem;display:flex;gap:14px;flex-wrap:wrap}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a href="/" class="brand"><span class="dot"></span> aban news</a>
+    <nav class="hnav" aria-label="Navigation">
+      <a href="/prompt-baukasten.html">Prompt-Baukasten</a>
+      <a href="/online-tools.html">Tools</a>
+      <a href="/founding.html">Premium</a>
+      <a href="https://abannews.beehiiv.com" target="_blank" rel="noopener" title="Schon Premium? Anmelden per Magic-Link">Pro-Login</a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Gratis abonnieren</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <h1>Bessere KI-Prompts schreiben</h1>
+  <p class="lead">Die gleiche KI liefert mal Gold, mal Mittelmaß — der Unterschied liegt fast immer am Prompt. Hier kommen die 7 Grundregeln, mit denen du ChatGPT, Claude &amp; Co. sofort bessere Antworten entlockst. Anfängerfreundlich, ohne „magische" Zauberwörter.</p>
+
+  <div class="note">💡 <strong>Kurz vorweg:</strong> Prompten ist Handwerk, keine Magie. Niemand braucht teure „Geheim-Prompt-Pakete" — die Grundlagen sind kostenlos, der Rest ist Ausprobieren.</div>
+
+  <h2>Die 7 Grundregeln</h2>
+  <div class="tip"><h3><span class="n">1.</span> Gib der KI eine Rolle</h3><p>„Du bist eine erfahrene Steuerberaterin …" stellt die Antwort auf das richtige Niveau. Die Rolle steuert Ton, Tiefe und Perspektive.</p></div>
+  <div class="tip"><h3><span class="n">2.</span> Liefere Kontext &amp; Ziel</h3><p>Für wen? Wozu? Was soll danach passieren? „Schreib was über Marketing" wird mittelmäßig; „Schreib 3 Betreffzeilen für meinen Newsletter an Solo-Selbstständige, Ziel: mehr Öffnungen" wird konkret.</p></div>
+  <div class="tip"><h3><span class="n">3.</span> Sag das Format</h3><p>Liste, Tabelle, 5 Sätze, Stichpunkte, JSON? Wenn du das Format nicht vorgibst, rät die KI — meist falsch.</p></div>
+  <div class="tip"><h3><span class="n">4.</span> Gib ein Beispiel</h3><p>Ein kurzes Beispiel der gewünschten Ausgabe wirkt Wunder. „So in etwa: …" ist die schnellste Abkürzung zu guten Ergebnissen.</p></div>
+  <div class="tip"><h3><span class="n">5.</span> Setze Grenzen</h3><p>Was soll NICHT passieren? „Keine Emojis, kein Marketing-Sprech, maximal 120 Wörter." Grenzen sind oft wichtiger als Wünsche.</p></div>
+  <div class="tip"><h3><span class="n">6.</span> Arbeite in Schritten</h3><p>Statt alles auf einmal: erst Gliederung, dann Ausarbeitung, dann Feinschliff. Du kannst jederzeit nachsteuern — Prompten ist ein Gespräch, kein Knopfdruck.</p></div>
+  <div class="tip"><h3><span class="n">7.</span> Prüfe &amp; verbessere</h3><p>Gefällt die Antwort nicht? Sag konkret, was fehlt („zu allgemein, mach es konkreter mit einem Beispiel"). Der zweite Versuch ist fast immer besser.</p></div>
+
+  <section aria-label="Prompt-Check" style="border:1px solid var(--line);border-radius:14px;padding:20px;margin:26px 0;background:#fff">
+    <h2 style="margin-top:0">Prompt-Qualitäts-Check</h2>
+    <p style="margin:.2rem 0 1rem">Hak ab, was dein Prompt schon enthält. Rechnet im Browser, nichts wird gespeichert.</p>
+    <div id="pq-list" style="font-size:.96rem">
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="1" style="margin-top:5px"><span>Eine <strong>Rolle</strong> für die KI</span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="2" style="margin-top:5px"><span><strong>Kontext &amp; Ziel</strong> (für wen, wozu)</span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="2" style="margin-top:5px"><span>Das gewünschte <strong>Format</strong></span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="1" style="margin-top:5px"><span>Ein <strong>Beispiel</strong> der Ausgabe</span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="2" style="margin-top:5px"><span><strong>Grenzen/Tabus</strong> (Länge, Ton, was nicht)</span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="1" style="margin-top:5px"><span>Konkrete <strong>Sprache</strong> statt „schreib was"</span></label>
+    </div>
+    <div id="pq-out" style="margin-top:14px;border-radius:10px;padding:14px 16px;font-weight:600;background:#f1f5f9;color:#475569">Noch nichts angehakt.</div>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:10px">Mehr Häkchen = präziserer Prompt = bessere Antwort. Fertige Gerüste: <a href="/prompt-baukasten.html">Prompt-Baukasten</a> · <a href="/ki-prompt-checker.html">Prompt-Verbesserer</a>.</p>
+    <script>
+    (function(){
+      var root=document.getElementById('pq-list'),out=document.getElementById('pq-out');
+      function calc(){
+        var s=0,max=0;root.querySelectorAll('input[type=checkbox]').forEach(function(c){var w=+c.dataset.w||1;max+=w;if(c.checked)s+=w;});
+        var pct=max?s/max:0,bg,fg,msg;
+        if(s===0){bg='#f1f5f9';fg='#475569';msg='Noch nichts angehakt — hak ab, was dein Prompt enthält.';}
+        else if(pct<0.4){bg='#fee2e2';fg='#991b1b';msg='Noch vage — ergänze Kontext, Ziel und Format, dann wird die Antwort deutlich besser.';}
+        else if(pct<0.75){bg='#fef9c3';fg='#854d0e';msg='Solide — ein Beispiel und klare Grenzen heben es aufs nächste Level.';}
+        else{bg='#dcfce7';fg='#166534';msg='Starker Prompt — präzise und vollständig. So bekommst du verlässlich gute Antworten.';}
+        out.style.background=bg;out.style.color=fg;out.textContent=msg;
+      }
+      root.addEventListener('change',calc);calc();
+    })();
+    </script>
+  </section>
+
+  <section data-aban-signup style="max-width:760px;margin:30px auto;padding:20px;border:1px solid #ece3d4;border-radius:14px;background:#fff;text-align:center">
+    <h2 style="margin:0 0 6px;font-size:1.25rem">Ein KI-Tipp pro Tag, in 5 Minuten</h2>
+    <p style="margin:0 0 12px;color:#374151">Ehrlich, anti-hype, gratis. Mo&ndash;Fr, jederzeit abbestellbar.</p>
+    <form action="https://abannews.beehiiv.com/subscribe" method="get" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:460px;margin:0 auto">
+      <input type="email" name="email" required placeholder="deine@mail.de" autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse" style="flex:1;min-width:200px;padding:11px 14px;border:1px solid #ece3d4;border-radius:10px;font-size:1rem">
+      <button type="submit" style="background:#b45309;color:#fff;border:0;border-radius:10px;padding:11px 20px;font-weight:700;font-size:1rem;cursor:pointer">Gratis abonnieren</button>
+    </form>
+  </section>
+
+  <div class="premium">
+    <h2 style="margin-top:0">Erprobte Prompts &amp; Werkzeuge — täglich</h2>
+    <p style="margin:.3rem 0 1rem"><strong>aban news</strong> liefert kopierfertige Prompts und ehrliche Tool-Tests — ohne Hype. In 5 Minuten am Tag, auf Deutsch.</p>
+    <p style="margin:0 0 1rem"><strong>Founding-Mitglied</strong> (€69 einmal, lifetime) oder Premium gratis testen — werbefrei, volles Archiv, direkter Draht.</p>
+    <a href="/founding.html" class="btn">Premium ansehen — €69 lifetime →</a>
+    &nbsp; <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="font-weight:600">Erst gratis testen →</a>
+  </div>
+
+  <h2>Häufige Fragen</h2>
+  <details><summary>Wie schreibe ich einen guten KI-Prompt?</summary><p>Gib der KI eine Rolle, klaren Kontext, ein konkretes Ziel und das gewünschte Format. Ein Beispiel und klare Grenzen helfen zusätzlich. Je präziser deine Anweisung, desto besser die Antwort — Prompten ist Handwerk, keine Magie.</p></details>
+  <details><summary>Was ist der häufigste Fehler beim Prompten?</summary><p>Zu vage zu sein. „Schreib mir was über Marketing" liefert Mittelmaß. Sag stattdessen, für wen, in welchem Format, wie lang und mit welchem Ziel. Kontext schlägt Zauberwort.</p></details>
+  <details><summary>Gibt es Geheim-Prompts, die alles besser machen?</summary><p>Nein. Wer „magische" Prompt-Pakete für viel Geld verkauft, verkauft meist Hype. Die Grundregeln sind öffentlich und kostenlos — der Rest ist Ausprobieren und Anpassen.</p></details>
+
+  <p style="margin:24px 0 0">Verwandt: <a href="/prompt-baukasten.html">Prompt-Baukasten</a> · <a href="/ki-prompt-checker.html">Prompt-Verbesserer</a> · <a href="/welche-ki-fuer-was.html">Welche KI für was?</a> · <a href="/online-tools.html">Alle Tools</a></p>
+
+  <p style="color:var(--muted);font-size:.85rem;margin:24px 0 0">aban news ist unabhängig und nutzt kein Affiliate-Tracking. Alle Inhalte dienen der allgemeinen Information.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour · Belp (CH)</span>
+    <a href="/prompt-baukasten.html">Prompt-Baukasten</a>
+    <a href="/online-tools.html">Tools</a>
+    <a href="/founding.html">Premium</a>
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+  </div>
+</footer>
+</body>
+</html>
