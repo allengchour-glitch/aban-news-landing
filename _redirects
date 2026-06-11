@@ -320,3 +320,8 @@
 /audit               /ki-sichtbarkeit-audit.html  301
 /ki-audit            /ki-sichtbarkeit-audit.html  301
 /sichtbarkeit-audit  /ki-sichtbarkeit-audit.html  301
+
+/mahnung          /mahnung-schreiben.html 301
+/mahnung-schreiben /mahnung-schreiben.html 301
+/en/payment-reminder /en/mahnung-schreiben.html 301
+/en/reminder      /en/mahnung-schreiben.html 301

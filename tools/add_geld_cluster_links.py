@@ -29,6 +29,7 @@ LINKS = [
     ("/steuer-basics-selbststaendige.html", "Steuer-Basics"),
     ("/kleinunternehmerregelung-einfach-erklaert.html", "Kleinunternehmerregelung"),
     ("/rechnung-generator.html", "Rechnung schreiben"),
+    ("/mahnung-schreiben.html", "Mahnung schreiben"),
     ("/altersvorsorge-selbststaendige.html", "Altersvorsorge"),
     ("/scheinselbststaendigkeit-vermeiden.html", "Scheinselbstständigkeit"),
 ]
