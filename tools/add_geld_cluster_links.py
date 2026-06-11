@@ -21,6 +21,7 @@ HUBS = ["finanzberater", "steuerberater", "immobilienmakler",
 
 # (URL, Label) — ehrliches Geld-&-KI-Cluster, fuer Finanz-Profis und ihre Kund:innen relevant
 LINKS = [
+    ("/geld-und-ki.html", "Geld &amp; KI — Übersicht"),
     ("/maerkte.html", "Märkte: Aktien &amp; Krypto"),
     ("/ki-aktien-hype-check.html", "KI-Aktien Hype-Check"),
     ("/trading-tipps.html", "Trading-Tipps (ehrlich)"),
