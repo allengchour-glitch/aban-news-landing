@@ -4,6 +4,23 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-11 (Teil 6) — Kund:innen-Hilfe maximiert (User: „unterstütze Kunden, kennen die Wörter nicht")
+- **User-Leitlinie:** die meisten Nutzer:innen sind blutige Anfänger:innen und kennen die Fachwörter nicht
+  → überall **Klartext**, jedes Fachwort direkt erklären, Beispiele, viel Hand-Holding.
+- **`ki-werkzeug.html` + `en/ki-werkzeug.html` (PRs #695/#699):** „Noch nie KI benutzt?\"-Box mit
+  durchgespieltem Bäckerei-Beispiel (Eingabe→fertiger Text) vor dem Werkzeug; Mini-Lexikon „Wörter einfach
+  erklärt\" (KI, Entwurf, Vorlage, Stichworte, Tonfall, Kopieren, Hashtag, Pro/Pro+) in der Hilfe; Jargon
+  ersetzt („Social-Posts\"→„Beiträge für Instagram & Facebook\", „Done-for-you\"→„für dich fertig\",
+  „scharfgeschaltet\"→„wird gerade fertig eingerichtet\", „In Zwischenablage kopieren\"→„Text kopieren\").
+- **NEU: eigene Anleitungsseite `hilfe-ki-werkzeug.html` + `en/` (PR #700):** 3 Schritte mit Bildschirm-
+  Erklärung, Bäckerei-Beispiel, „Was die Knöpfe bedeuten\", Wörter-Lexikon, Fehlerbehebung, FAQ, CTA.
+  Von beiden Tool-Seiten unter „So einfach geht's\"/„It's this simple\" verlinkt; Sitemap + hreflang de/en/
+  x-default; FAQPage-JSON-LD == sichtbar; Marken-Stil (amber/cream), eigener Header/Footer, announce.js.
+- **Offen/nächster sinnvoller Schritt:** **FR/IT-Tool-Versionen** fehlen weiterhin (Tool nur DE/EN) — französische/
+  italienische Hub-Besucher landen im DE/EN-Tool. Größere Aufgabe (JS-Textgeneratoren sprach-spezifisch
+  übersetzen). Davor mit User klären, ob gewünscht. Geld/Scharfschalten unverändert: Stripe-Link + KI-Worker
+  (4 User-Klicks, siehe unten).
+
 ## 2026-06-11 (Teil 5) — 3D-Engine + Blender + neue Funnel-Seiten
 - **`js/aban3d.js`** — selbst-gehostete 3D-Engine (Canvas, Vanilla, ~6 KB, KEINE Lib/CDN/Actions).
   7 Formen via `data-shape`: sphere, torus, helix, wave, galaxy, swarm, **bars** (datengetriebenes
