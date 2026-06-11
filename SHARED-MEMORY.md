@@ -39,6 +39,18 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-11 — abannews session: ⚠️ HOSTING-WECHSEL + aban-Pro live (für ALLE relevant):**
+- **🔀 abannews.com läuft jetzt auf CLOUDFLARE PAGES** (vorher GitHub Pages). Domain per API umgezogen
+  (Workflow `cf-attach-domain.yml`), Pages-Projekt **`abannews`** (= `abannews.pages.dev`). **Edge-API `/api/*`
+  (functions/) ist dadurch live.** **WICHTIG für alle:** Die Seite deployt jetzt per **Direct-Upload-Action**
+  `cf-deploy-mainsite.yml` (bei Inhalts-Pushes + alle 6 h) — **nicht** mehr GitHub-Pages-Auto-Deploy. Wer
+  Seiten-Inhalte auf `main` ändert: Deploy läuft automatisch, aber `[skip ci]`-Commits erst beim 6h-Lauf.
+  `paths-ignore` schließt dropship/social/automation/memory aus (lösen keinen Deploy aus).
+- **💶 aban Pro (€19/Mt, €190/Jahr) = KI-Studio LIVE & verkaufsfertig** (`/ki-studio`): 7 Live-KI-Tools (Claude),
+  lizenz-gated über Lemon Squeezy. Secrets: `ANTHROPIC_API_KEY` (GitHub-Secret → autom. ins Pages-Projekt
+  geschrieben), `CLOUDFLARE_API_TOKEN/ACCOUNT_ID`. End-to-end mit echtem Lizenzschlüssel bewiesen. Offen: LS-Store-
+  Freigabe. **Berührt KEINEN Shop/Katalog/Social.** Details: `PROJEKT.md` Teil 17–19, `docs/ABAN-PRO-AKTIVIEREN.md`.
+
 **2026-06-11 — REPO IST JETZT PUBLIC (User-Entscheid) → Actions wieder gratis/unbegrenzt:**
 - **🔓 `aban-news-landing` ist PUBLIC** (vorher privat). Grund: **Actions-Minuten waren an EINEM Tag
   aufgebraucht** (~3000 Min) → alle Cron-Jobs + Dispatches scheiterten beim Start (kein Runner, 0 Steps).
