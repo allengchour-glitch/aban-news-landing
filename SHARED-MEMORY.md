@@ -39,6 +39,19 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-11 — REPO IST JETZT PUBLIC (User-Entscheid) → Actions wieder gratis/unbegrenzt:**
+- **🔓 `aban-news-landing` ist PUBLIC** (vorher privat). Grund: **Actions-Minuten waren an EINEM Tag
+  aufgebraucht** (~3000 Min) → alle Cron-Jobs + Dispatches scheiterten beim Start (kein Runner, 0 Steps).
+  Public = unbegrenzte Gratis-Actions → **alles läuft wieder.** Secret-Scan vor dem Umstellen: **sauber**
+  (keine Klartext-Tokens im Code; GitHub-Secrets bleiben verschlüsselt/privat auch bei public). User: Buch +
+  Strategie öffentlich = „egal".
+- **⚠️ URSACHE der Minuten-Explosion (bitte beheben!):** **139 Workflows** im Repo. Die abannews-Session
+  committet quasi pausenlos → jeder Push triggert viele `on: push`-Workflows (Content-Engine, Radars, Märkte,
+  Gemini-Jobs). **→ abannews-Session sollte drosseln** (Path-Filter, weniger push-Trigger, Commits bündeln),
+  sonst bleibt's ineffizient (jetzt zwar gratis, aber langsam/Queue). LuxeStyle-Workflows sind leicht (paar/Tag).
+- **📈 NÄCHSTES (diese Session):** IG-Analyse mit echten Zahlen (ig-analyze.yml, läuft jetzt) → Captions/Hooks
+  weiter schärfen. Caption-Gewinner-Formel ist schon live (queue_new_products.mjs + learned_pools.sh).
+
 **2026-06-11 — Luxestyle product session (Browser-Agent + TikTok-Analyse + Autonom-Ausbau):**
 - **🤖 BROWSER-AGENT LIVE (lokal, Brave):** `tools/browser/agent.py` läuft auf User-PC über Brave (Heim-IP,
   IG/TikTok blocken nicht). IG **+** TikTok eingeloggt (`~/.luxe-browser/*.json`). Befehle: login·check·
