@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D-Animation im Browser — ohne Plugin, ohne Upload | aban news</title>
+<meta name="description" content="Eine interaktive 3D-Animation, komplett im Browser gerendert — kein Plugin, keine Cloud, kein Upload. Bewegung mit der Maus, Punkte und Tempo einstellbar. Gebaut von aban news.">
+<link rel="canonical" href="https://abannews.com/3d-animation.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="3D-Animation im Browser — ohne Plugin">
+<meta property="og:description" content="Interaktive 3D-Konstellation, live im Browser gerendert. Maus bewegen, Punkte &amp; Tempo einstellen.">
+<meta property="og:url" content="https://abannews.com/3d-animation.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta name="twitter:card" content="summary">
+<style>
+  :root{--amber-dk:#b45309;--accent:#d97706;--bg:#fffbf5;--field:#fffdf9;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--ink-d:#0f0d0a}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+  a{color:var(--amber-dk)}
+  header{border-bottom:1px solid var(--line);background:#fff}
+  header .wrap{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:14px 20px}
+  .brand{display:flex;align-items:center;gap:.5rem;font-weight:800;text-decoration:none;color:var(--ink)}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
+  .hnav{margin-left:auto;display:flex;align-items:center;gap:1.1rem;font-size:.92rem;flex-wrap:wrap}
+  .hnav a{color:var(--muted);text-decoration:none}
+  .btn{background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;border-radius:8px;font-size:.9rem;border:0;cursor:pointer}
+  main{max-width:820px;margin:0 auto;padding:0 20px}
+  h1{font-size:2rem;line-height:1.2;margin:30px 0 8px;text-align:center}
+  .lead{font-size:1.1rem;color:var(--ink2);text-align:center;max-width:60ch;margin:0 auto 18px}
+  .stage{position:relative;border-radius:18px;overflow:hidden;background:radial-gradient(120% 120% at 50% 30%,#1c1814,#0f0d0a);border:1px solid #2a241c;box-shadow:0 18px 50px rgba(31,41,55,.18)}
+  .stage canvas{display:block;width:100%;height:clamp(320px,52vw,520px);touch-action:none}
+  .badge{position:absolute;top:12px;left:14px;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:#f0a93a;font-weight:800;opacity:.85}
+  .ctrls{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin:18px 0 6px}
+  .ctrl{display:flex;flex-direction:column;align-items:center;font-size:.82rem;color:var(--muted);min-width:120px}
+  .ctrl input[type=range]{width:140px;accent-color:var(--amber-dk)}
+  .ctrl b{color:var(--ink);font-weight:700}
+  .swatches{display:flex;gap:8px;margin-top:4px}
+  .sw{width:22px;height:22px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);cursor:pointer}
+  h2{font-size:1.3rem;margin:34px 0 8px}
+  p{color:var(--ink2)}
+  .tip{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0;background:#fff}
+  .tip h3{margin:0 0 4px;font-size:1.05rem}
+  .cta{background:var(--field);border:1px solid var(--line);border-radius:14px;padding:22px;margin:32px 0;text-align:center}
+  footer{border-top:1px solid var(--line);margin-top:40px;background:#fff}
+  footer .wrap{max-width:980px;margin:0 auto;padding:18px 20px;color:var(--muted);font-size:.88rem;display:flex;gap:14px;flex-wrap:wrap}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a href="/" class="brand"><span class="dot"></span> aban news</a>
+    <nav class="hnav" aria-label="Navigation">
+      <a href="/online-tools.html">Tools</a>
+      <a href="/geld-und-ki.html">Geld &amp; KI</a>
+      <a href="/founding.html">Premium</a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Gratis abonnieren</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <h1>3D — live im Browser</h1>
+  <p class="lead">Eine interaktive 3D-Konstellation, komplett in deinem Browser gerendert. Kein Plugin, keine Cloud, kein Upload. Beweg die Maus über die Fläche — und stell Punkte, Tempo und Farbe selbst ein.</p>
+
+  <div class="stage">
+    <span class="badge">aban · 3D-Render im Browser</span>
+    <canvas data-aban3d data-points="130" data-color="#f0a93a" data-speed="1" aria-label="Interaktive 3D-Konstellation"></canvas>
+  </div>
+
+  <div class="ctrls">
+    <label class="ctrl">Punkte: <b id="vP">130</b><input type="range" id="rP" min="40" max="240" value="130"></label>
+    <label class="ctrl">Tempo: <b id="vS">1.0×</b><input type="range" id="rS" min="0" max="30" value="10"></label>
+    <span class="ctrl">Farbe
+      <span class="swatches">
+        <span class="sw" data-c="#f0a93a" style="background:#f0a93a"></span>
+        <span class="sw" data-c="#38bdf8" style="background:#38bdf8"></span>
+        <span class="sw" data-c="#34d399" style="background:#34d399"></span>
+        <span class="sw" data-c="#f472b6" style="background:#f472b6"></span>
+        <span class="sw" data-c="#ffffff" style="background:#ffffff"></span>
+      </span>
+    </span>
+  </div>
+
+  <h2>Was du hier siehst</h2>
+  <p>Jeder Punkt sitzt auf einer Kugel, wird in Echtzeit in 3D gedreht, perspektivisch projiziert und mit seinen nächsten Nachbarn verbunden — das ergibt den „Konstellations"-Look. Alles läuft mit purem JavaScript auf einem <code>&lt;canvas&gt;</code>, ohne externe Bibliothek.</p>
+  <div class="tip"><h3>⚡ Leicht &amp; höflich</h3><p>Die Animation pausiert automatisch, wenn sie aus dem Bild scrollt oder der Tab im Hintergrund liegt — und zeigt ein ruhiges Standbild, wenn du „weniger Bewegung" in deinem System eingestellt hast.</p></div>
+  <div class="tip"><h3>🔒 Nichts verlässt deinen Browser</h3><p>Kein Server, kein Tracking, kein Upload. Reine Mathematik, die in deinem Gerät gerechnet wird.</p></div>
+
+  <div class="cta">
+    <h2 style="margin-top:0">Solche Sachen ohne Hype erklärt</h2>
+    <p style="margin:.4rem 0 1rem">aban news zeigt dir täglich in 5 Minuten, was mit KI und Technik wirklich geht — ehrlich, anfängerfreundlich, gratis.</p>
+    <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Gratis abonnieren →</a>
+    &nbsp; <a href="/online-tools.html" style="display:inline-block;margin-top:8px">Alle Gratis-Tools →</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour · Belp (CH)</span>
+    <a href="/online-tools.html">Tools</a>
+    <a href="/geld-und-ki.html">Geld &amp; KI</a>
+    <a href="/founding.html">Premium</a>
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+  </div>
+</footer>
+<script defer src="/js/aban3d.js"></script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  var cv = document.querySelector("canvas[data-aban3d]");
+  var rP = document.getElementById("rP"), rS = document.getElementById("rS");
+  var vP = document.getElementById("vP"), vS = document.getElementById("vS");
+  var t = null;
+  function reboot() {
+    clearTimeout(t);
+    t = setTimeout(function () {
+      var n = cv.cloneNode(true);
+      cv.parentNode.replaceChild(n, cv); cv = n;
+      if (window.abanBoot3d) window.abanBoot3d(cv);
+    }, 140);
+  }
+  rP.addEventListener("input", function () { vP.textContent = rP.value; cv.dataset.points = rP.value; reboot(); });
+  rS.addEventListener("input", function () { var s = (rS.value / 10).toFixed(1); vS.textContent = s + "×"; cv.dataset.speed = s; reboot(); });
+  [].forEach.call(document.querySelectorAll(".sw"), function (el) {
+    el.addEventListener("click", function () { cv.dataset.color = el.dataset.c; reboot(); });
+  });
+});
+</script>
+</body>
+</html>

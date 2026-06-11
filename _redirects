@@ -272,3 +272,6 @@
 /angebot-schreiben /angebot-schreiben.html 301
 /en/quote         /en/angebot-schreiben.html 301
 /en/write-quote   /en/angebot-schreiben.html 301
+
+/3d-animation     /3d-animation.html 301
+/3d-render        /3d-animation.html 301
