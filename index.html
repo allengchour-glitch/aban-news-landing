@@ -126,7 +126,8 @@
     .toggle button.on{background:var(--ink);color:#fff}
     .toggle .save{font-size:.72rem;font-weight:800;color:var(--ok);background:#dcfce7;padding:.1rem .4rem;border-radius:999px}
     .toggle button.on .save{color:#0b3;background:#eafff3}
-    .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:2.2rem;align-items:start}
+    .prices{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:2.2rem;align-items:start}
+    @media(max-width:980px){.prices{grid-template-columns:repeat(2,1fr)}}
     .price{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.7rem 1.5rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
     .price.feat{border:2px solid var(--amber);box-shadow:var(--shadow),0 0 0 4px var(--amber-lt);transform:translateY(-6px)}
     .price .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--amber);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:.3rem .8rem;border-radius:999px;white-space:nowrap}
@@ -479,7 +480,7 @@
     <div class="wrap center">
       <span class="eyebrow">Preise</span>
       <h2>Gratis lesen — oder mehr herausholen</h2>
-      <p class="sub">Der tägliche Newsletter ist und bleibt kostenlos. Premium gibt dir Tiefe, Audio &amp; Community; Founding sichert dir alles einmalig auf Lebenszeit.</p>
+      <p class="sub">Der tägliche Newsletter ist und bleibt kostenlos. Premium gibt dir Tiefe &amp; werbefrei; <b>Pro</b> schaltet die Live-KI-Tools im KI-Studio frei; Founding sichert dir Premium einmalig auf Lebenszeit.</p>
       <div class="toggle" role="group" aria-label="Abrechnungszeitraum für Premium">
         <button type="button" id="t-mo" class="on" aria-pressed="true">Monatlich</button>
         <button type="button" id="t-yr" aria-pressed="false">Jährlich <span class="save">−18&nbsp;%</span></button>
@@ -512,6 +513,20 @@
             <li>Werbefrei</li>
           </ul>
           <a href="/founding.html" id="prem-buy" class="btn btn--amber">Premium ansehen</a>
+        </div>
+        <!-- Pro -->
+        <div class="price">
+          <div class="pname">Pro ✨</div>
+          <div class="pp">€19<small> /Monat</small></div>
+          <div class="psub">oder €190 / Jahr</div>
+          <ul>
+            <li>Alles aus Premium</li>
+            <li>KI-Studio: 7 Live-KI-Tools</li>
+            <li>Texte, Fahrpläne, Hype-Umschreiber</li>
+            <li>Frag-aban Pro &amp; KI-Sichtbarkeit</li>
+            <li>Übersetzen &amp; Markt-Briefing</li>
+          </ul>
+          <a href="/ki-studio.html" class="btn btn--amber">KI-Studio ansehen</a>
         </div>
         <!-- Founding -->
         <div class="price">
