@@ -27,6 +27,7 @@ LINKS = [
     ("/trading-tipps.html", "Trading-Tipps (ehrlich)"),
     ("/ki-betrug-scam-check.html", "KI-Betrug &amp; Scams"),
     ("/steuer-basics-selbststaendige.html", "Steuer-Basics"),
+    ("/kleinunternehmerregelung-einfach-erklaert.html", "Kleinunternehmerregelung"),
     ("/altersvorsorge-selbststaendige.html", "Altersvorsorge"),
     ("/scheinselbststaendigkeit-vermeiden.html", "Scheinselbstständigkeit"),
 ]
