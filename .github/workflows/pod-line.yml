@@ -19,6 +19,10 @@ on:
         description: 'Nur Vorschau'
         type: boolean
         default: true
+      personalized:
+        description: 'Statt Fertigware EIN "zum Selbstgestalten"-Produkt (Foto-Upload)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -45,6 +49,7 @@ jobs:
           TYPE: ${{ github.event.inputs.type }}
           SOURCE: ${{ github.event.inputs.source }}
           LIMIT: ${{ github.event.inputs.limit }}
+          PERSONALIZED: ${{ github.event.inputs.personalized == 'true' && '1' || '0' }}
           DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && '0' || '1' }}
         run: node automation/create_pod_line.mjs
       - name: Ledger committen
