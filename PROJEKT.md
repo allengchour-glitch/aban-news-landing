@@ -60,10 +60,17 @@ bestätigt GitHub Pages; die alte `CLOUDFLARE-SETUP.md`-Behauptung „läuft auf
 - **✅ ANTHROPIC_API_KEY WIRED + KI LIVE BEWIESEN (11.06.):** Key lag als GitHub-Secret; `cf-deploy-mainsite.yml`
   schreibt ihn per `wrangler pages secret put` automatisch ins Pages-Projekt. Test auf abannews.pages.dev:
   `/api/chat` → **echte Claude-Antwort (200)**, `/api/generate` → 402 pro_required (Key da + Gate greift). Backend fertig.
-- **🟡 OFFEN — nur noch 1 Schritt: Domain-Umzug** abannews.com → Pages-Projekt `abannews`. Deploy-Vollständigkeit
-  geprüft (media/downloads drin, /reels→ki-reels.html, Schlüsselseiten 200) → Cutover bricht nichts.
-  Cutover am einfachsten im CF-Dashboard: Pages → `abannews` → Custom domains → „abannews.com" (1 Klick, DNS auto,
-  GitHub-Pages-CNAME entfällt). Token hat DNS:Edit → ginge auch per API, aber Apex-DNS + Produktiv = bewusst dem User-Klick überlassen.
+- **✅✅ DOMAIN-UMZUG DURCH (11.06., per API, autonom):** `cf-attach-domain.yml` (Trockenlauf→apply) hat die
+  Custom-Domain aufs Pages-Projekt registriert, die 8 GitHub-Pages-Apex-Records (A/AAAA) gelöscht und CNAME
+  `abannews.com` → `abannews.pages.dev` (proxied) angelegt. **MX (Porkbun-Mail) + TXT (SPF/Google-Verify) blieben.**
+  **LIVE verifiziert:** abannews.com Header = `server: cloudflare` (GitHub-Marker weg); `/api/chat` → echte Claude-Antwort
+  (200); `/api/generate` → 402 pro_required; Startseite/ki-studio/maerkte/shop/markets.json alle 200. Zone-ID
+  67820161…, abannews.pages.dev.
+- **✅ AUTO-DEPLOY (sonst friert die Direct-Upload-Seite ein):** `cf-deploy-mainsite.yml` deployt jetzt bei
+  Inhalts-Pushes (paths-ignore für dropship/social/automation/memory) **+ alle 6 h** (fängt Bot-`[skip ci]`-Commits
+  wie Märkte-Daten). wrangler lädt nur geänderte Dateien.
+- **🟢 KI-STUDIO/PRO IST JETZT LIVE auf abannews.com.** Letzter Business-Schritt (User): Lemon-Squeezy-Pro-Produkt
+  mit license keys anlegen + `PRO_*`-Links in `js/pay-config.js` → dann können Kunden kaufen & freischalten.
 
 ## 📌 Stand 2026-06-11 (Teil 18) — „aban Pro" + KI-Studio (Live-KI-Tools, gated per Lizenz)
 User-Wunsch: „premium verbessern mit zusatz kosten wo man dich brauchen kann mit tools". Entscheid (User):
