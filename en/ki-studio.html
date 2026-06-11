@@ -161,11 +161,40 @@
         </div>
 
         <div class="tool" id="toolGen" data-locked="1">
-          <h3>✍️ AI texts &amp; roadmaps</h3>
-          <p class="td">13 text types: text, email, social post, product copy, blog outline, FAQ, job ad, slogan, summary, AI roadmap, content plan, email series — in seconds.</p>
+          <h3>✍️ AI texts, marketing &amp; business</h3>
+          <p class="td">22 text types in seconds — from social post, ad copy &amp; SEO meta to quotes, review replies &amp; SOPs, all the way to newsletters, landing pages &amp; press releases.</p>
           <div class="frow">
             <div><label for="genKind">What</label>
-              <select id="genKind"><option value="text">Text</option><option value="email">Email</option><option value="social">Social post</option><option value="product">Product text</option><option value="blog">Blog outline</option><option value="faq">FAQ</option><option value="jobad">Job ad</option><option value="slogan">Slogan</option><option value="summary">Summarize</option><option value="plan">AI roadmap</option><option value="contentplan">Content plan (2 wks)</option><option value="emailserie">Email series</option></select></div>
+              <select id="genKind">
+                <optgroup label="✍️ Texts &amp; content">
+                  <option value="text">Text</option>
+                  <option value="email">Email</option>
+                  <option value="newsletter">Newsletter issue</option>
+                  <option value="blog">Blog outline</option>
+                  <option value="faq">FAQ</option>
+                  <option value="summary">Summarize</option>
+                </optgroup>
+                <optgroup label="📣 Marketing &amp; sales">
+                  <option value="social">Social post</option>
+                  <option value="ad">Ad copy</option>
+                  <option value="seo">SEO meta (title + description)</option>
+                  <option value="slogan">Slogan / claim</option>
+                  <option value="landing">Landing page copy</option>
+                  <option value="product">Product text</option>
+                  <option value="script">Video / reel script</option>
+                  <option value="press">Press release</option>
+                </optgroup>
+                <optgroup label="🧰 Business &amp; ops">
+                  <option value="angebot">Quote / estimate</option>
+                  <option value="review">Reply to a review</option>
+                  <option value="anleitung">How-to / SOP</option>
+                  <option value="ideas">Idea brainstorm</option>
+                  <option value="jobad">Job ad</option>
+                  <option value="plan">AI roadmap</option>
+                  <option value="contentplan">Content plan (2 wks)</option>
+                  <option value="emailserie">Email series</option>
+                </optgroup>
+              </select></div>
             <div><label for="genBranche">Industry</label><input type="text" id="genBranche" placeholder="e.g. tax advisory"></div>
           </div>
           <label for="genZiel">Goal / what it's about</label>

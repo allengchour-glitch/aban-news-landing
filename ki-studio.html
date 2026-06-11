@@ -168,11 +168,40 @@
 
         <!-- 2) KI-Texte & Fahrpläne -->
         <div class="tool" id="toolGen" data-locked="1">
-          <h3>✍️ KI-Texte &amp; Fahrpläne</h3>
-          <p class="td">13 Text-Arten: Text, E-Mail, Social-Post, Produkttext, Blog-Gerüst, FAQ, Stellenanzeige, Slogan, Zusammenfassung, KI-Fahrplan, Content-Plan, E-Mail-Serie — in Sekunden.</p>
+          <h3>✍️ KI-Texte, Marketing &amp; Business</h3>
+          <p class="td">22 Text-Arten in Sekunden — von Social-Post, Werbeanzeige &amp; SEO-Meta über Angebot, Bewertungs-Antwort &amp; Anleitung bis Newsletter, Landingpage &amp; Pressemitteilung.</p>
           <div class="frow">
             <div><label for="genKind">Was</label>
-              <select id="genKind"><option value="text">Text</option><option value="email">E-Mail</option><option value="social">Social-Post</option><option value="product">Produkttext</option><option value="blog">Blog-Gerüst</option><option value="faq">FAQ</option><option value="jobad">Stellenanzeige</option><option value="slogan">Slogan</option><option value="summary">Zusammenfassen</option><option value="plan">KI-Fahrplan</option><option value="contentplan">Content-Plan (2 Wo.)</option><option value="emailserie">E-Mail-Serie</option></select></div>
+              <select id="genKind">
+                <optgroup label="✍️ Texte &amp; Inhalte">
+                  <option value="text">Text</option>
+                  <option value="email">E-Mail</option>
+                  <option value="newsletter">Newsletter-Ausgabe</option>
+                  <option value="blog">Blog-Gerüst</option>
+                  <option value="faq">FAQ</option>
+                  <option value="summary">Zusammenfassen</option>
+                </optgroup>
+                <optgroup label="📣 Marketing &amp; Verkauf">
+                  <option value="social">Social-Post</option>
+                  <option value="ad">Werbeanzeige (Ads)</option>
+                  <option value="seo">SEO-Meta (Title + Description)</option>
+                  <option value="slogan">Slogan / Claim</option>
+                  <option value="landing">Landingpage-Text</option>
+                  <option value="product">Produkttext</option>
+                  <option value="script">Video-/Reel-Skript</option>
+                  <option value="press">Pressemitteilung</option>
+                </optgroup>
+                <optgroup label="🧰 Business &amp; Orga">
+                  <option value="angebot">Angebot / Kostenvoranschlag</option>
+                  <option value="review">Bewertung beantworten</option>
+                  <option value="anleitung">Anleitung / SOP</option>
+                  <option value="ideas">Ideen-Brainstorming</option>
+                  <option value="jobad">Stellenanzeige</option>
+                  <option value="plan">KI-Fahrplan</option>
+                  <option value="contentplan">Content-Plan (2 Wo.)</option>
+                  <option value="emailserie">E-Mail-Serie</option>
+                </optgroup>
+              </select></div>
             <div><label for="genBranche">Branche</label><input type="text" id="genBranche" placeholder="z. B. Steuerberatung"></div>
           </div>
           <label for="genZiel">Ziel / Worum geht's</label>

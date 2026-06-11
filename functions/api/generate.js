@@ -40,6 +40,7 @@ function buildPrompt(b) {
   const ziel = clamp(b.ziel || b.goal, 400);
   const ton = clamp(b.ton || b.tone, 60) || "sachlich, freundlich";
   const text = clamp(b.text || b.input, 4000);
+  const plattform = clamp(b.plattform || b.platform, 60);
 
   if (kind === "plan") {
     const team = clamp(b.team, 60), zeit = clamp(b.zeit || b.time, 60);
@@ -102,6 +103,55 @@ function buildPrompt(b) {
   if (kind === "slogan") {
     return `Entwickle 8 kurze, ehrliche Slogan-/Claim-Vorschläge für „${branche}" (Ziel: „${ziel}"). ` +
       `Klar, merkfähig, ohne leere Superlative. Als nummerierte Liste.`;
+  }
+  if (kind === "ad") {
+    return `Schreibe 5 kurze Werbeanzeigen-Texte (z. B. Google/Meta Ads) für „${ziel || text}" (Branche: ${branche}). ` +
+      `Je: knackige Headline (max 8 Wörter) + 1–2 Sätze Body + klarer CTA. Ehrlich, kein Clickbait, ` +
+      `keine erfundenen Rabatte oder Zahlen. Als nummerierte Liste.`;
+  }
+  if (kind === "seo") {
+    return `Erstelle SEO-Metadaten für eine Seite zum Thema „${ziel || text}" (Branche: ${branche}). ` +
+      `Liefere: 2 Title-Tags (je ≤ 60 Zeichen), 2 Meta-Descriptions (je ≤ 155 Zeichen, mit sanftem CTA) ` +
+      `und 5 relevante Keywords. Natürliche Sprache, kein Keyword-Spam.`;
+  }
+  if (kind === "newsletter") {
+    return `Schreibe eine kurze, ehrliche Newsletter-Ausgabe für „${branche}". Thema/Ziel: „${ziel}". ` +
+      `Aufbau: Betreffzeile → persönlicher Einstieg → 1 Kernidee → 1 umsetzbarer Tipp → kurzer CTA. ` +
+      `Ton: ${ton}. Nah, klar, kein Marketing-Geschwurbel, keine erfundenen Zahlen.`;
+  }
+  if (kind === "review") {
+    return `Schreibe eine ruhige, professionelle Antwort auf diese Kundenbewertung (Branche: ${branche}):\n\n` +
+      `"""${text || ziel}"""\n\nWertschätzend, lösungsorientiert, max 4 Sätze, kein Streit. ` +
+      `Bei Kritik: Verständnis zeigen und einen konkreten nächsten Schritt/Kontakt anbieten.`;
+  }
+  if (kind === "angebot") {
+    return `Formuliere ein klares Angebots-/Kostenvoranschlag-Anschreiben für „${ziel || text}" (Branche: ${branche}). ` +
+      `Struktur: Bezug/Anlass → was geliefert wird (Stichpunkte) → Nutzen → nächster Schritt. ` +
+      `Preise/Beträge als [Platzhalter] lassen, nichts erfinden. Ton: ${ton}.`;
+  }
+  if (kind === "anleitung") {
+    return `Schreibe eine klare Schritt-für-Schritt-Anleitung (SOP) für „${ziel || text}" (Kontext: ${branche}). ` +
+      `Nummerierte Schritte, je 1–2 Sätze, so dass auch eine Vertretung es versteht. ` +
+      `Am Ende ein kurzer Abschnitt „Häufige Fehler" mit 2–3 Punkten.`;
+  }
+  if (kind === "ideas") {
+    return `Liefere 10 konkrete, umsetzbare Ideen zu „${ziel || text}" für „${branche}". ` +
+      `Je Idee 1 Satz, vielfältig, ohne Hype, sortiert von einfach → aufwändiger. Nummerierte Liste.`;
+  }
+  if (kind === "landing") {
+    return `Schreibe den Text für eine Landingpage zu „${ziel || text}" (Branche: ${branche}). Liefere: ` +
+      `Headline + Unterzeile, 3 Nutzen-Blöcke (je Mini-Überschrift + 1 Satz), 1 ehrliches Vertrauens-Element ` +
+      `(ohne erfundene Zahlen) und einen klaren CTA. Ton: ${ton}.`;
+  }
+  if (kind === "script") {
+    return `Schreibe ein Skript für ein kurzes Video/Reel (ca. 30–45 Sek.) zu „${ziel || text}" ` +
+      `(Branche: ${branche}, Plattform: ${plattform || "Instagram/TikTok"}). Aufbau: Hook (erste 2 Sek.) → ` +
+      `3–4 kurze Szenen mit Bild-Hinweis + Voiceover/On-Screen-Text → CTA. Knapp, gesprochene Sprache, kein Hype.`;
+  }
+  if (kind === "press") {
+    return `Schreibe eine sachliche Pressemitteilung für „${ziel || text}" (Branche: ${branche}). Aufbau: ` +
+      `Schlagzeile, „Ort, [Datum]" als Platzhalter, 1 Kernabsatz (Wer/Was/Warum), 1 Zitat [Platzhalter Person/Rolle], ` +
+      `kurzer Boilerplate-Absatz über das Unternehmen. Nüchtern, faktenbasiert, keine Superlative.`;
   }
   // default: text
   return `Schreibe einen ${ton} Text. Zweck/Ziel: „${ziel || "Kurztext"}". Branche/Kontext: „${branche}". ` +
