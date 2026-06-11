@@ -102,11 +102,31 @@
       <div style="background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px 14px"><span style="font-size:.85rem;color:var(--muted);display:block">Dauer bis zum Ziel</span><b id="ng-time" style="font-size:1.35rem">–</b></div>
     </div>
     <p style="font-size:.82rem;color:var(--muted);margin-top:12px">Einfache Rechnung ohne Zinsen — beim Notgroschen zählt Sicherheit, nicht Rendite. Keine Finanzberatung.</p>
+    <div style="margin-top:16px">
+      <div style="border-radius:14px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
+        <canvas id="ng-chart" data-aban3d data-shape="bars" data-color="#34d399" data-speed="0.6" style="display:block;width:100%;height:210px;touch-action:none" aria-label="3D-Diagramm: Aufbau des Notgroschens über die Zeit"></canvas>
+      </div>
+      <p style="text-align:center;font-size:.78rem;color:var(--muted);margin:.4rem 0 0">3D: dein Notgroschen wächst Richtung Ziel — aus deinen Eingaben.</p>
+    </div>
     <script>
     (function(){
       var ids=['ng-exp','ng-mon','ng-save'];
       var fmt=new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR',maximumFractionDigits:0});
       function val(id,max){var v=parseFloat(document.getElementById(id).value);if(isNaN(v)||v<0)v=0;if(max!=null&&v>max)v=max;return v;}
+      var chart=document.getElementById('ng-chart'), ct=null;
+      function updateChart(target,sv){
+        var arr=[];
+        if(sv>0&&target>0){
+          var months=Math.ceil(target/sv),pts=Math.min(16,Math.max(2,months));
+          for(var i=1;i<=pts;i++){var mm=Math.round(months*i/pts);arr.push(Math.round(Math.min(target,sv*mm)));}
+        } else arr=[0,target];
+        clearTimeout(ct);
+        ct=setTimeout(function(){
+          chart.dataset.values=arr.join(',');
+          var n=chart.cloneNode(true);chart.parentNode.replaceChild(n,chart);chart=n;
+          if(window.abanBoot3d) window.abanBoot3d(chart);
+        },160);
+      }
       function calc(){
         var e=val('ng-exp'),mo=val('ng-mon',24),sv=val('ng-save');
         var target=e*mo;
@@ -115,11 +135,13 @@
         if(sv<=0){t.textContent='—';}
         else{var months=Math.ceil(target/sv);var y=Math.floor(months/12),m=months%12;
           t.textContent=(y?y+' J ':'')+(m?m+' Mon':(y?'':'0 Mon'));}
+        updateChart(target,sv);
       }
       ids.forEach(function(id){document.getElementById(id).addEventListener('input',calc);});
       calc();
     })();
     </script>
+    <script defer src="/js/aban3d.js"></script>
   </section>
 
   <div class="premium">

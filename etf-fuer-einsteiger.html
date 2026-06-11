@@ -111,23 +111,42 @@
       <div style="background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px 14px"><span style="font-size:.85rem;color:var(--muted);display:block">Die teurere TER kostet dich</span><b id="te-diff" style="font-size:1.3rem;color:#b91c1c">–</b></div>
     </div>
     <p style="font-size:.82rem;color:var(--muted);margin-top:12px">Vereinfachte Rechnung (Einmalanlage, gleichbleibende Rendite). Reale Kurse schwanken, weitere Kosten/Steuern sind nicht berücksichtigt. <strong>Keine Anlageberatung, keine Garantie.</strong></p>
+    <div style="margin-top:16px">
+      <div style="border-radius:14px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
+        <canvas id="te-chart" data-aban3d data-shape="bars" data-color="#f0a93a" data-speed="0.6" style="display:block;width:100%;height:210px;touch-action:none" aria-label="3D-Diagramm: Wertentwicklung des günstigen ETF über die Jahre"></canvas>
+      </div>
+      <p style="text-align:center;font-size:.78rem;color:var(--muted);margin:.4rem 0 0">3D: Wertentwicklung des günstigen ETF über die Laufzeit — aus deinen Eingaben.</p>
+    </div>
     <script>
     (function(){
       var ids=['te-amt','te-years','te-gross','te-low','te-high'];
       var fmt=new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR',maximumFractionDigits:0});
       function val(id,max){var v=parseFloat(document.getElementById(id).value);if(isNaN(v)||v<0)v=0;if(max!=null&&v>max)v=max;return v;}
       function fv(a,net,y){return a*Math.pow(1+net/100,y);}
+      var chart=document.getElementById('te-chart'), ct=null;
+      function updateChart(a,net,y){
+        var pts=Math.min(16,Math.max(2,Math.round(y))),arr=[];
+        for(var i=1;i<=pts;i++){var yr=Math.max(1,Math.round(y*i/pts));arr.push(Math.round(fv(a,net,yr)));}
+        clearTimeout(ct);
+        ct=setTimeout(function(){
+          chart.dataset.values=arr.join(',');
+          var n=chart.cloneNode(true);chart.parentNode.replaceChild(n,chart);chart=n;
+          if(window.abanBoot3d) window.abanBoot3d(chart);
+        },160);
+      }
       function calc(){
         var a=val('te-amt'),y=val('te-years',60),g=val('te-gross',50),lo=val('te-low',5),hi=val('te-high',5);
         var rl=fv(a,g-lo,y),rh=fv(a,g-hi,y);
         document.getElementById('te-rlow').textContent=fmt.format(rl);
         document.getElementById('te-rhigh').textContent=fmt.format(rh);
         document.getElementById('te-diff').textContent=fmt.format(Math.max(0,rl-rh));
+        updateChart(a,g-lo,y);
       }
       ids.forEach(function(id){document.getElementById(id).addEventListener('input',calc);});
       calc();
     })();
     </script>
+    <script defer src="/js/aban3d.js"></script>
   </section>
 
   <div class="cta">

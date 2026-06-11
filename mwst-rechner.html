@@ -93,6 +93,10 @@ footer a{color:var(--muted)}
       </div>
     </div>
     <div class="out" id="out"></div>
+    <div style="margin-top:14px;border-radius:12px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
+      <canvas id="mwst-chart" data-aban3d data-shape="bars" data-color="#f0a93a" data-speed="0.5" style="display:block;width:100%;height:190px;touch-action:none" aria-label="3D-Diagramm: Netto, MwSt und Brutto"></canvas>
+    </div>
+    <p style="text-align:center;font-size:.78rem;color:var(--muted);margin:.35rem 0 0">3D: Netto · MwSt · Brutto aus deiner Eingabe.</p>
     <div class="warn"><strong>Hinweis:</strong> Die Sätze sind die gängigen Regel-/ermäßigten Sätze (Stand 2024/2025) und dienen der schnellen Schätzung — <strong>keine Steuerberatung</strong>. Für deine konkrete Rechnung gilt immer der amtliche Satz; im Zweifel Steuerberater oder offizielle Quelle prüfen.</div>
     <p class="note">CH: 8,1 % regulär · 3,8 % Beherbergung · 2,6 % ermäßigt. DE: 19 % regulär · 7 % ermäßigt. AT: 20 % regulär · 13 % / 10 % ermäßigt. Alles lokal, kein Upload.</p>
   </section>
@@ -138,6 +142,16 @@ footer a{color:var(--muted)}
       '<div class="box"><b>'+fmt(net,cur)+'</b><span>Netto</span></div>'+
       '<div class="box"><b>'+fmt(tax,cur)+'</b><span>MwSt ('+satzEl.value.replace(".",",")+' %)</span></div>'+
       '<div class="box"><b>'+fmt(gross,cur)+'</b><span>Brutto</span></div>';
+    updateChart(net,tax,gross);
+  }
+  var mchart=document.getElementById('mwst-chart'), mct=null;
+  function updateChart(net,tax,gross){
+    clearTimeout(mct);
+    mct=setTimeout(function(){
+      mchart.dataset.values=[Math.round(net),Math.round(tax),Math.round(gross)].join(',');
+      var n=mchart.cloneNode(true);mchart.parentNode.replaceChild(n,mchart);mchart=n;
+      if(window.abanBoot3d) window.abanBoot3d(mchart);
+    },150);
   }
   landEl.addEventListener("change",function(){fillSatz();run();});
   satzEl.addEventListener("change",run);
@@ -152,6 +166,7 @@ footer a{color:var(--muted)}
   fillSatz();run();
 })();
 </script>
+<script defer src="/js/aban3d.js"></script>
 <script defer src="/js/announce.js"></script>
 </body>
 </html>
