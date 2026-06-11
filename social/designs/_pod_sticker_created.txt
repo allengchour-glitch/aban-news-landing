@@ -58,6 +58,16 @@ ch-sali-zaeme
 ch-schoggi-bar
 ch-swiss-army-knife
 ch-znueni
+chameleon
+checker-heart
+cheese
+cherry-pie
+chick
+christmas-tree
+cocktail
+coconut
+comet
+constellation
 cookie
 croc-cute
 croissant
