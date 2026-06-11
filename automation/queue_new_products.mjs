@@ -64,21 +64,35 @@ function existingHandles(csvText) {
   return set;
 }
 
-// Caption + Hashtags je Produkttyp
+// Caption + Hashtags je Produkttyp.
+// REACH-Tags vorne (#schweiz/#ootdschweiz zogen lt. TikTok-Analyse die meiste Reichweite),
+// dann produktspezifische Nischen-Tags.
 function hashtags(pt = '') {
   pt = pt.toLowerCase();
-  const base = '#luxestyle #schweizmode #onlineshopping';
-  if (/(kleid|dress|rock|skirt)/.test(pt)) return base + ' #sommerkleid #ootd';
-  if (/(tasche|bag|handtasche|crossbody)/.test(pt)) return base + ' #handtasche #bag';
-  if (/(ohrring|halskette|armband|ring|schmuck|earring|necklace|bracelet)/.test(pt)) return base + ' #schmuck #jewelry #geschenkidee';
-  if (/(hut|cap|hat|mütze|beret)/.test(pt)) return base + ' #accessoires #hut';
-  if (/(blazer|jacke|cardigan|hoodie|set|mode)/.test(pt)) return base + ' #fashion #ootdschweiz';
-  if (/(beauty|wellness|pflege|serum|roller)/.test(pt)) return base + ' #beauty #selfcare';
-  if (/(vase|deko|wohnen|home|lampe|kerze)/.test(pt)) return base + ' #interior #homedecor';
-  return base + ' #neu #geschenkidee';
+  const reach = '#schweiz #ootdschweiz #schweizmode';
+  if (/(kleid|dress|rock|skirt)/.test(pt)) return reach + ' #sommerkleid #luxestyle';
+  if (/(tasche|bag|handtasche|crossbody)/.test(pt)) return reach + ' #handtasche #luxestyle';
+  if (/(ohrring|halskette|armband|ring|schmuck|earring|necklace|bracelet)/.test(pt)) return reach + ' #schmuck #luxestyle';
+  if (/(hut|cap|hat|mütze|beret)/.test(pt)) return reach + ' #accessoires #luxestyle';
+  if (/(blazer|jacke|cardigan|hoodie|set|mode|shirt|hemd)/.test(pt)) return reach + ' #fashionschweiz #luxestyle';
+  if (/(beauty|wellness|pflege|serum|roller)/.test(pt)) return reach + ' #selfcare #luxestyle';
+  if (/(vase|deko|wohnen|home|lampe|kerze)/.test(pt)) return reach + ' #homedecor #luxestyle';
+  return reach + ' #neu #luxestyle';
 }
-function caption(title, handle, pt) {
-  return `Neu bei LuxeStyle ✨ ${title}. 🇨🇭 Jetzt entdecken → luxestyle.ch/products/${handle} · –10% mit Code WELCOME10\n${hashtags(pt)}`;
+// Gewinner-Formel (TikTok-Analyse 2026-06-11): Hook → Produkt + PREIS → FRAGE-CTA (Kommentare!)
+// → WELCOME10 → Link → Reach-/Nischen-Tags. Variantenreich (rotiert deterministisch per Handle).
+function caption(title, handle, pt, price) {
+  const chf = price ? `CHF ${Number(price).toFixed(2).replace(/\.00$/,'.–')}` : '';
+  const link = `luxestyle.ch/products/${handle}`;
+  const t = String(title).replace(/\s+[–—]\s+.*$/,'').replace(/\s+-\s+.*$/,'').trim();   // Kurztitel: nur bei " – "/" - " mit Leerzeichen trennen (nicht bei Wort-Bindestrichen)
+  const V = [
+    `Neu bei LuxeStyle ✨ ${t}${chf?` – nur ${chf}`:''} 🇨🇭 Welche Farbe wäre deins? Kommentier 👇 –10% mit Code WELCOME10 → ${link}`,
+    `${t}${chf?` für ${chf}`:''} 👀 Spar dir den Designer-Preis. 1, 2 oder 3 – welches nimmst du? 👇 –10% WELCOME10 → ${link}`,
+    `Dein nächster Liebling? ${t}${chf?` ab ${chf}`:''} 🤍 Sag uns deine Frage in den Kommentaren 👇 –10% WELCOME10 → ${link}`,
+    `${t} 🌸${chf?` Nur ${chf}.`:''} Würdest du’s tragen? Ja/Nein 👇 Schweizer Shop · –10% Code WELCOME10 → ${link}`,
+  ];
+  const idx = [...handle].reduce((a,c)=>a+c.charCodeAt(0),0) % V.length;
+  return `${V[idx]}\n${hashtags(pt)}`;
 }
 
 (async () => {
@@ -90,7 +104,7 @@ function caption(title, handle, pt) {
 
   // zuletzt angelegte ACTIVE cj-real Produkte
   const d = await shopify(`query{ products(first:50, query:"status:active AND tag:cj-real", sortKey:CREATED_AT, reverse:true){
-      nodes{ title handle productType featuredImage{ url } } } }`);
+      nodes{ title handle productType featuredImage{ url } priceRangeV2{ minVariantPrice{ amount } } } } }`);
   const prods = (d.products?.nodes || []);
 
   const rows = [];
@@ -101,7 +115,8 @@ function caption(title, handle, pt) {
     const img = p.featuredImage?.url || '';
     if (!handle || have.has(handle)) continue;       // schon in Queue
     if (!isJpg(img)) continue;                        // Meta-JPG-Pflicht
-    const cap = caption(p.title, handle, p.productType || '');
+    const price = p.priceRangeV2?.minVariantPrice?.amount || '';
+    const cap = caption(p.title, handle, p.productType || '', price);
     rows.push([handle, today, img, q(cap), q('instagram,facebook,threads'), 'ready', '', ''].join(','));
     have.add(handle);
   }
