@@ -28,15 +28,15 @@ const TAGS_MODE = '#schweizmode #sommerkleid #ootdschweiz #fashionreels #luxesty
 const TAGS_ACC  = '#schweizmode #handtasche #ootdschweiz #fashionreels #luxestyle';
 const CLIPS = [
   { id:'veo-brise', date:'2026-06-13', file:'reels/veo-hero-brise-2026-06-08.mp4',
-    cap:'Sommer in Bewegung 🌬️ Off-Shoulder-Kleid «Brise» — luftig, ärmellos, schmeichelhaft. Unser Bestseller. –10% mit Code WELCOME10 👉 '+SITE+'/products/off-shoulder-kleid-brise-locker-armellos', tags:TAGS_MODE },
+    cap:'Sommer in Bewegung 🌬️ Off-Shoulder-Kleid «Brise» — luftig, ärmellos, schmeichelhaft. Unser Bestseller. –10% mit Code WELCOME10 · 🔗 Link in Bio', tags:TAGS_MODE },
   { id:'veo-daisy', date:'2026-06-14', file:'reels/veo-hero-daisy-2026-06-08.mp4',
-    cap:'Retro-Charme zum Leben erweckt 🎀 Polka-Dot-Kleid «Daisy» — Vintage-Look mit tiefem V & Schleife. Schweizer Shop · –10% mit WELCOME10 👉 '+SITE+'/products/polka-dot-retro-kleid-daisy-deep-v-mit-schleife', tags:TAGS_MODE },
+    cap:'Retro-Charme zum Leben erweckt 🎀 Polka-Dot-Kleid «Daisy» — Vintage-Look mit tiefem V & Schleife. Schweizer Shop · –10% mit WELCOME10 · 🔗 Link in Bio', tags:TAGS_MODE },
   { id:'veo-sirene', date:'2026-06-15', file:'reels/veo-hero-sirene-2026-06-08.mp4',
-    cap:'Der grosse Auftritt 🧜‍♀️ Abendkleid «Sirène» — High-Slit, Meerjungfrau-Silhouette, Schleppe. Premium-Look von deinem Schweizer Shop · –10% WELCOME10 👉'+SITE+'/products/abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe', tags:TAGS_MODE },
+    cap:'Der grosse Auftritt 🧜‍♀️ Abendkleid «Sirène» — High-Slit, Meerjungfrau-Silhouette, Schleppe. Premium-Look von deinem Schweizer Shop · –10% WELCOME10 · 🔗 Link in Bio', tags:TAGS_MODE },
   { id:'veo-cosy', date:'2026-06-16', file:'reels/veo-hero-cosy-2026-06-08.mp4',
-    cap:'Soft-Season ✨ Kapuzen-Cardigan «Cosy» — kuschelig, viele Farben, Knopfleiste + Kapuze. Schweizer Shop · –10% mit WELCOME10 👉 '+SITE+'/products/kapuzen-cardigan-cosy-uni-mit-knopfen-damen', tags:TAGS_MODE },
+    cap:'Soft-Season ✨ Kapuzen-Cardigan «Cosy» — kuschelig, viele Farben, Knopfleiste + Kapuze. Schweizer Shop · –10% mit WELCOME10 · 🔗 Link in Bio', tags:TAGS_MODE },
   { id:'veo-nuit', date:'2026-06-17', file:'reels/veo-hero-nuit-2026-06-08.mp4',
-    cap:'Dein Abend-Begleiter 🌙 Crossbody-Tasche «Nuit» — eleganter Vintage-Look, verstellbarer Riemen. Nur CHF 24.90 · –10% mit WELCOME10 👉 '+SITE+'/products/crossbody-tasche-nuit-elegant-im-vintage-look', tags:TAGS_ACC },
+    cap:'Dein Abend-Begleiter 🌙 Crossbody-Tasche «Nuit» — eleganter Vintage-Look, verstellbarer Riemen. Nur CHF 24.90 · –10% mit WELCOME10 · 🔗 Link in Bio', tags:TAGS_ACC },
 ];
 
 const csv = s => '"'+String(s).replace(/"/g,'""')+'"';

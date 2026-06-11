@@ -16,9 +16,9 @@ TAGSETS=(
 # Algo stoppt Verteilung. Darum JEDE Caption jetzt mit: Frage-CTA (Kommentar) + Save-CTA (📌) +
 # Follow-CTA (Reichweite→Follower). Hook → Produkt+PREIS → Frage → Speichern/Folgen → WELCOME10 → Link.
 CAPS=(
-  "CHF 34.90 statt Designer-Preis 👀 %s — welche Farbe wäre deins? Kommentier 👇 📌 Speichern für später · folge für die Sommer-Drops · −10%% WELCOME10 → luxestyle.ch"
-  "%s unter CHF 40 ☀️ 1, 2 oder 3 — welches nimmst du? 👇 Folge für mehr Looks 🤍 −10%% WELCOME10 → luxestyle.ch"
-  "%s 🤍 Den Link willst du? Schreib LINK 👇 — kommt direkt · 📌 speicher's dir · −10%% WELCOME10 → luxestyle.ch"
-  "Speicher dir das 📌 %s ✨ Welche Variante? 👇 Folge für täglich neue Looks von deinem Schweizer Shop · −10%% WELCOME10 → luxestyle.ch"
-  "%s zum fairen Preis 🇨🇭 Schreib LINK 👇 für den Direkt-Link · folge @luxestyle.ch für mehr · −10%% WELCOME10 → luxestyle.ch"
+  "CHF 34.90 statt Designer-Preis 👀 %s — welche Farbe wäre deins? Kommentier 👇 📌 Speichern für später · folge für die Sommer-Drops · −10%% WELCOME10 🔗 Link in Bio"
+  "%s unter CHF 40 ☀️ 1, 2 oder 3 — welches nimmst du? 👇 Folge für mehr Looks 🤍 −10%% WELCOME10 🔗 Link in Bio"
+  "%s 🤍 Den Link willst du? Schreib LINK 👇 — kommt direkt · 📌 speicher's dir · −10%% WELCOME10 🔗 Link in Bio"
+  "Speicher dir das 📌 %s ✨ Welche Variante? 👇 Folge für täglich neue Looks von deinem Schweizer Shop · −10%% WELCOME10 🔗 Link in Bio"
+  "%s zum fairen Preis 🇨🇭 Schreib LINK 👇 für den Direkt-Link · folge @luxestyle.ch für mehr · −10%% WELCOME10 🔗 Link in Bio"
 )

@@ -83,7 +83,7 @@ const exists=fs.existsSync(QUEUE)&&fs.statSync(QUEUE).size>0;
 const already=exists&&fs.readFileSync(QUEUE,'utf8').split('\n').some(l=>l.startsWith(id+','));
 if(!already){
   const names=list.map(p=>p.label.split('·')[0].trim()).slice(0,5).join(' · ');
-  const cap=`Neue Sommer-Favoriten ✨ ${names} & mehr bei LuxeStyle 🇨🇭 -10% mit WELCOME10 → ${SITE}/collections/sommer\n#schweizmode #sommermode2026 #ootdschweiz #fashionreels #luxestyle`;
+  const cap=`Neue Sommer-Favoriten ✨ ${names} & mehr bei LuxeStyle 🇨🇭 -10% mit WELCOME10 · 🔗 Link in Bio\n#schweizmode #sommermode2026 #ootdschweiz #fashionreels #luxestyle`;
   let out=exists?'':'id,scheduled_date,video_url,caption,platforms,status,posted_at,post_url\n';
   out+=[id,date,`${OUT_BASE}/reels/montage-${date}.mp4`,cap,'instagram,facebook,threads','ready','',''].map(esc).join(',')+'\n';
   fs.appendFileSync(QUEUE,out);
