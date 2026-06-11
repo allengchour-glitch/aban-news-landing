@@ -44,6 +44,31 @@ import time
 STATE_DIR = os.path.expanduser("~/.luxe-browser")
 
 
+def _brave_path():
+    """Findet Brave (oder BROWSER_EXE). Brave = Chromium → läuft über deine Heim-IP (IG blockt nicht)."""
+    if os.environ.get("BROWSER_EXE"):
+        return os.environ["BROWSER_EXE"]
+    for c in (
+        r"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe",
+        r"C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe",
+        "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
+        "/usr/bin/brave-browser", "/usr/bin/brave",
+    ):
+        if os.path.exists(c):
+            return c
+    return None
+
+
+def _launch(p, headless=True):
+    """Startet Chromium — bevorzugt Brave, falls vorhanden (sonst Playwright-Chromium)."""
+    exe = _brave_path()
+    kw = {"headless": headless}
+    if exe:
+        kw["executable_path"] = exe
+        print("(nutze Brave: %s)" % exe)
+    return p.chromium.launch(**kw)
+
+
 def _pw():
     try:
         from playwright.sync_api import sync_playwright
@@ -70,7 +95,7 @@ def cmd_login(args):
     """Sichtbaren Browser öffnen, User loggt sich von Hand ein, Session speichern."""
     os.makedirs(STATE_DIR, exist_ok=True)
     with _pw()() as p:
-        b = p.chromium.launch(headless=False)
+        b = _launch(p, headless=False)
         ctx = b.new_context()
         page = ctx.new_page()
         page.goto(args.url, wait_until="domcontentloaded", timeout=60000)
@@ -88,7 +113,7 @@ def cmd_login(args):
 
 # ------------------------------------------------------------------
 def _ctx(p, profile, headless=True):
-    b = p.chromium.launch(headless=headless)
+    b = _launch(p, headless=headless)
     ctx = b.new_context(storage_state=_need_state(profile),
                         viewport={"width": 1280, "height": 1000},
                         user_agent=("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -187,6 +212,79 @@ def cmd_tiktok_delete(args):
     print("✓ TikTok-Löschversuch fertig. Vergleiche tt-before.png / tt-after.png.")
 
 
+def cmd_list(args):
+    """Listet Post-/Reel-/Video-Links eines Profils (zum Aufräumen). Scrollt für mehr."""
+    sel = {
+        "instagram": 'a[href*="/p/"], a[href*="/reel/"]',
+        "tiktok": 'a[href*="/video/"]',
+    }.get(args.profile, "a[href]")
+    with _pw()() as p:
+        b, ctx = _ctx(p, args.profile, headless=not args.sichtbar)
+        page = ctx.new_page()
+        page.goto(args.url, wait_until="networkidle", timeout=45000)
+        time.sleep(3)
+        for _ in range(args.scroll):
+            page.mouse.wheel(0, 4000); time.sleep(1.5)
+        hrefs = page.eval_on_selector_all(sel, "els => [...new Set(els.map(e => e.href))]")
+        b.close()
+    for h in hrefs:
+        print(h)
+    print("\n(%d Links — kopier die zu löschenden und schick sie Claude)" % len(hrefs))
+
+
+def cmd_tiktok_upload(args):
+    """Lädt ein Video (URL→Download oder lokaler Pfad) in TikTok hoch. Brave sichtbar.
+    Ohne --confirm: Datei + Caption werden vorbereitet, du klickst 'Posten' selbst (sicherer)."""
+    import urllib.request
+    import tempfile
+    src = args.video
+    if src.startswith("http"):
+        fd, path = tempfile.mkstemp(suffix=".mp4"); os.close(fd)
+        print("Lade Video herunter …")
+        urllib.request.urlretrieve(src, path)
+    else:
+        path = os.path.abspath(src)
+    if not os.path.exists(path):
+        sys.exit("! Videodatei nicht gefunden: %s" % path)
+    with _pw()() as p:
+        b, ctx = _ctx(p, "tiktok", headless=False)  # Upload braucht sichtbaren Browser
+        page = ctx.new_page()
+        page.goto("https://www.tiktok.com/tiktokstudio/upload?lang=de", wait_until="networkidle", timeout=60000)
+        time.sleep(4)
+        # Datei wählen (Input kann versteckt/in iframe sein → mehrere Strategien)
+        try:
+            page.locator('input[type="file"]').first.set_input_files(path, timeout=8000)
+        except Exception:
+            for fr in page.frames:
+                try:
+                    fr.locator('input[type="file"]').first.set_input_files(path, timeout=4000); break
+                except Exception:
+                    continue
+        time.sleep(10)
+        if args.caption:
+            cap = page.locator('div[contenteditable="true"]').first
+            try:
+                cap.click(); cap.type(args.caption, delay=15)
+            except Exception:
+                pass
+        time.sleep(2)
+        page.screenshot(path="tt-upload.png")
+        if args.confirm:
+            _click_first(page, ['button:has-text("Posten")', 'button:has-text("Post")',
+                                 'button[data-e2e="post_video_button"]'])
+            time.sleep(8); page.screenshot(path="tt-upload-done.png")
+            print("✓ Gepostet (versucht). tt-upload-done.png prüfen.")
+            b.close(); return
+        print("\n>>> Video geladen + Caption gesetzt (tt-upload.png). Prüfe es im Browser und")
+        print(">>> klicke selbst auf 'Posten'. Danach hier ENTER zum Schliessen …")
+        try:
+            input()
+        except EOFError:
+            time.sleep(120)
+        b.close()
+    print("✓ TikTok-Upload fertig.")
+
+
 # ------------------------------------------------------------------
 def main():
     p = argparse.ArgumentParser(description="Eingeloggter Browser-Agent (Playwright).")
@@ -212,6 +310,18 @@ def main():
     tt.add_argument("url"); tt.add_argument("--confirm", action="store_true")
     tt.add_argument("--sichtbar", action="store_true")
     tt.set_defaults(func=cmd_tiktok_delete)
+
+    ls = sub.add_parser("list", help="Post-/Video-Links eines Profils auflisten (zum Aufräumen)")
+    ls.add_argument("profile"); ls.add_argument("url")
+    ls.add_argument("--scroll", type=int, default=6, help="wie oft scrollen (mehr = mehr Posts)")
+    ls.add_argument("--sichtbar", action="store_true")
+    ls.set_defaults(func=cmd_list)
+
+    up = sub.add_parser("tiktok-upload", help="Video (URL oder Datei) in TikTok hochladen")
+    up.add_argument("video", help="CDN-URL (https://…mp4) oder lokaler Pfad")
+    up.add_argument("--caption", default="", help="Beschreibung/Hashtags")
+    up.add_argument("--confirm", action="store_true", help="automatisch posten (sonst du klickst)")
+    up.set_defaults(func=cmd_tiktok_upload)
 
     args = p.parse_args()
     args.func(args)
