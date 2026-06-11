@@ -4,6 +4,29 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-11 (Teil 4) — SEO/Indexierung + KRITISCHER Redirect-Loop-Fix
+- **🔴 KRITISCH (Hauptursache für „0 Traffic / nicht indexiert"):** `_redirects` enthielt **67 selbst-
+  referenzielle Zeilen** `/X → /X.html` (z. B. `/founding → /founding.html`, `/online-tools`, alle Tools,
+  Geld-Seiten). Der Host leitet automatisch `/X.html → /X` (saubere URLs, 308) — zusammen ergab das
+  **Endlosschleifen** (`/founding.html →308→ /founding →301→ /founding.html → …`, ERR_TOO_MANY_REDIRECTS).
+  → **founding.html (Premium-Kauf!) + ~60 Seiten waren für Besucher UND Googlebot komplett unerreichbar.**
+  Fix: alle 67 `/X → /X.html`-Zeilen entfernt; Host liefert saubere URLs selbst (200). Live verifiziert:
+  founding/branchen/mahnung/rechnung/online-tools = 200 (1 Hop). Echte Aliasse (z. B. `/geld → /geld-und-ki.html`) bleiben.
+  **⛔ REGEL: NIE wieder `/X → /X.html`-Redirects anlegen — Loop-Falle!** Aliasse immer auf einen ANDEREN Basename.
+- **Branchen-Hub gebaut** (Indexierungs-Hebel für 355 verwaiste `ki-fuer-*`): neu `branchen.html` listet alle
+  355 (Generator `tools/build_branchen_hub.py`, Live-Filter). Alle 355 verlinken im Footer zurück (Hub-and-
+  Spoke). Von Startseite (Karte + Footer) + Sitemap (0.9) + Redirect `/branchen` verlinkt.
+- **Google Search Console (User-Seite):** Domain-Property `sc-domain:abannews.com` schon verifiziert (DNS).
+  Sitemap `sitemap.xml` eingereicht (Status erfolgreich, aber Google las Stand 02.06 = 271 URLs; jetzt 1992 →
+  neu einreichen lassen). Alte kaputte 2016-`http://`-Sitemap sollte entfernt werden. Stand: 34 indexiert /
+  109 nicht — erklärt durch den Loop-Bug. Top-Seiten via „Indexierung beantragen" angestoßen.
+- **Sitemap NICHT auf saubere URLs umstellen** (bewusst): würde den `.html`-Canonicals widersprechen +
+  Bots erzeugen wieder `.html`. Loop-Fix reicht; Google folgt dem einen 308.
+- **SEO-Hygiene:** Sitemap 404-frei (6 tote fischzucht/mosterei-Einträge raus), IT-hreflang repariert.
+  robots.txt erlaubt GPTBot/ClaudeBot/PerplexityBot (gut für KI-Suche).
+- **Homepage-Conversion:** Freelancer-Tools (Rechnung/Mahnung) als Karten 2&3 in Geld-Sektion; „Tools"-Link
+  in Hauptnav; EN-Homepage „Money & AI — free tools"-Sektion.
+
 ## 2026-06-11 (Teil 3) — Freelancer-Tools + Cluster-QA (autonom, „weiter"-Loop)
 - **2 neue Funnel-Seiten (DE+EN, Tool, Premium-Block, FAQPage, keine Beratung):**
   `kleinunternehmerregelung-einfach-erklaert` (Schnell-Check DE/AT/CH, Grenzen Stand 2025) +
