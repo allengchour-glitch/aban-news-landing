@@ -12,7 +12,19 @@ if(!SHOP||!CID||!SECRET){ console.log('Shopify-Creds fehlen → No-op.'); proces
 async function token(){ const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:SECRET,grant_type:'client_credentials'})}); const j=await r.json().catch(()=>({})); if(!j.access_token){ console.error('Token-Fehler',r.status,JSON.stringify(j).slice(0,200)); process.exit(1);} return j.access_token; }
 async function gql(tok,query,variables){ const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':tok},body:JSON.stringify({query,variables})}); return r.json(); }
 
-const Q=`query($after:String){ products(first:30, query:"tag:wunschdesign", after:$after){ pageInfo{hasNextPage endCursor}
+// Helle Produkt-Vorlagen für die Editor-Canvas (statt leerem Kasten): Kunde gestaltet auf dem Produkt.
+const TPL_BASE='https://abannews.com/pod/templates/';
+const TPL_BY_TYPE={'tasse':'tasse','t-shirt':'shirt','kissen':'kissen','tasche':'tote','poster':'poster','magnet':'magnet','bügeltransfer':'buegeltransfer','buegeltransfer':'buegeltransfer','mauspad':'mousepad'};
+const TPL_BY_TAG={'pod-mug':'tasse','pod-shirt':'shirt','pod-cushion':'kissen','pod-tote':'tote','pod-poster':'poster','pod-magnet':'magnet','pod-mousepad':'mousepad','buegeltransfer':'buegeltransfer','bügelbild':'buegeltransfer'};
+function templateFor(p){
+  var t=(p.productType||'').toLowerCase().trim();
+  if(TPL_BY_TYPE[t]) return TPL_BASE+TPL_BY_TYPE[t]+'.png';
+  var tags=(p.tags||[]).map(x=>String(x).toLowerCase());
+  for(var k in TPL_BY_TAG){ if(tags.indexOf(k)>=0) return TPL_BASE+TPL_BY_TAG[k]+'.png'; }
+  return '';
+}
+
+const Q=`query($after:String){ products(first:30, query:"tag:wunschdesign OR tag:selbst-gestalten", after:$after){ pageInfo{hasNextPage endCursor}
   edges{ node{ id title descriptionHtml productType tags
     variants(first:1){ edges{ node{ id } } }
     media(first:15){ edges{ node{ ... on MediaImage{ image{ url } } } } } } } } }`;
@@ -45,10 +57,12 @@ do{
     const urls=p.media.edges.map(m=>m.node&&m.node.image&&m.node.image.url).filter(Boolean);
     const {front,back}=pickImgs(urls);
     const vid=(p.variants.edges[0]&&p.variants.edges[0].node.id)||'';
-    if(!front){ console.log(`– ${p.title}: kein Bild, übersprungen`); continue; }
+    const tpl=templateFor(p);            // helle Produkt-Vorlage als Editor-Hintergrund (bevorzugt)
+    const bg=tpl||front;                 // Fallback: Produkt-/Marketingbild
+    if(!bg){ console.log(`– ${p.title}: kein Bild, übersprungen`); continue; }
     const isPoster=(p.productType||'').toLowerCase()==='poster' || (p.tags||[]).map(t=>String(t).toLowerCase()).includes('pod-poster');
     const clean=stripOld(p.descriptionHtml||'');
-    const newDesc=snippet(front, isPoster?'':back, vid, isPoster)+clean;
+    const newDesc=snippet(bg, tpl?'':(isPoster?'':back), vid, isPoster)+clean;
     if(newDesc===p.descriptionHtml){ console.log(`= ${p.title}: unverändert`); continue; }
     if(DRY){ console.log(`DRY ${p.title}: front=${front.split('/').pop()} back=${back?back.split('/').pop():'–'}`); changed++; continue; }
     const r=await gql(tok,M,{p:{id:p.id,descriptionHtml:newDesc}});
