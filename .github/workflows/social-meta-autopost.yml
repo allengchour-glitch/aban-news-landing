@@ -11,9 +11,10 @@ name: Social Meta Auto-Post (IG + FB + Threads)
 
 on:
   schedule:
-    # 2×/Tag, gestaffelt: 08:00 & 17:00 UTC (≈ 10:00 / 19:00 CH)
-    - cron: '0 8 * * *'
-    - cron: '0 17 * * *'
+    # 2×/Tag, versetzt zu den Reel-Slots (09/20): 14:00 & 18:00 UTC (≈ 16:00 / 20:00 CH)
+    # (IG-Analyse 11.06.: 14h Ø61 Reach, 18h gut gesampelt — Bild-Posts auf die stärkeren Rest-Slots.)
+    - cron: '0 14 * * *'
+    - cron: '0 18 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -51,6 +52,7 @@ jobs:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
           THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          SKIP_THREADS: '1'   # Threads NICHT mit Bild-Spam fluten (Account ist geblockt/0 Follower) → eigener Text-Post-Cron
           MAX_PER_RUN: '1'
           DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
         run: node automation/social-autopost-meta.mjs

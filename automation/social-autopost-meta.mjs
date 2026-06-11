@@ -32,6 +32,10 @@ const FB_ID = process.env.FB_PAGE_ID || '';
 const FB_TOK = process.env.FB_PAGE_ACCESS_TOKEN || process.env.META_ACCESS_TOKEN || '';
 const TH_ID = process.env.THREADS_USER_ID || '';
 const TH_TOK = process.env.THREADS_ACCESS_TOKEN || '';
+// Threads-Drossel: bei SKIP_THREADS=1 werden Bild-/Video-Posts NICHT auf Threads gespiegelt.
+// Grund: ein neuer 0-Follower-Account wird bei 4×/Tag Produkt-Posts als Spam ge-action-blockt.
+// Threads bekommt stattdessen 1 gesprächigen Text-Post/Tag (automation/threads-text-post.mjs).
+const SKIP_THREADS = process.env.SKIP_THREADS === '1';
 
 const COLS = ['id','scheduled_date','image_url','caption','platforms','status','posted_at','post_url'];
 
@@ -155,7 +159,7 @@ for(const next of ready.slice(0, MAX)){
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
   const wantFB = !plat.trim() || /facebook|\bfb\b/.test(plat);
-  const wantTH = !plat.trim() || /threads/.test(plat);
+  const wantTH = !SKIP_THREADS && (!plat.trim() || /threads/.test(plat));
   console.log(`→ Post ${next[idx.id]} | Kanäle: ${[wantIG&&'IG',wantFB&&'FB',wantTH&&'Threads'].filter(Boolean).join('+')} | ${imageUrl}`);
   if(DRY){ console.log(`   DRY_RUN: würde senden.`); postedCount++; continue; }
 

@@ -32,7 +32,7 @@ const CLIPS = [
   { id:'veo-daisy', date:'2026-06-14', file:'reels/veo-hero-daisy-2026-06-08.mp4',
     cap:'Retro-Charme zum Leben erweckt 🎀 Polka-Dot-Kleid «Daisy» — Vintage-Look mit tiefem V & Schleife. Schweizer Shop · –10% mit WELCOME10 👉 '+SITE+'/products/polka-dot-retro-kleid-daisy-deep-v-mit-schleife', tags:TAGS_MODE },
   { id:'veo-sirene', date:'2026-06-15', file:'reels/veo-hero-sirene-2026-06-08.mp4',
-    cap:'Der grosse Auftritt 🧜‍♀️ Abendkleid «Sirène» — High-Slit, Meerjungfrau-Silhouette, Schleppe. Premium aus der Schweiz · –10% WELCOME10 👉 '+SITE+'/products/abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe', tags:TAGS_MODE },
+    cap:'Der grosse Auftritt 🧜‍♀️ Abendkleid «Sirène» — High-Slit, Meerjungfrau-Silhouette, Schleppe. Premium-Look von deinem Schweizer Shop · –10% WELCOME10 👉'+SITE+'/products/abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe', tags:TAGS_MODE },
   { id:'veo-cosy', date:'2026-06-16', file:'reels/veo-hero-cosy-2026-06-08.mp4',
     cap:'Soft-Season ✨ Kapuzen-Cardigan «Cosy» — kuschelig, viele Farben, Knopfleiste + Kapuze. Schweizer Shop · –10% mit WELCOME10 👉 '+SITE+'/products/kapuzen-cardigan-cosy-uni-mit-knopfen-damen', tags:TAGS_MODE },
   { id:'veo-nuit', date:'2026-06-17', file:'reels/veo-hero-nuit-2026-06-08.mp4',

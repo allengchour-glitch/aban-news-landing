@@ -109,7 +109,7 @@ function queueReel(name, label, handle, fileName){
   const url = handle ? `${SITE}/products/${handle}` : SITE;
   const today = new Date().toISOString().slice(0,10);
   const videoUrl = `${OUT_BASE}/reels/${fileName}`;
-  const caption = `${label} ✨ Sommer-Mode aus der Schweiz · -10% mit Code WELCOME10 → ${url}`;
+  const caption = `${label} ✨ Sommer-Mode von deinem Schweizer Shop · -10% mit Code WELCOME10 → ${url}`;
   const row = [ `veo-${name}-${today}`, today, videoUrl, caption, REEL_HASHTAGS, 'tiktok,instagram', 'ready', '', '' ];
   const exists = fs.existsSync(REELS_CSV) && fs.statSync(REELS_CSV).size>0;
   let out = exists ? '' : 'id,scheduled_date,video_url,caption,hashtags,platforms,status,posted_at,post_url\n';

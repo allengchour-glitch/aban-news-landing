@@ -18,7 +18,7 @@ TAGSETS=(
 CAPS=(
   "CHF 34.90 statt Designer-Preis 👀 %s — welche Farbe wäre deins? Kommentier 👇 📌 Speichern für später · folge für die Sommer-Drops · −10%% WELCOME10 → luxestyle.ch"
   "%s unter CHF 40 ☀️ 1, 2 oder 3 — welches nimmst du? 👇 Folge für mehr Looks 🤍 −10%% WELCOME10 → luxestyle.ch"
-  "Dein nächster Lieblings-Look? %s 🤍 Frage in die Kommentare 👇 📌 Speicher's dir · −10%% WELCOME10 → luxestyle.ch"
-  "Speicher dir das 📌 %s ✨ Welche Variante? 👇 Folge für täglich neue Schweizer Looks · −10%% WELCOME10 → luxestyle.ch"
-  "%s zum fairen Preis 🇨🇭 Kommentier 1/2/3 👇 folge @luxestyle.ch für mehr · −10%% WELCOME10 → luxestyle.ch"
+  "%s 🤍 Den Link willst du? Schreib LINK 👇 — kommt direkt · 📌 speicher's dir · −10%% WELCOME10 → luxestyle.ch"
+  "Speicher dir das 📌 %s ✨ Welche Variante? 👇 Folge für täglich neue Looks von deinem Schweizer Shop · −10%% WELCOME10 → luxestyle.ch"
+  "%s zum fairen Preis 🇨🇭 Schreib LINK 👇 für den Direkt-Link · folge @luxestyle.ch für mehr · −10%% WELCOME10 → luxestyle.ch"
 )
