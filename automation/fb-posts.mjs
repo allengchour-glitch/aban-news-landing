@@ -34,7 +34,9 @@ if (!TOK) { console.error('❌ Kein gültiges Page-Token (FB_PAGE_ACCESS_TOKEN p
 if (MODE === 'delete') {
   if (DEL_IDS.length === 0) { console.log('MODE=delete, aber FB_DELETE_IDS leer → nichts gelöscht (Sicherheit).'); process.exit(0); }
   console.log(`\n🗑️  Lösche ${DEL_IDS.length} Post(s)…`);
-  for (const id of DEL_IDS) {
+  for (const raw of DEL_IDS) {
+    // Komfort: IDs ohne Page-Präfix (nur Suffix aus dem list-Log) automatisch ergänzen.
+    const id = raw.includes('_') ? raw : `${FB_ID}_${raw}`;
     const r = await g(`https://graph.facebook.com/${V}/${id}?access_token=${encodeURIComponent(TOK)}`, { method: 'DELETE' });
     if (r.ok && r.j.success !== false) console.log(`   ✓ gelöscht: ${id}`);
     else console.error(`   ✗ ${id}:`, r.status, JSON.stringify(r.j.error || r.j).slice(0, 160));
