@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,10 +297,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>AMD <span class="hl">AMD</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="amd" data-type="stock">452.40 USD</span>
-        <span class="chg down">-4.86 %</span>
+        <span class="px" id="livePrice" data-id="amd" data-type="stock">475.54 USD</span>
+        <span class="chg up">+5.11 %</span>
         <span class="tag-type">Stock</span>
-        <span class="badge bearish">Bearish</span>
+        <span class="badge bullish">Bullish</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Stock is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -300,11 +310,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">542.52</text><text x="586" y="204" font-size="12" fill="#64748b">414.05</text><path d="M10.0,200 L10.0,133.8 L37.1,149.4 L64.3,153.5 L91.4,147.3 L118.6,185.1 L145.7,189.7 L172.9,200.0 L200.0,150.4 L227.1,147.4 L254.3,120.9 L281.4,67.1 L308.6,79.5 L335.7,46.1 L362.9,49.1 L390.0,57.9 L417.1,41.0 L444.3,10.0 L471.4,38.6 L498.6,122.6 L525.7,87.2 L552.9,109.1 L580.0,143.3 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,133.8 37.1,149.4 64.3,153.5 91.4,147.3 118.6,185.1 145.7,189.7 172.9,200.0 200.0,150.4 227.1,147.4 254.3,120.9 281.4,67.1 308.6,79.5 335.7,46.1 362.9,49.1 390.0,57.9 417.1,41.0 444.3,10.0 471.4,38.6 498.6,122.6 525.7,87.2 552.9,109.1 580.0,143.3" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="143.3" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="143.3" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">542.52</text><text x="586" y="204" font-size="12" fill="#64748b">414.05</text><path d="M10.0,200 L10.0,133.8 L35.9,149.4 L61.8,153.5 L87.7,147.3 L113.6,185.1 L139.5,189.7 L165.5,200.0 L191.4,150.4 L217.3,147.4 L243.2,120.9 L269.1,67.1 L295.0,79.5 L320.9,46.1 L346.8,49.1 L372.7,57.9 L398.6,41.0 L424.5,10.0 L450.5,38.6 L476.4,122.6 L502.3,87.2 L528.2,109.1 L554.1,143.3 L580.0,109.1 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,133.8 35.9,149.4 61.8,153.5 87.7,147.3 113.6,185.1 139.5,189.7 165.5,200.0 191.4,150.4 217.3,147.4 243.2,120.9 269.1,67.1 295.0,79.5 320.9,46.1 346.8,49.1 372.7,57.9 398.6,41.0 424.5,10.0 450.5,38.6 476.4,122.6 502.3,87.2 528.2,109.1 554.1,143.3 580.0,109.1" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="109.1" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="109.1" r="3.4" fill="#0f9d6b"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-4.86 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-16.61 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-1.39 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">542.52 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">414.05 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">27.52 Mio</span></div><div class="kpi"><span class="kl">52w high</span><span class="kv">546.44 USD</span></div><div class="kpi"><span class="kl">52w low</span><span class="kv">115.06 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+5.11 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-9.11 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+3.65 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">542.52 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">414.05 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">16.42 Mio</span></div><div class="kpi"><span class="kl">52w high</span><span class="kv">546.44 USD</span></div><div class="kpi"><span class="kl">52w low</span><span class="kv">115.06 USD</span></div></div>
     </div>
   </section>
 
@@ -313,11 +323,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">AMD · AMD</span><span class="badge bearish">Bearish</span></div>
-        <p class="csignal">Starker Kursrückgang trotz positiver Bewertung.</p>
-        <p class="crat">AMD-Aktien fallen stark, obwohl einige Analysten sie immer noch als attraktiv bewerten und ein &#x27;signifikantes Premium&#x27; gegenüber Nvidia sehen.</p>
+        <div class="chead"><span class="cname">AMD · AMD</span><span class="badge bullish">Bullish</span></div>
+        <p class="csignal">Aktien erholen sich, AI-Potenzial.</p>
+        <p class="crat">AMD-Aktien erholen sich und Analysten sehen großes Potenzial im Bereich &#x27;agentic AI&#x27;.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Einige Analysten sehen AMD immer noch als attraktiv bewertet und mit einem &#x27;signifikanten Premium&#x27; gegenüber Nvidia.</li><li>Risiko: Der Aktienkurs fällt stark, und es gibt Stimmen, die zum Verkauf raten.</li><li>Einordnung: Die Nachrichtenlage ist negativ geprägt durch den starken Kursrückgang, trotz einiger positiver Analystenmeinungen.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Rallye der Aktien, BofA sieht 170 Milliarden USD &#x27;agentic AI&#x27;-Möglichkeit, Bedeutung der Oracle-Ergebnisse.</li><li>Risiko: &#x27;Retail Is Cashing Out&#x27;, &#x27;Inventory Doesn’t Lie&#x27; deutet auf Downgrade hin.</li><li>Einordnung: Die Nachrichtenlage ist gemischt, mit positivem Momentum durch AI-Potenzial, aber auch Warnsignalen.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on AMD</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPamdkQnMxVnFHZ1M0djZEclY4MVYxQ3RMeUZvQm0yRk9QTE01ZllyZEszVVkyeHZGN1V5Z0hUR2h6T0N3WjZGSUlKU055Sm9QUkdIeWlGSmZpREdxcXQ2ZlM2YnluUGFKdTFNWnZWS2g2TzhKWUc1VGhYLWJncFdfVzJSY3FlYVBQQVpSRDdHYk9fOFB5MkxZbUpTOA?oc=5" target="_blank" rel="noopener">Nvidia or AMD: Top Investor Says Only One AI Stock Is Worth Buying</a><div class="meta"><span>TipRanks</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQLXQ4YmpJVVBzSWtfNl90QjR6TmtsWnR0dTBQLVkwaDkwSWM1bkVleDNmVkl6TFFFNnlJbHF2QlpHdjlKbGlmZUwyWFd5c3VGVDNQVTFlSkFoRENNeTVCWWtXeWhUX2dldUNQZmpUM3RCRnZQSHpfZUdmS1dnSXd3VUZhdFlGLU0yT3Z1QUVhOTFVaHR0cTh5Tmlsa3BKbkRzU0toTUh2YXQ?oc=5" target="_blank" rel="noopener">AMD Stock And The Five-Billion Dollar Whisper</a><div class="meta"><span>Trefis</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNWGVLSDZBb2p2U2l5X2otN3k1S2lyMjFqQ0ZfVlh5RHJSeU1rcXpZaHVMa1oyVEpxdXZYZ1Zub3RsX1daelZzQ1FkOE1naWg1Yk5yTzV3Tl9pdEtlZTJEVnN0VUlJLTQ2YnI2N2J4bUhPTDdMZXZXc3VIVkxRZlM4aDM3TDNucDAwb2xuRk9haUp3RnBGLUNFbQ?oc=5" target="_blank" rel="noopener">AMD Is Soaring, But Here&#x27;s Why It&#x27;s Time To Say Goodbye (NASDAQ:AMD)</a><div class="meta"><span>Seeking Alpha</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNU2NWZWFjX1gybFp0U1FBaGplRFRMQWJBa2h3Qlo2RDItUlpIU3h0ME1UYVBDRXBKbk9uUE03QUFyUlhRa21DRjQ3X0c5TldrTVg1VHNramVwTWEzeVU4M1dnZDFfcUlvdTdzU0d0dkhTTHgtcnlYUjdVV2JSbmRvZHh6OTQ5a3FGTUlkUWhuSVRSMU96ZkxSSUdIdjh3X0E?oc=5" target="_blank" rel="noopener">Super Micro, AMD, Intel, Oracle, and More Stocks That Explain Today&#x27;s Market -- Barrons.com</a><div class="meta"><span>富途牛牛</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi4AFBVV95cUxQSGtWVXZ2Y3BWNWNuV3BBV2tYQzdYM1A4Z1BseHV5V1B0TVQyaW8xLVU0Szc4Zkpaak5SQm5PYkFQZ1pQYjZwRjJyc21Bd0Y5aGYzTHJTdlhDVEtPRDJrT1NreTFiNmJDS2lNQzBGOHBXVm5hTkFFejRTeTFRcTZBbjVRV0ZNYmpYczJnMGhfc25UQkJoNlFTQUt5NUVTenhfcERaM3RhTGFyV1hFYnNpUGgwT3diZjhRY3lOMExkYzAzalV2aktwS3l6cE5KOUd1ak5TWV9pQnJsQ2tRVGhKbQ?oc=5" target="_blank" rel="noopener">AMD Still Trades at a Significant Premium to Nvidia Stock: Don’t Miss Your Chance to Snag AMD Shares Here</a><div class="meta"><span>Barchart</span><span>· 09 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQR1ZUN2I2TzkzTTNWcGR5c0g3ZGE3UjlzUlZNQTZxQ1l5cGxBUnJ1eFF5UEpfZThMMFBseXk0RDhSVVF1M3dZclhsYkJnSjlDdnNDeGMydmVlTUdIbU9RUnZOZ0JVSlQwMVFiUF9vSFJFTF9tVkxEUmhXT0FQV3N0VzloM2RKMXY1RndVRFA0YjBycTlRRVE?oc=5" target="_blank" rel="noopener">Why Oracle earnings are significant for Intel, AMD stock</a><div class="meta"><span>Invezz</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxOZnNJZHQxZDgwNEVSeVNjSjZLYzJCcWVjd3pxelFfbHMyT0RFZEU5UDc5QUNxTlBnNlNSODgxRWxGVlhQWm9kSURFR19nNlRyUW5EZUxLSktUdXJWZ1E4ZlpqOHdqc0JSRWdrNm5GekFMdE5IMFVhN19JNlA1S2xsZnhCaw?oc=5" target="_blank" rel="noopener">Retail Is Cashing Out Of Micron, AMD, AI Stocks Ahead Of SpaceX IPO</a><div class="meta"><span>Yahoo Finance Singapore</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQLXQ4YmpJVVBzSWtfNl90QjR6TmtsWnR0dTBQLVkwaDkwSWM1bkVleDNmVkl6TFFFNnlJbHF2QlpHdjlKbGlmZUwyWFd5c3VGVDNQVTFlSkFoRENNeTVCWWtXeWhUX2dldUNQZmpUM3RCRnZQSHpfZUdmS1dnSXd3VUZhdFlGLU0yT3Z1QUVhOTFVaHR0cTh5Tmlsa3BKbkRzU0toTUh2YXQ?oc=5" target="_blank" rel="noopener">AMD Stock And The Five-Billion Dollar Whisper</a><div class="meta"><span>Trefis</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOVW9YbEZyTFRjc0VPQUFxUjZ3SVQ2Z3Z2Z1pkSlBnWTBIWEJCRmZMVVRDRC1kNXVNWVFNem4yQWlBWTJ5d09LRTZPd1lQLTlTNV9ZTmpLTlkzNkdiWmVtME9SQkZXWTJRUS12VktkdldzM3NRNTJiVVBmMDBnWFhBYS1DeE80aVNjSENMUw?oc=5" target="_blank" rel="noopener">AMD: Inventory Doesn’t Lie And Says Downgrade (NASDAQ:AMD)</a><div class="meta"><span>Seeking Alpha</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNRXY2TGRYYm1RMHYtbG16OUVYdTE2eFBzdlR1ZFMybzkzX25EcjJLVHlySVhkTmxkb2hZVl83NGdKSUxEME1WZjFyQmd4MUpmSUQxUFRmUjJXRzJZeTRVMW9rRVBrMlBocjYtbUJ4SFdMdW51bkZnTmJUel9ndjVBOTFjMkQ2c1lWS2VTNmFEMldEcUtWU1pCV1hjbHNWTzVRbUJHcDNfek5sX0hKTjhkQ3NSeExNbmdadmhlallKTWFXX00?oc=5" target="_blank" rel="noopener">Nvidia, AMD, Arm stocks rally as BofA sees $170B agentic AI opportunity</a><div class="meta"><span>TradingView</span><span>· 11 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

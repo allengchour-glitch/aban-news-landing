@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,10 +297,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>S&amp;P 500 <span class="hl">S&amp;P 500</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="sp500" data-type="index">7’267 Pkt</span>
-        <span class="chg down">-1.62 %</span>
+        <span class="px" id="livePrice" data-id="sp500" data-type="index">7’363 Pkt</span>
+        <span class="chg up">+1.32 %</span>
         <span class="tag-type">Index</span>
-        <span class="badge bearish">Bearish</span>
+        <span class="badge neutral">Neutral</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Index is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -300,11 +310,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">7’610</text><text x="586" y="204" font-size="12" fill="#64748b">7’267</text><path d="M10.0,200 L10.0,119.2 L37.1,125.7 L64.3,101.7 L91.4,70.2 L118.6,121.6 L145.7,124.6 L172.9,152.0 L200.0,108.0 L227.1,100.9 L254.3,85.6 L281.4,60.3 L308.6,59.6 L335.7,35.6 L362.9,26.5 L390.0,15.4 L417.1,10.0 L444.3,41.1 L471.4,24.1 L498.6,135.3 L525.7,123.1 L552.9,133.7 L580.0,200.0 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,119.2 37.1,125.7 64.3,101.7 91.4,70.2 118.6,121.6 145.7,124.6 172.9,152.0 200.0,108.0 227.1,100.9 254.3,85.6 281.4,60.3 308.6,59.6 335.7,35.6 362.9,26.5 390.0,15.4 417.1,10.0 444.3,41.1 471.4,24.1 498.6,135.3 525.7,123.1 552.9,133.7 580.0,200.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="200.0" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="200.0" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">7’610</text><text x="586" y="204" font-size="12" fill="#64748b">7’267</text><path d="M10.0,200 L10.0,119.2 L35.9,125.7 L61.8,101.7 L87.7,70.2 L113.6,121.6 L139.5,124.6 L165.5,152.0 L191.4,108.0 L217.3,100.9 L243.2,85.6 L269.1,60.3 L295.0,59.6 L320.9,35.6 L346.8,26.5 L372.7,15.4 L398.6,10.0 L424.5,41.1 L450.5,24.1 L476.4,135.3 L502.3,123.1 L528.2,133.7 L554.1,200.0 L580.0,146.8 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,119.2 35.9,125.7 61.8,101.7 87.7,70.2 113.6,121.6 139.5,124.6 165.5,152.0 191.4,108.0 217.3,100.9 243.2,85.6 269.1,60.3 295.0,59.6 320.9,35.6 346.8,26.5 372.7,15.4 398.6,10.0 424.5,41.1 450.5,24.1 476.4,135.3 502.3,123.1 528.2,133.7 554.1,200.0 580.0,146.8" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="146.8" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="146.8" r="3.4" fill="#dc2626"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.62 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-3.80 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-1.97 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">7’610 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">7’267 Pkt</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+1.32 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-2.92 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-0.67 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">7’610 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">7’267 Pkt</span></div></div>
     </div>
   </section>
 
@@ -313,11 +323,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">S&amp;P 500 · S&amp;P 500</span><span class="badge bearish">Bearish</span></div>
-        <p class="csignal">Deutlicher Rückgang durch Markt-Sell-Off.</p>
-        <p class="crat">Der S&amp;P 500 schließt deutlich niedriger, beeinflusst von Markt-Sell-Offs und geopolitischen Spannungen.</p>
+        <div class="chead"><span class="cname">S&amp;P 500 · S&amp;P 500</span><span class="badge neutral">Neutral</span></div>
+        <p class="csignal">Gemischte Bewegungen, Tech-Einfluss.</p>
+        <p class="crat">Der S&amp;P 500 zeigt gemischte Bewegungen, beeinflusst von Tech-Sektor und geopolitischen Ereignissen.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Potenzielle Neuaufnahmen wie Bloom Energy und Astera Labs könnten zukünftig Impulse geben.</li><li>Risiko: Der Index schließt deutlich niedriger, beeinflusst von einem breiten Markt-Sell-Off und geopolitischen Spannungen.</li><li>Einordnung: Die Nachrichtenlage ist negativ, geprägt von einem deutlichen Rückgang und externen Belastungen.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Rebound der Tech-Aktien, Trump ruft Angriffe auf Iran ab.</li><li>Risiko: Rückgang nach Jobs-Bericht, Tech-Sektor-Verluste, erneuter Tech-Verkauf.</li><li>Einordnung: Die Nachrichtenlage ist neutral, da sich positive und negative Einflüsse die Waage halten.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on S&amp;P 500</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxPVzBNOTVId19zWnZLYUJCdzhqblpoMWlEZzFYWWdiWFlhMlpPbnFraUxvOF81OFk0WXhnYklIOUY3RlI5aVFBMktCcWxUS3dtWHR2T2R5MG0zTEU1TWMwUHNmWkRQWU43UjhJWXFReWFOdW1oRHB4WmFldmVGd2I2bWNHdm1INE1BSWpiaklYeXU?oc=5" target="_blank" rel="noopener">Markets News, June 10, 2026: Stocks End Sharply Lower, Dow Closes Below 50000; Oil Surges After Trump Says Iran Will &#x27;Pay the Price&#x27;</a><div class="meta"><span>Investopedia</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE9kbWJHU20xWUhPbnNhc0NFTDhHSUdMVmg5VWFkU09IVFZJN0NieTUyUFFnbVMyWkk4dWRzcV90dlJiMzBNNlF5LTRLd2g2RDVLaGlCcTZmYTB5Vi1SbWZLRXZEUGVFc1ZNSHBVOEs3SlAwazdqRTZOTTRlYWQ?oc=5" target="_blank" rel="noopener">Bloom Energy, Astera Labs, Alnylam, Reddit Could Be Among Next Adds to S&amp;P 500</a><div class="meta"><span>Barron&#x27;s</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxONVR1V0kyWDJycTZHR2Rpa2pFWXA4UDh6OWxWSTlleTdhejhZcjJSSGYzcExaeU5JaGVDZnRhbG9CZnJ5cDBLc0xMZ0t6RjQxTkRZQkNQX3hTbDNQSEYzOWlyU28zTC1ud3M2SURNdE5aeEhPSTNmanhsUmVyR1Vqc2kwWjBVYjNmQ0t5dGlEQ0ZmTTQxNlphRE4yWXR5S3V6SXl3alFVcW8wUHRJc1hxXzAyWTQweUgwbnFFUTlhR3I?oc=5" target="_blank" rel="noopener">S&amp;P 500 FC 7% Index: The Gold Standard of Indices Meets Today’s Technology</a><div class="meta"><span>S&amp;P Global</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMic0FVX3lxTE1HTVV0OGdRZjY2d3dTX0pDZXZZbmo4SlZONFI1TXNWUGk3TWtnaTlmVHdlN3JrV2hBS29fb19MTk53R21Da0gtSmo5TDZBV0tpazQ4Sm1VclY4WmJOTEJ4ZFRETjY5Uy1DSXU4eGFTME1rV2fSAXhBVV95cUxPYnNzMHc4ZUNtZUF4ZTc1ZGdUWDNxUHR4NEE0dVpSeE53d2lPUE04Wk1tbjhoMzd6RUlkMzVrSHZpMmRQVWpoWUZqQ2hHeTBzbVhmN0pIWVlOSnk5U19GbFdaeDg0NkFtU20yTUIwekhSMVJDRnptNlo?oc=5" target="_blank" rel="noopener">Marvell Technology jumps 10% after news it will join the S&amp;P 500 index</a><div class="meta"><span>CNBC</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNdXBxYXNSeVhEa1FzSWNMb1NYazNqNVpRR0xuS2x5NGQyYUlSb1hrUUpGcnZwTUpjUDZRcVIxNUZ6QkFtQ2dtYWFrc3U5ZzNnXzBNZXJOVDB5bzhvaFJhOHZfOUhfMmM0MGliTXR5TzU2TGRfQ0NZaGRNekpwNk9sWVVHWnV1NTM1b2xHeG1XWUtqUzFmbHVtcA?oc=5" target="_blank" rel="noopener">Retirees: Is Now the Time to Pull Money Out of S&amp;P 500 Index Funds?</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxNMmFXVzNzRVFibFBLNjZJTFJnZ3M4anVMYm45QXZMdVhVbmtaUUNnUTROY0hZOEFIMk1FOGdNcklVSGVtWGNqNG45SGFjczVVbnFQTF8zZlVKaklORmJpTDFUaXVIazgwRW5IYnk0T2dYZWlITmRVWV9VbFB6dmlqaW5NQktxdFR0VUkxMDZwQjI1b0tGYTc3eFAzTjVNZw?oc=5" target="_blank" rel="noopener">SpaceX Is Worth More than S&amp;P 500 Aerospace Index. What That Means.</a><div class="meta"><span>Barron&#x27;s</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxOcFFCd2s3eWh0N3FKT1kxT1Vlblphc1JIZk5JTXNMMlFsb1IwSTMwRDlpLS1KUXhTb0ZweHBIZ2tSZ2FmMGhjRWV6YjNTN19rNDh2M0M3Q21ibTZsV2Uza3Zuc1ZzUE5EUkpQNlNqYmM1Q1lKTzdieDdGMnM5VndVdTd2ekUtTXVCLWE2b0ZINWRsUTFxcFd4c01WTGxaYU1OU0dPX1ZlbGd1cGtSbTIzRkp5cEJsc01QanRib2ZrSHltWkFkV000c01fY1hNM2VnV3E4ZHEyNA?oc=5" target="_blank" rel="noopener">Stock Market on June 5, 2026: Dow falls 695 points after U.S. jobs report; S&amp;P 500 and Nasdaq end sharply lower to book biggest percentage drops since 2025 after big losses in tech sector; Treasury yields jump</a><div class="meta"><span>MarketWatch</span><span>· 05 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE1DYWhpY084Zkc0LS1aVXdWaDdidWFrVHpoUHNmdHdoYUZpVUpQLUdBOVcxMEV0akJ6c3lmek5kQ1NUdjg4TExxSXNIVU1Fc2hJYnpFZmNpRFRhVDhmMTZRandjdmR2TU55Um02NnFWRWk5X29oSldz0gF8QVVfeXFMTl9pa0lRbnZ6N2M3NF83QTFNTUsyQWdhdmJzM1Q2VDRQbnREeDJndGZUbG1Yd2o2NHAwZlNMRHlJN0FybUkzckVmZzUtSUFjNm01WG1hMlVVQ29uMHhvTkVub3Mzd0NKdlBGRnhaaGZQLWFDbnpjeGs4VkRONQ?oc=5" target="_blank" rel="noopener">S&amp;P 500 and Nasdaq close lower as chip stock rebound fails</a><div class="meta"><span>CNBC</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQWGJ1bl83a1ZCa082M2NZNkdvamdjX2pNODlzalRUN0NiaEMtbXl4QTdlNkhGZTE0T3QzVmxHcjJ4OE9YZnFPbm0xWDdIckNobWVFN0oyZUoxTXNUeUhrdUtWQnFNQ1NCcjJ0MGprRm80eG9lM2NzMUpPcWdKNlJDNmNqLU5jZlBrVjdsUEtSeWhqVEdzdTRnSmtFWFBhb3RTemVV?oc=5" target="_blank" rel="noopener">S&amp;P 500, Nasdaq fall as tech selling resumes, Trump vows to respond to downed US helicopter</a><div class="meta"><span>Reuters</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxOM3hiSEVkYXJKSmtpeE51NktmNjg0RWlLWkszTXpVb19vbC1sT0hNbDkycTZHeVdBdUU0S1Y5bS12SnNWcE1PMnAyY18zT29hSldFLUo2UjdualFZWUZhcG9IckVDbVppakdHX0l5Wl9sVlg3MkJZLXdkbkt5MmhXMWV6UkZ3Z2dMWUprajV2SGc?oc=5" target="_blank" rel="noopener">Stock Market Today: Major Indexes Soar as Tech Stocks Rebound, Trump Calls Off Planned Iran Strikes</a><div class="meta"><span>Investopedia</span><span>· 11 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

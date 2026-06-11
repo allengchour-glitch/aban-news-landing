@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,10 +297,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Uniswap <span class="hl">UNI</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="uniswap" data-type="crypto">2.37 USD</span>
-        <span class="chg down">-4.88 %</span>
+        <span class="px" id="livePrice" data-id="uniswap" data-type="crypto">2.55 USD</span>
+        <span class="chg up">+4.41 %</span>
         <span class="tag-type">Crypto</span>
-        <span class="badge neutral">Neutral</span>
+        <span class="badge bullish">Bullish</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Crypto is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -301,10 +311,10 @@
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
       <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">3.89</text><text x="586" y="204" font-size="12" fill="#64748b">2.46</text><path d="M10.0,200 L10.0,10.0 L34.8,27.4 L59.6,45.9 L84.3,32.2 L109.1,63.8 L133.9,69.3 L158.7,57.5 L183.5,47.0 L208.3,48.4 L233.0,76.2 L257.8,67.5 L282.6,85.3 L307.4,95.6 L332.2,115.9 L357.0,125.8 L381.7,122.0 L406.5,126.5 L431.3,131.0 L456.1,154.4 L480.9,174.8 L505.7,200.0 L530.4,185.7 L555.2,192.6 L580.0,197.3 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,10.0 34.8,27.4 59.6,45.9 84.3,32.2 109.1,63.8 133.9,69.3 158.7,57.5 183.5,47.0 208.3,48.4 233.0,76.2 257.8,67.5 282.6,85.3 307.4,95.6 332.2,115.9 357.0,125.8 381.7,122.0 406.5,126.5 431.3,131.0 456.1,154.4 480.9,174.8 505.7,200.0 530.4,185.7 555.2,192.6 580.0,197.3" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="197.3" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="197.3" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-4.88 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-11.60 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-36.40 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">3.89 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">2.46 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">129.28 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">1.48 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">44.92 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+4.41 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-11.60 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-36.40 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">3.89 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">2.46 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">149.01 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">1.58 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">44.92 USD</span></div></div>
     </div>
   </section>
 
@@ -313,11 +323,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Uniswap · UNI</span><span class="badge neutral">Neutral</span></div>
-        
-        <p class="crat"></p>
+        <div class="chead"><span class="cname">Uniswap · UNI</span><span class="badge bullish">Bullish</span></div>
+        <p class="csignal">Hohe Listung, Kursgewinne.</p>
+        <p class="crat">Uniswap wird in den &#x27;Crypto 100&#x27; gelistet und verzeichnet Kursgewinne.</p>
       </div>
-      
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Erwähnung in &#x27;Crypto 100&#x27;, Kursgewinne von 4.5%, Relevanz für General-Purpose DeFi.</li><li>Risiko: Volatilität spiegelt breitere Marktbedingungen wider.</li><li>Einordnung: Die Nachrichtenlage ist positiv, mit Anerkennung und Kursgewinnen, aber auch der üblichen Marktvolatilität.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on UNI</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE5lbUF0N2o1dG5jX1lkUTh4ekYtSUZyMFFkdjZkWWxFb0RUR2hPZ2lhQUtFRGtUUVBjNGE1VklVNTRzeGQ4RTZ0ejV4S1l4RWtDVlVNT0xHUDdMNGxRQWhXTXNMSlZ5X2F2dUNPZS1n?oc=5" target="_blank" rel="noopener">Uniswap captures 84% of tokenized gold DEX volume as real-world assets flood DeFi</a><div class="meta"><span>Crypto Briefing</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOdDRvaURPbkw5NjVvbF84ZFhEd01vcl94Q1R2dFNVTE1HNG1JVGs3cGpHa0paX3lSaWs5WmJqYzh0Rm0weHJZSUJzcjlZUXE2bnMwbFB2VGhWQnZOcUt1b3c1eklDcEctVEpJZks5SjNxRkJ2bHZLSTY3U1praVE0WnhoV2NtQS02QnFZ?oc=5" target="_blank" rel="noopener">Uniswap dominates 84% of tokenized gold trading volume on decentralized exchanges in 2025.</a><div class="meta"><span>Pluang</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE80Qm0xdGZaaHJ4NUxERDRWSHlITTdIVTV6QUtTM1U2ZmhuTldLRGYybnE3WlhCdHBtTmlFZjNYcW1hRVd0anVFOWVjTXZ4V3RxN1dQVC1leGZoT2I0a2xncklYTHM5LWU3Z0dUWHVQZF8?oc=5" target="_blank" rel="noopener">Uniswap Volatility: Reflecting Broader Market Conditions</a><div class="meta"><span>CoinMarketCap</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE9mYldrVFA5cmVVX3ZDTEwtcHFfVTg1eE9lTGZyb1BUQUtKUU5iTVV5NkFMcW9GYXdjVi1xd19YSGZZWE5CTk8yUGUxejJ1dXl0cXNWWUNGVG9Uc29ET2l5Rk95TmFIY0ZsVF9ZS3dBQy1MWnQ3MGxxU0tiRnF5QQ?oc=5" target="_blank" rel="noopener">‘Extremely bullish’ Uniswap founder backs DeFi and Ethereum amid market downturn</a><div class="meta"><span>CryptoRank</span><span>· 05 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNWGttcFM3RFZOamtYREdfN25JTS12SFNHaktZY1ZYbHp3R0J1TEhMckN1MmNIdVNYc05UcHlGZTZ5SWN2cTBnaUZrTEQ3MGJ5d0dtZnBxWXoyVXh0ZFpfdFB2UFlycGdLTGVITVhXaVoxYXlDTldaRkluZHRSR3Y2TjZzdlpIa0VZSUFnYmNva0RVYVI5cVdj?oc=5" target="_blank" rel="noopener">Fake Uniswap Site Drains $400,000 From Multiple Wallets, Investigator Warns</a><div class="meta"><span>Yahoo Finance</span><span>· 26 May 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTE9BRlZMQTJhb0tmdUlVWk9YWlk3aVhiY3d2Mjh4RWRWUVNDb0FaeFp5RDBtYjRjYS1JQkxKNGUxb1RmaWo0V3oyLWVQSGpTQVpkZ0RSSzF0OU80MUts?oc=5" target="_blank" rel="noopener">Uniswap Crypto 100</a><div class="meta"><span>Fortune</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxPRE5WVDhqLWx4TnBXckl6bWRDQjhocUVSejVHSi0yYXkyeE0xRTM4cF9nbGFiOXhZQk8wbXdHTXBuUWl4VU5NcXJqS2xBZnM5QjZKeG9FQ3ZhVzMwcmFBd0JpMlpKajhIX1dSOXdiZmZXdzNjRWhNeWFhdWNMRVlEZkd1Tk9XNXc0bmliQ0I4SldReXU3cUZjYnNGVFhiWTdIUk5ndjd2V0xVZkJNaWFYSHNBaTFmbjlRUGM4LUV0d3h3OFJ2MjZiSm5B?oc=5" target="_blank" rel="noopener">CoinDesk 20 performance update: Uniswap (UNI) gains 4.5% as all constituents rise</a><div class="meta"><span>CoinDesk</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE43Vk9aSnhNWG1rZWlzOUdVZnBvSFJxeUR3V2dKNXpqejJmSDlVUnhaaG8tZDFHb1d2UGpYR0MycHpDMGRaZERUUVRDMUtZRk1tdmFRTjBfd3NrOV95eTcwUWYzcEl2UTA5aXNZc09RQkpmeWgtZEhJdA?oc=5" target="_blank" rel="noopener">OKX launches football prediction program with Bitcoin rewards tied to 2026 World Cup</a><div class="meta"><span>Crypto Briefing</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNZDJlakJ2ZkprUlhHRTBxM3pOcVpvX2IybkQ4WmU1emRrVVhaOVdLSFMxYVZqTWJubmRVYWRuaVBQTnpseDZsUG1iSjVpcVZ3N0pUeXoyOWlJMW9nakhocU05R3lkX3I2V2tKX1FEWFZFWmd4VHA2U0JiTDNsemZTak1RbElxVVg3Wi1pTGNDTQ?oc=5" target="_blank" rel="noopener">CoinFello Publicly Launches Fello 1 for General-Purpose DeFi</a><div class="meta"><span>CryptoPotato</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE80Qm0xdGZaaHJ4NUxERDRWSHlITTdIVTV6QUtTM1U2ZmhuTldLRGYybnE3WlhCdHBtTmlFZjNYcW1hRVd0anVFOWVjTXZ4V3RxN1dQVC1leGZoT2I0a2xncklYTHM5LWU3Z0dUWHVQZF8?oc=5" target="_blank" rel="noopener">Uniswap Volatility: Reflecting Broader Market Conditions</a><div class="meta"><span>CoinMarketCap</span><span>· 09 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

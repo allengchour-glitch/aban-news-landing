@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,10 +297,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Solana <span class="hl">SOL</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="solana" data-type="crypto">62.62 USD</span>
-        <span class="chg down">-3.80 %</span>
+        <span class="px" id="livePrice" data-id="solana" data-type="crypto">66.89 USD</span>
+        <span class="chg up">+4.75 %</span>
         <span class="tag-type">Crypto</span>
-        <span class="badge neutral">Neutral</span>
+        <span class="badge bullish">Bullish</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Crypto is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -300,11 +310,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">97.32</text><text x="586" y="204" font-size="12" fill="#64748b">63.44</text><path d="M10.0,200 L10.0,10.0 L34.8,26.9 L59.6,45.1 L84.3,39.2 L109.1,70.6 L133.9,78.2 L158.7,77.7 L183.5,73.5 L208.3,67.0 L233.0,82.9 L257.8,75.5 L282.6,79.3 L307.4,86.9 L332.2,94.2 L357.0,96.3 L381.7,92.9 L406.5,94.6 L431.3,100.8 L456.1,153.8 L480.9,170.1 L505.7,200.0 L530.4,184.3 L555.2,181.6 L580.0,191.5 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,10.0 34.8,26.9 59.6,45.1 84.3,39.2 109.1,70.6 133.9,78.2 158.7,77.7 183.5,73.5 208.3,67.0 233.0,82.9 257.8,75.5 282.6,79.3 307.4,86.9 332.2,94.2 357.0,96.3 381.7,92.9 406.5,94.6 431.3,100.8 456.1,153.8 480.9,170.1 505.7,200.0 530.4,184.3 555.2,181.6 580.0,191.5" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="191.5" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="191.5" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">94.31</text><text x="586" y="204" font-size="12" fill="#64748b">62.16</text><path d="M10.0,200 L10.0,10.0 L34.8,29.2 L59.6,22.9 L84.3,40.2 L109.1,64.1 L133.9,63.5 L158.7,69.3 L183.5,52.3 L208.3,69.0 L233.0,61.3 L257.8,63.1 L282.6,73.2 L307.4,81.0 L332.2,83.2 L357.0,79.6 L381.7,81.4 L406.5,87.9 L431.3,130.2 L456.1,160.9 L480.9,192.4 L505.7,200.0 L530.4,173.1 L555.2,183.4 L580.0,194.0 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,10.0 34.8,29.2 59.6,22.9 84.3,40.2 109.1,64.1 133.9,63.5 158.7,69.3 183.5,52.3 208.3,69.0 233.0,61.3 257.8,63.1 282.6,73.2 307.4,81.0 332.2,83.2 357.0,79.6 381.7,81.4 406.5,87.9 431.3,130.2 456.1,160.9 480.9,192.4 505.7,200.0 530.4,173.1 555.2,183.4 580.0,194.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="194.0" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="194.0" r="3.4" fill="#dc2626"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-3.80 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-9.37 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-33.25 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">97.32 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">63.44 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">2.95 Mrd</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">36.24 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">293.31 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+4.75 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-8.15 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-33.02 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">94.31 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">62.16 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">2.98 Mrd</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">38.78 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">293.31 USD</span></div></div>
     </div>
   </section>
 
@@ -313,11 +323,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Solana · SOL</span><span class="badge neutral">Neutral</span></div>
-        <p class="csignal">Neue Anwendungsfälle, aber Kursentwicklung unsicher.</p>
-        <p class="crat">Solana integriert neue Anwendungsfälle, steht aber nach einem starken Kursrückgang vor der Frage einer nachhaltigen Erholung.</p>
+        <div class="chead"><span class="cname">Solana · SOL</span><span class="badge bullish">Bullish</span></div>
+        <p class="csignal">Integration in reale Anwendungen.</p>
+        <p class="crat">Solana integriert sich in reale Anwendungen wie Poker-Turniere und wird in positiven Kontexten erwähnt.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Integration von Solana-Zahlungen bei der World Series of Poker und neue Presales zeigen wachsende Akzeptanz.</li><li>Risiko: Ein Kursrückgang von 74% und die Frage, ob die aktuelle Bewegung ein &#x27;Relief Bounce&#x27; oder ein &#x27;Fresh Decline&#x27; ist.</li><li>Einordnung: Die Nachrichtenlage ist gemischt, mit positiven Entwicklungen bei der Nutzung, aber Unsicherheit bezüglich der kurzfristigen Kursentwicklung.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Integration von Solana-Zahlungen bei der World Series of Poker, Erwähnung in &#x27;Crypto 100&#x27;, Präsenz bei Meme Coins.</li><li>Risiko: Starker Kursrückgang von 74% wird thematisiert.</li><li>Einordnung: Trotz eines deutlichen Kursrückgangs gibt es positive Nachrichten bezüglich der Akzeptanz und des Potenzials.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on SOL</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPa2FEYmpSSHVyRmVJT1lWUmlsYWgxb2JaNVFoWkg2UG1FT3ZGQTlyay1oWWpSeVBkNWNBdUhJN0o1ZHlwcGdLRU1KMHFuYVdLZlQ1Y2V1SDhReUtfYXZSZ0Z2VjhVODFScnphdGZYM3RxWG56ZVNJQzgyYlNyd05NOUg3dHlHLTFSdVVaTExTQlNzLTAwUDNHNlp6NXdkLWc5THotaEFlMlh6QQ?oc=5" target="_blank" rel="noopener">World Series of Poker adds Solana payments for tournament buy-ins</a><div class="meta"><span>CoinDesk</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxOeUVVYzhMNktiaVhyTndzNTVId0RFS29yQnVYd0RDN09BdnFXS0ZBbHR6VUlCYi1DcXhXc3RZTXZCMXlIVDlBTUYwWW9MMjN2aVpPa1ViNXU2RnBLQW1udXZkNElYaHRNdW1JaWV0M1d2eE5TcmVWTXFqc05KOTZUSGJjMHJSWkdjNnF3SkJHMW1YeUh0elVCcWJudmI4emtHUWlIYmV6U3ZBalFvYWt3ZEJ0U0V2bHVDZFoxSlhwdTRtbTZERjllZ19INkg3UTY3MUMyU3BMRDl4VFE?oc=5" target="_blank" rel="noopener">SeerDEX Opens New Crypto Presale at $0.00050 — Solana-Native Prediction Market Platform</a><div class="meta"><span>markets.businessinsider.com</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQVGJOVmdSM2NNQm5venlPZ3lrNFpEcXZTOFpxMGNGZlFBTklWWldWc0RPSmQzbzVTczBJTkJEdU5oYlF1NFBVc1JIaTluampfSXl5aml0NzU3Vm5tQjZBZHpyLUtBQ01Xck01SE4yOWVwelNhY1lpMDNWRjEydUtvNVNUTkdpcGVBRTZZR1pXVHVONzQwTmp4cw?oc=5" target="_blank" rel="noopener">Should You Buy the Solana Cryptocurrency After Its 74% Plunge?</a><div class="meta"><span>The Motley Fool</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxQZkI4b0RaSVhrS095OThESDM2M045Q014NVJYSFItTGdqMi1hX2EzVWNldF9HcjlHLTlFNjZQOU8tM0NuY1N6Wm9pcFcyLTdaMnNXdS1SRExkOGloSjUySjZ3Z2FUWGFaTEM2U0JEdUE5blhMd1NFNW4zWUJWc0dvYzdsMDRGcmN5VVozajVFRHhzZXN5aXJfOHpyZXZEdmxHMTAwQXAzd0VrTHBzQ2tuR0FCaGxRVDhLUERLcVQtT2oyN0hf?oc=5" target="_blank" rel="noopener">Solana Wave 4 In Progress: Relief Bounce Or Setup For A Fresh Decline?</a><div class="meta"><span>TradingView</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNZWVfNm1oWDJrNmtBaDVudndJUlNnOGlQQWtVSXZER0FTQVkxNE5HRURTLXFzV0Z0TGFRUWgxbVJUckUxOFF5R3RULTFDT2Z4Ry1wWTRHZVRRZ2lzLVRxSDRTN3V6RVVlTnlMem1VWVZFSWlsZGZDX3RiR2oyWFNWMWRnc1BpcmcyX0VtV0RfWk9QSy1LVzU4ci1CT09JNW16WEQ5ZFdITVVHMC1pZ2xHbzU1cw?oc=5" target="_blank" rel="noopener">ChatGPT, Grok and Claude Predict Where Bitcoin, Ether, XRP and Solana Could Land by Dec. 31</a><div class="meta"><span>Bitcoin News</span><span>· 08 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPa2FEYmpSSHVyRmVJT1lWUmlsYWgxb2JaNVFoWkg2UG1FT3ZGQTlyay1oWWpSeVBkNWNBdUhJN0o1ZHlwcGdLRU1KMHFuYVdLZlQ1Y2V1SDhReUtfYXZSZ0Z2VjhVODFScnphdGZYM3RxWG56ZVNJQzgyYlNyd05NOUg3dHlHLTFSdVVaTExTQlNzLTAwUDNHNlp6NXdkLWc5THotaEFlMlh6QQ?oc=5" target="_blank" rel="noopener">World Series of Poker adds Solana payments for tournament buy-ins</a><div class="meta"><span>CoinDesk</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQVGJOVmdSM2NNQm5venlPZ3lrNFpEcXZTOFpxMGNGZlFBTklWWldWc0RPSmQzbzVTczBJTkJEdU5oYlF1NFBVc1JIaTluampfSXl5aml0NzU3Vm5tQjZBZHpyLUtBQ01Xck01SE4yOWVwelNhY1lpMDNWRjEydUtvNVNUTkdpcGVBRTZZR1pXVHVONzQwTmp4cw?oc=5" target="_blank" rel="noopener">Should You Buy the Solana Cryptocurrency After Its 74% Plunge?</a><div class="meta"><span>The Motley Fool</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxPZWtlRWxELXRpSUtrdF9zbUxaNmxwbFFtZ2g4V21PY0lrcFBhWGdDdFNURzdpMGg0LVliaWxIemF2NEpwbk5iZlNsTXp0elFuTWRVNjNULUF0TXZhSTBOWXRXZ0hRZjlnS0NEcS1YMWZYVmRiSzduc2x5dUtPZzhFakxvVng3YkFEUERvN3d3RXdOeGwtZ3dZeTJQR0Q?oc=5" target="_blank" rel="noopener">Football Meme Coins 650x on Solana Before the FIFA World Cup Kick Off</a><div class="meta"><span>Yahoo Finance</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE1femJRVzEyUFFRVlEyYTJPY3RWQjZVcTdiTW16cjVQQXJpeG50emNpN3Jmc0tnT1RuVlcyMWlxRVNLQk9MOU5HdGd5UnpsUFFkdnNCY096ZjR5TU0?oc=5" target="_blank" rel="noopener">Solana Crypto 100</a><div class="meta"><span>Fortune</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNam1SMWhRSUFZV3lfdFZkZWhEcTU4RGFON1BhTnhlR1FVdTJ5dEJrZENuWG9EMENVUnF2NHF5REdIRms2aHRNWDczYnYycEtzb01sNlM2Y3I3dy1HYW1JcFJPMWdSSHJ4NTVkdndJcGhjbkNRYmhMa2M2c2RUOWlHb0JUT3FaTVV3N3hYOG84Y2dDTlNaODNfZVlWRkQ?oc=5" target="_blank" rel="noopener">Crypto investors are preparing for the SpaceX IPO, says Solana President</a><div class="meta"><span>CNBC</span><span>· 11 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

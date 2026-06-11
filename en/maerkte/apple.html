@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,8 +297,8 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Apple <span class="hl">AAPL</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="apple" data-type="stock">291.58 USD</span>
-        <span class="chg up">+0.35 %</span>
+        <span class="px" id="livePrice" data-id="apple" data-type="stock">295.77 USD</span>
+        <span class="chg up">+1.44 %</span>
         <span class="tag-type">Stock</span>
         <span class="badge bearish">Bearish</span>
       </div>
@@ -300,11 +310,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">315.20</text><text x="586" y="204" font-size="12" fill="#64748b">290.55</text><path d="M10.0,200 L10.0,183.6 L37.1,167.2 L64.3,135.9 L91.4,141.0 L118.6,125.4 L145.7,143.8 L172.9,135.1 L200.0,109.8 L227.1,88.7 L254.3,59.2 L281.4,63.0 L308.6,43.5 L335.7,30.7 L362.9,34.2 L390.0,78.5 L417.1,10.0 L444.3,48.1 L471.4,40.6 L498.6,70.6 L525.7,115.3 L552.9,200.0 L580.0,192.1 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,183.6 37.1,167.2 64.3,135.9 91.4,141.0 118.6,125.4 145.7,143.8 172.9,135.1 200.0,109.8 227.1,88.7 254.3,59.2 281.4,63.0 308.6,43.5 335.7,30.7 362.9,34.2 390.0,78.5 417.1,10.0 444.3,48.1 471.4,40.6 498.6,70.6 525.7,115.3 552.9,200.0 580.0,192.1" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="192.1" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="192.1" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">315.20</text><text x="586" y="204" font-size="12" fill="#64748b">290.55</text><path d="M10.0,200 L10.0,183.6 L35.9,167.2 L61.8,135.9 L87.7,141.0 L113.6,125.4 L139.5,143.8 L165.5,135.1 L191.4,109.8 L217.3,88.7 L243.2,59.2 L269.1,63.0 L295.0,43.5 L320.9,30.7 L346.8,34.2 L372.7,78.5 L398.6,10.0 L424.5,48.1 L450.5,40.6 L476.4,70.6 L502.3,115.3 L528.2,200.0 L554.1,192.1 L580.0,159.7 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,183.6 35.9,167.2 61.8,135.9 87.7,141.0 113.6,125.4 139.5,143.8 165.5,135.1 191.4,109.8 217.3,88.7 243.2,59.2 269.1,63.0 295.0,43.5 320.9,30.7 346.8,34.2 372.7,78.5 398.6,10.0 424.5,48.1 450.5,40.6 476.4,70.6 502.3,115.3 528.2,200.0 554.1,192.1 580.0,159.7" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="159.7" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="159.7" r="3.4" fill="#0f9d6b"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+0.35 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-6.02 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-0.38 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">315.20 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">290.55 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">49.24 Mio</span></div><div class="kpi"><span class="kl">52w high</span><span class="kv">317.40 USD</span></div><div class="kpi"><span class="kl">52w low</span><span class="kv">195.07 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+1.44 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-4.97 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+1.06 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">315.20 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">290.55 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">21.47 Mio</span></div><div class="kpi"><span class="kl">52w high</span><span class="kv">317.40 USD</span></div><div class="kpi"><span class="kl">52w low</span><span class="kv">195.07 USD</span></div></div>
     </div>
   </section>
 
@@ -314,10 +324,10 @@
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">Apple · AAPL</span><span class="badge bearish">Bearish</span></div>
-        <p class="csignal">Kursrückgang nach KI-Ankündigungen.</p>
-        <p class="crat">Apple-Aktien rutschen nach der Siri AI-Enthüllung ab, was Fragen zur Marktreaktion auf die KI-Ankündigungen aufwirft.</p>
+        <p class="csignal">Siri AI enttäuscht, Kursrückgang.</p>
+        <p class="crat">Die Einführung von Siri AI hat Investoren nicht überzeugt, was zu einem Kursrückgang führte.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Bank of America und Morgan Stanley passen ihre Kursziele nach dem Event an, was auf eine Neubewertung hindeutet.</li><li>Risiko: Der Aktienkurs fällt nach den KI-Ankündigungen, was auf eine enttäuschende Marktreaktion oder Bedenken hindeuten könnte.</li><li>Einordnung: Die Nachrichtenlage ist negativ geprägt durch den Kursrückgang nach den AI-Ankündigungen, trotz potenzieller langfristiger Chancen.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Potenzial für profitable Seitwärtsbewegungen mit Iron Condor Strategien.</li><li>Risiko: Kursrückgang nach Siri AI-Vorstellung, Investoren nicht beeindruckt, &#x27;Real Risk&#x27; im Bestand.</li><li>Einordnung: Die aktuellen Nachrichten deuten auf eine negative Reaktion des Marktes auf die jüngsten Produktankündigungen hin.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on AAPL</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMic0FVX3lxTE1mVkZFeFNmb19QUDBiblhSbFZhMzN4V1U1REV2ZV92c3dkQ19VX1lXaXJkTmtGN3h5N0gxNXdwSEpqemhnM2ZmRURlbVZtOUVwQ0JydTVfak51MWhzLTVJYVZYd3I5RjI2ZGdFYjVEXzgzbHPSAXhBVV95cUxNVmctVWQzdjBCNGZqUGFKM0tWMHVWT1dMTmNzZDFfY1o0cWdnWGhsMjZiNVFLb21OMFhOSWc2Wi1Ra2JRYnVzMXNGRDFHVjZ3SDV0OVhsNHpDdXFFUUtaVGpTOE9wdGUyS1ZxcHlqemhyNzhUTU8xX3M?oc=5" target="_blank" rel="noopener">Apple shares slide after big Siri AI reveal</a><div class="meta"><span>CNBC</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPUW9XUlFtcjYxT1BfSkE2elhrRkdZT2E1Rkw3YUd3czc4ZTQyZlZ6RW9GTkh4WUJBMW1aTkZ2TzZDUWZYVDlqdnJYMXh5cU1YTDdWY3JLUTVnS2V2SXpuOFFoZjhoM0RjVGJhLUVBc0xvZHRnaE5zbzBpOEh2akpBVEhZUUhnWmZRNTcyMTlWQkhkTTRMNU9oSzV4WFhtM2xCZGZLUlFTZHVIdkJlVkZNclAyNmw?oc=5" target="_blank" rel="noopener">Bank of America sends clear message on Apple stock after key event</a><div class="meta"><span>thestreet.com</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxQeGJJTW9meHNyZ0hoTkozTFl1aXdRUjQwaFdSQ1BUQzZvYUNldnBDUWZiSnVLRXUtR1hJMGJmY1dYRm1sbkJiMVRXR21SdkJFQmVuX0VnbWItQnBuNTUyZUhhTnVBUHVSQW9lQnItU3NCSEJSTkhzM1h2aTA1WlpTdGl3dzdjREtEbDFN?oc=5" target="_blank" rel="noopener">Morgan Stanley revamps Apple stock target after key event</a><div class="meta"><span>Yahoo Finance Singapore</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxOMEw3NF9haFRTdFhtb2EtSjR6dUNCbnhIZTFWaEtrR0c3T2NPUXY2V2VsOTRmaGIyemVwT2tDZl9KUFlXUlVMeVpKTmwybm5rN3k2UEZWa3BaTEh1Q05POHBTNFJYU1FxeUoxVnlTdTd5RmFjVHo4bDdDQU95WGY3a0phd2FTS0xXM19rb3h6OGpzNFBG?oc=5" target="_blank" rel="noopener">AAPL stock slides, but is it a reaction to AI announcements?</a><div class="meta"><span>9to5Mac</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQbnZZVGxOV1BKN3R0dzZETjhEUnhTeDBrbjNYRk90UGowZUZtRzBrZnQzS2EtU3dOMGJ6MTg4RW90ZEwxN2hPckdUUDhjd0xzZGZ5bm82Z1NFaE9wTnpyWEtoRlNiekJLN001VW5GVzhlTEhHSWJMMy1Vdks4dUxHWWJxOFJMeWVIOHJ5ZFZOM1ZLUEZlSlZaXw?oc=5" target="_blank" rel="noopener">The Real Risk Inside Apple Stock</a><div class="meta"><span>Trefis</span><span>· 09 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxQY1JfWVM1eWllX2lZWjN3TzBwWWpLZHFZd1ROdjljZzNKWWh6ZHd2N2hmWjVENkZDWG1WUFVHNm1odTZmYllFcFo0UFpYSGdFeDFtOC1LUlhpVTByRXMwSkpabllvRUZ3dU9NdUFwVXZSVzU2Z29nV0x1SWFlZUFhVFJESGw5RC1kclVF?oc=5" target="_blank" rel="noopener">Sideways Action In Apple Can Still Be Profitable With An Iron Condor</a><div class="meta"><span>Investor&#x27;s Business Daily</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMic0FVX3lxTE1mVkZFeFNmb19QUDBiblhSbFZhMzN4V1U1REV2ZV92c3dkQ19VX1lXaXJkTmtGN3h5N0gxNXdwSEpqemhnM2ZmRURlbVZtOUVwQ0JydTVfak51MWhzLTVJYVZYd3I5RjI2ZGdFYjVEXzgzbHPSAXhBVV95cUxNVmctVWQzdjBCNGZqUGFKM0tWMHVWT1dMTmNzZDFfY1o0cWdnWGhsMjZiNVFLb21OMFhOSWc2Wi1Ra2JRYnVzMXNGRDFHVjZ3SDV0OVhsNHpDdXFFUUtaVGpTOE9wdGUyS1ZxcHlqemhyNzhUTU8xX3M?oc=5" target="_blank" rel="noopener">Apple shares slide after big Siri AI reveal</a><div class="meta"><span>CNBC</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxQcFVhYm53ZW1Hb2NwS2NjS3F3cFRSVWtib0hFWlpNaWZfUlpxcVZFMGlfRHZCUzAyYzFpTks4OE1ZWkJNMEFfaVExLURWRnJXRnFhQ0czSUVKaHFkd0FGWTZXUmdkdkNsUFNYVzNxcVVaNDdOOEpNMllFSzctRThuaXRHZEpBd2pfQnFqc2VHWkV5ZU4yb2k4?oc=5" target="_blank" rel="noopener">Apple Unveils Siri AI. Here&#x27;s Why It&#x27;s Not Impressing Investors</a><div class="meta"><span>Yahoo Finance</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQbnZZVGxOV1BKN3R0dzZETjhEUnhTeDBrbjNYRk90UGowZUZtRzBrZnQzS2EtU3dOMGJ6MTg4RW90ZEwxN2hPckdUUDhjd0xzZGZ5bm82Z1NFaE9wTnpyWEtoRlNiekJLN001VW5GVzhlTEhHSWJMMy1Vdks4dUxHWWJxOFJMeWVIOHJ5ZFZOM1ZLUEZlSlZaXw?oc=5" target="_blank" rel="noopener">The Real Risk Inside Apple Stock</a><div class="meta"><span>Trefis</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi8AFBVV95cUxOUEZXZFdSSndaZFRNV1hReWpoaEp2VlVuVEpxRzNiTE1KTUtITVJHQjlUZDhJcFVpT1JaTTlaV2h3QmdfaTJzN2Y1ZzhkVkxjQV8wWkZqcFFzTlNMaGtTQU01S19icC14MURJMW9VN3plazBnR1hNT2w3NXZrR1EzbXhfLWZWdVpEdlkzb3g3TVRtWXN2amIyVi11U2NGS2RwZHh1dDZxcW9ELWpLbUtBTExTSWVPYUJacEZ1Mm92ZGxweGhqejV2bmx2eVRobW9HOTdZVWdsb0ZtSGhfNzlnSXlxb2otTzBFXzhXUHFtbWE?oc=5" target="_blank" rel="noopener">Stocks to Watch Recap: Marvell Technology, Apple, Broadcom, Strategy</a><div class="meta"><span>WSJ</span><span>· 08 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

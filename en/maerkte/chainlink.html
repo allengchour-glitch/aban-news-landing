@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,10 +297,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Chainlink <span class="hl">LINK</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="chainlink" data-type="crypto">7.52 USD</span>
-        <span class="chg down">-4.39 %</span>
+        <span class="px" id="livePrice" data-id="chainlink" data-type="crypto">7.90 USD</span>
+        <span class="chg up">+3.09 %</span>
         <span class="tag-type">Crypto</span>
-        <span class="badge neutral">Neutral</span>
+        <span class="badge bullish">Bullish</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Crypto is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -301,10 +311,10 @@
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
       <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">10.59</text><text x="586" y="204" font-size="12" fill="#64748b">7.34</text><path d="M10.0,200 L10.0,10.0 L34.8,27.9 L59.6,32.4 L84.3,16.8 L109.1,61.3 L133.9,73.1 L158.7,69.0 L183.5,67.0 L208.3,59.3 L233.0,79.5 L257.8,70.9 L282.6,74.2 L307.4,81.1 L332.2,95.9 L357.0,102.5 L381.7,93.7 L406.5,96.4 L431.3,100.7 L456.1,141.9 L480.9,161.7 L505.7,200.0 L530.4,168.2 L555.2,162.5 L580.0,171.6 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,10.0 34.8,27.9 59.6,32.4 84.3,16.8 109.1,61.3 133.9,73.1 158.7,69.0 183.5,67.0 208.3,59.3 233.0,79.5 257.8,70.9 282.6,74.2 307.4,81.1 332.2,95.9 357.0,102.5 381.7,93.7 406.5,96.4 431.3,100.7 456.1,141.9 480.9,161.7 505.7,200.0 530.4,168.2 555.2,162.5 580.0,171.6" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="171.6" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="171.6" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-4.39 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-6.10 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-26.08 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">10.59 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">7.34 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">244.97 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">5.46 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">52.70 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+3.09 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-6.10 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-26.08 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">10.59 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">7.34 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">280.77 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">5.74 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">52.70 USD</span></div></div>
     </div>
   </section>
 
@@ -313,11 +323,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Chainlink · LINK</span><span class="badge neutral">Neutral</span></div>
-        <p class="csignal">Neue Anwendungsfälle, aber Sell-Off-Ängste.</p>
-        <p class="crat">Chainlink wird für FIFA World Cup Prediction Markets genutzt, aber die US-Regierung bewegt beschlagnahmte FTX-Token, was Ängste vor einem Sell-Off schürt.</p>
+        <div class="chead"><span class="cname">Chainlink · LINK</span><span class="badge bullish">Bullish</span></div>
+        <p class="csignal">Hohe Listung, Anwendungsfall.</p>
+        <p class="crat">Chainlink wird in den &#x27;Crypto 100&#x27; gelistet und für FIFA World Cup Prediction Markets genutzt.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Chainlink wird exklusiver Oracle-Anbieter für Myriads FIFA World Cup Prediction Markets, was die Akzeptanz erhöht.</li><li>Risiko: Die Bewegung von beschlagnahmten FTX-Token durch die US-Regierung schürt Ängste vor einem Chainlink-Sell-Off.</li><li>Einordnung: Die Nachrichtenlage ist gemischt, mit positiven Anwendungsfällen, aber auch Unsicherheiten durch potenzielle Verkäufe.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Rang 4 in &#x27;Fortune’s Crypto 100&#x27;, Nutzung für FIFA World Cup Prediction Markets, Relevanz für Real Utility.</li><li>Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.</li><li>Einordnung: Die Nachrichtenlage ist positiv, mit Fokus auf Anerkennung und praktische Anwendungsfälle.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on LINK</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxQQk5iMUNOY2F4R3FjTWNuWlYySk0xYXVnR0hTcjA1U19vNTV6M1ZILS1pby14RmQzWFhFbW5KakFlOEZDZEl3REtqdGwwVy1QUHdqUTZ0MmljTGJWZUxkVFVYUE9wajZhTUtwRHltak84NUhVXzNKalpBZThKNlhPR0hxd2Y0ZVV3VEEwNkNKMkR0ME1nX3EzNkxmeWxqZw?oc=5" target="_blank" rel="noopener">Myriad Taps Chainlink to Power FIFA World Cup Prediction Markets</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxQMHhNb3FJTWVlTWdYWU5UbUxuNW8tX0RvZkR0X1ZkQmZqUWtEOGFtZHZudHVEMnc1Y1NUV2duZTdLS3FXZkpZX3NxalVKZUxfVmNtejB1V21xTS1TYjc0anJCR1ZHUmpmZmMxbnFQczZhSm5NUUlXS29iYkw1VHgxSkN0X0haQXB3MTdtSVBkdi1SUGl5ekFZWDh0SmJjdF8y?oc=5" target="_blank" rel="noopener">Chainlink Exec Taylor Lindman Joins SEC Crypto Task Force</a><div class="meta"><span>CoinMarketCap</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE43c2IzMUVjNVo0U1h5SHlYeC1tUmhhWDIxR1hWaEFOeTdpMkI2cTROZEFqV2dwQ0tIZ2YtUnBvRDRNSTlBZGVZdXRYMlpETFZFTmZsRVZtSS11cVg3NzdNbWlsUTlUTUxncVhidEtkdlhVT2F0ZFE?oc=5" target="_blank" rel="noopener">US Government Moves $768,000 Seized FTX Tokens, Sparks Chainlink Sell-Off Fears</a><div class="meta"><span>BeInCrypto</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE81UjBVeFFzQWwtNzIyUlIwX3RwSDZJM2lka3ZjNldKWm9WZUJZSm5LYXZYdHBBVXBuVkRZUWhFRWdWWUF3S0ZYVmtQLUtFTVhPTDI4T3pxRllaNlgxUGdhekxQTGFVSFVBZXJoSWIyaGZXQUNqTzBDYnRB?oc=5" target="_blank" rel="noopener">1 Reason to Buy Chainlink (LINK) Right Now -- and 1 Reason to Wait</a><div class="meta"><span>AOL.com</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE1vb01vSnpEczVoSjBUdldKSE1kaDVJVzhtcFdyNkZXUWxNeHY4c2RnVDZqZkdReTFPQS1URkwybXl5ekxhWlJwMG5icWk1OUltcGczUWpjMmlfRXhXUUNxY29yT29SNlFDTm4zMjdFM1dja245X2xpb2FBT3A?oc=5" target="_blank" rel="noopener">Chainlink Becomes Myriad&#x27;s Exclusive Oracle For 2026 World Cup Bets</a><div class="meta"><span>Yellow.com</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE9sUHhJNVRNT20tQnFZZXE1TGZpd2lybVBqQm5xZHpaWHIzdHB1THlaOHhzOHJkT2piQTFLNmRDcFRKdGZ5YndVNnhFM0hNMHpFcVhacnpXX2gteWlaRmJtZUZ4WlMzbXE4ZDl5azFXU2haWDlw0gF6QVVfeXFMTllBUVRYSklBOUtPZmo3blVyTUdMQXJnMjd0Y1k5cUhKMWdoeGVRTldIOGJwRk9LWldGVlhPMFFKZU9RT2ZWNmVXRk9RWTdWNVV6RFNmOUpFNW5CT0NHV2RWMGl6M3MtOV8zOXV6TXNoUmplT3JwVnJlR3c?oc=5" target="_blank" rel="noopener">Chainlink (LINK) Price Prediction 2026, 2027 – 2030: Will LINK Price Reach $100?</a><div class="meta"><span>Coinpedia</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMickFVX3lxTFBoelBFeklnNzdXQVpfSXpiU1FLRDhKX0Y0R3N6dGpCeWtBcEprU3o2SHZyR1JnQU1Fc084WmY2TkVNT0N4aXE4UTJTRlBFTDk2Z0F3T2NBYjZZNXlSREpYbDhlQmZvcjZVYUdNY1pNOEhZZw?oc=5" target="_blank" rel="noopener">Chainlink ranks No. 4 in blockchain and protocols on Fortune’s Crypto 100 list</a><div class="meta"><span>Crypto Briefing</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxQQk5iMUNOY2F4R3FjTWNuWlYySk0xYXVnR0hTcjA1U19vNTV6M1ZILS1pby14RmQzWFhFbW5KakFlOEZDZEl3REtqdGwwVy1QUHdqUTZ0MmljTGJWZUxkVFVYUE9wajZhTUtwRHltak84NUhVXzNKalpBZThKNlhPR0hxd2Y0ZVV3VEEwNkNKMkR0ME1nX3EzNkxmeWxqZw?oc=5" target="_blank" rel="noopener">Myriad Taps Chainlink to Power FIFA World Cup Prediction Markets</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi_wFBVV95cUxOdVB0bzdqRFk3dlJZMU55YjM1OHJUSTAwQUM1X3o2RXhHY2Jlb0tDZGRnR1dEYkVnejRxX2JnNHZERXRBV1hPNDN6Z0JBQkVwbGhZWlpDZmVOLWVwd25GMmpQRk9VNWprM2x1aDhLM0Y3WHViWlljZUNjV09EVjFLZzhiSGVZOFRYcl95TjY4M0U3cmROSWxQQTl5b0N2UVNnbXFqZ3p3Zm1PSzBrWktHa3NCUDZOQTJBbDNPOU5DNFIxcVJrWWtGdmhTakgwRTlYWmxLQWhjTkd4LUtKd2hta1lCTlU5VXVRRm1zM0IyVXJWeVVxVHVNRlNCanRJOWc?oc=5" target="_blank" rel="noopener">Top Crypto Coins Breakdown: BlockDAG, Tron, Chainlink &amp; Ethereum Bridge Real Utility &amp; Market Demand</a><div class="meta"><span>StreetInsider</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE5KakRxSmxtR3M5dVdQZzYyb0pLX3BHRGl5OUl0TjFnWFBqcWR1Vkdub3hyNWFSSlQwOFdyamdxc1RUejkzR2xqQmhoTXlkdFhaaHdIaFhVZ2hQX1NfSkJNU200N0dxWjQ4QzhMZmNPTzZHeldydGxleGx2emM?oc=5" target="_blank" rel="noopener">Crypto FIFA World Cup 2026 Moment: Kraken, Chainlink, and Chiliz Are All In</a><div class="meta"><span>Cryptonews</span><span>· 11 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -301,7 +311,7 @@
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
       <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">374.36</text><text x="586" y="204" font-size="12" fill="#64748b">358.04</text><path d="M10.0,200 L10.0,134.9 L37.1,144.7 L64.3,122.3 L91.4,91.0 L118.6,145.3 L145.7,149.7 L172.9,176.5 L200.0,128.4 L227.1,117.9 L254.3,98.1 L281.4,67.0 L308.6,68.2 L335.7,41.4 L362.9,31.2 L390.0,21.2 L417.1,10.0 L444.3,41.6 L471.4,21.4 L498.6,137.8 L525.7,125.1 L552.9,134.5 L580.0,200.0 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,134.9 37.1,144.7 64.3,122.3 91.4,91.0 118.6,145.3 145.7,149.7 172.9,176.5 200.0,128.4 227.1,117.9 254.3,98.1 281.4,67.0 308.6,68.2 335.7,41.4 362.9,31.2 390.0,21.2 417.1,10.0 444.3,41.6 471.4,21.4 498.6,137.8 525.7,125.1 552.9,134.5 580.0,200.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="200.0" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="200.0" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
       <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.55 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-3.66 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-1.54 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">374.36 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">358.04 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">3.37 Mio</span></div></div>
@@ -314,10 +324,10 @@
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">Total US Market ETF · VTI</span><span class="badge neutral">Neutral</span></div>
-        
-        <p class="crat"></p>
+        <p class="csignal">Langfristiges Potenzial, Vergleiche.</p>
+        <p class="crat">Der VTI wird als potenziell bester Kauf für langfristige Investoren diskutiert, aber es gibt auch Vergleiche mit anderen ETFs.</p>
       </div>
-      
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Diskussion als bester Kauf für langfristige Investoren, Erwähnung als einer der sichersten ETFs.</li><li>Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.</li><li>Einordnung: Die Nachrichtenlage ist neutral, mit Fokus auf langfristiges Potenzial und Vergleich mit Alternativen.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on VTI</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxOMllWeV9MYmtJTlB5Z3J5cTB4cjhGVmVHdFZBM3BRUlRfTWxyRDh6NzFLdGdtUnpPSnVqajdrd1FwWWNRWFBZQy1SNjBPQ1N2LUxGYXkwaTkwZ2pOS09aeTNPME1oVERsUEhLM19hNHVTaDFpdHQ4LURMNVVNVHRDYkhFUFZwYzdiZjgzZE42bG1LbUplVGhpWWFmUmU?oc=5" target="_blank" rel="noopener">Is the Vanguard Total Stock Market ETF the Best Buy for Long-Term Investors?</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPaVZLamZ0VUY5S2Z3Z0xtZzhyUXZ3MlhmZmxLRlJZdlo1TWdUa01ubVU2UHNDa1VGVVZXRWVPb3dBR1FoWDQ0OEtOWkI1MlVBaEZjbWM3YUlpcjRUaTZ0SHhReThVam5SZkIwRENUUHBSX1ZoSVRWcEhMZ1RwMjZCRE5pVkMxc1FRcW1NYmNQSThrbE90YUFjVEt5WnJqNVQ0eFVrX0UxdXR6bFhB?oc=5" target="_blank" rel="noopener">BND vs. AGG: Which Total Bond Market ETF Belongs in Your Portfolio?</a><div class="meta"><span>24/7 Wall St.</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNNnFNM29xRU04bVh1WW5qVWllVVFNNmIzWGVOTTZiVGQyU3h4V1hjYURZeERNWFFTYnJidFpld1ZEWndrUVR3dng1MUxNWnpkTldXZDR0ek8zMkY1X0RhbVFUMFFJcTZrbTRDcjJpUlNwWFlNN1ZKVm9hb0RKUVUtUmowdHhOVXPSAYwBQVVfeXFMUHhGMmplU0pxeUdkRnVRVE9ITFdYc0hleGtkMFlDR21jY0dLVXNWclBidzhyTTY2UXRjSjQ1cFV4b1k5R1FtZkJiVmV6ZDFaV096SGFoUnhWMktlcHpqUVRKdVRPQXpwR1o1S1RDejRNaWVaYW9Wdm5JQUhRV2EzOG9ONy1jU2RxQW5lcUE?oc=5" target="_blank" rel="noopener">2026 ETF Inflows: Who Is Leading the Group?</a><div class="meta"><span>ETF Trends</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE4tQXVsQXk2R3FYNUEzakpWMGhVTDNTbktSQmxhN1JuMFN2WS1uelBHeUNhU1ZnelFqeUNvZUN4TGdOVWRmaFBtbTZTSGRub2h5RWdwZEMwWFlWcnFXcGs5b2lmbTQ2aUN3eVRWUUpTT0pFVlRY?oc=5" target="_blank" rel="noopener">iShares Core S&amp;P Total U.S. Stock Market ETF’s 0.03% Fee and BlackRock Scale Face Off Against Vanguard Total Stock Market ETF’s Structural Advantages</a><div class="meta"><span>AOL.com</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxQblRaOGlUN0R5RVVYLVU5MGJKSGNkR0k2d2xxSmM5Wk9PR2VZZXJ6aVZYdUItRjNDR05RTlJSR2tPWGh4MkIzTWNXQjZPOGlCNDA1UVpRR3FwYnhDTUNOMXJ2OVRRTEhSV3RFVWFnY3d3SC1pZG5mQ09IWnRCXzJINGtn?oc=5" target="_blank" rel="noopener">Top 9 Safest ETFs to Buy in 2026</a><div class="meta"><span>The Motley Fool</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxOMllWeV9MYmtJTlB5Z3J5cTB4cjhGVmVHdFZBM3BRUlRfTWxyRDh6NzFLdGdtUnpPSnVqajdrd1FwWWNRWFBZQy1SNjBPQ1N2LUxGYXkwaTkwZ2pOS09aeTNPME1oVERsUEhLM19hNHVTaDFpdHQ4LURMNVVNVHRDYkhFUFZwYzdiZjgzZE42bG1LbUplVGhpWWFmUmU?oc=5" target="_blank" rel="noopener">Is the Vanguard Total Stock Market ETF the Best Buy for Long-Term Investors?</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxOTldJN1VzU3JtNjNBWHNJRUE2bUI3WTY4Qk0zYXBfd1BqeFp4S2JoNFJCVjk1Zm93YXRLR1VuaU00c0hvWm9rUWtDTlhwN01VOFpYeEFDNmRERmpQcXZSUVJ4TmNDa2wwaWxndE5yeVJIZE9USjI1T3BJamoyNGZvaHhHRjFXOGJNbm0xU0tqTFE5cnZHQnl1X1dWVlpveWotblkwLXNJbndGM3FNSEwySHIyWTdvUDh0dzhxcUpUNXo3cmNtcUlZSlluOEZRUi1VVTgxdTlXUGVLZUhuS0lxUUZfNA?oc=5" target="_blank" rel="noopener">If I Could Own Only 3 ETFs for the Next Decade, It Would Be These</a><div class="meta"><span>The Globe and Mail</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPaVZLamZ0VUY5S2Z3Z0xtZzhyUXZ3MlhmZmxLRlJZdlo1TWdUa01ubVU2UHNDa1VGVVZXRWVPb3dBR1FoWDQ0OEtOWkI1MlVBaEZjbWM3YUlpcjRUaTZ0SHhReThVam5SZkIwRENUUHBSX1ZoSVRWcEhMZ1RwMjZCRE5pVkMxc1FRcW1NYmNQSThrbE90YUFjVEt5WnJqNVQ0eFVrX0UxdXR6bFhB?oc=5" target="_blank" rel="noopener">BND vs. AGG: Which Total Bond Market ETF Belongs in Your Portfolio?</a><div class="meta"><span>24/7 Wall St.</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxQblRaOGlUN0R5RVVYLVU5MGJKSGNkR0k2d2xxSmM5Wk9PR2VZZXJ6aVZYdUItRjNDR05RTlJSR2tPWGh4MkIzTWNXQjZPOGlCNDA1UVpRR3FwYnhDTUNOMXJ2OVRRTEhSV3RFVWFnY3d3SC1pZG5mQ09IWnRCXzJINGtn?oc=5" target="_blank" rel="noopener">Top 9 Safest ETFs to Buy in 2026</a><div class="meta"><span>The Motley Fool</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNNnFNM29xRU04bVh1WW5qVWllVVFNNmIzWGVOTTZiVGQyU3h4V1hjYURZeERNWFFTYnJidFpld1ZEWndrUVR3dng1MUxNWnpkTldXZDR0ek8zMkY1X0RhbVFUMFFJcTZrbTRDcjJpUlNwWFlNN1ZKVm9hb0RKUVUtUmowdHhOVXPSAYwBQVVfeXFMUHhGMmplU0pxeUdkRnVRVE9ITFdYc0hleGtkMFlDR21jY0dLVXNWclBidzhyTTY2UXRjSjQ1cFV4b1k5R1FtZkJiVmV6ZDFaV096SGFoUnhWMktlcHpqUVRKdVRPQXpwR1o1S1RDejRNaWVaYW9Wdm5JQUhRV2EzOG9ONy1jU2RxQW5lcUE?oc=5" target="_blank" rel="noopener">2026 ETF Inflows: Who Is Leading the Group?</a><div class="meta"><span>ETF Trends</span><span>· 09 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

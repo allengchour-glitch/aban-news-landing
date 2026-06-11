@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,8 +297,8 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Gold <span class="hl">Gold</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="gold" data-type="commodity">4’064 USD</span>
-        <span class="chg down">-4.61 %</span>
+        <span class="px" id="livePrice" data-id="gold" data-type="commodity">4’175 USD</span>
+        <span class="chg up">+1.62 %</span>
         <span class="tag-type">Commodity</span>
         <span class="badge bearish">Bearish</span>
       </div>
@@ -300,11 +310,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">4’719</text><text x="586" y="204" font-size="12" fill="#64748b">4’064</text><path d="M10.0,200 L10.0,10.0 L37.1,21.9 L64.3,16.1 L91.4,21.8 L118.6,57.3 L145.7,58.2 L172.9,71.6 L200.0,64.4 L227.1,61.9 L254.3,67.4 L281.4,73.3 L308.6,88.7 L335.7,73.7 L362.9,55.9 L390.0,80.6 L417.1,76.6 L444.3,91.8 L471.4,80.5 L498.6,120.7 L525.7,121.1 L552.9,143.1 L580.0,200.0 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,10.0 37.1,21.9 64.3,16.1 91.4,21.8 118.6,57.3 145.7,58.2 172.9,71.6 200.0,64.4 227.1,61.9 254.3,67.4 281.4,73.3 308.6,88.7 335.7,73.7 362.9,55.9 390.0,80.6 417.1,76.6 444.3,91.8 471.4,80.5 498.6,120.7 525.7,121.1 552.9,143.1 580.0,200.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="200.0" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="200.0" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">4’719</text><text x="586" y="204" font-size="12" fill="#64748b">4’108</text><path d="M10.0,200 L10.0,10.0 L35.9,22.8 L61.8,16.5 L87.7,22.6 L113.6,60.7 L139.5,61.7 L165.5,76.1 L191.4,68.3 L217.3,65.7 L243.2,71.5 L269.1,77.9 L295.0,94.4 L320.9,78.3 L346.8,59.2 L372.7,85.8 L398.6,81.5 L424.5,97.8 L450.5,85.6 L476.4,128.8 L502.3,129.1 L528.2,152.8 L554.1,200.0 L580.0,179.3 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,10.0 35.9,22.8 61.8,16.5 87.7,22.6 113.6,60.7 139.5,61.7 165.5,76.1 191.4,68.3 217.3,65.7 243.2,71.5 269.1,77.9 295.0,94.4 320.9,78.3 346.8,59.2 372.7,85.8 398.6,81.5 424.5,97.8 450.5,85.6 476.4,128.8 502.3,129.1 528.2,152.8 554.1,200.0 580.0,179.3" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="179.3" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="179.3" r="3.4" fill="#dc2626"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-4.61 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-8.40 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-13.88 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">4’719 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">4’064 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">4’256</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+1.62 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-6.73 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-11.53 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">4’719 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">4’108 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">167’459</span></div></div>
     </div>
   </section>
 
@@ -314,10 +324,10 @@
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">Gold · Gold</span><span class="badge bearish">Bearish</span></div>
-        <p class="csignal">2-Monats-Tief durch geopolitische und Zinsängste.</p>
-        <p class="crat">Der Goldpreis erreicht ein 2-Monats-Tief, beeinflusst von Iran-Spannungen und Zinsangst, obwohl langfristige Prognosen optimistisch sind.</p>
+        <p class="csignal">Rückgang von Hochs, 6-Monats-Tief.</p>
+        <p class="crat">Gold ist von Rekordhochs zurückgegangen und hat ein 6-Monats-Tief erreicht, da spekulative Anleger aussteigen.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Langfristige Prognosen sehen Potenzial für eine Verdreifachung des Goldpreises, wenn sich historische Muster wiederholen.</li><li>Risiko: Der Goldpreis erreicht ein 2-Monats-Tief, beeinflusst von Iran-Spannungen und Ängsten vor Zinserhöhungen.</li><li>Einordnung: Die Nachrichtenlage ist kurzfristig negativ, geprägt von einem Preisrückgang, aber mit langfristig optimistischen Prognosen.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Potenzial für Verdreifachung des Preises bei Wiederholung des Bullenmarktes der 1970er Jahre.</li><li>Risiko: Rückgang von Rekordhochs, 6-Monats-Tief, spekulative Anleger steigen aus.</li><li>Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit deutlichen Kursrückgängen und Abzug von Kapital.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on Gold</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxOQ1pnbGJHaWxPNmtsbk1WOFA5N3hZcWprQnlMQTA3NDdiOGVobFh4MC1DdkhwNDZtdG5TcWpnelFhbTJVSWpaLUV5aWFCamF3UHdlWExWMnUzQ1hMcUJmRUt0clZlN29wcV9WeHoxMGNYczh4R0sza0MxX3hHRmRsYmRXYUtZQVpCNXZkczFrNC1OTlBNRThocHhTRXhnTmlGUmZRQVVwMmZ5V0swU0l3dnpBdUJVQURfUjZIZGhxZE9JTmFYeWRlcDl5RFVKZ29mRl85RnJHMA?oc=5" target="_blank" rel="noopener">Gold And Silver Price Hit 2-Month Lows Following Iran Tensions, Interest Rate Hike Fears</a><div class="meta"><span>Forbes</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTFBwSzNBV2JlR1pYOXFIQm1BS0gwaFpMdFhmUFZzMUVmM1BNN0Rmd21MaGRqS05yNGRtUFhzbDVuWW16NWF4eGRMNURUUnh3TjRWLTBHYmc0VUxoOVJFTk9CWnJPaUpYejQ5bXJxQzVR?oc=5" target="_blank" rel="noopener">Current price of gold as of June 9, 2026</a><div class="meta"><span>Fortune</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE80TThZUFEzenhGMkJZX21xWlBSdkEzb2l5V1prLTFiTk1BOGxUWFIxTmhrQ3FBZjRuRWtpQUhmRGtfY1I5Mm9Dc3hkVG85TnZxeThzUEFtSGNfWTZxbmkzZnZXUVFQZnZqQWZ4TVNXTThNMTIzY1h4SQ?oc=5" target="_blank" rel="noopener">Gold could slump another 20% by September, says Citi — here&#x27;s why</a><div class="meta"><span>CNBC</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNZFBKZWJVVzAyemoyVTJJQ29qUVZfVzlRRktoQzdCS09jbU54SVRoa0FaOGE4NnRDLW9mWEJ0ZlZ2VnFnQTRySkx0ZXNrOXZaSDd4Sm43ZnYwVVFBN09PTXBmWHYzZi16UXF4LXFWa0dWcHJSMDcxY09OeUtKQ1dJMG40Nnh6OXFsbHhHZGlSbTNpb1FVVnNWeFdlRE8wMHVnUnFScXVuay1fVFljVHFGN19OWUptMDlkYzhvMg?oc=5" target="_blank" rel="noopener">Gold price could triple if 1970s bull market pattern holds, says Jeff Clark</a><div class="meta"><span>KITCO</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPeE9PdkJuejk2NjJuV0lZR3BRdU5sNGxVTThuZUZtUWhuTURLMFcxUjJsVi1fd1JUaEt0OFAtNzBJbUx1ZEF4MUtjcDdSeC1JbVNGd0lfaHQtcTVBbUhNODl2LTVFZnpUbDZyMGVteVI4VXdJQmluRS1xcmUzRjN5bVFERXNwVGs1OHR6MW55aktxMWZ0TmgycGUtdlpaSFBkSVMxV1d0dW1VRk9qZEtOaXBkQQ?oc=5" target="_blank" rel="noopener">Indian gold falls below pre-duty-hike levels as overseas prices drop</a><div class="meta"><span>Reuters</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxQb2tfLXhFUHhrMFUzWWpyZXdOTkhUTGF6cTVSU2Z0RHFuV0pwMGFQSHF3ZVA2TjlvTHVSc2xsSnlYaVBlVXdSc3V4RWhDZV9rYUY0TkU4NGIxb3JNUnFESlI2TzBTRW1SZk9HQkxMYU40R1RkdmMyMGRnZVh2MFl5WHItdEhXMTdpSjk1eUk2RWs?oc=5" target="_blank" rel="noopener">Gold Has Retreated From Record Highs. What’s Next?</a><div class="meta"><span>Morningstar</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQNlZXLVpURXNsdkJ6OThCYmU5NVlteTVPZndGcnItd3VnbVVjcUUyT3ppTXJYVHNRenhRNTFPWjIxV1NFY2hkMDYwVXpZRjF6aVp0NmRyZTctOUJWVHpkQTkxaFVYaDFtTFV4Q1I2b1hQUEN5cmtoYkttc1d1V0ROSWttd1Joem55V3hKeER6QmFfN0JtSlZCTzlSY2E?oc=5" target="_blank" rel="noopener">What will happen to gold prices if inflation stays elevated through 2026? Here&#x27;s what experts say.</a><div class="meta"><span>CBS News</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNZFBKZWJVVzAyemoyVTJJQ29qUVZfVzlRRktoQzdCS09jbU54SVRoa0FaOGE4NnRDLW9mWEJ0ZlZ2VnFnQTRySkx0ZXNrOXZaSDd4Sm43ZnYwVVFBN09PTXBmWHYzZi16UXF4LXFWa0dWcHJSMDcxY09OeUtKQ1dJMG40Nnh6OXFsbHhHZGlSbTNpb1FVVnNWeFdlRE8wMHVnUnFScXVuay1fVFljVHFGN19OWUptMDlkYzhvMg?oc=5" target="_blank" rel="noopener">Gold price could triple if 1970s bull market pattern holds, says Jeff Clark</a><div class="meta"><span>KITCO</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE1WNkhIQ09yVktoOFR5XzUta0o4SUtEc2duN3VHTlNvU1RaazJlVTdoVktjRjlIYlFJYUZoOU1JUGdGWlNZeFota2dYdi0wWGcySGpkc1pOY2VkSG1NSUo5Ym1sOF93QWFwMm1uNDN3?oc=5" target="_blank" rel="noopener">Current price of gold as of June 11, 2026</a><div class="meta"><span>Fortune</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxPalR2TlF0T0ptQ1RmZnBtTzZCNnJ6eUtoYTM5emt6WkFObmxKdzlwejExUTUtSEJMaEtmNzVzTzlCVXpjWmM0LWxQMkFOeXN3SGxSeEdPblU3djAwNWxxVVZlRTZ1RzAwTVdJa0huaGw2UEM1R0NhWFJRT3lfTElOUkxNeXM?oc=5" target="_blank" rel="noopener">Gold sinks to 6-month low as speculative investors exit</a><div class="meta"><span>Financial Times</span><span>· 11 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

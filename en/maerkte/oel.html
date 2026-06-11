@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,10 +297,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Rohöl WTI <span class="hl">Öl (WTI)</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="oel" data-type="commodity">92.36 USD</span>
-        <span class="chg up">+4.72 %</span>
+        <span class="px" id="livePrice" data-id="oel" data-type="commodity">87.19 USD</span>
+        <span class="chg down">-3.15 %</span>
         <span class="tag-type">Commodity</span>
-        <span class="badge bullish">Bullish</span>
+        <span class="badge bearish">Bearish</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Commodity is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -300,11 +310,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">108.66</text><text x="586" y="204" font-size="12" fill="#64748b">87.36</text><path d="M10.0,200 L10.0,104.5 L37.1,67.8 L64.3,78.2 L91.4,76.8 L118.6,38.9 L145.7,10.0 L172.9,17.9 L200.0,102.8 L227.1,119.8 L254.3,117.6 L281.4,141.8 L308.6,188.2 L335.7,186.3 L362.9,200.0 L390.0,157.2 L417.1,142.9 L444.3,122.8 L471.4,149.3 L498.6,171.6 L525.7,164.9 L552.9,192.5 L580.0,155.4 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,104.5 37.1,67.8 64.3,78.2 91.4,76.8 118.6,38.9 145.7,10.0 172.9,17.9 200.0,102.8 227.1,119.8 254.3,117.6 281.4,141.8 308.6,188.2 335.7,186.3 362.9,200.0 390.0,157.2 417.1,142.9 444.3,122.8 471.4,149.3 498.6,171.6 525.7,164.9 552.9,192.5 580.0,155.4" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="155.4" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="155.4" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">108.66</text><text x="586" y="204" font-size="12" fill="#64748b">87.19</text><path d="M10.0,200 L10.0,103.7 L35.9,67.3 L61.8,77.6 L87.7,76.3 L113.6,38.7 L139.5,10.0 L165.5,17.9 L191.4,102.0 L217.3,118.9 L243.2,116.7 L269.1,140.7 L295.0,186.8 L320.9,184.9 L346.8,198.5 L372.7,156.0 L398.6,141.9 L424.5,121.9 L450.5,148.2 L476.4,170.4 L502.3,163.6 L528.2,191.1 L554.1,174.9 L580.0,200.0 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,103.7 35.9,67.3 61.8,77.6 87.7,76.3 113.6,38.7 139.5,10.0 165.5,17.9 191.4,102.0 217.3,118.9 243.2,116.7 269.1,140.7 295.0,186.8 320.9,184.9 346.8,198.5 372.7,156.0 398.6,141.9 424.5,121.9 450.5,148.2 476.4,170.4 502.3,163.6 528.2,191.1 554.1,174.9 580.0,200.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="200.0" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="200.0" r="3.4" fill="#dc2626"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+4.72 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-3.81 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-5.82 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">108.66 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">87.36 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">2’641</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-3.15 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-6.29 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-11.09 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">108.66 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">87.19 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">218’406</span></div></div>
     </div>
   </section>
 
@@ -313,11 +323,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Rohöl WTI · Öl (WTI)</span><span class="badge bullish">Bullish</span></div>
-        <p class="csignal">Starker Anstieg durch geopolitische Spannungen.</p>
-        <p class="crat">Rohöl WTI steigt stark, da die USA &#x27;proportionale&#x27; Angriffe gegen den Iran starten und Trump mit Vergeltung droht.</p>
+        <div class="chead"><span class="cname">Rohöl WTI · Öl (WTI)</span><span class="badge bearish">Bearish</span></div>
+        <p class="csignal">Preisrückgang erwartet, Attraktivität sinkt.</p>
+        <p class="crat">Analysten warnen vor einem möglichen Rückgang des Rohölpreises unter 50 USD und Venezuela verliert an Attraktivität.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Die USA starten &#x27;proportionale&#x27; Angriffe gegen den Iran, und Trump droht mit Vergeltung, was den Ölpreis treibt.</li><li>Risiko: Bank of America warnt vor einem möglichen Rückgang des Rohölpreises unter 50 USD.</li><li>Einordnung: Die Nachrichtenlage ist kurzfristig positiv, geprägt von einem starken Preisanstieg durch geopolitische Ereignisse, aber mit langfristigen Abwärtsrisiken.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: US sieht große Zuwächse bei Rohöl- und Produktbeständen.</li><li>Risiko: BofA warnt vor Rückgang unter 50 USD, venezolanisches Rohöl verliert an Attraktivität in China.</li><li>Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit Warnungen vor weiteren Preisrückgängen.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on Öl (WTI)</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQUkZueEVqblVxaGRqelREd1VCU3BtZWc0SG5QYjY4WXEyMnFhUjByUVJ6dDhZN3Y5dkxlQk1jZkhKYnA5NWFnUUYtODJqYWk0UFQxNGdvLXpsUnhLem1OSW9UcUlkOW1QSjVMZFh6OFNhdl85ci1EV3JKOEVXWjBNOWVMTTFQUXJ4ejI2bU5uNjVuZW9paUpBR0h0aE5mQXlLWC0zQVFXTUJOd9IBrwFBVV95cUxNQ0Y4eFdjT0JOdTJJUzdmVUhxcDZlbmlEV1NXMlZKWmZ2SmZBamVRVU5lTVRwelo0cURJRkdVenFzZ245cWw1b0Vsd3FpeEY3UlFrTmpyT1pabkRhODBPQkdWVzRib1lXZEJ4NnhNSEFBbUV6MHdGdDdLXzQwa1RnRnhnMmt0N1hzdGZLdnR6QmstTEIyTHItMnRSaTFuOUU3dXo2eExwc29GeGh6bzUw?oc=5" target="_blank" rel="noopener">US Sees Big Gains in Crude Oil, Product Inventories</a><div class="meta"><span>Crude Oil Prices Today | OilPrice.com</span><span>· 21 Jan 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNeEpDYkE3bl9VYUpVZ204Rm1WdGZmU205RU93cHBUZ0s1NDhEMlllcGF5M3NGTU5RaG1iVEsxTU9qSkFVT2lRVWcxY0t1RmhabzNKc2VGZXJnMGt0U3pmSS0tN2VhWlo5akhaMjd0dmx1TUpMZkVsMXFrVW9QcXFURUFlcHFnZFB3dHp30gGQAUFVX3lxTE9VLTFCb0RvQmQtdl9XZG4xSG40Mnd2dHJzeGhDWU8zNFd5U3VzUFd3dHBHWFhMLTNWNFl3VjRWUzViRDlFaks4dHhZSGN0WXVUNGZJNTNZb0s4QlJ4dGlDQ09KcjFObnI5Y0JxVTVaSUw2UGlKMkxnNXV1ZjZ2ZVZ1a0Zsd1ZncUtkbUhHZlRuQg?oc=5" target="_blank" rel="noopener">Crude Oil Could Fall Below $50, BofA Warns</a><div class="meta"><span>Crude Oil Prices Today | OilPrice.com</span><span>· 15 Oct 2025</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTFBRQ0JiejB1OWUzR2NzRFdWdEptejhPUkZhOGdmN2tGblpzdU5XTDN5VXczTmRTZUpOV0tHOTFBZW9rQld4MHNKazdnUmxQMjRtUW5wM1RELWlsa1VRQTN2ZExZQQ?oc=5" target="_blank" rel="noopener">A look back at our forecast for global crude oil prices in 2024</a><div class="meta"><span>U.S. Energy Information Administration (EIA) (.gov)</span><span>· 17 Jan 2025</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxOMFlxVGRvVDhHRzJvZ3hxYV91dEhPQWc1UXVtZlpSdENNdENpY19kdWVNbUQxcFlRM09tUHpWRVptOWdwVnUzeFZ3TUFjVVd6REQtekJ0bms3X3hack1MUmtmSm9GT28zaVNsVVN0Q0d1Mi1OajFVZVdpSW9neFVOVFN2aU5OZFdiLUxHMTdUT2swVExDNEdIUXZ6REQ3Tlc4TEphaTMzUE9abGhpMFRvbVFiaTlyU3VpX3NmTnFVMEUySHpKSEJRNXczNUNUTFJZZ0xfeXBIaUJOSjc4MFE?oc=5" target="_blank" rel="noopener">FACTBOX: Venezuela&#x27;s oil industry is operating after US seizes Maduro</a><div class="meta"><span>S&amp;P Global</span><span>· 03 Jan 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE1OVHltWktpaTJQRXlsS281OXVOT19HMDFWWUtxa3hmRkQzT0VLZHMtazhvX0VOQkJwM0ZsVGZ2R1YtZnB2YmI3VHhvbjdPdjlfQ3g5Z0xiNVkzMnhYMmRxMGpNNFFIeXM2eEZDVnVnLUhYcEVBX09PZlhxTng?oc=5" target="_blank" rel="noopener">Crude Oil Futures Overview</a><div class="meta"><span>CME Group</span><span>· 25 Jun 2021</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQUkZueEVqblVxaGRqelREd1VCU3BtZWc0SG5QYjY4WXEyMnFhUjByUVJ6dDhZN3Y5dkxlQk1jZkhKYnA5NWFnUUYtODJqYWk0UFQxNGdvLXpsUnhLem1OSW9UcUlkOW1QSjVMZFh6OFNhdl85ci1EV3JKOEVXWjBNOWVMTTFQUXJ4ejI2bU5uNjVuZW9paUpBR0h0aE5mQXlLWC0zQVFXTUJOd9IBrwFBVV95cUxNQ0Y4eFdjT0JOdTJJUzdmVUhxcDZlbmlEV1NXMlZKWmZ2SmZBamVRVU5lTVRwelo0cURJRkdVenFzZ245cWw1b0Vsd3FpeEY3UlFrTmpyT1pabkRhODBPQkdWVzRib1lXZEJ4NnhNSEFBbUV6MHdGdDdLXzQwa1RnRnhnMmt0N1hzdGZLdnR6QmstTEIyTHItMnRSaTFuOUU3dXo2eExwc29GeGh6bzUw?oc=5" target="_blank" rel="noopener">US Sees Big Gains in Crude Oil, Product Inventories</a><div class="meta"><span>Crude Oil Prices Today | OilPrice.com</span><span>· 21 Jan 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNeEpDYkE3bl9VYUpVZ204Rm1WdGZmU205RU93cHBUZ0s1NDhEMlllcGF5M3NGTU5RaG1iVEsxTU9qSkFVT2lRVWcxY0t1RmhabzNKc2VGZXJnMGt0U3pmSS0tN2VhWlo5akhaMjd0dmx1TUpMZkVsMXFrVW9QcXFURUFlcHFnZFB3dHp30gGQAUFVX3lxTE9VLTFCb0RvQmQtdl9XZG4xSG40Mnd2dHJzeGhDWU8zNFd5U3VzUFd3dHBHWFhMLTNWNFl3VjRWUzViRDlFaks4dHhZSGN0WXVUNGZJNTNZb0s4QlJ4dGlDQ09KcjFObnI5Y0JxVTVaSUw2UGlKMkxnNXV1ZjZ2ZVZ1a0Zsd1ZncUtkbUhHZlRuQg?oc=5" target="_blank" rel="noopener">Crude Oil Could Fall Below $50, BofA Warns</a><div class="meta"><span>Crude Oil Prices Today | OilPrice.com</span><span>· 15 Oct 2025</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTFBRQ0JiejB1OWUzR2NzRFdWdEptejhPUkZhOGdmN2tGblpzdU5XTDN5VXczTmRTZUpOV0tHOTFBZW9rQld4MHNKazdnUmxQMjRtUW5wM1RELWlsa1VRQTN2ZExZQQ?oc=5" target="_blank" rel="noopener">A look back at our forecast for global crude oil prices in 2024</a><div class="meta"><span>U.S. Energy Information Administration (EIA) (.gov)</span><span>· 17 Jan 2025</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxOMFlxVGRvVDhHRzJvZ3hxYV91dEhPQWc1UXVtZlpSdENNdENpY19kdWVNbUQxcFlRM09tUHpWRVptOWdwVnUzeFZ3TUFjVVd6REQtekJ0bms3X3hack1MUmtmSm9GT28zaVNsVVN0Q0d1Mi1OajFVZVdpSW9neFVOVFN2aU5OZFdiLUxHMTdUT2swVExDNEdIUXZ6REQ3Tlc4TEphaTMzUE9abGhpMFRvbVFiaTlyU3VpX3NmTnFVMEUySHpKSEJRNXczNUNUTFJZZ0xfeXBIaUJOSjc4MFE?oc=5" target="_blank" rel="noopener">FACTBOX: Venezuela&#x27;s oil industry is operating after US seizes Maduro</a><div class="meta"><span>S&amp;P Global</span><span>· 03 Jan 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxQQk5ZcUM0Z053NXVUTDJMZlFlN2VhSDlURjBjUUNtRVRMVlZQTmN0ZzM3UlZWei1vZGpjY1NpQmJUUHBtdDNXYnR5WlBZVjFBNHMtdmYyMllpbkRTQ084VFF5WkxvMVBCbWFHZnh5a0xuMFgyUVpBNlpLMUlmbEhoQ0F3VE1KRG5YRHRaajJSTHN4WExKZTl1a0VKLTRHd044cUVwd9IBqgFBVV95cUxNZHFtZlJoRElkOGpvU2NSX0sxTWhGRENRRVkxQkR0UTZyUWphSDhXSHJyOEpTZi1GdmxrUzRoNEptcE9vQnkwcV92VlgxaDFyWENjUlZIc215bW9CVXFfR1I4NWEyLXlOcjJZRkNlbXEyb3VBeXBhZ2pzU3h6eEVqbFgxOXhUT0dJZFBlOXR5VWtiUE00S21IdW82MmU0enpRN0kxLUc2ZFN4dw?oc=5" target="_blank" rel="noopener">Venezuelan Crude Is Losing Its Appeal in China</a><div class="meta"><span>Crude Oil Prices Today | OilPrice.com</span><span>· 27 Jan 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

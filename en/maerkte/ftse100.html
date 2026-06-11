@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,10 +297,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>FTSE 100 <span class="hl">FTSE 100</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="ftse100" data-type="index">10’255 Pkt</span>
-        <span class="chg up">+0.27 %</span>
+        <span class="px" id="livePrice" data-id="ftse100" data-type="index">10’304 Pkt</span>
+        <span class="chg up">+0.48 %</span>
         <span class="tag-type">Index</span>
-        <span class="badge neutral">Neutral</span>
+        <span class="badge bullish">Bullish</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Index is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -300,11 +310,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">10’505</text><text x="586" y="204" font-size="12" fill="#64748b">10’195</text><path d="M10.0,200 L10.0,154.6 L37.1,157.1 L64.3,120.2 L91.4,91.1 L118.6,200.0 L145.7,121.2 L172.9,117.0 L200.0,54.6 L227.1,47.7 L254.3,33.8 L281.4,18.3 L308.6,10.0 L335.7,58.5 L362.9,68.7 L390.0,111.9 L417.1,90.7 L444.3,116.0 L471.4,98.8 L498.6,94.0 L525.7,90.9 L552.9,180.4 L580.0,163.5 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,154.6 37.1,157.1 64.3,120.2 91.4,91.1 118.6,200.0 145.7,121.2 172.9,117.0 200.0,54.6 227.1,47.7 254.3,33.8 281.4,18.3 308.6,10.0 335.7,58.5 362.9,68.7 390.0,111.9 417.1,90.7 444.3,116.0 471.4,98.8 498.6,94.0 525.7,90.9 552.9,180.4 580.0,163.5" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="163.5" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="163.5" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">10’505</text><text x="586" y="204" font-size="12" fill="#64748b">10’195</text><path d="M10.0,200 L10.0,154.6 L35.9,157.1 L61.8,120.2 L87.7,91.1 L113.6,200.0 L139.5,121.2 L165.5,117.0 L191.4,54.6 L217.3,47.7 L243.2,33.8 L269.1,18.3 L295.0,10.0 L320.9,58.5 L346.8,68.7 L372.7,111.9 L398.6,90.7 L424.5,116.0 L450.5,98.8 L476.4,94.0 L502.3,90.9 L528.2,180.4 L554.1,163.5 L580.0,133.4 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,154.6 35.9,157.1 61.8,120.2 87.7,91.1 113.6,200.0 139.5,121.2 165.5,117.0 191.4,54.6 217.3,47.7 243.2,33.8 269.1,18.3 295.0,10.0 320.9,58.5 346.8,68.7 372.7,111.9 398.6,90.7 424.5,116.0 450.5,98.8 476.4,94.0 502.3,90.9 528.2,180.4 554.1,163.5 580.0,133.4" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="133.4" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="133.4" r="3.4" fill="#0f9d6b"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+0.27 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-0.75 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-0.14 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">10’505 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">10’195 Pkt</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+0.48 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-0.54 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+0.34 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">10’505 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">10’195 Pkt</span></div></div>
     </div>
   </section>
 
@@ -313,11 +323,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">FTSE 100 · FTSE 100</span><span class="badge neutral">Neutral</span></div>
-        <p class="csignal">Leichter Anstieg, relative Stärke.</p>
-        <p class="crat">Der FTSE 100 steigt leicht, da Energie- und Konsumgüteraktien zulegen, während andere europäische Indizes fallen.</p>
+        <div class="chead"><span class="cname">FTSE 100 · FTSE 100</span><span class="badge bullish">Bullish</span></div>
+        <p class="csignal">Steigende Finanzwerte, positive Prognosen.</p>
+        <p class="crat">Der FTSE 100 steigt, unterstützt durch die Erholung der Finanzwerte und positive Analystenprognosen.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Energie- und Konsumgüteraktien legen zu, was den Index stützt.</li><li>Risiko: Der Index bewegt sich nahe an Dreiwochentiefs, und es gibt Bedenken vor einem überhitzten US-Markt.</li><li>Einordnung: Die Nachrichtenlage ist neutral, mit einem leichten Anstieg, der auf relative Stärke in bestimmten Sektoren hindeutet, aber auch auf allgemeine Marktunsicherheit.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Steigt durch Erholung der Finanzwerte, Analyst prognostiziert Durchbruch über 12.000, schließt 0.49% höher.</li><li>Risiko: Sorgen um Nahost und KI-Ausgaben begrenzen Gewinne.</li><li>Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit Erholungstendenzen und optimistischen Prognosen.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on FTSE 100</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxNUHVyRTZGbWdTRG5pNGJzMHdFdGdEODRHclpObXl3RS1uQ1pJOEw3VmlWeEVVWkQxU3dMQ0NZYW9GVFFlS0VvLWtVLXVrRGNHc0EwUkNsUnpQSGp4MXI0eDJOS0Z4Q1BJUnVlU2YzMW4zb2JSOVdmQXdkWDVod1c2VnEyeDRtRnZMUEhVNUZZenNlaUVtYzVoXzZJMU5hUQ?oc=5" target="_blank" rel="noopener">UK&#x27;s FTSE 100 rises as energy and consumer staples gain</a><div class="meta"><span>Reuters</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQQWdOQ091empUNGRDRjJjSTdrbjJKVDVXcS1FX0UydEhvSUdzUzNsOXNZZERxdEhkay1SZDVFU2JYR29YbTZlWDZfWlBpdG1QLWcwbkJZdlBCRFZuNVBpTWtZdG5ZWFlnTVFzbjVTVnpQQkY5QTBqaGhIX1JQMWhNVk1DeFh4VDBOUFNZZWM3NUtmZw?oc=5" target="_blank" rel="noopener">The FTSE 100 Index Closes 0.30% Higher</a><div class="meta"><span>TradingView</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxNekp1ZWEyMVdHeFZHYkNhMmtmVmF2aDNjNGE5MGV3Wjd4d0dGZUlyd1FnU1d5MXdrXzU1d0dDY0Iza0hPLW14ZFJsbnFsLWxUU0tjYlpPVnl4WnF4dk91amNCSzZtcFVTWjNmRDNHZVNjQmFkM0hiOHVENFJ5TzhSQ093?oc=5" target="_blank" rel="noopener">Is the FTSE 100 at risk from an overheated US stock market?</a><div class="meta"><span>Yahoo Finance UK</span><span>· 05 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNS1YxR0xiMTZndHpYZHk4d1VLZGJFUmNzLVFCNHFyYW12dUtHZWpaZk9mTkQxWVJ4WDVhdE93Q3N4QS1pZjNGTmUzS3lPdnd3dTZoNjFCZEJtdVREaG04SE9VNmw5b0dxeGpMbmdieDVIUnpzZjVMT3FrX0dXejI3Q0dpYmRFWU9Nb0lDeTh0bWFZZw?oc=5" target="_blank" rel="noopener">The European indices close mostly lower today</a><div class="meta"><span>investingLive</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPSXkzMEFwY2xGMm85X01Ub0NxeWhhc2Vfd3k3dkdLbEtyaXZFSW80X2hSY085WjBuekhZaEFDamZzb1VlQU9aSFpkWGxmMFMxTXRDWHFJNUMwdmpWQ3Nka2RJOUxBQ0pHbWxCU0lqN3hKdjRyRmFvWDA1NlZWcEZBUkRZYzFudlI5LXg0WFpFalNLMnRxQ1ZWbk1nTi1FM0N1bVhSWEg5REhjdw?oc=5" target="_blank" rel="noopener">UK FTSE indexes hover at three-week lows; WH Smith dives By Reuters</a><div class="meta"><span>Investing.com</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxQcU9JWGZKc1J4WFVPZXZPQU9KQ3EtaGZZeGhFUmdWY0E4bDJveGxsMW1OS055S2NUMEdCano1amdOV0dScElhV1Z0Y2R3dS1jZGRaVWpWVWxlclI2UzA2U3VzdDZ5WmczV2RmSzExcm9zajlETlU1VWFmOTNxUHhsNklEX09TVzE0Y2lzbkI4SmZJTVk0UDRaVjJraUFtWDBTS2lTRW5HN2kyT1JLakNvTWZfYXVGYk5B?oc=5" target="_blank" rel="noopener">UK&#x27;s FTSE 100 rises as financials rebound, Middle East and AI spending worries cap gains</a><div class="meta"><span>Reuters</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPalNLVEdkWjMzVXR2bDBtRzlRb0xuNkhjc2NCZFdmdHltYjh1ckF5UkZkelZtbUtMVFVhNlg0MXFhSC1PVEFDdy10SV9UZU1wd0FYNVdzNVpNT25YdUZFOHBGcXIxWU5ubXdvdlE2VFI1RkJlOHVncnFldlU5U20tS1M5V0dOWnVLeExNOFpjNGh5WF9jaVRoQlA5Zw?oc=5" target="_blank" rel="noopener">FTSE 100 could surge 19% or slump 26% depending on commodities and bonds, says UBS</a><div class="meta"><span>Yahoo Finance</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxPaDVkVzAtc2dUVkxFTkJMTUQtYnY5N3VjMDAteV91TDgtbVN1S2NsRHlTUmpDNVNiV1R6Yll5S1pwNDZlSFpBajlScGQwWTBnMFk3dFhJVDhQQUg0UE0wTVU3MjNEeE9ORlRmZ2tuUDNrVEctZ21JNnRrMVZlSlZfTnVxU2ZONXZiMWt0RjJINF84dw?oc=5" target="_blank" rel="noopener">The FTSE 100 Index Closes 0.49% Higher</a><div class="meta"><span>TradingView</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNdTI5d3NuWWZlc2d1QW5jMHQ1SHZkX0xwN1R5M1hXZHE3UEhTQlBkYzF2OHVuQXIwc0pmbGV6bmFMWVMyMW8xdWp0UHZvVkN4RlNLVXFrdXNNWElTX2hIaEtoQkRIa3UtSGFJWUl2VC00RktDMWZfOThwU0UtTHhHYWpTeUpSZFdyWkwzdWFEUXVGaUw5ZlJsRg?oc=5" target="_blank" rel="noopener">Analyst predicts FTSE 100 break above 12,000</a><div class="meta"><span>Interactive Investor</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNem01S2JvU29QU1lRSTE2blVnN19nbGJ2aFJUcHVCUDNicjZVRlJ3dVZtWEVzdFZzNzJpTS1hZWRobHpmQXhQVG9OOEZnRjQySFBRdTV5TlNVLXhOYUFEaHBFaFRTN2dXZ0QwQnpTNXpnTXpJUnVuRm5GY0dQcDZLUU4wLUFkVXRhdXNMVGoyU0NFMWNqX190NXVmMlQyMzNObnc?oc=5" target="_blank" rel="noopener">FTSE 100 rises before ECB rate call; Halma sinks</a><div class="meta"><span>marketscreener.com</span><span>· 11 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

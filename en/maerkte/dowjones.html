@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,10 +297,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Dow Jones <span class="hl">Dow Jones</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="dowjones" data-type="index">49’919 Pkt</span>
-        <span class="chg down">-1.87 %</span>
+        <span class="px" id="livePrice" data-id="dowjones" data-type="index">50’719 Pkt</span>
+        <span class="chg up">+1.60 %</span>
         <span class="tag-type">Index</span>
-        <span class="badge bearish">Bearish</span>
+        <span class="badge neutral">Neutral</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Index is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -300,11 +310,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">51’562</text><text x="586" y="204" font-size="12" fill="#64748b">49’364</text><path d="M10.0,200 L10.0,170.6 L37.1,165.7 L64.3,171.5 L91.4,139.5 L118.6,186.0 L145.7,172.1 L172.9,200.0 L200.0,144.2 L227.1,120.3 L254.3,94.9 L281.4,105.1 L308.6,89.3 L335.7,87.2 L362.9,55.8 L390.0,51.8 L417.1,32.0 L444.3,85.6 L471.4,10.0 L498.6,70.1 L525.7,77.1 L552.9,69.6 L580.0,152.0 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,170.6 37.1,165.7 64.3,171.5 91.4,139.5 118.6,186.0 145.7,172.1 172.9,200.0 200.0,144.2 227.1,120.3 254.3,94.9 281.4,105.1 308.6,89.3 335.7,87.2 362.9,55.8 390.0,51.8 417.1,32.0 444.3,85.6 471.4,10.0 498.6,70.1 525.7,77.1 552.9,69.6 580.0,152.0" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="152.0" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="152.0" r="3.4" fill="#0f9d6b"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">51’562</text><text x="586" y="204" font-size="12" fill="#64748b">49’364</text><path d="M10.0,200 L10.0,170.6 L35.9,165.7 L61.8,171.5 L87.7,139.5 L113.6,186.0 L139.5,172.1 L165.5,200.0 L191.4,144.2 L217.3,120.3 L243.2,94.9 L269.1,105.1 L295.0,89.3 L320.9,87.2 L346.8,55.8 L372.7,51.8 L398.6,32.0 L424.5,85.6 L450.5,10.0 L476.4,70.1 L502.3,77.1 L528.2,69.6 L554.1,152.0 L580.0,82.9 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,170.6 35.9,165.7 61.8,171.5 87.7,139.5 113.6,186.0 139.5,172.1 165.5,200.0 191.4,144.2 217.3,120.3 243.2,94.9 269.1,105.1 295.0,89.3 320.9,87.2 346.8,55.8 372.7,51.8 398.6,32.0 424.5,85.6 450.5,10.0 476.4,70.1 502.3,77.1 528.2,69.6 554.1,152.0 580.0,82.9" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="82.9" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="82.9" r="3.4" fill="#0f9d6b"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.87 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-1.52 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+0.43 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">51’562 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">49’364 Pkt</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+1.60 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-1.63 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+2.04 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">51’562 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">49’364 Pkt</span></div></div>
     </div>
   </section>
 
@@ -313,11 +323,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Dow Jones · Dow Jones</span><span class="badge bearish">Bearish</span></div>
-        <p class="csignal">Starker Rückgang durch Chip-Sell-Off und Konflikte.</p>
-        <p class="crat">Der Dow Jones fällt stark, belastet durch den Chip-Sell-Off, Inflationssorgen und geopolitische Konflikte.</p>
+        <div class="chead"><span class="cname">Dow Jones · Dow Jones</span><span class="badge neutral">Neutral</span></div>
+        <p class="csignal">Gemischte Bewegungen, Chip-Verkäufe.</p>
+        <p class="crat">Der Dow Jones zeigt gemischte Bewegungen, beeinflusst von Chip-Verkäufen und geopolitischen Ereignissen.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Keine spezifischen positiven Treiber in den vorliegenden Nachrichten.</li><li>Risiko: Der Index fällt stark, belastet durch den Chip-Sell-Off, Inflationssorgen und geopolitische Konflikte.</li><li>Einordnung: Die Nachrichtenlage ist negativ, geprägt von einem starken Rückgang und einer Vielzahl von Belastungsfaktoren.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Steigt nach Trump ruft Iran-Angriffe ab, Tech-Aktien-Rebound.</li><li>Risiko: Fällt über 900 Punkte bei Chip-Verkäufen, Verschlechterung der Chip-Verkäufe.</li><li>Einordnung: Die Nachrichtenlage ist neutral, da sich positive und negative Einflüsse die Waage halten.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on Dow Jones</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE9LRDZ2dHY0cGF3dUlHVC12RU04NVBYWTZhUGxjUkhZTHF2T0xLUU96NVVCMG5GZHpZZ0h4R0tKdUtxZWFMMWpEWjlqWkdCVjFrNWhMRDBHbUNVTWJzYVZQRE10cUZsSWlxdVQySFdRNXJzRmZFSlBF0gF8QVVfeXFMT3YycTlFVk85SHZtSlVheXlsWUVRLU1hWXFJSWI2dkxseGN3UVVqVkM2WW9vZ1A0X2RsNmo3QTY2OHdWVHNUeUNRYXlLb2kwS3ZuUjFySnNNc0RHamhUNHotak5YYUtTWE5oQzNDSjQzR0FRLWlWYzRhOEdWWg?oc=5" target="_blank" rel="noopener">Dow drops more than 900 points as chip sell-off worsens, Trump threatens more Iran attacks: Live updates</a><div class="meta"><span>CNBC</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxPVzBNOTVId19zWnZLYUJCdzhqblpoMWlEZzFYWWdiWFlhMlpPbnFraUxvOF81OFk0WXhnYklIOUY3RlI5aVFBMktCcWxUS3dtWHR2T2R5MG0zTEU1TWMwUHNmWkRQWU43UjhJWXFReWFOdW1oRHB4WmFldmVGd2I2bWNHdm1INE1BSWpiaklYeXU?oc=5" target="_blank" rel="noopener">Markets News, June 10, 2026: Stocks End Sharply Lower, Dow Closes Below 50000; Oil Surges After Trump Says Iran Will &#x27;Pay the Price&#x27;</a><div class="meta"><span>Investopedia</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNNzQ3LXhPR3pzblpwUndlT25VRGpIVUFNTFM1Wmp0bER3ODl3X0l3SEtXSjRIT19kS0NHaDBvMW5UbTlxLWFvWFVrUnFSb0JFaWdYdGRSbHRZX0lDd3pRcHN6TjhQbXlxRnVta24tRkM1MDc4Rm1ISjZhcy1ldERILS1PNVdfaVV6dkVfNUpLblp4bHp3TUtTQU1pbVE1LWN0R1g5YlZoN1dWbEw2a2Rodm93aXRRbEs3QW1z?oc=5" target="_blank" rel="noopener">Stock Market Today: Dow plunges 950 points to close below 50K mark; S&amp;P 500 skids 1.6% and Nasdaq tumbles 2% on tech rout; investors fret Iran conflict, AI and SpaceX IPO; Oracle results on tap</a><div class="meta"><span>MarketWatch</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE1sdE1KT3lEZHFFZUxWQWFlczFhSkp0enVXczVXVWRVVnd4bjhueTdXOHdGSVBMOXpSM3JuckJnT09LTG5BSm41NkNJanVZcW5VYmx6ZGFNQ0FES3JsQXg2YlhKX0JBemJ4WEFpRTItbmJvVEFFTmc?oc=5" target="_blank" rel="noopener">Stock Market Today: Dow, S&amp;P 500, Nasdaq Fall; Micron, Marvell, Intel, Nvidia, More Movers; CPI Inflation Report</a><div class="meta"><span>Barron&#x27;s</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOeE5MM19LcFh2MWpkcm1wSUNENGFrTnhlcjdfbTBsVmYwT0tyOWJKQ3JFZFBRWU0xUHdUa19RMDI1dG4wd0ZZb1BCUTk2c2JaT3NOYWV1S3VvaWVvcUczSmpLVGdwRjdOZWZ0anhQRmx1TTNpRVFLWmlXclQyZjAzcU9tdFZDUUNMQzZGXzEzbHROWXFIY3BUTUh2ZkppRklac2RkZktvRm5DSVUyQnJlbg?oc=5" target="_blank" rel="noopener">Stock Market Today: Nasdaq Drops 2%, Dow Falls 950 Points As Chips Slide; Robinhood Pops</a><div class="meta"><span>Investor&#x27;s Business Daily</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE9LRDZ2dHY0cGF3dUlHVC12RU04NVBYWTZhUGxjUkhZTHF2T0xLUU96NVVCMG5GZHpZZ0h4R0tKdUtxZWFMMWpEWjlqWkdCVjFrNWhMRDBHbUNVTWJzYVZQRE10cUZsSWlxdVQySFdRNXJzRmZFSlBF0gF8QVVfeXFMT3YycTlFVk85SHZtSlVheXlsWUVRLU1hWXFJSWI2dkxseGN3UVVqVkM2WW9vZ1A0X2RsNmo3QTY2OHdWVHNUeUNRYXlLb2kwS3ZuUjFySnNNc0RHamhUNHotak5YYUtTWE5oQzNDSjQzR0FRLWlWYzRhOEdWWg?oc=5" target="_blank" rel="noopener">Dow drops more than 900 points as chip sell-off worsens, Trump threatens more Iran attacks: Live updates</a><div class="meta"><span>CNBC</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPOWhCblQ4WENHYjhIRUFyT3N4Q24zZFd4RTEyRmF5VktOWE1yRlI0R2VFMklqTXdrR0o5WEl4dExWYmpOaEotcW9WSU1oY3ZGaVZ1MkE5QzhnZmNCTkZwMUxXZWtVeXpnd0VLTHlWVF9iV1AwNmNNaDBjSGxLRWUwSUpEUmZxNnVYUGxzUnhFM0RENVdDcnp3R21uZFk1UF9TelNhQm41Z3RPZ3V6VkhLZjV5WjVWZw?oc=5" target="_blank" rel="noopener">Stock Market Today: Nasdaq-100, Small Caps Lead Choppy Rise; Adobe Hits 7-Year Low (Live Coverage)</a><div class="meta"><span>Investor&#x27;s Business Daily</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNc254QUF3M1VKMGZYd3lydnR5SEhiOVhMZFFWakF3TURTSDFqWEc5dW41YnA4QUJQZExmNkxyRVhrY3JwVk1uaFk3OHpVd2p3ZG1kMi1KeXlDNUJraUtCT2V3UzJBWGl2N1E0a25nOTJXaWhhV3dieFRvbE1pWF8tRUgzd0dvRms?oc=5" target="_blank" rel="noopener">Stock Market Today: Dow, Nasdaq Move Higher After Trump Cancels Iran Strikes — Live Updates</a><div class="meta"><span>WSJ</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxOM3hiSEVkYXJKSmtpeE51NktmNjg0RWlLWkszTXpVb19vbC1sT0hNbDkycTZHeVdBdUU0S1Y5bS12SnNWcE1PMnAyY18zT29hSldFLUo2UjdualFZWUZhcG9IckVDbVppakdHX0l5Wl9sVlg3MkJZLXdkbkt5MmhXMWV6UkZ3Z2dMWUprajV2SGc?oc=5" target="_blank" rel="noopener">Stock Market Today: Major Indexes Soar as Tech Stocks Rebound, Trump Calls Off Planned Iran Strikes</a><div class="meta"><span>Investopedia</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE1MVWY1RWJoclJnU3I3cGxvOHl2MDg1SWZ5TmRBZGdlcnVHLWNsczRwaHhZU3VkeUkyb3UzNHlLSm1UOFg2WG5BNGpua19pbHBwTTZweTZJcmV4RFk1QXFWTVFZa0UwM1ZrSmdLZlYtaGdsN1VFOFE?oc=5" target="_blank" rel="noopener">Stock Market Today: Dow, S&amp;P 500, Nasdaq Rise; Oracle, Micron, Super Micro, Nvidia, More Movers; PPI Inflation report</a><div class="meta"><span>Barron&#x27;s</span><span>· 11 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

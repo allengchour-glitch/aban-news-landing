@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,10 +297,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Kupfer <span class="hl">Kupfer</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="kupfer" data-type="commodity">6.18 USD</span>
-        <span class="chg down">-1.98 %</span>
+        <span class="px" id="livePrice" data-id="kupfer" data-type="commodity">6.37 USD</span>
+        <span class="chg up">+1.97 %</span>
         <span class="tag-type">Commodity</span>
-        <span class="badge bearish">Bearish</span>
+        <span class="badge neutral">Neutral</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Commodity is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -300,11 +310,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">6.65</text><text x="586" y="204" font-size="12" fill="#64748b">6.17</text><path d="M10.0,200 L10.0,102.5 L37.1,74.5 L64.3,15.5 L91.4,42.2 L118.6,166.1 L145.7,158.0 L172.9,200.0 L200.0,150.8 L227.1,163.9 L254.3,130.6 L281.4,123.1 L308.6,145.1 L335.7,109.4 L362.9,123.7 L390.0,59.2 L417.1,10.0 L444.3,76.1 L471.4,64.3 L498.6,161.4 L525.7,135.5 L552.9,146.1 L580.0,194.9 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,102.5 37.1,74.5 64.3,15.5 91.4,42.2 118.6,166.1 145.7,158.0 172.9,200.0 200.0,150.8 227.1,163.9 254.3,130.6 281.4,123.1 308.6,145.1 335.7,109.4 362.9,123.7 390.0,59.2 417.1,10.0 444.3,76.1 471.4,64.3 498.6,161.4 525.7,135.5 552.9,146.1 580.0,194.9" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="194.9" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="194.9" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">6.65</text><text x="586" y="204" font-size="12" fill="#64748b">6.17</text><path d="M10.0,200 L10.0,102.5 L35.9,74.5 L61.8,15.5 L87.7,42.2 L113.6,166.1 L139.5,158.0 L165.5,200.0 L191.4,150.8 L217.3,163.9 L243.2,130.6 L269.1,123.1 L295.0,145.1 L320.9,109.4 L346.8,123.7 L372.7,59.2 L398.6,10.0 L424.5,76.1 L450.5,64.3 L476.4,161.4 L502.3,135.5 L528.2,146.1 L554.1,167.1 L580.0,118.8 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,102.5 35.9,74.5 61.8,15.5 87.7,42.2 113.6,166.1 139.5,158.0 165.5,200.0 191.4,150.8 217.3,163.9 243.2,130.6 269.1,123.1 295.0,145.1 320.9,109.4 346.8,123.7 372.7,59.2 398.6,10.0 424.5,76.1 450.5,64.3 476.4,161.4 502.3,135.5 528.2,146.1 554.1,167.1 580.0,118.8" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="118.8" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="118.8" r="3.4" fill="#dc2626"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.98 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-4.68 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-3.67 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">6.65 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">6.17 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">381.00</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+1.97 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-2.13 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-0.65 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">6.65 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">6.17 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">46’765</span></div></div>
     </div>
   </section>
 
@@ -313,11 +323,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Kupfer · Kupfer</span><span class="badge bearish">Bearish</span></div>
-        <p class="csignal">Preisrückgang durch hohe Lagerbestände und Nachfrage.</p>
-        <p class="crat">Kupfer fällt unter 13.000 USD, beeinflusst von hohen Lagerbeständen und der Nachfrage aus China.</p>
+        <div class="chead"><span class="cname">Kupfer · Kupfer</span><span class="badge neutral">Neutral</span></div>
+        <p class="csignal">Leichter Anstieg, gemischte Signale.</p>
+        <p class="crat">Kupfer zeigt gemischte Signale mit einem leichten Anstieg, aber auch Bedenken bezüglich Lagerbeständen und Nachfrage.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Keine spezifischen positiven Treiber in den vorliegenden Nachrichten.</li><li>Risiko: Kupfer fällt unter 13.000 USD, beeinflusst von hohen Lagerbeständen und der chinesischen Nachfrage.</li><li>Einordnung: Die Nachrichtenlage ist negativ, geprägt von einem Preisrückgang durch Angebots- und Nachfragefaktoren.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Auf dem besten Weg für das beste Jahr seit 2009.</li><li>Risiko: Fällt unter 13.000 USD, Lagerbestände und China-Nachfrage im Fokus.</li><li>Einordnung: Die Nachrichtenlage ist neutral, mit positiven langfristigen Aussichten, aber kurzfristigen Bedenken.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on Kupfer</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9hUDlTUEo4Y21yeC1JTl9FMGlwU1AtemRWNWhTVHdrZEVITDExbFRrOXEtUmxtcUNoRFp3a0VRX0wyZFc1RmtuM1VuMHJUdm1EX2ZnUWR2MlEwTm1CQXFuTk51emJKMUE?oc=5" target="_blank" rel="noopener">Copper Futures Overview</a><div class="meta"><span>CME Group</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNVUpvM1JFYkZPd3ZpSGRBdW1TUklEem1aOTI2LUZqcVMxRkcxSDVubk1xVG00dmNpY3JjaWlpVXFCT0QyZHc3N0IzUHdyeHZ0RXBKWllCckF6OWEtV3lhbnRTU2ZvNVRkMXJ6REE5d0NUS3hpTDItVEFNR05iUEFNbXNXNkZ1TFY4TVBTWEpWRlB1aFB6R3Z0eGg1OEJ5dUlqamxlNGp0eHY0ZVdSZUtYY1NvM0JROHlXaUNN?oc=5" target="_blank" rel="noopener">Minerva Neurosciences (NERV) director receives stock options for 50,000 shares</a><div class="meta"><span>Stock Titan</span><span>· 05 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxNcmJldjJhYmJpV3hnTm9HLVRyMmdpTU9XZGxWZDNObVRyMXpRSVNZV3FyeTU1OXVfeEVybUUwUUdidmZMVHdaMk5paGs0M2p2UmRxYlN2NWNkYnQ1M05jLUxfQ0hLMU9UVWxxRmdSUVhVYWJuVXRhVUVzUkJ6bGJ0MWdpWVVQMjBkU1E2Y2VCVG9JckpzZGw3SHY1U1JJRXdEQTZqZHdSMXVDZl80d2hjRXJUY193T1JhWXZpb2hjSVZqZw?oc=5" target="_blank" rel="noopener">Why are more people under 50 getting colorectal cancer?</a><div class="meta"><span>UChicago Medicine</span><span>· 13 Mar 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPLVNNcWlwQ3JoZjZzY0czU2F3enJ0bVg2UERkazdvOXo2QXZvZXlZWDJMYWVnb1lSOVJINGZ3QkNpLWtIM1hDWW1oSTJfeVVkcjBONmJGTko4eU05d3ItTmVsamE2N3YwSFN3ZC1yd2FEZ1AzWXBiTWp3NHVKakFIQTRjWTFEa1lUb0t6ZHVkYXFWWlItTkM3TVAxOGVsRHgzc2N0a0d3TzFCUFNkVkp6V1VVUQ?oc=5" target="_blank" rel="noopener">Copper Dips Below $13,000 With Stockpiles, China Demand in Focus</a><div class="meta"><span>Bloomberg.com</span><span>· 05 Feb 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNMlU4N0liXzBCNHl4bFcweHhwLXM4MWhPS2h2VHdBNXNlWWZYb1pVemZodmM1aDRtcXEwcnZhcU1DcVU5aThMZnoyXzZjLUlFOUsyS0ZITGk2TGFLdGlPWldtQTZET0xTbWs0aTB5R21CcVpuMUt3LUpmczN2Zkk2Y0hnbmpOTUc3UGNRNnQ2MXpwbVU3WlRVUFM3cy0?oc=5" target="_blank" rel="noopener">Why copper is on pace for its best year since 2009</a><div class="meta"><span>Business Insider</span><span>· 30 Dec 2025</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9hUDlTUEo4Y21yeC1JTl9FMGlwU1AtemRWNWhTVHdrZEVITDExbFRrOXEtUmxtcUNoRFp3a0VRX0wyZFc1RmtuM1VuMHJUdm1EX2ZnUWR2MlEwTm1CQXFuTk51emJKMUE?oc=5" target="_blank" rel="noopener">Copper Futures Overview</a><div class="meta"><span>CME Group</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNVUpvM1JFYkZPd3ZpSGRBdW1TUklEem1aOTI2LUZqcVMxRkcxSDVubk1xVG00dmNpY3JjaWlpVXFCT0QyZHc3N0IzUHdyeHZ0RXBKWllCckF6OWEtV3lhbnRTU2ZvNVRkMXJ6REE5d0NUS3hpTDItVEFNR05iUEFNbXNXNkZ1TFY4TVBTWEpWRlB1aFB6R3Z0eGg1OEJ5dUlqamxlNGp0eHY0ZVdSZUtYY1NvM0JROHlXaUNN?oc=5" target="_blank" rel="noopener">Minerva Neurosciences (NERV) director receives stock options for 50,000 shares</a><div class="meta"><span>Stock Titan</span><span>· 05 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxNcmJldjJhYmJpV3hnTm9HLVRyMmdpTU9XZGxWZDNObVRyMXpRSVNZV3FyeTU1OXVfeEVybUUwUUdidmZMVHdaMk5paGs0M2p2UmRxYlN2NWNkYnQ1M05jLUxfQ0hLMU9UVWxxRmdSUVhVYWJuVXRhVUVzUkJ6bGJ0MWdpWVVQMjBkU1E2Y2VCVG9JckpzZGw3SHY1U1JJRXdEQTZqZHdSMXVDZl80d2hjRXJUY193T1JhWXZpb2hjSVZqZw?oc=5" target="_blank" rel="noopener">Why are more people under 50 getting colorectal cancer?</a><div class="meta"><span>UChicago Medicine</span><span>· 13 Mar 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPLVNNcWlwQ3JoZjZzY0czU2F3enJ0bVg2UERkazdvOXo2QXZvZXlZWDJMYWVnb1lSOVJINGZ3QkNpLWtIM1hDWW1oSTJfeVVkcjBONmJGTko4eU05d3ItTmVsamE2N3YwSFN3ZC1yd2FEZ1AzWXBiTWp3NHVKakFIQTRjWTFEa1lUb0t6ZHVkYXFWWlItTkM3TVAxOGVsRHgzc2N0a0d3TzFCUFNkVkp6V1VVUQ?oc=5" target="_blank" rel="noopener">Copper Dips Below $13,000 With Stockpiles, China Demand in Focus</a><div class="meta"><span>Bloomberg</span><span>· 05 Feb 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNMlU4N0liXzBCNHl4bFcweHhwLXM4MWhPS2h2VHdBNXNlWWZYb1pVemZodmM1aDRtcXEwcnZhcU1DcVU5aThMZnoyXzZjLUlFOUsyS0ZITGk2TGFLdGlPWldtQTZET0xTbWs0aTB5R21CcVpuMUt3LUpmczN2Zkk2Y0hnbmpOTUc3UGNRNnQ2MXpwbVU3WlRVUFM3cy0?oc=5" target="_blank" rel="noopener">Why copper is on pace for its best year since 2009</a><div class="meta"><span>Business Insider</span><span>· 30 Dec 2025</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

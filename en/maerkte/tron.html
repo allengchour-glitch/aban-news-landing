@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,8 +297,8 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Tron <span class="hl">TRX</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="tron" data-type="crypto">0.3215 USD</span>
-        <span class="chg down">-0.30 %</span>
+        <span class="px" id="livePrice" data-id="tron" data-type="crypto">0.3154 USD</span>
+        <span class="chg down">-1.85 %</span>
         <span class="tag-type">Crypto</span>
         <span class="badge neutral">Neutral</span>
       </div>
@@ -301,10 +311,10 @@
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
       <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">0.3755</text><text x="586" y="204" font-size="12" fill="#64748b">0.3199</text><path d="M10.0,200 L10.0,93.7 L34.8,100.9 L59.6,98.5 L84.3,84.8 L109.1,79.4 L133.9,79.0 L158.7,78.7 L183.5,66.7 L208.3,45.9 L233.0,56.1 L257.8,54.4 L282.6,23.0 L307.4,10.0 L332.2,35.6 L357.0,118.0 L381.7,105.3 L406.5,94.4 L431.3,120.0 L456.1,155.6 L480.9,158.3 L505.7,200.0 L530.4,177.4 L555.2,177.4 L580.0,191.1 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,93.7 34.8,100.9 59.6,98.5 84.3,84.8 109.1,79.4 133.9,79.0 158.7,78.7 183.5,66.7 208.3,45.9 233.0,56.1 257.8,54.4 282.6,23.0 307.4,10.0 332.2,35.6 357.0,118.0 381.7,105.3 406.5,94.4 431.3,120.0 456.1,155.6 480.9,158.3 505.7,200.0 530.4,177.4 555.2,177.4 580.0,191.1" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="191.1" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="191.1" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-0.30 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-3.12 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-8.12 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">0.3755 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">0.3199 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">442.26 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">30.49 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">0.4313 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.85 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-3.12 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-8.12 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">0.3755 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">0.3199 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">546.20 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">29.94 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">0.4313 USD</span></div></div>
     </div>
   </section>
 
@@ -314,10 +324,10 @@
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">Tron · TRX</span><span class="badge neutral">Neutral</span></div>
-        <p class="csignal">Relative Stärke und wachsende Akzeptanz.</p>
-        <p class="crat">TRONs TRX ist nur 25% vom Allzeithoch entfernt, während Glücksspiel ein schnell wachsender Sektor ist und neue Regulierungen die Akzeptanz fördern.</p>
+        <p class="csignal">Positive Erwähnungen, Kursrückgang.</p>
+        <p class="crat">Tron wird in positiven Kontexten erwähnt, aber der Kurs ist von Allzeithochs gefallen.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: TRX ist relativ stabil, und Glücksspiel ist ein schnell wachsender Sektor, der TRON nutzt.</li><li>Risiko: Keine spezifischen negativen Treiber in den vorliegenden Nachrichten, aber der breitere Kryptomarkt ist volatil.</li><li>Einordnung: Die Nachrichtenlage ist neutral bis leicht positiv, mit relativer Stärke und wachsender Akzeptanz in bestimmten Sektoren.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Erwähnung als &#x27;Next Big Crypto Alert&#x27;, Unterstützung von USDT auf Tron durch CoinZoom.</li><li>Risiko: Nur 25% unter Allzeithoch, während Bitcoin blutet.</li><li>Einordnung: Die Nachrichtenlage ist neutral, mit positiven Erwähnungen, aber auch einem deutlichen Rückgang vom Allzeithoch.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on TRX</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxOWE92QkUxaXZMS2ZVS1VGYnhlVjRrTWVaUGFCN2N6ek1hZ2ZvazRvTWM3bEJYVUd0ZUNSVmxOd3VGc1diaXU2aUM3VGFoem5qZmNnRXpXd2x1eW5ocUhrNDhJTVg5T0VJVUpoTTU5eXJEODV0SW1XVVp4WmJyYW4wYXllc3dZVGJHaWxpLVI1c1ZzWEpYWWNkN0Fva3BvNFJLQ05mZVZQbE93WTFxaktfczI4dEszOU1IT3loNXlfVjRIRmw4eUw4RnYwanNreHRhQkludTN5X0RGTVVVWWc?oc=5" target="_blank" rel="noopener">Gambling is One of Crypto&#x27;s Fastest-growing Sectors, Reaching USD 14 Billion in Q1 Despite Market Correction</a><div class="meta"><span>TRM Labs</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE0tRG83azF2YmtXMk1CQzkwSW93QTNqcGhXTUxoX2lmeUxKWVlab1hNcEdUT285MkpEd2dqb1ZLemJRMHRWdE1JRzRudEFUdDc4UGFwLXF4eEFyOG5aSm9LUEVzb0RTRW0td0Y3TS05eWtLLTdk?oc=5" target="_blank" rel="noopener">Tron’s TRX is Just Down 25% From All-Time High as Bitcoin Bleeds</a><div class="meta"><span>BeInCrypto</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi6wFBVV95cUxOZi1vbE4wSFkxa3hjaE5OZWtMRFFFZjNXenUxOUd1NEV5ZS1XZ0ExSVgtX1RZR0hzeXVMc2ttMXN2MGwyQmpaTndBakNiR25UTjgwVU55OWtTVHNwTWR5WW1FZFo5b2xPR25xSkNvWkp4LWY2MDZsdEhCdkZUUTduWGd6MUtURWw1eUtxZzVHaDliWDZreWo1YzBWeGpBX3NvMGI1WV9LUUNTRThHUDFhZlh4cUZqZFZUTWYzR0YtOTJ4TFZSYk9pcTB2LWU3N0NqRVBvNmdJWmVyR0x0Um93cURCU3pPNFFwU3JZ?oc=5" target="_blank" rel="noopener">CoinZoom Becomes First U.S.-Regulated Exchange to Support USDT on Ethereum, Tron, and BNB Smart Chain</a><div class="meta"><span>Investing.com</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxQOG1WLUdpYjhOUTNJTDI5aFdxbjB3NTI0NDlZOXRfVVZ5NzlhU3gzdXo5WERPejBMSFlFNXR5Z0trVklHa3NOUThJVTRVNEdOOXEtRmRhVFhITzNLMzdIMDYzeVY2VVhRbWpDQWZWdjdCeFctQTNJcExWRnlxNDV5SGhWd0pKX0d5Q3A5OHppTjlxNjhyZUthNm84RVN2dEFlZHh1N1NTTXVwanU5NWxfZWotQ0g2WTNfaUktV0Z0bnlOR2FNRmpmczIzcWM4UGFYNUFF?oc=5" target="_blank" rel="noopener">TRX Spot Listing Launches on Bitnomial, Supporting Regulated U.S. Access to TRON</a><div class="meta"><span>markets.businessinsider.com</span><span>· 05 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNVmZralJZb1A1Y01qTW1ZX1dPTmJpTGx6TEF0S2c0bi0zSU50ZURkZW9lUlNYajVxa010c0gtNmZMQ1gyamhPQm16ajRQX0VoZTdOTFB2RTVIM09kUk5PX3lnQ201S2c3OFlBVFZ5dW1ldGtiNmlhVENVNnNjRnRGdnh2WWthOUdXVVB6WGJwdTJ6YTlmMUNHMEo2TFJXZ1BtMWY4cQ?oc=5" target="_blank" rel="noopener">Hamilton Lane Tests Tokenized Private Credit Access With TRON HLSCOPE Launch</a><div class="meta"><span>Yahoo Finance</span><span>· 05 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE1fUXlGdVpQRi04RDVuOTExZDN4ejE2elZVX3loS2lWdTlGNGI5Q0NmM2FEYTZjajlQQ2hGN3FhX2djU3M2UHBnN0dLRkdwR09jMGV6eEp1dGhYdzNxN0RqdFI0RnhUVXJ0NXQ3c2NiZENhbEg5UXFvWVdFTEQzdw?oc=5" target="_blank" rel="noopener">Tron (TRX) Price Prediction for 2026, 2027, 2028–2030 and Beyond</a><div class="meta"><span>LiteFinance</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi_wFBVV95cUxOdVB0bzdqRFk3dlJZMU55YjM1OHJUSTAwQUM1X3o2RXhHY2Jlb0tDZGRnR1dEYkVnejRxX2JnNHZERXRBV1hPNDN6Z0JBQkVwbGhZWlpDZmVOLWVwd25GMmpQRk9VNWprM2x1aDhLM0Y3WHViWlljZUNjV09EVjFLZzhiSGVZOFRYcl95TjY4M0U3cmROSWxQQTl5b0N2UVNnbXFqZ3p3Zm1PSzBrWktHa3NCUDZOQTJBbDNPOU5DNFIxcVJrWWtGdmhTakgwRTlYWmxLQWhjTkd4LUtKd2hta1lCTlU5VXVRRm1zM0IyVXJWeVVxVHVNRlNCanRJOWc?oc=5" target="_blank" rel="noopener">Top Crypto Coins Breakdown: BlockDAG, Tron, Chainlink &amp; Ethereum Bridge Real Utility &amp; Market Demand</a><div class="meta"><span>StreetInsider</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi6wFBVV95cUxOZi1vbE4wSFkxa3hjaE5OZWtMRFFFZjNXenUxOUd1NEV5ZS1XZ0ExSVgtX1RZR0hzeXVMc2ttMXN2MGwyQmpaTndBakNiR25UTjgwVU55OWtTVHNwTWR5WW1FZFo5b2xPR25xSkNvWkp4LWY2MDZsdEhCdkZUUTduWGd6MUtURWw1eUtxZzVHaDliWDZreWo1YzBWeGpBX3NvMGI1WV9LUUNTRThHUDFhZlh4cUZqZFZUTWYzR0YtOTJ4TFZSYk9pcTB2LWU3N0NqRVBvNmdJWmVyR0x0Um93cURCU3pPNFFwU3JZ?oc=5" target="_blank" rel="noopener">CoinZoom Becomes First U.S.-Regulated Exchange to Support USDT on Ethereum, Tron, and BNB Smart Chain</a><div class="meta"><span>Investing.com</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPeUZxaFcwTkhJU2ZlWmZMYWhlbFZ0S3FEOG9aVXdhbXNEZjJnUF9lMENpZEdzOVhXdWZmbW5qZGp0QUdQN25XX0xmalFZR0pkdU1Ccmo1VFlDQ2xsMEJOQzFmdWR2cHdySUV1dFRfbUQyb0tHdjY0ZDlEN3JvYmVMWjNxMkJvVGJjVHpUUHplYVpLNEVDeFFwcGF2S0t5MFlVRTJWaDc1MGVZQQ?oc=5" target="_blank" rel="noopener">Next Big Crypto Alert: Why BlockDAG, Dogecoin, Tron, and Solana Are Suddenly in Focus</a><div class="meta"><span>Tekedia</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE0tRG83azF2YmtXMk1CQzkwSW93QTNqcGhXTUxoX2lmeUxKWVlab1hNcEdUT285MkpEd2dqb1ZLemJRMHRWdE1JRzRudEFUdDc4UGFwLXF4eEFyOG5aSm9LUEVzb0RTRW0td0Y3TS05eWtLLTdk?oc=5" target="_blank" rel="noopener">Tron’s TRX is Just Down 25% From All-Time High as Bitcoin Bleeds</a><div class="meta"><span>BeInCrypto</span><span>· 10 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

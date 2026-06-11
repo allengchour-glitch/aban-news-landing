@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -301,7 +311,7 @@
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
       <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">759.57</text><text x="586" y="204" font-size="12" fill="#64748b">725.43</text><path d="M10.0,200 L10.0,122.8 L37.1,129.0 L64.3,106.1 L91.4,73.4 L118.6,123.5 L145.7,126.4 L172.9,153.8 L200.0,112.0 L227.1,103.8 L254.3,87.5 L281.4,60.0 L308.6,60.7 L335.7,37.7 L362.9,27.2 L390.0,15.7 L417.1,10.0 L444.3,39.7 L471.4,23.8 L498.6,132.5 L525.7,123.3 L552.9,135.3 L580.0,200.0 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,122.8 37.1,129.0 64.3,106.1 91.4,73.4 118.6,123.5 145.7,126.4 172.9,153.8 200.0,112.0 227.1,103.8 254.3,87.5 281.4,60.0 308.6,60.7 335.7,37.7 362.9,27.2 390.0,15.7 417.1,10.0 444.3,39.7 471.4,23.8 498.6,132.5 525.7,123.3 552.9,135.3 580.0,200.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="200.0" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="200.0" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
       <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.58 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-3.82 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-1.88 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">759.57 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">725.43 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">57.77 Mio</span></div></div>
@@ -314,10 +324,10 @@
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">S&amp;P 500 ETF · SPY</span><span class="badge neutral">Neutral</span></div>
-        
-        <p class="crat"></p>
+        <p class="csignal">Gemischte Signale, AI-Blase-Diskussion.</p>
+        <p class="crat">Der SPY zeigt gemischte Signale, mit Diskussionen über AI-Blasen und Schutzstrategien.</p>
       </div>
-      
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Als &#x27;Elon Musk&#x27; der Fonds bezeichnet, Diskussion über beste ETFs für die Zukunft.</li><li>Risiko: S&amp;P 500 könnte um 20% fallen, wenn die AI-Blase platzt.</li><li>Einordnung: Die Nachrichtenlage ist neutral, mit Potenzial und Risiken, insbesondere im Kontext der AI-Entwicklung.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on SPY</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQTlBlY0JjSnVISGVQVUVia1drYWw0R0lfLXNpbHdEU3FGWHR3S1ZnejJCMWRQRHNEU29EVURJeUNiVHRRaDZmS19LWkliVmhoeHdWeUhPLWlmNTlTck9hZGF5X2N0eGpneDlwNUlweFA5UFJPMVR2YVdqRklLcmttU0NaV1JUYV90UWdzeHRfa2hsRHlERGNYQm9UemtrNmVnR0lJ?oc=5" target="_blank" rel="noopener">VOO vs. VTI: Should You Own the S&amp;P 500 or the Entire Market?</a><div class="meta"><span>24/7 Wall St.</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxQNVlGMHUtYWpzLVN6Z0hpdmwyVWJfUjFfWEZmeDNpRi1SMW5BRzlPYVNMWWhPRloxbXVoUGJ4TDdBN3ZtOEdpOTRuS1BqZWd1NVpsalc2RkVrSmRRR09EREtIa3Q1eGlheWNVdUZrUmlZRk9fLUtna1RubHllMUJ1aTh2VjZpVUVCODlQblhyVXJ4TUVoVnFB?oc=5" target="_blank" rel="noopener">The Vanguard S&amp;P 500 ETF Is Unstoppable -- But There&#x27;s 1 ETF I Like Even More</a><div class="meta"><span>The Motley Fool</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE1WR1dfX1VGSFg5REQ5OFREQ25wb2hxSDVxQWlwUy1hbGJpSDY2cU5fNk5kT3BIZklCS0V6R25zRXU0TkkzQ0lqY3FJMUhsM25rSmZpek12Z1MxY3hHWTNKOGNtZ3JsSUFCQ0EtV0N3?oc=5" target="_blank" rel="noopener">3 Top US ETFs for 2026 and Beyond</a><div class="meta"><span>Morningstar</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxQN1BDNFV2M01oV3V0ZHJsaUZWTDd2M1lxNG9fbmhvc0k5YWhwMzFYVEUwTGRYUEFOR0lyZFNBc1BKNVNfb01iN19hYnZCYnhYempCNU9acFRxSUF4MzE2VENmS3NMdmstLTNsMHpxRG9ZX1NWRllwRVVXOXJ5WkxzOTBreko2bzhHYkFzNUNoWFE?oc=5" target="_blank" rel="noopener">If the AI Bubble Bursts, the S&amp;P 500 Could Drop 20% -- These 2 ETFs Could Protect Your Money</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTFBnMklEY0ZhRjhSZzFhSlhVYmxxOHR2N2VtYUZHeklSQlpycWVoYTdoOWhFcEFnN3JpOWN6RnJhcVdyOV9jRmVCeTdFV2Y1VjFYWlQwMWc3OW5JQjhKUzl2Zk9zT2psSUxzamM3cmVJejQtdGw2R1VHQ1ZibFJrSkU?oc=5" target="_blank" rel="noopener">Guide to the S&amp;P 500 ETF Investing</a><div class="meta"><span>Zacks Investment Research</span><span>· 09 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOZ2hrVjRDd1hOLWdVeHYxZlhvSTZ0bVd5QnJKcUpNdmJ6STk0SE0xUF9xcGxWQWNmdlpTQUR2VDZTNkI3Zy1SQnVVN2ZuQWYwcFE0LXVtekQwcHlKZmZxWUQyMGE0aElDeE9TN3h4SUhfUEU1cVJIZGswUEk3MnpLMXRadDQ1ejV2SVZISUZSdE9ucTlLTk51d2FxMkdERGl0aHdXQkN3?oc=5" target="_blank" rel="noopener">S&amp;P 500: The First Trillion-Dollar ETF Becomes The &#x27;Elon Musk&#x27; Of Funds</a><div class="meta"><span>Investor&#x27;s Business Daily</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQTlBlY0JjSnVISGVQVUVia1drYWw0R0lfLXNpbHdEU3FGWHR3S1ZnejJCMWRQRHNEU29EVURJeUNiVHRRaDZmS19LWkliVmhoeHdWeUhPLWlmNTlTck9hZGF5X2N0eGpneDlwNUlweFA5UFJPMVR2YVdqRklLcmttU0NaV1JUYV90UWdzeHRfa2hsRHlERGNYQm9UemtrNmVnR0lJ?oc=5" target="_blank" rel="noopener">VOO vs. VTI: Should You Own the S&amp;P 500 or the Entire Market?</a><div class="meta"><span>24/7 Wall St.</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNY2NaZE5GcWdqMHlPbXg3SW1wdmNaWXkwa1U2VWI1eUxjTi1kVU1EU1h3YlU2SlVJQ19oZzdfOTlmTmlvUHpYTUNLSGxfcTBuLVJmbm1SV0ZfM2swemYtd0NfUXotOW9Ma1J2aWxuV1pvZGZqYjdyeGJ4RGlnbkhXY1JoZDl6aVczMWdkZFFkSlZteFBBLVNkalZfVU53U2lVbmZuZkpEQ2FRUQ?oc=5" target="_blank" rel="noopener">Prediction: This Unstoppable Vanguard ETF Could Crush the S&amp;P 500 Over the Next 10 Years</a><div class="meta"><span>Yahoo Finance</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE1WR1dfX1VGSFg5REQ5OFREQ25wb2hxSDVxQWlwUy1hbGJpSDY2cU5fNk5kT3BIZklCS0V6R25zRXU0TkkzQ0lqY3FJMUhsM25rSmZpek12Z1MxY3hHWTNKOGNtZ3JsSUFCQ0EtV0N3?oc=5" target="_blank" rel="noopener">3 Top US ETFs for 2026 and Beyond</a><div class="meta"><span>Morningstar</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQS0xzVHpieEJDWkpTSDdiMWpqM0c1OW9CdnJDdlNJZVF3SUs5TDU1MGwxcnFhMHlwNWpDQmlpWUpXMFI2enlkR1BHZ0NTQnRIcmdWYy1uU2NVeU9RbFliRmxkMkE2eXctV0hxRnBBaWt1TmY2Q1JvWTNaOHFNeVJXdG1iN3VxT0o4VHhBWWEwYkZmWkRaejVLZw?oc=5" target="_blank" rel="noopener">If the AI Bubble Bursts, the S&amp;P 500 Could Drop 20% -- These 2 ETFs Could Protect Your Money</a><div class="meta"><span>The Motley Fool</span><span>· 10 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

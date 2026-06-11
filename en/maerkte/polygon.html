@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,10 +297,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Polygon <span class="hl">POL</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="polygon" data-type="crypto">0.0716 USD</span>
-        <span class="chg down">-5.52 %</span>
+        <span class="px" id="livePrice" data-id="polygon" data-type="crypto">0.0733 USD</span>
+        <span class="chg up">+0.68 %</span>
         <span class="tag-type">Crypto</span>
-        <span class="badge neutral">Neutral</span>
+        <span class="badge bullish">Bullish</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Crypto is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -301,10 +311,10 @@
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
       <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">0.1031</text><text x="586" y="204" font-size="12" fill="#64748b">0.0758</text><path d="M10.0,200 L10.0,10.0 L34.8,40.6 L59.6,58.7 L84.3,69.2 L109.1,93.5 L133.9,99.1 L158.7,94.9 L183.5,94.2 L208.3,90.0 L233.0,99.8 L257.8,93.5 L282.6,82.4 L307.4,90.0 L332.2,101.9 L357.0,101.9 L381.7,103.3 L406.5,81.7 L431.3,72.6 L456.1,76.8 L480.9,123.4 L505.7,189.6 L530.4,174.2 L555.2,184.0 L580.0,200.0 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,10.0 34.8,40.6 59.6,58.7 84.3,69.2 109.1,93.5 133.9,99.1 158.7,94.9 183.5,94.2 208.3,90.0 233.0,99.8 257.8,93.5 282.6,82.4 307.4,90.0 332.2,101.9 357.0,101.9 381.7,103.3 406.5,81.7 431.3,72.6 456.1,76.8 480.9,123.4 505.7,189.6 530.4,174.2 555.2,184.0 580.0,200.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="200.0" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="200.0" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-5.52 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-18.93 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-26.48 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">0.1031 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">0.0758 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">40.01 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">762.87 Mio USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">1.29 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+0.68 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-18.93 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-26.48 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">0.1031 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">0.0758 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">38.28 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">781.07 Mio USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">1.29 USD</span></div></div>
     </div>
   </section>
 
@@ -313,11 +323,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Polygon · POL</span><span class="badge neutral">Neutral</span></div>
-        
-        <p class="crat"></p>
+        <div class="chead"><span class="cname">Polygon · POL</span><span class="badge bullish">Bullish</span></div>
+        <p class="csignal">Mastercard-Partnerschaft, Stablecoin-Erweiterung.</p>
+        <p class="crat">Polygon ist Teil des Mastercard Crypto Partner Programms und erweitert die Stablecoin-Abwicklung.</p>
       </div>
-      
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Teil des Mastercard Crypto Partner Programms, Mastercard erweitert Stablecoin-Abwicklung mit Polygon, führend in Entwicklungsaktivitäten.</li><li>Risiko: Fällt um 17.64% inmitten makroökonomischer Schocks.</li><li>Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit starker Partnerschaft und technologischen Fortschritten, trotz kurzfristiger Rückgänge.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on POL</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxNVDZMLUVYWUVvRTg3OHNXcGJwQmVTdl9qVGtWYWdWRV9mSWtVZ19PeGI1U0JZZ3NvU3VYUEhiY2ZoWHdVd21ZaWhVN2RLT3JSeVNaQkNGMVlVNWRiN09Yc3JRQVVHNkl4SjFDcjRmZzV5QjV0bVdobkZwSlRjRXhFTUhXS181THZWR1hMQjRySERUTjJaYVdfSHc2YmlNZEU3TG9uVExzSVpJMjVFQ1JBcQ?oc=5" target="_blank" rel="noopener">These Are the Development Activity Leaders Among Polygon Projects!</a><div class="meta"><span>Sanbase</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiWEFVX3lxTE1SWTZVQm1qSm9VV25JVm9ZNUxldTlRUWpHcUlfd1ViQkZSRkszWXBwb3RJdk5WeWpoSjA2aVVpanE3NlBteTVWd0hRajNkOXFxWWJJNGJxMUo?oc=5" target="_blank" rel="noopener">Mastercard launches Agent Pay for Machines with Aave, Coinbase, OKX, Polygon, Ripple, and Solana as partners</a><div class="meta"><span>Cryptonews.net</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMickFVX3lxTE9tSXRwcWU1X196MWZVRkRkRXUxMEtkczkzT0VyUktBLWN5Sy1SdlFrYVp4My1ZVi1UczczY2NjaGd2T1ViUEdvVFdIS1dmZHotUDJmWExuY18tT3N2NEc0MDVZSzlfaXhvOTJQTC1HV3Y3dw?oc=5" target="_blank" rel="noopener">Mukesh Ambani’s Jio Platforms plans massive IPO as investors grow cautious on India</a><div class="meta"><span>Crypto Briefing</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNQU42NzVxUGhkb2kzdlNUVFo5SUkxRHRSOVZCXzhGYzhhVmRQc215YVhqcFNvT0g5dTZXSFFpMkpCSURlSWJFS0FDZFZxRlJBN2ZpU1V3QzEyTDdKX0RQWGtkaXdienRoUkdHMjZnenRvOTBpN01OODNYdFJ1SUg3NVMyajJ2RmFkbU9yd0ZHNU9RUQ?oc=5" target="_blank" rel="noopener">Polygon Is Part of the Mastercard Crypto Partner Program</a><div class="meta"><span>Polygon Labs</span><span>· 11 Mar 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxQSW83Wm9XM0lsYW9SYmNzM3pTWDhZRjJTM0IxdW9qNXZfaUlWcV9mZk9NUG5Wd3RFX3BQMGVlYUJyVXRxdmFRZlA5cXJYcjNoTGhOT3dGclU0a1c5Q2U5ZzhZUFFmT2x5TEllNTVDSTA2dlBzOTJYZWtsWUY5SDNKbHR2Skl5T0ZCb1p1bGY5WmhTd2E4azdOcWtlQzNPYVh20gGmAUFVX3lxTE5lZjdfLTd6LXVKSndMOTQ1bl8yc3pNbDFxcHBNc2FidXZQVjNTV0c3Z0QxNVpjSXRCNzRMQ25kdHhiSnN0T2hiV2tlTmI1Z3JBOS16ejZJOTdvb2JnRXBmdzR5N2xUSGJ5Y2QzYjhmZHdrcFlWRHVGRlhkd0ZUQzRLYTE5RzhQb0M0YWh1VUZuSWNMNVZhLXVpRkxlc2pRWE9Vdm5teGc?oc=5" target="_blank" rel="noopener">Polygon drops 12% in a day – But here’s why POL’s sell-off may be near exhaustion</a><div class="meta"><span>AMBCrypto</span><span>· 06 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNQU42NzVxUGhkb2kzdlNUVFo5SUkxRHRSOVZCXzhGYzhhVmRQc215YVhqcFNvT0g5dTZXSFFpMkpCSURlSWJFS0FDZFZxRlJBN2ZpU1V3QzEyTDdKX0RQWGtkaXdienRoUkdHMjZnenRvOTBpN01OODNYdFJ1SUg3NVMyajJ2RmFkbU9yd0ZHNU9RUQ?oc=5" target="_blank" rel="noopener">Polygon Is Part of the Mastercard Crypto Partner Program</a><div class="meta"><span>Polygon Labs</span><span>· 11 Mar 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxNVDZMLUVYWUVvRTg3OHNXcGJwQmVTdl9qVGtWYWdWRV9mSWtVZ19PeGI1U0JZZ3NvU3VYUEhiY2ZoWHdVd21ZaWhVN2RLT3JSeVNaQkNGMVlVNWRiN09Yc3JRQVVHNkl4SjFDcjRmZzV5QjV0bVdobkZwSlRjRXhFTUhXS181THZWR1hMQjRySERUTjJaYVdfSHc2YmlNZEU3TG9uVExzSVpJMjVFQ1JBcQ?oc=5" target="_blank" rel="noopener">These Are the Development Activity Leaders Among Polygon Projects!</a><div class="meta"><span>Sanbase</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQSUZLSEU1c0tzX0xZbE9ESmo3WGJDMVdoNXBOLVVuako3MEdjTkJkSEZrT3h2X1g5SDQwUXotVnRyMVFJMmJ5Mzc0M2xmSGZUV0tIdmViWDIzejdBQ0hHcXl6NGh4WERadVpvUUJoMnNIZGZPblBVbTMyOXNRbW1oNVJXamZQX2NtTUR5VjhKWk9JX3VvM2EzbDZrRnVTT0dfcGtzWHNKUUVrQTZUd2FPMg?oc=5" target="_blank" rel="noopener">Mastercard Expands Stablecoin Settlement Hours With Polygon</a><div class="meta"><span>Yahoo Finance</span><span>· 03 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFBKakc0Z3dId0x2Wm9BOW15TjZXaFBjblVyRWV3TS1TYzdrXzlxNDRYaGZLZW9yTnJDbWM1aVFYamdINlJaQVQ2cHIwUXJCZ3VlNTRTbFBFdmpVc0JfSEd6SmF3OVZwNlZaRXRZdzJWS2Q?oc=5" target="_blank" rel="noopener">Polygon Drops 17.64% Amid Macro Shocks, Not Project Issues</a><div class="meta"><span>CoinMarketCap</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiV0FVX3lxTE1EUzhLTGg0cDh4SDlpUjd3bGRjY0d1U3V3NHVQeHU2N0U0cGpDV2dWYVVaNXZta0tSWC1BWmppQ25VU090Zzc1V19raExGRWJiZzVmSGJtdw?oc=5" target="_blank" rel="noopener">Mastercard launches Agent Pay for Machines with Aave, Coinbase, OKX, Polygon, Ripple, and Solana as partners</a><div class="meta"><span>Cryptonews.net</span><span>· 11 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,10 +297,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Dogecoin <span class="hl">DOGE</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="dogecoin" data-type="crypto">0.0821 USD</span>
-        <span class="chg down">-3.35 %</span>
+        <span class="px" id="livePrice" data-id="dogecoin" data-type="crypto">0.0865 USD</span>
+        <span class="chg up">+3.33 %</span>
         <span class="tag-type">Crypto</span>
-        <span class="badge neutral">Neutral</span>
+        <span class="badge bullish">Bullish</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Crypto is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -301,10 +311,10 @@
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
       <div class="chartbox"><p class="muted">No chart available.</p></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-10 · crypto updates live.</p>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-06-11 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-3.35 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-9.93 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-26.10 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">—</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">—</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">589.75 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">12.69 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">0.7316 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+3.33 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-2.98 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-19.73 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">—</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">—</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">612.98 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">13.37 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">0.7316 USD</span></div></div>
     </div>
   </section>
 
@@ -313,11 +323,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Dogecoin · DOGE</span><span class="badge neutral">Neutral</span></div>
-        <p class="csignal">Relative Stabilität und neue Anwendungsfälle.</p>
-        <p class="crat">Dogecoin ist stabil, während andere Kryptowährungen fallen, und es gibt neue Zahlungsintegrationen.</p>
+        <div class="chead"><span class="cname">Dogecoin · DOGE</span><span class="badge bullish">Bullish</span></div>
+        <p class="csignal">Akzeptanz wächst, Kaufempfehlung.</p>
+        <p class="crat">Dogecoin wird als &#x27;Smartest Crypto Buy&#x27; unter 1 USD bezeichnet und erweitert seine Akzeptanz.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Dogecoin bleibt stabil, während andere Kryptowährungen fallen, und neue Zahlungsintegrationen erweitern die Nutzung.</li><li>Risiko: Die Frage, ob Dogecoin der &#x27;smarteste Krypto-Kauf unter 1 USD&#x27; ist, bleibt offen und birgt Spekulationsrisiken.</li><li>Einordnung: Die Nachrichtenlage ist gemischt, mit relativer Stabilität und wachsender Akzeptanz, aber auch spekulativen Elementen.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Als &#x27;Smartest Crypto Buy&#x27; unter 1 USD bezeichnet, Einführung von &#x27;ÐOGE Pay&#x27; und Akzeptanz bei über 6.000 Händlern.</li><li>Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.</li><li>Einordnung: Die Nachrichtenlage ist positiv, mit Fokus auf wachsende Akzeptanz und Kaufempfehlungen.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News on DOGE</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOLWQzeG1SVkd0RWs0clpRQkdJLWlMcHVWcHp1cVp4SnlJYm1rZkkzN3VwRE01LThpbWJoOU5LTUhuNHJUdzRTUC1jdWxjWGI0YkNGYk1fbzFYOUF2cC1iODROVUNzRG95TUdtdjNrWWdVaEhuOEdVYTZqOHNUbEd2bm9NU3lTSXFHYl8yMm93bGhfZ196SzZMTkFQMkZkWkFsM29sR1BKdXN3ZEplOGU5bG9QTk1iQdIBuwFBVV95cUxPOS1RSUNETGljdVVNNm1tWDNGaFNmZW1tQlZWYnh1MHN4czNzSnBvX1QtN3IyVk9KcXROUmNIU3ZiTG16a2FJZnJTeGx2UDZEc3RXMml6aEJHa0hJUTAxTTltUUQwcy1YSnhfOUcxOFRlZnRnVnFaYTZqLVR1MGVPUGNhbm1SaUtUMnhqY1FqRF9JaHlTOHJDMGNZeC1pcHdURFRNdjZwWnAxOUNKOFVWaWhURDZSbkozaUc0?oc=5" target="_blank" rel="noopener">Shiba Inu (SHIB), XRP, Dogecoin (DOGE) and Bitcoin Price Analysis for June 9: What Can Heal Cryptocurrency Market?</a><div class="meta"><span>U.Today</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNRFFYM205amdWNlZPRlI2WVhLQW10ZW01Wk9XbVVnbkVzZ21pdU1kUGZ2MUVETWM3N1lsYU95Uk0xa0JxR21jZ1ctZXVnVXJzd2t6NkJIV19Wa2g2T1h2ZHQ4Wmhfa2Rtc2U3N0VWSk9pb2FKOEVBbkM4YWllREFOWGpDdk9FT3RxemdiZTF3SlVtWXotNlNTUXVHUXhtU05CckE?oc=5" target="_blank" rel="noopener">Bitcoin, Ethereum, XRP Slide, Dogecoin Flat As US Launches &#x27;Proportional&#x27; Strikes Against Iran: Analyst Sees BTC&#x27;s Strong Rebound To $74,000 Soon</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNZ2VaUS1UejIyT0xPZ2lnZ0R3RVRUeDJrbFM0RWYtNW5NNjRyS1pVcjl2VVRQSTRoR3dyWndYcUhVYjhrNGFkTm5uY1JaS2hDUWZKejRZUXYzR3FvM3ZLNU1TZ3lwX2FnTUJldGoyUS1vTWdYNTVueFV6MnlKRHlIY01UYmNUeGJPVHBxdFlETQ?oc=5" target="_blank" rel="noopener">Is Dogecoin the Smartest Crypto Buy Under $1?</a><div class="meta"><span>The Motley Fool</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxPYnRVRWVYUXNuZ0VvZW9PRDBwYkdzRnZubk0xQlZHZF9NWHZ3dlJ0WkhvcHloV0RLU0dZWmlHdnEzNzM3RzM3Y3FIMjEwbzQ2MjFpcXhXWkJyRU8wb2xmYnBwLU1hM29pb2ZUZDR6dkdDSGpveVRwMURpX2dlTGhYN2loNGI2QVhCR1hINEtXbmlzRVJaMHJmekNta3VnUlhhbHZPajU5V2VDTVVIWE1ESVRoRW5UaUdJZGQwaEplWmUwUVRCZ1lJakxZb25pNmlmdVktSy1iSXc4YU93UkdrcGg3MTVMZw?oc=5" target="_blank" rel="noopener">House of Doge and MoonPay Enable Dogecoin Payments Across 6,000+ Merchants and Launch “ÐOGE Pay”</a><div class="meta"><span>markets.businessinsider.com</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxPakdrXzBBYm5ZOEdBY1BKWGcwcHp1cm80Q3ZlcWxHZC1FNHBRMXFpdXNFZU1wUWhscnkybFhtVGxEcG9pU2pfc0Fyd1Vfc3FqMDVYV2pUX0UxSS11NkVFWU9oNFpCaGJwR083S3FBbTRfWGMxT0NRNUN5Vm5zcmc1Zjd0bVRBdnV4eks3U2dMYVI2V2Vq0gGaAUFVX3lxTFBNOTNsWDF3SGloS0pMdWhEZWc5WjBiRWFtdU1tV2tVem9QeUVVTmVPYmVDcTB5STRiaE91ekhBMXl5M0MzQUpZb1QyTjlDUHZtX3dFWTNtNmxmMnJmU2NjampwS0NPTnpNa2Z0VENkSS0zUThYMG9BVUxyWFJMSjk5ZnVBcUs0bVhlcHdCaHlrdFh2MF9tc2dyZWc?oc=5" target="_blank" rel="noopener">Dogecoin whales buy 240mln DOGE in a week – Has bottom finally formed?</a><div class="meta"><span>AMBCrypto</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNZ2VaUS1UejIyT0xPZ2lnZ0R3RVRUeDJrbFM0RWYtNW5NNjRyS1pVcjl2VVRQSTRoR3dyWndYcUhVYjhrNGFkTm5uY1JaS2hDUWZKejRZUXYzR3FvM3ZLNU1TZ3lwX2FnTUJldGoyUS1vTWdYNTVueFV6MnlKRHlIY01UYmNUeGJPVHBxdFlETQ?oc=5" target="_blank" rel="noopener">Is Dogecoin the Smartest Crypto Buy Under $1?</a><div class="meta"><span>The Motley Fool</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOLWQzeG1SVkd0RWs0clpRQkdJLWlMcHVWcHp1cVp4SnlJYm1rZkkzN3VwRE01LThpbWJoOU5LTUhuNHJUdzRTUC1jdWxjWGI0YkNGYk1fbzFYOUF2cC1iODROVUNzRG95TUdtdjNrWWdVaEhuOEdVYTZqOHNUbEd2bm9NU3lTSXFHYl8yMm93bGhfZ196SzZMTkFQMkZkWkFsM29sR1BKdXN3ZEplOGU5bG9QTk1iQdIBuwFBVV95cUxPOS1RSUNETGljdVVNNm1tWDNGaFNmZW1tQlZWYnh1MHN4czNzSnBvX1QtN3IyVk9KcXROUmNIU3ZiTG16a2FJZnJTeGx2UDZEc3RXMml6aEJHa0hJUTAxTTltUUQwcy1YSnhfOUcxOFRlZnRnVnFaYTZqLVR1MGVPUGNhbm1SaUtUMnhqY1FqRF9JaHlTOHJDMGNZeC1pcHdURFRNdjZwWnAxOUNKOFVWaWhURDZSbkozaUc0?oc=5" target="_blank" rel="noopener">Shiba Inu (SHIB), XRP, Dogecoin (DOGE) and Bitcoin Price Analysis for June 9: What Can Heal Cryptocurrency Market?</a><div class="meta"><span>U.Today</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNRFFYM205amdWNlZPRlI2WVhLQW10ZW01Wk9XbVVnbkVzZ21pdU1kUGZ2MUVETWM3N1lsYU95Uk0xa0JxR21jZ1ctZXVnVXJzd2t6NkJIV19Wa2g2T1h2ZHQ4Wmhfa2Rtc2U3N0VWSk9pb2FKOEVBbkM4YWllREFOWGpDdk9FT3RxemdiZTF3SlVtWXotNlNTUXVHUXhtU05CckE?oc=5" target="_blank" rel="noopener">Bitcoin, Ethereum, XRP Slide, Dogecoin Flat As US Launches &#x27;Proportional&#x27; Strikes Against Iran: Analyst Sees BTC&#x27;s Strong Rebound To $74,000 Soon</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxOZm0xT2ROWnZpMmR5S3ZDRlNmeXlDV2RpMXc5RFYyTktLUWV2N2ZWWlAwbHpBaEcxcE1ydUdMYkVjNUlsZ0swQnZkZ0ZEbjBFS29aNFYzejFreVJGVnlYUlBGS0N0WHBSQ1dHbmNzUkQ1T3BLTzJla0N0Uk5CTlRXMmN1cmVkVzlEamhfQWJhN25BbE5SYWNBME90VERWYVYxVnFVSlphcHM2YWhFQWpIZlhQMUZJcjM1MWRn?oc=5" target="_blank" rel="noopener">Here’s The Dogecoin Perfect Bottom And The Top Target; Analyst</a><div class="meta"><span>TradingView</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxPYnRVRWVYUXNuZ0VvZW9PRDBwYkdzRnZubk0xQlZHZF9NWHZ3dlJ0WkhvcHloV0RLU0dZWmlHdnEzNzM3RzM3Y3FIMjEwbzQ2MjFpcXhXWkJyRU8wb2xmYnBwLU1hM29pb2ZUZDR6dkdDSGpveVRwMURpX2dlTGhYN2loNGI2QVhCR1hINEtXbmlzRVJaMHJmekNta3VnUlhhbHZPajU5V2VDTVVIWE1ESVRoRW5UaUdJZGQwaEplWmUwUVRCZ1lJakxZb25pNmlmdVktSy1iSXc4YU93UkdrcGg3MTVMZw?oc=5" target="_blank" rel="noopener">House of Doge and MoonPay Enable Dogecoin Payments Across 6,000+ Merchants and Launch “ÐOGE Pay”</a><div class="meta"><span>markets.businessinsider.com</span><span>· 09 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>

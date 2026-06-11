@@ -85,6 +85,15 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
+    /* Kategorie-Filter-Tabs */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
 
     /* market table */
     .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
@@ -235,15 +244,16 @@
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
       .mtable tr.catrow td{border:0;border-radius:10px}
-      .mtable tr:not(.catrow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
-      .mtable tr:not(.catrow) td{border:0;padding:0}
-      .mtable tr:not(.catrow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
-      .mtable tr:not(.catrow) td:nth-child(2){grid-area:name}
-      .mtable tr:not(.catrow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
-      .mtable tr:not(.catrow) td:nth-child(4){grid-area:change;text-align:right}
-      .mtable tr:not(.catrow) td:nth-child(5){grid-area:spark}
-      .mtable tr:not(.catrow) td:nth-child(6){grid-area:sent}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
       .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
     }
   </style>
@@ -287,10 +297,10 @@
       <a class="backlink" href="/maerkte.html">← Alle Märkte</a>
       <h1>Litecoin <span class="hl">LTC</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="litecoin" data-type="crypto">41.39 USD</span>
-        <span class="chg down">-3.96 %</span>
+        <span class="px" id="livePrice" data-id="litecoin" data-type="crypto">42.70 USD</span>
+        <span class="chg up">+1.95 %</span>
         <span class="tag-type">Krypto</span>
-        <span class="badge neutral">Neutral</span>
+        <span class="badge bullish">Bullish</span>
       </div>
       <p class="disclaimer">⚠️ Keine Anlageberatung. Krypto ist hochvolatil — du kannst eingesetztes Geld komplett verlieren. KI-Sentiment ist experimentell.</p>
     </div>
@@ -301,10 +311,10 @@
       <span class="eyebrow">30-Tage-Verlauf</span>
       <h2>Kursverlauf</h2>
       <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">58.50</text><text x="586" y="204" font-size="12" fill="#64748b">42.92</text><path d="M10.0,200 L10.0,10.0 L34.8,15.6 L59.6,29.0 L84.3,13.8 L109.1,38.4 L133.9,60.6 L158.7,61.3 L183.5,66.1 L208.3,62.8 L233.0,82.8 L257.8,71.9 L282.6,82.2 L307.4,91.0 L332.2,90.6 L357.0,91.4 L381.7,85.2 L406.5,89.8 L431.3,105.0 L456.1,148.2 L480.9,167.3 L505.7,196.9 L530.4,200.0 L555.2,198.1 L580.0,199.3 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,10.0 34.8,15.6 59.6,29.0 84.3,13.8 109.1,38.4 133.9,60.6 158.7,61.3 183.5,66.1 208.3,62.8 233.0,82.8 257.8,71.9 282.6,82.2 307.4,91.0 332.2,90.6 357.0,91.4 381.7,85.2 406.5,89.8 431.3,105.0 456.1,148.2 480.9,167.3 505.7,196.9 530.4,200.0 555.2,198.1 580.0,199.3" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="199.3" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="199.3" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">Stand: 2026-06-10 · Krypto aktualisiert live.</p>
+      <p class="updated" style="margin-top:.7rem">Stand: 2026-06-11 · Krypto aktualisiert live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Kennzahlen</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">Im Überblick</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-3.96 %</span></span></div><div class="kpi"><span class="kl">7 Tage</span><span class="kv"><span class="chg down">-8.88 %</span></span></div><div class="kpi"><span class="kl">30 Tage</span><span class="kv"><span class="chg down">-26.53 %</span></span></div><div class="kpi"><span class="kl">30T-Hoch</span><span class="kv">58.50 USD</span></div><div class="kpi"><span class="kl">30T-Tief</span><span class="kv">42.92 USD</span></div><div class="kpi"><span class="kl">Volumen</span><span class="kv">239.81 Mio</span></div><div class="kpi"><span class="kl">Marktkap.</span><span class="kv">3.20 Mrd USD</span></div><div class="kpi"><span class="kl">Allzeithoch</span><span class="kv">410.26 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+1.95 %</span></span></div><div class="kpi"><span class="kl">7 Tage</span><span class="kv"><span class="chg down">-8.88 %</span></span></div><div class="kpi"><span class="kl">30 Tage</span><span class="kv"><span class="chg down">-26.53 %</span></span></div><div class="kpi"><span class="kl">30T-Hoch</span><span class="kv">58.50 USD</span></div><div class="kpi"><span class="kl">30T-Tief</span><span class="kv">42.92 USD</span></div><div class="kpi"><span class="kl">Volumen</span><span class="kv">224.62 Mio</span></div><div class="kpi"><span class="kl">Marktkap.</span><span class="kv">3.30 Mrd USD</span></div><div class="kpi"><span class="kl">Allzeithoch</span><span class="kv">410.26 USD</span></div></div>
     </div>
   </section>
 
@@ -313,11 +323,11 @@
       <span class="eyebrow">Experimentell · KI-Einordnung</span>
       <h2>KI-Sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Litecoin · LTC</span><span class="badge neutral">Neutral</span></div>
-        
-        <p class="crat"></p>
+        <div class="chead"><span class="cname">Litecoin · LTC</span><span class="badge bullish">Bullish</span></div>
+        <p class="csignal">Erholung, Kaufdiskussion.</p>
+        <p class="crat">Litecoin zeigt eine Erholung und wird als potenziell besserer Kauf als Bitcoin diskutiert.</p>
       </div>
-      
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">Ausführliche Analyse</h3><ul class="analysis"><li>Treiber: Gewinnt 3.1% im Rahmen einer breiten Krypto-Rallye, Diskussion als besserer Kauf als Bitcoin.</li><li>Risiko: Delaware-Gesetzgeber drängen auf Verbot von Krypto-Kiosken.</li><li>Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit Erholungstendenzen und positiver Bewertung.</li></ul>
     </div>
   </section>
 
@@ -325,7 +335,7 @@
     <div class="wrap">
       <span class="eyebrow">News zu LTC</span>
       <h2>Aktuelle Schlagzeilen</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMihwJBVV95cUxNNW40WmpTNG5TelZfczJ3dGpVRTJHUlFxSl8zOWpZZXBOcnBPMWlXM1RNelJLeEp0TUlqTWlkekFYSFRtMHNIODl0NXVIMU44aTk0UTRHS0RjY21salduYlFuUFV2amxPSlRXMi1MU3VESldVakVTTGVvWkMwT2paQmdPdTVMdTVoWFRjUjB5UFNsNlVNbDhtTk52cXkzZUdxcVJHZ3FHWVJ3bXpYa0t3OVFLMGI4eEFXcFlvUjIwVFYwRnAtMVdMUDRyMnpta2dKdGd5c2ZZVEtFc21fS2tTUGRQTTlycGg0V2RkMFhEVXBkaXQ0OUlvVjA1cEhoM09hNG5id3YwYw?oc=5" target="_blank" rel="noopener">Goodbye Bitcoin ATMs? Delaware lawmakers push for total ban on cryptocurrency kiosks across the state</a><div class="meta"><span>WBOC TV</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxOUDlabmY2UEdfSEYwOERCTkFiY2Z0RTRTbjZxaDJDQl9QSzdFUGlBdjNqeV9lczZkRkFlaUt2YXRUTndLaFhrY0RNdEZyTkFWUE1VWGZrUFF2WWZpQkh6WjVmY0Z5M0U4SGtqQVBkdDdodnNFU0ppX0pvenl2cG9EV2xxOUNGUF8yN0VNdzBQNW45ejFUdEVTcjFnbjA1MUt2V2FTUlZsUjgyV3AyOTd0RGk4S2lIaWpHY0llVHUxTEhnOFJzc21ES0dCWDRod0FXNnc?oc=5" target="_blank" rel="noopener">Cryptocurrencies Price Prediction: Solana, Litecoin &amp; Bitcoin – Asian Wrap 10 June</a><div class="meta"><span>FXStreet</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE5pajZ6d1NjYlE0a1Y5MEk0c2pOZzNwNGF5TlM4S2FieHpBMWtzbjVDOUtKVlVvTEh0bVNISmF6NGFtZ1F4d3JJQUhoTU8zelMwc0FYaWYxbDRsUXUtQ1I0bDJMV0RPUXFWZkFzQk9lUks?oc=5" target="_blank" rel="noopener">Litecoin Gains 3.1% Amid Broad Crypto Relief Rally</a><div class="meta"><span>CoinMarketCap</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxQUU9TcndzREtSMDNfUFR5U2NVaE0zVS13MUtmUDZaNUhUMFRVN050VXIzdThkbWotWldaOHUzWEVWc2YzSWtqZ0hqLWdWbTNKcnoxTkhyQW92dEFrbmkzUERvZWw4NloyakdiRjJEVXRlLWpDQW1CSnd6OFN3RlJVV2NaZW92TmVIeXNQNW9zWHZQNDNMckN1aGNzUUd2UHNPMmduUE1xQ2ktN3Y1UlFLXzZDRTRCVHU2Mnc?oc=5" target="_blank" rel="noopener">What next for Litecoin after dropping below $43? Check forecast</a><div class="meta"><span>TradingView</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMingFBVV95cUxPY2VlSmZvOU1EOG12YldTUXJpZnFlSUxhUmlOdFNpdC1iUGc2eVNNbTVrTFVoYkdQWmxva0JWMlFxR2dVZXFvMGN1cUE2VjloZHdjYlRCVjBsU3JLVGZpdy1ZUjZFT3d2b1dTVF9aaWs3bXk3UU1UMmZPQVVYLXFSdXlaSy00eXJWanl4a19RemJlbTdKa0pkQnhMaU8xUQ?oc=5" target="_blank" rel="noopener">Litecoin Has Been Around Since 2011 -- Here&#x27;s Why It&#x27;s Still Relevant</a><div class="meta"><span>Yahoo Finance</span><span>· 23 May 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNcnNZZjFYZVhWTUFCTF9JclZjUUZhRDgtQ0NFQXhhMkUtMFZZc0FEd0c4b0t5aV92Vndxc1pZdFl1ZU5rS1VMcVJxLWltUFkzcnBoOERZZGp3TWpuNlRyUnlpTFV5Q1pPSHRfUzcwNDNPRU81M3lQZ3VIWTNrWkxCU0duLXVoRVAyTmRDSEdyNA?oc=5" target="_blank" rel="noopener">Litecoin Price Forecast &amp; Predictions for 2026, 2027, 2028–2030 and Beyond</a><div class="meta"><span>LiteFinance</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQakFiM1BvRzBRc1hHOU0zb0RBeExONVpTcHV3OW9wVDR2bEtJRjdTRGpqY3FsUk01bVkzMWVvZUFnN2VTSnFPODhCbG54S1dvNHNSbkhyalZKRkJZVXdhMGZEZkU1MDR4bzh4eEZhdk5NaGQxaGRTWDNnNmphX0ZyZVZiSzJSNDFXWXVNNkJKRUtuek53bUVfX01FM28?oc=5" target="_blank" rel="noopener">Is Litecoin a Better Buy Than Bitcoin Right Now?</a><div class="meta"><span>Yahoo Finance</span><span>· 24 May 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE5pajZ6d1NjYlE0a1Y5MEk0c2pOZzNwNGF5TlM4S2FieHpBMWtzbjVDOUtKVlVvTEh0bVNISmF6NGFtZ1F4d3JJQUhoTU8zelMwc0FYaWYxbDRsUXUtQ1I0bDJMV0RPUXFWZkFzQk9lUks?oc=5" target="_blank" rel="noopener">Litecoin Gains 3.1% Amid Broad Crypto Relief Rally</a><div class="meta"><span>CoinMarketCap</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMihwJBVV95cUxNNW40WmpTNG5TelZfczJ3dGpVRTJHUlFxSl8zOWpZZXBOcnBPMWlXM1RNelJLeEp0TUlqTWlkekFYSFRtMHNIODl0NXVIMU44aTk0UTRHS0RjY21salduYlFuUFV2amxPSlRXMi1MU3VESldVakVTTGVvWkMwT2paQmdPdTVMdTVoWFRjUjB5UFNsNlVNbDhtTk52cXkzZUdxcVJHZ3FHWVJ3bXpYa0t3OVFLMGI4eEFXcFlvUjIwVFYwRnAtMVdMUDRyMnpta2dKdGd5c2ZZVEtFc21fS2tTUGRQTTlycGg0V2RkMFhEVXBkaXQ0OUlvVjA1cEhoM09hNG5id3YwYw?oc=5" target="_blank" rel="noopener">Goodbye Bitcoin ATMs? Delaware lawmakers push for total ban on cryptocurrency kiosks across the state</a><div class="meta"><span>WBOC TV</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxOUDlabmY2UEdfSEYwOERCTkFiY2Z0RTRTbjZxaDJDQl9QSzdFUGlBdjNqeV9lczZkRkFlaUt2YXRUTndLaFhrY0RNdEZyTkFWUE1VWGZrUFF2WWZpQkh6WjVmY0Z5M0U4SGtqQVBkdDdodnNFU0ppX0pvenl2cG9EV2xxOUNGUF8yN0VNdzBQNW45ejFUdEVTcjFnbjA1MUt2V2FTUlZsUjgyV3AyOTd0RGk4S2lIaWpHY0llVHUxTEhnOFJzc21ES0dCWDRod0FXNnc?oc=5" target="_blank" rel="noopener">Cryptocurrencies Price Prediction: Solana, Litecoin &amp; Bitcoin – Asian Wrap 10 June</a><div class="meta"><span>FXStreet</span><span>· 10 Jun 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/maerkte.html">← Zur Märkte-Übersicht</a> · <a href="/ki-und-krypto-daten.html">KI &amp; Krypto in Zahlen →</a></p>
     </div>
   </section>
@@ -373,6 +383,5 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/lang-suggest.js"></script>
 </body>
 </html>
