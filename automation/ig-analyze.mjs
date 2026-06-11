@@ -25,7 +25,7 @@ const num = x => Number(x||0);
   const rows = [];
   for (const m of media) {
     // Insights: reach + saved + total_interactions (Reels: zusätzlich plays)
-    const metric = m.media_product_type === 'REELS' ? 'reach,saved,total_interactions,plays' : 'reach,saved,total_interactions';
+    const metric = m.media_product_type === 'REELS' ? 'reach,saved,total_interactions,views' : 'reach,saved,total_interactions';
     const ins = await g(`https://graph.facebook.com/${V}/${m.id}/insights?metric=${metric}&access_token=${encodeURIComponent(IG_TOK)}`);
     const im = {}; (ins.data||[]).forEach(d => im[d.name] = num(d.values?.[0]?.value));
     const reach = im.reach||0, saved = im.saved||0, inter = im.total_interactions||0;
