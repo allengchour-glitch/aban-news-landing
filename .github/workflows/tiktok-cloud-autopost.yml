@@ -1,0 +1,74 @@
+name: TikTok Cloud Auto-Post (Browserbase)
+
+# AUTONOM: postet 1×/Tag das nächste fällige Video aus social/tiktok_queue.csv über den
+# eingeloggten Browserbase-Context (kein PC nötig). No-op ohne Secrets / ohne fällige Zeile /
+# wenn TikTok-Login im Context fehlt. Manueller Dispatch mit dry_run zum Testen.
+
+on:
+  schedule:
+    - cron: '40 9 * * *'   # täglich 09:40 UTC (~11:40 CH — gute TikTok-Zeit lt. Analyse)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur testen (nicht posten)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tiktok-cloud-autopost
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout (sparse — Agent + Queue)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            automation/tiktok-cloud-autopost.mjs
+            tools/browser
+            social
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: playwright-core
+        run: npm i playwright-core --no-save
+
+      - name: Nächstes Video posten
+        env:
+          BROWSERBASE_API_KEY: ${{ secrets.BROWSERBASE_API_KEY }}
+          BROWSERBASE_PROJECT_ID: ${{ secrets.BROWSERBASE_PROJECT_ID }}
+          BROWSERBASE_CONTEXT_ID: ${{ secrets.BROWSERBASE_CONTEXT_ID }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+        run: node automation/tiktok-cloud-autopost.mjs
+
+      - name: Queue committen
+        run: |
+          if [ -n "$(git status --porcelain social/tiktok_queue.csv)" ]; then
+            git config user.name  "tiktok-cloud-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add social/tiktok_queue.csv
+            git commit -m "tiktok-cloud: Video gepostet [skip ci]"
+            git pull --rebase origin "${GITHUB_REF_NAME}" || true
+            git push
+          else
+            echo "Nichts gepostet."
+          fi
+
+      - name: Screenshots als Artefakt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tiktok-cloud-screenshots
+          path: tools/browser/*.png
+          if-no-files-found: ignore
+          retention-days: 7
