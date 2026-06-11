@@ -19,6 +19,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { balanceByCategory } from './lib/reel-category.mjs';
 
 const KEY = process.env.GEMINI_API_KEY || '';
 const MODEL = process.env.VEO_MODEL || 'veo-3.0-fast-generate-001';
@@ -132,7 +133,7 @@ function queueReel(name, label, handle, fileName){
 }
 
 // --- Hauptlauf ---
-const products = readGood();
+const products = balanceByCategory(readGood(), p => `${p.name} ${p.label}`);
 let queue;
 if(ONLY){ const _sel=new Set(ONLY.split(',').map(x=>x.trim()).filter(Boolean)); queue = products.filter(p=>_sel.has(p.name)); if(!queue.length){ console.error('VEO_ONLY nicht gefunden:', ONLY); process.exit(1); } }
 else { const start = loadPointer(products.length); queue = []; for(let k=0;k<MAX;k++) queue.push(products[(start+k)%products.length]); }

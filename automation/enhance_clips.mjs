@@ -16,6 +16,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { balanceByCategory } from './lib/reel-category.mjs';
 
 const KEY=process.env.GEMINI_API_KEY||'';
 const MODEL=process.env.GEMINI_IMAGE_MODEL||'gemini-2.5-flash-image';
@@ -88,7 +89,7 @@ function makeClip(imgPath,outPath){
   execFileSync('ffmpeg',args,{stdio:['ignore','ignore','inherit'],timeout:120000});
 }
 
-const products=readGood();
+const products=balanceByCategory(readGood(), p => `${p.name} ${p.label}`);
 let queue;
 if(ONLY.length) queue=products.filter(p=>ONLY.includes(p.name));
 else { const start=loadPointer(products.length); queue=[]; for(let k=0;k<BATCH;k++) queue.push(products[(start+k)%products.length]); }
