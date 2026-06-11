@@ -150,8 +150,9 @@
     <!-- Tools -->
     <section class="sec" style="padding-top:.4rem">
       <span class="eyebrow">Pro-Werkzeuge</span>
-      <h2>Die vier KI-Tools</h2>
+      <h2>Die KI-Tools</h2>
       <p class="sub">Ohne Pro-Schlüssel siehst du alles, kannst es aber nicht ausführen. Mit Schlüssel laufen die Tools live.</p>
+      <p class="sub" style="margin-top:.4rem"><b>Neu hier?</b> Wähl eine Art, füll 1–2 Felder, klick „Erstellen" — fertig. Mit „📋 Beispiel" siehst du sofort, wie eine Eingabe aussieht. <b>Profi?</b> Unter „⚙️ Erweitert" steuerst du Ton, Zielgruppe und Länge.</p>
       <div class="tools">
 
         <!-- 1) Frag-aban Pro -->
@@ -176,7 +177,17 @@
           </div>
           <label for="genZiel">Ziel / Worum geht's</label>
           <input type="text" id="genZiel" placeholder="z. B. LinkedIn-Post über unseren neuen Service">
-          <button type="button" class="btn btn--amber btn--sm run" data-tool="generate">Erstellen</button>
+          <details class="faq" style="margin:.6rem 0 0"><summary>⚙️ Erweitert — Ton, Zielgruppe, Länge (für Profis)</summary>
+            <div class="frow" style="margin-top:.5rem">
+              <div><label for="genTon">Ton / Stil</label><input type="text" id="genTon" placeholder="z. B. locker · seriös · technisch"></div>
+              <div><label for="genZg">Zielgruppe</label><input type="text" id="genZg" placeholder="z. B. Einsteiger · Geschäftskunden"></div>
+              <div><label for="genLen">Länge</label><select id="genLen"><option value="">Standard</option><option value="kurz">kurz</option><option value="mittel">mittel</option><option value="lang">lang</option></select></div>
+            </div>
+          </details>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem">
+            <button type="button" class="btn btn--amber btn--sm run" data-tool="generate">Erstellen</button>
+            <button type="button" class="btn btn--ghost btn--sm" id="genExample" title="Felder mit einem Beispiel füllen">📋 Beispiel</button>
+          </div>
           <div class="lockmsg" data-lock>🔒 Schlüssel oben eingeben, um zu starten.</div>
           <div class="out" id="outGen"></div>
         </div>

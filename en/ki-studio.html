@@ -145,8 +145,9 @@
 
     <section class="sec" style="padding-top:.4rem">
       <span class="eyebrow">Pro tools</span>
-      <h2>The four AI tools</h2>
+      <h2>The AI tools</h2>
       <p class="sub">Without a Pro key you can see everything but not run it. With a key the tools run live.</p>
+      <p class="sub" style="margin-top:.4rem"><b>New here?</b> Pick a type, fill 1–2 fields, click "Create" — done. Hit "📋 Example" to see what an input looks like. <b>Pro?</b> Under "⚙️ Advanced" you control tone, audience and length.</p>
       <div class="tools">
 
         <div class="tool" id="toolChat" data-locked="1">
@@ -169,7 +170,17 @@
           </div>
           <label for="genZiel">Goal / what it's about</label>
           <input type="text" id="genZiel" placeholder="e.g. LinkedIn post about our new service">
-          <button type="button" class="btn btn--amber btn--sm run" data-tool="generate">Create</button>
+          <details class="faq" style="margin:.6rem 0 0"><summary>⚙️ Advanced — tone, audience, length (for pros)</summary>
+            <div class="frow" style="margin-top:.5rem">
+              <div><label for="genTon">Tone / style</label><input type="text" id="genTon" placeholder="e.g. casual · formal · technical"></div>
+              <div><label for="genZg">Audience</label><input type="text" id="genZg" placeholder="e.g. beginners · business clients"></div>
+              <div><label for="genLen">Length</label><select id="genLen"><option value="">Standard</option><option value="kurz">short</option><option value="mittel">medium</option><option value="lang">long</option></select></div>
+            </div>
+          </details>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem">
+            <button type="button" class="btn btn--amber btn--sm run" data-tool="generate">Create</button>
+            <button type="button" class="btn btn--ghost btn--sm" id="genExample" title="Fill the fields with an example">📋 Example</button>
+          </div>
           <div class="lockmsg" data-lock>🔒 Enter your key above to start.</div>
           <div class="out" id="outGen"></div>
         </div>
