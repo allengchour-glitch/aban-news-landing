@@ -10,6 +10,28 @@ name: Cloudflare Pages — Hauptseite (abannews) Direct-Upload
 # Manuell starten: Actions → diesen Workflow → Run.
 
 on:
+  # Auto-Deploy bei Inhalts-Pushes (schwere/nicht-öffentliche Pfade ignoriert,
+  # damit Dropship-/Social-/Memory-Commits keinen Deploy auslösen).
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'dropship/**'
+      - 'social/**'
+      - 'video-prototypes/**'
+      - 'reels/**'
+      - 'automation/**'
+      - 'tools/**'
+      - 'linkedin/**'
+      - 'reports/**'
+      - 'mediakit/**'
+      - 'ki-tools-radar/**'
+      - 'ki-schriftsteller/**'
+      - '**/*.md'
+      - '.github/**'
+  # Sicherheitsnetz: regelmäßig deployen (fängt auch Bot-Commits mit [skip ci]
+  # ab, z. B. frische Märkte-Daten).
+  schedule:
+    - cron: '20 */6 * * *'
   workflow_dispatch:
     inputs:
       project:
@@ -32,6 +54,7 @@ jobs:
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      PROJECT: ${{ github.event.inputs.project || 'abannews' }}
     steps:
       - name: Token-Gate
         run: |
@@ -63,24 +86,24 @@ jobs:
           find _site -type f -size +24M -printf '%s  %p\n' | sort -rn | head || true
 
       - name: Pages-Projekt anlegen (idempotent)
-        run: npx --yes wrangler@3 pages project create "${{ inputs.project }}" --production-branch=main || true
+        run: npx --yes wrangler@3 pages project create "${{ env.PROJECT }}" --production-branch=main || true
 
       - name: Anthropic-Key ins Pages-Projekt schreiben (falls GitHub-Secret gesetzt)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           if [ -n "$ANTHROPIC_API_KEY" ]; then
-            printf '%s' "$ANTHROPIC_API_KEY" | npx --yes wrangler@3 pages secret put ANTHROPIC_API_KEY --project-name="${{ inputs.project }}"
+            printf '%s' "$ANTHROPIC_API_KEY" | npx --yes wrangler@3 pages secret put ANTHROPIC_API_KEY --project-name="${{ env.PROJECT }}"
             echo "ANTHROPIC_API_KEY ins Pages-Projekt geschrieben (Wert nie ausgegeben)."
           else
             echo "Kein GitHub-Secret ANTHROPIC_API_KEY — KI-Tools bleiben im 503-Fallback."
           fi
 
       - name: Deploy (Direct Upload)
-        run: npx --yes wrangler@3 pages deploy _site --project-name="${{ inputs.project }}" --branch=main
+        run: npx --yes wrangler@3 pages deploy _site --project-name="${{ env.PROJECT }}" --branch=main
 
       - name: Hinweis
         run: |
-          echo "Fertig. Öffne https://${{ inputs.project }}.pages.dev/"
-          echo "API-Test:  curl -X POST https://${{ inputs.project }}.pages.dev/api/pro-validate -H 'content-type: application/json' -d '{\"license_key\":\"x\"}'"
+          echo "Fertig. Öffne https://${{ env.PROJECT }}.pages.dev/"
+          echo "API-Test:  curl -X POST https://${{ env.PROJECT }}.pages.dev/api/pro-validate -H 'content-type: application/json' -d '{\"license_key\":\"x\"}'"
           echo "Für die KI-Tools fehlt noch das Pages-Secret ANTHROPIC_API_KEY (im CF-Dashboard des Projekts)."
