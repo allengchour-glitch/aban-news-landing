@@ -3,14 +3,10 @@
 # https://developers.cloudflare.com/pages/configuration/redirects/
 
 # Pretty URLs (no .html in URLs that users might type)
-/founding         /founding.html        301
 /hype             /hype-filter.html     301
-/hype-filter      /hype-filter.html     301
 /anti-hype        /anti-hype-texten.html  301
-/anti-hype-texten /anti-hype-texten.html  301
 /widget           /hype-widget-demo.html  301
 /hype-widget      /hype-widget-demo.html  301
-/ai-sichtbarkeit  /ai-sichtbarkeit.html   301
 /aeo              /ai-sichtbarkeit.html   301
 /ki-erwaehnung    /ki-erwaehnungs-check.html  301
 /genannt          /ki-erwaehnungs-check.html  301
@@ -24,24 +20,19 @@
 /ki-sichtbar-gastronomie      /ki-sichtbarkeit-gastronomie.html  301
 /start               /links.html  301
 /prompts          /bessere-prompts.html         301
-/bessere-prompts  /bessere-prompts.html         301
 /prompt-guide     /bessere-prompts.html         301
 /en/prompts       /en/bessere-prompts.html      301
 
-/links               /links.html  301
 /chatgpt-nennt-mich  /ki-erwaehnungs-check.html  301
-/hype-watch       /hype-watch.html        301
 /hypewatch        /hype-watch.html        301
 /hype-radar       /hype-watch.html        301
 /namen            /namen-generator.html   301
 /premium          /premium-briefing.html  301
 /briefing         /premium-briefing.html  301
-/premium-briefing /premium-briefing.html  301
 /premium-beispiel /premium-briefing-beispiel.html  301
 /name             /namen-generator.html   301
 /namensschild     /namen-generator.html   301
 /schluesselanhaenger /namen-generator.html 301
-/finanz-rechner   /finanz-rechner.html    301
 /finanzrechner    /finanz-rechner.html    301
 /finanz-skills    /finanz-skills-fuer-selbststaendige.html  301
 /finanzen         /finanz-skills-fuer-selbststaendige.html  301
@@ -49,26 +40,20 @@
 /ai-check         /ai-sichtbarkeit.html   301
 /ki-kosten        /ki-kosten-rechner.html 301
 /kosten-rechner   /ki-kosten-rechner.html 301
-/ki-kosten-rechner /ki-kosten-rechner.html 301
-/ki-stimmen       /ki-stimmen.html        301
 /text-to-speech   /ki-stimmen.html        301
 /tts              /ki-stimmen.html        301
 /ki-video         /ki-videos-erstellen.html 301
 /ki-videos        /ki-videos-erstellen.html 301
 /videos           /ki-videos-erstellen.html 301
-/ki-lifestyle     /ki-lifestyle.html        301
 /lifestyle        /ki-lifestyle.html        301
 /ki-alltag        /ki-lifestyle.html        301
 /krypto           /ki-und-krypto-daten.html 301
 /ki-krypto        /ki-und-krypto-daten.html 301
 /krypto-daten     /ki-und-krypto-daten.html 301
-/maerkte          /maerkte.html             301
 /markets          /maerkte.html             301
 /trading          /trading-tipps.html       301
-/trading-tipps    /trading-tipps.html       301
 /trading-tipp     /trading-tipps.html       301
 /en/trading       /en/trading-tipps.html    301
-/en/trading-tipps /en/trading-tipps.html    301
 /maerkte-live     /maerkte.html             301
 /krypto-kaufen    /krypto-fuer-einsteiger.html   301
 /bitcoin-kaufen   /krypto-fuer-einsteiger.html   301
@@ -78,31 +63,25 @@
 /en/bitcoin       /en/krypto-fuer-einsteiger.html 301
 /etf              /etf-fuer-einsteiger.html      301
 /etf-einsteiger   /etf-fuer-einsteiger.html      301
-/etf-fuer-einsteiger /etf-fuer-einsteiger.html   301
 /sparplan         /sparplan-statt-trading.html   301
-/sparplan-statt-trading /sparplan-statt-trading.html 301
 /en/etf           /en/etf-fuer-einsteiger.html   301
 /en/sparplan      /en/sparplan-statt-trading.html 301
 /sparplan-rechner  /sparplan-statt-trading.html  301
 /zinseszins-rechner /sparplan-statt-trading.html 301
 /zinseszins       /sparplan-statt-trading.html   301
 /inflation        /inflation-einfach-erklaert.html 301
-/inflation-einfach-erklaert /inflation-einfach-erklaert.html 301
 /kaufkraft        /inflation-einfach-erklaert.html 301
 /en/inflation     /en/inflation-einfach-erklaert.html 301
 
 /notgroschen      /notgroschen-aufbauen.html    301
-/notgroschen-aufbauen /notgroschen-aufbauen.html 301
 /puffer           /notgroschen-aufbauen.html    301
 /en/emergency-fund /en/notgroschen-aufbauen.html 301
 
 /ki-abo           /ki-abo-lohnt-sich.html       301
-/ki-abo-lohnt-sich /ki-abo-lohnt-sich.html      301
 /chatgpt-plus     /ki-abo-lohnt-sich.html       301
 /en/ai-plan       /en/ki-abo-lohnt-sich.html    301
 
 /geld             /geld-und-ki.html             301
-/geld-und-ki      /geld-und-ki.html             301
 /money            /geld-und-ki.html             301
 /en/money         /en/geld-und-ki.html          301
 
@@ -118,7 +97,6 @@
 
 /passives-einkommen /passives-einkommen-ki.html  301
 /passiv           /passives-einkommen-ki.html   301
-/passives-einkommen-ki /passives-einkommen-ki.html 301
 /en/passive-income /en/passives-einkommen-ki.html 301
 
 /ki-betrug        /ki-betrug-scam-check.html   301
@@ -137,7 +115,6 @@
 /en/small-business /en/kleinunternehmerregelung-einfach-erklaert.html 301
 /en/vat-exemption /en/kleinunternehmerregelung-einfach-erklaert.html 301
 /ki-aktien        /ki-aktien-hype-check.html    301
-/ki-aktien-hype-check /ki-aktien-hype-check.html 301
 /ai-aktien        /ki-aktien-hype-check.html    301
 /en/steuer        /en/steuer-basics-selbststaendige.html 301
 /en/ai-stocks     /en/ki-aktien-hype-check.html  301
@@ -145,15 +122,11 @@
 
 
 
-/ebook            /ebook.html           301
-/buch             /buch.html            301
 /book             /buch.html            301
-/trilogie         /trilogie.html        301
 /trilogy          /trilogie.html        301
 /das-tal          /trilogie.html        301
 /the-valley       /en/trilogie.html     301
 /en/trilogy       /en/trilogie.html     301
-/schicht          /schicht.html         301
 /the-seam         /en/the-seam.html     301
 /seam             /en/the-seam.html     301
 /ki-tools         /ki-tools-fuer-selbststaendige.html   301
@@ -161,13 +134,6 @@
 /3d-druck         /geld-verdienen-mit-3d-druck.html     301
 /3d               /geld-verdienen-mit-3d-druck.html     301
 /dropshipping     /geld-verdienen-mit-3d-druck.html     301
-/sponsoring       /sponsoring.html      301
-/werbung          /werbung.html         301
-/datenschutz      /datenschutz.html     301
-/impressum        /impressum.html       301
-/willkommen       /willkommen.html      301
-/faq              /faq.html             301
-/presse           /presse.html          301
 /press            /presse.html          301
 /ueber            /ueber-aban.html      301
 /about            /ueber-aban.html      301
@@ -183,7 +149,6 @@
 
 # KI-Tools-Datensatz (Daten-Produkt)
 /datensatz        /ki-tools-datensatz.html  301
-/ki-tools-datensatz /ki-tools-datensatz.html  301
 /dataset          /ki-tools-datensatz.html  301
 
 # KI-Sichtbarkeits-Monitor (Abo)
@@ -196,84 +161,59 @@
 
 # Vorlagen-Set
 /vorlagen         /vorlagen-set.html  301
-/vorlagen-set     /vorlagen-set.html  301
 /templates        /vorlagen-set.html  301
 
 # Automatisierungs-Tools
-/automatisierung-rechner /automatisierung-rechner.html 301
 /automatisieren-lohnt    /automatisierung-rechner.html 301
 /cron             /cron-generator.html  301
-/cron-generator   /cron-generator.html  301
-/was-automatisieren /was-automatisieren.html 301
 
 # Entwickler-/Glue-Tools
 /regex            /regex-tester.html  301
-/regex-tester     /regex-tester.html  301
 /json             /json-formatter.html 301
-/json-formatter   /json-formatter.html 301
 /encode           /encoder.html       301
-/encoder          /encoder.html       301
 /base64           /encoder.html       301
 /uuid             /uuid-generator.html 301
-/uuid-generator   /uuid-generator.html 301
 /slug             /uuid-generator.html 301
 /diff             /diff-tool.html     301
-/diff-tool        /diff-tool.html     301
 /textvergleich    /diff-tool.html     301
 /tabelle          /markdown-tabelle.html 301
-/markdown-tabelle /markdown-tabelle.html 301
 /csv              /markdown-tabelle.html 301
 /env              /env-parser.html    301
-/env-parser       /env-parser.html    301
 /header           /env-parser.html    301
 
 # Entwickler-/Glue-Tools (Teil 2)
 /hash             /hash-generator.html  301
-/hash-generator   /hash-generator.html  301
 /sha256           /hash-generator.html  301
 /kontrast         /kontrast-checker.html 301
-/kontrast-checker /kontrast-checker.html 301
 /contrast         /kontrast-checker.html 301
 /passwort         /passwort-generator.html 301
-/passwort-generator /passwort-generator.html 301
 /password         /passwort-generator.html 301
 /zeichen          /zeichenzaehler.html  301
-/zeichenzaehler   /zeichenzaehler.html  301
 /wortzaehler      /zeichenzaehler.html  301
 /timestamp        /timestamp-konverter.html 301
-/timestamp-konverter /timestamp-konverter.html 301
 /unixzeit         /timestamp-konverter.html 301
 /jwt              /jwt-decoder.html     301
-/jwt-decoder      /jwt-decoder.html     301
 
 # Rechner & Farbe (Teil 3)
 /farben           /farb-umrechner.html  301
-/farb-umrechner   /farb-umrechner.html  301
 /hex              /farb-umrechner.html  301
 /rgb              /farb-umrechner.html  301
 /prozent          /prozent-rechner.html 301
-/prozent-rechner  /prozent-rechner.html 301
 /dreisatz         /prozent-rechner.html 301
 /mwst             /mwst-rechner.html    301
-/mwst-rechner     /mwst-rechner.html    301
 /mehrwertsteuer   /mwst-rechner.html    301
 /iban             /iban-pruefer.html    301
-/iban-pruefer     /iban-pruefer.html    301
 /iban-checker     /iban-pruefer.html    301
 
 # QR-Code + Tool-Uebersicht (Teil 4)
 /qr               /qr-code.html       301
-/qr-code          /qr-code.html       301
 /qrcode           /qr-code.html       301
 /werkzeuge        /online-tools.html  301
-/online-tools     /online-tools.html  301
 /gratis-tools     /online-tools.html  301
 
 # Rechnung + Vorlagen-Pack (Teil 5)
 /rechnung         /rechnung-generator.html 301
-/rechnung-generator /rechnung-generator.html 301
 /rechnung-schreiben /rechnung-generator.html 301
-/vorlagen-pack    /vorlagen-pack.html   301
 /geschaeftsvorlagen /vorlagen-pack.html 301
 
 # 404 fallback — Cloudflare Pages serves /404.html automatically for missing routes,
@@ -282,11 +222,9 @@
 
 # KI-Compliance-Pakete
 /compliance           /ki-compliance.html  301
-/ki-compliance        /ki-compliance.html  301
 /compliance-aerzte     /ki-compliance-aerzte.html  301
 /compliance-anwaelte   /ki-compliance-anwaelte.html  301
 /compliance-steuerberater/ki-compliance-steuerberater.html  301
-/ki-sichtbarkeit      /ki-sichtbarkeit.html  301
 /von-ki-empfohlen     /ki-sichtbarkeit.html  301
 /ki-sichtbar-coaches        /ki-sichtbarkeit-coaches.html  301
 /ki-sichtbar-immobilienmakler /ki-sichtbarkeit-immobilienmakler.html  301
@@ -297,11 +235,9 @@
 
 # KI-Schnellstart
 /schnellstart        /ki-schnellstart.html  301
-/ki-schnellstart     /ki-schnellstart.html  301
 /ki-einfuehrung      /ki-schnellstart.html  301
 
 # Themen-Dossiers (Newsletter vertieft)
-/dossiers            /dossiers.html  301
 /dossier             /dossiers.html  301
 /themen              /dossiers.html  301
 /werkzeugkasten-dossier   /dossier/ki-werkzeugkasten.html  301
@@ -313,7 +249,6 @@
 
 # Angebote/Preise
 /preise              /angebote.html  301
-/angebote            /angebote.html  301
 /pricing             /angebote.html  301
 
 # KI-Sichtbarkeits-Audit (einmalig, DIY)
@@ -322,9 +257,7 @@
 /sichtbarkeit-audit  /ki-sichtbarkeit-audit.html  301
 
 /mahnung          /mahnung-schreiben.html 301
-/mahnung-schreiben /mahnung-schreiben.html 301
 /en/payment-reminder /en/mahnung-schreiben.html 301
 /en/reminder      /en/mahnung-schreiben.html 301
 
-/branchen          /branchen.html 301
 /branche           /branchen.html 301
