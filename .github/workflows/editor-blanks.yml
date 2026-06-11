@@ -1,0 +1,47 @@
+name: POD Editor-Blanks (echte Fotos: Tote/Kissen/Magnet/Poster/Bügeltransfer)
+
+# Erzeugt photorealistische leere Produktfotos für den Selbst-gestalten-Editor (Vorschau-Hintergrund).
+# No-op ohne GEMINI_API_KEY.
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 'Nur diese Keys (Komma, leer = alle): tote,kissen,magnet,poster,buegeltransfer'
+        type: string
+        default: ''
+      force:
+        description: 'Vorhandene überschreiben'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pod-editor-blanks
+  cancel-in-progress: false
+
+jobs:
+  gen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Editor-Blanks erzeugen
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ONLY: ${{ github.event.inputs.only }}
+          FORCE: ${{ github.event.inputs.force == 'true' && '1' || '' }}
+        run: node automation/gen_editor_blanks.mjs
+      - name: Commit
+        run: |
+          if [ -n "$(git status --porcelain pod/editor-blanks/)" ]; then
+            git config user.name "luxestyle-autopilot"; git config user.email "bot@users.noreply.github.com"
+            git add pod/editor-blanks/
+            git commit -m "POD: echte Editor-Blank-Fotos erzeugt [skip ci]"
+            for i in 1 2 3 4 5; do git push origin HEAD:main && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else echo "keine neuen Blanks"; fi
