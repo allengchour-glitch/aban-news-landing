@@ -54,7 +54,13 @@
 
   function el(t,a,h){ var e=document.createElement(t); if(a) for(var k in a) e.setAttribute(k,a[k]); if(h!=null) e.innerHTML=h; return e; }
   function findForm(){ return document.querySelector('form[action*="/cart/add"]')||null; }
-  function getVariantId(f,fb){ if(f){ var i=f.querySelector('[name="id"]:checked')||f.querySelector('[name="id"]'); if(i&&i.value) return i.value; } return fb||null; }
+  function getVariantId(f,fb){
+    // 1) URL ?variant= — von praktisch allen Shopify-Themes bei Variantenwahl aktualisiert (robust, theme-unabhängig)
+    try{ var uv=new URLSearchParams(window.location.search).get('variant'); if(uv) return uv; }catch(e){}
+    // 2) Cart-Formular: gewählte bzw. versteckte Varianten-ID
+    if(f){ var i=f.querySelector('[name="id"]:checked')||f.querySelector('[name="id"]'); if(i&&i.value) return i.value; }
+    return fb||null;
+  }
   function fontByVal(v){ return FONTS.filter(function(f){return f.v===v;})[0]||FONTS[0]; }
   // Cloudinary: Datei-Upload (eigenes Bild) bzw. Blob-Upload (gebackene Druckdatei)
   function uplFile(file,cb){ var fd=new FormData(); fd.append('file',file); fd.append('upload_preset',PRESET);
@@ -332,8 +338,11 @@
     if(Object.keys(imgMap).length){
       var lastVid=null;
       function checkVar(){ var vid=null; try{ vid=getVariantId(findForm(),fallbackVar); }catch(e){} if(vid!==lastVid){ lastVid=vid; applyBg(); } }
-      document.addEventListener('change',function(e){ var f=findForm(); if(f&&e.target&&f.contains(e.target)) checkVar(); },true);
-      try{ setInterval(checkVar,600); }catch(e){}
+      // Dokumentweit lauschen: Farb-/Grössen-Wähler liegen je nach Theme ausserhalb des Cart-Formulars
+      document.addEventListener('change',function(){ checkVar(); },true);
+      document.addEventListener('click',function(){ setTimeout(checkVar,60); },true);   // Button-Variantenwähler aktualisieren ?variant= erst nach dem Klick
+      window.addEventListener('popstate',checkVar);
+      try{ setInterval(checkVar,500); }catch(e){}
       checkVar();
     }
   }
