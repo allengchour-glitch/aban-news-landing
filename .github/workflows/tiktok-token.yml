@@ -24,6 +24,11 @@ on:
         required: false
         default: 'http://localhost:8723/callback'
         type: string
+      code_verifier:
+        description: 'PKCE code_verifier (Default passt zum Login-Link unten — nur ändern, wenn du einen neuen Link nutzt)'
+        required: false
+        default: 'YJEPBIyRW6JhivcvMcdk6pJHc1xZX0pmT2DLSOx9flOCXyJn16Ej0lm3ckKp0jD0'
+        type: string
 
 permissions:
   contents: read
@@ -53,6 +58,7 @@ jobs:
           TT_CLIENT_SECRET: ${{ secrets.TT_CLIENT_SECRET }}
           TT_AUTH_CODE: ${{ inputs.code }}
           TT_REDIRECT_URI: ${{ inputs.redirect_uri }}
+          TT_CODE_VERIFIER: ${{ inputs.code_verifier }}
         run: node automation/tiktok-token.mjs
 
       - name: Tokens als Secrets speichern
