@@ -33,10 +33,10 @@ const CDN = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/';
 // Featured-Mockups mit "Dein Design"-Platzhalter (Quelle = aktuelles Shopify-CDN-Bild).
 const ITEMS = [
   { handle:'bio-jutebeutel-selbst-gestalten',                       src:'eco-tote-bag-oyster-front-6a26ff9aa2784.jpg' },
-  { handle:'baumwolltasche-mit-langen-henkeln-selbst-gestalten',    src:'cotton-color-tote-bag-natural-front-6a2714bd1dfc7.jpg' },
+  { handle:'baumwolltasche-mit-langen-henkeln-selbst-gestalten',    src:'49323_1776180182.jpg' },
   { handle:'urban-umhangetasche-selbst-gestalten',                  src:'urban-crossbody-bag-natural-stone-front-6a27048d667d1.jpg' },
   { handle:'alltags-umhangetasche-selbst-gestalten',                src:'everyday-crossbody-bag-fresh-pink-front-6a2704f779a4c.jpg' },
-  { handle:'keramik-tasse-selbst-gestalten',                        src:'white-glossy-mug-white-11-oz-front-view-6a27002eedba3.jpg' },
+  { handle:'keramik-tasse-selbst-gestalten',                        src:'1320_1663762583.jpg' },
   { handle:'dad-cap-selbst-gestalten',                              src:'classic-dad-hat-white-front-6a2704153578c.jpg' },
   { handle:'unisex-hoodie-selbst-gestalten',                        src:'unisex-crew-neck-sweatshirt-white-front-6a26fee594a32.jpg' },
   { handle:'premium-hoodie-selbst-gestalten',                       src:'unisex-premium-pullover-hoodie-white-front-6a270618762ce.jpg' },
