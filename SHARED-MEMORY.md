@@ -39,6 +39,27 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-11 — Luxestyle product session (Browser-Agent + TikTok-Analyse + Autonom-Ausbau):**
+- **🤖 BROWSER-AGENT LIVE (lokal, Brave):** `tools/browser/agent.py` läuft auf User-PC über Brave (Heim-IP,
+  IG/TikTok blocken nicht). IG **+** TikTok eingeloggt (`~/.luxe-browser/*.json`). Befehle: login·check·
+  ig-delete·tiktok-delete·**list**·**tiktok-upload**. Windows-Anleitung `tools/browser/WINDOWS-BRAVE-QUICKSTART.md`.
+- **☁️ CLOUD-AGENT (Browserbase) = Fernsteuerung ohne PC:** Secrets `BROWSERBASE_API_KEY/PROJECT_ID/CONTEXT_ID`
+  gesetzt. `agent_cloud.mjs` (context-create·login-start·login-release·check·ig/tiktok-delete·**tiktok-upload**)
+  + Workflow `browser-action.yml` (Dispatch). **⚠️ IG-Login im Cloud-Context schlug fehl (Rechenzentrums-IP
+  geblockt → /accounts/login).** Residential-Proxy nur mit BEZAHLTEM Browserbase-Plan (`BB_PROXY=1`). TikTok-
+  Cloud-Login offen (gleiche Block-Gefahr — testen). Gratis-Plan-Fallback = lokaler Brave-Agent.
+- **🎬 AUTONOME TIKTOK-MASCHINE gebaut:** `social/tiktok_queue.csv` (5 Veo-Clips, Gewinner-Captions) +
+  `automation/tiktok-cloud-autopost.mjs` + Cron `tiktok-cloud-autopost.yml` (tägl. 09:40 UTC) → fährt den
+  Cloud-Agenten. **Läuft hands-off, SOBALD TikTok im Browserbase-Context eingeloggt ist + die Cloud-IP nicht
+  geblockt wird.** Sonst: Uploads lokal per Brave (`dropship/TIKTOK-UPLOAD-PLAN.md`).
+- **💬 KOMMENTAR-AUTO-ANTWORT LIVE (Cloud):** `social-comment-reply.mjs` + Cron 3×/Tag → antwortet auf echte
+  IG/FB-Kommentare (herzlich, Frage-/Preis-/Versand-Erkennung, Spam-Skip, dedup). Hands-off.
+- **📊 TIKTOK-ANALYSE (35 Videos, 10'766 Views):** `reports/tiktok_luxestyle.ch_2026-06-11.md`. Gewinner =
+  PREIS in Caption + Lifestyle-Hook + Reichweiten-Tags (#schweiz Ø572/#foryou Ø598/#fyp Ø458). Schwäche:
+  Engagement <1% (kein CTA). → **Gewinner-Formel in `automation/learned_pools.sh`** (Frage-CTA + Preis + 2 Reach-
+  + 2 Nischen-Tags) speist `auto_render.sh`. Kein 1:1-Repost (Duplikat-Abwertung) → neue Clips im Top-Stil.
+
+
 **2026-06-10 (Abend) — Luxestyle product session (ÜBERNAHME: ALLES POSTEN + Pro-Musik + Veo-Clips):**
 - **📣 POSTING-OWNERSHIP (User 10.06.):** Diese Session übernimmt **ab jetzt das komplette Social-Posten**
   (Meta IG/FB/Threads-Queue, Reels, Veo-Clips, Bild-Posts). Andere Sessions: bitte **nicht** in
