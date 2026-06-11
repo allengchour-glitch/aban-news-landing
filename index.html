@@ -54,6 +54,15 @@
     .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.78rem;font-weight:800}
     .lang a{padding:.34rem .6rem;color:var(--muted);text-decoration:none}.lang a.on{background:var(--ink);color:#fff}
     @media(max-width:820px){.hnav .lk{display:none}.hnav .lk--keep{display:inline}}
+    /* Schnell-Link-Leiste — alle wichtigen Ziele, auf dem Handy horizontal scrollbar */
+    .quicklinks{background:#fff;border-bottom:1px solid var(--line)}
+    .quicklinks .qwrap{max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:.5rem;overflow-x:auto;padding:.55rem 1.25rem;scrollbar-width:thin}
+    .quicklinks .qwrap::-webkit-scrollbar{height:6px}
+    .quicklinks .qwrap::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
+    .quicklinks .qlabel{flex:0 0 auto;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding-right:.1rem}
+    .quicklinks a{flex:0 0 auto;font-size:.84rem;font-weight:700;color:var(--ink2);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:.34rem .8rem;text-decoration:none;white-space:nowrap;transition:.12s}
+    .quicklinks a:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .quicklinks a.hot{background:var(--amber);color:#fff;border-color:var(--amber)}
     .track{display:flex;align-items:center;gap:.4rem;margin:.7rem 0 0;font-size:.84rem;color:var(--muted);font-weight:600}
     .track b{color:var(--ink)}
 
@@ -239,6 +248,7 @@
       <a href="/preview.html" class="lk">Beispiel</a>
       <a href="/dossiers.html" class="lk lk--keep">Dossiers</a>
       <a href="/maerkte.html" class="lk">Märkte</a>
+      <a href="/ki-studio.html" class="lk">KI-Studio</a>
       <a href="/geld-und-ki.html" class="lk">Geld &amp; KI</a>
       <a href="/ki-ratgeber.html" class="lk">Ratgeber</a>
       <a href="/founding.html" class="lk">Premium</a>
@@ -249,6 +259,25 @@
     </nav>
   </div>
 </header>
+
+<nav class="quicklinks" aria-label="Schnellzugriff auf alle Bereiche">
+  <div class="qwrap">
+    <span class="qlabel">Schnell:</span>
+    <a href="/ki-studio.html" class="hot">✨ KI-Studio</a>
+    <a href="/maerkte.html">📈 Märkte</a>
+    <a href="/online-tools.html">🧰 Alle Tools</a>
+    <a href="/welche-ki-fuer-was.html">🔍 KI-Tool-Finder</a>
+    <a href="/ki-tool-vergleich.html">🥊 Vergleiche</a>
+    <a href="/ki-glossar.html">📖 Glossar</a>
+    <a href="/hype-filter.html">🧹 Hype-Filter</a>
+    <a href="/finanz-rechner.html">🧮 Rechner</a>
+    <a href="/dossiers.html">📚 Dossiers</a>
+    <a href="/radar.html">📡 KI-Radar</a>
+    <a href="/jobs.html">💼 Jobs</a>
+    <a href="/shop.html">🛒 Shop</a>
+    <a href="/founding.html">⭐ Premium</a>
+  </div>
+</nav>
 
 <main id="main" tabindex="-1">
   <!-- HERO -->
