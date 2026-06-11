@@ -69,8 +69,11 @@ bestätigt GitHub Pages; die alte `CLOUDFLARE-SETUP.md`-Behauptung „läuft auf
 - **✅ AUTO-DEPLOY (sonst friert die Direct-Upload-Seite ein):** `cf-deploy-mainsite.yml` deployt jetzt bei
   Inhalts-Pushes (paths-ignore für dropship/social/automation/memory) **+ alle 6 h** (fängt Bot-`[skip ci]`-Commits
   wie Märkte-Daten). wrangler lädt nur geänderte Dateien.
-- **🟢 KI-STUDIO/PRO IST JETZT LIVE auf abannews.com.** Letzter Business-Schritt (User): Lemon-Squeezy-Pro-Produkt
-  mit license keys anlegen + `PRO_*`-Links in `js/pay-config.js` → dann können Kunden kaufen & freischalten.
+- **🟢🟢 PRO-FUNNEL KOMPLETT LIVE (11.06.):** User hat LS-Produkt „aban Pro" (1136301) mit 2 Varianten +
+  license keys angelegt. Checkout-Links in `js/pay-config.js` scharf: Monat €19 (var 1777687, buy 530fd3f2…),
+  Jahr €190 (var 1777696, buy 4379ddc9…). Live auf abannews.com verifiziert (pay-config zeigt Links, KI-Studio 200).
+  „aban Pro holen"-Buttons → LS-Checkout. **Offen nur noch: LS-Store-Freigabe** (war „under review") für ECHTE
+  Zahlungen; bis dahin Test-Modus. Voll-Flow-Test (Kauf→Lizenz→Unlock→KI) braucht 1 echten/Test-Lizenzschlüssel.
 
 ## 📌 Stand 2026-06-11 (Teil 18) — „aban Pro" + KI-Studio (Live-KI-Tools, gated per Lizenz)
 User-Wunsch: „premium verbessern mit zusatz kosten wo man dich brauchen kann mit tools". Entscheid (User):
