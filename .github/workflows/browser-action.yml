@@ -13,14 +13,19 @@ on:
         description: 'Aktion'
         type: choice
         default: 'check'
-        options: [context-create, login-start, login-release, check, ig-delete, tiktok-delete]
+        options: [context-create, login-start, login-release, check, ig-delete, tiktok-delete, tiktok-upload]
       arg:
-        description: 'URL (check/login-start/*-delete) ODER Session-ID (login-release) — bei context-create leer'
+        description: 'URL (check/login-start/*-delete/upload-Video) ODER Session-ID (login-release) — bei context-create leer'
+        type: string
+        required: false
+        default: ''
+      arg2:
+        description: 'Caption (nur tiktok-upload)'
         type: string
         required: false
         default: ''
       confirm:
-        description: 'Wirklich löschen? (sonst Dry-Run mit Screenshot)'
+        description: 'Wirklich ausführen? (löschen/posten — sonst Dry-Run mit Screenshot)'
         type: boolean
         default: false
 
@@ -55,10 +60,16 @@ jobs:
           BROWSERBASE_API_KEY: ${{ secrets.BROWSERBASE_API_KEY }}
           BROWSERBASE_PROJECT_ID: ${{ secrets.BROWSERBASE_PROJECT_ID }}
           BROWSERBASE_CONTEXT_ID: ${{ secrets.BROWSERBASE_CONTEXT_ID }}
+        env:
+          ARG2: ${{ github.event.inputs.arg2 }}
         run: |
           cd tools/browser
           FLAG=""; [ "${{ github.event.inputs.confirm }}" = "true" ] && FLAG="--confirm"
-          node agent_cloud.mjs "${{ github.event.inputs.action }}" "${{ github.event.inputs.arg }}" $FLAG
+          if [ -n "$ARG2" ]; then
+            node agent_cloud.mjs "${{ github.event.inputs.action }}" "${{ github.event.inputs.arg }}" "$ARG2" $FLAG
+          else
+            node agent_cloud.mjs "${{ github.event.inputs.action }}" "${{ github.event.inputs.arg }}" $FLAG
+          fi
 
       - name: Screenshots als Artefakt hochladen
         if: always()
