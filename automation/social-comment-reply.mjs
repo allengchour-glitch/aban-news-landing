@@ -56,8 +56,8 @@ function topicOf(t='') { for (const [name,re] of TOPIC) if (re.test(t)) return n
 // --- Antwort-Varianten (herzlich, Du-Form, dezenter CTA) ---
 const REPLIES = {
   versand: [
-    'Hey! 🤍 Wir liefern in die ganze Schweiz – Gratis-Versand ab CHF 65. Alle Infos auf luxestyle.ch ✨',
-    'Hi! 📦 Schweizweiter Versand, gratis ab CHF 65. Mehr dazu auf luxestyle.ch 🇨🇭',
+    'Hey! 🤍 Weltweiter Versand, 8–14 Werktage · gratis ab CHF 65. Alle Infos auf luxestyle.ch ✨',
+    'Hi! 📦 Lieferzeit ca. 8–14 Werktage, gratis ab CHF 65. Mehr dazu auf luxestyle.ch ✨',
   ],
   groesse: [
     'Hi! 👗 Die Grössentabelle findest du direkt beim Produkt auf luxestyle.ch – frag sonst gern nach! 🤍',
