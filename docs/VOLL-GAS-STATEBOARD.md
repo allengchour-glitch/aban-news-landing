@@ -37,7 +37,9 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
   5. Optional: EN/FR/IT-Versionen der Tool-Seite.
 - **Voller Plan:** `~/.claude/plans/verlinke-die-themen-am-nifty-swan.md`.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **352 live, alle viersprachig (de/en/fr/it ≈ 1408 Seiten)** 🎉 350+ (Parallel-Session zählt evtl. anders)
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **357 live, alle viersprachig (de/en/fr/it ≈ 1428 Seiten)** 🎉 350+ (Parallel-Session zählt evtl. anders)
+
+- **Welle 95–96 (5 Hubs, „max agenten" #8, 352→357):** Mosterei, Ölmühle, Fischzucht, Destillerie, Freibad — **direkt viersprachig**. (Mosterei LMIV/Sulfite + Jugendschutz/Steuer bei vergorenem Most; Ölmühle LMIV + keine HCVO-Heilversprechen; Fischzucht Tierwohl/Hygiene/Wasserrecht + Fisch-Allergen/Kühlkette; Destillerie Jugendschutz 18 + Alkoholwerbe-/Steuerrecht [Branntwein]; Freibad Aufsicht/Badesicherheit + Wasserhygiene.) **modeboutique (Singular) verworfen** — Duplikat von ki-fuer-modeboutiquen (bereits auf main); Lehre: vor Slug-Wahl auch PLURAL-Varianten gegen main prüfen. mosterei-it + fischzucht-it nach Session-Limit direkt in der Hauptsession gebaut.
 
 - **Welle 93–94 (6 Hubs, „max agenten" #8, 346→352):** Indoorspielplatz, Trampolinpark, Bauernhofcafé, Hochzeitsfotograf, Hundephysiotherapie, Imkereibedarf — **direkt viersprachig**. (Indoorspielplatz/Trampolinpark Aufsicht/Sicherheit [EN 1176/1177 bzw. Sprungregeln, Verletzungsrisiko] + Jugendschutz; Bauernhofcafé LMIV/HACCP/keine Health-Claims; Hochzeitsfotograf keine KI-Fotos als Beispiele/Urheberrecht/DSGVO; Hundephysiotherapie health-adjacent: keine Ferndiagnose/Behandlungsanweisung, Tierarzt-Indikation; Imkereibedarf keine Bienengesundheits-/Varroa-Beratung [Tierarzneimittelrecht], distinkt von imkerei.) imkereibedarf-it nach Agent-Stockung selbst nachgebaut.
 
