@@ -3,11 +3,12 @@
 // keine KI-Pflicht). Optional eine Stellvertreter-Einschätzung via Claude, ob ein
 // Sprachmodell die Firma kennt — ehrlich als Proxy markiert (kein Live-ChatGPT/Perplexity).
 import { analyze } from "../_visibility-engine.mjs";
+import { requirePro } from "../_pro.mjs";
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Headers": "Content-Type, X-Pro-Key",
 };
 const SECURITY = {
   "X-Content-Type-Options": "nosniff",
@@ -65,8 +66,10 @@ export async function onRequestPost({ request, env }) {
   const result = analyze(body);
   if (!result.ok) return err(result.error, 400);
 
-  // Optionale KI-Einschätzung — nur wenn ein Firmenname da ist UND ein Key gesetzt ist.
-  if (result.input.firma && env && env.ANTHROPIC_API_KEY) {
+  // KI-Einschätzung (Claude) nur für „aban Pro": Firmenname + Key + gültige Lizenz.
+  const proOk = (result.input.firma && env && env.ANTHROPIC_API_KEY)
+    ? (await requirePro(request, body, env)).ok : false;
+  if (proOk) {
     try {
       result.kiCheck = await claudeKnows(result.input, env);
       result.kiCheckSource = "claude";
@@ -76,6 +79,7 @@ export async function onRequestPost({ request, env }) {
     }
   } else {
     result.kiCheckSource = "fallback";
+    if (result.input.firma && env && env.ANTHROPIC_API_KEY) result.proRequired = true;
   }
   return json(result);
 }
