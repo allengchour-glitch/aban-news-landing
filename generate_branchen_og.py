@@ -376,6 +376,9 @@ BRANCHEN = {
     "fischzucht":          ("Fischzuchten",         ["Produkttexte & Hofverkauf,", "nicht das Tierwohl"]),
     "destillerie":         ("Destillerien",         ["Produkttexte & Orga,", "keine Alkoholwerbung"]),
     "freibad":             ("Freibäder",            ["Gäste-Infos & Saison,", "nicht die Aufsicht"]),
+    "pilzzucht":           ("Pilzzucht",            ["Produkttexte & Gastro,", "keine Pilzbestimmung"]),
+    "alpakahof":           ("Alpakahöfe",           ["Angebote & Shop,", "nicht die Tierpflege"]),
+    "straussenfarm":       ("Straußenfarmen",       ["Führungen & Produkte,", "nicht die Tierhaltung"]),
 }
 
 
