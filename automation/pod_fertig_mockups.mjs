@@ -53,6 +53,12 @@ async function fetchImage(url) {
   const ct = (r.headers.get('content-type') || '').split(';')[0] || 'image/png';
   return { b64: Buffer.from(await r.arrayBuffer()).toString('base64'), mime: ct };
 }
+// Design bevorzugt lokal aus dem Repo-Checkout lesen (abannews.com/social/designs ist nicht deployt)
+async function fetchDesign(name) {
+  const local = path.join(ROOT, 'social', 'designs', `${name}.png`);
+  if (fs.existsSync(local)) return { b64: fs.readFileSync(local).toString('base64'), mime: 'image/png' };
+  return fetchImage(`${DESIGN_BASE}${name}.png`);
+}
 function extractImage(j) {
   const parts = j?.candidates?.[0]?.content?.parts || [];
   for (const p of parts) { const d = p.inline_data || p.inlineData; if (d?.data) return d.data; }
@@ -136,7 +142,7 @@ for (const type of types) {
       if (FORCE || !fs.existsSync(outFile)) {
         if (DRY) { console.log(`  [DRY] gen ${type}/${n}`); made++; continue; }
         if (!base) base = await fetchImage(BASES[type]);
-        const design = await fetchImage(`${DESIGN_BASE}${n}.png`);
+        const design = await fetchDesign(n);
         const b64 = await compose(type, base, design);
         if (!b64) { fails.push(`${type}/${n}: keine Bilddaten`); continue; }
         fs.writeFileSync(outFile, Buffer.from(b64, 'base64'));
