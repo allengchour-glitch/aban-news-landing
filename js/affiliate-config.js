@@ -14,8 +14,9 @@
 // ============================================================
 window.ABAN_AFFILIATE = {
   // Murf AI (Text-to-Speech). Tracking via PartnerStack.
-  // Tipp: der themenspezifische text-to-speech-Link konvertiert besser als die
-  // Startseite — sobald du ihn vollstaendig kopiert hast, hier eintragen:
-  //   z.B. "https://get.murf.ai/text-to-speech-6owime........"
-  MURF_URL: "https://get.murf.ai/hhd1supey3ea"
+  MURF_URL: "https://get.murf.ai/hhd1supey3ea",
+  // ElevenLabs (Text-to-Speech, 2026 führend). Tracking via PartnerStack.
+  ELEVENLABS_URL: "https://try.elevenlabs.io/6hlkc0rv2u1j",
+  // ManyChat (Chatbot / DM-Automation). Tracking via PartnerStack.
+  MANYCHAT_URL: "https://manychat.partnerstack.com/"
 };
