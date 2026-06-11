@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aban API &mdash; AI text via one endpoint | aban news</title>
+  <meta name="description" content="The aban API: generate AI texts, emails, plans &amp; more straight from an HTTP endpoint. Auth with your aban Pro key. Docs, examples, fair use.">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://abannews.com/en/api.html">
+
+  <meta property="og:title" content="aban API — AI text via one endpoint">
+  <meta property="og:description" content="Generate AI texts, emails, plans &amp; more via HTTP. Auth with your aban Pro key.">
+  <meta property="og:image" content="https://abannews.com/og-ki-tools.png">
+  <meta property="og:url" content="https://abannews.com/en/api.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="aban news">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/conversion.css">
+  <link rel="stylesheet" href="/css/modern.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "aban API — AI text via one endpoint",
+    "url": "https://abannews.com/en/api.html",
+    "author": { "@type": "Organization", "name": "aban news" },
+    "description": "Documentation for the aban API: /api/generate, auth via aban Pro key, examples and fair use."
+  }
+  </script>
+  <style>
+    pre{background:#0f172a;color:#e2e8f0;padding:1rem;border-radius:10px;overflow:auto;font-size:.82rem;line-height:1.5}
+    pre code{white-space:pre}
+    code.inl{background:#f1f5f9;color:#0f172a;padding:.08rem .35rem;border-radius:5px;font-size:.9em}
+    table.api{width:100%;border-collapse:collapse;margin:.5rem 0}
+    table.api th,table.api td{text-align:left;border-bottom:1px solid #e2e8f0;padding:.45rem .5rem;font-size:.9rem;vertical-align:top}
+    table.api th{background:#f8fafc}
+    .pill{display:inline-block;background:#dcfce7;color:#166534;border-radius:999px;padding:.1rem .55rem;font-size:.75rem;font-weight:600;vertical-align:middle}
+    .muted{color:#64748b}
+    h2{margin-top:2rem}
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="/en/" class="brand" aria-label="aban news home">
+      <span aria-hidden="true">&#9749;</span>
+      <span>aban news</span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="/en/ki-studio.html">AI Studio</a>
+      <a href="/en/tools.html">Tools</a>
+      <a href="/en/founding.html">Premium</a>
+      <a href="/en/#signup" class="nav-cta">Subscribe</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="chip-status"><span class="pulse"></span> Developers · aban Pro</span>
+      <h1>aban API <span class="pill">Live</span></h1>
+      <p class="lead">The same AI that powers the <a href="/en/ki-studio.html">AI Studio</a> — straight over HTTP. Generate AI texts, emails, plans, translations and more inside your own tools, scripts or automations. Auth with your <strong>aban Pro key</strong> — no extra account.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap" style="max-width:820px">
+      <h2>In 30 seconds</h2>
+      <ol>
+        <li><strong>Get aban Pro</strong> (includes API access) &mdash; <a href="/en/ki-studio.html">See Pro &rarr;</a></li>
+        <li>Use your license key as the API key (header <code class="inl">X-Pro-Key</code>).</li>
+        <li>POST to <code class="inl">https://abannews.com/api/generate</code>.</li>
+      </ol>
+
+      <h2>Authentication</h2>
+      <p>Send your aban Pro key in the <code class="inl">X-Pro-Key</code> header (recommended) or in the JSON body as <code class="inl">license_key</code>. Without a valid key the API responds with <code class="inl">402</code>.</p>
+
+      <h2>Endpoint: generate text</h2>
+      <p><code class="inl">POST /api/generate</code> &middot; Content-Type <code class="inl">application/json</code></p>
+      <table class="api">
+        <tr><th>Field</th><th>Required</th><th>Description</th></tr>
+        <tr><td><code class="inl">kind</code></td><td>yes</td><td>Type of text (see list below). Default: <code class="inl">text</code>.</td></tr>
+        <tr><td><code class="inl">branche</code></td><td>no</td><td>Industry/context, e.g. "craft bakery".</td></tr>
+        <tr><td><code class="inl">ziel</code></td><td>no</td><td>Goal/purpose, e.g. "follow up after a trade fair".</td></tr>
+        <tr><td><code class="inl">text</code></td><td>no</td><td>Source material (for <code class="inl">rewrite</code>, <code class="inl">translate</code>, <code class="inl">summary</code>, <code class="inl">review</code>, <code class="inl">prompt</code>).</td></tr>
+        <tr><td><code class="inl">ton</code></td><td>no</td><td>Tone, e.g. "factual, friendly".</td></tr>
+        <tr><td><code class="inl">zielgruppe</code></td><td>no</td><td>Audience (pro option).</td></tr>
+        <tr><td><code class="inl">laenge</code></td><td>no</td><td><code class="inl">kurz</code> · <code class="inl">mittel</code> · <code class="inl">lang</code> (short/medium/long).</td></tr>
+        <tr><td><code class="inl">lang</code></td><td>no</td><td><code class="inl">en</code> or <code class="inl">de</code> — output language. Default: <code class="inl">de</code>.</td></tr>
+      </table>
+
+      <p><strong><code class="inl">kind</code> values:</strong> <code class="inl">text</code>, <code class="inl">email</code>, <code class="inl">newsletter</code>, <code class="inl">blog</code>, <code class="inl">faq</code>, <code class="inl">summary</code>, <code class="inl">social</code>, <code class="inl">ad</code>, <code class="inl">seo</code>, <code class="inl">slogan</code>, <code class="inl">landing</code>, <code class="inl">product</code>, <code class="inl">script</code>, <code class="inl">press</code>, <code class="inl">angebot</code> (quote), <code class="inl">review</code>, <code class="inl">anleitung</code> (how-to), <code class="inl">ideas</code>, <code class="inl">jobad</code>, <code class="inl">plan</code>, <code class="inl">contentplan</code>, <code class="inl">emailserie</code>, <code class="inl">rewrite</code>, <code class="inl">translate</code>, <code class="inl">prompt</code>, <code class="inl">marketbrief</code>.</p>
+
+      <h2>Example (curl)</h2>
+      <pre><code>curl -X POST https://abannews.com/api/generate \
+  -H "Content-Type: application/json" \
+  -H "X-Pro-Key: YOUR-PRO-KEY" \
+  -d '{
+    "kind": "email",
+    "lang": "en",
+    "branche": "craft bakery",
+    "ziel": "inform regulars about new opening hours",
+    "ton": "friendly, short"
+  }'</code></pre>
+
+      <h2>Example (JavaScript / fetch)</h2>
+      <pre><code>const res = await fetch("https://abannews.com/api/generate", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-Pro-Key": process.env.ABAN_PRO_KEY,
+  },
+  body: JSON.stringify({ kind: "social", lang: "en", branche: "Yoga studio", ziel: "new class from May" }),
+});
+const data = await res.json();
+console.log(data.text);</code></pre>
+
+      <h2>Response</h2>
+      <pre><code>{ "text": "…generated text…", "model": "claude-sonnet-4-6" }</code></pre>
+
+      <h2>Audit endpoint</h2>
+      <p>For structured AI-visibility reports: <code class="inl">POST /api/audit-report</code> (same auth). Fields: <code class="inl">brand</code>, <code class="inl">website</code>, <code class="inl">branche</code>, <code class="inl">beschreibung</code>, <code class="inl">ziel</code>, <code class="inl">lang</code>. Response: <code class="inl">{ "report": "…", "grounded": true|false }</code>. More: <a href="/en/ki-audit.html">AI Visibility Audit</a>.</p>
+
+      <h2>Status codes &amp; limits</h2>
+      <table class="api">
+        <tr><th>Code</th><th>Meaning</th></tr>
+        <tr><td><code class="inl">200</code></td><td>OK — result in field <code class="inl">text</code> or <code class="inl">report</code>.</td></tr>
+        <tr><td><code class="inl">402</code></td><td>No valid Pro key.</td></tr>
+        <tr><td><code class="inl">413</code></td><td>Request too large (max 16&nbsp;KB body).</td></tr>
+        <tr><td><code class="inl">429</code></td><td>Rate limit. <code class="inl">/api/generate</code>: 20/min (yearly plan 60/min). <code class="inl">/api/audit-report</code>: 6/min (yearly 20/min).</td></tr>
+        <tr><td><code class="inl">503</code></td><td>AI temporarily unavailable.</td></tr>
+      </table>
+
+      <h2>Fair use &amp; terms</h2>
+      <ul>
+        <li>One key = one person/company. Don't share it, don't embed it in public frontend code (use it server-side).</li>
+        <li>No unlawful, misleading or harmful content. You are responsible for how outputs are used and check facts yourself.</li>
+        <li>The API returns AI drafts with no warranty — no legal, tax or financial advice.</li>
+        <li>Fair use within the limits; abusive load may be throttled.</li>
+        <li>Our <a href="/agb.html">Terms</a> &amp; <a href="/datenschutz.html">Privacy Policy</a> apply. Inputs are processed to generate output, not shared for advertising.</li>
+      </ul>
+
+      <div class="card" style="margin-top:1.5rem;text-align:center">
+        <h3 style="margin-top:0">Ready?</h3>
+        <p class="muted">API access is included in <strong>aban Pro</strong>.</p>
+        <p><a href="/en/ki-studio.html" class="btn btn--lg">See aban Pro &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-h">aban news</p>
+        <a href="/en/">Home</a>
+        <a href="/en/ki-studio.html">AI Studio (Pro)</a>
+        <a href="/en/ki-audit.html">AI Visibility Audit</a>
+        <a href="/en/api.html">API access</a>
+      </div>
+      <div>
+        <p class="foot-h">aban network</p>
+        <a href="/en/tools.html">Tool database</a>
+        <a href="/en/shop.html">Shop</a>
+      </div>
+      <div>
+        <p class="foot-h">Legal</p>
+        <a href="/impressum.html">Imprint</a>
+        <a href="/datenschutz.html">Privacy</a>
+        <a href="/agb.html">Terms &amp; withdrawal</a>
+      </div>
+    </div>
+    <p class="foot-bottom">&copy; 2026 aban news &middot; Written in Switzerland, read across the DACH region &middot; <em>&mdash; Aban</em></p>
+  </div>
+</footer>
+
+</body>
+</html>
