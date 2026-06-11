@@ -72,6 +72,8 @@
     var imgFront=container.getAttribute('data-img-front')||container.getAttribute('data-img')||'';
     var imgBack=container.getAttribute('data-img-back')||'';
     var fallbackVar=container.getAttribute('data-variant')||'';
+    // Varianten-bewusst: optionale Map {variantId: bildUrl} → Canvas zeigt die gewählte Variante (z.B. Farbe)
+    var imgMap={}; try{ imgMap=JSON.parse(container.getAttribute('data-img-map')||'{}')||{}; }catch(e){ imgMap={}; }
     // Seitenverhältnis + Druckauflösung pro Produkt (Default: quadratisch 1200px → unverändert für bestehende Produkte)
     var RATIO=parseFloat(container.getAttribute('data-ratio')); if(!(RATIO>0)) RATIO=1;        // Höhe/Breite
     var REF=parseInt(container.getAttribute('data-ref'),10); if(!(REF>=600)) REF=1200;          // Basis-/Druckbreite px
@@ -81,6 +83,9 @@
     var state={active:'front', layers:{front:[],back:[]}, sel:null};
     function curLayers(){ return state.layers[state.active]; }
     function curImg(){ for(var i=0;i<sides.length;i++){ if(sides[i].k===state.active) return sides[i].img; } return imgFront; }
+    // Hintergrundbild = Variantenbild (falls Map-Treffer) sonst Seitenbild
+    function variantBg(){ try{ var vid=getVariantId(findForm(),fallbackVar); if(vid&&imgMap[vid]) return imgMap[vid]; }catch(e){} return curImg(); }
+    function applyBg(){ if(stage) stage.style.backgroundImage="url('"+variantBg()+"')"; }
     function findLayer(id){ var a=curLayers(); for(var i=0;i<a.length;i++) if(a[i].id===id) return a[i]; return null; }
 
     container.innerHTML='';
@@ -266,7 +271,7 @@
 
     // ---------- Seiten ----------
     function clearStage(){ for(var k in nodes){ nodes[k].root.remove(); } nodes={}; }
-    function setSide(k){ if(k===state.active) return; deselect(); clearStage(); state.active=k; stage.style.backgroundImage="url('"+curImg()+"')";
+    function setSide(k){ if(k===state.active) return; deselect(); clearStage(); state.active=k; applyBg();
       for(var s in sideBtns){ var on=s===k; sideBtns[s].style.background=on?'#fff':'transparent'; sideBtns[s].style.boxShadow=on?'0 1px 3px rgba(0,0,0,.12)':'none'; }
       curLayers().forEach(function(l){ makeNode(l); layoutNode(l); }); syncFormInputs(); }
 
@@ -322,7 +327,15 @@
     });
 
     // init
-    stage.style.backgroundImage="url('"+curImg()+"')";
+    applyBg();
+    // Variantenwechsel erkennen (Theme-Variantenwähler) → Canvas aktualisieren. Robust: Event + Polling.
+    if(Object.keys(imgMap).length){
+      var lastVid=null;
+      function checkVar(){ var vid=null; try{ vid=getVariantId(findForm(),fallbackVar); }catch(e){} if(vid!==lastVid){ lastVid=vid; applyBg(); } }
+      document.addEventListener('change',function(e){ var f=findForm(); if(f&&e.target&&f.contains(e.target)) checkVar(); },true);
+      try{ setInterval(checkVar,600); }catch(e){}
+      checkVar();
+    }
   }
 
   function initAll(){ var n=document.querySelectorAll('.lspod-designer'); Array.prototype.forEach.call(n,function(x){ if(x.getAttribute('data-init'))return; x.setAttribute('data-init','1'); try{ build(x); }catch(e){} }); }

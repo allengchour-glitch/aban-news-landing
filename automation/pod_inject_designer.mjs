@@ -26,7 +26,7 @@ function templateFor(p){
 
 const Q=`query($after:String){ products(first:30, query:"tag:wunschdesign OR tag:selbst-gestalten", after:$after){ pageInfo{hasNextPage endCursor}
   edges{ node{ id title descriptionHtml productType tags
-    variants(first:1){ edges{ node{ id } } }
+    variants(first:50){ edges{ node{ id selectedOptions{ name value } } } }
     media(first:15){ edges{ node{ ... on MediaImage{ image{ url } } } } } } } } }`;
 const M=`mutation($p:ProductUpdateInput!){ productUpdate(product:$p){ product{ id } userErrors{ field message } } }`;
 
@@ -37,11 +37,25 @@ function pickImgs(urls){
   if(back===front) back='';
   return {front,back};
 }
-function stripOld(desc){ return desc.replace(/^\s*<div class="lspod-designer"[\s\S]*?<\/script>\s*(?:<hr\s*\/?>)?\s*/i,''); }
-function snippet(front,back,vid,poster){
+// ALLE vorhandenen Designer-Bloecke entfernen (global, nicht nur am Anfang) — sonst entstehen Duplikate,
+// wenn ein anderer Cron (z.B. Lieferzeit-Block) vor den Designer-Block schiebt.
+function stripOld(desc){ return desc.replace(/<div class="lspod-designer"[\s\S]*?<\/script>\s*(?:<hr\s*\/?>)?\s*/gi,''); }
+// Farb-bewusster Editor: pro Produkttyp Farbwert → Farb-Template. Editor zeigt die gewählte Farbe live.
+const COLOR_TPL={ 't-shirt':{'weiss':'shirt-white','weiß':'shirt-white','white':'shirt-white','schwarz':'shirt-black','black':'shirt-black','navy':'shirt-navy','dunkelblau':'shirt-navy'} };
+function colorMapFor(p, variants){
+  const reg=COLOR_TPL[(p.productType||'').toLowerCase().trim()]; if(!reg) return null;
+  const map={};
+  for(const v of variants){
+    let col=''; for(const o of (v.selectedOptions||[])){ if(/farbe|colou?r/i.test(o.name)) col=String(o.value).toLowerCase().trim(); }
+    const key=reg[col]; if(key) map[String(v.id).split('/').pop()]=TPL_BASE+key+'.png';
+  }
+  return Object.keys(map).length?map:null;
+}
+function snippet(front,back,vid,poster,imgMap){
   var attrs=`data-img-front="${esc(front)}"`;
   if(back) attrs+=` data-img-back="${esc(back)}"`;
   if(vid) attrs+=` data-variant="${vid.split('/').pop()}"`;
+  if(imgMap) attrs+=` data-img-map='${JSON.stringify(imgMap).replace(/'/g,'&#39;')}'`;
   if(poster) attrs+=` data-ratio="1.414" data-ref="2400"`;   // Poster: Hochformat 1:√2, höhere Druckauflösung
   return `<div class="lspod-designer" ${attrs}></div>\n<script src="${JS}" defer></script>\n<hr>\n`;
 }
@@ -56,13 +70,15 @@ do{
     const p=e.node; n++;
     const urls=p.media.edges.map(m=>m.node&&m.node.image&&m.node.image.url).filter(Boolean);
     const {front,back}=pickImgs(urls);
-    const vid=(p.variants.edges[0]&&p.variants.edges[0].node.id)||'';
+    const vAll=(p.variants.edges||[]).map(x=>x.node);
+    const vid=(vAll[0]&&vAll[0].id)||'';
     const tpl=templateFor(p);            // helle Produkt-Vorlage als Editor-Hintergrund (bevorzugt)
     const bg=tpl||front;                 // Fallback: Produkt-/Marketingbild
     if(!bg){ console.log(`– ${p.title}: kein Bild, übersprungen`); continue; }
+    const cmap=colorMapFor(p, vAll);     // {variantId: farb-template} → Editor zeigt gewählte Farbe
     const isPoster=(p.productType||'').toLowerCase()==='poster' || (p.tags||[]).map(t=>String(t).toLowerCase()).includes('pod-poster');
     const clean=stripOld(p.descriptionHtml||'');
-    const newDesc=snippet(bg, tpl?'':(isPoster?'':back), vid, isPoster)+clean;
+    const newDesc=snippet(bg, tpl?'':(isPoster?'':back), vid, isPoster, cmap)+clean;
     if(newDesc===p.descriptionHtml){ console.log(`= ${p.title}: unverändert`); continue; }
     if(DRY){ console.log(`DRY ${p.title}: front=${front.split('/').pop()} back=${back?back.split('/').pop():'–'}`); changed++; continue; }
     const r=await gql(tok,M,{p:{id:p.id,descriptionHtml:newDesc}});

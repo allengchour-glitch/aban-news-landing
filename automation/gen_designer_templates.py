@@ -8,9 +8,9 @@ OUT="pod/templates"; os.makedirs(OUT, exist_ok=True)
 BG=(244,241,236); PROD=(255,255,255); EDGE=(208,203,192); SHADE=(247,245,241); DASH=(196,170,120); HINT=(183,178,167)
 
 def font(sz): return ImageFont.truetype(FONT, sz)
-def hint(d,box,txt="Dein Design hier"):
+def hint(d,box,txt="Dein Design hier",col=HINT):
     x0,y0,x1,y1=box; f=font(26)
-    w=d.textlength(txt,font=f); d.text(((x0+x1-w)/2,(y0+y1)/2-16),txt,font=f,fill=HINT)
+    w=d.textlength(txt,font=f); d.text(((x0+x1-w)/2,(y0+y1)/2-16),txt,font=f,fill=col)
 def dashed(d,box):
     x0,y0,x1,y1=box; s=18
     x=x0
@@ -26,16 +26,19 @@ def t_tasse():
     d.rounded_rectangle([320,250,610,600],radius=26,fill=PROD,outline=EDGE,width=6)
     d.arc([585,300,720,540],-78,78,fill=EDGE,width=14)
     da=[360,300,560,540]; dashed(d,da); hint(d,da); return img
-def t_shirt():
+def t_shirt(fill=PROD,edge=EDGE,hintcol=HINT):
     img,d=base()
     pts=[(420,230),(360,250),(285,335),(340,400),(405,365),(405,640),(645,640),(645,365),(710,400),(765,335),(690,250),(630,230),(575,285),(475,285)]
-    d.polygon(pts,fill=PROD,outline=EDGE);
-    da=[440,345,610,575]; dashed(d,da); hint(d,da); return img
+    d.polygon(pts,fill=fill,outline=edge)
+    da=[440,345,610,575]; dashed(d,da); hint(d,da,col=hintcol); return img
+def t_shirt_white(): return t_shirt(PROD,EDGE,HINT)
+def t_shirt_black(): return t_shirt((40,40,44),(78,78,84),(196,196,202))
+def t_shirt_navy():  return t_shirt((30,42,74),(58,72,108),(196,204,220))
 def t_tote():
     img,d=base()
-    d.rounded_rectangle([320,300,680,640],radius=16,fill=PROD,outline=EDGE,width=6)
-    d.arc([372,180,512,360],180,360,fill=EDGE,width=12); d.arc([488,180,628,360],180,360,fill=EDGE,width=12)
-    da=[370,350,630,600]; dashed(d,da); hint(d,da); return img
+    d.rounded_rectangle([330,310,670,660],radius=10,fill=PROD,outline=EDGE,width=6)
+    d.arc([388,180,478,362],180,360,fill=EDGE,width=10); d.arc([522,180,612,362],180,360,fill=EDGE,width=10)
+    da=[372,360,628,620]; dashed(d,da); hint(d,da); return img
 def t_kissen():
     img,d=base()
     d.rounded_rectangle([250,250,750,750],radius=60,fill=PROD,outline=EDGE,width=6)
@@ -57,8 +60,9 @@ def t_poster():
     d.rectangle([120,120,880,1294],fill=PROD,outline=EDGE,width=6)
     da=[160,160,840,1254]; dashed(d,da); hint(d,da); return img
 
-GEN={"tasse":t_tasse,"shirt":t_shirt,"tote":t_tote,"kissen":t_kissen,"magnet":t_magnet,
-     "mousepad":t_mousepad,"buegeltransfer":t_buegeltransfer,"poster":t_poster}
+GEN={"tasse":t_tasse,"shirt":t_shirt_white,"tote":t_tote,"kissen":t_kissen,"magnet":t_magnet,
+     "mousepad":t_mousepad,"buegeltransfer":t_buegeltransfer,"poster":t_poster,
+     "shirt-white":t_shirt_white,"shirt-black":t_shirt_black,"shirt-navy":t_shirt_navy}
 for slug,fn in GEN.items():
     fn().save(f"{OUT}/{slug}.png","PNG"); print("✓",slug)
 print("fertig")
