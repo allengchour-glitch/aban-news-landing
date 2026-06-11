@@ -33,9 +33,9 @@ def t_shirt():
     da=[440,345,610,575]; dashed(d,da); hint(d,da); return img
 def t_tote():
     img,d=base()
-    d.rounded_rectangle([320,300,680,640],radius=16,fill=PROD,outline=EDGE,width=6)
-    d.arc([372,180,512,360],180,360,fill=EDGE,width=12); d.arc([488,180,628,360],180,360,fill=EDGE,width=12)
-    da=[370,350,630,600]; dashed(d,da); hint(d,da); return img
+    d.rounded_rectangle([330,310,670,660],radius=10,fill=PROD,outline=EDGE,width=6)
+    d.arc([388,180,478,362],180,360,fill=EDGE,width=10); d.arc([522,180,612,362],180,360,fill=EDGE,width=10)
+    da=[372,360,628,620]; dashed(d,da); hint(d,da); return img
 def t_kissen():
     img,d=base()
     d.rounded_rectangle([250,250,750,750],radius=60,fill=PROD,outline=EDGE,width=6)

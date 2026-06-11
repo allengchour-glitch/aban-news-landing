@@ -10,7 +10,7 @@ OUT="pod/personalized"; os.makedirs(OUT, exist_ok=True)
 S=1000
 GOLD=(200,169,106); WHITE=(238,239,244); MUT=(165,167,178); LINE=(205,207,216); DARKP=(28,28,34)
 
-LABELS={"tasse":"Deine Tasse","shirt":"Dein T-Shirt","kissen":"Dein Kissen","tote":"Deine Tasche",
+LABELS={"tasse":"Deine Tasse","shirt":"Dein T-Shirt","kissen":"Dein Kissen","tote":"Deine Stofftasche",
         "poster":"Dein Poster","magnet":"Dein Magnet","mousepad":"Dein Mauspad","buegeltransfer":"Dein Bügeltransfer"}
 
 def font(b,sz): return ImageFont.truetype(FONTB if b else FONT, sz)
@@ -50,10 +50,10 @@ def sil_kissen(d):
         d.ellipse([cx-9,cy-9,cx+9,cy+9],fill=LINE)
     photo_ph(d,360,255,640,475)
 def sil_tote(d):
-    d.rounded_rectangle([350,255,650,520],radius=14,outline=LINE,width=7)           # Beutel
-    d.arc([388,150,492,300],start=180,end=360,fill=LINE,width=7)                    # Henkel links
-    d.arc([508,150,612,300],start=180,end=360,fill=LINE,width=7)                    # Henkel rechts
-    photo_ph(d,382,288,618,492)
+    d.rounded_rectangle([352,262,648,560],radius=10,outline=LINE,width=7)           # Stoffbeutel (flach, eckig)
+    d.arc([392,150,470,322],start=180,end=360,fill=LINE,width=7)                    # Henkel links (schmal, lang)
+    d.arc([530,150,608,322],start=180,end=360,fill=LINE,width=7)                    # Henkel rechts
+    photo_ph(d,384,302,616,532)
 def sil_poster(d):
     d.rectangle([385,180,615,520],outline=LINE,width=7)                             # Rahmen
     d.line([500,150,500,180],fill=LINE,width=5); d.ellipse([493,143,507,157],outline=LINE,width=4)  # Aufhänger
