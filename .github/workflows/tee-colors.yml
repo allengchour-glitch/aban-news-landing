@@ -1,0 +1,42 @@
+name: POD Tee-Farben (Schwarz/Navy) erzeugen
+
+# Erzeugt aus dem echten weissen Tee-Foto photorealistische Schwarz-/Navy-Varianten
+# (Gemini) für die Farb-Vorschau im Gestalten-Editor. No-op ohne GEMINI_API_KEY.
+
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Vorhandene überschreiben'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pod-tee-colors
+  cancel-in-progress: false
+
+jobs:
+  gen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Tee-Farben erzeugen
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FORCE: ${{ github.event.inputs.force == 'true' && '1' || '' }}
+        run: node automation/gen_tee_colors.mjs
+      - name: Commit
+        run: |
+          if [ -n "$(git status --porcelain pod/tees/)" ]; then
+            git config user.name "luxestyle-autopilot"; git config user.email "bot@users.noreply.github.com"
+            git add pod/tees/
+            git commit -m "POD: echte Tee-Farben (Schwarz/Navy) erzeugt [skip ci]"
+            for i in 1 2 3 4 5; do git push origin HEAD:main && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else echo "keine neuen Tee-Farben"; fi
