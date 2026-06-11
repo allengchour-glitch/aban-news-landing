@@ -43,6 +43,27 @@ Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe s
 (Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
 
 
+## 📌 Stand 2026-06-11 (Teil 19) — ⚠️ HOSTING-BEFUND + Edge-API auf Cloudflare Pages bewiesen
+**Kernbefund (Live-Test):** `abannews.com` läuft aktuell auf **GitHub Pages** (statisch; Header `via: varnish` +
+`x-github-request-id`, nur durch Cloudflare durchgeproxyt). Deshalb geben `/api/*` (KI-Studio, hype-rewrite, chat)
+auf der Live-Domain **404/405** zurück — die `functions/`-Edge-API läuft dort GAR NICHT. (Das `CNAME` = abannews.com
+bestätigt GitHub Pages; die alte `CLOUDFLARE-SETUP.md`-Behauptung „läuft auf CF Pages" ist falsch.)
+- **Cloudflare-Token (Preflight 11.06., `cf-preflight.yml`): „voll einsatzbereit"** — Pages-Deploy + DNS möglich,
+  Account 33e521…, 10 Projekte (alles Radars), **keins mit Domain abannews.com**.
+- **Gelöst ohne Browser, per API:** neuer Workflow **`.github/workflows/cf-deploy-mainsite.yml`** (Dispatch) baut ein
+  sauberes `_site/` (rsync, exclude video-prototypes/reels/social/dropship/… wegen >25 MiB; `functions/`+`_headers`+
+  `_redirects` drin) und deployt es per `wrangler pages deploy` ins Pages-Projekt **`abannews`** → **`abannews.pages.dev`**.
+  **Berührt die Live-Domain NICHT.**
+- **✅ BEWIESEN (11.06.):** Auf `abannews.pages.dev` laufen die Funktionen: `/api/pro-validate` → `{"valid":false}` (200),
+  `/api/generate` → `{"error":"ai_off"}` (503 = Funktion läuft, nur Anthropic-Key fehlt), `/ki-studio` + `markets.json` = 200.
+  → **Option A funktioniert.** Edge-API ist real, sobald die Hauptseite auf CF Pages liegt.
+- **🟡 OFFEN (2 Schritte, dann Pro live):** (1) **`ANTHROPIC_API_KEY`** als Secret im **CF-Pages-Projekt `abannews`**
+  (Dashboard → Settings → Variables, oder `wrangler pages secret put` mit Key-Wert vom User) → KI-Tools antworten echt.
+  (2) **Domain-Umzug** abannews.com → Pages-Projekt `abannews` (CF: Pages → Custom domains → abannews.com hinzufügen,
+  DNS wird auto-gesetzt; GitHub-Pages-CNAME entfällt). ⚠️ Vor Cutover sicherstellen, dass `_site` ALLE live-genutzten
+  Pfade enthält (reels/social/media ggf. nachziehen) — sonst brechen Live-Links. Token hat DNS:Edit → Cutover wäre
+  auch per API machbar, aber bewusst dem User/Bestätigung überlassen (produktiv, schwer reversibel).
+
 ## 📌 Stand 2026-06-11 (Teil 18) — „aban Pro" + KI-Studio (Live-KI-Tools, gated per Lizenz)
 User-Wunsch: „premium verbessern mit zusatz kosten wo man dich brauchen kann mit tools". Entscheid (User):
 **neuer Pro-Tier €19/Mt (€190/Jahr)** zusätzlich zu Premium €9, mit **allen 4 Live-KI-Tools** + „alles vertiefen
