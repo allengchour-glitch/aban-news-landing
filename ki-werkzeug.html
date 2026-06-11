@@ -414,7 +414,7 @@ footer a{color:var(--muted)}
   const STRIPE_PROPLUS_LINK = "https://buy.stripe.com/6oU00l1TUcfqg2XdiZ5wI06"; // Pro+ CHF 19.90/Mon (regulierte Branchen)
   // Höherwertige/sensible Branchen → Pro+ (Preis + spätere Compliance-/DSGVO-Extras)
   const PROPLUS_BRANCHEN = ["Praxis / Therapie","Immobilien / Makler","Beratung / Coaching"];
-  const AI_ENDPOINT      = "";      // z. B. "/api/generate" (Cloudflare Worker) -> aktiviert echte KI
+  const AI_ENDPOINT      = "/api/generate";  // echte KI über die Edge-Funktion (nur mit aban-Pro-Lizenz)
   const FREE_TEXT_LIMIT  = 5;       // Gratis-Texte pro Tag
   const FREE_PLAN_LIMIT  = 1;       // Gratis-Fahrpläne pro Tag
   const PRO_UNLOCK_CODE  = "aban-pro";  // manueller Freischalt-Code (bis Stripe-Webhook steht)
@@ -634,11 +634,14 @@ footer a{color:var(--muted)}
     var qp=quota("aban_kw_plan", FREE_PLAN_LIMIT);
     $("p-quota").textContent = qp.left>0 ? (qp.left+" gratis heute") : "Tageslimit erreicht";
   }
-  // PHASE 2: echte KI über den Worker (AI_ENDPOINT). Liefert {text}; Fallback = Vorlage.
+  // aban-Pro-Lizenzschlüssel (vom KI-Studio gesetzt) — schaltet die echte KI frei.
+  function proKey(){ try{ return localStorage.getItem("aban_pro_key")||""; }catch(e){ return ""; } }
+  // PHASE 2: echte KI über die Edge-Funktion (AI_ENDPOINT). Liefert {text}; Fallback = Vorlage.
   function genWithAI(d){
+    var ziel = d.thema || d.typ || "";
     return fetch(AI_ENDPOINT, {
-      method:"POST", headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({type:d.typ, branche:d.branche, thema:d.thema, kw:d.kw, ton:d.ton, name:d.name, stimmung:d.stimmung, lang:"de"})
+      method:"POST", headers:{"Content-Type":"application/json","X-Pro-Key":proKey()},
+      body: JSON.stringify({kind:"text", branche:d.branche, ziel:ziel, ton:d.ton, text:(d.kw||""), lang:"de"})
     }).then(function(r){
       if(r.status===429) return r.json().then(function(j){ var e=new Error((j&&j.message)||"Limit"); e.rate=true; throw e; });
       if(!r.ok) throw new Error("AI "+r.status);
@@ -666,7 +669,7 @@ footer a{color:var(--muted)}
     var q=quota("aban_kw_text", FREE_TEXT_LIMIT);
     if(q.left<=0){ $("t-upsell").classList.add("show"); return; }
     var d=readText();
-    if(AI_ENDPOINT){
+    if(AI_ENDPOINT && proKey()){   // echte KI nur für Pro (mit Lizenzschlüssel)
       var btn=$("t-go"), old=btn.textContent; btn.disabled=true; btn.textContent="wird erstellt …";
       genWithAI(d).then(function(text){
         showText(text, d); q.use(); afterText();

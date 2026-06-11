@@ -29,5 +29,11 @@ window.ABAN_PAY = {
   SHOPIFY_URL: "https://luxestyle.ch/products/aban-news-founding-member",
   CARD_URL: "",
   PREMIUM_MONTHLY_URL: "https://abannews.lemonsqueezy.com/checkout/buy/266dd736-8351-4d7c-9c3d-eb1c7dfd5e9c?media=0&logo=0&desc=0&discount=0",
-  PREMIUM_YEARLY_URL: "https://abannews.lemonsqueezy.com/checkout/buy/d3c8b929-3a65-47c7-ba2b-cbc08c686b79?media=0&logo=0&desc=0&discount=0"
+  PREMIUM_YEARLY_URL: "https://abannews.lemonsqueezy.com/checkout/buy/d3c8b929-3a65-47c7-ba2b-cbc08c686b79?media=0&logo=0&desc=0&discount=0",
+  // ── aban Pro (€19/Monat, €190/Jahr) — KI-Studio (/ki-studio.html) ──
+  // Lemon-Squeezy-Checkout-Links des Pro-Abos. LEER = Buttons zeigen ehrlich „Start in Kürze".
+  // WICHTIG: Im LS-Produkt „Lizenzschlüssel" (license keys) aktivieren — die KI-Tools werden per
+  // Lizenzschlüssel freigeschaltet (Validierung am Edge, kein Store-API-Key nötig).
+  PRO_MONTHLY_URL: "",
+  PRO_YEARLY_URL: ""
 };

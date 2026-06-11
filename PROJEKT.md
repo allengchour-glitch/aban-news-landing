@@ -43,6 +43,35 @@ Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe s
 (Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
 
 
+## 📌 Stand 2026-06-11 (Teil 18) — „aban Pro" + KI-Studio (Live-KI-Tools, gated per Lizenz)
+User-Wunsch: „premium verbessern mit zusatz kosten wo man dich brauchen kann mit tools". Entscheid (User):
+**neuer Pro-Tier €19/Mt (€190/Jahr)** zusätzlich zu Premium €9, mit **allen 4 Live-KI-Tools** + „alles vertiefen
+und mehr Themen". Gebaut auf den vorhandenen Cloudflare-Pages-Functions.
+- **Seite `ki-studio.html` + `en/ki-studio.html`** („aban KI-Studio"): Hero+Preis, **Lizenz-Unlock-Box**, 4 Tool-Panels
+  (gesperrt bis Schlüssel da), „mehr Themen"-Teaser, Preis, FAQ. Frontend `js/ki-studio.js` (Unlock/validate/
+  localStorage, Tool-Calls mit `X-Pro-Key`, graceful Fehler: ai_off→„noch nicht aktiv", pro_required, rate). DE/EN
+  via `<html lang>`. Verlinkt: online-tools (Featured-Card), Home-Footer, founding.html (Upsell-Benefit), Sitemap.
+- **Gating-Infra (Edge):** `functions/_pro.mjs` validiert einen **Lemon-Squeezy-Lizenzschlüssel** über
+  `licenses/validate` — **braucht KEINEN Store-API-Key** (10-min-Cache, `PRO_TEST_KEY`-Bypass für Beta).
+  `functions/api/pro-validate.js` (POST {license_key}→{valid}). 
+- **Tools (Claude, serverseitig):** `functions/api/generate.js` NEU (Texte/E-Mail/Fahrpläne, **Pro-Pflicht**, 503 ohne
+  Key, 402 ohne Lizenz). `hype-check.js`: Claude-Umschreibung jetzt Pro-gated (Nicht-Pro → Regel-Fallback,
+  `proRequired:true` — **free Hype-Filter bleibt unverändert**). `ki-erwaehnung.js`: Claude-KI-Check Pro-gated.
+  Frag-aban Pro nutzt `/api/chat` (bestehend). Alle 84 Engine-Tests grün.
+- **`js/pay-config.js`:** `PRO_MONTHLY_URL`/`PRO_YEARLY_URL` (LEER → Buttons zeigen ehrlich „Start in Kürze").
+- **🟡 AKTIVIERUNG (nur User, 3 Schritte):** (1) **Cloudflare-Pages-Secret `ANTHROPIC_API_KEY`** setzen → Tools
+  werden live (sonst 503/Fallback). (2) **Lemon-Squeezy Pro-Produkt** (€19/Mt, €190/Jahr) mit **„license keys"
+  aktiviert** anlegen → Checkout-Links in `pay-config.js` `PRO_*` eintragen. (3) optional `PRO_TEST_KEY` als
+  Pages-Var zum Vorab-Testen. Bis dahin: Seite live, Tools sagen ehrlich „noch nicht aktiv". Kosten: Claude nur
+  bei Pro-Nutzung → durch das Abo gedeckt. Offene Kür: ki-werkzeug.html live an `/api/generate` hängen; weitere
+  Tools (Content-Planer, E-Mail-Serien, Prompt-Veredler Pro, Markt-Briefing, Übersetzen) als „mehr Themen" geplant.
+- **Ausbau (User „alles autonome und weiter"):** (a) **`ki-werkzeug.html` an Live-KI gehängt** — `AI_ENDPOINT=/api/generate`,
+  schickt `X-Pro-Key` aus localStorage `aban_pro_key`; echte KI nur mit gültiger Pro-Lizenz, sonst Vorlagen-Fallback
+  (free unverändert). (b) **Mehr Pro-Tools** in `generate.js`: neue `kind`s `contentplan`, `emailserie`, `translate`,
+  `prompt` — Content-Plan + E-Mail-Serie sind im Studio-Dropdown „KI-Texte" live (✓), translate/prompt API-fertig
+  (Panel folgt). (c) **Aktivierungs-Anleitung `docs/ABAN-PRO-AKTIVIEREN.md`** (Cloudflare-Key → LS-Pro-Produkt mit
+  license keys → `pay-config.js` → optional `PRO_TEST_KEY` → Kundenablauf + Troubleshooting).
+
 ## 📌 Stand 2026-06-10 (Teil 17) — NEUE „Märkte"-Sektion live (Krypto+Aktien+News+KI, DE/EN)
 User-Bogen: „coole projekt / traiding" → „alles, neue seite bei abannews.com" → „mach autonom" →
 „erweitere mit allem" → „wechsle aufs Gemini-Model" → „mergen / telegram vom abannews nehmen" →

@@ -12,7 +12,10 @@
   GANZE Design-Bibliothek (~250 Designs, social/designs/) als fixfertige auto-druckbare Sticker an (Printful Kiss-Cut
   `9000001_10163/10164/10165`, Metafeld print_file, themen-Copy+SEO, ACTIVE+publish, Tag fertig-sticker (+schweiz-edition
   bei CH-Motiven)). Ledger `social/designs/_pod_sticker_created.txt`, LIMIT/Lauf. Handle `pod-sticker-<name>` (skippt die 12
-  schweiz-sticker). Lieferzeit+Übersetzung ziehen die Crons (delivery-block/translate) nach. **1. Batch (60) live gestartet.**
+  schweiz-sticker). **✅ FERTIG: alle 256 POD-Sticker live** (268 Designs − 12 Schweiz). Ledger repariert (256 Einträge).
+  Neue Smart-Collection **„Sticker & Aufkleber"** (`sticker-aufkleber`, Regel TAG=fertig-sticker, in alle 7 Kanäle publiziert) =
+  **268 Sticker** (256 POD + 12 Schweiz). `delivery-block`+`translate` (dry=false) nachgezogen → Lieferzeit + FR/IT/EN.
+  ⚠️ Workflow-Ledger-Commit pusht bei Push-Contention manchmal nicht → Handle-Idempotenz (productSet over handle) schützt vor Dubletten.
 - **Prodigi LIVE:** User hat `PRODIGI_API_KEY` gesetzt (Länge 36, gültig). `prodigi-check` bestätigt SKUs
   `GLOBAL-FAP-A4/A3/A2` (Enhanced Matte 200g, Druckbereich `default`). `prodigi-products` (dry=false) lief → 10 Schweiz-Poster
   ACTIVE (Handle `prodigi-poster-*`, Tag `schweiz-edition`). `prodigi-sync` (cron 6h) druckt bezahlte Orders autom.
