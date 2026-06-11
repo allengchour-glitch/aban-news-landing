@@ -353,6 +353,12 @@ BRANCHEN = {
     "schneideratelier":    ("Schneiderateliers",    ["Service- & Anlasstexte,", "nicht die Anprobe"]),
     "coworking-space":     ("Coworking-Spaces",     ["Texte & Events,", "nicht die Verträge"]),
     "escape-room":         ("Escape-Rooms",         ["Texte & Buchung,", "keine Spoiler"]),
+    "imbiss":              ("Imbisse",              ["Speisekarte & Social,", "nicht die Hygiene"]),
+    "spirituosenhandel":   ("Spirituosenhandel",    ["Produkt- & Tastingtexte,", "nicht der Jugendschutz"]),
+    "bowlingcenter":       ("Bowlingcenter",        ["Angebote & Events,", "nicht der Betrieb"]),
+    "hochzeitsplaner":     ("Hochzeitsplaner",      ["Texte & Orga,", "nicht der grosse Tag"]),
+    "tierbestattung":      ("Tierbestattung",       ["Würdevolle Texte,", "nicht der Beistand"]),
+    "seniorenbetreuung":   ("Seniorenbetreuung",    ["Texte & Orga,", "nicht die Zuwendung"]),
 }
 
 
