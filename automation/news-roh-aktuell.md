@@ -3,24 +3,24 @@
 > **Kuratier-Vorlage, KEINE fertige Ausgabe.** Echte Quellen, aggregiert. Wähle 3–5 relevante Meldungen, prüfe sie an der Quelle und schreibe sie in deiner Stimme (kein Hype). Dann via Werkbank/beehiiv versenden.
 
 ## OpenAI
+- [ ] **[OpenAI to acquire Ona](https://openai.com/index/openai-to-acquire-ona)**  
+  _Thu, 11 Jun 2026 00:00:00 GMT_
+  OpenAI plans to acquire Ona to expand Codex with secure, persistent cloud environments, enabling long-running AI agents across enterprise workflows.
 - [ ] **[How an astrophysicist uses Codex to help simulate black holes](https://openai.com/index/using-codex-to-simulate-black-holes)**  
   _Thu, 11 Jun 2026 00:00:00 GMT_
   Discover how astrophysicist Chi-kwan Chan uses Codex to build black hole simulations, helping scientists study extreme physics and test Einstein’s theory of general relativity.
 - [ ] **[Supporting Europe’s work in ensuring a trustworthy AI ecosystem](https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem)**  
   _Thu, 11 Jun 2026 00:00:00 GMT_
   OpenAI supports the EU Code of Practice on AI content transparency, advancing provenance standards and tools to help people understand AI-generated content.
+- [ ] **[BBVA puts AI at the core of banking with OpenAI](https://openai.com/index/bbva)**  
+  _Thu, 11 Jun 2026 00:00:00 GMT_
+  Learn how BBVA scaled ChatGPT Enterprise to 100,000 employees and partnered with OpenAI to accelerate AI-powered banking transformation worldwide.
 - [ ] **[Access OpenAI models and Codex through your Oracle cloud commitment](https://openai.com/index/openai-on-oracle-cloud)**  
   _Wed, 10 Jun 2026 20:00:00 GMT_
   Access OpenAI models and Codex through Oracle Cloud, using existing commitments to build and deploy AI with enterprise security and governance.
 - [ ] **[PRC-linked influence operations are targeting AI debates in the US](https://openai.com/index/prc-linked-influence-operations-ai-debates)**  
   _Wed, 10 Jun 2026 12:00:00 GMT_
   A new report from OpenAI details PRC-linked influence operations using AI to target U.S. tech debates, data center narratives, tariffs, and false claims  about ChatGPT.
-- [ ] **[From data to decisions: how LSEG is scaling trusted AI](https://openai.com/index/lseg)**  
-  _Wed, 10 Jun 2026 00:00:00 GMT_
-  See how LSEG uses OpenAI to scale trusted AI across its global business, accelerating insights, shrinking release cycles, and empowering 4,000 employees.
-- [ ] **[How engineers at Nextdoor use Codex to build without limits](https://openai.com/index/nextdoor)**  
-  _Tue, 09 Jun 2026 12:00:00 GMT_
-  How engineers at Nextdoor use Codex with GPT-5.5 to investigate hard-to-reproduce issues, build across platforms, and focus on product outcomes.
 
 ## Google AI
 - [ ] **[The latest AI news we announced in May 2026](https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/)**  
@@ -43,6 +43,8 @@
   <img src=" of Waterloo students develop AI prototypes like sign language tutors to reshape the future of education and work.
 
 ## Hugging Face
+- [ ] **[Profiling in PyTorch (Part 2): From nn.Linear to a Fused MLP](https://huggingface.co/blog/torch-mlp-fusion)**  
+  _Thu, 11 Jun 2026 00:00:00 GMT_
 - [ ] **[Can Voice Agents Handle Bilingual Customers? Benchmarking Frontier ASR on Code-Switched Speech](https://huggingface.co/blog/ServiceNow-AI/code-switching)**  
   _Tue, 09 Jun 2026 19:38:28 GMT_
 - [ ] **[Introducing North Mini Code: Cohere’s First Model For Developers](https://huggingface.co/blog/CohereLabs/introducing-north-mini-code)**  
@@ -53,28 +55,26 @@
   _Tue, 09 Jun 2026 00:00:00 GMT_
 - [ ] **[The Open Source Community is backing OpenEnv for Agentic RL](https://huggingface.co/blog/openenv-agentic-rl)**  
   _Mon, 08 Jun 2026 00:00:00 GMT_
-- [ ] **[Nemotron 3.5 Content Safety: Customizable Multimodal Safety for Global Enterprise AI](https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety)**  
-  _Thu, 04 Jun 2026 18:57:45 GMT_
 
 ## TechCrunch AI
+- [ ] **[Deezer’s new tool can identify AI music from Spotify, Apple Music, and others](https://techcrunch.com/2026/06/11/deezers-new-tool-can-identify-ai-music-from-spotify-apple-music-and-others/)**  
+  _Thu, 11 Jun 2026 16:36:20 +0000_
+  Deezer introduced a tool that scans playlists from Spotify, Apple Music, and other platforms to identify AI music.
+- [ ] **[Pool’s new app turns your screenshots into something useful](https://techcrunch.com/2026/06/11/pools-new-app-turns-your-screenshots-into-a-searchable-memory-bank/)**  
+  _Thu, 11 Jun 2026 15:30:00 +0000_
+  Pool's new app automatically sorts screenshots into personalized collections, tracks down the original links behind saved content, and helps you rediscover products, recipes, travel ideas, and other t…
+- [ ] **[DoorDash’s new AI chatbot lets you order with prompts and photos](https://techcrunch.com/2026/06/11/doordashs-new-ai-chatbot-lets-you-order-with-prompts-and-photos/)**  
+  _Thu, 11 Jun 2026 14:23:43 +0000_
+  The new chatbot, called Ask DoorDash, allows users to search the app for what they're looking for in their own words instead of having to scroll through restaurants and stores to build a cart.
 - [ ] **[Opendoor’s India exit is fueling a bigger conversation about AI and outsourcing](https://techcrunch.com/2026/06/10/opendoors-india-exit-is-fueling-a-bigger-conversation-about-ai-and-outsourcing/)**  
   _Thu, 11 Jun 2026 04:02:19 +0000_
   The decision comes as India emerges as the world’s largest GCC market.
 - [ ] **[Anthropic’s Dario Amodei has just one direct report](https://techcrunch.com/2026/06/10/anthropics-dario-amodei-has-just-one-direct-report/)**  
   _Thu, 11 Jun 2026 03:53:06 +0000_
-  If you doubted his genius, doubt no more.
+  If founders and other business leaders weren't already envious of Dario Amodei, who sits atop one of the world's fastest-growing AI companies, they're going to be seriously envious now.
 - [ ] **[xAI fired an engineer who raised alarms about Grok safety, new lawsuit claims](https://techcrunch.com/2026/06/10/xai-fired-an-engineer-who-raised-alarms-about-grok-safety-new-lawsuit-claims/)**  
   _Wed, 10 Jun 2026 22:31:19 +0000_
   A former xAI engineer is suing the company and SpaceX, alleging he was fired for raising AI safety concerns about Grok days before SpaceX's historic IPO.
-- [ ] **[Fresh off bond sale, Amazon borrows $17.5B from banks as AI spending continues](https://techcrunch.com/2026/06/10/fresh-off-bond-sale-amazon-borrows-17-5-billion-from-banks-as-ai-spending-continues/)**  
-  _Wed, 10 Jun 2026 20:19:31 +0000_
-  Companies are burning through exorbitant sums of money to keep pace in the AI arms race. Debt is climbing.
-- [ ] **[‘AI-pilled’ firms spend $7,500 per employee each month on AI](https://techcrunch.com/2026/06/10/ai-pilled-firms-spend-7500-per-employee-each-month-on-ai/)**  
-  _Wed, 10 Jun 2026 17:07:35 +0000_
-  The most AI-obsessed firms are spending roughly $7,500 monthly per employee on AI, per Ramp AI Index. That's not more than an engineer's salary — yet.
-- [ ] **[How memory tools can make AI models worse](https://techcrunch.com/2026/06/10/how-memory-tools-can-make-ai-models-worse/)**  
-  _Wed, 10 Jun 2026 16:11:08 +0000_
-  New research suggests that AI memory systems can degrade model performance and encourage sycophantic tendencies.
 
 ## VentureBeat AI
 - [ ] **[Google just redesigned the search box for the first time in 25 years — here’s why it matters more than you think.](https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think)**  
@@ -97,53 +97,49 @@
   Anthropic released Cowork on Monday, a new AI agent capability that extends the power of its wildly successful Claude Code tool to non-technical users — and according to company insiders, the team bui…
 
 ## MIT Tech Review
+- [ ] **[Google DeepMind is worried about what happens when millions of agents start to interact](https://www.technologyreview.com/2026/06/11/1138794/google-deepmind-is-worried-about-what-happens-when-millions-of-agents-start-to-interact/)**  
+  _Thu, 11 Jun 2026 11:00:45 +0000_
+  Google DeepMind is funding research into the potential dangers of situations where millions of different AI agents interact with each other online. According to Rohin Shah, who directs the company’s A…
 - [ ] **[The Download: whole-body rejuvenation drugs and five things to know about AI](https://www.technologyreview.com/2026/06/09/1138604/the-download-anti-aging-drugs-ai-five-things-to-know/)**  
   _Tue, 09 Jun 2026 12:10:00 +0000_
   This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. David Sinclair plans to test whole-body rejuvenation drugs in …
 - [ ] **[Learning to lead in a hybrid human-AI enterprise](https://www.technologyreview.com/2026/06/09/1137830/learning-to-lead-in-a-hybrid-human-ai-enterprise/)**  
   _Tue, 09 Jun 2026 10:20:06 +0000_
   As adoption of AI agents looks set to surge by as much as 300% in the next two years, leadership teams are carefully considering the implications of a hybrid human-AI workforce.  Unlike existing enter…
-- [ ] **[Five things you need to know about AI](https://www.technologyreview.com/2026/06/09/1138582/five-things-you-need-to-know-about-ai/)**  
-  _Tue, 09 Jun 2026 09:16:45 +0000_
-  At SXSW London last week I gave a talk called “Five things you need to know about AI,” in which I shared what I think are the biggest themes in AI right now. I pulled a few things from our first AI10 …
-- [ ] **[The Download: how the World Cup ball will fly and OpenAI’s “super app”](https://www.technologyreview.com/2026/06/08/1138485/the-download-world-cup-ball-openai-super-app/)**  
-  _Mon, 08 Jun 2026 12:10:00 +0000_
-  This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Why this year’s World Cup ball may not fly as far Much is new …
-- [ ] **[The Download: AI hacking beyond Mythos, and chatbots’ impact on our brains](https://www.technologyreview.com/2026/06/05/1138452/the-download-ai-hacking-mythos-chatbots-brain-impacts/)**  
-  _Fri, 05 Jun 2026 12:10:00 +0000_
-  This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The Meta hack shows there’s more to AI security than Mythos On…
-- [ ] **[Are AI chatbots making us lose control of our brains?](https://www.technologyreview.com/2026/06/05/1138427/are-ai-chatbots-making-us-lose-control-of-our-brains/)**  
-  _Fri, 05 Jun 2026 09:00:00 +0000_
-  This week I’ve been at SXSW London. There’s been music, film, and a lot—and I mean a lot—of talk about AI. I also had the opportunity to sit down with Gloria Mark, a psychologist at the University of …
 
 ## heise
-- [ ] **[heise+ | Täuschen mit KI: Ein Deepfake-Experiment im Video-Test](https://www.heise.de/hintergrund/Taeuschen-mit-KI-Ein-Deepfake-Experiment-im-Video-Test-11322994.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus)**  
-  _2026-06-11T10:30:00+02:00_
-  Ein Videoanruf, ein bekanntes Lächeln, eine Falle: Wir haben es ausprobiert und einen Redakteur mit einem Deepfake konfrontiert. Ein Videobeitrag.
-- [ ] **[heise+ | KI-Bildbearbeitung mit ComfyUI-Apps: Lichtstimmung ändern und Fotomotive drehen](https://www.heise.de/ratgeber/KI-Bildbearbeitung-mit-ComfyUI-Apps-Lichtstimmung-aendern-und-Fotomotive-drehen-11219739.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus)**  
-  _2026-06-11T09:00:00+02:00_
-  ComfyUI vereinfacht im App-Modus die KI-Bearbeitung von Porträt- und Produktfotos: Kamera drehen, Licht ändern, hochskalieren mit wenigen Klicks.
-
-## Golem
-- [ ] **[Arbeitsmarktkonomie: konomen uneinig ber Jobverluste durch KI](https://www.golem.de/news/arbeitsmarktoekonomie-oekonomen-uneinig-ueber-jobverluste-durch-ki-2606-209647.html)**  
-  _Thu, 11 Jun 2026 09:24:02 +0200_
-  Eine Befragung von 16 konomen zeigt groe Zustimmung bei Produktivitt, aber Diskrepanzen bezglich Netto-Jobverlusten. (<a href=" <a href=" <img src=" alt="" width="1" height="1" />
-- [ ] **[Kampf um Unternehmenskunden: OpenAI plant deutliche Preissenkungen bei Token](https://www.golem.de/news/kampf-um-unternehmenskunden-openai-plant-deutliche-preissenkungen-bei-token-2606-209644.html)**  
-  _Thu, 11 Jun 2026 08:57:01 +0200_
-  OpenAI reagiert auf die starke Konkurrenz von Anthropic und plant niedrigere Preise fr seine Unternehmenskunden. (<a href=" <a href=" <img src=" alt="" width="1" height="1" />
+- [ ] **[Apple gibt Cloud-Modell für kleinere Entwickler kostenlos frei](https://www.heise.de/news/Apple-gibt-Cloud-Modell-fuer-kleinere-Entwickler-kostenlos-frei-11328100.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-11T16:58:00+02:00_
+  Um die Nutzung seiner mit Google verbesserten KI-Modelle anzuschieben, lässt Apple App-Entwickler diese unter Umständen gratis nutzen. Das sind die Bedingungen.
+- [ ] **[heise-Angebot: iX-Workshop: Mehr Tempo beim Coding – mit KI-Assistenten effizient programmieren](https://www.heise.de/news/iX-Workshop-Mehr-Tempo-beim-Coding-mit-KI-Assistenten-effizient-programmieren-11313861.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-11T14:00:00+02:00_
+  Erfahren Sie, wie Sie produktiv mit KI-Assistenten programmieren und lernen Sie die Stärken und Schwächen der Tools für den Einsatz in eigenen Projekten kennen.
 
 ## t3n
-- [ ] **[Dario Amodei: Anthropic-Chef fordert KI-Behörde nach Vorbild der Flugaufsicht](https://t3n.de/news/dario-amodei-anthropic-chef-fordert-ki-behoerde-nach-vorbild-der-flugaufsicht-1747039/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Thu, 11 Jun 2026 08:00:14 +0200_
-  Der OpenAI-Rivale Anthropic spricht sich schon länger für eine härtere Regulierung der KI-Entwicklung aus. Jetzt fordert Firmenchef Dario Amodei sogar eine Notbremse für die Regierung.weiterlesen auf …
-- [ ] **[Amazon, Nvidia und mehr: Tech-Konzerne pumpen Rekordsumme in deutsches Robotik-Startup](https://t3n.de/news/finanzierungsrunde-neura-robotics-1747028/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Wed, 10 Jun 2026 21:28:46 +0200_
-  Neura Robotics hat in einer Finanzierungsrunde 1,4 Milliarden US-Dollar eingesammelt – Rekord. Beteiligt waren Konzerne wie Amazon, Nvidia sowie Bosch und Schaeffler. Das Geld soll in die Produktion v…
-- [ ] **[„Wow, das ist kurz“: Psychologin darüber, wie KI-Chatbots unsere Aufmerksamkeitsspanne verringern](https://t3n.de/news/wow-das-ist-wirklich-kurz-psychologin-darueber-wie-ki-chatbots-unsere-aufmerksamkeitsspanne-verringern-1746475/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Wed, 10 Jun 2026 16:00:31 +0200_
-  Die Psychologin Gloria Mark untersucht seit mehr als zwanzig Jahren, wie sich die Nutzung von digitalen Technologien auf unser Gehirn und damit unsere Aufmerksaweiterlesen auf t3n.de
+- [ ] **[KI-Preiskampf: OpenAI soll ChatGPT-Preise drastisch senken wollen – Anthropic könnte folgen](https://t3n.de/news/openai-chatgpt-preise-anthropic-1747290/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Thu, 11 Jun 2026 19:28:24 +0200_
+  Im Vorfeld der geplanten Börsengänge sollen die KI-Rivalen OpenAI und Anthropic versuchen, sich über Preissenkungen gegenseitig Kund:innen abzuluchsen. Davon könnten sowohl private Nutzer:innen als au…
+- [ ] **[Wenn KI-Gesichtserkennung falsch liegt: Dieser Mann musste zu Unrecht 50 Tage ins Gefängnis](https://t3n.de/news/ki-gesichtserkennung-liegt-falsch-50-tage-gefaengnis-1747112/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Thu, 11 Jun 2026 17:30:12 +0200_
+  Ein Mann wurde zu Unrecht verhaftet und 50 Tage lang im Gefängnis festgehalten. Der Grund: Eine KI hatte den Familienvater per Gesichtserkennung als möglichen Täter identifiziert.
+weiterlesen auf t3n.…
+- [ ] **[KI als kognitive Krücke: Wie Chatbots die Fähigkeit schwächen, Falschmeldungen zu erkennen](https://t3n.de/news/ki-als-kognitive-kruecke-wie-chatbots-die-faehigkeit-schwaechen-falschmeldungen-zu-erkennen-1747176/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Thu, 11 Jun 2026 16:30:20 +0200_
+  ChatGPT und Co. werden inzwischen auch zum Checken der Nachrichten genutzt. Eine aktuelle MIT-Studie warnt vor den Folgen: Proband:innen wurden mit KI deutlich schlechter darin, Fake News zu identifiz…
+- [ ] **[Weekly: Überraschende Strömung im Erdkern, KI-DJ von Spotify im Test](https://t3n.de/news/weekly-ueberraschende-stroemung-im-erdkern-ki-dj-von-spotify-im-test-1746714/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Thu, 11 Jun 2026 15:30:01 +0200_
+  In der neuen Podcast-Folge gehen wir rein in die Geophysik und in den äußeren Erdkern. Außerdem steht die KI-DJ-Funktion von Spotify auf dem Prüfstand.weiterlesen auf t3n.de
+- [ ] **[Bewerbung mit KI schreiben: 5 Dinge, auf die ihr laut Studien besonders achten solltet](https://t3n.de/news/bewerbung-mit-ki-schreiben-5-dinge-auf-die-ihr-laut-studien-besonders-achten-solltet-1747190/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Thu, 11 Jun 2026 15:05:44 +0200_
+  Inzwischen schreiben ein Großteil der Bewerber ihre Bewerbungen mit Künstlicher Intelligenz. Die Gefahr steigt, in der Masse unterzugehen. Doch Studien zeigenweiterlesen auf t3n.de
+- [ ] **[Google reagiert auf Kritik: Warum Mitarbeiter eigene KI-Tools verspotten](https://t3n.de/news/google-mitarbeiter-kritik-ki-tools-1746398/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Thu, 11 Jun 2026 14:55:00 +0200_
+  Im April 2026 erklärte Alphabet-CEO Sundar Pichai, dass bei Google 75 Prozent des Codes KI-generiert seien. Auf der Google I/O stellte der Konzern eine neue KI-Funktion nach der anderen vor. Intern ko…
 
 ## netzpolitik.org
+- [ ] **[Tracking, Datenanalyse und KI: Wie unsichtbare Arbeiter:innen den Fußball steuern](https://netzpolitik.org/2026/tracking-datenanalyse-und-ki-wie-unsichtbare-arbeiterinnen-den-fussball-steuern/)**  
+  _Thu, 11 Jun 2026 11:48:30 +0000_
+  Auch bei der diesjährigen Fußball-WM der Männer wird immer weniger dem Zufall überlassen.    –   Gemeinfrei-ähnlich freigegeben durch unsplash.com: Fauzan SaariHinter den Kulissen des kommerziellen Fu…
 - [ ] **[Demo gegen Überwachung: „Wir können die Welle brechen“](https://netzpolitik.org/2026/demo-gegen-ueberwachung-wir-koennen-die-welle-brechen/)**  
   _Tue, 09 Jun 2026 19:00:06 +0000_
   Kämpfen gegen KI-gestützte Überwachung: Sebastian Marg und Tom Jennissen von der Digitalen Gesellschaft.    –   CC-BY 4.0: Jan FelsGerade werden deutschlandweit Polizeigesetze hart verschärft. Kollege…
@@ -161,4 +157,4 @@
   EU-Kommissarin Henna Virkkunen auf der Pressekonferenz zum Tech Sovereignty Package    –   Alle Rechte vorbehalten: IMAGO / Anadolu AgencyDie EU-Kommission hat ein Gesetz vorgestellt, mit dem sich die…
 
 ---
-Gesammelt: 48 Meldungen aus 10 Quellen. Quellen immer gegenprüfen — Aggregation ersetzt keine Recherche.
+Gesammelt: 47 Meldungen aus 9 Quellen. Quellen immer gegenprüfen — Aggregation ersetzt keine Recherche.

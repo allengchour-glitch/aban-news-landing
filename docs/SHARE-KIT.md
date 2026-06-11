@@ -1,4 +1,4 @@
-# Share-Kit — fertige Teilen-Posts (2026-06-10)
+# Share-Kit — fertige Teilen-Posts (2026-06-11)
 
 Kopier einen Block, poste ihn auf der jeweiligen Plattform. Alles ehrlich, du-Form,
 ohne erfundene Zahlen. Wechsel die Branchen durch, damit es nicht eintönig wirkt.
