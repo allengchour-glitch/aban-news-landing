@@ -35,5 +35,9 @@ window.ABAN_PAY = {
   // WICHTIG: Im LS-Produkt „Lizenzschlüssel" (license keys) aktivieren — die KI-Tools werden per
   // Lizenzschlüssel freigeschaltet (Validierung am Edge, kein Store-API-Key nötig).
   PRO_MONTHLY_URL: "https://abannews.lemonsqueezy.com/checkout/buy/530fd3f2-6d1d-4f14-9857-09a20c1a4f63?enabled=1777687&media=0&logo=0&desc=0&discount=0",
-  PRO_YEARLY_URL: "https://abannews.lemonsqueezy.com/checkout/buy/4379ddc9-5b8d-416f-aea8-22a5ed98d031?enabled=1777696&media=0&logo=0&desc=0&discount=0"
+  PRO_YEARLY_URL: "https://abannews.lemonsqueezy.com/checkout/buy/4379ddc9-5b8d-416f-aea8-22a5ed98d031?enabled=1777696&media=0&logo=0&desc=0&discount=0",
+  // ── Affiliate-/Partnerprogramm (/empfehlen.html) ──
+  // Lemon-Squeezy-Affiliate-Anmeldelink. Aktivieren: LS-Dashboard → Settings → Affiliates → einschalten
+  // (Provision z. B. 30 %). Danach DIESEN Link prüfen/ersetzen. LEER = Seite zeigt „startet in Kürze".
+  AFFILIATE_URL: "https://abannews.lemonsqueezy.com/affiliates"
 };
