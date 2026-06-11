@@ -2,7 +2,7 @@
 // „aban Pro": echte KI-Texte & Branchen-Fahrpläne. Pro-Lizenz erforderlich.
 // Ohne ANTHROPIC_API_KEY -> 503 (Frontend nutzt Vorlagen-Fallback).
 // Ohne gültige Pro-Lizenz -> 402.
-import { requirePro } from "../_pro.mjs";
+import { requirePro, readProKey } from "../_pro.mjs";
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -12,16 +12,20 @@ const CORS = {
 const SEC = { "X-Content-Type-Options": "nosniff", "Referrer-Policy": "no-referrer", "Cache-Control": "no-store" };
 const MAX_BODY = 16 * 1024;
 const TIMEOUT_MS = 20000;
-const RATE = { windowMs: 60000, max: 12, hits: new Map() };
+const RATE = { windowMs: 60000, hits: new Map() };
+// Tier-Limits (Läufe/Minute): Jahres-Abo bekommt mehr Tempo als Monats-Abo.
+const CAP_MONTHLY = 20;
+const CAP_YEARLY = 60;
 
 function json(o, s = 200) {
   return new Response(JSON.stringify(o), { status: s, headers: { ...CORS, ...SEC, "Content-Type": "application/json; charset=utf-8" } });
 }
-function rateLimited(ip) {
-  if (!ip) return false;
-  const now = Date.now(), rec = RATE.hits.get(ip);
-  if (!rec || now - rec.start > RATE.windowMs) { RATE.hits.set(ip, { start: now, count: 1 }); if (RATE.hits.size > 5000) RATE.hits.clear(); return false; }
-  rec.count++; return rec.count > RATE.max;
+// Rate-Limit pro Bezeichner (hier: Lizenzschlüssel) mit individuellem Cap.
+function rateLimited(id, max) {
+  if (!id) return false;
+  const now = Date.now(), rec = RATE.hits.get(id);
+  if (!rec || now - rec.start > RATE.windowMs) { RATE.hits.set(id, { start: now, count: 1 }); if (RATE.hits.size > 5000) RATE.hits.clear(); return false; }
+  rec.count++; return rec.count > max;
 }
 function clamp(s, n) { return String(s == null ? "" : s).slice(0, n).trim(); }
 
@@ -82,15 +86,18 @@ export function onRequestOptions() { return new Response(null, { status: 204, he
 export async function onRequestPost({ request, env }) {
   try {
     if (!env || !env.ANTHROPIC_API_KEY) return json({ error: "ai_off" }, 503);
-    const ip = request.headers.get("CF-Connecting-IP") || "";
-    if (rateLimited(ip)) return json({ error: "rate_limited" }, 429);
-
     const raw = await request.text();
     if (raw.length > MAX_BODY) return json({ error: "too_large" }, 413);
     let b; try { b = JSON.parse(raw); } catch { return json({ error: "bad_json" }, 400); }
 
+    // Pro-Lizenz prüfen (kein gültiger Schlüssel → sofort 402, keine teure KI).
     const pro = await requirePro(request, b, env);
     if (!pro.ok) return json({ error: "pro_required", reason: pro.reason }, 402);
+
+    // Tier-abhängiges Tempo-Limit pro Lizenz: Jahr 60/min, Monat 20/min.
+    const cap = pro.tier === "yearly" ? CAP_YEARLY : CAP_MONTHLY;
+    const lic = readProKey(request, b) || (request.headers.get("CF-Connecting-IP") || "");
+    if (rateLimited(lic, cap)) return json({ error: "rate_limited", tier: pro.tier }, 429);
 
     const prompt = buildPrompt(b);
     const model = env.GENERATE_MODEL || "claude-sonnet-4-6";

@@ -1,11 +1,13 @@
 // Geteiltes „aban Pro"-Gating für Edge-Funktionen.
-// Validiert einen Lemon-Squeezy-Lizenzschlüssel des Pro-Abos.
-// Wichtig: Der LS-Validate-Endpoint braucht KEINEN Store-API-Key — nur den Schlüssel.
-// No-op-sicher: ohne Schlüssel/bei Fehler => { ok:false }.
+// Validiert einen Lemon-Squeezy-Lizenzschlüssel UND erkennt den Tier (Monat/Jahr)
+// über meta.variant_id. No-op-sicher: ohne Schlüssel/bei Fehler => { ok:false }.
 
 const LS_VALIDATE = "https://api.lemonsqueezy.com/v1/licenses/validate";
-const CACHE = new Map();            // key -> { ok, status, exp }
-const TTL_MS = 10 * 60 * 1000;      // 10 min Cache je Edge-Instanz (spart LS-Calls)
+const CACHE = new Map();            // key -> { ok, status, tier, exp }
+const TTL_MS = 10 * 60 * 1000;      // 10 min Cache je Edge-Instanz
+
+// Jahres-Variante (für „Jahr = mehr"). Über Env PRO_YEARLY_VARIANT_ID überschreibbar.
+const YEARLY_VARIANT_ID_DEFAULT = 1777696;
 
 export function readProKey(request, body) {
   const h = request.headers.get("X-Pro-Key");
@@ -17,12 +19,13 @@ export function readProKey(request, body) {
 
 export async function validateLicense(key, env) {
   key = (key || "").trim();
-  if (!key || key.length < 8) return { ok: false, reason: "missing" };
+  if (!key || key.length < 8) return { ok: false, reason: "missing", tier: null };
 
   const now = Date.now();
   const c = CACHE.get(key);
-  if (c && c.exp > now) return { ok: c.ok, reason: "cache", status: c.status };
+  if (c && c.exp > now) return { ok: c.ok, reason: "cache", status: c.status, tier: c.tier };
 
+  const yearlyId = Number((env && env.PRO_YEARLY_VARIANT_ID) || YEARLY_VARIANT_ID_DEFAULT);
   try {
     const r = await fetch(LS_VALIDATE, {
       method: "POST",
@@ -31,17 +34,17 @@ export async function validateLicense(key, env) {
     });
     const d = await r.json().catch(() => ({}));
     const status = (d && d.license_key && d.license_key.status) || "";
-    // gültig = LS meldet valid UND Status ist aktiv (oder noch nicht aktiviert).
     const ok = !!(d && d.valid) && (status === "active" || status === "inactive");
+    const variantId = d && d.meta && Number(d.meta.variant_id);
+    const tier = ok ? (variantId === yearlyId ? "yearly" : "monthly") : null;
     if (CACHE.size > 5000) CACHE.clear();
-    CACHE.set(key, { ok, status, exp: now + TTL_MS });
-    return { ok, reason: ok ? "valid" : "invalid", status };
+    CACHE.set(key, { ok, status, tier, exp: now + TTL_MS });
+    return { ok, reason: ok ? "valid" : "invalid", status, tier };
   } catch (e) {
-    return { ok: false, reason: "error" };
+    return { ok: false, reason: "error", tier: null };
   }
 }
 
-// Komfort: liest den Schlüssel aus Header/Body und validiert.
 export async function requirePro(request, body, env) {
   return validateLicense(readProKey(request, body), env);
 }
