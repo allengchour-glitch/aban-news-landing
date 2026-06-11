@@ -112,9 +112,10 @@
   function shapeBars(N, ds) {
     var vals = (ds.values || "4,7,5,9,6,8,3,7").split(",").map(parseFloat).filter(function (x) { return !isNaN(x); });
     if (!vals.length) vals = [4, 7, 5, 9, 6, 8, 3, 7];
-    var max = Math.max.apply(null, vals) || 1, n = vals.length, pts = [], edges = [], base = -0.7, w = Math.min(0.16, 1.6 / n / 2.2);
+    var max = Math.max.apply(null, vals.map(function (v) { return Math.abs(v); })) || 1;
+    var n = vals.length, pts = [], edges = [], base = -0.7, w = Math.min(0.16, 1.6 / n / 2.2);
     for (var k = 0; k < n; k++) {
-      var x = n === 1 ? 0 : (k / (n - 1) - 0.5) * 1.8, h = vals[k] / max * 1.5, o = pts.length;
+      var x = n === 1 ? 0 : (k / (n - 1) - 0.5) * 1.8, h = vals[k] / max * 1.4, o = pts.length;
       // 8 Eckpunkte eines Quaders
       for (var sx = -1; sx <= 1; sx += 2) for (var sz = -1; sz <= 1; sz += 2) for (var sy = 0; sy <= 1; sy++)
         pts.push([x + sx * w, base + sy * h, sz * w]);

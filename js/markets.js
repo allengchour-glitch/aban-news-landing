@@ -243,6 +243,7 @@
       show.forEach(function (a) { tbody.appendChild(buildRow(a)); });
       if (grp.length > CAP) tbody.appendChild(moreRow(t, grp.length - CAP));
     });
+    if (window.abanMarketsChart) try { window.abanMarketsChart(state.assets); } catch (e) {}
   }
 
   function renderTabs() {
