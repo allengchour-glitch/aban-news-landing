@@ -47,6 +47,8 @@ PAGES = [
                  "SMALL BUSINESS", "VAT exemption", "Limits DE/AT/CH + quick check", "Not tax advice"),
  ("mahnung-schreiben", "MAHNUNG", "Schreiben", "3 Stufen + Text-Generator zum Kopieren", "Keine Rechtsberatung",
                  "PAYMENT REMINDER", "Write it", "3 stages + copy-ready text generator", "Not legal advice"),
+ ("angebot-schreiben", "ANGEBOT", "Schreiben", "Vorlage + Generator (mit/ohne MwSt)", "Keine Beratung",
+                 "QUOTE", "Write it", "Template + generator (with/without VAT)", "Not advice"),
 ]
 
 FOOT_DE = "abannews.com  ·  ehrlich, anti-hype, keine Beratung"
