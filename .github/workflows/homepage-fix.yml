@@ -1,0 +1,36 @@
+name: "POD Startseite-Fix (Bestseller-Dublette)"
+
+# Ersetzt die doppelte Bestseller-Sektion auf der Startseite durch Geschenkideen. Idempotent, No-op ohne Creds.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur testen (nichts schreiben)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pod-homepage-fix
+  cancel-in-progress: false
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Startseite-Dublette ersetzen
+        env:
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+        run: node automation/fix_homepage_dedup.mjs
