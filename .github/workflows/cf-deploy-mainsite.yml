@@ -1,0 +1,75 @@
+name: Cloudflare Pages — Hauptseite (abannews) Direct-Upload
+
+# Deployt die Haupt-Website (inkl. functions/ = Edge-API) als Direct-Upload zu einem
+# eigenen Cloudflare-Pages-Projekt. Berührt NICHT die Live-Domain abannews.com — das
+# Ergebnis liegt zunächst nur auf <projekt>.pages.dev. So lässt sich die Edge-API
+# (KI-Studio, /api/*) live testen, bevor die Domain umgezogen wird.
+#
+# Nutzt die vorhandenen Repo-Secrets CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID
+# (Preflight 11.06.: Token „voll einsatzbereit", Pages-Deploy + DNS möglich).
+# Manuell starten: Actions → diesen Workflow → Run.
+
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: 'Cloudflare-Pages-Projektname'
+        required: true
+        default: 'abannews'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cf-mainsite-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build (clean) + Direct Upload
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Token-Gate
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::CLOUDFLARE_API_TOKEN fehlt — Repo-Secret setzen."; exit 1
+          fi
+
+      - uses: actions/checkout@v4
+
+      - name: Sauberes Publish-Verzeichnis bauen (_site)
+        run: |
+          mkdir -p _site
+          # Die echte Website kopieren; schwere/nicht-öffentliche Verzeichnisse raus
+          # (v. a. video-prototypes wegen >25 MiB-Dateien = Pages-Limit).
+          rsync -a ./ _site/ \
+            --exclude '.git' --exclude '.github' --exclude '_site' \
+            --exclude 'node_modules' \
+            --exclude 'video-prototypes' --exclude 'reels' --exclude 'social' \
+            --exclude 'dropship' --exclude 'ki-schriftsteller' \
+            --exclude 'luxestyle-3d' --exclude 'luxestyle-shop' \
+            --exclude 'mediakit' --exclude 'tools' --exclude 'automation' \
+            --exclude 'linkedin' --exclude 'reports' --exclude 'ki-tools-radar'
+          # functions/ MUSS enthalten sein (Pages Functions = /api/*). Kontrolle:
+          test -d _site/functions && echo "functions/ ok" || (echo "::error::functions/ fehlt"; exit 1)
+          test -f _site/_headers && echo "_headers ok"
+          test -f _site/_redirects && echo "_redirects ok"
+          echo "Dateien im Deploy: $(find _site -type f | wc -l)"
+          echo "Dateien > 24 MiB (müssen 0 sein):"
+          find _site -type f -size +24M -printf '%s  %p\n' | sort -rn | head || true
+
+      - name: Pages-Projekt anlegen (idempotent)
+        run: npx --yes wrangler@3 pages project create "${{ inputs.project }}" --production-branch=main || true
+
+      - name: Deploy (Direct Upload)
+        run: npx --yes wrangler@3 pages deploy _site --project-name="${{ inputs.project }}" --branch=main
+
+      - name: Hinweis
+        run: |
+          echo "Fertig. Öffne https://${{ inputs.project }}.pages.dev/"
+          echo "API-Test:  curl -X POST https://${{ inputs.project }}.pages.dev/api/pro-validate -H 'content-type: application/json' -d '{\"license_key\":\"x\"}'"
+          echo "Für die KI-Tools fehlt noch das Pages-Secret ANTHROPIC_API_KEY (im CF-Dashboard des Projekts)."
