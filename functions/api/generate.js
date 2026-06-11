@@ -67,6 +67,11 @@ function buildPrompt(b) {
     return `Verbessere den folgenden Prompt für ein Sprachmodell: präziser, mit Rolle, Kontext, Format und Beispiel. ` +
       `Gib zuerst den verbesserten Prompt, dann 1–2 Sätze Begründung.\n\n"""${text || ziel}"""`;
   }
+  if (kind === "marketbrief") {
+    return `Fasse die folgenden aktuellen Marktdaten in 4–6 nüchternen Sätzen zusammen (Deutsch, anti-hype, ` +
+      `KEINE Anlageberatung). Nutze NUR die gegebenen Zahlen, erfinde nichts. Nenne die größten Bewegungen ` +
+      `und ordne kurz ein.\n\n"""${text}"""`;
+  }
   // default: text
   return `Schreibe einen ${ton} Text. Zweck/Ziel: „${ziel || "Kurztext"}". Branche/Kontext: „${branche}". ` +
     `${text ? "Ausgangsmaterial:\n\"\"\"" + text + "\"\"\"\n" : ""}Max 220 Wörter, klar gegliedert, sofort verwendbar.`;
