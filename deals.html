@@ -92,9 +92,22 @@
       <p class="center muted">Partnerlinks sind mit <strong>*</strong> gekennzeichnet &mdash; kaufst du dar&uuml;ber, bekomme ich eine Provision, f&uuml;r dich wird nichts teurer. Die Empfehlung k&auml;me auch ohne. Details: <a href="/transparenz.html">Transparenz</a>.</p>
       <div class="grid grid--2" style="margin-top:1rem">
         <article class="card">
-          <h3 style="margin-top:0">ElevenLabs <span style="font-size:.8rem;color:var(--muted)">· Audio &amp; Voice-Clone</span></h3>
+          <h3 style="margin-top:0">ElevenLabs <span style="font-size:.8rem;color:var(--muted)">· Audio &amp; Voice-Clone</span> <span style="font-size:.7rem;background:#fef3c7;color:#92400e;padding:.1rem .5rem;border-radius:999px;vertical-align:middle">Top-Pick</span></h3>
           <p>Beste KI-Stimmen am Markt &mdash; nat&uuml;rliches Text-to-Speech, Voice-Cloning und Dubbing, auch auf Deutsch. Praktisch f&uuml;r Podcasts, Voiceover, Reels und Audio-Versionen von Texten. Kostenloser Tarif zum Testen, bezahlte Pl&auml;ne f&uuml;r mehr Zeichen und kommerzielle Nutzung.</p>
-          <p><a href="https://try.elevenlabs.io/abannews" target="_blank" rel="noopener sponsored nofollow">ElevenLabs ausprobieren * &rarr;</a></p>
+          <p class="muted" style="font-size:.85rem"><b>Meine Grenze:</b> Free-Tarif erlaubt keine kommerzielle Nutzung &mdash; daf&uuml;r brauchst du einen bezahlten Plan. Ausf&uuml;hrlicher Test: <a href="/ki-stimmen.html">KI-Stimmen-Vergleich</a>.</p>
+          <p><a id="deals-eleven" href="/ki-stimmen.html" target="_blank" rel="noopener sponsored nofollow">ElevenLabs ausprobieren * &rarr;</a> <span style="font-size:.75rem;color:var(--muted)">(Affiliate-Link)</span></p>
+        </article>
+        <article class="card">
+          <h3 style="margin-top:0">Murf AI <span style="font-size:.8rem;color:var(--muted)">· Voiceover-Studio</span></h3>
+          <p>Voiceover-Studio mit fertigen Stimmen, Untertiteln und Sync-Timing &mdash; gut, wenn du komplette Videos/Pr&auml;sentationen vertonst statt nur einzelne Clips. Sauberes Editor-Interface, deutsche Stimmen vorhanden.</p>
+          <p class="muted" style="font-size:.85rem"><b>Meine Grenze:</b> Stimm-Nuancen wirken einen Tick weniger lebendig als ElevenLabs &mdash; daf&uuml;r angenehmer Workflow f&uuml;r l&auml;ngere Produktionen.</p>
+          <p><a id="deals-murf" href="/ki-stimmen.html" target="_blank" rel="noopener sponsored nofollow">Murf ausprobieren * &rarr;</a> <span style="font-size:.75rem;color:var(--muted)">(Affiliate-Link)</span></p>
+        </article>
+        <article class="card">
+          <h3 style="margin-top:0">ManyChat <span style="font-size:.8rem;color:var(--muted)">· DM- &amp; Chat-Automation</span></h3>
+          <p>Automatisiert Instagram-/WhatsApp-/Messenger-DMs &mdash; Lead-Capture, Auto-Antworten, einfache Funnels. F&uuml;r Solos und kleine Shops, die Anfragen nicht mehr h&auml;ndisch beantworten wollen. Kostenloser Einstieg, bezahlte Pl&auml;ne ab mehr Kontakten.</p>
+          <p class="muted" style="font-size:.85rem"><b>Meine Grenze:</b> Lohnt sich erst, wenn wirklich regelm&auml;ssig DMs reinkommen &mdash; sonst ist es Overkill.</p>
+          <p><a id="deals-manychat" href="https://manychat.com/" target="_blank" rel="noopener sponsored nofollow">ManyChat ausprobieren * &rarr;</a> <span style="font-size:.75rem;color:var(--muted)">(Affiliate-Link)</span></p>
         </article>
       </div>
     </div>
@@ -171,5 +184,17 @@
 
   <script src="/js/subscribe-prompt.js" defer></script>
   <script src="/js/reveal.js" defer></script>
+  <script src="/js/affiliate-config.js"></script>
+  <script>
+    // Affiliate-CTAs zentral verdrahten (eine Quelle der Wahrheit: js/affiliate-config.js).
+    // Ohne Tracking-Link faellt der Button auf die ehrliche Bewertung/Anbieterseite zurueck (kein toter Link).
+    (function(){
+      var cfg = window.ABAN_AFFILIATE || {};
+      [['deals-eleven', cfg.ELEVENLABS_URL], ['deals-murf', cfg.MURF_URL], ['deals-manychat', cfg.MANYCHAT_URL]].forEach(function(p){
+        var el = document.getElementById(p[0]); var url = (p[1] || '').trim();
+        if(el && url){ el.href = url; }
+      });
+    })();
+  </script>
 </body>
 </html>

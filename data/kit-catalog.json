@@ -139,5 +139,21 @@
     "price_cents": 7900,
     "currency": "chf",
     "bundle": true
+  },
+  {
+    "slug": "prompt-bibliothek",
+    "title": "KI-Prompt-Bibliothek für DACH-Solopreneure",
+    "desc": "100+ erprobte Prompts zum Kopieren — Akquise, Kunden, Marketing, Admin & Recherche. Branchen-übergreifend, ehrlich, ohne Hype.",
+    "price_cents": 1900,
+    "currency": "chf",
+    "standalone": true
+  },
+  {
+    "slug": "vorlagen-set",
+    "title": "Fertige Text-Vorlagen für Solopreneure",
+    "desc": "40 sofort nutzbare Vorlagen für Angebote, Mails, Rechnungen & Absagen. Kopieren, Platzhalter ersetzen, abschicken.",
+    "price_cents": 1900,
+    "currency": "chf",
+    "standalone": true
   }
 ]

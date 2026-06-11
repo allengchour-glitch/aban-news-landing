@@ -105,9 +105,23 @@ def _bundle_slugs(catalog: Path) -> set:
         return set()
 
 
+def _standalone_slugs(catalog: Path) -> set:
+    """Slugs, die NICHT ins Branchen-Bundle gehören (eigenständige Premium-Produkte)."""
+    import json
+    try:
+        return {k["slug"] for k in json.loads(catalog.read_text(encoding="utf-8")) if k.get("standalone")}
+    except Exception:  # noqa: BLE001
+        return set()
+
+
 def _base_slug(slug: str, lang: str) -> str:
     """EN-Slugs sind 'en-<branche>' → Branchen-Slug für Quell-PDF/Label."""
     return slug[3:] if (lang == "en" and slug.startswith("en-")) else slug
+
+
+def _curated_dir(slug: str, lang: str) -> Path:
+    """Kuratierte Premium-Inhalte (von Hand gepflegt) — haben Vorrang vor Generierung."""
+    return REPO / "content" / "packs" / lang / slug
 
 
 def build_single(slug: str, lang: str = "de") -> Path:
@@ -115,6 +129,22 @@ def build_single(slug: str, lang: str = "de") -> Path:
     label = label_from_slug(base)
     pack = REPO / "downloads" / "packs" / (lang if lang != "de" else "") / slug
     pack.mkdir(parents=True, exist_ok=True)
+
+    # Premium-Produkte: kuratierte Inhalte 1:1 übernehmen (nicht neu generieren),
+    # damit die Qualität über Workflow-Läufe erhalten bleibt.
+    curated = _curated_dir(slug, lang)
+    if curated.is_dir():
+        for f in sorted(curated.iterdir()):
+            if f.is_file():
+                shutil.copy(f, pack / f.name)
+        if not (pack / "LIESMICH.txt").exists():
+            (pack / "LIESMICH.txt").write_text(
+                f"{label_from_slug(slug)} — aban news\n\n"
+                "Inhalt: siehe enthaltene Dateien.\n"
+                "Nutzung: privat & geschäftlich erlaubt. Weiterverkauf nicht gestattet.\n"
+                "Ergebnisse von KI immer selbst prüfen. © aban news, abannews.com\n",
+                encoding="utf-8")
+        return Path(shutil.make_archive(str(pack), "zip", str(pack)))
     if lang == "en":
         pdf = REPO / "downloads" / "branchen" / "en" / f"ki-quickstart-{base}.pdf"
         checklist, readme_title = CHECKLIST_EN, f"AI Starter Kit for {label} — aban news"
@@ -172,19 +202,22 @@ def main() -> int:
     catalog = Path(args.catalog) if args.catalog else (
         REPO / "data" / ("kit-catalog-en.json" if args.lang == "en" else "kit-catalog.json"))
     bundles = _bundle_slugs(catalog)
+    standalone = _standalone_slugs(catalog)
     all_slugs = [s.strip() for s in args.slugs.split(",") if s.strip()]
     singles = [s for s in all_slugs if s not in bundles]
+    # Branchen-Bundle enthält nur die Branchen-Kits, NICHT die eigenständigen Premium-Produkte.
+    bundle_members = [s for s in singles if s not in standalone]
     sub = (args.lang + "/") if args.lang != "de" else ""
     built = 0
     for slug in singles:
         zip_path = build_single(slug, args.lang)
         built += 1
         print(f"✓ Paket gebaut: downloads/packs/{sub}{slug}/  →  {zip_path.name} (upload-fertig)")
-    # Bundles ZULETZT (brauchen die fertigen Einzel-Packs). Mitglieder = alle Einzel-Slugs.
+    # Bundles ZULETZT (brauchen die fertigen Einzel-Packs). Mitglieder = nur Branchen-Kits.
     for slug in [s for s in all_slugs if s in bundles]:
-        zip_path = build_bundle(slug, singles, args.lang)
+        zip_path = build_bundle(slug, bundle_members, args.lang)
         built += 1
-        print(f"✓ Bundle gebaut: downloads/packs/{sub}{slug}/  →  {zip_path.name} ({len(singles)} Kits)")
+        print(f"✓ Bundle gebaut: downloads/packs/{sub}{slug}/  →  {zip_path.name} ({len(bundle_members)} Kits)")
     print(f"Fertig: {built} [{args.lang}] Paket(e). ZIPs werden vom Stripe-Workflow gehasht abgelegt + verkauft.")
     return 0
 
