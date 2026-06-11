@@ -51,6 +51,22 @@ function buildPrompt(b) {
   if (kind === "rewrite") {
     return `Schreibe den folgenden Text klarer und anti-hype um (gleiche Sprache, keine Superlative, ehrlich):\n\n"""${text}"""`;
   }
+  if (kind === "contentplan") {
+    return `Erstelle einen ehrlichen 2-Wochen-Redaktionsplan (10 Werktage) für „${branche || "ein kleines Unternehmen"}". ` +
+      `Ziel/Zielgruppe: „${ziel || "Fachpublikum"}". Pro Tag: Plattform-Idee, Hook und 1-Satz-Kernaussage. ` +
+      `Anti-Hype, abwechslungsreich, ohne erfundene Zahlen. Kompakt als Liste.`;
+  }
+  if (kind === "emailserie") {
+    return `Schreibe eine ehrliche 3-teilige E-Mail-Serie (Willkommen → Mehrwert → sanfter CTA) für „${branche}". ` +
+      `Ziel: „${ziel || "neue Kontakte aktivieren"}". Ton: ${ton}. Je E-Mail: Betreff + kurzer Body (max 120 Wörter), keine Spam-Floskeln.`;
+  }
+  if (kind === "translate") {
+    return `Übersetze den folgenden Text natürlich und passe den Ton an (nicht wörtlich). Zielsprache/Stil: „${ziel || "Englisch, professionell"}".\n\n"""${text}"""`;
+  }
+  if (kind === "prompt") {
+    return `Verbessere den folgenden Prompt für ein Sprachmodell: präziser, mit Rolle, Kontext, Format und Beispiel. ` +
+      `Gib zuerst den verbesserten Prompt, dann 1–2 Sätze Begründung.\n\n"""${text || ziel}"""`;
+  }
   // default: text
   return `Schreibe einen ${ton} Text. Zweck/Ziel: „${ziel || "Kurztext"}". Branche/Kontext: „${branche}". ` +
     `${text ? "Ausgangsmaterial:\n\"\"\"" + text + "\"\"\"\n" : ""}Max 220 Wörter, klar gegliedert, sofort verwendbar.`;
