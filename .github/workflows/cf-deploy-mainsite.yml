@@ -65,6 +65,17 @@ jobs:
       - name: Pages-Projekt anlegen (idempotent)
         run: npx --yes wrangler@3 pages project create "${{ inputs.project }}" --production-branch=main || true
 
+      - name: Anthropic-Key ins Pages-Projekt schreiben (falls GitHub-Secret gesetzt)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            printf '%s' "$ANTHROPIC_API_KEY" | npx --yes wrangler@3 pages secret put ANTHROPIC_API_KEY --project-name="${{ inputs.project }}"
+            echo "ANTHROPIC_API_KEY ins Pages-Projekt geschrieben (Wert nie ausgegeben)."
+          else
+            echo "Kein GitHub-Secret ANTHROPIC_API_KEY — KI-Tools bleiben im 503-Fallback."
+          fi
+
       - name: Deploy (Direct Upload)
         run: npx --yes wrangler@3 pages deploy _site --project-name="${{ inputs.project }}" --branch=main
 
