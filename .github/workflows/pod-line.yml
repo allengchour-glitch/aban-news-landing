@@ -1,0 +1,67 @@
+name: POD-Linie anlegen (Shirt/Tasse/Tote/Kissen/Mauspad)
+
+on:
+  workflow_dispatch:
+    inputs:
+      type:
+        description: 'shirt | mug | tote | mousepad | cushion'
+        type: string
+        default: 'mug'
+      source:
+        description: 'schweiz | all'
+        type: string
+        default: 'schweiz'
+      limit:
+        description: 'Wie viele pro Lauf'
+        type: string
+        default: '60'
+      dry_run:
+        description: 'Nur Vorschau'
+        type: boolean
+        default: true
+      personalized:
+        description: 'Statt Fertigware EIN "zum Selbstgestalten"-Produkt (Foto-Upload)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pod-line-${{ github.event.inputs.type }}
+  cancel-in-progress: false
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: POD-Linie anlegen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          TYPE: ${{ github.event.inputs.type }}
+          SOURCE: ${{ github.event.inputs.source }}
+          LIMIT: ${{ github.event.inputs.limit }}
+          PERSONALIZED: ${{ github.event.inputs.personalized == 'true' && '1' || '0' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && '0' || '1' }}
+        run: node automation/create_pod_line.mjs
+      - name: Ledger committen
+        if: ${{ github.event.inputs.dry_run == 'false' }}
+        run: |
+          git config user.name "luxestyle-bot"
+          git config user.email "bot@users.noreply.github.com"
+          if [ -n "$(git status --porcelain social/designs/)" ]; then
+            git add social/designs/_pod_*_created.txt
+            git commit -m "POD-Linie ${{ github.event.inputs.type }}: Ledger [skip ci]"
+            for i in 1 2 3 4; do
+              git fetch origin ${{ github.ref_name }} && git rebase origin/${{ github.ref_name }} || git rebase --abort
+              git push origin HEAD:${{ github.ref_name }} && break || sleep $((2**i))
+            done
+          fi
