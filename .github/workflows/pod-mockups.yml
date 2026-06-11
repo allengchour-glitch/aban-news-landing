@@ -1,0 +1,66 @@
+name: POD Fertig-Mockups (Design auf echtes Produkt)
+
+# Druckt die 49 Shirt- + 49 Tassen-Fertigdesigns photorealistisch auf das echte Produkt
+# (Gemini Bild-zu-Bild) und tauscht das Shopify-Hauptbild. No-op ohne Creds.
+
+on:
+  workflow_dispatch:
+    inputs:
+      type:
+        description: 'shirt | mug | both'
+        type: string
+        default: 'both'
+      only:
+        description: 'Nur diese Designs (Komma-Liste, leer = alle)'
+        type: string
+        default: ''
+      limit:
+        description: 'Max. Anzahl je Typ'
+        type: string
+        default: '99'
+      gen_only:
+        description: 'Nur generieren+committen (kein Shopify-Tausch)'
+        type: boolean
+        default: false
+      force:
+        description: 'Vorhandene Bilder neu erzeugen'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pod-mockups
+  cancel-in-progress: false
+
+jobs:
+  gen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Mockups erzeugen + Hauptbild tauschen
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          TYPE: ${{ github.event.inputs.type }}
+          ONLY: ${{ github.event.inputs.only }}
+          LIMIT: ${{ github.event.inputs.limit }}
+          GEN_ONLY: ${{ github.event.inputs.gen_only == 'true' && '1' || '' }}
+          FORCE: ${{ github.event.inputs.force == 'true' && '1' || '' }}
+        run: node automation/pod_fertig_mockups.mjs
+      - name: Commit
+        run: |
+          if [ -n "$(git status --porcelain pod/mockups/ social/designs/)" ]; then
+            git config user.name "luxestyle-autopilot"; git config user.email "bot@users.noreply.github.com"
+            git add pod/mockups/ social/designs/
+            git commit -m "POD: Fertig-Mockups (Design auf echtes Produkt) [skip ci]"
+            for i in 1 2 3 4 5; do git push origin HEAD:main && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else echo "keine neuen Mockups"; fi
