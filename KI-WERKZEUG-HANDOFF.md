@@ -4,6 +4,19 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-11 (Teil 2) - 5er-Block: 4 neue Geld-Seiten + breitere Verlinkung + Signup/OG
+- Neue Seiten (DE+EN, je mit Tool, Premium-Block, FAQPage, „keine Beratung", kein Affiliate):
+  `ki-abo-lohnt-sich` (Lohnt-sich-Check), `notgroschen-aufbauen` (Notgroschen-Rechner),
+  `inflation-einfach-erklaert` (Kaufkraft-Rechner). (+ vorher: KI-Betrug, Passives Einkommen, Altersvorsorge, Schein.)
+- Hub `geld-und-ki.html` (+EN) um diese Karten erweitert; Geld-Hub-Ruecklink jetzt auch auf
+  finanz-rechner/ki-spar-rechner/stundensatz/mwst/ki-und-krypto-daten.
+- **Inline-beehiiv-Signup-Formular** auf allen Cluster-Seiten (`tools/add_geld_signup.py`, Marker data-aban-signup)
+  -> bessere Conversion als blosser Link.
+- **OG-Bilder** fuer das ganze Cluster (`generate_geld_og.py`, 1200x630, flacher Marken-Stil, og:image injiziert).
+- **Neue-Seite-Routine:** Slug in `add_geld_hub_link.py` + `add_geld_signup.py` (DE-Listen) und `generate_geld_og.py`
+  (PAGES-Tupel) eintragen, Skripte laufen lassen -> Hub-Link + Signup + OG ueberall. Dann _redirects + sitemap + Hub-Karte.
+- Kontrolle: 882 Root+EN-Seiten 0 echte Broken-Links; OG-Abdeckung 874/884 (Rest interne Utility-Seiten).
+
 ## 2026-06-11 - Geld-&-KI-Cluster komplett + zentraler Hub (Newsletter-Session)
 - **Ehrliche Geld-Ecke gebaut (DE+EN, anti-hype, anfaengerfreundlich, „keine Anlage-/Steuer-/Rechtsberatung", kein Affiliate):**
   Maerkte, trading-tipps, krypto-fuer-einsteiger, etf-fuer-einsteiger (+TER-Rechner), sparplan-statt-trading

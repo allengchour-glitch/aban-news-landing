@@ -18,6 +18,7 @@ DE = [
     "steuer-basics-selbststaendige.html", "ki-aktien-hype-check.html",
     "ki-betrug-scam-check.html", "passives-einkommen-ki.html",
     "altersvorsorge-selbststaendige.html", "scheinselbststaendigkeit-vermeiden.html",
+    "ki-abo-lohnt-sich.html", "notgroschen-aufbauen.html", "inflation-einfach-erklaert.html",
 ]
 PAGES = DE + [os.path.join("en", f) for f in DE]
 
