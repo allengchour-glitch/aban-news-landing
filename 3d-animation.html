@@ -82,6 +82,13 @@
     </span>
   </div>
 
+  <div class="shapes" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:4px 0 6px">
+    <button class="shp btn" data-s="sphere">● Kugel</button>
+    <button class="shp btn" data-s="torus" style="background:transparent;color:var(--amber-dk);border:1px solid var(--line)">◍ Torus</button>
+    <button class="shp btn" data-s="helix" style="background:transparent;color:var(--amber-dk);border:1px solid var(--line)">⛓ Helix</button>
+    <button class="shp btn" data-s="wave" style="background:transparent;color:var(--amber-dk);border:1px solid var(--line)">≈ Welle</button>
+  </div>
+
   <section id="blenderWrap" hidden style="margin-top:34px">
     <h2 style="text-align:center">Mit Blender vorgerendert</h2>
     <p class="lead" style="margin-bottom:14px">Photorealistisch in der Cloud gerendert (Blender · Cycles) — als Video eingebettet. Läuft auch ohne JavaScript.</p>
@@ -91,8 +98,16 @@
     </div>
   </section>
 
+  <h2 style="text-align:center;margin-top:36px">Die Galerie — vier Formen, eine Engine</h2>
+  <div class="gallery" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px">
+    <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="sphere" data-points="120" data-color="#f0a93a" data-speed="1" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">Konstellations-Kugel</figcaption></figure>
+    <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="torus" data-points="180" data-color="#38bdf8" data-speed="1.1" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">Torus-Gitter</figcaption></figure>
+    <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="helix" data-points="120" data-color="#34d399" data-speed="0.9" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">Doppel-Helix</figcaption></figure>
+    <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="wave" data-points="170" data-color="#f472b6" data-speed="1" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">Wellen-Gitter</figcaption></figure>
+  </div>
+
   <h2>Was du hier siehst</h2>
-  <p>Jeder Punkt sitzt auf einer Kugel, wird in Echtzeit in 3D gedreht, perspektivisch projiziert und mit seinen nächsten Nachbarn verbunden — das ergibt den „Konstellations"-Look. Alles läuft mit purem JavaScript auf einem <code>&lt;canvas&gt;</code>, ohne externe Bibliothek.</p>
+  <p>Jeder Punkt sitzt auf einer Form (Kugel, Torus, Helix oder Wellen-Gitter), wird in Echtzeit in 3D gedreht, perspektivisch projiziert und mit seinen Nachbarn verbunden. Alles läuft mit purem JavaScript auf einem <code>&lt;canvas&gt;</code>, ohne externe Bibliothek — dieselbe ~5-KB-Engine für alle Formen.</p>
   <div class="tip"><h3>⚡ Leicht &amp; höflich</h3><p>Die Animation pausiert automatisch, wenn sie aus dem Bild scrollt oder der Tab im Hintergrund liegt — und zeigt ein ruhiges Standbild, wenn du „weniger Bewegung" in deinem System eingestellt hast.</p></div>
   <div class="tip"><h3>🔒 Nichts verlässt deinen Browser</h3><p>Kein Server, kein Tracking, kein Upload. Reine Mathematik, die in deinem Gerät gerechnet wird.</p></div>
 
@@ -156,6 +171,14 @@ document.addEventListener("DOMContentLoaded", function () {
   rS.addEventListener("input", function () { var s = (rS.value / 10).toFixed(1); vS.textContent = s + "×"; cv.dataset.speed = s; reboot(); });
   [].forEach.call(document.querySelectorAll(".sw"), function (el) {
     el.addEventListener("click", function () { cv.dataset.color = el.dataset.c; reboot(); });
+  });
+  var shp = [].slice.call(document.querySelectorAll(".shp"));
+  shp.forEach(function (el) {
+    el.addEventListener("click", function () {
+      cv.dataset.shape = el.dataset.s; reboot();
+      shp.forEach(function (b) { b.style.background = "transparent"; b.style.color = "#b45309"; b.style.border = "1px solid #ece3d4"; });
+      el.style.background = "#b45309"; el.style.color = "#fff"; el.style.border = "0";
+    });
   });
 });
 </script>
