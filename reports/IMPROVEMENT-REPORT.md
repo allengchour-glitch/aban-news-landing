@@ -1,29 +1,31 @@
 # Täglicher Verbesserungs-Report — abannews.com
 
-> Automatisch erzeugt: **2026-06-11 10:10 UTC** · 2009 HTML-Seiten geprüft · reine Heuristik, manuell verifizieren.
+> Automatisch erzeugt: **2026-06-11 20:12 UTC** · 2024 HTML-Seiten geprüft · reine Heuristik, manuell verifizieren.
 
-**Befunde:** 🔴 4 hoch · 🟡 0 mittel · 🟢 52 niedrig (Tonalität)
+**Befunde:** 🔴 6 hoch · 🟡 0 mittel · 🟢 53 niedrig (Tonalität)
 
 Ergänzend: `python3 tools/link_checker.py` prüft kaputte Links separat.
 
-## 🔴 Interner Link tot — 4
-- `ki-fuer-gnadenhof.html` — → /ki-fuer-tierheim.html
-- `ki-fuer-gnadenhof.html` — → /ki-fuer-tierarztpraxis.html
-- `ki-fuer-gnadenhof.html` — → /ki-fuer-reiterhof.html
-- `ki-fuer-gnadenhof.html` — → /ki-fuer-verein.html
+## 🔴 Interner Link tot — 6
+- `it/ki-fuer-mosterei.html` — → /ki-fuer-mosterei.html
+- `it/ki-fuer-mosterei.html` — → /en/ki-fuer-mosterei.html
+- `it/ki-fuer-mosterei.html` — → /fr/ki-fuer-mosterei.html
+- `it/ki-fuer-fischzucht.html` — → /ki-fuer-fischzucht.html
+- `it/ki-fuer-fischzucht.html` — → /en/ki-fuer-fischzucht.html
+- `it/ki-fuer-fischzucht.html` — → /fr/ki-fuer-fischzucht.html
 
-## 🟢 Voice: Hype-Wörter — 52
-- `ki-fuer-hochzeitsfotografen.html` — einzigartigen
-- `ki-fuer-orthopaedieschuhtechnik.html` — einzigartig
+## 🟢 Voice: Hype-Wörter — 53
+- `ki-fuer-onlineshops.html` — einzigartigen
 - `ueber-aban.html` — Revolution
-- `launch-manual.html` — disruptive, game-changer, revolutionary
-- `ki-fuer-lederwerkstatt.html` — einzigartig
-- `ki-fuer-werbeagenturen.html` — einzigartigen
-- `ki-fuer-eisdiele.html` — Mehrwert
+- `ki-fuer-hochzeitsfotografen.html` — einzigartigen
 - `ki-fuer-kalligraphie.html` — einzigartig
 - `ki-fuer-masseure.html` — Mehrwert
-- `ki-fuer-onlineshops.html` — einzigartigen
+- `ki-studio.html` — Mehrwert
+- `ki-fuer-lederwerkstatt.html` — einzigartig
+- `launch-manual.html` — disruptive, game-changer, revolutionary
 - `ki-fuer-smart-home.html` — Mehrwert
-- `themen/ki-buecher-kdp.html` — Mehrwert
-- … und 40 weitere
+- `ki-fuer-eisdiele.html` — Mehrwert
+- `ki-fuer-orthopaedieschuhtechnik.html` — einzigartig
+- `ki-fuer-werbeagenturen.html` — einzigartigen
+- … und 41 weitere
 
