@@ -4,6 +4,25 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-11 (Teil 3) — Freelancer-Tools + Cluster-QA (autonom, „weiter"-Loop)
+- **2 neue Funnel-Seiten (DE+EN, Tool, Premium-Block, FAQPage, keine Beratung):**
+  `kleinunternehmerregelung-einfach-erklaert` (Schnell-Check DE/AT/CH, Grenzen Stand 2025) +
+  `mahnung-schreiben` (Mahnungstext-Generator, 3 Stufen, Copy-Button; DE erzeugt dt., EN engl. Text).
+- **Bestehende Top-Seite integriert:** `rechnung-generator.html` war im Cluster unsichtbar → Hub-Karte,
+  Hub-Link, Premium-Nudge, Chip-Liste eingehängt. Plus 2 Hub-Leaks behoben (mwst-rechner, ki-und-krypto-daten
+  waren nicht im Hub verlinkt).
+- **Premium-Nudge auf 16 Tool-Seiten:** neuer Injektor `tools/add_tool_premium_nudge.py` (Marker
+  data-aban-premium, vor </main> bzw. <footer>, lang-aware, idempotent). Tool-Seiten funnelten vorher nur
+  in den Gratis-Newsletter, jetzt auch zu Premium/Founding.
+- **Cluster-Audit: 24/24 Geld-Seiten** mit vollem Funnel (Hub-Link ↔ OG ↔ Newsletter ↔ Premium, 0 Broken).
+  Letzte 2 Lücken (finanz-skills, geld-verdienen-mit-ki) bekamen Premium-Link in die CTA-Box.
+- **Site-weites Link-QA:** 2017 Hauptsite-Seiten gescannt → nur 4 echte Tote (Slugfehler auf
+  ki-fuer-gnadenhof) behoben → **0 echte Broken-Links**. Wichtig: `automatisierung-radar/dist` & andere
+  `*/dist`-Sub-Sites haben **eigenen Deploy-Root** → ihre absoluten Pfade NICHT als broken werten.
+- `mahnung-schreiben` auch in `online-tools.html` (Karte + ItemList-JSON-LD) gelistet.
+- **Neue-Seite-Routine (erweitert):** Slug eintragen in `add_geld_hub_link.py`, `add_geld_cluster_links.py`,
+  `add_tool_premium_nudge.py`, `generate_geld_og.py` → Skripte laufen → _redirects + sitemap + Hub-Karte.
+
 ## 2026-06-11 (Teil 2) - 5er-Block: 4 neue Geld-Seiten + breitere Verlinkung + Signup/OG
 - Neue Seiten (DE+EN, je mit Tool, Premium-Block, FAQPage, „keine Beratung", kein Affiliate):
   `ki-abo-lohnt-sich` (Lohnt-sich-Check), `notgroschen-aufbauen` (Notgroschen-Rechner),
