@@ -43,10 +43,6 @@ PAGES = [
                  "EMERGENCY FUND", "Build it", "How much buffer, how fast", "With calculator - not advice"),
  ("inflation-einfach-erklaert", "INFLATION", "Einfach erklärt", "Was sie fürs Geld bedeutet", "Kaufkraft-Rechner inklusive",
                  "INFLATION", "Explained", "What it means for your money", "Purchasing-power calculator"),
- ("kleinunternehmerregelung-einfach-erklaert", "KLEINUNTERNEHMER", "Einfach erklärt", "Grenzen DE/AT/CH + Schnell-Check", "Keine Steuerberatung",
-                 "SMALL BUSINESS", "VAT exemption", "Limits DE/AT/CH + quick check", "Not tax advice"),
- ("mahnung-schreiben", "MAHNUNG", "Schreiben", "3 Stufen + Text-Generator zum Kopieren", "Keine Rechtsberatung",
-                 "PAYMENT REMINDER", "Write it", "3 stages + copy-ready text generator", "Not legal advice"),
 ]
 
 FOOT_DE = "abannews.com  ·  ehrlich, anti-hype, keine Beratung"

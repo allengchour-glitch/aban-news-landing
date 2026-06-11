@@ -359,18 +359,6 @@ BRANCHEN = {
     "hochzeitsplaner":     ("Hochzeitsplaner",      ["Texte & Orga,", "nicht der grosse Tag"]),
     "tierbestattung":      ("Tierbestattung",       ["Würdevolle Texte,", "nicht der Beistand"]),
     "seniorenbetreuung":   ("Seniorenbetreuung",    ["Texte & Orga,", "nicht die Zuwendung"]),
-    "saunabetrieb":        ("Saunabetriebe",        ["Angebote & Aufguss,", "nicht die Hygiene"]),
-    "minigolfanlage":      ("Minigolfanlagen",      ["Angebote & Saison,", "nicht die Aufsicht"]),
-    "lasertag":            ("Lasertag-Arenen",      ["Angebote & Events,", "nicht das Briefing"]),
-    "gnadenhof":           ("Gnadenhöfe",           ["Porträts & Spenden,", "nicht die Tierpflege"]),
-    "surfschule":          ("Surfschulen",          ["Kurse & Camps,", "nicht die Wassersicherheit"]),
-    "nagelstudio":         ("Nagelstudios",         ["Leistungen & Social,", "nicht die Hygiene"]),
-    "indoorspielplatz":    ("Indoorspielplätze",    ["Angebote & Geburtstage,", "nicht die Aufsicht"]),
-    "trampolinpark":       ("Trampolinparks",       ["Angebote & Events,", "nicht die Sicherheit"]),
-    "bauernhofcafe":       ("Bauernhofcafés",       ["Karte & Saison,", "nicht die Hygiene"]),
-    "hochzeitsfotograf":   ("Hochzeitsfotografen",  ["Pakete & Anfragen,", "nicht das Foto"]),
-    "hundephysiotherapie": ("Hundephysiotherapie",  ["Texte & Orga,", "nicht die Diagnose"]),
-    "imkereibedarf":       ("Imkereibedarf",        ["Produkttexte & Listings,", "keine Bienenberatung"]),
 }
 
 

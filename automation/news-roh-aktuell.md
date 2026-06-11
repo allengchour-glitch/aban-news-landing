@@ -1,26 +1,26 @@
-# KI-News-Rohmaterial — 2026-06-11
+# KI-News-Rohmaterial — 2026-06-10
 
 > **Kuratier-Vorlage, KEINE fertige Ausgabe.** Echte Quellen, aggregiert. Wähle 3–5 relevante Meldungen, prüfe sie an der Quelle und schreibe sie in deiner Stimme (kein Hype). Dann via Werkbank/beehiiv versenden.
 
 ## OpenAI
-- [ ] **[How an astrophysicist uses Codex to help simulate black holes](https://openai.com/index/using-codex-to-simulate-black-holes)**  
-  _Thu, 11 Jun 2026 00:00:00 GMT_
-  Discover how astrophysicist Chi-kwan Chan uses Codex to build black hole simulations, helping scientists study extreme physics and test Einstein’s theory of general relativity.
-- [ ] **[Supporting Europe’s work in ensuring a trustworthy AI ecosystem](https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem)**  
-  _Thu, 11 Jun 2026 00:00:00 GMT_
-  OpenAI supports the EU Code of Practice on AI content transparency, advancing provenance standards and tools to help people understand AI-generated content.
-- [ ] **[Access OpenAI models and Codex through your Oracle cloud commitment](https://openai.com/index/openai-on-oracle-cloud)**  
-  _Wed, 10 Jun 2026 20:00:00 GMT_
-  Access OpenAI models and Codex through Oracle Cloud, using existing commitments to build and deploy AI with enterprise security and governance.
-- [ ] **[PRC-linked influence operations are targeting AI debates in the US](https://openai.com/index/prc-linked-influence-operations-ai-debates)**  
-  _Wed, 10 Jun 2026 12:00:00 GMT_
-  A new report from OpenAI details PRC-linked influence operations using AI to target U.S. tech debates, data center narratives, tariffs, and false claims  about ChatGPT.
 - [ ] **[From data to decisions: how LSEG is scaling trusted AI](https://openai.com/index/lseg)**  
   _Wed, 10 Jun 2026 00:00:00 GMT_
   See how LSEG uses OpenAI to scale trusted AI across its global business, accelerating insights, shrinking release cycles, and empowering 4,000 employees.
 - [ ] **[How engineers at Nextdoor use Codex to build without limits](https://openai.com/index/nextdoor)**  
   _Tue, 09 Jun 2026 12:00:00 GMT_
   How engineers at Nextdoor use Codex with GPT-5.5 to investigate hard-to-reproduce issues, build across platforms, and focus on product outcomes.
+- [ ] **[What Codex unlocks for Notion](https://openai.com/index/notion)**  
+  _Tue, 09 Jun 2026 10:00:00 GMT_
+  How Notion uses Codex to one-shot specs, build AI Voice Input for the web, and multiply engineering power across small teams.
+- [ ] **[Industrial policy for the Intelligence Age](https://openai.com/index/industrial-policy-for-the-intelligence-age)**  
+  _Tue, 09 Jun 2026 00:00:00 GMT_
+  Explore our ambitious, people-first industrial policy ideas for the AI era—focused on expanding opportunity, sharing prosperity, and building resilient institutions as advanced intelligence evolves.
+- [ ] **[Confidential submission of draft S-1 to the SEC](https://openai.com/index/openai-submits-confidential-s-1)**  
+  _Mon, 08 Jun 2026 14:00:00 GMT_
+  OpenAI confirms a confidential S-1 submission to the SEC and has not yet determined timing for further action.
+- [ ] **[Built to benefit everyone: our plan](https://openai.com/index/built-to-benefit-everyone-our-plan)**  
+  _Mon, 08 Jun 2026 01:30:00 GMT_
+  A vision for the future of AI, focusing on access, safety, and shared prosperity as OpenAI works to ensure AGI benefits everyone.
 
 ## Google AI
 - [ ] **[The latest AI news we announced in May 2026](https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/)**  
@@ -57,24 +57,24 @@
   _Thu, 04 Jun 2026 18:57:45 GMT_
 
 ## TechCrunch AI
-- [ ] **[Opendoor’s India exit is fueling a bigger conversation about AI and outsourcing](https://techcrunch.com/2026/06/10/opendoors-india-exit-is-fueling-a-bigger-conversation-about-ai-and-outsourcing/)**  
-  _Thu, 11 Jun 2026 04:02:19 +0000_
-  The decision comes as India emerges as the world’s largest GCC market.
-- [ ] **[Anthropic’s Dario Amodei has just one direct report](https://techcrunch.com/2026/06/10/anthropics-dario-amodei-has-just-one-direct-report/)**  
-  _Thu, 11 Jun 2026 03:53:06 +0000_
-  If you doubted his genius, doubt no more.
-- [ ] **[xAI fired an engineer who raised alarms about Grok safety, new lawsuit claims](https://techcrunch.com/2026/06/10/xai-fired-an-engineer-who-raised-alarms-about-grok-safety-new-lawsuit-claims/)**  
-  _Wed, 10 Jun 2026 22:31:19 +0000_
-  A former xAI engineer is suing the company and SpaceX, alleging he was fired for raising AI safety concerns about Grok days before SpaceX's historic IPO.
-- [ ] **[Fresh off bond sale, Amazon borrows $17.5B from banks as AI spending continues](https://techcrunch.com/2026/06/10/fresh-off-bond-sale-amazon-borrows-17-5-billion-from-banks-as-ai-spending-continues/)**  
-  _Wed, 10 Jun 2026 20:19:31 +0000_
-  Companies are burning through exorbitant sums of money to keep pace in the AI arms race. Debt is climbing.
-- [ ] **[‘AI-pilled’ firms spend $7,500 per employee each month on AI](https://techcrunch.com/2026/06/10/ai-pilled-firms-spend-7500-per-employee-each-month-on-ai/)**  
-  _Wed, 10 Jun 2026 17:07:35 +0000_
-  The most AI-obsessed firms are spending roughly $7,500 monthly per employee on AI, per Ramp AI Index. That's not more than an engineer's salary — yet.
 - [ ] **[How memory tools can make AI models worse](https://techcrunch.com/2026/06/10/how-memory-tools-can-make-ai-models-worse/)**  
   _Wed, 10 Jun 2026 16:11:08 +0000_
   New research suggests that AI memory systems can degrade model performance and encourage sycophantic tendencies.
+- [ ] **[Cybersecurity researchers aren’t happy about the guardrails on Anthropic’s Fable](https://techcrunch.com/2026/06/10/cybersecurity-researchers-arent-happy-about-the-guardrails-on-anthropics-fable/)**  
+  _Wed, 10 Jun 2026 15:41:22 +0000_
+  Cybersecurity researchers are complaining that Anthropic's new model Fable has guardrails that are too strict for any cybersecurity work.
+- [ ] **[Datadog veterans launch AI coding startup Niteshift on a bet against Big AI lock-in](https://techcrunch.com/2026/06/10/datadog-veterans-launch-ai-coding-startup-niteshift-on-a-bet-against-big-ai-lock-in/)**  
+  _Wed, 10 Jun 2026 15:00:00 +0000_
+  AI coding agent startup Niteshift has raised a $7 million seed round from a who's who of angels. It's betting companies will want power over, not lock-in with model makers.
+- [ ] **[The three hard-tech moonshots fueling SpaceX’s unbelievable IPO](https://techcrunch.com/2026/06/10/the-three-hard-tech-moonshots-fueling-spacexs-unbelievable-ipo/)**  
+  _Wed, 10 Jun 2026 14:48:01 +0000_
+  Most of the value in SpaceX's IPO is effectively a call option on the company's ambitious space data center plans.
+- [ ] **[Warner Music acquires AI attribution startup Sureel AI](https://techcrunch.com/2026/06/10/warner-music-acquires-ai-attribution-startup-sureel-ai/)**  
+  _Wed, 10 Jun 2026 14:31:30 +0000_
+  Through the acquisition, WMG aims to better track when its artists' work is used in AI-generated content or for training AI models.
+- [ ] **[Jedify raises $24M to help companies arm AI agents with context on their business](https://techcrunch.com/2026/06/10/jedify-raises-24m-to-help-companies-arm-ai-agents-with-context-on-their-business/)**  
+  _Wed, 10 Jun 2026 13:33:09 +0000_
+  The funding round was led by Norwest, with participation from S Capital VC, Cerca Partners, and Oceans Ventures. Snowflake Ventures also participated as a strategic investor.
 
 ## VentureBeat AI
 - [ ] **[Google just redesigned the search box for the first time in 25 years — here’s why it matters more than you think.](https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think)**  
@@ -117,31 +117,58 @@
   This week I’ve been at SXSW London. There’s been music, film, and a lot—and I mean a lot—of talk about AI. I also had the opportunity to sit down with Gloria Mark, a psychologist at the University of …
 
 ## heise
-- [ ] **[heise+ | Täuschen mit KI: Ein Deepfake-Experiment im Video-Test](https://www.heise.de/hintergrund/Taeuschen-mit-KI-Ein-Deepfake-Experiment-im-Video-Test-11322994.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus)**  
-  _2026-06-11T10:30:00+02:00_
-  Ein Videoanruf, ein bekanntes Lächeln, eine Falle: Wir haben es ausprobiert und einen Redakteur mit einem Deepfake konfrontiert. Ein Videobeitrag.
-- [ ] **[heise+ | KI-Bildbearbeitung mit ComfyUI-Apps: Lichtstimmung ändern und Fotomotive drehen](https://www.heise.de/ratgeber/KI-Bildbearbeitung-mit-ComfyUI-Apps-Lichtstimmung-aendern-und-Fotomotive-drehen-11219739.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus)**  
-  _2026-06-11T09:00:00+02:00_
-  ComfyUI vereinfacht im App-Modus die KI-Bearbeitung von Porträt- und Produktfotos: Kamera drehen, Licht ändern, hochskalieren mit wenigen Klicks.
+- [ ] **[KI-Transparenz: Wie die EU künstlich generierte Inhalte entlarven will](https://www.heise.de/news/KI-Transparenz-Wie-die-EU-kuenstlich-generierte-Inhalte-entlarven-will-11327956.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-10T18:27:00+02:00_
+  Die EU-Kommission hat den finalen Verhaltenskodex zur Kennzeichnung von KI-Inhalten vorgelegt, der Anbietern zweckmäßige Wege zur Einhaltung des AI Act weist.
+- [ ] **[KI im Job: Weiterbildung, Governance, Kompetenz – alles Mangelware](https://www.heise.de/news/KI-im-Job-Nur-jeder-fuenfte-Beschaeftigte-fuehlt-sich-geruestet-11327816.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-10T17:49:00+02:00_
+  Nur 21 Prozent der Beschäftigten in Deutschland fühlen sich fit für KI im Job. Ebenso fehlt es an Fortbildung und Richtlinien in den Unternehmen.
+- [ ] **[Trump-Regierung verpasst ziviler KI-Prüfstelle angeblich einen Maulkorb](https://www.heise.de/news/Trump-Regierung-verpasst-ziviler-KI-Pruefstelle-angeblich-einen-Maulkorb-11327676.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-10T15:58:00+02:00_
+  Das Weiße Haus schränkt laut einem Bericht die Arbeit der zivilen KI-Prüfstelle CAISI ein. Hintergrund sind wachsende Sorgen über nationale Sicherheitsrisiken.
+- [ ] **[Googles KI-App Gemini scheint derzeit ausgefallen zu sein](https://www.heise.de/news/Gemini-App-meldet-Verbindungsfehler-und-Ausfaelle-11327670.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-10T15:24:00+02:00_
+  Nutzer der Smartphone-KI-App Gemini melden derzeit vermehrt Ausfälle. Die Anwendung reagiert nicht oder zeigt Fehlermeldungen an.
+- [ ] **[TSMC stimmt auf Preiserhöhungen ein, Samsung wächst zur Alternative](https://www.heise.de/news/TSMC-stimmt-auf-Preiserhoehungen-ein-Samsung-waechst-zur-Alternative-11327608.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-10T15:21:00+02:00_
+  Höhere Produktionskosten sollen die Chippreise beim Weltmarktführer TSMC hochtreiben. Die hohe Nachfrage von KI-Hyperscalern tut ihr Übriges.
+- [ ] **[KI-Update: WWDC, Google soll haften, KI-Sicherheit, Mythos ist da, KI-Airhockey](https://www.heise.de/news/KI-Update-WWDC-Google-soll-haften-KI-Sicherheit-Mythos-ist-da-KI-Airhockey-11322960.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag)**  
+  _2026-06-10T15:00:00+02:00_
+  Das „KI-Update“ liefert werktäglich eine Zusammenfassung der wichtigsten KI-Entwicklungen.
 
 ## Golem
-- [ ] **[Arbeitsmarktkonomie: konomen uneinig ber Jobverluste durch KI](https://www.golem.de/news/arbeitsmarktoekonomie-oekonomen-uneinig-ueber-jobverluste-durch-ki-2606-209647.html)**  
-  _Thu, 11 Jun 2026 09:24:02 +0200_
-  Eine Befragung von 16 konomen zeigt groe Zustimmung bei Produktivitt, aber Diskrepanzen bezglich Netto-Jobverlusten. (<a href=" <a href=" <img src=" alt="" width="1" height="1" />
-- [ ] **[Kampf um Unternehmenskunden: OpenAI plant deutliche Preissenkungen bei Token](https://www.golem.de/news/kampf-um-unternehmenskunden-openai-plant-deutliche-preissenkungen-bei-token-2606-209644.html)**  
-  _Thu, 11 Jun 2026 08:57:01 +0200_
-  OpenAI reagiert auf die starke Konkurrenz von Anthropic und plant niedrigere Preise fr seine Unternehmenskunden. (<a href=" <a href=" <img src=" alt="" width="1" height="1" />
+- [ ] **[Anzeige: CustomGPTs als KI-Assistenten im Arbeitsalltag entwickeln](https://www.golem.de/news/anzeige-customgpts-als-ki-assistenten-im-arbeitsalltag-entwickeln-2606-209385.html)**  
+  _Wed, 10 Jun 2026 18:45:01 +0200_
+  CustomGPTs machen KI-Assistenten wiederverwendbar und steuerbar. Ein Online-Workshop zeigt, wie sich in einem Tag zwei Assistenten und ein digitaler Zwilling als Business-Co-Pilot aufsetzen lassen. (<…
+- [ ] **[Ministerprsident von Thringen: FAZ lscht KI-generierten Beitrag von Mario Voigt](https://www.golem.de/news/ministerpraesident-von-thueringen-faz-loescht-ki-generierten-beitrag-von-mario-voigt-2606-209634.html)**  
+  _Wed, 10 Jun 2026 18:20:01 +0200_
+  Der thringische Ministerprsident lie einen Gastbeitrag fr die FAZ offenbar zu 100 Prozent von einer KI schreiben. Kenntlich machte er es nicht. (<a href=" <a href=" <img src=" alt="" width="1" height=…
+- [ ] **[Urteil gegen Google: Strerhaftung gilt nicht fr KI-bersicht von Suchergebnissen](https://www.golem.de/news/google-stoererhaftung-gilt-nicht-fuer-ki-uebersicht-von-suchergebnissen-2606-209625.html)**  
+  _Wed, 10 Jun 2026 16:40:01 +0200_
+  Google kann direkt fr die Inhalte der KI-bersichten haftbar gemacht werden. Der bisherige Schutz von Suchmaschinen greift dann nicht mehr. (<a href=" <a href=" <img src=" alt="" width="1" height="1" /…
+- [ ] **[Neural Dawn: ARM und Sumo Digital zeigen Mali-KI-Rendering-Features](https://www.golem.de/news/neural-dawn-arm-und-sumo-digital-zeigen-mali-ki-rendering-features-2606-209621.html)**  
+  _Wed, 10 Jun 2026 15:15:02 +0200_
+  ARMs Neural Technology soll auf Smartphones zu PCs und Konsolen vergleichbare Grafik ermglichen. Einen Haken hat die Technik aber. (<a href=" <a href=" <img src=" alt="" width="1" height="1" />
 
 ## t3n
-- [ ] **[Dario Amodei: Anthropic-Chef fordert KI-Behörde nach Vorbild der Flugaufsicht](https://t3n.de/news/dario-amodei-anthropic-chef-fordert-ki-behoerde-nach-vorbild-der-flugaufsicht-1747039/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Thu, 11 Jun 2026 08:00:14 +0200_
-  Der OpenAI-Rivale Anthropic spricht sich schon länger für eine härtere Regulierung der KI-Entwicklung aus. Jetzt fordert Firmenchef Dario Amodei sogar eine Notbremse für die Regierung.weiterlesen auf …
-- [ ] **[Amazon, Nvidia und mehr: Tech-Konzerne pumpen Rekordsumme in deutsches Robotik-Startup](https://t3n.de/news/finanzierungsrunde-neura-robotics-1747028/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
-  _Wed, 10 Jun 2026 21:28:46 +0200_
-  Neura Robotics hat in einer Finanzierungsrunde 1,4 Milliarden US-Dollar eingesammelt – Rekord. Beteiligt waren Konzerne wie Amazon, Nvidia sowie Bosch und Schaeffler. Das Geld soll in die Produktion v…
 - [ ] **[„Wow, das ist kurz“: Psychologin darüber, wie KI-Chatbots unsere Aufmerksamkeitsspanne verringern](https://t3n.de/news/wow-das-ist-wirklich-kurz-psychologin-darueber-wie-ki-chatbots-unsere-aufmerksamkeitsspanne-verringern-1746475/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
   _Wed, 10 Jun 2026 16:00:31 +0200_
   Die Psychologin Gloria Mark untersucht seit mehr als zwanzig Jahren, wie sich die Nutzung von digitalen Technologien auf unser Gehirn und damit unsere Aufmerksaweiterlesen auf t3n.de
+- [ ] **[KI-Agent in Slack: 60 Prozent der Anfragen automatisch gelöst, 30 Stunden gespart](https://t3n.de/news/ki-agent-interner-support-notion-1746434/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Wed, 10 Jun 2026 14:15:48 +0200_
+  Ein gut gepflegtes Wiki löst kein Support-Problem, Mitarbeitende fragen trotzdem in Slack. Wie ein KI-Agent das ändert.weiterlesen auf t3n.de
+- [ ] **[Empfehlung statt Suchergebnis: Was die neuen Google-Anzeigenformate für das Marketing bedeuten](https://t3n.de/news/empfehlung-statt-suchergebnis-was-die-neuen-google-anzeigenformate-fuer-das-marketing-bedeuten-1746827/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Wed, 10 Jun 2026 14:00:03 +0200_
+  Google hat zwei neue Gemini-basierte Anzeigenformate für seinen KI-Modus vorgestellt. Außerdem startet das Unternehmen einen intelligenten Warenkorb, der übeweiterlesen auf t3n.de
+- [ ] **[KI frisst Klicks: So stark senken AI-Overviews den Traffic zu deiner Website](https://t3n.de/news/ki-frisst-klicks-so-stark-senken-ai-overviews-den-traffic-zu-deiner-website-1746912/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Wed, 10 Jun 2026 13:55:56 +0200_
+  Der Anteil der Zero-Click-Suchen bei Google hat einer Analyse nach deutlich zugenommen. Für Anbieter von Online-Inhalten, die auf den Suchmaschinen-Traffic angewiesen sind, kann das zu Umsatzeinbrüche…
+- [ ] **[Datenschutz auf Knopfdruck? Was KI im DSGVO-Alltag wirklich leisten kann – und was nicht](https://t3n.de/news/datenschutz-ki-dsgvo-alltag-1741238/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Wed, 10 Jun 2026 13:30:00 +0200_
+  Datenschutz scheitert nicht am Fachwissen, sondern an der Zuarbeit aus Fachbereichen. Ein KI-Assistent ändert das: VVT, DSFA und TOM werden strukturiert, prüfbar und skalierbar. Eine Praxis-Demo zeigt…
+- [ ] **[Münchner Gericht entscheidet: Google ist für falsche KI-Übersichten direkt verantwortlich](https://t3n.de/news/muenchner-gericht-entscheidet-google-ist-fuer-falsche-ki-uebersichten-direkt-verantwortlich-1746841/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed)**  
+  _Wed, 10 Jun 2026 13:00:06 +0200_
+  Googles KI-Übersichten haben schon mehrfach für Kritik gesorgt – und jetzt auch ein deutsches Landgericht beschäftigt. Zwei Verlagsunternehmen hatten wegen falschen Behauptungen gegen den Tech-Konzern…
 
 ## netzpolitik.org
 - [ ] **[Demo gegen Überwachung: „Wir können die Welle brechen“](https://netzpolitik.org/2026/demo-gegen-ueberwachung-wir-koennen-die-welle-brechen/)**  
@@ -161,4 +188,4 @@
   EU-Kommissarin Henna Virkkunen auf der Pressekonferenz zum Tech Sovereignty Package    –   Alle Rechte vorbehalten: IMAGO / Anadolu AgencyDie EU-Kommission hat ein Gesetz vorgestellt, mit dem sich die…
 
 ---
-Gesammelt: 48 Meldungen aus 10 Quellen. Quellen immer gegenprüfen — Aggregation ersetzt keine Recherche.
+Gesammelt: 57 Meldungen aus 10 Quellen. Quellen immer gegenprüfen — Aggregation ersetzt keine Recherche.

@@ -131,11 +131,6 @@
 /steuer           /steuer-basics-selbststaendige.html  301
 /steuer-basics    /steuer-basics-selbststaendige.html  301
 /steuer-selbststaendige /steuer-basics-selbststaendige.html 301
-/kleinunternehmer /kleinunternehmerregelung-einfach-erklaert.html 301
-/kleinunternehmerregelung /kleinunternehmerregelung-einfach-erklaert.html 301
-/kur              /kleinunternehmerregelung-einfach-erklaert.html 301
-/en/small-business /en/kleinunternehmerregelung-einfach-erklaert.html 301
-/en/vat-exemption /en/kleinunternehmerregelung-einfach-erklaert.html 301
 /ki-aktien        /ki-aktien-hype-check.html    301
 /ki-aktien-hype-check /ki-aktien-hype-check.html 301
 /ai-aktien        /ki-aktien-hype-check.html    301
@@ -320,8 +315,3 @@
 /audit               /ki-sichtbarkeit-audit.html  301
 /ki-audit            /ki-sichtbarkeit-audit.html  301
 /sichtbarkeit-audit  /ki-sichtbarkeit-audit.html  301
-
-/mahnung          /mahnung-schreiben.html 301
-/mahnung-schreiben /mahnung-schreiben.html 301
-/en/payment-reminder /en/mahnung-schreiben.html 301
-/en/reminder      /en/mahnung-schreiben.html 301
