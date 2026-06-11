@@ -197,6 +197,55 @@ const args = rest.filter(a=>!a.startsWith('--'));
     });
     return;
   }
-  console.error('Befehl unbekannt. Siehe Kopf der Datei (context-create | login | check | ig-delete | tiktok-delete).');
+  if (cmd === 'tiktok-upload'){
+    // Lädt ein Video (CDN-URL) in TikTok Studio hoch. ARG1=Video-URL, ARG2=Caption.
+    // Mit --confirm wird automatisch auf "Posten" geklickt (unbeaufsichtigter Cloud-Lauf).
+    need(CTX,'BROWSERBASE_CONTEXT_ID');
+    const vidUrl = args[0]; const caption = args[1] || '';
+    if(!vidUrl){ console.error('! Video-URL fehlt.'); process.exit(1); }
+    // Video in den Runner laden (Playwright überträgt die Datei dann übers Protokoll).
+    const fs = await import('node:fs');
+    const buf = Buffer.from(await (await fetch(vidUrl)).arrayBuffer());
+    fs.writeFileSync('/tmp/upload.mp4', buf);
+    console.log('Video geladen:', buf.length, 'bytes');
+    await withPage(async (page)=>{
+      await page.goto('https://www.tiktok.com/tiktokstudio/upload?lang=de', { waitUntil:'networkidle', timeout:60000 });
+      await page.waitForTimeout(4000);
+      const u = page.url();
+      if (/\/login/.test(u)) { await page.screenshot({path:'tt-upload-fail.png'}); throw new Error('Nicht eingeloggt (auf /login umgeleitet) — erst login-start/login-release für TikTok.'); }
+      let set = false;
+      try { await page.locator('input[type="file"]').first.setInputFiles?.('/tmp/upload.mp4'); set = true; } catch {}
+      if (!set) {
+        try { await page.setInputFiles('input[type="file"]', '/tmp/upload.mp4', { timeout: 10000 }); set = true; } catch {}
+      }
+      if (!set) {
+        for (const fr of page.frames()) {
+          try { await fr.setInputFiles('input[type="file"]', '/tmp/upload.mp4', { timeout: 5000 }); set = true; break; } catch {}
+        }
+      }
+      if (!set) { await page.screenshot({path:'tt-upload-fail.png'}); throw new Error('Datei-Input nicht gefunden (tt-upload-fail.png).'); }
+      console.log('Datei gesetzt — warte auf Verarbeitung …');
+      await page.waitForTimeout(15000);
+      if (caption) {
+        try {
+          const cap = page.locator('div[contenteditable="true"]').first();
+          await cap.click({ timeout: 8000 });
+          // Vorbefüllten Dateinamen ersetzen:
+          await page.keyboard.press('Control+a'); await page.keyboard.press('Delete');
+          await cap.type(caption, { delay: 12 });
+        } catch (e) { console.error('Caption setzen fehlgeschlagen:', e.message); }
+      }
+      await page.waitForTimeout(2000);
+      await page.screenshot({ path: 'tt-upload-ready.png' });
+      if (!confirm) { console.log('DRY: Video + Caption vorbereitet (tt-upload-ready.png), NICHT gepostet.'); return; }
+      const posted = await clickFirst(page, ['button[data-e2e="post_video_button"]','button:has-text("Posten")','button:has-text("Post")'], 8000);
+      if (!posted) { await page.screenshot({path:'tt-upload-fail.png'}); throw new Error('Posten-Button nicht gefunden (tt-upload-fail.png).'); }
+      await page.waitForTimeout(10000);
+      await page.screenshot({ path: 'tt-upload-done.png' });
+      console.log('✓ Gepostet (tt-upload-done.png prüfen).');
+    });
+    return;
+  }
+  console.error('Befehl unbekannt. Siehe Kopf der Datei (context-create | login | check | ig-delete | tiktok-delete | tiktok-upload).');
   process.exit(1);
 })().catch(e=>{ console.error('Fehler:', e.message); process.exit(1); });
