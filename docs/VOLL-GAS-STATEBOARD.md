@@ -37,7 +37,10 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
   5. Optional: EN/FR/IT-Versionen der Tool-Seite.
 - **Voller Plan:** `~/.claude/plans/verlinke-die-themen-am-nifty-swan.md`.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **357 live, alle viersprachig (de/en/fr/it ≈ 1428 Seiten)** 🎉 350+ (Parallel-Session zählt evtl. anders)
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **363 live, alle viersprachig (de/en/fr/it ≈ 1452 Seiten)** 🎉 350+ (Parallel-Session zählt evtl. anders)
+
+- **Welle 97 (3 Hubs):** Pilzzucht, Alpakahof, Straußenfarm — **direkt viersprachig**. (Pilzzucht: KI bestimmt KEINE Pilze [Verwechslung lebensgefährlich] + LMIV/HCVO; Alpakahof: kein Tierpflege-/Führungs-Ersatz + §11 TierSchG; Straußenfarm: keine Tierhaltung/Schlacht-/Kennzeichnungs-Pflichten per KI.) IT-Dateien nach Subagent-Session-Limit (Reset 20:20 UTC) direkt in der Hauptsession übersetzt+gebaut.
+- **⏳ OFFEN für nächste Session (Subagent-Limit):** billardcafe, bogensportanlage, paintballanlage — DE/EN waren gebaut, FR+IT fehlten; bei Reclaim verloren → **komplett neu bauen** (Slugs auf main noch frei). Außerdem als Queue: schneckenzucht, wanderreitstation, kegelbahn, dartshalle, schiessstand (sensibel: Waffenrecht), modelleisenbahn-Alternativen.
 
 - **Welle 95–96 (5 Hubs, „max agenten" #8, 352→357):** Mosterei, Ölmühle, Fischzucht, Destillerie, Freibad — **direkt viersprachig**. (Mosterei LMIV/Sulfite + Jugendschutz/Steuer bei vergorenem Most; Ölmühle LMIV + keine HCVO-Heilversprechen; Fischzucht Tierwohl/Hygiene/Wasserrecht + Fisch-Allergen/Kühlkette; Destillerie Jugendschutz 18 + Alkoholwerbe-/Steuerrecht [Branntwein]; Freibad Aufsicht/Badesicherheit + Wasserhygiene.) **modeboutique (Singular) verworfen** — Duplikat von ki-fuer-modeboutiquen (bereits auf main); Lehre: vor Slug-Wahl auch PLURAL-Varianten gegen main prüfen. mosterei-it + fischzucht-it nach Session-Limit direkt in der Hauptsession gebaut.
 
