@@ -127,7 +127,13 @@ export async function onRequestPost({ request, env }) {
     const u = safeUrl(clamp(b.website || b.url, 200));
     if (u) siteText = await fetchSiteText(u);
 
-    const prompt = buildPrompt(b, siteText);
+    const isEN = String(b.lang || b.language || "").toLowerCase().startsWith("en");
+    let prompt = buildPrompt(b, siteText);
+    if (isEN) prompt += "\n\nIMPORTANT: Write the entire report in English (keep the same section structure).";
+    const system = isEN ? SYSTEM.replace(
+      "Du bist die KI-Sichtbarkeits-Auditorin von aban news (DACH, anti-hype, ehrlich, du-Form).",
+      "You are the AI-visibility auditor of aban news (anti-hype, honest, direct). Respond in English."
+    ) : SYSTEM;
     const model = env.GENERATE_MODEL || "claude-sonnet-4-6";
     const ctl = new AbortController();
     const t = setTimeout(() => ctl.abort(), TIMEOUT_MS);
@@ -136,7 +142,7 @@ export async function onRequestPost({ request, env }) {
       resp = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST", signal: ctl.signal,
         headers: { "x-api-key": env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json" },
-        body: JSON.stringify({ model, max_tokens: 2400, system: SYSTEM, messages: [{ role: "user", content: prompt }] }),
+        body: JSON.stringify({ model, max_tokens: 2400, system, messages: [{ role: "user", content: prompt }] }),
       });
     } finally { clearTimeout(t); }
 

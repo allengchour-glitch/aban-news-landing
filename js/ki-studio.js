@@ -86,10 +86,13 @@
 
   // ---------- Tools ----------
   function post(url, body) {
+    // Sprache mitsenden → die Engine antwortet auf der Seitensprache (DE/EN).
+    var payload = body || {};
+    if (payload.lang == null) payload.lang = EN ? 'en' : 'de';
     return fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Pro-Key': key || '' },
-      body: JSON.stringify(body)
+      body: JSON.stringify(payload)
     }).then(function (r) { return r.json().then(function (d) { return { status: r.status, d: d }; }); });
   }
   function errText(status, d) {

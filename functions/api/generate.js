@@ -33,6 +33,10 @@ const SYSTEM =
   "Du bist die Schreib- & Strategie-KI von aban news (DACH, anti-hype, ehrlich, du-Form). " +
   "Schreib klar, konkret, ohne Buzzwords und ohne leere Superlative. Keine erfundenen Zahlen, " +
   "Preise oder Quellen. Deutsch, sofort verwendbar. Halte sachliche, seriöse Tonalität.";
+const SYSTEM_EN =
+  "You are the writing & strategy AI of aban news (anti-hype, honest, direct). " +
+  "Write clearly and concretely, no buzzwords or empty superlatives. No invented numbers, " +
+  "prices or sources. Respond in English, ready to use. Keep a factual, professional tone.";
 
 function buildPrompt(b) {
   const kind = clamp(b.kind || "text", 24);
@@ -187,7 +191,10 @@ export async function onRequestPost({ request, env }) {
       const lmap = { kurz: "kurz & knapp", mittel: "mittlere Länge", lang: "ausführlich", short: "kurz & knapp", medium: "mittlere Länge", long: "ausführlich" };
       vorgaben.push("Länge: " + (lmap[lv] || clamp(lv, 30)));
     }
-    const prompt = buildPrompt(b) + (vorgaben.length ? "\n\nVorgaben — " + vorgaben.join(" · ") + "." : "");
+    const isEN = String(b.lang || b.language || "").toLowerCase().startsWith("en");
+    let prompt = buildPrompt(b) + (vorgaben.length ? "\n\nVorgaben — " + vorgaben.join(" · ") + "." : "");
+    if (isEN) prompt += "\n\nIMPORTANT: Write the entire output in English.";
+    const system = isEN ? SYSTEM_EN : SYSTEM;
     const model = env.GENERATE_MODEL || "claude-sonnet-4-6";
     const ctl = new AbortController();
     const t = setTimeout(() => ctl.abort(), TIMEOUT_MS);
@@ -197,7 +204,7 @@ export async function onRequestPost({ request, env }) {
         method: "POST",
         signal: ctl.signal,
         headers: { "x-api-key": env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json" },
-        body: JSON.stringify({ model, max_tokens: maxTok, system: SYSTEM, messages: [{ role: "user", content: prompt }] }),
+        body: JSON.stringify({ model, max_tokens: maxTok, system, messages: [{ role: "user", content: prompt }] }),
       });
     } finally { clearTimeout(t); }
 
