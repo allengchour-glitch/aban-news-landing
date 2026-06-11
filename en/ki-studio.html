@@ -199,6 +199,40 @@
           <p class="hint">Free basics: <a href="/ki-sichtbarkeit-audit.html">AI visibility audit →</a></p>
         </div>
 
+        <!-- 5) Translate & adapt -->
+        <div class="tool" id="toolTranslate" data-locked="1">
+          <h3>🌐 Translate &amp; adapt</h3>
+          <p class="td">DE↔EN (or others) — translated naturally with tone adaptation, not literal.</p>
+          <label for="trText">Your text</label>
+          <textarea id="trText" placeholder="Text to translate …"></textarea>
+          <label for="trZiel">Target language / style</label>
+          <input type="text" id="trZiel" placeholder="e.g. German, professional">
+          <button type="button" class="btn btn--amber btn--sm run" data-tool="translate">Translate</button>
+          <div class="lockmsg" data-lock>🔒 Enter your key above to start.</div>
+          <div class="out" id="outTr"></div>
+        </div>
+
+        <!-- 6) Prompt refiner Pro -->
+        <div class="tool" id="toolPrompt" data-locked="1">
+          <h3>🧩 Prompt refiner Pro</h3>
+          <p class="td">Your raw prompt, sharpened — role, context, format + a short rationale.</p>
+          <label for="prText">Your prompt</label>
+          <textarea id="prText" placeholder="Paste raw prompt …"></textarea>
+          <button type="button" class="btn btn--amber btn--sm run" data-tool="prompt">Improve</button>
+          <div class="lockmsg" data-lock>🔒 Enter your key above to start.</div>
+          <div class="out" id="outPr"></div>
+          <p class="hint">Free basics: <a href="/ki-prompt-checker.html">Prompt improver →</a></p>
+        </div>
+
+        <!-- 7) Market briefing -->
+        <div class="tool" id="toolBrief" data-locked="1">
+          <h3>📊 Market briefing</h3>
+          <p class="td">AI summary of current markets (data from <a href="/maerkte.html">/maerkte</a>). Not investment advice.</p>
+          <button type="button" class="btn btn--amber btn--sm run" data-tool="brief">Create briefing</button>
+          <div class="lockmsg" data-lock>🔒 Enter your key above to start.</div>
+          <div class="out" id="outBrief"></div>
+        </div>
+
       </div>
     </section>
 
@@ -207,11 +241,11 @@
       <h2>What's coming to the Studio next</h2>
       <p class="sub">aban Pro keeps growing — these tools are next (Pro members get them at no extra cost):</p>
       <div class="grid3">
-        <div class="mini"><b>📅 Content planner ✓</b><p>2-week editorial plan — <b>now in the "AI texts" tool above</b> (pick "Content plan").</p></div>
-        <div class="mini"><b>📧 Email series ✓</b><p>3-part welcome/follow-up sequence — <b>now in the tool above</b> (pick "Email series").</p></div>
-        <div class="mini"><b>🧩 Prompt refiner Pro</b><p>Your prompts rewritten to be sharper — with reasoning.</p></div>
-        <div class="mini"><b>📊 Market briefing</b><p>Your watchlist briefing as an AI summary (from /maerkte).</p></div>
-        <div class="mini"><b>🌐 Translate &amp; adapt</b><p>DE↔EN with tone adaptation, not just literal.</p></div>
+        <div class="mini"><b>✓ Already live</b><p>Texts, email, roadmap, <b>content plan</b>, <b>email series</b> (in "AI texts") + translate, prompt refiner, market briefing.</p></div>
+        <div class="mini"><b>📚 Industry templates</b><p>Ready-made prompt packs per industry — one click instead of typing.</p></div>
+        <div class="mini"><b>🗓️ Scheduled reports</b><p>Your market / visibility briefing automatically by email.</p></div>
+        <div class="mini"><b>👥 Team seats</b><p>One Pro plan for several people on the team.</p></div>
+        <div class="mini"><b>🔌 API access</b><p>Plug the tools into your own workflows.</p></div>
         <div class="mini"><b>🔁 Your tool</b><p>What's missing? <a href="mailto:hallo@abannews.com?subject=AI%20Studio%20wish">Tell us →</a></p></div>
       </div>
     </section>

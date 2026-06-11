@@ -140,8 +140,40 @@
             return { status: r.status, d: d, text: t || T.err };
           });
       });
+    } else if (tool === 'translate') {
+      run('toolTranslate', btn, 'outTr', function () {
+        return post('/api/generate', { kind: 'translate', text: val('trText'), ziel: val('trZiel') || (EN ? 'German, natural' : 'Englisch, natürlich') })
+          .then(function (r) { return { status: r.status, d: r.d, text: r.d && r.d.text }; });
+      });
+    } else if (tool === 'prompt') {
+      run('toolPrompt', btn, 'outPr', function () {
+        return post('/api/generate', { kind: 'prompt', text: val('prText') })
+          .then(function (r) { return { status: r.status, d: r.d, text: r.d && r.d.text }; });
+      });
+    } else if (tool === 'brief') {
+      run('toolBrief', btn, 'outBrief', function () {
+        return marketSummary().then(function (txt) {
+          if (!txt) return { status: 200, d: {}, text: T.err };
+          return post('/api/generate', { kind: 'marketbrief', text: txt })
+            .then(function (r) { return { status: r.status, d: r.d, text: r.d && r.d.text }; });
+        });
+      });
     }
   });
+
+  // Kompaktes Markt-Datenpaket aus /data/markets.json (für das Markt-Briefing).
+  function marketSummary() {
+    return fetch('/data/markets.json', { cache: 'no-cache' }).then(function (r) { return r.json(); })
+      .then(function (d) {
+        var as = (d.assets || []).filter(function (a) { return typeof a.change_24h === 'number'; });
+        if (!as.length) return '';
+        as.sort(function (x, y) { return y.change_24h - x.change_24h; });
+        function line(a) { return a.name + ' (' + a.symbol + '): ' + (a.change_24h >= 0 ? '+' : '') + a.change_24h.toFixed(2) + '% / 24h, Sentiment ' + (a.sentiment || 'neutral'); }
+        var top = as.slice(0, 4).map(line);
+        var bottom = as.slice(-4).reverse().map(line);
+        return 'Stand: ' + (d.fetched_at || d.last_updated || '') + '\nGrößte Gewinner:\n' + top.join('\n') + '\nGrößte Verlierer:\n' + bottom.join('\n');
+      }).catch(function () { return ''; });
+  }
 
   // Start: gesperrt anzeigen, bis validiert
   setUnlocked(false);

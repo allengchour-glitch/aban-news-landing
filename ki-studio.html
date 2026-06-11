@@ -208,6 +208,40 @@
           <p class="hint">Gratis-Basis: <a href="/ki-sichtbarkeit-audit.html">KI-Sichtbarkeits-Audit →</a></p>
         </div>
 
+        <!-- 5) Übersetzen & anpassen -->
+        <div class="tool" id="toolTranslate" data-locked="1">
+          <h3>🌐 Übersetzen &amp; anpassen</h3>
+          <p class="td">DE↔EN (oder andere) — natürlich übersetzt mit Ton-Anpassung, nicht wörtlich.</p>
+          <label for="trText">Dein Text</label>
+          <textarea id="trText" placeholder="Text zum Übersetzen …"></textarea>
+          <label for="trZiel">Zielsprache / Stil</label>
+          <input type="text" id="trZiel" placeholder="z. B. Englisch, professionell">
+          <button type="button" class="btn btn--amber btn--sm run" data-tool="translate">Übersetzen</button>
+          <div class="lockmsg" data-lock>🔒 Schlüssel oben eingeben, um zu starten.</div>
+          <div class="out" id="outTr"></div>
+        </div>
+
+        <!-- 6) Prompt-Veredler Pro -->
+        <div class="tool" id="toolPrompt" data-locked="1">
+          <h3>🧩 Prompt-Veredler Pro</h3>
+          <p class="td">Dein Roh-Prompt wird präziser — Rolle, Kontext, Format + kurze Begründung.</p>
+          <label for="prText">Dein Prompt</label>
+          <textarea id="prText" placeholder="Roh-Prompt einfügen …"></textarea>
+          <button type="button" class="btn btn--amber btn--sm run" data-tool="prompt">Verbessern</button>
+          <div class="lockmsg" data-lock>🔒 Schlüssel oben eingeben, um zu starten.</div>
+          <div class="out" id="outPr"></div>
+          <p class="hint">Gratis-Basis: <a href="/ki-prompt-checker.html">Prompt-Verbesserer →</a></p>
+        </div>
+
+        <!-- 7) Markt-Briefing -->
+        <div class="tool" id="toolBrief" data-locked="1">
+          <h3>📊 Markt-Briefing</h3>
+          <p class="td">KI-Zusammenfassung der aktuellen Märkte (Daten aus <a href="/maerkte.html">/maerkte</a>). Keine Anlageberatung.</p>
+          <button type="button" class="btn btn--amber btn--sm run" data-tool="brief">Briefing erstellen</button>
+          <div class="lockmsg" data-lock>🔒 Schlüssel oben eingeben, um zu starten.</div>
+          <div class="out" id="outBrief"></div>
+        </div>
+
       </div>
     </section>
 
@@ -217,11 +251,11 @@
       <h2>Was als Nächstes ins Studio kommt</h2>
       <p class="sub">aban Pro wächst — diese Werkzeuge sind als Nächstes dran (Pro-Abonnent:innen bekommen sie ohne Aufpreis):</p>
       <div class="grid3">
-        <div class="mini"><b>📅 Content-Planer ✓</b><p>2-Wochen-Redaktionsplan — <b>jetzt im Tool „KI-Texte" oben</b> (Auswahl „Content-Plan").</p></div>
-        <div class="mini"><b>📧 E-Mail-Serien ✓</b><p>3-teilige Willkommens-/Nachfass-Sequenz — <b>jetzt im Tool oben</b> (Auswahl „E-Mail-Serie").</p></div>
-        <div class="mini"><b>🧩 Prompt-Veredler Pro</b><p>Deine Prompts werden präziser umgeschrieben — mit Begründung.</p></div>
-        <div class="mini"><b>📊 Markt-Briefing</b><p>Dein Watchlist-Briefing als KI-Zusammenfassung (aus /maerkte).</p></div>
-        <div class="mini"><b>🌐 Übersetzen &amp; Anpassen</b><p>DE↔EN mit Ton-Anpassung, nicht nur wörtlich.</p></div>
+        <div class="mini"><b>✓ Schon live</b><p>Texte, E-Mail, Fahrplan, <b>Content-Plan</b>, <b>E-Mail-Serie</b> (im „KI-Texte"-Tool) + Übersetzen, Prompt-Veredler, Markt-Briefing.</p></div>
+        <div class="mini"><b>📚 Branchen-Vorlagen</b><p>Fertige Prompt-Pakete je Branche — ein Klick statt Tippen.</p></div>
+        <div class="mini"><b>🗓️ Geplante Reports</b><p>Dein Markt-/Sichtbarkeits-Briefing automatisch per E-Mail.</p></div>
+        <div class="mini"><b>👥 Team-Sitze</b><p>Ein Pro-Abo für mehrere Personen im Team.</p></div>
+        <div class="mini"><b>🔌 API-Zugang</b><p>Die Tools in deine eigenen Abläufe einbinden.</p></div>
         <div class="mini"><b>🔁 Wunsch-Tool</b><p>Was fehlt dir? <a href="mailto:hallo@abannews.com?subject=KI-Studio%20Wunsch">Sag's uns →</a></p></div>
       </div>
     </section>

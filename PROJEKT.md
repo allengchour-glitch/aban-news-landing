@@ -71,6 +71,11 @@ und mehr Themen". Gebaut auf den vorhandenen Cloudflare-Pages-Functions.
   `prompt` — Content-Plan + E-Mail-Serie sind im Studio-Dropdown „KI-Texte" live (✓), translate/prompt API-fertig
   (Panel folgt). (c) **Aktivierungs-Anleitung `docs/ABAN-PRO-AKTIVIEREN.md`** (Cloudflare-Key → LS-Pro-Produkt mit
   license keys → `pay-config.js` → optional `PRO_TEST_KEY` → Kundenablauf + Troubleshooting).
+- **Ausbau-Runde 2 (User „weiter alles"):** KI-Studio hat jetzt **7 Tool-Panels** — neu: **Übersetzen & anpassen**,
+  **Prompt-Veredler Pro**, **Markt-Briefing** (zieht `/data/markets.json` → Top-Mover → `generate.js` `kind:marketbrief`).
+  JS-Cases in `ki-studio.js` (+`marketSummary()`). „mehr Themen"-Karten auf echte Roadmap umgestellt (Branchen-
+  Vorlagen, geplante Reports, Team-Sitze, API-Zugang). **Startseite:** neuer „aban Pro"-Callout-Band (vor Dossiers)
+  mit CTA ins KI-Studio + Premium. Alle 7 Tools laufen über die Edge-Funktionen, gated per Lizenz. **Startseiten-Preistabelle** jetzt 4-stufig: Free → Premium €9 → **Pro €19** → Founding.
 
 ## 📌 Stand 2026-06-10 (Teil 17) — NEUE „Märkte"-Sektion live (Krypto+Aktien+News+KI, DE/EN)
 User-Bogen: „coole projekt / traiding" → „alles, neue seite bei abannews.com" → „mach autonom" →
