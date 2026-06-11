@@ -16,6 +16,7 @@
  */
 import fs from 'node:fs';
 import https from 'node:https';
+import { balanceByCategory } from './lib/reel-category.mjs';
 
 const { SHOPIFY_SHOP, SHOPIFY_ADMIN_TOKEN, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET } = process.env;
 const QUEUE_MAX = Number(process.env.QUEUE_MAX || 3);
@@ -105,7 +106,7 @@ function caption(title, handle, pt, price) {
   // zuletzt angelegte ACTIVE cj-real Produkte
   const d = await shopify(`query{ products(first:50, query:"status:active AND tag:cj-real", sortKey:CREATED_AT, reverse:true){
       nodes{ title handle productType featuredImage{ url } priceRangeV2{ minVariantPrice{ amount } } } } }`);
-  const prods = (d.products?.nodes || []);
+  const prods = balanceByCategory(d.products?.nodes || [], p => `${p.title} ${p.productType||''} ${p.handle||''}`);
 
   const rows = [];
   const today = new Date().toISOString().slice(0, 10);

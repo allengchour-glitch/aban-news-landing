@@ -19,6 +19,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { balanceByCategory } from './lib/reel-category.mjs';
 
 const KEY = process.env.GEMINI_API_KEY || '';
 const MODEL = process.env.GEMINI_IMAGE_MODEL || 'gemini-2.5-flash-image';
@@ -96,7 +97,7 @@ async function enhance(img){
 }
 
 // --- Hauptlauf ---
-const products = readGood();
+const products = balanceByCategory(readGood(), p => `${p.name} ${p.label}`);
 let queue;
 if(ONLY.length){ queue = products.filter(p=>ONLY.includes(p.name)); }
 else { const start = loadPointer(products.length); queue = []; for(let k=0;k<BATCH;k++) queue.push(products[(start+k)%products.length]); }
