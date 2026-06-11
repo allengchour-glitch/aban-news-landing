@@ -20,6 +20,7 @@ const KEY = process.env.TT_CLIENT_KEY || '';
 const SECRET = process.env.TT_CLIENT_SECRET || '';
 let CODE = (process.env.TT_AUTH_CODE || '').trim();
 const REDIRECT = process.env.TT_REDIRECT_URI || 'http://localhost:8723/callback';
+const VERIFIER = (process.env.TT_CODE_VERIFIER || '').trim();   // PKCE: muss zum code_challenge des Login-Links passen
 
 if(!KEY || !SECRET){ console.error('❌ TT_CLIENT_KEY und TT_CLIENT_SECRET fehlen (als Secrets setzen).'); process.exit(1); }
 if(!CODE){ console.error('❌ TT_AUTH_CODE fehlt (den code aus der Weiterleitungs-URL einfügen).'); process.exit(1); }
@@ -36,6 +37,7 @@ const r = await fetch('https://open.tiktokapis.com/v2/oauth/token/', {
   body: new URLSearchParams({
     client_key: KEY, client_secret: SECRET,
     code: CODE, grant_type:'authorization_code', redirect_uri: REDIRECT,
+    ...(VERIFIER ? { code_verifier: VERIFIER } : {}),   // PKCE (TikTok-Desktop-App Pflicht)
   }),
 });
 const j = await r.json().catch(()=>({}));
