@@ -23,31 +23,61 @@ def label_of(path):
     t = re.sub(r"\s*\(20\d\d\)\s*$", "", t).strip()
     return t
 
-def main():
-    files = sorted(f for f in glob.glob("ki-fuer-*.html"))
-    items = []
-    for f in files:
-        items.append((label_of(f), "/" + f))
-    items.sort(key=lambda x: x[0].lower())
-    n = len(items)
+CONF = [
+    dict(lang="de", glob="ki-fuer-*.html", base="/", out="branchen.html",
+         home="/", subscribe_label="Gratis abonnieren",
+         title="KI für deine Branche — alle {n} Branchen-Guides | aban news",
+         desc="KI praktisch erklärt für {n}+ Branchen — von Handwerk über Praxen bis Gastronomie und Tierberufe. Konkrete Anwendungsfälle, ehrliche Grenzen, kein Hype. Wähle deine Branche.",
+         canon="https://abannews.com/branchen.html",
+         ogtitle="KI für deine Branche — alle Branchen-Guides",
+         ogdesc="KI praktisch erklärt für über {n} Branchen. Konkrete Fälle, ehrliche Grenzen, kein Hype.",
+         h1="KI für deine Branche",
+         lead="Konkrete KI-Anwendungsfälle für über {n} Branchen — von Handwerk über Praxen, Gastronomie und Kanzleien bis zu Tierberufen. Immer ehrlich: was KI dir abnimmt und wo ihre Grenzen sind. Kein Hype, kein Vorwissen nötig.",
+         ph="Branche suchen … (z. B. Friseur, Praxis, Café)", filter_aria="Branche filtern",
+         cta_h="Deine Branche ist nicht dabei?",
+         cta_p="Abonniere den Newsletter — ich zeige täglich, wo KI im Business wirklich hilft, quer durch alle Branchen. Gratis, ehrlich, in 5 Minuten.",
+         cta_btn="Gratis abonnieren →",
+         nav=[("/online-tools.html","Tools"),("/geld-und-ki.html","Geld &amp; KI"),("/founding.html","Premium")],
+         foot=[("/online-tools.html","Tools"),("/geld-und-ki.html","Geld &amp; KI"),("/founding.html","Premium"),("/impressum.html","Impressum"),("/datenschutz.html","Datenschutz")]),
+    dict(lang="en", glob="en/ki-fuer-*.html", base="/", out="en/branchen.html",
+         home="/en/", subscribe_label="Subscribe free",
+         title="AI for your industry — all {n} industry guides | aban news",
+         desc="AI explained practically for {n}+ industries — from trades and clinics to hospitality and animal professions. Concrete use cases, honest limits, no hype. Pick your industry.",
+         canon="https://abannews.com/en/branchen.html",
+         ogtitle="AI for your industry — all industry guides",
+         ogdesc="AI explained practically for over {n} industries. Concrete cases, honest limits, no hype.",
+         h1="AI for your industry",
+         lead="Concrete AI use cases for over {n} industries — from trades and clinics to hospitality, law firms and animal professions. Always honest: what AI takes off your plate and where its limits are. No hype, no prior knowledge needed.",
+         ph="Search industry … (e.g. barber, clinic, café)", filter_aria="Filter industries",
+         cta_h="Your industry not listed?",
+         cta_p="Subscribe to the newsletter — every weekday I show where AI genuinely helps in business, across all industries. Free, honest, in 5 minutes.",
+         cta_btn="Subscribe free →",
+         nav=[("/en/maerkte.html","Markets"),("/en/geld-und-ki.html","Money &amp; AI"),("/en/founding.html","Premium")],
+         foot=[("/en/geld-und-ki.html","Money &amp; AI"),("/en/founding.html","Premium"),("/impressum.html","Imprint"),("/datenschutz.html","Privacy")]),
+]
 
-    cards = "\n".join(
-        f'    <li><a href="{href}">{html.escape(lbl)}</a></li>'
-        for lbl, href in items
-    )
+
+def build(cfg):
+    files = sorted(glob.glob(cfg["glob"]))
+    items = sorted(((label_of(f), "/" + f) for f in files), key=lambda x: x[0].lower())
+    n = len(items)
+    cards = "\n".join(f'    <li><a href="{href}">{html.escape(lbl)}</a></li>' for lbl, href in items)
+    navlinks = "\n".join(f'      <a href="{h}">{t}</a>' for h, t in cfg["nav"])
+    footlinks = "\n".join(f'    <a href="{h}">{t}</a>' for h, t in cfg["foot"])
+    g = lambda k: cfg[k].format(n=n)
 
     page = f"""<!DOCTYPE html>
-<html lang="de">
+<html lang="{cfg['lang']}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KI für deine Branche — alle {n} Branchen-Guides | aban news</title>
-<meta name="description" content="KI praktisch erklärt für {n}+ Branchen — von Handwerk über Praxen bis Gastronomie und Tierberufe. Konkrete Anwendungsfälle, ehrliche Grenzen, kein Hype. Wähle deine Branche.">
-<link rel="canonical" href="https://abannews.com/branchen.html">
+<title>{g('title')}</title>
+<meta name="description" content="{g('desc')}">
+<link rel="canonical" href="{cfg['canon']}">
 <meta property="og:type" content="website">
-<meta property="og:title" content="KI für deine Branche — alle Branchen-Guides">
-<meta property="og:description" content="KI praktisch erklärt für über {n} Branchen. Konkrete Fälle, ehrliche Grenzen, kein Hype.">
-<meta property="og:url" content="https://abannews.com/branchen.html">
+<meta property="og:title" content="{g('ogtitle')}">
+<meta property="og:description" content="{g('ogdesc')}">
+<meta property="og:url" content="{cfg['canon']}">
 <meta property="og:image" content="https://abannews.com/og-hype.png">
 <meta name="twitter:card" content="summary">
 <style>
@@ -82,41 +112,35 @@ def main():
 <body>
 <header>
   <div class="wrap">
-    <a href="/" class="brand"><span class="dot"></span> aban news</a>
+    <a href="{cfg['home']}" class="brand"><span class="dot"></span> aban news</a>
     <nav class="hnav" aria-label="Navigation">
-      <a href="/online-tools.html">Tools</a>
-      <a href="/geld-und-ki.html">Geld &amp; KI</a>
-      <a href="/founding.html">Premium</a>
-      <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Gratis abonnieren</a>
+{navlinks}
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">{cfg['subscribe_label']}</a>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <h1>KI für deine Branche</h1>
-  <p class="lead">Konkrete KI-Anwendungsfälle für über {n} Branchen — von Handwerk über Praxen, Gastronomie und Kanzleien bis zu Tierberufen. Immer ehrlich: was KI dir abnimmt und wo ihre Grenzen sind. Kein Hype, kein Vorwissen nötig.</p>
+  <h1>{g('h1')}</h1>
+  <p class="lead">{g('lead')}</p>
 
-  <input type="search" id="filter" class="filter" placeholder="Branche suchen … (z. B. Friseur, Praxis, Café)" aria-label="Branche filtern">
+  <input type="search" id="filter" class="filter" placeholder="{g('ph')}" aria-label="{g('filter_aria')}">
 
   <ul class="cols" id="list">
 {cards}
   </ul>
 
   <div class="cta">
-    <h2 style="margin-top:0">Deine Branche ist nicht dabei?</h2>
-    <p style="margin:.4rem 0 1rem;color:var(--ink2)">Abonniere den Newsletter — ich zeige täglich, wo KI im Business wirklich hilft, quer durch alle Branchen. Gratis, ehrlich, in 5 Minuten.</p>
-    <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Gratis abonnieren →</a>
+    <h2 style="margin-top:0">{g('cta_h')}</h2>
+    <p style="margin:.4rem 0 1rem;color:var(--ink2)">{g('cta_p')}</p>
+    <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">{g('cta_btn')}</a>
   </div>
 </main>
 
 <footer>
   <div class="wrap">
     <span>© 2026 aban news · Allen Chour · Belp (CH)</span>
-    <a href="/online-tools.html">Tools</a>
-    <a href="/geld-und-ki.html">Geld &amp; KI</a>
-    <a href="/founding.html">Premium</a>
-    <a href="/impressum.html">Impressum</a>
-    <a href="/datenschutz.html">Datenschutz</a>
+{footlinks}
   </div>
 </footer>
 <script>
@@ -132,8 +156,13 @@ def main():
 </body>
 </html>
 """
-    open("branchen.html", "w", encoding="utf-8").write(page)
-    print(f"branchen.html erzeugt mit {n} Branchen-Links.")
+    open(cfg["out"], "w", encoding="utf-8").write(page)
+    print(f"{cfg['out']} erzeugt mit {n} Branchen-Links.")
+
+
+def main():
+    for cfg in CONF:
+        build(cfg)
 
 if __name__ == "__main__":
     main()
