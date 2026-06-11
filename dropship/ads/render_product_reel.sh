@@ -30,7 +30,7 @@ HOOK="${HOOK:-Dein Sommer-Moment ✨}" SEG="${SEG_DUR:-2.4}" T="${FADE_DUR:-0.5}
   bash "$ROOT/dropship/ads/render_premium_reel.sh" "$ROOT/reels/$SLUG.mp4" "$MUSIC" "$IMG"
 csv(){ printf '"%s"' "$(printf '%s' "$1" | sed 's/"/""/g')"; }
 ID=$(date +%s)
-CAP="${label} ✨ Premium-Look aus der Schweiz · -10% mit Code WELCOME10 → ${link}"
+CAP="${label} ✨ Premium-Look · dein Schweizer Online-Shop · -10% mit Code WELCOME10 → ${link}"
 TAGS="#schweizmode #sommerkleid #ootdschweiz #fashiontiktokschweiz #luxestyle"
 printf '%s,%s,%s,%s,%s,%s,ready,,\n' "$ID" "$(date +%F)" "$(csv "$BASEURL/$SLUG.mp4")" "$(csv "$CAP")" "$(csv "$TAGS")" "$(csv "tiktok,instagram")" >> "$QUEUE"
 echo ">> Produkt-Reel reels/$SLUG.mp4 ($k Bilder) + Clean-Version (reels/$SLUG-clean.mp4) + Queue-Zeile (Link: $link)"

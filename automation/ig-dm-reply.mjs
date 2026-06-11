@@ -25,7 +25,7 @@ const saveState=s=>{try{fs.mkdirSync(path.dirname(STATE),{recursive:true});fs.wr
 const TOPIC=[['versand',/versand|liefer|wann|paket|shipping/i],['groesse',/grösse|groesse|size|passt|masse/i],
   ['preis',/preis|kostet|chf|rabatt|code|zahlung|twint/i],['verfueg',/verfügbar|lager|ausverkauft|wieder/i]];
 const REPLIES={
-  versand:'Hey! 🤍 Wir liefern schweizweit – gratis ab CHF 65. Alle Infos auf luxestyle.ch ✨',
+  versand:'Hey! 🤍 Weltweiter Versand, 8–14 Werktage · gratis ab CHF 65. Alle Infos auf luxestyle.ch ✨',
   groesse:'Hi! 👗 Die Grössentabelle steht direkt beim Produkt auf luxestyle.ch – frag gern nach! 🤍',
   preis:'Hey! 💛 Mit Code WELCOME10 gibt’s –10% auf luxestyle.ch ✨',
   verfueg:'Hi! 🤍 Verfügbarkeit + Farben siehst du live auf luxestyle.ch ✨',
