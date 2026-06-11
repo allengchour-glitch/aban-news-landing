@@ -92,6 +92,10 @@ footer a{color:var(--muted)}
       <div class="kpi"><b>CHF <span id="cpy">9.984</span></b><span>Wert pro Jahr</span></div>
     </div>
     <p class="subres">Das sind rund <b><span id="dpy">12</span> Arbeitstage</b> pro Jahr (à 8 h), die frei werden.</p>
+    <div style="margin-top:14px;border-radius:12px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
+      <canvas id="ks-chart" data-aban3d data-shape="bars" data-color="#f0a93a" data-speed="0.55" style="display:block;width:100%;height:200px;touch-action:none" aria-label="3D-Diagramm: gesparte Stunden über die Monate"></canvas>
+    </div>
+    <p style="text-align:center;font-size:.78rem;color:var(--muted,#6b7280);margin:.35rem 0 0">3D: so summieren sich die gesparten Stunden über die Monate — aus deinen Eingaben.</p>
   </div>
 
   <p class="disc">⚖️ Ehrlich: Die Zahlen sind eine Schätzung, keine Garantie. KI spart Zeit bei Routine — nicht bei allem. Einarbeitung, Prüfen und Nacharbeit sind eingerechnet, indem wir bewusst konservativ rechnen (52 Wochen, deine Prozent-Eingabe). Fachurteil &amp; Verantwortung bleiben bei dir.</p>
@@ -126,11 +130,24 @@ footer a{color:var(--muted)}
     $("hpw").textContent=fmt1(hpw);
     $("cpy").textContent=fmt(cpy);
     $("dpy").textContent=fmt(dpy);
+    updateChart(hpw);
+  }
+  var kschart=$("ks-chart"), ksct=null;
+  function updateChart(hpw){
+    var arr=[];
+    for(var mo=1;mo<=12;mo++) arr.push(Math.round(hpw*4.33*mo)); // kumulierte Stunden
+    clearTimeout(ksct);
+    ksct=setTimeout(function(){
+      kschart.dataset.values=arr.join(",");
+      var n=kschart.cloneNode(true);kschart.parentNode.replaceChild(n,kschart);kschart=n;
+      if(window.abanBoot3d) window.abanBoot3d(kschart);
+    },150);
   }
   ["h","e","s"].forEach(function(id){ $(id).addEventListener("input",calc); });
   calc();
 })();
 </script>
+<script defer src="/js/aban3d.js"></script>
 <script defer src="/js/announce.js"></script>
 </body>
 </html>
