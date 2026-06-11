@@ -2,6 +2,16 @@
 
 > Was läuft, was offen ist. Aktuellster Stand auch in `MEMORY-KOMPAKT.md` (oben).
 
+## 🆕 POD-Sortiment massiv erweitert (autonom, Auto-Druck Printful/Prodigi)
+- **268 Sticker** (Collection „Sticker & Aufkleber")
+- **Mundart-Tassen** (~49) + **Mundart-Shirts** (~49) — Schweizer Sprüche/Motive, ACTIVE
+- **Tote-Bags, Kissen, Mauspads** (Schweiz-Motive)
+- **„Zum Selbstgestalten"** (Foto-Upload + Editor-Widget): Tasse, Shirt, Kissen, Tote, Poster, Magnet
+- Generator `automation/create_pod_line.mjs` + `pod-line.yml` (TYPE=shirt|mug|tote|mousepad|cushion, SOURCE=schweiz|all,
+  PERSONALIZED=1). Printful-Varianten-IDs aus öffentlichem Katalog verifiziert. Lieferzeit+Übersetzung via Crons/Dispatch.
+- **Offen ICH:** `pod-inject-designer` für die neuen „selbst-gestalten"-Produkte; delivery-block + translate nachziehen.
+- **Geschenkgutschein/Bundles:** Shopify-Gift-Cards sind Settings-gebunden (API umständlich) → später im Admin (1 Klick) oder Bundles-App.
+
 ## 🟢 LIVE & verifiziert (nichts zu tun)
 - [x] **Sprache je Land** — DE/EN/FR/IT published, Shopify schaltet je Land automatisch um.
 - [x] **Übersetzungen DE→FR/IT/EN** — Hero verifiziert; Katalog (~517 Produkte) + Theme laufen autonom weiter
