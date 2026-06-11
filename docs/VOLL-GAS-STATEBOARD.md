@@ -37,7 +37,9 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
   5. Optional: EN/FR/IT-Versionen der Tool-Seite.
 - **Voller Plan:** `~/.claude/plans/verlinke-die-themen-am-nifty-swan.md`.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **340 live, alle viersprachig (de/en/fr/it ≈ 1360 Seiten)** 🎉 300+ (Parallel-Session zählt evtl. anders)
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **346 live, alle viersprachig (de/en/fr/it ≈ 1384 Seiten)** 🎉 300+ (Parallel-Session zählt evtl. anders)
+
+- **Welle 91–92 (6 Hubs, „max agenten" #7, 340→346):** Saunabetrieb, Minigolfanlage, Lasertag, Gnadenhof, Surfschule, Nagelstudio — **direkt viersprachig**. (Saunabetrieb Hygiene/Legionellen + keine Gesundheitsberatung; Minigolf/Lasertag Anlagenpflege/Aufsicht + Jugendschutz; Gnadenhof keine Tierpflege/Tierarzt-Ersatz + ehrliche Spenden-Komm./§11 TierSchG; Surfschule keine Wassersicherheit/Unterricht-Ersatz; Nagelstudio Hygiene + keine Nagel-Diagnose [Arzt/Podologie].) **Lehre: zwei API-/Session-Limit-Ausfälle** (Sonnet-Klassifizierer offline + „session limit reset 4:40 UTC") → erste 6 Agenten lieferten 0/4, nach Reset neu gebaut, pro Slug sofort committet. saunabetrieb-DE: Beispielpreise „CHF 38" entfernt (Regel „keine erfundenen Preise").
 
 > **▶️ LÄUFT WIEDER (User, 2026-06-08): „fahre mit Wellen weiter".** Rest grob ~15–20% des
 > DACH-Branchenkatalogs. (Frühere Pause aufgehoben.) Loop läuft sonst Welle für Welle (3 Branchen × 4 Sprachen + OG/Sitemap/Stateboard,

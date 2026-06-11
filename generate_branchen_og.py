@@ -359,6 +359,12 @@ BRANCHEN = {
     "hochzeitsplaner":     ("Hochzeitsplaner",      ["Texte & Orga,", "nicht der grosse Tag"]),
     "tierbestattung":      ("Tierbestattung",       ["Würdevolle Texte,", "nicht der Beistand"]),
     "seniorenbetreuung":   ("Seniorenbetreuung",    ["Texte & Orga,", "nicht die Zuwendung"]),
+    "saunabetrieb":        ("Saunabetriebe",        ["Angebote & Aufguss,", "nicht die Hygiene"]),
+    "minigolfanlage":      ("Minigolfanlagen",      ["Angebote & Saison,", "nicht die Aufsicht"]),
+    "lasertag":            ("Lasertag-Arenen",      ["Angebote & Events,", "nicht das Briefing"]),
+    "gnadenhof":           ("Gnadenhöfe",           ["Porträts & Spenden,", "nicht die Tierpflege"]),
+    "surfschule":          ("Surfschulen",          ["Kurse & Camps,", "nicht die Wassersicherheit"]),
+    "nagelstudio":         ("Nagelstudios",         ["Leistungen & Social,", "nicht die Hygiene"]),
 }
 
 
