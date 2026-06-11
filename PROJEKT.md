@@ -69,11 +69,14 @@ bestätigt GitHub Pages; die alte `CLOUDFLARE-SETUP.md`-Behauptung „läuft auf
 - **✅ AUTO-DEPLOY (sonst friert die Direct-Upload-Seite ein):** `cf-deploy-mainsite.yml` deployt jetzt bei
   Inhalts-Pushes (paths-ignore für dropship/social/automation/memory) **+ alle 6 h** (fängt Bot-`[skip ci]`-Commits
   wie Märkte-Daten). wrangler lädt nur geänderte Dateien.
-- **🟢🟢 PRO-FUNNEL KOMPLETT LIVE (11.06.):** User hat LS-Produkt „aban Pro" (1136301) mit 2 Varianten +
-  license keys angelegt. Checkout-Links in `js/pay-config.js` scharf: Monat €19 (var 1777687, buy 530fd3f2…),
-  Jahr €190 (var 1777696, buy 4379ddc9…). Live auf abannews.com verifiziert (pay-config zeigt Links, KI-Studio 200).
-  „aban Pro holen"-Buttons → LS-Checkout. **Offen nur noch: LS-Store-Freigabe** (war „under review") für ECHTE
-  Zahlungen; bis dahin Test-Modus. Voll-Flow-Test (Kauf→Lizenz→Unlock→KI) braucht 1 echten/Test-Lizenzschlüssel.
+- **🟢🟢 PRO-FUNNEL KOMPLETT LIVE + END-TO-END BEWIESEN (11.06.):** LS-Produkt „aban Pro" (1136301), 2 Varianten +
+  license keys. Checkout-Links in `js/pay-config.js` scharf: Monat €19 (var 1777687, buy 530fd3f2…, Checkout zeigt
+  19,00 €), Jahr €190 (var 1777696, buy 4379ddc9…, price_label 190,00 € verifiziert). Premium-(€9)-Zweitbutton aus
+  KI-Studio-Hero entfernt (Conversion-Fokus). **VOLL-FLOW getestet mit echtem Test-Lizenzschlüssel
+  (1443574C-…, Status inactive 0/3):** `POST abannews.com/api/pro-validate` → `{"valid":true}` ✅;
+  `POST /api/generate` mit `X-Pro-Key` → echte Claude-Antwort (200, markengerechter LinkedIn-Post) ✅. Kauf→Lizenz→
+  Unlock→KI durchgängig bewiesen. **Offen nur noch: LS-Store-Freigabe** (war „under review") → dann echtes Geld,
+  ohne weitere Änderung (Test↔Live = gleiche Mechanik). Test-Karte 4242 4242 4242 4242.
 
 ## 📌 Stand 2026-06-11 (Teil 18) — „aban Pro" + KI-Studio (Live-KI-Tools, gated per Lizenz)
 User-Wunsch: „premium verbessern mit zusatz kosten wo man dich brauchen kann mit tools". Entscheid (User):
