@@ -1,4 +1,4 @@
-// Kategorie-Erkennung + ausbalancierte Rotation für Posts/Reels.
+// Kategorie-Erkennung + ausbalancierte Rotation + kategorie-Hashtags für Posts/Reels.
 // Ziel: Reihenfolge durchmischen (Damen → Herren → Schmuck → Beauty → Gadget → …)
 // statt klumpenweise eine Kategorie. Deterministisch (gleiche Eingabe → gleiche Reihenfolge),
 // damit die Pointer-Rotation der Generatoren stabil weiterläuft.
@@ -14,6 +14,22 @@ export function catKey(s){
   if (/kleid|\brock\b|dress|skirt|bluse/.test(s)) return 'kleid';
   if (/sonnenbrille|brille|\bhut\b|\bcap\b|gürtel|schal|accessoire/.test(s)) return 'accessoire';
   return 'mode';
+}
+
+// Kategorie-passende Hashtags (Reach-Tags vorne + Nischen-Tags).
+export function tagsFor(s){
+  const reach = '#schweiz #foryou #luxestyle';
+  switch (catKey(s)) {
+    case 'herren':     return reach + ' #herrenmode #menstyle';
+    case 'schuhe':     return reach + ' #sneaker #shoes';
+    case 'schmuck':    return reach + ' #schmuck #jewelry';
+    case 'beauty':     return reach + ' #skincare #selfcare';
+    case 'gadget':     return reach + ' #gadget #lifestyle';
+    case 'tasche':     return reach + ' #handtasche #bag';
+    case 'kleid':      return reach + ' #sommerkleid #damenmode';
+    case 'accessoire': return reach + ' #accessoires #ootdschweiz';
+    default:           return reach + ' #fashionschweiz #ootdschweiz';
+  }
 }
 
 // Round-robin über die Kategorien → bunt durchmischte Reihenfolge.
