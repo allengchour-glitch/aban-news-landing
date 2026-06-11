@@ -4,7 +4,36 @@
 > MISTER-DTF-FULFILLMENT.md (Bügeltransfer). Stand: **2026-06-10 nachts** (Details als dated Einträge unten).
 
 ## 📌 STAND 2026-06-11 (Prodigi-Connector + Lieferzeit + Sprache je Land — NEU, ZUERST LESEN)
-**Gebaut & committet (alles no-op-safe, idempotent, DRY_RUN-fähig; Branch `_mp_*` → `main`):**
+**🟢 SCHON LIVE & VERIFIZIERT (diese Session live geschaltet):**
+- **🔴 CJ-Key UNGÜLTIG:** `cj-autopilot` (max=20) lief → „CJ Auth fehlgeschlagen (Key prüfen/rotieren)". CJ_EMAIL/CJ_API_KEY
+  SIND als Secrets gesetzt, aber der Key ist abgelaufen. User muss `CJ_API_KEY` rotieren → dann importiert der Autopilot
+  (cron 2×/Tag) echte Produkte autonom. **Alternative ohne CJ:** POD-Sticker-Massenlinie (s.u.).
+- **POD-Sticker-Massenlinie (autonom, ohne CJ):** `automation/create_pod_stickers_all.mjs` + `pod-stickers-all.yml` legt die
+  GANZE Design-Bibliothek (~250 Designs, social/designs/) als fixfertige auto-druckbare Sticker an (Printful Kiss-Cut
+  `9000001_10163/10164/10165`, Metafeld print_file, themen-Copy+SEO, ACTIVE+publish, Tag fertig-sticker (+schweiz-edition
+  bei CH-Motiven)). Ledger `social/designs/_pod_sticker_created.txt`, LIMIT/Lauf. Handle `pod-sticker-<name>` (skippt die 12
+  schweiz-sticker). Lieferzeit+Übersetzung ziehen die Crons (delivery-block/translate) nach. **1. Batch (60) live gestartet.**
+- **Prodigi LIVE:** User hat `PRODIGI_API_KEY` gesetzt (Länge 36, gültig). `prodigi-check` bestätigt SKUs
+  `GLOBAL-FAP-A4/A3/A2` (Enhanced Matte 200g, Druckbereich `default`). `prodigi-products` (dry=false) lief → 10 Schweiz-Poster
+  ACTIVE (Handle `prodigi-poster-*`, Tag `schweiz-edition`). `prodigi-sync` (cron 6h) druckt bezahlte Orders autom.
+- **12 Schweiz-Sticker LIVE:** `schweiz-sticker.yml` (dry=false) → `schweiz-sticker-*` ACTIVE (Printful Kiss-Cut SKU
+  `9000001_10163/10164/10165`, Metafeld print_file, Tag `schweiz-edition`).
+- **`schweiz-edition`-Collection VOLL = 29 Produkte** (10 Prodigi-Poster + 12 Sticker + 6 Magnete + 1 Gelato-Poster).
+  Regel `TAG EQUALS schweiz-edition` (disjunktiv). ⚠️ `productsCount` ist gecacht/lagt — echte Mitgliedschaft via `products{}` prüfen.
+- **Übersetzung neuer Produkte:** translate-Lauf #2 lief VOR den neuen Schweiz-Produkten → die 22 neuen sind noch DE.
+  2. translate-Lauf (dry=false) nachgeschoben (Concurrency-Queue) → Ledger skippt Altes, übersetzt nur die neuen ~22.
+- **Spocket = WEGLASSEN** (User: „kostet"). Abo ~25–40$/Mt, nicht nötig — CJ(gratis)+Printful+Prodigi decken alles. Kein Spocket.
+- **Theme = „Horizon"** (block-basiert, JSON-Template `templates/product.json`, Section-Typ `product-information`):
+  **KEIN `sections/main-product.liquid`** → `inject_delivery_snippet.mjs` greift NICHT. Lieferzeit Phase 2 = Customizer
+  „Custom Liquid"-Block im PDP nötig (sicherer User-Schritt), NICHT per API erzwingen (Theme-Bruch-Gefahr). Phase 1 reicht.
+- **Sprache je Land LIVE:** `shopLocales` = DE(primär)/EN/FR/IT **alle published** → Shopify schaltet je Land autom. um.
+- **Übersetzungen LIVE:** `translate.yml` (dry=false) lief — **Hero verifiziert** (echte FR/IT Titel+Body+Meta, HTML/Emoji intakt),
+  **Katalog-Lauf** (alle ~517 Produkte) + Theme laufen autonom weiter; Ledger `dropship/_translated.txt` committet je Scope.
+  Bei Abbruch: `translate.yml` erneut dry=false starten → setzt via Ledger fort (idempotent). **Bali NICHT übersetzt** (nicht in Hero-CSV, DO-NOT-POST ok).
+- **Lieferzeit Phase 1 LIVE:** `delivery-block.yml` (dry=false) lief → alle aktiven Produkte haben `class="ls-liefer"`-Block +
+  Metafeld `custom.lieferzeit`. (Viele Altprodukte = Tier „standard" 6–12/9–16, weil ohne cj-real-Tag — ok, plausibel.)
+
+**Gebaut & committet (alles no-op-safe, idempotent, DRY_RUN-fähig; auf `main`):**
 - **Prodigi-Connector (POD #3, EU-Labs)** — `automation/prodigi_check.mjs` (Key/Katalog), `create_prodigi_products.mjs`
   (10 Schweiz-Poster aus `social/posters/hoch/`, Fine-Art A4/A3/A2, **Shopify-Variant-SKU = DIREKT Prodigi-SKU** z.B.
   `GLOBAL-FAP-A3`, Metafeld `custom.print_file`, Tags `prodigi_personalized_product`+`schweiz-edition`, ACTIVE+publish),
@@ -21,8 +50,9 @@
   Workflow `translate.yml` fährt **hero→catalog→theme sequenziell** in 1 Lauf (committet Ledger zurück). Braucht `GEMINI_API_KEY`+Shopify-Creds.
 - **Spocket:** KEIN Merchant-API (bestätigt) → später per App-Import + Veredelung. **autopilot2** „Markets inkompatibel" = harmlos, User-Entscheid: drin lassen.
 - **Reprice-Falle:** `printful_reprice.mjs` NICHT mit Default `MIN_MARGE=12` auf Sticker/kleine POD (überteuert) — nur mit `MIN_MARGE=2`.
-- **Offen (User):** `PRODIGI_API_KEY`-Secret setzen → schaltet Connector scharf. Danach: `prodigi-check` → `prodigi-products` (dry=false)
-  → `delivery-block` (dry=false) → `markets-languages` (dry=false) → `translate` (dry=false). Snippet `delivery-snippet` braucht ggf. richtige `SECTION`.
+- **Offen (User):** siehe `dropship/TODO-AKTUELL.md`. Kurz: (1) `PRODIGI_API_KEY`-Secret → dann `prodigi-check`→`prodigi-products`;
+  (2) Lieferzeit Phase 2 `delivery-snippet.yml` (richtige `SECTION` prüfen); (3) Spocket-App-Import; (4) Markt-Web-Presence
+  je Markt: FR/IT/EN ggf. im Admin → Märkte ergänzen, falls Sprache dort nicht auto erscheint.
 
 ## 📌 STAND 2026-06-10 (Session-Ende — ZUERST LESEN, dann Details unten)
 **Heute live geschaltet (alles auf `main`, mit Backups/Rollback):**

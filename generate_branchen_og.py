@@ -347,6 +347,12 @@ BRANCHEN = {
     "reiseveranstalter":   ("Reiseveranstalter",    ["Reise-Texte & Anfragen,", "nicht die Reisefakten"]),
     "kletterwald":         ("Kletterwälder",        ["Angebote & Texte,", "nicht die Sicherung"]),
     "pizzeria":            ("Pizzerien",            ["Speisekarte & Social,", "nicht die Hygiene"]),
+    "nudelmanufaktur":     ("Nudelmanufaktur",      ["Produkttexte & Shop,", "nicht die Kennzeichnung"]),
+    "getraenkemarkt":      ("Getränkemärkte",       ["Produkt- & Liefertexte,", "nicht der Jugendschutz"]),
+    "waschsalon":          ("Waschsalons",          ["Preis- & Service-Texte,", "nicht die Wartung"]),
+    "schneideratelier":    ("Schneiderateliers",    ["Service- & Anlasstexte,", "nicht die Anprobe"]),
+    "coworking-space":     ("Coworking-Spaces",     ["Texte & Events,", "nicht die Verträge"]),
+    "escape-room":         ("Escape-Rooms",         ["Texte & Buchung,", "keine Spoiler"]),
 }
 
 

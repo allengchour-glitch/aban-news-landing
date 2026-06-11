@@ -4,6 +4,29 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-11 - Geld-&-KI-Cluster komplett + zentraler Hub (Newsletter-Session)
+- **Ehrliche Geld-Ecke gebaut (DE+EN, anti-hype, anfaengerfreundlich, „keine Anlage-/Steuer-/Rechtsberatung", kein Affiliate):**
+  Maerkte, trading-tipps, krypto-fuer-einsteiger, etf-fuer-einsteiger (+TER-Rechner), sparplan-statt-trading
+  (+Zinseszins-Rechner), steuer-basics-selbststaendige, ki-aktien-hype-check, ki-betrug-scam-check (+Red-Flag-Check),
+  passives-einkommen-ki (+Reality-Check), altersvorsorge-selbststaendige (+Vorsorge-Rechner),
+  scheinselbststaendigkeit-vermeiden (+Risiko-Schnellcheck). Plus bestehende finanz-skills/finanz-rechner/geld-verdienen.
+- **Zentraler Hub `geld-und-ki.html` (+EN)** buendelt alles in Karten-Sektionen, Pretty-URL `/geld`, in Startseiten-Nav
+  „Geld & KI" + Footer + Tools-Hub. Sitemap-Prio 0.9.
+- **Tools-Bausteine (reines Vanilla-JS, kein Request/Tracking, wiederverwendbar):** Rechner-Muster (Intl.NumberFormat,
+  Annuitaeten-Formel) aus sparplan/etf/altersvorsorge; Checklisten-Baustein (Checkbox data-w -> Score -> Ampel-Box)
+  aus scam/passiv/schein. Bei neuen Geld-Seiten DIESE Muster kopieren.
+- **Premium-Verkauf auf jeder neuen Seite:** eigener `.premium`-Block (Founding €69 + gratis testen + Pro-Login beehiiv).
+- **Verlinkung:** `tools/add_geld_cluster_links.py` (Marker `data-aban-geld`, idempotent) setzt einen Geld-Cluster-Block
+  in die 6 Finanz-Hubs (finanzberater/steuerberater/immobilienmakler/versicherungsmakler/unternehmensberater/
+  wirtschaftspruefer) OHNE den Funnel (data-aban-tools-cta, verkauft Premium) oder Related-Ring (data-aban-related)
+  anzutasten. Marker-Injektor-Muster = wie tools/related_hubs.py.
+- **Pro-Login** (beehiiv Magic-Link, KEIN echter Backend-Login moeglich auf statischer Seite) in allen Sprach-Navs +
+  founding.html (DE+EN) + maerkte. Premium liegt auf **beehiiv** (Founding €69 lifetime / €9 mo / €89 Jahr).
+- ⚠️ **Git-Falle (wieder passiert):** lokaler Spiegel haengt zeitweise auf Altstand → `git fetch origin main` ggf.
+  mehrfach, dann `reset --hard origin/main`; echten HEAD per GitHub-MCP `list_commits` pruefen. Push mit
+  `git pull --rebase --autostash` + Retry (Markets-Bot committet im Minutentakt).
+- ⚠️ Cloudflare-„Workers Builds"-Checks sind dauerhaft ROT (Token) — Site laeuft ueber GitHub Pages, Inhalt unabhaengig live.
+
 ## 2026-06-10 - 'gemini breit': Hubs automatisch vertiefen
 - automation/deepen_hubs_gemini.py: vertieft Branchen-Hubs (ki-fuer-*) mit Gemini -> ehrlicher Abschnitt
   'KI in der Praxis: <Branche>' (2 Absaetze) + 3-4 FAQ + FAQPage-Schema, vor dem Funnel-Block. Idempotent

@@ -1,0 +1,54 @@
+name: POD-Sticker Massen-Anlage (ganze Design-Bibliothek)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur Vorschau'
+        type: boolean
+        default: true
+      limit:
+        description: 'Wie viele pro Lauf'
+        type: string
+        default: '60'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pod-stickers-all
+  cancel-in-progress: false
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: POD-Sticker anlegen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          LIMIT: ${{ github.event.inputs.limit }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && '0' || '1' }}
+        run: node automation/create_pod_stickers_all.mjs
+      - name: Ledger committen
+        if: ${{ github.event.inputs.dry_run == 'false' }}
+        run: |
+          git config user.name "luxestyle-bot"
+          git config user.email "bot@users.noreply.github.com"
+          if [ -n "$(git status --porcelain social/designs/_pod_sticker_created.txt)" ]; then
+            git add social/designs/_pod_sticker_created.txt
+            git commit -m "POD-Sticker-Ledger aktualisiert [skip ci]"
+            for i in 1 2 3 4; do
+              git fetch origin ${{ github.ref_name }} && git rebase origin/${{ github.ref_name }} || git rebase --abort
+              git push origin HEAD:${{ github.ref_name }} && break || sleep $((2**i))
+            done
+          else
+            echo "Kein Ledger-Diff."
+          fi

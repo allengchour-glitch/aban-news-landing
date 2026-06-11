@@ -1,0 +1,40 @@
+# ✅ TODO-AKTUELL — LuxeStyle (Stand 2026-06-11)
+
+> Was läuft, was offen ist. Aktuellster Stand auch in `MEMORY-KOMPAKT.md` (oben).
+
+## 🟢 LIVE & verifiziert (nichts zu tun)
+- [x] **Sprache je Land** — DE/EN/FR/IT published, Shopify schaltet je Land automatisch um.
+- [x] **Übersetzungen DE→FR/IT/EN** — Hero verifiziert; Katalog (~517 Produkte) + Theme laufen autonom weiter
+      (`translate.yml`, Ledger-Commit je Scope). Bei Abbruch: Workflow erneut `dry_run=false` → setzt fort.
+- [x] **Lieferzeit-Anzeige Phase 1** — Block + Metafeld `custom.lieferzeit` auf allen aktiven Produkten.
+- [x] **Prodigi-Connector + 5 weitere Workflows** gebaut, getestet (no-op-safe), auf `main`.
+
+## 🔵 Nur DU (1-Klick)
+- [ ] **🔴 CJ-API-Key ROTIEREN** — `CJ_EMAIL`/`CJ_API_KEY` sind gesetzt, aber der Key ist **ungültig/abgelaufen**
+      (Lauf meldet „CJ Auth fehlgeschlagen"). CJ-Dashboard → Account → API → neuen Key generieren → Secret `CJ_API_KEY`
+      aktualisieren. Danach importiert **`cj-autopilot`** automatisch ~12 echte Produkte/Tag (DE-Copy + QA + ACTIVE).
+- [x] **`PRODIGI_API_KEY` gesetzt** ✅ → Prodigi scharf, 10 Schweiz-Poster live.
+- [~] **Spocket = WEGLASSEN** (kostet Abo, nicht nötig — CJ+Printful+Prodigi reichen). Erledigt = kein Spocket.
+- [ ] **Lieferzeit Phase 2 (Customizer, optional):** Theme „Horizon" → PDP → Block hinzufügen „Custom Liquid" →
+      Inhalt `{% render 'ls-lieferzeit', product: closest.product %}`. (Snippet liegt im Theme/Repo bereit.)
+      Phase 1 (Block in jeder Beschreibung, mehrsprachig) ist schon live — Phase 2 ist nur die „nur-1-Zeile-je-Land"-Optik.
+
+## 🟡 Nächste Ausbaustufen (ICH autonom, auf Zuruf / nächste Session)
+- [ ] **Lieferzeit Phase 2** (dynamisches Theme-Snippet, zeigt NUR die Zeile fürs Kundenland, 4-sprachig):
+      `delivery-snippet.yml` dispatchen — vorher die richtige Produkt-`SECTION` des Live-Themes prüfen
+      (Default `sections/main-product.liquid`). Backup + `REMOVE=1`-Rollback vorhanden.
+- [ ] **Markt-Web-Presence prüfen:** Falls FR/IT/EN in einem Markt nicht automatisch erscheint →
+      Admin → Märkte → jeweiligen Markt → Sprachen ergänzen (bewusst NICHT per Skript = Parallel-Session-Schutz).
+- [ ] **Tier-Feinschliff Lieferzeit:** Alt-Produkte ohne `cj-real`-Tag bekommen Tier „standard" (6–12 T).
+      Optional: cj-Produkte sauber taggen → genauere 8–14 T. (Aktuell plausibel, kein Muss.)
+- [ ] **Schweiz-Edition-Collection füllen** (separater Plan): Fertig-Sticker via Printful-Metafeld-Muster + Collection-SEO.
+
+## ⚙️ Workflows (workflow_dispatch)
+prodigi-check · prodigi-products · prodigi-sync(cron 6h) · delivery-block(+cron Mo) · delivery-snippet ·
+markets-languages · translate(hero→catalog→theme, Timeout 330min, Ledger-Commit je Scope)
+
+## 📌 Wichtige Fakten
+- **Prodigi:** `https://api.prodigi.com/v4.0`, Header `X-API-Key`. Shopify-Variant-SKU = DIREKT Prodigi-SKU (z.B. `GLOBAL-FAP-A3`).
+- **Fertigware-Druck-Muster:** Tag `*_personalized_product` (ohne `wunschdesign`) + Metafeld `custom.print_file` = Motiv-URL.
+- **Git:** alles auf `main` via `_mp_*`-Branch + Rebase. NIE force-push, NIE Parallel-Session überschreiben.
+- **Reprice-Falle:** `printful_reprice.mjs` NICHT mit Default `MIN_MARGE=12` auf kleine POD (Sticker/Magnete) — nur `MIN_MARGE=2`.
