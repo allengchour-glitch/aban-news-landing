@@ -1,0 +1,48 @@
+name: FB-Posts (auflisten / löschen)
+
+# Listet Facebook-Page-Posts (mit Engagement + Permalink) oder löscht gezielt IDs.
+# Anders als Instagram erlaubt FB das Löschen per API. No-op ohne Token.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'list = auflisten · delete = löschen'
+        type: choice
+        options: [list, delete]
+        default: list
+      delete_ids:
+        description: 'Bei delete: Post-IDs kommagetrennt (z.B. 123_456,123_789)'
+        required: false
+        default: ''
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fb-posts
+  cancel-in-progress: false
+
+jobs:
+  fb:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: automation/fb-posts.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: FB-Posts
+        env:
+          META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          MODE: ${{ inputs.mode }}
+          FB_DELETE_IDS: ${{ inputs.delete_ids }}
+        run: node automation/fb-posts.mjs
