@@ -37,7 +37,9 @@ function pickImgs(urls){
   if(back===front) back='';
   return {front,back};
 }
-function stripOld(desc){ return desc.replace(/^\s*<div class="lspod-designer"[\s\S]*?<\/script>\s*(?:<hr\s*\/?>)?\s*/i,''); }
+// ALLE vorhandenen Designer-Bloecke entfernen (global, nicht nur am Anfang) — sonst entstehen Duplikate,
+// wenn ein anderer Cron (z.B. Lieferzeit-Block) vor den Designer-Block schiebt.
+function stripOld(desc){ return desc.replace(/<div class="lspod-designer"[\s\S]*?<\/script>\s*(?:<hr\s*\/?>)?\s*/gi,''); }
 function snippet(front,back,vid,poster){
   var attrs=`data-img-front="${esc(front)}"`;
   if(back) attrs+=` data-img-back="${esc(back)}"`;
