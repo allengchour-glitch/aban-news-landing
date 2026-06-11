@@ -1,0 +1,64 @@
+name: Luma Hero-Clip (Bild→Video → Meta-Queue)
+
+# Generiert 1 Luma-Dream-Machine-Clip aus einem Produktfoto (kategorie-rotierend),
+# lädt ihn auf die Shopify-CDN und reiht ihn in social/video_queue.csv ein →
+# der Meta-Autopilot postet ihn auf IG/FB. No-op ohne LUMA_API_KEY.
+
+on:
+  schedule:
+    - cron: '40 6 * * *'   # täglich 06:40 UTC — vor den Post-Slots, 1 Clip/Tag
+  workflow_dispatch:
+    inputs:
+      max_clips:
+        description: 'Wie viele Clips diesen Lauf'
+        required: false
+        default: '1'
+        type: string
+      only:
+        description: 'Nur bestimmte Produkt(e) (name aus good_products.csv, kommagetrennt)'
+        required: false
+        default: ''
+        type: string
+      dry_run:
+        description: 'Nur testen (nicht generieren/posten)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: luma-hero-clip
+  cancel-in-progress: false
+
+jobs:
+  luma:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Luma-Clip generieren + in Meta-Queue
+        env:
+          LUMA_API_KEY: ${{ secrets.LUMA_API_KEY }}
+          LUMA_MODEL: ${{ vars.LUMA_MODEL }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          MAX_CLIPS: ${{ inputs.max_clips || '1' }}
+          LUMA_ONLY: ${{ inputs.only }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node automation/luma-hero-clip.mjs
+      - name: Commit Clip + Queue
+        run: |
+          if [ -n "$(git status --porcelain social/video_queue.csv reels)" ]; then
+            git config user.name  "luma-bot"; git config user.email "actions@users.noreply.github.com"
+            git add social/video_queue.csv reels
+            git commit -m "luma: Hero-Clip generiert + in Meta-Queue [skip ci]"
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true; sleep 3; done
+          else echo "nichts generiert (kein LUMA_API_KEY oder schon in Queue)."; fi
