@@ -28,6 +28,7 @@ LINKS = [
     ("/ki-betrug-scam-check.html", "KI-Betrug &amp; Scams"),
     ("/steuer-basics-selbststaendige.html", "Steuer-Basics"),
     ("/kleinunternehmerregelung-einfach-erklaert.html", "Kleinunternehmerregelung"),
+    ("/rechnung-generator.html", "Rechnung schreiben"),
     ("/altersvorsorge-selbststaendige.html", "Altersvorsorge"),
     ("/scheinselbststaendigkeit-vermeiden.html", "Scheinselbstständigkeit"),
 ]

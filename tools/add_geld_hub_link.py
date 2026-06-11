@@ -22,6 +22,7 @@ DE = [
     "altersvorsorge-selbststaendige.html", "scheinselbststaendigkeit-vermeiden.html",
     "finanz-skills-fuer-selbststaendige.html", "geld-verdienen-mit-ki.html",
     "ki-abo-lohnt-sich.html", "notgroschen-aufbauen.html", "inflation-einfach-erklaert.html",
+    "kleinunternehmerregelung-einfach-erklaert.html", "rechnung-generator.html",
 ]
 PAGES = DE + [os.path.join("en", f) for f in DE]
 

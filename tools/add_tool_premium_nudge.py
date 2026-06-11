@@ -31,6 +31,7 @@ PAGES = [
     "ki-tool-vergleich.html",
     "ki-tools-datensatz.html",
     "ki-tools-fuer-selbststaendige.html",
+    "rechnung-generator.html",
 ]
 
 NUDGE_DE = (
