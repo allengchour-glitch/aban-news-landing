@@ -20,6 +20,11 @@
   in die 6 Finanz-Hubs (finanzberater/steuerberater/immobilienmakler/versicherungsmakler/unternehmensberater/
   wirtschaftspruefer) OHNE den Funnel (data-aban-tools-cta, verkauft Premium) oder Related-Ring (data-aban-related)
   anzutasten. Marker-Injektor-Muster = wie tools/related_hubs.py.
+- **Wiederverwendbare Geld-Cluster-Injektoren (alle Marker-basiert + idempotent, Liste oben im Skript pflegen):**
+  `tools/add_geld_cluster_links.py` (data-aban-geld -> 6 Finanz-Hubs), `tools/add_geld_hub_link.py` (data-aban-hublink ->
+  Hub-Ruecklink auf jeder Cluster-Seite), `tools/add_geld_signup.py` (data-aban-signup -> Inline-beehiiv-Formular vor FAQ),
+  `generate_geld_og.py` (OG-Karten 1200x630 via make() aus generate_og_images.py + og:image-Injektion). Neue Geld-Seite ->
+  Slug in diese 4 Skripte eintragen + laufen lassen, dann ueberall verlinkt/og/signup.
 - **Pro-Login** (beehiiv Magic-Link, KEIN echter Backend-Login moeglich auf statischer Seite) in allen Sprach-Navs +
   founding.html (DE+EN) + maerkte. Premium liegt auf **beehiiv** (Founding €69 lifetime / €9 mo / €89 Jahr).
 - ⚠️ **Git-Falle (wieder passiert):** lokaler Spiegel haengt zeitweise auf Altstand → `git fetch origin main` ggf.
