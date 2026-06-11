@@ -51,7 +51,20 @@ function readGood(){
 function loadPointer(n){ try{ return parseInt(fs.readFileSync(POINTER,'utf8').trim(),10) % n; }catch{ return 0; } }
 function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
 
-const REEL_HASHTAGS = '#schweizmode #sommerkleid #ootdschweiz #fashiontiktokschweiz #luxestyle';
+const _reach='#schweiz #foryou #luxestyle';
+function pickTags(s){
+  s=(s||'').toLowerCase();
+  if(/herren|m\u00e4nner|menswear|\bmen\b/.test(s)) return _reach+' #herrenmode #menstyle';
+  if(/sneaker|slides|sandal|schuh|stiefel|boot|loafer/.test(s)) return _reach+' #sneaker #shoes';
+  if(/kette|ohrring|armreif|armband|\bring\b|schmuck|halskette|anh\u00e4nger|moissanite|zirkonia/.test(s)) return _reach+' #schmuck #jewelry';
+  if(/serum|gua-?sha|creme|roller|beauty|pflege|skincare|maske/.test(s)) return _reach+' #skincare #selfcare';
+  if(/st\u00e4nder|stander|halter|gadget|tech|lampe|deko|vase|kerze|organizer|\bhome\b/.test(s)) return _reach+' #gadget #lifestyle';
+  if(/tasche|\bbag\b|handtasche|crossbody|clutch|rucksack/.test(s)) return _reach+' #handtasche #bag';
+  if(/kleid|\brock\b|dress|skirt|bluse/.test(s)) return _reach+' #sommerkleid #damenmode';
+  if(/blazer|cardigan|hemd|shirt|jacke|mantel|\btop\b|weste|strick|\bset\b|mode/.test(s)) return _reach+' #fashionschweiz #ootdschweiz';
+  if(/sonnenbrille|brille|\bhut\b|\bcap\b|g\u00fcrtel|schal|accessoire/.test(s)) return _reach+' #accessoires #ootdschweiz';
+  return _reach+' #neu #ootdschweiz';
+}
 function buildPrompt(label){
   return `Cinematic fashion product video for a premium Swiss online boutique. Subject: ${label}. `
     + `Very subtle, gentle motion only: a slow soft dolly-in (push-in) and a touch of parallax / softly drifting `
@@ -109,8 +122,8 @@ function queueReel(name, label, handle, fileName){
   const url = handle ? `${SITE}/products/${handle}` : SITE;
   const today = new Date().toISOString().slice(0,10);
   const videoUrl = `${OUT_BASE}/reels/${fileName}`;
-  const caption = `${label} ✨ Sommer-Mode von deinem Schweizer Shop · -10% mit Code WELCOME10 · 🔗 Link in Bio`;
-  const row = [ `veo-${name}-${today}`, today, videoUrl, caption, REEL_HASHTAGS, 'tiktok,instagram', 'ready', '', '' ];
+  const caption = `${label} ✨ Neu bei deinem Schweizer Shop · -10% mit Code WELCOME10 · 🔗 Link in Bio`;
+  const row = [ `veo-${name}-${today}`, today, videoUrl, caption, pickTags(`${name} ${label} ${handle||''}`), 'tiktok,instagram', 'ready', '', '' ];
   const exists = fs.existsSync(REELS_CSV) && fs.statSync(REELS_CSV).size>0;
   let out = exists ? '' : 'id,scheduled_date,video_url,caption,hashtags,platforms,status,posted_at,post_url\n';
   out += row.map(esc).join(',') + '\n';
