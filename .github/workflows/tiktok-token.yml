@@ -1,0 +1,71 @@
+name: TikTok Token holen (No-PC)
+
+# Tauscht einen TikTok-OAuth-`code` gegen Access-/Refresh-Token UND speichert sie automatisch
+# als Repo-Secrets (TT_ACCESS_TOKEN, TT_REFRESH_TOKEN). So brauchst du KEINEN Computer:
+# am Handy einloggen → code aus der Weiterleitungs-URL kopieren → hier einfügen → fertig.
+#
+# Voraussetzungen (einmalig als Secrets setzen, geht am Handy über die GitHub-Web/App):
+#   TT_CLIENT_KEY, TT_CLIENT_SECRET   → aus deiner TikTok-Developer-App
+#   REPO_ADMIN_PAT                    → ein Personal Access Token (Fine-grained) mit
+#                                       Repo-Recht "Secrets: Read and write" — nötig, damit der
+#                                       Workflow die Tokens als Secrets ablegen darf.
+#
+# Der Token wird NIE in den Log geschrieben (öffentliches Repo): maskiert + nur via gh secret set.
+
+on:
+  workflow_dispatch:
+    inputs:
+      code:
+        description: 'Der code aus der Weiterleitungs-URL (oder die ganze URL einfügen)'
+        required: true
+        type: string
+      redirect_uri:
+        description: 'Redirect URI (muss exakt der aus dem Login entsprechen)'
+        required: false
+        default: 'http://localhost:8723/callback'
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tiktok-token
+  cancel-in-progress: false
+
+jobs:
+  token:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: automation/tiktok-token.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Code gegen Tokens tauschen
+        id: tok
+        env:
+          TT_CLIENT_KEY: ${{ secrets.TT_CLIENT_KEY }}
+          TT_CLIENT_SECRET: ${{ secrets.TT_CLIENT_SECRET }}
+          TT_AUTH_CODE: ${{ inputs.code }}
+          TT_REDIRECT_URI: ${{ inputs.redirect_uri }}
+        run: node automation/tiktok-token.mjs
+
+      - name: Tokens als Secrets speichern
+        env:
+          GH_TOKEN: ${{ secrets.REPO_ADMIN_PAT }}
+          ACCESS: ${{ steps.tok.outputs.access_token }}
+          REFRESH: ${{ steps.tok.outputs.refresh_token }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "❌ REPO_ADMIN_PAT fehlt — kann die Tokens nicht als Secret speichern."
+            echo "   Lege ein Fine-grained PAT mit 'Secrets: Read and write' an und setze es als Secret REPO_ADMIN_PAT."
+            exit 1
+          fi
+          printf '%s' "$ACCESS"  | gh secret set TT_ACCESS_TOKEN  --repo "$GITHUB_REPOSITORY"
+          printf '%s' "$REFRESH" | gh secret set TT_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY"
+          echo "✅ TT_ACCESS_TOKEN + TT_REFRESH_TOKEN gespeichert. Der Autopost-Cron ist jetzt scharf."
