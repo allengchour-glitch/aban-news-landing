@@ -92,7 +92,41 @@
     return { pts: pts, edges: edges, tick: tick };
   }
 
-  var SHAPES = { sphere: shapeSphere, torus: shapeTorus, helix: shapeHelix, wave: shapeWave };
+  function shapeGalaxy(N) {
+    var arms = 3, pts = [];
+    for (var i = 0; i < N; i++) {
+      var t = i / N, r = Math.sqrt(t) * 1.35, arm = (i % arms) / arms * 6.283;
+      var a = r * 4.2 + arm + (Math.random() - 0.5) * 0.5;
+      pts.push([Math.cos(a) * r, (Math.random() - 0.5) * 0.14 * (1 - t * 0.6), Math.sin(a) * r]);
+    }
+    return { pts: pts, edges: [], tick: null }; // reine Partikel
+  }
+
+  function shapeSwarm(N) {
+    var pts = [];
+    for (var i = 0; i < N; i++)
+      pts.push([(Math.random() * 2 - 1), (Math.random() * 2 - 1) * 0.95, (Math.random() * 2 - 1)]);
+    return { pts: pts, edges: nearestEdges(pts, 2), tick: null };
+  }
+
+  function shapeBars(N, ds) {
+    var vals = (ds.values || "4,7,5,9,6,8,3,7").split(",").map(parseFloat).filter(function (x) { return !isNaN(x); });
+    if (!vals.length) vals = [4, 7, 5, 9, 6, 8, 3, 7];
+    var max = Math.max.apply(null, vals) || 1, n = vals.length, pts = [], edges = [], base = -0.7, w = Math.min(0.16, 1.6 / n / 2.2);
+    for (var k = 0; k < n; k++) {
+      var x = n === 1 ? 0 : (k / (n - 1) - 0.5) * 1.8, h = vals[k] / max * 1.5, o = pts.length;
+      // 8 Eckpunkte eines Quaders
+      for (var sx = -1; sx <= 1; sx += 2) for (var sz = -1; sz <= 1; sz += 2) for (var sy = 0; sy <= 1; sy++)
+        pts.push([x + sx * w, base + sy * h, sz * w]);
+      // 12 Kanten
+      var E = [[0,1],[2,3],[4,5],[6,7],[0,2],[1,3],[4,6],[5,7],[0,4],[1,5],[2,6],[3,7]];
+      for (var e = 0; e < E.length; e++) edges.push([o + E[e][0], o + E[e][1]]);
+    }
+    return { pts: pts, edges: edges, tick: null };
+  }
+
+  var SHAPES = { sphere: shapeSphere, torus: shapeTorus, helix: shapeHelix, wave: shapeWave,
+                 galaxy: shapeGalaxy, swarm: shapeSwarm, bars: shapeBars };
 
   function init(cv) {
     var ctx = cv.getContext("2d");
@@ -101,7 +135,7 @@
     var rgb = hexToRgb(cv.dataset.color);
     var speed = parseFloat(cv.dataset.speed || "1") || 1;
     var make = SHAPES[(cv.dataset.shape || "sphere")] || shapeSphere;
-    var S = make(N), pts = S.pts, edges = S.edges, tick = S.tick;
+    var S = make(N, cv.dataset), pts = S.pts, edges = S.edges, tick = S.tick;
     var col = function (a) { return "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + "," + a + ")"; };
 
     var W = 0, H = 0, R = 0, cx = 0, cy = 0, dpr = Math.min(2, window.devicePixelRatio || 1);
