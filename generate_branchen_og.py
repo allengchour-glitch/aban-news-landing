@@ -365,6 +365,12 @@ BRANCHEN = {
     "gnadenhof":           ("Gnadenhöfe",           ["Porträts & Spenden,", "nicht die Tierpflege"]),
     "surfschule":          ("Surfschulen",          ["Kurse & Camps,", "nicht die Wassersicherheit"]),
     "nagelstudio":         ("Nagelstudios",         ["Leistungen & Social,", "nicht die Hygiene"]),
+    "indoorspielplatz":    ("Indoorspielplätze",    ["Angebote & Geburtstage,", "nicht die Aufsicht"]),
+    "trampolinpark":       ("Trampolinparks",       ["Angebote & Events,", "nicht die Sicherheit"]),
+    "bauernhofcafe":       ("Bauernhofcafés",       ["Karte & Saison,", "nicht die Hygiene"]),
+    "hochzeitsfotograf":   ("Hochzeitsfotografen",  ["Pakete & Anfragen,", "nicht das Foto"]),
+    "hundephysiotherapie": ("Hundephysiotherapie",  ["Texte & Orga,", "nicht die Diagnose"]),
+    "imkereibedarf":       ("Imkereibedarf",        ["Produkttexte & Listings,", "keine Bienenberatung"]),
 }
 
 
