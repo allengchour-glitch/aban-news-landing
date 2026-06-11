@@ -44,7 +44,28 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
-**📌 2026-06-07 (NEUESTER STAND — ZUERST LESEN: Memory aufgefrischt + Conversion-Fix):**
+**📌 2026-06-11 (NEUESTER STAND — POD-Editor mit echten Fotos + 98 Mockups + Shop-Audit A–Z):**
+- **🎨 Selbst-gestalten-Editor (`pod/designer.js`, live):** echte Produktfotos statt Zeichnungen bei ALLEN
+  Editor-Produkten (Shirt/Tasse/Tote/Kissen/Magnet/Poster/Bügeltransfer); Live-Farbvorschau Shirt
+  Weiss/Schwarz/Navy (echte Gemini-Fotos `pod/tees/`); Grössen-Regler, freie Farbwahl, Ebenen, Duplizieren,
+  Emojis, kleinerer Start-Text. **`data-img-front` ist NUR Vorschau** — die Druckdatei bleibt das zentrierte Motiv.
+- **🇨🇭 49 Shirt- + 49 Tassen-Fertigdesigns** (`shirt-*`/`tasse-*`): Hauptbild war schwebendes Design-PNG → jetzt
+  **photorealistisches Mockup auf echtem Produkt** (alle 98 live getauscht). Tools (für neue Designs erneut
+  dispatchbar): `automation/pod_fertig_mockups.mjs`+`pod-mockups.yml` (Gemini-i2i + Shopify-Staged-Upload),
+  `automation/gen_editor_blanks.mjs`+`editor-blanks.yml` (Editor-Blank-Fotos), `automation/gen_tee_colors.mjs`+`tee-colors.yml`.
+  ⚠️ **Workflow-`name:` nie mit Doppelpunkt** (bricht YAML-Trigger → 422) — gequotet oder ohne „:".
+- **🔎 Shop-Audit A–Z (Optik+Text):** **BEHOBEN live:** Collection „neu-eingetroffen" zeigte kundenseitig
+  **„✨ CJ Neuheiten 2026"** (interner Lieferant „CJ" sichtbar!) → umbenannt **„✨ Neuheiten 2026"**. Sonst kein
+  CJ-Leak. **Gut:** alle Rechts-/Service-Seiten gefüllt, POD-Preise gesund (Shirt 20.90/Tasse 17.90), Hero-CTA
+  `/collections/sommer` ok (72 Prod.), Fertig-Seiten zeigen echtes Mockup+ATC. **Offen (Customizer/User):**
+  (1) 2 redundante Bestseller-Sektionen auf Startseite → 4. Produkt-Liste auf `premium-geschenke`/`sommer-2026`
+  umstellen; (2) Customer-Account-Menü linkt falsch auf `account.luxestyle.com.co` (Shop ist .ch); (3) Fertig-
+  Produkte 0 Reviews → echte Judge.me-Reviews. Theme: `Horizon · LuxeStyle + Email-Popup (Claude)` (MAIN,
+  `templates/index.json` auto-generiert → Customizer nutzen, nicht per API überschreiben).
+- **Branch-Hinweis:** Diese POD/Editor/Audit-Arbeit lief via PRs direkt auf **`main`** (#683/#685/#690/#691 u.a.),
+  nicht auf `claude/luxestyle-product-CizQ6`. Memory liegt zusätzlich in `SHARED-MEMORY.md` (Live-Stand).
+
+**📌 2026-06-07 (vorheriger Stand — Memory aufgefrischt + Conversion-Fix):**
 - **Branch-Reset:** Alle früheren Dropship-Branches (SrAs5/LehDs) sind **in `main` gemergt + gelöscht**.
   Neuer **fester Dropship-Branch: `claude/luxestyle-product-CizQ6`** (Draft-PR #401 nach `main`). Künftige
   Sessions hier committen. `dropship/SESSION-HANDOFF.md` ist **veraltet** (Stand 30.05.) — nicht mehr als

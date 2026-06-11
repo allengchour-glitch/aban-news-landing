@@ -39,6 +39,29 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-11 — Luxestyle/POD session: Editor mit echten Fotos + 98 Fertig-Mockups + Shop-Audit A–Z:**
+- **🎨 Selbst-gestalten-Editor komplett überarbeitet** (`pod/designer.js` live): echtes Produktfoto statt
+  Zeichnung bei ALLEN Editor-Produkten (Shirt/Tasse/Tote/Kissen/Magnet/Poster/Bügeltransfer), Live-Farbvorschau
+  Shirt (Weiss/Schwarz/Navy = echte Gemini-Fotos `pod/tees/`), Grössen-Regler, freie Farbwahl, Ebenen,
+  Duplizieren, Emoji-Palette. `data-img-front` = **nur Vorschau** (Druckdatei = zentriertes Motiv).
+- **🇨🇭 49 Shirt- + 49 Tassen-Fertigdesigns** (Handles `shirt-*`/`tasse-*`): Hauptbild war „schwebendes" Design-PNG
+  → jetzt **photorealistisches Mockup auf echtem Produkt** (alle 98 live getauscht, altes Bild gelöscht).
+  Werkzeug: `automation/pod_fertig_mockups.mjs` + Workflow `pod-mockups.yml` (Gemini i2i + Shopify-Staged-Upload).
+  Editor-Blanks: `automation/gen_editor_blanks.mjs` + `editor-blanks.yml`. Beide für neue Designs erneut dispatchbar.
+- **🔎 Shop-Audit A–Z (Optik+Text, KI-Zweitmeinung via WebFetch):**
+  - **BEHOBEN (live):** Collection „neu-eingetroffen" hiess kundenseitig **„✨ CJ Neuheiten 2026"** → der interne
+    Dropship-Lieferant „CJ" war sichtbar! Umbenannt zu **„✨ Neuheiten 2026"**. (Sonst KEIN weiterer CJ-Leak.)
+  - **GEPRÜFT & GUT:** alle Rechts-/Service-Seiten vorhanden+gefüllt (AGB/Datenschutz/Impressum echte Adresse
+    Belp/Widerruf/FAQ/Über-uns/Garantie/Grössentabelle); POD-Preise gesund (Shirt 20.90/Tasse 17.90, kein
+    Verlust); Hero-CTA `/collections/sommer` existiert (72 Prod.); Fertig-Produktseiten zeigen echtes Mockup+ATC.
+  - **OFFEN (Customizer/User, NICHT autonom gemacht — Risiko/Reichweite):** (1) Startseite hat **2 Bestseller-
+    Sektionen** (⭐ Top 10 + „🔥 Bestseller") mit Überschneidung → 4. Produkt-Liste im Customizer auf
+    `premium-geschenke`/`sommer-2026` umstellen. (2) **Customer-Account-Menü** linkt auf falsche Domain
+    `account.luxestyle.com.co` (Shop ist .ch) → prüfen/fixen. (3) Fertig-Produkte 0 Reviews → echte Judge.me-
+    Reviews importieren (nie Fake). (4) viele Legacy-Doppelseiten (versand×3, kontakt×3) — harmlos, optional aufräumen.
+- **Branch dieser Arbeit:** PODs/Editor wurden via PRs auf **`main`** gemerged (#683/#685/#690/#691 u.a.). Theme:
+  `Horizon · LuxeStyle + Email-Popup (Claude)` (MAIN, `templates/index.json` ist auto-generiert — Customizer nutzen).
+
 **2026-06-11 — abannews session: ⚠️ HOSTING-WECHSEL + aban-Pro live (für ALLE relevant):**
 - **🔀 abannews.com läuft jetzt auf CLOUDFLARE PAGES** (vorher GitHub Pages). Domain per API umgezogen
   (Workflow `cf-attach-domain.yml`), Pages-Projekt **`abannews`** (= `abannews.pages.dev`). **Edge-API `/api/*`
