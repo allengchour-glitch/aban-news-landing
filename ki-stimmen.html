@@ -115,7 +115,7 @@
       <h1>KI-Stimmen &amp; Text-to-Speech für DACH</h1>
       <p class="lead">Aus Text wird gesprochene Stimme — für Erklärvideos, Voiceover, Podcasts und Menüansagen. Was 2026 wirklich gut klingt, wo die Grenzen liegen, und worauf du beim Datenschutz achtest.</p>
       <p class="stand">Stand: Juni 2026 · auf eigener Nutzung basierend</p>
-      <p class="disclosure">ℹ️ <strong>Transparenz:</strong> Diese Seite enthält einen Affiliate-Link zu Murf. Wenn du darüber ein Abo abschließt, bekomme ich eine Provision — für dich ändert sich am Preis nichts, und an meiner Einschätzung ändert es auch nichts. Empfohlen wird nur, was ich selbst genutzt habe.</p>
+      <p class="disclosure">ℹ️ <strong>Transparenz:</strong> Diese Seite enthält Affiliate-Links zu ElevenLabs und Murf. Schließt du darüber ein Abo ab, bekomme ich eine Provision — für dich ändert sich am Preis nichts, und an meiner Einschätzung ändert es auch nichts. Empfohlen wird nur, was ich selbst genutzt habe.</p>
     </section>
 
     <article>
@@ -157,9 +157,20 @@
         </table>
       </div>
 
-      <h2>Murf — was es gut macht</h2>
-      <p>Murf ist einer der etablierten Anbieter mit großer Stimmen-Auswahl (auch Deutsch), einem brauchbaren Editor mit Timing-Kontrolle und kommerzieller Lizenz im bezahlten Tarif. Für die oben genannten Einsatzzwecke — Erklärvideos, Voiceover, mehrsprachige Skripte — ist es eine solide Wahl.</p>
-      <p><strong>Ehrlich zur Grenze:</strong> Murf ist ein US-Anbieter (Datenschutz bei personenbezogenen Inhalten prüfen), und auch hier gilt: für die emotionale Hauptrolle im Hörbuch ist die menschliche Stimme weiter vorn. Für den Arbeitsalltag der meisten Selbstständigen reicht es gut.</p>
+      <h2>ElevenLabs — die natürlichste Stimme (2026 unser Favorit)</h2>
+      <p>Bei reiner Stimmqualität ist <strong>ElevenLabs</strong> 2026 vorn: sehr natürliche Betonung, gute Emotion, überzeugende deutsche Stimmen und ein Stimm-Klon-Feature. Für Voiceover, Erklärvideos und Podcast-Intros, bei denen es auf den Klang ankommt, ist es die erste Wahl. Es gibt eine Gratis-Stufe zum Testen.</p>
+      <p><strong>Ehrlich zur Grenze:</strong> US-Anbieter (bei personenbezogenen Inhalten Datenschutz/Serverstandort prüfen). Stimmen klonen nur mit Einwilligung. Für die emotionale Hauptrolle im Hörbuch ist eine echte Stimme weiter vorn — für den Arbeitsalltag reicht es exzellent.</p>
+
+      <div class="cta-box">
+        <h2>ElevenLabs ausprobieren</h2>
+        <p>Stimmen vergleichen und den Editor testen — Gratis-Stufe vorhanden.</p>
+        <a class="btn" id="eleven-cta" href="https://elevenlabs.io" target="_blank" rel="sponsored noopener">ElevenLabs testen →</a>
+        <p class="fineprint">Affiliate-Link — Provision bei Abschluss, kein Aufpreis für dich, keine Auswirkung auf die Bewertung.</p>
+      </div>
+
+      <h2>Murf — solide Alternative mit gutem Editor</h2>
+      <p>Murf ist ein etablierter Anbieter mit großer Stimmen-Auswahl (auch Deutsch), einem brauchbaren Editor mit Timing-Kontrolle und kommerzieller Lizenz im bezahlten Tarif. Für Erklärvideos, Voiceover und mehrsprachige Skripte eine solide Wahl — besonders, wenn dir der Editor-Workflow wichtiger ist als die letzte Nuance Stimmqualität.</p>
+      <p><strong>Ehrlich zur Grenze:</strong> ebenfalls US-Anbieter (Datenschutz bei personenbezogenen Inhalten prüfen). Für den Arbeitsalltag der meisten Selbstständigen reicht es gut.</p>
 
       <div class="cta-box">
         <h2>Murf ausprobieren</h2>
@@ -209,10 +220,11 @@
 <script>
 (function(){
   var cfg = window.ABAN_AFFILIATE || {};
-  var url = (cfg.MURF_URL || '').trim();
-  var el = document.getElementById('murf-cta');
   // Affiliate-Link nur setzen, wenn konfiguriert — sonst neutrale Anbieter-Domain (kein Tracking).
-  if(el && url){ el.href = url; }
+  [['murf-cta', cfg.MURF_URL], ['eleven-cta', cfg.ELEVENLABS_URL]].forEach(function(p){
+    var el = document.getElementById(p[0]); var url = (p[1] || '').trim();
+    if(el && url){ el.href = url; }
+  });
 })();
 </script>
 
