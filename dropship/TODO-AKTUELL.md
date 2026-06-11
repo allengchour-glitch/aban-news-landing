@@ -10,6 +10,9 @@
 - [x] **Prodigi-Connector + 5 weitere Workflows** gebaut, getestet (no-op-safe), auf `main`.
 
 ## 🔵 Nur DU (1-Klick)
+- [ ] **🔴 CJ-API-Key ROTIEREN** — `CJ_EMAIL`/`CJ_API_KEY` sind gesetzt, aber der Key ist **ungültig/abgelaufen**
+      (Lauf meldet „CJ Auth fehlgeschlagen"). CJ-Dashboard → Account → API → neuen Key generieren → Secret `CJ_API_KEY`
+      aktualisieren. Danach importiert **`cj-autopilot`** automatisch ~12 echte Produkte/Tag (DE-Copy + QA + ACTIVE).
 - [x] **`PRODIGI_API_KEY` gesetzt** ✅ → Prodigi scharf, 10 Schweiz-Poster live.
 - [~] **Spocket = WEGLASSEN** (kostet Abo, nicht nötig — CJ+Printful+Prodigi reichen). Erledigt = kein Spocket.
 - [ ] **Lieferzeit Phase 2 (Customizer, optional):** Theme „Horizon" → PDP → Block hinzufügen „Custom Liquid" →

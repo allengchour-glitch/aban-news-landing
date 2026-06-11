@@ -5,6 +5,14 @@
 
 ## 📌 STAND 2026-06-11 (Prodigi-Connector + Lieferzeit + Sprache je Land — NEU, ZUERST LESEN)
 **🟢 SCHON LIVE & VERIFIZIERT (diese Session live geschaltet):**
+- **🔴 CJ-Key UNGÜLTIG:** `cj-autopilot` (max=20) lief → „CJ Auth fehlgeschlagen (Key prüfen/rotieren)". CJ_EMAIL/CJ_API_KEY
+  SIND als Secrets gesetzt, aber der Key ist abgelaufen. User muss `CJ_API_KEY` rotieren → dann importiert der Autopilot
+  (cron 2×/Tag) echte Produkte autonom. **Alternative ohne CJ:** POD-Sticker-Massenlinie (s.u.).
+- **POD-Sticker-Massenlinie (autonom, ohne CJ):** `automation/create_pod_stickers_all.mjs` + `pod-stickers-all.yml` legt die
+  GANZE Design-Bibliothek (~250 Designs, social/designs/) als fixfertige auto-druckbare Sticker an (Printful Kiss-Cut
+  `9000001_10163/10164/10165`, Metafeld print_file, themen-Copy+SEO, ACTIVE+publish, Tag fertig-sticker (+schweiz-edition
+  bei CH-Motiven)). Ledger `social/designs/_pod_sticker_created.txt`, LIMIT/Lauf. Handle `pod-sticker-<name>` (skippt die 12
+  schweiz-sticker). Lieferzeit+Übersetzung ziehen die Crons (delivery-block/translate) nach. **1. Batch (60) live gestartet.**
 - **Prodigi LIVE:** User hat `PRODIGI_API_KEY` gesetzt (Länge 36, gültig). `prodigi-check` bestätigt SKUs
   `GLOBAL-FAP-A4/A3/A2` (Enhanced Matte 200g, Druckbereich `default`). `prodigi-products` (dry=false) lief → 10 Schweiz-Poster
   ACTIVE (Handle `prodigi-poster-*`, Tag `schweiz-edition`). `prodigi-sync` (cron 6h) druckt bezahlte Orders autom.
