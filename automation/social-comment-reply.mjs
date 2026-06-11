@@ -137,6 +137,6 @@ async function fb(){
   if(!FB_TOK && !IG_TOK){ console.log('Keine Meta-Tokens → No-op.'); process.exit(0); }
   try{ await ig(); }catch(e){ console.error('IG-Fehler:', e.message); }
   try{ await fb(); }catch(e){ console.error('FB-Fehler:', e.message); }
-  saveState(replied);
+  if(!DRY) saveState(replied);
   console.log(`Fertig: ${done} Antwort(en)${DRY?' (DRY)':''}.`);
 })();
