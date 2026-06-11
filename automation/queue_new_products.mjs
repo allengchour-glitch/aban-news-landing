@@ -88,7 +88,7 @@ function caption(title, handle, pt, price) {
   const V = [
     `Neu bei LuxeStyle ✨ ${t}${chf?` – nur ${chf}`:''} 🇨🇭 Welche Farbe wäre deins? Kommentier 👇 –10% mit Code WELCOME10 → ${link}`,
     `${t}${chf?` für ${chf}`:''} 👀 Spar dir den Designer-Preis. 1, 2 oder 3 – welches nimmst du? 👇 –10% WELCOME10 → ${link}`,
-    `Dein nächster Liebling? ${t}${chf?` ab ${chf}`:''} 🤍 Sag uns deine Frage in den Kommentaren 👇 –10% WELCOME10 → ${link}`,
+    `Dein nächster Liebling? ${t}${chf?` ab ${chf}`:''} 🤍 Den Link willst du? Schreib LINK 👇 –10% WELCOME10 → ${link}`,
     `${t} 🌸${chf?` Nur ${chf}.`:''} Würdest du’s tragen? Ja/Nein 👇 Schweizer Shop · –10% Code WELCOME10 → ${link}`,
   ];
   const idx = [...handle].reduce((a,c)=>a+c.charCodeAt(0),0) % V.length;

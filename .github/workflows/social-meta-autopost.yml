@@ -11,9 +11,10 @@ name: Social Meta Auto-Post (IG + FB + Threads)
 
 on:
   schedule:
-    # 2×/Tag, gestaffelt: 08:00 & 17:00 UTC (≈ 10:00 / 19:00 CH)
-    - cron: '0 8 * * *'
-    - cron: '0 17 * * *'
+    # 2×/Tag, versetzt zu den Reel-Slots (09/20): 14:00 & 18:00 UTC (≈ 16:00 / 20:00 CH)
+    # (IG-Analyse 11.06.: 14h Ø61 Reach, 18h gut gesampelt — Bild-Posts auf die stärkeren Rest-Slots.)
+    - cron: '0 14 * * *'
+    - cron: '0 18 * * *'
   workflow_dispatch:
     inputs:
       dry_run:

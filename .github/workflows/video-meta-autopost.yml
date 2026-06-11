@@ -12,8 +12,9 @@ name: Social Meta Video Auto-Post (IG Reels + FB + Threads)
 
 on:
   schedule:
-    # 2×/Tag, versetzt zum Bild-Poster: 11:00 & 20:00 UTC (≈ 13:00 / 22:00 CH)
-    - cron: '0 11 * * *'
+    # 2×/Tag auf den datengeprüften Top-Reichweiten-Slots: 09:00 & 20:00 UTC (≈ 11:00 / 22:00 CH)
+    # (IG-Analyse 11.06.: 09h Ø141 Reach, 20h Ø112 — Reels sind der Reichweiten-Motor → beste Slots.)
+    - cron: '0 9 * * *'
     - cron: '0 20 * * *'
   workflow_dispatch:
     inputs:
