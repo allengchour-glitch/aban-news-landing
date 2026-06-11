@@ -82,6 +82,15 @@
     </span>
   </div>
 
+  <section id="blenderWrap" hidden style="margin-top:34px">
+    <h2 style="text-align:center">Mit Blender vorgerendert</h2>
+    <p class="lead" style="margin-bottom:14px">Photorealistisch in der Cloud gerendert (Blender · Cycles) — als Video eingebettet. Läuft auch ohne JavaScript.</p>
+    <div class="stage">
+      <span class="badge">aban · Blender-Render</span>
+      <video id="blenderVid" style="display:block;width:100%;height:auto" autoplay muted loop playsinline preload="none"></video>
+    </div>
+  </section>
+
   <h2>Was du hier siehst</h2>
   <p>Jeder Punkt sitzt auf einer Kugel, wird in Echtzeit in 3D gedreht, perspektivisch projiziert und mit seinen nächsten Nachbarn verbunden — das ergibt den „Konstellations"-Look. Alles läuft mit purem JavaScript auf einem <code>&lt;canvas&gt;</code>, ohne externe Bibliothek.</p>
   <div class="tip"><h3>⚡ Leicht &amp; höflich</h3><p>Die Animation pausiert automatisch, wenn sie aus dem Bild scrollt oder der Tab im Hintergrund liegt — und zeigt ein ruhiges Standbild, wenn du „weniger Bewegung" in deinem System eingestellt hast.</p></div>
@@ -106,6 +115,29 @@
   </div>
 </footer>
 <script defer src="/js/aban3d.js"></script>
+<script>
+/* Blender-Render progressiv einblenden, sobald media/3d/<mode>.<ext> existiert (sonst unsichtbar). */
+document.addEventListener("DOMContentLoaded", function () {
+  var cands = ["intro", "mug"], exts = ["webm", "mp4"];
+  (function probe(i) {
+    if (i >= cands.length) return;
+    var base = "/media/3d/" + cands[i];
+    fetch(base + ".mp4", { method: "HEAD" }).then(function (r) {
+      if (!r.ok) return probe(i + 1);
+      var v = document.getElementById("blenderVid");
+      exts.forEach(function ( e) {
+        var src = document.createElement("source");
+        src.src = base + "." + e; src.type = e === "webm" ? "video/webm" : "video/mp4";
+        v.appendChild(src);
+      });
+      v.setAttribute("poster", base + "-poster.jpg");
+      v.preload = "metadata";
+      document.getElementById("blenderWrap").hidden = false;
+      v.load();
+    }).catch(function () { probe(i + 1); });
+  })(0);
+});
+</script>
 <script defer>
 document.addEventListener("DOMContentLoaded", function () {
   var cv = document.querySelector("canvas[data-aban3d]");
