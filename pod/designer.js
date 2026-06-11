@@ -132,6 +132,12 @@
     COLORS.forEach(function(c){ ctxCw.appendChild(el('button',{type:'button','data-c':c,style:"width:32px;height:32px;border-radius:50%;border:2px solid #e3e3e3;background:"+c+";cursor:pointer;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);color:"+(c.toLowerCase()==='#ffffff'||c==='#c1922f'?'#111':'#fff')+";font-size:15px;line-height:1;"},'')); });
     ctx.appendChild(ctxIn); ctx.appendChild(ctxFont); ctx.appendChild(ctxCw); body.appendChild(ctx);
 
+    // Grössen-Regler (für JEDES ausgewählte Element: Text/Bild/Sticker)
+    var sizeBar=el('div',{style:"display:none;align-items:center;gap:10px;background:#faf8f5;border:1px solid #ece7df;border-radius:12px;padding:9px 12px;margin-bottom:10px;"});
+    sizeBar.appendChild(el('span',{style:"font-size:13px;font-weight:700;color:#16151a;white-space:nowrap;"}, (EN?'Size':'Grösse')));
+    var ctxSize=el('input',{type:'range',min:'0.15',max:'3',step:'0.02',style:"flex:1;accent-color:#c1922f;"});
+    sizeBar.appendChild(ctxSize); body.appendChild(sizeBar);
+
     // Sticker-Bibliothek (Panel)
     var lib=el('div',{style:"display:none;background:#fff;border:1px solid #ece7df;border-radius:12px;padding:10px;margin-bottom:10px;max-height:240px;overflow:auto;"});
     var libHead=el('div',{style:"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"});
@@ -190,11 +196,12 @@
       state.sel=id;
       for(var k in nodes){ var on=(k===id); nodes[k].frame.style.display=on?'block':'none'; nodes[k].handle.style.display=on?'block':'none'; nodes[k].del.style.display=on?'block':'none'; nodes[k].root.style.zIndex=on?'5':'1'; }
       var ly=findLayer(id);
+      if(ly){ sizeBar.style.display='flex'; ctxSize.value=ly.scale; }
       if(ly&&ly.type==='text'){ ctx.style.display='block'; ctxIn.value=ly.text||''; ctxFont.value=ly.font; paintCtxSwatch(ly.color); }
       else ctx.style.display='none';
       syncFormInputs();
     }
-    function deselect(){ state.sel=null; for(var k in nodes){ nodes[k].frame.style.display='none'; nodes[k].handle.style.display='none'; nodes[k].del.style.display='none'; } ctx.style.display='none'; }
+    function deselect(){ state.sel=null; for(var k in nodes){ nodes[k].frame.style.display='none'; nodes[k].handle.style.display='none'; nodes[k].del.style.display='none'; } ctx.style.display='none'; sizeBar.style.display='none'; }
     function paintCtxSwatch(val){ Array.prototype.forEach.call(ctxCw.children,function(x){ var on=x.getAttribute('data-c')===val; x.style.border='2px solid '+(on?'#16151a':'#e3e3e3'); x.style.transform=on?'scale(1.12)':'none'; x.textContent=on?'✓':''; }); }
 
     // ---------- Gesten: Drag / Resize+Rotate / Pinch ----------
@@ -227,7 +234,7 @@
           layer.cy=Math.max(0,Math.min(1,start.cy0+(e.clientY-start.py)/start.sh)); }
         layoutNode(layer);
       }
-      function onUp(e){ delete ptrs[e.pointerId]; start=null; if(Object.keys(ptrs).length===0) syncFormInputs(); }
+      function onUp(e){ delete ptrs[e.pointerId]; start=null; try{ if(state.sel===layer.id) ctxSize.value=layer.scale; }catch(_){ } if(Object.keys(ptrs).length===0) syncFormInputs(); }
       root.addEventListener('pointerdown',function(e){ onDown(e,false); });
       handle.addEventListener('pointerdown',function(e){ onDown(e,true); });
       root.addEventListener('pointermove',onMove);
@@ -241,7 +248,7 @@
     function addLayer(layer){ curLayers().push(layer); makeNode(layer); layoutNode(layer); select(layer.id); }
     function removeLayer(id){ var a=curLayers(); for(var i=0;i<a.length;i++){ if(a[i].id===id){ a.splice(i,1); break; } } if(nodes[id]){ nodes[id].root.remove(); delete nodes[id]; } if(state.sel===id) deselect(); syncFormInputs(); }
 
-    function newText(){ return {id:'L'+(++UID),type:'text',text:'',font:FONTS[0].v,color:'#111111',cx:0.5,cy:0.42,scale:1,rot:0}; }
+    function newText(){ return {id:'L'+(++UID),type:'text',text:'',font:FONTS[0].v,color:'#111111',cx:0.5,cy:0.42,scale:0.55,rot:0}; }
     function newImage(src,printUrl,uploading){ return {id:'L'+(++UID),type:'image',src:src,printUrl:printUrl||'',uploading:!!uploading,cx:0.5,cy:0.5,scale:1,rot:0}; }
     function newSticker(name){ var u=STICKER_BASE+name+'.png'; return {id:'L'+(++UID),type:'sticker',name:name,src:u,printUrl:u,uploading:false,cx:0.5,cy:0.5,scale:0.8,rot:0}; }
 
@@ -254,6 +261,8 @@
     ctxIn.addEventListener('input',function(){ var ly=findLayer(state.sel); if(ly&&ly.type==='text'){ ly.text=ctxIn.value; layoutNode(ly); syncFormInputs(); } });
     ctxFont.addEventListener('change',function(){ var ly=findLayer(state.sel); if(ly&&ly.type==='text'){ ly.font=ctxFont.value; layoutNode(ly); syncFormInputs(); } });
     ctxCw.addEventListener('click',function(e){ var b=e.target.closest('[data-c]'); if(!b) return; var ly=findLayer(state.sel); if(ly&&ly.type==='text'){ ly.color=b.getAttribute('data-c'); paintCtxSwatch(ly.color); layoutNode(ly); syncFormInputs(); } });
+    // Grössen-Regler → aktives Element live skalieren
+    ctxSize.addEventListener('input',function(){ var ly=findLayer(state.sel); if(ly){ ly.scale=Math.max(0.06,Math.min(3,parseFloat(ctxSize.value)||ly.scale)); layoutNode(ly); syncFormInputs(); } });
 
     // Klick auf leere Leinwand → abwählen
     stage.addEventListener('pointerdown',function(e){ if(e.target===stage) deselect(); });
