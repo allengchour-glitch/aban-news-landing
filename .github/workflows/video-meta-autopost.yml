@@ -58,6 +58,7 @@ jobs:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
           THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          SKIP_THREADS: '1'   # Threads NICHT mit Video-Spam fluten (Account geblockt/0 Follower) → eigener Text-Post-Cron
           MAX_PER_RUN: '1'
           DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
         run: node automation/video-autopost-meta.mjs

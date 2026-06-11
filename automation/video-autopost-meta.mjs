@@ -37,6 +37,7 @@ const FB_ID = process.env.FB_PAGE_ID || '';
 const FB_TOK = process.env.FB_PAGE_ACCESS_TOKEN || process.env.META_ACCESS_TOKEN || '';
 const TH_ID = process.env.THREADS_USER_ID || '';
 const TH_TOK = process.env.THREADS_ACCESS_TOKEN || '';
+const SKIP_THREADS = process.env.SKIP_THREADS === '1';  // Threads-Drossel (s. social-autopost-meta.mjs)
 
 const COLS = ['id','scheduled_date','video_url','caption','platforms','status','posted_at','post_url'];
 
@@ -150,7 +151,7 @@ for(const next of due.slice(0, MAX)){
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
   const wantFB = !plat.trim() || /facebook|\bfb\b/.test(plat);
-  const wantTH = !plat.trim() || /threads/.test(plat);
+  const wantTH = !SKIP_THREADS && (!plat.trim() || /threads/.test(plat));
   console.log(`→ ${next[idx.id]} | ${[wantIG&&'IG',wantFB&&'FB',wantTH&&'Threads'].filter(Boolean).join('+')} | ${videoUrl}`);
   if(DRY){ console.log('   DRY_RUN: würde senden.'); postedCount++; continue; }
 

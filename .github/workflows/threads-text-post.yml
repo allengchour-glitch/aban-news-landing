@@ -1,0 +1,53 @@
+name: Threads Text-Post (1×/Tag, gesprächig)
+
+# Postet 1×/Tag einen kurzen FRAGE-Text-Post auf Threads (media_type:TEXT, kein Link).
+# Ersetzt das frühere 4×/Tag Produkt-/Link-Bombardement, das den 0-Follower-Account
+# als Spam ge-action-blockt hat. Ziel: Antworten/Reichweite → echte Follower.
+# No-op ohne THREADS_ACCESS_TOKEN.
+
+on:
+  schedule:
+    - cron: '0 19 * * *'   # 19:00 UTC (~21:00 CH) — versetzt zu den Reel-Slots 09/20
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur zeigen (nicht posten)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: threads-text-post
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            automation/threads-text-post.mjs
+            social
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Threads Text-Post
+        env:
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node automation/threads-text-post.mjs
+      - name: Rotations-State committen
+        run: |
+          if [ -n "$(git status --porcelain social/threads-text-state.json)" ]; then
+            git config user.name  "threads-text-bot"; git config user.email "actions@users.noreply.github.com"
+            git add social/threads-text-state.json
+            git commit -m "threads-text: Rotation [skip ci]"
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else echo "nichts"; fi
