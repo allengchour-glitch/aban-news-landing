@@ -251,3 +251,11 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
   **Option für die Zukunft:** Ein **Cloud-Browser-/Browser-MCP-Tool** mit eingeloggten Sessions verbinden → dann
   könnte eine Session auch klickende Aktionen übernehmen (TikTok-Upload, Customizer-Klicks, Token holen). Aktuell
   Arbeitsteilung: Claude = API/Render/Posten, User = App-/Login-Klicks.
+
+**2026-06-11 — IG-DM-Auto-Antwort: GEBAUT, aber von Meta blockiert (NICHT nochmal versuchen):**
+- `automation/ig-dm-reply.mjs` + `ig-dm-reply.yml` fertig (liest Konv., antwortet auf Kunden-DMs <24h,
+  Themen-Erkennung, dedup). **ABER:** beide Tokens (IG_ACCESS_TOKEN + FB_PAGE_ACCESS_TOKEN) → Fehler
+  **#3 „Application does not have the capability"**. Das ist ein **APP-Level-Block**: die Meta-App hat
+  keine IG-Messaging-Fähigkeit → bräuchte **App-Review für `instagram_manage_messages`** (Advanced Access,
+  mehrere Tage). **Bei 1 DM nicht lohnenswert → DMs bleiben manuell.** Tool wartet einsatzbereit, falls
+  später Review+Scope da sind. Kommentar-Antwort (öffentlich) läuft autonom — das ist der wertvollere Teil.
