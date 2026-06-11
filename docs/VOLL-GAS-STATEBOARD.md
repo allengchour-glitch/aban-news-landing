@@ -37,7 +37,9 @@ Kontext-Wechsel verloren gehen → Ergebnisse **früh committen/pushen**.
   5. Optional: EN/FR/IT-Versionen der Tool-Seite.
 - **Voller Plan:** `~/.claude/plans/verlinke-die-themen-am-nifty-swan.md`.
 
-## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **346 live, alle viersprachig (de/en/fr/it ≈ 1384 Seiten)** 🎉 300+ (Parallel-Session zählt evtl. anders)
+## Branchen-Hubs (`ki-fuer-*.html`) — Stand: **352 live, alle viersprachig (de/en/fr/it ≈ 1408 Seiten)** 🎉 350+ (Parallel-Session zählt evtl. anders)
+
+- **Welle 93–94 (6 Hubs, „max agenten" #8, 346→352):** Indoorspielplatz, Trampolinpark, Bauernhofcafé, Hochzeitsfotograf, Hundephysiotherapie, Imkereibedarf — **direkt viersprachig**. (Indoorspielplatz/Trampolinpark Aufsicht/Sicherheit [EN 1176/1177 bzw. Sprungregeln, Verletzungsrisiko] + Jugendschutz; Bauernhofcafé LMIV/HACCP/keine Health-Claims; Hochzeitsfotograf keine KI-Fotos als Beispiele/Urheberrecht/DSGVO; Hundephysiotherapie health-adjacent: keine Ferndiagnose/Behandlungsanweisung, Tierarzt-Indikation; Imkereibedarf keine Bienengesundheits-/Varroa-Beratung [Tierarzneimittelrecht], distinkt von imkerei.) imkereibedarf-it nach Agent-Stockung selbst nachgebaut.
 
 - **Welle 91–92 (6 Hubs, „max agenten" #7, 340→346):** Saunabetrieb, Minigolfanlage, Lasertag, Gnadenhof, Surfschule, Nagelstudio — **direkt viersprachig**. (Saunabetrieb Hygiene/Legionellen + keine Gesundheitsberatung; Minigolf/Lasertag Anlagenpflege/Aufsicht + Jugendschutz; Gnadenhof keine Tierpflege/Tierarzt-Ersatz + ehrliche Spenden-Komm./§11 TierSchG; Surfschule keine Wassersicherheit/Unterricht-Ersatz; Nagelstudio Hygiene + keine Nagel-Diagnose [Arzt/Podologie].) **Lehre: zwei API-/Session-Limit-Ausfälle** (Sonnet-Klassifizierer offline + „session limit reset 4:40 UTC") → erste 6 Agenten lieferten 0/4, nach Reset neu gebaut, pro Slug sofort committet. saunabetrieb-DE: Beispielpreise „CHF 38" entfernt (Regel „keine erfundenen Preise").
 
