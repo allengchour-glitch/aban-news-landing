@@ -371,6 +371,11 @@ BRANCHEN = {
     "hochzeitsfotograf":   ("Hochzeitsfotografen",  ["Pakete & Anfragen,", "nicht das Foto"]),
     "hundephysiotherapie": ("Hundephysiotherapie",  ["Texte & Orga,", "nicht die Diagnose"]),
     "imkereibedarf":       ("Imkereibedarf",        ["Produkttexte & Listings,", "keine Bienenberatung"]),
+    "mosterei":            ("Mostereien",           ["Produkttexte & Lohnmost,", "nicht die Kennzeichnung"]),
+    "oelmuehle":           ("Ölmühlen",             ["Produkttexte & Shop,", "keine Heilversprechen"]),
+    "fischzucht":          ("Fischzuchten",         ["Produkttexte & Hofverkauf,", "nicht das Tierwohl"]),
+    "destillerie":         ("Destillerien",         ["Produkttexte & Orga,", "keine Alkoholwerbung"]),
+    "freibad":             ("Freibäder",            ["Gäste-Infos & Saison,", "nicht die Aufsicht"]),
 }
 
 
