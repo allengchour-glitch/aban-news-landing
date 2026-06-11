@@ -57,12 +57,13 @@ bestätigt GitHub Pages; die alte `CLOUDFLARE-SETUP.md`-Behauptung „läuft auf
 - **✅ BEWIESEN (11.06.):** Auf `abannews.pages.dev` laufen die Funktionen: `/api/pro-validate` → `{"valid":false}` (200),
   `/api/generate` → `{"error":"ai_off"}` (503 = Funktion läuft, nur Anthropic-Key fehlt), `/ki-studio` + `markets.json` = 200.
   → **Option A funktioniert.** Edge-API ist real, sobald die Hauptseite auf CF Pages liegt.
-- **🟡 OFFEN (2 Schritte, dann Pro live):** (1) **`ANTHROPIC_API_KEY`** als Secret im **CF-Pages-Projekt `abannews`**
-  (Dashboard → Settings → Variables, oder `wrangler pages secret put` mit Key-Wert vom User) → KI-Tools antworten echt.
-  (2) **Domain-Umzug** abannews.com → Pages-Projekt `abannews` (CF: Pages → Custom domains → abannews.com hinzufügen,
-  DNS wird auto-gesetzt; GitHub-Pages-CNAME entfällt). ⚠️ Vor Cutover sicherstellen, dass `_site` ALLE live-genutzten
-  Pfade enthält (reels/social/media ggf. nachziehen) — sonst brechen Live-Links. Token hat DNS:Edit → Cutover wäre
-  auch per API machbar, aber bewusst dem User/Bestätigung überlassen (produktiv, schwer reversibel).
+- **✅ ANTHROPIC_API_KEY WIRED + KI LIVE BEWIESEN (11.06.):** Key lag als GitHub-Secret; `cf-deploy-mainsite.yml`
+  schreibt ihn per `wrangler pages secret put` automatisch ins Pages-Projekt. Test auf abannews.pages.dev:
+  `/api/chat` → **echte Claude-Antwort (200)**, `/api/generate` → 402 pro_required (Key da + Gate greift). Backend fertig.
+- **🟡 OFFEN — nur noch 1 Schritt: Domain-Umzug** abannews.com → Pages-Projekt `abannews`. Deploy-Vollständigkeit
+  geprüft (media/downloads drin, /reels→ki-reels.html, Schlüsselseiten 200) → Cutover bricht nichts.
+  Cutover am einfachsten im CF-Dashboard: Pages → `abannews` → Custom domains → „abannews.com" (1 Klick, DNS auto,
+  GitHub-Pages-CNAME entfällt). Token hat DNS:Edit → ginge auch per API, aber Apex-DNS + Produktiv = bewusst dem User-Klick überlassen.
 
 ## 📌 Stand 2026-06-11 (Teil 18) — „aban Pro" + KI-Studio (Live-KI-Tools, gated per Lizenz)
 User-Wunsch: „premium verbessern mit zusatz kosten wo man dich brauchen kann mit tools". Entscheid (User):
