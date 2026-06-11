@@ -52,7 +52,7 @@ und mehr Themen". Gebaut auf den vorhandenen Cloudflare-Pages-Functions.
   localStorage, Tool-Calls mit `X-Pro-Key`, graceful Fehler: ai_off→„noch nicht aktiv", pro_required, rate). DE/EN
   via `<html lang>`. Verlinkt: online-tools (Featured-Card), Home-Footer, founding.html (Upsell-Benefit), Sitemap.
 - **Gating-Infra (Edge):** `functions/_pro.mjs` validiert einen **Lemon-Squeezy-Lizenzschlüssel** über
-  `licenses/validate` — **braucht KEINEN Store-API-Key** (10-min-Cache, `PRO_TEST_KEY`-Bypass für Beta).
+  `licenses/validate` — **braucht KEINEN Store-API-Key** (10-min-Cache). Kein Test-/Backdoor-Key (User-Wunsch).
   `functions/api/pro-validate.js` (POST {license_key}→{valid}). 
 - **Tools (Claude, serverseitig):** `functions/api/generate.js` NEU (Texte/E-Mail/Fahrpläne, **Pro-Pflicht**, 503 ohne
   Key, 402 ohne Lizenz). `hype-check.js`: Claude-Umschreibung jetzt Pro-gated (Nicht-Pro → Regel-Fallback,
@@ -61,8 +61,7 @@ und mehr Themen". Gebaut auf den vorhandenen Cloudflare-Pages-Functions.
 - **`js/pay-config.js`:** `PRO_MONTHLY_URL`/`PRO_YEARLY_URL` (LEER → Buttons zeigen ehrlich „Start in Kürze").
 - **🟡 AKTIVIERUNG (nur User, 3 Schritte):** (1) **Cloudflare-Pages-Secret `ANTHROPIC_API_KEY`** setzen → Tools
   werden live (sonst 503/Fallback). (2) **Lemon-Squeezy Pro-Produkt** (€19/Mt, €190/Jahr) mit **„license keys"
-  aktiviert** anlegen → Checkout-Links in `pay-config.js` `PRO_*` eintragen. (3) optional `PRO_TEST_KEY` als
-  Pages-Var zum Vorab-Testen. Bis dahin: Seite live, Tools sagen ehrlich „noch nicht aktiv". Kosten: Claude nur
+  aktiviert** anlegen → Checkout-Links in `pay-config.js` `PRO_*` eintragen. Bis dahin: Seite live, Tools sagen ehrlich „noch nicht aktiv". Kosten: Claude nur
   bei Pro-Nutzung → durch das Abo gedeckt. Offene Kür: ki-werkzeug.html live an `/api/generate` hängen; weitere
   Tools (Content-Planer, E-Mail-Serien, Prompt-Veredler Pro, Markt-Briefing, Übersetzen) als „mehr Themen" geplant.
 - **Ausbau (User „alles autonome und weiter"):** (a) **`ki-werkzeug.html` an Live-KI gehängt** — `AI_ENDPOINT=/api/generate`,
@@ -70,7 +69,7 @@ und mehr Themen". Gebaut auf den vorhandenen Cloudflare-Pages-Functions.
   (free unverändert). (b) **Mehr Pro-Tools** in `generate.js`: neue `kind`s `contentplan`, `emailserie`, `translate`,
   `prompt` — Content-Plan + E-Mail-Serie sind im Studio-Dropdown „KI-Texte" live (✓), translate/prompt API-fertig
   (Panel folgt). (c) **Aktivierungs-Anleitung `docs/ABAN-PRO-AKTIVIEREN.md`** (Cloudflare-Key → LS-Pro-Produkt mit
-  license keys → `pay-config.js` → optional `PRO_TEST_KEY` → Kundenablauf + Troubleshooting).
+  license keys → `pay-config.js` → Kundenablauf + Troubleshooting; kein Test-Key/Backdoor).
 - **Ausbau-Runde 2 (User „weiter alles"):** KI-Studio hat jetzt **7 Tool-Panels** — neu: **Übersetzen & anpassen**,
   **Prompt-Veredler Pro**, **Markt-Briefing** (zieht `/data/markets.json` → Top-Mover → `generate.js` `kind:marketbrief`).
   JS-Cases in `ki-studio.js` (+`marketSummary()`). „mehr Themen"-Karten auf echte Roadmap umgestellt (Branchen-
