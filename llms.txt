@@ -48,8 +48,16 @@ Betreiber: aban news (Allen Chour), Schweizer Einzelunternehmen, Belp (CH). Alle
 
 ## English
 - [aban news (English)](https://abannews.com/en/): the honest, anti-hype AI newsletter for the self-employed.
-- [Money & AI (English)](https://abannews.com/en/geld-und-ki.html): honest guides, calculators and checks.
-- [How to use AI properly (English guide)](https://abannews.com/en/wie-nutze-ich-ki-richtig.html).
+- [Premium / Founding member (€69 lifetime)](https://abannews.com/en/founding.html): ad-free, full archive, one-time payment.
+- [Money & AI (overview)](https://abannews.com/en/geld-und-ki.html): honest guides, calculators and checks.
+- [How to use AI properly (beginner's guide)](https://abannews.com/en/wie-nutze-ich-ki-richtig.html): what AI is good at, where it isn't, 5 rules.
+- [Anonymise text before AI](https://abannews.com/en/text-anonymisieren.html): mask emails/IBAN/phone/cards locally.
+- [AI token calculator](https://abannews.com/en/ki-token-rechner.html): estimate tokens & cost.
+- [Write a quote](https://abannews.com/en/angebot-schreiben.html), [Order confirmation](https://abannews.com/en/auftragsbestaetigung-schreiben.html), [Payment reminder](https://abannews.com/en/mahnung-schreiben.html): free generators for the self-employed.
+- [Small-business VAT exemption explained (DACH)](https://abannews.com/en/kleinunternehmerregelung-einfach-erklaert.html): with a quick check.
+- [Tax basics for the self-employed](https://abannews.com/en/steuer-basics-selbststaendige.html).
+- [Live markets: stocks & crypto with AI sentiment](https://abannews.com/en/maerkte.html).
+- [AI for your industry (English hub)](https://abannews.com/en/branchen.html): 350+ industry guides.
 
 ## Optional
 - [Impressum](https://abannews.com/impressum.html)
