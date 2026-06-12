@@ -27,6 +27,14 @@
   <link rel="stylesheet" href="/css/modern.css">
 
   <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"de","mainEntity":[
+    {"@type":"Question","name":"Kostet die API extra?","acceptedAnswer":{"@type":"Answer","text":"Nein. Der API-Zugang ist in aban Pro enthalten — du nutzt deinen Lizenzschlüssel als API-Schlüssel. Kein separater Tarif."}},
+    {"@type":"Question","name":"Darf ich die Ausgaben kommerziell nutzen?","acceptedAnswer":{"@type":"Answer","text":"Ja. Die erzeugten Texte gehören dir und sind kommerziell nutzbar. Du bist für die Verwendung verantwortlich und prüfst Fakten selbst — es sind KI-Entwürfe ohne Gewähr."}},
+    {"@type":"Question","name":"Wie sicher ist mein Schlüssel?","acceptedAnswer":{"@type":"Answer","text":"Nutze ihn nur serverseitig, nie im öffentlichen Frontend-Code. Eingaben werden zur Erzeugung verarbeitet, nicht zu Werbezwecken weitergegeben."}},
+    {"@type":"Question","name":"Was passiert bei zu vielen Anfragen?","acceptedAnswer":{"@type":"Answer","text":"Du bekommst HTTP 429. Limits: /api/generate 20/min (Jahres-Abo 60/min), /api/audit-report 6/min (Jahr 20/min)."}}
+  ]}
+  </script>
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "TechArticle",
@@ -196,6 +204,13 @@ console.log(data.text);</code></pre>
         <li>Fairer Gebrauch im Rahmen der Limits; missbräuchliche Last kann gedrosselt werden.</li>
         <li>Es gelten unsere <a href="/agb.html">AGB</a> &amp; der <a href="/datenschutz.html">Datenschutz</a>. Eingaben werden zur Erzeugung verarbeitet, nicht zu Werbezwecken weitergegeben.</li>
       </ul>
+
+      <h2>Häufige Fragen</h2>
+      <details><summary><strong>Kostet die API extra?</strong></summary><p>Nein. Der API-Zugang ist in <a href="/ki-studio.html">aban Pro</a> enthalten — du nutzt deinen Lizenzschlüssel als API-Schlüssel. Kein separater Tarif.</p></details>
+      <details><summary><strong>Welches Modell steckt dahinter?</strong></summary><p>Aktuell ein aktuelles Claude-Modell (Antwortfeld <code class="inl">model</code>). Wir können es serverseitig aktualisieren — du musst nichts ändern.</p></details>
+      <details><summary><strong>Darf ich die Ausgaben kommerziell nutzen?</strong></summary><p>Ja. Die erzeugten Texte gehören dir und sind kommerziell nutzbar. Du bist für die Verwendung verantwortlich und prüfst Fakten selbst — es sind KI-Entwürfe ohne Gewähr.</p></details>
+      <details><summary><strong>Wie sicher ist mein Schlüssel?</strong></summary><p>Nutze ihn nur serverseitig, nie im öffentlichen Frontend-Code. Eingaben werden zur Erzeugung verarbeitet, nicht zu Werbezwecken weitergegeben (<a href="/datenschutz.html">Datenschutz</a>).</p></details>
+      <details><summary><strong>Was passiert bei zu vielen Anfragen?</strong></summary><p>Du bekommst <code class="inl">429</code>. Limits: <code class="inl">/api/generate</code> 20/min (Jahres-Abo 60/min), <code class="inl">/api/audit-report</code> 6/min (Jahr 20/min). Kurz warten, dann geht's weiter.</p></details>
 
       <div class="card" style="margin-top:1.5rem;text-align:center">
         <h3 style="margin-top:0">Bereit?</h3>
