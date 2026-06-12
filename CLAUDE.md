@@ -42,6 +42,9 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **Scheduler (`CronCreate`/`ScheduleWakeup`) ist hier nicht aktiv** → kein echter Cron-Loop
   über Stunden möglich; Autonomie = Charge für Charge in der laufenden Session, plus dieses
   Memory, damit jede neue Session nahtlos weitermacht.
+- **🎬 Video-Präferenzen (FEST, User 2026-06-12 — `dropship/VIDEO-PRAEFERENZEN.md`):** ALLE Marketing-
+  Videos **OHNE Voiceover** (on-screen Text statt Stimme) + Musik = **`automation/music/luxe-premium.wav`**
+  (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
 **📌 2026-06-11 (NEUESTER STAND — POD-Editor mit echten Fotos + 98 Mockups + Shop-Audit A–Z):**
