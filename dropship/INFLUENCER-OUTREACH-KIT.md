@@ -22,6 +22,14 @@ Suche diese Hashtags/Begriffe → Tab **„Neueste"** → die mit echtem Engagem
 > Tipp: Wer kürzlich gepostet hat **und** im Kommentarbereich antwortet, reagiert auch auf deine DM.
 > 15–20 Kandidat:innen sammeln → in die Tracking-CSV eintragen → 2–3 DMs/Tag senden (nicht alle auf einmal).
 
+**Fundquellen / Verzeichnisse (Recherche-Startpunkte):**
+- **Modash** — Filter „Switzerland · Micro (<25k)": modash.io/find-influencers/switzerland/micro
+- **Collabstr** — TikTok/IG-Creator Schweiz buchbar/filterbar: collabstr.com (Land = Switzerland)
+- **Kingfluencers / Kolsquare** — Schweizer Agentur-Blogs mit Creator-Listen (eher grössere Namen → als
+  Inspiration, dann über deren „Ähnliche Accounts" zu den Micros klicken).
+> Echte Micro-Handles am verlässlichsten direkt in TikTok/IG über die Hashtags oben ziehen (Live-Engagement
+> sichtbar). Verzeichnisse = Ergänzung, Follower-/Engagement-Zahlen dort immer am Live-Profil gegenprüfen.
+
 ## 3) DM-Vorlagen (kopieren & Namen einsetzen)
 
 **Erstkontakt (Instagram/TikTok DM):**
