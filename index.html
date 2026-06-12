@@ -327,6 +327,61 @@
     </div>
   </section>
 
+  <!-- KI gratis testen (Funnel zum KI-Studio) -->
+  <section class="sec" id="demo">
+    <div class="wrap center">
+      <span class="eyebrow">Neu · KI-Studio</span>
+      <h2>KI gratis testen — ohne Anmeldung</h2>
+      <p class="sub">Wähl eine Art, schreib 1–2 Stichworte, sieh ein echtes KI-Ergebnis. Kostenlos, kein Konto.</p>
+      <div class="card" style="max-width:560px;margin:1.1rem auto 0;text-align:left">
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+          <div style="flex:1;min-width:150px">
+            <label for="hdKind" style="display:block;font-weight:600;margin-bottom:.2rem;font-size:.9rem">Was</label>
+            <select id="hdKind" style="width:100%;padding:.55rem .6rem;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff">
+              <option value="email">E-Mail</option><option value="social">Social-Post</option>
+              <option value="ad">Werbeanzeige</option><option value="slogan">Slogan</option><option value="text">Text</option>
+            </select>
+          </div>
+          <div style="flex:1;min-width:150px">
+            <label for="hdBranche" style="display:block;font-weight:600;margin-bottom:.2rem;font-size:.9rem">Branche</label>
+            <input type="text" id="hdBranche" placeholder="z. B. Handwerksbäckerei" style="width:100%;padding:.55rem .6rem;border:1px solid var(--line);border-radius:8px;font:inherit">
+          </div>
+        </div>
+        <label for="hdZiel" style="display:block;font-weight:600;margin:.6rem 0 .2rem;font-size:.9rem">Ziel / Worum geht's</label>
+        <input type="text" id="hdZiel" placeholder="z. B. Stammkunden über neue Öffnungszeiten informieren" style="width:100%;padding:.55rem .6rem;border:1px solid var(--line);border-radius:8px;font:inherit">
+        <div style="margin-top:.7rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
+          <button type="button" id="hdRun" class="btn btn--amber btn--sm">Gratis erstellen</button>
+          <span id="hdMsg" style="color:var(--muted);font-size:.88rem"></span>
+        </div>
+        <div id="hdOut" style="margin-top:.7rem;white-space:pre-wrap;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:.8rem;font-size:.95rem" hidden></div>
+        <div id="hdUpsell" hidden style="margin-top:.7rem;font-size:.92rem">
+          <b>Mini-Vorgeschmack.</b> Volle Länge, 22 Arten, Audit &amp; API gibt's in <a href="/ki-studio.html">aban&nbsp;Pro</a>.
+          <a href="/ki-studio.html" class="btn btn--amber btn--sm" style="margin-left:.3rem">KI-Studio ansehen →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+  (function(){
+    var btn=document.getElementById('hdRun'); if(!btn) return;
+    function v(id){ var e=document.getElementById(id); return e?e.value.trim():''; }
+    btn.addEventListener('click', function(){
+      var out=document.getElementById('hdOut'), msg=document.getElementById('hdMsg');
+      var body={ kind:(v('hdKind')||'email'), branche:v('hdBranche'), ziel:v('hdZiel'), lang:'de' };
+      btn.disabled=true; var old=btn.textContent; btn.textContent='Arbeite …'; msg.textContent='';
+      fetch('/api/demo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+        .then(function(r){ return r.json().then(function(d){ return {s:r.status,d:d}; }); })
+        .then(function(o){
+          if(o.s===200 && o.d && o.d.text){ out.textContent=o.d.text; out.hidden=false; document.getElementById('hdUpsell').hidden=false; }
+          else if(o.s===429){ msg.textContent='Gratis-Limit erreicht — mit Pro unbegrenzt.'; document.getElementById('hdUpsell').hidden=false; }
+          else if(o.s===503){ msg.textContent='KI gerade nicht aktiv — bitte später.'; }
+          else { msg.textContent='Hat nicht geklappt, bitte nochmal.'; }
+        }).catch(function(){ msg.textContent='Netzwerkfehler.'; })
+        .finally(function(){ btn.disabled=false; btn.textContent=old; });
+    });
+  })();
+  </script>
+
   <!-- KI-REELS TEASER -->
   <section class="sec">
     <div class="wrap center">
