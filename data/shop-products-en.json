@@ -83,5 +83,75 @@
     "desc": "Social, member emails, class descriptions.",
     "price": "€12",
     "buy": ""
+  },
+  {
+    "slug": "en-kosmetikstudios",
+    "title": "AI Starter Kit for Beauty & Nail Salons",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": ""
+  },
+  {
+    "slug": "en-kfz-werkstaetten",
+    "title": "AI Starter Kit for Auto Repair Shops",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": ""
+  },
+  {
+    "slug": "en-maler",
+    "title": "AI Starter Kit for Painters & Decorators",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": ""
+  },
+  {
+    "slug": "en-hotels",
+    "title": "AI Starter Kit for Hotels & Guesthouses",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": ""
+  },
+  {
+    "slug": "en-physiotherapeuten",
+    "title": "AI Starter Kit for Physiotherapy Practices",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": ""
+  },
+  {
+    "slug": "en-reinigungsfirmen",
+    "title": "AI Starter Kit for Cleaning Companies",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": ""
+  },
+  {
+    "slug": "en-garten-landschaftsbau",
+    "title": "AI Starter Kit for Landscaping & Gardening",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": ""
+  },
+  {
+    "slug": "en-goldschmiede",
+    "title": "AI Starter Kit for Goldsmiths & Jewellers",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": ""
+  },
+  {
+    "slug": "en-prompt-bibliothek",
+    "title": "AI Prompt Library for Solo Professionals",
+    "desc": "100+ proven copy-paste prompts — outreach, clients, marketing, admin & research. Cross-industry, honest, no hype.",
+    "price": "€19",
+    "buy": ""
+  },
+  {
+    "slug": "en-vorlagen-set",
+    "title": "Ready-made Text Templates for Solo Professionals",
+    "desc": "40 ready-to-use templates for quotes, emails, invoices & rejections. Copy, replace placeholders, send.",
+    "price": "€19",
+    "buy": ""
   }
 ]
