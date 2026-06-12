@@ -1,0 +1,15 @@
+{
+  "name": "aban news",
+  "short_name": "aban news",
+  "description": "Ehrliche KI-News & kostenlose KI-Tools für Selbstständige und KMU im DACH-Raum.",
+  "lang": "de",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fffbf5",
+  "theme_color": "#d97706",
+  "icons": [
+    { "src": "/favicon-32x32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

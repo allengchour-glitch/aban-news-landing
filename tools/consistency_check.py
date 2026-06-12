@@ -22,6 +22,12 @@ REPO = Path(__file__).resolve().parent.parent
 OUT = REPO / "reports" / "CONSISTENCY.md"
 
 CANON = {"founding": 69, "month": 9, "year": 89, "moneyback_days": 30}
+# Gültige Preise je Periode. Zwei Produkte:
+#   Premium (Newsletter) = €9/Monat · €89/Jahr · Founding €69 einmalig
+#   aban Pro (KI-Studio, ab 2026-06-11) = €19/Monat · €190/Jahr
+MONTH_OK = {9, 19}
+YEAR_OK = {89, 190}
+LIFE_OK = {69}
 # Eigene Produkte/interne Ops-Docs mit eigener Preis-/Garantie-Logik → nicht prüfen.
 EXCLUDE = ("/dist/", "node_modules", "/video-prototypes/", "/aban-studio/", "/dropship/",
            "/kurs.html", "/launch-manual.html", "/ebook.html", "/buch.html")
@@ -56,16 +62,16 @@ def main() -> int:
             for m in YEAR.finditer(line):
                 if m.start() and line[m.start() - 1] in "–—-":
                     continue  # Teil einer Spanne (z. B. „€5–€10")
-                if int(m.group(1)) != CANON["year"]:
-                    findings.append(f"{rp}:{i} — Jahrespreis €{m.group(1)} ≠ €{CANON['year']}")
+                if int(m.group(1)) not in YEAR_OK:
+                    findings.append(f"{rp}:{i} — Jahrespreis €{m.group(1)} ∉ {sorted(YEAR_OK)}")
             for m in MONTH.finditer(line):
                 if m.start() and line[m.start() - 1] in "–—-":
                     continue  # Spanne (z. B. „€5–€10/Monat") = Vergleich, kein Preis
-                if int(m.group(1)) != CANON["month"]:
-                    findings.append(f"{rp}:{i} — Monatspreis €{m.group(1)} ≠ €{CANON['month']}")
+                if int(m.group(1)) not in MONTH_OK:
+                    findings.append(f"{rp}:{i} — Monatspreis €{m.group(1)} ∉ {sorted(MONTH_OK)}")
             for m in LIFE.finditer(line):
-                if int(m.group(1)) != CANON["founding"]:
-                    findings.append(f"{rp}:{i} — Einmalpreis €{m.group(1)} ≠ €{CANON['founding']}")
+                if int(m.group(1)) not in LIFE_OK:
+                    findings.append(f"{rp}:{i} — Einmalpreis €{m.group(1)} ∉ {sorted(LIFE_OK)}")
             for m in MBACK.finditer(line):
                 if int(m.group(1)) != CANON["moneyback_days"]:
                     findings.append(f"{rp}:{i} — Geld-zurück {m.group(1)} Tage ≠ {CANON['moneyback_days']}")
@@ -74,8 +80,9 @@ def main() -> int:
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     head = ("# Konsistenz-Check — Preise & Garantien\n\n"
-            f"Kanonisch: Founding €{CANON['founding']} · Premium €{CANON['month']}/Monat · "
-            f"€{CANON['year']}/Jahr · {CANON['moneyback_days']} Tage Geld-zurück.\n\n")
+            f"Kanonisch: Founding €{CANON['founding']} einmalig · "
+            f"Premium €9/Monat · €89/Jahr · aban Pro €19/Monat · €190/Jahr · "
+            f"{CANON['moneyback_days']} Tage Geld-zurück.\n\n")
     if not findings:
         OUT.write_text(head + "✅ Keine Abweichungen gefunden.\n", encoding="utf-8")
         print("✅ Konsistenz-Check: keine Abweichungen.")
