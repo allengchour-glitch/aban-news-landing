@@ -327,6 +327,21 @@
     </div>
   </section>
 
+  <!-- 3D-Akzent: selbst-gehostete Engine (pausiert offscreen, respektiert reduced-motion) -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;align-items:center;border-radius:16px;overflow:hidden;background:radial-gradient(120% 120% at 30% 20%,#1c1814,#0f0d0a);border:1px solid #2a241c">
+        <div><canvas data-aban3d data-shape="globe" data-points="150" data-color="#f0a93a" data-speed="0.7" style="display:block;width:100%;height:260px;touch-action:none" aria-label="Interaktive 3D-Animation – zum Drehen ziehen"></canvas></div>
+        <div style="padding:22px 26px;color:#f3ede1">
+          <span class="eyebrow" style="color:#f0a93a">Selbst gebaut · 0 externe Libs</span>
+          <h2 style="color:#fff;margin:.3rem 0 .5rem">Echte 3D-Diagramme — direkt im Browser</h2>
+          <p style="color:#cdc3b2;margin:0 0 1rem">Unsere Rechner zeigen deine Zahlen als drehbares 3D-Diagramm — Balken, Linien, Donut &amp; mehr. Dieselbe schlanke Engine, kein Tracking, kein Upload. Zieh am Bild zum Drehen.</p>
+          <a href="/3d-animation.html" class="btn btn--amber btn--sm">Alle Formen ansehen →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- KI gratis testen (Funnel zum KI-Studio) -->
   <section class="sec" id="demo">
     <div class="wrap center">
@@ -848,5 +863,6 @@ if(x)x.addEventListener('click',function(){b.classList.remove('show');try{sessio
 <script defer src="/js/announce.js"></script>
 <script defer src="/js/aff-track.js"></script>
 <script defer src="/js/lang-suggest.js"></script>
+<script defer src="/js/aban3d.js"></script>
 </body>
 </html>
