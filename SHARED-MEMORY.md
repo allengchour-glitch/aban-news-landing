@@ -61,6 +61,13 @@
   Produkt, kein Drift), `AFFILIATE-URL`-Vorkommen = nur auskommentierte Template-Blöcke (keine toten Buttons).
 - **Bewusst NICHT gemacht:** Newsletter-CTA auf 32 Sales-/Rechts-/Utility-Seiten (würde ki-studio/empfehlen/
   api/press/mrr zumüllen). Berührt KEINEN Shop/Katalog/Social. Draft-PR nach `main`.
+- **Nachschlag (gleicher Tag, Indexierung):** 7 reale Seiten fehlten in `sitemap.xml` → nachgetragen:
+  `ki-fuer-fischzucht` + `ki-fuer-mosterei` (de/en/fr, 6×, von früherer Session als „tot" entfernt, existieren
+  aber längst wieder + in allen 4 branchen-Hubs verlinkt) und das komplett verwaiste Tool
+  `ki-bild-prompt-generator.html` (kein interner Link/Sitemap/Hub) → Karte in `online-tools.html` + JSON-LD
+  (numberOfItems 34→35) + Sitemap. **Voller Orphan-Scan:** nur 4 Root-Orphans, alle bereits in Sitemap
+  (json-formatter/ki-lifestyle/links/mrr = bewusst standalone) → Discoverability sauber. Loop-Trap-Scan in
+  `_redirects` = 0, alle 4 Sprach-Hubs von ihren Homepages verlinkt.
 
 **2026-06-11 — Luxestyle/POD session: Editor mit echten Fotos + 98 Fertig-Mockups + Shop-Audit A–Z:**
 - **🎨 Selbst-gestalten-Editor komplett überarbeitet** (`pod/designer.js` live): echtes Produktfoto statt
