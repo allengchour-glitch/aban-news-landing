@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d97706">
+  <title>Finance Calculator for the Self-Employed (2026) — Hourly Rate, Tax Reserve, Buffer | aban news</title>
+  <meta name="description" content="Free finance calculator for the self-employed: realistic hourly rate, tax and social-contribution reserve as a percentage, cashflow buffer in months. Runs in your browser, no tracking, no sign-up.">
+  <link rel="canonical" href="https://abannews.com/en/finanz-rechner.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="Finance Calculator for the Self-Employed — Hourly Rate, Reserve, Buffer">
+  <meta property="og:description" content="Three honest calculators for your self-employed finances. In the browser, no tracking.">
+  <meta property="og:url" content="https://abannews.com/en/finanz-rechner.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:image" content="https://abannews.com/img/og/geld-verdienen-mit-ki.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/img/og/geld-verdienen-mit-ki.png">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/finanz-rechner.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/finanz-rechner.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/finanz-rechner.html">
+  <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--ok:#059669;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:2.5rem 0 1.5rem;text-align:center}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    h1{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:58ch;margin:0 auto}
+    .calc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;margin:1.25rem 0;box-shadow:var(--shadow)}
+    .calc h2{font-size:1.2rem;margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem}
+    .calc .hint{color:var(--muted);font-size:.9rem;margin-bottom:1rem}
+    .row{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:.9rem}
+    .field{flex:1;min-width:140px}
+    label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.3rem}
+    input[type=number]{width:100%;padding:.6rem .7rem;font-size:1rem;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+    input:focus{outline:2px solid var(--amber);border-color:var(--amber)}
+    .unit{color:var(--muted);font-size:.78rem;font-weight:400}
+    .out{background:var(--amber-lt);border:1px solid var(--amber);border-radius:12px;padding:1rem 1.1rem;margin-top:.5rem}
+    .out .big{font-size:1.8rem;font-weight:800;color:var(--amber-dk);line-height:1.1}
+    .out .sub{color:var(--ink);font-size:.9rem;margin-top:.35rem}
+    .out ul{margin:.5rem 0 0 1.1rem;font-size:.9rem;color:var(--ink)}
+    .seg{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.9rem}
+    .seg button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.35rem .8rem;font-size:.85rem;cursor:pointer}
+    .seg button[aria-pressed=true]{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2rem 0}
+    .cta-box h2{font-size:1.25rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:1rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+    .skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Finance Calculator for the Self-Employed","url":"https://abannews.com/en/finanz-rechner.html","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"en","description":"Hourly-rate, tax-reserve and cashflow-buffer calculator for the self-employed. Runs locally in your browser, no tracking."}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"How do I calculate my hourly rate as a self-employed person?","acceptedAnswer":{"@type":"Answer","text":"Don't work backwards from your desired salary assuming all 8 hours a day are billable. Only part of your working time is billable (acquisition, bookkeeping and breaks don't count). Divide your annual target — including costs, taxes and social contributions — by your realistically billable hours."}},
+    {"@type":"Question","name":"What percentage should the self-employed set aside?","acceptedAnswer":{"@type":"Answer","text":"A rough rule of thumb is 30 to 40 percent of every payment for income tax and social contributions, depending on your country, profit and insurance. This is only a guide and is no substitute for tax advice — clarify the exact rate with your tax adviser."}},
+    {"@type":"Question","name":"How large should my financial buffer be?","acceptedAnswer":{"@type":"Answer","text":"Three to six months of your private and business fixed costs in a separate account is common. That lets you bridge dry spells and late payments without getting stressed."}}
+  ]}
+  </script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="wrap">
+    <a href="/en/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/finanz-skills-fuer-selbststaendige.html">Finance Skills</a>
+      <a href="/en/geld-verdienen-mit-ki.html">AI &amp; Money</a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn">Subscribe</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/en/geld-und-ki.html" style="color:#b45309;font-weight:600;text-decoration:none">Money &amp; AI: all topics, calculators &amp; checks</a></p>
+
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Free · runs in your browser · no tracking</span>
+      <h1>Finance Calculator for the Self-Employed</h1>
+      <p class="lead">Three down-to-earth calculators for the numbers many people trip over: a realistic hourly rate, the reserve for taxes and contributions, and your buffer for lean months. Everything is calculated locally in your browser — nothing is sent or stored.</p>
+      <p style="margin:.8rem 0 0;font-size:.93rem;color:#5c6773">Related: <a href="/en/maerkte.html" style="color:#b45309;font-weight:700;text-decoration:none">Markets — crypto &amp; stocks live with AI sentiment →</a></p>
+    </div>
+
+    <!-- 1) Hourly rate -->
+    <section class="calc" aria-labelledby="h-rate">
+      <h2 id="h-rate">🧮 1. Realistic hourly rate</h2>
+      <p class="hint">The most common mistake: dividing your desired salary by 160 hours. In reality only part of your time is billable — nobody pays you directly for acquisition, bookkeeping and breaks.</p>
+      <div class="row">
+        <div class="field">
+          <label for="r-netto">Your target annual salary <span class="unit">(net, for you personally)</span></label>
+          <input type="number" id="r-netto" value="36000" min="0" step="1000" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="r-kosten">Business costs per year <span class="unit">(software, office, insurance …)</span></label>
+          <input type="number" id="r-kosten" value="6000" min="0" step="500" inputmode="numeric">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="r-steuer">Taxes &amp; contributions <span class="unit">(% of profit)</span></label>
+          <input type="number" id="r-steuer" value="35" min="0" max="90" step="1" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="r-tage">Working days per year <span class="unit">(minus holidays/sickness)</span></label>
+          <input type="number" id="r-tage" value="220" min="1" max="365" step="1" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="r-billable">Billable hours per day <span class="unit">(realistically 4–6)</span></label>
+          <input type="number" id="r-billable" value="5" min="0.5" max="12" step="0.5" inputmode="decimal">
+        </div>
+      </div>
+      <div class="out" id="r-out" aria-live="polite"></div>
+    </section>
+
+    <!-- 2) Tax reserve -->
+    <section class="calc" aria-labelledby="h-tax">
+      <h2 id="h-tax">💶 2. Tax &amp; social-contribution reserve</h2>
+      <p class="hint">Set aside a fixed share of every payment immediately into a separate account. Then the tax bill won't floor you. Pick a benchmark or enter your own.</p>
+      <div class="seg" id="t-seg" role="group" aria-label="Reserve benchmark">
+        <button type="button" data-p="25">cautious 25%</button>
+        <button type="button" data-p="35" aria-pressed="true">standard 35%</button>
+        <button type="button" data-p="42">higher 42%</button>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="t-einnahme">Income <span class="unit">(gross, per month)</span></label>
+          <input type="number" id="t-einnahme" value="5000" min="0" step="100" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="t-prozent">Reserve rate <span class="unit">(%)</span></label>
+          <input type="number" id="t-prozent" value="35" min="0" max="90" step="1" inputmode="numeric">
+        </div>
+      </div>
+      <div class="out" id="t-out" aria-live="polite"></div>
+    </section>
+
+    <!-- 3) Cashflow buffer -->
+    <section class="calc" aria-labelledby="h-buf">
+      <h2 id="h-buf">🛟 3. Cashflow buffer</h2>
+      <p class="hint">How long can you hold out if no money comes in for three months? Three to six months of fixed costs in a separate account is common.</p>
+      <div class="row">
+        <div class="field">
+          <label for="b-fix">Fixed costs per month <span class="unit">(private + business)</span></label>
+          <input type="number" id="b-fix" value="3000" min="0" step="100" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="b-monate">Target buffer <span class="unit">(months)</span></label>
+          <input type="number" id="b-monate" value="4" min="0" max="24" step="1" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="b-vorhanden">Already saved <span class="unit">(EUR)</span></label>
+          <input type="number" id="b-vorhanden" value="2000" min="0" step="100" inputmode="numeric">
+        </div>
+      </div>
+      <div class="out" id="b-out" aria-live="polite"></div>
+    </section>
+
+    <div class="cta-box" style="background:var(--card);border:1px solid var(--amber);">
+      <h2>📄 Free: Finance cheat sheet (PDF)</h2>
+      <p>The 6 basics and all the benchmarks from the calculator on a single page — ready to print, no sign-up.</p>
+      <a href="/downloads/finanz-spickzettel.pdf" class="btn" download style="background:#fff;color:var(--amber-dk);border:1px solid var(--amber);">Download the cheat sheet ↓</a>
+    </div>
+
+    <div class="cta-box">
+      <h2>Finance skills, one thing per week</h2>
+      <p>aban news sends you the most important AI and business updates Mon–Fri in 5 minutes — including honest tips on prices, tools and self-employment. No hype.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">Get the 5-min briefing free →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">No spam. Unsubscribe with one click. GDPR-compliant.</p>
+    </div>
+
+    <div style="padding:1.2rem 0;border-top:1px solid var(--line);">
+      <h2 style="font-size:1.05rem;margin-bottom:.8rem;">Read on</h2>
+      <div style="display:grid;gap:.7rem;grid-template-columns:1fr 1fr;">
+        <a href="/finanz-skills-fuer-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Finance Skills for the Self-Employed</strong><span style="color:var(--muted);font-size:.82rem;">The 6 basics, honestly explained</span></a>
+        <a href="/en/geld-verdienen-mit-ki.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Making money with AI</strong><span style="color:var(--muted);font-size:.82rem;">7 real ways, without the hype</span></a>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <p><strong>Important note:</strong> These calculators provide rough orientation, not tax, legal or investment advice. Tax and contribution rates depend on country, legal form, profit and insurance — clarify the exact rate with your tax adviser. No inputs are stored or sent to a server; everything is calculated in your browser.</p>
+    </div>
+
+  </div>
+<aside data-aban-premium style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">More depth, no hype.</strong><span style="color:#374151"> aban news Premium: ad-free, full archive, daily AI compass for your business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem">Founding member — €69 lifetime →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Try it free →</a></span></aside>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/en/">Home</a> · <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var euro = function(n){
+    if(!isFinite(n)) n = 0;
+    return n.toLocaleString('en-GB',{maximumFractionDigits:0}) + ' €';
+  };
+  var num = function(id){ var v = parseFloat(document.getElementById(id).value); return isFinite(v)?v:0; };
+
+  // 1) Hourly rate
+  function calcRate(){
+    var netto = num('r-netto'), kosten = num('r-kosten'),
+        steuer = Math.min(num('r-steuer'),89)/100, tage = num('r-tage'), bill = num('r-billable');
+    // Profit before tax, so that after tax the target net remains:
+    var gewinnVorSteuer = steuer < 1 ? netto/(1-steuer) : netto;
+    var umsatzZiel = gewinnVorSteuer + kosten;     // Annual revenue you need
+    var stunden = Math.max(tage*bill, 1);
+    var satz = umsatzZiel/stunden;
+    var out = document.getElementById('r-out');
+    out.innerHTML = '<div class="big">'+euro(satz)+' / hour</div>'+
+      '<div class="sub">This is the net amount you need to charge per billable hour so your target is left at the end.</div>'+
+      '<ul><li>Required annual revenue: <strong>'+euro(umsatzZiel)+'</strong></li>'+
+      '<li>Billable hours/year: <strong>'+stunden.toLocaleString('en-GB')+'</strong> ('+tage+' days × '+bill+' h)</li>'+
+      '<li>Day rate (8 h utilisation): <strong>'+euro(satz*8)+'</strong></li></ul>';
+  }
+
+  // 2) Tax reserve
+  function calcTax(){
+    var ein = num('t-einnahme'), p = Math.min(num('t-prozent'),90)/100;
+    var ruck = ein*p, rest = ein-ruck;
+    document.getElementById('t-out').innerHTML =
+      '<div class="big">set aside '+euro(ruck)+'</div>'+
+      '<div class="sub">Out of '+euro(ein)+' you keep for work and personal use: <strong>'+euro(rest)+'</strong>.</div>'+
+      '<ul><li>Per year (×12) set aside: <strong>'+euro(ruck*12)+'</strong></li>'+
+      '<li>Tip: ideally straight into a separate account, on the day the payment arrives.</li></ul>';
+  }
+
+  // 3) Buffer
+  function calcBuf(){
+    var fix = num('b-fix'), monate = num('b-monate'), da = num('b-vorhanden');
+    var ziel = fix*monate, fehlt = Math.max(ziel-da,0);
+    var reichweite = fix>0 ? da/fix : 0;
+    var msg = fehlt<=0
+      ? 'Your target buffer is reached. Solid foundation.'
+      : 'You still need <strong>'+euro(fehlt)+'</strong> to reach the target.';
+    document.getElementById('b-out').innerHTML =
+      '<div class="big">'+euro(ziel)+' target buffer</div>'+
+      '<div class="sub">'+msg+'</div>'+
+      '<ul><li>Your savings currently last <strong>'+reichweite.toLocaleString('en-GB',{maximumFractionDigits:1})+' months</strong> without income.</li>'+
+      '<li>At a savings rate of 200 €/month you reach the target in about <strong>'+(fehlt>0?Math.ceil(fehlt/200):0)+' months</strong>.</li></ul>';
+  }
+
+  // Segment buttons (reserve benchmark)
+  var seg = document.getElementById('t-seg');
+  seg.addEventListener('click', function(ev){
+    var b = ev.target.closest('button'); if(!b) return;
+    Array.prototype.forEach.call(seg.querySelectorAll('button'), function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); });
+    document.getElementById('t-prozent').value = b.getAttribute('data-p');
+    calcTax();
+  });
+
+  // All inputs live
+  function bind(ids, fn){ ids.forEach(function(id){ document.getElementById(id).addEventListener('input', fn); }); }
+  bind(['r-netto','r-kosten','r-steuer','r-tage','r-billable'], calcRate);
+  bind(['t-einnahme','t-prozent'], calcTax);
+  bind(['b-fix','b-monate','b-vorhanden'], calcBuf);
+  calcRate(); calcTax(); calcBuf();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+<script defer src="/js/lang-suggest.js"></script>
+</body>
+</html>

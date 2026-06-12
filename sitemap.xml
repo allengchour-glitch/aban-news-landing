@@ -1916,6 +1916,7 @@
   <url><loc>https://abannews.com/farb-umrechner.html</loc><lastmod>2026-06-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://abannews.com/prozent-rechner.html</loc><lastmod>2026-06-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://abannews.com/mwst-rechner.html</loc><lastmod>2026-06-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://abannews.com/en/mwst-rechner.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://abannews.com/iban-pruefer.html</loc><lastmod>2026-06-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://abannews.com/qr-code.html</loc><lastmod>2026-06-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://abannews.com/rechnung-generator.html</loc><lastmod>2026-06-03</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -2152,6 +2153,7 @@
   <url><loc>https://abannews.com/geld-verdienen-mit-3d-druck.html</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://abannews.com/finanz-skills-fuer-selbststaendige.html</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://abannews.com/finanz-rechner.html</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://abannews.com/en/finanz-rechner.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://abannews.com/hype-watch.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://abannews.com/hype-watch/ki-macht-entwickler-massiv-produktiver.html</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://abannews.com/hype-watch/chatgpt-als-verlaessliche-faktenquelle.html</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -3219,4 +3221,5 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url><loc>https://abannews.com/en/stundensatz-rechner.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
