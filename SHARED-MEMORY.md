@@ -68,6 +68,17 @@
   (numberOfItems 34→35) + Sitemap. **Voller Orphan-Scan:** nur 4 Root-Orphans, alle bereits in Sitemap
   (json-formatter/ki-lifestyle/links/mrr = bewusst standalone) → Discoverability sauber. Loop-Trap-Scan in
   `_redirects` = 0, alle 4 Sprach-Hubs von ihren Homepages verlinkt.
+- **Welle 2 (5 parallele Audit-Agenten + erschöpfende Skript-Scans):** **Conversion-Fix:** 20 CTA-Buttons
+  hiessen „Premium ansehen — €69 lifetime", verlinken aber auf `/founding.html` mit dem Founding-Preis (€69 =
+  Founding, nicht Premium €9/Mt) → Label zu „Founding ansehen"/„See founding" korrigiert (DE+EN). **2 verwaiste
+  EN-Seiten** (en/mahnung-schreiben, en/geld-verdienen-mit-ki) in den EN-Geld-Hub eingehängt. **4 kaputte
+  Meta-Tags** (gerade Anführungszeichen schlossen dt. „…"-Zitat im content-Attr vorzeitig → Parser-Error,
+  og:title/description für Social kaputt) in ki-bullshit-bingo + passives-einkommen-ki (je DE+EN) auf
+  typografisches „ U+201C gefixt. `automatisierung-rechner` label for=freq→anz; EN aria-label DE→EN.
+  **Erschöpfende Skript-Scans danach ALLE sauber:** 0 dangling hreflang site-weit, 0 weitere Parser-Bugs,
+  FR/IT-CTA korrekt, **og:image-Abdeckung 100 %** (0 indexierbare Seiten ohne Teilen-Vorschau), 0 echte
+  Broken-Links, Konsistenz grün. **→ QA/SEO/Korrektheit-Backlog erschöpft.** Offen bleibt nur Kosmetik
+  (Inline-Header-Bilder 24 Hubs + 21 Themen, besser per echtem Foto-CI-Job mit PEXELS) + der Geld-Schalter (User).
 
 **2026-06-11 — Luxestyle/POD session: Editor mit echten Fotos + 98 Fertig-Mockups + Shop-Audit A–Z:**
 - **🎨 Selbst-gestalten-Editor komplett überarbeitet** (`pod/designer.js` live): echtes Produktfoto statt
