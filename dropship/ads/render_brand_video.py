@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # LuxeStyle Marken-Video (60s + 30s) — reproduzierbar. Siehe Doku-Header unten.
 # SETUP: apt-get install -y ffmpeg ; pip install piper-tts ; Kerstin-Voice de_DE-kerstin-low.onnx laden.
-# VO (piper --length_scale 1.08) Texte + Musik (luxe-house1.wav, geduckt) + Assets (reels/veo-hero-*, social/enhanced/*).
+# VO (piper --length_scale 1.08) Texte + Musik (luxe-premium.wav — eigene elegante Komposition, geduckt) + Assets (reels/veo-hero-*, social/enhanced/*).
 # Effekte: Ken-Burns, eq+vignette, drawtext-Fade, xfade. WICHTIG: kein '%' in drawtext -> "Prozent".
 # Männerstimme: piper de_DE-thorsten-medium --length_scale 1.15 -> vo60-mann/vo30-mann.wav, build(...,-mann).
 # LEHRE (2026-06-12): Render-Outputs IMMER nach reels/ kopieren (cp /tmp/brand/*.mp4 reels/) BEVOR man sie
@@ -71,8 +71,8 @@ def build(version, segs, D, C, vo, out):
          "-c:v","libx264","-pix_fmt","yuv420p","-preset","medium",vidonly])
     # music bed looped to T
     bed=f"{TMP}/{version}_bed.wav"
-    run(["ffmpeg","-y","-loglevel","error","-stream_loop","-1","-i",f"{HERE}/automation/music/luxe-house1.wav","-t",str(T),
-         "-af",f"volume=0.13,afade=t=in:st=0:d=1,afade=t=out:st={T-2}:d=2",bed])
+    run(["ffmpeg","-y","-loglevel","error","-stream_loop","-1","-i",f"{HERE}/automation/music/luxe-premium.wav","-t",str(T),
+         "-af",f"volume=0.16,afade=t=in:st=0:d=1,afade=t=out:st={T-2}:d=2",bed])
     # mix vo (delayed) + bed
     run(["ffmpeg","-y","-loglevel","error","-i",vidonly,"-i",vo,"-i",bed,
          "-filter_complex",f"[1:a]adelay=2200|2200,loudnorm=I=-15:TP=-1.5[vo];[2:a]aresample=44100[mu];[vo][mu]amix=inputs=2:duration=longest:dropout_transition=3,loudnorm=I=-14:TP=-1[a]",

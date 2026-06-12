@@ -19,3 +19,7 @@ Quellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).
   Vibraphon-Lead, warmes Pad; Intro→Drop @6,4s mit Noise-Riser + Sub-Impact; gemastert -13,4 LUFS/-0,4 dBTP).
   Reproduzierbar: bash automation/music/produce/make_hype_pro.sh
   (braucht fluidsynth + fluid-soundfont-gm + sox + ffmpeg + numpy/scipy).
+
+- luxe-premium.wav  (ELEGANT/PREMIUM, F-Dur, 96 BPM, ~64s; Grand Piano + warme Streicher +
+  Akustik-Bass + Glockenspiel + dezenter Soft-Groove, Progression F-C-Dm-Bb mit Aufbau;
+  gemastert -14 LUFS. Für Marken-/Premium-Reels. Reproduzierbar: bash automation/music/produce/make_premium.sh)
