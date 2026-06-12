@@ -25,6 +25,10 @@ on:
         description: 'Nur testen (nichts senden)'
         type: boolean
         default: true
+      debug:
+        description: 'Debug: CJ-Resolver-Strategien loggen'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -58,6 +62,7 @@ jobs:
           LIMIT: ${{ github.event.inputs.limit }}
           PER: ${{ github.event.inputs.per }}
           DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+          DEBUG: ${{ github.event.inputs.debug == 'true' && '1' || '' }}
         run: node automation/cj_reviews_import.mjs
       - name: Ledger committen
         if: ${{ github.event.inputs.dry_run != 'true' }}

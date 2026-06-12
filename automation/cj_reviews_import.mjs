@@ -122,6 +122,27 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
   if (!ctok) process.exit(0);
   console.log('CJ-Token ok.');
 
+  const DEBUG = process.env.DEBUG === '1';
+  // CJ-pid robust auflösen: mehrere Strategien (manche SKUs sind Varianten-, andere Produkt-SKUs).
+  async function resolvePid(sku) {
+    const strategies = [
+      ['query/variantSku', '/product/query', { variantSku: sku }],
+      ['query/productSku', '/product/query', { productSku: sku }],
+      ['list/productSku', '/product/list', { productSku: sku, pageSize: 5 }],
+      ['list/keyWords', '/product/list', { keyWords: sku, pageSize: 5 }],
+    ];
+    for (const [label, path, params] of strategies) {
+      const r = await cjGet(ctok, path, params);
+      await sleep(1100);
+      const d = r?.data;
+      const listed = d?.list || d?.content || (Array.isArray(d) ? d : null);
+      const pid = d?.pid || d?.productId || (Array.isArray(listed) ? (listed[0]?.pid || listed[0]?.productId) : null);
+      if (DEBUG) console.log(`    [DEBUG] ${label}(${sku}) → ${r?.result === false ? 'result:false ' + (r?.message || '') : (pid || 'kein pid')}`);
+      if (pid) return { pid, via: label };
+    }
+    return null;
+  }
+
   let totalReviews = 0, prodWith = 0, fails = 0;
   for (const p of prods) {
     const pidNum = numId(p.id);
@@ -129,10 +150,10 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
     const cjSku = rawSku.replace(/^CJ-/i, '').trim();
     if (!cjSku) { console.log(`· ${p.handle}: keine SKU → skip`); continue; }
     try {
-      const qr = await cjGet(ctok, '/product/query', { variantSku: cjSku });
-      await sleep(1100); // CJ QPS 1/s
-      const cjpid = qr?.data?.pid || qr?.data?.productId || qr?.data?.id;
+      const resolved = await resolvePid(cjSku);
+      const cjpid = resolved?.pid;
       if (!cjpid) { console.log(`· ${p.handle}: keine CJ-pid für ${cjSku} → skip`); continue; }
+      if (DEBUG) console.log(`    [DEBUG] ${p.handle}: pid ${cjpid} via ${resolved.via}`);
       const cr = await cjGet(ctok, '/product/productComments', { pid: cjpid, pageNum: 1, pageSize: 30 });
       await sleep(1100);
       const list = cr?.data?.list || cr?.data?.comments || (Array.isArray(cr?.data) ? cr.data : []);
