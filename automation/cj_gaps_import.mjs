@@ -35,7 +35,7 @@ const CATS = (process.env.CATS || 'grill,auto').split(',').map(s => s.trim()).fi
 const CONFIG = {
   grill: {
     coll: { handle: 'grill-bbq', title: '☀️ Grill & BBQ', tag: 'grill-bbq' },
-    extraTags: ['sommer', 'kueche', 'outdoor'], type: 'Grill-Zubehör',
+    extraTags: ['sommer', 'kueche', 'outdoor'], type: 'Grill-Zubehör', maxCost: 16,
     anchor: ['bbq', 'grill', 'barbecue'],   // Produktname MUSS eins davon enthalten
     terms: [
       { kw: 'bbq tool set stainless steel' },
@@ -44,12 +44,16 @@ const CONFIG = {
       { kw: 'silicone bbq basting brush' },
       { kw: 'stainless steel bbq skewers reusable' },
       { kw: 'bbq grill cleaning brush' },
+      { kw: 'bbq grill gloves heat resistant' },
+      { kw: 'grill basket stainless steel bbq' },
+      { kw: 'bbq meat claws shredder' },
+      { kw: 'bbq grilling apron tool' },
     ],
     bullets: ['Robuster Edelstahl, hitzebeständig', 'Perfekt für Grillabende & Garten', 'Leicht zu reinigen', 'Tolles Geschenk für Grillfans'],
   },
   auto: {
     coll: { handle: 'auto-handy', title: '🚗 Auto & Handy', tag: 'auto-handy' },
-    extraTags: ['tech', 'gadget', 'auto'], type: 'Auto-Zubehör',
+    extraTags: ['tech', 'gadget', 'auto'], type: 'Auto-Zubehör', maxCost: 11,
     anchor: ['car ', 'car-', 'auto', 'vehicle', 'dashboard', 'trunk', 'headrest', 'windshield'],
     terms: [
       { kw: 'car phone holder mount magnetic' },
@@ -58,6 +62,10 @@ const CONFIG = {
       { kw: 'car dashboard phone mount' },
       { kw: 'car headrest hook backseat' },
       { kw: 'car windshield sun shade' },
+      { kw: 'car cup holder expander' },
+      { kw: 'car wireless charger mount' },
+      { kw: 'car backseat organizer storage' },
+      { kw: 'car interior cleaning gel' },
     ],
     bullets: ['Einfache Montage, sicherer Halt', 'Praktisch für jede Autofahrt', 'Hochwertige Verarbeitung', 'Ideal als Geschenk'],
   },
@@ -66,7 +74,8 @@ const BAD = ['wholesale', 'lot ', 'wig', 'nail', 'tattoo', 'sticker', 'sample', 
   'for iphone 6', 'sex', 'bracelet', 'ring', 'necklace', 'copper', 'massage', 'beauty', 'jewelry',
   'jewellery', 'earring', 'pendant', 'wallet', 'cowhide', 'leather bag', 'makeup', 'cosmetic',
   'watch', 'bikini', 'dress', 'shirt', 'shoe', 'sock',
-  'ornament', 'freshener', 'perfume', 'puppy', 'plush', 'doll', 'figure', ' pet ', ' dog ', 'stairs', 'rug', 'cushion'];
+  'ornament', 'freshener', 'perfume', 'puppy', 'plush', 'doll', 'figure', ' pet ', ' dog ', 'stairs', 'rug', 'cushion',
+  'toy', 'kids', 'children', 'baby', 'kid '];
 const MAX_COST = 9;   // USD-Deckel → CHF ~26 (Impulskauf), filtert teure Fehlgriffe
 const MIN_LISTED = parseInt(process.env.MIN_LISTED || '0', 10) || 0; // Popularität (CJ liefert Feld oft nicht → Default 0)
 
@@ -179,7 +188,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       const vs = d.variants || [];
       const costs = vs.map(v => Number(v.variantSellPrice)).filter(Boolean);
       const cost = costs.length ? Math.min(...costs) : Number(d.sellPrice);
-      if (!cost || cost > MAX_COST) continue;                 // zu teuer = kein Impulskauf
+      if (!cost || cost > (cfg.maxCost || MAX_COST)) continue; // zu teuer = kein Impulskauf
       const imgsAll = (d.productImageSet || []).slice(0, 8);
       const good = [];
       for (const u of imgsAll) { if (await img200(u)) good.push(u); if (good.length >= 6) break; }
