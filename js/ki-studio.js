@@ -103,7 +103,27 @@
     if (e === 'no_question' || e === 'empty') return T.empty;
     return T.err;
   }
-  function show(outId, text) { var o = $(outId); if (o) { o.textContent = text; o.className = 'out show'; } }
+  // Kleinen „Kopieren"-Button unter ein Ergebnis hängen (echte Outputs, nicht Status-Meldungen).
+  function addCopy(container, text) {
+    if (!container || !text || !navigator.clipboard) return;
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'btn btn--ghost btn--sm'; b.style.marginTop = '.6rem';
+    b.textContent = EN ? 'Copy' : 'Kopieren';
+    b.addEventListener('click', function () {
+      navigator.clipboard.writeText(text).then(function () {
+        var o = b.textContent; b.textContent = EN ? 'Copied ✓' : 'Kopiert ✓';
+        setTimeout(function () { b.textContent = o; }, 1500);
+      }).catch(function () {});
+    });
+    container.appendChild(b);
+  }
+  var STATUS_MSGS = null;
+  function show(outId, text) {
+    var o = $(outId); if (!o) return;
+    o.textContent = text; o.className = 'out show';
+    if (!STATUS_MSGS) STATUS_MSGS = [T.working, T.enterKey, T.off, T.proReq, T.rate, T.err, T.empty];
+    if (text && STATUS_MSGS.indexOf(text) === -1 && text.length > 8) addCopy(o, text);
+  }
   function run(toolId, btn, outId, fn) {
     var tool = $(toolId);
     if (!key || (tool && tool.getAttribute('data-locked') === '1')) {
@@ -261,7 +281,7 @@
       .then(function (r) { return r.json().then(function (d) { return { s: r.status, d: d }; }); })
       .then(function (o) {
         if (o.s === 200 && o.d && o.d.text) {
-          if (out) { out.textContent = o.d.text; out.hidden = false; out.className = 'out show'; }
+          if (out) { out.textContent = o.d.text; out.hidden = false; out.className = 'out show'; addCopy(out, o.d.text); }
           var up = $('demoUpsell'); if (up) up.hidden = false;
         } else if (o.s === 429 && o.d && o.d.upsell) {
           if (msg) msg.textContent = EN ? 'Free limit reached — get Pro for unlimited.' : 'Gratis-Limit erreicht — mit Pro unbegrenzt.';

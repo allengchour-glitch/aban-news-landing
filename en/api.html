@@ -276,7 +276,9 @@ console.log(data.text);</code></pre>
       .then(function(r){ return r.json().then(function(d){ return {s:r.status,d:d}; }); })
       .then(function(o){
         $('pgOutWrap').hidden=false;
-        if(o.s===200 && o.d && o.d.text){ $('pgOut').textContent=o.d.text; }
+        if(o.s===200 && o.d && o.d.text){ $('pgOut').textContent=o.d.text;
+          var w=$('pgOutWrap'), ex=document.getElementById('pgCopy'); if(ex) ex.remove();
+          if(navigator.clipboard){ var cb=document.createElement('button'); cb.id='pgCopy'; cb.type='button'; cb.className='btn'; cb.style.cssText='margin-top:.5rem;font-size:.85rem;padding:.4rem .9rem'; cb.textContent='Copy result'; cb.addEventListener('click',function(){ navigator.clipboard.writeText(o.d.text).then(function(){ var x=cb.textContent; cb.textContent='Copied ✓'; setTimeout(function(){cb.textContent=x;},1500); }); }); w.appendChild(cb); } }
         else if(o.s===402){ $('pgOut').textContent='402 — Pro key needed or expired.'; }
         else if(o.s===429){ $('pgOut').textContent='429 — rate limit, wait a moment.'; }
         else if(o.s===503){ $('pgOut').textContent='503 — AI not active right now.'; }
