@@ -23,7 +23,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { balanceByCategory, catKey, tagsFor } from './lib/reel-category.mjs';
 
-const KEY = process.env.LUMA_API_KEY || '';
+const KEY = (process.env.LUMA_API_KEY || '').trim();
 const MODEL = process.env.LUMA_MODEL || 'ray-flash-2';
 const ASPECT = process.env.LUMA_ASPECT || '9:16';
 const RES = process.env.LUMA_RESOLUTION || '720p';
@@ -44,6 +44,8 @@ const POINTER = path.join(HERE, '.luma_pointer');
 const VQ_HEADER = 'id,scheduled_date,video_url,caption,platforms,status,posted_at,post_url';
 
 if (!KEY && !DRY) { console.log('Kein LUMA_API_KEY → No-op. Setze LUMA_API_KEY (Luma-Plan mit API).'); process.exit(0); }
+// Sichere Key-Diagnose (leakt NIE den Key — nur Länge + Form-Flags), um 403-Ursachen zu finden.
+if (KEY) console.log(`Key-Check: len=${KEY.length} luma-prefix=${KEY.startsWith('luma')} hat-Stern=${KEY.includes('*')} hat-Whitespace=${/\s/.test(KEY)}`);
 if (!fs.existsSync(CSV)) { console.log('good_products.csv fehlt → No-op.'); process.exit(0); }
 
 function readGood(){
