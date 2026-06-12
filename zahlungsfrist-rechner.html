@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zahlungsfrist- & Fälligkeits-Rechner: wann ist die Rechnung fällig? · aban news</title>
+<meta name="description" content="Kostenloser Fälligkeits-Rechner: Rechnungsdatum + Zahlungsziel eingeben und sofort sehen, wann die Rechnung fällig ist, wie viele Tage noch bleiben und ab wann gesetzlicher Verzug eintritt. Lokal im Browser, ohne Login. Keine Rechtsberatung.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/zahlungsfrist-rechner.html">
+<meta property="og:title" content="Zahlungsfrist- & Fälligkeits-Rechner: wann ist die Rechnung fällig?">
+<meta property="og:description" content="Fälligkeitsdatum, Resttage und Verzugsbeginn — sofort aus Rechnungsdatum und Zahlungsziel. Lokal im Browser, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/zahlungsfrist-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Zahlungsfrist- & Fälligkeits-Rechner",
+"url":"https://abannews.com/zahlungsfrist-rechner.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Berechnet aus Rechnungsdatum und Zahlungsziel das Fälligkeitsdatum, die verbleibenden Tage und den Beginn des gesetzlichen Verzugs.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wann ist eine Rechnung fällig?","acceptedAnswer":{"@type":"Answer","text":"Wenn ein Zahlungsziel vereinbart ist (z. B. 14 Tage ab Rechnungsdatum), ist die Rechnung am Rechnungsdatum plus dieser Tage fällig. Ohne ausdrückliche Frist ist die Forderung grundsätzlich sofort mit Zugang der Rechnung fällig."}},
+{"@type":"Question","name":"Ab wann gerät der Kunde in Verzug?","acceptedAnswer":{"@type":"Answer","text":"Spätestens 30 Tage nach Fälligkeit und Zugang der Rechnung tritt Verzug automatisch ein — bei Verbrauchern nur, wenn auf der Rechnung darauf hingewiesen wurde. Früher entsteht Verzug durch ein konkretes Kalenderdatum als Zahlungsziel oder durch eine Mahnung nach Fälligkeit."}},
+{"@type":"Question","name":"Was ist der Unterschied zwischen Fälligkeit und Verzug?","acceptedAnswer":{"@type":"Answer","text":"Fällig bedeutet: ab jetzt darf der Gläubiger die Zahlung verlangen. Verzug bedeutet: der Schuldner zahlt trotz Fälligkeit nicht und schuldet zusätzlich Verzugszinsen und ggf. eine Mahnpauschale. Verzug setzt also Fälligkeit voraus und tritt meist etwas später ein."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal in deinem Browser. Es wird nichts an einen Server gesendet, kein Konto, kein Tracking."}}]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+.grid{display:flex;gap:14px;flex-wrap:wrap}
+.fld{flex:1;min-width:140px}
+input{width:100%;font-size:15px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);font-family:inherit}
+input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.preset{font:inherit;font-size:13px;font-weight:700;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--amber-dk);cursor:pointer}
+.preset[aria-pressed=true]{background:#b45309;color:#fff;border-color:#b45309}
+.out{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.box{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center}
+.box b{display:block;font-size:20px;font-weight:800;color:var(--amber-dk)}
+.box span{font-size:.8rem;color:var(--muted)}
+.box.big{grid-column:1/-1;background:var(--cream);border-color:var(--amber-lt)}
+.box.big b{font-size:26px}
+.box.ok b{color:var(--ok)}.box.bad b{color:var(--bad)}
+.timeline{margin-top:16px;display:flex;flex-wrap:wrap;gap:0;align-items:stretch;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tl-step{flex:1;min-width:120px;padding:12px 14px;border-right:1px solid var(--line)}
+.tl-step:last-child{border-right:0}
+.tl-step .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700}
+.tl-step .d{font-size:1rem;font-weight:800;color:var(--ink);margin-top:2px}
+.tl-step.now{background:var(--cream)}
+.verdict{margin-top:12px;font-size:.95rem;color:var(--ink2);background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.warn{font-size:.85rem;color:var(--ink2);background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:10px 12px;margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+details.how{margin-top:16px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+details.how summary{padding:14px 16px;font-weight:700;cursor:pointer;list-style:none}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary::after{content:"+";float:right;color:var(--amber);font-weight:800}
+details.how[open] summary::after{content:"–"}
+details.how .body{padding:0 16px 16px;font-size:.92rem;color:var(--ink2)}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/geld-und-ki.html" style="color:#b45309;font-weight:600;text-decoration:none">Geld &amp; KI: alle Themen, Rechner &amp; Checks</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1>Wann ist deine <span class="a">Rechnung fällig</span>?</h1>
+    <p>Gib Rechnungsdatum und Zahlungsziel ein — du siehst sofort das Fälligkeitsdatum, wie viele Tage noch bleiben und ab wann gesetzlicher Verzug eintritt. Lokal im Browser, nichts wird gesendet.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="presets" role="group" aria-label="Zahlungsziel-Voreinstellung">
+      <button type="button" class="preset" data-z="0">Sofort</button>
+      <button type="button" class="preset" data-z="14" aria-pressed="true">14 Tage</button>
+      <button type="button" class="preset" data-z="30">30 Tage</button>
+      <button type="button" class="preset" data-z="60">60 Tage</button>
+    </div>
+    <div class="grid">
+      <div class="fld"><label for="rdatum">Rechnungsdatum</label>
+        <input type="date" id="rdatum"></div>
+      <div class="fld"><label for="ziel">Zahlungsziel (Tage)</label>
+        <input type="text" id="ziel" value="14" inputmode="numeric" spellcheck="false"></div>
+    </div>
+    <div class="out" id="out"></div>
+    <div class="timeline" id="timeline" hidden></div>
+    <div class="verdict" id="verdict" role="status" hidden></div>
+    <div class="warn"><strong>Hinweis:</strong> Orientierung für den Geschäftsalltag — <strong>keine Rechtsberatung</strong>. Der gesetzliche Verzug „spätestens 30 Tage nach Fälligkeit" gilt im B2B automatisch; gegenüber Verbrauchern nur mit Hinweis auf der Rechnung. Vereinbarte Fristen oder ein konkretes Zahlungsdatum im Vertrag gehen vor.</div>
+    <details class="how"><summary>Wie der Rechner rechnet</summary>
+      <div class="body">
+        <p><strong>Fälligkeitsdatum</strong> = Rechnungsdatum + Zahlungsziel (Tage).<br>
+        <strong>Verzug spätestens</strong> = Fälligkeitsdatum + 30 Tage (gesetzliche Auffangregel, sofern nicht früher durch Mahnung oder kalendermäßiges Datum).</p>
+        <p style="margin-top:.6rem">Die „Resttage" zählen ab heute bis zur Fälligkeit. Negative Werte bedeuten: die Rechnung ist bereits überfällig — dann lohnt der Blick in den Verzugszinsen-Rechner.</p>
+        <p style="margin-top:.6rem;color:var(--muted)">Alles läuft lokal in deinem Browser. Nichts wird gesendet, kein Konto, kein Tracking.</p>
+      </div>
+    </details>
+  </section>
+  <div class="cta"><strong>Rund um die offene Rechnung</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">Fällig, überfällig, eintreiben — die passenden Helfer, kostenlos & ohne Login.</p>
+    <p><a class="btn" href="/verzugszinsen-rechner.html">Verzugszinsen berechnen</a>
+      <a class="btn ghost" href="/mahnung-schreiben.html">Mahnung schreiben</a>
+      <a class="btn ghost" href="/skonto-rechner.html">Skonto-Rechner</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div><aside data-aban-premium style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">Mehr Tiefe, kein Hype.</strong><span style="color:#374151"> aban news Premium: werbefrei, volles Archiv, täglicher KI-Kompass fürs Business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem">Founding-Mitglied — €69 lifetime →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Erst gratis testen →</a></span></aside>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/verzugszinsen-rechner.html">Verzugszinsen</a> · <a href="/mahnung-schreiben.html">Mahnung</a> ·
+  <a href="/rechnung-generator.html">Rechnung</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var rdEl=document.getElementById("rdatum"),zielEl=document.getElementById("ziel"),
+      out=document.getElementById("out"),tl=document.getElementById("timeline"),verdict=document.getElementById("verdict");
+  // Standard: heute als Rechnungsdatum
+  var today=new Date(); today.setHours(0,0,0,0);
+  function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+  rdEl.value=iso(today);
+  function fmtDate(d){return d.toLocaleDateString("de-DE",{day:"2-digit",month:"long",year:"numeric"});}
+  function addDays(d,n){var x=new Date(d.getTime());x.setDate(x.getDate()+n);return x;}
+  function run(){
+    var parts=String(rdEl.value).split("-");
+    var rd=parts.length===3?new Date(+parts[0],+parts[1]-1,+parts[2]):new Date(NaN);
+    var ziel=parseInt(String(zielEl.value).trim(),10);
+    if(isNaN(rd.getTime())){out.innerHTML='<div class="box" style="grid-column:1/-1"><span>Bitte ein gültiges Rechnungsdatum wählen.</span></div>';tl.hidden=true;verdict.hidden=true;return;}
+    if(isNaN(ziel)||ziel<0) ziel=0;
+    rd.setHours(0,0,0,0);
+    var faellig=addDays(rd,ziel), verzug=addDays(faellig,30);
+    var rest=Math.round((faellig-today)/86400000);
+    var statusCls=rest>=0?"ok":"bad";
+    var statusTxt=rest>0?("in "+rest+" Tag"+(rest===1?"":"en")):rest===0?"heute fällig":("überfällig seit "+(-rest)+" Tag"+(-rest===1?"":"en"));
+    out.innerHTML=
+      '<div class="box big '+statusCls+'"><b>'+fmtDate(faellig)+'</b><span>Fälligkeitsdatum</span></div>'+
+      '<div class="box '+statusCls+'"><b>'+statusTxt+'</b><span>Status (ab heute)</span></div>'+
+      '<div class="box"><b>'+fmtDate(verzug)+'</b><span>Verzug spätestens ab</span></div>';
+    tl.innerHTML=
+      '<div class="tl-step"><div class="k">Rechnung</div><div class="d">'+fmtDate(rd)+'</div></div>'+
+      '<div class="tl-step'+(rest>=0?' now':'')+'"><div class="k">Fällig</div><div class="d">'+fmtDate(faellig)+'</div></div>'+
+      '<div class="tl-step'+(rest<0?' now':'')+'"><div class="k">Verzug</div><div class="d">'+fmtDate(verzug)+'</div></div>';
+    tl.hidden=false;
+    if(rest<0){
+      verdict.innerHTML='Die Rechnung ist <strong>seit '+(-rest)+' Tag'+(-rest===1?"":"en")+' überfällig</strong>. Du kannst die Zahlung verlangen — und ab dem Verzugsdatum Verzugszinsen. <a href="/verzugszinsen-rechner.html">Verzugszinsen jetzt berechnen →</a>';
+    } else {
+      verdict.innerHTML='Noch alles im Plan: <strong>'+statusTxt+'</strong>. Zahlt der Kunde nicht, beginnt der gesetzliche Verzug spätestens am <strong>'+fmtDate(verzug)+'</strong>.';
+    }
+    verdict.hidden=false;
+  }
+  [].forEach.call(document.querySelectorAll(".preset"),function(b){
+    b.addEventListener("click",function(){
+      zielEl.value=b.dataset.z;
+      [].forEach.call(document.querySelectorAll(".preset"),function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
+      run();
+    });
+  });
+  rdEl.addEventListener("input",run); rdEl.addEventListener("change",run); zielEl.addEventListener("input",run);
+  run();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
