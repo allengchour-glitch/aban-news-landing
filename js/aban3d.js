@@ -8,6 +8,7 @@
  *             <script defer src="/js/aban3d.js"></script>
  * Optionen:   data-points  data-color  data-speed  data-shape  data-values (bars/line)  data-signed
  *
+ * Interaktion: Ziehen zum Drehen (Maus/Touch) mit Schwung; sonst sanfte Auto-Rotation.
  * Performant & rücksichtsvoll: pausiert offscreen + bei verstecktem Tab, devicePixelRatio-aware,
  * respektiert prefers-reduced-motion (zeigt ein ruhiges Standbild statt Animation).
  */
@@ -176,13 +177,22 @@
     size();
     window.addEventListener("resize", size, { passive: true });
 
-    var ax = 0, ay = 0, tx = 0, ty = 0;
-    cv.addEventListener("pointermove", function (e) {
-      var rect = cv.getBoundingClientRect();
-      tx = ((e.clientY - rect.top) / H - 0.5) * 0.9;
-      ty = ((e.clientX - rect.left) / W - 0.5) * 0.9;
+    // Ziehen zum Drehen (mit Schwung), touch-tauglich
+    var dragRotX = 0, dragRotY = 0, vX = 0, vY = 0, dragging = false, lpx = 0, lpy = 0;
+    cv.style.cursor = "grab"; cv.style.touchAction = "none";
+    cv.addEventListener("pointerdown", function (e) {
+      dragging = true; lpx = e.clientX; lpy = e.clientY; vX = vY = 0; cv.style.cursor = "grabbing";
+      if (cv.setPointerCapture) { try { cv.setPointerCapture(e.pointerId); } catch (err) {} }
     });
-    cv.addEventListener("pointerleave", function () { tx = 0; ty = 0; });
+    cv.addEventListener("pointermove", function (e) {
+      if (!dragging) return;
+      var dx = e.clientX - lpx, dy = e.clientY - lpy; lpx = e.clientX; lpy = e.clientY;
+      vY = dx * 0.008; vX = dy * 0.008; dragRotY += vY; dragRotX += vX;
+    });
+    function endDrag() { if (dragging) { dragging = false; cv.style.cursor = "grab"; } }
+    cv.addEventListener("pointerup", endDrag);
+    cv.addEventListener("pointercancel", endDrag);
+    window.addEventListener("blur", endDrag);
 
     function frame(rotX, rotY) {
       ctx.clearRect(0, 0, W, H);
@@ -216,13 +226,17 @@
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(function (en) { running = en[0].isIntersecting && !document.hidden; if (running) requestAnimationFrame(loop); }, { threshold: 0.05 }).observe(cv);
     }
+    var t = 0;
     function loop(ts) {
       if (!running) return;
-      last = ts;
-      ax += (tx - ax) * 0.06; ay += (ty - ay) * 0.06;
-      var t = ts * 0.0001 * speed;
+      var dt = last ? Math.min(50, ts - last) : 16; last = ts;
+      if (!dragging) {                       // Auto-Drehung + Schwung-Nachlauf
+        t += dt * 0.0001 * speed;
+        dragRotX += vX; dragRotY += vY; vX *= 0.93; vY *= 0.93;
+      }
+      if (dragRotX > 1.2) dragRotX = 1.2; else if (dragRotX < -1.2) dragRotX = -1.2; // Kippen begrenzen
       if (tick) tick(t * 10);
-      frame(0.5 + ax + Math.sin(t) * 0.15, t * 3 + ay);
+      frame(0.5 + dragRotX + Math.sin(t) * 0.15, t * 3 + dragRotY);
       requestAnimationFrame(loop);
     }
     requestAnimationFrame(loop);
