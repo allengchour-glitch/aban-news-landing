@@ -43,6 +43,23 @@ Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe s
 (Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
 
 
+## 📌 Stand 2026-06-12 (Teil 20) — Katalog-Wachstum nachgezogen (EN-Shop, Funnel, Schema) + Link-Cleanup
+Session „voll gas / mach fertig / keine pause" (Newsletter-Workstream, parallel zum Pro/Märkte-Ausbau):
+- **3 neue distinkte DE-Hubs + i18n:** Detektei, Textilreinigung, Personaldienstleister je DE/EN/FR/IT
+  (PRs #453/#736/#738). **71 fehlende Branchen-PDFs** generiert (35 EN + 36 DE) → defekte Links runter.
+- **Link-/Asset-Cleanup (#757):** fehlende Favicon-PNGs + `site.webmanifest` generiert, tote
+  `/hype-watch`/`/sponsoring`-Links gefixt → **0 defekte aban-news-interne Links**.
+- **3 verwaiste Hubs** (alpakahof/pilzzucht/straussenfarm) via `related_hubs.py` in den Ring (#759).
+- **🔑 KATALOG-RESYNC-MUSTER (wichtig, wiederkehrend):** Wenn der Pro/Shop-Workstream `kit-catalog.json`
+  erweitert (jetzt **22 Produkte**), müssen 3 abgeleitete Dinge nachgezogen werden — alle idempotent:
+  1) **EN-Katalog** `kit-catalog-en.json` + `shop-products-en.json` (en-Slugs, EUR) — #794 (12→22).
+  2) **EN-Funnel** `add_branchen_funnel.py --lang en` → neue Kit-Branchen kriegen Direkt-Deep-Link — #795 (8 Hubs).
+  3) **Shop-ItemList-Schema** in `shop.html`+`en/shop.html` neu aus Katalog generieren — #798 (12→22).
+  DE war dank Parallel-Workstream schon aktuell. `shop_selfcheck.py`: 0 Fehler, nur „Bezahllink leer"
+  (18×, **user-gated** STRIPE_API_KEY).
+- **Stand:** je **360 Hubs** DE/EN/FR/IT, Shop 22 Produkte DE+EN mit Preis+Schema, 0 Waisen, 0 interne Link-Leichen.
+  Geld-Hebel unverändert beim User (`docs/MORGEN-TODO.md`): STRIPE_API_KEY→„sync", CF-Token, erste Ausgabe, Reichweite.
+
 ## 📌 Stand 2026-06-11 (Teil 19) — ⚠️ HOSTING-BEFUND + Edge-API auf Cloudflare Pages bewiesen
 **Kernbefund (Live-Test):** `abannews.com` läuft aktuell auf **GitHub Pages** (statisch; Header `via: varnish` +
 `x-github-request-id`, nur durch Cloudflare durchgeproxyt). Deshalb geben `/api/*` (KI-Studio, hype-rewrite, chat)
