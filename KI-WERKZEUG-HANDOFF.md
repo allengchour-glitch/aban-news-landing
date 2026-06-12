@@ -21,8 +21,10 @@
   (Euro je Abo ↔ Anteil %), `mwst-rechner` (Netto/MwSt/Brutto ↔ Anteil Netto vs. MwSt am Brutto, kein
   Doppelzählen), `automatisierung-rechner` (Brutto/Tool/Netto ↔ Tool-Kosten vs. Netto-Ersparnis, Netto≥0).
   Die übrigen Rechner (inflation/notgroschen/etf/sparplan/ki-spar) sind Trends → kein Donut.
-  (2) **3D-Globus-Band** auf **beiden Startseiten** (`index.html` + `en/index.html`, zwischen Stats & nächster
-  Sektion), verlinkt auf `/3d-animation.html`; Engine je per `defer`; Hero/Signup unberührt; Globus = reine Deko.
+  (2) **3D-Globus-Band** auf **allen 4 Startseiten** (`index.html` + `en/`+`fr/`+`it/index.html`, zwischen
+  Stats & nächster Sektion, lokalisierter Text), verlinkt auf `/3d-animation.html`; Engine je per `defer`;
+  Hero/Signup unberührt; Globus = reine Deko. (`.btn--amber` ist auf en/fr/it ungenutzt, aber `.btn` ist
+  per Default amber → Button korrekt; no-op-Klasse schadet nicht.)
   Verifiziert: kein Redirect-Loop, `/3d-render`→`/3d-animation.html` (anderer Basename, korrekt), Sitemap ok.
 
 ## 2026-06-12 (Teil 8) — Tool-Offensive + 3D-Diagramme + EN (Newsletter-Session, autonom)

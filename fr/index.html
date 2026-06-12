@@ -228,6 +228,21 @@
     </div>
   </section>
 
+  <!-- Accent 3D : moteur auto-hébergé (en pause hors écran, respecte reduced-motion) -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;align-items:center;border-radius:16px;overflow:hidden;background:radial-gradient(120% 120% at 30% 20%,#1c1814,#0f0d0a);border:1px solid #2a241c">
+        <div><canvas data-aban3d data-shape="globe" data-points="150" data-color="#f0a93a" data-speed="0.7" style="display:block;width:100%;height:260px;touch-action:none" aria-label="Animation 3D interactive – glissez pour faire tourner"></canvas></div>
+        <div style="padding:22px 26px;color:#f3ede1">
+          <span class="eyebrow" style="color:#f0a93a">Fait maison · 0 lib externe</span>
+          <h2 style="color:#fff;margin:.3rem 0 .5rem">De vrais graphiques 3D — directement dans le navigateur</h2>
+          <p style="color:#cdc3b2;margin:0 0 1rem">Nos calculateurs transforment vos chiffres en graphique 3D rotatif — barres, lignes, donut &amp; plus. Le même moteur léger, sans tracking, sans upload. Glissez l'image pour la faire tourner.</p>
+          <a href="/3d-animation.html" class="btn btn--amber btn--sm">Voir toutes les formes →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="sec netz-band" style="background:linear-gradient(180deg,#fffdf8,#fef3c7);border-top:1px solid #f1e4c4;padding:clamp(2.6rem,6vw,4rem) 0;">
     <div class="wrap">
       <div style="text-align:center;margin-bottom:1.6rem">
@@ -295,5 +310,6 @@
 <div class="mcta" id="mcta"><a href="#signup" class="btn">S’abonner gratuitement →</a></div>
 <script>(function(){var m=document.getElementById("mcta");if(!m)return;var f=function(){if(window.pageYOffset>600)m.classList.add("show");else m.classList.remove("show");};window.addEventListener("scroll",f,{passive:true});f();})();</script>
 <script defer src="/js/analytics.js"></script>
+<script defer src="/js/aban3d.js"></script>
 </body>
 </html>
