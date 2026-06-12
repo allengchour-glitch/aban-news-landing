@@ -47,7 +47,26 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-06-11 (NEUESTER STAND — POD-Editor mit echten Fotos + 98 Mockups + Shop-Audit A–Z):**
+**📌 2026-06-12 (NEUESTER STAND — Marktlücken + Unterkategorien + Menü-Umbau):**
+- **🔎 Marktlücken-Analyse (datenbelegt):** 0 Treffer bei Auto, Grill/BBQ, Pool/Strand, 1.-August; dünn: Pet, Kids,
+  Reise, Handy-Zubehör. Gut abgedeckt: Schmuck, Sonnenbrillen, Bart/Rasur, Hydration.
+- **🛒 Lücken-Importer gebaut:** `automation/cj_gaps_import.mjs` + `cj-gaps.yml` (eigenständig, `fetch`, kein
+  Playwright). Sucht CJ → harte Kategorie-Anker + breite Ausschlussliste (Schmuck/Beauty/Toy/Kids/teuer) +
+  Preis-Deckel pro Kategorie + Bild-200-Check → legt ACTIVE an (DE-Titel via Gemini), publiziert, Smart-Collection,
+  idempotent (Ledger `dropship/cj_gaps_done.txt`). Kategorien: grill, auto, reise, strand, handy. **DRY-FIRST Pflicht**
+  (erste Läufe brachten Müll: Massage-Brush, Kupfer-Armband, Pet-Stairs → Filter verschärft).
+- **✅ Live angelegt (5 Produkte + 2 Collections):** ☀️ Grill & BBQ (Grillreiniger), 🚗 Auto & Handy (RGB-Ladeständer,
+  Auto-Uhr, Rücksitz-Organizer) + 1 Spielzeug-Set (umgetaggt zu Kinder). Reise/Strand/Handy noch offen (Actions-Sperre).
+- **🗂️ 12 Unterkategorien als Smart-Collections (Titel-Regeln, füllen sich automatisch aus 517 Produkten, KEIN
+  Re-Tagging):** sub-kleider(38)/sub-roecke(33)/sub-bademode(2) · sub-halsketten(149)/sub-ohrringe(22)/sub-armbaender(49) ·
+  sub-beleuchtung(204, „LED" war zu breit→Lampe/Leuchte/Projektor)/sub-deko(115)/sub-aroma-diffuser(101)/sub-massage(124) ·
+  sub-taschen(150)/sub-uhren(58). (sub-kerzen-duefte war 0 → gelöscht.) **Menü (`main-menu`, id 310224093569) umgebaut**:
+  Unterkategorien in die Dropdowns + neuer Top-Level „🚗 Auto & Grill".
+- **⛔ GitHub Actions GESPERRT** („Actions has been disabled for this user" — zu viele Läufe heute / Abuse-Throttle).
+  **Neue CJ-Importe pausiert**, bis Actions wieder frei ist (Tool ist fertig, läuft dann sofort weiter). Shopify-MCP +
+  GitHub-API (PR-Merge) funktionieren weiter. Tipp: künftig Läufe bündeln/DRY sparsamer dispatchen.
+
+**📌 2026-06-11 (POD-Editor mit echten Fotos + 98 Mockups + Shop-Audit A–Z):**
 - **🎨 Selbst-gestalten-Editor (`pod/designer.js`, live):** echte Produktfotos statt Zeichnungen bei ALLEN
   Editor-Produkten (Shirt/Tasse/Tote/Kissen/Magnet/Poster/Bügeltransfer); Live-Farbvorschau Shirt
   Weiss/Schwarz/Navy (echte Gemini-Fotos `pod/tees/`); Grössen-Regler, freie Farbwahl, Ebenen, Duplizieren,
