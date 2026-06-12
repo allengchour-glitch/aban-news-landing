@@ -4,6 +4,20 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-12 (Teil 10) — Neues Tool + alles anfängerfreundlich beschrieben (User: „beschreib jede tool für anfänger", „weiter")
+- **Neues Tool `skonto-rechner.html`:** lohnt sich Skonto ziehen? Zeigt Skonto-Betrag, Zahlbetrag und den
+  **effektiven Jahreszins** (kaufmännische 360-Tage-Näherung), Balken/Donut-3D auf echten Eingaben,
+  WebApplication+FAQPage-JSON-LD, Disclaimer (keine Steuer-/Rechtsberatung). In sitemap.xml, llms.txt und
+  online-tools (Karte + ItemList pos. 36, numberOfItems 36) verdrahtet. Kein Redirect-Alias (Loop-Falle).
+- **`online-tools.html`:** ALLE Tool-Kurzbeschreibungen (`<span>`) in anfängerverständlichen Klartext
+  umgeschrieben — Fachbegriffe (JSON, Regex, JWT, Hash, Cron, Token, Base64) jeweils erklärt. Hero-Titel
+  vom brüchigen „27 …" auf „Kostenlose Tools" umgestellt + Meta/OG/Twitter entsprechend (stale Zahl raus).
+- **„Was macht das?"-Zeile auf JEDER Tool-Seite (49 Seiten):** idempotenter Injektor
+  `tools/add_was_macht_das.py` (Marker `data-aban-was`) fügt unter dem Hero eine gelbe Klartext-Box
+  „💡 Was macht das? …" ein (ein Satz, du-Form, plain). Anker = nach Hero-`</section>`; 2 Sonderfälle
+  (mahnung-schreiben, namen-generator: kein `</section>`) manuell nach `<p class="lead">` ergänzt.
+  Mehrfach ausführbar ohne Doppelung. SENT-Dict im Skript = zentrale Quelle für neue Tools.
+
 ## 2026-06-12 (Teil 9) — 3D-Engine ausgebaut: Labels · Donut · Scatter · Tooltip (User: „engine weiter machen", „alle 4 und weitere")
 - **`js/aban3d.js` jetzt 11 Formen** (vorher 9): neu **`donut`/`pie`** (Anteils-Ring, %-Labels, PALETTE-Farben
   pro Segment) und **`scatter`** (3D-Punktwolke; liest `data-points3="x,y,z;…"`, jede Achse auf [-1,1] normiert,
