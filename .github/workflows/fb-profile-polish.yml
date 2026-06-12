@@ -1,0 +1,41 @@
+name: FB-Seite polieren (Profilbild + Info)
+
+# Setzt per Graph-API das Profilbild, den Info-Text und die Website der FB-Seite.
+# IG/TikTok haben keine Profil-Edit-API -> dort manuell/Browser. No-op ohne Token.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur Ist-Zustand zeigen (nichts ändern)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fb-profile-polish
+  cancel-in-progress: false
+
+jobs:
+  polish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: automation/fb-profile-polish.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Polieren
+        env:
+          META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node automation/fb-profile-polish.mjs
