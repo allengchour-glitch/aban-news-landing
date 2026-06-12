@@ -1,0 +1,70 @@
+name: "POD Reviews-Import (echte CJ-Kommentare zu Judge.me)"
+
+# Importiert ECHTE Kaeufer-Reviews des selben Produkts von CJ nach Judge.me. No-op ohne Creds. Idempotent (Ledger).
+
+on:
+  workflow_dispatch:
+    inputs:
+      query:
+        description: 'Shopify-Produktfilter (Default tag:cj-real)'
+        type: string
+        default: 'tag:cj-real'
+      only:
+        description: 'Nur diese Handles (Komma, ueberschreibt query)'
+        type: string
+        default: ''
+      limit:
+        description: 'Max. Produkte'
+        type: string
+        default: '25'
+      per:
+        description: 'Max. Reviews je Produkt'
+        type: string
+        default: '6'
+      dry_run:
+        description: 'Nur testen (nichts senden)'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pod-cj-reviews
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: CJ-Reviews importieren
+        env:
+          CJ_EMAIL: ${{ secrets.CJ_EMAIL }}
+          CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
+          JUDGEME_PRIVATE_TOKEN: ${{ secrets.JUDGEME_PRIVATE_TOKEN }}
+          JUDGEME_SHOP_DOMAIN: ${{ secrets.JUDGEME_SHOP_DOMAIN }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          QUERY: ${{ github.event.inputs.query }}
+          ONLY: ${{ github.event.inputs.only }}
+          LIMIT: ${{ github.event.inputs.limit }}
+          PER: ${{ github.event.inputs.per }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+        run: node automation/cj_reviews_import.mjs
+      - name: Ledger committen
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          if [ -n "$(git status --porcelain dropship/cj_reviews_done.txt)" ]; then
+            git config user.name "luxestyle-autopilot"; git config user.email "bot@users.noreply.github.com"
+            git add dropship/cj_reviews_done.txt
+            git commit -m "POD: CJ-Reviews-Import Ledger [skip ci]"
+            for i in 1 2 3 4 5; do git push origin HEAD:main && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else echo "kein Ledger-Update"; fi
