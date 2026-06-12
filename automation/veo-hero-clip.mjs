@@ -11,7 +11,7 @@
  * No-op-safe: ohne GEMINI_API_KEY sauberer Leerlauf.
  *
  * ENV: GEMINI_API_KEY (Pflicht) · VEO_MODEL (Default veo-3.0-fast-generate-001) · VEO_ONLY (ein name) ·
- *      MAX_CLIPS (Default 1) · VEO_ASPECT (Default 9:16) · VEO_SECONDS (Default 8) ·
+ *      MAX_CLIPS (Default 1) · VEO_ASPECT (Default 9:16) · VEO_SECONDS (Default 5, Budget) ·
  *      OUT_BASE_URL (Default https://abannews.com) · SITE_URL (Default https://luxestyle.ch) · DRY_RUN=1
  *
  * Hinweis Bild→Video: die Gemini-REST-API erwartet das Referenzbild als image.bytesBase64Encoded
@@ -24,7 +24,7 @@ import { balanceByCategory } from './lib/reel-category.mjs';
 const KEY = process.env.GEMINI_API_KEY || '';
 const MODEL = process.env.VEO_MODEL || 'veo-3.0-fast-generate-001';
 const ASPECT = process.env.VEO_ASPECT || '9:16';
-const SECONDS = parseInt(process.env.VEO_SECONDS || '8', 10) || 8;
+const SECONDS = parseInt(process.env.VEO_SECONDS || '5', 10) || 5;
 const MAX = Math.max(1, parseInt(process.env.MAX_CLIPS || '1', 10) || 1);
 const ONLY = (process.env.VEO_ONLY || '').trim();
 const OUT_BASE = (process.env.OUT_BASE_URL || 'https://abannews.com').replace(/\/$/, '');
