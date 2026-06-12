@@ -3,6 +3,9 @@
 # SETUP: apt-get install -y ffmpeg ; pip install piper-tts ; Kerstin-Voice de_DE-kerstin-low.onnx laden.
 # VO (piper --length_scale 1.08) Texte + Musik (luxe-house1.wav, geduckt) + Assets (reels/veo-hero-*, social/enhanced/*).
 # Effekte: Ken-Burns, eq+vignette, drawtext-Fade, xfade. WICHTIG: kein '%' in drawtext -> "Prozent".
+# Männerstimme: piper de_DE-thorsten-medium --length_scale 1.15 -> vo60-mann/vo30-mann.wav, build(...,-mann).
+# LEHRE (2026-06-12): Render-Outputs IMMER nach reels/ kopieren (cp /tmp/brand/*.mp4 reels/) BEVOR man sie
+#   an den User schickt — sonst haengt der Download (Datei nur in /tmp, nicht persistent).
 #!/usr/bin/env python3
 import subprocess, sys, os, json
 HERE="/home/user/aban-news-landing"
