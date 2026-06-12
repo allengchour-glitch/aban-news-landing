@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # LuxeStyle Marken-Video (60s + 30s) — reproduzierbar. Siehe Doku-Header unten.
+# PRÄFERENZ (User 2026-06-12): für Posts die MÄNNERSTIMME-Version (...-mann.mp4) bevorzugen.
 # SETUP: apt-get install -y ffmpeg ; pip install piper-tts ; Kerstin-Voice de_DE-kerstin-low.onnx laden.
 # VO (piper --length_scale 1.08) Texte + Musik (luxe-premium.wav — eigene elegante Komposition, geduckt) + Assets (reels/veo-hero-*, social/enhanced/*).
 # Effekte: Ken-Burns, eq+vignette, drawtext-Fade, xfade. WICHTIG: kein '%' in drawtext -> "Prozent".
