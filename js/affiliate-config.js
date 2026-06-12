@@ -18,5 +18,14 @@ window.ABAN_AFFILIATE = {
   // ElevenLabs (Text-to-Speech, 2026 führend). Tracking via PartnerStack.
   ELEVENLABS_URL: "https://try.elevenlabs.io/6hlkc0rv2u1j",
   // ManyChat (Chatbot / DM-Automation). Tracking via PartnerStack.
-  MANYCHAT_URL: "https://manychat.partnerstack.com/"
+  MANYCHAT_URL: "https://manychat.partnerstack.com/",
+
+  // --- Buchhaltung/Rechnung (DACH). Tracking-Link aus dem jeweiligen Partner-
+  //     programm hier eintragen; leer ("") -> Button zeigt auf die Anbieter-Domain. ---
+  // sevDesk (DE). Partnerprogramm: sevDesk-Affiliate / Awin.
+  SEVDESK_URL: "",
+  // lexoffice / Lexware Office (DE). Partnerprogramm: Lexware-Affiliate / Awin.
+  LEXOFFICE_URL: "",
+  // bexio (CH). Partnerprogramm: bexio-Partner.
+  BEXIO_URL: ""
 };
