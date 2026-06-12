@@ -41,6 +41,22 @@
   `clip-*` Produktclips. Schwach/nicht einreihen: `clip-augenmassage` (vom User abgelehnt).
 - Dateinamen tragen das echte Datum (z. B. `auto-20260609-1220`, `veo-hero-…-2026-06-09`).
 
+## 📘 Meta (Instagram + Facebook)
+- **55 Posts** live (alle mit `post_url`), Kadenz: 06-06 (6) · 06-08 (**26**) · 06-09 (12) · 06-10 (9) · 06-11 (1) · **06-12: 0**.
+  → Seit ~2 Tagen **steht das Posten** (GitHub Actions gesperrt). Sobald frei: Autopilot/Widget läuft weiter.
+- **Engagement-Insights** (Reichweite/Likes/Saves) brauchen den Graph-Token (in GitHub-Secrets, **nicht** in der
+  Cloud-Session) → liefert `analytics-learn.yml` / PC-Claude. **Inhalt** ist geprüft: gleiche Gewinner-Logik wie
+  TikTok gilt — Produkt+Preis-Posts schlagen generische Karten. Empfehlung: 06-08-Spam-Tag (26 Posts) nicht
+  wiederholen → **2–3 hochwertige Posts/Tag** statt Masse.
+
+## 🛍️ Produkt-Analyse (weitere Produkte)
+- **Bewertet (Social-Proof → zuerst pushen):** Smartwatch Pro **5,0★ (5)** CHF 69.90 · Gemüseschneider **5,0★ (2)**
+  CHF 39.90 · Robo-Mini-Ventilator **5,0★ (2)** CHF 19.90. (Die meisten der 517 Produkte haben 0 Reviews.)
+- **Stark, aber noch NIE gepostet (neu in Queue):** Stiletto «Gala» 54.90 · Boden-Ständer «FlexHold» 24.90 ·
+  Vitamin-C-Serum «Glow» 19.90 · Plateau-Sneaker «Cloud» 39.90 · Leinen-Set «Lino» 59.90.
+- **✅ 8 neue Produkt-Posts** in `social/posts_image.csv` eingereiht (status=ready, 13.–16.06., je Gewinner-Format
+  mit Preis + Rating + #bern). Bewertete zuerst (13./14.06.), dann die 5 neuen.
+
 ## Nächste Hebel
 - CH-Follower-Maschine 1×/Tag (PC-Claude) → Reichweite organisch.
 - `analytics-learn.yml` täglich (Cron) → Hashtag-Pools lernen automatisch weiter.

@@ -68,6 +68,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (Boho-Midi CHF 39.90 = 797 V) **+ Mundart** („Mach dys eiges Teil" 792 V). **Verlierer: generische Marken-/Kategorie-
   Karten** (6–19 V) → NICHT mehr einreihen. **Poliert:** 21 offene Captions (Bild+Video) mit echtem CHF-Preis (live aus
   Shopify) nach dem Produktnamen + **#bern** ergänzt. Künftig Posting-Mix = mehr Produkt+Preis & Mundart.
+- **📘 Meta-Audit:** 55 IG/FB-Posts live; Posten steht seit ~11.06. (Actions-Sperre). Engagement-Insights nur mit
+  Graph-Token (Secrets, nicht in Cloud) → via `analytics-learn`/PC-Claude. 06-08 hatte 26 Posts (Spam) → künftig
+  2–3 hochwertige/Tag. **🛍️ Produkt-Analyse:** bewertet (Social-Proof) = Smartwatch 5,0★/Gemüseschneider 5,0★/
+  Robo-Ventilator 5,0★; **8 neue Produkt-Posts** (3 bewertet + 5 nie gepostet: Gala/FlexHold/Glow/Cloud/Lino) in
+  `social/posts_image.csv` eingereiht (ready, 13.–16.06., Gewinner-Format). Nächster Hebel bleibt Reichweite.
 
 **📌 2026-06-07 (NEUESTER STAND — ZUERST LESEN: Memory aufgefrischt + Conversion-Fix):**
 - **Branch-Reset:** Alle früheren Dropship-Branches (SrAs5/LehDs) sind **in `main` gemergt + gelöscht**.
