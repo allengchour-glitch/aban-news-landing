@@ -36,29 +36,36 @@ const CONFIG = {
   grill: {
     coll: { handle: 'grill-bbq', title: '☀️ Grill & BBQ', tag: 'grill-bbq' },
     extraTags: ['sommer', 'kueche', 'outdoor'], type: 'Grill-Zubehör',
+    anchor: ['bbq', 'grill', 'barbecue'],   // Produktname MUSS eins davon enthalten
     terms: [
-      { kw: 'bbq tool set stainless steel', must: ['bbq', 'grill', 'barbecue'] },
-      { kw: 'grill thermometer digital instant read', must: ['thermometer'] },
-      { kw: 'bbq grill mat non stick reusable', must: ['mat', 'grill'] },
-      { kw: 'silicone basting brush bbq', must: ['brush'] },
-      { kw: 'stainless steel bbq skewers reusable', must: ['skewer'] },
+      { kw: 'bbq tool set stainless steel' },
+      { kw: 'grill thermometer digital instant read' },
+      { kw: 'bbq grill mat non stick reusable' },
+      { kw: 'silicone bbq basting brush' },
+      { kw: 'stainless steel bbq skewers reusable' },
+      { kw: 'bbq grill cleaning brush' },
     ],
     bullets: ['Robuster Edelstahl, hitzebeständig', 'Perfekt für Grillabende & Garten', 'Leicht zu reinigen', 'Tolles Geschenk für Grillfans'],
   },
   auto: {
     coll: { handle: 'auto-handy', title: '🚗 Auto & Handy', tag: 'auto-handy' },
     extraTags: ['tech', 'gadget', 'auto'], type: 'Auto-Zubehör',
+    anchor: ['car ', 'car-', 'auto', 'vehicle', 'dashboard', 'trunk', 'headrest', 'windshield'],
     terms: [
-      { kw: 'car phone holder mount magnetic', must: ['phone', 'holder', 'mount'] },
-      { kw: 'car trunk organizer foldable', must: ['organizer', 'trunk'] },
-      { kw: 'car seat gap filler organizer', must: ['gap', 'seat'] },
-      { kw: 'magnetic phone mount dashboard', must: ['mount', 'magnetic'] },
-      { kw: 'car headrest hook backseat', must: ['hook', 'headrest'] },
+      { kw: 'car phone holder mount magnetic' },
+      { kw: 'car trunk organizer foldable' },
+      { kw: 'car seat gap filler organizer' },
+      { kw: 'car dashboard phone mount' },
+      { kw: 'car headrest hook backseat' },
+      { kw: 'car windshield sun shade' },
     ],
     bullets: ['Einfache Montage, sicherer Halt', 'Praktisch für jede Autofahrt', 'Hochwertige Verarbeitung', 'Ideal als Geschenk'],
   },
 };
-const BAD = ['wholesale', 'lot ', 'wig', 'nail', 'tattoo', 'sticker', 'sample', 'replacement part', 'for iphone 6', 'sex'];
+const BAD = ['wholesale', 'lot ', 'wig', 'nail', 'tattoo', 'sticker', 'sample', 'replacement part',
+  'for iphone 6', 'sex', 'bracelet', 'ring', 'necklace', 'copper', 'massage', 'beauty', 'jewelry',
+  'jewellery', 'earring', 'pendant', 'wallet', 'cowhide', 'leather bag', 'makeup', 'cosmetic',
+  'watch', 'bikini', 'dress', 'shirt', 'shoe', 'sock'];
 
 // ── Shopify ──
 async function sgql(tok, q, v) {
@@ -147,12 +154,12 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
     console.log(`\n=== ${cat.toUpperCase()} (${cfg.coll.title}) ===`);
     // 1) Suchen → Kandidaten sammeln
     const cand = new Map();
-    for (const { kw, must } of cfg.terms) {
+    for (const { kw } of cfg.terms) {
       const r = await cjGet(ctok, '/product/list', { pageNum: 1, pageSize: 30, productNameEn: kw });
       await sleep(1200);
       const list = (r?.data?.list || []).filter(p => {
         const n = (p.productNameEn || '').toLowerCase();
-        return must.some(m => n.includes(m)) && !BAD.some(x => n.includes(x));
+        return cfg.anchor.some(a => n.includes(a)) && !BAD.some(x => n.includes(x));
       });
       for (const p of list) if (!cand.has(p.pid)) cand.set(p.pid, p);
     }
