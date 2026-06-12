@@ -57,8 +57,11 @@ const ONLY = (process.argv.find(a => !a.startsWith('-')) || '').toLowerCase();
 const LEDGER = path.join(process.cwd(), 'ch-growth-ledger.txt');
 const SHOTS = path.join(process.cwd(), 'ch-growth-screens');
 fs.mkdirSync(SHOTS, { recursive: true });
-const seen = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').filter(Boolean) : []);
-const remember = (h) => { seen.add(h); fs.appendFileSync(LEDGER, h + '\n'); };
+// Ledger-Zeilen: "<key>\t<ISO-Datum>" (alte Zeilen ohne Datum bleiben gültig). seen = Set der keys.
+const seen = new Set(fs.existsSync(LEDGER)
+  ? fs.readFileSync(LEDGER, 'utf8').split('\n').filter(Boolean).map(l => l.split('\t')[0])
+  : []);
+const remember = (h) => { seen.add(h); fs.appendFileSync(LEDGER, h + '\t' + new Date().toISOString() + '\n'); };
 
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const rnd = (a, b) => a + Math.floor(Math.random() * (b - a));

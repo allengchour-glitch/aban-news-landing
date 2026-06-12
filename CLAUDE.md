@@ -58,6 +58,9 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   **Sicher gegen Sperren:** Tages-Caps (IG 40/TikTok 30), randomisierte Pausen 25–70 s, idempotenter Ledger
   `ch-growth-ledger.txt`, **keine Auto-Kommentare**, Stopp bei „Action blocked". Läuft am PC-Claude:
   `node ch-follower-growth.mjs` (1×/Tag = stetiges Wachstum). Doku: `dropship/CH-FOLLOWER-WACHSTUM.md`.
+  **+ Entfolge-Begleiter `automation/local/ch-unfollow.mjs`** (User „ja bau"): entfolgt nach ~14 Tagen die
+  Nicht-Zurückfolger (Ledger mit Zeitstempel; behält „Folgt dir"-Accounts in `ch-unfollow-kept.txt`); Cap 50/Lauf,
+  Pausen 20–55 s, idempotent. 1×/Woche am PC-Claude. Hält die Following/Follower-Ratio sauber.
 - **🔁 „update dich immer" (FEST, User 2026-06-12):** Memory **laufend** aktuell halten — nach jeder Charge CLAUDE.md/
   Report-Dateien nachführen, damit jede neue Session nahtlos weitermacht. Reports unter `reports/`.
 - **📊 Social-Analyse 2026-06-12 (`reports/ANALYSE-SOCIAL-2026-06-12.md`):** TikTok 40 Videos / 9 380 Views / Ø 234 /

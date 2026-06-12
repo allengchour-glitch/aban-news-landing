@@ -34,6 +34,19 @@ node ch-follower-growth.mjs instagram   # nur eine Plattform
 - Realistisch: ein Teil folgt zurück; nach 1–2 Wochen die nicht-zurückfolgenden wieder entfolgen
   (separater Schritt, kann ich bauen, wenn gewünscht).
 
+## ↩️ Nicht-Zurückfolger entfolgen (Ratio sauber halten)
+Begleit-Tool `automation/local/ch-unfollow.mjs`: entfolgt nach **~14 Tagen** alle, die **nicht**
+zurückgefolgt sind — gut fürs Profilbild (gesunde Following/Follower-Ratio). Nutzt denselben
+Ledger (jetzt mit Zeitstempel pro Follow); Zurückfolger werden in `ch-unfollow-kept.txt` behalten.
+```
+node ch-unfollow.mjs              # IG + TikTok, prüft fällige Kandidaten
+node ch-unfollow.mjs --dry        # nur zeigen, nichts klicken
+DAYS=10 MAX=40 node ch-unfollow.mjs   # Schwellen anpassen
+```
+- Behält jeden, dessen Profil „Folgt dir / Follows you" zeigt; entfolgt nur den Rest.
+- Sicher: Tages-Cap (Default 50), Pausen 20–55 s, Stopp bei „Action blocked", idempotent
+  (`ch-unfollow-done.txt`). **1×/Woche** laufen lassen reicht.
+
 ## Seed-Accounts (optional, stärker)
 Noch gezielter wird es, wenn man die **aktiven Liker bekannter CH-Mode-/Lifestyle-Profile** anspricht.
 Trag deren Handles (ohne @) in `IG_SEED_ACCOUNTS` im Skript ein — z. B. CH-Mode-Boutiquen oder
