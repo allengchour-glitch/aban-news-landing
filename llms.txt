@@ -20,6 +20,7 @@ Betreiber: aban news (Allen Chour), Schweizer Einzelunternehmen, Belp (CH). Alle
 - [Kleinunternehmerregelung einfach erklärt + Schnell-Check](https://abannews.com/kleinunternehmerregelung-einfach-erklaert.html): Grenzen DE/AT/CH (Stand 2025).
 - [Steuer-Basics für Selbstständige](https://abannews.com/steuer-basics-selbststaendige.html): welche Steuern, wie viel zurücklegen, Fristen.
 - [MwSt-Rechner (CH/DE/AT)](https://abannews.com/mwst-rechner.html): netto ↔ brutto.
+- [Skonto-Rechner](https://abannews.com/skonto-rechner.html): lohnt sich Skonto ziehen? Skonto-Betrag, Zahlbetrag und effektiver Jahreszins.
 - [Stundensatz-Rechner](https://abannews.com/stundensatz-rechner.html): was du wirklich verlangen solltest.
 - [Sparplan statt Trading — Zinseszins-Rechner](https://abannews.com/sparplan-statt-trading.html): warum langweilig gewinnt.
 - [ETF für Einsteiger + Kostenrechner](https://abannews.com/etf-fuer-einsteiger.html): der ruhige Weg.
