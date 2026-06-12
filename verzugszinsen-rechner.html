@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verzugszinsen-Rechner: offene Rechnung + Mahngebühren (CH & DE) · aban news</title>
+<meta name="description" content="Kostenloser Verzugszinsen-Rechner: berechnet Verzugszinsen, Mahnpauschale und die gesamte Forderung für überfällige Rechnungen — sofort. CH (5 % OR) & DE (Basiszins + 9 PP, 40 € Pauschale) als Preset. Lokal im Browser, ohne Login. Keine Steuer- oder Rechtsberatung.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/verzugszinsen-rechner.html">
+<meta property="og:title" content="Verzugszinsen-Rechner: was du bei einer offenen Rechnung fordern kannst">
+<meta property="og:description" content="Verzugszinsen, Mahnpauschale und Gesamtforderung — sofort. CH & DE Presets. Lokal im Browser, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/verzugszinsen-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Verzugszinsen-Rechner",
+"url":"https://abannews.com/verzugszinsen-rechner.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Rechnet Verzugszinsen, Mahnpauschale und die gesamte Forderung für überfällige Rechnungen — mit Presets für die Schweiz und Deutschland.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie hoch sind die Verzugszinsen?","acceptedAnswer":{"@type":"Answer","text":"In der Schweiz gelten gesetzlich 5 % pro Jahr (Art. 104 OR), wenn nichts anderes vereinbart ist. In Deutschland sind es bei Geschäften ohne Verbraucher (B2B) der Basiszinssatz plus 9 Prozentpunkte, bei Verbrauchern plus 5 Prozentpunkte. Vereinbarte höhere Zinssätze im Vertrag gehen vor."}},
+{"@type":"Question","name":"Darf ich eine Mahnpauschale verlangen?","acceptedAnswer":{"@type":"Answer","text":"In Deutschland kannst du bei B2B-Geschäften zusätzlich eine pauschale Verzugsentschädigung von 40 € verlangen (§ 288 Abs. 5 BGB). In der Schweiz gibt es keine gesetzliche Pauschale; Mahnspesen sind nur fällig, wenn sie vereinbart wurden."}},
+{"@type":"Question","name":"Ab wann gerät der Kunde in Verzug?","acceptedAnswer":{"@type":"Answer","text":"Spätestens 30 Tage nach Fälligkeit und Zugang der Rechnung tritt Verzug automatisch ein — bei Verbrauchern nur, wenn auf der Rechnung darauf hingewiesen wurde. Früher gerät der Kunde in Verzug durch ein konkretes Zahlungsziel oder eine Mahnung nach Fälligkeit."}},
+{"@type":"Question","name":"Wie werden die Verzugszinsen berechnet?","acceptedAnswer":{"@type":"Answer","text":"Offener Betrag mal Zinssatz geteilt durch 100, mal Verzugstage geteilt durch 360. Das ist die übliche kaufmännische Tagesberechnung (360-Tage-Jahr). Die Gesamtforderung ist der offene Betrag plus Verzugszinsen plus eine etwaige Mahnpauschale."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal in deinem Browser. Es wird nichts an einen Server gesendet, kein Konto, kein Tracking."}}]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+.grid{display:flex;gap:14px;flex-wrap:wrap}
+.fld{flex:1;min-width:140px}
+input[type=text]{width:100%;font-size:15px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink)}
+input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.preset{font:inherit;font-size:13px;font-weight:700;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--amber-dk);cursor:pointer}
+.preset[aria-pressed=true]{background:#b45309;color:#fff;border-color:#b45309}
+.out{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.box{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center}
+.box b{display:block;font-size:22px;font-weight:800;color:var(--amber-dk)}
+.box span{font-size:.8rem;color:var(--muted)}
+.box.big{grid-column:1/-1;background:var(--cream);border-color:var(--amber-lt)}
+.box.big b{font-size:30px;color:var(--ok)}
+.verdict{margin-top:12px;font-size:.95rem;color:var(--ink2);background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.warn{font-size:.85rem;color:var(--ink2);background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:10px 12px;margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+details.how{margin-top:16px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+details.how summary{padding:14px 16px;font-weight:700;cursor:pointer;list-style:none}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary::after{content:"+";float:right;color:var(--amber);font-weight:800}
+details.how[open] summary::after{content:"–"}
+details.how .body{padding:0 16px 16px;font-size:.92rem;color:var(--ink2)}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/geld-und-ki.html" style="color:#b45309;font-weight:600;text-decoration:none">Geld &amp; KI: alle Themen, Rechner &amp; Checks</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1>Was kannst du bei einer <span class="a">offenen Rechnung</span> fordern?</h1>
+    <p>Kunde zahlt nicht? Gib offenen Betrag, Verzugszinssatz und die Tage im Verzug ein — du siehst sofort Verzugszinsen, Mahnpauschale und deine gesamte Forderung. Mit Presets für die Schweiz und Deutschland. Lokal im Browser, nichts wird gesendet.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="presets" role="group" aria-label="Land-Voreinstellung">
+      <button type="button" class="preset" data-p="ch" aria-pressed="true">🇨🇭 Schweiz — 5 % (OR)</button>
+      <button type="button" class="preset" data-p="de" aria-pressed="false">🇩🇪 Deutschland — B2B 9,12 % + 40 €</button>
+    </div>
+    <div class="grid">
+      <div class="fld"><label for="betrag">Offener Rechnungsbetrag</label>
+        <input type="text" id="betrag" value="2500" inputmode="decimal" spellcheck="false"></div>
+      <div class="fld"><label for="zins">Verzugszinssatz (% pro Jahr)</label>
+        <input type="text" id="zins" value="5" inputmode="decimal" spellcheck="false"></div>
+    </div>
+    <div class="grid" style="margin-top:12px">
+      <div class="fld"><label for="tage">Tage im Verzug</label>
+        <input type="text" id="tage" value="60" inputmode="numeric" spellcheck="false"></div>
+      <div class="fld"><label for="pausch">Mahnpauschale (einmalig)</label>
+        <input type="text" id="pausch" value="0" inputmode="decimal" spellcheck="false"></div>
+    </div>
+    <div class="out" id="out"></div>
+    <div class="verdict" id="verdict" role="status" hidden></div>
+    <div style="display:flex;gap:8px;justify-content:center;margin-top:14px">
+      <button type="button" class="cmode" data-m="bars" aria-pressed="true" style="font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;border:0;background:#b45309;color:#fff;cursor:pointer">Balken</button>
+      <button type="button" class="cmode" data-m="donut" aria-pressed="false" style="font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--amber-dk);cursor:pointer">Donut (Anteil)</button>
+    </div>
+    <div style="margin-top:10px;border-radius:12px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
+      <canvas id="vz-chart" data-aban3d data-shape="bars" data-labels="1" data-color="#34d399" data-speed="0.5" style="display:block;width:100%;height:200px;touch-action:none" aria-label="3D-Diagramm: Hauptforderung, Verzugszinsen und Mahnpauschale"></canvas>
+    </div>
+    <p style="text-align:center;font-size:.78rem;color:var(--muted);margin:.35rem 0 0" id="vzchartCap">3D: Hauptforderung · Verzugszinsen · Pauschale — aus deiner Eingabe.</p>
+    <div class="warn"><strong>Hinweis:</strong> Schnelle Schätzung zur Orientierung — <strong>keine Steuer- oder Rechtsberatung</strong>. Maßgeblich sind dein Vertrag, das anwendbare Recht und der genaue Verzugsbeginn. Die DE-Voreinstellung nutzt einen Beispiel-Basiszinssatz von 0,12 % + 9 Prozentpunkte (B2B) = 9,12 % — der Basiszinssatz ändert sich aber halbjährlich, prüfe den <strong>aktuellen Wert der Deutschen Bundesbank</strong> und passe das Zins-Feld an.</div>
+    <details class="how"><summary>Wie der Rechner rechnet</summary>
+      <div class="body">
+        <p><strong>Verzugszinsen</strong> = Offener Betrag × Zinssatz ÷ 100 × Tage ÷ 360.<br>
+        <strong>Gesamtforderung</strong> = Offener Betrag + Verzugszinsen + Mahnpauschale.</p>
+        <p style="margin-top:.6rem">Beispiel: 2.500 € offen, 5 % p. a., 60 Tage Verzug → 2.500 × 5 ÷ 100 × 60 ÷ 360 ≈ <strong>20,83 € Zinsen</strong>. Plus Hauptforderung = 2.520,83 €.</p>
+        <p style="margin-top:.6rem"><strong>Schweiz:</strong> gesetzlich 5 % p. a. (Art. 104 OR), sofern nichts anderes vereinbart; keine gesetzliche Mahnpauschale. <strong>Deutschland:</strong> Basiszinssatz + 9 PP bei B2B (+ 5 PP bei Verbrauchern) und 40 € Verzugspauschale nach § 288 Abs. 5 BGB im B2B.</p>
+        <p style="margin-top:.6rem;color:var(--muted)">Alles läuft lokal in deinem Browser. Nichts wird gesendet, kein Konto, kein Tracking.</p>
+      </div>
+    </details>
+  </section>
+  <div class="cta"><strong>Offene Posten eintreiben — Schritt für Schritt</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">Mahnung schreiben, Skonto prüfen, sauber abrechnen — kostenlos, ohne Login.</p>
+    <p><a class="btn" href="/mahnung-schreiben.html">Mahnung schreiben</a>
+      <a class="btn ghost" href="/skonto-rechner.html">Skonto-Rechner</a>
+      <a class="btn ghost" href="/rechnung-generator.html">Rechnung schreiben</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div><aside data-aban-premium style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">Mehr Tiefe, kein Hype.</strong><span style="color:#374151"> aban news Premium: werbefrei, volles Archiv, täglicher KI-Kompass fürs Business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem">Founding-Mitglied — €69 lifetime →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Erst gratis testen →</a></span></aside>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/mahnung-schreiben.html">Mahnung</a> · <a href="/skonto-rechner.html">Skonto-Rechner</a> ·
+  <a href="/rechnung-generator.html">Rechnung</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var betragEl=document.getElementById("betrag"),zinsEl=document.getElementById("zins"),
+      tageEl=document.getElementById("tage"),pauschEl=document.getElementById("pausch"),
+      out=document.getElementById("out"),verdict=document.getElementById("verdict");
+  function num(el){return parseFloat(String(el.value).trim().replace(",","."));}
+  function fmt(n){return (isFinite(n)?n.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2}):"—")+" €";}
+  var presets={ch:{zins:"5",pausch:"0"},de:{zins:"9.12",pausch:"40"}};
+  function run(){
+    var B=num(betragEl), z=num(zinsEl), T=num(tageEl), P=num(pauschEl);
+    if(!isFinite(P)) P=0;
+    if(!isFinite(B)||B<0){out.innerHTML='<div class="box" style="grid-column:1/-1"><span>Bitte einen offenen Rechnungsbetrag eingeben.</span></div>';verdict.hidden=true;updateChart(0,0,0);return;}
+    if(!isFinite(z)||z<0){out.innerHTML='<div class="box" style="grid-column:1/-1"><span>Bitte einen Verzugszinssatz eingeben (z. B. 5).</span></div>';verdict.hidden=true;updateChart(B,0,P);return;}
+    if(!isFinite(T)||T<0) T=0;
+    var zinsen=B*z/100*T/360, proTag=B*z/100/360, gesamt=B+zinsen+P;
+    out.innerHTML=
+      '<div class="box"><b>'+fmt(zinsen)+'</b><span>Verzugszinsen ('+T.toLocaleString("de-DE")+' Tage)</span></div>'+
+      '<div class="box"><b>'+fmt(P)+'</b><span>Mahnpauschale</span></div>'+
+      '<div class="box big"><b>'+fmt(gesamt)+'</b><span>Gesamtforderung (inkl. Hauptforderung)</span></div>';
+    verdict.innerHTML='Du kannst aktuell <strong>'+fmt(gesamt)+'</strong> fordern: '+fmt(B)+' Hauptforderung + '+fmt(zinsen)+' Verzugszinsen'+(P>0?' + '+fmt(P)+' Pauschale':'')+'. Es kommen rund <strong>'+fmt(proTag)+' pro weiterem Tag</strong> dazu.';
+    verdict.hidden=false;
+    updateChart(B,zinsen,P);
+  }
+  var vzchart=document.getElementById("vz-chart"), vzct=null, vzMode="bars", vzLast=[0,0,0];
+  function updateChart(haupt,zinsen,pausch){
+    vzLast=[haupt,zinsen,pausch];
+    clearTimeout(vzct);
+    vzct=setTimeout(function(){
+      vzchart.dataset.shape=vzMode;
+      vzchart.dataset.values=[Math.round(haupt),Math.round(zinsen),Math.round(pausch)].join(",");
+      var n=vzchart.cloneNode(true);vzchart.parentNode.replaceChild(n,vzchart);vzchart=n;
+      if(window.abanBoot3d) window.abanBoot3d(vzchart);
+    },150);
+  }
+  [].forEach.call(document.querySelectorAll(".cmode"),function(b){
+    b.addEventListener("click",function(){
+      vzMode=b.dataset.m;
+      [].forEach.call(document.querySelectorAll(".cmode"),function(x){
+        var on=x===b;x.setAttribute("aria-pressed",on?"true":"false");
+        x.style.background=on?"#b45309":"transparent";x.style.color=on?"#fff":"#b45309";x.style.border=on?"0":"1px solid #ece3d4";
+      });
+      document.getElementById("vzchartCap").textContent=vzMode==="donut"
+        ?"3D-Donut: Anteil von Hauptforderung, Zinsen und Pauschale.":"3D: Hauptforderung · Verzugszinsen · Pauschale — aus deiner Eingabe.";
+      updateChart(vzLast[0],vzLast[1],vzLast[2]);
+    });
+  });
+  [].forEach.call(document.querySelectorAll(".preset"),function(b){
+    b.addEventListener("click",function(){
+      var p=presets[b.dataset.p]; if(!p) return;
+      zinsEl.value=p.zins; pauschEl.value=p.pausch;
+      [].forEach.call(document.querySelectorAll(".preset"),function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
+      run();
+    });
+  });
+  [betragEl,zinsEl,tageEl,pauschEl].forEach(function(el){el.addEventListener("input",run);});
+  run();
+})();
+</script>
+<script defer src="/js/aban3d.js"></script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
