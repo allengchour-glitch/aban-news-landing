@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cron-Generator & Erklärer (auf Deutsch) · aban news</title>
-<meta name="description" content="Kostenloses Tool: Cron-Zeitpläne per Klick bauen und beliebige Cron-Ausdrücke auf Deutsch erklären lassen — für n8n, Make, GitHub Actions, Server-Cronjobs. Ohne Login.">
+<title>Cron generator & explainer (in English) · aban news</title>
+<meta name="description" content="Free tool: build cron schedules by clicking and have any cron expression explained in plain English — for n8n, Make, GitHub Actions, server cronjobs. No login.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/cron-generator.html">
+<link rel="canonical" href="https://abannews.com/en/cron-generator.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/cron-generator.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/cron-generator.html">
 <link rel="alternate" hreflang="x-default" href="https://abannews.com/cron-generator.html">
-<meta property="og:title" content="Cron-Generator & Erklärer — auf Deutsch">
-<meta property="og:description" content="Cron-Zeitpläne per Klick bauen und jeden Cron-Ausdruck auf Deutsch erklären lassen. Gratis, ohne Login.">
+<meta property="og:title" content="Cron generator & explainer — in English">
+<meta property="og:description" content="Build cron schedules by clicking and have any cron expression explained in plain English. Free, no login.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/cron-generator.html">
+<meta property="og:url" content="https://abannews.com/en/cron-generator.html">
 <meta property="og:image" content="https://abannews.com/og-hype.png">
-<meta property="og:locale" content="de_DE">
+<meta property="og:locale" content="en_GB">
 <meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Cron-Generator & Erklärer",
-"url":"https://abannews.com/cron-generator.html","applicationCategory":"DeveloperApplication",
-"operatingSystem":"Web","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Baut Cron-Zeitpläne per Klick und erklärt beliebige Cron-Ausdrücke auf Deutsch.",
+{"@context":"https://schema.org","@type":"WebApplication","name":"Cron generator & explainer",
+"url":"https://abannews.com/en/cron-generator.html","applicationCategory":"DeveloperApplication",
+"operatingSystem":"Web","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Builds cron schedules by clicking and explains any cron expression in plain English.",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -65,79 +65,79 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<a class="skip" href="#builder">Zum Tool</a>
+<a class="skip" href="#builder">Skip to the tool</a>
 <header class="site"><div class="wrap">
-  <a href="/" class="brand">aban news</a>
-  <a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a>
+  <a href="/en/" class="brand">aban news</a>
+  <a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a>
 </div></header>
 
 <main><div class="wrap">
   <section class="hero">
-    <h1><span class="a">Cron</span>-Zeitplan bauen &amp; verstehen</h1>
-    <p>Wann soll deine Automatisierung laufen? Klick dir den Cron-Ausdruck zusammen — oder lass dir einen bestehenden auf Deutsch erklären. Für n8n, Make, GitHub Actions, Server-Cronjobs. Ohne Login.</p>
+    <h1>Build &amp; understand a <span class="a">cron</span> schedule</h1>
+    <p>When should your automation run? Click together the cron expression — or have an existing one explained in plain English. For n8n, Make, GitHub Actions, server cronjobs. No login.</p>
   </section>
 
   <section class="panel" id="builder">
-    <h2>1 · Bauen</h2>
-    <label for="mode">Wie oft soll es laufen?</label>
+    <h2>1 · Build</h2>
+    <label for="mode">How often should it run?</label>
     <select id="mode">
-      <option value="min5">alle 5 Minuten</option>
-      <option value="min15">alle 15 Minuten</option>
-      <option value="hourly">jede Stunde (zur vollen Stunde)</option>
-      <option value="daily" selected>täglich um …</option>
-      <option value="weekly">wöchentlich um …</option>
-      <option value="monthly">monatlich am … um …</option>
-      <option value="weekdays">werktags (Mo–Fr) um …</option>
+      <option value="min5">every 5 minutes</option>
+      <option value="min15">every 15 minutes</option>
+      <option value="hourly">every hour (on the hour)</option>
+      <option value="daily" selected>daily at …</option>
+      <option value="weekly">weekly at …</option>
+      <option value="monthly">monthly on the … at …</option>
+      <option value="weekdays">weekdays (Mon–Fri) at …</option>
     </select>
     <div id="opts"></div>
     <div class="out">
       <span class="cronbox" id="cron">0 9 * * *</span>
-      <button class="copybtn" type="button" id="copy">kopieren</button>
+      <button class="copybtn" type="button" id="copy">copy</button>
     </div>
     <div class="fields">
       <div><code id="f0">0</code>Minute</div>
-      <div><code id="f1">9</code>Stunde</div>
-      <div><code id="f2">*</code>Tag (Monat)</div>
-      <div><code id="f3">*</code>Monat</div>
-      <div><code id="f4">*</code>Wochentag</div>
+      <div><code id="f1">9</code>Hour</div>
+      <div><code id="f2">*</code>Day (month)</div>
+      <div><code id="f3">*</code>Month</div>
+      <div><code id="f4">*</code>Day of week</div>
     </div>
     <p class="expl" id="bexpl"></p>
-    <p class="note">Hinweis: Cron läuft in der <strong>Zeitzone des Servers</strong> (oft UTC). Für 9:00 Schweizer Zeit ggf. die Zeitzone im Tool setzen oder die UTC-Stunde eintragen.</p>
+    <p class="note">Note: cron runs in the <strong>server's time zone</strong> (often UTC). For 9:00 local time, set the time zone in your tool or enter the UTC hour.</p>
   </section>
 
   <section class="panel">
-    <h2>2 · Erklären</h2>
-    <label for="parse">Cron-Ausdruck eingeben (5 Felder)</label>
+    <h2>2 · Explain</h2>
+    <label for="parse">Enter a cron expression (5 fields)</label>
     <input type="text" id="parse" value="*/15 8-18 * * 1-5" spellcheck="false" autocomplete="off">
     <p class="expl" id="pexpl"></p>
   </section>
 
   <div class="cta">
-    <strong>Zeitplan steht — womit automatisieren?</strong>
-    <p class="note" style="margin:.4rem 0 .8rem">Ehrlicher Tool-Vergleich (n8n, Make, Zapier …) + ob sich's überhaupt lohnt.</p>
+    <strong>Schedule ready — what should you automate with?</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">Honest tool comparison (n8n, Make, Zapier …) + whether it's even worth it.</p>
     <p>
-      <a class="btn" href="https://radar.abannews.com" target="_blank" rel="noopener">Tools vergleichen →</a>
-      <a class="btn ghost" href="/automatisierung-rechner.html">Lohnt sich's? (Rechner)</a>
+      <a class="btn" href="https://radar.abannews.com" target="_blank" rel="noopener">Compare tools →</a>
+      <a class="btn ghost" href="/en/automatisierung-rechner.html">Is it worth it? (calculator)</a>
     </p>
   </div>
 <aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
-  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
-  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe to the free newsletter →</a>
 </aside>
 </div></main>
 
 <footer><div class="wrap">
   © 2026 aban news · Allen Chour · Belp (CH) ·
-  <a href="/automatisierung-rechner.html">Automatisierungs-Rechner</a> ·
-  <a href="/was-automatisieren.html">Was automatisieren?</a> ·
-  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+  <a href="/en/automatisierung-rechner.html">Automation calculator</a> ·
+  <a href="/was-automatisieren.html">What to automate?</a> ·
+  <a href="/en/ki-werkzeug.html">AI tools</a> &middot; <a href="/en/online-tools.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a>
 </div></footer>
 
 <script>
 (function(){
-  var TAGE=["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
-  var MON=["","Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+  var DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  var MON=["","January","February","March","April","May","June","July","August","September","October","November","December"];
   var mode=document.getElementById("mode"), opts=document.getElementById("opts"),
       cronEl=document.getElementById("cron"), bexpl=document.getElementById("bexpl");
 
@@ -156,55 +156,55 @@ footer a{color:var(--muted)}
     cronEl.textContent=cron;
     var f=cron.split(" ");
     for(var i=0;i<5;i++){document.getElementById("f"+i).textContent=f[i];}
-    bexpl.textContent="Bedeutet: "+explain(cron);
+    bexpl.textContent="Means: "+explain(cron);
     rebind();
   }
-  function timeRow(){return '<label>Uhrzeit</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+
-    '<select id="h" aria-label="Stunde">'+hours()+'</select>'+
+  function timeRow(){return '<label>Time</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+
+    '<select id="h" aria-label="Hour">'+hours()+'</select>'+
     '<select id="m" aria-label="Minute">'+mins()+'</select></div>';}
-  function dowRow(){var o="";for(var i=1;i<=7;i++){var v=i%7;o+='<option value="'+v+'"'+(v===1?" selected":"")+'>'+TAGE[v]+'</option>';}return '<label>Wochentag</label><select id="dow">'+o+'</select>';}
-  function domRow(){var o="";for(var i=1;i<=28;i++){o+='<option value="'+i+'"'+(i===1?" selected":"")+'>'+i+'.</option>';}return '<label>Tag im Monat</label><select id="dom">'+o+'</select>';}
-  function hours(){var o="";for(var i=0;i<24;i++){o+='<option value="'+i+'"'+(i===9?" selected":"")+'>'+(i<10?"0":"")+i+' Uhr</option>';}return o;}
-  function mins(){var o="";[0,5,10,15,30,45].forEach(function(i){o+='<option value="'+i+'"'+(i===0?" selected":"")+'>'+(i<10?"0":"")+i+' Min</option>';});return o;}
+  function dowRow(){var o="";for(var i=1;i<=7;i++){var v=i%7;o+='<option value="'+v+'"'+(v===1?" selected":"")+'>'+DAYS[v]+'</option>';}return '<label>Day of week</label><select id="dow">'+o+'</select>';}
+  function domRow(){var o="";for(var i=1;i<=28;i++){o+='<option value="'+i+'"'+(i===1?" selected":"")+'>'+i+'</option>';}return '<label>Day of month</label><select id="dom">'+o+'</select>';}
+  function hours(){var o="";for(var i=0;i<24;i++){o+='<option value="'+i+'"'+(i===9?" selected":"")+'>'+(i<10?"0":"")+i+':00</option>';}return o;}
+  function mins(){var o="";[0,5,10,15,30,45].forEach(function(i){o+='<option value="'+i+'"'+(i===0?" selected":"")+'>'+(i<10?"0":"")+i+' min</option>';});return o;}
   function rebind(){["h","m","dow","dom"].forEach(function(id){var e=document.getElementById(id);if(e)e.addEventListener("change",render);});}
 
-  // --- Cron -> Deutsch ---
+  // --- Cron -> English ---
   function explain(c){
     var p=c.trim().split(/\s+/);
     if(p.length!==5) return null;
     var mi=p[0],h=p[1],dom=p[2],mon=p[3],dow=p[4];
-    function every(field,unit){var mm=field.match(/^\*\/(\d+)$/);return mm?("alle "+mm[1]+" "+unit):null;}
+    function every(field,unit){var mm=field.match(/^\*\/(\d+)$/);return mm?("every "+mm[1]+" "+unit):null;}
     var parts=[];
-    // Zeit
-    var em=every(mi,"Minuten"), eh=every(h,"Stunden");
-    if(mi==="*"&&h==="*"){parts.push("jede Minute");}
+    // Time
+    var em=every(mi,"minutes"), eh=every(h,"hours");
+    if(mi==="*"&&h==="*"){parts.push("every minute");}
     else if(em&&h==="*"){parts.push(em);}
-    else if(mi!=="*"&&h==="*"){parts.push("jede Stunde zur Minute "+mi);}
-    else if(eh){parts.push(eh+(mi!=="*"?(" zur Minute "+mi):""));}
+    else if(mi!=="*"&&h==="*"){parts.push("every hour at minute "+mi);}
+    else if(eh){parts.push(eh+(mi!=="*"?(" at minute "+mi):""));}
     else {
       var hr=h.match(/^(\d+)-(\d+)$/);
-      if(hr){parts.push("stündlich von "+hr[1]+" bis "+hr[2]+" Uhr"+(em?(" "+em):(mi!=="*"?(" zur Minute "+mi):"")));}
-      else {parts.push("um "+(h<10?"0":"")+h+":"+(mi.length<2?"0"+mi:mi)+" Uhr");}
+      if(hr){parts.push("hourly from "+hr[1]+":00 to "+hr[2]+":00"+(em?(" "+em):(mi!=="*"?(" at minute "+mi):"")));}
+      else {parts.push("at "+(h<10?"0":"")+h+":"+(mi.length<2?"0"+mi:mi));}
     }
-    // Wochentag
+    // Day of week
     if(dow!=="*"){
       var dr=dow.match(/^(\d)-(\d)$/);
-      if(dow==="1-5")parts.push("werktags (Mo–Fr)");
-      else if(dr)parts.push("von "+TAGE[+dr[1]%7]+" bis "+TAGE[+dr[2]%7]);
-      else if(/^\d$/.test(dow))parts.push("nur "+TAGE[+dow%7]);
-      else parts.push("an Wochentagen "+dow);
+      if(dow==="1-5")parts.push("on weekdays (Mon–Fri)");
+      else if(dr)parts.push("from "+DAYS[+dr[1]%7]+" to "+DAYS[+dr[2]%7]);
+      else if(/^\d$/.test(dow))parts.push("only on "+DAYS[+dow%7]);
+      else parts.push("on days of week "+dow);
     }
-    // Tag im Monat
-    if(dom!=="*"){ if(/^\d+$/.test(dom))parts.push("am "+dom+". des Monats"); else parts.push("an den Tagen "+dom); }
-    // Monat
-    if(mon!=="*"){ if(/^\d+$/.test(mon))parts.push("im "+(MON[+mon]||mon)); else parts.push("in den Monaten "+mon); }
+    // Day of month
+    if(dom!=="*"){ if(/^\d+$/.test(dom))parts.push("on day "+dom+" of the month"); else parts.push("on days "+dom); }
+    // Month
+    if(mon!=="*"){ if(/^\d+$/.test(mon))parts.push("in "+(MON[+mon]||mon)); else parts.push("in months "+mon); }
     return parts.join(", ")+".";
   }
 
   // Builder events
   document.getElementById("copy").addEventListener("click",function(){
     var t=cronEl.textContent, b=this;
-    try{navigator.clipboard.writeText(t);b.textContent="kopiert ✓";setTimeout(function(){b.textContent="kopieren";},1500);}catch(e){}
+    try{navigator.clipboard.writeText(t);b.textContent="copied ✓";setTimeout(function(){b.textContent="copy";},1500);}catch(e){}
   });
   mode.addEventListener("change",render);
 
@@ -212,8 +212,8 @@ footer a{color:var(--muted)}
   var parse=document.getElementById("parse"), pexpl=document.getElementById("pexpl");
   function doParse(){
     var ex=explain(parse.value);
-    if(ex){pexpl.className="expl";pexpl.textContent="Läuft: "+ex;}
-    else{pexpl.className="expl bad";pexpl.textContent="Das sind keine 5 gültigen Cron-Felder (Minute Stunde Tag Monat Wochentag).";}
+    if(ex){pexpl.className="expl";pexpl.textContent="Runs: "+ex;}
+    else{pexpl.className="expl bad";pexpl.textContent="That's not 5 valid cron fields (minute hour day month day-of-week).";}
   }
   parse.addEventListener("input",doParse);
 

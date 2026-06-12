@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>.env- & Header-Parser → JSON · aban news</title>
-<meta name="description" content="Kostenloses Tool: .env-Dateien oder HTTP-Header in JSON umwandeln (und zurück). Für APIs, Webhooks, Konfig. Lokal im Browser, ohne Login — Secrets verlassen den Browser nicht.">
+<title>.env & header parser → JSON · aban news</title>
+<meta name="description" content="Free tool: convert .env files or HTTP headers into JSON (and back). For APIs, webhooks, config. Local in your browser, no login — secrets never leave the browser.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/env-parser.html">
+<link rel="canonical" href="https://abannews.com/en/env-parser.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/env-parser.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/env-parser.html">
 <link rel="alternate" hreflang="x-default" href="https://abannews.com/env-parser.html">
-<meta property="og:title" content=".env- & Header-Parser → JSON">
-<meta property="og:description" content=".env oder HTTP-Header ↔ JSON. Für APIs & Webhooks. Lokal im Browser — Secrets bleiben lokal.">
+<meta property="og:title" content=".env & header parser → JSON">
+<meta property="og:description" content=".env or HTTP headers ↔ JSON. For APIs & webhooks. Local in your browser — secrets stay local.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/env-parser.html">
+<meta property="og:url" content="https://abannews.com/en/env-parser.html">
 <meta property="og:image" content="https://abannews.com/og-hype.png">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":".env- & Header-Parser → JSON",
-"url":"https://abannews.com/env-parser.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
-"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Wandelt .env-Dateien oder HTTP-Header in JSON um und zurück.",
+{"@context":"https://schema.org","@type":"WebApplication","name":".env & header parser → JSON",
+"url":"https://abannews.com/en/env-parser.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Converts .env files or HTTP headers into JSON and back.",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -60,47 +60,47 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<a class="skip" href="#tool">Zum Tool</a>
-<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
-<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<a class="skip" href="#tool">Skip to the tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
 <main><div class="wrap">
   <section class="hero">
-    <h1><span class="a">.env &amp; Header</span> → JSON</h1>
-    <p>Eine <code>.env</code>-Datei oder einen Block HTTP-Header in ein JSON-Objekt umwandeln — und zurück. Praktisch, wenn ein Webhook- oder API-Tool Header als JSON erwartet. Lokal im Browser, nichts wird gesendet.</p>
+    <h1><span class="a">.env &amp; headers</span> → JSON</h1>
+    <p>Convert a <code>.env</code> file or a block of HTTP headers into a JSON object — and back. Handy when a webhook or API tool expects headers as JSON. Local in your browser, nothing is sent.</p>
   </section>
   <section class="panel" id="tool">
-    <label for="in">Eingabe (<code>KEY=value</code> oder <code>Header: wert</code> pro Zeile)</label>
-    <textarea id="in" spellcheck="false"># Beispiel
+    <label for="in">Input (<code>KEY=value</code> or <code>Header: value</code> per line)</label>
+    <textarea id="in" spellcheck="false"># Example
 API_URL=https://api.example.com/v1
 TIMEOUT=30
 Content-Type: application/json
-Authorization: Bearer DEIN_TOKEN</textarea>
+Authorization: Bearer YOUR_TOKEN</textarea>
     <div class="bar">
       <button class="btn" data-op="toj">→ JSON</button>
       <button class="btn ghost" data-op="toenv">JSON → .env</button>
-      <button class="btn ghost" data-op="tohdr">JSON → Header</button>
+      <button class="btn ghost" data-op="tohdr">JSON → headers</button>
     </div>
-    <label for="out">Ausgabe</label>
+    <label for="out">Output</label>
     <textarea id="out" spellcheck="false" readonly></textarea>
-    <div class="bar"><button class="btn ghost" id="copy">Kopieren</button>
+    <div class="bar"><button class="btn ghost" id="copy">Copy</button>
       <span class="status" id="status">—</span></div>
-    <div class="warn"><strong>Hinweis:</strong> Tokens und Passwörter bleiben in deinem Browser — diese Seite sendet nichts. Trotzdem: echte Produktiv-Secrets besser nur dort einfügen, wo du sie brauchst.</div>
-    <p class="note">Erkennt <code>KEY=value</code> (.env) und <code>Name: Wert</code> (Header). Kommentare (<code>#</code>) und leere Zeilen werden übersprungen, umschließende Anführungszeichen entfernt. Alles lokal.</p>
+    <div class="warn"><strong>Note:</strong> Tokens and passwords stay in your browser — this page sends nothing. Still: better to paste real production secrets only where you actually need them.</div>
+    <p class="note">Recognises <code>KEY=value</code> (.env) and <code>Name: value</code> (headers). Comments (<code>#</code>) and empty lines are skipped, surrounding quotes are removed. Everything local.</p>
   </section>
-  <div class="cta"><strong>Mehr Glue-Tools</strong>
-    <p class="note" style="margin:.4rem 0 .8rem">für APIs &amp; Automatisierungen.</p>
-    <p><a class="btn" href="/json-formatter.html">JSON</a>
-      <a class="btn ghost" href="/encoder.html">Base64/URL</a>
-      <a class="btn ghost" href="/uuid-generator.html">UUID/Slug</a></p></div>
+  <div class="cta"><strong>More glue tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for APIs &amp; automation.</p>
+    <p><a class="btn" href="/en/json-formatter.html">JSON</a>
+      <a class="btn ghost" href="/en/encoder.html">Base64/URL</a>
+      <a class="btn ghost" href="/en/uuid-generator.html">UUID/Slug</a></p></div>
 <aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
-  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
-  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe to the free newsletter →</a>
 </aside>
 </div></main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
-  <a href="/encoder.html">Encoder</a> · <a href="/json-formatter.html">JSON</a> ·
-  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  <a href="/en/encoder.html">Encoder</a> · <a href="/en/json-formatter.html">JSON</a> ·
+  <a href="/en/ki-werkzeug.html">AI tools</a> &middot; <a href="/en/online-tools.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
 <script>
 (function(){
   var inp=document.getElementById("in"),out=document.getElementById("out"),status=document.getElementById("status");
@@ -120,12 +120,12 @@ Authorization: Bearer DEIN_TOKEN</textarea>
       else return;
       o[k]=v;n++;
     });
-    if(!n)throw new Error("keine KEY=value- oder Header-Zeilen gefunden");
+    if(!n)throw new Error("no KEY=value or header lines found");
     return JSON.stringify(o,null,2);
   }
   function obj(text){
     var o=JSON.parse(text);
-    if(typeof o!=="object"||o===null||Array.isArray(o))throw new Error("erwarte ein JSON-Objekt {…}");
+    if(typeof o!=="object"||o===null||Array.isArray(o))throw new Error("expected a JSON object {…}");
     return o;
   }
   function toenv(text){
@@ -141,15 +141,15 @@ Authorization: Bearer DEIN_TOKEN</textarea>
     return Object.keys(o).map(function(k){return k+": "+String(o[k]);}).join("\n");
   }
   var ops={toj:toj,toenv:toenv,tohdr:tohdr},
-      names={toj:"als JSON",toenv:"als .env",tohdr:"als Header-Block"};
+      names={toj:"as JSON",toenv:"as .env",tohdr:"as a header block"};
   document.querySelectorAll("[data-op]").forEach(function(b){
     b.addEventListener("click",function(){
       var op=b.getAttribute("data-op");
       try{out.value=ops[op](inp.value);ok(names[op]);}
-      catch(e){out.value="";bad("Geht nicht: "+(e.message||e));}
+      catch(e){out.value="";bad("Doesn't work: "+(e.message||e));}
     });
   });
-  document.getElementById("copy").addEventListener("click",function(){var b=this;try{navigator.clipboard.writeText(out.value);b.textContent="kopiert ✓";setTimeout(function(){b.textContent="Kopieren";},1500);}catch(e){}});
+  document.getElementById("copy").addEventListener("click",function(){var b=this;try{navigator.clipboard.writeText(out.value);b.textContent="copied ✓";setTimeout(function(){b.textContent="Copy";},1500);}catch(e){}});
 })();
 </script>
 <script defer src="/js/announce.js"></script>

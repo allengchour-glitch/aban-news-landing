@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unix-Timestamp-Konverter · aban news</title>
-<meta name="description" content="Kostenloses Tool: Unix-Timestamp in Datum/Uhrzeit umwandeln und zurück — lokale Zeit und UTC, ISO 8601, deutsches Format. Für Logs, APIs, Automatisierungen. Lokal im Browser.">
+<title>Unix timestamp converter · aban news</title>
+<meta name="description" content="Free tool: convert a Unix timestamp into date/time and back — local time and UTC, ISO 8601. For logs, APIs, automations. Local in your browser.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/timestamp-konverter.html">
+<link rel="canonical" href="https://abannews.com/en/timestamp-konverter.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/timestamp-konverter.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/timestamp-konverter.html">
 <link rel="alternate" hreflang="x-default" href="https://abannews.com/timestamp-konverter.html">
-<meta property="og:title" content="Unix-Timestamp-Konverter">
-<meta property="og:description" content="Unix-Timestamp ↔ Datum/Uhrzeit (lokal + UTC, ISO). Für Logs & APIs. Lokal im Browser.">
+<meta property="og:title" content="Unix timestamp converter">
+<meta property="og:description" content="Unix timestamp ↔ date/time (local + UTC, ISO). For logs & APIs. Local in your browser.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/timestamp-konverter.html">
+<meta property="og:url" content="https://abannews.com/en/timestamp-konverter.html">
 <meta property="og:image" content="https://abannews.com/og-hype.png">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Unix-Timestamp-Konverter",
-"url":"https://abannews.com/timestamp-konverter.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
-"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Wandelt Unix-Timestamps in Datum/Uhrzeit um und zurück (lokal, UTC, ISO 8601).",
+{"@context":"https://schema.org","@type":"WebApplication","name":"Unix timestamp converter",
+"url":"https://abannews.com/en/timestamp-konverter.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Converts Unix timestamps into date/time and back (local, UTC, ISO 8601).",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -65,20 +65,20 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<a class="skip" href="#tool">Zum Tool</a>
-<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
-<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<a class="skip" href="#tool">Skip to the tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
 <main><div class="wrap">
   <section class="hero">
-    <h1><span class="a">Unix-Timestamp</span> umwandeln</h1>
-    <p>Einen Unix-Timestamp in lesbares Datum/Uhrzeit umwandeln — oder ein Datum in den Timestamp. Praktisch für Log-Dateien, API-Antworten und Cron-Debugging. Lokal im Browser, nichts wird gesendet.</p>
+    <h1>Convert <span class="a">Unix timestamp</span></h1>
+    <p>Convert a Unix timestamp into a readable date/time — or a date into the timestamp. Handy for log files, API responses and cron debugging. Local in your browser, nothing is sent.</p>
   </section>
 
   <section class="panel" id="tool">
-    <h2>Timestamp → Datum</h2>
+    <h2>Timestamp → date</h2>
     <div class="bar">
-      <button class="btn" id="now">Jetzt einsetzen</button>
-      <span class="note" style="margin:0">Sekunden oder Millisekunden — wird automatisch erkannt</span>
+      <button class="btn" id="now">Insert now</button>
+      <span class="note" style="margin:0">seconds or milliseconds — detected automatically</span>
     </div>
     <input type="text" id="ts" value="1700000000" spellcheck="false" inputmode="numeric">
     <div class="status bad" id="tsErr"></div>
@@ -86,55 +86,55 @@ footer a{color:var(--muted)}
   </section>
 
   <section class="panel">
-    <h2>Datum → Timestamp</h2>
-    <label for="dt">Datum &amp; Uhrzeit (lokale Zeit)</label>
-    <input type="text" id="dt" value="2023-11-14 23:13:20" spellcheck="false" placeholder="z. B. 2024-12-31 18:00 oder 14.11.2023 23:13">
+    <h2>Date → timestamp</h2>
+    <label for="dt">Date &amp; time (local time)</label>
+    <input type="text" id="dt" value="2023-11-14 23:13:20" spellcheck="false" placeholder="e.g. 2024-12-31 18:00 or 14.11.2023 23:13">
     <div class="status bad" id="dtErr"></div>
     <div class="kv" id="dtOut"></div>
   </section>
 
-  <div class="cta"><strong>Mehr Glue-Tools</strong>
-    <p class="note" style="margin:.4rem 0 .8rem">für Logs, APIs &amp; Automatisierung.</p>
-    <p><a class="btn" href="/cron-generator.html">Cron</a>
-      <a class="btn ghost" href="/json-formatter.html">JSON</a>
-      <a class="btn ghost" href="/encoder.html">Base64/URL</a></p></div>
+  <div class="cta"><strong>More glue tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for logs, APIs &amp; automation.</p>
+    <p><a class="btn" href="/en/cron-generator.html">Cron</a>
+      <a class="btn ghost" href="/en/json-formatter.html">JSON</a>
+      <a class="btn ghost" href="/en/encoder.html">Base64/URL</a></p></div>
 <aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
-  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
-  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe to the free newsletter →</a>
 </aside>
 </div></main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
-  <a href="/cron-generator.html">Cron</a> · <a href="/json-formatter.html">JSON</a> ·
-  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  <a href="/en/cron-generator.html">Cron</a> · <a href="/en/json-formatter.html">JSON</a> ·
+  <a href="/en/ki-werkzeug.html">AI tools</a> &middot; <a href="/en/online-tools.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
 <script>
 (function(){
-  var DOW=["So","Mo","Di","Mi","Do","Fr","Sa"];
+  var DOW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   function pad(n){return (n<10?"0":"")+n;}
   function deLocal(d){return DOW[d.getDay()]+", "+pad(d.getDate())+"."+pad(d.getMonth()+1)+"."+d.getFullYear()+" "+pad(d.getHours())+":"+pad(d.getMinutes())+":"+pad(d.getSeconds());}
   function deUTC(d){return pad(d.getUTCDate())+"."+pad(d.getUTCMonth()+1)+"."+d.getUTCFullYear()+" "+pad(d.getUTCHours())+":"+pad(d.getUTCMinutes())+":"+pad(d.getUTCSeconds())+" UTC";}
   function rel(d){
     var diff=Math.round((d.getTime()-Date.now())/1000),a=Math.abs(diff),s;
-    if(a<60)s=a+" Sek.";else if(a<3600)s=Math.round(a/60)+" Min.";
-    else if(a<86400)s=Math.round(a/3600)+" Std.";else s=Math.round(a/86400)+" Tage";
-    return diff<0?("vor "+s):("in "+s);
+    if(a<60)s=a+" sec";else if(a<3600)s=Math.round(a/60)+" min";
+    else if(a<86400)s=Math.round(a/3600)+" hrs";else s=Math.round(a/86400)+" days";
+    return diff<0?(s+" ago"):("in "+s);
   }
   function row(k,v){return '<div class="r"><span class="k">'+k+'</span><span class="v">'+v+'</span></div>';}
 
   var ts=document.getElementById("ts"),tsOut=document.getElementById("tsOut"),tsErr=document.getElementById("tsErr");
   function fromTs(){
     var raw=ts.value.trim();tsErr.textContent="";
-    if(!/^-?\d+$/.test(raw)){tsErr.textContent=raw?"Bitte eine ganze Zahl eingeben.":"";tsOut.innerHTML="";return;}
+    if(!/^-?\d+$/.test(raw)){tsErr.textContent=raw?"Please enter a whole number.":"";tsOut.innerHTML="";return;}
     var num=parseInt(raw,10);
-    var ms=Math.abs(num)>=1e12?num:num*1000; // >=1e12 → schon Millisekunden
+    var ms=Math.abs(num)>=1e12?num:num*1000; // >=1e12 → already milliseconds
     var d=new Date(ms);
-    if(isNaN(d.getTime())){tsErr.textContent="Ungültiger Timestamp.";tsOut.innerHTML="";return;}
+    if(isNaN(d.getTime())){tsErr.textContent="Invalid timestamp.";tsOut.innerHTML="";return;}
     tsOut.innerHTML=
-      row("Lokal",deLocal(d))+
+      row("Local",deLocal(d))+
       row("UTC",deUTC(d))+
       row("ISO 8601",d.toISOString())+
-      row("Relativ",rel(d))+
-      row("Erkannt als",Math.abs(num)>=1e12?"Millisekunden":"Sekunden");
+      row("Relative",rel(d))+
+      row("Detected as",Math.abs(num)>=1e12?"milliseconds":"seconds");
   }
   document.getElementById("now").addEventListener("click",function(){ts.value=Math.floor(Date.now()/1000);fromTs();});
   ts.addEventListener("input",fromTs);
@@ -143,10 +143,10 @@ footer a{color:var(--muted)}
   function parseDate(s){
     s=s.trim();if(!s)return null;
     var m;
-    // 14.11.2023 23:13:20  oder  14.11.2023
+    // 14.11.2023 23:13:20  or  14.11.2023
     if((m=s.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})(?:[ T](\d{1,2}):(\d{2})(?::(\d{2}))?)?$/)))
       return new Date(+m[3],+m[2]-1,+m[1],+(m[4]||0),+(m[5]||0),+(m[6]||0));
-    // 2023-11-14 23:13:20  oder  2023-11-14
+    // 2023-11-14 23:13:20  or  2023-11-14
     if((m=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})(?:[ T](\d{1,2}):(\d{2})(?::(\d{2}))?)?$/)))
       return new Date(+m[1],+m[2]-1,+m[3],+(m[4]||0),+(m[5]||0),+(m[6]||0));
     var d=new Date(s);return isNaN(d.getTime())?null:d;
@@ -154,7 +154,7 @@ footer a{color:var(--muted)}
   function fromDate(){
     dtErr.textContent="";
     var d=parseDate(dt.value);
-    if(!d){dtErr.textContent=dt.value.trim()?"Datum nicht erkannt. Beispiel: 2024-12-31 18:00":"";dtOut.innerHTML="";return;}
+    if(!d){dtErr.textContent=dt.value.trim()?"Date not recognised. Example: 2024-12-31 18:00":"";dtOut.innerHTML="";return;}
     var sec=Math.floor(d.getTime()/1000);
     dtOut.innerHTML=
       row("Timestamp (s)",sec)+

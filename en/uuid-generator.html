@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UUID- & Slug-Generator · aban news</title>
-<meta name="description" content="Kostenloses Tool: UUIDs (v4) im Stapel erzeugen und beliebigen Text in saubere URL-Slugs umwandeln. Für Datenbanken, APIs, Automatisierungen. Lokal im Browser, ohne Login.">
+<title>UUID & slug generator · aban news</title>
+<meta name="description" content="Free tool: generate UUIDs (v4) in batches and turn any text into clean URL slugs. For databases, APIs, automations. Local in your browser, no login.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/uuid-generator.html">
+<link rel="canonical" href="https://abannews.com/en/uuid-generator.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/uuid-generator.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/uuid-generator.html">
 <link rel="alternate" hreflang="x-default" href="https://abannews.com/uuid-generator.html">
-<meta property="og:title" content="UUID- & Slug-Generator">
-<meta property="og:description" content="UUIDs (v4) im Stapel + saubere URL-Slugs. Für Datenbanken & APIs. Lokal im Browser, ohne Login.">
+<meta property="og:title" content="UUID & slug generator">
+<meta property="og:description" content="UUIDs (v4) in batches + clean URL slugs. For databases & APIs. Local in your browser, no login.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/uuid-generator.html">
+<meta property="og:url" content="https://abannews.com/en/uuid-generator.html">
 <meta property="og:image" content="https://abannews.com/og-hype.png">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"UUID- & Slug-Generator",
-"url":"https://abannews.com/uuid-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
-"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Erzeugt UUIDs (v4) im Stapel und wandelt Text in saubere URL-Slugs um.",
+{"@context":"https://schema.org","@type":"WebApplication","name":"UUID & slug generator",
+"url":"https://abannews.com/en/uuid-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Generates UUIDs (v4) in batches and turns text into clean URL slugs.",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -63,52 +63,52 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<a class="skip" href="#tool">Zum Tool</a>
-<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
-<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<a class="skip" href="#tool">Skip to the tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
 <main><div class="wrap">
   <section class="hero">
-    <h1><span class="a">UUID &amp; Slug</span> erzeugen</h1>
-    <p>UUIDs (Version 4) im Stapel generieren und beliebigen Text in saubere URL-Slugs umwandeln. Für Datenbank-Schlüssel, API-IDs, Datei- und Seitennamen. Lokal im Browser, nichts wird gesendet.</p>
+    <h1>Generate <span class="a">UUID &amp; slug</span></h1>
+    <p>Generate UUIDs (version 4) in batches and turn any text into clean URL slugs. For database keys, API IDs, file and page names. Local in your browser, nothing is sent.</p>
   </section>
 
   <section class="panel" id="tool">
     <h2>UUID v4</h2>
     <div class="row">
-      <div><label for="count">Anzahl</label><input type="number" id="count" value="5" min="1" max="500"></div>
-      <button class="btn" id="gen">Erzeugen</button>
-      <button class="btn ghost" id="upper">Großschreibung</button>
+      <div><label for="count">Count</label><input type="number" id="count" value="5" min="1" max="500"></div>
+      <button class="btn" id="gen">Generate</button>
+      <button class="btn ghost" id="upper">Uppercase</button>
     </div>
-    <label for="uout" style="margin-top:12px">Ergebnis</label>
+    <label for="uout" style="margin-top:12px">Result</label>
     <textarea id="uout" spellcheck="false" readonly></textarea>
-    <div class="bar"><button class="btn ghost" id="ucopy">Kopieren</button></div>
-    <p class="note">Echte Zufalls-UUIDs aus <code>crypto.getRandomValues</code> (kryptografisch, nicht aus <code>Math.random</code>). Format 8-4-4-4-12, Version 4, Variante RFC 4122.</p>
+    <div class="bar"><button class="btn ghost" id="ucopy">Copy</button></div>
+    <p class="note">Real random UUIDs from <code>crypto.getRandomValues</code> (cryptographic, not from <code>Math.random</code>). Format 8-4-4-4-12, version 4, variant RFC 4122.</p>
   </section>
 
   <section class="panel">
-    <h2>Slug aus Text</h2>
-    <label for="sin">Text (z. B. Überschrift)</label>
-    <input type="text" id="sin" value="KI für Selbstständige: 5 Tipps & Tricks!" spellcheck="false">
+    <h2>Slug from text</h2>
+    <label for="sin">Text (e.g. a heading)</label>
+    <input type="text" id="sin" value="AI for the self-employed: 5 tips & tricks!" spellcheck="false">
     <label for="sout" style="margin-top:12px">Slug</label>
     <input type="text" id="sout" spellcheck="false" readonly>
-    <div class="bar"><button class="btn ghost" id="scopy">Kopieren</button></div>
-    <p class="note">Kleinschreibung, Umlaute aufgelöst (ä→ae, ß→ss …), Sonderzeichen raus, Leerzeichen → Bindestrich. Aktualisiert sich live beim Tippen.</p>
+    <div class="bar"><button class="btn ghost" id="scopy">Copy</button></div>
+    <p class="note">Lowercase, accents/umlauts resolved (ä→ae, ß→ss …), special characters removed, spaces → hyphen. Updates live as you type.</p>
   </section>
 
-  <div class="cta"><strong>Mehr Glue-Tools</strong>
-    <p class="note" style="margin:.4rem 0 .8rem">für Automatisierungen &amp; APIs.</p>
-    <p><a class="btn" href="/encoder.html">Base64/URL</a>
-      <a class="btn ghost" href="/json-formatter.html">JSON</a>
-      <a class="btn ghost" href="/regex-tester.html">Regex</a></p></div>
+  <div class="cta"><strong>More glue tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for automations &amp; APIs.</p>
+    <p><a class="btn" href="/en/encoder.html">Base64/URL</a>
+      <a class="btn ghost" href="/en/json-formatter.html">JSON</a>
+      <a class="btn ghost" href="/en/regex-tester.html">Regex</a></p></div>
 <aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
-  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
-  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe to the free newsletter →</a>
 </aside>
 </div></main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
-  <a href="/encoder.html">Encoder</a> · <a href="/json-formatter.html">JSON</a> ·
-  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  <a href="/en/encoder.html">Encoder</a> · <a href="/en/json-formatter.html">JSON</a> ·
+  <a href="/en/ki-werkzeug.html">AI tools</a> &middot; <a href="/en/ki-tools-fuer-selbststaendige.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
 <script>
 (function(){
   var up=false;
@@ -125,8 +125,8 @@ footer a{color:var(--muted)}
     var a=[];for(var i=0;i<n;i++)a.push(uuid());uout.value=a.join("\n");
   }
   document.getElementById("gen").addEventListener("click",gen);
-  document.getElementById("upper").addEventListener("click",function(){up=!up;this.textContent=up?"Kleinschreibung":"Großschreibung";gen();});
-  document.getElementById("ucopy").addEventListener("click",function(){var b=this;try{navigator.clipboard.writeText(uout.value);b.textContent="kopiert ✓";setTimeout(function(){b.textContent="Kopieren";},1500);}catch(e){}});
+  document.getElementById("upper").addEventListener("click",function(){up=!up;this.textContent=up?"Lowercase":"Uppercase";gen();});
+  document.getElementById("ucopy").addEventListener("click",function(){var b=this;try{navigator.clipboard.writeText(uout.value);b.textContent="copied ✓";setTimeout(function(){b.textContent="Copy";},1500);}catch(e){}});
 
   var map={"ä":"ae","ö":"oe","ü":"ue","ß":"ss","á":"a","à":"a","â":"a","é":"e","è":"e","ê":"e","í":"i","ì":"i","ó":"o","ò":"o","ô":"o","ú":"u","ù":"u","ñ":"n","ç":"c"};
   function slug(s){
@@ -139,7 +139,7 @@ footer a{color:var(--muted)}
   var sin=document.getElementById("sin"),sout=document.getElementById("sout");
   function doSlug(){sout.value=slug(sin.value);}
   sin.addEventListener("input",doSlug);
-  document.getElementById("scopy").addEventListener("click",function(){var b=this;try{navigator.clipboard.writeText(sout.value);b.textContent="kopiert ✓";setTimeout(function(){b.textContent="Kopieren";},1500);}catch(e){}});
+  document.getElementById("scopy").addEventListener("click",function(){var b=this;try{navigator.clipboard.writeText(sout.value);b.textContent="copied ✓";setTimeout(function(){b.textContent="Copy";},1500);}catch(e){}});
 
   gen();doSlug();
 })();

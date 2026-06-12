@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JWT-Decoder · aban news</title>
-<meta name="description" content="Kostenloses Tool: JSON Web Token (JWT) lesbar machen — Header und Payload entschlüsseln, Ablauf-Datum prüfen. Lokal im Browser, Token verlässt den Browser nicht.">
+<title>JWT Decoder · aban news</title>
+<meta name="description" content="Free tool: make a JSON Web Token (JWT) readable — decode the header and payload, check the expiry date. Local in your browser, the token never leaves your browser.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/jwt-decoder.html">
+<link rel="canonical" href="https://abannews.com/en/jwt-decoder.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/jwt-decoder.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/jwt-decoder.html">
 <link rel="alternate" hreflang="x-default" href="https://abannews.com/jwt-decoder.html">
-<meta property="og:title" content="JWT-Decoder">
-<meta property="og:description" content="JWT lesbar machen — Header & Payload, Ablauf-Datum. Lokal im Browser, Token bleibt lokal.">
+<meta property="og:title" content="JWT Decoder">
+<meta property="og:description" content="Make a JWT readable — header & payload, expiry date. Local in your browser, the token stays local.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/jwt-decoder.html">
+<meta property="og:url" content="https://abannews.com/en/jwt-decoder.html">
 <meta property="og:image" content="https://abannews.com/og-hype.png">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"JWT-Decoder",
-"url":"https://abannews.com/jwt-decoder.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
-"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Entschlüsselt Header und Payload eines JSON Web Token (JWT) lesbar.",
+{"@context":"https://schema.org","@type":"WebApplication","name":"JWT Decoder",
+"url":"https://abannews.com/en/jwt-decoder.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Decodes the header and payload of a JSON Web Token (JWT) into readable form.",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -65,16 +65,16 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<a class="skip" href="#tool">Zum Tool</a>
-<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
-<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<a class="skip" href="#tool">Skip to the tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
 <main><div class="wrap">
   <section class="hero">
-    <h1><span class="a">JWT</span> lesbar machen</h1>
-    <p>Ein JSON Web Token (z. B. aus einem API-Header) in Header und Payload zerlegen und entschlüsseln — inklusive Ablauf- und Ausstelldatum im Klartext. Lokal im Browser, der Token wird nicht gesendet.</p>
+    <h1>Make a <span class="a">JWT</span> readable</h1>
+    <p>Split a JSON Web Token (for example from an API header) into its header and payload and decode it — including the expiry and issued dates in plain text. Local in your browser, the token is not sent anywhere.</p>
   </section>
   <section class="panel" id="tool">
-    <label for="in">JWT einfügen (drei Teile, durch Punkte getrennt)</label>
+    <label for="in">Paste a JWT (three parts, separated by dots)</label>
     <textarea id="in" spellcheck="false">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFiYW4iLCJpYXQiOjE3MDAwMDAwMDAsImV4cCI6MTcwMDAwMzYwMH0.signature</textarea>
     <div class="status" id="status">—</div>
   </section>
@@ -84,22 +84,22 @@ footer a{color:var(--muted)}
     <h2 style="margin-top:14px">Payload</h2>
     <pre id="payload"></pre>
     <div class="claims" id="claims"></div>
-    <div class="warn"><strong>Wichtig:</strong> Dieses Tool <strong>liest</strong> den Token nur — es prüft die <strong>Signatur nicht</strong>. Ein JWT ist nicht verschlüsselt, jeder kann den Inhalt lesen. Verlass dich für Echtheit/Gültigkeit immer auf die Server-Prüfung, nie auf das, was hier steht.</div>
+    <div class="warn"><strong>Important:</strong> This tool only <strong>reads</strong> the token — it does <strong>not verify the signature</strong>. A JWT is not encrypted; anyone can read its contents. For authenticity/validity always rely on the server-side check, never on what is shown here.</div>
   </section>
-  <div class="cta"><strong>Mehr Glue-Tools</strong>
-    <p class="note" style="margin:.4rem 0 .8rem">für APIs &amp; Automatisierung.</p>
-    <p><a class="btn" href="/encoder.html">Base64/URL</a>
-      <a class="btn ghost" href="/json-formatter.html">JSON</a>
-      <a class="btn ghost" href="/timestamp-konverter.html">Timestamp</a></p></div>
+  <div class="cta"><strong>More glue tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for APIs &amp; automation.</p>
+    <p><a class="btn" href="/en/encoder.html">Base64/URL</a>
+      <a class="btn ghost" href="/en/json-formatter.html">JSON</a>
+      <a class="btn ghost" href="/en/timestamp-konverter.html">Timestamp</a></p></div>
 <aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
-  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
-  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe to the free newsletter →</a>
 </aside>
 </div></main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
-  <a href="/encoder.html">Encoder</a> · <a href="/json-formatter.html">JSON</a> ·
-  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  <a href="/en/encoder.html">Encoder</a> · <a href="/en/json-formatter.html">JSON</a> ·
+  <a href="/en/ki-werkzeug.html">AI tools</a> &middot; <a href="/en/online-tools.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
 <script>
 (function(){
   var inp=document.getElementById("in"),status=document.getElementById("status"),
@@ -119,23 +119,23 @@ footer a{color:var(--muted)}
     var raw=inp.value.trim();
     if(!raw){status.className="status";status.textContent="—";hp.hidden=true;return;}
     var parts=raw.split(".");
-    if(parts.length<2){status.className="status bad";status.textContent="✗ Kein gültiges JWT (erwarte Teile mit Punkten getrennt).";hp.hidden=true;return;}
+    if(parts.length<2){status.className="status bad";status.textContent="✗ Not a valid JWT (expecting parts separated by dots).";hp.hidden=true;return;}
     try{
       var h=pretty(b64urlDecode(parts[0]));
       var pStr=b64urlDecode(parts[1]);var p=pretty(pStr);var po=JSON.parse(pStr);
       hEl.textContent=h;pEl.textContent=p;
       var c="";
-      if(po.iat)c+=row("Ausgestellt (iat)",ts(po.iat));
-      if(po.nbf)c+=row("Gültig ab (nbf)",ts(po.nbf));
+      if(po.iat)c+=row("Issued at (iat)",ts(po.iat));
+      if(po.nbf)c+=row("Valid from (nbf)",ts(po.nbf));
       if(po.exp){
         var expired=po.exp*1000<Date.now();
-        c+=row("Läuft ab (exp)",ts(po.exp)+(expired?'  <strong style="color:var(--bad)">— abgelaufen</strong>':'  <strong style="color:var(--ok)">— noch gültig</strong>'));
+        c+=row("Expires (exp)",ts(po.exp)+(expired?'  <strong style="color:var(--bad)">— expired</strong>':'  <strong style="color:var(--ok)">— still valid</strong>'));
       }
       claims.innerHTML=c;
       hp.hidden=false;
-      status.className="status ok";status.textContent="✓ dekodiert"+(parts.length===3?" (3 Teile)":" ("+parts.length+" Teile)");
+      status.className="status ok";status.textContent="✓ decoded"+(parts.length===3?" (3 parts)":" ("+parts.length+" parts)");
     }catch(e){
-      status.className="status bad";status.textContent="✗ Konnte nicht dekodieren: "+(e.message||e);hp.hidden=true;
+      status.className="status bad";status.textContent="✗ Could not decode: "+(e.message||e);hp.hidden=true;
     }
   }
   inp.addEventListener("input",run);

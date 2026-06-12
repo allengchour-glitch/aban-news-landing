@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Farb-Kontrast-Checker (WCAG) · aban news</title>
-<meta name="description" content="Kostenloses Tool: Farb-Kontrast zweier Farben nach WCAG prüfen (AA/AAA). Für lesbare, barrierefreie Websites. Lokal im Browser, ohne Login.">
+<title>Colour contrast checker (WCAG) · aban news</title>
+<meta name="description" content="Free tool: check the colour contrast of two colours against WCAG (AA/AAA). For readable, accessible websites. Local in your browser, no login.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/kontrast-checker.html">
+<link rel="canonical" href="https://abannews.com/en/kontrast-checker.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/kontrast-checker.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/kontrast-checker.html">
 <link rel="alternate" hreflang="x-default" href="https://abannews.com/kontrast-checker.html">
-<meta property="og:title" content="Farb-Kontrast-Checker (WCAG)">
-<meta property="og:description" content="Kontrast zweier Farben nach WCAG prüfen (AA/AAA). Für barrierefreie Websites. Lokal im Browser.">
+<meta property="og:title" content="Colour contrast checker (WCAG)">
+<meta property="og:description" content="Check the contrast of two colours against WCAG (AA/AAA). For accessible websites. Local in your browser.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/kontrast-checker.html">
+<meta property="og:url" content="https://abannews.com/en/kontrast-checker.html">
 <meta property="og:image" content="https://abannews.com/og-hype.png">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Farb-Kontrast-Checker (WCAG)",
-"url":"https://abannews.com/kontrast-checker.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
-"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Prüft den Farb-Kontrast zweier Farben nach WCAG (AA/AAA).",
+{"@context":"https://schema.org","@type":"WebApplication","name":"Colour contrast checker (WCAG)",
+"url":"https://abannews.com/en/kontrast-checker.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Checks the colour contrast of two colours against WCAG (AA/AAA).",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -69,43 +69,43 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<a class="skip" href="#tool">Zum Tool</a>
-<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
-<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<a class="skip" href="#tool">Skip to the tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
 <main><div class="wrap">
   <section class="hero">
-    <h1><span class="a">Farb-Kontrast</span> prüfen</h1>
-    <p>Schreibt sich Text auf einer Hintergrundfarbe gut lesbar? Prüf das Verhältnis nach WCAG — die Norm für barrierefreie Websites. Lokal im Browser, nichts wird gesendet.</p>
+    <h1>Check <span class="a">colour contrast</span></h1>
+    <p>Is your text readable on a background colour? Check the ratio against WCAG — the standard for accessible websites. Local in your browser, nothing is sent.</p>
   </section>
   <section class="panel" id="tool">
     <div class="inputs">
-      <div class="fld"><label for="fgt">Textfarbe</label>
+      <div class="fld"><label for="fgt">Text colour</label>
         <div class="pick"><input type="color" id="fg" value="#1f2937"><input type="text" id="fgt" value="#1f2937" spellcheck="false"></div></div>
-      <div class="fld"><label for="bgt">Hintergrund</label>
+      <div class="fld"><label for="bgt">Background</label>
         <div class="pick"><input type="color" id="bg" value="#fffbf5"><input type="text" id="bgt" value="#fffbf5" spellcheck="false"></div></div>
     </div>
     <div class="preview" id="prev">
-      <div class="big">Großer Text (Überschrift)</div>
-      <div class="small">Normaler Fließtext — so liest sich dein Inhalt in dieser Kombination.</div>
+      <div class="big">Large text (heading)</div>
+      <div class="small">Normal body text — this is how your content reads in this combination.</div>
     </div>
-    <div class="score"><span class="ratio" id="ratio">—</span><span class="note" style="margin:0">Kontrast-Verhältnis</span></div>
+    <div class="score"><span class="ratio" id="ratio">—</span><span class="note" style="margin:0">Contrast ratio</span></div>
     <div class="badges" id="badges"></div>
-    <p class="note">WCAG-Schwellen: <strong>AA</strong> = 4,5:1 (normaler Text) bzw. 3:1 (groß ≥ 24px / 19px&nbsp;fett). <strong>AAA</strong> = 7:1 bzw. 4,5:1. Hex-Felder akzeptieren <code>#abc</code> und <code>#aabbcc</code>. Alles lokal, kein Upload.</p>
+    <p class="note">WCAG thresholds: <strong>AA</strong> = 4.5:1 (normal text) or 3:1 (large ≥ 24px / 19px&nbsp;bold). <strong>AAA</strong> = 7:1 or 4.5:1. Hex fields accept <code>#abc</code> and <code>#aabbcc</code>. Everything local, no upload.</p>
   </section>
-  <div class="cta"><strong>Mehr Tools</strong>
-    <p class="note" style="margin:.4rem 0 .8rem">für saubere Websites &amp; Automatisierungen.</p>
-    <p><a class="btn" href="/ai-sichtbarkeit.html">AI-Sichtbarkeit</a>
-      <a class="btn ghost" href="/json-formatter.html">JSON</a>
-      <a class="btn ghost" href="/regex-tester.html">Regex</a></p></div>
+  <div class="cta"><strong>More tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for clean websites &amp; automation.</p>
+    <p><a class="btn" href="/ai-sichtbarkeit.html">AI visibility</a>
+      <a class="btn ghost" href="/en/json-formatter.html">JSON</a>
+      <a class="btn ghost" href="/en/regex-tester.html">Regex</a></p></div>
 <aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
-  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
-  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe to the free newsletter →</a>
 </aside>
 </div></main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
-  <a href="/encoder.html">Encoder</a> · <a href="/zeichenzaehler.html">Zeichenzähler</a> ·
-  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  <a href="/en/encoder.html">Encoder</a> · <a href="/en/zeichenzaehler.html">Character counter</a> ·
+  <a href="/en/ki-werkzeug.html">AI tools</a> &middot; <a href="/en/online-tools.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
 <script>
 (function(){
   var fg=document.getElementById("fg"),bg=document.getElementById("bg"),
@@ -125,15 +125,15 @@ footer a{color:var(--muted)}
   function badge(label,ok){return '<span class="badge '+(ok?"pass":"fail")+'">'+label+" "+(ok?"✓":"✗")+"</span>";}
   function run(){
     var c1=parse(fgt.value),c2=parse(bgt.value);
-    if(!c1||!c2){ratioEl.textContent="—";badges.innerHTML='<span class="note" style="margin:0">Bitte gültige Hex-Farben eingeben.</span>';return;}
+    if(!c1||!c2){ratioEl.textContent="—";badges.innerHTML='<span class="note" style="margin:0">Please enter valid hex colours.</span>';return;}
     var r=ratio(c1,c2);
     prev.style.color=fgt.value;prev.style.background=bgt.value;
     ratioEl.textContent=r.toFixed(2)+":1";
     badges.innerHTML=
-      badge("AA normal (4,5)",r>=4.5)+
-      badge("AA groß (3,0)",r>=3)+
-      badge("AAA normal (7,0)",r>=7)+
-      badge("AAA groß (4,5)",r>=4.5);
+      badge("AA normal (4.5)",r>=4.5)+
+      badge("AA large (3.0)",r>=3)+
+      badge("AAA normal (7.0)",r>=7)+
+      badge("AAA large (4.5)",r>=4.5);
   }
   function sync(src,dst){return function(){dst.value=src.value;run();};}
   fg.addEventListener("input",sync(fg,fgt));

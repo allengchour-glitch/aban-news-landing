@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Passwort-Generator (sicher) · aban news</title>
-<meta name="description" content="Kostenloses Tool: starke Passwörter im Browser erzeugen — einstellbare Länge und Zeichen, kryptografischer Zufall. Nichts wird gesendet oder gespeichert.">
+<title>Password generator (secure) · aban news</title>
+<meta name="description" content="Free tool: generate strong passwords in your browser — adjustable length and characters, cryptographic randomness. Nothing is sent or stored.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/passwort-generator.html">
+<link rel="canonical" href="https://abannews.com/en/passwort-generator.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/passwort-generator.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/passwort-generator.html">
 <link rel="alternate" hreflang="x-default" href="https://abannews.com/passwort-generator.html">
-<meta property="og:title" content="Passwort-Generator (sicher)">
-<meta property="og:description" content="Starke Passwörter erzeugen — einstellbar, kryptografischer Zufall. Lokal im Browser, nichts wird gesendet.">
+<meta property="og:title" content="Password generator (secure)">
+<meta property="og:description" content="Generate strong passwords — adjustable, cryptographic randomness. Local in your browser, nothing is sent.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/passwort-generator.html">
+<meta property="og:url" content="https://abannews.com/en/passwort-generator.html">
 <meta property="og:image" content="https://abannews.com/og-hype.png">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Passwort-Generator (sicher)",
-"url":"https://abannews.com/passwort-generator.html","applicationCategory":"SecurityApplication","operatingSystem":"Web",
-"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Erzeugt starke Passwörter mit kryptografischem Zufall, einstellbar in Länge und Zeichen.",
+{"@context":"https://schema.org","@type":"WebApplication","name":"Password generator (secure)",
+"url":"https://abannews.com/en/passwort-generator.html","applicationCategory":"SecurityApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Generates strong passwords with cryptographic randomness, adjustable in length and characters.",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -65,50 +65,50 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<a class="skip" href="#tool">Zum Tool</a>
-<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
-<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<a class="skip" href="#tool">Skip to the tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
 <main><div class="wrap">
   <section class="hero">
-    <h1><span class="a">Starkes Passwort</span> erzeugen</h1>
-    <p>Lange Zufallspasswörter mit kryptografischem Zufall — Länge und Zeichensatz frei wählbar. Lokal im Browser, nichts wird gesendet oder gespeichert.</p>
+    <h1>Generate a <span class="a">strong password</span></h1>
+    <p>Long random passwords with cryptographic randomness — length and character set freely selectable. Local in your browser, nothing is sent or stored.</p>
   </section>
   <section class="panel" id="tool">
     <div class="out">
-      <input type="text" id="pw" readonly aria-label="Erzeugtes Passwort">
-      <button class="btn" id="gen">Neu</button>
-      <button class="btn ghost" id="copy">Kopieren</button>
+      <input type="text" id="pw" readonly aria-label="Generated password">
+      <button class="btn" id="gen">New</button>
+      <button class="btn ghost" id="copy">Copy</button>
     </div>
     <div class="strength"><i id="sbar"></i></div>
     <div class="smeta"><span id="slabel">—</span><span id="sentropy"></span></div>
     <div class="opts">
-      <div class="opt"><label for="len">Länge</label>
+      <div class="opt"><label for="len">Length</label>
         <input type="range" id="len" min="6" max="64" value="20"><span class="lenval" id="lenv">20</span></div>
       <div class="opt">
-        <label class="cb"><input type="checkbox" id="lower" checked> Kleinbuchstaben</label>
-        <label class="cb"><input type="checkbox" id="upper" checked> Großbuchstaben</label>
-        <label class="cb"><input type="checkbox" id="num" checked> Ziffern</label>
-        <label class="cb"><input type="checkbox" id="sym" checked> Sonderzeichen</label>
-        <label class="cb"><input type="checkbox" id="amb"> Verwechsel-Zeichen meiden (0/O, 1/l…)</label>
+        <label class="cb"><input type="checkbox" id="lower" checked> Lowercase</label>
+        <label class="cb"><input type="checkbox" id="upper" checked> Uppercase</label>
+        <label class="cb"><input type="checkbox" id="num" checked> Digits</label>
+        <label class="cb"><input type="checkbox" id="sym" checked> Symbols</label>
+        <label class="cb"><input type="checkbox" id="amb"> Avoid ambiguous characters (0/O, 1/l…)</label>
       </div>
     </div>
-    <div class="warn"><strong>Hinweis:</strong> Das Passwort entsteht nur in deinem Browser, wird nicht gespeichert und verschwindet beim Neuladen. Für viele Passwörter besser einen echten Passwort-Manager nutzen.</div>
-    <p class="note">Zeichen werden mit <code>crypto.getRandomValues</code> und Ablehnungs-Sampling gezogen (keine Verzerrung). Die Stärke ist die geschätzte Entropie in Bit (Zeichenraum × Länge) — eine grobe Orientierung, keine Garantie.</p>
+    <div class="warn"><strong>Note:</strong> The password is created only in your browser, is not stored and disappears on reload. For many passwords, a real password manager is the better choice.</div>
+    <p class="note">Characters are drawn with <code>crypto.getRandomValues</code> and rejection sampling (no bias). The strength is the estimated entropy in bits (character space × length) — a rough guide, not a guarantee.</p>
   </section>
-  <div class="cta"><strong>Mehr Tools</strong>
-    <p class="note" style="margin:.4rem 0 .8rem">für Sicherheit &amp; Automatisierung.</p>
-    <p><a class="btn" href="/hash-generator.html">Hash</a>
-      <a class="btn ghost" href="/uuid-generator.html">UUID/Slug</a>
-      <a class="btn ghost" href="/encoder.html">Base64/URL</a></p></div>
+  <div class="cta"><strong>More tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for security &amp; automation.</p>
+    <p><a class="btn" href="/en/hash-generator.html">Hash</a>
+      <a class="btn ghost" href="/en/uuid-generator.html">UUID/Slug</a>
+      <a class="btn ghost" href="/en/encoder.html">Base64/URL</a></p></div>
 <aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
-  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
-  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe to the free newsletter →</a>
 </aside>
 </div></main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
-  <a href="/hash-generator.html">Hash</a> · <a href="/encoder.html">Encoder</a> ·
-  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  <a href="/en/hash-generator.html">Hash</a> · <a href="/en/encoder.html">Encoder</a> ·
+  <a href="/en/ki-werkzeug.html">AI tools</a> &middot; <a href="/en/ki-tools-fuer-selbststaendige.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
 <script>
 (function(){
   var L="abcdefghijklmnopqrstuvwxyz",U="ABCDEFGHIJKLMNOPQRSTUVWXYZ",N="0123456789",S="!@#$%^&*()-_=+[]{};:,.?/";
@@ -142,18 +142,18 @@ footer a{color:var(--muted)}
     var pct=Math.min(100,Math.round(bits/128*100));
     bar.style.width=pct+"%";
     var col,txt;
-    if(bits<50){col="#a01616";txt="schwach";}
+    if(bits<50){col="#a01616";txt="weak";}
     else if(bits<80){col="#d97706";txt="ok";}
-    else if(bits<110){col="#059669";txt="stark";}
-    else{col="#047857";txt="sehr stark";}
+    else if(bits<110){col="#059669";txt="strong";}
+    else{col="#047857";txt="very strong";}
     bar.style.background=col;
-    lab.textContent=bits?("Stärke: "+txt):"Kein Zeichensatz gewählt";
-    ent.textContent=bits?("~"+bits+" Bit Entropie"):"";
+    lab.textContent=bits?("Strength: "+txt):"No character set selected";
+    ent.textContent=bits?("~"+bits+" bits entropy"):"";
   }
   document.getElementById("gen").addEventListener("click",gen);
   len.addEventListener("input",function(){lenv.textContent=len.value;gen();});
   ["lower","upper","num","sym","amb"].forEach(function(id){document.getElementById(id).addEventListener("change",gen);});
-  document.getElementById("copy").addEventListener("click",function(){var b=this;if(!pw.value)return;try{navigator.clipboard.writeText(pw.value);b.textContent="kopiert ✓";setTimeout(function(){b.textContent="Kopieren";},1500);}catch(e){}});
+  document.getElementById("copy").addEventListener("click",function(){var b=this;if(!pw.value)return;try{navigator.clipboard.writeText(pw.value);b.textContent="copied ✓";setTimeout(function(){b.textContent="Copy";},1500);}catch(e){}});
   gen();
 })();
 </script>

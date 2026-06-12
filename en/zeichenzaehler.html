@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zeichen- & Wortzähler · aban news</title>
-<meta name="description" content="Kostenloses Tool: Zeichen, Wörter, Sätze und Lesezeit zählen — mit Limits für Tweet, Meta-Description, Title-Tag & Co. Lokal im Browser, ohne Login.">
+<title>Character &amp; word counter · aban news</title>
+<meta name="description" content="Free tool: count characters, words, sentences and reading time — with limits for tweets, meta description, title tag & more. Local in your browser, no login.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/zeichenzaehler.html">
+<link rel="canonical" href="https://abannews.com/en/zeichenzaehler.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/zeichenzaehler.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/zeichenzaehler.html">
 <link rel="alternate" hreflang="x-default" href="https://abannews.com/zeichenzaehler.html">
-<meta property="og:title" content="Zeichen- & Wortzähler">
-<meta property="og:description" content="Zeichen, Wörter, Lesezeit zählen — mit Social-/SEO-Limits. Lokal im Browser, ohne Login.">
+<meta property="og:title" content="Character & word counter">
+<meta property="og:description" content="Count characters, words, reading time — with social/SEO limits. Local in your browser, no login.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/zeichenzaehler.html">
+<meta property="og:url" content="https://abannews.com/en/zeichenzaehler.html">
 <meta property="og:image" content="https://abannews.com/og-hype.png">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Zeichen- & Wortzähler",
-"url":"https://abannews.com/zeichenzaehler.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
-"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Zählt Zeichen, Wörter, Sätze und Lesezeit und prüft Social-/SEO-Limits.",
+{"@context":"https://schema.org","@type":"WebApplication","name":"Character & word counter",
+"url":"https://abannews.com/en/zeichenzaehler.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Counts characters, words, sentences and reading time and checks social/SEO limits.",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -66,48 +66,48 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<a class="skip" href="#tool">Zum Tool</a>
-<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
-<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<a class="skip" href="#tool">Skip to the tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
 <main><div class="wrap">
   <section class="hero">
-    <h1><span class="a">Zeichen &amp; Wörter</span> zählen</h1>
-    <p>Live zählen: Zeichen, Wörter, Sätze, Absätze und Lesezeit — plus ob dein Text in die typischen Limits für Social Posts, Title-Tag und Meta-Description passt. Lokal im Browser, nichts wird gesendet.</p>
+    <h1>Count <span class="a">characters &amp; words</span></h1>
+    <p>Count live: characters, words, sentences, paragraphs and reading time — plus whether your text fits the typical limits for social posts, title tag and meta description. Local in your browser, nothing is sent.</p>
   </section>
   <section class="panel" id="tool">
-    <label for="in">Dein Text</label>
-    <textarea id="in" spellcheck="false" placeholder="Hier reinschreiben oder einfügen …">Kurz, klar, ohne Hype. So schreibt aban.</textarea>
+    <label for="in">Your text</label>
+    <textarea id="in" spellcheck="false" placeholder="Type or paste here …">Short, clear, no hype. That's how aban writes.</textarea>
     <div class="stats">
-      <div class="stat"><b id="chars">0</b><span>Zeichen</span></div>
-      <div class="stat"><b id="charsNs">0</b><span>ohne Leerz.</span></div>
-      <div class="stat"><b id="words">0</b><span>Wörter</span></div>
-      <div class="stat"><b id="sentences">0</b><span>Sätze</span></div>
-      <div class="stat"><b id="paras">0</b><span>Absätze</span></div>
-      <div class="stat"><b id="read">0 s</b><span>Lesezeit</span></div>
+      <div class="stat"><b id="chars">0</b><span>Characters</span></div>
+      <div class="stat"><b id="charsNs">0</b><span>without spaces</span></div>
+      <div class="stat"><b id="words">0</b><span>Words</span></div>
+      <div class="stat"><b id="sentences">0</b><span>Sentences</span></div>
+      <div class="stat"><b id="paras">0</b><span>Paragraphs</span></div>
+      <div class="stat"><b id="read">0 s</b><span>Reading time</span></div>
     </div>
     <div class="limits" id="limits"></div>
-    <p class="note">Lesezeit grob mit 200 Wörtern/Minute. „Sätze" zählt nach <code>. ! ?</code>. Die Limits sind gängige Richtwerte (können sich bei den Plattformen ändern) — keine Garantie. Alles lokal, kein Upload.</p>
+    <p class="note">Reading time roughly at 200 words/minute. "Sentences" counts by <code>. ! ?</code>. The limits are common guideline values (they can change on the platforms) — no guarantee. Everything local, no upload.</p>
   </section>
-  <div class="cta"><strong>Mehr Tools</strong>
-    <p class="note" style="margin:.4rem 0 .8rem">fürs Texten &amp; Veröffentlichen.</p>
-    <p><a class="btn" href="/hype-filter.html">Hype-Filter</a>
-      <a class="btn ghost" href="/kontrast-checker.html">Kontrast</a>
-      <a class="btn ghost" href="/diff-tool.html">Diff</a></p></div>
+  <div class="cta"><strong>More tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for writing &amp; publishing.</p>
+    <p><a class="btn" href="/hype-filter.html">Hype filter</a>
+      <a class="btn ghost" href="/en/kontrast-checker.html">Contrast</a>
+      <a class="btn ghost" href="/en/diff-tool.html">Diff</a></p></div>
 <aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
-  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
-  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe to the free newsletter →</a>
 </aside>
 </div></main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
-  <a href="/hype-filter.html">Hype-Filter</a> · <a href="/diff-tool.html">Diff</a> ·
-  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  <a href="/hype-filter.html">Hype filter</a> · <a href="/en/diff-tool.html">Diff</a> ·
+  <a href="/en/ki-werkzeug.html">AI tools</a> &middot; <a href="/en/online-tools.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
 <script>
 (function(){
   var inp=document.getElementById("in");
   var LIMITS=[
-    ["Tweet / X",280],["Meta-Description",160],["Title-Tag (SEO)",60],
-    ["LinkedIn-Post",3000],["Instagram-Caption",2200],["SMS",160]
+    ["Tweet / X",280],["Meta description",160],["Title tag (SEO)",60],
+    ["LinkedIn post",3000],["Instagram caption",2200],["SMS",160]
   ];
   function set(id,v){document.getElementById(id).textContent=v;}
   function run(){
