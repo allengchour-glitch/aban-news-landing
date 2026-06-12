@@ -279,3 +279,12 @@
 /anonymisieren    /text-anonymisieren.html 301
 /text-anonym      /text-anonymisieren.html 301
 /daten-schwaerzen /text-anonymisieren.html 301
+
+/token-rechner    /ki-token-rechner.html 301
+/ki-token         /ki-token-rechner.html 301
+/hashtags         /hashtag-helfer.html 301
+/hashtag          /hashtag-helfer.html 301
+/betreff          /betreffzeilen-check.html 301
+/betreffzeile     /betreffzeilen-check.html 301
+/lesbarkeit       /lesbarkeits-check.html 301
+/lesbar           /lesbarkeits-check.html 301
