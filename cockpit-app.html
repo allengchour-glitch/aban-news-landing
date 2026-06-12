@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>aban Business-Cockpit — Rechnung, Mahnung &amp; Finanz-Rechner in einer App</title>
-<meta name="description" content="Das aban Business-Cockpit: Rechnungen schreiben, Mahnungen, MwSt-/Skonto-/Verzugszinsen-/Fälligkeits-Rechner und ein E-Mail-Generator — alles in einer offline-fähigen App. Stammdaten lokal gespeichert, kein Login, kein Server.">
+<title>aban Business-Cockpit — Rechnung, Angebot, Kunden, Zeit &amp; Rechner in einer App</title>
+<meta name="description" content="Die All-in-one Büro-App für Selbstständige: Rechnungen & Angebote schreiben, Kundenverwaltung, Zeiterfassung, Mahnungen, 7 Finanz-Rechner und ein E-Mail-Generator. Offline, lokal, kein Login.">
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -16,82 +16,68 @@
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
 .wrap{max-width:1000px;margin:0 auto;padding:0 18px}
-a{color:var(--amber-dk)}
-button{font-family:inherit}
+a{color:var(--amber-dk)}button{font-family:inherit}
 :focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
 header.app{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-header.app .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;flex-wrap:wrap}
+header.app .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 18px;flex-wrap:wrap}
 .brand{font-weight:800;color:var(--amber);text-decoration:none;font-size:1.05rem;white-space:nowrap}
 .brand small{color:var(--muted);font-weight:600}
-.tabs{display:flex;gap:6px;flex-wrap:wrap}
-.tabs button{background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 15px;cursor:pointer;font-weight:700;color:var(--ink2);font-size:.9rem}
+.tabs{display:flex;gap:5px;flex-wrap:wrap}
+.tabs button{background:transparent;border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer;font-weight:700;color:var(--ink2);font-size:.85rem}
 .tabs button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
-main{padding:22px 0 60px}
-.view{display:none}
-.view.on{display:block;animation:fade .2s ease}
+main{padding:20px 0 70px}
+.view{display:none}.view.on{display:block;animation:fade .2s ease}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-h1{font-size:1.4rem;margin-bottom:4px}
-.sub{color:var(--muted);font-size:.9rem;margin-bottom:16px}
+h1{font-size:1.35rem;margin-bottom:4px}
+.sub{color:var(--muted);font-size:.88rem;margin-bottom:16px}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}
-.panel h2{font-size:1.05rem;margin-bottom:12px}
-label{display:block;font-weight:600;font-size:12.5px;margin:0 0 5px;color:var(--ink2)}
+.panel h2{font-size:1.02rem;margin-bottom:12px}
+label{display:block;font-weight:600;font-size:12px;margin:0 0 5px;color:var(--ink2)}
 input,select,textarea{width:100%;font-size:14.5px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);font-family:inherit}
 input:focus,select:focus,textarea:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
-.row{display:flex;gap:12px;flex-wrap:wrap}
-.row>.fld{flex:1;min-width:150px}
-.fld{margin-bottom:12px}
-.btn{display:inline-flex;align-items:center;gap:6px;background:var(--amber-dk);color:#fff;border:0;border-radius:9px;padding:10px 16px;font-weight:700;font-size:.92rem;cursor:pointer;text-decoration:none}
+.row{display:flex;gap:12px;flex-wrap:wrap}.row>.fld{flex:1;min-width:140px}.fld{margin-bottom:12px}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--amber-dk);color:#fff;border:0;border-radius:9px;padding:10px 16px;font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:none}
 .btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
-.btn.sm{padding:7px 12px;font-size:.85rem}
+.btn.sm{padding:7px 12px;font-size:.84rem}
 .btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 table.items{width:100%;border-collapse:collapse;margin:6px 0}
-table.items th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);padding:6px 6px}
-table.items td{padding:4px 6px;vertical-align:top}
-table.items input{padding:7px 8px}
+table.items th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);padding:6px 6px}
+table.items td{padding:4px 6px;vertical-align:top}table.items input{padding:7px 8px}
 .items .num{text-align:right}
 .delrow{background:transparent;border:0;color:var(--bad);cursor:pointer;font-size:1.1rem;font-weight:800;line-height:1}
-.totbox{margin-top:12px;display:grid;grid-template-columns:1fr auto;gap:4px 18px;max-width:340px;margin-left:auto;font-size:.95rem}
-.totbox .g{font-weight:800;font-size:1.15rem;color:var(--amber-dk);border-top:1px solid var(--line);padding-top:6px;margin-top:4px}
-.out{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
-.box{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:11px;text-align:center}
-.box b{display:block;font-size:19px;font-weight:800;color:var(--amber-dk)}
-.box span{font-size:.76rem;color:var(--muted)}
-.box.big{grid-column:1/-1;background:var(--cream);border-color:var(--amber-lt)}
-.box.big b{font-size:26px}
-.note{font-size:.82rem;color:var(--muted);margin-top:8px}
+.totbox{margin-top:12px;display:grid;grid-template-columns:1fr auto;gap:4px 18px;max-width:340px;margin-left:auto;font-size:.93rem}
+.totbox .g{font-weight:800;font-size:1.12rem;color:var(--amber-dk);border-top:1px solid var(--line);padding-top:6px;margin-top:4px}
+.out{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:9px}
+.box{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
+.box b{display:block;font-size:18px;font-weight:800;color:var(--amber-dk)}.box span{font-size:.74rem;color:var(--muted)}
+.box.big{grid-column:1/-1;background:var(--cream);border-color:var(--amber-lt)}.box.big b{font-size:24px}
+.box.ok b{color:var(--ok)}.box.bad b{color:var(--bad)}
+.note{font-size:.8rem;color:var(--muted);margin-top:8px}
 .mini{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
-.mini h3{font-size:.98rem;margin-bottom:10px;color:var(--ink)}
-.seg{display:inline-flex;border:1px solid var(--amber-lt);border-radius:9px;overflow:hidden;margin-top:2px}
-.seg button{background:transparent;border:0;padding:8px 12px;cursor:pointer;font-weight:600;color:var(--amber-dk);font-size:.85rem}
+.mini h3{font-size:.96rem;margin-bottom:10px}
+.seg{display:inline-flex;border:1px solid var(--amber-lt);border-radius:9px;overflow:hidden;margin-top:2px;flex-wrap:wrap}
+.seg button{background:transparent;border:0;padding:8px 12px;cursor:pointer;font-weight:600;color:var(--amber-dk);font-size:.84rem}
 .seg button.on{background:var(--amber-dk);color:#fff}
-.mail{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:13px;white-space:pre-wrap;font-size:14px;min-height:200px;line-height:1.6;margin-top:10px}
-.subj{background:var(--cream);border:1px solid var(--amber-lt);border-radius:9px;padding:8px 11px;font-size:13.5px;margin-top:10px}
-.subj b{color:var(--amber-dk)}
-.savedlist{display:flex;flex-direction:column;gap:6px;margin-top:8px}
-.saved{display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:9px;padding:8px 11px;font-size:.88rem}
+.mail{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:13px;white-space:pre-wrap;font-size:14px;min-height:190px;line-height:1.6;margin-top:10px}
+.subj{background:var(--cream);border:1px solid var(--amber-lt);border-radius:9px;padding:8px 11px;font-size:13.5px;margin-top:10px}.subj b{color:var(--amber-dk)}
+.list{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.li{display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:9px;padding:8px 11px;font-size:.86rem}
+.li .x{display:flex;gap:6px}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:11px 18px;border-radius:10px;font-weight:600;font-size:.9rem;opacity:0;pointer-events:none;transition:.25s;z-index:50}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.pill{display:inline-block;background:var(--cream);border:1px solid var(--amber-lt);color:var(--amber-dk);font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:999px;margin-left:6px}
-footer{border-top:1px solid var(--line);padding:18px 0;font-size:.8rem;color:var(--muted);text-align:center}
-
-/* Druck: nur die Rechnung */
-@media print{
-  header.app,.tabs,.noprint,footer,.btnrow,.savedlist{display:none!important}
-  body{background:#fff;color:#000}
-  .view{display:none!important}
-  #print-invoice{display:block!important}
-}
-#print-invoice{display:none}
-@media print{
-  #print-invoice{display:block;font-size:13px;color:#000}
-  #print-invoice .pi-head{display:flex;justify-content:space-between;margin-bottom:30px}
-  #print-invoice h2{font-size:22px;margin:18px 0 6px}
-  #print-invoice table{width:100%;border-collapse:collapse;margin:14px 0}
-  #print-invoice th,#print-invoice td{padding:7px 6px;border-bottom:1px solid #ccc;text-align:left}
-  #print-invoice td.n,#print-invoice th.n{text-align:right}
-  #print-invoice .pi-tot{margin-top:14px;float:right;text-align:right}
-  #print-invoice .pi-foot{clear:both;margin-top:50px;font-size:11px;color:#444;border-top:1px solid #ccc;padding-top:8px}
-}
+.pill{display:inline-block;background:var(--cream);border:1px solid var(--amber-lt);color:var(--amber-dk);font-size:.7rem;font-weight:700;padding:2px 9px;border-radius:999px;margin-left:6px}
+.clock{font-size:2.1rem;font-weight:800;color:var(--amber-dk);text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:var(--muted);text-align:center}
+@media print{header.app,.tabs,.noprint,footer,.btnrow,.list{display:none!important}body{background:#fff;color:#000}.view{display:none!important}#print-doc{display:block!important}}
+#print-doc{display:none}
+@media print{#print-doc{display:block;font-size:13px;color:#000}
+  #print-doc .pi-head{display:flex;justify-content:space-between;margin-bottom:28px}
+  #print-doc h2{font-size:22px;margin:16px 0 6px}
+  #print-doc table{width:100%;border-collapse:collapse;margin:14px 0}
+  #print-doc th,#print-doc td{padding:7px 6px;border-bottom:1px solid #ccc;text-align:left}
+  #print-doc td.n,#print-doc th.n{text-align:right}
+  #print-doc .pi-tot{margin-top:14px;float:right;text-align:right}
+  #print-doc .pi-foot{clear:both;margin-top:46px;font-size:11px;color:#444;border-top:1px solid #ccc;padding-top:8px}}
 </style>
 </head>
 <body>
@@ -99,167 +85,250 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.8rem;color:var
   <a href="/business-cockpit.html" class="brand">aban Business-Cockpit <small>Pro</small></a>
   <nav class="tabs" id="tabs">
     <button data-v="rechnung" class="on">🧾 Rechnung</button>
+    <button data-v="angebot">📄 Angebot</button>
+    <button data-v="kunden">👥 Kunden</button>
+    <button data-v="zeit">⏱️ Zeit</button>
     <button data-v="rechner">🔢 Rechner</button>
+    <button data-v="trading">📈 Trading</button>
     <button data-v="mahnung">⏰ Mahnung &amp; E-Mail</button>
     <button data-v="stamm">⚙️ Stammdaten</button>
   </nav>
 </div></header>
-
 <main class="wrap">
 
-  <!-- ============ RECHNUNG ============ -->
+  <!-- RECHNUNG -->
   <section class="view on" id="v-rechnung">
     <h1>Rechnung erstellen <span class="pill">PDF / Druck</span></h1>
-    <p class="sub">Positionen eingeben → Summen rechnen automatisch → „Drucken / PDF". Deine Stammdaten füllen Absender &amp; Bankdaten automatisch.</p>
+    <p class="sub">Positionen eintragen → Summen automatisch → „Drucken / PDF". Kunde aus dem Adressbuch wählen oder frei eintippen.</p>
     <div class="panel">
       <div class="row">
         <div class="fld"><label>Rechnungs-Nr.</label><input id="r_nr" placeholder="2026-001"></div>
-        <div class="fld"><label>Rechnungsdatum</label><input id="r_datum" type="date"></div>
-        <div class="fld"><label>Leistungsdatum / -zeitraum</label><input id="r_leistung" placeholder="z. B. Juni 2026"></div>
+        <div class="fld"><label>Datum</label><input id="r_datum" type="date"></div>
+        <div class="fld"><label>Leistungszeitraum</label><input id="r_leistung" placeholder="z. B. Juni 2026"></div>
       </div>
-      <div class="fld"><label>Kunde (Name &amp; Anschrift)</label><textarea id="r_kunde" rows="3" placeholder="Mustermann GmbH&#10;Musterstraße 1&#10;8000 Zürich"></textarea></div>
-      <table class="items" id="r_items"><thead><tr><th style="width:48%">Beschreibung</th><th class="num" style="width:13%">Menge</th><th class="num" style="width:20%">Einzelpreis</th><th class="num" style="width:15%">Summe</th><th></th></tr></thead><tbody></tbody></table>
+      <div class="row">
+        <div class="fld"><label>Kunde aus Adressbuch</label><select id="r_pick"><option value="">— frei eingeben —</option></select></div>
+      </div>
+      <div class="fld"><label>Kunde (Name &amp; Anschrift)</label><textarea id="r_kunde" rows="3" placeholder="Mustermann GmbH&#10;Musterstr. 1&#10;8000 Zürich"></textarea></div>
+      <table class="items" id="r_items"><thead><tr><th style="width:46%">Beschreibung</th><th class="num" style="width:13%">Menge</th><th class="num" style="width:20%">Einzelpreis</th><th class="num" style="width:15%">Summe</th><th></th></tr></thead><tbody></tbody></table>
       <div class="btnrow"><button class="btn ghost sm" id="r_add">+ Position</button></div>
       <div class="row" style="margin-top:14px">
-        <div class="fld" style="max-width:220px"><label>MwSt-Satz</label>
-          <select id="r_vat">
-            <option value="8.1">Schweiz 8,1 %</option>
-            <option value="19" selected>Deutschland 19 %</option>
-            <option value="7">Deutschland 7 %</option>
-            <option value="20">Österreich 20 %</option>
-            <option value="10">Österreich 10 %</option>
-            <option value="0">0 % (Kleinunternehmer / steuerfrei)</option>
-          </select></div>
-        <div class="fld" style="max-width:260px"><label>Zahlungsziel (Tage)</label><input id="r_ziel" value="14" inputmode="numeric"></div>
+        <div class="fld" style="max-width:240px"><label>MwSt-Satz</label><select id="r_vat" class="vatsel"></select></div>
+        <div class="fld" style="max-width:240px"><label>Zahlungsziel (Tage)</label><input id="r_ziel" value="14" inputmode="numeric"></div>
       </div>
-      <div class="totbox">
-        <div>Netto</div><div class="num" id="r_net">0,00</div>
-        <div id="r_vatlabel">zzgl. MwSt</div><div class="num" id="r_vatval">0,00</div>
-        <div class="g">Gesamt</div><div class="num g" id="r_gross">0,00</div>
-      </div>
+      <div class="totbox"><div>Netto</div><div class="num" id="r_net">0,00</div><div id="r_vatlabel">zzgl. MwSt</div><div class="num" id="r_vatval">0,00</div><div class="g">Gesamt</div><div class="num g" id="r_gross">0,00</div></div>
       <div class="btnrow" style="margin-top:16px">
-        <button class="btn" id="r_print">🖨️ Drucken / als PDF speichern</button>
+        <button class="btn" id="r_print">🖨️ Drucken / PDF</button>
         <button class="btn ghost" id="r_save">💾 Entwurf speichern</button>
         <button class="btn ghost" id="r_clear">Leeren</button>
       </div>
-      <div class="savedlist" id="r_saved"></div>
+      <div class="list" id="r_saved"></div>
     </div>
   </section>
 
-  <!-- ============ RECHNER ============ -->
+  <!-- ANGEBOT -->
+  <section class="view" id="v-angebot">
+    <h1>Angebot / Kostenvoranschlag</h1>
+    <p class="sub">Wie eine Rechnung — mit Gültigkeitsdatum. Per Klick in eine Rechnung umwandeln.</p>
+    <div class="panel">
+      <div class="row">
+        <div class="fld"><label>Angebots-Nr.</label><input id="a_nr" placeholder="A-2026-001"></div>
+        <div class="fld"><label>Datum</label><input id="a_datum" type="date"></div>
+        <div class="fld"><label>Gültig bis</label><input id="a_gueltig" type="date"></div>
+      </div>
+      <div class="row"><div class="fld"><label>Kunde aus Adressbuch</label><select id="a_pick"><option value="">— frei eingeben —</option></select></div></div>
+      <div class="fld"><label>Kunde (Name &amp; Anschrift)</label><textarea id="a_kunde" rows="3"></textarea></div>
+      <table class="items" id="a_items"><thead><tr><th style="width:46%">Beschreibung</th><th class="num" style="width:13%">Menge</th><th class="num" style="width:20%">Einzelpreis</th><th class="num" style="width:15%">Summe</th><th></th></tr></thead><tbody></tbody></table>
+      <div class="btnrow"><button class="btn ghost sm" id="a_add">+ Position</button></div>
+      <div class="row" style="margin-top:14px">
+        <div class="fld" style="max-width:240px"><label>MwSt-Satz</label><select id="a_vat" class="vatsel"></select></div>
+      </div>
+      <div class="totbox"><div>Netto</div><div class="num" id="a_net">0,00</div><div id="a_vatlabel">zzgl. MwSt</div><div class="num" id="a_vatval">0,00</div><div class="g">Gesamt</div><div class="num g" id="a_gross">0,00</div></div>
+      <div class="btnrow" style="margin-top:16px">
+        <button class="btn" id="a_print">🖨️ Drucken / PDF</button>
+        <button class="btn ghost" id="a_toinv">➡️ In Rechnung umwandeln</button>
+        <button class="btn ghost" id="a_clear">Leeren</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- KUNDEN -->
+  <section class="view" id="v-kunden">
+    <h1>Kunden / Adressbuch</h1>
+    <p class="sub">Einmal anlegen → in Rechnung, Angebot &amp; Mahnung per Dropdown einsetzen. Nur lokal gespeichert.</p>
+    <div class="panel">
+      <h2>Neuer Kunde</h2>
+      <div class="row">
+        <div class="fld"><label>Name / Firma</label><input id="k_name" placeholder="Mustermann GmbH"></div>
+        <div class="fld"><label>E-Mail</label><input id="k_email" placeholder="kontakt@…"></div>
+      </div>
+      <div class="fld"><label>Anschrift</label><textarea id="k_adresse" rows="2" placeholder="Musterstr. 1&#10;8000 Zürich"></textarea></div>
+      <div class="btnrow"><button class="btn" id="k_add">+ Kunde speichern</button></div>
+      <div class="list" id="k_list"></div>
+    </div>
+  </section>
+
+  <!-- ZEIT -->
+  <section class="view" id="v-zeit">
+    <h1>Zeiterfassung</h1>
+    <p class="sub">Stoppuhr starten oder Stunden manuell erfassen → später in eine Rechnung übernehmen.</p>
+    <div class="panel">
+      <h2>Stoppuhr</h2>
+      <div class="clock" id="z_clock">00:00:00</div>
+      <div class="btnrow" style="justify-content:center">
+        <button class="btn" id="z_startstop">▶︎ Start</button>
+        <button class="btn ghost" id="z_log">⏹ Stoppen &amp; erfassen</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Eintrag erfassen</h2>
+      <div class="row">
+        <div class="fld"><label>Projekt / Kunde</label><input id="z_proj" placeholder="Projekt Website"></div>
+        <div class="fld"><label>Datum</label><input id="z_datum" type="date"></div>
+        <div class="fld" style="max-width:140px"><label>Stunden</label><input id="z_std" value="1" inputmode="decimal"></div>
+        <div class="fld" style="max-width:150px"><label>Stundensatz</label><input id="z_satz" value="90" inputmode="decimal"></div>
+      </div>
+      <div class="fld"><label>Beschreibung</label><input id="z_desc" placeholder="Was wurde gemacht?"></div>
+      <div class="btnrow"><button class="btn" id="z_add">+ Eintrag</button></div>
+      <div class="out" id="z_sum"></div>
+      <div class="list" id="z_list"></div>
+      <div class="btnrow"><button class="btn ghost sm" id="z_toinv">➡️ Alle in Rechnung übernehmen</button></div>
+    </div>
+  </section>
+
+  <!-- RECHNER -->
   <section class="view" id="v-rechner">
     <h1>Finanz-Rechner</h1>
-    <p class="sub">Die wichtigsten Rechnungen rund um Geld &amp; Zahlungen — sofort, offline.</p>
+    <p class="sub">Sieben Rechner für den Geschäftsalltag — sofort, offline.</p>
 
-    <div class="mini">
-      <h3>MwSt — netto ↔ brutto</h3>
-      <div class="row">
-        <div class="fld" style="max-width:200px"><label>Steuersatz %</label><input id="m_satz" value="19" inputmode="decimal"></div>
-        <div class="fld" style="max-width:200px"><label>Betrag</label><input id="m_betrag" value="100" inputmode="decimal"></div>
-        <div class="fld"><label>Betrag ist …</label><div class="seg" id="m_seg"><button data-m="net" class="on">Netto</button><button data-m="gross">Brutto</button></div></div>
-      </div>
-      <div class="out" id="m_out"></div>
-    </div>
+    <div class="mini"><h3>MwSt — netto ↔ brutto</h3>
+      <div class="row"><div class="fld" style="max-width:170px"><label>Steuersatz %</label><input id="m_satz" value="19" inputmode="decimal"></div>
+        <div class="fld" style="max-width:170px"><label>Betrag</label><input id="m_betrag" value="100" inputmode="decimal"></div>
+        <div class="fld"><label>Betrag ist …</label><div class="seg" id="m_seg"><button data-m="net" class="on">Netto</button><button data-m="gross">Brutto</button></div></div></div>
+      <div class="out" id="m_out"></div></div>
 
-    <div class="mini">
-      <h3>Skonto — lohnt früh zahlen?</h3>
-      <div class="row">
-        <div class="fld"><label>Rechnungsbetrag</label><input id="s_betrag" value="1000" inputmode="decimal"></div>
+    <div class="mini"><h3>Stundensatz — was muss ich verlangen?</h3>
+      <div class="row"><div class="fld"><label>Wunsch-Gewinn / Jahr</label><input id="h_netto" value="60000" inputmode="decimal"></div>
+        <div class="fld"><label>Betriebskosten / Jahr</label><input id="h_kosten" value="12000" inputmode="decimal"></div>
+        <div class="fld"><label>Urlaub + krank (Tage)</label><input id="h_frei" value="35" inputmode="numeric"></div>
+        <div class="fld"><label>Abrechenbare Std/Tag</label><input id="h_std" value="5" inputmode="decimal"></div></div>
+      <div class="out" id="h_out"></div>
+      <p class="note">Vereinfacht (vor Steuern). 365 − 104 Wochenend-Tage − deine freien Tage = Arbeitstage.</p></div>
+
+    <div class="mini"><h3>Skonto — lohnt früh zahlen?</h3>
+      <div class="row"><div class="fld"><label>Rechnungsbetrag</label><input id="s_betrag" value="1000" inputmode="decimal"></div>
         <div class="fld"><label>Skonto %</label><input id="s_skonto" value="2" inputmode="decimal"></div>
         <div class="fld"><label>Skontofrist (Tage)</label><input id="s_frist" value="10" inputmode="numeric"></div>
-        <div class="fld"><label>Zahlungsziel (Tage)</label><input id="s_ziel" value="30" inputmode="numeric"></div>
-      </div>
-      <div class="out" id="s_out"></div>
-    </div>
+        <div class="fld"><label>Zahlungsziel (Tage)</label><input id="s_ziel" value="30" inputmode="numeric"></div></div>
+      <div class="out" id="s_out"></div></div>
 
-    <div class="mini">
-      <h3>Verzugszinsen &amp; Mahngebühr</h3>
-      <div class="row">
-        <div class="fld"><label>Offener Betrag</label><input id="vz_betrag" value="2500" inputmode="decimal"></div>
-        <div class="fld"><label>Zinssatz % p. a.</label><input id="vz_zins" value="5" inputmode="decimal"></div>
+    <div class="mini"><h3>Verzugszinsen &amp; Mahngebühr</h3>
+      <div class="row"><div class="fld"><label>Offener Betrag</label><input id="vz_betrag" value="2500" inputmode="decimal"></div>
+        <div class="fld"><label>Zinssatz % p.a.</label><input id="vz_zins" value="5" inputmode="decimal"></div>
         <div class="fld"><label>Tage im Verzug</label><input id="vz_tage" value="60" inputmode="numeric"></div>
-        <div class="fld"><label>Mahnpauschale</label><input id="vz_pausch" value="0" inputmode="decimal"></div>
-      </div>
-      <div class="out" id="vz_out"></div>
-    </div>
+        <div class="fld"><label>Mahnpauschale</label><input id="vz_pausch" value="0" inputmode="decimal"></div></div>
+      <div class="out" id="vz_out"></div></div>
 
-    <div class="mini">
-      <h3>Zahlungsfrist &amp; Fälligkeit</h3>
-      <div class="row">
-        <div class="fld"><label>Rechnungsdatum</label><input id="zf_datum" type="date"></div>
-        <div class="fld"><label>Zahlungsziel (Tage)</label><input id="zf_ziel" value="14" inputmode="numeric"></div>
-      </div>
-      <div class="out" id="zf_out"></div>
-    </div>
+    <div class="mini"><h3>Zahlungsfrist &amp; Fälligkeit</h3>
+      <div class="row"><div class="fld"><label>Rechnungsdatum</label><input id="zf_datum" type="date"></div>
+        <div class="fld"><label>Zahlungsziel (Tage)</label><input id="zf_ziel" value="14" inputmode="numeric"></div></div>
+      <div class="out" id="zf_out"></div></div>
+
+    <div class="mini"><h3>Prozent-Rechner</h3>
+      <div class="row"><div class="fld"><label>Wie viel sind</label><input id="pc_p" value="19" inputmode="decimal"></div>
+        <div class="fld"><label>% von</label><input id="pc_b" value="100" inputmode="decimal"></div></div>
+      <div class="out" id="pc_out"></div></div>
+
+    <div class="mini"><h3>IBAN-Prüfer</h3>
+      <div class="fld"><label>IBAN</label><input id="ib_in" placeholder="CH93 0076 2011 6238 5295 7" spellcheck="false"></div>
+      <div class="out" id="ib_out"></div>
+      <p class="note">Prüft die Prüfziffer (Format &amp; Mod-97), nicht ob das Konto existiert. Lokal, nichts wird gesendet.</p></div>
   </section>
 
-  <!-- ============ MAHNUNG & E-MAIL ============ -->
+  <!-- TRADING -->
+  <section class="view" id="v-trading">
+    <h1>Trading &amp; Geldanlage</h1>
+    <p class="sub">Positionsgröße, Chance/Risiko, Gewinn/Verlust, Verlust-Recovery und Zinseszins — sauber gerechnet. <strong>Keine Anlageberatung.</strong></p>
+
+    <div class="mini"><h3>Positionsgröße nach Risiko</h3>
+      <div class="row"><div class="fld"><label>Kontogröße</label><input id="tp_konto" value="10000" inputmode="decimal"></div>
+        <div class="fld"><label>Risiko / Trade %</label><input id="tp_risk" value="1" inputmode="decimal"></div>
+        <div class="fld"><label>Einstieg</label><input id="tp_entry" value="100" inputmode="decimal"></div>
+        <div class="fld"><label>Stop-Loss</label><input id="tp_stop" value="95" inputmode="decimal"></div></div>
+      <div class="out" id="tp_out"></div>
+      <p class="note">So groß darf die Position sein, damit dein Verlust bis zum Stop dein Risiko-Budget nicht übersteigt.</p></div>
+
+    <div class="mini"><h3>Chance/Risiko &amp; Break-even-Trefferquote</h3>
+      <div class="row"><div class="fld"><label>Einstieg</label><input id="tr_entry" value="100" inputmode="decimal"></div>
+        <div class="fld"><label>Stop-Loss</label><input id="tr_stop" value="95" inputmode="decimal"></div>
+        <div class="fld"><label>Kursziel</label><input id="tr_tgt" value="115" inputmode="decimal"></div></div>
+      <div class="out" id="tr_out"></div></div>
+
+    <div class="mini"><h3>Gewinn / Verlust eines Trades</h3>
+      <div class="row"><div class="fld"><label>Kaufkurs</label><input id="tg_buy" value="100" inputmode="decimal"></div>
+        <div class="fld"><label>Verkaufskurs</label><input id="tg_sell" value="120" inputmode="decimal"></div>
+        <div class="fld"><label>Stückzahl</label><input id="tg_qty" value="10" inputmode="decimal"></div>
+        <div class="fld"><label>Gebühren % (gesamt)</label><input id="tg_fee" value="0,2" inputmode="decimal"></div></div>
+      <div class="out" id="tg_out"></div></div>
+
+    <div class="mini"><h3>Verlust aufholen</h3>
+      <div class="row"><div class="fld" style="max-width:220px"><label>Verlust %</label><input id="tl_loss" value="20" inputmode="decimal"></div></div>
+      <div class="out" id="tl_out"></div></div>
+
+    <div class="mini"><h3>Zinseszins / Sparplan</h3>
+      <div class="row"><div class="fld"><label>Startkapital</label><input id="tc_start" value="1000" inputmode="decimal"></div>
+        <div class="fld"><label>Sparrate / Monat</label><input id="tc_month" value="200" inputmode="decimal"></div>
+        <div class="fld"><label>Rendite % p.a.</label><input id="tc_rate" value="6" inputmode="decimal"></div>
+        <div class="fld"><label>Laufzeit (Jahre)</label><input id="tc_years" value="15" inputmode="numeric"></div></div>
+      <div class="out" id="tc_out"></div>
+      <p class="note">Vereinfachte Annahme (konstante Rendite, monatliche Einzahlung). Keine Garantie, keine Anlageberatung.</p></div>
+  </section>
+
+  <!-- MAHNUNG -->
   <section class="view" id="v-mahnung">
     <h1>Mahnung &amp; Business-E-Mail</h1>
     <p class="sub">Fertige Texte zum Kopieren — höflich, klar, sofort einsetzbar.</p>
-
     <div class="panel">
       <h2>Zahlungserinnerung / Mahnung</h2>
-      <div class="row">
-        <div class="fld"><label>Kunde (Name)</label><input id="mh_kunde" placeholder="Frau Muster"></div>
-        <div class="fld"><label>Rechnungs-Nr.</label><input id="mh_nr" placeholder="2026-001"></div>
-      </div>
-      <div class="row">
-        <div class="fld"><label>Offener Betrag</label><input id="mh_betrag" value="" placeholder="1.200,00"></div>
-        <div class="fld"><label>Ursprünglich fällig am</label><input id="mh_faellig" type="date"></div>
-        <div class="fld"><label>Neue Frist (Tage)</label><input id="mh_frist" value="10" inputmode="numeric"></div>
-      </div>
+      <div class="row"><div class="fld"><label>Kunde aus Adressbuch</label><select id="mh_pick"><option value="">— frei —</option></select></div></div>
+      <div class="row"><div class="fld"><label>Kunde (Name)</label><input id="mh_kunde" placeholder="Frau Muster"></div>
+        <div class="fld"><label>Rechnungs-Nr.</label><input id="mh_nr" placeholder="2026-001"></div></div>
+      <div class="row"><div class="fld"><label>Offener Betrag</label><input id="mh_betrag" placeholder="1.200,00"></div>
+        <div class="fld"><label>Fällig am</label><input id="mh_faellig" type="date"></div>
+        <div class="fld"><label>Neue Frist (Tage)</label><input id="mh_frist" value="10" inputmode="numeric"></div></div>
       <div class="fld"><label>Stufe</label><div class="seg" id="mh_seg"><button data-s="1" class="on">1. Erinnerung (freundlich)</button><button data-s="2">2. Mahnung (bestimmt)</button></div></div>
-      <div class="subj" id="mh_subj"></div>
-      <div class="mail" id="mh_text"></div>
-      <div class="btnrow"><button class="btn sm" id="mh_copy">📋 Text kopieren</button></div>
+      <div class="subj" id="mh_subj"></div><div class="mail" id="mh_text"></div>
+      <div class="btnrow"><button class="btn sm" id="mh_copy">📋 Kopieren</button></div>
     </div>
-
     <div class="panel">
       <h2>Business-E-Mail-Generator</h2>
-      <div class="row">
-        <div class="fld"><label>Situation</label>
-          <select id="em_sit">
-            <option value="nachfassen">Angebot nachfassen</option>
-            <option value="preis">Preiserhöhung ankündigen</option>
-            <option value="absage">Höflich absagen</option>
-            <option value="reklamation">Auf Reklamation reagieren</option>
-            <option value="reaktivieren">Kunde reaktivieren</option>
-          </select></div>
-        <div class="fld"><label>Empfänger (Name)</label><input id="em_name" placeholder="Herr Muster"></div>
-      </div>
+      <div class="row"><div class="fld"><label>Situation</label><select id="em_sit">
+        <option value="nachfassen">Angebot nachfassen</option><option value="preis">Preiserhöhung ankündigen</option>
+        <option value="absage">Höflich absagen</option><option value="reklamation">Auf Reklamation reagieren</option>
+        <option value="reaktivieren">Kunde reaktivieren</option><option value="termin">Termin vorschlagen</option></select></div>
+        <div class="fld"><label>Empfänger (Name)</label><input id="em_name" placeholder="Herr Muster"></div></div>
       <div class="fld"><label>Stichwort / Detail (optional)</label><input id="em_detail" placeholder="z. B. Angebot vom 3. Juni"></div>
-      <div class="subj" id="em_subj"></div>
-      <div class="mail" id="em_text"></div>
-      <div class="btnrow"><button class="btn sm" id="em_copy">📋 Text kopieren</button></div>
+      <div class="subj" id="em_subj"></div><div class="mail" id="em_text"></div>
+      <div class="btnrow"><button class="btn sm" id="em_copy">📋 Kopieren</button></div>
     </div>
   </section>
 
-  <!-- ============ STAMMDATEN ============ -->
+  <!-- STAMMDATEN -->
   <section class="view" id="v-stamm">
     <h1>Stammdaten</h1>
-    <p class="sub">Einmal eintragen — fließt automatisch in Rechnung &amp; Mahnung. Wird <strong>nur lokal</strong> in diesem Browser gespeichert (kein Server).</p>
+    <p class="sub">Einmal eintragen — fließt in Rechnung, Angebot &amp; Mahnung. Nur lokal gespeichert.</p>
     <div class="panel">
-      <div class="fld"><label>Firma / Name</label><input id="st_firma" placeholder="Dein Name / Firma"></div>
-      <div class="fld"><label>Anschrift</label><textarea id="st_adresse" rows="3" placeholder="Straße 1&#10;8000 Zürich"></textarea></div>
-      <div class="row">
-        <div class="fld"><label>E-Mail</label><input id="st_email" placeholder="info@…"></div>
-        <div class="fld"><label>Telefon</label><input id="st_tel"></div>
-      </div>
-      <div class="row">
-        <div class="fld"><label>IBAN</label><input id="st_iban" placeholder="CH.. / DE.."></div>
-        <div class="fld"><label>MwSt-/Steuernummer</label><input id="st_steuer"></div>
-      </div>
+      <div class="fld"><label>Firma / Name</label><input id="st_firma"></div>
+      <div class="fld"><label>Anschrift</label><textarea id="st_adresse" rows="3"></textarea></div>
+      <div class="row"><div class="fld"><label>E-Mail</label><input id="st_email"></div><div class="fld"><label>Telefon</label><input id="st_tel"></div></div>
+      <div class="row"><div class="fld"><label>IBAN</label><input id="st_iban"></div><div class="fld"><label>MwSt-/Steuernr.</label><input id="st_steuer"></div></div>
       <div class="btnrow"><button class="btn" id="st_save">💾 Stammdaten speichern</button></div>
     </div>
   </section>
-
 </main>
 
-<!-- Druck-Layout (nur beim Drucken sichtbar) -->
-<div id="print-invoice"></div>
-
-<footer class="wrap">aban Business-Cockpit · läuft 100 % offline in deinem Browser · keine Daten verlassen dein Gerät · © 2026 aban news</footer>
+<div id="print-doc"></div>
+<footer class="wrap">aban Business-Cockpit · 100 % offline · keine Daten verlassen dein Gerät · © 2026 aban news</footer>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -274,196 +343,236 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.8rem;color:var
   function addDays(d,k){var x=new Date(d.getTime());x.setDate(x.getDate()+k);return x}
   function parseDate(v){var p=String(v||"").split("-");return p.length===3?new Date(+p[0],+p[1]-1,+p[2]):new Date(NaN)}
   function isoToday(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
-
-  /* ---- Tabs ---- */
-  $$("#tabs button").forEach(function(b){b.addEventListener("click",function(){
-    $$("#tabs button").forEach(function(x){x.classList.toggle("on",x===b)});
-    $$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-"+b.dataset.v)});
-    window.scrollTo(0,0);
-  })});
-
-  /* ---- Stammdaten ---- */
-  var stFields=["firma","adresse","email","tel","iban","steuer"];
-  function loadStamm(){try{var s=JSON.parse(LS.getItem("abanCockpit_stamm")||"{}");stFields.forEach(function(f){if($("#st_"+f))$("#st_"+f).value=s[f]||""});return s}catch(e){return {}}}
-  $("#st_save").addEventListener("click",function(){var o={};stFields.forEach(function(f){o[f]=$("#st_"+f).value});LS.setItem("abanCockpit_stamm",JSON.stringify(o));toast("Stammdaten gespeichert ✓")});
-  function stamm(){try{return JSON.parse(LS.getItem("abanCockpit_stamm")||"{}")}catch(e){return {}}}
-
-  /* ---- Rechnung ---- */
-  var tb=$("#r_items tbody");
-  function addItem(desc,qty,price){
-    var tr=document.createElement("tr");
-    tr.innerHTML='<td><input class="i_desc" placeholder="Leistung / Artikel"></td>'+
-      '<td><input class="i_qty num" inputmode="decimal" value="1"></td>'+
-      '<td><input class="i_price num" inputmode="decimal" value="0"></td>'+
-      '<td class="num i_sum">0,00</td>'+
-      '<td><button class="delrow" title="Zeile löschen">×</button></td>';
-    tb.appendChild(tr);
-    if(desc!=null)$(".i_desc",tr).value=desc;
-    if(qty!=null)$(".i_qty",tr).value=qty;
-    if(price!=null)$(".i_price",tr).value=price;
-    $(".delrow",tr).addEventListener("click",function(){tr.remove();calcInvoice()});
-    $$("input",tr).forEach(function(i){i.addEventListener("input",calcInvoice)});
-    calcInvoice();
-  }
-  function calcInvoice(){
-    var net=0;
-    $$("#r_items tbody tr").forEach(function(tr){
-      var q=n($(".i_qty",tr).value)||0, p=n($(".i_price",tr).value)||0, s=q*p;
-      $(".i_sum",tr).textContent=nf(s); net+=s;
-    });
-    var rate=parseFloat($("#r_vat").value)||0, vat=net*rate/100, gross=net+vat;
-    $("#r_net").textContent=nf(net);
-    $("#r_vatlabel").textContent=rate>0?("zzgl. "+String(rate).replace(".",",")+" % MwSt"):"MwSt";
-    $("#r_vatval").textContent=nf(vat);
-    $("#r_gross").textContent=nf(gross);
-    return {net:net,rate:rate,vat:vat,gross:gross};
-  }
-  $("#r_add").addEventListener("click",function(){addItem()});
-  $("#r_vat").addEventListener("change",calcInvoice);
-  $("#r_clear").addEventListener("click",function(){tb.innerHTML="";["r_nr","r_kunde","r_leistung"].forEach(function(id){$("#"+id).value=""});addItem();toast("Geleert")});
-
-  function invoiceData(){
-    var items=$$("#r_items tbody tr").map(function(tr){return {desc:$(".i_desc",tr).value,qty:$(".i_qty",tr).value,price:$(".i_price",tr).value}});
-    return {nr:$("#r_nr").value,datum:$("#r_datum").value,leistung:$("#r_leistung").value,kunde:$("#r_kunde").value,vat:$("#r_vat").value,ziel:$("#r_ziel").value,items:items};
-  }
-  function loadInvoice(d){
-    $("#r_nr").value=d.nr||"";$("#r_datum").value=d.datum||isoToday();$("#r_leistung").value=d.leistung||"";
-    $("#r_kunde").value=d.kunde||"";$("#r_vat").value=d.vat||"19";$("#r_ziel").value=d.ziel||"14";
-    tb.innerHTML="";(d.items&&d.items.length?d.items:[{}]).forEach(function(it){addItem(it.desc,it.qty,it.price)});
-  }
-  /* Entwürfe */
-  function drafts(){try{return JSON.parse(LS.getItem("abanCockpit_drafts")||"[]")}catch(e){return []}}
-  function renderDrafts(){
-    var d=drafts(),el=$("#r_saved");el.innerHTML="";
-    if(!d.length){el.innerHTML='<p class="note">Noch keine Entwürfe gespeichert.</p>';return}
-    d.forEach(function(x,i){
-      var row=document.createElement("div");row.className="saved";
-      row.innerHTML='<span>🧾 '+(x.nr||"ohne Nr.")+' · '+(x.kunde||"").split("\\n")[0].slice(0,28)+'</span>';
-      var b=document.createElement("span");
-      var load=document.createElement("button");load.className="btn ghost sm";load.textContent="Laden";load.onclick=function(){loadInvoice(x);toast("Entwurf geladen")};
-      var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";del.onclick=function(){var a=drafts();a.splice(i,1);LS.setItem("abanCockpit_drafts",JSON.stringify(a));renderDrafts()};
-      b.appendChild(load);b.appendChild(del);row.appendChild(b);el.appendChild(row);
-    });
-  }
-  $("#r_save").addEventListener("click",function(){var a=drafts();a.unshift(invoiceData());LS.setItem("abanCockpit_drafts",JSON.stringify(a.slice(0,30)));renderDrafts();toast("Entwurf gespeichert ✓")});
-
-  /* Druck */
-  $("#r_print").addEventListener("click",function(){
-    var d=invoiceData(),t=calcInvoice(),s=stamm();
-    var rows=$$("#r_items tbody tr").map(function(tr){
-      var q=n($(".i_qty",tr).value)||0,p=n($(".i_price",tr).value)||0;
-      return '<tr><td>'+esc($(".i_desc",tr).value)+'</td><td class="n">'+nf(q)+'</td><td class="n">'+nf(p)+'</td><td class="n">'+nf(q*p)+'</td></tr>';
-    }).join("");
-    var faellig="";
-    if(d.datum){var fd=addDays(parseDate(d.datum),parseInt(d.ziel,10)||0);if(!isNaN(fd))faellig="Zahlbar bis "+de(fd)+" ("+(parseInt(d.ziel,10)||0)+" Tage).";}
-    var html=
-      '<div class="pi-head"><div><strong>'+esc(s.firma||"")+'</strong><br>'+nl(s.adresse)+'<br>'+esc(s.email||"")+(s.tel?" · "+esc(s.tel):"")+'</div>'+
-      '<div style="text-align:right">Rechnung'+(d.nr?" "+esc(d.nr):"")+'<br>'+(d.datum?de(parseDate(d.datum)):"")+'</div></div>'+
-      '<div>'+nl(d.kunde)+'</div>'+
-      '<h2>Rechnung'+(d.nr?" "+esc(d.nr):"")+'</h2>'+
-      (d.leistung?'<div>Leistungszeitraum: '+esc(d.leistung)+'</div>':'')+
-      '<table><thead><tr><th>Beschreibung</th><th class="n">Menge</th><th class="n">Einzelpreis</th><th class="n">Summe</th></tr></thead><tbody>'+rows+'</tbody></table>'+
-      '<div class="pi-tot">Netto: '+nf(t.net)+'<br>'+(t.rate>0?("zzgl. "+String(t.rate).replace(".",",")+" % MwSt: "+nf(t.vat)+"<br>"):"")+'<strong>Gesamtbetrag: '+nf(t.gross)+'</strong></div>'+
-      '<div class="pi-foot">'+faellig+(s.iban?' &nbsp; Bankverbindung: '+esc(s.iban):'')+(s.steuer?' &nbsp; Steuer-/MwSt-Nr.: '+esc(s.steuer):'')+'<br>Vielen Dank für Ihren Auftrag.</div>';
-    $("#print-invoice").innerHTML=html;
-    window.print();
-  });
   function esc(x){return String(x==null?"":x).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]})}
   function nl(x){return esc(x).replace(/\n/g,"<br>")}
+  function get(k,d){try{return JSON.parse(LS.getItem(k)||JSON.stringify(d))}catch(e){return d}}
+  function set(k,v){LS.setItem(k,JSON.stringify(v))}
+  var VATS=[["8.1","Schweiz 8,1 %"],["19","Deutschland 19 %"],["7","Deutschland 7 %"],["20","Österreich 20 %"],["10","Österreich 10 %"],["0","0 % (Kleinunternehmer)"]];
+  $$(".vatsel").forEach(function(sel){sel.innerHTML=VATS.map(function(v,i){return '<option value="'+v[0]+'"'+(i===1?" selected":"")+'>'+v[1]+'</option>'}).join("")});
 
-  /* ---- Rechner: MwSt ---- */
+  /* Tabs */
+  $$("#tabs button").forEach(function(b){b.addEventListener("click",function(){
+    $$("#tabs button").forEach(function(x){x.classList.toggle("on",x===b)});
+    $$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-"+b.dataset.v)});window.scrollTo(0,0)})});
+
+  /* Stammdaten */
+  var stF=["firma","adresse","email","tel","iban","steuer"];
+  function loadStamm(){var s=get("abanCockpit_stamm",{});stF.forEach(function(f){if($("#st_"+f))$("#st_"+f).value=s[f]||""})}
+  function stamm(){return get("abanCockpit_stamm",{})}
+  $("#st_save").addEventListener("click",function(){var o={};stF.forEach(function(f){o[f]=$("#st_"+f).value});set("abanCockpit_stamm",o);toast("Stammdaten gespeichert ✓")});
+
+  /* Kunden */
+  function clients(){return get("abanCockpit_clients",[])}
+  function saveClients(a){set("abanCockpit_clients",a)}
+  function refreshPickers(){
+    var c=clients();var opt='<option value="">— frei eingeben —</option>'+c.map(function(x,i){return '<option value="'+i+'">'+esc(x.name)+'</option>'}).join("");
+    ["r_pick","a_pick"].forEach(function(id){var el=$("#"+id);if(el)el.innerHTML=opt});
+    var mh=$("#mh_pick");if(mh)mh.innerHTML='<option value="">— frei —</option>'+c.map(function(x,i){return '<option value="'+i+'">'+esc(x.name)+'</option>'}).join("");
+  }
+  function clientBlock(c){return (c.name||"")+(c.adresse?"\n"+c.adresse:"")}
+  function renderClients(){
+    var c=clients(),el=$("#k_list");el.innerHTML="";
+    if(!c.length){el.innerHTML='<p class="note">Noch keine Kunden gespeichert.</p>';return}
+    c.forEach(function(x,i){var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>👤 <strong>'+esc(x.name)+'</strong>'+(x.email?' · '+esc(x.email):'')+'</span>';
+      var wrap=document.createElement("span");wrap.className="x";
+      var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var a=clients();a.splice(i,1);saveClients(a);renderClients();refreshPickers()};
+      wrap.appendChild(del);row.appendChild(wrap);el.appendChild(row)})}
+  $("#k_add").addEventListener("click",function(){
+    var name=$("#k_name").value.trim();if(!name){toast("Bitte Namen eingeben");return}
+    var a=clients();a.unshift({name:name,email:$("#k_email").value.trim(),adresse:$("#k_adresse").value.trim()});saveClients(a);
+    $("#k_name").value="";$("#k_email").value="";$("#k_adresse").value="";renderClients();refreshPickers();toast("Kunde gespeichert ✓")});
+  function bindPicker(pickId,targetId){$("#"+pickId).addEventListener("change",function(){var i=this.value;if(i==="")return;var c=clients()[+i];if(c)$("#"+targetId).value=clientBlock(c)})}
+  bindPicker("r_pick","r_kunde");bindPicker("a_pick","a_kunde");
+  $("#mh_pick").addEventListener("change",function(){var i=this.value;if(i==="")return;var c=clients()[+i];if(c){$("#mh_kunde").value=c.name;genMahnung()}});
+
+  /* Dokument-Modul (Rechnung + Angebot) */
+  function setupDoc(p){
+    var tb=$("#"+p+"_items tbody");
+    function addItem(desc,qty,price){
+      var tr=document.createElement("tr");
+      tr.innerHTML='<td><input class="i_desc" placeholder="Leistung / Artikel"></td><td><input class="i_qty num" inputmode="decimal" value="1"></td><td><input class="i_price num" inputmode="decimal" value="0"></td><td class="num i_sum">0,00</td><td><button class="delrow">×</button></td>';
+      tb.appendChild(tr);
+      if(desc!=null)$(".i_desc",tr).value=desc;if(qty!=null)$(".i_qty",tr).value=qty;if(price!=null)$(".i_price",tr).value=price;
+      $(".delrow",tr).addEventListener("click",function(){tr.remove();calc()});
+      $$("input",tr).forEach(function(i){i.addEventListener("input",calc)});calc()}
+    function calc(){var net=0;$$("#"+p+"_items tbody tr").forEach(function(tr){var q=n($(".i_qty",tr).value)||0,pr=n($(".i_price",tr).value)||0,s=q*pr;$(".i_sum",tr).textContent=nf(s);net+=s});
+      var rate=parseFloat($("#"+p+"_vat").value)||0,vat=net*rate/100,gross=net+vat;
+      $("#"+p+"_net").textContent=nf(net);$("#"+p+"_vatlabel").textContent=rate>0?("zzgl. "+String(rate).replace(".",",")+" % MwSt"):"MwSt";
+      $("#"+p+"_vatval").textContent=nf(vat);$("#"+p+"_gross").textContent=nf(gross);return {net:net,rate:rate,vat:vat,gross:gross}}
+    $("#"+p+"_add").addEventListener("click",function(){addItem()});
+    $("#"+p+"_vat").addEventListener("change",calc);
+    function items(){return $$("#"+p+"_items tbody tr").map(function(tr){return {desc:$(".i_desc",tr).value,qty:$(".i_qty",tr).value,price:$(".i_price",tr).value}})}
+    function setItems(arr){tb.innerHTML="";(arr&&arr.length?arr:[{}]).forEach(function(it){addItem(it.desc,it.qty,it.price)})}
+    return {addItem:addItem,calc:calc,items:items,setItems:setItems,tb:tb}
+  }
+  var R=setupDoc("r"),A=setupDoc("a");
+
+  function printDoc(opts){
+    var s=stamm(),rows=opts.items.map(function(it){var q=n(it.qty)||0,pr=n(it.price)||0;return '<tr><td>'+esc(it.desc)+'</td><td class="n">'+nf(q)+'</td><td class="n">'+nf(pr)+'</td><td class="n">'+nf(q*pr)+'</td></tr>'}).join("");
+    var foot=opts.foot||"";
+    var html='<div class="pi-head"><div><strong>'+esc(s.firma||"")+'</strong><br>'+nl(s.adresse||"")+'<br>'+esc(s.email||"")+(s.tel?" · "+esc(s.tel):"")+'</div><div style="text-align:right">'+esc(opts.title)+(opts.nr?" "+esc(opts.nr):"")+'<br>'+(opts.datum?de(parseDate(opts.datum)):"")+'</div></div>'+
+      '<div>'+nl(opts.kunde||"")+'</div><h2>'+esc(opts.title)+(opts.nr?" "+esc(opts.nr):"")+'</h2>'+(opts.meta?'<div>'+esc(opts.meta)+'</div>':'')+
+      '<table><thead><tr><th>Beschreibung</th><th class="n">Menge</th><th class="n">Einzelpreis</th><th class="n">Summe</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+      '<div class="pi-tot">Netto: '+nf(opts.tot.net)+'<br>'+(opts.tot.rate>0?("zzgl. "+String(opts.tot.rate).replace(".",",")+" % MwSt: "+nf(opts.tot.vat)+"<br>"):"")+'<strong>Gesamt: '+nf(opts.tot.gross)+'</strong></div>'+
+      '<div class="pi-foot">'+foot+(s.iban?' &nbsp; IBAN: '+esc(s.iban):'')+(s.steuer?' &nbsp; Steuer-/MwSt-Nr.: '+esc(s.steuer):'')+'</div>';
+    $("#print-doc").innerHTML=html;window.print()}
+
+  /* Rechnung-spezifisch */
+  $("#r_clear").addEventListener("click",function(){R.setItems([{}]);["r_nr","r_kunde","r_leistung"].forEach(function(id){$("#"+id).value=""});$("#r_pick").value="";toast("Geleert")});
+  $("#r_print").addEventListener("click",function(){var t=R.calc(),d={nr:$("#r_nr").value,datum:$("#r_datum").value};
+    var foot="";if(d.datum){var fd=addDays(parseDate(d.datum),parseInt($("#r_ziel").value,10)||0);if(!isNaN(fd))foot="Zahlbar bis "+de(fd)+". Vielen Dank.";}
+    printDoc({title:"Rechnung",nr:d.nr,datum:d.datum,kunde:$("#r_kunde").value,meta:$("#r_leistung").value?("Leistungszeitraum: "+$("#r_leistung").value):"",items:R.items(),tot:t,foot:foot})});
+  function invData(){return {nr:$("#r_nr").value,datum:$("#r_datum").value,leistung:$("#r_leistung").value,kunde:$("#r_kunde").value,vat:$("#r_vat").value,ziel:$("#r_ziel").value,items:R.items()}}
+  function loadInv(d){$("#r_nr").value=d.nr||"";$("#r_datum").value=d.datum||isoToday();$("#r_leistung").value=d.leistung||"";$("#r_kunde").value=d.kunde||"";$("#r_vat").value=d.vat||"19";$("#r_ziel").value=d.ziel||"14";R.setItems(d.items)}
+  function drafts(){return get("abanCockpit_drafts",[])}
+  function renderDrafts(){var d=drafts(),el=$("#r_saved");el.innerHTML="";if(!d.length){el.innerHTML='<p class="note">Noch keine Entwürfe.</p>';return}
+    d.forEach(function(x,i){var row=document.createElement("div");row.className="li";row.innerHTML='<span>🧾 '+esc(x.nr||"ohne Nr.")+' · '+esc((x.kunde||"").split("\n")[0].slice(0,26))+'</span>';
+      var w=document.createElement("span");w.className="x";
+      var load=document.createElement("button");load.className="btn ghost sm";load.textContent="Laden";load.onclick=function(){loadInv(x);toast("Geladen")};
+      var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";del.onclick=function(){var a=drafts();a.splice(i,1);set("abanCockpit_drafts",a);renderDrafts()};
+      w.appendChild(load);w.appendChild(del);row.appendChild(w);el.appendChild(row)})}
+  $("#r_save").addEventListener("click",function(){var a=drafts();a.unshift(invData());set("abanCockpit_drafts",a.slice(0,40));renderDrafts();toast("Entwurf gespeichert ✓")});
+
+  /* Angebot-spezifisch */
+  $("#a_clear").addEventListener("click",function(){A.setItems([{}]);["a_nr","a_kunde"].forEach(function(id){$("#"+id).value=""});$("#a_pick").value="";toast("Geleert")});
+  $("#a_print").addEventListener("click",function(){var t=A.calc();var g=$("#a_gueltig").value;
+    printDoc({title:"Angebot",nr:$("#a_nr").value,datum:$("#a_datum").value,kunde:$("#a_kunde").value,meta:g?("Gültig bis "+de(parseDate(g))):"",items:A.items(),tot:t,foot:"Dies ist ein unverbindliches Angebot."})});
+  $("#a_toinv").addEventListener("click",function(){loadInv({nr:"",datum:isoToday(),leistung:"",kunde:$("#a_kunde").value,vat:$("#a_vat").value,ziel:"14",items:A.items()});
+    $$("#tabs button").forEach(function(x){x.classList.toggle("on",x.dataset.v==="rechnung")});$$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-rechnung")});window.scrollTo(0,0);toast("In Rechnung übernommen ✓")});
+
+  /* ===== Rechner ===== */
   var mMode="net";
   $$("#m_seg button").forEach(function(b){b.addEventListener("click",function(){mMode=b.dataset.m;$$("#m_seg button").forEach(function(x){x.classList.toggle("on",x===b)});calcM()})});
-  function calcM(){
-    var r=n($("#m_satz").value),b=n($("#m_betrag").value);
-    if(!isFinite(r)||!isFinite(b)){$("#m_out").innerHTML="";return}
-    var net,vat,gross;
-    if(mMode==="net"){net=b;vat=b*r/100;gross=net+vat}else{gross=b;net=b/(1+r/100);vat=gross-net}
-    $("#m_out").innerHTML='<div class="box"><b>'+nf(net)+'</b><span>Netto</span></div><div class="box"><b>'+nf(vat)+'</b><span>MwSt ('+String(r).replace(".",",")+'%)</span></div><div class="box big"><b>'+nf(gross)+'</b><span>Brutto</span></div>';
-  }
+  function calcM(){var r=n($("#m_satz").value),b=n($("#m_betrag").value);if(!isFinite(r)||!isFinite(b)){$("#m_out").innerHTML="";return}
+    var net,vat,gross;if(mMode==="net"){net=b;vat=b*r/100;gross=net+vat}else{gross=b;net=b/(1+r/100);vat=gross-net}
+    $("#m_out").innerHTML='<div class="box"><b>'+nf(net)+'</b><span>Netto</span></div><div class="box"><b>'+nf(vat)+'</b><span>MwSt ('+String(r).replace(".",",")+'%)</span></div><div class="box big"><b>'+nf(gross)+'</b><span>Brutto</span></div>'}
   ["m_satz","m_betrag"].forEach(function(id){$("#"+id).addEventListener("input",calcM)});
 
-  /* ---- Rechner: Skonto ---- */
-  function calcS(){
-    var B=n($("#s_betrag").value),s=n($("#s_skonto").value),Tf=n($("#s_frist").value),Tz=n($("#s_ziel").value);
+  function calcH(){var ne=n($("#h_netto").value),ko=n($("#h_kosten").value),frei=n($("#h_frei").value),std=n($("#h_std").value);
+    if(!isFinite(ne)||!isFinite(std)||std<=0){$("#h_out").innerHTML="";return}if(!isFinite(ko))ko=0;if(!isFinite(frei))frei=0;
+    var tage=365-104-frei;if(tage<1)tage=1;var billable=tage*std;var rev=ne+ko;var rate=rev/billable;
+    $("#h_out").innerHTML='<div class="box"><b>'+Math.round(tage)+'</b><span>Arbeitstage/Jahr</span></div><div class="box"><b>'+Math.round(billable)+'</b><span>abrechenb. Stunden</span></div><div class="box big ok"><b>'+nf(rate)+'</b><span>Stundensatz (netto, vor Steuern)</span></div>'}
+  ["h_netto","h_kosten","h_frei","h_std"].forEach(function(id){$("#"+id).addEventListener("input",calcH)});
+
+  function calcS(){var B=n($("#s_betrag").value),s=n($("#s_skonto").value),Tf=n($("#s_frist").value),Tz=n($("#s_ziel").value);
     if(!isFinite(B)||!isFinite(s)||s<=0||s>=100){$("#s_out").innerHTML="";return}
-    var skonto=B*s/100,zahl=B-skonto,p=(Tz>Tf)?(s/(100-s))*(360/(Tz-Tf))*100:NaN;
-    $("#s_out").innerHTML='<div class="box"><b>'+nf(skonto)+'</b><span>Skonto (gespart)</span></div><div class="box"><b>'+nf(zahl)+'</b><span>Zahlbetrag</span></div><div class="box big"><b>'+(isFinite(p)?p.toLocaleString("de-DE",{maximumFractionDigits:1})+" %":"—")+'</b><span>Effektiver Jahreszins</span></div>';
-  }
+    var sk=B*s/100,zahl=B-sk,p=(Tz>Tf)?(s/(100-s))*(360/(Tz-Tf))*100:NaN;
+    $("#s_out").innerHTML='<div class="box"><b>'+nf(sk)+'</b><span>Skonto gespart</span></div><div class="box"><b>'+nf(zahl)+'</b><span>Zahlbetrag</span></div><div class="box big"><b>'+(isFinite(p)?p.toLocaleString("de-DE",{maximumFractionDigits:1})+" %":"—")+'</b><span>Effektiver Jahreszins</span></div>'}
   ["s_betrag","s_skonto","s_frist","s_ziel"].forEach(function(id){$("#"+id).addEventListener("input",calcS)});
 
-  /* ---- Rechner: Verzugszinsen ---- */
-  function calcVZ(){
-    var B=n($("#vz_betrag").value),z=n($("#vz_zins").value),T=n($("#vz_tage").value),P=n($("#vz_pausch").value);
-    if(!isFinite(B)||!isFinite(z)){$("#vz_out").innerHTML="";return}
-    if(!isFinite(P))P=0;if(!isFinite(T))T=0;
+  function calcVZ(){var B=n($("#vz_betrag").value),z=n($("#vz_zins").value),T=n($("#vz_tage").value),P=n($("#vz_pausch").value);
+    if(!isFinite(B)||!isFinite(z)){$("#vz_out").innerHTML="";return}if(!isFinite(P))P=0;if(!isFinite(T))T=0;
     var zins=B*z/100*T/360,ges=B+zins+P;
-    $("#vz_out").innerHTML='<div class="box"><b>'+nf(zins)+'</b><span>Verzugszinsen</span></div><div class="box"><b>'+nf(P)+'</b><span>Mahnpauschale</span></div><div class="box big"><b>'+nf(ges)+'</b><span>Gesamtforderung</span></div>';
-  }
+    $("#vz_out").innerHTML='<div class="box"><b>'+nf(zins)+'</b><span>Verzugszinsen</span></div><div class="box"><b>'+nf(P)+'</b><span>Mahnpauschale</span></div><div class="box big"><b>'+nf(ges)+'</b><span>Gesamtforderung</span></div>'}
   ["vz_betrag","vz_zins","vz_tage","vz_pausch"].forEach(function(id){$("#"+id).addEventListener("input",calcVZ)});
 
-  /* ---- Rechner: Zahlungsfrist ---- */
-  function calcZF(){
-    var rd=parseDate($("#zf_datum").value),ziel=parseInt($("#zf_ziel").value,10);
-    if(isNaN(rd.getTime())){$("#zf_out").innerHTML="";return}
-    if(isNaN(ziel)||ziel<0)ziel=0;
-    var f=addDays(rd,ziel),v=addDays(f,30),today=new Date();today.setHours(0,0,0,0);
-    var rest=Math.round((f-today)/86400000),st=rest>0?("in "+rest+" Tagen"):rest===0?"heute fällig":("überfällig seit "+(-rest)+" Tagen");
-    $("#zf_out").innerHTML='<div class="box big"><b>'+de(f)+'</b><span>Fälligkeitsdatum</span></div><div class="box"><b>'+st+'</b><span>Status</span></div><div class="box"><b>'+de(v)+'</b><span>Verzug spätestens</span></div>';
-  }
+  function calcZF(){var rd=parseDate($("#zf_datum").value),ziel=parseInt($("#zf_ziel").value,10);
+    if(isNaN(rd.getTime())){$("#zf_out").innerHTML="";return}if(isNaN(ziel)||ziel<0)ziel=0;
+    var f=addDays(rd,ziel),v=addDays(f,30),today=new Date();today.setHours(0,0,0,0);var rest=Math.round((f-today)/86400000);
+    var st=rest>0?("in "+rest+" Tagen"):rest===0?"heute fällig":("überfällig seit "+(-rest)+" T.");
+    $("#zf_out").innerHTML='<div class="box big"><b>'+de(f)+'</b><span>Fällig</span></div><div class="box"><b>'+st+'</b><span>Status</span></div><div class="box"><b>'+de(v)+'</b><span>Verzug spätestens</span></div>'}
   ["zf_datum","zf_ziel"].forEach(function(id){$("#"+id).addEventListener("input",calcZF)});
 
-  /* ---- Mahnung ---- */
+  function calcPC(){var p=n($("#pc_p").value),b=n($("#pc_b").value);if(!isFinite(p)||!isFinite(b)){$("#pc_out").innerHTML="";return}
+    $("#pc_out").innerHTML='<div class="box big"><b>'+nf(b*p/100)+'</b><span>'+String(p).replace(".",",")+' % von '+nf(b)+'</span></div><div class="box"><b>'+nf(b*(1+p/100))+'</b><span>+ '+String(p).replace(".",",")+' % (Aufschlag)</span></div><div class="box"><b>'+nf(b*(1-p/100))+'</b><span>− '+String(p).replace(".",",")+' % (Rabatt)</span></div>'}
+  ["pc_p","pc_b"].forEach(function(id){$("#"+id).addEventListener("input",calcPC)});
+
+  function ibanValid(raw){var iban=String(raw||"").replace(/\s+/g,"").toUpperCase();if(!/^[A-Z]{2}[0-9A-Z]{11,30}$/.test(iban))return null;
+    var r=iban.slice(4)+iban.slice(0,4),s="";for(var i=0;i<r.length;i++){var c=r.charCodeAt(i);s+=(c>=65&&c<=90)?(c-55):r[i]}
+    var rem=0;for(var j=0;j<s.length;j++){rem=(rem*10+(s.charCodeAt(j)-48))%97}return {ok:rem===1,iban:iban}}
+  function calcIB(){var v=$("#ib_in").value.trim();if(!v){$("#ib_out").innerHTML="";return}var res=ibanValid(v);
+    if(!res){$("#ib_out").innerHTML='<div class="box big bad"><b>Format ungültig</b><span>Bitte vollständige IBAN eingeben</span></div>';return}
+    $("#ib_out").innerHTML='<div class="box big '+(res.ok?"ok":"bad")+'"><b>'+(res.ok?"✓ gültig":"✗ ungültig")+'</b><span>'+res.iban.replace(/(.{4})/g,"$1 ").trim()+' · Land '+res.iban.slice(0,2)+'</span></div>'}
+  $("#ib_in").addEventListener("input",calcIB);
+
+  /* ===== Zeiterfassung ===== */
+  var timer=null,t0=0,acc=0;
+  function fmtClock(ms){var s=Math.floor(ms/1000),h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(x).padStart(2,"0")}
+  function tick(){$("#z_clock").textContent=fmtClock(acc+(timer?Date.now()-t0:0))}
+  $("#z_startstop").addEventListener("click",function(){if(timer){clearInterval(timer);timer=null;acc+=Date.now()-t0;this.textContent="▶︎ Weiter"}else{t0=Date.now();timer=setInterval(tick,500);this.textContent="⏸ Pause"}tick()});
+  $("#z_log").addEventListener("click",function(){if(timer){clearInterval(timer);timer=null;acc+=Date.now()-t0}var hrs=acc/3600000;if(hrs<=0){toast("Stoppuhr ist bei 0");return}$("#z_std").value=(Math.round(hrs*100)/100).toString().replace(".",",");acc=0;$("#z_clock").textContent="00:00:00";$("#z_startstop").textContent="▶︎ Start";toast("Zeit übernommen — jetzt erfassen")});
+  function tEntries(){return get("abanCockpit_time",[])}
+  function renderTime(){var e=tEntries(),el=$("#z_list"),sum=$("#z_sum");el.innerHTML="";var th=0,tb=0;
+    e.forEach(function(x,i){th+=n(x.std)||0;tb+=(n(x.std)||0)*(n(x.satz)||0);var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>⏱ '+esc(x.proj||"—")+' · '+(String(x.std).replace(".",","))+' h · '+nf((n(x.std)||0)*(n(x.satz)||0))+'</span>';
+      var w=document.createElement("span");w.className="x";var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var a=tEntries();a.splice(i,1);set("abanCockpit_time",a);renderTime()};w.appendChild(del);row.appendChild(w);el.appendChild(row)});
+    sum.innerHTML=e.length?'<div class="box"><b>'+(Math.round(th*100)/100).toString().replace(".",",")+'</b><span>Stunden gesamt</span></div><div class="box big"><b>'+nf(tb)+'</b><span>Summe (netto)</span></div>':"";
+    if(!e.length)el.innerHTML='<p class="note">Noch keine Einträge.</p>'}
+  $("#z_add").addEventListener("click",function(){var proj=$("#z_proj").value.trim();if(!proj){toast("Bitte Projekt angeben");return}
+    var a=tEntries();a.unshift({proj:proj,datum:$("#z_datum").value,std:$("#z_std").value,satz:$("#z_satz").value,desc:$("#z_desc").value});set("abanCockpit_time",a);
+    $("#z_desc").value="";renderTime();toast("Eintrag gespeichert ✓")});
+  $("#z_toinv").addEventListener("click",function(){var e=tEntries();if(!e.length){toast("Keine Einträge");return}
+    R.setItems(e.map(function(x){return {desc:(x.proj||"")+(x.desc?" — "+x.desc:""),qty:(n(x.std)||0).toString().replace(".",","),price:(n(x.satz)||0).toString().replace(".",",")}}));
+    $$("#tabs button").forEach(function(b){b.classList.toggle("on",b.dataset.v==="rechnung")});$$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-rechnung")});window.scrollTo(0,0);toast("In Rechnung übernommen ✓")});
+
+  /* ===== Mahnung ===== */
   var mhStufe="1";
   $$("#mh_seg button").forEach(function(b){b.addEventListener("click",function(){mhStufe=b.dataset.s;$$("#mh_seg button").forEach(function(x){x.classList.toggle("on",x===b)});genMahnung()})});
-  function genMahnung(){
-    var s=stamm(),kunde=$("#mh_kunde").value||"Sehr geehrte Damen und Herren",nr=$("#mh_nr").value||"[Nr.]",betrag=$("#mh_betrag").value||"[Betrag]";
-    var fd=parseDate($("#mh_faellig").value),faelligTxt=isNaN(fd.getTime())?"[Fälligkeitsdatum]":de(fd);
-    var frist=parseInt($("#mh_frist").value,10)||10,neu=de(addDays(new Date(),frist));
-    var anrede=/^(herr|frau|sehr)/i.test(kunde)?kunde:("Sehr geehrte/r "+kunde);
-    var subj,body;
-    if(mhStufe==="1"){
-      subj="Zahlungserinnerung zur Rechnung "+nr;
-      body=anrede+",\n\nsicher ist es Ihrer Aufmerksamkeit entgangen: unsere Rechnung "+nr+" über "+betrag+" war am "+faelligTxt+" fällig und ist bisher offen.\n\nBitte gleichen Sie den Betrag bis zum "+neu+" aus. Sollten Sie die Zahlung bereits veranlasst haben, betrachten Sie diese Erinnerung als gegenstandslos.\n\nVielen Dank und freundliche Grüße\n"+(s.firma||"");
-    }else{
-      subj="1. Mahnung zur Rechnung "+nr;
-      body=anrede+",\n\ntrotz unserer Erinnerung ist die Rechnung "+nr+" über "+betrag+" (fällig am "+faelligTxt+") weiterhin offen.\n\nWir fordern Sie auf, den Betrag bis spätestens "+neu+" zu begleichen. Nach Ablauf dieser Frist behalten wir uns vor, Verzugszinsen und Mahnkosten zu berechnen.\n\nFreundliche Grüße\n"+(s.firma||"");
-    }
-    $("#mh_subj").innerHTML="<b>Betreff:</b> "+esc(subj);
-    $("#mh_text").textContent=body;
-  }
+  function genMahnung(){var s=stamm(),kunde=$("#mh_kunde").value||"Sehr geehrte Damen und Herren",nr=$("#mh_nr").value||"[Nr.]",betrag=$("#mh_betrag").value||"[Betrag]";
+    var fd=parseDate($("#mh_faellig").value),ft=isNaN(fd.getTime())?"[Fälligkeit]":de(fd),frist=parseInt($("#mh_frist").value,10)||10,neu=de(addDays(new Date(),frist));
+    var anrede=/^(herr|frau|sehr)/i.test(kunde)?kunde:("Sehr geehrte/r "+kunde),subj,body;
+    if(mhStufe==="1"){subj="Zahlungserinnerung zur Rechnung "+nr;body=anrede+",\n\nsicher ist es Ihrer Aufmerksamkeit entgangen: unsere Rechnung "+nr+" über "+betrag+" war am "+ft+" fällig und ist bisher offen.\n\nBitte gleichen Sie den Betrag bis zum "+neu+" aus. Sollten Sie bereits gezahlt haben, betrachten Sie diese Erinnerung als gegenstandslos.\n\nFreundliche Grüße\n"+(s.firma||"")}
+    else{subj="1. Mahnung zur Rechnung "+nr;body=anrede+",\n\ntrotz unserer Erinnerung ist die Rechnung "+nr+" über "+betrag+" (fällig am "+ft+") weiterhin offen.\n\nWir fordern Sie auf, den Betrag bis spätestens "+neu+" zu begleichen. Nach Ablauf der Frist behalten wir uns vor, Verzugszinsen und Mahnkosten zu berechnen.\n\nFreundliche Grüße\n"+(s.firma||"")}
+    $("#mh_subj").innerHTML="<b>Betreff:</b> "+esc(subj);$("#mh_text").textContent=body}
   ["mh_kunde","mh_nr","mh_betrag","mh_faellig","mh_frist"].forEach(function(id){$("#"+id).addEventListener("input",genMahnung)});
   $("#mh_copy").addEventListener("click",function(){copy($("#mh_text").textContent)});
 
-  /* ---- Business-E-Mail ---- */
-  function genEmail(){
-    var s=stamm(),sit=$("#em_sit").value,name=$("#em_name").value||"",detail=$("#em_detail").value||"";
-    var anrede=name?("Sehr geehrte/r "+name):"Guten Tag";
-    var gruss="\n\nFreundliche Grüße\n"+(s.firma||"");
-    var T={
-      nachfassen:["Kurze Nachfrage zu unserem Angebot",anrede+",\n\nich komme kurz auf "+(detail||"mein Angebot")+" zurück. Passt es inhaltlich für Sie, oder darf ich etwas anpassen?\n\nÜber eine kurze Rückmeldung freue ich mich."+gruss],
-      preis:["Anpassung unserer Preise",anrede+",\n\nzum kommenden Quartal passe ich meine Preise moderat an"+(detail?" ("+detail+")":"")+". Bestehende Zusagen gelten selbstverständlich unverändert. Bei Fragen bin ich gern für Sie da."+gruss],
-      absage:["Rückmeldung zu Ihrer Anfrage",anrede+",\n\nvielen Dank für Ihre Anfrage"+(detail?" zu "+detail:"")+". Leider kann ich sie aktuell nicht übernehmen — ich melde mich aber gern, sobald wieder Kapazität frei ist."+gruss],
-      reklamation:["Ihre Rückmeldung — wir kümmern uns",anrede+",\n\ndanke, dass Sie sich gemeldet haben"+(detail?" wegen "+detail:"")+". Das tut mir leid. Ich prüfe den Fall umgehend und melde mich mit einer Lösung bei Ihnen."+gruss],
-      reaktivieren:["Schön, wieder von uns zu hören?",anrede+",\n\nwir haben länger nichts voneinander gehört"+(detail?" — seit "+detail:"")+". Falls ich Sie wieder unterstützen darf, melden Sie sich gern. Als kleines Dankeschön habe ich ein passendes Angebot für Sie."+gruss]
-    };
-    var t=T[sit]||T.nachfassen;
-    $("#em_subj").innerHTML="<b>Betreff:</b> "+esc(t[0]);
-    $("#em_text").textContent=t[1];
-  }
+  /* ===== E-Mail ===== */
+  function genEmail(){var s=stamm(),sit=$("#em_sit").value,name=$("#em_name").value||"",detail=$("#em_detail").value||"";
+    var anrede=name?("Sehr geehrte/r "+name):"Guten Tag",gruss="\n\nFreundliche Grüße\n"+(s.firma||"");
+    var T={nachfassen:["Kurze Nachfrage zu unserem Angebot",anrede+",\n\nich komme kurz auf "+(detail||"mein Angebot")+" zurück. Passt es so für Sie, oder darf ich etwas anpassen?\n\nÜber eine kurze Rückmeldung freue ich mich."+gruss],
+      preis:["Anpassung unserer Preise",anrede+",\n\nzum kommenden Quartal passe ich meine Preise moderat an"+(detail?" ("+detail+")":"")+". Bestehende Zusagen gelten unverändert. Bei Fragen bin ich gern da."+gruss],
+      absage:["Rückmeldung zu Ihrer Anfrage",anrede+",\n\nvielen Dank für Ihre Anfrage"+(detail?" zu "+detail:"")+". Leider kann ich sie aktuell nicht übernehmen — ich melde mich gern, sobald wieder Kapazität frei ist."+gruss],
+      reklamation:["Wir kümmern uns",anrede+",\n\ndanke für Ihre Rückmeldung"+(detail?" wegen "+detail:"")+". Das tut mir leid. Ich prüfe den Fall umgehend und melde mich mit einer Lösung."+gruss],
+      reaktivieren:["Schön, wieder von uns zu hören?",anrede+",\n\nwir haben länger nichts voneinander gehört"+(detail?" — seit "+detail:"")+". Falls ich Sie wieder unterstützen darf, melden Sie sich gern."+gruss],
+      termin:["Terminvorschlag",anrede+",\n\ngern stimme ich einen Termin mit Ihnen ab"+(detail?" zu "+detail:"")+". Passt Ihnen einer der kommenden Tage? Schlagen Sie gern eine Uhrzeit vor, ich richte mich nach Ihnen."+gruss]};
+    var t=T[sit]||T.nachfassen;$("#em_subj").innerHTML="<b>Betreff:</b> "+esc(t[0]);$("#em_text").textContent=t[1]}
   ["em_sit","em_name","em_detail"].forEach(function(id){$("#"+id).addEventListener("input",genEmail)});
   $("#em_copy").addEventListener("click",function(){copy($("#em_text").textContent)});
 
-  function copy(txt){
-    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){toast("Kopiert ✓")},function(){fallback(txt)})}else fallback(txt);
-    function fallback(t){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");toast("Kopiert ✓")}catch(e){toast("Bitte manuell kopieren")}a.remove()}
-  }
+  function copy(txt){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){toast("Kopiert ✓")},function(){fb(txt)})}else fb(txt);
+    function fb(t){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");toast("Kopiert ✓")}catch(e){toast("Bitte manuell kopieren")}a.remove()}}
 
-  /* ---- Init ---- */
-  loadStamm();
-  $("#r_datum").value=isoToday();$("#zf_datum").value=isoToday();
-  addItem("",1,0);renderDrafts();
-  calcM();calcS();calcVZ();calcZF();genMahnung();genEmail();
+  /* ===== Trading ===== */
+  function calcTP(){var K=n($("#tp_konto").value),rp=n($("#tp_risk").value),e=n($("#tp_entry").value),sl=n($("#tp_stop").value);
+    if(!isFinite(K)||!isFinite(rp)||!isFinite(e)||!isFinite(sl)){$("#tp_out").innerHTML="";return}
+    var risk=K*rp/100,per=Math.abs(e-sl),units=per>0?risk/per:NaN,val=isFinite(units)?units*e:NaN;
+    $("#tp_out").innerHTML='<div class="box"><b>'+nf(risk)+'</b><span>Risiko (max. Verlust)</span></div><div class="box big"><b>'+(isFinite(units)?units.toLocaleString("de-DE",{maximumFractionDigits:2}):"—")+'</b><span>Stückzahl / Einheiten</span></div><div class="box"><b>'+nf(val)+'</b><span>Positionswert</span></div>'}
+  ["tp_konto","tp_risk","tp_entry","tp_stop"].forEach(function(id){$("#"+id).addEventListener("input",calcTP)});
+
+  function calcTR(){var e=n($("#tr_entry").value),sl=n($("#tr_stop").value),tg=n($("#tr_tgt").value);
+    if(!isFinite(e)||!isFinite(sl)||!isFinite(tg)){$("#tr_out").innerHTML="";return}
+    var risk=Math.abs(e-sl),reward=Math.abs(tg-e),crv=risk>0?reward/risk:NaN,wr=isFinite(crv)?100/(1+crv):NaN;
+    $("#tr_out").innerHTML='<div class="box big"><b>1 : '+(isFinite(crv)?crv.toLocaleString("de-DE",{maximumFractionDigits:2}):"—")+'</b><span>Chance/Risiko</span></div><div class="box"><b>'+(isFinite(wr)?wr.toLocaleString("de-DE",{maximumFractionDigits:1})+" %":"—")+'</b><span>nötige Trefferquote</span></div><div class="box"><b>'+nf(reward)+' / '+nf(risk)+'</b><span>Gewinn / Verlust je Einheit</span></div>'}
+  ["tr_entry","tr_stop","tr_tgt"].forEach(function(id){$("#"+id).addEventListener("input",calcTR)});
+
+  function calcTG(){var b=n($("#tg_buy").value),s=n($("#tg_sell").value),q=n($("#tg_qty").value),f=n($("#tg_fee").value);
+    if(!isFinite(b)||!isFinite(s)||!isFinite(q)){$("#tg_out").innerHTML="";return}if(!isFinite(f))f=0;
+    var gross=(s-b)*q,fees=(b*q+s*q)*f/100,net=gross-fees,ret=(b*q)>0?net/(b*q)*100:NaN;
+    $("#tg_out").innerHTML='<div class="box"><b>'+nf(gross)+'</b><span>Brutto-G/V</span></div><div class="box"><b>'+nf(fees)+'</b><span>Gebühren</span></div><div class="box big '+(net>=0?"ok":"bad")+'"><b>'+nf(net)+'</b><span>Netto-G/V ('+(isFinite(ret)?ret.toLocaleString("de-DE",{maximumFractionDigits:1})+" %":"—")+')</span></div>'}
+  ["tg_buy","tg_sell","tg_qty","tg_fee"].forEach(function(id){$("#"+id).addEventListener("input",calcTG)});
+
+  function calcTL(){var L=n($("#tl_loss").value);if(!isFinite(L)||L<0||L>=100){$("#tl_out").innerHTML="";return}
+    var need=L/(100-L)*100;
+    $("#tl_out").innerHTML='<div class="box big"><b>+'+need.toLocaleString("de-DE",{maximumFractionDigits:1})+' %</b><span>Gewinn nötig, um −'+String(L).replace(".",",")+' % auszugleichen</span></div>'}
+  $("#tl_loss").addEventListener("input",calcTL);
+
+  function calcTC(){var P=n($("#tc_start").value),m=n($("#tc_month").value),r=n($("#tc_rate").value),y=n($("#tc_years").value);
+    if(!isFinite(P))P=0;if(!isFinite(m))m=0;if(!isFinite(r)||!isFinite(y)||y<=0){$("#tc_out").innerHTML="";return}
+    var i=r/100/12,nM=Math.round(y*12),fv;
+    if(i>0){fv=P*Math.pow(1+i,nM)+m*((Math.pow(1+i,nM)-1)/i)}else{fv=P+m*nM}
+    var contrib=P+m*nM,gain=fv-contrib;
+    $("#tc_out").innerHTML='<div class="box big ok"><b>'+nf(fv)+'</b><span>Endwert nach '+y+' Jahren</span></div><div class="box"><b>'+nf(contrib)+'</b><span>Einzahlungen</span></div><div class="box"><b>'+nf(gain)+'</b><span>Wertzuwachs</span></div>'}
+  ["tc_start","tc_month","tc_rate","tc_years"].forEach(function(id){$("#"+id).addEventListener("input",calcTC)});
+
+  /* Init */
+  loadStamm();refreshPickers();renderClients();renderTime();renderDrafts();
+  $("#r_datum").value=isoToday();$("#a_datum").value=isoToday();$("#a_gueltig").value=isoToday();$("#zf_datum").value=isoToday();$("#z_datum").value=isoToday();
+  R.setItems([{}]);A.setItems([{}]);
+  calcM();calcH();calcS();calcVZ();calcZF();calcPC();calcIB();calcTP();calcTR();calcTG();calcTL();calcTC();genMahnung();genEmail();
 })();
 </script>
 </body>
