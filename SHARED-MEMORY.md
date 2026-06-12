@@ -39,6 +39,29 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-12 — abannews session: grosser QA-/SEO-Reparatur-Lauf (Branch `claude/abannews-projekt-JSw9l`):**
+- **Auslöser:** User „100 agent go … melde dich wenn komplett fertig" → autonomer QA-Durchlauf mit 3 parallelen
+  Audit-Agenten (hreflang/Funnel/FR-IT) + vorhandene Audit-Tools (`make consistency/links/growth/status`).
+- **Behoben (alles verifiziert, 2 Commits):**
+  - **88 fehlende Lead-Magnet-PDFs** generiert (44 DE + 44 EN, waren Broken-Links) + in 25 Hubs verlinkt →
+    Lead-Magnet-Abdeckung **360/360** (war 352), Lead-PDFs 316→360.
+  - **37 keylose Hub-Header-Platzhalter** (`img/site/hub-*.jpg`) gegen 404 (tools/gen_hub_placeholder.py).
+  - **Favicons** `favicon-16x16/32x32.png` aus `favicon.svg` gerendert + **`site.webmanifest`** erstellt
+    (beide in 23 Seiten referenziert, fehlten komplett).
+  - **5 hreflang-404s entfernt:** `it`-Variante von beratung/produkte/transparenz (nur de/en/fr existieren),
+    `en`-Variante von text-anonymisieren. **Malformed `sitemap.xml`** (verschachtelte `<url>` bei
+    geld-verdienen-mit-ki) repariert → valides XML, 2030 URLs.
+  - **OG-/Twitter-Bild** auf hilfe-ki-werkzeug (de/en/fr/it) ergänzt; **3 verwaiste Hubs** (alpakahof/pilzzucht/
+    straussenfarm) via Hub-Neubau verlinkt.
+  - **3 veraltete EN-Preise** „Founding member €149" → €69; **Konsistenz-Checker** kennt jetzt den Pro-Tarif
+    (€19/€190) → keine Fehlalarme; Clean-URL-Links auf `.html` (hype-watch/sponsoring); tote `/en/tools.html`-
+    Links auf bestehende EN-Tools-Seite umgebogen.
+- **Von Agenten als SAUBER bestätigt (kein Fix nötig):** FR/IT-Übersetzungen (keine Leakage, lang-Attribute ok),
+  Kauf-Funnel (Founding/PayPal, Pro/Lemon-Squeezy, beehiiv alle live; `premium-briefing` €19/€190 = eigenes
+  Produkt, kein Drift), `AFFILIATE-URL`-Vorkommen = nur auskommentierte Template-Blöcke (keine toten Buttons).
+- **Bewusst NICHT gemacht:** Newsletter-CTA auf 32 Sales-/Rechts-/Utility-Seiten (würde ki-studio/empfehlen/
+  api/press/mrr zumüllen). Berührt KEINEN Shop/Katalog/Social. Draft-PR nach `main`.
+
 **2026-06-11 — Luxestyle/POD session: Editor mit echten Fotos + 98 Fertig-Mockups + Shop-Audit A–Z:**
 - **🎨 Selbst-gestalten-Editor komplett überarbeitet** (`pod/designer.js` live): echtes Produktfoto statt
   Zeichnung bei ALLEN Editor-Produkten (Shirt/Tasse/Tote/Kissen/Magnet/Poster/Bügeltransfer), Live-Farbvorschau
