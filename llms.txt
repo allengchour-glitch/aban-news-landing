@@ -14,6 +14,7 @@ Betreiber: aban news (Allen Chour), Schweizer Einzelunternehmen, Belp (CH). Alle
 - [Angebot schreiben — Vorlage & Generator](https://abannews.com/angebot-schreiben.html): mit/ohne MwSt, zum Kopieren.
 - [Auftragsbestätigung schreiben — Generator](https://abannews.com/auftragsbestaetigung-schreiben.html): Auftrag schriftlich bestätigen.
 - [Mahnung schreiben — Text-Generator](https://abannews.com/mahnung-schreiben.html): 3 Stufen (Erinnerung/1./2. Mahnung), zum Kopieren.
+- [Business-E-Mail-Generator — schwierige E-Mails](https://abannews.com/email-vorlagen.html): 14 Situationen (Preiserhöhung, nachfassen, höflich absagen, Reklamation, reaktivieren …), fertiger Text zum Kopieren.
 
 ## Geld & Steuern (ehrlich erklärt, keine Beratung)
 - [Geld & KI — Übersicht](https://abannews.com/geld-und-ki.html): alle Geld-Themen, Rechner und Checks an einem Ort.

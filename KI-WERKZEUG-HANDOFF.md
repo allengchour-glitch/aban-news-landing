@@ -4,6 +4,21 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-12 (Teil 11) — Mega-Tool E-Mail-Generator + Funnel-Cross-Links (User: „mega top tool … beides")
+- **Neues Flaggschiff `email-vorlagen.html` (Business-E-Mail-Generator):** 14 schwierige Geschäfts-Situationen
+  (Angebot nachfassen, Preiserhöhung, höflich absagen, Rabatt ablehnen, Verzug, Bewertung erbitten,
+  Zahlungserinnerung, Reklamation, Termin verschieben, Erstkontakt, reaktivieren, Briefing anfordern,
+  Skonto anbieten, Danke nach Abschluss). Situation wählen → 2–3 Felder → fertige E-Mail (Betreff+Body)
+  zum Kopieren, Ton-Schalter (Freundlich/Sachlich/Bestimmt), localStorage für Absendername. Rein im Browser,
+  KEINE KI/Backend (selbst geschriebene Vorlagen-Engine, ES5, `node --check` grün). WebApplication+FAQPage-
+  JSON-LD, „Was macht das?"-Zeile, Disclaimer (keine Rechtsberatung) + Cross-Links zu Mahnung/Skonto/
+  Text-Anonymisierer. Verdrahtet: sitemap, llms.txt, online-tools (Karte + ItemList pos. 37, numberOfItems 37).
+  Kein Redirect-Alias (Loop-Falle). Warum dieses Tool: Prompt-Bibliothek existiert schon als Subdomain
+  `prompts.abannews.com` (Repo `prompts-bibliothek/`), Honorar-Rechner auch (stundensatz/finanz) → bewusst NEU.
+- **Conversion-Feinschliff:** E-Mail-Tool aus `angebot-schreiben` + `mahnung-schreiben` quer verlinkt
+  (high-intent → mehr Tool-Nutzung → mehr Abos). `founding.html` ist bereits stark (ehrliche 30-Tage-
+  Geld-zurück, keine Fake-Verknappung, echte Honor-Roll) → bewusst NICHT „optimiert" mit Fake-Druck.
+
 ## 2026-06-12 (Teil 10) — Neues Tool + alles anfängerfreundlich beschrieben (User: „beschreib jede tool für anfänger", „weiter")
 - **Neues Tool `skonto-rechner.html`:** lohnt sich Skonto ziehen? Zeigt Skonto-Betrag, Zahlbetrag und den
   **effektiven Jahreszins** (kaufmännische 360-Tage-Näherung), Balken/Donut-3D auf echten Eingaben,

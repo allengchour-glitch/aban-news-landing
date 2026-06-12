@@ -13,6 +13,8 @@ SENT = {
  "mahnung-schreiben.html": "Erstellt eine höfliche Zahlungserinnerung oder Mahnung als fertigen Text zum Kopieren.",
  "angebot-schreiben.html": "Hilft dir, ein sauberes Angebot zu schreiben — mit oder ohne Mehrwertsteuer, zum Kopieren.",
  "auftragsbestaetigung-schreiben.html": "Bestätigt einen Auftrag schriftlich — fertiger Text zum Kopieren und Versenden.",
+ "email-vorlagen.html": "Gibt dir für 14 knifflige Geschäfts-Situationen eine höfliche E-Mail als fertigen Text zum Kopieren.",
+ "skonto-rechner.html": "Zeigt, ob es sich lohnt, früh zu zahlen und Skonto abzuziehen — mit dem effektiven Jahreszins.",
  "finanz-rechner.html": "Berechnet deinen fairen Stundensatz und wie viel du für Steuern zurücklegen solltest.",
  "stundensatz-rechner.html": "Zeigt, welchen Stundensatz du wirklich brauchst, um von deiner Arbeit zu leben.",
  "ki-kosten-rechner.html": "Zählt deine KI-Abos zusammen und zeigt, was du wirklich pro Monat und Jahr zahlst.",
