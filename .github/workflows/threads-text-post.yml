@@ -6,8 +6,7 @@ name: Threads Text-Post (1×/Tag, gesprächig)
 # No-op ohne THREADS_ACCESS_TOKEN.
 
 on:
-  schedule:
-    - cron: '0 19 * * *'   # 19:00 UTC (~21:00 CH) — versetzt zu den Reel-Slots 09/20
+  # Auto-Posten auf Threads DEAKTIVIERT (User-Wunsch 2026-06-12). Nur noch manuell auslösbar.
   workflow_dispatch:
     inputs:
       dry_run:
