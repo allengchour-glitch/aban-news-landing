@@ -84,49 +84,70 @@ async function downloadToTemp(url){
   return { path: p, size: buf.length };
 }
 
-// --- TikTok-Posting (FILE_UPLOAD) ---
+// --- TikTok-Posting: Direct-Post mit automatischem Fallback auf Inbox/Entwurf (ohne Audit) ---
+const TT_MODE = (process.env.TT_UPLOAD_MODE || 'auto').toLowerCase();  // auto | direct | inbox
+const DIRECT_URL = 'https://open.tiktokapis.com/v2/post/publish/video/init/';
+const INBOX_URL  = 'https://open.tiktokapis.com/v2/post/publish/inbox/video/init/';
+
+async function ttInit(url, token, body){
+  const r = await fetch(url, { method:'POST',
+    headers:{ Authorization:`Bearer ${token}`, 'Content-Type':'application/json' },
+    body: JSON.stringify(body) });
+  const j = await r.json().catch(()=>({}));
+  return { ok:r.ok, j };
+}
+
 async function postTikTok(token, videoUrl, caption){
   const { path: localPath, size } = await downloadToTemp(videoUrl);
-  // 1) Init publish session
-  const init = await fetch('https://open.tiktokapis.com/v2/post/publish/video/init/', {
-    method:'POST',
-    headers:{ Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      post_info: {
-        title: caption.slice(0, 2200),  // TT-Limit
-        privacy_level: PRIVACY,
-        disable_duet: false, disable_comment: false, disable_stitch: false,
-        video_cover_timestamp_ms: 1000
-      },
-      source_info: {
-        source: 'FILE_UPLOAD',
-        video_size: size,
-        chunk_size: size,           // Single-Chunk-Upload (Videos < 64MB)
-        total_chunk_count: 1
+  const source_info = { source:'FILE_UPLOAD', video_size:size, chunk_size:size, total_chunk_count:1 };
+  let upload_url='', publish_id='', mode='';
+
+  // 1) Direct-Post versuchen (ausser explizit inbox)
+  if(TT_MODE !== 'inbox'){
+    const { ok, j } = await ttInit(DIRECT_URL, token, {
+      post_info:{ title:caption.slice(0,2200), privacy_level:PRIVACY,
+        disable_duet:false, disable_comment:false, disable_stitch:false, video_cover_timestamp_ms:1000 },
+      source_info,
+    });
+    if(ok && j.data?.upload_url){ upload_url=j.data.upload_url; publish_id=j.data.publish_id; mode='direct'; }
+    else {
+      const code = j.error?.code || j.code || '';
+      if(code === 'unaudited_client_can_only_post_to_private_accounts' && TT_MODE==='auto'){
+        console.log('⏳ Direct-Post gesperrt (App unauditiert) → Fallback: Upload in TikTok-Entwürfe (Inbox).');
+      } else {
+        fs.unlinkSync(localPath);
+        console.error('TT init (direct):', JSON.stringify(j.error||j));
+        return false;
       }
-    })
-  });
-  const ij = await init.json().catch(()=>({}));
-  if(!init.ok || !ij.data?.upload_url){
-    console.error('TT init:', init.status, JSON.stringify(ij.error||ij));
-    fs.unlinkSync(localPath);
-    return false;
+    }
   }
-  // 2) Upload binary (single PUT chunk)
+
+  // 2) Inbox/Entwurf (funktioniert OHNE Audit; finaler Post in der TikTok-App)
+  if(!upload_url){
+    const { ok, j } = await ttInit(INBOX_URL, token, { source_info });
+    if(!ok || !j.data?.upload_url){
+      const code = j.error?.code || j.code || '';
+      fs.unlinkSync(localPath);
+      if(code === 'unaudited_client_can_only_post_to_private_accounts'){
+        console.log('⏳ Auch Inbox meldet unauditiert → sauberer Skip bis App-Audit (Reel bleibt ready).');
+        return 'AUDIT_PENDING';
+      }
+      console.error('TT init (inbox):', JSON.stringify(j.error||j));
+      return false;
+    }
+    upload_url=j.data.upload_url; publish_id=j.data.publish_id; mode='inbox';
+  }
+
+  // 3) Bytes hochladen (Single-Chunk PUT)
   const buf = fs.readFileSync(localPath);
-  const up = await fetch(ij.data.upload_url, {
-    method:'PUT',
-    headers: { 'Content-Type': 'video/mp4', 'Content-Range': `bytes 0-${size-1}/${size}` },
-    body: buf
-  });
+  const up = await fetch(upload_url, { method:'PUT',
+    headers:{ 'Content-Type':'video/mp4', 'Content-Range':`bytes 0-${size-1}/${size}` }, body:buf });
   fs.unlinkSync(localPath);
-  if(!up.ok){
-    const t = await up.text().catch(()=> '');
-    console.error('TT upload:', up.status, t.slice(0, 200));
-    return false;
-  }
-  console.log('TikTok: publish_id', ij.data.publish_id, '(privacy:', PRIVACY + ')');
-  return ij.data.publish_id;
+  if(!up.ok){ const t=await up.text().catch(()=> ''); console.error('TT upload:', up.status, t.slice(0,200)); return false; }
+
+  if(mode==='inbox'){ console.log('TikTok: Video in Entwürfe/Inbox geladen (publish_id', publish_id + ') → in der App final posten.'); return 'INBOX:'+publish_id; }
+  console.log('TikTok: Direct-Post publish_id', publish_id, '(privacy:', PRIVACY + ')');
+  return publish_id;
 }
 
 // --- Hauptlauf ---
@@ -150,12 +171,14 @@ for(const next of ready.slice(0, MAX)){
   if(DRY){ console.log('   DRY_RUN: würde an TikTok senden.'); postedCount++; continue; }
   try{
     const pubId = await postTikTok(TOK, videoUrl, caption);
+    if(pubId === 'AUDIT_PENDING'){ console.log('   → warte auf TikTok-Audit; Reel bleibt ready.'); break; }
     if(pubId){
-      next[idx.status] = 'posted-tiktok';
+      const inbox = String(pubId).startsWith('INBOX:');
+      next[idx.status] = inbox ? 'tiktok-entwurf' : 'posted-tiktok';
       next[idx.posted_at] = new Date().toISOString();
-      next[idx.post_url] = `tt:${pubId}`;
+      next[idx.post_url] = inbox ? pubId.slice(6) : `tt:${pubId}`;
       postedCount++;
-      console.log('   ✅ veröffentlicht auf TikTok');
+      console.log(inbox ? '   📥 in TikTok-Entwürfe geladen — in der App final posten' : '   ✅ veröffentlicht auf TikTok');
     } else { anyFail = true; }
   }catch(e){ console.error('TT error:', e.message); anyFail = true; }
 }
