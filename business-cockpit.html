@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>aban Business-Cockpit — Rechnung, Mahnung &amp; Finanz-Rechner in einer App | aban news</title>
+<meta name="description" content="Rechnungen schreiben, Mahnungen, MwSt-/Skonto-/Verzugszinsen-/Fälligkeits-Rechner und ein Business-E-Mail-Generator — alles in einer offline-fähigen App. Einmal kaufen, für immer nutzen. Kein Abo, kein Login, DSGVO-konform (läuft lokal).">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/business-cockpit.html">
+<meta property="og:title" content="aban Business-Cockpit — dein ganzes Büro-Papierkram in einer App">
+<meta property="og:description" content="Rechnung, Mahnung, Finanz-Rechner & E-Mail-Generator — offline, ohne Abo, einmal kaufen. Für Selbstständige in der Schweiz, DE & AT.">
+<meta property="og:type" content="product">
+<meta property="og:url" content="https://abannews.com/business-cockpit.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"aban Business-Cockpit",
+"applicationCategory":"BusinessApplication","operatingSystem":"Web (offline-fähig)","inLanguage":"de",
+"description":"All-in-one Büro-App für Selbstständige: Rechnungen, Mahnungen, Finanz-Rechner (MwSt, Skonto, Verzugszinsen, Fälligkeit) und Business-E-Mail-Generator. Läuft lokal im Browser, kein Abo.",
+"offers":{"@type":"Offer","price":"29","priceCurrency":"EUR"},
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Ist das ein Abo?","acceptedAnswer":{"@type":"Answer","text":"Nein. Du zahlst einmal und nutzt das Cockpit dauerhaft. Keine monatlichen Kosten, keine Verlängerung."}},
+{"@type":"Question","name":"Wo werden meine Daten gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Ausschließlich lokal in deinem Browser. Rechnungen, Stammdaten und Entwürfe verlassen dein Gerät nicht — kein Server, kein Konto, kein Tracking. Das ist DSGVO-freundlich und funktioniert auch offline."}},
+{"@type":"Question","name":"Für welche Länder ist das gedacht?","acceptedAnswer":{"@type":"Answer","text":"Für Selbstständige in der Schweiz, Deutschland und Österreich. Die MwSt-Sätze (CH 8,1 %, DE 19/7 %, AT 20/10 %) und die Verzugsregeln sind vorbereitet."}},
+{"@type":"Question","name":"Brauche ich eine Installation?","acceptedAnswer":{"@type":"Answer","text":"Nein. Es läuft direkt im Browser und lässt sich als App zum Homescreen hinzufügen. Nichts zu installieren, nichts einzurichten."}},
+{"@type":"Question","name":"Ist das eine Steuer- oder Rechtsberatung?","acceptedAnswer":{"@type":"Answer","text":"Nein. Das Cockpit ist ein Werkzeug für den Büroalltag und ersetzt keine individuelle Steuer- oder Rechtsberatung."}}]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:13px 24px;border-radius:11px;border:0;cursor:pointer;font-size:1.02rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt);padding:11px 18px;font-size:.92rem}
+.btn.big{padding:16px 32px;font-size:1.12rem;box-shadow:0 10px 26px rgba(217,119,6,.32)}
+.hero{padding:48px 0 12px;text-align:center}
+.kicker{display:inline-block;background:var(--cream);border:1px solid var(--amber-lt);color:var(--amber-dk);font-size:.8rem;font-weight:700;padding:5px 13px;border-radius:999px;margin-bottom:16px}
+.hero h1{font-size:clamp(28px,5.2vw,42px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:14px}
+.hero h1 .a{color:var(--amber)}
+.hero p.lead{font-size:clamp(16px,2.4vw,19px);color:var(--ink2);max-width:620px;margin:0 auto 22px}
+.price{font-size:1.05rem;color:var(--muted);margin-top:14px}
+.price b{color:var(--ink);font-size:1.5rem}
+.price s{color:var(--muted)}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;margin:18px auto 0;font-size:.86rem;color:var(--muted);max-width:560px}
+.trust span{white-space:nowrap}
+section.block{padding:34px 0;border-top:1px solid var(--line)}
+section.block h2{font-size:clamp(21px,3.4vw,27px);font-weight:800;margin-bottom:18px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h3{font-size:1.05rem;margin-bottom:6px}
+.card p{font-size:.92rem;color:var(--ink2)}
+.card .ic{font-size:1.5rem;margin-bottom:8px}
+.checks{max-width:620px;margin:0 auto;display:grid;gap:10px}
+.check{display:flex;gap:11px;align-items:flex-start;font-size:.96rem}
+.check .c{color:var(--ok);font-weight:800;flex-shrink:0}
+.pricebox{max-width:460px;margin:0 auto;background:var(--card);border:2px solid var(--amber);border-radius:18px;padding:28px;text-align:center;box-shadow:0 16px 44px rgba(28,37,48,.12)}
+.pricebox .big{font-size:2.6rem;font-weight:800;color:var(--amber-dk);line-height:1}
+.pricebox .once{color:var(--muted);font-size:.9rem;margin:4px 0 18px}
+.pricebox ul{list-style:none;text-align:left;margin:18px 0;display:grid;gap:8px}
+.pricebox li{font-size:.93rem;padding-left:24px;position:relative}
+.pricebox li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}
+details.faq{border:1px solid var(--line);border-radius:12px;background:var(--card);margin-bottom:10px}
+details.faq summary{padding:14px 16px;font-weight:700;cursor:pointer;list-style:none}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:"+";float:right;color:var(--amber);font-weight:800}
+details.faq[open] summary::after{content:"–"}
+details.faq .b{padding:0 16px 16px;font-size:.93rem;color:var(--ink2)}
+.demo-note{font-size:.85rem;color:var(--muted);margin-top:12px}
+footer{border-top:1px solid var(--line);margin-top:10px;padding:24px 0;font-size:.82rem;color:var(--muted);text-align:center}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="#kaufen" class="btn ghost">Jetzt holen</a></div></header>
+<main>
+<div class="wrap">
+  <section class="hero">
+    <span class="kicker">Für Selbstständige in CH · DE · AT</span>
+    <h1>Dein ganzer <span class="a">Büro-Papierkram</span> — in einer App.</h1>
+    <p class="lead">Rechnungen schreiben, Mahnungen, alle Finanz-Rechner und ein Business-E-Mail-Generator. Offline, ohne Abo, ohne Login. <strong>Einmal kaufen, für immer nutzen.</strong></p>
+    <a href="#kaufen" class="btn big">Business-Cockpit holen — €29</a>
+    <p class="price"><s>€49</s> &nbsp; jetzt <b>€29</b> &nbsp;· einmalig, kein Abo</p>
+    <div class="trust">
+      <span>✓ Läuft 100 % lokal (DSGVO)</span>
+      <span>✓ Kein Server, kein Tracking</span>
+      <span>✓ Funktioniert offline</span>
+      <span>✓ Kostenlos testen</span>
+    </div>
+    <p class="demo-note"><a href="/cockpit-app.html">→ Gratis-Demo öffnen</a> (voll funktionsfähig — Stammdaten &amp; Entwürfe bleiben lokal bei dir)</p>
+  </section>
+</div>
+
+<section class="block"><div class="wrap">
+  <h2>4 Werkzeuge, 1 Programm</h2>
+  <div class="grid">
+    <div class="card"><div class="ic">🧾</div><h3>Rechnung</h3><p>Positionen eintragen, MwSt automatisch, als PDF drucken. Deine Stammdaten füllen Absender &amp; Bankdaten von selbst. Entwürfe lokal speichern.</p></div>
+    <div class="card"><div class="ic">🔢</div><h3>Finanz-Rechner</h3><p>MwSt (netto↔brutto), Skonto-Effektivzins, Verzugszinsen + Mahnpauschale und Fälligkeit/Verzug — alle vier in einem Tab.</p></div>
+    <div class="card"><div class="ic">⏰</div><h3>Mahnung</h3><p>Freundliche Erinnerung oder bestimmte Mahnung auf Knopfdruck — mit Rechnungsnummer, Betrag und neuer Frist. Fertig zum Kopieren.</p></div>
+    <div class="card"><div class="ic">✉️</div><h3>E-Mail-Generator</h3><p>Angebot nachfassen, Preiserhöhung, höflich absagen, Reklamation, Kunde reaktivieren — fertige, höfliche Texte in Sekunden.</p></div>
+  </div>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <h2>Warum kaufen, wenn es Gratis-Tools gibt?</h2>
+  <div class="checks">
+    <div class="check"><span class="c">✓</span><span><strong>Alles an einem Ort</strong> — kein Wechseln zwischen 6 Browser-Tabs. Stammdaten einmal eintragen, überall genutzt.</span></div>
+    <div class="check"><span class="c">✓</span><span><strong>Offline &amp; privat</strong> — funktioniert ohne Internet, deine Kundendaten bleiben auf deinem Gerät. Ideal für sensible Rechnungsdaten.</span></div>
+    <div class="check"><span class="c">✓</span><span><strong>Kein Abo-Fass ohne Boden</strong> — andere Rechnungsprogramme kosten €10–20 <em>pro Monat</em>. Hier zahlst du einmal €29.</span></div>
+    <div class="check"><span class="c">✓</span><span><strong>Entwürfe &amp; Wiedervorlage</strong> — Rechnungen speichern, später laden, drucken. Keine Einrichtung, sofort startklar.</span></div>
+    <div class="check"><span class="c">✓</span><span><strong>Updates inklusive</strong> — neue Funktionen kommen dazu, ohne Aufpreis.</span></div>
+  </div>
+</div></section>
+
+<section class="block" id="kaufen"><div class="wrap">
+  <h2>Einmal zahlen. Für immer nutzen.</h2>
+  <div class="pricebox">
+    <div class="big">€29</div>
+    <div class="once"><s>€49</s> · einmalig · kein Abo · 14 Tage Geld-zurück</div>
+    <ul>
+      <li>Rechnung + Mahnung + 4 Rechner + E-Mail-Generator</li>
+      <li>Offline, lokal, DSGVO-freundlich</li>
+      <li>CH · DE · AT (MwSt vorbereitet)</li>
+      <li>Updates inklusive</li>
+    </ul>
+    <!-- TODO(Aban): href auf deinen Stripe-Payment-Link für €29 setzen (Success-URL → /cockpit-app.html) -->
+    <a href="STRIPE_PAYMENT_LINK_HIER" class="btn big" id="buy" style="width:100%">Jetzt kaufen — €29 →</a>
+    <p class="demo-note">Sichere Zahlung über Stripe · sofort nach Kauf nutzbar.<br><a href="/cockpit-app.html">Erst gratis testen →</a></p>
+  </div>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <h2>Häufige Fragen</h2>
+  <details class="faq"><summary>Ist das ein Abo?</summary><div class="b">Nein. Du zahlst einmal €29 und nutzt das Cockpit dauerhaft. Keine monatlichen Kosten.</div></details>
+  <details class="faq"><summary>Wo landen meine Daten?</summary><div class="b">Nur lokal in deinem Browser. Rechnungen, Stammdaten und Entwürfe verlassen dein Gerät nicht — kein Server, kein Konto, kein Tracking. Funktioniert auch offline.</div></details>
+  <details class="faq"><summary>Für welche Länder?</summary><div class="b">Schweiz, Deutschland, Österreich. MwSt-Sätze (CH 8,1 %, DE 19/7 %, AT 20/10 %) und Verzugsregeln sind vorbereitet.</div></details>
+  <details class="faq"><summary>Muss ich etwas installieren?</summary><div class="b">Nein. Läuft im Browser, lässt sich als App zum Homescreen hinzufügen. Nichts einzurichten.</div></details>
+  <details class="faq"><summary>Ist das Steuer-/Rechtsberatung?</summary><div class="b">Nein, ein Werkzeug für den Büroalltag — keine individuelle Beratung.</div></details>
+</div></section>
+
+<div class="wrap" style="text-align:center;padding:10px 0 40px">
+  <a href="#kaufen" class="btn big">Business-Cockpit holen — €29</a>
+  <p class="demo-note" style="margin-top:12px"><a href="/cockpit-app.html">oder erst die Gratis-Demo öffnen</a></p>
+</div>
+
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/cockpit-app.html">Demo</a> · <a href="/online-tools.html">Alle Tools</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+</body>
+</html>

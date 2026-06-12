@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>aban Business-Cockpit — Rechnung, Mahnung &amp; Finanz-Rechner in einer App</title>
+<meta name="description" content="Das aban Business-Cockpit: Rechnungen schreiben, Mahnungen, MwSt-/Skonto-/Verzugszinsen-/Fälligkeits-Rechner und ein E-Mail-Generator — alles in einer offline-fähigen App. Stammdaten lokal gespeichert, kein Login, kein Server.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+a{color:var(--amber-dk)}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+header.app{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.app .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;flex-wrap:wrap}
+.brand{font-weight:800;color:var(--amber);text-decoration:none;font-size:1.05rem;white-space:nowrap}
+.brand small{color:var(--muted);font-weight:600}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 15px;cursor:pointer;font-weight:700;color:var(--ink2);font-size:.9rem}
+.tabs button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+main{padding:22px 0 60px}
+.view{display:none}
+.view.on{display:block;animation:fade .2s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+h1{font-size:1.4rem;margin-bottom:4px}
+.sub{color:var(--muted);font-size:.9rem;margin-bottom:16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}
+.panel h2{font-size:1.05rem;margin-bottom:12px}
+label{display:block;font-weight:600;font-size:12.5px;margin:0 0 5px;color:var(--ink2)}
+input,select,textarea{width:100%;font-size:14.5px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);font-family:inherit}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.row>.fld{flex:1;min-width:150px}
+.fld{margin-bottom:12px}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--amber-dk);color:#fff;border:0;border-radius:9px;padding:10px 16px;font-weight:700;font-size:.92rem;cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:7px 12px;font-size:.85rem}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+table.items{width:100%;border-collapse:collapse;margin:6px 0}
+table.items th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);padding:6px 6px}
+table.items td{padding:4px 6px;vertical-align:top}
+table.items input{padding:7px 8px}
+.items .num{text-align:right}
+.delrow{background:transparent;border:0;color:var(--bad);cursor:pointer;font-size:1.1rem;font-weight:800;line-height:1}
+.totbox{margin-top:12px;display:grid;grid-template-columns:1fr auto;gap:4px 18px;max-width:340px;margin-left:auto;font-size:.95rem}
+.totbox .g{font-weight:800;font-size:1.15rem;color:var(--amber-dk);border-top:1px solid var(--line);padding-top:6px;margin-top:4px}
+.out{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.box{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:11px;text-align:center}
+.box b{display:block;font-size:19px;font-weight:800;color:var(--amber-dk)}
+.box span{font-size:.76rem;color:var(--muted)}
+.box.big{grid-column:1/-1;background:var(--cream);border-color:var(--amber-lt)}
+.box.big b{font-size:26px}
+.note{font-size:.82rem;color:var(--muted);margin-top:8px}
+.mini{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+.mini h3{font-size:.98rem;margin-bottom:10px;color:var(--ink)}
+.seg{display:inline-flex;border:1px solid var(--amber-lt);border-radius:9px;overflow:hidden;margin-top:2px}
+.seg button{background:transparent;border:0;padding:8px 12px;cursor:pointer;font-weight:600;color:var(--amber-dk);font-size:.85rem}
+.seg button.on{background:var(--amber-dk);color:#fff}
+.mail{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:13px;white-space:pre-wrap;font-size:14px;min-height:200px;line-height:1.6;margin-top:10px}
+.subj{background:var(--cream);border:1px solid var(--amber-lt);border-radius:9px;padding:8px 11px;font-size:13.5px;margin-top:10px}
+.subj b{color:var(--amber-dk)}
+.savedlist{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.saved{display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:9px;padding:8px 11px;font-size:.88rem}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:11px 18px;border-radius:10px;font-weight:600;font-size:.9rem;opacity:0;pointer-events:none;transition:.25s;z-index:50}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.pill{display:inline-block;background:var(--cream);border:1px solid var(--amber-lt);color:var(--amber-dk);font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:999px;margin-left:6px}
+footer{border-top:1px solid var(--line);padding:18px 0;font-size:.8rem;color:var(--muted);text-align:center}
+
+/* Druck: nur die Rechnung */
+@media print{
+  header.app,.tabs,.noprint,footer,.btnrow,.savedlist{display:none!important}
+  body{background:#fff;color:#000}
+  .view{display:none!important}
+  #print-invoice{display:block!important}
+}
+#print-invoice{display:none}
+@media print{
+  #print-invoice{display:block;font-size:13px;color:#000}
+  #print-invoice .pi-head{display:flex;justify-content:space-between;margin-bottom:30px}
+  #print-invoice h2{font-size:22px;margin:18px 0 6px}
+  #print-invoice table{width:100%;border-collapse:collapse;margin:14px 0}
+  #print-invoice th,#print-invoice td{padding:7px 6px;border-bottom:1px solid #ccc;text-align:left}
+  #print-invoice td.n,#print-invoice th.n{text-align:right}
+  #print-invoice .pi-tot{margin-top:14px;float:right;text-align:right}
+  #print-invoice .pi-foot{clear:both;margin-top:50px;font-size:11px;color:#444;border-top:1px solid #ccc;padding-top:8px}
+}
+</style>
+</head>
+<body>
+<header class="app"><div class="wrap">
+  <a href="/business-cockpit.html" class="brand">aban Business-Cockpit <small>Pro</small></a>
+  <nav class="tabs" id="tabs">
+    <button data-v="rechnung" class="on">🧾 Rechnung</button>
+    <button data-v="rechner">🔢 Rechner</button>
+    <button data-v="mahnung">⏰ Mahnung &amp; E-Mail</button>
+    <button data-v="stamm">⚙️ Stammdaten</button>
+  </nav>
+</div></header>
+
+<main class="wrap">
+
+  <!-- ============ RECHNUNG ============ -->
+  <section class="view on" id="v-rechnung">
+    <h1>Rechnung erstellen <span class="pill">PDF / Druck</span></h1>
+    <p class="sub">Positionen eingeben → Summen rechnen automatisch → „Drucken / PDF". Deine Stammdaten füllen Absender &amp; Bankdaten automatisch.</p>
+    <div class="panel">
+      <div class="row">
+        <div class="fld"><label>Rechnungs-Nr.</label><input id="r_nr" placeholder="2026-001"></div>
+        <div class="fld"><label>Rechnungsdatum</label><input id="r_datum" type="date"></div>
+        <div class="fld"><label>Leistungsdatum / -zeitraum</label><input id="r_leistung" placeholder="z. B. Juni 2026"></div>
+      </div>
+      <div class="fld"><label>Kunde (Name &amp; Anschrift)</label><textarea id="r_kunde" rows="3" placeholder="Mustermann GmbH&#10;Musterstraße 1&#10;8000 Zürich"></textarea></div>
+      <table class="items" id="r_items"><thead><tr><th style="width:48%">Beschreibung</th><th class="num" style="width:13%">Menge</th><th class="num" style="width:20%">Einzelpreis</th><th class="num" style="width:15%">Summe</th><th></th></tr></thead><tbody></tbody></table>
+      <div class="btnrow"><button class="btn ghost sm" id="r_add">+ Position</button></div>
+      <div class="row" style="margin-top:14px">
+        <div class="fld" style="max-width:220px"><label>MwSt-Satz</label>
+          <select id="r_vat">
+            <option value="8.1">Schweiz 8,1 %</option>
+            <option value="19" selected>Deutschland 19 %</option>
+            <option value="7">Deutschland 7 %</option>
+            <option value="20">Österreich 20 %</option>
+            <option value="10">Österreich 10 %</option>
+            <option value="0">0 % (Kleinunternehmer / steuerfrei)</option>
+          </select></div>
+        <div class="fld" style="max-width:260px"><label>Zahlungsziel (Tage)</label><input id="r_ziel" value="14" inputmode="numeric"></div>
+      </div>
+      <div class="totbox">
+        <div>Netto</div><div class="num" id="r_net">0,00</div>
+        <div id="r_vatlabel">zzgl. MwSt</div><div class="num" id="r_vatval">0,00</div>
+        <div class="g">Gesamt</div><div class="num g" id="r_gross">0,00</div>
+      </div>
+      <div class="btnrow" style="margin-top:16px">
+        <button class="btn" id="r_print">🖨️ Drucken / als PDF speichern</button>
+        <button class="btn ghost" id="r_save">💾 Entwurf speichern</button>
+        <button class="btn ghost" id="r_clear">Leeren</button>
+      </div>
+      <div class="savedlist" id="r_saved"></div>
+    </div>
+  </section>
+
+  <!-- ============ RECHNER ============ -->
+  <section class="view" id="v-rechner">
+    <h1>Finanz-Rechner</h1>
+    <p class="sub">Die wichtigsten Rechnungen rund um Geld &amp; Zahlungen — sofort, offline.</p>
+
+    <div class="mini">
+      <h3>MwSt — netto ↔ brutto</h3>
+      <div class="row">
+        <div class="fld" style="max-width:200px"><label>Steuersatz %</label><input id="m_satz" value="19" inputmode="decimal"></div>
+        <div class="fld" style="max-width:200px"><label>Betrag</label><input id="m_betrag" value="100" inputmode="decimal"></div>
+        <div class="fld"><label>Betrag ist …</label><div class="seg" id="m_seg"><button data-m="net" class="on">Netto</button><button data-m="gross">Brutto</button></div></div>
+      </div>
+      <div class="out" id="m_out"></div>
+    </div>
+
+    <div class="mini">
+      <h3>Skonto — lohnt früh zahlen?</h3>
+      <div class="row">
+        <div class="fld"><label>Rechnungsbetrag</label><input id="s_betrag" value="1000" inputmode="decimal"></div>
+        <div class="fld"><label>Skonto %</label><input id="s_skonto" value="2" inputmode="decimal"></div>
+        <div class="fld"><label>Skontofrist (Tage)</label><input id="s_frist" value="10" inputmode="numeric"></div>
+        <div class="fld"><label>Zahlungsziel (Tage)</label><input id="s_ziel" value="30" inputmode="numeric"></div>
+      </div>
+      <div class="out" id="s_out"></div>
+    </div>
+
+    <div class="mini">
+      <h3>Verzugszinsen &amp; Mahngebühr</h3>
+      <div class="row">
+        <div class="fld"><label>Offener Betrag</label><input id="vz_betrag" value="2500" inputmode="decimal"></div>
+        <div class="fld"><label>Zinssatz % p. a.</label><input id="vz_zins" value="5" inputmode="decimal"></div>
+        <div class="fld"><label>Tage im Verzug</label><input id="vz_tage" value="60" inputmode="numeric"></div>
+        <div class="fld"><label>Mahnpauschale</label><input id="vz_pausch" value="0" inputmode="decimal"></div>
+      </div>
+      <div class="out" id="vz_out"></div>
+    </div>
+
+    <div class="mini">
+      <h3>Zahlungsfrist &amp; Fälligkeit</h3>
+      <div class="row">
+        <div class="fld"><label>Rechnungsdatum</label><input id="zf_datum" type="date"></div>
+        <div class="fld"><label>Zahlungsziel (Tage)</label><input id="zf_ziel" value="14" inputmode="numeric"></div>
+      </div>
+      <div class="out" id="zf_out"></div>
+    </div>
+  </section>
+
+  <!-- ============ MAHNUNG & E-MAIL ============ -->
+  <section class="view" id="v-mahnung">
+    <h1>Mahnung &amp; Business-E-Mail</h1>
+    <p class="sub">Fertige Texte zum Kopieren — höflich, klar, sofort einsetzbar.</p>
+
+    <div class="panel">
+      <h2>Zahlungserinnerung / Mahnung</h2>
+      <div class="row">
+        <div class="fld"><label>Kunde (Name)</label><input id="mh_kunde" placeholder="Frau Muster"></div>
+        <div class="fld"><label>Rechnungs-Nr.</label><input id="mh_nr" placeholder="2026-001"></div>
+      </div>
+      <div class="row">
+        <div class="fld"><label>Offener Betrag</label><input id="mh_betrag" value="" placeholder="1.200,00"></div>
+        <div class="fld"><label>Ursprünglich fällig am</label><input id="mh_faellig" type="date"></div>
+        <div class="fld"><label>Neue Frist (Tage)</label><input id="mh_frist" value="10" inputmode="numeric"></div>
+      </div>
+      <div class="fld"><label>Stufe</label><div class="seg" id="mh_seg"><button data-s="1" class="on">1. Erinnerung (freundlich)</button><button data-s="2">2. Mahnung (bestimmt)</button></div></div>
+      <div class="subj" id="mh_subj"></div>
+      <div class="mail" id="mh_text"></div>
+      <div class="btnrow"><button class="btn sm" id="mh_copy">📋 Text kopieren</button></div>
+    </div>
+
+    <div class="panel">
+      <h2>Business-E-Mail-Generator</h2>
+      <div class="row">
+        <div class="fld"><label>Situation</label>
+          <select id="em_sit">
+            <option value="nachfassen">Angebot nachfassen</option>
+            <option value="preis">Preiserhöhung ankündigen</option>
+            <option value="absage">Höflich absagen</option>
+            <option value="reklamation">Auf Reklamation reagieren</option>
+            <option value="reaktivieren">Kunde reaktivieren</option>
+          </select></div>
+        <div class="fld"><label>Empfänger (Name)</label><input id="em_name" placeholder="Herr Muster"></div>
+      </div>
+      <div class="fld"><label>Stichwort / Detail (optional)</label><input id="em_detail" placeholder="z. B. Angebot vom 3. Juni"></div>
+      <div class="subj" id="em_subj"></div>
+      <div class="mail" id="em_text"></div>
+      <div class="btnrow"><button class="btn sm" id="em_copy">📋 Text kopieren</button></div>
+    </div>
+  </section>
+
+  <!-- ============ STAMMDATEN ============ -->
+  <section class="view" id="v-stamm">
+    <h1>Stammdaten</h1>
+    <p class="sub">Einmal eintragen — fließt automatisch in Rechnung &amp; Mahnung. Wird <strong>nur lokal</strong> in diesem Browser gespeichert (kein Server).</p>
+    <div class="panel">
+      <div class="fld"><label>Firma / Name</label><input id="st_firma" placeholder="Dein Name / Firma"></div>
+      <div class="fld"><label>Anschrift</label><textarea id="st_adresse" rows="3" placeholder="Straße 1&#10;8000 Zürich"></textarea></div>
+      <div class="row">
+        <div class="fld"><label>E-Mail</label><input id="st_email" placeholder="info@…"></div>
+        <div class="fld"><label>Telefon</label><input id="st_tel"></div>
+      </div>
+      <div class="row">
+        <div class="fld"><label>IBAN</label><input id="st_iban" placeholder="CH.. / DE.."></div>
+        <div class="fld"><label>MwSt-/Steuernummer</label><input id="st_steuer"></div>
+      </div>
+      <div class="btnrow"><button class="btn" id="st_save">💾 Stammdaten speichern</button></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Druck-Layout (nur beim Drucken sichtbar) -->
+<div id="print-invoice"></div>
+
+<footer class="wrap">aban Business-Cockpit · läuft 100 % offline in deinem Browser · keine Daten verlassen dein Gerät · © 2026 aban news</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+  var LS=window.localStorage;
+  function toast(m){var t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(function(){t.classList.remove("show")},1600)}
+  function n(v){return parseFloat(String(v==null?"":v).trim().replace(/\./g,"").replace(",","."))}
+  function nf(v){return (isFinite(v)?v:0).toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})}
+  function de(d){return d.toLocaleDateString("de-DE",{day:"2-digit",month:"long",year:"numeric"})}
+  function addDays(d,k){var x=new Date(d.getTime());x.setDate(x.getDate()+k);return x}
+  function parseDate(v){var p=String(v||"").split("-");return p.length===3?new Date(+p[0],+p[1]-1,+p[2]):new Date(NaN)}
+  function isoToday(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+
+  /* ---- Tabs ---- */
+  $$("#tabs button").forEach(function(b){b.addEventListener("click",function(){
+    $$("#tabs button").forEach(function(x){x.classList.toggle("on",x===b)});
+    $$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-"+b.dataset.v)});
+    window.scrollTo(0,0);
+  })});
+
+  /* ---- Stammdaten ---- */
+  var stFields=["firma","adresse","email","tel","iban","steuer"];
+  function loadStamm(){try{var s=JSON.parse(LS.getItem("abanCockpit_stamm")||"{}");stFields.forEach(function(f){if($("#st_"+f))$("#st_"+f).value=s[f]||""});return s}catch(e){return {}}}
+  $("#st_save").addEventListener("click",function(){var o={};stFields.forEach(function(f){o[f]=$("#st_"+f).value});LS.setItem("abanCockpit_stamm",JSON.stringify(o));toast("Stammdaten gespeichert ✓")});
+  function stamm(){try{return JSON.parse(LS.getItem("abanCockpit_stamm")||"{}")}catch(e){return {}}}
+
+  /* ---- Rechnung ---- */
+  var tb=$("#r_items tbody");
+  function addItem(desc,qty,price){
+    var tr=document.createElement("tr");
+    tr.innerHTML='<td><input class="i_desc" placeholder="Leistung / Artikel"></td>'+
+      '<td><input class="i_qty num" inputmode="decimal" value="1"></td>'+
+      '<td><input class="i_price num" inputmode="decimal" value="0"></td>'+
+      '<td class="num i_sum">0,00</td>'+
+      '<td><button class="delrow" title="Zeile löschen">×</button></td>';
+    tb.appendChild(tr);
+    if(desc!=null)$(".i_desc",tr).value=desc;
+    if(qty!=null)$(".i_qty",tr).value=qty;
+    if(price!=null)$(".i_price",tr).value=price;
+    $(".delrow",tr).addEventListener("click",function(){tr.remove();calcInvoice()});
+    $$("input",tr).forEach(function(i){i.addEventListener("input",calcInvoice)});
+    calcInvoice();
+  }
+  function calcInvoice(){
+    var net=0;
+    $$("#r_items tbody tr").forEach(function(tr){
+      var q=n($(".i_qty",tr).value)||0, p=n($(".i_price",tr).value)||0, s=q*p;
+      $(".i_sum",tr).textContent=nf(s); net+=s;
+    });
+    var rate=parseFloat($("#r_vat").value)||0, vat=net*rate/100, gross=net+vat;
+    $("#r_net").textContent=nf(net);
+    $("#r_vatlabel").textContent=rate>0?("zzgl. "+String(rate).replace(".",",")+" % MwSt"):"MwSt";
+    $("#r_vatval").textContent=nf(vat);
+    $("#r_gross").textContent=nf(gross);
+    return {net:net,rate:rate,vat:vat,gross:gross};
+  }
+  $("#r_add").addEventListener("click",function(){addItem()});
+  $("#r_vat").addEventListener("change",calcInvoice);
+  $("#r_clear").addEventListener("click",function(){tb.innerHTML="";["r_nr","r_kunde","r_leistung"].forEach(function(id){$("#"+id).value=""});addItem();toast("Geleert")});
+
+  function invoiceData(){
+    var items=$$("#r_items tbody tr").map(function(tr){return {desc:$(".i_desc",tr).value,qty:$(".i_qty",tr).value,price:$(".i_price",tr).value}});
+    return {nr:$("#r_nr").value,datum:$("#r_datum").value,leistung:$("#r_leistung").value,kunde:$("#r_kunde").value,vat:$("#r_vat").value,ziel:$("#r_ziel").value,items:items};
+  }
+  function loadInvoice(d){
+    $("#r_nr").value=d.nr||"";$("#r_datum").value=d.datum||isoToday();$("#r_leistung").value=d.leistung||"";
+    $("#r_kunde").value=d.kunde||"";$("#r_vat").value=d.vat||"19";$("#r_ziel").value=d.ziel||"14";
+    tb.innerHTML="";(d.items&&d.items.length?d.items:[{}]).forEach(function(it){addItem(it.desc,it.qty,it.price)});
+  }
+  /* Entwürfe */
+  function drafts(){try{return JSON.parse(LS.getItem("abanCockpit_drafts")||"[]")}catch(e){return []}}
+  function renderDrafts(){
+    var d=drafts(),el=$("#r_saved");el.innerHTML="";
+    if(!d.length){el.innerHTML='<p class="note">Noch keine Entwürfe gespeichert.</p>';return}
+    d.forEach(function(x,i){
+      var row=document.createElement("div");row.className="saved";
+      row.innerHTML='<span>🧾 '+(x.nr||"ohne Nr.")+' · '+(x.kunde||"").split("\\n")[0].slice(0,28)+'</span>';
+      var b=document.createElement("span");
+      var load=document.createElement("button");load.className="btn ghost sm";load.textContent="Laden";load.onclick=function(){loadInvoice(x);toast("Entwurf geladen")};
+      var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";del.onclick=function(){var a=drafts();a.splice(i,1);LS.setItem("abanCockpit_drafts",JSON.stringify(a));renderDrafts()};
+      b.appendChild(load);b.appendChild(del);row.appendChild(b);el.appendChild(row);
+    });
+  }
+  $("#r_save").addEventListener("click",function(){var a=drafts();a.unshift(invoiceData());LS.setItem("abanCockpit_drafts",JSON.stringify(a.slice(0,30)));renderDrafts();toast("Entwurf gespeichert ✓")});
+
+  /* Druck */
+  $("#r_print").addEventListener("click",function(){
+    var d=invoiceData(),t=calcInvoice(),s=stamm();
+    var rows=$$("#r_items tbody tr").map(function(tr){
+      var q=n($(".i_qty",tr).value)||0,p=n($(".i_price",tr).value)||0;
+      return '<tr><td>'+esc($(".i_desc",tr).value)+'</td><td class="n">'+nf(q)+'</td><td class="n">'+nf(p)+'</td><td class="n">'+nf(q*p)+'</td></tr>';
+    }).join("");
+    var faellig="";
+    if(d.datum){var fd=addDays(parseDate(d.datum),parseInt(d.ziel,10)||0);if(!isNaN(fd))faellig="Zahlbar bis "+de(fd)+" ("+(parseInt(d.ziel,10)||0)+" Tage).";}
+    var html=
+      '<div class="pi-head"><div><strong>'+esc(s.firma||"")+'</strong><br>'+nl(s.adresse)+'<br>'+esc(s.email||"")+(s.tel?" · "+esc(s.tel):"")+'</div>'+
+      '<div style="text-align:right">Rechnung'+(d.nr?" "+esc(d.nr):"")+'<br>'+(d.datum?de(parseDate(d.datum)):"")+'</div></div>'+
+      '<div>'+nl(d.kunde)+'</div>'+
+      '<h2>Rechnung'+(d.nr?" "+esc(d.nr):"")+'</h2>'+
+      (d.leistung?'<div>Leistungszeitraum: '+esc(d.leistung)+'</div>':'')+
+      '<table><thead><tr><th>Beschreibung</th><th class="n">Menge</th><th class="n">Einzelpreis</th><th class="n">Summe</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+      '<div class="pi-tot">Netto: '+nf(t.net)+'<br>'+(t.rate>0?("zzgl. "+String(t.rate).replace(".",",")+" % MwSt: "+nf(t.vat)+"<br>"):"")+'<strong>Gesamtbetrag: '+nf(t.gross)+'</strong></div>'+
+      '<div class="pi-foot">'+faellig+(s.iban?' &nbsp; Bankverbindung: '+esc(s.iban):'')+(s.steuer?' &nbsp; Steuer-/MwSt-Nr.: '+esc(s.steuer):'')+'<br>Vielen Dank für Ihren Auftrag.</div>';
+    $("#print-invoice").innerHTML=html;
+    window.print();
+  });
+  function esc(x){return String(x==null?"":x).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]})}
+  function nl(x){return esc(x).replace(/\n/g,"<br>")}
+
+  /* ---- Rechner: MwSt ---- */
+  var mMode="net";
+  $$("#m_seg button").forEach(function(b){b.addEventListener("click",function(){mMode=b.dataset.m;$$("#m_seg button").forEach(function(x){x.classList.toggle("on",x===b)});calcM()})});
+  function calcM(){
+    var r=n($("#m_satz").value),b=n($("#m_betrag").value);
+    if(!isFinite(r)||!isFinite(b)){$("#m_out").innerHTML="";return}
+    var net,vat,gross;
+    if(mMode==="net"){net=b;vat=b*r/100;gross=net+vat}else{gross=b;net=b/(1+r/100);vat=gross-net}
+    $("#m_out").innerHTML='<div class="box"><b>'+nf(net)+'</b><span>Netto</span></div><div class="box"><b>'+nf(vat)+'</b><span>MwSt ('+String(r).replace(".",",")+'%)</span></div><div class="box big"><b>'+nf(gross)+'</b><span>Brutto</span></div>';
+  }
+  ["m_satz","m_betrag"].forEach(function(id){$("#"+id).addEventListener("input",calcM)});
+
+  /* ---- Rechner: Skonto ---- */
+  function calcS(){
+    var B=n($("#s_betrag").value),s=n($("#s_skonto").value),Tf=n($("#s_frist").value),Tz=n($("#s_ziel").value);
+    if(!isFinite(B)||!isFinite(s)||s<=0||s>=100){$("#s_out").innerHTML="";return}
+    var skonto=B*s/100,zahl=B-skonto,p=(Tz>Tf)?(s/(100-s))*(360/(Tz-Tf))*100:NaN;
+    $("#s_out").innerHTML='<div class="box"><b>'+nf(skonto)+'</b><span>Skonto (gespart)</span></div><div class="box"><b>'+nf(zahl)+'</b><span>Zahlbetrag</span></div><div class="box big"><b>'+(isFinite(p)?p.toLocaleString("de-DE",{maximumFractionDigits:1})+" %":"—")+'</b><span>Effektiver Jahreszins</span></div>';
+  }
+  ["s_betrag","s_skonto","s_frist","s_ziel"].forEach(function(id){$("#"+id).addEventListener("input",calcS)});
+
+  /* ---- Rechner: Verzugszinsen ---- */
+  function calcVZ(){
+    var B=n($("#vz_betrag").value),z=n($("#vz_zins").value),T=n($("#vz_tage").value),P=n($("#vz_pausch").value);
+    if(!isFinite(B)||!isFinite(z)){$("#vz_out").innerHTML="";return}
+    if(!isFinite(P))P=0;if(!isFinite(T))T=0;
+    var zins=B*z/100*T/360,ges=B+zins+P;
+    $("#vz_out").innerHTML='<div class="box"><b>'+nf(zins)+'</b><span>Verzugszinsen</span></div><div class="box"><b>'+nf(P)+'</b><span>Mahnpauschale</span></div><div class="box big"><b>'+nf(ges)+'</b><span>Gesamtforderung</span></div>';
+  }
+  ["vz_betrag","vz_zins","vz_tage","vz_pausch"].forEach(function(id){$("#"+id).addEventListener("input",calcVZ)});
+
+  /* ---- Rechner: Zahlungsfrist ---- */
+  function calcZF(){
+    var rd=parseDate($("#zf_datum").value),ziel=parseInt($("#zf_ziel").value,10);
+    if(isNaN(rd.getTime())){$("#zf_out").innerHTML="";return}
+    if(isNaN(ziel)||ziel<0)ziel=0;
+    var f=addDays(rd,ziel),v=addDays(f,30),today=new Date();today.setHours(0,0,0,0);
+    var rest=Math.round((f-today)/86400000),st=rest>0?("in "+rest+" Tagen"):rest===0?"heute fällig":("überfällig seit "+(-rest)+" Tagen");
+    $("#zf_out").innerHTML='<div class="box big"><b>'+de(f)+'</b><span>Fälligkeitsdatum</span></div><div class="box"><b>'+st+'</b><span>Status</span></div><div class="box"><b>'+de(v)+'</b><span>Verzug spätestens</span></div>';
+  }
+  ["zf_datum","zf_ziel"].forEach(function(id){$("#"+id).addEventListener("input",calcZF)});
+
+  /* ---- Mahnung ---- */
+  var mhStufe="1";
+  $$("#mh_seg button").forEach(function(b){b.addEventListener("click",function(){mhStufe=b.dataset.s;$$("#mh_seg button").forEach(function(x){x.classList.toggle("on",x===b)});genMahnung()})});
+  function genMahnung(){
+    var s=stamm(),kunde=$("#mh_kunde").value||"Sehr geehrte Damen und Herren",nr=$("#mh_nr").value||"[Nr.]",betrag=$("#mh_betrag").value||"[Betrag]";
+    var fd=parseDate($("#mh_faellig").value),faelligTxt=isNaN(fd.getTime())?"[Fälligkeitsdatum]":de(fd);
+    var frist=parseInt($("#mh_frist").value,10)||10,neu=de(addDays(new Date(),frist));
+    var anrede=/^(herr|frau|sehr)/i.test(kunde)?kunde:("Sehr geehrte/r "+kunde);
+    var subj,body;
+    if(mhStufe==="1"){
+      subj="Zahlungserinnerung zur Rechnung "+nr;
+      body=anrede+",\n\nsicher ist es Ihrer Aufmerksamkeit entgangen: unsere Rechnung "+nr+" über "+betrag+" war am "+faelligTxt+" fällig und ist bisher offen.\n\nBitte gleichen Sie den Betrag bis zum "+neu+" aus. Sollten Sie die Zahlung bereits veranlasst haben, betrachten Sie diese Erinnerung als gegenstandslos.\n\nVielen Dank und freundliche Grüße\n"+(s.firma||"");
+    }else{
+      subj="1. Mahnung zur Rechnung "+nr;
+      body=anrede+",\n\ntrotz unserer Erinnerung ist die Rechnung "+nr+" über "+betrag+" (fällig am "+faelligTxt+") weiterhin offen.\n\nWir fordern Sie auf, den Betrag bis spätestens "+neu+" zu begleichen. Nach Ablauf dieser Frist behalten wir uns vor, Verzugszinsen und Mahnkosten zu berechnen.\n\nFreundliche Grüße\n"+(s.firma||"");
+    }
+    $("#mh_subj").innerHTML="<b>Betreff:</b> "+esc(subj);
+    $("#mh_text").textContent=body;
+  }
+  ["mh_kunde","mh_nr","mh_betrag","mh_faellig","mh_frist"].forEach(function(id){$("#"+id).addEventListener("input",genMahnung)});
+  $("#mh_copy").addEventListener("click",function(){copy($("#mh_text").textContent)});
+
+  /* ---- Business-E-Mail ---- */
+  function genEmail(){
+    var s=stamm(),sit=$("#em_sit").value,name=$("#em_name").value||"",detail=$("#em_detail").value||"";
+    var anrede=name?("Sehr geehrte/r "+name):"Guten Tag";
+    var gruss="\n\nFreundliche Grüße\n"+(s.firma||"");
+    var T={
+      nachfassen:["Kurze Nachfrage zu unserem Angebot",anrede+",\n\nich komme kurz auf "+(detail||"mein Angebot")+" zurück. Passt es inhaltlich für Sie, oder darf ich etwas anpassen?\n\nÜber eine kurze Rückmeldung freue ich mich."+gruss],
+      preis:["Anpassung unserer Preise",anrede+",\n\nzum kommenden Quartal passe ich meine Preise moderat an"+(detail?" ("+detail+")":"")+". Bestehende Zusagen gelten selbstverständlich unverändert. Bei Fragen bin ich gern für Sie da."+gruss],
+      absage:["Rückmeldung zu Ihrer Anfrage",anrede+",\n\nvielen Dank für Ihre Anfrage"+(detail?" zu "+detail:"")+". Leider kann ich sie aktuell nicht übernehmen — ich melde mich aber gern, sobald wieder Kapazität frei ist."+gruss],
+      reklamation:["Ihre Rückmeldung — wir kümmern uns",anrede+",\n\ndanke, dass Sie sich gemeldet haben"+(detail?" wegen "+detail:"")+". Das tut mir leid. Ich prüfe den Fall umgehend und melde mich mit einer Lösung bei Ihnen."+gruss],
+      reaktivieren:["Schön, wieder von uns zu hören?",anrede+",\n\nwir haben länger nichts voneinander gehört"+(detail?" — seit "+detail:"")+". Falls ich Sie wieder unterstützen darf, melden Sie sich gern. Als kleines Dankeschön habe ich ein passendes Angebot für Sie."+gruss]
+    };
+    var t=T[sit]||T.nachfassen;
+    $("#em_subj").innerHTML="<b>Betreff:</b> "+esc(t[0]);
+    $("#em_text").textContent=t[1];
+  }
+  ["em_sit","em_name","em_detail"].forEach(function(id){$("#"+id).addEventListener("input",genEmail)});
+  $("#em_copy").addEventListener("click",function(){copy($("#em_text").textContent)});
+
+  function copy(txt){
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){toast("Kopiert ✓")},function(){fallback(txt)})}else fallback(txt);
+    function fallback(t){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");toast("Kopiert ✓")}catch(e){toast("Bitte manuell kopieren")}a.remove()}
+  }
+
+  /* ---- Init ---- */
+  loadStamm();
+  $("#r_datum").value=isoToday();$("#zf_datum").value=isoToday();
+  addItem("",1,0);renderDrafts();
+  calcM();calcS();calcVZ();calcZF();genMahnung();genEmail();
+})();
+</script>
+</body>
+</html>
