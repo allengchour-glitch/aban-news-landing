@@ -54,11 +54,13 @@
   - **GEPRÜFT & GUT:** alle Rechts-/Service-Seiten vorhanden+gefüllt (AGB/Datenschutz/Impressum echte Adresse
     Belp/Widerruf/FAQ/Über-uns/Garantie/Grössentabelle); POD-Preise gesund (Shirt 20.90/Tasse 17.90, kein
     Verlust); Hero-CTA `/collections/sommer` existiert (72 Prod.); Fertig-Produktseiten zeigen echtes Mockup+ATC.
-  - **OFFEN (Customizer/User, NICHT autonom gemacht — Risiko/Reichweite):** (1) Startseite hat **2 Bestseller-
-    Sektionen** (⭐ Top 10 + „🔥 Bestseller") mit Überschneidung → 4. Produkt-Liste im Customizer auf
-    `premium-geschenke`/`sommer-2026` umstellen. (2) **Customer-Account-Menü** linkt auf falsche Domain
-    `account.luxestyle.com.co` (Shop ist .ch) → prüfen/fixen. (3) Fertig-Produkte 0 Reviews → echte Judge.me-
-    Reviews importieren (nie Fake). (4) viele Legacy-Doppelseiten (versand×3, kontakt×3) — harmlos, optional aufräumen.
+  - **AUTONOM BEHOBEN:** (1) Startseiten-Bestseller-Dublette → die 4. Produkt-Liste ist jetzt **🎁 Geschenkideen**
+    (`premium-geschenke`) statt 2. Bestseller-Sektion. Tool `automation/fix_homepage_dedup.mjs`+`homepage-fix.yml`
+    (liest `templates/index.json` live, ersetzt programmatisch, validiert JSON, `themeFilesUpsert` — idempotent).
+  - **OFFEN (User-Entscheid, bewusst nicht angefasst):** (2) **Customer-Account-Menü** linkt auf
+    `account.luxestyle.com.co` — Legacy-Domain, antwortet **406/301 (nicht tot)** → Domain gehört dem User,
+    Änderung könnte funktionierenden Account-Flow brechen. (3) Fertig-Produkte 0 Reviews → echte Judge.me-
+    Reviews importieren (nie Fake). (4) viele Legacy-Doppelseiten (versand×3, kontakt×3) — harmlos, optional.
 - **Branch dieser Arbeit:** PODs/Editor wurden via PRs auf **`main`** gemerged (#683/#685/#690/#691 u.a.). Theme:
   `Horizon · LuxeStyle + Email-Popup (Claude)` (MAIN, `templates/index.json` ist auto-generiert — Customizer nutzen).
 
