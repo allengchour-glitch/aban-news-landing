@@ -7,7 +7,7 @@ name: Analytics Learn (TikTok → bessere Reels)
 
 on:
   schedule:
-    - cron: '0 6 * * 1'        # wöchentlich Montag 06:00 UTC
+    - cron: '0 6 * * *'        # TÄGLICH 06:00 UTC (~08:00 CH) — regelmässige Analyse (User-Wunsch 2026-06-12)
   workflow_dispatch:
     inputs:
       handle:
