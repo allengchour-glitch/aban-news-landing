@@ -4,6 +4,15 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-12 (Teil 12) — E-Mail-Generator jetzt 4-sprachig (User: „weiter")
+- **`en/`, `fr/`, `it/email-vorlagen.html`** zusätzlich zur DE-Version: gleicher 14-Situationen-Generator,
+  voll lokalisierte Vorlagen + Anrede/Gruß-Logik (EN Dear/Hi, FR Bonjour/Madame Monsieur, IT Buongiorno/
+  Gentili Signori), eigene localStorage-Keys, je `node --check` grün. **Reziprokes hreflang** über alle 4
+  Sprachen (DE/EN/FR/IT + x-default) auf jeder Seite. EN in llms.txt; alle 4 in sitemap.xml.
+  Cross-Links: EN → en/-Tools; FR/IT → neutraler `/online-tools.html`-Hub + Sprachumschalter (DE/EN/FR/IT
+  haben sonst keine eigene Tool-Infrastruktur). Grund (Menschen-Logik): CH-Heimatmarkt hat FR (Romandie)
+  + IT (Tessin); „email difficile/difficili" = wenig umkämpfte Suchanfragen → Reichweite.
+
 ## 2026-06-12 (Teil 11) — Mega-Tool E-Mail-Generator + Funnel-Cross-Links (User: „mega top tool … beides")
 - **Neues Flaggschiff `email-vorlagen.html` (Business-E-Mail-Generator):** 14 schwierige Geschäfts-Situationen
   (Angebot nachfassen, Preiserhöhung, höflich absagen, Rabatt ablehnen, Verzug, Bewertung erbitten,
