@@ -4,7 +4,7 @@
 > UND demselben Shopify-Shop (LuxeStyle, `au3j0y-hq.myshopify.com` / luxestyle.ch).**
 > Diese Datei verhindert, dass sie sich gegenseitig überschreiben. **Jede Session:** erst hier rein,
 > dann die eigene Detail-Memory. **Nach grösseren Aktionen:** Abschnitt „Live-Stand" unten aktualisieren.
-> Stand: 2026-06-08.
+> Stand: 2026-06-12.
 
 ---
 
@@ -39,6 +39,28 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-12 — Luxestyle/Reichweite session: Pinterest-Maschine + Organik-Kit (Branch `claude/luxstyle-ads-search-5i68xa`, Draft-PR #775 → main):**
+- **🎯 Auftrag:** „Leute anlocken" → organische Gratis-Reichweite gebaut (Kern-Engpass bleibt Reichweite, nicht Shop).
+- **📌 Pinterest komplett (`dropship/PINTEREST-SETUP.md` + `dropship/pinterest_pins.csv`):** **103 fertige,
+  GEBRANDETE Pins** (Markenband + Preis-Anker + WELCOME10-Pill, 1000×1500). Alle Bilder auf **Shopify-CDN**
+  hochgeladen (Staged-Upload → fileCreate, HTTP 200 verifiziert) → URLs in der CSV. Verteilung: Schmuck 26 ·
+  Herrenmode 20 · Home/Geschenke 20 · Damenmode/Kleider 17 · Schuhe 11 · Wellness/Beauty 9. Schlecht bewertetes
+  Kleid (3,3★ `niedrig-bewertet-nicht-bewerben`) bewusst ausgelassen. CDN-Dateien: `pin-01..28`, `b-01..43`,
+  `c-01..23`, `d-01..09` — beim Aufräumen NICHT löschen. Generatoren: `automation/gen_pinterest_batch{,3}.py`.
+  - **Render-Tools:** `automation/gen_pinterest_images.py` (CSV→Bild) + `automation/gen_pinterest_batch.py`
+    (kuratierte Produktliste→Bild). Marken-Layout zentral, für neue Produkte/Kanäle wiederverwendbar.
+  - **Auto-Publish:** `automation/pinterest_publish.mjs` + Workflow `.github/workflows/pinterest-publish.yml`
+    (Pinterest-API v5, legt Boards an, idempotent via `dropship/pinterest_done.txt`, drosselt, Mo&Do je 5).
+    Unterstützt **Refresh-Token** (`PINTEREST_REFRESH_TOKEN`+`PINTEREST_APP_ID`+`PINTEREST_APP_SECRET`) → Token
+    läuft nie ab; alternativ `PINTEREST_ACCESS_TOKEN`. **Offen (User):** Secret setzen + PR #775 → main mergen
+    (Workflow läuft nur von main).
+- **🎬 `dropship/TIKTOK-SKRIPTE-WOCHE.md`:** 7 filmfertige TikTok-Skripte (echte Produkte/Preise/Hooks/Captions).
+- **🎁 `dropship/INFLUENCER-OUTREACH-KIT.md` + `influencer_tracking.csv`:** Micro-Gifting-Kriterien, Such-Hashtags,
+  Fundquellen (Modash/Collabstr), DM-Vorlagen, Code-Schema (Codes lege ich bei Zusage per Shopify an).
+- **⚠️ Hinweis:** Diese Arbeit lief auf eigenem Branch `claude/luxstyle-ads-search-5i68xa` (NICHT CizQ6), Draft-PR
+  #775. Git-HTTP-Push warf zeitweise 413/502 → Fallback war GitHub-API-Push (push_files). Pin-Bilder liegen als
+  Shopify-Files (`pin-01..28`, `b-01..43`) auf der CDN — beim Aufräumen NICHT löschen.
+
 **2026-06-11 — Luxestyle/POD session: Editor mit echten Fotos + 98 Fertig-Mockups + Shop-Audit A–Z:**
 - **🎨 Selbst-gestalten-Editor komplett überarbeitet** (`pod/designer.js` live): echtes Produktfoto statt
   Zeichnung bei ALLEN Editor-Produkten (Shirt/Tasse/Tote/Kissen/Magnet/Poster/Bügeltransfer), Live-Farbvorschau
