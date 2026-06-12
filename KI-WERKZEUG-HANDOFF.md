@@ -4,6 +4,23 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-12 (Teil 8) — Tool-Offensive + 3D-Diagramme + EN (Newsletter-Session, autonom)
+- **3D-Engine `js/aban3d.js`** jetzt 7 Formen inkl. **bars** (datengetriebenes 3D-Balkendiagramm via data-values,
+  vorzeichenrichtig normalisiert). In **9 Rechnern** live eingebettet (sparplan/notgroschen/etf/mwst/maerkte
+  [echte CoinGecko-Kurse, Hook in markets.js renderTable]/inflation/ki-kosten/automatisierung/ki-spar) —
+  IMMER nur echte/Nutzer-Daten. Showcase: `3d-animation.html` (Galerie + Regler). Blender-Pipeline
+  `blender/render_scene.py` + `.github/workflows/blender-render.yml` (workflow_dispatch, KEIN Cron).
+- **7 neue KI-/Business-Tools (browser-only, ehrlich, kein Upload):** `text-anonymisieren` (+EN),
+  `ki-token-rechner` (+EN), `hashtag-helfer`, `betreffzeilen-check`, `lesbarkeits-check`. online-tools
+  listet jetzt 35 Tools (Karten + ItemList + numberOfItems gepflegt).
+- **Dokument-Quartett komplett (DE+EN):** angebot- → auftragsbestaetigung- → rechnung- → mahnung-schreiben,
+  alle Generatoren, gegenseitig in Nav/Footer/CTA verlinkt. Neue Funnel-Seite `wie-nutze-ich-ki-richtig` (+EN).
+- **Verdrahtung jeder neuen Seite:** Premium-Nudge, Inline-Signup, FAQPage/WebApplication-JSON-LD, hreflang,
+  Redirects (NIE /X→/X.html!), sitemap (jetzt ~2034 URLs), Hub-Karten, online-tools.
+- **QA:** site-weit 0 echte Broken-Links (1 behoben: /en/tools.html→/online-tools.html), 0 Redirect-Loops.
+- **User-Part (Abend):** GSC — Sitemap neu einreichen + Indexierung der Top-Seiten beantragen + indexierte
+  Seiten beobachten (war 34, sollte steigen). Loop-Fix aus Teil 4 ist der Haupt-Enabler.
+
 ## 2026-06-12 (Teil 7) — Tool jetzt VIERSPRACHIG + Funnel geschlossen (User: „FR + IT bauen", „automod loop")
 - **`fr/ki-werkzeug.html` + `it/ki-werkzeug.html` (PR #709):** volle Übersetzung inkl. ALLER JS-Text-
   Generatoren (Produkt/Social/Bewertung/E-Mail/Fahrplan, Ton-Maps, Phrasen, PROPLUS_BRANCHEN/BRANCHEN) →
