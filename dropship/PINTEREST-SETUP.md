@@ -40,8 +40,15 @@ Lege diese **6 Boards** an (jeweils 1 Satz Beschreibung mit Keywords — wichtig
 
 ## ✅ Schritt 3 — Pins hochladen (die CSV macht die Arbeit)
 
-Ich habe dir **`dropship/pinterest_pins.csv`** gebaut — **28 fertige Pins** mit echten
-Produktfotos, SEO-Titel, Beschreibung + Hashtags und direktem Link zur Produktseite.
+Ich habe dir **`dropship/pinterest_pins.csv`** gebaut — **71 fertige, gebrandete Pins** (Markenband +
+Preis-Anker + WELCOME10-Pill, gehostet auf der Shopify-CDN) mit SEO-Titel, Beschreibung + Hashtags und
+direktem Link zur Produktseite. Verteilung: Herrenmode 18 · Damenmode/Kleider 17 · Schmuck/Accessoires 16 ·
+Wellness/Beauty 7 · Home/Geschenke 7 · Schuhe 6.
+
+> **Vollautomatisch (empfohlen):** `automation/pinterest_publish.mjs` + Workflow `pinterest-publish.yml`
+> posten die Pins per Pinterest-API selbst (Mo & Do je 5). Du brauchst nur einmal ein Secret — entweder
+> `PINTEREST_ACCESS_TOKEN`, oder besser `PINTEREST_REFRESH_TOKEN` + `PINTEREST_APP_ID` + `PINTEREST_APP_SECRET`
+> (dann holt sich das Skript den Token bei jedem Lauf frisch → läuft nie ab). Manuell geht weiterhin so:
 
 **So lädst du sie hoch (2 Wege):**
 
@@ -53,9 +60,9 @@ Produktfotos, SEO-Titel, Beschreibung + Hashtags und direktem Link zur Produktse
   kopieren → Board wählen → **„Später veröffentlichen"** und Datum setzen. So planst du eine
   ganze Woche in 20 Min vor.
 
-> **Tempo:** **3–5 Pins/Tag**, gestaffelt — nicht alle 28 auf einmal (sieht für Pinterest nach
-> Spam aus). Mit der CSV reicht der Vorrat für ~1 Woche. Sag „mehr Pins", dann baue ich die
-> nächsten 30 aus weiteren Produkten.
+> **Tempo:** **3–5 Pins/Tag**, gestaffelt — nicht alle 71 auf einmal (sieht für Pinterest nach
+> Spam aus). Die Automation drosselt das automatisch. Vorrat reicht für ~3–5 Wochen. Sag „mehr Pins",
+> dann baue ich weitere aus dem Katalog.
 
 ---
 

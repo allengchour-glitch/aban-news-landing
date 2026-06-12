@@ -26,18 +26,39 @@ const CSV = join(ROOT, "dropship", "pinterest_pins.csv");
 const LEDGER = join(ROOT, "dropship", "pinterest_done.txt");
 const API = "https://api.pinterest.com/v5";
 
-const TOKEN = process.env.PINTEREST_ACCESS_TOKEN;
+// Token: entweder ein fixer PINTEREST_ACCESS_TOKEN (läuft nach ~30 T ab),
+// ODER ein PINTEREST_REFRESH_TOKEN + App-Creds → dann holt sich das Skript bei
+// jedem Lauf selbst einen frischen Access-Token (nie wieder manuell erneuern).
+let TOKEN = process.env.PINTEREST_ACCESS_TOKEN;
+const REFRESH = process.env.PINTEREST_REFRESH_TOKEN;
+const APP_ID = process.env.PINTEREST_APP_ID;
+const APP_SECRET = process.env.PINTEREST_APP_SECRET;
 const args = process.argv.slice(2);
 const DRY = args.includes("--dry-run");
 const limIdx = args.indexOf("--limit");
 const LIMIT = limIdx >= 0 ? parseInt(args[limIdx + 1], 10) : 5;
 
-if (!TOKEN && !DRY) {
-  console.error("❌ PINTEREST_ACCESS_TOKEN fehlt. Token setzen oder --dry-run nutzen.");
+if (!TOKEN && !(REFRESH && APP_ID && APP_SECRET) && !DRY) {
+  console.error("❌ Kein Zugang: setze PINTEREST_ACCESS_TOKEN ODER (PINTEREST_REFRESH_TOKEN + PINTEREST_APP_ID + PINTEREST_APP_SECRET), oder nutze --dry-run.");
   process.exit(1);
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** Holt per Refresh-Token einen frischen Access-Token (gültig ~30 Tage). */
+async function refreshAccessToken() {
+  const basic = Buffer.from(`${APP_ID}:${APP_SECRET}`).toString("base64");
+  const body = new URLSearchParams({ grant_type: "refresh_token", refresh_token: REFRESH });
+  const res = await fetch(`${API}/oauth/token`, {
+    method: "POST",
+    headers: { Authorization: `Basic ${basic}`, "Content-Type": "application/x-www-form-urlencoded" },
+    body,
+  });
+  const text = await res.text();
+  if (!res.ok) throw new Error(`Token-Refresh fehlgeschlagen → ${res.status}: ${text}`);
+  TOKEN = JSON.parse(text).access_token;
+  console.log("🔑 Frischer Access-Token via Refresh-Token geholt.");
+}
 
 async function api(path, method = "GET", body) {
   const res = await fetch(API + path, {
@@ -108,6 +129,7 @@ async function getOrCreateBoards(neededNames) {
 }
 
 async function main() {
+  if (!TOKEN && !DRY) await refreshAccessToken();
   const raw = readFileSync(CSV, "utf8");
   const rows = parseCsv(raw);
   const header = rows.shift().map((h) => h.trim());
