@@ -27,8 +27,11 @@
     },
     {
       "id": "p4-foerder",
-      "sent": false,
-      "text": "🧭 Die meisten DACH-Gründer kennen 2–3 Förderprogramme. Es gibt deutlich mehr.\n\nIch habe 63 echte Programme aus DE, AT, CH und EU gesammelt — sortier- und filterbar nach Region, Art und Zielgruppe.\n\nAlle Angaben ohne Gewähr, mit Link zur offiziellen Quelle.\n\n👉 https://foerder.abannews.com"
+      "sent": true,
+      "text": "🧭 Die meisten DACH-Gründer kennen 2–3 Förderprogramme. Es gibt deutlich mehr.\n\nIch habe 63 echte Programme aus DE, AT, CH und EU gesammelt — sortier- und filterbar nach Region, Art und Zielgruppe.\n\nAlle Angaben ohne Gewähr, mit Link zur offiziellen Quelle.\n\n👉 https://foerder.abannews.com",
+      "sent_channels": [
+        "telegram"
+      ]
     },
     {
       "id": "p5-jobs",
