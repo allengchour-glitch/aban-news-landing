@@ -1,10 +1,12 @@
 /* aban news — aban3d.js
  * Selbst-gehostete 3D-Animationen ohne externe Libs. Echte 3D-Projektion auf <canvas>.
- * Mehrere Formen via data-shape: "sphere" (Konstellation), "torus", "helix" (DNA), "wave" (Gitter).
+ * Formen via data-shape: sphere (Konstellation), torus, helix (DNA), wave (Gitter),
+ * galaxy, swarm, bars (Balkendiagramm), line (Liniendiagramm). bars/line lesen data-values="3,7,5,…".
+ * bars färbt automatisch grün (positiv) / rot (negativ), wenn negative Werte vorkommen (oder data-signed="1").
  *
  * Einbinden:  <canvas data-aban3d data-shape="torus" width="640" height="420"></canvas>
  *             <script defer src="/js/aban3d.js"></script>
- * Optionen:   data-points="120"  data-color="#d97706"  data-speed="1"  data-shape="sphere|torus|helix|wave"
+ * Optionen:   data-points  data-color  data-speed  data-shape  data-values (bars/line)  data-signed
  *
  * Performant & rücksichtsvoll: pausiert offscreen + bei verstecktem Tab, devicePixelRatio-aware,
  * respektiert prefers-reduced-motion (zeigt ein ruhiges Standbild statt Animation).
@@ -109,25 +111,47 @@
     return { pts: pts, edges: nearestEdges(pts, 2), tick: null };
   }
 
+  function parseVals(ds, def) {
+    var v = (ds.values || "").split(",").map(parseFloat).filter(function (x) { return !isNaN(x); });
+    return v.length ? v : def;
+  }
+  var POS = [52, 211, 153], NEG = [248, 113, 113]; // grün / rot
+
   function shapeBars(N, ds) {
-    var vals = (ds.values || "4,7,5,9,6,8,3,7").split(",").map(parseFloat).filter(function (x) { return !isNaN(x); });
-    if (!vals.length) vals = [4, 7, 5, 9, 6, 8, 3, 7];
+    var vals = parseVals(ds, [4, 7, 5, 9, 6, 8, 3, 7]);
     var max = Math.max.apply(null, vals.map(function (v) { return Math.abs(v); })) || 1;
-    var n = vals.length, pts = [], edges = [], base = -0.7, w = Math.min(0.16, 1.6 / n / 2.2);
+    var hasNeg = vals.some(function (v) { return v < 0; });
+    var signed = hasNeg || ds.signed === "1";
+    var n = vals.length, pts = [], edges = [], pcol = signed ? [] : null, ecol = signed ? [] : null;
+    var base = -0.7, w = Math.min(0.16, 1.6 / n / 2.2);
     for (var k = 0; k < n; k++) {
       var x = n === 1 ? 0 : (k / (n - 1) - 0.5) * 1.8, h = vals[k] / max * 1.4, o = pts.length;
-      // 8 Eckpunkte eines Quaders
-      for (var sx = -1; sx <= 1; sx += 2) for (var sz = -1; sz <= 1; sz += 2) for (var sy = 0; sy <= 1; sy++)
-        pts.push([x + sx * w, base + sy * h, sz * w]);
-      // 12 Kanten
+      var c = signed ? (vals[k] < 0 ? NEG : POS) : null;
+      for (var sx = -1; sx <= 1; sx += 2) for (var sz = -1; sz <= 1; sz += 2) for (var sy = 0; sy <= 1; sy++) {
+        pts.push([x + sx * w, base + sy * h, sz * w]); if (signed) pcol.push(c);
+      }
       var E = [[0,1],[2,3],[4,5],[6,7],[0,2],[1,3],[4,6],[5,7],[0,4],[1,5],[2,6],[3,7]];
-      for (var e = 0; e < E.length; e++) edges.push([o + E[e][0], o + E[e][1]]);
+      for (var e = 0; e < E.length; e++) { edges.push([o + E[e][0], o + E[e][1]]); if (signed) ecol.push(c); }
+    }
+    return { pts: pts, edges: edges, tick: null, pcol: pcol, ecol: ecol };
+  }
+
+  function shapeLine(N, ds) {
+    var vals = parseVals(ds, [3, 5, 4, 7, 6, 9, 8, 11, 10, 13]);
+    var max = Math.max.apply(null, vals.map(function (v) { return Math.abs(v); })) || 1;
+    var n = vals.length, pts = [], edges = [];
+    for (var k = 0; k < n; k++) {
+      var x = n === 1 ? 0 : (k / (n - 1) - 0.5) * 1.9, y = vals[k] / max * 1.25;
+      pts.push([x, y, 0]);
+      if (k > 0) edges.push([k - 1, k]);                 // Linie
+      pts.push([x, -0.85, 0]);                            // Fußpunkt (Fläche andeuten)
+      edges.push([pts.length - 2, pts.length - 1]);
     }
     return { pts: pts, edges: edges, tick: null };
   }
 
   var SHAPES = { sphere: shapeSphere, torus: shapeTorus, helix: shapeHelix, wave: shapeWave,
-                 galaxy: shapeGalaxy, swarm: shapeSwarm, bars: shapeBars };
+                 galaxy: shapeGalaxy, swarm: shapeSwarm, bars: shapeBars, line: shapeLine };
 
   function init(cv) {
     var ctx = cv.getContext("2d");
@@ -137,7 +161,9 @@
     var speed = parseFloat(cv.dataset.speed || "1") || 1;
     var make = SHAPES[(cv.dataset.shape || "sphere")] || shapeSphere;
     var S = make(N, cv.dataset), pts = S.pts, edges = S.edges, tick = S.tick;
-    var col = function (a) { return "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + "," + a + ")"; };
+    var pcol = S.pcol || null, ecol = S.ecol || null;
+    var colA = function (c, a) { return "rgba(" + c[0] + "," + c[1] + "," + c[2] + "," + a + ")"; };
+    var col = function (a) { return colA(rgb, a); };
 
     var W = 0, H = 0, R = 0, cx = 0, cy = 0, dpr = Math.min(2, window.devicePixelRatio || 1);
     function size() {
@@ -169,16 +195,16 @@
         var persp = 1.7 / (1.7 + z2);
         p2[i] = [cx + x2 * R * persp, cy + y1 * R * persp, z2, persp];
       }
-      ctx.lineWidth = 1;
+      ctx.lineWidth = ecol ? 1.6 : 1;
       for (var e2 = 0; e2 < edges.length; e2++) {
         var A = p2[edges[e2][0]], B = p2[edges[e2][1]];
-        var depth = (A[2] + B[2]) / 2;
-        ctx.strokeStyle = col(0.05 + 0.18 * (1 - (depth + 1) / 2));
+        var depth = (A[2] + B[2]) / 2, ea = 0.05 + 0.18 * (1 - (depth + 1) / 2);
+        ctx.strokeStyle = ecol && ecol[e2] ? colA(ecol[e2], ea + 0.25) : col(ea);
         ctx.beginPath(); ctx.moveTo(A[0], A[1]); ctx.lineTo(B[0], B[1]); ctx.stroke();
       }
       for (var j = 0; j < N2; j++) {
         var P = p2[j], t = (P[2] + 1) / 2, rad = (0.6 + 1.7 * (1 - t)) * P[3];
-        ctx.fillStyle = col(0.25 + 0.65 * (1 - t));
+        ctx.fillStyle = pcol && pcol[j] ? colA(pcol[j], 0.45 + 0.5 * (1 - t)) : col(0.25 + 0.65 * (1 - t));
         ctx.beginPath(); ctx.arc(P[0], P[1], rad, 0, 6.283); ctx.fill();
       }
     }
