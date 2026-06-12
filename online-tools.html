@@ -363,6 +363,19 @@ summary{font-weight:700;cursor:pointer}
 details p{color:var(--ink2);margin-top:8px;font-size:.95rem}
 footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
 footer a{color:var(--muted)}
+.toolfind{margin:20px 0 4px}
+.toolfind input{width:100%;font-size:1rem;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink)}
+.toolfind input:focus{outline:2px solid var(--amber-lt,#fde9c8);border-color:var(--amber)}
+.tschips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tschips button{font:inherit;font-size:.85rem;font-weight:700;border:1px solid var(--line);background:var(--card);color:var(--ink2);border-radius:999px;padding:6px 13px;cursor:pointer;transition:background .12s,color .12s}
+.tschips button:hover{border-color:var(--amber)}
+.tschips button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+.tsmeta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;flex-wrap:wrap}
+.tsmeta #tscount{font-size:.88rem;color:var(--muted);font-weight:600}
+.tsmeta #tsrandom{font:inherit;font-size:.85rem;font-weight:700;border:1px solid var(--amber-lt);background:transparent;color:var(--amber-dk);border-radius:999px;padding:6px 14px;cursor:pointer}
+.tsmeta #tsrandom:hover{background:var(--cream)}
+.tsempty{margin:18px 0;padding:16px;text-align:center;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:12px}
+.cat mark{background:var(--cream);color:inherit;padding:0 1px;border-radius:3px}
 </style>
 </head>
 <body>
@@ -380,6 +393,13 @@ footer a{color:var(--muted)}
       <span class="chip">DSGVO-sicher</span>
     </div>
   </section>
+
+  <div class="toolfind" role="search">
+    <input id="tsearch" type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="Tool suchen … z. B. Rechnung, Farbe, Steuer, KI, E-Mail" aria-label="Tools durchsuchen">
+    <div class="tschips" id="tschips" aria-label="Nach Kategorie filtern"></div>
+    <div class="tsmeta"><span id="tscount"></span><button type="button" id="tsrandom">🎲 Überrasch mich</button></div>
+  </div>
+  <p class="tsempty" id="tsempty" hidden>Nichts gefunden. <a href="#" id="tsreset">Alle Tools zeigen →</a></p>
 
   <div id="tools"></div>
       <section class="cat">
@@ -524,6 +544,67 @@ footer a{color:var(--muted)}
 </div></main>
 <footer><div class="wrap">&copy; 2026 aban news &middot; Allen Chour &middot; Belp (CH) &middot;
   <a href="/resources.html">Ressourcen</a> &middot; <a href="/impressum.html">Impressum</a> &middot; <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+/* Tool-Explorer: Live-Suche + Kategorie-Filter + Zufalls-Tool. Rein clientseitig, ohne Abhängigkeit. */
+(function(){
+  function ready(fn){ if(document.readyState!=="loading") fn(); else document.addEventListener("DOMContentLoaded",fn); }
+  ready(function(){
+    var search=document.getElementById("tsearch"), chipsBox=document.getElementById("tschips"),
+        countEl=document.getElementById("tscount"), randomBtn=document.getElementById("tsrandom"),
+        empty=document.getElementById("tsempty"), reset=document.getElementById("tsreset");
+    if(!search||!chipsBox) return;
+    var cats=[].slice.call(document.querySelectorAll(".cat"));
+    if(!cats.length) return;
+    var data=cats.map(function(sec){
+      var h=sec.querySelector("h2"), name=h?h.textContent.replace(/^[^\wÀ-ÿ]+/,"").trim():"Tools";
+      var tools=[].slice.call(sec.querySelectorAll(".tool")).map(function(a){
+        return { el:a, text:(a.textContent||"").toLowerCase() };
+      });
+      return { sec:sec, name:name, tools:tools };
+    });
+    var total=data.reduce(function(n,c){return n+c.tools.length;},0);
+    var activeCat=-1, query="";
+
+    function makeChip(label,idx){
+      var b=document.createElement("button"); b.type="button"; b.textContent=label;
+      if(idx===activeCat) b.className="on";
+      b.addEventListener("click",function(){ activeCat=idx; query=""; search.value=""; sync(); });
+      return b;
+    }
+    function buildChips(){
+      chipsBox.innerHTML="";
+      chipsBox.appendChild(makeChip("Alle ("+total+")",-1));
+      data.forEach(function(c,i){ chipsBox.appendChild(makeChip(c.name+" ("+c.tools.length+")",i)); });
+    }
+    function apply(){
+      var q=query.trim().toLowerCase(), shown=0;
+      data.forEach(function(c,i){
+        var catOk=(activeCat===-1||activeCat===i), visInCat=0;
+        c.tools.forEach(function(t){
+          var ok=catOk && (q===""||t.text.indexOf(q)>-1);
+          t.el.style.display=ok?"":"none"; if(ok){visInCat++;shown++;}
+        });
+        c.sec.style.display=(catOk&&visInCat>0)?"":"none";
+      });
+      countEl.textContent=shown+(shown===1?" Tool":" Tools");
+      empty.hidden=shown>0;
+    }
+    function sync(){
+      [].forEach.call(chipsBox.children,function(b,i){ b.className=((i-1)===activeCat)?"on":""; });
+      apply();
+    }
+    search.addEventListener("input",function(){ query=search.value; if(query) activeCat=-1; sync(); });
+    randomBtn.addEventListener("click",function(){
+      var vis=[]; data.forEach(function(c){ c.tools.forEach(function(t){ if(t.el.style.display!=="none") vis.push(t.el); }); });
+      if(!vis.length) return;
+      var pick=vis[Math.floor(Math.random()*vis.length)];
+      pick.focus(); window.location.href=pick.getAttribute("href");
+    });
+    if(reset) reset.addEventListener("click",function(e){ e.preventDefault(); activeCat=-1; query=""; search.value=""; sync(); search.focus(); });
+    buildChips(); apply();
+  });
+})();
+</script>
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>

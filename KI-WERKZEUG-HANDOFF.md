@@ -4,6 +4,13 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-12 (Teil 13) — Tool-Explorer für Engagement (User: „beschäftige die leute auf der seite")
+- **`online-tools.html` ist jetzt interaktiv:** Live-Suche (filtert die ~59 Karten sofort nach Titel+Beschreibung),
+  **Kategorie-Chips** mit Anzahl, Trefferzähler, **„🎲 Überrasch mich"** (öffnet ein zufälliges sichtbares Tool),
+  „nichts gefunden"-Reset. Rein clientseitig, keine Abhängigkeit, `node --check` grün; Chips/Suche/Random
+  bauen sich aus dem vorhandenen `.cat`/`.tool`-Markup (robust gegen neue Tools). Ziel: Besucher stöbern
+  statt zu bouncen → mehr Seiten/Abos.
+
 ## 2026-06-12 (Teil 12) — E-Mail-Generator jetzt 4-sprachig (User: „weiter")
 - **`en/`, `fr/`, `it/email-vorlagen.html`** zusätzlich zur DE-Version: gleicher 14-Situationen-Generator,
   voll lokalisierte Vorlagen + Anrede/Gruß-Logik (EN Dear/Hi, FR Bonjour/Madame Monsieur, IT Buongiorno/
