@@ -1,5 +1,19 @@
 # 🎵 TikTok-Reels automatisch posten — Aktivierung (einmalig)
 
+> ✅ **STAND 2026-06-12 — LÄUFT (bewiesen).** OAuth ist eingerichtet, alle Secrets gesetzt
+> (TT_ACCESS/REFRESH/CLIENT_KEY/SECRET + REPO_ADMIN_PAT), Token refresht sich automatisch.
+> Die App ist NOCH NICHT auditiert → Direct-Post zu öffentlichem Konto ist gesperrt
+> (`unaudited_client_can_only_post_to_private_accounts`). Deshalb postet die Pipeline per
+> **Inbox-/Entwurf-Fallback**: Video landet automatisch in den TikTok-Entwürfen, User tippt 1×
+> „Posten" (Trend-Sound möglich). VERIFIZIERT: Schmuck-Reel als Entwurf hochgeladen (v_inbox_file~…).
+> **Voll-autonom öffentlich = nach App-Audit:** Repo-Variablen `TT_UPLOAD_MODE=direct` +
+> `TT_PRIVACY_LEVEL=PUBLIC_TO_EVERYONE` setzen → fertig. (Audit ist TikTok-seitig, dauert.)
+> Neue Reels: Zeile in `automation/reels_seed.csv` mit Shopify-CDN-URL + status=ready
+> (NICHT abannews.com — das ist 404). Cron läuft 11:00 UTC vom main-Branch.
+
+---
+
+
 Das Auto-Posting ist gebaut und getestet: `automation/tiktok-autopost.mjs` +
 `.github/workflows/tiktok-autopost.yml`. Es lädt das nächste Reel aus
 `automation/reels_seed.csv` herunter und postet es per **TikTok Content-Posting-API v2
