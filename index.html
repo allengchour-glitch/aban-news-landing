@@ -391,8 +391,8 @@
             if(navigator.clipboard){ var cb=document.createElement('button'); cb.type='button'; cb.className='btn btn--ghost btn--sm'; cb.style.marginTop='.6rem'; cb.textContent='Kopieren'; cb.addEventListener('click',function(){ navigator.clipboard.writeText(o.d.text).then(function(){ var x=cb.textContent; cb.textContent='Kopiert ✓'; setTimeout(function(){cb.textContent=x;},1500); }); }); out.appendChild(cb); } }
           else if(o.s===429){ msg.textContent='Gratis-Limit erreicht — mit Pro unbegrenzt.'; document.getElementById('hdUpsell').hidden=false; }
           else if(o.s===503){ msg.textContent='KI gerade nicht aktiv — bitte später.'; }
-          else { msg.textContent='Hat nicht geklappt, bitte nochmal.'; }
-        }).catch(function(){ msg.textContent='Netzwerkfehler.'; })
+          else { msg.innerHTML='Live-Demo gerade nicht erreichbar — probier das volle <a href="/ki-studio.html" style="color:var(--amber-dk);font-weight:700">KI-Studio →</a>'; var u1=document.getElementById('hdUpsell'); if(u1) u1.hidden=false; }
+        }).catch(function(){ msg.innerHTML='Live-Demo gerade nicht erreichbar — probier das volle <a href="/ki-studio.html" style="color:var(--amber-dk);font-weight:700">KI-Studio →</a>'; var u2=document.getElementById('hdUpsell'); if(u2) u2.hidden=false; })
         .finally(function(){ btn.disabled=false; btn.textContent=old; });
     });
   })();
@@ -631,7 +631,7 @@
           <ul>
             <li>Alles aus Premium</li>
             <li>KI-Studio: 7 Live-KI-Tools</li>
-            <li>13 Text-Arten (Social, Blog, FAQ, Stellen…)</li>
+            <li>22 Text-Arten (Social, Blog, FAQ, Stellen…)</li>
             <li>Hype-Umschreiber &amp; Frag-aban Pro</li>
             <li>KI-Sichtbarkeit, Übersetzen, Markt-Briefing</li>
           </ul>
