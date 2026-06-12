@@ -26,6 +26,7 @@
 9. **Freigabe-Workflow:** Reel EINZELN per Telegram zur Freigabe (ja/nein/Kommentar), erst nach „ja" posten.
 
 ## Verbesserungs-Log (chronologisch — neue Punkte kommen oben dazu)
+- 2026-06-12: **Selbst-Lernen (learn_from_analytics.mjs):** Hashtag-Pools aus echten TikTok-Daten (tiktok_luxestyle.ch_2026-06-12.json) neu gesetzt → Top-Performer: #schweiz #ootdschweiz #schweizmode #sommerkleid #fashionschweiz #sommermode. auto_render.sh nutzt sie automatisch.
 - 2026-06-08: **YouTube-Daten-Lehre (ABAN Files) — Format schlägt Menge.** Kanal-Aufrufe zeigen:
   dunkle, gesichtslose **KI-Sci-Fi/Conspiracy-Shorts floppen** (0–8 Aufrufe), Clips mit **echten,
   warmen Menschen gewinnen** (Bauarbeiter 1527, Geiger 605, Roboter 250) — ~200× Unterschied.
