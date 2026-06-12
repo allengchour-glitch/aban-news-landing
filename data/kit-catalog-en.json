@@ -1,14 +1,157 @@
 [
-  {"slug":"en-aerzte","title":"AI Starter Kit for Doctors & Practices","desc":"Cheat sheet + proven prompts + data-protection checklist.","price_cents":1200,"currency":"eur"},
-  {"slug":"en-handwerker","title":"AI Starter Kit for Trades","desc":"Write quotes, emails and review replies faster.","price_cents":1200,"currency":"eur"},
-  {"slug":"en-steuerberater","title":"AI Starter Kit for Tax Advisors","desc":"Client communication, standard letters, research.","price_cents":1200,"currency":"eur"},
-  {"slug":"en-anwaelte","title":"AI Starter Kit for Law Firms","desc":"Drafts, long documents, client texts — with clear limits.","price_cents":1200,"currency":"eur"},
-  {"slug":"en-gastronomie","title":"AI Starter Kit for Restaurants","desc":"Reviews, social posts, menu copy.","price_cents":1200,"currency":"eur"},
-  {"slug":"en-coaches","title":"AI Starter Kit for Coaches & Consultants","desc":"Offers, posts, session prep — no hype.","price_cents":1200,"currency":"eur"},
-  {"slug":"en-immobilienmakler","title":"AI Starter Kit for Real Estate Agents","desc":"Listings, enquiry replies, exposés faster.","price_cents":1200,"currency":"eur"},
-  {"slug":"en-friseure","title":"AI Starter Kit for Hair Salons","desc":"Social posts, reviews, appointment emails.","price_cents":1200,"currency":"eur"},
-  {"slug":"en-fotografen","title":"AI Starter Kit for Photographers","desc":"Offers, image captions, client communication.","price_cents":1200,"currency":"eur"},
-  {"slug":"en-architekten","title":"AI Starter Kit for Architects","desc":"Texts, tenders, research — with clear limits.","price_cents":1200,"currency":"eur"},
-  {"slug":"en-fitnessstudios","title":"AI Starter Kit for Gyms","desc":"Social, member emails, class descriptions.","price_cents":1200,"currency":"eur"},
-  {"slug":"en-alle-kits","title":"All AI Starter Kits (Bundle)","desc":"Every industry kit together — much cheaper than buying separately.","price_cents":7900,"currency":"eur","bundle":true}
+  {
+    "slug": "en-aerzte",
+    "title": "AI Starter Kit for Doctors & Practices",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-handwerker",
+    "title": "AI Starter Kit for Trades",
+    "desc": "Write quotes, emails and review replies faster.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-steuerberater",
+    "title": "AI Starter Kit for Tax Advisors",
+    "desc": "Client communication, standard letters, research.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-anwaelte",
+    "title": "AI Starter Kit for Law Firms",
+    "desc": "Drafts, long documents, client texts — with clear limits.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-gastronomie",
+    "title": "AI Starter Kit for Restaurants",
+    "desc": "Reviews, social posts, menu copy.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-coaches",
+    "title": "AI Starter Kit for Coaches & Consultants",
+    "desc": "Offers, posts, session prep — no hype.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-immobilienmakler",
+    "title": "AI Starter Kit for Real Estate Agents",
+    "desc": "Listings, enquiry replies, exposés faster.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-friseure",
+    "title": "AI Starter Kit for Hair Salons",
+    "desc": "Social posts, reviews, appointment emails.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-fotografen",
+    "title": "AI Starter Kit for Photographers",
+    "desc": "Offers, image captions, client communication.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-architekten",
+    "title": "AI Starter Kit for Architects",
+    "desc": "Texts, tenders, research — with clear limits.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-fitnessstudios",
+    "title": "AI Starter Kit for Gyms",
+    "desc": "Social, member emails, class descriptions.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-alle-kits",
+    "title": "All AI Starter Kits (Bundle)",
+    "desc": "Every industry kit together — much cheaper than buying separately.",
+    "price_cents": 7900,
+    "currency": "eur",
+    "bundle": true
+  },
+  {
+    "slug": "en-kosmetikstudios",
+    "title": "AI Starter Kit for Beauty & Nail Salons",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-kfz-werkstaetten",
+    "title": "AI Starter Kit for Auto Repair Shops",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-maler",
+    "title": "AI Starter Kit for Painters & Decorators",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-hotels",
+    "title": "AI Starter Kit for Hotels & Guesthouses",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-physiotherapeuten",
+    "title": "AI Starter Kit for Physiotherapy Practices",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-reinigungsfirmen",
+    "title": "AI Starter Kit for Cleaning Companies",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-garten-landschaftsbau",
+    "title": "AI Starter Kit for Landscaping & Gardening",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-goldschmiede",
+    "title": "AI Starter Kit for Goldsmiths & Jewellers",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price_cents": 1200,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-prompt-bibliothek",
+    "title": "AI Prompt Library for Solo Professionals",
+    "desc": "100+ proven copy-paste prompts — outreach, clients, marketing, admin & research. Cross-industry, honest, no hype.",
+    "price_cents": 1900,
+    "currency": "eur"
+  },
+  {
+    "slug": "en-vorlagen-set",
+    "title": "Ready-made Text Templates for Solo Professionals",
+    "desc": "40 ready-to-use templates for quotes, emails, invoices & rejections. Copy, replace placeholders, send.",
+    "price_cents": 1900,
+    "currency": "eur"
+  }
 ]
