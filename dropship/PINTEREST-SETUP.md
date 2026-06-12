@@ -1,0 +1,78 @@
+# 📌 Pinterest-Setup für LuxeStyle CH — Gratis-Dauertraffic
+
+> **Warum Pinterest?** Pinterest ist eine **Suchmaschine**, kein Social-Feed. Ein Pin lebt
+> **Monate bis Jahre** (ein TikTok ist nach 48 h tot). Für Mode, Schmuck, Deko & Geschenke ist
+> es der beste Gratis-Kanal, der **im Hintergrund weiterläuft**, während du an anderem arbeitest.
+> Realistisch: erster spürbarer Traffic nach **4–8 Wochen**, dann konstant & wachsend.
+
+---
+
+## ✅ Schritt 1 — Business-Konto (einmalig, ~15 Min) · NUR DU
+
+1. Gehe auf **pinterest.com/business/create** → kostenloses Business-Konto erstellen
+   (oder bestehendes Privatkonto unter Einstellungen → „Zu Business-Konto wechseln").
+2. **Profil ausfüllen:** Name **„LuxeStyle CH"**, Bio:
+   > *Schweizer Online-Shop für Mode, Schmuck & Lifestyle 🇨🇭 Faire Preise, weltweiter Versand. −10 % mit WELCOME10.*
+3. **Website beanspruchen (claimen):** Einstellungen → **„Beanspruchte Konten"** → `luxestyle.ch`
+   eintragen → Pinterest gibt dir ein Meta-Tag oder eine HTML-Datei. *(Wenn du den Theme-Code
+   nicht anfassen willst: sag mir Bescheid, dann baue ich das Meta-Tag in den Shopify-Header ein.)*
+   → Claimen schaltet **Rich Pins** frei (Preis + „Auf Lager" direkt im Pin = mehr Klicks).
+4. *(Optional, später)* **Pinterest-Shopify-App** installieren → synchronisiert den ganzen Katalog
+   automatisch als „Produkt-Pins". Aber: die kuratierten Pins unten konvertieren besser, weil sie
+   SEO-Texte + Hashtags haben. Beides parallel ist ideal.
+
+---
+
+## ✅ Schritt 2 — Boards anlegen (~10 Min) · NUR DU
+
+Lege diese **6 Boards** an (jeweils 1 Satz Beschreibung mit Keywords — wichtig fürs Ranking):
+
+| Board | Beschreibung (Keywords!) |
+|---|---|
+| **Sommerkleider & Damenmode 2026** | Luftige Sommerkleider, Boho-Looks & Damenmode aus der Schweiz. Faire Preise, weltweiter Versand. |
+| **Schuhe & Sandalen** | Sandaletten, Sneaker, Ballerinas & Pumps für den Sommer. Schweizer Online-Shop LuxeStyle. |
+| **Schmuck & Accessoires** | Ketten, Ohrringe, Armreife & Sonnenbrillen. Eleganter Schmuck zu fairen Preisen. |
+| **Herrenmode Schweiz** | Sommerhemden, Sneaker, Sets & Jeans für Männer. Cleaner Look, faire Preise. |
+| **Wellness & Beauty** | Gua-Sha, Serum, Masken & Diffuser für Selfcare zuhause. Schweizer Shop. |
+| **Home & Geschenkideen** | Deko, Vasen, Kerzenwärmer & Geschenke. Schöne Dinge fürs Zuhause. |
+
+---
+
+## ✅ Schritt 3 — Pins hochladen (die CSV macht die Arbeit)
+
+Ich habe dir **`dropship/pinterest_pins.csv`** gebaut — **28 fertige Pins** mit echten
+Produktfotos, SEO-Titel, Beschreibung + Hashtags und direktem Link zur Produktseite.
+
+**So lädst du sie hoch (2 Wege):**
+
+- **A) Pinterest-Bulk-Upload (am schnellsten):** Pinterest Business-Konto → **„Erstellen" →
+  „Pins per Masseneinträge erstellen"** (Bulk create) → CSV hochladen. Pinterest liest Titel,
+  Bild-URL, Board, Beschreibung, Link & Keywords automatisch. *(Falls dein Konto den Bulk-Upload
+  noch nicht zeigt: er wird nach ein paar Tagen Kontoalter freigeschaltet — bis dahin Weg B.)*
+- **B) Manuell / geplant:** „Pin erstellen" → Bild + Titel + Beschreibung + Link aus der CSV
+  kopieren → Board wählen → **„Später veröffentlichen"** und Datum setzen. So planst du eine
+  ganze Woche in 20 Min vor.
+
+> **Tempo:** **3–5 Pins/Tag**, gestaffelt — nicht alle 28 auf einmal (sieht für Pinterest nach
+> Spam aus). Mit der CSV reicht der Vorrat für ~1 Woche. Sag „mehr Pins", dann baue ich die
+> nächsten 30 aus weiteren Produkten.
+
+---
+
+## ✅ Schritt 4 — Dranbleiben (Routine)
+
+- **2×/Woche** je 5 Pins planen (immer neue Produkte + saisonale Keywords).
+- Eigene Pins gelegentlich auf passende Boards **re-pinnen**, fremde gute Mode-Pins mit-pinnen
+  (macht das Profil aktiv → Algo mag das).
+- Nach 4–8 Wochen: in **Pinterest Analytics** schauen, welche Pins Klicks bringen → davon mehr.
+
+---
+
+## Was ich liefere vs. was nur du kannst
+- ✅ **Ich:** Board-Struktur, SEO-Pin-Texte, Hashtags, Bild-Auswahl, die fertige CSV, Meta-Tag-Einbau
+  in den Shop (auf Wunsch), Nachschub-Pins.
+- 🙋 **Nur du:** Konto erstellen, Website claimen (1 Klick im Shop oder Bescheid geben), CSV hochladen
+  bzw. Pins planen.
+
+---
+*Erstellt 2026-06-12 · Quelle-Produkte live aus dem Shop gezogen · Branch `claude/luxstyle-ads-search-5i68xa`*
