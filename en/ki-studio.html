@@ -143,6 +143,34 @@
       </div>
     </div>
 
+    <!-- Free mini-test (no sign-up) -->
+    <div class="unlock" id="demoBox" style="display:block">
+      <h3 style="margin:0 0 .3rem">✨ Try it free — no sign-up</h3>
+      <p id="demoSub" style="margin:0 0 .6rem;color:var(--muted);font-size:.95rem">Pick a type, add 1–2 keywords, see a real (short) AI result. Full scope with aban&nbsp;Pro.</p>
+      <div class="frow">
+        <div><label for="demoKind">What</label>
+          <select id="demoKind">
+            <option value="email">Email</option>
+            <option value="social">Social post</option>
+            <option value="ad">Ad copy</option>
+            <option value="slogan">Slogan</option>
+            <option value="text">Text</option>
+          </select></div>
+        <div><label for="demoBranche">Industry</label><input type="text" id="demoBranche" placeholder="e.g. craft bakery"></div>
+      </div>
+      <label for="demoZiel" style="margin-top:.4rem">Goal / what it's about</label>
+      <input type="text" id="demoZiel" placeholder="e.g. inform regulars about new opening hours">
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem;align-items:center">
+        <button type="button" id="demoRun" class="btn btn--amber btn--sm">Create free</button>
+        <span id="demoMsg" style="color:var(--muted);font-size:.9rem"></span>
+      </div>
+      <div id="demoOut" class="out" style="margin-top:.7rem" hidden></div>
+      <div id="demoUpsell" hidden style="margin-top:.7rem;padding:.7rem .9rem;background:var(--amber-lt);border-radius:10px">
+        <b>That was a mini taste.</b> With aban&nbsp;Pro: full length, <b>22 text types</b>, audit, API &amp; no limit.
+        <a href="#preise" class="btn btn--amber btn--sm" style="margin-left:.4rem">Get aban Pro &rarr;</a>
+      </div>
+    </div>
+
     <section class="sec" style="padding-top:.4rem">
       <span class="eyebrow">Pro tools</span>
       <h2>The AI tools</h2>

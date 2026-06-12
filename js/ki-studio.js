@@ -251,6 +251,27 @@
     if ($('genZiel')) $('genZiel').value = ex[1];
   });
 
+  // Gratis-Mini-Test (ohne Pro-Schlüssel) → /api/demo
+  var demoBtn = $('demoRun');
+  if (demoBtn) demoBtn.addEventListener('click', function () {
+    var out = $('demoOut'), msg = $('demoMsg');
+    var body = { kind: (val('demoKind') || 'email'), branche: val('demoBranche'), ziel: val('demoZiel'), lang: EN ? 'en' : 'de' };
+    demoBtn.disabled = true; var old = demoBtn.textContent; demoBtn.textContent = T.working; if (msg) msg.textContent = '';
+    fetch('/api/demo', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json().then(function (d) { return { s: r.status, d: d }; }); })
+      .then(function (o) {
+        if (o.s === 200 && o.d && o.d.text) {
+          if (out) { out.textContent = o.d.text; out.hidden = false; out.className = 'out show'; }
+          var up = $('demoUpsell'); if (up) up.hidden = false;
+        } else if (o.s === 429 && o.d && o.d.upsell) {
+          if (msg) msg.textContent = EN ? 'Free limit reached — get Pro for unlimited.' : 'Gratis-Limit erreicht — mit Pro unbegrenzt.';
+          var up2 = $('demoUpsell'); if (up2) up2.hidden = false;
+        } else if (o.s === 503) { if (msg) msg.textContent = T.off; }
+        else { if (msg) msg.textContent = T.err; }
+      }).catch(function () { if (msg) msg.textContent = T.err; })
+      .finally(function () { demoBtn.disabled = false; demoBtn.textContent = old; });
+  });
+
   // Jahres-Bonus: Vorlagen kopieren
   document.addEventListener('click', function (ev) {
     var c = ev.target.closest ? ev.target.closest('.tplcopy') : null;
