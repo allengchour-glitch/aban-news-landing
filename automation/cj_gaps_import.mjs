@@ -65,7 +65,10 @@ const CONFIG = {
 const BAD = ['wholesale', 'lot ', 'wig', 'nail', 'tattoo', 'sticker', 'sample', 'replacement part',
   'for iphone 6', 'sex', 'bracelet', 'ring', 'necklace', 'copper', 'massage', 'beauty', 'jewelry',
   'jewellery', 'earring', 'pendant', 'wallet', 'cowhide', 'leather bag', 'makeup', 'cosmetic',
-  'watch', 'bikini', 'dress', 'shirt', 'shoe', 'sock'];
+  'watch', 'bikini', 'dress', 'shirt', 'shoe', 'sock',
+  'ornament', 'freshener', 'perfume', 'puppy', 'plush', 'doll', 'figure', ' pet ', ' dog ', 'stairs', 'rug', 'cushion'];
+const MAX_COST = 9;   // USD-Deckel → CHF ~26 (Impulskauf), filtert teure Fehlgriffe
+const MIN_LISTED = 30; // Mindest-Popularität
 
 // ── Shopify ──
 async function sgql(tok, q, v) {
@@ -163,7 +166,9 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       });
       for (const p of list) if (!cand.has(p.pid)) cand.set(p.pid, p);
     }
-    const ranked = [...cand.values()].sort((a, b) => (Number(b.listedNum) || 0) - (Number(a.listedNum) || 0));
+    const ranked = [...cand.values()]
+      .filter(p => (Number(p.listedNum) || 0) >= MIN_LISTED)
+      .sort((a, b) => (Number(b.listedNum) || 0) - (Number(a.listedNum) || 0));
     // 2) Details holen, Bild-200, Preis
     const picks = [];
     for (const p of ranked) {
@@ -174,7 +179,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       const vs = d.variants || [];
       const costs = vs.map(v => Number(v.variantSellPrice)).filter(Boolean);
       const cost = costs.length ? Math.min(...costs) : Number(d.sellPrice);
-      if (!cost || cost > 18) continue;                       // zu teuer = kein Impulskauf
+      if (!cost || cost > MAX_COST) continue;                 // zu teuer = kein Impulskauf
       const imgsAll = (d.productImageSet || []).slice(0, 8);
       const good = [];
       for (const u of imgsAll) { if (await img200(u)) good.push(u); if (good.length >= 6) break; }
