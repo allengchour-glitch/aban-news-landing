@@ -73,7 +73,6 @@ SEGS = [
     ("photo", f"{MO}/sj-evil-armband.jpg", 2.1, "Armband «Évil»", "vergoldet"),
     ("photo", f"{MO}/sj-choker.png", 2.1, "Choker · Layer", "trendig"),
     ("photo", f"{JW}/stella.jpg", 2.1, "Kette «Stella»", "Kleeblatt"),
-    ("photo", f"{JW}/onyx.jpg", 2.1, "Ohrringe «Onyx»", "Statement"),
     ("photo", f"{JW}/coeur.jpg", 2.1, "Herzkette «Coeur»", "Moissanite"),
     ("photo", f"{JW}/serpent.jpg", 2.1, "Armreif «Serpent»", "925 Silber"),
     # FÜR IHN — Schmuck
