@@ -41,11 +41,12 @@
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 **2026-06-12 — Luxestyle/Reichweite session: Pinterest-Maschine + Organik-Kit (Branch `claude/luxstyle-ads-search-5i68xa`, Draft-PR #775 → main):**
 - **🎯 Auftrag:** „Leute anlocken" → organische Gratis-Reichweite gebaut (Kern-Engpass bleibt Reichweite, nicht Shop).
-- **📌 Pinterest komplett (`dropship/PINTEREST-SETUP.md` + `dropship/pinterest_pins.csv`):** **71 fertige,
+- **📌 Pinterest komplett (`dropship/PINTEREST-SETUP.md` + `dropship/pinterest_pins.csv`):** **94 fertige,
   GEBRANDETE Pins** (Markenband + Preis-Anker + WELCOME10-Pill, 1000×1500). Alle Bilder auf **Shopify-CDN**
-  hochgeladen (Staged-Upload → fileCreate, HTTP 200 verifiziert) → URLs in der CSV. Verteilung: Herrenmode 18 ·
-  Damenmode/Kleider 17 · Schmuck/Accessoires 16 · Wellness/Beauty 7 · Home 7 · Schuhe 6. Schlecht bewertetes
-  Kleid (3,3★ `niedrig-bewertet-nicht-bewerben`) bewusst ausgelassen.
+  hochgeladen (Staged-Upload → fileCreate, HTTP 200 verifiziert) → URLs in der CSV. Verteilung: Schmuck 26 ·
+  Herrenmode 20 · Damenmode/Kleider 17 · Schuhe 11 · Home 11 · Wellness/Beauty 9. Schlecht bewertetes
+  Kleid (3,3★ `niedrig-bewertet-nicht-bewerben`) bewusst ausgelassen. CDN-Dateien: `pin-01..28`, `b-01..43`,
+  `c-01..23` — beim Aufräumen NICHT löschen.
   - **Render-Tools:** `automation/gen_pinterest_images.py` (CSV→Bild) + `automation/gen_pinterest_batch.py`
     (kuratierte Produktliste→Bild). Marken-Layout zentral, für neue Produkte/Kanäle wiederverwendbar.
   - **Auto-Publish:** `automation/pinterest_publish.mjs` + Workflow `.github/workflows/pinterest-publish.yml`
