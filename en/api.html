@@ -27,6 +27,14 @@
   <link rel="stylesheet" href="/css/modern.css">
 
   <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[
+    {"@type":"Question","name":"Does the API cost extra?","acceptedAnswer":{"@type":"Answer","text":"No. API access is included in aban Pro — you use your license key as the API key. No separate plan."}},
+    {"@type":"Question","name":"Can I use the output commercially?","acceptedAnswer":{"@type":"Answer","text":"Yes. The generated texts are yours and usable commercially. You're responsible for how they're used and check facts yourself — they're AI drafts with no warranty."}},
+    {"@type":"Question","name":"How safe is my key?","acceptedAnswer":{"@type":"Answer","text":"Use it server-side only, never in public frontend code. Inputs are processed to generate output, not shared for advertising."}},
+    {"@type":"Question","name":"What happens with too many requests?","acceptedAnswer":{"@type":"Answer","text":"You get HTTP 429. Limits: /api/generate 20/min (yearly 60/min), /api/audit-report 6/min (yearly 20/min)."}}
+  ]}
+  </script>
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "TechArticle",
@@ -197,6 +205,13 @@ console.log(data.text);</code></pre>
         <li>Fair use within the limits; abusive load may be throttled.</li>
         <li>Our <a href="/agb.html">Terms</a> &amp; <a href="/datenschutz.html">Privacy Policy</a> apply. Inputs are processed to generate output, not shared for advertising.</li>
       </ul>
+
+      <h2>FAQ</h2>
+      <details><summary><strong>Does the API cost extra?</strong></summary><p>No. API access is included in <a href="/en/ki-studio.html">aban Pro</a> — you use your license key as the API key. No separate plan.</p></details>
+      <details><summary><strong>Which model is behind it?</strong></summary><p>A current Claude model (see the <code class="inl">model</code> field in the response). We can update it server-side — nothing changes for you.</p></details>
+      <details><summary><strong>Can I use the output commercially?</strong></summary><p>Yes. The generated texts are yours and usable commercially. You're responsible for how they're used and check facts yourself — they're AI drafts with no warranty.</p></details>
+      <details><summary><strong>How safe is my key?</strong></summary><p>Use it server-side only, never in public frontend code. Inputs are processed to generate output, not shared for advertising (<a href="/datenschutz.html">privacy</a>).</p></details>
+      <details><summary><strong>What happens with too many requests?</strong></summary><p>You get <code class="inl">429</code>. Limits: <code class="inl">/api/generate</code> 20/min (yearly 60/min), <code class="inl">/api/audit-report</code> 6/min (yearly 20/min).</p></details>
 
       <div class="card" style="margin-top:1.5rem;text-align:center">
         <h3 style="margin-top:0">Ready?</h3>
