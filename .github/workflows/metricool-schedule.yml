@@ -1,0 +1,52 @@
+name: Metricool Scheduler
+
+# Plant Posts aus social/metricool_queue.csv über die Metricool-API (öffentlich, inkl. TikTok).
+# ERST manuell + DRY testen, dann scharf — damit nichts doppelt zu den alten Pipelines postet.
+# No-op ohne METRICOOL_USER_TOKEN.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur testen (nichts planen)'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: metricool-schedule
+  cancel-in-progress: false
+
+jobs:
+  schedule:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            automation/metricool-schedule.mjs
+            social/metricool_queue.csv
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Metricool planen
+        env:
+          METRICOOL_USER_TOKEN: ${{ secrets.METRICOOL_USER_TOKEN }}
+          METRICOOL_USER_ID: '4801419'
+          METRICOOL_BLOG_ID: '6394001'
+          MC_TZ: 'Europe/Zurich'
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node automation/metricool-schedule.mjs
+      - name: Queue-Status committen
+        run: |
+          if [ -n "$(git status --porcelain social/metricool_queue.csv)" ]; then
+            git config user.name "metricool-bot"; git config user.email "actions@users.noreply.github.com"
+            git add social/metricool_queue.csv
+            git commit -m "chore(metricool): Queue-Status [skip ci]"
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else echo "nichts"; fi
