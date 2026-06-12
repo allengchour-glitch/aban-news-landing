@@ -11,7 +11,7 @@ const FB_ID = process.env.FB_PAGE_ID || '';
 const TOK0 = process.env.FB_PAGE_ACCESS_TOKEN || process.env.META_ACCESS_TOKEN || '';
 const DRY = process.env.DRY_RUN === '1';
 
-const PIC_URL = 'https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/main/social/brand/profil-rund-dunkel.jpg';
+const PIC_URL = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-profil.jpg?v=1781304921';
 const ABOUT = 'LuxeStyle – dein Schweizer Online-Shop: Mode für Sie & Ihn, Schmuck, Uhren & dein eigenes Design. 🇨🇭 Weltweiter Versand · 30 Tage Rückgabe · –10% mit Code WELCOME10.';
 const WEBSITE = 'https://luxestyle.ch';
 
