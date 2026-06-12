@@ -185,10 +185,14 @@ footer a{color:var(--muted)}
             <div class="tot"><span class="v" id="totTools">–</span><span class="l">Abos</span></div>
           </div>
           <div class="verdict" id="verdict"></div>
-          <div style="margin-top:14px;border-radius:12px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
+          <div style="display:flex;gap:8px;justify-content:center;margin-top:12px">
+            <button type="button" class="cmode" data-m="bars" aria-pressed="true" style="font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;border:0;background:#b45309;color:#fff;cursor:pointer">Balken (€)</button>
+            <button type="button" class="cmode" data-m="donut" aria-pressed="false" style="font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--amber-dk);cursor:pointer">Donut (Anteil)</button>
+          </div>
+          <div style="margin-top:10px;border-radius:12px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
             <canvas id="kk-chart" data-aban3d data-shape="bars" data-labels="1" data-color="#f0a93a" data-speed="0.5" style="display:block;width:100%;height:200px;touch-action:none" aria-label="3D-Diagramm: Monatskosten je Tool"></canvas>
           </div>
-          <p style="text-align:center;font-size:.78rem;color:var(--muted);margin:.35rem 0 0">3D: deine Monatskosten je Tool — aus deinen Eingaben.</p>
+          <p style="text-align:center;font-size:.78rem;color:var(--muted);margin:.35rem 0 0" id="chartCap">3D: deine Monatskosten je Tool — aus deinen Eingaben.</p>
         </div>
       </div>
 
@@ -299,17 +303,30 @@ footer a{color:var(--muted)}
     updateChart(items);
     save();
   }
-  var kkchart=document.getElementById("kk-chart"), kkct=null;
+  var kkchart=document.getElementById("kk-chart"), kkct=null, chartMode="bars";
   function updateChart(items){
     var arr=items.map(function(it){return Math.round((it.price||0)*100)/100;}).filter(function(v){return v>0;});
     if(!arr.length) arr=[0];
     clearTimeout(kkct);
     kkct=setTimeout(function(){
       kkchart.dataset.values=arr.join(",");
+      kkchart.dataset.shape=chartMode;
       var n=kkchart.cloneNode(true);kkchart.parentNode.replaceChild(n,kkchart);kkchart=n;
       if(window.abanBoot3d) window.abanBoot3d(kkchart);
     },160);
   }
+  [].forEach.call(document.querySelectorAll(".cmode"),function(b){
+    b.addEventListener("click",function(){
+      chartMode=b.dataset.m;
+      [].forEach.call(document.querySelectorAll(".cmode"),function(x){
+        var on=x===b;x.setAttribute("aria-pressed",on?"true":"false");
+        x.style.background=on?"#b45309":"transparent";x.style.color=on?"#fff":"#b45309";x.style.border=on?"0":"1px solid #ece3d4";
+      });
+      document.getElementById("chartCap").textContent=chartMode==="donut"
+        ?"3D-Donut: Anteil jedes Abos an deinen Gesamtkosten.":"3D: deine Monatskosten je Tool — aus deinen Eingaben.";
+      updateChart(collect());
+    });
+  });
 
   document.getElementById("addBtn").addEventListener("click",function(){addRow();});
   document.getElementById("calcBtn").addEventListener("click",calc);
