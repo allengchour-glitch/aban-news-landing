@@ -58,6 +58,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   **Sicher gegen Sperren:** Tages-Caps (IG 40/TikTok 30), randomisierte Pausen 25–70 s, idempotenter Ledger
   `ch-growth-ledger.txt`, **keine Auto-Kommentare**, Stopp bei „Action blocked". Läuft am PC-Claude:
   `node ch-follower-growth.mjs` (1×/Tag = stetiges Wachstum). Doku: `dropship/CH-FOLLOWER-WACHSTUM.md`.
+- **🔁 „update dich immer" (FEST, User 2026-06-12):** Memory **laufend** aktuell halten — nach jeder Charge CLAUDE.md/
+  Report-Dateien nachführen, damit jede neue Session nahtlos weitermacht. Reports unter `reports/`.
+- **📊 Social-Analyse 2026-06-12 (`reports/ANALYSE-SOCIAL-2026-06-12.md`):** TikTok 40 Videos / 9 380 Views / Ø 234 /
+  **0 Shares** → Engpass = **Reichweite**, NICHT Content. **Gewinner-Format (datenbelegt): Produkt + konkreter Preis**
+  (Boho-Midi CHF 39.90 = 797 V) **+ Mundart** („Mach dys eiges Teil" 792 V). **Verlierer: generische Marken-/Kategorie-
+  Karten** (6–19 V) → NICHT mehr einreihen. **Poliert:** 21 offene Captions (Bild+Video) mit echtem CHF-Preis (live aus
+  Shopify) nach dem Produktnamen + **#bern** ergänzt. Künftig Posting-Mix = mehr Produkt+Preis & Mundart.
 
 **📌 2026-06-07 (NEUESTER STAND — ZUERST LESEN: Memory aufgefrischt + Conversion-Fix):**
 - **Branch-Reset:** Alle früheren Dropship-Branches (SrAs5/LehDs) sind **in `main` gemergt + gelöscht**.
