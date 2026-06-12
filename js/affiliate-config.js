@@ -45,5 +45,9 @@ window.ABAN_AFFILIATE = {
   // IONOS (DE). Partnerprogramm: IONOS-Partner / Awin.
   IONOS_URL: "",
   // Webflow (No-Code-Website-Builder). Partnerprogramm: Webflow-Affiliate.
-  WEBFLOW_URL: ""
+  WEBFLOW_URL: "",
+
+  // --- Design / Grafik. Tracking-Link eintragen; leer ("") -> Anbieter-Domain. ---
+  // Canva (Design-Baukasten). Partnerprogramm: Canva-Affiliate.
+  CANVA_URL: ""
 };
