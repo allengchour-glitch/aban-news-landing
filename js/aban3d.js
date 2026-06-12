@@ -151,8 +151,22 @@
     return { pts: pts, edges: edges, tick: null };
   }
 
+  function shapeGlobe(N) {
+    var lat = Math.max(5, Math.min(14, Math.round(Math.sqrt(N)))), lon = lat * 2, pts = [], edges = [], idx = {};
+    for (var i = 0; i <= lat; i++) for (var j = 0; j < lon; j++) {
+      var phi = (i / lat - 0.5) * Math.PI, th = j / lon * 6.283;
+      idx[i + "_" + j] = pts.length;
+      pts.push([Math.cos(phi) * Math.cos(th) * 1.25, Math.sin(phi) * 1.25, Math.cos(phi) * Math.sin(th) * 1.25]);
+    }
+    for (i = 0; i <= lat; i++) for (j = 0; j < lon; j++) {
+      edges.push([idx[i + "_" + j], idx[i + "_" + ((j + 1) % lon)]]);        // Breitengrad-Ring
+      if (i < lat) edges.push([idx[i + "_" + j], idx[(i + 1) + "_" + j]]);   // Längengrad
+    }
+    return { pts: pts, edges: edges, tick: null };
+  }
+
   var SHAPES = { sphere: shapeSphere, torus: shapeTorus, helix: shapeHelix, wave: shapeWave,
-                 galaxy: shapeGalaxy, swarm: shapeSwarm, bars: shapeBars, line: shapeLine };
+                 galaxy: shapeGalaxy, swarm: shapeSwarm, bars: shapeBars, line: shapeLine, globe: shapeGlobe };
 
   function init(cv) {
     var ctx = cv.getContext("2d");
