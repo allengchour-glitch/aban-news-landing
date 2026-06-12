@@ -252,6 +252,21 @@
     </div>
   </section>
 
+  <!-- 3D accent: self-hosted engine (pauses offscreen, honours reduced-motion) -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;align-items:center;border-radius:16px;overflow:hidden;background:radial-gradient(120% 120% at 30% 20%,#1c1814,#0f0d0a);border:1px solid #2a241c">
+        <div><canvas data-aban3d data-shape="globe" data-points="150" data-color="#f0a93a" data-speed="0.7" style="display:block;width:100%;height:260px;touch-action:none" aria-label="Interactive 3D animation – drag to rotate"></canvas></div>
+        <div style="padding:22px 26px;color:#f3ede1">
+          <span class="eyebrow" style="color:#f0a93a">Built in-house · 0 external libs</span>
+          <h2 style="color:#fff;margin:.3rem 0 .5rem">Real 3D charts — right in your browser</h2>
+          <p style="color:#cdc3b2;margin:0 0 1rem">Our calculators turn your numbers into a rotatable 3D chart — bars, lines, donut &amp; more. The same lightweight engine, no tracking, no upload. Drag the image to spin it.</p>
+          <a href="/3d-animation.html" class="btn btn--amber btn--sm">See all shapes →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" style="border-top:1px solid #ece6db;padding:clamp(2.6rem,6vw,4rem) 0;">
     <div class="wrap">
       <div style="text-align:center;margin-bottom:1.6rem">
@@ -343,5 +358,6 @@
 <script defer src="/js/analytics.js"></script>
 <script defer src="/js/announce.js"></script>
 <script defer src="/js/lang-suggest.js"></script>
+<script defer src="/js/aban3d.js"></script>
 </body>
 </html>
