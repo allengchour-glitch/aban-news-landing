@@ -79,6 +79,50 @@
 
   <section>
     <div class="wrap" style="max-width:820px">
+      <h2>Live ausprobieren</h2>
+      <p class="muted">Schlüssel rein, Art wählen, echtes Ergebnis sehen — und den passenden <code class="inl">curl</code>-Befehl gleich mitkopieren. Läuft über die echte API (gleiche Pro-Limits).</p>
+      <div class="card">
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:flex-end">
+          <div style="flex:1;min-width:240px">
+            <label for="pgKey" style="display:block;font-weight:600;margin-bottom:.2rem">aban-Pro-Schlüssel</label>
+            <input type="text" id="pgKey" placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" autocomplete="off" spellcheck="false" style="width:100%;padding:.55rem .6rem;border:1px solid #cbd5e1;border-radius:8px;font:inherit">
+          </div>
+          <span id="pgState" class="pill" style="background:#fee2e2;color:#991b1b">gesperrt</span>
+        </div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem">
+          <div style="flex:1;min-width:160px">
+            <label for="pgKind" style="display:block;font-weight:600;margin-bottom:.2rem">Art (kind)</label>
+            <select id="pgKind" style="width:100%;padding:.55rem .6rem;border:1px solid #cbd5e1;border-radius:8px;font:inherit;background:#fff">
+              <option value="email">email</option><option value="social">social</option>
+              <option value="ad">ad</option><option value="seo">seo</option>
+              <option value="slogan">slogan</option><option value="ideas">ideas</option>
+              <option value="faq">faq</option><option value="text">text</option>
+            </select>
+          </div>
+          <div style="flex:1;min-width:160px">
+            <label for="pgBranche" style="display:block;font-weight:600;margin-bottom:.2rem">branche</label>
+            <input type="text" id="pgBranche" value="Handwerksbäckerei" style="width:100%;padding:.55rem .6rem;border:1px solid #cbd5e1;border-radius:8px;font:inherit">
+          </div>
+        </div>
+        <label for="pgZiel" style="display:block;font-weight:600;margin:.7rem 0 .2rem">ziel</label>
+        <input type="text" id="pgZiel" value="Stammkunden über neue Öffnungszeiten informieren" style="width:100%;padding:.55rem .6rem;border:1px solid #cbd5e1;border-radius:8px;font:inherit">
+        <p style="margin-top:.8rem">
+          <button type="button" id="pgRun" class="btn" disabled>Anfrage senden</button>
+          <span id="pgMsg" class="muted" style="margin-left:.5rem"></span>
+        </p>
+        <div id="pgOutWrap" hidden>
+          <p style="font-weight:600;margin:.6rem 0 .2rem">Ergebnis</p>
+          <pre><code id="pgOut" style="white-space:pre-wrap"></code></pre>
+          <p style="font-weight:600;margin:.6rem 0 .2rem">Passender curl-Befehl</p>
+          <pre><code id="pgCurl"></code></pre>
+        </div>
+        <p class="muted" style="font-size:.82rem;margin-top:.4rem">Kein Schlüssel? Der Zugang ist in <a href="/ki-studio.html">aban Pro</a> enthalten.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap" style="max-width:820px">
       <h2>In 30 Sekunden</h2>
       <ol>
         <li><strong>aban Pro holen</strong> (enthält API-Zugang) &mdash; <a href="/ki-studio.html">Pro ansehen &rarr;</a></li>
@@ -191,5 +235,59 @@ console.log(data.text);</code></pre>
   </div>
 </footer>
 
+<script>
+(function(){
+  'use strict';
+  var KEY='aban_pro_key', key='';
+  try{ key=localStorage.getItem(KEY)||''; }catch(e){}
+  function $(id){ return document.getElementById(id); }
+  var keyEl=$('pgKey'), stateEl=$('pgState'), runBtn=$('pgRun'), msg=$('pgMsg');
+
+  function setState(on){
+    if(stateEl){ stateEl.textContent=on?'aktiv ✓':'gesperrt';
+      stateEl.style.background=on?'#dcfce7':'#fee2e2'; stateEl.style.color=on?'#166534':'#991b1b'; }
+    if(runBtn) runBtn.disabled=!on;
+  }
+  function validate(k){
+    k=(k||'').trim(); if(k.length<8){ setState(false); return; }
+    fetch('/api/pro-validate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({license_key:k})})
+      .then(function(r){return r.json();}).then(function(d){
+        if(d&&d.valid){ key=k; try{localStorage.setItem(KEY,k);}catch(e){} setState(true); msg.textContent=''; }
+        else{ setState(false); msg.textContent='Schlüssel ungültig oder abgelaufen.'; }
+      }).catch(function(){ msg.textContent='Prüfung fehlgeschlagen.'; });
+  }
+  if(keyEl){
+    if(key) keyEl.value=key;
+    var t; keyEl.addEventListener('input', function(){ clearTimeout(t); t=setTimeout(function(){ validate(keyEl.value); }, 500); });
+  }
+
+  function curlFor(body){
+    return 'curl -X POST https://abannews.com/api/generate \\\n'+
+      '  -H "Content-Type: application/json" \\\n'+
+      '  -H "X-Pro-Key: DEIN-PRO-SCHLUESSEL" \\\n'+
+      "  -d '"+JSON.stringify(body)+"'";
+  }
+
+  if(runBtn) runBtn.addEventListener('click', function(){
+    if(!key){ msg.textContent='Erst einen gültigen Schlüssel eingeben.'; return; }
+    var body={ kind:$('pgKind').value, branche:$('pgBranche').value, ziel:$('pgZiel').value };
+    $('pgCurl').textContent=curlFor(body);
+    runBtn.disabled=true; var old=runBtn.textContent; runBtn.textContent='Sende …'; msg.textContent='';
+    fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json','X-Pro-Key':key},body:JSON.stringify(body)})
+      .then(function(r){ return r.json().then(function(d){ return {s:r.status,d:d}; }); })
+      .then(function(o){
+        $('pgOutWrap').hidden=false;
+        if(o.s===200 && o.d && o.d.text){ $('pgOut').textContent=o.d.text; }
+        else if(o.s===402){ $('pgOut').textContent='402 — Pro-Schlüssel nötig oder abgelaufen.'; }
+        else if(o.s===429){ $('pgOut').textContent='429 — Rate-Limit, kurz warten.'; }
+        else if(o.s===503){ $('pgOut').textContent='503 — KI gerade nicht aktiv.'; }
+        else { $('pgOut').textContent='Fehler '+o.s+' — bitte nochmal.'; }
+      }).catch(function(){ $('pgOutWrap').hidden=false; $('pgOut').textContent='Netzwerkfehler.'; })
+      .finally(function(){ runBtn.disabled=false; runBtn.textContent=old; });
+  });
+
+  if(key) validate(key);
+})();
+</script>
 </body>
 </html>
