@@ -17,8 +17,11 @@ window.ABAN_AFFILIATE = {
   MURF_URL: "https://get.murf.ai/hhd1supey3ea",
   // ElevenLabs (Text-to-Speech, 2026 führend). Tracking via PartnerStack.
   ELEVENLABS_URL: "https://try.elevenlabs.io/6hlkc0rv2u1j",
-  // ManyChat (Chatbot / DM-Automation). Tracking via PartnerStack.
-  MANYCHAT_URL: "https://manychat.partnerstack.com/",
+  // ManyChat (Chatbot / DM-Automation). HINWEIS: aktuell NICHT im PartnerStack-Konto
+  // (nur Murf + ElevenLabs aktiv). Bis du dem ManyChat-Partnerprogramm beitrittst,
+  // bleibt der Link neutral (manychat.com) und wird NICHT als Affiliate gekennzeichnet.
+  // Sobald du einen echten Tracking-Link hast: hier eintragen + Label wieder aktivieren.
+  MANYCHAT_URL: "",
 
   // --- Buchhaltung/Rechnung (DACH). Tracking-Link aus dem jeweiligen Partner-
   //     programm hier eintragen; leer ("") -> Button zeigt auf die Anbieter-Domain. ---
