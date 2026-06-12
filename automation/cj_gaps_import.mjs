@@ -68,7 +68,7 @@ const BAD = ['wholesale', 'lot ', 'wig', 'nail', 'tattoo', 'sticker', 'sample', 
   'watch', 'bikini', 'dress', 'shirt', 'shoe', 'sock',
   'ornament', 'freshener', 'perfume', 'puppy', 'plush', 'doll', 'figure', ' pet ', ' dog ', 'stairs', 'rug', 'cushion'];
 const MAX_COST = 9;   // USD-Deckel → CHF ~26 (Impulskauf), filtert teure Fehlgriffe
-const MIN_LISTED = 30; // Mindest-Popularität
+const MIN_LISTED = parseInt(process.env.MIN_LISTED || '0', 10) || 0; // Popularität (CJ liefert Feld oft nicht → Default 0)
 
 // ── Shopify ──
 async function sgql(tok, q, v) {
