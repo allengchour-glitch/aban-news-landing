@@ -44,36 +44,34 @@ post/story). Exclude accounts with fake followers or <2% engagement.
 
 **① Warm & kurz (Standard)**
 ```
-Hey [Name] 🤍 Ich bin Allen von LuxeStyle, einem kleinen Schweizer Online-Shop.
-Dein Content passt perfekt zu uns! Ich schick dir gern ein Teil deiner Wahl GRATIS —
-ganz ohne Verpflichtung. Wenn's dir gefällt, freu ich mich über eine ehrliche Story,
+Hey [Name] 🤍 Wir sind LuxeStyle, ein kleiner Schweizer Online-Shop 🇨🇭
+Dein Content passt perfekt zu uns! Wir schicken dir gern ein Teil deiner Wahl GRATIS —
+ganz ohne Verpflichtung. Wenn's dir gefällt, freuen wir uns über eine ehrliche Story,
 aber kein Muss. Magst du? 🇨🇭
 ```
 
 **② Konkret aufs Profil bezogen**
 ```
-Hi [Name]! Dein [Sommer-/OOTD-]Content gefällt mir richtig 🤍 Ich hab einen Schweizer
-Shop (LuxeStyle) und würde dir gern was Passendes schicken — gratis, deine Wahl. Nur
+Hi [Name]! Dein [Sommer-/OOTD-]Content gefällt uns richtig 🤍 Wir sind ein Schweizer Shop (LuxeStyle) und würden dir gern was Passendes schicken — gratis, deine Wahl. Nur
 falls es dir gefällt: eine ehrliche Erwähnung. Sonst behältst du's einfach 😊 Interesse?
 ```
 
 **③ Mit klarem Mehrwert (Code für Follower)**
 ```
-Hey [Name] 🤍 Allen von LuxeStyle hier (Schweizer Shop). Ich schenk dir ein Teil deiner
-Wahl + geb dir einen eigenen −10%-Code für deine Community. Kein Vertrag, kein Druck —
+Hey [Name] 🤍 LuxeStyle hier (Schweizer Shop) 🇨🇭 Wir schenken dir ein Teil deiner
+Wahl + geben dir einen eigenen −10%-Code für deine Community. Kein Vertrag, kein Druck —
 nur, wenn's dir gefällt. Magst du reinschauen? luxestyle.ch
 ```
 
 **④ Kurz & locker (TikTok-Stil)**
 ```
-hey [Name] 🤍 dein content ist mega! ich hab nen kleinen schweizer shop (luxestyle) &
-würd dir gern was gratis schicken, deine wahl — ohne verpflichtung. interesse? 😊
+hey [Name] 🤍 dein content ist mega! wir sind ein kleiner schweizer shop (luxestyle) &
+würden dir gern was gratis schicken, deine wahl — ohne verpflichtung. interesse? 😊
 ```
 
 **⑤ English (falls EN-Profil)**
 ```
-Hi [Name] 🤍 I'm Allen from LuxeStyle, a small Swiss online shop. Love your content!
-I'd love to send you a piece of your choice — free, no strings attached. If you like it,
+Hi [Name] 🤍 We're LuxeStyle, a small Swiss online shop 🇨🇭 Love your content! We'd love to send you a piece of your choice — free, no strings attached. If you like it,
 an honest story would be amazing, but no pressure. Up for it? 🇨🇭
 ```
 
