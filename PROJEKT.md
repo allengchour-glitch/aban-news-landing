@@ -163,6 +163,24 @@ gemerged (zuletzt PR #599, FR/IT-Revert). **Komplett live & autonom — diese (a
   nach `announce.js` in **787 DE+EN-Seiten** mit `hreflang`-Alternates eingehängt (idempotent; 289 ohne
   Alternate übersprungen; dropship unberührt). Banner ist no-op-sicher → einmal ausrollen reicht für alle.
 
+## 📌 Stand 2026-06-12 (Teil 17) — 3 neue Verticals + i18n + 71 PDF-Fixes (Voll-gas-Session)
+User: „voll gas autonom". Erledigt & gemerged (PRs #453, #736, #738):
+- **3 neue distinkte DE-Hubs:** Detektei, Textilreinigung & Wäscherei, Personaldienstleister (je 5
+  Büro-Use-Cases, ehrliche Grenzen; Personaldienstleister betont AGG/EU-AI-Act-Hochrisiko/keine
+  automatisierte Bewerberauswahl). Voll integriert (OG/Funnel/Lead-PDF/Related/Sitemap).
+- **9 EN/FR/IT-Übersetzungen** der 3 neuen Hubs (#736) → volle 4-Sprachen-Parität. Fix dabei:
+  it „mangiare"→„manganare" (Mangeln). Parallel-Workstream baute weiter aus → Stand jetzt **360 Hubs
+  je Sprache** (DE/EN/FR/IT).
+- **71 fehlende Branchen-PDFs generiert** (#738, 35 EN + 36 DE): Parallel-Workstream hatte Hubs ohne
+  ihre Schnellstart-PDFs angelegt → 141 defekte Links → 70 (Rest: Hub-Hero-Bilder via site-images-
+  Workflow + /hype-watch, beide nicht PDF-bezogen).
+- **🔑 LEHRE (GitHub-Rate-Limit-Workaround):** Wenn die GraphQL-Mutation „ready for review" dauer-
+  geblockt ist (Parallel-Workstream teilt den API-User): Draft-PR NICHT entdraften — stattdessen
+  dieselben Commits unter neuem Branch-Namen pushen (`git push origin alt:neu-v2`) und PR direkt mit
+  `draft:false` anlegen (REST geht) → sofort mergebar. Alte Draft-PRs danach schließen.
+- **🔑 LEHRE (Race):** async-Hub-Agenten beendeten NACH meinem Commit und strippten die Tool-Asides →
+  idempotente Tools danach erneut fahren. Besser: Agenten synchron, Tools erst nach Abschluss aller.
+
 ## 📌 Stand 2026-06-08 (Teil 16) — Volle 4-Sprachen-Hub-Parität + Schema + Abend-TODO
 User: „alles weiter wo du kannst und das wo ich mache in todo abend". Erledigt & gemerged:
 - **BreadcrumbList-Schema in ALLEN Hubs** (PR #442 EN, #444 FR+IT): `tools/add_en_hub_breadcrumbs.py`
