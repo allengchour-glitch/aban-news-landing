@@ -147,6 +147,34 @@
       </div>
     </div>
 
+    <!-- Gratis-Mini-Test (ohne Anmeldung) -->
+    <div class="unlock" id="demoBox" style="display:block">
+      <h3 style="margin:0 0 .3rem">✨ Erst gratis testen — ohne Anmeldung</h3>
+      <p id="demoSub" style="margin:0 0 .6rem;color:var(--muted);font-size:.95rem">Wähl eine Art, schreib 1–2 Stichworte, sieh ein echtes (kurzes) KI-Ergebnis. Voller Umfang mit aban&nbsp;Pro.</p>
+      <div class="frow">
+        <div><label for="demoKind">Was</label>
+          <select id="demoKind">
+            <option value="email">E-Mail</option>
+            <option value="social">Social-Post</option>
+            <option value="ad">Werbeanzeige</option>
+            <option value="slogan">Slogan</option>
+            <option value="text">Text</option>
+          </select></div>
+        <div><label for="demoBranche">Branche</label><input type="text" id="demoBranche" placeholder="z. B. Handwerksbäckerei"></div>
+      </div>
+      <label for="demoZiel" style="margin-top:.4rem">Ziel / Worum geht's</label>
+      <input type="text" id="demoZiel" placeholder="z. B. Stammkunden über neue Öffnungszeiten informieren">
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem;align-items:center">
+        <button type="button" id="demoRun" class="btn btn--amber btn--sm">Gratis erstellen</button>
+        <span id="demoMsg" style="color:var(--muted);font-size:.9rem"></span>
+      </div>
+      <div id="demoOut" class="out" style="margin-top:.7rem" hidden></div>
+      <div id="demoUpsell" hidden style="margin-top:.7rem;padding:.7rem .9rem;background:var(--amber-lt);border-radius:10px">
+        <b>Das war ein Mini-Vorgeschmack.</b> Mit aban&nbsp;Pro: volle Länge, <b>22 Text-Arten</b>, Audit, API & kein Limit.
+        <a href="#preise" class="btn btn--amber btn--sm" style="margin-left:.4rem">aban Pro holen &rarr;</a>
+      </div>
+    </div>
+
     <!-- Tools -->
     <section class="sec" style="padding-top:.4rem">
       <span class="eyebrow">Pro-Werkzeuge</span>
