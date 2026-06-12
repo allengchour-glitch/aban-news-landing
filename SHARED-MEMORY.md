@@ -39,6 +39,22 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-12 (ABEND) — abannews session: AFFILIATE-MASCHINE + aban-Pro-Funnel (Detail in `PROJEKT.md`, oberste Sektion):**
+- Komplette, ehrliche **Affiliate-/Review-Maschine** gebaut: `/deals`,`/ki-chatbots`,`/buchhaltung-software`,
+  `/email-marketing-tools`,`/website-hosting`,`/design-tools` + Hub `/tool-tipps` (+ EN-Versionen); **5 Voice-Seiten**
+  (`/ki-voiceover`,`/ki-stimme-klonen`,`/text-vorlesen-lassen`,`/ki-podcast` + bestehend `/ki-stimmen`) → Funnel zu
+  **ElevenLabs/Murf** (Users einzige aktive PartnerStack-Verdiener). aban-Pro/KI-Studio stark ausgebaut (22 Arten,
+  Gratis-Demo `/api/demo`, Audit `/ki-audit`, API-Playground `/api`).
+- **Affiliate zentral in `js/affiliate-config.js`.** AKTIV: `MURF_URL`, `ELEVENLABS_URL`, **neu `HOSTINGER_URL`**
+  (Refer&earn `?REFERRALCODE=T2IALLENGYBU`). ManyChat entlabelt (nicht in Users PartnerStack). Rest wartet auf
+  User-Tracking-Links (Brevo/Canva/sevDesk…).
+- **⛔ DEPLOY-STAU:** **Actions seit ~15:09 UTC gedrosselt** („Actions has been disabled for this user" — Abuse-
+  Throttle durch die vielen Auto-Workflows, TROTZ Public-Repo). Alles nach 15:09 ist auf `main`, aber **nicht live
+  deployed**. Deployt automatisch, sobald Actions frei. **→ Bitte Auto-Workflows weiter drosseln/bündeln**, sonst
+  blockiert das immer wieder auch die abannews-Deploys.
+- Branch `claude/abannews-growth-monetization-hm6wod`. **TODO morgen:** User-Tracking-Links eintragen + Newsletter
+  raus (erste Provision → schaltet ManyChat & weitere PartnerStack-Programme frei). Details: `PROJEKT.md`.
+
 **2026-06-12 — Luxestyle/Reichweite session: Pinterest-Maschine + Organik-Kit (Branch `claude/luxstyle-ads-search-5i68xa`, Draft-PR #775 → main):**
 - **🎯 Auftrag:** „Leute anlocken" → organische Gratis-Reichweite gebaut (Kern-Engpass bleibt Reichweite, nicht Shop).
 - **📌 Pinterest komplett (`dropship/PINTEREST-SETUP.md` + `dropship/pinterest_pins.csv`):** **103 fertige,

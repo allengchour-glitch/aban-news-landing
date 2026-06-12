@@ -16,6 +16,73 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 💸 2026-06-12 (ABEND) — AFFILIATE-MONETARISIERUNG + aban-Pro-Funnel (NEUESTER STAND, zuerst lesen!)
+
+> Ganztägige Session: aban-Pro/KI-Studio ausgebaut **und** eine komplette, ehrliche **Affiliate-Maschine** gebaut.
+> Zentrale Idee: ehrliche Review-/How-to-Seiten → Funnel zum KI-Studio (gratis testen) + Newsletter, Affiliate
+> **nur** auf Review-Seiten, Tool-DB bleibt neutral. **Alles markenkonform, anti-hype, klar gekennzeichnet.**
+
+### 🔑 Affiliate-Mechanik (EINE Quelle der Wahrheit)
+- **`js/affiliate-config.js`** (`window.ABAN_AFFILIATE`): pro Tool ein `*_URL`. **Tracking-Link eintragen → Review-
+  Seite verdient + zeigt „Affiliate-Link"-Label.** Leer `""` → Button zeigt neutral auf Anbieter-Domain (kein toter
+  Link, kein falsches Label). Die Review-Seiten lesen die Keys per kleinem Inline-Script (ids wie `aff-hostinger`,
+  `deals-eleven`, `vo-eleven` …).
+- **AKTIVE Verdiener (Links real eingetragen):**
+  - `MURF_URL` = `https://get.murf.ai/hhd1supey3ea` ✅ (PartnerStack aktiv)
+  - `ELEVENLABS_URL` = `https://try.elevenlabs.io/6hlkc0rv2u1j` ✅ (PartnerStack aktiv)
+  - `HOSTINGER_URL` = `https://www.hostinger.com/?REFERRALCODE=T2IALLENGYBU` ✅ (Refer&earn, heute aktiviert, PR #801)
+- **ManyChat:** NICHT in Users PartnerStack → bewusst **entlabelt** (neutrale Empfehlung, `MANYCHAT_URL:""`,
+  rel=noopener, kein „*"). Erst wieder Affiliate, wenn echter Tracking-Link da.
+- **Leer/wartend (User meldet sich bei Programm an → schickt Link → dann Key setzen):** `SEVDESK_URL`,
+  `LEXOFFICE_URL`, `BEXIO_URL` (via Awin), `BREVO_URL`, `MAILERLITE_URL`, `GETRESPONSE_URL`, `IONOS_URL`,
+  `WEBFLOW_URL`, `CANVA_URL`.
+
+### 🧭 Wichtige strategische Erkenntnis (aus User-Screenshots)
+- Users **PartnerStack** hat NUR **Murf + ElevenLabs** aktiv. **PartnerStack-Sperre:** weitere Programme (ManyChat
+  etc.) lassen sich erst freischalten, **nachdem die ERSTE Provision** über Murf/ElevenLabs verdient wurde.
+  → Deshalb **Voice-Traffic priorisiert** (führt zur ersten Provision, die alles andere aufschließt).
+- **Unabhängige Programme** (Hostinger, Brevo, Canva, sevDesk/Awin …) haben die PartnerStack-Hürde NICHT →
+  können sofort nach Freigabe verdienen.
+
+### 🆕 Heute gebaute Seiten (alle DE, viele auch EN; Funnel + FAQ/HowTo-Schema, im Sitemap + tool-tipps-Hub)
+- **aban Pro / KI-Studio:** 22 Text-Arten (gruppiert), Gratis-Demo `/api/demo` (Origin-Gate, 280 Tok, IP-Limit) auf
+  Startseite + KI-Studio, „Kopieren"-Buttons, Newsletter-Fang im Upsell, vorausgefüllte Demo-Beispiele.
+  Engine `functions/api/generate.js` (+`lang`), `functions/api/audit-report.js`, `functions/api/demo.js`.
+- **API-Seite** `/api` (+`/en/api`): Doku + **Live-Playground** + FAQ-Schema.
+- **KI-Sichtbarkeits-Audit** `/ki-audit` (+EN) Pro-gated; in den GEO-Hub `/ki-sichtbarkeit` + 21 Branchenseiten + EN
+  integriert (Option B: 3 Wege — Gratis-Check / Sofort-Report Pro / Workbook 29€).
+- **Affiliate-Reviews:** `/deals`(+EN), `/ki-chatbots`(+EN), `/buchhaltung-software`, `/email-marketing-tools`(+EN),
+  `/website-hosting`(+EN), `/design-tools`, **Hub** `/tool-tipps`.
+- **Voice-Funnel (→ ElevenLabs/Murf):** `/ki-stimmen` (bestehend), `/ki-voiceover`, `/ki-stimme-klonen`,
+  `/text-vorlesen-lassen`, `/ki-podcast`.
+
+### ⏳ DEPLOY-STAU (wichtig!)
+- **GitHub Actions ist seit ~15:09 UTC für das Konto gedrosselt** („Actions has been disabled for this user", Abuse-
+  Throttle durch die vielen Dropship/POD/Social-Workflows). **→ ALLES nach ~15:09 ist auf `main`, aber NICHT live
+  deployed** (Hostinger-Link, alle Voice-Seiten, ManyChat-Fix, KI-Studio-Polish). Deployt automatisch, sobald Actions
+  wieder frei ist (nächster Push / 6h-Cron). **Nichts ist verloren.** Live-Check: `js/affiliate-config.js` muss
+  `REFERRALCODE=T2IALLENGYBU` enthalten.
+
+### ✅ TODO MORGEN (mit dem User)
+1. **Hostinger-Affiliate-Formular** zu Ende ausfüllen (separates, höher-zahlendes Programm; Refer&earn läuft schon).
+   Anleitung steht; „What makes you a great fit"-Text + Dropdowns „Yes" + Besucherzahl (NICHT die URL) eintragen.
+2. **Brevo-Affiliate:** richtige URL **`https://www.brevo.com/partners/affiliates/`** — ⚠️ **braucht professionelle
+   E-Mail `…@abannews.com`** (Gmail/Hotmail wird abgelehnt!). Sonst → **Canva** (über Impact.com, Gmail ok).
+3. User schickt **Tracking-Link(s)** → in `affiliate-config.js` eintragen, committen, deployen (Seite verdient).
+4. **Newsletter rausschicken** (fertiger Text steht im Chat: „Reels vertonen ohne Mikro…", verlinkt /ki-stimmen,
+   /ki-voiceover, /ki-stimme-klonen) → holt die **erste Murf/ElevenLabs-Provision** → schaltet ManyChat & Co. frei.
+5. **Prüfen, ob der Deploy nachgezogen ist** (Actions wieder frei?) — sonst weiter warten.
+
+### 🟡 Weiterhin offen (nur User, für aban-Pro/Shop-Umsatz)
+- **Lemon-Squeezy-Store aktivieren** (2FA/Review) → Pro/Audit/API kaufbar.
+- **Stripe-Secret-Key** (`sk_live_…`, nicht `pk_…`) als GitHub- + Cloudflare-Pages-Secret → Shop-Produkte kaufbar
+  (der frühere Shop-Workflow scheiterte an einem Publishable-Key → 403; `stripe_sync.py` ist jetzt non-destruktiv).
+
+### 🔒 Sicherheit (heute geschärft)
+- API-Keys/Passwörter NIE in die öffentliche `affiliate-config.js` — nur **Affiliate-LINK-URLs** (öffentlich ok).
+  (User hatte einen ManyChat-**API-Key** angeboten — abgelehnt, ist NICHT der Affiliate-Link.)
+- **Branch:** diese Session committet auf `claude/abannews-growth-monetization-hm6wod` → Draft-PRs → squash nach `main`.
+
 ## 🗂️ OFFENE AUFGABEN / BACKLOG (Stand 2026-06-07) — NUR auf Kommando des Users starten
 > Der User hat gesagt: **nichts anfangen, bis er es sagt.** Diese Liste ist der gesammelte Backlog.
 > Jeweils per Stichwort auslösbar.
