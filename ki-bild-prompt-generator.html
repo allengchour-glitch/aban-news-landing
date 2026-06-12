@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KI-Bild-Prompt-Generator — bessere Prompts für Midjourney, DALL·E &amp; Co. | aban news</title>
+<meta name="description" content="Kostenloser KI-Bild-Prompt-Generator: Motiv, Stil, Licht, Perspektive wählen — fertiger Prompt zum Kopieren für Midjourney, DALL·E, Stable Diffusion u. a. Lokal im Browser, ohne Login.">
+<link rel="canonical" href="https://abannews.com/ki-bild-prompt-generator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KI-Bild-Prompt-Generator — bessere Bild-Prompts">
+<meta property="og:description" content="Motiv, Stil, Licht, Perspektive wählen → fertiger Prompt zum Kopieren. Für Midjourney, DALL·E &amp; Co.">
+<meta property="og:url" content="https://abannews.com/ki-bild-prompt-generator.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"KI-Bild-Prompt-Generator","url":"https://abannews.com/ki-bild-prompt-generator.html","applicationCategory":"DesignApplication","operatingSystem":"Web","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Baut aus Motiv, Stil, Licht und Perspektive einen fertigen Bild-Prompt für KI-Bildgeneratoren.","publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Für welche KI-Bildgeneratoren passt der Prompt?","acceptedAnswer":{"@type":"Answer","text":"Für die gängigen: Midjourney, DALL·E, Stable Diffusion, Leonardo, Adobe Firefly und ähnliche. Der Aufbau (Motiv, Stil, Licht, Perspektive) funktioniert überall. Das Seitenverhältnis wird als --ar angehängt; nicht jedes Tool nutzt diese Schreibweise — dann stellst du es im Tool selbst ein."}},
+{"@type":"Question","name":"Auf Deutsch oder Englisch prompten?","acceptedAnswer":{"@type":"Answer","text":"Die meisten Bildmodelle verstehen Englisch am besten. Der Generator baut den Prompt deshalb auf Englisch, du gibst dein Motiv aber in jeder Sprache ein. Bei Bedarf das Motiv vorher übersetzen."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft in deinem Browser, nichts wird gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+  :root{--amber-dk:#b45309;--accent:#d97706;--bg:#fffbf5;--field:#fffdf9;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--ok:#059669}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+  a{color:var(--amber-dk)}
+  header{border-bottom:1px solid var(--line);background:#fff}
+  header .wrap{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:14px 20px}
+  .brand{display:flex;align-items:center;gap:.5rem;font-weight:800;text-decoration:none;color:var(--ink)}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
+  .hnav{margin-left:auto;display:flex;align-items:center;gap:1.1rem;font-size:.92rem;flex-wrap:wrap}
+  .hnav a{color:var(--muted);text-decoration:none}
+  .btn{background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;border-radius:8px;font-size:.9rem;border:0;cursor:pointer}
+  main{max-width:760px;margin:0 auto;padding:0 20px}
+  h1{font-size:2rem;line-height:1.2;margin:34px 0 10px}
+  .lead{font-size:1.12rem;color:var(--ink2)}
+  h2{font-size:1.35rem;margin:34px 0 6px}
+  p{color:var(--ink2)}
+  .tool{border:1px solid var(--line);border-radius:14px;padding:18px;margin:24px 0;background:#fff}
+  .tool label{display:block;font-weight:600;font-size:.9rem;margin:10px 0 5px;color:var(--ink2)}
+  .tool select,.tool input,.tool textarea{width:100%;font-size:1rem;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);font-family:inherit}
+  .tool textarea{min-height:120px;line-height:1.5;white-space:pre-wrap}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>div{flex:1;min-width:150px}
+  .copied{color:var(--ok);font-weight:700;font-size:.9rem;margin-left:10px;opacity:0;transition:opacity .2s}
+  .copied.show{opacity:1}
+  details{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:#fff}
+  summary{font-weight:700;cursor:pointer}
+  .cta{background:var(--field);border:1px solid var(--line);border-radius:14px;padding:20px;margin:30px 0;text-align:center}
+  footer{border-top:1px solid var(--line);margin-top:40px;background:#fff}
+  footer .wrap{max-width:980px;margin:0 auto;padding:18px 20px;color:var(--muted);font-size:.88rem;display:flex;gap:14px;flex-wrap:wrap}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a href="/" class="brand"><span class="dot"></span> aban news</a>
+    <nav class="hnav" aria-label="Navigation">
+      <a href="/online-tools.html">Tools</a>
+      <a href="/bessere-prompts.html">Bessere Prompts</a>
+      <a href="/founding.html">Premium</a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Gratis abonnieren</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+
+  <h1>KI-Bild-Prompt-Generator</h1>
+  <p class="lead">Gute KI-Bilder fangen mit einem guten Prompt an. Wähl Motiv, Stil, Licht und Perspektive — der Generator baut daraus einen sauberen Prompt zum Kopieren, für Midjourney, DALL·E, Stable Diffusion &amp; Co. Lokal im Browser, nichts wird gesendet.</p>
+
+  <div class="tool">
+    <label for="motiv">Motiv (worum geht's?)</label>
+    <input type="text" id="motiv" value="ein Fuchs im verschneiten Wald" spellcheck="false">
+    <div class="row">
+      <div><label for="stil">Stil</label>
+        <select id="stil">
+          <option value="photorealistic, 8k, sharp focus">Fotorealistisch</option>
+          <option value="digital illustration, clean lines">Illustration</option>
+          <option value="3D render, octane, soft shadows">3D-Render</option>
+          <option value="watercolor painting, soft edges">Aquarell</option>
+          <option value="oil painting, textured brushstrokes">Ölgemälde</option>
+          <option value="flat minimalist vector">Minimalistisch / Vektor</option>
+          <option value="comic book style, bold ink">Comic</option>
+          <option value="cyberpunk, neon, futuristic">Cyberpunk</option>
+          <option value="isometric, miniature diorama">Isometrisch</option>
+        </select></div>
+      <div><label for="licht">Licht / Stimmung</label>
+        <select id="licht">
+          <option value="soft natural daylight">Weiches Tageslicht</option>
+          <option value="golden hour, warm backlight">Goldene Stunde</option>
+          <option value="studio lighting, softbox">Studio</option>
+          <option value="dramatic cinematic lighting, high contrast">Dramatisch / Kino</option>
+          <option value="moody, foggy, low light">Düster / Nebel</option>
+          <option value="bright and airy, pastel tones">Hell &amp; luftig</option>
+          <option value="neon glow, night">Neon / Nacht</option>
+        </select></div>
+    </div>
+    <div class="row">
+      <div><label for="persp">Perspektive</label>
+        <select id="persp">
+          <option value="close-up portrait">Nahaufnahme</option>
+          <option value="wide establishing shot">Totale</option>
+          <option value="top-down, bird's eye view">Vogelperspektive</option>
+          <option value="macro, extreme detail">Makro</option>
+          <option value="low angle, dynamic">Froschperspektive</option>
+          <option value="eye level, centered">Augenhöhe</option>
+        </select></div>
+      <div><label for="ar">Seitenverhältnis</label>
+        <select id="ar">
+          <option value="1:1">Quadrat 1:1</option>
+          <option value="16:9">Quer 16:9</option>
+          <option value="9:16">Hoch 9:16 (Story)</option>
+          <option value="4:3">4:3</option>
+          <option value="3:2">3:2</option>
+        </select></div>
+    </div>
+    <label for="extra">Zusätzliche Details (Farben, Hintergrund, Extras)</label>
+    <input type="text" id="extra" value="warme Farben, weicher Hintergrund, feine Schneeflocken" spellcheck="false">
+    <label for="avoid">Vermeiden (negativ)</label>
+    <input type="text" id="avoid" value="Text, Wasserzeichen, verzerrte Hände" spellcheck="false">
+    <label for="out" style="margin-top:16px">Dein Prompt</label>
+    <textarea id="out" readonly aria-label="Erzeugter Bild-Prompt"></textarea>
+    <div style="margin-top:10px"><button class="btn" id="copy">In Zwischenablage kopieren</button><span class="copied" id="ok">kopiert ✓</span></div>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:10px">💡 Tipp: Die meisten Bildmodelle verstehen <strong>Englisch</strong> am besten — der Prompt wird darum auf Englisch gebaut. Dein Motiv kannst du in jeder Sprache eingeben (ggf. vorher übersetzen).</p>
+  </div>
+
+  <div class="cta">
+    <h2 style="margin-top:0">Täglich ein KI-Trick, der dir wirklich hilft</h2>
+    <p style="margin:.4rem 0 1rem">aban news zeigt dir Mo–Fr in 5 Minuten, was mit KI praktisch geht — ehrlich, ohne Hype. Kostenlos.</p>
+    <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Gratis abonnieren →</a>
+    &nbsp; <a href="/bessere-prompts.html" style="display:inline-block;margin-top:8px">Bessere Prompts schreiben →</a>
+    &nbsp; <a href="/online-tools.html" style="display:inline-block;margin-top:8px">Alle Tools →</a>
+  </div>
+
+  <h2>Häufige Fragen</h2>
+  <details><summary>Für welche KI-Bildgeneratoren passt der Prompt?</summary><p>Midjourney, DALL·E, Stable Diffusion, Leonardo, Firefly u. a. Der Aufbau passt überall; das <code>--ar</code>-Seitenverhältnis nutzt nicht jedes Tool — dann stellst du es im Tool selbst ein.</p></details>
+  <details><summary>Auf Deutsch oder Englisch prompten?</summary><p>Englisch funktioniert bei den meisten Modellen am besten. Der Generator baut darum auf Englisch; dein Motiv gibst du in jeder Sprache ein.</p></details>
+  <details><summary>Werden meine Eingaben gespeichert?</summary><p>Nein — alles läuft lokal im Browser, nichts wird gesendet.</p></details>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour · Belp (CH)</span>
+    <a href="/online-tools.html">Tools</a>
+    <a href="/bessere-prompts.html">Bessere Prompts</a>
+    <a href="/founding.html">Premium</a>
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+  </div>
+</footer>
+<script>
+(function(){
+  var ids=["motiv","stil","licht","persp","ar","extra","avoid"],el={};
+  ids.forEach(function(i){el[i]=document.getElementById(i);});
+  var out=document.getElementById("out");
+  function v(i){return (el[i].value||"").trim();}
+  function build(){
+    var parts=[v("motiv"),el.stil.value,el.licht.value,el.persp.value];
+    if(v("extra")) parts.push(v("extra"));
+    parts.push("highly detailed, professional");
+    var p=parts.filter(Boolean).join(", ");
+    if(v("avoid")) p+="\n\nNegative prompt: "+v("avoid");
+    p+="\n\n--ar "+el.ar.value;
+    out.value=p;
+  }
+  ids.forEach(function(i){el[i].addEventListener("input",build);el[i].addEventListener("change",build);});
+  var ok=document.getElementById("ok");
+  document.getElementById("copy").addEventListener("click",function(){
+    out.select();
+    var done=function(){ok.classList.add("show");setTimeout(function(){ok.classList.remove("show");},1500);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(out.value).then(done,function(){try{document.execCommand("copy");done();}catch(e){}});}
+    else{try{document.execCommand("copy");done();}catch(e){}}
+  });
+  build();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
