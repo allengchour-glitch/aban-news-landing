@@ -2,20 +2,21 @@
 
 **Dauerauftrag:** viele Abonnenten sammeln; laeuft es nach 30 Tagen nicht gut -> neues Thema.
 
-Kanal-Start: 2026-06-03 · Tag 8/30 · letzte Auswertung 2026-06-11 (UTC)
+Kanal-Start: 2026-06-03 · Tag 9/30 · letzte Auswertung 2026-06-12 (UTC)
 
 ## Aktuelle Entscheidung
 
 > ⚠️ Woche 1, kaum Abos (7 Abos (+0)). Aktion: Hooks/Thumbnails/Titel variieren, Abo-Aufruf schaerfen — weiter taeglich posten, Pivot-Entscheid an Tag 30.
 
 - **Abonnenten: 7** (Trend seit letztem Lauf: +0)
-- Gesamt-Views: **537** (Trend: +7)
+- Gesamt-Views: **538** (Trend: +1)
 - Top-Folge: **ep6** mit **250** Views
 
 ## Verlauf (letzte 40 Laeufe)
 
 | Zeit (UTC) | Tag | Abos | Views | Top | Entscheidung |
 |---|--:|--:|--:|---|---|
+| 2026-06-12T03:26Z | 9 | 7 | 538 | ep6(250) | ⚠️ Woche 1, kaum Abos (7 Abos (+0)). Aktion: Hooks/Thumbnail |
 | 2026-06-11T15:47Z | 8 | 7 | 537 | ep6(250) | ⚠️ Woche 1, kaum Abos (7 Abos (+0)). Aktion: Hooks/Thumbnail |
 | 2026-06-10T11:04Z | 7 | 7 | 530 | ep6(250) | ⚠️ Woche 1, kaum Abos (7 Abos (+0)). Aktion: Hooks/Thumbnail |
 | 2026-06-09T19:36Z | 6 | 7 | 530 | ep6(250) | ⏳ Datensammeln (Tag 6/30, 7 Abos (+0), Views-Trend +1). Kurs |
