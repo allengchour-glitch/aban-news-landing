@@ -387,7 +387,8 @@
       fetch('/api/demo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
         .then(function(r){ return r.json().then(function(d){ return {s:r.status,d:d}; }); })
         .then(function(o){
-          if(o.s===200 && o.d && o.d.text){ out.textContent=o.d.text; out.hidden=false; document.getElementById('hdUpsell').hidden=false; }
+          if(o.s===200 && o.d && o.d.text){ out.textContent=o.d.text; out.hidden=false; document.getElementById('hdUpsell').hidden=false;
+            if(navigator.clipboard){ var cb=document.createElement('button'); cb.type='button'; cb.className='btn btn--ghost btn--sm'; cb.style.marginTop='.6rem'; cb.textContent='Kopieren'; cb.addEventListener('click',function(){ navigator.clipboard.writeText(o.d.text).then(function(){ var x=cb.textContent; cb.textContent='Kopiert ✓'; setTimeout(function(){cb.textContent=x;},1500); }); }); out.appendChild(cb); } }
           else if(o.s===429){ msg.textContent='Gratis-Limit erreicht — mit Pro unbegrenzt.'; document.getElementById('hdUpsell').hidden=false; }
           else if(o.s===503){ msg.textContent='KI gerade nicht aktiv — bitte später.'; }
           else { msg.textContent='Hat nicht geklappt, bitte nochmal.'; }
