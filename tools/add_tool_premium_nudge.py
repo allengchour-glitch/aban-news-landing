@@ -33,6 +33,7 @@ PAGES = [
     "ki-tools-fuer-selbststaendige.html",
     "rechnung-generator.html",
     "angebot-schreiben.html",
+    "auftragsbestaetigung-schreiben.html",
 ]
 
 NUDGE_DE = (

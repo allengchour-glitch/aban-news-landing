@@ -30,6 +30,7 @@ LINKS = [
     ("/kleinunternehmerregelung-einfach-erklaert.html", "Kleinunternehmerregelung"),
     ("/rechnung-generator.html", "Rechnung schreiben"),
     ("/mahnung-schreiben.html", "Mahnung schreiben"),
+    ("/auftragsbestaetigung-schreiben.html", "Auftragsbestätigung"),
     ("/angebot-schreiben.html", "Angebot schreiben"),
     ("/altersvorsorge-selbststaendige.html", "Altersvorsorge"),
     ("/scheinselbststaendigkeit-vermeiden.html", "Scheinselbstständigkeit"),
