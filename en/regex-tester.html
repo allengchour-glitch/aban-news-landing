@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Regex-Tester (auf Deutsch) — live testen & erklären · aban news</title>
-<meta name="description" content="Kostenloser Regex-Tester: Muster live gegen deinen Text prüfen, Treffer hervorheben, Gruppen sehen — mit fertigen Vorlagen (E-Mail, URL, PLZ, IBAN). Läuft lokal im Browser, ohne Login.">
+<title>Regex Tester — test & explain live · aban news</title>
+<meta name="description" content="Free regex tester: check patterns live against your text, highlight matches, see groups — with ready-made templates (email, URL, postcode, IBAN). Runs locally in your browser, no login.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/regex-tester.html">
-  <link rel="alternate" hreflang="de" href="https://abannews.com/regex-tester.html">
-  <link rel="alternate" hreflang="en" href="https://abannews.com/en/regex-tester.html">
-  <link rel="alternate" hreflang="x-default" href="https://abannews.com/regex-tester.html">
-<meta property="og:title" content="Regex-Tester — live testen, auf Deutsch">
-<meta property="og:description" content="Regex live gegen deinen Text prüfen, Treffer & Gruppen sehen, mit Vorlagen. Lokal im Browser, ohne Login.">
+<link rel="canonical" href="https://abannews.com/en/regex-tester.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/regex-tester.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/regex-tester.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/regex-tester.html">
+<meta property="og:title" content="Regex Tester — test live, in English">
+<meta property="og:description" content="Check regex live against your text, see matches & groups, with templates. Locally in your browser, no login.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/regex-tester.html">
+<meta property="og:url" content="https://abannews.com/en/regex-tester.html">
 <meta property="og:image" content="https://abannews.com/og-hype.png">
-<meta property="og:locale" content="de_DE">
+<meta property="og:locale" content="en_GB">
 <meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Regex-Tester",
-"url":"https://abannews.com/regex-tester.html","applicationCategory":"DeveloperApplication",
-"operatingSystem":"Web","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Testet reguläre Ausdrücke live gegen Text, hebt Treffer hervor und zeigt Gruppen. Mit Vorlagen.",
+{"@context":"https://schema.org","@type":"WebApplication","name":"Regex Tester",
+"url":"https://abannews.com/en/regex-tester.html","applicationCategory":"DeveloperApplication",
+"operatingSystem":"Web","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Tests regular expressions live against text, highlights matches and shows groups. With templates.",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -75,20 +75,20 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<a class="skip" href="#tool">Zum Tool</a>
+<a class="skip" href="#tool">Skip to tool</a>
 <header class="site"><div class="wrap">
-  <a href="/" class="brand">aban news</a>
-  <a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a>
+  <a href="/en/" class="brand">aban news</a>
+  <a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a>
 </div></header>
 
 <main><div class="wrap">
   <section class="hero">
-    <h1><span class="a">Regex</span> testen — live, auf Deutsch</h1>
-    <p>Muster eingeben, Text einfügen, Treffer sofort sehen. Mit fertigen Vorlagen für die Klassiker. Läuft komplett lokal in deinem Browser — nichts wird gesendet, kein Login.</p>
+    <h1><span class="a">Regex</span> testing — live, in English</h1>
+    <p>Enter a pattern, paste your text, see matches instantly. With ready-made templates for the classics. Runs entirely locally in your browser — nothing is sent, no login.</p>
   </section>
 
   <section class="panel" id="tool">
-    <label class="fld" for="pat">Regulärer Ausdruck</label>
+    <label class="fld" for="pat">Regular expression</label>
     <div class="rxrow">
       <span class="slash mono">/</span>
       <input id="pat" class="mono" value="\b[\w.+-]+@[\w-]+\.[\w.-]+\b" spellcheck="false" autocomplete="off">
@@ -96,46 +96,46 @@ footer a{color:var(--muted)}
       <input id="flags" class="mono" value="gi" spellcheck="false" autocomplete="off" aria-label="Flags">
     </div>
     <div class="flagset">
-      <label><input type="checkbox" id="fg" checked> g — alle Treffer</label>
-      <label><input type="checkbox" id="fi" checked> i — Groß/klein egal</label>
-      <label><input type="checkbox" id="fm"> m — mehrzeilig (^$)</label>
-      <label><input type="checkbox" id="fs"> s — . matcht Zeilenumbruch</label>
+      <label><input type="checkbox" id="fg" checked> g — all matches</label>
+      <label><input type="checkbox" id="fi" checked> i — case-insensitive</label>
+      <label><input type="checkbox" id="fm"> m — multiline (^$)</label>
+      <label><input type="checkbox" id="fs"> s — . matches newline</label>
     </div>
 
-    <p class="note" style="margin-top:14px">Vorlagen:</p>
+    <p class="note" style="margin-top:14px">Templates:</p>
     <div class="presets" id="presets"></div>
 
-    <label class="fld" for="txt">Testtext</label>
-    <textarea id="txt" spellcheck="false">Schreib mir an hallo@abannews.com oder team@example.org.
-Mehr unter https://abannews.com/regex-tester und tel. +41 79 123 45 67.
-PLZ 3123 Belp.</textarea>
+    <label class="fld" for="txt">Test text</label>
+    <textarea id="txt" spellcheck="false">Write to me at hello@abannews.com or team@example.org.
+More at https://abannews.com/regex-tester and tel. +41 79 123 45 67.
+Postcode 3123 Belp.</textarea>
 
     <div class="status" id="status">—</div>
     <div class="hlbox mono" id="hl" aria-live="polite"></div>
     <div class="groups" id="groups"></div>
-    <p class="note">Tipp: Die Engine ist JavaScript-Regex (wie in n8n/Node, Browser, vielen No-Code-Tools). Kleine Unterschiede zu PCRE/Python möglich (z. B. Lookbehind, Named Groups). Alles läuft lokal — dein Text verlässt die Seite nicht.</p>
+    <p class="note">Tip: The engine is JavaScript regex (as in n8n/Node, browsers, many no-code tools). Small differences from PCRE/Python are possible (e.g. lookbehind, named groups). Everything runs locally — your text never leaves the page.</p>
   </section>
 
   <div class="cta">
-    <strong>Regex sitzt — Rest automatisieren?</strong>
-    <p class="note" style="margin:.4rem 0 .8rem">Zeitplan bauen, Tool finden, prüfen ob's sich lohnt.</p>
+    <strong>Regex sorted — automate the rest?</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">Build a schedule, find a tool, check whether it pays off.</p>
     <p>
-      <a class="btn" href="/cron-generator.html">Cron-Generator</a>
-      <a class="btn ghost" href="/automatisierung-rechner.html">Lohnt sich's?</a>
-      <a class="btn ghost" href="/json-formatter.html">JSON-Formatter</a>
+      <a class="btn" href="/cron-generator.html">Cron generator</a>
+      <a class="btn ghost" href="/en/automatisierung-rechner.html">Is it worth it?</a>
+      <a class="btn ghost" href="/en/json-formatter.html">JSON formatter</a>
     </p>
   </div>
 <aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
-  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
-  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe to the free newsletter →</a>
 </aside>
 </div></main>
 
 <footer><div class="wrap">
   © 2026 aban news · Allen Chour · Belp (CH) ·
-  <a href="/cron-generator.html">Cron</a> · <a href="/json-formatter.html">JSON</a> ·
-  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+  <a href="/cron-generator.html">Cron</a> · <a href="/en/json-formatter.html">JSON</a> ·
+  <a href="/en/ki-werkzeug.html">AI tool</a> &middot; <a href="/en/ki-tools-fuer-selbststaendige.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a>
 </div></footer>
 
 <script>
@@ -144,13 +144,13 @@ PLZ 3123 Belp.</textarea>
       status=document.getElementById("status"),hl=document.getElementById("hl"),groups=document.getElementById("groups");
   var fg=document.getElementById("fg"),fi=document.getElementById("fi"),fm=document.getElementById("fm"),fs=document.getElementById("fs");
   var presets=[
-    ["E-Mail","\\b[\\w.+-]+@[\\w-]+\\.[\\w.-]+\\b","gi"],
+    ["Email","\\b[\\w.+-]+@[\\w-]+\\.[\\w.-]+\\b","gi"],
     ["URL","https?:\\/\\/[^\\s]+","gi"],
-    ["Telefon (DACH)","(?:\\+|00)?[\\d\\s().\\/-]{7,}","g"],
-    ["PLZ (DE/AT 4–5)","\\b\\d{4,5}\\b","g"],
-    ["Datum TT.MM.JJJJ","\\b\\d{1,2}\\.\\d{1,2}\\.\\d{2,4}\\b","g"],
-    ["Wort doppelt","\\b(\\w+)\\s+\\1\\b","gi"],
-    ["Zahl mit Komma","\\d+,\\d+","g"]
+    ["Phone (DACH)","(?:\\+|00)?[\\d\\s().\\/-]{7,}","g"],
+    ["Postcode (DE/AT 4–5)","\\b\\d{4,5}\\b","g"],
+    ["Date DD.MM.YYYY","\\b\\d{1,2}\\.\\d{1,2}\\.\\d{2,4}\\b","g"],
+    ["Duplicate word","\\b(\\w+)\\s+\\1\\b","gi"],
+    ["Number with comma","\\d+,\\d+","g"]
   ];
   var pc=document.getElementById("presets");
   presets.forEach(function(p){
@@ -172,7 +172,7 @@ PLZ 3123 Belp.</textarea>
     if(!p){status.className="status";status.textContent="—";hl.innerHTML=esc(t);groups.innerHTML="";return;}
     var re;
     try{ re=new RegExp(p, f.indexOf("g")<0 ? f+"g" : f); }
-    catch(e){ status.className="status bad";status.textContent="✗ Ungültiges Muster: "+e.message;hl.innerHTML=esc(t);groups.innerHTML="";return; }
+    catch(e){ status.className="status bad";status.textContent="✗ Invalid pattern: "+e.message;hl.innerHTML=esc(t);groups.innerHTML="";return; }
     var out="",last=0,m,count=0,grp=[],guard=0;
     re.lastIndex=0;
     while((m=re.exec(t))!==null){
@@ -181,17 +181,17 @@ PLZ 3123 Belp.</textarea>
       last=m.index+(m[0].length||0);
       count++;
       if(m.length>1 && count<=50) grp.push({n:count,full:m[0],groups:m.slice(1)});
-      if(m[0]===""){re.lastIndex++;} // Endlosschleife bei Leer-Match vermeiden
+      if(m[0]===""){re.lastIndex++;} // avoid infinite loop on empty match
       if(f.indexOf("g")<0)break;
     }
     out+=esc(t.slice(last));
     hl.innerHTML=out||"&nbsp;";
-    status.className="status ok";status.textContent="✓ "+count+" Treffer";
+    status.className="status ok";status.textContent="✓ "+count+" matches";
     if(grp.length){
       var rows=grp.map(function(g){
         return "<tr><td>"+g.n+"</td><td>"+esc(g.full)+"</td><td>"+g.groups.map(function(x,i){return "$"+(i+1)+"="+esc(x===undefined?"∅":x);}).join("  ")+"</td></tr>";
       }).join("");
-      groups.innerHTML="<table><tr><th>#</th><th>Treffer</th><th>Gruppen</th></tr>"+rows+"</table>";
+      groups.innerHTML="<table><tr><th>#</th><th>Match</th><th>Groups</th></tr>"+rows+"</table>";
     } else groups.innerHTML="";
   }
   [pat,txt].forEach(function(e){e.addEventListener("input",run);});

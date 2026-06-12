@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Text-Vergleich (Diff) · aban news</title>
-<meta name="description" content="Kostenloses Tool: zwei Texte zeilenweise vergleichen und Unterschiede farbig hervorheben. Für Versionen, Konfigs, Prompt-Varianten. Lokal im Browser, ohne Login.">
+<title>Text Compare (Diff) · aban news</title>
+<meta name="description" content="Free tool: compare two texts line by line and highlight the differences in colour. For versions, configs, prompt variants. Runs locally in your browser, no login.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/diff-tool.html">
-  <link rel="alternate" hreflang="de" href="https://abannews.com/diff-tool.html">
-  <link rel="alternate" hreflang="en" href="https://abannews.com/en/diff-tool.html">
-  <link rel="alternate" hreflang="x-default" href="https://abannews.com/diff-tool.html">
-<meta property="og:title" content="Text-Vergleich (Diff)">
-<meta property="og:description" content="Zwei Texte zeilenweise vergleichen, Unterschiede farbig sehen. Lokal im Browser, ohne Login.">
+<link rel="canonical" href="https://abannews.com/en/diff-tool.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/diff-tool.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/diff-tool.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/diff-tool.html">
+<meta property="og:title" content="Text Compare (Diff)">
+<meta property="og:description" content="Compare two texts line by line, see the differences in colour. Runs locally in your browser, no login.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/diff-tool.html">
+<meta property="og:url" content="https://abannews.com/en/diff-tool.html">
 <meta property="og:image" content="https://abannews.com/og-hype.png">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Text-Vergleich (Diff)",
-"url":"https://abannews.com/diff-tool.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
-"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Vergleicht zwei Texte zeilenweise und hebt Unterschiede farbig hervor.",
+{"@context":"https://schema.org","@type":"WebApplication","name":"Text Compare (Diff)",
+"url":"https://abannews.com/en/diff-tool.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Compares two texts line by line and highlights the differences in colour.",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -67,48 +67,48 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<a class="skip" href="#tool">Zum Tool</a>
-<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
-<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<a class="skip" href="#tool">Skip to tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
 <main><div class="wrap">
   <section class="hero">
-    <h1><span class="a">Zwei Texte</span> vergleichen</h1>
-    <p>Zeilenweiser Diff: was ist dazugekommen, was ist weggefallen. Für Versionen, Konfig-Dateien, Prompt-Varianten oder zwei Entwürfe nebeneinander. Lokal im Browser, nichts wird gesendet.</p>
+    <h1>Compare <span class="a">two texts</span></h1>
+    <p>Line-by-line diff: what was added, what was removed. For versions, config files, prompt variants or two drafts side by side. Runs locally in your browser, nothing is sent.</p>
   </section>
   <section class="panel" id="tool">
     <div class="cols">
-      <div><label for="a">Alt (links)</label><textarea id="a" spellcheck="false">Sehr geehrte Damen und Herren,
-wir bieten innovative Lösungen.
-Mit freundlichen Grüßen</textarea></div>
-      <div><label for="b">Neu (rechts)</label><textarea id="b" spellcheck="false">Hallo zusammen,
-wir bieten klare Lösungen.
-Bis bald
+      <div><label for="a">Old (left)</label><textarea id="a" spellcheck="false">Dear Sir or Madam,
+we offer innovative solutions.
+Kind regards</textarea></div>
+      <div><label for="b">New (right)</label><textarea id="b" spellcheck="false">Hi everyone,
+we offer clear solutions.
+See you soon
 Aban</textarea></div>
     </div>
     <div class="bar">
-      <button class="btn" id="run">Vergleichen</button>
-      <label class="opt"><input type="checkbox" id="trim" checked> Leerraum am Rand ignorieren</label>
-      <label class="opt"><input type="checkbox" id="ci"> Groß/klein ignorieren</label>
+      <button class="btn" id="run">Compare</button>
+      <label class="opt"><input type="checkbox" id="trim" checked> Ignore leading/trailing whitespace</label>
+      <label class="opt"><input type="checkbox" id="ci"> Ignore case</label>
       <span class="status" id="status"></span>
     </div>
     <div class="diff" id="diff" aria-live="polite"></div>
-    <p class="note">Vergleich Zeile für Zeile (LCS-Algorithmus). <span style="color:var(--addtx)">Grün +</span> = nur rechts, <span style="color:var(--deltx)">rot −</span> = nur links, grau = unverändert. Rein lokal, kein Upload.</p>
+    <p class="note">Line-by-line comparison (LCS algorithm). <span style="color:var(--addtx)">Green +</span> = right only, <span style="color:var(--deltx)">red −</span> = left only, grey = unchanged. Fully local, no upload.</p>
   </section>
-  <div class="cta"><strong>Mehr Glue-Tools</strong>
-    <p class="note" style="margin:.4rem 0 .8rem">für Automatisierungen &amp; APIs.</p>
-    <p><a class="btn" href="/encoder.html">Base64/URL</a>
-      <a class="btn ghost" href="/json-formatter.html">JSON</a>
-      <a class="btn ghost" href="/regex-tester.html">Regex</a></p></div>
+  <div class="cta"><strong>More glue tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for automations &amp; APIs.</p>
+    <p><a class="btn" href="/en/encoder.html">Base64/URL</a>
+      <a class="btn ghost" href="/en/json-formatter.html">JSON</a>
+      <a class="btn ghost" href="/en/regex-tester.html">Regex</a></p></div>
 <aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
-  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
-  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe free →</a>
 </aside>
-</div><aside data-aban-premium style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">Mehr Tiefe, kein Hype.</strong><span style="color:#374151"> aban news Premium: werbefrei, volles Archiv, täglicher KI-Kompass fürs Business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem">Founding-Mitglied — €69 lifetime →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Erst gratis testen →</a></span></aside>
+</div><aside data-aban-premium style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">More depth, no hype.</strong><span style="color:#374151"> aban news Premium: ad-free, full archive, a daily AI compass for your business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem">Founding member — €69 lifetime →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Try it free →</a></span></aside>
 </main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
-  <a href="/encoder.html">Encoder</a> · <a href="/json-formatter.html">JSON</a> ·
-  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  <a href="/en/encoder.html">Encoder</a> · <a href="/en/json-formatter.html">JSON</a> ·
+  <a href="/en/ki-werkzeug.html">AI tool</a> &middot; <a href="/en/ki-tools-fuer-selbststaendige.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
 <script>
 (function(){
   var A=document.getElementById("a"),B=document.getElementById("b"),
@@ -141,8 +141,8 @@ Aban</textarea></div>
       html+='<div class="ln '+cls+'"><span class="sign">'+sign+'</span><span>'+(esc(r[1])||"&nbsp;")+'</span></div>';
     });
     out.innerHTML=html;
-    if(!adds&&!dels){status.style.color="var(--ok)";status.textContent="✓ identisch";}
-    else{status.style.color="var(--ink2)";status.textContent=dels+" entfernt, "+adds+" hinzugefügt";}
+    if(!adds&&!dels){status.style.color="var(--ok)";status.textContent="✓ identical";}
+    else{status.style.color="var(--ink2)";status.textContent=dels+" removed, "+adds+" added";}
   }
   document.getElementById("run").addEventListener("click",run);
   ["trim","ci"].forEach(function(id){document.getElementById(id).addEventListener("change",run);});
