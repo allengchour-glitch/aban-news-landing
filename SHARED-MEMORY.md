@@ -57,9 +57,18 @@
 - **🎬 `dropship/TIKTOK-SKRIPTE-WOCHE.md`:** 7 filmfertige TikTok-Skripte (echte Produkte/Preise/Hooks/Captions).
 - **🎁 `dropship/INFLUENCER-OUTREACH-KIT.md` + `influencer_tracking.csv`:** Micro-Gifting-Kriterien, Such-Hashtags,
   Fundquellen (Modash/Collabstr), DM-Vorlagen, Code-Schema (Codes lege ich bei Zusage per Shopify an).
-- **⚠️ Hinweis:** Diese Arbeit lief auf eigenem Branch `claude/luxstyle-ads-search-5i68xa` (NICHT CizQ6), Draft-PR
-  #775. Git-HTTP-Push warf zeitweise 413/502 → Fallback war GitHub-API-Push (push_files). Pin-Bilder liegen als
-  Shopify-Files (`pin-01..28`, `b-01..43`) auf der CDN — beim Aufräumen NICHT löschen.
+- **✅ GO-LIVE-STATUS (2026-06-12 abends):** PR #775 ist **nach `main` gemergt** → Pinterest-Skript + Workflow
+  liegen auf `main`. **⚠️ ABER: GitHub Actions ist für dieses Repo/Konto DEAKTIVIERT** (API-Fehler beim
+  Dispatch: „Actions has been disabled for this user"). → Der Workflow `pinterest-publish.yml` läuft **NICHT**
+  automatisch (weder Cron noch Knopf), bis jemand **Settings → Actions → General → Allow** aktiviert. Alternativ
+  postet eine Session die Pins **direkt** mit `node automation/pinterest_publish.mjs --limit 5` (braucht nur die
+  Env-Var `PINTEREST_ACCESS_TOKEN`, oder Refresh-Token-Trio). **Einzig fehlend zum Live-Gang: der Pinterest-Token.**
+  User will hier nicht posten/Actions einschalten → **nächste Session macht weiter** (Token vom User holen, dann
+  Weg A=Actions an ODER Weg B=direkt posten).
+- **⚠️ Hinweis:** Diese Arbeit lief auf eigenem Branch `claude/luxstyle-ads-search-5i68xa`, jetzt in `main`.
+  Git-HTTP-Push warf zeitweise 413/502 → Fallback war GitHub-API-Push (push_files) bzw. später normaler Push.
+  Staged-Upload-Trick: stagedUploadsCreate-Antwort wird ab ~60 Einträgen automatisch als Datei gespeichert
+  (mit Padding-Filenames erzwingbar) → Uploader liest sie, nimmt nur die echten ersten N.
 
 **2026-06-11 — Luxestyle/POD session: Editor mit echten Fotos + 98 Fertig-Mockups + Shop-Audit A–Z:**
 - **🎨 Selbst-gestalten-Editor komplett überarbeitet** (`pod/designer.js` live): echtes Produktfoto statt
