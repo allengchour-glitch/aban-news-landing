@@ -17,6 +17,8 @@
   „💡 Was macht das? …" ein (ein Satz, du-Form, plain). Anker = nach Hero-`</section>`; 2 Sonderfälle
   (mahnung-schreiben, namen-generator: kein `</section>`) manuell nach `<p class="lead">` ergänzt.
   Mehrfach ausführbar ohne Doppelung. SENT-Dict im Skript = zentrale Quelle für neue Tools.
+- **EN-Parität:** `tools/add_was_macht_das_en.py` setzt dieselbe Zeile als „What does this do?" auf 10
+  englische Tool-/Guide-Seiten (Anker = Ende des `<p class="lead">`, da EN kein nahes `</section>` hat).
 
 ## 2026-06-12 (Teil 9) — 3D-Engine ausgebaut: Labels · Donut · Scatter · Tooltip (User: „engine weiter machen", „alle 4 und weitere")
 - **`js/aban3d.js` jetzt 11 Formen** (vorher 9): neu **`donut`/`pie`** (Anteils-Ring, %-Labels, PALETTE-Farben
