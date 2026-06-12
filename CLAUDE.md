@@ -64,9 +64,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (NICHT ändern!):** `account.luxestyle.com.co` ist das von **Shopify selbst** konfigurierte Kundenkonto-Portal —
   `luxestyle.ch/account` leitet per 302 (JWT von `au3j0y-hq.myshopify.com`) genau dorthin; `account.luxestyle.ch`
   existiert nicht (keine DNS). Auf `.ch` umbiegen würde den Login zerstören → bewusst belassen.
-  **Einziges echtes Rest-Offen:** (3) Fertig-Produkte 0 Reviews → echte Judge.me-Reviews (`JUDGEME_PRIVATE_TOKEN`
-  setzen, nie Fake). Theme: `Horizon · LuxeStyle + Email-Popup (Claude)`
-  (MAIN; `templates/index.json` auto-generiert — per Skript-Replace editierbar, aber Customizer kann überschreiben).
+  **Reviews-Stand (2026-06-12):** `JUDGEME_PRIVATE_TOKEN`+`CJ_EMAIL`/`CJ_API_KEY` gesetzt. **ECHTER Reviews-Import
+  gebaut & live:** `automation/cj_reviews_import.mjs`+`cj-reviews.yml` zieht echte CJ-`productComments` (≥4★) →
+  DE-Übersetzung (Gemini) → Judge.me (Shopify-SKU→CJ-pid via productSku/variantSku-Resolver; idempotent, Ledger
+  `dropship/cj_reviews_done.txt`). **Verifiziert:** Smartwatch = 5,0★/5 echte Reviews live. **DECKE rigoros bestätigt:
+  nur ~3 cj-real-Produkte haben überhaupt CJ-Kommentare** (Rest: CJ liefert `list listLen=0` = echte 0 Kommentare,
+  KEIN Bug) → nicht sinnlos neu laufen lassen. Fertig-POD-Produkte: keine CJ-Quelle → nur organisch (Judge.me-Mails).
+  Theme: `Horizon · LuxeStyle + Email-Popup (Claude)` (MAIN; `templates/index.json` auto-generiert — Skript-Replace
+  ok, aber Customizer kann überschreiben).
 - **Branch-Hinweis:** Diese POD/Editor/Audit-Arbeit lief via PRs direkt auf **`main`** (#683/#685/#690/#691 u.a.),
   nicht auf `claude/luxestyle-product-CizQ6`. Memory liegt zusätzlich in `SHARED-MEMORY.md` (Live-Stand).
 
