@@ -37,6 +37,8 @@ const CLIPS = [
     cap:'Soft-Season ✨ Kapuzen-Cardigan «Cosy» — kuschelig, viele Farben, Knopfleiste + Kapuze. Schweizer Shop · –10% mit WELCOME10 · 🔗 Link in Bio', tags:TAGS_MODE },
   { id:'veo-nuit', date:'2026-06-17', file:'reels/veo-hero-nuit-2026-06-08.mp4',
     cap:'Dein Abend-Begleiter 🌙 Crossbody-Tasche «Nuit» — eleganter Vintage-Look, verstellbarer Riemen. Nur CHF 24.90 · –10% mit WELCOME10 · 🔗 Link in Bio', tags:TAGS_ACC },
+  { id:'mix-montage-20260612', date:'2026-06-12', file:'reels/luxestyle-mix-2026-06-12.mp4',
+    cap:'Neu bei LuxeStyle ✨ 6 Sommer-Lieblinge — Herren, Schmuck, Beauty & mehr 👀 Welches nimmst du? 👇 −10% mit WELCOME10 · 🔗 Link in Bio', tags:'#luxestyle #schweiz #fashionschweiz #ootdschweiz #fyp' },
 ];
 
 const csv = s => '"'+String(s).replace(/"/g,'""')+'"';
