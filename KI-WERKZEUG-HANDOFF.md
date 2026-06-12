@@ -16,6 +16,11 @@
   Donut+Scatter als Buttons + Galerie-Kacheln (jetzt „elf Formen"), Diagramm-Kacheln mit Labels, Hover-Hinweis.
 - **Regeln eingehalten:** nur echte/Nutzer-Daten in Diagrammen; keine Lib/CDN/Action; `node --check` grün;
   reduced-motion = Standbild (mit Labels). Engine ~18 KB unkomprimiert (Kommentar „~5 KB" entfernt).
+- **Folge-Verbesserungen (autonom, „alles autonom weiter"):** (1) `ki-kosten-rechner.html` hat jetzt einen
+  **Balken↔Donut-Umschalter** auf denselben echten Eingaben (Euro je Abo vs. Anteil %). (2) Startseite
+  `index.html` hat ein **dezentes 3D-Globus-Band** (zwischen Stats & KI-Demo) das auf `/3d-animation.html`
+  verlinkt — Engine dort per `defer` eingebunden; Hero/Signup unberührt; Globus = reine Deko (keine Fake-Daten).
+  Verifiziert: kein Redirect-Loop, `/3d-render`→`/3d-animation.html` (anderer Basename, korrekt), Sitemap ok.
 
 ## 2026-06-12 (Teil 8) — Tool-Offensive + 3D-Diagramme + EN (Newsletter-Session, autonom)
 - **3D-Engine `js/aban3d.js`** jetzt 7 Formen inkl. **bars** (datengetriebenes 3D-Balkendiagramm via data-values,
