@@ -1,0 +1,56 @@
+# aban news
+
+> Ehrlicher, anti-hype KI-Newsletter für Selbstständige und kleine Unternehmen im deutschsprachigen Raum (DACH). Jeden Werktag in 5 Minuten: was mit KI wirklich geht — ohne Buzzword-Bingo. Dazu Dutzende kostenlose Browser-Tools (kein Login, kein Upload) und ehrliche Geld-Guides. Keine Anlage-, Steuer- oder Rechtsberatung, kein Affiliate, keine erfundenen Zahlen.
+
+Betreiber: aban news (Allen Chour), Schweizer Einzelunternehmen, Belp (CH). Alle Tools laufen lokal im Browser. Newsletter über beehiiv; Premium („Founding-Member", €69 einmalig/lifetime) finanziert das Projekt werbefrei.
+
+## Newsletter & Premium
+- [aban news — Startseite & Newsletter](https://abannews.com/): Worum es geht, kostenlos abonnieren.
+- [Premium / Founding-Member (€69 lifetime)](https://abannews.com/founding.html): werbefrei, volles Archiv, einmalige Zahlung.
+- [Über aban](https://abannews.com/ueber-aban.html): wer dahintersteckt und warum anti-hype.
+
+## Kostenlose Business-Generatoren (Selbstständige)
+- [Rechnung schreiben — Generator + PDF](https://abannews.com/rechnung-generator.html): mit MwSt oder Kleinunternehmer §19, Pflichtangaben.
+- [Angebot schreiben — Vorlage & Generator](https://abannews.com/angebot-schreiben.html): mit/ohne MwSt, zum Kopieren.
+- [Auftragsbestätigung schreiben — Generator](https://abannews.com/auftragsbestaetigung-schreiben.html): Auftrag schriftlich bestätigen.
+- [Mahnung schreiben — Text-Generator](https://abannews.com/mahnung-schreiben.html): 3 Stufen (Erinnerung/1./2. Mahnung), zum Kopieren.
+
+## Geld & Steuern (ehrlich erklärt, keine Beratung)
+- [Geld & KI — Übersicht](https://abannews.com/geld-und-ki.html): alle Geld-Themen, Rechner und Checks an einem Ort.
+- [Kleinunternehmerregelung einfach erklärt + Schnell-Check](https://abannews.com/kleinunternehmerregelung-einfach-erklaert.html): Grenzen DE/AT/CH (Stand 2025).
+- [Steuer-Basics für Selbstständige](https://abannews.com/steuer-basics-selbststaendige.html): welche Steuern, wie viel zurücklegen, Fristen.
+- [MwSt-Rechner (CH/DE/AT)](https://abannews.com/mwst-rechner.html): netto ↔ brutto.
+- [Stundensatz-Rechner](https://abannews.com/stundensatz-rechner.html): was du wirklich verlangen solltest.
+- [Sparplan statt Trading — Zinseszins-Rechner](https://abannews.com/sparplan-statt-trading.html): warum langweilig gewinnt.
+- [ETF für Einsteiger + Kostenrechner](https://abannews.com/etf-fuer-einsteiger.html): der ruhige Weg.
+- [Inflation einfach erklärt + Kaufkraft-Rechner](https://abannews.com/inflation-einfach-erklaert.html).
+- [Notgroschen aufbauen — Rechner](https://abannews.com/notgroschen-aufbauen.html).
+- [Live-Märkte: Aktien & Krypto mit KI-Sentiment](https://abannews.com/maerkte.html).
+- [KI-Betrug & Scams erkennen + Schnell-Check](https://abannews.com/ki-betrug-scam-check.html).
+
+## KI sinnvoll & sicher nutzen
+- [Wie nutze ich KI richtig? — Einsteiger-Guide](https://abannews.com/wie-nutze-ich-ki-richtig.html): wofür KI taugt, wo nicht, 5 Regeln.
+- [Welche KI für was?](https://abannews.com/welche-ki-fuer-was.html): das passende Tool finden.
+- [Bessere Prompts schreiben](https://abannews.com/bessere-prompts.html).
+- [Text anonymisieren — Daten vor der KI maskieren](https://abannews.com/text-anonymisieren.html): E-Mails/IBAN/Telefon/Karten lokal schwärzen.
+- [KI-Token-Rechner — Tokens & Kosten schätzen](https://abannews.com/ki-token-rechner.html).
+- [KI-Kosten-Rechner — was deine KI-Abos kosten](https://abannews.com/ki-kosten-rechner.html).
+- [Lohnt sich ein KI-Abo? — Check](https://abannews.com/ki-abo-lohnt-sich.html).
+- [Lesbarkeits-Check — Text auf Verständlichkeit prüfen](https://abannews.com/lesbarkeits-check.html).
+- [Betreffzeilen-Check — E-Mail-Betreff testen](https://abannews.com/betreffzeilen-check.html).
+- [Hashtag-Helfer](https://abannews.com/hashtag-helfer.html): saubere Hashtags + Caption-Gerüst.
+
+## Branchen
+- [KI für deine Branche — über 350 Branchen-Guides](https://abannews.com/branchen.html): konkrete Anwendungsfälle pro Beruf.
+
+## Alle Tools
+- [Alle kostenlosen Online-Tools](https://abannews.com/online-tools.html): 35+ Browser-Tools für Selbstständige, ohne Login.
+
+## English
+- [aban news (English)](https://abannews.com/en/): the honest, anti-hype AI newsletter for the self-employed.
+- [Money & AI (English)](https://abannews.com/en/geld-und-ki.html): honest guides, calculators and checks.
+- [How to use AI properly (English guide)](https://abannews.com/en/wie-nutze-ich-ki-richtig.html).
+
+## Optional
+- [Impressum](https://abannews.com/impressum.html)
+- [Datenschutz](https://abannews.com/datenschutz.html)
