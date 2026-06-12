@@ -88,6 +88,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     <button data-v="angebot">📄 Angebot</button>
     <button data-v="kunden">👥 Kunden</button>
     <button data-v="zeit">⏱️ Zeit</button>
+    <button data-v="kasse">📒 Kassenbuch</button>
     <button data-v="rechner">🔢 Rechner</button>
     <button data-v="trading">📈 Trading</button>
     <button data-v="mahnung">⏰ Mahnung &amp; E-Mail</button>
@@ -196,6 +197,24 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     </div>
   </section>
 
+  <!-- KASSENBUCH -->
+  <section class="view" id="v-kasse">
+    <h1>Kassenbuch <span class="pill">CSV-Export</span></h1>
+    <p class="sub">Einnahmen &amp; Ausgaben erfassen, Saldo im Blick, als CSV für Steuerberater/Excel exportieren. Nur lokal gespeichert.</p>
+    <div class="panel">
+      <div class="fld"><label>Art</label><div class="seg" id="ka_seg"><button data-t="ein" class="on">＋ Einnahme</button><button data-t="aus">− Ausgabe</button></div></div>
+      <div class="row">
+        <div class="fld"><label>Datum</label><input id="ka_datum" type="date"></div>
+        <div class="fld"><label>Kategorie</label><input id="ka_kat" placeholder="z. B. Honorar, Material, Software"></div>
+        <div class="fld" style="max-width:160px"><label>Betrag</label><input id="ka_betrag" value="" inputmode="decimal"></div>
+      </div>
+      <div class="fld"><label>Notiz (optional)</label><input id="ka_notiz" placeholder="Beleg-Nr., Kunde …"></div>
+      <div class="btnrow"><button class="btn" id="ka_add">+ Buchung</button><button class="btn ghost" id="ka_csv">⬇ CSV exportieren</button></div>
+      <div class="out" id="ka_sum"></div>
+      <div class="list" id="ka_list"></div>
+    </div>
+  </section>
+
   <!-- RECHNER -->
   <section class="view" id="v-rechner">
     <h1>Finanz-Rechner</h1>
@@ -243,6 +262,12 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       <div class="fld"><label>IBAN</label><input id="ib_in" placeholder="CH93 0076 2011 6238 5295 7" spellcheck="false"></div>
       <div class="out" id="ib_out"></div>
       <p class="note">Prüft die Prüfziffer (Format &amp; Mod-97), nicht ob das Konto existiert. Lokal, nichts wird gesendet.</p></div>
+
+    <div class="mini"><h3>Reisekosten / km-Geld</h3>
+      <div class="row"><div class="fld"><label>Gefahrene Kilometer</label><input id="km_km" value="100" inputmode="decimal"></div>
+        <div class="fld"><label>Pauschale pro km</label><select id="km_satz"><option value="0.30">Deutschland Auto 0,30 €</option><option value="0.38">Deutschland ab 21. km 0,38 €</option><option value="0.70">Schweiz 0,70 CHF</option><option value="0.20">Motorrad 0,20 €</option></select></div>
+        <div class="fld"><label>oder eigener Satz</label><input id="km_custom" placeholder="z. B. 0,42" inputmode="decimal"></div></div>
+      <div class="out" id="km_out"></div></div>
   </section>
 
   <!-- TRADING -->
@@ -282,6 +307,13 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
         <div class="fld"><label>Laufzeit (Jahre)</label><input id="tc_years" value="15" inputmode="numeric"></div></div>
       <div class="out" id="tc_out"></div>
       <p class="note">Vereinfachte Annahme (konstante Rendite, monatliche Einzahlung). Keine Garantie, keine Anlageberatung.</p></div>
+
+    <div class="mini"><h3>Hebel — Liquidationspreis (Krypto/CFD)</h3>
+      <div class="row"><div class="fld"><label>Einstiegskurs</label><input id="lq_entry" value="100" inputmode="decimal"></div>
+        <div class="fld"><label>Hebel (x)</label><input id="lq_lev" value="10" inputmode="decimal"></div>
+        <div class="fld"><label>Richtung</label><div class="seg" id="lq_seg"><button data-d="long" class="on">Long</button><button data-d="short">Short</button></div></div></div>
+      <div class="out" id="lq_out"></div>
+      <p class="note">Vereinfachte Näherung (isolierte Margin, ohne Gebühren/Funding). Echte Börsen rechnen leicht abweichend — nur zur Orientierung.</p></div>
   </section>
 
   <!-- MAHNUNG -->
@@ -568,11 +600,45 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     $("#tc_out").innerHTML='<div class="box big ok"><b>'+nf(fv)+'</b><span>Endwert nach '+y+' Jahren</span></div><div class="box"><b>'+nf(contrib)+'</b><span>Einzahlungen</span></div><div class="box"><b>'+nf(gain)+'</b><span>Wertzuwachs</span></div>'}
   ["tc_start","tc_month","tc_rate","tc_years"].forEach(function(id){$("#"+id).addEventListener("input",calcTC)});
 
+  /* ===== Kassenbuch + CSV ===== */
+  function downloadCSV(fn,rows){var csv=rows.map(function(r){return r.map(function(c){var s=String(c==null?"":c);return /[";\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}).join(";")}).join("\r\n");
+    var blob=new Blob(["﻿"+csv],{type:"text/csv;charset=utf-8"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fn;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},100)}
+  var kaTyp="ein";
+  $$("#ka_seg button").forEach(function(b){b.addEventListener("click",function(){kaTyp=b.dataset.t;$$("#ka_seg button").forEach(function(x){x.classList.toggle("on",x===b)})})});
+  function kasse(){return get("abanCockpit_kasse",[])}
+  function renderKasse(){var e=kasse(),el=$("#ka_list"),sum=$("#ka_sum");el.innerHTML="";var ein=0,aus=0;
+    e.forEach(function(x,i){var b=n(x.betrag)||0;if(x.typ==="ein")ein+=b;else aus+=b;var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>'+(x.typ==="ein"?"➕":"➖")+' '+esc(x.datum||"")+' · '+esc(x.kat||"—")+' · <strong>'+nf(b)+'</strong></span>';
+      var w=document.createElement("span");w.className="x";var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var a=kasse();a.splice(i,1);set("abanCockpit_kasse",a);renderKasse()};w.appendChild(del);row.appendChild(w);el.appendChild(row)});
+    var saldo=ein-aus;
+    sum.innerHTML=e.length?'<div class="box ok"><b>'+nf(ein)+'</b><span>Einnahmen</span></div><div class="box bad"><b>'+nf(aus)+'</b><span>Ausgaben</span></div><div class="box big '+(saldo>=0?"ok":"bad")+'"><b>'+nf(saldo)+'</b><span>Saldo</span></div>':"";
+    if(!e.length)el.innerHTML='<p class="note">Noch keine Buchungen.</p>'}
+  $("#ka_add").addEventListener("click",function(){var betrag=n($("#ka_betrag").value);if(!isFinite(betrag)||betrag<=0){toast("Bitte Betrag eingeben");return}
+    var a=kasse();a.unshift({datum:$("#ka_datum").value,typ:kaTyp,kat:$("#ka_kat").value.trim(),betrag:betrag,notiz:$("#ka_notiz").value.trim()});set("abanCockpit_kasse",a);
+    $("#ka_betrag").value="";$("#ka_notiz").value="";renderKasse();toast("Buchung gespeichert ✓")});
+  $("#ka_csv").addEventListener("click",function(){var e=kasse();if(!e.length){toast("Keine Buchungen");return}
+    var rows=[["Datum","Art","Kategorie","Betrag","Notiz"]];e.slice().reverse().forEach(function(x){rows.push([x.datum||"",x.typ==="ein"?"Einnahme":"Ausgabe",x.kat||"",(n(x.betrag)||0).toFixed(2).replace(".",","),x.notiz||""])});downloadCSV("kassenbuch.csv",rows)});
+
+  /* ===== Reisekosten / km ===== */
+  function calcKM(){var km=n($("#km_km").value),cust=n($("#km_custom").value),satz=(isFinite(cust)&&cust>0)?cust:parseFloat($("#km_satz").value);
+    if(!isFinite(km)||!isFinite(satz)){$("#km_out").innerHTML="";return}
+    $("#km_out").innerHTML='<div class="box big"><b>'+nf(km*satz)+'</b><span>'+km.toLocaleString("de-DE")+' km × '+satz.toLocaleString("de-DE",{minimumFractionDigits:2})+'</span></div>'}
+  ["km_km","km_custom"].forEach(function(id){$("#"+id).addEventListener("input",calcKM)});$("#km_satz").addEventListener("change",calcKM);
+
+  /* ===== Liquidationspreis ===== */
+  var lqDir="long";
+  $$("#lq_seg button").forEach(function(b){b.addEventListener("click",function(){lqDir=b.dataset.d;$$("#lq_seg button").forEach(function(x){x.classList.toggle("on",x===b)});calcLQ()})});
+  function calcLQ(){var e=n($("#lq_entry").value),L=n($("#lq_lev").value);if(!isFinite(e)||!isFinite(L)||L<=0){$("#lq_out").innerHTML="";return}
+    var move=100/L,liq=lqDir==="long"?e*(1-1/L):e*(1+1/L);
+    $("#lq_out").innerHTML='<div class="box big bad"><b>'+liq.toLocaleString("de-DE",{maximumFractionDigits:4})+'</b><span>Liquidationskurs ('+lqDir+')</span></div><div class="box"><b>'+move.toLocaleString("de-DE",{maximumFractionDigits:2})+' %</b><span>Bewegung bis Liquidation</span></div><div class="box"><b>'+L+'x</b><span>Hebel</span></div>'}
+  ["lq_entry","lq_lev"].forEach(function(id){$("#"+id).addEventListener("input",calcLQ)});
+
   /* Init */
-  loadStamm();refreshPickers();renderClients();renderTime();renderDrafts();
-  $("#r_datum").value=isoToday();$("#a_datum").value=isoToday();$("#a_gueltig").value=isoToday();$("#zf_datum").value=isoToday();$("#z_datum").value=isoToday();
+  loadStamm();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();
+  $("#r_datum").value=isoToday();$("#a_datum").value=isoToday();$("#a_gueltig").value=isoToday();$("#zf_datum").value=isoToday();$("#z_datum").value=isoToday();$("#ka_datum").value=isoToday();
   R.setItems([{}]);A.setItems([{}]);
-  calcM();calcH();calcS();calcVZ();calcZF();calcPC();calcIB();calcTP();calcTR();calcTG();calcTL();calcTC();genMahnung();genEmail();
+  calcM();calcH();calcS();calcVZ();calcZF();calcPC();calcIB();calcKM();calcTP();calcTR();calcTG();calcTL();calcTC();calcLQ();genMahnung();genEmail();
 })();
 </script>
 </body>
