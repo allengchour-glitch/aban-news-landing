@@ -288,3 +288,7 @@
 /betreffzeile     /betreffzeilen-check.html 301
 /lesbarkeit       /lesbarkeits-check.html 301
 /lesbar           /lesbarkeits-check.html 301
+
+/en/anonymise     /en/text-anonymisieren.html 301
+/en/anonymize     /en/text-anonymisieren.html 301
+/en/token-calculator /en/ki-token-rechner.html 301
