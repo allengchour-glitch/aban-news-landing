@@ -57,11 +57,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **🔎 Shop-Audit A–Z (Optik+Text):** **BEHOBEN live:** Collection „neu-eingetroffen" zeigte kundenseitig
   **„✨ CJ Neuheiten 2026"** (interner Lieferant „CJ" sichtbar!) → umbenannt **„✨ Neuheiten 2026"**. Sonst kein
   CJ-Leak. **Gut:** alle Rechts-/Service-Seiten gefüllt, POD-Preise gesund (Shirt 20.90/Tasse 17.90), Hero-CTA
-  `/collections/sommer` ok (72 Prod.), Fertig-Seiten zeigen echtes Mockup+ATC. **Offen (Customizer/User):**
-  (1) 2 redundante Bestseller-Sektionen auf Startseite → 4. Produkt-Liste auf `premium-geschenke`/`sommer-2026`
-  umstellen; (2) Customer-Account-Menü linkt falsch auf `account.luxestyle.com.co` (Shop ist .ch); (3) Fertig-
-  Produkte 0 Reviews → echte Judge.me-Reviews. Theme: `Horizon · LuxeStyle + Email-Popup (Claude)` (MAIN,
-  `templates/index.json` auto-generiert → Customizer nutzen, nicht per API überschreiben).
+  `/collections/sommer` ok (72 Prod.), Fertig-Seiten zeigen echtes Mockup+ATC. **AUTONOM BEHOBEN:**
+  (1) Startseiten-Dublette → die 4. Produkt-Liste ist jetzt **🎁 Geschenkideen** (`premium-geschenke`) statt
+  2. Bestseller-Sektion (Tool `automation/fix_homepage_dedup.mjs`+`homepage-fix.yml`, liest index.json live,
+  ersetzt programmatisch, validiert JSON, themeFilesUpsert — idempotent). **Offen (User-Entscheid):**
+  (2) Customer-Account-Menü linkt auf `account.luxestyle.com.co` — Legacy-Domain, antwortet **406/301 (nicht
+  tot)**, also bewusst nicht geändert (Domain gehört dir, Änderung könnte funktionierenden Flow brechen);
+  (3) Fertig-Produkte 0 Reviews → echte Judge.me-Reviews. Theme: `Horizon · LuxeStyle + Email-Popup (Claude)`
+  (MAIN; `templates/index.json` auto-generiert — per Skript-Replace editierbar, aber Customizer kann überschreiben).
 - **Branch-Hinweis:** Diese POD/Editor/Audit-Arbeit lief via PRs direkt auf **`main`** (#683/#685/#690/#691 u.a.),
   nicht auf `claude/luxestyle-product-CizQ6`. Memory liegt zusätzlich in `SHARED-MEMORY.md` (Live-Stand).
 
