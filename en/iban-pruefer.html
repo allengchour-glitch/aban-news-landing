@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IBAN-Prüfer · aban news</title>
-<meta name="description" content="Kostenloses Tool: IBAN prüfen (mod-97-Prüfsumme), formatieren und Land erkennen — für CH, DE, AT und ganz SEPA. Lokal im Browser, nichts wird gesendet. Keine Bankberatung.">
+<title>IBAN Checker · aban news</title>
+<meta name="description" content="Free tool: check an IBAN (mod-97 checksum), format it and detect the country — for CH, DE, AT and all of SEPA. Local in your browser, nothing is sent. Not banking advice.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/iban-pruefer.html">
+<link rel="canonical" href="https://abannews.com/en/iban-pruefer.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/iban-pruefer.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/iban-pruefer.html">
 <link rel="alternate" hreflang="x-default" href="https://abannews.com/iban-pruefer.html">
-<meta property="og:title" content="IBAN-Prüfer">
-<meta property="og:description" content="IBAN prüfen, formatieren, Land erkennen. Lokal im Browser, nichts wird gesendet.">
+<meta property="og:title" content="IBAN Checker">
+<meta property="og:description" content="Check, format and detect the country of an IBAN. Local in your browser, nothing is sent.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/iban-pruefer.html">
+<meta property="og:url" content="https://abannews.com/en/iban-pruefer.html">
 <meta property="og:image" content="https://abannews.com/og-hype.png">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"IBAN-Prüfer",
-"url":"https://abannews.com/iban-pruefer.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
-"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Prueft IBANs per mod-97-Pruefsumme, formatiert sie und erkennt das Land. Laeuft lokal im Browser.",
+{"@context":"https://schema.org","@type":"WebApplication","name":"IBAN Checker",
+"url":"https://abannews.com/en/iban-pruefer.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Checks IBANs via mod-97 checksum, formats them and detects the country. Runs locally in the browser.",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -67,57 +67,57 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<a class="skip" href="#tool">Zum Tool</a>
-<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
-<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<a class="skip" href="#tool">Skip to the tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
 <main><div class="wrap">
   <section class="hero">
-    <h1><span class="a">IBAN</span> prüfen</h1>
-    <p>Tipp- oder Zahlendreher in einer IBAN finden, bevor das Geld falsch läuft: Prüfsumme nach ISO 7064 (mod-97), Land erkennen, sauber formatieren. Alles lokal im Browser — die IBAN verlässt dein Gerät nicht.</p>
+    <h1><span class="a">IBAN</span> check</h1>
+    <p>Catch a typo or transposed digit in an IBAN before the money goes to the wrong place: checksum per ISO 7064 (mod-97), country detection, clean formatting. Everything runs locally in your browser — the IBAN never leaves your device.</p>
   </section>
   <section class="panel" id="tool">
-    <label for="iban">IBAN eingeben</label>
+    <label for="iban">Enter IBAN</label>
     <input type="text" id="iban" placeholder="DE00 0000 0000 0000 0000 00" autocomplete="off" autocapitalize="characters" spellcheck="false" inputmode="text">
-    <div class="status idle" id="status">Gib eine IBAN ein …</div>
+    <div class="status idle" id="status">Enter an IBAN …</div>
     <div class="out" id="out"></div>
-    <div class="samples">Beispiele:
-      <button data-s="DE89370400440532013000">DE (gültig)</button>
-      <button data-s="CH9300762011623852957">CH (gültig)</button>
-      <button data-s="AT611904300234573201">AT (gültig)</button>
-      <button data-s="DE89370400440532013001">DE (Fehler)</button>
+    <div class="samples">Examples:
+      <button data-s="DE89370400440532013000">DE (valid)</button>
+      <button data-s="CH9300762011623852957">CH (valid)</button>
+      <button data-s="AT611904300234573201">AT (valid)</button>
+      <button data-s="DE89370400440532013001">DE (error)</button>
     </div>
-    <div class="warn"><strong>Hinweis:</strong> Geprüft werden Format, Länge und die mathematische Prüfsumme. Das heißt: die IBAN ist <em>technisch korrekt</em> — ob das Konto wirklich existiert oder dem richtigen Empfänger gehört, kann kein Prüfziffern-Check feststellen. Keine Bankberatung.</div>
-    <p class="note">Unterstützt alle SEPA-Länder + CH/LI. Für Deutschland zeigt das Tool zusätzlich Bankleitzahl und Kontonummer. Nichts wird gespeichert oder gesendet.</p>
+    <div class="warn"><strong>Note:</strong> What's checked is the format, length and the mathematical checksum. That means the IBAN is <em>technically correct</em> — whether the account actually exists or belongs to the right recipient cannot be determined by a check-digit test. Not banking advice.</div>
+    <p class="note">Supports all SEPA countries + CH/LI. For Germany the tool also shows the bank code and account number. Nothing is stored or sent.</p>
   </section>
-  <div class="cta"><strong>Mehr Werkzeuge</strong>
-    <p class="note" style="margin:.4rem 0 .8rem">fürs Geschäftliche — alle gratis, alle im Browser.</p>
-    <p><a class="btn" href="/mwst-rechner.html">MwSt-Rechner</a>
-      <a class="btn ghost" href="/finanz-rechner.html">Stundensatz</a>
-      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+  <div class="cta"><strong>More tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for your business — all free, all in the browser.</p>
+    <p><a class="btn" href="/en/mwst-rechner.html">VAT calculator</a>
+      <a class="btn ghost" href="/en/finanz-rechner.html">Hourly rate</a>
+      <a class="btn ghost" href="/en/online-tools.html">All tools</a></p></div>
 <aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
-  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
-  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe to the free newsletter →</a>
 </aside>
 </div></main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
-  <a href="/mwst-rechner.html">MwSt</a> · <a href="/finanz-rechner.html">Finanz-Rechner</a> ·
-  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  <a href="/en/mwst-rechner.html">VAT</a> · <a href="/en/finanz-rechner.html">Finance calculator</a> ·
+  <a href="/en/ki-werkzeug.html">AI tools</a> &middot; <a href="/en/online-tools.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
 <script>
 (function(){
-  // Soll-Länge der IBAN je Land (SEPA + CH/LI + gängige)
+  // Expected IBAN length per country (SEPA + CH/LI + common ones)
   var LEN={AD:24,AE:23,AL:28,AT:20,AZ:28,BA:20,BE:16,BG:22,BH:22,BR:29,CH:21,CY:28,CZ:24,DE:22,DK:18,EE:20,ES:24,FI:18,FO:18,FR:27,GB:22,GE:22,GI:23,GL:18,GR:27,HR:21,HU:28,IE:22,IL:23,IS:26,IT:27,JO:30,KW:30,KZ:20,LB:28,LI:21,LT:20,LU:20,LV:21,MC:27,MD:24,ME:22,MK:19,MT:31,MU:30,NL:18,NO:15,PK:24,PL:28,PS:29,PT:25,QA:29,RO:24,RS:22,SA:24,SE:24,SI:19,SK:24,SM:27,TN:24,TR:26,UA:29,VA:22,XK:20};
-  var NAMES={AT:"Österreich",BE:"Belgien",CH:"Schweiz",CZ:"Tschechien",DE:"Deutschland",DK:"Dänemark",ES:"Spanien",FI:"Finnland",FR:"Frankreich",GB:"Großbritannien",GR:"Griechenland",HU:"Ungarn",IE:"Irland",IT:"Italien",LI:"Liechtenstein",LU:"Luxemburg",NL:"Niederlande",NO:"Norwegen",PL:"Polen",PT:"Portugal",SE:"Schweden",SI:"Slowenien",SK:"Slowakei"};
+  var NAMES={AT:"Austria",BE:"Belgium",CH:"Switzerland",CZ:"Czechia",DE:"Germany",DK:"Denmark",ES:"Spain",FI:"Finland",FR:"France",GB:"United Kingdom",GR:"Greece",HU:"Hungary",IE:"Ireland",IT:"Italy",LI:"Liechtenstein",LU:"Luxembourg",NL:"Netherlands",NO:"Norway",PL:"Poland",PT:"Portugal",SE:"Sweden",SI:"Slovenia",SK:"Slovakia"};
   var inp=document.getElementById("iban"),st=document.getElementById("status"),out=document.getElementById("out");
 
   function clean(v){return (v||"").toUpperCase().replace(/[^0-9A-Z]/g,"");}
   function group(v){return v.replace(/(.{4})/g,"$1 ").trim();}
-  function mod97(s){ // s = umgestellte IBAN mit Buchstaben->Zahlen, iterativ
+  function mod97(s){ // s = rearranged IBAN with letters->digits, iterative
     var rem=0;
     for(var i=0;i<s.length;i++){rem=(rem*10+(s.charCodeAt(i)-48))%97;}
     return rem;
   }
-  function expand(iban){ // erste 4 ans Ende, Buchstaben -> 10..35
+  function expand(iban){ // first 4 to the end, letters -> 10..35
     var r=iban.slice(4)+iban.slice(0,4),o="";
     for(var i=0;i<r.length;i++){var c=r.charCodeAt(i);o+=(c>=65)?(c-55):(c-48);}
     return o;
@@ -129,21 +129,21 @@ footer a{color:var(--muted)}
   }
   function run(){
     var v=clean(inp.value);
-    if(!v){show("idle","Gib eine IBAN ein …",[]);return;}
-    if(!/^[A-Z]{2}[0-9]{2}[0-9A-Z]+$/.test(v)){show("bad","✕ Ungültiges Format (Land + 2 Prüfziffern + Konto).",[]);return;}
+    if(!v){show("idle","Enter an IBAN …",[]);return;}
+    if(!/^[A-Z]{2}[0-9]{2}[0-9A-Z]+$/.test(v)){show("bad","✕ Invalid format (country + 2 check digits + account).",[]);return;}
     var land=v.slice(0,2), soll=LEN[land];
-    var boxes=[[group(v),"formatiert"],[land+(NAMES[land]?" · "+NAMES[land]:""),"Land"]];
+    var boxes=[[group(v),"formatted"],[land+(NAMES[land]?" · "+NAMES[land]:""),"Country"]];
     if(soll && v.length!==soll){
-      show("bad","✕ Falsche Länge für "+land+": "+v.length+" statt "+soll+" Zeichen.",boxes);return;
+      show("bad","✕ Wrong length for "+land+": "+v.length+" instead of "+soll+" characters.",boxes);return;
     }
     if(mod97(expand(v))!==1){
-      show("bad","✕ Prüfsumme falsch — vermutlich ein Tipp- oder Zahlendreher.",boxes);return;
+      show("bad","✕ Checksum failed — most likely a typo or transposed digit.",boxes);return;
     }
     if(land==="DE"){
-      boxes.push([v.slice(4,12),"Bankleitzahl"]);
-      boxes.push([v.slice(12),"Kontonummer"]);
+      boxes.push([v.slice(4,12),"Bank code"]);
+      boxes.push([v.slice(12),"Account number"]);
     }
-    show("ok","✓ Gültige IBAN"+(soll?"":" (Länge für "+land+" nicht hinterlegt — Prüfsumme stimmt)"),boxes);
+    show("ok","✓ Valid IBAN"+(soll?"":" (length for "+land+" not on file — checksum is correct)"),boxes);
   }
   inp.addEventListener("input",run);
   document.querySelectorAll(".samples button").forEach(function(b){
