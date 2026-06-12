@@ -43,3 +43,6 @@ tt-before.png
 tt-after.png
 tt-fail.png
 session-check.png
+
+# Cloudflare-Pages-Build-Output (lokal/CI generiert)
+_site/
