@@ -56,6 +56,7 @@ Betreiber: aban news (Allen Chour), Schweizer Einzelunternehmen, Belp (CH). Alle
 - [Anonymise text before AI](https://abannews.com/en/text-anonymisieren.html): mask emails/IBAN/phone/cards locally.
 - [AI token calculator](https://abannews.com/en/ki-token-rechner.html): estimate tokens & cost.
 - [Write a quote](https://abannews.com/en/angebot-schreiben.html), [Order confirmation](https://abannews.com/en/auftragsbestaetigung-schreiben.html), [Payment reminder](https://abannews.com/en/mahnung-schreiben.html): free generators for the self-employed.
+- [Business email generator (difficult emails)](https://abannews.com/en/email-vorlagen.html): 14 situations (price increase, follow-up, polite decline, complaints, re-engagement …), finished text to copy.
 - [Small-business VAT exemption explained (DACH)](https://abannews.com/en/kleinunternehmerregelung-einfach-erklaert.html): with a quick check.
 - [Tax basics for the self-employed](https://abannews.com/en/steuer-basics-selbststaendige.html).
 - [Live markets: stocks & crypto with AI sentiment](https://abannews.com/en/maerkte.html).
