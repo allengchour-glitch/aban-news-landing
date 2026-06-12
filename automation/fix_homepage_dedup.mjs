@@ -41,18 +41,16 @@ console.log('MAIN-Theme:', themeId);
 let content = (await gql(tok, Q_FILE, { id: themeId }))?.data?.theme?.files?.nodes?.[0]?.body?.content;
 if (!content) { console.error('❌ index.json nicht lesbar'); process.exit(1); }
 
-const FROM_TEXT = '<h3>🔥 Bestseller</h3>';   // 🔥 Bestseller
-const TO_TEXT   = '<h3>🎁 Geschenkideen</h3>'; // 🎁 Geschenkideen
-const FROM_COL  = '"collection": "bestseller-shop"';
-const TO_COL    = '"collection": "premium-geschenke"';
-
-if (!content.includes(FROM_TEXT) && !content.includes(FROM_COL)) {
-  console.log('= Bereits ersetzt (oder Struktur geändert) → No-op.'); process.exit(0);
-}
+// Idempotente Ersetzungen (jede greift nur, wenn der „von"-String noch vorhanden ist):
+const REPL = [
+  ['<h3>🔥 Bestseller</h3>', '<h3>🎁 Geschenkideen</h3>'],        // doppelte Bestseller-Sektion → Geschenkideen
+  ['"collection": "bestseller-shop"', '"collection": "premium-geschenke"'],
+  ['"name": "✨ CJ Neuheiten 2026"', '"name": "✨ Neuheiten 2026"'], // letzter interner „CJ"-Rest (Editor-Label)
+];
 let changed = 0;
-if (content.includes(FROM_TEXT)) { content = content.replace(FROM_TEXT, TO_TEXT); changed++; }
-if (content.includes(FROM_COL))  { content = content.replace(FROM_COL, TO_COL); changed++; }
-console.log(`Ersetzungen: ${changed}/2`);
+for (const [from, to] of REPL) { if (content.includes(from)) { content = content.split(from).join(to); changed++; } }
+if (changed === 0) { console.log('= Nichts zu ersetzen → No-op.'); process.exit(0); }
+console.log(`Ersetzungen: ${changed}/${REPL.length}`);
 
 // Sicherheit: muss valides JSON bleiben (Kommentar-Header oben abtrennen)
 try { JSON.parse(content.replace(/^\/\*[\s\S]*?\*\/\s*/, '')); } catch (e) { console.error('❌ Ergebnis kein valides JSON → Abbruch:', e.message); process.exit(1); }

@@ -60,10 +60,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   `/collections/sommer` ok (72 Prod.), Fertig-Seiten zeigen echtes Mockup+ATC. **AUTONOM BEHOBEN:**
   (1) Startseiten-Dublette → die 4. Produkt-Liste ist jetzt **🎁 Geschenkideen** (`premium-geschenke`) statt
   2. Bestseller-Sektion (Tool `automation/fix_homepage_dedup.mjs`+`homepage-fix.yml`, liest index.json live,
-  ersetzt programmatisch, validiert JSON, themeFilesUpsert — idempotent). **Offen (User-Entscheid):**
-  (2) Customer-Account-Menü linkt auf `account.luxestyle.com.co` — Legacy-Domain, antwortet **406/301 (nicht
-  tot)**, also bewusst nicht geändert (Domain gehört dir, Änderung könnte funktionierenden Flow brechen);
-  (3) Fertig-Produkte 0 Reviews → echte Judge.me-Reviews. Theme: `Horizon · LuxeStyle + Email-Popup (Claude)`
+  ersetzt programmatisch, validiert JSON, themeFilesUpsert — idempotent). **Account-Menü VERIFIZIERT KORREKT
+  (NICHT ändern!):** `account.luxestyle.com.co` ist das von **Shopify selbst** konfigurierte Kundenkonto-Portal —
+  `luxestyle.ch/account` leitet per 302 (JWT von `au3j0y-hq.myshopify.com`) genau dorthin; `account.luxestyle.ch`
+  existiert nicht (keine DNS). Auf `.ch` umbiegen würde den Login zerstören → bewusst belassen.
+  **Einziges echtes Rest-Offen:** (3) Fertig-Produkte 0 Reviews → echte Judge.me-Reviews (`JUDGEME_PRIVATE_TOKEN`
+  setzen, nie Fake). Theme: `Horizon · LuxeStyle + Email-Popup (Claude)`
   (MAIN; `templates/index.json` auto-generiert — per Skript-Replace editierbar, aber Customizer kann überschreiben).
 - **Branch-Hinweis:** Diese POD/Editor/Audit-Arbeit lief via PRs direkt auf **`main`** (#683/#685/#690/#691 u.a.),
   nicht auf `claude/luxestyle-product-CizQ6`. Memory liegt zusätzlich in `SHARED-MEMORY.md` (Live-Stand).
