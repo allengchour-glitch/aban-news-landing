@@ -79,6 +79,16 @@
   FR/IT-CTA korrekt, **og:image-Abdeckung 100 %** (0 indexierbare Seiten ohne Teilen-Vorschau), 0 echte
   Broken-Links, Konsistenz grün. **→ QA/SEO/Korrektheit-Backlog erschöpft.** Offen bleibt nur Kosmetik
   (Inline-Header-Bilder 24 Hubs + 21 Themen, besser per echtem Foto-CI-Job mit PEXELS) + der Geld-Schalter (User).
+- **Welle 3 — Content-Ausbau (Reichweite), User-Richtung „Content-Ausbau":** Da eine **parallele Session
+  gerade Branchen-Hubs** mass-generiert (Welle 63/64, eigener Branch) → nicht-kollidierende Spur gewählt:
+  **EN-Versionen erprobter DE-Tool-Seiten** (nur Übersetzung, kein erfundener Content, neue Dateien = kein
+  Merge-Konflikt). **7 EN-Tools live** (je via Übersetzungs-Agent, dann zentral verdrahtet): en/stundensatz-
+  rechner, en/finanz-rechner, en/mwst-rechner, en/prozent-rechner, en/ki-token-rechner, en/ki-bild-prompt-
+  generator, en/automatisierung-rechner. JS-Logik identisch, lang=en, EN-Meta/OG/JSON-LD, hreflang beidseitig
+  (DE-Seiten nachgerüstet), de-DE→en-GB, Sitemap-Einträge, Cross-Links auf /en/. Nebenbei ein DE-Mislabel in
+  mwst-rechner gefixt. Alles verifiziert (0 Parser-Error, Konsistenz grün, 0 Broken-Links). **Hinweis Koordination:
+  ⚠️ Branchen-Hubs NICHT anfassen (andere Session); Pushes mit `git pull --rebase` wegen Parallelaktivität.**
+  Weitere EN-Kandidaten offen (rechnung-generator, finanz-skills, ki-spar/ki-kosten-rechner, json-formatter, …).
 
 **2026-06-11 — Luxestyle/POD session: Editor mit echten Fotos + 98 Fertig-Mockups + Shop-Audit A–Z:**
 - **🎨 Selbst-gestalten-Editor komplett überarbeitet** (`pod/designer.js` live): echtes Produktfoto statt
