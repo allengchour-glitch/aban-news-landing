@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Token Calculator — Estimate Tokens & Costs (free) | aban news</title>
+<meta name="description" content="Estimate how many tokens your text needs for ChatGPT, Claude & co. — and roughly what one request costs. With your own price per million tokens. Local in your browser, no login.">
+<link rel="canonical" href="https://abannews.com/en/ki-token-rechner.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/ki-token-rechner.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-token-rechner.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-token-rechner.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI Token Calculator — Estimate Tokens & Costs">
+<meta property="og:description" content="Estimate the tokens in your text + the rough cost per request. Local in your browser, no login.">
+<meta property="og:url" content="https://abannews.com/en/ki-token-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"AI Token Calculator","url":"https://abannews.com/en/ki-token-rechner.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Estimates the number of tokens in a text and the rough cost per AI request based on a price per million tokens you enter yourself.","publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How accurate is the token estimate?","acceptedAnswer":{"@type":"Answer","text":"It is an estimate: as a rule of thumb, count about 4 characters per token (English text), with German needing slightly more tokens. Every model counts a little differently. For the exact number, use the provider's official tokenizer. For planning and budgeting, the estimate is enough."}},
+{"@type":"Question","name":"Where does the price come from?","acceptedAnswer":{"@type":"Answer","text":"You enter it yourself — the current price per million tokens of your model. That way the calculator stays correct for your plan and currency, instead of using outdated list prices."}},
+{"@type":"Question","name":"Are my texts sent anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The calculation runs entirely in your browser. Nothing is uploaded, no account, no tracking."}}
+]}
+</script>
+<style>
+  :root{--amber-dk:#b45309;--accent:#d97706;--bg:#fffbf5;--field:#fffdf9;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--ok:#059669}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+  a{color:var(--amber-dk)}
+  header{border-bottom:1px solid var(--line);background:#fff}
+  header .wrap{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:14px 20px}
+  .brand{display:flex;align-items:center;gap:.5rem;font-weight:800;text-decoration:none;color:var(--ink)}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
+  .hnav{margin-left:auto;display:flex;align-items:center;gap:1.1rem;font-size:.92rem;flex-wrap:wrap}
+  .hnav a{color:var(--muted);text-decoration:none}
+  .btn{background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;border-radius:8px;font-size:.9rem;border:0;cursor:pointer}
+  main{max-width:760px;margin:0 auto;padding:0 20px}
+  h1{font-size:2rem;line-height:1.2;margin:34px 0 10px}
+  .lead{font-size:1.12rem;color:var(--ink2)}
+  .note{background:var(--field);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:14px 16px;margin:22px 0;color:var(--ink2);font-size:.96rem}
+  h2{font-size:1.35rem;margin:34px 0 6px}
+  p{color:var(--ink2)}
+  details{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:#fff}
+  summary{font-weight:700;cursor:pointer}
+  .cta{background:var(--field);border:1px solid var(--line);border-radius:14px;padding:20px;margin:30px 0;text-align:center}
+  .tool{border:1px solid var(--line);border-radius:14px;padding:18px;margin:24px 0;background:#fff}
+  .tool label{display:block;font-weight:600;font-size:.9rem;margin:10px 0 5px;color:var(--ink2)}
+  .tool textarea,.tool input{width:100%;font-size:1rem;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);font-family:inherit}
+  .tool textarea{min-height:150px;line-height:1.5}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>div{flex:1;min-width:140px}
+  .out{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:14px}
+  .box{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center}
+  .box b{display:block;font-size:1.4rem;font-weight:800;color:var(--amber-dk)}
+  .box span{font-size:.78rem;color:var(--muted)}
+  footer{border-top:1px solid var(--line);margin-top:40px;background:#fff}
+  footer .wrap{max-width:980px;margin:0 auto;padding:18px 20px;color:var(--muted);font-size:.88rem;display:flex;gap:14px;flex-wrap:wrap}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a href="/en/" class="brand"><span class="dot"></span> aban news</a>
+    <nav class="hnav" aria-label="Navigation">
+      <a href="/en/ki-tools-fuer-selbststaendige.html">Tools</a>
+      <a href="/ki-kosten-rechner.html">AI costs</a>
+      <a href="/founding.html">Premium</a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Subscribe free</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <h1>AI Token Calculator</h1>
+  <p class="lead">AI models don't count in words but in <strong>tokens</strong> (small chunks of text). How many your text needs — and roughly what a request costs — you can estimate here. You enter the price per million tokens yourself, so it's right for your model. Local in your browser, nothing is sent.</p>
+
+  <div class="note">💡 <strong>Token = chunk of text:</strong> roughly half a word to a whole word. Rule of thumb: ~4 characters per token (English), slightly more for German. This is an <strong>estimate</strong> for planning &amp; budgeting — the exact number comes from the provider's official tokenizer.</div>
+
+  <div class="tool">
+    <label for="txt">Your text</label>
+    <textarea id="txt" placeholder="Paste your text here …">Write a friendly reply to a customer asking about the delivery date. Short, polite, with a specific date.</textarea>
+    <div class="row">
+      <div><label for="price">Price per 1M tokens (€)</label><input type="text" id="price" value="0.50" inputmode="decimal"></div>
+      <div><label for="reqs">Requests per month</label><input type="text" id="reqs" value="100" inputmode="numeric"></div>
+    </div>
+    <div class="out">
+      <div class="box"><b id="o-chars">0</b><span>Characters</span></div>
+      <div class="box"><b id="o-words">0</b><span>Words</span></div>
+      <div class="box"><b id="o-tok">0</b><span>Tokens (≈)</span></div>
+      <div class="box"><b id="o-cost">0.00 €</b><span>per request</span></div>
+      <div class="box"><b id="o-month">0.00 €</b><span>per month (≈)</span></div>
+    </div>
+    <p style="font-size:.8rem;color:var(--muted);margin-top:10px">Token estimate = average of "characters ÷ 4" and "words × 1.33". Cost = input tokens only; the AI's reply costs extra (depending on the model, often more per token).</p>
+  </div>
+
+  <div class="cta">
+    <h2 style="margin-top:0">Keep your AI costs under control</h2>
+    <p style="margin:.4rem 0 1rem">aban news shows you every day how to save time and money with AI — honest, without hype, in 5 minutes. Free.</p>
+    <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Subscribe free →</a>
+    &nbsp; <a href="/ki-kosten-rechner.html" style="display:inline-block;margin-top:8px">AI cost calculator →</a>
+    &nbsp; <a href="/en/ki-abo-lohnt-sich.html" style="display:inline-block;margin-top:8px">Is an AI subscription worth it? →</a>
+    &nbsp; <a href="/en/ki-tools-fuer-selbststaendige.html" style="display:inline-block;margin-top:8px">All tools →</a>
+  </div>
+
+  <section data-aban-signup style="max-width:760px;margin:30px auto;padding:20px;border:1px solid #ece3d4;border-radius:14px;background:#fff;text-align:center"><h2 style="margin:0 0 6px;font-size:1.25rem">One AI tip a day, in 5 minutes</h2><p style="margin:0 0 12px;color:#374151">Honest, anti-hype, free. Mon&ndash;Fri, unsubscribe anytime.</p><form action="https://abannews.beehiiv.com/subscribe" method="get" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:460px;margin:0 auto"><input type="email" name="email" required placeholder="you@mail.com" autocomplete="email" inputmode="email" aria-label="Email address" style="flex:1;min-width:200px;padding:11px 14px;border:1px solid #ece3d4;border-radius:10px;font-size:1rem"><button type="submit" style="background:#b45309;color:#fff;border:0;border-radius:10px;padding:11px 20px;font-weight:700;font-size:1rem;cursor:pointer">Subscribe free</button></form></section>
+
+  <h2>Frequently asked questions</h2>
+  <details><summary>How accurate is the estimate?</summary><p>It's an estimate — rule of thumb ~4 characters/token (English), German a bit more. Every model counts a little differently. For the exact number there are official tokenizers. For budgeting it's enough.</p></details>
+  <details><summary>Why do I enter the price myself?</summary><p>Because model prices change and differ by provider/currency. With your price, the calculation is always right.</p></details>
+  <details><summary>Are my texts sent anywhere?</summary><p>No, everything runs locally in your browser. No upload, no account, no tracking.</p></details>
+<aside data-aban-premium style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">More depth, no hype.</strong><span style="color:#374151"> aban news Premium: ad-free, full archive, daily AI compass for your business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem">Founding member — €69 lifetime →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Try it free →</a></span></aside>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour · Belp (CH)</span>
+    <a href="/ki-kosten-rechner.html">AI costs</a>
+    <a href="/en/ki-tools-fuer-selbststaendige.html">Tools</a>
+    <a href="/founding.html">Premium</a>
+    <a href="/impressum.html">Imprint</a>
+    <a href="/datenschutz.html">Privacy</a>
+  </div>
+</footer>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var txt=$("txt"),price=$("price"),reqs=$("reqs");
+  function num(v){return parseFloat(String(v).trim().replace(",","."))||0;}
+  function run(){
+    var s=txt.value, chars=s.length, words=(s.trim().match(/\S+/g)||[]).length;
+    var tok=Math.round((chars/4 + words*1.33)/2);
+    var cost=tok/1e6*num(price.value);
+    var month=cost*(num(reqs.value)||0);
+    var eur=function(n){return n.toLocaleString("en-GB",{minimumFractionDigits:2,maximumFractionDigits:n<1?4:2})+" €";};
+    $("o-chars").textContent=chars.toLocaleString("en-GB");
+    $("o-words").textContent=words.toLocaleString("en-GB");
+    $("o-tok").textContent=tok.toLocaleString("en-GB");
+    $("o-cost").textContent=eur(cost);
+    $("o-month").textContent=eur(month);
+  }
+  [txt,price,reqs].forEach(function(el){el.addEventListener("input",run);});
+  run();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>

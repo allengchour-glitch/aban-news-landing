@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prozent- & Dreisatz-Rechner · aban news</title>
-<meta name="description" content="Kostenloses Tool: Prozent rechnen (Anteil, Zu-/Abschlag, prozentuale Änderung) und Dreisatz lösen. Für Angebote, Rabatte, Aufschläge. Lokal im Browser, ohne Login.">
+<title>Percentage & Rule-of-Three Calculator · aban news</title>
+<meta name="description" content="Free tool: calculate percentages (share, markup/discount, percentage change) and solve the rule of three. For quotes, discounts, surcharges. Local in your browser, no login.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/prozent-rechner.html">
-  <link rel="alternate" hreflang="de" href="https://abannews.com/prozent-rechner.html">
-  <link rel="alternate" hreflang="en" href="https://abannews.com/en/prozent-rechner.html">
-  <link rel="alternate" hreflang="x-default" href="https://abannews.com/prozent-rechner.html">
-<meta property="og:title" content="Prozent- & Dreisatz-Rechner">
-<meta property="og:description" content="Prozent & Dreisatz rechnen: Anteil, Zu-/Abschlag, Änderung. Lokal im Browser, ohne Login.">
+<link rel="canonical" href="https://abannews.com/en/prozent-rechner.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/prozent-rechner.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/prozent-rechner.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/prozent-rechner.html">
+<meta property="og:title" content="Percentage & Rule-of-Three Calculator">
+<meta property="og:description" content="Calculate percentages & the rule of three: share, markup/discount, change. Local in your browser, no login.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/prozent-rechner.html">
+<meta property="og:url" content="https://abannews.com/en/prozent-rechner.html">
 <meta property="og:image" content="https://abannews.com/og-hype.png">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Prozent- & Dreisatz-Rechner",
-"url":"https://abannews.com/prozent-rechner.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
-"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Rechnet Prozente (Anteil, Zu-/Abschlag, prozentuale Änderung) und löst den Dreisatz.",
+{"@context":"https://schema.org","@type":"WebApplication","name":"Percentage & Rule-of-Three Calculator",
+"url":"https://abannews.com/en/prozent-rechner.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Calculates percentages (share, markup/discount, percentage change) and solves the rule of three.",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -60,97 +60,97 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<a class="skip" href="#tool">Zum Tool</a>
-<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
-<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<a class="skip" href="#tool">Skip to tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
 <main><div class="wrap">
   <section class="hero">
-    <h1><span class="a">Prozent &amp; Dreisatz</span> rechnen</h1>
-    <p>Die vier Prozent-Fragen, die im Alltag wirklich vorkommen — plus der klassische Dreisatz. Für Angebote, Rabatte, Aufschläge und schnelle Plausibilitäts-Checks. Lokal im Browser, nichts wird gesendet.</p>
+    <h1>Calculate <span class="a">percentages &amp; the rule of three</span></h1>
+    <p>The four percentage questions that actually come up in everyday work — plus the classic rule of three. For quotes, discounts, surcharges and quick sanity checks. Local in your browser, nothing is sent.</p>
   </section>
 
   <section class="panel" id="tool">
-    <h2>Wie viel sind X % von Y?</h2>
-    <p class="sub">Beispiel: 19 % von 250</p>
+    <h2>What is X % of Y?</h2>
+    <p class="sub">Example: 19 % of 250</p>
     <div class="line">
-      <input type="text" id="a1" value="19" inputmode="decimal"> % von
+      <input type="text" id="a1" value="19" inputmode="decimal"> % of
       <input type="text" id="a2" value="250" inputmode="decimal">
     </div>
     <div class="res" id="ar">—</div>
   </section>
 
   <section class="panel">
-    <h2>X ist wie viel Prozent von Y?</h2>
-    <p class="sub">Beispiel: 45 von 180</p>
+    <h2>X is what percentage of Y?</h2>
+    <p class="sub">Example: 45 of 180</p>
     <div class="line">
-      <input type="text" id="b1" value="45" inputmode="decimal"> von
+      <input type="text" id="b1" value="45" inputmode="decimal"> of
       <input type="text" id="b2" value="180" inputmode="decimal">
     </div>
     <div class="res" id="br">—</div>
   </section>
 
   <section class="panel">
-    <h2>Zu-/Abschlag (z. B. Rabatt oder Aufschlag)</h2>
-    <p class="sub">Beispiel: 120 plus/minus 15 %</p>
+    <h2>Markup / discount (e.g. discount or surcharge)</h2>
+    <p class="sub">Example: 120 plus/minus 15 %</p>
     <div class="line">
-      <input type="text" id="c1" value="120" inputmode="decimal"> Betrag,
+      <input type="text" id="c1" value="120" inputmode="decimal"> amount,
       <input type="text" id="c2" value="15" inputmode="decimal"> %
     </div>
     <div class="res" id="cr">—</div>
   </section>
 
   <section class="panel">
-    <h2>Prozentuale Änderung (von alt zu neu)</h2>
-    <p class="sub">Beispiel: von 200 auf 250</p>
+    <h2>Percentage change (from old to new)</h2>
+    <p class="sub">Example: from 200 to 250</p>
     <div class="line">
-      von <input type="text" id="d1" value="200" inputmode="decimal">
-      auf <input type="text" id="d2" value="250" inputmode="decimal">
+      from <input type="text" id="d1" value="200" inputmode="decimal">
+      to <input type="text" id="d2" value="250" inputmode="decimal">
     </div>
     <div class="res" id="dr">—</div>
   </section>
 
   <section class="panel">
-    <h2>Dreisatz</h2>
-    <p class="sub">Wenn A → B, was ergibt C? (proportional)</p>
+    <h2>Rule of three</h2>
+    <p class="sub">If A → B, what does C give? (proportional)</p>
     <div class="line">
       <input type="text" id="e1" value="3" inputmode="decimal"> →
-      <input type="text" id="e2" value="12" inputmode="decimal"> , dann
+      <input type="text" id="e2" value="12" inputmode="decimal"> , then
       <input type="text" id="e3" value="7" inputmode="decimal"> →
     </div>
     <div class="res" id="er">—</div>
   </section>
 
-  <div class="cta"><strong>Mehr Rechner</strong>
-    <p class="note" style="margin:.4rem 0 .8rem">fürs Geschäftliche.</p>
-    <p><a class="btn" href="/mwst-rechner.html">MwSt-Rechner</a>
-      <a class="btn ghost" href="/finanz-rechner.html">Stundensatz</a>
-      <a class="btn ghost" href="/automatisierung-rechner.html">Automatisierung</a></p></div>
+  <div class="cta"><strong>More calculators</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for your business.</p>
+    <p><a class="btn" href="/en/mwst-rechner.html">VAT calculator</a>
+      <a class="btn ghost" href="/en/finanz-rechner.html">Hourly rate</a>
+      <a class="btn ghost" href="/en/automatisierung-rechner.html">Automation</a></p></div>
 <aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
-  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
-  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe to the free newsletter →</a>
 </aside>
-</div><aside data-aban-premium style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">Mehr Tiefe, kein Hype.</strong><span style="color:#374151"> aban news Premium: werbefrei, volles Archiv, täglicher KI-Kompass fürs Business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem">Founding-Mitglied — €69 lifetime →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Erst gratis testen →</a></span></aside>
+</div><aside data-aban-premium style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">More depth, no hype.</strong><span style="color:#374151"> aban news Premium: ad-free, full archive, a daily AI compass for your business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem">Founding member — €69 lifetime →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Try it free →</a></span></aside>
 </main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
-  <a href="/mwst-rechner.html">MwSt</a> · <a href="/finanz-rechner.html">Finanz-Rechner</a> ·
-  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  <a href="/en/mwst-rechner.html">VAT</a> · <a href="/en/finanz-rechner.html">Finance calculator</a> ·
+  <a href="/en/ki-werkzeug.html">AI toolkit</a> &middot; <a href="/en/ki-tools-fuer-selbststaendige.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
 <script>
 (function(){
   function num(id){var v=document.getElementById(id).value.trim().replace(",",".");return v===""?NaN:parseFloat(v);}
-  function fmt(n){if(!isFinite(n))return "—";return n.toLocaleString("de-DE",{maximumFractionDigits:2});}
+  function fmt(n){if(!isFinite(n))return "—";return n.toLocaleString("en-GB",{maximumFractionDigits:2});}
   function on(ids,fn){ids.forEach(function(id){document.getElementById(id).addEventListener("input",fn);});}
 
   function ca(){var p=num("a1"),y=num("a2");document.getElementById("ar").textContent=(isFinite(p)&&isFinite(y))?fmt(p/100*y):"—";}
   function cb(){var x=num("b1"),y=num("b2");var el=document.getElementById("br");el.innerHTML=(isFinite(x)&&isFinite(y)&&y!==0)?(fmt(x/y*100)+" %"):"—";}
   function cc(){var b=num("c1"),p=num("c2"),el=document.getElementById("cr");
-    if(isFinite(b)&&isFinite(p)){var amt=b*p/100;el.innerHTML="+ "+fmt(p)+" %: <strong>"+fmt(b+amt)+"</strong> &nbsp;·&nbsp; − "+fmt(p)+" %: <strong>"+fmt(b-amt)+"</strong><small>Differenz: "+fmt(amt)+"</small>";}
+    if(isFinite(b)&&isFinite(p)){var amt=b*p/100;el.innerHTML="+ "+fmt(p)+" %: <strong>"+fmt(b+amt)+"</strong> &nbsp;·&nbsp; − "+fmt(p)+" %: <strong>"+fmt(b-amt)+"</strong><small>Difference: "+fmt(amt)+"</small>";}
     else el.textContent="—";}
   function cd(){var o=num("d1"),n=num("d2"),el=document.getElementById("dr");
-    if(isFinite(o)&&isFinite(n)&&o!==0){var ch=(n-o)/Math.abs(o)*100;el.innerHTML=(ch>=0?"+":"")+fmt(ch)+" %<small>"+(ch>=0?"Anstieg":"Rückgang")+" um "+fmt(Math.abs(n-o))+"</small>";}
+    if(isFinite(o)&&isFinite(n)&&o!==0){var ch=(n-o)/Math.abs(o)*100;el.innerHTML=(ch>=0?"+":"")+fmt(ch)+" %<small>"+(ch>=0?"Increase":"Decrease")+" of "+fmt(Math.abs(n-o))+"</small>";}
     else el.textContent="—";}
   function ce(){var a=num("e1"),b=num("e2"),c=num("e3"),el=document.getElementById("er");
-    if(isFinite(a)&&isFinite(b)&&isFinite(c)&&a!==0){el.innerHTML="<strong>"+fmt(b/a*c)+"</strong><small>(je Einheit: "+fmt(b/a)+")</small>";}
+    if(isFinite(a)&&isFinite(b)&&isFinite(c)&&a!==0){el.innerHTML="<strong>"+fmt(b/a*c)+"</strong><small>(per unit: "+fmt(b/a)+")</small>";}
     else el.textContent="—";}
 
   on(["a1","a2"],ca);on(["b1","b2"],cb);on(["c1","c2"],cc);on(["d1","d2"],cd);on(["e1","e2","e3"],ce);

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Image Prompt Generator — better prompts for Midjourney, DALL·E &amp; Co. | aban news</title>
+<meta name="description" content="Free AI image prompt generator: pick subject, style, light, perspective — get a ready-to-copy prompt for Midjourney, DALL·E, Stable Diffusion and more. Runs locally in your browser, no login.">
+<link rel="canonical" href="https://abannews.com/en/ki-bild-prompt-generator.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/ki-bild-prompt-generator.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-bild-prompt-generator.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-bild-prompt-generator.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="AI Image Prompt Generator — better image prompts">
+<meta property="og:description" content="Pick subject, style, light, perspective → ready-to-copy prompt. For Midjourney, DALL·E &amp; Co.">
+<meta property="og:url" content="https://abannews.com/en/ki-bild-prompt-generator.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"AI Image Prompt Generator","url":"https://abannews.com/en/ki-bild-prompt-generator.html","applicationCategory":"DesignApplication","operatingSystem":"Web","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Builds a ready-to-use image prompt for AI image generators from subject, style, light and perspective.","publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Which AI image generators does the prompt fit?","acceptedAnswer":{"@type":"Answer","text":"The common ones: Midjourney, DALL·E, Stable Diffusion, Leonardo, Adobe Firefly and similar. The structure (subject, style, light, perspective) works everywhere. The aspect ratio is appended as --ar; not every tool uses this notation — then you set it in the tool itself."}},
+{"@type":"Question","name":"Should I prompt in English or another language?","acceptedAnswer":{"@type":"Answer","text":"Most image models understand English best. That's why the generator builds the prompt in English, but you can enter your subject in any language. If needed, translate the subject beforehand."}},
+{"@type":"Question","name":"Are my inputs saved?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs in your browser, nothing is sent or stored."}}
+]}
+</script>
+<style>
+  :root{--amber-dk:#b45309;--accent:#d97706;--bg:#fffbf5;--field:#fffdf9;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--ok:#059669}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+  a{color:var(--amber-dk)}
+  header{border-bottom:1px solid var(--line);background:#fff}
+  header .wrap{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:14px 20px}
+  .brand{display:flex;align-items:center;gap:.5rem;font-weight:800;text-decoration:none;color:var(--ink)}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
+  .hnav{margin-left:auto;display:flex;align-items:center;gap:1.1rem;font-size:.92rem;flex-wrap:wrap}
+  .hnav a{color:var(--muted);text-decoration:none}
+  .btn{background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;border-radius:8px;font-size:.9rem;border:0;cursor:pointer}
+  main{max-width:760px;margin:0 auto;padding:0 20px}
+  h1{font-size:2rem;line-height:1.2;margin:34px 0 10px}
+  .lead{font-size:1.12rem;color:var(--ink2)}
+  h2{font-size:1.35rem;margin:34px 0 6px}
+  p{color:var(--ink2)}
+  .tool{border:1px solid var(--line);border-radius:14px;padding:18px;margin:24px 0;background:#fff}
+  .tool label{display:block;font-weight:600;font-size:.9rem;margin:10px 0 5px;color:var(--ink2)}
+  .tool select,.tool input,.tool textarea{width:100%;font-size:1rem;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);font-family:inherit}
+  .tool textarea{min-height:120px;line-height:1.5;white-space:pre-wrap}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>div{flex:1;min-width:150px}
+  .copied{color:var(--ok);font-weight:700;font-size:.9rem;margin-left:10px;opacity:0;transition:opacity .2s}
+  .copied.show{opacity:1}
+  details{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:#fff}
+  summary{font-weight:700;cursor:pointer}
+  .cta{background:var(--field);border:1px solid var(--line);border-radius:14px;padding:20px;margin:30px 0;text-align:center}
+  footer{border-top:1px solid var(--line);margin-top:40px;background:#fff}
+  footer .wrap{max-width:980px;margin:0 auto;padding:18px 20px;color:var(--muted);font-size:.88rem;display:flex;gap:14px;flex-wrap:wrap}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a href="/en/" class="brand"><span class="dot"></span> aban news</a>
+    <nav class="hnav" aria-label="Navigation">
+      <a href="/en/ki-tools-fuer-selbststaendige.html">Tools</a>
+      <a href="/en/bessere-prompts.html">Better Prompts</a>
+      <a href="/founding.html">Premium</a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Subscribe free</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/en/ki-tools-fuer-selbststaendige.html" style="color:#b45309;font-weight:600;text-decoration:none">All free tools</a></p>
+
+  <h1>AI Image Prompt Generator</h1>
+  <p class="lead">Good AI images start with a good prompt. Pick subject, style, light and perspective — the generator builds a clean, ready-to-copy prompt from it, for Midjourney, DALL·E, Stable Diffusion &amp; Co. Runs locally in your browser, nothing is sent.</p>
+
+  <div class="tool">
+    <label for="motiv">Subject (what's it about?)</label>
+    <input type="text" id="motiv" value="a fox in a snowy forest" spellcheck="false">
+    <div class="row">
+      <div><label for="stil">Style</label>
+        <select id="stil">
+          <option value="photorealistic, 8k, sharp focus">Photorealistic</option>
+          <option value="digital illustration, clean lines">Illustration</option>
+          <option value="3D render, octane, soft shadows">3D render</option>
+          <option value="watercolor painting, soft edges">Watercolour</option>
+          <option value="oil painting, textured brushstrokes">Oil painting</option>
+          <option value="flat minimalist vector">Minimalist / vector</option>
+          <option value="comic book style, bold ink">Comic</option>
+          <option value="cyberpunk, neon, futuristic">Cyberpunk</option>
+          <option value="isometric, miniature diorama">Isometric</option>
+        </select></div>
+      <div><label for="licht">Light / mood</label>
+        <select id="licht">
+          <option value="soft natural daylight">Soft daylight</option>
+          <option value="golden hour, warm backlight">Golden hour</option>
+          <option value="studio lighting, softbox">Studio</option>
+          <option value="dramatic cinematic lighting, high contrast">Dramatic / cinematic</option>
+          <option value="moody, foggy, low light">Moody / fog</option>
+          <option value="bright and airy, pastel tones">Bright &amp; airy</option>
+          <option value="neon glow, night">Neon / night</option>
+        </select></div>
+    </div>
+    <div class="row">
+      <div><label for="persp">Perspective</label>
+        <select id="persp">
+          <option value="close-up portrait">Close-up</option>
+          <option value="wide establishing shot">Wide shot</option>
+          <option value="top-down, bird's eye view">Bird's-eye view</option>
+          <option value="macro, extreme detail">Macro</option>
+          <option value="low angle, dynamic">Low angle</option>
+          <option value="eye level, centered">Eye level</option>
+        </select></div>
+      <div><label for="ar">Aspect ratio</label>
+        <select id="ar">
+          <option value="1:1">Square 1:1</option>
+          <option value="16:9">Landscape 16:9</option>
+          <option value="9:16">Portrait 9:16 (Story)</option>
+          <option value="4:3">4:3</option>
+          <option value="3:2">3:2</option>
+        </select></div>
+    </div>
+    <label for="extra">Additional details (colours, background, extras)</label>
+    <input type="text" id="extra" value="warm colors, soft background, fine snowflakes" spellcheck="false">
+    <label for="avoid">Avoid (negative)</label>
+    <input type="text" id="avoid" value="text, watermark, distorted hands" spellcheck="false">
+    <label for="out" style="margin-top:16px">Your prompt</label>
+    <textarea id="out" readonly aria-label="Generated image prompt"></textarea>
+    <div style="margin-top:10px"><button class="btn" id="copy">Copy to clipboard</button><span class="copied" id="ok">copied ✓</span></div>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:10px">💡 Tip: Most image models understand <strong>English</strong> best — that's why the prompt is built in English. You can enter your subject in any language (translate it first if needed).</p>
+  </div>
+
+  <div class="cta">
+    <h2 style="margin-top:0">One AI trick a day that actually helps</h2>
+    <p style="margin:.4rem 0 1rem">aban news shows you Mon–Fri in 5 minutes what's practically possible with AI — honest, no hype. Free.</p>
+    <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Subscribe free →</a>
+    &nbsp; <a href="/en/bessere-prompts.html" style="display:inline-block;margin-top:8px">Write better prompts →</a>
+    &nbsp; <a href="/en/ki-tools-fuer-selbststaendige.html" style="display:inline-block;margin-top:8px">All tools →</a>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <details><summary>Which AI image generators does the prompt fit?</summary><p>Midjourney, DALL·E, Stable Diffusion, Leonardo, Firefly and others. The structure fits everywhere; not every tool uses the <code>--ar</code> aspect ratio — then you set it in the tool itself.</p></details>
+  <details><summary>Should I prompt in English or another language?</summary><p>English works best with most models. That's why the generator builds in English; you enter your subject in any language.</p></details>
+  <details><summary>Are my inputs saved?</summary><p>No — everything runs locally in your browser, nothing is sent.</p></details>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour · Belp (CH)</span>
+    <a href="/en/ki-tools-fuer-selbststaendige.html">Tools</a>
+    <a href="/en/bessere-prompts.html">Better Prompts</a>
+    <a href="/founding.html">Premium</a>
+    <a href="/impressum.html">Imprint</a>
+    <a href="/datenschutz.html">Privacy</a>
+  </div>
+</footer>
+<script>
+(function(){
+  var ids=["motiv","stil","licht","persp","ar","extra","avoid"],el={};
+  ids.forEach(function(i){el[i]=document.getElementById(i);});
+  var out=document.getElementById("out");
+  function v(i){return (el[i].value||"").trim();}
+  function build(){
+    var parts=[v("motiv"),el.stil.value,el.licht.value,el.persp.value];
+    if(v("extra")) parts.push(v("extra"));
+    parts.push("highly detailed, professional");
+    var p=parts.filter(Boolean).join(", ");
+    if(v("avoid")) p+="\n\nNegative prompt: "+v("avoid");
+    p+="\n\n--ar "+el.ar.value;
+    out.value=p;
+  }
+  ids.forEach(function(i){el[i].addEventListener("input",build);el[i].addEventListener("change",build);});
+  var ok=document.getElementById("ok");
+  document.getElementById("copy").addEventListener("click",function(){
+    out.select();
+    var done=function(){ok.classList.add("show");setTimeout(function(){ok.classList.remove("show");},1500);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(out.value).then(done,function(){try{document.execCommand("copy");done();}catch(e){}});}
+    else{try{document.execCommand("copy");done();}catch(e){}}
+  });
+  build();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
