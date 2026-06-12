@@ -43,8 +43,9 @@ window.ABAN_AFFILIATE = {
 
   // --- Website / Hosting. Tracking-Link aus dem jeweiligen Partnerprogramm
   //     eintragen; leer ("") -> Button zeigt auf die Anbieter-Domain. ---
-  // Hostinger. Partnerprogramm: Hostinger-Affiliate.
-  HOSTINGER_URL: "",
+  // Hostinger — AKTIVER Refer&earn-Tracking-Link. (Später ggf. durch den
+  // Affiliate-Programm-Link mit höherer Provision ersetzen, sobald freigegeben.)
+  HOSTINGER_URL: "https://www.hostinger.com/?REFERRALCODE=T2IALLENGYBU",
   // IONOS (DE). Partnerprogramm: IONOS-Partner / Awin.
   IONOS_URL: "",
   // Webflow (No-Code-Website-Builder). Partnerprogramm: Webflow-Affiliate.
