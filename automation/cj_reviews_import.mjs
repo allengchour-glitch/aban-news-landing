@@ -60,7 +60,11 @@ async function cjToken() {
   try { if (fs.existsSync(TOKEN_FILE)) { const t = JSON.parse(fs.readFileSync(TOKEN_FILE, 'utf8')); if (t.exp > Date.now() + 60000) return t.accessToken; } } catch {}
   const r = await fetch(`${CJ_BASE}/authentication/getAccessToken`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: CJ_EMAIL, apiKey: CJ_API_KEY }) });
   const j = await r.json().catch(() => ({}));
-  if (!j.result || !j?.data?.accessToken) throw new Error('CJ AUTH FAIL: ' + JSON.stringify(j).slice(0, 200));
+  if (!j.result || !j?.data?.accessToken) {
+    console.log('⚠️  CJ-Auth fehlgeschlagen → No-op. Meldung: ' + (j.message || JSON.stringify(j).slice(0, 160)));
+    console.log('    → CJ_API_KEY im CJ-Dashboard (My CJ → Authorization → API) neu generieren & GitHub-Secret aktualisieren.');
+    return null;
+  }
   try { fs.writeFileSync(TOKEN_FILE, JSON.stringify({ accessToken: j.data.accessToken, exp: Date.now() + 14 * 864e5 })); } catch {}
   return j.data.accessToken;
 }
@@ -115,6 +119,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
   if (!prods.length) { console.log('Nichts zu tun.'); process.exit(0); }
 
   const ctok = await cjToken();
+  if (!ctok) process.exit(0);
   console.log('CJ-Token ok.');
 
   let totalReviews = 0, prodWith = 0, fails = 0;
