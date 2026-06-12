@@ -93,10 +93,14 @@ footer a{color:var(--muted)}
       </div>
     </div>
     <div class="out" id="out"></div>
-    <div style="margin-top:14px;border-radius:12px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
+    <div style="display:flex;gap:8px;justify-content:center;margin-top:12px">
+      <button type="button" class="cmode" data-m="bars" aria-pressed="true" style="font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;border:0;background:#b45309;color:#fff;cursor:pointer">Balken</button>
+      <button type="button" class="cmode" data-m="donut" aria-pressed="false" style="font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--amber-dk);cursor:pointer">Donut (Anteil)</button>
+    </div>
+    <div style="margin-top:10px;border-radius:12px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
       <canvas id="mwst-chart" data-aban3d data-shape="bars" data-labels="1" data-color="#f0a93a" data-speed="0.5" style="display:block;width:100%;height:190px;touch-action:none" aria-label="3D-Diagramm: Netto, MwSt und Brutto"></canvas>
     </div>
-    <p style="text-align:center;font-size:.78rem;color:var(--muted);margin:.35rem 0 0">3D: Netto · MwSt · Brutto aus deiner Eingabe.</p>
+    <p style="text-align:center;font-size:.78rem;color:var(--muted);margin:.35rem 0 0" id="mchartCap">3D: Netto · MwSt · Brutto aus deiner Eingabe.</p>
     <div class="warn"><strong>Hinweis:</strong> Die Sätze sind die gängigen Regel-/ermäßigten Sätze (Stand 2024/2025) und dienen der schnellen Schätzung — <strong>keine Steuerberatung</strong>. Für deine konkrete Rechnung gilt immer der amtliche Satz; im Zweifel Steuerberater oder offizielle Quelle prüfen.</div>
     <p class="note">CH: 8,1 % regulär · 3,8 % Beherbergung · 2,6 % ermäßigt. DE: 19 % regulär · 7 % ermäßigt. AT: 20 % regulär · 13 % / 10 % ermäßigt. Alles lokal, kein Upload.</p>
   </section>
@@ -144,15 +148,30 @@ footer a{color:var(--muted)}
       '<div class="box"><b>'+fmt(gross,cur)+'</b><span>Brutto</span></div>';
     updateChart(net,tax,gross);
   }
-  var mchart=document.getElementById('mwst-chart'), mct=null;
+  var mchart=document.getElementById('mwst-chart'), mct=null, mMode="bars", mLast=[0,0,0];
   function updateChart(net,tax,gross){
+    mLast=[net,tax,gross];
     clearTimeout(mct);
     mct=setTimeout(function(){
-      mchart.dataset.values=[Math.round(net),Math.round(tax),Math.round(gross)].join(',');
+      // Balken: Netto · MwSt · Brutto — Donut: Anteil Netto vs. MwSt am Brutto (Brutto = Netto + MwSt)
+      if(mMode==="donut"){mchart.dataset.shape="donut";mchart.dataset.values=[Math.round(net),Math.round(tax)].join(',');}
+      else{mchart.dataset.shape="bars";mchart.dataset.values=[Math.round(net),Math.round(tax),Math.round(gross)].join(',');}
       var n=mchart.cloneNode(true);mchart.parentNode.replaceChild(n,mchart);mchart=n;
       if(window.abanBoot3d) window.abanBoot3d(mchart);
     },150);
   }
+  [].forEach.call(document.querySelectorAll(".cmode"),function(b){
+    b.addEventListener("click",function(){
+      mMode=b.dataset.m;
+      [].forEach.call(document.querySelectorAll(".cmode"),function(x){
+        var on=x===b;x.setAttribute("aria-pressed",on?"true":"false");
+        x.style.background=on?"#b45309":"transparent";x.style.color=on?"#fff":"#b45309";x.style.border=on?"0":"1px solid #ece3d4";
+      });
+      document.getElementById("mchartCap").textContent=mMode==="donut"
+        ?"3D-Donut: Anteil von Netto und MwSt am Brutto.":"3D: Netto · MwSt · Brutto aus deiner Eingabe.";
+      updateChart(mLast[0],mLast[1],mLast[2]);
+    });
+  });
   landEl.addEventListener("change",function(){fillSatz();run();});
   satzEl.addEventListener("change",run);
   betragEl.addEventListener("input",run);

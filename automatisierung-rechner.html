@@ -119,10 +119,14 @@ footer a{color:var(--muted)}
     </div>
     <div class="verdict" id="verdict" role="status">Werte eingeben…</div>
     <p class="note" id="detail"></p>
-    <div style="margin-top:14px;border-radius:12px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
+    <div style="display:flex;gap:8px;justify-content:center;margin-top:6px">
+      <button type="button" class="cmode" data-m="bars" aria-pressed="true" style="font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;border:0;background:#0e7a52;color:#fff;cursor:pointer">Balken</button>
+      <button type="button" class="cmode" data-m="donut" aria-pressed="false" style="font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:#0e7a52;cursor:pointer">Donut (Anteil)</button>
+    </div>
+    <div style="margin-top:10px;border-radius:12px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
       <canvas id="au-chart" data-aban3d data-shape="bars" data-labels="1" data-color="#34d399" data-speed="0.5" style="display:block;width:100%;height:200px;touch-action:none" aria-label="3D-Diagramm: Brutto-Ersparnis, Tool-Kosten, Netto"></canvas>
     </div>
-    <p style="text-align:center;font-size:.78rem;color:var(--muted);margin:.35rem 0 .6rem">3D: Brutto-Ersparnis · Tool-Kosten · Netto (pro Jahr) — aus deinen Eingaben.</p>
+    <p style="text-align:center;font-size:.78rem;color:var(--muted);margin:.35rem 0 .6rem" id="auchartCap">3D: Brutto-Ersparnis · Tool-Kosten · Netto (pro Jahr) — aus deinen Eingaben.</p>
     <p class="note">Ehrlich: Eingerechnet sind Bauaufwand und Tool-Kosten. <strong>Nicht</strong> eingerechnet sind Wartung, Fehlersuche und das Risiko, dass die Automatisierung bei Änderungen bricht — rechne real mit ~10–20 % der gesparten Zeit als laufende Pflege. Eine Automatisierung, die nur knapp lohnt, lohnt oft nicht.</p>
   </section>
 
@@ -186,15 +190,30 @@ footer a{color:var(--muted)}
     else if(savedHrsYear<5){ v.classList.add("warn"); v.textContent="⚠️ Wenig Hebel — unter 5 Std./Jahr. Lohnt meist nur, wenn die Aufgabe nervt oder fehleranfällig ist."; }
     else { v.classList.add("ok"); v.textContent="✅ Lohnt sich — spürbarer Zeitgewinn und schnelle Amortisation. Bau es, plane etwas Wartung ein."; }
   }
-  var auchart=document.getElementById("au-chart"), auct=null;
+  var auchart=document.getElementById("au-chart"), auct=null, auMode="bars", auLast=[0,0,0];
   function updateChart(gross,tool,net){
+    auLast=[gross,tool,net];
     clearTimeout(auct);
     auct=setTimeout(function(){
-      auchart.dataset.values=[Math.round(gross),Math.round(tool),Math.round(net)].join(",");
+      // Donut: Aufteilung der Brutto-Ersparnis in Tool-Kosten vs. Netto (Netto auf >=0 begrenzt)
+      if(auMode==="donut"){auchart.dataset.shape="donut";auchart.dataset.values=[Math.round(tool),Math.max(0,Math.round(net))].join(",");}
+      else{auchart.dataset.shape="bars";auchart.dataset.values=[Math.round(gross),Math.round(tool),Math.round(net)].join(",");}
       var n=auchart.cloneNode(true);auchart.parentNode.replaceChild(n,auchart);auchart=n;
       if(window.abanBoot3d) window.abanBoot3d(auchart);
     },150);
   }
+  [].forEach.call(document.querySelectorAll(".cmode"),function(b){
+    b.addEventListener("click",function(){
+      auMode=b.dataset.m;
+      [].forEach.call(document.querySelectorAll(".cmode"),function(x){
+        var on=x===b;x.setAttribute("aria-pressed",on?"true":"false");
+        x.style.background=on?"#0e7a52":"transparent";x.style.color=on?"#fff":"#0e7a52";x.style.border=on?"0":"1px solid #ece3d4";
+      });
+      document.getElementById("auchartCap").textContent=auMode==="donut"
+        ?"3D-Donut: Anteil von Tool-Kosten und Netto-Ersparnis an der Brutto-Ersparnis.":"3D: Brutto-Ersparnis · Tool-Kosten · Netto (pro Jahr) — aus deinen Eingaben.";
+      updateChart(auLast[0],auLast[1],auLast[2]);
+    });
+  });
   ids.forEach(function(i){el[i].addEventListener("input",calc);});
   calc();
 })();
