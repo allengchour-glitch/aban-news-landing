@@ -4,6 +4,20 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-12 (Teil 7) — Tool jetzt VIERSPRACHIG + Funnel geschlossen (User: „FR + IT bauen", „automod loop")
+- **`fr/ki-werkzeug.html` + `it/ki-werkzeug.html` (PR #709):** volle Übersetzung inkl. ALLER JS-Text-
+  Generatoren (Produkt/Social/Bewertung/E-Mail/Fahrplan, Ton-Maps, Phrasen, PROPLUS_BRANCHEN/BRANCHEN) →
+  FR/IT-Nutzer bekommen Ausgabe komplett in ihrer Sprache. JS-Logik/IDs/Stripe-Links unverändert; genWithAI
+  lang:fr/it; brancheHref → /fr/ bzw. /it/ki-fuer-…; Glossar/Prompt-Checker-Header-Links zeigen (wie EN-Quelle)
+  auf /en/ (keine FR/IT-Variante vorhanden). Gebaut von 2 parallelen Übersetzungs-Agenten.
+- **`fr/` + `it/hilfe-ki-werkzeug.html` (PR #709):** Klartext-Anleitung übersetzt.
+- **hreflang** auf ALLEN 8 Tool/Guide-Seiten = 5 Zeilen (de/en/fr/it/x-default); og:locale fr_FR/it_IT; Sitemap +4.
+- **Funnel geschlossen (PR #712):** die 357 FR- + 357 IT-Hubs hatten Tool-CTA OHNE Werkzeug-Link → neuer
+  idempotenter Injektor `tools/add_branchen_funnel_frit.py` fügt nicht-destruktiv Tool- + Anleitungs-Button
+  (sprachrichtig) vorne in die CTA-Reihe. Jetzt verlinken alle 4 Sprachen Hub→Tool.
+- **Damit ist die ganze Tool-Familie viersprachig** (Tool + Guide + Hub-Funnel). Verkaufs-Aktivierung
+  (Stripe-Redirect + ANTHROPIC_API_KEY-Secret für /api/generate) bleibt der einzige offene User-Schritt.
+
 ## 2026-06-11 (Teil 6) — Kund:innen-Hilfe maximiert (User: „unterstütze Kunden, kennen die Wörter nicht")
 - **User-Leitlinie:** die meisten Nutzer:innen sind blutige Anfänger:innen und kennen die Fachwörter nicht
   → überall **Klartext**, jedes Fachwort direkt erklären, Beispiele, viel Hand-Holding.
