@@ -27,5 +27,14 @@ window.ABAN_AFFILIATE = {
   // lexoffice / Lexware Office (DE). Partnerprogramm: Lexware-Affiliate / Awin.
   LEXOFFICE_URL: "",
   // bexio (CH). Partnerprogramm: bexio-Partner.
-  BEXIO_URL: ""
+  BEXIO_URL: "",
+
+  // --- E-Mail-Marketing. Tracking-Link aus dem jeweiligen Partnerprogramm
+  //     eintragen; leer ("") -> Button zeigt auf die Anbieter-Domain. ---
+  // Brevo (ehem. Sendinblue, EU-gehostet). Partnerprogramm: Brevo-Affiliate.
+  BREVO_URL: "",
+  // GetResponse. Partnerprogramm: GetResponse-Affiliate (wiederkehrend).
+  GETRESPONSE_URL: "",
+  // MailerLite. Partnerprogramm: MailerLite-Partner.
+  MAILERLITE_URL: ""
 };
