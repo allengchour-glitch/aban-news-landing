@@ -44,6 +44,21 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-12 (Autonomie verankert + Schweizer-Follower-Maschine):**
+- **🔒 AUTONOMIE-REGEL (FEST, User 2026-06-12 „verankern"):** Laufender Betrieb = **vollautonom ohne PowerShell**
+  für den User — über GitHub-Secrets + Workflows, ausgelöst per Zeitplan ODER **einem Tipp auf dem Handy-Widget**
+  (`control.html`, Doku `dropship/HANDY-STEUERUNG.md`; Android = App „HTTP Shortcuts", Token nur Actions:write).
+  Autonom: TikTok-Analyse (täglich), IG/FB Bild+Reel posten, TikTok-Entwürfe, Metricool öffentlich, **FB-Profil per
+  Graph-API** (`fb-profile-polish.yml`), Shop/Produkte/SEO/Reviews via Shopify-MCP. **EINZIGE Browser-Ausnahme:
+  IG/TikTok Profil-Edit UND Follower-Wachstum** — dafür gibt es bei KEINEM Anbieter eine API → läuft NUR über den
+  **immer laufenden PC-Claude (Brave-Agent, Port 9222)**; der User tippt dafür **keine Konsole**, sagt nur eine Chat-Zeile.
+- **🇨🇭 Schweizer-Follower-Maschine gebaut (`automation/local/ch-follower-growth.mjs`, eigenständig, Playwright-CDP):**
+  Holt ECHTE CH-Follower (NIE Kauf/Fakes) durch gezieltes Folgen+Liken der Zielgruppe unter CH-Hashtags
+  (#schweizmode/#ootdschweiz/#zürichstyle/#swissmade/**#bern**/#berncity … IG · #schweiz/#fypschweiz/#swisstiktok/**#bern** … TikTok).
+  **Sicher gegen Sperren:** Tages-Caps (IG 40/TikTok 30), randomisierte Pausen 25–70 s, idempotenter Ledger
+  `ch-growth-ledger.txt`, **keine Auto-Kommentare**, Stopp bei „Action blocked". Läuft am PC-Claude:
+  `node ch-follower-growth.mjs` (1×/Tag = stetiges Wachstum). Doku: `dropship/CH-FOLLOWER-WACHSTUM.md`.
+
 **📌 2026-06-07 (NEUESTER STAND — ZUERST LESEN: Memory aufgefrischt + Conversion-Fix):**
 - **Branch-Reset:** Alle früheren Dropship-Branches (SrAs5/LehDs) sind **in `main` gemergt + gelöscht**.
   Neuer **fester Dropship-Branch: `claude/luxestyle-product-CizQ6`** (Draft-PR #401 nach `main`). Künftige
