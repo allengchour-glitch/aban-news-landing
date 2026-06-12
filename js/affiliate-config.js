@@ -36,5 +36,14 @@ window.ABAN_AFFILIATE = {
   // GetResponse. Partnerprogramm: GetResponse-Affiliate (wiederkehrend).
   GETRESPONSE_URL: "",
   // MailerLite. Partnerprogramm: MailerLite-Partner.
-  MAILERLITE_URL: ""
+  MAILERLITE_URL: "",
+
+  // --- Website / Hosting. Tracking-Link aus dem jeweiligen Partnerprogramm
+  //     eintragen; leer ("") -> Button zeigt auf die Anbieter-Domain. ---
+  // Hostinger. Partnerprogramm: Hostinger-Affiliate.
+  HOSTINGER_URL: "",
+  // IONOS (DE). Partnerprogramm: IONOS-Partner / Awin.
+  IONOS_URL: "",
+  // Webflow (No-Code-Website-Builder). Partnerprogramm: Webflow-Affiliate.
+  WEBFLOW_URL: ""
 };
