@@ -32,6 +32,7 @@ jobs:
             reels/veo-hero-sirene-2026-06-08.mp4
             reels/veo-hero-cosy-2026-06-08.mp4
             reels/veo-hero-nuit-2026-06-08.mp4
+            reels/luxestyle-mix-2026-06-12.mp4
           sparse-checkout-cone-mode: false
 
       - uses: actions/setup-node@v4
