@@ -62,6 +62,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   sub-beleuchtung(204, „LED" war zu breit→Lampe/Leuchte/Projektor)/sub-deko(115)/sub-aroma-diffuser(101)/sub-massage(124) ·
   sub-taschen(150)/sub-uhren(58). (sub-kerzen-duefte war 0 → gelöscht.) **Menü (`main-menu`, id 310224093569) umgebaut**:
   Unterkategorien in die Dropdowns + neuer Top-Level „🚗 Auto & Grill".
+- **➕ 2. Tranche (8 weitere selbst-füllende Collections):** 🇨🇭 1. August (`erste-august`, 253! tag schweiz-edition
+  +Edelweiss/Matterhorn/Alphorn/Fondue/Raclette) · sub-baby-kids(117) · sub-haustier(84) · sub-reise(183) ·
+  sub-trinkflaschen(67) · sub-yoga-fitness(64) · sub-kueche(38) · sub-bart-rasur(22). Menü auf 8 Bereiche erweitert
+  (+„🇨🇭 1. August", +„🚗 Auto·Grill·Reise"). ALLE ~22 neuen Collections haben jetzt Beschreibung + SEO.
+- **🔑 PUBLISH-FALLE GILT AUCH FÜR COLLECTIONS (teuer gelernt):** Per API/`collectionCreate` angelegte Collections sind
+  **NICHT automatisch im Onlineshop publiziert** → Menü-Links liefen auf **404** (User-Screenshot). Fix: nach dem
+  Anlegen IMMER `publishablePublish` in die Publications (Onlineshop `301970915713` + Shop/TikTok/FB/Google/Pinterest).
+  Alle 22 nachpubliziert → 200. **Lehre: cj_gaps_import.mjs `ensureColl` sollte die Collection gleich mitpublizieren.**
 - **⛔ GitHub Actions GESPERRT** („Actions has been disabled for this user" — zu viele Läufe heute / Abuse-Throttle).
   **Neue CJ-Importe pausiert**, bis Actions wieder frei ist (Tool ist fertig, läuft dann sofort weiter). Shopify-MCP +
   GitHub-API (PR-Merge) funktionieren weiter. Tipp: künftig Läufe bündeln/DRY sparsamer dispatchen.
