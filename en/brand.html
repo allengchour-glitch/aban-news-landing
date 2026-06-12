@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Style Guide — aban news</title>
+  <meta name="description" content="aban news brand style guide: logo, colours, typography, voice &amp; tone, email signatures, social assets, brand promises and don'ts.">
+  <meta name="theme-color" content="#d97706">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://abannews.com/en/brand.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/brand.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/brand.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/brand.html">
+
+  <meta property="og:title" content="aban news — Brand Style Guide">
+  <meta property="og:description" content="Logo, colours, typography, voice &amp; tone — everything for aban brand consistency.">
+  <meta property="og:image" content="https://abannews.com/og-image.png">
+  <meta property="og:url" content="https://abannews.com/en/brand.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:site_name" content="aban news">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
+    /* Brand-Page only */
+    .brand-section { padding: 3rem 0; border-bottom: 1px solid #f3f4f6; }
+    .brand-section h2 { color: #d97706; font-size: 1.75rem; margin-bottom: 0.5rem; }
+    .brand-section .lede { color: #6b7280; margin-bottom: 1.5rem; max-width: 60ch; }
+    .brand-toc { background: #fef3c7; border-left: 4px solid #d97706; padding: 1rem 1.25rem; border-radius: 6px; margin: 1.5rem 0; }
+    .brand-toc ol { margin: 0.5rem 0 0 1.25rem; }
+    .brand-toc a { color: #1f2937; text-decoration: none; }
+    .brand-toc a:hover { color: #d97706; text-decoration: underline; }
+
+    /* Logo previews */
+    .logo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .logo-card { border: 1px solid #f3f4f6; border-radius: 8px; padding: 1.25rem; }
+    .logo-card h4 { font-size: 0.875rem; color: #1f2937; margin-bottom: 0.5rem; font-weight: 600; }
+    .logo-card .preview { display: flex; align-items: center; justify-content: center; min-height: 80px; }
+    .logo-card.dark { background: #1f2937; color: #fef3c7; }
+    .logo-card.dark h4 { color: #fef3c7; }
+    .logo-card .meta { font-size: 0.75rem; color: #6b7280; margin-top: 0.5rem; }
+
+    /* Color palette */
+    .color-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .color-card { border: 1px solid #f3f4f6; border-radius: 8px; overflow: hidden; }
+    .swatch { height: 100px; }
+    .color-meta { padding: 1rem; }
+    .color-meta h4 { margin: 0 0 0.25rem; font-size: 0.95rem; }
+    .color-meta .code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 0.8rem; color: #6b7280; line-height: 1.6; }
+    .color-meta .use { font-size: 0.75rem; color: #1f2937; margin-top: 0.5rem; font-style: italic; }
+
+    /* Typography */
+    .type-spec { background: #fef3c7; padding: 1rem 1.25rem; border-radius: 6px; margin: 0.75rem 0; font-family: 'JetBrains Mono', Consolas, monospace; font-size: 0.85rem; }
+    .type-sample { padding: 1rem 0; border-bottom: 1px dashed #e5e7eb; }
+    .type-sample .label { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+
+    /* Do/Don't */
+    .dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+    .do, .dont { padding: 1rem 1.25rem; border-radius: 8px; }
+    .do { background: #ecfdf5; border-left: 4px solid #10b981; }
+    .dont { background: #fef2f2; border-left: 4px solid #ef4444; }
+    .do h4 { color: #047857; margin-bottom: 0.5rem; }
+    .dont h4 { color: #b91c1c; margin-bottom: 0.5rem; }
+    .do ul, .dont ul { margin: 0; padding-left: 1.25rem; font-size: 0.9rem; }
+    .do li, .dont li { margin-bottom: 0.5rem; }
+
+    /* Email signatures */
+    .sig-block { border: 1px solid #f3f4f6; border-radius: 8px; padding: 1.25rem; margin: 1rem 0; background: #fffbf5; }
+    .sig-block .sig-label { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .sig-block pre { background: #1f2937; color: #fef3c7; padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 0.8rem; font-family: 'JetBrains Mono', Consolas, monospace; }
+
+    /* Social asset placeholders */
+    .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .social-card { border: 1px solid #f3f4f6; border-radius: 8px; overflow: hidden; }
+    .social-card .canvas { background: #fef3c7; padding: 2rem 1rem; text-align: center; min-height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .social-card .canvas h3 { color: #d97706; font-size: 1.25rem; margin: 0.5rem 0; }
+    .social-card .canvas p { color: #1f2937; font-size: 0.85rem; margin: 0; }
+    .social-card .meta { padding: 0.75rem 1rem; font-size: 0.75rem; color: #6b7280; }
+
+    /* Promises */
+    .promise-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    .promise { background: #fffbf5; border-left: 4px solid #d97706; padding: 1rem 1.25rem; border-radius: 4px; }
+    .promise h4 { color: #d97706; margin-bottom: 0.25rem; font-size: 1rem; }
+    .promise p { font-size: 0.9rem; color: #1f2937; margin: 0; }
+
+    /* Download */
+    .download-card { background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 2rem 0; }
+    .download-card h3 { color: white; font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .download-card p { color: #fef3c7; margin-bottom: 1.25rem; }
+    .download-btn { display: inline-block; background: white; color: #d97706; padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; }
+    .download-btn:hover { background: #fef3c7; }
+
+    @media (max-width: 640px) {
+      .dodont { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="/en/" class="brand" aria-label="aban news home">
+      <span aria-hidden="true">☕</span>
+      <span>aban news</span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="/tools.html">Tools</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/en/sponsoring.html">Advertise</a>
+      <a href="/en/resources.html">Resources</a>
+      <a href="/en/brand.html" aria-current="page">Brand</a>
+      <a href="/en/brand.html" class="lang-switch" hreflang="de" aria-label="Auf Deutsch lesen">🇩🇪 DE</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+
+<section class="brand-section" style="border-bottom: none; padding-top: 2rem;">
+  <h1 style="font-size: 2.5rem; color: #1f2937; margin-bottom: 0.5rem;">Brand Style Guide</h1>
+  <p class="lede" style="font-size: 1.1rem;">
+    How aban news looks, sounds and feels. This page is the single source of truth
+    for anyone building, writing or designing anything in the name of aban news.
+  </p>
+
+  <div class="brand-toc">
+    <strong>Contents</strong>
+    <ol>
+      <li><a href="#logo">Logo &amp; variants</a></li>
+      <li><a href="#colors">Colour palette</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#voice">Voice &amp; Tone</a></li>
+      <li><a href="#photo">Photography &amp; Iconography</a></li>
+      <li><a href="#email">Email signatures</a></li>
+      <li><a href="#social">Social media assets</a></li>
+      <li><a href="#promises">Brand promises</a></li>
+      <li><a href="#donts">Don'ts (anti-brand)</a></li>
+      <li><a href="#download">Download — brand assets ZIP</a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ LOGO ============ -->
+<section class="brand-section" id="logo">
+  <h2>1. Logo &amp; variants</h2>
+  <p class="lede">
+    The primary logo is the ☕ emoji in amber, combined with the “aban news" wordmark.
+    Three SVG variants are available: full (icon + wordmark), icon-only, monochrome.
+  </p>
+
+  <div class="logo-grid">
+    <div class="logo-card">
+      <h4>Primary — emoji</h4>
+      <div class="preview" style="font-size: 4rem;">☕</div>
+      <div class="meta">U+2615 — system emoji, no asset needed</div>
+    </div>
+
+    <div class="logo-card">
+      <h4>Icon-only (Light)</h4>
+      <div class="preview">
+        <img src="/logo-icon.svg" alt="aban news icon" width="64" height="64" style="height: 64px;">
+      </div>
+      <div class="meta">logo-icon.svg — use for avatars, favicons, app icons</div>
+    </div>
+
+    <div class="logo-card dark">
+      <h4>Icon-only (Dark)</h4>
+      <div class="preview">
+        <img src="/logo-icon.svg" alt="aban news icon dark" width="64" height="64" style="height: 64px;">
+      </div>
+      <div class="meta" style="color: #fbbf24;">Same SVG, dark background</div>
+    </div>
+
+    <div class="logo-card" style="grid-column: 1 / -1;">
+      <h4>Full Logo (Icon + Wordmark)</h4>
+      <div class="preview">
+        <img src="/logo-full.svg" alt="aban news full logo" width="250" height="50" style="height: 50px;">
+      </div>
+      <div class="meta">logo-full.svg — header, footer, formal contexts</div>
+    </div>
+
+    <div class="logo-card" style="grid-column: 1 / -1;">
+      <h4>Monochrome</h4>
+      <div class="preview" style="color: #1f2937;">
+        <img src="/logo-mono.svg" alt="aban news monochrome" width="250" height="50" style="height: 50px;">
+      </div>
+      <div class="meta">logo-mono.svg — print, fax, single-colour prints; uses currentColor</div>
+    </div>
+  </div>
+
+  <h3 style="color: #1f2937; margin-top: 1.5rem;">Logo rules</h3>
+  <ul style="margin-left: 1.5rem;">
+    <li>Minimum height: 24px (icon), 32px (full)</li>
+    <li>Clear space: at least 1× logo height clear on every side</li>
+    <li>No colour alteration, no effects, no distortion</li>
+    <li>Don't place on patterned or busy backgrounds</li>
+  </ul>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section class="brand-section" id="colors">
+  <h2>2. Colour palette</h2>
+  <p class="lede">
+    Five core colours. Amber is the brand signature. Dark is the body-text default. Cream is the
+    background. Light gray and mid gray for secondary UI elements.
+  </p>
+
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="swatch" style="background: #d97706;"></div>
+      <div class="color-meta">
+        <h4>Amber (Primary)</h4>
+        <div class="code">
+          HEX: #d97706<br>
+          RGB: 217, 119, 6<br>
+          HSL: 32°, 95%, 44%
+        </div>
+        <div class="use">Headers, CTAs, brand accents</div>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="swatch" style="background: #fbbf24;"></div>
+      <div class="color-meta">
+        <h4>Amber Light</h4>
+        <div class="code">
+          HEX: #fbbf24<br>
+          RGB: 251, 191, 36<br>
+          HSL: 43°, 96%, 56%
+        </div>
+        <div class="use">Hover states, sub accents</div>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="swatch" style="background: #1f2937;"></div>
+      <div class="color-meta">
+        <h4>Dark</h4>
+        <div class="code">
+          HEX: #1f2937<br>
+          RGB: 31, 41, 55<br>
+          HSL: 215°, 28%, 17%
+        </div>
+        <div class="use">Body text, footer background</div>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="swatch" style="background: #fef3c7; border: 1px solid #f3f4f6;"></div>
+      <div class="color-meta">
+        <h4>Cream</h4>
+        <div class="code">
+          HEX: #fef3c7<br>
+          RGB: 254, 243, 199<br>
+          HSL: 48°, 96%, 89%
+        </div>
+        <div class="use">Code boxes, highlight cards, soft backgrounds</div>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="swatch" style="background: #6b7280;"></div>
+      <div class="color-meta">
+        <h4>Mid Gray</h4>
+        <div class="code">
+          HEX: #6b7280<br>
+          RGB: 107, 114, 128<br>
+          HSL: 220°, 9%, 46%
+        </div>
+        <div class="use">Secondary text, meta info, disabled</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="color: #1f2937; margin-top: 1.5rem;">Accessibility note</h3>
+  <p>
+    Amber #d97706 on white meets WCAG AA for large text (≥18pt) — for body text on white
+    always use Dark #1f2937. Amber on Dark meets AAA — usable for headers in dark mode.
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section class="brand-section" id="typography">
+  <h2>3. Typography</h2>
+  <p class="lede">
+    Inter as the primary for UI &amp; body. JetBrains Mono for code &amp; data. System fallbacks
+    ensure performance without a webfont dependency.
+  </p>
+
+  <div class="type-spec">
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;<br>
+    font-family-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  </div>
+
+  <div class="type-sample">
+    <div class="label">H1 — 2.5rem / 700 / line-height 1.2</div>
+    <div style="margin: 0; color: #1f2937; font-size: 2.5rem; font-weight: 700; line-height: 1.2;">aban news — no hype.</div>
+  </div>
+
+  <div class="type-sample">
+    <div class="label">H2 — 1.75rem / 700 / color: amber</div>
+    <h2 style="margin: 0; color: #d97706; font-size: 1.75rem;">Voice &amp; Tone</h2>
+  </div>
+
+  <div class="type-sample">
+    <div class="label">H3 — 1.25rem / 600 / color: dark</div>
+    <h3 style="margin: 0; color: #1f2937; font-size: 1.25rem;">How aban news writes</h3>
+  </div>
+
+  <div class="type-sample">
+    <div class="label">Body — 1rem / 400 / line-height 1.6 / color: dark</div>
+    <p style="margin: 0;">
+      Short sentences. Clear verbs. Concrete numbers. If a sentence runs over 25 words — cut it.
+      If a paragraph has more than 4 sentences — split it.
+    </p>
+  </div>
+
+  <div class="type-sample">
+    <div class="label">Small / Meta — 0.875rem / 400 / color: mid-gray</div>
+    <p style="margin: 0; font-size: 0.875rem; color: #6b7280;">
+      Mon–Fri mornings · 3–5 min read · GDPR-compliant · no marketing speak
+    </p>
+  </div>
+
+  <div class="type-sample">
+    <div class="label">Code — 0.875rem / JetBrains Mono / background: cream</div>
+    <code style="background: #fef3c7; padding: 0.4rem 0.75rem; border-radius: 4px; color: #1f2937; font-family: 'JetBrains Mono', Consolas, monospace;">
+      claude.messages.create({ model: "claude-sonnet-4-7" })
+    </code>
+  </div>
+</section>
+
+<!-- ============ VOICE ============ -->
+<section class="brand-section" id="voice">
+  <h2>4. Voice &amp; Tone</h2>
+  <p class="lede">
+    aban news sounds like a Swiss/German friend who uses AI every day and
+    won't tolerate any bullshit. Directly respectful, no marketing speak, with a state-of-play briefing.
+  </p>
+
+  <h3 style="color: #1f2937; margin-top: 1.5rem;">Voice pillars</h3>
+  <ul style="margin-left: 1.5rem;">
+    <li><strong>Concrete:</strong> numbers, examples, real use cases instead of buzzwords</li>
+    <li><strong>Direct:</strong> say what's what, without filler or politeness bloat</li>
+    <li><strong>Respectful:</strong> the reader is treated as competent, not lectured</li>
+    <li><strong>Self-critical:</strong> our own mistakes and limitations are named</li>
+    <li><strong>Helpful:</strong> every issue must deliver at least ONE actionable point</li>
+  </ul>
+
+  <div class="dodont">
+    <div class="do">
+      <h4>Do</h4>
+      <ul>
+        <li>“Claude Sonnet 4.7 costs $3 per 1M input tokens. Here's a prompt that saves me 30 min:"</li>
+        <li>“Make.com used 600 operations in 3 months — the free tier is enough for a DACH solo operator."</li>
+        <li>“This method works for me. It might not for you. Test it."</li>
+        <li>“Here's my mistake from last week, and what I learned from it."</li>
+        <li>“Not in the mood for 47 newsletters? I get it. Subscribe anyway, or don't."</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h4>Don't</h4>
+      <ul>
+        <li>“Revolutionise your productivity with our cutting-edge AI-powered workflow!"</li>
+        <li>“AI is the future — if you don't act now, you'll get left behind!"</li>
+        <li>“These 7 hacks will 10x transform your business!"</li>
+        <li>“I'm not allowed to reveal what ChatGPT can REALLY do…"</li>
+        <li>“Hi, my name is Aban, and I help solopreneurs to…"</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHOTOGRAPHY ============ -->
+<section class="brand-section" id="photo">
+  <h2>5. Photography &amp; Iconography</h2>
+  <p class="lede">
+    aban news uses NO stock photos. No generic AI images of blue brains or
+    floating robot hands. Instead: inline SVGs, emojis, clear typographic accents.
+  </p>
+
+  <h3 style="color: #1f2937;">Rules</h3>
+  <ul style="margin-left: 1.5rem;">
+    <li><strong>Icons:</strong> inline SVG, min. 24px, max. 64px for UI; use <code>currentColor</code></li>
+    <li><strong>Emojis:</strong> system emojis preferred (no custom emoji set) — ☕ ⚡ 🔍 💡 ⚠️</li>
+    <li><strong>Illustrations:</strong> if needed, then minimal, monochrome, in brand amber</li>
+    <li><strong>Photos:</strong> only own photos (by the author) or explicitly licensed custom shots</li>
+    <li><strong>No AI image without labelling:</strong> if used, then with the label “AI-generated"</li>
+  </ul>
+</section>
+
+<!-- ============ EMAIL SIGNATURES ============ -->
+<section class="brand-section" id="email">
+  <h2>6. Email signatures</h2>
+  <p class="lede">
+    Three predefined HTML signatures for different contexts. No animated banners, no
+    tracking pixels, no 12 linked social icons.
+  </p>
+
+  <div class="sig-block">
+    <div class="sig-label">Newsletter / Footer</div>
+    <pre>&lt;p style="font-family: Inter, sans-serif; font-size: 14px; color: #1f2937;"&gt;
+  ☕ &lt;strong&gt;aban news&lt;/strong&gt; — daily AI newsletter for DACH&lt;br&gt;
+  Mon-Fri mornings · 3-5 min · no hype&lt;br&gt;
+  &lt;a href="https://abannews.com" style="color: #d97706;"&gt;abannews.com&lt;/a&gt;
+&lt;/p&gt;</pre>
+  </div>
+
+  <div class="sig-block">
+    <div class="sig-label">Cold outreach / Business</div>
+    <pre>&lt;p style="font-family: Inter, sans-serif; font-size: 14px; color: #1f2937;"&gt;
+  Best regards,&lt;br&gt;
+  Aban (Allen Chour)&lt;br&gt;
+  &lt;span style="color: #6b7280;"&gt;Founder, aban news&lt;/span&gt;&lt;br&gt;
+  &lt;a href="https://abannews.com" style="color: #d97706;"&gt;abannews.com&lt;/a&gt; ·
+  &lt;a href="mailto:hi@abannews.com" style="color: #d97706;"&gt;hi@abannews.com&lt;/a&gt;
+&lt;/p&gt;</pre>
+  </div>
+
+  <div class="sig-block">
+    <div class="sig-label">Personal / Casual</div>
+    <pre>&lt;p style="font-family: Inter, sans-serif; font-size: 14px; color: #1f2937;"&gt;
+  — Aban ☕&lt;br&gt;
+  &lt;a href="https://abannews.com" style="color: #d97706;"&gt;abannews.com&lt;/a&gt;
+&lt;/p&gt;</pre>
+  </div>
+</section>
+
+<!-- ============ SOCIAL ============ -->
+<section class="brand-section" id="social">
+  <h2>7. Social media assets</h2>
+  <p class="lede">
+    Fixed sizes for the most important platforms. Template sketches below — all can be created as
+    SVG/PNG, with an inline-SVG logo and consistent typography.
+  </p>
+
+  <div class="social-grid">
+    <div class="social-card">
+      <div class="canvas">
+        <div style="font-size: 2.5rem;">☕</div>
+        <h3>aban news</h3>
+        <p>daily AI news for DACH</p>
+      </div>
+      <div class="meta">Open Graph · 1200 × 630 px · /og-image.png</div>
+    </div>
+
+    <div class="social-card">
+      <div class="canvas" style="background: linear-gradient(135deg, #d97706 0%, #fbbf24 100%); color: white;">
+        <div style="font-size: 2rem;">☕</div>
+        <h3 style="color: white;">aban news</h3>
+        <p style="color: #fef3c7;">Profile / Avatar</p>
+      </div>
+      <div class="meta">X / LinkedIn Profile · 400 × 400 px (square)</div>
+    </div>
+
+    <div class="social-card">
+      <div class="canvas" style="background: #1f2937; color: #fef3c7;">
+        <div style="font-size: 2rem;">☕</div>
+        <h3 style="color: #fbbf24;">State of play</h3>
+        <p style="color: #fef3c7;">Banner / Cover image</p>
+      </div>
+      <div class="meta">LinkedIn Banner · 1584 × 396 px</div>
+    </div>
+
+    <div class="social-card">
+      <div class="canvas">
+        <div style="font-size: 1.5rem;">☕ aban news</div>
+        <h3 style="font-size: 1rem; margin: 0.5rem 0;">Header</h3>
+        <p>X profile header</p>
+      </div>
+      <div class="meta">X Profile Header · 1500 × 500 px</div>
+    </div>
+  </div>
+
+  <h3 style="color: #1f2937; margin-top: 1.5rem;">Layout rules</h3>
+  <ul style="margin-left: 1.5rem;">
+    <li>Brand mark (☕ + wordmark) always in the top-left corner or centred</li>
+    <li>Maximum text share: 50% of the surface</li>
+    <li>No squares, banners or headlines with more than 8 words</li>
+    <li>Colours from the palette — don't mix in external brand colours</li>
+  </ul>
+</section>
+
+<!-- ============ PROMISES ============ -->
+<section class="brand-section" id="promises">
+  <h2>8. Brand promises</h2>
+  <p class="lede">
+    7 core promises that must be kept in every aban news touchpoint.
+  </p>
+
+  <div class="promise-list">
+    <div class="promise">
+      <h4>1. No hype</h4>
+      <p>We don't sell AI bullshit. If something sounds hypey, we rewrite it — or leave it out.</p>
+    </div>
+    <div class="promise">
+      <h4>2. 3-5 minutes</h4>
+      <p>Every newsletter issue is read in 3-5 min. Longer = we haven't curated enough.</p>
+    </div>
+    <div class="promise">
+      <h4>3. GDPR-first</h4>
+      <p>No tracking cookie without opt-in. No marketing pixel. Plausible instead of GA.</p>
+    </div>
+    <div class="promise">
+      <h4>4. Personally curated</h4>
+      <p>Every issue is checked by a human (Aban) before it goes out. AI assists. The human decides.</p>
+    </div>
+    <div class="promise">
+      <h4>5. Sources linked</h4>
+      <p>Every claim → a primary source. No second-hand. No “a study shows…"</p>
+    </div>
+    <div class="promise">
+      <h4>6. At least 1 actionable</h4>
+      <p>Every issue has at least ONE thing readers can apply today.</p>
+    </div>
+    <div class="promise">
+      <h4>7. Corrections visible</h4>
+      <p>When we make mistakes, we correct them publicly in the next newsletter with a date.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DON'TS ============ -->
+<section class="brand-section" id="donts">
+  <h2>9. Don'ts — what destroys brand consistency</h2>
+  <p class="lede">
+    This list is non-negotiable. Any element that violates one of these points
+    is rejected — no matter how nice it looks or how much engagement it brings.
+  </p>
+
+  <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1.25rem 1.5rem; border-radius: 6px;">
+    <ul style="margin: 0; padding-left: 1.25rem;">
+      <li><strong>No marketing clichés:</strong> “game-changer", “revolutionary", “cutting-edge", “synergy"</li>
+      <li><strong>No affiliate links without labelling:</strong> if used, clearly declared</li>
+      <li><strong>No stock photos:</strong> never. Full stop.</li>
+      <li><strong>No generic AI images:</strong> no blue brain, no floating hand</li>
+      <li><strong>No clickbait:</strong> “You won't believe what Claude can do now…"</li>
+      <li><strong>No FOMO tactics:</strong> “only 24 hrs left", “only the first 100 subs"</li>
+      <li><strong>No tracking pixel:</strong> in the newsletter or on the site</li>
+      <li><strong>No pop-ups:</strong> never. Not even “exit-intent".</li>
+      <li><strong>No buzzword-bingo headlines:</strong> “AI-powered, blockchain-enabled, web3-native"</li>
+      <li><strong>No attacks on competitors:</strong> we talk about ourselves, not against others</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ DOWNLOAD ============ -->
+<section class="brand-section" id="download" style="border-bottom: none;">
+  <h2>10. Download — brand assets ZIP</h2>
+  <p class="lede">
+    All brand assets in one package: logo variants as SVG, Open Graph image, favicon,
+    colour palette, usage guidelines.
+  </p>
+
+  <div class="download-card">
+    <h3>aban news — Brand Assets</h3>
+    <p>SVG logos · OG image · favicon · colour palette · README</p>
+    <a href="/downloads/brand-assets.zip" class="download-btn" download>Download ZIP (~10 KB)</a>
+  </div>
+
+  <p style="font-size: 0.875rem; color: #6b7280;">
+    Contents: <code>logo-full.svg</code>, <code>logo-icon.svg</code>, <code>logo-mono.svg</code>,
+    <code>og-image.png</code>, <code>favicon.svg</code>, <code>color-palette.txt</code>,
+    <code>README.txt</code>.
+  </p>
+</section>
+
+  <section class="wrap" style="max-width:760px;margin:0 auto;padding:0 20px">
+    <div style="background:#fffaf2;border:2px solid #d97706;border-radius:14px;padding:1.3rem;margin:1.5rem 0;text-align:center">
+      <strong style="display:block;font-size:1.08rem;color:#1f2937;margin-bottom:.55rem">Daily AI context in 5 minutes — free, by email</strong>
+      <form action="https://abannews.beehiiv.com/subscribe" method="get" style="display:flex;gap:.5rem;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
+        <input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="you@mail.com" aria-label="Email address" style="flex:1;min-width:190px;border:1px solid #e5e7eb;border-radius:10px;padding:.72rem .9rem;font-size:1rem;background:#fff;color:#1f2937">
+        <button type="submit" style="background:#b45309;color:#fff;border:0;border-radius:10px;padding:.72rem 1.15rem;font-weight:700;cursor:pointer;white-space:nowrap">Subscribe free →</button>
+      </form>
+      <span style="display:block;font-size:.78rem;color:#6b7280;margin-top:.55rem">Mon–Fri · no spam · no tracking</span>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>
+      &copy; 2026 aban news ·
+      <a href="/impressum.html">Imprint</a> ·
+      <a href="/datenschutz.html">Privacy</a> ·
+      <a href="/en/brand.html">Brand</a>
+    </p>
+  </div>
+</footer>
+
+<script defer src="/js/enhance.js"></script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
