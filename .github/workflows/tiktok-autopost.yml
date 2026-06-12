@@ -51,13 +51,15 @@ jobs:
         if: steps.post.outputs.tt_access_token != ''
         env:
           GH_TOKEN: ${{ secrets.REPO_ADMIN_PAT }}
+          NEW_ACCESS: ${{ steps.post.outputs.tt_access_token }}
+          NEW_REFRESH: ${{ steps.post.outputs.tt_refresh_token }}
         run: |
           if [ -z "$GH_TOKEN" ]; then
             echo "::warning::REPO_ADMIN_PAT nicht gesetzt — neue Tokens nicht persistiert. Nächster Lauf braucht frischen TT_ACCESS_TOKEN."
             exit 0
           fi
-          printf '%s' "${{ steps.post.outputs.tt_access_token }}" | gh secret set TT_ACCESS_TOKEN --repo "$GITHUB_REPOSITORY"
-          printf '%s' "${{ steps.post.outputs.tt_refresh_token }}" | gh secret set TT_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY"
+          printf '%s' "$NEW_ACCESS"  | gh secret set TT_ACCESS_TOKEN  --repo "$GITHUB_REPOSITORY"
+          printf '%s' "$NEW_REFRESH" | gh secret set TT_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY"
           echo "TikTok-Tokens persistiert."
 
       - name: Commit posted-status if changed

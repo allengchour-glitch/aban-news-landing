@@ -63,6 +63,9 @@ async function refreshIfNeeded(currentTok){
   const j = await r.json().catch(()=>({}));
   if(!r.ok || !j.access_token){ console.error('TT refresh:', r.status, JSON.stringify(j)); return currentTok; }
   console.log('TT: Token refreshed (24h).');
+  // Tokens IMMER maskieren (oeffentliches Repo!) bevor sie irgendwo landen koennen.
+  console.log(`::add-mask::${j.access_token}`);
+  console.log(`::add-mask::${j.refresh_token}`);
   // Neue Tokens an Workflow weitergeben (persistiert per `gh secret set`)
   if(process.env.GITHUB_OUTPUT){
     fs.appendFileSync(process.env.GITHUB_OUTPUT,
