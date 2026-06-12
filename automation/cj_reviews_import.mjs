@@ -126,8 +126,8 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
   // CJ-pid robust auflösen: mehrere Strategien (manche SKUs sind Varianten-, andere Produkt-SKUs).
   async function resolvePid(sku) {
     const strategies = [
+      ['query/productSku', '/product/query', { productSku: sku }],   // die gespeicherten SKUs sind meist Produkt-SKUs
       ['query/variantSku', '/product/query', { variantSku: sku }],
-      ['query/productSku', '/product/query', { productSku: sku }],
       ['list/productSku', '/product/list', { productSku: sku, pageSize: 5 }],
       ['list/keyWords', '/product/list', { keyWords: sku, pageSize: 5 }],
     ];
