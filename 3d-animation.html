@@ -90,6 +90,8 @@
     <button class="shp btn" data-s="galaxy" style="background:transparent;color:var(--amber-dk);border:1px solid var(--line)">✦ Galaxie</button>
     <button class="shp btn" data-s="swarm" style="background:transparent;color:var(--amber-dk);border:1px solid var(--line)">⁙ Schwarm</button>
     <button class="shp btn" data-s="line" style="background:transparent;color:var(--amber-dk);border:1px solid var(--line)">📈 Linie</button>
+    <button class="shp btn" data-s="donut" style="background:transparent;color:var(--amber-dk);border:1px solid var(--line)">◓ Donut</button>
+    <button class="shp btn" data-s="scatter" style="background:transparent;color:var(--amber-dk);border:1px solid var(--line)">⁙ Streu</button>
     <button class="shp btn" data-s="globe" style="background:transparent;color:var(--amber-dk);border:1px solid var(--line)">🌐 Globus</button>
   </div>
 
@@ -102,7 +104,8 @@
     </div>
   </section>
 
-  <h2 style="text-align:center;margin-top:36px">Die Galerie — neun Formen &amp; Diagramme, eine Engine</h2>
+  <h2 style="text-align:center;margin-top:36px">Die Galerie — elf Formen &amp; Diagramme, eine Engine</h2>
+  <p style="text-align:center;color:var(--muted);margin:4px 0 0;font-size:.9rem">Bei den Diagrammen zeigt ein Tipp/Hover auf einen Punkt den genauen Wert.</p>
   <div class="gallery" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px">
     <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="sphere" data-points="120" data-color="#f0a93a" data-speed="1" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">Konstellations-Kugel</figcaption></figure>
     <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="torus" data-points="180" data-color="#38bdf8" data-speed="1.1" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">Torus-Gitter</figcaption></figure>
@@ -110,14 +113,16 @@
     <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="wave" data-points="170" data-color="#f472b6" data-speed="1" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">Wellen-Gitter</figcaption></figure>
     <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="galaxy" data-points="260" data-color="#c084fc" data-speed="0.8" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">Galaxie-Spirale</figcaption></figure>
     <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="swarm" data-points="110" data-color="#f0a93a" data-speed="1" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">Punkt-Schwarm</figcaption></figure>
-    <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="bars" data-values="3,6,4,8,5,9,7,6,8,5" data-color="#34d399" data-speed="0.7" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">3D-Balkendiagramm (Beispielwerte)</figcaption></figure>
+    <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="bars" data-values="3,6,4,8,5,9,7,6,8,5" data-labels="1" data-color="#34d399" data-speed="0.7" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">3D-Balkendiagramm (mit Wert-Labels)</figcaption></figure>
     <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="globe" data-points="150" data-color="#38bdf8" data-speed="0.8" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">Globus (Drahtgitter)</figcaption></figure>
-    <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="line" data-values="3,5,4,7,6,9,8,11,10,13" data-color="#f0a93a" data-speed="0.7" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">3D-Liniendiagramm (Trend)</figcaption></figure>
-    <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="bars" data-values="2.3,-1.1,0.8,-2.4,1.6,-0.5,3.1,-1.8" data-speed="0.7" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">Signed-Balken (grün +, rot −) — z. B. Kursänderungen</figcaption></figure>
+    <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="line" data-values="3,5,4,7,6,9,8,11,10,13" data-labels="1" data-color="#f0a93a" data-speed="0.7" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">3D-Liniendiagramm (Trend, mit Werten)</figcaption></figure>
+    <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="bars" data-values="2.3,-1.1,0.8,-2.4,1.6,-0.5,3.1,-1.8" data-labels="1" data-speed="0.7" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">Signed-Balken (grün +, rot −) — z. B. Kursänderungen</figcaption></figure>
+    <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="donut" data-values="5,3,2,1.4" data-labels="1" data-speed="0.6" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">Donut-Diagramm (Anteile in %)</figcaption></figure>
+    <figure style="margin:0"><div class="stage"><canvas data-aban3d data-shape="scatter" data-points="90" data-color="#c084fc" data-speed="0.7" style="height:240px"></canvas></div><figcaption style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px">3D-Streudiagramm (Punktwolke)</figcaption></figure>
   </div>
 
   <h2>Was du hier siehst</h2>
-  <p>Jeder Punkt sitzt auf einer Form (Kugel, Torus, Helix oder Wellen-Gitter), wird in Echtzeit in 3D gedreht, perspektivisch projiziert und mit seinen Nachbarn verbunden. Alles läuft mit purem JavaScript auf einem <code>&lt;canvas&gt;</code>, ohne externe Bibliothek — dieselbe ~5-KB-Engine für alle Formen.</p>
+  <p>Jeder Punkt sitzt auf einer Form (Kugel, Torus, Helix oder Wellen-Gitter), wird in Echtzeit in 3D gedreht, perspektivisch projiziert und mit seinen Nachbarn verbunden. Alles läuft mit purem JavaScript auf einem <code>&lt;canvas&gt;</code>, ohne externe Bibliothek — dieselbe schlanke Engine für alle Formen.</p>
   <div class="tip"><h3>⚡ Leicht &amp; höflich</h3><p>Die Animation pausiert automatisch, wenn sie aus dem Bild scrollt oder der Tab im Hintergrund liegt — und zeigt ein ruhiges Standbild, wenn du „weniger Bewegung" in deinem System eingestellt hast.</p></div>
   <div class="tip"><h3>🔒 Nichts verlässt deinen Browser</h3><p>Kein Server, kein Tracking, kein Upload. Reine Mathematik, die in deinem Gerät gerechnet wird.</p></div>
 

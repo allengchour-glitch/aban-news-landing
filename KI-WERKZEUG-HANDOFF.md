@@ -4,6 +4,19 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-12 (Teil 9) — 3D-Engine ausgebaut: Labels · Donut · Scatter · Tooltip (User: „engine weiter machen", „alle 4 und weitere")
+- **`js/aban3d.js` jetzt 11 Formen** (vorher 9): neu **`donut`/`pie`** (Anteils-Ring, %-Labels, PALETTE-Farben
+  pro Segment) und **`scatter`** (3D-Punktwolke; liest `data-points3="x,y,z;…"`, jede Achse auf [-1,1] normiert,
+  Demo-Fallback zufällig). Registriert in `SHAPES`.
+- **Wert-Labels** (opt-in `data-labels="1"`): bars/line/donut zeigen den echten Wert am Punkt (aufrecht,
+  tiefen-abgedunkelt, `fmtNum` → k/M/Komma). **Tooltip beim Hovern**: nächstes Label (<30 px) → Box mit Wert.
+  Helfer: `fmtNum()`, `PALETTE[]`; `frame()` hat jetzt `proj()`-Helfer (Labels nutzen dieselbe Rotation).
+- **Live eingebaut:** `data-labels="1"` auf allen **9 Rechner-Balken** (sparplan/notgroschen/etf/mwst/maerkte/
+  inflation/ki-kosten/automatisierung/ki-spar) → echte Zahlen direkt am Balken. Showcase `3d-animation.html`:
+  Donut+Scatter als Buttons + Galerie-Kacheln (jetzt „elf Formen"), Diagramm-Kacheln mit Labels, Hover-Hinweis.
+- **Regeln eingehalten:** nur echte/Nutzer-Daten in Diagrammen; keine Lib/CDN/Action; `node --check` grün;
+  reduced-motion = Standbild (mit Labels). Engine ~18 KB unkomprimiert (Kommentar „~5 KB" entfernt).
+
 ## 2026-06-12 (Teil 8) — Tool-Offensive + 3D-Diagramme + EN (Newsletter-Session, autonom)
 - **3D-Engine `js/aban3d.js`** jetzt 7 Formen inkl. **bars** (datengetriebenes 3D-Balkendiagramm via data-values,
   vorzeichenrichtig normalisiert). In **9 Rechnern** live eingebettet (sparplan/notgroschen/etf/mwst/maerkte
