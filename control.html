@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>LuxeStyle · Steuerung</title>
+<style>
+  :root{--gold:#c19a5b;--bg:#141210;--card:#1e1a16;--ok:#3ec07a;--err:#e05a5a;}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{margin:0;background:var(--bg);color:#f5f0e8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:24px 16px 60px;}
+  h1{font-size:22px;letter-spacing:3px;text-align:center;margin:8px 0 2px;}
+  .sub{text-align:center;color:var(--gold);font-size:13px;margin-bottom:18px;}
+  .tok{width:100%;padding:12px;border-radius:12px;border:1px solid #3a342c;background:#0f0d0b;color:#f5f0e8;font-size:14px;margin-bottom:6px;}
+  .hint{font-size:11px;color:#8a8276;margin:0 2px 16px;}
+  .btn{display:flex;align-items:center;gap:14px;width:100%;padding:18px;margin:10px 0;border:none;border-radius:16px;background:var(--card);color:#f5f0e8;font-size:17px;font-weight:600;text-align:left;border:1px solid #2a251f;}
+  .btn:active{transform:scale(.98);background:#26201a;}
+  .btn .emo{font-size:24px;}
+  .btn small{display:block;color:#9a9182;font-weight:400;font-size:12px;margin-top:2px;}
+  #toast{position:fixed;left:16px;right:16px;bottom:20px;padding:14px;border-radius:12px;text-align:center;font-weight:600;opacity:0;transition:.3s;pointer-events:none;}
+  #toast.show{opacity:1;}
+</style>
+</head>
+<body>
+  <h1>L U X E S T Y L E</h1>
+  <div class="sub">Steuerung 🇨🇭</div>
+
+  <input id="tok" class="tok" type="password" placeholder="GitHub-Token (github_pat_…) einfügen" autocomplete="off">
+  <p class="hint">Token wird nur auf diesem Gerät gespeichert. Fine-grained Token mit „Actions: Read and write" auf Repo aban-news-landing.</p>
+
+  <div id="buttons"></div>
+  <div id="toast"></div>
+
+<script>
+const REPO="allengchour-glitch/aban-news-landing";
+const ACTIONS=[
+  ["📊","Analyse jetzt","TikTok-Performance + lernen","analytics-learn.yml"],
+  ["📸","IG/FB Bild posten","nächstes Bild aus Queue","social-meta-autopost.yml"],
+  ["🎬","IG/FB Reel posten","nächstes Video aus Queue","video-meta-autopost.yml"],
+  ["🎵","TikTok Entwurf","nächstes Reel in Entwürfe","tiktok-autopost.yml"],
+  ["📅","Metricool planen","Queue → öffentlich posten","metricool-schedule.yml"],
+  ["✨","FB polieren","Profilbild + Info setzen","fb-profile-polish.yml"],
+];
+const tok=document.getElementById("tok");
+tok.value=localStorage.getItem("ghpat")||"";
+tok.addEventListener("input",()=>localStorage.setItem("ghpat",tok.value.trim()));
+
+function toast(msg,ok){const t=document.getElementById("toast");t.textContent=msg;t.style.background=ok?"var(--ok)":"var(--err)";t.style.color="#0c0a08";t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2600);}
+
+async function run(file,label){
+  const token=tok.value.trim();
+  if(!token){toast("⚠️ Erst Token einfügen",false);return;}
+  try{
+    const r=await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/${file}/dispatches`,{
+      method:"POST",
+      headers:{Authorization:`Bearer ${token}`,Accept:"application/vnd.github+json","Content-Type":"application/json"},
+      body:JSON.stringify({ref:"main"})
+    });
+    if(r.status===204) toast(`✅ ${label} gestartet`,true);
+    else { const j=await r.json().catch(()=>({})); toast(`❌ ${r.status}: ${(j.message||"Fehler").slice(0,50)}`,false); }
+  }catch(e){ toast("❌ Netzwerk-Fehler",false); }
+}
+
+const box=document.getElementById("buttons");
+for(const [emo,title,desc,file] of ACTIONS){
+  const b=document.createElement("button");
+  b.className="btn";
+  b.innerHTML=`<span class="emo">${emo}</span><span>${title}<small>${desc}</small></span>`;
+  b.onclick=()=>run(file,title);
+  box.appendChild(b);
+}
+</script>
+</body>
+</html>
