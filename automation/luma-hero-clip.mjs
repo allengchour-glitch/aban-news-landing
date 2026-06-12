@@ -23,7 +23,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { balanceByCategory, catKey, tagsFor } from './lib/reel-category.mjs';
 
-const KEY = process.env.LUMA_API_KEY || '';
+const KEY = (process.env.LUMA_API_KEY || '').trim();
 const MODEL = process.env.LUMA_MODEL || 'ray-flash-2';
 const ASPECT = process.env.LUMA_ASPECT || '9:16';
 const RES = process.env.LUMA_RESOLUTION || '720p';
