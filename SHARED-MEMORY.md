@@ -39,6 +39,12 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Neue Produkte (jetzt 347 cj-real) nachgezogen:**
+- Katalog wuchs auf **1.206 aktiv / 347 cj-real**. Die ~100 neuesten (waren ohne Kategorie/SEO) nachbearbeitet:
+  **+97 Kategorien + 26 SEO-Fixes** live, 0 Fehler. Kombi-Tool `automation/catalog_enrich.py` (Kategorie + SEO
+  in einem Lauf, force-save-Paging via Bloat-Felder). **Katalog jetzt ~343/347 kategorisiert + SEO sauber.**
+- **Routine für neue Importe:** `catalog_enrich.py` läuft idempotent über die neuesten Produkte (setzt nur, was fehlt).
+
 **2026-06-13 — Produkt-Kategorien (Google-Feed) autonom zugewiesen:**
 - **246 Produkte** mit Shopify-Taxonomie-**Kategorie** versehen (waren alle `null`) → Google-Free-Listings-tauglich,
   der native Google-Kanal mappt daraus automatisch. Pipeline `automation/google_category_assign.py` (Produkttyp →
