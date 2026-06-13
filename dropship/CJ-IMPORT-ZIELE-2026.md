@@ -47,3 +47,14 @@
 - AutoDS — Best Summer Dropshipping Products 2026: https://www.autods.com/blog/dropshipping-niches/best-summer-dropshipping-products/
 - Tradelle — 12 Best Summer Products 2026: https://www.tradelle.io/blog/12-best-summer-products-to-dropship-in-2026/
 - Dropified — Top 50 Trending Products 2026 (Margen): https://www.dropified.com/blog/top-50-trending-dropshipping-products-to-sell-in-2026-with-profit-margins/
+
+## ✅ Hand-Kuratierter Import (User „B", 2026-06-13) — mit CJ-Access-Token (transient)
+**Befund:** Roh-Suche (`product/list?productNameEn=`) ist stark verrauscht (lose Matches, viel Müll) → NICHT blind importieren.
+Methode: gezielt suchen → **Bild visuell prüfen** → nur echte Treffer anlegen.
+**3 Produkte live angelegt (ACTIVE, Bild READY, in alle 6 Publications publiziert):**
+- 🐶 Donut-Hundebett «Cozy» (CHF 34.90/44.90) — id 15430167855489 → 🐾 Haustier
+- 💡 Akku-Tischlampe «Lumi» (CHF 44.90) — id 15430168052097 → 💡 Beleuchtung
+- 🐾 Slow-Feeder Hundenapf «Slow» (CHF 19.90) — id 15430168117633 → 🐾 Haustier
+**Lehren:** create-product (MCP) publiziert NICHT automatisch auf Online-Shop → IMMER `publishablePublish` nach.
+Bild aus CJ-URL hängt sich **asynchron** an (in der create-Antwort erst leer, danach READY). CJ-Access-Token
+läuft ~14 T (≈28.06.) → User setzt dann `CJ_EMAIL`+`CJ_API_KEY` (Weg „A") für die gefilterte Voll-Automation.
