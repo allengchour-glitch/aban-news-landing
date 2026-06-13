@@ -27,10 +27,13 @@ Alle Modelle sind per Umgebungsvariable überschreibbar. Im Cloudflare-Pages-Pro
 
 ## 3. Weniger Tokens pro Aufruf
 - **`max_tokens` knapp halten** (Demo 280, Chat 320 — schon gut). Je kürzer die Antwort, desto billiger.
-- **Caching identischer Anfragen**: gleiche Eingabe → gleiche Antwort aus einem KV-Cache statt neuem
-  Call (z. B. Demo-Ergebnisse für identische Stichworte 1 h cachen). Künftiger Ausbau.
-- **Prompt-Caching (Anthropic `cache_control`)**: bei grossen, gleichbleibenden System-Prompts
-  (generate/hype/audit) ~90 % der Input-Tokens sparen, sobald Volumen kommt.
+- **✅ Ergebnis-Cache (umgesetzt in `/api/demo`)**: identische Eingabe → Antwort aus dem Edge-Cache
+  (`caches.default`, 24 h), **0 Tokens** und kein Quota-Verbrauch. Der vorausgefüllte Demo-Default
+  (der meistgeklickte Input) wird so nur einmal pro Tag wirklich generiert. Dasselbe Muster lässt sich
+  später auf andere wiederkehrende, öffentliche Generierungen übertragen.
+- **Prompt-Caching (Anthropic `cache_control`): hier NICHT sinnvoll.** Geprüft: die System-Prompts sind
+  winzig (~60 Tokens) — weit unter der Cache-Mindestgrösse (~1024 Tokens). Bringt also nichts; erst
+  relevant, falls mal grosse, gleichbleibende Kontexte/Anleitungen mitgeschickt werden.
 - **Batch-API** (50 % günstiger) für nicht-Echtzeit-Jobs (z. B. Massen-Übersetzungen).
 
 ## 4. „Selber produzieren" — gratis statt bezahlt
