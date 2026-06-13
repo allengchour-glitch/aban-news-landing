@@ -4,7 +4,7 @@
 > UND demselben Shopify-Shop (LuxeStyle, `au3j0y-hq.myshopify.com` / luxestyle.ch).**
 > Diese Datei verhindert, dass sie sich gegenseitig überschreiben. **Jede Session:** erst hier rein,
 > dann die eigene Detail-Memory. **Nach grösseren Aktionen:** Abschnitt „Live-Stand" unten aktualisieren.
-> Stand: 2026-06-08.
+> Stand: 2026-06-13.
 
 ---
 
@@ -89,6 +89,26 @@
   mwst-rechner gefixt. Alles verifiziert (0 Parser-Error, Konsistenz grün, 0 Broken-Links). **Hinweis Koordination:
   ⚠️ Branchen-Hubs NICHT anfassen (andere Session); Pushes mit `git pull --rebase` wegen Parallelaktivität.**
   Weitere EN-Kandidaten offen (rechnung-generator, finanz-skills, ki-spar/ki-kosten-rechner, json-formatter, …).
+- **Welle 4–7 (12.–13.06., gleicher Branch `claude/abannews-projekt-JSw9l`) — EN/Mehrsprachigkeit erschöpfend
+  ausgebaut, alles via Übersetzungs-Agenten + zentraler Verdrahtung, jede Charge verifiziert + einzeln gepusht:**
+  - **EN-Tool-Bestand komplett:** ~28 EN-Tool-Seiten (Rechner, Dev-Tools json/regex/encoder/diff/hash/uuid/jwt/
+    timestamp/env/markdown/cron, passwort/kontrast/farb/zeichenzähler/qr/namen/iban, AI-Visibility-Cluster
+    ai-sichtbarkeit/ki-erwaehnungs-check/hype-filter, rechnung-generator) + **kuratierter EN-Tools-Hub
+    `en/online-tools.html` (43 Karten)**. Flagship-Finder **en/welche-ki-fuer-was.html** + **`data/tools.en.json`
+    (175 Tools, Prosa übersetzt, Keys/IDs/Scores/Filter identisch) — Finder fetcht jetzt die EN-Daten.**
+  - **Branchen-Hubs 4-sprachig 360/360:** 3 Lücken (detektei/personaldienstleister/textilreinigung) als EN+FR+IT
+    ergänzt → de/en/fr/it je **360**; volle 4-Sprachen-hreflang auf allen 4 Versionen (Alt-Block-Duplikate
+    dedupliziert); 3 EN-Quickstart-PDFs (reportlab, keyless).
+  - **EN-Content-Artikel:** ki-videos-erstellen, geld-verdienen-mit-3d-druck, anti-hype-texten, ki-und-krypto-daten,
+    ki-stimmen, ki-lifestyle. **EN öffentliche Seiten:** resources, press, media-kit, ueber-aban, brand, roadmap,
+    ki-sichtbarkeit-audit/-monitor, ki-tool-vergleich (Index).
+  - **Bewusst NICHT übersetzt** (EN = Unsinn/Redundanz): schicht (dt. Roman), foerder (DACH-Förderungen), kurs,
+    preview, glossary (redundant), jobs, mrr/growth-dashboard/launch/v2/index-classic/willkommen (Dev/intern).
+  - **In Arbeit (Welle 7):** **197 `/vergleich/*`-Detailseiten → `en/vergleich/*`** (Tool-vs-Tool, je ~72 Z.,
+    identisches Boilerplate + unique Prosa Notes/FAQ/Deep). Batchweise via Agenten. Danach EN-`ki-tool-vergleich`
+    voll funktional (Index → EN-Detail statt DE).
+  - ⚠️ **Offen (nur User, GitHub-API-Rate-Limit der Session erschöpft):** Draft-PR **#715** auf „Ready" setzen
+    (1 Klick). Sonst alles grün: 0 Parser-Error, Konsistenz grün, 0 echte Broken-Links, Sitemap valide.
 
 **2026-06-11 — Luxestyle/POD session: Editor mit echten Fotos + 98 Fertig-Mockups + Shop-Audit A–Z:**
 - **🎨 Selbst-gestalten-Editor komplett überarbeitet** (`pod/designer.js` live): echtes Produktfoto statt
