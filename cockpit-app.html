@@ -191,8 +191,10 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       <div class="btnrow" style="margin-top:16px">
         <button class="btn" id="r_print">🖨️ Drucken / PDF</button>
         <button class="btn ghost" id="r_save">💾 Entwurf speichern</button>
+        <button class="btn ghost" id="r_exml">🧾 E-Rechnung (XML)</button>
         <button class="btn ghost" id="r_clear">Leeren</button>
       </div>
+      <p class="note">E-Rechnung = einfaches UBL-XML (EN-16931-Basisfelder) für die maschinelle Weiterverarbeitung — keine zertifizierte XRechnung.</p>
       <div class="list" id="r_saved"></div>
       <div class="mini" id="r_qrbox" style="margin-top:16px">
         <h3>💳 Zahl-QR (scan &amp; pay)</h3>
@@ -1298,6 +1300,17 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   if($("#ar_add"))$("#ar_add").addEventListener("click",function(){var d=$("#ar_desc").value.trim();if(!d){toast("Bitte Bezeichnung eingeben");return}var a=artikel();a.unshift({desc:d,price:$("#ar_price").value});saveArtikel(a);$("#ar_desc").value="";$("#ar_price").value="";renderArtikel();refreshKat();toast("Im Katalog gespeichert ✓")});
   function bindKat(pickId,DOC){var el=$("#"+pickId);if(!el)return;el.addEventListener("change",function(){if(this.value==="")return;var x=artikel()[+this.value];if(x)DOC.addItem(x.desc,1,x.price);this.value="";toast("Position eingefügt ✓")})}
   bindKat("r_katpick",R);bindKat("a_katpick",A);
+
+  /* ===== E-Rechnung (UBL-XML) ===== */
+  function xesc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&apos;"}[c]})}
+  function downloadText(fn,txt,mime){var blob=new Blob([txt],{type:mime||"text/plain;charset=utf-8"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fn;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},100)}
+  if($("#r_exml"))$("#r_exml").addEventListener("click",function(){
+    var s=stamm(),t=R.calc(),items=R.items(),nr=$("#r_nr").value||"RE",dt=$("#r_datum").value||isoToday();
+    var iban=(s.iban||"").replace(/\s+/g,"").toUpperCase(),cur=(iban.slice(0,2)==="CH"||iban.slice(0,2)==="LI")?"CHF":"EUR";
+    var adr=(s.adresse||"").split("\n"),street=adr[0]||"",city=adr[1]||"",kunde1=($("#r_kunde").value||"").split("\n")[0]||"";
+    var lines=items.map(function(it,i){var q=n(it.qty)||0,pr=n(it.price)||0;return '  <cac:InvoiceLine><cbc:ID>'+(i+1)+'</cbc:ID><cbc:InvoicedQuantity>'+q+'</cbc:InvoicedQuantity><cbc:LineExtensionAmount currencyID="'+cur+'">'+(q*pr).toFixed(2)+'</cbc:LineExtensionAmount><cac:Item><cbc:Name>'+xesc(it.desc)+'</cbc:Name></cac:Item><cac:Price><cbc:PriceAmount currencyID="'+cur+'">'+pr.toFixed(2)+'</cbc:PriceAmount></cac:Price></cac:InvoiceLine>'}).join("\n");
+    var xml='<?xml version="1.0" encoding="UTF-8"?>\n<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">\n  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>\n  <cbc:ID>'+xesc(nr)+'</cbc:ID>\n  <cbc:IssueDate>'+xesc(dt)+'</cbc:IssueDate>\n  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>\n  <cbc:DocumentCurrencyCode>'+cur+'</cbc:DocumentCurrencyCode>\n  <cac:AccountingSupplierParty><cac:Party><cac:PartyName><cbc:Name>'+xesc(s.firma||"")+'</cbc:Name></cac:PartyName><cac:PostalAddress><cbc:StreetName>'+xesc(street)+'</cbc:StreetName><cbc:CityName>'+xesc(city)+'</cbc:CityName></cac:PostalAddress><cac:PartyTaxScheme><cbc:CompanyID>'+xesc(s.steuer||"")+'</cbc:CompanyID><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:PartyTaxScheme></cac:Party></cac:AccountingSupplierParty>\n  <cac:AccountingCustomerParty><cac:Party><cac:PartyName><cbc:Name>'+xesc(kunde1)+'</cbc:Name></cac:PartyName></cac:Party></cac:AccountingCustomerParty>\n'+(iban?'  <cac:PaymentMeans><cbc:PaymentMeansCode>30</cbc:PaymentMeansCode><cac:PayeeFinancialAccount><cbc:ID>'+xesc(iban)+'</cbc:ID></cac:PayeeFinancialAccount></cac:PaymentMeans>\n':'')+'  <cac:TaxTotal><cbc:TaxAmount currencyID="'+cur+'">'+t.vat.toFixed(2)+'</cbc:TaxAmount></cac:TaxTotal>\n  <cac:LegalMonetaryTotal><cbc:LineExtensionAmount currencyID="'+cur+'">'+t.net.toFixed(2)+'</cbc:LineExtensionAmount><cbc:TaxExclusiveAmount currencyID="'+cur+'">'+t.net.toFixed(2)+'</cbc:TaxExclusiveAmount><cbc:TaxInclusiveAmount currencyID="'+cur+'">'+t.gross.toFixed(2)+'</cbc:TaxInclusiveAmount><cbc:PayableAmount currencyID="'+cur+'">'+t.gross.toFixed(2)+'</cbc:PayableAmount></cac:LegalMonetaryTotal>\n'+lines+'\n</Invoice>\n';
+    downloadText("rechnung-"+nr+".xml",xml,"application/xml");toast("E-Rechnung-XML exportiert ✓")});
 
   /* ===== Lieferschein ===== */
   function setupLieferschein(){var tb=$("#l_items tbody");
