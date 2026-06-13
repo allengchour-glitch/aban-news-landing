@@ -76,3 +76,10 @@ läuft ~14 T (≈28.06.) → User setzt dann `CJ_EMAIL`+`CJ_API_KEY` (Weg „A")
 - 🌞 Solar-Gartenleuchten «Lumière» 3er/6er (CHF 34.90/59.90) — id 15430171525505 → 🌻 Garten/Beleuchtung
 Übersprungen: „Enten-Licht" = Trump-Karikatur (politisch, Overlay) → raus.
 **Heute total 9 neue Produkte hand-kuratiert & live** (3+2+2+2). Gefüllte Lücken: Haustier, Pool/Strand, Grill, Garten, Partner-Geschenke, Sommer-Schmuck, Beleuchtung.
+
+### Runde 5 (2026-06-13, „coole einzigartige Sachen" + Video gewünscht) — +1 kuratiert
+- 🪻 Solar-Windspiel «Libelle» Farbwechsel-LED 2er-Set (CHF 44.90) — id 15430176997761 → 🌻 Garten/Deko
+**Video:** CJ-Feld `productVideo` existiert, war aber bei allen geprüften Produkten LEER → nichts anzuhängen.
+Übersprungen (englische Badge-/Collage-Bilder, nicht sauber): Bubble-Machine, Auto-Bewässerung, Moon-Lamp (=Industrie-Flutlicht).
+**Lehre:** „Coole" CJ-Produkte haben oft Marketing-Overlay-Bilder → strenger filtern. Wo `productVideo` gefüllt ist,
+kann es per stagedUpload + productCreateMedia(VIDEO) angehängt werden. **Heute total 10 neue Produkte live.**
