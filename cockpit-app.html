@@ -447,6 +447,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       <button data-l="gloss">📔 Glossar</button>
       <button data-l="quiz">❓ Quiz</button>
       <button data-l="check">✅ Checkliste</button>
+      <button data-l="sim">🎮 Übungskonto</button>
     </div>
     <div class="lsec on" id="ls-pfad">
       <div class="panel"><strong>📈 Dein Fortschritt</strong><div id="l_prog"></div></div>
@@ -474,6 +475,26 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     <div class="lsec" id="ls-check">
       <p class="sub">Vor JEDEM Trade durchgehen — erst wenn alles ✓ ist, überhaupt erwägen.</p>
       <div id="l_check"></div>
+    </div>
+    <div class="lsec" id="ls-sim">
+      <div class="disc">🎮 Übungskonto mit <strong>Spielgeld</strong> — kein echtes Geld, keine echten Kurse (simulierter Kursverlauf). Zum gefahrlosen Üben von Risiko, Stop-Loss und Hebel.</div>
+      <div class="out" id="sim_kpi"></div>
+      <div class="panel"><div id="sim_chart"></div><p class="note" id="sim_price" style="text-align:center;font-weight:700"></p>
+        <div class="btnrow" style="justify-content:center"><button class="btn" id="sim_step" type="button">⏭ Nächster Tag</button><button class="btn ghost" id="sim_step5" type="button">⏭ 5 Tage</button></div>
+      </div>
+      <div class="panel" id="sim_posbox"></div>
+      <div class="panel">
+        <h2>Position eröffnen</h2>
+        <div class="row">
+          <div class="fld"><label>Richtung</label><div class="seg" id="sim_dir"><button data-d="long" class="on" type="button">Long</button><button data-d="short" type="button">Short</button></div></div>
+          <div class="fld" style="max-width:130px"><label>Einsatz</label><input id="sim_amt" inputmode="decimal" value="1000"></div>
+          <div class="fld" style="max-width:110px"><label>Hebel</label><input id="sim_lev" inputmode="decimal" value="1"></div>
+          <div class="fld" style="max-width:110px"><label>Stop %</label><input id="sim_stop" inputmode="decimal" placeholder="optional"></div>
+        </div>
+        <div class="btnrow"><button class="btn" id="sim_open" type="button">📈 Position eröffnen</button><button class="btn ghost" id="sim_reset" type="button">↺ Konto zurücksetzen</button></div>
+        <p class="note">Tipp: Probier mal 10x Hebel und drück „Nächster Tag" — du wirst sehen, wie schnell eine Liquidation kommt. Genau das soll dir die Augen öffnen.</p>
+      </div>
+      <div class="panel"><h2>Verlauf</h2><div class="list" id="sim_log"></div></div>
     </div>
   </section>
 
@@ -1035,7 +1056,8 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     /* progress */
     function updateProg(){var read=lg("read",{}),cnt=0;LESSONS.forEach(function(_,i){if(read[i])cnt++});
       var pct=Math.round(cnt/LESSONS.length*100),best=lg("quizbest",0);
-      $("#l_prog").innerHTML='<div class="prog"><i style="width:'+pct+'%"></i></div><p class="note" style="margin-top:0">'+cnt+' von '+LESSONS.length+' Lektionen gelesen ('+pct+' %)'+(best?' · Quiz-Bestwert: '+best+'/'+QUIZ.length:'')+'</p>'}
+      var badges=[];if(cnt>=5)badges.push("🥉 Starter");if(cnt>=15)badges.push("🥈 Wissbegierig");if(cnt>=LESSONS.length)badges.push("🥇 Durchgelesen");if(best>=Math.ceil(QUIZ.length*0.7))badges.push("🧠 Quiz-Profi");if(best===QUIZ.length)badges.push("🏆 Quiz-Meister");
+      $("#l_prog").innerHTML='<div class="prog"><i style="width:'+pct+'%"></i></div><p class="note" style="margin-top:0">'+cnt+' von '+LESSONS.length+' Lektionen gelesen ('+pct+' %)'+(best?' · Quiz-Bestwert: '+best+'/'+QUIZ.length:'')+'</p><p class="note" style="margin-top:4px">'+(badges.length?"Abzeichen: "+badges.join(" · "):"Noch keine Abzeichen — lies Lektionen & mach das Quiz.")+'</p>'}
     /* lessons */
     function catChips(){var cur=lg("cat","");
       $("#l_chips").innerHTML='<button data-c="" class="'+(cur===""?"on":"")+'">Alle</button>'+LCATS.map(function(c){return '<button data-c="'+esc(c)+'" class="'+(cur===c?"on":"")+'">'+esc(c)+'</button>'}).join("");
@@ -1089,8 +1111,44 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
         if(act==="sec"){var s=$('#l_tabs button[data-l="'+arg+'"]');if(s)s.click()}
         else if(act==="cat"){ls("cat",arg);catChips();renderLessons();var s2=$('#l_tabs button[data-l="lekt"]');if(s2)s2.click()}
         else if(act==="tab"){goTab(arg)}window.scrollTo(0,0)})})}
+    /* Paper-Trading-Simulator */
+    function simGet(){var s=lg("sim",null);return s||{cash:10000,price:100,hist:[100],pos:null,log:["Konto gestartet mit 10.000 Spielgeld."]}}
+    function simSet(s){ls("sim",s)}
+    var simDir="long";
+    function closePos(s,price,reason){var po=s.pos;if(!po)return;var pl=po.dir==="long"?(price-po.entry)*po.qty:(po.entry-price)*po.qty,ret=po.margin+pl;if(ret<0)ret=0;s.cash+=ret;s.log.unshift((reason||"Geschlossen")+" bei "+nf(price)+" · G/V "+(pl>=0?"+":"")+nf(pl));s.pos=null}
+    function simStep(s){var p=s.price*(1+(Math.random()-0.5)*0.06);if(p<1)p=1;p=Math.round(p*100)/100;s.price=p;s.hist.push(p);if(s.hist.length>60)s.hist.shift();
+      if(s.pos){var po=s.pos,liq=po.lev>1?(po.dir==="long"?po.entry*(1-1/po.lev):po.entry*(1+1/po.lev)):null;
+        var hitLiq=liq&&((po.dir==="long"&&p<=liq)||(po.dir==="short"&&p>=liq));
+        var hitStop=po.stop&&((po.dir==="long"&&p<=po.stop)||(po.dir==="short"&&p>=po.stop));
+        if(hitLiq){s.log.unshift("💥 Liquidiert bei "+nf(liq)+" — Einsatz "+nf(po.margin)+" verloren.");s.pos=null}
+        else if(hitStop){closePos(s,po.stop,"🛑 Stop-Loss")}}}
+    function renderSim(){var s=simGet();if(!$("#sim_kpi"))return;
+      $("#sim_chart").innerHTML=(typeof AbanCharts!=="undefined")?AbanCharts.line(s.hist,{height:120,color:"#0ea5e9"}):"";
+      $("#sim_price").textContent="Kurs: "+nf(s.price);
+      var pl=0;if(s.pos)pl=s.pos.dir==="long"?(s.price-s.pos.entry)*s.pos.qty:(s.pos.entry-s.price)*s.pos.qty;
+      var equity=s.cash+(s.pos?s.pos.margin+pl:0);
+      $("#sim_kpi").innerHTML='<div class="box big '+(equity>=10000?"ok":"bad")+'"><b>'+nf(equity)+'</b><span>Konto-Wert</span></div><div class="box"><b>'+nf(s.cash)+'</b><span>frei</span></div><div class="box"><b>'+nf(s.price)+'</b><span>Kurs</span></div>';
+      var pb=$("#sim_posbox");
+      if(s.pos){var liq=s.pos.lev>1?(s.pos.dir==="long"?s.pos.entry*(1-1/s.pos.lev):s.pos.entry*(1+1/s.pos.lev)):null;
+        pb.style.display="";pb.innerHTML='<h2>Offene Position</h2><div class="out"><div class="box"><b>'+(s.pos.dir==="long"?"Long":"Short")+' '+s.pos.lev+'x</b><span>Einstieg '+nf(s.pos.entry)+'</span></div><div class="box '+(pl>=0?"ok":"bad")+'"><b>'+(pl>=0?"+":"")+nf(pl)+'</b><span>G/V offen</span></div>'+(liq?'<div class="box bad"><b>'+nf(liq)+'</b><span>Liquidation</span></div>':'')+(s.pos.stop?'<div class="box"><b>'+nf(s.pos.stop)+'</b><span>Stop</span></div>':'')+'</div><div class="btnrow"><button class="btn" id="sim_close" type="button">Position schließen</button></div>';
+        $("#sim_close").addEventListener("click",function(){var s2=simGet();closePos(s2,s2.price,"Manuell geschlossen");simSet(s2);renderSim()})}
+      else{pb.style.display="none";pb.innerHTML=""}
+      $("#sim_log").innerHTML=s.log.slice(0,15).map(function(t){return '<div class="li"><span>'+esc(t)+'</span></div>'}).join("")}
+    if($("#sim_dir"))$$("#sim_dir button").forEach(function(b){b.addEventListener("click",function(){simDir=b.dataset.d;$$("#sim_dir button").forEach(function(x){x.classList.toggle("on",x===b)})})});
+    if($("#sim_step"))$("#sim_step").addEventListener("click",function(){var s=simGet();simStep(s);simSet(s);renderSim()});
+    if($("#sim_step5"))$("#sim_step5").addEventListener("click",function(){var s=simGet();for(var i=0;i<5;i++)simStep(s);simSet(s);renderSim()});
+    if($("#sim_reset"))$("#sim_reset").addEventListener("click",function(){ls("sim",null);renderSim();toast("Übungskonto zurückgesetzt")});
+    if($("#sim_open"))$("#sim_open").addEventListener("click",function(){var s=simGet();if(s.pos){toast("Erst bestehende Position schließen");return}
+      var amt=n($("#sim_amt").value),lev=n($("#sim_lev").value)||1,stopP=n($("#sim_stop").value);
+      if(!isFinite(amt)||amt<=0){toast("Bitte Einsatz eingeben");return}if(amt>s.cash){toast("Nicht genug Spielgeld");return}
+      if(lev<1)lev=1;if(lev>50)lev=50;var qty=amt*lev/s.price,stop=null;
+      if(isFinite(stopP)&&stopP>0)stop=simDir==="long"?Math.round(s.price*(1-stopP/100)*100)/100:Math.round(s.price*(1+stopP/100)*100)/100;
+      s.cash-=amt;s.pos={dir:simDir,entry:s.price,qty:qty,lev:lev,margin:amt,stop:stop};
+      s.log.unshift("📈 "+(simDir==="long"?"Long":"Short")+" eröffnet bei "+nf(s.price)+" · Einsatz "+nf(amt)+" · Hebel "+lev+"x");
+      simSet(s);renderSim()});
+
     window.__abanLernTotal=LESSONS.length;
-    catChips();renderLessons();renderTips();renderGloss();renderQuiz();renderCheck();renderPath();updateProg();
+    catChips();renderLessons();renderTips();renderGloss();renderQuiz();renderCheck();renderPath();renderSim();updateProg();
   })();
 
   /* ===== Belege / Spesen (mit Foto) ===== */
