@@ -58,3 +58,9 @@ Methode: gezielt suchen → **Bild visuell prüfen** → nur echte Treffer anleg
 **Lehren:** create-product (MCP) publiziert NICHT automatisch auf Online-Shop → IMMER `publishablePublish` nach.
 Bild aus CJ-URL hängt sich **asynchron** an (in der create-Antwort erst leer, danach READY). CJ-Access-Token
 läuft ~14 T (≈28.06.) → User setzt dann `CJ_EMAIL`+`CJ_API_KEY` (Weg „A") für die gefilterte Voll-Automation.
+
+### Runde 2 (2026-06-13) — +2 kuratiert
+- 🏖️ Aufblasbares Pool-Spiel «3-Gewinnt» (CHF 29.90) — id 15430169002369 → 🌊 Pool/Strand/Sommer
+- 💡 LED-Wandleuchte «Spot» mit Lese-Spot (CHF 49.90) — id 15430169133441 → 💡 Beleuchtung
+Übersprungen (Text-/Marken-Overlay auf 1. Bild): Pet-Feeder, Katzen-Plüsch; Fussel-Roller (Marge zu dünn, EK $22.88).
+**Heute total 5 neue Produkte hand-kuratiert & live** (3+2). Volle Masse via Weg „A" (CJ-API-Key in ~14 T).
