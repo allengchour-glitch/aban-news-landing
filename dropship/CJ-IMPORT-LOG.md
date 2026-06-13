@@ -13,6 +13,24 @@
 > ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
 > bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
 
+## Session 2026-06-13 (SPÄT) — +6 High-End / Luxus (User-Wunsch „high end produkten")
+- **Honest-Curation:** CJ-Premium ist begrenzt. **Uhren & Echtleder-Geldbörsen/-Gürtel = NICHT in Premium-Qualität**
+  verfügbar (Billigwerke / PU statt Echtleder) → bewusst NICHT angelegt (keine Fehldeklaration). Shop hat eh 5★-Herrenuhr.
+- **Echtes High-End auf CJ = Moissanite/925-Silber-Schmuck (GRA-zertifiziert + Geschenkbox) + Echtleder-Taschen.**
+- **6 Produkte ACTIVE + 6 Kanäle + Bilder READY (0 FAILED). Tag `highend` (NEU, exklusiv) + `premium` + Kategorie-Tags.**
+  ⚠️ `premium`-Tag ist im Altbestand breit vergeben (~2288 Treffer) → für die Luxus-Collection NICHT nutzen,
+  stattdessen dedizierten Tag **`highend`** (nur diese 6) → saubere kuratierte Collection.
+- **Produkte:** Echtleder-Henkeltasche «Milano» (Rindsleder, 99.90 · pid 2606130429561615700 · Prod 15430345425281) ·
+  Premium Schultertasche «Como» (Schwarz/Cognac, 89.90 · pid 2606130644131603200 · 15430345458049) ·
+  Moissanite-Kette «Aurora» (S925, GRA-Zert + Box, 199.00 · pid 2065255919103139842 · 15430345490817) ·
+  925-Ring «Fleur» (Platin/Gold/Roségold, 59.90 · pid 2065711624856813569 · 15430345556353) ·
+  Süsswasserperlen-Ohrringe «Perla» (Kreis/Tropfen, 89.90 · pid 2065662884973092865 · 15430345589121) ·
+  925-Fusskettchen «Riva» (Emaille, 49.90 · pid 2065714732693606401 · 15430345621889).
+- **NEU: Smart-Collection `luxus-highend` „✨ High-End · Luxus"** (Coll 688600547713, Regel TAG=`highend`, +SEO,
+  in 6 Kanäle publiziert). ⚠️ productsCount nach Regel-Änderung kurz gecacht (zeigte 2288) → settled via Re-Eval auf 6.
+- **Titel-Regel-Lehre:** sub-taschen=Titel „Tasche"/„Rucksack"; sub-halsketten=„Kette" (Fusskettchen vermeidet das, weil
+  „kettchen" ≠ „kette"); sub-ohrringe=„Ohrring". Titel entsprechend gewählt → Auto-Einsortierung greift.
+
 ## Session 2026-06-13 (ABEND) — +10 Röcke & Schuhe (User-Wunsch „mehr röcke und männer schue und frauen")
 - **Umgebung:** Shopify-MCP live · CJ-Token aus `/tmp/cj_token.json` gültig. CJ-Suche via Playwright-`request`
   (Header `CJ-Access-Token`), 3-Runden harter Namensfilter (CJ-Suche ist lose/OR — viel Rauschen).
