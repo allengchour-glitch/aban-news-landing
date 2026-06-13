@@ -39,6 +39,18 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Gratis-Werbung KOMPLETT (SEO-Content + Feed + Marktplätze, autonom):**
+- **5 SEO-Ratgeber-Artikel LIVE** im Blog `ratgeber` (Sommerkleider 2026 · Aroma-Diffuser · Geschenkideen ·
+  Edelstahl-Schmuck · Smartwatch), mit SEO-Meta + internen Links + FAQ + WELCOME10-CTA. Reproduzierbar via
+  Shopify `articleCreate`. = gratis, evergreen, kaufabsicht-starker Traffic.
+- **Google-Feed-Audit (live):** kein GTIN/Barcode (→ „custom product" im Google-Kanal), `google_product_category`
+  fehlt (→ Shopify-Produktkategorie zuweisen, native Kanal mappt), etliche auto-SEO-Titel schwach. **5 schlechte
+  SEO-Metas live korrigiert** (Panda-Halter, Baseball-Cap, Hunde-Snackball, Mini-Ventilator, Aroma-Hohl).
+- **23 Marktplatz-Inserate** fertig (`dropship/marktplatz-inserate.md`) für Ricardo/Anibis/tutti (copy-paste).
+- **Master-Playbook** `dropship/GRATIS-WERBUNG-KOMPLETT.md`: Kanal-Matrix, Google-Free-Listings-Setup, Apps/Widgets,
+  Automation-Status, Analyse, 3 User-Klicks. **Kernerkenntnis bleibt: Kaufabsicht > Reichweite** → Google Free
+  Listings + SEO-Blog + Pinterest + Marktplätze sind die ROI-Hebel; Reichweiten-Social = 0-Hebel.
+
 **2026-06-13 — Pinterest-Pins poliert + komplett neu (Premium-Look v5) → 152 total:**
 - **75 polierte Pins** gebaut (Template v5: Creme-Basis, Serifen-Titel, sanfter Foto→Creme-Übergang,
   Gold-Akzent, Marken-Wordmark, Preis + WELCOME10-Pille). Generator `automation/gen_pinterest_polish.py`
