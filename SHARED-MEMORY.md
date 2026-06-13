@@ -39,6 +39,14 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Conversion-QA (autonom, live):**
+- **WELCOME10 = ACTIVE** verifiziert (10%, gültig bis 31.08.2026, ab CHF 0.01, 1×/Kunde). Der überall beworbene Code geht.
+- **Conversion-Leak behoben:** `neu-eingetroffen` (✨ Neuheiten 2026, = Startseiten-Sektion + Menü) hatte Regel nur
+  `tag=cj-real` → das 3,3★-Kleid (`niedrig-bewertet-nicht-bewerben`) war im Schaufenster. **Regel ergänzt:**
+  `cj-real` UND `tag != niedrig-bewertet-nicht-bewerben` (appliedDisjunctively=false). ⇒ schlecht bewertete „nicht
+  bewerben"-Produkte fliegen automatisch aus den Neuheiten, bleiben aber in `damen-mode` kaufbar. **Skaliert** für künftige.
+- Kategorie-Texte: Herren („Für Ihn") als Herrenmode neu betextet; Geschenke/Sale „14 Tage" → „30 Tage Rückgabe" angeglichen.
+
 **2026-06-13 — KORREKTUREN (PC-Claude Live-Sicht):**
 - **GitHub Actions sind USER-WEIT GESPERRT (definitiv verifiziert 2026-06-13):** „Actions has been disabled for this
   user" — bestätigt durch BEIDES: API-Dispatch (422) UND PC-Claudes „Run workflow"-Klick in der UI. Die in der Liste
