@@ -86,8 +86,18 @@ Der User hat **zwei** Luma-Zugänge — nicht verwechseln:
    - **GCS-Upload-Falle (Agents-Clips):** Die Shopify-Staging-Policy läuft fast sofort ab → die Bytes **parallel**
      hochladen (`curl … & … & wait`), NICHT sequentiell; bei sequentiellem Upload von >2 Dateien laufen die späteren
      Policies ab (HTTP 400/403). Grosse Dateien (>3 MB) ggf. einzeln + sofort nach dem Staging.
-   - **Stand:** Auf dem neuen $10-Konto bereits **15 Stufe-A-Clips** angehängt (Home-Gadgets/Reisetaschen/Bamboo),
-     weitere Welle (Abendkleider/Diffuser/Multitool/Uhr …) läuft per `runag.py` bis 402. Gesamt-Videos im Shop: ~72+.
+   - **Stand 2026-06-13 (Agents-Konto):** Konto „alleng chour" hat **$100** Guthaben (lumalabs.ai/api/billing).
+     Bisher **33 Stufe-A-Clips** angehängt (Wave F 15 + Wave G 18: Home-Gadgets, Reisetaschen, Bamboo, Abendkleider,
+     Leinen-Sets, Diffuser, Multitool, Gemüseschneider, Uhr …). **Gesamt-Videos im Shop: ~90.** Rest-Credit ~$87 (~200 Clips).
+   - **⚠️ Skalierungs-Engpass (wichtig):** Das **Generieren** ist autonom (`runag.py`, Concurrency 4, stoppt bei 402).
+     Das **Anhängen** via MCP-Staging ist im Chat fragil (kurze Policy-Ablauffrist → 400/403, viele Retries) und
+     kostet enorm Kontext → **für ~200 Clips NICHT im Chat machbar.** Lösung: `attach_video_to_product.mjs` braucht
+     `SHOPIFY_CLIENT_ID`/`SHOPIFY_CLIENT_SECRET` — die dürfen aber **nicht** in eine Bash-Zeile (Auto-Classifier blockt
+     Secret-Leak). **→ Richtiger Weg:** Creds als **GitHub-Secrets** setzen, dann `luma_product_video.mjs`
+     (generiert+hängt an) hands-free über PC-Claude ODER Workflow (sobald Actions frei) den Rest-Credit verbrennen.
+   - **Shop-Admin-Token in der Cloud-Session NICHT nötig** fürs Anhängen: die Shopify-MCP-Tools haben bereits
+     Schreibzugriff (stagedUploadsCreate/productCreateMedia laufen darüber). Der Custom-App-Key (Client-ID
+     `1ec59277…`) ist nur für den Standalone-Node-Lauf/Workflow gedacht — User kann ihn jederzeit rotieren.
 
 ## Aktivierung (1 Schritt je Weg)
 - **C:** `LUMA_API_KEY` als GitHub-Secret (oder transient in die Session geben) → ich starte den Lauf.
