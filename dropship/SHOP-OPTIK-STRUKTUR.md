@@ -94,3 +94,13 @@ Viele gefüllte, publizierte Kollektionen waren nur nicht verlinkt → eingehän
 - **Sale erweitert:** 🏷️ Sale & Angebote (109, war NICHT publiziert → nachpubliziert!) · 🎁 Geschenke unter CHF 50 · Bestseller · Neu.
 - ⚠️ Beim ersten Versuch sale-angebote-ID geraten → „Ressource existiert nicht" (Publish-Falle); echte ID 687887221121 geholt + publiziert.
 - **Menü ist jetzt sehr granular** (Best-Practice-Grenze): weitere Subs würden überladen → eher stoppen.
+
+## 🏷️ Produkt-SEO & Tag-Fix (User 2026-06-13, „weitere SEO-Runden")
+- **SEO-Coverage geprüft (älteste + neueste aktive Produkte): VOLLSTÄNDIG** — kein fehlendes SEO mehr.
+  (Qualität variiert: manche generisch/templated, könnte man später anheben — kein kritischer Mangel.)
+- **🔌 Ladegerät-Mistag-Fix:** 24 Produkte trugen Tag „Ladegerät", davon **14 Fremdkörper** (Serum, Crossbody-Bag,
+  Gesichtsmaske, Ätherische Öle, Kosmetik-Organizer, Heatless-Curls, Vase, Kerzenhalter, 2 Damenuhren, Kofferraum-/
+  Kabel-Organizer, Gift-Box) → Tag via `tagsRemove` entfernt. Ladegeräte-Kollektion jetzt sortenrein.
+- **Bart & Rasur:** 1 aktives Produkt (mit Bild, Cover gesetzt); Rest archiviert+bildlos → mehr Grooming braucht CJ-Import.
+- **🎞️ 5 neue TikTok-Foto-Sets (6–10) geliefert** (an User gesendet, kopierfertige Captions): Beauty · Wohnen/Ambiente ·
+  Schmuck II · Tech · Sommer-Schuhe — je 4 Produktfotos (model-frei, gute Auflösung). Zusammen mit Sets 1–5 = 10 Sets.
