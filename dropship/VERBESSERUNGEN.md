@@ -19,6 +19,13 @@ Der User macht den #1-Hebel (TikTok/Meta-Pixel + bezahlte CH-Kampagne) morgen. �
 - **🟡 Timing-Lücke:** 16–19 UTC fast leer = **18–21 Uhr CH-Primetime** verschenkt (gepostet wird 05/09/12/20 UTC, geballt Mo/Di). → Posts in CH-Feierabend schieben.
 - **⚠️ Engagement-% bei Flop-Videos (15–19 %) = Nenner-Illusion** (31 V × 6 Likes). Nicht als Erfolg werten — absolute Views + Shares zählen.
 
+**✅ Direkt umgesetzt (2 organische Hebel):**
+- **Share/Save-Trigger** in alle 11 Captions des autonomen Posters (`automation/cloudflare/luxe-poster/src/queue.json`)
+  eingebaut (variiert: 💾 Speichern / 👇 Markieren / Kommentar-Frage) — Bilder alle HTTP-200 geprüft.
+- **CH-Primetime:** Cloudflare-Cron von `0 9,17` → **`0 16,19 UTC`** (= 18 & 21 Uhr CH-Feierabend) in `wrangler.toml`.
+- **Caption-Format als FESTE Regel** im Poster-README verankert (Produkt+CHF-Preis [+Vergleich] · 1 Share/Save/Komm.-
+  Trigger · CTA+WELCOME10+#bern) → künftige Posts befolgen es automatisch.
+
 ## 2026-06-13 — Runde 1
 **🔴 Höchster Hebel (nur DU kannst es, bringt Käufe):**
 1. **TikTok-/Meta-Pixel + EINE saubere CH-Kampagne** (Ziel „Complete Payment", CH/Frauen 18–34, DE/FR, 20 CHF/Tag).

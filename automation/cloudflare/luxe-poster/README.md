@@ -34,8 +34,16 @@ developers.facebook.com → Graph API Explorer (App „LuxeStyle Social") → Sc
 → Token generieren → in „Access Token Debugger" **Extend** (langlebiger User-Token).
 Der Worker findet die Page + IG-ID daraus selbst (`/me/accounts`) und cached sie in KV.
 
+## Caption-Format (FEST — Lehre TikTok-Analyse 2026-06-13)
+Reichweite hängt an **Shares/Saves/Kommentaren**, nicht an Likes (Account hatte 0 Shares = Reichweiten-Decke).
+Jede Caption MUSS daher enthalten:
+1. **Produktname + konkreter CHF-Preis** (datenbelegtes Gewinner-Format), ggf. **Preis-Vergleich** „CHF X statt CHF Y".
+2. **EINEN Share/Save/Kommentar-Trigger** — variiert, kein Spam:
+   `💾 Speicher dir das …` · `👇 Markier jemanden …` · `👇 1, 2 oder 3? Schreib's in die Kommentare`.
+3. CTA `👉 luxestyle.ch` + `WELCOME10` + CH-Hashtags inkl. `#bern`.
+
 ## Queue nachfüllen
-`src/queue.json` ergänzen (image = öffentliche CDN-URL, caption = Text) → `wrangler deploy`.
+`src/queue.json` ergänzen (image = öffentliche CDN-URL, caption = Text nach obigem Format) → `wrangler deploy`.
 Reels/Videos: `{"type":"reel","video":"<mp4-url>","caption":"…"}` (IG Reel; FB als Link-Fallback).
 Cursor steht in KV (Key `cursor`); zum Neustart: `wrangler kv key put --binding LUXE_KV cursor 0`.
 
