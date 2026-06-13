@@ -20,6 +20,7 @@
  * No-op-sicher: fehlt der Gemini-Key → Enhance überspringt; fehlen Meta-Creds → Post überspringt.
  */
 import { PRODUCTS } from './products.js';
+import { runReel, postVideoAll } from './video.js';
 
 const CAPTIONS = [
   '{label} ✨ Premium-Look zum fairen Preis. Code WELCOME10 = -10% · 🔗 {url}',
@@ -169,14 +170,19 @@ async function runPost(env, log){
   const configured = [env.IG_USER_ID&&env.IG_ACCESS_TOKEN&&'IG', env.FB_PAGE_ID&&env.FB_PAGE_ACCESS_TOKEN&&'FB', env.THREADS_ACCESS_TOKEN&&'Threads'].filter(Boolean);
   if(configured.length===0){ log.push('Post: keine Meta-Creds → übersprungen.'); return; }
   const queue = await getQueue(env);
-  const next = queue.find(x=>x.status==='ready' && /\.jpe?g($|\?)/i.test(x.image_url||''));
-  if(!next){ log.push('Post: kein ready-Eintrag (oder keine JPG-URL) → nichts zu tun.'); return; }
-  log.push(`Post → ${next.id} | Kanäle: ${configured.join('+')} | ${next.image_url}`);
-  const results = (await Promise.all([
-    postIG(env, V, next.image_url, next.caption),
-    postFB(env, V, next.image_url, next.caption),
-    postThreads(env, next.image_url, next.caption),
-  ])).filter(Boolean);
+  const isVideo = x => (x.kind === 'video');
+  const next = queue.find(x => x.status==='ready' && (
+    isVideo(x) ? !!(x.video_url) : /\.jpe?g($|\?)/i.test(x.image_url||'')));
+  if(!next){ log.push('Post: kein ready-Eintrag (oder keine gültige Medien-URL) → nichts zu tun.'); return; }
+  const mediaUrl = isVideo(next) ? next.video_url : next.image_url;
+  log.push(`Post → ${next.id} [${next.kind||'image'}] | Kanäle: ${configured.join('+')} | ${mediaUrl}`);
+  const results = isVideo(next)
+    ? await postVideoAll(env, V, mediaUrl, next.caption)
+    : (await Promise.all([
+        postIG(env, V, mediaUrl, next.caption),
+        postFB(env, V, mediaUrl, next.caption),
+        postThreads(env, mediaUrl, next.caption),
+      ])).filter(Boolean);
   const ok = results.filter(r=>r.ok);
   if(ok.length>0){
     next.status = 'posted'; next.posted_at = new Date().toISOString(); next.post_url = ok[0].id;
@@ -193,27 +199,34 @@ async function runPost(env, log){
 export default {
   async scheduled(event, env, ctx){
     const log = [];
-    // Posting-Crons enthalten Minute 0 zur vollen Stunde 9/17; Enhance-Cron läuft 04:30.
-    const isEnhance = /^30 /.test(event.cron);  // "30 4 * * *"
-    if(isEnhance) await runEnhance(env, log);
+    // Cron-Routing nach Minute: 30→Enhance (04:30), 15/25→Reel (05:15/05:25), sonst→Post (09:00/17:00).
+    if(/^30 /.test(event.cron)) await runEnhance(env, log);
+    else if(/^(15|25) /.test(event.cron)) await runReel(env, log);
     else await runPost(env, log);
     console.log(`[cron ${event.cron}] ${log.join(' · ')}`);
   },
 
   async fetch(req, env){
     const url = new URL(req.url);
-    // R2-Serve: öffentliche JPG-URL für Meta
+    // R2-Serve: öffentliche Medien-URLs für Meta (Bild + Video)
     if(url.pathname.startsWith('/enhanced/')){
       const obj = await env.BUCKET.get(url.pathname.slice(1));
       if(!obj) return new Response('Not found', { status:404 });
       return new Response(obj.body, { headers:{ 'Content-Type':'image/jpeg', 'Cache-Control':'public, max-age=86400' } });
     }
-    // Manueller Trigger zum Testen: /run?task=enhance|post&key=RUN_KEY
+    if(url.pathname.startsWith('/reels/')){
+      const obj = await env.BUCKET.get(url.pathname.slice(1));
+      if(!obj) return new Response('Not found', { status:404 });
+      return new Response(obj.body, { headers:{ 'Content-Type':'video/mp4', 'Cache-Control':'public, max-age=86400' } });
+    }
+    // Manueller Trigger zum Testen: /run?task=enhance|reel|post&key=RUN_KEY
     if(url.pathname === '/run'){
       if(!env.RUN_KEY || url.searchParams.get('key') !== env.RUN_KEY) return new Response('forbidden', { status:403 });
       const task = url.searchParams.get('task') || 'post';
       const log = [];
-      if(task==='enhance') await runEnhance(env, log); else await runPost(env, log);
+      if(task==='enhance') await runEnhance(env, log);
+      else if(task==='reel') await runReel(env, log);
+      else await runPost(env, log);
       return Response.json({ task, log });
     }
     if(url.pathname === '/health' || url.pathname === '/'){

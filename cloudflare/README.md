@@ -6,10 +6,13 @@ GitHub Actions** (die zeitweise gesperrt sind). Cron Triggers steuern alles:
 | Cron (UTC) | Task | Was passiert |
 |---|---|---|
 | `04:30` | **ENHANCE** | Nächstes kuratiertes Produktfoto → Gemini 2.5 Flash Image (produkt-treue Editorial-Szene) → JPG in **R2** → fertiger Post in die **KV-Queue** (mit Produktlink-Caption) |
-| `09:00` & `17:00` | **POST** | Nächster Queue-Eintrag → Meta-Graph-API → **Instagram + Facebook + (optional) Threads** |
+| `05:15` & `05:25` | **REEL** | Veredeltes Bild als Start-Keyframe → **Luma** (ruhige Kamerafahrt, Produkt bleibt echt) → MP4 in **R2** → Video-Post in die Queue. Der 2. Lauf resümiert lange Renders (Zustand in KV). |
+| `09:00` & `17:00` | **POST** | Nächster Queue-Eintrag (Bild **oder** Reel) → Meta-Graph-API → **Instagram + Facebook + (optional) Threads** |
 
-Das veredelte Bild liegt öffentlich unter `{PUBLIC_BASE}/enhanced/<name>.jpg` und wird vom Worker direkt
-aus R2 ausgeliefert — damit hat Meta die geforderte öffentliche JPG-URL.
+Bild und Video liegen öffentlich unter `{PUBLIC_BASE}/enhanced/<name>.jpg` bzw. `{PUBLIC_BASE}/reels/<name>.mp4`
+und werden vom Worker direkt aus R2 ausgeliefert — damit hat Meta die geforderte öffentliche Medien-URL.
+
+> **Reels sind optional:** ohne `LUMA_API_KEY` ist der REEL-Task ein sauberer No-op; ENHANCE + POST laufen normal.
 
 > Quelle der Produkte: `automation/good_products.csv` → eingebettet in `src/products.js`.
 > Nach Änderungen an der CSV: `node sync-products.mjs` und neu deployen.
@@ -54,6 +57,7 @@ npx wrangler secret put IG_ACCESS_TOKEN       # Long-Lived Token, Scope instagra
 npx wrangler secret put FB_PAGE_ID            # Facebook-Seiten-ID (1049840534888592 = LuxeStyle CH)
 npx wrangler secret put FB_PAGE_ACCESS_TOKEN  # Token mit pages_manage_posts
 npx wrangler secret put THREADS_ACCESS_TOKEN  # optional
+npx wrangler secret put LUMA_API_KEY          # optional, aktiviert die täglichen Reels
 npx wrangler secret put RUN_KEY               # frei wählbar, für den /run-Testaufruf
 ```
 
@@ -74,10 +78,14 @@ curl https://luxestyle-autopilot.dein-name.workers.dev/health
 # 1 Bild veredeln (legt es in R2 + Queue)
 curl "https://luxestyle-autopilot.dein-name.workers.dev/run?task=enhance&key=DEIN_RUN_KEY"
 
-# veredeltes Bild im Browser ansehen
-#   https://luxestyle-autopilot.dein-name.workers.dev/enhanced/<name>.jpg
+# 1 Reel rendern (Luma → R2 + Queue); ggf. 2× aufrufen bis das Video fertig ist
+curl "https://luxestyle-autopilot.dein-name.workers.dev/run?task=reel&key=DEIN_RUN_KEY"
 
-# 1 Post absetzen (IG/FB/Threads)
+# Medien im Browser ansehen
+#   https://luxestyle-autopilot.dein-name.workers.dev/enhanced/<name>.jpg
+#   https://luxestyle-autopilot.dein-name.workers.dev/reels/<name>.mp4
+
+# 1 Post absetzen (Bild oder Reel, IG/FB/Threads)
 curl "https://luxestyle-autopilot.dein-name.workers.dev/run?task=post&key=DEIN_RUN_KEY"
 
 # Live-Logs

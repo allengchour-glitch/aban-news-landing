@@ -3,10 +3,11 @@ main = "src/worker.js"
 compatibility_date = "2026-06-01"
 
 # --- Cron Triggers (UTC) — laufen unabhängig von GitHub Actions ---
-#   04:30 → ENHANCE (1 Bild veredeln, in Queue legen)
-#   09:00 + 17:00 → POST (nächsten Queue-Eintrag an IG/FB/Threads)
+#   04:30        → ENHANCE (1 Bild veredeln, in Queue legen)
+#   05:15 + 05:25 → REEL    (Luma-Video starten + pollen; 2. Lauf resümiert lange Renders)
+#   09:00 + 17:00 → POST    (nächsten Queue-Eintrag — Bild ODER Reel — an IG/FB/Threads)
 [triggers]
-crons = ["30 4 * * *", "0 9 * * *", "0 17 * * *"]
+crons = ["30 4 * * *", "15 5 * * *", "25 5 * * *", "0 9 * * *", "0 17 * * *"]
 
 # --- R2: speichert + liefert die veredelten JPGs öffentlich aus ---
 [[r2_buckets]]
@@ -26,7 +27,11 @@ GEMINI_IMAGE_MODEL = "gemini-2.5-flash-image"
 META_GRAPH_VERSION = "v21.0"
 ENHANCE_BATCH = "1"
 SKIP_THREADS = "0"
+# Luma Reel-Video (image-to-video). Leerlassen/LUMA_API_KEY weglassen → Reel-Task ist No-op.
+LUMA_MODEL = "ray-flash-2"
+LUMA_RESOLUTION = "540p"
+LUMA_DURATION = "5s"
 
 # Secrets NICHT hier — per `wrangler secret put <NAME>` setzen:
 #   GEMINI_API_KEY  IG_USER_ID  IG_ACCESS_TOKEN  FB_PAGE_ID  FB_PAGE_ACCESS_TOKEN
-#   THREADS_ACCESS_TOKEN (optional)  RUN_KEY (für manuellen /run-Test)
+#   THREADS_ACCESS_TOKEN (optional)  LUMA_API_KEY (optional, für Reels)  RUN_KEY (für manuellen /run-Test)
