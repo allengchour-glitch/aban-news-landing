@@ -44,6 +44,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-13 (16 neue Produkte hand-kuratiert + 3 Video-Pipelines):**
+- **🛍️ +16 neue cj-real-Produkte** (Runden 1–6, CJ-Access-Token transient) — alle ACTIVE, Bild visuell QA-geprüft,
+  in alle 6 Publications publiziert. Methode: gezielt suchen → **jedes Bild ansehen** → nur saubere Treffer
+  (keine Text-Overlays/Collagen/Asiaten-Hauptbilder). Runde 6 via **6 parallele Recherche-Agenten**. Liste +
+  IDs in `dropship/CJ-IMPORT-ZIELE-2026.md`. Gefüllte Lücken: Haustier, Pool/Strand, Grill, Garten, Schmuck (S925),
+  Reise/Outdoor (Camping-Stuhl, Weekender), Audio (Retro-Plattenspieler-Speaker), Beleuchtung.
+- **🎬 PRODUKT-VIDEOS — 3 Pipelines gebaut & committet** (`dropship/PRODUKT-VIDEOS.md`, alle no-op-sicher):
+  CJ-`productVideo` ist praktisch immer leer → Videos selbst holen. **C (empfohlen, copyright-sauber):**
+  `automation/luma_product_video.mjs` = Luma Image-to-Video aus dem Produkt-Hauptbild. **A:**
+  `automation/local/ae-video-fetch.mjs` = AliExpress-Video über PC-Claude-Browser (AE blockt Cloud-Scraping 403).
+  **B:** `automation/aliexpress_video_api.mjs` = AE Open-Platform-API (signiert). Gemeinsamer Attach-Baustein
+  `automation/attach_video_to_product.mjs` (stagedUpload VIDEO + productCreateMedia). Ziel-Liste `dropship/ae-targets.csv`.
+- **🔑 Luma-Key:** User hat einen gültigen Key (Format `luma-<uuid>-<uuid>`, „lumalabs"). Der zweite (`luma-api-…`)
+  ist FALSCH (403). **Key NICHT ins Repo** — transient nutzen oder als Secret `LUMA_API_KEY`. Attach aus der Cloud
+  geht ohne Shopify-Admin-Token via **MCP (stagedUploadsCreate+productCreateMedia) + `curl` für die Bytes**.
+
 **📌 2026-06-12 (Autonomie verankert + Schweizer-Follower-Maschine):**
 - **🔒 AUTONOMIE-REGEL (FEST, User 2026-06-12 „verankern"):** Laufender Betrieb = **vollautonom ohne PowerShell**
   für den User — über GitHub-Secrets + Workflows, ausgelöst per Zeitplan ODER **einem Tipp auf dem Handy-Widget**
