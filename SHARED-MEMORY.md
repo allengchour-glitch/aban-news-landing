@@ -39,6 +39,12 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Menü um Feinkategorien erweitert (statt löschen):** 12 sinnvolle Collections ins `main-menu`
+aufgenommen — Frauen +Blusen&Tops/Hosen/Sets; **Herren +Shirts&Tops/Hemden/Hosen/Sets** (endlich echte
+Herrenmode); Trends +Audio/Gaming/Ladegeräte; Wohnen +Wandkunst/Aufbewahrung. (menuUpdate, ganze Struktur,
+0 Fehler.) ⚠️ menuUpdate IMMER ganze items-Struktur senden. Damit sind die meisten 🟡-Feinkategorien aus dem
+Audit jetzt verlinkt statt verwaist.
+
 **2026-06-13 — Collections weiter bereinigt: 11 Duplikate gelöscht + 2 kaputte Smart-Regeln gefixt:**
 - 11 exakte sub-Duplikate gelöscht (beleuchtung, trinkflaschen, massage-sub, kinder-spielzeug, kleider,
   taschen-sub, damen-schmuck, damen-schmuck-sub, herren-schmuck-sub, selbst-gestalten, geschenke-unter-30-franken)
