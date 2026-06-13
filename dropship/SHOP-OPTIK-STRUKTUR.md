@@ -78,3 +78,10 @@ Alle publiziert (Onlineshop + Kanäle), Titelbild + SEO-Text gesetzt, ins Hauptm
   „Für Ihn"). Gegen-Check: 0 weitere Fehl-Sortierungen (nur legitimer Unisex-Kaschmir-Schal).
 - **Lehre:** Konjunktive Smart-Regel kann nicht OR — pro Sub EIN Titel-Keyword; Schmuck/Sets via NOT_CONTAINS bzw.
   TAG≠schmuck ausschliessen. Publish-Falle: neue Collections IMMER `publishablePublish` (sonst 404 im Menü).
+
+## 💎 Schmuck feiner (User 2026-06-13)
+- **🎁 Schmuck-Sets** neu (`schmuck-sets`, [TAG schmuck UND TITEL enthält Set] = 40) — publiziert, Cover, im Menü.
+- Schmuck-Dropdown jetzt: Premium · 💞 Partner & Paare · 📿 Halsketten · 💎 Ohrringe · 💍 Ringe · 💫 Armbänder ·
+  🎁 Sets · 👩 Damen-Schmuck (123) · 👨 Herren-Schmuck (58).
+- **Actions-Check 2026-06-13 11:40:** letzte geplante Ausführung weiterhin 12.06. 14:47 → Abuse-Sperre hält an
+  (Public-Repo hebt sie NICHT auf). Nicht getriggert (Drossel-Bitte). Pinterest/Posten/Bild-Audit warten.
