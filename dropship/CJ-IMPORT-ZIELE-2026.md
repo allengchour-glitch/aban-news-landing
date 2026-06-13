@@ -83,3 +83,20 @@ läuft ~14 T (≈28.06.) → User setzt dann `CJ_EMAIL`+`CJ_API_KEY` (Weg „A")
 Übersprungen (englische Badge-/Collage-Bilder, nicht sauber): Bubble-Machine, Auto-Bewässerung, Moon-Lamp (=Industrie-Flutlicht).
 **Lehre:** „Coole" CJ-Produkte haben oft Marketing-Overlay-Bilder → strenger filtern. Wo `productVideo` gefüllt ist,
 kann es per stagedUpload + productCreateMedia(VIDEO) angehängt werden. **Heute total 10 neue Produkte live.**
+
+### Runde 6 (2026-06-13, „nimm 10 Agenten + Browser-Connector, Video wo möglich") — +6 kuratiert
+**Methode:** 6 parallele Recherche-Agenten (Schmuck · Sommer · Beauty · Reise · Küche · Tech), je Kategorie CJ-Suche
+→ `product/query` → Bild visuell geprüft. (Browser-Connector = nur PC-Claude, aus der Cloud nicht erreichbar;
+10 Agenten parallel hätten sich am CJ-1-Req/s-Limit gegenseitig gedrosselt → 6 Agenten gewählt.)
+- 💎 Perlen-Ohrhänger «Éventail» S925 + Süsswasserperle (CHF 119.90) — id 15430179357057 → 💎 Ohrringe/Schmuck
+- 💫 Mesh-Armband «Maille» S925 federleicht (CHF 109.90) — id 15430179422593 → 💫 Armbänder/Schmuck
+- 🏖️ Aufblasbare Sonnenliege «Solara» mit Sonnendach (CHF 39.90) — id 15430179455361 → 🌊 Pool/Strand/Sommer
+- ⛱️ Camping-Stuhl «Sunshade» faltbar + Sonnendach/Getränkehalter (CHF 129.90) — id 15430179520897 → Reise/Outdoor
+- 👜 Weekender Reisetasche «Voyage» Premium-PU, faltbar (CHF 39.90) — id 15430179586433 → 👜 Taschen/Reise
+- 🎶 Retro Plattenspieler Bluetooth-Lautsprecher «Vinyl» Holzoptik (CHF 24.90) — id 15430179651969 → 🎧 Audio/Tech
+Alle ACTIVE, Bild READY, in alle 6 Publications publiziert.
+**Verworfen (Bild-QA):** Küche 16-in-1-Chopper + Twister-Slicer (Dimensions-/„Easy to Install"-Overlays, Collage),
+Beauty EMS-LED-Gerät (Caption+Swatch-Spalte, grenzwertig), Tech Ear-Clip/Knochenschall-Kopfhörer (Infografik-Bilder),
+Grill/Zelt-Ventilator („USA US STOCK"-Badges). **Kein Kandidat hatte `productVideo`** (CJ-Feld durchgängig leer).
+**Lehre:** Premium-saubere CJ-Bilder sind selten — pro Suchbegriff ~0–1 verwendbar; Schmuck (S925, Studio-Freisteller)
++ Mode/Taschen liefern am zuverlässigsten saubere Hauptbilder. **Heute total 16 neue Produkte live** (10+6).
