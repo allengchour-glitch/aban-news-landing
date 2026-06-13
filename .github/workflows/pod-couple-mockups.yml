@@ -1,0 +1,41 @@
+name: POD Couple Mockups (Gemini)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Nur erzeugen, kein Shopify-Swap (1 = dry)"
+        required: false
+        default: "0"
+      force:
+        description: "Vorhandene Bilder neu erzeugen (1 = force)"
+        required: false
+        default: "0"
+
+jobs:
+  mockups:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Ensure ImageMagick
+        run: convert -version || (sudo apt-get update && sudo apt-get install -y imagemagick)
+      - name: Generate couple mockups + swap
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+          FORCE: ${{ github.event.inputs.force }}
+        run: node automation/pod_couple_mockups.mjs
+      - name: Upload generated mockups
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: couple-mockups
+          path: pod/couple/gemini/*.jpg
+          if-no-files-found: ignore
