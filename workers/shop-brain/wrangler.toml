@@ -1,0 +1,36 @@
+# 🧠 LuxeStyle Shop-Brain — vollautomatische Produkt-Veredelung (GRATIS, ohne GitHub Actions)
+# Deploy:  cd workers/shop-brain && npx wrangler deploy
+# Vorher:  KV anlegen + Shopify-Secrets setzen (siehe README.md)
+#
+# Was es macht (per Cron, vollautonom):
+#  - holt die neuesten cj-real-Produkte
+#  - setzt fehlende SEO (Titel + Beschreibung) automatisch
+#  - setzt fehlende Produkt-Kategorie (Shopify-Taxonomie -> Google-Feed)
+#  - schreibt einen kurzen Status nach KV (+ optional Telegram)
+# => neue Importe sind immer sauber, ohne dass jemand etwas tun muss.
+
+name = "luxestyle-shop-brain"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Cron: alle 6 Stunden (fängt neue Importe schnell ab, verbraucht fast nichts).
+[triggers]
+crons = ["0 */6 * * *"]
+
+[[kv_namespaces]]
+binding = "BRAIN_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+[vars]
+SHOPIFY_API_VERSION = "2025-01"
+SCAN_LIMIT = "50"          # neueste Produkte pro Lauf prüfen
+MANUAL_ENABLED = "1"       # Test-Trigger per ?key=<TRIGGER_KEY>
+
+# Secrets per CLI setzen (NICHT hier eintragen):
+#   npx wrangler secret put SHOPIFY_SHOP            # z.B. au3j0y-hq.myshopify.com
+#   npx wrangler secret put SHOPIFY_CLIENT_ID
+#   npx wrangler secret put SHOPIFY_CLIENT_SECRET
+#   npx wrangler secret put TRIGGER_KEY             # optional (Test-Schutz)
+#   npx wrangler secret put TELEGRAM_BOT_TOKEN      # optional (Status-Push)
+#   npx wrangler secret put TELEGRAM_CHAT_ID        # optional

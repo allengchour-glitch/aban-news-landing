@@ -39,6 +39,16 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — „GEHIRN" gebaut: vollautonome Produkt-Veredelung (Cloudflare-Cron):**
+- **`workers/shop-brain/`** — Worker prüft alle 6 h die neuesten cj-real-Produkte und setzt **fehlende SEO +
+  Kategorie automatisch** (Shopify-Admin-API via Client-Credentials, gratis, ohne GitHub Actions). KV-Log +
+  optional Telegram-Status. Löst das „Bot überschreibt SEO"-Problem dauerhaft. README + Übersicht
+  `dropship/AUTOMATION-GEHIRN.md`.
+- **App-Installation geht NICHT autonom** (Shopify-OAuth = User-Klick) — wichtige Apps sind schon da
+  (Judge.me, Google&YouTube, Pinterest, Klaviyo). Optional: Search & Discovery, Shopify Email.
+- Zusammen mit `workers/pinterest-cron/` = 2 Gratis-Cron-Worker = das vollautonome Gehirn. Deploy je 1× per
+  `npx wrangler deploy`. User muss nur einmal KV+Secrets setzen.
+
 **2026-06-13 — Autonom weiter: Aufräumen + 3 neue SEO-Artikel:** 3 `[ARCHIV]`-Collections gelöscht
 (tech-gadgets, fitness-sport, pet-tierbedarf); abgelaufene `launch-week` zu evergreen **„🎁 Bundles & Deals"**
 umgebaut (Titel/Desc/SEO). **3 neue Ratgeber live** (Partner-Geschenke/Couple, Taschen-Trends, Bademode) →
