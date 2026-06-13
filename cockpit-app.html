@@ -14,6 +14,8 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
 @media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html[data-theme="dark"]{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}
+html[data-theme="light"]{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--field:#fffdf9}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
 .wrap{max-width:1000px;margin:0 auto;padding:0 18px}
@@ -120,6 +122,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
 .path-step{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:9px;background:var(--card)}
 .path-step .num{flex:none;width:28px;height:28px;border-radius:999px;background:var(--amber-dk);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.85rem}
 </style>
+<script>try{var _t=JSON.parse(localStorage.getItem("abanCockpit_theme")||'"auto"');if(_t&&_t!=="auto")document.documentElement.setAttribute("data-theme",_t)}catch(e){}</script>
 </head>
 <body>
 <header class="app"><div class="wrap">
@@ -558,6 +561,8 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
         <button class="btn ghost" id="bk_import">⬆ Daten laden</button>
         <input type="file" id="bk_file" accept="application/json,.json" hidden>
       </div>
+      <div class="row" style="margin-top:6px"><div class="fld" style="max-width:240px"><label>Darstellung</label><select id="cfg_theme"><option value="auto">Automatisch (System)</option><option value="light">Hell</option><option value="dark">Dunkel</option></select></div></div>
+      <div class="btnrow"><button class="btn ghost" id="bk_demo" type="button">🎬 Demo-Daten laden</button><button class="btn ghost" id="bk_wipe" type="button">🗑 Alle Daten löschen</button></div>
       <div class="btnrow" id="bk_install" style="display:none">
         <button class="btn ghost" id="bk_installbtn">📲 App installieren</button>
       </div>
@@ -1280,6 +1285,27 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       Object.keys(keys).forEach(function(k){if(k.indexOf("abanCockpit_")===0)LS.setItem(k,keys[k])});
       toast("Daten geladen — App wird neu geladen …");setTimeout(function(){location.reload()},900)}
       catch(err){toast("Datei konnte nicht gelesen werden")}};rd.readAsText(f);this.value=""});
+
+  /* ===== Darstellung + Demo + Reset ===== */
+  function applyTheme(t){if(t==="auto")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme",t)}
+  var _theme=get("abanCockpit_theme","auto");applyTheme(_theme);
+  if($("#cfg_theme")){$("#cfg_theme").value=_theme;$("#cfg_theme").addEventListener("change",function(){set("abanCockpit_theme",this.value);applyTheme(this.value)})}
+  if($("#bk_demo"))$("#bk_demo").addEventListener("click",function(){if(!window.confirm("Demo-Daten laden? Vorhandene Cockpit-Daten werden überschrieben."))return;
+    var ym=function(off){var d=new Date();d.setMonth(d.getMonth()-off);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-15"};
+    set("abanCockpit_stamm",{firma:"Muster Design GmbH",adresse:"Musterstrasse 1\n8000 Zürich",email:"hallo@muster-design.ch",tel:"044 123 45 67",iban:"CH9300762011623852957",steuer:"CHE-123.456.789",rl:"25"});
+    set("abanCockpit_clients",[{name:"Bäckerei Sonne",email:"info@sonne.ch",adresse:"Dorfstr. 5\n3000 Bern"},{name:"Webagentur Nord",email:"hi@nord.io",adresse:"Hafenweg 2\n8400 Winterthur"}]);
+    set("abanCockpit_artikel",[{desc:"Beratungsstunde",price:"120"},{desc:"Logo-Design",price:"850"},{desc:"Website-Pflege (Monat)",price:"90"}]);
+    set("abanCockpit_drafts",[
+      {nr:"2026-014",datum:ym(0),leistung:"",kunde:"Bäckerei Sonne\nDorfstr. 5\n3000 Bern",vat:"8.1",ziel:"14",items:[{desc:"Logo-Design",qty:"1",price:"850"}],status:"bezahlt",ts:Date.now()},
+      {nr:"2026-013",datum:ym(1),leistung:"",kunde:"Webagentur Nord\nHafenweg 2\n8400 Winterthur",vat:"8.1",ziel:"30",items:[{desc:"Beratungsstunde",qty:"8",price:"120"}],status:"bezahlt",ts:Date.now()},
+      {nr:"2026-015",datum:ym(0),leistung:"",kunde:"Bäckerei Sonne\nDorfstr. 5\n3000 Bern",vat:"8.1",ziel:"14",items:[{desc:"Website-Pflege (Monat)",qty:"1",price:"90"}],status:"offen",ts:Date.now()}
+    ]);
+    set("abanCockpit_kasse",[{datum:ym(0),typ:"ein",kat:"Honorar",betrag:850,notiz:"Logo"},{datum:ym(0),typ:"aus",kat:"Software",betrag:39,notiz:"Tools"},{datum:ym(1),typ:"aus",kat:"Material",betrag:120,notiz:""}]);
+    set("abanCockpit_time",[{proj:"Webagentur Nord",datum:ym(0),std:"8",satz:"120",desc:"Beratung"}]);
+    toast("Demo geladen — App wird neu geladen …");setTimeout(function(){location.reload()},800)});
+  if($("#bk_wipe"))$("#bk_wipe").addEventListener("click",function(){if(!window.confirm("Wirklich ALLE Cockpit-Daten auf diesem Gerät löschen? Das kann nicht rückgängig gemacht werden."))return;
+    var keys=[],i;for(i=0;i<LS.length;i++){var k=LS.key(i);if(k&&k.indexOf("abanCockpit_")===0)keys.push(k)}keys.forEach(function(k){LS.removeItem(k)});
+    toast("Alles gelöscht — App wird neu geladen …");setTimeout(function(){location.reload()},800)});
 
   /* Init */
   loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();renderOffen();renderUmsatz();renderArtikel();refreshKat();renderBelege();renderDash();
