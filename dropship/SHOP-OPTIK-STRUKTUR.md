@@ -56,3 +56,12 @@ Recherche-belegte Hebel, die optisch am meisten bringen:
 - Baymard — Homepage & Navigation UX Best Practices: https://baymard.com/blog/ecommerce-navigation-best-practice
 - Visual Merchandising for Ecommerce (Nacelle): https://nacelle.com/blog/visual-merchandising-for-ecommerce-creating-digital-storefronts-that-convert
 - Psychology of Visual Merchandising (Depict): https://depict.ai/magazine/the-psychology-of-visual-merchandising-how-product-arrangement-influences-shopper-behavior
+
+## 📝 Produkt-SEO (Punkt 2) — STAND 2026-06-13
+- Geprüft: Gros der aktiven Produkte hat bereits SEO. **Lücke = die 17 neuesten Produkte** (frisch importiert,
+  oben sichtbar) hatten leeres SEO → **alle 17 mit such-starkem SEO gefüllt** (Nutzen + CHF-Preis + Trust + WELCOME10),
+  live via MCP. Alle 17 haben auch ein Produktbild = komplett.
+- Beispiele: WC-Rollenhalter «Shelfy», Vakuumierer «FreshSeal», Messerschärfer «SharpPro», Riviera-Espadrilles,
+  Bamboo-Bluse/-Shirt/-Pullover, Lisbon-Slipper, Lash-Lift Kit u. a.
+- **Punkt 3 (neue Produkte):** Katalog ist bereits gross (1 143 aktiv). Neuer CJ-Import braucht `CJ_EMAIL`/`CJ_API_KEY`
+  (Secrets aktuell nicht gesetzt) → erst sinnvoll, wenn gezielt Lücken gefüllt werden sollen.
