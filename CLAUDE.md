@@ -79,6 +79,9 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **Branches/PRs:** #842 (Couple-Gemini-Pipeline) + #846 (pod_blank_mockups +9) gemerged; #414 (LehDs Session-Memory);
   #851 (SHARED-MEMORY Live-Stand). **OFFEN (User):** Printful-Mapping der POD-Produkte (`pod/couple/print/*.png`
   + SKUs verknüpfen) → sonst Fulfillment manuell. Paar-Reel = Video-Session.
+- **🔧 Autonom-Nachgang (SEO/QA):** Die 8 neuen Collections (partner-paare, hype-2026, sg-alle + 5 sg-Subs) mit
+  Meta-Title/Description nachgerüstet. QA: alle heute getauschten Bilder READY, je 1 sauberes Einzelbild, 0 FAILED,
+  kein „Dein Design" mehr. Katalog/Funnel maximal conversion-fertig — **Kern-Engpass bleibt Reichweite (User-Klicks §10).**
 
 **📌 2026-06-12 (Marktlücken + Unterkategorien + Menü-Umbau):**
 - **🔎 Marktlücken-Analyse (datenbelegt):** 0 Treffer bei Auto, Grill/BBQ, Pool/Strand, 1.-August; dünn: Pet, Kids,

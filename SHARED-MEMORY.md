@@ -54,6 +54,7 @@
 - **PRs:** #842 (Couple-Gemini-Pipeline, gemerged), #846 (pod_blank_mockups +9 Allover, gemerged), #414 (Session-Memory LehDs).
 - **OFFEN (User):** Printful-Mapping der POD-Produkte (Designs `pod/couple/print/*.png` hochladen + SKUs verknüpfen).
 - ⚠️ **Actions blieben den ganzen Tag gesperrt** (422 „Actions disabled for this user") → Dispatch ging nicht, alles in-Session gefahren.
+- **🔧 Nachgang:** 8 neue Collections SEO-Meta nachgerüstet; QA = alle getauschten Bilder READY/sauber, 0 FAILED. Katalog conversion-fertig.
 
 **2026-06-12 (ABEND) — abannews session: AFFILIATE-MASCHINE + aban-Pro-Funnel (Detail in `PROJEKT.md`, oberste Sektion):**
 - Komplette, ehrliche **Affiliate-/Review-Maschine** gebaut: `/deals`,`/ki-chatbots`,`/buchhaltung-software`,
