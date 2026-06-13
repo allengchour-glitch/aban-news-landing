@@ -39,6 +39,14 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Menü Herren entdoppelt + Schuhe + Trust-Zeile überall:**
+- **Herren-Dropdown** (`main-menu` id 310224093569): doppelte Uhr entfernt → „Uhren & Schmuck" umbenannt zu
+  „💎 Schmuck"; **„👟 Schuhe" (/collections/schuhe) neu** ergänzt. Reihenfolge: Für Ihn · ⌚ Uhren · 💎 Schmuck ·
+  👟 Schuhe · 🧔 Bart & Rasur · 🕶️ Sonnenbrillen. (menuUpdate, ganze Struktur 1:1 + Änderung, 0 Fehler.)
+- **Trust-Zeile auf +29 customer-facing Collections** angehängt (Damen-Mode-Stil: Gratis-Versand ab CHF 65 ·
+  30 Tage Rückgabe · TWINT · WELCOME10). Beschreibung blieb erhalten. Archiv/interne/schon-mit-Trust ausgelassen.
+  ⚠️ Menü via menuUpdate immer GANZE items-Struktur senden (sonst werden fehlende Items gelöscht).
+
 **2026-06-13 — Kategorie-Banner wiederhergestellt + gesichert:** Die 9 Marken-Banner (cat-*.jpg) waren
 von einer späteren Session als Collection-Bild **überschrieben** worden (Schmuck zeigte Produktfoto, Herren
 ein pexels-Foto). **Per API alle 9 wieder angehängt.** Mapping + „nicht überschreiben"-Regel:
