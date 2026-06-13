@@ -10,10 +10,14 @@
 #   XI (ElevenLabs, nur falls neu gerendert werden muss — die 13 Folgen sind bereits gerendert)
 #   PEXELS (optional, nur für Neu-Rendern)
 #   GITLAB_PUSH_TOKEN (optional: Project-Access-Token mit write_repository → speichert
-#                      uploaded.json/video_ids.json zurück, verhindert Doppel-Uploads)
+#                      Ledger/Status zurück, verhindert Doppel-Posts/-Uploads)
+#   --- Pinterest (Gratis-Dauertraffic für LuxeStyle) ---
+#   PINTEREST_ACCESS_TOKEN  ODER  PINTEREST_REFRESH_TOKEN + PINTEREST_APP_ID + PINTEREST_APP_SECRET
+#   (Refresh-Variante empfohlen: Token wird pro Lauf frisch geholt, läuft nie ab.)
 
 stages:
   - post
+  - traffic
 
 # ABAN-Files-Folgen auf YouTube hochladen.
 # Start: GitLab → Build → Pipelines → „Run pipeline" → Variable COUNT setzen (z. B. 6) → Job starten.
@@ -48,4 +52,40 @@ aban-upload:
         fi
       else
         echo "GITLAB_PUSH_TOKEN nicht gesetzt → Status nicht gespeichert (Doppel-Upload-Gefahr bei erneutem Lauf)."
+      fi
+
+# Pinterest-Pins aus dropship/pinterest_pins.csv veröffentlichen (Gratis-Dauertraffic).
+# Ersetzt den gesperrten GitHub-Workflow pinterest-publish.yml — identisches Skript.
+# Manuell: GitLab → Build → Pipelines → „Run pipeline" (Variablen LIMIT/DRY optional).
+# Automatisch (sparsam): Build → Pipeline schedules → z. B. Mo & Do 09:00, LIMIT=5.
+# Idempotent über Ledger dropship/pinterest_done.txt (wird mit GITLAB_PUSH_TOKEN zurückgeschrieben).
+pinterest-publish:
+  stage: traffic
+  image: node:20
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'      # manuell über „Run pipeline"
+    - when: manual                            # sonst nur auf Klick (verbrennt keine Minuten)
+  variables:
+    LIMIT: "5"      # neue Pins pro Lauf (kein Spam)
+    DRY: "false"    # "true" = nur testen, nichts posten
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq git
+  script:
+    - |
+      if [ "$DRY" = "true" ]; then DRYFLAG="--dry-run"; else DRYFLAG=""; fi
+      node automation/pinterest_publish.mjs --limit "$LIMIT" $DRYFLAG
+    # Ledger zurückspeichern (nur wenn GITLAB_PUSH_TOKEN gesetzt ist) → kein Doppel-Posting
+    - |
+      if [ -n "$GITLAB_PUSH_TOKEN" ]; then
+        git config user.email "ci@gitlab"; git config user.name "gitlab-ci"
+        git add dropship/pinterest_done.txt || true
+        if ! git diff --cached --quiet; then
+          git commit -m "pinterest: Ledger aktualisiert [skip ci]"
+          git push "https://oauth2:${GITLAB_PUSH_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git" "HEAD:${CI_COMMIT_REF_NAME}"
+        else
+          echo "keine neuen Pins."
+        fi
+      else
+        echo "GITLAB_PUSH_TOKEN nicht gesetzt → Ledger nicht gespeichert (Doppel-Post-Gefahr bei erneutem Lauf)."
       fi
