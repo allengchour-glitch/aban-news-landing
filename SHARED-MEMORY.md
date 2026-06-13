@@ -143,10 +143,10 @@
 - **Affiliate zentral in `js/affiliate-config.js`.** AKTIV: `MURF_URL`, `ELEVENLABS_URL`, **neu `HOSTINGER_URL`**
   (Refer&earn `?REFERRALCODE=T2IALLENGYBU`). ManyChat entlabelt (nicht in Users PartnerStack). Rest wartet auf
   User-Tracking-Links (Brevo/Canva/sevDesk…).
-- **⛔ DEPLOY-STAU:** **Actions seit ~15:09 UTC gedrosselt** („Actions has been disabled for this user" — Abuse-
-  Throttle durch die vielen Auto-Workflows, TROTZ Public-Repo). Alles nach 15:09 ist auf `main`, aber **nicht live
-  deployed**. Deployt automatisch, sobald Actions frei. **→ Bitte Auto-Workflows weiter drosseln/bündeln**, sonst
-  blockiert das immer wieder auch die abannews-Deploys.
+- **✅ DEPLOY-STAU GELÖST (13.06.):** Der Actions-Throttle vom 12.06. (~15:09 UTC) hat sich über Nacht von selbst
+  gelöst; der Stau ist abgearbeitet. **Live verifiziert (curl):** Hostinger-Link (`REFERRALCODE=T2IALLENGYBU`) in
+  `affiliate-config.js`, alle Voice-Seiten 200, ManyChat-Fix live. **→ Bitte Auto-Workflows trotzdem weiter
+  drosseln/bündeln**, sonst blockiert der Throttle immer wieder auch die abannews-Deploys.
 - Branch `claude/abannews-growth-monetization-hm6wod`. **TODO morgen:** User-Tracking-Links eintragen + Newsletter
   raus (erste Provision → schaltet ManyChat & weitere PartnerStack-Programme frei). Details: `PROJEKT.md`.
 

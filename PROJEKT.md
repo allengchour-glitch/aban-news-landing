@@ -74,12 +74,11 @@
 - **Voice-Funnel (→ ElevenLabs/Murf):** `/ki-stimmen` (bestehend), `/ki-voiceover`, `/ki-stimme-klonen`,
   `/text-vorlesen-lassen`, `/ki-podcast`.
 
-### ⏳ DEPLOY-STAU (wichtig!)
-- **GitHub Actions ist seit ~15:09 UTC für das Konto gedrosselt** („Actions has been disabled for this user", Abuse-
-  Throttle durch die vielen Dropship/POD/Social-Workflows). **→ ALLES nach ~15:09 ist auf `main`, aber NICHT live
-  deployed** (Hostinger-Link, alle Voice-Seiten, ManyChat-Fix, KI-Studio-Polish). Deployt automatisch, sobald Actions
-  wieder frei ist (nächster Push / 6h-Cron). **Nichts ist verloren.** Live-Check: `js/affiliate-config.js` muss
-  `REFERRALCODE=T2IALLENGYBU` enthalten.
+### ✅ DEPLOY-STAU GELÖST (2026-06-13) — alles live
+- Der Actions-Throttle vom 12.06. (~15:09 UTC) hat sich **über Nacht von selbst gelöst**; der Stau ist abgearbeitet.
+- **Verifiziert live (curl, 13.06.):** `js/affiliate-config.js` enthält `REFERRALCODE=T2IALLENGYBU` (Hostinger-Link
+  aktiv); alle Voice-Seiten liefern 200 (`/ki-voiceover`, `/ki-stimme-klonen`, `/text-vorlesen-lassen`, `/ki-podcast`);
+  `/website-hosting` + `/tool-tipps` live; ManyChat-Fix (entlabelt, `MANYCHAT_URL=""`) ist live. **Nichts verloren.**
 
 ### ✅ TODO MORGEN (mit dem User)
 1. **Hostinger-Affiliate-Formular** zu Ende ausfüllen (separates, höher-zahlendes Programm; Refer&earn läuft schon).
