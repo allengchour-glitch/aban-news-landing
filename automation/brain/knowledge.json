@@ -1,0 +1,300 @@
+{
+  "version": 1,
+  "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
+  "updated": "2026-06-13",
+  "signals": {
+    "hashtags": {
+      "#luxestyle": {
+        "uses_total": 43,
+        "views_wsum": 14083,
+        "eng_wsum": 2.1047
+      },
+      "#schweiz": {
+        "uses_total": 25,
+        "views_wsum": 7528,
+        "eng_wsum": 1.2515999999999998
+      },
+      "#ootdschweiz": {
+        "uses_total": 26,
+        "views_wsum": 7008,
+        "eng_wsum": 1.575
+      },
+      "#fyp": {
+        "uses_total": 21,
+        "views_wsum": 5702,
+        "eng_wsum": 0.947
+      },
+      "#foryou": {
+        "uses_total": 15,
+        "views_wsum": 3776,
+        "eng_wsum": 0.6768
+      },
+      "#schweizmode": {
+        "uses_total": 17,
+        "views_wsum": 2385,
+        "eng_wsum": 1.1787
+      },
+      "#sommerkleid": {
+        "uses_total": 13,
+        "views_wsum": 4753,
+        "eng_wsum": 0.5121
+      },
+      "#fashionschweiz": {
+        "uses_total": 13,
+        "views_wsum": 2743,
+        "eng_wsum": 0.9261999999999999
+      },
+      "#sommermode": {
+        "uses_total": 10,
+        "views_wsum": 480,
+        "eng_wsum": 1.017
+      },
+      "#ootd": {
+        "uses_total": 8,
+        "views_wsum": 420,
+        "eng_wsum": 0.5488
+      },
+      "#cardigan": {
+        "uses_total": 6,
+        "views_wsum": 2139,
+        "eng_wsum": 0.2037
+      },
+      "#sommermode2026": {
+        "uses_total": 6,
+        "views_wsum": 1023,
+        "eng_wsum": 0.4467
+      },
+      "#bohostyle": {
+        "uses_total": 4,
+        "views_wsum": 3144,
+        "eng_wsum": 0.0228
+      },
+      "#sommerschuhe": {
+        "uses_total": 4,
+        "views_wsum": 1118,
+        "eng_wsum": 0.0644
+      },
+      "#schmuck": {
+        "uses_total": 4,
+        "views_wsum": 772,
+        "eng_wsum": 0.14
+      },
+      "#accessoires": {
+        "uses_total": 4,
+        "views_wsum": 200,
+        "eng_wsum": 0.3286
+      },
+      "#swissfashion": {
+        "uses_total": 4,
+        "views_wsum": 182,
+        "eng_wsum": 0.3658
+      },
+      "#selbstgestalten": {
+        "uses_total": 2,
+        "views_wsum": 1585,
+        "eng_wsum": 0.0189
+      },
+      "#mundart": {
+        "uses_total": 1,
+        "views_wsum": 792,
+        "eng_wsum": 0.0088
+      },
+      "#schwiizerdütsch": {
+        "uses_total": 1,
+        "views_wsum": 792,
+        "eng_wsum": 0.0088
+      },
+      "#wunschdesign": {
+        "uses_total": 1,
+        "views_wsum": 792,
+        "eng_wsum": 0.0088
+      },
+      "#cosy": {
+        "uses_total": 1,
+        "views_wsum": 779,
+        "eng_wsum": 0.0051
+      },
+      "#sommerabend": {
+        "uses_total": 1,
+        "views_wsum": 779,
+        "eng_wsum": 0.0051
+      },
+      "#layering": {
+        "uses_total": 1,
+        "views_wsum": 779,
+        "eng_wsum": 0.0051
+      },
+      "#damenmode": {
+        "uses_total": 1,
+        "views_wsum": 776,
+        "eng_wsum": 0.0026
+      },
+      "#blazer": {
+        "uses_total": 1,
+        "views_wsum": 750,
+        "eng_wsum": 0.0067
+      },
+      "#businesslook": {
+        "uses_total": 1,
+        "views_wsum": 750,
+        "eng_wsum": 0.0067
+      },
+      "#officeoutfit": {
+        "uses_total": 1,
+        "views_wsum": 750,
+        "eng_wsum": 0.0067
+      },
+      "#geschenkidee": {
+        "uses_total": 1,
+        "views_wsum": 328,
+        "eng_wsum": 0.0183
+      },
+      "#homedecor": {
+        "uses_total": 1,
+        "views_wsum": 326,
+        "eng_wsum": 0.0184
+      },
+      "#luxestylech": {
+        "uses_total": 2,
+        "views_wsum": 1494,
+        "eng_wsum": 0.0132
+      },
+      "#swisspremium": {
+        "uses_total": 2,
+        "views_wsum": 1494,
+        "eng_wsum": 0.0132
+      },
+      "#premiumlifestyle": {
+        "uses_total": 2,
+        "views_wsum": 1494,
+        "eng_wsum": 0.0132
+      },
+      "#wellness": {
+        "uses_total": 2,
+        "views_wsum": 1434,
+        "eng_wsum": 0.0236
+      },
+      "#premiumwellness": {
+        "uses_total": 1,
+        "views_wsum": 1107,
+        "eng_wsum": 0.0054
+      },
+      "#aromatherapie": {
+        "uses_total": 1,
+        "views_wsum": 1107,
+        "eng_wsum": 0.0054
+      },
+      "#aroma": {
+        "uses_total": 1,
+        "views_wsum": 1107,
+        "eng_wsum": 0.0054
+      },
+      "#smartdiffuser": {
+        "uses_total": 1,
+        "views_wsum": 1107,
+        "eng_wsum": 0.0054
+      },
+      "#aestheticroom": {
+        "uses_total": 1,
+        "views_wsum": 1107,
+        "eng_wsum": 0.0054
+      },
+      "#spaathome": {
+        "uses_total": 1,
+        "views_wsum": 1107,
+        "eng_wsum": 0.0054
+      },
+      "#luxurylife": {
+        "uses_total": 1,
+        "views_wsum": 1107,
+        "eng_wsum": 0.0054
+      },
+      "#aromatherapyathome": {
+        "uses_total": 1,
+        "views_wsum": 1107,
+        "eng_wsum": 0.0054
+      }
+    },
+    "reports_ingested": [
+      "tiktok_luxestyle.ch_2026-06-12.json",
+      "tiktok_luxestyle.ch_2026-06-13.json"
+    ]
+  },
+  "rules": {
+    "reach": [
+      "#fyp",
+      "#foryou"
+    ],
+    "local_niche": [
+      "#schweiz",
+      "#bern",
+      "#schweizmode",
+      "#ootdschweiz",
+      "#fashionschweiz",
+      "#sommerkleid"
+    ],
+    "curated_discovery": [
+      "#tiktokmademebuyit",
+      "#produkttipp",
+      "#musthave",
+      "#gefundenauftiktok",
+      "#lifehack"
+    ],
+    "blocked_hashtags": [
+      "#luxestyle",
+      "#luxestylech"
+    ],
+    "blocked_reason": "Marken-Tags = Discovery-Sackgasse (niemand sucht sie); Ø432 Views trotz 21x Nutzung. Nur fuer Brand-Recall, nicht fuer Reichweite -> aus TikTok-Discovery-Tagsets verbannt.",
+    "winner_hooks": [
+      "Wusste nicht, dass ich das brauche 👀 %s — und der Preis? Schau selbst 👇 📌 Speicher's dir · −10%% WELCOME10 → luxestyle.ch",
+      "CHF 34.90 statt Designer-Preis 👀 %s — welche Farbe wäre deins? Kommentier 👇 📌 Speichern für später · folge für die Sommer-Drops · −10%% WELCOME10 → luxestyle.ch",
+      "Stopp — das musst du sehen ✋ %s. Welche Variante nimmst du? 1, 2 oder 3? 👇 📌 Speichern · −10%% WELCOME10 → luxestyle.ch",
+      "%s unter CHF 40 ☀️ 1, 2 oder 3 — welches nimmst du? 👇 Folge für mehr Looks 🤍 −10%% WELCOME10 → luxestyle.ch",
+      "Das löst ein echtes Sommer-Problem 🌞 %s — genialer Preis. Speicher's dir 📌 Frage 👇 −10%% WELCOME10 → luxestyle.ch",
+      "Dein nächster Lieblings-Look? %s 🤍 Frage in die Kommentare 👇 📌 Speicher's dir · −10%% WELCOME10 → luxestyle.ch",
+      "%s zum fairen Preis 🇨🇭 Kommentier 1/2/3 👇 folge @luxestyle.ch für mehr · −10%% WELCOME10 → luxestyle.ch"
+    ],
+    "format_priority": [
+      "UGC/Hands-on-Demo (Problem->Loesung, Vorher/Nachher) — Algo pusht nativ am staerksten",
+      "Preis-Vergleich/Kontrast-Hook (CHF X statt Y / Z%% guenstiger als <Marke>) — datenbelegt Top-Views",
+      "Produkt + konkreter CHF-Preis + Frage-CTA",
+      "Mundart (Schwiizerduetsch) — belegt stark (Mach dys eiges Teil 793 V)"
+    ],
+    "loser_formats": [
+      "Generische Kategorie-/Marken-Karten ohne Preis/Produkt (6-19 Views) — NICHT mehr posten",
+      "Reine Marken-Hashtag-Saetze (#luxestyle-Spam) — keine Reichweite"
+    ],
+    "posting": {
+      "ch_primetime_utc": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cadence_target_per_day": 2,
+      "note": "CH-Feierabend 18-21 Uhr = 16-19 UTC. Taeglich posten schlaegt Mo/Di-Cluster."
+    }
+  },
+  "decisions": [
+    {
+      "date": "2026-06-13",
+      "change": "Gehirn initialisiert (brain.mjs + knowledge.json).",
+      "evidence": "Bestehende Lernschleife nahm nur den letzten Report -> Regressionsrisiko (#luxestyle kam zurueck). Jetzt kumulativ + Ratsche."
+    },
+    {
+      "date": "2026-06-13",
+      "change": "#luxestyle/#luxestylech als Discovery-Tags geblockt.",
+      "evidence": "21x genutzt, nur Ø371-432 Views, 0 Reichweiten-Effekt (Marken-Sackgasse)."
+    },
+    {
+      "date": "2026-06-13",
+      "change": "Discovery-Tags + Problem/Neugier-Hooks als Gewinner gesetzt.",
+      "evidence": "Playbook erfolgreicher Organik-Dropshipper + eigene Top-Views (Preis-Vergleich)."
+    },
+    {
+      "date": "2026-06-13",
+      "change": "Pools aus 2 Reports neu abgeleitet.",
+      "evidence": "Top: #bohostyle #sommerkleid #cardigan #schweiz #sommerschuhe"
+    }
+  ]
+}

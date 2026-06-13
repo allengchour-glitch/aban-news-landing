@@ -26,6 +26,15 @@ Der User macht den #1-Hebel (TikTok/Meta-Pixel + bezahlte CH-Kampagne) morgen. �
 - **Caption-Format als FESTE Regel** im Poster-README verankert (Produkt+CHF-Preis [+Vergleich] · 1 Share/Save/Komm.-
   Trigger · CTA+WELCOME10+#bern) → künftige Posts befolgen es automatisch.
 
+## 2026-06-13 — 🧠 GEHIRN gebaut („installiere ein Gehirn das nur besser wird")
+Selbstlernende Schleife `automation/brain/` (brain.mjs + knowledge.json + BRAIN.md + run.sh + README).
+**Wird mit jedem Lauf besser (Ratsche):** kumulatives Gedächtnis über ALLE Reports (idempotent),
+Konfidenz-Schwelle ≥3 Nutzungen (keine One-Hit-Tags), Blocklist bewiesener Verlierer (#luxestyle nie mehr im
+Output), kuratierte Gewinner bleiben erhalten, append-only Entscheidungs-Log. Leitet automatisch die nächsten
+🔴/🟡-Aktionen ab (z.B. „0 Shares → Trigger", „keine CH-Primetime → Zeit verschieben"). Alte
+`learn_from_analytics.mjs` ist jetzt nur Shim aufs Gehirn (kann nicht mehr regressieren). Lauf: `bash
+automation/brain/run.sh`. **Verankert in CLAUDE.md-Daueraufträgen.**
+
 ## 2026-06-13 — Von anderen Influencern/Top-Dropshippern gelernt (`reports/INFLUENCER-LEHREN-2026-06-13.md`)
 Playbook erfolgreicher Organik-Dropship-Accounts (Minea/AutoDS-Tactics) vs. LuxeStyle abgeglichen. **Größte Lücke:
 unser Content ist polierte KI-Produkt-Pans — der Algo pusht aber UGC/Demo/Problem-Lösung nativ.** Weitere Lehren:
