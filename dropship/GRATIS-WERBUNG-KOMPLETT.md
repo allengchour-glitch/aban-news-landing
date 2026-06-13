@@ -50,9 +50,14 @@ verknüpfen → „Free listings" aktivieren → Produkte synchronisieren. (Free
   bereits live korrigiert**; Muster siehe unten. Saubere Titel = bessere Free-Listing-Klickrate.
 - ✅ **Gut:** Preise, Verfügbarkeit, Bilder, Produkttyp gesetzt; Versand/Rückgabe-Policies vorhanden.
 
-**Fix-Muster für schwache SEO (für Massen-Korrektur):**
-`Titel: <Produktname klar> | LuxeStyle` · `Description: <Nutzen in 1 Satz>. Gratis-Versand ab CHF 65, −10% mit Code WELCOME10.`
-(Reproduzierbar via `productUpdate(seo:{...})` — auf Wunsch fahre ich die Korrektur über den ganzen Katalog.)
+**Fix-Muster für schwache SEO:**
+`Titel: <Produktname klar> | LuxeStyle` · `Description: <Nutzen>. jetzt im Schweizer Online-Shop LuxeStyle … −10% mit Code WELCOME10.`
+
+**✅ Katalog-SEO live korrigiert (2026-06-13):** **81 Produkte** mit kaputter Auto-SEO durchgefixt (Pipeline:
+`automation/seo_catalog_fix.py` erkennt Auto-Signatur „… / schnelle Lieferung. Jetzt" → erzeugt saubere
+Batch-Mutationen `productUpdate(seo)`). Die ~250 gescannten älteren Importe sind bereinigt; die neuesten Importe
+haben bereits saubere SEO. **Offen nur noch:** Produkt-**Kategorie** (Shopify-Taxonomie) ist katalogweit `null` →
+für Google-Free-Listings im Admin bulk zuweisen (Produkte → auswählen → Kategorie), dann mappt der Google-Kanal automatisch.
 
 ---
 
