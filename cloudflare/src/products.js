@@ -90,5 +90,45 @@ export const PRODUCTS = [
     "name": "smartwatch-pro-amoled-herzfrequenz-100-sportmodi-7-tage-akku",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/S999a7c4138b642d682163261eb9f6b91m.webp?v=1780080350",
     "label": "Smartwatch «Pro AMOLED»"
+  },
+  {
+    "name": "moissanite-kette-aurora-925-silber-gra-zertifiziert",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3d48340e-cc7f-4d18-8f74-cd2c8d463c9b.jpg?v=1781380333",
+    "label": "Moissanite-Kette «Aurora»"
+  },
+  {
+    "name": "echtleder-henkeltasche-milano-weiches-rindsleder",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3dcf27ae-3c09-435b-a1ed-1a4bd4f802dc_trans.jpg?v=1781380295",
+    "label": "Echtleder-Tasche «Milano»"
+  },
+  {
+    "name": "susswasserperlen-kette-perla-925-silber-bar-design",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d8fdaf68-c043-42eb-ba7f-d9b767b76274.jpg?v=1781386516",
+    "label": "Perlenkette «Perla»"
+  },
+  {
+    "name": "925-silber-armband-maglia-mesh-verstellbar",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c8f52d5a-690e-4cfc-8471-9a7dee8ed3b4.jpg?v=1781386533",
+    "label": "925-Armband «Maglia»"
+  },
+  {
+    "name": "open-ear-wireless-kopfhorer-aria-bluetooth-sport-clip",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/370826bc-ead7-4f4c-a3bd-95793af4427c_fine.jpg?v=1781384110",
+    "label": "Open-Ear-Kopfhörer «Aria»"
+  },
+  {
+    "name": "polka-dot-wickel-rock-dolce-high-waist-asymmetrisch",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf2b735e-62bb-43b6-b8ca-954f7dc124ae.jpg?v=1781379459",
+    "label": "Polka-Dot-Rock «Dolce»"
+  },
+  {
+    "name": "herren-high-top-sneaker-brooklyn-mesh-atmungsaktiv",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/68d1f93d-d661-44d6-93ce-06d1765880d3.jpg?v=1781379578",
+    "label": "Herren-Sneaker «Brooklyn»"
+  },
+  {
+    "name": "damen-high-heel-sandalette-capri-offene-spitze",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1ef08d25-8428-4c13-8ca5-fc7da3731a15.jpg?v=1781379496",
+    "label": "High-Heel-Sandalette «Capri»"
   }
 ];
