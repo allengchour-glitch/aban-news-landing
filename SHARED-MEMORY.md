@@ -39,6 +39,16 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Collections „sauber" gemacht:**
+- **7 Collections bereinigt:** kaputt-escapte Archiv-Beschreibungen (literal <p>) entescaped; **interne Sprache, die an
+  Kund:innen durchsickerte** entfernt (tiktok-ads-ready→„✨ Im Video vorgestellt", top-5-start→„🏆 Top 5 Favoriten",
+  tiktok-hero-products→„🚀 Trend-Favoriten", home-family) → saubere Kundentexte + SEO + Trust-Zeile.
+- **21 Collections** ohne SEO-Meta bekamen welche (Damen/Herren-Unterkategorien, Schuhe, Accessoires, Selbst-gestalten…).
+- ⚠️ **Bekannter Aufräum-Rest (braucht User-OK, da Löschen hart):** Der Shop hat **~181 Collections, viele DUPLIKATE**
+  aus alten Sessions (z. B. `damen-schmuck` vs `damen-schmuck-sub` vs `sub-*`, `selbst-gestalten` vs `-1` vs `sg-*`,
+  diverse `*-premium`-Emoji-Collections, mehrere `sommer*`). Menü nutzt nur bestimmte Handles; die Orphans könnten
+  gelöscht/gemerged werden — aber nur nach Prüfung der Footer-/Ad-Links. NICHT blind löschen.
+
 **2026-06-13 — Webseite weiter poliert (Qualitäts-Sweep):**
 - **13 brandneue Produkte** (nach Enrich importiert: Ringe/Sonnenbrillen/Cap/Taschen/Silberschmuck) mit **SEO + Kategorie**
   versehen; 3 weitere mit Kategorie; **2 Collections** (self-care-wellness-1, schule-buro) mit SEO-Meta. 0 Fehler.
