@@ -39,6 +39,13 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Luxestyle: Hauptmenü aufgeräumt (live via Shopify `menuUpdate`, `main-menu` id 310224093569):**
+- **„🇨🇭 1. August" aus dem Top-Level ENTFERNT** (saisonal, im Juni fehl am Platz) → als „🇨🇭 Schweizer Edition"
+  (`/collections/erste-august`) unter **„Selbst gestalten"** eingegliedert. Im Juli/Aug leicht wieder hochziehbar.
+- **Herren entdoppelt:** redundantes „Uhren & Schmuck" (`herrenuhren-schmuck`) raus; bleibt: Für Ihn · ⌚ Uhren ·
+  🧔 Bart & Rasur · Sonnenbrillen. Top-Level jetzt: Hype 2026 · Frauen · Herren · Schmuck · Wohnen & Wellness ·
+  Trends & Gadgets · Selbst gestalten · Sale. (Collections unverändert, nur Navigation.)
+
 **2026-06-12 (ABEND) — abannews session: AFFILIATE-MASCHINE + aban-Pro-Funnel (Detail in `PROJEKT.md`, oberste Sektion):**
 - Komplette, ehrliche **Affiliate-/Review-Maschine** gebaut: `/deals`,`/ki-chatbots`,`/buchhaltung-software`,
   `/email-marketing-tools`,`/website-hosting`,`/design-tools` + Hub `/tool-tipps` (+ EN-Versionen); **5 Voice-Seiten**
