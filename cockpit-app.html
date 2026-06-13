@@ -145,7 +145,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     <p class="sub">Positionen eintragen → Summen automatisch → „Drucken / PDF". Kunde aus dem Adressbuch wählen oder frei eintippen.</p>
     <div class="panel">
       <div class="row">
-        <div class="fld"><label>Rechnungs-Nr.</label><input id="r_nr" placeholder="2026-001"></div>
+        <div class="fld"><label>Rechnungs-Nr.</label><input id="r_nr" placeholder="2026-001"><button class="btn ghost sm" id="r_nextnr" type="button" style="margin-top:6px">🔢 Nächste Nr.</button></div>
         <div class="fld"><label>Datum</label><input id="r_datum" type="date"></div>
         <div class="fld"><label>Leistungszeitraum</label><input id="r_leistung" placeholder="z. B. Juni 2026"></div>
       </div>
@@ -439,6 +439,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       <div class="fld"><label>Anschrift</label><textarea id="st_adresse" rows="3"></textarea></div>
       <div class="row"><div class="fld"><label>E-Mail</label><input id="st_email"></div><div class="fld"><label>Telefon</label><input id="st_tel"></div></div>
       <div class="row"><div class="fld"><label>IBAN</label><input id="st_iban"></div><div class="fld"><label>MwSt-/Steuernr.</label><input id="st_steuer"></div></div>
+      <div class="fld"><label>Logo (optional — erscheint oben auf Rechnung &amp; Angebot)</label><input id="st_logo_file" type="file" accept="image/*"><div id="st_logo_prev" class="note"></div></div>
       <div class="btnrow"><button class="btn" id="st_save">💾 Stammdaten speichern</button></div>
     </div>
     <div class="panel">
@@ -489,7 +490,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   var stF=["firma","adresse","email","tel","iban","steuer"];
   function loadStamm(){var s=get("abanCockpit_stamm",{});stF.forEach(function(f){if($("#st_"+f))$("#st_"+f).value=s[f]||""})}
   function stamm(){return get("abanCockpit_stamm",{})}
-  $("#st_save").addEventListener("click",function(){var o={};stF.forEach(function(f){o[f]=$("#st_"+f).value});set("abanCockpit_stamm",o);toast("Stammdaten gespeichert ✓")});
+  $("#st_save").addEventListener("click",function(){var o=get("abanCockpit_stamm",{});stF.forEach(function(f){o[f]=$("#st_"+f).value});set("abanCockpit_stamm",o);toast("Stammdaten gespeichert ✓")});
 
   /* Kunden */
   function clients(){return get("abanCockpit_clients",[])}
@@ -542,7 +543,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   function printDoc(opts){
     var s=stamm(),rows=opts.items.map(function(it){var q=n(it.qty)||0,pr=n(it.price)||0;return '<tr><td>'+esc(it.desc)+'</td><td class="n">'+nf(q)+'</td><td class="n">'+nf(pr)+'</td><td class="n">'+nf(q*pr)+'</td></tr>'}).join("");
     var foot=opts.foot||"";
-    var html='<div class="pi-head"><div><strong>'+esc(s.firma||"")+'</strong><br>'+nl(s.adresse||"")+'<br>'+esc(s.email||"")+(s.tel?" · "+esc(s.tel):"")+'</div><div style="text-align:right">'+esc(opts.title)+(opts.nr?" "+esc(opts.nr):"")+'<br>'+(opts.datum?de(parseDate(opts.datum)):"")+'</div></div>'+
+    var html='<div class="pi-head"><div>'+(s.logo?'<img src="'+s.logo+'" alt="" style="max-height:64px;margin-bottom:8px"><br>':'')+'<strong>'+esc(s.firma||"")+'</strong><br>'+nl(s.adresse||"")+'<br>'+esc(s.email||"")+(s.tel?" · "+esc(s.tel):"")+'</div><div style="text-align:right">'+esc(opts.title)+(opts.nr?" "+esc(opts.nr):"")+'<br>'+(opts.datum?de(parseDate(opts.datum)):"")+'</div></div>'+
       '<div>'+nl(opts.kunde||"")+'</div><h2>'+esc(opts.title)+(opts.nr?" "+esc(opts.nr):"")+'</h2>'+(opts.meta?'<div>'+esc(opts.meta)+'</div>':'')+
       '<table><thead><tr><th>Beschreibung</th><th class="n">Menge</th><th class="n">Einzelpreis</th><th class="n">Summe</th></tr></thead><tbody>'+rows+'</tbody></table>'+
       '<div class="pi-tot">Netto: '+nf(opts.tot.net)+'<br>'+(opts.tot.rate>0?("zzgl. "+String(opts.tot.rate).replace(".",",")+" % MwSt: "+nf(opts.tot.vat)+"<br>"):"")+'<strong>Gesamt: '+nf(opts.tot.gross)+'</strong></div>'+
@@ -1001,6 +1002,16 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     catChips();renderLessons();renderTips();renderGloss();renderQuiz();renderCheck();renderPath();updateProg();
   })();
 
+  /* ===== Logo + Auto-Rechnungsnummer ===== */
+  function showLogoPrev(){var l=(get("abanCockpit_stamm",{}).logo)||"",p=$("#st_logo_prev");if(!p)return;
+    if(l){p.innerHTML='<img src="'+l+'" alt="Logo" style="max-height:54px;margin-top:6px;border:1px solid var(--line);border-radius:6px;padding:4px;background:#fff"><br><button class="btn ghost sm" id="st_logo_del" type="button" style="margin-top:6px">Logo entfernen</button>';
+      $("#st_logo_del").addEventListener("click",function(){var s=get("abanCockpit_stamm",{});delete s.logo;set("abanCockpit_stamm",s);showLogoPrev();toast("Logo entfernt")})}
+    else p.textContent="Kein Logo gesetzt."}
+  if($("#st_logo_file"))$("#st_logo_file").addEventListener("change",function(){var f=this.files&&this.files[0];if(!f)return;
+    if(f.size>500000){toast("Logo zu groß (max ~500 KB)");this.value="";return}
+    var rd=new FileReader();rd.onload=function(){var s=get("abanCockpit_stamm",{});s.logo=rd.result;set("abanCockpit_stamm",s);showLogoPrev();toast("Logo gespeichert ✓")};rd.readAsDataURL(f);this.value=""});
+  if($("#r_nextnr"))$("#r_nextnr").addEventListener("click",function(){var y=new Date().getFullYear(),seq=get("abanCockpit_seq",{}),nx=(seq[y]||0)+1;seq[y]=nx;set("abanCockpit_seq",seq);$("#r_nr").value=y+"-"+String(nx).padStart(3,"0")});
+
   /* ===== PWA + Daten-Sicherung ===== */
   if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/cockpit-sw.js").catch(function(){})})}
   var deferredPrompt=null;
@@ -1023,7 +1034,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       catch(err){toast("Datei konnte nicht gelesen werden")}};rd.readAsText(f);this.value=""});
 
   /* Init */
-  loadStamm();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();
+  loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();
   $("#r_datum").value=isoToday();$("#a_datum").value=isoToday();$("#a_gueltig").value=isoToday();$("#zf_datum").value=isoToday();$("#z_datum").value=isoToday();$("#ka_datum").value=isoToday();
   R.setItems([{}]);A.setItems([{}]);
   calcM();calcH();calcS();calcVZ();calcZF();calcPC();calcIB();calcKM();calcTP();calcTR();calcTG();calcTL();calcTC();calcLQ();genMahnung();genEmail();
