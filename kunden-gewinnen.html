@@ -29,6 +29,18 @@ p{margin:8px 0}ul,ol{margin:8px 0 8px 22px}li{margin:4px 0}
 .faq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px 16px;margin-top:10px}
 .faq details{border-bottom:1px solid var(--line);padding:11px 0}.faq details:last-child{border-bottom:0}.faq summary{font-weight:700;cursor:pointer}.faq p{margin-top:8px;color:var(--ink2);font-size:.93rem}
 footer{border-top:1px solid var(--line);padding:18px 0;font-size:.8rem;color:var(--muted);text-align:center}
+header.hero{position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-50px;top:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(217,119,6,.16),transparent 70%);pointer-events:none}
+header.hero>.wrap{position:relative;z-index:1}
+h2{position:relative;padding-left:13px}
+h2::before{content:"";position:absolute;left:0;top:.18em;bottom:.18em;width:4px;border-radius:3px;background:linear-gradient(180deg,#d97706,#fbbf24)}
+.cta{transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(180,83,9,.3)}
+.tool{transition:transform .12s,box-shadow .12s}
+.tool:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(217,119,6,.18)}
+.box{transition:box-shadow .15s,transform .15s}
+.box:hover{box-shadow:0 7px 20px rgba(0,0,0,.07)}
+.faq details[open] summary{color:#b45309}
 </style>
 </head>
 <body>
