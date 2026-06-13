@@ -130,5 +130,20 @@ export const PRODUCTS = [
     "name": "damen-high-heel-sandalette-capri-offene-spitze",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1ef08d25-8428-4c13-8ca5-fc7da3731a15.jpg?v=1781379496",
     "label": "High-Heel-Sandalette «Capri»"
+  },
+  {
+    "name": "herren-sling-tasche-ranger-crazy-horse-echtleder",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bfcdd593-93e3-4c4b-8196-7c8df9fbe69c.jpg?v=1781387475",
+    "label": "Herren-Sling «Ranger»"
+  },
+  {
+    "name": "sonnenbrille-aviateur-dual-bridge-uv400",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/42ddbe84-2016-4c5a-ad8a-32cc7cfc1d48.jpg?v=1781387536",
+    "label": "Sonnenbrille «Aviateur»"
+  },
+  {
+    "name": "herren-titan-stahl-ring-vertex-vintage",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0dcc4a69-17b8-45e4-8949-011a227c3196_73e5c679-05e5-4d28-b9dc-bfa8b889fe55.jpg?v=1781387554",
+    "label": "Herren-Ring «Vertex»"
   }
 ];
