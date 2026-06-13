@@ -39,6 +39,16 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — KORREKTUREN (PC-Claude Live-Sicht):**
+- **GitHub Actions sind im Repo AKTIV** (PC-Claude sah ~12.050 Läufe, viele von heute, kein „deaktiviert"-Banner).
+  Der frühere 422 „Actions has been disabled for this user" galt offenbar nur dem **MCP-/API-Actor**, NICHT dem Repo.
+  ⇒ Nicht gegen ein „Actions gesperrt"-Phantom arbeiten. Cron-Nulldiät (auskommentierte Schedules) bleibt bewusst,
+  aber push-getriggerte Workflows laufen. **Settings/Actions-Schalter & Massenläufe: nur der User, nie automatisch.**
+- **⚠️ DOMAINS NICHT ANFASSEN:** Primärdomain = `luxestyle.ch` (korrekt, SSL). `account.luxestyle.com.co` & die
+  `.com.co`-Domains sind **Absicht** (Shopify-Kundenkonto-Portal; `/account` → 302 dorthin). Entfernen = **Login kaputt**.
+  Der Pinterest-„Fehler beim Verifizieren" liegt NICHT an den Domains (Meta-Tag ist live auf luxestyle.ch) → Blocker ist
+  nur Pinterests Re-Crawl/Verify-Trigger. Fix = Pinterest-Verbindung in der Shopify-App neu autorisieren (OAuth, User-Klick).
+
 **2026-06-13 — Luxestyle: Kategorie-Banner + Layout-Plan (Website-Optik):**
 - **9 moderne Kategorie-Banner** (editorial, Marken-Creme/Taupe/Gold) generiert + per `collectionUpdate image.src` als
   **Collection-Bild gesetzt** (damen-mode/fur-ihn/premium-schmuck/schuhe/wohnen-dekoration/premium-beauty/trends-gadgets/
