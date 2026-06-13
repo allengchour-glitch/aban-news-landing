@@ -686,6 +686,13 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       </div>
       <p class="note">📲 Als App nutzen: im Browser-Menü „Zum Startbildschirm hinzufügen" / „Installieren" wählen — dann läuft das Cockpit offline wie eine echte App.</p>
     </div>
+    <div class="panel">
+      <h2>aban Pro freischalten</h2>
+      <p class="note" id="pro_status" style="margin-top:0"></p>
+      <div class="row"><div class="fld"><label>Lizenzschlüssel</label><input id="pro_key" placeholder="z. B. 1234ABCD-5678-…" spellcheck="false"></div></div>
+      <div class="btnrow"><button class="btn" id="pro_activate" type="button">Freischalten</button><button class="btn ghost" id="pro_remove" type="button" style="display:none">Entfernen</button></div>
+      <p class="note">Noch keinen Schlüssel? <a href="/business-cockpit.html#kaufen">aban Pro holen</a>. Das Cockpit bleibt auch ohne Pro <strong>voll nutzbar</strong> — Pro unterstützt die Weiterentwicklung und schaltet künftige Profi-Extras frei.</p>
+    </div>
   </section>
 </main>
 
@@ -1495,6 +1502,20 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       toast("Daten geladen — App wird neu geladen …");setTimeout(function(){location.reload()},900)}
       catch(err){toast("Datei konnte nicht gelesen werden")}};rd.readAsText(f);this.value=""});
 
+  /* ===== aban Pro (Lemon-Squeezy-Lizenz, optional) ===== */
+  function proGet(){return get("abanCockpit_pro",null)}
+  function isPro(){var p=proGet();return !!(p&&p.ok)}
+  function renderProStatus(){var p=proGet(),st=$("#pro_status"),rm=$("#pro_remove");if(!st)return;
+    if(p&&p.ok){st.innerHTML='✅ <strong>aban Pro aktiv</strong>'+(p.tier?' ('+(p.tier==="yearly"?"Jahr":"Monat")+')':'')+' — danke für deine Unterstützung!';if(rm)rm.style.display="";if($("#pro_key"))$("#pro_key").value="";}
+    else{st.textContent="Status: nicht freigeschaltet. Das Cockpit ist trotzdem voll nutzbar.";if(rm)rm.style.display="none";}
+    document.documentElement.setAttribute("data-pro",isPro()?"1":"0")}
+  if($("#pro_activate"))$("#pro_activate").addEventListener("click",function(){var key=$("#pro_key").value.trim();if(!key){toast("Bitte Lizenzschlüssel eingeben");return}
+    var btn=this;btn.disabled=true;btn.textContent="Prüfe …";
+    fetch("/api/pro-validate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({license_key:key})}).then(function(r){return r.json()}).then(function(d){
+      if(d&&d.valid){set("abanCockpit_pro",{ok:true,tier:d.tier||null,key:key});renderProStatus();toast("aban Pro aktiv ✓")}else{toast("Schlüssel ungültig oder nicht erkannt")}
+    }).catch(function(){toast("Prüfung fehlgeschlagen — bist du online?")}).then(function(){btn.disabled=false;btn.textContent="Freischalten"})});
+  if($("#pro_remove"))$("#pro_remove").addEventListener("click",function(){set("abanCockpit_pro",null);renderProStatus();toast("Pro entfernt")});
+
   /* ===== Darstellung + Demo + Reset ===== */
   function applyTheme(t){if(t==="auto")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme",t)}
   var _theme=get("abanCockpit_theme","auto");applyTheme(_theme);
@@ -1517,7 +1538,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     toast("Alles gelöscht — App wird neu geladen …");setTimeout(function(){location.reload()},800)});
 
   /* Init */
-  loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();renderOffen();renderUmsatz();renderArtikel();refreshKat();renderBelege();renderPort();renderNW();renderJour();calcFIRE();calcHyp();renderDash();
+  loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();renderOffen();renderUmsatz();renderArtikel();refreshKat();renderBelege();renderPort();renderNW();renderJour();calcFIRE();calcHyp();renderProStatus();renderDash();
   $("#bl_datum").value=isoToday();$("#jr_date").value=isoToday();$("#r_datum").value=isoToday();$("#a_datum").value=isoToday();$("#a_gueltig").value=isoToday();$("#zf_datum").value=isoToday();$("#z_datum").value=isoToday();$("#ka_datum").value=isoToday();
   R.setItems([{}]);A.setItems([{}]);
   calcM();calcH();calcS();calcVZ();calcZF();calcPC();calcIB();calcKM();calcTP();calcTR();calcTG();calcTL();calcTC();calcLQ();genMahnung();genEmail();
