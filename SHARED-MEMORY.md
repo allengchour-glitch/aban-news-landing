@@ -39,6 +39,15 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Pinterest-Pins poliert + komplett neu (Premium-Look v5):**
+- **75 polierte Pins** gebaut (Template v5: Creme-Basis, Serifen-Titel, sanfter Foto→Creme-Übergang,
+  Gold-Akzent, Marken-Wordmark, Preis + WELCOME10-Pille). Generator `automation/gen_pinterest_polish.py`
+  (konsolidiert die 3 Batch-Roh-Listen, de-dupliziert). Alle Kategorien.
+- **GRATIS-HOSTING via Repo:** Bilder liegen in `dropship/pins/px-*.jpg` (öffentliches Repo), eingebunden per
+  `raw.githubusercontent`-URL — **kein Shopify-CDN-Upload nötig**. `pinterest_pins.csv` komplett neu (75, raw-URLs),
+  Ledger geleert (nichts war gepostet). In `main` (PR #858). ⚠️ raw-URLs brauchen nach Merge ein paar Min (CDN-Propagation).
+- Bei Bedarf zuverlässigerer Mirror: `cdn.jsdelivr.net/gh/<owner>/<repo>@main/dropship/pins/<file>`.
+
 **2026-06-13 — GRATIS-DAUER-AUTOMATION für Pinterest (Actions-Sperre umgangen):**
 - **Cloudflare-Cron-Worker** `workers/pinterest-cron/` gebaut: postet Pins aus `pinterest_pins.csv`
   per Cron (Mo & Do 09:00), idempotent via KV. **Gratis für immer, keine Kreditkarte, kein Actions/GitLab-Minuten.**
