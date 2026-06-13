@@ -259,3 +259,16 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
   keine IG-Messaging-Fähigkeit → bräuchte **App-Review für `instagram_manage_messages`** (Advanced Access,
   mehrere Tage). **Bei 1 DM nicht lohnenswert → DMs bleiben manuell.** Tool wartet einsatzbereit, falls
   später Review+Scope da sind. Kommentar-Antwort (öffentlich) läuft autonom — das ist der wertvollere Teil.
+
+**2026-06-13 — DM-Browser-Weg + Reels/Story/Posts gefüllt + weitere Produkte (Session „Luxestyle product"):**
+- **💬 DMs (User „habe viele"):** API bleibt blockiert (App-Review nötig). NEUER Weg, der HEUTE geht:
+  **`automation/local/ig-dm-browser.mjs`** — beantwortet IG-DMs über den eingeloggten Brave des PC-Claude (CDP 9222),
+  Themen-Erkennung (Versand/Grösse/Preis/Retoure/Bestellung/Design/Danke), idempotent (`ig-dm-done.json`), Cap 15,
+  Pausen, `--dry`. Läuft am PC-Claude („beantworte meine Instagram-DMs"). API-Templates ebenfalls erweitert.
+- **🎞️ Alle Formate gefüllt:** `social/posts_image.csv` +8 Produkt-Posts (13.–16.06.), `social/story_queue.csv`
+  +8 Stories (CDN-Medien, 13.–16.06.), `video_queue.csv` 11 Reels ready. Story-Cron 4×/Tag, Bild-Autopost, Reel-Autopost.
+- **🛍️ Weitere Produkte analysiert:** bewertet (Social-Proof) = Smartwatch/Gemüseschneider/Robo-Ventilator je 5,0★;
+  +5 nie gepostete (Gala/FlexHold/Glow/Cloud/Lino) eingereiht. Analyse: `reports/ANALYSE-SOCIAL-2026-06-12.md`.
+- **📱 Handy-Steuerung:** `control.html` + `dropship/HANDY-STEUERUNG.md` jetzt mit 8 Buttons (inkl. 📖 Story, 💬 DMs).
+- **ℹ️ Zur Kenntnis (andere Sessions):** jemand hat **Printful** (POD-Fulfillment) eingerichtet + viele **Pinterest-Pins**
+  erstellt. Kein Konflikt mit Social-Queue/Katalog dieser Session; Pinterest = zusätzlicher Kanal (eigene Session).

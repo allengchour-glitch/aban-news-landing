@@ -73,6 +73,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   2–3 hochwertige/Tag. **🛍️ Produkt-Analyse:** bewertet (Social-Proof) = Smartwatch 5,0★/Gemüseschneider 5,0★/
   Robo-Ventilator 5,0★; **8 neue Produkt-Posts** (3 bewertet + 5 nie gepostet: Gala/FlexHold/Glow/Cloud/Lino) in
   `social/posts_image.csv` eingereiht (ready, 13.–16.06., Gewinner-Format). Nächster Hebel bleibt Reichweite.
+- **💬 DM-Auto-Antwort (User „habe viele"):** API-Weg bleibt von Meta blockiert (App-Review nötig). NEU & heute
+  nutzbar: **`automation/local/ig-dm-browser.mjs`** (Browser über PC-Claude, Themen-Erkennung inkl. Retoure/
+  Bestellung/Design, idempotent `ig-dm-done.json`, Cap 15, `--dry`). API-Templates (`ig-dm-reply.mjs`) ebenfalls
+  erweitert. **🎞️ Alle Formate gefüllt:** +8 Stories (`story_queue.csv`, CDN), 11 Reels ready, 8 Produkt-Posts.
+  **📱 `control.html`/`HANDY-STEUERUNG.md`** jetzt 8 Buttons (inkl. 📖 Story, 💬 DMs). **ℹ️ Andere Sessions:**
+  Printful (POD) + viele Pinterest-Pins gemacht (kein Konflikt; Pinterest = eigener Kanal).
 
 **📌 2026-06-07 (NEUESTER STAND — ZUERST LESEN: Memory aufgefrischt + Conversion-Fix):**
 - **Branch-Reset:** Alle früheren Dropship-Branches (SrAs5/LehDs) sind **in `main` gemergt + gelöscht**.

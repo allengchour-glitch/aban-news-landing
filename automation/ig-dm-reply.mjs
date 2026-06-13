@@ -22,14 +22,27 @@ const STATE = path.join(ROOT,'social','replied-dms.json');
 const loadState=()=>{try{return new Set(JSON.parse(fs.readFileSync(STATE,'utf8')))}catch{return new Set()}};
 const saveState=s=>{try{fs.mkdirSync(path.dirname(STATE),{recursive:true});fs.writeFileSync(STATE,JSON.stringify([...s].slice(-2000)))}catch(e){console.error(e.message)}};
 
-const TOPIC=[['versand',/versand|liefer|wann|paket|shipping/i],['groesse',/grösse|groesse|size|passt|masse/i],
-  ['preis',/preis|kostet|chf|rabatt|code|zahlung|twint/i],['verfueg',/verfügbar|lager|ausverkauft|wieder/i]];
+// Themen-Erkennung (Reihenfolge = Priorität). Ehrliche Angaben: gratis ab CHF 65, 30 Tage Rückgabe, weltweiter Versand 8–14 Tage.
+const TOPIC=[
+  ['retoure',/rückgabe|ruckgabe|retoure|umtausch|zurückschick|zuruckschick|garantie|reklamation|defekt|kaputt/i],
+  ['bestellung',/bestellnummer|tracking|sendungs|wo ist mein|wo bleibt|status.*bestell|order|nicht erhalten|noch nicht.*ange/i],
+  ['versand',/versand|liefer|wann.*komm|wie lange|paket|shipping|dauert/i],
+  ['groesse',/grösse|groesse|size|passt|masse|maße|gross genug|fällt.*aus/i],
+  ['design',/selbst.*gestalt|eigenes design|eigenes.*motiv|gestalten|bedruck|drucken|print|individuell/i],
+  ['preis',/preis|kostet|wie teuer|chf|rabatt|code|gutschein|zahlung|twint|bezahl/i],
+  ['verfueg',/verfügbar|verfugbar|lager|ausverkauft|wieder.*da|noch da|vorrätig|vorratig/i],
+  ['danke',/danke|merci|vielen dank|mega|liebe.*es|❤|🤍|😍/i],
+];
 const REPLIES={
-  versand:'Hey! 🤍 Wir liefern schweizweit – gratis ab CHF 65. Alle Infos auf luxestyle.ch ✨',
-  groesse:'Hi! 👗 Die Grössentabelle steht direkt beim Produkt auf luxestyle.ch – frag gern nach! 🤍',
-  preis:'Hey! 💛 Mit Code WELCOME10 gibt’s –10% auf luxestyle.ch ✨',
-  verfueg:'Hi! 🤍 Verfügbarkeit + Farben siehst du live auf luxestyle.ch ✨',
-  welcome:'Hey! 🤍 Danke für deine Nachricht! Wie können wir dir helfen? Alle Looks auf luxestyle.ch ✨ (–10% mit Code WELCOME10)'};
+  retoure:'Kein Stress 🤍 Du hast 30 Tage Rückgaberecht. Schreib uns einfach deine Bestellnummer, wir helfen dir sofort weiter ✨',
+  bestellung:'Hey! 📦 Gib uns kurz deine Bestellnummer durch, dann checken wir den Status. Versand weltweit dauert i. d. R. 8–14 Tage 🤍',
+  versand:'Hey! 🤍 Versand weltweit, gratis ab CHF 65 (Schweiz) — Lieferzeit meist 8–14 Tage. Alle Infos auf luxestyle.ch ✨',
+  groesse:'Hi! 👗 Die genaue Grössentabelle (in cm) steht direkt beim Produkt auf luxestyle.ch — sag uns sonst gern, welches Teil, wir helfen beim Finden! 🤍',
+  design:'So cool, dass dich «Selbst gestalten» interessiert 🎨 Auf luxestyle.ch machst du dein eigenes Design auf Shirt, Hoodie, Täsche oder Tasse — ohne Mindestmenge ✨',
+  preis:'Hey! 💛 Mit Code WELCOME10 gibt’s –10% auf alles auf luxestyle.ch. Bezahlen bequem per Karte, TWINT & mehr ✨',
+  verfueg:'Hi! 🤍 Aktuelle Verfügbarkeit, Farben & Grössen siehst du live auf luxestyle.ch — sag uns gern, welches Teil dich interessiert ✨',
+  danke:'Merci dir vielmal 🤍 Das freut uns riesig! Schau gern wieder vorbei — mit Code WELCOME10 gibt’s –10% auf luxestyle.ch ✨',
+  welcome:'Hey! 🤍 Danke für deine Nachricht! Wie können wir dir helfen? Alle Looks findest du auf luxestyle.ch ✨ (–10% mit Code WELCOME10)'};
 const replyFor=t=>{for(const[k,re]of TOPIC)if(re.test(t))return REPLIES[k];return REPLIES.welcome;};
 
 const g=async u=>{const r=await fetch(u);const j=await r.json().catch(()=>({}));return{ok:r.ok,status:r.status,j};};
