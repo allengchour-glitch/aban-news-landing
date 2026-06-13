@@ -40,10 +40,13 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 **2026-06-13 — KORREKTUREN (PC-Claude Live-Sicht):**
-- **GitHub Actions sind im Repo AKTIV** (PC-Claude sah ~12.050 Läufe, viele von heute, kein „deaktiviert"-Banner).
-  Der frühere 422 „Actions has been disabled for this user" galt offenbar nur dem **MCP-/API-Actor**, NICHT dem Repo.
-  ⇒ Nicht gegen ein „Actions gesperrt"-Phantom arbeiten. Cron-Nulldiät (auskommentierte Schedules) bleibt bewusst,
-  aber push-getriggerte Workflows laufen. **Settings/Actions-Schalter & Massenläufe: nur der User, nie automatisch.**
+- **GitHub Actions sind USER-WEIT GESPERRT (definitiv verifiziert 2026-06-13):** „Actions has been disabled for this
+  user" — bestätigt durch BEIDES: API-Dispatch (422) UND PC-Claudes „Run workflow"-Klick in der UI. Die in der Liste
+  sichtbaren ~12k Läufe sind **alt**; **NEUE** Läufe (Cron + Dispatch, UI + API) werden **abgelehnt**. Es ist eine
+  **Konto-/Sicherheitssperre** (nicht nur MCP-Actor, nicht nur Repo-Banner). **Aufheben kann NUR der User**
+  (Account-Settings / GitHub-Support) — keine Session legt Sicherheits-/Settings-Schalter um. Cron-Nulldiät bleibt.
+  ⇒ Für **Shopify-/Shop-Arbeit egal** (läuft über die Shopify-MCP, nicht über Actions). Betrifft v. a. abannews-Deploys
+   (`cf-deploy-mainsite.yml`) + alle Cron-Automationen. Erst weitermachen, wenn der User „Actions wieder frei" meldet.
 - **⚠️ DOMAINS NICHT ANFASSEN:** Primärdomain = `luxestyle.ch` (korrekt, SSL). `account.luxestyle.com.co` & die
   `.com.co`-Domains sind **Absicht** (Shopify-Kundenkonto-Portal; `/account` → 302 dorthin). Entfernen = **Login kaputt**.
   Der Pinterest-„Fehler beim Verifizieren" liegt NICHT an den Domains (Meta-Tag ist live auf luxestyle.ch) → Blocker ist
