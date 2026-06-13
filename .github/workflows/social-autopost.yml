@@ -8,9 +8,9 @@ name: Social Auto-Post (Telegram + Discord)
 # Mindestens einer der beiden Kanäle muss konfiguriert sein.
 
 on:
-  schedule:
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
     # Mo, Mi, Fr um 08:00 UTC (≈ 09:00/10:00 DE je nach Sommerzeit)
-    - cron: '0 8 * * 1,3,5'
+    # - cron: '0 8 * * 1,3,5'
   workflow_dispatch:        # erlaubt manuelles Auslösen per Knopf
 
 permissions:

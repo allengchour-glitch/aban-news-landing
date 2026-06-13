@@ -5,8 +5,8 @@ name: Gemini Content-Engine
 # No-op ohne GEMINI_API_KEY. Cron laeuft nur vom Default-Branch.
 
 on:
-  schedule:
-    - cron: '0 3 * * 1-5'   # Mo–Fr 03:00 UTC: Nachschub erzeugen
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 3 * * 1-5'   # Mo–Fr 03:00 UTC: Nachschub erzeugen
   workflow_dispatch:
     inputs:
       n:

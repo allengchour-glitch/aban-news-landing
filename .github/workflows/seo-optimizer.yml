@@ -4,8 +4,8 @@ name: SEO-Optimizer (wöchentlich, fehlende Produkt-SEO füllen)
 # Braucht Produkt-Scopes am Shopify-Token (read_products, write_products). Ohne = sauberer No-Op/Log.
 
 on:
-  schedule:
-    - cron: '0 6 * * 1'   # Montags 06:00 UTC
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 6 * * 1'   # Montags 06:00 UTC
   workflow_dispatch: {}
 
 permissions:

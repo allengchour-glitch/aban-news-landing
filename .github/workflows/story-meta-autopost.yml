@@ -7,10 +7,10 @@ name: Social Meta Story Auto-Post (IG + FB Stories)
 # Tokens NUR aus GitHub-Secrets (identisch zum Feed-Poster). Ohne Secrets = No-Op.
 
 on:
-  schedule:
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
     # 4×/Tag (Stories sind flüchtig → höhere Frequenz): 06/11/15/19 UTC
     # Cron-Diaet 2026-06-13: von 4x/Tag auf 1x/Tag (GitHub-Last).
-    - cron: '0 11 * * *'
+    # - cron: '0 11 * * *'
     # - cron: '0 6 * * *'
     # - cron: '0 15 * * *'
     # - cron: '0 19 * * *'

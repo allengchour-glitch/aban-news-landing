@@ -4,8 +4,8 @@ name: Gemini Wachstums-Ideen
 # No-op ohne GEMINI_API_KEY. Cron laeuft nur vom Default-Branch.
 
 on:
-  schedule:
-    - cron: '0 5 1 * *'   # monatlich (1. des Monats) frische Ideen
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 5 1 * *'   # monatlich (1. des Monats) frische Ideen
   workflow_dispatch:
 
 permissions:

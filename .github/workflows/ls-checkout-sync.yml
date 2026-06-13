@@ -6,8 +6,8 @@ name: Lemon-Squeezy Checkout-Links sync
 # von selbst live — ohne Link-Kopieren. Neue Produkte ANLEGEN geht nur im Dashboard.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 6 * * 1'   # woechentlich, Mo 06:00 UTC
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 6 * * 1'   # woechentlich, Mo 06:00 UTC
 
 permissions:
   contents: write

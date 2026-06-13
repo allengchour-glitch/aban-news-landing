@@ -11,8 +11,8 @@ on:
         description: 'Pfade (Komma-Liste)'
         type: string
         default: '/,/dossiers.html,/ki-werkzeug.html,/online-tools.html,/archive/'
-  schedule:
-    - cron: '0 7 1 * *'   # 1. des Monats, 07:00 UTC
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 7 1 * *'   # 1. des Monats, 07:00 UTC
 
 permissions:
   contents: write

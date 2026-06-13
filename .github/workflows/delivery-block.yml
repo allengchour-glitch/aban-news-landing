@@ -1,8 +1,8 @@
 name: Lieferzeit-Block (Phase 1)
 
 on:
-  schedule:
-    - cron: '40 4 * * 1'
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '40 4 * * 1'
   workflow_dispatch:
     inputs:
       dry_run:

@@ -1,8 +1,8 @@
 name: Weekly Content Audit
 
 on:
-  schedule:
-    - cron: '0 22 * * 0'  # Sunday 22:00 UTC
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 22 * * 0'  # Sunday 22:00 UTC
   workflow_dispatch:
 
 permissions:

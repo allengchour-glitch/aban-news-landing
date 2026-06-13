@@ -4,8 +4,8 @@ name: Gemini Site-Kritik
 # unter reports/site-critique-<datum>.md (+ Telegram-Kurzfassung). No-op ohne GEMINI_API_KEY.
 
 on:
-  schedule:
-    - cron: '0 6 * * 1'   # Montags 06:00 UTC (Wochen-Kritik)
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 6 * * 1'   # Montags 06:00 UTC (Wochen-Kritik)
   workflow_dispatch:
     inputs:
       paths:

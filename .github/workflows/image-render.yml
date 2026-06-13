@@ -6,9 +6,9 @@ name: Image Render (Produkt-Post-Bilder)
 # Reines Pillow, keine Secrets nötig.
 
 on:
-  schedule:
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
     # 1x täglich morgens Vorrat rendern (Autopilot postet dann gestaffelt).
-    - cron: '0 5 * * *'
+    # - cron: '0 5 * * *'
   workflow_dispatch:
     inputs:
       batch:

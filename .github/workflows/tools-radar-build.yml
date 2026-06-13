@@ -4,8 +4,8 @@ name: KI-Tools Radar — Auto-Build
 # - wöchentlich (frische Seiten ohne manuelles Zutun)
 # - bei Änderung an den Daten oder am Generator
 on:
-  schedule:
-    - cron: '0 6 * * 1'        # jeden Montag 06:00 UTC
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 6 * * 1'        # jeden Montag 06:00 UTC
   push:
     paths:
       - 'ki-tools-radar/**'

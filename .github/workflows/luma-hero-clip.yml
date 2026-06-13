@@ -5,8 +5,8 @@ name: Luma Hero-Clip (Bild→Video → Meta-Queue)
 # der Meta-Autopilot postet ihn auf IG/FB. No-op ohne LUMA_API_KEY.
 
 on:
-  schedule:
-    - cron: '40 6 * * *'   # täglich 06:40 UTC — vor den Post-Slots, 1 Clip/Tag
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '40 6 * * *'   # täglich 06:40 UTC — vor den Post-Slots, 1 Clip/Tag
   workflow_dispatch:
     inputs:
       max_clips:

@@ -4,9 +4,9 @@ name: Märkte-Daten (Kurse + News + KI-Sentiment)
 # und ergänzt experimentelles Claude-Sentiment pro Wert. No-op-sicher: ohne ANTHROPIC_API_KEY
 # läuft nur der Kurs-/News-Teil. Commit nur bei Änderung; Cloudflare deployt vom Default-Branch.
 on:
-  schedule:
-    - cron: '0 6 * * 1-5'      # Mo–Fr 06:00 UTC
-    - cron: '0 16 * * 1-5'     # Mo–Fr 16:00 UTC (nach US-Open)
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 6 * * 1-5'      # Mo–Fr 06:00 UTC
+    # - cron: '0 16 * * 1-5'     # Mo–Fr 16:00 UTC (nach US-Open)
   workflow_dispatch:
 
 permissions:

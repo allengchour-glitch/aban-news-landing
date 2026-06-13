@@ -5,8 +5,8 @@ name: Link-Checker (wöchentlich)
 # Markdown-Report als Artifact hoch. Reine Standardbibliothek, kein Secret nötig.
 # Bewusst OHNE --fail-on-broken: tote Fremd-Links sollen den Lauf nicht rot färben.
 on:
-  schedule:
-    - cron: '0 6 * * 1'      # Montag 06:00 UTC
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 6 * * 1'      # Montag 06:00 UTC
   workflow_dispatch:
 
 permissions:

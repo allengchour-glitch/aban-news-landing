@@ -6,8 +6,8 @@ name: Automatisierungs-Radar — Tool-Vorschläge
 # data/anbieter.json — erst dann wird er live.
 
 on:
-  schedule:
-    - cron: '23 5 * * 1'
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '23 5 * * 1'
   workflow_dispatch:
 
 jobs:

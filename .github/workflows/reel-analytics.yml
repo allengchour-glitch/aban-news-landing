@@ -5,8 +5,8 @@ name: Reel Analytics (Täglicher Telegram-Report + Tagesreel)
 # Ohne Secrets = nur Log, kein Fehler.
 
 on:
-  schedule:
-    - cron: '0 7 * * *'   # täglich 07:00 UTC (~09:00 CH)
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 7 * * *'   # täglich 07:00 UTC (~09:00 CH)
   workflow_dispatch: {}
 
 permissions:

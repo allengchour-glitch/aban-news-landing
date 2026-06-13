@@ -1,8 +1,8 @@
 name: Montage (alle Produkte in 1 Video)
 
 on:
-  schedule:
-    - cron: '10 6 */2 * *'   # täglich 1 Montage automatisch
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '10 6 */2 * *'   # täglich 1 Montage automatisch
   workflow_dispatch:
     inputs:
       max_seg:

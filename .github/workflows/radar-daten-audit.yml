@@ -5,8 +5,8 @@ name: Radar-Daten-Audit (wöchentlich)
 # reports/RADAR-DATEN-AUDIT.md und committet nur bei Änderung. Erfindet nichts.
 
 on:
-  schedule:
-    - cron: '0 5 * * 1'   # montags 05:00 UTC
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 5 * * 1'   # montags 05:00 UTC
   workflow_dispatch:
 
 permissions:

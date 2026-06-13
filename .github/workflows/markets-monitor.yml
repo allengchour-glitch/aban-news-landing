@@ -3,8 +3,8 @@ name: Märkte-Monitor (Daten-Wächter)
 # Prüft regelmäßig, ob data/markets.json frisch & vollständig ist. Schlägt per
 # Telegram Alarm, wenn der Daten-Job hängt. Nur lesend (kein Commit). No-op ohne Secrets.
 on:
-  schedule:
-    - cron: '17 */12 * * *'   # alle 6 Stunden
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '17 */12 * * *'   # alle 6 Stunden
   workflow_dispatch:
 
 permissions:

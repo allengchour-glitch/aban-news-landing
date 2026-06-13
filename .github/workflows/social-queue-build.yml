@@ -9,8 +9,8 @@ name: Social Auto-Queue (neue Produkte einreihen)
 # Repo-Variable optional: QUEUE_MAX (Default 3).
 
 on:
-  schedule:
-    - cron: '30 7 * * *'    # 07:30 UTC, vor dem 08:00-Post
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '30 7 * * *'    # 07:30 UTC, vor dem 08:00-Post
     # - cron: '30 16 * * *'   # PAUSIERT 2026-06-13 (Cron-Diaet, GitHub-Last)
   workflow_dispatch:
     inputs:
