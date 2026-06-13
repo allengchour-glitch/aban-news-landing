@@ -39,6 +39,14 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Katalog-SEO autonom durchgefixt (Pipeline):**
+- **81 Produkte** mit kaputter Auto-SEO live korrigiert (saubere Titel „… | LuxeStyle" + Descriptions).
+  Pipeline `automation/seo_catalog_fix.py`: scannt cj-real seitenweise (Antworten landen als Datei),
+  erkennt Auto-Signatur, erzeugt Batch-`productUpdate(seo)` (20/Batch), 0 userErrors.
+- ~250 ältere Importe gescannt & bereinigt; neueste Importe hatten schon saubere SEO.
+- **Offen für Google-Free-Listings:** Produkt-**Kategorie** (Shopify-Taxonomie) katalogweit `null` →
+  im Admin bulk zuweisen (riskant per Skript wg. Taxonomie-IDs; Google-Kanal mappt dann automatisch).
+
 **2026-06-13 — Gratis-Werbung KOMPLETT (SEO-Content + Feed + Marktplätze, autonom):**
 - **5 SEO-Ratgeber-Artikel LIVE** im Blog `ratgeber` (Sommerkleider 2026 · Aroma-Diffuser · Geschenkideen ·
   Edelstahl-Schmuck · Smartwatch), mit SEO-Meta + internen Links + FAQ + WELCOME10-CTA. Reproduzierbar via
