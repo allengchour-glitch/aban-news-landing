@@ -34,10 +34,16 @@ const val = (n, d) => { const i = args.indexOf(n); return i >= 0 && args[i + 1] 
 const DRY = flag('--dry'), NO_ATTACH = flag('--no-attach'), QUEUE = flag('--queue');
 const DURATION = val('--duration', '5s'), RES = val('--resolution', '720p'), ASPECT = val('--aspect', '9:16');
 
-// Produkt-IDs sammeln (GID oder nackt)
+// Produkt-IDs sammeln (GID oder nackt) — aus Args, --pids ODER --in <datei>
 let ids = args.filter(a => /^(gid:\/\/shopify\/Product\/)?\d+$/.test(a));
 const pidsFlag = val('--pids', '');
 if (pidsFlag) ids = ids.concat(pidsFlag.split(',').map(s => s.trim()).filter(Boolean));
+const inFile = val('--in', '');
+if (inFile && fs.existsSync(inFile)) {
+  for (const line of fs.readFileSync(inFile, 'utf8').split(/\r?\n/)) {
+    const s = line.trim(); if (s && !s.startsWith('#')) ids.push(s);
+  }
+}
 ids = [...new Set(ids.map(x => x.startsWith('gid://') ? x : `gid://shopify/Product/${x}`))];
 
 if (!KEY) { console.error('LUMA_API_KEY fehlt → No-op (nichts zu tun).'); process.exit(0); }

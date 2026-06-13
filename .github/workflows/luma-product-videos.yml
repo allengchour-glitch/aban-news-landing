@@ -18,7 +18,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
-      - name: Generate + attach product videos
+      # Standard = GÜNSTIGES Flash-Modell (Dream-Machine, ~$0.17/Clip). LUMA_API_KEY muss der
+      # Dream-Machine-Key sein (Format luma-<uuid>-<uuid>). Für teures ray-3.2 stattdessen
+      # luma_agents_video.mjs nutzen (Agents-Key luma-api-…).
+      - name: Generate + attach product videos (Flash / günstig)
         env:
           LUMA_API_KEY: ${{ secrets.LUMA_API_KEY }}
           SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
@@ -26,7 +29,7 @@ jobs:
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
         run: |
           if [ -n "${{ github.event.inputs.pids }}" ]; then
-            node automation/luma_agents_video.mjs --pids "${{ github.event.inputs.pids }}"
+            node automation/luma_product_video.mjs --pids "${{ github.event.inputs.pids }}"
           else
-            node automation/luma_agents_video.mjs --in dropship/video_pids.txt
+            node automation/luma_product_video.mjs --in dropship/video_pids.txt
           fi
