@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>aban Business-Cockpit — Rechnung, Angebot, Kunden, Zeit &amp; Rechner in einer App</title>
+<meta name="description" content="Die All-in-one Büro-App für Selbstständige: Rechnungen & Angebote schreiben, Kundenverwaltung, Zeiterfassung, Mahnungen, 7 Finanz-Rechner und ein E-Mail-Generator. Offline, lokal, kein Login.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/cockpit.webmanifest">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html[data-theme="dark"]{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}
+html[data-theme="light"]{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--field:#fffdf9}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+a{color:var(--amber-dk)}button{font-family:inherit}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+header.app{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.app .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 18px;flex-wrap:wrap}
+.brand{font-weight:800;color:var(--amber);text-decoration:none;font-size:1.05rem;white-space:nowrap}
+.brand small{color:var(--muted);font-weight:600}
+.tabs{display:flex;gap:5px;flex-wrap:wrap}
+.tabs button{background:transparent;border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer;font-weight:700;color:var(--ink2);font-size:.85rem}
+.tabs button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+main{padding:20px 0 70px}
+.view{display:none}.view.on{display:block;animation:fade .2s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+h1{font-size:1.35rem;margin-bottom:4px}
+.sub{color:var(--muted);font-size:.88rem;margin-bottom:16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}
+.panel h2{font-size:1.02rem;margin-bottom:12px}
+label{display:block;font-weight:600;font-size:12px;margin:0 0 5px;color:var(--ink2)}
+input,select,textarea{width:100%;font-size:14.5px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);font-family:inherit}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.row{display:flex;gap:12px;flex-wrap:wrap}.row>.fld{flex:1;min-width:140px}.fld{margin-bottom:12px}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--amber-dk);color:#fff;border:0;border-radius:9px;padding:10px 16px;font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:7px 12px;font-size:.84rem}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+table.items{width:100%;border-collapse:collapse;margin:6px 0}
+table.items th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);padding:6px 6px}
+table.items td{padding:4px 6px;vertical-align:top}table.items input{padding:7px 8px}
+.items .num{text-align:right}
+.delrow{background:transparent;border:0;color:var(--bad);cursor:pointer;font-size:1.1rem;font-weight:800;line-height:1}
+.totbox{margin-top:12px;display:grid;grid-template-columns:1fr auto;gap:4px 18px;max-width:340px;margin-left:auto;font-size:.93rem}
+.totbox .g{font-weight:800;font-size:1.12rem;color:var(--amber-dk);border-top:1px solid var(--line);padding-top:6px;margin-top:4px}
+.out{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:9px}
+.box{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
+.box b{display:block;font-size:18px;font-weight:800;color:var(--amber-dk)}.box span{font-size:.74rem;color:var(--muted)}
+.box.big{grid-column:1/-1;background:var(--cream);border-color:var(--amber-lt)}.box.big b{font-size:24px}
+.box.ok b{color:var(--ok)}.box.bad b{color:var(--bad)}
+.note{font-size:.8rem;color:var(--muted);margin-top:8px}
+.mini{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+.mini h3{font-size:.96rem;margin-bottom:10px}
+.seg{display:inline-flex;border:1px solid var(--amber-lt);border-radius:9px;overflow:hidden;margin-top:2px;flex-wrap:wrap}
+.seg button{background:transparent;border:0;padding:8px 12px;cursor:pointer;font-weight:600;color:var(--amber-dk);font-size:.84rem}
+.seg button.on{background:var(--amber-dk);color:#fff}
+.mail{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:13px;white-space:pre-wrap;font-size:14px;min-height:190px;line-height:1.6;margin-top:10px}
+.subj{background:var(--cream);border:1px solid var(--amber-lt);border-radius:9px;padding:8px 11px;font-size:13.5px;margin-top:10px}.subj b{color:var(--amber-dk)}
+.list{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.li{display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:9px;padding:8px 11px;font-size:.86rem}
+.li .x{display:flex;gap:6px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:11px 18px;border-radius:10px;font-weight:600;font-size:.9rem;opacity:0;pointer-events:none;transition:.25s;z-index:50}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.pill{display:inline-block;background:var(--cream);border:1px solid var(--amber-lt);color:var(--amber-dk);font-size:.7rem;font-weight:700;padding:2px 9px;border-radius:999px;margin-left:6px}
+.clock{font-size:2.1rem;font-weight:800;color:var(--amber-dk);text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:var(--muted);text-align:center}
+@media print{header.app,.tabs,.noprint,footer,.btnrow,.list{display:none!important}body{background:#fff;color:#000}.view{display:none!important}#print-doc{display:block!important}}
+#print-doc{display:none}
+@media print{#print-doc{display:block;font-size:13px;color:#000}
+  #print-doc .pi-head{display:flex;justify-content:space-between;margin-bottom:28px}
+  #print-doc h2{font-size:22px;margin:16px 0 6px}
+  #print-doc table{width:100%;border-collapse:collapse;margin:14px 0}
+  #print-doc th,#print-doc td{padding:7px 6px;border-bottom:1px solid #ccc;text-align:left}
+  #print-doc td.n,#print-doc th.n{text-align:right}
+  #print-doc .pi-tot{margin-top:14px;float:right;text-align:right}
+  #print-doc .pi-foot{clear:both;margin-top:46px;font-size:11px;color:#444;border-top:1px solid #ccc;padding-top:8px}}
+/* Lernen */
+.disc{background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:11px 13px;font-size:.82rem;color:var(--ink2);margin-bottom:14px}
+.tipday{background:var(--amber-dk);color:#fff;border-radius:12px;padding:13px 16px;margin-bottom:14px}
+.tipday b{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;opacity:.85;margin-bottom:3px}
+.tipday p{font-size:.95rem;font-weight:600;line-height:1.4}
+.ltabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.ltabs button{background:transparent;border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;font-weight:700;color:var(--ink2);font-size:.82rem}
+.ltabs button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+.lsec{display:none}.lsec.on{display:block;animation:fade .2s ease}
+.lsearch{margin-bottom:12px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.chips button{background:var(--field);border:1px solid var(--line);border-radius:999px;padding:5px 11px;cursor:pointer;font-size:.78rem;font-weight:600;color:var(--ink2)}
+.chips button.on{background:var(--cream);border-color:var(--amber);color:var(--amber-dk)}
+.lcard{border:1px solid var(--line);border-radius:11px;margin-bottom:9px;background:var(--card);overflow:hidden}
+.lcard>summary{padding:12px 14px;cursor:pointer;font-weight:700;font-size:.93rem;list-style:none;position:relative;padding-right:34px}
+.lcard>summary::-webkit-details-marker{display:none}
+.lcard>summary::after{content:"▸";position:absolute;right:14px;top:12px;color:var(--amber);transition:transform .2s}
+.lcard[open]>summary::after{transform:rotate(90deg)}
+.lcard .scat{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.lcard .simple{padding:2px 14px 10px;color:var(--ink);font-size:.9rem}
+.lcard .deep{padding:0 14px 12px;font-size:.87rem;color:var(--ink2);line-height:1.55}
+.lcard .lread-row{padding:0 14px 12px}
+#l_lessons.easy .lcard .deep{display:none}
+.gli{border:1px solid var(--line);border-radius:9px;padding:9px 12px;margin-bottom:7px;font-size:.86rem;line-height:1.5;background:var(--card)}
+.gli b{color:var(--amber-dk)}
+.qcard{border:1px solid var(--line);border-radius:11px;padding:14px;margin-bottom:10px;background:var(--card)}
+.qopt{display:block;width:100%;text-align:left;border:1px solid var(--line);border-radius:8px;padding:9px 11px;margin:6px 0;background:var(--field);cursor:pointer;font-size:.88rem;font-weight:600;color:var(--ink2)}
+.qopt.right{background:#e8f6ee;border-color:var(--ok);color:#06623b}
+.qopt.wrong{background:#fbeaea;border-color:var(--bad);color:var(--bad)}
+.qexp{font-size:.82rem;color:var(--muted);margin-top:6px;display:none}
+.chk{display:flex;align-items:flex-start;gap:9px;border:1px solid var(--line);border-radius:9px;padding:10px 12px;margin-bottom:7px;font-size:.9rem;cursor:pointer;background:var(--card)}
+.chk input{width:auto;margin-top:3px}
+.prog{height:10px;background:var(--line);border-radius:999px;overflow:hidden;margin:8px 0 4px}
+.prog>i{display:block;height:100%;background:var(--ok);border-radius:999px;transition:width .35s}
+.gobtn{display:inline-block;margin-top:8px;font-size:.82rem;font-weight:700;color:var(--amber-dk);border:1px solid var(--amber-lt);border-radius:8px;padding:5px 10px;text-decoration:none;cursor:pointer;background:transparent}
+.lhead{display:flex;justify-content:flex-end;margin-bottom:10px}
+.toggle{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;font-weight:600;color:var(--ink2);cursor:pointer}
+.toggle input{width:auto}
+.path-step{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:9px;background:var(--card)}
+.path-step .num{flex:none;width:28px;height:28px;border-radius:999px;background:var(--amber-dk);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+</style>
+<script>try{var _t=JSON.parse(localStorage.getItem("abanCockpit_theme")||'"auto"');if(_t&&_t!=="auto")document.documentElement.setAttribute("data-theme",_t)}catch(e){}</script>
+</head>
+<body>
+<header class="app"><div class="wrap">
+  <a href="/business-cockpit.html" class="brand">aban Business-Cockpit <small>Pro</small></a>
+  <nav class="tabs" id="tabs">
+    <button data-v="dash" class="on">🏠 Übersicht</button>
+    <button data-v="rechnung">🧾 Rechnung</button>
+    <button data-v="angebot">📄 Angebot</button>
+    <button data-v="liefer">📦 Lieferschein</button>
+    <button data-v="offen">📌 Offene Posten</button>
+    <button data-v="kunden">👥 Kunden</button>
+    <button data-v="zeit">⏱️ Zeit</button>
+    <button data-v="kasse">📒 Kassenbuch</button>
+    <button data-v="umsatz">📊 Umsatz</button>
+    <button data-v="belege">📎 Belege</button>
+    <button data-v="rechner">🔢 Rechner</button>
+    <button data-v="trading">📈 Trading</button>
+    <button data-v="finanz">💰 Finanzen</button>
+    <button data-v="lernen">📚 Lernen</button>
+    <button data-v="mahnung">⏰ Mahnung &amp; E-Mail</button>
+    <button data-v="stamm">⚙️ Stammdaten</button>
+  </nav>
+</div></header>
+<main class="wrap">
+
+  <!-- DASHBOARD -->
+  <section class="view on" id="v-dash">
+    <h1>Übersicht <span class="pill">dein Cockpit</span></h1>
+    <p class="sub">Alles auf einen Blick — Umsatz, offene Posten, Zeit und Lern-Fortschritt.</p>
+    <div class="out" id="d_kpi"></div>
+    <div class="btnrow" style="margin:14px 0">
+      <button class="btn" data-go="rechnung" type="button">🧾 Neue Rechnung</button>
+      <button class="btn ghost" data-go="zeit" type="button">⏱️ Zeit erfassen</button>
+      <button class="btn ghost" data-go="offen" type="button">📌 Offene Posten</button>
+      <button class="btn ghost" data-go="lernen" type="button">📚 Lernen</button>
+    </div>
+    <div class="row">
+      <div class="panel" style="flex:1;min-width:240px"><h2>Einnahmen vs. Ausgaben</h2><div id="d_donut" style="max-width:200px;margin:0 auto"></div><p class="note" id="d_donleg" style="text-align:center"></p></div>
+      <div class="panel" style="flex:1;min-width:240px"><h2>Lern-Fortschritt</h2><div id="d_ring" style="max-width:150px;margin:0 auto"></div><p class="note" id="d_ringlbl" style="text-align:center"></p></div>
+    </div>
+    <div class="panel"><h2>Monatsumsatz (letzte 6)</h2><div id="d_bars"></div></div>
+  </section>
+
+  <!-- RECHNUNG -->
+  <section class="view" id="v-rechnung">
+    <h1>Rechnung erstellen <span class="pill">PDF / Druck</span></h1>
+    <p class="sub">Positionen eintragen → Summen automatisch → „Drucken / PDF". Kunde aus dem Adressbuch wählen oder frei eintippen.</p>
+    <div class="panel">
+      <div class="row">
+        <div class="fld"><label>Rechnungs-Nr.</label><input id="r_nr" placeholder="2026-001"><button class="btn ghost sm" id="r_nextnr" type="button" style="margin-top:6px">🔢 Nächste Nr.</button></div>
+        <div class="fld"><label>Datum</label><input id="r_datum" type="date"></div>
+        <div class="fld"><label>Leistungszeitraum</label><input id="r_leistung" placeholder="z. B. Juni 2026"></div>
+      </div>
+      <div class="row">
+        <div class="fld"><label>Kunde aus Adressbuch</label><select id="r_pick"><option value="">— frei eingeben —</option></select></div>
+      </div>
+      <div class="fld"><label>Kunde (Name &amp; Anschrift)</label><textarea id="r_kunde" rows="3" placeholder="Mustermann GmbH&#10;Musterstr. 1&#10;8000 Zürich"></textarea></div>
+      <table class="items" id="r_items"><thead><tr><th style="width:46%">Beschreibung</th><th class="num" style="width:13%">Menge</th><th class="num" style="width:20%">Einzelpreis</th><th class="num" style="width:15%">Summe</th><th></th></tr></thead><tbody></tbody></table>
+      <div class="btnrow"><button class="btn ghost sm" id="r_add">+ Position</button><select id="r_katpick" class="katsel" style="max-width:230px"><option value="">+ aus Katalog…</option></select></div>
+      <div class="row" style="margin-top:14px">
+        <div class="fld" style="max-width:200px"><label>MwSt-Satz</label><select id="r_vat" class="vatsel"></select></div>
+        <div class="fld" style="max-width:160px"><label>Zahlungsziel (Tage)</label><input id="r_ziel" value="14" inputmode="numeric"></div>
+        <div class="fld" style="max-width:160px"><label>Sprache (PDF)</label><select id="r_lang"><option value="de">Deutsch</option><option value="fr">Français</option><option value="it">Italiano</option><option value="en">English</option></select></div>
+      </div>
+      <div class="totbox"><div>Netto</div><div class="num" id="r_net">0,00</div><div id="r_vatlabel">zzgl. MwSt</div><div class="num" id="r_vatval">0,00</div><div class="g">Gesamt</div><div class="num g" id="r_gross">0,00</div></div>
+      <div class="btnrow" style="margin-top:16px">
+        <button class="btn" id="r_print">🖨️ Drucken / PDF</button>
+        <button class="btn ghost" id="r_save">💾 Entwurf speichern</button>
+        <button class="btn ghost" id="r_exml">🧾 E-Rechnung (XML)</button>
+        <button class="btn ghost" id="r_clear">Leeren</button>
+      </div>
+      <p class="note">E-Rechnung = einfaches UBL-XML (EN-16931-Basisfelder) für die maschinelle Weiterverarbeitung — keine zertifizierte XRechnung.</p>
+      <div class="list" id="r_saved"></div>
+      <div class="mini" id="r_qrbox" style="margin-top:16px">
+        <h3>💳 Zahl-QR (scan &amp; pay)</h3>
+        <p class="note" style="margin-top:0">Aus deiner IBAN (Stammdaten) + Rechnungsbetrag. Erscheint dann auch auf dem PDF.</p>
+        <div class="row">
+          <div class="fld"><label>Standard</label><div class="seg" id="qr_seg"><button data-q="epc" class="on" type="button">🇪🇺 GiroCode (EUR)</button><button data-q="swiss" type="button">🇨🇭 Swiss QR</button></div></div>
+          <div class="fld" style="max-width:150px"><label>Währung</label><select id="qr_cur"><option>EUR</option><option>CHF</option></select></div>
+        </div>
+        <div class="btnrow"><button class="btn ghost sm" id="qr_gen" type="button">QR erzeugen</button></div>
+        <div id="qr_out" style="text-align:center;margin-top:10px"></div>
+        <p class="note">Bitte vor dem Einsatz einmal mit einer Banking-App scannen. Der Swiss-QR-Helfer erzeugt einen scannbaren Zahlteil-Code, nicht das amtliche A6-Layout.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANGEBOT -->
+  <section class="view" id="v-angebot">
+    <h1>Angebot / Kostenvoranschlag</h1>
+    <p class="sub">Wie eine Rechnung — mit Gültigkeitsdatum. Per Klick in eine Rechnung umwandeln.</p>
+    <div class="panel">
+      <div class="row">
+        <div class="fld"><label>Angebots-Nr.</label><input id="a_nr" placeholder="A-2026-001"></div>
+        <div class="fld"><label>Datum</label><input id="a_datum" type="date"></div>
+        <div class="fld"><label>Gültig bis</label><input id="a_gueltig" type="date"></div>
+      </div>
+      <div class="row"><div class="fld"><label>Kunde aus Adressbuch</label><select id="a_pick"><option value="">— frei eingeben —</option></select></div></div>
+      <div class="fld"><label>Kunde (Name &amp; Anschrift)</label><textarea id="a_kunde" rows="3"></textarea></div>
+      <table class="items" id="a_items"><thead><tr><th style="width:46%">Beschreibung</th><th class="num" style="width:13%">Menge</th><th class="num" style="width:20%">Einzelpreis</th><th class="num" style="width:15%">Summe</th><th></th></tr></thead><tbody></tbody></table>
+      <div class="btnrow"><button class="btn ghost sm" id="a_add">+ Position</button><select id="a_katpick" class="katsel" style="max-width:230px"><option value="">+ aus Katalog…</option></select></div>
+      <div class="row" style="margin-top:14px">
+        <div class="fld" style="max-width:240px"><label>MwSt-Satz</label><select id="a_vat" class="vatsel"></select></div>
+      </div>
+      <div class="totbox"><div>Netto</div><div class="num" id="a_net">0,00</div><div id="a_vatlabel">zzgl. MwSt</div><div class="num" id="a_vatval">0,00</div><div class="g">Gesamt</div><div class="num g" id="a_gross">0,00</div></div>
+      <div class="btnrow" style="margin-top:16px">
+        <button class="btn" id="a_print">🖨️ Drucken / PDF</button>
+        <button class="btn ghost" id="a_toinv">➡️ In Rechnung umwandeln</button>
+        <button class="btn ghost" id="a_clear">Leeren</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIEFERSCHEIN -->
+  <section class="view" id="v-liefer">
+    <h1>Lieferschein</h1>
+    <p class="sub">Artikel/Leistungen ohne Preise — zum Mitliefern oder als Leistungsnachweis.</p>
+    <div class="panel">
+      <div class="row">
+        <div class="fld"><label>Lieferschein-Nr.</label><input id="l_nr" placeholder="L-2026-001"></div>
+        <div class="fld"><label>Datum</label><input id="l_datum" type="date"></div>
+      </div>
+      <div class="row"><div class="fld"><label>Kunde aus Adressbuch</label><select id="l_pick"><option value="">— frei eingeben —</option></select></div></div>
+      <div class="fld"><label>Kunde (Name &amp; Anschrift)</label><textarea id="l_kunde" rows="3"></textarea></div>
+      <table class="items" id="l_items"><thead><tr><th style="width:72%">Beschreibung</th><th class="num" style="width:20%">Menge</th><th></th></tr></thead><tbody></tbody></table>
+      <div class="btnrow"><button class="btn ghost sm" id="l_add">+ Position</button></div>
+      <div class="btnrow" style="margin-top:16px"><button class="btn" id="l_print">🖨️ Drucken / PDF</button><button class="btn ghost" id="l_clear">Leeren</button></div>
+    </div>
+  </section>
+
+  <!-- KUNDEN -->
+  <section class="view" id="v-kunden">
+    <h1>Kunden / Adressbuch</h1>
+    <p class="sub">Einmal anlegen → in Rechnung, Angebot &amp; Mahnung per Dropdown einsetzen. Nur lokal gespeichert.</p>
+    <div class="panel">
+      <h2>Neuer Kunde</h2>
+      <div class="row">
+        <div class="fld"><label>Name / Firma</label><input id="k_name" placeholder="Mustermann GmbH"></div>
+        <div class="fld"><label>E-Mail</label><input id="k_email" placeholder="kontakt@…"></div>
+      </div>
+      <div class="fld"><label>Anschrift</label><textarea id="k_adresse" rows="2" placeholder="Musterstr. 1&#10;8000 Zürich"></textarea></div>
+      <div class="btnrow"><button class="btn" id="k_add">+ Kunde speichern</button></div>
+      <div class="list" id="k_list"></div>
+    </div>
+  </section>
+
+  <!-- ZEIT -->
+  <section class="view" id="v-zeit">
+    <h1>Zeiterfassung</h1>
+    <p class="sub">Stoppuhr starten oder Stunden manuell erfassen → später in eine Rechnung übernehmen.</p>
+    <div class="panel">
+      <h2>Stoppuhr</h2>
+      <div class="clock" id="z_clock">00:00:00</div>
+      <div class="btnrow" style="justify-content:center">
+        <button class="btn" id="z_startstop">▶︎ Start</button>
+        <button class="btn ghost" id="z_log">⏹ Stoppen &amp; erfassen</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Eintrag erfassen</h2>
+      <div class="row">
+        <div class="fld"><label>Projekt / Kunde</label><input id="z_proj" placeholder="Projekt Website"></div>
+        <div class="fld"><label>Datum</label><input id="z_datum" type="date"></div>
+        <div class="fld" style="max-width:140px"><label>Stunden</label><input id="z_std" value="1" inputmode="decimal"></div>
+        <div class="fld" style="max-width:150px"><label>Stundensatz</label><input id="z_satz" value="90" inputmode="decimal"></div>
+      </div>
+      <div class="fld"><label>Beschreibung</label><input id="z_desc" placeholder="Was wurde gemacht?"></div>
+      <div class="btnrow"><button class="btn" id="z_add">+ Eintrag</button></div>
+      <div class="out" id="z_sum"></div>
+      <div class="list" id="z_list"></div>
+      <div class="btnrow"><button class="btn ghost sm" id="z_toinv">➡️ Alle in Rechnung übernehmen</button></div>
+    </div>
+  </section>
+
+  <!-- KASSENBUCH -->
+  <section class="view" id="v-kasse">
+    <h1>Kassenbuch <span class="pill">CSV-Export</span></h1>
+    <p class="sub">Einnahmen &amp; Ausgaben erfassen, Saldo im Blick, als CSV für Steuerberater/Excel exportieren. Nur lokal gespeichert.</p>
+    <div class="panel">
+      <div class="fld"><label>Art</label><div class="seg" id="ka_seg"><button data-t="ein" class="on">＋ Einnahme</button><button data-t="aus">− Ausgabe</button></div></div>
+      <div class="row">
+        <div class="fld"><label>Datum</label><input id="ka_datum" type="date"></div>
+        <div class="fld"><label>Kategorie</label><input id="ka_kat" placeholder="z. B. Honorar, Material, Software"></div>
+        <div class="fld" style="max-width:160px"><label>Betrag</label><input id="ka_betrag" value="" inputmode="decimal"></div>
+      </div>
+      <div class="fld"><label>Notiz (optional)</label><input id="ka_notiz" placeholder="Beleg-Nr., Kunde …"></div>
+      <div class="btnrow"><button class="btn" id="ka_add">+ Buchung</button><button class="btn ghost" id="ka_csv">⬇ CSV exportieren</button></div>
+      <div class="out" id="ka_sum"></div>
+      <div class="list" id="ka_list"></div>
+    </div>
+  </section>
+
+  <!-- OFFENE POSTEN -->
+  <section class="view" id="v-offen">
+    <h1>Offene Posten</h1>
+    <p class="sub">Alle gespeicherten Rechnungen mit Status. Bezahlt abhaken, Überfällige im Blick, Mahnung per Klick vorbereiten.</p>
+    <div class="panel">
+      <div class="out" id="of_sum"></div>
+      <div class="list" id="of_list"></div>
+      <p class="note">Rechnungen kommen über „💾 Entwurf speichern" im Rechnung-Tab hierher.</p>
+    </div>
+  </section>
+
+  <!-- UMSATZ -->
+  <section class="view" id="v-umsatz">
+    <h1>Umsatz-Übersicht</h1>
+    <p class="sub">Aus bezahlten Rechnungen und Kassenbuch-Einnahmen — Monat für Monat.</p>
+    <div class="panel">
+      <div class="out" id="um_sum"></div>
+      <h2 style="margin-top:14px">Monatsumsatz</h2>
+      <div id="um_bars"></div>
+    </div>
+  </section>
+
+  <!-- BELEGE -->
+  <section class="view" id="v-belege">
+    <h1>Belege / Spesen <span class="pill">mit Foto</span></h1>
+    <p class="sub">Belege abfotografieren und erfassen — Foto, Betrag, Kategorie, Datum. Fotos werden verkleinert, alles nur lokal gespeichert.</p>
+    <div class="panel">
+      <div class="row">
+        <div class="fld"><label>Foto / Scan</label><input id="bl_file" type="file" accept="image/*" capture="environment"></div>
+        <div class="fld" style="max-width:150px"><label>Betrag</label><input id="bl_betrag" inputmode="decimal"></div>
+      </div>
+      <div class="row">
+        <div class="fld"><label>Kategorie</label><input id="bl_kat" placeholder="z. B. Material, Reise, Software"></div>
+        <div class="fld" style="max-width:170px"><label>Datum</label><input id="bl_datum" type="date"></div>
+      </div>
+      <div class="fld"><label>Notiz (optional)</label><input id="bl_notiz" placeholder="Händler, Zweck …"></div>
+      <div id="bl_prev" class="note"></div>
+      <div class="btnrow"><button class="btn" id="bl_add" type="button">+ Beleg speichern</button><button class="btn ghost" id="bl_csv" type="button">⬇ CSV exportieren</button></div>
+      <div class="out" id="bl_sum"></div>
+      <div class="list" id="bl_list"></div>
+    </div>
+  </section>
+
+  <!-- RECHNER -->
+  <section class="view" id="v-rechner">
+    <h1>Finanz-Rechner</h1>
+    <p class="sub">Sieben Rechner für den Geschäftsalltag — sofort, offline.</p>
+
+    <div class="mini"><h3>MwSt — netto ↔ brutto</h3>
+      <div class="row"><div class="fld" style="max-width:170px"><label>Steuersatz %</label><input id="m_satz" value="19" inputmode="decimal"></div>
+        <div class="fld" style="max-width:170px"><label>Betrag</label><input id="m_betrag" value="100" inputmode="decimal"></div>
+        <div class="fld"><label>Betrag ist …</label><div class="seg" id="m_seg"><button data-m="net" class="on">Netto</button><button data-m="gross">Brutto</button></div></div></div>
+      <div class="out" id="m_out"></div></div>
+
+    <div class="mini"><h3>Stundensatz — was muss ich verlangen?</h3>
+      <div class="row"><div class="fld"><label>Wunsch-Gewinn / Jahr</label><input id="h_netto" value="60000" inputmode="decimal"></div>
+        <div class="fld"><label>Betriebskosten / Jahr</label><input id="h_kosten" value="12000" inputmode="decimal"></div>
+        <div class="fld"><label>Urlaub + krank (Tage)</label><input id="h_frei" value="35" inputmode="numeric"></div>
+        <div class="fld"><label>Abrechenbare Std/Tag</label><input id="h_std" value="5" inputmode="decimal"></div></div>
+      <div class="out" id="h_out"></div>
+      <p class="note">Vereinfacht (vor Steuern). 365 − 104 Wochenend-Tage − deine freien Tage = Arbeitstage.</p></div>
+
+    <div class="mini"><h3>Skonto — lohnt früh zahlen?</h3>
+      <div class="row"><div class="fld"><label>Rechnungsbetrag</label><input id="s_betrag" value="1000" inputmode="decimal"></div>
+        <div class="fld"><label>Skonto %</label><input id="s_skonto" value="2" inputmode="decimal"></div>
+        <div class="fld"><label>Skontofrist (Tage)</label><input id="s_frist" value="10" inputmode="numeric"></div>
+        <div class="fld"><label>Zahlungsziel (Tage)</label><input id="s_ziel" value="30" inputmode="numeric"></div></div>
+      <div class="out" id="s_out"></div></div>
+
+    <div class="mini"><h3>Verzugszinsen &amp; Mahngebühr</h3>
+      <div class="row"><div class="fld"><label>Offener Betrag</label><input id="vz_betrag" value="2500" inputmode="decimal"></div>
+        <div class="fld"><label>Zinssatz % p.a.</label><input id="vz_zins" value="5" inputmode="decimal"></div>
+        <div class="fld"><label>Tage im Verzug</label><input id="vz_tage" value="60" inputmode="numeric"></div>
+        <div class="fld"><label>Mahnpauschale</label><input id="vz_pausch" value="0" inputmode="decimal"></div></div>
+      <div class="out" id="vz_out"></div></div>
+
+    <div class="mini"><h3>Zahlungsfrist &amp; Fälligkeit</h3>
+      <div class="row"><div class="fld"><label>Rechnungsdatum</label><input id="zf_datum" type="date"></div>
+        <div class="fld"><label>Zahlungsziel (Tage)</label><input id="zf_ziel" value="14" inputmode="numeric"></div></div>
+      <div class="out" id="zf_out"></div></div>
+
+    <div class="mini"><h3>Prozent-Rechner</h3>
+      <div class="row"><div class="fld"><label>Wie viel sind</label><input id="pc_p" value="19" inputmode="decimal"></div>
+        <div class="fld"><label>% von</label><input id="pc_b" value="100" inputmode="decimal"></div></div>
+      <div class="out" id="pc_out"></div></div>
+
+    <div class="mini"><h3>IBAN-Prüfer</h3>
+      <div class="fld"><label>IBAN</label><input id="ib_in" placeholder="CH93 0076 2011 6238 5295 7" spellcheck="false"></div>
+      <div class="out" id="ib_out"></div>
+      <p class="note">Prüft die Prüfziffer (Format &amp; Mod-97), nicht ob das Konto existiert. Lokal, nichts wird gesendet.</p></div>
+
+    <div class="mini"><h3>Reisekosten / km-Geld</h3>
+      <div class="row"><div class="fld"><label>Gefahrene Kilometer</label><input id="km_km" value="100" inputmode="decimal"></div>
+        <div class="fld"><label>Pauschale pro km</label><select id="km_satz"><option value="0.30">Deutschland Auto 0,30 €</option><option value="0.38">Deutschland ab 21. km 0,38 €</option><option value="0.70">Schweiz 0,70 CHF</option><option value="0.20">Motorrad 0,20 €</option></select></div>
+        <div class="fld"><label>oder eigener Satz</label><input id="km_custom" placeholder="z. B. 0,42" inputmode="decimal"></div></div>
+      <div class="out" id="km_out"></div></div>
+  </section>
+
+  <!-- TRADING -->
+  <section class="view" id="v-trading">
+    <h1>Trading &amp; Geldanlage</h1>
+    <p class="sub">Positionsgröße, Chance/Risiko, Gewinn/Verlust, Verlust-Recovery und Zinseszins — sauber gerechnet. <strong>Keine Anlageberatung.</strong></p>
+
+    <div class="mini"><h3>Positionsgröße nach Risiko</h3>
+      <div class="row"><div class="fld"><label>Kontogröße</label><input id="tp_konto" value="10000" inputmode="decimal"></div>
+        <div class="fld"><label>Risiko / Trade %</label><input id="tp_risk" value="1" inputmode="decimal"></div>
+        <div class="fld"><label>Einstieg</label><input id="tp_entry" value="100" inputmode="decimal"></div>
+        <div class="fld"><label>Stop-Loss</label><input id="tp_stop" value="95" inputmode="decimal"></div></div>
+      <div class="out" id="tp_out"></div>
+      <p class="note">So groß darf die Position sein, damit dein Verlust bis zum Stop dein Risiko-Budget nicht übersteigt.</p></div>
+
+    <div class="mini"><h3>Chance/Risiko &amp; Break-even-Trefferquote</h3>
+      <div class="row"><div class="fld"><label>Einstieg</label><input id="tr_entry" value="100" inputmode="decimal"></div>
+        <div class="fld"><label>Stop-Loss</label><input id="tr_stop" value="95" inputmode="decimal"></div>
+        <div class="fld"><label>Kursziel</label><input id="tr_tgt" value="115" inputmode="decimal"></div></div>
+      <div class="out" id="tr_out"></div></div>
+
+    <div class="mini"><h3>Gewinn / Verlust eines Trades</h3>
+      <div class="row"><div class="fld"><label>Kaufkurs</label><input id="tg_buy" value="100" inputmode="decimal"></div>
+        <div class="fld"><label>Verkaufskurs</label><input id="tg_sell" value="120" inputmode="decimal"></div>
+        <div class="fld"><label>Stückzahl</label><input id="tg_qty" value="10" inputmode="decimal"></div>
+        <div class="fld"><label>Gebühren % (gesamt)</label><input id="tg_fee" value="0,2" inputmode="decimal"></div></div>
+      <div class="out" id="tg_out"></div></div>
+
+    <div class="mini"><h3>Verlust aufholen</h3>
+      <div class="row"><div class="fld" style="max-width:220px"><label>Verlust %</label><input id="tl_loss" value="20" inputmode="decimal"></div></div>
+      <div class="out" id="tl_out"></div></div>
+
+    <div class="mini"><h3>Zinseszins / Sparplan</h3>
+      <div class="row"><div class="fld"><label>Startkapital</label><input id="tc_start" value="1000" inputmode="decimal"></div>
+        <div class="fld"><label>Sparrate / Monat</label><input id="tc_month" value="200" inputmode="decimal"></div>
+        <div class="fld"><label>Rendite % p.a.</label><input id="tc_rate" value="6" inputmode="decimal"></div>
+        <div class="fld"><label>Laufzeit (Jahre)</label><input id="tc_years" value="15" inputmode="numeric"></div></div>
+      <div class="out" id="tc_out"></div>
+      <p class="note">Vereinfachte Annahme (konstante Rendite, monatliche Einzahlung). Keine Garantie, keine Anlageberatung.</p></div>
+
+    <div class="mini"><h3>Hebel — Liquidationspreis (Krypto/CFD)</h3>
+      <div class="row"><div class="fld"><label>Einstiegskurs</label><input id="lq_entry" value="100" inputmode="decimal"></div>
+        <div class="fld"><label>Hebel (x)</label><input id="lq_lev" value="10" inputmode="decimal"></div>
+        <div class="fld"><label>Richtung</label><div class="seg" id="lq_seg"><button data-d="long" class="on">Long</button><button data-d="short">Short</button></div></div></div>
+      <div class="out" id="lq_out"></div>
+      <p class="note">Vereinfachte Näherung (isolierte Margin, ohne Gebühren/Funding). Echte Börsen rechnen leicht abweichend — nur zur Orientierung.</p></div>
+  </section>
+
+  <!-- FINANZEN -->
+  <section class="view" id="v-finanz">
+    <h1>Finanzen <span class="pill">Tracker &amp; Rechner</span></h1>
+    <p class="sub">Portfolio, Vermögen, Trading-Journal, FIRE und Hypothek — alles lokal. <strong>Keine Anlageberatung.</strong></p>
+    <div class="ltabs" id="f_tabs">
+      <button data-f="port" class="on" type="button">📈 Portfolio</button>
+      <button data-f="nw" type="button">🏦 Vermögen</button>
+      <button data-f="jour" type="button">📓 Journal</button>
+      <button data-f="fire" type="button">🔥 FIRE</button>
+      <button data-f="hyp" type="button">🏠 Hypothek</button>
+    </div>
+
+    <div class="lsec on" id="fs-port">
+      <div class="panel">
+        <h2>Portfolio-Tracker</h2>
+        <div class="row">
+          <div class="fld"><label>Name</label><input id="pf_name" placeholder="z. B. Welt-ETF"></div>
+          <div class="fld" style="max-width:90px"><label>Anzahl</label><input id="pf_qty" inputmode="decimal" value="1"></div>
+          <div class="fld" style="max-width:110px"><label>Kaufkurs</label><input id="pf_buy" inputmode="decimal"></div>
+          <div class="fld" style="max-width:110px"><label>akt. Kurs</label><input id="pf_now" inputmode="decimal"></div>
+        </div>
+        <div class="btnrow"><button class="btn" id="pf_add" type="button">+ Position</button></div>
+        <div class="out" id="pf_sum"></div>
+        <div class="row" style="margin-top:10px"><div style="flex:1;min-width:180px"><div id="pf_donut" style="max-width:190px;margin:0 auto"></div></div><div style="flex:2;min-width:230px"><div class="list" id="pf_list"></div></div></div>
+      </div>
+    </div>
+
+    <div class="lsec" id="fs-nw">
+      <div class="panel">
+        <h2>Vermögen &amp; Schulden (Net Worth)</h2>
+        <div class="row">
+          <div class="fld"><label>Bezeichnung</label><input id="nw_label" placeholder="z. B. Sparkonto / Auto-Kredit"></div>
+          <div class="fld" style="max-width:140px"><label>Betrag</label><input id="nw_val" inputmode="decimal"></div>
+          <div class="fld"><label>Art</label><div class="seg" id="nw_seg"><button data-t="a" class="on" type="button">Vermögen</button><button data-t="l" type="button">Schuld</button></div></div>
+        </div>
+        <div class="btnrow"><button class="btn" id="nw_add" type="button">+ Eintrag</button><button class="btn ghost" id="nw_snap" type="button">📸 Snapshot speichern</button></div>
+        <div class="out" id="nw_sum"></div>
+        <div class="list" id="nw_list"></div>
+        <h2 style="margin-top:14px">Verlauf (Netto)</h2><div id="nw_chart"></div>
+      </div>
+    </div>
+
+    <div class="lsec" id="fs-jour">
+      <div class="panel">
+        <h2>Trading-Journal</h2>
+        <div class="row">
+          <div class="fld" style="max-width:140px"><label>Datum</label><input id="jr_date" type="date"></div>
+          <div class="fld" style="max-width:110px"><label>Symbol</label><input id="jr_sym" placeholder="BTC"></div>
+          <div class="fld"><label>Richtung</label><div class="seg" id="jr_dir"><button data-d="long" class="on" type="button">Long</button><button data-d="short" type="button">Short</button></div></div>
+        </div>
+        <div class="row">
+          <div class="fld" style="max-width:90px"><label>Menge</label><input id="jr_qty" inputmode="decimal" value="1"></div>
+          <div class="fld" style="max-width:110px"><label>Einstieg</label><input id="jr_entry" inputmode="decimal"></div>
+          <div class="fld" style="max-width:110px"><label>Ausstieg</label><input id="jr_exit" inputmode="decimal"></div>
+          <div class="fld" style="max-width:90px"><label>Gebühren</label><input id="jr_fee" inputmode="decimal" value="0"></div>
+        </div>
+        <div class="btnrow"><button class="btn" id="jr_add" type="button">+ Trade</button></div>
+        <div class="out" id="jr_sum"></div>
+        <h2 style="margin-top:12px">Equity-Kurve</h2><div id="jr_chart"></div>
+        <div class="list" id="jr_list"></div>
+      </div>
+    </div>
+
+    <div class="lsec" id="fs-fire">
+      <div class="mini"><h3>🔥 FIRE — finanzielle Unabhängigkeit</h3>
+        <div class="row">
+          <div class="fld"><label>Aktuelles Vermögen</label><input id="fi_cur" inputmode="decimal" value="20000"></div>
+          <div class="fld"><label>Sparrate / Monat</label><input id="fi_save" inputmode="decimal" value="800"></div>
+          <div class="fld"><label>Rendite % p.a.</label><input id="fi_ret" inputmode="decimal" value="6"></div>
+          <div class="fld"><label>Jährliche Ausgaben</label><input id="fi_exp" inputmode="decimal" value="30000"></div>
+        </div>
+        <div class="out" id="fi_out"></div>
+        <p class="note">4 %-Regel: Zielvermögen = jährliche Ausgaben × 25. Vereinfachte Projektion, keine Garantie.</p>
+      </div>
+    </div>
+
+    <div class="lsec" id="fs-hyp">
+      <div class="mini"><h3>🏠 Hypothek / Kredit — Tilgung</h3>
+        <div class="row">
+          <div class="fld"><label>Kreditbetrag</label><input id="hy_amt" inputmode="decimal" value="400000"></div>
+          <div class="fld"><label>Zins % p.a.</label><input id="hy_rate" inputmode="decimal" value="2"></div>
+          <div class="fld"><label>Laufzeit (Jahre)</label><input id="hy_years" inputmode="decimal" value="20"></div>
+        </div>
+        <div class="out" id="hy_out"></div>
+        <p class="note">Annuitätenkredit (konstante Rate). Vereinfacht, ohne Gebühren/Sondertilgung.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LERNEN -->
+  <section class="view" id="v-lernen">
+    <h1>Lernen — Geld &amp; Trading <span class="pill">ehrlich erklärt</span></h1>
+    <p class="sub">Von Grund auf verständlich: sparen, investieren, Risiko, Trading — Schritt für Schritt, ohne Hype. <strong>Keine Anlageberatung.</strong></p>
+    <div class="disc">⚠️ Dies ist Bildung, keine Anlage-, Steuer- oder Rechtsberatung. Kapitalmärkte sind riskant — du kannst Geld verlieren. Investiere nur, was du verschmerzen kannst.</div>
+    <div class="tipday"><b>💡 Tipp des Tages</b><p id="l_tiptext"></p></div>
+    <div class="ltabs" id="l_tabs">
+      <button data-l="pfad" class="on">🧭 Start hier</button>
+      <button data-l="lekt">📖 Lektionen</button>
+      <button data-l="tipps">💡 Tipps</button>
+      <button data-l="gloss">📔 Glossar</button>
+      <button data-l="quiz">❓ Quiz</button>
+      <button data-l="check">✅ Checkliste</button>
+      <button data-l="sim">🎮 Übungskonto</button>
+    </div>
+    <div class="lsec on" id="ls-pfad">
+      <div class="panel"><strong>📈 Dein Fortschritt</strong><div id="l_prog"></div></div>
+      <p class="sub">Neu hier? Folge dem Pfad von oben nach unten — vom Geld-Basiswissen bis zum ersten Trade.</p>
+      <div id="l_path"></div>
+    </div>
+    <div class="lsec" id="ls-lekt">
+      <div class="lhead"><label class="toggle"><input type="checkbox" id="l_easy"> Einfach-Modus (nur Kurzfassung)</label></div>
+      <input class="lsearch" id="l_search" placeholder="🔍 Lektion suchen …">
+      <div class="chips" id="l_chips"></div>
+      <div id="l_lessons"></div>
+    </div>
+    <div class="lsec" id="ls-tipps">
+      <input class="lsearch" id="l_tsearch" placeholder="🔍 Tipp suchen …">
+      <div id="l_tips"></div>
+    </div>
+    <div class="lsec" id="ls-gloss">
+      <input class="lsearch" id="l_gsearch" placeholder="🔍 Begriff suchen …">
+      <div id="l_gloss"></div>
+    </div>
+    <div class="lsec" id="ls-quiz">
+      <div class="panel" id="l_quizhead"></div>
+      <div id="l_quiz"></div>
+    </div>
+    <div class="lsec" id="ls-check">
+      <p class="sub">Vor JEDEM Trade durchgehen — erst wenn alles ✓ ist, überhaupt erwägen.</p>
+      <div id="l_check"></div>
+    </div>
+    <div class="lsec" id="ls-sim">
+      <div class="disc">🎮 Übungskonto mit <strong>Spielgeld</strong> — kein echtes Geld, keine echten Kurse (simulierter Kursverlauf). Zum gefahrlosen Üben von Risiko, Stop-Loss und Hebel.</div>
+      <div class="out" id="sim_kpi"></div>
+      <div class="panel"><div id="sim_chart"></div><p class="note" id="sim_price" style="text-align:center;font-weight:700"></p>
+        <div class="btnrow" style="justify-content:center"><button class="btn" id="sim_step" type="button">⏭ Nächster Tag</button><button class="btn ghost" id="sim_step5" type="button">⏭ 5 Tage</button></div>
+      </div>
+      <div class="panel" id="sim_posbox"></div>
+      <div class="panel">
+        <h2>Position eröffnen</h2>
+        <div class="row">
+          <div class="fld"><label>Richtung</label><div class="seg" id="sim_dir"><button data-d="long" class="on" type="button">Long</button><button data-d="short" type="button">Short</button></div></div>
+          <div class="fld" style="max-width:130px"><label>Einsatz</label><input id="sim_amt" inputmode="decimal" value="1000"></div>
+          <div class="fld" style="max-width:110px"><label>Hebel</label><input id="sim_lev" inputmode="decimal" value="1"></div>
+          <div class="fld" style="max-width:110px"><label>Stop %</label><input id="sim_stop" inputmode="decimal" placeholder="optional"></div>
+        </div>
+        <div class="btnrow"><button class="btn" id="sim_open" type="button">📈 Position eröffnen</button><button class="btn ghost" id="sim_reset" type="button">↺ Konto zurücksetzen</button></div>
+        <p class="note">Tipp: Probier mal 10x Hebel und drück „Nächster Tag" — du wirst sehen, wie schnell eine Liquidation kommt. Genau das soll dir die Augen öffnen.</p>
+      </div>
+      <div class="panel"><h2>Verlauf</h2><div class="list" id="sim_log"></div></div>
+    </div>
+  </section>
+
+  <!-- MAHNUNG -->
+  <section class="view" id="v-mahnung">
+    <h1>Mahnung &amp; Business-E-Mail</h1>
+    <p class="sub">Fertige Texte zum Kopieren — höflich, klar, sofort einsetzbar.</p>
+    <div class="panel">
+      <h2>Zahlungserinnerung / Mahnung</h2>
+      <div class="row"><div class="fld"><label>Kunde aus Adressbuch</label><select id="mh_pick"><option value="">— frei —</option></select></div></div>
+      <div class="row"><div class="fld"><label>Kunde (Name)</label><input id="mh_kunde" placeholder="Frau Muster"></div>
+        <div class="fld"><label>Rechnungs-Nr.</label><input id="mh_nr" placeholder="2026-001"></div></div>
+      <div class="row"><div class="fld"><label>Offener Betrag</label><input id="mh_betrag" placeholder="1.200,00"></div>
+        <div class="fld"><label>Fällig am</label><input id="mh_faellig" type="date"></div>
+        <div class="fld"><label>Neue Frist (Tage)</label><input id="mh_frist" value="10" inputmode="numeric"></div></div>
+      <div class="fld"><label>Stufe</label><div class="seg" id="mh_seg"><button data-s="1" class="on">1. Erinnerung (freundlich)</button><button data-s="2">2. Mahnung (bestimmt)</button></div></div>
+      <div class="subj" id="mh_subj"></div><div class="mail" id="mh_text"></div>
+      <div class="btnrow"><button class="btn sm" id="mh_copy">📋 Kopieren</button></div>
+    </div>
+    <div class="panel">
+      <h2>Business-E-Mail-Generator</h2>
+      <div class="row"><div class="fld"><label>Situation</label><select id="em_sit">
+        <option value="nachfassen">Angebot nachfassen</option><option value="preis">Preiserhöhung ankündigen</option>
+        <option value="absage">Höflich absagen</option><option value="reklamation">Auf Reklamation reagieren</option>
+        <option value="reaktivieren">Kunde reaktivieren</option><option value="termin">Termin vorschlagen</option></select></div>
+        <div class="fld"><label>Empfänger (Name)</label><input id="em_name" placeholder="Herr Muster"></div></div>
+      <div class="fld"><label>Stichwort / Detail (optional)</label><input id="em_detail" placeholder="z. B. Angebot vom 3. Juni"></div>
+      <div class="subj" id="em_subj"></div><div class="mail" id="em_text"></div>
+      <div class="btnrow"><button class="btn sm" id="em_copy">📋 Kopieren</button></div>
+    </div>
+  </section>
+
+  <!-- STAMMDATEN -->
+  <section class="view" id="v-stamm">
+    <h1>Stammdaten</h1>
+    <p class="sub">Einmal eintragen — fließt in Rechnung, Angebot &amp; Mahnung. Nur lokal gespeichert.</p>
+    <div class="panel">
+      <div class="fld"><label>Firma / Name</label><input id="st_firma"></div>
+      <div class="fld"><label>Anschrift</label><textarea id="st_adresse" rows="3"></textarea></div>
+      <div class="row"><div class="fld"><label>E-Mail</label><input id="st_email"></div><div class="fld"><label>Telefon</label><input id="st_tel"></div></div>
+      <div class="row"><div class="fld"><label>IBAN</label><input id="st_iban"></div><div class="fld"><label>MwSt-/Steuernr.</label><input id="st_steuer"></div></div>
+      <div class="row"><div class="fld" style="max-width:240px"><label>Steuer-Rücklage % (Empfehlung)</label><input id="st_rl" inputmode="decimal" placeholder="25"></div></div>
+      <div class="fld"><label>Logo (optional — erscheint oben auf Rechnung &amp; Angebot)</label><input id="st_logo_file" type="file" accept="image/*"><div id="st_logo_prev" class="note"></div></div>
+      <div class="btnrow"><button class="btn" id="st_save">💾 Stammdaten speichern</button></div>
+    </div>
+    <div class="panel">
+      <h2>Leistungs-/Artikel-Katalog</h2>
+      <p class="note" style="margin-top:0">Wiederkehrende Positionen einmal anlegen — dann in Rechnung &amp; Angebot per Dropdown „+ aus Katalog" einfügen.</p>
+      <div class="row">
+        <div class="fld"><label>Bezeichnung</label><input id="ar_desc" placeholder="z. B. Beratungsstunde"></div>
+        <div class="fld" style="max-width:160px"><label>Preis</label><input id="ar_price" inputmode="decimal" placeholder="90"></div>
+      </div>
+      <div class="btnrow"><button class="btn" id="ar_add" type="button">+ Zum Katalog</button></div>
+      <div class="list" id="ar_list"></div>
+    </div>
+    <div class="panel">
+      <h2>Daten-Sicherung &amp; App</h2>
+      <p class="note" style="margin-top:0">Alle Cockpit-Daten (Stammdaten, Kunden, Rechnungen, Zeit, Kassenbuch, Lern-Fortschritt) liegen nur auf diesem Gerät. Sichere sie regelmäßig als Datei — oder lade sie auf einem neuen Gerät wieder ein.</p>
+      <div class="btnrow">
+        <button class="btn" id="bk_export">⬇ Alle Daten sichern</button>
+        <button class="btn ghost" id="bk_import">⬆ Daten laden</button>
+        <input type="file" id="bk_file" accept="application/json,.json" hidden>
+      </div>
+      <div class="row" style="margin-top:6px"><div class="fld" style="max-width:240px"><label>Darstellung</label><select id="cfg_theme"><option value="auto">Automatisch (System)</option><option value="light">Hell</option><option value="dark">Dunkel</option></select></div></div>
+      <div class="btnrow"><button class="btn ghost" id="bk_demo" type="button">🎬 Demo-Daten laden</button><button class="btn ghost" id="bk_wipe" type="button">🗑 Alle Daten löschen</button></div>
+      <div class="btnrow" id="bk_install" style="display:none">
+        <button class="btn ghost" id="bk_installbtn">📲 App installieren</button>
+      </div>
+      <p class="note">📲 Als App nutzen: im Browser-Menü „Zum Startbildschirm hinzufügen" / „Installieren" wählen — dann läuft das Cockpit offline wie eine echte App.</p>
+    </div>
+  </section>
+</main>
+
+<div id="print-doc"></div>
+<footer class="wrap">aban Business-Cockpit · 100 % offline · keine Daten verlassen dein Gerät · © 2026 aban news</footer>
+<div class="toast" id="toast"></div>
+
+<script src="/qr-lib.js"></script>
+<script src="/js/charts.js"></script>
+<script>
+(function(){
+  "use strict";
+  var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+  var LS=window.localStorage;
+  function toast(m){var t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(function(){t.classList.remove("show")},1600)}
+  function n(v){return parseFloat(String(v==null?"":v).trim().replace(/\./g,"").replace(",","."))}
+  function nf(v){return (isFinite(v)?v:0).toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})}
+  function de(d){return d.toLocaleDateString("de-DE",{day:"2-digit",month:"long",year:"numeric"})}
+  function addDays(d,k){var x=new Date(d.getTime());x.setDate(x.getDate()+k);return x}
+  function parseDate(v){var p=String(v||"").split("-");return p.length===3?new Date(+p[0],+p[1]-1,+p[2]):new Date(NaN)}
+  function isoToday(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+  function esc(x){return String(x==null?"":x).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]})}
+  function nl(x){return esc(x).replace(/\n/g,"<br>")}
+  function get(k,d){try{return JSON.parse(LS.getItem(k)||JSON.stringify(d))}catch(e){return d}}
+  function set(k,v){LS.setItem(k,JSON.stringify(v))}
+  var VATS=[["8.1","Schweiz 8,1 %"],["19","Deutschland 19 %"],["7","Deutschland 7 %"],["20","Österreich 20 %"],["10","Österreich 10 %"],["0","0 % (Kleinunternehmer)"]];
+  $$(".vatsel").forEach(function(sel){sel.innerHTML=VATS.map(function(v,i){return '<option value="'+v[0]+'"'+(i===1?" selected":"")+'>'+v[1]+'</option>'}).join("")});
+
+  /* Tabs */
+  $$("#tabs button").forEach(function(b){b.addEventListener("click",function(){
+    $$("#tabs button").forEach(function(x){x.classList.toggle("on",x===b)});
+    $$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-"+b.dataset.v)});if(b.dataset.v==="dash")renderDash();window.scrollTo(0,0)})});
+
+  /* Stammdaten */
+  var stF=["firma","adresse","email","tel","iban","steuer","rl"];
+  function loadStamm(){var s=get("abanCockpit_stamm",{});stF.forEach(function(f){if($("#st_"+f))$("#st_"+f).value=s[f]||""})}
+  function stamm(){return get("abanCockpit_stamm",{})}
+  $("#st_save").addEventListener("click",function(){var o=get("abanCockpit_stamm",{});stF.forEach(function(f){o[f]=$("#st_"+f).value});set("abanCockpit_stamm",o);toast("Stammdaten gespeichert ✓")});
+
+  /* Kunden */
+  function clients(){return get("abanCockpit_clients",[])}
+  function saveClients(a){set("abanCockpit_clients",a)}
+  function refreshPickers(){
+    var c=clients();var opt='<option value="">— frei eingeben —</option>'+c.map(function(x,i){return '<option value="'+i+'">'+esc(x.name)+'</option>'}).join("");
+    ["r_pick","a_pick","l_pick"].forEach(function(id){var el=$("#"+id);if(el)el.innerHTML=opt});
+    var mh=$("#mh_pick");if(mh)mh.innerHTML='<option value="">— frei —</option>'+c.map(function(x,i){return '<option value="'+i+'">'+esc(x.name)+'</option>'}).join("");
+  }
+  function clientBlock(c){return (c.name||"")+(c.adresse?"\n"+c.adresse:"")}
+  function renderClients(){
+    var c=clients(),el=$("#k_list");el.innerHTML="";
+    if(!c.length){el.innerHTML='<p class="note">Noch keine Kunden gespeichert.</p>';return}
+    c.forEach(function(x,i){var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>👤 <strong>'+esc(x.name)+'</strong>'+(x.email?' · '+esc(x.email):'')+'</span>';
+      var wrap=document.createElement("span");wrap.className="x";
+      var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var a=clients();a.splice(i,1);saveClients(a);renderClients();refreshPickers()};
+      wrap.appendChild(del);row.appendChild(wrap);el.appendChild(row)})}
+  $("#k_add").addEventListener("click",function(){
+    var name=$("#k_name").value.trim();if(!name){toast("Bitte Namen eingeben");return}
+    var a=clients();a.unshift({name:name,email:$("#k_email").value.trim(),adresse:$("#k_adresse").value.trim()});saveClients(a);
+    $("#k_name").value="";$("#k_email").value="";$("#k_adresse").value="";renderClients();refreshPickers();toast("Kunde gespeichert ✓")});
+  function bindPicker(pickId,targetId){$("#"+pickId).addEventListener("change",function(){var i=this.value;if(i==="")return;var c=clients()[+i];if(c)$("#"+targetId).value=clientBlock(c)})}
+  bindPicker("r_pick","r_kunde");bindPicker("a_pick","a_kunde");
+  $("#mh_pick").addEventListener("change",function(){var i=this.value;if(i==="")return;var c=clients()[+i];if(c){$("#mh_kunde").value=c.name;genMahnung()}});
+
+  /* Dokument-Modul (Rechnung + Angebot) */
+  function setupDoc(p){
+    var tb=$("#"+p+"_items tbody");
+    function addItem(desc,qty,price){
+      var tr=document.createElement("tr");
+      tr.innerHTML='<td><input class="i_desc" placeholder="Leistung / Artikel"></td><td><input class="i_qty num" inputmode="decimal" value="1"></td><td><input class="i_price num" inputmode="decimal" value="0"></td><td class="num i_sum">0,00</td><td><button class="delrow">×</button></td>';
+      tb.appendChild(tr);
+      if(desc!=null)$(".i_desc",tr).value=desc;if(qty!=null)$(".i_qty",tr).value=qty;if(price!=null)$(".i_price",tr).value=price;
+      $(".delrow",tr).addEventListener("click",function(){tr.remove();calc()});
+      $$("input",tr).forEach(function(i){i.addEventListener("input",calc)});calc()}
+    function calc(){var net=0;$$("#"+p+"_items tbody tr").forEach(function(tr){var q=n($(".i_qty",tr).value)||0,pr=n($(".i_price",tr).value)||0,s=q*pr;$(".i_sum",tr).textContent=nf(s);net+=s});
+      var rate=parseFloat($("#"+p+"_vat").value)||0,vat=net*rate/100,gross=net+vat;
+      $("#"+p+"_net").textContent=nf(net);$("#"+p+"_vatlabel").textContent=rate>0?("zzgl. "+String(rate).replace(".",",")+" % MwSt"):"MwSt";
+      $("#"+p+"_vatval").textContent=nf(vat);$("#"+p+"_gross").textContent=nf(gross);return {net:net,rate:rate,vat:vat,gross:gross}}
+    $("#"+p+"_add").addEventListener("click",function(){addItem()});
+    $("#"+p+"_vat").addEventListener("change",calc);
+    function items(){return $$("#"+p+"_items tbody tr").map(function(tr){return {desc:$(".i_desc",tr).value,qty:$(".i_qty",tr).value,price:$(".i_price",tr).value}})}
+    function setItems(arr){tb.innerHTML="";(arr&&arr.length?arr:[{}]).forEach(function(it){addItem(it.desc,it.qty,it.price)})}
+    return {addItem:addItem,calc:calc,items:items,setItems:setItems,tb:tb}
+  }
+  var R=setupDoc("r"),A=setupDoc("a");
+
+  var L18N={de:{desc:"Beschreibung",qty:"Menge",price:"Einzelpreis",sum:"Summe",net:"Netto",vatL:"MwSt",gross:"Gesamt",iban:"IBAN",taxno:"Steuer-/MwSt-Nr.",qr:"Zahlbar per QR-Code (scan & pay)"},fr:{desc:"Désignation",qty:"Quantité",price:"Prix unitaire",sum:"Total",net:"Net",vatL:"TVA",gross:"Total",iban:"IBAN",taxno:"N° TVA",qr:"Payable par QR-code"},it:{desc:"Descrizione",qty:"Quantità",price:"Prezzo un.",sum:"Totale",net:"Netto",vatL:"IVA",gross:"Totale",iban:"IBAN",taxno:"P. IVA",qr:"Pagabile con codice QR"},en:{desc:"Description",qty:"Qty",price:"Unit price",sum:"Amount",net:"Net",vatL:"VAT",gross:"Total",iban:"IBAN",taxno:"VAT no.",qr:"Payable by QR code"}};
+  function printDoc(opts){
+    var s=stamm(),L=L18N[opts.lang||"de"]||L18N.de,foot=opts.foot||"";
+    var head='<div class="pi-head"><div>'+(s.logo?'<img src="'+s.logo+'" alt="" style="max-height:64px;margin-bottom:8px"><br>':'')+'<strong>'+esc(s.firma||"")+'</strong><br>'+nl(s.adresse||"")+'<br>'+esc(s.email||"")+(s.tel?" · "+esc(s.tel):"")+'</div><div style="text-align:right">'+esc(opts.title)+(opts.nr?" "+esc(opts.nr):"")+'<br>'+(opts.datum?de(parseDate(opts.datum)):"")+'</div></div><div>'+nl(opts.kunde||"")+'</div><h2>'+esc(opts.title)+(opts.nr?" "+esc(opts.nr):"")+'</h2>'+(opts.meta?'<div>'+esc(opts.meta)+'</div>':'');
+    if(opts.noPrice){$("#print-doc").innerHTML=head+'<table><thead><tr><th>'+L.desc+'</th><th class="n">'+L.qty+'</th></tr></thead><tbody>'+opts.items.map(function(it){return '<tr><td>'+esc(it.desc)+'</td><td class="n">'+nf(n(it.qty)||0)+'</td></tr>'}).join("")+'</tbody></table><div class="pi-foot">'+foot+(s.steuer?' &nbsp; '+L.taxno+': '+esc(s.steuer):'')+'</div>';window.print();return}
+    var rows=opts.items.map(function(it){var q=n(it.qty)||0,pr=n(it.price)||0;return '<tr><td>'+esc(it.desc)+'</td><td class="n">'+nf(q)+'</td><td class="n">'+nf(pr)+'</td><td class="n">'+nf(q*pr)+'</td></tr>'}).join("");
+    var html=head+'<table><thead><tr><th>'+L.desc+'</th><th class="n">'+L.qty+'</th><th class="n">'+L.price+'</th><th class="n">'+L.sum+'</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+      '<div class="pi-tot">'+L.net+': '+nf(opts.tot.net)+'<br>'+(opts.tot.rate>0?("+ "+String(opts.tot.rate).replace(".",",")+" % "+L.vatL+": "+nf(opts.tot.vat)+"<br>"):"")+'<strong>'+L.gross+': '+nf(opts.tot.gross)+'</strong></div>'+
+      (opts.qr?'<div style="clear:both;margin-top:26px">'+opts.qr+'<div style="font-size:11px;color:#444;margin-top:4px">'+L.qr+'</div></div>':'')+
+      '<div class="pi-foot">'+foot+(s.iban?' &nbsp; '+L.iban+': '+esc(s.iban):'')+(s.steuer?' &nbsp; '+L.taxno+': '+esc(s.steuer):'')+'</div>';
+    $("#print-doc").innerHTML=html;window.print()}
+
+  /* Rechnung-spezifisch */
+  $("#r_clear").addEventListener("click",function(){R.setItems([{}]);["r_nr","r_kunde","r_leistung"].forEach(function(id){$("#"+id).value=""});$("#r_pick").value="";toast("Geleert")});
+  $("#r_print").addEventListener("click",function(){var t=R.calc(),d={nr:$("#r_nr").value,datum:$("#r_datum").value};
+    var lang=$("#r_lang")?$("#r_lang").value:"de",titles={de:"Rechnung",fr:"Facture",it:"Fattura",en:"Invoice"},payL={de:"Zahlbar bis",fr:"Payable jusqu'au",it:"Pagabile entro",en:"Payable by"},metaL={de:"Leistungszeitraum",fr:"Période",it:"Periodo",en:"Service period"};
+    var foot="";if(d.datum){var fd=addDays(parseDate(d.datum),parseInt($("#r_ziel").value,10)||0);if(!isNaN(fd))foot=payL[lang]+" "+de(fd)+".";}
+    printDoc({title:titles[lang]||"Rechnung",nr:d.nr,datum:d.datum,kunde:$("#r_kunde").value,meta:$("#r_leistung").value?(metaL[lang]+": "+$("#r_leistung").value):"",items:R.items(),tot:t,foot:foot,qr:rQrSvg,lang:lang})});
+  function invData(){return {nr:$("#r_nr").value,datum:$("#r_datum").value,leistung:$("#r_leistung").value,kunde:$("#r_kunde").value,vat:$("#r_vat").value,ziel:$("#r_ziel").value,items:R.items()}}
+  function loadInv(d){$("#r_nr").value=d.nr||"";$("#r_datum").value=d.datum||isoToday();$("#r_leistung").value=d.leistung||"";$("#r_kunde").value=d.kunde||"";$("#r_vat").value=d.vat||"19";$("#r_ziel").value=d.ziel||"14";R.setItems(d.items)}
+  function drafts(){return get("abanCockpit_drafts",[])}
+  function renderDrafts(){var d=drafts(),el=$("#r_saved");el.innerHTML="";if(!d.length){el.innerHTML='<p class="note">Noch keine Entwürfe.</p>';return}
+    d.forEach(function(x,i){var row=document.createElement("div");row.className="li";row.innerHTML='<span>🧾 '+esc(x.nr||"ohne Nr.")+' · '+esc((x.kunde||"").split("\n")[0].slice(0,26))+'</span>';
+      var w=document.createElement("span");w.className="x";
+      var load=document.createElement("button");load.className="btn ghost sm";load.textContent="Laden";load.onclick=function(){loadInv(x);toast("Geladen")};
+      var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";del.onclick=function(){var a=drafts();a.splice(i,1);set("abanCockpit_drafts",a);renderDrafts()};
+      w.appendChild(load);w.appendChild(del);row.appendChild(w);el.appendChild(row)})}
+  $("#r_save").addEventListener("click",function(){var a=drafts(),d=invData();d.status="offen";d.ts=Date.now();a.unshift(d);set("abanCockpit_drafts",a.slice(0,60));renderDrafts();renderOffen();renderUmsatz();toast("Entwurf gespeichert ✓")});
+
+  /* Angebot-spezifisch */
+  $("#a_clear").addEventListener("click",function(){A.setItems([{}]);["a_nr","a_kunde"].forEach(function(id){$("#"+id).value=""});$("#a_pick").value="";toast("Geleert")});
+  $("#a_print").addEventListener("click",function(){var t=A.calc();var g=$("#a_gueltig").value;
+    printDoc({title:"Angebot",nr:$("#a_nr").value,datum:$("#a_datum").value,kunde:$("#a_kunde").value,meta:g?("Gültig bis "+de(parseDate(g))):"",items:A.items(),tot:t,foot:"Dies ist ein unverbindliches Angebot."})});
+  $("#a_toinv").addEventListener("click",function(){loadInv({nr:"",datum:isoToday(),leistung:"",kunde:$("#a_kunde").value,vat:$("#a_vat").value,ziel:"14",items:A.items()});
+    $$("#tabs button").forEach(function(x){x.classList.toggle("on",x.dataset.v==="rechnung")});$$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-rechnung")});window.scrollTo(0,0);toast("In Rechnung übernommen ✓")});
+
+  /* ===== Rechner ===== */
+  var mMode="net";
+  $$("#m_seg button").forEach(function(b){b.addEventListener("click",function(){mMode=b.dataset.m;$$("#m_seg button").forEach(function(x){x.classList.toggle("on",x===b)});calcM()})});
+  function calcM(){var r=n($("#m_satz").value),b=n($("#m_betrag").value);if(!isFinite(r)||!isFinite(b)){$("#m_out").innerHTML="";return}
+    var net,vat,gross;if(mMode==="net"){net=b;vat=b*r/100;gross=net+vat}else{gross=b;net=b/(1+r/100);vat=gross-net}
+    $("#m_out").innerHTML='<div class="box"><b>'+nf(net)+'</b><span>Netto</span></div><div class="box"><b>'+nf(vat)+'</b><span>MwSt ('+String(r).replace(".",",")+'%)</span></div><div class="box big"><b>'+nf(gross)+'</b><span>Brutto</span></div>'}
+  ["m_satz","m_betrag"].forEach(function(id){$("#"+id).addEventListener("input",calcM)});
+
+  function calcH(){var ne=n($("#h_netto").value),ko=n($("#h_kosten").value),frei=n($("#h_frei").value),std=n($("#h_std").value);
+    if(!isFinite(ne)||!isFinite(std)||std<=0){$("#h_out").innerHTML="";return}if(!isFinite(ko))ko=0;if(!isFinite(frei))frei=0;
+    var tage=365-104-frei;if(tage<1)tage=1;var billable=tage*std;var rev=ne+ko;var rate=rev/billable;
+    $("#h_out").innerHTML='<div class="box"><b>'+Math.round(tage)+'</b><span>Arbeitstage/Jahr</span></div><div class="box"><b>'+Math.round(billable)+'</b><span>abrechenb. Stunden</span></div><div class="box big ok"><b>'+nf(rate)+'</b><span>Stundensatz (netto, vor Steuern)</span></div>'}
+  ["h_netto","h_kosten","h_frei","h_std"].forEach(function(id){$("#"+id).addEventListener("input",calcH)});
+
+  function calcS(){var B=n($("#s_betrag").value),s=n($("#s_skonto").value),Tf=n($("#s_frist").value),Tz=n($("#s_ziel").value);
+    if(!isFinite(B)||!isFinite(s)||s<=0||s>=100){$("#s_out").innerHTML="";return}
+    var sk=B*s/100,zahl=B-sk,p=(Tz>Tf)?(s/(100-s))*(360/(Tz-Tf))*100:NaN;
+    $("#s_out").innerHTML='<div class="box"><b>'+nf(sk)+'</b><span>Skonto gespart</span></div><div class="box"><b>'+nf(zahl)+'</b><span>Zahlbetrag</span></div><div class="box big"><b>'+(isFinite(p)?p.toLocaleString("de-DE",{maximumFractionDigits:1})+" %":"—")+'</b><span>Effektiver Jahreszins</span></div>'}
+  ["s_betrag","s_skonto","s_frist","s_ziel"].forEach(function(id){$("#"+id).addEventListener("input",calcS)});
+
+  function calcVZ(){var B=n($("#vz_betrag").value),z=n($("#vz_zins").value),T=n($("#vz_tage").value),P=n($("#vz_pausch").value);
+    if(!isFinite(B)||!isFinite(z)){$("#vz_out").innerHTML="";return}if(!isFinite(P))P=0;if(!isFinite(T))T=0;
+    var zins=B*z/100*T/360,ges=B+zins+P;
+    $("#vz_out").innerHTML='<div class="box"><b>'+nf(zins)+'</b><span>Verzugszinsen</span></div><div class="box"><b>'+nf(P)+'</b><span>Mahnpauschale</span></div><div class="box big"><b>'+nf(ges)+'</b><span>Gesamtforderung</span></div>'}
+  ["vz_betrag","vz_zins","vz_tage","vz_pausch"].forEach(function(id){$("#"+id).addEventListener("input",calcVZ)});
+
+  function calcZF(){var rd=parseDate($("#zf_datum").value),ziel=parseInt($("#zf_ziel").value,10);
+    if(isNaN(rd.getTime())){$("#zf_out").innerHTML="";return}if(isNaN(ziel)||ziel<0)ziel=0;
+    var f=addDays(rd,ziel),v=addDays(f,30),today=new Date();today.setHours(0,0,0,0);var rest=Math.round((f-today)/86400000);
+    var st=rest>0?("in "+rest+" Tagen"):rest===0?"heute fällig":("überfällig seit "+(-rest)+" T.");
+    $("#zf_out").innerHTML='<div class="box big"><b>'+de(f)+'</b><span>Fällig</span></div><div class="box"><b>'+st+'</b><span>Status</span></div><div class="box"><b>'+de(v)+'</b><span>Verzug spätestens</span></div>'}
+  ["zf_datum","zf_ziel"].forEach(function(id){$("#"+id).addEventListener("input",calcZF)});
+
+  function calcPC(){var p=n($("#pc_p").value),b=n($("#pc_b").value);if(!isFinite(p)||!isFinite(b)){$("#pc_out").innerHTML="";return}
+    $("#pc_out").innerHTML='<div class="box big"><b>'+nf(b*p/100)+'</b><span>'+String(p).replace(".",",")+' % von '+nf(b)+'</span></div><div class="box"><b>'+nf(b*(1+p/100))+'</b><span>+ '+String(p).replace(".",",")+' % (Aufschlag)</span></div><div class="box"><b>'+nf(b*(1-p/100))+'</b><span>− '+String(p).replace(".",",")+' % (Rabatt)</span></div>'}
+  ["pc_p","pc_b"].forEach(function(id){$("#"+id).addEventListener("input",calcPC)});
+
+  function ibanValid(raw){var iban=String(raw||"").replace(/\s+/g,"").toUpperCase();if(!/^[A-Z]{2}[0-9A-Z]{11,30}$/.test(iban))return null;
+    var r=iban.slice(4)+iban.slice(0,4),s="";for(var i=0;i<r.length;i++){var c=r.charCodeAt(i);s+=(c>=65&&c<=90)?(c-55):r[i]}
+    var rem=0;for(var j=0;j<s.length;j++){rem=(rem*10+(s.charCodeAt(j)-48))%97}return {ok:rem===1,iban:iban}}
+  function calcIB(){var v=$("#ib_in").value.trim();if(!v){$("#ib_out").innerHTML="";return}var res=ibanValid(v);
+    if(!res){$("#ib_out").innerHTML='<div class="box big bad"><b>Format ungültig</b><span>Bitte vollständige IBAN eingeben</span></div>';return}
+    $("#ib_out").innerHTML='<div class="box big '+(res.ok?"ok":"bad")+'"><b>'+(res.ok?"✓ gültig":"✗ ungültig")+'</b><span>'+res.iban.replace(/(.{4})/g,"$1 ").trim()+' · Land '+res.iban.slice(0,2)+'</span></div>'}
+  $("#ib_in").addEventListener("input",calcIB);
+
+  /* ===== Zeiterfassung ===== */
+  var timer=null,t0=0,acc=0;
+  function fmtClock(ms){var s=Math.floor(ms/1000),h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(x).padStart(2,"0")}
+  function tick(){$("#z_clock").textContent=fmtClock(acc+(timer?Date.now()-t0:0))}
+  $("#z_startstop").addEventListener("click",function(){if(timer){clearInterval(timer);timer=null;acc+=Date.now()-t0;this.textContent="▶︎ Weiter"}else{t0=Date.now();timer=setInterval(tick,500);this.textContent="⏸ Pause"}tick()});
+  $("#z_log").addEventListener("click",function(){if(timer){clearInterval(timer);timer=null;acc+=Date.now()-t0}var hrs=acc/3600000;if(hrs<=0){toast("Stoppuhr ist bei 0");return}$("#z_std").value=(Math.round(hrs*100)/100).toString().replace(".",",");acc=0;$("#z_clock").textContent="00:00:00";$("#z_startstop").textContent="▶︎ Start";toast("Zeit übernommen — jetzt erfassen")});
+  function tEntries(){return get("abanCockpit_time",[])}
+  function renderTime(){var e=tEntries(),el=$("#z_list"),sum=$("#z_sum");el.innerHTML="";var th=0,tb=0;
+    e.forEach(function(x,i){th+=n(x.std)||0;tb+=(n(x.std)||0)*(n(x.satz)||0);var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>⏱ '+esc(x.proj||"—")+' · '+(String(x.std).replace(".",","))+' h · '+nf((n(x.std)||0)*(n(x.satz)||0))+'</span>';
+      var w=document.createElement("span");w.className="x";var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var a=tEntries();a.splice(i,1);set("abanCockpit_time",a);renderTime()};w.appendChild(del);row.appendChild(w);el.appendChild(row)});
+    sum.innerHTML=e.length?'<div class="box"><b>'+(Math.round(th*100)/100).toString().replace(".",",")+'</b><span>Stunden gesamt</span></div><div class="box big"><b>'+nf(tb)+'</b><span>Summe (netto)</span></div>':"";
+    if(!e.length)el.innerHTML='<p class="note">Noch keine Einträge.</p>'}
+  $("#z_add").addEventListener("click",function(){var proj=$("#z_proj").value.trim();if(!proj){toast("Bitte Projekt angeben");return}
+    var a=tEntries();a.unshift({proj:proj,datum:$("#z_datum").value,std:$("#z_std").value,satz:$("#z_satz").value,desc:$("#z_desc").value});set("abanCockpit_time",a);
+    $("#z_desc").value="";renderTime();toast("Eintrag gespeichert ✓")});
+  $("#z_toinv").addEventListener("click",function(){var e=tEntries();if(!e.length){toast("Keine Einträge");return}
+    R.setItems(e.map(function(x){return {desc:(x.proj||"")+(x.desc?" — "+x.desc:""),qty:(n(x.std)||0).toString().replace(".",","),price:(n(x.satz)||0).toString().replace(".",",")}}));
+    $$("#tabs button").forEach(function(b){b.classList.toggle("on",b.dataset.v==="rechnung")});$$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-rechnung")});window.scrollTo(0,0);toast("In Rechnung übernommen ✓")});
+
+  /* ===== Mahnung ===== */
+  var mhStufe="1";
+  $$("#mh_seg button").forEach(function(b){b.addEventListener("click",function(){mhStufe=b.dataset.s;$$("#mh_seg button").forEach(function(x){x.classList.toggle("on",x===b)});genMahnung()})});
+  function genMahnung(){var s=stamm(),kunde=$("#mh_kunde").value||"Sehr geehrte Damen und Herren",nr=$("#mh_nr").value||"[Nr.]",betrag=$("#mh_betrag").value||"[Betrag]";
+    var fd=parseDate($("#mh_faellig").value),ft=isNaN(fd.getTime())?"[Fälligkeit]":de(fd),frist=parseInt($("#mh_frist").value,10)||10,neu=de(addDays(new Date(),frist));
+    var anrede=/^(herr|frau|sehr)/i.test(kunde)?kunde:("Sehr geehrte/r "+kunde),subj,body;
+    if(mhStufe==="1"){subj="Zahlungserinnerung zur Rechnung "+nr;body=anrede+",\n\nsicher ist es Ihrer Aufmerksamkeit entgangen: unsere Rechnung "+nr+" über "+betrag+" war am "+ft+" fällig und ist bisher offen.\n\nBitte gleichen Sie den Betrag bis zum "+neu+" aus. Sollten Sie bereits gezahlt haben, betrachten Sie diese Erinnerung als gegenstandslos.\n\nFreundliche Grüße\n"+(s.firma||"")}
+    else{subj="1. Mahnung zur Rechnung "+nr;body=anrede+",\n\ntrotz unserer Erinnerung ist die Rechnung "+nr+" über "+betrag+" (fällig am "+ft+") weiterhin offen.\n\nWir fordern Sie auf, den Betrag bis spätestens "+neu+" zu begleichen. Nach Ablauf der Frist behalten wir uns vor, Verzugszinsen und Mahnkosten zu berechnen.\n\nFreundliche Grüße\n"+(s.firma||"")}
+    $("#mh_subj").innerHTML="<b>Betreff:</b> "+esc(subj);$("#mh_text").textContent=body}
+  ["mh_kunde","mh_nr","mh_betrag","mh_faellig","mh_frist"].forEach(function(id){$("#"+id).addEventListener("input",genMahnung)});
+  $("#mh_copy").addEventListener("click",function(){copy($("#mh_text").textContent)});
+
+  /* ===== E-Mail ===== */
+  function genEmail(){var s=stamm(),sit=$("#em_sit").value,name=$("#em_name").value||"",detail=$("#em_detail").value||"";
+    var anrede=name?("Sehr geehrte/r "+name):"Guten Tag",gruss="\n\nFreundliche Grüße\n"+(s.firma||"");
+    var T={nachfassen:["Kurze Nachfrage zu unserem Angebot",anrede+",\n\nich komme kurz auf "+(detail||"mein Angebot")+" zurück. Passt es so für Sie, oder darf ich etwas anpassen?\n\nÜber eine kurze Rückmeldung freue ich mich."+gruss],
+      preis:["Anpassung unserer Preise",anrede+",\n\nzum kommenden Quartal passe ich meine Preise moderat an"+(detail?" ("+detail+")":"")+". Bestehende Zusagen gelten unverändert. Bei Fragen bin ich gern da."+gruss],
+      absage:["Rückmeldung zu Ihrer Anfrage",anrede+",\n\nvielen Dank für Ihre Anfrage"+(detail?" zu "+detail:"")+". Leider kann ich sie aktuell nicht übernehmen — ich melde mich gern, sobald wieder Kapazität frei ist."+gruss],
+      reklamation:["Wir kümmern uns",anrede+",\n\ndanke für Ihre Rückmeldung"+(detail?" wegen "+detail:"")+". Das tut mir leid. Ich prüfe den Fall umgehend und melde mich mit einer Lösung."+gruss],
+      reaktivieren:["Schön, wieder von uns zu hören?",anrede+",\n\nwir haben länger nichts voneinander gehört"+(detail?" — seit "+detail:"")+". Falls ich Sie wieder unterstützen darf, melden Sie sich gern."+gruss],
+      termin:["Terminvorschlag",anrede+",\n\ngern stimme ich einen Termin mit Ihnen ab"+(detail?" zu "+detail:"")+". Passt Ihnen einer der kommenden Tage? Schlagen Sie gern eine Uhrzeit vor, ich richte mich nach Ihnen."+gruss]};
+    var t=T[sit]||T.nachfassen;$("#em_subj").innerHTML="<b>Betreff:</b> "+esc(t[0]);$("#em_text").textContent=t[1]}
+  ["em_sit","em_name","em_detail"].forEach(function(id){$("#"+id).addEventListener("input",genEmail)});
+  $("#em_copy").addEventListener("click",function(){copy($("#em_text").textContent)});
+
+  function copy(txt){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){toast("Kopiert ✓")},function(){fb(txt)})}else fb(txt);
+    function fb(t){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");toast("Kopiert ✓")}catch(e){toast("Bitte manuell kopieren")}a.remove()}}
+
+  /* ===== Trading ===== */
+  function calcTP(){var K=n($("#tp_konto").value),rp=n($("#tp_risk").value),e=n($("#tp_entry").value),sl=n($("#tp_stop").value);
+    if(!isFinite(K)||!isFinite(rp)||!isFinite(e)||!isFinite(sl)){$("#tp_out").innerHTML="";return}
+    var risk=K*rp/100,per=Math.abs(e-sl),units=per>0?risk/per:NaN,val=isFinite(units)?units*e:NaN;
+    $("#tp_out").innerHTML='<div class="box"><b>'+nf(risk)+'</b><span>Risiko (max. Verlust)</span></div><div class="box big"><b>'+(isFinite(units)?units.toLocaleString("de-DE",{maximumFractionDigits:2}):"—")+'</b><span>Stückzahl / Einheiten</span></div><div class="box"><b>'+nf(val)+'</b><span>Positionswert</span></div>'}
+  ["tp_konto","tp_risk","tp_entry","tp_stop"].forEach(function(id){$("#"+id).addEventListener("input",calcTP)});
+
+  function calcTR(){var e=n($("#tr_entry").value),sl=n($("#tr_stop").value),tg=n($("#tr_tgt").value);
+    if(!isFinite(e)||!isFinite(sl)||!isFinite(tg)){$("#tr_out").innerHTML="";return}
+    var risk=Math.abs(e-sl),reward=Math.abs(tg-e),crv=risk>0?reward/risk:NaN,wr=isFinite(crv)?100/(1+crv):NaN;
+    $("#tr_out").innerHTML='<div class="box big"><b>1 : '+(isFinite(crv)?crv.toLocaleString("de-DE",{maximumFractionDigits:2}):"—")+'</b><span>Chance/Risiko</span></div><div class="box"><b>'+(isFinite(wr)?wr.toLocaleString("de-DE",{maximumFractionDigits:1})+" %":"—")+'</b><span>nötige Trefferquote</span></div><div class="box"><b>'+nf(reward)+' / '+nf(risk)+'</b><span>Gewinn / Verlust je Einheit</span></div>'}
+  ["tr_entry","tr_stop","tr_tgt"].forEach(function(id){$("#"+id).addEventListener("input",calcTR)});
+
+  function calcTG(){var b=n($("#tg_buy").value),s=n($("#tg_sell").value),q=n($("#tg_qty").value),f=n($("#tg_fee").value);
+    if(!isFinite(b)||!isFinite(s)||!isFinite(q)){$("#tg_out").innerHTML="";return}if(!isFinite(f))f=0;
+    var gross=(s-b)*q,fees=(b*q+s*q)*f/100,net=gross-fees,ret=(b*q)>0?net/(b*q)*100:NaN;
+    $("#tg_out").innerHTML='<div class="box"><b>'+nf(gross)+'</b><span>Brutto-G/V</span></div><div class="box"><b>'+nf(fees)+'</b><span>Gebühren</span></div><div class="box big '+(net>=0?"ok":"bad")+'"><b>'+nf(net)+'</b><span>Netto-G/V ('+(isFinite(ret)?ret.toLocaleString("de-DE",{maximumFractionDigits:1})+" %":"—")+')</span></div>'}
+  ["tg_buy","tg_sell","tg_qty","tg_fee"].forEach(function(id){$("#"+id).addEventListener("input",calcTG)});
+
+  function calcTL(){var L=n($("#tl_loss").value);if(!isFinite(L)||L<0||L>=100){$("#tl_out").innerHTML="";return}
+    var need=L/(100-L)*100;
+    $("#tl_out").innerHTML='<div class="box big"><b>+'+need.toLocaleString("de-DE",{maximumFractionDigits:1})+' %</b><span>Gewinn nötig, um −'+String(L).replace(".",",")+' % auszugleichen</span></div>'}
+  $("#tl_loss").addEventListener("input",calcTL);
+
+  function calcTC(){var P=n($("#tc_start").value),m=n($("#tc_month").value),r=n($("#tc_rate").value),y=n($("#tc_years").value);
+    if(!isFinite(P))P=0;if(!isFinite(m))m=0;if(!isFinite(r)||!isFinite(y)||y<=0){$("#tc_out").innerHTML="";return}
+    var i=r/100/12,nM=Math.round(y*12),fv;
+    if(i>0){fv=P*Math.pow(1+i,nM)+m*((Math.pow(1+i,nM)-1)/i)}else{fv=P+m*nM}
+    var contrib=P+m*nM,gain=fv-contrib;
+    $("#tc_out").innerHTML='<div class="box big ok"><b>'+nf(fv)+'</b><span>Endwert nach '+y+' Jahren</span></div><div class="box"><b>'+nf(contrib)+'</b><span>Einzahlungen</span></div><div class="box"><b>'+nf(gain)+'</b><span>Wertzuwachs</span></div>'}
+  ["tc_start","tc_month","tc_rate","tc_years"].forEach(function(id){$("#"+id).addEventListener("input",calcTC)});
+
+  /* ===== Kassenbuch + CSV ===== */
+  function downloadCSV(fn,rows){var csv=rows.map(function(r){return r.map(function(c){var s=String(c==null?"":c);return /[";\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}).join(";")}).join("\r\n");
+    var blob=new Blob(["﻿"+csv],{type:"text/csv;charset=utf-8"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fn;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},100)}
+  var kaTyp="ein";
+  $$("#ka_seg button").forEach(function(b){b.addEventListener("click",function(){kaTyp=b.dataset.t;$$("#ka_seg button").forEach(function(x){x.classList.toggle("on",x===b)})})});
+  function kasse(){return get("abanCockpit_kasse",[])}
+  function renderKasse(){var e=kasse(),el=$("#ka_list"),sum=$("#ka_sum");el.innerHTML="";var ein=0,aus=0;
+    e.forEach(function(x,i){var b=n(x.betrag)||0;if(x.typ==="ein")ein+=b;else aus+=b;var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>'+(x.typ==="ein"?"➕":"➖")+' '+esc(x.datum||"")+' · '+esc(x.kat||"—")+' · <strong>'+nf(b)+'</strong></span>';
+      var w=document.createElement("span");w.className="x";var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var a=kasse();a.splice(i,1);set("abanCockpit_kasse",a);renderKasse()};w.appendChild(del);row.appendChild(w);el.appendChild(row)});
+    var saldo=ein-aus;
+    sum.innerHTML=e.length?'<div class="box ok"><b>'+nf(ein)+'</b><span>Einnahmen</span></div><div class="box bad"><b>'+nf(aus)+'</b><span>Ausgaben</span></div><div class="box big '+(saldo>=0?"ok":"bad")+'"><b>'+nf(saldo)+'</b><span>Saldo</span></div>':"";
+    if(!e.length)el.innerHTML='<p class="note">Noch keine Buchungen.</p>'}
+  $("#ka_add").addEventListener("click",function(){var betrag=n($("#ka_betrag").value);if(!isFinite(betrag)||betrag<=0){toast("Bitte Betrag eingeben");return}
+    var a=kasse();a.unshift({datum:$("#ka_datum").value,typ:kaTyp,kat:$("#ka_kat").value.trim(),betrag:betrag,notiz:$("#ka_notiz").value.trim()});set("abanCockpit_kasse",a);
+    $("#ka_betrag").value="";$("#ka_notiz").value="";renderKasse();toast("Buchung gespeichert ✓")});
+  $("#ka_csv").addEventListener("click",function(){var e=kasse();if(!e.length){toast("Keine Buchungen");return}
+    var rows=[["Datum","Art","Kategorie","Betrag","Notiz"]];e.slice().reverse().forEach(function(x){rows.push([x.datum||"",x.typ==="ein"?"Einnahme":"Ausgabe",x.kat||"",(n(x.betrag)||0).toFixed(2).replace(".",","),x.notiz||""])});downloadCSV("kassenbuch.csv",rows)});
+
+  /* ===== Reisekosten / km ===== */
+  function calcKM(){var km=n($("#km_km").value),cust=n($("#km_custom").value),satz=(isFinite(cust)&&cust>0)?cust:parseFloat($("#km_satz").value);
+    if(!isFinite(km)||!isFinite(satz)){$("#km_out").innerHTML="";return}
+    $("#km_out").innerHTML='<div class="box big"><b>'+nf(km*satz)+'</b><span>'+km.toLocaleString("de-DE")+' km × '+satz.toLocaleString("de-DE",{minimumFractionDigits:2})+'</span></div>'}
+  ["km_km","km_custom"].forEach(function(id){$("#"+id).addEventListener("input",calcKM)});$("#km_satz").addEventListener("change",calcKM);
+
+  /* ===== Liquidationspreis ===== */
+  var lqDir="long";
+  $$("#lq_seg button").forEach(function(b){b.addEventListener("click",function(){lqDir=b.dataset.d;$$("#lq_seg button").forEach(function(x){x.classList.toggle("on",x===b)});calcLQ()})});
+  function calcLQ(){var e=n($("#lq_entry").value),L=n($("#lq_lev").value);if(!isFinite(e)||!isFinite(L)||L<=0){$("#lq_out").innerHTML="";return}
+    var move=100/L,liq=lqDir==="long"?e*(1-1/L):e*(1+1/L);
+    $("#lq_out").innerHTML='<div class="box big bad"><b>'+liq.toLocaleString("de-DE",{maximumFractionDigits:4})+'</b><span>Liquidationskurs ('+lqDir+')</span></div><div class="box"><b>'+move.toLocaleString("de-DE",{maximumFractionDigits:2})+' %</b><span>Bewegung bis Liquidation</span></div><div class="box"><b>'+L+'x</b><span>Hebel</span></div>'}
+  ["lq_entry","lq_lev"].forEach(function(id){$("#"+id).addEventListener("input",calcLQ)});
+
+  /* ===== Lernen ===== */
+  (function(){
+    var lroot=$("#v-lernen");if(!lroot)return;
+    function lg(k,d){return get("abanCockpit_lern_"+k,d)}
+    function ls(k,v){set("abanCockpit_lern_"+k,v)}
+    function goTab(v){var b=$('#tabs button[data-v="'+v+'"]');if(b){b.click();window.scrollTo(0,0)}}
+    var LCATS=["Grundlagen","Risiko","Hebel","Psychologie","Charts","Strategien","Krypto","Betrug","Steuern","Business"];
+    var LESSONS=[
+      {c:"Grundlagen",t:"Sparen, Investieren oder Traden?",s:"Sparen = Geld sicher parken. Investieren = langfristig Anteile halten. Traden = kurzfristig kaufen/verkaufen (riskant).",d:"Für die meisten ist Sparen (Notgroschen) plus langfristiges Investieren (z. B. ETF) der ruhige, bewährte Weg. Trading ist Vollzeit-Handwerk mit hohem Verlustrisiko — nichts, womit man nebenbei schnell reich wird.",g:""},
+      {c:"Grundlagen",t:"Anlageklassen einfach erklärt",s:"Aktien = Firmenanteile · ETF = Korb vieler Aktien · Anleihen = Kredite · Krypto/Forex/CFD = sehr volatil.",d:"Ein breiter ETF streut über hunderte Firmen und senkt das Risiko. Einzelaktien, Krypto und Hebelprodukte schwanken stark — mehr Chance, aber auch mehr Gefahr.",g:""},
+      {c:"Grundlagen",t:"Long und Short",s:"Long = du gewinnst, wenn der Kurs steigt. Short = du gewinnst, wenn er fällt.",d:"Short heißt: geliehene Stücke verkaufen und billiger zurückkaufen. Steigt der Kurs stattdessen, ist der Verlust theoretisch unbegrenzt. Für Anfänger ungeeignet.",g:""},
+      {c:"Grundlagen",t:"Order-Typen",s:"Market = sofort zum aktuellen Kurs. Limit = nur zu deinem Wunschpreis. Stop = löst bei einem Kurs aus.",d:"Mit einer Limit-Order bestimmst du den Preis, mit einer Stop-Order schützt du dich vor großen Verlusten (Stop-Loss). Eine Market-Order kann in schnellen Märkten teurer ausfallen als gedacht (Slippage).",g:""},
+      {c:"Grundlagen",t:"Gebühren und Spread fressen Rendite",s:"Jeder Trade kostet: Kommission plus Spread (Differenz Kauf-/Verkaufskurs).",d:"Viele kleine Trades summieren sich zu hohen Kosten. Über Jahrzehnte kostet 1 % Gebühr pro Jahr ein kleines Vermögen. Günstige Broker und wenige, überlegte Trades zahlen sich aus.",g:"rechner"},
+      {c:"Risiko",t:"Risiko zuerst — nicht der Gewinn",s:"Lege VOR dem Trade fest, wie viel du maximal verlierst.",d:"Profis denken zuerst an den möglichen Verlust, nicht an den Traum-Gewinn. Wer das Risiko begrenzt, überlebt auch eine Pechsträhne und bleibt im Spiel.",g:"trading"},
+      {c:"Risiko",t:"Die 1-Prozent-Regel",s:"Riskiere pro Trade höchstens 1–2 % deines Kontos.",d:"Bei 10.000 sind das 100–200 Risiko pro Trade. So führen selbst zehn Verluste in Folge nicht zum Ruin. Nutze den Positionsgrößen-Rechner.",g:"trading"},
+      {c:"Risiko",t:"Positionsgröße richtig wählen",s:"Stückzahl = (Konto × Risiko %) ÷ Abstand Einstieg–Stop.",d:"Die Positionsgröße ergibt sich aus deinem Risiko-Budget und dem Stop-Abstand — nicht aus dem Bauchgefühl. Der Rechner macht es für dich.",g:"trading"},
+      {c:"Risiko",t:"Stop-Loss — dein Sicherheitsnetz",s:"Ein vorab gesetzter Ausstieg, der den Verlust begrenzt.",d:"Ohne Stop kann ein einziger Trade das Konto sprengen. Setze den Stop dort, wo deine Idee widerlegt ist — und halte dich daran.",g:"trading"},
+      {c:"Risiko",t:"Chance/Risiko-Verhältnis (CRV)",s:"Gewinnziel geteilt durch Risiko. Ab 1:2 aufwärts ist gut.",d:"Bei 1:2 reicht eine Trefferquote von rund 33 %, um break-even zu sein. Gute Trader gewinnen nicht öfter — sie gewinnen mehr, wenn sie recht haben, und verlieren wenig, wenn nicht.",g:"trading"},
+      {c:"Risiko",t:"Diversifikation",s:"Nicht alles auf eine Karte — streue über mehrere Werte.",d:"Klumpenrisiko (alles in eine Aktie oder einen Coin) ist der häufigste Weg in den Ruin. Ein breiter ETF ist von Natur aus gestreut.",g:""},
+      {c:"Risiko",t:"Drawdown — warum Verluste schwerer wiegen",s:"−50 % brauchen +100 %, um sich zu erholen.",d:"Verluste wirken exponentiell: je tiefer, desto härter der Weg zurück. Deshalb ist Verlustvermeidung wichtiger als Gewinnmaximierung. Siehe Verlust-aufholen-Rechner.",g:"trading"},
+      {c:"Hebel",t:"Was ein Hebel wirklich macht",s:"10× Hebel = 10× Gewinn UND 10× Verlust.",d:"Schon −10 % Kursbewegung bedeutet bei 10× Hebel den Totalverlust. Hebel beschleunigt in beide Richtungen — für Anfänger der schnellste Weg, ein Konto zu verlieren.",g:"trading"},
+      {c:"Hebel",t:"Margin und Liquidation",s:"Margin = deine Sicherheitsleistung. Reicht sie nicht, wirst du liquidiert.",d:"Bei einer Liquidation schließt die Börse deine Position zwangsweise — der Einsatz ist weg. Der Liquidations-Rechner zeigt, ab welchem Kurs es kritisch wird.",g:"trading"},
+      {c:"Hebel",t:"Funding und Overnight-Kosten",s:"Gehebelte Positionen kosten laufend Gebühren.",d:"Wer lange hält, zahlt drauf. Hebelprodukte sind für kurze Zeiträume gedacht, nicht zum langfristigen Sparen.",g:""},
+      {c:"Psychologie",t:"Die vier Gefühls-Killer",s:"FOMO, Gier, Angst und Revenge-Trading kosten am meisten Geld.",d:"FOMO (Angst, etwas zu verpassen) treibt zu Käufen ohne Plan. Verluste zurückholen zu wollen (Revenge) macht es schlimmer. Emotionen sind dein teuerster Gegner.",g:""},
+      {c:"Psychologie",t:"Trading-Plan und Journal",s:"Lege Regeln vorher fest und schreibe jeden Trade auf.",d:"Ein Plan (Einstieg, Stop, Ziel, Größe) schützt vor Bauch-Entscheidungen. Ein Journal zeigt deine echten Muster und Fehler — nur so wirst du besser.",g:""},
+      {c:"Psychologie",t:"Realistische Erwartungen",s:"Konstant 5–10 % pro Jahr sind sehr gut.",d:"Wer 100 % im Monat verspricht, lügt oder hat Glück, das gleich wieder verschwindet. Geduld schlägt Gier.",g:""},
+      {c:"Charts",t:"Kerzen lesen",s:"Jede Kerze zeigt Eröffnung, Schluss, Hoch und Tief. Grün = gestiegen, rot = gefallen.",d:"Kerzen sind nur eine Darstellung des Kursverlaufs — kein Zauber. Sie helfen, Bewegungen und Stimmung schneller zu erfassen.",g:""},
+      {c:"Charts",t:"Trend, Support und Resistance",s:"Der Trend ist die vorherrschende Richtung; Support = Boden, Resistance = Decke.",d:"An Support- und Resistance-Zonen drehen Kurse oft — weil viele dort kaufen oder verkaufen. Es ist Wahrscheinlichkeit, keine Garantie. Gegen den Trend zu handeln ist teuer.",g:""},
+      {c:"Charts",t:"Indikatoren sind kein Orakel",s:"Gleitende Durchschnitte und RSI glätten oder messen — sie sagen die Zukunft nicht voraus.",d:"Kein Indikator und kein Signal garantiert Gewinn. Ein guter Backtest in der Vergangenheit bedeutet nicht, dass es morgen funktioniert.",g:""},
+      {c:"Strategien",t:"ETF-Sparplan — der ruhige Weg",s:"Breiter Index, monatlich kaufen, jahrelang halten.",d:"Historisch hat ein breiter Welt-ETF langfristig solide Renditen gebracht — ohne ständiges Handeln. Für die meisten Menschen die beste Wahl. Siehe Zinseszins-Rechner.",g:"trading"},
+      {c:"Strategien",t:"DCA — Cost-Average",s:"Feste Summe regelmäßig investieren, egal ob Kurs hoch oder tief.",d:"Das glättet den Einstiegspreis und nimmt den Stress, den perfekten Moment treffen zu müssen. Zeit im Markt schlägt Timing.",g:""},
+      {c:"Strategien",t:"Swing, Day und Scalping",s:"Je kürzer die Haltedauer, desto härter und riskanter.",d:"Swing-Trading hält Tage bis Wochen, Daytrading Stunden, Scalping Sekunden. Kurzfristig ist Vollzeit-Stress mit hohen Kosten — nichts für nebenbei.",g:""},
+      {c:"Krypto",t:"Wallets: Hot vs. Cold",s:"Hot-Wallet = online, bequem, angreifbar. Cold-Wallet = offline, sicher.",d:"Große Beträge gehören in eine Cold-Wallet (offline). Auf Börsen liegende Coins gehören dir nur eingeschränkt — Börsen können ausfallen.",g:""},
+      {c:"Krypto",t:"Seed-Phrase schützen",s:"Die 12 oder 24 Wörter sind dein Generalschlüssel — niemals teilen.",d:"Wer deine Seed-Phrase hat, hat dein Geld. Nie online eintippen, nie fotografieren, nie an den Support geben. Offline und geheim aufbewahren.",g:""},
+      {c:"Krypto",t:"Volatilität und Scams",s:"Extreme Schwankungen plus viele Betrugsmaschen.",d:"Rug-Pulls (Macher verschwinden), Fake-Airdrops und Coin-Verdopplung sind Betrug. Investiere nur, was du komplett verlieren kannst.",g:""},
+      {c:"Betrug",t:"Rote Flaggen erkennen",s:"Garantierte Rendite, Zeitdruck, Gurus mit Luxus, Signalgruppen.",d:"Seriöse Anlagen versprechen keine Wunder und drängen nicht. Wer Druck macht, will verkaufen — nicht dir helfen.",g:""},
+      {c:"Betrug",t:"Pump and Dump",s:"Eine Gruppe treibt einen kleinen Coin hoch und verkauft an die Nachzügler.",d:"Die letzten Käufer (oft Anfänger) bleiben auf dem Verlust sitzen. Wenn alle über einen heißen Tipp reden, ist die Party meist schon vorbei.",g:""},
+      {c:"Betrug",t:"Die ehrliche Zahl",s:"Studien zeigen: rund 70–90 % der aktiven Privat-Trader verlieren über die Zeit.",d:"Geh davon aus, dass du nicht die Ausnahme bist — und handle entsprechend vorsichtig. Genau diese Demut schützt dein Geld.",g:""},
+      {c:"Steuern",t:"Belege sammeln, Fachperson fragen",s:"Das ganze Jahr Trades und Belege dokumentieren.",d:"Ordnung spart bei der Steuer Zeit und Geld. Die folgenden Hinweise sind nur grob — im Zweifel eine Steuerfachperson fragen. Keine Steuerberatung.",g:""},
+      {c:"Steuern",t:"CH / DE / AT — grobe Hinweise",s:"CH: privater Kapitalgewinn meist steuerfrei. DE: rund 26 % Abgeltungsteuer. AT: 27,5 % KESt.",d:"CH: Achtung bei gewerbsmäßigem Handel. DE: Sparer-Pauschbetrag und Verlustverrechnung nutzen, Krypto privat nach über einem Jahr steuerfrei. AT: KESt auf Kapitalerträge. Details ändern sich — prüfen lassen.",g:""},
+      {c:"Business",t:"Rechnungs-Pflichtangaben",s:"Name und Anschrift beider, Datum, fortlaufende Nummer, Leistung, Betrag, MwSt.",d:"Fehlen Pflichtangaben, ist die Rechnung angreifbar. Das Cockpit füllt vieles automatisch — Stammdaten einmal sauber eintragen.",g:"rechnung"},
+      {c:"Business",t:"Steuer-Rücklage sofort bilden",s:"Lege 25–30 % jeder Einnahme separat zurück.",d:"Die Steuer kommt sicher — wer nicht zurücklegt, hat später ein Loch. Ein eigenes Rücklagen-Konto verhindert böse Überraschungen.",g:"kasse"},
+      {c:"Business",t:"Stundensatz nicht zu tief",s:"Wunsch-Gewinn plus Kosten geteilt durch wirklich abrechenbare Stunden.",d:"Viele Selbstständige rechnen sich zu billig. Nicht jede Stunde ist abrechenbar (Akquise, Buchhaltung). Siehe Stundensatz-Rechner.",g:"rechner"},
+      {c:"Business",t:"Liquidität und Skonto",s:"3–6 Monate Kosten als Puffer; Skonto beschleunigt den Zahlungseingang.",d:"Cashflow ist König: früh fakturieren, klare Fristen, freundlich nachfassen. Skonto anbieten bringt schneller Geld, Skonto nutzen lohnt oft. Siehe Skonto-Rechner.",g:"rechner"}
+    ];
+    var TIPS=[
+      ["Sparen & Budget","Zahl dich zuerst: spare gleich am Zahltag per Dauerauftrag, bevor du ausgibst."],
+      ["Sparen & Budget","Notgroschen von 3–6 Monatskosten zuerst aufbauen — vor jedem Investieren."],
+      ["Sparen & Budget","50/30/20-Regel: 50 % Bedarf, 30 % Wünsche, 20 % sparen oder tilgen."],
+      ["Sparen & Budget","Kleine Fixkosten killen Vermögen: Abos jährlich prüfen, Ungenutztes kündigen."],
+      ["Sparen & Budget","24-Stunden-Regel bei Spontankäufen — einmal drüber schlafen."],
+      ["Sparen & Budget","Feste Wochen-Limits oder Bargeld machen Ausgaben sichtbarer als die Karte."],
+      ["Sparen & Budget","Gehaltserhöhung? Sparrate erhöhen, bevor der Lebensstil mitwächst."],
+      ["Sparen & Budget","Ein Monat Haushaltsbuch zeigt die echten Geld-Lecks."],
+      ["Investieren","Zeit im Markt schlägt Markt-Timing — früh anfangen wirkt am stärksten."],
+      ["Investieren","Breit streuen: ein Welt-ETF schlägt für die meisten das Einzelaktien-Picken."],
+      ["Investieren","Sparplan automatisieren — monatlich, egal ob Kurs hoch oder tief."],
+      ["Investieren","Niedrige Kosten sind sichere Rendite: TER unter 0,3 %, keine Ausgabeaufschläge."],
+      ["Investieren","Dividenden reinvestieren — Zinseszins ist der eigentliche Motor."],
+      ["Investieren","Nicht aus Panik verkaufen: Crashs sind normal, wer hält, gewinnt historisch."],
+      ["Investieren","Investiere nur Geld, das du 5–10 Jahre nicht brauchst."],
+      ["Investieren","Kennst du es nicht, kauf es nicht — verstehe, worin du investierst."],
+      ["Investieren","Vergangene Rendite ist kein Versprechen für die Zukunft."],
+      ["Trading & Risiko","Risiko zuerst festlegen, dann erst an den Gewinn denken."],
+      ["Trading & Risiko","Maximal 1–2 % des Kontos pro Trade riskieren."],
+      ["Trading & Risiko","Immer mit Stop-Loss handeln — ohne ist es Glücksspiel."],
+      ["Trading & Risiko","Chance/Risiko ab 1:2; bei kleinerem CRV lohnt der Trade selten."],
+      ["Trading & Risiko","Hebel meiden, solange du Anfänger bist."],
+      ["Trading & Risiko","Führe ein Trading-Journal — nur so erkennst du deine Fehler."],
+      ["Trading & Risiko","Tages-Verlustlimit setzen und dann wirklich aufhören."],
+      ["Trading & Risiko","Kein Revenge-Trading: Verluste zurückholen zu wollen ruiniert Konten."],
+      ["Gebühren & Kosten","Jede Gebühr frisst Zinseszins — über 30 Jahre kostet 1 % pro Jahr ein Vermögen."],
+      ["Gebühren & Kosten","Broker mit niedrigen Ordergebühren wählen; auf Gratis-Sparpläne achten."],
+      ["Gebühren & Kosten","Der Spread ist auch ein Kosten — bei exotischen Produkten oft teuer."],
+      ["Gebühren & Kosten","Aktive Fonds mit 1,5 % schlagen langfristig selten den günstigen Index."],
+      ["Gebühren & Kosten","Währungsgebühren beachten — Multi-Currency spart bei Auslandskäufen."],
+      ["Schulden","Teure Schulden (Kreditkarte, Konsumkredit) vor jedem Investieren tilgen."],
+      ["Schulden","Lawine: höchsten Zins zuerst tilgen — mathematisch günstigster Weg."],
+      ["Schulden","Schneeball: kleinste Schuld zuerst — für schnelle Erfolge und Motivation."],
+      ["Schulden","Kreditkarte immer voll begleichen — Teilzahlung ist eine Zinsfalle."],
+      ["Schulden","Leasing genau rechnen: oft teurer als Kauf, die niedrige Rate täuscht."],
+      ["Steuern (DACH)","Belege und Trades das ganze Jahr sammeln — spart Stress und Geld."],
+      ["Steuern (DACH)","DE: Sparer-Pauschbetrag per Freistellungsauftrag nutzen."],
+      ["Steuern (DACH)","DE: Verluste mit Gewinnen verrechnen lassen."],
+      ["Steuern (DACH)","CH: privater Kapitalgewinn meist steuerfrei — gewerbsmäßigen Handel vermeiden."],
+      ["Steuern (DACH)","CH: Säule 3a mit Steuervorteil jährlich ausschöpfen."],
+      ["Steuern (DACH)","Im Zweifel eine Fachperson fragen — billiger als ein teurer Fehler."],
+      ["Betrug & Sicherheit","Garantierte Rendite gibt es nicht — das ist immer ein Warnsignal."],
+      ["Betrug & Sicherheit","Niemand verschenkt Geld: Coin-Verdopplung und bezahlte Airdrops sind Betrug."],
+      ["Betrug & Sicherheit","Druck und Eile sind Verkaufsmaschen — seriöse Anlagen laufen nicht weg."],
+      ["Betrug & Sicherheit","Signalgruppen und Gurus verdienen an dir, nicht für dich."],
+      ["Betrug & Sicherheit","Seed-Phrase und Passwörter niemals teilen, nie online eintippen."],
+      ["Betrug & Sicherheit","2FA überall aktivieren — wenn möglich per App statt SMS."],
+      ["Betrug & Sicherheit","Anbieter unabhängig prüfen, bevor du Geld schickst."],
+      ["Psychologie","Dein größter Gegner bist du selbst — nicht der Markt."],
+      ["Psychologie","FOMO ist ein teurer Ratgeber; verpasste Chancen kommen wieder."],
+      ["Psychologie","Verluste schmerzen doppelt so stark wie Gewinne freuen — plane dagegen."],
+      ["Psychologie","Hab einen schriftlichen Plan und folge ihm, auch wenn es juckt."],
+      ["Psychologie","Weniger auf den Kurs schauen führt oft zu besseren Entscheidungen."],
+      ["Psychologie","Misstraue dem Herdentrieb: wenn alle reden, ist die Party oft vorbei."],
+      ["Alltag & Konsum","Großeinkäufe in Arbeitsstunden denken: Was kostet es an Lebenszeit?"],
+      ["Alltag & Konsum","Versicherungen jährlich vergleichen — Treue wird selten belohnt."],
+      ["Alltag & Konsum","Nur versichern, was dich ruinieren würde — nicht jeden Kleinschaden."],
+      ["Alltag & Konsum","Energie-, Handy- und Internet-Tarife alle 1–2 Jahre neu verhandeln."],
+      ["Alltag & Konsum","Gebraucht kaufen bei Dingen mit schnellem Wertverlust (Auto, Elektronik)."],
+      ["Selbstständige","Steuer-Rücklage sofort beiseitelegen — 25–30 % jeder Einnahme aufs Extra-Konto."],
+      ["Selbstständige","Liquiditätspuffer von 3–6 Monaten Betriebskosten halten."],
+      ["Selbstständige","Rechnungen sofort stellen, klare Frist, früh nachfassen — Cashflow ist König."],
+      ["Selbstständige","Stundensatz nicht zu tief: Kosten plus Wunschgewinn durch abrechenbare Stunden."],
+      ["Selbstständige","Skonto anbieten beschleunigt deinen Geldeingang."],
+      ["Selbstständige","Geschäftlich und privat strikt trennen — spart Buchhaltungs-Chaos."],
+      ["Krypto","Nur investieren, was du komplett verlieren kannst — extreme Schwankungen."],
+      ["Krypto","Große Beträge in eine Cold-Wallet, nicht auf der Börse (not your keys, not your coins)."],
+      ["Krypto","Neue, kleine Coins sind meist Zockerei — die meisten gehen gegen null."],
+      ["Krypto","Stablecoins sind nicht risikofrei — Anbieter und Deckung prüfen."],
+      ["Vorsorge","Früh, regelmäßig und breit gestreut schlägt jedes Timing."],
+      ["Vorsorge","Kontrolliere, was du kannst: Sparrate, Kosten, Verhalten — nicht den Markt."],
+      ["Vorsorge","Reichtum ist meist langweilig: automatisieren, durchhalten, in Ruhe lassen."]
+    ];
+    var GLOSS=[
+      ["Long","Wette auf steigende Kurse: kaufen, später teurer verkaufen."],
+      ["Short","Wette auf fallende Kurse; der Verlust kann theoretisch unbegrenzt sein."],
+      ["Spread","Differenz zwischen Kauf- (Ask) und Verkaufskurs (Bid); versteckte Kosten."],
+      ["Slippage","Ausführung zu einem schlechteren Kurs als erwartet."],
+      ["Volatilität","Schwankungsbreite; hoch heißt mehr Chance und mehr Risiko."],
+      ["Drawdown","Rückgang vom Höchststand — wie tief das Konto gefallen ist."],
+      ["Hebel","Multiplikator auf Gewinn und Verlust, z. B. 10-fach."],
+      ["Margin","Sicherheitsleistung für eine gehebelte Position."],
+      ["Liquidation","Zwangsschließung, wenn die Margin nicht mehr reicht."],
+      ["Stop-Loss","Automatischer Verkauf bei einer Verlustgrenze."],
+      ["Take-Profit","Automatischer Verkauf beim Gewinnziel."],
+      ["Limit-Order","Kauf oder Verkauf nur zum Wunschpreis oder besser."],
+      ["Market-Order","Sofortige Ausführung zum aktuellen Kurs."],
+      ["CRV","Chance/Risiko-Verhältnis: Gewinnziel geteilt durch Risiko."],
+      ["Trefferquote","Anteil der Gewinn-Trades; mit gutem CRV reicht unter 50 %."],
+      ["Position","Dein offener Trade: Menge mal Kurs."],
+      ["Lot","Standardisierte Handelsgröße, vor allem im Forex."],
+      ["Pip","Kleinste Kursbewegung im Forex."],
+      ["Spot","Sofortiger Handel zum aktuellen Preis."],
+      ["Future","Termingeschäft auf einen späteren Zeitpunkt, oft gehebelt."],
+      ["CFD","Differenzkontrakt: gehebelte Wette auf den Kurs, ohne Besitz. Riskant."],
+      ["ETF","Börsengehandelter Fonds: ein Korb vieler Werte, breit gestreut, günstig."],
+      ["Index","Messzahl eines Marktes, z. B. SMI, DAX oder S&P 500."],
+      ["ISIN","Internationale Wertpapier-Kennnummer."],
+      ["Dividende","Gewinnausschüttung einer Aktie an die Anteilseigner."],
+      ["Anleihe","Verzinster Kredit an Staat oder Firma; gilt als sicherer als Aktien."],
+      ["DCA","Regelmäßig eine feste Summe investieren (Cost-Average)."],
+      ["Bid/Ask","Geld- und Briefkurs: höchster Kauf-, niedrigster Verkaufspreis."],
+      ["Order-Book","Liste aller offenen Kauf- und Verkaufsorders."],
+      ["Volumen","Gehandelte Menge in einer Zeitspanne; zeigt Aktivität."],
+      ["Marktkapitalisierung","Wert aller Anteile: Kurs mal Stückzahl."],
+      ["Bullenmarkt","Länger steigende Kurse, optimistische Stimmung."],
+      ["Bärenmarkt","Länger fallende Kurse, pessimistische Stimmung."],
+      ["Korrektur","Kurzer Rückgang von etwa 10 % im Aufwärtstrend."],
+      ["Crash","Plötzlicher, starker Kurssturz."],
+      ["Rallye","Kräftiger, schneller Kursanstieg."],
+      ["FOMO","Angst, etwas zu verpassen — führt zu überstürzten Käufen."],
+      ["HODL","Langfristig halten, nicht aus Panik verkaufen (Krypto-Slang)."],
+      ["Wallet","Digitale Geldbörse für Krypto (hot = online, cold = offline)."],
+      ["Seed-Phrase","12 oder 24 Wörter als Generalschlüssel — niemals teilen."],
+      ["Cold-Storage","Krypto offline lagern — die sicherste Methode."],
+      ["Stablecoin","Krypto, an eine Währung gekoppelt, z. B. an den US-Dollar."],
+      ["Altcoin","Jede Kryptowährung außer Bitcoin."],
+      ["Rug-Pull","Die Macher ziehen das Geld ab, das Projekt kollabiert — Betrug."],
+      ["Pump and Dump","Koordiniertes Hochtreiben und Abverkauf an Nachzügler."],
+      ["Whale","Großanleger, der Kurse bewegen kann."],
+      ["Liquidität","Wie leicht man kauft oder verkauft, ohne den Kurs zu verzerren."],
+      ["Trend","Vorherrschende Kursrichtung: aufwärts, abwärts oder seitwärts."],
+      ["Support","Kurszone, in der oft Käufer eingreifen (Boden)."],
+      ["Resistance","Kurszone, in der oft Verkäufer eingreifen (Decke)."],
+      ["MA/EMA","Gleitender Durchschnitt; glättet den Kurs und zeigt die Richtung."],
+      ["RSI","Schwung-Indikator von 0–100; über 70 überkauft, unter 30 überverkauft."],
+      ["Backtest","Test einer Strategie an Vergangenheitsdaten — keine Zukunftsgarantie."],
+      ["Hedging","Gegenposition zur Absicherung eines Risikos."],
+      ["Diversifikation","Streuung über viele Werte; senkt das Klumpenrisiko."]
+    ];
+    var QUIZ=[
+      {q:"Wie viel solltest du pro Trade maximal riskieren?",o:["1–2 % des Kontos","10 % des Kontos","50 % des Kontos"],a:0,e:"So überlebst du auch eine Pechsträhne."},
+      {q:"Was macht 10× Hebel bei −10 % Kursbewegung?",o:["−1 %","Totalverlust","gar nichts"],a:1,e:"Hebel multipliziert auch den Verlust."},
+      {q:"Nach −50 %: wie viel Gewinn brauchst du zur Erholung?",o:["+50 %","+75 %","+100 %"],a:2,e:"Verluste wiegen exponentiell schwerer."},
+      {q:"Jemand verspricht garantierte Rendite. Das ist …",o:["eine Top-Chance","ein Warnsignal","ganz normal"],a:1,e:"Garantien gibt es am Markt nicht."},
+      {q:"Darfst du deine Seed-Phrase teilen?",o:["nur mit dem Support","niemals","ja, bei Verlust"],a:1,e:"Wer sie hat, hat dein Geld."},
+      {q:"Was passt bei wenig Zeit und Nerven am besten?",o:["Daytrading","breiter ETF-Sparplan","Hebel-CFDs"],a:1,e:"Ruhig und historisch bewährt."},
+      {q:"Ein Stop-Loss ist …",o:["ein Gewinnziel","ein vorab definierter Verlust-Ausstieg","eine Gebühr"],a:1,e:"Er schützt dein Konto."},
+      {q:"Wer verliert beim aktiven Trading meistens?",o:["die Banken","die Mehrheit der Privat-Trader","niemand"],a:1,e:"Studien: rund 70–90 % über die Zeit."},
+      {q:"Diversifikation bedeutet …",o:["alles auf einen Coin","über viele Werte streuen","nur Bargeld halten"],a:1,e:"Das senkt das Klumpenrisiko."},
+      {q:"Der Spread ist …",o:["ein Gewinn","die Differenz zwischen Kauf- und Verkaufskurs","eine Steuer"],a:1,e:"Ein versteckter Kosten."},
+      {q:"Bei CRV 1:2 — welche Trefferquote brauchst du zum Break-even?",o:["rund 33 %","50 %","66 %"],a:0,e:"Der Gewinn ist doppelt so groß wie das Risiko."},
+      {q:"Coins auf einer Börse sind …",o:["zu 100 % sicher","nur eingeschränkt deine","steuerfrei"],a:1,e:"Börsen können ausfallen."},
+      {q:"Ein RSI über 70 bedeutet …",o:["sicherer Kauf","oft überkauft, aber keine Garantie","Verkaufspflicht"],a:1,e:"Indikatoren sind kein Orakel."},
+      {q:"Was ist der erste Schritt vor jedem Trade?",o:["vom Gewinn träumen","Risiko und Stop festlegen","alles einsetzen"],a:1,e:"Risiko zuerst."},
+      {q:"DCA bedeutet …",o:["alles auf einmal investieren","feste Summe regelmäßig investieren","nur im Crash kaufen"],a:1,e:"Das glättet den Einstiegspreis."}
+    ];
+    var CHECK=["Stop-Loss gesetzt?","Risiko maximal 1–2 % des Kontos?","Chance/Risiko mindestens 1:2?","Einstieg, Stop und Ziel klar definiert?","Folge ich meinem Plan (kein FOMO, kein Tipp)?","Positionsgröße mit dem Rechner bestimmt?","Kann ich diesen Verlust verschmerzen?"];
+    var PATH=[
+      {t:"1) Geld-Basics verstehen",d:"Was ist Sparen, Investieren, Traden — und die Anlageklassen.",btn:"Grundlagen lesen",act:"cat",arg:"Grundlagen"},
+      {t:"2) Risiko zuerst lernen",d:"Die wichtigste Fähigkeit: Verluste klein halten.",btn:"Risiko-Lektionen",act:"cat",arg:"Risiko"},
+      {t:"3) Ehrlich bleiben",d:"Warum die meisten verlieren und wie du Betrug erkennst.",btn:"Betrug & Wahrheit",act:"cat",arg:"Betrug"},
+      {t:"4) Ruhig investieren",d:"ETF-Sparplan und Zinseszins — der bewährte Weg.",btn:"Zinseszins-Rechner",act:"tab",arg:"trading"},
+      {t:"5) Erst üben, dann handeln",d:"Vor jedem Trade die Checkliste durchgehen.",btn:"Zur Checkliste",act:"sec",arg:"check"},
+      {t:"6) Wissen testen",d:"Mach das Quiz und sieh, was schon sitzt.",btn:"Quiz starten",act:"sec",arg:"quiz"}
+    ];
+    /* sub-tabs */
+    $$("#l_tabs button").forEach(function(b){b.addEventListener("click",function(){
+      $$("#l_tabs button").forEach(function(x){x.classList.toggle("on",x===b)});
+      $$("#v-lernen .lsec").forEach(function(s){s.classList.toggle("on",s.id==="ls-"+b.dataset.l)})})});
+    /* tip of the day */
+    var doy=Math.floor((Date.now()-new Date(new Date().getFullYear(),0,0))/86400000);
+    $("#l_tiptext").textContent=TIPS[doy%TIPS.length][1];
+    /* progress */
+    function updateProg(){var read=lg("read",{}),cnt=0;LESSONS.forEach(function(_,i){if(read[i])cnt++});
+      var pct=Math.round(cnt/LESSONS.length*100),best=lg("quizbest",0);
+      var badges=[];if(cnt>=5)badges.push("🥉 Starter");if(cnt>=15)badges.push("🥈 Wissbegierig");if(cnt>=LESSONS.length)badges.push("🥇 Durchgelesen");if(best>=Math.ceil(QUIZ.length*0.7))badges.push("🧠 Quiz-Profi");if(best===QUIZ.length)badges.push("🏆 Quiz-Meister");
+      $("#l_prog").innerHTML='<div class="prog"><i style="width:'+pct+'%"></i></div><p class="note" style="margin-top:0">'+cnt+' von '+LESSONS.length+' Lektionen gelesen ('+pct+' %)'+(best?' · Quiz-Bestwert: '+best+'/'+QUIZ.length:'')+'</p><p class="note" style="margin-top:4px">'+(badges.length?"Abzeichen: "+badges.join(" · "):"Noch keine Abzeichen — lies Lektionen & mach das Quiz.")+'</p>'}
+    /* lessons */
+    function catChips(){var cur=lg("cat","");
+      $("#l_chips").innerHTML='<button data-c="" class="'+(cur===""?"on":"")+'">Alle</button>'+LCATS.map(function(c){return '<button data-c="'+esc(c)+'" class="'+(cur===c?"on":"")+'">'+esc(c)+'</button>'}).join("");
+      $$("#l_chips button").forEach(function(b){b.addEventListener("click",function(){ls("cat",b.dataset.c);catChips();renderLessons()})})}
+    function renderLessons(){var q=($("#l_search").value||"").toLowerCase(),cat=lg("cat",""),read=lg("read",{}),el=$("#l_lessons");el.innerHTML="";var any=false;
+      LESSONS.forEach(function(L,i){if(cat&&L.c!==cat)return;if(q&&(L.t+" "+L.s+" "+L.d).toLowerCase().indexOf(q)<0)return;any=true;
+        var d=document.createElement("details");d.className="lcard";
+        var go=L.g?'<button class="gobtn" data-go="'+L.g+'">→ passenden Rechner öffnen</button>':'';
+        d.innerHTML='<summary><span class="scat">'+esc(L.c)+'</span> · '+esc(L.t)+'</summary><div class="simple">'+esc(L.s)+'</div><div class="deep">'+esc(L.d)+(go?'<br>'+go:'')+'</div><div class="lread-row"><label class="toggle"><input type="checkbox" class="lread" data-i="'+i+'"'+(read[i]?" checked":"")+'> als gelesen markieren</label></div>';
+        el.appendChild(d)});
+      if(!any)el.innerHTML='<p class="note">Nichts gefunden.</p>';
+      $$("#l_lessons .lread").forEach(function(c){c.addEventListener("change",function(){var r=lg("read",{});r[this.dataset.i]=this.checked;ls("read",r);updateProg()})});
+      $$("#l_lessons .gobtn").forEach(function(b){b.addEventListener("click",function(){goTab(this.dataset.go)})})}
+    $("#l_search").addEventListener("input",renderLessons);
+    $("#l_easy").addEventListener("change",function(){$("#l_lessons").classList.toggle("easy",this.checked)});
+    /* tips */
+    function renderTips(){var q=($("#l_tsearch").value||"").toLowerCase(),cur="",out="";
+      TIPS.forEach(function(t){if(q&&(t[0]+" "+t[1]).toLowerCase().indexOf(q)<0)return;
+        if(t[0]!==cur){cur=t[0];out+='<h2 style="font-size:.92rem;margin:14px 0 8px;color:var(--amber-dk)">'+esc(cur)+'</h2>'}
+        out+='<div class="gli">💡 '+esc(t[1])+'</div>'});
+      $("#l_tips").innerHTML=out||'<p class="note">Nichts gefunden.</p>'}
+    $("#l_tsearch").addEventListener("input",renderTips);
+    /* glossary */
+    function renderGloss(){var q=($("#l_gsearch").value||"").toLowerCase();
+      $("#l_gloss").innerHTML=GLOSS.filter(function(g){return !q||(g[0]+" "+g[1]).toLowerCase().indexOf(q)>=0}).map(function(g){return '<div class="gli"><b>'+esc(g[0])+'</b> — '+esc(g[1])+'</div>'}).join("")||'<p class="note">Nichts gefunden.</p>'}
+    $("#l_gsearch").addEventListener("input",renderGloss);
+    /* quiz */
+    function scoreQuiz(){var cards=$$("#l_quiz .qcard"),done=0,right=0;
+      cards.forEach(function(c){if(c.dataset.done){done++;if(c.dataset.correct==="1")right++}});
+      $("#l_score").textContent="Punktestand: "+right+" / "+QUIZ.length+(done===QUIZ.length?(right>=Math.ceil(QUIZ.length*0.7)?" — stark! 💪":" — dranbleiben, übe weiter."):"");
+      var best=lg("quizbest",0);if(done===QUIZ.length&&right>best){ls("quizbest",right);updateProg()}}
+    function renderQuiz(){var el=$("#l_quiz");el.innerHTML="";
+      QUIZ.forEach(function(Q,qi){var c=document.createElement("div");c.className="qcard";
+        c.innerHTML='<p style="font-weight:700;margin-bottom:4px">'+(qi+1)+'. '+esc(Q.q)+'</p>';
+        Q.o.forEach(function(opt,oi){var b=document.createElement("button");b.className="qopt";b.textContent=opt;
+          b.addEventListener("click",function(){if(c.dataset.done)return;c.dataset.done="1";c.dataset.correct=(oi===Q.a)?"1":"0";
+            $$(".qopt",c).forEach(function(x,xi){if(xi===Q.a)x.classList.add("right")});if(oi!==Q.a)b.classList.add("wrong");
+            $(".qexp",c).style.display="block";scoreQuiz()});c.appendChild(b)});
+        var e=document.createElement("p");e.className="qexp";e.textContent="💬 "+Q.e;c.appendChild(e);el.appendChild(c)});
+      $("#l_quizhead").innerHTML='<p style="font-weight:700">❓ Wissens-Quiz</p><p class="note">Tippe je Frage eine Antwort an — du siehst sofort, ob richtig, plus eine kurze Erklärung.</p><div id="l_score" class="note" style="font-weight:700;color:var(--amber-dk)"></div>'}
+    /* checklist */
+    function renderCheck(){var st=lg("check",{}),el=$("#l_check");el.innerHTML="";
+      CHECK.forEach(function(c,i){var lab=document.createElement("label");lab.className="chk";
+        lab.innerHTML='<input type="checkbox" '+(st[i]?"checked":"")+'> '+esc(c);
+        $("input",lab).addEventListener("change",function(){var s=lg("check",{});s[i]=this.checked;ls("check",s)});el.appendChild(lab)});
+      var r=document.createElement("div");r.className="btnrow";r.innerHTML='<button class="btn ghost sm" id="l_chkreset">Zurücksetzen</button>';el.appendChild(r);
+      $("#l_chkreset").addEventListener("click",function(){ls("check",{});renderCheck()})}
+    /* path */
+    function renderPath(){$("#l_path").innerHTML=PATH.map(function(p,i){return '<div class="path-step"><span class="num">'+(i+1)+'</span><div><strong>'+esc(p.t)+'</strong><br><span class="note" style="margin:0">'+esc(p.d)+'</span><br><button class="gobtn" data-act="'+esc(p.act)+'" data-arg="'+esc(p.arg||"")+'">'+esc(p.btn)+'</button></div></div>'}).join("");
+      $$("#l_path .gobtn").forEach(function(b){b.addEventListener("click",function(){var act=this.dataset.act,arg=this.dataset.arg;
+        if(act==="sec"){var s=$('#l_tabs button[data-l="'+arg+'"]');if(s)s.click()}
+        else if(act==="cat"){ls("cat",arg);catChips();renderLessons();var s2=$('#l_tabs button[data-l="lekt"]');if(s2)s2.click()}
+        else if(act==="tab"){goTab(arg)}window.scrollTo(0,0)})})}
+    /* Paper-Trading-Simulator */
+    function simGet(){var s=lg("sim",null);return s||{cash:10000,price:100,hist:[100],pos:null,log:["Konto gestartet mit 10.000 Spielgeld."]}}
+    function simSet(s){ls("sim",s)}
+    var simDir="long";
+    function closePos(s,price,reason){var po=s.pos;if(!po)return;var pl=po.dir==="long"?(price-po.entry)*po.qty:(po.entry-price)*po.qty,ret=po.margin+pl;if(ret<0)ret=0;s.cash+=ret;s.log.unshift((reason||"Geschlossen")+" bei "+nf(price)+" · G/V "+(pl>=0?"+":"")+nf(pl));s.pos=null}
+    function simStep(s){var p=s.price*(1+(Math.random()-0.5)*0.06);if(p<1)p=1;p=Math.round(p*100)/100;s.price=p;s.hist.push(p);if(s.hist.length>60)s.hist.shift();
+      if(s.pos){var po=s.pos,liq=po.lev>1?(po.dir==="long"?po.entry*(1-1/po.lev):po.entry*(1+1/po.lev)):null;
+        var hitLiq=liq&&((po.dir==="long"&&p<=liq)||(po.dir==="short"&&p>=liq));
+        var hitStop=po.stop&&((po.dir==="long"&&p<=po.stop)||(po.dir==="short"&&p>=po.stop));
+        if(hitLiq){s.log.unshift("💥 Liquidiert bei "+nf(liq)+" — Einsatz "+nf(po.margin)+" verloren.");s.pos=null}
+        else if(hitStop){closePos(s,po.stop,"🛑 Stop-Loss")}}}
+    function renderSim(){var s=simGet();if(!$("#sim_kpi"))return;
+      $("#sim_chart").innerHTML=(typeof AbanCharts!=="undefined")?AbanCharts.line(s.hist,{height:120,color:"#0ea5e9"}):"";
+      $("#sim_price").textContent="Kurs: "+nf(s.price);
+      var pl=0;if(s.pos)pl=s.pos.dir==="long"?(s.price-s.pos.entry)*s.pos.qty:(s.pos.entry-s.price)*s.pos.qty;
+      var equity=s.cash+(s.pos?s.pos.margin+pl:0);
+      $("#sim_kpi").innerHTML='<div class="box big '+(equity>=10000?"ok":"bad")+'"><b>'+nf(equity)+'</b><span>Konto-Wert</span></div><div class="box"><b>'+nf(s.cash)+'</b><span>frei</span></div><div class="box"><b>'+nf(s.price)+'</b><span>Kurs</span></div>';
+      var pb=$("#sim_posbox");
+      if(s.pos){var liq=s.pos.lev>1?(s.pos.dir==="long"?s.pos.entry*(1-1/s.pos.lev):s.pos.entry*(1+1/s.pos.lev)):null;
+        pb.style.display="";pb.innerHTML='<h2>Offene Position</h2><div class="out"><div class="box"><b>'+(s.pos.dir==="long"?"Long":"Short")+' '+s.pos.lev+'x</b><span>Einstieg '+nf(s.pos.entry)+'</span></div><div class="box '+(pl>=0?"ok":"bad")+'"><b>'+(pl>=0?"+":"")+nf(pl)+'</b><span>G/V offen</span></div>'+(liq?'<div class="box bad"><b>'+nf(liq)+'</b><span>Liquidation</span></div>':'')+(s.pos.stop?'<div class="box"><b>'+nf(s.pos.stop)+'</b><span>Stop</span></div>':'')+'</div><div class="btnrow"><button class="btn" id="sim_close" type="button">Position schließen</button></div>';
+        $("#sim_close").addEventListener("click",function(){var s2=simGet();closePos(s2,s2.price,"Manuell geschlossen");simSet(s2);renderSim()})}
+      else{pb.style.display="none";pb.innerHTML=""}
+      $("#sim_log").innerHTML=s.log.slice(0,15).map(function(t){return '<div class="li"><span>'+esc(t)+'</span></div>'}).join("")}
+    if($("#sim_dir"))$$("#sim_dir button").forEach(function(b){b.addEventListener("click",function(){simDir=b.dataset.d;$$("#sim_dir button").forEach(function(x){x.classList.toggle("on",x===b)})})});
+    if($("#sim_step"))$("#sim_step").addEventListener("click",function(){var s=simGet();simStep(s);simSet(s);renderSim()});
+    if($("#sim_step5"))$("#sim_step5").addEventListener("click",function(){var s=simGet();for(var i=0;i<5;i++)simStep(s);simSet(s);renderSim()});
+    if($("#sim_reset"))$("#sim_reset").addEventListener("click",function(){ls("sim",null);renderSim();toast("Übungskonto zurückgesetzt")});
+    if($("#sim_open"))$("#sim_open").addEventListener("click",function(){var s=simGet();if(s.pos){toast("Erst bestehende Position schließen");return}
+      var amt=n($("#sim_amt").value),lev=n($("#sim_lev").value)||1,stopP=n($("#sim_stop").value);
+      if(!isFinite(amt)||amt<=0){toast("Bitte Einsatz eingeben");return}if(amt>s.cash){toast("Nicht genug Spielgeld");return}
+      if(lev<1)lev=1;if(lev>50)lev=50;var qty=amt*lev/s.price,stop=null;
+      if(isFinite(stopP)&&stopP>0)stop=simDir==="long"?Math.round(s.price*(1-stopP/100)*100)/100:Math.round(s.price*(1+stopP/100)*100)/100;
+      s.cash-=amt;s.pos={dir:simDir,entry:s.price,qty:qty,lev:lev,margin:amt,stop:stop};
+      s.log.unshift("📈 "+(simDir==="long"?"Long":"Short")+" eröffnet bei "+nf(s.price)+" · Einsatz "+nf(amt)+" · Hebel "+lev+"x");
+      simSet(s);renderSim()});
+
+    window.__abanLernTotal=LESSONS.length;
+    catChips();renderLessons();renderTips();renderGloss();renderQuiz();renderCheck();renderPath();renderSim();updateProg();
+  })();
+
+  /* ===== Belege / Spesen (mit Foto) ===== */
+  var blImg="";
+  function shrinkImage(file,cb){var rd=new FileReader();rd.onload=function(){var img=new Image();img.onload=function(){var max=1100,sc=Math.min(1,max/img.width),w=Math.round(img.width*sc),h=Math.round(img.height*sc),cv=document.createElement("canvas");cv.width=w;cv.height=h;try{cv.getContext("2d").drawImage(img,0,0,w,h);cb(cv.toDataURL("image/jpeg",0.7))}catch(e){cb(rd.result)}};img.onerror=function(){cb(rd.result)};img.src=rd.result};rd.readAsDataURL(file)}
+  function belege(){return get("abanCockpit_belege",[])}
+  function renderBelege(){var e=belege(),el=$("#bl_list"),sum=$("#bl_sum");if(!el)return;el.innerHTML="";var tot=0;
+    e.forEach(function(x,i){tot+=n(x.betrag)||0;var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>'+(x.img?'<img src="'+x.img+'" style="height:30px;vertical-align:middle;border-radius:4px;margin-right:6px">':"🧾 ")+esc(x.datum||"")+' · '+esc(x.kat||"—")+' · <strong>'+nf(n(x.betrag)||0)+'</strong></span>';
+      var w=document.createElement("span");w.className="x";var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var a=belege();a.splice(i,1);set("abanCockpit_belege",a);renderBelege()};w.appendChild(del);row.appendChild(w);el.appendChild(row)});
+    if(sum)sum.innerHTML=e.length?'<div class="box big"><b>'+nf(tot)+'</b><span>Belege gesamt ('+e.length+')</span></div>':"";
+    if(!e.length)el.innerHTML='<p class="note">Noch keine Belege.</p>'}
+  if($("#bl_file"))$("#bl_file").addEventListener("change",function(){var f=this.files&&this.files[0];if(!f)return;shrinkImage(f,function(d){blImg=d;$("#bl_prev").innerHTML='<img src="'+d+'" style="max-height:120px;border:1px solid var(--line);border-radius:8px;margin-top:6px">'})});
+  if($("#bl_add"))$("#bl_add").addEventListener("click",function(){var b=n($("#bl_betrag").value);if(!isFinite(b)||b<=0){toast("Bitte Betrag eingeben");return}
+    var a=belege();a.unshift({img:blImg,betrag:b,kat:$("#bl_kat").value.trim(),datum:$("#bl_datum").value,notiz:$("#bl_notiz").value.trim()});
+    try{set("abanCockpit_belege",a)}catch(err){toast("Speicher voll — älteren Beleg löschen");return}
+    blImg="";$("#bl_file").value="";$("#bl_prev").innerHTML="";$("#bl_betrag").value="";$("#bl_notiz").value="";renderBelege();toast("Beleg gespeichert ✓")});
+  if($("#bl_csv"))$("#bl_csv").addEventListener("click",function(){var e=belege();if(!e.length){toast("Keine Belege");return}var rows=[["Datum","Kategorie","Betrag","Notiz"]];e.slice().reverse().forEach(function(x){rows.push([x.datum||"",x.kat||"",(n(x.betrag)||0).toFixed(2).replace(".",","),x.notiz||""])});downloadCSV("belege.csv",rows)});
+
+  /* ===== Leistungs-/Artikel-Katalog ===== */
+  function artikel(){return get("abanCockpit_artikel",[])}
+  function saveArtikel(a){set("abanCockpit_artikel",a)}
+  function refreshKat(){var a=artikel(),opt='<option value="">+ aus Katalog…</option>'+a.map(function(x,i){return '<option value="'+i+'">'+esc(x.desc)+' ('+nf(n(x.price)||0)+')</option>'}).join("");["r_katpick","a_katpick"].forEach(function(id){var el=$("#"+id);if(el)el.innerHTML=opt})}
+  function renderArtikel(){var a=artikel(),el=$("#ar_list");if(!el)return;el.innerHTML="";
+    if(!a.length){el.innerHTML='<p class="note">Noch keine Katalog-Einträge.</p>';return}
+    a.forEach(function(x,i){var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>📦 '+esc(x.desc)+' · <strong>'+nf(n(x.price)||0)+'</strong></span>';
+      var w=document.createElement("span");w.className="x";var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var b=artikel();b.splice(i,1);saveArtikel(b);renderArtikel();refreshKat()};w.appendChild(del);row.appendChild(w);el.appendChild(row)})}
+  if($("#ar_add"))$("#ar_add").addEventListener("click",function(){var d=$("#ar_desc").value.trim();if(!d){toast("Bitte Bezeichnung eingeben");return}var a=artikel();a.unshift({desc:d,price:$("#ar_price").value});saveArtikel(a);$("#ar_desc").value="";$("#ar_price").value="";renderArtikel();refreshKat();toast("Im Katalog gespeichert ✓")});
+  function bindKat(pickId,DOC){var el=$("#"+pickId);if(!el)return;el.addEventListener("change",function(){if(this.value==="")return;var x=artikel()[+this.value];if(x)DOC.addItem(x.desc,1,x.price);this.value="";toast("Position eingefügt ✓")})}
+  bindKat("r_katpick",R);bindKat("a_katpick",A);
+
+  /* ===== E-Rechnung (UBL-XML) ===== */
+  function xesc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&apos;"}[c]})}
+  function downloadText(fn,txt,mime){var blob=new Blob([txt],{type:mime||"text/plain;charset=utf-8"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fn;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},100)}
+  if($("#r_exml"))$("#r_exml").addEventListener("click",function(){
+    var s=stamm(),t=R.calc(),items=R.items(),nr=$("#r_nr").value||"RE",dt=$("#r_datum").value||isoToday();
+    var iban=(s.iban||"").replace(/\s+/g,"").toUpperCase(),cur=(iban.slice(0,2)==="CH"||iban.slice(0,2)==="LI")?"CHF":"EUR";
+    var adr=(s.adresse||"").split("\n"),street=adr[0]||"",city=adr[1]||"",kunde1=($("#r_kunde").value||"").split("\n")[0]||"";
+    var lines=items.map(function(it,i){var q=n(it.qty)||0,pr=n(it.price)||0;return '  <cac:InvoiceLine><cbc:ID>'+(i+1)+'</cbc:ID><cbc:InvoicedQuantity>'+q+'</cbc:InvoicedQuantity><cbc:LineExtensionAmount currencyID="'+cur+'">'+(q*pr).toFixed(2)+'</cbc:LineExtensionAmount><cac:Item><cbc:Name>'+xesc(it.desc)+'</cbc:Name></cac:Item><cac:Price><cbc:PriceAmount currencyID="'+cur+'">'+pr.toFixed(2)+'</cbc:PriceAmount></cac:Price></cac:InvoiceLine>'}).join("\n");
+    var xml='<?xml version="1.0" encoding="UTF-8"?>\n<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">\n  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>\n  <cbc:ID>'+xesc(nr)+'</cbc:ID>\n  <cbc:IssueDate>'+xesc(dt)+'</cbc:IssueDate>\n  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>\n  <cbc:DocumentCurrencyCode>'+cur+'</cbc:DocumentCurrencyCode>\n  <cac:AccountingSupplierParty><cac:Party><cac:PartyName><cbc:Name>'+xesc(s.firma||"")+'</cbc:Name></cac:PartyName><cac:PostalAddress><cbc:StreetName>'+xesc(street)+'</cbc:StreetName><cbc:CityName>'+xesc(city)+'</cbc:CityName></cac:PostalAddress><cac:PartyTaxScheme><cbc:CompanyID>'+xesc(s.steuer||"")+'</cbc:CompanyID><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:PartyTaxScheme></cac:Party></cac:AccountingSupplierParty>\n  <cac:AccountingCustomerParty><cac:Party><cac:PartyName><cbc:Name>'+xesc(kunde1)+'</cbc:Name></cac:PartyName></cac:Party></cac:AccountingCustomerParty>\n'+(iban?'  <cac:PaymentMeans><cbc:PaymentMeansCode>30</cbc:PaymentMeansCode><cac:PayeeFinancialAccount><cbc:ID>'+xesc(iban)+'</cbc:ID></cac:PayeeFinancialAccount></cac:PaymentMeans>\n':'')+'  <cac:TaxTotal><cbc:TaxAmount currencyID="'+cur+'">'+t.vat.toFixed(2)+'</cbc:TaxAmount></cac:TaxTotal>\n  <cac:LegalMonetaryTotal><cbc:LineExtensionAmount currencyID="'+cur+'">'+t.net.toFixed(2)+'</cbc:LineExtensionAmount><cbc:TaxExclusiveAmount currencyID="'+cur+'">'+t.net.toFixed(2)+'</cbc:TaxExclusiveAmount><cbc:TaxInclusiveAmount currencyID="'+cur+'">'+t.gross.toFixed(2)+'</cbc:TaxInclusiveAmount><cbc:PayableAmount currencyID="'+cur+'">'+t.gross.toFixed(2)+'</cbc:PayableAmount></cac:LegalMonetaryTotal>\n'+lines+'\n</Invoice>\n';
+    downloadText("rechnung-"+nr+".xml",xml,"application/xml");toast("E-Rechnung-XML exportiert ✓")});
+
+  /* ===== Lieferschein ===== */
+  function setupLieferschein(){var tb=$("#l_items tbody");
+    function addItem(desc,qty){var tr=document.createElement("tr");tr.innerHTML='<td><input class="i_desc" placeholder="Artikel / Leistung"></td><td><input class="i_qty num" inputmode="decimal" value="1"></td><td><button class="delrow">×</button></td>';tb.appendChild(tr);if(desc!=null)$(".i_desc",tr).value=desc;if(qty!=null)$(".i_qty",tr).value=qty;$(".delrow",tr).addEventListener("click",function(){tr.remove()})}
+    function items(){return $$("#l_items tbody tr").map(function(tr){return {desc:$(".i_desc",tr).value,qty:$(".i_qty",tr).value}})}
+    function setItems(arr){tb.innerHTML="";(arr&&arr.length?arr:[{}]).forEach(function(it){addItem(it.desc,it.qty)})}
+    if($("#l_add"))$("#l_add").addEventListener("click",function(){addItem()});
+    return {addItem:addItem,items:items,setItems:setItems}}
+  var Lf=$("#l_items")?setupLieferschein():null;
+  if(Lf){Lf.setItems([{}]);bindPicker("l_pick","l_kunde");if($("#l_datum"))$("#l_datum").value=isoToday();}
+  if($("#l_print"))$("#l_print").addEventListener("click",function(){printDoc({title:"Lieferschein",nr:$("#l_nr").value,datum:$("#l_datum").value,kunde:$("#l_kunde").value,items:Lf.items(),noPrice:true,foot:"Bitte Erhalt bestätigen."})});
+  if($("#l_clear"))$("#l_clear").addEventListener("click",function(){Lf.setItems([{}]);["l_nr","l_kunde"].forEach(function(id){$("#"+id).value=""});if($("#l_pick"))$("#l_pick").value="";toast("Geleert")});
+
+  /* ===== Finanz-Suite ===== */
+  $$("#f_tabs button").forEach(function(b){b.addEventListener("click",function(){$$("#f_tabs button").forEach(function(x){x.classList.toggle("on",x===b)});$$("#v-finanz .lsec").forEach(function(s){s.classList.toggle("on",s.id==="fs-"+b.dataset.f)})})});
+  /* Portfolio */
+  function portfolio(){return get("abanCockpit_portfolio",[])}
+  function renderPort(){var a=portfolio(),el=$("#pf_list"),sum=$("#pf_sum"),don=$("#pf_donut");if(!el)return;el.innerHTML="";
+    var val=0,cost=0;a.forEach(function(p){val+=(n(p.qty)||0)*(n(p.now)||0);cost+=(n(p.qty)||0)*(n(p.buy)||0)});var pl=val-cost,plp=cost>0?pl/cost*100:0;
+    sum.innerHTML=a.length?'<div class="box big '+(pl>=0?"ok":"bad")+'"><b>'+nf(val)+'</b><span>Depotwert</span></div><div class="box"><b>'+nf(cost)+'</b><span>Einstand</span></div><div class="box '+(pl>=0?"ok":"bad")+'"><b>'+(pl>=0?"+":"")+nf(pl)+'</b><span>G/V ('+(plp>=0?"+":"")+plp.toFixed(1).replace(".",",")+'%)</span></div>':"";
+    don.innerHTML=(a.length&&val>0&&typeof AbanCharts!=="undefined")?AbanCharts.donut(a.map(function(p){return {label:p.name,value:(n(p.qty)||0)*(n(p.now)||0)}}),{center:nf(val)}):"";
+    if(!a.length){el.innerHTML='<p class="note">Noch keine Positionen.</p>';return}
+    a.forEach(function(p,i){var v=(n(p.qty)||0)*(n(p.now)||0),c=(n(p.qty)||0)*(n(p.buy)||0),g=v-c;var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>'+esc(p.name)+' · '+nf(v)+' <small style="color:'+(g>=0?"var(--ok)":"var(--bad)")+'">('+(g>=0?"+":"")+nf(g)+')</small></span>';
+      var w=document.createElement("span");w.className="x";var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var b=portfolio();b.splice(i,1);set("abanCockpit_portfolio",b);renderPort()};w.appendChild(del);row.appendChild(w);el.appendChild(row)})}
+  if($("#pf_add"))$("#pf_add").addEventListener("click",function(){var nm=$("#pf_name").value.trim();if(!nm){toast("Bitte Name");return}var a=portfolio();a.push({name:nm,qty:$("#pf_qty").value,buy:$("#pf_buy").value,now:$("#pf_now").value});set("abanCockpit_portfolio",a);$("#pf_name").value="";$("#pf_buy").value="";$("#pf_now").value="";renderPort();toast("Position hinzugefügt ✓")});
+  /* Net Worth */
+  var nwTyp="a";
+  if($("#nw_seg"))$$("#nw_seg button").forEach(function(b){b.addEventListener("click",function(){nwTyp=b.dataset.t;$$("#nw_seg button").forEach(function(x){x.classList.toggle("on",x===b)})})});
+  function nwGet(){return get("abanCockpit_nw",{items:[],snaps:[]})}
+  function renderNW(){var o=nwGet(),el=$("#nw_list"),sum=$("#nw_sum");if(!el)return;el.innerHTML="";
+    var asset=0,liab=0;o.items.forEach(function(x){if(x.typ==="l")liab+=n(x.val)||0;else asset+=n(x.val)||0});var net=asset-liab;
+    sum.innerHTML=o.items.length?'<div class="box ok"><b>'+nf(asset)+'</b><span>Vermögen</span></div><div class="box bad"><b>'+nf(liab)+'</b><span>Schulden</span></div><div class="box big '+(net>=0?"ok":"bad")+'"><b>'+nf(net)+'</b><span>Netto</span></div>':"";
+    if(!o.items.length)el.innerHTML='<p class="note">Noch keine Einträge.</p>';
+    o.items.forEach(function(x,i){var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>'+(x.typ==="l"?"➖":"➕")+' '+esc(x.label)+' · <strong>'+nf(n(x.val)||0)+'</strong></span>';
+      var w=document.createElement("span");w.className="x";var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var p=nwGet();p.items.splice(i,1);set("abanCockpit_nw",p);renderNW()};w.appendChild(del);row.appendChild(w);el.appendChild(row)});
+    var ch=$("#nw_chart");if(ch)ch.innerHTML=(o.snaps&&o.snaps.length>=2&&typeof AbanCharts!=="undefined")?AbanCharts.line(o.snaps.map(function(s){return s.net}),{color:"#10b981"}):'<p class="note">Mit „Snapshot speichern" baust du den Verlauf auf.</p>'}
+  if($("#nw_add"))$("#nw_add").addEventListener("click",function(){var l=$("#nw_label").value.trim(),v=n($("#nw_val").value);if(!l||!isFinite(v)){toast("Bezeichnung & Betrag?");return}var o=nwGet();o.items.push({label:l,val:v,typ:nwTyp});set("abanCockpit_nw",o);$("#nw_label").value="";$("#nw_val").value="";renderNW();toast("Eintrag hinzugefügt ✓")});
+  if($("#nw_snap"))$("#nw_snap").addEventListener("click",function(){var o=nwGet();var asset=0,liab=0;o.items.forEach(function(x){if(x.typ==="l")liab+=n(x.val)||0;else asset+=n(x.val)||0});o.snaps=o.snaps||[];o.snaps.push({d:isoToday(),net:asset-liab});if(o.snaps.length>60)o.snaps.shift();set("abanCockpit_nw",o);renderNW();toast("Snapshot gespeichert ✓")});
+  /* Journal */
+  var jrDir="long";
+  if($("#jr_dir"))$$("#jr_dir button").forEach(function(b){b.addEventListener("click",function(){jrDir=b.dataset.d;$$("#jr_dir button").forEach(function(x){x.classList.toggle("on",x===b)})})});
+  function journal(){return get("abanCockpit_journal",[])}
+  function plOf(t){var q=n(t.qty)||0,e=n(t.entry)||0,x=n(t.exit)||0,f=n(t.fee)||0;return (t.dir==="long"?(x-e):(e-x))*q-f}
+  function renderJour(){var a=journal(),el=$("#jr_list"),sum=$("#jr_sum"),ch=$("#jr_chart");if(!el)return;el.innerHTML="";
+    var tot=0,wins=0,gp=0,gl=0;a.forEach(function(t){var p=plOf(t);tot+=p;if(p>0){wins++;gp+=p}else gl+=Math.abs(p)});
+    var wr=a.length?wins/a.length*100:0,pf=gl>0?gp/gl:(gp>0?99:0);
+    sum.innerHTML=a.length?'<div class="box big '+(tot>=0?"ok":"bad")+'"><b>'+(tot>=0?"+":"")+nf(tot)+'</b><span>Netto-G/V</span></div><div class="box"><b>'+wr.toFixed(0)+'%</b><span>Trefferquote</span></div><div class="box"><b>'+a.length+'</b><span>Trades</span></div><div class="box"><b>'+pf.toFixed(2).replace(".",",")+'</b><span>Gewinnfaktor</span></div>':"";
+    var chrono=a.slice().reverse(),eq=[0],run=0;chrono.forEach(function(t){run+=plOf(t);eq.push(run)});
+    if(ch)ch.innerHTML=(a.length&&typeof AbanCharts!=="undefined")?AbanCharts.line(eq,{color:tot>=0?"#10b981":"#ef4444"}):'<p class="note">Noch keine Trades.</p>';
+    if(!a.length){el.innerHTML='<p class="note">Noch keine Trades.</p>';return}
+    a.forEach(function(t,i){var p=plOf(t);var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>'+esc(t.date||"")+' · '+esc(t.sym||"")+' '+(t.dir==="long"?"▲":"▼")+' · <strong style="color:'+(p>=0?"var(--ok)":"var(--bad)")+'">'+(p>=0?"+":"")+nf(p)+'</strong></span>';
+      var w=document.createElement("span");w.className="x";var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var b=journal();b.splice(i,1);set("abanCockpit_journal",b);renderJour()};w.appendChild(del);row.appendChild(w);el.appendChild(row)})}
+  if($("#jr_add"))$("#jr_add").addEventListener("click",function(){var e=n($("#jr_entry").value),x=n($("#jr_exit").value);if(!isFinite(e)||!isFinite(x)){toast("Einstieg & Ausstieg eingeben");return}
+    var a=journal();a.unshift({date:$("#jr_date").value||isoToday(),sym:$("#jr_sym").value.trim(),dir:jrDir,qty:$("#jr_qty").value,entry:$("#jr_entry").value,exit:$("#jr_exit").value,fee:$("#jr_fee").value});set("abanCockpit_journal",a);
+    $("#jr_entry").value="";$("#jr_exit").value="";renderJour();toast("Trade erfasst ✓")});
+  /* FIRE */
+  function calcFIRE(){var cur=n($("#fi_cur").value),sav=n($("#fi_save").value),ret=n($("#fi_ret").value),exp=n($("#fi_exp").value);
+    if(!isFinite(cur)||!isFinite(exp)||exp<=0){$("#fi_out").innerHTML="";return}if(!isFinite(sav))sav=0;if(!isFinite(ret))ret=0;
+    var target=exp*25,i=ret/100/12,v=cur,m=0;while(v<target&&m<1200){v=v*(1+i)+sav;m++}
+    var yrs=m>=1200?"über 100":(Math.floor(m/12)+" J "+(m%12)+" Mon"),pass=target*0.04/12;
+    $("#fi_out").innerHTML='<div class="box big"><b>'+nf(target)+'</b><span>Zielvermögen (×25)</span></div><div class="box ok"><b>'+yrs+'</b><span>bis FIRE</span></div><div class="box"><b>'+nf(pass)+'</b><span>mtl. passiv (4 %)</span></div>'}
+  ["fi_cur","fi_save","fi_ret","fi_exp"].forEach(function(id){var el=$("#"+id);if(el)el.addEventListener("input",calcFIRE)});
+  /* Hypothek */
+  function calcHyp(){var amt=n($("#hy_amt").value),rate=n($("#hy_rate").value),yrs=n($("#hy_years").value);
+    if(!isFinite(amt)||!isFinite(yrs)||yrs<=0){$("#hy_out").innerHTML="";return}if(!isFinite(rate))rate=0;
+    var i=rate/100/12,nM=Math.round(yrs*12),pay=i>0?amt*i/(1-Math.pow(1+i,-nM)):amt/nM,total=pay*nM,interest=total-amt;
+    $("#hy_out").innerHTML='<div class="box big"><b>'+nf(pay)+'</b><span>Rate / Monat</span></div><div class="box"><b>'+nf(total)+'</b><span>Gesamtkosten</span></div><div class="box bad"><b>'+nf(interest)+'</b><span>Zinsanteil</span></div>'}
+  ["hy_amt","hy_rate","hy_years"].forEach(function(id){var el=$("#"+id);if(el)el.addEventListener("input",calcHyp)});
+
+  /* ===== Dashboard / Übersicht ===== */
+  function dashMonths(){var m={};drafts().forEach(function(d){if(d.status!=="bezahlt")return;var rd=parseDate(d.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");m[k]=(m[k]||0)+grossOf(d)});kasse().forEach(function(x){if(x.typ!=="ein")return;var rd=parseDate(x.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");m[k]=(m[k]||0)+(n(x.betrag)||0)});return m}
+  function renderDash(){var root=$("#v-dash");if(!root||typeof AbanCharts==="undefined")return;
+    var ds=drafts(),offen=0,offenN=0;ds.forEach(function(d){if(d.status!=="bezahlt"){offen+=grossOf(d);offenN++}});
+    var ein=0,aus=0;kasse().forEach(function(x){var b=n(x.betrag)||0;if(x.typ==="ein")ein+=b;else aus+=b});
+    var hrs=0;tEntries().forEach(function(e){hrs+=n(e.std)||0});
+    var months=dashMonths(),y=new Date().getFullYear(),yTotal=0;Object.keys(months).forEach(function(k){if(k.indexOf(y+"-")===0)yTotal+=months[k]});
+    var lt=window.__abanLernTotal||36,lread=get("abanCockpit_lern_read",{}),lcnt=0;Object.keys(lread).forEach(function(k){if(lread[k])lcnt++});var lpct=Math.round(lcnt/lt*100);
+    $("#d_kpi").innerHTML='<div class="box big ok"><b>'+nf(yTotal)+'</b><span>Umsatz '+y+'</span></div><div class="box'+(offen>0?" bad":"")+'"><b>'+nf(offen)+'</b><span>offen ('+offenN+')</span></div><div class="box"><b>'+(Math.round(hrs*10)/10).toString().replace(".",",")+'</b><span>Stunden erfasst</span></div><div class="box"><b>'+lpct+'%</b><span>Lern-Fortschritt</span></div>';
+    $("#d_donut").innerHTML=(ein>0||aus>0)?AbanCharts.donut([{label:"Einnahmen",value:ein,color:"#10b981"},{label:"Ausgaben",value:aus,color:"#ef4444"}],{center:nf(ein-aus)}):'<p class="note">Noch keine Kassenbuch-Buchungen.</p>';
+    $("#d_donleg").innerHTML=(ein>0||aus>0)?'<span style="color:#10b981">●</span> Einnahmen '+nf(ein)+' &nbsp; <span style="color:#ef4444">●</span> Ausgaben '+nf(aus)+' &nbsp; Saldo '+nf(ein-aus):"";
+    $("#d_ring").innerHTML=AbanCharts.ring(lpct,{color:"#d97706"});
+    $("#d_ringlbl").textContent=lcnt+" von "+lt+" Lektionen gelesen";
+    var keys=Object.keys(months).sort().slice(-6),mN=["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+    $("#d_bars").innerHTML=keys.length?AbanCharts.bars(keys.map(function(k){var p=k.split("-");return {label:mN[(+p[1])-1]+" "+p[0].slice(2),value:months[k],disp:nf(months[k])}})):'<p class="note">Noch kein Umsatz — markiere Rechnungen als bezahlt oder erfasse Einnahmen.</p>'}
+  $$("#v-dash [data-go]").forEach(function(b){b.addEventListener("click",function(){var t=$('#tabs button[data-v="'+b.dataset.go+'"]');if(t)t.click()})});
+
+  /* ===== Zahl-QR (GiroCode / Swiss QR) ===== */
+  var rQrSvg="",qrMode="epc";
+  function buildEPC(s,iban,amt){var name=(s.firma||"").slice(0,70);
+    return ["BCD","002","2","SCT","",name,iban,(amt>0?"EUR"+amt.toFixed(2):""),"","",($("#r_nr").value?("Rechnung "+$("#r_nr").value):"Rechnung").slice(0,140)].join("\n")}
+  function buildSwiss(s,iban,amt,cur){var name=(s.firma||"").slice(0,70),adr=(s.adresse||"").split("\n"),l1=(adr[0]||"").slice(0,70),l2=(adr[1]||"").slice(0,70),ctry=iban.slice(0,2)==="LI"?"LI":"CH",msg=($("#r_nr").value?("Rechnung "+$("#r_nr").value):"Rechnung").slice(0,140);
+    return ["SPC","0200","1",iban,"K",name,l1,l2,"","",ctry,"","","","","","","",(amt>0?amt.toFixed(2):""),cur,"","","","","","","","NON","",msg,"EPD"].join("\r\n")}
+  function genQR(){if(typeof qrcode==="undefined"){toast("QR-Bibliothek lädt noch …");return}
+    var s=stamm(),iban=(s.iban||"").replace(/\s+/g,"").toUpperCase(),amt=R.calc().gross;
+    if(!iban){toast("Bitte IBAN in Stammdaten eintragen");$("#qr_out").innerHTML="";rQrSvg="";return}
+    if(!(s.firma||"").trim()){toast("Bitte Firma/Name in Stammdaten eintragen");return}
+    var data,cur=$("#qr_cur").value;
+    if(qrMode==="epc"){cur="EUR";$("#qr_cur").value="EUR";data=buildEPC(s,iban,amt)}
+    else{if(iban.slice(0,2)!=="CH"&&iban.slice(0,2)!=="LI"){toast("Swiss QR braucht eine CH/LI-IBAN");return}data=buildSwiss(s,iban,amt,cur)}
+    var qr=qrcode(0,"M");qr.addData(data,"Byte");try{qr.make()}catch(e){toast("Daten zu lang für den QR");return}
+    rQrSvg=qr.createSvgTag(4,10);
+    $("#qr_out").innerHTML='<div style="display:inline-block;background:#fff;padding:8px;border:1px solid var(--line);border-radius:8px;max-width:230px">'+rQrSvg+'</div>'}
+  if($("#qr_seg"))$$("#qr_seg button").forEach(function(b){b.addEventListener("click",function(){qrMode=b.dataset.q;$$("#qr_seg button").forEach(function(x){x.classList.toggle("on",x===b)});$("#qr_cur").value=qrMode==="epc"?"EUR":"CHF";genQR()})});
+  if($("#qr_cur"))$("#qr_cur").addEventListener("change",genQR);
+  if($("#qr_gen"))$("#qr_gen").addEventListener("click",genQR);
+
+  /* ===== Offene Posten + Umsatz ===== */
+  function isoFromDate(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+  function grossOf(d){var net=0;(d.items||[]).forEach(function(it){net+=(n(it.qty)||0)*(n(it.price)||0)});var rate=parseFloat(d.vat)||0;return net*(1+rate/100)}
+  function faelligOf(d){var rd=parseDate(d.datum||"");if(isNaN(rd.getTime()))return null;return addDays(rd,parseInt(d.ziel,10)||0)}
+  function renderOffen(){var ds=drafts(),el=$("#of_list"),sum=$("#of_sum");if(!el)return;el.innerHTML="";
+    var today=new Date();today.setHours(0,0,0,0);var offenSum=0,bezSum=0,cnt=0;
+    if(!ds.length){el.innerHTML='<p class="note">Noch keine gespeicherten Rechnungen.</p>';if(sum)sum.innerHTML="";return}
+    ds.forEach(function(d,i){var g=grossOf(d),paid=d.status==="bezahlt";if(paid)bezSum+=g;else{offenSum+=g;cnt++}
+      var f=faelligOf(d),over=(!paid&&f&&f<today);
+      var row=document.createElement("div");row.className="li";if(over)row.style.borderColor="var(--bad)";
+      row.innerHTML='<span>'+(paid?"✅":over?"🔴":"🟡")+' '+esc(d.nr||"ohne Nr.")+' · '+esc((d.kunde||"").split("\n")[0].slice(0,22))+' · <strong>'+nf(g)+'</strong>'+(f?' · fällig '+de(f):"")+(over?' · überfällig':"")+'</span>';
+      var w=document.createElement("span");w.className="x";
+      var tg=document.createElement("button");tg.className="btn ghost sm";tg.textContent=paid?"↩ offen":"✓ bezahlt";
+      tg.onclick=function(){var a=drafts();a[i].status=paid?"offen":"bezahlt";set("abanCockpit_drafts",a);renderOffen();renderUmsatz()};
+      var mh=document.createElement("button");mh.className="btn ghost sm";mh.textContent="⏰ Mahnung";
+      mh.onclick=function(){$("#mh_kunde").value=(d.kunde||"").split("\n")[0];$("#mh_nr").value=d.nr||"";$("#mh_betrag").value=nf(g);if(f)$("#mh_faellig").value=isoFromDate(f);genMahnung();var b=$('#tabs button[data-v="mahnung"]');if(b)b.click();window.scrollTo(0,0)};
+      w.appendChild(tg);w.appendChild(mh);row.appendChild(w);el.appendChild(row)});
+    if(sum)sum.innerHTML='<div class="box bad"><b>'+nf(offenSum)+'</b><span>offen ('+cnt+')</span></div><div class="box ok"><b>'+nf(bezSum)+'</b><span>bezahlt</span></div>'}
+  function renderUmsatz(){var bars=$("#um_bars");if(!bars)return;var months={};
+    drafts().forEach(function(d){if(d.status!=="bezahlt")return;var rd=parseDate(d.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");months[k]=(months[k]||0)+grossOf(d)});
+    kasse().forEach(function(x){if(x.typ!=="ein")return;var rd=parseDate(x.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");months[k]=(months[k]||0)+(n(x.betrag)||0)});
+    var keys=Object.keys(months).sort(),total=0,maxV=0;keys.forEach(function(k){total+=months[k];if(months[k]>maxV)maxV=months[k]});
+    var y=new Date().getFullYear(),yTotal=0;keys.forEach(function(k){if(k.indexOf(y+"-")===0)yTotal+=months[k]});
+    var rl=n(stamm().rl)||0,rlBox=rl>0?'<div class="box bad"><b>'+nf(yTotal*rl/100)+'</b><span>Steuer-Rücklage ('+String(rl).replace(".",",")+'%)</span></div>':'';
+    var sum=$("#um_sum");if(sum)sum.innerHTML='<div class="box big ok"><b>'+nf(yTotal)+'</b><span>Umsatz '+y+'</span></div><div class="box"><b>'+nf(total)+'</b><span>gesamt erfasst</span></div>'+rlBox;
+    if(!keys.length){bars.innerHTML='<p class="note">Noch keine bezahlten Rechnungen oder Einnahmen. Markiere Rechnungen unter „Offene Posten" als bezahlt oder erfasse Einnahmen im Kassenbuch.</p>';return}
+    var mN=["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+    bars.innerHTML=keys.slice(-12).map(function(k){var v=months[k],pct=maxV>0?Math.round(v/maxV*100):0,p=k.split("-"),lab=mN[(+p[1])-1]+" "+p[0].slice(2);
+      return '<div style="display:flex;align-items:center;gap:10px;margin:5px 0"><span style="width:62px;font-size:.78rem;color:var(--muted)">'+lab+'</span><div style="flex:1;background:var(--line);border-radius:6px;overflow:hidden"><div style="width:'+pct+'%;min-width:46px;background:var(--amber-dk);color:#fff;font-size:.72rem;font-weight:700;padding:3px 6px;border-radius:6px;text-align:right;white-space:nowrap">'+nf(v)+'</div></div></div>'}).join("")}
+
+  /* ===== Logo + Auto-Rechnungsnummer ===== */
+  function showLogoPrev(){var l=(get("abanCockpit_stamm",{}).logo)||"",p=$("#st_logo_prev");if(!p)return;
+    if(l){p.innerHTML='<img src="'+l+'" alt="Logo" style="max-height:54px;margin-top:6px;border:1px solid var(--line);border-radius:6px;padding:4px;background:#fff"><br><button class="btn ghost sm" id="st_logo_del" type="button" style="margin-top:6px">Logo entfernen</button>';
+      $("#st_logo_del").addEventListener("click",function(){var s=get("abanCockpit_stamm",{});delete s.logo;set("abanCockpit_stamm",s);showLogoPrev();toast("Logo entfernt")})}
+    else p.textContent="Kein Logo gesetzt."}
+  if($("#st_logo_file"))$("#st_logo_file").addEventListener("change",function(){var f=this.files&&this.files[0];if(!f)return;
+    if(f.size>500000){toast("Logo zu groß (max ~500 KB)");this.value="";return}
+    var rd=new FileReader();rd.onload=function(){var s=get("abanCockpit_stamm",{});s.logo=rd.result;set("abanCockpit_stamm",s);showLogoPrev();toast("Logo gespeichert ✓")};rd.readAsDataURL(f);this.value=""});
+  if($("#r_nextnr"))$("#r_nextnr").addEventListener("click",function(){var y=new Date().getFullYear(),seq=get("abanCockpit_seq",{}),nx=(seq[y]||0)+1;seq[y]=nx;set("abanCockpit_seq",seq);$("#r_nr").value=y+"-"+String(nx).padStart(3,"0")});
+
+  /* ===== PWA + Daten-Sicherung ===== */
+  if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/cockpit-sw.js").catch(function(){})})}
+  var deferredPrompt=null;
+  window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferredPrompt=e;var w=$("#bk_install");if(w)w.style.display="flex"});
+  if($("#bk_installbtn"))$("#bk_installbtn").addEventListener("click",function(){if(!deferredPrompt)return;deferredPrompt.prompt();deferredPrompt.userChoice.then(function(){deferredPrompt=null;var w=$("#bk_install");if(w)w.style.display="none"})});
+  window.addEventListener("appinstalled",function(){var w=$("#bk_install");if(w)w.style.display="none";toast("App installiert ✓")});
+  function backupKeys(){var o={},i,k;for(i=0;i<LS.length;i++){k=LS.key(i);if(k&&k.indexOf("abanCockpit_")===0)o[k]=LS.getItem(k)}return o}
+  if($("#bk_export"))$("#bk_export").addEventListener("click",function(){
+    var data={_app:"aban-cockpit",_version:1,_date:new Date().toISOString(),keys:backupKeys()};
+    var blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});var a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);a.download="cockpit-backup-"+isoToday()+".json";document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},100);toast("Sicherung heruntergeladen ✓")});
+  if($("#bk_import"))$("#bk_import").addEventListener("click",function(){$("#bk_file").click()});
+  if($("#bk_file"))$("#bk_file").addEventListener("change",function(){var f=this.files&&this.files[0];if(!f){return}
+    var rd=new FileReader();rd.onload=function(){try{var d=JSON.parse(rd.result);var keys=(d&&d.keys)?d.keys:d;
+      if(!keys||typeof keys!=="object"){toast("Datei nicht erkannt");return}
+      if(!window.confirm("Gesicherte Daten laden? Vorhandene Cockpit-Daten auf diesem Gerät werden überschrieben.")){return}
+      Object.keys(keys).forEach(function(k){if(k.indexOf("abanCockpit_")===0)LS.setItem(k,keys[k])});
+      toast("Daten geladen — App wird neu geladen …");setTimeout(function(){location.reload()},900)}
+      catch(err){toast("Datei konnte nicht gelesen werden")}};rd.readAsText(f);this.value=""});
+
+  /* ===== Darstellung + Demo + Reset ===== */
+  function applyTheme(t){if(t==="auto")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme",t)}
+  var _theme=get("abanCockpit_theme","auto");applyTheme(_theme);
+  if($("#cfg_theme")){$("#cfg_theme").value=_theme;$("#cfg_theme").addEventListener("change",function(){set("abanCockpit_theme",this.value);applyTheme(this.value)})}
+  if($("#bk_demo"))$("#bk_demo").addEventListener("click",function(){if(!window.confirm("Demo-Daten laden? Vorhandene Cockpit-Daten werden überschrieben."))return;
+    var ym=function(off){var d=new Date();d.setMonth(d.getMonth()-off);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-15"};
+    set("abanCockpit_stamm",{firma:"Muster Design GmbH",adresse:"Musterstrasse 1\n8000 Zürich",email:"hallo@muster-design.ch",tel:"044 123 45 67",iban:"CH9300762011623852957",steuer:"CHE-123.456.789",rl:"25"});
+    set("abanCockpit_clients",[{name:"Bäckerei Sonne",email:"info@sonne.ch",adresse:"Dorfstr. 5\n3000 Bern"},{name:"Webagentur Nord",email:"hi@nord.io",adresse:"Hafenweg 2\n8400 Winterthur"}]);
+    set("abanCockpit_artikel",[{desc:"Beratungsstunde",price:"120"},{desc:"Logo-Design",price:"850"},{desc:"Website-Pflege (Monat)",price:"90"}]);
+    set("abanCockpit_drafts",[
+      {nr:"2026-014",datum:ym(0),leistung:"",kunde:"Bäckerei Sonne\nDorfstr. 5\n3000 Bern",vat:"8.1",ziel:"14",items:[{desc:"Logo-Design",qty:"1",price:"850"}],status:"bezahlt",ts:Date.now()},
+      {nr:"2026-013",datum:ym(1),leistung:"",kunde:"Webagentur Nord\nHafenweg 2\n8400 Winterthur",vat:"8.1",ziel:"30",items:[{desc:"Beratungsstunde",qty:"8",price:"120"}],status:"bezahlt",ts:Date.now()},
+      {nr:"2026-015",datum:ym(0),leistung:"",kunde:"Bäckerei Sonne\nDorfstr. 5\n3000 Bern",vat:"8.1",ziel:"14",items:[{desc:"Website-Pflege (Monat)",qty:"1",price:"90"}],status:"offen",ts:Date.now()}
+    ]);
+    set("abanCockpit_kasse",[{datum:ym(0),typ:"ein",kat:"Honorar",betrag:850,notiz:"Logo"},{datum:ym(0),typ:"aus",kat:"Software",betrag:39,notiz:"Tools"},{datum:ym(1),typ:"aus",kat:"Material",betrag:120,notiz:""}]);
+    set("abanCockpit_time",[{proj:"Webagentur Nord",datum:ym(0),std:"8",satz:"120",desc:"Beratung"}]);
+    toast("Demo geladen — App wird neu geladen …");setTimeout(function(){location.reload()},800)});
+  if($("#bk_wipe"))$("#bk_wipe").addEventListener("click",function(){if(!window.confirm("Wirklich ALLE Cockpit-Daten auf diesem Gerät löschen? Das kann nicht rückgängig gemacht werden."))return;
+    var keys=[],i;for(i=0;i<LS.length;i++){var k=LS.key(i);if(k&&k.indexOf("abanCockpit_")===0)keys.push(k)}keys.forEach(function(k){LS.removeItem(k)});
+    toast("Alles gelöscht — App wird neu geladen …");setTimeout(function(){location.reload()},800)});
+
+  /* Init */
+  loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();renderOffen();renderUmsatz();renderArtikel();refreshKat();renderBelege();renderPort();renderNW();renderJour();calcFIRE();calcHyp();renderDash();
+  $("#bl_datum").value=isoToday();$("#jr_date").value=isoToday();$("#r_datum").value=isoToday();$("#a_datum").value=isoToday();$("#a_gueltig").value=isoToday();$("#zf_datum").value=isoToday();$("#z_datum").value=isoToday();$("#ka_datum").value=isoToday();
+  R.setItems([{}]);A.setItems([{}]);
+  calcM();calcH();calcS();calcVZ();calcZF();calcPC();calcIB();calcKM();calcTP();calcTR();calcTG();calcTL();calcTC();calcLQ();genMahnung();genEmail();
+})();
+</script>
+</body>
+</html>

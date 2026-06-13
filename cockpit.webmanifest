@@ -1,0 +1,15 @@
+{
+  "name": "aban Business-Cockpit",
+  "short_name": "Cockpit",
+  "description": "Rechnungen, Angebote, Kunden, Zeit, Rechner & Lern-Modul — offline, lokal, kein Login.",
+  "start_url": "/cockpit-app.html",
+  "scope": "/cockpit-app.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#d97706",
+  "background_color": "#fffbf5",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
