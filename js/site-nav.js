@@ -23,6 +23,7 @@
     var CAT = [
       ["Startseite", "/", "Start", "Übersicht, Newsletter & alle Bereiche"],
       ["Online-Tools", "/online-tools.html", "Start", "Katalog aller kostenlosen Tools"],
+      ["Angebote-Suche", "/angebote-suche.html", "Start", "Schnäppchen aus vielen Kategorien finden (eBay)"],
       ["KI-Studio", "/ki-studio.html", "Start", "KI-Funktionen & Anleitungen"],
       ["Märkte", "/maerkte.html", "Start", "Aktien, Krypto, Charts, KI-Sentiment"],
       ["Branchen", "/branchen.html", "Start", "KI-Ratgeber je Branche"],
