@@ -26,6 +26,15 @@ Der User macht den #1-Hebel (TikTok/Meta-Pixel + bezahlte CH-Kampagne) morgen. �
 - **Caption-Format als FESTE Regel** im Poster-README verankert (Produkt+CHF-Preis [+Vergleich] · 1 Share/Save/Komm.-
   Trigger · CTA+WELCOME10+#bern) → künftige Posts befolgen es automatisch.
 
+## 2026-06-13 — Von anderen Influencern/Top-Dropshippern gelernt (`reports/INFLUENCER-LEHREN-2026-06-13.md`)
+Playbook erfolgreicher Organik-Dropship-Accounts (Minea/AutoDS-Tactics) vs. LuxeStyle abgeglichen. **Größte Lücke:
+unser Content ist polierte KI-Produkt-Pans — der Algo pusht aber UGC/Demo/Problem-Lösung nativ.** Weitere Lehren:
+Hook in 1–2 Sek = Problem/Neugier/Kontrast (nicht Katalog-Benennung); täglich 2–5 Posts > Mo/Di-Cluster; Trending-
+Sounds; Discovery-Hashtags statt Marken-Sackgasse `#luxestyle`; **Conversion > Views**.
+**✅ Sofort umgesetzt** in `automation/learned_pools.sh`: Discovery-Tags (#tiktokmademebuyit/#musthave/#produkttipp/
+#gefundenauftiktok/#lifehack) ersetzen `#luxestyle`; Problem-/Neugier-Hook-Captions ergänzt.
+**🔜 Manuell/PC-Claude:** echte Hands-on/UGC-Clips, Trending-Sounds auf `-clean.mp4`, täglicher Rhythmus.
+
 ## 2026-06-13 — Runde 1
 **🔴 Höchster Hebel (nur DU kannst es, bringt Käufe):**
 1. **TikTok-/Meta-Pixel + EINE saubere CH-Kampagne** (Ziel „Complete Payment", CH/Frauen 18–34, DE/FR, 20 CHF/Tag).
