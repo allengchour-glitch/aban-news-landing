@@ -44,6 +44,16 @@ const ITEMS = [
   { handle:'baby-jersey-body-selbst-gestalten',                     src:'baby-jersey-bodysuit-white-front-6a271704b36b7.jpg' },
   { handle:'allover-rucksack-selbst-gestalten',                     src:'all-over-print-backpack-white-front-6a2719b5540a1.jpg' },
   { handle:'kiss-cut-aufkleber-selbst-gestalten',                   src:'kiss-cut-stickers-white-3x3-default-6a2717b4ee33e.jpg' },
+  // Allover-Print-Kleidung (Dein-Design eingebrannt) — 2026-06-13
+  { handle:'allover-sport-bh-selbst-gestalten',                     src:'all-over-print-sports-bra-white-front-6a271ed20aef1.jpg' },
+  { handle:'allover-yoga-leggings-selbst-gestalten',                src:'all-over-print-yoga-leggings-white-front-6a2718d6c8473.jpg' },
+  { handle:'kleid-mit-schlitz-und-allover-druck-selbst-gestalten',  src:'all-over-print-slip-dress-white-front-6a271d8aa07fe.jpg' },
+  { handle:'recycelte-allover-jogginghosen-selbst-gestalten',       src:'all-over-print-recycled-mens-joggers-white-front-6a271e3a66302.jpg' },
+  { handle:'einteiliger-allover-badeanzug-selbst-gestalten',        src:'all-over-print-one-piece-swimsuit-white-front-6a27184072d96.jpg' },
+  { handle:'boardshorts-mit-allover-druck-selbst-gestalten',        src:'all-over-print-mens-board-shorts-white-front-6a271594a268f.jpg' },
+  { handle:'unisex-allover-bomberjacke-selbst-gestalten',           src:'all-over-print-unisex-bomber-jacket-white-front-6a271cef7e37f.jpg' },
+  { handle:'recycelter-unisex-allover-pullover-selbst-gestalten',   src:'all-over-print-recycled-unisex-sweatshirt-white-front-6a271b2dcf3bd.jpg' },
+  { handle:'recycelter-unisex-allover-hoodie-selbst-gestalten',     src:'all-over-print-recycled-unisex-hoodie-white-front-6a271c55cdb4b.jpg' },
 ];
 
 const PROMPT = `You are a professional product-photo retoucher. The provided image is a plain product mockup with a placeholder watermark text reading "Dein Design" printed on it. TASK: cleanly REMOVE that "Dein Design" placeholder text completely and reconstruct the bare product surface underneath, so the product looks BLANK and ready to be customised. CRITICAL: keep the product 100% IDENTICAL — exact same shape, colour, material, fabric texture, seams, straps, lighting, shadows, reflections, background and camera angle. Do NOT redesign, recolour, move, resize or stylise the product. Do NOT add any new text, logo, pattern or graphic. The ONLY change is the removal of the "Dein Design" text. Output a clean, photorealistic, e-commerce-quality product photo on the same plain background.`;
