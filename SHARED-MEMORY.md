@@ -39,6 +39,12 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Kategorie-Banner wiederhergestellt + gesichert:** Die 9 Marken-Banner (cat-*.jpg) waren
+von einer späteren Session als Collection-Bild **überschrieben** worden (Schmuck zeigte Produktfoto, Herren
+ein pexels-Foto). **Per API alle 9 wieder angehängt.** Mapping + „nicht überschreiben"-Regel:
+`dropship/KATEGORIE-BANNER-MAPPING.md`. ⚠️ Andere Sessions: Collection-Bild dieser 9 NICHT durch Produktfotos
+ersetzen. Anzeige auf Kategorieseite braucht Theme-Sektion „Collection banner" (Customizer).
+
 **2026-06-13 — Mehr Content für neue Produkte:** +30 polierte Pins → **182 Pins total** (CSV, raw-GitHub);
 3 neue SEO-Ratgeber live (Sommerschuhe/Sonnenbrillen/Stimmungslicht) → **8 Artikel** im Blog `ratgeber`;
 15 neue Marktplatz-Inserate. Tools: `automation/gen_pinterest_new.py` (Pins neue Produkte). PR #873.
