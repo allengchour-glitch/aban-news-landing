@@ -39,6 +39,12 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Autonom weiter: Aufräumen + 3 neue SEO-Artikel:** 3 `[ARCHIV]`-Collections gelöscht
+(tech-gadgets, fitness-sport, pet-tierbedarf); abgelaufene `launch-week` zu evergreen **„🎁 Bundles & Deals"**
+umgebaut (Titel/Desc/SEO). **3 neue Ratgeber live** (Partner-Geschenke/Couple, Taschen-Trends, Bademode) →
+**11 SEO-Artikel** gesamt im Blog `ratgeber`. ⚠️ Bei articleCreate: keine „…"-Curly-Quotes im body (bricht
+GraphQL), «…» oder normale Quotes nutzen.
+
 **2026-06-13 — Seiten-Optimierung verifiziert + Customizer-Restliste:** Geprüft & bestätigt: alle neuesten
 Produkte haben **Alt-Texte** (Bild-SEO ok) und sind auf **6 Kanälen publiziert** — inkl. **Google & YouTube**
 UND **Pinterest** (Kanäle sind verbunden, SEO/Kategorie-Arbeit füttert sie live; keine Publish-Falle). Damit ist
