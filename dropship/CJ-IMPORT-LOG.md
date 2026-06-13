@@ -13,6 +13,9 @@
 > ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
 > bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
 
+- **🎁 Perla-Set Cross-Sell (Conversion/AOV):** In allen 3 «Perla»-Stücken (Kette/Ohrringe/Armband) oben ein
+  verlinkter Set-Block zu den anderen beiden Teilen → als Geschenk-Trio positioniert. Kein Bundle-Produkt (kein Fulfillment-Risiko).
+
 ## Session 2026-06-13 (NACHT-5) — +5 „tolle Schmuckstücke" (Luxus-Kapsel → 14)
 - User-Wunsch „tolle schmücke". Via roher Diagnose der 925-Linie 5 distinkte edle Stücke (alle `highend`+`premium`+
   `schmuck`+`damen`, ACTIVE, 6 Kanäle, Bilder READY, SEO gesetzt):
