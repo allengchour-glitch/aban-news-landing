@@ -40,10 +40,14 @@ Lege diese **6 Boards** an (jeweils 1 Satz Beschreibung mit Keywords — wichtig
 
 ## ✅ Schritt 3 — Pins hochladen (die CSV macht die Arbeit)
 
-Ich habe dir **`dropship/pinterest_pins.csv`** gebaut — **103 fertige, gebrandete Pins** (Markenband +
-Preis-Anker + WELCOME10-Pill, gehostet auf der Shopify-CDN) mit SEO-Titel, Beschreibung + Hashtags und
-direktem Link zur Produktseite. Verteilung: Schmuck/Accessoires 26 · Herrenmode 20 · Home/Geschenke 20 ·
-Damenmode/Kleider 17 · Schuhe 11 · Wellness/Beauty 9.
+Ich habe dir **`dropship/pinterest_pins.csv`** gebaut — **75 fertige, polierte Pins** (Premium-Look v5:
+Creme-Basis, Serifen-Titel, sanfter Foto-Übergang, Gold-Akzent, Marken-Wordmark, Preis + WELCOME10-Pille)
+mit SEO-Titel, Beschreibung + Hashtags und direktem Link zur Produktseite. Über alle Kategorien:
+Herren · Damenmode/Kleider · Schmuck/Accessoires · Schuhe · Wellness/Beauty · Home/Geschenke/Gadgets.
+
+> **Bild-Hosting:** Die Pin-Bilder liegen im **öffentlichen Repo** unter `dropship/pins/px-*.jpg` und werden
+> über `raw.githubusercontent.com`-URLs eingebunden — **gratis & stabil**, kein CDN-Upload nötig. Neu rendern:
+> `python3 automation/gen_pinterest_polish.py` (Template v5).
 
 > **Vollautomatisch (empfohlen):** `automation/pinterest_publish.mjs` + Workflow `pinterest-publish.yml`
 > posten die Pins per Pinterest-API selbst (Mo & Do je 5). Du brauchst nur einmal ein Secret — entweder
