@@ -1,0 +1,20 @@
+# Produkt-IDs für luma_agents_video.mjs / luma-product-videos.yml (hands-free Video-Anhängen).
+# Eine ID je Zeile (nackt oder gid://). Bereits mit Video versehen NICHT erneut eintragen.
+# Diese Liste ist erweiterbar — der Lauf stoppt automatisch bei leerem Luma-Guthaben.
+# Stand: ~90 Produkte haben schon Video (16 neue + 15 good_products + 10 Schmuck + 15 Wave F + 18 Wave G + 16 erste).
+# Nächste saubere Kandidaten (kein POD/Text-Shirt/Webp-Collage):
+15428300112257
+15428300210561
+15428300308865
+15428286513537
+15428286251393
+15428429611393
+15411554320769
+15411554910593
+15412297138561
+15430233555329
+15412911178113
+15411203342721
+15412405272961
+15404630737281
+15411554910593

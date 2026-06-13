@@ -1,0 +1,32 @@
+name: Luma Produktvideos (Agents-API, hands-free)
+
+# Generiert Bewegungs-Videos aus Produkt-Hauptbildern (Luma ray-3.2) und hängt sie
+# direkt an die Produkte. Nutzt GitHub-Secrets (keine Werte im Repo). Läuft bis das
+# Luma-Guthaben leer ist. Manuell auslösbar (Handy-Widget / Actions-Tab).
+on:
+  workflow_dispatch:
+    inputs:
+      pids:
+        description: "Komma-Liste Produkt-IDs (leer = aus dropship/video_pids.txt)"
+        required: false
+        default: ""
+
+jobs:
+  videos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - name: Generate + attach product videos
+        env:
+          LUMA_API_KEY: ${{ secrets.LUMA_API_KEY }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: |
+          if [ -n "${{ github.event.inputs.pids }}" ]; then
+            node automation/luma_agents_video.mjs --pids "${{ github.event.inputs.pids }}"
+          else
+            node automation/luma_agents_video.mjs --in dropship/video_pids.txt
+          fi

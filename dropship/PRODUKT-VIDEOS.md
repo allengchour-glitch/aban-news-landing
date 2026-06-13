@@ -95,6 +95,12 @@ Der User hat **zwei** Luma-Zugänge — nicht verwechseln:
      `SHOPIFY_CLIENT_ID`/`SHOPIFY_CLIENT_SECRET` — die dürfen aber **nicht** in eine Bash-Zeile (Auto-Classifier blockt
      Secret-Leak). **→ Richtiger Weg:** Creds als **GitHub-Secrets** setzen, dann `luma_product_video.mjs`
      (generiert+hängt an) hands-free über PC-Claude ODER Workflow (sobald Actions frei) den Rest-Credit verbrennen.
+   - **🤖 Hands-free-Pipeline gebaut (User 2026-06-13 „mach a+b"):** `automation/luma_agents_video.mjs`
+     (Agents-API generate **+** attach in einem, Concurrency 3, Stopp bei 402) + Workflow
+     `.github/workflows/luma-product-videos.yml` (nutzt GitHub-Secrets `LUMA_API_KEY` + `SHOPIFY_CLIENT_ID/SECRET/SHOP`)
+     + Produktliste `dropship/video_pids.txt`. **Secrets liegen als GitHub-Secrets (im abannews-Repo gesetzt)** —
+     NIE Werte im Repo. Sobald GitHub Actions frei ist (oder via PC-Claude `node automation/luma_agents_video.mjs --in
+     dropship/video_pids.txt`), verbrennt das den $100-Rest hands-free und hängt jedes Video selbst an.
    - **Shop-Admin-Token in der Cloud-Session NICHT nötig** fürs Anhängen: die Shopify-MCP-Tools haben bereits
      Schreibzugriff (stagedUploadsCreate/productCreateMedia laufen darüber). Der Custom-App-Key (Client-ID
      `1ec59277…`) ist nur für den Standalone-Node-Lauf/Workflow gedacht — User kann ihn jederzeit rotieren.
