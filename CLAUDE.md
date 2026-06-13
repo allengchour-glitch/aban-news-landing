@@ -88,9 +88,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Garten/Wellness/Pet (Solar-Gartenleuchte, Lendenwirbel-Massagekissen, Keramik-Trinkbrunnen, Weekender-Tasche,
   Silikon-Hundenapf, Transportbox). Alle ACTIVE + SEO + Alt + 6 Kanäle, Bilder READY.
 - **🖼️ KI-Bild-Tools (User gab Keys):** **Luma Dream Machine** (Photon, key `luma-6ac83c2b-…` funktioniert; `luma-api-…`
-  NICHT) → 3 Mood-Heroes (Partner&Paare/Hype/sg-alle), Credits danach **aufgebraucht (0)**. **Gemini 2.5 Flash Image**
-  kann auch **text-to-image** → 5 Sub-Collection-Heroes (sg-bekleidung/-taschen/-wohnen/-trinken/-accessoires) generiert
-  + gesetzt. Hero-Backups in `pod/heroes/`. Regel: KI nur Mood/Hero, Produktbilder bleiben echt.
+  NICHT) → 3 Mood-Heroes (Partner&Paare/Hype/sg-alle). **Gemini 2.5 Flash Image** kann auch **text-to-image** → 5 Sub-
+  Collection-Heroes (sg-bekleidung/-taschen/-wohnen/-trinken/-accessoires) generiert + gesetzt. Hero-Backups in `pod/heroes/`.
+  Regel: KI nur Mood/Hero, Produktbilder bleiben echt.
+- **💳 LUMA auf $100 aufgeladen (User 2026-06-13)** → wieder voll nutzbar (Bild **Photon** + **Video** Ray/Dream Machine).
+  Funktionierender Key: `luma-6ac83c2b-e3ed-451c-a2ad-12e1c97890fb-909903d9-a7a6-4308-8138-f95b88620f33`. Für Video/B-Roll
+  ist Luma jetzt die Option (Video-Session). Geteilt in `SHARED-MEMORY.md`.
 - **🛑 CJ-Lehre (wichtig):** Nach 5 Runden **Nischen erschöpft** — CJ liefert dann **Dubletten** bereits angelegter
   Produkte + Mode-Rauschen. Ausbeute ~3-5 echte Treffer pro 20-25. **Wenn Dubletten auftauchen = aufhören.**
   CJ-Token via apiKey `2534f19e…` über `getAccessToken` (email allengchour@gmail.com) holbar.

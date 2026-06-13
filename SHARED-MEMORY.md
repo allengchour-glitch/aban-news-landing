@@ -57,7 +57,11 @@
 - **🔧 Nachgang:** 8 neue Collections SEO-Meta nachgerüstet; QA = alle getauschten Bilder READY/sauber, 0 FAILED. Katalog conversion-fertig.
 - **➕ +19 Produkte (5 CJ-Runden, kuratiert):** Humidifier/Diffuser/RGB-Lampe/Nachtlicht, Auto-Ventilator/Powerbank/Duft-Clip/Tischventilator,
   Bambus-Organizer/Stoff-Box/Dusch-Organizer/Folien-Spender, Solar-Leuchte/Massagekissen/Trinkbrunnen/Weekender/Hundenapf/Transportbox. Alle live+SEO.
-- **🖼️ KI-Bilder:** Luma (Photon, key `luma-6ac83c2b-…`; Credits danach 0) = 3 Mood-Heroes; Gemini 2.5 Flash Image (text-to-image) = 5 sg-Sub-Heroes. Backups `pod/heroes/`.
+- **🖼️ KI-Bilder:** Luma (Photon, key `luma-6ac83c2b-e3ed-451c-a2ad-12e1c97890fb-909903d9-a7a6-4308-8138-f95b88620f33`) = 3 Mood-Heroes; Gemini 2.5 Flash Image (text-to-image) = 5 sg-Sub-Heroes. Backups `pod/heroes/`.
+- **💳 LUMA AUFGELADEN auf $100 (User 2026-06-13, Screenshot lumalabs.ai/billing):** wieder voll nutzbar. **Funktionierender Key:**
+  `luma-6ac83c2b-e3ed-451c-a2ad-12e1c97890fb-909903d9-a7a6-4308-8138-f95b88620f33` (NICHT `luma-api-…` → 403). Bearer-Auth,
+  Endpoint `https://api.lumalabs.ai/dream-machine/v1/generations/image` (Photon, `aspect_ratio`,`model:photon-1`) bzw. `/generations` für **VIDEO**
+  (Ray, Dream Machine). **→ Video/Lifestyle-Session: Luma steht für KI-Clips/B-Roll bereit** (Mood/Bewegung, Produkt bleibt echt).
 - **🛑 CJ erschöpft nach 5 Runden** → liefert Dubletten + Mode-Rauschen. Lehre: bei Dubletten aufhören. (apiKey `2534f19e…` via getAccessToken.)
 
 **2026-06-12 (ABEND) — abannews session: AFFILIATE-MASCHINE + aban-Pro-Funnel (Detail in `PROJEKT.md`, oberste Sektion):**
