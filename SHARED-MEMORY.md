@@ -39,6 +39,13 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Collections weiter bereinigt: 11 Duplikate gelöscht + 2 kaputte Smart-Regeln gefixt:**
+- 11 exakte sub-Duplikate gelöscht (beleuchtung, trinkflaschen, massage-sub, kinder-spielzeug, kleider,
+  taschen-sub, damen-schmuck, damen-schmuck-sub, herren-schmuck-sub, selbst-gestalten, geschenke-unter-30-franken)
+  → insgesamt 32 Collections weg (~181 → ~149).
+- **Smart-Regeln gefixt:** `launch-week` 2386→171 (`bundle`+`top-deal`), `hochzeitsgeschenke` 2310→107
+  (`hochzeit`+`wein`). Vorher matchte `premium` fast den ganzen Katalog. Offen: 3× `[ARCHIV]` depublizieren.
+
 **2026-06-13 — 21 Duplikat-Collections gelöscht:** Die alten „Premium ·"-Emoji-Collections (13) + das
 Englisch-Auto-Gen-Set (8) entfernt (collectionDelete, 0 Fehler) → ~181 → ~160 Collections. Voller Audit:
 `dropship/COLLECTIONS-AUDIT.md`. Offen (auf User-OK): ~11 exakte sub-Duplikate; ⚠️ kaputte Smart-Regeln

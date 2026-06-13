@@ -28,7 +28,7 @@ silvester-neujahr` · Struktur: `fur-sie, reisen-sommer, premium-beauty`
 `aroma-diffuser, beauty-rituals, bambus-living, smart-home-sleep, bundles-sets, wellness-self-care,
 sale-angebote, geschenkideen-shop`
 
-## 🟠 LÖSCHEN MÖGLICH — exakte Duplikate von Menü-Unterkategorien — **~11**
+## ✅ GELÖSCHT (2026-06-13) — 11 exakte Duplikate entfernt
 (jeweils existiert die Menü-Version `sub-*`/`schuhe`/`spielzeug` schon)
 `beleuchtung` (=sub-beleuchtung), `trinkflaschen` (=sub-trinkflaschen), `massage-sub` (=sub-massage),
 `kinder-spielzeug` (=spielzeug), `kleider` (=sub-kleider), `taschen-sub` (=sub-taschen),
@@ -44,10 +44,9 @@ aufbewahrung-sub, smart-home-sub, fitness-sub, gadgets, kuechengeraete, home-gad
 herren-mode-sub, strand-look, office-look, abend-look, highlights, hautpflege-skincare,
 wellness-beauty-tools, deko-wohnaccessoires, beleuchtung-lampen, kueche-tisch` (+ weitere Marketing-Hero-Sets)
 
-## ⚠️ SMART-REGEL KAPUTT (Produktzahl viel zu hoch — Regel fixen, NICHT löschen)
-- `launch-week` → **2386** Produkte (Regel `premium`/`top-deal` matcht fast alles)
-- `hochzeitsgeschenke` → **2310** Produkte (Regel `premium`/`wein` zu breit)
-→ Regeln verengen oder Collections depublizieren.
+## ✅ SMART-REGELN GEFIXT (2026-06-13)
+- `launch-week`: 2386 → **171** (Regel nur noch `bundle`+`top-deal`)
+- `hochzeitsgeschenke`: 2310 → **107** (Regel nur noch `hochzeit`+`wein`)
 
 ## 🗑️ ARCHIV (mit `[ARCHIV]` im Titel — depublizieren oder löschen)
 `tech-gadgets, fitness-sport, pet-tierbedarf`
