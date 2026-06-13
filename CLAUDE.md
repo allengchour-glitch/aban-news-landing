@@ -20,6 +20,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    Nicht nach Erlaubnis fragen — der Auftrag steht. Nur die 3 User-Klicks (AGB-Fix, Pixel,
    Kampagne+Budget, §10) kann ich nicht selbst — die klar benennen.
 
+## 🔁 Daueraufträge (FEST)
+- **„update dich immer"** (2026-06-12): Memory nach jeder Charge nachführen.
+- **„schlage immer Verbesserungen vor + lerne daraus" (2026-06-13):** In JEDER Session proaktiv 3–5 konkrete,
+  priorisierte Verbesserungsvorschläge machen (nicht nur abarbeiten), und jede Lehre sofort ins Memory schreiben.
+  Ehrlich priorisieren: der Engpass ist **Reichweite/Conversion (0 Käufe)**, nicht Katalog/Videos — Vorschläge
+  daran ausrichten. Vorschläge-Log: `reports/VERBESSERUNGEN.md`.
+
 ## Kernfakten (Details im Runbook)
 - Shop: **LuxeStyle** (luxestyle.ch), Zugriff über `mcp__…__*`-Shopify-Tools.
 - CJ-API: Credentials + Workflow in `dropship/AUTONOMER-MODUS.md`. Import-Skript:
