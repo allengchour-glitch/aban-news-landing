@@ -97,6 +97,14 @@
   (läuft meist autom. über die Shopify-Verknüpfung) + **Händler-Prüfung** (Pinterest-Review, Tage). Die 103
   gebrandeten WELCOME10-Pins (`pinterest_pins.csv`) bleiben ein **separates Extra** (braucht die API-Standard-
   Freigabe) — für die organische Pinterest-Präsenz aber **nicht nötig**, die kommt über den Shopify-Kanal.
+- **🔧 BLOCKER = DOMAINVERIFIZIERUNG (2026-06-13):** In der Pinterest-Händler-Checkliste (Shopify-App `pinterest-4`)
+  ist **Schritt 1 „Domainverifizierung" = FEHLER**, Schritt 2 grün. Ursache geprüft: `luxestyle.ch` lädt (HTTP 200),
+  aber das **`<meta name="p:domain_verify" content="2a6f78cfbe36db90122bb68faf22887b">` fehlt im `<head>`**.
+  **Fix = dieses Meta-Tag in `layout/theme.liquid` direkt nach `<head>` einfügen** (Theme „Horizon · LuxeStyle +
+  Email-Popup (Claude)", id 187533001089) → dann in der Checkliste „Verifizieren". **⚠️ Geht NICHT per Shopify-MCP:
+  Live-Theme-Writes sind hart geblockt** (`themeFilesUpsert` → „live_theme blocked"). Cloud-Session hat auch keinen
+  Browser. ⇒ **Nur User oder PC-Claude (Brave-Agent)** kann den Tag setzen — ODER DNS-TXT `pinterest-site-
+  verification=2a6f78cfbe36db90122bb68faf22887b` am Domain-Host. Danach Händler-Prüfung starten → Produkt-Pins live.
 
 **2026-06-13 — Luxestyle: Hauptmenü aufgeräumt (live via Shopify `menuUpdate`, `main-menu` id 310224093569):**
 - **„🇨🇭 1. August" aus dem Top-Level ENTFERNT** (saisonal, im Juni fehl am Platz) → als „🇨🇭 Schweizer Edition"
