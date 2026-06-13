@@ -1,0 +1,34 @@
+# LuxeStyle — Pinterest-Cron-Worker (GRATIS für immer, ohne GitHub Actions / GitLab-Minuten)
+# Deploy:  cd workers/pinterest-cron && npx wrangler deploy
+# Vorher:  KV anlegen + Pinterest-Secret(s) setzen (siehe README.md)
+#
+# Warum Worker statt CI? Cloudflare-Cron-Triggers laufen kostenlos im Free-Plan
+# (keine Kreditkarte, kein Minuten-Budget). Genau richtig für "soll gratis immer laufen".
+
+name = "luxestyle-pinterest-cron"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+# Cron: Montag & Donnerstag 09:00 UTC → passt zum "2×/Woche je 5 Pins" (kein Spam).
+[triggers]
+crons = ["0 9 * * 1,4"]
+
+# --- KV-Ledger: merkt sich gepostete Pins (idempotent, ersetzt pinterest_done.txt) ---
+# 1) anlegen:  npx wrangler kv namespace create PIN_KV
+# 2) die ausgegebene id hier eintragen:
+[[kv_namespaces]]
+binding = "PIN_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+[vars]
+# Öffentliche Roh-CSV (Repo ist public) — keine Auth nötig.
+CSV_URL = "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/main/dropship/pinterest_pins.csv"
+LIMIT = "5"          # neue Pins pro Lauf
+MANUAL_ENABLED = "1" # erlaubt manuellen Test-Trigger per ?key=<TRIGGER_KEY>
+
+# Secrets NICHT hier eintragen — per CLI setzen (eine der beiden Varianten):
+#   Variante A (einfach, läuft ~30 T):   npx wrangler secret put PINTEREST_ACCESS_TOKEN
+#   Variante B (empfohlen, läuft nie ab): npx wrangler secret put PINTEREST_REFRESH_TOKEN
+#                                         npx wrangler secret put PINTEREST_APP_ID
+#                                         npx wrangler secret put PINTEREST_APP_SECRET
+#   Optional Test-Schutz:                 npx wrangler secret put TRIGGER_KEY

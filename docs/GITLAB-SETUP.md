@@ -31,6 +31,20 @@ GitLab-Projekt → **Settings → CI/CD → Variables → Add variable** (jeweil
 \* Die 13 offenen Folgen (ep24–ep36) sind **bereits gerendert** (Clips im Repo) → für den
 Upload werden `XI`/`PEXELS` **nicht** gebraucht. Stimme ist im mp4.
 
+### Pinterest (Gratis-Dauertraffic für LuxeStyle) — Job `pinterest-publish`
+| Variable | Wert | Pflicht |
+|---|---|---|
+| `PINTEREST_ACCESS_TOKEN` | Pinterest-Access-Token | eine der beiden Varianten |
+| `PINTEREST_REFRESH_TOKEN` | Pinterest-Refresh-Token | **empfohlene Variante** (läuft nie ab) |
+| `PINTEREST_APP_ID` | Pinterest-App-ID | mit Refresh-Token |
+| `PINTEREST_APP_SECRET` | Pinterest-App-Secret | mit Refresh-Token |
+
+Postet die fertigen Pins aus `dropship/pinterest_pins.csv` (103 Stück) gedrosselt — identisch
+zum gesperrten GitHub-Workflow. **Achtung Pinterest-API-Zugang:** die App muss **„Standard Access"**
+haben; eine Trial-/„Consumer type"-App liefert `401 consumer type not supported` (das ist KEIN
+Token-Fehler). Standard-Access beantragt man im Pinterest-Developer-Portal — bis dahin Pins notfalls
+per Bulk-Upload/Pinterest-Shopify-Kanal posten (siehe `dropship/PINTEREST-SETUP.md`).
+
 ## 3. Status-Speichern (gegen Doppel-Uploads)
 Damit GitLab `uploaded.json`/`video_ids.json` zurückschreibt:
 - GitLab-Projekt → **Settings → Access Tokens → Project Access Token** →
@@ -44,16 +58,21 @@ Wenn du `YT_REFRESH_TOKEN` nicht mehr hast:
    → liefert einen neuen Refresh-Token. (Sag Bescheid, dann gebe ich dir ein kleines
    Hilfsskript dafür.)
 
-## 5. Upload starten
-GitLab-Projekt → **Build → Pipelines → Run pipeline** →
-- Variable **`COUNT`** = `6` setzen (YouTube erlaubt ~6 Uploads/Tag) → Pipeline starten →
-  Job **`aban-upload`** läuft (lädt ep24–ep29 hoch).
-- **Nächster Tag:** nochmal mit `COUNT` = `7` (lädt den Rest ep30–ep36).
+## 5. Jobs starten
+GitLab-Projekt → **Build → Pipelines → Run pipeline** → dann den gewünschten Job starten:
+- **`aban-upload`** (YouTube): Variable **`COUNT`** = `6` (YouTube ~6 Uploads/Tag) → lädt ep24–ep29.
+  Nächster Tag `COUNT=7` für den Rest ep30–ep36.
+- **`pinterest-publish`** (LuxeStyle-Traffic): Variable **`LIMIT`** = `5` (Pins pro Lauf), `DRY=true`
+  für einen Testlauf ohne Posten. Braucht die Pinterest-Variablen aus §2.
 
 ## 6. Optional: automatisch (sparsam!)
-GitLab-Projekt → **Build → Pipeline schedules → New schedule** → z. B. täglich 06:00,
-Variable `COUNT=2`. **Wichtig:** Gratis-Tarif hat ~400 CI-Minuten/Monat → sparsam planen,
-sonst kostet es. Für den toten ABAN-Kanal lohnt Dauerbetrieb kaum — eher manuell.
+GitLab-Projekt → **Build → Pipeline schedules → New schedule**:
+- **Pinterest** (lohnt sich — Dauertraffic): z. B. **Mo & Do 09:00**, Variable `LIMIT=5`.
+  Vorrat reicht für ~10 Wochen, dann „mehr Pins" sagen.
+- **ABAN-YouTube**: für den toten Kanal lohnt Dauerbetrieb kaum → eher manuell.
+
+**Wichtig:** Gratis-Tarif hat ~400 CI-Minuten/Monat → sparsam planen (2 Pinterest-Läufe/Woche
+brauchen nur wenige Minuten), sonst kostet es.
 
 ## Sicherheit
 - Secrets **nur** in GitLab-Variablen (Masked), **nie** in den Code/Chat.

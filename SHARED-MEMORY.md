@@ -39,6 +39,23 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — GRATIS-DAUER-AUTOMATION für Pinterest (Actions-Sperre umgangen):**
+- **Cloudflare-Cron-Worker** `workers/pinterest-cron/` gebaut: postet Pins aus `pinterest_pins.csv`
+  per Cron (Mo & Do 09:00), idempotent via KV. **Gratis für immer, keine Kreditkarte, kein Actions/GitLab-Minuten.**
+  Setup-README dabei. Auch GitLab-CI-Job `pinterest-publish` existiert als Alternative (`.gitlab-ci.yml`).
+- ⚠️ **Einziger Blocker bleibt Pinterest „Standard Access"** (Trial-App → `401 consumer type not supported`).
+  Kein Runner umgeht das — nur User/Pinterest-Review. Bis dahin: Shopify-Pinterest-Kanal (verbunden, postet
+  Produkt-Pins gratis automatisch) + Bulk-Upload. Deployen + Pinterest-Secret setzen kann nur der User.
+
+**2026-06-13 — Trust-Konsistenz Unterkategorien + Status-Report (autonom, live):**
+- **Alle 20 Menü-Unterkategorien** (sub-roecke/bademode/ohrringe/armbaender/ringe/beleuchtung/deko/aroma-diffuser/
+  massage/uhren/bart-rasur/yoga-fitness/trinkflaschen/baby-kids/haustier/reise/kueche + grill-bbq/auto-handy/handy-zubehoer)
+  haben jetzt die **volle Trust-Zeile** wie die Hauptkategorien: *🇨🇭 Gratis-Versand ab CHF 65 · 30 Tage Rückgabe ·
+  TWINT & sichere Bezahlung · –10% mit Code WELCOME10* (batched `collectionUpdate`, 0 userErrors).
+- **Alt-Texte verifiziert:** alle Hero-/Bestseller-Produkte haben deskriptive Alt-Texte (nichts zu tun).
+- **Live-Zahlen:** **1.192 aktive Produkte** (333 cj-real), **0 Bestellungen/30 T**, WELCOME10 ACTIVE bis 31.08.
+- **Neuer Kompakt-Report:** `dropship/SHOP-STATUS-2026-06-13.md` (Schnell-Überblick für jede Session).
+
 **2026-06-13 — Conversion-QA (autonom, live):**
 - **WELCOME10 = ACTIVE** verifiziert (10%, gültig bis 31.08.2026, ab CHF 0.01, 1×/Kunde). Der überall beworbene Code geht.
 - **Conversion-Leak behoben:** `neu-eingetroffen` (✨ Neuheiten 2026, = Startseiten-Sektion + Menü) hatte Regel nur
