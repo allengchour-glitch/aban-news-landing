@@ -73,3 +73,22 @@ Anpassen → Startseite):
 - **Neue Kategorie braucht ein Banner?** `automation/gen_category_banners.py` um einen Eintrag ergänzen → rendern →
   per Staged-Upload+`fileCreate` auf die CDN → `collectionUpdate image.src` setzen (genau wie 2026-06-13 gemacht).
   CDN-Banner-Dateien `cat-*.jpg` (inkl. `-v2`) **NICHT löschen**.
+
+## 🎨 Hintergrund-Entscheidung (2026-06-13, research-basiert)
+**Frage User: einfarbiger Hintergrund — was tun?** Recherche (ecorn/optimonk/brainspate, Premium-Fashion 2025/26):
+**einfarbig hell ist Best Practice** (Produkte im Fokus) — KEINE gemusterte/verlaufende Vollseiten-Textur (wirkt billig).
+→ **Entscheidung: Creme-Basis (`#faf7f2`) behalten.** Tiefe NICHT über Hintergrund-Muster, sondern über
+**Sektions-Rhythmus + editoriale Bild-Bänder**.
+
+**Exakte Customizer-Schritte (Anpassen → Startseite):**
+1. Die 4 Produkt-Raster: `color_scheme` **abwechseln** statt 3× gleich → z. B. scheme-1 / scheme-2 / scheme-1 / scheme-2
+   (hell/etwas-anders im Wechsel = sofort weniger flach).
+2. **1 Taupe-Akzent-Sektion** (USP-Leiste ODER Newsletter) auf ein dunkleres Schema (Taupe `#8b7355`/Ink) → Kontrastpunkt.
+3. **Lifestyle-Band** „Image with text" einfügen (zwischen Bestseller & Neuheiten):
+   **Bild = `https://cdn.shopify.com/s/files/1/0943/6856/3585/files/life_banner.jpg`** (schon gehostet),
+   Button → `/collections/sommer`. (Text ist im Bild eingebrannt → Sektions-Textfelder leer lassen oder klein halten.)
+4. **„Collection list"-Sektion** „Shop nach Kategorie" mit den 6 Hauptkategorien → zeigt die Kategorie-Banner als Kacheln.
+→ Ergebnis: gleiche ruhige Creme-Basis, aber klarer Rhythmus (hell/dunkel-Band/Bild/Raster) = modern, nicht langweilig.
+
+> Live-Theme-Writes sind API-gesperrt → diese 4 Schritte im **Customizer** (User/PC-Claude). Alle Bilder sind fertig
+> gehostet (`cat-*.jpg`, `life_banner.jpg`).
