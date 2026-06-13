@@ -29,3 +29,13 @@ Der User macht den #1-Hebel (TikTok/Meta-Pixel + bezahlte CH-Kampagne) morgen. �
 
 **Lehre dieser Session:** ray-3.2 ≈ $3/Clip (17× teurer als Flash ~$0.17). Immer Flash. Staging-Policy verfällt
 in Sekunden → Bytes parallel hochladen. `luma-api-…`-Keys = Agents-API, `luma-<uuid>` = Dream-Machine.
+
+## 2026-06-13 — Katalogweiter Asian-Schrift-Audit (Gemini Vision)
+- **1198 aktive Produkte** via öffentliche `products.json` gescannt (`automation/asian_script_audit.py`, gemini-2.5-flash).
+- Pass 1: 26 mit asiatischer Schrift/„MADE IN CHINA" markiert. **Pass 2 (streng, nur PROMINENTE Overlays/Banner/
+  Liefersäcke)** → **11 echte Verstösse archiviert** (bulk-update-product-status). 15 Borderline (winzige Etiketten/
+  Hallmarks/Hintergrund/False-Positive wie Reifenkompressor) bewusst BEHALTEN.
+- **Lehre:** 2-Pass-Audit nötig — Pass 1 (asian:true) hat ~58% False/Borderline (Mini-Tags, 925-Hallmark,
+  Hintergrund-Schilder). Erst „prominent overlay/banner/bag"-Filter trennt echte Verstösse sauber.
+- **⚠️ Reaktivieren mit sauberem Bild (statt löschen):** Bali-Maxikleid (4,93★) + Tech-Hero-Box (Smartwatch 5★) —
+  nur Hintergrund-Chinesisch → mit Alternativbild/Luma wieder ACTIVE setzen lohnt sich.
