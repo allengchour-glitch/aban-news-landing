@@ -37,6 +37,30 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-13 (SESSION — ZUERST LESEN: Shopify-MCP VERBUNDEN + komplette Paar-Welt + Gemini-Polish):**
+- **✅ Shopify-MCP war VERBUNDEN** (LuxeStyle/au3j0y-hq/CHF) → Live-Shop-Ops liefen direkt aus der Session
+  (create-product, graphql, collections, menu, staged uploads). CJ-Token kam **vom User per Chat** (nicht in Env);
+  nach Gebrauch jeweils gelöscht. **Branch dieser Session: `claude/dropshipping-session-LehDs` (PR #414).**
+- **💞 Paar-Welt komplett gebaut (18 Produkte, eigene Collection):**
+  - **6 CJ-Schmuck:** Magnet-Herz-Kette, Herzstein-Armband, Titan-Ring, Wolfszahn-Kette, Bären-Ring, Sword-of-Love-Set.
+  - **4 Tassen-Sets** (`Tasse`, CHF 34.90/39.90, SKUs `MUGSET-*`) + **4 Shirts** (`Shirt`, Motiv×Grösse, CHF 29.90,
+    SKUs `SHIRT-*`): King&Queen, Mr&Mrs, Her King&His Queen, Hubby&Wifey. Alle `printful_personalized_product`.
+  - Smart-Collection **`partner-paare`** (Regel TAG=`paar`), publiziert auf alle 6 Kanäle, **im Menü unter Schmuck**.
+- **🔥 Smart-Collection `hype-2026`** (TAG=`hype-2026`, ~35 Produkte) als **erster Menüpunkt** gebaut.
+- **🖼️ GEMINI-POLISH der 8 POD-Produkte LIVE:** flache Illustrations-Mockups → **photorealistische** Fotos.
+  **Wie:** Gemini 2.5 Flash Image (i2i, `gemini-2.5-flash-image` via `generativelanguage…`), Blank-Foto+Design,
+  2 Fotos je Produkt mit PIL/montage nebeneinander, Hauptbild per Shopify-MCP getauscht (createMedia+deleteMedia).
+  **⚠️ GitHub-Actions waren für den User gesperrt (Abuse-Throttle, 422)** → Dispatch ging NICHT; deshalb **in-Session**
+  gefahren mit **User-pasted `GEMINI_API_KEY`** (Key existiert auch als Repo-Secret, nutzen ~40 Workflows). Pipeline
+  trotzdem gebaut+gemerged für später: `automation/pod_couple_mockups.mjs` + `.github/workflows/pod-couple-mockups.yml`
+  (PR #842 → main gemerged). Generatoren/Designs/Mockups in **`pod/couple/`**.
+- **🧹 Polish:** 17 SEO-Metas (Haushalt+Vegan) + 23 Bild-Alt-Texte (Trend+Schmuck) nachgezogen; Sortierung verifiziert.
+- **🔎 CJ-Lehre (wichtig):** CJ-`productNameEn`-Suche ist **lose/OR-basiert** → ignoriert spezifische Begriffe,
+  liefert generische Massen. Das gesuchte **LED-/Touch-Sonne&Mond-Paar-Armband (totwoo-Stil) gibt's NICHT auf CJ**
+  (gebrandete Elektronik). Echte Paar-Geschenke (Tassen/Keychains/Kissen) tauchen via API nicht auf → POD statt CJ.
+- **OFFEN (User):** **Printful-Mapping** der 8 POD-Produkte (Designs `pod/couple/print/*.png` hochladen + SKUs
+  verknüpfen) → sonst Fulfillment manuell. Paar-**Reel** macht die Video-Session.
+
 **📌 2026-06-08 (SESSION-BEFUND — ZUERST LESEN, geteilte Cross-Session-Lehre):**
 - **⚠️ Diese Session hatte 0 Credentials & KEIN Shopify-MCP** (verifiziert per Env-Check: `CJ_EMAIL/CJ_API_KEY`,
   `SHOPIFY_SHOP`, `SHOPIFY_CLIENT_ID/SECRET`, `META_ACCESS_TOKEN`, `TELEGRAM_BOT_TOKEN` **alle leer**). → Kein
