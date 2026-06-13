@@ -285,3 +285,127 @@ sorgfältig wählen · Standort = dein Ort · Zahlung TWINT/Vorkasse · im Text 
   > 🇨🇭 Versand in 7–14 Werktagen · 30 Tage Rückgabe · sichere Zahlung (TWINT/Vorkasse).
   > Mehr Infos & Bestellung: https://luxestyle.ch/products/soja-duftkerzen-4er-set-vintage-rose-lavendel
 - **Produktlink:** https://luxestyle.ch/products/soja-duftkerzen-4er-set-vintage-rose-lavendel
+
+---
+
+## ➕ Nachschub — neue Produkte (Stand 2026-06-13)
+
+### 16. Echtleder-Henkeltasche «Milano» · weiches Rindsleder
+- **Preis:** CHF 99.90 · **Kategorie:** Taschen · **Zustand:** Neu
+- **Beschreibung:**
+  > Echtleder-Henkeltasche «Milano» · weiches Rindsleder. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/echtleder-henkeltasche-milano-weiches-rindsleder
+- **Produktlink:** https://luxestyle.ch/products/echtleder-henkeltasche-milano-weiches-rindsleder
+
+### 17. Premium Schultertasche «Como» · geräumig, Tragegurt
+- **Preis:** CHF 89.90 · **Kategorie:** Taschen · **Zustand:** Neu
+- **Beschreibung:**
+  > Premium Schultertasche «Como» · geräumig, Tragegurt. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/premium-schultertasche-como-geraumig-tragegurt
+- **Produktlink:** https://luxestyle.ch/products/premium-schultertasche-como-geraumig-tragegurt
+
+### 18. Weekender-Reisetasche «Voyage» · faltbar
+- **Preis:** CHF 39.90 · **Kategorie:** Taschen · **Zustand:** Neu
+- **Beschreibung:**
+  > Weekender-Reisetasche «Voyage» · faltbar. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/weekender-reisetasche-voyage-premium-pu-leder-faltbar
+- **Produktlink:** https://luxestyle.ch/products/weekender-reisetasche-voyage-premium-pu-leder-faltbar
+
+### 19. Moissanite-Kette «Aurora» · 925 Silber, GRA-zertifiziert
+- **Preis:** CHF 199.00 · **Kategorie:** Schmuck · **Zustand:** Neu
+- **Beschreibung:**
+  > Moissanite-Kette «Aurora» · 925 Silber, GRA-zertifiziert. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/moissanite-kette-aurora-925-silber-gra-zertifiziert
+- **Produktlink:** https://luxestyle.ch/products/moissanite-kette-aurora-925-silber-gra-zertifiziert
+
+### 20. Süsswasserperlen-Ohrringe «Perla» · 925 Silber
+- **Preis:** CHF 89.90 · **Kategorie:** Schmuck · **Zustand:** Neu
+- **Beschreibung:**
+  > Süsswasserperlen-Ohrringe «Perla» · 925 Silber. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/susswasserperlen-ohrringe-perla-925-silber
+- **Produktlink:** https://luxestyle.ch/products/susswasserperlen-ohrringe-perla-925-silber
+
+### 21. Mesh-Armband «Maille» · S925 Silber
+- **Preis:** CHF 109.90 · **Kategorie:** Schmuck · **Zustand:** Neu
+- **Beschreibung:**
+  > Mesh-Armband «Maille» · S925 Silber. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/mesh-armband-maille-s925-silber-federleicht
+- **Produktlink:** https://luxestyle.ch/products/mesh-armband-maille-s925-silber-federleicht
+
+### 22. 925-Silber Ring «Fleur» · filigrane Blüte
+- **Preis:** CHF 59.90 · **Kategorie:** Schmuck · **Zustand:** Neu
+- **Beschreibung:**
+  > 925-Silber Ring «Fleur» · filigrane Blüte. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/925-silber-ring-fleur-filigrane-blute
+- **Produktlink:** https://luxestyle.ch/products/925-silber-ring-fleur-filigrane-blute
+
+### 23. Herren Sport-Sneaker «Velocità» · Mesh, Wide-Toe
+- **Preis:** CHF 54.90 · **Kategorie:** Schuhe · **Zustand:** Neu
+- **Beschreibung:**
+  > Herren Sport-Sneaker «Velocità» · Mesh, Wide-Toe. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/herren-sport-sneaker-velocita-mesh-wide-toe
+- **Produktlink:** https://luxestyle.ch/products/herren-sport-sneaker-velocita-mesh-wide-toe
+
+### 24. Herren Leder-Sandalen «Adriano» · Vollnarbenleder
+- **Preis:** CHF 49.90 · **Kategorie:** Schuhe · **Zustand:** Neu
+- **Beschreibung:**
+  > Herren Leder-Sandalen «Adriano» · Vollnarbenleder. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/herren-leder-sandalen-adriano-vollnarbenleder
+- **Produktlink:** https://luxestyle.ch/products/herren-leder-sandalen-adriano-vollnarbenleder
+
+### 25. Damen Sommer-Sandalen «Lido» · geschlossene Spitze
+- **Preis:** CHF 32.90 · **Kategorie:** Schuhe · **Zustand:** Neu
+- **Beschreibung:**
+  > Damen Sommer-Sandalen «Lido» · geschlossene Spitze. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/damen-sommer-sandalen-lido-geschlossene-spitze
+- **Produktlink:** https://luxestyle.ch/products/damen-sommer-sandalen-lido-geschlossene-spitze
+
+### 26. Polka-Dot Wickel-Rock «Dolce» · High-Waist
+- **Preis:** CHF 34.90 · **Kategorie:** Damenmode · **Zustand:** Neu
+- **Beschreibung:**
+  > Polka-Dot Wickel-Rock «Dolce» · High-Waist. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/polka-dot-wickel-rock-dolce-high-waist-asymmetrisch
+- **Produktlink:** https://luxestyle.ch/products/polka-dot-wickel-rock-dolce-high-waist-asymmetrisch
+
+### 27. Retro Plattenspieler · Bluetooth-Lautsprecher
+- **Preis:** CHF 24.90 · **Kategorie:** Elektronik · **Zustand:** Neu
+- **Beschreibung:**
+  > Retro Plattenspieler · Bluetooth-Lautsprecher. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/retro-plattenspieler-bluetooth-lautsprecher-vinyl
+- **Produktlink:** https://luxestyle.ch/products/retro-plattenspieler-bluetooth-lautsprecher-vinyl
+
+### 28. RGB-Wandlampe «Halo» · kabellos, ohne Bohren
+- **Preis:** CHF 26.90 · **Kategorie:** Wohnen & Deko · **Zustand:** Neu
+- **Beschreibung:**
+  > RGB-Wandlampe «Halo» · kabellos, ohne Bohren. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/rgb-wandlampe-halo-kabellos-fernbedienung-ohne-bohren
+- **Produktlink:** https://luxestyle.ch/products/rgb-wandlampe-halo-kabellos-fernbedienung-ohne-bohren
+
+### 29. Camping-Stuhl «Sunshade» · faltbar mit Sonnendach
+- **Preis:** CHF 129.90 · **Kategorie:** Garten & Outdoor · **Zustand:** Neu
+- **Beschreibung:**
+  > Camping-Stuhl «Sunshade» · faltbar mit Sonnendach. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/camping-stuhl-sunshade-faltbar-mit-sonnendach-getrankehalter
+- **Produktlink:** https://luxestyle.ch/products/camping-stuhl-sunshade-faltbar-mit-sonnendach-getrankehalter
+
+### 30. Burger-Smasher & Grill-Helfer-Set · Edelstahl
+- **Preis:** CHF 29.90 · **Kategorie:** Grill & BBQ · **Zustand:** Neu
+- **Beschreibung:**
+  > Burger-Smasher & Grill-Helfer-Set · Edelstahl. Neuware, originalverpackt – von LuxeStyle.ch, deinem Schweizer Online-Shop.
+  > 🇨🇭 Versand 7–14 Werktage · 30 Tage Rückgabe · TWINT/Vorkasse.
+  > Mehr & bestellen: https://luxestyle.ch/products/burger-smasher-grill-helfer-set-edelstahl-patty-presse-wender-haube
+- **Produktlink:** https://luxestyle.ch/products/burger-smasher-grill-helfer-set-edelstahl-patty-presse-wender-haube
