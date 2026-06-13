@@ -131,6 +131,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     <button data-v="dash" class="on">🏠 Übersicht</button>
     <button data-v="rechnung">🧾 Rechnung</button>
     <button data-v="angebot">📄 Angebot</button>
+    <button data-v="liefer">📦 Lieferschein</button>
     <button data-v="offen">📌 Offene Posten</button>
     <button data-v="kunden">👥 Kunden</button>
     <button data-v="zeit">⏱️ Zeit</button>
@@ -182,8 +183,9 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       <table class="items" id="r_items"><thead><tr><th style="width:46%">Beschreibung</th><th class="num" style="width:13%">Menge</th><th class="num" style="width:20%">Einzelpreis</th><th class="num" style="width:15%">Summe</th><th></th></tr></thead><tbody></tbody></table>
       <div class="btnrow"><button class="btn ghost sm" id="r_add">+ Position</button><select id="r_katpick" class="katsel" style="max-width:230px"><option value="">+ aus Katalog…</option></select></div>
       <div class="row" style="margin-top:14px">
-        <div class="fld" style="max-width:240px"><label>MwSt-Satz</label><select id="r_vat" class="vatsel"></select></div>
-        <div class="fld" style="max-width:240px"><label>Zahlungsziel (Tage)</label><input id="r_ziel" value="14" inputmode="numeric"></div>
+        <div class="fld" style="max-width:200px"><label>MwSt-Satz</label><select id="r_vat" class="vatsel"></select></div>
+        <div class="fld" style="max-width:160px"><label>Zahlungsziel (Tage)</label><input id="r_ziel" value="14" inputmode="numeric"></div>
+        <div class="fld" style="max-width:160px"><label>Sprache (PDF)</label><select id="r_lang"><option value="de">Deutsch</option><option value="fr">Français</option><option value="it">Italiano</option><option value="en">English</option></select></div>
       </div>
       <div class="totbox"><div>Netto</div><div class="num" id="r_net">0,00</div><div id="r_vatlabel">zzgl. MwSt</div><div class="num" id="r_vatval">0,00</div><div class="g">Gesamt</div><div class="num g" id="r_gross">0,00</div></div>
       <div class="btnrow" style="margin-top:16px">
@@ -229,6 +231,23 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
         <button class="btn ghost" id="a_toinv">➡️ In Rechnung umwandeln</button>
         <button class="btn ghost" id="a_clear">Leeren</button>
       </div>
+    </div>
+  </section>
+
+  <!-- LIEFERSCHEIN -->
+  <section class="view" id="v-liefer">
+    <h1>Lieferschein</h1>
+    <p class="sub">Artikel/Leistungen ohne Preise — zum Mitliefern oder als Leistungsnachweis.</p>
+    <div class="panel">
+      <div class="row">
+        <div class="fld"><label>Lieferschein-Nr.</label><input id="l_nr" placeholder="L-2026-001"></div>
+        <div class="fld"><label>Datum</label><input id="l_datum" type="date"></div>
+      </div>
+      <div class="row"><div class="fld"><label>Kunde aus Adressbuch</label><select id="l_pick"><option value="">— frei eingeben —</option></select></div></div>
+      <div class="fld"><label>Kunde (Name &amp; Anschrift)</label><textarea id="l_kunde" rows="3"></textarea></div>
+      <table class="items" id="l_items"><thead><tr><th style="width:72%">Beschreibung</th><th class="num" style="width:20%">Menge</th><th></th></tr></thead><tbody></tbody></table>
+      <div class="btnrow"><button class="btn ghost sm" id="l_add">+ Position</button></div>
+      <div class="btnrow" style="margin-top:16px"><button class="btn" id="l_print">🖨️ Drucken / PDF</button><button class="btn ghost" id="l_clear">Leeren</button></div>
     </div>
   </section>
 
@@ -702,7 +721,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   function saveClients(a){set("abanCockpit_clients",a)}
   function refreshPickers(){
     var c=clients();var opt='<option value="">— frei eingeben —</option>'+c.map(function(x,i){return '<option value="'+i+'">'+esc(x.name)+'</option>'}).join("");
-    ["r_pick","a_pick"].forEach(function(id){var el=$("#"+id);if(el)el.innerHTML=opt});
+    ["r_pick","a_pick","l_pick"].forEach(function(id){var el=$("#"+id);if(el)el.innerHTML=opt});
     var mh=$("#mh_pick");if(mh)mh.innerHTML='<option value="">— frei —</option>'+c.map(function(x,i){return '<option value="'+i+'">'+esc(x.name)+'</option>'}).join("");
   }
   function clientBlock(c){return (c.name||"")+(c.adresse?"\n"+c.adresse:"")}
@@ -745,22 +764,24 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   }
   var R=setupDoc("r"),A=setupDoc("a");
 
+  var L18N={de:{desc:"Beschreibung",qty:"Menge",price:"Einzelpreis",sum:"Summe",net:"Netto",vatL:"MwSt",gross:"Gesamt",iban:"IBAN",taxno:"Steuer-/MwSt-Nr.",qr:"Zahlbar per QR-Code (scan & pay)"},fr:{desc:"Désignation",qty:"Quantité",price:"Prix unitaire",sum:"Total",net:"Net",vatL:"TVA",gross:"Total",iban:"IBAN",taxno:"N° TVA",qr:"Payable par QR-code"},it:{desc:"Descrizione",qty:"Quantità",price:"Prezzo un.",sum:"Totale",net:"Netto",vatL:"IVA",gross:"Totale",iban:"IBAN",taxno:"P. IVA",qr:"Pagabile con codice QR"},en:{desc:"Description",qty:"Qty",price:"Unit price",sum:"Amount",net:"Net",vatL:"VAT",gross:"Total",iban:"IBAN",taxno:"VAT no.",qr:"Payable by QR code"}};
   function printDoc(opts){
-    var s=stamm(),rows=opts.items.map(function(it){var q=n(it.qty)||0,pr=n(it.price)||0;return '<tr><td>'+esc(it.desc)+'</td><td class="n">'+nf(q)+'</td><td class="n">'+nf(pr)+'</td><td class="n">'+nf(q*pr)+'</td></tr>'}).join("");
-    var foot=opts.foot||"";
-    var html='<div class="pi-head"><div>'+(s.logo?'<img src="'+s.logo+'" alt="" style="max-height:64px;margin-bottom:8px"><br>':'')+'<strong>'+esc(s.firma||"")+'</strong><br>'+nl(s.adresse||"")+'<br>'+esc(s.email||"")+(s.tel?" · "+esc(s.tel):"")+'</div><div style="text-align:right">'+esc(opts.title)+(opts.nr?" "+esc(opts.nr):"")+'<br>'+(opts.datum?de(parseDate(opts.datum)):"")+'</div></div>'+
-      '<div>'+nl(opts.kunde||"")+'</div><h2>'+esc(opts.title)+(opts.nr?" "+esc(opts.nr):"")+'</h2>'+(opts.meta?'<div>'+esc(opts.meta)+'</div>':'')+
-      '<table><thead><tr><th>Beschreibung</th><th class="n">Menge</th><th class="n">Einzelpreis</th><th class="n">Summe</th></tr></thead><tbody>'+rows+'</tbody></table>'+
-      '<div class="pi-tot">Netto: '+nf(opts.tot.net)+'<br>'+(opts.tot.rate>0?("zzgl. "+String(opts.tot.rate).replace(".",",")+" % MwSt: "+nf(opts.tot.vat)+"<br>"):"")+'<strong>Gesamt: '+nf(opts.tot.gross)+'</strong></div>'+
-      (opts.qr?'<div style="clear:both;margin-top:26px">'+opts.qr+'<div style="font-size:11px;color:#444;margin-top:4px">Zahlbar per QR-Code (scan &amp; pay)</div></div>':'')+
-      '<div class="pi-foot">'+foot+(s.iban?' &nbsp; IBAN: '+esc(s.iban):'')+(s.steuer?' &nbsp; Steuer-/MwSt-Nr.: '+esc(s.steuer):'')+'</div>';
+    var s=stamm(),L=L18N[opts.lang||"de"]||L18N.de,foot=opts.foot||"";
+    var head='<div class="pi-head"><div>'+(s.logo?'<img src="'+s.logo+'" alt="" style="max-height:64px;margin-bottom:8px"><br>':'')+'<strong>'+esc(s.firma||"")+'</strong><br>'+nl(s.adresse||"")+'<br>'+esc(s.email||"")+(s.tel?" · "+esc(s.tel):"")+'</div><div style="text-align:right">'+esc(opts.title)+(opts.nr?" "+esc(opts.nr):"")+'<br>'+(opts.datum?de(parseDate(opts.datum)):"")+'</div></div><div>'+nl(opts.kunde||"")+'</div><h2>'+esc(opts.title)+(opts.nr?" "+esc(opts.nr):"")+'</h2>'+(opts.meta?'<div>'+esc(opts.meta)+'</div>':'');
+    if(opts.noPrice){$("#print-doc").innerHTML=head+'<table><thead><tr><th>'+L.desc+'</th><th class="n">'+L.qty+'</th></tr></thead><tbody>'+opts.items.map(function(it){return '<tr><td>'+esc(it.desc)+'</td><td class="n">'+nf(n(it.qty)||0)+'</td></tr>'}).join("")+'</tbody></table><div class="pi-foot">'+foot+(s.steuer?' &nbsp; '+L.taxno+': '+esc(s.steuer):'')+'</div>';window.print();return}
+    var rows=opts.items.map(function(it){var q=n(it.qty)||0,pr=n(it.price)||0;return '<tr><td>'+esc(it.desc)+'</td><td class="n">'+nf(q)+'</td><td class="n">'+nf(pr)+'</td><td class="n">'+nf(q*pr)+'</td></tr>'}).join("");
+    var html=head+'<table><thead><tr><th>'+L.desc+'</th><th class="n">'+L.qty+'</th><th class="n">'+L.price+'</th><th class="n">'+L.sum+'</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+      '<div class="pi-tot">'+L.net+': '+nf(opts.tot.net)+'<br>'+(opts.tot.rate>0?("+ "+String(opts.tot.rate).replace(".",",")+" % "+L.vatL+": "+nf(opts.tot.vat)+"<br>"):"")+'<strong>'+L.gross+': '+nf(opts.tot.gross)+'</strong></div>'+
+      (opts.qr?'<div style="clear:both;margin-top:26px">'+opts.qr+'<div style="font-size:11px;color:#444;margin-top:4px">'+L.qr+'</div></div>':'')+
+      '<div class="pi-foot">'+foot+(s.iban?' &nbsp; '+L.iban+': '+esc(s.iban):'')+(s.steuer?' &nbsp; '+L.taxno+': '+esc(s.steuer):'')+'</div>';
     $("#print-doc").innerHTML=html;window.print()}
 
   /* Rechnung-spezifisch */
   $("#r_clear").addEventListener("click",function(){R.setItems([{}]);["r_nr","r_kunde","r_leistung"].forEach(function(id){$("#"+id).value=""});$("#r_pick").value="";toast("Geleert")});
   $("#r_print").addEventListener("click",function(){var t=R.calc(),d={nr:$("#r_nr").value,datum:$("#r_datum").value};
-    var foot="";if(d.datum){var fd=addDays(parseDate(d.datum),parseInt($("#r_ziel").value,10)||0);if(!isNaN(fd))foot="Zahlbar bis "+de(fd)+". Vielen Dank.";}
-    printDoc({title:"Rechnung",nr:d.nr,datum:d.datum,kunde:$("#r_kunde").value,meta:$("#r_leistung").value?("Leistungszeitraum: "+$("#r_leistung").value):"",items:R.items(),tot:t,foot:foot,qr:rQrSvg})});
+    var lang=$("#r_lang")?$("#r_lang").value:"de",titles={de:"Rechnung",fr:"Facture",it:"Fattura",en:"Invoice"},payL={de:"Zahlbar bis",fr:"Payable jusqu'au",it:"Pagabile entro",en:"Payable by"},metaL={de:"Leistungszeitraum",fr:"Période",it:"Periodo",en:"Service period"};
+    var foot="";if(d.datum){var fd=addDays(parseDate(d.datum),parseInt($("#r_ziel").value,10)||0);if(!isNaN(fd))foot=payL[lang]+" "+de(fd)+".";}
+    printDoc({title:titles[lang]||"Rechnung",nr:d.nr,datum:d.datum,kunde:$("#r_kunde").value,meta:$("#r_leistung").value?(metaL[lang]+": "+$("#r_leistung").value):"",items:R.items(),tot:t,foot:foot,qr:rQrSvg,lang:lang})});
   function invData(){return {nr:$("#r_nr").value,datum:$("#r_datum").value,leistung:$("#r_leistung").value,kunde:$("#r_kunde").value,vat:$("#r_vat").value,ziel:$("#r_ziel").value,items:R.items()}}
   function loadInv(d){$("#r_nr").value=d.nr||"";$("#r_datum").value=d.datum||isoToday();$("#r_leistung").value=d.leistung||"";$("#r_kunde").value=d.kunde||"";$("#r_vat").value=d.vat||"19";$("#r_ziel").value=d.ziel||"14";R.setItems(d.items)}
   function drafts(){return get("abanCockpit_drafts",[])}
@@ -1277,6 +1298,18 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   if($("#ar_add"))$("#ar_add").addEventListener("click",function(){var d=$("#ar_desc").value.trim();if(!d){toast("Bitte Bezeichnung eingeben");return}var a=artikel();a.unshift({desc:d,price:$("#ar_price").value});saveArtikel(a);$("#ar_desc").value="";$("#ar_price").value="";renderArtikel();refreshKat();toast("Im Katalog gespeichert ✓")});
   function bindKat(pickId,DOC){var el=$("#"+pickId);if(!el)return;el.addEventListener("change",function(){if(this.value==="")return;var x=artikel()[+this.value];if(x)DOC.addItem(x.desc,1,x.price);this.value="";toast("Position eingefügt ✓")})}
   bindKat("r_katpick",R);bindKat("a_katpick",A);
+
+  /* ===== Lieferschein ===== */
+  function setupLieferschein(){var tb=$("#l_items tbody");
+    function addItem(desc,qty){var tr=document.createElement("tr");tr.innerHTML='<td><input class="i_desc" placeholder="Artikel / Leistung"></td><td><input class="i_qty num" inputmode="decimal" value="1"></td><td><button class="delrow">×</button></td>';tb.appendChild(tr);if(desc!=null)$(".i_desc",tr).value=desc;if(qty!=null)$(".i_qty",tr).value=qty;$(".delrow",tr).addEventListener("click",function(){tr.remove()})}
+    function items(){return $$("#l_items tbody tr").map(function(tr){return {desc:$(".i_desc",tr).value,qty:$(".i_qty",tr).value}})}
+    function setItems(arr){tb.innerHTML="";(arr&&arr.length?arr:[{}]).forEach(function(it){addItem(it.desc,it.qty)})}
+    if($("#l_add"))$("#l_add").addEventListener("click",function(){addItem()});
+    return {addItem:addItem,items:items,setItems:setItems}}
+  var Lf=$("#l_items")?setupLieferschein():null;
+  if(Lf){Lf.setItems([{}]);bindPicker("l_pick","l_kunde");if($("#l_datum"))$("#l_datum").value=isoToday();}
+  if($("#l_print"))$("#l_print").addEventListener("click",function(){printDoc({title:"Lieferschein",nr:$("#l_nr").value,datum:$("#l_datum").value,kunde:$("#l_kunde").value,items:Lf.items(),noPrice:true,foot:"Bitte Erhalt bestätigen."})});
+  if($("#l_clear"))$("#l_clear").addEventListener("click",function(){Lf.setItems([{}]);["l_nr","l_kunde"].forEach(function(id){$("#"+id).value=""});if($("#l_pick"))$("#l_pick").value="";toast("Geleert")});
 
   /* ===== Finanz-Suite ===== */
   $$("#f_tabs button").forEach(function(b){b.addEventListener("click",function(){$$("#f_tabs button").forEach(function(x){x.classList.toggle("on",x===b)});$$("#v-finanz .lsec").forEach(function(s){s.classList.toggle("on",s.id==="fs-"+b.dataset.f)})})});
