@@ -1,5 +1,19 @@
 # 📦 CJ-Import-Log — LuxeStyle CH
 
+## 2026-06-13 — Nachfrage-getriebener Import (autonom, „suche was Leute wollen, hole Produkte")
+- **Trend-Recherche Juni 2026** (Web + Kanal-Daten): praktische Sommer-/Home-Gadgets („TikTok made me buy it" =
+  Nutzen > Spielerei), Sommer-Kühlung, Bad/Küche. Deckt sich mit Kanal-Gewinner (Smart-Diffuser 1107 V = Gadget-Wow).
+- **Suche:** `dropship/cj_trend_search.mjs` (gecachter CJ-Token gültig bis 21.06., Playwright). 18 Kandidaten → **jedes
+  Bild angesehen** (Asiaten-Regel). Viele Treffer = Marketing-Collagen/Text-Overlay-Hauptbilder → verworfen.
+- **Doppel-Check live:** Vakuumierer existiert schon 2× aktiv → **NICHT** importiert (Dublette vermieden).
+- **+2 saubere Produkte ACTIVE, alle 6 Kanäle, Bilder READY:**
+  - 🌀 **Faltbarer Mini-Handventilator «Brisa»** (3-in-1, USB-Akku) — pid 2065634265567567873, $14.51 → **CHF 29.90**,
+    Shopify-ID 15430435209601. Bild: sauberer Maß-Shot (englische cm/inch, kein Asiatisch).
+  - ⛺ **Camping-Deckenventilator «Nomad»** (2-in-1 LED-Laterne, 7200mAh, Fernbedienung) — pid 2065692036630630402,
+    $21.99 → **CHF 49.90**, Shopify-ID 15430435242369. Bilder: Lifestyle (West-Paar/See) + englischer Spec-Shot.
+- **Lehre:** Sommer-Fan-Kategorie war Lücke (nur Nacken-/Sprüh-Ventilator aktiv). CJ-Fan-Hauptbilder sind oft
+  englische Collagen → fast immer ein sauberes Lifestyle-/Maß-Alt-Bild im Set vorhanden (img2 statt img0 prüfen).
+
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).
 > Stand: 2026-05-31 — **65 Produkte LIVE** + 6 Hero-Produkte mit Premium-Copy.
