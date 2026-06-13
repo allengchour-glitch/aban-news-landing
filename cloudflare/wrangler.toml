@@ -1,0 +1,32 @@
+name = "luxestyle-autopilot"
+main = "src/worker.js"
+compatibility_date = "2026-06-01"
+
+# --- Cron Triggers (UTC) — laufen unabhängig von GitHub Actions ---
+#   04:30 → ENHANCE (1 Bild veredeln, in Queue legen)
+#   09:00 + 17:00 → POST (nächsten Queue-Eintrag an IG/FB/Threads)
+[triggers]
+crons = ["30 4 * * *", "0 9 * * *", "0 17 * * *"]
+
+# --- R2: speichert + liefert die veredelten JPGs öffentlich aus ---
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "luxestyle-autopilot"
+
+# --- KV: Rotations-Pointer + Post-Queue ---
+[[kv_namespaces]]
+binding = "STATE"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"   # via: wrangler kv namespace create STATE
+
+# --- Nicht-geheime Konfiguration ---
+[vars]
+PUBLIC_BASE = "https://luxestyle-autopilot.DEIN-SUBDOMAIN.workers.dev"  # nach 1. Deploy auf echte URL setzen
+SITE_URL = "https://luxestyle.ch"
+GEMINI_IMAGE_MODEL = "gemini-2.5-flash-image"
+META_GRAPH_VERSION = "v21.0"
+ENHANCE_BATCH = "1"
+SKIP_THREADS = "0"
+
+# Secrets NICHT hier — per `wrangler secret put <NAME>` setzen:
+#   GEMINI_API_KEY  IG_USER_ID  IG_ACCESS_TOKEN  FB_PAGE_ID  FB_PAGE_ACCESS_TOKEN
+#   THREADS_ACCESS_TOKEN (optional)  RUN_KEY (für manuellen /run-Test)
