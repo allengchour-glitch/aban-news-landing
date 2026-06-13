@@ -15,7 +15,7 @@ name: CJ Autopilot (VOLL-AUTO Produkt-Sourcing)
 on:
   schedule:
     - cron: '0 6 * * *'    # täglich 06:00 UTC
-    - cron: '0 16 * * *'   # täglich 16:00 UTC (2×/Tag → ~12 Produkte/Tag)
+    # - cron: '0 16 * * *'   # PAUSIERT 2026-06-13 (GitHub-Last + 0 Verkaeufe → kein 2. Import/Tag)
   workflow_dispatch:
     inputs:
       max:

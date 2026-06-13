@@ -5,7 +5,7 @@ name: Telegram Steuerbot
 
 on:
   schedule:
-    - cron: '0 */3 * * *'   # alle 3 Std nach Befehlen schauen (gedrosselt; sofort via Dispatch)
+    - cron: '0 7 * * *'   # 1x/Tag (Cron-Diaet 2026-06-13, GitHub-Last); sofort via Dispatch
   workflow_dispatch:
 
 permissions:
