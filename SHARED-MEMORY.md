@@ -39,6 +39,34 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+
+**2026-06-13 — ⚠️⚠️ GITHUB ACTIONS ACCOUNT-WEIT GESPERRT (FÜR ALLE SESSIONS WICHTIG):**
+- GitHub hat **Actions account-weit deaktiviert** („Actions has been disabled for this user") — Grund: **zu hohe
+  Nutzung** (158 Workflows, ~60 mit Cron = Fair-Use-Flag). Letzter Lauf 12.06. 15:09 UTC. **NICHTS läuft mehr
+  automatisch** (Stats, Autopiloten, Deploys, Social-Post, Uploads). Repo ist public → **kein Geld-Problem**, nur Last.
+- **🔧 GEGENMASSNAHME (gemerged auf `main`): CRON-NULLDIÄT (PR #828)** — **ALLE ~60 `schedule:`-Blöcke auskommentiert,
+  0 aktive Crons.** `workflow_dispatch` bleibt überall → alles **manuell** startbar. **❗REGEL FÜR ALLE SESSIONS:
+  Crons NICHT massenhaft wieder einkommentieren** — sonst sperrt GitHub erneut. Nur **einzeln, sparsam** (max. 1×/Tag)
+  reaktivieren, wenn wirklich nötig und Actions stabil ist.
+- **Entsperren kann nur der User** (GitHub-Support/Sperr-Mail beantworten „Nutzung reduziert, 0 Crons" oder Cooldown abwarten).
+- **🦊 GRATIS-ERSATZ vorbereitet (PR #836):** `.gitlab-ci.yml` + `docs/GITLAB-SETUP.md` → ABAN-/Jobs auf **GitLab.com CI**
+  (gratis Minuten). Braucht Secret-WERTE in GitLab-Variablen (GitHub zeigt Secrets nicht an → ggf. YT-Token neu erzeugen).
+- **⏱️ TIMER-TOOLS auf `main` (nützlich für alle):** `pr-merge-timer.yml` (PR verzögert mergen — **mergt mit Runner-Token,
+  umgeht API-Rate-Limit!**), `delay-dispatch.yml` (beliebigen Workflow verzögert starten). Doku: `docs/TIMER-TOOLS.md`.
+  ⚠️ Funktionieren erst wieder, wenn Actions entsperrt ist. PRs derzeit per **GitHub-API mergen** (`merge_pull_request`).
+- **🔊 ElevenLabs schonen (User-Auftrag „nicht mehr viel Filme"):** `daily-tool-reel.yml` + `aban-youtube.yml`-Cron
+  pausiert (waren Haupt-Verbraucher). Guthaben-Check-Tool `elevenlabs-check.yml` da (braucht Key-Recht „User Read").
+
+**2026-06-13 — 📉 DATEN-ANALYSE (ehrlicher Stand, für Strategie aller Sessions):**
+- **ABAN Files YouTube = TOT/FLACH:** ~2–3 Aufrufe/TAG über alle 22 Videos, Top-Video 250 eingefroren, 19/22 mit 0 neuen
+  Views in 3 Tagen. Dunkler KI-Conspiracy-Stil floppt messbar (s. `video-prototypes/aban-files/WINNER-ANALYSE.md`).
+  → **Nicht weiter investieren.** ep24–ep36 (13 Folgen) sind gerendert, Upload offen (hängt an Actions-Sperre).
+  Tägl. Report: `reports/aban-yt-stats-*.md` (jetzt versioniert).
+- **LuxeStyle 30-Tage-Daten (Shopify-Analytics):** **2.994 Sessions, 0,37 % Add-to-Cart (11), 7 Checkout, 0 Käufe,
+  0,0 % Conversion, CHF 0.** Traffic: direct 60 % (Bot-Muster), social 38 % (low-intent), search 1,6 %. **Engpass =
+  Traffic-QUALITÄT/Kaufabsicht, NICHT der Shop.** Mehr Auto-Posts/Produkte/Videos = nachweislich **0-Hebel**.
+  Einziger echter Hebel = die 3 User-Klicks (TikTok-Pixel + Conversion-Kampagne + AGB-Domain). Pinterest (intent-stark) als Gratis-Option.
+
 **2026-06-13 — Pinterest API-Status (Token-Versuch, noch nicht live):**
 - User hat Pinterest-Dev-App **„Luxstyle CH" (App-ID 1580519)** erstellt + Token gesetzt. **App-Secret „nicht
   verfügbar – trial-Zugriff ausstehend"** (für unseren Flow egal). Ein **Produktion-begrenzt-Token** (`pina_…`,
