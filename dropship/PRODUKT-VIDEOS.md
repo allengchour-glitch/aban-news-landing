@@ -69,6 +69,21 @@ Wellen bis das Guthaben leer war (Luma: HTTP 400 „Insufficient credits"):
 - **Für künftige Läufe:** Guthaben in Luma aufladen → dann weitere Wellen oder hands-free über
   `luma_product_video.mjs` (mit `SHOPIFY_CLIENT_ID/SECRET` als Env, da GitHub-Secrets in der Cloud-Session nicht sichtbar).
 
+### ⚠️ ZWEI Luma-Konten / ZWEI APIs (wichtig, 2026-06-13)
+Der User hat **zwei** Luma-Zugänge — nicht verwechseln:
+1. **Alt „Dream Machine API"** — Key-Format `luma-<uuid>-<uuid>`, Basis `https://api.lumalabs.ai/dream-machine/v1`,
+   Modell `ray-flash-2` (billig), `GET /credits` vorhanden, Concurrency ~10. Dieses Konto war das mit den ersten
+   ~10 CHF → **jetzt $0** (57 Clips verbraucht).
+2. **Neu „Agents API"** (platform.lumalabs.ai, Konto „alleng chour") — Key-Format **`luma-api-…`**, Basis
+   **`https://agents.lumalabs.ai/v1`**, Bearer-Auth, Modell **nur `ray-3.2`** (Premium, teurer → weniger Clips/$),
+   **Concurrency-Limit 4** (strenger!), **kein** `/credits`-Endpoint. Doku: https://docs.agents.lumalabs.ai
+   - **Generate:** `POST /v1/generations` Body `{"model":"ray-3.2","type":"video","prompt":"…","aspect_ratio":"9:16",
+     "video":{"resolution":"720p","duration":"5s","start_frame":{"url":"<bild>"}}}` → `{id,state:"queued"}`.
+   - **Poll:** `GET /v1/generations/{id}` → `state:"completed"`, MP4 in **`output[0].url`** (S3, ~1 h gültig → sofort laden).
+   - **Stopp-Signale:** 402/„Insufficient credits" = leer; „Concurrent generation limit reached (4)" / „Rate limit exceeded" = nur warten.
+   - Skripte: `/tmp/genag.py`, `/tmp/pollag.sh`, `/tmp/runag.py` (Driver mit Concurrency-3, Stopp bei Credit).
+   - **`luma-api-…`-Keys gehen NICHT auf die Dream-Machine-API** (gibt „Not authenticated") und umgekehrt.
+
 ## Aktivierung (1 Schritt je Weg)
 - **C:** `LUMA_API_KEY` als GitHub-Secret (oder transient in die Session geben) → ich starte den Lauf.
 - **A:** PC-Claude „AE-Videos holen" sagen (Brave läuft mit Port 9222).
