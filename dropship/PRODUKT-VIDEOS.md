@@ -44,6 +44,18 @@ Premium-Kamera, kein Text/Logo). Erzeugt aus dem Produkt-Hauptbild, hochgeladen 
 Funktioniert komplett aus der Cloud (Luma-Key + MCP-Staging + curl), kein Shopify-Admin-Token nötig.
 - **Luma-Key (funktionierend):** Format `luma-<uuid>-<uuid>` (NICHT der `luma-api-…`). Nur transient nutzen.
 
+## ✅ Lauf 2026-06-13 (Forts.) — Conversion-Gewinner bekommen Videos (Budget ~10 CHF ausschöpfen)
+Zusätzlich zu den 16 neuen Produkten haben jetzt auch die **bewerteten/starken Katalog-Produkte** Videos
+(Jade-Gua-Sha, Gala, Glow, Cloud, Lino, Marco, Roma, FlexHold, Onyx, Costa, Stella, Porto, Serpent, Amalfi, Coeur …).
+- **Luma-Limit gelernt:** **max. ~10 gleichzeitige Jobs** (HTTP 429 „concurrent active jobs") → in Wellen à 8–10
+  generieren, abwarten, anhängen, wiederholen. Credit (HTTP 402/„insufficient") ist der eigentliche Stopp.
+- **Cloud-Attach-Rezept (ohne Admin-Token):** MCP `stagedUploadsCreate(VIDEO)` → `curl -F`-POST der Bytes an GCS
+  (Felder: GoogleAccessId,key,policy,signature,file — file ZULETZT) → MCP `productCreateMedia(VIDEO, originalSource=resourceUrl)`.
+- **Poll-Falle:** Luma GET-by-id per Python-urllib gibt teils 403 (WAF) → mit `curl -A "Mozilla/5.0"` pollen.
+- **Hands-free für den ganzen Katalog:** `SHOPIFY_CLIENT_ID`/`SHOPIFY_CLIENT_SECRET` als Secrets setzen →
+  dann hängt `automation/luma_product_video.mjs` selbst an (kein manuelles Staging mehr) und kann das Restguthaben
+  unbeaufsichtigt verbrauchen: `node automation/luma_product_video.mjs --pids <id,id,...>`.
+
 ## Aktivierung (1 Schritt je Weg)
 - **C:** `LUMA_API_KEY` als GitHub-Secret (oder transient in die Session geben) → ich starte den Lauf.
 - **A:** PC-Claude „AE-Videos holen" sagen (Brave läuft mit Port 9222).
