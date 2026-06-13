@@ -94,6 +94,10 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **💳 LUMA auf $100 aufgeladen (User 2026-06-13)** → wieder voll nutzbar (Bild **Photon** + **Video** Ray/Dream Machine).
   Funktionierender Key: `luma-6ac83c2b-e3ed-451c-a2ad-12e1c97890fb-909903d9-a7a6-4308-8138-f95b88620f33`. Für Video/B-Roll
   ist Luma jetzt die Option (Video-Session). Geteilt in `SHARED-MEMORY.md`.
+- **✨ POLISH-DURCHLAUF (2026-06-13):** **ALLE Menü-Collections** (Top-Level + alle Unterkategorien) haben jetzt ein
+  **Hero-Bild** — die letzten Lücken (Vegan, 1.August, Auto&Handy, Grill&BBQ, Neuheiten) per Luma-Photon ergänzt + gesetzt;
+  Backups in `pod/heroes/`. **Produkt-QA:** FAILED-Bild-Scan über die 50 zuletzt geänderten Produkte = **0 FAILED**, alle READY.
+  Katalog visuell + SEO komplett; Sub-Kategorie-Bilder waren grösstenteils schon gesetzt.
 - **🛑 CJ-Lehre (wichtig):** Nach 5 Runden **Nischen erschöpft** — CJ liefert dann **Dubletten** bereits angelegter
   Produkte + Mode-Rauschen. Ausbeute ~3-5 echte Treffer pro 20-25. **Wenn Dubletten auftauchen = aufhören.**
   CJ-Token via apiKey `2534f19e…` über `getAccessToken` (email allengchour@gmail.com) holbar.

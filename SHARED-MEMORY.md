@@ -62,6 +62,8 @@
   `luma-6ac83c2b-e3ed-451c-a2ad-12e1c97890fb-909903d9-a7a6-4308-8138-f95b88620f33` (NICHT `luma-api-…` → 403). Bearer-Auth,
   Endpoint `https://api.lumalabs.ai/dream-machine/v1/generations/image` (Photon, `aspect_ratio`,`model:photon-1`) bzw. `/generations` für **VIDEO**
   (Ray, Dream Machine). **→ Video/Lifestyle-Session: Luma steht für KI-Clips/B-Roll bereit** (Mood/Bewegung, Produkt bleibt echt).
+- **✨ Polish 2026-06-13:** ALLE Menü-Collections (Top-Level + Sub) haben jetzt Hero-Bilder (letzte Lücken Vegan/1.August/Auto&Handy/Grill/Neuheiten via Luma).
+  Produkt-QA: 50 zuletzt geänderte Produkte = 0 FAILED. Hero-Backups in `pod/heroes/`.
 - **🛑 CJ erschöpft nach 5 Runden** → liefert Dubletten + Mode-Rauschen. Lehre: bei Dubletten aufhören. (apiKey `2534f19e…` via getAccessToken.)
 
 **2026-06-12 (ABEND) — abannews session: AFFILIATE-MASCHINE + aban-Pro-Funnel (Detail in `PROJEKT.md`, oberste Sektion):**
