@@ -26,6 +26,15 @@ Der User macht den #1-Hebel (TikTok/Meta-Pixel + bezahlte CH-Kampagne) morgen. �
 - **Caption-Format als FESTE Regel** im Poster-README verankert (Produkt+CHF-Preis [+Vergleich] · 1 Share/Save/Komm.-
   Trigger · CTA+WELCOME10+#bern) → künftige Posts befolgen es automatisch.
 
+## 2026-06-13 — 🧹 Autonome Katalog-Aufräumung („gestalte selber alles und lösche wenn sein muss")
+Live-Stand: 1215 aktiv · 49 Draft · 4408 archiviert. **10 eindeutige Müll-Drafts archiviert** (alle getaggt
+`bild-fehlt-nicht-live-schalten`/`stock-bild-pruefen` = Stock-Platzhalter, seit ~3 Wo nicht live-fähig): Sleep
+Set, Nacken-Massage, LED-Stimmungslicht, Sound Machine, Galaxy-Projector, Silvester-Bundle, Wachsmalkreide,
+Widerstandsbänder, Wandbilder-3er, Yoga-Matte. → Draft 49→39. **Bewusst BEHALTEN:** Schuhschrank
+(`nicht-live-moebel-sperrig`, §5), 6 bildlose 3D-Druck-Konzepte (eigenständige PoD-Linie anderer Session),
+Geschenkbox-Bundles (echte AI-Renders). **Entscheidung archivieren statt hart löschen** = reversibel, da teils
+Fremd-Session. Aktive 1215 unangetastet. Regel: nur explizit als Nicht-live/Stock getaggten Ballast entfernen.
+
 ## 2026-06-13 — 🤖 AUTO-MODUS („muss nichts mehr das gleiche sagen")
 EIN Befehl `bash automation/brain/auto.sh` kettet alles: analysieren (TikTok) → lernen (Gehirn) →
 Autopost-Queue aus gelernten Captions+echten Preisen+Discovery-Tags+Save/Share-Triggern nachfüllen

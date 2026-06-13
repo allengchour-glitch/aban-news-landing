@@ -12,7 +12,7 @@ _Aktualisiert: 2026-06-13 · Reports kumulativ gelernt: 2 (2 im Gedaechtnis)_
 **Daten-Top-Performer (kumulativ Ø-Views):** #bohostyle (786) · #sommerkleid (366) · #cardigan (357) · #schweiz (301) · #sommerschuhe (280) · #fyp (272)
 
 ## Letzter Stand (neuester Report tiktok_luxestyle.ch_2026-06-13.json)
-- Videos: 36 · Views: 10739 · Likes: 155 · Shares: 0 · Kommentare: 5
+- Videos: 36 · Views: 10770 · Likes: 161 · Shares: 0 · Kommentare: 5
 - Posts in CH-Primetime (16–19 UTC): 0
 
 ## 🎯 Automatisch abgeleitete naechste Aktionen
