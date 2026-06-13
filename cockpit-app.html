@@ -139,6 +139,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     <button data-v="belege">📎 Belege</button>
     <button data-v="rechner">🔢 Rechner</button>
     <button data-v="trading">📈 Trading</button>
+    <button data-v="finanz">💰 Finanzen</button>
     <button data-v="lernen">📚 Lernen</button>
     <button data-v="mahnung">⏰ Mahnung &amp; E-Mail</button>
     <button data-v="stamm">⚙️ Stammdaten</button>
@@ -435,6 +436,95 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
         <div class="fld"><label>Richtung</label><div class="seg" id="lq_seg"><button data-d="long" class="on">Long</button><button data-d="short">Short</button></div></div></div>
       <div class="out" id="lq_out"></div>
       <p class="note">Vereinfachte Näherung (isolierte Margin, ohne Gebühren/Funding). Echte Börsen rechnen leicht abweichend — nur zur Orientierung.</p></div>
+  </section>
+
+  <!-- FINANZEN -->
+  <section class="view" id="v-finanz">
+    <h1>Finanzen <span class="pill">Tracker &amp; Rechner</span></h1>
+    <p class="sub">Portfolio, Vermögen, Trading-Journal, FIRE und Hypothek — alles lokal. <strong>Keine Anlageberatung.</strong></p>
+    <div class="ltabs" id="f_tabs">
+      <button data-f="port" class="on" type="button">📈 Portfolio</button>
+      <button data-f="nw" type="button">🏦 Vermögen</button>
+      <button data-f="jour" type="button">📓 Journal</button>
+      <button data-f="fire" type="button">🔥 FIRE</button>
+      <button data-f="hyp" type="button">🏠 Hypothek</button>
+    </div>
+
+    <div class="lsec on" id="fs-port">
+      <div class="panel">
+        <h2>Portfolio-Tracker</h2>
+        <div class="row">
+          <div class="fld"><label>Name</label><input id="pf_name" placeholder="z. B. Welt-ETF"></div>
+          <div class="fld" style="max-width:90px"><label>Anzahl</label><input id="pf_qty" inputmode="decimal" value="1"></div>
+          <div class="fld" style="max-width:110px"><label>Kaufkurs</label><input id="pf_buy" inputmode="decimal"></div>
+          <div class="fld" style="max-width:110px"><label>akt. Kurs</label><input id="pf_now" inputmode="decimal"></div>
+        </div>
+        <div class="btnrow"><button class="btn" id="pf_add" type="button">+ Position</button></div>
+        <div class="out" id="pf_sum"></div>
+        <div class="row" style="margin-top:10px"><div style="flex:1;min-width:180px"><div id="pf_donut" style="max-width:190px;margin:0 auto"></div></div><div style="flex:2;min-width:230px"><div class="list" id="pf_list"></div></div></div>
+      </div>
+    </div>
+
+    <div class="lsec" id="fs-nw">
+      <div class="panel">
+        <h2>Vermögen &amp; Schulden (Net Worth)</h2>
+        <div class="row">
+          <div class="fld"><label>Bezeichnung</label><input id="nw_label" placeholder="z. B. Sparkonto / Auto-Kredit"></div>
+          <div class="fld" style="max-width:140px"><label>Betrag</label><input id="nw_val" inputmode="decimal"></div>
+          <div class="fld"><label>Art</label><div class="seg" id="nw_seg"><button data-t="a" class="on" type="button">Vermögen</button><button data-t="l" type="button">Schuld</button></div></div>
+        </div>
+        <div class="btnrow"><button class="btn" id="nw_add" type="button">+ Eintrag</button><button class="btn ghost" id="nw_snap" type="button">📸 Snapshot speichern</button></div>
+        <div class="out" id="nw_sum"></div>
+        <div class="list" id="nw_list"></div>
+        <h2 style="margin-top:14px">Verlauf (Netto)</h2><div id="nw_chart"></div>
+      </div>
+    </div>
+
+    <div class="lsec" id="fs-jour">
+      <div class="panel">
+        <h2>Trading-Journal</h2>
+        <div class="row">
+          <div class="fld" style="max-width:140px"><label>Datum</label><input id="jr_date" type="date"></div>
+          <div class="fld" style="max-width:110px"><label>Symbol</label><input id="jr_sym" placeholder="BTC"></div>
+          <div class="fld"><label>Richtung</label><div class="seg" id="jr_dir"><button data-d="long" class="on" type="button">Long</button><button data-d="short" type="button">Short</button></div></div>
+        </div>
+        <div class="row">
+          <div class="fld" style="max-width:90px"><label>Menge</label><input id="jr_qty" inputmode="decimal" value="1"></div>
+          <div class="fld" style="max-width:110px"><label>Einstieg</label><input id="jr_entry" inputmode="decimal"></div>
+          <div class="fld" style="max-width:110px"><label>Ausstieg</label><input id="jr_exit" inputmode="decimal"></div>
+          <div class="fld" style="max-width:90px"><label>Gebühren</label><input id="jr_fee" inputmode="decimal" value="0"></div>
+        </div>
+        <div class="btnrow"><button class="btn" id="jr_add" type="button">+ Trade</button></div>
+        <div class="out" id="jr_sum"></div>
+        <h2 style="margin-top:12px">Equity-Kurve</h2><div id="jr_chart"></div>
+        <div class="list" id="jr_list"></div>
+      </div>
+    </div>
+
+    <div class="lsec" id="fs-fire">
+      <div class="mini"><h3>🔥 FIRE — finanzielle Unabhängigkeit</h3>
+        <div class="row">
+          <div class="fld"><label>Aktuelles Vermögen</label><input id="fi_cur" inputmode="decimal" value="20000"></div>
+          <div class="fld"><label>Sparrate / Monat</label><input id="fi_save" inputmode="decimal" value="800"></div>
+          <div class="fld"><label>Rendite % p.a.</label><input id="fi_ret" inputmode="decimal" value="6"></div>
+          <div class="fld"><label>Jährliche Ausgaben</label><input id="fi_exp" inputmode="decimal" value="30000"></div>
+        </div>
+        <div class="out" id="fi_out"></div>
+        <p class="note">4 %-Regel: Zielvermögen = jährliche Ausgaben × 25. Vereinfachte Projektion, keine Garantie.</p>
+      </div>
+    </div>
+
+    <div class="lsec" id="fs-hyp">
+      <div class="mini"><h3>🏠 Hypothek / Kredit — Tilgung</h3>
+        <div class="row">
+          <div class="fld"><label>Kreditbetrag</label><input id="hy_amt" inputmode="decimal" value="400000"></div>
+          <div class="fld"><label>Zins % p.a.</label><input id="hy_rate" inputmode="decimal" value="2"></div>
+          <div class="fld"><label>Laufzeit (Jahre)</label><input id="hy_years" inputmode="decimal" value="20"></div>
+        </div>
+        <div class="out" id="hy_out"></div>
+        <p class="note">Annuitätenkredit (konstante Rate). Vereinfacht, ohne Gebühren/Sondertilgung.</p>
+      </div>
+    </div>
   </section>
 
   <!-- LERNEN -->
@@ -1188,6 +1278,68 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   function bindKat(pickId,DOC){var el=$("#"+pickId);if(!el)return;el.addEventListener("change",function(){if(this.value==="")return;var x=artikel()[+this.value];if(x)DOC.addItem(x.desc,1,x.price);this.value="";toast("Position eingefügt ✓")})}
   bindKat("r_katpick",R);bindKat("a_katpick",A);
 
+  /* ===== Finanz-Suite ===== */
+  $$("#f_tabs button").forEach(function(b){b.addEventListener("click",function(){$$("#f_tabs button").forEach(function(x){x.classList.toggle("on",x===b)});$$("#v-finanz .lsec").forEach(function(s){s.classList.toggle("on",s.id==="fs-"+b.dataset.f)})})});
+  /* Portfolio */
+  function portfolio(){return get("abanCockpit_portfolio",[])}
+  function renderPort(){var a=portfolio(),el=$("#pf_list"),sum=$("#pf_sum"),don=$("#pf_donut");if(!el)return;el.innerHTML="";
+    var val=0,cost=0;a.forEach(function(p){val+=(n(p.qty)||0)*(n(p.now)||0);cost+=(n(p.qty)||0)*(n(p.buy)||0)});var pl=val-cost,plp=cost>0?pl/cost*100:0;
+    sum.innerHTML=a.length?'<div class="box big '+(pl>=0?"ok":"bad")+'"><b>'+nf(val)+'</b><span>Depotwert</span></div><div class="box"><b>'+nf(cost)+'</b><span>Einstand</span></div><div class="box '+(pl>=0?"ok":"bad")+'"><b>'+(pl>=0?"+":"")+nf(pl)+'</b><span>G/V ('+(plp>=0?"+":"")+plp.toFixed(1).replace(".",",")+'%)</span></div>':"";
+    don.innerHTML=(a.length&&val>0&&typeof AbanCharts!=="undefined")?AbanCharts.donut(a.map(function(p){return {label:p.name,value:(n(p.qty)||0)*(n(p.now)||0)}}),{center:nf(val)}):"";
+    if(!a.length){el.innerHTML='<p class="note">Noch keine Positionen.</p>';return}
+    a.forEach(function(p,i){var v=(n(p.qty)||0)*(n(p.now)||0),c=(n(p.qty)||0)*(n(p.buy)||0),g=v-c;var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>'+esc(p.name)+' · '+nf(v)+' <small style="color:'+(g>=0?"var(--ok)":"var(--bad)")+'">('+(g>=0?"+":"")+nf(g)+')</small></span>';
+      var w=document.createElement("span");w.className="x";var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var b=portfolio();b.splice(i,1);set("abanCockpit_portfolio",b);renderPort()};w.appendChild(del);row.appendChild(w);el.appendChild(row)})}
+  if($("#pf_add"))$("#pf_add").addEventListener("click",function(){var nm=$("#pf_name").value.trim();if(!nm){toast("Bitte Name");return}var a=portfolio();a.push({name:nm,qty:$("#pf_qty").value,buy:$("#pf_buy").value,now:$("#pf_now").value});set("abanCockpit_portfolio",a);$("#pf_name").value="";$("#pf_buy").value="";$("#pf_now").value="";renderPort();toast("Position hinzugefügt ✓")});
+  /* Net Worth */
+  var nwTyp="a";
+  if($("#nw_seg"))$$("#nw_seg button").forEach(function(b){b.addEventListener("click",function(){nwTyp=b.dataset.t;$$("#nw_seg button").forEach(function(x){x.classList.toggle("on",x===b)})})});
+  function nwGet(){return get("abanCockpit_nw",{items:[],snaps:[]})}
+  function renderNW(){var o=nwGet(),el=$("#nw_list"),sum=$("#nw_sum");if(!el)return;el.innerHTML="";
+    var asset=0,liab=0;o.items.forEach(function(x){if(x.typ==="l")liab+=n(x.val)||0;else asset+=n(x.val)||0});var net=asset-liab;
+    sum.innerHTML=o.items.length?'<div class="box ok"><b>'+nf(asset)+'</b><span>Vermögen</span></div><div class="box bad"><b>'+nf(liab)+'</b><span>Schulden</span></div><div class="box big '+(net>=0?"ok":"bad")+'"><b>'+nf(net)+'</b><span>Netto</span></div>':"";
+    if(!o.items.length)el.innerHTML='<p class="note">Noch keine Einträge.</p>';
+    o.items.forEach(function(x,i){var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>'+(x.typ==="l"?"➖":"➕")+' '+esc(x.label)+' · <strong>'+nf(n(x.val)||0)+'</strong></span>';
+      var w=document.createElement("span");w.className="x";var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var p=nwGet();p.items.splice(i,1);set("abanCockpit_nw",p);renderNW()};w.appendChild(del);row.appendChild(w);el.appendChild(row)});
+    var ch=$("#nw_chart");if(ch)ch.innerHTML=(o.snaps&&o.snaps.length>=2&&typeof AbanCharts!=="undefined")?AbanCharts.line(o.snaps.map(function(s){return s.net}),{color:"#10b981"}):'<p class="note">Mit „Snapshot speichern" baust du den Verlauf auf.</p>'}
+  if($("#nw_add"))$("#nw_add").addEventListener("click",function(){var l=$("#nw_label").value.trim(),v=n($("#nw_val").value);if(!l||!isFinite(v)){toast("Bezeichnung & Betrag?");return}var o=nwGet();o.items.push({label:l,val:v,typ:nwTyp});set("abanCockpit_nw",o);$("#nw_label").value="";$("#nw_val").value="";renderNW();toast("Eintrag hinzugefügt ✓")});
+  if($("#nw_snap"))$("#nw_snap").addEventListener("click",function(){var o=nwGet();var asset=0,liab=0;o.items.forEach(function(x){if(x.typ==="l")liab+=n(x.val)||0;else asset+=n(x.val)||0});o.snaps=o.snaps||[];o.snaps.push({d:isoToday(),net:asset-liab});if(o.snaps.length>60)o.snaps.shift();set("abanCockpit_nw",o);renderNW();toast("Snapshot gespeichert ✓")});
+  /* Journal */
+  var jrDir="long";
+  if($("#jr_dir"))$$("#jr_dir button").forEach(function(b){b.addEventListener("click",function(){jrDir=b.dataset.d;$$("#jr_dir button").forEach(function(x){x.classList.toggle("on",x===b)})})});
+  function journal(){return get("abanCockpit_journal",[])}
+  function plOf(t){var q=n(t.qty)||0,e=n(t.entry)||0,x=n(t.exit)||0,f=n(t.fee)||0;return (t.dir==="long"?(x-e):(e-x))*q-f}
+  function renderJour(){var a=journal(),el=$("#jr_list"),sum=$("#jr_sum"),ch=$("#jr_chart");if(!el)return;el.innerHTML="";
+    var tot=0,wins=0,gp=0,gl=0;a.forEach(function(t){var p=plOf(t);tot+=p;if(p>0){wins++;gp+=p}else gl+=Math.abs(p)});
+    var wr=a.length?wins/a.length*100:0,pf=gl>0?gp/gl:(gp>0?99:0);
+    sum.innerHTML=a.length?'<div class="box big '+(tot>=0?"ok":"bad")+'"><b>'+(tot>=0?"+":"")+nf(tot)+'</b><span>Netto-G/V</span></div><div class="box"><b>'+wr.toFixed(0)+'%</b><span>Trefferquote</span></div><div class="box"><b>'+a.length+'</b><span>Trades</span></div><div class="box"><b>'+pf.toFixed(2).replace(".",",")+'</b><span>Gewinnfaktor</span></div>':"";
+    var chrono=a.slice().reverse(),eq=[0],run=0;chrono.forEach(function(t){run+=plOf(t);eq.push(run)});
+    if(ch)ch.innerHTML=(a.length&&typeof AbanCharts!=="undefined")?AbanCharts.line(eq,{color:tot>=0?"#10b981":"#ef4444"}):'<p class="note">Noch keine Trades.</p>';
+    if(!a.length){el.innerHTML='<p class="note">Noch keine Trades.</p>';return}
+    a.forEach(function(t,i){var p=plOf(t);var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>'+esc(t.date||"")+' · '+esc(t.sym||"")+' '+(t.dir==="long"?"▲":"▼")+' · <strong style="color:'+(p>=0?"var(--ok)":"var(--bad)")+'">'+(p>=0?"+":"")+nf(p)+'</strong></span>';
+      var w=document.createElement("span");w.className="x";var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var b=journal();b.splice(i,1);set("abanCockpit_journal",b);renderJour()};w.appendChild(del);row.appendChild(w);el.appendChild(row)})}
+  if($("#jr_add"))$("#jr_add").addEventListener("click",function(){var e=n($("#jr_entry").value),x=n($("#jr_exit").value);if(!isFinite(e)||!isFinite(x)){toast("Einstieg & Ausstieg eingeben");return}
+    var a=journal();a.unshift({date:$("#jr_date").value||isoToday(),sym:$("#jr_sym").value.trim(),dir:jrDir,qty:$("#jr_qty").value,entry:$("#jr_entry").value,exit:$("#jr_exit").value,fee:$("#jr_fee").value});set("abanCockpit_journal",a);
+    $("#jr_entry").value="";$("#jr_exit").value="";renderJour();toast("Trade erfasst ✓")});
+  /* FIRE */
+  function calcFIRE(){var cur=n($("#fi_cur").value),sav=n($("#fi_save").value),ret=n($("#fi_ret").value),exp=n($("#fi_exp").value);
+    if(!isFinite(cur)||!isFinite(exp)||exp<=0){$("#fi_out").innerHTML="";return}if(!isFinite(sav))sav=0;if(!isFinite(ret))ret=0;
+    var target=exp*25,i=ret/100/12,v=cur,m=0;while(v<target&&m<1200){v=v*(1+i)+sav;m++}
+    var yrs=m>=1200?"über 100":(Math.floor(m/12)+" J "+(m%12)+" Mon"),pass=target*0.04/12;
+    $("#fi_out").innerHTML='<div class="box big"><b>'+nf(target)+'</b><span>Zielvermögen (×25)</span></div><div class="box ok"><b>'+yrs+'</b><span>bis FIRE</span></div><div class="box"><b>'+nf(pass)+'</b><span>mtl. passiv (4 %)</span></div>'}
+  ["fi_cur","fi_save","fi_ret","fi_exp"].forEach(function(id){var el=$("#"+id);if(el)el.addEventListener("input",calcFIRE)});
+  /* Hypothek */
+  function calcHyp(){var amt=n($("#hy_amt").value),rate=n($("#hy_rate").value),yrs=n($("#hy_years").value);
+    if(!isFinite(amt)||!isFinite(yrs)||yrs<=0){$("#hy_out").innerHTML="";return}if(!isFinite(rate))rate=0;
+    var i=rate/100/12,nM=Math.round(yrs*12),pay=i>0?amt*i/(1-Math.pow(1+i,-nM)):amt/nM,total=pay*nM,interest=total-amt;
+    $("#hy_out").innerHTML='<div class="box big"><b>'+nf(pay)+'</b><span>Rate / Monat</span></div><div class="box"><b>'+nf(total)+'</b><span>Gesamtkosten</span></div><div class="box bad"><b>'+nf(interest)+'</b><span>Zinsanteil</span></div>'}
+  ["hy_amt","hy_rate","hy_years"].forEach(function(id){var el=$("#"+id);if(el)el.addEventListener("input",calcHyp)});
+
   /* ===== Dashboard / Übersicht ===== */
   function dashMonths(){var m={};drafts().forEach(function(d){if(d.status!=="bezahlt")return;var rd=parseDate(d.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");m[k]=(m[k]||0)+grossOf(d)});kasse().forEach(function(x){if(x.typ!=="ein")return;var rd=parseDate(x.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");m[k]=(m[k]||0)+(n(x.betrag)||0)});return m}
   function renderDash(){var root=$("#v-dash");if(!root||typeof AbanCharts==="undefined")return;
@@ -1308,8 +1460,8 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     toast("Alles gelöscht — App wird neu geladen …");setTimeout(function(){location.reload()},800)});
 
   /* Init */
-  loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();renderOffen();renderUmsatz();renderArtikel();refreshKat();renderBelege();renderDash();
-  $("#bl_datum").value=isoToday();$("#r_datum").value=isoToday();$("#a_datum").value=isoToday();$("#a_gueltig").value=isoToday();$("#zf_datum").value=isoToday();$("#z_datum").value=isoToday();$("#ka_datum").value=isoToday();
+  loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();renderOffen();renderUmsatz();renderArtikel();refreshKat();renderBelege();renderPort();renderNW();renderJour();calcFIRE();calcHyp();renderDash();
+  $("#bl_datum").value=isoToday();$("#jr_date").value=isoToday();$("#r_datum").value=isoToday();$("#a_datum").value=isoToday();$("#a_gueltig").value=isoToday();$("#zf_datum").value=isoToday();$("#z_datum").value=isoToday();$("#ka_datum").value=isoToday();
   R.setItems([{}]);A.setItems([{}]);
   calcM();calcH();calcS();calcVZ();calcZF();calcPC();calcIB();calcKM();calcTP();calcTR();calcTG();calcTL();calcTC();calcLQ();genMahnung();genEmail();
 })();
