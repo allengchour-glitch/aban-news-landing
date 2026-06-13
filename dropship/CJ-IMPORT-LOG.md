@@ -13,6 +13,17 @@
 > ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
 > bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
 
+## Session 2026-06-13 (NACHT-5) — +5 „tolle Schmuckstücke" (Luxus-Kapsel → 14)
+- User-Wunsch „tolle schmücke". Via roher Diagnose der 925-Linie 5 distinkte edle Stücke (alle `highend`+`premium`+
+  `schmuck`+`damen`, ACTIVE, 6 Kanäle, Bilder READY, SEO gesetzt):
+  Pavé-Perlohrringe «Goccia» (925, Tropfenperle+Pavé, 89.90 · pid 2065630306230890498 · Prod 15430422528385) ·
+  Süsswasserperlen-Armband «Perla» (925, Infinity — **komplettiert das Perla-Set: Kette+Ohrringe+Armband**, 79.90 ·
+  pid 2065648744815710209 · 15430422561153) · 925-Armband «Fiore» (Blüten, 3 Farben, 69.90 · pid 2065723486926032898 ·
+  15430422593921) · 925-Armband «Onda» (Kleeblatt-Glieder, 3 Farben, 99.90 · pid 2065713389562777602 · 15430422659457) ·
+  925-Armband «Cerchio» (Circle-Link, 3 Farben, 99.90 · pid 2065686704312262657 · 15430422692225).
+- Luxus-Collection `luxus-highend` jetzt **14** Stück. CJ-925-Linie hat noch mehr Armband-Varianten (Mesh-Breiten),
+  bewusst nicht alle genommen (Dubletten-Stil). Tolle Schmuck-Decke damit gut ausgeschöpft.
+
 ## Session 2026-06-13 (NACHT-4) — Feinschliff/Polish
 - **Luxus-Collection `luxus-highend`**: Hero-Bild gesetzt (Moissanite «Aurora») — Count korrekt auf **9** eingependelt.
 - **SEO-Meta (Title + Description) für ALLE 25 heute angelegten Produkte** gesetzt (2 Batches: erst die 11 beworbenen,
