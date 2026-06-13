@@ -16,6 +16,24 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 💰 2026-06-13 — TOKEN-KOSTEN gesenkt (Newsletter-Workstream) + Startseiten-Polish
+> Session „polish / token sparen". Alles gemerged, alle internen aban-news-Links sauber.
+- **Startseite poliert:** Hub-Zahl 355→**360** (akkurat, #805); „13 Text-Arten"→**22** (Konsistenz mit
+  KI-Studio) + **Demo-Fallback** ohne „Netzwerkfehler" (zeigt freundlich KI-Studio-Link, falls `/api/demo`
+  nicht erreichbar — z. B. solange Apex auf GitHub Pages liegt), #818. Fazit: Startseite ist **top, kein Redesign**.
+- **🔑 Token gespart (#826 + Ergebnis-Cache):** Einziger NICHT pro-gateter Anthropic-Endpoint war
+  `/api/demo` (öffentlicher Gratis-Teaser) — lief auf **Sonnet** → auf **Haiku** umgestellt (~4–5× billiger,
+  eigenes `DEMO_MODEL`-Env). **Zusätzlich Ergebnis-Cache** (`caches.default`, 24 h): identische Eingaben →
+  0 Tokens, kein Quota — v. a. der vorausgefüllte Demo-Default wird nur 1×/Tag echt generiert.
+- **Wichtige Erkenntnisse (in `docs/TOKEN-SPAREN.md`):** (1) Bis auf die Demo ist JEDER Anthropic-Call
+  hinter Pro/Bezahlung/Limit — Kosten gut eingedämmt. (2) Alle Modelle sind **per Env überschreibbar**
+  (`GENERATE_MODEL`/`HYPE_MODEL`/`CHAT_MODEL`/`VISIBILITY_MODEL`/`DEMO_MODEL`) → User kann ohne Deploy auf
+  Haiku stellen. (3) Prompt-Caching bringt hier NICHTS (System-Prompts ~60 Tok, unter 1024-Min). (4) Automation
+  läuft auf Gemini-Gratis; deterministische Generatoren (Rechnung/Mahnung/Hype-Filter) sind lokal = 0 Tokens.
+  „Selber produzieren"-Optionen dokumentiert (Ollama auf Dauer-PC, Groq/Gemini-Free als `/api/*`-Adapter).
+- **Shop-Folgearbeit aus Katalog-Wachstum (22 Produkte) abgeschlossen:** EN-Shop 12→22 (#794), EN-Funnel
+  8 Direkt-Kit-Links (#795), Shop-ItemList-Schema 12→22 DE+EN (#798).
+
 ## 💸 2026-06-12 (ABEND) — AFFILIATE-MONETARISIERUNG + aban-Pro-Funnel (NEUESTER STAND, zuerst lesen!)
 
 > Ganztägige Session: aban-Pro/KI-Studio ausgebaut **und** eine komplette, ehrliche **Affiliate-Maschine** gebaut.

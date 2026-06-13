@@ -28,6 +28,17 @@ function json(o, s, origin) {
 }
 function clamp(s, n) { return String(s == null ? "" : s).slice(0, n).trim(); }
 
+// Ergebnis-Cache (spart Tokens): identische Eingaben → gleiche Antwort aus dem
+// Edge-Cache statt neuem Anthropic-Call. Besonders der vorausgefüllte Demo-Default
+// wird so nur einmal pro TTL wirklich generiert.
+const CACHE_TTL = 86400; // 24 h
+async function cacheKey(kind, branche, ziel, en) {
+  const basis = [en ? "en" : "de", kind, branche.toLowerCase(), ziel.toLowerCase()].join("|");
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(basis));
+  const hex = [...new Uint8Array(buf)].map((x) => x.toString(16).padStart(2, "0")).join("");
+  return new Request("https://abannews.com/__demo-cache/" + hex, { method: "GET" });
+}
+
 function ipLimited(ip) {
   if (!ip) return false;
   const now = Date.now(), rec = IP.hits.get(ip);
@@ -70,9 +81,6 @@ export async function onRequestPost({ request, env }) {
     if (!env || !env.ANTHROPIC_API_KEY) return json({ error: "ai_off" }, 503, origin);
     // Nur von der eigenen Seite (deckt casual-Missbrauch ab).
     if (!ALLOWED_ORIGINS.includes(origin)) return json({ error: "forbidden" }, 403, origin);
-    if (globalLimited()) return json({ error: "demo_busy" }, 429, origin);
-    const ip = request.headers.get("CF-Connecting-IP") || "";
-    if (ipLimited(ip)) return json({ error: "demo_limit", upsell: true }, 429, origin);
 
     const raw = await request.text();
     if (raw.length > MAX_BODY) return json({ error: "too_large" }, 413, origin);
@@ -81,7 +89,25 @@ export async function onRequestPost({ request, env }) {
     let kind = clamp(b.kind || "text", 16);
     if (!ALLOWED.has(kind)) kind = "text";
     const en = String(b.lang || "").toLowerCase().startsWith("en");
-    const prompt = demoPrompt(kind, clamp(b.branche, 80), clamp(b.ziel, 200), en);
+    const branche = clamp(b.branche, 80), ziel = clamp(b.ziel, 200);
+
+    // Cache zuerst: identische Eingabe → 0 Tokens, kein Quota-Verbrauch, sofort.
+    const cache = (typeof caches !== "undefined" && caches.default) ? caches.default : null;
+    let ckReq = null;
+    if (cache) {
+      try {
+        ckReq = await cacheKey(kind, branche, ziel, en);
+        const hit = await cache.match(ckReq);
+        if (hit) { const t = await hit.text(); if (t) return json({ text: t, demo: true, cached: true }, 200, origin); }
+      } catch { /* Cache best-effort */ }
+    }
+
+    // Cache-Miss → erst jetzt die Limits anwenden (schützen den echten Anthropic-Call).
+    if (globalLimited()) return json({ error: "demo_busy" }, 429, origin);
+    const ip = request.headers.get("CF-Connecting-IP") || "";
+    if (ipLimited(ip)) return json({ error: "demo_limit", upsell: true }, 429, origin);
+
+    const prompt = demoPrompt(kind, branche, ziel, en);
     // Öffentlicher Gratis-Teaser → günstiges Haiku-Modell als Default (Sonnet ist für
     // einen 280-Token-Vorgeschmack unnötig teuer). Per DEMO_MODEL überschreibbar.
     const model = env.DEMO_MODEL || "claude-haiku-4-5-20251001";
@@ -101,6 +127,10 @@ export async function onRequestPost({ request, env }) {
     const data = await resp.json();
     const out = (data && data.content && data.content[0] && data.content[0].text || "").trim();
     if (!out) return json({ error: "empty" }, 502, origin);
+    // Ergebnis cachen (best-effort) → künftige identische Demos kosten 0 Tokens.
+    if (cache && ckReq) {
+      try { await cache.put(ckReq, new Response(out, { headers: { "Cache-Control": "max-age=" + CACHE_TTL, "Content-Type": "text/plain; charset=utf-8" } })); } catch { /* ignore */ }
+    }
     return json({ text: out, demo: true }, 200, origin);
   } catch (e) {
     return json({ error: "server" }, 500, origin);
