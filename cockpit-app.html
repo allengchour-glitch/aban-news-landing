@@ -175,7 +175,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       </div>
       <div class="fld"><label>Kunde (Name &amp; Anschrift)</label><textarea id="r_kunde" rows="3" placeholder="Mustermann GmbH&#10;Musterstr. 1&#10;8000 Zürich"></textarea></div>
       <table class="items" id="r_items"><thead><tr><th style="width:46%">Beschreibung</th><th class="num" style="width:13%">Menge</th><th class="num" style="width:20%">Einzelpreis</th><th class="num" style="width:15%">Summe</th><th></th></tr></thead><tbody></tbody></table>
-      <div class="btnrow"><button class="btn ghost sm" id="r_add">+ Position</button></div>
+      <div class="btnrow"><button class="btn ghost sm" id="r_add">+ Position</button><select id="r_katpick" class="katsel" style="max-width:230px"><option value="">+ aus Katalog…</option></select></div>
       <div class="row" style="margin-top:14px">
         <div class="fld" style="max-width:240px"><label>MwSt-Satz</label><select id="r_vat" class="vatsel"></select></div>
         <div class="fld" style="max-width:240px"><label>Zahlungsziel (Tage)</label><input id="r_ziel" value="14" inputmode="numeric"></div>
@@ -214,7 +214,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       <div class="row"><div class="fld"><label>Kunde aus Adressbuch</label><select id="a_pick"><option value="">— frei eingeben —</option></select></div></div>
       <div class="fld"><label>Kunde (Name &amp; Anschrift)</label><textarea id="a_kunde" rows="3"></textarea></div>
       <table class="items" id="a_items"><thead><tr><th style="width:46%">Beschreibung</th><th class="num" style="width:13%">Menge</th><th class="num" style="width:20%">Einzelpreis</th><th class="num" style="width:15%">Summe</th><th></th></tr></thead><tbody></tbody></table>
-      <div class="btnrow"><button class="btn ghost sm" id="a_add">+ Position</button></div>
+      <div class="btnrow"><button class="btn ghost sm" id="a_add">+ Position</button><select id="a_katpick" class="katsel" style="max-width:230px"><option value="">+ aus Katalog…</option></select></div>
       <div class="row" style="margin-top:14px">
         <div class="fld" style="max-width:240px"><label>MwSt-Satz</label><select id="a_vat" class="vatsel"></select></div>
       </div>
@@ -495,6 +495,16 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       <div class="row"><div class="fld"><label>IBAN</label><input id="st_iban"></div><div class="fld"><label>MwSt-/Steuernr.</label><input id="st_steuer"></div></div>
       <div class="fld"><label>Logo (optional — erscheint oben auf Rechnung &amp; Angebot)</label><input id="st_logo_file" type="file" accept="image/*"><div id="st_logo_prev" class="note"></div></div>
       <div class="btnrow"><button class="btn" id="st_save">💾 Stammdaten speichern</button></div>
+    </div>
+    <div class="panel">
+      <h2>Leistungs-/Artikel-Katalog</h2>
+      <p class="note" style="margin-top:0">Wiederkehrende Positionen einmal anlegen — dann in Rechnung &amp; Angebot per Dropdown „+ aus Katalog" einfügen.</p>
+      <div class="row">
+        <div class="fld"><label>Bezeichnung</label><input id="ar_desc" placeholder="z. B. Beratungsstunde"></div>
+        <div class="fld" style="max-width:160px"><label>Preis</label><input id="ar_price" inputmode="decimal" placeholder="90"></div>
+      </div>
+      <div class="btnrow"><button class="btn" id="ar_add" type="button">+ Zum Katalog</button></div>
+      <div class="list" id="ar_list"></div>
     </div>
     <div class="panel">
       <h2>Daten-Sicherung &amp; App</h2>
@@ -1060,6 +1070,20 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     catChips();renderLessons();renderTips();renderGloss();renderQuiz();renderCheck();renderPath();updateProg();
   })();
 
+  /* ===== Leistungs-/Artikel-Katalog ===== */
+  function artikel(){return get("abanCockpit_artikel",[])}
+  function saveArtikel(a){set("abanCockpit_artikel",a)}
+  function refreshKat(){var a=artikel(),opt='<option value="">+ aus Katalog…</option>'+a.map(function(x,i){return '<option value="'+i+'">'+esc(x.desc)+' ('+nf(n(x.price)||0)+')</option>'}).join("");["r_katpick","a_katpick"].forEach(function(id){var el=$("#"+id);if(el)el.innerHTML=opt})}
+  function renderArtikel(){var a=artikel(),el=$("#ar_list");if(!el)return;el.innerHTML="";
+    if(!a.length){el.innerHTML='<p class="note">Noch keine Katalog-Einträge.</p>';return}
+    a.forEach(function(x,i){var row=document.createElement("div");row.className="li";
+      row.innerHTML='<span>📦 '+esc(x.desc)+' · <strong>'+nf(n(x.price)||0)+'</strong></span>';
+      var w=document.createElement("span");w.className="x";var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
+      del.onclick=function(){var b=artikel();b.splice(i,1);saveArtikel(b);renderArtikel();refreshKat()};w.appendChild(del);row.appendChild(w);el.appendChild(row)})}
+  if($("#ar_add"))$("#ar_add").addEventListener("click",function(){var d=$("#ar_desc").value.trim();if(!d){toast("Bitte Bezeichnung eingeben");return}var a=artikel();a.unshift({desc:d,price:$("#ar_price").value});saveArtikel(a);$("#ar_desc").value="";$("#ar_price").value="";renderArtikel();refreshKat();toast("Im Katalog gespeichert ✓")});
+  function bindKat(pickId,DOC){var el=$("#"+pickId);if(!el)return;el.addEventListener("change",function(){if(this.value==="")return;var x=artikel()[+this.value];if(x)DOC.addItem(x.desc,1,x.price);this.value="";toast("Position eingefügt ✓")})}
+  bindKat("r_katpick",R);bindKat("a_katpick",A);
+
   /* ===== Dashboard / Übersicht ===== */
   function dashMonths(){var m={};drafts().forEach(function(d){if(d.status!=="bezahlt")return;var rd=parseDate(d.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");m[k]=(m[k]||0)+grossOf(d)});kasse().forEach(function(x){if(x.typ!=="ein")return;var rd=parseDate(x.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");m[k]=(m[k]||0)+(n(x.betrag)||0)});return m}
   function renderDash(){var root=$("#v-dash");if(!root||typeof AbanCharts==="undefined")return;
@@ -1158,7 +1182,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       catch(err){toast("Datei konnte nicht gelesen werden")}};rd.readAsText(f);this.value=""});
 
   /* Init */
-  loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();renderOffen();renderUmsatz();renderDash();
+  loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();renderOffen();renderUmsatz();renderArtikel();refreshKat();renderDash();
   $("#r_datum").value=isoToday();$("#a_datum").value=isoToday();$("#a_gueltig").value=isoToday();$("#zf_datum").value=isoToday();$("#z_datum").value=isoToday();$("#ka_datum").value=isoToday();
   R.setItems([{}]);A.setItems([{}]);
   calcM();calcH();calcS();calcVZ();calcZF();calcPC();calcIB();calcKM();calcTP();calcTR();calcTG();calcTL();calcTC();calcLQ();genMahnung();genEmail();
