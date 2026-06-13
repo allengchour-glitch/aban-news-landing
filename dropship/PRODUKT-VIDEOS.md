@@ -83,6 +83,11 @@ Der User hat **zwei** Luma-Zugänge — nicht verwechseln:
    - **Stopp-Signale:** 402/„Insufficient credits" = leer; „Concurrent generation limit reached (4)" / „Rate limit exceeded" = nur warten.
    - Skripte: `/tmp/genag.py`, `/tmp/pollag.sh`, `/tmp/runag.py` (Driver mit Concurrency-3, Stopp bei Credit).
    - **`luma-api-…`-Keys gehen NICHT auf die Dream-Machine-API** (gibt „Not authenticated") und umgekehrt.
+   - **GCS-Upload-Falle (Agents-Clips):** Die Shopify-Staging-Policy läuft fast sofort ab → die Bytes **parallel**
+     hochladen (`curl … & … & wait`), NICHT sequentiell; bei sequentiellem Upload von >2 Dateien laufen die späteren
+     Policies ab (HTTP 400/403). Grosse Dateien (>3 MB) ggf. einzeln + sofort nach dem Staging.
+   - **Stand:** Auf dem neuen $10-Konto bereits **15 Stufe-A-Clips** angehängt (Home-Gadgets/Reisetaschen/Bamboo),
+     weitere Welle (Abendkleider/Diffuser/Multitool/Uhr …) läuft per `runag.py` bis 402. Gesamt-Videos im Shop: ~72+.
 
 ## Aktivierung (1 Schritt je Weg)
 - **C:** `LUMA_API_KEY` als GitHub-Secret (oder transient in die Session geben) → ich starte den Lauf.
