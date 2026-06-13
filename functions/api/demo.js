@@ -82,7 +82,9 @@ export async function onRequestPost({ request, env }) {
     if (!ALLOWED.has(kind)) kind = "text";
     const en = String(b.lang || "").toLowerCase().startsWith("en");
     const prompt = demoPrompt(kind, clamp(b.branche, 80), clamp(b.ziel, 200), en);
-    const model = env.GENERATE_MODEL || "claude-sonnet-4-6";
+    // Öffentlicher Gratis-Teaser → günstiges Haiku-Modell als Default (Sonnet ist für
+    // einen 280-Token-Vorgeschmack unnötig teuer). Per DEMO_MODEL überschreibbar.
+    const model = env.DEMO_MODEL || "claude-haiku-4-5-20251001";
 
     const ctl = new AbortController();
     const t = setTimeout(() => ctl.abort(), TIMEOUT_MS);
