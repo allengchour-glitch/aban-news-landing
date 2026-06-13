@@ -39,6 +39,10 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Mehr Content für neue Produkte:** +30 polierte Pins → **182 Pins total** (CSV, raw-GitHub);
+3 neue SEO-Ratgeber live (Sommerschuhe/Sonnenbrillen/Stimmungslicht) → **8 Artikel** im Blog `ratgeber`;
+15 neue Marktplatz-Inserate. Tools: `automation/gen_pinterest_new.py` (Pins neue Produkte). PR #873.
+
 **2026-06-13 — Neue Produkte (jetzt 347 cj-real) nachgezogen:**
 - Katalog wuchs auf **1.206 aktiv / 347 cj-real**. Die ~100 neuesten (waren ohne Kategorie/SEO) nachbearbeitet:
   **+97 Kategorien + 26 SEO-Fixes** live, 0 Fehler. Kombi-Tool `automation/catalog_enrich.py` (Kategorie + SEO
