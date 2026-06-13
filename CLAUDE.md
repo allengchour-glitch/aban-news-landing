@@ -22,12 +22,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 
 ## 🔁 Daueraufträge (FEST)
 - **„update dich immer"** (2026-06-12): Memory nach jeder Charge nachführen.
-- **🧠 GEHIRN nutzen (2026-06-13 „installiere ein Gehirn das nur besser wird"):** Es gibt eine selbstlernende
-  Schleife `automation/brain/` (Doku `automation/brain/README.md`). In JEDER Social/Dropship-Session:
-  `bash automation/brain/run.sh` (frische TikTok-Daten + kumulativ lernen) → **`automation/brain/BRAIN.md` lesen**
-  und die dort automatisch abgeleiteten 🔴/🟡-Aktionen abarbeiten. Lehren/Regeln NUR in
-  `automation/brain/knowledge.json` (`rules`) pflegen — NIE `learned_pools.sh` direkt editieren (wird überschrieben).
-  Ratsche: bewiesene Verlierer bleiben geblockt, Gewinner erhalten → das Gehirn fällt nie zurück.
+- **🤖 AUTO-MODUS (2026-06-13 „muss nichts mehr das gleiche sagen"):** EIN Befehl macht alles —
+  **`bash automation/brain/auto.sh`**: (1) analysieren (TikTok), (2) lernen (Gehirn, kumulativ+Ratsche),
+  (3) Autopost-Queue aus gelernten Captions/Hashtags+echten Preisen nachfüllen, (4) nächste 🔴/🟡-Aktionen
+  + Follower-/Manuell-Hebel ausgeben. In JEDER Social-Session laufen lassen, dann **`automation/brain/BRAIN.md`**
+  lesen und die roten/gelben Aktionen abarbeiten. Lehren/Regeln NUR in `automation/brain/knowledge.json` (`rules`)
+  pflegen — NIE `learned_pools.sh`/`pools.json`/`queue.json` direkt editieren (werden überschrieben).
+  Ratsche: bewiesene Verlierer bleiben geblockt, Gewinner erhalten → fällt nie zurück.
+  **Follower** (`automation/local/ch-follower-growth.mjs` + `ch-unfollow.mjs`) läuft nur am PC-Claude (Browser/CDP).
 - **„schlage immer Verbesserungen vor + lerne daraus" (2026-06-13):** In JEDER Session proaktiv 3–5 konkrete,
   priorisierte Verbesserungsvorschläge machen (nicht nur abarbeiten), und jede Lehre sofort ins Memory schreiben.
   Ehrlich priorisieren: der Engpass ist **Reichweite/Conversion (0 Käufe)**, nicht Katalog/Videos — Vorschläge

@@ -159,6 +159,9 @@ if (DRY) {
 fs.writeFileSync(POOLS, sh);
 fs.writeFileSync(STATUS, md);
 fs.writeFileSync(KB, JSON.stringify(kb, null, 2) + '\n');
+// Maschinenlesbare Pools fuer andere Tools (z.B. build_queue.mjs → Autopost-Captions).
+fs.writeFileSync(path.join(ROOT, 'automation', 'brain', 'pools.json'),
+  JSON.stringify({ updated: todayISO, tagsets: sets, caps, top_tags: ranked.slice(0, 8).map(r => r.tag) }, null, 2) + '\n');
 console.log(`🧠 Gehirn-Lauf fertig. Reports gelernt: ${reportFiles.length} (neu: ${newlyIngested}). Pools ${poolsChanged ? 'AKTUALISIERT' : 'unveraendert'}.`);
 console.log('   Top-Tags:', ranked.slice(0, 6).map(r => r.tag).join(' '));
 console.log('   Aktionen:', actions.length, '→ automation/brain/BRAIN.md');

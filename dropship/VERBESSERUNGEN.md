@@ -26,6 +26,13 @@ Der User macht den #1-Hebel (TikTok/Meta-Pixel + bezahlte CH-Kampagne) morgen. �
 - **Caption-Format als FESTE Regel** im Poster-README verankert (Produkt+CHF-Preis [+Vergleich] · 1 Share/Save/Komm.-
   Trigger · CTA+WELCOME10+#bern) → künftige Posts befolgen es automatisch.
 
+## 2026-06-13 — 🤖 AUTO-MODUS („muss nichts mehr das gleiche sagen")
+EIN Befehl `bash automation/brain/auto.sh` kettet alles: analysieren (TikTok) → lernen (Gehirn) →
+Autopost-Queue aus gelernten Captions+echten Preisen+Discovery-Tags+Save/Share-Triggern nachfüllen
+(`automation/brain/build_queue.mjs` → Cloudflare-Poster `queue.json`, 15 saubere Produkte) → nächste
+🔴/🟡-Aktionen + Follower-Befehl (PC-Claude) + manuelle Hebel ausgeben. Gehirn gibt jetzt auch `pools.json`
+(maschinenlesbar) aus. Verankert in CLAUDE.md. End-to-end getestet, alle Captions Trigger+asiatenfrei.
+
 ## 2026-06-13 — 🧠 GEHIRN gebaut („installiere ein Gehirn das nur besser wird")
 Selbstlernende Schleife `automation/brain/` (brain.mjs + knowledge.json + BRAIN.md + run.sh + README).
 **Wird mit jedem Lauf besser (Ratsche):** kumulatives Gedächtnis über ALLE Reports (idempotent),

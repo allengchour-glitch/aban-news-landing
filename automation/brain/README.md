@@ -6,10 +6,13 @@ schreiben und mit einer **Ratsche** gegen Rückschritt versehen.
 
 ## Der Zyklus
 ```
-node automation/brain/brain.mjs       # lernen + Pools/Aktionen ableiten (no-op-safe, idempotent)
-bash automation/brain/run.sh          # frische TikTok-Daten ziehen + lernen (ganzer Zyklus)
+bash automation/brain/auto.sh         # 🤖 AUTO-MODUS: analysieren → lernen → Autopost-Queue → Aktionen (alles)
+node automation/brain/brain.mjs       # nur lernen + Pools/Aktionen ableiten (no-op-safe, idempotent)
+node automation/brain/build_queue.mjs # nur Autopost-Queue aus gelernten Captions neu bauen
 node automation/brain/brain.mjs --dry # nur Vorschau, nichts schreiben
 ```
+`auto.sh` ist der Standard: ein Befehl macht alles und gibt am Ende die nächsten Aktionen + den
+Follower-Wachstums-Befehl (PC-Claude) + die rein manuellen Hebel (Pixel/Kampagne) aus.
 
 ## Wieso es „nur besser" wird (Ratsche)
 1. **Kumulatives Gedächtnis** (`knowledge.json` → `signals.hashtags`): jeder Report wird **einmal**
@@ -33,6 +36,15 @@ node automation/brain/brain.mjs --dry # nur Vorschau, nichts schreiben
 - **Lehren/Regeln:** in `knowledge.json` unter `rules` pflegen (Gewinner-Hooks, Discovery-Tags, Blocklist,
   Format-Prioritäten). NICHT `learned_pools.sh` direkt editieren — das überschreibt das Gehirn.
 
+## Auto-Modus-Bausteine
+- `auto.sh` — der Orchestrator (analysieren → lernen → Queue → Aktionen + Follower/Manuell-Hebel).
+- `build_queue.mjs` — füllt die Cloudflare-Autopost-Queue (`…/luxe-poster/src/queue.json`) aus sauberen
+  Produkten (`automation/good_products.csv`) mit echten Preisen + gelernten Discovery-Hashtags + Gewinner-Hooks
+  + Share/Save-Triggern. Danach Worker `deploy.sh` (Cursor ggf. zurücksetzen) → postet autonom 2×/Tag in CH-Primetime.
+- `pools.json` — maschinenlesbare Pools (TAGSETS/CAPS), die das Gehirn für andere Tools ausgibt.
+
 ## Einbindung
 - `automation/learn_from_analytics.mjs` ist nur noch ein **Shim**, der hierher delegiert (Altpfade bleiben gültig).
-- In jeder Dropship/Social-Session: `bash automation/brain/run.sh` → BRAIN.md lesen → die roten/gelben Aktionen abarbeiten.
+- In jeder Dropship/Social-Session: `bash automation/brain/auto.sh` → BRAIN.md lesen → rote/gelbe Aktionen abarbeiten.
+- **Follower-Wachstum** (`automation/local/ch-follower-growth.mjs`, `ch-unfollow.mjs`) braucht Browser/CDP →
+  läuft nur am immer-laufenden PC-Claude, nicht in der Cloud. auto.sh gibt den Befehl als Erinnerung aus.
