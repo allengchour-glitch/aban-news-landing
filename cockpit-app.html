@@ -127,9 +127,11 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   <nav class="tabs" id="tabs">
     <button data-v="rechnung" class="on">🧾 Rechnung</button>
     <button data-v="angebot">📄 Angebot</button>
+    <button data-v="offen">📌 Offene Posten</button>
     <button data-v="kunden">👥 Kunden</button>
     <button data-v="zeit">⏱️ Zeit</button>
     <button data-v="kasse">📒 Kassenbuch</button>
+    <button data-v="umsatz">📊 Umsatz</button>
     <button data-v="rechner">🔢 Rechner</button>
     <button data-v="trading">📈 Trading</button>
     <button data-v="lernen">📚 Lernen</button>
@@ -254,6 +256,28 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       <div class="btnrow"><button class="btn" id="ka_add">+ Buchung</button><button class="btn ghost" id="ka_csv">⬇ CSV exportieren</button></div>
       <div class="out" id="ka_sum"></div>
       <div class="list" id="ka_list"></div>
+    </div>
+  </section>
+
+  <!-- OFFENE POSTEN -->
+  <section class="view" id="v-offen">
+    <h1>Offene Posten</h1>
+    <p class="sub">Alle gespeicherten Rechnungen mit Status. Bezahlt abhaken, Überfällige im Blick, Mahnung per Klick vorbereiten.</p>
+    <div class="panel">
+      <div class="out" id="of_sum"></div>
+      <div class="list" id="of_list"></div>
+      <p class="note">Rechnungen kommen über „💾 Entwurf speichern" im Rechnung-Tab hierher.</p>
+    </div>
+  </section>
+
+  <!-- UMSATZ -->
+  <section class="view" id="v-umsatz">
+    <h1>Umsatz-Übersicht</h1>
+    <p class="sub">Aus bezahlten Rechnungen und Kassenbuch-Einnahmen — Monat für Monat.</p>
+    <div class="panel">
+      <div class="out" id="um_sum"></div>
+      <h2 style="margin-top:14px">Monatsumsatz</h2>
+      <div id="um_bars"></div>
     </div>
   </section>
 
@@ -564,7 +588,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       var load=document.createElement("button");load.className="btn ghost sm";load.textContent="Laden";load.onclick=function(){loadInv(x);toast("Geladen")};
       var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";del.onclick=function(){var a=drafts();a.splice(i,1);set("abanCockpit_drafts",a);renderDrafts()};
       w.appendChild(load);w.appendChild(del);row.appendChild(w);el.appendChild(row)})}
-  $("#r_save").addEventListener("click",function(){var a=drafts();a.unshift(invData());set("abanCockpit_drafts",a.slice(0,40));renderDrafts();toast("Entwurf gespeichert ✓")});
+  $("#r_save").addEventListener("click",function(){var a=drafts(),d=invData();d.status="offen";d.ts=Date.now();a.unshift(d);set("abanCockpit_drafts",a.slice(0,60));renderDrafts();renderOffen();renderUmsatz();toast("Entwurf gespeichert ✓")});
 
   /* Angebot-spezifisch */
   $("#a_clear").addEventListener("click",function(){A.setItems([{}]);["a_nr","a_kunde"].forEach(function(id){$("#"+id).value=""});$("#a_pick").value="";toast("Geleert")});
@@ -1002,6 +1026,35 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     catChips();renderLessons();renderTips();renderGloss();renderQuiz();renderCheck();renderPath();updateProg();
   })();
 
+  /* ===== Offene Posten + Umsatz ===== */
+  function isoFromDate(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+  function grossOf(d){var net=0;(d.items||[]).forEach(function(it){net+=(n(it.qty)||0)*(n(it.price)||0)});var rate=parseFloat(d.vat)||0;return net*(1+rate/100)}
+  function faelligOf(d){var rd=parseDate(d.datum||"");if(isNaN(rd.getTime()))return null;return addDays(rd,parseInt(d.ziel,10)||0)}
+  function renderOffen(){var ds=drafts(),el=$("#of_list"),sum=$("#of_sum");if(!el)return;el.innerHTML="";
+    var today=new Date();today.setHours(0,0,0,0);var offenSum=0,bezSum=0,cnt=0;
+    if(!ds.length){el.innerHTML='<p class="note">Noch keine gespeicherten Rechnungen.</p>';if(sum)sum.innerHTML="";return}
+    ds.forEach(function(d,i){var g=grossOf(d),paid=d.status==="bezahlt";if(paid)bezSum+=g;else{offenSum+=g;cnt++}
+      var f=faelligOf(d),over=(!paid&&f&&f<today);
+      var row=document.createElement("div");row.className="li";if(over)row.style.borderColor="var(--bad)";
+      row.innerHTML='<span>'+(paid?"✅":over?"🔴":"🟡")+' '+esc(d.nr||"ohne Nr.")+' · '+esc((d.kunde||"").split("\n")[0].slice(0,22))+' · <strong>'+nf(g)+'</strong>'+(f?' · fällig '+de(f):"")+(over?' · überfällig':"")+'</span>';
+      var w=document.createElement("span");w.className="x";
+      var tg=document.createElement("button");tg.className="btn ghost sm";tg.textContent=paid?"↩ offen":"✓ bezahlt";
+      tg.onclick=function(){var a=drafts();a[i].status=paid?"offen":"bezahlt";set("abanCockpit_drafts",a);renderOffen();renderUmsatz()};
+      var mh=document.createElement("button");mh.className="btn ghost sm";mh.textContent="⏰ Mahnung";
+      mh.onclick=function(){$("#mh_kunde").value=(d.kunde||"").split("\n")[0];$("#mh_nr").value=d.nr||"";$("#mh_betrag").value=nf(g);if(f)$("#mh_faellig").value=isoFromDate(f);genMahnung();var b=$('#tabs button[data-v="mahnung"]');if(b)b.click();window.scrollTo(0,0)};
+      w.appendChild(tg);w.appendChild(mh);row.appendChild(w);el.appendChild(row)});
+    if(sum)sum.innerHTML='<div class="box bad"><b>'+nf(offenSum)+'</b><span>offen ('+cnt+')</span></div><div class="box ok"><b>'+nf(bezSum)+'</b><span>bezahlt</span></div>'}
+  function renderUmsatz(){var bars=$("#um_bars");if(!bars)return;var months={};
+    drafts().forEach(function(d){if(d.status!=="bezahlt")return;var rd=parseDate(d.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");months[k]=(months[k]||0)+grossOf(d)});
+    kasse().forEach(function(x){if(x.typ!=="ein")return;var rd=parseDate(x.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");months[k]=(months[k]||0)+(n(x.betrag)||0)});
+    var keys=Object.keys(months).sort(),total=0,maxV=0;keys.forEach(function(k){total+=months[k];if(months[k]>maxV)maxV=months[k]});
+    var y=new Date().getFullYear(),yTotal=0;keys.forEach(function(k){if(k.indexOf(y+"-")===0)yTotal+=months[k]});
+    var sum=$("#um_sum");if(sum)sum.innerHTML='<div class="box big ok"><b>'+nf(yTotal)+'</b><span>Umsatz '+y+'</span></div><div class="box"><b>'+nf(total)+'</b><span>gesamt erfasst</span></div>';
+    if(!keys.length){bars.innerHTML='<p class="note">Noch keine bezahlten Rechnungen oder Einnahmen. Markiere Rechnungen unter „Offene Posten" als bezahlt oder erfasse Einnahmen im Kassenbuch.</p>';return}
+    var mN=["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+    bars.innerHTML=keys.slice(-12).map(function(k){var v=months[k],pct=maxV>0?Math.round(v/maxV*100):0,p=k.split("-"),lab=mN[(+p[1])-1]+" "+p[0].slice(2);
+      return '<div style="display:flex;align-items:center;gap:10px;margin:5px 0"><span style="width:62px;font-size:.78rem;color:var(--muted)">'+lab+'</span><div style="flex:1;background:var(--line);border-radius:6px;overflow:hidden"><div style="width:'+pct+'%;min-width:46px;background:var(--amber-dk);color:#fff;font-size:.72rem;font-weight:700;padding:3px 6px;border-radius:6px;text-align:right;white-space:nowrap">'+nf(v)+'</div></div></div>'}).join("")}
+
   /* ===== Logo + Auto-Rechnungsnummer ===== */
   function showLogoPrev(){var l=(get("abanCockpit_stamm",{}).logo)||"",p=$("#st_logo_prev");if(!p)return;
     if(l){p.innerHTML='<img src="'+l+'" alt="Logo" style="max-height:54px;margin-top:6px;border:1px solid var(--line);border-radius:6px;padding:4px;background:#fff"><br><button class="btn ghost sm" id="st_logo_del" type="button" style="margin-top:6px">Logo entfernen</button>';
@@ -1034,7 +1087,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       catch(err){toast("Datei konnte nicht gelesen werden")}};rd.readAsText(f);this.value=""});
 
   /* Init */
-  loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();
+  loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();renderOffen();renderUmsatz();
   $("#r_datum").value=isoToday();$("#a_datum").value=isoToday();$("#a_gueltig").value=isoToday();$("#zf_datum").value=isoToday();$("#z_datum").value=isoToday();$("#ka_datum").value=isoToday();
   R.setItems([{}]);A.setItems([{}]);
   calcM();calcH();calcS();calcVZ();calcZF();calcPC();calcIB();calcKM();calcTP();calcTR();calcTG();calcTL();calcTC();calcLQ();genMahnung();genEmail();
