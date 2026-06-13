@@ -13,6 +13,18 @@
 > ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
 > bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
 
+## Session 2026-06-13 (NACHT-3) — +5 Hype für Männer (Streetwear-Accessoires)
+- User-Wunsch „hype sachen für männer". Fokus: trendige Herren-Accessoires (kein „Luxus"). Tag **`hype-2026`**
+  → automatisch in der Hype-Collection; ACTIVE + 6 Kanäle + je 5 Bilder READY.
+- **Produkte:** Herren Sling-Tasche «Ranger» (Crazy-Horse-Echtleder, 44.90 · pid 2606100737171632000 · Prod 15430408438145) ·
+  Herren Denim-Cap «Bronx» (Hell-/Dunkelblau, 22.90 · pid 2606120737391639600 · 15430408503681) ·
+  Shield-Sonnenbrille «Vortex» (One-Piece UV400, 22.90 · pid 2606130316171630100 · 15430408634753) ·
+  Sonnenbrille «Aviateur» (Dual-Bridge UV400, 6 Modelle, 24.90 · pid 2606120720101627801 · 15430408700289) ·
+  Herren Titan-Stahl Ring «Vertex» (Schwarz/Gold/Stahl, 19.90 · pid 2606100454231626200 · 15430408733057).
+- **🛑 Cuban-Chains/Hip-Hop-Herrenschmuck surfacen NICHT** über die CJ-Keyword-Suche (liefert Herz-/Paar-Ketten,
+  Aromatherapie-Locket, falsch eingestufte Kleidung). Männer-„Bling" = nicht über diese API holbar. Sling-Bag-Suche
+  brachte teils Dublette der «Como»-Schultertasche. Ausbeute real ~5/Doppelrunde → bestätigt CJ-Decke.
+
 ## Session 2026-06-13 (NACHT-2) — +3 High-End-Schmuck (Luxus-Kapsel erweitert) · CJ jetzt erschöpft
 - **Per roher Diagnose** (statt strenger Filter) die nachweislich starke 925/Moissanite-Kategorie geprüft → 3 echte
   NEUE Premium-Stücke (alle `highend`+`premium`+`schmuck`+`damen`, ACTIVE, 6 Kanäle, Bilder READY):
