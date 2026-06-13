@@ -13,6 +13,18 @@
 > ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
 > bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
 
+## Session 2026-06-13 (NACHT-2) — +3 High-End-Schmuck (Luxus-Kapsel erweitert) · CJ jetzt erschöpft
+- **Per roher Diagnose** (statt strenger Filter) die nachweislich starke 925/Moissanite-Kategorie geprüft → 3 echte
+  NEUE Premium-Stücke (alle `highend`+`premium`+`schmuck`+`damen`, ACTIVE, 6 Kanäle, Bilder READY):
+  Süsswasserperlen-Kette «Perla» (925, Bar-Design, Geschenkbox, 89.90 · pid 2065650672907087874 · Prod 15430406668673) ·
+  925-Silber Armband «Maglia» (Mesh, 3 Farben, 79.90 · pid 2065692306865442817 · 15430406734209) ·
+  925-Silber Ring «Anello» (Mesh, 3 Farben, 49.90 · pid 2065709583417753602 · 15430406832513).
+  → Luxus-Collection `luxus-highend` hat jetzt **9** kuratierte Stücke.
+- **🛑 CJ JETZT ERSCHÖPFT für diesen Shop:** Moissanite-Ring/-Ohrring/-Armband-Suchen + Leder-Tasche lieferten
+  **Dubletten** (z. B. nur die bereits importierte Cowhide-Tote) bzw. 0. Übersprungen: 999-Lily-of-Valley-Anklet
+  ($78.80 zu teuer für Fusskettchen-Kategorie + «Riva» existiert schon), Zodiac-Moissanite-Necklaces (zu nischig).
+  **Lehre (Memory-Regel): Dubletten = aufhören.** Nächster Engpass ist NICHT Katalog, sondern Reichweite/Conversion.
+
 ## Session 2026-06-13 (NACHT) — High-End-Elektronik: CJ-DECKE bestätigt (+1 ehrliches Produkt)
 - **User-Wunsch „elektro high end geräte".** ⚠️ **WICHTIGE LEHRE (Zeit sparen): CJ hat über diesen Account
   KEINE echten High-End-Elektrogeräte.** 3 Suchrunden (earbuds/kopfhörer/speaker/beamer/massage-gun/rasierer/
