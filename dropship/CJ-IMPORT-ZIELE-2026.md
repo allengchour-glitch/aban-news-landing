@@ -70,3 +70,9 @@ läuft ~14 T (≈28.06.) → User setzt dann `CJ_EMAIL`+`CJ_API_KEY` (Weg „A")
 - 🔥 Burger-Smasher & Grill-Helfer-Set (CHF 29.90) — id 15430169985409 → ☀️ Grill & BBQ (Gap gefüllt)
 Übersprungen: Strohtasche (asiatisches Model im 1. Bild), Initial-Kette (Personalisierung nötig), Ring (nur 400px).
 **Heute total 7 neue Produkte hand-kuratiert & live** (3+2+2).
+
+### Runde 4 (2026-06-13) — +2 kuratiert
+- 💞 Partner-Herzketten «Aimant» Magnet-2er-Set (CHF 29.90) — id 15430171427201 → Partner & Paare/Schmuck
+- 🌞 Solar-Gartenleuchten «Lumière» 3er/6er (CHF 34.90/59.90) — id 15430171525505 → 🌻 Garten/Beleuchtung
+Übersprungen: „Enten-Licht" = Trump-Karikatur (politisch, Overlay) → raus.
+**Heute total 9 neue Produkte hand-kuratiert & live** (3+2+2+2). Gefüllte Lücken: Haustier, Pool/Strand, Grill, Garten, Partner-Geschenke, Sommer-Schmuck, Beleuchtung.
