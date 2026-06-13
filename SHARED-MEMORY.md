@@ -39,6 +39,11 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Neue Produkte nachgezogen (jetzt 360 cj-real):** ~18 neue/SEO-lose Produkte (neue Silber-
+Armbänder/Ohrringe + Schuhe) mit SEO + 5 Kategorien gefixt; **+5 polierte Pins** der neuen Schmuckstücke
+(py4-*) → **187 Pins total**. ⚠️ Beobachtung: einige zuvor gesetzte Produkt-SEO waren wieder null (anderer
+Bot überschreibt?) — daher Routine `catalog_enrich.py`/manuell regelmässig über die neuesten laufen.
+
 **2026-06-13 — Menü um Feinkategorien erweitert (statt löschen):** 12 sinnvolle Collections ins `main-menu`
 aufgenommen — Frauen +Blusen&Tops/Hosen/Sets; **Herren +Shirts&Tops/Hemden/Hosen/Sets** (endlich echte
 Herrenmode); Trends +Audio/Gaming/Ladegeräte; Wohnen +Wandkunst/Aufbewahrung. (menuUpdate, ganze Struktur,
