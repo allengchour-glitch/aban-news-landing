@@ -168,6 +168,17 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
         <button class="btn ghost" id="r_clear">Leeren</button>
       </div>
       <div class="list" id="r_saved"></div>
+      <div class="mini" id="r_qrbox" style="margin-top:16px">
+        <h3>💳 Zahl-QR (scan &amp; pay)</h3>
+        <p class="note" style="margin-top:0">Aus deiner IBAN (Stammdaten) + Rechnungsbetrag. Erscheint dann auch auf dem PDF.</p>
+        <div class="row">
+          <div class="fld"><label>Standard</label><div class="seg" id="qr_seg"><button data-q="epc" class="on" type="button">🇪🇺 GiroCode (EUR)</button><button data-q="swiss" type="button">🇨🇭 Swiss QR</button></div></div>
+          <div class="fld" style="max-width:150px"><label>Währung</label><select id="qr_cur"><option>EUR</option><option>CHF</option></select></div>
+        </div>
+        <div class="btnrow"><button class="btn ghost sm" id="qr_gen" type="button">QR erzeugen</button></div>
+        <div id="qr_out" style="text-align:center;margin-top:10px"></div>
+        <p class="note">Bitte vor dem Einsatz einmal mit einer Banking-App scannen. Der Swiss-QR-Helfer erzeugt einen scannbaren Zahlteil-Code, nicht das amtliche A6-Layout.</p>
+      </div>
     </div>
   </section>
 
@@ -486,6 +497,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
 <footer class="wrap">aban Business-Cockpit · 100 % offline · keine Daten verlassen dein Gerät · © 2026 aban news</footer>
 <div class="toast" id="toast"></div>
 
+<script src="/qr-lib.js"></script>
 <script>
 (function(){
   "use strict";
@@ -571,6 +583,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       '<div>'+nl(opts.kunde||"")+'</div><h2>'+esc(opts.title)+(opts.nr?" "+esc(opts.nr):"")+'</h2>'+(opts.meta?'<div>'+esc(opts.meta)+'</div>':'')+
       '<table><thead><tr><th>Beschreibung</th><th class="n">Menge</th><th class="n">Einzelpreis</th><th class="n">Summe</th></tr></thead><tbody>'+rows+'</tbody></table>'+
       '<div class="pi-tot">Netto: '+nf(opts.tot.net)+'<br>'+(opts.tot.rate>0?("zzgl. "+String(opts.tot.rate).replace(".",",")+" % MwSt: "+nf(opts.tot.vat)+"<br>"):"")+'<strong>Gesamt: '+nf(opts.tot.gross)+'</strong></div>'+
+      (opts.qr?'<div style="clear:both;margin-top:26px">'+opts.qr+'<div style="font-size:11px;color:#444;margin-top:4px">Zahlbar per QR-Code (scan &amp; pay)</div></div>':'')+
       '<div class="pi-foot">'+foot+(s.iban?' &nbsp; IBAN: '+esc(s.iban):'')+(s.steuer?' &nbsp; Steuer-/MwSt-Nr.: '+esc(s.steuer):'')+'</div>';
     $("#print-doc").innerHTML=html;window.print()}
 
@@ -578,7 +591,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   $("#r_clear").addEventListener("click",function(){R.setItems([{}]);["r_nr","r_kunde","r_leistung"].forEach(function(id){$("#"+id).value=""});$("#r_pick").value="";toast("Geleert")});
   $("#r_print").addEventListener("click",function(){var t=R.calc(),d={nr:$("#r_nr").value,datum:$("#r_datum").value};
     var foot="";if(d.datum){var fd=addDays(parseDate(d.datum),parseInt($("#r_ziel").value,10)||0);if(!isNaN(fd))foot="Zahlbar bis "+de(fd)+". Vielen Dank.";}
-    printDoc({title:"Rechnung",nr:d.nr,datum:d.datum,kunde:$("#r_kunde").value,meta:$("#r_leistung").value?("Leistungszeitraum: "+$("#r_leistung").value):"",items:R.items(),tot:t,foot:foot})});
+    printDoc({title:"Rechnung",nr:d.nr,datum:d.datum,kunde:$("#r_kunde").value,meta:$("#r_leistung").value?("Leistungszeitraum: "+$("#r_leistung").value):"",items:R.items(),tot:t,foot:foot,qr:rQrSvg})});
   function invData(){return {nr:$("#r_nr").value,datum:$("#r_datum").value,leistung:$("#r_leistung").value,kunde:$("#r_kunde").value,vat:$("#r_vat").value,ziel:$("#r_ziel").value,items:R.items()}}
   function loadInv(d){$("#r_nr").value=d.nr||"";$("#r_datum").value=d.datum||isoToday();$("#r_leistung").value=d.leistung||"";$("#r_kunde").value=d.kunde||"";$("#r_vat").value=d.vat||"19";$("#r_ziel").value=d.ziel||"14";R.setItems(d.items)}
   function drafts(){return get("abanCockpit_drafts",[])}
@@ -1025,6 +1038,26 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
         else if(act==="tab"){goTab(arg)}window.scrollTo(0,0)})})}
     catChips();renderLessons();renderTips();renderGloss();renderQuiz();renderCheck();renderPath();updateProg();
   })();
+
+  /* ===== Zahl-QR (GiroCode / Swiss QR) ===== */
+  var rQrSvg="",qrMode="epc";
+  function buildEPC(s,iban,amt){var name=(s.firma||"").slice(0,70);
+    return ["BCD","002","2","SCT","",name,iban,(amt>0?"EUR"+amt.toFixed(2):""),"","",($("#r_nr").value?("Rechnung "+$("#r_nr").value):"Rechnung").slice(0,140)].join("\n")}
+  function buildSwiss(s,iban,amt,cur){var name=(s.firma||"").slice(0,70),adr=(s.adresse||"").split("\n"),l1=(adr[0]||"").slice(0,70),l2=(adr[1]||"").slice(0,70),ctry=iban.slice(0,2)==="LI"?"LI":"CH",msg=($("#r_nr").value?("Rechnung "+$("#r_nr").value):"Rechnung").slice(0,140);
+    return ["SPC","0200","1",iban,"K",name,l1,l2,"","",ctry,"","","","","","","",(amt>0?amt.toFixed(2):""),cur,"","","","","","","","NON","",msg,"EPD"].join("\r\n")}
+  function genQR(){if(typeof qrcode==="undefined"){toast("QR-Bibliothek lädt noch …");return}
+    var s=stamm(),iban=(s.iban||"").replace(/\s+/g,"").toUpperCase(),amt=R.calc().gross;
+    if(!iban){toast("Bitte IBAN in Stammdaten eintragen");$("#qr_out").innerHTML="";rQrSvg="";return}
+    if(!(s.firma||"").trim()){toast("Bitte Firma/Name in Stammdaten eintragen");return}
+    var data,cur=$("#qr_cur").value;
+    if(qrMode==="epc"){cur="EUR";$("#qr_cur").value="EUR";data=buildEPC(s,iban,amt)}
+    else{if(iban.slice(0,2)!=="CH"&&iban.slice(0,2)!=="LI"){toast("Swiss QR braucht eine CH/LI-IBAN");return}data=buildSwiss(s,iban,amt,cur)}
+    var qr=qrcode(0,"M");qr.addData(data,"Byte");try{qr.make()}catch(e){toast("Daten zu lang für den QR");return}
+    rQrSvg=qr.createSvgTag(4,10);
+    $("#qr_out").innerHTML='<div style="display:inline-block;background:#fff;padding:8px;border:1px solid var(--line);border-radius:8px;max-width:230px">'+rQrSvg+'</div>'}
+  if($("#qr_seg"))$$("#qr_seg button").forEach(function(b){b.addEventListener("click",function(){qrMode=b.dataset.q;$$("#qr_seg button").forEach(function(x){x.classList.toggle("on",x===b)});$("#qr_cur").value=qrMode==="epc"?"EUR":"CHF";genQR()})});
+  if($("#qr_cur"))$("#qr_cur").addEventListener("change",genQR);
+  if($("#qr_gen"))$("#qr_gen").addEventListener("click",genQR);
 
   /* ===== Offene Posten + Umsatz ===== */
   function isoFromDate(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
