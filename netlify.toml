@@ -1,0 +1,7 @@
+# Gratis-Deploy über Netlify (Alternative, falls GitHub Actions gesperrt/Limit verbraucht).
+# Netlify baut mit eigener Infrastruktur — unabhängig von GitHub Actions.
+# ⚠️ Hinweis: Die /api/*-Functions (aban-Pro-Freischaltung) laufen NUR auf Cloudflare Pages,
+# nicht auf Netlify. Für den Pro-Verkauf bitte Cloudflare Pages nutzen (siehe DEPLOY-GRATIS.md).
+[build]
+  command = "bash build-pages.sh"
+  publish = "_site"
