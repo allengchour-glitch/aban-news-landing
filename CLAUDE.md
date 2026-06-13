@@ -76,6 +76,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   create luxestyle-autopilot` + `wrangler kv namespace create STATE` (id in wrangler.toml) → `wrangler deploy` (URL →
   `PUBLIC_BASE`) → `wrangler secret put` GEMINI_API_KEY/IG_*/FB_*/THREADS_ACCESS_TOKEN/RUN_KEY → `wrangler deploy`.
   Danach **Dauerbetrieb gratis** (CF Free-Tier), nur ~$1.2/Mt Gemini. **Kein Abuse-Throttle wie bei GitHub.**
+- **🎬 REEL-STUFE ergänzt (gleicher Worker, `src/video.js`):** `05:15`+`05:25 UTC` Luma image-to-video (Ray) nimmt das
+  veredelte R2-Bild als Start-Keyframe → ruhige Kamerafahrt (Produkt bleibt echt) → MP4 in R2 (`/reels/<name>.mp4`) →
+  Video-Post in dieselbe Queue. POST erkennt `kind:'video'` → postet IG-Reel (`media_type=REELS`) / FB-`/videos` /
+  Threads-`VIDEO`. Zustandsmaschine in KV (`video_job`) macht lange Renders über 2 Crons resümierbar. **Optional:** ohne
+  `LUMA_API_KEY` sauberer No-op. Luma-Key = der funktionierende Photon/Ray-Key aus der LUMA-Notiz (Stand 2026-06-13) —
+  als `wrangler secret put LUMA_API_KEY` setzen, NICHT ins Repo committen. Runtime-Smoke-Test (Mock-KV/R2) ✓:
+  Imports, No-op-Guards, Bild/Video-Queue-Routing, R2-404 alle grün.
 
 **📌 2026-06-13 (Paar-Welt + Gemini-Polish + „Selbst gestalten" aufgeräumt):**
 - **Shopify-MCP verbunden** → alles live aus der Session. CJ-Token kam vom User per Chat (nach Gebrauch gelöscht).

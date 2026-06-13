@@ -49,6 +49,10 @@
 - **OFFEN (User, einmalig ~10 Min):** `wrangler login` → R2-Bucket+KV anlegen → Secrets (`GEMINI_API_KEY`, IG/FB/Threads, `RUN_KEY`) → `wrangler deploy`.
   Danach Dauerbetrieb gratis (Free-Tier), ~$1.2/Mt Gemini. Test ohne Cron: `/run?task=enhance|post&key=…`.
 - **Vorteil:** Kein Abuse-Throttle wie bei GitHub-Actions, kein GitHub-Pages-Hosting nötig (R2 serviert die Bilder). Dieselben Tokens wie bisher.
+- **🎬 + REEL-STUFE (gleicher Worker):** `05:15`+`05:25 UTC` Luma (image-to-video) nimmt das veredelte R2-Bild als Start-
+  Keyframe → ruhige Kamerafahrt (Produkt bleibt echt) → MP4 in R2 (`/reels/<name>.mp4`) → Video-Post in dieselbe Queue;
+  POST postet IG-Reel/FB-Video/Threads-Video. Modul `src/video.js`, Zustand in KV (`video_job`, resümierbar). **Optional:**
+  ohne `LUMA_API_KEY` = sauberer No-op. Funktionierender Key liegt in der LUMA-Notiz unten. Runtime-Smoke-Test ✓.
 
 **2026-06-13 — Luxestyle/Dropship session: Paar-Welt + Gemini-Polish + Selbst-gestalten aufgeräumt:**
 - **Shopify-MCP war verbunden** → alles live aus der Session gemacht. CJ-Token kam vom User per Chat (danach gelöscht).
