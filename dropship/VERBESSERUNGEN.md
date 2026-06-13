@@ -3,6 +3,14 @@
 > Regel: in jeder Session 3–5 konkrete, priorisierte Vorschläge; Lehren sofort ins Memory.
 > Ehrliche Priorisierung — der Engpass ist **Reichweite/Conversion (0 Käufe)**, nicht Katalog/Videos.
 
+## 📌 OFFEN — User-Zusage: **Pixel + CH-Kampagne MORGEN (2026-06-14)**
+Der User macht den #1-Hebel (TikTok/Meta-Pixel + bezahlte CH-Kampagne) morgen. → In der nächsten Session
+**zuerst prüfen, ob Pixel/Kampagne live ist**, und Conversion-Funnel davor sauber machen:
+- Ad-Landing-Kollektion (`/collections/sommer` bzw. Damen-Mode) auf saubere, **bewertete/Video-Produkte** ausrichten.
+- Nur ≥4★-Produkte bewerben; <4★ raus.
+- Die ~101 Produktvideos als **Ad-Creatives/Reels** bereitstellen (Gewinner-Format Produkt+CHF-Preis+Mundart).
+- Nach Kampagnenstart: 2–3 Tage Daten → „Auswertung" (Add-to-Cart/Käufe vs. heute 0).
+
 ## 2026-06-13 — Runde 1
 **🔴 Höchster Hebel (nur DU kannst es, bringt Käufe):**
 1. **TikTok-/Meta-Pixel + EINE saubere CH-Kampagne** (Ziel „Complete Payment", CH/Frauen 18–34, DE/FR, 20 CHF/Tag).
