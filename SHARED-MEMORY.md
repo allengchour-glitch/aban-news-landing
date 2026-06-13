@@ -12,12 +12,14 @@
 | Session | Aufgabe | Detail-Memory | Branch |
 |---|---|---|---|
 | **abannews** | Newsletter/Hubs/Stripe-Shop auf abannews.com (KI-Content, GEO-Reports) | `PROJEKT.md` | eigene `claude/*` |
-| **Luxestyle product** (CJ-Dropship) | CJ-Produktimport, Shop-Katalog, Social-Posten, Autopilot | `CLAUDE.md` + `dropship/*` | **`claude/luxestyle-product-CizQ6`** |
+| **Luxestyle product** (CJ-Dropship) | CJ-Produktimport, Shop-Katalog, **Social-Posten inkl. Pinterest**, Autopilot | `CLAUDE.md` + `dropship/*` | **`claude/luxestyle-product-CizQ6`** |
 | **Dropshipping session** | (überschneidet sich mit ↑ — bitte abstimmen!) | `dropship/*` | — |
 | **Lifestyle video project** | Reels/Clips/Video (braucht `YT_API_KEY`) | `video-prototypes/*`, `mediakit/*` | eigene |
 
-> ⚠️ **Wichtigste Regel:** **CJ-Produktimport + Shop-Katalog + Social-Queue = nur die „Luxestyle product"-Session.**
-> Andere Sessions: keine Produkte importieren / keine `social/posts_image.csv` ändern, sonst Dubletten/Konflikte.
+> ⚠️ **Wichtigste Regel:** **CJ-Produktimport + Shop-Katalog + Social-Queue + PINTEREST = nur die „Luxestyle product"-Session.**
+> Andere Sessions: keine Produkte importieren / keine `social/posts_image.csv` ändern, **und NICHT mehr manuell pinnen**
+> (Pinterest läuft jetzt autonom + idempotent aus `social/pinterest_queue.csv` via `pinterest-autopost.yml`),
+> sonst Dubletten/Konflikte.
 
 ## 🧱 Geteilte Ressourcen (alle teilen sich diese!)
 - **1 Shopify-Shop** (LuxeStyle) — Zugriff über die **Shopify-MCP** (direkt in jeder Session, KEIN Key nötig).
@@ -34,6 +36,7 @@
 | `CJ_EMAIL` + `CJ_API_KEY` | ❌ als Repo-Secret offen (in-Session vorhanden) |
 | TikTok | ⏳ Reel-Autopost GEBAUT (FILE_UPLOAD, kein Domain-Verify) — fehlen nur 4 Secrets: TT_CLIENT_KEY/SECRET/ACCESS_TOKEN/REFRESH_TOKEN. Anleitung: `dropship/TIKTOK-AUTOPOST-AKTIVIEREN.md` |
 | `YT_API_KEY` | ❌ offen (Video-Session) |
+| `PINTEREST_ACCESS_TOKEN` (+ optional `PINTEREST_BOARD_ID`) | ⏳ Pinterest-Autopost GEBAUT (`pinterest-autopost.yml`, idempotent) — fehlt nur der Token (Pinterest-Developer-App, Scopes boards:read/pins:read/pins:write). Board wird sonst automatisch gewählt. |
 > Hinweis: Für Shopify-Arbeit **braucht keine Session einen Key** — das geht über die MCP. Keys nur für die Cron-Actions.
 
 ---
@@ -270,5 +273,9 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 - **🛍️ Weitere Produkte analysiert:** bewertet (Social-Proof) = Smartwatch/Gemüseschneider/Robo-Ventilator je 5,0★;
   +5 nie gepostete (Gala/FlexHold/Glow/Cloud/Lino) eingereiht. Analyse: `reports/ANALYSE-SOCIAL-2026-06-12.md`.
 - **📱 Handy-Steuerung:** `control.html` + `dropship/HANDY-STEUERUNG.md` jetzt mit 8 Buttons (inkl. 📖 Story, 💬 DMs).
-- **ℹ️ Zur Kenntnis (andere Sessions):** jemand hat **Printful** (POD-Fulfillment) eingerichtet + viele **Pinterest-Pins**
-  erstellt. Kein Konflikt mit Social-Queue/Katalog dieser Session; Pinterest = zusätzlicher Kanal (eigene Session).
+- **📌 PINTEREST ÜBERNOMMEN von dieser Session (User 2026-06-13):** Damit es nicht doppelt postet, läuft Pinterest jetzt
+  **autonom + idempotent** aus EINER Quelle: `social/pinterest_queue.csv` → `automation/pinterest-autopost.mjs`
+  (API v5) → `pinterest-autopost.yml` (2×/Tag). Dedup-Ledger `social/pinned-done.txt` (Key = Produkt-Link) → NIE doppelt,
+  auch über Läufe/Sessions hinweg. 55 Pins generiert (bewertete/neue zuerst). **→ Andere Sessions: ab jetzt NICHT mehr
+  manuell pinnen** (sonst Dubletten). Fehlt nur `PINTEREST_ACCESS_TOKEN` (Secret). Doku `dropship/PINTEREST-SETUP.md`.
+- **ℹ️ Printful** (POD-Fulfillment, andere Session) bleibt unangetastet — kein Konflikt mit Katalog/Social dieser Session.

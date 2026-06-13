@@ -77,8 +77,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   nutzbar: **`automation/local/ig-dm-browser.mjs`** (Browser über PC-Claude, Themen-Erkennung inkl. Retoure/
   Bestellung/Design, idempotent `ig-dm-done.json`, Cap 15, `--dry`). API-Templates (`ig-dm-reply.mjs`) ebenfalls
   erweitert. **🎞️ Alle Formate gefüllt:** +8 Stories (`story_queue.csv`, CDN), 11 Reels ready, 8 Produkt-Posts.
-  **📱 `control.html`/`HANDY-STEUERUNG.md`** jetzt 8 Buttons (inkl. 📖 Story, 💬 DMs). **ℹ️ Andere Sessions:**
-  Printful (POD) + viele Pinterest-Pins gemacht (kein Konflikt; Pinterest = eigener Kanal).
+  **📱 `control.html`/`HANDY-STEUERUNG.md`** jetzt 9 Buttons (inkl. 📖 Story, 💬 DMs, 📌 Pinterest).
+- **📌 PINTEREST ÜBERNOMMEN (User 2026-06-13 „du kannst den part mit pins übernehmen, nicht kollidieren/doppelt"):**
+  autonom + idempotent aus EINER Quelle: `social/pinterest_queue.csv` → `automation/pinterest-autopost.mjs` (API v5) →
+  `pinterest-autopost.yml` (2×/Tag). Dedup-Ledger `social/pinned-done.txt` (Key = Produkt-Link) → NIE doppelt. 55 Pins
+  generiert (bewertete/neue zuerst). **Andere Sessions pinnen NICHT mehr manuell** (in SHARED-MEMORY verankert).
+  Fehlt nur Secret `PINTEREST_ACCESS_TOKEN`. Doku `dropship/PINTEREST-SETUP.md`. Printful (andere Session) unangetastet.
 
 **📌 2026-06-07 (NEUESTER STAND — ZUERST LESEN: Memory aufgefrischt + Conversion-Fix):**
 - **Branch-Reset:** Alle früheren Dropship-Branches (SrAs5/LehDs) sind **in `main` gemergt + gelöscht**.
