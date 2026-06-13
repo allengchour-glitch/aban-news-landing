@@ -125,7 +125,8 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
 <header class="app"><div class="wrap">
   <a href="/business-cockpit.html" class="brand">aban Business-Cockpit <small>Pro</small></a>
   <nav class="tabs" id="tabs">
-    <button data-v="rechnung" class="on">🧾 Rechnung</button>
+    <button data-v="dash" class="on">🏠 Übersicht</button>
+    <button data-v="rechnung">🧾 Rechnung</button>
     <button data-v="angebot">📄 Angebot</button>
     <button data-v="offen">📌 Offene Posten</button>
     <button data-v="kunden">👥 Kunden</button>
@@ -141,8 +142,26 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
 </div></header>
 <main class="wrap">
 
+  <!-- DASHBOARD -->
+  <section class="view on" id="v-dash">
+    <h1>Übersicht <span class="pill">dein Cockpit</span></h1>
+    <p class="sub">Alles auf einen Blick — Umsatz, offene Posten, Zeit und Lern-Fortschritt.</p>
+    <div class="out" id="d_kpi"></div>
+    <div class="btnrow" style="margin:14px 0">
+      <button class="btn" data-go="rechnung" type="button">🧾 Neue Rechnung</button>
+      <button class="btn ghost" data-go="zeit" type="button">⏱️ Zeit erfassen</button>
+      <button class="btn ghost" data-go="offen" type="button">📌 Offene Posten</button>
+      <button class="btn ghost" data-go="lernen" type="button">📚 Lernen</button>
+    </div>
+    <div class="row">
+      <div class="panel" style="flex:1;min-width:240px"><h2>Einnahmen vs. Ausgaben</h2><div id="d_donut" style="max-width:200px;margin:0 auto"></div><p class="note" id="d_donleg" style="text-align:center"></p></div>
+      <div class="panel" style="flex:1;min-width:240px"><h2>Lern-Fortschritt</h2><div id="d_ring" style="max-width:150px;margin:0 auto"></div><p class="note" id="d_ringlbl" style="text-align:center"></p></div>
+    </div>
+    <div class="panel"><h2>Monatsumsatz (letzte 6)</h2><div id="d_bars"></div></div>
+  </section>
+
   <!-- RECHNUNG -->
-  <section class="view on" id="v-rechnung">
+  <section class="view" id="v-rechnung">
     <h1>Rechnung erstellen <span class="pill">PDF / Druck</span></h1>
     <p class="sub">Positionen eintragen → Summen automatisch → „Drucken / PDF". Kunde aus dem Adressbuch wählen oder frei eintippen.</p>
     <div class="panel">
@@ -498,6 +517,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
 <div class="toast" id="toast"></div>
 
 <script src="/qr-lib.js"></script>
+<script src="/js/charts.js"></script>
 <script>
 (function(){
   "use strict";
@@ -520,7 +540,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   /* Tabs */
   $$("#tabs button").forEach(function(b){b.addEventListener("click",function(){
     $$("#tabs button").forEach(function(x){x.classList.toggle("on",x===b)});
-    $$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-"+b.dataset.v)});window.scrollTo(0,0)})});
+    $$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-"+b.dataset.v)});if(b.dataset.v==="dash")renderDash();window.scrollTo(0,0)})});
 
   /* Stammdaten */
   var stF=["firma","adresse","email","tel","iban","steuer"];
@@ -1036,8 +1056,26 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
         if(act==="sec"){var s=$('#l_tabs button[data-l="'+arg+'"]');if(s)s.click()}
         else if(act==="cat"){ls("cat",arg);catChips();renderLessons();var s2=$('#l_tabs button[data-l="lekt"]');if(s2)s2.click()}
         else if(act==="tab"){goTab(arg)}window.scrollTo(0,0)})})}
+    window.__abanLernTotal=LESSONS.length;
     catChips();renderLessons();renderTips();renderGloss();renderQuiz();renderCheck();renderPath();updateProg();
   })();
+
+  /* ===== Dashboard / Übersicht ===== */
+  function dashMonths(){var m={};drafts().forEach(function(d){if(d.status!=="bezahlt")return;var rd=parseDate(d.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");m[k]=(m[k]||0)+grossOf(d)});kasse().forEach(function(x){if(x.typ!=="ein")return;var rd=parseDate(x.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");m[k]=(m[k]||0)+(n(x.betrag)||0)});return m}
+  function renderDash(){var root=$("#v-dash");if(!root||typeof AbanCharts==="undefined")return;
+    var ds=drafts(),offen=0,offenN=0;ds.forEach(function(d){if(d.status!=="bezahlt"){offen+=grossOf(d);offenN++}});
+    var ein=0,aus=0;kasse().forEach(function(x){var b=n(x.betrag)||0;if(x.typ==="ein")ein+=b;else aus+=b});
+    var hrs=0;tEntries().forEach(function(e){hrs+=n(e.std)||0});
+    var months=dashMonths(),y=new Date().getFullYear(),yTotal=0;Object.keys(months).forEach(function(k){if(k.indexOf(y+"-")===0)yTotal+=months[k]});
+    var lt=window.__abanLernTotal||36,lread=get("abanCockpit_lern_read",{}),lcnt=0;Object.keys(lread).forEach(function(k){if(lread[k])lcnt++});var lpct=Math.round(lcnt/lt*100);
+    $("#d_kpi").innerHTML='<div class="box big ok"><b>'+nf(yTotal)+'</b><span>Umsatz '+y+'</span></div><div class="box'+(offen>0?" bad":"")+'"><b>'+nf(offen)+'</b><span>offen ('+offenN+')</span></div><div class="box"><b>'+(Math.round(hrs*10)/10).toString().replace(".",",")+'</b><span>Stunden erfasst</span></div><div class="box"><b>'+lpct+'%</b><span>Lern-Fortschritt</span></div>';
+    $("#d_donut").innerHTML=(ein>0||aus>0)?AbanCharts.donut([{label:"Einnahmen",value:ein,color:"#10b981"},{label:"Ausgaben",value:aus,color:"#ef4444"}],{center:nf(ein-aus)}):'<p class="note">Noch keine Kassenbuch-Buchungen.</p>';
+    $("#d_donleg").innerHTML=(ein>0||aus>0)?'<span style="color:#10b981">●</span> Einnahmen '+nf(ein)+' &nbsp; <span style="color:#ef4444">●</span> Ausgaben '+nf(aus)+' &nbsp; Saldo '+nf(ein-aus):"";
+    $("#d_ring").innerHTML=AbanCharts.ring(lpct,{color:"#d97706"});
+    $("#d_ringlbl").textContent=lcnt+" von "+lt+" Lektionen gelesen";
+    var keys=Object.keys(months).sort().slice(-6),mN=["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+    $("#d_bars").innerHTML=keys.length?AbanCharts.bars(keys.map(function(k){var p=k.split("-");return {label:mN[(+p[1])-1]+" "+p[0].slice(2),value:months[k],disp:nf(months[k])}})):'<p class="note">Noch kein Umsatz — markiere Rechnungen als bezahlt oder erfasse Einnahmen.</p>'}
+  $$("#v-dash [data-go]").forEach(function(b){b.addEventListener("click",function(){var t=$('#tabs button[data-v="'+b.dataset.go+'"]');if(t)t.click()})});
 
   /* ===== Zahl-QR (GiroCode / Swiss QR) ===== */
   var rQrSvg="",qrMode="epc";
@@ -1120,7 +1158,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       catch(err){toast("Datei konnte nicht gelesen werden")}};rd.readAsText(f);this.value=""});
 
   /* Init */
-  loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();renderOffen();renderUmsatz();
+  loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();renderOffen();renderUmsatz();renderDash();
   $("#r_datum").value=isoToday();$("#a_datum").value=isoToday();$("#a_gueltig").value=isoToday();$("#zf_datum").value=isoToday();$("#z_datum").value=isoToday();$("#ka_datum").value=isoToday();
   R.setItems([{}]);A.setItems([{}]);
   calcM();calcH();calcS();calcVZ();calcZF();calcPC();calcIB();calcKM();calcTP();calcTR();calcTG();calcTL();calcTC();calcLQ();genMahnung();genEmail();
