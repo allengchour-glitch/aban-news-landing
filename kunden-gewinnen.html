@@ -41,13 +41,39 @@ h2::before{content:"";position:absolute;left:0;top:.18em;bottom:.18em;width:4px;
 .box{transition:box-shadow .15s,transform .15s}
 .box:hover{box-shadow:0 7px 20px rgba(0,0,0,.07)}
 .faq details[open] summary{color:#b45309}
+.hero-flex{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.hero-txt{flex:1 1 270px;min-width:0}
+.hero-art{flex:0 0 178px;max-width:178px;margin:0 auto}
+.hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 7px 16px rgba(180,83,9,.14))}
+@media(max-width:560px){.hero-art{flex-basis:150px;max-width:150px}}
 </style>
 </head>
 <body>
-<header class="hero"><div class="wrap">
+<header class="hero"><div class="wrap hero-flex">
+  <div class="hero-txt">
   <h1>Erste Kunden gewinnen als Selbstständiger</h1>
   <p class="lead">9 ehrliche, <strong>kostenlose</strong> Wege zu den ersten Aufträgen — ohne teures Werbebudget und ohne Hype. Fang bei 1 und 2 an, die bringen am schnellsten etwas.</p>
   <p class="upd">Stand: Juni 2026</p>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+   <svg viewBox="0 0 200 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kunden gewinnen">
+    <circle cx="100" cy="88" r="80" fill="#fef3c7"/>
+    <path d="M70 78v22a30 30 0 0 0 60 0v-22h-20v22a10 10 0 0 1-20 0v-22z" fill="#d64545"/>
+    <rect x="68" y="66" width="24" height="13" rx="2" fill="#cbd5e1"/>
+    <rect x="108" y="66" width="24" height="13" rx="2" fill="#cbd5e1"/>
+    <rect x="70" y="92" width="20" height="9" fill="#b91c1c"/>
+    <rect x="110" y="92" width="20" height="9" fill="#b91c1c"/>
+    <g>
+     <circle cx="100" cy="34" r="11" fill="#f0a93a"/><path d="M86 54a14 14 0 0 1 28 0z" fill="#f0a93a"/>
+     <circle cx="58" cy="46" r="8" fill="#fbbf24"/><path d="M48 62a10 10 0 0 1 20 0z" fill="#fbbf24"/>
+     <circle cx="144" cy="46" r="8" fill="#fbbf24"/><path d="M134 62a10 10 0 0 1 20 0z" fill="#fbbf24"/>
+    </g>
+    <g fill="#d97706">
+     <path d="M152 96l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
+     <path d="M46 92l1.5 4 4 1.5-4 1.5-1.5 4-1.5-4-4-1.5 4-1.5z"/>
+    </g>
+   </svg>
+  </div>
 </div></header>
 <main><div class="wrap">
 

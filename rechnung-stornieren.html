@@ -41,13 +41,36 @@ h2::before{content:"";position:absolute;left:0;top:.18em;bottom:.18em;width:4px;
 .box{transition:box-shadow .15s,transform .15s}
 .box:hover{box-shadow:0 7px 20px rgba(0,0,0,.07)}
 .faq details[open] summary{color:#b45309}
+.hero-flex{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.hero-txt{flex:1 1 270px;min-width:0}
+.hero-art{flex:0 0 178px;max-width:178px;margin:0 auto}
+.hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 7px 16px rgba(180,83,9,.14))}
+@media(max-width:560px){.hero-art{flex-basis:150px;max-width:150px}}
 </style>
 </head>
 <body>
-<header class="hero"><div class="wrap">
+<header class="hero"><div class="wrap hero-flex">
+  <div class="hero-txt">
   <h1>Rechnung stornieren &amp; korrigieren</h1>
   <p class="lead">Falscher Betrag, falscher Kunde, doppelt verschickt? Eine bereits gestellte Rechnung <strong>löscht man nicht einfach</strong> — so machst du es sauber und nachvollziehbar.</p>
   <p class="upd">Stand: Juni 2026 · Allgemeine Info, keine Steuerberatung.</p>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+   <svg viewBox="0 0 200 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Storno-Beleg">
+    <circle cx="100" cy="88" r="80" fill="#fef3c7"/>
+    <rect x="54" y="26" width="92" height="120" rx="11" fill="#fff" stroke="#ece3d4" stroke-width="2"/>
+    <path d="M54 37a11 11 0 0 1 11-11h70a11 11 0 0 1 11 11v9H54Z" fill="#d97706"/>
+    <rect x="68" y="60" width="64" height="7" rx="3.5" fill="#e7d9c4"/>
+    <rect x="68" y="75" width="50" height="7" rx="3.5" fill="#eee3d2"/>
+    <rect x="68" y="90" width="58" height="7" rx="3.5" fill="#eee3d2"/>
+    <rect x="68" y="105" width="38" height="7" rx="3.5" fill="#eee3d2"/>
+    <g transform="translate(96 92) rotate(-14)">
+     <circle cx="24" cy="24" r="23" fill="#fff" stroke="#dc2626" stroke-width="3"/>
+     <text x="24" y="28" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="800" fill="#dc2626">STORNO</text>
+     <line x1="6" y1="40" x2="42" y2="8" stroke="#dc2626" stroke-width="2.4"/>
+    </g>
+   </svg>
+  </div>
 </div></header>
 <main><div class="wrap">
 

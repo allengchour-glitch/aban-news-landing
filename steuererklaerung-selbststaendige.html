@@ -41,13 +41,41 @@ h2::before{content:"";position:absolute;left:0;top:.18em;bottom:.18em;width:4px;
 .box{transition:box-shadow .15s,transform .15s}
 .box:hover{box-shadow:0 7px 20px rgba(0,0,0,.07)}
 .faq details[open] summary{color:#b45309}
+.hero-flex{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.hero-txt{flex:1 1 270px;min-width:0}
+.hero-art{flex:0 0 178px;max-width:178px;margin:0 auto}
+.hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 7px 16px rgba(180,83,9,.14))}
+@media(max-width:560px){.hero-art{flex-basis:150px;max-width:150px}}
 </style>
 </head>
 <body>
-<header class="hero"><div class="wrap">
+<header class="hero"><div class="wrap hero-flex">
+  <div class="hero-txt">
   <h1>Steuererklärung für Selbstständige</h1>
   <p class="lead">Der erste Abschluss macht oft Angst — ist aber halb so wild, wenn du das ganze Jahr ordentlich sammelst. Hier der einfache Überblick: Unterlagen, Gewinn-Ermittlung, Absetzbares und Fristen.</p>
   <p class="upd">Stand: Juni 2026 · Allgemeine Info, keine Steuerberatung.</p>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+   <svg viewBox="0 0 200 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Steuerunterlagen">
+    <circle cx="100" cy="88" r="80" fill="#fef3c7"/>
+    <rect x="50" y="32" width="86" height="108" rx="10" fill="#fff" stroke="#ece3d4" stroke-width="2"/>
+    <rect x="74" y="26" width="38" height="14" rx="5" fill="#d97706"/>
+    <g stroke="#059669" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+     <path d="M62 58l3.4 3.4 6-7"/><path d="M62 80l3.4 3.4 6-7"/><path d="M62 102l3.4 3.4 6-7"/>
+    </g>
+    <g>
+     <rect x="80" y="55" width="44" height="7" rx="3.5" fill="#e7d9c4"/>
+     <rect x="80" y="77" width="44" height="7" rx="3.5" fill="#eee3d2"/>
+     <rect x="80" y="99" width="34" height="7" rx="3.5" fill="#eee3d2"/>
+    </g>
+    <g>
+     <ellipse cx="132" cy="126" rx="24" ry="9" fill="#f0a93a" stroke="#b45309" stroke-width="2"/>
+     <ellipse cx="132" cy="117" rx="24" ry="9" fill="#fbbf24" stroke="#b45309" stroke-width="2"/>
+     <ellipse cx="132" cy="108" rx="24" ry="9" fill="#fcd34d" stroke="#b45309" stroke-width="2"/>
+     <text x="132" y="112" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="800" fill="#b45309">%</text>
+    </g>
+   </svg>
+  </div>
 </div></header>
 <main><div class="wrap">
 
