@@ -6,8 +6,8 @@ on:
       - 'automatisierung-radar/**'
   # Auto-Aktualisierung: wöchentlich neu bauen (frisches sitemap-lastmod / RSS) und
   # neue Tools/Vergleichsseiten automatisch veröffentlichen, sobald sie in den Daten landen.
-  schedule:
-    - cron: '17 4 * * 1'
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '17 4 * * 1'
   workflow_dispatch:
 
 jobs:

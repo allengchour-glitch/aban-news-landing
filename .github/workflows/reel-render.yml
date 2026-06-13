@@ -6,8 +6,8 @@ name: Reel Auto-Render (Nachschub für die Queue)
 # Läuft komplett gratis auf GitHub-Infra. Erweiterung der Vielfalt = mehr Zeilen in good_products.csv.
 
 on:
-  schedule:
-    - cron: '0 1 */2 * *'   # alle 4h, um 01/05/09/13/17/21 Uhr UTC
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 1 */2 * *'   # alle 4h, um 01/05/09/13/17/21 Uhr UTC
   workflow_dispatch:
     inputs:
       n:

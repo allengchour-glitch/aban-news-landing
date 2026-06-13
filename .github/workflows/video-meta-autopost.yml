@@ -11,10 +11,10 @@ name: Social Meta Video Auto-Post (IG Reels + FB + Threads)
 # Ohne Secrets = sauberer No-Op.
 
 on:
-  schedule:
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
     # 2×/Tag auf den datengeprüften Top-Reichweiten-Slots: 09:00 & 20:00 UTC (≈ 11:00 / 22:00 CH)
     # (IG-Analyse 11.06.: 09h Ø141 Reach, 20h Ø112 — Reels sind der Reichweiten-Motor → beste Slots.)
-    - cron: '0 9 * * *'
+    # - cron: '0 9 * * *'
     # - cron: '0 20 * * *'   # PAUSIERT 2026-06-13 (Cron-Diaet) — 1x/Tag reicht
   workflow_dispatch:
     inputs:

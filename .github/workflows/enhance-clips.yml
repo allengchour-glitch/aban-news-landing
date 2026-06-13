@@ -15,8 +15,8 @@ on:
         description: 'Nur testen'
         type: boolean
         default: false
-  schedule:
-    - cron: '20 5 */2 * *'   # täglich 1 Charge veredelte Clips erzeugen
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '20 5 */2 * *'   # täglich 1 Charge veredelte Clips erzeugen
 
 permissions:
   contents: write

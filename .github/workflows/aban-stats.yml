@@ -6,8 +6,8 @@ name: ABAN Files stats (Analyst/Grower)
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 8 * * 1"   # jeden Montag 08:00 UTC
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: "0 8 * * 1"   # jeden Montag 08:00 UTC
 
 permissions:
   contents: write

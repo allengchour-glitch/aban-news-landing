@@ -4,8 +4,8 @@ name: Telegram Steuerbot
 # Reagiert NUR auf TELEGRAM_OWNER_ID. No-op ohne Secrets. Cron nur vom Default-Branch.
 
 on:
-  schedule:
-    - cron: '0 7 * * *'   # 1x/Tag (Cron-Diaet 2026-06-13, GitHub-Last); sofort via Dispatch
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 7 * * *'   # 1x/Tag (Cron-Diaet 2026-06-13, GitHub-Last); sofort via Dispatch
   workflow_dispatch:
 
 permissions:

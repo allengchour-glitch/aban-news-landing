@@ -11,8 +11,8 @@ on:
       - 'data/tools.json'
       - '**/data/anbieter.json'
       - 'daten-produkt/generate_datensatz.py'
-  schedule:
-    - cron: '0 4 1 * *'   # zusätzlich monatlich (1. um 04:00 UTC)
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 4 1 * *'   # zusätzlich monatlich (1. um 04:00 UTC)
   workflow_dispatch:
 
 permissions:

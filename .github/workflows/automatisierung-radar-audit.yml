@@ -6,8 +6,8 @@ name: Automatisierungs-Radar — Daten-Wächter (KI)
 # Key wird der Schritt übersprungen (Check bleibt grün, kein Hard-Fail).
 
 on:
-  schedule:
-    - cron: '41 6 * * 1'
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '41 6 * * 1'
   workflow_dispatch:
 
 jobs:

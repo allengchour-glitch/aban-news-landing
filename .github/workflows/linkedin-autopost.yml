@@ -5,8 +5,8 @@ name: LinkedIn Autopost
 # Cron laeuft nur vom Default-Branch (main).
 
 on:
-  schedule:
-    - cron: '0 8 * * 1-5'   # Mo–Fr 08:00 UTC
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 8 * * 1-5'   # Mo–Fr 08:00 UTC
   workflow_dispatch:
 
 permissions:

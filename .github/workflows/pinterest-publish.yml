@@ -16,8 +16,8 @@ on:
         description: 'Nur testen (true/false)'
         required: false
         default: 'false'
-  schedule:
-    - cron: '0 9 * * 1,4'   # Mo & Do 09:00 UTC — passt zum "2×/Woche je 5 Pins"
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 9 * * 1,4'   # Mo & Do 09:00 UTC — passt zum "2×/Woche je 5 Pins"
 
 permissions:
   contents: write

@@ -4,8 +4,8 @@ name: Telegram Autopost
 # in den Telegram-Kanal. No-op ohne Secrets. Cron laeuft nur vom Default-Branch.
 
 on:
-  schedule:
-    - cron: '30 6 * * 1-5'   # Mo–Fr 06:30 UTC
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '30 6 * * 1-5'   # Mo–Fr 06:30 UTC
   workflow_dispatch:
 
 permissions:

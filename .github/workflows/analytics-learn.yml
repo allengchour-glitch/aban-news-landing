@@ -6,8 +6,8 @@ name: Analytics Learn (TikTok → bessere Reels)
 # No-op-safe: kein Handle/keine Daten → nichts passiert.
 
 on:
-  schedule:
-    - cron: '0 6 * * *'        # TÄGLICH 06:00 UTC (~08:00 CH) — regelmässige Analyse (User-Wunsch 2026-06-12)
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 6 * * *'        # TÄGLICH 06:00 UTC (~08:00 CH) — regelmässige Analyse (User-Wunsch 2026-06-12)
   workflow_dispatch:
     inputs:
       handle:

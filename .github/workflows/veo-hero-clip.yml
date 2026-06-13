@@ -6,8 +6,8 @@ name: Veo Hero-Clip
 # eine Komma-Liste (Batch). Bild-Input via image.bytesBase64Encoded.
 
 on:
-  schedule:
-    - cron: '0 5 * * 1'   # woechentlich Montag 05:00 UTC (Budget)
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 5 * * 1'   # woechentlich Montag 05:00 UTC (Budget)
   workflow_dispatch:
     inputs:
       only:

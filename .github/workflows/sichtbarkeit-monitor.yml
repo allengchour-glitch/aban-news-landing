@@ -1,8 +1,8 @@
 name: KI-Sichtbarkeits-Monitor — Monats-Report
 
 on:
-  schedule:
-    - cron: '0 6 1 * *'   # am 1. jeden Monats, 06:00 UTC
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 6 1 * *'   # am 1. jeden Monats, 06:00 UTC
   workflow_dispatch:
 
 jobs:

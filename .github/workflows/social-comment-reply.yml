@@ -5,8 +5,8 @@ name: Social Comment Auto-Reply (IG + FB)
 # No-op ohne Meta-Tokens. DRY_RUN per Dispatch-Input.
 
 on:
-  schedule:
-    - cron: '20 7,13,18 * * *'   # 3×/Tag (versetzt zur Moderation)
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '20 7,13,18 * * *'   # 3×/Tag (versetzt zur Moderation)
   workflow_dispatch:
     inputs:
       dry_run:

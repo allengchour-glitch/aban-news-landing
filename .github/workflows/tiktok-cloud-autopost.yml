@@ -5,8 +5,8 @@ name: TikTok Cloud Auto-Post (Browserbase)
 # wenn TikTok-Login im Context fehlt. Manueller Dispatch mit dry_run zum Testen.
 
 on:
-  schedule:
-    - cron: '40 9 * * *'   # täglich 09:40 UTC (~11:40 CH — gute TikTok-Zeit lt. Analyse)
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '40 9 * * *'   # täglich 09:40 UTC (~11:40 CH — gute TikTok-Zeit lt. Analyse)
   workflow_dispatch:
     inputs:
       dry_run:

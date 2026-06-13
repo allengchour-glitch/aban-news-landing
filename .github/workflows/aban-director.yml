@@ -8,8 +8,8 @@ name: ABAN Files director (autonom, alle 4h)
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 */12 * * *"   # alle 4 Stunden
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: "0 */12 * * *"   # alle 4 Stunden
 
 permissions:
   contents: write

@@ -12,8 +12,8 @@ name: TikTok Auto-Post
 # REPO_ADMIN_PAT mit `secrets: write` — sonst silent skip).
 
 on:
-  schedule:
-    - cron: '0 11 * * *'   # 11:00 UTC ≈ 13:00 CH (1×/Tag, gestaffelt zwischen IG/FB Slots)
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 11 * * *'   # 11:00 UTC ≈ 13:00 CH (1×/Tag, gestaffelt zwischen IG/FB Slots)
   workflow_dispatch:
     inputs:
       dry_run:

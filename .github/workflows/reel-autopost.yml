@@ -14,8 +14,8 @@ name: Reel Auto-Post (alle 4 Stunden 1 Reel)
 # mit status=ready stehen (Freigabe setzt ready).
 
 on:
-  schedule:
-    - cron: '0 13 * * *'   # 13:00 UTC — versetzt, damit der 09:00-Top-Slot dem Meta-Reel-Poster gehört
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 13 * * *'   # 13:00 UTC — versetzt, damit der 09:00-Top-Slot dem Meta-Reel-Poster gehört
   workflow_dispatch: {}
 
 permissions:

@@ -13,8 +13,8 @@ name: CJ Autopilot (VOLL-AUTO Produkt-Sourcing)
 # Ohne Pflicht-Secrets ist der Lauf ein sauberer No-Op.
 
 on:
-  schedule:
-    - cron: '0 6 * * *'    # täglich 06:00 UTC
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 6 * * *'    # täglich 06:00 UTC
     # - cron: '0 16 * * *'   # PAUSIERT 2026-06-13 (GitHub-Last + 0 Verkaeufe → kein 2. Import/Tag)
   workflow_dispatch:
     inputs:

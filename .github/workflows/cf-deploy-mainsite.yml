@@ -30,8 +30,8 @@ on:
       - '.github/**'
   # Sicherheitsnetz: regelmäßig deployen (fängt auch Bot-Commits mit [skip ci]
   # ab, z. B. frische Märkte-Daten).
-  schedule:
-    - cron: '20 */6 * * *'
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '20 */6 * * *'
   workflow_dispatch:
     inputs:
       project:

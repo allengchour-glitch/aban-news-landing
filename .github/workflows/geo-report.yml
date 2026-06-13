@@ -10,8 +10,8 @@ name: GEO-Report (monatlich)
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 6 1 * *'   # am 1. jeden Monats, 06:00 UTC
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 6 1 * *'   # am 1. jeden Monats, 06:00 UTC
 
 permissions:
   contents: read

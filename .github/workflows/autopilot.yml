@@ -7,8 +7,8 @@ name: aban Autopilot
 # 05:00 UTC = vor dem 06:00-Verbesserungs-Scan, der den Tages-Digest (inkl. Wachstum) schickt.
 
 on:
-  schedule:
-    - cron: '0 5 */2 * *'   # jeden 2. Tag, 05:00 UTC (Gemini-Autopilot)
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 5 */2 * *'   # jeden 2. Tag, 05:00 UTC (Gemini-Autopilot)
   workflow_dispatch:
 
 permissions:

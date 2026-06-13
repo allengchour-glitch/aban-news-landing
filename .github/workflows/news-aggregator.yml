@@ -4,8 +4,8 @@ name: KI-News-Aggregator (täglich)
 # und committet es als automation/news-roh-aktuell.md (Kuratier-Vorlage).
 # Erfindet nichts — verlinkt echte Quellen. Du wählst & schreibst die Ausgabe.
 on:
-  schedule:
-    - cron: '0 5 * * 1-5'      # Mo–Fr 05:00 UTC (vor deinem Newsletter-Slot)
+  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
+    # - cron: '0 5 * * 1-5'      # Mo–Fr 05:00 UTC (vor deinem Newsletter-Slot)
   workflow_dispatch:
 
 permissions:
