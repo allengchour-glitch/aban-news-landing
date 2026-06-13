@@ -105,6 +105,16 @@ Der User hat **zwei** Luma-Zugänge — nicht verwechseln:
      Schreibzugriff (stagedUploadsCreate/productCreateMedia laufen darüber). Der Custom-App-Key (Client-ID
      `1ec59277…`) ist nur für den Standalone-Node-Lauf/Workflow gedacht — User kann ihn jederzeit rotieren.
 
+## 💰 PREIS-LEHRE (WICHTIG, 2026-06-13) — ray-3.2 ist TEUER
+Empirisch belegt aus zwei Konten:
+- **Dream-Machine `ray-flash-2`** (api.lumalabs.ai): **$10 → 57 Clips** ≈ **~$0.17/Clip** (720p, 5 s). GÜNSTIG.
+- **Agents `ray-3.2`** (agents.lumalabs.ai): **$100 → ~33 Clips** ≈ **~$3/Clip** (720p, 5 s). ~17× TEURER!
+- **Konsequenz:** Für VOLUMEN (ganzer Katalog) **`ray-flash-2` nehmen** → das alte Dream-Machine-Konto aufladen
+  (Key `luma-<uuid>…`), nicht das Agents-Konto. $20 dort ≈ ~115 Clips. ray-3.2 nur für wenige Hero-Produkte,
+  wo Premium-Bewegung den Aufpreis wert ist.
+- **Beide Konten aktuell $0.** 90 Videos total geliefert (57 via flash + 33 via ray-3.2).
+- Tools: `luma_product_video.mjs` = Dream-Machine/ray-flash-2 (günstig); `luma_agents_video.mjs` = Agents/ray-3.2 (teuer).
+
 ## Aktivierung (1 Schritt je Weg)
 - **C:** `LUMA_API_KEY` als GitHub-Secret (oder transient in die Session geben) → ich starte den Lauf.
 - **A:** PC-Claude „AE-Videos holen" sagen (Brave läuft mit Port 9222).
