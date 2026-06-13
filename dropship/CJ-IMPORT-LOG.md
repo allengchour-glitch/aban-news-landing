@@ -13,6 +13,27 @@
 > ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
 > bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
 
+## Session 2026-06-13 (ABEND) — +10 Röcke & Schuhe (User-Wunsch „mehr röcke und männer schue und frauen")
+- **Umgebung:** Shopify-MCP live · CJ-Token aus `/tmp/cj_token.json` gültig. CJ-Suche via Playwright-`request`
+  (Header `CJ-Access-Token`), 3-Runden harter Namensfilter (CJ-Suche ist lose/OR — viel Rauschen).
+- **🛑 CJ-Röcke sind dünn:** echte Standalone-Röcke selten, meist Shirt+Rock-**Sets** (NICHT als „Rock"
+  fehldeklarieren). Nur 2 saubere Röcke gefunden. Schuhe dagegen ergiebig.
+- **Alle 10 ACTIVE + 6 Kanäle publiziert (publishablePublish) + je 5 Bilder READY (0 FAILED).** Tags so,
+  dass Smart-Collections automatisch greifen: Schuhe→TAG `schuhe` (99→107), Röcke→Titel enthält „Rock" (7→9),
+  `damen`/`herren` für Damen-Mode. Preise CHF, Grössen-/Farb-Varianten mit echten CJ-SKUs, `inventory tracked:false`.
+- **👗 Röcke (2):** Wide-Leg Midi-Rock «Studio» (6 Farben, Freigröße, 29.90 · pid 2606130139311614600 · Prod 15430344311169) ·
+  Polka-Dot Wickel-Rock «Dolce» (S/M/L, 34.90 · pid 2606130136361602900 · Prod 15430344409473).
+- **👠 Damen-Schuhe (4):** High-Heel-Sandalette «Capri» (35–46, 44.90 · pid 2606120338101618400 · 15430344442241) ·
+  Sommer-Sandalen «Lido» (34–42, 32.90 · pid 2606120601091615400 · 15430344475009) ·
+  Beach-Slides «Maré» (36–41, 29.90 · pid 2606130822201635500 · 15430344507777) ·
+  Komfort-Sandalen «Estate» (35–42, 29.90 · pid 2606120821551639800 · 15430344573313).
+- **👟 Herren-Schuhe (4):** High-Top-Sneaker «Brooklyn» (38–44, 44.90 · pid 2606110809421629200 · 15430344606081) ·
+  Leder-Sandalen «Adriano» (38–46, 49.90 · pid 2606100911071624600 · 15430344638849) ·
+  Sport-Sneaker «Velocità» (39–46, 54.90 · pid 2606100634171621400 · 15430344671617) ·
+  Trainingsschuhe «Forza» (36–46, 54.90 · pid 2606100712371625100 · 15430344704385).
+- **Lehre Bild-Falle:** alle CJ-`quick/product/…`-URLs vor Anlage per HEAD/GET 200-geprüft (alle 6/Produkt ok).
+  Grössen-Parser muss BEIDE Schemata können: Schuh-Nummern 33–46 UND Konfektion S/M/L (sonst Röcke = 0 Varianten).
+
 ## Session 2026-06-07 — Conversion-QA + Ad-Landing bereinigt (Branch `claude/luxestyle-product-CizQ6`)
 - **Umgebung:** Shopify-MCP verbunden (LuxeStyle/au3j0y-hq/CHF ✅). **CJ_EMAIL/CJ_API_KEY NICHT gesetzt**
   → keine neuen CJ-Importe. Conversion-First-Routine (§10) gefahren. **0 Autopilot-Drafts** (`tag:autopilot-needs-copy`).
