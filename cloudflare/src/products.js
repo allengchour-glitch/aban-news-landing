@@ -145,5 +145,20 @@ export const PRODUCTS = [
     "name": "herren-titan-stahl-ring-vertex-vintage",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0dcc4a69-17b8-45e4-8949-011a227c3196_73e5c679-05e5-4d28-b9dc-bfa8b889fe55.jpg?v=1781387554",
     "label": "Herren-Ring «Vertex»"
+  },
+  {
+    "name": "pave-perlohrringe-goccia-925-silber-tropfen",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b0ed05a4-c623-4179-b4af-ee086cf4bd50_234f5c9d-1b7b-409b-8c87-1e66a270bff8.jpg?v=1781390559",
+    "label": "Perlohrringe «Goccia»"
+  },
+  {
+    "name": "925-silber-armband-onda-kleeblatt-glieder",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d50e23a2-9105-47e2-b525-60e8bef38503.jpg?v=1781390610",
+    "label": "925-Armband «Onda»"
+  },
+  {
+    "name": "925-silber-armband-fiore-bluten-verstellbar",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/95d42e9f-196c-4739-81a2-7226930c8042.jpg?v=1781390590",
+    "label": "925-Armband «Fiore»"
   }
 ];
