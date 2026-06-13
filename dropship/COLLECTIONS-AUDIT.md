@@ -19,7 +19,7 @@ Footer/Landing: `sommer-2026` · Ad-Landing (NICHT löschen): `sommer` · Homepa
 Saisonal-Kampagnen (behalten): `vatertag-2026-papa, weihnachten-2026, halloween-2026, black-friday-2026,
 silvester-neujahr` · Struktur: `fur-sie, reisen-sommer, premium-beauty`
 
-## 🔴 LÖSCHEN EMPFOHLEN — klare Karteileichen aus Alt-Sessions (nicht im Menü) — **21**
+## ✅ GELÖSCHT (2026-06-13) — 21 Karteileichen entfernt
 **„Premium ·"-Emoji-Set (alt, redundant mit Hauptkategorien) — 13:**
 `premium-wellness, premium-tech, 🎯-hero-spotlight, 🌍-premium-reise-outdoor, 🏠-premium-wohnen,
 💎-premium-schmuck-1, 💡-premium-beleuchtung, premium-fitness-yoga, 🌸-premium-aromatherapy,
