@@ -105,6 +105,20 @@ Der User hat **zwei** Luma-Zugänge — nicht verwechseln:
      Schreibzugriff (stagedUploadsCreate/productCreateMedia laufen darüber). Der Custom-App-Key (Client-ID
      `1ec59277…`) ist nur für den Standalone-Node-Lauf/Workflow gedacht — User kann ihn jederzeit rotieren.
 
+## 🏦 LUMA-GUTHABEN (gemerkt für später — Videos/Reels/Stories) — Stand 2026-06-13
+- **Dream-Machine-Konto (Flash) hat ~10 000 Credits ≈ $100 ≈ CHF 90 ≈ ~550 Flash-Clips.** Aufgeladen vom User.
+  Einheit = **Luma-Credits** (1 Credit ≈ $0.01; Flash-Clip ≈ ~17–18 Credits). NICHT „10 000 Fr".
+  Balance prüfen: `GET https://api.lumalabs.ai/dream-machine/v1/credits` mit dem **Dream-Machine-Key** (Format
+  `luma-<uuid>-<uuid>`, als GitHub-Secret `LUMA_API_KEY`). **Agents-Konto (ray-3.2) ist LEER.**
+- **Verwenden für (User-Wunsch „für später merken"):** weitere **Produktvideos** (restlicher Katalog),
+  **Social-Reels** (TikTok/IG/FB) und **Stories** — alles aus Produkt-/Lifestyle-Bildern via Image-to-Video.
+  Immer **Flash (`ray-flash-2`)** nehmen (günstig), NICHT ray-3.2.
+- **Tools dafür:** `automation/luma_product_video.mjs` (Produktvideos, generiert+hängt an) ·
+  Clips lassen sich auch in `social/video_queue.csv` / `story_queue.csv` einreihen (Reels/Stories) — Pipeline
+  `social-meta-autopost`/`video-meta-autopost`/`story-meta-autopost`. Workflow `luma-product-videos.yml` (Flash-Default).
+- **Reichweite bleibt der eigentliche Engpass** (0 Käufe) → Videos sind „nice", aber Budget für die 3 User-Klicks
+  (Pixel/CH-Kampagne/AGB) bringt mehr Käufe. Videos parallel als Dauer-Asset aufbauen.
+
 ## 💰 PREIS-LEHRE (WICHTIG, 2026-06-13) — ray-3.2 ist TEUER
 Empirisch belegt aus zwei Konten:
 - **Dream-Machine `ray-flash-2`** (api.lumalabs.ai): **$10 → 57 Clips** ≈ **~$0.17/Clip** (720p, 5 s). GÜNSTIG.

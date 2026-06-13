@@ -59,6 +59,10 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **🔑 Luma-Key:** User hat einen gültigen Key (Format `luma-<uuid>-<uuid>`, „lumalabs"). Der zweite (`luma-api-…`)
   ist FALSCH (403). **Key NICHT ins Repo** — transient nutzen oder als Secret `LUMA_API_KEY`. Attach aus der Cloud
   geht ohne Shopify-Admin-Token via **MCP (stagedUploadsCreate+productCreateMedia) + `curl` für die Bytes**.
+- **🏦 LUMA-GUTHABEN (für später gemerkt, User 2026-06-13):** Dream-Machine-Konto (Flash) hat **~10 000 Credits
+  ≈ $100 ≈ ~550 Flash-Clips** (1 Credit ≈ $0.01). **Für künftige Videos/Reels/Stories nutzen — immer `ray-flash-2`
+  (günstig), NIE ray-3.2 (~$3/Clip, Agents-Konto leer).** Details + Tools: `dropship/PRODUKT-VIDEOS.md`.
+  Bisher **~90 Produktvideos** live; Rest des Katalogs + Social-Reels/Stories damit machbar.
 
 **📌 2026-06-12 (Autonomie verankert + Schweizer-Follower-Maschine):**
 - **🔒 AUTONOMIE-REGEL (FEST, User 2026-06-12 „verankern"):** Laufender Betrieb = **vollautonom ohne PowerShell**
