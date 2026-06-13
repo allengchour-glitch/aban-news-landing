@@ -39,6 +39,14 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — GRATIS-DAUER-AUTOMATION für Pinterest (Actions-Sperre umgangen):**
+- **Cloudflare-Cron-Worker** `workers/pinterest-cron/` gebaut: postet Pins aus `pinterest_pins.csv`
+  per Cron (Mo & Do 09:00), idempotent via KV. **Gratis für immer, keine Kreditkarte, kein Actions/GitLab-Minuten.**
+  Setup-README dabei. Auch GitLab-CI-Job `pinterest-publish` existiert als Alternative (`.gitlab-ci.yml`).
+- ⚠️ **Einziger Blocker bleibt Pinterest „Standard Access"** (Trial-App → `401 consumer type not supported`).
+  Kein Runner umgeht das — nur User/Pinterest-Review. Bis dahin: Shopify-Pinterest-Kanal (verbunden, postet
+  Produkt-Pins gratis automatisch) + Bulk-Upload. Deployen + Pinterest-Secret setzen kann nur der User.
+
 **2026-06-13 — Trust-Konsistenz Unterkategorien + Status-Report (autonom, live):**
 - **Alle 20 Menü-Unterkategorien** (sub-roecke/bademode/ohrringe/armbaender/ringe/beleuchtung/deko/aroma-diffuser/
   massage/uhren/bart-rasur/yoga-fitness/trinkflaschen/baby-kids/haustier/reise/kueche + grill-bbq/auto-handy/handy-zubehoer)
