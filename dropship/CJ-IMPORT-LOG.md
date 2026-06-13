@@ -13,6 +13,19 @@
 > ⚠️ MagSafe-Ladehalter (`CJDZ2843480001`) auf DRAFT: alle Bild-URLs 404 → nicht verkäuflich,
 > bis echtes CJ-Produkt mit gültigen Bildern gefunden. Tag `bild-fehlt-nicht-live-schalten`.
 
+## Session 2026-06-13 (NACHT) — High-End-Elektronik: CJ-DECKE bestätigt (+1 ehrliches Produkt)
+- **User-Wunsch „elektro high end geräte".** ⚠️ **WICHTIGE LEHRE (Zeit sparen): CJ hat über diesen Account
+  KEINE echten High-End-Elektrogeräte.** 3 Suchrunden (earbuds/kopfhörer/speaker/beamer/massage-gun/rasierer/
+  smartwatch/wireless-charger/ANC) + rohe Diagnose: Keyword-Suche liefert fast nur IRRELEVANTEN Müll (Kleider,
+  Adventskalender, Haarbürsten, Wasserpistolen, T-Shirts) bzw. Billig-Gimmicks (Pillow-Speaker, Smartwatch-
+  Earbud-Combo, 5-in-1-Ladegerät). Beamer/Massage-Gun/Rasierer/Smartwatch/Charger/ANC = **0 brauchbare Treffer.**
+  → **Nicht erneut stundenlang suchen.** Für echte Elektronik braucht es einen anderen Lieferanten.
+- **User-Entscheidung (AskUserQuestion): „1+2"** = beste ehrliche Tech importieren + weitere Nischen testen.
+  Nischen getestet (Runde 3) = 0. Ehrlich importiert = **1 Produkt** (kein Müll als „High-End" fehldeklariert):
+  **Open-Ear Wireless-Kopfhörer «Aria»** (Clip-Design, Bluetooth, Schwarz/Violett/Grün, 49.90 ·
+  pid 2606100756421603800 · Prod 15430386712961) — ehrlich als Qualitäts-Tech (Tags tech/gadget), NICHT `highend`.
+  Open-Ear-Clip-Earbuds sind ein echter 2026-Trend. ACTIVE + 6 Kanäle + 5 Bilder READY.
+
 ## Session 2026-06-13 (SPÄT) — +6 High-End / Luxus (User-Wunsch „high end produkten")
 - **Honest-Curation:** CJ-Premium ist begrenzt. **Uhren & Echtleder-Geldbörsen/-Gürtel = NICHT in Premium-Qualität**
   verfügbar (Billigwerke / PU statt Echtleder) → bewusst NICHT angelegt (keine Fehldeklaration). Shop hat eh 5★-Herrenuhr.
