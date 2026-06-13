@@ -39,6 +39,13 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Webseite weiter poliert (Qualitäts-Sweep):**
+- **13 brandneue Produkte** (nach Enrich importiert: Ringe/Sonnenbrillen/Cap/Taschen/Silberschmuck) mit **SEO + Kategorie**
+  versehen; 3 weitere mit Kategorie; **2 Collections** (self-care-wellness-1, schule-buro) mit SEO-Meta. 0 Fehler.
+- **Routine:** neue Importe sammeln sich → `automation/catalog_enrich.py` (Kategorie+SEO) + bei Bedarf SEO/Kat manuell
+  für die allerneuesten nachziehen (wie hier). ⚠️ Offen-Befund: die 3 `[ARCHIV]`-Collections haben kaputt-escapte
+  Beschreibungen (&lt;p&gt;) — falls sie noch publiziert sind, entescapen oder depublizieren.
+
 **2026-06-13 — Menü Herren entdoppelt + Schuhe + Trust-Zeile überall:**
 - **Herren-Dropdown** (`main-menu` id 310224093569): doppelte Uhr entfernt → „Uhren & Schmuck" umbenannt zu
   „💎 Schmuck"; **„👟 Schuhe" (/collections/schuhe) neu** ergänzt. Reihenfolge: Für Ihn · ⌚ Uhren · 💎 Schmuck ·
