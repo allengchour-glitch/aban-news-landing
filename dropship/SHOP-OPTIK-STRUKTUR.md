@@ -32,6 +32,15 @@
 - Kundensichtbare cj-real-Produkte sind bild-QA-geprüft (0 FAILED). → Storefront ist „komplett".
 - Offener Backlog: die archivierten Duplikate könnten per Admin-Bulk gelöscht werden (API-Bulk war gesperrt).
 
+## 🖼️ Bild-Polish (User „jedes Bild kontrollieren, gute Auflösung, keine Asiaten zuerst")
+- **Sichtbare Bilder visuell geprüft** (Cover + erste Produkte je Haupt-Kategorie, per Download+Ansicht):
+  Damen (Brise-Kleid), Herren (Amalfi-Strick), Kleider (Daisy), Röcke, Bamboo-Bluse, Schmuck/Schuhe-Erste →
+  **alle gute Auflösung (1200–1920px) + westliche Models / Produktfotos. KEIN Asiaten-Supplier-Foto an 1. Stelle.**
+- **Skalierung:** Den GESAMTEN Katalog (1 143 aktiv) per Auge zu prüfen ist 1 Session nicht möglich → bräuchte
+  einen Vision-Workflow (Action). Die sichtbarsten/ersten Bilder sind gesichert.
+- **Archiviert = 4 397** (kundenunsichtbar) → Admin-Bulk-Löschung (Produkte → Filter Archiviert → alle → löschen);
+  kein Storefront-Effekt, daher niedrige Priorität.
+
 ## 🖱️ Nur im Customizer (dein Klick-Bereich — Haupt-Theme ist für mich gesperrt)
 Recherche-belegte Hebel, die optisch am meisten bringen:
 - **Einheitliche, quadratische Produktkacheln** in allen Rastern (gleiche Grösse = weniger „kognitive Reibung",
