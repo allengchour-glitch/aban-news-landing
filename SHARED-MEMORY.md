@@ -39,6 +39,11 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — 21 Duplikat-Collections gelöscht:** Die alten „Premium ·"-Emoji-Collections (13) + das
+Englisch-Auto-Gen-Set (8) entfernt (collectionDelete, 0 Fehler) → ~181 → ~160 Collections. Voller Audit:
+`dropship/COLLECTIONS-AUDIT.md`. Offen (auf User-OK): ~11 exakte sub-Duplikate; ⚠️ kaputte Smart-Regeln
+`launch-week` (2386) & `hochzeitsgeschenke` (2310) — Regeln verengen.
+
 **2026-06-13 — Collections „sauber" gemacht:**
 - **7 Collections bereinigt:** kaputt-escapte Archiv-Beschreibungen (literal <p>) entescaped; **interne Sprache, die an
   Kund:innen durchsickerte** entfernt (tiktok-ads-ready→„✨ Im Video vorgestellt", top-5-start→„🏆 Top 5 Favoriten",
