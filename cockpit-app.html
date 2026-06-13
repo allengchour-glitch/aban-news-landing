@@ -78,6 +78,46 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   #print-doc td.n,#print-doc th.n{text-align:right}
   #print-doc .pi-tot{margin-top:14px;float:right;text-align:right}
   #print-doc .pi-foot{clear:both;margin-top:46px;font-size:11px;color:#444;border-top:1px solid #ccc;padding-top:8px}}
+/* Lernen */
+.disc{background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:11px 13px;font-size:.82rem;color:var(--ink2);margin-bottom:14px}
+.tipday{background:var(--amber-dk);color:#fff;border-radius:12px;padding:13px 16px;margin-bottom:14px}
+.tipday b{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;opacity:.85;margin-bottom:3px}
+.tipday p{font-size:.95rem;font-weight:600;line-height:1.4}
+.ltabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.ltabs button{background:transparent;border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;font-weight:700;color:var(--ink2);font-size:.82rem}
+.ltabs button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+.lsec{display:none}.lsec.on{display:block;animation:fade .2s ease}
+.lsearch{margin-bottom:12px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.chips button{background:var(--field);border:1px solid var(--line);border-radius:999px;padding:5px 11px;cursor:pointer;font-size:.78rem;font-weight:600;color:var(--ink2)}
+.chips button.on{background:var(--cream);border-color:var(--amber);color:var(--amber-dk)}
+.lcard{border:1px solid var(--line);border-radius:11px;margin-bottom:9px;background:var(--card);overflow:hidden}
+.lcard>summary{padding:12px 14px;cursor:pointer;font-weight:700;font-size:.93rem;list-style:none;position:relative;padding-right:34px}
+.lcard>summary::-webkit-details-marker{display:none}
+.lcard>summary::after{content:"▸";position:absolute;right:14px;top:12px;color:var(--amber);transition:transform .2s}
+.lcard[open]>summary::after{transform:rotate(90deg)}
+.lcard .scat{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.lcard .simple{padding:2px 14px 10px;color:var(--ink);font-size:.9rem}
+.lcard .deep{padding:0 14px 12px;font-size:.87rem;color:var(--ink2);line-height:1.55}
+.lcard .lread-row{padding:0 14px 12px}
+#l_lessons.easy .lcard .deep{display:none}
+.gli{border:1px solid var(--line);border-radius:9px;padding:9px 12px;margin-bottom:7px;font-size:.86rem;line-height:1.5;background:var(--card)}
+.gli b{color:var(--amber-dk)}
+.qcard{border:1px solid var(--line);border-radius:11px;padding:14px;margin-bottom:10px;background:var(--card)}
+.qopt{display:block;width:100%;text-align:left;border:1px solid var(--line);border-radius:8px;padding:9px 11px;margin:6px 0;background:var(--field);cursor:pointer;font-size:.88rem;font-weight:600;color:var(--ink2)}
+.qopt.right{background:#e8f6ee;border-color:var(--ok);color:#06623b}
+.qopt.wrong{background:#fbeaea;border-color:var(--bad);color:var(--bad)}
+.qexp{font-size:.82rem;color:var(--muted);margin-top:6px;display:none}
+.chk{display:flex;align-items:flex-start;gap:9px;border:1px solid var(--line);border-radius:9px;padding:10px 12px;margin-bottom:7px;font-size:.9rem;cursor:pointer;background:var(--card)}
+.chk input{width:auto;margin-top:3px}
+.prog{height:10px;background:var(--line);border-radius:999px;overflow:hidden;margin:8px 0 4px}
+.prog>i{display:block;height:100%;background:var(--ok);border-radius:999px;transition:width .35s}
+.gobtn{display:inline-block;margin-top:8px;font-size:.82rem;font-weight:700;color:var(--amber-dk);border:1px solid var(--amber-lt);border-radius:8px;padding:5px 10px;text-decoration:none;cursor:pointer;background:transparent}
+.lhead{display:flex;justify-content:flex-end;margin-bottom:10px}
+.toggle{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;font-weight:600;color:var(--ink2);cursor:pointer}
+.toggle input{width:auto}
+.path-step{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:9px;background:var(--card)}
+.path-step .num{flex:none;width:28px;height:28px;border-radius:999px;background:var(--amber-dk);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.85rem}
 </style>
 </head>
 <body>
@@ -91,6 +131,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     <button data-v="kasse">📒 Kassenbuch</button>
     <button data-v="rechner">🔢 Rechner</button>
     <button data-v="trading">📈 Trading</button>
+    <button data-v="lernen">📚 Lernen</button>
     <button data-v="mahnung">⏰ Mahnung &amp; E-Mail</button>
     <button data-v="stamm">⚙️ Stammdaten</button>
   </nav>
@@ -314,6 +355,49 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
         <div class="fld"><label>Richtung</label><div class="seg" id="lq_seg"><button data-d="long" class="on">Long</button><button data-d="short">Short</button></div></div></div>
       <div class="out" id="lq_out"></div>
       <p class="note">Vereinfachte Näherung (isolierte Margin, ohne Gebühren/Funding). Echte Börsen rechnen leicht abweichend — nur zur Orientierung.</p></div>
+  </section>
+
+  <!-- LERNEN -->
+  <section class="view" id="v-lernen">
+    <h1>Lernen — Geld &amp; Trading <span class="pill">ehrlich erklärt</span></h1>
+    <p class="sub">Von Grund auf verständlich: sparen, investieren, Risiko, Trading — Schritt für Schritt, ohne Hype. <strong>Keine Anlageberatung.</strong></p>
+    <div class="disc">⚠️ Dies ist Bildung, keine Anlage-, Steuer- oder Rechtsberatung. Kapitalmärkte sind riskant — du kannst Geld verlieren. Investiere nur, was du verschmerzen kannst.</div>
+    <div class="tipday"><b>💡 Tipp des Tages</b><p id="l_tiptext"></p></div>
+    <div class="ltabs" id="l_tabs">
+      <button data-l="pfad" class="on">🧭 Start hier</button>
+      <button data-l="lekt">📖 Lektionen</button>
+      <button data-l="tipps">💡 Tipps</button>
+      <button data-l="gloss">📔 Glossar</button>
+      <button data-l="quiz">❓ Quiz</button>
+      <button data-l="check">✅ Checkliste</button>
+    </div>
+    <div class="lsec on" id="ls-pfad">
+      <div class="panel"><strong>📈 Dein Fortschritt</strong><div id="l_prog"></div></div>
+      <p class="sub">Neu hier? Folge dem Pfad von oben nach unten — vom Geld-Basiswissen bis zum ersten Trade.</p>
+      <div id="l_path"></div>
+    </div>
+    <div class="lsec" id="ls-lekt">
+      <div class="lhead"><label class="toggle"><input type="checkbox" id="l_easy"> Einfach-Modus (nur Kurzfassung)</label></div>
+      <input class="lsearch" id="l_search" placeholder="🔍 Lektion suchen …">
+      <div class="chips" id="l_chips"></div>
+      <div id="l_lessons"></div>
+    </div>
+    <div class="lsec" id="ls-tipps">
+      <input class="lsearch" id="l_tsearch" placeholder="🔍 Tipp suchen …">
+      <div id="l_tips"></div>
+    </div>
+    <div class="lsec" id="ls-gloss">
+      <input class="lsearch" id="l_gsearch" placeholder="🔍 Begriff suchen …">
+      <div id="l_gloss"></div>
+    </div>
+    <div class="lsec" id="ls-quiz">
+      <div class="panel" id="l_quizhead"></div>
+      <div id="l_quiz"></div>
+    </div>
+    <div class="lsec" id="ls-check">
+      <p class="sub">Vor JEDEM Trade durchgehen — erst wenn alles ✓ ist, überhaupt erwägen.</p>
+      <div id="l_check"></div>
+    </div>
   </section>
 
   <!-- MAHNUNG -->
@@ -633,6 +717,275 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     var move=100/L,liq=lqDir==="long"?e*(1-1/L):e*(1+1/L);
     $("#lq_out").innerHTML='<div class="box big bad"><b>'+liq.toLocaleString("de-DE",{maximumFractionDigits:4})+'</b><span>Liquidationskurs ('+lqDir+')</span></div><div class="box"><b>'+move.toLocaleString("de-DE",{maximumFractionDigits:2})+' %</b><span>Bewegung bis Liquidation</span></div><div class="box"><b>'+L+'x</b><span>Hebel</span></div>'}
   ["lq_entry","lq_lev"].forEach(function(id){$("#"+id).addEventListener("input",calcLQ)});
+
+  /* ===== Lernen ===== */
+  (function(){
+    var lroot=$("#v-lernen");if(!lroot)return;
+    function lg(k,d){return get("abanCockpit_lern_"+k,d)}
+    function ls(k,v){set("abanCockpit_lern_"+k,v)}
+    function goTab(v){var b=$('#tabs button[data-v="'+v+'"]');if(b){b.click();window.scrollTo(0,0)}}
+    var LCATS=["Grundlagen","Risiko","Hebel","Psychologie","Charts","Strategien","Krypto","Betrug","Steuern","Business"];
+    var LESSONS=[
+      {c:"Grundlagen",t:"Sparen, Investieren oder Traden?",s:"Sparen = Geld sicher parken. Investieren = langfristig Anteile halten. Traden = kurzfristig kaufen/verkaufen (riskant).",d:"Für die meisten ist Sparen (Notgroschen) plus langfristiges Investieren (z. B. ETF) der ruhige, bewährte Weg. Trading ist Vollzeit-Handwerk mit hohem Verlustrisiko — nichts, womit man nebenbei schnell reich wird.",g:""},
+      {c:"Grundlagen",t:"Anlageklassen einfach erklärt",s:"Aktien = Firmenanteile · ETF = Korb vieler Aktien · Anleihen = Kredite · Krypto/Forex/CFD = sehr volatil.",d:"Ein breiter ETF streut über hunderte Firmen und senkt das Risiko. Einzelaktien, Krypto und Hebelprodukte schwanken stark — mehr Chance, aber auch mehr Gefahr.",g:""},
+      {c:"Grundlagen",t:"Long und Short",s:"Long = du gewinnst, wenn der Kurs steigt. Short = du gewinnst, wenn er fällt.",d:"Short heißt: geliehene Stücke verkaufen und billiger zurückkaufen. Steigt der Kurs stattdessen, ist der Verlust theoretisch unbegrenzt. Für Anfänger ungeeignet.",g:""},
+      {c:"Grundlagen",t:"Order-Typen",s:"Market = sofort zum aktuellen Kurs. Limit = nur zu deinem Wunschpreis. Stop = löst bei einem Kurs aus.",d:"Mit einer Limit-Order bestimmst du den Preis, mit einer Stop-Order schützt du dich vor großen Verlusten (Stop-Loss). Eine Market-Order kann in schnellen Märkten teurer ausfallen als gedacht (Slippage).",g:""},
+      {c:"Grundlagen",t:"Gebühren und Spread fressen Rendite",s:"Jeder Trade kostet: Kommission plus Spread (Differenz Kauf-/Verkaufskurs).",d:"Viele kleine Trades summieren sich zu hohen Kosten. Über Jahrzehnte kostet 1 % Gebühr pro Jahr ein kleines Vermögen. Günstige Broker und wenige, überlegte Trades zahlen sich aus.",g:"rechner"},
+      {c:"Risiko",t:"Risiko zuerst — nicht der Gewinn",s:"Lege VOR dem Trade fest, wie viel du maximal verlierst.",d:"Profis denken zuerst an den möglichen Verlust, nicht an den Traum-Gewinn. Wer das Risiko begrenzt, überlebt auch eine Pechsträhne und bleibt im Spiel.",g:"trading"},
+      {c:"Risiko",t:"Die 1-Prozent-Regel",s:"Riskiere pro Trade höchstens 1–2 % deines Kontos.",d:"Bei 10.000 sind das 100–200 Risiko pro Trade. So führen selbst zehn Verluste in Folge nicht zum Ruin. Nutze den Positionsgrößen-Rechner.",g:"trading"},
+      {c:"Risiko",t:"Positionsgröße richtig wählen",s:"Stückzahl = (Konto × Risiko %) ÷ Abstand Einstieg–Stop.",d:"Die Positionsgröße ergibt sich aus deinem Risiko-Budget und dem Stop-Abstand — nicht aus dem Bauchgefühl. Der Rechner macht es für dich.",g:"trading"},
+      {c:"Risiko",t:"Stop-Loss — dein Sicherheitsnetz",s:"Ein vorab gesetzter Ausstieg, der den Verlust begrenzt.",d:"Ohne Stop kann ein einziger Trade das Konto sprengen. Setze den Stop dort, wo deine Idee widerlegt ist — und halte dich daran.",g:"trading"},
+      {c:"Risiko",t:"Chance/Risiko-Verhältnis (CRV)",s:"Gewinnziel geteilt durch Risiko. Ab 1:2 aufwärts ist gut.",d:"Bei 1:2 reicht eine Trefferquote von rund 33 %, um break-even zu sein. Gute Trader gewinnen nicht öfter — sie gewinnen mehr, wenn sie recht haben, und verlieren wenig, wenn nicht.",g:"trading"},
+      {c:"Risiko",t:"Diversifikation",s:"Nicht alles auf eine Karte — streue über mehrere Werte.",d:"Klumpenrisiko (alles in eine Aktie oder einen Coin) ist der häufigste Weg in den Ruin. Ein breiter ETF ist von Natur aus gestreut.",g:""},
+      {c:"Risiko",t:"Drawdown — warum Verluste schwerer wiegen",s:"−50 % brauchen +100 %, um sich zu erholen.",d:"Verluste wirken exponentiell: je tiefer, desto härter der Weg zurück. Deshalb ist Verlustvermeidung wichtiger als Gewinnmaximierung. Siehe Verlust-aufholen-Rechner.",g:"trading"},
+      {c:"Hebel",t:"Was ein Hebel wirklich macht",s:"10× Hebel = 10× Gewinn UND 10× Verlust.",d:"Schon −10 % Kursbewegung bedeutet bei 10× Hebel den Totalverlust. Hebel beschleunigt in beide Richtungen — für Anfänger der schnellste Weg, ein Konto zu verlieren.",g:"trading"},
+      {c:"Hebel",t:"Margin und Liquidation",s:"Margin = deine Sicherheitsleistung. Reicht sie nicht, wirst du liquidiert.",d:"Bei einer Liquidation schließt die Börse deine Position zwangsweise — der Einsatz ist weg. Der Liquidations-Rechner zeigt, ab welchem Kurs es kritisch wird.",g:"trading"},
+      {c:"Hebel",t:"Funding und Overnight-Kosten",s:"Gehebelte Positionen kosten laufend Gebühren.",d:"Wer lange hält, zahlt drauf. Hebelprodukte sind für kurze Zeiträume gedacht, nicht zum langfristigen Sparen.",g:""},
+      {c:"Psychologie",t:"Die vier Gefühls-Killer",s:"FOMO, Gier, Angst und Revenge-Trading kosten am meisten Geld.",d:"FOMO (Angst, etwas zu verpassen) treibt zu Käufen ohne Plan. Verluste zurückholen zu wollen (Revenge) macht es schlimmer. Emotionen sind dein teuerster Gegner.",g:""},
+      {c:"Psychologie",t:"Trading-Plan und Journal",s:"Lege Regeln vorher fest und schreibe jeden Trade auf.",d:"Ein Plan (Einstieg, Stop, Ziel, Größe) schützt vor Bauch-Entscheidungen. Ein Journal zeigt deine echten Muster und Fehler — nur so wirst du besser.",g:""},
+      {c:"Psychologie",t:"Realistische Erwartungen",s:"Konstant 5–10 % pro Jahr sind sehr gut.",d:"Wer 100 % im Monat verspricht, lügt oder hat Glück, das gleich wieder verschwindet. Geduld schlägt Gier.",g:""},
+      {c:"Charts",t:"Kerzen lesen",s:"Jede Kerze zeigt Eröffnung, Schluss, Hoch und Tief. Grün = gestiegen, rot = gefallen.",d:"Kerzen sind nur eine Darstellung des Kursverlaufs — kein Zauber. Sie helfen, Bewegungen und Stimmung schneller zu erfassen.",g:""},
+      {c:"Charts",t:"Trend, Support und Resistance",s:"Der Trend ist die vorherrschende Richtung; Support = Boden, Resistance = Decke.",d:"An Support- und Resistance-Zonen drehen Kurse oft — weil viele dort kaufen oder verkaufen. Es ist Wahrscheinlichkeit, keine Garantie. Gegen den Trend zu handeln ist teuer.",g:""},
+      {c:"Charts",t:"Indikatoren sind kein Orakel",s:"Gleitende Durchschnitte und RSI glätten oder messen — sie sagen die Zukunft nicht voraus.",d:"Kein Indikator und kein Signal garantiert Gewinn. Ein guter Backtest in der Vergangenheit bedeutet nicht, dass es morgen funktioniert.",g:""},
+      {c:"Strategien",t:"ETF-Sparplan — der ruhige Weg",s:"Breiter Index, monatlich kaufen, jahrelang halten.",d:"Historisch hat ein breiter Welt-ETF langfristig solide Renditen gebracht — ohne ständiges Handeln. Für die meisten Menschen die beste Wahl. Siehe Zinseszins-Rechner.",g:"trading"},
+      {c:"Strategien",t:"DCA — Cost-Average",s:"Feste Summe regelmäßig investieren, egal ob Kurs hoch oder tief.",d:"Das glättet den Einstiegspreis und nimmt den Stress, den perfekten Moment treffen zu müssen. Zeit im Markt schlägt Timing.",g:""},
+      {c:"Strategien",t:"Swing, Day und Scalping",s:"Je kürzer die Haltedauer, desto härter und riskanter.",d:"Swing-Trading hält Tage bis Wochen, Daytrading Stunden, Scalping Sekunden. Kurzfristig ist Vollzeit-Stress mit hohen Kosten — nichts für nebenbei.",g:""},
+      {c:"Krypto",t:"Wallets: Hot vs. Cold",s:"Hot-Wallet = online, bequem, angreifbar. Cold-Wallet = offline, sicher.",d:"Große Beträge gehören in eine Cold-Wallet (offline). Auf Börsen liegende Coins gehören dir nur eingeschränkt — Börsen können ausfallen.",g:""},
+      {c:"Krypto",t:"Seed-Phrase schützen",s:"Die 12 oder 24 Wörter sind dein Generalschlüssel — niemals teilen.",d:"Wer deine Seed-Phrase hat, hat dein Geld. Nie online eintippen, nie fotografieren, nie an den Support geben. Offline und geheim aufbewahren.",g:""},
+      {c:"Krypto",t:"Volatilität und Scams",s:"Extreme Schwankungen plus viele Betrugsmaschen.",d:"Rug-Pulls (Macher verschwinden), Fake-Airdrops und Coin-Verdopplung sind Betrug. Investiere nur, was du komplett verlieren kannst.",g:""},
+      {c:"Betrug",t:"Rote Flaggen erkennen",s:"Garantierte Rendite, Zeitdruck, Gurus mit Luxus, Signalgruppen.",d:"Seriöse Anlagen versprechen keine Wunder und drängen nicht. Wer Druck macht, will verkaufen — nicht dir helfen.",g:""},
+      {c:"Betrug",t:"Pump and Dump",s:"Eine Gruppe treibt einen kleinen Coin hoch und verkauft an die Nachzügler.",d:"Die letzten Käufer (oft Anfänger) bleiben auf dem Verlust sitzen. Wenn alle über einen heißen Tipp reden, ist die Party meist schon vorbei.",g:""},
+      {c:"Betrug",t:"Die ehrliche Zahl",s:"Studien zeigen: rund 70–90 % der aktiven Privat-Trader verlieren über die Zeit.",d:"Geh davon aus, dass du nicht die Ausnahme bist — und handle entsprechend vorsichtig. Genau diese Demut schützt dein Geld.",g:""},
+      {c:"Steuern",t:"Belege sammeln, Fachperson fragen",s:"Das ganze Jahr Trades und Belege dokumentieren.",d:"Ordnung spart bei der Steuer Zeit und Geld. Die folgenden Hinweise sind nur grob — im Zweifel eine Steuerfachperson fragen. Keine Steuerberatung.",g:""},
+      {c:"Steuern",t:"CH / DE / AT — grobe Hinweise",s:"CH: privater Kapitalgewinn meist steuerfrei. DE: rund 26 % Abgeltungsteuer. AT: 27,5 % KESt.",d:"CH: Achtung bei gewerbsmäßigem Handel. DE: Sparer-Pauschbetrag und Verlustverrechnung nutzen, Krypto privat nach über einem Jahr steuerfrei. AT: KESt auf Kapitalerträge. Details ändern sich — prüfen lassen.",g:""},
+      {c:"Business",t:"Rechnungs-Pflichtangaben",s:"Name und Anschrift beider, Datum, fortlaufende Nummer, Leistung, Betrag, MwSt.",d:"Fehlen Pflichtangaben, ist die Rechnung angreifbar. Das Cockpit füllt vieles automatisch — Stammdaten einmal sauber eintragen.",g:"rechnung"},
+      {c:"Business",t:"Steuer-Rücklage sofort bilden",s:"Lege 25–30 % jeder Einnahme separat zurück.",d:"Die Steuer kommt sicher — wer nicht zurücklegt, hat später ein Loch. Ein eigenes Rücklagen-Konto verhindert böse Überraschungen.",g:"kasse"},
+      {c:"Business",t:"Stundensatz nicht zu tief",s:"Wunsch-Gewinn plus Kosten geteilt durch wirklich abrechenbare Stunden.",d:"Viele Selbstständige rechnen sich zu billig. Nicht jede Stunde ist abrechenbar (Akquise, Buchhaltung). Siehe Stundensatz-Rechner.",g:"rechner"},
+      {c:"Business",t:"Liquidität und Skonto",s:"3–6 Monate Kosten als Puffer; Skonto beschleunigt den Zahlungseingang.",d:"Cashflow ist König: früh fakturieren, klare Fristen, freundlich nachfassen. Skonto anbieten bringt schneller Geld, Skonto nutzen lohnt oft. Siehe Skonto-Rechner.",g:"rechner"}
+    ];
+    var TIPS=[
+      ["Sparen & Budget","Zahl dich zuerst: spare gleich am Zahltag per Dauerauftrag, bevor du ausgibst."],
+      ["Sparen & Budget","Notgroschen von 3–6 Monatskosten zuerst aufbauen — vor jedem Investieren."],
+      ["Sparen & Budget","50/30/20-Regel: 50 % Bedarf, 30 % Wünsche, 20 % sparen oder tilgen."],
+      ["Sparen & Budget","Kleine Fixkosten killen Vermögen: Abos jährlich prüfen, Ungenutztes kündigen."],
+      ["Sparen & Budget","24-Stunden-Regel bei Spontankäufen — einmal drüber schlafen."],
+      ["Sparen & Budget","Feste Wochen-Limits oder Bargeld machen Ausgaben sichtbarer als die Karte."],
+      ["Sparen & Budget","Gehaltserhöhung? Sparrate erhöhen, bevor der Lebensstil mitwächst."],
+      ["Sparen & Budget","Ein Monat Haushaltsbuch zeigt die echten Geld-Lecks."],
+      ["Investieren","Zeit im Markt schlägt Markt-Timing — früh anfangen wirkt am stärksten."],
+      ["Investieren","Breit streuen: ein Welt-ETF schlägt für die meisten das Einzelaktien-Picken."],
+      ["Investieren","Sparplan automatisieren — monatlich, egal ob Kurs hoch oder tief."],
+      ["Investieren","Niedrige Kosten sind sichere Rendite: TER unter 0,3 %, keine Ausgabeaufschläge."],
+      ["Investieren","Dividenden reinvestieren — Zinseszins ist der eigentliche Motor."],
+      ["Investieren","Nicht aus Panik verkaufen: Crashs sind normal, wer hält, gewinnt historisch."],
+      ["Investieren","Investiere nur Geld, das du 5–10 Jahre nicht brauchst."],
+      ["Investieren","Kennst du es nicht, kauf es nicht — verstehe, worin du investierst."],
+      ["Investieren","Vergangene Rendite ist kein Versprechen für die Zukunft."],
+      ["Trading & Risiko","Risiko zuerst festlegen, dann erst an den Gewinn denken."],
+      ["Trading & Risiko","Maximal 1–2 % des Kontos pro Trade riskieren."],
+      ["Trading & Risiko","Immer mit Stop-Loss handeln — ohne ist es Glücksspiel."],
+      ["Trading & Risiko","Chance/Risiko ab 1:2; bei kleinerem CRV lohnt der Trade selten."],
+      ["Trading & Risiko","Hebel meiden, solange du Anfänger bist."],
+      ["Trading & Risiko","Führe ein Trading-Journal — nur so erkennst du deine Fehler."],
+      ["Trading & Risiko","Tages-Verlustlimit setzen und dann wirklich aufhören."],
+      ["Trading & Risiko","Kein Revenge-Trading: Verluste zurückholen zu wollen ruiniert Konten."],
+      ["Gebühren & Kosten","Jede Gebühr frisst Zinseszins — über 30 Jahre kostet 1 % pro Jahr ein Vermögen."],
+      ["Gebühren & Kosten","Broker mit niedrigen Ordergebühren wählen; auf Gratis-Sparpläne achten."],
+      ["Gebühren & Kosten","Der Spread ist auch ein Kosten — bei exotischen Produkten oft teuer."],
+      ["Gebühren & Kosten","Aktive Fonds mit 1,5 % schlagen langfristig selten den günstigen Index."],
+      ["Gebühren & Kosten","Währungsgebühren beachten — Multi-Currency spart bei Auslandskäufen."],
+      ["Schulden","Teure Schulden (Kreditkarte, Konsumkredit) vor jedem Investieren tilgen."],
+      ["Schulden","Lawine: höchsten Zins zuerst tilgen — mathematisch günstigster Weg."],
+      ["Schulden","Schneeball: kleinste Schuld zuerst — für schnelle Erfolge und Motivation."],
+      ["Schulden","Kreditkarte immer voll begleichen — Teilzahlung ist eine Zinsfalle."],
+      ["Schulden","Leasing genau rechnen: oft teurer als Kauf, die niedrige Rate täuscht."],
+      ["Steuern (DACH)","Belege und Trades das ganze Jahr sammeln — spart Stress und Geld."],
+      ["Steuern (DACH)","DE: Sparer-Pauschbetrag per Freistellungsauftrag nutzen."],
+      ["Steuern (DACH)","DE: Verluste mit Gewinnen verrechnen lassen."],
+      ["Steuern (DACH)","CH: privater Kapitalgewinn meist steuerfrei — gewerbsmäßigen Handel vermeiden."],
+      ["Steuern (DACH)","CH: Säule 3a mit Steuervorteil jährlich ausschöpfen."],
+      ["Steuern (DACH)","Im Zweifel eine Fachperson fragen — billiger als ein teurer Fehler."],
+      ["Betrug & Sicherheit","Garantierte Rendite gibt es nicht — das ist immer ein Warnsignal."],
+      ["Betrug & Sicherheit","Niemand verschenkt Geld: Coin-Verdopplung und bezahlte Airdrops sind Betrug."],
+      ["Betrug & Sicherheit","Druck und Eile sind Verkaufsmaschen — seriöse Anlagen laufen nicht weg."],
+      ["Betrug & Sicherheit","Signalgruppen und Gurus verdienen an dir, nicht für dich."],
+      ["Betrug & Sicherheit","Seed-Phrase und Passwörter niemals teilen, nie online eintippen."],
+      ["Betrug & Sicherheit","2FA überall aktivieren — wenn möglich per App statt SMS."],
+      ["Betrug & Sicherheit","Anbieter unabhängig prüfen, bevor du Geld schickst."],
+      ["Psychologie","Dein größter Gegner bist du selbst — nicht der Markt."],
+      ["Psychologie","FOMO ist ein teurer Ratgeber; verpasste Chancen kommen wieder."],
+      ["Psychologie","Verluste schmerzen doppelt so stark wie Gewinne freuen — plane dagegen."],
+      ["Psychologie","Hab einen schriftlichen Plan und folge ihm, auch wenn es juckt."],
+      ["Psychologie","Weniger auf den Kurs schauen führt oft zu besseren Entscheidungen."],
+      ["Psychologie","Misstraue dem Herdentrieb: wenn alle reden, ist die Party oft vorbei."],
+      ["Alltag & Konsum","Großeinkäufe in Arbeitsstunden denken: Was kostet es an Lebenszeit?"],
+      ["Alltag & Konsum","Versicherungen jährlich vergleichen — Treue wird selten belohnt."],
+      ["Alltag & Konsum","Nur versichern, was dich ruinieren würde — nicht jeden Kleinschaden."],
+      ["Alltag & Konsum","Energie-, Handy- und Internet-Tarife alle 1–2 Jahre neu verhandeln."],
+      ["Alltag & Konsum","Gebraucht kaufen bei Dingen mit schnellem Wertverlust (Auto, Elektronik)."],
+      ["Selbstständige","Steuer-Rücklage sofort beiseitelegen — 25–30 % jeder Einnahme aufs Extra-Konto."],
+      ["Selbstständige","Liquiditätspuffer von 3–6 Monaten Betriebskosten halten."],
+      ["Selbstständige","Rechnungen sofort stellen, klare Frist, früh nachfassen — Cashflow ist König."],
+      ["Selbstständige","Stundensatz nicht zu tief: Kosten plus Wunschgewinn durch abrechenbare Stunden."],
+      ["Selbstständige","Skonto anbieten beschleunigt deinen Geldeingang."],
+      ["Selbstständige","Geschäftlich und privat strikt trennen — spart Buchhaltungs-Chaos."],
+      ["Krypto","Nur investieren, was du komplett verlieren kannst — extreme Schwankungen."],
+      ["Krypto","Große Beträge in eine Cold-Wallet, nicht auf der Börse (not your keys, not your coins)."],
+      ["Krypto","Neue, kleine Coins sind meist Zockerei — die meisten gehen gegen null."],
+      ["Krypto","Stablecoins sind nicht risikofrei — Anbieter und Deckung prüfen."],
+      ["Vorsorge","Früh, regelmäßig und breit gestreut schlägt jedes Timing."],
+      ["Vorsorge","Kontrolliere, was du kannst: Sparrate, Kosten, Verhalten — nicht den Markt."],
+      ["Vorsorge","Reichtum ist meist langweilig: automatisieren, durchhalten, in Ruhe lassen."]
+    ];
+    var GLOSS=[
+      ["Long","Wette auf steigende Kurse: kaufen, später teurer verkaufen."],
+      ["Short","Wette auf fallende Kurse; der Verlust kann theoretisch unbegrenzt sein."],
+      ["Spread","Differenz zwischen Kauf- (Ask) und Verkaufskurs (Bid); versteckte Kosten."],
+      ["Slippage","Ausführung zu einem schlechteren Kurs als erwartet."],
+      ["Volatilität","Schwankungsbreite; hoch heißt mehr Chance und mehr Risiko."],
+      ["Drawdown","Rückgang vom Höchststand — wie tief das Konto gefallen ist."],
+      ["Hebel","Multiplikator auf Gewinn und Verlust, z. B. 10-fach."],
+      ["Margin","Sicherheitsleistung für eine gehebelte Position."],
+      ["Liquidation","Zwangsschließung, wenn die Margin nicht mehr reicht."],
+      ["Stop-Loss","Automatischer Verkauf bei einer Verlustgrenze."],
+      ["Take-Profit","Automatischer Verkauf beim Gewinnziel."],
+      ["Limit-Order","Kauf oder Verkauf nur zum Wunschpreis oder besser."],
+      ["Market-Order","Sofortige Ausführung zum aktuellen Kurs."],
+      ["CRV","Chance/Risiko-Verhältnis: Gewinnziel geteilt durch Risiko."],
+      ["Trefferquote","Anteil der Gewinn-Trades; mit gutem CRV reicht unter 50 %."],
+      ["Position","Dein offener Trade: Menge mal Kurs."],
+      ["Lot","Standardisierte Handelsgröße, vor allem im Forex."],
+      ["Pip","Kleinste Kursbewegung im Forex."],
+      ["Spot","Sofortiger Handel zum aktuellen Preis."],
+      ["Future","Termingeschäft auf einen späteren Zeitpunkt, oft gehebelt."],
+      ["CFD","Differenzkontrakt: gehebelte Wette auf den Kurs, ohne Besitz. Riskant."],
+      ["ETF","Börsengehandelter Fonds: ein Korb vieler Werte, breit gestreut, günstig."],
+      ["Index","Messzahl eines Marktes, z. B. SMI, DAX oder S&P 500."],
+      ["ISIN","Internationale Wertpapier-Kennnummer."],
+      ["Dividende","Gewinnausschüttung einer Aktie an die Anteilseigner."],
+      ["Anleihe","Verzinster Kredit an Staat oder Firma; gilt als sicherer als Aktien."],
+      ["DCA","Regelmäßig eine feste Summe investieren (Cost-Average)."],
+      ["Bid/Ask","Geld- und Briefkurs: höchster Kauf-, niedrigster Verkaufspreis."],
+      ["Order-Book","Liste aller offenen Kauf- und Verkaufsorders."],
+      ["Volumen","Gehandelte Menge in einer Zeitspanne; zeigt Aktivität."],
+      ["Marktkapitalisierung","Wert aller Anteile: Kurs mal Stückzahl."],
+      ["Bullenmarkt","Länger steigende Kurse, optimistische Stimmung."],
+      ["Bärenmarkt","Länger fallende Kurse, pessimistische Stimmung."],
+      ["Korrektur","Kurzer Rückgang von etwa 10 % im Aufwärtstrend."],
+      ["Crash","Plötzlicher, starker Kurssturz."],
+      ["Rallye","Kräftiger, schneller Kursanstieg."],
+      ["FOMO","Angst, etwas zu verpassen — führt zu überstürzten Käufen."],
+      ["HODL","Langfristig halten, nicht aus Panik verkaufen (Krypto-Slang)."],
+      ["Wallet","Digitale Geldbörse für Krypto (hot = online, cold = offline)."],
+      ["Seed-Phrase","12 oder 24 Wörter als Generalschlüssel — niemals teilen."],
+      ["Cold-Storage","Krypto offline lagern — die sicherste Methode."],
+      ["Stablecoin","Krypto, an eine Währung gekoppelt, z. B. an den US-Dollar."],
+      ["Altcoin","Jede Kryptowährung außer Bitcoin."],
+      ["Rug-Pull","Die Macher ziehen das Geld ab, das Projekt kollabiert — Betrug."],
+      ["Pump and Dump","Koordiniertes Hochtreiben und Abverkauf an Nachzügler."],
+      ["Whale","Großanleger, der Kurse bewegen kann."],
+      ["Liquidität","Wie leicht man kauft oder verkauft, ohne den Kurs zu verzerren."],
+      ["Trend","Vorherrschende Kursrichtung: aufwärts, abwärts oder seitwärts."],
+      ["Support","Kurszone, in der oft Käufer eingreifen (Boden)."],
+      ["Resistance","Kurszone, in der oft Verkäufer eingreifen (Decke)."],
+      ["MA/EMA","Gleitender Durchschnitt; glättet den Kurs und zeigt die Richtung."],
+      ["RSI","Schwung-Indikator von 0–100; über 70 überkauft, unter 30 überverkauft."],
+      ["Backtest","Test einer Strategie an Vergangenheitsdaten — keine Zukunftsgarantie."],
+      ["Hedging","Gegenposition zur Absicherung eines Risikos."],
+      ["Diversifikation","Streuung über viele Werte; senkt das Klumpenrisiko."]
+    ];
+    var QUIZ=[
+      {q:"Wie viel solltest du pro Trade maximal riskieren?",o:["1–2 % des Kontos","10 % des Kontos","50 % des Kontos"],a:0,e:"So überlebst du auch eine Pechsträhne."},
+      {q:"Was macht 10× Hebel bei −10 % Kursbewegung?",o:["−1 %","Totalverlust","gar nichts"],a:1,e:"Hebel multipliziert auch den Verlust."},
+      {q:"Nach −50 %: wie viel Gewinn brauchst du zur Erholung?",o:["+50 %","+75 %","+100 %"],a:2,e:"Verluste wiegen exponentiell schwerer."},
+      {q:"Jemand verspricht garantierte Rendite. Das ist …",o:["eine Top-Chance","ein Warnsignal","ganz normal"],a:1,e:"Garantien gibt es am Markt nicht."},
+      {q:"Darfst du deine Seed-Phrase teilen?",o:["nur mit dem Support","niemals","ja, bei Verlust"],a:1,e:"Wer sie hat, hat dein Geld."},
+      {q:"Was passt bei wenig Zeit und Nerven am besten?",o:["Daytrading","breiter ETF-Sparplan","Hebel-CFDs"],a:1,e:"Ruhig und historisch bewährt."},
+      {q:"Ein Stop-Loss ist …",o:["ein Gewinnziel","ein vorab definierter Verlust-Ausstieg","eine Gebühr"],a:1,e:"Er schützt dein Konto."},
+      {q:"Wer verliert beim aktiven Trading meistens?",o:["die Banken","die Mehrheit der Privat-Trader","niemand"],a:1,e:"Studien: rund 70–90 % über die Zeit."},
+      {q:"Diversifikation bedeutet …",o:["alles auf einen Coin","über viele Werte streuen","nur Bargeld halten"],a:1,e:"Das senkt das Klumpenrisiko."},
+      {q:"Der Spread ist …",o:["ein Gewinn","die Differenz zwischen Kauf- und Verkaufskurs","eine Steuer"],a:1,e:"Ein versteckter Kosten."},
+      {q:"Bei CRV 1:2 — welche Trefferquote brauchst du zum Break-even?",o:["rund 33 %","50 %","66 %"],a:0,e:"Der Gewinn ist doppelt so groß wie das Risiko."},
+      {q:"Coins auf einer Börse sind …",o:["zu 100 % sicher","nur eingeschränkt deine","steuerfrei"],a:1,e:"Börsen können ausfallen."},
+      {q:"Ein RSI über 70 bedeutet …",o:["sicherer Kauf","oft überkauft, aber keine Garantie","Verkaufspflicht"],a:1,e:"Indikatoren sind kein Orakel."},
+      {q:"Was ist der erste Schritt vor jedem Trade?",o:["vom Gewinn träumen","Risiko und Stop festlegen","alles einsetzen"],a:1,e:"Risiko zuerst."},
+      {q:"DCA bedeutet …",o:["alles auf einmal investieren","feste Summe regelmäßig investieren","nur im Crash kaufen"],a:1,e:"Das glättet den Einstiegspreis."}
+    ];
+    var CHECK=["Stop-Loss gesetzt?","Risiko maximal 1–2 % des Kontos?","Chance/Risiko mindestens 1:2?","Einstieg, Stop und Ziel klar definiert?","Folge ich meinem Plan (kein FOMO, kein Tipp)?","Positionsgröße mit dem Rechner bestimmt?","Kann ich diesen Verlust verschmerzen?"];
+    var PATH=[
+      {t:"1) Geld-Basics verstehen",d:"Was ist Sparen, Investieren, Traden — und die Anlageklassen.",btn:"Grundlagen lesen",act:"cat",arg:"Grundlagen"},
+      {t:"2) Risiko zuerst lernen",d:"Die wichtigste Fähigkeit: Verluste klein halten.",btn:"Risiko-Lektionen",act:"cat",arg:"Risiko"},
+      {t:"3) Ehrlich bleiben",d:"Warum die meisten verlieren und wie du Betrug erkennst.",btn:"Betrug & Wahrheit",act:"cat",arg:"Betrug"},
+      {t:"4) Ruhig investieren",d:"ETF-Sparplan und Zinseszins — der bewährte Weg.",btn:"Zinseszins-Rechner",act:"tab",arg:"trading"},
+      {t:"5) Erst üben, dann handeln",d:"Vor jedem Trade die Checkliste durchgehen.",btn:"Zur Checkliste",act:"sec",arg:"check"},
+      {t:"6) Wissen testen",d:"Mach das Quiz und sieh, was schon sitzt.",btn:"Quiz starten",act:"sec",arg:"quiz"}
+    ];
+    /* sub-tabs */
+    $$("#l_tabs button").forEach(function(b){b.addEventListener("click",function(){
+      $$("#l_tabs button").forEach(function(x){x.classList.toggle("on",x===b)});
+      $$("#v-lernen .lsec").forEach(function(s){s.classList.toggle("on",s.id==="ls-"+b.dataset.l)})})});
+    /* tip of the day */
+    var doy=Math.floor((Date.now()-new Date(new Date().getFullYear(),0,0))/86400000);
+    $("#l_tiptext").textContent=TIPS[doy%TIPS.length][1];
+    /* progress */
+    function updateProg(){var read=lg("read",{}),cnt=0;LESSONS.forEach(function(_,i){if(read[i])cnt++});
+      var pct=Math.round(cnt/LESSONS.length*100),best=lg("quizbest",0);
+      $("#l_prog").innerHTML='<div class="prog"><i style="width:'+pct+'%"></i></div><p class="note" style="margin-top:0">'+cnt+' von '+LESSONS.length+' Lektionen gelesen ('+pct+' %)'+(best?' · Quiz-Bestwert: '+best+'/'+QUIZ.length:'')+'</p>'}
+    /* lessons */
+    function catChips(){var cur=lg("cat","");
+      $("#l_chips").innerHTML='<button data-c="" class="'+(cur===""?"on":"")+'">Alle</button>'+LCATS.map(function(c){return '<button data-c="'+esc(c)+'" class="'+(cur===c?"on":"")+'">'+esc(c)+'</button>'}).join("");
+      $$("#l_chips button").forEach(function(b){b.addEventListener("click",function(){ls("cat",b.dataset.c);catChips();renderLessons()})})}
+    function renderLessons(){var q=($("#l_search").value||"").toLowerCase(),cat=lg("cat",""),read=lg("read",{}),el=$("#l_lessons");el.innerHTML="";var any=false;
+      LESSONS.forEach(function(L,i){if(cat&&L.c!==cat)return;if(q&&(L.t+" "+L.s+" "+L.d).toLowerCase().indexOf(q)<0)return;any=true;
+        var d=document.createElement("details");d.className="lcard";
+        var go=L.g?'<button class="gobtn" data-go="'+L.g+'">→ passenden Rechner öffnen</button>':'';
+        d.innerHTML='<summary><span class="scat">'+esc(L.c)+'</span> · '+esc(L.t)+'</summary><div class="simple">'+esc(L.s)+'</div><div class="deep">'+esc(L.d)+(go?'<br>'+go:'')+'</div><div class="lread-row"><label class="toggle"><input type="checkbox" class="lread" data-i="'+i+'"'+(read[i]?" checked":"")+'> als gelesen markieren</label></div>';
+        el.appendChild(d)});
+      if(!any)el.innerHTML='<p class="note">Nichts gefunden.</p>';
+      $$("#l_lessons .lread").forEach(function(c){c.addEventListener("change",function(){var r=lg("read",{});r[this.dataset.i]=this.checked;ls("read",r);updateProg()})});
+      $$("#l_lessons .gobtn").forEach(function(b){b.addEventListener("click",function(){goTab(this.dataset.go)})})}
+    $("#l_search").addEventListener("input",renderLessons);
+    $("#l_easy").addEventListener("change",function(){$("#l_lessons").classList.toggle("easy",this.checked)});
+    /* tips */
+    function renderTips(){var q=($("#l_tsearch").value||"").toLowerCase(),cur="",out="";
+      TIPS.forEach(function(t){if(q&&(t[0]+" "+t[1]).toLowerCase().indexOf(q)<0)return;
+        if(t[0]!==cur){cur=t[0];out+='<h2 style="font-size:.92rem;margin:14px 0 8px;color:var(--amber-dk)">'+esc(cur)+'</h2>'}
+        out+='<div class="gli">💡 '+esc(t[1])+'</div>'});
+      $("#l_tips").innerHTML=out||'<p class="note">Nichts gefunden.</p>'}
+    $("#l_tsearch").addEventListener("input",renderTips);
+    /* glossary */
+    function renderGloss(){var q=($("#l_gsearch").value||"").toLowerCase();
+      $("#l_gloss").innerHTML=GLOSS.filter(function(g){return !q||(g[0]+" "+g[1]).toLowerCase().indexOf(q)>=0}).map(function(g){return '<div class="gli"><b>'+esc(g[0])+'</b> — '+esc(g[1])+'</div>'}).join("")||'<p class="note">Nichts gefunden.</p>'}
+    $("#l_gsearch").addEventListener("input",renderGloss);
+    /* quiz */
+    function scoreQuiz(){var cards=$$("#l_quiz .qcard"),done=0,right=0;
+      cards.forEach(function(c){if(c.dataset.done){done++;if(c.dataset.correct==="1")right++}});
+      $("#l_score").textContent="Punktestand: "+right+" / "+QUIZ.length+(done===QUIZ.length?(right>=Math.ceil(QUIZ.length*0.7)?" — stark! 💪":" — dranbleiben, übe weiter."):"");
+      var best=lg("quizbest",0);if(done===QUIZ.length&&right>best){ls("quizbest",right);updateProg()}}
+    function renderQuiz(){var el=$("#l_quiz");el.innerHTML="";
+      QUIZ.forEach(function(Q,qi){var c=document.createElement("div");c.className="qcard";
+        c.innerHTML='<p style="font-weight:700;margin-bottom:4px">'+(qi+1)+'. '+esc(Q.q)+'</p>';
+        Q.o.forEach(function(opt,oi){var b=document.createElement("button");b.className="qopt";b.textContent=opt;
+          b.addEventListener("click",function(){if(c.dataset.done)return;c.dataset.done="1";c.dataset.correct=(oi===Q.a)?"1":"0";
+            $$(".qopt",c).forEach(function(x,xi){if(xi===Q.a)x.classList.add("right")});if(oi!==Q.a)b.classList.add("wrong");
+            $(".qexp",c).style.display="block";scoreQuiz()});c.appendChild(b)});
+        var e=document.createElement("p");e.className="qexp";e.textContent="💬 "+Q.e;c.appendChild(e);el.appendChild(c)});
+      $("#l_quizhead").innerHTML='<p style="font-weight:700">❓ Wissens-Quiz</p><p class="note">Tippe je Frage eine Antwort an — du siehst sofort, ob richtig, plus eine kurze Erklärung.</p><div id="l_score" class="note" style="font-weight:700;color:var(--amber-dk)"></div>'}
+    /* checklist */
+    function renderCheck(){var st=lg("check",{}),el=$("#l_check");el.innerHTML="";
+      CHECK.forEach(function(c,i){var lab=document.createElement("label");lab.className="chk";
+        lab.innerHTML='<input type="checkbox" '+(st[i]?"checked":"")+'> '+esc(c);
+        $("input",lab).addEventListener("change",function(){var s=lg("check",{});s[i]=this.checked;ls("check",s)});el.appendChild(lab)});
+      var r=document.createElement("div");r.className="btnrow";r.innerHTML='<button class="btn ghost sm" id="l_chkreset">Zurücksetzen</button>';el.appendChild(r);
+      $("#l_chkreset").addEventListener("click",function(){ls("check",{});renderCheck()})}
+    /* path */
+    function renderPath(){$("#l_path").innerHTML=PATH.map(function(p,i){return '<div class="path-step"><span class="num">'+(i+1)+'</span><div><strong>'+esc(p.t)+'</strong><br><span class="note" style="margin:0">'+esc(p.d)+'</span><br><button class="gobtn" data-act="'+esc(p.act)+'" data-arg="'+esc(p.arg||"")+'">'+esc(p.btn)+'</button></div></div>'}).join("");
+      $$("#l_path .gobtn").forEach(function(b){b.addEventListener("click",function(){var act=this.dataset.act,arg=this.dataset.arg;
+        if(act==="sec"){var s=$('#l_tabs button[data-l="'+arg+'"]');if(s)s.click()}
+        else if(act==="cat"){ls("cat",arg);catChips();renderLessons();var s2=$('#l_tabs button[data-l="lekt"]');if(s2)s2.click()}
+        else if(act==="tab"){goTab(arg)}window.scrollTo(0,0)})})}
+    catChips();renderLessons();renderTips();renderGloss();renderQuiz();renderCheck();renderPath();updateProg();
+  })();
 
   /* Init */
   loadStamm();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();
