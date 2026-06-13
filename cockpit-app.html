@@ -1298,12 +1298,12 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   function belege(){return get("abanCockpit_belege",[])}
   function renderBelege(){var e=belege(),el=$("#bl_list"),sum=$("#bl_sum");if(!el)return;el.innerHTML="";var tot=0;
     e.forEach(function(x,i){tot+=n(x.betrag)||0;var row=document.createElement("div");row.className="li";
-      row.innerHTML='<span>'+(x.img?'<img src="'+x.img+'" style="height:30px;vertical-align:middle;border-radius:4px;margin-right:6px">':"🧾 ")+esc(x.datum||"")+' · '+esc(x.kat||"—")+' · <strong>'+nf(n(x.betrag)||0)+'</strong></span>';
+      row.innerHTML='<span>'+(x.img?'<img src="'+x.img+'" alt="Beleg" style="height:30px;vertical-align:middle;border-radius:4px;margin-right:6px">':"🧾 ")+esc(x.datum||"")+' · '+esc(x.kat||"—")+' · <strong>'+nf(n(x.betrag)||0)+'</strong></span>';
       var w=document.createElement("span");w.className="x";var del=document.createElement("button");del.className="btn ghost sm";del.textContent="🗑";
       del.onclick=function(){var a=belege();a.splice(i,1);set("abanCockpit_belege",a);renderBelege()};w.appendChild(del);row.appendChild(w);el.appendChild(row)});
     if(sum)sum.innerHTML=e.length?'<div class="box big"><b>'+nf(tot)+'</b><span>Belege gesamt ('+e.length+')</span></div>':"";
     if(!e.length)el.innerHTML='<p class="note">Noch keine Belege.</p>'}
-  if($("#bl_file"))$("#bl_file").addEventListener("change",function(){var f=this.files&&this.files[0];if(!f)return;shrinkImage(f,function(d){blImg=d;$("#bl_prev").innerHTML='<img src="'+d+'" style="max-height:120px;border:1px solid var(--line);border-radius:8px;margin-top:6px">'})});
+  if($("#bl_file"))$("#bl_file").addEventListener("change",function(){var f=this.files&&this.files[0];if(!f)return;shrinkImage(f,function(d){blImg=d;$("#bl_prev").innerHTML='<img src="'+d+'" alt="Beleg-Vorschau" style="max-height:120px;border:1px solid var(--line);border-radius:8px;margin-top:6px">'})});
   if($("#bl_add"))$("#bl_add").addEventListener("click",function(){var b=n($("#bl_betrag").value);if(!isFinite(b)||b<=0){toast("Bitte Betrag eingeben");return}
     var a=belege();a.unshift({img:blImg,betrag:b,kat:$("#bl_kat").value.trim(),datum:$("#bl_datum").value,notiz:$("#bl_notiz").value.trim()});
     try{set("abanCockpit_belege",a)}catch(err){toast("Speicher voll — älteren Beleg löschen");return}

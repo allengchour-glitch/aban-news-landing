@@ -22,9 +22,9 @@ from datetime import date, timezone, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-EXCLUDE_PARTS = ("/dist/", "/node_modules/", "/ki-schriftsteller/", "/reports/",
+EXCLUDE_PARTS = ("/_site/", "/dist/", "/node_modules/", "/ki-schriftsteller/", "/reports/",
                  "/.git/", "/automatisierung-radar/", "/data/", "/ausgabe/",
-                 "/video-prototypes/", "/video-pipeline/", "/dropship/")  # Generate-Output, Entwürfe & Shop-Projekt aus
+                 "/video-prototypes/", "/video-pipeline/", "/dropship/")  # Build-Output, Generate-Output, Entwürfe & Shop-Projekt aus
 
 # Partial-/Fragment-Dateien (Body-Schnipsel ohne <head>) — werden in andere Seiten
 # injiziert und haben absichtlich kein title/canonical/viewport → nicht als SEO-Mangel werten.
@@ -204,6 +204,42 @@ def fix_noopener() -> int:
     return changed
 
 
+def write_brain_state(n_pages: int, counts: dict) -> float:
+    """Gedächtnis des 'Hirns': schreibt Health-Score + Verlauf nach
+    automation/brain-state.json, damit sich die Seite messbar selbst verbessert.
+
+    Score = 100 minus gewichtete Mängel (high=3, medium=1, low=0.1), 0–100.
+    So sieht jede Session/jeder Lauf sofort, ob es bergauf oder bergab geht.
+    """
+    penalty = counts["high"] * 3 + counts["medium"] * 1 + counts["low"] * 0.1
+    score = round(max(0.0, 100.0 - penalty), 1)
+    state_path = ROOT / "automation" / "brain-state.json"
+    state = {"history": []}
+    if state_path.exists():
+        try:
+            state = json.loads(state_path.read_text(encoding="utf-8"))
+        except Exception:
+            state = {"history": []}
+    today = date.today().isoformat()
+    entry = {"date": today, "pages": n_pages, "high": counts["high"],
+             "medium": counts["medium"], "low": counts["low"], "score": score}
+    hist = [h for h in state.get("history", []) if h.get("date") != today]
+    hist.append(entry)
+    hist = hist[-60:]  # letzte 60 Läufe behalten
+    prev = hist[-2]["score"] if len(hist) >= 2 else None
+    trend = ("→ neu" if prev is None else
+             f"↑ +{round(score - prev, 1)}" if score > prev else
+             f"↓ {round(score - prev, 1)}" if score < prev else "→ stabil")
+    state = {"updated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+             "score": score, "trend": trend, "best": max(h["score"] for h in hist),
+             "history": hist}
+    state_path.parent.mkdir(parents=True, exist_ok=True)
+    state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n",
+                          encoding="utf-8")
+    print(f"🧠 Brain-Score: {score}/100 ({trend}) → {state_path.relative_to(ROOT)}")
+    return score
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--top", type=int, default=12, help="Beispiele je Kategorie im Report")
@@ -268,6 +304,7 @@ def main():
 
     print(f"{n_pages} Seiten geprüft · {counts['high']} hoch / {counts['medium']} mittel / "
           f"{counts['low']} niedrig → {out.relative_to(ROOT)}")
+    write_brain_state(n_pages, counts)  # 🧠 Selbst-Tracking: Score + Verlauf
     # Exit 0: Report-Tool, kein CI-Blocker.
 
 
