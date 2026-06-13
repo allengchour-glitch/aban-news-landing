@@ -47,6 +47,9 @@
       ["Rechnung Schritt für Schritt", "/rechnung-schritt-fuer-schritt.html", "Business", "In 6 Schritten zur ersten Rechnung (Anleitung)"],
       ["Geschäftskonto-Vergleich", "/geschaeftskonto-vergleich.html", "Business", "Qonto, Kontist, Holvi & Co. für Selbstständige"],
       ["Homeoffice absetzen", "/homeoffice-absetzen.html", "Business", "Arbeitszimmer & Pauschale steuerlich nutzen"],
+      ["Rechnung stornieren", "/rechnung-stornieren.html", "Business", "Rechnung korrigieren statt löschen"],
+      ["Erste Kunden gewinnen", "/kunden-gewinnen.html", "Business", "9 ehrliche Wege ohne Werbebudget"],
+      ["Steuererklärung Selbstständige", "/steuererklaerung-selbststaendige.html", "Business", "Unterlagen, EÜR, Absetzbares & Fristen"],
       ["MwSt-Rechner", "/mwst-rechner.html", "Rechner", "Netto ↔ Brutto, jeder Steuersatz"],
       ["Stundensatz-Rechner", "/stundensatz-rechner.html", "Rechner", "Was muss ich pro Stunde verlangen?"],
       ["Skonto-Rechner", "/skonto-rechner.html", "Rechner", "Lohnt sich früh zahlen?"],
@@ -79,29 +82,37 @@
     ];
 
     function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+    var CATICON = { "Start": "🏠", "Business": "💼", "Rechner": "🧮", "Tools": "🧰", "KI": "🤖", "Info": "ℹ️" };
 
     var css = ""
-      + ".abn-bar{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:#1f2937;color:#fff;font-size:13px;position:relative;z-index:9000}"
-      + ".abn-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:6px 14px;flex-wrap:wrap}"
-      + ".abn-brand{font-weight:800;color:#f0a93a;text-decoration:none;font-size:15px;letter-spacing:.5px}"
+      + ".abn-bar{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:linear-gradient(100deg,#171f2b 0%,#1f2937 45%,#2a2118 100%);color:#fff;font-size:13px;position:relative;z-index:9000;box-shadow:inset 0 -2px 0 0 #d97706,0 3px 14px rgba(0,0,0,.22)}"
+      + ".abn-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:7px 14px;flex-wrap:wrap}"
+      + ".abn-brand{font-weight:900;text-decoration:none;font-size:16px;letter-spacing:.5px;color:#f0a93a;background:linear-gradient(92deg,#fbbf24,#f0a93a 55%,#fb923c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-flex;align-items:center;gap:6px}"
+      + ".abn-brand::before{content:'';width:8px;height:8px;border-radius:50%;background:#f0a93a;-webkit-text-fill-color:initial;box-shadow:0 0 0 0 rgba(240,169,58,.6);animation:abnpulse 2.4s ease-out infinite}"
+      + "@keyframes abnpulse{0%{box-shadow:0 0 0 0 rgba(240,169,58,.55)}70%{box-shadow:0 0 0 7px rgba(240,169,58,0)}100%{box-shadow:0 0 0 0 rgba(240,169,58,0)}}"
       + ".abn-links{display:flex;gap:3px;flex-wrap:wrap;flex:1}"
-      + ".abn-links a{color:#e5e7eb;text-decoration:none;padding:4px 8px;border-radius:6px;font-weight:600;white-space:nowrap}"
-      + ".abn-links a:hover{background:rgba(255,255,255,.13);color:#fff}"
+      + ".abn-links a{color:#e5e7eb;text-decoration:none;padding:4px 9px;border-radius:7px;font-weight:600;white-space:nowrap;transition:background .15s,color .15s,transform .15s}"
+      + ".abn-links a:hover{background:rgba(240,169,58,.2);color:#fff;transform:translateY(-1px)}"
       + ".abn-sr{position:relative}"
-      + ".abn-q{border:1px solid #4b5563;background:#111827;color:#fff;border-radius:7px;padding:5px 10px;font-size:13px;width:170px}"
+      + ".abn-q{border:1px solid #4b5563;background:#111827;color:#fff;border-radius:8px;padding:5px 10px;font-size:13px;width:170px;transition:border-color .15s,box-shadow .15s}"
       + ".abn-q::placeholder{color:#9ca3af}"
-      + ".abn-res{position:absolute;right:0;top:calc(100% + 4px);width:310px;max-height:62vh;overflow:auto;background:#fff;color:#1f2937;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 12px 34px rgba(0,0,0,.28)}"
+      + ".abn-q:focus{outline:0;border-color:#f0a93a;box-shadow:0 0 0 3px rgba(240,169,58,.25)}"
+      + ".abn-res{position:absolute;right:0;top:calc(100% + 6px);width:310px;max-height:62vh;overflow:auto;background:#fff;color:#1f2937;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 34px rgba(0,0,0,.28)}"
       + ".abn-res a{display:block;padding:8px 11px;text-decoration:none;color:#1f2937;border-bottom:1px solid #f3f4f6}"
       + ".abn-res a:hover{background:#fff7ed}.abn-res a b{display:block;color:#b45309;font-size:13px}.abn-res a span{font-size:11px;color:#6b7280}"
       + ".abn-no{padding:10px 11px;color:#6b7280;font-size:12px}"
       + "@media(max-width:680px){.abn-links{display:none}.abn-q{width:128px}}"
       + "@media print{.abn-bar{display:none!important}.abn-hub{display:none!important}}"
       + ".abn-hub{max-width:1000px;margin:26px auto;padding:0 18px}"
-      + ".abn-hub h2{font-size:1.12rem;margin:18px 0 10px;color:#b45309}"
-      + ".abn-hsearch{width:100%;max-width:440px;padding:10px 13px;border:1px solid #e5e7eb;border-radius:10px;font-size:15px;margin-bottom:10px;font-family:inherit}"
-      + ".abn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}"
-      + ".abn-card{display:block;border:1px solid #ece3d4;border-radius:12px;padding:12px 14px;text-decoration:none;color:#1f2937;background:#fff}"
-      + ".abn-card:hover{border-color:#d97706;box-shadow:0 4px 14px rgba(217,119,6,.13)}"
+      + ".abn-hub h2{font-size:1.12rem;margin:22px 0 11px;color:#b45309;display:flex;align-items:center;gap:9px;padding-left:11px;border-left:4px solid #d97706}"
+      + ".abn-hub h2 .abn-ic{font-size:1.15rem;-webkit-text-fill-color:initial}"
+      + ".abn-hsearch{width:100%;max-width:440px;padding:11px 14px;border:1px solid #e5e7eb;border-radius:11px;font-size:15px;margin-bottom:10px;font-family:inherit;transition:border-color .15s,box-shadow .15s}"
+      + ".abn-hsearch:focus{outline:0;border-color:#d97706;box-shadow:0 0 0 4px rgba(217,119,6,.13)}"
+      + ".abn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:11px}"
+      + ".abn-card{position:relative;overflow:hidden;display:block;border:1px solid #ece3d4;border-radius:13px;padding:13px 15px;text-decoration:none;color:#1f2937;background:linear-gradient(180deg,#fff,#fffbf5);transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}"
+      + ".abn-card::before{content:'';position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,#d97706,#f0a93a,#fbbf24);transform:scaleX(0);transform-origin:left;transition:transform .22s ease}"
+      + ".abn-card:hover{transform:translateY(-3px);border-color:#d97706;box-shadow:0 9px 24px rgba(217,119,6,.16)}"
+      + ".abn-card:hover::before{transform:scaleX(1)}"
       + ".abn-card b{display:block;color:#b45309;font-size:.95rem;margin-bottom:2px}.abn-card span{font-size:.8rem;color:#6b7280}";
     var st = document.createElement("style"); st.textContent = css; (document.head || document.documentElement).appendChild(st);
 
@@ -141,7 +152,7 @@
         });
         gw.innerHTML = order.length
           ? order.map(function (c) {
-              return "<h2>" + esc(c) + "</h2><div class=\"abn-grid\">"
+              return "<h2><span class=\"abn-ic\">" + (CATICON[c] || "•") + "</span>" + esc(c) + "</h2><div class=\"abn-grid\">"
                 + cats[c].map(function (it) { return '<a class="abn-card" href="' + it[1] + '"><b>' + esc(it[0]) + "</b><span>" + esc(it[3]) + "</span></a>"; }).join("")
                 + "</div>";
             }).join("")
