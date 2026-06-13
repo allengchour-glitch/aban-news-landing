@@ -44,8 +44,10 @@ verknüpfen → „Free listings" aktivieren → Produkte synchronisieren. (Free
 **Feed-Audit (live geprüft, Befunde):**
 - ⚠️ **Kein GTIN/Barcode** an Varianten → ohne „identifier_exists=false" droht Beanstandung. Im Google-Kanal:
   Produkte ohne Hersteller-Barcode als **„custom product / kein GTIN"** markieren (Kanal-Einstellung), dann ok.
-- ⚠️ **`google_product_category` fehlte** → der native Google-Kanal mappt automatisch über die **Shopify-Produktkategorie
-  (Standard-Taxonomie)**. ToDo: jedem Produkt eine Kategorie zuweisen (Bulk im Admin: Produkte → auswählen → Kategorie).
+- ✅ **Produkt-Kategorie (Shopify-Taxonomie) zugewiesen (2026-06-13):** **246 Produkte** autonom kategorisiert
+  (Pipeline `automation/google_category_assign.py`: mappt Produkttyp → deutsche Taxonomie-ID, z. B. Schmuck→`aa-6`,
+  Uhren→`aa-6-11`, Schuhe→`aa-8`, Bekleidung→`aa-1`, Beleuchtung→`hg-13-5`, Elektronik→`el`). Der native Google-Kanal
+  mappt daraus automatisch die Google-Kategorie. Rest (neueste Importe + Baby/Werkzeug) im Admin nachziehen.
 - ⚠️ **Auto-generierte SEO-Titel/Descriptions** bei einigen Produkten (z. B. „… – Design – Ultraschall…"). **5 davon
   bereits live korrigiert**; Muster siehe unten. Saubere Titel = bessere Free-Listing-Klickrate.
 - ✅ **Gut:** Preise, Verfügbarkeit, Bilder, Produkttyp gesetzt; Versand/Rückgabe-Policies vorhanden.

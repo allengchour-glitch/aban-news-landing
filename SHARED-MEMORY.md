@@ -39,6 +39,14 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Produkt-Kategorien (Google-Feed) autonom zugewiesen:**
+- **246 Produkte** mit Shopify-Taxonomie-**Kategorie** versehen (waren alle `null`) → Google-Free-Listings-tauglich,
+  der native Google-Kanal mappt daraus automatisch. Pipeline `automation/google_category_assign.py` (Produkttyp →
+  deutsche Taxonomie-ID: Schmuck `aa-6`, Uhren `aa-6-11`, Sonnenbrille `aa-2-27`, Taschen `aa-5-4`, Schuhe `aa-8`,
+  Kleid `aa-1-4`, Bekleidung `aa-1`, Accessoires `aa-2`, Beauty `hb-3-2-6`, Beleuchtung `hg-13-5`, Küche `hg-11-8`,
+  Deko `hg-3`, Elektronik `el`, Ventilator `hg-9-1-6`, Haustier `ap-2`, Auto `vp-1`, Bad `hg-1`, Garten `hg-12`). 0 Fehler.
+- **Offen:** die ~87 neuesten cj-real (Seiten 6–7) + Typen Baby&Kinder/Werkzeug — im Admin/Folge-Lauf nachziehen.
+
 **2026-06-13 — Katalog-SEO autonom durchgefixt (Pipeline):**
 - **81 Produkte** mit kaputter Auto-SEO live korrigiert (saubere Titel „… | LuxeStyle" + Descriptions).
   Pipeline `automation/seo_catalog_fix.py`: scannt cj-real seitenweise (Antworten landen als Datei),
