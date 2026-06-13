@@ -52,3 +52,24 @@ Anpassen → Startseite):
 
 ---
 *Erstellt 2026-06-13 · Branch `claude/website-layout`*
+
+## 🔧 Robustheit & Wartung (für ALLE Sessions — wichtig)
+**Frage: Was, wenn eine andere Session mehr Produkte postet / falsch sortiert / mehr Banner braucht?**
+
+- **Banner brechen NIE durch neue Produkte:** Das Banner hängt am **Collection-Objekt** (`collection.image`),
+  nicht an Produkten. Mehr Produkte = Banner bleibt.
+- **Auto-Sortierung:** 8 der 9 Menü-Kategorien sind **Smart Collections** — neue Produkte landen automatisch per Tag/Preis:
+  - `damen-mode`= Tag `damen`/`kleid`/`damen-mode`/`damen-taschen`/`sandalen`
+  - `fur-ihn`= Tag `herren`/`herrenschmuck`/`herrenuhr`/`vatertag`
+  - `schuhe`= Tag `schuhe` · `wohnen-dekoration`= `wohnen`/`dekoration`/`kueche`/…
+  - `premium-beauty`= `beauty`+`premium` · `trends-gadgets`= `trend` · `premium-geschenke`= `geschenk`+`premium`
+  - `unter-chf-25`= Variantenpreis < 25 (außer Sticker)
+  → **Import-Session: korrekt taggen, dann sortiert sich alles selbst.**
+- **⚠️ AUSNAHME `premium-schmuck` (Menü „Schmuck") = MANUELLE Collection** (id 687724560769). Shopify lässt sie
+  **nicht** in eine Auto-Regel umwandeln. Am 2026-06-13 auf **alle 110 aktiven** Schmuckstücke (Tag `schmuck`/
+  `damen-schmuck`) aufgefüllt. **Neue Schmuck-Produkte müssen entweder manuell hinzugefügt werden** (per
+  `collectionAddProductsV2`, id oben) **oder** erscheinen ohnehin in den **Smart-Sub-Collections**
+  `sub-halsketten`/`sub-ohrringe`/`sub-ringe`/`sub-armbaender` (Titel-Regel, auto). Discoverability ist also gesichert.
+- **Neue Kategorie braucht ein Banner?** `automation/gen_category_banners.py` um einen Eintrag ergänzen → rendern →
+  per Staged-Upload+`fileCreate` auf die CDN → `collectionUpdate image.src` setzen (genau wie 2026-06-13 gemacht).
+  CDN-Banner-Dateien `cat-*.jpg` (inkl. `-v2`) **NICHT löschen**.
