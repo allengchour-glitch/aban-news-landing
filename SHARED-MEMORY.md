@@ -39,6 +39,17 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 (ABEND) — Luxestyle/Dropship: ☁️ CLOUDFLARE-AUTOPILOT gebaut (umgeht GitHub-Actions-Sperre):**
+- **Problem gelöst:** Da GitHub-Actions ganztags gesperrt (422) → komplette tägliche Pipeline auf **Cloudflare Workers +
+  Cron Triggers** portiert, läuft **unabhängig von GitHub**. Ordner **`cloudflare/`** (auf Branch `claude/memory-2026-06-13`, PR #851).
+- **Tasks:** `04:30 UTC` ENHANCE (nächstes `good_products.csv`-Foto → Gemini 2.5 Flash Image, produkt-treu → **R2** → **KV**-Queue) ·
+  `09:00`+`17:00` POST (Queue → Meta-Graph IG+FB+Threads). Öffentliche JPG-URL liefert der Worker selbst aus R2 (`/enhanced/<name>.jpg`).
+- **Dateien:** `wrangler.toml` (Crons+R2+KV), `src/worker.js` (Gemini+Meta 1:1 aus den mjs-Skripten portiert, Buffer-frei),
+  `src/products.js` (aus CSV, via `sync-products.mjs`), `README.md` (10-Min-Setup), `package.json`. Getestet: Syntax + Base64-Roundtrip ✓.
+- **OFFEN (User, einmalig ~10 Min):** `wrangler login` → R2-Bucket+KV anlegen → Secrets (`GEMINI_API_KEY`, IG/FB/Threads, `RUN_KEY`) → `wrangler deploy`.
+  Danach Dauerbetrieb gratis (Free-Tier), ~$1.2/Mt Gemini. Test ohne Cron: `/run?task=enhance|post&key=…`.
+- **Vorteil:** Kein Abuse-Throttle wie bei GitHub-Actions, kein GitHub-Pages-Hosting nötig (R2 serviert die Bilder). Dieselben Tokens wie bisher.
+
 **2026-06-13 — Luxestyle/Dropship session: Paar-Welt + Gemini-Polish + Selbst-gestalten aufgeräumt:**
 - **Shopify-MCP war verbunden** → alles live aus der Session gemacht. CJ-Token kam vom User per Chat (danach gelöscht).
 - **💞 Paar-Welt (18 Produkte):** 6 CJ-Schmuck (Magnet-Herz-Kette, Herzstein-Armband, Titan/Bären/Sword-Ringe, Wolfszahn-Kette)
