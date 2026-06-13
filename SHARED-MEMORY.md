@@ -39,6 +39,15 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Trust-Konsistenz Unterkategorien + Status-Report (autonom, live):**
+- **Alle 20 Menü-Unterkategorien** (sub-roecke/bademode/ohrringe/armbaender/ringe/beleuchtung/deko/aroma-diffuser/
+  massage/uhren/bart-rasur/yoga-fitness/trinkflaschen/baby-kids/haustier/reise/kueche + grill-bbq/auto-handy/handy-zubehoer)
+  haben jetzt die **volle Trust-Zeile** wie die Hauptkategorien: *🇨🇭 Gratis-Versand ab CHF 65 · 30 Tage Rückgabe ·
+  TWINT & sichere Bezahlung · –10% mit Code WELCOME10* (batched `collectionUpdate`, 0 userErrors).
+- **Alt-Texte verifiziert:** alle Hero-/Bestseller-Produkte haben deskriptive Alt-Texte (nichts zu tun).
+- **Live-Zahlen:** **1.192 aktive Produkte** (333 cj-real), **0 Bestellungen/30 T**, WELCOME10 ACTIVE bis 31.08.
+- **Neuer Kompakt-Report:** `dropship/SHOP-STATUS-2026-06-13.md` (Schnell-Überblick für jede Session).
+
 **2026-06-13 — Conversion-QA (autonom, live):**
 - **WELCOME10 = ACTIVE** verifiziert (10%, gültig bis 31.08.2026, ab CHF 0.01, 1×/Kunde). Der überall beworbene Code geht.
 - **Conversion-Leak behoben:** `neu-eingetroffen` (✨ Neuheiten 2026, = Startseiten-Sektion + Menü) hatte Regel nur
