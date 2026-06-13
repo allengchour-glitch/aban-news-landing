@@ -55,6 +55,15 @@ Zusätzlich zu den 16 neuen Produkten haben jetzt auch die **bewerteten/starken 
 - **Hands-free für den ganzen Katalog:** `SHOPIFY_CLIENT_ID`/`SHOPIFY_CLIENT_SECRET` als Secrets setzen →
   dann hängt `automation/luma_product_video.mjs` selbst an (kein manuelles Staging mehr) und kann das Restguthaben
   unbeaufsichtigt verbrauchen: `node automation/luma_product_video.mjs --pids <id,id,...>`.
+- **Staging-Falle:** Die `stagedUploadsCreate`-Policy läuft **sehr kurz** (~sofort) ab → Bytes SOFORT nach dem
+  Staging hochladen (in Gruppen ≤5), sonst HTTP 400 beim GCS-POST. Bei 400 einfach neu stagen + sofort posten.
+
+### Stand 2026-06-13 — 41 Produkte mit Luma-Video (Budget ~10 CHF)
+- 16 neue cj-real + 15 bewertete/starke (good_products) + 10 Schmuck (Ringe/Ohrringe/Tennis-Armband) = **41 live**.
+- Luma-Credit war bis dahin **nicht** erschöpft (kein HTTP 402) — nur Concurrency-429. Weitere Wellen möglich,
+  bis Luma „insufficient credits" meldet. Nächste Kandidaten: Couple-/Partner-Schmuck, Home-Gadgets (FreshSeal,
+  SharpPro, Seifenspender), Bamboo-Mode, Espadrilles/Slipper. (POD-„Selbst gestalten" + Text-Shirts bewusst
+  ausgelassen — Motion verzerrt Text/Logos.)
 
 ## Aktivierung (1 Schritt je Weg)
 - **C:** `LUMA_API_KEY` als GitHub-Secret (oder transient in die Session geben) → ich starte den Lauf.
