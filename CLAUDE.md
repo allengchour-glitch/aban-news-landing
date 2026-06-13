@@ -34,6 +34,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **Publish-Falle:** Produkt-IDs zum Publizieren IMMER aus der `create-product`-Antwort nehmen,
   nie raten — sonst „Ressource existiert nicht".
 - **Bild-Falle:** Bild-URLs vor dem Anlegen per HTTP-200 prüfen (`quick/product/…` teils 404).
+- **🈲 ASIATISCHE-SCHRIFT-REGEL (FEST, User 2026-06-13 „merke dir das"):** NIE Produktbilder mit
+  **chinesischer/asiatischer Schrift** auf Verpackung/Overlay (z. B. 文艺车玩) ODER Lieferanten-Text wie
+  **„MADE IN CHINA" / Marken-Watermark (ZHUMENG o. ä.)** live lassen oder posten. **Jedes Bild vor Anlegen UND
+  vor dem Posten ansehen.** Häufige Quelle: **Auto-Importe** (oft die andere Session). Wenn entdeckt:
+  Produkt **archivieren** (status ARCHIVED), aus `automation/cloudflare/luxe-poster/src/queue.json` nehmen,
+  FB-Post per Graph-API löschen (`DELETE /{post_id}`). **⚠️ Instagram-API kann veröffentlichte Posts NICHT
+  löschen** → IG-Post nur in der App ODER via PC-Claude `ig-delete` entfernen. Katalogweit aufräumen:
+  `automation/image-audit.mjs` (Gemini-Vision erkennt asiatische Schrift/Overlays) — braucht `GEMINI_API_KEY`.
 - **🔑 Shopify-Admin-API-Token (WICHTIG — 2026 geändert, NIE wieder Stunden verlieren):** Shopify hat den
   „shpat_-Token anzeigen"-Knopf **abgeschafft**. Custom-Apps (Dev-Dashboard) liefern nur noch **Client-ID**
   + **Schlüssel** (`shpss_…`). Token holt man per **Client-Credentials-Grant**:
