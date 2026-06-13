@@ -78,11 +78,16 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Bestellung/Design, idempotent `ig-dm-done.json`, Cap 15, `--dry`). API-Templates (`ig-dm-reply.mjs`) ebenfalls
   erweitert. **🎞️ Alle Formate gefüllt:** +8 Stories (`story_queue.csv`, CDN), 11 Reels ready, 8 Produkt-Posts.
   **📱 `control.html`/`HANDY-STEUERUNG.md`** jetzt 9 Buttons (inkl. 📖 Story, 💬 DMs, 📌 Pinterest).
-- **📌 PINTEREST ÜBERNOMMEN (User 2026-06-13 „du kannst den part mit pins übernehmen, nicht kollidieren/doppelt"):**
-  autonom + idempotent aus EINER Quelle: `social/pinterest_queue.csv` → `automation/pinterest-autopost.mjs` (API v5) →
-  `pinterest-autopost.yml` (2×/Tag). Dedup-Ledger `social/pinned-done.txt` (Key = Produkt-Link) → NIE doppelt. 55 Pins
-  generiert (bewertete/neue zuerst). **Andere Sessions pinnen NICHT mehr manuell** (in SHARED-MEMORY verankert).
-  Fehlt nur Secret `PINTEREST_ACCESS_TOKEN`. Doku `dropship/PINTEREST-SETUP.md`. Printful (andere Session) unangetastet.
+- **📌 PINTEREST — KOLLISION VERMIEDEN (User 2026-06-13 „übernimm pins, nicht kollidieren/doppelt"):** Beim Mergen
+  entdeckt: eine andere Session hat bereits ein **vollständiges Pinterest-System auf `main`** (`pinterest-publish.yml`
+  + `automation/pinterest_publish.mjs` + `dropship/pinterest_pins.csv` = 103 Marken-Pins, idempotent via
+  `dropship/pinterest_done.txt`, nutzt **dasselbe** Secret `PINTEREST_ACCESS_TOKEN`). Mein zweites System hätte
+  **doppelt gepostet** → **mein Duplikat wieder entfernt** (`pinterest-autopost.*`, `pinterest_queue.csv`). Es gilt
+  EIN System (das bestehende auf main). **Der vom User gesetzte Token aktiviert dieses bestehende System direkt** —
+  läuft 2×/Woche (Mo&Do), sobald Actions frei ist. Handy-Button 📌 → `pinterest-publish.yml`.
+- **🛍️ Kollektions-QA (User „sticker gehören nicht in taschen?"):** „Tasche «Merci/Matterhorn/Hoi»" = echte Tote-Bags
+  (korrekt). ABER 3 Fremdkörper in „👜 Taschen & Rucksäcke" (Smart-Regel TITEL enthält „Tasche" zu breit) → behoben
+  durch Umbenennen „Tasche/Tragetasche"→„Beutel": Gartenwerkzeug-Set, Widerstandsbänder, XL-Strandtuch (live via MCP).
 
 **📌 2026-06-07 (NEUESTER STAND — ZUERST LESEN: Memory aufgefrischt + Conversion-Fix):**
 - **Branch-Reset:** Alle früheren Dropship-Branches (SrAs5/LehDs) sind **in `main` gemergt + gelöscht**.

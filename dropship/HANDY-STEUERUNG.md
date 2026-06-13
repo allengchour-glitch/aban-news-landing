@@ -42,7 +42,7 @@ Antwort **204** = ausgelöst ✅.
 | 🎵 **TikTok Entwurf** | `tiktok-autopost.yml` | nächstes Reel in TikTok-Entwürfe |
 | 💬 **DMs beantworten** | `ig-dm-reply.yml` | neue Instagram-DMs automatisch beantworten |
 | 📅 **Metricool planen** | `metricool-schedule.yml` | Queue → Metricool (öffentlich) |
-| 📌 **Pinterest pinnen** | `pinterest-autopost.yml` | nächste Pins aus der Queue |
+| 📌 **Pinterest pinnen** | `pinterest-publish.yml` | nächste Pins aus der Queue |
 | ✨ **FB polieren** | `fb-profile-polish.yml` | FB-Profilbild + Info setzen |
 
 ---

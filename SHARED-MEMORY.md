@@ -273,9 +273,10 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 - **🛍️ Weitere Produkte analysiert:** bewertet (Social-Proof) = Smartwatch/Gemüseschneider/Robo-Ventilator je 5,0★;
   +5 nie gepostete (Gala/FlexHold/Glow/Cloud/Lino) eingereiht. Analyse: `reports/ANALYSE-SOCIAL-2026-06-12.md`.
 - **📱 Handy-Steuerung:** `control.html` + `dropship/HANDY-STEUERUNG.md` jetzt mit 8 Buttons (inkl. 📖 Story, 💬 DMs).
-- **📌 PINTEREST ÜBERNOMMEN von dieser Session (User 2026-06-13):** Damit es nicht doppelt postet, läuft Pinterest jetzt
-  **autonom + idempotent** aus EINER Quelle: `social/pinterest_queue.csv` → `automation/pinterest-autopost.mjs`
-  (API v5) → `pinterest-autopost.yml` (2×/Tag). Dedup-Ledger `social/pinned-done.txt` (Key = Produkt-Link) → NIE doppelt,
-  auch über Läufe/Sessions hinweg. 55 Pins generiert (bewertete/neue zuerst). **→ Andere Sessions: ab jetzt NICHT mehr
-  manuell pinnen** (sonst Dubletten). Fehlt nur `PINTEREST_ACCESS_TOKEN` (Secret). Doku `dropship/PINTEREST-SETUP.md`.
+- **📌 PINTEREST — KOLLISION VERMIEDEN (User 2026-06-13 „übernimm pins, nicht doppelt"):** Es existiert bereits das
+  System der Reichweite-Session auf `main` (`pinterest-publish.yml` + `pinterest_publish.mjs` + `pinterest_pins.csv`,
+  103 Pins, idempotent `pinterest_done.txt`, Secret `PINTEREST_ACCESS_TOKEN`). Ich hatte versehentlich ein **zweites**
+  gebaut → **wieder entfernt** (`pinterest-autopost.*`, `pinterest_queue.csv`), um Doppelposts zu verhindern. **Es bleibt
+  das EINE bestehende System.** Der User hat `PINTEREST_ACCESS_TOKEN` gesetzt → aktiviert das bestehende System direkt
+  (Mo&Do je 5, sobald Actions frei). Handy-Button 📌 → `pinterest-publish.yml`.
 - **ℹ️ Printful** (POD-Fulfillment, andere Session) bleibt unangetastet — kein Konflikt mit Katalog/Social dieser Session.
