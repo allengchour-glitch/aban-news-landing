@@ -152,6 +152,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   <section class="view on" id="v-dash">
     <h1>Übersicht <span class="pill">dein Cockpit</span></h1>
     <p class="sub">Alles auf einen Blick — Umsatz, offene Posten, Zeit und Lern-Fortschritt.</p>
+    <div id="d_onboard"></div>
     <div class="out" id="d_kpi"></div>
     <div class="btnrow" style="margin:14px 0">
       <button class="btn" data-go="rechnung" type="button">🧾 Neue Rechnung</button>
@@ -1389,6 +1390,10 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   /* ===== Dashboard / Übersicht ===== */
   function dashMonths(){var m={};drafts().forEach(function(d){if(d.status!=="bezahlt")return;var rd=parseDate(d.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");m[k]=(m[k]||0)+grossOf(d)});kasse().forEach(function(x){if(x.typ!=="ein")return;var rd=parseDate(x.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");m[k]=(m[k]||0)+(n(x.betrag)||0)});return m}
   function renderDash(){var root=$("#v-dash");if(!root||typeof AbanCharts==="undefined")return;
+    var ob=$("#d_onboard");
+    if(ob){var isEmpty=!(stamm().firma)&&!drafts().length&&!kasse().length&&!tEntries().length&&!portfolio().length;
+      ob.innerHTML=isEmpty?'<div class="disc">👋 <strong>Neu hier?</strong> Trage unter ⚙️ Stammdaten deine Firma ein — oder lade dort „🎬 Demo-Daten" zum Ausprobieren. Dann füllen sich Übersicht &amp; Diagramme automatisch. <button class="btn ghost sm" id="d_obgo" type="button" style="margin-left:6px">→ Zu den Stammdaten</button></div>':"";
+      var g=$("#d_obgo");if(g)g.addEventListener("click",function(){var b=$('#tabs button[data-v="stamm"]');if(b)b.click()})}
     var ds=drafts(),offen=0,offenN=0;ds.forEach(function(d){if(d.status!=="bezahlt"){offen+=grossOf(d);offenN++}});
     var ein=0,aus=0;kasse().forEach(function(x){var b=n(x.betrag)||0;if(x.typ==="ein")ein+=b;else aus+=b});
     var hrs=0;tEntries().forEach(function(e){hrs+=n(e.std)||0});
