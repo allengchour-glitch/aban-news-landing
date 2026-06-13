@@ -18,6 +18,9 @@
 - **SEO-Meta (Title + Description) für ALLE 25 heute angelegten Produkte** gesetzt (2 Batches: erst die 11 beworbenen,
   dann die restlichen 14) — alle mit Keywords + Trust (Schweizer Shop/Gratis-Versand/WELCOME10).
 - QA: Hype-2026 = 50 (mit Hero), Schuhe = 107, Sonnenbrillen via Titel/Tag abgedeckt. Alle heutigen Bilder READY, 0 FAILED.
+- **🧭 Menü-Discoverability:** Luxus-Collection war NICHT verlinkt → neuer Top-Menüpunkt **„✨ High-End"** (Position 2,
+  nach Hype 2026) → `/collections/luxus-highend`. Via `menuUpdate` (ganzes Menü skriptbasiert originalgetreu nachgebaut,
+  alle Item-IDs + Dropdowns erhalten, 0 userErrors). Backup der Original-Struktur lag in der Session vor.
 
 ## Session 2026-06-13 (NACHT-3) — +5 Hype für Männer (Streetwear-Accessoires)
 - User-Wunsch „hype sachen für männer". Fokus: trendige Herren-Accessoires (kein „Luxus"). Tag **`hype-2026`**
