@@ -39,6 +39,13 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Seiten-Optimierung verifiziert + Customizer-Restliste:** Geprüft & bestätigt: alle neuesten
+Produkte haben **Alt-Texte** (Bild-SEO ok) und sind auf **6 Kanälen publiziert** — inkl. **Google & YouTube**
+UND **Pinterest** (Kanäle sind verbunden, SEO/Kategorie-Arbeit füttert sie live; keine Publish-Falle). Damit ist
+die **API-Seite vollständig optimiert**. Die verbliebenen Hebel (Customizer/Theme, API-gesperrt) in präziser
+Schritt-Liste: `dropship/CUSTOMIZER-OPTIMIERUNG.md` (1. Judge.me-Sterne auf Kacheln, 2. Sticky-ATC+Trust-Badges,
+3. Collection-Banner-Sektion, 4. Startseiten-Rhythmus, 5. Search-Console-Sitemap) → für PC-Claude/Admin.
+
 **2026-06-13 — Neue Produkte nachgezogen (jetzt 360 cj-real):** ~18 neue/SEO-lose Produkte (neue Silber-
 Armbänder/Ohrringe + Schuhe) mit SEO + 5 Kategorien gefixt; **+5 polierte Pins** der neuen Schmuckstücke
 (py4-*) → **187 Pins total**. ⚠️ Beobachtung: einige zuvor gesetzte Produkt-SEO waren wieder null (anderer
