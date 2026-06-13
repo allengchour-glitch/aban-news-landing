@@ -20,9 +20,17 @@
    Deko, Aroma, Massage, Trinkflaschen, Küche, Baby&Kids, Haustier, Reise, Handy, Yoga). → schöne Mega-Menü-Thumbnails.
    ⚠️ **Offen: 🧔 Bart & Rasur** — alle Produkte haben **kein Bild** hinterlegt (Daten-/Stockbild-Thema) → Cover nicht setzbar,
    bis die Produktbilder ergänzt sind.
-3. ⏳ **Einheitliche Kollektions-Beschreibungen + SEO** (kurz, nutzenorientiert, Trust-Zeile) — nächster Schritt.
+3. ✅ **Kollektions-Texte/SEO:** Haupt-Kollektionen haben starke Texte; 5 dünne aufgewertet (Taschen, Trends,
+   Halsketten, Kleider, Herren-Mode) auf einheitliches SEO-Format (Keywords + Trust-Zeile + WELCOME10). Bart&Rasur-
+   Cover aus dem aktiven Produkt gesetzt.
 4. **POD-Tote-Bags:** Bild zeigt nur das Motiv (wirkt wie Sticker) → echtes Taschen-Mockup als 1. Bild
    würde im Taschen-Raster hochwertiger wirken (POD-Session-Thema, koordinieren).
+
+## ✅ „Komplette Produkte" — geprüft
+- Bildlose Produkte (z. B. Bart&Rasur „Premium … Boutique -1..-7", Reisetaschen-Duplikate) sind **ARCHIVIERT**
+  → **nicht kundensichtbar**, verschmutzen die Live-Seite nicht. **0 aktive** „Boutique"-Produkte.
+- Kundensichtbare cj-real-Produkte sind bild-QA-geprüft (0 FAILED). → Storefront ist „komplett".
+- Offener Backlog: die archivierten Duplikate könnten per Admin-Bulk gelöscht werden (API-Bulk war gesperrt).
 
 ## 🖱️ Nur im Customizer (dein Klick-Bereich — Haupt-Theme ist für mich gesperrt)
 Recherche-belegte Hebel, die optisch am meisten bringen:
