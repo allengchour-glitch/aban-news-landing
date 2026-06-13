@@ -3,30 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Angebote &amp; Schnäppchen suchen — eine Suche, viele Angebote | aban</title>
-<meta name="description" content="Angebote und Schnäppchen aus vielen Kategorien an einem Ort suchen und filtern. Der Klick führt direkt zum Anbieter (eBay). Ehrlich, mit Affiliate-Kennzeichnung.">
+<title>Möbel-Angebote — günstig finden &amp; vergleichen | aban</title>
+<meta name="description" content="Möbel für Wohnen, Büro &amp; Garten als Angebote – der Klick führt direkt zum Anbieter (eBay).">
 <meta name="theme-color" content="#d97706">
 <meta name="robots" content="index,follow">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="canonical" href="https://abannews.com/angebote-suche.html">
-<meta property="og:title" content="Angebote & Schnäppchen suchen">
-<meta property="og:description" content="Eine Suche, viele Angebote — Klick führt direkt zum Anbieter.">
+<link rel="canonical" href="https://abannews.com/moebel-angebote.html">
+<meta property="og:title" content="Möbel-Angebote — günstig finden">
+<meta property="og:description" content="Möbel für Wohnen, Büro &amp; Garten als Angebote – der Klick führt direkt zum Anbieter (eBay).">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/angebote-suche.html">
+<meta property="og:url" content="https://abannews.com/moebel-angebote.html">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
 .wrap{max-width:1040px;margin:0 auto;padding:0 16px}a{color:var(--amber-dk)}
 header.hero{background:linear-gradient(180deg,var(--cream),var(--bg));border-bottom:1px solid var(--line);padding:26px 0 20px}
-h1{font-size:1.55rem;line-height:1.2;margin-bottom:6px}.lead{color:var(--ink2);font-size:.98rem;max-width:640px}
+h1{font-size:1.55rem;line-height:1.2;margin-bottom:6px}.lead{color:var(--ink2);font-size:.98rem;max-width:660px}
 .disc{background:#fff;border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:8px;padding:9px 12px;font-size:.8rem;color:var(--ink2);margin:12px 0}
 .searchbar{display:flex;gap:8px;margin:14px 0 10px;flex-wrap:wrap}
 .searchbar input{flex:1;min-width:200px;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;background:var(--card)}
 .searchbar button{background:var(--amber-dk);color:#fff;border:0;border-radius:10px;padding:11px 20px;font-weight:700;font-size:.95rem;cursor:pointer}
-.chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}
-.chips button{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:.82rem;font-weight:600;color:var(--ink2)}
-.chips button:hover{border-color:var(--amber);color:var(--amber-dk)}
+.catnav{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}
+.catnav a{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.82rem;font-weight:600;color:var(--ink2);text-decoration:none}
+.catnav a:hover{border-color:var(--amber);color:var(--amber-dk)}.catnav a.on{background:var(--cream);border-color:var(--amber);color:var(--amber-dk)}
 main{padding:14px 0 56px}
 .badge{display:inline-block;background:#fff7ed;border:1px solid #f3dca0;color:#92660a;font-size:.72rem;font-weight:700;border-radius:999px;padding:3px 9px;margin-bottom:10px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
@@ -34,8 +34,7 @@ main{padding:14px 0 56px}
 .item .ph{aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#bcae95;font-size:2rem}
 .item .b{padding:10px 11px;display:flex;flex-direction:column;flex:1}
 .item .t{font-size:.85rem;font-weight:600;line-height:1.3;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.item .p{color:var(--amber-dk);font-weight:800;font-size:1rem}
-.item .m{font-size:.72rem;color:var(--muted);margin:2px 0 8px}
+.item .p{color:var(--amber-dk);font-weight:800;font-size:1rem}.item .m{font-size:.72rem;color:var(--muted);margin:2px 0 8px}
 .item a.go{margin-top:auto;display:block;text-align:center;background:var(--amber-dk);color:#fff;text-decoration:none;border-radius:8px;padding:7px;font-weight:700;font-size:.82rem}
 .status{color:var(--muted);font-size:.9rem;padding:20px 0}
 footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var(--muted);text-align:center}
@@ -43,15 +42,14 @@ footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var
 </head>
 <body>
 <header class="hero"><div class="wrap">
-  <h1>Angebote &amp; Schnäppchen suchen</h1>
-  <p class="lead">Eine Suche, viele Angebote. Tippe ein, was du suchst — der Klick führt dich direkt zum Anbieter.</p>
+  <h1>Möbel-Angebote</h1>
+  <p class="lead">Sofa, Tisch, Schrank oder Schreibtisch: Hier findest du Möbel-Angebote für Wohnzimmer, Büro und Garten.</p>
   <div class="searchbar">
-    <input id="q" type="search" placeholder="z. B. Fahrrad, iPhone, Sofa, Werkzeug …" aria-label="Suche">
+    <input id="q" type="search" value="Möbel" placeholder="Stichwort verfeinern …" aria-label="Suche">
     <button id="go" type="button">Suchen</button>
   </div>
-  <div class="chips" id="chips"></div>
+  <nav class="catnav" aria-label="Kategorien"><a href="/angebote-suche.html">🔎 Alle</a><a href="/fahrrad-angebote.html">Fahrrad</a><a href="/handy-angebote.html">Handy</a><a href="/moebel-angebote.html" class="on">Möbel</a><a href="/werkzeug-angebote.html">Werkzeug</a><a href="/spielzeug-angebote.html">Spielzeug</a><a href="/mode-angebote.html">Mode</a><a href="/autoteile-angebote.html">Auto-Teile</a><a href="/garten-angebote.html">Garten</a><a href="/kueche-angebote.html">Küche</a><a href="/gaming-angebote.html">Gaming</a><a href="/schmuck-angebote.html">Schmuck &amp; Uhren</a><a href="/baby-angebote.html">Baby &amp; Kind</a><a href="/haustier-angebote.html">Haustier</a><a href="/kamera-angebote.html">Foto &amp; Kamera</a></nav>
   <div class="disc">💬 Transparenz: Die Angebote stammen von Partnern (z. B. eBay). Klickst du und kaufst, erhalten wir evtl. eine kleine Provision — für dich bleibt der Preis gleich.</div>
-  <p style="font-size:.85rem;color:var(--muted)">Kategorien: <a href="/fahrrad-angebote.html">Fahrrad</a> · <a href="/handy-angebote.html">Handy</a> · <a href="/moebel-angebote.html">Möbel</a> · <a href="/werkzeug-angebote.html">Werkzeug</a> · <a href="/spielzeug-angebote.html">Spielzeug</a> · <a href="/mode-angebote.html">Mode</a> · <a href="/autoteile-angebote.html">Auto-Teile</a> · <a href="/garten-angebote.html">Garten</a> · <a href="/kueche-angebote.html">Küche</a> · <a href="/gaming-angebote.html">Gaming</a> · <a href="/schmuck-angebote.html">Schmuck</a> · <a href="/baby-angebote.html">Baby</a> · <a href="/haustier-angebote.html">Haustier</a> · <a href="/kamera-angebote.html">Kamera</a></p>
 </div></header>
 <main><div class="wrap">
   <span class="badge" id="badge" hidden>Demo-Daten — echte Angebote, sobald die eBay-Anbindung freigeschaltet ist</span>
@@ -59,15 +57,14 @@ footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var
   <div class="grid" id="grid"></div>
 </div></main>
 <footer><div class="wrap">aban news · Angebote-Suche · Preise &amp; Verfügbarkeit ohne Gewähr · Klicks führen zum jeweiligen Anbieter · © 2026 ·
-  <a href="/">Start</a> · <a href="/online-tools.html">Tools</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  <a href="/angebote-suche.html">Alle Angebote</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
 <script>
 (function(){
-  var CATS=["Elektronik","Handy","Computer","Haushalt","Möbel","Garten","Werkzeug","Auto","Mode","Spielzeug","Sport","Sammeln"];
-  var $=function(s){return document.querySelector(s)};
-  var grid=$("#grid"),status=$("#status"),badge=$("#badge");
+  var QUERY="Möbel";
+  var d2=function(s){return document.querySelector(s)};
+  var grid=d2("#grid"),status=d2("#status"),badge=d2("#badge");
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-  function render(items,demo){
-    badge.hidden=!demo;
+  function render(items,demo){badge.hidden=!demo;
     if(!items||!items.length){status.textContent="Keine Angebote gefunden — versuch ein anderes Stichwort.";grid.innerHTML="";return}
     status.textContent="";
     grid.innerHTML=items.map(function(it){
@@ -76,17 +73,11 @@ footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var
       return '<div class="item">'+img+'<div class="b"><div class="t">'+esc(it.title)+'</div><div class="p">'+esc(it.price||"")+'</div><div class="m">'+esc([it.cond,it.loc].filter(Boolean).join(" · "))+'</div><a class="go" href="'+href+'" rel="sponsored nofollow noopener" target="_blank">Beim Anbieter ansehen →</a></div></div>';
     }).join("");
   }
-  function search(q){
-    status.textContent="Suche „"+(q||"Angebote")+"“ …";grid.innerHTML="";
-    fetch("/api/ebay?limit=24&q="+encodeURIComponent(q||"")).then(function(r){return r.json()}).then(function(d){
-      render(d.items,d.demo);
-    }).catch(function(){status.textContent="Konnte gerade nicht laden. Bitte später nochmal.";});
-  }
-  $("#chips").innerHTML=CATS.map(function(c){return '<button data-q="'+esc(c)+'">'+esc(c)+'</button>'}).join("");
-  $("#chips").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;$("#q").value=b.dataset.q;search(b.dataset.q)});
-  $("#go").addEventListener("click",function(){search($("#q").value.trim())});
-  $("#q").addEventListener("keydown",function(e){if(e.key==="Enter")search($("#q").value.trim())});
-  search("");
+  function search(q){status.textContent="Suche \u201E"+(q||"Angebote")+"\u201C …";grid.innerHTML="";
+    fetch("/api/ebay?limit=24&q="+encodeURIComponent(q||"")).then(function(r){return r.json()}).then(function(d){render(d.items,d.demo)}).catch(function(){status.textContent="Konnte gerade nicht laden. Bitte später nochmal.";});}
+  d2("#go").addEventListener("click",function(){search(d2("#q").value.trim())});
+  d2("#q").addEventListener("keydown",function(e){if(e.key==="Enter")search(d2("#q").value.trim())});
+  search(QUERY);
 })();
 </script>
 </body>
