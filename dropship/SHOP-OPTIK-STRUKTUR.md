@@ -65,3 +65,16 @@ Recherche-belegte Hebel, die optisch am meisten bringen:
   Bamboo-Bluse/-Shirt/-Pullover, Lisbon-Slipper, Lash-Lift Kit u. a.
 - **Punkt 3 (neue Produkte):** Katalog ist bereits gross (1 143 aktiv). Neuer CJ-Import braucht `CJ_EMAIL`/`CJ_API_KEY`
   (Secrets aktuell nicht gesetzt) → erst sinnvoll, wenn gezielt Lücken gefüllt werden sollen.
+
+## 🧭 Mehr Unterkategorien (User 2026-06-13) — live via Shopify-MCP
+Smart-Regel-Muster: **TAG geschlecht UND TITEL enthält <Typ>** (+ NOT_CONTAINS Set) → garantiert sortenrein.
+Alle publiziert (Onlineshop + Kanäle), Titelbild + SEO-Text gesetzt, ins Hauptmenü eingehängt.
+- **Herren-Subs (neu):** `herren-shirts` (👕 Shirts&Tops, 9) · `herren-hemden` (👔, 6) · `herren-hosen` (👖, 14) ·
+  `herren-sets-sub` (🩳, 39) · + `herren-schuhe` neu im Menü verlinkt. Herren-Dropdown jetzt: Für Ihn · Shirts ·
+  Hemden · Hosen · Sets · Schuhe · Uhren · Bart&Rasur · Schmuck · Sonnenbrillen.
+- **Damen-Subs (neu):** `damen-blusen` (👚 Blusen&Tops, 5) · `damen-hosen` (👖, 4) · `damen-sets` (👗 Sets&2-Teiler;
+  Schmuck-Sets via **TAG≠schmuck** ausgeschlossen). Frauen-Dropdown ergänzt um Blusen/Hosen/Sets.
+- **Gender-Fix:** Strick-Pullover «Bamboo» (Frauen-Bild) war fälschlich `herren` → auf `damen` umgetaggt (raus aus
+  „Für Ihn"). Gegen-Check: 0 weitere Fehl-Sortierungen (nur legitimer Unisex-Kaschmir-Schal).
+- **Lehre:** Konjunktive Smart-Regel kann nicht OR — pro Sub EIN Titel-Keyword; Schmuck/Sets via NOT_CONTAINS bzw.
+  TAG≠schmuck ausschliessen. Publish-Falle: neue Collections IMMER `publishablePublish` (sonst 404 im Menü).
