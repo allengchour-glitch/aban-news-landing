@@ -26,6 +26,8 @@ header.app .wrap{display:flex;align-items:center;justify-content:space-between;g
 .brand{font-weight:800;color:var(--amber);text-decoration:none;font-size:1.05rem;white-space:nowrap}
 .brand small{color:var(--muted);font-weight:600}
 .tabs{display:flex;gap:5px;flex-wrap:wrap}
+.tsep{flex:0 0 auto;width:1px;align-self:stretch;background:var(--line);margin:3px 2px}
+@media(max-width:760px){.tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:5px;scrollbar-width:thin}.tabs button{flex:0 0 auto}.tsep{display:none}}
 .tabs button{background:transparent;border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer;font-weight:700;color:var(--ink2);font-size:.85rem}
 .tabs button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
 main{padding:20px 0 70px}
@@ -127,8 +129,9 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
 <body>
 <header class="app"><div class="wrap">
   <a href="/business-cockpit.html" class="brand">aban Business-Cockpit <small>Pro</small></a>
-  <nav class="tabs" id="tabs">
+  <nav class="tabs" id="tabs" aria-label="Module">
     <button data-v="dash" class="on">🏠 Übersicht</button>
+    <span class="tsep" aria-hidden="true"></span>
     <button data-v="rechnung">🧾 Rechnung</button>
     <button data-v="angebot">📄 Angebot</button>
     <button data-v="liefer">📦 Lieferschein</button>
@@ -138,11 +141,14 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     <button data-v="kasse">📒 Kassenbuch</button>
     <button data-v="umsatz">📊 Umsatz</button>
     <button data-v="belege">📎 Belege</button>
+    <button data-v="mahnung">⏰ Mahnung &amp; E-Mail</button>
+    <span class="tsep" aria-hidden="true"></span>
     <button data-v="rechner">🔢 Rechner</button>
     <button data-v="trading">📈 Trading</button>
     <button data-v="finanz">💰 Finanzen</button>
+    <span class="tsep" aria-hidden="true"></span>
     <button data-v="lernen">📚 Lernen</button>
-    <button data-v="mahnung">⏰ Mahnung &amp; E-Mail</button>
+    <span class="tsep" aria-hidden="true"></span>
     <button data-v="stamm">⚙️ Stammdaten</button>
   </nav>
 </div></header>
