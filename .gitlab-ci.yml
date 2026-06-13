@@ -1,0 +1,53 @@
+# LuxeStyle — GitLab CI/CD (Workaround für die GitHub-Actions-Sperre „Actions disabled for this user")
+# Spiegelt die wichtigsten Automatik-Jobs. Secrets als GitLab CI/CD-Variablen setzen
+# (Settings → CI/CD → Variables, „Masked"): FB_PAGE_ACCESS_TOKEN, FB_PAGE_ID, IG_ACCESS_TOKEN,
+# IG_USER_ID, META_ACCESS_TOKEN, THREADS_ACCESS_TOKEN, THREADS_USER_ID, LUMA_API_KEY,
+# SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET.
+# Jobs sind „manual" (per Klick in GitLab → CI/CD → Pipelines/„Run pipeline") + via Schedule planbar.
+# Hinweis: GitLab braucht ein verifiziertes Konto (Kreditkarte, keine Belastung) für die kostenlosen Shared Runner.
+
+image: node:22-bookworm
+
+stages: [social, video, shop]
+
+variables:
+  DRY_RUN: "false"
+  MAX_PER_RUN: "1"
+
+# --- IG/FB Bild-Post ---
+social_post:
+  stage: social
+  when: manual
+  script:
+    - node automation/social-autopost-meta.mjs
+
+# --- IG/FB Reel/Video-Post ---
+video_post:
+  stage: social
+  when: manual
+  script:
+    - node automation/video-autopost-meta.mjs
+
+# --- IG/FB Story-Post ---
+story_post:
+  stage: social
+  when: manual
+  script:
+    - node automation/story-autopost-meta.mjs
+
+# --- TikTok-Entwurf (Cloud) ---
+tiktok_draft:
+  stage: social
+  when: manual
+  script:
+    - node automation/tiktok-cloud-autopost.mjs
+
+# --- Luma-Produktvideos (Flash, günstig) generieren + an Produkte hängen ---
+luma_videos:
+  stage: shop
+  when: manual
+  script:
+    - node automation/luma_product_video.mjs --in dropship/video_pids.txt
+
+# Geplante Pipelines: in GitLab unter CI/CD → Schedules anlegen (z. B. 2×/Tag) und per
+# Variable STAGE/JOB steuern, oder einzelne Jobs auf „rules: - if: $CI_PIPELINE_SOURCE == 'schedule'" umstellen.
