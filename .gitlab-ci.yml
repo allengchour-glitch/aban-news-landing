@@ -18,6 +18,50 @@
 stages:
   - post
   - traffic
+  - brain
+
+# 🧠 aban-Brain — Selbst-Verbesserung OHNE GitHub Actions (umgeht die Actions-Sperre).
+# Läuft auf GitLabs Gratis-Runner. Holt sich IMMER frisch den aktuellen Code von GitHub,
+# scannt + fixt sicher (rel=noopener) und schreibt Report/Score/Vorschläge auf einen
+# EIGENEN Branch `brain/auto` — NIEMALS direkt nach main, KEIN Auto-Deploy auf Produktion.
+# Mensch (oder Claude in der nächsten Session) prüft per PR, merged und deployt. So bleibt
+# die Regel „immer Branch + PR, nie direkt nach main, kein ungeprüfter Prod-Deploy" gewahrt.
+#
+# Benötigte CI/CD-Variable (GitLab → Settings → CI/CD → Variables, „Masked"):
+#   GH_PUSH_TOKEN   GitHub Fine-grained PAT, Repo allengchour-glitch/aban-news-landing,
+#                   Permission „Contents: Read and write"   (PFLICHT — pusht nur auf brain/auto)
+#
+# Automatisch (sparsam!): GitLab → Build → Pipeline schedules → z. B. täglich 06:00 UTC.
+# Manuell: Build → Pipelines → „Run pipeline".
+brain-improve:
+  stage: brain
+  image: python:3.11
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+    - when: manual
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq git
+  script:
+    # 1) Frischen Stand von GitHub holen (immer aktuell, kein Drift)
+    - test -n "$GH_PUSH_TOKEN" || { echo "GH_PUSH_TOKEN fehlt — Abbruch"; exit 1; }
+    - git clone --depth=1 "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" gh
+    - cd gh
+    # 2) Selbst-Verbesserung: sichere Auto-Fixes + Scan (schreibt Score + Report)
+    - python3 tools/daily_improvement_scan.py --fix
+    - python3 tools/daily_improvement_scan.py
+    # 3) Vorschläge auf EIGENEN Branch brain/auto pushen (NIE main, KEIN Deploy)
+    - |
+      git config user.email "brain@aban"; git config user.name "aban-brain"
+      git checkout -B brain/auto
+      git add -A -- '*.html' reports/IMPROVEMENT-REPORT.md automation/brain-state.json
+      if ! git diff --cached --quiet; then
+        git commit -m "brain: Vorschläge — Auto-Fix + Report + Score (GitLab-CI) [skip ci]"
+        git push -f "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" "HEAD:brain/auto"
+        echo "→ Vorschläge auf Branch 'brain/auto' gepusht. PR öffnen, prüfen, mergen, dann deployen."
+      else
+        echo "Keine Änderungen — Seite war schon sauber. Nichts zu tun."
+      fi
 
 # ABAN-Files-Folgen auf YouTube hochladen.
 # Start: GitLab → Build → Pipelines → „Run pipeline" → Variable COUNT setzen (z. B. 6) → Job starten.
