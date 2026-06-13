@@ -81,6 +81,14 @@
   `pinterest-publish.yml` reaktivieren (aktuell auskommentiert) **und** GitHub-Actions-Throttle muss weg sein.
 - **Sofort-Alternative bleibt:** `dropship/pinterest_pins.csv` (103 Pins) **manuell in Pinterest bulk-uploaden** —
   token-/API-frei. User wollte aber den API-Weg.
+- **🔚 UPDATE 2026-06-13 (definitiv getestet):** User hat Konto auf **Business umgestellt** + neuen Produktions-Token
+  generiert. **API trotzdem weiter blockiert:** `GET /v5/user_account` UND `/boards` → `401 code 3 consumer type not
+  supported` (Prod); Sandbox-Endpoint → `code 2 auth failed`. ⇒ **Bestätigt: reine Pinterest-Freigabe-Sperre — die
+  Trial-App darf KEINE Produktions-Calls (auch keine Reads).** Nicht von uns lösbar; **nur „Standard-/Produktions-
+  Zugriff" beantragen** im Dev-Portal (Pinterest-Review, Tage) schaltet frei. Business-Umstellung allein reichte NICHT.
+  Bis dahin = **kein API-Posten möglich**; einzige Wege live: (a) Standard-Access abwarten, dann Token→Posten,
+  (b) CSV manuell in Pinterest hochladen, (c) „Verknüpfung mit Shopify" (Pinterest-Shopify-App) = auto-Katalog-Pins.
+  **Nächste Session: NICHT erneut Tokens durchprobieren — es ist das Access-Gate, kein Token-Problem.**
 
 **2026-06-13 — Luxestyle: Hauptmenü aufgeräumt (live via Shopify `menuUpdate`, `main-menu` id 310224093569):**
 - **„🇨🇭 1. August" aus dem Top-Level ENTFERNT** (saisonal, im Juni fehl am Platz) → als „🇨🇭 Schweizer Edition"
