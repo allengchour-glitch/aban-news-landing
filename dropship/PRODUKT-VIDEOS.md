@@ -119,6 +119,16 @@ Der User hat **zwei** Luma-Zugänge — nicht verwechseln:
 - **Reichweite bleibt der eigentliche Engpass** (0 Käufe) → Videos sind „nice", aber Budget für die 3 User-Klicks
   (Pixel/CH-Kampagne/AGB) bringt mehr Käufe. Videos parallel als Dauer-Asset aufbauen.
 
+## ✅ Flash-Lauf 2026-06-13 — funktioniert, 101 Videos total
+- 11 Wave-H-Clips über **Flash (Dream-Machine, ray-flash-2)** generiert+angehängt → **Shop bei ~101 Produktvideos**.
+- **Flash-Poll-Falle:** Dream-Machine `GET /generations/{id}` per **python-urllib gibt 403** (WAF) → **mit `curl -A
+  "Mozilla/5.0"` pollen** oder `User-Agent`-Header in urllib setzen. (Das committete `luma_product_video.mjs` nutzt
+  node-`fetch` → kein 403; betraf nur ad-hoc-Skripte.)
+- **Recovery submitted-but-unpolled:** `GET /generations?limit=N` (curl UA) → per Keyframe-Bild-URL dem Produkt
+  zuordnen → `assets.video` laden.
+- **`pkill -f <pat>` matcht sich selbst** → Bracket-Trick `pkill -f "[g]enflash"`.
+- **Staging-Ablauf bleibt knapp:** in Gruppen **≤3** stagen + **parallel** (`curl … &`) hochladen; grosse Dateien (>4 MB) solo.
+
 ## 💰 PREIS-LEHRE (WICHTIG, 2026-06-13) — ray-3.2 ist TEUER
 Empirisch belegt aus zwei Konten:
 - **Dream-Machine `ray-flash-2`** (api.lumalabs.ai): **$10 → 57 Clips** ≈ **~$0.17/Clip** (720p, 5 s). GÜNSTIG.
