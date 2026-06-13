@@ -39,6 +39,22 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Luxestyle/Dropship session: Paar-Welt + Gemini-Polish + Selbst-gestalten aufgeräumt:**
+- **Shopify-MCP war verbunden** → alles live aus der Session gemacht. CJ-Token kam vom User per Chat (danach gelöscht).
+- **💞 Paar-Welt (18 Produkte):** 6 CJ-Schmuck (Magnet-Herz-Kette, Herzstein-Armband, Titan/Bären/Sword-Ringe, Wolfszahn-Kette)
+  + **4 Tassen-Sets** (`MUGSET-*`, 34.90/39.90) + **4 Shirts** (`SHIRT-*`, Motiv×Grösse, 29.90): King&Queen, Mr&Mrs,
+  Her King&His Queen, Hubby&Wifey. Smart-Collection **`partner-paare`** (TAG=`paar`), im Menü unter Schmuck.
+- **🔥 Smart-Collection `hype-2026`** (~35 Prod.) als erster Menüpunkt.
+- **🖼️ GEMINI-POLISH live (in-Session, weil Actions gesperrt):** Die 8 POD-Paar-Produkte + **alle ~32 „Selbst gestalten"-
+  Produkte** auf **echte, saubere Fotos** umgestellt — kein „Dein Design"/keine Dark-Promo-Grafik mehr als Hauptbild.
+  Methode: `pod_blank_mockups.mjs`-Prompt (Gemini 2.5 Flash Image entfernt Platzhalter) + `pod_couple_mockups.mjs` (i2i
+  Design→Foto). 15 fertige Blanks aus `pod/blanks/`+`pod/editor-blanks/` getauscht, 9 Allover-Print Gemini-gesäubert.
+- **🗂️ „Selbst gestalten" unterteilt:** 33 Produkte mit `sg-*`-Tags → 6 Smart-Collections (`sg-alle`/-bekleidung/-taschen/
+  -wohnen/-trinken/-accessoires), Menü-Dropdown neu (Editor + 5 Kategorien + Schweiz-Edition).
+- **PRs:** #842 (Couple-Gemini-Pipeline, gemerged), #846 (pod_blank_mockups +9 Allover, gemerged), #414 (Session-Memory LehDs).
+- **OFFEN (User):** Printful-Mapping der POD-Produkte (Designs `pod/couple/print/*.png` hochladen + SKUs verknüpfen).
+- ⚠️ **Actions blieben den ganzen Tag gesperrt** (422 „Actions disabled for this user") → Dispatch ging nicht, alles in-Session gefahren.
+
 **2026-06-12 (ABEND) — abannews session: AFFILIATE-MASCHINE + aban-Pro-Funnel (Detail in `PROJEKT.md`, oberste Sektion):**
 - Komplette, ehrliche **Affiliate-/Review-Maschine** gebaut: `/deals`,`/ki-chatbots`,`/buchhaltung-software`,
   `/email-marketing-tools`,`/website-hosting`,`/design-tools` + Hub `/tool-tipps` (+ EN-Versionen); **5 Voice-Seiten**
