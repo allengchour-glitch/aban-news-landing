@@ -26,6 +26,8 @@ header.app .wrap{display:flex;align-items:center;justify-content:space-between;g
 .brand{font-weight:800;color:var(--amber);text-decoration:none;font-size:1.05rem;white-space:nowrap}
 .brand small{color:var(--muted);font-weight:600}
 .tabs{display:flex;gap:5px;flex-wrap:wrap}
+.tsep{flex:0 0 auto;width:1px;align-self:stretch;background:var(--line);margin:3px 2px}
+@media(max-width:760px){.tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:5px;scrollbar-width:thin}.tabs button{flex:0 0 auto}.tsep{display:none}}
 .tabs button{background:transparent;border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer;font-weight:700;color:var(--ink2);font-size:.85rem}
 .tabs button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
 main{padding:20px 0 70px}
@@ -127,8 +129,9 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
 <body>
 <header class="app"><div class="wrap">
   <a href="/business-cockpit.html" class="brand">aban Business-Cockpit <small>Pro</small></a>
-  <nav class="tabs" id="tabs">
+  <nav class="tabs" id="tabs" aria-label="Module">
     <button data-v="dash" class="on">🏠 Übersicht</button>
+    <span class="tsep" aria-hidden="true"></span>
     <button data-v="rechnung">🧾 Rechnung</button>
     <button data-v="angebot">📄 Angebot</button>
     <button data-v="liefer">📦 Lieferschein</button>
@@ -138,11 +141,14 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     <button data-v="kasse">📒 Kassenbuch</button>
     <button data-v="umsatz">📊 Umsatz</button>
     <button data-v="belege">📎 Belege</button>
+    <button data-v="mahnung">⏰ Mahnung &amp; E-Mail</button>
+    <span class="tsep" aria-hidden="true"></span>
     <button data-v="rechner">🔢 Rechner</button>
     <button data-v="trading">📈 Trading</button>
     <button data-v="finanz">💰 Finanzen</button>
+    <span class="tsep" aria-hidden="true"></span>
     <button data-v="lernen">📚 Lernen</button>
-    <button data-v="mahnung">⏰ Mahnung &amp; E-Mail</button>
+    <span class="tsep" aria-hidden="true"></span>
     <button data-v="stamm">⚙️ Stammdaten</button>
   </nav>
 </div></header>
@@ -152,6 +158,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   <section class="view on" id="v-dash">
     <h1>Übersicht <span class="pill">dein Cockpit</span></h1>
     <p class="sub">Alles auf einen Blick — Umsatz, offene Posten, Zeit und Lern-Fortschritt.</p>
+    <div id="d_onboard"></div>
     <div class="out" id="d_kpi"></div>
     <div class="btnrow" style="margin:14px 0">
       <button class="btn" data-go="rechnung" type="button">🧾 Neue Rechnung</button>
@@ -185,13 +192,13 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       <div class="row" style="margin-top:14px">
         <div class="fld" style="max-width:200px"><label>MwSt-Satz</label><select id="r_vat" class="vatsel"></select></div>
         <div class="fld" style="max-width:160px"><label>Zahlungsziel (Tage)</label><input id="r_ziel" value="14" inputmode="numeric"></div>
-        <div class="fld" style="max-width:160px"><label>Sprache (PDF)</label><select id="r_lang"><option value="de">Deutsch</option><option value="fr">Français</option><option value="it">Italiano</option><option value="en">English</option></select></div>
+        <div class="fld" style="max-width:170px"><label>Sprache (PDF) · 🔒 Pro</label><select id="r_lang"><option value="de">Deutsch</option><option value="fr">Français (Pro)</option><option value="it">Italiano (Pro)</option><option value="en">English (Pro)</option></select></div>
       </div>
       <div class="totbox"><div>Netto</div><div class="num" id="r_net">0,00</div><div id="r_vatlabel">zzgl. MwSt</div><div class="num" id="r_vatval">0,00</div><div class="g">Gesamt</div><div class="num g" id="r_gross">0,00</div></div>
       <div class="btnrow" style="margin-top:16px">
         <button class="btn" id="r_print">🖨️ Drucken / PDF</button>
         <button class="btn ghost" id="r_save">💾 Entwurf speichern</button>
-        <button class="btn ghost" id="r_exml">🧾 E-Rechnung (XML)</button>
+        <button class="btn ghost" id="r_exml">🧾 E-Rechnung (XML) · 🔒 Pro</button>
         <button class="btn ghost" id="r_clear">Leeren</button>
       </div>
       <p class="note">E-Rechnung = einfaches UBL-XML (EN-16931-Basisfelder) für die maschinelle Weiterverarbeitung — keine zertifizierte XRechnung.</p>
@@ -463,6 +470,12 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   <section class="view" id="v-finanz">
     <h1>Finanzen <span class="pill">Tracker &amp; Rechner</span></h1>
     <p class="sub">Portfolio, Vermögen, Trading-Journal, FIRE und Hypothek — alles lokal. <strong>Keine Anlageberatung.</strong></p>
+    <div id="finanz_lock" class="panel" style="display:none;text-align:center">
+      <div style="font-size:2rem">🔒</div>
+      <h2>Finanzen-Suite ist eine Pro-Funktion</h2>
+      <p class="note" style="max-width:440px;margin:6px auto 0">Portfolio-Tracker, Vermögensübersicht, Trading-Journal, FIRE- und Hypotheken-Rechner gehören zu <strong>aban Pro</strong>. Der Rest des Cockpits bleibt gratis.</p>
+      <div class="btnrow" style="justify-content:center;margin-top:12px"><button class="btn" id="finanz_unlock" type="button">aban Pro freischalten</button></div>
+    </div>
     <div class="ltabs" id="f_tabs">
       <button data-f="port" class="on" type="button">📈 Portfolio</button>
       <button data-f="nw" type="button">🏦 Vermögen</button>
@@ -679,6 +692,14 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       </div>
       <p class="note">📲 Als App nutzen: im Browser-Menü „Zum Startbildschirm hinzufügen" / „Installieren" wählen — dann läuft das Cockpit offline wie eine echte App.</p>
     </div>
+    <div class="panel">
+      <h2>aban Pro freischalten</h2>
+      <p class="note" id="pro_status" style="margin-top:0"></p>
+      <div class="row"><div class="fld"><label>Lizenzschlüssel</label><input id="pro_key" placeholder="z. B. 1234ABCD-5678-…" spellcheck="false"></div></div>
+      <div class="btnrow"><button class="btn" id="pro_activate" type="button">Freischalten</button><button class="btn ghost" id="pro_remove" type="button" style="display:none">Entfernen</button></div>
+      <p class="note" style="margin-bottom:2px">Pro schaltet frei: 💰 Finanzen-Suite · 🧾 E-Rechnung-XML · 🌍 mehrsprachige Rechnungen (FR/IT/EN).</p>
+      <p class="note">Noch keinen Schlüssel? <a href="/business-cockpit.html#kaufen">aban Pro holen</a>. Das Cockpit bleibt auch ohne Pro <strong>voll nutzbar</strong> — Pro unterstützt die Weiterentwicklung und schaltet künftige Profi-Extras frei.</p>
+    </div>
   </section>
 </main>
 
@@ -710,7 +731,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   /* Tabs */
   $$("#tabs button").forEach(function(b){b.addEventListener("click",function(){
     $$("#tabs button").forEach(function(x){x.classList.toggle("on",x===b)});
-    $$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-"+b.dataset.v)});if(b.dataset.v==="dash")renderDash();window.scrollTo(0,0)})});
+    $$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-"+b.dataset.v)});if(b.dataset.v==="dash")renderDash();if(b.dataset.v==="finanz")gateFinanz();window.scrollTo(0,0)})});
 
   /* Stammdaten */
   var stF=["firma","adresse","email","tel","iban","steuer","rl"];
@@ -781,7 +802,9 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   /* Rechnung-spezifisch */
   $("#r_clear").addEventListener("click",function(){R.setItems([{}]);["r_nr","r_kunde","r_leistung"].forEach(function(id){$("#"+id).value=""});$("#r_pick").value="";toast("Geleert")});
   $("#r_print").addEventListener("click",function(){var t=R.calc(),d={nr:$("#r_nr").value,datum:$("#r_datum").value};
-    var lang=$("#r_lang")?$("#r_lang").value:"de",titles={de:"Rechnung",fr:"Facture",it:"Fattura",en:"Invoice"},payL={de:"Zahlbar bis",fr:"Payable jusqu'au",it:"Pagabile entro",en:"Payable by"},metaL={de:"Leistungszeitraum",fr:"Période",it:"Periodo",en:"Service period"};
+    var lang=$("#r_lang")?$("#r_lang").value:"de";
+    if(lang!=="de"&&!isPro()){proGate("Mehrsprachige Rechnung");if($("#r_lang"))$("#r_lang").value="de";return}
+    var titles={de:"Rechnung",fr:"Facture",it:"Fattura",en:"Invoice"},payL={de:"Zahlbar bis",fr:"Payable jusqu'au",it:"Pagabile entro",en:"Payable by"},metaL={de:"Leistungszeitraum",fr:"Période",it:"Periodo",en:"Service period"};
     var foot="";if(d.datum){var fd=addDays(parseDate(d.datum),parseInt($("#r_ziel").value,10)||0);if(!isNaN(fd))foot=payL[lang]+" "+de(fd)+".";}
     printDoc({title:titles[lang]||"Rechnung",nr:d.nr,datum:d.datum,kunde:$("#r_kunde").value,meta:$("#r_leistung").value?(metaL[lang]+": "+$("#r_leistung").value):"",items:R.items(),tot:t,foot:foot,qr:rQrSvg,lang:lang})});
   function invData(){return {nr:$("#r_nr").value,datum:$("#r_datum").value,leistung:$("#r_leistung").value,kunde:$("#r_kunde").value,vat:$("#r_vat").value,ziel:$("#r_ziel").value,items:R.items()}}
@@ -1305,6 +1328,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   function xesc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&apos;"}[c]})}
   function downloadText(fn,txt,mime){var blob=new Blob([txt],{type:mime||"text/plain;charset=utf-8"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fn;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},100)}
   if($("#r_exml"))$("#r_exml").addEventListener("click",function(){
+    if(!isPro()){proGate("E-Rechnung-XML");return}
     var s=stamm(),t=R.calc(),items=R.items(),nr=$("#r_nr").value||"RE",dt=$("#r_datum").value||isoToday();
     var iban=(s.iban||"").replace(/\s+/g,"").toUpperCase(),cur=(iban.slice(0,2)==="CH"||iban.slice(0,2)==="LI")?"CHF":"EUR";
     var adr=(s.adresse||"").split("\n"),street=adr[0]||"",city=adr[1]||"",kunde1=($("#r_kunde").value||"").split("\n")[0]||"";
@@ -1389,6 +1413,10 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   /* ===== Dashboard / Übersicht ===== */
   function dashMonths(){var m={};drafts().forEach(function(d){if(d.status!=="bezahlt")return;var rd=parseDate(d.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");m[k]=(m[k]||0)+grossOf(d)});kasse().forEach(function(x){if(x.typ!=="ein")return;var rd=parseDate(x.datum||"");if(isNaN(rd.getTime()))return;var k=rd.getFullYear()+"-"+String(rd.getMonth()+1).padStart(2,"0");m[k]=(m[k]||0)+(n(x.betrag)||0)});return m}
   function renderDash(){var root=$("#v-dash");if(!root||typeof AbanCharts==="undefined")return;
+    var ob=$("#d_onboard");
+    if(ob){var isEmpty=!(stamm().firma)&&!drafts().length&&!kasse().length&&!tEntries().length&&!portfolio().length;
+      ob.innerHTML=isEmpty?'<div class="disc">👋 <strong>Neu hier?</strong> Trage unter ⚙️ Stammdaten deine Firma ein — oder lade dort „🎬 Demo-Daten" zum Ausprobieren. Dann füllen sich Übersicht &amp; Diagramme automatisch. <button class="btn ghost sm" id="d_obgo" type="button" style="margin-left:6px">→ Zu den Stammdaten</button></div>':"";
+      var g=$("#d_obgo");if(g)g.addEventListener("click",function(){var b=$('#tabs button[data-v="stamm"]');if(b)b.click()})}
     var ds=drafts(),offen=0,offenN=0;ds.forEach(function(d){if(d.status!=="bezahlt"){offen+=grossOf(d);offenN++}});
     var ein=0,aus=0;kasse().forEach(function(x){var b=n(x.betrag)||0;if(x.typ==="ein")ein+=b;else aus+=b});
     var hrs=0;tEntries().forEach(function(e){hrs+=n(e.std)||0});
@@ -1484,6 +1512,23 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       toast("Daten geladen — App wird neu geladen …");setTimeout(function(){location.reload()},900)}
       catch(err){toast("Datei konnte nicht gelesen werden")}};rd.readAsText(f);this.value=""});
 
+  /* ===== aban Pro (Lemon-Squeezy-Lizenz, optional) ===== */
+  function proGet(){return get("abanCockpit_pro",null)}
+  function isPro(){var p=proGet();return !!(p&&p.ok)}
+  function renderProStatus(){var p=proGet(),st=$("#pro_status"),rm=$("#pro_remove");if(!st)return;
+    if(p&&p.ok){st.innerHTML='✅ <strong>aban Pro aktiv</strong>'+(p.tier?' ('+(p.tier==="yearly"?"Jahr":"Monat")+')':'')+' — danke für deine Unterstützung!';if(rm)rm.style.display="";if($("#pro_key"))$("#pro_key").value="";}
+    else{st.textContent="Status: nicht freigeschaltet. Das Cockpit ist trotzdem voll nutzbar.";if(rm)rm.style.display="none";}
+    document.documentElement.setAttribute("data-pro",isPro()?"1":"0");gateFinanz()}
+  function proGate(label){toast((label||"Pro-Funktion")+" — bitte aban Pro freischalten");var b=$('#tabs button[data-v="stamm"]');if(b)b.click();setTimeout(function(){if($("#pro_key"))$("#pro_key").focus()},120)}
+  function gateFinanz(){var l=$("#finanz_lock");if(!l)return;var locked=!isPro();l.style.display=locked?"":"none";var t=$("#f_tabs");if(t)t.style.display=locked?"none":"";$$("#v-finanz .lsec").forEach(function(s){s.style.display=locked?"none":""})}
+  if($("#finanz_unlock"))$("#finanz_unlock").addEventListener("click",function(){proGate("Finanzen-Suite")});
+  if($("#pro_activate"))$("#pro_activate").addEventListener("click",function(){var key=$("#pro_key").value.trim();if(!key){toast("Bitte Lizenzschlüssel eingeben");return}
+    var btn=this;btn.disabled=true;btn.textContent="Prüfe …";
+    fetch("/api/pro-validate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({license_key:key})}).then(function(r){return r.json()}).then(function(d){
+      if(d&&d.valid){set("abanCockpit_pro",{ok:true,tier:d.tier||null,key:key});renderProStatus();toast("aban Pro aktiv ✓")}else{toast("Schlüssel ungültig oder nicht erkannt")}
+    }).catch(function(){toast("Prüfung fehlgeschlagen — bist du online?")}).then(function(){btn.disabled=false;btn.textContent="Freischalten"})});
+  if($("#pro_remove"))$("#pro_remove").addEventListener("click",function(){set("abanCockpit_pro",null);renderProStatus();toast("Pro entfernt")});
+
   /* ===== Darstellung + Demo + Reset ===== */
   function applyTheme(t){if(t==="auto")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme",t)}
   var _theme=get("abanCockpit_theme","auto");applyTheme(_theme);
@@ -1506,7 +1551,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     toast("Alles gelöscht — App wird neu geladen …");setTimeout(function(){location.reload()},800)});
 
   /* Init */
-  loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();renderOffen();renderUmsatz();renderArtikel();refreshKat();renderBelege();renderPort();renderNW();renderJour();calcFIRE();calcHyp();renderDash();
+  loadStamm();showLogoPrev();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();renderOffen();renderUmsatz();renderArtikel();refreshKat();renderBelege();renderPort();renderNW();renderJour();calcFIRE();calcHyp();renderProStatus();renderDash();
   $("#bl_datum").value=isoToday();$("#jr_date").value=isoToday();$("#r_datum").value=isoToday();$("#a_datum").value=isoToday();$("#a_gueltig").value=isoToday();$("#zf_datum").value=isoToday();$("#z_datum").value=isoToday();$("#ka_datum").value=isoToday();
   R.setItems([{}]);A.setItems([{}]);
   calcM();calcH();calcS();calcVZ();calcZF();calcPC();calcIB();calcKM();calcTP();calcTR();calcTG();calcTL();calcTC();calcLQ();genMahnung();genEmail();
