@@ -1,43 +1,40 @@
-# 🛒 LuxeStyle auf Ricardo.ch verkaufen — Anleitung + Anbindung
+# 🛒 LuxeStyle auf Ricardo.ch verkaufen — der reale Weg (korrigiert 2026-06-13)
 
-> Ziel: zusätzlicher **Schweizer Verkaufskanal** mit echten Käufern. Ricardo (SMG-Gruppe) hat — anders
-> als Tutti (kein offizielles API) — eine **offizielle, kostenlose Händler-Schnittstelle** zum direkten
-> Listen aus dem Shop-System.
+> Zusätzlicher Schweizer Verkaufskanal. **Korrektur:** Es gibt KEINEN öffentlich beantragbaren
+> „Partnership-Key" und keine self-serve SOAP-API mehr (die alte diglin/Magento-SOAP ist Legacy).
+> Der **offizielle, aktuelle Weg ist ein PRODUKT-FEED**, den Ricardo **manuell einrichtet**.
 
-## Was Ricardo technisch ist
-- **.NET-Webservice**, Requests als **JSON ODER SOAP**.
-- Services: `SystemService` (Referenzdaten/Kategorien), `ArticleService` (**InsertArticle** = Inserat anlegen),
-  `SearchService`, `CustomerService`, `SellerAccountService`, `SecurityService` (Token).
-- **Auth (zweistufig):** Partnership-Credentials (Header `Ricardo-Username` / `Ricardo-Password` + Partnership-Key)
-  → temporäre Credential → **Token** (läuft ab, erneuern via `SecurityService.RefreshTokenCredential`).
+## So läuft die Anbindung wirklich
+1. **Gewerbliches/Profi-Verkäuferkonto** auf ricardo.ch (für Mengen/kommerziell).
+2. **Feed-Details an `accountmanagement@ricardo.ch` senden** → Ricardo richtet den Feed-Import manuell ein
+   (Format/Spec gibt Ricardo dabei vor; sie bestätigen die akzeptierte Struktur + Pull-Intervall).
+3. **Feed bereitstellen** (öffentliche URL): `automation/ricardo_feed.mjs` erzeugt `ricardo_feed.csv`
+   aus dem öffentlichen Shop (`products.json`) — nur **aktive** Produkte, archivierte/China-Artikel fehlen
+   automatisch. Datei hosten (roher GitHub-URL, Shopify-Files oder Webspace) → URL an Ricardo.
 
-## Einmalige Einrichtung (nur DU)
-1. **Verkäuferkonto** auf ricardo.ch — für Mengen idealerweise **kommerziell/Händler** (Pro-Konto).
-2. **Schnittstelle freischalten + Partnership-Key anfordern:**
-   help.ricardo.ch → „Schnittstellen-Anbindung aufschalten" (Partnership-Key = API-Zugang für die Integration).
-3. Zugangsdaten als Secrets bereitstellen (NICHT ins Repo):
-   `RICARDO_PARTNER_KEY`, `RICARDO_USERNAME`, `RICARDO_PASSWORD` (+ ggf. `RICARDO_API_BASE`).
+## 🔒 Sicherheit (wichtig)
+- **Du gibst KEINE Zugangsdaten/Logins/Keys an mich oder ein Tool.** Der Feed-Weg braucht das nicht —
+  ich erzeuge nur die Datendatei, du machst Konto + Feed-Setup **direkt bei Ricardo**.
+- Kein autonomes Hintergrund-Posten: Ricardo zieht den Feed, **du** steuerst Freigabe/Preise im Konto.
 
-## Zwei Wege zum Listen
-- **A — Fertiger Connector (am wenigsten Aufwand):** Middleware/Apps die Shop→Ricardo syncen
-  (z. B. green-solutions, peleides, diglin). Konto verbinden, Produkte mappen, fertig. ⚠️ Einzelne
-  Dritt-Connectoren haben Abschalt-Daten (einer 01.09.2026) → auf gepflegten Anbieter achten.
-- **B — Eigener Lister (autonom, wie unsere anderen Pipelines):** `automation/ricardo_lister.mjs`
-  liest aktive Produkte aus `https://luxestyle.ch/products.json` (sauber gefiltert — archivierte/China-Artikel
-  sind raus), authentifiziert per Token und ruft `ArticleService.InsertArticle`. Finalisiert wird der genaue
-  Endpoint/Feld-Mapping, sobald der Partnership-Key + die offizielle API-Doku (Login) vorliegen.
+## Feed erzeugen
+```
+node automation/ricardo_feed.mjs            # alle aktiven Produkte → ricardo_feed.csv
+node automation/ricardo_feed.mjs --limit 200
+```
+Spalten: id, sku, title, description, brand, price, currency(CHF), condition, availability, product_type, image, link.
+(Falls Ricardo eine andere Struktur/CSV/XML verlangt → ich passe das Mapping an die von Ricardo gelieferte Spec an.)
 
-## Wichtige Listing-Felder (InsertArticle, typisch)
-Titel, Beschreibung (HTML/Plain), `CategoryId` (aus `SystemService` mappen), Startpreis/Sofortkauf-Preis,
-Bilder (Upload/URL), Laufzeit, Versandoptionen, Zahlungsarten, Menge/Lagerbestand. Preis = unser CHF-Shop-Preis.
+## E-Mail-Entwurf an accountmanagement@ricardo.ch
+> Betreff: Produkt-Feed-Anbindung für gewerblichen Verkäufer (LuxeStyle CH / luxestyle.ch)
+>
+> Guten Tag, wir möchten unseren Shopify-Shop LuxeStyle (luxestyle.ch) als gewerblicher Verkäufer
+> per Produkt-Feed an Ricardo anbinden. Bitte teilen Sie uns das gewünschte Feed-Format/die Spezifikation
+> und das Vorgehen mit. Eine Beispiel-Feed-URL (CSV) können wir bereitstellen. Besten Dank.
 
-## Empfehlung
-Ricardo lohnt sich (Reichweite + Verkäufe in CH). **Tutti per API nicht möglich** → Ricardo nehmen.
-Wenn du den Partnership-Key + Händlerkonto hast: sag „Ricardo aktivieren", dann finalisiere ich `ricardo_lister.mjs`
-(echte Endpoints + Kategorie-Mapping) und es listet die Produkte automatisch — sauber, ohne die archivierten Artikel.
+## Hinweis zur Legacy-API
+`automation/ricardo_lister.mjs` (SOAP/JSON-InsertArticle) bleibt nur als **Referenz/Legacy** liegen —
+NICHT der aktuelle Weg. Primär = der Feed oben.
 
-## Quellen
-- Ricardo: Technische Schnittstelle: https://help.ricardo.ch/hc/de/articles/115002955649
-- Anbindung aufschalten: https://help.ricardo.ch/hc/de/articles/115002955769
-- Anbindung entwickeln: https://help.ricardo.ch/hc/de/articles/115002955709
-- API-Referenz (PHP-Lib diglin): https://github.com/diglin/ricardo
+## Tutti
+Kein offizielles API/Feed zum Inserieren → **nicht** für automatisierte Anbindung geeignet.
