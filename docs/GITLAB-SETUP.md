@@ -74,6 +74,32 @@ GitLab-Projekt → **Build → Pipeline schedules → New schedule**:
 **Wichtig:** Gratis-Tarif hat ~400 CI-Minuten/Monat → sparsam planen (2 Pinterest-Läufe/Woche
 brauchen nur wenige Minuten), sonst kostet es.
 
+## 7. 🧠 aban-Brain: Selbst-Verbesserung der Website (umgeht die Actions-Sperre)
+Der Job **`brain-improve`** lässt das Hirn **regelmäßig laufen** — ganz ohne GitHub Actions.
+Er holt frisch den GitHub-Stand, scannt + fixt sicher (`tools/daily_improvement_scan.py`) und
+**pusht die Vorschläge (Auto-Fixes + Report + Score) auf einen eigenen Branch `brain/auto`**.
+
+**Bewusst sicher:** **kein** Push nach `main`, **kein** automatischer Produktions-Deploy.
+Du (oder Claude in der nächsten Session) öffnest aus `brain/auto` einen **PR**, prüfst, merged
+und deployst dann. So bleibt die Regel „immer Branch + PR, nie direkt nach main" gewahrt.
+
+**Variable** (GitLab → Settings → CI/CD → Variables, „Masked"):
+
+| Variable | Wert | Pflicht |
+|---|---|---|
+| `GH_PUSH_TOKEN` | GitHub **Fine-grained PAT**, Repo `allengchour-glitch/aban-news-landing`, Permission **Contents: Read and write** | ✅ |
+
+**Manuell starten:** Build → Pipelines → Run pipeline → Job `brain-improve`.
+**Automatisch (sparsam):** Build → Pipeline schedules → z. B. **täglich 06:00 UTC**.
+Läuft in ~1 Minute durch (reine Python-stdlib), verbraucht kaum CI-Minuten.
+
+> So läuft das Hirn **regelmäßig von selbst** — unabhängig von der GitHub-Sperre — und legt
+> geprüfte Vorschläge bereit. Voll-Autopilot (Auto-Merge + Auto-Deploy) ist bewusst **nicht**
+> aktiviert; wenn du das willst, sag Bescheid — das ist eine eigene, bewusste Entscheidung.
+> Den GitHub-PAT erstellst du unter GitHub → Settings → Developer settings → Fine-grained tokens.
+
 ## Sicherheit
 - Secrets **nur** in GitLab-Variablen (Masked), **nie** in den Code/Chat.
 - `.gitlab-ci.yml` enthält keine Geheimnisse, nur Variablen-Namen.
+- `GH_PUSH_TOKEN` eng halten (nur dieses eine Repo, nur Contents) und bei Bedarf widerrufen.
+- Der Brain-Job schreibt nur auf `brain/auto` — `main` und Produktion bleiben menschen-kontrolliert.
