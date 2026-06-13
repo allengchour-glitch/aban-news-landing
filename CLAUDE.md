@@ -88,6 +88,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **🛍️ Kollektions-QA (User „sticker gehören nicht in taschen?"):** „Tasche «Merci/Matterhorn/Hoi»" = echte Tote-Bags
   (korrekt). ABER 3 Fremdkörper in „👜 Taschen & Rucksäcke" (Smart-Regel TITEL enthält „Tasche" zu breit) → behoben
   durch Umbenennen „Tasche/Tragetasche"→„Beutel": Gartenwerkzeug-Set, Widerstandsbänder, XL-Strandtuch (live via MCP).
+- **🧹 Shop-weites Kollektions-Audit (User 2026-06-13 „saubere sachen"):** Ursache = zu breite „TITEL enthält"-Smart-
+  Regeln. Fix-Muster = **konjunktiv (ALL) mit NOT_CONTAINS** statt disjunktiv (behält echte Treffer, wirft Fremdkörper):
+  • 📿 Halsketten 152→75 (Regel: enthält „Kette" UND NICHT „Licht"/„Rucksack" → Lichterketten raus)
+  • 💫 Armbänder 51→46 (enthält „Armband" UND NICHT „Uhr"/„Mücken" → Mesh-Uhren/Mückenband raus)
+  • 👗 Röcke 33→7 (enthält „Rock" UND NICHT „Trock"/„Rocket" → Haartrockner/Trockenblumen/Rocket-Sticker raus)
+  Kleider/Haustier geprüft = sauber. **NICHT auf disjunktiv zurückdrehen!** Alle Änderungen live via Shopify-MCP.
 
 **📌 2026-06-07 (NEUESTER STAND — ZUERST LESEN: Memory aufgefrischt + Conversion-Fix):**
 - **Branch-Reset:** Alle früheren Dropship-Branches (SrAs5/LehDs) sind **in `main` gemergt + gelöscht**.
