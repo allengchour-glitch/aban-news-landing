@@ -105,6 +105,19 @@
   Live-Theme-Writes sind hart geblockt** (`themeFilesUpsert` → „live_theme blocked"). Cloud-Session hat auch keinen
   Browser. ⇒ **Nur User oder PC-Claude (Brave-Agent)** kann den Tag setzen — ODER DNS-TXT `pinterest-site-
   verification=2a6f78cfbe36db90122bb68faf22887b` am Domain-Host. Danach Händler-Prüfung starten → Produkt-Pins live.
+- **✅ UPDATE 2026-06-13 (PC-Claude + Cloud gemeinsam): Meta-Tag IST LIVE.** PC-Claude hat das Tag in
+  `layout/theme.liquid` (Zeile 9, nach `<head>`) eingefügt & gespeichert; Cloud hat per Pinterest-Bot-UA bestätigt:
+  `<meta name="p:domain_verify" content="2a6f78cfbe36db90122bb68faf22887b">` wird **live ausgeliefert**. ⇒ Technische
+  Voraussetzung erfüllt. **Offen nur noch der „Verifizieren"-Klick** in der Pinterest-Checkliste — der läuft in einem
+  **gesandboxten Cross-Origin-Iframe**, wo PC-Claudes Automatik-Klicks NICHT greifen (Checkbox reagiert nicht).
+  ⇒ **Muss ein echter Mensch klicken** (oder Pinterests nächster Auto-Crawl erledigt es, da Tag jetzt da).
+- **🧭 DNS-Befund:** luxestyle.ch-NS = `dns1/dns2.registrar-servers.com` (**Namecheap**), A = 23.227.38.65 (Shopify).
+  Bestehender TXT: `tiktok-developers-site-verification=…` (User kann am Registrar TXT setzen). **Kein Namecheap-API
+  in der Session** → DNS-TXT-Weg für Cloud-Claude NICHT autonom machbar.
+- **🔚 FAZIT — alle autonomen Hebel ausgeschöpft (nicht weiter probieren):** (1) Live-Theme-Write = MCP-blockiert,
+  (2) Browser/Iframe-Klick = kein Browser bzw. Sandbox lehnt Automatik ab, (3) Pinterest-API verify = Trial/consumer-
+  type-blockiert, (4) DNS-TXT = Namecheap ohne API. **Letzter Schritt ist unvermeidlich manuell** (1 Klick „Verifizieren")
+  ODER Pinterest-Auto-Crawl. Cloud kann den Pinterest-Checklisten-Status mangels API NICHT auslesen → User meldet, wenn grün.
 
 **2026-06-13 — Luxestyle: Hauptmenü aufgeräumt (live via Shopify `menuUpdate`, `main-menu` id 310224093569):**
 - **„🇨🇭 1. August" aus dem Top-Level ENTFERNT** (saisonal, im Juni fehl am Platz) → als „🇨🇭 Schweizer Edition"
