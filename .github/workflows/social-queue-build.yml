@@ -11,7 +11,7 @@ name: Social Auto-Queue (neue Produkte einreihen)
 on:
   schedule:
     - cron: '30 7 * * *'    # 07:30 UTC, vor dem 08:00-Post
-    - cron: '30 16 * * *'   # 16:30 UTC, vor dem 17:00-Post
+    # - cron: '30 16 * * *'   # PAUSIERT 2026-06-13 (Cron-Diaet, GitHub-Last)
   workflow_dispatch:
     inputs:
       max:
