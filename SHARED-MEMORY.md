@@ -4,7 +4,7 @@
 > UND demselben Shopify-Shop (LuxeStyle, `au3j0y-hq.myshopify.com` / luxestyle.ch).**
 > Diese Datei verhindert, dass sie sich gegenseitig überschreiben. **Jede Session:** erst hier rein,
 > dann die eigene Detail-Memory. **Nach grösseren Aktionen:** Abschnitt „Live-Stand" unten aktualisieren.
-> Stand: 2026-06-12.
+> Stand: 2026-06-13.
 
 ---
 
@@ -68,8 +68,9 @@
   - **Auto-Publish:** `automation/pinterest_publish.mjs` + Workflow `.github/workflows/pinterest-publish.yml`
     (Pinterest-API v5, legt Boards an, idempotent via `dropship/pinterest_done.txt`, drosselt, Mo&Do je 5).
     Unterstützt **Refresh-Token** (`PINTEREST_REFRESH_TOKEN`+`PINTEREST_APP_ID`+`PINTEREST_APP_SECRET`) → Token
-    läuft nie ab; alternativ `PINTEREST_ACCESS_TOKEN`. **Offen (User):** Secret setzen + PR #775 → main mergen
-    (Workflow läuft nur von main).
+    läuft nie ab; alternativ `PINTEREST_ACCESS_TOKEN`. ✅ PR #775 ist gemergt (Workflow auf `main`).
+    **⚠️ Schedule-Cron wurde 2026-06-13 von einer anderen Session auskommentiert (Cron-Nulldiät/GitHub Fair-Use)**
+    → läuft nur noch per **manuellem Dispatch**; für Auto-Posten muss der `schedule:`-Block wieder aktiviert werden.
 - **🎬 `dropship/TIKTOK-SKRIPTE-WOCHE.md`:** 7 filmfertige TikTok-Skripte (echte Produkte/Preise/Hooks/Captions).
 - **🎁 `dropship/INFLUENCER-OUTREACH-KIT.md` + `influencer_tracking.csv`:** Micro-Gifting-Kriterien, Such-Hashtags,
   Fundquellen (Modash/Collabstr), DM-Vorlagen, Code-Schema (Codes lege ich bei Zusage per Shopify an).
@@ -79,6 +80,8 @@
   bis Actions wieder frei ist **oder** jemand `node automation/pinterest_publish.mjs --limit 5` direkt ausführt
   (braucht nur `PINTEREST_ACCESS_TOKEN`, oder Refresh-Token-Trio). **Einzig fehlend zum Live-Gang: der Pinterest-
   Token vom User.** User wollte hier nicht posten → **nächste Session macht weiter** (Token holen, dann posten).
+  **Stand 2026-06-13:** zusätzlich ist der Schedule-Cron pausiert (s.o.) → Live-Gang = Token holen **+** entweder
+  Cron reaktivieren oder Skript direkt/manuell dispatchen. Content (103 Pins) bleibt unverändert bereit.
 - **⚠️ Hinweis:** Diese Arbeit lief auf Branch `claude/luxstyle-ads-search-5i68xa`, jetzt in `main`. Git-HTTP-Push
   warf zeitweise 413/502 → Fallback GitHub-API-Push (push_files). Staged-Upload-Trick: stagedUploadsCreate-Antwort
   wird ab ~60 Einträgen automatisch als Datei gespeichert (mit Padding-Filenames erzwingbar) → Uploader liest sie,
