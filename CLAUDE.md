@@ -59,7 +59,28 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-06-12 (NEUESTER STAND — Marktlücken + Unterkategorien + Menü-Umbau):**
+**📌 2026-06-13 (NEUESTER STAND — Paar-Welt + Gemini-Polish + „Selbst gestalten" aufgeräumt):**
+- **Shopify-MCP verbunden** → alles live aus der Session. CJ-Token kam vom User per Chat (nach Gebrauch gelöscht).
+  ⚠️ **GitHub-Actions blieben ganztags gesperrt** (422 „Actions disabled for this user") → Dispatch ging NIE durch;
+  alle Gemini-Läufe **in-Session** mit User-pasted `GEMINI_API_KEY` (existiert auch als Repo-Secret).
+- **💞 Paar-Welt (18 Produkte, eigene Collection `partner-paare`, TAG=`paar`, im Menü unter Schmuck):**
+  6 CJ-Schmuck (Magnet-Herz-Kette, Herzstein-Armband, Titan/Bären-Ring, Sword-of-Love-Set, Wolfszahn-Kette)
+  + 4 Tassen-Sets (`Tasse`, `MUGSET-*`, 34.90/39.90) + 4 Shirts (`Shirt`, Motiv×Grösse, `SHIRT-*`, 29.90):
+  King&Queen, Mr&Mrs, Her King&His Queen, Hubby&Wifey. Alle `printful_personalized_product`.
+  **CJ-Lehre:** Touch-/Sonne-Mond-Paar-Armband (totwoo-Stil) gibt's NICHT auf CJ; CJ-Suche ist lose/OR-basiert.
+- **🔥 `hype-2026`** Smart-Collection (~35 Prod.) = erster Menüpunkt.
+- **🖼️ Gemini-Polish (photorealistisch):** POD-Mockups (`pod/couple/`, `pod_couple_mockups.mjs`) + **alle ~32
+  „Selbst gestalten"-Produkte** auf echte saubere Fotos getauscht — **kein „Dein Design"/keine Dark-Promo-Grafik**
+  mehr als Hauptbild. 15 fertige Blanks aus `pod/blanks/`+`pod/editor-blanks/` getauscht; **9 Allover-Print neu
+  Gemini-gesäubert** (jetzt in `pod/blanks/` committet → Pipeline skippt sie künftig). Tool: `pod_blank_mockups.mjs`
+  (PR #846 erweitert um die 9). **User-Regel: IMMER echte Produktfotos; Promo-Grafik nur als Banner.**
+- **🗂️ „Selbst gestalten" unterteilt:** 33 Produkte mit `sg-*`-Tags → 6 Smart-Collections (`sg-alle`/-bekleidung/
+  -taschen/-wohnen/-trinken/-accessoires), Menü-Dropdown neu (Editor + 5 Kategorien + Schweiz-Edition).
+- **Branches/PRs:** #842 (Couple-Gemini-Pipeline) + #846 (pod_blank_mockups +9) gemerged; #414 (LehDs Session-Memory);
+  #851 (SHARED-MEMORY Live-Stand). **OFFEN (User):** Printful-Mapping der POD-Produkte (`pod/couple/print/*.png`
+  + SKUs verknüpfen) → sonst Fulfillment manuell. Paar-Reel = Video-Session.
+
+**📌 2026-06-12 (Marktlücken + Unterkategorien + Menü-Umbau):**
 - **🔎 Marktlücken-Analyse (datenbelegt):** 0 Treffer bei Auto, Grill/BBQ, Pool/Strand, 1.-August; dünn: Pet, Kids,
   Reise, Handy-Zubehör. Gut abgedeckt: Schmuck, Sonnenbrillen, Bart/Rasur, Hydration.
 - **🛒 Lücken-Importer gebaut:** `automation/cj_gaps_import.mjs` + `cj-gaps.yml` (eigenständig, `fetch`, kein
