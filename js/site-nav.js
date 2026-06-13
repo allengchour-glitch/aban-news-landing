@@ -33,6 +33,7 @@
       ["Finanz-Rechner", "/finanz-rechner.html", "Business", "Rechner-Sammlung für den Geschäftsalltag"],
       ["Broker-Vergleich", "/broker-vergleich.html", "Business", "Depots im Vergleich (CH/DACH) — ehrlich, kein Hype"],
       ["Gratis Finanz-Checkliste", "/gratis-checkliste.html", "Business", "Checkliste für Selbstständige — zum Ausdrucken"],
+      ["Ratgeber Selbstständige", "/selbststaendig-ratgeber.html", "Business", "Rechnung, Steuern, Stundensatz, Mahnwesen — verständlich erklärt"],
       ["MwSt-Rechner", "/mwst-rechner.html", "Rechner", "Netto ↔ Brutto, jeder Steuersatz"],
       ["Stundensatz-Rechner", "/stundensatz-rechner.html", "Rechner", "Was muss ich pro Stunde verlangen?"],
       ["Skonto-Rechner", "/skonto-rechner.html", "Rechner", "Lohnt sich früh zahlen?"],
