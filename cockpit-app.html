@@ -192,13 +192,13 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       <div class="row" style="margin-top:14px">
         <div class="fld" style="max-width:200px"><label>MwSt-Satz</label><select id="r_vat" class="vatsel"></select></div>
         <div class="fld" style="max-width:160px"><label>Zahlungsziel (Tage)</label><input id="r_ziel" value="14" inputmode="numeric"></div>
-        <div class="fld" style="max-width:160px"><label>Sprache (PDF)</label><select id="r_lang"><option value="de">Deutsch</option><option value="fr">Français</option><option value="it">Italiano</option><option value="en">English</option></select></div>
+        <div class="fld" style="max-width:170px"><label>Sprache (PDF) · 🔒 Pro</label><select id="r_lang"><option value="de">Deutsch</option><option value="fr">Français (Pro)</option><option value="it">Italiano (Pro)</option><option value="en">English (Pro)</option></select></div>
       </div>
       <div class="totbox"><div>Netto</div><div class="num" id="r_net">0,00</div><div id="r_vatlabel">zzgl. MwSt</div><div class="num" id="r_vatval">0,00</div><div class="g">Gesamt</div><div class="num g" id="r_gross">0,00</div></div>
       <div class="btnrow" style="margin-top:16px">
         <button class="btn" id="r_print">🖨️ Drucken / PDF</button>
         <button class="btn ghost" id="r_save">💾 Entwurf speichern</button>
-        <button class="btn ghost" id="r_exml">🧾 E-Rechnung (XML)</button>
+        <button class="btn ghost" id="r_exml">🧾 E-Rechnung (XML) · 🔒 Pro</button>
         <button class="btn ghost" id="r_clear">Leeren</button>
       </div>
       <p class="note">E-Rechnung = einfaches UBL-XML (EN-16931-Basisfelder) für die maschinelle Weiterverarbeitung — keine zertifizierte XRechnung.</p>
@@ -470,6 +470,12 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   <section class="view" id="v-finanz">
     <h1>Finanzen <span class="pill">Tracker &amp; Rechner</span></h1>
     <p class="sub">Portfolio, Vermögen, Trading-Journal, FIRE und Hypothek — alles lokal. <strong>Keine Anlageberatung.</strong></p>
+    <div id="finanz_lock" class="panel" style="display:none;text-align:center">
+      <div style="font-size:2rem">🔒</div>
+      <h2>Finanzen-Suite ist eine Pro-Funktion</h2>
+      <p class="note" style="max-width:440px;margin:6px auto 0">Portfolio-Tracker, Vermögensübersicht, Trading-Journal, FIRE- und Hypotheken-Rechner gehören zu <strong>aban Pro</strong>. Der Rest des Cockpits bleibt gratis.</p>
+      <div class="btnrow" style="justify-content:center;margin-top:12px"><button class="btn" id="finanz_unlock" type="button">aban Pro freischalten</button></div>
+    </div>
     <div class="ltabs" id="f_tabs">
       <button data-f="port" class="on" type="button">📈 Portfolio</button>
       <button data-f="nw" type="button">🏦 Vermögen</button>
@@ -724,7 +730,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   /* Tabs */
   $$("#tabs button").forEach(function(b){b.addEventListener("click",function(){
     $$("#tabs button").forEach(function(x){x.classList.toggle("on",x===b)});
-    $$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-"+b.dataset.v)});if(b.dataset.v==="dash")renderDash();window.scrollTo(0,0)})});
+    $$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-"+b.dataset.v)});if(b.dataset.v==="dash")renderDash();if(b.dataset.v==="finanz")gateFinanz();window.scrollTo(0,0)})});
 
   /* Stammdaten */
   var stF=["firma","adresse","email","tel","iban","steuer","rl"];
@@ -795,7 +801,9 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   /* Rechnung-spezifisch */
   $("#r_clear").addEventListener("click",function(){R.setItems([{}]);["r_nr","r_kunde","r_leistung"].forEach(function(id){$("#"+id).value=""});$("#r_pick").value="";toast("Geleert")});
   $("#r_print").addEventListener("click",function(){var t=R.calc(),d={nr:$("#r_nr").value,datum:$("#r_datum").value};
-    var lang=$("#r_lang")?$("#r_lang").value:"de",titles={de:"Rechnung",fr:"Facture",it:"Fattura",en:"Invoice"},payL={de:"Zahlbar bis",fr:"Payable jusqu'au",it:"Pagabile entro",en:"Payable by"},metaL={de:"Leistungszeitraum",fr:"Période",it:"Periodo",en:"Service period"};
+    var lang=$("#r_lang")?$("#r_lang").value:"de";
+    if(lang!=="de"&&!isPro()){proGate("Mehrsprachige Rechnung");if($("#r_lang"))$("#r_lang").value="de";return}
+    var titles={de:"Rechnung",fr:"Facture",it:"Fattura",en:"Invoice"},payL={de:"Zahlbar bis",fr:"Payable jusqu'au",it:"Pagabile entro",en:"Payable by"},metaL={de:"Leistungszeitraum",fr:"Période",it:"Periodo",en:"Service period"};
     var foot="";if(d.datum){var fd=addDays(parseDate(d.datum),parseInt($("#r_ziel").value,10)||0);if(!isNaN(fd))foot=payL[lang]+" "+de(fd)+".";}
     printDoc({title:titles[lang]||"Rechnung",nr:d.nr,datum:d.datum,kunde:$("#r_kunde").value,meta:$("#r_leistung").value?(metaL[lang]+": "+$("#r_leistung").value):"",items:R.items(),tot:t,foot:foot,qr:rQrSvg,lang:lang})});
   function invData(){return {nr:$("#r_nr").value,datum:$("#r_datum").value,leistung:$("#r_leistung").value,kunde:$("#r_kunde").value,vat:$("#r_vat").value,ziel:$("#r_ziel").value,items:R.items()}}
@@ -1319,6 +1327,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   function xesc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&apos;"}[c]})}
   function downloadText(fn,txt,mime){var blob=new Blob([txt],{type:mime||"text/plain;charset=utf-8"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fn;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},100)}
   if($("#r_exml"))$("#r_exml").addEventListener("click",function(){
+    if(!isPro()){proGate("E-Rechnung-XML");return}
     var s=stamm(),t=R.calc(),items=R.items(),nr=$("#r_nr").value||"RE",dt=$("#r_datum").value||isoToday();
     var iban=(s.iban||"").replace(/\s+/g,"").toUpperCase(),cur=(iban.slice(0,2)==="CH"||iban.slice(0,2)==="LI")?"CHF":"EUR";
     var adr=(s.adresse||"").split("\n"),street=adr[0]||"",city=adr[1]||"",kunde1=($("#r_kunde").value||"").split("\n")[0]||"";
@@ -1508,7 +1517,10 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   function renderProStatus(){var p=proGet(),st=$("#pro_status"),rm=$("#pro_remove");if(!st)return;
     if(p&&p.ok){st.innerHTML='✅ <strong>aban Pro aktiv</strong>'+(p.tier?' ('+(p.tier==="yearly"?"Jahr":"Monat")+')':'')+' — danke für deine Unterstützung!';if(rm)rm.style.display="";if($("#pro_key"))$("#pro_key").value="";}
     else{st.textContent="Status: nicht freigeschaltet. Das Cockpit ist trotzdem voll nutzbar.";if(rm)rm.style.display="none";}
-    document.documentElement.setAttribute("data-pro",isPro()?"1":"0")}
+    document.documentElement.setAttribute("data-pro",isPro()?"1":"0");gateFinanz()}
+  function proGate(label){toast((label||"Pro-Funktion")+" — bitte aban Pro freischalten");var b=$('#tabs button[data-v="stamm"]');if(b)b.click();setTimeout(function(){if($("#pro_key"))$("#pro_key").focus()},120)}
+  function gateFinanz(){var l=$("#finanz_lock");if(!l)return;var locked=!isPro();l.style.display=locked?"":"none";var t=$("#f_tabs");if(t)t.style.display=locked?"none":"";$$("#v-finanz .lsec").forEach(function(s){s.style.display=locked?"none":""})}
+  if($("#finanz_unlock"))$("#finanz_unlock").addEventListener("click",function(){proGate("Finanzen-Suite")});
   if($("#pro_activate"))$("#pro_activate").addEventListener("click",function(){var key=$("#pro_key").value.trim();if(!key){toast("Bitte Lizenzschlüssel eingeben");return}
     var btn=this;btn.disabled=true;btn.textContent="Prüfe …";
     fetch("/api/pro-validate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({license_key:key})}).then(function(r){return r.json()}).then(function(d){
