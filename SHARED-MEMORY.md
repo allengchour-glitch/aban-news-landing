@@ -39,10 +39,14 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
-**2026-06-13 — Pinterest-Pins poliert + komplett neu (Premium-Look v5):**
+**2026-06-13 — Pinterest-Pins poliert + komplett neu (Premium-Look v5) → 152 total:**
 - **75 polierte Pins** gebaut (Template v5: Creme-Basis, Serifen-Titel, sanfter Foto→Creme-Übergang,
   Gold-Akzent, Marken-Wordmark, Preis + WELCOME10-Pille). Generator `automation/gen_pinterest_polish.py`
   (konsolidiert die 3 Batch-Roh-Listen, de-dupliziert). Alle Kategorien.
+- **+77 weitere Pins** aus frischen Katalog-Produkten ergänzt → **152 Pins total**, balanciert über 6 Boards
+  (Home/Geschenke 39 · Schmuck/Acc 37 · Herren 24 · Damenmode 23 · Beauty 17 · Schuhe 12). Tool
+  `automation/gen_pinterest_extra.py` (zieht Produkte per Shopify, mappt Board, cappt, rendert, hängt an CSV).
+  In PR #861 (Draft; mergen sobald GitHub-Rate-Limit zurück — stündlich).
 - **GRATIS-HOSTING via Repo:** Bilder liegen in `dropship/pins/px-*.jpg` (öffentliches Repo), eingebunden per
   `raw.githubusercontent`-URL — **kein Shopify-CDN-Upload nötig**. `pinterest_pins.csv` komplett neu (75, raw-URLs),
   Ledger geleert (nichts war gepostet). In `main` (PR #858). ⚠️ raw-URLs brauchen nach Merge ein paar Min (CDN-Propagation).
