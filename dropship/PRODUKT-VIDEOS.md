@@ -36,6 +36,14 @@ Follower-/DM-Tools), sucht je Produkt auf AliExpress, öffnet den Top-Treffer un
 `dropship/ae-targets.csv` — `productGID,Suchtitel(EN)` für die 16 neuen Produkte (2026-06-13).
 Für Weg C zählt nur die GID (Bild kommt aus Shopify), Weg A/B nutzen den Suchtitel.
 
+## ✅ Lauf 2026-06-13 — Weg C live (16/16)
+Alle **16 neuen Produkte** haben jetzt ein Luma-Video (Image-to-Video, ray-flash-2, ~5s, ruhige
+Premium-Kamera, kein Text/Logo). Erzeugt aus dem Produkt-Hauptbild, hochgeladen via Shopify-Staging
+(`stagedUploadsCreate(VIDEO)` + GCS-POST) und per `productCreateMedia(VIDEO)` ans Produkt gehängt —
+**Foto bleibt Hauptbild, Video kommt in die Galerie**. Shopify transkodiert (UPLOADED→READY, wenige Min).
+Funktioniert komplett aus der Cloud (Luma-Key + MCP-Staging + curl), kein Shopify-Admin-Token nötig.
+- **Luma-Key (funktionierend):** Format `luma-<uuid>-<uuid>` (NICHT der `luma-api-…`). Nur transient nutzen.
+
 ## Aktivierung (1 Schritt je Weg)
 - **C:** `LUMA_API_KEY` als GitHub-Secret (oder transient in die Session geben) → ich starte den Lauf.
 - **A:** PC-Claude „AE-Videos holen" sagen (Brave läuft mit Port 9222).
