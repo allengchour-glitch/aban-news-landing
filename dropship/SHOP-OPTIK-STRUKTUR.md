@@ -85,3 +85,12 @@ Alle publiziert (Onlineshop + Kanäle), Titelbild + SEO-Text gesetzt, ins Hauptm
   🎁 Sets · 👩 Damen-Schmuck (123) · 👨 Herren-Schmuck (58).
 - **Actions-Check 2026-06-13 11:40:** letzte geplante Ausführung weiterhin 12.06. 14:47 → Abuse-Sperre hält an
   (Public-Repo hebt sie NICHT auf). Nicht getriggert (Drossel-Bitte). Pinterest/Posten/Bild-Audit warten.
+
+## 🧭 „Ergänze alles / feiner gliedern" (User 2026-06-13) — bestehende Subs ins Menü
+Viele gefüllte, publizierte Kollektionen waren nur nicht verlinkt → eingehängt (kein Neuanlegen nötig):
+- **Trends & Gadgets +5:** 🏠 Smart Home (128) · 🎧 Audio (86) · 📸 Foto & Video (100) · 🎮 Gaming (83) · 🔌 Ladegeräte (24).
+- **Wohnen & Wellness +3:** 🖼️ Wandkunst (47) · 🍸 Bar-Tools (104) · 📦 Aufbewahrung (59).
+- **Herren +3 Accessoires:** 👛 Wallets (14) · 🔗 Gürtel (11) · 🧢 Caps & Hüte (16).
+- **Sale erweitert:** 🏷️ Sale & Angebote (109, war NICHT publiziert → nachpubliziert!) · 🎁 Geschenke unter CHF 50 · Bestseller · Neu.
+- ⚠️ Beim ersten Versuch sale-angebote-ID geraten → „Ressource existiert nicht" (Publish-Falle); echte ID 687887221121 geholt + publiziert.
+- **Menü ist jetzt sehr granular** (Best-Practice-Grenze): weitere Subs würden überladen → eher stoppen.
