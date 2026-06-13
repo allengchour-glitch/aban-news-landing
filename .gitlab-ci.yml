@@ -1,0 +1,51 @@
+# GitLab-CI — Gratis-Ersatz für GitHub Actions (ABAN-Files-Upload)
+# Voll-Anleitung: docs/GITLAB-SETUP.md
+#
+# Idee: GitHub Actions ist account-weit gesperrt → wir lassen die wichtigsten Jobs
+# stattdessen auf GitLab.com (gratis CI-Minuten) laufen. Diese Datei wird von GitLab
+# automatisch erkannt, sobald das Repo dort liegt/gespiegelt ist.
+#
+# Benötigte CI/CD-Variablen (GitLab → Settings → CI/CD → Variables), „masked":
+#   YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN  (YouTube-OAuth)
+#   XI (ElevenLabs, nur falls neu gerendert werden muss — die 13 Folgen sind bereits gerendert)
+#   PEXELS (optional, nur für Neu-Rendern)
+#   GITLAB_PUSH_TOKEN (optional: Project-Access-Token mit write_repository → speichert
+#                      uploaded.json/video_ids.json zurück, verhindert Doppel-Uploads)
+
+stages:
+  - post
+
+# ABAN-Files-Folgen auf YouTube hochladen.
+# Start: GitLab → Build → Pipelines → „Run pipeline" → Variable COUNT setzen (z. B. 6) → Job starten.
+# YouTube-API-Limit: ~6 Uploads/Tag → ersten Tag COUNT=6, nächsten Tag COUNT=7.
+aban-upload:
+  stage: post
+  image: python:3.11
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'      # manuell über „Run pipeline"
+    - when: manual                            # sonst nur auf Klick (verbrennt keine Minuten)
+  variables:
+    COUNT: "6"
+    PRIVACY: "public"
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq fonts-dejavu-core git
+    - pip install --quiet Pillow numpy imageio-ffmpeg google-api-python-client google-auth-oauthlib google-auth-httplib2
+  script:
+    - cd video-prototypes/aban-files
+    - python3 aban_publish.py --count "$COUNT" --privacy "$PRIVACY"
+    # Upload-Status zurückspeichern (nur wenn GITLAB_PUSH_TOKEN gesetzt ist)
+    - cd "$CI_PROJECT_DIR"
+    - |
+      if [ -n "$GITLAB_PUSH_TOKEN" ]; then
+        git config user.email "ci@gitlab"; git config user.name "gitlab-ci"
+        git add video-prototypes/aban-files/uploaded.json video-prototypes/aban-files/video_ids.json || true
+        if ! git diff --cached --quiet; then
+          git commit -m "aban: Upload-Status [skip ci]"
+          git push "https://oauth2:${GITLAB_PUSH_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git" "HEAD:${CI_COMMIT_REF_NAME}"
+        else
+          echo "kein neuer Upload-Status."
+        fi
+      else
+        echo "GITLAB_PUSH_TOKEN nicht gesetzt → Status nicht gespeichert (Doppel-Upload-Gefahr bei erneutem Lauf)."
+      fi
