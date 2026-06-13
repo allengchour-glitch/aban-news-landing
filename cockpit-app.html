@@ -9,6 +9,7 @@
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/cockpit.webmanifest">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
@@ -439,6 +440,19 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
       <div class="row"><div class="fld"><label>E-Mail</label><input id="st_email"></div><div class="fld"><label>Telefon</label><input id="st_tel"></div></div>
       <div class="row"><div class="fld"><label>IBAN</label><input id="st_iban"></div><div class="fld"><label>MwSt-/Steuernr.</label><input id="st_steuer"></div></div>
       <div class="btnrow"><button class="btn" id="st_save">💾 Stammdaten speichern</button></div>
+    </div>
+    <div class="panel">
+      <h2>Daten-Sicherung &amp; App</h2>
+      <p class="note" style="margin-top:0">Alle Cockpit-Daten (Stammdaten, Kunden, Rechnungen, Zeit, Kassenbuch, Lern-Fortschritt) liegen nur auf diesem Gerät. Sichere sie regelmäßig als Datei — oder lade sie auf einem neuen Gerät wieder ein.</p>
+      <div class="btnrow">
+        <button class="btn" id="bk_export">⬇ Alle Daten sichern</button>
+        <button class="btn ghost" id="bk_import">⬆ Daten laden</button>
+        <input type="file" id="bk_file" accept="application/json,.json" hidden>
+      </div>
+      <div class="btnrow" id="bk_install" style="display:none">
+        <button class="btn ghost" id="bk_installbtn">📲 App installieren</button>
+      </div>
+      <p class="note">📲 Als App nutzen: im Browser-Menü „Zum Startbildschirm hinzufügen" / „Installieren" wählen — dann läuft das Cockpit offline wie eine echte App.</p>
     </div>
   </section>
 </main>
@@ -986,6 +1000,27 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
         else if(act==="tab"){goTab(arg)}window.scrollTo(0,0)})})}
     catChips();renderLessons();renderTips();renderGloss();renderQuiz();renderCheck();renderPath();updateProg();
   })();
+
+  /* ===== PWA + Daten-Sicherung ===== */
+  if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/cockpit-sw.js").catch(function(){})})}
+  var deferredPrompt=null;
+  window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferredPrompt=e;var w=$("#bk_install");if(w)w.style.display="flex"});
+  if($("#bk_installbtn"))$("#bk_installbtn").addEventListener("click",function(){if(!deferredPrompt)return;deferredPrompt.prompt();deferredPrompt.userChoice.then(function(){deferredPrompt=null;var w=$("#bk_install");if(w)w.style.display="none"})});
+  window.addEventListener("appinstalled",function(){var w=$("#bk_install");if(w)w.style.display="none";toast("App installiert ✓")});
+  function backupKeys(){var o={},i,k;for(i=0;i<LS.length;i++){k=LS.key(i);if(k&&k.indexOf("abanCockpit_")===0)o[k]=LS.getItem(k)}return o}
+  if($("#bk_export"))$("#bk_export").addEventListener("click",function(){
+    var data={_app:"aban-cockpit",_version:1,_date:new Date().toISOString(),keys:backupKeys()};
+    var blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});var a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);a.download="cockpit-backup-"+isoToday()+".json";document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},100);toast("Sicherung heruntergeladen ✓")});
+  if($("#bk_import"))$("#bk_import").addEventListener("click",function(){$("#bk_file").click()});
+  if($("#bk_file"))$("#bk_file").addEventListener("change",function(){var f=this.files&&this.files[0];if(!f){return}
+    var rd=new FileReader();rd.onload=function(){try{var d=JSON.parse(rd.result);var keys=(d&&d.keys)?d.keys:d;
+      if(!keys||typeof keys!=="object"){toast("Datei nicht erkannt");return}
+      if(!window.confirm("Gesicherte Daten laden? Vorhandene Cockpit-Daten auf diesem Gerät werden überschrieben.")){return}
+      Object.keys(keys).forEach(function(k){if(k.indexOf("abanCockpit_")===0)LS.setItem(k,keys[k])});
+      toast("Daten geladen — App wird neu geladen …");setTimeout(function(){location.reload()},900)}
+      catch(err){toast("Datei konnte nicht gelesen werden")}};rd.readAsText(f);this.value=""});
 
   /* Init */
   loadStamm();refreshPickers();renderClients();renderTime();renderDrafts();renderKasse();
