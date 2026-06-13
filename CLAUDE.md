@@ -59,7 +59,34 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-06-13 (ABEND — NEUESTER STAND — ☁️ CLOUDFLARE-AUTOPILOT, umgeht die GitHub-Actions-Sperre):**
+**📌 2026-06-13 (NACHT — NEUESTER STAND — GROSSE KATALOG-OFFENSIVE: +30 Produkte, Luxus-Welt, Conversion-Setup):**
+- **+30 neue Produkte live** (alle ACTIVE, 6 Kanäle, Bilder READY/0 FAILED, SEO gesetzt, deutsche Titel/Varianten/CJ-SKUs):
+  - **10 Röcke & Schuhe** (User „mehr röcke und männer schue und frauen"): 2 Röcke (Wide-Leg «Studio» 6 Farben, Polka-Dot «Dolce»),
+    4 Damen-Schuhe (Capri/Lido/Maré/Estate), 4 Herren-Schuhe (Brooklyn/Adriano/Velocità/Forza). Auto in 👟 Schuhe (107) + 👗 Röcke (9).
+  - **6 High-End/Luxus** (User „high end produkten"): Echtleder-Tasche «Milano», Schultertasche «Como», Moissanite-Kette «Aurora»
+    (GRA-Zert), Ring «Fleur», Ohrringe «Perla», Fusskettchen «Riva».
+  - **1 Elektronik** (User „elektro high end geräte"): Open-Ear-Kopfhörer «Aria». ⚠️ **CJ hat KEINE echten High-End-Elektrogeräte**
+    (3 Runden+Diagnose: nur Billig-Gadgets) → nur 1 ehrliches Stück, Rest bewusst NICHT als „high-end" fehldeklariert.
+  - **3 High-End-Schmuck**: Perla-Kette, Armband «Maglia», Ring «Anello».
+  - **5 Herren-Hype** (User „hype sachen für männer"): Sling «Ranger» (Crazy-Horse-Leder), Denim-Cap «Bronx», Shield-Brille «Vortex»,
+    Brille «Aviateur», Titan-Ring «Vertex». Tag `hype-2026` → Hype-Collection (50). ⚠️ Cuban-Chains surfacen NICHT auf CJ.
+  - **5 „tolle Schmuckstücke"** (User „tolle schmücke"): Perlohrringe «Goccia», Perla-Armband (komplettiert Perla-Set),
+    Armbänder «Fiore»/«Onda»/«Cerchio».
+- **✨ NEUE COLLECTION „High-End · Luxus"** (`luxus-highend`, Smart-Regel TAG=`highend`, **14 Produkte**): Hero-Bild gesetzt, SEO,
+  in 6 Kanäle publiziert, **als Top-Menüpunkt Position 2** verlinkt. ⚠️ Dedizierter Tag `highend` (NICHT `premium` — das ist im
+  Altbestand breit vergeben ~2288). PUBLISH-FALLE bei Collections beachtet (publishablePublish).
+- **🎁 «Perla»-Set Cross-Sell**: Kette+Ohrringe+Armband gegenseitig verlinkt (Geschenk-Trio, AOV-Hebel, kein Bundle/Fulfillment-Risiko).
+- **📣 Werbe-Queue** `automation/good_products.csv` **18 → 32** (Frauen/Männer/Luxus/Schmuck ausbalanciert); `cloudflare/src/products.js`
+  je synchron neu generiert (`sync-products.mjs`). Beide Pipelines (Cloudflare-Autopilot + GitHub-Veredelung) bewerben sie rotierend.
+- **🛑 CJ ERSCHÖPFT** für diesen Shop (Dubletten in allen ergiebigen Linien: 925/Moissanite, Echtleder, Schuhe, Hype). Memory-Regel:
+  Dubletten = aufhören. **Engpass ist NICHT Katalog (jetzt breit+ausbalanciert+SEO+durchsuchbar), sondern REICHWEITE** → User-Schritte:
+  Cloudflare-Autopilot deployen (`cloudflare/README.md`) bzw. Meta-Secrets setzen. Voller Tag-Verlauf: `dropship/CJ-IMPORT-LOG.md`.
+- **Workflow-Bestätigung (diese Session, klappt):** Shopify-MCP live · CJ-Token aus `/tmp/cj_token.json` (gültig bis 2026-12) ·
+  CJ-Suche via Playwright-`request` (Header `CJ-Access-Token`), 3-Runden harter Namensfilter (CJ-Suche ist lose/OR) · Bilder VOR
+  Anlage per HEAD/GET 200 prüfen (`quick/product/…` teils 404) · create-product (MCP) gibt `images:[]` sofort zurück, Medien laden
+  ASYNC (Status danach READY) · publishablePublish in 6 Publications (IDs unten/im Runbook) · Smart-Collections greifen per Tag/Titel.
+
+**📌 2026-06-13 (ABEND — ☁️ CLOUDFLARE-AUTOPILOT, umgeht die GitHub-Actions-Sperre):**
 - **Warum:** GitHub-Actions blieben ganztags 422-gesperrt → die tägliche Veredelungs-+Social-Pipeline auf **Cloudflare
   Workers + Cron Triggers** portiert. Läuft **komplett unabhängig von GitHub**. Code im Ordner **`cloudflare/`**
   (Branch `claude/memory-2026-06-13`, PR #851 — diese Session lief auf dem Memory-Branch, nicht auf `CizQ6`).

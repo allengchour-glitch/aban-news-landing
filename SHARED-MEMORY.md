@@ -39,6 +39,16 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 (NACHT) — Luxestyle/Dropship: +30 PRODUKTE + LUXUS-WELT + CONVERSION-SETUP:**
+- **+30 neue Produkte live** (ACTIVE/6 Kanäle/Bilder READY/SEO): 10 Röcke&Schuhe · 6 High-End/Luxus · 1 Elektronik (Earbud) ·
+  3 High-End-Schmuck · 5 Herren-Hype · 5 „tolle Schmuckstücke". Via Shopify-MCP + CJ-Token (`/tmp/cj_token.json`).
+- **✨ NEUE Collection „High-End · Luxus" (`luxus-highend`, 14 Prod., TAG=`highend`):** Hero+SEO+6 Kanäle + **Top-Menüpunkt Pos.2**.
+  ⚠️ `highend`-Tag (NICHT `premium` → Altbestand ~2288 breit getaggt).
+- **🎁 «Perla»-Schmuck-Set komplett** (Kette+Ohrringe+Armband) + gegenseitig verlinkt (Geschenk-Trio/AOV).
+- **📣 Werbe-Queue `automation/good_products.csv` 18→32** (Frauen/Männer/Luxus/Schmuck), `cloudflare/src/products.js` synchron (32).
+- **🛑 CJ ERSCHÖPFT** (Dubletten in 925/Moissanite, Echtleder, Schuhe, Hype). **Elektronik: CJ hat KEIN echtes High-End** (nur
+  Billig-Gadgets) → nur 1 ehrliches Stück importiert. Engpass = **Reichweite**, nicht Katalog. Detail: `dropship/CJ-IMPORT-LOG.md`.
+
 **2026-06-13 (ABEND) — Luxestyle/Dropship: ☁️ CLOUDFLARE-AUTOPILOT gebaut (umgeht GitHub-Actions-Sperre):**
 - **Problem gelöst:** Da GitHub-Actions ganztags gesperrt (422) → komplette tägliche Pipeline auf **Cloudflare Workers +
   Cron Triggers** portiert, läuft **unabhängig von GitHub**. Ordner **`cloudflare/`** (auf Branch `claude/memory-2026-06-13`, PR #851).
