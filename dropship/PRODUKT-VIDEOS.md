@@ -58,12 +58,16 @@ Zusätzlich zu den 16 neuen Produkten haben jetzt auch die **bewerteten/starken 
 - **Staging-Falle:** Die `stagedUploadsCreate`-Policy läuft **sehr kurz** (~sofort) ab → Bytes SOFORT nach dem
   Staging hochladen (in Gruppen ≤5), sonst HTTP 400 beim GCS-POST. Bei 400 einfach neu stagen + sofort posten.
 
-### Stand 2026-06-13 — 41 Produkte mit Luma-Video (Budget ~10 CHF)
-- 16 neue cj-real + 15 bewertete/starke (good_products) + 10 Schmuck (Ringe/Ohrringe/Tennis-Armband) = **41 live**.
-- Luma-Credit war bis dahin **nicht** erschöpft (kein HTTP 402) — nur Concurrency-429. Weitere Wellen möglich,
-  bis Luma „insufficient credits" meldet. Nächste Kandidaten: Couple-/Partner-Schmuck, Home-Gadgets (FreshSeal,
-  SharpPro, Seifenspender), Bamboo-Mode, Espadrilles/Slipper. (POD-„Selbst gestalten" + Text-Shirts bewusst
-  ausgelassen — Motion verzerrt Text/Logos.)
+### Stand 2026-06-13 — 57 Produkte mit Luma-Video, Budget (~10 CHF) AUFGEBRAUCHT ✅
+Wellen bis das Guthaben leer war (Luma: HTTP 400 „Insufficient credits"):
+- 16 neue cj-real + 15 bewertete/starke (good_products) + 10 Schmuck (Ringe/Ohrringe/Tennis-Armband)
+  + 10 Home/Bamboo/Couple (FreshSeal, SharpPro, Seifenspender, Coffee-Becher, Bamboo-Mode, Espadrilles,
+  Lisbon-Slipper, Soulmate-Kette) + 6 Couple-Schmuck/Hunde-Feeder = **57 live**.
+- **Credit-Stopp:** ~10 CHF reichten für insgesamt rund **57 Clips** (ray-flash-2, 720p, 5 s). Danach 400
+  „Insufficient credits" → sauberer Stopp im Generator (`genw.py`/`luma_product_video.mjs` brechen bei 402/„credit" ab).
+- POD-„Selbst gestalten" + Text-Shirts bewusst ausgelassen (Motion verzerrt Text/Logos).
+- **Für künftige Läufe:** Guthaben in Luma aufladen → dann weitere Wellen oder hands-free über
+  `luma_product_video.mjs` (mit `SHOPIFY_CLIENT_ID/SECRET` als Env, da GitHub-Secrets in der Cloud-Session nicht sichtbar).
 
 ## Aktivierung (1 Schritt je Weg)
 - **C:** `LUMA_API_KEY` als GitHub-Secret (oder transient in die Session geben) → ich starte den Lauf.
