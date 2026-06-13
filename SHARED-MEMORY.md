@@ -39,6 +39,14 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Luxestyle: Kategorie-Banner + Layout-Plan (Website-Optik):**
+- **9 moderne Kategorie-Banner** (editorial, Marken-Creme/Taupe/Gold) generiert + per `collectionUpdate image.src` als
+  **Collection-Bild gesetzt** (damen-mode/fur-ihn/premium-schmuck/schuhe/wohnen-dekoration/premium-beauty/trends-gadgets/
+  premium-geschenke/unter-chf-25). CDN: `cat-*.jpg` (NICHT löschen). Tool: `automation/gen_category_banners.py`.
+- **Startseite ist langweilig** (Hero + 4 gleiche Raster). Kompletter Customizer-Bauplan (USP-Leiste · „Shop nach
+  Kategorie"-Kacheln mit den Bannern · Lifestyle-Banner · Reviews) in **`dropship/WEBSITE-LAYOUT-REDESIGN.md`**.
+  ⚠️ Sektions-Umbau nur im **Customizer** (Live-Theme-Write API-gesperrt) → User/PC-Claude.
+
 
 **2026-06-13 — ⚠️⚠️ GITHUB ACTIONS ACCOUNT-WEIT GESPERRT (FÜR ALLE SESSIONS WICHTIG):**
 - GitHub hat **Actions account-weit deaktiviert** („Actions has been disabled for this user") — Grund: **zu hohe
