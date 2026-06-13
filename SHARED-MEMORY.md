@@ -39,6 +39,21 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-13 — Pinterest API-Status (Token-Versuch, noch nicht live):**
+- User hat Pinterest-Dev-App **„Luxstyle CH" (App-ID 1580519)** erstellt + Token gesetzt. **App-Secret „nicht
+  verfügbar – trial-Zugriff ausstehend"** (für unseren Flow egal). Ein **Produktion-begrenzt-Token** (`pina_…`,
+  läuft 30 T) wurde generiert.
+- **❌ Direkter Lauf `pinterest_publish.mjs` schlug fehl:** `GET /v5/boards → 401 code 3 "Your application consumer
+  type is not supported"`. = Pinterest-seitige Sperre, KEIN Token-/Code-Fehler. Wahrscheinlichste Ursache:
+  Pinterest-**Konto ist noch kein Business-Konto** (API v5 braucht Business) und/oder App noch im Trial ohne
+  Produktions-Freigabe.
+- **Plan (User wählte API-Weg):** (1) Konto auf **Business** umstellen (gratis), (2) neuen Produktions-Token
+  generieren → testen (Trial erlaubt Calls aufs eigene Konto), (3) falls noch blockiert: **Standard-Zugriff im
+  Dev-Portal beantragen** (Review-Tage). Danach Token als `PINTEREST_ACCESS_TOKEN`/Refresh in GitHub + Cron in
+  `pinterest-publish.yml` reaktivieren (aktuell auskommentiert) **und** GitHub-Actions-Throttle muss weg sein.
+- **Sofort-Alternative bleibt:** `dropship/pinterest_pins.csv` (103 Pins) **manuell in Pinterest bulk-uploaden** —
+  token-/API-frei. User wollte aber den API-Weg.
+
 **2026-06-13 — Luxestyle: Hauptmenü aufgeräumt (live via Shopify `menuUpdate`, `main-menu` id 310224093569):**
 - **„🇨🇭 1. August" aus dem Top-Level ENTFERNT** (saisonal, im Juni fehl am Platz) → als „🇨🇭 Schweizer Edition"
   (`/collections/erste-august`) unter **„Selbst gestalten"** eingegliedert. Im Juli/Aug leicht wieder hochziehbar.
