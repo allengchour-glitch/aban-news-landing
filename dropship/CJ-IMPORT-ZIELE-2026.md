@@ -64,3 +64,9 @@ läuft ~14 T (≈28.06.) → User setzt dann `CJ_EMAIL`+`CJ_API_KEY` (Weg „A")
 - 💡 LED-Wandleuchte «Spot» mit Lese-Spot (CHF 49.90) — id 15430169133441 → 💡 Beleuchtung
 Übersprungen (Text-/Marken-Overlay auf 1. Bild): Pet-Feeder, Katzen-Plüsch; Fussel-Roller (Marge zu dünn, EK $22.88).
 **Heute total 5 neue Produkte hand-kuratiert & live** (3+2). Volle Masse via Weg „A" (CJ-API-Key in ~14 T).
+
+### Runde 3 (2026-06-13) — +2 kuratiert
+- 🐚 Muschel-Anhänger-Kette «Coquille» (CHF 24.90) — id 15430169919873 → 📿 Halsketten/Schmuck
+- 🔥 Burger-Smasher & Grill-Helfer-Set (CHF 29.90) — id 15430169985409 → ☀️ Grill & BBQ (Gap gefüllt)
+Übersprungen: Strohtasche (asiatisches Model im 1. Bild), Initial-Kette (Personalisierung nötig), Ring (nur 400px).
+**Heute total 7 neue Produkte hand-kuratiert & live** (3+2+2).
