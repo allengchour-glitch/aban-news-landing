@@ -13,13 +13,16 @@
     (Haartrockner/Trockenblumen/Rocket-Sticker)
   - Kleider/Haustier/Küche/Yoga geprüft = sauber.
 
-## 🛠️ Was ich per API noch optimieren kann (auf Wunsch, autonom)
-1. **„Schöne/verfügbare zuerst" — Sortierung** je Kollektion (sortOrder auf BEST_SELLING bzw. kuratiert MANUAL),
-   damit oben die stärksten Produkte mit den besten Bildern stehen (reduziert Absprung).
-2. **Kollektions-Titelbilder** setzen, wo sie fehlen → schönere Mega-Menü-Thumbnails & Kollektions-Header.
-3. **Einheitliche Kollektions-Beschreibungen + SEO** (kurz, nutzenorientiert, mit Trust-Zeile).
+## 🛠️ API-Optimierung — STAND
+1. ✅ **„Beste zuerst"-Sortierung:** geprüft — **alle** Haupt-Kollektionen stehen bereits auf `BEST_SELLING`. Nichts zu tun.
+2. ✅ **Kollektions-Titelbilder gesetzt** (24 Kollektionen, je passendes Produktbild + altText): Damen/Herren/Taschen/
+   Wohnen/Trends/Kleider/Halsketten + alle Menü-Subs (Röcke, Bademode, Ohrringe, Ringe, Armbänder, Uhren, Beleuchtung,
+   Deko, Aroma, Massage, Trinkflaschen, Küche, Baby&Kids, Haustier, Reise, Handy, Yoga). → schöne Mega-Menü-Thumbnails.
+   ⚠️ **Offen: 🧔 Bart & Rasur** — alle Produkte haben **kein Bild** hinterlegt (Daten-/Stockbild-Thema) → Cover nicht setzbar,
+   bis die Produktbilder ergänzt sind.
+3. ⏳ **Einheitliche Kollektions-Beschreibungen + SEO** (kurz, nutzenorientiert, Trust-Zeile) — nächster Schritt.
 4. **POD-Tote-Bags:** Bild zeigt nur das Motiv (wirkt wie Sticker) → echtes Taschen-Mockup als 1. Bild
-   würde im Taschen-Raster viel hochwertiger wirken (POD-Session-Thema, koordinieren).
+   würde im Taschen-Raster hochwertiger wirken (POD-Session-Thema, koordinieren).
 
 ## 🖱️ Nur im Customizer (dein Klick-Bereich — Haupt-Theme ist für mich gesperrt)
 Recherche-belegte Hebel, die optisch am meisten bringen:
