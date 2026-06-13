@@ -89,6 +89,14 @@
   Bis dahin = **kein API-Posten möglich**; einzige Wege live: (a) Standard-Access abwarten, dann Token→Posten,
   (b) CSV manuell in Pinterest hochladen, (c) „Verknüpfung mit Shopify" (Pinterest-Shopify-App) = auto-Katalog-Pins.
   **Nächste Session: NICHT erneut Tokens durchprobieren — es ist das Access-Gate, kein Token-Problem.**
+- **✅ WICHTIGE KORREKTUR 2026-06-13: Pinterest IST bereits über den Shopify-Vertriebskanal verbunden!**
+  Shopify hat eine **Pinterest-Publication (`gid://shopify/Publication/302994456961`)** und **alle aktiven Produkte
+  sind darauf publiziert** (Stichprobe 10/10 = `publishedOnPublication:true`). ⇒ Shopify synct die Produkte
+  **automatisch als Pinterest-Produkt-Pins — OHNE API-Token.** Der ganze Dev-App-/Token-/Standard-Access-Aufwand
+  war für die Produkt-Pins **unnötig**. Offen ist nur die **Pinterest-Seite**: Domain `luxestyle.ch` verifizieren
+  (läuft meist autom. über die Shopify-Verknüpfung) + **Händler-Prüfung** (Pinterest-Review, Tage). Die 103
+  gebrandeten WELCOME10-Pins (`pinterest_pins.csv`) bleiben ein **separates Extra** (braucht die API-Standard-
+  Freigabe) — für die organische Pinterest-Präsenz aber **nicht nötig**, die kommt über den Shopify-Kanal.
 
 **2026-06-13 — Luxestyle: Hauptmenü aufgeräumt (live via Shopify `menuUpdate`, `main-menu` id 310224093569):**
 - **„🇨🇭 1. August" aus dem Top-Level ENTFERNT** (saisonal, im Juni fehl am Platz) → als „🇨🇭 Schweizer Edition"
