@@ -55,6 +55,10 @@
 - **OFFEN (User):** Printful-Mapping der POD-Produkte (Designs `pod/couple/print/*.png` hochladen + SKUs verknüpfen).
 - ⚠️ **Actions blieben den ganzen Tag gesperrt** (422 „Actions disabled for this user") → Dispatch ging nicht, alles in-Session gefahren.
 - **🔧 Nachgang:** 8 neue Collections SEO-Meta nachgerüstet; QA = alle getauschten Bilder READY/sauber, 0 FAILED. Katalog conversion-fertig.
+- **➕ +19 Produkte (5 CJ-Runden, kuratiert):** Humidifier/Diffuser/RGB-Lampe/Nachtlicht, Auto-Ventilator/Powerbank/Duft-Clip/Tischventilator,
+  Bambus-Organizer/Stoff-Box/Dusch-Organizer/Folien-Spender, Solar-Leuchte/Massagekissen/Trinkbrunnen/Weekender/Hundenapf/Transportbox. Alle live+SEO.
+- **🖼️ KI-Bilder:** Luma (Photon, key `luma-6ac83c2b-…`; Credits danach 0) = 3 Mood-Heroes; Gemini 2.5 Flash Image (text-to-image) = 5 sg-Sub-Heroes. Backups `pod/heroes/`.
+- **🛑 CJ erschöpft nach 5 Runden** → liefert Dubletten + Mode-Rauschen. Lehre: bei Dubletten aufhören. (apiKey `2534f19e…` via getAccessToken.)
 
 **2026-06-12 (ABEND) — abannews session: AFFILIATE-MASCHINE + aban-Pro-Funnel (Detail in `PROJEKT.md`, oberste Sektion):**
 - Komplette, ehrliche **Affiliate-/Review-Maschine** gebaut: `/deals`,`/ki-chatbots`,`/buchhaltung-software`,

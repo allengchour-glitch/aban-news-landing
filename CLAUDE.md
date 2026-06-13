@@ -82,6 +82,18 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **🔧 Autonom-Nachgang (SEO/QA):** Die 8 neuen Collections (partner-paare, hype-2026, sg-alle + 5 sg-Subs) mit
   Meta-Title/Description nachgerüstet. QA: alle heute getauschten Bilder READY, je 1 sauberes Einzelbild, 0 FAILED,
   kein „Dein Design" mehr. Katalog/Funnel maximal conversion-fertig — **Kern-Engpass bleibt Reichweite (User-Klicks §10).**
+- **➕ 19 neue Produkte importiert (5 CJ-Runden, hart per Montage kuratiert):** Hype/Ambiente (Schwebetropfen-/Blumen-
+  Humidifier, Persimmon-Diffuser, RGB-Wandlampe, Enten-Nachtlicht) · Auto/Tech (Auto-Ventilator, MagSafe-Powerbank,
+  Auto-Duft-Clip, USB-Tischventilator) · Haushalt (Bambus-Besteckorganizer, Stoff-Box, Dusch-Organizer, Folien-Spender) ·
+  Garten/Wellness/Pet (Solar-Gartenleuchte, Lendenwirbel-Massagekissen, Keramik-Trinkbrunnen, Weekender-Tasche,
+  Silikon-Hundenapf, Transportbox). Alle ACTIVE + SEO + Alt + 6 Kanäle, Bilder READY.
+- **🖼️ KI-Bild-Tools (User gab Keys):** **Luma Dream Machine** (Photon, key `luma-6ac83c2b-…` funktioniert; `luma-api-…`
+  NICHT) → 3 Mood-Heroes (Partner&Paare/Hype/sg-alle), Credits danach **aufgebraucht (0)**. **Gemini 2.5 Flash Image**
+  kann auch **text-to-image** → 5 Sub-Collection-Heroes (sg-bekleidung/-taschen/-wohnen/-trinken/-accessoires) generiert
+  + gesetzt. Hero-Backups in `pod/heroes/`. Regel: KI nur Mood/Hero, Produktbilder bleiben echt.
+- **🛑 CJ-Lehre (wichtig):** Nach 5 Runden **Nischen erschöpft** — CJ liefert dann **Dubletten** bereits angelegter
+  Produkte + Mode-Rauschen. Ausbeute ~3-5 echte Treffer pro 20-25. **Wenn Dubletten auftauchen = aufhören.**
+  CJ-Token via apiKey `2534f19e…` über `getAccessToken` (email allengchour@gmail.com) holbar.
 
 **📌 2026-06-12 (Marktlücken + Unterkategorien + Menü-Umbau):**
 - **🔎 Marktlücken-Analyse (datenbelegt):** 0 Treffer bei Auto, Grill/BBQ, Pool/Strand, 1.-August; dünn: Pet, Kids,
