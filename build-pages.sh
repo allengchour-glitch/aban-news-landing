@@ -40,6 +40,11 @@ tar -cf - \
 test -d _site/functions && echo "functions/ ok" || { echo "::error::functions/ fehlt"; exit 1; }
 test -f _site/_redirects && echo "_redirects ok"
 test -f _site/_headers   && echo "_headers ok"
+
+# aban-Engine in alle Seiten injizieren (gemeinsamer Kopf/Nav/Suche). Quelle bleibt sauber.
+# Tolerant: bricht den Build nicht ab, falls node fehlt.
+( command -v node >/dev/null 2>&1 && node automation/inject-engine.mjs _site ) || echo "inject-engine übersprungen (node fehlt)"
+
 echo "Dateien im Deploy: $(find _site -type f | wc -l)"
 echo "Dateien > 24 MiB (müssen 0 sein):"
 find _site -type f -size +24M -printf '%s  %p\n' | sort -rn | head || true
