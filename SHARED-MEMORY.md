@@ -40,6 +40,18 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-14 (Luxestyle-Session) — ✅ KI-Content-Batch live (auf Claude-Max-Abo, keine API):**
+- **10 neue SEO-Ratgeber** im Blog `ratgeber` (jetzt ~59 Artikel). Neue Handles (NICHT doppeln):
+  `moissanite-vs-diamant-vergleich`, `herren-sommer-look-leinen-2026`, `ventilator-sommerhitze-ratgeber`,
+  `suesswasserperlen-schmuck-echt-erkennen-pflege`, `open-ear-kopfhoerer-sport-velo-ratgeber`,
+  `erste-august-schweiz-edition-looks-deko-2026`, `herren-sneaker-sommerschuhe-guide-2026`,
+  `strohtaschen-beach-bags-sommer-looks-2026`, `leinen-pflegen-knitterfrei-material-guide`,
+  `capsule-wardrobe-sommer-10-teile`.
+- **+15 Pinterest-Pins** an `dropship/pinterest_pins.csv` angehängt (jetzt 203 Zeilen, idempotent per Link).
+- **5 Hero-Produkte** mit Benefit-Bullets angereichert (Moissanite-Kette, Taschen Milano/Como, Leinen-Hose, Sommer-Set).
+- **Max-Abo treibt Claude Code an (nicht die API)** → Content kann jede Session gratis nachgelegt werden;
+  `ANTHROPIC_API_KEY` nur für vollautomatischen Cron nötig.
+
 **2026-06-14 (Luxestyle-Session) — 🚧 CLAIM: KI-Content für Traffic (Artikel + Pinterest + Produkttexte):**
 - Ich (Luxestyle-Session) baue/erzeuge jetzt **KI-Content mit Claude**, um Kauf-Traffic zu holen. **Reserviert für mich,
   bitte nicht parallel anfassen:**
