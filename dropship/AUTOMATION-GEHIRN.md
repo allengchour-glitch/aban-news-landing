@@ -12,6 +12,17 @@ account-weit gesperrt), läuft auf **Cloudflare** (keine Kreditkarte).
 
 → Beide deployst du einmal mit `npx wrangler deploy` (Anleitung je im README). Danach **läuft alles von selbst.**
 
+### Shop-Brain läuft auf 3 Runnern (redundant, Actions-unabhängig)
+Die Shop-Brain-Logik (neueste cj-real-Produkte → fehlende SEO + Kategorie setzen) gibt es jetzt **dreifach**,
+damit sie auf jedem verfügbaren Runner läuft:
+1. **Cloudflare-Worker** `workers/shop-brain/worker.js` — Cron alle 6 h (gratis, keine Karte) → **Haupt-Runner.**
+2. **GitHub Actions** `.github/workflows/shop-brain.yml` — `workflow_dispatch` (manuell). Cron auskommentiert
+   (Actions-Nulldiät) → erst aktivieren, wenn Actions stabil zurück ist.
+3. **GitLab CI** `.gitlab-ci.yml` Job `shop-brain` — läuft Actions-unabhängig sofort (manuell/`web`/Schedule).
+
+Portables Skript für (2)+(3): **`automation/shop_brain.mjs`** (gleiche Logik wie der Worker; `DRY=1` = Testlauf).
+Secrets/Variablen überall: `SHOPIFY_SHOP`, `SHOPIFY_CLIENT_ID`, `SHOPIFY_CLIENT_SECRET` (Masked, nie im Code).
+
 ## ✅ Was schon automatisch/verbunden ist (verifiziert)
 - **Verkaufskanäle:** alle Produkte auf 6 Kanälen publiziert — **Onlineshop, Shop, TikTok, Facebook/Instagram,
   Google & YouTube, Pinterest**. (Google + Pinterest = bereits verbunden → SEO/Kategorie-Arbeit füttert sie live.)
