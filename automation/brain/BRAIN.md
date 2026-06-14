@@ -27,7 +27,6 @@ _Aktualisiert: 2026-06-14 · 3 Reports gelernt · Bayes-Shrinkage (C=5, Ø-Basis
 ## 🎯 Naechste Aktionen (auto-abgeleitet)
 - 🔴 0 Shares = Reichweiten-Decke. Share/Save-Trigger + Vergleichs-/Neugier-Hooks (stehen in CAPS) konsequent nutzen.
 - 🔴 Views steigen, aber Shares/Engagement nicht → hohle Reichweite. UGC/Demo + Save-Trigger statt nur Produkt-Pans.
-- 🟡 Kein Post in CH-Primetime (16–19 UTC). Cron steht auf 16/19 — sobald Autopost live ist, erledigt sich das.
 - 🟢 Bester Hook-Typ laut Daten: „mundart" (Ø 793 V) → davon mehr; „generisch" meiden.
 - 🟢 Groesster Hebel (manuell/PC-Claude): Hands-on/UGC-Clips + Trending-Sounds.
 
