@@ -1,6 +1,6 @@
 # Täglicher Verbesserungs-Report — abannews.com
 
-> Automatisch erzeugt: **2026-06-14 18:24 UTC** · 2172 HTML-Seiten geprüft · reine Heuristik, manuell verifizieren.
+> Automatisch erzeugt: **2026-06-14 18:48 UTC** · 2175 HTML-Seiten geprüft · reine Heuristik, manuell verifizieren.
 
 **Befunde:** 🔴 0 hoch · 🟡 0 mittel · 🟢 27 niedrig (Tonalität)
 
