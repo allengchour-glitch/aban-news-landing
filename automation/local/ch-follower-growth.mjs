@@ -44,7 +44,9 @@ const TT_TAGS = [
 ];
 // Optional: „Seed-Accounts" (CH-Mode-/Lifestyle-Profile) — deren AKTIVE Liker/Kommentierende
 // sind ideale Follower. Hier eintragen (ohne @). Default leer = nur Hashtag-Quelle.
-const IG_SEED_ACCOUNTS = [];
+// 2026-06-14: verifizierte CH-Influencer (Zürich, Fashion/Beauty — KEIN Deutschland, Geo-Regel).
+// Deren engagierte Follower = unsere Wunsch-Zielgruppe. Weitere Kandidaten: dropship/INFLUENCER-TARGETS.md.
+const IG_SEED_ACCOUNTS = ['oliviafaeh', 'mimoza', 'omnibloomofficial'];
 
 // ---- Limits (konservativ; lieber täglich wenig & dauerhaft) -------------------
 const CAP = {
