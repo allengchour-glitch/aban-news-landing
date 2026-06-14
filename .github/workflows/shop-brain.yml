@@ -1,0 +1,46 @@
+name: Shop-Brain (Produkt-Veredelung SEO + Kategorie)
+
+# Prüft die neuesten Produkte und setzt fehlende SEO + Kategorie automatisch.
+# Läuft über GitHub Actions (manuell + Cron). ⚠️ Actions ist derzeit account-weit
+# gesperrt → bis dahin läuft die gleiche Logik via GitLab-CI (.gitlab-ci.yml) ODER
+# dem Cloudflare-Worker (workers/shop-brain/). Cron bleibt auskommentiert (Nulldiät).
+#
+# Benötigte Secrets (Settings → Secrets → Actions):
+#   SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET
+#   (optional) TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry:
+        description: 'Nur testen (1 = nichts schreiben)'
+        required: false
+        default: '0'
+  # schedule:
+  #   - cron: '0 */6 * * *'   # alle 6 h — erst aktivieren, wenn Actions stabil zurück ist
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shop-brain
+  cancel-in-progress: false
+
+jobs:
+  enrich:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Produkte veredeln
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DRY: ${{ github.event.inputs.dry }}
+        run: node automation/shop_brain.mjs

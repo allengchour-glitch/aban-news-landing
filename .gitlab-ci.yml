@@ -133,3 +133,16 @@ pinterest-publish:
       else
         echo "GITLAB_PUSH_TOKEN nicht gesetzt → Ledger nicht gespeichert (Doppel-Post-Gefahr bei erneutem Lauf)."
       fi
+
+# 🧠 Shop-Brain (LuxeStyle) — neueste Produkte prüfen, fehlende SEO + Kategorie automatisch setzen.
+# Läuft auch wenn GitHub Actions gesperrt ist. Schedule: GitLab → Build → Pipeline schedules (z. B. alle 6 h).
+# Braucht CI/CD-Variablen SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (Masked).
+shop-brain:
+  stage: brain
+  image: node:20
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+    - when: manual
+  script:
+    - node automation/shop_brain.mjs
