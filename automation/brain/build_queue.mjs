@@ -70,6 +70,8 @@ async function priceMap() {
     '#tiktokmademebuyit #lifehack #schweiz #fyp #produkttipp',
   ];
   const tagsets = SAFE;
+  // SCHWEIZWEIT (User 2026-06-14 „nicht nur Bern"): rotierend über CH-Städte/Tags statt immer #bern.
+  const CH_WIDE = ['#zürich', '#basel', '#luzern', '#bern', '#genf', '#swissmade'];
   const goods = loadGood();
   if (!goods.length) { console.log('Keine good_products.csv → No-op.'); process.exit(0); }
   const prices = await priceMap();
@@ -77,7 +79,7 @@ async function priceMap() {
   const items = goods.map((p, i) => {
     const opener = OPENERS[i % OPENERS.length];
     const trigger = TRIGGERS[i % TRIGGERS.length];
-    const tags = tagsets[i % tagsets.length] + ' #bern';
+    const tags = tagsets[i % tagsets.length] + ' ' + CH_WIDE[i % CH_WIDE.length];
     const price = prices[p.handle] ? ` – CHF ${prices[p.handle]}` : '';
     const caption = `${opener} ${p.label}${price}\n${trigger} · –10% mit WELCOME10\n👉 luxestyle.ch/products/${p.handle}\n${tags}`;
     return { type: 'image', image: p.image, caption };

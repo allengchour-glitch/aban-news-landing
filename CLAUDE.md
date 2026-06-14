@@ -39,8 +39,10 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - Shop: **LuxeStyle** (luxestyle.ch), Zugriff über `mcp__…__*`-Shopify-Tools.
 - **🇨🇭 GEO-REGEL (FEST, User 2026-06-14 „falls in Deutschland erweitere nicht"):** Shop bleibt STRIKT
   Schweiz — KEIN Ausbau nach Deutschland/Österreich. Kein DE-Markt/EUR-Pricing/DE-Stadt- oder #deutschland-Tags/
-  DE-Ad-Targeting. CH-Tags (#schweiz/#bern/#schweizmode/#ootdschweiz) + **Mundart** bevorzugen (Mundart filtert DE
+  DE-Ad-Targeting. CH-Tags (#schweiz/#schweizmode/#ootdschweiz) + **Mundart** bevorzugen (Mundart filtert DE
   automatisch raus). Deutschland-Tags sind im Gehirn (`knowledge.json` blocked_hashtags) gesperrt.
+  **SCHWEIZWEIT (User 2026-06-14 „nicht nur Bern"):** ganz CH ansprechen — Zürich/Basel/Luzern/Genf/Bern rotieren,
+  nicht auf eine Stadt fixieren. #bern ist nur EINER von vielen CH-Tags.
 - **🌍 INTERNATIONAL (FEST, User 2026-06-14 „und wenn das international wird"):** Andere Märkte (US/UK/FR …) sind
   MÖGLICH, aber **Deutschland bleibt immer aus** und alles strikt getrennt: pro Markt eigene Währung+Sprache+Content
   über **Shopify Markets**; CH/Mundart-Content bleibt CH-targeted (nie an US/FR); Gehirn lernt **pro Markt getrennt**

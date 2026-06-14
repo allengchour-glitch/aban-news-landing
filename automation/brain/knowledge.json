@@ -335,10 +335,14 @@
     ],
     "local_niche": [
       "#schweiz",
-      "#bern",
       "#schweizmode",
       "#ootdschweiz",
       "#fashionschweiz",
+      "#zürich",
+      "#basel",
+      "#luzern",
+      "#bern",
+      "#swissmade",
       "#sommerkleid"
     ],
     "curated_discovery": [
@@ -359,7 +363,7 @@
       "#hamburg"
     ],
     "blocked_reason": "Marken-Tags = Discovery-Sackgasse. ZUSAETZLICH Deutschland-Tags geblockt: User-Regel 2026-06-14 'falls in Deutschland, erweitere nicht' -> Shop bleibt STRIKT Schweiz (CHF, CH-Versand, CH-Zielgruppe). Keine DE-Maerkte/Staedte/Tags. Mundart (Schwiizerduetsch) ist erwuenscht, da es DE automatisch ausfiltert.",
-    "geo_focus": "Schweiz only. NIE nach Deutschland/Oesterreich erweitern: kein DE-Shopify-Markt, kein EUR-Pricing fuer DE, keine DE-Stadt-/#deutschland-Tags, kein DE-Targeting in Ads. CH-Tags (#schweiz/#bern/#schweizmode/#ootdschweiz) + Mundart bevorzugen.",
+    "geo_focus": "Schweiz only, aber SCHWEIZWEIT (User 2026-06-14 'nicht nur Bern'): ganz CH ansprechen — Zuerich/Basel/Luzern/Genf/Bern, nicht auf eine Stadt fixieren. CH-Stadt-Tags rotieren. NIE Deutschland/Oesterreich: kein DE-Markt/EUR-Pricing/#deutschland/DE-Targeting. Mundart (Schwiizerduetsch, CH-weit verstanden) bevorzugen — filtert DE automatisch raus.",
     "winner_hooks": [
       "Mach dis eigete Teil 🐻🇨🇭 %s – dis Design, dini Sprüch. 💾 Speicher der das · 👇 Was chiem uf DIS Teil? −10%% WELCOME10 → luxestyle.ch",
       "Hoi zäme 🇨🇭 %s zum fäine Priis – wettsch das? 👇 Schrib's i d Kommentär · 📌 Speicher der's · −10%% WELCOME10 → luxestyle.ch",
