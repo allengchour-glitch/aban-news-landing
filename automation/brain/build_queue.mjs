@@ -22,19 +22,30 @@ const DRY = process.argv.includes('--dry');
 
 // Gewinner-Hook-Opener (Neugier/Preis-Kontrast) + Share/Save-Trigger — rotierend, kein Spam.
 // Mix aus Bärndütsch (bester Hook-Typ, Ø 793 V — siehe berndeutsch.json) + Hochdeutsch.
+// ⚠️ 2026-06-14: Liste erweitert (vorher 6 → Opener wiederholten sich 3× pro Queue = sah wie Doppel-Post aus).
 const OPENERS = [
-  'Lueg mau das aa 😍',                         // Bärndütsch
+  'Lueg mau das aa 😍',                          // Bärndütsch
   'Äuä ds schönschte Teil grad itz 👀',          // Bärndütsch
   'Wusste nicht, dass ich das brauche 👀',
   'Viu Style für wenig Gäud ✨',                  // Bärndütsch (L-Vokalisierung)
   'Das gibt es so kaum in der Schweiz 🇨🇭',
   'Genau das hesch gsuecht, gäu? 🙌',            // Bärndütsch
+  'Das mues i ha 🤍',                            // Bärndütsch
+  'Stopp — das musst du sehen ✋',
+  'Schnäu si, bevors weg isch 🏃‍♀️',             // Bärndütsch
+  'Dis nöie Lieblingsteil? 👀',                  // Bärndütsch
+  'Kleiner Preis, grosse Wirkung ✨',
+  'Hesch das scho gseh? 🇨🇭',                    // Bärndütsch
+  'Für di oder zum Verschänke? 🎁',              // Bärndütsch
+  'Genau das hat mir gefehlt 🙌',
 ];
 const TRIGGERS = [
   '💾 Spicher dr das für spöter',                // Bärndütsch
   '👇 Markier öpper, wo das bruucht',            // Bärndütsch
   '👇 Würdest du? Schreib’s in die Kommentare',
   '💾 Merk’s dir · folg für meh Schwiizer Finds',// Bärndütsch
+  '↗️ Teil das mit dyre beschte Fründin 💛',     // Bärndütsch
+  '👇 Wele nimmsch? Schrib’s i d Kommentär',     // Bärndütsch
 ];
 
 function loadPools() {
@@ -105,10 +116,12 @@ function loadReels() {
   if (!goods.length) { console.log('Keine good_products.csv → No-op.'); process.exit(0); }
   const prices = await priceMap();
 
+  // Tages-Offset: täglich andere Opener/Trigger-Zuordnung (gegen Wiederholungs-Optik).
+  const DAYOFF = Math.floor(Date.now() / 864e5);
   // BILDER (Produkt + Preis + Gewinner-Hook + CH-weite Tags)
   const images = goods.map((p, i) => {
-    const opener = OPENERS[i % OPENERS.length];
-    const trigger = TRIGGERS[i % TRIGGERS.length];
+    const opener = OPENERS[(i + DAYOFF) % OPENERS.length];
+    const trigger = TRIGGERS[(i + DAYOFF) % TRIGGERS.length];
     const tags = tagsets[i % tagsets.length] + ' ' + CH_WIDE[i % CH_WIDE.length];
     const price = prices[p.handle] ? ` – CHF ${prices[p.handle]}` : '';
     const caption = `${opener} ${p.label}${price}\n${trigger} · –10% mit WELCOME10\n👉 luxestyle.ch/products/${p.handle}\n${tags}`;
