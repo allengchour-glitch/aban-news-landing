@@ -190,5 +190,20 @@ export const PRODUCTS = [
     "name": "herren-ice-silk-hemd-frost-kuhlend-kurzarm",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/682cc76e-cc53-4e8a-961e-c0510d5ca77f.jpg?v=1781424637",
     "label": "Ice-Silk Hemd «Frost»"
+  },
+  {
+    "name": "damen-bikini-sunset-front-zip-farbverlauf",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/efc0bb44-1132-457c-8d8b-4bb06fdfc4f0.jpg?v=1781434600",
+    "label": "Bikini «Sunset»"
+  },
+  {
+    "name": "damen-bikini-sole-one-shoulder-cut-out",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d918267e-4232-477d-892a-a2390a258d1a.jpg?v=1781434618",
+    "label": "Bikini «Solé»"
+  },
+  {
+    "name": "damen-bikini-maui-neckholder-floral-1",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c1a6faa9-40a9-4e72-b11a-64d33457de88_d4eab72b-c70e-4152-84a9-087f7f7b1269.jpg?v=1781434583",
+    "label": "Bikini «Maui»"
   }
 ];
