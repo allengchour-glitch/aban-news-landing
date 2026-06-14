@@ -115,15 +115,24 @@ npx wrangler secret put SHOPIFY_WEBHOOK_SECRET   # = Signatur-Secret aus dem Sho
 
 **B. SKU → Gelato-productUid-Map in KV ablegen** (welche Shopify-Variante = welches Gelato-Produkt):
 
+> ✅ **Bereits fertig vorgebaut:** `cloudflare/gelato_map.json` (50 DTG-Varianten der 8 Swiss-Edition-Loungewear-
+> Produkte, keyed nach Shopify-Variant-ID, Platzierung `front`). Einfach hochladen:
+
+```bash
+npx wrangler kv key put --binding=STATE gelato_map --path=gelato_map.json
+```
+Der Stickerei-Jogger «Edelweiss» ist bewusst NICHT dabei (Stickerei ≠ Foto-Upload). Neue Produkte später
+ergänzen: `node ../automation/gelato_discover.mjs` (Key als Env-Var) listet Store/Produkte; productUids stehen
+je Variante im Produkt-Detail. Fallback-Keys, falls keine Variant-ID/SKU passt: `product_id`.
+
+<details><summary>Map manuell statt aus Datei</summary>
+
 ```bash
 npx wrangler kv key put --binding=STATE gelato_map '{
-  "EDELWEISS-HOODIE-M": { "productUid": "apparel_product_gca_hoodie_...gsi_m", "files": { "front":"default", "back":"back" } },
-  "MATTERHORN-SWEAT-L": { "productUid": "apparel_product_gca_sweatshirt_...gsi_l" }
+  "55803254473089": { "productUid": "apparel_product_gca_sweatshirt_..._gpr_4-0_gildan_18000", "files": { "front":"front" } }
 }'
 ```
-Die `productUid` je Garment/Grösse/Farbe stammt aus dem Gelato-Produktkatalog
-(`node ../automation/gelato_discover.mjs` listet Stores/Produkte; productUids via Gelato-Product-API/Dashboard).
-Fallback-Keys, falls keine SKU passt: `variant_id`, dann `product_id` (als String).
+</details>
 
 **C. Shopify-Webhook anlegen** — Einstellungen → **Benachrichtigungen → Webhooks** →
 „Webhook erstellen": Ereignis **Bestellungserstellung**, Format **JSON**,
