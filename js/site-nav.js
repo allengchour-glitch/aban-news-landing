@@ -49,6 +49,8 @@
       ["Kostenloses Rechnungsprogramm", "/rechnungsprogramm-kostenlos.html", "Business", "Gratis Rechnung schreiben — worauf achten"],
       ["Rechnung Schritt für Schritt", "/rechnung-schritt-fuer-schritt.html", "Business", "In 6 Schritten zur ersten Rechnung (Anleitung)"],
       ["Rechnung ins Ausland", "/rechnung-ins-ausland.html", "Business", "Reverse-Charge (EU) & Drittland einfach erklärt"],
+      ["Rechnung auf Englisch", "/rechnung-auf-englisch.html", "Business", "Englische Invoice: Vorlage + DE→EN-Vokabeln"],
+      ["Kleinunternehmer-Grenze 2026", "/kleinunternehmer-grenze-2026.html", "Business", "Aktuelle Umsatzgrenzen DE/AT/CH"],
       ["Privatrechnung schreiben", "/privatrechnung-schreiben.html", "Business", "Als Privatperson korrekt fakturieren"],
       ["Geschäftskonto-Vergleich", "/geschaeftskonto-vergleich.html", "Business", "Qonto, Kontist, Holvi & Co. für Selbstständige"],
       ["Qonto vs. Kontist", "/qonto-vs-kontist.html", "Business", "Head-to-head: welches Geschäftskonto passt"],
