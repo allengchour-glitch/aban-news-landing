@@ -12,6 +12,7 @@
     /* Schnell-Nav oben */
     var NAV = [
       ["🏠 Start", "/"],
+      ["🛒 Marktplatz", "/marktplatz.html"],
       ["🔥 Angebote", "/angebote-suche.html"],
       ["💼 Jobs", "/stellenangebote.html"],
       ["💼 Leistungen", "/leistungen.html"],
@@ -35,7 +36,10 @@
       ["Texte schreiben lassen", "/texte-schreiben-lassen.html", "Leistungen", "Web-, Produkt- & Über-uns-Texte"],
       ["Anfrage / Kontakt", "/kontakt.html", "Leistungen", "Unverbindlich anfragen — Festpreis & Plan"],
       ["Digitale Produkte", "/digitale-produkte.html", "Leistungen", "Prompt-Pack, Checklisten, Vorlagen"],
+      ["Marktplatz", "/marktplatz.html", "Start", "Jobs, Auto, Immobilien, Angebote & Inserate an einem Ort (CH/DACH)"],
       ["Angebote-Suche", "/angebote-suche.html", "Start", "Schnäppchen aus vielen Kategorien finden (eBay)"],
+      ["Auto & Fahrzeuge", "/auto-suche.html", "Start", "PKW, Teile, Reifen & Zubehör suchen"],
+      ["Immobilien & Wohnungen", "/immobilien.html", "Start", "Wohnung, Haus, WG & Gewerbe (CH/DACH) suchen oder inserieren"],
       ["Kleinanzeigen / Inserate", "/inserate.html", "Start", "Kostenlos suchen & selbst aufgeben"],
       ["Aufträge & Jobs", "/auftraege.html", "Start", "Projekte & Aufträge für Selbstständige (Feed)"],
       ["Stellenangebote (Jobs suchen)", "/stellenangebote.html", "Start", "Tausende Jobs aus DACH & Remote durchsuchen"],
