@@ -104,6 +104,23 @@ async function loadQueue(env) {
   return queue;
 }
 
+// Alte FB-Posts aufräumen (vor cutoff). Läuft IM Worker (dein Token) → keine Cloud-Sperre.
+// IG kann per API NICHT gelöscht werden (nur in der App). Cap 40 pro Aufruf (Subrequest-Limit).
+async function cleanupOldFb(env, cutoff) {
+  const ids = await discoverIds(env);
+  let u = new URL(G(`${ids.page_id}/posts`));
+  u.searchParams.set("fields", "id,created_time"); u.searchParams.set("limit", "100"); u.searchParams.set("access_token", ids.page_token);
+  let all = [], next = u.toString();
+  for (let i = 0; i < 6 && next; i++) { const r = await (await fetch(next)).json(); if (r.error) break; all = all.concat(r.data || []); next = r.paging && r.paging.next; }
+  const old = all.filter((x) => (x.created_time || "") < cutoff).slice(0, 40);
+  let deleted = 0, failed = 0;
+  for (const x of old) {
+    const d = await (await fetch(`${G(x.id)}?access_token=${ids.page_token}`, { method: "DELETE" })).json();
+    if (d.success) deleted++; else failed++;
+  }
+  return { cutoff, fb_total: all.length, deleted, failed, note: failed || old.length === 40 ? "Nochmal aufrufen für weitere." : "Fertig. (IG nur in der App löschbar.)" };
+}
+
 async function run(env) {
   if (!env.META_ACCESS_TOKEN) return { error: "META_ACCESS_TOKEN fehlt" };
   const ids = await discoverIds(env);
@@ -128,6 +145,8 @@ export default {
     // Neue Live-Queue laden (ohne Redeploy) + Cursor zurücksetzen — der Cloud-Claude ruft das auf.
     const setq = u.searchParams.get("queue");
     if (setq) { await env.LUXE_KV.put("queue_url", setq); await env.LUXE_KV.put("cursor", "0"); return Response.json({ queue_url_set: setq, cursor: 0 }); }
+    const clean = u.searchParams.get("cleanup");
+    if (clean) return Response.json(await cleanupOldFb(env, clean).catch((e) => ({ error: String(e) })));
     if (u.searchParams.get("cursor")) { await env.LUXE_KV.put("cursor", u.searchParams.get("cursor")); return Response.json({ cursor_set: u.searchParams.get("cursor") }); }
     if (u.searchParams.get("status")) {
       const q = await loadQueue(env);
