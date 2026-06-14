@@ -13,6 +13,7 @@
     var NAV = [
       ["🏠 Start", "/"],
       ["🔥 Angebote", "/angebote-suche.html"],
+      ["💼 Leistungen", "/leistungen.html"],
       ["🧰 Tools", "/online-tools.html"],
       ["🤖 KI-Studio", "/ki-studio.html"],
       ["📚 KI-Anleitungen", "/ki-anleitungen.html"],
@@ -25,6 +26,11 @@
     var CAT = [
       ["Startseite", "/", "Start", "Übersicht, Newsletter & alle Bereiche"],
       ["Online-Tools", "/online-tools.html", "Start", "Katalog aller kostenlosen Tools"],
+      ["Leistungen (Übersicht)", "/leistungen.html", "Leistungen", "Website, Shop & Texte — wir bauen's für dich"],
+      ["Website erstellen lassen", "/website-erstellen-lassen.html", "Leistungen", "Profi-Website zum Festpreis, in Tagen"],
+      ["Online-Shop erstellen lassen", "/online-shop-erstellen-lassen.html", "Leistungen", "Shop eingerichtet & verkaufsbereit"],
+      ["SEO-Texte schreiben lassen", "/seo-texte-schreiben-lassen.html", "Leistungen", "Texte, die bei Google ranken"],
+      ["Texte schreiben lassen", "/texte-schreiben-lassen.html", "Leistungen", "Web-, Produkt- & Über-uns-Texte"],
       ["Angebote-Suche", "/angebote-suche.html", "Start", "Schnäppchen aus vielen Kategorien finden (eBay)"],
       ["Kleinanzeigen / Inserate", "/inserate.html", "Start", "Kostenlos suchen & selbst aufgeben"],
       ["Aufträge & Jobs", "/auftraege.html", "Start", "Projekte & Aufträge für Selbstständige (Feed)"],
