@@ -16,6 +16,16 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 🔑 2026-06-14 — DEPLOY-/TOKEN-STATUS (wichtig für jede Session; KEIN Secret hier!)
+> Der User hat einen Cloudflare-Token geliefert, aber er ist **IP-gesperrt** → von Cloud-Sessions
+> nicht nutzbar (`code 9109: Cannot use the access token from location`). **Secret-Werte gehören NIE
+> ins Repo** (öffentlich!). **Lösung für persistenten Deploy:** Token **ohne IP-Filter** erstellen +
+> einmalig als **GitHub-Repo-Secret** `CLOUDFLARE_API_TOKEN` (+ `CLOUDFLARE_ACCOUNT_ID`) hinterlegen →
+> `cf-deploy-mainsite.yml`/`cloudflare-pages.yml` deployen dann automatisch (sobald GitHub Actions wieder
+> frei ist). Alternativ deployt der User lokal: `bash build-pages.sh && npx wrangler@3 pages deploy _site
+> --project-name=abannews --branch=main`. Monetarisierungs-Konfig (Affiliate/AdSense) ist gegated und
+> wartet ebenfalls nur auf echte Links/IDs vom User. **Marktplatz-Stand: fertig auf `main`, deploy-bereit.**
+
 ## 🛒 2026-06-14 (NEUESTER STAND) — SCHWEIZER MARKTPLATZ gebaut (Jobs/Auto/Immo/Angebote/Inserate)
 > Fortsetzung des Marathons, User: „mache alles autonom, gestalte die ganze Webseite". Komplettes
 > Such-/Inserat-Portal im Stil echter CH-Seiten (tutti/AutoScout/ImmoScout) gebaut — **alles auf `main`,
