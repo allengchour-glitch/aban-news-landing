@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aufträge &amp; Jobs für Selbstständige — finden &amp; ausschreiben | aban</title>
+<meta name="description" content="Aufträge, Projekte &amp; Jobs für Selbstständige und Freelancer in der DACH-Region — im übersichtlichen Feed finden oder selbst kostenlos ausschreiben. Ehrlich, mit Prüfung.">
+<meta name="theme-color" content="#d97706">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://abannews.com/auftraege.html">
+<meta property="og:title" content="Aufträge & Jobs für Selbstständige">
+<meta property="og:description" content="Projekte & Aufträge im Feed finden oder kostenlos ausschreiben.">
+<meta property="og:type" content="website">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e6e1d6;--bg:#f3f0ea;--card:#fff;--ok:#059669;--blue:#0a66c2}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5;color:var(--ink);background:var(--bg)}
+a{color:var(--amber-dk);text-decoration:none}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.top .in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 16px}
+.brand{font-weight:900;color:var(--amber-dk);font-size:18px}
+.search{flex:1;display:flex;gap:8px;max-width:560px}
+.search input{flex:1;min-width:0;padding:9px 13px;border:1px solid var(--line);border-radius:22px;font-size:14px;background:#f5f2ec;font-family:inherit}
+.search input:focus{outline:0;border-color:var(--amber);box-shadow:0 0 0 3px rgba(217,119,6,.15);background:#fff}
+.search button{background:var(--amber-dk);color:#fff;border:0;border-radius:22px;padding:9px 18px;font-weight:700;cursor:pointer}
+.wrap{max-width:1100px;margin:18px auto;padding:0 16px;display:grid;grid-template-columns:240px 1fr 280px;gap:18px;align-items:start}
+.col-side{display:flex;flex-direction:column;gap:14px;position:sticky;top:78px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.panel .bd{padding:14px 16px}
+.pcard .cover{height:54px;background:linear-gradient(110deg,#1f2937,#b45309)}
+.pcard .av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#fbbf24,#d97706);margin:-30px auto 0;border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-size:26px}
+.pcard h3{text-align:center;font-size:1rem;margin:8px 0 2px}
+.pcard p{text-align:center;font-size:.82rem;color:var(--muted);padding:0 14px}
+.pcard .cta{display:block;margin:12px 14px 16px;text-align:center;background:var(--amber-dk);color:#fff;border-radius:22px;padding:9px;font-weight:700;font-size:.9rem}
+.side h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:13px 16px 6px}
+.cats{list-style:none}
+.cats li{padding:0}.cats a{display:flex;justify-content:space-between;padding:8px 16px;color:var(--ink2);font-size:.9rem;font-weight:600}
+.cats a:hover,.cats a.on{background:var(--cream);color:var(--amber-dk)}
+.cats a .n{color:var(--muted);font-weight:600;font-size:.8rem}
+.feedhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.feedhead h1{font-size:1.25rem}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:20px;padding:6px 13px;font-size:.83rem;font-weight:600;color:var(--ink2);cursor:pointer;white-space:nowrap}
+.chip.on,.chip:hover{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+.post{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:13px;transition:box-shadow .15s,transform .15s}
+.post:hover{box-shadow:0 8px 26px rgba(31,41,55,.09);transform:translateY(-1px)}
+.post .h{display:flex;gap:12px;align-items:flex-start}
+.post .pa{width:48px;height:48px;border-radius:12px;flex:0 0 48px;background:linear-gradient(135deg,#fde9c8,#d97706);display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;font-weight:800}
+.post .t{flex:1;min-width:0}
+.post .t h3{font-size:1.04rem;line-height:1.25;margin-bottom:2px}
+.post .meta{font-size:.82rem;color:var(--muted)}
+.badge{display:inline-block;background:var(--cream);color:var(--amber-dk);border-radius:6px;padding:2px 8px;font-size:.72rem;font-weight:700;margin-left:auto;white-space:nowrap}
+.post .d{font-size:.9rem;color:var(--ink2);margin:10px 0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.post .f{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:10px}
+.post .price{font-weight:800;color:var(--amber-dk)}
+.post .btn{margin-left:auto;background:#fff;border:1.5px solid var(--amber-dk);color:var(--amber-dk);border-radius:20px;padding:6px 14px;font-weight:700;font-size:.85rem;cursor:pointer}
+.post .btn:hover{background:var(--amber-dk);color:#fff}
+.status{padding:30px 16px;text-align:center;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:14px}
+.demo-note{background:#fff7ed;border:1px solid #f3dca0;border-radius:10px;padding:9px 13px;font-size:.82rem;color:var(--ink2);margin-bottom:14px}
+.tips li{font-size:.86rem;color:var(--ink2);margin:0 0 8px 18px}
+.safe{font-size:.78rem;color:var(--muted);padding:0 16px 14px}
+footer{max-width:1100px;margin:10px auto;padding:18px 16px;font-size:.8rem;color:var(--muted);text-align:center}
+@media(max-width:920px){.wrap{grid-template-columns:1fr}.col-side{position:static}.col-right{order:3}}
+</style>
+</head>
+<body>
+<div class="top"><div class="in">
+  <a class="brand" href="/">aban</a>
+  <form class="search" id="sf" onsubmit="return false">
+    <input id="q" type="search" placeholder="🔍 Auftrag, Skill oder Ort suchen…" aria-label="Suche">
+    <button id="go" type="submit">Suchen</button>
+  </form>
+  <a class="badge" href="/inserate.html" style="margin-left:auto">Alle Inserate</a>
+</div></div>
+
+<div class="wrap">
+  <!-- LINKS: Profil + Kategorien -->
+  <div class="col-side">
+    <div class="panel pcard">
+      <div class="cover"></div>
+      <div class="av">🧑‍💻</div>
+      <h3>Dein Profil</h3>
+      <p>Selbstständig? Zeig, was du anbietest — und finde passende Aufträge.</p>
+      <a class="cta" href="/inserat-aufgeben.html">+ Auftrag / Angebot</a>
+    </div>
+    <div class="panel side">
+      <h4>Kategorien</h4>
+      <ul class="cats" id="cats"></ul>
+    </div>
+  </div>
+
+  <!-- MITTE: Feed -->
+  <div class="col-feed">
+    <div class="feedhead">
+      <h1>Aufträge &amp; Jobs für Selbstständige</h1>
+    </div>
+    <div class="chips" id="chips"></div>
+    <div id="demoNote"></div>
+    <div id="feed"></div>
+    <div class="status" id="status" hidden></div>
+  </div>
+
+  <!-- RECHTS: CTA + Tipps -->
+  <div class="col-side col-right">
+    <div class="panel">
+      <div class="bd">
+        <h3 style="font-size:1rem;margin-bottom:6px">📣 Auftrag ausschreiben</h3>
+        <p style="font-size:.86rem;color:var(--ink2);margin-bottom:10px">Kostenlos &amp; in 1 Minute. Wird vor Veröffentlichung kurz geprüft.</p>
+        <a class="cta" href="/inserat-aufgeben.html" style="display:block;text-align:center;background:var(--amber-dk);color:#fff;border-radius:22px;padding:9px;font-weight:700">Jetzt ausschreiben →</a>
+      </div>
+    </div>
+    <div class="panel">
+      <h4>So funktioniert's</h4>
+      <ul class="tips" style="padding:0 16px 6px">
+        <li>Im Feed stöbern oder nach Skill/Ort suchen.</li>
+        <li>„Kontakt anzeigen" → direkt melden.</li>
+        <li>Eigenen Auftrag/Service kostenlos einstellen.</li>
+      </ul>
+      <p class="safe">⚠️ Privat-Inserate von Nutzer:innen. Keine Vorkasse an Unbekannte. Melden: <a href="mailto:info@abannews.com?subject=Auftrag%20melden">info@abannews.com</a></p>
+    </div>
+    <div class="panel">
+      <div class="bd">
+        <h3 style="font-size:.95rem;margin-bottom:6px">🧰 Schon Auftrag bekommen?</h3>
+        <p style="font-size:.85rem;color:var(--ink2)">Schreib die <a href="/rechnung-generator.html">Rechnung gratis</a> im <a href="/cockpit-app.html">Business-Cockpit</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>aban news · Aufträge &amp; Jobs · Angaben der Inserent:innen ohne Gewähr · © 2026 ·
+  <a href="/inserate.html">Inserate</a> · <a href="/nutzungsbedingungen.html">Nutzungsbedingungen</a> · <a href="/impressum.html">Impressum</a></footer>
+
+<script>
+(function(){
+  var CATS=["Dienstleistungen","Jobs","Handwerk","IT & Web","Design","Text & Übersetzung","Marketing","Buchhaltung","Foto & Video","Unterricht","Transport","Sonstiges"];
+  var ICON={"Dienstleistungen":"🛠️","Jobs":"💼","Handwerk":"🔧","IT & Web":"💻","Design":"🎨","Text & Übersetzung":"✍️","Marketing":"📣","Buchhaltung":"🧮","Foto & Video":"🎬","Unterricht":"📚","Transport":"🚚","Sonstiges":"📌"};
+  // Beispiel-Aufträge (klar als Beispiel markiert), solange die Datenbank nicht aktiv ist.
+  var DEMO=[
+    {kat:"IT & Web",titel:"WordPress-Seite für Handwerksbetrieb",ort:"Zürich",preis:"CHF 1'200",beschreibung:"Kleine 5-Seiten-Website inkl. Kontaktformular und Referenzen. Texte & Bilder vorhanden. Fertigstellung in 3 Wochen.",kontakt:"beispiel@firma.ch"},
+    {kat:"Buchhaltung",titel:"Monatliche Buchhaltung (Kleinunternehmen)",ort:"München",preis:"VB",beschreibung:"Suche Unterstützung bei laufender Buchhaltung & Vorbereitung EÜR. ca. 60 Belege/Monat. Remote möglich.",kontakt:"beispiel@mail.de"},
+    {kat:"Text & Übersetzung",titel:"Produkttexte DE→FR (Onlineshop)",ort:"Remote",preis:"0,12 €/Wort",beschreibung:"40 Produktbeschreibungen, je ~120 Wörter. Muttersprache FR erwünscht. Laufende Zusammenarbeit möglich.",kontakt:"beispiel@shop.com"},
+    {kat:"Design",titel:"Logo + Visitenkarte für Coaching",ort:"Wien",preis:"€450",beschreibung:"Modernes, ruhiges Logo (kein Hype-Stil) plus Visitenkarte. 2 Entwurfsrunden. Quelldateien inklusive.",kontakt:"beispiel@coach.at"},
+    {kat:"Foto & Video",titel:"Kurzes Reel für Café (1×/Monat)",ort:"Basel",preis:"CHF 250/Reel",beschreibung:"Vertikales 20-Sek-Reel, vor Ort gedreht & geschnitten. Verlässlich, planbar, monatlich.",kontakt:"beispiel@cafe.ch"},
+    {kat:"Handwerk",titel:"Möbelmontage & kleine Reparaturen",ort:"Hamburg",preis:"45 €/h",beschreibung:"Regelmäßig kleine Aufträge (Montage, Anstrich, Ausbesserung) für Hausverwaltung. Eigenes Werkzeug nötig.",kontakt:"beispiel@hv.de"}
+  ];
+  var $=function(s){return document.querySelector(s)};
+  var feed=$("#feed"),status=$("#status"),cur="";
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  // Kategorien-Liste + Chips
+  $("#cats").innerHTML='<li><a href="#" data-k="" class="on">Alle <span class="n">●</span></a></li>'+CATS.map(function(c){return '<li><a href="#" data-k="'+esc(c)+'">'+(ICON[c]||"")+' '+esc(c)+'</a></li>'}).join("");
+  $("#chips").innerHTML='<button class="chip on" data-k="">Alle</button>'+CATS.slice(0,7).map(function(c){return '<button class="chip" data-k="'+esc(c)+'">'+(ICON[c]||"")+' '+esc(c)+'</button>'}).join("");
+  function card(it){
+    var ini=(ICON[it.kat]||"📌");
+    return '<article class="post"><div class="h"><div class="pa">'+ini+'</div><div class="t"><h3>'+esc(it.titel)+'</h3>'+
+      '<div class="meta">'+esc([it.ort,it.kat].filter(Boolean).join(" · "))+'</div></div><span class="badge">'+esc(it.kat||"Auftrag")+'</span></div>'+
+      '<p class="d">'+esc(it.beschreibung)+'</p><div class="f">'+(it.preis?'<span class="price">'+esc(it.preis)+'</span>':'')+
+      '<button class="btn" type="button" data-k="'+esc(it.kontakt||"")+'">Kontakt anzeigen</button></div></article>';
+  }
+  function show(items,isDemo){
+    $("#demoNote").innerHTML=isDemo?'<div class="demo-note">💡 <b>Beispiel-Aufträge</b> — die Live-Datenbank wird gerade eingerichtet. Du kannst aber jetzt schon <a href="/inserat-aufgeben.html">einen Auftrag ausschreiben</a>.</div>':'';
+    var list=cur?items.filter(function(it){return it.kat===cur}):items;
+    if(!list.length){status.hidden=false;status.innerHTML="Keine Aufträge in dieser Kategorie. <a href=\"/inserat-aufgeben.html\">Sei der/die Erste →</a>";feed.innerHTML="";return}
+    status.hidden=true;feed.innerHTML=list.map(card).join("");
+    Array.prototype.forEach.call(feed.querySelectorAll(".btn"),function(b){b.addEventListener("click",function(){var k=this.dataset.k;var mail=/^[^@\s]+@[^@\s]+$/.test(k);this.outerHTML=mail?'<a class="btn" style="margin-left:auto" href="mailto:'+esc(k)+'">✉️ '+esc(k)+'</a>':'<span style="margin-left:auto;font-weight:700">'+esc(k||"—")+'</span>'})});
+  }
+  function load(){
+    var q=$("#q").value.trim();status.hidden=false;status.textContent="Lade …";feed.innerHTML="";
+    fetch("/api/inserate-list?q="+encodeURIComponent(q)+"&kat="+encodeURIComponent(cur)).then(function(r){return r.json()}).then(function(d){
+      if(d.demo||!d.items||!d.items.length){show(DEMO,true);return}
+      show(d.items,false);
+    }).catch(function(){show(DEMO,true)});
+  }
+  function setCat(k,el){cur=k;
+    Array.prototype.forEach.call(document.querySelectorAll('.chip'),function(c){c.classList.toggle('on',c.dataset.k===k)});
+    Array.prototype.forEach.call(document.querySelectorAll('.cats a'),function(a){a.classList.toggle('on',a.dataset.k===k)});
+    load();
+  }
+  document.addEventListener("click",function(e){var c=e.target.closest('.chip,.cats a');if(c){e.preventDefault();setCat(c.dataset.k)}});
+  $("#go").addEventListener("click",function(e){e.preventDefault();load()});
+  $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();load()}});
+  load();
+})();
+</script>
+</body>
+</html>
