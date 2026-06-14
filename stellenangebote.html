@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stellenangebote — Jobs suchen (DACH &amp; Remote) | aban</title>
+<meta name="description" content="Jobs suchen wie auf der Jobbörse: tausende aktuelle Stellenangebote aus DACH & Remote, nach Stichwort, Ort, Kategorie und Remote filtern. Klick führt zur Original-Anzeige. Kostenlos.">
+<meta name="theme-color" content="#d97706">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://abannews.com/stellenangebote.html">
+<meta property="og:title" content="Stellenangebote — Jobs suchen (DACH & Remote)">
+<meta property="og:description" content="Tausende Jobs nach Stichwort, Ort, Kategorie & Remote filtern.">
+<meta property="og:type" content="website">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e6e1d6;--bg:#f3f0ea;--card:#fff;--ok:#059669}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5;color:var(--ink);background:var(--bg)}
+a{color:var(--amber-dk);text-decoration:none}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.top .in{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px;flex-wrap:wrap}
+.brand{font-weight:900;color:var(--amber-dk);font-size:18px}
+.search{flex:1;display:flex;gap:8px;min-width:260px}
+.search input{flex:1;min-width:0;padding:10px 13px;border:1px solid var(--line);border-radius:10px;font-size:14px;background:#f5f2ec;font-family:inherit}
+.search input:focus{outline:0;border-color:var(--amber);box-shadow:0 0 0 3px rgba(217,119,6,.15);background:#fff}
+.search button{background:var(--amber-dk);color:#fff;border:0;border-radius:10px;padding:10px 18px;font-weight:700;cursor:pointer}
+.wrap{max-width:1000px;margin:14px auto;padding:0 16px}
+.hl{text-align:center;margin:6px 0 12px}.hl h1{font-size:1.45rem;margin-bottom:4px}.hl p{font-size:.9rem;color:var(--muted)}
+.chips{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin:12px 0}
+.chip{border:1px solid var(--line);background:#fff;border-radius:20px;padding:6px 13px;font-size:.83rem;font-weight:600;color:var(--ink2);cursor:pointer;white-space:nowrap}
+.chip.on,.chip:hover{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+.status{text-align:center;color:var(--muted);padding:20px 0;font-size:.95rem}
+.feed{display:grid;gap:11px}
+.job{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px;display:flex;gap:13px;transition:box-shadow .15s,transform .15s}
+.job:hover{box-shadow:0 8px 24px rgba(31,41,55,.09);transform:translateY(-1px)}
+.job .av{width:46px;height:46px;border-radius:11px;flex:0 0 46px;background:linear-gradient(135deg,#fde9c8,#d97706);display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;font-weight:800}
+.job .b{flex:1;min-width:0}
+.job h3{font-size:1.04rem;line-height:1.25;margin-bottom:2px}
+.job .meta{font-size:.85rem;color:var(--muted)}
+.job .badges{margin:7px 0}
+.badge{display:inline-block;border-radius:6px;padding:2px 8px;font-size:.72rem;font-weight:700;margin:0 5px 4px 0}
+.badge.r{background:#e8f5ee;color:#06623b}.badge.t{background:var(--cream);color:var(--amber-dk)}
+.job .go{align-self:center;background:#fff;border:1.5px solid var(--amber-dk);color:var(--amber-dk);border-radius:20px;padding:7px 15px;font-weight:700;font-size:.85rem;white-space:nowrap}
+.job .go:hover{background:var(--amber-dk);color:#fff}
+.more{display:block;margin:18px auto;background:var(--amber-dk);color:#fff;border:0;border-radius:22px;padding:11px 26px;font-weight:700;cursor:pointer}
+.src{text-align:center;font-size:.78rem;color:var(--muted);margin:16px 0}
+footer{max-width:1000px;margin:10px auto;padding:18px 16px;font-size:.8rem;color:var(--muted);text-align:center}
+@media(max-width:560px){.job .go{align-self:flex-start}}
+</style>
+</head>
+<body>
+<div class="top"><div class="in">
+  <a class="brand" href="/">aban</a>
+  <form class="search" id="sf" onsubmit="return false">
+    <input id="q" type="search" placeholder="🔍 Jobtitel, Firma, Stichwort …" aria-label="Stichwort">
+    <input id="loc" type="search" placeholder="📍 Ort" aria-label="Ort" style="max-width:160px">
+    <button id="go" type="submit">Suchen</button>
+  </form>
+  <a class="badge t" href="/auftraege.html" style="margin-left:auto">Freelance-Aufträge →</a>
+</div></div>
+
+<div class="wrap">
+  <div class="hl">
+    <h1>Stellenangebote durchsuchen</h1>
+    <p>Tausende aktuelle Jobs aus DACH &amp; Remote — Klick führt zur Original-Anzeige.</p>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="status" id="status">Lade Stellenangebote …</div>
+  <div class="feed" id="feed"></div>
+  <button class="more" id="more" type="button" style="display:none">Mehr laden</button>
+  <p class="src" id="src"></p>
+</div>
+<footer>aban news · Job-Suche · Stellen von Partner-Jobbörsen, Angaben ohne Gewähr · © 2026 ·
+  <a href="/auftraege.html">Aufträge &amp; Jobs</a> · <a href="/impressum.html">Impressum</a></footer>
+<script>
+(function(){
+  var CATS=[["Alle",""],["Software/IT","Software Development"],["Vertrieb","Sales"],["Marketing","Marketing"],
+    ["Verwaltung","Administration"],["Finanzen","Finance"],["Design","Design"],["Kundenservice","Customer Service"],
+    ["Personal/HR","Human Resources"],["Ingenieur","Engineering"],["🏠 Remote","__remote"]];
+  var $=function(s){return document.querySelector(s)};
+  var feed=$("#feed"),status=$("#status"),moreBtn=$("#more");
+  var page=1,curTag="",remote=false;
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  $("#chips").innerHTML=CATS.map(function(c,i){return '<button class="chip'+(i===0?' on':'')+'" data-v="'+esc(c[1])+'">'+esc(c[0])+'</button>'}).join("");
+  function card(it){
+    var ini=(it.company||"?").trim().charAt(0).toUpperCase()||"💼";
+    var badges=(it.remote?'<span class="badge r">🏠 Remote</span>':'')+(it.types||[]).map(function(t){return '<span class="badge t">'+esc(t)+'</span>'}).join('')+(it.tags||[]).slice(0,3).map(function(t){return '<span class="badge t">'+esc(t)+'</span>'}).join('');
+    return '<article class="job"><div class="av">'+esc(ini)+'</div><div class="b"><h3>'+esc(it.title)+'</h3>'+
+      '<div class="meta">'+esc([it.company,it.location].filter(Boolean).join(" · "))+'</div><div class="badges">'+badges+'</div></div>'+
+      (it.url&&it.url!=="#"?'<a class="go" href="'+esc(it.url)+'" target="_blank" rel="noopener nofollow">Zum Job →</a>':'')+'</article>';
+  }
+  function buildUrl(){
+    var p="/api/jobs?page="+page;
+    var q=$("#q").value.trim(),loc=$("#loc").value.trim();
+    if(q)p+="&q="+encodeURIComponent(q);
+    if(loc)p+="&loc="+encodeURIComponent(loc);
+    if(curTag)p+="&tag="+encodeURIComponent(curTag);
+    if(remote)p+="&remote=1";
+    return p;
+  }
+  function load(append){
+    status.style.display="block";status.textContent="Lade …";moreBtn.style.display="none";
+    if(!append){feed.innerHTML="";page=1}
+    fetch(buildUrl()).then(function(r){return r.json()}).then(function(d){
+      var items=d.items||[];
+      if(d.demo){$("#src").textContent="Live-Jobs gerade nicht erreichbar — Beispielanzeige."}
+      else{$("#src").textContent="Quelle: Partner-Jobbörse ("+(d.source||"extern")+"). Klick führt zur Original-Anzeige."}
+      if(!items.length&&!append){status.textContent="Keine Treffer. Versuch ein anderes Stichwort oder eine Kategorie.";return}
+      status.style.display="none";
+      feed.insertAdjacentHTML("beforeend",items.map(card).join(""));
+      // „Mehr laden" nur ohne Filter sinnvoll (API paginiert die Gesamtliste)
+      moreBtn.style.display=(!d.demo && !curTag && !remote && !$("#q").value && !$("#loc").value && items.length>=60)?"block":"none";
+    }).catch(function(){status.textContent="Konnte gerade nicht laden."});
+  }
+  $("#go").addEventListener("click",function(e){e.preventDefault();curTag="";remote=false;
+    Array.prototype.forEach.call(document.querySelectorAll(".chip"),function(c,i){c.classList.toggle("on",i===0)});load(false)});
+  $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();$("#go").click()}});
+  $("#loc").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();$("#go").click()}});
+  $("#chips").addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;
+    Array.prototype.forEach.call(document.querySelectorAll(".chip"),function(c){c.classList.remove("on")});b.classList.add("on");
+    var v=b.dataset.v; if(v==="__remote"){remote=true;curTag=""}else{curTag=v;remote=false} load(false)});
+  moreBtn.addEventListener("click",function(){page++;load(true)});
+  load(false);
+})();
+</script>
+</body>
+</html>
