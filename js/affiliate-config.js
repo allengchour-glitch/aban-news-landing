@@ -62,5 +62,16 @@ window.ABAN_AFFILIATE = {
 
   // --- Design / Grafik. Tracking-Link eintragen; leer ("") -> Anbieter-Domain. ---
   // Canva (Design-Baukasten). Partnerprogramm: Canva-Affiliate.
-  CANVA_URL: ""
+  CANVA_URL: "",
+
+  // --- MARKTPLATZ-Kategorien (Partner-Boxen). Leer ("") -> Box wird NICHT angezeigt.
+  //     Tracking-Link aus dem jeweiligen Partnerprogramm hier eintragen, dann erscheint
+  //     die Partner-Box (immer als „Anzeige/Partner" gekennzeichnet) auf der Kategorie-Seite. ---
+  AUTO_VERSICHERUNG_URL: "",   // KFZ-Versicherungs-Vergleich (Comparis/bonus.ch/Awin) — hohe Provision
+  AUTO_FINANZIERUNG_URL: "",   // Finanzierung/Leasing/Kredit-Vergleich
+  IMMO_HYPOTHEK_URL: "",       // Hypotheken-/Finanzierungs-Vergleich (Moneypark/Hypotheke)
+  IMMO_UMZUG_URL: "",          // Umzug/Zügelfirma-Vergleich
+  JOB_NETZWERK_URL: "",        // Job-Affiliate-Netzwerk (Provision pro Klick/Bewerbung)
+  MOEBEL_SHOP_URL: "",         // Möbel-Shop-Partnerprogramm
+  HANDY_SHOP_URL: ""           // Handy/Elektronik-Shop-/Mobilfunk-Partnerprogramm
 };
