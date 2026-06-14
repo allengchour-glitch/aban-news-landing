@@ -13,6 +13,10 @@
     $21.99 → **CHF 49.90**, Shopify-ID 15430435242369. Bilder: Lifestyle (West-Paar/See) + englischer Spec-Shot.
 - **Lehre:** Sommer-Fan-Kategorie war Lücke (nur Nacken-/Sprüh-Ventilator aktiv). CJ-Fan-Hauptbilder sind oft
   englische Collagen → fast immer ein sauberes Lifestyle-/Maß-Alt-Bild im Set vorhanden (img2 statt img0 prüfen).
+- **💰 WICHTIG — CH-Markt-Markup (~+28–30 %):** Der gesetzte Admin-Preis ≠ Storefront-Preis! Brisa admin 29.90 →
+  **Shop zeigt 39.00**, Nomad 49.90 → **64.00**. Eine Markets-/Preisregel schlägt ~28–30 % auf. Also: beim Anlegen
+  den **Endpreis im Kopf** rechnen (Admin-Preis = Zielpreis ÷ ~1.29) ODER einfach akzeptieren — `products.json`/Captions
+  zeigen ohnehin den echten Kundenpreis (build_queue zieht den korrekt).
 
 > Autonom via CJ-API importierte & live geschaltete Produkte.
 > Tool: `dropship/cj_enrich.mjs` (Suche + Relevanzfilter + Detail-Anreicherung).

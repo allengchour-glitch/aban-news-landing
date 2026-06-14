@@ -31,5 +31,5 @@ if [ -n "$TRIGGER_KEY" ]; then printf '%s' "$TRIGGER_KEY" | wrangler secret put 
 echo "→ Deploy…"
 wrangler deploy
 
-echo "✅ Fertig. Cloudflare postet jetzt 2×/Tag autonom (Cron 09:00 & 17:00 UTC)."
+echo "✅ Fertig. Cloudflare postet jetzt 2×/Tag autonom (Cron 16:00 & 19:00 UTC = 18 & 21 Uhr CH-Primetime)."
 echo "   Sofort-Test:  https://luxe-poster.<dein-subdomain>.workers.dev/?key=$TRIGGER_KEY"
