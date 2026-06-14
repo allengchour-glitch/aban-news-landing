@@ -35,7 +35,15 @@ User-Auftrag „1 Stunde Vollgas, 100 Agenten, alles verbessern, autonom". 6 Spe
 - **🔴 SYSTEMISCHE LEHRE:** ~15–17 % der Auto-Import-`cj-real`-Produkte haben **englische Werbe-Text-Overlays auf
   dem Hauptbild** (Lieferanten-Marketing). Quelle = Auto-Import (vermutlich andere Session). → Import braucht einen
   **Bild-Overlay-Filter VOR dem Anlegen** (z.B. `automation/image-audit.mjs` mit `GEMINI_API_KEY` katalogweit laufen
-  lassen), sonst muss jede Session weiter manuell QA'en. Weiter prüfen: Produkte 101+ noch offen.
+  lassen), sonst muss jede Session weiter manuell QA'en.
+- **Charge 3 (101–150): +12 archiviert** (USB-C-Dock, Knoten-Halskette, Handy-Ständer «HAGIBIS», Auto-Lederpflege,
+  Auto-Geruchsentferner «Hikmarion», Auto-Uhr, Auto-RGB-Ständer, Grillreiniger, Keramik-Vase «Craquelé»,
+  Aroma-Diffuser «Aura», **Collagen-Masken (CHINESISCHE Schrift 額部護理!)**, Vitamin-C-Serum «BOTOX/West Month»).
+  Borderline NICHT archiviert: Gua-Sha «Jade» (kleines «HEMP for U»-Label, sonst sauber) → Bild-Swap statt Archiv.
+- **= 28 Produkte heute archiviert (150 neueste cj-real geprüft, ~19 % Trefferquote).** Charge 3 traf ~24 %.
+- **🔑 SYSTEMISCHER FIX (User):** `GEMINI_API_KEY` setzen → `automation/image-audit.mjs` katalogweit laufen lassen
+  (Gemini-Vision erkennt Overlays/asiatische Schrift) statt teurer Agent-Chargen. Ist der Key da, kann ich/jede Session
+  den GANZEN Restkatalog (~1100 cj-real) in einem Lauf prüfen. Ohne Key: Agent-Chargen 151+ in künftigen Sessions.
 
 **🧠 Content (gegen 0-Shares-Decke) — ins Gehirn verankert:** +5 distinkte Mundart-Hooks (POV, Vorher-Nachher,
 A/B Gold/Silber, Share-an-Freundin, Save-Liste); **`rules.share_formats`** (Save-Liste · A/B-Split · Vorher-Nachher) +
