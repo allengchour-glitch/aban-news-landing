@@ -175,5 +175,20 @@ export const PRODUCTS = [
     "name": "herren-kurzarm-hemd-breeze-quick-dry-atmungsaktiv",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/652474cf-cc58-4fa4-89e9-ab2484869fcf.jpg?v=1781402661",
     "label": "Herren-Hemd «Breeze»"
+  },
+  {
+    "name": "herren-cargo-hose-trail-multi-pocket-outdoor",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8c9bdb4c-ea0e-4d3b-a793-d4560a10a3c2.jpg?v=1781424604",
+    "label": "Cargo-Hose «Trail»"
+  },
+  {
+    "name": "herren-leinen-hose-lino-straight-leg",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9dda15df-a304-4a9a-9197-81e06881ad7d.jpg?v=1781424583",
+    "label": "Leinen-Hose «Lino»"
+  },
+  {
+    "name": "herren-ice-silk-hemd-frost-kuhlend-kurzarm",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/682cc76e-cc53-4e8a-961e-c0510d5ca77f.jpg?v=1781424637",
+    "label": "Ice-Silk Hemd «Frost»"
   }
 ];
