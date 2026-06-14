@@ -25,6 +25,7 @@
       ["Online-Tools", "/online-tools.html", "Start", "Katalog aller kostenlosen Tools"],
       ["Angebote-Suche", "/angebote-suche.html", "Start", "Schnäppchen aus vielen Kategorien finden (eBay)"],
       ["Kleinanzeigen / Inserate", "/inserate.html", "Start", "Kostenlos suchen & selbst aufgeben"],
+      ["Aufträge & Jobs", "/auftraege.html", "Start", "Projekte & Aufträge für Selbstständige (Feed)"],
       ["Inserat aufgeben", "/inserat-aufgeben.html", "Start", "Eigene Kleinanzeige kostenlos einstellen"],
       ["KI-Studio", "/ki-studio.html", "Start", "KI-Funktionen & Anleitungen"],
       ["Märkte", "/maerkte.html", "Start", "Aktien, Krypto, Charts, KI-Sentiment"],
