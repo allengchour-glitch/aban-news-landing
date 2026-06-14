@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI Excel-Tabelle erstellen — ganze Tabelle per Text aufbauen (2026)</title>
+<meta name="description" content="KI Excel-Tabelle erstellen: aus einem Ziel eine fertige Tabellenstruktur, Spalten, Beispieldaten und Auswertung generieren — mit Prompts, Vorlagen und ehrlichen Grenzen. Auch für Google Sheets.">
+<meta name="theme-color" content="#d97706">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://abannews.com/ki-excel-tabelle-erstellen.html">
+<meta property="og:title" content="KI Excel-Tabelle erstellen — per Text aufbauen">
+<meta property="og:description" content="Aus einem Ziel eine fertige Tabelle: Spalten, Daten, Auswertung — mit Prompts.">
+<meta property="og:type" content="article">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 18px}a{color:var(--amber-dk)}
+header.hero{background:linear-gradient(180deg,var(--cream),var(--bg));border-bottom:1px solid var(--line);padding:32px 0 24px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-50px;top:-50px;width:210px;height:210px;background:radial-gradient(circle,rgba(217,119,6,.15),transparent 70%);pointer-events:none}
+.hero-flex{display:flex;align-items:center;gap:22px;flex-wrap:wrap;position:relative;z-index:1}
+.hero-txt{flex:1 1 280px;min-width:0}
+.hero-art{flex:0 0 172px;max-width:172px;margin:0 auto}.hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 7px 16px rgba(180,83,9,.14))}
+@media(max-width:560px){.hero-art{flex-basis:144px;max-width:144px}}
+h1{font-size:1.7rem;line-height:1.2;margin-bottom:10px}.lead{color:var(--ink2);font-size:1.04rem}
+.upd{font-size:.8rem;color:var(--muted);margin-top:10px}main{padding:20px 0 56px}
+h2{font-size:1.28rem;margin:26px 0 8px;color:var(--amber-dk);position:relative;padding-left:13px}
+h2::before{content:"";position:absolute;left:0;top:.18em;bottom:.18em;width:4px;border-radius:3px;background:linear-gradient(180deg,#d97706,#fbbf24)}
+p{margin:8px 0}ul,ol{margin:8px 0 8px 22px}li{margin:4px 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:13px 15px;margin:13px 0;transition:box-shadow .15s}.box:hover{box-shadow:0 7px 20px rgba(0,0,0,.07)}
+.box.tip{border-left:4px solid var(--ok);background:#f3faf6}.box.warn{border-left:4px solid #e0a106;background:#fff7ed}
+.box.prompt{border-left:4px solid var(--amber);background:#fffdf7;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86rem}
+.cta{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;border-radius:9px;padding:10px 16px;font-weight:700;font-size:.95rem;margin-top:6px;transition:transform .15s,box-shadow .15s}.cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(180,83,9,.3)}
+.faq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px 16px;margin-top:10px}
+.faq details{border-bottom:1px solid var(--line);padding:11px 0}.faq details:last-child{border-bottom:0}.faq summary{font-weight:700;cursor:pointer}.faq p{margin-top:8px;color:var(--ink2);font-size:.93rem}.faq details[open] summary{color:#b45309}
+footer{border-top:1px solid var(--line);padding:18px 0;font-size:.8rem;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap hero-flex">
+  <div class="hero-txt">
+  <h1>KI Excel-Tabelle erstellen</h1>
+  <p class="lead">Du weißt, <em>was</em> du auswerten willst, aber nicht wie die Tabelle aussehen soll? KI baut dir aus einem Satz die <strong>komplette Struktur</strong>: Spalten, Beispieldaten und Auswertung. Mit fertigen Prompts — auch für <strong>Google Sheets</strong>.</p>
+  <p class="upd">Stand: Juni 2026 · ehrlich, ohne Hype.</p>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+   <svg viewBox="0 0 200 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tabelle bauen">
+    <circle cx="100" cy="86" r="80" fill="#fef3c7"/>
+    <rect x="46" y="46" width="108" height="80" rx="8" fill="#fff" stroke="#059669" stroke-width="4"/>
+    <rect x="46" y="46" width="108" height="16" rx="8" fill="#059669"/>
+    <line x1="82" y1="62" x2="82" y2="126" stroke="#cde7da" stroke-width="2"/><line x1="118" y1="62" x2="118" y2="126" stroke="#cde7da" stroke-width="2"/>
+    <line x1="46" y1="80" x2="154" y2="80" stroke="#cde7da" stroke-width="2"/><line x1="46" y1="98" x2="154" y2="98" stroke="#cde7da" stroke-width="2"/><line x1="46" y1="112" x2="154" y2="112" stroke="#cde7da" stroke-width="2"/>
+    <rect x="52" y="68" width="22" height="6" rx="3" fill="#cde7da"/><rect x="88" y="68" width="22" height="6" rx="3" fill="#cde7da"/><rect x="124" y="68" width="22" height="6" rx="3" fill="#cde7da"/>
+    <path d="M156 40l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="#f0a93a"/>
+   </svg>
+  </div>
+</div></header>
+<main><div class="wrap">
+
+  <div class="box info" style="border-left:4px solid var(--amber);background:#fffdf7">📌 Nur Formeln gesucht? → <a href="/ki-fuer-excel.html">KI für Excel: Formeln &amp; Fehler</a>. Diese Seite baut die <strong>ganze Tabelle</strong> auf.</div>
+
+  <h2>So baust du eine Tabelle aus einem Ziel</h2>
+  <p>Sag der KI <strong>was du erreichen willst</strong> — sie schlägt Struktur + Spalten vor:</p>
+  <div class="box prompt">Ich will [ZIEL, z. B. meine monatlichen Ausgaben tracken] in [Excel/Google Sheets]. Schlag mir eine sinnvolle Tabellenstruktur vor: welche Spalten, welcher Datentyp je Spalte, 5 Beispielzeilen und welche Auswertung (Summen, Diagramm) sinnvoll ist.</div>
+  <p>Du bekommst eine fertige Spaltenliste, die du 1:1 anlegen kannst — plus Ideen für die Auswertung.</p>
+
+  <h2>Beispiele, die gut funktionieren</h2>
+  <ul>
+    <li>Einnahmen-/Ausgaben-Tracker (Datum, Kategorie, Betrag, Typ)</li>
+    <li>Kunden-/Auftragsliste (Kunde, Auftrag, Status, Betrag, Fälligkeit)</li>
+    <li>Stundenerfassung (Datum, Projekt, Stunden, Stundensatz, Summe)</li>
+    <li>Lager-/Inventarliste, Content-Plan, Bewerbungs-Tracker</li>
+  </ul>
+  <div class="box prompt">Erstelle die Tabelle als kopierbare Liste (Tab-getrennt), damit ich sie direkt in [Excel/Sheets] einfügen kann. Füge in der letzten Zeile passende Summen-Formeln ein.</div>
+  <div class="box tip">💡 KI kann die Tabelle als <strong>Tab- oder Komma-getrennten Text</strong> ausgeben → einfach in A1 einfügen, fertig. Dann mit <a href="/ki-fuer-excel.html">Formeln</a> erweitern.</div>
+
+  <h2>In 4 Schritten</h2>
+  <ol>
+    <li>Ziel in einem Satz beschreiben + Programm nennen (Excel/Sheets)</li>
+    <li>Struktur generieren lassen, Spalten anpassen</li>
+    <li>Als Tab-getrennten Text ausgeben → in die Tabelle einfügen</li>
+    <li>Summen/Diagramm ergänzen, an Beispielen prüfen</li>
+  </ol>
+  <div class="box warn">⚠️ Beispieldaten sind erfunden — ersetze sie durch echte. Keine sensiblen/personenbezogenen Daten in öffentliche KI-Tools eingeben.</div>
+
+  <div class="box tip">⚡ Für Geschäfts-Tabellen (Rechnungen, Kassenbuch, Umsatz) brauchst du oft kein Excel: das gibt's fertig im <a href="/cockpit-app.html">aban Business-Cockpit</a>. <a class="cta" href="/cockpit-app.html">Cockpit ansehen →</a></div>
+
+  <h2>Häufige Fragen</h2>
+  <div class="faq">
+    <details><summary>Kann KI eine ganze Excel-Tabelle erstellen?</summary><p>Ja — KI entwirft Struktur, Spalten und Beispieldaten und gibt sie als einfügbaren Text aus. Das Layout/Design machst du in Excel oder Google Sheets selbst.</p></details>
+    <details><summary>Wie bekomme ich die Tabelle in Excel?</summary><p>Lass dir die Daten Tab- oder Komma-getrennt ausgeben und füge sie in Zelle A1 ein. Excel/Sheets verteilt sie automatisch auf die Spalten.</p></details>
+    <details><summary>Geht das auch kostenlos?</summary><p>Ja, mit den Gratis-Versionen der großen KIs oder im aban KI-Studio. Für reine Struktur-Vorschläge reicht das locker.</p></details>
+    <details><summary>Sind die Beispieldaten echt?</summary><p>Nein, die KI erfindet Platzhalter. Ersetze sie durch deine echten Daten und gib keine sensiblen Daten in öffentliche Tools.</p></details>
+  </div>
+
+  <p style="margin-top:18px">Mehr: <a href="/ki-fuer-excel.html">KI für Excel (Formeln)</a> · <a href="/welche-ki-fuer-was.html">Welche KI für was</a> · <a href="/ki-studio.html">KI-Studio</a> · <a href="/online-tools.html">Alle Tools</a></p>
+</div></main>
+<footer><div class="wrap">aban news · ehrliche KI-Tipps · © 2026</div></footer>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Kann KI eine ganze Excel-Tabelle erstellen?","acceptedAnswer":{"@type":"Answer","text":"Ja, KI entwirft Struktur, Spalten und Beispieldaten und gibt sie als einfügbaren Text aus. Das Layout machst du in Excel oder Google Sheets selbst."}},
+{"@type":"Question","name":"Wie bekomme ich die Tabelle in Excel?","acceptedAnswer":{"@type":"Answer","text":"Lass dir die Daten Tab- oder Komma-getrennt ausgeben und füge sie in Zelle A1 ein. Excel oder Sheets verteilt sie automatisch auf die Spalten."}},
+{"@type":"Question","name":"Geht KI-Tabelle erstellen auch kostenlos?","acceptedAnswer":{"@type":"Answer","text":"Ja, mit den Gratis-Versionen der großen KIs oder im aban KI-Studio. Für reine Struktur-Vorschläge reicht das locker."}},
+{"@type":"Question","name":"Sind die Beispieldaten echt?","acceptedAnswer":{"@type":"Answer","text":"Nein, die KI erfindet Platzhalter. Ersetze sie durch deine echten Daten und gib keine sensiblen Daten in öffentliche Tools."}}
+]}
+</script>
+</body>
+</html>
