@@ -11,10 +11,12 @@ name: Social Meta Video Auto-Post (IG Reels + FB + Threads)
 # Ohne Secrets = sauberer No-Op.
 
 on:
-  schedule:
-    # 2×/Tag, versetzt zum Bild-Poster: 11:00 & 20:00 UTC (≈ 13:00 / 22:00 CH)
-    - cron: '0 11 * * *'
-    - cron: '0 20 * * *'
+  # DEAKTIVIERT 2026-06-14: Doppel-Post-Fix. Der Cloudflare-Worker postet jetzt Reels (IG+FB). Nur noch manuell.
+  # ⚠️ Threads macht der Worker NICHT — falls Threads gewünscht: hier wieder schedule aktivieren (aber dann
+  #    Threads-only-Logik, sonst wieder Doppel-Post auf IG/FB).
+  # schedule:
+  #   - cron: '0 11 * * *'
+  #   - cron: '0 20 * * *'
   workflow_dispatch:
     inputs:
       dry_run:

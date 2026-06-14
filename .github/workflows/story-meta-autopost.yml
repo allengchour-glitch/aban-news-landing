@@ -7,12 +7,12 @@ name: Social Meta Story Auto-Post (IG + FB Stories)
 # Tokens NUR aus GitHub-Secrets (identisch zum Feed-Poster). Ohne Secrets = No-Op.
 
 on:
-  schedule:
-    # 4×/Tag (Stories sind flüchtig → höhere Frequenz): 06/11/15/19 UTC
-    - cron: '0 6 * * *'
-    - cron: '0 11 * * *'
-    - cron: '0 15 * * *'
-    - cron: '0 19 * * *'
+  # DEAKTIVIERT 2026-06-14: Doppel-Post-Fix. Der Cloudflare-Worker macht jetzt FB+IG-Stories. Nur noch manuell.
+  # schedule:
+  #   - cron: '0 6 * * *'
+  #   - cron: '0 11 * * *'
+  #   - cron: '0 15 * * *'
+  #   - cron: '0 19 * * *'
   workflow_dispatch:
     inputs:
       dry_run:

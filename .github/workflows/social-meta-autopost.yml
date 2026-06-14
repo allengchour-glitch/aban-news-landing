@@ -10,10 +10,11 @@ name: Social Meta Auto-Post (IG + FB + Threads)
 # Ohne Secrets = sauberer No-Op (nichts passiert).
 
 on:
-  schedule:
-    # 2×/Tag, gestaffelt: 08:00 & 17:00 UTC (≈ 10:00 / 19:00 CH)
-    - cron: '0 8 * * *'
-    - cron: '0 17 * * *'
+  # DEAKTIVIERT 2026-06-14: Doppel-Post-Fix. Der Cloudflare-Worker (luxe-poster) ist jetzt der EINE
+  # Meta-Poster (IG+FB). Dieser Actions-Cron lief PARALLEL -> doppelte Posts. Nur noch manuell.
+  # schedule:
+  #   - cron: '0 8 * * *'
+  #   - cron: '0 17 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
