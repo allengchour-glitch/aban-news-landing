@@ -33,6 +33,17 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-14 (Vollgas-Audit: 6 parallele Agenten + autonome Fixes)
+- **🔴 Conversion-Leak gefunden:** ATC nur 0,32 % — Übergang Session→Warenkorb, nicht nur Reichweite.
+- **✅ Strikt-CH durchgesetzt:** DACH-Markt-Storefront `/de-de/` (Deutschland & Österreich) **gelöscht** (war ein
+  Regelverstoss). FR/IT/UK/US/EU/Global noch enabled → User-Entscheid (US/UK bewusst angelegt).
+- **✅ 5 Produkte mit Lieferanten-Watermark/Text-Overlay archiviert** (Frost «AMASING-CITY», Active «HIDKAT», Flow,
+  Brisa, Aria) — Bild-Compliance. Keine asiatische Schrift im 50er-Sample.
+- **✅ `/collections/kleider`-404 → Redirect** auf `sub-kleider`; **#3-Landing `highlights` in alle 6 Kanäle** publiziert.
+- **🧠 Gehirn:** +5 Mundart-Hooks, `share_formats` (Save-Liste/A-B/Vorher-Nachher) + `caption_rule` → gegen 0-Shares-Decke.
+- **🟡 Für dich:** #1-Produkt (Zirkonia-Ring) ist ARCHIVED aber Top-Ad-Landing; ~19 Rabattcodes eindampfen; Klaviyo
+  `websiteUrl`/Währung fixen + Browse-Abandonment-Flow + Domain-Auth. Markt-Tipp: Statement-Schmuck · Beauty/Parfum · Herbst-Accessoires.
+
 ### 2026-06-14 (Musik-Tool + Marken-Video)
 - **🎵 Super-Musik-Tool gebaut** (`automation/music/music_library.mjs` + `catalog.json` + `CREDITS.md`): liefert
   **kommerziell-freie** Tracks (Kevin MacLeod, CC-BY 4.0) statt des „zu billigen" GM-Synth. `list`/`pick`, Auto-

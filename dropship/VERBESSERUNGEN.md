@@ -11,6 +11,40 @@ Der User macht den #1-Hebel (TikTok/Meta-Pixel + bezahlte CH-Kampagne) morgen. �
 - Die ~101 Produktvideos als **Ad-Creatives/Reels** bereitstellen (Gewinner-Format Produkt+CHF-Preis+Mundart).
 - Nach Kampagnenstart: 2–3 Tage Daten → „Auswertung" (Add-to-Cart/Käufe vs. heute 0).
 
+## 2026-06-14 — Vollgas-Audit (6 parallele Agenten) + autonome Fixes
+User-Auftrag „1 Stunde Vollgas, 100 Agenten, alles verbessern, autonom". 6 Spezial-Agenten parallel
+(Conversion · Bild-Compliance · Markt · Content · SEO · E-Mail). Wichtigste Funde + was SOFORT gefixt wurde:
+
+**🔴 GRÖSSTER FUND (Conversion): Leak ist Session→Warenkorb (0,32 % ATC), nicht nur Reichweite.**
+- **#1-Traffic-Produkt (Zirkonia-Ring, 64 Sess) ist ARCHIVED** → tote Ad-Landing. (NICHT auto-reaktiviert — User-Entscheid.)
+- **✅ FIX: DACH-Markt (Deutschland & Österreich) war ENABLED mit `/de-de/`-Storefront** = Verstoss gegen Strikt-CH.
+  → Web-Presence `/de-de/` **gelöscht** (kein DE-Storefront mehr). `enabled`-Flag per API nicht umlegbar (computed) →
+  Shell ohne Storefront unerreichbar; voll entfernen kann User im Admin.
+- **⚠️ Auch FR/IT/UK/US/EU/Global enabled** — laut Regel erst nach CH-Conversion; nicht eigenmächtig gekillt → User-Entscheid.
+- **✅ FIX: `/collections/kleider` war 404** (echter Handle `sub-kleider`) → URL-Redirect erstellt.
+- **✅ FIX: #3-Ad-Landing `highlights` fehlte in Pinterest+Google** → in alle 6 Publications publiziert.
+- **🟡 OFFEN:** 3★-Sold-out-Kleid noch in `damen-mode`; ~19 aktive Rabattcodes → auf 1 Hero (WELCOME10) eindampfen;
+  Shipping-Policy „weltweit" + Tippfehler `info@luxestyle.com` → `.ch`.
+
+**🈲 Bild-Compliance (50 cj-real geprüft):** KEINE asiatische Schrift / kein „MADE IN CHINA".
+- **✅ FIX: 5 Produkte mit Lieferanten-Watermark/Text-Overlay ARCHIVIERT** — Flow-Hose (EN-Overlay), Frost-Hemd
+  («AMASING-CITY»), Active-Shorts («HIDKAT»), Brisa-Ventilator (Masz-Overlay), Aria-Kopfhörer («OpenBuds»/«R»-Logo).
+- 🟡 Soft-Flags (Fremdmarke im Hintergrund): Como-Tasche (CÉLINE-Tüte), Estate-Sandalen (DIOR am Ärmel) — beobachten.
+
+**🧠 Content (gegen 0-Shares-Decke) — ins Gehirn verankert:** +5 distinkte Mundart-Hooks (POV, Vorher-Nachher,
+A/B Gold/Silber, Share-an-Freundin, Save-Liste); **`rules.share_formats`** (Save-Liste · A/B-Split · Vorher-Nachher) +
+`caption_rule` (HVC, Safe-Zone, CH-Tags). Genau diese aktive Beteiligung fehlte → 0 Shares.
+
+**📈 Markt (CH 2026):** „Quiet Luxury" vorbei → Maximalismus. Grösste Käufe-Chancen: **1. Statement-/Charm-Schmuck**,
+**2. Beauty-Tools & Parfum** (im Katalog dünn), **3. Herbst-Accessoires** (Schals/Beanies/Strumpfhosen) → nächster CJ-Import.
+
+**📧 Klaviyo (User-Fixes):** `websiteUrl` = `luxestyle.com.co` → `.ch`; `preferredCurrency` USD → CHF; **kein
+Browse-Abandonment-Flow** (grösster Flow-Hebel); doppelte Welcome-Flows entdoppeln; Birthday-Flow (Draft) live;
+**Domain-Auth-DNS** bleibt Top-Block (sonst Spam).
+
+**🔎 SEO:** Kollektionen haben bereits gute Metas → KEIN Massen-Überschreiben (wäre Regression). 20 CH-Keywords +
+5 Blog-Themen für später dokumentiert.
+
 ## 2026-06-13 — TikTok-Analyse (frisch, `reports/tiktok_luxestyle.ch_2026-06-13.md`)
 **Zahlen:** 36 Videos · 10 769 Views (+1 389 / +15 % seit 12.06.) · **Likes 161 (±0!)** · Komm. 5 (±0) · **Shares 0 (±0)** · Ø 299 V/Video.
 - **🔴 Wachstum ist hohl:** +1 389 Views kamen fast nur von 2 neuen Produkt-Videos (Smart-Diffuser XXL **1 107 V = neuer #1**, Diver-Watch „CHF 32 statt 200 / 80 % günstiger als Rolex" 795+387 V) — aber **0,5–0,8 % Eng.** = reine passive Impressionen. Likes/Komm./Shares stehen exakt still → **Reichweiten-Decke** erreicht.

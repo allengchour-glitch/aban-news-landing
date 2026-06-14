@@ -374,7 +374,12 @@
       "%s unter CHF 40 ☀️ 1, 2 oder 3 — welches nimmst du? 👇 Folge für mehr Looks 🤍 −10%% WELCOME10 → luxestyle.ch",
       "Das löst ein echtes Sommer-Problem 🌞 %s — genialer Preis. Speicher's dir 📌 Frage 👇 −10%% WELCOME10 → luxestyle.ch",
       "Dein nächster Lieblings-Look? %s 🤍 Frage in die Kommentare 👇 📌 Speicher's dir · −10%% WELCOME10 → luxestyle.ch",
-      "%s zum fairen Preis 🇨🇭 Kommentier 1/2/3 👇 folge @luxestyle.ch für mehr · −10%% WELCOME10 → luxestyle.ch"
+      "%s zum fairen Preis 🇨🇭 Kommentier 1/2/3 👇 folge @luxestyle.ch für mehr · −10%% WELCOME10 → luxestyle.ch",
+      "POV: Du hesch ändlich es Teil gfunde, wo niemmer hett 👀 %s — 📌 speicher der's · welä Look? 👇 −10%% WELCOME10 → luxestyle.ch",
+      "Gliche Person, ganz anders Gfüehl ✨ %s — vorhär/nachhär. ↗️ Teile mit öpperem wo es Upgrade bruucht · −10%% WELCOME10 → luxestyle.ch",
+      "Gold oder Silber: was passt zu dir? 👇 %s — schrib's i d Kommentär · 📌 speicher's · −10%% WELCOME10 → luxestyle.ch",
+      "Schick das dere Fründin, wo immer fragt «woher hesch das?» 👀 %s · ↗️ teile · 🛒 Bio-Link · −10%% WELCOME10 → luxestyle.ch",
+      "Drü Looks mit eim Teil — speicher der das 💾 %s · welä zersch? 👇 −10%% WELCOME10 → luxestyle.ch"
     ],
     "format_priority": [
       "UGC/Hands-on-Demo (Problem->Loesung, Vorher/Nachher) — Algo pusht nativ am staerksten",
@@ -399,7 +404,13 @@
     "production": [
       "SAFE-ZONE-TEXT (User 2026-06-14 schrift unten achtung): eingebrannter Text endet bei ~78% Hoehe (y<=1500 von 1920); CTA-Zeile NIE ganz unten (kollidiert sonst mit Plattform-Caption/Buttons). Rechts ~12% (Icons) freilassen. Tool: dropship/ads/finish_reel.sh.",
       "MUSIK = automation/music/music_library.mjs (kommerziell-frei, Kevin MacLeod CC-BY 4.0, Attribution in CREDITS.md). GM-Synth/fluidsynth war zu billig -> nur Fallback. Gesang nur via Suno-Port (Pro fuer Live-Ad)."
-    ]
+    ],
+    "share_formats": [
+      "Save-Liste (3-in-1 Styling: «Drü Outfits mit eim Teil») + expliziter Speicher-CTA = stärkstes Reichweiten-Signal nach Comments",
+      "A/B-Entscheidung (Gold oder Silber? / welä Look fürs Date?) als Split-Screen = Comment- & Tag-a-Friend-Maschine (genau das fehlte → 0 Shares)",
+      "Vorher-Nachher-Transformation auf Trend-Sound (harter Cut, gleiche Pose) = Share-Trigger + hohe Hold-Rate"
+    ],
+    "caption_rule": "HVC: erste ~125 Zeichen = Hook (vor dem Abschneiden), dann Value, dann EXPLIZITER Save- ODER Share-CTA + CHF-Preis. CH-Tags only (#schweizmode #ootdschweiz #swissmade + Stadt-Rotation), NIE Deutschland-Tags. Hook-Text muss stumm wirken (Burn-in), in der Bildmitte, NICHT in der unteren Safe-Zone."
   },
   "decisions": [
     {
