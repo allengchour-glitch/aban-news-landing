@@ -26,6 +26,13 @@ Der User macht den #1-Hebel (TikTok/Meta-Pixel + bezahlte CH-Kampagne) morgen. �
 - **Caption-Format als FESTE Regel** im Poster-README verankert (Produkt+CHF-Preis [+Vergleich] · 1 Share/Save/Komm.-
   Trigger · CTA+WELCOME10+#bern) → künftige Posts befolgen es automatisch.
 
+## 2026-06-14 — Bärndütsch „Mach dis eigete Teil" (User-Wunsch) + Geo-Regel CH-only
+- **Bärndütsch-Post live (IG+FB):** «BÄRN»-Design (`social/designs/ch-baern.png` → jpg → Shopify-CDN) für die
+  Selbst-gestalten-Linie (Tee ab CHF 32). Mundart = datenbelegter #1-Hook (Ø 793 V) + trifft #bern-Zielgruppe.
+- **3 Bärndütsch winner_hooks ins Gehirn** (`knowledge.json`) → sortieren via Hook-Typ-Lernen automatisch nach
+  vorne (Mundart zuerst). Künftige Captions nutzen sie.
+- **🇨🇭 Geo-Regel FEST:** kein Deutschland-Ausbau (DE-Tags geblockt, CH-only) — Mundart filtert DE eh raus.
+
 ## 2026-06-14 — Live-Posten funktioniert + Hype-Gadgets gepostet
 - **6 Posts heute live auf IG+FB** via Meta-Token (User pasted, transient): Camping-Ventilator, Gua-Sha, Onyx
   (zentriertes Bild), + 3 **Hype-Gadgets** (Smart-Diffuser XXL=unser #1-Performer, Galaxy-Projektor, Flame-Diffuser).

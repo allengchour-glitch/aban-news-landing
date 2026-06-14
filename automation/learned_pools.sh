@@ -9,8 +9,11 @@ TAGSETS=(
   "#foryou #produkttipp #musthave #schweiz #sommerschuhe"
 )
 CAPS=(
+  "Mach dis eigete Teil 🐻🇨🇭 %s – dis Design, dini Sprüch. 💾 Speicher der das · 👇 Was chiem uf DIS Teil? −10%% WELCOME10 → luxestyle.ch"
+  "Hoi zäme 🇨🇭 %s zum fäine Priis – wettsch das? 👇 Schrib's i d Kommentär · 📌 Speicher der's · −10%% WELCOME10 → luxestyle.ch"
   "CHF 34.90 statt Designer-Preis 👀 %s — welche Farbe wäre deins? Kommentier 👇 📌 Speichern für später · folge für die Sommer-Drops · −10%% WELCOME10 → luxestyle.ch"
   "Das löst ein echtes Sommer-Problem 🌞 %s — genialer Preis. Speicher's dir 📌 Frage 👇 −10%% WELCOME10 → luxestyle.ch"
+  "Das git's so chuum i de Schwiz 👀 %s — lueg dir das a! 💾 Speichere · 👇 1, 2 oder 3? −10%% WELCOME10 → luxestyle.ch"
   "%s unter CHF 40 ☀️ 1, 2 oder 3 — welches nimmst du? 👇 Folge für mehr Looks 🤍 −10%% WELCOME10 → luxestyle.ch"
   "Dein nächster Lieblings-Look? %s 🤍 Frage in die Kommentare 👇 📌 Speicher's dir · −10%% WELCOME10 → luxestyle.ch"
   "%s zum fairen Preis 🇨🇭 Kommentier 1/2/3 👇 folge @luxestyle.ch für mehr · −10%% WELCOME10 → luxestyle.ch"
