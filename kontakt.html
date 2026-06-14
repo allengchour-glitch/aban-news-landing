@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt &amp; Anfrage — Website, Shop oder Texte | aban</title>
+<meta name="description" content="Unverbindlich anfragen: Website, Online-Shop oder Texte erstellen lassen. Beschreib in 1 Minute dein Vorhaben — du bekommst einen Festpreis und einen klaren Plan.">
+<meta name="theme-color" content="#d97706">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://abannews.com/kontakt.html">
+<meta property="og:title" content="Kontakt & Anfrage — aban">
+<meta property="og:description" content="Unverbindlich anfragen: Website, Shop oder Texte. Festpreis & klarer Plan.">
+<meta property="og:type" content="website">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:680px;margin:0 auto;padding:0 18px}a{color:var(--amber-dk)}
+header.hero{background:linear-gradient(180deg,var(--cream),var(--bg));border-bottom:1px solid var(--line);padding:32px 0 22px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-40px;top:-40px;width:190px;height:190px;background:radial-gradient(circle,rgba(217,119,6,.15),transparent 70%);pointer-events:none}
+h1{font-size:1.7rem;margin-bottom:8px;position:relative;z-index:1}.lead{color:var(--ink2);font-size:1.02rem;position:relative;z-index:1}
+main{padding:22px 0 56px}
+label{display:block;font-weight:600;font-size:13px;margin:12px 0 4px;color:var(--ink2)}
+input,select,textarea{width:100%;font-size:15px;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);font-family:inherit}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--amber);box-shadow:0 0 0 3px rgba(217,119,6,.15)}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row>div{flex:1;min-width:150px}
+.btn{margin-top:16px;background:var(--amber-dk);color:#fff;border:0;border-radius:11px;padding:13px 24px;font-weight:800;font-size:1rem;cursor:pointer;transition:transform .15s,box-shadow .15s}.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(180,83,9,.3)}
+.note{font-size:.82rem;color:var(--muted);margin-top:10px}
+.alt{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin:20px 0;font-size:.95rem}
+.alt a{font-weight:700}
+.ok{display:none;background:#f3faf6;border:1px solid var(--ok);color:#06623b;border-radius:11px;padding:13px 15px;margin-top:14px;font-weight:600}
+footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <h1>Anfrage &amp; Kontakt</h1>
+  <p class="lead">Beschreib in 1 Minute dein Vorhaben — du bekommst einen <strong>Festpreis</strong> und einen klaren Plan. Unverbindlich &amp; kostenlos.</p>
+</div></header>
+<main><div class="wrap">
+  <form id="f" autocomplete="on">
+    <div class="row">
+      <div><label for="name">Name *</label><input id="name" required placeholder="Vor- und Nachname"></div>
+      <div><label for="email">E-Mail *</label><input id="email" type="email" required placeholder="du@beispiel.ch"></div>
+    </div>
+    <label for="thema">Worum geht's? *</label>
+    <select id="thema">
+      <option>Website erstellen lassen</option>
+      <option>Online-Shop erstellen lassen</option>
+      <option>SEO-Texte schreiben lassen</option>
+      <option>Texte schreiben lassen</option>
+      <option>Etwas anderes</option>
+    </select>
+    <div class="row">
+      <div><label for="budget">Budget (optional)</label><input id="budget" placeholder="z. B. ~500 €"></div>
+      <div><label for="termin">Bis wann? (optional)</label><input id="termin" placeholder="z. B. in 3 Wochen"></div>
+    </div>
+    <label for="nachricht">Dein Vorhaben *</label>
+    <textarea id="nachricht" rows="5" required placeholder="Was machst du? Welche Seiten/Funktionen brauchst du? Hast du schon Texte/Logo/Domain?"></textarea>
+    <button class="btn" id="send" type="submit">Anfrage senden →</button>
+    <div class="ok" id="ok">✅ Dein E-Mail-Programm öffnet sich mit der fertigen Anfrage — bitte nur noch auf „Senden" klicken. Klappt das nicht? Schreib direkt an <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>.</div>
+    <p class="note">Mit dem Absenden öffnet sich dein E-Mail-Programm mit den Angaben (es werden keine Daten auf dieser Seite gespeichert). Antwort meist innerhalb von 1 Werktag.</p>
+  </form>
+
+  <div class="alt">
+    📩 <strong>Lieber direkt?</strong> Schreib uns an <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>.<br>
+    📅 <strong>Termin buchen:</strong> <a href="#" id="cal" rel="noopener">Kalender öffnen</a> <span class="note">(Kalender-Link wird in Kürze ergänzt)</span><br>
+    🧰 Lieber selbst loslegen? <a href="/leistungen.html">Alle Leistungen</a> · <a href="/cockpit-app.html">Gratis-Cockpit</a>
+  </div>
+</div></main>
+<footer><div class="wrap">aban news · Web &amp; Content für Selbstständige · <a href="mailto:hallo@abannews.com">hallo@abannews.com</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)};
+  // Optionaler Calendly-Link: hier URL eintragen, dann wird der Termin-Link aktiv.
+  var CAL="";
+  if(CAL){var c=$("#cal");c.href=CAL;c.nextElementSibling.style.display="none"}
+  $("#f").addEventListener("submit",function(e){
+    e.preventDefault();
+    var name=$("#name").value.trim(),email=$("#email").value.trim();
+    var thema=$("#thema").value,budget=$("#budget").value.trim(),termin=$("#termin").value.trim(),msg=$("#nachricht").value.trim();
+    if(name.length<2||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)||msg.length<5){alert("Bitte Name, gültige E-Mail und dein Vorhaben ausfüllen.");return}
+    var body="Name: "+name+"\nE-Mail: "+email+"\nThema: "+thema+"\nBudget: "+(budget||"-")+"\nBis wann: "+(termin||"-")+"\n\nVorhaben:\n"+msg+"\n\n— gesendet über abannews.com/kontakt";
+    var url="mailto:hallo@abannews.com?subject="+encodeURIComponent("Anfrage: "+thema+" — "+name)+"&body="+encodeURIComponent(body);
+    $("#ok").style.display="block";
+    window.location.href=url;
+  });
+})();
+</script>
+</body>
+</html>
