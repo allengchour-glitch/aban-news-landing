@@ -45,13 +45,37 @@ th{background:var(--cream)}
 .faq details{border-bottom:1px solid var(--line);padding:12px 0}.faq details:last-child{border-bottom:0}
 .faq summary{font-weight:700;cursor:pointer}.faq p{margin-top:8px;color:var(--ink2);font-size:.93rem}
 footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var(--muted);text-align:center}
+header.hero{position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-50px;top:-50px;width:210px;height:210px;background:radial-gradient(circle,rgba(217,119,6,.15),transparent 70%);pointer-events:none}
+.hero-flex{display:flex;align-items:center;gap:22px;flex-wrap:wrap;position:relative;z-index:1}
+.hero-txt{flex:1 1 280px;min-width:0}
+.hero-art{flex:0 0 168px;max-width:168px;margin:0 auto}
+.hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 7px 16px rgba(180,83,9,.14))}
+@media(max-width:560px){.hero-art{flex-basis:140px;max-width:140px}}
 </style>
 </head>
 <body>
-<header class="hero"><div class="wrap">
+<header class="hero"><div class="wrap hero-flex">
+  <div class="hero-txt">
   <h1>Selbstständig &amp; Büro im Griff — der ehrliche Ratgeber</h1>
   <p class="lead">Rechnung, Steuern, Stundensatz, Liquidität, Mahnwesen: alles Wichtige fürs Büro verständlich erklärt — für Selbstständige in der <strong>Schweiz, Deutschland &amp; Österreich</strong>. Mit Beispielen und kostenlosen Rechnern. Kein Hype, keine Werbeversprechen.</p>
   <p class="upd">Stand: Juni 2026 · Allgemeine Information, keine Steuer- oder Rechtsberatung.</p>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+   <svg viewBox="0 0 200 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Wegweiser">
+    <circle cx="100" cy="88" r="80" fill="#fef3c7"/>
+    <circle cx="100" cy="88" r="58" fill="#fff" stroke="#d97706" stroke-width="4"/>
+    <g stroke="#b45309" stroke-width="2.6" stroke-linecap="round">
+     <line x1="100" y1="36" x2="100" y2="46"/><line x1="100" y1="130" x2="100" y2="140"/>
+     <line x1="48" y1="88" x2="58" y2="88"/><line x1="142" y1="88" x2="152" y2="88"/>
+    </g>
+    <g transform="rotate(20 100 88)">
+     <polygon points="100,50 109,88 91,88" fill="#dc2626"/>
+     <polygon points="100,126 109,88 91,88" fill="#9ca3af"/>
+    </g>
+    <circle cx="100" cy="88" r="6" fill="#1f2937"/>
+   </svg>
+  </div>
 </div></header>
 <main><div class="wrap">
 
