@@ -4,82 +4,169 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kleinanzeigen &amp; Inserate — kostenlos suchen &amp; aufgeben | aban</title>
-<meta name="description" content="Kostenlose Kleinanzeigen suchen und selbst aufgeben: Möbel, Elektronik, Auto, Dienstleistungen und mehr. Lokal &amp; in der ganzen DACH-Region. Ehrlich, mit Moderation.">
+<meta name="description" content="Kostenlose Kleinanzeigen suchen und selbst aufgeben: Möbel, Elektronik, Auto, Dienstleistungen und mehr — nach Kategorie und Ort filtern. Lokal &amp; in der ganzen DACH-Region. Ehrlich, mit Moderation.">
 <meta name="theme-color" content="#d97706">
 <meta name="robots" content="index,follow">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://abannews.com/inserate.html">
 <meta property="og:title" content="Kleinanzeigen & Inserate — kostenlos suchen & aufgeben">
-<meta property="og:description" content="Kostenlose Kleinanzeigen suchen und selbst aufgeben.">
+<meta property="og:description" content="Kleinanzeigen nach Kategorie & Ort suchen oder selbst kostenlos aufgeben.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://abannews.com/og-image.png">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
-.wrap{max-width:980px;margin:0 auto;padding:0 16px}a{color:var(--amber-dk)}
-header.hero{background:linear-gradient(180deg,var(--cream),var(--bg));border-bottom:1px solid var(--line);padding:26px 0 20px}
-h1{font-size:1.55rem;line-height:1.2;margin-bottom:6px}.lead{color:var(--ink2);font-size:.97rem;max-width:640px}
-.bar{display:flex;gap:8px;margin:14px 0 6px;flex-wrap:wrap}
-.bar input,.bar select{padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;background:var(--card)}
-.bar input{flex:1;min-width:160px}
-.bar button{background:var(--amber-dk);color:#fff;border:0;border-radius:10px;padding:10px 18px;font-weight:700;cursor:pointer}
-.cta{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;border-radius:10px;padding:9px 16px;font-weight:700;font-size:.92rem}
-.note{font-size:.8rem;color:var(--muted);margin-top:8px}
-main{padding:16px 0 56px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:13px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px}
+:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e6e1d6;--bg:#f3f0ea;--card:#fff;--ok:#059669;--shadow:0 8px 24px rgba(31,41,55,.09)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5;color:var(--ink);background:var(--bg)}
+a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:60}
+.top .in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px}
+.brand{font-weight:900;color:var(--amber-dk);font-size:19px;white-space:nowrap}
+.top .links{margin-left:auto;display:flex;gap:8px}
+.top .links a{font-size:.82rem;font-weight:700;color:var(--ink2);padding:7px 12px;border:1px solid var(--line);border-radius:20px}
+.top .links a:hover{background:var(--cream);color:var(--amber-dk);border-color:var(--cream)}
+.top .links a.cta{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+.hero{background:linear-gradient(135deg,#1f2937 0%,#3a2a12 55%,#b45309 100%);color:#fff;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(251,191,36,.25),transparent 45%),radial-gradient(circle at 10% 90%,rgba(217,119,6,.22),transparent 40%);pointer-events:none}
+.hero .in{max-width:1180px;margin:0 auto;padding:34px 16px 30px;position:relative;z-index:1}
+.hero h1{font-size:1.85rem;line-height:1.2;margin-bottom:6px}
+.hero p{color:#f4e7d3;font-size:1rem;max-width:620px}
+.hero p a{color:#fff;text-decoration:underline}
+.searchbox{background:#fff;border-radius:16px;box-shadow:0 18px 44px rgba(0,0,0,.28);padding:12px;margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
+.searchbox .fld{flex:1;min-width:200px;display:flex;align-items:center;gap:8px;background:#f5f2ec;border:1px solid var(--line);border-radius:11px;padding:0 12px}
+.searchbox .fld span{font-size:17px}
+.searchbox input{flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font-size:15px;color:var(--ink);font-family:inherit}
+.searchbox input:focus{outline:0}
+.searchbox .fld:focus-within{border-color:var(--amber);box-shadow:0 0 0 3px rgba(217,119,6,.15);background:#fff}
+.searchbox button.go{background:var(--amber-dk);color:#fff;border:0;border-radius:11px;padding:13px 30px;font-weight:800;font-size:15px;cursor:pointer;white-space:nowrap}
+.searchbox button.go:hover{background:#a04708}
+.note{max-width:1180px;margin:12px auto 0;padding:0 16px;font-size:.8rem;color:var(--muted)}
+.wrap{max-width:1180px;margin:16px auto;padding:0 16px;display:grid;grid-template-columns:260px 1fr;gap:20px;align-items:start}
+.sidebar{position:sticky;top:74px;display:flex;flex-direction:column;gap:14px}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px}
+.fcard h4{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px}
+.opt{display:flex;align-items:center;gap:9px;padding:6px 0;font-size:.92rem;color:var(--ink2);cursor:pointer}
+.opt input{width:16px;height:16px;accent-color:var(--amber-dk);cursor:pointer}
+.opt:hover{color:var(--amber-dk)}
+.fcard input.txt{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9px;font-size:.9rem;font-family:inherit;background:#f8f5ef}
+.fcard input.txt:focus{outline:0;border-color:var(--amber);background:#fff}
+.bigcta{display:block;text-align:center;background:var(--amber-dk);color:#fff;border-radius:11px;padding:11px;font-weight:800;font-size:.95rem}
+.bigcta:hover{background:#a04708}
+.reset{background:none;border:0;color:var(--amber-dk);font-weight:700;font-size:.85rem;cursor:pointer;padding:4px 0;text-align:left}
+.reset:hover{text-decoration:underline}
+.results{min-width:0}
+.rhead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.rhead .cnt{font-weight:800;font-size:1.05rem}
+.filterbtn{display:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;transition:box-shadow .15s,transform .15s,border-color .15s}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-1px);border-color:#dcc89c}
 .card .k{font-size:.7rem;font-weight:700;color:var(--amber-dk);text-transform:uppercase;letter-spacing:.03em}
-.card h3{font-size:1rem;margin:3px 0}
+.card h3{font-size:1.05rem;margin:3px 0}
 .card .p{font-weight:800;color:var(--amber-dk)}
 .card .o{font-size:.78rem;color:var(--muted);margin-bottom:6px}
-.card .d{font-size:.88rem;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:8px}
-.card button.c{background:transparent;border:1px solid var(--amber-lt,#fde9c8);color:var(--amber-dk);border-radius:8px;padding:6px 10px;font-weight:700;font-size:.82rem;cursor:pointer}
-.status{color:var(--muted);font-size:.92rem;padding:18px 0}
-footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var(--muted);text-align:center}
+.card .d{font-size:.88rem;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:10px}
+.card button.c{background:#fff;border:1.5px solid var(--amber-dk);color:var(--amber-dk);border-radius:8px;padding:7px 12px;font-weight:700;font-size:.82rem;cursor:pointer}
+.card button.c:hover{background:var(--amber-dk);color:#fff}
+.status{color:var(--muted);font-size:.95rem;padding:30px 0;text-align:center}
+footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color:var(--muted);text-align:center}
+.sheetbg{display:none}
+@media(max-width:860px){
+  .wrap{grid-template-columns:1fr}.hero h1{font-size:1.5rem}
+  .filterbtn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--amber-dk);color:var(--amber-dk);border-radius:20px;padding:8px 15px;font-weight:700;font-size:.85rem;cursor:pointer}
+  .sidebar{position:fixed;inset:0;z-index:100;background:var(--bg);padding:0;transform:translateY(100%);transition:transform .25s;overflow-y:auto;max-height:100vh}
+  .sidebar.open{transform:translateY(0)}
+  .sidebar .sheethead{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:14px 16px;font-weight:800}
+  .sidebar .sheethead .x{background:none;border:0;font-size:24px;cursor:pointer;color:var(--muted);line-height:1}
+  .sidebar .fcard{margin:12px 14px;border-radius:14px}
+  .sidebar .applybar{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px 16px}
+  .sidebar .applybar button{width:100%;background:var(--amber-dk);color:#fff;border:0;border-radius:11px;padding:13px;font-weight:800;font-size:15px;cursor:pointer}
+  .sheetbg.show{display:block;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99}
+}
+@media(min-width:861px){.sidebar .sheethead,.sidebar .applybar{display:none}}
 </style>
 </head>
 <body>
-<header class="hero"><div class="wrap">
+<div class="top"><div class="in">
+  <a class="brand" href="/">aban</a>
+  <span class="links"><a href="/stellenangebote.html">💼 Jobs</a><a href="/auftraege.html">Aufträge</a><a class="cta" href="/inserat-aufgeben.html">+ Inserat aufgeben</a></span>
+</div></div>
+
+<div class="hero"><div class="in">
   <h1>Kleinanzeigen &amp; Inserate</h1>
-  <p class="lead">Kostenlos stöbern oder selbst inserieren — Möbel, Elektronik, Auto, Dienstleistungen und mehr. Neue Inserate werden vor Veröffentlichung geprüft. Selbstständig? → <a href="/auftraege.html"><strong>Aufträge &amp; Jobs im Feed</strong></a>.</p>
-  <div class="bar">
-    <input id="q" type="search" placeholder="Suche (z. B. Sofa, Fahrrad, Umzug) …" aria-label="Suche">
-    <select id="kat" aria-label="Kategorie"><option value="">Alle Kategorien</option></select>
-    <button id="go" type="button">Suchen</button>
-    <a class="cta" href="/inserat-aufgeben.html">+ Inserat aufgeben</a>
-  </div>
-  <p class="note">⚠️ Privat-Inserate von Nutzern. Keine illegalen oder anstößigen Inhalte. Etwas melden? <a href="mailto:info@abannews.com?subject=Inserat%20melden">info@abannews.com</a> · <a href="/nutzungsbedingungen.html">Nutzungsbedingungen</a> · <a href="/datenschutz.html">Datenschutz</a></p>
-</div></header>
-<main><div class="wrap">
-  <div class="status" id="status">Lade Inserate …</div>
-  <div class="grid" id="grid"></div>
-</div></main>
-<footer><div class="wrap">aban news · Kleinanzeigen · Angaben der Inserenten ohne Gewähr · © 2026 ·
-  <a href="/inserat-aufgeben.html">Inserat aufgeben</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  <p>Kostenlos stöbern oder selbst inserieren — Möbel, Elektronik, Auto, Dienstleistungen und mehr. Selbstständig? → <a href="/auftraege.html">Aufträge &amp; Jobs im Feed</a>.</p>
+  <form class="searchbox" id="sf" onsubmit="return false">
+    <label class="fld"><span>🔍</span><input id="q" type="search" placeholder="Suche (z. B. Sofa, Fahrrad, Umzug) …" aria-label="Suche"></label>
+    <label class="fld" style="max-width:220px"><span>📍</span><input id="loc" type="search" placeholder="Ort oder PLZ" aria-label="Ort"></label>
+    <button class="go" id="go" type="submit">Inserate suchen</button>
+  </form>
+</div></div>
+<p class="note">⚠️ Privat-Inserate von Nutzern. Keine illegalen oder anstößigen Inhalte. Etwas melden? <a href="mailto:info@abannews.com?subject=Inserat%20melden">info@abannews.com</a> · <a href="/nutzungsbedingungen.html">Nutzungsbedingungen</a></p>
+
+<div class="wrap">
+  <aside class="sidebar" id="sidebar">
+    <div class="sheethead"><span>Filter</span><button class="x" id="sheetClose" type="button" aria-label="Schließen">×</button></div>
+    <div class="fcard"><a class="bigcta" href="/inserat-aufgeben.html">+ Inserat aufgeben</a>
+      <p style="font-size:.82rem;color:var(--muted);margin-top:9px;text-align:center">Kostenlos &amp; in 1 Minute. Wird vor Veröffentlichung kurz geprüft.</p></div>
+    <div class="fcard"><h4>Kategorie</h4><div id="cats"></div></div>
+    <button class="reset" id="reset" type="button">↺ Alle Filter zurücksetzen</button>
+    <div class="applybar"><button id="apply" type="button">Ergebnisse anzeigen</button></div>
+  </aside>
+
+  <section class="results">
+    <div class="rhead">
+      <button class="filterbtn" id="filterOpen" type="button">⚙ Filter</button>
+      <span class="cnt" id="cnt">Lade Inserate …</span>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="status" id="status" hidden></div>
+  </section>
+</div>
+<div class="sheetbg" id="sheetbg"></div>
+
+<footer>aban news · Kleinanzeigen · Angaben der Inserenten ohne Gewähr · © 2026 ·
+  <a href="/inserat-aufgeben.html">Inserat aufgeben</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
+
 <script>
 (function(){
   var CATS=["Elektronik","Handy","Computer","Möbel","Haushalt","Garten","Werkzeug","Auto & Teile","Fahrrad","Mode","Spielzeug","Baby & Kind","Haustier","Sport","Dienstleistungen","Immobilien","Jobs","Sonstiges"];
   var $=function(s){return document.querySelector(s)};
-  var grid=$("#grid"),status=$("#status");
+  var grid=$("#grid"),statusEl=$("#status"),cntEl=$("#cnt"),sidebar=$("#sidebar"),sheetbg=$("#sheetbg");
+  var curKat="",raw=[];
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-  $("#kat").innerHTML='<option value="">Alle Kategorien</option>'+CATS.map(function(c){return '<option>'+esc(c)+'</option>'}).join("");
+  $("#cats").innerHTML='<label class="opt"><input type="radio" name="kat" value="" checked>Alle Kategorien</label>'+
+    CATS.map(function(c){return '<label class="opt"><input type="radio" name="kat" value="'+esc(c)+'">'+esc(c)+'</label>'}).join("");
   function contactHtml(k){var v=esc(k);var mail=/^[^@\s]+@[^@\s]+$/.test(k);return mail?('<a class="c" href="mailto:'+v+'" style="text-decoration:none;display:inline-block">✉️ '+v+'</a>'):('<span>'+v+'</span>')}
+  function applyLoc(items){var loc=$("#loc").value.trim().toLowerCase();if(!loc)return items;
+    return items.filter(function(it){return (String(it.plz||"")+" "+String(it.ort||"")).toLowerCase().indexOf(loc)>=0})}
   function render(items){
-    if(!items||!items.length){status.textContent="Noch keine Inserate in dieser Auswahl. Sei der/die Erste: ‚Inserat aufgeben'.";grid.innerHTML="";return}
-    status.textContent="";
+    items=applyLoc(items||[]);
+    if(!items.length){grid.innerHTML="";statusEl.hidden=false;
+      statusEl.innerHTML="Noch keine Inserate in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Inserat aufgeben</a>.";cntEl.textContent="0 Inserate";return}
+    statusEl.hidden=true;
     grid.innerHTML=items.map(function(it){
       return '<div class="card"><div class="k">'+esc(it.kat||"Sonstiges")+'</div><h3>'+esc(it.titel)+'</h3>'+(it.preis?'<div class="p">'+esc(it.preis)+'</div>':'')+'<div class="o">'+esc([it.plz,it.ort].filter(Boolean).join(" "))+'</div><div class="d">'+esc(it.beschreibung)+'</div><button class="c" type="button" data-k="'+esc(it.kontakt||"")+'">Kontakt anzeigen</button></div>';
     }).join("");
+    cntEl.textContent=items.length+" Inserate";
     Array.prototype.forEach.call(document.querySelectorAll(".card button.c"),function(b){b.addEventListener("click",function(){this.outerHTML='<div style="font-size:.85rem">'+contactHtml(this.dataset.k)+'</div>'})});
   }
-  function load(){var q=$("#q").value.trim(),kat=$("#kat").value;status.textContent="Lade …";grid.innerHTML="";
-    fetch("/api/inserate-list?q="+encodeURIComponent(q)+"&kat="+encodeURIComponent(kat)).then(function(r){return r.json()}).then(function(d){
-      if(d.demo){status.innerHTML="Die Inserate-Datenbank wird gerade eingerichtet — schau bald wieder vorbei. <a href=\"/inserat-aufgeben.html\">Inserat schon vormerken</a>";grid.innerHTML="";return}
-      render(d.items);
-    }).catch(function(){status.textContent="Konnte gerade nicht laden.";});
+  function load(){var q=$("#q").value.trim();cntEl.textContent="Lade …";grid.innerHTML="";statusEl.hidden=true;
+    fetch("/api/inserate-list?q="+encodeURIComponent(q)+"&kat="+encodeURIComponent(curKat)).then(function(r){return r.json()}).then(function(d){
+      if(d.demo){grid.innerHTML="";statusEl.hidden=false;statusEl.innerHTML="Die Inserate-Datenbank wird gerade eingerichtet — schau bald wieder vorbei. <a href=\"/inserat-aufgeben.html\">Inserat schon vormerken</a>";cntEl.textContent="";return}
+      raw=d.items||[];render(raw);
+    }).catch(function(){grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden.";cntEl.textContent=""});
   }
-  $("#go").addEventListener("click",load);$("#kat").addEventListener("change",load);
-  $("#q").addEventListener("keydown",function(e){if(e.key==="Enter")load()});
+  $("#go").addEventListener("click",function(e){e.preventDefault();load()});
+  $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();load()}});
+  $("#loc").addEventListener("input",function(){render(raw)});
+  $("#cats").addEventListener("change",function(e){if(e.target.name==="kat"){curKat=e.target.value;load()}});
+  $("#reset").addEventListener("click",function(){$("#q").value="";$("#loc").value="";curKat="";
+    var f=document.querySelector('input[name="kat"]');if(f)f.checked=true;load()});
+
+  function openSheet(){sidebar.classList.add("open");sheetbg.classList.add("show");document.body.style.overflow="hidden"}
+  function closeSheet(){sidebar.classList.remove("open");sheetbg.classList.remove("show");document.body.style.overflow=""}
+  $("#filterOpen").addEventListener("click",openSheet);$("#sheetClose").addEventListener("click",closeSheet);
+  $("#apply").addEventListener("click",closeSheet);sheetbg.addEventListener("click",closeSheet);
+
   load();
 })();
 </script>
