@@ -10,8 +10,11 @@
 # Nutzung: python3 automation/bern_voiceover.py "Hoi zäme, das isch es schöns Teil!" [out.wav]
 import sys, os, subprocess
 
-TMP = "/tmp/brand"; VOICE = f"{TMP}/kerstin.onnx"
-URL = "https://huggingface.co/rhasspy/piper-voices/resolve/main/de/de_DE/kerstin/low/de_DE-kerstin-low.onnx"
+# Standard = thorsten-HIGH (beste deutsche piper-Qualität; kerstin-low klang robotisch/„schrecklich").
+# Override: PIPER_VOICE=/pfad/zu/stimme.onnx  (z.B. eine geklonte Schwiizer-Stimme).
+TMP = "/tmp/brand"
+VOICE = os.environ.get("PIPER_VOICE", f"{TMP}/thorsten-high.onnx")
+URL = "https://huggingface.co/rhasspy/piper-voices/resolve/main/de/de_DE/thorsten/high/de_DE-thorsten-high.onnx"
 os.makedirs(TMP, exist_ok=True)
 text = sys.argv[1] if len(sys.argv) > 1 else ""
 out = sys.argv[2] if len(sys.argv) > 2 else "/tmp/bern_vo.wav"
