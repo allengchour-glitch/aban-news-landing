@@ -16,9 +16,13 @@
    (FB-Stories, echte FB-Reels, Meta-Analyse) + die aktuelle Queue. *Doppelklick:* `automation/local/DEPLOY-WORKER.bat`.
 2. **Worker-Secrets** (1×, Cloudflare-Dashboard → Worker → Settings → Variables): `META_ACCESS_TOKEN` (langlebiger
    Page/User-Token), `TRIGGER_KEY` (frei wählbar — den gleichen ins `control.html` eintragen).
-3. **PC-Teil (optional, nur für Follower-Wachstum + TikTok-Upload):** `automation/local/SETUP-EINMALIG.bat` 1×
-   doppelklicken → Windows-Tagestask. Läuft dann täglich, wenn der PC an + Brave eingeloggt ist.
-4. **Pixel + CH-Kampagne** = der einzige echte Käufe-Hebel (Meta/TikTok-Werbe-Manager).
+3. **TikTok-Entwurf autonom (optional, ohne PC):** OAuth 1× laufen lassen (`node automation/tiktok-oauth.mjs`,
+   schreibt die Tokens) → dann Worker-Secrets `TT_CLIENT_KEY`, `TT_CLIENT_SECRET`, `TT_REFRESH_TOKEN` setzen.
+   Danach lädt der Worker Reels automatisch in deine **TikTok-Entwürfe** (du legst Trend-Sound drauf + postest, 1 Tipp).
+   ⚠️ Braucht App-Scope `video.upload`; öffentliches Auto-Posten erst nach TikTok-App-Audit — Entwurf geht schon jetzt.
+4. **PC-Teil (Alternative für TikTok + Follower-Wachstum):** `automation/local/SETUP-EINMALIG.bat` 1× doppelklicken
+   → Windows-Tagestask (Brave-Port-Upload). Nur falls du den API-Weg (3) nicht nutzt.
+5. **Pixel + CH-Kampagne** = der einzige echte Käufe-Hebel (Meta/TikTok-Werbe-Manager).
 
 > Danach: du musst NICHTS mehr tippen. Optional steuerst du per `control.html`-Button auf Abruf (z. B. sofort posten
 > oder die Meta-Analyse ansehen). Der Cloud-Claude aktualisiert Inhalte über die Queue-CDN-URL ohne Redeploy.

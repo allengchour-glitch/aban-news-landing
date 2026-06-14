@@ -167,25 +167,68 @@ async function metaInsights(ids, env) {
   return out;
 }
 
-async function run(env) {
+// TikTok: gültigen Access-Token via Refresh holen (TT-Token leben ~24h). Secrets:
+// TT_CLIENT_KEY, TT_CLIENT_SECRET + TT_REFRESH_TOKEN (1× per OAuth, tiktok-oauth.mjs). Rotierter Refresh -> KV.
+async function ttToken(env) {
+  const ck = env.TT_CLIENT_KEY, cs = env.TT_CLIENT_SECRET;
+  const rt = (await env.LUXE_KV.get("tt_refresh")) || env.TT_REFRESH_TOKEN;
+  if (!ck || !cs || !rt) return null;
+  const body = new URLSearchParams({ client_key: ck, client_secret: cs, grant_type: "refresh_token", refresh_token: rt });
+  const r = await (await fetch("https://open.tiktokapis.com/v2/oauth/token/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body })).json();
+  if (!r.access_token) return null;
+  if (r.refresh_token) await env.LUXE_KV.put("tt_refresh", r.refresh_token);
+  return r.access_token;
+}
+
+// TikTok-ENTWURF posten (Inbox/FILE_UPLOAD): Reel landet in den TikTok-Entwürfen -> du legst Trend-Sound
+// drauf + postest (1 Tipp). Funktioniert auch ohne App-Audit (eigenes Konto). Trend-Sound geht eh nur in-app.
+async function postTikTok(item, env) {
+  if (!item.video) return { skipped: "kein Video" };
+  if (!env.TT_CLIENT_KEY) return { skipped: "keine TikTok-Creds" };
+  const tok = await ttToken(env);
+  if (!tok) return { error: "TikTok-Token/Refresh fehlt (OAuth + Secrets nötig)" };
+  const vr = await fetch(item.video);
+  if (!vr.ok) return { error: "Video-URL " + vr.status };
+  const buf = new Uint8Array(await vr.arrayBuffer());
+  const size = buf.byteLength;
+  const init = await (await fetch("https://open.tiktokapis.com/v2/post/publish/inbox/video/init/", {
+    method: "POST", headers: { Authorization: "Bearer " + tok, "Content-Type": "application/json" },
+    body: JSON.stringify({ source_info: { source: "FILE_UPLOAD", video_size: size, chunk_size: size, total_chunk_count: 1 } }),
+  })).json();
+  const up = init.data && init.data.upload_url, pid = init.data && init.data.publish_id;
+  if (!up) return { error: "TikTok init", detail: init.error || init };
+  const put = await fetch(up, { method: "PUT", headers: { "Content-Type": "video/mp4", "Content-Length": String(size), "Content-Range": `bytes 0-${size - 1}/${size}` }, body: buf });
+  if (put.status < 200 || put.status >= 300) return { error: "TikTok upload " + put.status };
+  return { ok: pid, draft: true };
+}
+
+// doPost=true -> posten (3×/Tag-Slots); immer -> Meta-Analyse (6×/Tag). So 3× posten + 6× analysieren.
+async function run(env, doPost = true) {
   if (!env.META_ACCESS_TOKEN) return { error: "META_ACCESS_TOKEN fehlt" };
   const ids = await discoverIds(env);
-  const q = await loadQueue(env);
-  let cursor = parseInt((await env.LUXE_KV.get("cursor")) || "0", 10);
-  if (cursor >= q.length) cursor = cursor % q.length;   // Queue ENDLOS loopen (bei 6×/Tag nie leer; Tages-Rotation sorgt für Vielfalt)
-  const item = q[cursor];
-  const ig = await postInstagram(ids, item).catch((e) => ({ error: String(e) }));
-  const fb = await postFacebook(ids, item).catch((e) => ({ error: String(e) }));
-  // Cursor nur weiterzählen, wenn mindestens ein Kanal erfolgreich war
-  if (ig.ok || fb.ok) await env.LUXE_KV.put("cursor", String(cursor + 1));
-  // Meta-Analyse mitlaufen lassen (autonom, jeder Cron) — Performance laufend beobachten
-  const insights = await metaInsights(ids, env).catch((e) => ({ error: String(e) }));
-  return { index: cursor, item: item.caption.split("\n")[0], ig, fb, insights };
+  const out = {};
+  if (doPost) {
+    const q = await loadQueue(env);
+    let cursor = parseInt((await env.LUXE_KV.get("cursor")) || "0", 10);
+    if (cursor >= q.length) cursor = cursor % q.length;   // Queue ENDLOS loopen
+    const item = q[cursor];
+    const ig = await postInstagram(ids, item).catch((e) => ({ error: String(e) }));
+    const fb = await postFacebook(ids, item).catch((e) => ({ error: String(e) }));
+    const tt = await postTikTok(item, env).catch((e) => ({ error: String(e) }));
+    if (ig.ok || fb.ok || tt.ok) await env.LUXE_KV.put("cursor", String(cursor + 1));
+    out.index = cursor; out.item = item.caption.split("\n")[0]; out.ig = ig; out.fb = fb; out.tt = tt;
+  } else { out.posted = false; out.note = "Analyse-Slot (kein Post)"; }
+  // Meta-Analyse läuft bei JEDEM Cron (6×/Tag)
+  out.insights = await metaInsights(ids, env).catch((e) => ({ error: String(e) }));
+  return out;
 }
+
+const POST_HOURS = [10, 15, 19];  // UTC -> CH 12(Lunch)/17/21(Primetime) = 3 Posts/Tag
 
 export default {
   async scheduled(event, env, ctx) {
-    ctx.waitUntil(run(env));
+    const h = new Date().getUTCHours();
+    ctx.waitUntil(run(env, POST_HOURS.includes(h)));   // posten nur in 3 Slots; analysieren immer
   },
   async fetch(req, env) {
     const u = new URL(req.url);
