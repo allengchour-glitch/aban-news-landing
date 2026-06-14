@@ -72,6 +72,16 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   KV `gelato_map` (SKU→productUid; productUids via `gelato_discover.mjs`/Gelato-Dashboard), Shopify-Webhook anlegen, dann `GELATO_DRAFT=0`.
 - **⚠️ OFFEN:** `gelato_map` braucht die echten productUids → in einer Session mit `GELATO_API_KEY` als Env-Var
   `node automation/gelato_discover.mjs` laufen lassen → Map befüllen. Hier nicht möglich (Key nicht in Env).
+- **🔍 Conversion-QA-Runde (autonom, live via Shopify-MCP):** Bild-QA über die 40 zuletzt geänderten Produkte =
+  **0 FAILED**, alle READY. **11 fehlende SEO-Meta-Titel gesetzt** (Bikinis Maui/Sunset/Solé, Kleider Bloom/Aria,
+  Loungewear «Cozy», Herren Lino/Court/Cruise/Riviera/Lido) via gebatchtem `productUpdate` (1 Call, 0 userErrors).
+  Funnel: **WELCOME10 ACTIVE bis 2026-08-31** bestätigt. **Lehre:** Beim Anlegen via create-product wird `seo.title`
+  oft NICHT gesetzt (nur description landet) → künftig direkt mit anlegen; Batch-Fix-Pattern: aliasierte
+  `productUpdate`-Mutationen (p1…pN) in EINEM `graphql_mutation`-Call.
+- **🛑 CJ-Decke (06-14 bestätigt, NICHT erneut versuchen):** Strandtücher/Kühltücher/Sonnenhüte/Fussschmuck/
+  Strandtaschen liefern auf CJ nur Müll/Dubletten (harte need/ban-Filter → 0 saubere Treffer ausser 2 generische
+  Totes). Katalog ist gesättigt → mehr CJ-Produkte = Zeitverschwendung. **Engpass = REICHWEITE** (User-Klicks §10 +
+  Cloudflare-Deploy + Gelato-Scharfschaltung), NICHT Katalog. CJ-Token in `/tmp/cj_token.json` weiterhin gültig (200 OK).
 
 **📌 2026-06-14 (LIEFERANTEN-STRATEGIE: Marktlücke Activewear/Loungewear → ANDERE Session übernimmt):**
 - **Marktlücken-Analyse (datenbasiert):** grösste echte Lücken = **Loungewear/Homewear** + **Damen-Activewear/Athleisure**
