@@ -375,6 +375,7 @@ details p{margin-top:8px;color:var(--ink2);font-size:.95rem}
 .cta2 a:hover{background:#a04708}
 .rel{margin-top:24px;font-size:.9rem;color:var(--muted)}
 footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var(--muted);text-align:center}
+:focus-visible{outline:3px solid #b45309;outline-offset:2px;border-radius:4px}
 </style>
 </head>
 <body>
