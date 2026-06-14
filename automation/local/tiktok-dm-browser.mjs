@@ -50,15 +50,17 @@ const REPLIES = {
   danke: 'Merci dir vilmal 🤍 Das freut üs riesig! Lueg gärn wieder verbii — mit Code WELCOME10 git’s –10% uf luxestyle.ch ✨',
   welcome: 'Hoi! 🤍 Merci für dini Nachricht! Wie chöi mer der hälfe? Alli Looks findsch uf luxestyle.ch ✨ (–10% mit Code WELCOME10)',
 };
-const replyFor = t => { for (const [k, re] of TOPIC) if (re.test(t)) return REPLIES[k]; return REPLIES.welcome; };
+// topicFor gibt das Thema ODER null (= keine klare FAQ-Frage → NICHT antworten, kein Spam auf eigene Msgs).
+const topicFor = t => { for (const [k, re] of TOPIC) if (re.test(t)) return k; return null; };
 
 const loadDone = () => { try { return new Set(JSON.parse(fs.readFileSync(DONE, 'utf8'))); } catch { return new Set(); } };
 const saveDone = s => { try { fs.writeFileSync(DONE, JSON.stringify([...s].slice(-3000))); } catch (e) { log(e.message); } };
 
-// TikTok-Web-Selektoren (best effort — bei DOM-Änderung hier anpassen):
-const CHAT_SEL = '[data-e2e="chat-list-item"], div[class*="ChatItem"], a[href*="/messages?"]';
-const MSG_SEL = '[data-e2e="chat-item"], div[class*="MessageBubble"], p[class*="Text"]';
-const BOX_SEL = 'div[contenteditable="true"], [data-e2e="message-input-area"] div[contenteditable], textarea';
+// TikTok-Web-Selektoren (verifiziert 2026-06-14: Inbox-Liste = data-e2e="inbox-list-item", 20 Chats):
+const CHAT_SEL = '[data-e2e="inbox-list-item"]';
+const TITLE_SEL = '[data-e2e="inbox-title"]';     // Name/Absender
+const PREVIEW_SEL = '[data-e2e="inbox-content"]'; // letzte Nachricht (Vorschau)
+const BOX_SEL = 'div[contenteditable="true"], textarea'; // Nachrichtenfeld im offenen Chat
 
 (async () => {
   log(`Start TikTok-DM-Browser ${DRY ? '(DRY)' : ''} — Cap ${MAX}.`);
@@ -94,19 +96,26 @@ const BOX_SEL = 'div[contenteditable="true"], [data-e2e="message-input-area"] di
     await p.screenshot({ path: path.join(process.cwd(), 'tiktok-dm-diag.png') }).catch(() => {});
     log('🔎 Screenshot: tiktok-dm-diag.png');
   }
+  // Name + letzte-Nachricht-Vorschau aus jedem Inbox-Item lesen
+  const items = await p.$$eval(CHAT_SEL, (els, sels) => els.map(el => ({
+    title: (el.querySelector(sels.t)?.innerText || '').trim(),
+    preview: (el.querySelector(sels.p)?.innerText || '').trim(),
+  })), { t: TITLE_SEL, p: PREVIEW_SEL }).catch(() => []);
   let n = 0;
-  for (let i = 0; i < chats.length && n < MAX; i++) {
-    try {
-      const chat = (await p.$$(CHAT_SEL))[i]; if (!chat) continue;
-      await chat.click({ timeout: 5000 }).catch(() => {});
-      await sleep(rnd(2500, 4500));
-      const msgs = await p.$$eval(MSG_SEL, els => els.map(e => (e.innerText || '').trim()).filter(t => t && t.length < 600)).catch(() => []);
-      const lastMsg = msgs.length ? msgs[msgs.length - 1] : '';
-      const key = (lastMsg.slice(0, 50) || ('chat' + i));
-      if (!lastMsg || done.has(key)) { log(`• Chat ${i}: nichts Neues / schon beantwortet`); continue; }
-      const reply = replyFor(lastMsg);
-      log(`• Chat ${i}: "${lastMsg.slice(0, 50)}" ⇒ ${DRY ? '[dry] ' : ''}"${reply.slice(0, 45)}…"`);
-      if (!DRY) {
+  for (let i = 0; i < items.length && n < MAX; i++) {
+    const { title, preview } = items[i];
+    const key = (title + '|' + preview).slice(0, 80);
+    if (!preview) continue;
+    if (done.has(key)) { log(`• ${title}: schon beantwortet`); continue; }
+    const topic = topicFor(preview);
+    if (!topic) { log(`• ${title}: "${preview.slice(0, 40)}" → keine klare FAQ-Frage, übersprungen`); done.add(key); continue; }
+    const reply = REPLIES[topic];
+    log(`• ${title}: "${preview.slice(0, 45)}" ⇒ ${DRY ? '[dry] ' : ''}[${topic}] "${reply.slice(0, 40)}…"`);
+    if (!DRY) {
+      try {
+        const chat = (await p.$$(CHAT_SEL))[i]; if (!chat) continue;
+        await chat.click({ timeout: 5000 }).catch(() => {});
+        await sleep(rnd(2500, 4500));
         const box = p.locator(BOX_SEL).last();
         if (await box.count().catch(() => 0)) {
           await box.click({ timeout: 4000 }).catch(() => {});
@@ -114,11 +123,11 @@ const BOX_SEL = 'div[contenteditable="true"], [data-e2e="message-input-area"] di
           await sleep(rnd(500, 1200));
           await p.keyboard.press('Enter').catch(() => {});
           n++;
-        } else { log('   ⚠️ kein Nachrichtenfeld gefunden — übersprungen (BOX_SEL prüfen)'); }
-      } else { n++; }
-      done.add(key);
-      await sleep(rnd(7000, 15000));
-    } catch (e) { log(`• Chat ${i} Fehler:`, e.message); }
+        } else { log('   ⚠️ kein Nachrichtenfeld gefunden (BOX_SEL prüfen)'); }
+      } catch (e) { log(`• ${title} Fehler:`, e.message); }
+    } else { n++; }
+    done.add(key);
+    await sleep(rnd(7000, 15000));
   }
   saveDone(done);
   log(`\nFertig: ${n} TikTok-DM${DRY ? ' (DRY)' : ''} beantwortet. State: tiktok-dm-done.json. Brave bleibt offen.`);
