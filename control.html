@@ -7,72 +7,69 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>LuxeStyle · Steuerung</title>
 <style>
-  :root{--gold:#c19a5b;--bg:#141210;--card:#1e1a16;--ok:#3ec07a;--err:#e05a5a;}
+  :root{--gold:#c19a5b;--bg:#141210;--card:#1e1a16;--ok:#3ec07a;--err:#e05a5a;--ink:#f5f0e8;}
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-  body{margin:0;background:var(--bg);color:#f5f0e8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:24px 16px 60px;}
-  h1{font-size:22px;letter-spacing:3px;text-align:center;margin:8px 0 2px;}
-  .sub{text-align:center;color:var(--gold);font-size:13px;margin-bottom:18px;}
-  .tok{width:100%;padding:12px;border-radius:12px;border:1px solid #3a342c;background:#0f0d0b;color:#f5f0e8;font-size:14px;margin-bottom:6px;}
-  .hint{font-size:11px;color:#8a8276;margin:0 2px 16px;}
-  .btn{display:flex;align-items:center;gap:14px;width:100%;padding:18px;margin:10px 0;border:none;border-radius:16px;background:var(--card);color:#f5f0e8;font-size:17px;font-weight:600;text-align:left;border:1px solid #2a251f;}
-  .btn:active{transform:scale(.98);background:#26201a;}
-  .btn .emo{font-size:24px;}
-  .btn small{display:block;color:#9a9182;font-weight:400;font-size:12px;margin-top:2px;}
-  #toast{position:fixed;left:16px;right:16px;bottom:20px;padding:14px;border-radius:12px;text-align:center;font-weight:600;opacity:0;transition:.3s;pointer-events:none;}
-  #toast.show{opacity:1;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:22px 16px 60px;}
+  h1{font-size:22px;letter-spacing:3px;text-align:center;margin:6px 0 2px;}
+  .sub{text-align:center;color:var(--gold);font-size:12px;margin-bottom:16px;}
+  input{width:100%;padding:12px;border-radius:12px;border:1px solid #3a342c;background:#0f0d0b;color:var(--ink);font-size:14px;margin-bottom:8px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
+  button{padding:16px 10px;border-radius:14px;border:1px solid #3a342c;background:var(--card);color:var(--ink);font-size:15px;font-weight:600;cursor:pointer;}
+  button:active{transform:scale(.97);}
+  button.full{grid-column:1 / -1;background:linear-gradient(135deg,#caa24f,#a87f37);color:#1a1611;border:none;}
+  .hint{font-size:11px;color:#9a8f7e;margin:2px 0 14px;}
+  #out{margin-top:16px;background:#0f0d0b;border:1px solid #2c2620;border-radius:12px;padding:12px;font-size:12px;white-space:pre-wrap;word-break:break-word;max-height:46vh;overflow:auto;}
+  .ok{color:var(--ok);} .err{color:var(--err);}
 </style>
 </head>
 <body>
-  <h1>L U X E S T Y L E</h1>
-  <div class="sub">Steuerung 🇨🇭</div>
+  <h1>LUXESTYLE</h1>
+  <div class="sub">Steuerung · alles über den Cloudflare-Worker</div>
 
-  <input id="tok" class="tok" type="password" placeholder="GitHub-Token (github_pat_…) einfügen" autocomplete="off">
-  <p class="hint">Token wird nur auf diesem Gerät gespeichert. Fine-grained Token mit „Actions: Read and write" auf Repo aban-news-landing.</p>
+  <input id="base" placeholder="Worker-URL" value="https://luxe-poster.allengchour.workers.dev">
+  <input id="key" placeholder="Trigger-Key (1× eintragen, wird gespeichert)" autocomplete="off">
+  <div class="hint">Key wird nur lokal im Handy gespeichert. „+" im Key wird automatisch korrekt kodiert.</div>
 
-  <div id="buttons"></div>
-  <div id="toast"></div>
+  <div class="grid">
+    <button class="full" onclick="go('')">📷 Jetzt posten (nächster Post)</button>
+    <button onclick="go('status=1')">📊 Status</button>
+    <button onclick="go('insights=1')">📈 Meta-Analyse</button>
+    <button onclick="cleanup()">🧹 Alte FB-Posts löschen</button>
+    <button onclick="go('cursor=0')">🔄 Queue von vorne</button>
+    <button class="full" onclick="setQueue()">🔗 Neue Queue-URL laden</button>
+  </div>
+
+  <div id="out">Bereit. Key eintragen, dann tippen.</div>
 
 <script>
-const REPO="allengchour-glitch/aban-news-landing";
-const ACTIONS=[
-  ["📊","Analyse jetzt","TikTok-Performance + lernen","analytics-learn.yml"],
-  ["📸","IG/FB Bild posten","nächstes Bild aus Queue","social-meta-autopost.yml"],
-  ["🎬","IG/FB Reel posten","nächstes Video aus Queue","video-meta-autopost.yml"],
-  ["📖","Story posten","nächste Story aus Queue","story-meta-autopost.yml"],
-  ["🎵","TikTok Entwurf","nächstes Reel in Entwürfe","tiktok-autopost.yml"],
-  ["💬","DMs beantworten","neue Nachrichten automatisch","ig-dm-reply.yml"],
-  ["📅","Metricool planen","Queue → öffentlich posten","metricool-schedule.yml"],
-  ["📌","Pinterest pinnen","nächste Pins aus Queue","pinterest-publish.yml"],
-  ["✨","FB polieren","Profilbild + Info setzen","fb-profile-polish.yml"],
-];
-const tok=document.getElementById("tok");
-tok.value=localStorage.getItem("ghpat")||"";
-tok.addEventListener("input",()=>localStorage.setItem("ghpat",tok.value.trim()));
+  const $ = (id) => document.getElementById(id);
+  try { const k = localStorage.getItem('luxe_key'); if (k) $('key').value = k;
+        const b = localStorage.getItem('luxe_base'); if (b) $('base').value = b; } catch(e){}
+  $('key').addEventListener('change', () => { try{localStorage.setItem('luxe_key',$('key').value.trim());}catch(e){} });
+  $('base').addEventListener('change', () => { try{localStorage.setItem('luxe_base',$('base').value.trim());}catch(e){} });
 
-function toast(msg,ok){const t=document.getElementById("toast");t.textContent=msg;t.style.background=ok?"var(--ok)":"var(--err)";t.style.color="#0c0a08";t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2600);}
-
-async function run(file,label){
-  const token=tok.value.trim();
-  if(!token){toast("⚠️ Erst Token einfügen",false);return;}
-  try{
-    const r=await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/${file}/dispatches`,{
-      method:"POST",
-      headers:{Authorization:`Bearer ${token}`,Accept:"application/vnd.github+json","Content-Type":"application/json"},
-      body:JSON.stringify({ref:"main"})
-    });
-    if(r.status===204) toast(`✅ ${label} gestartet`,true);
-    else { const j=await r.json().catch(()=>({})); toast(`❌ ${r.status}: ${(j.message||"Fehler").slice(0,50)}`,false); }
-  }catch(e){ toast("❌ Netzwerk-Fehler",false); }
-}
-
-const box=document.getElementById("buttons");
-for(const [emo,title,desc,file] of ACTIONS){
-  const b=document.createElement("button");
-  b.className="btn";
-  b.innerHTML=`<span class="emo">${emo}</span><span>${title}<small>${desc}</small></span>`;
-  b.onclick=()=>run(file,title);
-  box.appendChild(b);
-}
+  function url(params){
+    const base = $('base').value.trim().replace(/\/$/,'');
+    const key = encodeURIComponent($('key').value.trim());   // löst das „+"→%2B-Problem
+    return base + '/?key=' + key + (params ? '&' + params : '');
+  }
+  async function go(params){
+    const out = $('out'); out.textContent = '… lädt …';
+    if (!$('key').value.trim()) { out.innerHTML = '<span class="err">Bitte zuerst den Trigger-Key eintragen.</span>'; return; }
+    try {
+      const r = await fetch(url(params)); const t = await r.text();
+      let pretty = t; try { pretty = JSON.stringify(JSON.parse(t), null, 2); } catch(e){}
+      out.innerHTML = '<span class="'+(r.ok?'ok':'err')+'">HTTP '+r.status+'</span>\n' + pretty;
+    } catch(e){ out.innerHTML = '<span class="err">Fehler: '+e+'</span>'; }
+  }
+  function cleanup(){
+    const d = prompt('FB-Posts älter als (JJJJ-MM-TT) löschen:', '2026-05-01');
+    if (d) go('cleanup=' + encodeURIComponent(d));
+  }
+  function setQueue(){
+    const u = prompt('Neue Queue-JSON-URL (CDN):', 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-queue.json');
+    if (u) go('queue=' + encodeURIComponent(u));
+  }
 </script>
 </body>
 </html>

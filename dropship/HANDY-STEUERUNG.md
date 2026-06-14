@@ -1,11 +1,30 @@
-# 📱 LuxeStyle vom Handy steuern — Klick-Buttons (Widgets)
+# 📱 LuxeStyle vom Handy steuern + ohne dich laufen lassen
 
-> Ziel: Auf dem Handy-Homescreen **Buttons**, die je eine Automatik auslösen (posten,
-> analysieren, planen, polieren, DMs beantworten). Keine App nötig — nutzt die GitHub-„Run workflow"-API.
-> ⚠️ Funktioniert, sobald **GitHub Actions** wieder frei ist (heutige Sperre löst sich von selbst).
+> **Empfohlen (funktioniert HEUTE, kein GitHub nötig):** Datei **`control.html`** (Repo-Root) am Handy öffnen →
+> **Worker-URL + Trigger-Key 1× eintragen** (wird lokal gespeichert) → fertig. Buttons:
+> 📷 Jetzt posten · 📊 Status · 📈 Meta-Analyse · 🧹 Alte FB-Posts löschen · 🔄 Queue von vorne · 🔗 Neue Queue laden.
+> Tipp iOS: in Safari „Zum Home-Bildschirm" → wie eine App. Android: Chrome → „Zum Startbildschirm".
 
-Am einfachsten: die Datei **`control.html`** (Repo-Root) auf dem Handy öffnen (oder hosten) → Token
-einmal einfügen → alle Buttons als Kachel-Raster. Alternativ die Shortcuts/HTTP-Shortcuts unten.
+## ✅ Was schon VOLLAUTONOM läuft (ohne dich, ohne Handy)
+- **Cloudflare-Worker** `luxe-poster` (Cron 2×/Tag, 16+19 UTC): postet IG+FB **Bilder + Stories + Reels**,
+  zählt den Queue-Cursor selbst weiter, **holt die Queue selbst von der CDN-URL** (kein Redeploy nötig) und
+  **analysiert Meta bei jedem Lauf** (IG+FB-Engagement → KV-Log, am Handy via 📈-Button sichtbar).
+- **Pinterest** (eigenes System, 2×/Woche), **Gehirn-Lernen + Queue-Nachschub**, **Tages-Asset-Rotation** der Reels.
+
+## 🔴 EINMALIGE Einrichtung, damit ALLES ohne dich läuft (danach nie wieder)
+1. **`wrangler deploy`** im Ordner `automation/cloudflare/luxe-poster` (1×) → aktiviert den neuesten Worker-Code
+   (FB-Stories, echte FB-Reels, Meta-Analyse) + die aktuelle Queue. *Doppelklick:* `automation/local/DEPLOY-WORKER.bat`.
+2. **Worker-Secrets** (1×, Cloudflare-Dashboard → Worker → Settings → Variables): `META_ACCESS_TOKEN` (langlebiger
+   Page/User-Token), `TRIGGER_KEY` (frei wählbar — den gleichen ins `control.html` eintragen).
+3. **PC-Teil (optional, nur für Follower-Wachstum + TikTok-Upload):** `automation/local/SETUP-EINMALIG.bat` 1×
+   doppelklicken → Windows-Tagestask. Läuft dann täglich, wenn der PC an + Brave eingeloggt ist.
+4. **Pixel + CH-Kampagne** = der einzige echte Käufe-Hebel (Meta/TikTok-Werbe-Manager).
+
+> Danach: du musst NICHTS mehr tippen. Optional steuerst du per `control.html`-Button auf Abruf (z. B. sofort posten
+> oder die Meta-Analyse ansehen). Der Cloud-Claude aktualisiert Inhalte über die Queue-CDN-URL ohne Redeploy.
+
+---
+## (Legacy) GitHub-Actions-Buttons — nur falls Actions wieder frei ist
 
 ---
 

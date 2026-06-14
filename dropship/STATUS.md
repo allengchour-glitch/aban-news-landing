@@ -33,6 +33,12 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-14 (Handy-Steuerung + ohne-dich-Setup)
+- **📱 `control.html` neu = Worker-Dashboard** (funktioniert HEUTE, kein GitHub): Worker-URL+Key 1× eintragen →
+  Buttons 📷 Posten · 📊 Status · 📈 Meta-Analyse · 🧹 FB-Cleanup · 🔄 Queue-Reset · 🔗 Queue-URL. „+"-Key wird korrekt kodiert.
+- **🤖 Worker analysiert Meta autonom** (jeder Cron) → KV-Log, am Handy via 📈-Button.
+- **📋 `HANDY-STEUERUNG.md`** = klare Einmal-Einrichtung (deploy, Secrets, PC-Task, Pixel) → danach alles ohne dich.
+
 ### 2026-06-14 (Versteckte Assets gehoben + Tages-Rotation)
 - **🔎 Repo-weiter Asset-Scan:** `video-prototypes/*` + `media/reels/*` = **abannews** (falsche Marke) → bewusst NICHT genutzt.
   LuxeStyle-Pool = `reels/`.
