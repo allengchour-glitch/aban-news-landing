@@ -33,6 +33,14 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-14 (Sprach-Tools installiert)
+- **🎙️ Transkription installiert** (`faster-whisper`, CPU, gratis): `automation/transcribe.py <video>` → Text.
+  Smoke-Test OK. ⚠️ Schreibt Schweizerdeutsch als Hochdeutsch (gut fürs Verstehen, nicht für Bern-Schreibweise).
+- **🗣️ Lokale Eigen-Stimme** (`automation/bern_voiceover.py`, piper, gratis, kein Key): Bärndütsch-Text → WAV (5s-Test OK).
+  Deutsch-gefärbt (piper hat kein Schwiizerdütsch). Speist Reels (`render_masterpiece.sh` nimmt voice.wav).
+- **🤖 HeyGen-Integration** (`automation/heygen_video.mjs`): KI-Avatar/Voice-Videos — Cloud, **braucht `HEYGEN_API_KEY`**
+  (Gratis-Tier). No-op ohne Key. `--avatars` listet Avatare/Stimmen. Für echten Mundart-Sprecher der beste Weg.
+
 ### 2026-06-14 (Berndeutsch gelernt)
 - **🇨🇭 Bärndütsch-Bank gebaut** (`automation/brain/berndeutsch.json`): authentisches Berndeutsch aus Recherche
   (berndeutsch.ch/edimuster) + eigenen Gewinner-Captions. Bern-Marker: **L-Vokalisierung (viu/schnäu/aui/Gäud)**,
