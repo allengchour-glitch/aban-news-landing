@@ -80,44 +80,72 @@ async function gql(env, token, query) {
 }
 const esc = (s) => s.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 
+async function runMutations(env, token, items, build, log) {
+  let done = 0;
+  for (let i = 0; i < items.length; i += 20) {
+    const chunk = items.slice(i, i + 20);
+    const m = "mutation {\n" + chunk.map((f, j) => build(f, j)).join("\n") + "\n}";
+    const res = await gql(env, token, m);
+    if (res?.data) done += chunk.length;
+    else log.push("mutation-fehler: " + JSON.stringify(res?.errors || res).slice(0, 200));
+  }
+  return done;
+}
+
 async function run(env, manual) {
   const log = [];
   try {
     const token = await getToken(env);
     if (!token) { return { ok: false, error: "kein Shopify-Token (Client-Credentials prüfen)" }; }
     const limit = parseInt(env.SCAN_LIMIT || "50", 10);
-    const q = `{ products(first: ${limit}, query: "status:active tag:cj-real", sortKey: CREATED_AT, reverse: true) {
-      nodes { id title productType category { id } seo { title } } } }`;
-    const data = await gql(env, token, q);
-    const nodes = data?.data?.products?.nodes || [];
-    const fixes = [];
+    const colMax = parseInt(env.COLLECTION_COVER_MAX || "30", 10);
+
+    // 1) Produkt-Veredelung (SEO Titel + Description + Kategorie) + Bild-QA
+    const pq = `{ products(first: ${limit}, query: "status:active tag:cj-real", sortKey: CREATED_AT, reverse: true) {
+      nodes { id title productType category { id } seo { title description } featuredImage { url } } } }`;
+    const pdata = await gql(env, token, pq);
+    const nodes = pdata?.data?.products?.nodes || [];
+    const prodFixes = []; const noImage = [];
     for (const n of nodes) {
-      const needSeo = !(n.seo && n.seo.title);
+      if (!n.featuredImage) noImage.push(clean(n.title).slice(0, 60));
+      const needSeo = !(n.seo && n.seo.title && n.seo.description);
       const needCat = !n.category && CAT[(n.productType || "").trim()];
       if (!needSeo && !needCat) continue;
       let input = `id: "${n.id}"`;
       if (needCat) input += `, category: "${TC}${CAT[n.productType.trim()]}"`;
       if (needSeo) input += `, seo: { title: "${esc(mkTitle(n.title))}", description: "${esc(mkDesc(n.title))}" }`;
-      fixes.push(input);
+      prodFixes.push(input);
     }
-    let done = 0;
-    for (let i = 0; i < fixes.length; i += 20) {
-      const chunk = fixes.slice(i, i + 20);
-      const m = "mutation {\n" + chunk.map((inp, j) => `  f${j}: productUpdate(input: { ${inp} }) { product { id } userErrors { field message } }`).join("\n") + "\n}";
-      const res = await gql(env, token, m);
-      if (res?.data) done += chunk.length;
-      else log.push("mutation-fehler: " + JSON.stringify(res?.errors || res).slice(0, 200));
+
+    // 2) Collection-Cover (leere Kategorien aus eigenem Produktbild bebildern)
+    const cq = `{ collections(first: 250) { nodes { id handle title image { url } products(first: 5) { nodes { featuredImage { url } } } } } }`;
+    const cdata = await gql(env, token, cq);
+    const colls = cdata?.data?.collections?.nodes || [];
+    const colFixes = [];
+    for (const c of colls) {
+      if (c.image) continue;
+      const img = (c.products?.nodes || []).map((p) => p.featuredImage && p.featuredImage.url).find(Boolean);
+      if (img) colFixes.push({ id: c.id, src: img, alt: clean(c.title) || "LuxeStyle" });
+      if (colFixes.length >= colMax) break;
     }
-    const status = `🧠 Shop-Brain: ${nodes.length} geprüft · ${fixes.length} veredelt (SEO/Kategorie)${manual ? " [manuell]" : ""} · ${new Date().toISOString()}`;
+
+    const pDone = await runMutations(env, token, prodFixes,
+      (inp, j) => `  f${j}: productUpdate(input: { ${inp} }) { product { id } userErrors { field message } }`, log);
+    const cDone = await runMutations(env, token, colFixes,
+      (f, j) => `  c${j}: collectionUpdate(input: { id: "${f.id}", image: { src: "${esc(f.src)}", altText: "${esc(f.alt)} bei LuxeStyle" } }) { collection { id } userErrors { field message } }`, log);
+
+    const status = `🧠 Shop-Brain v2: ${prodFixes.length} veredelt · ${cDone} Cover · ${noImage.length} ohne Bild${manual ? " [manuell]" : ""} · ${new Date().toISOString()}`;
     log.push(status);
+    if (noImage.length) log.push("⚠️ ohne Bild: " + noImage.join(" · "));
     await env.BRAIN_KV.put("last_run", status);
-    if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID && fixes.length > 0) {
+    await env.BRAIN_KV.put("last_no_image", JSON.stringify(noImage));
+    if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID && (prodFixes.length || cDone || noImage.length)) {
       await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text: status }),
       }).catch(() => {});
     }
-    return { ok: true, checked: nodes.length, fixed: fixes.length, done, log };
+    return { ok: true, checked: nodes.length, fixed: prodFixes.length, pDone, covers: cDone, noImage: noImage.length, log };
   } catch (e) {
     return { ok: false, error: e.message, log };
   }
