@@ -28,7 +28,12 @@ import { tmpdir } from 'node:os';
 const CSV = new URL('./reels_seed.csv', import.meta.url).pathname;
 const DRY = process.env.DRY_RUN === '1';
 const MAX = Math.max(1, parseInt(process.env.MAX_PER_RUN || '1', 10) || 1);
-const PRIVACY = process.env.TT_PRIVACY_LEVEL || 'SELF_ONLY';
+const MODE = (process.env.TT_PRIVACY_LEVEL || 'SELF_ONLY').toUpperCase();
+// DRAFT/INBOX = echter TikTok-Entwurf (du machst Caption+Veröffentlichen in der App).
+// SELF_ONLY = privat auf dein Profil hochgeladen MIT Caption (du tippst nur „öffentlich"). Default.
+// PUBLIC_TO_EVERYONE = direkt öffentlich (erst NACH TikTok-App-Audit erlaubt).
+const DRAFT = MODE === 'DRAFT' || MODE === 'INBOX';
+const PRIVACY = DRAFT ? 'SELF_ONLY' : MODE;
 const COLS = ['id','scheduled_date','video_url','caption','hashtags','platforms','status','posted_at','post_url'];
 
 // --- CSV parse/serialize (identisch zu post-next-reel.mjs) ---
@@ -84,24 +89,25 @@ async function downloadToTemp(url){
 // --- TikTok-Posting (FILE_UPLOAD) ---
 async function postTikTok(token, videoUrl, caption){
   const { path: localPath, size } = await downloadToTemp(videoUrl);
-  // 1) Init publish session
-  const init = await fetch('https://open.tiktokapis.com/v2/post/publish/video/init/', {
+  // 1) Init publish session — DRAFT (Inbox: landet in deinen TikTok-Entwürfen, du finalisierst in der App)
+  //    ODER Direct-Post (privat/öffentlich mit fertiger Caption).
+  const src = { source: 'FILE_UPLOAD', video_size: size, chunk_size: size, total_chunk_count: 1 };
+  const initUrl = DRAFT
+    ? 'https://open.tiktokapis.com/v2/post/publish/inbox/video/init/'
+    : 'https://open.tiktokapis.com/v2/post/publish/video/init/';
+  const initBody = DRAFT
+    ? { source_info: src }   // Inbox-Entwurf: keine post_info (Titel/Privacy setzt du in der App)
+    : { post_info: {
+          title: caption.slice(0, 2200),
+          privacy_level: PRIVACY,
+          disable_duet: false, disable_comment: false, disable_stitch: false,
+          video_cover_timestamp_ms: 1000
+        },
+        source_info: src };
+  const init = await fetch(initUrl, {
     method:'POST',
     headers:{ Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      post_info: {
-        title: caption.slice(0, 2200),  // TT-Limit
-        privacy_level: PRIVACY,
-        disable_duet: false, disable_comment: false, disable_stitch: false,
-        video_cover_timestamp_ms: 1000
-      },
-      source_info: {
-        source: 'FILE_UPLOAD',
-        video_size: size,
-        chunk_size: size,           // Single-Chunk-Upload (Videos < 64MB)
-        total_chunk_count: 1
-      }
-    })
+    body: JSON.stringify(initBody)
   });
   const ij = await init.json().catch(()=>({}));
   if(!init.ok || !ij.data?.upload_url){
@@ -122,7 +128,7 @@ async function postTikTok(token, videoUrl, caption){
     console.error('TT upload:', up.status, t.slice(0, 200));
     return false;
   }
-  console.log('TikTok: publish_id', ij.data.publish_id, '(privacy:', PRIVACY + ')');
+  console.log('TikTok: publish_id', ij.data.publish_id, DRAFT ? '(ENTWURF/Inbox → in der App veröffentlichen)' : '(privacy: ' + PRIVACY + ')');
   return ij.data.publish_id;
 }
 
