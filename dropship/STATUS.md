@@ -33,6 +33,13 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-14 (FB-Stories + Reels automatisiert)
+- **✅ Worker erweitert (`luxe-poster/src/index.js`):** postet jetzt **FB-Page-Stories** (Foto via
+  `photos?published=false`→`photo_stories`; Video via `video_stories`) UND **echte FB-Reels** (`video_reels`,
+  hosted file_url) — vorher wurden FB-Stories übersprungen und Reels nur als Link gepostet. Damit erledigen
+  sich die FB-Nudges („Deine Story ist abgelaufen" / „teile dein Reel") automatisch. Syntax geprüft (OK).
+  ⚠️ **EINMALIG `wrangler deploy`** nötig, dann hands-free.
+
 ### 2026-06-14 (Vollgas-Audit: 6 parallele Agenten + autonome Fixes)
 - **🔴 Conversion-Leak gefunden:** ATC nur 0,32 % — Übergang Session→Warenkorb, nicht nur Reichweite.
 - **✅ Strikt-CH durchgesetzt:** DACH-Markt-Storefront `/de-de/` (Deutschland & Österreich) **gelöscht** (war ein

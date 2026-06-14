@@ -80,10 +80,32 @@ async function postInstagram(ids, item) {
   return pub.id ? { ok: pub.id } : { error: "IG publish", detail: pub };
 }
 
+// FB hosted-file Upload (resumable) für video_reels UND video_stories: FB zieht das Video selbst
+// über den file_url-Header — kein Byte-Streaming im Worker nötig. start → upload(file_url) → finish.
+async function fbVideoUpload(ids, edge, videoUrl, finishParams) {
+  const start = await gpost(`${ids.page_id}/${edge}`, { upload_phase: "start", access_token: ids.page_token });
+  if (!start.video_id || !start.upload_url) return { error: edge + " start", detail: start };
+  const up = await fetch(start.upload_url, { method: "POST", headers: { Authorization: "OAuth " + ids.page_token, file_url: videoUrl } });
+  const upj = await up.json().catch(() => ({}));
+  // FB Zeit zum Ingesten geben, dann finishen (PUBLISHED)
+  await new Promise((r) => setTimeout(r, 8000));
+  const fin = await gpost(`${ids.page_id}/${edge}`, { upload_phase: "finish", video_id: start.video_id, access_token: ids.page_token, ...finishParams });
+  return (fin.success || fin.post_id || fin.id) ? { ok: fin.post_id || start.video_id } : { error: edge + " finish", detail: fin, up: upj };
+}
+
 async function postFacebook(ids, item) {
-  if (item.type === "story") return { skipped: "Story → nur IG (FB-Stories-API instabil)" };
+  // FB-Story (automatisiert die „Deine Story ist abgelaufen / teile dein Reel"-Nudges)
+  if (item.type === "story") {
+    if (item.video) return await fbVideoUpload(ids, "video_stories", item.video, {});
+    // Foto-Story: erst UNveröffentlicht hochladen (published=false) → dann als Story publizieren
+    const ph = await gpost(`${ids.page_id}/photos`, { url: item.image, published: "false", access_token: ids.page_token });
+    if (!ph.id) return { error: "FB story photo upload", detail: ph };
+    const st = await gpost(`${ids.page_id}/photo_stories`, { photo_id: ph.id, access_token: ids.page_token });
+    return (st.success || st.post_id) ? { ok: st.post_id || ph.id, story: true } : { error: "FB photo_stories", detail: st };
+  }
   if (item.type === "video" || item.type === "reel") {
-    // FB Reels-API ist aufwändiger → für Video vorerst nur Link-Post als Fallback
+    if (item.video) return await fbVideoUpload(ids, "video_reels", item.video, { video_state: "PUBLISHED", description: item.caption || "" });
+    // kein Video-URL → Link-Post-Fallback
     const r = await gpost(`${ids.page_id}/feed`, { message: item.caption, link: "https://luxestyle.ch", access_token: ids.page_token });
     return r.id ? { ok: r.id } : { error: "FB feed", detail: r };
   }
