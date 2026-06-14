@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # AUTO-GENERIERT von automation/brain/brain.mjs v2 — NICHT manuell editieren (Aenderungen in knowledge.json).
-# Gehirn-Stand: 3 Report(s) gelernt · Bayes-Shrinkage · Verlierer geblockt (#luxestyle #luxestylech).
+# Gehirn-Stand: 3 Report(s) gelernt · Bayes-Shrinkage · Verlierer geblockt (#luxestyle #luxestylech #deutschland #germany #deutschershop #berlin #munchen #hamburg).
 # CAPS sind nach gelerntem Hook-Typ sortiert (bester Typ zuerst: mundart > preis_vergleich > generisch).
 TAGSETS=(
   "#fyp #tiktokmademebuyit #produkttipp #bohostyle #swisspremium"

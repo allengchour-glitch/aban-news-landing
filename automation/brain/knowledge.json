@@ -350,9 +350,16 @@
     ],
     "blocked_hashtags": [
       "#luxestyle",
-      "#luxestylech"
+      "#luxestylech",
+      "#deutschland",
+      "#germany",
+      "#deutschershop",
+      "#berlin",
+      "#munchen",
+      "#hamburg"
     ],
-    "blocked_reason": "Marken-Tags = Discovery-Sackgasse (niemand sucht sie); Ø432 Views trotz 21x Nutzung. Nur fuer Brand-Recall, nicht fuer Reichweite -> aus TikTok-Discovery-Tagsets verbannt.",
+    "blocked_reason": "Marken-Tags = Discovery-Sackgasse. ZUSAETZLICH Deutschland-Tags geblockt: User-Regel 2026-06-14 'falls in Deutschland, erweitere nicht' -> Shop bleibt STRIKT Schweiz (CHF, CH-Versand, CH-Zielgruppe). Keine DE-Maerkte/Staedte/Tags. Mundart (Schwiizerduetsch) ist erwuenscht, da es DE automatisch ausfiltert.",
+    "geo_focus": "Schweiz only. NIE nach Deutschland/Oesterreich erweitern: kein DE-Shopify-Markt, kein EUR-Pricing fuer DE, keine DE-Stadt-/#deutschland-Tags, kein DE-Targeting in Ads. CH-Tags (#schweiz/#bern/#schweizmode/#ootdschweiz) + Mundart bevorzugen.",
     "winner_hooks": [
       "Wusste nicht, dass ich das brauche 👀 %s — und der Preis? Schau selbst 👇 📌 Speicher's dir · −10%% WELCOME10 → luxestyle.ch",
       "CHF 34.90 statt Designer-Preis 👀 %s — welche Farbe wäre deins? Kommentier 👇 📌 Speichern für später · folge für die Sommer-Drops · −10%% WELCOME10 → luxestyle.ch",

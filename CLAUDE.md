@@ -37,6 +37,10 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 
 ## Kernfakten (Details im Runbook)
 - Shop: **LuxeStyle** (luxestyle.ch), Zugriff über `mcp__…__*`-Shopify-Tools.
+- **🇨🇭 GEO-REGEL (FEST, User 2026-06-14 „falls in Deutschland erweitere nicht"):** Shop bleibt STRIKT
+  Schweiz — KEIN Ausbau nach Deutschland/Österreich. Kein DE-Markt/EUR-Pricing/DE-Stadt- oder #deutschland-Tags/
+  DE-Ad-Targeting. CH-Tags (#schweiz/#bern/#schweizmode/#ootdschweiz) + **Mundart** bevorzugen (Mundart filtert DE
+  automatisch raus). Deutschland-Tags sind im Gehirn (`knowledge.json` blocked_hashtags) gesperrt.
 - CJ-API: Credentials + Workflow in `dropship/AUTONOMER-MODUS.md`. Import-Skript:
   `dropship/cj_enrich.mjs` (Node: `/opt/node22/bin/node`).
 - **Publish-Falle:** Produkt-IDs zum Publizieren IMMER aus der `create-product`-Antwort nehmen,

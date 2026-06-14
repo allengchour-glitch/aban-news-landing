@@ -15,7 +15,7 @@ _Aktualisiert: 2026-06-14 · 3 Reports gelernt · Bayes-Shrinkage (C=5, Ø-Basis
 4. #foryou #produkttipp #musthave #schweiz #sommerschuhe
 **Top-Performer (Score · Konfidenz):** #bohostyle 585·mittel · #swisspremium 523·mittel · #premiumlifestyle 523·mittel · #wellness 510·mittel · #sommerkleid 370·hoch · #cardigan 352·hoch
 **📈 Momentum (steigend):** #fyp ×1.20 · #foryou ×1.29 · #schweizmode ×1.16
-**🚫 Geblockt:** #luxestyle #luxestylech
+**🚫 Geblockt:** #luxestyle #luxestylech #deutschland #germany #deutschershop #berlin #munchen #hamburg
 
 ## 🎣 Hook-Typ-Scoreboard (was zieht wirklich — gelernt aus 5 Typen)
 - **mundart**: Ø 793 Views (3 Videos)
