@@ -27,6 +27,11 @@
 ## ✅ Verlauf — was gemacht wurde
 
 ### 2026-06-14
+- **🎬 3 Reel-MEISTERWERKE produziert** (Luma ray-flash-2 → 9:16 + Hook + QA): #1 Flame-Diffuser (Mundart „Chämi-Vibes
+  ohni Füür"), #2 Bali-Kleid (Preis-Hook, China-Schild rausgecroppt), #3 Onyx-Ohrringe (Mundart „Für di oder zum
+  Verschänke?"). Je 2 Exporte: stumm (TikTok→Trend-Sound) + Eigen-Track (Meta). Jedes per Frame QA'd. In `reels/`.
+- **🎹 EIGENE Musik produziert** (User „viel besser" als royalty-free): fluidsynth+GM-Soundfont → `luxe-signature.wav`
+  (Generator `automation/music/make_signature_track.py`). = Standard für Meta-Reels.
 - **🎵 Trend-Sound-Workflow:** TikTok-Upload jetzt Default **ENTWURF** (Inbox) → Reels landen stumm in den TikTok-
   Entwürfen, du legst in der App den Trend-Sound drauf + postest (1 Tipp). Trend-Sounds gehen lizenzrechtlich NUR
   in der App (keine API kann das). Stumme `reels/*-clean.mp4` existieren (ideal dafür).
