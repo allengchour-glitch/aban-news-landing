@@ -33,6 +33,13 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-14 (Self-hosted KI-Sprecher vorbereitet — PC hat NVIDIA-GPU!)
+- **🧑‍🎤 Avatar-Pipeline vorbereitet** (`automation/local/avatar/`): **SETUP-AVATAR.bat** (SadTalker Apache-2.0 +
+  piper MIT, kommerziell-safe; OpenVoice optional fürs Klonen) + **MACHE-AVATAR.bat** (Text→Stimme→sprechender
+  Kopf→9:16+Hook) + **AVATAR-SETUP.md**. **Spart HeyGen-Abo.** Läuft NUR am PC (GPU) — Cloud hat keine GPU.
+  ⚠️ XTTS gemieden (NC-Lizenz). User-Aktion am PC: 1× `SETUP-AVATAR.bat` + `presenter.jpg` reinlegen.
+- **💡 FEST gemerkt: der PC des Users hat eine NVIDIA-GPU** → self-hosted Video/Voice (SadTalker/MuseTalk/OpenVoice) ist machbar.
+
 ### 2026-06-14 (Sprach-Tools installiert)
 - **🔧 piper-TTS reproduzierbar** (`automation/setup_tts.sh`): installiert piper-tts + lädt Stimmen
   (kerstin w / thorsten m) — idempotent, gegen Container-Ephemeralität. Test-Synthese OK. In jeder neuen Session laufen lassen.
