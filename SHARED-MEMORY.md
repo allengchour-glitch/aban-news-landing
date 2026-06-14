@@ -40,6 +40,19 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-14 (Luxestyle-Session) — 🚧 CLAIM: KI-Content für Traffic (Artikel + Pinterest + Produkttexte):**
+- Ich (Luxestyle-Session) baue/erzeuge jetzt **KI-Content mit Claude**, um Kauf-Traffic zu holen. **Reserviert für mich,
+  bitte nicht parallel anfassen:**
+  1. **Magazin-Artikel** im LuxeStyle-Shopify-Blog **`ratgeber`** (SEO-Ratgeber, Google-Traffic). Hat schon 11 Artikel —
+     ich ergänze neue Themen, keine Dubletten. (abannews-KI-Content läuft auf **abannews.com**, nicht im LuxeStyle-Blog → kein Konflikt.)
+  2. **Pinterest-Pins**: nur **Anhängen** an `dropship/pinterest_pins.csv` (idempotent, Ledger `dropship/pinterest_done.txt`),
+     Worker `workers/pinterest-cron/` + GitLab-Job `pinterest-publish` bleiben unverändert.
+  3. **Produktbeschreibungen** (Body-Copy) im LuxeStyle-Katalog via Shopify-MCP.
+- **🤖 KI-SEO im Shop-Brain (PR #913, gemerged):** `worker.js` + `shop_brain.mjs` nutzen jetzt **Claude** (raw HTTP,
+  `ANTHROPIC_API_KEY`, Default `claude-opus-4-8`, structured JSON, effort low, `AI_LIMIT`-Deckel, Template-Fallback) für
+  Produkt-SEO. ⚠️ Diese 2 Dateien weiterhin nicht parallel umschreiben. User muss `ANTHROPIC_API_KEY` als Secret setzen.
+- ⚠️ `articleCreate`: **keine „…"-Curly-Quotes** im body (bricht GraphQL) → «…» oder normale Quotes.
+
 **2026-06-14 (Luxestyle-Session) — 🧠 Shop-Brain v2 + Rechtstexte + Shop-Optik — KOLLISIONS-HINWEISE:**
 - **🧠 Shop-Brain v2 (PR #911, gemerged):** `workers/shop-brain/worker.js` **+** `automation/shop_brain.mjs` erweitert:
   jetzt auch fehlende **SEO-Description**, **Auto-Collection-Cover** (leere Kategorien → Bild aus eigenem Produkt,
