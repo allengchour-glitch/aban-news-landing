@@ -4,16 +4,16 @@
     "#fyp #tiktokmademebuyit #produkttipp #bohostyle #swisspremium",
     "#foryou #musthave #gefundenauftiktok #premiumlifestyle #wellness",
     "#fyp #lifehack #tiktokmademebuyit #sommerkleid #cardigan",
-    "#foryou #produkttipp #musthave #schweiz #ootdschweiz"
+    "#foryou #produkttipp #musthave #schweiz #sommerschuhe"
   ],
   "caps": [
-    "Wusste nicht, dass ich das brauche 👀 %s — und der Preis? Schau selbst 👇 📌 Speicher's dir · −10%% WELCOME10 → luxestyle.ch",
     "CHF 34.90 statt Designer-Preis 👀 %s — welche Farbe wäre deins? Kommentier 👇 📌 Speichern für später · folge für die Sommer-Drops · −10%% WELCOME10 → luxestyle.ch",
-    "Stopp — das musst du sehen ✋ %s. Welche Variante nimmst du? 1, 2 oder 3? 👇 📌 Speichern · −10%% WELCOME10 → luxestyle.ch",
-    "%s unter CHF 40 ☀️ 1, 2 oder 3 — welches nimmst du? 👇 Folge für mehr Looks 🤍 −10%% WELCOME10 → luxestyle.ch",
     "Das löst ein echtes Sommer-Problem 🌞 %s — genialer Preis. Speicher's dir 📌 Frage 👇 −10%% WELCOME10 → luxestyle.ch",
+    "%s unter CHF 40 ☀️ 1, 2 oder 3 — welches nimmst du? 👇 Folge für mehr Looks 🤍 −10%% WELCOME10 → luxestyle.ch",
     "Dein nächster Lieblings-Look? %s 🤍 Frage in die Kommentare 👇 📌 Speicher's dir · −10%% WELCOME10 → luxestyle.ch",
-    "%s zum fairen Preis 🇨🇭 Kommentier 1/2/3 👇 folge @luxestyle.ch für mehr · −10%% WELCOME10 → luxestyle.ch"
+    "%s zum fairen Preis 🇨🇭 Kommentier 1/2/3 👇 folge @luxestyle.ch für mehr · −10%% WELCOME10 → luxestyle.ch",
+    "Wusste nicht, dass ich das brauche 👀 %s — und der Preis? Schau selbst 👇 📌 Speicher's dir · −10%% WELCOME10 → luxestyle.ch",
+    "Stopp — das musst du sehen ✋ %s. Welche Variante nimmst du? 1, 2 oder 3? 👇 📌 Speichern · −10%% WELCOME10 → luxestyle.ch"
   ],
   "top_tags": [
     "#bohostyle",
@@ -23,6 +23,50 @@
     "#sommerkleid",
     "#cardigan",
     "#schweiz",
-    "#fyp"
+    "#sommerschuhe"
+  ],
+  "hook_rank": [
+    {
+      "ty": "mundart",
+      "avg": 793,
+      "n": 3
+    },
+    {
+      "ty": "preis_vergleich",
+      "avg": 332,
+      "n": 5
+    },
+    {
+      "ty": "generisch",
+      "avg": 296,
+      "n": 80
+    },
+    {
+      "ty": "preis",
+      "avg": 161,
+      "n": 18
+    },
+    {
+      "ty": "frage_cta",
+      "avg": 51,
+      "n": 6
+    }
+  ],
+  "kpi_last": {
+    "report": "tiktok_luxestyle.ch_2026-06-14.json",
+    "date": "2026-06-14",
+    "videos": 36,
+    "views": 10771,
+    "likes": 161,
+    "shares": 0,
+    "comments": 5,
+    "avg_views": 299,
+    "eng": 0.0555,
+    "dur": 16.8
+  },
+  "risers": [
+    "#fyp",
+    "#foryou",
+    "#schweizmode"
   ]
 }

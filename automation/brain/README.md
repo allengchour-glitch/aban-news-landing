@@ -1,8 +1,20 @@
-# 🧠 BRAIN — die selbstlernende Social-Schleife von LuxeStyle
+# 🧠 BRAIN v2 — die selbstlernende Social-Schleife von LuxeStyle
 
 Ein „Gehirn", das **mit jedem Lauf nur besser wird** und über Sessions hinweg dazulernt.
 Kern-Idee: nicht den letzten Report blind übernehmen, sondern **alle** Daten kumulativ ins Gedächtnis
 schreiben und mit einer **Ratsche** gegen Rückschritt versehen.
+
+## v2-Intelligenz (Maximum)
+1. **Bayes-Shrinkage** beim Hashtag-Ranking — kleine Stichproben werden zum Gesamtmittel gezogen (Konfidenz
+   hoch/mittel/niedrig wird mitgeführt); für die TAGSETS zusätzlich Robustheits-Schwelle (≥3 Nutzungen),
+   damit kein Einmal-Tag eines einzigen viralen Videos die Sätze verzerrt.
+2. **Hook-Typ-Lernen** — jeder Video-Hook wird klassifiziert (Mundart / Preis-Vergleich / Neugier / Frage-CTA /
+   Preis / generisch) und nach Ø-Views gerankt → die CAPS werden automatisch nach gewinnendem Typ sortiert,
+   und „bester Hook-Typ" landet als Aktion in BRAIN.md. (Aktuell datenbelegt: **Mundart > Preis-Vergleich**.)
+3. **KPI-Verlauf** — pro Report ein Snapshot (Views/Likes/Shares/Engagement/Dauer) → Trend mit ▲▼-Pfeilen,
+   inkl. Warnung „Views steigen, aber Shares nicht = hohle Reichweite".
+4. **Momentum** — letzter Report vs. kumulativ je Tag → steigende Tags (×-Faktor) werden erkannt.
+5. **Konfidenz-Labels** auf allen Tag-Empfehlungen.
 
 ## Der Zyklus
 ```
