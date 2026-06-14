@@ -112,6 +112,16 @@
     keine aban-Preise — EN-Format „€NNN" triggerte sonst die Preisregeln).
   - ✅ **Draft-PR #715 ist auf „Ready" gesetzt.** Alles grün: 0 Parser-Error, Konsistenz grün, 0 echte
     Broken-Links, Sitemap valide. **→ EN/Mehrsprachigkeits-Ausbau vollständig abgeschlossen.**
+- **Welle 8 (13.–14.06.) — Vergleiche VIERSPRACHIG + „update für alle":** Die 197 Tool-vs-Tool-Vergleiche jetzt
+  in **allen 4 Sprachen** (DE/EN/FR/IT = **788 Detailseiten**) + `ki-tool-vergleich`-Index in allen 4 Sprachen.
+  **5-Sprachen-hreflang (de/en/fr/it/x-default) auf allen 788 Detail- + 4 Index-Seiten normalisiert.** Sitemap
+  vollständig. FR/IT-Finder-Links → DE-Finder `/welche-ki-fuer-was.html` (kein fr/it-Finder gebaut); fr/it-founding
+  → `/founding.html`. Lief über viele Server-/Session-Rate-Limit-Wellen (resets ~stündlich) → throttle-resilientes
+  Muster: Agenten „eine Datei nach der anderen speichern, kein Sub-Delegieren", Hauptthread salvaged+committet
+  wiederholt. Verifiziert: 0 Parser-Error, Konsistenz grün, 0 echte Broken-Links, Sitemap valide.
+  **Offen als eigene grosse Lane (nicht gemacht):** fr/it-Versionen des Finders (`welche-ki-fuer-was` braucht
+  `tools.fr/it.json`, je 175 Tools) + FR/IT der EN-Tools/Artikel. EN-Reichweite + DACH-4-Sprachigkeit der
+  Vergleiche/Hubs sind komplett.
 
 **2026-06-11 — Luxestyle/POD session: Editor mit echten Fotos + 98 Fertig-Mockups + Shop-Audit A–Z:**
 - **🎨 Selbst-gestalten-Editor komplett überarbeitet** (`pod/designer.js` live): echtes Produktfoto statt
