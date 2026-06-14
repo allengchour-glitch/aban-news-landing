@@ -42,3 +42,28 @@
 - Schweiz: DDP/Lieferzeiten beachten (EU-Lager → trotzdem CH-Import möglich).
 - Screenshots pro Schritt sind hilfreich (Beweis/Debug).
 - Sobald „… ist im Shop" gemeldet ist, übernimmt die Cloud-Session **autonom** den Rest.
+
+---
+
+## 📋 BEFEHL (copy-paste für PC-Claude) — komplette „Swiss Edition Loungewear"-Kapsel
+> Voraussetzung: Gelato-Dashboard offen + eingeloggt, Store = **LuxeStyle**. Lege die **8 Produkte** unten an.
+> Pro Produkt: **Create product → Apparel → Produkt wählen → Schnitt/Farbe → Design zentriert auf Brust (mittelgross,
+> sauber) → Titel → Publish to LuxeStyle.** Designs = **dieselben Schweizer Motive wie bei den vorhandenen Postern**
+> (aus deiner Gelato-Design-Bibliothek; sonst die gleiche Bilddatei erneut hochladen). **Nur anlegen + publishen,
+> nichts löschen.** Danach melden: „Gelato-Loungewear ist im Shop".
+
+| # | Gelato-Produkt | Schnitt | Farbe | Motiv (Design) | Druck-Platzierung | DE-Titel | Preis CHF |
+|---|---|---|---|---|---|---|---|
+| 1 | **Hoodie** (Pullover) | Unisex | Heather Grey | Edelweiss (Vintage Botanical) | Brust zentriert, mittel | Hoodie «Edelweiss» · Swiss Edition | 64.90 |
+| 2 | **Jogger Pants** | Unisex | Heather Grey | Edelweiss (klein) | linke Hüfte/Oberschenkel, klein | Jogger «Edelweiss» · Swiss Edition | 59.90 |
+| 3 | **Sweatshirt** (Crewneck) | Unisex | Black | Matterhorn Sunset | Brust zentriert | Sweatshirt «Matterhorn» · Swiss Edition | 54.90 |
+| 4 | **Hoodie** (Pullover) | Unisex | Natural/Cream | Swiss Alpine Cow (Floral Crown) | Brust zentriert | Hoodie «Alpenkuh» · Swiss Edition | 64.90 |
+| 5 | **T-Shirt** (Short-Sleeve) | Damen | White | Edelweiss | Brust zentriert | Damen-Shirt «Edelweiss» · Swiss Edition | 34.90 |
+| 6 | **T-Shirt** (Short-Sleeve) | Herren | White | Matterhorn | Brust zentriert | Herren-Shirt «Matterhorn» · Swiss Edition | 34.90 |
+| 7 | **Tank-Top** | Damen | White | Alpsee Reflection | Brust zentriert | Damen-Tank «Alpsee» · Swiss Edition | 29.90 |
+| 8 | **Sweatshirt** (Crewneck) | Unisex | Heather Grey | Retro Fondue Art | Brust zentriert | Sweatshirt «Fondue» · Swiss Edition | 54.90 |
+
+**Regeln:** Motiv zentriert + nicht zu gross (Brustbereich), sauber im Druckfeld. Alle verfügbaren Grössen aktiviert lassen
+(S–2XL). #1 + #2 sind ein **Set** (gleiches Motiv/Farbe). Jedes Produkt **einzeln „Publish to LuxeStyle"**.
+Wenn alle 8 im Shopify-Shop sind → der Cloud-Session melden: **„Gelato-Loungewear ist im Shop"** → sie macht DE-Titel/SEO,
+Collection „Loungewear" + Menü, Cross-Sell (Hoodie+Jogger), Werbe-Queue.
