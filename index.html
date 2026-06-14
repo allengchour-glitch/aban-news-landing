@@ -329,6 +329,30 @@
     </div>
   </section>
 
+  <!-- MARKTPLATZ (Jobs, Auto, Immobilien, Angebote & Inserate — Schweiz/DACH) -->
+  <section class="sec" id="marktplatz" style="padding-top:0">
+    <div class="wrap">
+      <div style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#1f2937,#3a2a12 55%,#b45309);color:#fff;padding:26px 22px;position:relative">
+        <span class="eyebrow" style="color:#f0a93a">🛒 Marktplatz Schweiz · neu</span>
+        <h2 style="color:#fff;margin:.3rem 0 .4rem">Jobs, Fahrzeuge, Immobilien &amp; Angebote — eine Suche</h2>
+        <p style="color:#f4e7d3;margin:0 0 1rem;max-width:560px">Durchsuche Stellen, Autos, Wohnungen, Schnäppchen und Kleinanzeigen an einem Ort — für die Schweiz &amp; die ganze DACH-Region.</p>
+        <form id="mpSearch" onsubmit="return false" style="display:flex;gap:8px;flex-wrap:wrap;max-width:600px;background:#fff;border-radius:12px;padding:8px">
+          <input id="mpQ" type="search" placeholder="🔍 Was suchst du? z. B. iPhone, Wohnung Bern, Lehrstelle …" aria-label="Marktplatz-Suche" style="flex:1;min-width:180px;border:0;background:transparent;padding:11px;font-size:15px;color:#1f2937">
+          <button class="btn btn--amber" type="submit" style="white-space:nowrap">Suchen →</button>
+        </form>
+        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+          <a href="/stellenangebote.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">💼 Jobs</a>
+          <a href="/auto-suche.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">🚗 Auto</a>
+          <a href="/immobilien.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">🏠 Immobilien</a>
+          <a href="/angebote-suche.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">🛍️ Angebote</a>
+          <a href="/inserate.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">📋 Inserate</a>
+          <a href="/marktplatz.html" style="background:#fff;border:1px solid #fff;border-radius:18px;padding:7px 14px;color:#b45309;font-weight:800;font-size:.86rem;text-decoration:none">Alle Kategorien →</a>
+        </div>
+      </div>
+    </div>
+    <script>(function(){var f=document.getElementById("mpSearch"),i=document.getElementById("mpQ");if(!f)return;function go(){var q=(i.value||"").trim();location.href="/suche.html"+(q?"?q="+encodeURIComponent(q):"")}f.addEventListener("submit",function(e){e.preventDefault();go()});i.addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();go()}})})();</script>
+  </section>
+
   <!-- 3D-Akzent: selbst-gehostete Engine (pausiert offscreen, respektiert reduced-motion) -->
   <section class="sec" style="padding-top:0">
     <div class="wrap">
