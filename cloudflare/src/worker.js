@@ -225,8 +225,11 @@ export default {
     // Format JSON, URL = {PUBLIC_BASE}/webhooks/orders/create ; Signatur-Secret = SHOPIFY_WEBHOOK_SECRET.
     if(url.pathname === '/webhooks/orders/create' && req.method === 'POST'){
       const log = [];
-      // Test-Bypass: /webhooks/orders/create?key=RUN_KEY POST (ohne gültige HMAC) → zum lokalen Probelauf.
-      const bypass = !!(env.RUN_KEY && url.searchParams.get('key') === env.RUN_KEY);
+      // Auth: gültige Shopify-HMAC (SHOPIFY_WEBHOOK_SECRET) ODER ein geheimes URL-Token (?t=WEBHOOK_TOKEN /
+      // ?key=RUN_KEY). Das Token erlaubt eine vollautonome Einrichtung (Webhook per Shopify-API anlegbar,
+      // ohne dass ein Signatur-Secret manuell abgetippt werden muss). HMAC bleibt zusätzlich unterstützt.
+      const t = url.searchParams.get('t');
+      const bypass = !!((env.WEBHOOK_TOKEN && t === env.WEBHOOK_TOKEN) || (env.RUN_KEY && url.searchParams.get('key') === env.RUN_KEY));
       const resp = await handleOrderWebhook(req, env, log, bypass);
       console.log(`[gelato] ${log.join(' · ')}`);
       return resp;
