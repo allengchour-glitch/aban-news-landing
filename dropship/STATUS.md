@@ -33,6 +33,16 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-14 (Assets klug nutzen — Gehirn-Queue)
+- **✅ Beste Videos auf Shopify-CDN hochgeladen + in die autonome Posting-Rotation gebracht:** die 4
+  Safe-Zone-Reels (Flame/Brise/Onyx) + **Marken-Video 60s** → via stagedUploadsCreate+fileCreate (MCP) auf CDN,
+  in `social/video_queue.csv` mit **Gehirn-Captions** (Mundart-Hook + Save/Share-Trigger + CHF + CH-Tags) eingereiht.
+- **✅ Reels in `video_queue.csv` nach vorne sortiert** → der Gehirn-Builder füllt jetzt die 6 Reel-Slots zuerst mit den
+  NEUEN polierten Assets (statt nur alte Veo-Clips). Queue neu gebaut (20 Bilder · 6 Reels · 3 Stories).
+- Pinterest läuft bereits autonom (bestehendes System, 103 Pins, 2×/Woche). Veo-Clips weiter im Reel-Pool.
+- ⚠️ `wrangler deploy` (oder Queue-CDN-Refresh) nötig, damit der Worker die neue Queue zieht.
+- 🟡 Daisy-Safe-Zone-Reel-Upload schlug 1× fehl (Policy-Glitch) → unkritisch (veo-daisy ist im Pool), Nachtrag später.
+
 ### 2026-06-14 (FB-Stories + Reels automatisiert)
 - **✅ Worker erweitert (`luxe-poster/src/index.js`):** postet jetzt **FB-Page-Stories** (Foto via
   `photos?published=false`→`photo_stories`; Video via `video_stories`) UND **echte FB-Reels** (`video_reels`,
