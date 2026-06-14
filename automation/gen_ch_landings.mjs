@@ -311,6 +311,74 @@ const PAGES = [
       ["Kann ich Schmuck verkaufen?", "Ja — kostenlos als Inserat aufgeben, kurze Prüfung vor der Veröffentlichung."],
     ],
   },
+  {
+    slug: "occasion-auto-schweiz", icon: "🚙", h1: "Occasion Auto kaufen in der Schweiz",
+    title: "Occasion Auto Schweiz — gebrauchte Autos finden & vergleichen | aban",
+    desc: "Occasion (Gebrauchtwagen) in der Schweiz kaufen: gebrauchte Autos nach Marke, Zustand und Preis suchen und vergleichen — plus Tipps zu MFK, Kilometern und Probefahrt.",
+    cta: "/auto-suche.html", ctaLabel: "Occasionen durchsuchen",
+    intro: "Eine Occasion ist oft das beste Preis-Leistungs-Verhältnis. Durchsuche Gebrauchtwagen-Angebote, vergleiche Preise und achte auf Zustand, Kilometer und MFK.",
+    tips: [
+      ["MFK & Service prüfen", "Frag nach letzter MFK, Serviceheft und ob die nächste Prüfung bald ansteht — das beeinflusst den Preis stark."],
+      ["Kilometer realistisch werten", "Niedrige Kilometer sind gut, aber ein lückenloser Service zählt mehr als nur die Zahl auf dem Tacho."],
+      ["Probefahrt + Check", "Probefahrt machen; bei Unsicherheit von einer Fachperson/Garage prüfen lassen, bevor du zahlst."],
+    ],
+    faq: [
+      ["Was heisst Occasion?", "„Occasion“ ist in der Schweiz das übliche Wort für einen Gebrauchtwagen. In der Auto-Suche filterst du nach Marke, Zustand (gebraucht) und Preis."],
+      ["Worauf bei einer Occasion achten?", "MFK-Status, Serviceheft, Kilometer, Unfallfreiheit und ein fairer Marktpreis — im Zweifel prüfen lassen."],
+      ["Privat oder Händler kaufen?", "Händler bieten oft Garantie, privat ist meist günstiger. Beides findest du; bei privat lohnt eine gründliche Probefahrt."],
+    ],
+  },
+  {
+    slug: "motorrad-kaufen-schweiz", icon: "🏍️", h1: "Motorrad & Töff kaufen in der Schweiz",
+    title: "Motorrad kaufen Schweiz — Töff, Roller & Zubehör finden | aban",
+    desc: "Motorrad in der Schweiz kaufen: Töff, Roller, Motorräder und Zubehör neu oder gebraucht suchen, nach Marke, Zustand und Preis filtern.",
+    cta: "/auto-suche.html?cat=Motorrad", ctaLabel: "Motorräder durchsuchen",
+    intro: "Vom Roller bis zur Reiseenduro — neu oder gebraucht. Durchsuche Töff-Angebote, vergleiche Preise und achte auf Zustand, Kilometer und MFK.",
+    tips: [
+      ["Kategorie & Führerschein", "Achte auf die passende Kategorie (A1/A35/A) zu deinem Führerausweis, bevor du kaufst."],
+      ["Zustand prüfen", "Reifen, Bremsen, Kette und Service-Historie checken; bei gebrauchten Töffs auf Sturzschäden achten."],
+      ["Saison nutzen", "Im Herbst/Winter sind Töffs oft günstiger als im Frühling zum Saisonstart."],
+    ],
+    faq: [
+      ["Wo finde ich Töff-Occasionen in der Schweiz?", "In der Auto-Suche wählst du die Kategorie Motorrad und filterst nach Preis und Zustand; lokale Angebote auch im Inserate-Bereich."],
+      ["Worauf beim Töff-Kauf achten?", "Passende Führerschein-Kategorie, Zustand (Reifen/Bremsen/Kette), Kilometer, MFK und Service-Historie."],
+      ["Neu oder gebraucht?", "Gebrauchte Töffs sind günstiger; achte auf gepflegten Zustand und einen fairen Preis."],
+    ],
+  },
+  {
+    slug: "wohnmobil-kaufen-schweiz", icon: "🚐", h1: "Wohnmobil & Camper kaufen in der Schweiz",
+    title: "Wohnmobil kaufen Schweiz — Camper & Wohnwagen finden | aban",
+    desc: "Wohnmobil in der Schweiz kaufen: Camper, Wohnmobile und Wohnwagen neu oder gebraucht suchen, nach Zustand und Preis filtern — plus Kauf-Tipps.",
+    cta: "/auto-suche.html?cat=Wohnmobil", ctaLabel: "Wohnmobile durchsuchen",
+    intro: "Camper für die Ferien oder Vanlife — neu oder gebraucht. Durchsuche Wohnmobil-Angebote, vergleiche Preise und achte auf Aufbau, Feuchtigkeit und Kilometer.",
+    tips: [
+      ["Feuchtigkeit checken", "Der wichtigste Punkt bei gebrauchten Wohnmobilen: auf Feuchtigkeitsschäden im Aufbau achten (Dichtungsprotokoll verlangen)."],
+      ["Gewicht & Führerschein", "Prüfe Gesamtgewicht vs. deinen Führerausweis (B bis 3,5 t) und die Zuladung."],
+      ["Ausstattung vergleichen", "Heizung, Sanitär, Betten-Layout und Standzeit/Service entscheiden über Komfort und Preis."],
+    ],
+    faq: [
+      ["Wo finde ich Wohnmobile in der Schweiz?", "In der Auto-Suche wählst du die Kategorie Wohnmobil/Camper und filterst nach Preis und Zustand."],
+      ["Worauf beim gebrauchten Camper achten?", "Feuchtigkeit im Aufbau, Gewicht/Zuladung, Kilometer, Service und Funktion von Heizung & Sanitär."],
+      ["Mieten oder kaufen?", "Für wenige Wochen im Jahr lohnt oft Mieten; bei häufiger Nutzung rechnet sich der Kauf eines guten gebrauchten Campers."],
+    ],
+  },
+  {
+    slug: "umzug-schweiz", icon: "📦", h1: "Umzug in der Schweiz — Zügelfirma & Helfer finden",
+    title: "Umzug Schweiz — Zügelfirma finden, vergleichen & Inserate | aban",
+    desc: "Umzug in der Schweiz organisieren: Zügelfirmen und Umzugshelfer finden, Angebote vergleichen und Umzugs-Inserate aufgeben — plus Checkliste.",
+    cta: "/inserate.html?kat=Dienstleistungen", ctaLabel: "Umzugs-Inserate ansehen",
+    intro: "Zügeln ohne Stress: Finde Zügelfirmen und Helfer, vergleiche Angebote und nutze die Checkliste für einen reibungslosen Umzug in der Schweiz.",
+    tips: [
+      ["Früh mehrere Offerten holen", "Hol 2–3 Offerten ein und vergleiche Leistung (Möbellift, Verpackung, Entsorgung), nicht nur den Preis."],
+      ["Termin & Kündigungsfristen", "Plane den Umzugstermin um die Kündigungsfristen herum; beliebte Termine (Monatsende) früh buchen."],
+      ["Kartons & Helfer", "Kartons rechtzeitig organisieren; für günstige Umzüge Helfer über Inserate finden."],
+    ],
+    faq: [
+      ["Wie finde ich eine gute Zügelfirma?", "Vergleiche mehrere Offerten, achte auf Versicherung und Bewertungen. Umzugshelfer und Dienstleister findest du auch im Inserate-Bereich."],
+      ["Was kostet ein Umzug in der Schweiz?", "Das hängt von Volumen, Distanz und Leistungen ab. Mehrere Offerten zu vergleichen spart am meisten."],
+      ["Kann ich Umzugshilfe inserieren?", "Ja — als Dienstleistung kostenlos inserieren oder Helfer/Transport im Inserate-Bereich suchen."],
+    ],
+  },
 ];
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -328,7 +396,11 @@ function page(p) {
     job: ["JOB_NETZWERK_URL", "Mehr passende Jobs bei unserem Partner-Job-Netzwerk.", "Jobs beim Partner"],
     moebel: ["MOEBEL_SHOP_URL", "Neue Möbel? Angebote unseres Partner-Shops ansehen.", "Möbel-Shop ansehen"],
     handy: ["HANDY_SHOP_URL", "Neues Handy? Aktuelle Angebote beim Partner.", "Handy-Angebote"],
-    computer: ["HANDY_SHOP_URL", "Neue Technik? Angebote beim Partner ansehen.", "Technik-Angebote"] };
+    computer: ["HANDY_SHOP_URL", "Neue Technik? Angebote beim Partner ansehen.", "Technik-Angebote"],
+    occasion: ["AUTO_VERSICHERUNG_URL", "Occasion gekauft? KFZ-Versicherung vergleichen und sparen.", "Versicherung vergleichen"],
+    motorrad: ["AUTO_VERSICHERUNG_URL", "Töff-Versicherung vergleichen und sparen.", "Versicherung vergleichen"],
+    wohnmobil: ["AUTO_VERSICHERUNG_URL", "Wohnmobil-Versicherung vergleichen.", "Versicherung vergleichen"],
+    umzug: ["IMMO_UMZUG_URL", "Umzug geplant? Zügelfirmen vergleichen und sparen.", "Umzug vergleichen"] };
   let pbKey = "";
   for (const k in PB) { if (p.slug.indexOf(k) === 0) { pbKey = k; break; } }
   const partnerBox = pbKey ? `  <div data-partner="${PB[pbKey][0]}" data-text="${esc(PB[pbKey][1])}" data-cta="${esc(PB[pbKey][2])}"></div>\n` : "";
@@ -337,7 +409,8 @@ function page(p) {
     "moebel-kaufen": "Möbel", "handy-kaufen": "Handy Smartphone", "computer-kaufen": "Laptop",
     "gaming-kaufen": "Konsole Gaming", "kamera-kaufen": "Kamera", "garten-kaufen": "Gartenmöbel",
     "werkzeug-kaufen": "Werkzeug", "mode-kaufen": "Kleidung", "sport-kaufen": "Sport Fitness",
-    "uhren-schmuck": "Uhr", "kueche-kaufen": "Küchengerät", "haustier": "Haustier Zubehör", "baby-kind": "Kinderwagen" };
+    "uhren-schmuck": "Uhr", "kueche-kaufen": "Küchengerät", "haustier": "Haustier Zubehör", "baby-kind": "Kinderwagen",
+    "occasion-auto": "Auto", "motorrad-kaufen": "Motorrad", "wohnmobil-kaufen": "Wohnmobil" };
   let eq = "";
   for (const k in EQ) { if (p.slug.indexOf(k) === 0) { eq = EQ[k]; break; } }
   const liveRow = eq ? `
