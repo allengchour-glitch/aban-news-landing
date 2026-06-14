@@ -70,8 +70,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Smoke-Test (Mock-KV/Gelato) grün: valid→draft-Auftrag (front+back), Idempotenz, no-print-skip, unmapped-Warnung, HMAC→401.
   Route `{PUBLIC_BASE}/webhooks/orders/create`. **User-To-do (README §Gelato):** Secrets `GELATO_API_KEY`+`SHOPIFY_WEBHOOK_SECRET`,
   KV `gelato_map` (SKU→productUid; productUids via `gelato_discover.mjs`/Gelato-Dashboard), Shopify-Webhook anlegen, dann `GELATO_DRAFT=0`.
-- **⚠️ OFFEN:** `gelato_map` braucht die echten productUids → in einer Session mit `GELATO_API_KEY` als Env-Var
-  `node automation/gelato_discover.mjs` laufen lassen → Map befüllen. Hier nicht möglich (Key nicht in Env).
+- **✅ `gelato_map` VORGEBAUT (`cloudflare/gelato_map.json`):** mit dem Chat-Key (transient, read-only, NIE committet)
+  den Gelato-Katalog gezogen → 8 Swiss-Edition-Produkte, **50 DTG-Varianten** automatisch gemappt (keyed nach Shopify-
+  Variant-ID, `files:{front:'front'}`). Stickerei-Jogger «Edelweiss» (`gpr_frntl-emb`) bewusst übersprungen (Stickerei ≠
+  Foto-Upload). End-to-end mit echter Variant-ID getestet (Gelato-Call gemockt) → korrekte productUid + Platzierung. **User
+  lädt nur noch hoch:** `wrangler kv key put --binding=STATE gelato_map --path=gelato_map.json` (README §Gelato Schritt B).
+  Gelato storeId `f4af9557-9182-4125-abe9-5de0ca4c0661`, Key-Auth `X-API-KEY` (Key NUR session-lokal, nie im Repo).
 - **🔍 Conversion-QA-Runde (autonom, live via Shopify-MCP):** Bild-QA über die 40 zuletzt geänderten Produkte =
   **0 FAILED**, alle READY. **11 fehlende SEO-Meta-Titel gesetzt** (Bikinis Maui/Sunset/Solé, Kleider Bloom/Aria,
   Loungewear «Cozy», Herren Lino/Court/Cruise/Riviera/Lido) via gebatchtem `productUpdate` (1 Call, 0 userErrors).
