@@ -67,3 +67,28 @@
 (S–2XL). #1 + #2 sind ein **Set** (gleiches Motiv/Farbe). Jedes Produkt **einzeln „Publish to LuxeStyle"**.
 Wenn alle 8 im Shopify-Shop sind → der Cloud-Session melden: **„Gelato-Loungewear ist im Shop"** → sie macht DE-Titel/SEO,
 Collection „Loungewear" + Menü, Cross-Sell (Hoodie+Jogger), Werbe-Queue.
+
+---
+
+## 🎨 MEISTERWERK — Bilder-Upgrade (Entscheidung der Cloud-Session, 2026-06-14)
+> Ziel: aus den schlichten Flat-Lays **premium Lifestyle-Bilder** machen (Conversion +30–50 %). Gilt für ALLE 8 Produkte.
+> Tool: **Gelato „Mockup Studio" / Magic Mockups** (Lifestyle-/On-Model-Szenen + AI-Custom-Prompt + Druckgrössen-Steuerung).
+
+**1) Druckgrösse — mittel-gross, klarer Blickfang (aber elegant, kein Allover):**
+- Hoodies/Sweatshirts: Brustdruck **ca. 22–26 cm breit**, leicht über Brustmitte.
+- T-Shirts/Tank: **ca. 18–22 cm**, zentriert.
+- Jogger: kleines Edelweiss an der Hüfte (bleibt, gestickt).
+
+**2) Pro Produkt 3 Bilder, in dieser Reihenfolge (Hauptbild = Hero):**
+- **a) Hero = Lifestyle/On-Model** (Mockup Studio → Szene „Lifestyle" ODER AI-Custom-Mockup mit Prompt unten).
+- **b) Ghost-/Studio-Mockup** (saubere Passform, neutraler Hintergrund).
+- **c) Print-Closeup** (Material/Detail) — optional, wenn schnell machbar.
+
+**3) Einheitlicher AI-Mockup-Prompt für den Hero (ALLE 8, gleicher Look = kuratierte Kollektion):**
+> „Editorial lifestyle product photo of a relaxed model wearing this {Hoodie/Sweatshirt/T-Shirt/Tank/Joggers}, cozy modern
+> Swiss chalet with soft natural daylight, warm neutral premium aesthetic, shallow depth of field, true-to-life colours,
+> the printed Swiss motif clearly visible on the chest. Vertical, high quality.“
+
+**4) Konsistenz:** gleiche Szene/Lichtstimmung für alle 8 → wirkt wie EINE Kollektion (nicht zufällig gemischt).
+**5) Vorgehen:** Erst **Hoodie «Edelweiss»** als Muster fertig machen → kurz zeigen → wenn der Look sitzt, die anderen 7 gleich.
+**6) Danach:** „Bilder aktualisiert" melden → Cloud-Session setzt Bildreihenfolge (Hero zuerst), Alt-Texte, Werbe-Queue-Bilder neu.
