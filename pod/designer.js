@@ -150,13 +150,13 @@
     // Bild-Bearbeitung (nur für Bild-Layer): Zuschneiden / Spiegeln / 90° / Filter
     var imgBar=el('div',{style:"display:none;gap:8px;margin-bottom:10px;flex-wrap:wrap;"});
     function imgBtn(label){ return el('button',{type:'button',style:"flex:1;min-width:84px;padding:9px 6px;border-radius:9px;border:1px solid #ddd;background:#fff;color:#16151a;font-weight:700;font-size:13px;cursor:pointer;"},label); }
-    var btnCrop=imgBtn(EN?'✂️ Crop':'✂️ Zuschneiden'), btnFlip=imgBtn(EN?'↔️ Flip':'↔️ Spiegeln'), btnRot90=imgBtn('↻ 90°'), btnFilt=imgBtn('🎨 Filter');
-    imgBar.appendChild(btnCrop); imgBar.appendChild(btnFlip); imgBar.appendChild(btnRot90); imgBar.appendChild(btnFilt);
+    var btnCrop=imgBtn(EN?'✂️ Crop':'✂️ Zuschneiden'), btnFlip=imgBtn(EN?'↔️ Flip':'↔️ Spiegeln'), btnRot90=imgBtn('↻ 90°'), btnCut=imgBtn(EN?'🪄 Cut out':'🪄 Freistellen'), btnFrame=imgBtn(EN?'🖼️ Frame':'🖼️ Rahmen'), btnFilt=imgBtn('🎨 Filter');
+    imgBar.appendChild(btnCrop); imgBar.appendChild(btnFlip); imgBar.appendChild(btnRot90); imgBar.appendChild(btnCut); imgBar.appendChild(btnFrame); imgBar.appendChild(btnFilt);
     body.appendChild(imgBar);
     // Filter-Panel (Schieberegler + S/W + Reset)
     var filtPanel=el('div',{style:"display:none;background:#faf8f5;border:1px solid #ece7df;border-radius:12px;padding:10px;margin-bottom:10px;"});
     function fSlider(lab,min,max,val){ var row=el('div',{style:"display:flex;align-items:center;gap:10px;margin-bottom:7px;"}); row.appendChild(el('span',{style:"font-size:12.5px;font-weight:700;color:#16151a;width:84px;"},lab)); var s=el('input',{type:'range',min:''+min,max:''+max,value:''+val,step:'1',style:"flex:1;accent-color:#c1922f;"}); row.appendChild(s); filtPanel.appendChild(row); return s; }
-    var sBri=fSlider(EN?'Brightness':'Helligkeit',50,150,100), sCon=fSlider(EN?'Contrast':'Kontrast',50,150,100), sSat=fSlider(EN?'Saturation':'Sättigung',0,200,100);
+    var sBri=fSlider(EN?'Brightness':'Helligkeit',50,150,100), sCon=fSlider(EN?'Contrast':'Kontrast',50,150,100), sSat=fSlider(EN?'Saturation':'Sättigung',0,200,100), sSharp=fSlider(EN?'Sharpness':'Schärfe',0,100,0);
     var filtRow=el('div',{style:"display:flex;gap:8px;"});
     var btnGray=imgBtn(EN?'⚫ B/W':'⚫ S/W'), btnReset=imgBtn(EN?'↺ Reset':'↺ Zurücksetzen');
     filtRow.appendChild(btnGray); filtRow.appendChild(btnReset); filtPanel.appendChild(filtRow);
@@ -279,40 +279,63 @@
     function removeLayer(id){ var a=curLayers(); for(var i=0;i<a.length;i++){ if(a[i].id===id){ a.splice(i,1); break; } } if(nodes[id]){ nodes[id].root.remove(); delete nodes[id]; } if(state.sel===id) deselect(); syncFormInputs(); }
 
     function newText(){ return {id:'L'+(++UID),type:'text',text:'',font:FONTS[0].v,color:'#111111',cx:0.5,cy:0.42,scale:0.55,rot:0}; }
-    function newEdit(){ return {cx0:0,cy0:0,cw:1,ch:1,flipH:false,flipV:false,rotQ:0,bri:100,con:100,sat:100,gray:0}; }
+    function newEdit(){ return {cx0:0,cy0:0,cw:1,ch:1,flipH:false,flipV:false,rotQ:0,bri:100,con:100,sat:100,gray:0,bg:0,frame:0,sharp:0}; }
     function newImage(src,printUrl,uploading){ return {id:'L'+(++UID),type:'image',src:src,origSrc:src,printUrl:printUrl||'',uploading:!!uploading,cx:0.5,cy:0.5,scale:1,rot:0,edit:newEdit()}; }
     function newSticker(name){ var u=STICKER_BASE+name+'.png'; return {id:'L'+(++UID),type:'sticker',name:name,src:u,printUrl:u,uploading:false,cx:0.5,cy:0.5,scale:0.8,rot:0}; }
 
     // ---------- Bild-Bearbeitung (Crop/Spiegeln/Drehen/Filter) ----------
     function curImgLayer(){ var l=findLayer(state.sel); return (l&&l.type==='image')?l:null; }
-    // rendert origSrc mit allen Edits (Crop → Rotation → Spiegeln → Filter) in ein Canvas
-    function renderEditCanvas(layer){ return loadImg(layer.origSrc||layer.src).then(function(im){
+    // Helfer: Hintergrund entfernen (Ecken-Farbe keyen, weiche Kante)
+    function removeBg(c,cv,tol){ var w=cv.width,h=cv.height; if(w<2||h<2) return; var d=c.getImageData(0,0,w,h),p=d.data;
+      function px(x,y){ var i=(y*w+x)*4; return [p[i],p[i+1],p[i+2]]; }
+      var cs=[px(0,0),px(w-1,0),px(0,h-1),px(w-1,h-1)],br=0,bg=0,bb=0; cs.forEach(function(a){br+=a[0];bg+=a[1];bb+=a[2];}); br/=4;bg/=4;bb/=4;
+      var t2=tol*1.7; for(var i=0;i<p.length;i+=4){ var dr=p[i]-br,dg=p[i+1]-bg,db=p[i+2]-bb; var dist=Math.sqrt(dr*dr+dg*dg+db*db);
+        if(dist<tol) p[i+3]=0; else if(dist<t2) p[i+3]=Math.round(p[i+3]*(dist-tol)/(t2-tol)); }
+      c.putImageData(d,0,0); }
+    // Helfer: Schärfen (3x3-Kernel, amt 0..1)
+    function sharpen(c,cv,amt){ var w=cv.width,h=cv.height; if(w<3||h<3) return; var src=c.getImageData(0,0,w,h),s=src.data;
+      var out=c.createImageData(w,h),o=out.data; o.set(s); var cen=1+4*amt;
+      for(var y=1;y<h-1;y++){ for(var x=1;x<w-1;x++){ var b=(y*w+x)*4; for(var ch2=0;ch2<3;ch2++){ var i=b+ch2;
+        var v=cen*s[i]-amt*(s[i-4]+s[i+4]+s[i-w*4]+s[i+w*4]); o[i]=v<0?0:v>255?255:v; } } }
+      c.putImageData(out,0,0); }
+    // Helfer: Rahmen zeichnen (1=weiss, 2=schwarz)
+    function drawFrame(c,cv,frame){ var w=cv.width,h=cv.height; var bw=Math.max(2,Math.round(Math.min(w,h)*0.035)); c.save(); c.filter='none'; c.strokeStyle=(frame===2?'#111111':'#ffffff'); c.lineWidth=bw; c.strokeRect(bw/2,bw/2,w-bw,h-bw); c.restore(); }
+    // rendert origSrc mit allen Edits (Crop → Rotation → Spiegeln → Filter → Freistellen → Schärfe → Rahmen)
+    function renderEditCanvas(layer,maxW){ return loadImg(layer.origSrc||layer.src).then(function(im){
       var e=layer.edit||(layer.edit=newEdit());
       var sw=im.naturalWidth||im.width||1, sh=im.naturalHeight||im.height||1;
       var cx=Math.round(e.cx0*sw), cy=Math.round(e.cy0*sh), cw=Math.max(1,Math.round(e.cw*sw)), ch=Math.max(1,Math.round(e.ch*sh));
-      var q=(((e.rotQ||0)%4)+4)%4, swap=(q===1||q===3);
-      var cv=document.createElement('canvas'); cv.width=swap?ch:cw; cv.height=swap?cw:ch;
+      var q=(((e.rotQ||0)%4)+4)%4, swap=(q===1||q===3); var outW=swap?ch:cw, outH=swap?cw:ch;
+      var sc=(maxW&&outW>maxW)?maxW/outW:1;
+      var cv=document.createElement('canvas'); cv.width=Math.max(1,Math.round(outW*sc)); cv.height=Math.max(1,Math.round(outH*sc));
       var c=cv.getContext('2d');
       try{ c.filter='brightness('+e.bri+'%) contrast('+e.con+'%) saturate('+e.sat+'%) grayscale('+e.gray+'%)'; }catch(_){}
-      c.translate(cv.width/2,cv.height/2); c.rotate(q*Math.PI/2); c.scale(e.flipH?-1:1,e.flipV?-1:1);
-      c.drawImage(im, cx,cy,cw,ch, -cw/2,-ch/2, cw,ch);
+      c.save(); c.translate(cv.width/2,cv.height/2); c.rotate(q*Math.PI/2); c.scale((e.flipH?-1:1)*sc,(e.flipV?-1:1)*sc);
+      c.drawImage(im, cx,cy,cw,ch, -cw/2,-ch/2, cw,ch); c.restore();
+      try{ c.filter='none'; }catch(_){}
+      if(e.bg){ try{ removeBg(c,cv,e.bg); }catch(_){} }
+      if(e.sharp){ try{ sharpen(c,cv,e.sharp/100); }catch(_){} }
+      if(e.frame){ try{ drawFrame(c,cv,e.frame); }catch(_){} }
       return cv;
     }); }
-    function previewEdit(layer){ renderEditCanvas(layer).then(function(cv){ var url=cv.toDataURL('image/png'); layer.src=url; var n=nodes[layer.id]; if(n&&n.content&&n.content.tagName==='IMG') n.content.src=url; layoutNode(layer); }).catch(function(){}); }
-    function commitEdit(layer){ renderEditCanvas(layer).then(function(cv){ var url=cv.toDataURL('image/png'); layer.src=url; var n=nodes[layer.id]; if(n&&n.content&&n.content.tagName==='IMG') n.content.src=url; layoutNode(layer);
+    function previewEdit(layer){ renderEditCanvas(layer,700).then(function(cv){ var url=cv.toDataURL('image/png'); layer.src=url; var n=nodes[layer.id]; if(n&&n.content&&n.content.tagName==='IMG') n.content.src=url; layoutNode(layer); }).catch(function(){}); }
+    function commitEdit(layer){ renderEditCanvas(layer,0).then(function(cv){ var url=cv.toDataURL('image/png'); layer.src=url; var n=nodes[layer.id]; if(n&&n.content&&n.content.tagName==='IMG') n.content.src=url; layoutNode(layer);
       if(IMG_ENABLED){ layer.uploading=true; layer.printUrl=''; syncFormInputs(); try{ cv.toBlob(function(b){ if(!b){ layer.uploading=false; syncFormInputs(); return; } uplBlob(b,function(err,u){ layer.uploading=false; if(!err&&u) layer.printUrl=u; syncFormInputs(); }); },'image/png'); }catch(_){ layer.uploading=false; } } else syncFormInputs();
     }).catch(function(){ layer.uploading=false; }); }
     var _filtT=null; function previewDeb(layer){ clearTimeout(_filtT); _filtT=setTimeout(function(){ previewEdit(layer); },50); }
-    function refreshFiltUI(ly){ var e=ly.edit||newEdit(); sBri.value=e.bri; sCon.value=e.con; sSat.value=e.sat; }
+    function setActive(btn,on){ btn.style.background=on?'#16151a':'#fff'; btn.style.color=on?'#fff':'#16151a'; }
+    function refreshFiltUI(ly){ var e=ly.edit||newEdit(); sBri.value=e.bri; sCon.value=e.con; sSat.value=e.sat; sSharp.value=e.sharp; setActive(btnGray,!!e.gray); setActive(btnCut,!!e.bg); setActive(btnFrame,!!e.frame); }
 
     btnFlip.addEventListener('click',function(){ var ly=curImgLayer(); if(!ly)return; ly.edit.flipH=!ly.edit.flipH; commitEdit(ly); });
     btnRot90.addEventListener('click',function(){ var ly=curImgLayer(); if(!ly)return; ly.edit.rotQ=((ly.edit.rotQ||0)+1)%4; commitEdit(ly); });
+    btnCut.addEventListener('click',function(){ var ly=curImgLayer(); if(!ly)return; ly.edit.bg=ly.edit.bg?0:45; setActive(btnCut,!!ly.edit.bg); commitEdit(ly); });
+    btnFrame.addEventListener('click',function(){ var ly=curImgLayer(); if(!ly)return; ly.edit.frame=((ly.edit.frame||0)+1)%3; setActive(btnFrame,!!ly.edit.frame); commitEdit(ly); });
     btnFilt.addEventListener('click',function(){ var ly=curImgLayer(); if(!ly)return; refreshFiltUI(ly); filtPanel.style.display=(filtPanel.style.display==='none'||!filtPanel.style.display)?'block':'none'; });
-    function onSlide(){ var ly=curImgLayer(); if(!ly)return; ly.edit.bri=parseInt(sBri.value,10); ly.edit.con=parseInt(sCon.value,10); ly.edit.sat=parseInt(sSat.value,10); previewDeb(ly); }
+    function onSlide(){ var ly=curImgLayer(); if(!ly)return; ly.edit.bri=parseInt(sBri.value,10); ly.edit.con=parseInt(sCon.value,10); ly.edit.sat=parseInt(sSat.value,10); ly.edit.sharp=parseInt(sSharp.value,10); previewDeb(ly); }
     function onSlideEnd(){ var ly=curImgLayer(); if(ly) commitEdit(ly); }
-    [sBri,sCon,sSat].forEach(function(s){ s.addEventListener('input',onSlide); s.addEventListener('change',onSlideEnd); });
-    btnGray.addEventListener('click',function(){ var ly=curImgLayer(); if(!ly)return; ly.edit.gray=ly.edit.gray?0:100; btnGray.style.background=ly.edit.gray?'#16151a':'#fff'; btnGray.style.color=ly.edit.gray?'#fff':'#16151a'; commitEdit(ly); });
-    btnReset.addEventListener('click',function(){ var ly=curImgLayer(); if(!ly)return; ly.edit=newEdit(); refreshFiltUI(ly); btnGray.style.background='#fff'; btnGray.style.color='#16151a'; commitEdit(ly); });
+    [sBri,sCon,sSat,sSharp].forEach(function(s){ s.addEventListener('input',onSlide); s.addEventListener('change',onSlideEnd); });
+    btnGray.addEventListener('click',function(){ var ly=curImgLayer(); if(!ly)return; ly.edit.gray=ly.edit.gray?0:100; setActive(btnGray,!!ly.edit.gray); commitEdit(ly); });
+    btnReset.addEventListener('click',function(){ var ly=curImgLayer(); if(!ly)return; ly.edit=newEdit(); refreshFiltUI(ly); commitEdit(ly); });
     btnCrop.addEventListener('click',function(){ var ly=curImgLayer(); if(ly) openCrop(ly); });
 
     // Crop-Modal: Original anzeigen, Rechteck ziehen/grössen, übernehmen
