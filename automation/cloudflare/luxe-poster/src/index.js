@@ -53,18 +53,27 @@ async function discoverIds(env) {
 async function postInstagram(ids, item) {
   if (!ids.ig_id) return { skipped: "kein IG-Account verknüpft" };
   const isVideo = item.type === "video" || item.type === "reel";
-  const createParams = isVideo
-    ? { media_type: "REELS", video_url: item.video, caption: item.caption, access_token: ids.page_token }
-    : { image_url: item.image, caption: item.caption, access_token: ids.page_token };
+  const isStory = item.type === "story";
+  let createParams;
+  if (isStory) {
+    // IG-Story: Foto- oder Video-Story (ohne Caption — Stories zeigen keinen Text-Body)
+    createParams = item.video
+      ? { media_type: "STORIES", video_url: item.video, access_token: ids.page_token }
+      : { media_type: "STORIES", image_url: item.image, access_token: ids.page_token };
+  } else if (isVideo) {
+    createParams = { media_type: "REELS", video_url: item.video, caption: item.caption, access_token: ids.page_token };
+  } else {
+    createParams = { image_url: item.image, caption: item.caption, access_token: ids.page_token };
+  }
   const created = await gpost(`${ids.ig_id}/media`, createParams);
   if (!created.id) return { error: "IG container", detail: created };
-  // Reels brauchen Verarbeitungszeit → kurz warten/pollen
-  if (isVideo) {
+  // Video (Reel ODER Video-Story) braucht Verarbeitungszeit → pollen
+  if (isVideo || (isStory && item.video)) {
     for (let i = 0; i < 20; i++) {
       await new Promise((r) => setTimeout(r, 6000));
       const st = await gget(created.id, { fields: "status_code", access_token: ids.page_token });
       if (st.status_code === "FINISHED") break;
-      if (st.status_code === "ERROR") return { error: "IG video processing", detail: st };
+      if (st.status_code === "ERROR") return { error: "IG processing", detail: st };
     }
   }
   const pub = await gpost(`${ids.ig_id}/media_publish`, { creation_id: created.id, access_token: ids.page_token });
@@ -72,6 +81,7 @@ async function postInstagram(ids, item) {
 }
 
 async function postFacebook(ids, item) {
+  if (item.type === "story") return { skipped: "Story → nur IG (FB-Stories-API instabil)" };
   if (item.type === "video" || item.type === "reel") {
     // FB Reels-API ist aufwändiger → für Video vorerst nur Link-Post als Fallback
     const r = await gpost(`${ids.page_id}/feed`, { message: item.caption, link: "https://luxestyle.ch", access_token: ids.page_token });

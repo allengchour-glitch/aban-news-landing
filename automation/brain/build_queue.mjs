@@ -58,6 +58,27 @@ async function priceMap() {
   } catch {}
   return m;
 }
+// CSV-Zeile mit Quoting splitten
+function splitCsv(line) {
+  const out = []; let f = '', q = false;
+  for (let i = 0; i < line.length; i++) { const c = line[i];
+    if (q) { if (c === '"') { if (line[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+    else { if (c === '"') q = true; else if (c === ',') { out.push(f); f = ''; } else f += c; } }
+  out.push(f); return out;
+}
+// Reels-Pool aus video_queue.csv (NUR funktionierende Shopify-CDN-mp4, keine toten abannews-URLs).
+function loadReels() {
+  try {
+    const lines = fs.readFileSync(path.join(ROOT, 'social', 'video_queue.csv'), 'utf8').trim().split('\n').slice(1);
+    const seen = new Set(); const reels = [];
+    for (const l of lines) {
+      const c = splitCsv(l); const video = (c[2] || '').trim(); const caption = (c[3] || '').trim();
+      if (!/cdn\.shopify\.com\/.*\.mp4/.test(video) || seen.has(video)) continue;
+      seen.add(video); reels.push({ type: 'reel', video, caption });
+    }
+    return reels;
+  } catch { return []; }
+}
 
 (async () => {
   const pools = loadPools();
@@ -76,7 +97,8 @@ async function priceMap() {
   if (!goods.length) { console.log('Keine good_products.csv → No-op.'); process.exit(0); }
   const prices = await priceMap();
 
-  const items = goods.map((p, i) => {
+  // BILDER (Produkt + Preis + Gewinner-Hook + CH-weite Tags)
+  const images = goods.map((p, i) => {
     const opener = OPENERS[i % OPENERS.length];
     const trigger = TRIGGERS[i % TRIGGERS.length];
     const tags = tagsets[i % tagsets.length] + ' ' + CH_WIDE[i % CH_WIDE.length];
@@ -84,9 +106,22 @@ async function priceMap() {
     const caption = `${opener} ${p.label}${price}\n${trigger} · –10% mit WELCOME10\n👉 luxestyle.ch/products/${p.handle}\n${tags}`;
     return { type: 'image', image: p.image, caption };
   });
+  // REELS (echte CDN-Videos aus video_queue.csv) + STORIES (Produktbilder als Foto-Story, 24h)
+  const reels = loadReels();
+  const stories = goods.slice(0, 8).map(p => ({ type: 'story', image: p.image }));
 
-  if (DRY) { console.log(JSON.stringify(items.slice(0, 3), null, 2)); console.log(`… ${items.length} Posts (dry).`); process.exit(0); }
-  fs.writeFileSync(OUT, JSON.stringify(items, null, 2) + '\n');
-  console.log(`✅ Autopost-Queue neu gebaut: ${items.length} Posts (gelernte Hashtags + Gewinner-Hooks + Preise) → ${path.relative(ROOT, OUT)}`);
-  console.log('   ⚠️ Cursor in KV ggf. zuruecksetzen + `wrangler deploy`, damit der Worker die neue Queue ab vorne postet.');
+  // MIX interleaven: überwiegend Bilder, jede 3. ein Reel, jede 6. eine Story → alle Formate überall.
+  const out = []; let ri = 0, si = 0;
+  images.forEach((img, i) => {
+    out.push(img);
+    if (i % 3 === 2 && reels.length) out.push(reels[ri++ % reels.length]);
+    if (i % 6 === 5 && stories.length) out.push(stories[si++ % stories.length]);
+  });
+  const counts = out.reduce((a, x) => (a[x.type] = (a[x.type] || 0) + 1, a), {});
+
+  if (DRY) { console.log(JSON.stringify(out.slice(0, 5), null, 2)); console.log(`… ${out.length} Posts (dry): ${JSON.stringify(counts)}`); process.exit(0); }
+  fs.writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n');
+  console.log(`✅ Autopost-Queue neu gebaut: ${out.length} Posts (Mix) → ${path.relative(ROOT, OUT)}`);
+  console.log(`   Formate: ${JSON.stringify(counts)} (Bilder+Reels+Stories, alle CH-weit)`);
+  console.log('   ⚠️ Nach Queue-Änderung: `wrangler deploy` (Worker bäckt queue.json beim Deploy ein).');
 })();

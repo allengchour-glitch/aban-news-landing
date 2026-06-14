@@ -21,6 +21,9 @@
 ## ✅ Verlauf — was gemacht wurde
 
 ### 2026-06-14
+- **🎞️ Alle Formate überall:** Worker um **IG-Stories** erweitert (Foto+Video); Gehirn (`build_queue.mjs`) baut jetzt
+  MIX-Queue = Bilder + Reels (CDN-Videos) + Stories interleaved (29 Posts). IG: alle 3 · FB: Bild+Reel (Story=IG-only) ·
+  TikTok: Reels/Videos via tiktok-autopost. → 1× `wrangler deploy` nötig, damit Worker neue Queue+Story-Code zieht.
 - **💬 Chat-/Kommentar-Auto-Antwort gebaut:** TikTok-DM-Responder (`tiktok-dm-browser.mjs`, Browser/PC, Mundart-FAQ),
   IG-DM (`ig-dm-browser.mjs`) + IG/FB-Kommentare (`social-comment-reply.mjs`, Meta-API) — alles in den Tages-PC-Task
   eingehängt. TikTok-DMs nur per Browser (keine API). FAQ-Stil, idempotent, Caps, kein Spam.
