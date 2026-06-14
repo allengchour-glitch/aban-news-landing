@@ -30,6 +30,12 @@ User-Auftrag „1 Stunde Vollgas, 100 Agenten, alles verbessern, autonom". 6 Spe
 - **✅ FIX: 5 Produkte mit Lieferanten-Watermark/Text-Overlay ARCHIVIERT** — Flow-Hose (EN-Overlay), Frost-Hemd
   («AMASING-CITY»), Active-Shorts («HIDKAT»), Brisa-Ventilator (Masz-Overlay), Aria-Kopfhörer («OpenBuds»/«R»-Logo).
 - 🟡 Soft-Flags (Fremdmarke im Hintergrund): Como-Tasche (CÉLINE-Tüte), Estate-Sandalen (DIOR am Ärmel) — beobachten.
+- **Charge 2 (Produkte 51–100): +11 archiviert** (englische Text-Overlay-Collagen: Ducky, Relax, Breeze, PureFlow,
+  Paw, Tidy, Bloom, Libelle, Shelfy, Carousel, AquaDrip). **= 16 Produkte heute archiviert.**
+- **🔴 SYSTEMISCHE LEHRE:** ~15–17 % der Auto-Import-`cj-real`-Produkte haben **englische Werbe-Text-Overlays auf
+  dem Hauptbild** (Lieferanten-Marketing). Quelle = Auto-Import (vermutlich andere Session). → Import braucht einen
+  **Bild-Overlay-Filter VOR dem Anlegen** (z.B. `automation/image-audit.mjs` mit `GEMINI_API_KEY` katalogweit laufen
+  lassen), sonst muss jede Session weiter manuell QA'en. Weiter prüfen: Produkte 101+ noch offen.
 
 **🧠 Content (gegen 0-Shares-Decke) — ins Gehirn verankert:** +5 distinkte Mundart-Hooks (POV, Vorher-Nachher,
 A/B Gold/Silber, Share-an-Freundin, Save-Liste); **`rules.share_formats`** (Save-Liste · A/B-Split · Vorher-Nachher) +

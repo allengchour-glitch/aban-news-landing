@@ -44,8 +44,9 @@
 - **🔴 Conversion-Leak gefunden:** ATC nur 0,32 % — Übergang Session→Warenkorb, nicht nur Reichweite.
 - **✅ Strikt-CH durchgesetzt:** DACH-Markt-Storefront `/de-de/` (Deutschland & Österreich) **gelöscht** (war ein
   Regelverstoss). FR/IT/UK/US/EU/Global noch enabled → User-Entscheid (US/UK bewusst angelegt).
-- **✅ 5 Produkte mit Lieferanten-Watermark/Text-Overlay archiviert** (Frost «AMASING-CITY», Active «HIDKAT», Flow,
-  Brisa, Aria) — Bild-Compliance. Keine asiatische Schrift im 50er-Sample.
+- **✅ 16 Produkte mit Lieferanten-Watermark/Text-Overlay archiviert** (2 Chargen à 50 cj-real geprüft): Charge 1 =
+  Frost/Active/Flow/Brisa/Aria; Charge 2 = Ducky/Relax/Breeze/PureFlow/Paw/Tidy/Bloom/Libelle/Shelfy/Carousel/AquaDrip.
+  Keine asiatische Schrift. **🔴 Systemisch: ~15–17 % der Auto-Importe haben Text-Overlays → Import-Bildfilter nötig.**
 - **✅ `/collections/kleider`-404 → Redirect** auf `sub-kleider`; **#3-Landing `highlights` in alle 6 Kanäle** publiziert.
 - **🧠 Gehirn:** +5 Mundart-Hooks, `share_formats` (Save-Liste/A-B/Vorher-Nachher) + `caption_rule` → gegen 0-Shares-Decke.
 - **🟡 Für dich:** #1-Produkt (Zirkonia-Ring) ist ARCHIVED aber Top-Ad-Landing; ~19 Rabattcodes eindampfen; Klaviyo
