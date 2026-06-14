@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 /**
- * shop_brain.mjs — LuxeStyle Shop-Brain als portables Node-Skript.
- * Gleiche Logik wie workers/shop-brain/worker.js, läuft aber in GitHub Actions,
- * GitLab CI oder lokal. Prüft die neuesten cj-real-Produkte und setzt fehlende
- * SEO + Kategorie automatisch (Shopify Admin API via Client-Credentials).
+ * shop_brain.mjs (v2) — LuxeStyle Shop-Brain als portables Node-Skript.
+ * Gleiche Logik wie workers/shop-brain/worker.js, läuft in GitHub Actions,
+ * GitLab CI oder lokal. Wartet den Shop automatisch:
+ *   1) Produkt-Veredelung: neueste cj-real-Produkte → fehlende SEO (Titel + Description)
+ *      + Kategorie (Google-Feed) setzen.
+ *   2) Collection-Cover: Smart-/Manual-Collections ohne Titelbild bekommen ein Cover
+ *      aus einem eigenen Produktbild (sieht in den Kategorie-Grids sonst unfertig aus).
+ *   3) Bild-QA: aktive Produkte ohne Bild werden erkannt + gemeldet (kein Auto-Löschen).
  *
  * Env: SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET
  *      [SHOPIFY_API_VERSION=2025-01] [SCAN_LIMIT=50] [TELEGRAM_BOT_TOKEN] [TELEGRAM_CHAT_ID] [DRY=1]
@@ -15,6 +19,7 @@ const SECRET = process.env.SHOPIFY_CLIENT_SECRET || "";
 const API = process.env.SHOPIFY_API_VERSION || "2025-01";
 const LIMIT = parseInt(process.env.SCAN_LIMIT || "50", 10);
 const DRY = process.env.DRY === "1";
+const COL_MAX = parseInt(process.env.COLLECTION_COVER_MAX || "30", 10); // max Cover-Fixes pro Lauf
 const TC = "gid://shopify/TaxonomyCategory/";
 
 const CAT = {
@@ -61,38 +66,65 @@ async function gql(token,query){
     headers:{"Content-Type":"application/json","X-Shopify-Access-Token":token},body:JSON.stringify({query})});
   return r.json();
 }
+async function runMutations(token,items,build){
+  let done=0;
+  for(let i=0;i<items.length;i+=20){
+    const chunk=items.slice(i,i+20);
+    const m="mutation {\n"+chunk.map((f,j)=>build(f,j)).join("\n")+"\n}";
+    const res=await gql(token,m);
+    if(res?.data) done+=chunk.length; else console.error("mutation-fehler:",JSON.stringify(res?.errors||res).slice(0,300));
+  }
+  return done;
+}
 
 (async()=>{
   if(!SHOP||!CID||!SECRET){ console.error("❌ SHOPIFY_SHOP/CLIENT_ID/CLIENT_SECRET fehlen → No-op."); process.exit(SHOP?1:0); }
   const token=await getToken();
   if(!token){ console.error("❌ Kein Shopify-Token (Client-Credentials prüfen)."); process.exit(1); }
-  const q=`{ products(first:${LIMIT}, query:"status:active tag:cj-real", sortKey:CREATED_AT, reverse:true){ nodes{ id title productType category{id} seo{title} } } }`;
-  const data=await gql(token,q);
-  const nodes=data?.data?.products?.nodes||[];
-  const fixes=[];
+
+  // ---------- 1) Produkt-Veredelung (SEO + Kategorie) + Bild-QA ----------
+  const pq=`{ products(first:${LIMIT}, query:"status:active tag:cj-real", sortKey:CREATED_AT, reverse:true){ nodes{ id title productType category{id} seo{title description} featuredImage{ url } } } }`;
+  const pdata=await gql(token,pq);
+  const nodes=pdata?.data?.products?.nodes||[];
+  const prodFixes=[]; const noImage=[];
   for(const n of nodes){
-    const needSeo=!(n.seo&&n.seo.title);
+    if(!n.featuredImage) noImage.push(clean(n.title).slice(0,60));
+    const needSeo=!(n.seo&&n.seo.title&&n.seo.description);
     const needCat=!n.category && CAT[(n.productType||"").trim()];
     if(!needSeo&&!needCat) continue;
     let input=`id: "${n.id}"`;
     if(needCat) input+=`, category: "${TC}${CAT[n.productType.trim()]}"`;
     if(needSeo) input+=`, seo: { title: "${esc(mkTitle(n.title))}", description: "${esc(mkDesc(n.title))}" }`;
-    fixes.push({input,title:n.title});
+    prodFixes.push({input,title:n.title});
   }
-  console.log(`🧠 ${nodes.length} geprüft · ${fixes.length} zu veredeln${DRY?" (DRY)":""}`);
-  let done=0;
+
+  // ---------- 2) Collection-Cover (leere Kategorien bebildern) ----------
+  const cq=`{ collections(first:250){ nodes{ id handle title image{ url } products(first:5){ nodes{ featuredImage{ url } } } } } }`;
+  const cdata=await gql(token,cq);
+  const colls=cdata?.data?.collections?.nodes||[];
+  const colFixes=[];
+  for(const c of colls){
+    if(c.image) continue;
+    const img=(c.products?.nodes||[]).map(p=>p.featuredImage&&p.featuredImage.url).find(Boolean);
+    if(img) colFixes.push({id:c.id, handle:c.handle, src:img, alt:clean(c.title)||"LuxeStyle"});
+    if(colFixes.length>=COL_MAX) break;
+  }
+
+  console.log(`🧠 Produkte: ${nodes.length} geprüft · ${prodFixes.length} zu veredeln · ${noImage.length} ohne Bild`);
+  console.log(`🖼️ Collections: ${colls.length} geprüft · ${colFixes.length} Cover zu setzen${DRY?" (DRY)":""}`);
+
+  let pDone=0, cDone=0;
   if(!DRY){
-    for(let i=0;i<fixes.length;i+=20){
-      const chunk=fixes.slice(i,i+20);
-      const m="mutation {\n"+chunk.map((f,j)=>`  f${j}: productUpdate(input: { ${f.input} }) { product { id } userErrors { field message } }`).join("\n")+"\n}";
-      const res=await gql(token,m);
-      if(res?.data) done+=chunk.length; else console.error("mutation-fehler:",JSON.stringify(res?.errors||res).slice(0,300));
-    }
+    pDone=await runMutations(token,prodFixes,(f,j)=>`  f${j}: productUpdate(input: { ${f.input} }) { product { id } userErrors { field message } }`);
+    cDone=await runMutations(token,colFixes,(f,j)=>`  c${j}: collectionUpdate(input: { id: "${f.id}", image: { src: "${esc(f.src)}", altText: "${esc(f.alt)} bei LuxeStyle" } }) { collection { id } userErrors { field message } }`);
   }
-  for(const f of fixes) console.log("  ✓",clean(f.title).slice(0,60));
-  const status=`🧠 Shop-Brain: ${nodes.length} geprüft · ${fixes.length} veredelt · ${new Date().toISOString()}`;
+  for(const f of prodFixes) console.log("  ✓ SEO/Kat:",clean(f.title).slice(0,60));
+  for(const f of colFixes) console.log("  ✓ Cover:",f.handle);
+  if(noImage.length) console.log("  ⚠️ Ohne Bild (prüfen):",noImage.join(" · "));
+
+  const status=`🧠 Shop-Brain v2: ${prodFixes.length} veredelt · ${cDone} Cover · ${noImage.length} ohne Bild · ${new Date().toISOString()}`;
   console.log(status);
-  if(process.env.TELEGRAM_BOT_TOKEN&&process.env.TELEGRAM_CHAT_ID&&fixes.length>0&&!DRY){
+  if(process.env.TELEGRAM_BOT_TOKEN&&process.env.TELEGRAM_CHAT_ID&&!DRY&&(prodFixes.length||cDone||noImage.length)){
     await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`,{method:"POST",
       headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:process.env.TELEGRAM_CHAT_ID,text:status})}).catch(()=>{});
   }

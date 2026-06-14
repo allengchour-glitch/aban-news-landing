@@ -33,12 +33,15 @@ sogar wieder). Das Shop-Brain bügelt das **alle 6 Stunden automatisch** aus —
 `https://<dein-worker>.workers.dev/?key=<TRIGGER_KEY>` → JSON-Report (geprüft / veredelt).
 Letzter Lauf liegt in KV unter `last_run`.
 
-## Was es konkret tut
-- Holt die **50 neuesten** `cj-real`-Produkte (sortKey CREATED_AT).
-- Für jedes mit **fehlendem SEO-Titel** → setzt sauberen Titel `… | LuxeStyle` + Nutzen-Description.
-- Für jedes mit **fehlender Kategorie** → setzt Shopify-Taxonomie (Produkttyp→ID-Map = wie `catalog_enrich.py`)
-  → speist Google Free Listings.
-- Idempotent: bereits gepflegte Produkte werden übersprungen.
+## Was es konkret tut (v2)
+1. **Produkt-Veredelung:** holt die **50 neuesten** `cj-real`-Produkte (sortKey CREATED_AT). Für jedes mit
+   **fehlendem SEO-Titel ODER fehlender Description** → setzt sauberen Titel `… | LuxeStyle` + Nutzen-Description.
+   Für jedes mit **fehlender Kategorie** → setzt Shopify-Taxonomie (Produkttyp→ID-Map) → speist Google Free Listings.
+2. **Collection-Cover:** prüft alle Collections; jede **ohne Titelbild** bekommt automatisch ein Cover aus einem
+   eigenen Produktbild (leere Kategorien sehen in den Grids sonst unfertig aus). Bis `COLLECTION_COVER_MAX` (Default 30) pro Lauf.
+3. **Bild-QA:** erkennt **aktive Produkte ohne Bild** und meldet sie (Log/KV `last_no_image` + Telegram) —
+   **kein** Auto-Löschen (bewusst sicher, damit nichts versehentlich aus dem Verkauf fliegt).
+- Idempotent: bereits gepflegte Produkte/Collections werden übersprungen.
 
 ## Grenzen (ehrlich)
 - **Apps installieren** geht nur per User-OAuth — das kann kein Skript. Die wichtigen sind aber schon da
