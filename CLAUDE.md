@@ -37,9 +37,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   selbstständig dazulernen (Gehirn-Schleife), und **bei jedem Content-Schub Ideen von erfolgreichen Creators/
   Shops studieren & adaptieren** (Hooks/Formate/Schnitt/Sounds). Nicht von Null erfinden — kopieren was nachweislich zieht.
 - **🎵 REEL-SOUND-REGEL (FEST, 2026-06-14):** **TikTok-Reels = STUMM hochladen** (User legt Trend-Sound in der App
-  drauf — Trend-Sounds gehen lizenzrechtlich nur in-app). **Meta/IG+FB-Reels = eigene coole royalty-free Musik
-  einbacken** (Bibliothek `automation/music/`: luxe-house = ruhig/premium, luxe-hype = upbeat). Musik-Stil an den
-  Content anpassen + an Gewinner-Vibes orientieren; darin laufend besser werden.
+  drauf — Trend-Sounds gehen lizenzrechtlich nur in-app). **Meta/IG+FB-Reels = eigene coole Musik einbacken.**
+  Musik-Stil an Content + Gewinner-Vibes anlehnen; laufend besser werden.
+- **🎹 EIGENE MUSIK SELBST PRODUZIEREN (2026-06-14, „mit Klavier"):** `fluidsynth` + Soundfont `FluidR3_GM.sf2` sind
+  installiert → ORIGINAL-Tracks komponierbar (kein Lizenzproblem). Generator: `automation/music/make_signature_track.py`
+  (Python schreibt MIDI: Piano/Bass/Drums → `fluidsynth -ni -F out.wav … FluidR3_GM.sf2 track.mid`). Stil über
+  Akkorde/Tempo/Programs anpassen (chill/upbeat/hype). Royalty-free-Lib (`luxe-house/hype`, Kevin-MacLeod) bleibt Alternative.
 - **🎬 REEL-MEISTERWERK-PIPELINE (2026-06-14):** Luma `ray-flash-2` (Bild→Video, Key `luma-6ac…`, ~9672 Credits) →
   9:16-Finish (unscharfer BG-Fill + Mundart/Preis-HOOK-Text 1. Sek + dezenter CTA, ffmpeg) → 2 Exporte:
   `-9x16.mp4` (stumm/TikTok) + `-9x16-meta.mp4` (mit Musik/Meta). JEDES Reel einzeln per Frame QA'en (Asiaten-Regel +
