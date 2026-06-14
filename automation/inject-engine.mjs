@@ -88,6 +88,24 @@ for (const f of files) {
       if (block) { html = html.slice(0, pos) + block + "\n" + html.slice(pos); ld++; changed = true; }
     }
   }
+  // (3) SERP-Feinschliff: index,follow -> + große Bild-Vorschau & volle Snippets (nie bei noindex)
+  if (!noindex) {
+    const before = html;
+    html = html.replace(/(<meta\s+name=["']robots["']\s+content=["'])index,\s*follow(["'])/i,
+      "$1index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1$2");
+    if (html !== before) changed = true;
+  }
+  // (4) Core Web Vitals: Lazy-Load für Bilder ab dem 2. Bild (erstes = mögliches LCP-Bild, nicht lazy)
+  {
+    let seen = 0;
+    const next = html.replace(/<img\b([^>]*)>/gi, function (m, attrs) {
+      seen++;
+      if (seen === 1) return m;                                  // erstes Bild unverändert lassen
+      if (/\bloading\s*=/.test(attrs)) return m;                 // schon gesetzt
+      return "<img loading=\"lazy\" decoding=\"async\"" + attrs + ">";
+    });
+    if (next !== html) { html = next; changed = true; }
+  }
   if (changed) { try { writeFileSync(f, html); } catch { skipped++; } } else skipped++;
 }
 console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD injiziert, " + skipped + " übersprungen (von " + files.length + ").");
