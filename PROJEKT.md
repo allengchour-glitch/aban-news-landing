@@ -16,6 +16,24 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 🌙 2026-06-14 (NACHT-LAUF) — Marktplatz LIVE deployed + voll ausgebaut
+> **DER MARKTPLATZ IST LIVE auf abannews.com** (Cloudflare Pages, via gültigem Pages-Token deployed).
+> Verifiziert 200 + echte Daten: `/marktplatz /suche /stellenangebote /auto-suche /immobilien /angebote-suche
+> /inserate` + 22 Kaufberater-Seiten; `/api/jobs` & `/api/ebay` = `demo:false` (echte Jobs/eBay-Angebote).
+> **Diese Nacht autonom gebaut + deployed (PRs #968–#971+):**
+> - **Inserate erweitert** (db/schema + inserat-submit + inserate-list): Felder `typ/zustand/bild/featured`,
+>   reichere Karten (Bild-Thumbnail, ⭐ TOP-Badge, Chips), Formular mit Typ/Zustand/Bild-URL. **Forward-compatible:
+>   voll aktiv, sobald D1 existiert.** ⚠️ Wenn D1 angelegt wird: NEUES Schema (`db/inserate-schema.sql`) nutzen
+>   (enthält die neuen Spalten), sonst SELECT in inserate-list bricht.
+> - **Kaufberater mit Live-eBay-Zeile** (`gen_ch_landings.mjs`): 16 Produkt-Seiten zeigen 6 echte eBay-Angebote
+>   (monetarisiert direkt). Wohnung/Job/Umzug ohne eBay-Zeile.
+> - **Marktlücken**: occasion-auto / motorrad / wohnmobil / umzug-schweiz (Semrush nicht im Plan → bekannte CH-Nachfrage).
+> - a11y `:focus-visible`, Breadcrumbs, 404→Marktplatz, freundliche Leer-Zustände, Cross-Verlinkung überall.
+> **Token:** Pages-Token funktioniert (in Session, NIE im Repo). **D1-Recht fehlt** → DB anlegen = User-Part (s.u.).
+> **Deploy-Befehl** (für jede Session mit gültigem Token): `bash build-pages.sh && CLOUDFLARE_API_TOKEN=… \
+> CLOUDFLARE_ACCOUNT_ID=33e5217c0d0a92d76b120ca536cffd33 npx wrangler@3 pages deploy _site --project-name=abannews --branch=main`.
+> Brain-Score 97.2. eBay-Affiliate verdient bereits live.
+
 ## 🔑 2026-06-14 — DEPLOY-/TOKEN-STATUS (wichtig für jede Session; KEIN Secret hier!)
 > Der User hat einen Cloudflare-Token geliefert, aber er ist **IP-gesperrt** → von Cloud-Sessions
 > nicht nutzbar (`code 9109: Cannot use the access token from location`). **Secret-Werte gehören NIE
