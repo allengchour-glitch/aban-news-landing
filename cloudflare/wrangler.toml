@@ -6,22 +6,26 @@ compatibility_date = "2026-06-01"
 #   04:30        → ENHANCE (1 Bild veredeln, in Queue legen)
 #   05:15 + 05:25 → REEL    (Luma-Video starten + pollen; 2. Lauf resümiert lange Renders)
 #   09:00 + 17:00 → POST    (nächsten Queue-Eintrag — Bild ODER Reel — an IG/FB/Threads)
-[triggers]
-crons = ["30 4 * * *", "15 5 * * *", "25 5 * * *", "0 9 * * *", "0 17 * * *"]
+# Cron-Trigger (Social-Autopilot) — DEAKTIVIERT bis Meta/Gemini-Keys gesetzt sind (sonst eh no-op).
+# Zum Aktivieren einkommentieren + erneut deployen. Für Gelato-Fulfillment NICHT nötig (Webhook = fetch).
+# [triggers]
+# crons = ["30 4 * * *", "15 5 * * *", "25 5 * * *", "0 9 * * *", "0 17 * * *"]
 
 # --- R2: speichert + liefert die veredelten JPGs öffentlich aus ---
-[[r2_buckets]]
-binding = "BUCKET"
-bucket_name = "luxestyle-autopilot"
+# DEAKTIVIERT bis R2 im CF-Dashboard freigeschaltet ist (nur für Social-Bild/Video-Hosting nötig,
+# NICHT für Gelato-Fulfillment). Zum Aktivieren: R2 im Dashboard einschalten, dann diese 3 Zeilen einkommentieren.
+# [[r2_buckets]]
+# binding = "BUCKET"
+# bucket_name = "luxestyle-autopilot"
 
 # --- KV: Rotations-Pointer + Post-Queue ---
 [[kv_namespaces]]
 binding = "STATE"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"   # via: wrangler kv namespace create STATE
+id = "6678493bf48d4c599dd7c615e6b5ac94"   # via: wrangler kv namespace create STATE
 
 # --- Nicht-geheime Konfiguration ---
 [vars]
-PUBLIC_BASE = "https://luxestyle-autopilot.DEIN-SUBDOMAIN.workers.dev"  # nach 1. Deploy auf echte URL setzen
+PUBLIC_BASE = "https://luxestyle-autopilot.allengchour.workers.dev"
 SITE_URL = "https://luxestyle.ch"
 GEMINI_IMAGE_MODEL = "gemini-2.5-flash-image"
 META_GRAPH_VERSION = "v21.0"

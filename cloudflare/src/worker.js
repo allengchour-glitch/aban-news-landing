@@ -209,13 +209,15 @@ export default {
 
   async fetch(req, env){
     const url = new URL(req.url);
-    // R2-Serve: öffentliche Medien-URLs für Meta (Bild + Video)
+    // R2-Serve: öffentliche Medien-URLs für Meta (Bild + Video). No-op, falls R2 nicht gebunden ist.
     if(url.pathname.startsWith('/enhanced/')){
+      if(!env.BUCKET) return new Response('R2 not configured', { status:404 });
       const obj = await env.BUCKET.get(url.pathname.slice(1));
       if(!obj) return new Response('Not found', { status:404 });
       return new Response(obj.body, { headers:{ 'Content-Type':'image/jpeg', 'Cache-Control':'public, max-age=86400' } });
     }
     if(url.pathname.startsWith('/reels/')){
+      if(!env.BUCKET) return new Response('R2 not configured', { status:404 });
       const obj = await env.BUCKET.get(url.pathname.slice(1));
       if(!obj) return new Response('Not found', { status:404 });
       return new Response(obj.body, { headers:{ 'Content-Type':'video/mp4', 'Cache-Control':'public, max-age=86400' } });
