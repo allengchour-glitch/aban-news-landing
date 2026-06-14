@@ -48,6 +48,8 @@
       ["Kostenloses Rechnungsprogramm", "/rechnungsprogramm-kostenlos.html", "Business", "Gratis Rechnung schreiben — worauf achten"],
       ["Rechnung Schritt für Schritt", "/rechnung-schritt-fuer-schritt.html", "Business", "In 6 Schritten zur ersten Rechnung (Anleitung)"],
       ["Geschäftskonto-Vergleich", "/geschaeftskonto-vergleich.html", "Business", "Qonto, Kontist, Holvi & Co. für Selbstständige"],
+      ["Qonto vs. Kontist", "/qonto-vs-kontist.html", "Business", "Head-to-head: welches Geschäftskonto passt"],
+      ["Gewerbe anmelden — Kosten", "/gewerbe-anmelden-kosten.html", "Business", "Was die Anmeldung in DE/AT/CH kostet"],
       ["Homeoffice absetzen", "/homeoffice-absetzen.html", "Business", "Arbeitszimmer & Pauschale steuerlich nutzen"],
       ["Rechnung stornieren", "/rechnung-stornieren.html", "Business", "Rechnung korrigieren statt löschen"],
       ["Erste Kunden gewinnen", "/kunden-gewinnen.html", "Business", "9 ehrliche Wege ohne Werbebudget"],
