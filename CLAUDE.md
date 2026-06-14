@@ -22,6 +22,9 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 
 ## 🔁 Daueraufträge (FEST)
 - **„update dich immer"** (2026-06-12): Memory nach jeder Charge nachführen.
+- **📊 STATUS-BERICHT (2026-06-14 „ich will immer Status sehen, was du gemacht hast"):** `dropship/STATUS.md`
+  nach JEDER Charge nachführen (was läuft autonom · was wartet auf User · Verlauf neueste oben) UND in der
+  Antwort eine kurze Status-Zusammenfassung zeigen.
 - **🤖 AUTO-MODUS (2026-06-13 „muss nichts mehr das gleiche sagen"):** EIN Befehl macht alles —
   **`bash automation/brain/auto.sh`**: (1) analysieren (TikTok), (2) lernen (Gehirn, kumulativ+Ratsche),
   (3) Autopost-Queue aus gelernten Captions/Hashtags+echten Preisen nachfüllen, (4) nächste 🔴/🟡-Aktionen
