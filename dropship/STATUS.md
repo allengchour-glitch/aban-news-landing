@@ -33,7 +33,9 @@
 - **🎬 Marken-Video 60s + 30s** (`dropship/ads/render_brand_video.py`) — Kerstin-Stimme, ALLE Kategorien inkl.
   „Selbst gestalten", echte Musik aus dem Tool, an User geliefert. In `reels/luxestyle-brand-{60,30}s.mp4`.
 - **🈂️ Safe-Zone-Fix** (User „schrift unten achtung"): eingebrannter Text endet jetzt bei ~78 % Höhe → kollidiert
-  nicht mehr mit Plattform-Caption/Buttons. Als feste Regel im Memory verankert. ⚠️ `render_masterpiece.sh` noch nachziehen.
+  nicht mehr mit Plattform-Caption/Buttons. Als feste **Gehirn-Regel** (`knowledge.json` rules.production) verankert.
+- **♻️ Alle 4 Meisterwerk-Reels neu gerendert** (Flame/Brise/Onyx/Daisy) mit Safe-Zone-CTA via neuem
+  `dropship/ads/finish_reel.sh` (60fps, stumm+meta). `render_masterpiece.sh` ebenfalls auf Safe-Zone gefixt. ✅ erledigt.
 
 ### 2026-06-14
 - **🎵 TikTok-Posten ÜBER DEN PORT** (User-Wunsch „immer per Port"): `tiktok-upload-browser.mjs` (Brave-CDP 9222,
