@@ -204,6 +204,50 @@ def fix_noopener() -> int:
     return changed
 
 
+# Marken-konforme, GRAMMATISCH SICHERE Ersetzungen für Hype-Wörter (ganze Wörter,
+# Groß/Klein wird übernommen). Nur eindeutige Fälle — Mehrdeutiges bleibt unangetastet.
+# „besonder-" nimmt dieselben Adjektivendungen wie „einzigartig-" → inflektionssicher.
+VOICE_MAP = [
+    (r"\beinzigartige\b", "besondere"), (r"\beinzigartigen\b", "besonderen"),
+    (r"\beinzigartiges\b", "besonderes"), (r"\beinzigartiger\b", "besonderer"),
+    (r"\beinzigartig\b", "besonders"),
+    (r"\bMehrwert\b", "Nutzen"),  # der Mehrwert -> der Nutzen (gleiches Genus, sicher)
+]
+VOICE_RX = [(re.compile(p), r) for p, r in VOICE_MAP]
+# Schutz-Zonen: in <script>/<style> und in Anführungszeichen/Debunk-Kontext NICHT anfassen
+# (dort werden Hype-Wörter bewusst zitiert/entlarvt).
+_VOICE_SKIP_FILES = ("archive/", "anti-hype", "brand.html", "hype-", "ki-bullshit",
+                     "dossier/", "downloads/", "launch-manual.html", "ki-bullshit-bingo.html")
+
+
+def _apply_voice_outside_scripts(s: str) -> str:
+    """Ersetzt nur im sichtbaren Markup, lässt <script>/<style>-Blöcke unberührt."""
+    parts = re.split(r"(<(?:script|style)\b.*?</(?:script|style)>)", s, flags=re.S | re.I)
+    for i in range(0, len(parts), 2):  # nur die Nicht-Script-Teile
+        seg = parts[i]
+        for rx, rep in VOICE_RX:
+            seg = rx.sub(rep, seg)
+        parts[i] = seg
+    return "".join(parts)
+
+
+def fix_voice() -> int:
+    """Sichere Marken-/Voice-Ersetzungen (Hype-Wörter) über alle Seiten. Idempotent.
+    Lässt Zitat-/Debunk-/Archiv-Seiten + Script-Blöcke bewusst unangetastet."""
+    changed = 0
+    for p in html_files():
+        rel = str(p.relative_to(ROOT))
+        if any(x in rel for x in _VOICE_SKIP_FILES):
+            continue
+        s = p.read_text(encoding="utf-8", errors="replace")
+        new = _apply_voice_outside_scripts(s)
+        if new != s:
+            p.write_text(new, encoding="utf-8")
+            changed += 1
+            print(f"  voice: {p.relative_to(ROOT)}")
+    return changed
+
+
 def write_brain_state(n_pages: int, counts: dict) -> float:
     """Gedächtnis des 'Hirns': schreibt Health-Score + Verlauf nach
     automation/brain-state.json, damit sich die Seite messbar selbst verbessert.
@@ -246,11 +290,18 @@ def main():
     ap.add_argument("--out", default=str(ROOT / "reports" / "IMPROVEMENT-REPORT.md"))
     ap.add_argument("--fix", action="store_true",
                     help="Sichere mechanische Fixes anwenden (rel=noopener bei target=_blank).")
+    ap.add_argument("--voice", action="store_true",
+                    help="Sichere Marken-/Voice-Ersetzungen (Hype-Wörter, nur eindeutige Fälle).")
     args = ap.parse_args()
 
     if args.fix:
         n = fix_noopener()
         print(f"noopener-Fix: {n} Datei(en) geändert.")
+        return
+
+    if args.voice:
+        n = fix_voice()
+        print(f"voice-Fix: {n} Datei(en) geändert.")
         return
 
     findings: list = []
