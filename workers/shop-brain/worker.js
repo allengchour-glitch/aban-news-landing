@@ -24,6 +24,8 @@ const CAT = {
   "Jacke":"aa-1","Bluse":"aa-1","Damen-Bluse":"aa-1","Rock":"aa-1","Damen-Rock":"aa-1","Shorts":"aa-1",
   "Damen-Shorts":"aa-1","Damen-Hose":"aa-1","Weste":"aa-1","Jumpsuit":"aa-1","Damen-Jumpsuit":"aa-1",
   "Jeans":"aa-1","Set":"aa-1","Sport-Set":"aa-1","Herren-Set":"aa-1","Hose":"aa-1","Top":"aa-1","Pullover":"aa-1",
+  "Hemd":"aa-1","Kurzarm-Hemd":"aa-1","Tank-Top":"aa-1","Tanktop":"aa-1","Polo":"aa-1","Poloshirt":"aa-1","T-Shirt":"aa-1",
+  "Bikini":"aa-1","Badeanzug":"aa-1","Bademode":"aa-1","Badeshorts":"aa-1","Strandkleid":"aa-1","Mantel":"aa-1","Trainingsanzug":"aa-1",
   "Beauty":"hb-3-2-6","Beauty & Pflege":"hb-3-2-6","Beauty-Tool":"hb-3-2-9","Hautpflege":"hb-3-2-9",
   "Wellness & Spa":"hb-3-11-9","Wellness":"hb-3-11-9","Aroma-Diffuser":"hb-3-11-9","Massage":"hb-3-11-9","Luftbefeuchter":"hb-3-11-9",
   "Beleuchtung":"hg-13-5","Garten & Beleuchtung":"hg-13-5",
