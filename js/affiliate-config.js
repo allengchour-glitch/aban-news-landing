@@ -32,6 +32,15 @@ window.ABAN_AFFILIATE = {
   // bexio (CH). Partnerprogramm: bexio-Partner.
   BEXIO_URL: "",
 
+  // --- Geschäftskonten (HOHE Provision: oft 50–100 € pro Kontoeröffnung!).
+  //     Programme: financeAds / Awin / direkt beim Anbieter. Tracking-Link eintragen. ---
+  // Qonto (Geschäftskonto, DE/AT/FR…). Programm: financeAds / Partnerprogramm Qonto.
+  QONTO_URL: "",
+  // Kontist (Geschäftskonto für Solo-Selbstständige, DE). Programm: financeAds / Awin.
+  KONTIST_URL: "",
+  // Holvi (Geschäftskonto). Programm: Partnerprogramm Holvi.
+  HOLVI_URL: "",
+
   // --- E-Mail-Marketing. Tracking-Link aus dem jeweiligen Partnerprogramm
   //     eintragen; leer ("") -> Button zeigt auf die Anbieter-Domain. ---
   // Brevo (ehem. Sendinblue, EU-gehostet). Partnerprogramm: Brevo-Affiliate.
