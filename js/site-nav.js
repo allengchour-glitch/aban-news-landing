@@ -15,6 +15,7 @@
       ["🔥 Angebote", "/angebote-suche.html"],
       ["🧰 Tools", "/online-tools.html"],
       ["🤖 KI-Studio", "/ki-studio.html"],
+      ["📚 KI-Anleitungen", "/ki-anleitungen.html"],
       ["📈 Märkte", "/maerkte.html"],
       ["🧭 Dossiers", "/dossiers.html"],
       ["💼 Cockpit", "/cockpit-app.html"]
@@ -87,6 +88,7 @@
       ["Zeichenzähler", "/zeichenzaehler.html", "Tools", "Zeichen & Wörter zählen"],
       ["Cron-Generator", "/cron-generator.html", "Tools", "Cron-Ausdrücke bauen"],
       ["Namen-Generator", "/namen-generator.html", "Tools", "Ideen für Namen"],
+      ["KI-Anleitungen (Hub)", "/ki-anleitungen.html", "KI", "Alle KI-How-tos: Texte, Excel, Bilder, Web …"],
       ["KI für deine Branche", "/branchen.html", "KI", "Praxis-Ratgeber je Branche"],
       ["KI-Audit", "/ki-audit.html", "KI", "Wo KI dir wirklich hilft"],
       ["KI-Readiness-Check", "/ki-readiness-check.html", "KI", "Wie bereit bist du für KI?"],
