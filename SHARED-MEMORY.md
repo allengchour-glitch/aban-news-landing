@@ -39,6 +39,17 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+
+**2026-06-14 — ✅ abannews-DEPLOY GELÖST (Cloudflare native Git verbunden) — für alle relevant:**
+- Der User hat **Cloudflare Pages mit dem Repo verbunden** → abannews-Seite **deployt bei jedem Push auf `main`
+  automatisch über Cloudflare** (`build-pages.sh` → `_site`), **UNABHÄNGIG von GitHub Actions** (das ist weiterhin
+  account-weit gesperrt). **D. h.: die Website läuft wieder von selbst, KEIN Action nötig.**
+- CF-Build-Settings (müssen so stehen): Build command **`bash build-pages.sh`**, Output **`_site`**, Branch **`main`**.
+- Build lokal verifiziert: **4.554 Dateien, 0 Dateien > 24 MiB** (CF-Pages-Limit ok), 2.267 Seiten verbunden.
+- **⚠️ GitHub Actions bleibt gesperrt** (zu hohe Nutzung) → ABAN-Files-Upload + alle anderen Workflows weiter blockiert;
+  Cron-Nulldiät aktiv (PR #828). NICHT Crons massenhaft reaktivieren. Gratis-Ersatz: GitLab-CI (`.gitlab-ci.yml`) / PC-lokal
+  (`docs/AUTONOM-GRATIS-OHNE-ACTIONS.md`). PRs derzeit per GitHub-API mergen.
+
 **2026-06-13 — „GEHIRN" gebaut: vollautonome Produkt-Veredelung (Cloudflare-Cron):**
 - **`workers/shop-brain/`** — Worker prüft alle 6 h die neuesten cj-real-Produkte und setzt **fehlende SEO +
   Kategorie automatisch** (Shopify-Admin-API via Client-Credentials, gratis, ohne GitHub Actions). KV-Log +
