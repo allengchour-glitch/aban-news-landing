@@ -16,6 +16,34 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 🛒 2026-06-14 (NEUESTER STAND) — SCHWEIZER MARKTPLATZ gebaut (Jobs/Auto/Immo/Angebote/Inserate)
+> Fortsetzung des Marathons, User: „mache alles autonom, gestalte die ganze Webseite". Komplettes
+> Such-/Inserat-Portal im Stil echter CH-Seiten (tutti/AutoScout/ImmoScout) gebaut — **alles auf `main`,
+> via squash-PRs #941–#951.** ⚠️ **DEPLOY HÄNGT:** GitHub Actions ist accountweit **gesperrt**
+> (`422 Actions has been disabled`) UND diese Cloud-Session hat **keinen Cloudflare-Token** → `wrangler`-
+> Deploy geht hier nicht. Frühere Seiten sind live, weil eine VORHERIGE Session manuell deployt hat. **Bis
+> der User deployt, ist NICHTS davon live** (`/stellenangebote.html` etc. = 404). Deploy-Befehl:
+> `bash build-pages.sh && npx wrangler@3 pages deploy _site --project-name=abannews --branch=main`
+> ODER User liefert `CLOUDFLARE_API_TOKEN`+`CLOUDFLARE_ACCOUNT_ID` → dann deploye ich selbst.
+>
+> **Gebaut (alles self-styled, responsive: PC = Filter-Sidebar, Mobile = „⚙ Filter"-Sheet, amber):**
+> - **Jobbörse** `/stellenangebote.html` + `functions/api/jobs.js` — aggregiert ECHTE Jobs aus **4 freien,
+>   legalen APIs** (Arbeitnow + The Muse + Remotive + Jobicy), Kategorie-Erkennung `catOf`, Dedupe, Filter.
+> - **Universal-Suche** `/suche.html` — eine Suche parallel über jobs+ebay+inserate-list, gruppiert.
+> - **Marktplatz-Hub** `/marktplatz.html` — CH-Verzeichnis: Suchbox→/suche, 6 Hauptbereiche, 18 Kategorie-
+>   Kacheln (Deep-Links), Region-Zeile (Zürich/Bern/Basel/…).
+> - **Auto** `/auto-suche.html` + **Immobilien** `/immobilien.html` (eigene Inserate, kat=Immobilien) +
+>   Angebote/Inserate auf gleiche Portal-Optik umgebaut.
+> - **`functions/api/ebay.js`** erweitert: serverseitige Filter `pmin/pmax/cond/sort` (abwärtskompatibel).
+> - **Deep-Link-Vorbefüllung** `?q=/?cat=/?kat=/?loc=/?tag=` auf allen Such-Seiten → Kategorie-Links landen gefiltert.
+> - **13 CH-SEO-Landingpages** (auto/wohnung/moebel/handy/velo/job/garten/werkzeug/mode/gaming/haustier/
+>   sport/kamera-…-schweiz) via Generator `automation/gen_ch_landings.mjs` (FAQ-JSON-LD + Deep-Link-CTA).
+> - **Startseite** `index.html`: Marktplatz-Block (Suchbox→/suche + Kategorie-Chips) nach den Stats.
+> - Alles in `js/site-nav.js` (NAV „🔎 Suche/🛒 Marktplatz/💼 Jobs" + Katalog) + `sitemap.xml` registriert.
+> **Legal-Grundsatz:** kein Scraping fremder Seiten — nur offizielle freie APIs + eigene Nutzer-Inserate.
+> **Offen (User):** Deploy (s.o.); Inserate/Immobilien brauchen das D1-Backend für echte gespeicherte Anzeigen;
+> Job-Affiliate-Netzwerk für Provision pro Klick.
+
 ## 🚀 2026-06-14 — GROSSER AUTONOM-MARATHON: eBay LIVE + ~50 SEO-Seiten + Technik-SEO + Selbst-Hirn (zuerst lesen)
 > Session „mach alles autonom / volle Gas". Cloudflare Pages ist **git-verbunden** → Push auf `main` deployt
 > automatisch (zusätzlich `wrangler pages deploy _site` manuell). Vor `git reset --hard` IMMER `git fetch`.
