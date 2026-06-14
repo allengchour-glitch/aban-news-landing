@@ -141,6 +141,15 @@
     var ctxSize=el('input',{type:'range',min:'0.15',max:'3',step:'0.02',style:"flex:1;accent-color:#c1922f;"});
     sizeBar.appendChild(ctxSize); body.appendChild(sizeBar);
 
+    // Druckgrösse-Presets (für jedes Element) + Auflösungs-Warnung
+    var presetBar=el('div',{style:"display:none;gap:6px;margin-bottom:10px;flex-wrap:wrap;"});
+    function preBtn(label,sc){ var b=el('button',{type:'button',style:"flex:1;min-width:70px;padding:8px 4px;border-radius:9px;border:1px solid #ddd;background:#fff;color:#16151a;font-weight:700;font-size:12.5px;cursor:pointer;"},label); b.addEventListener('click',function(){ var ly=findLayer(state.sel); if(!ly)return; ly.scale=sc; ctxSize.value=sc; layoutNode(ly); checkRes(ly); syncFormInputs(); }); return b; }
+    presetBar.appendChild(el('span',{style:"font-size:12px;font-weight:700;color:#8a8a90;align-self:center;white-space:nowrap;margin-right:2px;"}, EN?'Print size:':'Druckgrösse:'));
+    presetBar.appendChild(preBtn(EN?'Small':'Klein',0.6)); presetBar.appendChild(preBtn(EN?'Medium':'Mittel',1.0)); presetBar.appendChild(preBtn(EN?'Large':'Gross',1.5)); presetBar.appendChild(preBtn(EN?'Fill':'Füllend',2.0));
+    body.appendChild(presetBar);
+    var resWarn=el('div',{style:"display:none;background:#fff4f5;border:1px solid #f3c6cd;color:#b3122b;border-radius:10px;padding:8px 10px;margin-bottom:10px;font-size:12.5px;font-weight:600;"}, EN?'⚠️ Image may be too small for a sharp print — scale down or use a larger image.':'⚠️ Bild evtl. zu klein für scharfen Druck — kleiner skalieren oder grösseres Bild verwenden.');
+    body.appendChild(resWarn);
+
     // Aktionsleiste für aktives Element: Duplizieren / Ebene nach vorne / hinten
     var actBar=el('div',{style:"display:none;gap:8px;margin-bottom:10px;"});
     function actBtn(label){ return el('button',{type:'button',style:"flex:1;padding:9px 6px;border-radius:9px;border:1px solid #ddd;background:#fff;color:#16151a;font-weight:700;font-size:13px;cursor:pointer;"},label); }
@@ -181,6 +190,20 @@
     var fi=el('input',{type:'file',accept:'image/png,image/jpeg,image/webp',style:"display:none;"});
     body.appendChild(fi);
 
+    var btnPrev=el('button',{type:'button',style:"width:100%;padding:12px;border:1px solid #ddd;border-radius:999px;background:#fff;color:#16151a;font-weight:700;font-size:14px;cursor:pointer;margin-top:2px;margin-bottom:8px;"}, EN?'👁️ Preview print file':'👁️ Druck-Vorschau anzeigen');
+    btnPrev.addEventListener('click',function(){ deselect(); msg.style.color='#6b6b73'; msg.textContent=T.baking;
+      bakeSide(state.active).then(function(blob){ msg.textContent=''; if(!blob){ msg.style.color='#b3122b'; msg.textContent=T.empty; return; }
+        var url=URL.createObjectURL(blob);
+        var ov=el('div',{style:"position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;font-family:'Helvetica Neue',Arial,sans-serif;"});
+        ov.appendChild(el('div',{style:"color:#fff;font-weight:800;font-size:15px;margin-bottom:6px;text-align:center;"}, EN?'👁️ Exactly this gets printed':'👁️ Genau das wird gedruckt'));
+        ov.appendChild(el('div',{style:"color:#cfcfd6;font-size:12.5px;margin-bottom:12px;text-align:center;max-width:340px;"}, EN?'Checkered = transparent (not printed). Only your design is printed onto the product.':'Karos = transparent (wird nicht gedruckt). Nur dein Motiv kommt aufs Produkt.'));
+        var fr=el('div',{style:"background-color:#fff;background-image:linear-gradient(45deg,#e6e6e6 25%,transparent 25%),linear-gradient(-45deg,#e6e6e6 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e6e6e6 75%),linear-gradient(-45deg,transparent 75%,#e6e6e6 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0;border-radius:10px;padding:8px;"});
+        var im=el('img',{src:url,style:"display:block;max-width:82vw;max-height:58vh;"}); fr.appendChild(im); ov.appendChild(fr);
+        var cl=el('button',{type:'button',style:"margin-top:14px;padding:11px 24px;border:none;border-radius:999px;background:#c1922f;color:#fff;font-weight:800;font-size:15px;cursor:pointer;"}, EN?'Close':'Schliessen');
+        cl.addEventListener('click',function(){ ov.remove(); try{ URL.revokeObjectURL(url); }catch(_){} });
+        ov.appendChild(cl); document.body.appendChild(ov);
+      }).catch(function(){ msg.textContent=''; }); });
+    body.appendChild(btnPrev);
     var cta=el('button',{type:'button',style:"width:100%;padding:16px;border:none;border-radius:999px;background:#c1922f;color:#fff;font-weight:800;font-size:16px;cursor:pointer;margin-top:4px;"},T.cta);
     var msg=el('div',{style:"text-align:center;font-size:13px;margin-top:8px;min-height:18px;"});
     body.appendChild(cta); body.appendChild(msg); wrap.appendChild(body); container.appendChild(wrap);
@@ -225,13 +248,14 @@
       state.sel=id;
       for(var k in nodes){ var on=(k===id); nodes[k].frame.style.display=on?'block':'none'; nodes[k].handle.style.display=on?'block':'none'; nodes[k].del.style.display=on?'block':'none'; nodes[k].root.style.zIndex=on?'5':'1'; }
       var ly=findLayer(id);
-      if(ly){ sizeBar.style.display='flex'; ctxSize.value=ly.scale; actBar.style.display='flex'; }
+      if(ly){ sizeBar.style.display='flex'; ctxSize.value=ly.scale; actBar.style.display='flex'; presetBar.style.display='flex'; }
       if(ly&&ly.type==='text'){ ctx.style.display='block'; ctxIn.value=ly.text||''; ctxFont.value=ly.font; if(/^#[0-9a-f]{6}$/i.test(ly.color)) ctxPick.value=ly.color; paintCtxSwatch(ly.color); }
       else ctx.style.display='none';
       var isImg=!!(ly&&ly.type==='image'); imgBar.style.display=isImg?'flex':'none'; if(!isImg) filtPanel.style.display='none';
+      if(isImg) checkRes(ly); else resWarn.style.display='none';
       syncFormInputs();
     }
-    function deselect(){ state.sel=null; for(var k in nodes){ nodes[k].frame.style.display='none'; nodes[k].handle.style.display='none'; nodes[k].del.style.display='none'; } ctx.style.display='none'; sizeBar.style.display='none'; actBar.style.display='none'; imgBar.style.display='none'; filtPanel.style.display='none'; }
+    function deselect(){ state.sel=null; for(var k in nodes){ nodes[k].frame.style.display='none'; nodes[k].handle.style.display='none'; nodes[k].del.style.display='none'; } ctx.style.display='none'; sizeBar.style.display='none'; actBar.style.display='none'; imgBar.style.display='none'; filtPanel.style.display='none'; presetBar.style.display='none'; resWarn.style.display='none'; }
     function paintCtxSwatch(val){ Array.prototype.forEach.call(ctxCw.children,function(x){ var on=x.getAttribute('data-c')===val; x.style.border='2px solid '+(on?'#16151a':'#e3e3e3'); x.style.transform=on?'scale(1.12)':'none'; x.textContent=on?'✓':''; }); }
 
     // ---------- Gesten: Drag / Resize+Rotate / Pinch ----------
@@ -264,7 +288,7 @@
           layer.cy=Math.max(0,Math.min(1,start.cy0+(e.clientY-start.py)/start.sh)); }
         layoutNode(layer);
       }
-      function onUp(e){ delete ptrs[e.pointerId]; start=null; try{ if(state.sel===layer.id) ctxSize.value=layer.scale; }catch(_){ } if(Object.keys(ptrs).length===0) syncFormInputs(); }
+      function onUp(e){ delete ptrs[e.pointerId]; start=null; try{ if(state.sel===layer.id){ ctxSize.value=layer.scale; checkRes(layer); } }catch(_){ } if(Object.keys(ptrs).length===0) syncFormInputs(); }
       root.addEventListener('pointerdown',function(e){ onDown(e,false); });
       handle.addEventListener('pointerdown',function(e){ onDown(e,true); });
       root.addEventListener('pointermove',onMove);
@@ -285,6 +309,11 @@
 
     // ---------- Bild-Bearbeitung (Crop/Spiegeln/Drehen/Filter) ----------
     function curImgLayer(){ var l=findLayer(state.sel); return (l&&l.type==='image')?l:null; }
+    // Auflösungs-Check: warnen, wenn das Quellbild für die gewählte Druckgrösse zu klein ist
+    function checkRes(layer){ if(!layer||layer.type!=='image'){ resWarn.style.display='none'; return; }
+      var ow=layer._origW||0; if(!ow){ resWarn.style.display='none'; return; }
+      var e=layer.edit||newEdit(); var effW=((e.rotQ%2)?e.ch:e.cw)*ow; var printW=layer.scale*REF*0.5;
+      resWarn.style.display=(effW>0 && effW<printW*0.7)?'block':'none'; }
     // Helfer: Hintergrund entfernen (Ecken-Farbe keyen, weiche Kante)
     function removeBg(c,cv,tol){ var w=cv.width,h=cv.height; if(w<2||h<2) return; var d=c.getImageData(0,0,w,h),p=d.data;
       function px(x,y){ var i=(y*w+x)*4; return [p[i],p[i+1],p[i+2]]; }
@@ -319,7 +348,7 @@
       return cv;
     }); }
     function previewEdit(layer){ renderEditCanvas(layer,700).then(function(cv){ var url=cv.toDataURL('image/png'); layer.src=url; var n=nodes[layer.id]; if(n&&n.content&&n.content.tagName==='IMG') n.content.src=url; layoutNode(layer); }).catch(function(){}); }
-    function commitEdit(layer){ renderEditCanvas(layer,0).then(function(cv){ var url=cv.toDataURL('image/png'); layer.src=url; var n=nodes[layer.id]; if(n&&n.content&&n.content.tagName==='IMG') n.content.src=url; layoutNode(layer);
+    function commitEdit(layer){ renderEditCanvas(layer,0).then(function(cv){ var url=cv.toDataURL('image/png'); layer.src=url; var n=nodes[layer.id]; if(n&&n.content&&n.content.tagName==='IMG') n.content.src=url; layoutNode(layer); checkRes(layer);
       if(IMG_ENABLED){ layer.uploading=true; layer.printUrl=''; syncFormInputs(); try{ cv.toBlob(function(b){ if(!b){ layer.uploading=false; syncFormInputs(); return; } uplBlob(b,function(err,u){ layer.uploading=false; if(!err&&u) layer.printUrl=u; syncFormInputs(); }); },'image/png'); }catch(_){ layer.uploading=false; } } else syncFormInputs();
     }).catch(function(){ layer.uploading=false; }); }
     var _filtT=null; function previewDeb(layer){ clearTimeout(_filtT); _filtT=setTimeout(function(){ previewEdit(layer); },50); }
@@ -379,7 +408,7 @@
     ctxFont.addEventListener('change',function(){ var ly=findLayer(state.sel); if(ly&&ly.type==='text'){ ly.font=ctxFont.value; layoutNode(ly); syncFormInputs(); } });
     ctxCw.addEventListener('click',function(e){ var b=e.target.closest('[data-c]'); if(!b) return; var ly=findLayer(state.sel); if(ly&&ly.type==='text'){ ly.color=b.getAttribute('data-c'); paintCtxSwatch(ly.color); layoutNode(ly); syncFormInputs(); } });
     // Grössen-Regler → aktives Element live skalieren
-    ctxSize.addEventListener('input',function(){ var ly=findLayer(state.sel); if(ly){ ly.scale=Math.max(0.06,Math.min(3,parseFloat(ctxSize.value)||ly.scale)); layoutNode(ly); syncFormInputs(); } });
+    ctxSize.addEventListener('input',function(){ var ly=findLayer(state.sel); if(ly){ ly.scale=Math.max(0.06,Math.min(3,parseFloat(ctxSize.value)||ly.scale)); layoutNode(ly); checkRes(ly); syncFormInputs(); } });
     // Freie Farbwahl (nur Text)
     ctxPick.addEventListener('input',function(){ var ly=findLayer(state.sel); if(ly&&ly.type==='text'){ ly.color=ctxPick.value; paintCtxSwatch(ly.color); layoutNode(ly); syncFormInputs(); } });
     // Duplizieren
@@ -395,6 +424,7 @@
     // Bild-Upload
     fi.addEventListener('change',function(){ var f=fi.files&&fi.files[0]; if(!f) return; if(f.size>10*1024*1024){ msg.style.color='#b3122b'; msg.textContent=T.tooBig; return; }
       var rd=new FileReader(); rd.onload=function(){ var ly=newImage(rd.result,'',true); addLayer(ly); msg.style.color='#6b6b73'; msg.textContent=T.uploading;
+        loadImg(rd.result).then(function(im){ ly._origW=im.naturalWidth||im.width; ly._origH=im.naturalHeight||im.height; if(state.sel===ly.id) checkRes(ly); }).catch(function(){});
         uplFile(f,function(err,url){ ly.uploading=false; if(err){ msg.style.color='#b3122b'; msg.textContent=T.upErr+err.message; return; } ly.printUrl=url; msg.textContent=''; syncFormInputs(); });
       }; rd.readAsDataURL(f); fi.value=''; });
 
