@@ -226,6 +226,91 @@ const PAGES = [
       ["Kann ich Foto-Equipment verkaufen?", "Ja — kostenlos als Inserat aufgeben, kurze Prüfung vor der Veröffentlichung."],
     ],
   },
+  {
+    slug: "computer-kaufen-schweiz", icon: "💻", h1: "Computer & Laptop kaufen in der Schweiz",
+    title: "Computer kaufen Schweiz — Laptops, PCs & Zubehör | aban",
+    desc: "Computer in der Schweiz kaufen: Laptops, Desktop-PCs, Monitore und Zubehör neu oder gebraucht suchen, nach Preis und Zustand filtern.",
+    cta: "/angebote-suche.html?cat=Computer", ctaLabel: "Computer-Angebote ansehen",
+    intro: "Laptops, Desktop-PCs, Monitore und Zubehör — neu oder refurbished. Vergleiche Angebote und filtere nach Preis und Zustand.",
+    tips: [
+      ["Refurbished spart viel", "Generalüberholte Business-Laptops sind robust, günstig und oft mit Garantie."],
+      ["Auf SSD & RAM achten", "SSD und genug RAM (16 GB) bringen mehr Alltagstempo als ein neuer Prozessor."],
+      ["Akku & Zustand", "Bei gebrauchten Laptops Akku-Zustand und Display auf Pixelfehler prüfen."],
+    ],
+    faq: [
+      ["Wo finde ich günstige Computer in der Schweiz?", "In der Angebote-Suche filterst du die Kategorie Computer nach Zustand und Preis; lokale Occasionen im Inserate-Bereich."],
+      ["Lohnt sich ein refurbished Laptop?", "Oft ja — gerade Business-Geräte sind langlebig, günstig und teils mit Garantie."],
+      ["Kann ich meinen alten PC verkaufen?", "Ja — kostenlos als Inserat aufgeben, kurze Prüfung vor der Veröffentlichung."],
+    ],
+  },
+  {
+    slug: "kueche-kaufen-schweiz", icon: "🍳", h1: "Küche & Haushalt kaufen in der Schweiz",
+    title: "Küche & Haushalt kaufen Schweiz — Geräte & Zubehör | aban",
+    desc: "Küche und Haushalt in der Schweiz: Küchengeräte, Maschinen und Haushaltsartikel neu oder gebraucht suchen und vergleichen.",
+    cta: "/angebote-suche.html?cat=Haushalt", ctaLabel: "Haushalt-Angebote ansehen",
+    intro: "Kaffeemaschine, Küchenmaschine, Geschirr oder Kleingeräte — neu oder gebraucht. Vergleiche Angebote und filtere nach Preis.",
+    tips: [
+      ["Marken-Kleingeräte gebraucht", "Kaffee- und Küchenmaschinen von Marken halten lange — gebraucht oft top in Schuss."],
+      ["Mass & Anschluss prüfen", "Bei Einbaugeräten Masse und Anschluss checken, bevor du kaufst."],
+      ["Hygiene", "Gebrauchtes Küchenzubehör vor Gebrauch gründlich reinigen."],
+    ],
+    faq: [
+      ["Wo finde ich günstige Küchengeräte in der Schweiz?", "In der Angebote-Suche filterst du Haushalt nach Zustand und Preis; lokale Occasionen im Inserate-Bereich."],
+      ["Lohnt sich gebraucht?", "Bei Marken-Kleingeräten oft ja — langlebig und deutlich günstiger."],
+      ["Kann ich Küchensachen verkaufen?", "Ja — kostenlos als Inserat aufgeben, kurze Prüfung vor der Veröffentlichung."],
+    ],
+  },
+  {
+    slug: "baby-kind-kaufen-schweiz", icon: "🍼", h1: "Baby & Kind kaufen in der Schweiz",
+    title: "Baby & Kind kaufen Schweiz — Kinderwagen, Kleidung & Spielzeug | aban",
+    desc: "Für Baby & Kind in der Schweiz: Kinderwagen, Autositze, Kleidung und Spielzeug neu oder gebraucht suchen — oder kostenlos inserieren.",
+    cta: "/inserate.html?kat=Baby+%26+Kind", ctaLabel: "Baby & Kind ansehen",
+    intro: "Kinderwagen, Autositze, Kleidung und Spielzeug — vieles wird kaum genutzt und gebraucht weitergegeben. Stöbere lokal oder inseriere selbst.",
+    tips: [
+      ["Sicherheit zuerst", "Bei Autositzen auf Alter, Norm und keine Unfall-Historie achten."],
+      ["Gebraucht ist clever", "Kinder wachsen schnell — gebrauchte Kleidung und Wagen sparen viel."],
+      ["Lokal abholen", "Kinderwagen & grosse Sachen lokal abholen spart Versand."],
+    ],
+    faq: [
+      ["Wo finde ich günstige Babysachen in der Schweiz?", "Im Inserate-Bereich filterst du die Kategorie Baby & Kind und suchst nach Ort; du kannst auch kostenlos selbst inserieren."],
+      ["Sind gebrauchte Autositze ok?", "Nur ohne Unfall-Historie, mit aktueller Norm und nicht zu alt — Sicherheit geht vor."],
+      ["Was kostet das Inserieren?", "Kostenlos; jedes Inserat wird vor der Veröffentlichung kurz geprüft."],
+    ],
+  },
+  {
+    slug: "ebike-kaufen-schweiz", icon: "🔋", h1: "E-Bike kaufen in der Schweiz",
+    title: "E-Bike kaufen Schweiz — Elektrovelos neu & gebraucht | aban",
+    desc: "E-Bike in der Schweiz kaufen: Elektrovelos, E-Mountainbikes und Zubehör neu oder gebraucht suchen, nach Preis und Zustand filtern.",
+    cta: "/angebote-suche.html?q=E-Bike", ctaLabel: "E-Bike-Angebote ansehen",
+    intro: "Elektrovelo fürs Pendeln oder E-Mountainbike fürs Gelände — neu oder gebraucht. Vergleiche Angebote und achte besonders auf den Akku.",
+    tips: [
+      ["Akku ist entscheidend", "Frag nach Akku-Alter, Ladezyklen und Reichweite — der Akku ist das teuerste Teil."],
+      ["Motor & Marke", "Bekannte Motoren (Bosch & Co.) sind gut wartbar und langlebig."],
+      ["Probefahrt", "Sitzposition, Bremsen und Unterstützung testen, bevor du kaufst."],
+    ],
+    faq: [
+      ["Wo finde ich günstige E-Bikes in der Schweiz?", "In der Angebote-Suche suchst du nach E-Bike und filterst nach Preis und Zustand; lokale Occasionen im Inserate-Bereich."],
+      ["Worauf beim gebrauchten E-Bike achten?", "Akku-Zustand/Reichweite, Motorhersteller, Kilometer und Garantie — eine Probefahrt zeigt viel."],
+      ["Kann ich mein E-Bike verkaufen?", "Ja — kostenlos als Inserat aufgeben, kurze Prüfung vor der Veröffentlichung."],
+    ],
+  },
+  {
+    slug: "uhren-schmuck-kaufen-schweiz", icon: "⌚", h1: "Uhren & Schmuck kaufen in der Schweiz",
+    title: "Uhren & Schmuck kaufen Schweiz — neu & second-hand | aban",
+    desc: "Uhren und Schmuck in der Schweiz: Armbanduhren, Schmuck und Accessoires neu oder second-hand suchen und vergleichen.",
+    cta: "/angebote-suche.html?q=Uhr", ctaLabel: "Uhren-Angebote ansehen",
+    intro: "Armbanduhren, Schmuck und Accessoires — neu oder second-hand. Vergleiche Angebote und filtere nach Preis und Zustand.",
+    tips: [
+      ["Echtheit prüfen", "Bei höherwertigen Uhren auf Papiere, Seriennummer und seriösen Anbieter achten."],
+      ["Zustand zählt", "Kratzer, Funktion und (bei Uhren) Service-Historie beeinflussen den Wert."],
+      ["Preise vergleichen", "Gerade bei Marken lohnt sich der Vergleich mehrerer Angebote."],
+    ],
+    faq: [
+      ["Wo finde ich günstige Uhren in der Schweiz?", "In der Angebote-Suche suchst du nach Uhr/Schmuck und filterst nach Preis und Zustand; lokale Stücke im Inserate-Bereich."],
+      ["Worauf bei teuren Uhren achten?", "Echtheit, Papiere, Seriennummer und ein seriöser Anbieter — im Zweifel prüfen lassen."],
+      ["Kann ich Schmuck verkaufen?", "Ja — kostenlos als Inserat aufgeben, kurze Prüfung vor der Veröffentlichung."],
+    ],
+  },
 ];
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
