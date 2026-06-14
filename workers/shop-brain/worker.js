@@ -80,6 +80,36 @@ async function gql(env, token, query) {
 }
 const esc = (s) => s.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 
+// 🤖 Claude schreibt individuelle, verkaufsstarke SEO (raw HTTP; structured JSON, effort low).
+// Ohne env.ANTHROPIC_API_KEY wird das nie aufgerufen → Template-Fallback.
+async function aiSeo(env, name) {
+  try {
+    const r = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "content-type": "application/json", "x-api-key": env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01" },
+      body: JSON.stringify({
+        model: env.BRAIN_AI_MODEL || "claude-opus-4-8",
+        max_tokens: 400,
+        output_config: { effort: "low", format: { type: "json_schema", schema: {
+          type: "object", additionalProperties: false,
+          properties: { title: { type: "string" }, description: { type: "string" } },
+          required: ["title", "description"] } } },
+        messages: [{ role: "user", content:
+`Schreibe SEO-Meta für ein Produkt im Schweizer Online-Shop LuxeStyle.
+Produkt: "${clean(name)}"
+- title: verkaufsstark, Schweizer Hochdeutsch (ss statt ß), max 60 Zeichen, endet mit " | LuxeStyle", kein Emoji.
+- description: ein konkreter Nutzen + Vertrauen (Gratis-Versand ab CHF 65, 30 Tage Rückgabe), max 150 Zeichen, kein Emoji.` }],
+      }),
+    });
+    const j = await r.json();
+    const t = (j.content || []).find((b) => b.type === "text");
+    if (!t) return null;
+    const o = JSON.parse(t.text);
+    if (o && o.title && o.description) return { title: String(o.title).slice(0, 70), description: String(o.description).slice(0, 320) };
+  } catch (e) { /* still & sicher → Template-Fallback */ }
+  return null;
+}
+
 async function runMutations(env, token, items, build, log) {
   let done = 0;
   for (let i = 0; i < items.length; i += 20) {
@@ -99,13 +129,15 @@ async function run(env, manual) {
     if (!token) { return { ok: false, error: "kein Shopify-Token (Client-Credentials prüfen)" }; }
     const limit = parseInt(env.SCAN_LIMIT || "50", 10);
     const colMax = parseInt(env.COLLECTION_COVER_MAX || "30", 10);
+    const aiKey = env.ANTHROPIC_API_KEY || "";
+    const aiLimit = parseInt(env.AI_LIMIT || "12", 10); // im Worker bewusst niedrig (Subrequest-Limit)
 
     // 1) Produkt-Veredelung (SEO Titel + Description + Kategorie) + Bild-QA
     const pq = `{ products(first: ${limit}, query: "status:active tag:cj-real", sortKey: CREATED_AT, reverse: true) {
       nodes { id title productType category { id } seo { title description } featuredImage { url } } } }`;
     const pdata = await gql(env, token, pq);
     const nodes = pdata?.data?.products?.nodes || [];
-    const prodFixes = []; const noImage = [];
+    const prodFixes = []; const noImage = []; let aiUsed = 0;
     for (const n of nodes) {
       if (!n.featuredImage) noImage.push(clean(n.title).slice(0, 60));
       const needSeo = !(n.seo && n.seo.title && n.seo.description);
@@ -113,7 +145,13 @@ async function run(env, manual) {
       if (!needSeo && !needCat) continue;
       let input = `id: "${n.id}"`;
       if (needCat) input += `, category: "${TC}${CAT[n.productType.trim()]}"`;
-      if (needSeo) input += `, seo: { title: "${esc(mkTitle(n.title))}", description: "${esc(mkDesc(n.title))}" }`;
+      if (needSeo) {
+        let seo = null;
+        if (aiKey && aiUsed < aiLimit) { seo = await aiSeo(env, n.title); if (seo) aiUsed++; }
+        const title = seo ? seo.title : mkTitle(n.title);
+        const desc = seo ? seo.description : mkDesc(n.title);
+        input += `, seo: { title: "${esc(title)}", description: "${esc(desc)}" }`;
+      }
       prodFixes.push(input);
     }
 
@@ -134,7 +172,7 @@ async function run(env, manual) {
     const cDone = await runMutations(env, token, colFixes,
       (f, j) => `  c${j}: collectionUpdate(input: { id: "${f.id}", image: { src: "${esc(f.src)}", altText: "${esc(f.alt)} bei LuxeStyle" } }) { collection { id } userErrors { field message } }`, log);
 
-    const status = `🧠 Shop-Brain v2: ${prodFixes.length} veredelt · ${cDone} Cover · ${noImage.length} ohne Bild${manual ? " [manuell]" : ""} · ${new Date().toISOString()}`;
+    const status = `🧠 Shop-Brain v2: ${prodFixes.length} veredelt (${aiUsed} per KI) · ${cDone} Cover · ${noImage.length} ohne Bild${manual ? " [manuell]" : ""} · ${new Date().toISOString()}`;
     log.push(status);
     if (noImage.length) log.push("⚠️ ohne Bild: " + noImage.join(" · "));
     await env.BRAIN_KV.put("last_run", status);

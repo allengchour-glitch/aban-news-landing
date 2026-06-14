@@ -33,6 +33,17 @@ sogar wieder). Das Shop-Brain bügelt das **alle 6 Stunden automatisch** aus —
 `https://<dein-worker>.workers.dev/?key=<TRIGGER_KEY>` → JSON-Report (geprüft / veredelt).
 Letzter Lauf liegt in KV unter `last_run`.
 
+## 🤖 KI-SEO mit Claude (optional, empfohlen)
+Setzt du das Secret **`ANTHROPIC_API_KEY`**, schreibt **Claude** für jedes Produkt eine **individuelle,
+verkaufsstarke** deutsche SEO (Meta-Titel + Description) statt des Templates — automatischer Fallback aufs
+Template, falls Key fehlt oder die API mal hakt. Steuerung per Env:
+- `ANTHROPIC_API_KEY` — dein Anthropic-Key (Secret). Ohne ihn bleibt alles beim Template.
+- `BRAIN_AI_MODEL` — Modell (Default **`claude-opus-4-8`**; sparsamer: `claude-haiku-4-5`).
+- `AI_LIMIT` — max. KI-Texte pro Lauf (Kosten-Deckel; Worker-Default **12** wegen Cloudflare-Subrequest-Limit,
+  Node/GitLab-Default **25**).
+
+Cloudflare: `npx wrangler secret put ANTHROPIC_API_KEY`. GitHub Actions/GitLab: als Secret/Variable setzen.
+
 ## Was es konkret tut (v2)
 1. **Produkt-Veredelung:** holt die **50 neuesten** `cj-real`-Produkte (sortKey CREATED_AT). Für jedes mit
    **fehlendem SEO-Titel ODER fehlender Description** → setzt sauberen Titel `… | LuxeStyle` + Nutzen-Description.
