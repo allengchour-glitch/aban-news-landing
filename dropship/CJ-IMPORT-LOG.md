@@ -16,6 +16,17 @@
 - **🎁 Perla-Set Cross-Sell (Conversion/AOV):** In allen 3 «Perla»-Stücken (Kette/Ohrringe/Armband) oben ein
   verlinkter Set-Block zu den anderen beiden Teilen → als Geschenk-Trio positioniert. Kein Bundle-Produkt (kein Fulfillment-Risiko).
 
+## Session 2026-06-14 — +6 Herren-Bekleidung (Herren-Abteilung auffüllen)
+- User-Wunsch „männer sachen füllen" (Shop war frauenlastig). Fokus Herren-Sommer-Bekleidung, Tag `herren`+`herren-mode`
+  → „👨 Für Ihn"-Collection (Regel TAG=herren, 203→209). ACTIVE + 6 Kanäle + je 5 Bilder READY + SEO. Grössen S–XL.
+- **Produkte:** Kurzarm-Hemd «Breeze» (Quick-Dry, 34.90 · pid 2606120823541623200 · Prod 15430444122497) ·
+  Strick-Polo «Lido» (Ajour, 39.90 · pid 2606130150161635700 · 15430444155265) · Shorts «Active» (Quick-Dry, 29.90 ·
+  pid 2606120822491600000 · 15430444188033) · Sommer-Set «Riviera» (Hemd+Shorts, 49.90 · pid 2606120112491635600 ·
+  15430444253569) · Chino-Shorts «Cruise» (Loose-Fit, 32.90 · pid 2606120658491610400 · 15430444286337) ·
+  Tank-Top «Court» (Color-Block, 22.90 · pid 2606121022461607300 · 15430444319105).
+- **Lehre:** Herren-Apparel auf CJ = günstige Basics (~$3.5–8). Hemden/T-Shirts surfacen dünn (viele „men&women"/unisex),
+  Shorts/Tank ergiebiger. Grössen-Parser (S–XXL + Schuhnummern) nötig; apparel hat oft Color×Size → pro Grösse 1. SKU genommen.
+
 ## Session 2026-06-13 (NACHT-5) — +5 „tolle Schmuckstücke" (Luxus-Kapsel → 14)
 - User-Wunsch „tolle schmücke". Via roher Diagnose der 925-Linie 5 distinkte edle Stücke (alle `highend`+`premium`+
   `schmuck`+`damen`, ACTIVE, 6 Kanäle, Bilder READY, SEO gesetzt):
