@@ -73,6 +73,27 @@ const BOX_SEL = 'div[contenteditable="true"], [data-e2e="message-input-area"] di
   const done = loadDone();
   const chats = await p.$$(CHAT_SEL).catch(() => []);
   log(`${chats.length} Chats sichtbar.${chats.length === 0 ? ' (Selektor evtl. anpassen — siehe CHAT_SEL)' : ''}`);
+  if (chats.length === 0) {
+    // DIAGNOSE: was sieht die Seite wirklich? → richtige Selektoren ableiten
+    const d = await p.evaluate(() => {
+      const e2e = {};
+      document.querySelectorAll('[data-e2e]').forEach(el => { const k = el.getAttribute('data-e2e'); e2e[k] = (e2e[k] || 0) + 1; });
+      return {
+        url: location.href, title: document.title,
+        e2e, editables: document.querySelectorAll('[contenteditable="true"]').length,
+        textareas: document.querySelectorAll('textarea').length,
+        iframes: document.querySelectorAll('iframe').length,
+        bodyStart: (document.body.innerText || '').slice(0, 220).replace(/\s+/g, ' '),
+      };
+    }).catch(e => ({ err: e.message }));
+    log('🔎 DIAG url:', d.url);
+    log('🔎 DIAG title:', d.title);
+    log('🔎 DIAG data-e2e:', JSON.stringify(d.e2e));
+    log('🔎 DIAG editables:', d.editables, '· textareas:', d.textareas, '· iframes:', d.iframes);
+    log('🔎 DIAG body:', d.bodyStart);
+    await p.screenshot({ path: path.join(process.cwd(), 'tiktok-dm-diag.png') }).catch(() => {});
+    log('🔎 Screenshot: tiktok-dm-diag.png');
+  }
   let n = 0;
   for (let i = 0; i < chats.length && n < MAX; i++) {
     try {
