@@ -34,6 +34,8 @@
 ## ✅ Verlauf — was gemacht wurde
 
 ### 2026-06-14 (Sprach-Tools installiert)
+- **🔧 piper-TTS reproduzierbar** (`automation/setup_tts.sh`): installiert piper-tts + lädt Stimmen
+  (kerstin w / thorsten m) — idempotent, gegen Container-Ephemeralität. Test-Synthese OK. In jeder neuen Session laufen lassen.
 - **🎙️ Transkription installiert** (`faster-whisper`, CPU, gratis): `automation/transcribe.py <video>` → Text.
   Smoke-Test OK. ⚠️ Schreibt Schweizerdeutsch als Hochdeutsch (gut fürs Verstehen, nicht für Bern-Schreibweise).
 - **🗣️ Lokale Eigen-Stimme** (`automation/bern_voiceover.py`, piper, gratis, kein Key): Bärndütsch-Text → WAV (5s-Test OK).
