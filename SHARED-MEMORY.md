@@ -104,11 +104,14 @@
     ki-sichtbarkeit-audit/-monitor, ki-tool-vergleich (Index).
   - **Bewusst NICHT übersetzt** (EN = Unsinn/Redundanz): schicht (dt. Roman), foerder (DACH-Förderungen), kurs,
     preview, glossary (redundant), jobs, mrr/growth-dashboard/launch/v2/index-classic/willkommen (Dev/intern).
-  - **In Arbeit (Welle 7):** **197 `/vergleich/*`-Detailseiten → `en/vergleich/*`** (Tool-vs-Tool, je ~72 Z.,
-    identisches Boilerplate + unique Prosa Notes/FAQ/Deep). Batchweise via Agenten. Danach EN-`ki-tool-vergleich`
-    voll funktional (Index → EN-Detail statt DE).
-  - ⚠️ **Offen (nur User, GitHub-API-Rate-Limit der Session erschöpft):** Draft-PR **#715** auf „Ready" setzen
-    (1 Klick). Sonst alles grün: 0 Parser-Error, Konsistenz grün, 0 echte Broken-Links, Sitemap valide.
+  - **Welle 7 FERTIG:** **alle 197 `/vergleich/*` → `en/vergleich/*`** (Tool-vs-Tool, volle Übersetzung inkl.
+    FAQ/Deep, hreflang DE↔EN, Sitemap, 0 Parser-Error). **`en/ki-tool-vergleich.html`-Index auf `/en/vergleich/*`
+    umgebogen** → EN-Vergleichsbereich voll funktional. Lief über mehrere Server-/Session-Rate-Limit-Wellen,
+    daher throttle-resilientes Muster: Agenten speichern Datei-für-Datei, Hauptthread salvaged+committet
+    wiederholt (truncierte verworfen). `consistency_check`: `/vergleich/` in EXCLUDE (Fremd-Toolpreise €149/€99,
+    keine aban-Preise — EN-Format „€NNN" triggerte sonst die Preisregeln).
+  - ✅ **Draft-PR #715 ist auf „Ready" gesetzt.** Alles grün: 0 Parser-Error, Konsistenz grün, 0 echte
+    Broken-Links, Sitemap valide. **→ EN/Mehrsprachigkeits-Ausbau vollständig abgeschlossen.**
 
 **2026-06-11 — Luxestyle/POD session: Editor mit echten Fotos + 98 Fertig-Mockups + Shop-Audit A–Z:**
 - **🎨 Selbst-gestalten-Editor komplett überarbeitet** (`pod/designer.js` live): echtes Produktfoto statt
