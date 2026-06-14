@@ -27,7 +27,10 @@
 ## ✅ Verlauf — was gemacht wurde
 
 ### 2026-06-14
-- **🎬 3 Reel-MEISTERWERKE produziert** (Luma ray-flash-2 → 9:16 + Hook + QA): #1 Flame-Diffuser (Mundart „Chämi-Vibes
+- **🎵 TikTok-Posten ÜBER DEN PORT** (User-Wunsch „immer per Port"): `tiktok-upload-browser.mjs` (Brave-CDP 9222,
+  wie Follower-Bot) lädt Reels automatisch hoch — kein API-Audit, kein Handy-Tippen. Im Tages-Task + Doppelklick
+  `TIKTOK-PORT-UPLOAD.bat`. Erst `--dry` (Selektor-Diagnose, TikTok-DOM iterieren wie bei DMs). Trend-Sound = nur App.
+- **🎬 4 Reel-MEISTERWERKE produziert (60fps)** (Luma ray-flash-2 → 9:16 + Hook + QA): #1 Flame-Diffuser (Mundart „Chämi-Vibes
   ohni Füür"), #2 Bali-Kleid (Preis-Hook, China-Schild rausgecroppt), #3 Onyx-Ohrringe (Mundart „Für di oder zum
   Verschänke?"). Je 2 Exporte: stumm (TikTok→Trend-Sound) + Eigen-Track (Meta). Jedes per Frame QA'd. In `reels/`.
 - **🎹 EIGENE Musik produziert** (User „viel besser" als royalty-free): fluidsynth+GM-Soundfont → `luxe-signature.wav`
