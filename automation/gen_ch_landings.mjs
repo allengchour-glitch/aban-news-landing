@@ -107,6 +107,125 @@ const PAGES = [
       ["Gibt es auch Remote-Jobs?", "Ja — mit dem Remote-Filter zeigst du nur ortsunabhängige Stellen an, die sich auch aus der Schweiz erledigen lassen."],
     ],
   },
+  {
+    slug: "garten-kaufen-schweiz", icon: "🪴", h1: "Garten & Pflanzen kaufen in der Schweiz",
+    title: "Garten kaufen Schweiz — Gartenmöbel, Geräte & Pflanzen | aban",
+    desc: "Für Garten & Balkon in der Schweiz: Gartenmöbel, Grill, Geräte und Pflanzen neu oder gebraucht suchen und vergleichen.",
+    cta: "/angebote-suche.html?cat=Garten", ctaLabel: "Garten-Angebote ansehen",
+    intro: "Gartenmöbel, Grill, Rasenmäher oder Pflanzen — durchsuche Angebote für draussen, vergleiche Preise und filtere nach Zustand.",
+    tips: [
+      ["Saison nutzen", "Ende Saison sind Gartenmöbel und Grills oft stark reduziert — ein guter Moment fürs nächste Jahr."],
+      ["Gebraucht prüfen", "Bei Geräten auf Funktion und Zustand achten; bei Möbeln auf Wetterfestigkeit."],
+      ["Lokal abholen", "Sperrige Gartensachen lokal über Inserate abholen spart Versandkosten."],
+    ],
+    faq: [
+      ["Wo finde ich günstige Gartensachen in der Schweiz?", "In der Angebote-Suche filterst du die Kategorie Garten nach Zustand und Preis; lokale Occasionen findest du im Inserate-Bereich."],
+      ["Kann ich Gartenmöbel verkaufen?", "Ja — gib dein Inserat kostenlos auf. Es wird vor der Veröffentlichung kurz geprüft."],
+      ["Neu oder gebraucht?", "Gebrauchte Gartenmöbel und Geräte sind oft günstig und gut erhalten — gerade ausserhalb der Saison."],
+    ],
+  },
+  {
+    slug: "werkzeug-kaufen-schweiz", icon: "🔧", h1: "Werkzeug kaufen in der Schweiz",
+    title: "Werkzeug kaufen Schweiz — Maschinen & Heimwerker | aban",
+    desc: "Werkzeug in der Schweiz kaufen: Akkuschrauber, Maschinen, Heimwerker- und Profi-Werkzeug neu oder gebraucht suchen und vergleichen.",
+    cta: "/angebote-suche.html?cat=Werkzeug", ctaLabel: "Werkzeug-Angebote ansehen",
+    intro: "Vom Akkuschrauber bis zur Kreissäge: Durchsuche Werkzeug-Angebote, vergleiche Marken und Preise und filtere nach Zustand.",
+    tips: [
+      ["Marken-Akku-System", "Bleib bei einem Akku-System (gleiche Marke) — dann teilst du Akkus über mehrere Geräte."],
+      ["Gebraucht lohnt sich", "Profi-Werkzeug ist robust; gebraucht oft top in Schuss und deutlich günstiger."],
+      ["Zustand prüfen", "Bei Maschinen Funktion testen, auf Zubehör und Originalverpackung achten."],
+    ],
+    faq: [
+      ["Wo finde ich günstiges Werkzeug in der Schweiz?", "In der Angebote-Suche filterst du die Kategorie Werkzeug nach Zustand und Preis und vergleichst die Anbieter."],
+      ["Lohnt sich gebrauchtes Werkzeug?", "Oft ja — gerade Markenmaschinen halten lange und sind gebraucht deutlich günstiger."],
+      ["Kann ich Werkzeug verkaufen?", "Ja — kostenlos als Inserat aufgeben, kurze Prüfung vor der Veröffentlichung."],
+    ],
+  },
+  {
+    slug: "mode-kaufen-schweiz", icon: "👗", h1: "Mode & Kleidung kaufen in der Schweiz",
+    title: "Mode kaufen Schweiz — Kleidung, Schuhe & Accessoires | aban",
+    desc: "Mode in der Schweiz kaufen: Kleidung, Schuhe, Taschen und Accessoires neu oder Secondhand suchen, vergleichen und filtern.",
+    cta: "/angebote-suche.html?cat=Mode", ctaLabel: "Mode-Angebote ansehen",
+    intro: "Kleidung, Schuhe, Taschen und Accessoires — neu oder Secondhand. Durchsuche Mode-Angebote und filtere nach Preis und Zustand.",
+    tips: [
+      ["Secondhand spart & ist nachhaltig", "Gut erhaltene Markenkleidung gibt's gebraucht oft für einen Bruchteil — besser fürs Budget und die Umwelt."],
+      ["Grösse & Mass", "Achte auf Grössenangaben und frag im Zweifel nach Massen — Schnitte fallen unterschiedlich aus."],
+      ["Zustand checken", "Bei Secondhand auf Fotos und Zustandsbeschreibung achten (Tragespuren, Flecken)."],
+    ],
+    faq: [
+      ["Wo finde ich günstige Mode in der Schweiz?", "In der Angebote-Suche filterst du die Kategorie Mode nach Preis und Zustand; lokale Secondhand-Stücke findest du im Inserate-Bereich."],
+      ["Ist Secondhand-Kleidung eine gute Wahl?", "Ja — oft gut erhalten, günstiger und nachhaltiger als Neukauf."],
+      ["Kann ich Kleidung verkaufen?", "Ja — gib dein Inserat kostenlos auf, kurze Prüfung vor der Veröffentlichung."],
+    ],
+  },
+  {
+    slug: "gaming-kaufen-schweiz", icon: "🎮", h1: "Gaming kaufen in der Schweiz",
+    title: "Gaming kaufen Schweiz — Konsolen, Spiele & PC | aban",
+    desc: "Gaming in der Schweiz kaufen: Konsolen (PlayStation, Xbox, Switch), Spiele, Gaming-PCs und Zubehör neu oder gebraucht finden.",
+    cta: "/angebote-suche.html?q=Gaming", ctaLabel: "Gaming-Angebote ansehen",
+    intro: "Konsolen, Spiele, Controller und Gaming-PCs — neu oder gebraucht. Vergleiche Angebote und filtere nach Preis und Zustand.",
+    tips: [
+      ["Bundles vergleichen", "Konsole mit Spielen/Controller im Bundle ist oft günstiger als alles einzeln."],
+      ["Gebraucht prüfen", "Bei gebrauchten Konsolen auf Funktion, Zubehör und Zustand des Laufwerks achten."],
+      ["Preise schwanken", "Sortiere nach Preis — gerade bei beliebten Konsolen lohnt der Vergleich."],
+    ],
+    faq: [
+      ["Wo finde ich günstige Konsolen in der Schweiz?", "In der Angebote-Suche suchst du nach Gaming/Konsole und filterst nach Preis und Zustand; lokale Occasionen im Inserate-Bereich."],
+      ["Lohnt sich gebrauchtes Gaming?", "Oft ja — gebrauchte Konsolen und Spiele sind deutlich günstiger und meist langlebig."],
+      ["Kann ich Spiele verkaufen?", "Ja — kostenlos als Inserat aufgeben, kurze Prüfung vor der Veröffentlichung."],
+    ],
+  },
+  {
+    slug: "haustier-zubehoer-schweiz", icon: "🐾", h1: "Haustier-Zubehör in der Schweiz",
+    title: "Haustier-Zubehör Schweiz — für Hund, Katze & Co. | aban",
+    desc: "Haustier-Zubehör in der Schweiz: Zubehör, Käfige, Transportboxen und mehr für Hund, Katze & Co. finden — oder kostenlos inserieren.",
+    cta: "/inserate.html?kat=Haustier", ctaLabel: "Haustier-Inserate ansehen",
+    intro: "Zubehör, Transportboxen, Kratzbäume und mehr für deine Tiere — stöbere in lokalen Inseraten oder gib selbst eines auf.",
+    tips: [
+      ["Lokal abholen", "Grosse Sachen wie Kratzbäume oder Käfige lokal abholen spart Versand."],
+      ["Hygiene beachten", "Gebrauchtes Tierzubehör vor Gebrauch gründlich reinigen."],
+      ["Seriös bleiben", "aban vermittelt Zubehör — kein Verkauf lebender Tiere. Achte auf Tierschutz."],
+    ],
+    faq: [
+      ["Wo finde ich Haustier-Zubehör in der Schweiz?", "Im Inserate-Bereich filterst du die Kategorie Haustier und suchst nach Ort. Du kannst auch kostenlos selbst inserieren."],
+      ["Kann ich Tiere verkaufen?", "Nein — aban ist für Zubehör gedacht. Für die Vermittlung von Tieren wende dich an seriöse Tierheime/Züchter."],
+      ["Was kostet das Inserieren?", "Das Aufgeben eines Inserats ist kostenlos und wird vor der Veröffentlichung kurz geprüft."],
+    ],
+  },
+  {
+    slug: "sport-kaufen-schweiz", icon: "⚽", h1: "Sport & Freizeit kaufen in der Schweiz",
+    title: "Sportartikel kaufen Schweiz — Fitness, Ski & Outdoor | aban",
+    desc: "Sportartikel in der Schweiz kaufen: Fitnessgeräte, Ski, Outdoor- und Freizeitausrüstung neu oder gebraucht suchen und vergleichen.",
+    cta: "/angebote-suche.html?cat=Sport", ctaLabel: "Sport-Angebote ansehen",
+    intro: "Fitnessgeräte, Ski, Wander- und Outdoor-Ausrüstung — neu oder gebraucht. Vergleiche Angebote und filtere nach Preis und Zustand.",
+    tips: [
+      ["Saison-Schnäppchen", "Ski & Wintersport am Saisonende, Outdoor im Herbst — oft stark reduziert."],
+      ["Passform testen", "Bei Schuhen, Ski und Velos auf die richtige Grösse/Länge achten."],
+      ["Gebraucht prüfen", "Funktion und Verschleiss checken — gerade bei Fitnessgeräten."],
+    ],
+    faq: [
+      ["Wo finde ich günstige Sportartikel in der Schweiz?", "In der Angebote-Suche filterst du die Kategorie Sport nach Preis und Zustand; lokale Occasionen im Inserate-Bereich."],
+      ["Lohnt sich gebrauchte Ausrüstung?", "Oft ja — gerade Ski, Fitnessgeräte und Outdoor-Ausrüstung sind gebraucht günstig und langlebig."],
+      ["Kann ich Sportsachen verkaufen?", "Ja — kostenlos als Inserat aufgeben, kurze Prüfung vor der Veröffentlichung."],
+    ],
+  },
+  {
+    slug: "kamera-kaufen-schweiz", icon: "📷", h1: "Kamera & Foto kaufen in der Schweiz",
+    title: "Kamera kaufen Schweiz — Foto, Objektive & Zubehör | aban",
+    desc: "Kamera in der Schweiz kaufen: Spiegelreflex, Systemkameras, Objektive und Foto-Zubehör neu oder gebraucht suchen und vergleichen.",
+    cta: "/angebote-suche.html?q=Kamera", ctaLabel: "Kamera-Angebote ansehen",
+    intro: "Kameras, Objektive und Zubehör — neu oder gebraucht. Vergleiche Angebote und filtere nach Preis und Zustand.",
+    tips: [
+      ["Objektive halten Wert", "Gute Objektive sind langlebig — gebraucht oft eine clevere Investition."],
+      ["Auslösungen prüfen", "Bei gebrauchten Kameras nach der Anzahl Auslösungen (Shutter Count) fragen."],
+      ["System bedenken", "Bleib bei einem Bajonett/System, damit Objektive kompatibel bleiben."],
+    ],
+    faq: [
+      ["Wo finde ich günstige Kameras in der Schweiz?", "In der Angebote-Suche suchst du nach Kamera/Objektiv und filterst nach Preis und Zustand; lokale Occasionen im Inserate-Bereich."],
+      ["Lohnt sich eine gebrauchte Kamera?", "Oft ja — gerade Objektive und robuste Gehäuse halten lange und sind gebraucht günstiger."],
+      ["Kann ich Foto-Equipment verkaufen?", "Ja — kostenlos als Inserat aufgeben, kurze Prüfung vor der Veröffentlichung."],
+    ],
+  },
 ];
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
