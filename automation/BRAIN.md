@@ -38,6 +38,15 @@ git add -A && git commit -m "brain: …" && git push
 bash build-pages.sh && npx wrangler@3 pages deploy _site --project-name=abannews --branch=main
 ```
 
+## Die drei Arme des Hirns
+1. **👁️ Cloudflare Site-Brain** (`workers/site-brain/`) — *überwacht* die Live-Seite per Cron
+   (alle 6 h, serverless, gratis, ganz ohne GitHub/GitLab): Health-Score + Alarm bei Problemen.
+   Fixt/deployt bewusst NICHT (das braucht Repo + Review).
+2. **🛠️ GitLab `brain-improve`** (`.gitlab-ci.yml`) — *verbessert*: scannt + fixt sicher,
+   schlägt auf Branch `brain/auto` vor.
+3. **🧠 Claude-Session-Hook** (`automation/brain-wake.sh`) — weckt das Hirn bei jeder Session,
+   arbeitet Befunde ab, committet + deployt.
+
 ## „Regelmäßig" — wie das Hirn von selbst aufwacht
 Drei Wege, je nach Plattform-Lage:
 1. **Session-Start-Hook** (`automation/brain-wake.sh` via `.claude/settings.json`): bei jedem
