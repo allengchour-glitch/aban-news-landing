@@ -91,12 +91,26 @@ async function postFacebook(ids, item) {
   return r.id ? { ok: r.id } : { error: "FB photo", detail: r };
 }
 
+// Queue laden: bevorzugt LIVE-URL aus KV (selbst-aktualisierend, KEIN Redeploy/PowerShell nötig),
+// sonst die eingebackene queue.json als Fallback. So aktualisiert der Cloud-Claude den Inhalt jederzeit.
+async function loadQueue(env) {
+  try {
+    const url = await env.LUXE_KV.get("queue_url");
+    if (url) {
+      const r = await fetch(url, { cf: { cacheTtl: 60 } });
+      if (r.ok) { const j = JSON.parse(await r.text()); if (Array.isArray(j) && j.length) return j; }
+    }
+  } catch (e) { /* Fallback unten */ }
+  return queue;
+}
+
 async function run(env) {
   if (!env.META_ACCESS_TOKEN) return { error: "META_ACCESS_TOKEN fehlt" };
   const ids = await discoverIds(env);
+  const q = await loadQueue(env);
   let cursor = parseInt((await env.LUXE_KV.get("cursor")) || "0", 10);
-  if (cursor >= queue.length) return { done: true, note: "Queue leer — neue Posts in queue.json + redeploy", cursor };
-  const item = queue[cursor];
+  if (cursor >= q.length) return { done: true, note: "Queue durch — Cursor 0 setzen oder neue queue_url laden", cursor };
+  const item = q[cursor];
   const ig = await postInstagram(ids, item).catch((e) => ({ error: String(e) }));
   const fb = await postFacebook(ids, item).catch((e) => ({ error: String(e) }));
   // Cursor nur weiterzählen, wenn mindestens ein Kanal erfolgreich war
@@ -111,9 +125,15 @@ export default {
   async fetch(req, env) {
     const u = new URL(req.url);
     if (u.searchParams.get("key") !== env.TRIGGER_KEY) return new Response("forbidden", { status: 403 });
+    // Neue Live-Queue laden (ohne Redeploy) + Cursor zurücksetzen — der Cloud-Claude ruft das auf.
+    const setq = u.searchParams.get("queue");
+    if (setq) { await env.LUXE_KV.put("queue_url", setq); await env.LUXE_KV.put("cursor", "0"); return Response.json({ queue_url_set: setq, cursor: 0 }); }
+    if (u.searchParams.get("cursor")) { await env.LUXE_KV.put("cursor", u.searchParams.get("cursor")); return Response.json({ cursor_set: u.searchParams.get("cursor") }); }
     if (u.searchParams.get("status")) {
+      const q = await loadQueue(env);
       const cursor = (await env.LUXE_KV.get("cursor")) || "0";
-      return Response.json({ cursor: Number(cursor), total: queue.length });
+      const url = await env.LUXE_KV.get("queue_url");
+      return Response.json({ cursor: Number(cursor), total: q.length, queue_url: url || "(eingebacken)" });
     }
     return Response.json(await run(env));
   },
