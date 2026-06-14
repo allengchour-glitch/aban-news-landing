@@ -16,6 +16,16 @@
 - **🎁 Perla-Set Cross-Sell (Conversion/AOV):** In allen 3 «Perla»-Stücken (Kette/Ohrringe/Armband) oben ein
   verlinkter Set-Block zu den anderen beiden Teilen → als Geschenk-Trio positioniert. Kein Bundle-Produkt (kein Fulfillment-Risiko).
 
+## Session 2026-06-14 (Teil 3) — +4 Damen-Bademode (Lücke gefüllt: Bademode 2→6)
+- Eigeninitiative: „👙 Bademode" hatte nur 2 Produkte (Sommer-Lücke). CJ ist bei Damen-Bademode ergiebig (anders als Herren).
+  3 Bikinis + 1 Strand-Cover-up, Tag `damen`+`bademode` → sub-bademode 2→6. ACTIVE + 6 Kanäle + 5 Bilder READY + SEO.
+  **Hygiene-Rückgabe-Hinweis** in Bikini-Beschreibungen (Memory-Regel Bademode).
+- **Produkte:** Bikini «Maui» (Neckholder/Floral, 29.90 · pid 2606130542531628600 · 15430487802241) ·
+  Bikini «Sunset» (Front-Zip/Farbverlauf, 32.90 · pid 2606130521001622400 · 15430488326529) ·
+  Bikini «Solé» (One-Shoulder, 29.90 · pid 2606130532071605500 · 15430488883585) ·
+  Strand-Cover-up «Brisa» (Crochet, 34.90 · pid 2606140536071632900 · 15430489211265).
+- One-Piece-Badeanzüge surfacen dünn; Bikinis + Cover-ups ergiebig. Damit Sommer-Sortiment (Damen) runder.
+
 ## Session 2026-06-14 (Teil 2) — +5 Herren-Apparel (Bademode-Versuch → Hosen/Pulli/Hemd)
 - User „beides" (Herren-Bademode + Gürtel/Accessoires). **ROHE DIAGNOSE: CJ hat KEINE Herren-Gürtel** (Suche „men belt"/
   „mens leather belt" liefert NUR T-Shirts/Deo/Brillen/Blazer — 0 Gürtel) und **kaum Bademode** (nur 1 Beach-Shorts).
