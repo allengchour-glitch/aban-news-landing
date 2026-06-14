@@ -1,23 +1,22 @@
 #!/usr/bin/env node
 /* LuxeStyle — gelato-open-browser.mjs  (LOKAL auf dem PC ausführen!)
  * --------------------------------------------------------------------
- * Verbindet sich mit deinem bereits laufenden, EINGELOGGTEN Brave über den
- * Debug-Port 9222 (CDP) und öffnet das Gelato-Dashboard auf der Produkt-Anlage —
- * als Startpunkt für PC-Claude, der dann visuell die Loungewear-Produkte anlegt
- * (siehe dropship/GELATO-BROWSER-AUFTRAG.md). Macht NICHTS Destruktives:
- * öffnet nur die Seite + Screenshot.
+ * Verbindet sich mit deinem laufenden, EINGELOGGTEN Brave über den Debug-Port 9222
+ * (CDP, via puppeteer-core — robuster als Playwright bei Brave) und öffnet das
+ * Gelato-Dashboard als Startpunkt für PC-Claude (siehe dropship/GELATO-BROWSER-AUFTRAG.md).
+ * Macht NICHTS Destruktives: öffnet nur die Seite + Screenshot. Lässt Brave offen.
  *
  * VORAUSSETZUNG (hast du schon):
  *   Brave läuft mit:  --remote-debugging-port=9222 --user-data-dir="%USERPROFILE%\brave-agent"
  *   und du bist bei dashboard.gelato.com eingeloggt.
  *
  * AUSFÜHREN (PowerShell im Repo-Ordner):
- *   npm install playwright-core
+ *   npm install puppeteer-core
  *   node automation/local/gelato-open-browser.mjs
  *
  * ENV: CDP (Default http://localhost:9222) · GELATO_URL (Default Dashboard-Produkte)
  */
-import { chromium } from 'playwright-core';
+import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -35,40 +34,42 @@ A) GELATO Loungewear-Kapsel → Store "LuxeStyle":
    3. Schweizer Design (Edelweiss/Matterhorn/Cow/Fondue/Alpsee/Chalet) als ZENTRIERTEN Brustdruck
    4. Farbe (Schwarz/Grau/Creme) + DE-Titel grob + "Publish to LuxeStyle"
    5. Wenn im Shop → Cloud-Session sagen: "Gelato-Loungewear ist im Shop"
-B) PRINTFUL (printful.com) für echte Leggings/Sport-BH (Gelato kann das nicht).
-Nur NEUE Produkte anlegen + publishen — nichts löschen.
+B) PRINTFUL (printful.com) fuer echte Leggings/Sport-BH (Gelato kann das nicht).
+Nur NEUE Produkte anlegen + publishen — nichts loeschen.
 `;
 
 async function main() {
-  log(`Verbinde mit Brave über CDP ${CDP} …`);
+  log(`Verbinde mit Brave über CDP ${CDP} (puppeteer-core) …`);
   let browser;
   try {
-    browser = await chromium.connectOverCDP(CDP);
+    browser = await puppeteer.connect({ browserURL: CDP, defaultViewport: null, protocolTimeout: 0 });
   } catch (e) {
     console.error(`❌ Konnte nicht mit Brave verbinden (${CDP}).`);
-    console.error('   → Brave mit  --remote-debugging-port=9222  starten und eingeloggt sein.');
+    console.error('   → Brave KOMPLETT schliessen, dann so starten (eine Zeile):');
+    console.error('     & "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe" --remote-debugging-port=9222 --user-data-dir="$env:USERPROFILE\\brave-agent"');
+    console.error('   → dort bei dashboard.gelato.com einloggen, dann Skript erneut ausführen.');
     console.error('   Fehler:', e.message);
     process.exit(1);
   }
-  const ctx = browser.contexts()[0] || (await browser.newContext());
-  const page = await ctx.newPage();
-  log(`Öffne Gelato: ${URL}`);
+  log('✅ Mit Brave verbunden.');
+  let page;
   try {
-    await page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 45000 });
-    await page.waitForTimeout(4000);
+    page = await browser.newPage();
+    log(`Öffne Gelato: ${URL}`);
+    await page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await new Promise((r) => setTimeout(r, 4000));
     const shot = path.join(SHOTS, `gelato-${Date.now()}.png`);
-    await page.screenshot({ path: shot, fullPage: false });
-    log(`✅ Gelato geöffnet. Screenshot: ${shot}`);
+    await page.screenshot({ path: shot });
     const title = await page.title().catch(() => '');
-    log(`Seite: "${title}"`);
-    if (/log\s?in|sign\s?in/i.test(title)) log('⚠️ Sieht nach Login-Seite aus → erst bei dashboard.gelato.com einloggen.');
+    log(`✅ Gelato geöffnet. Seite: "${title}"`);
+    log(`Screenshot: ${shot}`);
+    if (/log\s?in|sign\s?in/i.test(title)) log('⚠️ Login-Seite → erst bei dashboard.gelato.com einloggen, dann Produkte anlegen.');
   } catch (e) {
-    console.error('⚠️ Seite konnte nicht vollständig geladen werden:', e.message);
+    console.error('⚠️ Seite konnte nicht geöffnet werden:', e.message);
   }
   console.log(STEPS);
-  log('Browser bleibt offen — PC-Claude übernimmt jetzt visuell. (Skript beendet sich, Brave läuft weiter.)');
-  // Verbindung trennen, OHNE den Browser zu schliessen (kein browser.close()):
-  await browser.close().catch(() => {}); // trennt nur die CDP-Verbindung; Brave-Fenster bleibt
+  log('Browser bleibt offen — PC-Claude übernimmt jetzt visuell.');
+  browser.disconnect(); // trennt nur die Verbindung; Brave-Fenster bleibt offen
 }
 
 main().catch((e) => { console.error('Fehler:', e.message); process.exit(1); });
