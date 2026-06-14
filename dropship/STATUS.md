@@ -33,6 +33,14 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-14 (Echte Schwiizer-Stimme: Tools installiert/vorbereitet)
+- **🎬 yt-dlp installiert** (Cloud): `automation/fetch_voice_ref.sh <url>` holt sauberen 12s-Referenz-Clip für Voice-Clone.
+  ⚠️ Nur RECHTE-GEKLÄRTES Material (eigene/lizenzierte Stimme) — keine fremden YouTuber kommerziell klonen.
+- **🗣️ Voice-Clone PC-Pipeline** (`SETUP-VOICECLONE.bat` + `KLON-STIMME.bat`, F5-TTS, Code MIT): klont Stimme aus
+  Referenz UND übernimmt Akzent → **Berner Referenz + Bärndütsch-Text = authentischer Schwiizer-Klang.** Läuft am PC/GPU.
+- **🔑 EHRLICH:** Es gibt KEIN TTS, das nativ Bärndütsch spricht. Weg zu echtem Schwiizer-Klang = Klon einer Schweizer
+  Referenz (F5-TTS, GPU) ODER menschliche Aufnahme. piper (auch thorsten-high) bleibt deutsch-gefärbt.
+
 ### 2026-06-14 (Self-hosted KI-Sprecher vorbereitet — PC hat NVIDIA-GPU!)
 - **🧑‍🎤 Avatar-Pipeline vorbereitet** (`automation/local/avatar/`): **SETUP-AVATAR.bat** (SadTalker Apache-2.0 +
   piper MIT, kommerziell-safe; OpenVoice optional fürs Klonen) + **MACHE-AVATAR.bat** (Text→Stimme→sprechender
