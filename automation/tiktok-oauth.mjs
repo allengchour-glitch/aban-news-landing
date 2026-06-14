@@ -21,6 +21,9 @@
  */
 import http from 'node:http';
 import crypto from 'node:crypto';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import { exec } from 'node:child_process';
 
 const KEY = process.env.TT_CLIENT_KEY || '';
@@ -83,13 +86,19 @@ const server = http.createServer(async (req, res) => {
     server.close(); return;
   }
   res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-  res.end('<h2>✅ Geschafft!</h2><p>Tokens stehen im Terminal. Du kannst dieses Fenster schliessen.</p>');
-  console.log('\n✅ ERFOLG — diese zwei Werte als GitHub-Secrets setzen:\n');
-  console.log('TT_ACCESS_TOKEN =', j.access_token);
-  console.log('TT_REFRESH_TOKEN =', j.refresh_token);
-  console.log('\n(open_id:', j.open_id, '· scope:', j.scope, '· access_token gültig', j.expires_in, 's,',
-              'refresh_token gültig', j.refresh_expires_in, 's)\n');
-  console.log('Danach: Repo → Settings → Secrets and variables → Actions → New repository secret.');
+  res.end('<h2>✅ Geschafft!</h2><p>Tokens wurden lokal gespeichert. Du kannst dieses Fenster schliessen.</p>');
+  // Tokens automatisch in luxe-secrets.ps1 (Home-Verzeichnis) schreiben — kein Kopieren nötig.
+  const secretsPath = path.join(os.homedir(), 'luxe-secrets.ps1');
+  const content = `# Auto-generiert von tiktok-oauth.mjs — NICHT committen!\n` +
+    `$env:TT_ACCESS_TOKEN  = "${j.access_token}"\n` +
+    `$env:TT_REFRESH_TOKEN = "${j.refresh_token}"\n` +
+    `$env:TT_CLIENT_KEY    = "${KEY}"\n` +
+    `$env:TT_CLIENT_SECRET = "${SECRET}"\n`;
+  try { fs.writeFileSync(secretsPath, content); } catch (e) { console.error('Konnte luxe-secrets.ps1 nicht schreiben:', e.message); }
+  console.log('\n✅ ERFOLG — Tokens gespeichert in:', secretsPath);
+  console.log('   (open_id:', j.open_id, '· scope:', j.scope, '· access gültig', j.expires_in, 's · refresh', j.refresh_expires_in, 's)');
+  console.log('\nJetzt direkt posten:');
+  console.log('   . "' + secretsPath + '"; node automation/tiktok-autopost.mjs\n');
   setTimeout(()=>{ server.close(); process.exit(0); }, 500);
 });
 
