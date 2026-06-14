@@ -59,6 +59,20 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-06-14 (🧹 WEBSEITE-SAUBER-AUDIT — autonom, Nacht):**
+- **Produkt-QA:** 50 älteste + 40 neueste ACTIVE-Produkte gescannt → **0 FAILED-Bilder**, alle Medien READY, alle SEO-Titel
+  gesetzt, keine „CJ"/Platzhalter-Leaks. Katalog visuell + SEO sauber.
+- **Menü/Navigations-Audit (FEST):** ALLE ~60 Menü-Links gegen `resourcePublicationsCount` geprüft → **jeder Link zeigt
+  auf eine veröffentlichte Collection (count≥1) = KEINE 404s.** Die unveröffentlichten (count:0) Collections (`accessories`,
+  `home-family`, `bestseller`, `tiktok-viral`, `tiktok-ads-ready`, `schweiz-edition`, `made-in-switzerland-premium`,
+  `selbst-gestalten-1` u.a.) sind **Legacy/Auto + NICHT im Menü** → bewusst NICHT publiziert lassen (sonst Dubletten).
+- **2 Beobachtungen (Opportunität, nicht Bug):** (1) `schweiz-edition`-Collection (239 Prod.) ist unpubliziert — fürs
+  Swiss-Edition-Wachstum evtl. relevant, aber überlappt mit `erste-august` (im Menü, 261 Prod./6 Kanäle) → erst nach
+  Nav-Entscheid publizieren. (2) Viele Menü-Collections sind nur auf 1 Kanal (Online-Store) — könnten für Reichweite auf
+  TikTok/Google/FB/Pinterest gepusht werden (Reichweiten-Thema, kein Sauberkeits-Thema).
+- **Fazit:** Webseite ist verifiziert sauber; **keine erfundenen Änderungen** gemacht (nichts war kaputt). Discount
+  WELCOME10 aktiv bis 2026-08-31.
+
 **📌 2026-06-14 (🚀 CLOUDFLARE-WORKER LIVE DEPLOYED — autonom aus Cloud-Session):**
 - **Worker LIVE:** `https://luxestyle-autopilot.allengchour.workers.dev` (Account `33e5217c…`). Deploy **komplett autonom
   aus der Cloud-Session** via `CLOUDFLARE_API_TOKEN` (User-Token, IP-Filter entfernt; Token danach widerrufbar). wrangler 4.100.
