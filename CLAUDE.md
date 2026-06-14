@@ -59,7 +59,21 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-06-14 (NEUESTER STAND — LIEFERANTEN-STRATEGIE: Marktlücke Activewear/Loungewear → ANDERE Session übernimmt):**
+**📌 2026-06-14 (NEUESTER STAND — 🖨️ GELATO-FULFILLMENT-CONNECTOR + POD-Editor v2):**
+- **POD-Editor v2 live (`pod/designer.js`, PR #944→main):** Druckgrösse-Presets (Klein/Mittel/Gross/Füllend),
+  echte Druck-Vorschau (👁️ zeigt nur das Motiv auf Karo=transparent), Auflösungs-Warnung (zu kleines Bild für die
+  Druckgrösse). Plus aus v1: Zuschneiden/Spiegeln/Drehen/Freistellen/Rahmen/Filter. Deploy via GitHub Pages.
+- **🖨️ Gelato-Connector gebaut (`cloudflare/src/gelato.js`, in PR #851):** schliesst „eigenes Design → wird wirklich
+  gedruckt". Shopify-`orders/create`-Webhook → Worker liest Druckdatei-URL aus den Bestell-Eigenschaften
+  (`properties['🖼️ Druckdatei']`, hinten `'Hinten · 🖼️ Druckdatei'`) → mappt SKU→Gelato-productUid (KV `gelato_map`)
+  → Gelato-Order-API legt Druckauftrag an. **No-op-sicher · HMAC-geprüft · idempotent · Draft-Testmodus** (`GELATO_DRAFT=1`).
+  Smoke-Test (Mock-KV/Gelato) grün: valid→draft-Auftrag (front+back), Idempotenz, no-print-skip, unmapped-Warnung, HMAC→401.
+  Route `{PUBLIC_BASE}/webhooks/orders/create`. **User-To-do (README §Gelato):** Secrets `GELATO_API_KEY`+`SHOPIFY_WEBHOOK_SECRET`,
+  KV `gelato_map` (SKU→productUid; productUids via `gelato_discover.mjs`/Gelato-Dashboard), Shopify-Webhook anlegen, dann `GELATO_DRAFT=0`.
+- **⚠️ OFFEN:** `gelato_map` braucht die echten productUids → in einer Session mit `GELATO_API_KEY` als Env-Var
+  `node automation/gelato_discover.mjs` laufen lassen → Map befüllen. Hier nicht möglich (Key nicht in Env).
+
+**📌 2026-06-14 (LIEFERANTEN-STRATEGIE: Marktlücke Activewear/Loungewear → ANDERE Session übernimmt):**
 - **Marktlücken-Analyse (datenbasiert):** grösste echte Lücken = **Loungewear/Homewear** + **Damen-Activewear/Athleisure**
   (Shop=0, hohe Wiederkaufrate). **⚠️ CJ kann sie NICHT liefern** (hart geprüft: „women leggings"=0, „yoga pants"=nur
   Freizeithosen, „straw hat"=Hundepartyhüte). Auch Co-ord-Sets/Strohhüte = CJ-Decke. → braucht ANDEREN Lieferanten.
