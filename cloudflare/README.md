@@ -94,6 +94,55 @@ npx wrangler tail
 
 ---
 
+## 🖨️ Gelato-Fulfillment — eigenes Design → echter Druckauftrag
+
+Schliesst die Lücke beim „Selbst gestalten"-Editor: Wenn ein Kunde **sein eigenes Design** auf ein
+Print-on-Demand-Produkt (z. B. Loungewear-Hoodie) legt, hängt der Editor die fertige **Druckdatei-URL**
+als Bestell-Eigenschaft an (`properties['🖼️ Druckdatei']`, Rückseite `'Hinten · 🖼️ Druckdatei'`).
+Der Worker fängt den **Shopify-`orders/create`-Webhook** ab und legt daraus **automatisch einen
+Gelato-Druckauftrag** an.
+
+> No-op-sicher: ohne `GELATO_API_KEY` passiert nichts; Bestellungen ohne Druckdatei oder ohne
+> SKU-Mapping werden übersprungen (Hinweis im Log). Idempotent (jede Order nur 1×). HMAC-geprüft.
+
+**A. Secrets + Var setzen**
+
+```bash
+npx wrangler secret put GELATO_API_KEY          # Gelato-API-Key (Ecommerce/Order-API)
+npx wrangler secret put SHOPIFY_WEBHOOK_SECRET   # = Signatur-Secret aus dem Shopify-Webhook (Schritt C)
+# In wrangler.toml [vars]:  GELATO_DRAFT = "1"   → Testmodus (Entwurf, kein echter Druck). Später "0".
+```
+
+**B. SKU → Gelato-productUid-Map in KV ablegen** (welche Shopify-Variante = welches Gelato-Produkt):
+
+```bash
+npx wrangler kv key put --binding=STATE gelato_map '{
+  "EDELWEISS-HOODIE-M": { "productUid": "apparel_product_gca_hoodie_...gsi_m", "files": { "front":"default", "back":"back" } },
+  "MATTERHORN-SWEAT-L": { "productUid": "apparel_product_gca_sweatshirt_...gsi_l" }
+}'
+```
+Die `productUid` je Garment/Grösse/Farbe stammt aus dem Gelato-Produktkatalog
+(`node ../automation/gelato_discover.mjs` listet Stores/Produkte; productUids via Gelato-Product-API/Dashboard).
+Fallback-Keys, falls keine SKU passt: `variant_id`, dann `product_id` (als String).
+
+**C. Shopify-Webhook anlegen** — Einstellungen → **Benachrichtigungen → Webhooks** →
+„Webhook erstellen": Ereignis **Bestellungserstellung**, Format **JSON**,
+URL = `{PUBLIC_BASE}/webhooks/orders/create`. Shopify zeigt danach das **Signatur-Secret** →
+genau das als `SHOPIFY_WEBHOOK_SECRET` (Schritt A) setzen und neu deployen.
+
+**D. Testen** (ohne echte Bestellung): RUN_KEY umgeht die HMAC-Prüfung für den Probelauf:
+
+```bash
+curl -X POST "https://…workers.dev/webhooks/orders/create?key=DEIN_RUN_KEY" \
+  -H 'Content-Type: application/json' \
+  -d '{"id":9001,"currency":"CHF","email":"test@luxestyle.ch",
+       "shipping_address":{"first_name":"Test","last_name":"K","address1":"Bahnhofstr 1","city":"Zürich","zip":"8001","country_code":"CH"},
+       "line_items":[{"id":1,"sku":"EDELWEISS-HOODIE-M","quantity":1,"title":"Hoodie",
+         "properties":[{"name":"🖼️ Druckdatei","value":"https://res.cloudinary.com/dwyi6kkrl/image/upload/sample.png"}]}]}'
+```
+→ Mit `GELATO_DRAFT="1"` erscheint der Auftrag als **Entwurf** im Gelato-Dashboard (kein echter Druck).
+Passt alles → `GELATO_DRAFT="0"` und neu deployen ⇒ Produktion läuft vollautomatisch.
+
 ## Kosten
 - Gemini 2.5 Flash Image: ~$0.04/Bild × 1/Tag ≈ **$1.2/Monat**.
 - Cloudflare Workers/R2/KV: im **Free-Tier** für dieses Volumen kostenlos.

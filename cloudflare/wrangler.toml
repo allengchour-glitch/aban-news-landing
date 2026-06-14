@@ -32,6 +32,14 @@ LUMA_MODEL = "ray-flash-2"
 LUMA_RESOLUTION = "540p"
 LUMA_DURATION = "5s"
 
+# --- Gelato-Fulfillment (eigenes Design → echter Druckauftrag) ---
+# GELATO_DRAFT="1"        → Gelato-Aufträge als ENTWURF anlegen (zum Testen, kein echter Druck/keine Kosten).
+#                           Auf "0" stellen, wenn echt produziert werden soll.
+# GELATO_SHIPMENT_METHOD  → optionale Versandart-UID (sonst Gelato-Default).
+# Die SKU→productUid-Map kommt aus KV ('gelato_map', JSON) ODER aus der Var GELATO_MAP (kleine Maps).
+GELATO_DRAFT = "1"
+
 # Secrets NICHT hier — per `wrangler secret put <NAME>` setzen:
 #   GEMINI_API_KEY  IG_USER_ID  IG_ACCESS_TOKEN  FB_PAGE_ID  FB_PAGE_ACCESS_TOKEN
 #   THREADS_ACCESS_TOKEN (optional)  LUMA_API_KEY (optional, für Reels)  RUN_KEY (für manuellen /run-Test)
+#   GELATO_API_KEY (Gelato-Fulfillment)  SHOPIFY_WEBHOOK_SECRET (Webhook-Signatur prüfen)

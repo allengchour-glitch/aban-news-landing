@@ -21,6 +21,7 @@
  */
 import { PRODUCTS } from './products.js';
 import { runReel, postVideoAll } from './video.js';
+import { handleOrderWebhook } from './gelato.js';
 
 const CAPTIONS = [
   '{label} ✨ Premium-Look zum fairen Preis. Code WELCOME10 = -10% · 🔗 {url}',
@@ -218,6 +219,17 @@ export default {
       const obj = await env.BUCKET.get(url.pathname.slice(1));
       if(!obj) return new Response('Not found', { status:404 });
       return new Response(obj.body, { headers:{ 'Content-Type':'video/mp4', 'Cache-Control':'public, max-age=86400' } });
+    }
+    // Gelato-Fulfillment: Shopify orders/create-Webhook → echter Druckauftrag bei Gelato.
+    // In Shopify einrichten: Einstellungen → Benachrichtigungen → Webhooks → "Bestellungserstellung",
+    // Format JSON, URL = {PUBLIC_BASE}/webhooks/orders/create ; Signatur-Secret = SHOPIFY_WEBHOOK_SECRET.
+    if(url.pathname === '/webhooks/orders/create' && req.method === 'POST'){
+      const log = [];
+      // Test-Bypass: /webhooks/orders/create?key=RUN_KEY POST (ohne gültige HMAC) → zum lokalen Probelauf.
+      const bypass = !!(env.RUN_KEY && url.searchParams.get('key') === env.RUN_KEY);
+      const resp = await handleOrderWebhook(req, env, log, bypass);
+      console.log(`[gelato] ${log.join(' · ')}`);
+      return resp;
     }
     // Manueller Trigger zum Testen: /run?task=enhance|reel|post&key=RUN_KEY
     if(url.pathname === '/run'){
