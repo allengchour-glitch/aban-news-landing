@@ -59,7 +59,19 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-06-14 (NEUESTER STAND — 🖨️ GELATO-FULFILLMENT-CONNECTOR + POD-Editor v2):**
+**📌 2026-06-14 (🚀 CLOUDFLARE-WORKER LIVE DEPLOYED — autonom aus Cloud-Session):**
+- **Worker LIVE:** `https://luxestyle-autopilot.allengchour.workers.dev` (Account `33e5217c…`). Deploy **komplett autonom
+  aus der Cloud-Session** via `CLOUDFLARE_API_TOKEN` (User-Token, IP-Filter entfernt; Token danach widerrufbar). wrangler 4.100.
+- **Gesetzt:** KV `STATE` (id `6678493bf48d4c599dd7c615e6b5ac94`) · Secrets `GELATO_API_KEY`+`WEBHOOK_TOKEN`+`RUN_KEY` ·
+  `gelato_map` in KV (50 DTG-Varianten) · `GELATO_DRAFT=1` (Testmodus). **R2 + Crons DEAKTIVIERT** (R2 nicht freigeschaltet/
+  Code 10042; Crons = Social, no-op ohne Meta-Keys) — in `wrangler.toml` auskommentiert, für später dokumentiert.
+- **Webhook-Auth = Token-URL** (User per AskUserQuestion autorisiert, statt HMAC): `?t=WEBHOOK_TOKEN`. Live-Smoke-Test grün:
+  /health ok (44 Produkte), Webhook+Token+unmapped→„nothing to print", falsches Token→401.
+- **🟡 EINZIGER offener Schritt (User, MCP blockt webhookSubscriptionCreate = data-exfil):** Shopify-Webhook „Bestellungs-
+  erstellung" manuell anlegen → URL `…/webhooks/orders/create?t=<WEBHOOK_TOKEN>` (Token session-lokal in `/tmp/lux_secrets.txt`,
+  NICHT im Repo). Danach Gelato-Fulfillment voll live. Zum Echtbetrieb: `GELATO_DRAFT=0` + redeploy.
+
+**📌 2026-06-14 (🖨️ GELATO-FULFILLMENT-CONNECTOR + POD-Editor v2):**
 - **POD-Editor v2 live (`pod/designer.js`, PR #944→main):** Druckgrösse-Presets (Klein/Mittel/Gross/Füllend),
   echte Druck-Vorschau (👁️ zeigt nur das Motiv auf Karo=transparent), Auflösungs-Warnung (zu kleines Bild für die
   Druckgrösse). Plus aus v1: Zuschneiden/Spiegeln/Drehen/Freistellen/Rahmen/Filter. Deploy via GitHub Pages.
