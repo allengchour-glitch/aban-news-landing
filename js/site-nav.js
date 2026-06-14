@@ -44,6 +44,8 @@
       ["Selbstständig anmelden", "/selbststaendig-anmelden.html", "Business", "Die ersten Schritte (CH/DE/AT) — von der Idee zur ersten Rechnung"],
       ["Angebot schreiben", "/angebot-schreiben.html", "Business", "Vorlage + Generator (mit/ohne MwSt)"],
       ["Buchhaltungssoftware-Vergleich", "/buchhaltungssoftware-vergleich.html", "Business", "lexoffice, sevdesk, bexio & Co. — ehrlich eingeordnet"],
+      ["lexoffice vs. sevdesk", "/lexoffice-vs-sevdesk.html", "Business", "Head-to-head: für wen sich welches Tool lohnt"],
+      ["Kostenloses Rechnungsprogramm", "/rechnungsprogramm-kostenlos.html", "Business", "Gratis Rechnung schreiben — worauf achten"],
       ["Rechnung Schritt für Schritt", "/rechnung-schritt-fuer-schritt.html", "Business", "In 6 Schritten zur ersten Rechnung (Anleitung)"],
       ["Geschäftskonto-Vergleich", "/geschaeftskonto-vergleich.html", "Business", "Qonto, Kontist, Holvi & Co. für Selbstständige"],
       ["Homeoffice absetzen", "/homeoffice-absetzen.html", "Business", "Arbeitszimmer & Pauschale steuerlich nutzen"],
