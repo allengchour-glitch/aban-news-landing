@@ -22,6 +22,17 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 
 ## 🔁 Daueraufträge (FEST)
 - **„update dich immer"** (2026-06-12): Memory nach jeder Charge nachführen.
+- **📈 ÖFTER ANALYSIEREN — Meta + TikTok (FEST, User 2026-06-14 „analysiere öfters in meta tiktok und so"):**
+  In JEDER Session **zuerst `bash automation/brain/auto.sh`** (TikTok-Analyse + Lernen) UND einen **Meta-Check**
+  (IG/FB-Engagement: via `automation/reel-analytics.mjs` / Graph-Insights, sobald `META_ACCESS_TOKEN` da; sonst
+  öffentlich/Metricool). Lehren ins Gehirn (`knowledge.json`), Stand in `dropship/STATUS.md`. Ziel: Performance
+  laufend beobachten, Gewinner verstärken, Verlierer droppen (Ratsche). Pro Markt getrennt (CH zuerst).
+- **🆙 ASSETS AUF CDN HEBEN — Eigenfähigkeit (FEST, 2026-06-14):** Lokale Videos/Bilder per **Shopify-MCP** ins CDN
+  bringen — KEINE Creds nötig: `stagedUploadsCreate` (Mutation) → Bytes per `curl -F` an die GCS-`url` POSTen
+  (HTTP 201) → `fileCreate(contentType:FILE)` → `node(id)` pollen bis `READY` → öffentliche `cdn.shopify.com`-URL.
+  Mehrere Dateien in EINEM stagedUploadsCreate batchen (1 curl je Datei, dann 1 fileCreate). Damit kann ich
+  versteckte/neue Assets selbst in die Posting-Pipeline (`social/video_queue.csv` → Gehirn-Queue) bringen.
+  ⚠️ Policy/Signature beim curl EXAKT kopieren (Tippfehler = HTTP 400). NUR LuxeStyle-Assets (kein abannews).
 - **📊 STATUS-BERICHT (2026-06-14 „ich will immer Status sehen, was du gemacht hast"):** `dropship/STATUS.md`
   nach JEDER Charge nachführen (was läuft autonom · was wartet auf User · Verlauf neueste oben) UND in der
   Antwort eine kurze Status-Zusammenfassung zeigen.
@@ -108,6 +119,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-14 (NEUESTER STAND — grosse autonome Session):**
+- **🎵 Musik-Tool** `automation/music/music_library.mjs` (kommerziell-frei, Kevin MacLeod CC-BY 4.0, Auto-Attribution
+  `CREDITS.md`) ersetzt den „zu billigen" GM-Synth. **🎬 Marken-Video 60s+30s** (`render_brand_video.py`).
+- **🈂️ SAFE-ZONE-TEXTREGEL** (User „schrift unten achtung"): eingebrannter Text endet bei ~78 % Höhe, nie unter der
+  Plattform-Caption. Im Gehirn (`rules.production`) + `finish_reel.sh` + `render_masterpiece.sh`. Alle 4 Reels neu gerendert.
+- **🤖 Vollgas-Audit (6 parallele Agenten):** Conversion-Leak = Session→Warenkorb (0,32 % ATC). **LIVE gefixt:**
+  DACH-`/de-de/`-Storefront gelöscht (Strikt-CH!), `/collections/kleider`-404→Redirect, `highlights` in 6 Kanäle.
+  **🈲 28 Produkte mit Watermark/Overlay/asiat. Schrift archiviert** (150 cj-real geprüft, ~19 % Treffer → Auto-Import
+  braucht Bildfilter; `image-audit.mjs` + `GEMINI_API_KEY`). Markt 2026: Statement-Schmuck/Beauty/Herbst-Accessoires.
+- **📱 Worker erweitert:** postet jetzt **FB-Stories + echte FB-Reels** (vorher übersprungen) → FB-Nudges erledigt.
+- **🆙 9 Videos auf CDN gehoben + in Gehirn-Queue:** 4 Safe-Zone-Reels + Marken-Video + **5 «Selbst-gestalten»-Veo-Clips**
+  (versteckt, einzigartiger POD-Content). **Tages-Rotation** im Reel-Picker (23 Reels rotieren über ~4 Tage = Vielfalt).
+- **🔴 OFFEN nur User:** (1) `wrangler deploy` (FB-Stories + neue Queue), (2) **Pixel + CH-Kampagne**,
+  (3) Zirkonia-Ring (archiviert, aber Top-Ad-Landing), (4) `GEMINI_API_KEY` (Katalog-Bild-Audit), (5) Klaviyo
+  `websiteUrl`/Währung + Browse-Abandonment-Flow. FR/IT/UK/US/Global-Märkte enabled → erst nach CH-Conversion.
+
 **📌 2026-06-13 (16 neue Produkte hand-kuratiert + 3 Video-Pipelines):**
 - **🛍️ +16 neue cj-real-Produkte** (Runden 1–6, CJ-Access-Token transient) — alle ACTIVE, Bild visuell QA-geprüft,
   in alle 6 Publications publiziert. Methode: gezielt suchen → **jedes Bild ansehen** → nur saubere Treffer

@@ -143,6 +143,30 @@ async function cleanupOldFb(env, cutoff) {
   return { cutoff, fb_total: all.length, deleted, failed, note: failed || old.length === 40 ? "Nochmal aufrufen für weitere." : "Fertig. (IG nur in der App löschbar.)" };
 }
 
+// META-ANALYSE (User „analysiere öfters meta tiktok"): läuft autonom bei JEDEM Cron — der Worker
+// hat den Page-Token. Holt IG+FB-Engagement der letzten Posts, bildet eine Kurz-Zusammenfassung
+// und schreibt sie in ein rollendes KV-Log (insights_log, letzte 14). Lesen via ?insights=1.
+async function metaInsights(ids, env) {
+  const out = { ts: new Date().toISOString().slice(0, 16) };
+  try { // Instagram: like_count + comments_count je Media
+    const m = await gget(`${ids.ig_id}/media`, { fields: "id,caption,like_count,comments_count,media_type,timestamp", limit: "12", access_token: ids.page_token });
+    const md = (m.data || []).map((x) => ({ eng: (x.like_count || 0) + (x.comments_count || 0), cap: (x.caption || "").slice(0, 40), t: x.media_type }));
+    const eng = md.reduce((s, x) => s + x.eng, 0); const top = md.sort((a, b) => b.eng - a.eng)[0];
+    out.ig = { posts: md.length, eng, avg: md.length ? Math.round(eng / md.length) : 0, top: top ? { eng: top.eng, cap: top.cap } : null };
+  } catch (e) { out.ig = { error: String(e).slice(0, 80) }; }
+  try { // Facebook-Page: Reaktionen + Kommentare + Shares je Post
+    const f = await gget(`${ids.page_id}/posts`, { fields: "id,message,shares,reactions.summary(true),comments.summary(true)", limit: "12", access_token: ids.page_token });
+    const fd = (f.data || []).map((x) => ({ eng: ((x.reactions && x.reactions.summary && x.reactions.summary.total_count) || 0) + ((x.comments && x.comments.summary && x.comments.summary.total_count) || 0) + ((x.shares && x.shares.count) || 0), cap: (x.message || "").slice(0, 40) }));
+    const eng = fd.reduce((s, x) => s + x.eng, 0); const top = fd.sort((a, b) => b.eng - a.eng)[0];
+    out.fb = { posts: fd.length, eng, avg: fd.length ? Math.round(eng / fd.length) : 0, top: top ? { eng: top.eng, cap: top.cap } : null };
+  } catch (e) { out.fb = { error: String(e).slice(0, 80) }; }
+  try {
+    const log = JSON.parse((await env.LUXE_KV.get("insights_log")) || "[]");
+    log.unshift(out); await env.LUXE_KV.put("insights_log", JSON.stringify(log.slice(0, 14)));
+  } catch (e) { /* KV best-effort */ }
+  return out;
+}
+
 async function run(env) {
   if (!env.META_ACCESS_TOKEN) return { error: "META_ACCESS_TOKEN fehlt" };
   const ids = await discoverIds(env);
@@ -154,7 +178,9 @@ async function run(env) {
   const fb = await postFacebook(ids, item).catch((e) => ({ error: String(e) }));
   // Cursor nur weiterzählen, wenn mindestens ein Kanal erfolgreich war
   if (ig.ok || fb.ok) await env.LUXE_KV.put("cursor", String(cursor + 1));
-  return { index: cursor, item: item.caption.split("\n")[0], ig, fb };
+  // Meta-Analyse mitlaufen lassen (autonom, jeder Cron) — Performance laufend beobachten
+  const insights = await metaInsights(ids, env).catch((e) => ({ error: String(e) }));
+  return { index: cursor, item: item.caption.split("\n")[0], ig, fb, insights };
 }
 
 export default {
@@ -169,6 +195,11 @@ export default {
     if (setq) { await env.LUXE_KV.put("queue_url", setq); await env.LUXE_KV.put("cursor", "0"); return Response.json({ queue_url_set: setq, cursor: 0 }); }
     const clean = u.searchParams.get("cleanup");
     if (clean) return Response.json(await cleanupOldFb(env, clean).catch((e) => ({ error: String(e) })));
+    // Meta-Analyse-Verlauf ansehen (IG+FB-Engagement, autonom 2×/Tag gesammelt)
+    if (u.searchParams.get("insights")) {
+      const log = JSON.parse((await env.LUXE_KV.get("insights_log")) || "[]");
+      return Response.json({ entries: log.length, log });
+    }
     if (u.searchParams.get("cursor")) { await env.LUXE_KV.put("cursor", u.searchParams.get("cursor")); return Response.json({ cursor_set: u.searchParams.get("cursor") }); }
     if (u.searchParams.get("status")) {
       const q = await loadQueue(env);
