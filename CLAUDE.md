@@ -59,7 +59,25 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-06-13 (NACHT — NEUESTER STAND — GROSSE KATALOG-OFFENSIVE: +30 Produkte, Luxus-Welt, Conversion-Setup):**
+**📌 2026-06-14 (NEUESTER STAND — Katalog-Offensive Teil 2: +20 Herren-Apparel/Bademode/Kleider; Gesamt ~50 neu):**
+- Fortsetzung der grossen Offensive (Vortag +30). **+20 weitere Produkte live** (alle ACTIVE/6 Kanäle/Bilder READY/SEO):
+  - **11 Herren-Bekleidung** (User „männer sachen füllen"): Hemd «Breeze», Strick-Polo «Lido», Shorts «Active», Sommer-Set
+    «Riviera» (Hemd+Shorts), Chino-Shorts «Cruise», Tank-Top «Court» · Beach-Shorts «Coral», Leinen-Hose «Lino»,
+    Cargo-Hose «Trail», Strickpullover «Nico», Ice-Silk-Hemd «Frost». Tag `herren`→„👨 Für Ihn" (203→**214**).
+  - **4 Damen-Bademode** (Lücke 2→**6**): Bikinis «Maui»/«Sunset»/«Solé» + Strand-Cover-up «Brisa». `bademode`+`damen`,
+    **Hygiene-Rückgabe-Hinweis** in Beschreibung.
+  - **5 Damen-Sommerkleider** (Conversion: stärkt Ad-Landing `/collections/sommer`): «Capri»/«Sirena»/«Fiorella»/«Bloom»/«Aria».
+    Tag `sommer-2026`+`kleid`+`damen` → /collections/sommer (88) + sub-kleider (38→**43**). **Grössen-Hinweis** (asiatisch).
+- **⚠️ CJ-DECKE (06-14 bestätigt):** **Herren-Gürtel = 0 auf CJ** (Suche liefert nur T-Shirts/Deo/Brillen), **echte Bademode/
+  Swimwear Herren** praktisch 0, **One-Piece-Badeanzüge Damen** dünn. Herren-Bling/Cuban-Chains surfacen nicht. Ergiebig
+  bleiben: Damen-Bikinis, Damen-Kleider, Herren-Hosen/Shirts (günstige Basics ~$3.5–10), 925-Schmuck (Stil-Dubletten).
+- **Werbe-Queue `automation/good_products.csv` jetzt 41** (synchron `cloudflare/src/products.js`); Mix Frauen/Männer/Luxus/
+  Schmuck/Bademode. **Marketing-Aktivierung (Cloudflare-Deploy/Meta-Secrets) macht eine ANDERE Session / der User** —
+  hier NICHT weiter Produkte stapeln nötig: Katalog ist gesättigt, Engpass = Reichweite.
+- Variant-Lehre: Apparel hat oft Color×Size → Grössen-Parser (S–XXL + Schuhnummern), pro Grösse 1. SKU; Color-Size-Chaos-
+  Produkte überspringen. 1× transienter 502 beim create → vor Retry per `search_products` auf Dup prüfen.
+
+**📌 2026-06-13 (NACHT — GROSSE KATALOG-OFFENSIVE: +30 Produkte, Luxus-Welt, Conversion-Setup):**
 - **+30 neue Produkte live** (alle ACTIVE, 6 Kanäle, Bilder READY/0 FAILED, SEO gesetzt, deutsche Titel/Varianten/CJ-SKUs):
   - **10 Röcke & Schuhe** (User „mehr röcke und männer schue und frauen"): 2 Röcke (Wide-Leg «Studio» 6 Farben, Polka-Dot «Dolce»),
     4 Damen-Schuhe (Capri/Lido/Maré/Estate), 4 Herren-Schuhe (Brooklyn/Adriano/Velocità/Forza). Auto in 👟 Schuhe (107) + 👗 Röcke (9).

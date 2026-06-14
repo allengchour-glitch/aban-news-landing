@@ -39,6 +39,14 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-14 — Luxestyle/Dropship: Katalog-Offensive Teil 2 (+20 → ~50 neu gesamt):**
+- **+20 weitere Produkte** (alle ACTIVE/6 Kanäle/READY/SEO): 11 Herren-Bekleidung (Hemd/Polo/Shorts/Set/Tank/Hosen/Cargo/
+  Pullover/Ice-Silk/Beach-Shorts → „👨 Für Ihn" 203→214) · 4 Damen-Bademode (Bikinis+Cover-up → 👙 Bademode 2→6) ·
+  5 Damen-Sommerkleider (→ /collections/sommer 88, sub-kleider 38→43).
+- **Werbe-Queue `good_products.csv` → 41** (synchron `cloudflare/src/products.js`). **Marketing-Aktivierung macht andere Session/User.**
+- **⚠️ CJ-DECKE:** Herren-Gürtel=0, echte Herren-Bademode≈0, Cuban-Chains/Bling≈0, One-Piece-Badeanzüge dünn. Ergiebig:
+  Damen-Kleider/Bikinis, Herren-Basics, 925-Schmuck (Dubletten). **Engpass = Reichweite, nicht Katalog.** Detail: `dropship/CJ-IMPORT-LOG.md`.
+
 **2026-06-13 (NACHT) — Luxestyle/Dropship: +30 PRODUKTE + LUXUS-WELT + CONVERSION-SETUP:**
 - **+30 neue Produkte live** (ACTIVE/6 Kanäle/Bilder READY/SEO): 10 Röcke&Schuhe · 6 High-End/Luxus · 1 Elektronik (Earbud) ·
   3 High-End-Schmuck · 5 Herren-Hype · 5 „tolle Schmuckstücke". Via Shopify-MCP + CJ-Token (`/tmp/cj_token.json`).
