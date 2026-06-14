@@ -160,5 +160,20 @@ export const PRODUCTS = [
     "name": "925-silber-armband-fiore-bluten-verstellbar",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/95d42e9f-196c-4739-81a2-7226930c8042.jpg?v=1781390590",
     "label": "925-Armband «Fiore»"
+  },
+  {
+    "name": "herren-sommer-set-riviera-hemd-shorts",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ee1dc81c-31ee-45c6-807d-7531538c0755.jpg?v=1781402715",
+    "label": "Herren-Set «Riviera»"
+  },
+  {
+    "name": "herren-strick-polo-lido-ajour-optik",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/881d2784-64fa-41db-bdc6-d8a5da1cfb80.jpg?v=1781402679",
+    "label": "Strick-Polo «Lido»"
+  },
+  {
+    "name": "herren-kurzarm-hemd-breeze-quick-dry-atmungsaktiv",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/652474cf-cc58-4fa4-89e9-ab2484869fcf.jpg?v=1781402661",
+    "label": "Herren-Hemd «Breeze»"
   }
 ];
