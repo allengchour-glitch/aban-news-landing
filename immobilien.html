@@ -155,7 +155,10 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       statusEl.innerHTML="Noch keine Immobilien in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Immobilie inserieren</a>.";cntEl.textContent="0 Immobilien";return}
     statusEl.hidden=true;
     grid.innerHTML=items.map(function(it){
-      return '<div class="card"><div class="k">'+esc(it.kat||"Immobilie")+'</div><h3>'+esc(it.titel)+'</h3>'+(it.preis?'<div class="p">'+esc(it.preis)+'</div>':'')+'<div class="o">'+esc([it.plz,it.ort].filter(Boolean).join(" "))+'</div><div class="d">'+esc(it.beschreibung)+'</div><button class="c" type="button" data-k="'+esc(it.kontakt||"")+'">Kontakt anzeigen</button></div>';
+      var img=it.bild?('<div style="aspect-ratio:16/10;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(it.bild)+'\');border-radius:10px;margin:-2px 0 9px"></div>'):'';
+      var top=it.featured?'<span style="background:#b45309;color:#fff;border-radius:6px;padding:2px 7px;font-size:.66rem;font-weight:800;margin-left:6px">⭐ TOP</span>':'';
+      var fcls=it.featured?' style="border:2px solid var(--amber)"':'';
+      return '<div class="card"'+fcls+'>'+img+'<div class="k">'+esc(it.kat||"Immobilie")+top+'</div><h3>'+esc(it.titel)+'</h3>'+(it.preis?'<div class="p">'+esc(it.preis)+'</div>':'')+'<div class="o">'+esc([it.plz,it.ort].filter(Boolean).join(" "))+'</div><div class="d">'+esc(it.beschreibung)+'</div><button class="c" type="button" data-k="'+esc(it.kontakt||"")+'">Kontakt anzeigen</button></div>';
     }).join("");
     cntEl.textContent=items.length+" Immobilien";
     Array.prototype.forEach.call(document.querySelectorAll(".card button.c"),function(b){b.addEventListener("click",function(){this.outerHTML='<div style="font-size:.85rem">'+contactHtml(this.dataset.k)+'</div>'})});
