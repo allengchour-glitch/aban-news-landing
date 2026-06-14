@@ -395,7 +395,11 @@
       ],
       "cadence_target_per_day": 2,
       "note": "CH-Feierabend 18-21 Uhr = 16-19 UTC. Taeglich posten schlaegt Mo/Di-Cluster."
-    }
+    },
+    "production": [
+      "SAFE-ZONE-TEXT (User 2026-06-14 schrift unten achtung): eingebrannter Text endet bei ~78% Hoehe (y<=1500 von 1920); CTA-Zeile NIE ganz unten (kollidiert sonst mit Plattform-Caption/Buttons). Rechts ~12% (Icons) freilassen. Tool: dropship/ads/finish_reel.sh.",
+      "MUSIK = automation/music/music_library.mjs (kommerziell-frei, Kevin MacLeod CC-BY 4.0, Attribution in CREDITS.md). GM-Synth/fluidsynth war zu billig -> nur Fallback. Gesang nur via Suno-Port (Pro fuer Live-Ad)."
+    ]
   },
   "decisions": [
     {

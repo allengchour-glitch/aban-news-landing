@@ -27,12 +27,14 @@ SEG=$(python3 -c "print(round(max(1.7,($DUR-$OUTRO+($N)*$T)/$N),3))")
 echo "DEBUG render: voice=$VOICE  DUR=${DUR}s  N=$N  OUTRO=$OUTRO  T=$T  SEG=$SEG"
 if [ "$LANG_" = "en" ]; then O1="Shop now -> your look"; O4="Free shipping over CHF 65"; else O1="Jetzt shoppen -> dein Look"; O4="Gratis Versand ab CHF 65"; fi
 
-CAPBOX="drawbox=x=0:y=1560:w=1080:h=340:color=black@0.42:t=fill,drawbox=x=80:y=1665:w=8:h=150:color=${GOLD}:t=fill"
+# SAFE-ZONE (User 2026-06-14): Caption-Band hochgezogen (Box y=1300, Text ~1430 ≈ 75%),
+# damit es nicht mit Plattform-Caption/Buttons unten kollidiert.
+CAPBOX="drawbox=x=0:y=1300:w=1080:h=240:color=black@0.42:t=fill,drawbox=x=80:y=1340:w=8:h=130:color=${GOLD}:t=fill"
 idx=0; SEGDUR=()
 for line in "${LINES[@]}"; do
   typ="${line%%|*}"; rest="${line#*|}"; src="${rest%%|*}"; cap="${rest#*|}"
   printf '%s' "$cap" > "$W/cap$idx.txt"
-  CAPTXT="drawtext=fontfile=${SANS}:textfile=${W}/cap${idx}.txt:fontcolor=white:fontsize=50:x=118:y='1690+30*(1-min((t-0.1)/0.4\,1))':alpha='min(max((t-0.1)/0.4\,0)\,1)'"
+  CAPTXT="drawtext=fontfile=${SANS}:textfile=${W}/cap${idx}.txt:fontcolor=white:fontsize=50:x=118:y='1430+30*(1-min((t-0.1)/0.4\,1))':alpha='min(max((t-0.1)/0.4\,0)\,1)'"
   HOOKTXT=""
   if [ "$idx" -eq 0 ] && [ -n "$HOOK" ]; then
     printf '%s' "$HOOK" > "$W/hook.txt"
