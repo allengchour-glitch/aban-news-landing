@@ -76,6 +76,12 @@ function loadReels() {
       if (!/cdn\.shopify\.com\/.*\.mp4/.test(video) || seen.has(video)) continue;
       seen.add(video); reels.push({ type: 'reel', video, caption });
     }
+    // TÄGLICHE ROTATION: Pool um einen Tages-Offset drehen, damit über die Tage ALLE Assets
+    // (Hero-Reels + Selbst-gestalten + Veo) durch die 6 Feed-Slots rotieren — autonome Vielfalt.
+    if (reels.length > 1) {
+      const off = (Math.floor(Date.now() / 864e5)) % reels.length;
+      return reels.slice(off).concat(reels.slice(0, off));
+    }
     return reels;
   } catch { return []; }
 }

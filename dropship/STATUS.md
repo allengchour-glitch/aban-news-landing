@@ -33,6 +33,14 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-14 (Versteckte Assets gehoben + Tages-Rotation)
+- **🔎 Repo-weiter Asset-Scan:** `video-prototypes/*` + `media/reels/*` = **abannews** (falsche Marke) → bewusst NICHT genutzt.
+  LuxeStyle-Pool = `reels/`.
+- **✅ 5 «Selbst gestalten»-Veo-Clips gehoben + auf CDN + in die Queue** (Mountain-Tee, Sunset-Hoodie, Quote-Mug,
+  Cat-Tote, Skull-Tee) — einzigartiger Print-on-Demand-Content, vorher ungenutzt. Frame-QA: sauber. Mundart-Captions.
+- **♻️ Tages-Rotation im Reel-Picker** (`build_queue.mjs`): der Reel-Pool (23 kuratierte CDN-Reels) dreht täglich →
+  über ~4 Tage rotieren ALLE Assets (Hero-Reels + Selbst-gestalten + Veo) durch die 6 Feed-Slots = autonome Vielfalt.
+
 ### 2026-06-14 (Assets klug nutzen — Gehirn-Queue)
 - **✅ Beste Videos auf Shopify-CDN hochgeladen + in die autonome Posting-Rotation gebracht:** die 4
   Safe-Zone-Reels (Flame/Brise/Onyx) + **Marken-Video 60s** → via stagedUploadsCreate+fileCreate (MCP) auf CDN,
