@@ -54,3 +54,67 @@ Gratis-Reichweite-Maschine: TikTok / Reels / Instagram / Pinterest.
 - **9:16 Hochformat**, Trend-Sound.
 - Letzter Frame: „luxestyle.ch · −10% Code WELCOME10".
 - Konsistenz schlägt Perfektion: lieber täglich 1 simpler Clip als 1× pro Woche perfekt.
+
+---
+
+# 🇨🇭 1. AUGUST PUSH (Fokus-Kampagne — JETZT bis Anfang August täglich posten)
+
+> Dein USP: Schweizer Edition + Selbst-gestalten. Personalisiert, geschenktauglich, lokal-stolz,
+> zeitkritisch (1.8.). Das ist der Content mit dem höchsten Gratis-Viral-Potenzial.
+> Alle Posts → Link in Bio: luxestyle.ch/collections/erste-august
+
+## A1. Mundart-Tasse
+**Hook:** „POV: Du bringst die Tasse mit, über die am 1. August alle lachen. «Gopfertami» 🇨🇭"
+**Caption:** Mundart-Tassen & -Shirts für den Nationalfeiertag. Gastgeschenk-Problem gelöst.
+**Hashtags:** #1august #schweiz #mundart #grüezi #swissmade
+
+## A2. Selbst gestalten
+**Hook:** „Dein 1.-August-Outfit – aber NICHT von der Stange."
+**Caption:** Gestalte dein eigenes Schweiz-Design (Spruch, Kanton, Name) auf Shirt, Tasse oder Tasche. 2 Minuten, einzigartig. ✏️
+**Hashtags:** #selbstgestalten #1august #schweiz #personalisiert #diy
+
+## A3. Gastgeschenk
+**Hook:** „Gastgeschenk-Panik am 1. August? Eine Mundart-Tasse rettet dich."
+**Caption:** Kommt immer gut an, bleibt länger als eine Flasche Wein. 🇨🇭 −10% mit WELCOME10.
+**Hashtags:** #1august #gastgeschenk #schweiz #geschenkidee
+
+## A4. Kanton-Stolz
+**Hook:** „Dein Kanton. Dein Spruch. Dein Design. In 2 Minuten gemacht."
+**Caption:** Wohnort-Stolz als cleanes Typo-Design – im Gestalten-Editor.
+**Hashtags:** #schweiz #kanton #selbstgestalten #swisspride
+
+## A5. Sprüche-Reel
+**Hook:** „Schweizer Sprüche, die jede Tasse besser machen 👇"
+**Caption:** «Merci vilmal», «Hoi zäme», «Hopp Schwiiz», «Chuchichäschtli». Welcher ist deiner?
+**Hashtags:** #mundart #schweiz #1august #swissgerman
+
+## A6. Countdown / Dringlichkeit
+**Hook:** „1. August rückt näher – rechtzeitig bestellen, sonst feierst du in Unterhose. 😅"
+**Caption:** Lieferung 7–14 Tage → jetzt sichern, damit alles pünktlich da ist.
+**Hashtags:** #1august #countdown #schweiz #lastminute
+
+## A7. Deko / Apero
+**Hook:** „Apero-Tisch am 1. August upgraden – in 10 Sekunden."
+**Caption:** Schweizer Tassen, Servier-Ideen & Deko mit Charme. Edelweiss, Matterhorn, Fondue. 🇨🇭
+**Hashtags:** #1august #apero #schweiz #grillen #deko
+
+## A8. Verein / Team
+**Hook:** „Vereins-Shirt selbst gestalten: ein Design, alle im gleichen Look."
+**Caption:** Logo oder Spruch auf Shirts & Taschen – einheitlicher Auftritt für Team, Verein, Familie.
+**Hashtags:** #verein #selbstgestalten #schweiz #teamwear
+
+## A9. Personalisiertes Geschenk
+**Hook:** „Das Geschenk, das garantiert kein anderer hat."
+**Caption:** Name + Datum auf einer Tasse. Günstig, persönlich, immer ein Treffer. 🎁
+**Hashtags:** #geschenkidee #personalisiert #schweiz #1august
+
+## A10. Familie / Kids
+**Hook:** „1.-August-Familien-Fotos – aber alle im passenden Schweiz-Look."
+**Caption:** Mundart-Shirts für Gross & Klein. Edelweiss & Tier-Designs für die Kids.
+**Hashtags:** #familie #1august #schweiz #kids #matchingoutfits
+
+## Posting-Plan (Vorschlag)
+- **Jetzt–20.7.:** Awareness (A1, A2, A4, A5, A7) – zeigen, was es gibt.
+- **20.7.–28.7.:** Dringlichkeit + Geschenk (A3, A6, A9, A8).
+- **28.7.–1.8.:** Last-Minute + Familie (A6, A10) + Apero (A7).
+- 1–2 Posts/Tag, Hochformat 9:16, Trend-Sound, on-screen-Text = Hook.
