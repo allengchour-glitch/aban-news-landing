@@ -16,6 +16,15 @@
 - **🎁 Perla-Set Cross-Sell (Conversion/AOV):** In allen 3 «Perla»-Stücken (Kette/Ohrringe/Armband) oben ein
   verlinkter Set-Block zu den anderen beiden Teilen → als Geschenk-Trio positioniert. Kein Bundle-Produkt (kein Fulfillment-Risiko).
 
+## Session 2026-06-14 (Teil 4) — +5 Damen-Sommerkleider (Ad-Landing `/collections/sommer` gestärkt)
+- Conversion-Fokus: Sommerkleider = Damen-Bestseller-Kern; Tag `sommer-2026`+`kleid`+`damen` → landet in `/collections/sommer`
+  (Ad-Ziel, 88), sub-kleider (38→43), damen-mode. ACTIVE+6 Kanäle+5 Bilder READY+SEO. **Grössen-Hinweis** (asiatisch) drin.
+- **Produkte:** Chiffon-Kleid «Capri» (Resort, 44.90 · pid 2606130742111630100 · 15430491275649) · Maxikleid «Sirena»
+  (Seitenschlitz, 39.90 · pid 2606130627561623700 · 15430491308417) · A-Linien-Kleid «Fiorella» (Neckholder/bestickt,
+  54.90 · pid 2606130513001629500 · 15430491373953) · Sommerkleid «Bloom» (Träger/Print, 32.90 · pid 2606130318471609900 ·
+  15430491439489) · Kleid «Aria» (Cut-out, 34.90 · pid 2606130221071619800 · 15430491668865).
+- Übersprungen: 1 Midi mit Color×Size-Variantenchaos. ⚠️ 1× transienter 502 beim 5. Anlegen → vor Retry per search geprüft (kein Dup).
+
 ## Session 2026-06-14 (Teil 3) — +4 Damen-Bademode (Lücke gefüllt: Bademode 2→6)
 - Eigeninitiative: „👙 Bademode" hatte nur 2 Produkte (Sommer-Lücke). CJ ist bei Damen-Bademode ergiebig (anders als Herren).
   3 Bikinis + 1 Strand-Cover-up, Tag `damen`+`bademode` → sub-bademode 2→6. ACTIVE + 6 Kanäle + 5 Bilder READY + SEO.
