@@ -30,7 +30,8 @@ YEAR_OK = {89, 190}
 LIFE_OK = {69}
 # Eigene Produkte/interne Ops-Docs mit eigener Preis-/Garantie-Logik → nicht prüfen.
 EXCLUDE = ("/dist/", "node_modules", "/video-prototypes/", "/aban-studio/", "/dropship/",
-           "/kurs.html", "/launch-manual.html", "/ebook.html", "/buch.html")
+           "/kurs.html", "/launch-manual.html", "/ebook.html", "/buch.html",
+           "/vergleich/")  # Tool-vs-Tool-Vergleiche listen FREMD-Toolpreise (de+en), nicht aban-Preise
 
 # €X /Jahr|pro Jahr|per year  ·  €X /Monat|pro Monat|per month  ·  €X einmal/once/lifetime
 YEAR = re.compile(r'€\s?(\d{1,4})\s*(?:/|pro\s|per\s)?\s*(?:Jahr|year)', re.I)
