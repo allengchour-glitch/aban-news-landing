@@ -60,3 +60,16 @@ Druckt Leggings, Sport-BHs, Jogger, Hoodies/Loungewear-Sets, All-Over-Print.
 
 **Quellen:** brandsgateway.com/pricing · apps.shopify.com/brandsgateway-app · bigbuy.eu/en/dropshipping-shopify.html ·
 bigbuy.eu/academy/en/shopify-connector-complete-guide · printful.com · gelato.com · magicheidi.ch/dropshipping
+
+---
+
+## 🔑 GELATO per API bauen (für die nächste Session — Key-Handling)
+- **Key NIEMALS im Repo/Chat.** Er muss als **Umgebungs-Variable `GELATO_API_KEY`** der Claude-Code-Web-Umgebung gesetzt sein
+  (NICHT als GitHub-Actions-Secret — das ist write-only und für eine Session nicht lesbar).
+- ⚠️ **Eine laufende Session zieht neu gesetzte Env-Vars NICHT nach** → nach dem Setzen eine **NEUE Session** starten.
+- **Discovery (erst Verbindung prüfen):** `node automation/gelato_discover.mjs`
+  → listet Stores (`storeId`), Produkte und Templates. Bestätigt definitiv, ob der Shopify-Store in Gelato verbunden ist.
+- **Bauen:** Gelato ist Print-on-Demand → erst **Template(s) im Gelato-Dashboard** anlegen (Design auf Leggings/Sport-BH/Jogger/
+  Hoodie), dann per `POST /v1/stores/{storeId}/products:create-from-template` Produkte erzeugen (pushen automatisch nach Shopify).
+- **Danach Shopify-Feinschliff** (diese/MCP-Session): DE-Titel/SEO, Collections „Activewear"+„Loungewear", Menü-Links, Cross-Sell.
+- API-Basis: `https://ecommerce.gelatoapis.com/v1` · Auth-Header `X-API-KEY` · erreichbar aus der Session (getestet: 401 ohne Key).
