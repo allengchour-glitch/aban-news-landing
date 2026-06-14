@@ -16,6 +16,21 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 📬 2026-06-14 — Versandfertige Newsletter-Queue + Hub-Hero-Robustheit (Newsletter-Workstream)
+> Session „weiter / mach alles / update". Alles gemerged. Drei Blocker bleiben user-seitig
+> (Stripe-Key, CF-Domain-Umzug, beehiiv-Versand) — sonst ist alles turnkey gemacht.
+- **📨 Versandfertige Newsletter-Queue (3 Ausgaben, alle Brand-Voice 10/10), zum 1:1-Einfügen in beehiiv:**
+  `data/newsletter-versandbereit.md` („Reels vertonen ohne Mikro" → Voice-Affiliate ElevenLabs/Murf, #869),
+  `…-2.md` („Wirst du von ChatGPT empfohlen?" → ki-erwaehnungs-check/ki-audit-Funnel),
+  `…-3.md` („Rechnung/Mahnung/Angebot in 2 Min" → Gratis-Generatoren + Shop). Alle evergreen, du-Form,
+  anti-hype, 0 erfundene Zahlen, verlinkte Seiten verifiziert. **Versand = User** (Stichwort „promote" danach).
+- **🖼️ Hub-Hero-Robustheit (#860):** alle 336 `data-aban-hero`-Bilder (DE/EN/FR/IT) bekamen `onerror`→ausblenden.
+  Solange der site-images-Workflow `/img/site/hub-*.jpg` noch nicht erzeugt (Actions gedrosselt), zeigt die Seite
+  kein kaputtes Bild; Marker+src bleiben → Workflow füllt später normal nach.
+- **Verifiziert sauber (mehrfach geprüft, nichts offen auf aban-news-Seite):** Gratis-Tool-Seiten haben alle
+  Newsletter-CTA; EN-Shop 22/22; Schema aktuell; 0 defekte aban-news-interne Links. Autonomer Polish-Vorrat
+  ist erschöpft — nächster echter Hebel = die 3 User-Schritte in `docs/MORGEN-TODO.md`.
+
 ## 💰 2026-06-13 — TOKEN-KOSTEN gesenkt (Newsletter-Workstream) + Startseiten-Polish
 > Session „polish / token sparen". Alles gemerged, alle internen aban-news-Links sauber.
 - **Startseite poliert:** Hub-Zahl 355→**360** (akkurat, #805); „13 Text-Arten"→**22** (Konsistenz mit
