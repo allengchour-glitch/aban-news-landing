@@ -70,6 +70,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   läuft dort. DIESE/neue Dropship-Sessions NICHT doppelt anlegen.** Hier nur 2 ehrliche CJ-Starter gesetzt: Yoga-/Freizeithose
   «Flow» (`activewear`), Loungewear-Set «Cozy» (`loungewear`) — Tags greifen, sobald die Linie via Printful wächst.
 - Schweiz-Hinweis: CH nicht in EU-Zollunion → Import-MwSt./Zoll auch bei EU-Lager; DDP bevorzugen (magicheidi.ch/dropshipping).
+- **✅ GELATO „Swiss Edition Loungewear" LIVE (8 Produkte, via PC-Claude angelegt + von Cloud-Session veredelt):** Hoodie+Jogger
+  «Edelweiss» (Set, Jogger = gestickt), Hoodie «Alpenkuh», Sweatshirts «Matterhorn»/«Fondue», Shirts «Edelweiss»/«Matterhorn»,
+  Tank «Alpsee». Alle ACTIVE, DE-Titel/SEO/Tags, Collection **🛋️ Loungewear** (`loungewear`), Edelweiss-Set-Cross-Sell, 6 Kanäle,
+  Werbe-Queue. **Region NA→Europe** umgestellt (bessere CH-Lieferung). Gelato-storeId `f4af9557-9182-4125-abe9-5de0ca4c0661`.
+  ⚠️ **OFFEN: Bilder-Upgrade** (Gelato-Flat-Lays → Lifestyle/On-Model-Mockups, Druck mittel-gross) — Meisterwerk-Spec +
+  Befehl in `dropship/GELATO-BROWSER-AUFTRAG.md`, PC-Claude setzt um; danach Cloud-Session: Bildreihenfolge/Alt-Texte/Queue.
+- **Gelato-API:** `gelato_discover.mjs` (liest Env-Var `GELATO_API_KEY`); Apparel = bedruckte Tees/Hoodies/Jogger (KEINE Leggings/
+  Sport-BH → die via Printful). Key NUR session-lokal in `/tmp`, NIE committet.
 
 **📌 2026-06-14 (Katalog-Offensive Teil 2: +20 Herren-Apparel/Bademode/Kleider; Gesamt ~50 neu):**
 - Fortsetzung der grossen Offensive (Vortag +30). **+20 weitere Produkte live** (alle ACTIVE/6 Kanäle/Bilder READY/SEO):
