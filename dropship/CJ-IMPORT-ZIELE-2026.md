@@ -6,6 +6,54 @@
 > Regeln wie immer: Bild per HTTP-200 prüfen, ACTIVE anlegen, in alle 6 Publications publizieren, Tags passend
 > zu den Smart-Collections, **keine sperrigen Möbel / keine schlechten Bilder / keine Asiaten-Fotos als 1. Bild.**
 
+## 🆕 Prio 0 — 30er-Charge Herbst 2026 (Markt-Research 2026-06-14, importbereit)
+> Aus der 6-Agenten-Marktanalyse: „Quiet Luxury" vorbei → **Maximalismus**. Top-3-Käufe-Chancen:
+> **(1) Statement-/Charm-Schmuck · (2) Beauty-Tools & Parfum · (3) Herbst-Accessoires.** Je ~10 Stück.
+> ⚠️ **Blockiert bis `CJ_EMAIL`+`CJ_API_KEY` gesetzt sind.** Dann: `dropship/cj_*_search.mjs` mit diesen Begriffen.
+
+**A) Statement-/Charm-Schmuck (10)** — Tags: `schmuck`+`damen`
+| Produkt | CJ-Suchbegriff | CHF | Warum |
+|---|---|---|---|
+| Layered Charm-Halskette Gold | `layered charm necklace gold` | 19–39 | Runway-Trend Fall 2026 |
+| Oversized Hoop-Ohrringe | `oversized chunky hoop earrings gold` | 15–35 | Maximalismus-Kern |
+| Charm-Armband mixbar S925 | `charm bracelet 925 silver diy` | 18–34 | Mehrfachkäufe |
+| Statement-Cocktail-Ring | `statement chunky ring gold adjustable` | 12–25 | leicht, hohe Marge |
+| Perlen-Choker Layering | `pearl choker layering necklace` | 16–29 | „girly" 2026 |
+| Schlangen-/Snake-Kette | `snake chain necklace stainless gold` | 17–30 | wasserfest |
+| Ohrring-Set (6–10 Paar) | `earring set hypoallergenic gold pack` | 14–26 | Set = AOV-Hebel |
+| Initialen-/Buchstaben-Anhänger | `initial letter pendant necklace gold` | 15–28 | Personalisierung |
+| Mariner-Link-Armband | `mariner link bracelet stainless` | 18–32 | Unisex |
+| Brosche/Pin Statement | `statement brooch pin vintage` | 9–19 | Microtrend, Add-on |
+
+**B) Beauty-Tools & Parfum (10)** — Tags: `beauty`/`wellness`+`damen` (konversionsstärkste Dropship-Nische)
+| Produkt | CJ-Suchbegriff | CHF | Warum |
+|---|---|---|---|
+| Magnetische Wimpern + Eyeliner-Set | `magnetic eyelashes eyeliner kit` | 19–29 | viral, Wiederkauf |
+| Ice-Roller Gesicht | `ice roller face skincare` | 12–22 | ganzjährig Hit |
+| Gua-Sha + Roller-Set (sauberes Bild!) | `gua sha jade roller set` | 12–25 | bewiesen 5,0★ |
+| Roll-on Parfumöl / Solid Perfume | `roll on perfume oil travel` | 15–30 | Fragrance = 8% Conv. |
+| LED-Gesichtsmaske / Therapy | `led face mask therapy` | 25–45 | Beauty-Tech-Trend |
+| Heatless Curls Set | `heatless curls headband set` | 9–18 | TikTok-Klassiker |
+| Nagel-Set / Press-on (Box) | `press on nails reusable set` | 9–19 | Wiederkauf |
+| Mini-Haarstyler / Föhnbürste | `mini hair styler brush travel` | 19–35 | Reise/Geschenk |
+| Lippen-/Lash-Serum | `lash growth serum` | 14–26 | Repeat |
+| Make-up-Organizer / Spiegel-LED | `led makeup mirror desktop` | 18–34 | Home-Beauty |
+
+**C) Herbst-Accessoires (10)** — Tags je nach Typ (`accessoires`/`damen`/`herren`), saisonaler Volumentreiber
+| Produkt | CJ-Suchbegriff | CHF | Warum |
+|---|---|---|---|
+| Chunky-Knit-Schal | `chunky knit scarf oversized` | 19–39 | Herbst-Übergang CH |
+| Satin-Haartuch / Tuch | `satin hair scarf square` | 9–19 | Layering-Trend |
+| Beanie / Skully neutral | `beanie knit neutral unisex` | 14–25 | Impuls-Add-on |
+| Farbige Strumpfhosen | `colored tights opaque` | 9–19 | Microtrend Winter 26 |
+| Strick-Stulpen / Armwärmer | `knit arm warmers fingerless` | 9–18 | günstig, Volumen |
+| Baskenmütze / Beret | `wool beret hat french` | 14–26 | „girly" Herbst |
+| Tech-Handschuhe Touchscreen | `touchscreen gloves knit` | 12–22 | saisonal Must |
+| Phone-Charm / Schmuck-Strap | `phone charm beaded strap` | 12–22 | 5,47% Conv., repeat |
+| Leder-Optik Gürtel | `belt women gold buckle pu` | 15–28 | Outfit-Finisher |
+| Wende-/Bucket-Hut | `bucket hat reversible` | 14–24 | Y2K-Revival |
+
+
 ## Prio A — Trend-Gewinner (hohe Marge / Sommer-Peak)
 | Produkt | CJ-Suchbegriff | Ziel-Kategorie (Tags) | Ziel-Preis | Warum |
 |---|---|---|---|---|
