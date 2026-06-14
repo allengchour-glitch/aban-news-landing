@@ -20,6 +20,7 @@
  * Node ≥18 (global fetch). Keine npm-Abhängigkeiten.
  */
 import http from 'node:http';
+import crypto from 'node:crypto';
 import { exec } from 'node:child_process';
 
 const KEY = process.env.TT_CLIENT_KEY || '';
@@ -35,12 +36,17 @@ if(!KEY || !SECRET){
 }
 
 const state = Math.random().toString(36).slice(2);
+// PKCE (TikTok verlangt code_challenge — sonst errCode 10007 / param_error):
+const codeVerifier = crypto.randomBytes(32).toString('base64url');
+const codeChallenge = crypto.createHash('sha256').update(codeVerifier).digest('base64url');
 const authUrl = 'https://www.tiktok.com/v2/auth/authorize/?' + new URLSearchParams({
   client_key: KEY,
   scope: SCOPES,
   response_type: 'code',
   redirect_uri: REDIRECT,
   state,
+  code_challenge: codeChallenge,
+  code_challenge_method: 'S256',
 });
 
 function open(url){
@@ -66,6 +72,7 @@ const server = http.createServer(async (req, res) => {
     body: new URLSearchParams({
       client_key: KEY, client_secret: SECRET,
       code, grant_type: 'authorization_code', redirect_uri: REDIRECT,
+      code_verifier: codeVerifier,
     }),
   });
   const j = await r.json().catch(()=>({}));
