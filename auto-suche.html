@@ -179,21 +179,30 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     }).join("");
     cntEl.textContent=items.length+" Fahrzeuge";
   }
+  function ebayUrl(term){
+    var p="/api/ebay?limit=50&q="+encodeURIComponent(term);
+    var conds=activeConds();if(conds.length)p+="&cond="+encodeURIComponent(conds.join(","));
+    var lo=$("#pmin").value.trim(),hi=$("#pmax").value.trim();
+    if(lo)p+="&pmin="+encodeURIComponent(lo);if(hi)p+="&pmax="+encodeURIComponent(hi);
+    var s=$("#sort").value;if(s&&s!=="rel")p+="&sort="+encodeURIComponent(s);
+    return p;
+  }
   function search(){
     var q=$("#q").value.trim();var cat=document.querySelector('input[name="cat"]:checked');
     var term=q||(cat&&cat.value)||"Auto";
     cntEl.textContent="Suche „"+term+"“ …";skeleton();
-    fetch("/api/ebay?limit=50&q="+encodeURIComponent(term)).then(function(r){return r.json()}).then(function(d){
+    fetch(ebayUrl(term)).then(function(r){return r.json()}).then(function(d){
       badge.hidden=!d.demo;raw=d.items||[];render();
     }).catch(function(){grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden. Bitte später nochmal.";cntEl.textContent=""});
   }
+  var pTimer;function searchSoon(){clearTimeout(pTimer);pTimer=setTimeout(search,450)}
   $("#go").addEventListener("click",function(e){e.preventDefault();search()});
   $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();search()}});
   document.querySelector(".quick").addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;e.preventDefault();$("#q").value=a.dataset.q;search();window.scrollTo({top:0,behavior:"smooth"})});
   $("#cats").addEventListener("change",function(e){if(e.target.name==="cat"){$("#q").value="";search()}});
-  document.querySelectorAll(".cond").forEach(function(c){c.addEventListener("change",render)});
-  ["pmin","pmax"].forEach(function(id){$("#"+id).addEventListener("input",render)});
-  $("#sort").addEventListener("change",render);
+  document.querySelectorAll(".cond").forEach(function(c){c.addEventListener("change",search)});
+  ["pmin","pmax"].forEach(function(id){$("#"+id).addEventListener("input",searchSoon)});
+  $("#sort").addEventListener("change",search);
   $("#reset").addEventListener("click",function(){$("#q").value="";$("#pmin").value="";$("#pmax").value="";var f=document.querySelector('input[name="cat"]');if(f)f.checked=true;document.querySelectorAll(".cond").forEach(function(c){c.checked=false});$("#sort").value="rel";search()});
   function openSheet(){sidebar.classList.add("open");sheetbg.classList.add("show");document.body.style.overflow="hidden"}
   function closeSheet(){sidebar.classList.remove("open");sheetbg.classList.remove("show");document.body.style.overflow=""}

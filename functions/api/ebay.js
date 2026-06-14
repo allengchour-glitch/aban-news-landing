@@ -44,10 +44,18 @@ function demo(q) {
   return out;
 }
 
+// Marktplatz → Standard-Währung fürs Preis-Filter
+function curOf(mkt) {
+  if (/EBAY_GB/.test(mkt)) return "GBP";
+  if (/EBAY_US/.test(mkt)) return "USD";
+  if (/EBAY_CH/.test(mkt)) return "CHF";
+  return "EUR"; // DE/AT/FR/…
+}
 export async function onRequestGet({ request, env }) {
   const url = new URL(request.url);
-  const q = (url.searchParams.get("q") || "").slice(0, 80);
-  const limit = Math.min(parseInt(url.searchParams.get("limit") || "24", 10) || 24, 50);
+  const p = url.searchParams;
+  const q = (p.get("q") || "").slice(0, 80);
+  const limit = Math.min(parseInt(p.get("limit") || "24", 10) || 24, 50);
   if (!env.EBAY_CLIENT_ID || !env.EBAY_CLIENT_SECRET) {
     return json({ demo: true, reason: "no_keys", items: demo(q) });
   }
@@ -56,7 +64,27 @@ export async function onRequestGet({ request, env }) {
     const mkt = env.EBAY_MARKETPLACE || "EBAY_DE";
     const headers = { "Authorization": "Bearer " + token, "X-EBAY-C-MARKETPLACE-ID": mkt };
     if (env.EBAY_CAMPAIGN_ID) headers["X-EBAY-C-ENDUSERCTX"] = "affiliateCampaignId=" + env.EBAY_CAMPAIGN_ID;
-    const api = "https://api.ebay.com/buy/browse/v1/item_summary/search?limit=" + limit + "&q=" + encodeURIComponent(q || "angebote");
+
+    // Serverseitige Filter (alle optional, abwärtskompatibel)
+    const filters = [];
+    const pmin = parseFloat(p.get("pmin")), pmax = parseFloat(p.get("pmax"));
+    if (!isNaN(pmin) || !isNaN(pmax)) {
+      const lo = isNaN(pmin) ? "" : Math.max(0, pmin);
+      const hi = isNaN(pmax) ? "" : Math.max(0, pmax);
+      filters.push("price:[" + lo + ".." + hi + "]");
+      filters.push("priceCurrency:" + curOf(mkt));
+    }
+    const cond = (p.get("cond") || "").split(",").map((c) => c.trim().toLowerCase()).filter(Boolean);
+    const condMap = { neu: "NEW", new: "NEW", gebraucht: "USED", used: "USED" };
+    const conds = [...new Set(cond.map((c) => condMap[c]).filter(Boolean))];
+    if (conds.length) filters.push("conditions:{" + conds.join("|") + "}");
+
+    const sortMap = { pasc: "price", pdesc: "-price", neu: "newlyListed", new: "newlyListed" };
+    const sort = sortMap[(p.get("sort") || "").toLowerCase()] || "";
+
+    let api = "https://api.ebay.com/buy/browse/v1/item_summary/search?limit=" + limit + "&q=" + encodeURIComponent(q || "angebote");
+    if (filters.length) api += "&filter=" + encodeURIComponent(filters.join(","));
+    if (sort) api += "&sort=" + encodeURIComponent(sort);
     const r = await fetch(api, { headers });
     const d = await r.json();
     if (!d.itemSummaries) return json({ demo: true, reason: "empty", items: demo(q) });
