@@ -205,5 +205,20 @@ export const PRODUCTS = [
     "name": "damen-bikini-maui-neckholder-floral-1",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c1a6faa9-40a9-4e72-b11a-64d33457de88_d4eab72b-c70e-4152-84a9-087f7f7b1269.jpg?v=1781434583",
     "label": "Bikini «Maui»"
+  },
+  {
+    "name": "hoodie-edelweiss-swiss-edition",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/383d8d09-e620-49d8-9adb-5a91f9ff0d5a.webp",
+    "label": "Hoodie «Edelweiss» Swiss"
+  },
+  {
+    "name": "sweatshirt-matterhorn-swiss-edition",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/43061f68-a7c4-4009-a3b4-92dd25b25035.webp",
+    "label": "Sweatshirt «Matterhorn» Swiss"
+  },
+  {
+    "name": "hoodie-alpenkuh-swiss-edition",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/65ac01d4-861d-4667-a60f-8866d15568db.webp",
+    "label": "Hoodie «Alpenkuh» Swiss"
   }
 ];
