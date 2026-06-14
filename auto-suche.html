@@ -208,6 +208,9 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   function closeSheet(){sidebar.classList.remove("open");sheetbg.classList.remove("show");document.body.style.overflow=""}
   $("#filterOpen").addEventListener("click",openSheet);$("#sheetClose").addEventListener("click",closeSheet);
   $("#apply").addEventListener("click",closeSheet);sheetbg.addEventListener("click",closeSheet);
+  (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),uc=sp.get("cat");
+    if(uq)$("#q").value=uq;
+    if(uc)Array.prototype.forEach.call(document.querySelectorAll('input[name="cat"]'),function(r){if(r.value===uc)r.checked=true});})();
   search();
 })();
 </script>

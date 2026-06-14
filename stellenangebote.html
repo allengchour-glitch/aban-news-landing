@@ -345,6 +345,10 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#apply").addEventListener("click",closeSheet);
   sheetbg.addEventListener("click",closeSheet);
 
+  // Deep-Link: ?q= / ?loc= / ?tag= aus der URL übernehmen
+  (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),ul=sp.get("loc"),ut=sp.get("tag");
+    if(uq)$("#q").value=uq; if(ul)$("#loc").value=ul;
+    if(ut){curTag=ut;Array.prototype.forEach.call(document.querySelectorAll('input[name="cat"]'),function(r){if(r.value===ut)r.checked=true})}})();
   load(false);
 })();
 </script>

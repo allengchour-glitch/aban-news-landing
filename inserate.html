@@ -167,6 +167,10 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#filterOpen").addEventListener("click",openSheet);$("#sheetClose").addEventListener("click",closeSheet);
   $("#apply").addEventListener("click",closeSheet);sheetbg.addEventListener("click",closeSheet);
 
+  // Deep-Link: ?q= / ?kat= / ?loc= aus der URL übernehmen
+  (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),uk=sp.get("kat"),ul=sp.get("loc");
+    if(uq)$("#q").value=uq; if(ul)$("#loc").value=ul;
+    if(uk){curKat=uk;Array.prototype.forEach.call(document.querySelectorAll('input[name="kat"]'),function(r){if(r.value===uk)r.checked=true})}})();
   load();
 })();
 </script>
