@@ -21,6 +21,10 @@ const LIMIT = parseInt(process.env.SCAN_LIMIT || "50", 10);
 const DRY = process.env.DRY === "1";
 const COL_MAX = parseInt(process.env.COLLECTION_COVER_MAX || "30", 10); // max Cover-Fixes pro Lauf
 const TC = "gid://shopify/TaxonomyCategory/";
+// 🤖 Optional: KI-SEO via Claude. Ohne ANTHROPIC_API_KEY fällt das Skript auf die Templates zurück.
+const AI_KEY = process.env.ANTHROPIC_API_KEY || "";
+const AI_MODEL = process.env.BRAIN_AI_MODEL || "claude-opus-4-8";
+const AI_LIMIT = parseInt(process.env.AI_LIMIT || "25", 10); // max KI-Texte pro Lauf (Kosten-Deckel)
 
 const CAT = {
   "Schmuck":"aa-6","Damen-Schmuck":"aa-6","Halskette":"aa-6","Ohrringe":"aa-6","Armband":"aa-6","Ring":"aa-6",
@@ -61,6 +65,30 @@ async function getToken(){
     body:JSON.stringify({client_id:CID,client_secret:SECRET,grant_type:"client_credentials"})});
   const j=await r.json().catch(()=>({})); return j.access_token||"";
 }
+// 🤖 Claude schreibt individuelle, verkaufsstarke SEO (raw HTTP, passt zum fetch-Stil; structured JSON, effort low).
+async function aiSeo(name){
+  try{
+    const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",
+      headers:{"content-type":"application/json","x-api-key":AI_KEY,"anthropic-version":"2023-06-01"},
+      body:JSON.stringify({
+        model:AI_MODEL, max_tokens:400,
+        output_config:{ effort:"low", format:{ type:"json_schema", schema:{
+          type:"object", additionalProperties:false,
+          properties:{ title:{type:"string"}, description:{type:"string"} },
+          required:["title","description"] } } },
+        messages:[{role:"user",content:
+`Schreibe SEO-Meta für ein Produkt im Schweizer Online-Shop LuxeStyle.
+Produkt: "${clean(name)}"
+- title: verkaufsstark, Schweizer Hochdeutsch (ss statt ß), max 60 Zeichen, endet mit " | LuxeStyle", kein Emoji.
+- description: ein konkreter Nutzen + Vertrauen (Gratis-Versand ab CHF 65, 30 Tage Rückgabe), max 150 Zeichen, kein Emoji.`}]
+      })});
+    const j=await r.json();
+    const t=(j.content||[]).find(b=>b.type==="text"); if(!t) return null;
+    const o=JSON.parse(t.text);
+    if(o&&o.title&&o.description) return { title:String(o.title).slice(0,70), description:String(o.description).slice(0,320) };
+  }catch(e){ /* still & sicher → Template-Fallback */ }
+  return null;
+}
 async function gql(token,query){
   const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:"POST",
     headers:{"Content-Type":"application/json","X-Shopify-Access-Token":token},body:JSON.stringify({query})});
@@ -86,7 +114,7 @@ async function runMutations(token,items,build){
   const pq=`{ products(first:${LIMIT}, query:"status:active tag:cj-real", sortKey:CREATED_AT, reverse:true){ nodes{ id title productType category{id} seo{title description} featuredImage{ url } } } }`;
   const pdata=await gql(token,pq);
   const nodes=pdata?.data?.products?.nodes||[];
-  const prodFixes=[]; const noImage=[];
+  const prodFixes=[]; const noImage=[]; let aiUsed=0;
   for(const n of nodes){
     if(!n.featuredImage) noImage.push(clean(n.title).slice(0,60));
     const needSeo=!(n.seo&&n.seo.title&&n.seo.description);
@@ -94,7 +122,13 @@ async function runMutations(token,items,build){
     if(!needSeo&&!needCat) continue;
     let input=`id: "${n.id}"`;
     if(needCat) input+=`, category: "${TC}${CAT[n.productType.trim()]}"`;
-    if(needSeo) input+=`, seo: { title: "${esc(mkTitle(n.title))}", description: "${esc(mkDesc(n.title))}" }`;
+    if(needSeo){
+      let seo=null;
+      if(AI_KEY && aiUsed<AI_LIMIT){ seo=await aiSeo(n.title); if(seo) aiUsed++; }
+      const title = seo ? seo.title : mkTitle(n.title);
+      const desc  = seo ? seo.description : mkDesc(n.title);
+      input+=`, seo: { title: "${esc(title)}", description: "${esc(desc)}" }`;
+    }
     prodFixes.push({input,title:n.title});
   }
 
@@ -122,7 +156,7 @@ async function runMutations(token,items,build){
   for(const f of colFixes) console.log("  ✓ Cover:",f.handle);
   if(noImage.length) console.log("  ⚠️ Ohne Bild (prüfen):",noImage.join(" · "));
 
-  const status=`🧠 Shop-Brain v2: ${prodFixes.length} veredelt · ${cDone} Cover · ${noImage.length} ohne Bild · ${new Date().toISOString()}`;
+  const status=`🧠 Shop-Brain v2: ${prodFixes.length} veredelt (${aiUsed} per KI) · ${cDone} Cover · ${noImage.length} ohne Bild · ${new Date().toISOString()}`;
   console.log(status);
   if(process.env.TELEGRAM_BOT_TOKEN&&process.env.TELEGRAM_CHAT_ID&&!DRY&&(prodFixes.length||cDone||noImage.length)){
     await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`,{method:"POST",
