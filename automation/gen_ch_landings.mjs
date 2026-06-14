@@ -322,6 +322,16 @@ function page(p) {
   };
   const tips = p.tips.map(([h, t]) => `    <div class="tip"><h3>${esc(h)}</h3><p>${esc(t)}</p></div>`).join("\n");
   const faq = p.faq.map(([q, a]) => `    <details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("\n");
+  // Kontext-Partner-Box je Kategorie (erscheint nur, wenn der Link in affiliate-config.js gefüllt ist)
+  const PB = { auto: ["AUTO_VERSICHERUNG_URL", "KFZ-Versicherung vergleichen und beim Autokauf sparen.", "Versicherung vergleichen"],
+    wohnung: ["IMMO_HYPOTHEK_URL", "Eigenheim geplant? Hypothek & Finanzierung vergleichen.", "Hypothek vergleichen"],
+    job: ["JOB_NETZWERK_URL", "Mehr passende Jobs bei unserem Partner-Job-Netzwerk.", "Jobs beim Partner"],
+    moebel: ["MOEBEL_SHOP_URL", "Neue Möbel? Angebote unseres Partner-Shops ansehen.", "Möbel-Shop ansehen"],
+    handy: ["HANDY_SHOP_URL", "Neues Handy? Aktuelle Angebote beim Partner.", "Handy-Angebote"],
+    computer: ["HANDY_SHOP_URL", "Neue Technik? Angebote beim Partner ansehen.", "Technik-Angebote"] };
+  let pbKey = "";
+  for (const k in PB) { if (p.slug.indexOf(k) === 0) { pbKey = k; break; } }
+  const partnerBox = pbKey ? `  <div data-partner="${PB[pbKey][0]}" data-text="${esc(PB[pbKey][1])}" data-cta="${esc(PB[pbKey][2])}"></div>\n` : "";
   return `<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -384,10 +394,16 @@ ${faq}
     <strong>Bereit zum Suchen?</strong><br>
     <a href="${p.cta}">${esc(p.ctaLabel)} →</a>
   </div>
+${partnerBox}  <div data-ad-slot="landing-mid" style="margin-top:18px"></div>
   <p class="rel">Mehr im <a href="/marktplatz.html">aban-Marktplatz</a>: Jobs, Fahrzeuge, Immobilien, Angebote &amp; Inserate für die Schweiz &amp; DACH. Oder gleich alles auf einmal in der <a href="/suche.html">Universal-Suche</a>.</p>
+  <p class="rel">Beliebte Kaufberater: <a href="/auto-kaufen-schweiz.html">Auto</a> · <a href="/wohnung-mieten-schweiz.html">Wohnung</a> · <a href="/moebel-kaufen-schweiz.html">Möbel</a> · <a href="/handy-kaufen-schweiz.html">Handy</a> · <a href="/ebike-kaufen-schweiz.html">E-Bike</a> · <a href="/job-finden-schweiz.html">Job</a></p>
 </div></main>
 <footer><div class="wrap">aban news · Marktplatz Schweiz · Angaben ohne Gewähr · © 2026 ·
   <a href="/marktplatz.html">Marktplatz</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script src="/js/affiliate-config.js" defer></script>
+<script src="/js/partner-box.js" defer></script>
+<script src="/js/ads-config.js" defer></script>
+<script src="/js/ad-slot.js" defer></script>
 </body>
 </html>
 `;
