@@ -26,6 +26,20 @@ Der User macht den #1-Hebel (TikTok/Meta-Pixel + bezahlte CH-Kampagne) morgen. �
 - **Caption-Format als FESTE Regel** im Poster-README verankert (Produkt+CHF-Preis [+Vergleich] · 1 Share/Save/Komm.-
   Trigger · CTA+WELCOME10+#bern) → künftige Posts befolgen es automatisch.
 
+## 2026-06-14 — Live-Posten funktioniert + Hype-Gadgets gepostet
+- **6 Posts heute live auf IG+FB** via Meta-Token (User pasted, transient): Camping-Ventilator, Gua-Sha, Onyx
+  (zentriertes Bild), + 3 **Hype-Gadgets** (Smart-Diffuser XXL=unser #1-Performer, Galaxy-Projektor, Flame-Diffuser).
+  User-Wunsch: „coole/hype Sachen, nicht random" → Gadget-Wow statt Mode-Basics.
+- **🔧 LEHRE webp→jpg fürs Posten:** CJ-Gadget-Bilder sind `.webp` → IG akzeptiert nur JPEG. Lösung ohne Token in
+  der Shell: `ffmpeg -i x.webp x.jpg` → `stagedUploadsCreate(IMAGE)` via MCP → Bytes per `curl` hochladen (file LAST)
+  → `fileCreate(contentType:IMAGE)` → CDN-jpg-URL (Image-Staging gilt 24h, nicht Sekunden wie Video).
+- **🔧 LEHRE IG-Timing:** zwischen `/{ig}/media` (Container) und `/media_publish` **~10–12 s warten**, sonst
+  „Media ID is not available". FB `/photos` ist robuster (akzeptiert sofort, gelegentlich „reduce data" → 1× retry).
+- **🔒 Repo ist PRIVAT** → raw.githubusercontent/jsDelivr-URLs liefern 404 (kein Hosting für Meta darüber). Bilder
+  fürs Posten immer über Shopify-CDN hosten. (Betrifft auch die Ricardo-Feed-URL — ggf. anders hosten.)
+- **Tageslimit beachtet:** 6 Posts = genug für heute (Spam-Schutz), morgen weiter. 3 Hype-Gadgets in `good_products.csv`
+  aufgenommen → fließen in die Auto-Rotation.
+
 ## 2026-06-14 — Autonom („mach alles autonom"): Neuzugänge in die Schleife
 - Die 2 neuen Sommer-Gadgets (Handventilator «Brisa», Camping-Ventilator «Nomad») in `good_products.csv`
   aufgenommen → fließen jetzt automatisch in die Autopost-Queue (17 Posts, beide drin, alle sauber).
