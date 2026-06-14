@@ -43,3 +43,5 @@ tt-before.png
 tt-after.png
 tt-fail.png
 session-check.png
+# Musik-Cache: re-downloadbar aus automation/music/catalog.json (nicht ins Repo)
+automation/music/lib/
