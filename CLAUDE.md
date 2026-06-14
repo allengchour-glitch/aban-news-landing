@@ -41,6 +41,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Schweiz — KEIN Ausbau nach Deutschland/Österreich. Kein DE-Markt/EUR-Pricing/DE-Stadt- oder #deutschland-Tags/
   DE-Ad-Targeting. CH-Tags (#schweiz/#bern/#schweizmode/#ootdschweiz) + **Mundart** bevorzugen (Mundart filtert DE
   automatisch raus). Deutschland-Tags sind im Gehirn (`knowledge.json` blocked_hashtags) gesperrt.
+- **🌍 INTERNATIONAL (FEST, User 2026-06-14 „und wenn das international wird"):** Andere Märkte (US/UK/FR …) sind
+  MÖGLICH, aber **Deutschland bleibt immer aus** und alles strikt getrennt: pro Markt eigene Währung+Sprache+Content
+  über **Shopify Markets**; CH/Mundart-Content bleibt CH-targeted (nie an US/FR); Gehirn lernt **pro Markt getrennt**
+  (eigene Hashtag-Pools/Hooks). **Reihenfolge: zuerst CH konvertieren lassen (Pixel/Kampagne), DANN das bewiesene
+  Rezept auf US/UK kopieren.** US/UK-Märkte existieren bereits angelegt (deaktiviert, `MARKETS-US-UK-SETUP.md`).
 - CJ-API: Credentials + Workflow in `dropship/AUTONOMER-MODUS.md`. Import-Skript:
   `dropship/cj_enrich.mjs` (Node: `/opt/node22/bin/node`).
 - **Publish-Falle:** Produkt-IDs zum Publizieren IMMER aus der `create-product`-Antwort nehmen,
