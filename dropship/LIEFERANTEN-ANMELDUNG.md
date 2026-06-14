@@ -73,3 +73,18 @@ bigbuy.eu/academy/en/shopify-connector-complete-guide · printful.com · gelato.
   Hoodie), dann per `POST /v1/stores/{storeId}/products:create-from-template` Produkte erzeugen (pushen automatisch nach Shopify).
 - **Danach Shopify-Feinschliff** (diese/MCP-Session): DE-Titel/SEO, Collections „Activewear"+„Loungewear", Menü-Links, Cross-Sell.
 - API-Basis: `https://ecommerce.gelatoapis.com/v1` · Auth-Header `X-API-KEY` · erreichbar aus der Session (getestet: 401 ohne Key).
+
+### 🔍 Gelato-Befunde (2026-06-14, live per API geprüft)
+- **Verbindung steht:** Store „LuxeStyle" (Shopify), `storeId = f4af9557-9182-4125-abe9-5de0ca4c0661`. 10 Produkte vorhanden =
+  **Schweizer Poster** (Print Material). Keine Apparel-Produkte, **keine Templates** (Templates-Endpoint 404).
+- **⚠️ Gelato-Apparel-Katalog hat KEINE Leggings/Sport-BHs und KEINEN Allover-Print.** Verfügbar (GarmentSubcategory):
+  pullover, crewneck, zip(-Hoodie), short-sleeve/v-neck/longsleeve/ringer/raglan/oversized (T-Shirts), **tank-top**, **cropped**,
+  **jogger-pants**, beanie/dad-hat/snapback/bucket/trucker, apron. → Druck = DTG/DTF/Stick (Brust/Rücken/Ärmel), NICHT Allover.
+- **➡️ Konsequenz:** **Gelato = Swiss-Design-LOUNGEWEAR/Casual** (Hoodie/Jogger/Sweatshirt/Tee/Tank mit Brustdruck). **Echte
+  ACTIVEWEAR-Leggings/Sport-BH gibt's bei Gelato NICHT → dafür PRINTFUL** (hat Leggings/Sport-BH/Allover-Print). „beides" =
+  Gelato (Loungewear) + Printful (Leggings/Activewear).
+- **Autonomie-Grenze:** API-Zugang + Produkt-Anlegen + Shopify-Feinschliff = autonom machbar. ABER: jedes POD-Stück braucht ein
+  **Design + visuelle Druckflächen-Platzierung** → das macht man zuverlässig im **Gelato-Dashboard-Editor** (~5 Min/Produkt).
+  Rohes „create-product" per API ist ohne Doku (403) fehleranfällig + Risiko hässlicher Produkte im Premium-Shop.
+- **Empfohlene Arbeitsteilung:** User/Dashboard legt **1 Loungewear-Vorlage** an (Hoodie+Jogger, Swiss-Design) → dann **skaliert
+  die Session autonom** (weitere Varianten/Designs) + macht den **Shopify-Feinschliff** (DE-Titel/SEO/Collection „Loungewear"/Menü).
