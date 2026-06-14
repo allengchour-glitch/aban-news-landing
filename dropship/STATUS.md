@@ -33,7 +33,19 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
-### 2026-06-14 (Funnel-Readiness-Check vor Pixel)
+### 2026-06-14 (Nacht-Autonom: Doppel-Post-Fix + Video-Katalog + Cleanup)
+- **🔴 DOPPEL-POST-URSACHE gefunden & gefixt:** ZWEI Meta-Poster liefen parallel — GitHub-Actions
+  (`social-/story-/video-meta-autopost`) UND der Cloudflare-Worker → doppelte IG/FB-Posts. **Die 3 Actions-Poster
+  deaktiviert** (Cron auskommentiert) → Worker ist der EINE Poster. 🔴 SOFORT-STOPP: User disabled die 3 in der
+  GitHub-Actions-UI ODER merged PR #643.
+- **🎬 ALLE 114 Videos analysiert + katalogisiert** (`automation/brain/video_catalog.json` + `reels/VIDEO-INDEX.md`):
+  62 post-ready, klassifiziert (meisterwerk/ad/promo/veo/selbst-gestalten/legacy…), QA-Querschnitt sauber. „Für später gemerkt."
+- **✍️ Caption-Varianz gefixt:** Opener 6→14 + Tages-Rotation → kein 3×-Wiederholungs-Eindruck mehr (sah wie Doppel-Post aus).
+- **🛒 30er-Produkt-Zielliste** (Herbst 2026: Statement-Schmuck/Beauty/Accessoires) importbereit in `CJ-IMPORT-ZIELE-2026.md`.
+  ⚠️ **CJ-Import blockiert** — `CJ_EMAIL`+`CJ_API_KEY` fehlen. Morgen setzen → dann importiere ich die 30 autonom.
+- 🟡 Offen (User): CJ-Creds · Pixel · `wrangler deploy` · die 3 Actions-Poster disablen/PR mergen · Tokens rollen.
+
+
 - **✅ Funnel technisch INTAKT:** alle Seiten 200, kein Passwortschutz, **Cart-Add (200) + Checkout (200, echte Session)**
   funktionieren end-to-end. Trust-Signale da (WELCOME10, Gratis-Versand, 30-Tage-Rückgabe, Zahlungs-Badges, Reviews),
   CHF-Preise, ATC-Buttons. Ad-Landing `sommer`: 81 Produkte, gesund.

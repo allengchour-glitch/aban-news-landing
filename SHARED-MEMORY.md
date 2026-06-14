@@ -8,6 +8,9 @@
 
 ---
 
+
+> **⚠️ 2026-06-14 (Luxestyle-Session) DOPPEL-POST-FIX:** Es gab ZWEI Meta-Poster (GitHub-Actions social-/story-/video-meta-autopost + Cloudflare-Worker luxe-poster) → doppelte IG/FB-Posts. Die 3 Actions-Cron-Poster sind jetzt DEAKTIVIERT. **Der Cloudflare-Worker ist der EINE Meta-Poster.** Keine andere Session diese Workflows reaktivieren!
+
 ## 👥 Die Sessions & wem was „gehört" (Konflikte vermeiden)
 | Session | Aufgabe | Detail-Memory | Branch |
 |---|---|---|---|
