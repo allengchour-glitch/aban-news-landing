@@ -101,9 +101,10 @@
 - **🔴 Conversion-Leak gefunden:** ATC nur 0,32 % — Übergang Session→Warenkorb, nicht nur Reichweite.
 - **✅ Strikt-CH durchgesetzt:** DACH-Markt-Storefront `/de-de/` (Deutschland & Österreich) **gelöscht** (war ein
   Regelverstoss). FR/IT/UK/US/EU/Global noch enabled → User-Entscheid (US/UK bewusst angelegt).
-- **✅ 28 Produkte mit Watermark/Text-Overlay/asiat. Schrift archiviert** (150 neueste cj-real in 3 Chargen geprüft,
-  ~19 % Trefferquote; Charge 3 fand sogar chinesische Schrift auf Collagen-Masken). **🔴 Systemisch: Auto-Import
-  bringt ~15–24 % Overlay-Bilder.** 🔑 FIX für User: `GEMINI_API_KEY` setzen → `image-audit.mjs` katalogweit (statt Agent-Chargen).
+- **✅ 37 Produkte mit Watermark/Text-Overlay/asiat. Schrift archiviert** (250 neueste cj-real in 5 Chargen geprüft,
+  ~15 % Trefferquote; u.a. chinesische Schrift auf Collagen-Masken, Watermarks AMASING-CITY/HIDKAT/TIANRAN…).
+  **🔴 Systemisch: Auto-Import bringt ~15–24 % Overlay-Bilder.** 🔑 FIX für User: `GEMINI_API_KEY` setzen →
+  `image-audit.mjs` katalogweit (statt teurer Agent-Chargen). Geprüft bis Produkt 250; Rest (~1000) offen.
 - **✅ `/collections/kleider`-404 → Redirect** auf `sub-kleider`; **#3-Landing `highlights` in alle 6 Kanäle** publiziert.
 - **🧠 Gehirn:** +5 Mundart-Hooks, `share_formats` (Save-Liste/A-B/Vorher-Nachher) + `caption_rule` → gegen 0-Shares-Decke.
 - **🟡 Für dich:** #1-Produkt (Zirkonia-Ring) ist ARCHIVED aber Top-Ad-Landing; ~19 Rabattcodes eindampfen; Klaviyo
