@@ -59,7 +59,19 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-06-14 (NEUESTER STAND — Katalog-Offensive Teil 2: +20 Herren-Apparel/Bademode/Kleider; Gesamt ~50 neu):**
+**📌 2026-06-14 (NEUESTER STAND — LIEFERANTEN-STRATEGIE: Marktlücke Activewear/Loungewear → ANDERE Session übernimmt):**
+- **Marktlücken-Analyse (datenbasiert):** grösste echte Lücken = **Loungewear/Homewear** + **Damen-Activewear/Athleisure**
+  (Shop=0, hohe Wiederkaufrate). **⚠️ CJ kann sie NICHT liefern** (hart geprüft: „women leggings"=0, „yoga pants"=nur
+  Freizeithosen, „straw hat"=Hundepartyhüte). Auch Co-ord-Sets/Strohhüte = CJ-Decke. → braucht ANDEREN Lieferanten.
+- **Lieferanten-Recherche gemacht → Guide `dropship/LIEFERANTEN-ANMELDUNG.md`** (Anmelde-Schritte). Empf. Stack:
+  **Printful** (POD, gratis, EU-Lager, schon shop-integriert — Leggings/Sport-BH/Jogger/Hoodie) bzw. **Gelato**; +1 EU-Fertigware
+  **BrandsGateway** (€147–279/Mt, Premium) *oder* **BigBuy** (€129–149 Connector, breit); **CJ behalten** (Schmuck/Schuhe/Sommer).
+- **🔗 EINE ANDERE SESSION IST JETZT MIT DEM LIEFERANTEN VERBUNDEN** (User 2026-06-14) → **Activewear/Loungewear-Aufbau
+  läuft dort. DIESE/neue Dropship-Sessions NICHT doppelt anlegen.** Hier nur 2 ehrliche CJ-Starter gesetzt: Yoga-/Freizeithose
+  «Flow» (`activewear`), Loungewear-Set «Cozy» (`loungewear`) — Tags greifen, sobald die Linie via Printful wächst.
+- Schweiz-Hinweis: CH nicht in EU-Zollunion → Import-MwSt./Zoll auch bei EU-Lager; DDP bevorzugen (magicheidi.ch/dropshipping).
+
+**📌 2026-06-14 (Katalog-Offensive Teil 2: +20 Herren-Apparel/Bademode/Kleider; Gesamt ~50 neu):**
 - Fortsetzung der grossen Offensive (Vortag +30). **+20 weitere Produkte live** (alle ACTIVE/6 Kanäle/Bilder READY/SEO):
   - **11 Herren-Bekleidung** (User „männer sachen füllen"): Hemd «Breeze», Strick-Polo «Lido», Shorts «Active», Sommer-Set
     «Riviera» (Hemd+Shorts), Chino-Shorts «Cruise», Tank-Top «Court» · Beach-Shorts «Coral», Leinen-Hose «Lino»,

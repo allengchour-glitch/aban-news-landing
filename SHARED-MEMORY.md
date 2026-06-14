@@ -39,6 +39,13 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+**2026-06-14 — LIEFERANTEN-STRATEGIE (Marktlücke Activewear/Loungewear):**
+- **Marktlücke = Loungewear + Damen-Activewear** (Shop=0). **CJ kann sie NICHT liefern** (hart geprüft). → anderer Lieferant nötig.
+- **Lieferanten-Guide: `dropship/LIEFERANTEN-ANMELDUNG.md`.** Stack: **Printful/Gelato** (POD, gratis) + 1 EU-Fertigware
+  (BrandsGateway/BigBuy) + CJ behalten.
+- **🔗 EINE ANDERE SESSION IST MIT DEM LIEFERANTEN VERBUNDEN (User 2026-06-14)** → Activewear/Loungewear-Aufbau läuft DORT.
+  **Andere Dropship-Sessions: NICHT doppeln.** (CJ-Starter «Flow»/«Cozy» mit Tags `activewear`/`loungewear` sind gesetzt.)
+
 **2026-06-14 — Luxestyle/Dropship: Katalog-Offensive Teil 2 (+20 → ~50 neu gesamt):**
 - **+20 weitere Produkte** (alle ACTIVE/6 Kanäle/READY/SEO): 11 Herren-Bekleidung (Hemd/Polo/Shorts/Set/Tank/Hosen/Cargo/
   Pullover/Ice-Silk/Beach-Shorts → „👨 Für Ihn" 203→214) · 4 Damen-Bademode (Bikinis+Cover-up → 👙 Bademode 2→6) ·
