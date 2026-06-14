@@ -16,6 +16,44 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 🚀 2026-06-14 — GROSSER AUTONOM-SCHWUNG: eBay LIVE + 13 SEO-Seiten + Bilder + Selbst-Hirn (zuerst lesen)
+> Session „mach alles autonom". Alles gemerged + deployt (Cloudflare Pages ist jetzt **git-verbunden** →
+> Push auf `main` deployt automatisch; `wrangler pages deploy _site` geht zusätzlich/manuell weiter).
+
+- **🛒 eBay-Angebote KOMPLETT LIVE (verdient mit!):** `/api/ebay` liefert echte Browse-API-Artikel mit
+  **EPN-Affiliate-Tracking**. Secrets in **Cloudflare Pages** gesetzt (Token darf Pages-Secrets!):
+  `EBAY_CLIENT_ID=allengch-abannews-PRD-ca92c9933-98a2bbef`, `EBAY_CLIENT_SECRET` (PRD-…-1ffb, vollständig),
+  `EBAY_DEV_ID=4974f07d-…`, `EBAY_CAMPAIGN_ID=5339156671` (EPN-Kampagne „aban"). **Compliance**
+  („Marketplace Account Deletion" → Exemption „I do not persist eBay data") war der Schalter für `invalid_client`.
+  Seiten `/angebote-suche.html` + 14 Kategorie-Seiten zeigen echte Angebote. **🔥 Angebote** ist jetzt in der
+  site-weiten Engine-Nav (`js/site-nav.js`). **Offen:** restliche Affiliate-Netzwerke (Awin/financeAds/Amazon).
+- **🧠 Selbst-verbesserndes Hirn (3 Arme):** (1) `tools/daily_improvement_scan.py` mit **Health-Score**
+  (`automation/brain-state.json`, aktuell **97.3/100**, 0 hoch/0 mittel/27 tonal) + sicherem `--fix` (noopener)
+  + `--voice` (Hype-Wörter, grammatisch sicher); (2) `automation/brain-wake.sh` + **SessionStart-Hook**
+  (`.claude/settings.json`) weckt das Hirn jede Session; (3) `workers/site-brain/` Cloudflare-Cron-**Wächter**
+  (überwacht Live-Seite, fixt/deployt NICHT — braucht Workers+KV-Token zum Deploy); (4) `.gitlab-ci.yml`
+  `brain-improve` (scannt/fixt → Branch `brain/auto`, braucht `GH_PUSH_TOKEN`). Runbook: `automation/BRAIN.md`.
+- **🎨 Optik lebendiger (kein Foto nötig, alles Inline-SVG):** Engine-Nav (Gradient, Hover, Icons, puls. Marke);
+  Hero-SVGs auf 3 Ratgebern, 2 Hubs (Ratgeber/Tools), **6 Rechnern**, **37 ki-fuer-Seiten mit fehlendem Foto**
+  (KI-Banner-SVG; 299 mit echtem Foto unberührt). Brand-Voice: 32 Seiten entschärft (Mehrwert→Nutzen etc.).
+- **📄 13 neue SEO-Ratgeber (nachfrage-basiert via Google-Autocomplete), je FAQ-Schema + Hero-SVG + Cockpit-Funnel:**
+  rechnung-stornieren, kunden-gewinnen, steuererklaerung-selbststaendige, rechnungsprogramm-kostenlos,
+  lexoffice-vs-sevdesk, qonto-vs-kontist, gewerbe-anmelden-kosten, rechnung-ins-ausland, privatrechnung-schreiben,
+  **rechnung-auf-englisch** (DE→EN-Vokabeln), **kleinunternehmer-grenze-2026**, selbststaendig-krankenversicherung,
+  buchhaltung-fuer-anfaenger. Alle in `js/site-nav.js`-Katalog + `sitemap.xml` + Ratgeber-Vertiefung.
+- **💼 LinkedIn-artiger Aufträge-/Jobs-Feed:** `auftraege.html` (3-Spalten: Profil/Filter · Feed · Ausschreiben-CTA),
+  nutzt `/api/inserate-list` mit Beispiel-Karten im Demo-Modus. Von `inserate.html` verlinkt, in Nav.
+- **📊 Nächste Nachfrage-Lücken (Google-Autocomplete, noch offen):** „ki für präsentationen/powerpoint",
+  „ki für hausarbeiten/literaturrecherche", „ki für lehrer"; „selbstständig machen ideen/förderung";
+  „geschäftskonto kostenlos".
+- **⏳ Nur der User kann freischalten:** (1) **Cloudflare-D1-Token** → echte Inserate/Aufträge statt Beispiele
+  (Tabelle `inserate`, Schema `db/inserate-schema.sql`, `ADMIN_TOKEN`); (2) **Cloudflare Workers+KV-Token** →
+  `site-brain`-Wächter deployen; (3) **GitLab** einrichten → `brain-improve` automatisch; (4) Affiliate-Konten.
+- **Deploy-Fakten:** Cloudflare-Token `cfut_…` (Pages:Edit, KEIN D1/Workers) + Account `33e5217c…`.
+  Loop: Branch von `origin/main` → PR → squash-merge → (auto-deploy via git) bzw. `bash build-pages.sh` +
+  `npx wrangler@3 pages deploy _site --project-name=abannews --branch=main`. Vor `git reset --hard` IMMER `git fetch`
+  (Parallel-Bots pushen auf `main`).
+
 ## 💰 2026-06-13 — TOKEN-KOSTEN gesenkt (Newsletter-Workstream) + Startseiten-Polish
 > Session „polish / token sparen". Alles gemerged, alle internen aban-news-Links sauber.
 - **Startseite poliert:** Hub-Zahl 355→**360** (akkurat, #805); „13 Text-Arten"→**22** (Konsistenz mit
