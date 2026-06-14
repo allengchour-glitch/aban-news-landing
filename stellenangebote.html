@@ -4,91 +4,263 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stellenangebote — Jobs suchen (DACH &amp; Remote) | aban</title>
-<meta name="description" content="Jobs suchen wie auf der Jobbörse: tausende aktuelle Stellenangebote aus DACH & Remote, nach Stichwort, Ort, Kategorie und Remote filtern. Klick führt zur Original-Anzeige. Kostenlos.">
+<meta name="description" content="Jobs suchen wie auf der Jobbörse: tausende aktuelle Stellenangebote aus DACH & Remote, nach Stichwort, Ort, Kategorie, Beschäftigungsart und Remote filtern. Klick führt zur Original-Anzeige. Kostenlos.">
 <meta name="theme-color" content="#d97706">
 <meta name="robots" content="index,follow">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://abannews.com/stellenangebote.html">
 <meta property="og:title" content="Stellenangebote — Jobs suchen (DACH & Remote)">
-<meta property="og:description" content="Tausende Jobs nach Stichwort, Ort, Kategorie & Remote filtern.">
+<meta property="og:description" content="Tausende Jobs nach Stichwort, Ort, Kategorie, Art & Remote filtern.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://abannews.com/og-image.png">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e6e1d6;--bg:#f3f0ea;--card:#fff;--ok:#059669}
+:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e6e1d6;--bg:#f3f0ea;--card:#fff;--ok:#059669;--shadow:0 8px 24px rgba(31,41,55,.09)}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5;color:var(--ink);background:var(--bg)}
 a{color:var(--amber-dk);text-decoration:none}
-.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
-.top .in{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px;flex-wrap:wrap}
-.brand{font-weight:900;color:var(--amber-dk);font-size:18px}
-.search{flex:1;display:flex;gap:8px;min-width:260px}
-.search input{flex:1;min-width:0;padding:10px 13px;border:1px solid var(--line);border-radius:10px;font-size:14px;background:#f5f2ec;font-family:inherit}
-.search input:focus{outline:0;border-color:var(--amber);box-shadow:0 0 0 3px rgba(217,119,6,.15);background:#fff}
-.search button{background:var(--amber-dk);color:#fff;border:0;border-radius:10px;padding:10px 18px;font-weight:700;cursor:pointer}
-.wrap{max-width:1000px;margin:14px auto;padding:0 16px}
-.hl{text-align:center;margin:6px 0 12px}.hl h1{font-size:1.45rem;margin-bottom:4px}.hl p{font-size:.9rem;color:var(--muted)}
-.chips{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin:12px 0}
-.chip{border:1px solid var(--line);background:#fff;border-radius:20px;padding:6px 13px;font-size:.83rem;font-weight:600;color:var(--ink2);cursor:pointer;white-space:nowrap}
-.chip.on,.chip:hover{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
-.status{text-align:center;color:var(--muted);padding:20px 0;font-size:.95rem}
-.feed{display:grid;gap:11px}
-.job{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px;display:flex;gap:13px;transition:box-shadow .15s,transform .15s}
-.job:hover{box-shadow:0 8px 24px rgba(31,41,55,.09);transform:translateY(-1px)}
-.job .av{width:46px;height:46px;border-radius:11px;flex:0 0 46px;background:linear-gradient(135deg,#fde9c8,#d97706);display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;font-weight:800}
+button{font-family:inherit}
+
+/* Top-Bar */
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:60}
+.top .in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px}
+.brand{font-weight:900;color:var(--amber-dk);font-size:19px;white-space:nowrap}
+.top .links{margin-left:auto;display:flex;gap:8px}
+.top .links a{font-size:.82rem;font-weight:700;color:var(--ink2);padding:7px 12px;border:1px solid var(--line);border-radius:20px}
+.top .links a:hover{background:var(--cream);color:var(--amber-dk);border-color:var(--cream)}
+
+/* Hero + große Suche (wie autoscout/immoscout) */
+.hero{background:linear-gradient(135deg,#1f2937 0%,#3a2a12 55%,#b45309 100%);color:#fff;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(251,191,36,.25),transparent 45%),radial-gradient(circle at 10% 90%,rgba(217,119,6,.22),transparent 40%);pointer-events:none}
+.hero .in{max-width:1180px;margin:0 auto;padding:34px 16px 30px;position:relative;z-index:1}
+.hero h1{font-size:1.85rem;line-height:1.2;margin-bottom:6px}
+.hero p{color:#f4e7d3;font-size:1rem;max-width:560px}
+.searchbox{background:#fff;border-radius:16px;box-shadow:0 18px 44px rgba(0,0,0,.28);padding:12px;margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
+.searchbox .fld{flex:1;min-width:200px;display:flex;align-items:center;gap:8px;background:#f5f2ec;border:1px solid var(--line);border-radius:11px;padding:0 12px}
+.searchbox .fld span{font-size:17px}
+.searchbox input{flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font-size:15px;color:var(--ink);font-family:inherit}
+.searchbox input:focus{outline:0}
+.searchbox .fld:focus-within{border-color:var(--amber);box-shadow:0 0 0 3px rgba(217,119,6,.15);background:#fff}
+.searchbox button.go{background:var(--amber-dk);color:#fff;border:0;border-radius:11px;padding:13px 30px;font-weight:800;font-size:15px;cursor:pointer;white-space:nowrap}
+.searchbox button.go:hover{background:#a04708}
+.hero .quick{margin-top:13px;display:flex;gap:8px;flex-wrap:wrap;font-size:.84rem}
+.hero .quick b{color:#f4e7d3;font-weight:700;align-self:center}
+.hero .quick a{color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:4px 12px;font-weight:600}
+.hero .quick a:hover{background:rgba(255,255,255,.28)}
+
+/* Layout: Sidebar + Ergebnisse (PC = mehr) */
+.wrap{max-width:1180px;margin:18px auto;padding:0 16px;display:grid;grid-template-columns:270px 1fr;gap:20px;align-items:start}
+.sidebar{position:sticky;top:74px;display:flex;flex-direction:column;gap:14px}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px}
+.fcard h4{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px}
+.opt{display:flex;align-items:center;gap:9px;padding:6px 0;font-size:.92rem;color:var(--ink2);cursor:pointer}
+.opt input{width:16px;height:16px;accent-color:var(--amber-dk);cursor:pointer}
+.opt .cnt{margin-left:auto;font-size:.78rem;color:var(--muted)}
+.opt:hover{color:var(--amber-dk)}
+.toggle{display:flex;align-items:center;justify-content:space-between;font-size:.92rem;font-weight:600;color:var(--ink2);cursor:pointer}
+.sw{width:42px;height:24px;border-radius:14px;background:#d8d2c6;position:relative;transition:background .15s;flex:0 0 42px}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:left .15s;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.sw.on{background:var(--ok)}.sw.on::after{left:21px}
+.reset{background:none;border:0;color:var(--amber-dk);font-weight:700;font-size:.85rem;cursor:pointer;padding:4px 0;text-align:left}
+.reset:hover{text-decoration:underline}
+
+/* Ergebnisse */
+.results{min-width:0}
+.rhead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.rhead .cnt{font-weight:800;font-size:1.05rem}
+.rhead .sort{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--muted)}
+.rhead select{border:1px solid var(--line);border-radius:9px;padding:7px 10px;font-size:.85rem;background:#fff;font-family:inherit;color:var(--ink)}
+.filterbtn{display:none}
+.feed{display:grid;gap:12px}
+.job{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;gap:14px;transition:box-shadow .15s,transform .15s,border-color .15s}
+.job:hover{box-shadow:var(--shadow);transform:translateY(-1px);border-color:#dcc89c}
+.job .av{width:50px;height:50px;border-radius:12px;flex:0 0 50px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#fff;font-weight:800}
 .job .b{flex:1;min-width:0}
-.job h3{font-size:1.04rem;line-height:1.25;margin-bottom:2px}
-.job .meta{font-size:.85rem;color:var(--muted)}
-.job .badges{margin:7px 0}
-.badge{display:inline-block;border-radius:6px;padding:2px 8px;font-size:.72rem;font-weight:700;margin:0 5px 4px 0}
-.badge.r{background:#e8f5ee;color:#06623b}.badge.t{background:var(--cream);color:var(--amber-dk)}
-.job .go{align-self:center;background:#fff;border:1.5px solid var(--amber-dk);color:var(--amber-dk);border-radius:20px;padding:7px 15px;font-weight:700;font-size:.85rem;white-space:nowrap}
-.job .go:hover{background:var(--amber-dk);color:#fff}
-.more{display:block;margin:18px auto;background:var(--amber-dk);color:#fff;border:0;border-radius:22px;padding:11px 26px;font-weight:700;cursor:pointer}
+.job h3{font-size:1.08rem;line-height:1.25;margin-bottom:3px}
+.job h3 a{color:var(--ink)}.job h3 a:hover{color:var(--amber-dk)}
+.job .meta{font-size:.88rem;color:var(--muted)}
+.job .badges{margin:9px 0 0}
+.badge{display:inline-block;border-radius:7px;padding:3px 9px;font-size:.73rem;font-weight:700;margin:0 6px 5px 0}
+.badge.r{background:#e8f5ee;color:#06623b}.badge.t{background:var(--cream);color:var(--amber-dk)}.badge.g{background:#eef1f5;color:#3a4759}
+.job .side{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:8px;text-align:right}
+.job .ago{font-size:.76rem;color:var(--muted);white-space:nowrap}
+.job .go2{background:var(--amber-dk);color:#fff;border-radius:20px;padding:8px 16px;font-weight:700;font-size:.85rem;white-space:nowrap}
+.job .go2:hover{background:#a04708}
+.status{text-align:center;color:var(--muted);padding:34px 0;font-size:.95rem}
+.skl{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;gap:14px}
+.skl .a{width:50px;height:50px;border-radius:12px;background:#ece6da;flex:0 0 50px}
+.skl .l{flex:1}.skl .l div{height:12px;background:#ece6da;border-radius:6px;margin-bottom:9px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}.skl{animation:pulse 1.2s infinite}
+.more{display:block;margin:20px auto;background:#fff;color:var(--amber-dk);border:1.5px solid var(--amber-dk);border-radius:22px;padding:11px 28px;font-weight:700;cursor:pointer}
+.more:hover{background:var(--amber-dk);color:#fff}
 .src{text-align:center;font-size:.78rem;color:var(--muted);margin:16px 0}
-footer{max-width:1000px;margin:10px auto;padding:18px 16px;font-size:.8rem;color:var(--muted);text-align:center}
-@media(max-width:560px){.job .go{align-self:flex-start}}
+footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color:var(--muted);text-align:center}
+
+/* Mobile-Sheet für Filter (mobile = einfacher) */
+.sheetbg{display:none}
+@media(max-width:860px){
+  .wrap{grid-template-columns:1fr}
+  .hero h1{font-size:1.5rem}
+  .filterbtn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--amber-dk);color:var(--amber-dk);border-radius:20px;padding:8px 15px;font-weight:700;font-size:.85rem;cursor:pointer}
+  .sidebar{position:fixed;inset:auto 0 0 0;top:0;z-index:100;background:var(--bg);padding:0;transform:translateY(100%);transition:transform .25s;overflow-y:auto;max-height:100vh}
+  .sidebar.open{transform:translateY(0)}
+  .sidebar .sheethead{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:14px 16px;font-weight:800}
+  .sidebar .sheethead .x{background:none;border:0;font-size:24px;cursor:pointer;color:var(--muted);line-height:1}
+  .sidebar .fcard{margin:12px 14px;border-radius:14px}
+  .sidebar .applybar{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px 16px}
+  .sidebar .applybar button{width:100%;background:var(--amber-dk);color:#fff;border:0;border-radius:11px;padding:13px;font-weight:800;font-size:15px;cursor:pointer}
+  .sheetbg.show{display:block;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99}
+}
+@media(min-width:861px){.sidebar .sheethead,.sidebar .applybar{display:none}}
 </style>
 </head>
 <body>
 <div class="top"><div class="in">
   <a class="brand" href="/">aban</a>
-  <form class="search" id="sf" onsubmit="return false">
-    <input id="q" type="search" placeholder="🔍 Jobtitel, Firma, Stichwort …" aria-label="Stichwort">
-    <input id="loc" type="search" placeholder="📍 Ort" aria-label="Ort" style="max-width:160px">
-    <button id="go" type="submit">Suchen</button>
+  <span class="links">
+    <a href="/auftraege.html">💼 Freelance-Aufträge</a>
+    <a href="/inserate.html">Inserate</a>
+  </span>
+</div></div>
+
+<div class="hero"><div class="in">
+  <h1>Finde deinen nächsten Job</h1>
+  <p>Tausende aktuelle Stellenangebote aus der DACH-Region &amp; Remote — an einem Ort durchsuchbar.</p>
+  <form class="searchbox" id="sf" onsubmit="return false">
+    <label class="fld"><span>🔍</span><input id="q" type="search" placeholder="Jobtitel, Firma oder Stichwort" aria-label="Stichwort"></label>
+    <label class="fld" style="max-width:230px"><span>📍</span><input id="loc" type="search" placeholder="Ort oder Region" aria-label="Ort"></label>
+    <button class="go" id="go" type="submit">Jobs suchen</button>
   </form>
-  <a class="badge t" href="/auftraege.html" style="margin-left:auto">Freelance-Aufträge →</a>
+  <div class="quick"><b>Beliebt:</b>
+    <a href="#" data-q="Entwickler">Entwickler</a>
+    <a href="#" data-q="Marketing">Marketing</a>
+    <a href="#" data-q="Pflege">Pflege</a>
+    <a href="#" data-q="Vertrieb">Vertrieb</a>
+    <a href="#" data-remote="1">🏠 Remote</a>
+  </div>
 </div></div>
 
 <div class="wrap">
-  <div class="hl">
-    <h1>Stellenangebote durchsuchen</h1>
-    <p>Tausende aktuelle Jobs aus DACH &amp; Remote — Klick führt zur Original-Anzeige.</p>
-  </div>
-  <div class="chips" id="chips"></div>
-  <div class="status" id="status">Lade Stellenangebote …</div>
-  <div class="feed" id="feed"></div>
-  <button class="more" id="more" type="button" style="display:none">Mehr laden</button>
-  <p class="src" id="src"></p>
+  <!-- SIDEBAR / Filter (PC: links fix · Mobile: Sheet) -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sheethead"><span>Filter</span><button class="x" id="sheetClose" type="button" aria-label="Schließen">×</button></div>
+
+    <div class="fcard">
+      <h4>Kategorie</h4>
+      <div id="cats"></div>
+    </div>
+    <div class="fcard">
+      <h4>Beschäftigungsart</h4>
+      <div id="types"></div>
+    </div>
+    <div class="fcard">
+      <label class="toggle"><span>🏠 Nur Remote</span><span class="sw" id="remoteSw" role="switch" aria-checked="false" tabindex="0"></span></label>
+    </div>
+    <button class="reset" id="reset" type="button">↺ Alle Filter zurücksetzen</button>
+
+    <div class="applybar"><button id="apply" type="button">Ergebnisse anzeigen</button></div>
+  </aside>
+
+  <!-- ERGEBNISSE -->
+  <section class="results">
+    <div class="rhead">
+      <button class="filterbtn" id="filterOpen" type="button">⚙ Filter</button>
+      <span class="cnt" id="cnt">Lade Stellen …</span>
+      <span class="sort">Sortieren:
+        <select id="sort">
+          <option value="new">Neueste zuerst</option>
+          <option value="old">Älteste zuerst</option>
+          <option value="az">Titel A–Z</option>
+        </select>
+      </span>
+    </div>
+    <div class="feed" id="feed"></div>
+    <div class="status" id="status" hidden></div>
+    <button class="more" id="more" type="button" hidden>Mehr Jobs laden</button>
+    <p class="src" id="src"></p>
+  </section>
 </div>
+
+<div class="sheetbg" id="sheetbg"></div>
+
 <footer>aban news · Job-Suche · Stellen von Partner-Jobbörsen, Angaben ohne Gewähr · © 2026 ·
   <a href="/auftraege.html">Aufträge &amp; Jobs</a> · <a href="/impressum.html">Impressum</a></footer>
+
 <script>
 (function(){
-  var CATS=[["Alle",""],["Software/IT","Software Development"],["Vertrieb","Sales"],["Marketing","Marketing"],
-    ["Verwaltung","Administration"],["Finanzen","Finance"],["Design","Design"],["Kundenservice","Customer Service"],
-    ["Personal/HR","Human Resources"],["Ingenieur","Engineering"],["🏠 Remote","__remote"]];
+  var CATS=[["Alle Kategorien",""],["Software / IT","Software Development"],["Vertrieb","Sales"],
+    ["Marketing","Marketing"],["Verwaltung","Administration"],["Finanzen","Finance"],["Design","Design"],
+    ["Kundenservice","Customer Service"],["Personal / HR","Human Resources"],["Ingenieur","Engineering"]];
+  var TYPES=["Vollzeit","Teilzeit","Praktikum","Werkstudent","Freelance"];
+  var TYPE_MATCH={ // grobe Zuordnung deutsch -> Roh-Tags (Arbeitnow liefert gemischt)
+    "Vollzeit":["full","vollzeit","permanent"],"Teilzeit":["part","teilzeit"],
+    "Praktikum":["intern","praktik"],"Werkstudent":["student","werkstud","working student"],
+    "Freelance":["freelance","contract","contractor","freiberuf"]};
+  var AVCOL=["#d97706","#0a66c2","#7c3aed","#059669","#dc2626","#0891b2","#c2410c","#4f46e5"];
   var $=function(s){return document.querySelector(s)};
-  var feed=$("#feed"),status=$("#status"),moreBtn=$("#more");
-  var page=1,curTag="",remote=false;
+  var feed=$("#feed"),statusEl=$("#status"),moreBtn=$("#more"),cntEl=$("#cnt"),sidebar=$("#sidebar"),sheetbg=$("#sheetbg");
+  var page=1,curTag="",remote=false,curType="",allItems=[],hasMore=false;
+
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-  $("#chips").innerHTML=CATS.map(function(c,i){return '<button class="chip'+(i===0?' on':'')+'" data-v="'+esc(c[1])+'">'+esc(c[0])+'</button>'}).join("");
-  function card(it){
-    var ini=(it.company||"?").trim().charAt(0).toUpperCase()||"💼";
-    var badges=(it.remote?'<span class="badge r">🏠 Remote</span>':'')+(it.types||[]).map(function(t){return '<span class="badge t">'+esc(t)+'</span>'}).join('')+(it.tags||[]).slice(0,3).map(function(t){return '<span class="badge t">'+esc(t)+'</span>'}).join('');
-    return '<article class="job"><div class="av">'+esc(ini)+'</div><div class="b"><h3>'+esc(it.title)+'</h3>'+
-      '<div class="meta">'+esc([it.company,it.location].filter(Boolean).join(" · "))+'</div><div class="badges">'+badges+'</div></div>'+
-      (it.url&&it.url!=="#"?'<a class="go" href="'+esc(it.url)+'" target="_blank" rel="noopener nofollow">Zum Job →</a>':'')+'</article>';
+  function colFor(s){var h=0,t=(s||"?");for(var i=0;i<t.length;i++)h=(h*31+t.charCodeAt(i))>>>0;return AVCOL[h%AVCOL.length]}
+  function ago(iso){if(!iso)return"";var d=(typeof iso==="number"?iso*1000:Date.parse(iso));if(!d)return"";
+    var days=Math.floor((Date.now()-d)/86400000);
+    if(days<=0)return"heute";if(days===1)return"gestern";if(days<7)return"vor "+days+" Tagen";
+    var w=Math.floor(days/7);if(w<5)return"vor "+w+" Wo.";return"vor "+Math.floor(days/30)+" Mon.";}
+
+  // Radio-Kategorien
+  $("#cats").innerHTML=CATS.map(function(c,i){
+    return '<label class="opt"><input type="radio" name="cat" value="'+esc(c[1])+'"'+(i===0?' checked':'')+'>'+esc(c[0])+'</label>';
+  }).join("");
+  // Checkbox-Beschäftigungsart
+  $("#types").innerHTML=TYPES.map(function(t){
+    return '<label class="opt"><input type="checkbox" class="tchk" value="'+esc(t)+'">'+esc(t)+'</label>';
+  }).join("");
+
+  function typeOf(it){ // bestimmt deutsche Art aus rohen tags/types
+    var hay=((it.types||[]).join(" ")+" "+(it.tags||[]).join(" ")+" "+it.title).toLowerCase();
+    for(var k in TYPE_MATCH){if(TYPE_MATCH[k].some(function(m){return hay.indexOf(m)>=0}))return k}
+    return "";
   }
+  function card(it){
+    var ini=((it.company||"?").trim().charAt(0)||"💼").toUpperCase();
+    var art=typeOf(it);
+    var badges=(it.remote?'<span class="badge r">🏠 Remote</span>':'')
+      +(art?'<span class="badge g">'+esc(art)+'</span>':'')
+      +(it.tags||[]).slice(0,3).map(function(t){return '<span class="badge t">'+esc(t)+'</span>'}).join('');
+    var url=(it.url&&it.url!=="#")?esc(it.url):"";
+    return '<article class="job">'+
+      '<div class="av" style="background:'+colFor(it.company)+'">'+esc(ini)+'</div>'+
+      '<div class="b"><h3>'+(url?'<a href="'+url+'" target="_blank" rel="noopener nofollow">'+esc(it.title)+'</a>':esc(it.title))+'</h3>'+
+      '<div class="meta">'+esc([it.company,it.location].filter(Boolean).join(" · "))+'</div>'+
+      '<div class="badges">'+badges+'</div></div>'+
+      '<div class="side"><span class="ago">'+esc(ago(it.created))+'</span>'+
+      (url?'<a class="go2" href="'+url+'" target="_blank" rel="noopener nofollow">Zum Job →</a>':'')+'</div>'+
+      '</article>';
+  }
+  function applyClientFilters(items){
+    var out=items.slice();
+    if(curType){out=out.filter(function(it){return typeOf(it)===curType})}
+    var s=$("#sort").value;
+    out.sort(function(a,b){
+      if(s==="az")return (a.title||"").localeCompare(b.title||"");
+      var da=Date.parse(a.created)||0,db=Date.parse(b.created)||0;
+      return s==="old"?da-db:db-da;
+    });
+    return out;
+  }
+  function render(){
+    var items=applyClientFilters(allItems);
+    if(!items.length){feed.innerHTML="";statusEl.hidden=false;
+      statusEl.textContent="Keine Treffer. Versuch ein anderes Stichwort, eine andere Kategorie oder weniger Filter.";
+      cntEl.textContent="0 Stellen";moreBtn.hidden=true;return}
+    statusEl.hidden=true;
+    feed.innerHTML=items.map(card).join("");
+    cntEl.textContent=items.length+(hasMore?"+ ":" ")+"Stellen gefunden";
+    moreBtn.hidden=!hasMore;
+  }
+  function skeleton(){feed.innerHTML=Array(6).join().split(",").map(function(){
+    return '<div class="skl"><div class="a"></div><div class="l"><div style="width:55%"></div><div style="width:35%"></div><div style="width:70%"></div></div></div>'}).join("");}
+
   function buildUrl(){
     var p="/api/jobs?page="+page;
     var q=$("#q").value.trim(),loc=$("#loc").value.trim();
@@ -99,27 +271,80 @@ footer{max-width:1000px;margin:10px auto;padding:18px 16px;font-size:.8rem;color
     return p;
   }
   function load(append){
-    status.style.display="block";status.textContent="Lade …";moreBtn.style.display="none";
-    if(!append){feed.innerHTML="";page=1}
+    if(!append){allItems=[];page=1;skeleton();cntEl.textContent="Lade Stellen …"}
+    moreBtn.hidden=true;
     fetch(buildUrl()).then(function(r){return r.json()}).then(function(d){
       var items=d.items||[];
       if(d.demo){$("#src").textContent="Live-Jobs gerade nicht erreichbar — Beispielanzeige."}
       else{$("#src").textContent="Quelle: Partner-Jobbörse ("+(d.source||"extern")+"). Klick führt zur Original-Anzeige."}
-      if(!items.length&&!append){status.textContent="Keine Treffer. Versuch ein anderes Stichwort oder eine Kategorie.";return}
-      status.style.display="none";
-      feed.insertAdjacentHTML("beforeend",items.map(card).join(""));
-      // „Mehr laden" nur ohne Filter sinnvoll (API paginiert die Gesamtliste)
-      moreBtn.style.display=(!d.demo && !curTag && !remote && !$("#q").value && !$("#loc").value && items.length>=60)?"block":"none";
-    }).catch(function(){status.textContent="Konnte gerade nicht laden."});
+      allItems=append?allItems.concat(items):items;
+      // „Mehr laden" nur sinnvoll, wenn ungefiltert (API paginiert die Gesamtliste)
+      hasMore=(!d.demo && !curTag && !remote && !$("#q").value.trim() && !$("#loc").value.trim() && items.length>=60);
+      render();
+    }).catch(function(){feed.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden — bitte später erneut versuchen.";cntEl.textContent=""});
   }
-  $("#go").addEventListener("click",function(e){e.preventDefault();curTag="";remote=false;
-    Array.prototype.forEach.call(document.querySelectorAll(".chip"),function(c,i){c.classList.toggle("on",i===0)});load(false)});
-  $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();$("#go").click()}});
-  $("#loc").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();$("#go").click()}});
-  $("#chips").addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;
-    Array.prototype.forEach.call(document.querySelectorAll(".chip"),function(c){c.classList.remove("on")});b.classList.add("on");
-    var v=b.dataset.v; if(v==="__remote"){remote=true;curTag=""}else{curTag=v;remote=false} load(false)});
-  moreBtn.addEventListener("click",function(){page++;load(true)});
+
+  // Suche auslösen
+  function doSearch(){ // Volltext/Ort ändern → frisch laden
+    curType=""; Array.prototype.forEach.call(document.querySelectorAll(".tchk"),function(c){c.checked=false});
+    load(false);
+  }
+  $("#go").addEventListener("click",function(e){e.preventDefault();doSearch()});
+  ["q","loc"].forEach(function(id){$("#"+id).addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();doSearch()}})});
+
+  // Quick-Links im Hero
+  document.querySelector(".quick").addEventListener("click",function(e){
+    var a=e.target.closest("a");if(!a)return;e.preventDefault();
+    if(a.dataset.q){$("#q").value=a.dataset.q;remote=false;syncRemoteSw()}
+    if(a.dataset.remote){remote=true;syncRemoteSw()}
+    doSearch();window.scrollTo({top:0,behavior:"smooth"});
+  });
+
+  // Kategorie (radio) → Server-Filter
+  $("#cats").addEventListener("change",function(e){if(e.target.name==="cat"){curTag=e.target.value;load(false)}});
+  // Beschäftigungsart (checkbox) → Client-Filter (Mehrfach: nimm erste aktive, einfach gehalten)
+  $("#types").addEventListener("change",function(){
+    var on=Array.prototype.filter.call(document.querySelectorAll(".tchk"),function(c){return c.checked}).map(function(c){return c.value});
+    // mehrere erlaubt: filtere auf Menge
+    curType=on.length===1?on[0]:"";
+    if(on.length>1){ // bei Mehrfachwahl: eigene Filterlogik
+      var set=on;curTypeSet=set;render2(set);return;
+    }
+    curTypeSet=null;render();
+  });
+  var curTypeSet=null;
+  function render2(set){ // Render mit Mehrfach-Art-Filter
+    var items=allItems.filter(function(it){return set.indexOf(typeOf(it))>=0});
+    var s=$("#sort").value;
+    items.sort(function(a,b){if(s==="az")return(a.title||"").localeCompare(b.title||"");var da=Date.parse(a.created)||0,db=Date.parse(b.created)||0;return s==="old"?da-db:db-da});
+    if(!items.length){feed.innerHTML="";statusEl.hidden=false;statusEl.textContent="Keine Treffer mit dieser Beschäftigungsart.";cntEl.textContent="0 Stellen";moreBtn.hidden=true;return}
+    statusEl.hidden=true;feed.innerHTML=items.map(card).join("");cntEl.textContent=items.length+" Stellen gefunden";moreBtn.hidden=true;
+  }
+  // Sortierung
+  $("#sort").addEventListener("change",function(){curTypeSet?render2(curTypeSet):render()});
+
+  // Remote-Switch
+  function syncRemoteSw(){var sw=$("#remoteSw");sw.classList.toggle("on",remote);sw.setAttribute("aria-checked",remote?"true":"false")}
+  function toggleRemote(){remote=!remote;syncRemoteSw();load(false)}
+  $("#remoteSw").addEventListener("click",toggleRemote);
+  $("#remoteSw").addEventListener("keydown",function(e){if(e.key===" "||e.key==="Enter"){e.preventDefault();toggleRemote()}});
+
+  // Reset
+  $("#reset").addEventListener("click",function(){
+    $("#q").value="";$("#loc").value="";curTag="";remote=false;curType="";curTypeSet=null;
+    var first=document.querySelector('input[name="cat"]');if(first)first.checked=true;
+    Array.prototype.forEach.call(document.querySelectorAll(".tchk"),function(c){c.checked=false});
+    syncRemoteSw();load(false);
+  });
+
+  // Mobile-Sheet
+  function openSheet(){sidebar.classList.add("open");sheetbg.classList.add("show");document.body.style.overflow="hidden"}
+  function closeSheet(){sidebar.classList.remove("open");sheetbg.classList.remove("show");document.body.style.overflow=""}
+  $("#filterOpen").addEventListener("click",openSheet);
+  $("#sheetClose").addEventListener("click",closeSheet);
+  $("#apply").addEventListener("click",closeSheet);
+  sheetbg.addEventListener("click",closeSheet);
+
   load(false);
 })();
 </script>
