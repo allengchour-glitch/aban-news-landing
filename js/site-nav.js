@@ -12,6 +12,7 @@
     /* Schnell-Nav oben */
     var NAV = [
       ["🏠 Start", "/"],
+      ["🔥 Angebote", "/angebote-suche.html"],
       ["🧰 Tools", "/online-tools.html"],
       ["🤖 KI-Studio", "/ki-studio.html"],
       ["📈 Märkte", "/maerkte.html"],
@@ -51,6 +52,8 @@
       ["Rechnung ins Ausland", "/rechnung-ins-ausland.html", "Business", "Reverse-Charge (EU) & Drittland einfach erklärt"],
       ["Rechnung auf Englisch", "/rechnung-auf-englisch.html", "Business", "Englische Invoice: Vorlage + DE→EN-Vokabeln"],
       ["Kleinunternehmer-Grenze 2026", "/kleinunternehmer-grenze-2026.html", "Business", "Aktuelle Umsatzgrenzen DE/AT/CH"],
+      ["Krankenversicherung Selbstständige", "/selbststaendig-krankenversicherung.html", "Business", "GKV/PKV, SVS, KVG — DE/AT/CH erklärt"],
+      ["Buchhaltung für Anfänger", "/buchhaltung-fuer-anfaenger.html", "Business", "EÜR, Belege & ein einfaches System zum Start"],
       ["Privatrechnung schreiben", "/privatrechnung-schreiben.html", "Business", "Als Privatperson korrekt fakturieren"],
       ["Geschäftskonto-Vergleich", "/geschaeftskonto-vergleich.html", "Business", "Qonto, Kontist, Holvi & Co. für Selbstständige"],
       ["Qonto vs. Kontist", "/qonto-vs-kontist.html", "Business", "Head-to-head: welches Geschäftskonto passt"],
