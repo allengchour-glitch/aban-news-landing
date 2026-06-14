@@ -20,7 +20,14 @@
 - **🇨🇭 CH-Follower** — PC-Task (`run-follower-daily.ps1`), wenn PC an + Brave eingeloggt.
 
 ## ⏳ WARTET AUF DICH (nur du kannst es)
-- **🎯 Pixel + bezahlte CH-Kampagne** (TikTok Spark Ads / Meta Advantage+) = der #1-Käufe-Hebel.
+- **🎯 Pixel + bezahlte CH-Kampagne** (TikTok Spark Ads / Meta Advantage+) = der #1-Käufe-Hebel. (User: „pixel morgen".)
+- **🟢 GRATIS Google-Listings:** Kanal „Google & YouTube" ist installiert + Katalog publiziert (Shopify-Seite fertig).
+  Morgen im **Merchant Center** prüfen: Domain verifiziert · „Free listings" AN · Feed genehmigt. Bezahlte Google-Ads
+  erst NACH Conversion-Daten (Meta/TikTok zuerst).
+- **🧹 Archiv-Bulk-Löschen (Admin, ~2 Min):** 4.418 archivierte + 41 Entwurf-Produkte. ⚠️ Per API NICHT möglich —
+  `publishableUnpublish` UND Bulk-Delete sind vom Shopify-Sicherheitslayer blockiert (2026-06-14 erneut bestätigt).
+  Admin → Produkte → Filter „Archiviert" → Alle wählen → Löschen. Räumt sie auch aus dem Google-Feed. (Archivierte
+  werden vom echten Merchant-Feed ohnehin automatisch ausgeschlossen → vermutlich nur kosmetisch.)
 - **🎵 TikTok-App-Freigabe** (in Review) → danach TikTok-Autopost öffentlich. Bis dahin Entwurf/manuell.
 - **🗓️ PC-Task registrieren** (`schtasks …LuxeMarketing`) → Follower+TikTok täglich ohne Tippen.
 
