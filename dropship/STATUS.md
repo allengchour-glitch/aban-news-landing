@@ -4,6 +4,9 @@
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
 ## 🟢 LÄUFT AUTONOM (ohne dein Zutun)
+- **🖱️ Kein PowerShell mehr nötig:** `automation/local/SETUP-EINMALIG.bat` (1× doppelklicken) richtet den
+  Windows-Tagestask ein → danach läuft täglich automatisch: Follower · TikTok-Post · IG+TikTok-DMs · Kommentare
+  (zieht auch git-Updates selbst). `JETZT-LAUFEN.bat` = sofort-Lauf per Doppelklick.
 - **📷 Instagram + Facebook posten 2×/Tag** — Cloudflare-Worker live (`luxe-poster.allengchour.workers.dev`),
   Cron 16/19 UTC = 18/21 Uhr CH. Queue = 20 Posts, schweizweit, mit Save/Share-Triggern.
 - **📱 Handy-Trigger** — `…workers.dev/?key=Abanaban192+` postet auf Abruf.
