@@ -172,7 +172,7 @@ async function run(env) {
   const ids = await discoverIds(env);
   const q = await loadQueue(env);
   let cursor = parseInt((await env.LUXE_KV.get("cursor")) || "0", 10);
-  if (cursor >= q.length) return { done: true, note: "Queue durch — Cursor 0 setzen oder neue queue_url laden", cursor };
+  if (cursor >= q.length) cursor = cursor % q.length;   // Queue ENDLOS loopen (bei 6×/Tag nie leer; Tages-Rotation sorgt für Vielfalt)
   const item = q[cursor];
   const ig = await postInstagram(ids, item).catch((e) => ({ error: String(e) }));
   const fb = await postFacebook(ids, item).catch((e) => ({ error: String(e) }));

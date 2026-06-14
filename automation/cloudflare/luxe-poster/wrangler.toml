@@ -2,11 +2,11 @@ name = "luxe-poster"
 main = "src/index.js"
 compatibility_date = "2024-11-01"
 
-# 2×/Tag posten in CH-Primetime (Feierabend-Scrolling 18–21 Uhr CH = 16–19 UTC).
-# Lehre 2026-06-13 (TikTok-Analyse): 16–19 UTC war komplett ungenutzt = beste CH-Zeit verschenkt.
-# 16:00 UTC = 18:00 CH · 19:00 UTC = 21:00 CH. Anpassbar.
+# 6×/Tag (User 2026-06-14): über den CH-Tag verteilt, Schwerpunkt Mittag + Feierabend.
+# UTC -> CH(+2): 07=09 · 10=12(Lunch) · 12=14 · 15=17 · 17=19(Primetime) · 19=21(Primetime).
+# ⚠️ 6 Posts/Tag = viel — Qualität halten (kein Spam-Eindruck), sonst Reichweite drosseln.
 [triggers]
-crons = ["0 16,19 * * *"]
+crons = ["0 7,10,12,15,17,19 * * *"]
 
 # KV für Cursor + entdeckte IDs. ID nach `wrangler kv namespace create LUXE_KV` hier eintragen.
 [[kv_namespaces]]
