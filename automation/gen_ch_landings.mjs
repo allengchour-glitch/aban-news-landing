@@ -332,6 +332,30 @@ function page(p) {
   let pbKey = "";
   for (const k in PB) { if (p.slug.indexOf(k) === 0) { pbKey = k; break; } }
   const partnerBox = pbKey ? `  <div data-partner="${PB[pbKey][0]}" data-text="${esc(PB[pbKey][1])}" data-cta="${esc(PB[pbKey][2])}"></div>\n` : "";
+  // Live-eBay-Produktzeile: nur für Produkt-Kategorien (Wohnung/Job ausgenommen)
+  const EQ = { "auto-kaufen": "Auto", "ebike-kaufen": "E-Bike", "velo-kaufen": "Velo Fahrrad",
+    "moebel-kaufen": "Möbel", "handy-kaufen": "Handy Smartphone", "computer-kaufen": "Laptop",
+    "gaming-kaufen": "Konsole Gaming", "kamera-kaufen": "Kamera", "garten-kaufen": "Gartenmöbel",
+    "werkzeug-kaufen": "Werkzeug", "mode-kaufen": "Kleidung", "sport-kaufen": "Sport Fitness",
+    "uhren-schmuck": "Uhr", "kueche-kaufen": "Küchengerät", "haustier": "Haustier Zubehör", "baby-kind": "Kinderwagen" };
+  let eq = "";
+  for (const k in EQ) { if (p.slug.indexOf(k) === 0) { eq = EQ[k]; break; } }
+  const liveRow = eq ? `
+  <section style="margin-top:26px">
+    <h2 style="margin-bottom:4px">Aktuelle Angebote</h2>
+    <p style="font-size:.78rem;color:var(--muted);margin-bottom:12px">Live von Partnern (z. B. eBay) · Klick führt zum Anbieter · Provision möglich, Preis bleibt gleich.</p>
+    <div id="ebayRow" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px"><div style="color:var(--muted);font-size:.9rem">Lade Angebote …</div></div>
+  </section>
+  <script>(function(){var EQ=${JSON.stringify(eq)};var el=document.getElementById("ebayRow");if(!el)return;
+    function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+    fetch("/api/ebay?limit=6&q="+encodeURIComponent(EQ)).then(function(r){return r.json()}).then(function(d){
+      var it=(d.items||[]).slice(0,6);if(!it.length){el.closest("section").style.display="none";return}
+      el.innerHTML=it.map(function(x){var img=x.img?('<div style="aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;background-image:url(\\''+esc(x.img)+'\\')"></div>'):'<div style="aspect-ratio:1/1;background:#f3eee4;display:flex;align-items:center;justify-content:center;font-size:1.6rem">🛍️</div>';
+        var href=(x.url&&x.url!=="#")?esc(x.url):"#";
+        return '<a href="'+href+'" target="_blank" rel="sponsored nofollow noopener" style="border:1px solid var(--line);border-radius:11px;overflow:hidden;background:#fff;text-decoration:none;color:var(--ink);display:flex;flex-direction:column">'+img+'<div style="padding:8px 9px"><div style="font-size:.78rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px">'+esc(x.title)+'</div><div style="color:var(--amber-dk);font-weight:800;font-size:.9rem">'+esc(x.price||"")+'</div></div></a>';
+      }).join("");
+    }).catch(function(){el.closest("section").style.display="none"});
+  })();</script>` : "";
   return `<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -390,7 +414,8 @@ footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var
   <div class="tips">
 ${tips}
   </div>
-  <h2>Häufige Fragen</h2>
+${liveRow}
+  <h2 style="margin-top:26px">Häufige Fragen</h2>
 ${faq}
   <div class="cta2">
     <strong>Bereit zum Suchen?</strong><br>
