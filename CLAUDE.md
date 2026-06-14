@@ -39,10 +39,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **🎵 REEL-SOUND-REGEL (FEST, 2026-06-14):** **TikTok-Reels = STUMM hochladen** (User legt Trend-Sound in der App
   drauf — Trend-Sounds gehen lizenzrechtlich nur in-app). **Meta/IG+FB-Reels = eigene coole Musik einbacken.**
   Musik-Stil an Content + Gewinner-Vibes anlehnen; laufend besser werden.
-- **🎹 EIGENE MUSIK SELBST PRODUZIEREN (2026-06-14, „mit Klavier"):** `fluidsynth` + Soundfont `FluidR3_GM.sf2` sind
-  installiert → ORIGINAL-Tracks komponierbar (kein Lizenzproblem). Generator: `automation/music/make_signature_track.py`
-  (Python schreibt MIDI: Piano/Bass/Drums → `fluidsynth -ni -F out.wav … FluidR3_GM.sf2 track.mid`). Stil über
-  Akkorde/Tempo/Programs anpassen (chill/upbeat/hype). Royalty-free-Lib (`luxe-house/hype`, Kevin-MacLeod) bleibt Alternative.
+- **🎵 MUSIK = `automation/music/music_library.mjs` (NEU 2026-06-14, „alle legale und gratis — mach ein super Tool"):**
+  Der GM-Synth/fluidsynth-Sound war dem User **„zu billig"**. Standard ist jetzt das Tool: liefert **kommerziell-freie**
+  Tracks (Kevin MacLeod / incompetech, **CC-BY 4.0**, Katalog `catalog.json`, 11 verifiziert) und schreibt die
+  **Pflicht-Attribution automatisch nach `automation/music/CREDITS.md`**. `node …/music_library.mjs list` ·
+  `pick --mood elegant [--vocals] [--dur 60] [--out x.wav]`. Cache `automation/music/lib/` ist gitignored (re-downloadbar).
+  ⚠️ **Bug-Lehre:** in WAV-Konvertierung `-stream_loop -1` NUR mit `-t` (sonst loopt ffmpeg unendlich → 25-GB-Datei, Disk voll).
+  **Gesang:** kommerziell-frei gibt's kaum → echte Songs MIT Gesang nur via `--engine suno` (PC-Port, gratis-Konto;
+  **für Live-Ad Suno Pro nötig**). `--engine musicgen` (lokal CPU, instrumental) ist CC-BY-**NC** = NUR intern/Test,
+  nie in einen Live-Ad. Alte Generatoren (`make_signature_track.py`/`make_trend_tracks.py`, fluidsynth) = nur Fallback.
+- **🈂️ SAFE-ZONE-TEXT-REGEL (FEST, User 2026-06-14 „schrift unten achtung"):** TikTok/IG/Reels blenden **unten ~20 %**
+  (Caption/CTA/Fortschrittsbalken) und **rechts ~12 %** (Icons) ein. Eingebrannter Text MUSS da raus → **endet bei ~78 %
+  Höhe (y≤1500 von 1920)**, nie ganz unten, sonst Textbrei mit der Plattform-Caption. Gilt für ALLE Reels/Videos.
+  Umgesetzt im Marken-Video-Builder; `render_masterpiece.sh` (Caption-Band y=1560–1900) noch NACHZIEHEN.
+- **🎬 MARKEN-VIDEO-BUILDER `dropship/ads/render_brand_video.py` (NEU 2026-06-14):** 60s + 30s, 1080×1920, Kerstin-VO
+  (piper, auto-Download), Musik aus dem Tool, alle Kategorien inkl. „Selbst gestalten", Ken-Burns + xfade + Safe-Zone-
+  Captions + Grade. Output `reels/luxestyle-brand-{60,30}s.mp4`. Reproduzierbar; ENV `MUSIC_ID`/`OUTDIR`.
 - **🎬 REEL-MEISTERWERK-PIPELINE (2026-06-14):** Luma `ray-flash-2` (Bild→Video, Key `luma-6ac…`, ~9672 Credits) →
   9:16-Finish (unscharfer BG-Fill + Mundart/Preis-HOOK-Text 1. Sek + dezenter CTA, ffmpeg) → **60fps Bewegungs-
   Interpolation** (`minterpolate=fps=60:mi_mode=mci` = flüssiger, User-Wunsch 2026-06-14) → 2 Exporte:

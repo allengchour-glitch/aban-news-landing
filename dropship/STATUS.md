@@ -26,6 +26,15 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-14 (Musik-Tool + Marken-Video)
+- **🎵 Super-Musik-Tool gebaut** (`automation/music/music_library.mjs` + `catalog.json` + `CREDITS.md`): liefert
+  **kommerziell-freie** Tracks (Kevin MacLeod, CC-BY 4.0) statt des „zu billigen" GM-Synth. `list`/`pick`, Auto-
+  Attribution, Cache gitignored. Gesang nur via Suno-Port (Pro für Live-Ad); MusicGen lokal = nur intern (CC-BY-NC).
+- **🎬 Marken-Video 60s + 30s** (`dropship/ads/render_brand_video.py`) — Kerstin-Stimme, ALLE Kategorien inkl.
+  „Selbst gestalten", echte Musik aus dem Tool, an User geliefert. In `reels/luxestyle-brand-{60,30}s.mp4`.
+- **🈂️ Safe-Zone-Fix** (User „schrift unten achtung"): eingebrannter Text endet jetzt bei ~78 % Höhe → kollidiert
+  nicht mehr mit Plattform-Caption/Buttons. Als feste Regel im Memory verankert. ⚠️ `render_masterpiece.sh` noch nachziehen.
+
 ### 2026-06-14
 - **🎵 TikTok-Posten ÜBER DEN PORT** (User-Wunsch „immer per Port"): `tiktok-upload-browser.mjs` (Brave-CDP 9222,
   wie Follower-Bot) lädt Reels automatisch hoch — kein API-Audit, kein Handy-Tippen. Im Tages-Task + Doppelklick
