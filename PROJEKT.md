@@ -16,9 +16,22 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
-## 🚀 2026-06-14 — AUTONOM-SCHWUNG: eBay LIVE + 16 SEO-Seiten + Bilder + Selbst-Hirn (zuerst lesen)
-> Session „mach alles autonom". Cloudflare Pages ist **git-verbunden** → Push auf `main` deployt automatisch
-> (zusätzlich `wrangler pages deploy _site` manuell). Vor `git reset --hard` IMMER `git fetch` (Parallel-Bots).
+## 🚀 2026-06-14 — GROSSER AUTONOM-MARATHON: eBay LIVE + ~50 SEO-Seiten + Technik-SEO + Selbst-Hirn (zuerst lesen)
+> Session „mach alles autonom / volle Gas". Cloudflare Pages ist **git-verbunden** → Push auf `main` deployt
+> automatisch (zusätzlich `wrangler pages deploy _site` manuell). Vor `git reset --hard` IMMER `git fetch`.
+> ⚙️ **Parallel-Bau-Modell (bewährt):** mehrere `general-purpose`-Agenten bauen gleichzeitig je 4 NEUE
+> Seiten-Dateien (verschiedene Dateinamen → kein Konflikt), Vorlage = `kassenbuch-fuehren.html`; sie fassen
+> NICHT site-nav.js/sitemap.xml/git an. Danach registriere ICH alle in `js/site-nav.js`-CAT + `sitemap.xml`,
+> validiere (SVG+JSON-LD), build, 1 PR (squash) → Deploy. So ~15 Seiten/Welle ohne Merge-Chaos.
+> 📈 **~50 neue SEO-Ratgeber diese Session** (Selbstständige + KI-Tools, alle FAQ-Schema + Hero-SVG +
+> interne Links + Funnel zu Cockpit/KI-Studio). Brain-Score ~97/100, ~2190 Seiten.
+> 🔧 **Technik-SEO sitewide via `automation/inject-engine.mjs`** (Build-Injector, server-gerendert): Engine-Script,
+> Organization+BreadcrumbList-JSON-LD, `max-image-preview:large`+volle Snippets (nur index,follow), Lazy-Load
+> (ab 2. Bild), Standard-`og:image`/twitter-card wo fehlend. robots.txt + sitemap.xml ok. Cluster-Hub `ki-anleitungen.html`.
+> 💰 **Monetarisierung live:** eBay-Affiliate (Secrets gesetzt, Campaign 5339156671), Hostinger-Affiliate auf
+>   website/shop/ki-website-Seiten (HOSTINGER_URL aktiv), Vergleichsseiten link-bereit (QONTO/KONTIST/HOLVI/SEVDESK/
+>   LEXOFFICE/BEXIO_URL leer → warten auf User-Tracking-Links; financeAds scheiterte an CH-Gewerbenachweis → Awin/Amazon/Direkt empfohlen).
+>   KI-Seiten funneln zum eigenen aban KI-Studio (Lemon Squeezy).
 
 - **🛒 eBay-Angebote KOMPLETT LIVE (verdient mit!):** `/api/ebay` echte Browse-API + EPN-Affiliate-Tracking.
   Cloudflare-Pages-Secrets gesetzt (Pages-Token darf das!): `EBAY_CLIENT_ID=allengch-abannews-PRD-ca92c9933-98a2bbef`,
