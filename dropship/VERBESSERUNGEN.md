@@ -26,6 +26,13 @@ Der User macht den #1-Hebel (TikTok/Meta-Pixel + bezahlte CH-Kampagne) morgen. �
 - **Caption-Format als FESTE Regel** im Poster-README verankert (Produkt+CHF-Preis [+Vergleich] · 1 Share/Save/Komm.-
   Trigger · CTA+WELCOME10+#bern) → künftige Posts befolgen es automatisch.
 
+## 2026-06-14 — Autonom („mach alles autonom"): Neuzugänge in die Schleife
+- Die 2 neuen Sommer-Gadgets (Handventilator «Brisa», Camping-Ventilator «Nomad») in `good_products.csv`
+  aufgenommen → fließen jetzt automatisch in die Autopost-Queue (17 Posts, beide drin, alle sauber).
+- **Funnel verifiziert:** beide landen via Smart-Collections automatisch in `sommer-2026`, `gadgets`,
+  `neu-eingetroffen`, Reise/Camping + Geschenke-Preis-Collections — kein manuelles Einsortieren nötig.
+- Auto-Modus gelaufen: Gehirn lernte 3. Report (06-14) kumulativ, Pools aktualisiert.
+
 ## 2026-06-13 — 🧹 Autonome Katalog-Aufräumung („gestalte selber alles und lösche wenn sein muss")
 Live-Stand: 1215 aktiv · 49 Draft · 4408 archiviert. **10 eindeutige Müll-Drafts archiviert** (alle getaggt
 `bild-fehlt-nicht-live-schalten`/`stock-bild-pruefen` = Stock-Platzhalter, seit ~3 Wo nicht live-fähig): Sleep

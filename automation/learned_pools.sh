@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # AUTO-GENERIERT von automation/brain/brain.mjs — NICHT manuell editieren (Aenderungen in knowledge.json).
-# Gehirn-Stand: 2 Report(s) kumulativ gelernt, Verlierer geblockt (#luxestyle #luxestylech).
+# Gehirn-Stand: 3 Report(s) kumulativ gelernt, Verlierer geblockt (#luxestyle #luxestylech).
 # TAGSETS = 1 Reach + 2 Discovery (kuratiert) + 2 Daten-Top-Performer. CAPS = Gewinner-Hooks (Problem/Preis-Kontrast).
 TAGSETS=(
-  "#fyp #tiktokmademebuyit #produkttipp #bohostyle #sommerkleid"
-  "#foryou #musthave #gefundenauftiktok #cardigan #schweiz"
-  "#fyp #lifehack #tiktokmademebuyit #sommerschuhe #ootdschweiz"
-  "#foryou #produkttipp #musthave #fashionschweiz #schmuck"
+  "#fyp #tiktokmademebuyit #produkttipp #bohostyle #swisspremium"
+  "#foryou #musthave #gefundenauftiktok #premiumlifestyle #wellness"
+  "#fyp #lifehack #tiktokmademebuyit #sommerkleid #cardigan"
+  "#foryou #produkttipp #musthave #schweiz #ootdschweiz"
 )
 CAPS=(
   "Wusste nicht, dass ich das brauche 👀 %s — und der Preis? Schau selbst 👇 📌 Speicher's dir · −10%% WELCOME10 → luxestyle.ch"

@@ -1,18 +1,18 @@
 # 🧠 BRAIN — LuxeStyle Social-Lernschleife (auto-generiert)
 
-_Aktualisiert: 2026-06-13 · Reports kumulativ gelernt: 2 (2 im Gedaechtnis)_
+_Aktualisiert: 2026-06-14 · Reports kumulativ gelernt: 3 (3 im Gedaechtnis)_
 
 ## Aktuelle beste Hashtag-Saetze (Daten + kuratiert, Verlierer geblockt)
-1. #fyp #tiktokmademebuyit #produkttipp #bohostyle #sommerkleid
-2. #foryou #musthave #gefundenauftiktok #cardigan #schweiz
-3. #fyp #lifehack #tiktokmademebuyit #sommerschuhe #ootdschweiz
-4. #foryou #produkttipp #musthave #fashionschweiz #schmuck
+1. #fyp #tiktokmademebuyit #produkttipp #bohostyle #swisspremium
+2. #foryou #musthave #gefundenauftiktok #premiumlifestyle #wellness
+3. #fyp #lifehack #tiktokmademebuyit #sommerkleid #cardigan
+4. #foryou #produkttipp #musthave #schweiz #ootdschweiz
 
 **Geblockt (Sackgasse, nie im Output):** #luxestyle #luxestylech
-**Daten-Top-Performer (kumulativ Ø-Views):** #bohostyle (786) · #sommerkleid (366) · #cardigan (357) · #schweiz (301) · #sommerschuhe (280) · #fyp (272)
+**Daten-Top-Performer (kumulativ Ø-Views):** #bohostyle (786) · #swisspremium (747) · #premiumlifestyle (747) · #wellness (717) · #sommerkleid (377) · #cardigan (357)
 
-## Letzter Stand (neuester Report tiktok_luxestyle.ch_2026-06-13.json)
-- Videos: 36 · Views: 10770 · Likes: 161 · Shares: 0 · Kommentare: 5
+## Letzter Stand (neuester Report tiktok_luxestyle.ch_2026-06-14.json)
+- Videos: 36 · Views: 10771 · Likes: 161 · Shares: 0 · Kommentare: 5
 - Posts in CH-Primetime (16–19 UTC): 0
 
 ## 🎯 Automatisch abgeleitete naechste Aktionen
