@@ -33,6 +33,17 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   pflegen — NIE `learned_pools.sh`/`pools.json`/`queue.json` direkt editieren (werden überschrieben).
   Ratsche: bewiesene Verlierer bleiben geblockt, Gewinner erhalten → fällt nie zurück.
   **Follower** (`automation/local/ch-follower-growth.mjs` + `ch-unfollow.mjs`) läuft nur am PC-Claude (Browser/CDP).
+- **🧠 „lerne von selber + klaue Ideen von Top-Leuten" (FEST, 2026-06-14):** Regelmäßig Memory nachführen,
+  selbstständig dazulernen (Gehirn-Schleife), und **bei jedem Content-Schub Ideen von erfolgreichen Creators/
+  Shops studieren & adaptieren** (Hooks/Formate/Schnitt/Sounds). Nicht von Null erfinden — kopieren was nachweislich zieht.
+- **🎵 REEL-SOUND-REGEL (FEST, 2026-06-14):** **TikTok-Reels = STUMM hochladen** (User legt Trend-Sound in der App
+  drauf — Trend-Sounds gehen lizenzrechtlich nur in-app). **Meta/IG+FB-Reels = eigene coole royalty-free Musik
+  einbacken** (Bibliothek `automation/music/`: luxe-house = ruhig/premium, luxe-hype = upbeat). Musik-Stil an den
+  Content anpassen + an Gewinner-Vibes orientieren; darin laufend besser werden.
+- **🎬 REEL-MEISTERWERK-PIPELINE (2026-06-14):** Luma `ray-flash-2` (Bild→Video, Key `luma-6ac…`, ~9672 Credits) →
+  9:16-Finish (unscharfer BG-Fill + Mundart/Preis-HOOK-Text 1. Sek + dezenter CTA, ffmpeg) → 2 Exporte:
+  `-9x16.mp4` (stumm/TikTok) + `-9x16-meta.mp4` (mit Musik/Meta). JEDES Reel einzeln per Frame QA'en (Asiaten-Regel +
+  kein Warping). Output in `reels/`.
 - **„schlage immer Verbesserungen vor + lerne daraus" (2026-06-13):** In JEDER Session proaktiv 3–5 konkrete,
   priorisierte Verbesserungsvorschläge machen (nicht nur abarbeiten), und jede Lehre sofort ins Memory schreiben.
   Ehrlich priorisieren: der Engpass ist **Reichweite/Conversion (0 Käufe)**, nicht Katalog/Videos — Vorschläge
