@@ -33,6 +33,18 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-14 (Funnel-Readiness-Check vor Pixel)
+- **✅ Funnel technisch INTAKT:** alle Seiten 200, kein Passwortschutz, **Cart-Add (200) + Checkout (200, echte Session)**
+  funktionieren end-to-end. Trust-Signale da (WELCOME10, Gratis-Versand, 30-Tage-Rückgabe, Zahlungs-Badges, Reviews),
+  CHF-Preise, ATC-Buttons. Ad-Landing `sommer`: 81 Produkte, gesund.
+- **🔧 LIVE gefixt:** 2 «Swiss Edition»-Teile (Tank «Alpsee» in sommer-Landing + Hoodie «Alpenkuh») waren auf DENY =
+  **nicht kaufbar** → auf CONTINUE (Dropship-Oversell) gesetzt, jetzt kaufbar. Rest des Katalogs = CONTINUE (ok).
+- **⚠️ Beobachten:** Homepage 1,5 MB (Mobile-Speed) · TWINT kaum sichtbar (CH-Trust) · Checkout-Locale zeigte `de-us`
+  bei Geo-losem Test (Währungs-Routing für Nicht-CH prüfen). **Fazit: Pixel-Traffic läuft NICHT in einen kaputten Funnel.**
+- **🛑 Cloudflare-Deploy bleibt blockiert** (Sicherheitssystem, auch mit Token) → User: Bash-Erlaubnisregel ODER selbst deployen.
+
+
+
 ### 2026-06-14 (Echte Schwiizer-Stimme: Tools installiert/vorbereitet)
 - **🎬 yt-dlp installiert** (Cloud): `automation/fetch_voice_ref.sh <url>` holt sauberen 12s-Referenz-Clip für Voice-Clone.
   ⚠️ Nur RECHTE-GEKLÄRTES Material (eigene/lizenzierte Stimme) — keine fremden YouTuber kommerziell klonen.
