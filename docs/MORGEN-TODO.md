@@ -28,6 +28,11 @@ Jeder Deploy schlägt fehl (Auth-Fehler 10000, `radar`-Projekt-Scope). Bis das f
 
 ## 🟡 4. Erste Newsletter-Ausgabe senden (~10 Min)  → Stichwort: „promote"
 Die Maschine baut bild-reiche Ausgaben (`build_issue.py`); **Versand bleibt bei dir** (beehiiv).
+- **✅ Fertiger Entwurf liegt bereit:** `data/newsletter-versandbereit.md` („Reels vertonen ohne Mikro",
+  geprüft 10/10 Brand-Voice). Betreff + Vorschautext + Body 1:1 in beehiiv einfügen → senden.
+  Verlinkt die Voice-Seiten + ElevenLabs/Murf-Affiliate → bringt die **erste Provision** (schaltet
+  weitere Affiliate-Programme frei).
+- Danach „promote" sagen → ich spiegle die gesendete Ausgabe ins öffentliche Archiv (RSS/Index).
 - Entwurf prüfen → in beehiiv einfügen → senden
 - danach „promote" sagen → ich spiegle die gesendete Ausgabe ins öffentliche Archiv (RSS/Index).
 
