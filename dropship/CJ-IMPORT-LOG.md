@@ -16,6 +16,18 @@
 - **🎁 Perla-Set Cross-Sell (Conversion/AOV):** In allen 3 «Perla»-Stücken (Kette/Ohrringe/Armband) oben ein
   verlinkter Set-Block zu den anderen beiden Teilen → als Geschenk-Trio positioniert. Kein Bundle-Produkt (kein Fulfillment-Risiko).
 
+## Session 2026-06-14 (Teil 5) — Marktlücken-Analyse + 2 Starter (Activewear/Loungewear)
+- User „ich suche eine marktlücke" → datenbasierte Analyse (Collection-Counts + CJ-Beschaffungs-Check).
+- **GRÖSSTE LÜCKEN (Shop=0):** Loungewear/Homewear, Damen-Activewear/Athleisure (nur Yoga-Equipment, keine Bekleidung).
+  **⚠️ CJ kann sie NICHT liefern** (Diagnose hart bestätigt): „women leggings"=0 Treffer, „yoga pants"=nur Freizeithosen,
+  „straw hat"=Hundepartyhüte/Kinderhüte, „shorts set summer"=T-Shirt-Sets+Holztisch. → Diese Lücken = anderer Lieferant nötig.
+- **2 ehrliche Starter angelegt** (ACTIVE/6 Kanäle/READY, Kategorie-Tags für künftige Gruppierung):
+  Yoga-/Freizeithose «Flow» (Tag `activewear`+`yoga`, 34.90 · pid 2606130831081610500 · 15430498255233) ·
+  Loungewear-Set «Cozy» (Hoodie+Hose, Tag `loungewear`, 49.90 · pid 2606140805461633000 · 15430498353537).
+  (Noch KEINE eigenen Collections — bei nur 2 Produkten würden sie leer wirken; Tags greifen, sobald Nachschub da ist.)
+- **Fazit für User:** Die echte Marktlücke (Activewear + Loungewear) ist top, aber CJ-untauglich → EU-Activewear-Großhandel
+  o.ä. besorgen, dann Kategorie aufbauen. Co-ord-Sets/Strohhüte/Leggings = ebenfalls CJ-Decke.
+
 ## Session 2026-06-14 (Teil 4) — +5 Damen-Sommerkleider (Ad-Landing `/collections/sommer` gestärkt)
 - Conversion-Fokus: Sommerkleider = Damen-Bestseller-Kern; Tag `sommer-2026`+`kleid`+`damen` → landet in `/collections/sommer`
   (Ad-Ziel, 88), sub-kleider (38→43), damen-mode. ACTIVE+6 Kanäle+5 Bilder READY+SEO. **Grössen-Hinweis** (asiatisch) drin.
