@@ -1,0 +1,1147 @@
+{
+ "updated": "2026-06-14",
+ "total": 114,
+ "note": "Alle reels/*.mp4 klassifiziert. post_ready=clean 9:16 4-65s. in_queue=schon in video_queue.csv (CDN). QA: repräsentativer Querschnitt 2026-06-14 sauber (keine asiat. Schrift/Watermark).",
+ "videos": [
+  {
+   "file": "accessoires-20260603-1603.mp4",
+   "dur": 14,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "kategorie",
+   "desc": "Kategorie-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260603-1222.mp4",
+   "dur": 17,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260603-1226.mp4",
+   "dur": 17,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260603-1228.mp4",
+   "dur": 17,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260603-1320.mp4",
+   "dur": 17,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260603-1456.mp4",
+   "dur": 17,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260603-2219.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260604-1231.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260604-2036.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260605-0900.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260605-1726.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260606-0739-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260606-0739.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260606-1300-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260606-1300.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260606-1654-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260606-1654.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260606-2048-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260606-2048.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260607-0840-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260607-0840.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260607-1513-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260607-1513.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260607-2056-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260607-2056.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260608-1253-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260608-1253.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260608-2118-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260608-2118.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260609-1220-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260609-1220.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260609-1937-clean.mp4",
+   "dur": 14,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260609-1937.mp4",
+   "dur": 14,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260609-2032-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260609-2032.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260609-2242-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260609-2242.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260609-2246-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260609-2246.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260609-2249-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260609-2249.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260610-0450-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260610-0450.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260610-0507-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260610-0507.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260610-1111-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260610-1111.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260611-0521-clean.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "auto-20260611-0521.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "produkt-legacy",
+   "desc": "Auto-Produkt-Reel",
+   "post_ready": true,
+   "in_queue": true
+  },
+  {
+   "file": "bern-voiceover-20260614-clean.mp4",
+   "dur": 7,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "voiceover",
+   "desc": "Bärndütsch-VO-Reel",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "bern-voiceover-20260614.mp4",
+   "dur": 10,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "voiceover",
+   "desc": "Bärndütsch-VO-Reel",
+   "post_ready": true,
+   "in_queue": true
+  },
+  {
+   "file": "clip-augenmassage.mp4",
+   "dur": 3,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "clip",
+   "desc": "Produkt-Mini-Clip",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "clip-aurora-kleid.mp4",
+   "dur": 3,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "clip",
+   "desc": "Produkt-Mini-Clip",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "clip-craquele-vase.mp4",
+   "dur": 3,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "clip",
+   "desc": "Produkt-Mini-Clip",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "clip-eclat-kette.mp4",
+   "dur": 3,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "clip",
+   "desc": "Produkt-Mini-Clip",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "clip-lueur-lampe.mp4",
+   "dur": 3,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "clip",
+   "desc": "Produkt-Mini-Clip",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "clip-monsieur-hemd.mp4",
+   "dur": 3,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "clip",
+   "desc": "Produkt-Mini-Clip",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "clip-nackenventilator.mp4",
+   "dur": 3,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "clip",
+   "desc": "Produkt-Mini-Clip",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "clip-poloshirt-herren.mp4",
+   "dur": 3,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "clip",
+   "desc": "Produkt-Mini-Clip",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "clip-smartwatch-pro.mp4",
+   "dur": 3,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "clip",
+   "desc": "Produkt-Mini-Clip",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "clip-sonnenbrille-chrome.mp4",
+   "dur": 3,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "clip",
+   "desc": "Produkt-Mini-Clip",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "damen-20260603-1550.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "kategorie",
+   "desc": "Kategorie-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "eleganz.mp4",
+   "dur": 17,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "promo",
+   "desc": "Marken-Promo-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "flame-eigen.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "test",
+   "desc": "Musik-Test (nicht posten)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "flame-electro.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "test",
+   "desc": "Musik-Test (nicht posten)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "flame-hype-fast.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "test",
+   "desc": "Musik-Test (nicht posten)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "flame-hype1.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "test",
+   "desc": "Musik-Test (nicht posten)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "flame-hypepro.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "test",
+   "desc": "Musik-Test (nicht posten)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "flame-phonk-slow.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "test",
+   "desc": "Musik-Test (nicht posten)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "flame-trend-house.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "test",
+   "desc": "Musik-Test (nicht posten)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "flame-trend-hype.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "test",
+   "desc": "Musik-Test (nicht posten)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "flame-trend-phonk.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "test",
+   "desc": "Musik-Test (nicht posten)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "flame-voltaic.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "test",
+   "desc": "Musik-Test (nicht posten)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "hero-20260603-1550.mp4",
+   "dur": 13,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "promo",
+   "desc": "Marken-Promo-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "herren-20260603-1550.mp4",
+   "dur": 11,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "kategorie",
+   "desc": "Kategorie-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "luma-brise-master.mp4",
+   "dur": 9,
+   "res": "864x1152",
+   "audio": false,
+   "category": "quelle",
+   "desc": "Luma-Master (nicht posten)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "luma-daisy-master.mp4",
+   "dur": 9,
+   "res": "864x1152",
+   "audio": false,
+   "category": "quelle",
+   "desc": "Luma-Master (nicht posten)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "luma-flame-master.mp4",
+   "dur": 9,
+   "res": "1024x1024",
+   "audio": false,
+   "category": "quelle",
+   "desc": "Luma-Master (nicht posten)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "luma-onyx-master.mp4",
+   "dur": 9,
+   "res": "1024x1024",
+   "audio": false,
+   "category": "quelle",
+   "desc": "Luma-Master (nicht posten)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "luxestyle-allmix-20260603-1601.mp4",
+   "dur": 21,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "promo",
+   "desc": "Marken-Promo-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "luxestyle-brand-30s.mp4",
+   "dur": 26,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "brand",
+   "desc": "Marken-Video",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "luxestyle-brand-60s.mp4",
+   "dur": 52,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "brand",
+   "desc": "Marken-Video",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "men-20260603-1520.mp4",
+   "dur": 11,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "kategorie",
+   "desc": "Kategorie-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "montage-2026-06-09.mp4",
+   "dur": 16,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "promo",
+   "desc": "Marken-Promo-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "post-20260609-1607.mp4",
+   "dur": 21,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "promo",
+   "desc": "Marken-Promo-Reel",
+   "post_ready": true,
+   "in_queue": true
+  },
+  {
+   "file": "premium.mp4",
+   "dur": 20,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "promo",
+   "desc": "Marken-Promo-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "reel-brise-9x16-meta.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "meisterwerk",
+   "desc": "Safe-Zone-Reel (Musik)",
+   "post_ready": true,
+   "in_queue": true
+  },
+  {
+   "file": "reel-brise-9x16.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": false,
+   "category": "meisterwerk-stumm",
+   "desc": "Safe-Zone-Reel (stumm/TikTok)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "reel-daisy-9x16-meta.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "meisterwerk",
+   "desc": "Safe-Zone-Reel (Musik)",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "reel-daisy-9x16.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": false,
+   "category": "meisterwerk-stumm",
+   "desc": "Safe-Zone-Reel (stumm/TikTok)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "reel-flame-9x16-meta.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "meisterwerk",
+   "desc": "Safe-Zone-Reel (Musik)",
+   "post_ready": true,
+   "in_queue": true
+  },
+  {
+   "file": "reel-flame-9x16.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": false,
+   "category": "meisterwerk-stumm",
+   "desc": "Safe-Zone-Reel (stumm/TikTok)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "reel-onyx-9x16-meta.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "meisterwerk",
+   "desc": "Safe-Zone-Reel (Musik)",
+   "post_ready": true,
+   "in_queue": true
+  },
+  {
+   "file": "reel-onyx-9x16.mp4",
+   "dur": 9,
+   "res": "1080x1920",
+   "audio": false,
+   "category": "meisterwerk-stumm",
+   "desc": "Safe-Zone-Reel (stumm/TikTok)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "script-sommer-20260603-1834.mp4",
+   "dur": 16,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "promo",
+   "desc": "Marken-Promo-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "sommer.mp4",
+   "dur": 15,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "promo",
+   "desc": "Marken-Promo-Reel",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "veo-hero-brise-2026-06-08.mp4",
+   "dur": 4,
+   "res": "720x1280",
+   "audio": true,
+   "category": "mode",
+   "desc": "Veo-Fashion-Clip",
+   "post_ready": true,
+   "in_queue": true
+  },
+  {
+   "file": "veo-hero-cattote-2026-06-09.mp4",
+   "dur": 4,
+   "res": "720x1280",
+   "audio": true,
+   "category": "selbst-gestalten",
+   "desc": "POD-Showcase",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "veo-hero-cosy-2026-06-08.mp4",
+   "dur": 4,
+   "res": "720x1280",
+   "audio": true,
+   "category": "mode",
+   "desc": "Veo-Fashion-Clip",
+   "post_ready": true,
+   "in_queue": true
+  },
+  {
+   "file": "veo-hero-daisy-2026-06-08.mp4",
+   "dur": 4,
+   "res": "720x1280",
+   "audio": true,
+   "category": "mode",
+   "desc": "Veo-Fashion-Clip",
+   "post_ready": true,
+   "in_queue": true
+  },
+  {
+   "file": "veo-hero-mountaintee-2026-06-09.mp4",
+   "dur": 4,
+   "res": "720x1280",
+   "audio": true,
+   "category": "selbst-gestalten",
+   "desc": "POD-Showcase",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "veo-hero-nuit-2026-06-08.mp4",
+   "dur": 4,
+   "res": "720x1280",
+   "audio": true,
+   "category": "mode",
+   "desc": "Veo-Fashion-Clip",
+   "post_ready": true,
+   "in_queue": true
+  },
+  {
+   "file": "veo-hero-quotemug-2026-06-09.mp4",
+   "dur": 4,
+   "res": "720x1280",
+   "audio": true,
+   "category": "selbst-gestalten",
+   "desc": "POD-Showcase",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "veo-hero-sirene-2026-06-08.mp4",
+   "dur": 4,
+   "res": "720x1280",
+   "audio": true,
+   "category": "mode",
+   "desc": "Veo-Fashion-Clip",
+   "post_ready": true,
+   "in_queue": true
+  },
+  {
+   "file": "veo-hero-skulltee-2026-06-09.mp4",
+   "dur": 4,
+   "res": "720x1280",
+   "audio": true,
+   "category": "selbst-gestalten",
+   "desc": "POD-Showcase",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "veo-hero-sunsethoodie-2026-06-09.mp4",
+   "dur": 4,
+   "res": "720x1280",
+   "audio": true,
+   "category": "selbst-gestalten",
+   "desc": "POD-Showcase",
+   "post_ready": true,
+   "in_queue": false
+  },
+  {
+   "file": "werbung-luxestyle-de-clean.mp4",
+   "dur": 24,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "ad",
+   "desc": "Marken-Ad (VO)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "werbung-luxestyle-de.mp4",
+   "dur": 24,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "ad",
+   "desc": "Marken-Ad (VO)",
+   "post_ready": true,
+   "in_queue": true
+  },
+  {
+   "file": "werbung-luxestyle-en-clean.mp4",
+   "dur": 21,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "ad",
+   "desc": "Marken-Ad (VO)",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "werbung-luxestyle-en.mp4",
+   "dur": 21,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "ad",
+   "desc": "Marken-Ad (VO)",
+   "post_ready": true,
+   "in_queue": true
+  },
+  {
+   "file": "werbung-selbst-gestalten-de-clean.mp4",
+   "dur": 22,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "ad-selbst",
+   "desc": "Marken-Ad Selbst-gestalten",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "werbung-selbst-gestalten-de.mp4",
+   "dur": 22,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "ad-selbst",
+   "desc": "Marken-Ad Selbst-gestalten",
+   "post_ready": true,
+   "in_queue": true
+  },
+  {
+   "file": "werbung-selbst-gestalten-en-clean.mp4",
+   "dur": 18,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "ad-selbst",
+   "desc": "Marken-Ad Selbst-gestalten",
+   "post_ready": false,
+   "in_queue": false
+  },
+  {
+   "file": "werbung-selbst-gestalten-en.mp4",
+   "dur": 18,
+   "res": "1080x1920",
+   "audio": true,
+   "category": "ad-selbst",
+   "desc": "Marken-Ad Selbst-gestalten",
+   "post_ready": true,
+   "in_queue": true
+  }
+ ]
+}
