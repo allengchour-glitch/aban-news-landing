@@ -16,6 +16,18 @@
 - **🎁 Perla-Set Cross-Sell (Conversion/AOV):** In allen 3 «Perla»-Stücken (Kette/Ohrringe/Armband) oben ein
   verlinkter Set-Block zu den anderen beiden Teilen → als Geschenk-Trio positioniert. Kein Bundle-Produkt (kein Fulfillment-Risiko).
 
+## Session 2026-06-14 (Teil 2) — +5 Herren-Apparel (Bademode-Versuch → Hosen/Pulli/Hemd)
+- User „beides" (Herren-Bademode + Gürtel/Accessoires). **ROHE DIAGNOSE: CJ hat KEINE Herren-Gürtel** (Suche „men belt"/
+  „mens leather belt" liefert NUR T-Shirts/Deo/Brillen/Blazer — 0 Gürtel) und **kaum Bademode** (nur 1 Beach-Shorts).
+  Die Cap-Treffer war Dublette der «Bronx». → Statt leerer Nischen: neue Herren-Apparel-Kategorien gefüllt, die fehlten.
+- **Produkte (alle ACTIVE/6 Kanäle/5 Bilder READY/SEO, Tag herren→Für Ihn 209→214):** Beach-Shorts «Coral»
+  (Bademode-Tag, 27.90 · pid 2606120128541634800 · 15430462603649) · Leinen-Hose «Lino» (Straight-Leg, 39.90 ·
+  pid 2606131438051600000 · 15430462636417) · Cargo-Hose «Trail» (Multi-Pocket, 44.90 · pid 2606140601531614900 ·
+  15430462669185) · Strickpullover «Nico» (Half-Neck, 49.90 · pid 2606130935151602600 · 15430462701953) ·
+  Ice-Silk Hemd «Frost» (kühlend, 29.90 · pid 2606140544251604500 · 15430462767489).
+- **Lehre:** Herren-Gürtel & echte Bademode = NICHT auf CJ holbar (für die bräuchte es anderen Lieferanten). Herren-HOSEN
+  (Chino/Cargo), Pullover, Ice-Silk-Hemden dagegen vorhanden → Herren-Abteilung damit auf neue Kategorien erweitert.
+
 ## Session 2026-06-14 — +6 Herren-Bekleidung (Herren-Abteilung auffüllen)
 - User-Wunsch „männer sachen füllen" (Shop war frauenlastig). Fokus Herren-Sommer-Bekleidung, Tag `herren`+`herren-mode`
   → „👨 Für Ihn"-Collection (Regel TAG=herren, 203→209). ACTIVE + 6 Kanäle + je 5 Bilder READY + SEO. Grössen S–XL.
