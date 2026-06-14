@@ -1,0 +1,45 @@
+{
+  "_zweck": "Authentische Bärndütsch-Bank für LuxeStyle-Captions (Stadt/Region Bern). Gelernt 2026-06-14 aus Recherche (berndeutsch.ch, edimuster.ch, als.wikipedia Berndeutsch) + eigenen Gewinner-Captions (Mundart = bester Hook, Ø 793 V). Caption-Engine + Brain nutzen das. KEIN Zürichdeutsch, kein Deutschland.",
+  "bern_marker_TOP3": [
+    "L-Vokalisierung: l vor Konsonant/Wortende -> u (viel=viu, schnell=schnäu, alt=aut, alle=aui, Geld=Gäud, Gefühl=Gfüeu, wild=wiud)",
+    "gäng/geng (=immer) ODER äuä (=wohl/echt) einstreuen",
+    "gäu? am Satzende (=gell/oder?)"
+  ],
+  "vokabular": {
+    "i": "ich", "du": "du", "mir": "wir (Bern, NICHT mer)", "dir": "ihr/Sie (Höflichkeit)",
+    "ha/han": "habe", "hesch": "hast", "hei": "haben (wir)", "gits/git's": "gibt es",
+    "gseh/gsesch": "sehen/siehst", "wott": "will", "chasch": "kannst", "machsch": "machst",
+    "lue/lueg": "schau", "luege": "schauen", "äuä": "wohl/echt jetzt", "gäng/geng": "immer",
+    "gäu/gäll": "gell/oder?", "grüessech": "grüss Sie (Bern-Gruss)", "hoi": "hallo (locker)",
+    "chli": "bisschen/klein", "nid": "nicht (Bern, NICHT nöd)", "nüt": "nichts", "nümm": "nicht mehr",
+    "öpper": "jemand", "öppis": "etwas", "dehei": "daheim", "itz": "jetzt", "scho": "schon", "no": "noch",
+    "es/e": "ein/eine", "ds": "das", "u": "und (sehr berntypisch)", "au": "auch", "eifach": "einfach",
+    "Meitschi": "Mädchen/junge Frau", "Büez": "Arbeit", "guet": "gut", "mängs": "manches/viele",
+    "hole/hol dr's": "kaufen/hol dir's", "spicher": "speichere"
+  },
+  "phrasen": [
+    "Lueg mau das aa 😍 (Neugier)",
+    "Äuä ds schönschte Teil vom Summer. (Hype)",
+    "Das mues i ha. (Begehrlichkeit)",
+    "Für nume CHF __ – im Ärnscht?! (Preis)",
+    "Geng e gueti Idee 👌 (Evergreen-CTA)",
+    "Du gsesch eifach mega us drmit. (Kompliment)",
+    "Mach dys eiges Teil – ganz wie du. (Personalisieren · BEWIESEN 793 V)",
+    "Es perfekts Gschänk, gäu? (Geschenk)",
+    "Schnäu si – isch fasch weg! (Knappheit)",
+    "Spicher dr das für spöter 📌 (Save)",
+    "Teil das mit dyre beschte Fründin 💛 (Share)",
+    "Wele nimmsch – Schwarz oder Wyss? (Engagement-Frage)",
+    "Viu Style für wenig Gäud. (Value, L-Vokalisierung)",
+    "Genau das hesch gsuecht, gäu? (Bedürfnis)",
+    "Hol dr's, solang's no git 🛍️ (CTA + Knappheit)",
+    "So gahsch in Summer 🌿 (eigener Gewinner)",
+    "Für di oder zum Verschänke? (eigener Gewinner)"
+  ],
+  "begruessung_abbinder": ["Hoi zäme!", "Grüessech mitenand", "Merci viumau ❤️", "Bis bald wieder!", "Mach's guet 👋"],
+  "vermeiden": {
+    "zu_deutsch": ["ich->i", "nicht->nid", "etwas->öppis", "jemand->öpper", "immer->gäng", "du siehst->du gsesch", "du hast->hesch", "viel/schnell/Geld->viu/schnäu/Gäud", "ein schönes Teil->es schöns Teil"],
+    "ist_zueriduetsch_nicht_bern": ["grüezi (->grüessech)", "nöd (->nid)", "nüüt (->nüt)", "mer=wir (->mir)", "all/immer-ZH (->gäng)", "es bitzeli (->es chli)"]
+  },
+  "beispiel_caption": "Viu Style für CHF 39.90 – äuä ds beschte Teil, gäu? 😍 Schnäu si! 💾 Spicher dr's · –10% mit WELCOME10 → luxestyle.ch #schweizmode #ootdschweiz #bärndütsch"
+}

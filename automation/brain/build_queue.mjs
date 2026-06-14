@@ -21,18 +21,20 @@ const OUT = path.join(ROOT, 'automation', 'cloudflare', 'luxe-poster', 'src', 'q
 const DRY = process.argv.includes('--dry');
 
 // Gewinner-Hook-Opener (Neugier/Preis-Kontrast) + Share/Save-Trigger — rotierend, kein Spam.
+// Mix aus Bärndütsch (bester Hook-Typ, Ø 793 V — siehe berndeutsch.json) + Hochdeutsch.
 const OPENERS = [
+  'Lueg mau das aa 😍',                         // Bärndütsch
+  'Äuä ds schönschte Teil grad itz 👀',          // Bärndütsch
   'Wusste nicht, dass ich das brauche 👀',
-  'Stopp — das musst du sehen ✋',
+  'Viu Style für wenig Gäud ✨',                  // Bärndütsch (L-Vokalisierung)
   'Das gibt es so kaum in der Schweiz 🇨🇭',
-  'Kleiner Preis, grosse Wirkung ✨',
-  'Genau das hat mir gefehlt 🙌',
+  'Genau das hesch gsuecht, gäu? 🙌',            // Bärndütsch
 ];
 const TRIGGERS = [
-  '💾 Speicher dir das für später',
-  '👇 Markier jemanden, der das braucht',
+  '💾 Spicher dr das für spöter',                // Bärndütsch
+  '👇 Markier öpper, wo das bruucht',            // Bärndütsch
   '👇 Würdest du? Schreib’s in die Kommentare',
-  '💾 Merk’s dir · folge für mehr Schweizer Finds',
+  '💾 Merk’s dir · folg für meh Schwiizer Finds',// Bärndütsch
 ];
 
 function loadPools() {

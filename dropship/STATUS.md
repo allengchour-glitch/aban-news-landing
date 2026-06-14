@@ -33,6 +33,14 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-14 (Berndeutsch gelernt)
+- **🇨🇭 Bärndütsch-Bank gebaut** (`automation/brain/berndeutsch.json`): authentisches Berndeutsch aus Recherche
+  (berndeutsch.ch/edimuster) + eigenen Gewinner-Captions. Bern-Marker: **L-Vokalisierung (viu/schnäu/aui/Gäud)**,
+  *mir/gäng/äuä/gäu?/grüessech* — KEIN Zürichdeutsch.
+- **🧠 Gehirn:** `rules.berndeutsch` (3 Bern-Signale in jede Mundart-Caption) + **5 authentische Bern-Hooks**.
+  `build_queue.mjs`-Opener/Trigger jetzt Bärndütsch-Mix → Live-Captions z.B. „Lueg mau das aa 😍 … Spicher dr das".
+- Hinweis: Video-AUDIO-Transkription geht hier nicht (kein Tool) → gelernt aus Caption-Daten + Recherche.
+
 ### 2026-06-14 (Handy-Steuerung + ohne-dich-Setup)
 - **📱 `control.html` neu = Worker-Dashboard** (funktioniert HEUTE, kein GitHub): Worker-URL+Key 1× eintragen →
   Buttons 📷 Posten · 📊 Status · 📈 Meta-Analyse · 🧹 FB-Cleanup · 🔄 Queue-Reset · 🔗 Queue-URL. „+"-Key wird korrekt kodiert.

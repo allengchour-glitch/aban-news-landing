@@ -379,7 +379,12 @@
       "Gliche Person, ganz anders Gfüehl ✨ %s — vorhär/nachhär. ↗️ Teile mit öpperem wo es Upgrade bruucht · −10%% WELCOME10 → luxestyle.ch",
       "Gold oder Silber: was passt zu dir? 👇 %s — schrib's i d Kommentär · 📌 speicher's · −10%% WELCOME10 → luxestyle.ch",
       "Schick das dere Fründin, wo immer fragt «woher hesch das?» 👀 %s · ↗️ teile · 🛒 Bio-Link · −10%% WELCOME10 → luxestyle.ch",
-      "Drü Looks mit eim Teil — speicher der das 💾 %s · welä zersch? 👇 −10%% WELCOME10 → luxestyle.ch"
+      "Drü Looks mit eim Teil — speicher der das 💾 %s · welä zersch? 👇 −10%% WELCOME10 → luxestyle.ch",
+      "Lueg mau das aa 😍 %s — äuä ds beschte Teil vom Summer, gäu? 💾 Spicher dr's 👇 –10%% WELCOME10 → luxestyle.ch",
+      "Viu Style für wenig Gäud 🤍 %s — schnäu si, isch fasch weg! 📌 Spicher der's · –10%% WELCOME10 → luxestyle.ch",
+      "Das mues i ha 👀 %s — wele nimmsch? Schrib's i d Kommentär 👇 –10%% WELCOME10 → luxestyle.ch",
+      "Es perfekts Gschänk, gäu? 🎁 %s — teil das mit dyre beschte Fründin 💛 –10%% WELCOME10 → luxestyle.ch",
+      "Du gsesch eifach mega us drmit ✨ %s — hol dr's, solang's no git 🛍️ 💾 spicher's · –10%% WELCOME10 → luxestyle.ch"
     ],
     "format_priority": [
       "UGC/Hands-on-Demo (Problem->Loesung, Vorher/Nachher) — Algo pusht nativ am staerksten",
@@ -410,7 +415,8 @@
       "A/B-Entscheidung (Gold oder Silber? / welä Look fürs Date?) als Split-Screen = Comment- & Tag-a-Friend-Maschine (genau das fehlte → 0 Shares)",
       "Vorher-Nachher-Transformation auf Trend-Sound (harter Cut, gleiche Pose) = Share-Trigger + hohe Hold-Rate"
     ],
-    "caption_rule": "HVC: erste ~125 Zeichen = Hook (vor dem Abschneiden), dann Value, dann EXPLIZITER Save- ODER Share-CTA + CHF-Preis. CH-Tags only (#schweizmode #ootdschweiz #swissmade + Stadt-Rotation), NIE Deutschland-Tags. Hook-Text muss stumm wirken (Burn-in), in der Bildmitte, NICHT in der unteren Safe-Zone."
+    "caption_rule": "HVC: erste ~125 Zeichen = Hook (vor dem Abschneiden), dann Value, dann EXPLIZITER Save- ODER Share-CTA + CHF-Preis. CH-Tags only (#schweizmode #ootdschweiz #swissmade + Stadt-Rotation), NIE Deutschland-Tags. Hook-Text muss stumm wirken (Burn-in), in der Bildmitte, NICHT in der unteren Safe-Zone.",
+    "berndeutsch": "Mundart = bester Hook (Ø 793 V) -> AUTHENTISCHES Bärndütsch (Stadt/Region Bern), NICHT Zürichdeutsch. 3 Bern-Signale in JEDE Mundart-Caption: (1) L-Vokalisierung (viu/schnäu/aui/Gäud), (2) gäng ODER äuä, (3) gäu? am Satzende. Vokabular/Phrasen: automation/brain/berndeutsch.json. Vermeiden: grüezi/nöd/nüüt/mer (=ZH). 'u' statt 'und'. Nicht überkorrekt — locker tippen."
   },
   "decisions": [
     {
