@@ -16,6 +16,30 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 🚀 2026-06-14 — AUTONOM-SCHWUNG: eBay LIVE + 16 SEO-Seiten + Bilder + Selbst-Hirn (zuerst lesen)
+> Session „mach alles autonom". Cloudflare Pages ist **git-verbunden** → Push auf `main` deployt automatisch
+> (zusätzlich `wrangler pages deploy _site` manuell). Vor `git reset --hard` IMMER `git fetch` (Parallel-Bots).
+
+- **🛒 eBay-Angebote KOMPLETT LIVE (verdient mit!):** `/api/ebay` echte Browse-API + EPN-Affiliate-Tracking.
+  Cloudflare-Pages-Secrets gesetzt (Pages-Token darf das!): `EBAY_CLIENT_ID=allengch-abannews-PRD-ca92c9933-98a2bbef`,
+  `EBAY_CLIENT_SECRET` (PRD-…-1ffb, vollständig), `EBAY_DEV_ID=4974f07d-…`, `EBAY_CAMPAIGN_ID=5339156671`
+  (EPN-Kampagne „aban"). Schalter war die **Compliance** („Marketplace Account Deletion" → Exemption „I do not
+  persist eBay data") — vorher `invalid_client`. `/angebote-suche.html` + 14 Kategorie-Seiten = echte Angebote.
+  **🔥 Angebote** in der site-weiten Engine-Nav. Offen: weitere Affiliate-Netzwerke.
+- **🧠 Selbst-Hirn (3 Arme):** `tools/daily_improvement_scan.py` (Health-Score `automation/brain-state.json`,
+  aktuell **97.3/100**; `--fix` noopener, `--voice` Hype-Wörter) + `automation/brain-wake.sh` + SessionStart-Hook
+  (`.claude/settings.json`) + `workers/site-brain/` (CF-Cron-Wächter, braucht Workers+KV-Token) + `.gitlab-ci.yml`
+  `brain-improve` (Branch `brain/auto`, braucht `GH_PUSH_TOKEN`). Runbook `automation/BRAIN.md`.
+- **🎨 Optik:** Engine-Nav (Gradient/Hover/Icons), Hero-SVGs auf Ratgebern/Hubs/6 Rechnern/37 ki-fuer-Seiten
+  (fehlendes Foto → KI-Banner-SVG; 299 mit Foto unberührt); 32 Seiten Brand-Voice entschärft.
+- **📄 16 neue SEO-Ratgeber (nachfrage-basiert via Google-Autocomplete), je FAQ-Schema + Hero-SVG:** rechnung-stornieren,
+  kunden-gewinnen, steuererklaerung-selbststaendige, rechnungsprogramm-kostenlos, lexoffice-vs-sevdesk, qonto-vs-kontist,
+  gewerbe-anmelden-kosten, rechnung-ins-ausland, privatrechnung-schreiben, rechnung-auf-englisch, kleinunternehmer-grenze-2026,
+  selbststaendig-krankenversicherung, buchhaltung-fuer-anfaenger, ki-fuer-praesentationen, ki-fuer-hausarbeiten, ki-fuer-lehrer.
+  Alle in `js/site-nav.js` + `sitemap.xml` (+ Ratgeber-Vertiefung). **💼 `auftraege.html`** = LinkedIn-artiger Aufträge-Feed.
+- **⏳ Nur User kann freischalten:** Cloudflare-D1-Token (echte Inserate/Aufträge), Cloudflare-Workers+KV (site-brain deploy),
+  GitLab (brain-improve auto), Affiliate-Konten. Deploy-Token `cfut_…` (Pages:Edit, KEIN D1/Workers), Account `33e5217c…`.
+
 ## 📬 2026-06-14 — Versandfertige Newsletter-Queue + Hub-Hero-Robustheit (Newsletter-Workstream)
 > Session „weiter / mach alles / update". Alles gemerged. Drei Blocker bleiben user-seitig
 > (Stripe-Key, CF-Domain-Umzug, beehiiv-Versand) — sonst ist alles turnkey gemacht.

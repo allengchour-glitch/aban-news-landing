@@ -40,6 +40,16 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-14 (abannews-Session) — ✅ eBay-Affiliate LIVE + 13 SEO-Seiten + Bilder + Selbst-Hirn (Detail: `PROJEKT.md` oben):**
+- **eBay-Angebote scharf:** `/api/ebay` echte Browse-API + EPN-Tracking. **Neue Cloudflare-Pages-Secrets gesetzt:**
+  `EBAY_CLIENT_ID/SECRET/DEV_ID` + `EBAY_CAMPAIGN_ID=5339156671`. (Pages-Token DARF Secrets setzen.) Nicht überschreiben.
+- **13 neue abannews-SEO-Seiten** (rechnung-*, vergleiche, kleinunternehmer-grenze-2026, rechnung-auf-englisch,
+  krankenversicherung, buchhaltung-fuer-anfaenger …) + **`auftraege.html`** (LinkedIn-Feed). Alle in `js/site-nav.js`
+  + `sitemap.xml`. **`🔥 Angebote` neu in der Engine-Nav.**
+- **`tools/daily_improvement_scan.py` erweitert** (Score `automation/brain-state.json`, `--voice`) + **`workers/site-brain/`**
+  (CF-Cron-Wächter, noch zu deployen) + **SessionStart-Hook** `.claude/settings.json`. `.gitlab-ci.yml` `brain-improve` unverändert.
+- Berührt **keinen** Shop/Katalog/Social. Branches `claude/seo-*`, `claude/*-brain*` → alle in `main` gemergt.
+
 **2026-06-14 (Luxestyle-Session) — ✅ KI-Content-Batch live (auf Claude-Max-Abo, keine API):**
 - **10 neue SEO-Ratgeber** im Blog `ratgeber` (jetzt ~59 Artikel). Neue Handles (NICHT doppeln):
   `moissanite-vs-diamant-vergleich`, `herren-sommer-look-leinen-2026`, `ventilator-sommerhitze-ratgeber`,
