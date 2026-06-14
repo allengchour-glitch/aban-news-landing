@@ -14,11 +14,11 @@ export async function onRequestGet({ request, env }) {
   const kat = (url.searchParams.get("kat") || "").slice(0, 40);
   const q = (url.searchParams.get("q") || "").slice(0, 60);
   const now = Date.now();
-  let sql = "SELECT id,kat,ort,plz,titel,beschreibung,preis,kontakt,created,status FROM inserate WHERE status=? AND (expires=0 OR expires>?)";
+  let sql = "SELECT id,kat,ort,plz,titel,beschreibung,preis,kontakt,typ,zustand,bild,featured,created,status FROM inserate WHERE status=? AND (expires=0 OR expires>?)";
   const binds = [status, now];
   if (kat) { sql += " AND kat=?"; binds.push(kat); }
   if (q) { sql += " AND (titel LIKE ? OR beschreibung LIKE ?)"; binds.push("%" + q + "%", "%" + q + "%"); }
-  sql += " ORDER BY created DESC LIMIT 80";
+  sql += " ORDER BY featured DESC, created DESC LIMIT 80";
   try {
     const r = await env.DB.prepare(sql).bind(...binds).all();
     return json({ items: r.results || [] });

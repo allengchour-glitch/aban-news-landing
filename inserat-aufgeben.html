@@ -41,12 +41,17 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.8rem;color:var
 <main><div class="wrap">
   <form id="f" autocomplete="off">
     <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <label>Kategorie</label>
-    <select id="kat"></select>
+    <div class="row">
+      <div><label>Anzeigentyp</label><select id="typ"><option>Angebot</option><option>Gesuch</option></select></div>
+      <div><label>Kategorie</label><select id="kat"></select></div>
+      <div><label>Zustand</label><select id="zustand"><option value="">— (optional)</option><option>Neu</option><option>Wie neu</option><option>Gebraucht</option><option>Defekt</option></select></div>
+    </div>
     <label>Titel *</label>
     <input id="titel" maxlength="120" placeholder="z. B. Gut erhaltenes Sofa, 3-Sitzer">
     <label>Beschreibung *</label>
     <textarea id="beschreibung" rows="5" maxlength="2000" placeholder="Zustand, Details, Maße, Abholung/Versand …"></textarea>
+    <label>Bild-URL (optional)</label>
+    <input id="bild" maxlength="400" placeholder="https://… (Link zu einem Foto, https)">
     <div class="row">
       <div><label>Preis</label><input id="preis" maxlength="30" placeholder="z. B. 120 CHF / VB"></div>
       <div><label>PLZ</label><input id="plz" maxlength="12" placeholder="8000"></div>
@@ -70,7 +75,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.8rem;color:var
   function show(t,cls){var m=$("#msg");m.className="msg "+cls;m.textContent=t}
   $("#f").addEventListener("submit",function(e){e.preventDefault();
     if(!$("#agb").checked){show("Bitte die Bestätigung anhaken.","err");return}
-    var data={website:$("#f [name=website]").value,kat:$("#kat").value,titel:$("#titel").value,beschreibung:$("#beschreibung").value,preis:$("#preis").value,plz:$("#plz").value,ort:$("#ort").value,kontakt:$("#kontakt").value};
+    var data={website:$("#f [name=website]").value,typ:$("#typ").value,kat:$("#kat").value,zustand:$("#zustand").value,bild:$("#bild").value,titel:$("#titel").value,beschreibung:$("#beschreibung").value,preis:$("#preis").value,plz:$("#plz").value,ort:$("#ort").value,kontakt:$("#kontakt").value};
     if(data.titel.trim().length<3||data.beschreibung.trim().length<10||data.kontakt.trim().length<3){show("Bitte Titel, Beschreibung und Kontakt ausfüllen.","err");return}
     var btn=$("#submit");btn.disabled=true;btn.textContent="Senden …";
     fetch("/api/inserat-submit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}).then(function(r){return r.json().then(function(d){return{s:r.status,d:d}})}).then(function(o){
