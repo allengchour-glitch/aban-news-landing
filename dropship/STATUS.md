@@ -18,6 +18,9 @@
 ## ✅ Verlauf — was gemacht wurde
 
 ### 2026-06-14
+- **💬 Chat-/Kommentar-Auto-Antwort gebaut:** TikTok-DM-Responder (`tiktok-dm-browser.mjs`, Browser/PC, Mundart-FAQ),
+  IG-DM (`ig-dm-browser.mjs`) + IG/FB-Kommentare (`social-comment-reply.mjs`, Meta-API) — alles in den Tages-PC-Task
+  eingehängt. TikTok-DMs nur per Browser (keine API). FAQ-Stil, idempotent, Caps, kein Spam.
 - **Schweizweit statt nur Bern:** CH-Städte rotieren (Zürich/Basel/Luzern/Bern/Genf/swissmade) in Queue+Gehirn.
 - **Geo-Regeln verankert:** Schweiz only (kein Deutschland), international später nur getrennt via Shopify Markets.
 - **Cloudflare-Worker deployed** (mit dir) → IG/FB autonom. KV+Secrets gesetzt, Cursor=1 (kein Doppelpost).
