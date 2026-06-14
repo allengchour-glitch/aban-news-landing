@@ -4,7 +4,13 @@
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
 ## 🟢 LÄUFT AUTONOM (ohne dein Zutun)
-- **🖱️ Kein PowerShell mehr nötig:** `automation/local/SETUP-EINMALIG.bat` (1× doppelklicken) richtet den
+- **📷 IG/FB-Poster LIVE verifiziert** (Cloud-Check 14.06.): `{"cursor":1,"total":29}` — postet 29 Mix-Posts
+  (Bilder+Reels+Stories) autonom 2×/Tag. Handy-Trigger: `…workers.dev/?key=Abanaban192%2B` (`+` = `%2B`!).
+- **♻️ Selbst-aktualisierend (kein PowerShell mehr für Inhalte):** Worker holt Queue von Live-CDN-URL (KV `queue_url`).
+  Cloud-Claude aktualisiert Inhalt: queue.json → Shopify-CDN hochladen → `?key=…&queue=<url>` aufrufen. KEIN Redeploy.
+  Queue-CDN aktuell: `cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-queue.json`. ⚠️ Einmal `wrangler deploy`
+  nötig, damit der selbst-aktualisierende Worker-Code aktiv wird (danach NIE wieder PowerShell fürs Posten).
+- **🖱️ Kein PowerShell mehr nötig (PC-Teil):** `automation/local/SETUP-EINMALIG.bat` (1× doppelklicken) richtet den
   Windows-Tagestask ein → danach läuft täglich automatisch: Follower · TikTok-Post · IG+TikTok-DMs · Kommentare
   (zieht auch git-Updates selbst). `JETZT-LAUFEN.bat` = sofort-Lauf per Doppelklick.
 - **📷 Instagram + Facebook posten 2×/Tag** — Cloudflare-Worker live (`luxe-poster.allengchour.workers.dev`),
