@@ -27,6 +27,9 @@
 ## ✅ Verlauf — was gemacht wurde
 
 ### 2026-06-14
+- **🎵 Trend-Sound-Workflow:** TikTok-Upload jetzt Default **ENTWURF** (Inbox) → Reels landen stumm in den TikTok-
+  Entwürfen, du legst in der App den Trend-Sound drauf + postest (1 Tipp). Trend-Sounds gehen lizenzrechtlich NUR
+  in der App (keine API kann das). Stumme `reels/*-clean.mp4` existieren (ideal dafür).
 - **🎞️ Alle Formate überall:** Worker um **IG-Stories** erweitert (Foto+Video); Gehirn (`build_queue.mjs`) baut jetzt
   MIX-Queue = Bilder + Reels (CDN-Videos) + Stories interleaved (29 Posts). IG: alle 3 · FB: Bild+Reel (Story=IG-only) ·
   TikTok: Reels/Videos via tiktok-autopost. → 1× `wrangler deploy` nötig, damit Worker neue Queue+Story-Code zieht.

@@ -42,8 +42,11 @@ git pull origin claude/luxestyle-product-CizQ6 2>$null
 # 3) CH-Follower holen (Browser/CDP)
 node "automation/local/ch-follower-growth.mjs"
 
-# 4) TikTok-Reel posten über die offizielle Content-Posting-API (KEIN Browser nötig)
+# 4) TikTok-Reel hochladen über die offizielle Content-Posting-API (KEIN Browser nötig).
+#    Default = ENTWURF (Inbox): Reel landet stumm in deinen TikTok-Entwürfen → du legst in der App den
+#    TREND-SOUND drauf + postest (1 Tipp). Trend-Sounds gehen lizenzrechtlich NUR in der App, nicht per API.
 #    No-op, solange TT_ACCESS_TOKEN nicht gesetzt ist.
+if (-not $env:TT_PRIVACY_LEVEL) { $env:TT_PRIVACY_LEVEL = "DRAFT" }
 if ($env:TT_ACCESS_TOKEN) { node "automation/tiktok-autopost.mjs" }
 
 # 5) DMs beantworten (Browser/CDP — TikTok hat keine DM-API, IG-API ist app-gesperrt)
