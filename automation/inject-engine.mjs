@@ -106,6 +106,18 @@ for (const f of files) {
     });
     if (next !== html) { html = next; changed = true; }
   }
+  // (5) Standard-OG-Bild + Twitter-Card, wo keins gesetzt ist (bessere Social/Discover-CTR)
+  {
+    const pos = html.toLowerCase().lastIndexOf("</head>");
+    if (pos >= 0 && !/property=["']og:image["']/i.test(html)) {
+      let add = '<meta property="og:image" content="' + SITE + '/og-image.png">';
+      if (!/name=["']twitter:card["']/i.test(html)) {
+        add += '<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="' + SITE + '/og-image.png">';
+      }
+      html = html.slice(0, pos) + add + "\n" + html.slice(pos);
+      changed = true;
+    }
+  }
   if (changed) { try { writeFileSync(f, html); } catch { skipped++; } } else skipped++;
 }
 console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD injiziert, " + skipped + " übersprungen (von " + files.length + ").");

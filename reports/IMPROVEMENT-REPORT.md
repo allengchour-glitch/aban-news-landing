@@ -1,12 +1,13 @@
 # Täglicher Verbesserungs-Report — abannews.com
 
-> Automatisch erzeugt: **2026-06-14 18:48 UTC** · 2175 HTML-Seiten geprüft · reine Heuristik, manuell verifizieren.
+> Automatisch erzeugt: **2026-06-14 19:11 UTC** · 2190 HTML-Seiten geprüft · reine Heuristik, manuell verifizieren.
 
-**Befunde:** 🔴 0 hoch · 🟡 0 mittel · 🟢 27 niedrig (Tonalität)
+**Befunde:** 🔴 0 hoch · 🟡 0 mittel · 🟢 28 niedrig (Tonalität)
 
 Ergänzend: `python3 tools/link_checker.py` prüft kaputte Links separat.
 
-## 🟢 Voice: Hype-Wörter — 27
+## 🟢 Voice: Hype-Wörter — 28
+- `ki-logo-erstellen.html` — einzigartiges
 - `ueber-aban.html` — Revolution
 - `launch-manual.html` — disruptive, game-changer, revolutionary
 - `cockpit-app.html` — 10x
@@ -18,6 +19,5 @@ Ergänzend: `python3 tools/link_checker.py` prüft kaputte Links separat.
 - `vergleich/claude-code-vs-cursor.html` — Game-Changer
 - `vergleich/codex-vs-cursor.html` — Game-Changer
 - `vergleich/flux-vs-stable-diffusion.html` — einzigartigere
-- `vergleich/deepseek-vs-groq.html` — Disruptive
-- … und 15 weitere
+- … und 16 weitere
 
