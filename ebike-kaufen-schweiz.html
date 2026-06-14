@@ -58,7 +58,23 @@ footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var
     <div class="tip"><h3>Motor &amp; Marke</h3><p>Bekannte Motoren (Bosch &amp; Co.) sind gut wartbar und langlebig.</p></div>
     <div class="tip"><h3>Probefahrt</h3><p>Sitzposition, Bremsen und Unterstützung testen, bevor du kaufst.</p></div>
   </div>
-  <h2>Häufige Fragen</h2>
+
+  <section style="margin-top:26px">
+    <h2 style="margin-bottom:4px">Aktuelle Angebote</h2>
+    <p style="font-size:.78rem;color:var(--muted);margin-bottom:12px">Live von Partnern (z. B. eBay) · Klick führt zum Anbieter · Provision möglich, Preis bleibt gleich.</p>
+    <div id="ebayRow" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px"><div style="color:var(--muted);font-size:.9rem">Lade Angebote …</div></div>
+  </section>
+  <script>(function(){var EQ="E-Bike";var el=document.getElementById("ebayRow");if(!el)return;
+    function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+    fetch("/api/ebay?limit=6&q="+encodeURIComponent(EQ)).then(function(r){return r.json()}).then(function(d){
+      var it=(d.items||[]).slice(0,6);if(!it.length){el.closest("section").style.display="none";return}
+      el.innerHTML=it.map(function(x){var img=x.img?('<div style="aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(x.img)+'\')"></div>'):'<div style="aspect-ratio:1/1;background:#f3eee4;display:flex;align-items:center;justify-content:center;font-size:1.6rem">🛍️</div>';
+        var href=(x.url&&x.url!=="#")?esc(x.url):"#";
+        return '<a href="'+href+'" target="_blank" rel="sponsored nofollow noopener" style="border:1px solid var(--line);border-radius:11px;overflow:hidden;background:#fff;text-decoration:none;color:var(--ink);display:flex;flex-direction:column">'+img+'<div style="padding:8px 9px"><div style="font-size:.78rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px">'+esc(x.title)+'</div><div style="color:var(--amber-dk);font-weight:800;font-size:.9rem">'+esc(x.price||"")+'</div></div></a>';
+      }).join("");
+    }).catch(function(){el.closest("section").style.display="none"});
+  })();</script>
+  <h2 style="margin-top:26px">Häufige Fragen</h2>
     <details><summary>Wo finde ich günstige E-Bikes in der Schweiz?</summary><p>In der Angebote-Suche suchst du nach E-Bike und filterst nach Preis und Zustand; lokale Occasionen im Inserate-Bereich.</p></details>
     <details><summary>Worauf beim gebrauchten E-Bike achten?</summary><p>Akku-Zustand/Reichweite, Motorhersteller, Kilometer und Garantie — eine Probefahrt zeigt viel.</p></details>
     <details><summary>Kann ich mein E-Bike verkaufen?</summary><p>Ja — kostenlos als Inserat aufgeben, kurze Prüfung vor der Veröffentlichung.</p></details>
