@@ -1,5 +1,13 @@
 # 📦 CJ-Import-Log — LuxeStyle CH
 
+## 2026-06-15 — 30er-Charge Herbst 2026 (CJ-Token vom User, autonom mit Bild-QA)
+> CJ-Access-Token vom User transient erhalten (funktioniert: code 200). Ziel ~30: Statement-Schmuck · Beauty · Herbst-Accessoires.
+> **Methode:** CJ-Suche → **jedes Bild visuell QA** (asiat. Schrift/Watermark/Text-Overlay/Fremdmarke ablehnen) → ACTIVE anlegen
+> (CHF = Kosten×3.7 auf .90) → in alle 6 Publications. 3 parallele Import-Agenten + 2 manuell.
+- **Manuell angelegt + publiziert (2):** Ohrringe «Lotus» (999 Silber, CHF 24.90, `15430690865537`) · Ring «Provence»
+  (Vintage-Stein, CHF 19.90, `15430690898305`).
+- **3 Agenten laufen** (Schmuck-Statement / Beauty / Accessoires) — Ergebnisse werden hier ergänzt.
+
 ## 2026-06-13 — Nachfrage-getriebener Import (autonom, „suche was Leute wollen, hole Produkte")
 - **Trend-Recherche Juni 2026** (Web + Kanal-Daten): praktische Sommer-/Home-Gadgets („TikTok made me buy it" =
   Nutzen > Spielerei), Sommer-Kühlung, Bad/Küche. Deckt sich mit Kanal-Gewinner (Smart-Diffuser 1107 V = Gadget-Wow).
