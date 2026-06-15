@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-14 23:02 UTC",
-  "score": 97.2,
-  "trend": "→ neu",
-  "best": 97.2,
+  "updated": "2026-06-15 22:20 UTC",
+  "score": 99.3,
+  "trend": "↑ +2.1",
+  "best": 99.3,
   "history": [
     {
       "date": "2026-06-14",
@@ -11,6 +11,14 @@
       "medium": 0,
       "low": 28,
       "score": 97.2
+    },
+    {
+      "date": "2026-06-15",
+      "pages": 2248,
+      "high": 0,
+      "medium": 0,
+      "low": 7,
+      "score": 99.3
     }
   ]
 }
