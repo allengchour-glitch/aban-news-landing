@@ -1,0 +1,29 @@
+name: Shop-Fix (policies + premium section)
+
+# Ein Lauf behebt: (1) Policy-E-Mail-Tippfehler (Merchant-Sperr-Trigger),
+# (2) fügt die Premium-Marken-Startseiten-Sektion ein. Nutzt die ALLE-Zugriffe-App-Secrets.
+on:
+  workflow_dispatch:
+    inputs:
+      dry:
+        description: "DRY (1 = nur anzeigen)"
+        required: false
+        default: "0"
+
+jobs:
+  shop-fix:
+    runs-on: ubuntu-latest
+    env:
+      SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+      SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+      SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+      PREMIUM_COLLECTION_HANDLE: luxestyle-premium
+      DRY: ${{ github.event.inputs.dry }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - name: Fix policy email typos
+        run: node automation/fix_policies.mjs || true
+      - name: Add Premium homepage section
+        run: node automation/add_premium_section.mjs || true
