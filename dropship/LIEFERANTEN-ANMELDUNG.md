@@ -35,16 +35,33 @@ Druckt Leggings, Sport-BHs, Jogger, Hoodies/Loungewear-Sets, All-Over-Print.
 
 ---
 
-## 3) BIGBUY — breites EU-Sortiment (Spanien, 2–7 Tage, 100k+ SKUs)
-**Warum:** sehr breit (Fashion/Home/Tech), günstig, EU-weit schnell, 8 Sprachen (inkl. DE/FR).
+## 3) BIGBUY — breites EU-Sortiment (Spanien, 2–7 Tage, 100k+ SKUs)  ⭐ empfohlene neue Quelle
+**Warum:** sehr breit (Fashion/Schmuck/Taschen/Uhren/Home/Tech), günstig, EU-weit schnell, DDP-fähig, 8 Sprachen (inkl. DE/FR).
 
-**Anmelden / Verbinden:**
-1. Konto: https://www.bigbuy.eu → registrieren (B2B; ggf. Firmen-/UID-Angaben).
-2. **Ecommerce Pack** + **Shopify-Connector** kaufen (im BigBuy-Backend) — gibt Zugang zu Katalog + Grosshandelspreisen.
-3. Shopify-Connector einrichten (BigBuy Academy „Shopify Set-up Essentials", Schritt-für-Schritt, keine Programmierung).
-   Synchronisiert Katalog/Preise/Bestand/Bestellungen in Echtzeit; bis 2 Stores pro Connector.
-4. Optional Shopify-App für Versandkosten-Sync: https://apps.shopify.com/bigbuy-synchronization-app
-**Kosten:** Shopify-Connector ~**€129–149** (separat oder im Ecommerce Pack) + ggf. Pack-Gebühr.
+**Anmelden — Schritt für Schritt (nur du; ~10 Min):**
+1. **Konto anlegen:** https://www.bigbuy.eu/en/subscription/checkout → registrieren (B2B; Firmen-/ggf. UID-Angaben).
+2. **Pack Ecommerce abonnieren** (nötig für Dropshipping **und** API-Zugang).
+3. **API-Key anfordern:** im BigBuy-Backend bzw. per Kontaktformular (Anleitung: https://www.bigbuy.eu/academy/en/how-do-you-obtain-api-access/).
+   → Den Key mir als Umgebungs-Variable **`BIGBUY_API_KEY`** geben (NICHT ins Repo/Chat).
+4. (Optional, Zero-Code-Weg statt API) Shopify-Connector im BigBuy-Backend einrichten (BigBuy Academy) — synchronisiert
+   Katalog/Preise/Bestand/Bestellungen automatisch; bis 2 Stores. Versandkosten-App: https://apps.shopify.com/bigbuy-synchronization-app
+
+**Kosten (Stand 2026):**
+- **Einmalig €90** Registrierung · **Pack Ecommerce €69/Mt** (monatlich) → **€51.75/Mt** im Jahresabo · Pack Marketplace €99/Mt.
+- **API + Connector im Pack enthalten** (Standalone-Connector sonst €129–149). **Kein Gratis-Test.** Pro Bestellung: Einkaufspreis + Versand.
+- **Minimal-Einstieg: ~€159 im 1. Monat, danach €69/Mt.**
+
+**Cashflow:** Kunde zahlt im Shop zuerst → danach zahlst du BigBuy (aus dem Kundengeld). Kein Vorab-Lager. Fixkosten (€90+€69/Mt) trägst nur du.
+
+**API:** RESTful/JSON · Prod `https://api.bigbuy.eu` · **Sandbox `https://api.sandbox.bigbuy.eu`** (zum Testen, Test-Orders werden auto-storniert).
+
+### 🤖 Autonomer Import-Connector (gebaut, startklar): `automation/bigbuy_import.mjs`
+- Holt **nur TOP-Produkte** (lieferbar/Stock≥5, on-brand: Schmuck/Taschen/Uhren/Sonnenbrillen/Damenmode), DE-Titel (Gemini),
+  CHF-Marge, SEO, Tags `bigbuy`+`dropship`, legt sie in Shopify an + publiziert in alle 6 Kanäle, Smart-Collections, idempotent (`dropship/bigbuy_done.txt`).
+- **No-op ohne `BIGBUY_API_KEY`.** **DRY ist Default** (nur Vorschau) → mit `LIVE=1` wird wirklich angelegt.
+- **Erster Lauf (sobald Key da):** `BIGBUY_API_KEY=… BIGBUY_ENV=sandbox SHOPIFY_CLIENT_ID=… SHOPIFY_CLIENT_SECRET=… node automation/bigbuy_import.mjs`
+  → zeigt gefundene TOP-Kandidaten. Dabei die mit `⚠️BB-VERIFY` markierten Endpoint-/Feldnamen einmal gegen die echte Sandbox-Antwort
+  abgleichen (BigBuy-Antwortstruktur bestätigen), dann `LIVE=1` für Echtbetrieb.
 
 ---
 
