@@ -35,7 +35,11 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
-### 2026-06-15 (Abend) — 🏆 PREMIUM LIVE: 35 echte Marken-Produkte importiert (BigBuy)
+### 2026-06-15 (Abend) — 🏆 PREMIUM LIVE: ~44 echte Marken-Produkte importiert (BigBuy)
+- **💎 +9 „weiter" (5. Charge):** Uhren **Olivia Burton** floral (CHF 79.90), Lorus Leder (89.90) · Parfum **Kenzo**
+  «Amour» (64.90), **Elie Saab** «Elixir» (64.90), Antonio Banderas Set (49.90), Swiss Arabian Rose (54.90) ·
+  **Michael-Kors-Taschen-Linie:** Handtasche (129.90), «Khai» Crossbody Rosé (149.90), Rucksack Himbeer (229.90).
+  Alle ACTIVE · Bild-QA'd · kaufbar · 6 Kanäle · Premium. **Abgelehnt:** 2. Casio/Radiant/Bellevue (Near-Dup), DKD-Tasche (Deko-Marke).
 - **🚀 +9 „weiter voll gas" (4. Charge):** Parfum **Yves Saint Laurent** «L'Homme Cologne Bleue» (CHF 109.90),
   Atkinsons English Lavender (49.90), Jacomo Paris (54.90), Floris London (79.90), Le Couvent des Minimes (84.90) ·
   Armbänder Tom Hope Anker (24.90), Adore Gold (39.90) · Taschen **Michael Kors** Leder-Etui (149.90),
