@@ -26,7 +26,8 @@
 > ⚠️ Erkenntnis: freie keyless Jobquellen decken CH-Nicht-Tech kaum ab — nur Adzuna/Jooble-Key löst das.
 > **OFFENE USER-PARTS (Stand jetzt):** (1) **D1** für Inserate (Token mit `D1 Edit` oder DB im Dashboard als
 > `DB` binden); (2) **Affiliate-Links** `js/affiliate-config.js` + **AdSense `ca-pub-…`** `js/ads-config.js`;
-> (3) **Adzuna-Keys** als Pages-Env; (4) **Sitemap** in Google Search Console (`/sitemap.xml`).
+> (3) ✅ **Adzuna-Keys ERLEDIGT** (2026-06-15: als Pages-Secrets `ADZUNA_APP_ID`/`ADZUNA_APP_KEY` gesetzt →
+> CH-Jobs live: Pflege 31, Verkauf 10, Koch 28, Reinigung 28); (4) **Sitemap** in Google Search Console (`/sitemap.xml`).
 
 ## 🌙 2026-06-14 (NACHT-LAUF) — Marktplatz LIVE deployed + voll ausgebaut
 > **DER MARKTPLATZ IST LIVE auf abannews.com** (Cloudflare Pages, via gültigem Pages-Token deployed).
