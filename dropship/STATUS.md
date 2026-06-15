@@ -35,6 +35,13 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-15 (Abend) — ⌚ +18 MARKEN-UHREN/SCHMUCK (User „BigBuy war teuer, fülle mehr")
+- **Investition ausnutzen → 18 neue Marken-Produkte** (Dubletten-Regel angewandt: erst 51 bestehende bb-SKUs geholt,
+  nur Neues). Neue Top-Marken: **Swatch (Swiss Made!), Citizen, Hugo Boss, Tommy Hilfiger, Calvin Klein, Festina,
+  Lotus, Morellato, Paul Hewitt** (Uhren CHF 34.90–189.90) + Police-Halskette/-Armband, Casio Retro-Digital, Folli-Follie-Armreif.
+  Alle ACTIVE · Bild-QA'd (Montage) · kaufbar · 6 Kanäle · Premium-Kollektion. 3 Heroes (Swatch/Citizen/Hugo Boss) in Rotation.
+- **Stand: ~69 Marken-Produkte** in der Premium-Kollektion (Schaufenster jetzt sehr stark, v.a. Uhren-Abteilung breit).
+
 ### 2026-06-15 (Abend) — 👚 DAMEN-MARKEN-KLEIDUNG + Lücken-Check (User „damen bluse und hose, fülle alles / schau was fehlt")
 - **+3 Damen-Marken-Shirts mit Grössen-Option (S–XL):** Puma «Squad Graphic», Puma «Essentials», Adidas «3-Stripes»
   (je CHF 29.90). ACTIVE · 6 Kanäle · Premium. Erste Produkte mit echtem Grössen-Selektor.
