@@ -35,6 +35,17 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-15 (Abend) — 🚨 GOOGLE MERCHANT KONTO GESPERRT (User-Screenshot)
+- **Befund:** Merchant-Konto **gesperrt** (0 genehmigt / 106'650 abgelehnt). = **Konto-Sperre** (meist „Misrepresentation"),
+  NICHT nur Produkt-Ablehnung. Free Listings blockiert bis Entsperrung. **NICHT vorschnell Re-Review klicken** (begrenzt).
+- **Ursachen:** (1) Vertrauen/Policies unklar (inkl. die 2 E-Mail-Tippfehler!), (2) Feed mit 106k Produkten (Varianten×Märkte×
+  Sticker/POD) = unseriös bei 0 Verkäufen. **Fix-Plan:** `dropship/GOOGLE-SUSPENSION-FIX.md`.
+- **Aufgabenteilung:** Policies/Impressum/E-Mail-Fix + Re-Review-Klick = **USER** (API-Scope fehlt mir). Feed auf saubere
+  Kollektionen + nur CH/de begrenzen = **Marketing/Theme-Session**. Produkt-Felder (Marke/Barcode/Bilder) = **ich, erledigt**.
+- **Ehrlich:** die Sperre selbst kann ich nicht per API aufheben — der Kern sind Admin-Klicks (Policies) + Merchant-Center.
+  Bis zur Entsperrung tragen **Meta/TikTok organisch + gratis CH-Kanäle** (tutti/FB-Gruppen) die Reichweite (kein Merchant nötig).
+
+
 ### 2026-06-15 (Abend) — 🏷️ GOOGLE-FEED: 75 EAN-Barcodes + Kollisions-Koordination
 - **75 von ~90 BigBuy-Produkten haben jetzt echte EAN13-Barcodes** (aus BigBuy `ean13`, via productVariantsBulkUpdate, 0 Fehler).
   Markenartikel ohne GTIN werden in Google Shopping oft abgelehnt → das ist der grösste Feed-Freigabe-Hebel. Marke=vendor war schon echt.
