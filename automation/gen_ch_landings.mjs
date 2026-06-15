@@ -379,6 +379,57 @@ const PAGES = [
       ["Kann ich Umzugshilfe inserieren?", "Ja — als Dienstleistung kostenlos inserieren oder Helfer/Transport im Inserate-Bereich suchen."],
     ],
   },
+  {
+    slug: "haus-kaufen-schweiz", icon: "🏡", h1: "Haus kaufen in der Schweiz",
+    title: "Haus kaufen Schweiz — Einfamilienhäuser & mehr finden | aban",
+    desc: "Haus kaufen in der Schweiz: Einfamilienhäuser, Reihenhäuser und Liegenschaften nach Ort und Kanton suchen — plus Tipps zu Finanzierung, Tragbarkeit und Eigenkapital.",
+    cta: "/immobilien.html?q=haus", ctaLabel: "Häuser durchsuchen",
+    intro: "Vom Einfamilienhaus bis zur Liegenschaft — such nach Ort oder Kanton und prüfe früh Finanzierung und Tragbarkeit, bevor du dich verliebst.",
+    tips: [
+      ["Tragbarkeit rechnen", "Faustregel: Wohnkosten (kalk. Zins ~5 %, Unterhalt, Amortisation) max. ein Drittel des Bruttoeinkommens."],
+      ["Eigenkapital & 2. Säule", "Mind. 20 % Eigenkapital (10 % „hartes“ Eigenkapital). Pensionskassen-Bezug/Verpfändung früh klären."],
+      ["Zustand & Nebenkosten", "Baujahr, Sanierungsstau, Heizung (fossil?) und Nebenkosten prüfen — beeinflussen den echten Preis stark."],
+    ],
+    faq: [
+      ["Wie viel Eigenkapital brauche ich für ein Haus in der Schweiz?", "In der Regel mindestens 20 % des Kaufpreises, davon 10 % „hartes“ Eigenkapital (nicht aus der PK). Den Rest finanziert die Hypothek."],
+      ["Wie finde ich Häuser in meiner Region?", "Gib in der Immobilien-Suche Ort/Kanton ein und wähle die Art Haus. Du kannst auch selbst inserieren."],
+      ["Was ist die Tragbarkeit?", "Die kalkulatorischen Wohnkosten sollten rund ein Drittel deines Bruttoeinkommens nicht übersteigen — unabhängig vom aktuellen Tiefzins."],
+    ],
+  },
+  {
+    slug: "wohnung-kaufen-schweiz", icon: "🔑", h1: "Wohnung kaufen in der Schweiz",
+    title: "Wohnung kaufen Schweiz — Eigentumswohnungen finden | aban",
+    desc: "Eigentumswohnung in der Schweiz kaufen: Stockwerkeigentum nach Ort und Kanton suchen — plus Tipps zu Finanzierung, Stockwerkeigentum und Nebenkosten.",
+    cta: "/immobilien.html?q=wohnung+kauf", ctaLabel: "Eigentumswohnungen durchsuchen",
+    intro: "Eigentumswohnung statt Miete: such nach Ort oder Kanton, prüfe Finanzierung, Stockwerkeigentum-Reglement und den Erneuerungsfonds.",
+    tips: [
+      ["Stockwerkeigentum verstehen", "Prüfe Reglement, Wertquoten, Protokolle der Eigentümerversammlung und den Erneuerungsfonds."],
+      ["Finanzierung früh klären", "Tragbarkeit + min. 20 % Eigenkapital. Hypothek vergleichen lohnt sich (Zinsunterschiede summieren sich)."],
+      ["Nebenkosten realistisch", "Akonto-Nebenkosten + Beiträge in den Erneuerungsfonds einplanen, nicht nur die Hypothekarzinsen."],
+    ],
+    faq: [
+      ["Lohnt sich Kaufen statt Mieten in der Schweiz?", "Je nach Region, Eigenkapital und Haltedauer. Ab ~10 Jahren und mit genug Eigenkapital ist Kaufen oft sinnvoll — rechne Tragbarkeit + Nebenkosten."],
+      ["Was ist Stockwerkeigentum?", "Du besitzt deine Wohnung plus einen Anteil am Gemeinschaftseigentum. Reglement und Erneuerungsfonds sind wichtig zu prüfen."],
+      ["Wie finde ich Eigentumswohnungen?", "Immobilien-Suche nach Ort/Kanton, Art „Wohnung kaufen“. Selbst inserieren ist ebenfalls kostenlos."],
+    ],
+  },
+  {
+    slug: "buero-mieten-schweiz", icon: "🏢", h1: "Büro & Gewerbe mieten in der Schweiz",
+    title: "Büro mieten Schweiz — Gewerbe- & Büroräume finden | aban",
+    desc: "Büro oder Gewerbe in der Schweiz mieten: Büroräume, Praxen, Ateliers und Gewerbeflächen nach Ort und Kanton suchen — oder kostenlos inserieren.",
+    cta: "/immobilien.html?q=gewerbe+büro", ctaLabel: "Büro & Gewerbe durchsuchen",
+    intro: "Büro, Praxis, Atelier oder Lager — such nach Ort oder Kanton und finde passende Gewerbeflächen, oder schreib dein Gesuch/Angebot aus.",
+    tips: [
+      ["Lage & Erreichbarkeit", "ÖV-Anbindung, Parkplätze und Laufkundschaft je nach Geschäft gewichten."],
+      ["Mietkonditionen prüfen", "Nebenkosten, Mindestmietdauer, Ausbaustandard und Kündigungsfristen genau anschauen."],
+      ["Flexibilität bedenken", "Für Start/Wachstum: Coworking oder flexible Verträge können günstiger sein als ein langer Mietvertrag."],
+    ],
+    faq: [
+      ["Wo finde ich Büroflächen in der Schweiz?", "In der Immobilien-Suche nach Ort/Kanton suchen und nach Gewerbe/Büro filtern. Eigene Gesuche/Angebote kannst du kostenlos inserieren."],
+      ["Worauf bei Gewerbemiete achten?", "Nebenkosten, Mietdauer, Ausbau, Nutzungsart (zonenkonform) und Kündigungsfristen."],
+      ["Coworking oder eigenes Büro?", "Für kleine Teams/Start oft Coworking (flexibel, günstiger Einstieg); ab stabiler Grösse lohnt ein eigener Mietvertrag."],
+    ],
+  },
 ];
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -400,7 +451,9 @@ function page(p) {
     occasion: ["AUTO_VERSICHERUNG_URL", "Occasion gekauft? KFZ-Versicherung vergleichen und sparen.", "Versicherung vergleichen"],
     motorrad: ["AUTO_VERSICHERUNG_URL", "Töff-Versicherung vergleichen und sparen.", "Versicherung vergleichen"],
     wohnmobil: ["AUTO_VERSICHERUNG_URL", "Wohnmobil-Versicherung vergleichen.", "Versicherung vergleichen"],
-    umzug: ["IMMO_UMZUG_URL", "Umzug geplant? Zügelfirmen vergleichen und sparen.", "Umzug vergleichen"] };
+    umzug: ["IMMO_UMZUG_URL", "Umzug geplant? Zügelfirmen vergleichen und sparen.", "Umzug vergleichen"],
+    haus: ["IMMO_HYPOTHEK_URL", "Hauskauf geplant? Hypothek & Finanzierung vergleichen.", "Hypothek vergleichen"],
+    buero: ["IMMO_UMZUG_URL", "Büro-Umzug? Zügelfirmen für Gewerbe vergleichen.", "Umzug vergleichen"] };
   let pbKey = "";
   for (const k in PB) { if (p.slug.indexOf(k) === 0) { pbKey = k; break; } }
   const partnerBox = pbKey ? `  <div data-partner="${PB[pbKey][0]}" data-text="${esc(PB[pbKey][1])}" data-cta="${esc(PB[pbKey][2])}"></div>\n` : "";
